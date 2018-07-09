@@ -15,6 +15,8 @@ public:
     ~SendDataPanel();
 private:
     Ui::SendDataPanel *ui;
+signals:
+
 };
 
 #endif
