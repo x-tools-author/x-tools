@@ -49,15 +49,22 @@
       <string>串口设置</string>
      </property>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="14">
-       <widget class="Line" name="line">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
+      <item row="0" column="12">
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>停止位</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="1" colspan="6">
-       <widget class="QComboBox" name="comboBox_serialport"/>
+      <item row="0" column="20">
+       <widget class="QPushButton" name="pushButton_open">
+        <property name="text">
+         <string>打开串口</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="9">
+       <widget class="QComboBox" name="comboBox_baudrate"/>
       </item>
       <item row="0" column="8">
        <widget class="QLabel" name="label_2">
@@ -66,7 +73,57 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="17">
+      <item row="0" column="15">
+       <widget class="QComboBox" name="comboBox_parity">
+        <item>
+         <property name="text">
+          <string>NoParity</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>EvenParity</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>OddParity</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>SpaceParity</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>MarkParity</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="0" column="18">
+       <widget class="Line" name="line">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="10">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>数据位</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>串口设备</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="21">
        <spacer name="horizontalSpacer">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -79,14 +136,17 @@
         </property>
        </spacer>
       </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="label">
+      <item row="0" column="1" colspan="6">
+       <widget class="QComboBox" name="comboBox_serialport"/>
+      </item>
+      <item row="0" column="19">
+       <widget class="QPushButton" name="pushButton_refresh">
         <property name="text">
-         <string>串口设备</string>
+         <string>刷新设备</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="12">
+      <item row="0" column="14">
        <widget class="QLabel" name="label_4">
         <property name="text">
          <string>奇偶位</string>
@@ -94,33 +154,49 @@
        </widget>
       </item>
       <item row="0" column="11">
-       <widget class="QComboBox" name="comboBox_databits"/>
-      </item>
-      <item row="0" column="10">
-       <widget class="QLabel" name="label_3">
-        <property name="text">
-         <string>数据位</string>
+       <widget class="QComboBox" name="comboBox_databits">
+        <property name="currentIndex">
+         <number>3</number>
         </property>
+        <item>
+         <property name="text">
+          <string>5</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>6</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>7</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>8</string>
+         </property>
+        </item>
        </widget>
       </item>
       <item row="0" column="13">
-       <widget class="QComboBox" name="comboBox_parity"/>
-      </item>
-      <item row="0" column="9">
-       <widget class="QComboBox" name="comboBox_baudrate"/>
-      </item>
-      <item row="0" column="16">
-       <widget class="QPushButton" name="pushButton_open">
-        <property name="text">
-         <string>打开串口</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="15">
-       <widget class="QPushButton" name="pushButton_refresh">
-        <property name="text">
-         <string>刷新设备</string>
-        </property>
+       <widget class="QComboBox" name="comboBox_stopbits">
+        <item>
+         <property name="text">
+          <string>1</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>1.5</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>2</string>
+         </property>
+        </item>
        </widget>
       </item>
      </layout>
