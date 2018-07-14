@@ -26,6 +26,10 @@ OutputWindow::~OutputWindow()
  */
 void OutputWindow::OutputData(QByteArray data)
 {
+    if (ui->checkBox_pause->isChecked()){
+        return;
+    }
+
     QString str, color = "green", datetimeColor = "silver";
     /// 添加日期信息
     if (ui->checkBox_date->isChecked()){
@@ -53,7 +57,7 @@ void OutputWindow::OutputData(QByteArray data)
             str.append(QString("%1 ").arg(QString::number(data.at(i), 16), 2, '0'));
         }
     }else if (ui->radioButton_ascii->isChecked()){    /// 八进制
-        str.append(QString(data).toUpper());
+        str.append(QString(data));
     }else{
         /// not yet
     }
