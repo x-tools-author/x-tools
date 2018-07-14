@@ -6,6 +6,7 @@
 #include <QFile>
 #include <QFileDialog>
 #include <QTextStream>
+#include <QDebug>
 
 namespace Ui{
 class OutputWindow;
@@ -22,7 +23,7 @@ private:
     Ui::OutputWindow *ui;
 private slots:
     /// 输出数据（串口，网络接收到的数据）
-    void OutputData(QByteArray data, QString color = "black");
+    void OutputData(QByteArray data);
     /// 输出普通信息
     void OutputInfo(QString info, QString color = "black");
     /// 保存输出

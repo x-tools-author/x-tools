@@ -19,6 +19,9 @@ MainWindow::MainWindow(QWidget *parent) :
     layout->addWidget(mpTabWidget);
     ui->centralWidget->setLayout(layout);
 
+    /// 设置窗口大小
+    this->resize(1280, 720);
+
     /// 添加页
     this->AddTab();
 }

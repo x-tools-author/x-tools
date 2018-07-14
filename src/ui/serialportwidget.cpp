@@ -10,8 +10,10 @@ SerialPortWidget::SerialPortWidget(QWidget *parent):
     ui(new Ui::SerialportWidget),
     mpOutputWindow(new OutputWindow),
     mpInputWindow(new InputWindow),
-    mpSendDataPanel(new SendDataPanel)
+    mpSendDataPanel(new SendDataPanel),
+    mpSerialportAssistant(new SerialportAssistant)
 {
+    mpSerialportAssistant->start();
     /// 初始化UI
     ui->setupUi(this);
     QHBoxLayout *pOutputLayout = new QHBoxLayout;
@@ -43,8 +45,15 @@ void SerialPortWidget::Connect()
 {
     /// 说新设备
     connect(ui->pushButton_refresh, SIGNAL(clicked(bool)), this, SLOT(RefreshDevice()));
-    /// 打开串口
+    /// 打开串口/关闭串口
     connect(ui->pushButton_open, SIGNAL(clicked(bool)), this, SLOT(Open()));
+    connect(this, SIGNAL(Need2Open(QString,QString,QString,QString,QString)), mpSerialportAssistant, SLOT(Open(QString,QString,QString,QString,QString)));
+    connect(this, SIGNAL(Need2Close()), mpSerialportAssistant, SLOT(Close()));
+    connect(mpSerialportAssistant, SIGNAL(SerialPortOpenSuccessfully()), this, SLOT(AfterSerialportOpen()));
+    connect(mpSerialportAssistant, SIGNAL(SerialPortCloseSuccessfully()), this, SLOT(AfterSerialportClose()));
+    /// 接收数据
+    connect(mpSerialportAssistant, SIGNAL(NewDataHadBeenRead(QByteArray)), mpOutputWindow, SLOT(OutputData(QByteArray)));
+
 }
 
 void SerialPortWidget::SetBaudRate()
@@ -71,17 +80,8 @@ void SerialPortWidget::RefreshDevice()
 
 void SerialPortWidget::Open()
 {
-    static bool isOpen = false;
-    if (isOpen){
+    if (mIsOpen){
         emit Need2Close();
-        ui->pushButton_open->setText(tr("打开串口"));
-
-        ui->comboBox_serialport->setEnabled(true);
-        ui->comboBox_baudrate->setEnabled(true);
-        ui->comboBox_databits->setEnabled(true);
-        ui->comboBox_stopbits->setEnabled(true);
-        ui->comboBox_parity->setEnabled(true);
-        ui->pushButton_refresh->setEnabled(true);
     }else{
         QString portName, baudRate, dataBits, stopBits, parity;
         portName = ui->comboBox_serialport->currentText().split(' ').at(0);
@@ -91,14 +91,33 @@ void SerialPortWidget::Open()
         parity   = ui->comboBox_parity->currentText();
 
         emit Need2Open(portName, baudRate, dataBits, stopBits, parity);
-        ui->pushButton_open->setText(tr("关闭串口"));
-
-        ui->comboBox_serialport->setEnabled(false);
-        ui->comboBox_baudrate->setEnabled(false);
-        ui->comboBox_databits->setEnabled(false);
-        ui->comboBox_stopbits->setEnabled(false);
-        ui->comboBox_parity->setEnabled(false);
-        ui->pushButton_refresh->setEnabled(false);
     }
-    isOpen = !isOpen;
+}
+
+void SerialPortWidget::AfterSerialportClose()
+{
+    ui->pushButton_open->setText(tr("打开串口"));
+
+    ui->comboBox_serialport->setEnabled(true);
+    ui->comboBox_baudrate->setEnabled(true);
+    ui->comboBox_databits->setEnabled(true);
+    ui->comboBox_stopbits->setEnabled(true);
+    ui->comboBox_parity->setEnabled(true);
+    ui->pushButton_refresh->setEnabled(true);
+
+    mIsOpen = false;
+}
+
+void SerialPortWidget::AfterSerialportOpen()
+{
+    ui->pushButton_open->setText(tr("关闭串口"));
+
+    ui->comboBox_serialport->setEnabled(false);
+    ui->comboBox_baudrate->setEnabled(false);
+    ui->comboBox_databits->setEnabled(false);
+    ui->comboBox_stopbits->setEnabled(false);
+    ui->comboBox_parity->setEnabled(false);
+    ui->pushButton_refresh->setEnabled(false);
+
+    mIsOpen = true;
 }

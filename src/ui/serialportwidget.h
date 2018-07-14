@@ -6,10 +6,12 @@
 #include <QSerialPort>
 #include <QSerialPortInfo>
 #include <QApplication>
+#include <QDebug>
 
 #include "outputwindow.h"
 #include "inputwindow.h"
 #include "senddatapanel.h"
+#include "SerialPortAssistant.h"
 
 namespace Ui {
 class SerialportWidget;
@@ -23,6 +25,10 @@ public:
     ~SerialPortWidget();
     /// -------------------------------------------------------
 private:
+    /// 串口
+    SerialportAssistant *mpSerialportAssistant;
+    /// 串口状态
+    bool mIsOpen = false;
     Ui::SerialportWidget *ui;
     OutputWindow *mpOutputWindow;
     InputWindow *mpInputWindow;
@@ -33,6 +39,10 @@ private:
     /// 标准波特率
     void SetBaudRate();
 private slots:
+    /// 串口关闭后进行的一些操作
+    void AfterSerialportClose();
+    /// 串口打开成功后进行的一些操作
+    void AfterSerialportOpen();
     /// 打开串口
     void Open();
     /// 获取串口设备

@@ -24,40 +24,42 @@ OutputWindow::~OutputWindow()
  * @param data  --需要输出的数据
  * @param color --输出文本颜色
  */
-void OutputWindow::OutputData(QByteArray data, QString color)
+void OutputWindow::OutputData(QByteArray data)
 {
-    QString str;
+    QString str, color = "green", datetimeColor = "silver";
     /// 添加日期信息
     if (ui->checkBox_date->isChecked()){
-        str.append(QDate::currentDate().toString("yyyy/MM/dd "));
+        str.append(QString("<font color=%1>%2</font>").arg(datetimeColor).arg(QDate::currentDate().toString("yyyy/MM/dd ")));
     }
     /// 添加时间信息
     if (ui->checkBox_time->isChecked()){
-        str.append(QTime::currentTime().toString("hh:mm:ss "));
+        str.append(QString("<font color=%1>%2</font>").arg(datetimeColor).arg(QTime::currentTime().toString("hh:mm:ss ")));
     }
 
     if (ui->radioButton_bin->isChecked()){  /// 二进制
         for (int i = 0; i < data.length(); i++){
             str.append(QString("%1 ").arg(QString::number(data.at(i), 2), 8, '0'));
         }
-    }else if (ui->radioButton_bin->isChecked()){    /// 八进制
+    }else if (ui->radioButton_oct->isChecked()){    /// 八进制
         for (int i = 0; i < data.length(); i++){
             str.append(QString("%1 ").arg(QString::number(data.at(i), 8), 2, '0'));
         }
-    }else if (ui->radioButton_bin->isChecked()){    /// 十进制
+    }else if (ui->radioButton_dec->isChecked()){    /// 十进制
         for (int i = 0; i < data.length(); i++){
             str.append(QString("%1 ").arg(QString::number(data.at(i), 10), 2, '0'));
         }
-    }else if (ui->radioButton_bin->isChecked()){    /// 八进制
+    }else if (ui->radioButton_hex->isChecked()){    /// 八进制
         for (int i = 0; i < data.length(); i++){
             str.append(QString("%1 ").arg(QString::number(data.at(i), 16), 2, '0'));
         }
+    }else if (ui->radioButton_ascii->isChecked()){    /// 八进制
+        str.append(QString(data).toUpper());
     }else{
         /// not yet
     }
 
     /// 输出信息
-    ui->textBrowser->append(QString("<font color%1>%2</font>").arg(color).arg(str));
+    ui->textBrowser->append(QString("<font color=%1>%2</font>").arg(color).arg(str));
 
     /// 帧数
     qulonglong frame = ui->label_frame->text().toULongLong();
@@ -66,7 +68,7 @@ void OutputWindow::OutputData(QByteArray data, QString color)
     /// 字节数
     qulonglong bytes = ui->label_bytes->text().toULongLong();
     bytes += data.length();
-    ui->label_frame->setText(QString::number(bytes));
+    ui->label_bytes->setText(QString::number(bytes));
 }
 
 /**
