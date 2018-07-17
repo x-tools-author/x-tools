@@ -13,6 +13,8 @@ class InputWindow : public QWidget
 public:
     InputWindow(QWidget *parent = Q_NULLPTR);
     ~InputWindow();
+    /// 输入框数据(会根据输入设置选项来提取数据)
+    QByteArray Data();
 private:
     Ui::InputWindow *ui;
 };

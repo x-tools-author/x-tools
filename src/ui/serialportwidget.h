@@ -39,6 +39,8 @@ private:
     /// 标准波特率
     void SetBaudRate();
 private slots:
+    /// 发送数据
+    void Write();
     /// 串口关闭后进行的一些操作
     void AfterSerialportClose();
     /// 串口打开成功后进行的一些操作
@@ -52,6 +54,7 @@ signals:
     void Need2Close();
     /// 外部关联该信号来打开串口
     void Need2Open(QString portName, QString baudRate, QString dataBits, QString stopBits, QString parity);
+    /// 需要发送数据
+    void Need2Write(QByteArray data);
 };
-
 #endif

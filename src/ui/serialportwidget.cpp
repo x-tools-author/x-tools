@@ -53,6 +53,9 @@ void SerialPortWidget::Connect()
     connect(mpSerialportAssistant, SIGNAL(SerialPortCloseSuccessfully()), this, SLOT(AfterSerialportClose()));
     /// 接收数据
     connect(mpSerialportAssistant, SIGNAL(NewDataHadBeenRead(QByteArray)), mpOutputWindow, SLOT(OutputData(QByteArray)));
+    /// 发送数据
+    connect(mpSendDataPanel, SIGNAL(Need2WriteData()), this, SLOT(Write()));
+    connect(this, SIGNAL(Need2Write(QByteArray)), mpSerialportAssistant, SLOT(Write(QByteArray)));
 
 }
 
@@ -120,4 +123,11 @@ void SerialPortWidget::AfterSerialportOpen()
     ui->pushButton_refresh->setEnabled(false);
 
     mIsOpen = true;
+}
+
+void SerialPortWidget::Write()
+{
+    QByteArray data = mpInputWindow->Data();
+
+    emit Need2Write(data);
 }

@@ -36,7 +36,7 @@
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="0" column="0">
-       <widget class="QCheckBox" name="checkBox">
+       <widget class="QCheckBox" name="checkBox_cycle">
         <property name="text">
          <string>循环发送</string>
         </property>
@@ -65,7 +65,7 @@
       <item row="2" column="1">
        <widget class="QLineEdit" name="lineEdit_cycleTime">
         <property name="text">
-         <string/>
+         <string>100</string>
         </property>
        </widget>
       </item>
@@ -73,6 +73,13 @@
        <widget class="QPushButton" name="pushButton_send">
         <property name="text">
          <string>发送</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" colspan="2">
+       <widget class="QLabel" name="label_errorString">
+        <property name="text">
+         <string/>
         </property>
        </widget>
       </item>

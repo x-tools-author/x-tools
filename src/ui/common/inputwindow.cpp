@@ -16,3 +16,10 @@ InputWindow::~InputWindow()
 {
 
 }
+
+QByteArray InputWindow::Data()
+{
+    QByteArray data = ui->textEdit->toPlainText().toLatin1();
+
+    return data;
+}
