@@ -2,6 +2,9 @@
 #define INPUTWINDOW_H
 
 #include <QWidget>
+#include <QFile>
+#include <QFileDialog>
+#include <QDebug>
 
 namespace Ui {
 class InputWindow;
@@ -16,7 +19,12 @@ public:
     /// 输入框数据(会根据输入设置选项来提取数据)
     QByteArray Data();
 private:
+    /// ui界面
     Ui::InputWindow *ui;
+    /// ------------------------------------------
+private slots:
+    /// 读入文本数据
+    void OpenFile();
 };
 
 #endif
