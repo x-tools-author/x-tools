@@ -2,59 +2,31 @@
 #pragma execution_character_set("utf-8")
 #endif
 
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
+#include "console.h"
+#include "ui_console.h"
 
-#include "serialportwidget.h"
-#include "UdpClientWidget.h"
-#include "TCPClientWidget.h"
-#include "TCPServerWidget.h"
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow),
-    mpTabWidget(new QTabWidget)
+Console *appConsole(){
+    return Console::_console;
+}
+
+Console* Console::_console = NULL;
+
+Console::Console(QWidget *parent):
+    QWidget(parent),
+    ui(new Ui::Console)
 {
     ui->setupUi(this);
 
-    /// 设置中央部件
-    QHBoxLayout *layout = new QHBoxLayout;
-    layout->addWidget(mpTabWidget);
-    ui->centralWidget->setLayout(layout);
-
-    /// 设置窗口大小
-    this->resize(1280, 720);
-
-    /// 添加页
-    this->AddTab();
-    /// 初始化菜单
-    InitMenu();
+    _console = this;
 }
 
-MainWindow::~MainWindow()
+Console::~Console()
 {
-    delete ui;
+
 }
 
-void MainWindow::AddTab()
+void Console::OutputInfo(QString info)
 {
-    /// 串口页
-    this->mpTabWidget->addTab(new SerialPortWidget, tr("串口助手"));
-    /// udp
-    this->mpTabWidget->addTab(new UdpClientWidget, tr("UDP客户端"));
-    /// tcp 客户端
-    this->mpTabWidget->addTab(new TcpClientWidget, tr("TCP客户端"));
-    /// tcp 服务器
-    this->mpTabWidget->addTab(new TcpServerWidget, tr("TCP服务器"));
-}
-
-void MainWindow::InitMenu()
-{
-    /// 文件菜单
-    QMenu *pFileMenu = new QMenu(tr("文件"));
-    menuBar()->addMenu(pFileMenu);
-
-    QAction *pExitAction = new QAction(tr("退出"));
-    pFileMenu->addAction(pExitAction);
-    connect(pExitAction, SIGNAL(triggered(bool)), this, SLOT(close()));
+    ui->textBrowser->append(info);
 }

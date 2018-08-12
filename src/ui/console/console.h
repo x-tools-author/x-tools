@@ -1,31 +1,25 @@
-﻿#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+﻿#ifndef CONSOLE_H
+#define CONSOLE_H
 
-#include <QMainWindow>
-#include <QTabWidget>
-#include <QHBoxLayout>
-#include <QMenu>
-#include <QAction>
+#include <QWidget>
 
-namespace Ui {
-class MainWindow;
+namespace Ui{
+class Console;
 }
 
-class MainWindow : public QMainWindow
+class Console : public QWidget
 {
     Q_OBJECT
-
 public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
+    Console(QWidget *parent = Q_NULLPTR);
+    ~Console();
+    /// -----------------------------------------
+    void OutputInfo(QString info);
+    static Console *_console;
 private:
-    QTabWidget *mpTabWidget;
-    Ui::MainWindow *ui;
-    /// ----------------------------------------------------
-    /// 添加页
-    void AddTab();
-    /// 创建菜单
-    void InitMenu();
+    Ui::Console *ui;
 };
 
-#endif // MAINWINDOW_H
+Console *appConsole();
+
+#endif  // CONSOLE_H

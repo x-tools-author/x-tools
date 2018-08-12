@@ -73,6 +73,8 @@ INCLUDEPATH += \
     src/SerialPort \
     src/UdpClient \
     src/TcpClient \
-    src/TcpServer
+    src/TcpServer \
+    src/ui/console
 
 include(QtSwissArmyKnifeConfigure.pri)
+include(QtSwissArmyKnifeSetup.pri)

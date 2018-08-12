@@ -7,6 +7,8 @@
 #include <QMenu>
 #include <QAction>
 
+#include "console.h"
+
 namespace Ui {
 class MainWindow;
 }

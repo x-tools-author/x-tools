@@ -46,6 +46,8 @@ void MainWindow::AddTab()
     this->mpTabWidget->addTab(new TcpClientWidget, tr("TCP客户端"));
     /// tcp 服务器
     this->mpTabWidget->addTab(new TcpServerWidget, tr("TCP服务器"));
+    /// 终端
+    this->mpTabWidget->addTab(new Console, tr("终端"));
 }
 
 void MainWindow::InitMenu()
@@ -57,4 +59,8 @@ void MainWindow::InitMenu()
     QAction *pExitAction = new QAction(tr("退出"));
     pFileMenu->addAction(pExitAction);
     connect(pExitAction, SIGNAL(triggered(bool)), this, SLOT(close()));
+
+    /// 工具菜单
+    QMenu *pToolMenu = new QMenu(tr("工具"));
+    menuBar()->addMenu(pToolMenu);
 }

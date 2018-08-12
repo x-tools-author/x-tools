@@ -4,6 +4,8 @@
 
 #include "SAKApplication.h"
 
+#include <QDebug>
+
 SAKApplication::SAKApplication(int argc, char **argv):
     QApplication(argc, argv),
     mpMainWindow(new MainWindow)
