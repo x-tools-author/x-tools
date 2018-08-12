@@ -14,7 +14,10 @@ void SAKAppMsgOutput(QtMsgType type, const QMessageLogContext &context, const QS
         return;
     }
 
-    QString info = QDateTime::currentDateTime().toString("yyyy/MM/dd hh:mm:ss ") + QString(context.file) + QString(context.function) + QString::number(context.line) + " " + msg;
+    QString info = QDateTime::currentDateTime().toString("yyyy/MM/dd hh:mm:ss ");
+    info = info + QString(context.file) + " ";
+    info = info + QString::number(context.line) + " ";
+    info = info + msg;
     info.remove("\"");
     switch (type) {
     case QtDebugMsg:
@@ -49,6 +52,8 @@ int main(int argc, char *argv[])
 {
     qInstallMessageHandler(SAKAppMsgOutput);
     SAKApplication a(argc, argv);
+
+    qDebug() << "debug";
 
     return a.exec();
 }

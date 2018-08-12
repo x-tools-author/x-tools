@@ -4,9 +4,9 @@
 #
 #-------------------------------------------------
 
-QT       += core gui serialport network
+QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets serialport network
 
 TARGET = QtSwissArmyKnife
 TEMPLATE = app
@@ -76,5 +76,8 @@ INCLUDEPATH += \
     src/TcpServer \
     src/ui/console
 
+#--------------------------------------------------------------------------------------------
+# 子项目
 include(QtSwissArmyKnifeConfigure.pri)
 include(QtSwissArmyKnifeSetup.pri)
+
