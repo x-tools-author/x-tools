@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui serialport
+QT       += core gui serialport network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -31,7 +31,9 @@ SOURCES += \
     src/ui/common/inputwindow.cpp \
     src/ui/common/senddatapanel.cpp \
     src/SerialPort/SerialPortAssistant.cpp \
-    src/SAKApplication.cpp
+    src/SAKApplication.cpp \
+    src/UdpClient/UdpClientAssistant.cpp \
+    src/UdpClient/UdpClientWidget.cpp
 
 HEADERS += \
         src/ui/mainwindow.h \
@@ -40,18 +42,22 @@ HEADERS += \
     src/ui/common/inputwindow.h \
     src/ui/common/senddatapanel.h \
     src/SerialPort/SerialPortAssistant.h \
-    src/SAKApplication.h
+    src/SAKApplication.h \
+    src/UdpClient/UdpClientAssistant.h \
+    src/UdpClient/UdpClientWidget.h
 
 FORMS += \
         src/ui/mainwindow.ui \
     src/ui/common/outputwindow.ui \
     src/SerialPort/serialportwidget.ui \
     src/ui/common/inputwindow.ui \
-    src/ui/common/senddatapanel.ui
+    src/ui/common/senddatapanel.ui \
+    src/UdpClient/UdpClientWidget.ui
 
 INCLUDEPATH += \
     src/ui \
     src/ui/common \
-    src/SerialPort
+    src/SerialPort \
+    src/UdpClient
 
 include(QtSwissArmyKnifeConfigure.pri)

@@ -1,5 +1,5 @@
 ﻿#ifndef SENDDATAPANEL_H
-#define SENDSATAPANEL_H
+#define SENDDATAPANEL_H
 
 #include <QWidget>
 #include <QTimer>

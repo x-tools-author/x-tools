@@ -28,6 +28,15 @@ OutputWindow::~OutputWindow()
  */
 void OutputWindow::OutputData(QByteArray data)
 {
+    /// 指示灯
+    static bool light = false;
+    light = !light;
+    if (light){
+        ui->label_light->setStyleSheet(QString("QLabel{color:yellow;font-size:72px}"));
+    }else {
+        ui->label_light->setStyleSheet(QString("QLabel{color:black;font-size:72px}"));
+    }
+
     if (ui->checkBox_pause->isChecked()){
         return;
     }
