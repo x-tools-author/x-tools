@@ -1,4 +1,12 @@
-﻿#ifndef MAINWINDOW_H
+﻿/*******************************************************************************
+* The file is encoding with utf-8 (with BOM)
+*
+* I write the comment with English, it's not because that I'm good at English,
+* but for "installing B".
+*
+* Copyright (C) 2018-2018 wuhai persionnal. All rights reserved.
+*******************************************************************************/
+#ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
 #include <QMainWindow>
@@ -6,6 +14,8 @@
 #include <QHBoxLayout>
 #include <QMenu>
 #include <QAction>
+#include <QMessageBox>
+#include <QLabel>
 
 #include "console.h"
 
@@ -24,10 +34,12 @@ private:
     QTabWidget *mpTabWidget;
     Ui::MainWindow *ui;
     /// ----------------------------------------------------
-    /// 添加页
     void AddTab();
-    /// 创建菜单
     void InitMenu();
+
+private slots:
+    void AboutQt();
+    void About();
 };
 
 #endif // MAINWINDOW_H

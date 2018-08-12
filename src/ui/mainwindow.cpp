@@ -17,18 +17,16 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    /// 设置中央部件
     QHBoxLayout *layout = new QHBoxLayout;
     layout->addWidget(mpTabWidget);
     ui->centralWidget->setLayout(layout);
 
-    /// 设置窗口大小
     this->resize(1280, 720);
 
-    /// 添加页
-    this->AddTab();
-    /// 初始化菜单
+    AddTab();
     InitMenu();
+
+    setWindowTitle(tr("瑞士军刀--开发调试工具集"));
 }
 
 MainWindow::~MainWindow()
@@ -63,4 +61,36 @@ void MainWindow::InitMenu()
     /// 工具菜单
     QMenu *pToolMenu = new QMenu(tr("工具"));
     menuBar()->addMenu(pToolMenu);
+
+    // 帮助菜单
+    QMenu *pHelpMenu = new QMenu(tr("帮助"));
+    menuBar()->addMenu(pHelpMenu);
+
+    QAction *pAboutQtAction = new QAction(tr("关于Qt"));
+    pHelpMenu->addAction(pAboutQtAction);
+    connect(pAboutQtAction, SIGNAL(triggered(bool)), this, SLOT(AboutQt()));
+
+    QAction *pAboutAction = new QAction(tr("关于软件"));
+    pHelpMenu->addAction(pAboutAction);
+    connect(pAboutAction, SIGNAL(triggered(bool)), this, SLOT(About()));
+}
+
+void MainWindow::About()
+{
+    QMessageBox::about(this, tr("关于软件"), QString("%1: %2\n"
+                                                 "%3: %4\n"
+                                                 "%5: %6\n"
+                                                 "%7: %8\n"
+                                                 "%9: %10")
+                       .arg(tr("软件版本")).arg("1.0.0")
+                       .arg(tr("编译时间")).arg(QString(__DATE__) + " " + QString(__TIME__))
+                       .arg(tr("软件作者")).arg(tr("不想敲代码的程序员"))
+                       .arg(tr("联系邮箱")).arg("wh19931117@126.com")
+                       .arg(tr("软件定做")).arg(tr("业余软件定做，质量高，价格低，详情联系wh19931117@126.com")));
+
+}
+
+void MainWindow::AboutQt()
+{
+    QMessageBox::aboutQt(this, tr("关于Qt"));
 }
