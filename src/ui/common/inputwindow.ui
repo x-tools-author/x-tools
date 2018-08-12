@@ -37,6 +37,11 @@
      <layout class="QGridLayout" name="gridLayout">
       <item row="2" column="3">
        <widget class="QLabel" name="label_bytes">
+        <property name="styleSheet">
+         <string notr="true">QLabel{
+	color:blue
+}</string>
+        </property>
         <property name="text">
          <string>0</string>
         </property>
@@ -49,63 +54,13 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>已发送帧数统计</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QRadioButton" name="radioButton_oct">
-        <property name="text">
-         <string>八进制输入</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="6">
-       <widget class="QPushButton" name="pushButton_open">
-        <property name="text">
-         <string>打开文件</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="3">
-       <widget class="QRadioButton" name="radioButton_hex">
-        <property name="text">
-         <string>16进制输入</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="5">
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="1" column="0">
-       <widget class="QRadioButton" name="radioButton_bin">
-        <property name="text">
-         <string>二进制输入</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2">
-       <widget class="QRadioButton" name="radioButton_dec">
-        <property name="text">
-         <string>十进制输入</string>
-        </property>
-       </widget>
-      </item>
       <item row="2" column="1">
        <widget class="QLabel" name="label_frame">
+        <property name="styleSheet">
+         <string notr="true">QLabel{
+	color:blue
+}</string>
+        </property>
         <property name="text">
          <string>0</string>
         </property>
@@ -121,8 +76,77 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="0" colspan="7">
+      <item row="1" column="1">
+       <widget class="QRadioButton" name="radioButton_oct">
+        <property name="text">
+         <string>八进制输入</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" colspan="8">
        <widget class="QTextEdit" name="textEdit"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>已发送帧数统计</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QRadioButton" name="radioButton_dec">
+        <property name="text">
+         <string>十进制输入</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QRadioButton" name="radioButton_bin">
+        <property name="text">
+         <string>二进制输入</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QRadioButton" name="radioButton_hex">
+        <property name="text">
+         <string>16进制输入</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="7">
+       <widget class="QPushButton" name="pushButton_open">
+        <property name="text">
+         <string>打开文件</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="6">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="1" column="5">
+       <widget class="QRadioButton" name="radioButton_utf8">
+        <property name="text">
+         <string>UTF-8</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="7">
+       <widget class="QPushButton" name="pushButton_resetCount">
+        <property name="text">
+         <string>重置计数</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -130,5 +154,102 @@
   </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>radioButton_bin</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>textEdit</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>34</x>
+     <y>315</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>34</x>
+     <y>265</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_oct</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>textEdit</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>138</x>
+     <y>318</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>136</x>
+     <y>280</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_dec</sender>
+   <signal>clicked()</signal>
+   <receiver>textEdit</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>221</x>
+     <y>312</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>221</x>
+     <y>251</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_hex</sender>
+   <signal>clicked()</signal>
+   <receiver>textEdit</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>334</x>
+     <y>318</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>330</x>
+     <y>267</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_ascii</sender>
+   <signal>clicked()</signal>
+   <receiver>textEdit</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>409</x>
+     <y>317</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>402</x>
+     <y>249</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_utf8</sender>
+   <signal>clicked()</signal>
+   <receiver>textEdit</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>467</x>
+     <y>314</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>454</x>
+     <y>245</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

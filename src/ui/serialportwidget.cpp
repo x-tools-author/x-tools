@@ -108,6 +108,8 @@ void SerialPortWidget::AfterSerialportClose()
     ui->comboBox_parity->setEnabled(true);
     ui->pushButton_refresh->setEnabled(true);
 
+    mpSendDataPanel->StopSendDataSignal();
+
     mIsOpen = false;
 }
 

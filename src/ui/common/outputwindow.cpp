@@ -12,6 +12,8 @@ OutputWindow::OutputWindow(QWidget *parent):
     ui->setupUi(this);
     /// 保存输出
     connect(ui->pushButton_save, SIGNAL(clicked(bool)), this, SLOT(SaveOutputData()));
+    /// 重置计数
+    connect(ui->pushButton_resetCount, SIGNAL(clicked(bool)), this, SLOT(ResetCount()));
 }
 
 OutputWindow::~OutputWindow()
@@ -52,14 +54,16 @@ void OutputWindow::OutputData(QByteArray data)
         for (int i = 0; i < data.length(); i++){
             str.append(QString("%1 ").arg(QString::number(data.at(i), 10), 2, '0'));
         }
-    }else if (ui->radioButton_hex->isChecked()){    /// 八进制
+    }else if (ui->radioButton_hex->isChecked()){    /// 16进制
         for (int i = 0; i < data.length(); i++){
             str.append(QString("%1 ").arg(QString::number(data.at(i), 16), 2, '0'));
         }
-    }else if (ui->radioButton_ascii->isChecked()){    /// 八进制
+    }else if (ui->radioButton_ascii->isChecked()){    /// ascii进制
+        str.append(QString(data));
+    }else if (ui->radioButton_utf8->isChecked()){    /// utf-8
         str.append(QString(data));
     }else{
-        /// not yet
+        qWarning() << tr("未知显示各式！");
     }
 
     /// 输出信息
@@ -110,4 +114,10 @@ void OutputWindow::SaveOutputData()
 
     outFile.flush();
     outFile.close();
+}
+
+void OutputWindow::ResetCount()
+{
+    ui->label_bytes->setText("0");
+    ui->label_frame->setText("0");
 }

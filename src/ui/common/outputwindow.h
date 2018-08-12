@@ -22,6 +22,8 @@ public:
 private:
     Ui::OutputWindow *ui;
 private slots:
+    /// 重置计数
+    void ResetCount();
     /// 输出数据（串口，网络接收到的数据）
     void OutputData(QByteArray data);
     /// 输出普通信息

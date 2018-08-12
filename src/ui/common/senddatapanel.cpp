@@ -78,3 +78,13 @@ void SendDataPanel::CycleTimerTimeout()
 {
     emit Need2WriteData();
 }
+
+void SendDataPanel::StopSendDataSignal()
+{
+    ui->checkBox_cycle->setChecked(false);
+    ui->lineEdit_cycleTime->setEnabled(true);
+    ui->label_errorString->clear();
+    ui->pushButton_send->setText(tr("发送"));
+    ui->pushButton_send->setEnabled(true);
+    mpCycleTimer->stop();
+}

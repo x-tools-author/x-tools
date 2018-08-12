@@ -24,6 +24,9 @@ private:
     void Connect();
     /// 初始化ui
     void InitUi();
+public slots:
+    /// 停止发送“发送数据信号”
+    void StopSendDataSignal();
 private slots:
     void CycleTimerTimeout();
     /// 循环设置发送

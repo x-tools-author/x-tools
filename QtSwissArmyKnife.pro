@@ -24,13 +24,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-        src/ui/main.cpp \
+        src/main.cpp \
         src/ui/mainwindow.cpp \
     src/ui/common/outputwindow.cpp \
     src/ui/serialportwidget.cpp \
     src/ui/common/inputwindow.cpp \
     src/ui/common/senddatapanel.cpp \
-    src/SerialPort/SerialPortAssistant.cpp
+    src/SerialPort/SerialPortAssistant.cpp \
+    src/SAKApplication.cpp
 
 HEADERS += \
         src/ui/mainwindow.h \
@@ -38,7 +39,8 @@ HEADERS += \
     src/ui/serialportwidget.h \
     src/ui/common/inputwindow.h \
     src/ui/common/senddatapanel.h \
-    src/SerialPort/SerialPortAssistant.h
+    src/SerialPort/SerialPortAssistant.h \
+    src/SAKApplication.h
 
 FORMS += \
         src/ui/mainwindow.ui \
@@ -52,3 +54,4 @@ INCLUDEPATH += \
     src/ui/common \
     src/SerialPort
 
+include(QtSwissArmyKnifeConfigure.pri)

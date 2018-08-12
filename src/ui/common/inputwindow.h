@@ -23,6 +23,11 @@ private:
     Ui::InputWindow *ui;
     /// ------------------------------------------
 private slots:
+    /// 输入格式控制
+    void TextFormatControl();
+    /// 重置计数
+    void ResetCount();
+private slots:
     /// 读入文本数据
     void OpenFile();
 };

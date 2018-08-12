@@ -24,6 +24,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     /// 添加页
     this->AddTab();
+    /// 初始化菜单
+    InitMenu();
 }
 
 MainWindow::~MainWindow()
@@ -35,4 +37,15 @@ void MainWindow::AddTab()
 {
     /// 串口页
     this->mpTabWidget->addTab(new SerialPortWidget, tr("串口助手"));
+}
+
+void MainWindow::InitMenu()
+{
+    /// 文件菜单
+    QMenu *pFileMenu = new QMenu(tr("文件"));
+    menuBar()->addMenu(pFileMenu);
+
+    QAction *pExitAction = new QAction(tr("退出"));
+    pFileMenu->addAction(pExitAction);
+    connect(pExitAction, SIGNAL(triggered(bool)), this, SLOT(close()));
 }
