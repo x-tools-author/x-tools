@@ -27,7 +27,7 @@ SOURCES += \
         src/main.cpp \
         src/ui/mainwindow.cpp \
     src/ui/common/outputwindow.cpp \
-    src/ui/serialportwidget.cpp \
+    src/SerialPort/serialportwidget.cpp \
     src/ui/common/inputwindow.cpp \
     src/ui/common/senddatapanel.cpp \
     src/SerialPort/SerialPortAssistant.cpp \
@@ -36,7 +36,7 @@ SOURCES += \
 HEADERS += \
         src/ui/mainwindow.h \
     src/ui/common/outputwindow.h \
-    src/ui/serialportwidget.h \
+    src/SerialPort/serialportwidget.h \
     src/ui/common/inputwindow.h \
     src/ui/common/senddatapanel.h \
     src/SerialPort/SerialPortAssistant.h \
@@ -45,7 +45,7 @@ HEADERS += \
 FORMS += \
         src/ui/mainwindow.ui \
     src/ui/common/outputwindow.ui \
-    src/ui/serialportwidget.ui \
+    src/SerialPort/serialportwidget.ui \
     src/ui/common/inputwindow.ui \
     src/ui/common/senddatapanel.ui
 

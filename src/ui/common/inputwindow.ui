@@ -39,7 +39,7 @@
        <widget class="QLabel" name="label_bytes">
         <property name="styleSheet">
          <string notr="true">QLabel{
-	color:blue
+	color:blue;
 }</string>
         </property>
         <property name="text">
@@ -58,7 +58,7 @@
        <widget class="QLabel" name="label_frame">
         <property name="styleSheet">
          <string notr="true">QLabel{
-	color:blue
+	color:blue;
 }</string>
         </property>
         <property name="text">
