@@ -4,19 +4,19 @@
 
 #include "UdpClientAssistant.h"
 
-UupClientAssistant::UupClientAssistant(QObject *parent):
+UdpClientAssistant::UdpClientAssistant(QObject *parent):
     QThread(parent)
 {
     /// 一个神奇的操作
     moveToThread(this);
 }
 
-UupClientAssistant::~UupClientAssistant()
+UdpClientAssistant::~UdpClientAssistant()
 {
 
 }
 
-QByteArray UupClientAssistant::ReadAll()
+QByteArray UdpClientAssistant::ReadAll()
 {
     QByteArray datagram;
     while (mpUdpSocket->hasPendingDatagrams()){
@@ -27,7 +27,7 @@ QByteArray UupClientAssistant::ReadAll()
     return datagram;
 }
 
-qint64 UupClientAssistant::Write(QByteArray data, QString hostAddress, QString port)
+qint64 UdpClientAssistant::Write(QByteArray data, QString hostAddress, QString port)
 {
     qint64 ret = mpUdpSocket->writeDatagram(data, QHostAddress(hostAddress), quint16(port.toInt()));
     if (ret == -1){
@@ -39,10 +39,10 @@ qint64 UupClientAssistant::Write(QByteArray data, QString hostAddress, QString p
     return ret;
 }
 
-void UupClientAssistant::Open(QString hostAddress, QString port)
+void UdpClientAssistant::Open(QString hostAddress, QString port)
 {
     if (mpUdpSocket->isOpen()){
-        return;
+        mpUdpSocket->close();
     }else {
         if (port.isEmpty()){
             port = "0";
@@ -60,13 +60,13 @@ void UupClientAssistant::Open(QString hostAddress, QString port)
     }
 }
 
-void UupClientAssistant::Close()
+void UdpClientAssistant::Close()
 {
     mpUdpSocket->close();
     emit UdpSocketCloseSuccessfully();
 }
 
-void UupClientAssistant::run()
+void UdpClientAssistant::run()
 {
      mpUdpSocket = new QUdpSocket;
     /// 读就绪信号关联

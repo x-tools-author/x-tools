@@ -38,9 +38,13 @@ qint64 SerialportAssistant::Write(QByteArray data)
 bool SerialportAssistant::Open(QString portName, QString baudRate, QString dataBits, QString stopBits, QString parity)
 {
     if (mpSerialPort->isOpen()){
+#if 0
         OutputInfo("Serial port is open. Nothing to do!", "red");
         mErrorString = "Serial port is open. Nothing to do!";
         return false;
+#else
+        mpSerialPort->close();
+#endif
     }
 
     /// 设置串口名称

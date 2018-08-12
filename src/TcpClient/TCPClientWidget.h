@@ -1,5 +1,5 @@
-﻿#ifndef UDPCLIENTWIDGET_H
-#define UDPCLIENTWIDGET_H
+﻿#ifndef TCPCLIENTWIDGET_H
+#define TCPCLIENTWIDGET_H
 
 #include <QWidget>
 #include <QHBoxLayout>
@@ -13,25 +13,25 @@
 #include "outputwindow.h"
 #include "inputwindow.h"
 #include "senddatapanel.h"
-#include "UdpClientAssistant.h"
+#include "TCPClientAssistant.h"
 
 namespace Ui {
-class UdpClientWidget;
+class TcpClientWidget;
 }
 
-class UdpClientWidget : public QWidget
+class TcpClientWidget : public QWidget
 {
     Q_OBJECT
 public:
-    UdpClientWidget(QWidget *parent = Q_NULLPTR);
-    ~UdpClientWidget();
+    TcpClientWidget(QWidget *parent = Q_NULLPTR);
+    ~TcpClientWidget();
     /// -------------------------------------------------------
 private:
     /// 串口
-    UdpClientAssistant *mpUdpClientAssistant;
+    TcpClientAssistant *mpTcpClientAssistant;
     /// 串口状态
     bool mIsOpen = false;
-    Ui::UdpClientWidget *ui;
+    Ui::TcpClientWidget *ui;
     OutputWindow *mpOutputWindow;
     InputWindow *mpInputWindow;
     SendDataPanel *mpSendDataPanel;
@@ -53,8 +53,8 @@ signals:
     /// 关闭套接字
     void Need2Close();
     /// 外部关联该信号来打开套接字
-    void Need2Open(QString hostAddress, QString port);
+    void Need2Open(QString localhostAddress, QString LocalhostPort, QString serverAddress, QString serverPort);
     /// 需要发送数据
-    void Need2Write(QByteArray data, QString hostAddress, QString port);
+    void Need2Write(QByteArray data);
 };
 #endif

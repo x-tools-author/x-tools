@@ -2,19 +2,19 @@
 #pragma execution_character_set("utf-8")
 #endif
 
-#include "UdpClientAssistant.h"
-#include "UdpClientWidget.h"
-#include "ui_UdpClientWidget.h"
+#include "TCPClientAssistant.h"
+#include "TcpClientWidget.h"
+#include "ui_TcpClientWidget.h"
 
-UdpClientWidget::UdpClientWidget(QWidget *parent):
+TcpClientWidget::TcpClientWidget(QWidget *parent):
     QWidget(parent),
-    ui(new Ui::UdpClientWidget),
+    ui(new Ui::TcpClientWidget),
     mpOutputWindow(new OutputWindow),
     mpInputWindow(new InputWindow),
     mpSendDataPanel(new SendDataPanel),
-    mpUdpClientAssistant(new UdpClientAssistant)
+    mpTcpClientAssistant(new TcpClientAssistant)
 {
-    mpUdpClientAssistant->start();
+    mpTcpClientAssistant->start();
     /// 初始化UI
     ui->setupUi(this);
     QHBoxLayout *pOutputLayout = new QHBoxLayout;
@@ -35,28 +35,28 @@ UdpClientWidget::UdpClientWidget(QWidget *parent):
     InitHostAddress();
 }
 
-UdpClientWidget::~UdpClientWidget()
+TcpClientWidget::~TcpClientWidget()
 {
 
 }
 
-void UdpClientWidget::Connect()
+void TcpClientWidget::Connect()
 {
     /// 打开套接字/关闭套接字
     connect(ui->pushButton_open, SIGNAL(clicked(bool)), this, SLOT(Open()));
-    connect(this, SIGNAL(Need2Open(QString,QString)), mpUdpClientAssistant, SLOT(Open(QString,QString)));
-    connect(this, SIGNAL(Need2Close()), mpUdpClientAssistant, SLOT(Close()));
-    connect(mpUdpClientAssistant, SIGNAL(UdpSocketOpenSuccessfully()), this, SLOT(AfterUdpSocketOpen()));
-    connect(mpUdpClientAssistant, SIGNAL(UdpSocketCloseSuccessfully()), this, SLOT(AfterUdpSocketClose()));
+    connect(this, SIGNAL(Need2Open(QString,QString,QString,QString)), mpTcpClientAssistant, SLOT(Open(QString,QString,QString,QString)));
+    connect(this, SIGNAL(Need2Close()), mpTcpClientAssistant, SLOT(Close()));
+    connect(mpTcpClientAssistant, SIGNAL(TcpSocketOpenSuccessfully()), this, SLOT(AfterUdpSocketOpen()));
+    connect(mpTcpClientAssistant, SIGNAL(TcpSocketCloseSuccessfully()), this, SLOT(AfterUdpSocketClose()));
     /// 接收数据
-    connect(mpUdpClientAssistant, SIGNAL(NewDataHadBeenRead(QByteArray)), mpOutputWindow, SLOT(OutputData(QByteArray)));
+    connect(mpTcpClientAssistant, SIGNAL(NewDataHadBeenRead(QByteArray)), mpOutputWindow, SLOT(OutputData(QByteArray)));
     /// 发送数据
     connect(mpSendDataPanel, SIGNAL(Need2WriteData()), this, SLOT(Write()));
-    connect(this, SIGNAL(Need2Write(QByteArray, QString, QString)), mpUdpClientAssistant, SLOT(Write(QByteArray,QString,QString)));
+    connect(this, SIGNAL(Need2Write(QByteArray)), mpTcpClientAssistant, SLOT(Write(QByteArray)));
 
 }
 
-void UdpClientWidget::InitHostAddress()
+void TcpClientWidget::InitHostAddress()
 {
     QList <QHostAddress> addressList =  QNetworkInterface::allAddresses();
     foreach(QHostAddress address, addressList){
@@ -66,20 +66,23 @@ void UdpClientWidget::InitHostAddress()
     }
 }
 
-void UdpClientWidget::Open()
+void TcpClientWidget::Open()
 {
     if (mIsOpen){
         emit Need2Close();
     }else{
-        QString hostAddress = ui->comboBox_localAddress->currentText();
-        QString hostPort = ui->lineEdit_localPort->text();
-        emit Need2Open(hostAddress, hostPort);
+        QString localhostAddress = ui->comboBox_localAddress->currentText();
+        QString localhostPort = ui->lineEdit_localPort->text();
+        QString serverAddress = ui->lineEdit_peerAddress->text();
+        QString serverPort = ui->lineEdit_peerPort->text();
+
+        emit Need2Open(localhostAddress, localhostPort, serverAddress, serverPort);
     }
 }
 
-void UdpClientWidget::AfterUdpSocketClose()
+void TcpClientWidget::AfterUdpSocketClose()
 {
-    ui->pushButton_open->setText(tr("监听端口"));
+    ui->pushButton_open->setText(tr("连接服务器"));
     mpSendDataPanel->StopSendDataSignal();
 
     ui->comboBox_localAddress->setEnabled(true);
@@ -90,9 +93,9 @@ void UdpClientWidget::AfterUdpSocketClose()
     mIsOpen = false;
 }
 
-void UdpClientWidget::AfterUdpSocketOpen()
+void TcpClientWidget::AfterUdpSocketOpen()
 {
-    ui->pushButton_open->setText(tr("停止监听"));
+    ui->pushButton_open->setText(tr("断开连接"));
     ui->comboBox_localAddress->setEnabled(false);
     ui->lineEdit_localPort->setEnabled(false);
     ui->lineEdit_peerAddress->setEnabled(false);
@@ -101,11 +104,9 @@ void UdpClientWidget::AfterUdpSocketOpen()
     mIsOpen = true;
 }
 
-void UdpClientWidget::Write()
+void TcpClientWidget::Write()
 {
     QByteArray data = mpInputWindow->Data();
-    QString peerHostAddress = ui->lineEdit_peerAddress->text();
-    QString peerHostPort = ui->lineEdit_peerPort->text();
 
-    emit Need2Write(data, peerHostAddress, peerHostPort);
+    emit Need2Write(data);
 }

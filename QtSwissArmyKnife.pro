@@ -33,7 +33,9 @@ SOURCES += \
     src/SerialPort/SerialPortAssistant.cpp \
     src/SAKApplication.cpp \
     src/UdpClient/UdpClientAssistant.cpp \
-    src/UdpClient/UdpClientWidget.cpp
+    src/UdpClient/UdpClientWidget.cpp \
+    src/TcpClient/TCPClientAssistant.cpp \
+    src/TcpClient/TCPClientWidget.cpp
 
 HEADERS += \
         src/ui/mainwindow.h \
@@ -44,7 +46,9 @@ HEADERS += \
     src/SerialPort/SerialPortAssistant.h \
     src/SAKApplication.h \
     src/UdpClient/UdpClientAssistant.h \
-    src/UdpClient/UdpClientWidget.h
+    src/UdpClient/UdpClientWidget.h \
+    src/TcpClient/TCPClientAssistant.h \
+    src/TcpClient/TCPClientWidget.h
 
 FORMS += \
         src/ui/mainwindow.ui \
@@ -52,12 +56,14 @@ FORMS += \
     src/SerialPort/serialportwidget.ui \
     src/ui/common/inputwindow.ui \
     src/ui/common/senddatapanel.ui \
-    src/UdpClient/UdpClientWidget.ui
+    src/UdpClient/UdpClientWidget.ui \
+    src/TcpClient/TCPClientWidget.ui
 
 INCLUDEPATH += \
     src/ui \
     src/ui/common \
     src/SerialPort \
-    src/UdpClient
+    src/UdpClient \
+    src/TcpClient
 
 include(QtSwissArmyKnifeConfigure.pri)

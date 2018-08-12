@@ -7,6 +7,7 @@
 
 #include "serialportwidget.h"
 #include "UdpClientWidget.h"
+#include "TCPClientWidget.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -40,6 +41,8 @@ void MainWindow::AddTab()
     this->mpTabWidget->addTab(new SerialPortWidget, tr("串口助手"));
     /// udp
     this->mpTabWidget->addTab(new UdpClientWidget, tr("UDP客户端"));
+    /// tcp 客户端
+    this->mpTabWidget->addTab(new TcpClientWidget, tr("TCP客户端"));
 }
 
 void MainWindow::InitMenu()
