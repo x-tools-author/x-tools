@@ -38,8 +38,6 @@ qint64 TcpClientAssistant::Write(QByteArray data)
 
 void TcpClientAssistant::Open(QString localhostAddress, QString LocalhostPort, QString serverAddress, QString serverPort)
 {
-    qDebug() << __FILE__ << __LINE__;
-
     if (mpTcpSocket->isOpen()){
         mpTcpSocket->close();
     }else {
@@ -49,7 +47,6 @@ void TcpClientAssistant::Open(QString localhostAddress, QString LocalhostPort, Q
 
         if (mpTcpSocket->bind(QHostAddress(localhostAddress), quint16(LocalhostPort.toInt()))){
             mpTcpSocket->connectToHost(QHostAddress(serverAddress), quint16(serverPort.toInt()));
-            qDebug() << __FILE__ << __LINE__;
             if (mpTcpSocket->waitForConnected()){
                 if (mpTcpSocket->open(QTcpSocket::ReadWrite)){
                     emit TcpSocketOpenSuccessfully();
@@ -62,7 +59,6 @@ void TcpClientAssistant::Open(QString localhostAddress, QString LocalhostPort, Q
         }else {
             qWarning() << tr("指定本地地址和端口失败：") << mpTcpSocket->errorString();
         }
-        qDebug() << __FILE__ << __LINE__;
     }
 }
 

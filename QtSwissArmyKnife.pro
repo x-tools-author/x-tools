@@ -35,7 +35,10 @@ SOURCES += \
     src/UdpClient/UdpClientAssistant.cpp \
     src/UdpClient/UdpClientWidget.cpp \
     src/TcpClient/TCPClientAssistant.cpp \
-    src/TcpClient/TCPClientWidget.cpp
+    src/TcpClient/TCPClientWidget.cpp \
+    src/TcpServer/TCPServerAssistant.cpp \
+    src/TcpServer/TCPServerWidget.cpp \
+    src/ui/console/console.cpp
 
 HEADERS += \
         src/ui/mainwindow.h \
@@ -48,7 +51,10 @@ HEADERS += \
     src/UdpClient/UdpClientAssistant.h \
     src/UdpClient/UdpClientWidget.h \
     src/TcpClient/TCPClientAssistant.h \
-    src/TcpClient/TCPClientWidget.h
+    src/TcpClient/TCPClientWidget.h \
+    src/TcpServer/TCPServerAssistant.h \
+    src/TcpServer/TCPServerWidget.h \
+    src/ui/console/console.h
 
 FORMS += \
         src/ui/mainwindow.ui \
@@ -57,13 +63,16 @@ FORMS += \
     src/ui/common/inputwindow.ui \
     src/ui/common/senddatapanel.ui \
     src/UdpClient/UdpClientWidget.ui \
-    src/TcpClient/TCPClientWidget.ui
+    src/TcpClient/TCPClientWidget.ui \
+    src/TcpServer/TCPServerWidget.ui \
+    src/ui/console/console.ui
 
 INCLUDEPATH += \
     src/ui \
     src/ui/common \
     src/SerialPort \
     src/UdpClient \
-    src/TcpClient
+    src/TcpClient \
+    src/TcpServer
 
 include(QtSwissArmyKnifeConfigure.pri)
