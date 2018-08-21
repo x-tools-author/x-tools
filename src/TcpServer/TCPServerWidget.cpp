@@ -101,7 +101,7 @@ void TcpServerWidget::AfterUdpSocketClose()
 
 void TcpServerWidget::AfterUdpSocketOpen()
 {
-    ui->pushButton_open->setText(tr("断开连接"));
+    ui->pushButton_open->setText(tr("关闭服务器"));
     ui->comboBox_localAddress->setEnabled(false);
     ui->lineEdit_localPort->setEnabled(false);
 

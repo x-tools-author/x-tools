@@ -29,28 +29,28 @@ void SAKAppMsgOutput(QtMsgType type, const QMessageLogContext &context, const QS
     info.remove("\"");
     switch (type) {
     case QtDebugMsg:
-        info = "[D ]" + info;
+        info = "[D] " + info;
         pConsole->OutputInfo(info);
         break;
     case QtInfoMsg:
-        info = "[I ]" + info;
+        info = "[I] " + info;
         pConsole->OutputInfo(info);
         break;
     case QtWarningMsg:
-        info = "[W ]" + info;
+        info = "[W] " + info;
         pConsole->OutputInfo(QString("<font color=red>%1</font>").arg(info));
         break;
     case QtCriticalMsg:
-        info = "[C ]" + info;
+        info = "[C] " + info;
         pConsole->OutputInfo(QString("<font color=red>%1</font>").arg(info));
         break;
     case QtFatalMsg:
-        info = "[F ]" + info;
+        info = "[F] " + info;
         pConsole->OutputInfo(QString("<font color=red>%1</font>").arg(info));
         abort();
         break;
     default:
-        info = "[? ]" + info;
+        info = "[?] " + info;
         pConsole->OutputInfo(QString("<font color=red>%1</font>").arg(info));
         break;
     }

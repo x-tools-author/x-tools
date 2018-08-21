@@ -10,28 +10,28 @@
 #pragma execution_character_set("utf-8")
 #endif
 
-#include "SerialPortAssistant.h"
+#include "SerialportSAKIODevice.h"
 
-SerialportAssistant::SerialportAssistant(QObject *parent):
-    QThread(parent)
+SerialportSAKIODevice::SerialportSAKIODevice(SAKDeviceType deviceType, QObject *parent):
+    SAKIODevice(deviceType, parent)
 {
     /// 一个神奇的操作
     moveToThread(this);
 }
 
-SerialportAssistant::~SerialportAssistant()
+SerialportSAKIODevice::~SerialportSAKIODevice()
 {
 
 }
 
-QByteArray SerialportAssistant::ReadAll()
+QByteArray SerialportSAKIODevice::ReadAll()
 {
     QByteArray data = mpSerialPort->readAll();
     emit NewDataHadBeenRead(data);
     return data;
 }
 
-qint64 SerialportAssistant::Write(QByteArray data)
+qint64 SerialportSAKIODevice::Write(QByteArray data)
 {
     qint64 ret = mpSerialPort->write(data);
     if (ret == -1){
@@ -43,7 +43,7 @@ qint64 SerialportAssistant::Write(QByteArray data)
     return ret;
 }
 
-bool SerialportAssistant::Open(QString portName, QString baudRate, QString dataBits, QString stopBits, QString parity)
+void SerialportSAKIODevice::open(QString portName, QString baudRate, QString dataBits, QString stopBits, QString parity)
 {
     if (mpSerialPort->isOpen()){
 #if 0
@@ -63,7 +63,7 @@ bool SerialportAssistant::Open(QString portName, QString baudRate, QString dataB
     if (!isOK){
         OutputInfo("Invalid baud rate!", "red");
         mErrorString = "Invalid baud rate!";
-        return false;
+        return;
     }
     /// 设置数据位
     if (dataBits.compare("8") == 0){
@@ -77,24 +77,19 @@ bool SerialportAssistant::Open(QString portName, QString baudRate, QString dataB
     }else{
         OutputInfo("Invalid baud rate!", "red");
         mErrorString = "Invalid baud rate!";
-        return false;
+        return;
     }
     /// 设置停止位
     if (stopBits.compare("1") == 0){
         mpSerialPort->setStopBits(QSerialPort::OneStop);
-    }
-#ifdef Q_OS_WIN ///
-    /// This is only for the Windows platform.
-    else if (stopBits.compare("1.5") == 0){
+    }else if (stopBits.compare("1.5") == 0){
         mpSerialPort->setStopBits(QSerialPort::OneAndHalfStop);
-    }
-#endif
-    else if (stopBits.compare("2") == 0){
+    }else if (stopBits.compare("2") == 0){
         mpSerialPort->setStopBits(QSerialPort::TwoStop);
     }else {
         OutputInfo("Invalid stop bits!", "red");
         mErrorString = "Invalid stop bits!";
-        return false;
+        return;
     }
     /// 设置奇偶校验位
     if (parity.compare("NoParity") == 0){
@@ -110,25 +105,26 @@ bool SerialportAssistant::Open(QString portName, QString baudRate, QString dataB
     }else {
         OutputInfo("Invalid parity!", "red");
         mErrorString = "Invalid parity!";
-        return false;
+        return;
     }
     /// 打开串口
     if (mpSerialPort->open(QSerialPort::ReadWrite)){
-        emit SerialPortOpenSuccessfully();
-        return true;
+        emit afterDeviceOpen();
+        qDebug() << isOpen();
+        return;
     }else{
         mErrorString = mpSerialPort->errorString();
-        return false;
+        return;
     }
 }
 
-void SerialportAssistant::Close()
+void SerialportSAKIODevice::close()
 {
     mpSerialPort->close();
-    emit SerialPortCloseSuccessfully();
+    emit afterDeviceClose();
 }
 
-void SerialportAssistant::run()
+void SerialportSAKIODevice::run()
 {
      mpSerialPort = new QSerialPort;
     /// 读就绪信号关联

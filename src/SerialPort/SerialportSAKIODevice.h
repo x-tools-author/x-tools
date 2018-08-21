@@ -6,26 +6,27 @@
 *
 * Copyright (C) 2018-2018 wuhai persionnal. All rights reserved.
 *******************************************************************************/
-#ifndef SERIALPORTASSISTANT_H
-#define SERIALPORTASSISTANT_H
+#ifndef SERIALPORTSAKIODEVICE_H
+#define SERIALPORTSAKIODEVICE_H
 
 #include <QSerialPort>
 #include <QThread>
 #include <QDebug>
 
-class SerialportAssistant : public QThread
+#include "SAKIODevice.h"
+
+class SerialportSAKIODevice : public SAKIODevice
 {
     Q_OBJECT
 public:
-    SerialportAssistant(QObject *parent = Q_NULLPTR);
-    ~SerialportAssistant();
+    SerialportSAKIODevice(SAKDeviceType deviceType = SAKDeviceSerialport, QObject *parent = Q_NULLPTR);
+    ~SerialportSAKIODevice();
     /// -------------------------------------------------
-    QString ErrorString(){return mErrorString;}
+    virtual bool isOpen(){return mpSerialPort->isOpen();}
+    virtual QString errorString(){return mpSerialPort->errorString();}
 public slots:
-    /// 关闭串口
-    void Close();
-    /// 打开串口
-    bool Open(QString portName, QString baudRate, QString dataBits, QString stopBits, QString parity);
+    virtual void close();
+    virtual void open(QString portName, QString baudRate, QString dataBits, QString stopBits, QString parity);
     /// 读取串口数据
     QByteArray ReadAll();
     /// 向串口发送数据,data位需要发送的数据

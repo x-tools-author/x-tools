@@ -10,6 +10,9 @@
 #define CONSOLE_H
 
 #include <QWidget>
+#include <QTextStream>
+#include <QFileDialog>
+#include <QDebug>
 
 namespace Ui{
 class Console;
@@ -26,6 +29,9 @@ public:
     static Console *_console;
 private:
     Ui::Console *ui;
+
+private slots:
+    void SaveConsoleOutput2File();
 };
 
 Console *appConsole();

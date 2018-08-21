@@ -5,10 +5,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include "serialportwidget.h"
 #include "UdpClientWidget.h"
 #include "TCPClientWidget.h"
 #include "TCPServerWidget.h"
+
+#include "SerialportSAKIODeviceWidget.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -37,7 +38,10 @@ MainWindow::~MainWindow()
 void MainWindow::AddTab()
 {
     /// 串口页
-    this->mpTabWidget->addTab(new SerialPortWidget, tr("串口助手"));
+    SerialportSAKIODevice *serialportDevice = new SerialportSAKIODevice;
+    this->mpTabWidget->addTab(new SerialportSAKIODeviceWidget(serialportDevice, new SerialportSAKIODeviceControler), tr("串口助手"));
+    serialportDevice->start();
+
     /// udp
     this->mpTabWidget->addTab(new UdpClientWidget, tr("UDP客户端"));
     /// tcp 客户端
@@ -86,7 +90,7 @@ void MainWindow::About()
                        .arg(tr("编译时间")).arg(QString(__DATE__) + " " + QString(__TIME__))
                        .arg(tr("软件作者")).arg(tr("不想敲代码的程序员"))
                        .arg(tr("联系邮箱")).arg("wh19931117@126.com")
-                       .arg(tr("软件定做")).arg(tr("业余软件定做，质量高，价格低，详情联系wh19931117@126.com")));
+                       .arg(tr("软件定做")).arg(tr("软件定做，质量高，价格低，详情联系wh19931117@126.com")));
 
 }
 
