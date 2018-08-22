@@ -39,10 +39,12 @@ public slots:
 protected:
     virtual void run(){}
 signals:
-    void afterDeviceOpen();
-    void afterDeviceClose();
+    void deviceOpenSuccessfully();
+    void deviceCloseSuccessfully();
 
     void bytesRead(QByteArray data);
+    void bytesWritten(qint64);
+    void errorStr(QString errorStr);
 };
 
 #endif

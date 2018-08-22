@@ -30,22 +30,21 @@ public:
     ~SAKIODeviceWidget();
 
     void setCustomControler(SAKIODeviceControler *controler);
-    void setState(bool _deviceIsOpen){deviceIsOpen = _deviceIsOpen;}
-    /// 设备状态：打开或者关闭（打开状态标识设备就绪，否则标识设备未可用！）
-    bool state(){return deviceIsOpen;}
 private:
     SAKIODevice *device;
     SAKIODeviceControler *controler;
     QHBoxLayout *customControlerLayout;
-    bool deviceIsOpen;
     QTimer  *cycleTimer;
     Ui::SAKIODeviceWidget *ui;
     ///----------------------------------------------------------------
+    void initUI();
     QByteArray dataBytes();
     void Connect();
 private slots:
-    void openOrClose();
+    void outputTimeInfoCheckBoxClicked(bool checked);
+    void outputReceiveDataOnlyCheckBoxClicked(bool cheaked);
 
+    void openOrClose();
     void open(){emit need2open();}
     void close(){emit need2close();}
     void refresh(){emit need2refresh();}
@@ -54,12 +53,17 @@ private slots:
     void afterDeviceClose();
 
     void cycleTimerTimeout();
-    void CheckedBoxCycleClicked(bool checked);
+    void checkedBoxCycleClicked(bool checked);
 
-    void outputInfo(QString info, QString color = "black", bool prefix = false);
+    void outputInfo(QString info, QString color = "black", bool prefix = true);
+    void outputErrorString(QString str);
 
     void bytesRead(QByteArray data);
+    void bytesWritten(qint64 bytes);
     void writeBytes();
+
+    void resetSendDataCount();
+    void resetReceiveDataCount();
 signals:
     void need2writeBytes(QByteArray data);
     void need2open();

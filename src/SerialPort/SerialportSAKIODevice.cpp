@@ -11,6 +11,7 @@
 #endif
 
 #include "SerialportSAKIODevice.h"
+#include <QApplication>
 
 SerialportSAKIODevice::SerialportSAKIODevice(SAKDeviceType deviceType, QObject *parent):
     SAKIODevice(deviceType, parent)
@@ -27,20 +28,19 @@ SerialportSAKIODevice::~SerialportSAKIODevice()
 QByteArray SerialportSAKIODevice::ReadAll()
 {
     QByteArray data = mpSerialPort->readAll();
-    emit NewDataHadBeenRead(data);
+    emit bytesRead(data);
     return data;
 }
 
-qint64 SerialportSAKIODevice::Write(QByteArray data)
+void SerialportSAKIODevice::writeBytes(QByteArray data)
 {
     qint64 ret = mpSerialPort->write(data);
     if (ret == -1){
-        mErrorString = mpSerialPort->errorString();
+        qWarning() << "Write data failed:" << mpSerialPort->errorString();
     }else {
         mErrorString = "No error!";
-        emit NewDataHadBeenWrite(data);
+        emit bytesWritten(ret);
     }
-    return ret;
 }
 
 void SerialportSAKIODevice::open(QString portName, QString baudRate, QString dataBits, QString stopBits, QString parity)
@@ -109,11 +109,12 @@ void SerialportSAKIODevice::open(QString portName, QString baudRate, QString dat
     }
     /// 打开串口
     if (mpSerialPort->open(QSerialPort::ReadWrite)){
-        emit afterDeviceOpen();
+        emit deviceOpenSuccessfully();
         qDebug() << isOpen();
         return;
     }else{
-        mErrorString = mpSerialPort->errorString();
+        QApplication::beep();
+        emit errorStr(mpSerialPort->errorString());
         return;
     }
 }
@@ -121,7 +122,7 @@ void SerialportSAKIODevice::open(QString portName, QString baudRate, QString dat
 void SerialportSAKIODevice::close()
 {
     mpSerialPort->close();
-    emit afterDeviceClose();
+    emit deviceCloseSuccessfully();
 }
 
 void SerialportSAKIODevice::run()

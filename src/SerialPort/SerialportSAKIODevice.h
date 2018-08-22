@@ -27,10 +27,8 @@ public:
 public slots:
     virtual void close();
     virtual void open(QString portName, QString baudRate, QString dataBits, QString stopBits, QString parity);
-    /// 读取串口数据
+    virtual void writeBytes(QByteArray data);
     QByteArray ReadAll();
-    /// 向串口发送数据,data位需要发送的数据
-    qint64 Write(QByteArray data);
 protected:
     void run();
 private:
@@ -45,10 +43,6 @@ signals:
     void SerialPortCloseSuccessfully();
     /// 串口打开成功后发射该信号
     void SerialPortOpenSuccessfully();
-    /// 读到的数据后发射该信息
-    void NewDataHadBeenRead(QByteArray data);
-    /// 发送一帧数据后，发射该信号，data为已发送的数据
-    void NewDataHadBeenWrite(QByteArray data);
     /// 外部程序关联该信号，可以获取需要输出的信息
     void Need2OutputInfo(QString info, QString color = "black", bool prefix = true);
 };
