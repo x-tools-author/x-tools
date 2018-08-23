@@ -25,6 +25,7 @@ public slots:
 signals:
     void need2open(QString portName, QString baudRate, QString dataBits, QString stopBits, QString parity);
     void need2open(QString hostAddress, QString hostPort, QString peerAddress, QString peerPort);
+    void need2open(QString hostAddress, QString hostPort);
 };
 
 #endif

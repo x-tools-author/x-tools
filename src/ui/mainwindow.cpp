@@ -5,11 +5,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include "UdpClientWidget.h"
 #include "TCPClientWidget.h"
 #include "TCPServerWidget.h"
 
 #include "SerialportSAKIODeviceWidget.h"
+#include "UdpSAKIODeviceWidget.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -42,8 +42,11 @@ void MainWindow::AddTab()
     this->mpTabWidget->addTab(new SerialportSAKIODeviceWidget(serialportDevice, new SerialportSAKIODeviceControler), tr("串口助手"));
     serialportDevice->start();
 
-    /// udp
-    this->mpTabWidget->addTab(new UdpClientWidget, tr("UDP客户端"));
+    /// udp客户端
+    UdpSAKIODevice *udpDevice = new UdpSAKIODevice;
+    this->mpTabWidget->addTab(new UdpSAKIODeviceWidget(udpDevice, new UdpSAKIODeviceControler), tr("UDP客户端"));
+    udpDevice->start();
+
     /// tcp 客户端
     this->mpTabWidget->addTab(new TcpClientWidget, tr("TCP客户端"));
     /// tcp 服务器

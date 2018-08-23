@@ -45,6 +45,8 @@ signals:
     void bytesRead(QByteArray data);
     void bytesWritten(qint64);
     void errorStr(QString errorStr);
+
+    void peerHostInfo(QString host, quint16 port);
 };
 
 #endif

@@ -100,7 +100,8 @@ void SAKIODeviceWidget::Connect()
     connect(ui->pushButtonOpen, SIGNAL(clicked(bool)), this, SLOT(openOrClose()));
     connect(this, SIGNAL(need2open()), controler, SLOT(open()));
     connect(this, SIGNAL(need2close()), device, SLOT(close()));
-    connect(controler, SIGNAL(need2open(QString,QString,QString,QString)), device, SLOT(open(QString,QString,QString,QString,QString)));
+    connect(controler, SIGNAL(need2open(QString,QString)), device, SLOT(open(QString,QString)));
+    connect(controler, SIGNAL(need2open(QString,QString,QString,QString)), device, SLOT(open(QString,QString,QString,QString)));
     connect(controler, SIGNAL(need2open(QString,QString,QString,QString,QString)), device, SLOT(open(QString,QString,QString,QString,QString)));
     connect(device, SIGNAL(deviceOpenSuccessfully()), this, SLOT(afterDeviceOpen()));
     connect(device, SIGNAL(deviceCloseSuccessfully()), this, SLOT(afterDeviceClose()));
