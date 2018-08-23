@@ -38,7 +38,6 @@ void SerialportSAKIODevice::writeBytes(QByteArray data)
     if (ret == -1){
         qWarning() << "Write data failed:" << mpSerialPort->errorString();
     }else {
-        mErrorString = "No error!";
         emit bytesWritten(ret);
     }
 }
@@ -61,8 +60,7 @@ void SerialportSAKIODevice::open(QString portName, QString baudRate, QString dat
     bool isOK = false;
     mpSerialPort->setBaudRate(qint32(baudRate.toInt(&isOK, 10)));
     if (!isOK){
-        OutputInfo("Invalid baud rate!", "red");
-        mErrorString = "Invalid baud rate!";
+        emit Need2OutputInfo("Invalid baud rate!", "red");
         return;
     }
     /// 设置数据位
@@ -75,8 +73,7 @@ void SerialportSAKIODevice::open(QString portName, QString baudRate, QString dat
     }else if (dataBits.compare("5") == 0){
         mpSerialPort->setDataBits(QSerialPort::Data5);
     }else{
-        OutputInfo("Invalid baud rate!", "red");
-        mErrorString = "Invalid baud rate!";
+        emit Need2OutputInfo("Invalid baud rate!", "red");
         return;
     }
     /// 设置停止位
@@ -87,8 +84,7 @@ void SerialportSAKIODevice::open(QString portName, QString baudRate, QString dat
     }else if (stopBits.compare("2") == 0){
         mpSerialPort->setStopBits(QSerialPort::TwoStop);
     }else {
-        OutputInfo("Invalid stop bits!", "red");
-        mErrorString = "Invalid stop bits!";
+        emit Need2OutputInfo("Invalid stop bits!", "red");
         return;
     }
     /// 设置奇偶校验位
@@ -103,14 +99,13 @@ void SerialportSAKIODevice::open(QString portName, QString baudRate, QString dat
     }else if (parity.compare("MarkParity") == 0){
         mpSerialPort->setParity(QSerialPort::MarkParity);
     }else {
-        OutputInfo("Invalid parity!", "red");
-        mErrorString = "Invalid parity!";
+        emit Need2OutputInfo("Invalid parity!", "red");
         return;
     }
     /// 打开串口
     if (mpSerialPort->open(QSerialPort::ReadWrite)){
         emit deviceOpenSuccessfully();
-        qDebug() << isOpen();
+        qInfo() << "Serialport opened successfully!";
         return;
     }else{
         QApplication::beep();
@@ -123,6 +118,7 @@ void SerialportSAKIODevice::close()
 {
     mpSerialPort->close();
     emit deviceCloseSuccessfully();
+    qInfo() << "Serialport closed successfully!";
 }
 
 void SerialportSAKIODevice::run()

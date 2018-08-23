@@ -41,6 +41,10 @@ private:
     QByteArray dataBytes();
     void Connect();
 private slots:
+    void openFile();
+    void saveOutputData();
+    void textFormatControl();
+
     void outputTimeInfoCheckBoxClicked(bool checked);
     void outputReceiveDataOnlyCheckBoxClicked(bool cheaked);
 

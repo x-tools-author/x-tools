@@ -13,6 +13,8 @@
 #include <QDateTime>
 #include <QIntValidator>
 #include <QScrollBar>
+#include <QFileDialog>
+#include <QTextStream>
 
 #include "SAKIODeviceWidget.h"
 
@@ -109,6 +111,9 @@ void SAKIODeviceWidget::Connect()
     connect(cycleTimer, SIGNAL(timeout()), this, SLOT(cycleTimerTimeout()));
     connect(ui->checkBoxCycle, SIGNAL(clicked(bool)), this, SLOT(checkedBoxCycleClicked(bool)));
     connect(device, SIGNAL(errorStr(QString)), this, SLOT(outputErrorString(QString)));
+    connect(ui->textEditInputData, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
+    connect(ui->pushButtonReadInFile, SIGNAL(clicked(bool)), this, SLOT(openFile()));
+    connect(ui->pushButtonSaveOutput, SIGNAL(clicked(bool)), this, SLOT(saveOutputData()));
 
     connect(ui->checkBoxOutputTime, SIGNAL(clicked(bool)), this, SLOT(outputTimeInfoCheckBoxClicked(bool)));
     connect(ui->checkBoxOutputReceiveDataOnly, SIGNAL(clicked(bool)), this, SLOT(outputReceiveDataOnlyCheckBoxClicked(bool)));
@@ -205,9 +210,109 @@ void SAKIODeviceWidget::cycleTimerTimeout()
 
 QByteArray SAKIODeviceWidget::dataBytes()
 {
-    QByteArray data = "hello world!";
+    QByteArray data;
+
+    QString str = ui->textEditInputData->toPlainText();
+    if (str.isEmpty()){
+        str = "(null)";
+        data = str.toLatin1();
+        return data;
+    }
+
+    if (ui->radioButtonBinInput->isChecked()){
+        QStringList strList = str.split(' ');
+        foreach (QString str, strList){
+            data.append((uint8_t)QString(str).toInt(NULL, 2));
+        }
+    }else if (ui->radioButtonOctInput->isChecked()){
+        QStringList strList = str.split(' ');
+        foreach (QString str, strList){
+            data.append((uint8_t)QString(str).toInt(NULL, 8));
+        }
+    }else if (ui->radioButtonDecInput->isChecked()){
+        QStringList strList = str.split(' ');
+        foreach (QString str, strList){
+            data.append((uint8_t)QString(str).toInt(NULL, 10));
+        }
+    }else if (ui->radioButtonHexInput->isChecked()){
+        QStringList strList = str.split(' ');
+        foreach (QString str, strList){
+            data.append((uint8_t)QString(str).toInt(NULL, 16));
+        }
+    }else if (ui->radioButtonAsciiInput->isChecked()){
+        data = ui->textEditInputData->toPlainText().toLatin1();
+    }else if (ui->radioButtonUtf8Input->isChecked()){
+        data = ui->textEditInputData->toPlainText().toLocal8Bit();
+    }else {
+        qWarning() << tr("未知输入各式！");
+    }
 
     return data;
+}
+
+void SAKIODeviceWidget::textFormatControl()
+{
+    disconnect(ui->textEditInputData, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
+    QString plaintext = ui->textEditInputData->toPlainText();
+    if (plaintext.isEmpty()){
+        connect(ui->textEditInputData, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
+        return;
+    }else {
+        if (ui->radioButtonBinInput->isChecked()){  /// 二进制输入
+            QString strTemp;
+            plaintext.remove(QRegExp("[^0-1]"));
+            for (int i = 0; i < plaintext.length(); i++){
+                if ((i != 0) && (i % 8 == 0)){
+                    strTemp.append(QChar(' '));
+                }
+                strTemp.append(plaintext.at(i));
+            }
+            ui->textEditInputData->setText(strTemp);
+            ui->textEditInputData->moveCursor(QTextCursor::End);
+        }else if(ui->radioButtonOctInput->isChecked()) { /// 八进制输入
+            QString strTemp;
+            plaintext.remove(QRegExp("[^0-7]"));
+            for (int i = 0; i < plaintext.length(); i++){
+                if ((i != 0) && (i % 2 == 0)){
+                    strTemp.append(QChar(' '));
+                }
+                strTemp.append(plaintext.at(i));
+            }
+            ui->textEditInputData->setText(strTemp);
+            ui->textEditInputData->moveCursor(QTextCursor::End);
+        }else if(ui->radioButtonDecInput->isChecked()) { /// 十进制
+            QString strTemp;
+            plaintext.remove(QRegExp("[^0-9]"));
+            for (int i = 0; i < plaintext.length(); i++){
+                if ((i != 0) && (i % 2 == 0)){
+                    strTemp.append(QChar(' '));
+                }
+                strTemp.append(plaintext.at(i));
+            }
+            ui->textEditInputData->setText(strTemp);
+            ui->textEditInputData->moveCursor(QTextCursor::End);
+        }else if(ui->radioButtonHexInput->isChecked()) { /// 十六进制
+            QString strTemp;
+            plaintext.remove(QRegExp("[^0-9a-fA-F]"));
+            for (int i = 0; i < plaintext.length(); i++){
+                if ((i != 0) && (i % 2 == 0)){
+                    strTemp.append(QChar(' '));
+                }
+                strTemp.append(plaintext.at(i));
+            }
+            ui->textEditInputData->setText(strTemp.toUpper());
+            ui->textEditInputData->moveCursor(QTextCursor::End);
+        }else if(ui->radioButtonAsciiInput->isChecked()) { /// ascii
+            plaintext.remove(QRegExp("[^\u0021-\u007E]"));
+            ui->textEditInputData->setText(plaintext);
+            ui->textEditInputData->moveCursor(QTextCursor::End);
+        }else if(ui->radioButtonUtf8Input->isChecked()) {    /// utf-8
+
+        }else {
+            qWarning() << tr("未知输入选项！");
+        }
+    }
+    connect(ui->textEditInputData, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
 }
 
 void SAKIODeviceWidget::bytesRead(QByteArray data)
@@ -264,17 +369,46 @@ void SAKIODeviceWidget::bytesRead(QByteArray data)
     }
 
     if (ui->checkBoxOutputReceiveDataOnly->isChecked()){
+        /**
+         * 以下这种追加文本的方式存在问题，在文本较多，追加频繁时，界面卡顿。
+         **/
         if (!ui->textBrowserOutputData->toPlainText().isEmpty()){
             str = ui->textBrowserOutputData->toPlainText() + " " + str;
         }
-        ui->textBrowserOutputData->setText(str);
-
+        ui->textBrowserOutputData->setText(QString("<font color=blue>%1</font>").arg(str));
+        ui->textBrowserOutputData->verticalScrollBar()->setSliderPosition(ui->textBrowserOutputData->verticalScrollBar()->maximum());
     }else {
         ui->textBrowserOutputData->append(str);
     }
-#if 0
-    ui->textBrowserOutputData->verticalScrollBar()->setSliderPosition(ui->textBrowserOutputData->verticalScrollBar()->maximum());
-#endif
+}
+
+void SAKIODeviceWidget::openFile()
+{
+    QString fileName = QFileDialog::getOpenFileName(this, tr("打开文件"));
+    if (!fileName.isEmpty()){
+        QFile file(fileName);
+        if(file.open(QFile::ReadOnly)){
+            QByteArray data = file.readAll();
+            ui->textEditInputData->setText(QString(data).toUtf8());
+            file.close();
+        }else{
+            qWarning() << QString("%1 %2").arg(tr("无法打开文件")).arg(fileName);
+        }
+    }
+}
+
+void SAKIODeviceWidget::saveOutputData()
+{
+    QString outFileName = QFileDialog::getSaveFileName();
+    QFile outFile(outFileName);
+
+    outFile.open(QIODevice::WriteOnly|QIODevice::Text);
+
+    QTextStream outStream(&outFile);
+    outStream << ui->textBrowserOutputData->toPlainText();
+
+    outFile.flush();
+    outFile.close();
 }
 
 void SAKIODeviceWidget::bytesWritten(qint64 bytes)

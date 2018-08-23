@@ -450,7 +450,7 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>10</string>
+            <string>1000</string>
            </property>
           </widget>
          </item>
@@ -491,7 +491,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>212</x>
-     <y>595</y>
+     <y>631</y>
     </hint>
     <hint type="destinationlabel">
      <x>318</x>
@@ -506,12 +506,108 @@
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>187</x>
-     <y>365</y>
+     <x>212</x>
+     <y>463</y>
     </hint>
     <hint type="destinationlabel">
      <x>332</x>
      <y>369</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButtonBinInput</sender>
+   <signal>clicked()</signal>
+   <receiver>textEditInputData</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>88</x>
+     <y>523</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>270</x>
+     <y>524</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButtonOctInput</sender>
+   <signal>clicked()</signal>
+   <receiver>textEditInputData</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>200</x>
+     <y>529</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>309</x>
+     <y>524</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButtonDecInput</sender>
+   <signal>clicked()</signal>
+   <receiver>textEditInputData</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>86</x>
+     <y>545</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>306</x>
+     <y>545</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButtonHexInput</sender>
+   <signal>clicked()</signal>
+   <receiver>textEditInputData</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>202</x>
+     <y>544</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>294</x>
+     <y>545</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButtonAsciiInput</sender>
+   <signal>clicked()</signal>
+   <receiver>textEditInputData</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>81</x>
+     <y>563</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>294</x>
+     <y>568</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButtonUtf8Input</sender>
+   <signal>clicked()</signal>
+   <receiver>textEditInputData</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>172</x>
+     <y>568</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>306</x>
+     <y>568</y>
     </hint>
    </hints>
   </connection>

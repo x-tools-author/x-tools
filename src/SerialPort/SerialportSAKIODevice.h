@@ -32,12 +32,8 @@ public slots:
 protected:
     void run();
 private:
-    /// 错误信息描述
-    QString mErrorString = "No error!";
     /// 串口
     QSerialPort *mpSerialPort;
-    /// 输出信息，color为输出文本要显示的颜色，prefix决定显示信息是是否显示日期时间前缀.
-    void OutputInfo(QString info, QString color = "black", bool prefix = true){emit Need2OutputInfo(info, color, prefix);}
 signals:
     /// 串口关闭成功
     void SerialPortCloseSuccessfully();
