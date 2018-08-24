@@ -28,6 +28,7 @@ public slots:
     virtual void close();
     virtual void open(QString portName, QString baudRate, QString dataBits, QString stopBits, QString parity);
     virtual void writeBytes(QByteArray data);
+
     QByteArray ReadAll();
 protected:
     void run();

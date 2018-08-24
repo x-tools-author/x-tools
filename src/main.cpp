@@ -58,7 +58,9 @@ void SAKAppMsgOutput(QtMsgType type, const QMessageLogContext &context, const QS
 
 int main(int argc, char *argv[])
 {
+#if 0
     qInstallMessageHandler(SAKAppMsgOutput);
+#endif
     SAKApplication a(argc, argv);
 
     return a.exec();

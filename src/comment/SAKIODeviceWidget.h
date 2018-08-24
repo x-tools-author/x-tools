@@ -30,6 +30,7 @@ public:
     ~SAKIODeviceWidget();
 
     void setCustomControler(SAKIODeviceControler *controler);
+    void setRefreshPBtText(QString text);
 private:
     SAKIODevice *device;
     SAKIODeviceControler *controler;
@@ -61,6 +62,7 @@ private slots:
 
     void outputInfo(QString info, QString color = "black", bool prefix = true);
     void outputErrorString(QString str);
+    void outputInformationString(QString str);
 
     void bytesRead(QByteArray data);
     void bytesWritten(qint64 bytes);

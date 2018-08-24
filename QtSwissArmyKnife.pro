@@ -32,8 +32,6 @@ SOURCES += \
     src/ui/common/senddatapanel.cpp \
     src/SerialPort/SerialportSAKIODevice.cpp \
     src/SAKApplication.cpp \
-    src/TcpClient/TCPClientAssistant.cpp \
-    src/TcpClient/TCPClientWidget.cpp \
     src/TcpServer/TCPServerAssistant.cpp \
     src/TcpServer/TCPServerWidget.cpp \
     src/ui/console/console.cpp \
@@ -43,7 +41,10 @@ SOURCES += \
     src/comment/SAKIODeviceControler.cpp \
     src/UdpClient/UdpSAKIODevice.cpp \
     src/UdpClient/UdpSAKIODeviceControler.cpp \
-    src/UdpClient/UdpSAKIODeviceWidget.cpp
+    src/UdpClient/UdpSAKIODeviceWidget.cpp \
+    src/TcpClient/TcpSAKIODevice.cpp \
+    src/TcpClient/TcpSAKIODeviceControler.cpp \
+    src/TcpClient/TcpSAKIODeviceWidget.cpp
 
 HEADERS += \
         src/ui/mainwindow.h \
@@ -53,8 +54,6 @@ HEADERS += \
     src/ui/common/senddatapanel.h \
     src/SerialPort/SerialportSAKIODevice.h \
     src/SAKApplication.h \
-    src/TcpClient/TCPClientAssistant.h \
-    src/TcpClient/TCPClientWidget.h \
     src/TcpServer/TCPServerAssistant.h \
     src/TcpServer/TCPServerWidget.h \
     src/ui/console/console.h \
@@ -64,19 +63,22 @@ HEADERS += \
     src/comment/SAKIODeviceControler.h \
     src/UdpClient/UdpSAKIODevice.h \
     src/UdpClient/UdpSAKIODeviceControler.h \
-    src/UdpClient/UdpSAKIODeviceWidget.h
+    src/UdpClient/UdpSAKIODeviceWidget.h \
+    src/TcpClient/TcpSAKIODevice.h \
+    src/TcpClient/TcpSAKIODeviceControler.h \
+    src/TcpClient/TcpSAKIODeviceWidget.h
 
 FORMS += \
         src/ui/mainwindow.ui \
     src/ui/common/outputwindow.ui \
     src/ui/common/inputwindow.ui \
     src/ui/common/senddatapanel.ui \
-    src/TcpClient/TCPClientWidget.ui \
     src/TcpServer/TCPServerWidget.ui \
     src/ui/console/console.ui \
     src/comment/SAKIODeviceWidget.ui \
     src/SerialPort/SerialportSAKIODeviceControler.ui \
-    src/UdpClient/UdpSAKIODeviceControler.ui
+    src/UdpClient/UdpSAKIODeviceControler.ui \
+    src/TcpClient/TcpSAKIODeviceControler.ui
 
 INCLUDEPATH += \
     src/ui \

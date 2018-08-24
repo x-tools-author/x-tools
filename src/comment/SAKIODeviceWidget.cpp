@@ -94,13 +94,17 @@ void SAKIODeviceWidget::setCustomControler(SAKIODeviceControler *controler)
     ui->groupBoxCustom->setLayout(customControlerLayout);
 }
 
+void SAKIODeviceWidget::setRefreshPBtText(QString text)
+{
+    ui->pushButtonRefresh->setText(text);
+}
+
 void SAKIODeviceWidget::Connect()
 {
     /// 打开/关闭设备
     connect(ui->pushButtonOpen, SIGNAL(clicked(bool)), this, SLOT(openOrClose()));
     connect(this, SIGNAL(need2open()), controler, SLOT(open()));
     connect(this, SIGNAL(need2close()), device, SLOT(close()));
-    connect(controler, SIGNAL(need2open(QString,QString)), device, SLOT(open(QString,QString)));
     connect(controler, SIGNAL(need2open(QString,QString,QString,QString)), device, SLOT(open(QString,QString,QString,QString)));
     connect(controler, SIGNAL(need2open(QString,QString,QString,QString,QString)), device, SLOT(open(QString,QString,QString,QString,QString)));
     connect(device, SIGNAL(deviceOpenSuccessfully()), this, SLOT(afterDeviceOpen()));
@@ -112,6 +116,7 @@ void SAKIODeviceWidget::Connect()
     connect(cycleTimer, SIGNAL(timeout()), this, SLOT(cycleTimerTimeout()));
     connect(ui->checkBoxCycle, SIGNAL(clicked(bool)), this, SLOT(checkedBoxCycleClicked(bool)));
     connect(device, SIGNAL(errorStr(QString)), this, SLOT(outputErrorString(QString)));
+    connect(device, SIGNAL(infoStr(QString)), this, SLOT(outputInformationString(QString)));
     connect(ui->textEditInputData, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
     connect(ui->pushButtonReadInFile, SIGNAL(clicked(bool)), this, SLOT(openFile()));
     connect(ui->pushButtonSaveOutput, SIGNAL(clicked(bool)), this, SLOT(saveOutputData()));
@@ -165,6 +170,11 @@ void SAKIODeviceWidget::outputInfo(QString info, QString color, bool prefix)
 void SAKIODeviceWidget::outputErrorString(QString str)
 {
     outputInfo(str, "red");
+}
+
+void SAKIODeviceWidget::outputInformationString(QString str)
+{
+    outputInfo(str, "green");
 }
 
 void SAKIODeviceWidget::writeBytes()

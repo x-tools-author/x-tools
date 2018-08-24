@@ -14,7 +14,7 @@
 class SAKIODeviceControler:public QWidget{
     Q_OBJECT
 public:
-    SAKIODeviceControler(QWidget *parent);
+    SAKIODeviceControler(QWidget *parent = Q_NULLPTR);
     ~SAKIODeviceControler();
 
     virtual void afterDeviceOpen(){}

@@ -123,7 +123,7 @@ void SerialportSAKIODevice::close()
 
 void SerialportSAKIODevice::run()
 {
-     mpSerialPort = new QSerialPort;
+    mpSerialPort = new QSerialPort;
     /// 读就绪信号关联
     connect(mpSerialPort, SIGNAL(readyRead()), this, SLOT(ReadAll()));
     this->exec();
