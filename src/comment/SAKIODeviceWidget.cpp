@@ -41,10 +41,18 @@ SAKIODeviceWidget::~SAKIODeviceWidget()
 
 void SAKIODeviceWidget::initUI()
 {
-    ui->checkBoxOutputMS->setEnabled(false);
+    ui->checkBoxOutputMS->setEnabled(true);
     ui->checkBoxOutputDate->setChecked(true);
     ui->checkBoxOutputTime->setChecked(true);
     ui->lineEditCycleTime->setValidator(new QIntValidator(10, 24*60*60*1000, this));
+
+#if 0
+    ui->pushButtonClearInput->setIcon(QApplication::style()->standardIcon(QStyle::SP_DialogResetButton));
+    ui->pushButtonClearOutput->setIcon(QApplication::style()->standardIcon(QStyle::SP_DialogResetButton));
+    ui->pushButtonReadInFile->setIcon(QApplication::style()->standardIcon(QStyle::SP_DirOpenIcon));
+    ui->pushButtonSaveOutput->setIcon(QApplication::style()->standardIcon(QStyle::SP_DirOpenIcon));
+    ui->pushButtonRefresh->setIcon(QApplication::style()->standardIcon(QStyle::SP_BrowserReload));
+#endif
 }
 
 void SAKIODeviceWidget::outputTimeInfoCheckBoxClicked(bool checked)

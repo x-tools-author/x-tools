@@ -14,6 +14,7 @@
 #include <QTimer>
 #include <QHBoxLayout>
 #include <QDebug>
+#include <QApplication>
 
 #include "SAKIODevice.h"
 #include "SAKIODeviceControler.h"

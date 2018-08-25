@@ -10,8 +10,10 @@
 #define SAKAPPLICATION_H
 
 #include <QApplication>
+#include <QStyleFactory>
 
 #include "mainwindow.h"
+#include "SAKSettings.h"
 
 class SAKApplication:public QApplication
 {
@@ -21,6 +23,7 @@ public:
     ~SAKApplication();
 private:
     MainWindow *mpMainWindow;
+    SAKSettings *sakSettings;
 };
 
 #endif

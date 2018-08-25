@@ -9,6 +9,9 @@
 #include "UdpSAKIODeviceWidget.h"
 #include "TcpSAKIODeviceWidget.h"
 #include "TcpServerSAKIODeviceWidget.h"
+#include "SAKSettings.h"
+
+#include <QStyleFactory>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -74,6 +77,29 @@ void MainWindow::InitMenu()
     QMenu *pToolMenu = new QMenu(tr("工具"));
     menuBar()->addMenu(pToolMenu);
 
+    /// 选项
+    QMenu *optionMenu = new QMenu(tr("选项"));
+    menuBar()->addMenu(optionMenu);
+#if 1
+    QMenu *appStyleMenu = new QMenu(tr("软件风格"));
+    optionMenu->addMenu(appStyleMenu);
+    QStringList styleKeys = QStyleFactory::keys();
+    QAction *styleAction;
+    QActionGroup *styleActionGroup = new QActionGroup(this);
+    foreach (QString style, styleKeys) {
+        styleAction = new QAction(style);
+        styleAction->setCheckable(true);
+        styleActionGroup->addAction(styleAction);
+        styleAction->setObjectName(style);
+        appStyleMenu->addAction(styleAction);
+        connect(styleAction, SIGNAL(triggered(bool)), this, SLOT(styleActionTriggered()));
+
+        if (style.compare(sakSettings()->valueApplicationStyle()) == 0){
+            styleAction->setChecked(true);
+        }
+    }
+#endif
+
     // 帮助菜单
     QMenu *pHelpMenu = new QMenu(tr("帮助"));
     menuBar()->addMenu(pHelpMenu);
@@ -105,4 +131,15 @@ void MainWindow::About()
 void MainWindow::AboutQt()
 {
     QMessageBox::aboutQt(this, tr("关于Qt"));
+}
+
+void MainWindow::styleActionTriggered()
+{
+    SAKSettings *setting = sakSettings();
+    if (setting == NULL){
+        qWarning() << tr("配置文件未初始化！");
+    }else {
+        setting->setValueApplicationStyle(sender()->objectName());
+        QApplication::setStyle(QStyleFactory::create(QString("%1").arg(sender()->objectName())));
+    }
 }

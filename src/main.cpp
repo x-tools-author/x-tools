@@ -8,6 +8,7 @@
 *******************************************************************************/
 #include "SAKApplication.h"
 #include "console.h"
+#include "SAKSettings.h"
 
 #include <QMessageLogContext>
 #include <QDateTime>

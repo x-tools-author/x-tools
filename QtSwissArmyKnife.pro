@@ -42,7 +42,8 @@ SOURCES += \
     src/TcpClient/TcpSAKIODeviceWidget.cpp \
     src/TcpServer/TcpServerSAKIODevice.cpp \
     src/TcpServer/TcpServerSAKIODeviceControler.cpp \
-    src/TcpServer/TcpServerSAKIODeviceWidget.cpp
+    src/TcpServer/TcpServerSAKIODeviceWidget.cpp \
+    src/comment/SAKSettings.cpp
 
 HEADERS += \
         src/ui/mainwindow.h \
@@ -62,7 +63,8 @@ HEADERS += \
     src/TcpClient/TcpSAKIODeviceWidget.h \
     src/TcpServer/TcpServerSAKIODevice.h \
     src/TcpServer/TcpServerSAKIODeviceControler.h \
-    src/TcpServer/TcpServerSAKIODeviceWidget.h
+    src/TcpServer/TcpServerSAKIODeviceWidget.h \
+    src/comment/SAKSettings.h
 
 FORMS += \
         src/ui/mainwindow.ui \
