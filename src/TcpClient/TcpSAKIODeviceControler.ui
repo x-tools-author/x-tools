@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>144</width>
+    <width>173</width>
     <height>166</height>
    </rect>
   </property>
@@ -87,7 +87,7 @@
    <item row="2" column="0" colspan="3">
     <widget class="QCheckBox" name="checkBoxAppointLocalHostAddress">
      <property name="text">
-      <string>指定本地主机地址</string>
+      <string>指定本地主机地址和端口</string>
      </property>
     </widget>
    </item>

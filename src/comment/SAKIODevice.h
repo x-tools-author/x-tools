@@ -30,6 +30,7 @@ public:
     virtual QString errorString(){return "Unknow device";}
 public slots:
     virtual void writeBytes(QByteArray data){Q_UNUSED(data);}
+    virtual void open(QString serverAddress, QString serverPort){Q_UNUSED(serverAddress);Q_UNUSED(serverPort);}
     virtual void open(QString hostAddress, QString hostPort, QString peerAddress, QString peerPort);
     virtual void open(QString portName, QString baudRate, QString dataBits, QString stopBits, QString parity);
     virtual void close(){}

@@ -5,11 +5,10 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include "TCPServerWidget.h"
-
 #include "SerialportSAKIODeviceWidget.h"
 #include "UdpSAKIODeviceWidget.h"
 #include "TcpSAKIODeviceWidget.h"
+#include "TcpServerSAKIODeviceWidget.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -52,8 +51,11 @@ void MainWindow::AddTab()
     this->mpTabWidget->addTab(new TcpSAKIODeviceWidget(tcpDevice, new TcpSAKIODeviceControler), tr("TCP客户端"));
     tcpDevice->start();
 
-    /// tcp 服务器
-    this->mpTabWidget->addTab(new TcpServerWidget, tr("TCP服务器"));
+    /// TCP 服务器
+    TcpServerSAKIODevice *tcpServerDevice = new TcpServerSAKIODevice;
+    this->mpTabWidget->addTab(new TcpServerSAKIODeviceWidget(tcpServerDevice, new TcpServerSAKIODeviceControler), tr("Tcp服务器"));
+    tcpServerDevice->start();
+
     /// 终端
     this->mpTabWidget->addTab(new Console, tr("终端"));
 }

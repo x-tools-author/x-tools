@@ -26,15 +26,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         src/main.cpp \
         src/ui/mainwindow.cpp \
-    src/ui/common/outputwindow.cpp \
     src/SerialPort/SerialportSAKIODeviceWidget.cpp \
-    src/ui/common/inputwindow.cpp \
-    src/ui/common/senddatapanel.cpp \
     src/SerialPort/SerialportSAKIODevice.cpp \
     src/SAKApplication.cpp \
-    src/TcpServer/TCPServerAssistant.cpp \
-    src/TcpServer/TCPServerWidget.cpp \
-    src/ui/console/console.cpp \
+    src/console/console.cpp \
     src/comment/SAKIODeviceWidget.cpp \
     src/SerialPort/SerialportSAKIODeviceControler.cpp \
     src/comment/SAKIODevice.cpp \
@@ -44,19 +39,17 @@ SOURCES += \
     src/UdpClient/UdpSAKIODeviceWidget.cpp \
     src/TcpClient/TcpSAKIODevice.cpp \
     src/TcpClient/TcpSAKIODeviceControler.cpp \
-    src/TcpClient/TcpSAKIODeviceWidget.cpp
+    src/TcpClient/TcpSAKIODeviceWidget.cpp \
+    src/TcpServer/TcpServerSAKIODevice.cpp \
+    src/TcpServer/TcpServerSAKIODeviceControler.cpp \
+    src/TcpServer/TcpServerSAKIODeviceWidget.cpp
 
 HEADERS += \
         src/ui/mainwindow.h \
-    src/ui/common/outputwindow.h \
     src/SerialPort/SerialportSAKIODeviceWidget.h \
-    src/ui/common/inputwindow.h \
-    src/ui/common/senddatapanel.h \
     src/SerialPort/SerialportSAKIODevice.h \
     src/SAKApplication.h \
-    src/TcpServer/TCPServerAssistant.h \
-    src/TcpServer/TCPServerWidget.h \
-    src/ui/console/console.h \
+    src/console/console.h \
     src/comment/SAKIODeviceWidget.h \
     src/SerialPort/SerialportSAKIODeviceControler.h \
     src/comment/SAKIODevice.h \
@@ -66,19 +59,19 @@ HEADERS += \
     src/UdpClient/UdpSAKIODeviceWidget.h \
     src/TcpClient/TcpSAKIODevice.h \
     src/TcpClient/TcpSAKIODeviceControler.h \
-    src/TcpClient/TcpSAKIODeviceWidget.h
+    src/TcpClient/TcpSAKIODeviceWidget.h \
+    src/TcpServer/TcpServerSAKIODevice.h \
+    src/TcpServer/TcpServerSAKIODeviceControler.h \
+    src/TcpServer/TcpServerSAKIODeviceWidget.h
 
 FORMS += \
         src/ui/mainwindow.ui \
-    src/ui/common/outputwindow.ui \
-    src/ui/common/inputwindow.ui \
-    src/ui/common/senddatapanel.ui \
-    src/TcpServer/TCPServerWidget.ui \
-    src/ui/console/console.ui \
+    src/console/console.ui \
     src/comment/SAKIODeviceWidget.ui \
     src/SerialPort/SerialportSAKIODeviceControler.ui \
     src/UdpClient/UdpSAKIODeviceControler.ui \
-    src/TcpClient/TcpSAKIODeviceControler.ui
+    src/TcpClient/TcpSAKIODeviceControler.ui \
+    src/TcpServer/TcpServerSAKIODeviceControler.ui
 
 INCLUDEPATH += \
     src/ui \
@@ -87,7 +80,7 @@ INCLUDEPATH += \
     src/UdpClient \
     src/TcpClient \
     src/TcpServer \
-    src/ui/console \
+    src/console \
     src/comment
 
 #--------------------------------------------------------------------------------------------
