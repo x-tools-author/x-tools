@@ -17,10 +17,10 @@
 SAKApplication::SAKApplication(int argc, char **argv):
     QApplication(argc, argv)
     ,sakSettings(new SAKSettings)   /// 必须优先初始化
-    ,mpMainWindow(new MainWindow)
 {
     QApplication::setStyle(QStyleFactory::create(QString("%1").arg(SAKSettings::valueApplicationStyle())));
 
+    mpMainWindow = new MainWindow;
     mpMainWindow->show();
 }
 

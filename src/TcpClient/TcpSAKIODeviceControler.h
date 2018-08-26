@@ -11,8 +11,6 @@
 
 #include <QWidget>
 #include <QHBoxLayout>
-#include <QSerialPort>
-#include <QSerialPortInfo>
 #include <QApplication>
 #include <QDebug>
 #include <QHostInfo>
@@ -37,8 +35,12 @@ public slots:
     virtual void open();
     virtual void refresh();
 private:
-    Ui::TcpSAKIODeviceControler *ui;
+    Ui::TcpSAKIODeviceControler *ui = NULL;
     void initUi();
+private slots:
+    void setLocalePort(QString port);
+    void setPeerPort(QString port);
+    void setPeerAddress(QString address);
 signals:
     void need2refresh();
 };

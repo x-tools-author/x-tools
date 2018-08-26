@@ -29,12 +29,14 @@ public slots:
     virtual void open(QString portName, QString baudRate, QString dataBits, QString stopBits, QString parity);
     virtual void writeBytes(QByteArray data);
 
+    virtual SAKDeviceType deviceType(){return SAKDeviceSerialport;}
+
     QByteArray ReadAll();
 protected:
     void run();
 private:
     /// 串口
-    QSerialPort *mpSerialPort;
+    QSerialPort *mpSerialPort = NULL;
 signals:
     /// 串口关闭成功
     void SerialPortCloseSuccessfully();

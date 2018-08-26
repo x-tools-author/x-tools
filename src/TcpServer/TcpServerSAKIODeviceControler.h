@@ -35,6 +35,7 @@ private:
 private slots:
     void changedClients(QList <QTcpSocket *>clients);
     void setCurrentClient(QString text);
+    void setServerPort(QString port);
 signals:
     void need2changeCurrentClients(QString address, QString port);
 };

@@ -34,7 +34,7 @@ public slots:
 protected:
     void run();
 private:
-    QTcpSocket *mpTcpSocket;
+    QTcpSocket *mpTcpSocket = NULL;
 private slots:
     void readBytes();
     void afterDisConnect();

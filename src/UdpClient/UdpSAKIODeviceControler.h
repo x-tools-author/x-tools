@@ -31,6 +31,10 @@ private:
     Ui::UdpSAKIODeviceControler *ui;
     ///---------------------------------------------------------
     void initUi();
+private slots:
+    void setLocalePort(QString port);
+    void setPeerPort(QString port);
+    void setPeerAddress(QString address);
 };
 
 #endif

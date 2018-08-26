@@ -10,6 +10,7 @@
 #pragma execution_character_set("utf-8")
 #endif
 
+#include "SAKSettings.h"
 #include "UdpSAKIODeviceControler.h"
 #include "ui_UdpSAKIODeviceControler.h"
 
@@ -25,6 +26,10 @@ UdpSAKIODeviceControler::UdpSAKIODeviceControler(QWidget *parent)
 {
     ui->setupUi(this);
     initUi();
+
+    connect(ui->lineEditPort, SIGNAL(textChanged(QString)), this, SLOT(setLocalePort(QString)));
+    connect(ui->lineEditPeerPort, SIGNAL(textChanged(QString)), this, SLOT(setPeerPort(QString)));
+    connect(ui->lineEditPeerHostAddress, SIGNAL(textChanged(QString)), this, SLOT(setPeerAddress(QString)));
 }
 
 UdpSAKIODeviceControler::~UdpSAKIODeviceControler()
@@ -84,4 +89,35 @@ void UdpSAKIODeviceControler::initUi()
     refresh();
     ui->lineEditPeerPort->setValidator(new QIntValidator(0, 65535, this));
     ui->lineEditPort->setValidator(new QIntValidator(0, 65535, this));
+
+    ui->lineEditPort->setText(sakSettings()->valueUdpClientLocalPort());
+    ui->lineEditPeerPort->setText(sakSettings()->valueUdpClientPeerPort());
+    ui->lineEditPeerHostAddress->setText(sakSettings()->valueUdpClientPeerAddress());
+}
+
+void UdpSAKIODeviceControler::setLocalePort(QString port)
+{
+    if (sakSettings() == NULL){
+        qWarning("Setting function is not initialized!");
+    }else{
+        sakSettings()->setValueUdpClientLocalPort(port);
+    }
+}
+
+void UdpSAKIODeviceControler::setPeerPort(QString port)
+{
+    if (sakSettings() == NULL){
+        qWarning("Setting function is not initialized!");
+    }else{
+        sakSettings()->setValueUdpClientPeerPort(port);
+    }
+}
+
+void UdpSAKIODeviceControler::setPeerAddress(QString address)
+{
+    if (sakSettings() == NULL){
+        qWarning("Setting function is not initialized!");
+    }else{
+        sakSettings()->setValueUdpClientPeerAddress(address);
+    }
 }

@@ -20,8 +20,8 @@ public:
     TcpSAKIODeviceWidget(TcpSAKIODevice *_device, TcpSAKIODeviceControler *_controler, QWidget *parent = Q_NULLPTR);
     ~TcpSAKIODeviceWidget();
 private:
-    TcpSAKIODevice *device;
-    TcpSAKIODeviceControler *controler;
+    TcpSAKIODevice *device = NULL;
+    TcpSAKIODeviceControler *controler = NULL;
 };
 
 #endif

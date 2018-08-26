@@ -6,7 +6,7 @@
 
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets serialport network
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets network serialport
 
 TARGET = QtSwissArmyKnife
 TEMPLATE = app
@@ -22,16 +22,28 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+#----------------------------------------------------------------------------
+#串口助手
+SOURCES += \
+    src/SerialPort/SerialportSAKIODeviceWidget.cpp \
+    src/SerialPort/SerialportSAKIODevice.cpp \
+    src/SerialPort/SerialportSAKIODeviceControler.cpp
+HEADERS += \
+    src/SerialPort/SerialportSAKIODeviceWidget.h \
+    src/SerialPort/SerialportSAKIODevice.h \
+    src/SerialPort/SerialportSAKIODeviceControler.h
+FORMS   += \
+    src/SerialPort/SerialportSAKIODeviceControler.ui
+INCLUDEPATH += \
+    src/SerialPort
+
 
 SOURCES += \
         src/main.cpp \
         src/ui/mainwindow.cpp \
-    src/SerialPort/SerialportSAKIODeviceWidget.cpp \
-    src/SerialPort/SerialportSAKIODevice.cpp \
     src/SAKApplication.cpp \
     src/console/console.cpp \
     src/comment/SAKIODeviceWidget.cpp \
-    src/SerialPort/SerialportSAKIODeviceControler.cpp \
     src/comment/SAKIODevice.cpp \
     src/comment/SAKIODeviceControler.cpp \
     src/UdpClient/UdpSAKIODevice.cpp \
@@ -45,14 +57,13 @@ SOURCES += \
     src/TcpServer/TcpServerSAKIODeviceWidget.cpp \
     src/comment/SAKSettings.cpp
 
+
+
 HEADERS += \
         src/ui/mainwindow.h \
-    src/SerialPort/SerialportSAKIODeviceWidget.h \
-    src/SerialPort/SerialportSAKIODevice.h \
     src/SAKApplication.h \
     src/console/console.h \
     src/comment/SAKIODeviceWidget.h \
-    src/SerialPort/SerialportSAKIODeviceControler.h \
     src/comment/SAKIODevice.h \
     src/comment/SAKIODeviceControler.h \
     src/UdpClient/UdpSAKIODevice.h \
@@ -70,7 +81,6 @@ FORMS += \
         src/ui/mainwindow.ui \
     src/console/console.ui \
     src/comment/SAKIODeviceWidget.ui \
-    src/SerialPort/SerialportSAKIODeviceControler.ui \
     src/UdpClient/UdpSAKIODeviceControler.ui \
     src/TcpClient/TcpSAKIODeviceControler.ui \
     src/TcpServer/TcpServerSAKIODeviceControler.ui
@@ -78,7 +88,6 @@ FORMS += \
 INCLUDEPATH += \
     src/ui \
     src/ui/common \
-    src/SerialPort \
     src/UdpClient \
     src/TcpClient \
     src/TcpServer \

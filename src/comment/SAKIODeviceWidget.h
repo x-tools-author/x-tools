@@ -43,6 +43,15 @@ private:
     QByteArray dataBytes();
     void Connect();
 private slots:
+    void setCycleTime(QString time);
+    void readCycleTime();
+
+    void setOutputMode();
+    void readOutputMode();
+
+    void setInputMode();
+    void readInputMode();
+
     void openFile();
     void saveOutputData();
     void textFormatControl();

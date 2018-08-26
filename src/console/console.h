@@ -28,7 +28,7 @@ public:
     void OutputInfo(QString info);
     static Console *_console;
 private:
-    Ui::Console *ui;
+    Ui::Console *ui = NULL;
 
 private slots:
     void SaveConsoleOutput2File();

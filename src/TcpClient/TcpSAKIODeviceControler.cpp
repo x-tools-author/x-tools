@@ -15,6 +15,7 @@
 
 #include "TcpSAKIODeviceControler.h"
 
+#include "SAKSettings.h"
 #include "ui_TcpSAKIODeviceControler.h"
 
 TcpSAKIODeviceControler::TcpSAKIODeviceControler(QWidget *parent)
@@ -23,6 +24,10 @@ TcpSAKIODeviceControler::TcpSAKIODeviceControler(QWidget *parent)
 {
     ui->setupUi(this);
     initUi();
+
+    connect(ui->lineEditLocalHostPort, SIGNAL(textChanged(QString)), this, SLOT(setLocalePort(QString)));
+    connect(ui->lineEditServerPort, SIGNAL(textChanged(QString)), this, SLOT(setPeerPort(QString)));
+    connect(ui->lineEditServerAddress, SIGNAL(textChanged(QString)), this, SLOT(setPeerAddress(QString)));
 }
 
 TcpSAKIODeviceControler::~TcpSAKIODeviceControler()
@@ -85,5 +90,36 @@ void TcpSAKIODeviceControler::initUi()
         foreach (QHostAddress address, ipv4AddressList) {
             ui->comboBoxLocalHostAddress->addItem(address.toString());
         }
+    }
+
+    ui->lineEditLocalHostPort->setText(sakSettings()->valueTcpClientLocalPort());
+    ui->lineEditServerPort->setText(sakSettings()->valueTcpClientPeerPort());
+    ui->lineEditServerAddress->setText(sakSettings()->valueTcpClientPeerAddress());
+}
+
+void TcpSAKIODeviceControler::setLocalePort(QString port)
+{
+    if (sakSettings() == NULL){
+        qWarning("Setting function is not initialized!");
+    }else{
+        sakSettings()->setValueTcpClientLocalPort(port);
+    }
+}
+
+void TcpSAKIODeviceControler::setPeerPort(QString port)
+{
+    if (sakSettings() == NULL){
+        qWarning("Setting function is not initialized!");
+    }else{
+        sakSettings()->setValueTcpClientPeerPort(port);
+    }
+}
+
+void TcpSAKIODeviceControler::setPeerAddress(QString address)
+{
+    if (sakSettings() == NULL){
+        qWarning("Setting function is not initialized!");
+    }else{
+        sakSettings()->setValueTcpClientPeerAddress(address);
     }
 }

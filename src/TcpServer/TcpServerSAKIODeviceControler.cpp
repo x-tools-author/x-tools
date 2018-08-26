@@ -10,6 +10,7 @@
 #pragma execution_character_set("utf-8")
 #endif
 
+#include "SAKSettings.h"
 #include "TcpServerSAKIODeviceControler.h"
 
 #include "ui_TcpServerSAKIODeviceControler.h"
@@ -25,6 +26,7 @@ TcpServerSAKIODeviceControler::TcpServerSAKIODeviceControler(QWidget *parent)
     initUi();
 
     connect(ui->comboBoxClients, SIGNAL(currentTextChanged(QString)), this, SLOT(setCurrentClient(QString)));
+    connect(ui->lineEditServerPort, SIGNAL(textChanged(QString)), this, SLOT(setServerPort(QString)));
 }
 
 TcpServerSAKIODeviceControler::~TcpServerSAKIODeviceControler()
@@ -74,6 +76,8 @@ void TcpServerSAKIODeviceControler::refresh()
 void TcpServerSAKIODeviceControler::initUi()
 {
     refresh();
+
+    ui->lineEditServerPort->setText(sakSettings()->valueTcpServerServerPort());
 }
 
 void TcpServerSAKIODeviceControler::changedClients(QList<QTcpSocket *> clients)
@@ -98,4 +102,13 @@ void TcpServerSAKIODeviceControler::setCurrentClient(QString text)
     address = list.at(0);
     port = list.at(1);
     emit need2changeCurrentClients(address, port);
+}
+
+void TcpServerSAKIODeviceControler::setServerPort(QString port)
+{
+    if (sakSettings() == NULL){
+        qWarning("Setting function is not initialized!");
+    }else{
+        sakSettings()->setValueTcpServerServerPort(port);
+    }
 }
