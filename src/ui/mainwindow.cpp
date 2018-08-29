@@ -5,11 +5,14 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include "SerialportSAKIODeviceWidget.h"
 #include "UdpSAKIODeviceWidget.h"
 #include "TcpSAKIODeviceWidget.h"
 #include "TcpServerSAKIODeviceWidget.h"
 #include "SAKSettings.h"
+
+#ifndef SAK_NO_SERIALPORT_ASSISTANT
+#include "SerialportSAKIODeviceWidget.h"
+#endif
 
 #include <QStyleFactory>
 
@@ -39,10 +42,12 @@ MainWindow::~MainWindow()
 
 void MainWindow::AddTab()
 {
-    /// 串口页
+#ifndef SAK_NO_SERIALPORT_ASSISTANT
+    /// 串口页(不支持winrt、树莓派...)
     SerialportSAKIODevice *serialportDevice = new SerialportSAKIODevice;
     this->mpTabWidget->addTab(new SerialportSAKIODeviceWidget(serialportDevice, new SerialportSAKIODeviceControler), tr("串口助手"));
     serialportDevice->start();
+#endif
 
     /// udp客户端
     UdpSAKIODevice *udpDevice = new UdpSAKIODevice;

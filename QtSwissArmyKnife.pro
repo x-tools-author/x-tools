@@ -6,7 +6,7 @@
 
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets network serialport
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets network
 
 TARGET = QtSwissArmyKnife
 TEMPLATE = app
@@ -21,22 +21,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # In order to do so, uncomment the following line.
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
-
-#----------------------------------------------------------------------------
-#串口助手
-SOURCES += \
-    src/SerialPort/SerialportSAKIODeviceWidget.cpp \
-    src/SerialPort/SerialportSAKIODevice.cpp \
-    src/SerialPort/SerialportSAKIODeviceControler.cpp
-HEADERS += \
-    src/SerialPort/SerialportSAKIODeviceWidget.h \
-    src/SerialPort/SerialportSAKIODevice.h \
-    src/SerialPort/SerialportSAKIODeviceControler.h
-FORMS   += \
-    src/SerialPort/SerialportSAKIODeviceControler.ui
-INCLUDEPATH += \
-    src/SerialPort
-
 
 SOURCES += \
         src/main.cpp \
@@ -99,3 +83,10 @@ INCLUDEPATH += \
 include(QtSwissArmyKnifeConfigure.pri)
 include(QtSwissArmyKnifeSetup.pri)
 
+# 取消该宏的定义可以将串口模块屏蔽
+winrt || linux-arm{
+    DEFINES += SAK_NO_SERIALPORT_ASSISTANT
+    message( "该版本Qt可能不包含串口模块，已经忽略串口模块！（串口助手功能被屏蔽！）" )
+}else {
+    include(src/SerialPort/SAKSerialportAssistant.pri)
+}

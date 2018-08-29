@@ -16,7 +16,7 @@
 
 SAKApplication::SAKApplication(int argc, char **argv):
     QApplication(argc, argv)
-    ,sakSettings(new SAKSettings)   /// 必须优先初始化
+    ,sakSettings(new SAKSettings)   /// 必须优先初始化该成员，否则某些功能蒋失效甚至是程序崩溃
 {
     QApplication::setStyle(QStyleFactory::create(QString("%1").arg(SAKSettings::valueApplicationStyle())));
 
