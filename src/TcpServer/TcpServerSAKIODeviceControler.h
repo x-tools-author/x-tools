@@ -29,7 +29,7 @@ public slots:
     virtual void open();
     virtual void refresh();
 private:
-    Ui::TcpServerSAKIODeviceControler *ui;
+    Ui::TcpServerSAKIODeviceControler *ui = NULL;
     /// ---------------------------------------
     void initUi();
 private slots:

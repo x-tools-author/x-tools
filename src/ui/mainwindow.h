@@ -31,8 +31,8 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 private:
-    QTabWidget *mpTabWidget;
-    Ui::MainWindow *ui;
+    QTabWidget *mpTabWidget = NULL;
+    Ui::MainWindow *ui      = NULL;
     /// ----------------------------------------------------
     void AddTab();
     void InitMenu();

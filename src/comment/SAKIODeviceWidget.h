@@ -33,11 +33,11 @@ public:
     void setCustomControler(SAKIODeviceControler *controler);
     void setRefreshPBtText(QString text);
 private:
-    SAKIODevice *device;
-    SAKIODeviceControler *controler;
-    QHBoxLayout *customControlerLayout;
-    QTimer  *cycleTimer;
-    Ui::SAKIODeviceWidget *ui;
+    SAKIODevice *device =                   NULL;
+    SAKIODeviceControler *controler =       NULL;
+    QHBoxLayout *customControlerLayout =    NULL;
+    QTimer  *cycleTimer =                   NULL;
+    Ui::SAKIODeviceWidget *ui =             NULL;
     ///----------------------------------------------------------------
     void initUI();
     QByteArray dataBytes();
