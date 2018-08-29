@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>120</width>
-    <height>144</height>
+    <width>235</width>
+    <height>100</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>0</width>
+    <height>0</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Form</string>
@@ -54,7 +60,24 @@
      </property>
     </widget>
    </item>
-   <item row="5" column="0" colspan="2">
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>本地主机地址</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QComboBox" name="comboBoxHostAddress"/>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>对端主机地址</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
     <widget class="QLineEdit" name="lineEditPeerHostAddress">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -63,24 +86,7 @@
       </sizepolicy>
      </property>
      <property name="text">
-      <string>127.0.0.1</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0" colspan="2">
-    <widget class="QComboBox" name="comboBoxHostAddress"/>
-   </item>
-   <item row="4" column="0" colspan="2">
-    <widget class="QLabel" name="label_3">
-     <property name="text">
-      <string>对端主机地址</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0" colspan="2">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>本地主机地址</string>
+      <string>255.255.255.255</string>
      </property>
     </widget>
    </item>

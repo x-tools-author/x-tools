@@ -15,6 +15,7 @@
 #include <QScrollBar>
 #include <QFileDialog>
 #include <QTextStream>
+#include <QPixmap>
 
 #include "SAKIODeviceWidget.h"
 #include "SAKSettings.h"
@@ -57,6 +58,9 @@ void SAKIODeviceWidget::initUI()
     readOutputMode();
     readInputMode();
     readCycleTime();
+
+    ui->labelRX->setPixmap(QPixmap(":/images/RtRxGray.png").scaled(rxtxSize, Qt::KeepAspectRatio));
+    ui->labelTX->setPixmap(QPixmap(":/images/RtRxGray.png").scaled(rxtxSize, Qt::KeepAspectRatio));
 }
 
 void SAKIODeviceWidget::outputTimeInfoCheckBoxClicked(bool checked)
@@ -165,6 +169,10 @@ void SAKIODeviceWidget::Connect()
 
     /// 循环周期
     connect(ui->lineEditCycleTime, SIGNAL(textChanged(QString)), this, SLOT(setCycleTime(QString)));
+
+    /// 指示灯
+    connect(device, SIGNAL(bytesRead(QByteArray)), this, SLOT(updateRxImage()));
+    connect(device, SIGNAL(bytesWritten(qint64)),  this, SLOT(updateTxImage()));
 }
 
 void SAKIODeviceWidget::afterDeviceOpen()
@@ -882,4 +890,28 @@ void SAKIODeviceWidget::readCycleTime()
     }else {
         ui->lineEditCycleTime->setText("1000");
     }
+}
+
+void SAKIODeviceWidget::updateTxImage()
+{
+    static bool b = false;
+    if (b){
+        ui->labelTX->setPixmap(QPixmap(":/images/RtRxGray.png").scaled(rxtxSize, Qt::KeepAspectRatio));
+    }else{
+        ui->labelTX->setPixmap(QPixmap(":/images/RtRxRed.png").scaled(rxtxSize, Qt::KeepAspectRatio));
+    }
+
+    b = !b;
+}
+
+void SAKIODeviceWidget::updateRxImage()
+{
+    static bool b = false;
+    if (b){
+        ui->labelRX->setPixmap(QPixmap(":/images/RtRxGray.png").scaled(rxtxSize, Qt::KeepAspectRatio));
+    }else{
+        ui->labelRX->setPixmap(QPixmap(":/images/RtRxRed.png").scaled(rxtxSize, Qt::KeepAspectRatio));
+    }
+
+    b = !b;
 }

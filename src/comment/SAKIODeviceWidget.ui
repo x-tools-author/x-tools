@@ -6,36 +6,18 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1120</width>
-    <height>659</height>
+    <width>1021</width>
+    <height>763</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="2" column="1">
-    <widget class="QGroupBox" name="groupBox_3">
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>168</height>
-      </size>
-     </property>
-     <property name="title">
-      <string>数据输入</string>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_4">
-      <item row="0" column="0">
-       <widget class="QTextEdit" name="textEditInputData"/>
-      </item>
-     </layout>
-    </widget>
-   </item>
    <item row="3" column="1">
     <widget class="QLabel" name="labelOutput">
      <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -48,7 +30,7 @@
    <item row="0" column="0" rowspan="4">
     <widget class="QGroupBox" name="groupBox_2">
      <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+      <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -61,7 +43,7 @@
      </property>
      <property name="maximumSize">
       <size>
-       <width>250</width>
+       <width>370</width>
        <height>16777215</height>
       </size>
      </property>
@@ -94,17 +76,74 @@
          <string>设备管理</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_7">
-         <item row="0" column="0">
+         <item row="0" column="4">
           <widget class="QPushButton" name="pushButtonRefresh">
            <property name="text">
             <string>刷新</string>
            </property>
           </widget>
          </item>
-         <item row="0" column="1">
+         <item row="0" column="5">
           <widget class="QPushButton" name="pushButtonOpen">
            <property name="text">
             <string>打开</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>RX</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QLabel" name="label_5">
+           <property name="text">
+            <string>TX</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLabel" name="labelRX">
+           <property name="minimumSize">
+            <size>
+             <width>22</width>
+             <height>22</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>9</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>@</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="3">
+          <widget class="QLabel" name="labelTX">
+           <property name="minimumSize">
+            <size>
+             <width>22</width>
+             <height>22</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>@</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
            </property>
           </widget>
          </item>
@@ -123,50 +162,10 @@
          <string>数据统计</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_5">
-         <item row="2" column="1">
-          <widget class="QLabel" name="label_7">
+         <item row="0" column="2">
+          <widget class="QLabel" name="label_3">
            <property name="text">
-            <string>接收字节数</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QLabel" name="labelSendBytes">
-           <property name="styleSheet">
-            <string notr="true">QLabel#labelSendBytes{
-	color:blue
-}</string>
-           </property>
-           <property name="text">
-            <string>0</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="label_1">
-           <property name="text">
-            <string>接收帧数</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="labelReceiveFrames">
-           <property name="styleSheet">
-            <string notr="true">QLabel#labelReceiveFrames{
-	color:green
-}</string>
-           </property>
-           <property name="text">
-            <string>0</string>
+            <string>发送字节数</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -183,40 +182,10 @@
            </property>
           </widget>
          </item>
-         <item row="0" column="1">
-          <widget class="QLabel" name="label_3">
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_1">
            <property name="text">
-            <string>发送字节数</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="labelSendFrames">
-           <property name="styleSheet">
-            <string notr="true">QLabel#labelSendFrames{
-	color:blue
-}</string>
-           </property>
-           <property name="text">
-            <string>0</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1">
-          <widget class="QLabel" name="labelReceiveBytes">
-           <property name="styleSheet">
-            <string notr="true">QLabel#labelReceiveBytes{
-	color:green
-}</string>
-           </property>
-           <property name="text">
-            <string>0</string>
+            <string>接收帧数</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -230,10 +199,80 @@
            </property>
           </widget>
          </item>
-         <item row="4" column="1">
+         <item row="4" column="2">
           <widget class="QPushButton" name="pushButtonResetReceiveDataCount">
            <property name="text">
             <string>复位接收</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="QLabel" name="label_7">
+           <property name="text">
+            <string>接收字节数</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLabel" name="labelSendFrames">
+           <property name="styleSheet">
+            <string notr="true">QLabel#labelSendFrames{
+    color:blue
+}</string>
+           </property>
+           <property name="text">
+            <string>0</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="3">
+          <widget class="QLabel" name="labelSendBytes">
+           <property name="styleSheet">
+            <string notr="true">QLabel#labelSendBytes{
+    color:blue
+}</string>
+           </property>
+           <property name="text">
+            <string>0</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLabel" name="labelReceiveFrames">
+           <property name="styleSheet">
+            <string notr="true">QLabel#labelReceiveFrames{
+    color:green
+}</string>
+           </property>
+           <property name="text">
+            <string>0</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="3">
+          <widget class="QLabel" name="labelReceiveBytes">
+           <property name="styleSheet">
+            <string notr="true">QLabel#labelReceiveBytes{
+    color:green
+}</string>
+           </property>
+           <property name="text">
+            <string>0</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
            </property>
           </widget>
          </item>
@@ -252,34 +291,6 @@
          <string>数据输出设置</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_2">
-         <item row="4" column="1">
-          <widget class="QRadioButton" name="radioButtonUtf8Output">
-           <property name="text">
-            <string>UTF-8输出</string>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="0">
-          <widget class="QCheckBox" name="checkBoxOutputDate">
-           <property name="text">
-            <string>输出日期信息</string>
-           </property>
-          </widget>
-         </item>
-         <item row="9" column="0" colspan="2">
-          <widget class="QCheckBox" name="checkBoxOutputReceiveDataOnly">
-           <property name="text">
-            <string>只输出接收到的数据数据</string>
-           </property>
-          </widget>
-         </item>
-         <item row="11" column="1">
-          <widget class="QPushButton" name="pushButtonClearOutput">
-           <property name="text">
-            <string>清空输出</string>
-           </property>
-          </widget>
-         </item>
          <item row="8" column="0" colspan="2">
           <widget class="QCheckBox" name="checkBoxOutputMS">
            <property name="text">
@@ -293,20 +304,6 @@
            </property>
           </widget>
          </item>
-         <item row="2" column="0">
-          <widget class="QRadioButton" name="radioButtonDecOutput">
-           <property name="text">
-            <string>十进制输出</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QRadioButton" name="radioButtonHexOutput">
-           <property name="text">
-            <string>16进制输出</string>
-           </property>
-          </widget>
-         </item>
          <item row="0" column="1">
           <widget class="QRadioButton" name="radioButtonOctOutput">
            <property name="text">
@@ -314,13 +311,10 @@
            </property>
           </widget>
          </item>
-         <item row="4" column="0">
-          <widget class="QRadioButton" name="radioButtonAsciiOutput">
+         <item row="9" column="0" colspan="2">
+          <widget class="QCheckBox" name="checkBoxOutputReceiveDataOnly">
            <property name="text">
-            <string>ASCII输出</string>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
+            <string>只输出接收到的数据数据</string>
            </property>
           </widget>
          </item>
@@ -331,55 +325,138 @@
            </property>
           </widget>
          </item>
-         <item row="11" column="0">
-          <widget class="QPushButton" name="pushButtonSaveOutput">
+         <item row="0" column="2">
+          <widget class="QRadioButton" name="radioButtonDecOutput">
            <property name="text">
-            <string>保存输出</string>
+            <string>十进制输出</string>
            </property>
           </widget>
          </item>
-         <item row="10" column="0" colspan="2">
-          <widget class="QCheckBox" name="checkBoxPause">
+         <item row="1" column="2">
+          <widget class="QRadioButton" name="radioButtonUtf8Output">
            <property name="text">
-            <string>暂停输出数据</string>
+            <string>UTF-8输出</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QRadioButton" name="radioButtonAsciiOutput">
+           <property name="text">
+            <string>ASCII输出</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QRadioButton" name="radioButtonHexOutput">
+           <property name="text">
+            <string>16进制输出</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0">
+          <widget class="QCheckBox" name="checkBoxOutputDate">
+           <property name="text">
+            <string>输出日期</string>
            </property>
           </widget>
          </item>
          <item row="6" column="1">
           <widget class="QCheckBox" name="checkBoxOutputTime">
            <property name="text">
-            <string>输出时间信息</string>
+            <string>输出时间</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="2">
+          <widget class="QCheckBox" name="checkBoxPause">
+           <property name="text">
+            <string>暂停输出</string>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="2">
+          <widget class="QPushButton" name="pushButtonSaveOutput">
+           <property name="text">
+            <string>保存输出</string>
+           </property>
+          </widget>
+         </item>
+         <item row="9" column="2">
+          <widget class="QPushButton" name="pushButtonClearOutput">
+           <property name="text">
+            <string>清空输出</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0" rowspan="2" colspan="3">
+          <widget class="Line" name="line">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
            </property>
           </widget>
          </item>
         </layout>
         <zorder>radioButtonBinOutput</zorder>
-        <zorder>radioButtonDecOutput</zorder>
-        <zorder>radioButtonAsciiOutput</zorder>
         <zorder>checkBoxOutputDate</zorder>
         <zorder>checkBoxOutputMS</zorder>
         <zorder>checkBoxOutputReceiveDataOnly</zorder>
         <zorder>radioButtonOctOutput</zorder>
+        <zorder>radioButtonDecOutput</zorder>
         <zorder>radioButtonHexOutput</zorder>
+        <zorder>radioButtonAsciiOutput</zorder>
         <zorder>radioButtonUtf8Output</zorder>
+        <zorder>checkBoxOutputTime</zorder>
+        <zorder>checkBoxPause</zorder>
         <zorder>pushButtonSaveOutput</zorder>
         <zorder>pushButtonClearOutput</zorder>
-        <zorder>checkBoxPause</zorder>
-        <zorder>checkBoxOutputTime</zorder>
+        <zorder>line</zorder>
        </widget>
       </item>
       <item>
-       <spacer name="verticalSpacer">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
+       <widget class="QGroupBox" name="groupBox_8">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
+        <property name="title">
+         <string>高级设置</string>
         </property>
-       </spacer>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QScrollArea" name="scrollArea">
+           <property name="verticalScrollBarPolicy">
+            <enum>Qt::ScrollBarAlwaysOff</enum>
+           </property>
+           <property name="horizontalScrollBarPolicy">
+            <enum>Qt::ScrollBarAlwaysOff</enum>
+           </property>
+           <property name="widgetResizable">
+            <bool>true</bool>
+           </property>
+           <widget class="QWidget" name="scrollAreaWidgetContents">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>266</width>
+              <height>215</height>
+             </rect>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_3">
+             <item>
+              <widget class="QCalendarWidget" name="calendarWidget"/>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+         </item>
+        </layout>
+       </widget>
       </item>
       <item>
        <widget class="QGroupBox" name="groupBox_5">
@@ -391,27 +468,6 @@
           <widget class="QPushButton" name="pushButtonReadInFile">
            <property name="text">
             <string>读入文件</string>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="1">
-          <widget class="QPushButton" name="pushButtonClearInput">
-           <property name="text">
-            <string>清空输入</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QRadioButton" name="radioButtonHexInput">
-           <property name="text">
-            <string>16进制输入</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QRadioButton" name="radioButtonDecInput">
-           <property name="text">
-            <string>十进制输入</string>
            </property>
           </widget>
          </item>
@@ -429,14 +485,28 @@
            </property>
           </widget>
          </item>
-         <item row="4" column="0">
-          <widget class="QCheckBox" name="checkBoxCycle">
+         <item row="5" column="1">
+          <widget class="QPushButton" name="pushButtonClearInput">
            <property name="text">
-            <string>循环发送(ms)</string>
+            <string>清空输入</string>
            </property>
           </widget>
          </item>
-         <item row="2" column="0">
+         <item row="0" column="2">
+          <widget class="QRadioButton" name="radioButtonDecInput">
+           <property name="text">
+            <string>十进制输入</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QRadioButton" name="radioButtonHexInput">
+           <property name="text">
+            <string>16进制输入</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
           <widget class="QRadioButton" name="radioButtonAsciiInput">
            <property name="text">
             <string>ASCII输入</string>
@@ -446,14 +516,14 @@
            </property>
           </widget>
          </item>
-         <item row="2" column="1">
+         <item row="1" column="2">
           <widget class="QRadioButton" name="radioButtonUtf8Input">
            <property name="text">
             <string>UTF-8输入</string>
            </property>
           </widget>
          </item>
-         <item row="4" column="1">
+         <item row="4" column="2">
           <widget class="QLineEdit" name="lineEditCycleTime">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
@@ -466,10 +536,24 @@
            </property>
           </widget>
          </item>
-         <item row="6" column="1">
+         <item row="4" column="0" colspan="2">
+          <widget class="QCheckBox" name="checkBoxCycle">
+           <property name="text">
+            <string>循环发送周期(ms)</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="2">
           <widget class="QPushButton" name="pushButtonSendData">
            <property name="text">
             <string>发送数据</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0" rowspan="2" colspan="3">
+          <widget class="Line" name="line_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
            </property>
           </widget>
          </item>
@@ -479,7 +563,38 @@
      </layout>
     </widget>
    </item>
-   <item row="0" column="1">
+   <item row="3" column="2">
+    <widget class="QLabel" name="labelTips">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1" colspan="2">
+    <widget class="QGroupBox" name="groupBox_3">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>168</height>
+      </size>
+     </property>
+     <property name="title">
+      <string>数据输入</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_4">
+      <item row="0" column="0">
+       <widget class="QTextEdit" name="textEditInputData"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="1" colspan="2">
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
       <string>数据输出</string>

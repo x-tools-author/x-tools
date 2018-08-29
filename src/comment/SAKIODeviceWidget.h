@@ -15,6 +15,7 @@
 #include <QHBoxLayout>
 #include <QDebug>
 #include <QApplication>
+#include <QSize>
 
 #include "SAKIODevice.h"
 #include "SAKIODeviceControler.h"
@@ -38,6 +39,8 @@ private:
     QHBoxLayout *customControlerLayout =    NULL;
     QTimer  *cycleTimer =                   NULL;
     Ui::SAKIODeviceWidget *ui =             NULL;
+
+    const QSize rxtxSize = QSize(18, 18);
     ///----------------------------------------------------------------
     void initUI();
     QByteArray dataBytes();
@@ -80,6 +83,9 @@ private slots:
 
     void resetSendDataCount();
     void resetReceiveDataCount();
+
+    virtual void updateRxImage();
+    virtual void updateTxImage();
 signals:
     void need2writeBytes(QByteArray data);
     void need2open();

@@ -90,3 +90,6 @@ winrt || linux-arm{
 }else {
     include(src/SerialPort/SAKSerialportAssistant.pri)
 }
+
+RESOURCES += \
+    resource/images.qrc
