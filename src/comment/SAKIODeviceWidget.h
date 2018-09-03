@@ -20,7 +20,7 @@
 #include "SAKIODevice.h"
 #include "SAKIODeviceControler.h"
 
-namespace Ui{
+namespace Ui {
 class SAKIODeviceWidget;
 }
 
@@ -41,6 +41,18 @@ private:
     Ui::SAKIODeviceWidget *ui =             NULL;
 
     const QSize rxtxSize = QSize(18, 18);
+
+    typedef enum __TextMode{
+        TextModeBin,
+        TextModeOct,
+        TextModeDec,
+        TextModeHex,
+        TextModeAscii,
+        TextModeUtf8
+    }TextMode;
+
+    TextMode outputTextMode = TextModeAscii;
+    TextMode inputTextMode  = TextModeAscii;
     ///----------------------------------------------------------------
     void initUI();
     QByteArray dataBytes();
@@ -49,10 +61,10 @@ private slots:
     void setCycleTime(QString time);
     void readCycleTime();
 
-    void setOutputMode();
+    void setOutputMode(int mode);
     void readOutputMode();
 
-    void setInputMode();
+    void setInputMode(int mode);
     void readInputMode();
 
     void openFile();
