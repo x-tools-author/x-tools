@@ -38,8 +38,10 @@ private:
     SAKIODeviceControler *controler =       NULL;
     QHBoxLayout *customControlerLayout =    NULL;
     QTimer  *cycleTimer =                   NULL;
+    QTimer  *delayTimer =                   NULL;
     Ui::SAKIODeviceWidget *ui =             NULL;
 
+    QByteArray dataTemp = "(null)";
     const QSize rxtxSize = QSize(18, 18);
 
     typedef enum __TextMode{
@@ -58,6 +60,12 @@ private:
     QByteArray dataBytes();
     void Connect();
 private slots:
+    void cancleBytesDelay();
+    void cancleCycle();
+
+    void setDelayTime(QString time);
+    void readDelayTime();
+
     void setCycleTime(QString time);
     void readCycleTime();
 
@@ -83,7 +91,9 @@ private slots:
     void afterDeviceClose();
 
     void cycleTimerTimeout();
+    void delayTimerTimeout();
     void checkedBoxCycleClicked(bool checked);
+    void checkedBoxDelayClicked(bool checked);
 
     void outputInfo(QString info, QString color = "black", bool prefix = true);
     void outputErrorString(QString str);

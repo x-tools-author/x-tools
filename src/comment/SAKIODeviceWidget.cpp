@@ -29,6 +29,7 @@ SAKIODeviceWidget::SAKIODeviceWidget(SAKIODevice *_device, SAKIODeviceControler 
     ,ui(new Ui::SAKIODeviceWidget)
     ,cycleTimer(new QTimer)
     ,customControlerLayout(new QHBoxLayout)
+    ,delayTimer(new QTimer)
 {
     ui->setupUi(this);
     Connect();
@@ -46,7 +47,8 @@ void SAKIODeviceWidget::initUI()
     ui->checkBoxOutputMS->setEnabled(true);
     ui->checkBoxOutputDate->setChecked(true);
     ui->checkBoxOutputTime->setChecked(true);
-    ui->lineEditCycleTime->setValidator(new QIntValidator(10, 24*60*60*1000, this));
+    ui->lineEditCycleTime->setValidator(new QIntValidator(10, 24*60*60*1000, ui->lineEditCycleTime));
+    ui->lineEditBytesDelayTime->setValidator(new QIntValidator(10, 24*60*60*1000, ui->lineEditBytesDelayTime));
 
 #if 0
     ui->pushButtonClearInput->setIcon(QApplication::style()->standardIcon(QStyle::SP_DialogResetButton));
@@ -55,9 +57,11 @@ void SAKIODeviceWidget::initUI()
     ui->pushButtonSaveOutput->setIcon(QApplication::style()->standardIcon(QStyle::SP_DirOpenIcon));
     ui->pushButtonRefresh->setIcon(QApplication::style()->standardIcon(QStyle::SP_BrowserReload));
 #endif
+
     readOutputMode();
     readInputMode();
     readCycleTime();
+    readDelayTime();
 
     ui->labelRX->setPixmap(QPixmap(":/images/RtRxGray.png").scaled(rxtxSize, Qt::KeepAspectRatio));
     ui->labelTX->setPixmap(QPixmap(":/images/RtRxGray.png").scaled(rxtxSize, Qt::KeepAspectRatio));
@@ -132,7 +136,9 @@ void SAKIODeviceWidget::Connect()
     connect(ui->pushButtonRefresh, SIGNAL(clicked(bool)), controler, SLOT(refresh()));
 
     connect(cycleTimer, SIGNAL(timeout()), this, SLOT(cycleTimerTimeout()));
+    connect(delayTimer, SIGNAL(timeout()), this, SLOT(delayTimerTimeout()));
     connect(ui->checkBoxCycle, SIGNAL(clicked(bool)), this, SLOT(checkedBoxCycleClicked(bool)));
+    connect(ui->checkBoxBytesDelay, SIGNAL(clicked(bool)), this, SLOT(checkedBoxDelayClicked(bool)));
     connect(device, SIGNAL(errorStr(QString)), this, SLOT(outputErrorString(QString)));
     connect(device, SIGNAL(infoStr(QString)), this, SLOT(outputInformationString(QString)));
     connect(ui->textEditInputData, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
@@ -154,6 +160,8 @@ void SAKIODeviceWidget::Connect()
 
     /// 循环周期
     connect(ui->lineEditCycleTime, SIGNAL(textChanged(QString)), this, SLOT(setCycleTime(QString)));
+    /// 字节间延时
+    connect(ui->lineEditBytesDelayTime, SIGNAL(textChanged(QString)), this, SLOT(setDelayTime(QString)));
 
     /// 指示灯
     connect(device, SIGNAL(bytesRead(QByteArray)), this, SLOT(updateRxImage()));
@@ -162,6 +170,10 @@ void SAKIODeviceWidget::Connect()
     /// 文本模式
     connect(ui->comboBoxInputMode, SIGNAL(currentIndexChanged(int)), this , SLOT(setInputMode(int)));
     connect(ui->comboBoxOutputMode, SIGNAL(currentIndexChanged(int)), this, SLOT(setOutputMode(int)));
+
+    /// 循环发送与字节间延时发送
+    connect(ui->checkBoxBytesDelay, SIGNAL(clicked(bool)), this, SLOT(cancleCycle()));
+    connect(ui->checkBoxCycle, SIGNAL(clicked(bool)), this, SLOT(cancleBytesDelay()));
 }
 
 void SAKIODeviceWidget::afterDeviceOpen()
@@ -179,6 +191,12 @@ void SAKIODeviceWidget::afterDeviceClose()
 
     if (cycleTimer->isActive()){
         cycleTimer->stop();
+        ui->pushButtonSendData->setEnabled(true);
+        ui->lineEditCycleTime->setEnabled(true);
+    }
+
+    if (delayTimer->isActive()){
+        delayTimer->stop();
         ui->pushButtonSendData->setEnabled(true);
         ui->lineEditCycleTime->setEnabled(true);
     }
@@ -213,9 +231,29 @@ void SAKIODeviceWidget::writeBytes()
     if (ui->checkBoxCycle->isChecked()){
         if (device->isOpen()){
             qlonglong cycleTime = ui->lineEditCycleTime->text().toLongLong();
+            (cycleTime == 0) ? (cycleTime = 1000) : (cycleTime = cycleTime);
             cycleTimer->start(cycleTime);
             ui->pushButtonSendData->setEnabled(false);
             ui->lineEditCycleTime->setEnabled(false);
+        }else {
+             outputInfo(tipStr, "red");
+        }
+    }else if(ui->checkBoxBytesDelay->isChecked()){
+        if (device->isOpen()){
+            dataTemp = dataBytes();
+            if (dataTemp.isEmpty()){
+                dataTemp = QByteArray("(null)");
+            }
+
+            /// 马上发送第一个字节，如果本身只有一个字节，停止后续操作。
+            delayTimerTimeout();
+            if (!dataTemp.isEmpty()){
+                qlonglong delayTime = ui->lineEditBytesDelayTime->text().toLongLong();
+                (delayTime == 0) ? (delayTime = 1000) : (delayTime = delayTime);
+                delayTimer->start(delayTime);
+                ui->pushButtonSendData->setEnabled(false);
+                ui->lineEditCycleTime->setEnabled(false);
+            }
         }else {
              outputInfo(tipStr, "red");
         }
@@ -239,13 +277,59 @@ void SAKIODeviceWidget::checkedBoxCycleClicked(bool checked)
     }
 }
 
+void SAKIODeviceWidget::checkedBoxDelayClicked(bool checked)
+{
+    if (checked){
+
+    }else {
+        delayTimer->stop();
+        ui->pushButtonSendData->setEnabled(true);
+        ui->lineEditCycleTime->setEnabled(true);
+    }
+}
+
 void SAKIODeviceWidget::cycleTimerTimeout()
 {
     if (device->isOpen()){
         emit need2writeBytes(dataBytes());
     }else {
+        cycleTimer->stop();
         outputInfo(tr("设备未就绪，本次发送操作取消！"), "red");
     }
+}
+
+void SAKIODeviceWidget::delayTimerTimeout()
+{
+    if (device->isOpen()){
+        if (dataTemp.isEmpty()){
+            delayTimer->stop();
+            ui->pushButtonSendData->setEnabled(true);
+            ui->lineEditCycleTime->setEnabled(true);
+        }else {
+            QByteArray array;
+            array[0] = dataTemp.at(0);
+            emit need2writeBytes(array);
+            dataTemp.remove(0, 1);
+            if (dataTemp.isEmpty()){
+                delayTimer->stop();
+                ui->pushButtonSendData->setEnabled(true);
+                ui->lineEditCycleTime->setEnabled(true);
+            }
+        }
+    }else {
+        delayTimer->stop();
+        outputInfo(tr("设备未就绪，本次发送操作取消！"), "red");
+    }
+}
+
+void SAKIODeviceWidget::cancleBytesDelay()
+{
+    ui->checkBoxBytesDelay->setChecked(false);
+}
+
+void SAKIODeviceWidget::cancleCycle()
+{
+    ui->checkBoxCycle->setChecked(false);
 }
 
 QByteArray SAKIODeviceWidget::dataBytes()
@@ -931,7 +1015,7 @@ void SAKIODeviceWidget::setCycleTime(QString time)
         sakSettings()->setValueUdpClientCycleTime(time);
     }else if (device->deviceType() == SAKIODevice::SAKDeviceTcp){
         sakSettings()->setValueTcpClientCycleTime(time);
-    }else if (device->deviceType() == SAKIODevice::SAKDeviceSerialport){
+    }else if (device->deviceType() == SAKIODevice::SAKDeviceTcpServer){
         sakSettings()->setValueTcpServerCycleTime(time);
     }else {
         qWarning() << "Unknow device type!";
@@ -948,7 +1032,7 @@ void SAKIODeviceWidget::readCycleTime()
         ui->lineEditCycleTime->setText(sakSettings()->valueUdpClientCycleTime());
     }else if (device->deviceType() == SAKIODevice::SAKDeviceTcp){
         ui->lineEditCycleTime->setText(sakSettings()->valueTcpClientCycleTime());
-    }else if (device->deviceType() == SAKIODevice::SAKDeviceSerialport){
+    }else if (device->deviceType() == SAKIODevice::SAKDeviceTcpServer){
         ui->lineEditCycleTime->setText(sakSettings()->valueTcpServerCycleTime());
     }else {
         ui->lineEditCycleTime->setText("1000");
@@ -977,4 +1061,38 @@ void SAKIODeviceWidget::updateRxImage()
     }
 
     b = !b;
+}
+
+void SAKIODeviceWidget::setDelayTime(QString time)
+{
+    if (device->deviceType() == SAKIODevice::SAKDeviceUnknow){
+        sakSettings()->setValueUnknowDelayTime(time);
+    }else if (device->deviceType() == SAKIODevice::SAKDeviceSerialport){
+        sakSettings()->setValueSerialportDelayTime(time);
+    }else if (device->deviceType() == SAKIODevice::SAKDeviceUdp){
+        sakSettings()->setValueUdpClientDelayTime(time);
+    }else if (device->deviceType() == SAKIODevice::SAKDeviceTcp){
+        sakSettings()->setValueTcpClientDelayTime(time);
+    }else if (device->deviceType() == SAKIODevice::SAKDeviceTcpServer){
+        sakSettings()->setValueTcpServerDelayTime(time);
+    }else {
+        qWarning() << "Unknow device type!";
+    }
+}
+
+void SAKIODeviceWidget::readDelayTime()
+{
+    if (device->deviceType() == SAKIODevice::SAKDeviceUnknow){
+        ui->lineEditBytesDelayTime->setText(sakSettings()->valueUnknowDelayTime());
+    }else if (device->deviceType() == SAKIODevice::SAKDeviceSerialport){
+        ui->lineEditBytesDelayTime->setText(sakSettings()->valueSerialportDelayTime());
+    }else if (device->deviceType() == SAKIODevice::SAKDeviceUdp){
+        ui->lineEditBytesDelayTime->setText(sakSettings()->valueUdpClientDelayTime());
+    }else if (device->deviceType() == SAKIODevice::SAKDeviceTcp){
+        ui->lineEditBytesDelayTime->setText(sakSettings()->valueTcpClientDelayTime());
+    }else if (device->deviceType() == SAKIODevice::SAKDeviceTcpServer){
+        ui->lineEditBytesDelayTime->setText(sakSettings()->valueTcpServerDelayTime());
+    }else {
+        ui->lineEditBytesDelayTime->setText("1000");
+    }
 }

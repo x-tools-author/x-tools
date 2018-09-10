@@ -364,6 +364,9 @@
          </item>
          <item row="4" column="0">
           <widget class="QLineEdit" name="lineEditBytesDelayTime">
+           <property name="text">
+            <string>100</string>
+           </property>
            <property name="placeholderText">
             <string>单位：毫秒</string>
            </property>

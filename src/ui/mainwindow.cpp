@@ -27,8 +27,8 @@ MainWindow::MainWindow(QWidget *parent) :
     layout->addWidget(mpTabWidget);
     ui->centralWidget->setLayout(layout);
 
-    this->resize(1280, 720);
-    this->setMinimumWidth(800);
+    this->resize(1024, 768);
+    this->setMinimumWidth(1024);
 
     AddTab();
     InitMenu();
