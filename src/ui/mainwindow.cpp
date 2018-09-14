@@ -9,6 +9,7 @@
 #include "TcpSAKIODeviceWidget.h"
 #include "TcpServerSAKIODeviceWidget.h"
 #include "SAKSettings.h"
+#include "nslookup.h"
 
 #ifndef SAK_NO_SERIALPORT_ASSISTANT
 #include "SerialportSAKIODeviceWidget.h"
@@ -26,14 +27,14 @@ MainWindow::MainWindow(QWidget *parent) :
     QHBoxLayout *layout = new QHBoxLayout;
     layout->addWidget(mpTabWidget);
     ui->centralWidget->setLayout(layout);
+    setWindowTitle(tr("瑞士军刀--开发调试工具集"));
 
     this->resize(1024, 768);
     this->setMinimumWidth(1024);
 
     AddTab();
     InitMenu();
-
-    setWindowTitle(tr("瑞士军刀--开发调试工具集"));
+    AddTool();
 }
 
 MainWindow::~MainWindow()
@@ -69,6 +70,11 @@ void MainWindow::AddTab()
     this->mpTabWidget->addTab(new Console, tr("终端"));
 }
 
+void MainWindow::AddTool()
+{
+    addTool(tr("域名解析工具"), new ToolsNsLookup);
+}
+
 void MainWindow::InitMenu()
 {
     /// 文件菜单
@@ -82,6 +88,7 @@ void MainWindow::InitMenu()
     /// 工具菜单
     QMenu *pToolMenu = new QMenu(tr("工具"));
     menuBar()->addMenu(pToolMenu);
+    toolsMenu = pToolMenu;
 
     /// 选项
     QMenu *optionMenu = new QMenu(tr("选项"));
@@ -148,4 +155,11 @@ void MainWindow::styleActionTriggered()
         setting->setValueApplicationStyle(sender()->objectName());
         QApplication::setStyle(QStyleFactory::create(QString("%1").arg(sender()->objectName())));
     }
+}
+
+void MainWindow::addTool(QString toolName, QWidget *toolWidget)
+{
+    QAction *action = new QAction(toolName);
+    toolsMenu->addAction(action);
+    connect(action, SIGNAL(triggered(bool)), toolWidget, SLOT(show()));
 }

@@ -78,10 +78,14 @@ INCLUDEPATH += \
     src/console \
     src/comment
 
+RESOURCES += \
+    resource/images.qrc
+
 #--------------------------------------------------------------------------------------------
 # 子项目
 include(QtSwissArmyKnifeConfigure.pri)
 include(QtSwissArmyKnifeSetup.pri)
+include(SAKTools.pri)
 
 # 取消该宏的定义可以将串口模块屏蔽
 winrt || linux-arm{
@@ -91,5 +95,4 @@ winrt || linux-arm{
     include(src/SerialPort/SAKSerialportAssistant.pri)
 }
 
-RESOURCES += \
-    resource/images.qrc
+

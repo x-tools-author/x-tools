@@ -33,10 +33,13 @@ public:
 private:
     QTabWidget *mpTabWidget = NULL;
     Ui::MainWindow *ui      = NULL;
+    QMenu *toolsMenu        = NULL;
     /// ----------------------------------------------------
     void AddTab();
     void InitMenu();
+    void AddTool();
 
+    void addTool(QString toolName, QWidget *toolWidget);
 private slots:
     void AboutQt();
     void About();
