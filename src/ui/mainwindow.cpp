@@ -138,8 +138,8 @@ void MainWindow::About()
                        .arg(tr("软件版本")).arg("1.0.0")
                        .arg(tr("编译时间")).arg(QString(__DATE__) + " " + QString(__TIME__))
                        .arg(tr("软件作者")).arg(tr("不想敲代码的程序员"))
-                       .arg(tr("联系邮箱")).arg("wh19931117@126.com")
-                       .arg(tr("软件定做")).arg(tr("软件定做，质量高，价格低，详情联系wh19931117@126.com")));
+                       .arg(tr("联系邮箱")).arg("wuhai1314@outlook.com")
+                       .arg(tr("个人博客")).arg(tr("wuhai.pro")));
 
 }
 
