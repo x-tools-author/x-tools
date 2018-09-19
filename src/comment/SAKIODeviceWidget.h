@@ -19,6 +19,7 @@
 
 #include "SAKIODevice.h"
 #include "SAKIODeviceControler.h"
+#include "AutoResponseSettingPanel.h"
 
 namespace Ui {
 class SAKIODeviceWidget;
@@ -34,12 +35,13 @@ public:
     void setCustomControler(SAKIODeviceControler *controler);
     void setRefreshPBtText(QString text);
 private:
-    SAKIODevice *device =                   NULL;
-    SAKIODeviceControler *controler =       NULL;
-    QHBoxLayout *customControlerLayout =    NULL;
-    QTimer  *cycleTimer =                   NULL;
-    QTimer  *delayTimer =                   NULL;
-    Ui::SAKIODeviceWidget *ui =             NULL;
+    AutoResponseSettingPanel *autoResponseSettingPanel =    NULL;
+    SAKIODevice *device =                                   NULL;
+    SAKIODeviceControler *controler =                       NULL;
+    QHBoxLayout *customControlerLayout =                    NULL;
+    QTimer  *cycleTimer =                                   NULL;
+    QTimer  *delayTimer =                                   NULL;
+    Ui::SAKIODeviceWidget *ui =                             NULL;
 
     QByteArray dataTemp = "(null)";
     const QSize rxtxSize = QSize(18, 18);

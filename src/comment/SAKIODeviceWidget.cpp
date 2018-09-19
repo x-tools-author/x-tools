@@ -30,6 +30,7 @@ SAKIODeviceWidget::SAKIODeviceWidget(SAKIODevice *_device, SAKIODeviceControler 
     ,cycleTimer(new QTimer)
     ,customControlerLayout(new QHBoxLayout)
     ,delayTimer(new QTimer)
+    ,autoResponseSettingPanel(new AutoResponseSettingPanel)
 {
     ui->setupUi(this);
     Connect();
@@ -174,6 +175,9 @@ void SAKIODeviceWidget::Connect()
     /// 循环发送与字节间延时发送
     connect(ui->checkBoxBytesDelay, SIGNAL(clicked(bool)), this, SLOT(cancleCycle()));
     connect(ui->checkBoxCycle, SIGNAL(clicked(bool)), this, SLOT(cancleBytesDelay()));
+
+    /// 弹出自动回复设置面板
+    connect(ui->pushButtonAutoRespone, SIGNAL(clicked(bool)), autoResponseSettingPanel, SLOT(show()));
 }
 
 void SAKIODeviceWidget::afterDeviceOpen()

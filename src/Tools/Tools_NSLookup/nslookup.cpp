@@ -19,7 +19,7 @@ ToolsNsLookup::ToolsNsLookup(QWidget *parent)
     ,hideErrorTimer(new QTimer(this))
 {
     ui->setupUi(this);
-
+    setWindowModality(Qt::ApplicationModal);
     Connect();
 }
 
@@ -37,6 +37,7 @@ void ToolsNsLookup::Connect()
 
 void ToolsNsLookup::lookupHost()
 {
+    ui->lineEditAddress->clear();
     QString url = ui->lineEditUrl->text();
     if (url.isEmpty()){
         outputMsg(tr("请输入域名，如：www.baidu.com"));
