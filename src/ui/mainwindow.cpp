@@ -73,7 +73,7 @@ void MainWindow::AddTab()
 
 void MainWindow::AddTool()
 {
-    addTool(tr("域名解析工具"), new ToolsNsLookup);
+    addTool(tr("域名转IP"), new ToolsNsLookup);
     addTool(tr("公网IP获取工具"), new GetPublicIPWidget);
 }
 
