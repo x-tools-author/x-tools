@@ -22,6 +22,7 @@ class AutoResponseSettingPanel;
 typedef struct {
     QString receiveDataString;
     QString sendDataString;
+    QString description;
     QListWidgetItem *listWidgetItem;
 }AutoResponseNode;
 
@@ -40,15 +41,15 @@ private:
     ///----------------------------------------------------------------------
     void Connect();
 private slots:
-    QString packetItemString(int index, QString receiveData, QString sendData);
+    QString packetItemString(QString receiveData, QString sendData);
     void resortTheAutoResponseItemList(int currentRow);
     void outputInfo(QString info, QString color = QString("green"));
     void clearOutputInfo();
 
-    void addAutoResponseItem(QString receiveData, QString sendData);
+    void addAutoResponseItem(QString receiveData, QString sendData, QString description);
     void deleteAutoResponseItem();
     void modifyAutoResponseItem();
-    void modifyResponseItem(QString receiveDataString, QString sendDataString);
+    void modifyResponseItem(QString receiveDataString, QString sendDataString, QString description);
 };
 
 #define ERR_STR_LIST_IS_EMPTY tr("当前列表为空，无法执行该操作！")

@@ -43,13 +43,14 @@ void AutoResponseItem::addAotoResponseItem()
 {
     QString receiveData = ui->lineEditReceiveData->text().trimmed();
     QString sendData = ui->lineEditSendData->text().trimmed();
+    QString Description = ui->lineEditDescription->text().trimmed();
 
     if (!receiveData.isEmpty() && !sendData.isEmpty()){
         if (isModify){
-            emit need2modifyResponseItem(receiveData, sendData);
+            emit need2modifyResponseItem(receiveData, sendData, Description);
             isModify = false;
         }else {
-            emit need2addAotoResponseItem(receiveData, sendData);
+            emit need2addAotoResponseItem(receiveData, sendData, Description);
         }
         this->close();
     }else {
@@ -89,10 +90,11 @@ void AutoResponseItem::clearOutputInfo()
     ui->labelInfo->clear();
 }
 
-void AutoResponseItem::setText(QString receiveDataString, QString sendDataString)
+void AutoResponseItem::setText(QString receiveDataString, QString sendDataString, QString description)
 {
     ui->lineEditReceiveData->setText(receiveDataString);
     ui->lineEditSendData->setText(sendDataString);
+    ui->lineEditDescription->setText(description);
 }
 
 void AutoResponseItem::showModify()

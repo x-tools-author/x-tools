@@ -23,7 +23,7 @@ public:
     AutoResponseItem(QWidget *parent = Q_NULLPTR);
     ~AutoResponseItem();
 
-    void setText(QString receiveDataString, QString sendDataString);
+    void setText(QString receiveDataString, QString sendDataString, QString description);
     void showModify();
 protected:
     void closeEvent(QCloseEvent *event);
@@ -39,8 +39,8 @@ private slots:
     void outputInfo(QString info, QString color = "green");
     void clearOutputInfo();
 signals:
-    void need2addAotoResponseItem(QString receiveDataString, QString sendDataString);
-    void need2modifyResponseItem(QString receiveDataString, QString sendDataString);
+    void need2addAotoResponseItem(QString receiveDataString, QString sendDataString, QString Description);
+    void need2modifyResponseItem(QString receiveDataString, QString sendDataString, QString Description);
 };
 
 #endif

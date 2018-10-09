@@ -42,12 +42,12 @@ void AutoResponseSettingPanel::Connect()
     connect(ui->pushButtonAdd, SIGNAL(clicked(bool)), autoResponseItemWidget, SLOT(show()));
     connect(ui->pushButtonDelete, SIGNAL(clicked(bool)), this, SLOT(deleteAutoResponseItem()));
     connect(ui->pushButtonModify, SIGNAL(clicked(bool)), this, SLOT(modifyAutoResponseItem()));
-    connect(autoResponseItemWidget, SIGNAL(need2addAotoResponseItem(QString,QString)), this, SLOT(addAutoResponseItem(QString,QString)));
-    connect(autoResponseItemWidget, SIGNAL(need2modifyResponseItem(QString,QString)), this, SLOT(modifyResponseItem(QString,QString)));
+    connect(autoResponseItemWidget, SIGNAL(need2addAotoResponseItem(QString,QString,QString)), this, SLOT(addAutoResponseItem(QString,QString,QString)));
+    connect(autoResponseItemWidget, SIGNAL(need2modifyResponseItem(QString,QString,QString)), this, SLOT(modifyResponseItem(QString,QString,QString)));
     connect(clearOutputInfoTimer, SIGNAL(timeout()), this, SLOT(clearOutputInfo()));
 }
 
-void AutoResponseSettingPanel::addAutoResponseItem(QString receiveData, QString sendData)
+void AutoResponseSettingPanel::addAutoResponseItem(QString receiveData, QString sendData, QString description)
 {
     if (autoResponseItemList.length() == 9999){
         outputInfo(tr("自动回复数量达到最大值，终止操作！"), QString("red"));
@@ -55,9 +55,11 @@ void AutoResponseSettingPanel::addAutoResponseItem(QString receiveData, QString 
         return;
     }
 
-    QString itemString = packetItemString(autoResponseItemList.length(), receiveData, sendData);
+    QString itemToolTipString = packetItemString(receiveData, sendData);
+    QString itemString = description;
 
-    QListWidgetItem *listWidgetItem = new QListWidgetItem(itemString, ui->listWidgetAutoResponse);
+    QListWidgetItem *listWidgetItem = new QListWidgetItem(QString("%1 ").arg(QString::number(autoResponseItemList.length() + 1), 4, '0') + itemString, ui->listWidgetAutoResponse);
+    listWidgetItem->setToolTip(itemToolTipString);
     if (ui->listWidgetAutoResponse->currentRow() < 0){
         ui->listWidgetAutoResponse->setCurrentRow(0);
     }
@@ -65,18 +67,16 @@ void AutoResponseSettingPanel::addAutoResponseItem(QString receiveData, QString 
     AutoResponseNode node;
     node.receiveDataString = receiveData;
     node.sendDataString = sendData;
+    node.description = description;
     node.listWidgetItem = listWidgetItem;
 
     autoResponseItemList.append(node);
 }
 
-QString AutoResponseSettingPanel::packetItemString(int index, QString receiveData, QString sendData)
+QString AutoResponseSettingPanel::packetItemString(QString receiveData, QString sendData)
 {
     QString itemString;
-    QString indexStr = QString("%1").arg(QString::number(index), 4, '0');
 
-    itemString.append(tr("序号") + QString(" ") + indexStr);
-    itemString.append("\n");
     itemString.append(tr("接收数据："));
     itemString.append("\n");
     itemString.append(receiveData);
@@ -138,7 +138,8 @@ void AutoResponseSettingPanel::resortTheAutoResponseItemList(int currentRow)
     }else {
         for (int index = 0; index < ui->listWidgetAutoResponse->count(); index++){
             ui->listWidgetAutoResponse->setCurrentRow(index);
-            ui->listWidgetAutoResponse->currentItem()->setText(packetItemString(index, autoResponseItemList.at(index).receiveDataString, autoResponseItemList.at(index).sendDataString));
+            ui->listWidgetAutoResponse->currentItem()->setText(QString("%1 ").arg(QString::number(index + 1), 4, '0') + autoResponseItemList.at(index).description);
+            ui->listWidgetAutoResponse->currentItem()->setToolTip(packetItemString(autoResponseItemList.at(index).receiveDataString, autoResponseItemList.at(index).sendDataString));
         }
 
         if (currentRow < 0){
@@ -160,22 +161,25 @@ void AutoResponseSettingPanel::modifyAutoResponseItem()
         need2modifyItemRow = currentRow;
         QString receiveDataString = autoResponseItemList.at(currentRow).receiveDataString;
         QString sendDataString = autoResponseItemList.at(currentRow).sendDataString;
-        autoResponseItemWidget->setText(receiveDataString, sendDataString);
+        QString description = autoResponseItemList.at(currentRow).description;
+        autoResponseItemWidget->setText(receiveDataString, sendDataString, description);
         autoResponseItemWidget->showModify();
     }
 }
 
-void AutoResponseSettingPanel::modifyResponseItem(QString receiveDataString, QString sendDataString)
+void AutoResponseSettingPanel::modifyResponseItem(QString receiveDataString, QString sendDataString, QString description)
 {
     QListWidgetItem *listWidgetItem = ui->listWidgetAutoResponse->currentItem();
     if ((listWidgetItem == NULL) || (listWidgetItem == nullptr)){
         return;
     }else {
-        listWidgetItem->setText(packetItemString(need2modifyItemRow, receiveDataString, sendDataString));
+        listWidgetItem->setText(QString("%1 ").arg(QString::number(ui->listWidgetAutoResponse->currentRow() + 1), 4, '0') + description);
+        listWidgetItem->setToolTip(packetItemString(receiveDataString, sendDataString));
 
         AutoResponseNode node;
         node.receiveDataString = receiveDataString;
         node.sendDataString = sendDataString;
+        node.description = description;
         node.listWidgetItem = autoResponseItemList.at(need2modifyItemRow).listWidgetItem;
         autoResponseItemList.replace(need2modifyItemRow, node);
     }

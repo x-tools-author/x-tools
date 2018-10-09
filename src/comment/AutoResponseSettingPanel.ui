@@ -17,7 +17,7 @@
    <item row="0" column="0" colspan="7">
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>只有收到的内容与设置的内容完全相等才会自动回复！</string>
+      <string>只有收到的内容与设置的内容完全相等才会自动回复！（鼠标悬停在条目上可查看详细内容）</string>
      </property>
     </widget>
    </item>
