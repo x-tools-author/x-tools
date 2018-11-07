@@ -20,8 +20,8 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow),
-    mpTabWidget(new QTabWidget)
+    mpTabWidget(new QTabWidget),
+    ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
@@ -30,7 +30,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->centralWidget->setLayout(layout);
     setWindowTitle(tr("瑞士军刀--开发调试工具集"));
 
-    this->resize(1024, 768);
+    this->resize(800, 600);
     this->setMinimumWidth(1024);
 
     AddTab();
@@ -137,7 +137,7 @@ void MainWindow::About()
                                                  "%9: %10")
                        .arg(tr("软件版本")).arg("1.0.0")
                        .arg(tr("编译时间")).arg(QString(__DATE__) + " " + QString(__TIME__))
-                       .arg(tr("软件作者")).arg(tr("不想敲代码的程序员"))
+                       .arg(tr("软件作者")).arg(tr("帅气有才华但不想敲代码的高级程序员"))
                        .arg(tr("联系邮箱")).arg("wuhai1314@outlook.com")
                        .arg(tr("个人博客")).arg(tr("wuhai.pro")));
 
@@ -151,7 +151,7 @@ void MainWindow::AboutQt()
 void MainWindow::styleActionTriggered()
 {
     SAKSettings *setting = sakSettings();
-    if (setting == NULL){
+    if (setting == nullptr){
         qWarning() << tr("配置文件未初始化！");
     }else {
         setting->setValueApplicationStyle(sender()->objectName());

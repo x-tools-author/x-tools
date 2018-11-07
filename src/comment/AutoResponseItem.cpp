@@ -15,10 +15,10 @@
 
 #include <QDateTime>
 
-AutoResponseItem::AutoResponseItem(QWidget *parent):
-    QWidget(parent),
-    ui(new Ui::AutoResponseItem),
-    clearOutputInfoTimer(new QTimer)
+AutoResponseItem::AutoResponseItem(QWidget *parent)
+    :QWidget(parent)
+    ,clearOutputInfoTimer(new QTimer)
+    ,ui(new Ui::AutoResponseItem)
 {
     ui->setupUi(this);
     setWindowModality(Qt::ApplicationModal);

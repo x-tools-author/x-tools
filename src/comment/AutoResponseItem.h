@@ -29,7 +29,7 @@ protected:
     void closeEvent(QCloseEvent *event);
 private:
     bool isModify = false;
-    QTimer *clearOutputInfoTimer = NULL;
+    QTimer *clearOutputInfoTimer = nullptr;
     Ui::AutoResponseItem *ui;
     ///-----------------------------------------------------------
     void Connect();
