@@ -35,16 +35,16 @@ public:
     void setCustomControler(SAKIODeviceControler *controler);
     void setRefreshPBtText(QString text);
 private:
-    AutoResponseSettingPanel *autoResponseSettingPanel =    NULL;
-    SAKIODevice *device =                                   NULL;
-    SAKIODeviceControler *controler =                       NULL;
-    QHBoxLayout *customControlerLayout =                    NULL;
-    QTimer  *cycleTimer =                                   NULL;
-    QTimer  *delayTimer =                                   NULL;
-    Ui::SAKIODeviceWidget *ui =                             NULL;
+    SAKIODevice                 *device                     = nullptr;
+    SAKIODeviceControler        *controler                  = nullptr;
+    AutoResponseSettingPanel    *autoResponseSettingPanel   = nullptr;
+    QTimer                      *cycleTimer                 = nullptr;
+    QHBoxLayout                 *customControlerLayout      = nullptr;
+    QTimer                      *delayTimer                 = nullptr;
+    Ui::SAKIODeviceWidget       *ui                         = nullptr;
 
-    QByteArray dataTemp = "(null)";
-    const QSize rxtxSize = QSize(18, 18);
+    QByteArray                  dataTemp                    = "(null)";
+    const QSize                 rxtxSize                    = QSize(18, 18);
 
     typedef enum __TextMode{
         TextModeBin,

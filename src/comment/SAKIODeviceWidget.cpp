@@ -26,11 +26,11 @@ SAKIODeviceWidget::SAKIODeviceWidget(SAKIODevice *_device, SAKIODeviceControler 
     :QWidget(parent)
     ,device(_device)
     ,controler(_controler)
-    ,ui(new Ui::SAKIODeviceWidget)
+    ,autoResponseSettingPanel(new AutoResponseSettingPanel)
     ,cycleTimer(new QTimer)
     ,customControlerLayout(new QHBoxLayout)
     ,delayTimer(new QTimer)
-    ,autoResponseSettingPanel(new AutoResponseSettingPanel)
+    ,ui(new Ui::SAKIODeviceWidget)
 {
     ui->setupUi(this);
     Connect();
@@ -235,8 +235,10 @@ void SAKIODeviceWidget::writeBytes()
     if (ui->checkBoxCycle->isChecked()){
         if (device->isOpen()){
             qlonglong cycleTime = ui->lineEditCycleTime->text().toLongLong();
-            (cycleTime == 0) ? (cycleTime = 1000) : (cycleTime = cycleTime);
-            cycleTimer->start(cycleTime);
+            if (cycleTime == 0){
+                cycleTime = 1000;
+            }
+            cycleTimer->start(static_cast<int>(cycleTime));
             ui->pushButtonSendData->setEnabled(false);
             ui->lineEditCycleTime->setEnabled(false);
         }else {
@@ -253,8 +255,10 @@ void SAKIODeviceWidget::writeBytes()
             delayTimerTimeout();
             if (!dataTemp.isEmpty()){
                 qlonglong delayTime = ui->lineEditBytesDelayTime->text().toLongLong();
-                (delayTime == 0) ? (delayTime = 1000) : (delayTime = delayTime);
-                delayTimer->start(delayTime);
+                if (delayTime == 0){
+                    delayTime = 1000;
+                }
+                delayTimer->start(static_cast<int>(delayTime));
                 ui->pushButtonSendData->setEnabled(false);
                 ui->lineEditCycleTime->setEnabled(false);
             }
@@ -350,22 +354,22 @@ QByteArray SAKIODeviceWidget::dataBytes()
     if (inputTextMode == TextModeBin){
         QStringList strList = str.split(' ');
         foreach (QString str, strList){
-            data.append((uint8_t)QString(str).toInt(NULL, 2));
+            data.append(static_cast<int8_t>(QString(str).toInt(nullptr, 2)));
         }
     }else if (inputTextMode == TextModeOct){
         QStringList strList = str.split(' ');
         foreach (QString str, strList){
-            data.append((uint8_t)QString(str).toInt(NULL, 8));
+            data.append(static_cast<int8_t>(QString(str).toInt(nullptr, 8)));
         }
     }else if (inputTextMode == TextModeDec){
         QStringList strList = str.split(' ');
         foreach (QString str, strList){
-            data.append((uint8_t)QString(str).toInt(NULL, 10));
+            data.append(static_cast<int8_t>(QString(str).toInt(nullptr, 10)));
         }
     }else if (inputTextMode == TextModeHex){
         QStringList strList = str.split(' ');
         foreach (QString str, strList){
-            data.append((uint8_t)QString(str).toInt(NULL, 16));
+            data.append(static_cast<int8_t>(QString(str).toInt(nullptr, 16)));
         }
     }else if (inputTextMode == TextModeAscii){
         data = ui->textEditInputData->toPlainText().toLatin1();
@@ -431,7 +435,7 @@ void SAKIODeviceWidget::textFormatControl()
             ui->textEditInputData->setText(strTemp.toUpper());
             ui->textEditInputData->moveCursor(QTextCursor::End);
         }else if(inputTextMode == TextModeAscii) { /// ascii
-            plaintext.remove(QRegExp("[^\u00-\u7f ]"));
+            plaintext.remove(QRegExp("[^\0u00-\u007f ]"));
             ui->textEditInputData->setText(plaintext);
             ui->textEditInputData->moveCursor(QTextCursor::End);
         }else if(inputTextMode == TextModeUtf8) {    /// utf-8
@@ -474,19 +478,19 @@ void SAKIODeviceWidget::bytesRead(QByteArray data)
 
     if (outputTextMode == TextModeBin){
         for (int i = 0; i < data.length(); i++){
-            str.append(QString("%1 ").arg(QString::number((uint8_t)data.at(i), 2), 8, '0'));
+            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(data.at(i)), 2), 8, '0'));
         }
     }else if (outputTextMode == TextModeOct){
         for (int i = 0; i < data.length(); i++){
-            str.append(QString("%1 ").arg(QString::number((uint8_t)data.at(i), 8), 2, '0'));
+            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(data.at(i)), 8), 8, '0'));
         }
     }else if (outputTextMode == TextModeDec){
         for (int i = 0; i < data.length(); i++){
-            str.append(QString("%1 ").arg(QString::number((uint8_t)data.at(i), 10), 2, '0'));
+            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(data.at(i)), 10), 8, '0'));
         }
     }else if (outputTextMode == TextModeHex){
         for (int i = 0; i < data.length(); i++){
-            str.append(QString("%1 ").arg(QString::number((uint8_t)data.at(i), 16), 2, '0'));
+            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(data.at(i)), 16), 8, '0'));
         }
     }else if (outputTextMode == TextModeAscii){
         str.append(QString(data));
@@ -564,11 +568,11 @@ void SAKIODeviceWidget::resetReceiveDataCount()
 
 void SAKIODeviceWidget::setOutputMode(int mode)
 {
-    if (sakSettings() == NULL){
+    if (sakSettings() == nullptr){
         qWarning() << "The settings function is not initialized yet!";
         return;
     }else{
-        outputTextMode = (TextMode)mode;
+        outputTextMode = static_cast<TextMode>(mode);
 
         if (outputTextMode == TextModeBin){
             if (device->deviceType() == SAKIODevice::SAKDeviceUnknow){
@@ -666,7 +670,7 @@ void SAKIODeviceWidget::readOutputMode()
 {
     QString tip = QString("Unknow output mode!");
 
-    if (sakSettings() == NULL){
+    if (sakSettings() == nullptr){
         qWarning() << "The settings function is not initialized yet!";
         return;
     }else {
@@ -788,11 +792,11 @@ void SAKIODeviceWidget::readOutputMode()
 
 void SAKIODeviceWidget::setInputMode(int mode)
 {
-    if (sakSettings() == NULL){
+    if (sakSettings() == nullptr){
         qWarning() << "The settings function is not initialized yet!";
         return;
     }else {
-        inputTextMode = (TextMode)mode;
+        inputTextMode = static_cast<TextMode>(mode);
         ui->textEditInputData->clear();
 
         if (inputTextMode == TextModeBin){
@@ -889,7 +893,7 @@ void SAKIODeviceWidget::readInputMode()
 {
     QString tip = QString("Unknow input mode!");
 
-    if (sakSettings() == NULL){
+    if (sakSettings() == nullptr){
         qWarning() << "The settings function is not initialized yet!";
         return;
     }else {
