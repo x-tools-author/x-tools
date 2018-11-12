@@ -51,6 +51,7 @@ private slots:
     void modifyAutoResponseItem();
     void modifyResponseItem(QString receiveDataString, QString sendDataString, QString description);
     void saveAsFile();
+    void readIn();
 };
 
 #define ERR_STR_LIST_IS_EMPTY tr("当前列表为空，无法执行该操作！")

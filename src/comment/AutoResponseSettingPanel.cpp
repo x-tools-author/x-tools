@@ -22,7 +22,9 @@
 #include <QDomProcessingInstruction>
 #include <QDomElement>
 #include <QTextStream>
+#include <QMessageBox>
 
+#define ITEM_ROOTNAME       "QtSwissArmyKnife-jdflkasdkjfoasdnhfoijasdhfg"
 #define ITEM_DESCRIPTION    "附加说明"
 #define ITEM_RECEIVING_DATA "接收数据"
 #define ITEM_SENDING_DATA   "回复数据"
@@ -57,6 +59,7 @@ void AutoResponseSettingPanel::Connect()
     connect(autoResponseItemWidget, SIGNAL(need2modifyResponseItem(QString,QString,QString)), this, SLOT(modifyResponseItem(QString,QString,QString)));
     connect(clearOutputInfoTimer, SIGNAL(timeout()), this, SLOT(clearOutputInfo()));
     connect(ui->pushButtonSaveAsFile, SIGNAL(clicked(bool)), this, SLOT(saveAsFile()));
+    connect(ui->pushButtonReadInFile, SIGNAL(clicked(bool)), this, SLOT(readIn()));
 }
 
 void AutoResponseSettingPanel::addAutoResponseItem(QString receiveData, QString sendData, QString description)
@@ -214,7 +217,7 @@ void AutoResponseSettingPanel::saveAsFile()
     doc.appendChild(instruction);
 
     /// 添加根节点
-    QDomElement root = doc.createElement("root");
+    QDomElement root = doc.createElement(ITEM_ROOTNAME);
     doc.appendChild(root);
 
     QDomElement item;
@@ -243,4 +246,40 @@ void AutoResponseSettingPanel::saveAsFile()
     QTextStream out_stream(&file);
     doc.save(out_stream,4);
     file.close();
+}
+
+void AutoResponseSettingPanel::readIn()
+{
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Save File"), "", tr("xml (*.xml)"));
+    QFile file(fileName);
+    if (!file.open(QFile::ReadOnly)){
+        qWarning() << file.errorString();
+        return;
+    }
+
+    QDomDocument doc;
+    if(!doc.setContent(&file)){
+        file.close();
+        return;
+    }
+    file.close();
+
+    QDomElement root = doc.documentElement();
+    if (root.nodeName().compare(ITEM_ROOTNAME) != 0){
+        QMessageBox::warning(this, tr("文件格式不相符"), tr("该文件的文件内容格不能被本软件读取，请检查后再试！"));
+        return;
+    }
+
+    ui->listWidgetAutoResponse->clear();
+    autoResponseItemList.clear();
+
+    QDomNode node = root.firstChild();
+    while(!node.isNull()) {
+        if(node.isElement()){
+            QDomElement e = node.toElement();
+            QDomNodeList list = e.childNodes();
+            addAutoResponseItem(list.at(1).toElement().text(), list.at(2).toElement().text(), list.at(0).toElement().text());
+        }
+        node = node.nextSibling();
+    }
 }
