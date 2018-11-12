@@ -20,8 +20,8 @@ public:
     SerialportSAKIODeviceWidget(SerialportSAKIODevice *_device, SerialportSAKIODeviceControler *_controler, QWidget *parent = Q_NULLPTR);
     ~SerialportSAKIODeviceWidget();
 public:
-    SerialportSAKIODevice *device = NULL;
-    SerialportSAKIODeviceControler *controler = NULL;
+    SerialportSAKIODevice *device = nullptr;
+    SerialportSAKIODeviceControler *controler = nullptr;
 };
 
 #endif  // SERIALPORTSAKIODEVICEWIDGET_H

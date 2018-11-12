@@ -15,6 +15,17 @@
 
 #include <QApplication>
 #include <QDateTime>
+#include <QFileDialog>
+#include <QFile>
+#include <QDebug>
+#include <QDomDocument>
+#include <QDomProcessingInstruction>
+#include <QDomElement>
+#include <QTextStream>
+
+#define ITEM_DESCRIPTION    "附加说明"
+#define ITEM_RECEIVING_DATA "接收数据"
+#define ITEM_SENDING_DATA   "回复数据"
 
 AutoResponseSettingPanel::AutoResponseSettingPanel(QWidget *parent):
     QWidget(parent),
@@ -45,6 +56,7 @@ void AutoResponseSettingPanel::Connect()
     connect(autoResponseItemWidget, SIGNAL(need2addAotoResponseItem(QString,QString,QString)), this, SLOT(addAutoResponseItem(QString,QString,QString)));
     connect(autoResponseItemWidget, SIGNAL(need2modifyResponseItem(QString,QString,QString)), this, SLOT(modifyResponseItem(QString,QString,QString)));
     connect(clearOutputInfoTimer, SIGNAL(timeout()), this, SLOT(clearOutputInfo()));
+    connect(ui->pushButtonSaveAsFile, SIGNAL(clicked(bool)), this, SLOT(saveAsFile()));
 }
 
 void AutoResponseSettingPanel::addAutoResponseItem(QString receiveData, QString sendData, QString description)
@@ -118,7 +130,7 @@ void AutoResponseSettingPanel::deleteAutoResponseItem()
         return;
     }else {
         QListWidgetItem *listWidgetItem = ui->listWidgetAutoResponse->currentItem();
-        if ((listWidgetItem == NULL) || (listWidgetItem == nullptr)){
+        if ((listWidgetItem == nullptr) || (listWidgetItem == nullptr)){
             return;
         }else {
             int index = ui->listWidgetAutoResponse->currentRow();
@@ -170,7 +182,7 @@ void AutoResponseSettingPanel::modifyAutoResponseItem()
 void AutoResponseSettingPanel::modifyResponseItem(QString receiveDataString, QString sendDataString, QString description)
 {
     QListWidgetItem *listWidgetItem = ui->listWidgetAutoResponse->currentItem();
-    if ((listWidgetItem == NULL) || (listWidgetItem == nullptr)){
+    if ((listWidgetItem == nullptr) || (listWidgetItem == nullptr)){
         return;
     }else {
         listWidgetItem->setText(QString("%1 ").arg(QString::number(ui->listWidgetAutoResponse->currentRow() + 1), 4, '0') + description);
@@ -183,4 +195,52 @@ void AutoResponseSettingPanel::modifyResponseItem(QString receiveDataString, QSt
         node.listWidgetItem = autoResponseItemList.at(need2modifyItemRow).listWidgetItem;
         autoResponseItemList.replace(need2modifyItemRow, node);
     }
+}
+
+void AutoResponseSettingPanel::saveAsFile()
+{
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Save File"), "", tr("xml (*.xml)"));
+    QFile file(fileName);
+    if (!file.open(QFile::WriteOnly | QFile::Truncate)){
+        qWarning() << file.errorString();
+        return;
+    }
+
+    QDomDocument doc;
+
+    /// 写入qml文件头
+    QDomProcessingInstruction instruction;
+    instruction = doc.createProcessingInstruction("xml","version=\"1.0\" encoding=\"UTF-8\"");
+    doc.appendChild(instruction);
+
+    /// 添加根节点
+    QDomElement root = doc.createElement("root");
+    doc.appendChild(root);
+
+    QDomElement item;
+    QDomElement itemChild;
+    QDomText itemChildText;
+    for (int index = 0; index < ui->listWidgetAutoResponse->count(); index++){
+        item = doc.createElement("Item");
+        itemChild = doc.createElement(ITEM_DESCRIPTION);
+        itemChildText = doc.createTextNode(autoResponseItemList.at(index).description);
+        itemChild.appendChild(itemChildText);
+        item.appendChild(itemChild);
+
+        itemChild   = doc.createElement(ITEM_RECEIVING_DATA);
+        itemChildText  = doc.createTextNode(autoResponseItemList.at(index).receiveDataString);
+        itemChild.appendChild(itemChildText);
+        item.appendChild(itemChild);
+
+        itemChild   = doc.createElement(ITEM_SENDING_DATA);
+        itemChildText  = doc.createTextNode(autoResponseItemList.at(index).sendDataString);
+        itemChild.appendChild(itemChildText);
+        item.appendChild(itemChild);
+
+        root.appendChild(item);
+    }
+    /// 保存为文件，缩进四空格
+    QTextStream out_stream(&file);
+    doc.save(out_stream,4);
+    file.close();
 }

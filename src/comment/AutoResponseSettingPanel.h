@@ -34,10 +34,10 @@ public:
     ~AutoResponseSettingPanel();
 private:
     int need2modifyItemRow = 0;
-    QTimer *clearOutputInfoTimer = NULL;
-    AutoResponseItem *autoResponseItemWidget;
-    QList <AutoResponseNode> autoResponseItemList;
     Ui::AutoResponseSettingPanel *ui;
+    QList <AutoResponseNode> autoResponseItemList;
+    AutoResponseItem *autoResponseItemWidget;
+    QTimer *clearOutputInfoTimer = nullptr;
     ///----------------------------------------------------------------------
     void Connect();
 private slots:
@@ -50,6 +50,7 @@ private slots:
     void deleteAutoResponseItem();
     void modifyAutoResponseItem();
     void modifyResponseItem(QString receiveDataString, QString sendDataString, QString description);
+    void saveAsFile();
 };
 
 #define ERR_STR_LIST_IS_EMPTY tr("当前列表为空，无法执行该操作！")
