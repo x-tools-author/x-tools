@@ -21,11 +21,13 @@
 #define UNKNOWOUTPUTMODE            "Unknow/outputMode"
 #define UNKNOWCYCLETIME             "Unknow/cycleTime"
 #define UNKNOWDELAYTIME             "Unknow/delayTime"
+#define UNKNOWAUTORESPONSEFLAG      "Unknow/autoResponse"
 
 #define SERIALPORTINPUTMODE         "Serialport/inputMode"
 #define SERIALPORTOUTPUTMODE        "Serialport/outputMode"
 #define SERIALPORTCYCLETIME         "Serialport/cycleTime"
 #define SERIALPORTDELAYTIME         "Serialport/delayTime"
+#define SERIALPORTAUTORESPONSEFLAG  "Serialport/autoResponse"
 
 #define UDPCLIENTINPUTMODE          "UdpClient/inputMode"
 #define UDPCLIENTOUTPUTMODE         "UdpClient/outputMode"
@@ -34,6 +36,7 @@
 #define UDPCLIENTLOCALPORT          "UdpClient/localPort"
 #define UDPCLIENTPEERPORT           "UdpClient/peerPort"
 #define UDPCLIENTPEERADDRESS        "UdpClient/peerAddress"
+#define UDPCLIENTAUTORESPONSEFLAG   "UdpClient/autoResponse"
 
 #define TCPCLIENTINPUTMODE          "TcpClient/inputMode"
 #define TCPCLIENTOUTPUTMODE         "TcpClient/outputMode"
@@ -42,6 +45,7 @@
 #define TCPCLIENTLOCALPORT          "TcpClient/localPort"
 #define TCPCLIENTPEERPORT           "TcpClient/peerPort"
 #define TCPCLIENTPEERADDRESS        "TcpClient/peerAddress"
+#define TCPCLIENTAUTORESPONSEFLAG   "TcpClient/autoResponse"
 
 #define TCPSERVERINPUTMODE          "TcpServer/inputMode"
 #define TCPSERVEROUTPUTMODE         "TcpServer/outputMode"
@@ -49,6 +53,7 @@
 #define TCPSERVERDELAYTIME          "TcpServer/delayTime"
 #define TCPSERVERADDRESS            "TcpServer/serverAddress"
 #define TCPSERVERPORT               "TcpServer/serverPort"
+#define TCPSERVERAUTORESPONSEFLAG   "TcpServer/autoResponse"
 
 #define MODEBIN                     "bin"
 #define MODEOCT                     "oct"
@@ -78,6 +83,8 @@ public:
     void setValueUnknowCycleTime(QString time)              {setValue(UNKNOWCYCLETIME, time);}
     QString valueUnknowDelayTime()                          {return value(UNKNOWDELAYTIME).toString();}
     void setValueUnknowDelayTime(QString time)              {setValue(UNKNOWDELAYTIME, time);}
+    QString valueUnknowAutoResponseFlag()                   {return value(UNKNOWAUTORESPONSEFLAG).toString();}
+    void setValueUnknowAutoResponseFlag(QString flag)       {setValue(UNKNOWAUTORESPONSEFLAG, flag);}
 
     /// 串口配置选项
     QString valueSerialportInputMode()                      {return value(SERIALPORTINPUTMODE).toString();}
@@ -88,6 +95,8 @@ public:
     void setValueSerialportCycleTime(QString time)          {setValue(SERIALPORTCYCLETIME, time);}
     QString valueSerialportDelayTime()                      {return value(SERIALPORTDELAYTIME).toString();}
     void setValueSerialportDelayTime(QString time)          {setValue(SERIALPORTDELAYTIME, time);}
+    QString valueSerialportAutoResponseFlag()               {return value(SERIALPORTAUTORESPONSEFLAG).toString();}
+    void setvalueSerialportAutoResponseFlag(QString flag)   {setValue(SERIALPORTAUTORESPONSEFLAG, flag);}
 
     /// UDP 客户端配置选项
     QString valueUdpClientInputMode()                       {return value(UDPCLIENTINPUTMODE).toString();}
@@ -104,6 +113,8 @@ public:
     void setValueUdpClientPeerPort(QString port)            {setValue(UDPCLIENTPEERPORT, port);}
     QString valueUdpClientPeerAddress()                     {return value(UDPCLIENTPEERADDRESS).toString();}
     void setValueUdpClientPeerAddress(QString address)      {setValue(UDPCLIENTPEERADDRESS, address);}
+    QString valueUdpClientAutoResponseFlag()                {return value(UDPCLIENTAUTORESPONSEFLAG).toString();}
+    void setValueUdpClientAutoResponseFlag(QString flag)    {setValue(UDPCLIENTAUTORESPONSEFLAG, flag);}
 
     /// TCP 客户端
     QString valueTcpClientInputMode()                       {return value(TCPCLIENTINPUTMODE).toString();}
@@ -120,6 +131,8 @@ public:
     void setValueTcpClientPeerPort(QString port)            {setValue(TCPCLIENTPEERPORT, port);}
     QString valueTcpClientPeerAddress()                     {return value(TCPCLIENTPEERADDRESS).toString();}
     void setValueTcpClientPeerAddress(QString address)      {setValue(TCPCLIENTPEERADDRESS, address);}
+    QString valueTcpClientAutoResponseFlag()                {return value(TCPCLIENTAUTORESPONSEFLAG).toString();}
+    void setValueTcpClientAutoResponseFlag(QString flag)    {setValue(TCPCLIENTAUTORESPONSEFLAG, flag);}
 
     /// TCP 服务器
     QString valueTcpServerInputMode()                       {return value(TCPSERVERINPUTMODE).toString();}
@@ -134,6 +147,8 @@ public:
     void setValueTcpServerServerAddress(QString address)    {setValue(TCPSERVERINPUTMODE, address);}
     QString valueTcpServerServerPort()                      {return value(TCPSERVERPORT).toString();}
     void setValueTcpServerServerPort(QString port)          {setValue(TCPSERVERPORT, port);}
+    QString valueTcpServerAutoResponseFlag()                {return value(TCPSERVERAUTORESPONSEFLAG).toString();}
+    void setvalueTcpServerAutoResponseFlag(QString flag)    {setValue(TCPSERVERAUTORESPONSEFLAG, flag);}
 
 };
 

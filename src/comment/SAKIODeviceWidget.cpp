@@ -63,6 +63,7 @@ void SAKIODeviceWidget::initUI()
     readInputMode();
     readCycleTime();
     readDelayTime();
+    readAutoResponseFlag();
 
     ui->labelRX->setPixmap(QPixmap(":/images/RtRxGray.png").scaled(rxtxSize, Qt::KeepAspectRatio));
     ui->labelTX->setPixmap(QPixmap(":/images/RtRxGray.png").scaled(rxtxSize, Qt::KeepAspectRatio));
@@ -178,6 +179,9 @@ void SAKIODeviceWidget::Connect()
 
     /// 弹出自动回复设置面板
     connect(ui->pushButtonAutoRespone, SIGNAL(clicked(bool)), autoResponseSettingPanel, SLOT(show()));
+
+    /// 自动回复
+    connect(autoResponseSettingPanel, SIGNAL(autoResponseFlagChanged(bool)), this, SLOT(setAutoResponseFlag(bool)));
 }
 
 void SAKIODeviceWidget::afterDeviceOpen()
@@ -1102,5 +1106,39 @@ void SAKIODeviceWidget::readDelayTime()
         ui->lineEditBytesDelayTime->setText(sakSettings()->valueTcpServerDelayTime());
     }else {
         ui->lineEditBytesDelayTime->setText("1000");
+    }
+}
+
+void SAKIODeviceWidget::setAutoResponseFlag(bool enableAutoResponse)
+{
+    if (device->deviceType() == SAKIODevice::SAKDeviceUnknow){
+        sakSettings()->setValueUnknowAutoResponseFlag(enableAutoResponse ? "true" : "false");
+    }else if (device->deviceType() == SAKIODevice::SAKDeviceSerialport){
+        sakSettings()->setvalueSerialportAutoResponseFlag(enableAutoResponse ? "true" : "false");
+    }else if (device->deviceType() == SAKIODevice::SAKDeviceUdp){
+        sakSettings()->setValueUdpClientAutoResponseFlag(enableAutoResponse ? "true" : "false");
+    }else if (device->deviceType() == SAKIODevice::SAKDeviceTcp){
+        sakSettings()->setValueTcpClientAutoResponseFlag(enableAutoResponse ? "true" : "false");
+    }else if (device->deviceType() == SAKIODevice::SAKDeviceTcpServer){
+        sakSettings()->setvalueTcpServerAutoResponseFlag(enableAutoResponse ? "true" : "false");
+    }else {
+        qWarning() << "Unknow device type!";
+    }
+}
+
+void SAKIODeviceWidget::readAutoResponseFlag()
+{
+    if (device->deviceType() == SAKIODevice::SAKDeviceUnknow){
+        autoResponseSettingPanel->setAutoResponseFlag((sakSettings()->valueUnknowAutoResponseFlag().compare("true") == 0) ? true : false);
+    }else if (device->deviceType() == SAKIODevice::SAKDeviceSerialport){
+        autoResponseSettingPanel->setAutoResponseFlag((sakSettings()->valueSerialportAutoResponseFlag().compare("true") == 0) ? true : false);
+    }else if (device->deviceType() == SAKIODevice::SAKDeviceUdp){
+        autoResponseSettingPanel->setAutoResponseFlag((sakSettings()->valueUdpClientAutoResponseFlag().compare("true") == 0) ? true : false);
+    }else if (device->deviceType() == SAKIODevice::SAKDeviceTcp){
+        autoResponseSettingPanel->setAutoResponseFlag((sakSettings()->valueTcpClientAutoResponseFlag().compare("true") == 0) ? true : false);
+    }else if (device->deviceType() == SAKIODevice::SAKDeviceTcpServer){
+        autoResponseSettingPanel->setAutoResponseFlag((sakSettings()->valueTcpServerAutoResponseFlag().compare("true") == 0) ? true : false);
+    }else {
+        autoResponseSettingPanel->setAutoResponseFlag(false);
     }
 }

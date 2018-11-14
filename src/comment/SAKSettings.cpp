@@ -12,7 +12,7 @@
 
 #include "SAKSettings.h"
 
-SAKSettings *SAKSettings::_sakSettings = NULL;
+SAKSettings *SAKSettings::_sakSettings = nullptr;
 SAKSettings *sakSettings()
 {
     return SAKSettings::_sakSettings;

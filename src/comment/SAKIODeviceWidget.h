@@ -62,6 +62,9 @@ private:
     QByteArray dataBytes();
     void Connect();
 private slots:
+    virtual void updateRxImage();
+    virtual void updateTxImage();
+
     void cancleBytesDelay();
     void cancleCycle();
 
@@ -108,8 +111,8 @@ private slots:
     void resetSendDataCount();
     void resetReceiveDataCount();
 
-    virtual void updateRxImage();
-    virtual void updateTxImage();
+    void setAutoResponseFlag(bool enableAutoResponse);
+    void readAutoResponseFlag();
 signals:
     void need2writeBytes(QByteArray data);
     void need2open();

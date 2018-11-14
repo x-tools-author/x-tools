@@ -60,6 +60,7 @@ void AutoResponseSettingPanel::Connect()
     connect(clearOutputInfoTimer, SIGNAL(timeout()), this, SLOT(clearOutputInfo()));
     connect(ui->pushButtonSaveAsFile, SIGNAL(clicked(bool)), this, SLOT(saveAsFile()));
     connect(ui->pushButtonReadInFile, SIGNAL(clicked(bool)), this, SLOT(readIn()));
+    connect(ui->checkBoxAutoResponse, SIGNAL(clicked(bool)), this, SLOT(enableAutoResponseBtClicked()));
 }
 
 void AutoResponseSettingPanel::addAutoResponseItem(QString receiveData, QString sendData, QString description)
@@ -282,4 +283,14 @@ void AutoResponseSettingPanel::readIn()
         }
         node = node.nextSibling();
     }
+}
+
+void AutoResponseSettingPanel::enableAutoResponseBtClicked()
+{
+    emit autoResponseFlagChanged(ui->checkBoxAutoResponse->isChecked());
+}
+
+void AutoResponseSettingPanel::setAutoResponseFlag(bool enableAutoResponse)
+{
+    ui->checkBoxAutoResponse->setChecked(enableAutoResponse);
 }

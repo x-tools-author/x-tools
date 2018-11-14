@@ -32,6 +32,8 @@ class AutoResponseSettingPanel:public QWidget
 public:
     AutoResponseSettingPanel(QWidget *parent = Q_NULLPTR);
     ~AutoResponseSettingPanel();
+
+    void setAutoResponseFlag(bool enableAutoResponse);
 private:
     int need2modifyItemRow = 0;
     Ui::AutoResponseSettingPanel *ui;
@@ -52,6 +54,9 @@ private slots:
     void modifyResponseItem(QString receiveDataString, QString sendDataString, QString description);
     void saveAsFile();
     void readIn();
+    void enableAutoResponseBtClicked();
+signals:
+    void autoResponseFlagChanged(bool enableAutoResponse);
 };
 
 #define ERR_STR_LIST_IS_EMPTY tr("当前列表为空，无法执行该操作！")
