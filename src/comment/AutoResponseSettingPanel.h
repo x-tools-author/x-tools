@@ -51,7 +51,8 @@ private slots:
     void addAutoResponseItem(QString receiveData, QString sendData, QString description);
     void deleteAutoResponseItem();
     void modifyAutoResponseItem();
-    void modifyResponseItem(QString receiveDataString, QString sendDataString, QString description);
+    void modifyAutoResponseItem(QString receiveDataString, QString sendDataString, QString description);
+    void clearAutoResponseItem();
     void saveAsFile();
     void readIn();
     void enableAutoResponseBtClicked();

@@ -56,7 +56,8 @@ void AutoResponseSettingPanel::Connect()
     connect(ui->pushButtonDelete, SIGNAL(clicked(bool)), this, SLOT(deleteAutoResponseItem()));
     connect(ui->pushButtonModify, SIGNAL(clicked(bool)), this, SLOT(modifyAutoResponseItem()));
     connect(autoResponseItemWidget, SIGNAL(need2addAotoResponseItem(QString,QString,QString)), this, SLOT(addAutoResponseItem(QString,QString,QString)));
-    connect(autoResponseItemWidget, SIGNAL(need2modifyResponseItem(QString,QString,QString)), this, SLOT(modifyResponseItem(QString,QString,QString)));
+    connect(autoResponseItemWidget, SIGNAL(need2modifyResponseItem(QString,QString,QString)), this, SLOT(modifyAutoResponseItem(QString,QString,QString)));
+    connect(ui->pushButtonClear, SIGNAL(clicked(bool)), this, SLOT(clearAutoResponseItem()));
     connect(clearOutputInfoTimer, SIGNAL(timeout()), this, SLOT(clearOutputInfo()));
     connect(ui->pushButtonSaveAsFile, SIGNAL(clicked(bool)), this, SLOT(saveAsFile()));
     connect(ui->pushButtonReadInFile, SIGNAL(clicked(bool)), this, SLOT(readIn()));
@@ -183,7 +184,7 @@ void AutoResponseSettingPanel::modifyAutoResponseItem()
     }
 }
 
-void AutoResponseSettingPanel::modifyResponseItem(QString receiveDataString, QString sendDataString, QString description)
+void AutoResponseSettingPanel::modifyAutoResponseItem(QString receiveDataString, QString sendDataString, QString description)
 {
     QListWidgetItem *listWidgetItem = ui->listWidgetAutoResponse->currentItem();
     if ((listWidgetItem == nullptr) || (listWidgetItem == nullptr)){
@@ -199,6 +200,12 @@ void AutoResponseSettingPanel::modifyResponseItem(QString receiveDataString, QSt
         node.listWidgetItem = autoResponseItemList.at(need2modifyItemRow).listWidgetItem;
         autoResponseItemList.replace(need2modifyItemRow, node);
     }
+}
+
+void AutoResponseSettingPanel::clearAutoResponseItem()
+{
+    ui->listWidgetAutoResponse->clear();
+    autoResponseItemList.clear();
 }
 
 void AutoResponseSettingPanel::saveAsFile()

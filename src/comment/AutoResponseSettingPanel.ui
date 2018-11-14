@@ -14,21 +14,21 @@
    <string>添加自动回复设置</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0" colspan="7">
+   <item row="0" column="0" colspan="8">
     <widget class="QLabel" name="label">
      <property name="text">
       <string>只有收到的内容与设置的内容完全相等才会自动回复！（鼠标悬停在条目上可查看详细内容）</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="6">
+   <item row="3" column="7">
     <widget class="QPushButton" name="pushButtonSaveAsFile">
      <property name="text">
       <string>保存为文件</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="7">
+   <item row="2" column="0" colspan="8">
     <widget class="QScrollArea" name="scrollArea">
      <property name="widgetResizable">
       <bool>true</bool>
@@ -65,10 +65,10 @@
      </widget>
     </widget>
    </item>
-   <item row="3" column="5">
-    <widget class="QPushButton" name="pushButtonReadInFile">
+   <item row="3" column="2">
+    <widget class="QPushButton" name="pushButtonAdd">
      <property name="text">
-      <string>读入文件</string>
+      <string>添加</string>
      </property>
     </widget>
    </item>
@@ -85,10 +85,17 @@
      </property>
     </spacer>
    </item>
-   <item row="3" column="2">
-    <widget class="QPushButton" name="pushButtonAdd">
+   <item row="3" column="6">
+    <widget class="QPushButton" name="pushButtonReadInFile">
      <property name="text">
-      <string>添加</string>
+      <string>读入文件</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QCheckBox" name="checkBoxAutoResponse">
+     <property name="text">
+      <string>启用自动回复</string>
      </property>
     </widget>
    </item>
@@ -106,14 +113,7 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="0">
-    <widget class="QCheckBox" name="checkBoxAutoResponse">
-     <property name="text">
-      <string>启用自动回复</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0" colspan="7">
+   <item row="4" column="0" colspan="8">
     <widget class="QFrame" name="frame">
      <property name="minimumSize">
       <size>
@@ -186,8 +186,32 @@
      </layout>
     </widget>
    </item>
+   <item row="3" column="5">
+    <widget class="QPushButton" name="pushButtonClear">
+     <property name="text">
+      <string>清空</string>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButtonClear</sender>
+   <signal>clicked()</signal>
+   <receiver>listWidgetAutoResponse</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>475</x>
+     <y>462</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>475</x>
+     <y>379</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
