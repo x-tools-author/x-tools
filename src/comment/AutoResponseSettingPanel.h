@@ -12,6 +12,7 @@
 #include <QWidget>
 #include <QListWidgetItem>
 #include <QTimer>
+#include <QStringList>
 
 #include "AutoResponseItem.h"
 
@@ -34,6 +35,8 @@ public:
     ~AutoResponseSettingPanel();
 
     void setAutoResponseFlag(bool enableAutoResponse);
+    bool autoResponseFlag();
+    QList <AutoResponseNode> autoResponseItems(){return  autoResponseItemList;}
 private:
     int need2modifyItemRow = 0;
     Ui::AutoResponseSettingPanel *ui;

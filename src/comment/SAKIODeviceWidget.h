@@ -113,6 +113,8 @@ private slots:
 
     void setAutoResponseFlag(bool enableAutoResponse);
     void readAutoResponseFlag();
+
+    void handleReadBytes(QByteArray data);
 signals:
     void need2writeBytes(QByteArray data);
     void need2open();

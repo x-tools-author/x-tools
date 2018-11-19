@@ -182,6 +182,7 @@ void SAKIODeviceWidget::Connect()
 
     /// 自动回复
     connect(autoResponseSettingPanel, SIGNAL(autoResponseFlagChanged(bool)), this, SLOT(setAutoResponseFlag(bool)));
+    connect(device, SIGNAL(bytesRead(QByteArray)), this, SLOT(handleReadBytes(QByteArray)));
 }
 
 void SAKIODeviceWidget::afterDeviceOpen()
@@ -486,15 +487,15 @@ void SAKIODeviceWidget::bytesRead(QByteArray data)
         }
     }else if (outputTextMode == TextModeOct){
         for (int i = 0; i < data.length(); i++){
-            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(data.at(i)), 8), 8, '0'));
+            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(data.at(i)), 8), 3, '0'));
         }
     }else if (outputTextMode == TextModeDec){
         for (int i = 0; i < data.length(); i++){
-            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(data.at(i)), 10), 8, '0'));
+            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(data.at(i)), 10)));
         }
     }else if (outputTextMode == TextModeHex){
         for (int i = 0; i < data.length(); i++){
-            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(data.at(i)), 16), 8, '0'));
+            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(data.at(i)), 16), 2, '0'));
         }
     }else if (outputTextMode == TextModeAscii){
         str.append(QString(data));
@@ -1140,5 +1141,27 @@ void SAKIODeviceWidget::readAutoResponseFlag()
         autoResponseSettingPanel->setAutoResponseFlag((sakSettings()->valueTcpServerAutoResponseFlag().compare("true") == 0) ? true : false);
     }else {
         autoResponseSettingPanel->setAutoResponseFlag(false);
+    }
+}
+
+void SAKIODeviceWidget::handleReadBytes(QByteArray data)
+{
+    if (!autoResponseSettingPanel->autoResponseFlag()){
+        return;
+    }
+
+    for (auto item:autoResponseSettingPanel->autoResponseItems()){
+        qDebug() << item.receiveDataString << item.sendDataString;
+        if (item.receiveDataString.toUpper().compare(QString(data.toHex(' ')).toUpper()) == 0){
+            QByteArray responseData;
+            responseData.clear();
+            QStringList tempList = item.sendDataString.split(' ');
+            for (int i = 0; i < tempList.length(); i++){
+                responseData.append(static_cast<char>(tempList.at(i).toInt(nullptr, 16)));
+            }
+
+            emit need2writeBytes(responseData);
+            break;
+        }
     }
 }

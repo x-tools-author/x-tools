@@ -105,6 +105,7 @@ QString AutoResponseSettingPanel::packetItemString(QString receiveData, QString 
     return itemString;
 }
 
+
 void AutoResponseSettingPanel::outputInfo(QString info, QString color)
 {
     QString dateTimeInfo = QDateTime::currentDateTime().toString("yyyy/MM/dd hh:mm:ss ");
@@ -300,4 +301,9 @@ void AutoResponseSettingPanel::enableAutoResponseBtClicked()
 void AutoResponseSettingPanel::setAutoResponseFlag(bool enableAutoResponse)
 {
     ui->checkBoxAutoResponse->setChecked(enableAutoResponse);
+}
+
+bool AutoResponseSettingPanel::autoResponseFlag()
+{
+    return ui->checkBoxAutoResponse->isChecked();
 }

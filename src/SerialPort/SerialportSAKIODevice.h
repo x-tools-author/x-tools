@@ -36,7 +36,7 @@ protected:
     void run();
 private:
     /// 串口
-    QSerialPort *mpSerialPort = NULL;
+    QSerialPort *mpSerialPort = nullptr;
 signals:
     /// 串口关闭成功
     void SerialPortCloseSuccessfully();

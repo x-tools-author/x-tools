@@ -196,22 +196,5 @@
   </layout>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>pushButtonClear</sender>
-   <signal>clicked()</signal>
-   <receiver>listWidgetAutoResponse</receiver>
-   <slot>clear()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>475</x>
-     <y>462</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>475</x>
-     <y>379</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>
