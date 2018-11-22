@@ -11,6 +11,7 @@
 #include "SAKSettings.h"
 #include "nslookup.h"
 #include "GetPublicIPWidget.h"
+#include "UpdateDialog.h"
 
 #ifndef SAK_NO_SERIALPORT_ASSISTANT
 #include "SerialportSAKIODeviceWidget.h"
@@ -21,7 +22,8 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     mpTabWidget(new QTabWidget),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),
+    updateDialog(new UpdateDialog)
 {
     ui->setupUi(this);
 
@@ -126,6 +128,10 @@ void MainWindow::InitMenu()
     QAction *pAboutAction = new QAction(tr("关于软件"));
     pHelpMenu->addAction(pAboutAction);
     connect(pAboutAction, SIGNAL(triggered(bool)), this, SLOT(About()));
+
+    QAction *pUpdateAction = new QAction(tr("检查更新"));
+    pHelpMenu->addAction(pUpdateAction);
+    connect(pUpdateAction, SIGNAL(triggered(bool)), updateDialog, SLOT(checkForUpdate()));
 }
 
 void MainWindow::About()

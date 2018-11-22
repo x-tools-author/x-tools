@@ -10,7 +10,7 @@ Console *appConsole(){
     return Console::_console;
 }
 
-Console* Console::_console = NULL;
+Console* Console::_console = nullptr;
 
 Console::Console(QWidget *parent):
     QWidget(parent),

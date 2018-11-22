@@ -19,6 +19,8 @@
 
 #include "console.h"
 
+class UpdateDialog;
+
 namespace Ui {
 class MainWindow;
 }
@@ -28,12 +30,13 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 private:
-    QTabWidget *mpTabWidget = NULL;
-    Ui::MainWindow *ui      = NULL;
-    QMenu *toolsMenu        = NULL;
+    QTabWidget *mpTabWidget     = nullptr;
+    Ui::MainWindow *ui          = nullptr;
+    QMenu *toolsMenu            = nullptr;
+    UpdateDialog *updateDialog  = nullptr;
     /// ----------------------------------------------------
     void AddTab();
     void InitMenu();

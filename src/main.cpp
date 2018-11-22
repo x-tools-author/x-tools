@@ -19,7 +19,7 @@
 void SAKAppMsgOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
     Console *pConsole = appConsole();
-    if (pConsole == NULL){
+    if (pConsole == nullptr){
         return;
     }
 
@@ -49,11 +49,6 @@ void SAKAppMsgOutput(QtMsgType type, const QMessageLogContext &context, const QS
         info = "[F] " + info;
         pConsole->OutputInfo(QString("<font color=red>%1</font>").arg(info));
         abort();
-        break;
-    default:
-        info = "[?] " + info;
-        pConsole->OutputInfo(QString("<font color=red>%1</font>").arg(info));
-        break;
     }
 }
 
