@@ -32,7 +32,12 @@ SAKSettings::~SAKSettings()
 QString SAKSettings::valueApplicationStyle()
 {
     QSettings settings(SAKSETTINGFILE, QSettings::IniFormat);
-    return settings.value(APPLICATIONSTYLE).toString();
+    QString appStyle = settings.value(APPLICATIONSTYLE).toString();
+    if (appStyle.isEmpty()){
+        return "Fusion";
+    }else {
+        return appStyle;
+    }
 }
 
 void SAKSettings::setValueApplicationStyle(QString value)
