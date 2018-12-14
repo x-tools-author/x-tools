@@ -26,7 +26,7 @@ TcpServerSAKIODevice::~TcpServerSAKIODevice()
 
 void TcpServerSAKIODevice::readBytes()
 {
-    if ((currentTcpClient == NULL) || (currentTcpClient == nullptr)){
+    if ((currentTcpClient == nullptr) || (currentTcpClient == nullptr)){
         emit errorStr(UI_STR_DEVICE_IS_NULL);
     }else {
         QByteArray data;
@@ -37,7 +37,7 @@ void TcpServerSAKIODevice::readBytes()
 
 void TcpServerSAKIODevice::writeBytes(QByteArray data)
 {
-    if ((currentTcpClient == NULL) || (currentTcpClient == nullptr)){
+    if ((currentTcpClient == nullptr) || (currentTcpClient == nullptr)){
         emit errorStr(UI_STR_DEVICE_IS_NULL);
     }else {
         qint64 ret = currentTcpClient->write(data);
@@ -51,7 +51,7 @@ void TcpServerSAKIODevice::writeBytes(QByteArray data)
 
 void TcpServerSAKIODevice::open(QString serverAddress, QString serverPort)
 {
-    if (mpTcpServer == NULL || mpTcpServer == nullptr){
+    if (mpTcpServer == nullptr || mpTcpServer == nullptr){
         emit errorStr(UI_STR_DEVICE_IS_NULL);
     }else {
         if (mpTcpServer->listen(QHostAddress(serverAddress), quint16(serverPort.toInt()))){
@@ -71,7 +71,7 @@ void TcpServerSAKIODevice::close()
         delete client;
     }
 
-    currentTcpClient = NULL;
+    currentTcpClient = nullptr;
     clients.clear();
     emit clientsChanged(clients);
 }
@@ -80,7 +80,7 @@ void TcpServerSAKIODevice::run()
 {
     qRegisterMetaType<QList <QTcpSocket *>>();
 
-    currentTcpClient = NULL;
+    currentTcpClient = nullptr;
     mpTcpServer = new QTcpServer;
     connect(mpTcpServer, SIGNAL(newConnection()), this, SLOT(newConnecting()));
 
@@ -116,7 +116,7 @@ void TcpServerSAKIODevice::checkState()
                     need2updateClients = true;
                     clients.removeAt(index);
                     delete client;
-                    currentTcpClient = NULL;
+                    currentTcpClient = nullptr;
                 }else {
                     need2updateClients = true;
                     clients.removeAt(index);
@@ -136,7 +136,7 @@ void TcpServerSAKIODevice::changedCurrentScoket(QString address, QString port)
 {
     disconnect(currentTcpClient, SIGNAL(readyRead()), this, SLOT(readBytes()));
     foreach(QTcpSocket *client, clients){
-        if ((client->peerAddress().toString().compare(address) == 0) && (client->peerPort() == (quint16)port.toInt())){
+        if ((client->peerAddress().toString().compare(address) == 0) && (client->peerPort() == static_cast<quint16>(port.toInt()))){
             currentTcpClient = client;
             connect(currentTcpClient, SIGNAL(readyRead()), this, SLOT(readBytes()));
         }

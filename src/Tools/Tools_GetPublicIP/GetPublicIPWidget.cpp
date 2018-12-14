@@ -4,15 +4,16 @@
 
 #include <QDateTime>
 #include <QApplication>
+#include <QStyle>
 
 #include "GetPublicIPWidget.h"
 #include "ui_GetPublicIPWidget.h"
 
 GetPublicIPWidget::GetPublicIPWidget(QWidget *parent):
     QWidget(parent),
+    clearOutputInfoTimer(new QTimer),
     getPublicIpThread(new GetPublicIpThread),
-    ui(new Ui::GetPublicIPWidget),
-    clearOutputInfoTimer(new QTimer)
+    ui(new Ui::GetPublicIPWidget)
 {
     ui->setupUi(this);
     ui->pushButtonInfoIcon->setIcon(QApplication::style()->standardIcon(QStyle::SP_MessageBoxInformation));

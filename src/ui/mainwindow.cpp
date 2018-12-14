@@ -69,8 +69,10 @@ void MainWindow::AddTab()
     this->mpTabWidget->addTab(new TcpServerSAKIODeviceWidget(tcpServerDevice, new TcpServerSAKIODeviceControler), tr("Tcp服务器"));
     tcpServerDevice->start();
 
+#ifdef QT_DEBUG
     /// 终端
     this->mpTabWidget->addTab(new Console, tr("终端"));
+#endif
 }
 
 void MainWindow::AddTool()

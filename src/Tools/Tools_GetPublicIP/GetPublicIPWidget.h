@@ -17,8 +17,8 @@ public:
     GetPublicIPWidget(QWidget *parent = Q_NULLPTR);
     ~GetPublicIPWidget();
 private:
-    QTimer *clearOutputInfoTimer = NULL;
-    GetPublicIpThread *getPublicIpThread = NULL;
+    QTimer *clearOutputInfoTimer = nullptr;
+    GetPublicIpThread *getPublicIpThread = nullptr;
     Ui::GetPublicIPWidget *ui;
 private slots:
     void setText(QString ipAddress);

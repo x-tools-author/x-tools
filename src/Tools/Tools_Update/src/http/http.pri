@@ -1,4 +1,8 @@
-QT += network widgets
+!contains(QT, network){
+    QT += network
+}
+
+INCLUDEPATH += $${PWD}
 
 HEADERS += $${PWD}/httpwindow.h
 SOURCES += $${PWD}/httpwindow.cpp

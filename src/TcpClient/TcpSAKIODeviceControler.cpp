@@ -99,7 +99,7 @@ void TcpSAKIODeviceControler::initUi()
 
 void TcpSAKIODeviceControler::setLocalePort(QString port)
 {
-    if (sakSettings() == NULL){
+    if (sakSettings() == nullptr){
         qWarning("Setting function is not initialized!");
     }else{
         sakSettings()->setValueTcpClientLocalPort(port);
@@ -108,7 +108,7 @@ void TcpSAKIODeviceControler::setLocalePort(QString port)
 
 void TcpSAKIODeviceControler::setPeerPort(QString port)
 {
-    if (sakSettings() == NULL){
+    if (sakSettings() == nullptr){
         qWarning("Setting function is not initialized!");
     }else{
         sakSettings()->setValueTcpClientPeerPort(port);
@@ -117,7 +117,7 @@ void TcpSAKIODeviceControler::setPeerPort(QString port)
 
 void TcpSAKIODeviceControler::setPeerAddress(QString address)
 {
-    if (sakSettings() == NULL){
+    if (sakSettings() == nullptr){
         qWarning("Setting function is not initialized!");
     }else{
         sakSettings()->setValueTcpClientPeerAddress(address);
