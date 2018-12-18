@@ -12,6 +12,7 @@
 #include "nslookup.h"
 #include "GetPublicIPWidget.h"
 #include "UpdateDialog.h"
+#include "SAKVersion.h"
 
 #ifndef SAK_NO_SERIALPORT_ASSISTANT
 #include "SerialportSAKIODeviceWidget.h"
@@ -23,7 +24,8 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     mpTabWidget(new QTabWidget),
     ui(new Ui::MainWindow),
-    updateDialog(new UpdateDialog)
+    updateDialog(new UpdateDialog),
+    versionDialog(new SAKVersion)
 {
     ui->setupUi(this);
 
@@ -138,17 +140,8 @@ void MainWindow::InitMenu()
 
 void MainWindow::About()
 {
-    QMessageBox::about(this, tr("关于软件"), QString("%1: %2\n"
-                                                 "%3: %4\n"
-                                                 "%5: %6\n"
-                                                 "%7: %8\n"
-                                                 "%9: %10")
-                       .arg(tr("软件版本")).arg("1.0.0")
-                       .arg(tr("编译时间")).arg(QString(__DATE__) + " " + QString(__TIME__))
-                       .arg(tr("软件作者")).arg(tr("帅气有才华但不想敲代码的高级程序员"))
-                       .arg(tr("联系邮箱")).arg("wuhai1314@outlook.com")
-                       .arg(tr("个人博客")).arg(tr("wuhai.pro")));
-
+    versionDialog->show();
+    versionDialog->activateWindow();
 }
 
 void MainWindow::AboutQt()

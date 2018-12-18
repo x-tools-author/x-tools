@@ -20,6 +20,7 @@
 #include "console.h"
 
 class UpdateDialog;
+class SAKVersion;
 
 namespace Ui {
 class MainWindow;
@@ -33,10 +34,11 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 private:
-    QTabWidget *mpTabWidget     = nullptr;
-    Ui::MainWindow *ui          = nullptr;
-    QMenu *toolsMenu            = nullptr;
-    UpdateDialog *updateDialog  = nullptr;
+    QTabWidget* mpTabWidget     = nullptr;
+    Ui::MainWindow* ui          = nullptr;
+    QMenu* toolsMenu            = nullptr;
+    UpdateDialog* updateDialog  = nullptr;
+    SAKVersion* versionDialog   = nullptr;
     /// ----------------------------------------------------
     void AddTab();
     void InitMenu();

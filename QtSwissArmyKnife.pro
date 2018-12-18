@@ -41,7 +41,8 @@ SOURCES += \
     src/TcpServer/TcpServerSAKIODeviceWidget.cpp \
     src/comment/SAKSettings.cpp \
     src/comment/AutoResponseItem.cpp \
-    src/comment/AutoResponseSettingPanel.cpp
+    src/comment/AutoResponseSettingPanel.cpp \
+    src/ui/SAKVersion.cpp
 
 
 
@@ -63,7 +64,8 @@ HEADERS += \
     src/TcpServer/TcpServerSAKIODeviceWidget.h \
     src/comment/SAKSettings.h \
     src/comment/AutoResponseItem.h \
-    src/comment/AutoResponseSettingPanel.h
+    src/comment/AutoResponseSettingPanel.h \
+    src/ui/SAKVersion.h
 
 FORMS += \
         src/ui/mainwindow.ui \
@@ -73,9 +75,11 @@ FORMS += \
     src/TcpClient/TcpSAKIODeviceControler.ui \
     src/TcpServer/TcpServerSAKIODeviceControler.ui \
     src/comment/AutoResponseItem.ui \
-    src/comment/AutoResponseSettingPanel.ui
+    src/comment/AutoResponseSettingPanel.ui \
+    src/ui/SAKVersion.ui
 
 INCLUDEPATH += \
+    src \
     src/ui \
     src/ui/common \
     src/UdpClient \
