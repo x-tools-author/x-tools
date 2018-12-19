@@ -42,6 +42,7 @@ private:
     QHBoxLayout                 *customControlerLayout      = nullptr;
     QTimer                      *delayTimer                 = nullptr;
     Ui::SAKIODeviceWidget       *ui                         = nullptr;
+    QTimer                      *clearInfoTimer             = nullptr;
 
     QByteArray                  dataTemp                    = "(null)";
     const QSize                 rxtxSize                    = QSize(18, 18);
@@ -103,6 +104,7 @@ private slots:
     void outputInfo(QString info, QString color = "black", bool prefix = true);
     void outputErrorString(QString str);
     void outputInformationString(QString str);
+    void clearInfo();
 
     void bytesRead(QByteArray data);
     void bytesWritten(qint64 bytes);

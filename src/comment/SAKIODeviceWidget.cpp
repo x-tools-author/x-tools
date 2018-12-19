@@ -31,11 +31,15 @@ SAKIODeviceWidget::SAKIODeviceWidget(SAKIODevice *_device, SAKIODeviceControler 
     ,customControlerLayout(new QHBoxLayout)
     ,delayTimer(new QTimer)
     ,ui(new Ui::SAKIODeviceWidget)
+    ,clearInfoTimer(new QTimer)
 {
     ui->setupUi(this);
     Connect();
     setCustomControler(controler);
     initUI();
+
+    clearInfoTimer->setInterval(3*1000);
+    connect(clearInfoTimer, SIGNAL(timeout()), this, SLOT(clearInfo()));
 }
 
 SAKIODeviceWidget::~SAKIODeviceWidget()
@@ -221,6 +225,7 @@ void SAKIODeviceWidget::outputInfo(QString info, QString color, bool prefix)
 
     strTemp += QString("<font color=%1>%2</font>").arg(color).arg(info);
     ui->labelOutput->setText(strTemp);
+    clearInfoTimer->start();
 }
 
 void SAKIODeviceWidget::outputErrorString(QString str)
@@ -231,6 +236,14 @@ void SAKIODeviceWidget::outputErrorString(QString str)
 void SAKIODeviceWidget::outputInformationString(QString str)
 {
     outputInfo(str, "green");
+}
+
+void SAKIODeviceWidget::clearInfo()
+{
+    ui->labelOutput->clear();
+    if (clearInfoTimer->isActive()){
+        clearInfoTimer->stop();
+    }
 }
 
 void SAKIODeviceWidget::writeBytes()
