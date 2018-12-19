@@ -71,7 +71,7 @@ void SAKIODeviceWidget::initUI()
 
     ui->labelRX->setPixmap(QPixmap(":/images/RtRxGray.png").scaled(rxtxSize, Qt::KeepAspectRatio));
     ui->labelTX->setPixmap(QPixmap(":/images/RtRxGray.png").scaled(rxtxSize, Qt::KeepAspectRatio));
-    ui->labelInfoIcon->setPixmap(QPixmap(":/images/info.png").scaled(rxtxSize, Qt::KeepAspectRatio));
+    ui->labelInfoIcon->setPixmap(QPixmap(":/images/info.png").scaled(QSize(ui->labelInfoIcon->width()-4, ui->labelInfoIcon->height() - 4), Qt::KeepAspectRatio));
 }
 
 void SAKIODeviceWidget::outputTimeInfoCheckBoxClicked(bool checked)
