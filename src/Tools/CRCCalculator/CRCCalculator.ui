@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CRCCalculator</class>
+ <widget class="QWidget" name="CRCCalculator">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>630</width>
+    <height>345</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>CRC计算器</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="1" column="1" colspan="5">
+    <widget class="QTextEdit" name="textEdit"/>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>宽度 WIDTH</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0">
+    <widget class="QLabel" name="label_6">
+     <property name="text">
+      <string>初始值 INIT（Hex）</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="4" colspan="2">
+    <widget class="QLineEdit" name="lineEditXOROUT"/>
+   </item>
+   <item row="7" column="2">
+    <widget class="QPushButton" name="pushButtonCopyHex">
+     <property name="text">
+      <string>复制</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0">
+    <widget class="QLabel" name="label_8">
+     <property name="text">
+      <string>校验输出（HEX）</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1" colspan="5">
+    <widget class="QLabel" name="labelInputType">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="1" colspan="4">
+    <widget class="QLabel" name="label_10">
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+	color:&quot;red&quot;
+}</string>
+     </property>
+     <property name="text">
+      <string>高位在左低位在右，使用时请注意高低位顺序！！！</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1" colspan="5">
+    <widget class="QFrame" name="frame_2">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QCheckBox" name="checkBoxRefIn">
+        <property name="text">
+         <string>输入数据反转（REFIN）</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="checkBoxRefOut">
+        <property name="text">
+         <string>输出数据反转（REFOUT）</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButtonClear">
+        <property name="text">
+         <string>清空</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButtonCalculate">
+        <property name="text">
+         <string>计算</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="6" column="3">
+    <widget class="QLabel" name="label_7">
+     <property name="text">
+      <string>结果异或值 XOROUT（Hex）</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1" colspan="2">
+    <widget class="QLineEdit" name="lineEditWidth"/>
+   </item>
+   <item row="0" column="1" colspan="5">
+    <widget class="QFrame" name="frame">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QRadioButton" name="radioButtonHex">
+        <property name="text">
+         <string>HEX</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButtonASCII">
+        <property name="text">
+         <string>ASCII</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>需要校验的数据</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>参数模型 NAME</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="1" colspan="2">
+    <widget class="QLineEdit" name="lineEditInit"/>
+   </item>
+   <item row="4" column="1" colspan="5">
+    <widget class="QComboBox" name="comboBoxName">
+     <item>
+      <property name="text">
+       <string>CRC-4/ITU                x4+x+1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>CRC-5/EPC                x4+x3+1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>CRC-5/ITU                x5+x4+x2+1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>CRC-5/USB                x5+x2+1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>CRC-6/ITU                x6+x+1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>CRC-7/MMC                x7+x3+1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>CRC-8                    x8+x2+x+1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>CRC-8/ITU                x8+x2+x+1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>CRC-8/ROHC               x8+x2+1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>CRC-8/MAXIM              x8+x5+x4+1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>CRC-16/IBM               x16+x15+x2+1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>CRC-16/MAXIM             x16+x15+x2+1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>CRC-16/USB               x16+x15+x2+1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>CRC-16/MODBUS            x16+x15+x2+1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>CRC-16/CCITT             x16+x12+x5+1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>CRC-16/CCITT-FALSE       x16+x12+x5+1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>CRC-16/X25               x16+x12+x5+1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>CRC-16/XMODEM            x16+x12+x5+1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>CRC-16/DNP               x16+x12+x5+1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>CRC-32                   x32+x26+x23+x22+x16+x12+x11+x10+x8+x7+x5+x4+x2+x+1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>CRC-32/MPEG-2            x32+x26+x23+x22+x16+x12+x11+x10+x8+x7+x5+x4+x2+x+1</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="5" column="4" colspan="2">
+    <widget class="QLineEdit" name="lineEditPoly"/>
+   </item>
+   <item row="7" column="1">
+    <widget class="QLineEdit" name="lineEditOutputHex"/>
+   </item>
+   <item row="7" column="5">
+    <widget class="QPushButton" name="pushButtonCopyBin">
+     <property name="text">
+      <string>复制</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="3">
+    <widget class="QLabel" name="label_9">
+     <property name="text">
+      <string>校验输出（BIN）</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="4">
+    <widget class="QLineEdit" name="lineEditOutputBin"/>
+   </item>
+   <item row="5" column="3">
+    <widget class="QLabel" name="label_5">
+     <property name="text">
+      <string>多项式 POLY（Hex）</string>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="1" colspan="5">
+    <widget class="QLabel" name="labelInfo">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
