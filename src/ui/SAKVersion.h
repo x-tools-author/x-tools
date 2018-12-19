@@ -11,6 +11,7 @@
 
 #include <QDialog>
 #include <QLabel>
+#include <QPushButton>
 
 namespace Ui {
 class SAKVersion;
@@ -29,10 +30,15 @@ private:
     QLabel*         author      = nullptr;  /// 软件作者
     QLabel*         email       = nullptr;  /// 联系邮箱
     QLabel*         blog        = nullptr;  /// 博客地址
+    QLabel*         qq          = nullptr;  /// QQ交流群
+
+    QPushButton*    copyQQ      = nullptr;  // 复制qq群号码按钮
 protected:
     bool eventFilter(QObject *o, QEvent *e) final;
 private:
     void openBlogUrl();
+private slots:
+    void copyQQNum();
 };
 
 #endif

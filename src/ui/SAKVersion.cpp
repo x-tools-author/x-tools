@@ -16,6 +16,7 @@
 #include <QDebug>
 #include <QDesktopServices>
 #include <QUrl>
+#include <QLineEdit>
 
 SAKVersion::SAKVersion()
     :ui(new Ui::SAKVersion)
@@ -26,18 +27,24 @@ SAKVersion::SAKVersion()
     datetime = ui->labelDatetime;
     author = ui->labelAuthor;
     email = ui->labelEmail;
+    qq = ui->labelQQ;
     blog = ui->labelBlog;
     blog->installEventFilter(this);
     blog->setCursor(Qt::PointingHandCursor);
+
+    copyQQ = ui->pushButtonCopy;
 
     version->setText(QString("1.0.0"));
     datetime->setText(QString(__DATE__) + " " + QString(__TIME__));
     author->setText(QString("作者还没想好名字"));
     email->setText(QString("wuhai1024@outlook.com"));
+    qq->setText(QString("952218522"));
     blog->setText(QString("www.wuhai.pro"));
 
     setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowTitleHint | Qt::Tool);
     setModal(true);
+
+    connect(copyQQ, SIGNAL(clicked()), this, SLOT(copyQQNum()));
 }
 
 
@@ -56,4 +63,12 @@ bool SAKVersion::eventFilter(QObject *o, QEvent *e)
     }
 
     return QDialog::eventFilter(o, e);
+}
+
+void SAKVersion::copyQQNum()
+{
+    QLineEdit temp;
+    temp.setText(qq->text());
+    temp.selectAll();
+    temp.copy();
 }

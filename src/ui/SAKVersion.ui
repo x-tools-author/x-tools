@@ -6,18 +6,119 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>274</width>
-    <height>157</height>
+    <width>325</width>
+    <height>186</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>关于软件</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="4">
+    <spacer name="horizontalSpacer_4">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Fixed</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>1</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="6" column="0" colspan="5">
+    <widget class="QFrame" name="frame">
+     <property name="styleSheet">
+      <string notr="true">QFrame {
+	border: 0
+}</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <spacer name="horizontalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton">
+        <property name="text">
+         <string>确定</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
    <item row="1" column="3">
     <widget class="QLabel" name="labelAuthor">
      <property name="text">
       <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="3">
+    <widget class="QLabel" name="labelBlog">
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+	color: &quot;blue&quot;;
+	text-decoration:underline;
+}</string>
+     </property>
+     <property name="text">
+      <string>www.wuhai.pro</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QLabel" name="label_5">
+     <property name="text">
+      <string>作者博客</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>技术交流</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="3">
+    <widget class="QLabel" name="labelEmail">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="3">
+    <widget class="QLabel" name="labelVersion">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1">
+    <widget class="QLabel" name="label_8">
+     <property name="text">
+      <string>编译时间</string>
      </property>
     </widget>
    </item>
@@ -53,16 +154,10 @@
      </property>
     </spacer>
    </item>
-   <item row="2" column="3">
-    <widget class="QLabel" name="labelBlog">
-     <property name="styleSheet">
-      <string notr="true">QLabel {
-	color: &quot;blue&quot;;
-	text-decoration:underline;
-}</string>
-     </property>
+   <item row="1" column="1">
+    <widget class="QLabel" name="label_3">
      <property name="text">
-      <string>www.wuhai.pro</string>
+      <string>软件作者</string>
      </property>
     </widget>
    </item>
@@ -73,38 +168,10 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="1">
-    <widget class="QLabel" name="label_5">
-     <property name="text">
-      <string>作者博客</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="3">
-    <widget class="QLabel" name="labelEmail">
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="3">
+   <item row="5" column="3">
     <widget class="QLabel" name="labelDatetime">
      <property name="text">
       <string/>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="3">
-    <widget class="QLabel" name="labelVersion">
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="QLabel" name="label_3">
-     <property name="text">
-      <string>软件作者</string>
      </property>
     </widget>
    </item>
@@ -121,31 +188,8 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="1">
-    <widget class="QLabel" name="label_8">
-     <property name="text">
-      <string>编译时间</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="4">
-    <spacer name="horizontalSpacer_4">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeType">
-      <enum>QSizePolicy::Fixed</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>40</width>
-       <height>1</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="5" column="0" colspan="5">
-    <widget class="QFrame" name="frame">
+   <item row="4" column="3">
+    <widget class="QFrame" name="frame_2">
      <property name="styleSheet">
       <string notr="true">QFrame {
 	border: 0
@@ -157,24 +201,36 @@
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout">
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
       <item>
-       <spacer name="horizontalSpacer_3">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+       <widget class="QLabel" name="labelQQ">
+        <property name="text">
+         <string/>
         </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
+       </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="pushButtonCopy">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
-         <string>确定</string>
+         <string>复制</string>
         </property>
        </widget>
       </item>
