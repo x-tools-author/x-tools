@@ -6,7 +6,7 @@
 *
 * Copyright (C) 2018-2018 wuhai persionnal. All rights reserved.
 *******************************************************************************/
-#if _MSC_VER > 1600
+#ifdef _MSC_VER
 #pragma execution_character_set("utf-8")
 #endif
 

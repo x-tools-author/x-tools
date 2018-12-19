@@ -24,11 +24,11 @@ public:
     ~SAKVersion();
 private:
     Ui::SAKVersion* ui          = nullptr;
-    QLabel*         version     = nullptr;
-    QLabel*         datetime    = nullptr;
-    QLabel*         author      = nullptr;
-    QLabel*         email       = nullptr;
-    QLabel*         blog        = nullptr;
+    QLabel*         version     = nullptr;  /// 显示版本号
+    QLabel*         datetime    = nullptr;  /// 显示编译时间日期
+    QLabel*         author      = nullptr;  /// 软件作者
+    QLabel*         email       = nullptr;  /// 联系邮箱
+    QLabel*         blog        = nullptr;  /// 博客地址
 protected:
     bool eventFilter(QObject *o, QEvent *e) final;
 private:
