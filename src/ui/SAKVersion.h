@@ -23,6 +23,8 @@ class SAKVersion:public QDialog
 public:
     SAKVersion();
     ~SAKVersion();
+    static SAKVersion* instance(){return sakVersionSingleton;}
+    QString getVersion(){return version->text();}
 private:
     Ui::SAKVersion* ui          = nullptr;
     QLabel*         version     = nullptr;  /// 显示版本号
@@ -33,6 +35,8 @@ private:
     QLabel*         qq          = nullptr;  /// QQ交流群
 
     QPushButton*    copyQQ      = nullptr;  // 复制qq群号码按钮
+
+    static SAKVersion* sakVersionSingleton;
 protected:
     bool eventFilter(QObject *o, QEvent *e) final;
 private:

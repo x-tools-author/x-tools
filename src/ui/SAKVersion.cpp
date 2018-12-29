@@ -18,9 +18,12 @@
 #include <QUrl>
 #include <QLineEdit>
 
+SAKVersion* SAKVersion::sakVersionSingleton = nullptr;
 SAKVersion::SAKVersion()
     :ui(new Ui::SAKVersion)
 {
+    Q_ASSERT_X(!sakVersionSingleton, __FUNCTION__, "该类只能有一个实例， 请使用 SAKVersion::instance()获取实例。");
+    sakVersionSingleton = this;
     ui->setupUi(this);
 
     version = ui->labelVersion;
