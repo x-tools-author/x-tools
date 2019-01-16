@@ -26,7 +26,6 @@ SOURCES += \
         src/main.cpp \
         src/ui/mainwindow.cpp \
     src/SAKApplication.cpp \
-    src/console/console.cpp \
     src/comment/SAKIODeviceWidget.cpp \
     src/comment/SAKIODevice.cpp \
     src/comment/SAKIODeviceControler.cpp \
@@ -49,7 +48,6 @@ SOURCES += \
 HEADERS += \
         src/ui/mainwindow.h \
     src/SAKApplication.h \
-    src/console/console.h \
     src/comment/SAKIODeviceWidget.h \
     src/comment/SAKIODevice.h \
     src/comment/SAKIODeviceControler.h \
