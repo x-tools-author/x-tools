@@ -69,7 +69,6 @@ HEADERS += \
 
 FORMS += \
         src/ui/mainwindow.ui \
-    src/console/console.ui \
     src/comment/SAKIODeviceWidget.ui \
     src/UdpClient/UdpSAKIODeviceControler.ui \
     src/TcpClient/TcpSAKIODeviceControler.ui \

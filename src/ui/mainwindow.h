@@ -17,11 +17,8 @@
 #include <QMessageBox>
 #include <QLabel>
 
-#include "console.h"
-
-class UpdateDialog;
 class SAKVersion;
-
+class UpdateManager;
 namespace Ui {
 class MainWindow;
 }
@@ -37,8 +34,8 @@ private:
     QTabWidget* mpTabWidget     = nullptr;
     Ui::MainWindow* ui          = nullptr;
     QMenu* toolsMenu            = nullptr;
-    UpdateDialog* updateDialog  = nullptr;
     SAKVersion* versionDialog   = nullptr;
+    UpdateManager* updateManager= nullptr;
     /// ----------------------------------------------------
     void AddTab();
     void InitMenu();

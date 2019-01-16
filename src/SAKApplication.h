@@ -22,8 +22,8 @@ public:
     SAKApplication(int argc, char **argv);
     ~SAKApplication();
 private:
-    MainWindow *mpMainWindow    = NULL;
-    SAKSettings *sakSettings    = NULL;
+    MainWindow *mpMainWindow    = nullptr;
+    SAKSettings *sakSettings    = nullptr;
 };
 
 #endif

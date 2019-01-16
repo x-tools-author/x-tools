@@ -7,7 +7,6 @@
 * Copyright (C) 2018-2018 wuhai persionnal. All rights reserved.
 *******************************************************************************/
 #include "SAKApplication.h"
-#include "console.h"
 #include "SAKSettings.h"
 
 #include <QMessageLogContext>
@@ -15,42 +14,6 @@
 #include <QDebug>
 #include <stdio.h>
 #include <stdlib.h>
-
-void SAKAppMsgOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)
-{
-    Console *pConsole = appConsole();
-    if (pConsole == nullptr){
-        return;
-    }
-
-    QString info = QDateTime::currentDateTime().toString("yyyy/MM/dd hh:mm:ss ");
-    info = info + QString(context.file) + " ";
-    info = info + QString::number(context.line) + " ";
-    info = info + msg;
-    info.remove("\"");
-    switch (type) {
-    case QtDebugMsg:
-        info = "[D] " + info;
-        pConsole->OutputInfo(info);
-        break;
-    case QtInfoMsg:
-        info = "[I] " + info;
-        pConsole->OutputInfo(info);
-        break;
-    case QtWarningMsg:
-        info = "[W] " + info;
-        pConsole->OutputInfo(QString("<font color=red>%1</font>").arg(info));
-        break;
-    case QtCriticalMsg:
-        info = "[C] " + info;
-        pConsole->OutputInfo(QString("<font color=red>%1</font>").arg(info));
-        break;
-    case QtFatalMsg:
-        info = "[F] " + info;
-        pConsole->OutputInfo(QString("<font color=red>%1</font>").arg(info));
-        abort();
-    }
-}
 
 int main(int argc, char *argv[])
 {

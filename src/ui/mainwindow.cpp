@@ -11,8 +11,8 @@
 #include "SAKSettings.h"
 #include "nslookup.h"
 #include "GetPublicIPWidget.h"
-#include "UpdateDialog.h"
 #include "SAKVersion.h"
+#include "UpdateManager.h"
 
 #ifndef SAK_NO_SERIALPORT_ASSISTANT
 #include "SerialportSAKIODeviceWidget.h"
@@ -20,14 +20,15 @@
 
 #include <QStyleFactory>
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    mpTabWidget(new QTabWidget),
-    ui(new Ui::MainWindow),
-    updateDialog(new UpdateDialog),
-    versionDialog(new SAKVersion)
+const static char* configureFile = "http://fw.cuav.net/feigong_gs/update.json";
+MainWindow::MainWindow(QWidget *parent)
+    :QMainWindow(parent)
+    ,mpTabWidget(new QTabWidget)
+    ,ui(new Ui::MainWindow)
+    ,versionDialog(new SAKVersion)
 {
     ui->setupUi(this);
+    updateManager = new UpdateManager(QUrl(configureFile), SAKVersion::instance()->getVersion());
 
     QHBoxLayout *layout = new QHBoxLayout;
     layout->addWidget(mpTabWidget);
@@ -135,7 +136,7 @@ void MainWindow::InitMenu()
 
     QAction *pUpdateAction = new QAction(tr("检查更新"));
     pHelpMenu->addAction(pUpdateAction);
-    connect(pUpdateAction, SIGNAL(triggered(bool)), updateDialog, SLOT(checkForUpdate()));
+    connect(pUpdateAction, SIGNAL(triggered(bool)), updateManager, SLOT(checkForUpdate()));
 }
 
 void MainWindow::About()
