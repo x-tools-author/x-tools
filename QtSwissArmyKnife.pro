@@ -91,9 +91,19 @@ INCLUDEPATH += \
 RESOURCES += \
     resource/images.qrc
 
+win32{
+    RC_ICONS = resource/icon/window.ico
+}
+
+#--------------------------------------------------------------------------------------------
+#编译目录配置
+MOC_DIR             = $$OUT_PWD/moc
+OBJECTS_DIR         = $$OUT_PWD/obj
+RCC_DIR             = $$OUT_PWD/resource
+UI_DIR              = $$OUT_PWD/ui
+
 #--------------------------------------------------------------------------------------------
 # 子项目
-include(QtSwissArmyKnifeConfigure.pri)
 include(QtSwissArmyKnifeSetup.pri)
 include(SAKTools.pri)
 
