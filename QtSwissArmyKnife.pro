@@ -23,21 +23,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        src/main.cpp \
-        src/ui/mainwindow.cpp \
+    src/main.cpp \
+    src/ui/mainwindow.cpp \
     src/SAKApplication.cpp \
     src/comment/SAKIODeviceWidget.cpp \
     src/comment/SAKIODevice.cpp \
     src/comment/SAKIODeviceControler.cpp \
-    src/UdpClient/UdpSAKIODevice.cpp \
-    src/UdpClient/UdpSAKIODeviceControler.cpp \
-    src/UdpClient/UdpSAKIODeviceWidget.cpp \
-    src/TcpClient/TcpSAKIODevice.cpp \
-    src/TcpClient/TcpSAKIODeviceControler.cpp \
-    src/TcpClient/TcpSAKIODeviceWidget.cpp \
-    src/TcpServer/TcpServerSAKIODevice.cpp \
-    src/TcpServer/TcpServerSAKIODeviceControler.cpp \
-    src/TcpServer/TcpServerSAKIODeviceWidget.cpp \
     src/comment/SAKSettings.cpp \
     src/comment/AutoResponseItem.cpp \
     src/comment/AutoResponseSettingPanel.cpp \
@@ -51,25 +42,14 @@ HEADERS += \
     src/comment/SAKIODeviceWidget.h \
     src/comment/SAKIODevice.h \
     src/comment/SAKIODeviceControler.h \
-    src/UdpClient/UdpSAKIODevice.h \
-    src/UdpClient/UdpSAKIODeviceControler.h \
-    src/UdpClient/UdpSAKIODeviceWidget.h \
-    src/TcpClient/TcpSAKIODevice.h \
-    src/TcpClient/TcpSAKIODeviceControler.h \
-    src/TcpClient/TcpSAKIODeviceWidget.h \
-    src/TcpServer/TcpServerSAKIODevice.h \
-    src/TcpServer/TcpServerSAKIODeviceControler.h \
-    src/TcpServer/TcpServerSAKIODeviceWidget.h \
     src/comment/SAKSettings.h \
     src/comment/AutoResponseItem.h \
     src/comment/AutoResponseSettingPanel.h \
     src/ui/SAKVersion.h
 
 FORMS += \
-        src/ui/mainwindow.ui \
+    src/ui/mainwindow.ui \
     src/comment/SAKIODeviceWidget.ui \
-    src/UdpClient/UdpSAKIODeviceControler.ui \
-    src/TcpClient/TcpSAKIODeviceControler.ui \
     src/TcpServer/TcpServerSAKIODeviceControler.ui \
     src/comment/AutoResponseItem.ui \
     src/comment/AutoResponseSettingPanel.ui \
@@ -92,6 +72,14 @@ win32{
     RC_ICONS = resource/icon/window.ico
 }
 
+win32{
+    CONFIG(debug, debug|release) {
+        QMAKE_POST_LINK += $$escape_expand(\\n) $$[QT_INSTALL_BINS]/windeployqt.exe --no-compiler-runtime --no-translations $$OUT_PWD/debug/$${TARGET}.exe $$escape_expand(\\n)
+    } else {
+        QMAKE_POST_LINK += $$escape_expand(\\n) $$[QT_INSTALL_BINS]/windeployqt.exe --no-compiler-runtime --no-translations $$OUT_PWD/release/$${TARGET}.exe $$escape_expand(\\n)
+    }
+}
+
 #--------------------------------------------------------------------------------------------
 #编译目录配置
 MOC_DIR             = $$OUT_PWD/moc
@@ -101,15 +89,16 @@ UI_DIR              = $$OUT_PWD/ui
 
 #--------------------------------------------------------------------------------------------
 # 子项目
-include(QtSwissArmyKnifeSetup.pri)
 include(SAKTools.pri)
 
 # 取消该宏的定义可以将串口模块屏蔽
-winrt || linux-arm{
+winrt || arm-linux{
     DEFINES += SAK_NO_SERIALPORT_ASSISTANT
     message( "该版本Qt可能不包含串口模块，已经忽略串口模块！（串口助手功能被屏蔽！）" )
 }else {
-    include(src/SerialPort/SAKSerialportAssistant.pri)
+    include(SAKSerialportAssistant.pri)
 }
 
-
+include(SAKUdpClient.pri)
+include(SAKTcpClient.pri)
+include(SAKTcpServer.pri)
