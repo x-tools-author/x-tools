@@ -37,7 +37,7 @@ protected:
 private:
     QString peerHostAddress;
     QString peerHostPort;
-    QUdpSocket *mpUdpSocket = NULL;
+    QUdpSocket *mpUdpSocket = nullptr;
 signals:
     /// 外部程序关联该信号，可以获取需要输出的信息
     void Need2OutputInfo(QString info, QString color = "black", bool prefix = true);

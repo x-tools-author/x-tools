@@ -35,7 +35,7 @@ public slots:
     virtual void open();
     virtual void refresh();
 private:
-    Ui::TcpSAKIODeviceControler *ui = NULL;
+    Ui::TcpSAKIODeviceControler *ui = nullptr;
     void initUi();
 private slots:
     void setLocalePort(QString port);

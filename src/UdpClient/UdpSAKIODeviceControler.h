@@ -28,7 +28,7 @@ public slots:
     virtual void open();
     virtual void refresh();
 private:
-    Ui::UdpSAKIODeviceControler *ui = NULL;
+    Ui::UdpSAKIODeviceControler *ui = nullptr;
     ///---------------------------------------------------------
     void initUi();
 private slots:

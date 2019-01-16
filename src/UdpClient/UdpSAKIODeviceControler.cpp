@@ -97,7 +97,7 @@ void UdpSAKIODeviceControler::initUi()
 
 void UdpSAKIODeviceControler::setLocalePort(QString port)
 {
-    if (sakSettings() == NULL){
+    if (sakSettings() == nullptr){
         qWarning("Setting function is not initialized!");
     }else{
         sakSettings()->setValueUdpClientLocalPort(port);
@@ -106,7 +106,7 @@ void UdpSAKIODeviceControler::setLocalePort(QString port)
 
 void UdpSAKIODeviceControler::setPeerPort(QString port)
 {
-    if (sakSettings() == NULL){
+    if (sakSettings() == nullptr){
         qWarning("Setting function is not initialized!");
     }else{
         sakSettings()->setValueUdpClientPeerPort(port);
@@ -115,7 +115,7 @@ void UdpSAKIODeviceControler::setPeerPort(QString port)
 
 void UdpSAKIODeviceControler::setPeerAddress(QString address)
 {
-    if (sakSettings() == NULL){
+    if (sakSettings() == nullptr){
         qWarning("Setting function is not initialized!");
     }else{
         sakSettings()->setValueUdpClientPeerAddress(address);

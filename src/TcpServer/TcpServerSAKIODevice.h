@@ -37,9 +37,9 @@ public slots:
 protected:
     void run();
 private:
-    QTimer *stateTimer              = NULL;
-    QTcpSocket *currentTcpClient    = NULL;
-    QTcpServer *mpTcpServer         = NULL;
+    QTimer *stateTimer              = nullptr;
+    QTcpSocket *currentTcpClient    = nullptr;
+    QTcpServer *mpTcpServer         = nullptr;
     QList <QTcpSocket *> clients;
 private slots:
     void readBytes();

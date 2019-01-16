@@ -28,7 +28,7 @@ public slots:
     virtual void open();
     virtual void refresh();
 private:
-    Ui::SerialportSAKIODeviceControler *ui = NULL;
+    Ui::SerialportSAKIODeviceControler *ui = nullptr;
     /// -----------------------------------------------
     void initUI();
 };

@@ -106,7 +106,7 @@ void TcpServerSAKIODeviceControler::setCurrentClient(QString text)
 
 void TcpServerSAKIODeviceControler::setServerPort(QString port)
 {
-    if (sakSettings() == NULL){
+    if (sakSettings() == nullptr){
         qWarning("Setting function is not initialized!");
     }else{
         sakSettings()->setValueTcpServerServerPort(port);

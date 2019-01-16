@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui xml
+QT += core gui xml
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets network
 
@@ -37,7 +37,7 @@ SOURCES += \
 
 
 HEADERS += \
-        src/ui/mainwindow.h \
+    src/ui/mainwindow.h \
     src/SAKApplication.h \
     src/comment/SAKIODeviceWidget.h \
     src/comment/SAKIODevice.h \
@@ -82,10 +82,10 @@ win32{
 
 #--------------------------------------------------------------------------------------------
 #编译目录配置
-MOC_DIR             = $$OUT_PWD/moc
-OBJECTS_DIR         = $$OUT_PWD/obj
-RCC_DIR             = $$OUT_PWD/resource
-UI_DIR              = $$OUT_PWD/ui
+MOC_DIR     = $$OUT_PWD/moc
+OBJECTS_DIR = $$OUT_PWD/obj
+RCC_DIR     = $$OUT_PWD/resource
+UI_DIR      = $$OUT_PWD/ui
 
 #--------------------------------------------------------------------------------------------
 # 子项目

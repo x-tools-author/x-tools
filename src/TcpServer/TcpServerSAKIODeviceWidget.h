@@ -20,8 +20,8 @@ public:
     TcpServerSAKIODeviceWidget(TcpServerSAKIODevice *_device, TcpServerSAKIODeviceControler *_controler, QWidget *parent = Q_NULLPTR);
     ~TcpServerSAKIODeviceWidget();
 private:
-    TcpServerSAKIODevice *device                = NULL;
-    TcpServerSAKIODeviceControler *controler    = NULL;
+    TcpServerSAKIODevice *device                = nullptr;
+    TcpServerSAKIODeviceControler *controler    = nullptr;
 private slots:
 
 };
