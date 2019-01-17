@@ -22,7 +22,7 @@ class TcpServerSAKIODevice : public SAKIODevice
 {
     Q_OBJECT
 public:
-    TcpServerSAKIODevice(SAKDeviceType deviceType = SAKDeviceTcpServer, QObject *parent = Q_NULLPTR);
+    TcpServerSAKIODevice(QString deviceName = QString("TcpServer"), QObject *parent = Q_NULLPTR);
     ~TcpServerSAKIODevice();
 
     virtual bool isOpen(){return mpTcpServer->isListening();}
@@ -31,8 +31,6 @@ public slots:
     virtual void writeBytes(QByteArray data);
     virtual void open(QString serverAddress, QString serverPort);
     virtual void close();
-
-    virtual SAKDeviceType deviceType(){return SAKDeviceTcpServer;}
 
 protected:
     void run();

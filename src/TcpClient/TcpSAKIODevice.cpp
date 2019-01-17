@@ -14,8 +14,8 @@
 
 #include "TcpSAKIODevice.h"
 
-TcpSAKIODevice::TcpSAKIODevice(SAKDeviceType deviceType, QObject *parent):
-    SAKIODevice(deviceType, parent)
+TcpSAKIODevice::TcpSAKIODevice(QString deviceName, QObject *parent):
+    SAKIODevice(deviceName, parent)
 {
     /// 一个神奇的操作
     moveToThread(this);

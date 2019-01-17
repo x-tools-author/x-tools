@@ -32,6 +32,7 @@ private:
     Ui::TcpServerSAKIODeviceControler *ui = nullptr;
     /// ---------------------------------------
     void initUi();
+    void readServerPort();
 private slots:
     void changedClients(QList <QTcpSocket *>clients);
     void setCurrentClient(QString text);

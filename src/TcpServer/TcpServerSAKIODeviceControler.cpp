@@ -10,23 +10,27 @@
 #pragma execution_character_set("utf-8")
 #endif
 
-#include "SAKSettings.h"
 #include "TcpServerSAKIODeviceControler.h"
 
 #include "ui_TcpServerSAKIODeviceControler.h"
 
 #include <QNetworkInterface>
+#include <QSettings>
 
 TcpServerSAKIODeviceControler::TcpServerSAKIODeviceControler(QWidget *parent)
     :SAKIODeviceControler(parent)
     ,ui(new Ui::TcpServerSAKIODeviceControler)
 {
+    setObjectName(QString("TCPServerController"));
+
     ui->setupUi(this);
 
     initUi();
 
     connect(ui->comboBoxClients, SIGNAL(currentTextChanged(QString)), this, SLOT(setCurrentClient(QString)));
     connect(ui->lineEditServerPort, SIGNAL(textChanged(QString)), this, SLOT(setServerPort(QString)));
+
+    readServerPort();
 }
 
 TcpServerSAKIODeviceControler::~TcpServerSAKIODeviceControler()
@@ -76,8 +80,6 @@ void TcpServerSAKIODeviceControler::refresh()
 void TcpServerSAKIODeviceControler::initUi()
 {
     refresh();
-
-    ui->lineEditServerPort->setText(sakSettings()->valueTcpServerServerPort());
 }
 
 void TcpServerSAKIODeviceControler::changedClients(QList<QTcpSocket *> clients)
@@ -106,9 +108,17 @@ void TcpServerSAKIODeviceControler::setCurrentClient(QString text)
 
 void TcpServerSAKIODeviceControler::setServerPort(QString port)
 {
-    if (sakSettings() == nullptr){
-        qWarning("Setting function is not initialized!");
-    }else{
-        sakSettings()->setValueTcpServerServerPort(port);
-    }
+    QSettings settings;
+    QString key = objectName() + "/" + QString("PeerPort");
+
+    settings.setValue(key, port);
+}
+
+void TcpServerSAKIODeviceControler::readServerPort()
+{
+    QSettings settings;
+    QString key = objectName() + "/" + QString("PeerPort");
+    QString value = settings.value(key).toString();
+
+    ui->lineEditServerPort->setText(value);
 }

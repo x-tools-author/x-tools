@@ -7,7 +7,6 @@
 * Copyright (C) 2018-2018 wuhai persionnal. All rights reserved.
 *******************************************************************************/
 #include "SAKApplication.h"
-#include "SAKSettings.h"
 
 #include <QMessageLogContext>
 #include <QDateTime>

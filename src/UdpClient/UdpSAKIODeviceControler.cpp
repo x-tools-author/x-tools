@@ -10,7 +10,6 @@
 #pragma execution_character_set("utf-8")
 #endif
 
-#include "SAKSettings.h"
 #include "UdpSAKIODeviceControler.h"
 #include "ui_UdpSAKIODeviceControler.h"
 
@@ -19,17 +18,30 @@
 #include <QNetworkInterface>
 #include <QAbstractSocket>
 #include <QIntValidator>
+#include <QSettings>
 
 UdpSAKIODeviceControler::UdpSAKIODeviceControler(QWidget *parent)
     :SAKIODeviceControler(parent)
     ,ui(new Ui::UdpSAKIODeviceControler)
 {
     ui->setupUi(this);
-    initUi();
 
-    connect(ui->lineEditPort, SIGNAL(textChanged(QString)), this, SLOT(setLocalePort(QString)));
-    connect(ui->lineEditPeerPort, SIGNAL(textChanged(QString)), this, SLOT(setPeerPort(QString)));
-    connect(ui->lineEditPeerHostAddress, SIGNAL(textChanged(QString)), this, SLOT(setPeerAddress(QString)));
+    localHostAddress = ui->comboBoxHostAddress;
+    localPort        = ui->lineEditPort;
+    peerPort         = ui->lineEditPeerPort;
+    peerAddress      = ui->lineEditPeerHostAddress;
+
+    setObjectName(QString("UdpClientControler"));
+
+    readPeerPort();
+    readLocalePort();
+    readPeerAddress();
+
+    connect(localPort, SIGNAL(textChanged(QString)), this, SLOT(setLocalePort(QString)));
+    connect(peerPort, SIGNAL(textChanged(QString)), this, SLOT(setPeerPort(QString)));
+    connect(peerAddress, SIGNAL(textChanged(QString)), this, SLOT(setPeerAddress(QString)));
+
+    initUi();
 }
 
 UdpSAKIODeviceControler::~UdpSAKIODeviceControler()
@@ -39,37 +51,37 @@ UdpSAKIODeviceControler::~UdpSAKIODeviceControler()
 
 void UdpSAKIODeviceControler::afterDeviceOpen()
 {
-    ui->comboBoxHostAddress->setEnabled(false);
-    ui->lineEditPeerHostAddress->setEnabled(false);
-    ui->lineEditPeerPort->setEnabled(false);
-    ui->lineEditPort->setEnabled(false);
+    localHostAddress->setEnabled(false);
+    peerAddress->setEnabled(false);
+    localPort->setEnabled(false);
+    peerPort->setEnabled(false);
 }
 
 void UdpSAKIODeviceControler::afterDeviceClose()
 {
-    ui->comboBoxHostAddress->setEnabled(true);
-    ui->lineEditPeerHostAddress->setEnabled(true);
-    ui->lineEditPeerPort->setEnabled(true);
-    ui->lineEditPort->setEnabled(true);
+    localHostAddress->setEnabled(true);
+    peerAddress->setEnabled(true);
+    localPort->setEnabled(true);
+    peerPort->setEnabled(true);
 }
 
 void UdpSAKIODeviceControler::open()
 {
-    QString localHostAddress = ui->comboBoxHostAddress->currentText();
-    QString localPort = ui->lineEditPort->text();
-    QString peerHostAddress = ui->lineEditPeerHostAddress->text();
-    QString peerPort = ui->lineEditPeerPort->text();
+    QString _localHostAddress = localHostAddress->currentText();
+    QString _localPort = localPort->text();
+    QString _peerHostAddress = peerAddress->text();
+    QString _peerPort = peerPort->text();
 
-    emit need2open(localHostAddress, localPort, peerHostAddress, peerPort);
+    emit need2open(_localHostAddress, _localPort, _peerHostAddress, _peerPort);
 }
 
 void UdpSAKIODeviceControler::refresh()
 {
     QList<QHostAddress> addressList = QNetworkInterface::allAddresses();
 
-    ui->comboBoxHostAddress->clear();
+    localHostAddress->clear();
     if (addressList.isEmpty()){
-        ui->comboBoxHostAddress->addItem(tr("无可用网络设备"));
+        localHostAddress->addItem(tr("无可用网络设备"));
     }else {
         QList<QHostAddress> ipv4AddressList;
         foreach (QHostAddress address, addressList) {
@@ -79,7 +91,7 @@ void UdpSAKIODeviceControler::refresh()
         }
 
         foreach (QHostAddress address, ipv4AddressList) {
-            ui->comboBoxHostAddress->addItem(address.toString());
+            localHostAddress->addItem(address.toString());
         }
     }
 }
@@ -87,37 +99,57 @@ void UdpSAKIODeviceControler::refresh()
 void UdpSAKIODeviceControler::initUi()
 {
     refresh();
-    ui->lineEditPeerPort->setValidator(new QIntValidator(0, 65535, this));
-    ui->lineEditPort->setValidator(new QIntValidator(0, 65535, this));
-
-    ui->lineEditPort->setText(sakSettings()->valueUdpClientLocalPort());
-    ui->lineEditPeerPort->setText(sakSettings()->valueUdpClientPeerPort());
-    ui->lineEditPeerHostAddress->setText(sakSettings()->valueUdpClientPeerAddress());
+    peerPort->setValidator(new QIntValidator(0, 65535, this));
+    localPort->setValidator(new QIntValidator(0, 65535, this));
 }
 
 void UdpSAKIODeviceControler::setLocalePort(QString port)
 {
-    if (sakSettings() == nullptr){
-        qWarning("Setting function is not initialized!");
-    }else{
-        sakSettings()->setValueUdpClientLocalPort(port);
-    }
+    QSettings settings;
+    QString key = objectName() + "/" + LOCAL_PORT;
+
+    settings.setValue(key, port);
+}
+
+void UdpSAKIODeviceControler::readLocalePort()
+{
+    QSettings settings;
+    QString key = objectName() + "/" + LOCAL_PORT;
+    QString value = settings.value(key).toString();
+
+    localPort->setText(value);
 }
 
 void UdpSAKIODeviceControler::setPeerPort(QString port)
 {
-    if (sakSettings() == nullptr){
-        qWarning("Setting function is not initialized!");
-    }else{
-        sakSettings()->setValueUdpClientPeerPort(port);
-    }
+    QSettings settings;
+    QString key = objectName() + "/" + PEER_PORT;
+
+    settings.setValue(key, port);
+}
+
+void UdpSAKIODeviceControler::readPeerPort()
+{
+    QSettings settings;
+    QString key = objectName() + "/" + PEER_PORT;
+    QString value = settings.value(key).toString();
+
+    peerPort->setText(value);
 }
 
 void UdpSAKIODeviceControler::setPeerAddress(QString address)
 {
-    if (sakSettings() == nullptr){
-        qWarning("Setting function is not initialized!");
-    }else{
-        sakSettings()->setValueUdpClientPeerAddress(address);
-    }
+    QSettings settings;
+    QString key = objectName() + "/" + PEER_ADDRESS;
+
+    settings.setValue(key, address);
+}
+
+void UdpSAKIODeviceControler::readPeerAddress()
+{
+    QSettings settings;
+    QString key = objectName() + "/" + PEER_ADDRESS;
+    QString value = settings.value(key).toString();
+
+    peerAddress->setText(value);
 }

@@ -12,18 +12,24 @@
 
 #include <QHostAddress>
 #include <QNetworkInterface>
+#include <QSettings>
 
 #include "TcpSAKIODeviceControler.h"
-
-#include "SAKSettings.h"
 #include "ui_TcpSAKIODeviceControler.h"
 
 TcpSAKIODeviceControler::TcpSAKIODeviceControler(QWidget *parent)
     :SAKIODeviceControler(parent)
     ,ui(new Ui::TcpSAKIODeviceControler)
 {
+    setObjectName(QString("TCPClientController"));
+
     ui->setupUi(this);
     initUi();
+
+    localHostAddress = ui->comboBoxLocalHostAddress;
+    localPort = ui->lineEditLocalHostPort;
+    peerPort = ui->lineEditServerPort;
+    peerAddress = ui->lineEditServerAddress;
 
     connect(ui->lineEditLocalHostPort, SIGNAL(textChanged(QString)), this, SLOT(setLocalePort(QString)));
     connect(ui->lineEditServerPort, SIGNAL(textChanged(QString)), this, SLOT(setPeerPort(QString)));
@@ -92,34 +98,56 @@ void TcpSAKIODeviceControler::initUi()
         }
     }
 
-    ui->lineEditLocalHostPort->setText(sakSettings()->valueTcpClientLocalPort());
-    ui->lineEditServerPort->setText(sakSettings()->valueTcpClientPeerPort());
-    ui->lineEditServerAddress->setText(sakSettings()->valueTcpClientPeerAddress());
 }
+
 
 void TcpSAKIODeviceControler::setLocalePort(QString port)
 {
-    if (sakSettings() == nullptr){
-        qWarning("Setting function is not initialized!");
-    }else{
-        sakSettings()->setValueTcpClientLocalPort(port);
-    }
+    QSettings settings;
+    QString key = objectName() + "/" + LOCAL_PORT;
+
+    settings.setValue(key, port);
+}
+
+void TcpSAKIODeviceControler::readLocalePort()
+{
+    QSettings settings;
+    QString key = objectName() + "/" + LOCAL_PORT;
+    QString value = settings.value(key).toString();
+
+    localPort->setText(value);
 }
 
 void TcpSAKIODeviceControler::setPeerPort(QString port)
 {
-    if (sakSettings() == nullptr){
-        qWarning("Setting function is not initialized!");
-    }else{
-        sakSettings()->setValueTcpClientPeerPort(port);
-    }
+    QSettings settings;
+    QString key = objectName() + "/" + PEER_PORT;
+
+    settings.setValue(key, port);
+}
+
+void TcpSAKIODeviceControler::readPeerPort()
+{
+    QSettings settings;
+    QString key = objectName() + "/" + PEER_PORT;
+    QString value = settings.value(key).toString();
+
+    peerPort->setText(value);
 }
 
 void TcpSAKIODeviceControler::setPeerAddress(QString address)
 {
-    if (sakSettings() == nullptr){
-        qWarning("Setting function is not initialized!");
-    }else{
-        sakSettings()->setValueTcpClientPeerAddress(address);
-    }
+    QSettings settings;
+    QString key = objectName() + "/" + PEER_ADDRESS;
+
+    settings.setValue(key, address);
+}
+
+void TcpSAKIODeviceControler::readPeerAddress()
+{
+    QSettings settings;
+    QString key = objectName() + "/" + PEER_ADDRESS;
+    QString value = settings.value(key).toString();
+
+    peerAddress->setText(value);
 }

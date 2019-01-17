@@ -4,7 +4,7 @@
 * I write the comment with English, it's not because that I'm good at English,
 * but for "installing B".
 *
-* Copyright (C) 2018-2018 wuhai persionnal. All rights reserved.
+* Copyright (C) 2018-2019 wuhai persionnal. All rights reserved.
 *******************************************************************************/
 #ifndef SAKIODEVICEWIDGET_H
 #define SAKIODEVICEWIDGET_H
@@ -47,21 +47,15 @@ private:
     QByteArray                  dataTemp                    = "(null)";
     const QSize                 rxtxSize                    = QSize(18, 18);
 
-    typedef enum __TextMode{
-        TextModeBin,
-        TextModeOct,
-        TextModeDec,
-        TextModeHex,
-        TextModeAscii,
-        TextModeUtf8
-    }TextMode;
-
-    TextMode outputTextMode = TextModeAscii;
-    TextMode inputTextMode  = TextModeAscii;
+    QString                     inputTextMode               = "Hex";
+    QString                     outputTextMode              = "Hex";
     ///----------------------------------------------------------------
     void initUI();
     QByteArray dataBytes();
     void Connect();
+
+    QString readSetting(QString &option);
+    void writeSetting(QString &option, QString &value);
 private slots:
     virtual void updateRxImage();
     virtual void updateTxImage();
@@ -75,10 +69,10 @@ private slots:
     void setCycleTime(QString time);
     void readCycleTime();
 
-    void setOutputMode(int mode);
+    void setOutputMode(QString mode);
     void readOutputMode();
 
-    void setInputMode(int mode);
+    void setInputMode(QString mode);
     void readInputMode();
 
     void openFile();

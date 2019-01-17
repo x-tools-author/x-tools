@@ -13,8 +13,8 @@
 #include "SerialportSAKIODevice.h"
 #include <QApplication>
 
-SerialportSAKIODevice::SerialportSAKIODevice(SAKDeviceType deviceType, QObject *parent):
-    SAKIODevice(deviceType, parent)
+SerialportSAKIODevice::SerialportSAKIODevice(QString deviceName, QObject *parent):
+    SAKIODevice(deviceName, parent)
 {
     /// 一个神奇的操作
     moveToThread(this);

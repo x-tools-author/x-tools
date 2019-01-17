@@ -15,19 +15,13 @@
 class SAKIODevice : public QThread{
     Q_OBJECT
 public:
-    typedef enum __SAKDeviceType{
-        SAKDeviceUnknow,
-        SAKDeviceSerialport,
-        SAKDeviceUdp,
-        SAKDeviceTcp,
-        SAKDeviceTcpServer
-    }SAKDeviceType;
-
-    SAKIODevice(SAKDeviceType deviceType = SAKDeviceUnknow, QObject *parent = Q_NULLPTR);
+    SAKIODevice(QString deviceName, QObject *parent = Q_NULLPTR);
     ~SAKIODevice();
 
     virtual bool isOpen(){return false;}
     virtual QString errorString(){return "Unknow device";}
+
+    QString deviceName(){return sakDeviceNmae;}
 public slots:
     virtual void writeBytes(QByteArray data){Q_UNUSED(data);}
     virtual void open(QString serverAddress, QString serverPort){Q_UNUSED(serverAddress);Q_UNUSED(serverPort);}
@@ -35,10 +29,11 @@ public slots:
     virtual void open(QString portName, QString baudRate, QString dataBits, QString stopBits, QString parity);
     virtual void close(){}
 
-    virtual SAKDeviceType deviceType(){return SAKDeviceUnknow;}
-
 protected:
     virtual void run(){}
+private:
+    /// SAKIODeviceSerialport、TcpClientSAKIODevice、TcpServerSAKIODevice、UdpSAKIODevice
+    QString sakDeviceNmae;
 signals:
     void deviceOpenSuccessfully();
     void deviceCloseSuccessfully();

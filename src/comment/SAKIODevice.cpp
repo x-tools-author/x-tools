@@ -12,9 +12,9 @@
 
 #include "SAKIODevice.h"
 
-SAKIODevice::SAKIODevice(SAKDeviceType deviceType, QObject *parent):QThread(parent)
+SAKIODevice::SAKIODevice(QString deviceName, QObject *parent):QThread(parent)
 {
-    Q_UNUSED(deviceType);
+    sakDeviceNmae = deviceName;
 }
 
 

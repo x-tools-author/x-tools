@@ -19,21 +19,19 @@ class SerialportSAKIODevice : public SAKIODevice
 {
     Q_OBJECT
 public:
-    SerialportSAKIODevice(SAKDeviceType deviceType = SAKDeviceSerialport, QObject *parent = Q_NULLPTR);
-    ~SerialportSAKIODevice();
+    SerialportSAKIODevice(QString deviceName = QString("SerialPort"), QObject *parent = Q_NULLPTR);
+    ~SerialportSAKIODevice() override;
     /// -------------------------------------------------
-    virtual bool isOpen(){return mpSerialPort->isOpen();}
-    virtual QString errorString(){return mpSerialPort->errorString();}
+    bool isOpen() override {return mpSerialPort->isOpen();}
+    QString errorString() override {return mpSerialPort->errorString();}
 public slots:
-    virtual void close();
-    virtual void open(QString portName, QString baudRate, QString dataBits, QString stopBits, QString parity);
-    virtual void writeBytes(QByteArray data);
-
-    virtual SAKDeviceType deviceType(){return SAKDeviceSerialport;}
+    void close() override;
+    void open(QString portName, QString baudRate, QString dataBits, QString stopBits, QString parity) override;
+    void writeBytes(QByteArray data) override;
 
     QByteArray ReadAll();
 protected:
-    void run();
+    void run() override;
 private:
     /// 串口
     QSerialPort *mpSerialPort = nullptr;

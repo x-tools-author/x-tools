@@ -12,8 +12,8 @@
 
 #include "UdpSAKIODevice.h"
 
-UdpSAKIODevice::UdpSAKIODevice(SAKDeviceType deviceType, QObject *parent):
-    SAKIODevice(deviceType, parent)
+UdpSAKIODevice::UdpSAKIODevice(QString deviceName, QObject *parent):
+    SAKIODevice(deviceName, parent)
 {
     /// 一个神奇的操作
     moveToThread(this);

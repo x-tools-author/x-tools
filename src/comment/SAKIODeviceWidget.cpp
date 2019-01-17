@@ -4,7 +4,7 @@
 * I write the comment with English, it's not because that I'm good at English,
 * but for "installing B".
 *
-* Copyright (C) 2018-2018 wuhai persionnal. All rights reserved.
+* Copyright (C) 2018-2019 wuhai persionnal. All rights reserved.
 *******************************************************************************/
 #ifdef _MSC_VER
 #pragma execution_character_set("utf-8")
@@ -16,9 +16,9 @@
 #include <QFileDialog>
 #include <QTextStream>
 #include <QPixmap>
+#include <QSettings>
 
 #include "SAKIODeviceWidget.h"
-#include "SAKSettings.h"
 
 #include "ui_SAKIODeviceWidget.h"
 
@@ -55,7 +55,7 @@ void SAKIODeviceWidget::initUI()
     ui->lineEditCycleTime->setValidator(new QIntValidator(10, 24*60*60*1000, ui->lineEditCycleTime));
     ui->lineEditBytesDelayTime->setValidator(new QIntValidator(10, 24*60*60*1000, ui->lineEditBytesDelayTime));
 
-#if 0
+#if 0   /// 按钮图标
     ui->pushButtonClearInput->setIcon(QApplication::style()->standardIcon(QStyle::SP_DialogResetButton));
     ui->pushButtonClearOutput->setIcon(QApplication::style()->standardIcon(QStyle::SP_DialogResetButton));
     ui->pushButtonReadInFile->setIcon(QApplication::style()->standardIcon(QStyle::SP_DirOpenIcon));
@@ -174,8 +174,8 @@ void SAKIODeviceWidget::Connect()
     connect(device, SIGNAL(bytesWritten(qint64)),  this, SLOT(updateTxImage()));
 
     /// 文本模式
-    connect(ui->comboBoxInputMode, SIGNAL(currentIndexChanged(int)), this , SLOT(setInputMode(int)));
-    connect(ui->comboBoxOutputMode, SIGNAL(currentIndexChanged(int)), this, SLOT(setOutputMode(int)));
+    connect(ui->comboBoxInputMode, SIGNAL(currentTextChanged(QString)), this , SLOT(setInputMode(QString)));
+    connect(ui->comboBoxOutputMode, SIGNAL(currentTextChanged(QString)), this, SLOT(setOutputMode(QString)));
 
     /// 循环发送与字节间延时发送
     connect(ui->checkBoxBytesDelay, SIGNAL(clicked(bool)), this, SLOT(cancleCycle()));
@@ -369,32 +369,32 @@ QByteArray SAKIODeviceWidget::dataBytes()
         return data;
     }
 
-    if (inputTextMode == TextModeBin){
+    if (inputTextMode.toUpper().compare(QString("BIN")) == 0){
         QStringList strList = str.split(' ');
         foreach (QString str, strList){
             data.append(static_cast<int8_t>(QString(str).toInt(nullptr, 2)));
         }
-    }else if (inputTextMode == TextModeOct){
+    }else if (inputTextMode.toUpper().compare(QString("OCT")) == 0){
         QStringList strList = str.split(' ');
         foreach (QString str, strList){
             data.append(static_cast<int8_t>(QString(str).toInt(nullptr, 8)));
         }
-    }else if (inputTextMode == TextModeDec){
+    }else if (inputTextMode.toUpper().compare(QString("DEC")) == 0){
         QStringList strList = str.split(' ');
         foreach (QString str, strList){
             data.append(static_cast<int8_t>(QString(str).toInt(nullptr, 10)));
         }
-    }else if (inputTextMode == TextModeHex){
+    }else if (inputTextMode.toUpper().compare(QString("HEX")) == 0){
         QStringList strList = str.split(' ');
         foreach (QString str, strList){
             data.append(static_cast<int8_t>(QString(str).toInt(nullptr, 16)));
         }
-    }else if (inputTextMode == TextModeAscii){
+    }else if (inputTextMode.toUpper().compare(QString("ASCII")) == 0){
         data = ui->textEditInputData->toPlainText().toLatin1();
-    }else if (inputTextMode == TextModeUtf8){
+    }else if (inputTextMode.toUpper().compare(QString("UTF8")) == 0){
         data = ui->textEditInputData->toPlainText().toLocal8Bit();
     }else {
-        qWarning() << tr("未知输入各式！");
+        Q_ASSERT_X(false, __FUNCTION__, "Unknow output mode");
     }
 
     return data;
@@ -408,7 +408,7 @@ void SAKIODeviceWidget::textFormatControl()
         connect(ui->textEditInputData, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
         return;
     }else {
-        if (inputTextMode == TextModeBin){  /// 二进制输入
+        if (inputTextMode.toUpper().compare(QString("BIN")) == 0){
             QString strTemp;
             plaintext.remove(QRegExp("[^0-1]"));
             for (int i = 0; i < plaintext.length(); i++){
@@ -419,7 +419,7 @@ void SAKIODeviceWidget::textFormatControl()
             }
             ui->textEditInputData->setText(strTemp);
             ui->textEditInputData->moveCursor(QTextCursor::End);
-        }else if(inputTextMode == TextModeOct) { /// 八进制输入
+        }else if(inputTextMode.toUpper().compare(QString("OCT")) == 0) {
             QString strTemp;
             plaintext.remove(QRegExp("[^0-7]"));
             for (int i = 0; i < plaintext.length(); i++){
@@ -430,7 +430,7 @@ void SAKIODeviceWidget::textFormatControl()
             }
             ui->textEditInputData->setText(strTemp);
             ui->textEditInputData->moveCursor(QTextCursor::End);
-        }else if(inputTextMode == TextModeDec) { /// 十进制
+        }else if(inputTextMode.toUpper().compare(QString("DEC")) == 0) {
             QString strTemp;
             plaintext.remove(QRegExp("[^0-9]"));
             for (int i = 0; i < plaintext.length(); i++){
@@ -441,7 +441,7 @@ void SAKIODeviceWidget::textFormatControl()
             }
             ui->textEditInputData->setText(strTemp);
             ui->textEditInputData->moveCursor(QTextCursor::End);
-        }else if(inputTextMode == TextModeHex) { /// 十六进制
+        }else if(inputTextMode.toUpper().compare(QString("HEX")) == 0) {
             QString strTemp;
             plaintext.remove(QRegExp("[^0-9a-fA-F]"));
             for (int i = 0; i < plaintext.length(); i++){
@@ -452,14 +452,14 @@ void SAKIODeviceWidget::textFormatControl()
             }
             ui->textEditInputData->setText(strTemp.toUpper());
             ui->textEditInputData->moveCursor(QTextCursor::End);
-        }else if(inputTextMode == TextModeAscii) { /// ascii
+        }else if(inputTextMode.toUpper().compare(QString("ASCII")) == 0) {
             plaintext.remove(QRegExp("[^\0u00-\u007f ]"));
             ui->textEditInputData->setText(plaintext);
             ui->textEditInputData->moveCursor(QTextCursor::End);
-        }else if(inputTextMode == TextModeUtf8) {    /// utf-8
+        }else if(inputTextMode.toUpper().compare(QString("UTF8")) == 0) {
             /// nothing to do
         }else {
-            qWarning() << tr("未知输入选项！");
+            Q_ASSERT_X(false, __FUNCTION__, "Unknow output mode");
         }
     }
     connect(ui->textEditInputData, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
@@ -494,28 +494,28 @@ void SAKIODeviceWidget::bytesRead(QByteArray data)
         str = QString("<font color=silver>%1</font>").arg(str);
     }
 
-    if (outputTextMode == TextModeBin){
+    if (outputTextMode.compare(QString("BIN")) == 0){
         for (int i = 0; i < data.length(); i++){
             str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(data.at(i)), 2), 8, '0'));
         }
-    }else if (outputTextMode == TextModeOct){
+    }else if (outputTextMode.compare(QString("OCT")) == 0){
         for (int i = 0; i < data.length(); i++){
             str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(data.at(i)), 8), 3, '0'));
         }
-    }else if (outputTextMode == TextModeDec){
+    }else if (outputTextMode.compare(QString("DEC")) == 0){
         for (int i = 0; i < data.length(); i++){
             str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(data.at(i)), 10)));
         }
-    }else if (outputTextMode == TextModeHex){
+    }else if (outputTextMode.compare(QString("HEX")) == 0){
         for (int i = 0; i < data.length(); i++){
             str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(data.at(i)), 16), 2, '0'));
         }
-    }else if (outputTextMode == TextModeAscii){
+    }else if (outputTextMode.compare(QString("ASCII")) == 0){
         str.append(QString(data));
-    }else if (outputTextMode == TextModeUtf8){
+    }else if (outputTextMode.compare(QString("UTF-8")) == 0){
         str.append(QString(data));
     }else {
-        qWarning() << "Unknown output model!";
+        Q_ASSERT_X(false, __FUNCTION__, "Unknow output mode");
     }
 
     if (ui->checkBoxOutputReceiveDataOnly->isChecked()){
@@ -584,485 +584,32 @@ void SAKIODeviceWidget::resetReceiveDataCount()
     ui->labelReceiveFrames->setText("0");
 }
 
-void SAKIODeviceWidget::setOutputMode(int mode)
+void SAKIODeviceWidget::setOutputMode(QString mode)
 {
-    if (sakSettings() == nullptr){
-        qWarning() << "The settings function is not initialized yet!";
-        return;
-    }else{
-        outputTextMode = static_cast<TextMode>(mode);
-
-        if (outputTextMode == TextModeBin){
-            if (device->deviceType() == SAKIODevice::SAKDeviceUnknow){
-                sakSettings()->setValueUnknowOutputMode(MODEBIN);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceSerialport){
-                sakSettings()->setValueSerialportOutputMode(MODEBIN);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceUdp){
-                sakSettings()->setValueUdpClientOutputMode(MODEBIN);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceTcp){
-                sakSettings()->setValueTcpClientOutputMode(MODEBIN);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceTcpServer){
-                sakSettings()->setValueTcpServerOutputMode(MODEBIN);
-            }else {
-                qWarning() << "Unknow device type!";
-            }
-        }else if (outputTextMode == TextModeOct){
-            if (device->deviceType() == SAKIODevice::SAKDeviceUnknow){
-                sakSettings()->setValueUnknowOutputMode(MODEOCT);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceSerialport){
-                sakSettings()->setValueSerialportOutputMode(MODEOCT);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceUdp){
-                sakSettings()->setValueUdpClientOutputMode(MODEOCT);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceTcp){
-                sakSettings()->setValueTcpClientOutputMode(MODEOCT);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceTcpServer){
-                sakSettings()->setValueTcpServerOutputMode(MODEOCT);
-            }else {
-                qWarning() << "Unknow device type!";
-            }
-        }else if (outputTextMode == TextModeDec){
-            if (device->deviceType() == SAKIODevice::SAKDeviceUnknow){
-                sakSettings()->setValueUnknowOutputMode(MODEDEC);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceSerialport){
-                sakSettings()->setValueSerialportOutputMode(MODEDEC);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceUdp){
-                sakSettings()->setValueUdpClientOutputMode(MODEDEC);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceTcp){
-                sakSettings()->setValueTcpClientOutputMode(MODEDEC);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceTcpServer){
-                sakSettings()->setValueTcpServerOutputMode(MODEDEC);
-            }else {
-                qWarning() << "Unknow device type!";
-            }
-        }else if (outputTextMode == TextModeHex){
-            if (device->deviceType() == SAKIODevice::SAKDeviceUnknow){
-                sakSettings()->setValueUnknowOutputMode(MODEHEX);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceSerialport){
-                sakSettings()->setValueSerialportOutputMode(MODEHEX);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceUdp){
-                sakSettings()->setValueUdpClientOutputMode(MODEHEX);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceTcp){
-                sakSettings()->setValueTcpClientOutputMode(MODEHEX);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceTcpServer){
-                sakSettings()->setValueTcpServerOutputMode(MODEHEX);
-            }else {
-                qWarning() << "Unknow device type!";
-            }
-        }else if (outputTextMode == TextModeAscii){
-            if (device->deviceType() == SAKIODevice::SAKDeviceUnknow){
-                sakSettings()->setValueUnknowOutputMode(MODEASCII);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceSerialport){
-                sakSettings()->setValueSerialportOutputMode(MODEASCII);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceUdp){
-                sakSettings()->setValueUdpClientOutputMode(MODEASCII);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceTcp){
-                sakSettings()->setValueTcpClientOutputMode(MODEASCII);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceTcpServer){
-                sakSettings()->setValueTcpServerOutputMode(MODEASCII);
-            }else {
-                qWarning() << "Unknow device type!";
-            }
-        }else if (outputTextMode == TextModeUtf8){
-            if (device->deviceType() == SAKIODevice::SAKDeviceUnknow){
-                sakSettings()->setValueUnknowOutputMode(MODEUTF8);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceSerialport){
-                sakSettings()->setValueSerialportOutputMode(MODEUTF8);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceUdp){
-                sakSettings()->setValueUdpClientOutputMode(MODEUTF8);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceTcp){
-                sakSettings()->setValueTcpClientOutputMode(MODEUTF8);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceTcpServer){
-                sakSettings()->setValueTcpServerOutputMode(MODEUTF8);
-            }else {
-                qWarning() << "Unknow device type!";
-            }
-        }else {
-            qWarning("Unknow error!");
-        }
-    }
+    QString option = QString("OutputMode");
+    writeSetting(option, mode);
 }
-
-
 
 void SAKIODeviceWidget::readOutputMode()
 {
-    QString tip = QString("Unknow output mode!");
+    QString option = QString("OutputMode");
+    QString value = readSetting(option);
 
-    if (sakSettings() == nullptr){
-        qWarning() << "The settings function is not initialized yet!";
-        return;
-    }else {
-        if (device->deviceType() == SAKIODevice::SAKDeviceUnknow){
-            if (sakSettings()->valueUnknowOutputMode().compare(MODEBIN) == 0){
-                ui->comboBoxOutputMode->setCurrentIndex(TextModeBin);
-                outputTextMode = TextModeBin;
-            }else if (sakSettings()->valueUnknowOutputMode().compare(MODEOCT) == 0){
-                ui->comboBoxOutputMode->setCurrentIndex(TextModeOct);
-                outputTextMode = TextModeOct;
-            }else if (sakSettings()->valueUnknowOutputMode().compare(MODEDEC) == 0){
-                ui->comboBoxOutputMode->setCurrentIndex(TextModeDec);
-                outputTextMode = TextModeDec;
-            }else if (sakSettings()->valueUnknowOutputMode().compare(MODEHEX) == 0){
-                ui->comboBoxOutputMode->setCurrentIndex(TextModeHex);
-                outputTextMode = TextModeHex;
-            }else if (sakSettings()->valueUnknowOutputMode().compare(MODEASCII) == 0){
-                ui->comboBoxOutputMode->setCurrentIndex(TextModeAscii);
-                outputTextMode = TextModeAscii;
-            }else if (sakSettings()->valueUnknowOutputMode().compare(MODEUTF8) == 0){
-                ui->comboBoxOutputMode->setCurrentIndex(TextModeUtf8);
-                outputTextMode = TextModeUtf8;
-            }else {
-                qWarning() << tip;
-            }
-        }else if (device->deviceType() == SAKIODevice::SAKDeviceSerialport){
-            if (sakSettings()->valueSerialportOutputMode().compare(MODEBIN) == 0){
-                ui->comboBoxOutputMode->setCurrentIndex(TextModeBin);
-                outputTextMode = TextModeBin;
-            }else if (sakSettings()->valueSerialportOutputMode().compare(MODEOCT) == 0){
-                ui->comboBoxOutputMode->setCurrentIndex(TextModeOct);
-                outputTextMode = TextModeOct;
-            }else if (sakSettings()->valueSerialportOutputMode().compare(MODEDEC) == 0){
-                ui->comboBoxOutputMode->setCurrentIndex(TextModeDec);
-                outputTextMode = TextModeDec;
-            }else if (sakSettings()->valueSerialportOutputMode().compare(MODEHEX) == 0){
-                ui->comboBoxOutputMode->setCurrentIndex(TextModeHex);
-                outputTextMode = TextModeHex;
-            }else if (sakSettings()->valueSerialportOutputMode().compare(MODEASCII) == 0){
-                ui->comboBoxOutputMode->setCurrentIndex(TextModeAscii);
-                outputTextMode = TextModeAscii;
-            }else if (sakSettings()->valueSerialportOutputMode().compare(MODEUTF8) == 0){
-                ui->comboBoxOutputMode->setCurrentIndex(TextModeUtf8);
-                outputTextMode = TextModeUtf8;
-            }else {
-                qWarning() << tip;
-            }
-        }else if (device->deviceType() == SAKIODevice::SAKDeviceUdp){
-            if (sakSettings()->valueUdpClientOutputMode().compare(MODEBIN) == 0){
-                ui->comboBoxOutputMode->setCurrentIndex(TextModeBin);
-                outputTextMode = TextModeBin;
-            }else if (sakSettings()->valueUdpClientOutputMode().compare(MODEOCT) == 0){
-                ui->comboBoxOutputMode->setCurrentIndex(TextModeOct);
-                outputTextMode = TextModeOct;
-            }else if (sakSettings()->valueUdpClientOutputMode().compare(MODEDEC) == 0){
-                ui->comboBoxOutputMode->setCurrentIndex(TextModeDec);
-                outputTextMode = TextModeDec;
-            }else if (sakSettings()->valueUdpClientOutputMode().compare(MODEHEX) == 0){
-                ui->comboBoxOutputMode->setCurrentIndex(TextModeHex);
-                outputTextMode = TextModeHex;
-            }else if (sakSettings()->valueUdpClientOutputMode().compare(MODEASCII) == 0){
-                ui->comboBoxOutputMode->setCurrentIndex(TextModeAscii);
-                outputTextMode = TextModeAscii;
-            }else if (sakSettings()->valueUdpClientOutputMode().compare(MODEUTF8) == 0){
-                 ui->comboBoxOutputMode->setCurrentIndex(TextModeUtf8);
-                 outputTextMode = TextModeUtf8;
-            }else {
-                qWarning() << tip;
-            }
-        }else if (device->deviceType() == SAKIODevice::SAKDeviceTcp){
-            if (sakSettings()->valueTcpClientOutputMode().compare(MODEBIN) == 0){
-                ui->comboBoxOutputMode->setCurrentIndex(TextModeBin);
-                outputTextMode = TextModeBin;
-            }else if (sakSettings()->valueTcpClientOutputMode().compare(MODEOCT) == 0){
-                ui->comboBoxOutputMode->setCurrentIndex(TextModeOct);
-                outputTextMode = TextModeOct;
-            }else if (sakSettings()->valueTcpClientOutputMode().compare(MODEDEC) == 0){
-                ui->comboBoxOutputMode->setCurrentIndex(TextModeDec);
-                outputTextMode = TextModeDec;
-            }else if (sakSettings()->valueTcpClientOutputMode().compare(MODEHEX) == 0){
-                ui->comboBoxOutputMode->setCurrentIndex(TextModeHex);
-                outputTextMode = TextModeHex;
-            }else if (sakSettings()->valueTcpClientOutputMode().compare(MODEASCII) == 0){
-                ui->comboBoxOutputMode->setCurrentIndex(TextModeAscii);
-                outputTextMode = TextModeAscii;
-            }else if (sakSettings()->valueTcpClientOutputMode().compare(MODEUTF8) == 0){
-                ui->comboBoxOutputMode->setCurrentIndex(TextModeUtf8);
-                outputTextMode = TextModeUtf8;
-            }else {
-                qWarning() << tip;
-            }
-        }else if (device->deviceType() == SAKIODevice::SAKDeviceTcpServer){
-            if (sakSettings()->valueTcpServerOutputMode().compare(MODEBIN) == 0){
-                ui->comboBoxOutputMode->setCurrentIndex(TextModeBin);
-                outputTextMode = TextModeBin;
-            }else if (sakSettings()->valueTcpServerOutputMode().compare(MODEOCT) == 0){
-                ui->comboBoxOutputMode->setCurrentIndex(TextModeOct);
-                outputTextMode = TextModeOct;
-            }else if (sakSettings()->valueTcpServerOutputMode().compare(MODEDEC) == 0){
-                ui->comboBoxOutputMode->setCurrentIndex(TextModeDec);
-                outputTextMode = TextModeDec;
-            }else if (sakSettings()->valueTcpServerOutputMode().compare(MODEHEX) == 0){
-                ui->comboBoxOutputMode->setCurrentIndex(TextModeHex);
-                outputTextMode = TextModeHex;
-            }else if (sakSettings()->valueTcpServerOutputMode().compare(MODEASCII) == 0){
-                ui->comboBoxOutputMode->setCurrentIndex(TextModeAscii);
-                outputTextMode = TextModeAscii;
-            }else if (sakSettings()->valueTcpServerOutputMode().compare(MODEUTF8) == 0){
-                 ui->comboBoxOutputMode->setCurrentIndex(TextModeUtf8);
-                 outputTextMode = TextModeUtf8;
-            }else {
-                qWarning() << tip;
-            }
-        }else {
-            qWarning("Unknow device type!");
-        }
-    }
+    ui->comboBoxOutputMode->setCurrentText(value);
 }
 
-void SAKIODeviceWidget::setInputMode(int mode)
+void SAKIODeviceWidget::setInputMode(QString mode)
 {
-    if (sakSettings() == nullptr){
-        qWarning() << "The settings function is not initialized yet!";
-        return;
-    }else {
-        inputTextMode = static_cast<TextMode>(mode);
-        ui->textEditInputData->clear();
-
-        if (inputTextMode == TextModeBin){
-            if (device->deviceType() == SAKIODevice::SAKDeviceUnknow){
-                sakSettings()->setValueUnknowInputMode(MODEBIN);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceSerialport){
-                sakSettings()->setValueSerialportInputMode(MODEBIN);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceUdp){
-                sakSettings()->setValueUdpClientInputMode(MODEBIN);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceTcp){
-                sakSettings()->setValueTcpClientInputMode(MODEBIN);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceTcpServer){
-                sakSettings()->setValueTcpServerInputMode(MODEBIN);
-            }else {
-                qWarning() << "Unknow device type!";
-            }
-        }else if (inputTextMode == TextModeOct){
-            if (device->deviceType() == SAKIODevice::SAKDeviceUnknow){
-                sakSettings()->setValueUnknowInputMode(MODEOCT);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceSerialport){
-                sakSettings()->setValueSerialportInputMode(MODEOCT);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceUdp){
-                sakSettings()->setValueUdpClientInputMode(MODEOCT);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceTcp){
-                sakSettings()->setValueTcpClientInputMode(MODEOCT);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceTcpServer){
-                sakSettings()->setValueTcpServerInputMode(MODEOCT);
-            }else {
-                qWarning() << "Unknow device type!";
-            }
-        }else if (inputTextMode == TextModeDec){
-            if (device->deviceType() == SAKIODevice::SAKDeviceUnknow){
-                sakSettings()->setValueUnknowInputMode(MODEDEC);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceSerialport){
-                sakSettings()->setValueSerialportInputMode(MODEDEC);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceUdp){
-                sakSettings()->setValueUdpClientInputMode(MODEDEC);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceTcp){
-                sakSettings()->setValueTcpClientInputMode(MODEDEC);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceTcpServer){
-                sakSettings()->setValueTcpServerInputMode(MODEDEC);
-            }else {
-                qWarning() << "Unknow device type!";
-            }
-        }else if (inputTextMode == TextModeHex){
-            if (device->deviceType() == SAKIODevice::SAKDeviceUnknow){
-                sakSettings()->setValueUnknowInputMode(MODEHEX);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceSerialport){
-                sakSettings()->setValueSerialportInputMode(MODEHEX);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceUdp){
-                sakSettings()->setValueUdpClientInputMode(MODEHEX);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceTcp){
-                sakSettings()->setValueTcpClientInputMode(MODEHEX);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceTcpServer){
-                sakSettings()->setValueTcpServerInputMode(MODEHEX);
-            }else {
-                qWarning() << "Unknow device type!";
-            }
-        }else if (inputTextMode == TextModeAscii){
-            if (device->deviceType() == SAKIODevice::SAKDeviceUnknow){
-                sakSettings()->setValueUnknowInputMode(MODEASCII);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceSerialport){
-                sakSettings()->setValueSerialportInputMode(MODEASCII);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceUdp){
-                sakSettings()->setValueUdpClientInputMode(MODEASCII);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceTcp){
-                sakSettings()->setValueTcpClientInputMode(MODEASCII);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceTcpServer){
-                sakSettings()->setValueTcpServerInputMode(MODEASCII);
-            }else {
-                qWarning() << "Unknow device type!";
-            }
-        }else if (inputTextMode == TextModeUtf8){
-            if (device->deviceType() == SAKIODevice::SAKDeviceUnknow){
-                sakSettings()->setValueUnknowInputMode(MODEUTF8);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceSerialport){
-                sakSettings()->setValueSerialportInputMode(MODEUTF8);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceUdp){
-                sakSettings()->setValueUdpClientInputMode(MODEUTF8);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceTcp){
-                sakSettings()->setValueTcpClientInputMode(MODEUTF8);
-            }else if (device->deviceType() == SAKIODevice::SAKDeviceTcpServer){
-                sakSettings()->setValueTcpServerInputMode(MODEUTF8);
-            }else {
-                qWarning() << "Unknow device type!";
-            }
-        }else {
-            qWarning("Unknow error!");
-        }
-    }
+    QString option = QString("InputMode");
+    writeSetting(option, mode);
 }
 
 void SAKIODeviceWidget::readInputMode()
 {
-    QString tip = QString("Unknow input mode!");
+    QString option = QString("InputMode");
+    QString value = readSetting(option);
 
-    if (sakSettings() == nullptr){
-        qWarning() << "The settings function is not initialized yet!";
-        return;
-    }else {
-        if (device->deviceType() == SAKIODevice::SAKDeviceUnknow){
-            if (sakSettings()->valueUnknowInputMode().compare(MODEBIN) == 0){
-                ui->comboBoxInputMode->setCurrentIndex(TextModeBin);
-                inputTextMode = TextModeBin;
-            }else if (sakSettings()->valueUnknowInputMode().compare(MODEOCT) == 0){
-                ui->comboBoxInputMode->setCurrentIndex(TextModeOct);
-                inputTextMode = TextModeOct;
-            }else if (sakSettings()->valueUnknowInputMode().compare(MODEDEC) == 0){
-                ui->comboBoxInputMode->setCurrentIndex(TextModeDec);
-                inputTextMode = TextModeDec;
-            }else if (sakSettings()->valueUnknowInputMode().compare(MODEHEX) == 0){
-                ui->comboBoxInputMode->setCurrentIndex(TextModeHex);
-                inputTextMode = TextModeHex;
-            }else if (sakSettings()->valueUnknowInputMode().compare(MODEASCII) == 0){
-                ui->comboBoxInputMode->setCurrentIndex(TextModeAscii);
-                inputTextMode = TextModeAscii;
-            }else if (sakSettings()->valueUnknowInputMode().compare(MODEUTF8) == 0){
-                ui->comboBoxInputMode->setCurrentIndex(TextModeUtf8);
-                inputTextMode = TextModeUtf8;
-            }else {
-                qWarning() << tip;
-            }
-        }else if (device->deviceType() == SAKIODevice::SAKDeviceSerialport){
-            if (sakSettings()->valueSerialportInputMode().compare(MODEBIN) == 0){
-                ui->comboBoxInputMode->setCurrentIndex(TextModeBin);
-                inputTextMode = TextModeBin;
-            }else if (sakSettings()->valueSerialportInputMode().compare(MODEOCT) == 0){
-                ui->comboBoxInputMode->setCurrentIndex(TextModeOct);
-                inputTextMode = TextModeOct;
-            }else if (sakSettings()->valueSerialportInputMode().compare(MODEDEC) == 0){
-                ui->comboBoxInputMode->setCurrentIndex(TextModeDec);
-                inputTextMode = TextModeDec;
-            }else if (sakSettings()->valueSerialportInputMode().compare(MODEHEX) == 0){
-                ui->comboBoxInputMode->setCurrentIndex(TextModeHex);
-                inputTextMode = TextModeHex;
-            }else if (sakSettings()->valueSerialportInputMode().compare(MODEASCII) == 0){
-                ui->comboBoxInputMode->setCurrentIndex(TextModeAscii);
-                inputTextMode = TextModeAscii;
-            }else if (sakSettings()->valueSerialportInputMode().compare(MODEUTF8) == 0){
-                ui->comboBoxInputMode->setCurrentIndex(TextModeUtf8);
-                inputTextMode = TextModeUtf8;
-            }else {
-                qWarning() << tip;
-            }
-        }else if (device->deviceType() == SAKIODevice::SAKDeviceUdp){
-            if (sakSettings()->valueUdpClientInputMode().compare(MODEBIN) == 0){
-                ui->comboBoxInputMode->setCurrentIndex(TextModeBin);
-                inputTextMode = TextModeBin;
-            }else if (sakSettings()->valueUdpClientInputMode().compare(MODEOCT) == 0){
-                ui->comboBoxInputMode->setCurrentIndex(TextModeOct);
-                inputTextMode = TextModeOct;
-            }else if (sakSettings()->valueUdpClientInputMode().compare(MODEDEC) == 0){
-                ui->comboBoxInputMode->setCurrentIndex(TextModeDec);
-                inputTextMode = TextModeDec;
-            }else if (sakSettings()->valueUdpClientInputMode().compare(MODEHEX) == 0){
-                ui->comboBoxInputMode->setCurrentIndex(TextModeHex);
-                inputTextMode = TextModeHex;
-            }else if (sakSettings()->valueUdpClientInputMode().compare(MODEASCII) == 0){
-                ui->comboBoxInputMode->setCurrentIndex(TextModeAscii);
-                inputTextMode = TextModeAscii;
-            }else if (sakSettings()->valueUdpClientInputMode().compare(MODEUTF8) == 0){
-                ui->comboBoxInputMode->setCurrentIndex(TextModeUtf8);
-                inputTextMode = TextModeUtf8;
-            }else {
-                qWarning() << tip;
-            }
-        }else if (device->deviceType() == SAKIODevice::SAKDeviceTcp){
-            if (sakSettings()->valueTcpClientInputMode().compare(MODEBIN) == 0){
-                ui->comboBoxInputMode->setCurrentIndex(TextModeBin);
-                inputTextMode = TextModeBin;
-            }else if (sakSettings()->valueTcpClientInputMode().compare(MODEOCT) == 0){
-                ui->comboBoxInputMode->setCurrentIndex(TextModeOct);
-                inputTextMode = TextModeOct;
-            }else if (sakSettings()->valueTcpClientInputMode().compare(MODEDEC) == 0){
-                ui->comboBoxInputMode->setCurrentIndex(TextModeDec);
-                inputTextMode = TextModeDec;
-            }else if (sakSettings()->valueTcpClientInputMode().compare(MODEHEX) == 0){
-                ui->comboBoxInputMode->setCurrentIndex(TextModeHex);
-                inputTextMode = TextModeHex;
-            }else if (sakSettings()->valueTcpClientInputMode().compare(MODEASCII) == 0){
-                ui->comboBoxInputMode->setCurrentIndex(TextModeAscii);
-                inputTextMode = TextModeAscii;
-            }else if (sakSettings()->valueTcpClientInputMode().compare(MODEUTF8) == 0){
-                ui->comboBoxInputMode->setCurrentIndex(TextModeUtf8);
-                inputTextMode = TextModeUtf8;
-            }else {
-                qWarning() << tip;
-            }
-        }else if (device->deviceType() == SAKIODevice::SAKDeviceTcpServer){
-            if (sakSettings()->valueTcpServerInputMode().compare(MODEBIN) == 0){
-                ui->comboBoxInputMode->setCurrentIndex(TextModeBin);
-                inputTextMode = TextModeBin;
-            }else if (sakSettings()->valueTcpServerInputMode().compare(MODEOCT) == 0){
-                ui->comboBoxInputMode->setCurrentIndex(TextModeOct);
-                inputTextMode = TextModeOct;
-            }else if (sakSettings()->valueTcpServerInputMode().compare(MODEDEC) == 0){
-                ui->comboBoxInputMode->setCurrentIndex(TextModeDec);
-                inputTextMode = TextModeDec;
-            }else if (sakSettings()->valueTcpServerInputMode().compare(MODEHEX) == 0){
-                ui->comboBoxInputMode->setCurrentIndex(TextModeHex);
-                inputTextMode = TextModeHex;
-            }else if (sakSettings()->valueTcpServerInputMode().compare(MODEASCII) == 0){
-                ui->comboBoxInputMode->setCurrentIndex(TextModeAscii);
-                inputTextMode = TextModeAscii;
-            }else if (sakSettings()->valueTcpServerInputMode().compare(MODEUTF8) == 0){
-                ui->comboBoxInputMode->setCurrentIndex(TextModeUtf8);
-                inputTextMode = TextModeUtf8;
-            }else {
-                qWarning() << tip;
-            }
-        }else {
-            qWarning("Unknow device type!");
-        }
-    }
-}
-
-void SAKIODeviceWidget::setCycleTime(QString time)
-{
-    if (device->deviceType() == SAKIODevice::SAKDeviceUnknow){
-        sakSettings()->setValueUnknowCycleTime(time);
-    }else if (device->deviceType() == SAKIODevice::SAKDeviceSerialport){
-        sakSettings()->setValueSerialportCycleTime(time);
-    }else if (device->deviceType() == SAKIODevice::SAKDeviceUdp){
-        sakSettings()->setValueUdpClientCycleTime(time);
-    }else if (device->deviceType() == SAKIODevice::SAKDeviceTcp){
-        sakSettings()->setValueTcpClientCycleTime(time);
-    }else if (device->deviceType() == SAKIODevice::SAKDeviceTcpServer){
-        sakSettings()->setValueTcpServerCycleTime(time);
-    }else {
-        qWarning() << "Unknow device type!";
-    }
-}
-
-void SAKIODeviceWidget::readCycleTime()
-{
-    if (device->deviceType() == SAKIODevice::SAKDeviceUnknow){
-        ui->lineEditCycleTime->setText(sakSettings()->valueUnknowCycleTime());
-    }else if (device->deviceType() == SAKIODevice::SAKDeviceSerialport){
-        ui->lineEditCycleTime->setText(sakSettings()->valueSerialportCycleTime());
-    }else if (device->deviceType() == SAKIODevice::SAKDeviceUdp){
-        ui->lineEditCycleTime->setText(sakSettings()->valueUdpClientCycleTime());
-    }else if (device->deviceType() == SAKIODevice::SAKDeviceTcp){
-        ui->lineEditCycleTime->setText(sakSettings()->valueTcpClientCycleTime());
-    }else if (device->deviceType() == SAKIODevice::SAKDeviceTcpServer){
-        ui->lineEditCycleTime->setText(sakSettings()->valueTcpServerCycleTime());
-    }else {
-        ui->lineEditCycleTime->setText("1000");
-    }
+    ui->comboBoxInputMode->setCurrentText(value);
 }
 
 void SAKIODeviceWidget::updateTxImage()
@@ -1091,68 +638,48 @@ void SAKIODeviceWidget::updateRxImage()
 
 void SAKIODeviceWidget::setDelayTime(QString time)
 {
-    if (device->deviceType() == SAKIODevice::SAKDeviceUnknow){
-        sakSettings()->setValueUnknowDelayTime(time);
-    }else if (device->deviceType() == SAKIODevice::SAKDeviceSerialport){
-        sakSettings()->setValueSerialportDelayTime(time);
-    }else if (device->deviceType() == SAKIODevice::SAKDeviceUdp){
-        sakSettings()->setValueUdpClientDelayTime(time);
-    }else if (device->deviceType() == SAKIODevice::SAKDeviceTcp){
-        sakSettings()->setValueTcpClientDelayTime(time);
-    }else if (device->deviceType() == SAKIODevice::SAKDeviceTcpServer){
-        sakSettings()->setValueTcpServerDelayTime(time);
-    }else {
-        qWarning() << "Unknow device type!";
-    }
+    QString option = QString("DelayTime");
+    QString value = time;
+    writeSetting(option, value);
 }
 
 void SAKIODeviceWidget::readDelayTime()
 {
-    if (device->deviceType() == SAKIODevice::SAKDeviceUnknow){
-        ui->lineEditBytesDelayTime->setText(sakSettings()->valueUnknowDelayTime());
-    }else if (device->deviceType() == SAKIODevice::SAKDeviceSerialport){
-        ui->lineEditBytesDelayTime->setText(sakSettings()->valueSerialportDelayTime());
-    }else if (device->deviceType() == SAKIODevice::SAKDeviceUdp){
-        ui->lineEditBytesDelayTime->setText(sakSettings()->valueUdpClientDelayTime());
-    }else if (device->deviceType() == SAKIODevice::SAKDeviceTcp){
-        ui->lineEditBytesDelayTime->setText(sakSettings()->valueTcpClientDelayTime());
-    }else if (device->deviceType() == SAKIODevice::SAKDeviceTcpServer){
-        ui->lineEditBytesDelayTime->setText(sakSettings()->valueTcpServerDelayTime());
-    }else {
-        ui->lineEditBytesDelayTime->setText("1000");
-    }
+    QString option = QString("DelayTime");
+    QString value = readSetting(option);
+
+    ui->lineEditBytesDelayTime->setText(value);
+}
+
+void SAKIODeviceWidget::setCycleTime(QString time)
+{
+    QString option = QString("CycleTime");
+    writeSetting(option, time);
+}
+
+void SAKIODeviceWidget::readCycleTime()
+{
+    QString option = QString("CycleTime");
+    QString value = readSetting(option);
+
+    ui->lineEditCycleTime->setText(value);
 }
 
 void SAKIODeviceWidget::setAutoResponseFlag(bool enableAutoResponse)
 {
-    if (device->deviceType() == SAKIODevice::SAKDeviceUnknow){
-        sakSettings()->setValueUnknowAutoResponseFlag(enableAutoResponse ? "true" : "false");
-    }else if (device->deviceType() == SAKIODevice::SAKDeviceSerialport){
-        sakSettings()->setvalueSerialportAutoResponseFlag(enableAutoResponse ? "true" : "false");
-    }else if (device->deviceType() == SAKIODevice::SAKDeviceUdp){
-        sakSettings()->setValueUdpClientAutoResponseFlag(enableAutoResponse ? "true" : "false");
-    }else if (device->deviceType() == SAKIODevice::SAKDeviceTcp){
-        sakSettings()->setValueTcpClientAutoResponseFlag(enableAutoResponse ? "true" : "false");
-    }else if (device->deviceType() == SAKIODevice::SAKDeviceTcpServer){
-        sakSettings()->setvalueTcpServerAutoResponseFlag(enableAutoResponse ? "true" : "false");
-    }else {
-        qWarning() << "Unknow device type!";
-    }
+    QString option = QString("AutoResponse");
+    QString value = enableAutoResponse ? QString("true") : QString("false");
+
+    writeSetting(option, value);
 }
 
 void SAKIODeviceWidget::readAutoResponseFlag()
 {
-    if (device->deviceType() == SAKIODevice::SAKDeviceUnknow){
-        autoResponseSettingPanel->setAutoResponseFlag((sakSettings()->valueUnknowAutoResponseFlag().compare("true") == 0) ? true : false);
-    }else if (device->deviceType() == SAKIODevice::SAKDeviceSerialport){
-        autoResponseSettingPanel->setAutoResponseFlag((sakSettings()->valueSerialportAutoResponseFlag().compare("true") == 0) ? true : false);
-    }else if (device->deviceType() == SAKIODevice::SAKDeviceUdp){
-        autoResponseSettingPanel->setAutoResponseFlag((sakSettings()->valueUdpClientAutoResponseFlag().compare("true") == 0) ? true : false);
-    }else if (device->deviceType() == SAKIODevice::SAKDeviceTcp){
-        autoResponseSettingPanel->setAutoResponseFlag((sakSettings()->valueTcpClientAutoResponseFlag().compare("true") == 0) ? true : false);
-    }else if (device->deviceType() == SAKIODevice::SAKDeviceTcpServer){
-        autoResponseSettingPanel->setAutoResponseFlag((sakSettings()->valueTcpServerAutoResponseFlag().compare("true") == 0) ? true : false);
-    }else {
+    QString option = QString("AutoResponse");
+    QString value = readSetting(option);
+    if (value.toUpper().compare(QString("TRUE")) == 0){
+        autoResponseSettingPanel->setAutoResponseFlag(true);
+    }else{
         autoResponseSettingPanel->setAutoResponseFlag(false);
     }
 }
@@ -1178,3 +705,21 @@ void SAKIODeviceWidget::handleReadBytes(QByteArray data)
         }
     }
 }
+
+QString SAKIODeviceWidget::readSetting(QString &option)
+{
+    QSettings settings;
+    QString key = device->deviceName() + "/" + option;
+    QString value = settings.value(key).toString();
+
+    return value;
+}
+
+void SAKIODeviceWidget::writeSetting(QString &option, QString &value)
+{
+    QSettings settings;
+    QString key = device->deviceName() + "/" + option;
+
+    settings.setValue(key, value);
+}
+

@@ -21,6 +21,7 @@ SerialportSAKIODeviceControler::SerialportSAKIODeviceControler(QWidget *parent)
     :SAKIODeviceControler(parent)
     ,ui(new Ui::SerialportSAKIODeviceControler)
 {
+    setObjectName(QString("SerialPortController"));
     ui->setupUi(this);
     initUI();
 }

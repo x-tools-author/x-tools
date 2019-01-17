@@ -8,7 +8,6 @@
 #include "UdpSAKIODeviceWidget.h"
 #include "TcpSAKIODeviceWidget.h"
 #include "TcpServerSAKIODeviceWidget.h"
-#include "SAKSettings.h"
 #include "nslookup.h"
 #include "GetPublicIPWidget.h"
 #include "SAKVersion.h"
@@ -71,11 +70,6 @@ void MainWindow::AddTab()
     TcpServerSAKIODevice *tcpServerDevice = new TcpServerSAKIODevice;
     this->mpTabWidget->addTab(new TcpServerSAKIODeviceWidget(tcpServerDevice, new TcpServerSAKIODeviceControler), tr("Tcp服务器"));
     tcpServerDevice->start();
-
-#ifdef QT_DEBUG
-    /// 终端
-    this->mpTabWidget->addTab(new Console, tr("终端"));
-#endif
 }
 
 void MainWindow::AddTool()
@@ -115,10 +109,6 @@ void MainWindow::InitMenu()
         styleAction->setObjectName(style);
         appStyleMenu->addAction(styleAction);
         connect(styleAction, SIGNAL(triggered(bool)), this, SLOT(styleActionTriggered()));
-
-        if (style.compare(sakSettings()->valueApplicationStyle()) == 0){
-            styleAction->setChecked(true);
-        }
     }
 #endif
 
@@ -152,13 +142,7 @@ void MainWindow::AboutQt()
 
 void MainWindow::styleActionTriggered()
 {
-    SAKSettings *setting = sakSettings();
-    if (setting == nullptr){
-        qWarning() << tr("配置文件未初始化！");
-    }else {
-        setting->setValueApplicationStyle(sender()->objectName());
-        QApplication::setStyle(QStyleFactory::create(QString("%1").arg(sender()->objectName())));
-    }
+
 }
 
 void MainWindow::addTool(QString toolName, QWidget *toolWidget)

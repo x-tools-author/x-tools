@@ -29,7 +29,6 @@ SOURCES += \
     src/comment/SAKIODeviceWidget.cpp \
     src/comment/SAKIODevice.cpp \
     src/comment/SAKIODeviceControler.cpp \
-    src/comment/SAKSettings.cpp \
     src/comment/AutoResponseItem.cpp \
     src/comment/AutoResponseSettingPanel.cpp \
     src/ui/SAKVersion.cpp
@@ -42,7 +41,6 @@ HEADERS += \
     src/comment/SAKIODeviceWidget.h \
     src/comment/SAKIODevice.h \
     src/comment/SAKIODeviceControler.h \
-    src/comment/SAKSettings.h \
     src/comment/AutoResponseItem.h \
     src/comment/AutoResponseSettingPanel.h \
     src/ui/SAKVersion.h
@@ -50,7 +48,6 @@ HEADERS += \
 FORMS += \
     src/ui/mainwindow.ui \
     src/comment/SAKIODeviceWidget.ui \
-    src/TcpServer/TcpServerSAKIODeviceControler.ui \
     src/comment/AutoResponseItem.ui \
     src/comment/AutoResponseSettingPanel.ui \
     src/ui/SAKVersion.ui

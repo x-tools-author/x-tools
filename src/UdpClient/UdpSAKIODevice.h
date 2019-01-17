@@ -19,7 +19,7 @@ class UdpSAKIODevice : public SAKIODevice
 {
     Q_OBJECT
 public:
-    UdpSAKIODevice(SAKDeviceType deviceType = SAKDeviceUdp, QObject *parent = Q_NULLPTR);
+    UdpSAKIODevice(QString deviceName = QString("UdpClient"), QObject *parent = Q_NULLPTR);
     ~UdpSAKIODevice();
     /// -------------------------------------------------
     virtual bool isOpen(){return mpUdpSocket->isOpen();}
@@ -28,7 +28,6 @@ public slots:
     virtual void writeBytes(QByteArray data);
     virtual void open(QString hostAddress, QString hostPort, QString peerAddress, QString peerPort);
     virtual void close();
-    virtual SAKDeviceType deviceType(){return SAKDeviceUdp;}
 
     void readBytes();
 
