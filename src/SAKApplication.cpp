@@ -25,6 +25,10 @@ SAKApplication::SAKApplication(int argc, char **argv):
 
     QSettings settings;
     QString style = settings.value(QString(MainWindow::appStyle())).toString();
+    if (style.isEmpty()){
+        style = QString("Fusion");
+        settings.setValue(QString(MainWindow::appStyle()), style);
+    }
     QApplication::setStyle(QStyleFactory::create(style));
 
     mpMainWindow = new MainWindow;

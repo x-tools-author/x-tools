@@ -70,7 +70,7 @@ win32{
 }
 
 # 静态编译版本不需要部署发布（静态编译时，禁用下面的）
-DEFINES += NOT_USING_STATIC_EDITION
+#DEFINES += NOT_USING_STATIC_EDITION
 
 win32{
     contains(DEFINES, NOT_USING_STATIC_EDITION){
