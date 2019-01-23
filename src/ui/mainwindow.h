@@ -30,12 +30,16 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+    static const char* appStyle(){return appStyleKey;}
 private:
     QTabWidget* mpTabWidget     = nullptr;
     Ui::MainWindow* ui          = nullptr;
     QMenu* toolsMenu            = nullptr;
     SAKVersion* versionDialog   = nullptr;
     UpdateManager* updateManager= nullptr;
+
+    static const char* appStyleKey;
     /// ----------------------------------------------------
     void AddTab();
     void InitMenu();

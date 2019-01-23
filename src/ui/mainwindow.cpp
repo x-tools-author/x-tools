@@ -18,8 +18,11 @@
 #endif
 
 #include <QStyleFactory>
+#include <QSettings>
+#include <QMessageBox>
 
-const static char* configureFile = "http://fw.cuav.net/feigong_gs/update.json";
+const static char* configureFile = "http://teemo1993.cn/QtSwissArmyKnife/update.json";
+const char* MainWindow::appStyleKey = "Universal/appStyle";
 MainWindow::MainWindow(QWidget *parent)
     :QMainWindow(parent)
     ,mpTabWidget(new QTabWidget)
@@ -97,6 +100,9 @@ void MainWindow::InitMenu()
     QMenu *optionMenu = new QMenu(tr("选项"));
     menuBar()->addMenu(optionMenu);
 #if 1
+    QSettings settings;
+    QString value = settings.value(appStyleKey).toString();
+
     QMenu *appStyleMenu = new QMenu(tr("软件风格"));
     optionMenu->addMenu(appStyleMenu);
     QStringList styleKeys = QStyleFactory::keys();
@@ -109,6 +115,10 @@ void MainWindow::InitMenu()
         styleAction->setObjectName(style);
         appStyleMenu->addAction(styleAction);
         connect(styleAction, SIGNAL(triggered(bool)), this, SLOT(styleActionTriggered()));
+
+        if (style.compare(value) == 0){
+            styleAction->setChecked(true);
+        }
     }
 #endif
 
@@ -142,7 +152,18 @@ void MainWindow::AboutQt()
 
 void MainWindow::styleActionTriggered()
 {
+    QSettings setting;
+    setting.setValue(QString(appStyleKey), sender()->objectName());
 
+#if 1
+    int ret = QMessageBox::information(nullptr, tr("请手动重启软件"), tr("更改应用样式完成，重启生效，是否手动重启软件！(点击“是”将关闭软件。)"), QMessageBox::Yes|QMessageBox::No);
+    if (ret == QMessageBox::Yes){
+        close();
+    }
+#else
+    /// 频繁切换导致程序crash，原因不详...........(Fusion样式切换有问题)
+    QApplication::setStyle(QStyleFactory::create(QString("%1").arg(sender()->objectName())));
+#endif
 }
 
 void MainWindow::addTool(QString toolName, QWidget *toolWidget)

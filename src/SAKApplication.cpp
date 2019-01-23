@@ -13,6 +13,7 @@
 #include "SAKApplication.h"
 
 #include <QDebug>
+#include <QSettings>
 
 SAKApplication::SAKApplication(int argc, char **argv):
     QApplication(argc, argv)
@@ -21,6 +22,10 @@ SAKApplication::SAKApplication(int argc, char **argv):
     setOrganizationName(QString("Qter"));
     setOrganizationDomain(QString("IT"));
     setApplicationName(QString("QtSwissArmyKnife"));
+
+    QSettings settings;
+    QString style = settings.value(QString(MainWindow::appStyle())).toString();
+    QApplication::setStyle(QStyleFactory::create(style));
 
     mpMainWindow = new MainWindow;
     mpMainWindow->show();

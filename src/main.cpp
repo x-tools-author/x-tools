@@ -20,5 +20,6 @@ int main(int argc, char *argv[])
     qInstallMessageHandler(SAKAppMsgOutput);
 #endif
     SAKApplication a(argc, argv);
+
     return a.exec();
 }
