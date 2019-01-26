@@ -104,3 +104,6 @@ winrt || arm-linux{
 include(SAKUdpClient.pri)
 include(SAKTcpClient.pri)
 include(SAKTcpServer.pri)
+
+DISTFILES += \
+    other/update.json
