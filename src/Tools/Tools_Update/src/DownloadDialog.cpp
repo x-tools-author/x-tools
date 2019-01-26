@@ -31,6 +31,8 @@ DownloadDialog::DownloadDialog(HttpDownloader* httpDownloader)
 
     speedTimer.setInterval(1000);
     connect(&speedTimer, &QTimer::timeout, this, &DownloadDialog::updateFlag);
+
+    setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowTitleHint | Qt::Tool);
 }
 
 DownloadDialog::~DownloadDialog()
