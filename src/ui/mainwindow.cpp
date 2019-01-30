@@ -21,7 +21,7 @@
 #include <QSettings>
 #include <QMessageBox>
 
-const static char* configureFile = "http://teemo1993.cn/QtSwissArmyKnife/update.json";
+const static char* configureFile = "http://wuhai.pro/software/QtSwissArmyKnife/update.json";
 const char* MainWindow::appStyleKey = "Universal/appStyle";
 MainWindow::MainWindow(QWidget *parent)
     :QMainWindow(parent)
@@ -160,6 +160,7 @@ void MainWindow::styleActionTriggered()
     if (ret == QMessageBox::Yes){
         close();
     }
+    qDebug() << __LINE__ << "here";
 #else
     /// 频繁切换导致程序crash，原因不详...........(Fusion样式切换有问题)
     QApplication::setStyle(QStyleFactory::create(QString("%1").arg(sender()->objectName())));
