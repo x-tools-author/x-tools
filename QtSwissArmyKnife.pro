@@ -18,7 +18,7 @@ TEMPLATE = app
 DEFINES += QT_DEPRECATED_WARNINGS
 
 # You can also make your code fail to compile if you use deprecated APIs.
-# In order to do so, uncomment the following line.
+# In order to do so, unTabPage the following line.
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
@@ -26,28 +26,28 @@ SOURCES += \
     src/main.cpp \
     src/ui/mainwindow.cpp \
     src/SAKApplication.cpp \
-    src/comment/SAKIODeviceWidget.cpp \
-    src/comment/SAKIODevice.cpp \
-    src/comment/SAKIODeviceControler.cpp \
-    src/comment/AutoResponseItem.cpp \
-    src/comment/AutoResponseSettingPanel.cpp \
+    src/TabPage/SAKIODeviceWidget.cpp \
+    src/TabPage/SAKIODevice.cpp \
+    src/TabPage/SAKIODeviceControler.cpp \
+    src/TabPage/AutoResponseItem.cpp \
+    src/TabPage/AutoResponseSettingPanel.cpp \
     src/ui/SAKVersion.cpp
 
 HEADERS += \
     src/ui/mainwindow.h \
     src/SAKApplication.h \
-    src/comment/SAKIODeviceWidget.h \
-    src/comment/SAKIODevice.h \
-    src/comment/SAKIODeviceControler.h \
-    src/comment/AutoResponseItem.h \
-    src/comment/AutoResponseSettingPanel.h \
+    src/TabPage/SAKIODeviceWidget.h \
+    src/TabPage/SAKIODevice.h \
+    src/TabPage/SAKIODeviceControler.h \
+    src/TabPage/AutoResponseItem.h \
+    src/TabPage/AutoResponseSettingPanel.h \
     src/ui/SAKVersion.h
 
 FORMS += \
     src/ui/mainwindow.ui \
-    src/comment/SAKIODeviceWidget.ui \
-    src/comment/AutoResponseItem.ui \
-    src/comment/AutoResponseSettingPanel.ui \
+    src/TabPage/SAKIODeviceWidget.ui \
+    src/TabPage/AutoResponseItem.ui \
+    src/TabPage/AutoResponseSettingPanel.ui \
     src/ui/SAKVersion.ui
 
 INCLUDEPATH += \
@@ -58,7 +58,7 @@ INCLUDEPATH += \
     src/TcpClient \
     src/TcpServer \
     src/console \
-    src/comment
+    src/TabPage
 
 RESOURCES += \
     resource/images.qrc
