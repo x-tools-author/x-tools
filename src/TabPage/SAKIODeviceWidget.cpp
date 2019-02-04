@@ -19,6 +19,7 @@
 #include <QSettings>
 
 #include "SAKIODeviceWidget.h"
+#include "SAKHighlighterSettingPanel.h"
 
 #include "ui_SAKIODeviceWidget.h"
 
@@ -32,8 +33,13 @@ SAKIODeviceWidget::SAKIODeviceWidget(SAKIODevice *_device, SAKIODeviceControler 
     ,delayTimer(new QTimer)
     ,ui(new Ui::SAKIODeviceWidget)
     ,clearInfoTimer(new QTimer)
+    ,highlighterSettingPanel(new SAKHighlighterSettingPanel)
 {
     ui->setupUi(this);
+
+    /// 初始化数据成员
+    highlighterSettingButton = ui->pushButtonHighlighting;
+
     Connect();
     setCustomControler(controler);
     initUI();
@@ -187,6 +193,9 @@ void SAKIODeviceWidget::Connect()
     /// 自动回复
     connect(autoResponseSettingPanel, SIGNAL(autoResponseFlagChanged(bool)), this, SLOT(setAutoResponseFlag(bool)));
     connect(device, SIGNAL(bytesRead(QByteArray)), this, SLOT(handleReadBytes(QByteArray)));
+
+    /// 高亮显示设置面板
+    connect(highlighterSettingButton, &QPushButton::clicked, highlighterSettingPanel, &SAKHighlighterSettingPanel::show);
 }
 
 void SAKIODeviceWidget::afterDeviceOpen()

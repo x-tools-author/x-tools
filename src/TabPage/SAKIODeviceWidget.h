@@ -16,10 +16,13 @@
 #include <QDebug>
 #include <QApplication>
 #include <QSize>
+#include <QPushButton>
 
 #include "SAKIODevice.h"
 #include "SAKIODeviceControler.h"
 #include "AutoResponseSettingPanel.h"
+
+class SAKHighlighterSettingPanel;
 
 namespace Ui {
 class SAKIODeviceWidget;
@@ -43,6 +46,8 @@ private:
     QTimer                      *delayTimer                 = nullptr;
     Ui::SAKIODeviceWidget       *ui                         = nullptr;
     QTimer                      *clearInfoTimer             = nullptr;
+    SAKHighlighterSettingPanel  *highlighterSettingPanel    = nullptr;
+    QPushButton                 *highlighterSettingButton   = nullptr;
 
     QByteArray                  dataTemp                    = "(null)";
     const QSize                 rxtxSize                    = QSize(18, 18);

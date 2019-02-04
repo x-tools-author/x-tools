@@ -31,6 +31,8 @@ SOURCES += \
     src/TabPage/SAKIODeviceControler.cpp \
     src/TabPage/AutoResponseItem.cpp \
     src/TabPage/AutoResponseSettingPanel.cpp \
+    src/TabPage/SAKHighlighter.cpp \
+    src/TabPage/SAKHighlighterSettingPanel.cpp \
     src/ui/SAKVersion.cpp
 
 HEADERS += \
@@ -41,6 +43,8 @@ HEADERS += \
     src/TabPage/SAKIODeviceControler.h \
     src/TabPage/AutoResponseItem.h \
     src/TabPage/AutoResponseSettingPanel.h \
+    src/TabPage/SAKHighlighter.h \
+    src/TabPage/SAKHighlighterSettingPanel.h \
     src/ui/SAKVersion.h
 
 FORMS += \
@@ -48,6 +52,7 @@ FORMS += \
     src/TabPage/SAKIODeviceWidget.ui \
     src/TabPage/AutoResponseItem.ui \
     src/TabPage/AutoResponseSettingPanel.ui \
+    src/TabPage/SAKHighlighterSettingPanel.ui \
     src/ui/SAKVersion.ui
 
 INCLUDEPATH += \
@@ -107,4 +112,5 @@ include(SAKTcpClient.pri)
 include(SAKTcpServer.pri)
 
 DISTFILES += \
-    other/update.json
+    other/update.json \
+    other/developerLog.txt
