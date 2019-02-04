@@ -37,7 +37,7 @@ SAKVersion::SAKVersion()
 
     copyQQ = ui->pushButtonCopy;
 
-    version->setText(QString("1.0.0"));
+    version->setText(QString(SAK_VERSION));
     datetime->setText(QString(__DATE__) + " " + QString(__TIME__));
     author->setText(QString("作者还没想好名字"));
     email->setText(QString("wuhai1024@outlook.com"));

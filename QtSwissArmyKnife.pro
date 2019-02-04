@@ -67,6 +67,9 @@ win32{
     RC_ICONS = resource/icon/window.ico
 }
 
+# 软件版本号
+DEFINES += SAK_VERSION=\"\\\"1.0.0\\\"\"
+
 # 静态编译版本不需要部署发布（静态编译时，禁用下面的）
 DEFINES += NOT_USING_STATIC_EDITION
 
