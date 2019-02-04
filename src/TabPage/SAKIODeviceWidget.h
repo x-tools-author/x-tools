@@ -37,6 +37,8 @@ public:
 
     void setCustomControler(SAKIODeviceControler *controler);
     void setRefreshPBtText(QString text);
+protected:
+     bool eventFilter(QObject *o, QEvent *e);
 private:
     SAKIODevice                 *device                     = nullptr;
     SAKIODeviceControler        *controler                  = nullptr;

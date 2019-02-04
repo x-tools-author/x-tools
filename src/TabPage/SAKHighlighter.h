@@ -10,13 +10,35 @@
 #define SAKHIGHLIGHTER_H
 
 #include <QSyntaxHighlighter>
+#include <QTextDocument>
+#include <QRegularExpression>
 
 class SAKHighlighter : public QSyntaxHighlighter
 {
     Q_OBJECT
 public:
-    SAKHighlighter(QObject* parent = nullptr);
-    ~SAKHighlighter();
+    SAKHighlighter(QTextDocument* parent = nullptr);
+
+    void setHighlighterKeyWord(QStringList keyWords);
+protected:
+     void highlightBlock(const QString &text) override;
+private:
+    struct HighlightingRule
+    {
+        QRegularExpression pattern;
+        QTextCharFormat format;
+    };
+    QVector<HighlightingRule> highlightingRules;
+
+    QRegularExpression commentStartExpression;
+    QRegularExpression commentEndExpression;
+
+    QTextCharFormat keywordFormat;
+    QTextCharFormat classFormat;
+    QTextCharFormat singleLineCommentFormat;
+    QTextCharFormat multiLineCommentFormat;
+    QTextCharFormat quotationFormat;
+    QTextCharFormat functionFormat;
 };
 
 #endif

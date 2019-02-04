@@ -10,19 +10,33 @@
 #define SAKHIGHLIGHTERSETTINGPANEL_H
 
 #include <QWidget>
+#include <QTextDocument>
+#include <QLineEdit>
+#include <QGridLayout>
 
 namespace Ui {
 class SAKHighlighterSettingPanel;
 }
 
+class SAKHighlighter;
+class SAKHighlighterLabel;
+
 class SAKHighlighterSettingPanel:public QWidget
 {
     Q_OBJECT
 public:
-    SAKHighlighterSettingPanel(QWidget* parent = nullptr);
+    SAKHighlighterSettingPanel(QTextDocument *doc, QWidget* parent = nullptr);
     ~SAKHighlighterSettingPanel();
+
+    QLineEdit* inputLineEditInstance(){return inputLineEdit;}
+    void addLabel(QString str);
 private:
     Ui::SAKHighlighterSettingPanel* ui = nullptr;
+    SAKHighlighter* highlighter = nullptr;
+    QLineEdit* inputLineEdit = nullptr;
+
+    QGridLayout labelLayout;
+    QList<SAKHighlighterLabel*> labelList;
 };
 
 #endif

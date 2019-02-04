@@ -11,16 +11,38 @@
 #endif
 
 #include "SAKHighlighterSettingPanel.h"
+#include "SAKHighlighter.h"
+#include "SAKHighlighterLabel.h"
 #include "ui_SAKHighlighterSettingPanel.h"
 
-SAKHighlighterSettingPanel::SAKHighlighterSettingPanel(QWidget* parent)
+#include <QDebug>
+
+SAKHighlighterSettingPanel::SAKHighlighterSettingPanel(QTextDocument* doc, QWidget* parent)
     :QWidget (parent)
     ,ui(new Ui::SAKHighlighterSettingPanel)
 {
     ui->setupUi(this);
+    ui->frame->setLayout(&labelLayout);
+
+    highlighter = new SAKHighlighter(doc);
+    inputLineEdit = ui->lineEdit;
 }
 
 SAKHighlighterSettingPanel::~SAKHighlighterSettingPanel()
 {
 
+}
+
+void SAKHighlighterSettingPanel::addLabel(QString str)
+{
+    if (str.isEmpty()){
+        return;
+    }
+
+    SAKHighlighterLabel* tempLabel = new SAKHighlighterLabel(str);
+    labelList.append(tempLabel);
+
+    for (int index = 0; index < labelList.count(); index++){
+        labelLayout.addWidget(labelList.at(index), index/5, index%5);
+    }
 }
