@@ -1,0 +1,7 @@
+/**
+ * The file is created by Qter on 04 Feb, 2019.
+ * Writing the comment in English, just for "Installing B".
+ */
+
+02190204
+    01. 添加开发者日志文件
