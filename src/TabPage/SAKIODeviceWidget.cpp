@@ -33,12 +33,12 @@ SAKIODeviceWidget::SAKIODeviceWidget(SAKIODevice *_device, SAKIODeviceControler 
     ,delayTimer(new QTimer)
     ,ui(new Ui::SAKIODeviceWidget)
     ,clearInfoTimer(new QTimer)
-    ,highlighterSettingPanel(new SAKHighlighterSettingPanel)
 {
     ui->setupUi(this);
 
     /// 初始化数据成员
     highlighterSettingButton = ui->pushButtonHighlighting;
+    highlighterSettingPanel = new SAKHighlighterSettingPanel(ui->textBrowserOutputData->document());
 
     Connect();
     setCustomControler(controler);
@@ -503,25 +503,26 @@ void SAKIODeviceWidget::bytesRead(QByteArray data)
         str = QString("<font color=silver>%1</font>").arg(str);
     }
 
-    if (outputTextMode.compare(QString("BIN")) == 0){
+    outputTextMode = ui->comboBoxOutputMode->currentText();
+    if (outputTextMode.toUpper().compare(QString("BIN")) == 0){
         for (int i = 0; i < data.length(); i++){
             str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(data.at(i)), 2), 8, '0'));
         }
-    }else if (outputTextMode.compare(QString("OCT")) == 0){
+    }else if (outputTextMode.toUpper().compare(QString("OCT")) == 0){
         for (int i = 0; i < data.length(); i++){
             str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(data.at(i)), 8), 3, '0'));
         }
-    }else if (outputTextMode.compare(QString("DEC")) == 0){
+    }else if (outputTextMode.toUpper().compare(QString("DEC")) == 0){
         for (int i = 0; i < data.length(); i++){
             str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(data.at(i)), 10)));
         }
-    }else if (outputTextMode.compare(QString("HEX")) == 0){
+    }else if (outputTextMode.toUpper().compare(QString("HEX")) == 0){
         for (int i = 0; i < data.length(); i++){
             str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(data.at(i)), 16), 2, '0'));
         }
-    }else if (outputTextMode.compare(QString("ASCII")) == 0){
+    }else if (outputTextMode.toUpper().compare(QString("ASCII")) == 0){
         str.append(QString(data));
-    }else if (outputTextMode.compare(QString("UTF-8")) == 0){
+    }else if (outputTextMode.toUpper().compare(QString("UTF-8")) == 0){
         str.append(QString(data));
     }else {
         Q_ASSERT_X(false, __FUNCTION__, "Unknow output mode");
