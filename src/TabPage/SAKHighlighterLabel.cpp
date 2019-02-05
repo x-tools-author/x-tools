@@ -10,6 +10,9 @@
 #pragma execution_character_set("utf-8")
 #endif
 
+#include <QApplication>
+#include <QStyle>
+
 #include "SAKHighlighterLabel.h"
 #include "ui_SAKHighlighterLabel.h"
 
@@ -19,9 +22,23 @@ SAKHighlighterLabel::SAKHighlighterLabel(QString label, QWidget* parent)
 {
     ui->setupUi(this);
     ui->label->setText(label);
+
+    ui->pushButton->setIcon(QApplication::style()->standardIcon(QStyle::SP_TitleBarCloseButton));
+    ui->pushButton->setCursor(Qt::PointingHandCursor);
+    connect(ui->pushButton, &QPushButton::clicked, this, &SAKHighlighterLabel::deleteLabel);
 }
 
 SAKHighlighterLabel::~SAKHighlighterLabel()
 {
+    delete  ui;
+}
 
+QString SAKHighlighterLabel::labelString()
+{
+    return ui->label->text();
+}
+
+void SAKHighlighterLabel::deleteLabel()
+{
+    emit deleteThis(this);
 }

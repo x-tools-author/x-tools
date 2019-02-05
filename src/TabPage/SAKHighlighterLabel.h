@@ -10,6 +10,7 @@
 #define SAKHIGHLIGHTERLABEL_H
 
 #include <QWidget>
+#include <QPushButton>
 
 namespace Ui {
 class SAKHighlighterLabel;
@@ -21,8 +22,14 @@ class SAKHighlighterLabel:public QWidget
 public:
     SAKHighlighterLabel(QString label, QWidget* parent = nullptr);
     ~SAKHighlighterLabel();
+
+    QString labelString();
 private:
     Ui::SAKHighlighterLabel* ui;
+private slots:
+    void deleteLabel();
+signals:
+    void deleteThis(SAKHighlighterLabel* ptr);
 };
 
 #endif

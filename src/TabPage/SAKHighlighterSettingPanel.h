@@ -37,6 +37,8 @@ private:
 
     QGridLayout labelLayout;
     QList<SAKHighlighterLabel*> labelList;
+private slots:
+    void deleteLabel(SAKHighlighterLabel *label);
 };
 
 #endif

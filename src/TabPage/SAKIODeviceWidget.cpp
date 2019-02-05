@@ -743,7 +743,7 @@ bool SAKIODeviceWidget::eventFilter(QObject *o, QEvent *e)
             QKeyEvent* event = dynamic_cast<QKeyEvent*>(e);
             if ((event->key() == Qt::Key_Enter) || event->key() == Qt::Key_Return){
                 QLineEdit* lineEditTemp = highlighterSettingPanel->inputLineEditInstance();
-                highlighterSettingPanel->addLabel(lineEditTemp->text());
+                highlighterSettingPanel->addLabel(lineEditTemp->text().trimmed());
                 lineEditTemp->clear();
                 return true;
             }
