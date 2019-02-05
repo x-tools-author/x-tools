@@ -39,10 +39,10 @@ SAKVersion::SAKVersion()
 
     version->setText(QString(SAK_VERSION));
     datetime->setText(QString(__DATE__) + " " + QString(__TIME__));
-    author->setText(QString("作者还没想好名字"));
-    email->setText(QString("wuhai1024@outlook.com"));
+    author->setText(QString("Qter"));
+    email->setText(QString("Qter.vip@outlook.com"));
     qq->setText(QString("952218522"));
-    blog->setText(QString("www.wuhai.pro"));
+    blog->setText(QString("http://wuhai.pro/"));
 
     setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowTitleHint | Qt::Tool);
     setModal(true);
