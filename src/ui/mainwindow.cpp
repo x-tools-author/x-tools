@@ -12,6 +12,7 @@
 #include "GetPublicIPWidget.h"
 #include "SAKVersion.h"
 #include "UpdateManager.h"
+#include "CRCCalculator.h"
 
 #ifndef SAK_NO_SERIALPORT_ASSISTANT
 #include "SerialportSAKIODeviceWidget.h"
@@ -77,8 +78,9 @@ void MainWindow::AddTab()
 
 void MainWindow::AddTool()
 {
-    addTool(tr("域名转IP"), new ToolsNsLookup);
-    addTool(tr("公网IP获取工具"), new GetPublicIPWidget);
+    addTool(tr("域名转IP"),        new ToolsNsLookup);
+    addTool(tr("公网IP获取工具"),   new GetPublicIPWidget);
+    addTool(tr("CRC计算器"),       new CRCCalculator);
 }
 
 void MainWindow::InitMenu()
