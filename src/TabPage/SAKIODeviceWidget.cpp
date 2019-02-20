@@ -614,6 +614,7 @@ void SAKIODeviceWidget::setInputMode(QString mode)
 {
     QString option = QString("InputMode");
     writeSetting(option, mode);
+    inputTextMode = mode;
 }
 
 void SAKIODeviceWidget::readInputMode()
