@@ -524,7 +524,7 @@ void SAKIODeviceWidget::bytesRead(QByteArray data)
         }
     }else if (outputTextMode.toUpper().compare(QString("ASCII")) == 0){
         str.append(QString(data));
-    }else if (outputTextMode.toUpper().compare(QString("UTF-8")) == 0){
+    }else if (outputTextMode.toUpper().compare(QString("UTF8")) == 0){
         str.append(QString(data));
     }else {
         Q_ASSERT_X(false, __FUNCTION__, "Unknow output mode");
