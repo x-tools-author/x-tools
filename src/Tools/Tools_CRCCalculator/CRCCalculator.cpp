@@ -51,6 +51,10 @@ CRCCalculator::CRCCalculator(QWidget* parent)
 
     connect(parameterComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(changedParameterModel(int)));
     connect(calculatedBt, SIGNAL(clicked()), this, SLOT(calculate()));
+
+#if 1
+    setWindowTitle(windowTitle() + tr("(功能未实现)"));
+#endif
 }
 
 CRCCalculator::~CRCCalculator()
