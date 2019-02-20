@@ -76,7 +76,7 @@ win32{
 }
 
 # 软件版本号
-DEFINES += SAK_VERSION=\"\\\"1.0.0\\\"\"
+DEFINES += SAK_VERSION=\"\\\"(TechnologyPreview)\\\"\"
 
 # 静态编译版本不需要部署发布（静态编译时，禁用下面的）
 DEFINES += NOT_USING_STATIC_EDITION
