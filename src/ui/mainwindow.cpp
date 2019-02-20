@@ -162,9 +162,9 @@ void MainWindow::styleActionTriggered()
     if (ret == QMessageBox::Yes){
         close();
     }
-    qDebug() << __LINE__ << "here";
 #else
     /// 频繁切换导致程序crash，原因不详...........(Fusion样式切换有问题)
+    /// 由其它风格切换至function风格或者有function风格切换至其它风格造成程序崩溃
     QApplication::setStyle(QStyleFactory::create(QString("%1").arg(sender()->objectName())));
 #endif
 }
