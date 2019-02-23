@@ -45,6 +45,7 @@ CRCCalculator::CRCCalculator(QWidget* parent)
     inputTextEdit = ui->textEdit;
 
     calculatedBt = ui->pushButtonCalculate;
+    calculatedBt->setEnabled(false);
 
     /// 读入crc校验算法模型
     initParameterModel();
@@ -128,7 +129,9 @@ QJsonObject CRCCalculator::jsonObjectAt(int index)
 
 void CRCCalculator::changedParameterModel(int index)
 {
+    /// 不支持自定义选项
     if (index == 0){
+        calculatedBt->setEnabled(false);
         widthComboBox->setEnabled(true);
         refinCheckBox->setEnabled(true);
         refoutCheckBox->setEnabled(true);
@@ -136,6 +139,7 @@ void CRCCalculator::changedParameterModel(int index)
         initLineEdit->setEnabled(true);
         xorLineEdit->setEnabled(true);
     }else {
+        calculatedBt->setEnabled(true);
         widthComboBox->setEnabled(false);
         refinCheckBox->setEnabled(false);
         refoutCheckBox->setEnabled(false);
