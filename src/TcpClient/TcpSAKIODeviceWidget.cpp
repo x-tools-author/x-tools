@@ -17,7 +17,6 @@ TcpSAKIODeviceWidget::TcpSAKIODeviceWidget(TcpSAKIODevice *_device, TcpSAKIODevi
     ,device(_device)
     ,controler(_controler)
 {
-    setRefreshPBtText(tr("重置设备"));
     connect(controler, SIGNAL(need2refresh()), device, SLOT(resetTheDevice()));
 }
 

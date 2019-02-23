@@ -8,7 +8,11 @@ QT += core gui xml
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets network
 
+# 软件版本号
+#DEFINES += SAK_VERSION=\"\\\"1.0.0\\\"\"
+
 TARGET = QtSwissArmyKnife
+
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -74,9 +78,6 @@ RESOURCES += \
 win32{
     RC_ICONS = resource/icon/window.ico
 }
-
-# 软件版本号
-DEFINES += SAK_VERSION=\"\\\"(TechnologyPreview)\\\"\"
 
 # 静态编译版本不需要部署发布（静态编译时，禁用下面的）
 DEFINES += NOT_USING_STATIC_EDITION
