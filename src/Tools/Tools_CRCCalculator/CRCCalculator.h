@@ -56,6 +56,7 @@ private:
     QJsonObject jsonObjectAt(int index);
 
     /// crc16
+    quint8  crc8 (const quint8* inputPtr, quint64 numBytes, quint8  startValue, quint16 poly);
     quint16 crc16(const quint8* inputPtr, quint64 numBytes, quint16 startValue, quint16 poly);
 
     /**
@@ -65,5 +66,6 @@ private:
 private slots:
     void changedParameterModel(int index);
     void calculate();
+    void textFormatControl();
 };
 #endif

@@ -52,9 +52,10 @@ CRCCalculator::CRCCalculator(QWidget* parent)
     connect(parameterComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(changedParameterModel(int)));
     connect(calculatedBt, SIGNAL(clicked()), this, SLOT(calculate()));
 
-#if 1
+#if 0
     setWindowTitle(windowTitle() + tr("(功能未实现)"));
 #endif
+    connect(inputTextEdit, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
 }
 
 CRCCalculator::~CRCCalculator()
@@ -165,29 +166,25 @@ void CRCCalculator::calculate()
 {
     QByteArray inputArray;
     if (hexRadioBt->isChecked()){
-        inputArray = inputTextEdit->toPlainText().toLatin1();
+        QString str = inputTextEdit->toPlainText();
+        QStringList strList = str.split(' ');
+        char ch;
+        for (int i = 0; i < strList.length(); i++){
+            if (strList.at(i).isEmpty()){
+                continue;
+            }
+            ch = static_cast<char>(strList.at(i).toInt(nullptr, 16));
+            inputArray.append(ch);
+        }
     }else{
         inputArray = inputTextEdit->toPlainText().toLatin1();
     }
-
-    /// 目前输入输出同时反转
-    bool refin  = refinCheckBox->isChecked();
-    bool refout = refoutCheckBox->isChecked();
 
     int bitsWidth = widthComboBox->currentText().toInt();
     int poly = polyLineEdit->text().toInt(nullptr, 16);
     int startValue = initLineEdit->text().toInt(nullptr, 16);
     int xorValue = xorLineEdit->text().toInt(nullptr, 16);
 
-#if 1
-    qInfo() << __LINE__ << "width" << bitsWidth;
-    qInfo() << __LINE__ << "poly"  << QString("0x%1").arg(QString::number(poly, 16), 2, '0');
-    qInfo() << __LINE__ << "init"  << QString("0x%1").arg(QString::number(startValue, 16), 2, '0');
-    qInfo() << __LINE__ << "xor"   << QString("0x%1").arg(QString::number(xorValue, 16), 2, '0');
-    qInfo() << __LINE__ << "refin"   << (refin ? "true" : "false");
-    qInfo() << __LINE__ << "refout"   << (refout ? "true" : "false");
-#endif
-    inputArray = QByteArray("123456789");
     QString crcHexString = "error";
     QString crcBinString = "error";
 
@@ -270,5 +267,26 @@ template<class Tint> void CRCCalculator::reverseInt(Tint &input, Tint &output)
     }
 
     output = static_cast<Tint>(outputStr.toULongLong(nullptr, 2));
-    qDebug() << inputStr << outputStr;
+}
+
+void CRCCalculator::textFormatControl()
+{
+    if (asciiRadioBt->isChecked()){
+        return;
+    }
+    disconnect(inputTextEdit, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
+
+    QString strTemp;
+    QString plaintext = inputTextEdit->toPlainText();
+    plaintext.remove(QRegExp("[^0-9a-fA-F]"));
+    for (int i = 0; i < plaintext.length(); i++){
+        if ((i != 0) && (i % 2 == 0)){
+            strTemp.append(QChar(' '));
+        }
+        strTemp.append(plaintext.at(i));
+    }
+    inputTextEdit->setText(strTemp.toUpper());
+    inputTextEdit->moveCursor(QTextCursor::End);
+
+    connect(inputTextEdit, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
 }
