@@ -55,8 +55,13 @@ private:
     void initParameterModel();
     QJsonObject jsonObjectAt(int index);
 
-    /// 字节按位翻转
-    quint8 reverse(quint8 inByte);
+    /// crc16
+    quint16 crc16(const quint8* inputPtr, quint64 numBytes, quint16 startValue, quint16 poly);
+
+    /**
+     *  按位反转数据反转
+     */
+    template<class Tint> void reverseInt(Tint &input, Tint &output);
 private slots:
     void changedParameterModel(int index);
     void calculate();

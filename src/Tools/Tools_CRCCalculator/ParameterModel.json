@@ -1,6 +1,15 @@
 ﻿[
     {
-        "index" :   1,
+        "name"  :   "自定义",
+        "width" :   0,
+        "poly"  :   "0x00",
+        "init"  :   "0x00",
+        "xor"   :   "0x00",
+        "refin" :   false,
+        "refout":   false
+    },
+
+    {
         "name"  :   "CRC-4/ITU x4+x+1",
         "width" :   4,
         "poly"  :   "0x03",
@@ -11,7 +20,6 @@
     },
 
     {
-        "index" :   2,
         "name"  :   "CRC-5/EPC x4+x3+1",
         "width" :   5,
         "poly"  :   "0x09",
@@ -22,7 +30,6 @@
     },
 
     {
-        "index" :   3,
         "name"  :   "CRC-5/ITU x5+x4+x2+1",
         "width" :   5,
         "poly"  :   "0x15",
@@ -33,7 +40,6 @@
     },
 
     {
-        "index" :   4,
         "name"  :   "CRC-5/USB x5+x2+1",
         "width" :   5,
         "poly"  :   "0x05",
@@ -44,7 +50,6 @@
     },
 
     {
-        "index" :   5,
         "name"  :   "CRC-6/ITU x6+x+1",
         "width" :   6,
         "poly"  :   "0x03",
@@ -55,7 +60,6 @@
     },
 
     {
-        "index" :   6,
         "name"  :   "CRC-7/MMC x7+x3+1",
         "width" :   7,
         "poly"  :   "0x09",
@@ -66,7 +70,6 @@
     },
 
     {
-        "index" :   7,
         "name"  :   "CRC-8 x8+x2+x+1",
         "width" :   8,
         "poly"  :   "0x07",
@@ -77,7 +80,6 @@
     },
 
     {
-        "index" :   8,
         "name"  :   "CRC-8/ITU x8+x2+x+1",
         "width" :   8,
         "poly"  :   "0x07",
@@ -88,7 +90,6 @@
     },
 
     {
-        "index" :   9,
         "name"  :   "CRC-8/ROHC x8+x2+x+1",
         "width" :   8,
         "poly"  :   "0x07",
@@ -99,7 +100,6 @@
     },
 
     {
-        "index" :   10,
         "name"  :   "CRC-8/MAXIM x8+x5+x4+1",
         "width" :   8,
         "poly"  :   "0x31",
@@ -110,7 +110,6 @@
     },
 
     {
-        "index" :   11,
         "name"  :   "CRC-16/IBM x16+x15+x2+1",
         "width" :   16,
         "poly"  :   "0x8005",
@@ -121,7 +120,6 @@
     },
 
     {
-        "index" :   12,
         "name"  :   "CRC-16/MAXIM x16+x15+x2+1",
         "width" :   16,
         "poly"  :   "0x8005",
@@ -132,7 +130,6 @@
     },
 
     {
-        "index" :   13,
         "name"  :   "CRC-16/USB x16+x15+x2+1",
         "width" :   16,
         "poly"  :   "0x8005",
@@ -143,7 +140,6 @@
     },
 
     {
-        "index" :   14,
         "name"  :   "CRC-16/MODBUS x16+x15+x2+1",
         "width" :   16,
         "poly"  :   "0x8005",
@@ -154,7 +150,6 @@
     },
 
     {
-        "index" :   15,
         "name"  :   "CRC-16/CCITT x16+x12+x5+1",
         "width" :   16,
         "poly"  :   "0x1021",
@@ -165,18 +160,16 @@
     },
 
     {
-        "index" :   16,
         "name"  :   "CRC-16/CCITT-FALSE x16+x12+x5+1",
         "width" :   16,
         "poly"  :   "0x1021",
         "init"  :   "0xffff",
         "xor"   :   "0x0000",
-        "refin" :   true,
-        "refout":   true
+        "refin" :   false,
+        "refout":   false
     },
 
     {
-        "index" :   17,
         "name"  :   "CRC-16/X25 x16+x12+x5+1",
         "width" :   16,
         "poly"  :   "0x1021",
@@ -187,7 +180,6 @@
     },
 
     {
-        "index" :   18,
         "name"  :   "CRC-16/XMODEM x16+x12+x5+1",
         "width" :   16,
         "poly"  :   "0x1021",
@@ -198,7 +190,6 @@
     },
 
     {
-        "index" :   19,
         "name"  :   "CRC-16/DNP x16+x12+x5+1",
         "width" :   16,
         "poly"  :   "0x3d65",
@@ -209,7 +200,6 @@
     },
 
     {
-        "index" :   20,
         "name"  :   "CRC-32 x32+x26+x23+x22+x16+x12+x11+x10+x8+x7+x5+x4+x2+x+1",
         "width" :   32,
         "poly"  :   "0x04c11db7",
@@ -220,7 +210,6 @@
     },
 
     {
-        "index" :   21,
         "name"  :   "CRC-32/MPEG-2 x32+x26+x23+x22+x16+x12+x11+x10+x8+x7+x5+x4+x2+x+1",
         "width" :   32,
         "poly"  :   "0x04c11db7",
