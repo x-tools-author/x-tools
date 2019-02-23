@@ -29,10 +29,10 @@ void UdpSAKIODevice::readBytes()
     QByteArray datagram;
 
     QHostAddress peerHostAddress;
-    quint16 peerPort;
-    int ret;
+    quint16 peerPort = 0;
+    qint64 ret;
     while (mpUdpSocket->hasPendingDatagrams()){
-        datagram.resize(mpUdpSocket->pendingDatagramSize());
+        datagram.resize(static_cast<int>(mpUdpSocket->pendingDatagramSize()));
         ret = mpUdpSocket->readDatagram(datagram.data(), datagram.length(), &peerHostAddress, &peerPort);
         if (ret != -1){
             emit bytesRead(datagram);
@@ -58,7 +58,7 @@ void UdpSAKIODevice::open(QString hostAddress, QString hostPort, QString peerAdd
     peerHostAddress = peerAddress;
     peerHostPort = peerPort;
 
-    if (mpUdpSocket->bind(QHostAddress(hostAddress), (qint16)hostPort.toInt())){
+    if (mpUdpSocket->bind(QHostAddress(hostAddress), static_cast<quint16>(hostPort.toInt()))){
         if (mpUdpSocket->open(QUdpSocket::ReadWrite)){
             emit deviceOpenSuccessfully();
         }else{
