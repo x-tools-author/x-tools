@@ -1,7 +1,12 @@
-/**
+﻿/**
  * The file is created by Qter on 04 Feb, 2019.
  * Writing the comment in English, just for "Installing B".
  */
+
+20190224
+    01. 修复软件启动时输入数据格式与现实格式不匹配的问题
+
+.................
 
 20190207
     01. 研究crc计算。。。
