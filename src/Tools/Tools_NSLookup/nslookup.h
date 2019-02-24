@@ -25,8 +25,8 @@ public:
     ToolsNsLookup(QWidget *parent = Q_NULLPTR);
     ~ToolsNsLookup();
 private:
-    QTimer *hideErrorTimer = nullptr;
     Ui::ToolsNsLookup *ui;
+    QTimer *hideErrorTimer = nullptr;
     double errorLabelOpacity = 1;
     ///----------------------------------------------------------------
     void Connect();
