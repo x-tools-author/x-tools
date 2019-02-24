@@ -82,15 +82,20 @@ win32{
 # 静态编译版本不需要部署发布（静态编译时，禁用下面的）
 DEFINES += NOT_USING_STATIC_EDITION
 
-win32{
-    contains(DEFINES, NOT_USING_STATIC_EDITION){
-        CONFIG(debug, debug|release) {
-            QMAKE_POST_LINK += $$escape_expand(\\n) $$[QT_INSTALL_BINS]/windeployqt.exe --no-compiler-runtime --no-translations $$OUT_PWD/debug/$${TARGET}.exe $$escape_expand(\\n)
-        } else {
-            QMAKE_POST_LINK += $$escape_expand(\\n) $$[QT_INSTALL_BINS]/windeployqt.exe --no-compiler-runtime --no-translations $$OUT_PWD/release/$${TARGET}.exe $$escape_expand(\\n)
-        }
-    }
-}
+# 编译后不发布部署
+#win32{
+#    contains(DEFINES, NOT_USING_STATIC_EDITION){
+#        CONFIG(debug, debug|release) {
+#            win32-msvc {
+#                QMAKE_POST_LINK += $$escape_expand(\\n) $$[QT_INSTALL_BINS]/windeployqt.exe --no-compiler-runtime --no-translations $$OUT_PWD/debug/$${TARGET}.exe $$escape_expand(\\n)
+#            }
+#        } else {
+#            win32-msvc {
+#                QMAKE_POST_LINK += $$escape_expand(\\n) $$[QT_INSTALL_BINS]/windeployqt.exe --no-compiler-runtime --no-translations $$OUT_PWD/release/$${TARGET}.exe $$escape_expand(\\n)
+#            }
+#        }
+#    }
+#}
 
 #--------------------------------------------------------------------------------------------
 #编译目录配置
