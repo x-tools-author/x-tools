@@ -621,6 +621,8 @@ void SAKIODeviceWidget::readInputMode()
 {
     QString option = QString("InputMode");
     QString value = readSetting(option);
+    inputTextMode = value;
+    textFormatControl();
 
     ui->comboBoxInputMode->setCurrentText(value);
 }
