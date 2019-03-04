@@ -22,6 +22,9 @@ CheckForUpdateDialog::CheckForUpdateDialog(HttpAnalyzer *httpAnalyzer)
     ,analyzer(httpAnalyzer)
 {
     ui->setupUi(this);
+    infoLabel = ui->labelInfo;
+    progressBar = ui->progressBar;
+
     cancelBt = ui->pushButtonCancel;
     connect(cancelBt, &QPushButton::clicked, this, &CheckForUpdateDialog::cancel);
 
@@ -30,6 +33,8 @@ CheckForUpdateDialog::CheckForUpdateDialog(HttpAnalyzer *httpAnalyzer)
 
     connect(this, &CheckForUpdateDialog::cancelChecking, analyzer, &HttpAnalyzer::httpCancel);
     connect(analyzer, &HttpAnalyzer::badUrl, this, &CheckForUpdateDialog::showErrorDialog);
+    connect(analyzer, &HttpAnalyzer::noNewVersion, this, &CheckForUpdateDialog::noNewVersion);
+
     analyzer->start();
 }
 
@@ -54,4 +59,11 @@ void CheckForUpdateDialog::showErrorDialog(QString errStr)
 {
     cancel();
     QMessageBox::warning(nullptr, tr("检查更新错误"), tr("错误信息：") + errStr);
+}
+
+void CheckForUpdateDialog::noNewVersion()
+{
+    infoLabel->setText(tr("暂无更新版本"));
+    progressBar->setRange(0, 100);
+    progressBar->setValue(100);
 }

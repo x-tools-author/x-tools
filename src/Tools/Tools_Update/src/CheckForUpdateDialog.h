@@ -10,8 +10,10 @@
 #ifndef CHECKFORUPDATEDIALOG_H
 #define CHECKFORUPDATEDIALOG_H
 
+#include <QLabel>
 #include <QDialog>
 #include <QPushButton>
+#include <QProgressBar>
 
 class HttpAnalyzer;
 
@@ -31,9 +33,13 @@ private:
     Ui::CheckForUpdateDialog* ui = nullptr;
     QPushButton* cancelBt = nullptr;
     HttpAnalyzer* analyzer = nullptr;
+
+    QLabel* infoLabel = nullptr;
+    QProgressBar* progressBar = nullptr;
 private slots:
     void cancel();
     void showErrorDialog(QString errStr);
+    void noNewVersion();
 signals:
     void cancelChecking();
 };

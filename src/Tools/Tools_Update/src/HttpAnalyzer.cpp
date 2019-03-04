@@ -94,6 +94,8 @@ void HttpAnalyzer::httpFinished()
                         QUrl url = QUrl(object.value("url").toString());
                         QString description = object.value("description").toString();
                         emit newVersion(sVersionStr, url, description);
+                    }else {
+                        emit noNewVersion();
                     }
                 }else {
                     /// 以下错误断言仅针对开发者

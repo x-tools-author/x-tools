@@ -46,6 +46,7 @@ signals:
      */
     void newVersion(QString version, QUrl url, QString description);
     void badUrl(QString);
+    void noNewVersion();
 };
 
 #endif
