@@ -6,8 +6,15 @@
 #
 # Copyright (C) 2018-2019 wuhai persionnal. All rights reserved.
 #******************************************************************************/
-#-------------------------------------------------------------
-include(src/Tools/Tools_NSLookup/Tools_NSLookup.pri)
-include(src/Tools/Tools_GetPublicIP/Tools_GetPublicIP.pri)
-include(src/Tools/Tools_Update/Tools_Update.pri)
-include(src/Tools/Tools_CRCCalculator/Tools_CRCCalculator.pri)
+
+# 域名解释工具
+include(tools/NSLookup/NSLookup.pri)
+
+# 公网获取工具
+include(tools/GetPublicIP/GetPublicIP.pri)
+
+# 软件更新工具
+include(tools/Update/Update.pri)
+
+# 万能crc计算器
+include(tools/CRCCalculator/CRCCalculator.pri)
