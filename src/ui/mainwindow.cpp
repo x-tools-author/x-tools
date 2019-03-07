@@ -157,7 +157,7 @@ void MainWindow::styleActionTriggered()
     QSettings setting;
     setting.setValue(QString(appStyleKey), sender()->objectName());
 
-#if 0
+#if 1
     int ret = QMessageBox::information(nullptr, tr("请手动重启软件"), tr("更改应用样式完成，重启生效，是否手动重启软件！(点击“是”将关闭软件。)"), QMessageBox::Yes|QMessageBox::No);
     if (ret == QMessageBox::Yes){
         close();
