@@ -3,6 +3,9 @@
  * Writing the comment in English, just for "Installing B".
  */
 
+20190307
+    01. 取消串口助手、udp客户端、tcp客户端、tcp服务器的子项目管理
+
 20190224
     01. 修复软件启动时输入数据格式与现实格式不匹配的问题
 
