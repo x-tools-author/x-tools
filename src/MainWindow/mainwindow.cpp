@@ -60,11 +60,6 @@ void MainWindow::AddTab()
     serialportDevice->start();
 #endif
 
-    /// udp客户端
-    UdpSAKIODevice *udpDevice = new UdpSAKIODevice;
-    this->mpTabWidget->addTab(new UdpSAKIODeviceWidget(udpDevice, new UdpSAKIODeviceControler), tr("UDP客户端"));
-    udpDevice->start();
-
     /// tcp客户端
     TcpSAKIODevice *tcpDevice = new TcpSAKIODevice;
     this->mpTabWidget->addTab(new TcpSAKIODeviceWidget(tcpDevice, new TcpSAKIODeviceControler), tr("TCP客户端"));
@@ -74,6 +69,11 @@ void MainWindow::AddTab()
     TcpServerSAKIODevice *tcpServerDevice = new TcpServerSAKIODevice;
     this->mpTabWidget->addTab(new TcpServerSAKIODeviceWidget(tcpServerDevice, new TcpServerSAKIODeviceControler), tr("Tcp服务器"));
     tcpServerDevice->start();
+
+    /// udp客户端
+    UdpSAKIODevice *udpDevice = new UdpSAKIODevice;
+    this->mpTabWidget->addTab(new UdpSAKIODeviceWidget(udpDevice, new UdpSAKIODeviceControler), tr("UDP客户端"));
+    udpDevice->start();
 }
 
 void MainWindow::AddTool()
