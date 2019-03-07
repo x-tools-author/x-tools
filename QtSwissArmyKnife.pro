@@ -28,7 +28,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     src/main.cpp \
-    src/MainWindow/mainwindow.cpp \
+    src/MainWindow/MainWindow.cpp \
     src/SAKApplication.cpp \
     src/TabPage/SAKIODeviceWidget.cpp \
     src/TabPage/SAKIODevice.cpp \
@@ -41,7 +41,7 @@ SOURCES += \
     src/MainWindow/SAKVersion.cpp
 
 HEADERS += \
-    src/MainWindow/mainwindow.h \
+    src/MainWindow/MainWindow.h \
     src/SAKApplication.h \
     src/TabPage/SAKIODeviceWidget.h \
     src/TabPage/SAKIODevice.h \
@@ -54,7 +54,7 @@ HEADERS += \
     src/MainWindow/SAKVersion.h
 
 FORMS += \
-    src/MainWindow/mainwindow.ui \
+    src/MainWindow/MainWindow.ui \
     src/TabPage/SAKIODeviceWidget.ui \
     src/TabPage/AutoResponseItem.ui \
     src/TabPage/AutoResponseSettingPanel.ui \
