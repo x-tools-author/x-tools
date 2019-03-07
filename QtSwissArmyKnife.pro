@@ -116,62 +116,62 @@ winrt || arm-linux{
 !contains(DEFINES, SAK_NO_SERIALPORT_ASSISTANT){
     QT  += serialport
     SOURCES += \
-        src/SerialPort/SerialportSAKIODeviceWidget.cpp \
-        src/SerialPort/SerialportSAKIODevice.cpp \
-        src/SerialPort/SerialportSAKIODeviceControler.cpp
+        src/TabPageSerialPort/SerialportSAKIODeviceWidget.cpp \
+        src/TabPageSerialPort/SerialportSAKIODevice.cpp \
+        src/TabPageSerialPort/SerialportSAKIODeviceControler.cpp
     HEADERS += \
-        src/SerialPort/SerialportSAKIODeviceWidget.h \
-        src/SerialPort/SerialportSAKIODevice.h \
-        src/SerialPort/SerialportSAKIODeviceControler.h
+        src/TabPageSerialPort/SerialportSAKIODeviceWidget.h \
+        src/TabPageSerialPort/SerialportSAKIODevice.h \
+        src/TabPageSerialPort/SerialportSAKIODeviceControler.h
     FORMS   += \
-        src/SerialPort/SerialportSAKIODeviceControler.ui
+        src/TabPageSerialPort/SerialportSAKIODeviceControler.ui
     INCLUDEPATH += \
-        src/SerialPort
+        src/TabPageSerialPort
 }else {
     message( "该版本Qt可能不包含串口模块，已经忽略串口模块！（串口助手功能被屏蔽！）" )
 }
 
 # TCP 客户端
 SOURCES += \
-    src/TcpClient/TcpSAKIODevice.cpp \
-    src/TcpClient/TcpSAKIODeviceControler.cpp \
-    src/TcpClient/TcpSAKIODeviceWidget.cpp
+    src/TabPageTcpClient/TcpSAKIODevice.cpp \
+    src/TabPageTcpClient/TcpSAKIODeviceControler.cpp \
+    src/TabPageTcpClient/TcpSAKIODeviceWidget.cpp
 HEADERS += \
-    src/TcpClient/TcpSAKIODevice.h \
-    src/TcpClient/TcpSAKIODeviceControler.h \
-    src/TcpClient/TcpSAKIODeviceWidget.h
+    src/TabPageTcpClient/TcpSAKIODevice.h \
+    src/TabPageTcpClient/TcpSAKIODeviceControler.h \
+    src/TabPageTcpClient/TcpSAKIODeviceWidget.h
 FORMS   += \
-    src/TcpClient/TcpSAKIODeviceControler.ui
+    src/TabPageTcpClient/TcpSAKIODeviceControler.ui
 INCLUDEPATH += \
-    src/TcpClient
+    src/TabPageTcpClient
 
 # TCP服务器
 SOURCES += \
-    src/TcpServer/TcpServerSAKIODeviceWidget.cpp \
-    src/TcpServer/TcpServerSAKIODevice.cpp \
-    src/TcpServer/TcpServerSAKIODeviceControler.cpp
+    src/TabPageTcpServer/TcpServerSAKIODeviceWidget.cpp \
+    src/TabPageTcpServer/TcpServerSAKIODevice.cpp \
+    src/TabPageTcpServer/TcpServerSAKIODeviceControler.cpp
 HEADERS += \
-    src/TcpServer/TcpServerSAKIODeviceWidget.h \
-    src/TcpServer/TcpServerSAKIODevice.h \
-    src/TcpServer/TcpServerSAKIODeviceControler.h
+    src/TabPageTcpServer/TcpServerSAKIODeviceWidget.h \
+    src/TabPageTcpServer/TcpServerSAKIODevice.h \
+    src/TabPageTcpServer/TcpServerSAKIODeviceControler.h
 FORMS   += \
-    src/TcpServer/TcpServerSAKIODeviceControler.ui
+    src/TabPageTcpServer/TcpServerSAKIODeviceControler.ui
 INCLUDEPATH += \
-    src/TcpServer
+    src/TabPageTcpServer
 
 # UDP客户端
 SOURCES += \
-    src/UdpClient/UdpSAKIODevice.cpp \
-    src/UdpClient/UdpSAKIODeviceControler.cpp \
-    src/UdpClient/UdpSAKIODeviceWidget.cpp
+    src/TabPageUdpClient/UdpSAKIODevice.cpp \
+    src/TabPageUdpClient/UdpSAKIODeviceControler.cpp \
+    src/TabPageUdpClient/UdpSAKIODeviceWidget.cpp
 HEADERS += \
-    src/UdpClient/UdpSAKIODevice.h \
-    src/UdpClient/UdpSAKIODeviceControler.h \
-    src/UdpClient/UdpSAKIODeviceWidget.h
+    src/TabPageUdpClient/UdpSAKIODevice.h \
+    src/TabPageUdpClient/UdpSAKIODeviceControler.h \
+    src/TabPageUdpClient/UdpSAKIODeviceWidget.h
 FORMS   += \
-    src/UdpClient/UdpSAKIODeviceControler.ui
+    src/TabPageUdpClient/UdpSAKIODeviceControler.ui
 INCLUDEPATH += \
-    src/UdpClient
+    src/TabPageUdpClient
 
 
 DISTFILES += \
