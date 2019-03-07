@@ -22,7 +22,7 @@ SAKApplication::SAKApplication(int argc, char **argv):
     setOrganizationName(QString("Qter"));
     setOrganizationDomain(QString("IT"));
     setApplicationName(QString("QtSwissArmyKnife"));
-
+#if 0
     QSettings settings;
     QString style = settings.value(QString(MainWindow::appStyle())).toString();
     if (style.isEmpty()){
@@ -30,6 +30,7 @@ SAKApplication::SAKApplication(int argc, char **argv):
         settings.setValue(QString(MainWindow::appStyle()), style);
     }
     QApplication::setStyle(QStyleFactory::create(style));
+#endif
 
     mpMainWindow = new MainWindow;
     mpMainWindow->show();

@@ -2,7 +2,7 @@
 #pragma execution_character_set("utf-8")
 #endif
 
-#include "mainwindow.h"
+#include "MainWindow.h"
 #include "ui_mainwindow.h"
 
 #include "UdpSAKIODeviceWidget.h"
@@ -13,6 +13,7 @@
 #include "SAKVersion.h"
 #include "UpdateManager.h"
 #include "CRCCalculator.h"
+#include "SAKApplication.h"
 
 #ifndef SAK_NO_SERIALPORT_ASSISTANT
 #include "SerialportSAKIODeviceWidget.h"
@@ -24,6 +25,7 @@
 
 const static char* configureFile = "http://wuhai.pro/software/QtSwissArmyKnife/update.json";
 const char* MainWindow::appStyleKey = "Universal/appStyle";
+
 MainWindow::MainWindow(QWidget *parent)
     :QMainWindow(parent)
     ,mpTabWidget(new QTabWidget)
@@ -165,9 +167,14 @@ void MainWindow::styleActionTriggered()
         close();
     }
 #else
-    /// 频繁切换导致程序crash，原因不详...........(Fusion样式切换有问题)
-    /// 由其它风格切换至function风格或者有function风格切换至其它风格造成程序崩溃
-    QApplication::setStyle(QStyleFactory::create(QString("%1").arg(sender()->objectName())));
+    /**
+     *  频繁切换导致程序crash，原因不详...........(Fusion样式切换有问题)
+     *  由其它风格切换至function风格或者有function风格切换至其它风格造成程序崩溃
+     *  tmd
+     */
+    qDebug() << sender()->objectName();
+    QString style = sender()->objectName();
+    SAKApplication::setStyle(QStyleFactory::create(style));
 #endif
 }
 

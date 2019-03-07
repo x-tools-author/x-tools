@@ -13,6 +13,7 @@
 #include <QDebug>
 #include <stdio.h>
 #include <stdlib.h>
+#include <QSettings>
 
 int main(int argc, char *argv[])
 {
@@ -20,6 +21,14 @@ int main(int argc, char *argv[])
     qInstallMessageHandler(SAKAppMsgOutput);
 #endif
     SAKApplication a(argc, argv);
+
+    QSettings settings;
+    QString style = settings.value(QString(MainWindow::appStyle())).toString();
+    if (style.isEmpty()){
+        style = QString("Fusion");
+        settings.setValue(QString(MainWindow::appStyle()), style);
+    }
+    QApplication::setStyle(QStyleFactory::create(style));
 
     return a.exec();
 }
