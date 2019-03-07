@@ -12,7 +12,7 @@
 #include <QApplication>
 #include <QStyleFactory>
 
-#include "mainwindow.h"
+#include "MainWindow.h"
 
 class SAKApplication:public QApplication
 {
