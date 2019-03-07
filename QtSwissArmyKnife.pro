@@ -82,7 +82,7 @@ win32{
 # 静态编译版本不需要部署发布（静态编译时，禁用下面的）
 DEFINES += NOT_USING_STATIC_EDITION
 
-# 编译后不发布部署
+# 编译后不发布部署(发布时采用静态版本进行Qt进行编译)
 #win32{
 #    contains(DEFINES, NOT_USING_STATIC_EDITION){
 #        CONFIG(debug, debug|release) {
@@ -111,14 +111,68 @@ include(SAKTools.pri)
 # 取消该宏的定义可以将串口模块屏蔽
 winrt || arm-linux{
     DEFINES += SAK_NO_SERIALPORT_ASSISTANT
-    message( "该版本Qt可能不包含串口模块，已经忽略串口模块！（串口助手功能被屏蔽！）" )
-}else {
-    include(SAKSerialportAssistant.pri)
 }
 
-include(SAKUdpClient.pri)
-include(SAKTcpClient.pri)
-include(SAKTcpServer.pri)
+!contains(DEFINES, SAK_NO_SERIALPORT_ASSISTANT){
+    QT  += serialport
+    SOURCES += \
+        src/SerialPort/SerialportSAKIODeviceWidget.cpp \
+        src/SerialPort/SerialportSAKIODevice.cpp \
+        src/SerialPort/SerialportSAKIODeviceControler.cpp
+    HEADERS += \
+        src/SerialPort/SerialportSAKIODeviceWidget.h \
+        src/SerialPort/SerialportSAKIODevice.h \
+        src/SerialPort/SerialportSAKIODeviceControler.h
+    FORMS   += \
+        src/SerialPort/SerialportSAKIODeviceControler.ui
+    INCLUDEPATH += \
+        src/SerialPort
+}else {
+    message( "该版本Qt可能不包含串口模块，已经忽略串口模块！（串口助手功能被屏蔽！）" )
+}
+
+# TCP 客户端
+SOURCES += \
+    src/TcpClient/TcpSAKIODevice.cpp \
+    src/TcpClient/TcpSAKIODeviceControler.cpp \
+    src/TcpClient/TcpSAKIODeviceWidget.cpp
+HEADERS += \
+    src/TcpClient/TcpSAKIODevice.h \
+    src/TcpClient/TcpSAKIODeviceControler.h \
+    src/TcpClient/TcpSAKIODeviceWidget.h
+FORMS   += \
+    src/TcpClient/TcpSAKIODeviceControler.ui
+INCLUDEPATH += \
+    src/TcpClient
+
+# TCP服务器
+SOURCES += \
+    src/TcpServer/TcpServerSAKIODeviceWidget.cpp \
+    src/TcpServer/TcpServerSAKIODevice.cpp \
+    src/TcpServer/TcpServerSAKIODeviceControler.cpp
+HEADERS += \
+    src/TcpServer/TcpServerSAKIODeviceWidget.h \
+    src/TcpServer/TcpServerSAKIODevice.h \
+    src/TcpServer/TcpServerSAKIODeviceControler.h
+FORMS   += \
+    src/TcpServer/TcpServerSAKIODeviceControler.ui
+INCLUDEPATH += \
+    src/TcpServer
+
+# UDP客户端
+SOURCES += \
+    src/UdpClient/UdpSAKIODevice.cpp \
+    src/UdpClient/UdpSAKIODeviceControler.cpp \
+    src/UdpClient/UdpSAKIODeviceWidget.cpp
+HEADERS += \
+    src/UdpClient/UdpSAKIODevice.h \
+    src/UdpClient/UdpSAKIODeviceControler.h \
+    src/UdpClient/UdpSAKIODeviceWidget.h
+FORMS   += \
+    src/UdpClient/UdpSAKIODeviceControler.ui
+INCLUDEPATH += \
+    src/UdpClient
+
 
 DISTFILES += \
     other/update.json \
