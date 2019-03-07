@@ -25,6 +25,7 @@ public:
     ~SAKVersion();
     static SAKVersion* instance(){return sakVersionSingleton;}
     QString getVersion(){return version->text();}
+    QString getQQNum(){return qq->text();}
 private:
     Ui::SAKVersion* ui          = nullptr;
     QLabel*         version     = nullptr;  /// 显示版本号
