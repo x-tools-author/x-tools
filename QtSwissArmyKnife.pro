@@ -28,7 +28,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     src/main.cpp \
-    src/ui/mainwindow.cpp \
+    src/MainWindow/mainwindow.cpp \
     src/SAKApplication.cpp \
     src/TabPage/SAKIODeviceWidget.cpp \
     src/TabPage/SAKIODevice.cpp \
@@ -38,10 +38,10 @@ SOURCES += \
     src/TabPage/SAKHighlighter.cpp \
     src/TabPage/SAKHighlighterSettingPanel.cpp \
     src/TabPage/SAKHighlighterLabel.cpp \
-    src/ui/SAKVersion.cpp
+    src/MainWindow/SAKVersion.cpp
 
 HEADERS += \
-    src/ui/mainwindow.h \
+    src/MainWindow/mainwindow.h \
     src/SAKApplication.h \
     src/TabPage/SAKIODeviceWidget.h \
     src/TabPage/SAKIODevice.h \
@@ -51,21 +51,21 @@ HEADERS += \
     src/TabPage/SAKHighlighter.h \
     src/TabPage/SAKHighlighterSettingPanel.h \
     src/TabPage/SAKHighlighterLabel.h \
-    src/ui/SAKVersion.h
+    src/MainWindow/SAKVersion.h
 
 FORMS += \
-    src/ui/mainwindow.ui \
+    src/MainWindow/mainwindow.ui \
     src/TabPage/SAKIODeviceWidget.ui \
     src/TabPage/AutoResponseItem.ui \
     src/TabPage/AutoResponseSettingPanel.ui \
     src/TabPage/SAKHighlighterSettingPanel.ui \
     src/TabPage/SAKHighlighterLabel.ui \
-    src/ui/SAKVersion.ui
+    src/MainWindow/SAKVersion.ui
 
 INCLUDEPATH += \
     src \
-    src/ui \
-    src/ui/common \
+    src/MainWindow \
+    src/MainWindow/common \
     src/UdpClient \
     src/TcpClient \
     src/TcpServer \
