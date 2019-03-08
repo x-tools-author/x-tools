@@ -18,6 +18,7 @@
 #include <QPixmap>
 #include <QSettings>
 #include <QKeyEvent>
+#include <QMetaEnum>
 
 #include "SAKIODeviceWidget.h"
 #include "SAKHighlighterSettingPanel.h"
@@ -36,6 +37,19 @@ SAKIODeviceWidget::SAKIODeviceWidget(SAKIODevice *_device, SAKIODeviceControler 
     ,clearInfoTimer(new QTimer)
 {
     ui->setupUi(this);
+
+    inputTextModelComboBox = ui->comboBoxInputMode;
+    outputTextModelComboBox = ui->comboBoxOutputMode;
+
+
+    /// 初始化输入输出模式
+    inputTextModelComboBox->clear();
+    outputTextModelComboBox->clear();
+    QMetaEnum textModel = QMetaEnum::fromType<SAKIODeviceWidget::TextDisplayModel>();
+    for (int i = 0; i < textModel.keyCount(); i++){
+        inputTextModelComboBox->addItem(QString(textModel.valueToKey(i)));
+        outputTextModelComboBox->addItem(QString(textModel.valueToKey(i)));
+    }
 
     /// 初始化数据成员
     highlighterSettingButton = ui->pushButtonHighlighting;
@@ -405,7 +419,7 @@ QByteArray SAKIODeviceWidget::dataBytes()
     }else if (inputTextMode.toUpper().compare(QString("UTF8")) == 0){
         data = ui->textEditInputData->toPlainText().toLocal8Bit();
     }else {
-        Q_ASSERT_X(false, __FUNCTION__, "Unknow output mode");
+        Q_ASSERT_X(false, __FUNCTION__, "Unknow input mode");
     }
 
     return data;

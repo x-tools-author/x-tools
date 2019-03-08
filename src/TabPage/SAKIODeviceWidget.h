@@ -17,6 +17,7 @@
 #include <QApplication>
 #include <QSize>
 #include <QPushButton>
+#include <QComboBox>
 
 #include "SAKIODevice.h"
 #include "SAKIODeviceControler.h"
@@ -37,6 +38,16 @@ public:
 
     void setCustomControler(SAKIODeviceControler *controler);
     void setRefreshPBtText(QString text);
+
+    enum TextDisplayModel {
+        Bin,
+        Oct,
+        Dec,
+        Hex,
+        Ascii,
+        Local8bit
+    };
+    Q_ENUM(TextDisplayModel)
 protected:
      bool eventFilter(QObject *o, QEvent *e);
 private:
@@ -56,6 +67,9 @@ private:
 
     QString                     inputTextMode               = "Hex";
     QString                     outputTextMode              = "Hex";
+
+    QComboBox*                  inputTextModelComboBox      = nullptr;
+    QComboBox*                  outputTextModelComboBox     = nullptr;
     ///----------------------------------------------------------------
     void initUI();
     QByteArray dataBytes();
