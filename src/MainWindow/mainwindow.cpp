@@ -105,9 +105,17 @@ void MainWindow::InitMenu()
     /// 选项
     QMenu *optionMenu = new QMenu(tr("选项"));
     menuBar()->addMenu(optionMenu);
+
 #if 1
     QSettings settings;
     QString value = settings.value(appStyleKey).toString();
+    /// 默认使用Qt支持的软件风格的第一种软件风格
+    if (value.isEmpty()){
+        foreach (QString style,  QStyleFactory::keys()){
+            value = style;
+            break;
+        }
+    }
 
     QMenu *appStyleMenu = new QMenu(tr("软件风格"));
     optionMenu->addMenu(appStyleMenu);
@@ -162,7 +170,9 @@ void MainWindow::styleActionTriggered()
     setting.setValue(QString(appStyleKey), sender()->objectName());
 
 #if 1
-    int ret = QMessageBox::information(nullptr, tr("请手动重启软件"), tr("更改应用样式完成，重启生效，是否手动重启软件！(点击“是”将关闭软件。)"), QMessageBox::Yes|QMessageBox::No);
+    int ret = QMessageBox::information(nullptr, tr("请手动重启软件"),
+                                       tr("更改应用样式完成，重启生效，是否手动重启软件！(点击“是”将关闭软件。)"),
+                                       QMessageBox::Yes|QMessageBox::No);
     if (ret == QMessageBox::Yes){
         close();
     }
