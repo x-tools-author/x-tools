@@ -176,6 +176,4 @@ INCLUDEPATH += \
 
 
 DISTFILES += \
-    other/update.json \
-    other/developerLog.txt \
-    other/bugManager.txt
+    other/update.json
