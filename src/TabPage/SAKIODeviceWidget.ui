@@ -657,7 +657,7 @@
       <item>
        <widget class="QLabel" name="labelOutput">
         <property name="text">
-         <string>(无信息输出)</string>
+         <string>(生活不止眼前的苟且，还有远方的苟且！)</string>
         </property>
        </widget>
       </item>
