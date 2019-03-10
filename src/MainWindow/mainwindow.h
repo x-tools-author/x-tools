@@ -16,6 +16,7 @@
 #include <QAction>
 #include <QMessageBox>
 #include <QLabel>
+#include <QMetaEnum>
 
 class SAKVersion;
 class UpdateManager;
@@ -31,6 +32,14 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    enum SAKStyleSheet{
+        QtDefault,
+        FlatWhite,
+        LightBlue,
+        PSBlack
+    };
+    Q_ENUM(SAKStyleSheet)
+
     static const char* appStyle(){return appStyleKey;}
 private:
     QTabWidget* mpTabWidget     = nullptr;
@@ -40,12 +49,20 @@ private:
     UpdateManager* updateManager= nullptr;
 
     static const char* appStyleKey;
+    const char* appStylesheetKey = "Universal/appStylesheet";
+    QMetaEnum skins;
     /// ----------------------------------------------------
     void AddTab();
     void InitMenu();
     void AddTool();
 
     void addTool(QString toolName, QWidget *toolWidget);
+    void changeStylesheet();
+
+    /**
+     * @brief initSkinMenu  -- 创建皮肤切换菜单
+     */
+    void initSkinMenu(QMenu* optionMenu);
 private slots:
     void AboutQt();
     void About();

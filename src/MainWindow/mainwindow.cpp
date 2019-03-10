@@ -2,7 +2,9 @@
 #pragma execution_character_set("utf-8")
 #endif
 
-#include "MainWindow.h"
+#include <QFile>
+
+#include "mainwindow.h"
 #include "ui_mainwindow.h"
 
 #include "UdpSAKIODeviceWidget.h"
@@ -25,7 +27,6 @@
 
 const static char* configureFile = "http://wuhai.pro/software/QtSwissArmyKnife/update.json";
 const char* MainWindow::appStyleKey = "Universal/appStyle";
-
 MainWindow::MainWindow(QWidget *parent)
     :QMainWindow(parent)
     ,mpTabWidget(new QTabWidget)
@@ -105,6 +106,9 @@ void MainWindow::InitMenu()
     /// 选项
     QMenu *optionMenu = new QMenu(tr("选项"));
     menuBar()->addMenu(optionMenu);
+
+    /// 选项菜单--皮肤切换菜单
+    initSkinMenu(optionMenu);
 
 #if 1
     QSettings settings;
@@ -193,4 +197,62 @@ void MainWindow::addTool(QString toolName, QWidget *toolWidget)
     QAction *action = new QAction(toolName);
     toolsMenu->addAction(action);
     connect(action, SIGNAL(triggered(bool)), toolWidget, SLOT(show()));
+}
+
+void MainWindow::changeStylesheet()
+{
+    QFile file;
+    QString skin = sender()->objectName();
+
+    QSettings setting;
+    setting.setValue(QString(appStylesheetKey), skin);
+
+    if (skins.keyToValue(skin.toLatin1().data()) == QtDefault){
+        qApp->setStyleSheet("");
+        return;
+    }else if (skins.keyToValue(skin.toLatin1().data()) == FlatWhite){
+        file.setFileName(":/qss/flatwhite.css");
+    }else if (skins.keyToValue(skin.toLatin1().data()) == LightBlue){
+        file.setFileName(":/qss/lightblue.css");
+    }else if (skins.keyToValue(skin.toLatin1().data()) == PSBlack){
+        file.setFileName(":/qss/psblack.css");
+    }else {
+
+    }
+
+    if (file.open(QFile::ReadOnly)) {
+        QString qss = QLatin1String(file.readAll());
+        QString paletteColor = qss.mid(20, 7);
+        qApp->setPalette(QPalette(QColor(paletteColor)));
+        qApp->setStyleSheet(qss);
+        file.close();
+    }
+}
+
+void MainWindow::initSkinMenu(QMenu *optionMenu)
+{
+    skins = QMetaEnum::fromType<SAKStyleSheet>();
+    QSettings settings;
+    QString value = settings.value(appStylesheetKey).toString();
+    if (value.isEmpty()){
+        value = QString(skins.valueToKey(QtDefault));
+    }
+
+    QMenu *stylesheetMenu = new QMenu("皮肤");
+    optionMenu->addMenu(stylesheetMenu);
+    QActionGroup *stylesheetActionGroup = new QActionGroup(this);
+    QAction *action = nullptr;
+    for (int i = 0; i < skins.keyCount(); i++){
+        action = new QAction(QString(skins.valueToKey(i)));
+        action->setCheckable(true);
+        action->setObjectName(QString(skins.valueToKey(i)));
+        stylesheetMenu->addAction(action);
+        stylesheetActionGroup->addAction(action);
+
+        connect(action, &QAction::triggered, this, &MainWindow::changeStylesheet);
+        if (QString(skins.valueToKey(i)).compare(value) == 0){
+            action->setChecked(true);
+            emit action->triggered();
+        }
+    }
 }
