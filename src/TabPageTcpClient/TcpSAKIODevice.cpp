@@ -48,7 +48,7 @@ void TcpSAKIODevice::writeBytes(QByteArray data)
     if (ret == -1){
         emit errorStr(mpTcpSocket->errorString());
     }else {
-        emit bytesWritten(ret);
+        emit bytesWritten(data);
     }
 }
 

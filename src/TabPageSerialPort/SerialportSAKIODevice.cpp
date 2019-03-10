@@ -38,7 +38,7 @@ void SerialportSAKIODevice::writeBytes(QByteArray data)
     if (ret == -1){
         qWarning() << "Write data failed:" << mpSerialPort->errorString();
     }else {
-        emit bytesWritten(ret);
+        emit bytesWritten(data);
     }
 }
 

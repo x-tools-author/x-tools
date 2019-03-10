@@ -44,7 +44,7 @@ void TcpServerSAKIODevice::writeBytes(QByteArray data)
         if (ret == -1){
             emit errorStr(currentTcpClient->errorString());
         }else {
-            emit bytesWritten(ret);
+            emit bytesWritten(data);
         }
     }
 }

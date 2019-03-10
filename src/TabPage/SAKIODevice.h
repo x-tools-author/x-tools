@@ -39,7 +39,7 @@ signals:
     void deviceCloseSuccessfully();
 
     void bytesRead(QByteArray data);
-    void bytesWritten(qint64);
+    void bytesWritten(QByteArray data);
     void errorStr(QString errorStr);
     void infoStr(QString informationStr);
 

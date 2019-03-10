@@ -49,7 +49,7 @@ void UdpSAKIODevice::writeBytes(QByteArray data)
     if (ret == -1){
         emit errorStr(mpUdpSocket->errorString());
     }else {
-        emit bytesWritten(ret);
+        emit bytesWritten(data);
     }
 }
 

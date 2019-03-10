@@ -122,7 +122,7 @@
          <item row="1" column="2">
           <widget class="QLabel" name="label_5">
            <property name="text">
-            <string>TX</string>
+            <string>发(Tx)</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -148,7 +148,7 @@
          <item row="1" column="0">
           <widget class="QLabel" name="label">
            <property name="text">
-            <string>RX</string>
+            <string>收(Rx)</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>

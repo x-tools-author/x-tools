@@ -71,7 +71,7 @@ SAKIODeviceWidget::~SAKIODeviceWidget()
 void SAKIODeviceWidget::initUI()
 {
     ui->checkBoxOutputMS->setEnabled(true);
-    ui->checkBoxOutputDate->setChecked(true);
+    ui->checkBoxOutputDate->setChecked(false);
     ui->checkBoxOutputTime->setChecked(true);
     ui->lineEditCycleTime->setValidator(new QIntValidator(10, 24*60*60*1000, ui->lineEditCycleTime));
     ui->lineEditBytesDelayTime->setValidator(new QIntValidator(10, 24*60*60*1000, ui->lineEditBytesDelayTime));
@@ -92,7 +92,11 @@ void SAKIODeviceWidget::initUI()
 
     ui->labelRX->setPixmap(QPixmap(":/images/RtRxGray.png").scaled(rxtxSize, Qt::KeepAspectRatio));
     ui->labelTX->setPixmap(QPixmap(":/images/RtRxGray.png").scaled(rxtxSize, Qt::KeepAspectRatio));
-    ui->labelInfoIcon->setPixmap(QPixmap(":/images/info.png").scaled(QSize(ui->labelInfoIcon->width()-4, ui->labelInfoIcon->height() - 4), Qt::KeepAspectRatio));
+    ui->labelInfoIcon->setPixmap(QPixmap(":/images/info.png").scaled(QSize(ui->labelInfoIcon->width()-4,
+                                                                           ui->labelInfoIcon->height() - 4),
+                                                                     Qt::KeepAspectRatio));
+
+    ui->textBrowserOutputData->setLineWrapMode(QTextEdit::WidgetWidth);
 }
 
 void SAKIODeviceWidget::outputTimeInfoCheckBoxClicked(bool checked)
@@ -117,7 +121,7 @@ void SAKIODeviceWidget::outputReceiveDataOnlyCheckBoxClicked(bool cheaked)
         ui->checkBoxOutputMS->setChecked(false);
         ui->checkBoxOutputMS->setEnabled(false);
     }else{
-        ui->checkBoxOutputDate->setChecked(true);
+        ui->checkBoxOutputDate->setChecked(false);
         ui->checkBoxOutputDate->setEnabled(true);
         ui->checkBoxOutputTime->setChecked(true);
         ui->checkBoxOutputTime->setEnabled(true);
@@ -179,7 +183,7 @@ void SAKIODeviceWidget::Connect()
     connect(ui->pushButtonSendData, SIGNAL(clicked(bool)), this, SLOT(writeBytes()));
     connect(this, SIGNAL(need2writeBytes(QByteArray)), device, SLOT(writeBytes(QByteArray)));
     connect(device, SIGNAL(bytesRead(QByteArray)), this, SLOT(bytesRead(QByteArray)));
-    connect(device, SIGNAL(bytesWritten(qint64)), this, SLOT(bytesWritten(qint64)));
+    connect(device, SIGNAL(bytesWritten(QByteArray)), this, SLOT(bytesWritten(QByteArray)));
 
     /// 重置收发计数
     connect(ui->pushButtonResetReceiveDataCount, SIGNAL(clicked(bool)), this, SLOT(resetReceiveDataCount()));
@@ -192,7 +196,7 @@ void SAKIODeviceWidget::Connect()
 
     /// 指示灯
     connect(device, SIGNAL(bytesRead(QByteArray)), this, SLOT(updateRxImage()));
-    connect(device, SIGNAL(bytesWritten(qint64)),  this, SLOT(updateTxImage()));
+    connect(device, SIGNAL(bytesWritten(QByteArray)),  this, SLOT(updateTxImage()));
 
     /// 文本模式
     connect(ui->comboBoxInputMode, SIGNAL(currentTextChanged(QString)), this , SLOT(setInputMode(QString)));
@@ -499,62 +503,7 @@ void SAKIODeviceWidget::bytesRead(QByteArray data)
     receiveBytesCount += data.length();
     ui->labelReceiveBytes->setText(QString::number(receiveBytesCount));
 
-    if (ui->checkBoxPause->isChecked()){
-        return;
-    }
-
-    QString str;
-    if (ui->checkBoxOutputDate->isChecked()){
-        str.append(QDate::currentDate().toString("yyyy/MM/dd "));
-        str = QString("<font color=silver>%1</font>").arg(str);
-    }
-
-    if (ui->checkBoxOutputTime->isChecked()){
-        if (ui->checkBoxOutputMS->isChecked()){
-            str.append(QTime::currentTime().toString("hh:mm:ss.z "));
-        }else {
-            str.append(QTime::currentTime().toString("hh:mm:ss "));
-        }
-        str = QString("<font color=silver>%1</font>").arg(str);
-    }
-
-    outputTextMode = ui->comboBoxOutputMode->currentText();
-    if (outputTextMode.compare(QString(textModel.valueToKey(Bin))) == 0){
-        for (int i = 0; i < data.length(); i++){
-            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(data.at(i)), 2), 8, '0'));
-        }
-    }else if (outputTextMode.compare(QString(textModel.valueToKey(Oct))) == 0){
-        for (int i = 0; i < data.length(); i++){
-            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(data.at(i)), 8), 3, '0'));
-        }
-    }else if (outputTextMode.compare(QString(textModel.valueToKey(Dec))) == 0){
-        for (int i = 0; i < data.length(); i++){
-            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(data.at(i)), 10)));
-        }
-    }else if (outputTextMode.compare(QString(textModel.valueToKey(Hex))) == 0){
-        for (int i = 0; i < data.length(); i++){
-            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(data.at(i)), 16), 2, '0'));
-        }
-    }else if (outputTextMode.compare(QString(textModel.valueToKey(Ascii))) == 0){
-        str.append(QString(data));
-    }else if (outputTextMode.compare(QString(textModel.valueToKey(Local8bit))) == 0){
-        str.append(QString(data));
-    }else {
-        Q_ASSERT_X(false, __FUNCTION__, "Unknow output mode");
-    }
-
-    if (ui->checkBoxOutputReceiveDataOnly->isChecked()){
-        /**
-         * 以下这种追加文本的方式存在问题，在文本较多，追加频繁时，界面卡顿。
-         **/
-        if (!ui->textBrowserOutputData->toPlainText().isEmpty()){
-            str = ui->textBrowserOutputData->toPlainText() + " " + str;
-        }
-        ui->textBrowserOutputData->setText(QString("<font color=blue>%1</font>").arg(str));
-        ui->textBrowserOutputData->verticalScrollBar()->setSliderPosition(ui->textBrowserOutputData->verticalScrollBar()->maximum());
-    }else {
-        ui->textBrowserOutputData->append(str);
-    }
+    refreshOutputData(data, true);
 }
 
 void SAKIODeviceWidget::openFile()
@@ -586,15 +535,86 @@ void SAKIODeviceWidget::saveOutputData()
     outFile.close();
 }
 
-void SAKIODeviceWidget::bytesWritten(qint64 bytes)
+void SAKIODeviceWidget::bytesWritten(QByteArray data)
 {
     qlonglong writeBytes = ui->labelSendBytes->text().toLongLong();
-    writeBytes += bytes;
+    writeBytes += data.length();
     ui->labelSendBytes->setText(QString::number(writeBytes));
 
     qlonglong writeFrame = ui->labelSendFrames->text().toLongLong();
     writeFrame += 1;
     ui->labelSendFrames->setText(QString::number(writeFrame));
+
+    refreshOutputData(data, false);
+}
+
+void SAKIODeviceWidget::refreshOutputData(QByteArray &data, bool isReceivedData)
+{
+    if (ui->checkBoxPause->isChecked()){
+        return;
+    }
+
+    QString str;
+    str.append("[");
+    if (ui->checkBoxOutputDate->isChecked()){
+        str.append(QDate::currentDate().toString("yyyy/MM/dd "));
+        str = QString("<font color=silver>%1</font>").arg(str);
+    }
+
+    if (ui->checkBoxOutputTime->isChecked()){
+        if (ui->checkBoxOutputMS->isChecked()){
+            str.append(QTime::currentTime().toString("hh:mm:ss.z "));
+        }else {
+            str.append(QTime::currentTime().toString("hh:mm:ss "));
+        }
+        str = QString("<font color=silver>%1</font>").arg(str);
+    }
+
+    if (isReceivedData){
+        str.append("<font color=blue>Rx</font>");
+    }else {
+        str.append("<font color=purple>Tx</font>");
+    }
+    str.append("<font color=silver>] </font>");
+
+
+    outputTextMode = ui->comboBoxOutputMode->currentText();
+    if (outputTextMode.compare(QString(textModel.valueToKey(Bin))) == 0){
+        for (int i = 0; i < data.length(); i++){
+            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(data.at(i)), 2), 8, '0'));
+        }
+    }else if (outputTextMode.compare(QString(textModel.valueToKey(Oct))) == 0){
+        for (int i = 0; i < data.length(); i++){
+            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(data.at(i)), 8), 3, '0'));
+        }
+    }else if (outputTextMode.compare(QString(textModel.valueToKey(Dec))) == 0){
+        for (int i = 0; i < data.length(); i++){
+            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(data.at(i)), 10)));
+        }
+    }else if (outputTextMode.compare(QString(textModel.valueToKey(Hex))) == 0){
+        for (int i = 0; i < data.length(); i++){
+            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(data.at(i)), 16), 2, '0'));
+        }
+    }else if (outputTextMode.compare(QString(textModel.valueToKey(Ascii))) == 0){
+        str.append(QString(data));
+    }else if (outputTextMode.compare(QString(textModel.valueToKey(Local8bit))) == 0){
+        str.append(QString::fromLocal8Bit(data));
+    }else {
+        Q_ASSERT_X(false, __FUNCTION__, "Unknow output mode");
+    }
+
+    if (ui->checkBoxOutputReceiveDataOnly->isChecked()){
+        /**
+         * 以下这种追加文本的方式存在问题，在文本较多，追加频繁时，界面卡顿。
+         **/
+        if (!ui->textBrowserOutputData->toPlainText().isEmpty()){
+            str = ui->textBrowserOutputData->toPlainText() + " " + str;
+        }
+        ui->textBrowserOutputData->setText(QString("<font color=blue>%1</font>").arg(str));
+        ui->textBrowserOutputData->verticalScrollBar()->setSliderPosition(ui->textBrowserOutputData->verticalScrollBar()->maximum());
+    }else {
+        ui->textBrowserOutputData->append(str);
+    }
 }
 
 void SAKIODeviceWidget::resetSendDataCount()

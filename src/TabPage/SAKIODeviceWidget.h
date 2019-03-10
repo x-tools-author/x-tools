@@ -83,6 +83,13 @@ private:
 
     QString readSetting(QString &option);
     void writeSetting(QString &option, QString &value);
+
+    /**
+     * @brief refreshOutputData -- 更新输出数据
+     * @param data              -- 需要输出显示的数据
+     * @param isReceivedData    -- true表示数据是接受到的数据，否则是发送数据
+     */
+    void refreshOutputData(QByteArray &data, bool isReceivedData = true);
 private slots:
     virtual void updateRxImage();
     virtual void updateTxImage();
@@ -128,7 +135,7 @@ private slots:
     void clearInfo();
 
     void bytesRead(QByteArray data);
-    void bytesWritten(qint64 bytes);
+    void bytesWritten(QByteArray data);
     void writeBytes();
 
     void resetSendDataCount();
