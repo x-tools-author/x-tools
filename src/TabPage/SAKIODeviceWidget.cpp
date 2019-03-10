@@ -730,7 +730,6 @@ void SAKIODeviceWidget::handleReadBytes(QByteArray data)
     }
 
     for (auto item:autoResponseSettingPanel->autoResponseItems()){
-        qDebug() << item.receiveDataString << item.sendDataString;
         if (item.receiveDataString.toUpper().compare(QString(data.toHex(' ')).toUpper()) == 0){
             QByteArray responseData;
             responseData.clear();
