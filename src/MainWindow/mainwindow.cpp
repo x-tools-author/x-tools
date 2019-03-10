@@ -201,6 +201,11 @@ void MainWindow::addTool(QString toolName, QWidget *toolWidget)
 
 void MainWindow::changeStylesheet()
 {
+    /*
+     * 样式文件来自互联网，并非本软件作者编写，如有侵权，请联系软件作者删除。
+     * https://blog.csdn.net/feiyangqingyun/article/details/80211690
+     */
+
     QFile file;
     QString skin = sender()->objectName();
 
