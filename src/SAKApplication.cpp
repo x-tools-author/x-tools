@@ -22,14 +22,12 @@ SAKApplication::SAKApplication(int argc, char **argv):
     setOrganizationName(QString("Qter"));
     setOrganizationDomain(QString("IT"));
     setApplicationName(QString("QtSwissArmyKnife"));
-#if 0
+#if 1
     QSettings settings;
     QString style = settings.value(QString(MainWindow::appStyle())).toString();
-    if (style.isEmpty()){
-        style = QString("Fusion");
-        settings.setValue(QString(MainWindow::appStyle()), style);
+    if (!style.isEmpty()){
+        QApplication::setStyle(QStyleFactory::create(style));
     }
-    QApplication::setStyle(QStyleFactory::create(style));
 #endif
 
     mpMainWindow = new MainWindow;

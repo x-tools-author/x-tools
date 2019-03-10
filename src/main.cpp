@@ -22,13 +22,5 @@ int main(int argc, char *argv[])
 #endif
     SAKApplication a(argc, argv);
 
-    QSettings settings;
-    QString style = settings.value(QString(MainWindow::appStyle())).toString();
-    if (style.isEmpty()){
-        style = QString("Fusion");
-        settings.setValue(QString(MainWindow::appStyle()), style);
-    }
-    QApplication::setStyle(QStyleFactory::create(style));
-
     return a.exec();
 }
