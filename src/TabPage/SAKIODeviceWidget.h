@@ -18,6 +18,7 @@
 #include <QSize>
 #include <QPushButton>
 #include <QComboBox>
+#include <QMetaEnum>
 
 #include "SAKIODevice.h"
 #include "SAKIODeviceControler.h"
@@ -39,6 +40,9 @@ public:
     void setCustomControler(SAKIODeviceControler *controler);
     void setRefreshPBtText(QString text);
 
+    /**
+     * @brief The TextDisplayModel 输出输入显示模式
+     */
     enum TextDisplayModel {
         Bin,
         Oct,
@@ -70,6 +74,8 @@ private:
 
     QComboBox*                  inputTextModelComboBox      = nullptr;
     QComboBox*                  outputTextModelComboBox     = nullptr;
+
+    QMetaEnum                   textModel;
     ///----------------------------------------------------------------
     void initUI();
     QByteArray dataBytes();

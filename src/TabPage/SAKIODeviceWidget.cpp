@@ -18,7 +18,6 @@
 #include <QPixmap>
 #include <QSettings>
 #include <QKeyEvent>
-#include <QMetaEnum>
 
 #include "SAKIODeviceWidget.h"
 #include "SAKHighlighterSettingPanel.h"
@@ -45,7 +44,7 @@ SAKIODeviceWidget::SAKIODeviceWidget(SAKIODevice *_device, SAKIODeviceControler 
     /// 初始化输入输出模式
     inputTextModelComboBox->clear();
     outputTextModelComboBox->clear();
-    QMetaEnum textModel = QMetaEnum::fromType<SAKIODeviceWidget::TextDisplayModel>();
+    textModel = QMetaEnum::fromType<SAKIODeviceWidget::TextDisplayModel>();
     for (int i = 0; i < textModel.keyCount(); i++){
         inputTextModelComboBox->addItem(QString(textModel.valueToKey(i)));
         outputTextModelComboBox->addItem(QString(textModel.valueToKey(i)));
@@ -394,29 +393,29 @@ QByteArray SAKIODeviceWidget::dataBytes()
         return data;
     }
 
-    if (inputTextMode.toUpper().compare(QString("BIN")) == 0){
+    if (inputTextMode.compare(QString(textModel.valueToKey(Bin))) == 0){
         QStringList strList = str.split(' ');
         foreach (QString str, strList){
             data.append(static_cast<int8_t>(QString(str).toInt(nullptr, 2)));
         }
-    }else if (inputTextMode.toUpper().compare(QString("OCT")) == 0){
+    }else if (inputTextMode.compare(QString(textModel.valueToKey(Oct))) == 0){
         QStringList strList = str.split(' ');
         foreach (QString str, strList){
             data.append(static_cast<int8_t>(QString(str).toInt(nullptr, 8)));
         }
-    }else if (inputTextMode.toUpper().compare(QString("DEC")) == 0){
+    }else if (inputTextMode.compare(QString(textModel.valueToKey(Dec))) == 0){
         QStringList strList = str.split(' ');
         foreach (QString str, strList){
             data.append(static_cast<int8_t>(QString(str).toInt(nullptr, 10)));
         }
-    }else if (inputTextMode.toUpper().compare(QString("HEX")) == 0){
+    }else if (inputTextMode.compare(QString(textModel.valueToKey(Hex))) == 0){
         QStringList strList = str.split(' ');
         foreach (QString str, strList){
             data.append(static_cast<int8_t>(QString(str).toInt(nullptr, 16)));
         }
-    }else if (inputTextMode.toUpper().compare(QString("ASCII")) == 0){
+    }else if (inputTextMode.compare(QString(textModel.valueToKey(Ascii))) == 0){
         data = ui->textEditInputData->toPlainText().toLatin1();
-    }else if (inputTextMode.toUpper().compare(QString("UTF8")) == 0){
+    }else if (inputTextMode.compare(QString(textModel.valueToKey(Local8bit))) == 0){
         data = ui->textEditInputData->toPlainText().toLocal8Bit();
     }else {
         Q_ASSERT_X(false, __FUNCTION__, "Unknow input mode");
@@ -433,7 +432,7 @@ void SAKIODeviceWidget::textFormatControl()
         connect(ui->textEditInputData, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
         return;
     }else {
-        if (inputTextMode.toUpper().compare(QString("BIN")) == 0){
+        if (inputTextMode.compare(QString(textModel.valueToKey(Bin))) == 0){
             QString strTemp;
             plaintext.remove(QRegExp("[^0-1]"));
             for (int i = 0; i < plaintext.length(); i++){
@@ -444,7 +443,7 @@ void SAKIODeviceWidget::textFormatControl()
             }
             ui->textEditInputData->setText(strTemp);
             ui->textEditInputData->moveCursor(QTextCursor::End);
-        }else if(inputTextMode.toUpper().compare(QString("OCT")) == 0) {
+        }else if(inputTextMode.compare(QString(textModel.valueToKey(Oct))) == 0) {
             QString strTemp;
             plaintext.remove(QRegExp("[^0-7]"));
             for (int i = 0; i < plaintext.length(); i++){
@@ -455,7 +454,7 @@ void SAKIODeviceWidget::textFormatControl()
             }
             ui->textEditInputData->setText(strTemp);
             ui->textEditInputData->moveCursor(QTextCursor::End);
-        }else if(inputTextMode.toUpper().compare(QString("DEC")) == 0) {
+        }else if(inputTextMode.compare(QString(textModel.valueToKey(Dec))) == 0) {
             QString strTemp;
             plaintext.remove(QRegExp("[^0-9]"));
             for (int i = 0; i < plaintext.length(); i++){
@@ -466,7 +465,7 @@ void SAKIODeviceWidget::textFormatControl()
             }
             ui->textEditInputData->setText(strTemp);
             ui->textEditInputData->moveCursor(QTextCursor::End);
-        }else if(inputTextMode.toUpper().compare(QString("HEX")) == 0) {
+        }else if(inputTextMode.compare(QString(textModel.valueToKey(Hex))) == 0) {
             QString strTemp;
             plaintext.remove(QRegExp("[^0-9a-fA-F]"));
             for (int i = 0; i < plaintext.length(); i++){
@@ -477,11 +476,11 @@ void SAKIODeviceWidget::textFormatControl()
             }
             ui->textEditInputData->setText(strTemp.toUpper());
             ui->textEditInputData->moveCursor(QTextCursor::End);
-        }else if(inputTextMode.toUpper().compare(QString("ASCII")) == 0) {
+        }else if(inputTextMode.compare(QString(textModel.valueToKey(Ascii))) == 0) {
             plaintext.remove(QRegExp("[^\0u00-\u007f ]"));
             ui->textEditInputData->setText(plaintext);
             ui->textEditInputData->moveCursor(QTextCursor::End);
-        }else if(inputTextMode.toUpper().compare(QString("UTF8")) == 0) {
+        }else if(inputTextMode.compare(QString(textModel.valueToKey(Local8bit))) == 0) {
             /// nothing to do
         }else {
             Q_ASSERT_X(false, __FUNCTION__, "Unknow output mode");
@@ -520,25 +519,25 @@ void SAKIODeviceWidget::bytesRead(QByteArray data)
     }
 
     outputTextMode = ui->comboBoxOutputMode->currentText();
-    if (outputTextMode.toUpper().compare(QString("BIN")) == 0){
+    if (outputTextMode.compare(QString(textModel.valueToKey(Bin))) == 0){
         for (int i = 0; i < data.length(); i++){
             str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(data.at(i)), 2), 8, '0'));
         }
-    }else if (outputTextMode.toUpper().compare(QString("OCT")) == 0){
+    }else if (outputTextMode.compare(QString(textModel.valueToKey(Oct))) == 0){
         for (int i = 0; i < data.length(); i++){
             str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(data.at(i)), 8), 3, '0'));
         }
-    }else if (outputTextMode.toUpper().compare(QString("DEC")) == 0){
+    }else if (outputTextMode.compare(QString(textModel.valueToKey(Dec))) == 0){
         for (int i = 0; i < data.length(); i++){
             str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(data.at(i)), 10)));
         }
-    }else if (outputTextMode.toUpper().compare(QString("HEX")) == 0){
+    }else if (outputTextMode.compare(QString(textModel.valueToKey(Hex))) == 0){
         for (int i = 0; i < data.length(); i++){
             str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(data.at(i)), 16), 2, '0'));
         }
-    }else if (outputTextMode.toUpper().compare(QString("ASCII")) == 0){
+    }else if (outputTextMode.compare(QString(textModel.valueToKey(Ascii))) == 0){
         str.append(QString(data));
-    }else if (outputTextMode.toUpper().compare(QString("UTF8")) == 0){
+    }else if (outputTextMode.compare(QString(textModel.valueToKey(Local8bit))) == 0){
         str.append(QString(data));
     }else {
         Q_ASSERT_X(false, __FUNCTION__, "Unknow output mode");
@@ -621,6 +620,11 @@ void SAKIODeviceWidget::readOutputMode()
     QString option = QString("OutputMode");
     QString value = readSetting(option);
 
+    /// 默认使用Ascii输入
+    if (value.isEmpty()){
+        value = QString(textModel.valueToKey(Ascii));
+    }
+
     ui->comboBoxOutputMode->setCurrentText(value);
 }
 
@@ -635,6 +639,12 @@ void SAKIODeviceWidget::readInputMode()
 {
     QString option = QString("InputMode");
     QString value = readSetting(option);
+
+    /// 默认使用Ascii输入
+    if (value.isEmpty()){
+        value = QString(textModel.valueToKey(Ascii));
+    }
+
     inputTextMode = value;
     textFormatControl();
 
