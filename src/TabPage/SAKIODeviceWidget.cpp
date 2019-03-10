@@ -555,7 +555,10 @@ void SAKIODeviceWidget::refreshOutputData(QByteArray &data, bool isReceivedData)
     }
 
     QString str;
-    str.append("[");
+    if (!ui->checkBoxOutputReceiveDataOnly->isChecked()){
+        str.append("[");
+    }
+
     if (ui->checkBoxOutputDate->isChecked()){
         str.append(QDate::currentDate().toString("yyyy/MM/dd "));
         str = QString("<font color=silver>%1</font>").arg(str);
@@ -570,13 +573,14 @@ void SAKIODeviceWidget::refreshOutputData(QByteArray &data, bool isReceivedData)
         str = QString("<font color=silver>%1</font>").arg(str);
     }
 
-    if (isReceivedData){
-        str.append("<font color=blue>Rx</font>");
-    }else {
-        str.append("<font color=purple>Tx</font>");
+    if (!ui->checkBoxOutputReceiveDataOnly->isChecked()){
+        if (isReceivedData){
+            str.append("<font color=blue>Rx</font>");
+        }else {
+            str.append("<font color=purple>Tx</font>");
+        }
+        str.append("<font color=silver>] </font>");
     }
-    str.append("<font color=silver>] </font>");
-
 
     outputTextMode = ui->comboBoxOutputMode->currentText();
     if (outputTextMode.compare(QString(textModel.valueToKey(Bin))) == 0){
@@ -604,6 +608,10 @@ void SAKIODeviceWidget::refreshOutputData(QByteArray &data, bool isReceivedData)
     }
 
     if (ui->checkBoxOutputReceiveDataOnly->isChecked()){
+        if (!isReceivedData){
+            return;
+        }
+
         /**
          * 以下这种追加文本的方式存在问题，在文本较多，追加频繁时，界面卡顿。
          **/
