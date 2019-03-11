@@ -20,6 +20,8 @@
 
 class SAKVersion;
 class UpdateManager;
+class MoreInformation;
+
 namespace Ui {
 class MainWindow;
 }
@@ -47,6 +49,7 @@ private:
     QMenu* toolsMenu            = nullptr;
     SAKVersion* versionDialog   = nullptr;
     UpdateManager* updateManager= nullptr;
+    MoreInformation* moreInformation = nullptr;
 
     static const char* appStyleKey;
     const char* appStylesheetKey = "Universal/appStylesheet";

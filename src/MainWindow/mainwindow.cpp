@@ -16,6 +16,7 @@
 #include "UpdateManager.h"
 #include "CRCCalculator.h"
 #include "SAKApplication.h"
+#include "MoreInformation.h"
 
 #ifndef SAK_NO_SERIALPORT_ASSISTANT
 #include "SerialportSAKIODeviceWidget.h"
@@ -32,6 +33,7 @@ MainWindow::MainWindow(QWidget *parent)
     ,mpTabWidget(new QTabWidget)
     ,ui(new Ui::MainWindow)
     ,versionDialog(new SAKVersion)
+    ,moreInformation(new MoreInformation)
 {
     ui->setupUi(this);
     updateManager = new UpdateManager(QUrl(configureFile), SAKVersion::instance()->getVersion());
@@ -155,6 +157,10 @@ void MainWindow::InitMenu()
     QAction *pUpdateAction = new QAction(tr("检查更新"));
     pHelpMenu->addAction(pUpdateAction);
     connect(pUpdateAction, SIGNAL(triggered(bool)), updateManager, SLOT(checkForUpdate()));
+
+    QAction *pMoreInformation = new QAction(tr("更多信息"));
+    pHelpMenu->addAction(pMoreInformation);
+    connect(pMoreInformation, SIGNAL(triggered(bool)), moreInformation, SLOT(show()));
 }
 
 void MainWindow::About()
