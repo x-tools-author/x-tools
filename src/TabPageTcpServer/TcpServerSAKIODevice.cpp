@@ -29,6 +29,7 @@ void TcpServerSAKIODevice::readBytes()
     if ((currentTcpClient == nullptr) || (currentTcpClient == nullptr)){
         emit errorStr(UI_STR_DEVICE_IS_NULL);
     }else {
+        while (currentTcpClient->waitForReadyRead(readDelayTime()));
         QByteArray data;
         data = currentTcpClient->readAll();
         emit bytesRead(data);
@@ -40,6 +41,7 @@ void TcpServerSAKIODevice::writeBytes(QByteArray data)
     if ((currentTcpClient == nullptr) || (currentTcpClient == nullptr)){
         emit errorStr(UI_STR_DEVICE_IS_NULL);
     }else {
+        while(currentTcpClient->waitForBytesWritten(writeDelayTime()));
         qint64 ret = currentTcpClient->write(data);
         if (ret == -1){
             emit errorStr(currentTcpClient->errorString());

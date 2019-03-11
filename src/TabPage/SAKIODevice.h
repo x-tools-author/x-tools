@@ -22,6 +22,11 @@ public:
     virtual QString errorString(){return "Unknow device";}
 
     QString deviceName(){return sakDeviceNmae;}
+
+    int readDelayTime(){return _readDelayTime;}
+    int writeDelayTime(){return _writeDelayTime;}
+    void setReadDelayTime(int t){t < 5 ? _readDelayTime = 5 : _readDelayTime = t;}
+    void setWriteDelayTime(int t){t < 5 ? _writeDelayTime = 5 : _writeDelayTime = t;}
 public slots:
     virtual void writeBytes(QByteArray data){Q_UNUSED(data);}
     virtual void open(QString serverAddress, QString serverPort){Q_UNUSED(serverAddress);Q_UNUSED(serverPort);}
@@ -31,6 +36,9 @@ public slots:
 
 protected:
     virtual void run(){}
+
+    int _readDelayTime = 5;
+    int _writeDelayTime = 5;
 private:
     /// SAKIODeviceSerialport、TcpClientSAKIODevice、TcpServerSAKIODevice、UdpSAKIODevice
     QString sakDeviceNmae;

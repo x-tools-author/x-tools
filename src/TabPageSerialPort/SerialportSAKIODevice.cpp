@@ -27,6 +27,7 @@ SerialportSAKIODevice::~SerialportSAKIODevice()
 
 QByteArray SerialportSAKIODevice::ReadAll()
 {
+    while (mpSerialPort->waitForReadyRead(readDelayTime()));
     QByteArray data = mpSerialPort->readAll();
     emit bytesRead(data);
     return data;
@@ -34,6 +35,7 @@ QByteArray SerialportSAKIODevice::ReadAll()
 
 void SerialportSAKIODevice::writeBytes(QByteArray data)
 {
+    while (mpSerialPort->waitForBytesWritten(writeDelayTime()));
     qint64 ret = mpSerialPort->write(data);
     if (ret == -1){
         qWarning() << "Write data failed:" << mpSerialPort->errorString();

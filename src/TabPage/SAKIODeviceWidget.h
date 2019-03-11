@@ -23,6 +23,7 @@
 #include "SAKIODevice.h"
 #include "SAKIODeviceControler.h"
 #include "AutoResponseSettingPanel.h"
+#include "RWParameter.h"
 
 class SAKHighlighterSettingPanel;
 
@@ -76,6 +77,9 @@ private:
     QComboBox*                  outputTextModelComboBox     = nullptr;
 
     QMetaEnum                   textModel;
+
+    QPushButton*                rwParameterSettingButton    = nullptr;
+    RWParameter                 rwParameterSettingDialog;
     ///----------------------------------------------------------------
     void initUI();
     QByteArray dataBytes();

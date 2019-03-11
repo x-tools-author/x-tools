@@ -40,6 +40,8 @@ SAKIODeviceWidget::SAKIODeviceWidget(SAKIODevice *_device, SAKIODeviceControler 
     inputTextModelComboBox = ui->comboBoxInputMode;
     outputTextModelComboBox = ui->comboBoxOutputMode;
 
+    rwParameterSettingButton = ui->pushButtonRWParameter;
+
 
     /// 初始化输入输出模式
     inputTextModelComboBox->clear();
@@ -215,6 +217,11 @@ void SAKIODeviceWidget::Connect()
 
     /// 高亮显示设置面板
     connect(highlighterSettingButton, &QPushButton::clicked, highlighterSettingPanel, &SAKHighlighterSettingPanel::show);
+
+    /// 显示读写参数设置窗口、设置参数
+    connect(rwParameterSettingButton, &QPushButton::clicked, &rwParameterSettingDialog, &RWParameter::show);
+    connect(&rwParameterSettingDialog, &RWParameter::readDelayTimeChanged, device, &SAKIODevice::setReadDelayTime);
+    connect(&rwParameterSettingDialog, &RWParameter::writeDelayTimeChanged, device, &SAKIODevice::setWriteDelayTime);
 }
 
 void SAKIODeviceWidget::afterDeviceOpen()

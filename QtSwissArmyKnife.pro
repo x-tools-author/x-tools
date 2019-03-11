@@ -38,6 +38,7 @@ SOURCES += \
     src/TabPage/SAKHighlighter.cpp \
     src/TabPage/SAKHighlighterSettingPanel.cpp \
     src/TabPage/SAKHighlighterLabel.cpp \
+    src/TabPage/RWParameter.cpp \
     src/mainwindow/SAKVersion.cpp \
     src/mainwindow/MoreInformation.cpp
 
@@ -52,6 +53,7 @@ HEADERS += \
     src/TabPage/SAKHighlighter.h \
     src/TabPage/SAKHighlighterSettingPanel.h \
     src/TabPage/SAKHighlighterLabel.h \
+    src/TabPage/RWParameter.h \
     src/mainwindow/SAKVersion.h \
     src/mainwindow/MoreInformation.h
 
@@ -62,6 +64,7 @@ FORMS += \
     src/TabPage/AutoResponseSettingPanel.ui \
     src/TabPage/SAKHighlighterSettingPanel.ui \
     src/TabPage/SAKHighlighterLabel.ui \
+    src/TabPage/RWParameter.ui \
     src/mainwindow/SAKVersion.ui \
     src/mainwindow/MoreInformation.ui
 
