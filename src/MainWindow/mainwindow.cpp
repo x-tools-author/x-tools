@@ -43,7 +43,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->centralWidget->setLayout(layout);
     setWindowTitle(tr("瑞士军刀--开发调试工具集")
                    + " v" + versionDialog->getVersion()
-                   + QString(" (QQ交流群%1 )").arg(versionDialog->getQQNum()));
+                   + QString(" (QQ交流群%1 )").arg(versionDialog->getQQNum())
+                   + QString(" 作者邮箱 %1").arg(versionDialog->getEmail()));
 
     this->resize(800, 600);
     this->setMinimumWidth(1024);
