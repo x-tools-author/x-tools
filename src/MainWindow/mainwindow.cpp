@@ -247,7 +247,7 @@ void MainWindow::initSkinMenu(QMenu *optionMenu)
     QSettings settings;
     QString value = settings.value(appStylesheetKey).toString();
     if (value.isEmpty()){
-        value = QString(skins.valueToKey(QtDefault));
+        value = QString(skins.valueToKey(LightBlue));
     }
 
     QMenu *stylesheetMenu = new QMenu("皮肤");
