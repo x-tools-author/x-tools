@@ -29,7 +29,7 @@ public slots:
     void open(QString portName, QString baudRate, QString dataBits, QString stopBits, QString parity) override;
     void writeBytes(QByteArray data) override;
 
-    QByteArray ReadAll();
+    void ReadAll();
 protected:
     void run() override;
 private:

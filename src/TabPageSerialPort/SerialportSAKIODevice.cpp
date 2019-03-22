@@ -25,12 +25,16 @@ SerialportSAKIODevice::~SerialportSAKIODevice()
 
 }
 
-QByteArray SerialportSAKIODevice::ReadAll()
+void SerialportSAKIODevice::ReadAll()
 {
     while (mpSerialPort->waitForReadyRead(readDelayTime()));
     QByteArray data = mpSerialPort->readAll();
+
+    if (data.isEmpty()){
+        return;
+    }
+
     emit bytesRead(data);
-    return data;
 }
 
 void SerialportSAKIODevice::writeBytes(QByteArray data)
