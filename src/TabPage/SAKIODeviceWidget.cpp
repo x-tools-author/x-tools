@@ -1,11 +1,11 @@
-﻿/*******************************************************************************
-* The file is encoding with utf-8 (with BOM)
-*
-* I write the comment with English, it's not because that I'm good at English,
-* but for "installing B".
-*
-* Copyright (C) 2018-2019 wuhai persionnal. All rights reserved.
-*******************************************************************************/
+﻿/*
+ * The file is encoding with utf-8 (with BOM)
+ *
+ * I write the comment with English, it's not because that I'm good at English,
+ * but for "installing B".
+ *
+ * Copyright (C) 2018-2019 woohii persionnal. No rights reserved.
+ */
 #ifdef _MSC_VER
 #pragma execution_character_set("utf-8")
 #endif
@@ -19,8 +19,8 @@
 #include <QSettings>
 #include <QKeyEvent>
 
-#include "SAKIODeviceWidget.h"
-#include "SAKHighlighterSettingPanel.h"
+#include "SAKIODeviceWidget.hpp"
+#include "SAKHighlighterSettingPanel.hpp"
 
 #include "ui_SAKIODeviceWidget.h"
 
@@ -55,7 +55,6 @@ SAKIODeviceWidget::SAKIODeviceWidget(SAKIODevice *_device, SAKIODeviceControler 
     /// 初始化数据成员
     highlighterSettingButton = ui->pushButtonHighlighting;
     highlighterSettingPanel = new SAKHighlighterSettingPanel(ui->textBrowserOutputData->document());
-    highlighterSettingPanel->inputLineEditInstance()->installEventFilter(this);
 
     Connect();
     setCustomControler(controler);
@@ -794,22 +793,4 @@ void SAKIODeviceWidget::writeSetting(QString &option, QString &value)
     QString key = device->deviceName() + "/" + option;
 
     settings.setValue(key, value);
-}
-
-bool SAKIODeviceWidget::eventFilter(QObject *o, QEvent *e)
-{
-    /// 回车添加高亮标签
-    if (o == qobject_cast<QObject*>(highlighterSettingPanel->inputLineEditInstance())){
-        if (e->type() == QEvent::KeyPress){
-            QKeyEvent* event = dynamic_cast<QKeyEvent*>(e);
-            if ((event->key() == Qt::Key_Enter) || event->key() == Qt::Key_Return){
-                QLineEdit* lineEditTemp = highlighterSettingPanel->inputLineEditInstance();
-                highlighterSettingPanel->addLabel(lineEditTemp->text().trimmed());
-                lineEditTemp->clear();
-                return true;
-            }
-        }
-    }
-
-    return QWidget::eventFilter(o, e);
 }

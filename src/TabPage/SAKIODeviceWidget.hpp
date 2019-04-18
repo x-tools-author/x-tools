@@ -1,13 +1,13 @@
-﻿/*******************************************************************************
-* The file is encoding with utf-8 (with BOM)
-*
-* I write the comment with English, it's not because that I'm good at English,
-* but for "installing B".
-*
-* Copyright (C) 2018-2019 wuhai persionnal. All rights reserved.
-*******************************************************************************/
-#ifndef SAKIODEVICEWIDGET_H
-#define SAKIODEVICEWIDGET_H
+﻿/*
+ * The file is encoding with utf-8 (with BOM)
+ *
+ * I write the comment with English, it's not because that I'm good at English,
+ * but for "installing B".
+ *
+ * Copyright (C) 2018-2019 woohii persionnal. No rights reserved.
+ */
+#ifndef SAKIODEVICEWIDGET_HPP
+#define SAKIODEVICEWIDGET_HPP
 
 #include <QWidget>
 #include <QDateTime>
@@ -53,8 +53,6 @@ public:
         Local8bit
     };
     Q_ENUM(TextDisplayModel)
-protected:
-     bool eventFilter(QObject *o, QEvent *e);
 private:
     SAKIODevice                 *device                     = nullptr;
     SAKIODeviceControler        *controler                  = nullptr;

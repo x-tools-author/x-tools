@@ -35,9 +35,8 @@ SOURCES += \
     src/TabPage/SAKIODeviceControler.cpp \
     src/TabPage/AutoResponseItem.cpp \
     src/TabPage/AutoResponseSettingPanel.cpp \
-    src/TabPage/SAKHighlighter.cpp \
-    src/TabPage/SAKHighlighterSettingPanel.cpp \
-    src/TabPage/SAKHighlighterLabel.cpp \
+    src/TabPage/highlighter/SAKHighlighter.cpp \
+    src/TabPage/highlighter/SAKHighlighterSettingPanel.cpp \
     src/TabPage/RWParameter.cpp \
     src/mainwindow/SAKVersion.cpp \
     src/mainwindow/MoreInformation.cpp
@@ -45,14 +44,13 @@ SOURCES += \
 HEADERS += \
     src/mainwindow/mainwindow.h \
     src/SAKApplication.h \
-    src/TabPage/SAKIODeviceWidget.h \
+    src/TabPage/SAKIODeviceWidget.hpp \
     src/TabPage/SAKIODevice.h \
     src/TabPage/SAKIODeviceControler.h \
     src/TabPage/AutoResponseItem.h \
     src/TabPage/AutoResponseSettingPanel.h \
-    src/TabPage/SAKHighlighter.h \
-    src/TabPage/SAKHighlighterSettingPanel.h \
-    src/TabPage/SAKHighlighterLabel.h \
+    src/TabPage/highlighter/SAKHighlighter.hpp \
+    src/TabPage/highlighter/SAKHighlighterSettingPanel.hpp \
     src/TabPage/RWParameter.h \
     src/mainwindow/SAKVersion.h \
     src/mainwindow/MoreInformation.h
@@ -62,8 +60,7 @@ FORMS += \
     src/TabPage/SAKIODeviceWidget.ui \
     src/TabPage/AutoResponseItem.ui \
     src/TabPage/AutoResponseSettingPanel.ui \
-    src/TabPage/SAKHighlighterSettingPanel.ui \
-    src/TabPage/SAKHighlighterLabel.ui \
+    src/TabPage/highlighter/SAKHighlighterSettingPanel.ui \
     src/TabPage/RWParameter.ui \
     src/mainwindow/SAKVersion.ui \
     src/mainwindow/MoreInformation.ui
@@ -76,7 +73,8 @@ INCLUDEPATH += \
     src/TcpClient \
     src/TcpServer \
     src/console \
-    src/TabPage
+    src/TabPage \
+    src/TabPage/highlighter
 
 RESOURCES += \
     resource/images.qrc \
