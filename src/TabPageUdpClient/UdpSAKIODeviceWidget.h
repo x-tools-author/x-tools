@@ -9,7 +9,7 @@
 #ifndef UDPSAKIODEVICEWIDGET_H
 #define UDPSAKIODEVICEWIDGET_H
 
-#include "SAKIODeviceWidget.h"
+#include "SAKIODeviceWidget.hpp"
 #include "UdpSAKIODevice.h"
 #include "UdpSAKIODeviceControler.h"
 

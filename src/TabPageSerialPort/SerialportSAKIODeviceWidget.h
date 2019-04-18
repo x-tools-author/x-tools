@@ -9,7 +9,7 @@
 #ifndef SERIALPORTSAKIODEVICEWIDGET_H
 #define SERIALPORTSAKIODEVICEWIDGET_H
 
-#include "SAKIODeviceWidget.h"
+#include "SAKIODeviceWidget.hpp"
 #include "SerialportSAKIODevice.h"
 #include "SerialportSAKIODeviceControler.h"
 

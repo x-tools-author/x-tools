@@ -11,7 +11,7 @@
 
 #include "TcpSAKIODevice.h"
 #include "TcpSAKIODeviceControler.h"
-#include "SAKIODeviceWidget.h"
+#include "SAKIODeviceWidget.hpp"
 
 class TcpSAKIODeviceWidget:public SAKIODeviceWidget
 {
