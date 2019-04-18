@@ -30,38 +30,38 @@ SOURCES += \
     src/main.cpp \
     src/mainwindow/mainwindow.cpp \
     src/SAKApplication.cpp \
-    src/TabPage/SAKIODeviceWidget.cpp \
-    src/TabPage/SAKIODevice.cpp \
-    src/TabPage/SAKIODeviceControler.cpp \
-    src/TabPage/AutoResponseItem.cpp \
-    src/TabPage/AutoResponseSettingPanel.cpp \
-    src/TabPage/highlighter/SAKHighlighter.cpp \
-    src/TabPage/highlighter/SAKHighlighterSettingPanel.cpp \
-    src/TabPage/RWParameter.cpp \
+    src/tabpage/SAKIODeviceWidget.cpp \
+    src/tabpage/SAKIODevice.cpp \
+    src/tabpage/SAKIODeviceControler.cpp \
+    src/tabpage/AutoResponseItem.cpp \
+    src/tabpage/AutoResponseSettingPanel.cpp \
+    src/tabpage/highlighter/SAKHighlighter.cpp \
+    src/tabpage/highlighter/SAKHighlighterSettingPanel.cpp \
+    src/tabpage/RWParameter.cpp \
     src/mainwindow/SAKVersion.cpp \
     src/mainwindow/MoreInformation.cpp
 
 HEADERS += \
     src/mainwindow/mainwindow.h \
     src/SAKApplication.h \
-    src/TabPage/SAKIODeviceWidget.hpp \
-    src/TabPage/SAKIODevice.h \
-    src/TabPage/SAKIODeviceControler.h \
-    src/TabPage/AutoResponseItem.h \
-    src/TabPage/AutoResponseSettingPanel.h \
-    src/TabPage/highlighter/SAKHighlighter.hpp \
-    src/TabPage/highlighter/SAKHighlighterSettingPanel.hpp \
-    src/TabPage/RWParameter.h \
+    src/tabpage/SAKIODeviceWidget.hpp \
+    src/tabpage/SAKIODevice.h \
+    src/tabpage/SAKIODeviceControler.h \
+    src/tabpage/AutoResponseItem.h \
+    src/tabpage/AutoResponseSettingPanel.h \
+    src/tabpage/highlighter/SAKHighlighter.hpp \
+    src/tabpage/highlighter/SAKHighlighterSettingPanel.hpp \
+    src/tabpage/RWParameter.h \
     src/mainwindow/SAKVersion.h \
     src/mainwindow/MoreInformation.h
 
 FORMS += \
     src/mainwindow/mainwindow.ui \
-    src/TabPage/SAKIODeviceWidget.ui \
-    src/TabPage/AutoResponseItem.ui \
-    src/TabPage/AutoResponseSettingPanel.ui \
-    src/TabPage/highlighter/SAKHighlighterSettingPanel.ui \
-    src/TabPage/RWParameter.ui \
+    src/tabpage/SAKIODeviceWidget.ui \
+    src/tabpage/AutoResponseItem.ui \
+    src/tabpage/AutoResponseSettingPanel.ui \
+    src/tabpage/highlighter/SAKHighlighterSettingPanel.ui \
+    src/tabpage/RWParameter.ui \
     src/mainwindow/SAKVersion.ui \
     src/mainwindow/MoreInformation.ui
 
@@ -73,8 +73,8 @@ INCLUDEPATH += \
     src/TcpClient \
     src/TcpServer \
     src/console \
-    src/TabPage \
-    src/TabPage/highlighter
+    src/tabpage \
+    src/tabpage/highlighter
 
 RESOURCES += \
     resource/images.qrc \
