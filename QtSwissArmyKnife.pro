@@ -77,7 +77,7 @@ INCLUDEPATH += \
     src/tabpage/highlighter
 
 RESOURCES += \
-    resource/images.qrc \
+    SAKResources.qrc \
     stylesheet/qss.qrc
 
 win32{
