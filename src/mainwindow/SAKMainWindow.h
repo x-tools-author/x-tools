@@ -23,7 +23,7 @@ class UpdateManager;
 class MoreInformation;
 
 namespace Ui {
-class MainWindow;
+class SAKMainWindow;
 }
 
 class SAKMainWindow : public QMainWindow
@@ -45,7 +45,7 @@ public:
     static const char* appStyle(){return appStyleKey;}
 private:
     QTabWidget* mpTabWidget     = nullptr;
-    Ui::MainWindow* ui          = nullptr;
+    Ui::SAKMainWindow* ui       = nullptr;
     QMenu* toolsMenu            = nullptr;
     SAKVersion* versionDialog   = nullptr;
     UpdateManager* updateManager= nullptr;

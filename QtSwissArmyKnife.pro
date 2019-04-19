@@ -56,7 +56,7 @@ HEADERS += \
     src/mainwindow/MoreInformation.h
 
 FORMS += \
-    src/mainwindow/MainWindow.ui \
+    src/mainwindow/SAKMainWindow.ui \
     src/tabpage/SAKIODeviceWidget.ui \
     src/tabpage/AutoResponseItem.ui \
     src/tabpage/AutoResponseSettingPanel.ui \

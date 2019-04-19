@@ -5,7 +5,7 @@
 #include <QFile>
 
 #include "SAKMainWindow.h"
-#include "ui_mainwindow.h"
+#include "ui_SAKMainWindow.h"
 
 #include "UdpSAKIODeviceWidget.h"
 #include "TcpSAKIODeviceWidget.h"
@@ -31,7 +31,7 @@ const char* SAKMainWindow::appStyleKey = "Universal/appStyle";
 SAKMainWindow::SAKMainWindow(QWidget *parent)
     :QMainWindow(parent)
     ,mpTabWidget(new QTabWidget)
-    ,ui(new Ui::MainWindow)
+    ,ui(new Ui::SAKMainWindow)
     ,versionDialog(new SAKVersion)
     ,moreInformation(new MoreInformation)
 {
