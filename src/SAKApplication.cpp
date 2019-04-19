@@ -24,13 +24,13 @@ SAKApplication::SAKApplication(int argc, char **argv):
     setApplicationName(QString("QtSwissArmyKnife"));
 #if 1
     QSettings settings;
-    QString style = settings.value(QString(MainWindow::appStyle())).toString();
+    QString style = settings.value(QString(SAKMainWindow::appStyle())).toString();
     if (!style.isEmpty()){
         QApplication::setStyle(QStyleFactory::create(style));
     }
 #endif
 
-    mpMainWindow = new MainWindow;
+    mpMainWindow = new SAKMainWindow;
     mpMainWindow->show();
 }
 

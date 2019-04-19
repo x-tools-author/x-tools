@@ -12,7 +12,7 @@
 #include <QApplication>
 #include <QStyleFactory>
 
-#include "MainWindow.h"
+#include "SAKMainWindow.h"
 
 class SAKApplication:public QApplication
 {
@@ -21,7 +21,7 @@ public:
     SAKApplication(int argc, char **argv);
     ~SAKApplication();
 private:
-    MainWindow *mpMainWindow    = nullptr;
+    SAKMainWindow *mpMainWindow    = nullptr;
 };
 
 #endif

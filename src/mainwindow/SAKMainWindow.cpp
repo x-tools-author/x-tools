@@ -4,7 +4,7 @@
 
 #include <QFile>
 
-#include "mainwindow.h"
+#include "SAKMainWindow.h"
 #include "ui_mainwindow.h"
 
 #include "UdpSAKIODeviceWidget.h"
@@ -27,8 +27,8 @@
 #include <QMessageBox>
 
 const static char* configureFile = "http://wuhai.pro/software/QtSwissArmyKnife/update.json";
-const char* MainWindow::appStyleKey = "Universal/appStyle";
-MainWindow::MainWindow(QWidget *parent)
+const char* SAKMainWindow::appStyleKey = "Universal/appStyle";
+SAKMainWindow::SAKMainWindow(QWidget *parent)
     :QMainWindow(parent)
     ,mpTabWidget(new QTabWidget)
     ,ui(new Ui::MainWindow)
@@ -54,12 +54,12 @@ MainWindow::MainWindow(QWidget *parent)
     AddTool();
 }
 
-MainWindow::~MainWindow()
+SAKMainWindow::~SAKMainWindow()
 {
     delete ui;
 }
 
-void MainWindow::AddTab()
+void SAKMainWindow::AddTab()
 {
 #ifndef SAK_NO_SERIALPORT_ASSISTANT
     /// 串口页(不支持winrt、树莓派...)
@@ -84,14 +84,14 @@ void MainWindow::AddTab()
     udpDevice->start();
 }
 
-void MainWindow::AddTool()
+void SAKMainWindow::AddTool()
 {
     addTool(tr("域名转IP"),        new ToolsNsLookup);
     addTool(tr("公网IP获取工具"),   new GetPublicIPWidget);
     addTool(tr("CRC计算器"),       new CRCCalculator);
 }
 
-void MainWindow::InitMenu()
+void SAKMainWindow::InitMenu()
 {
     /// 文件菜单
     QMenu *pFileMenu = new QMenu(tr("文件"));
@@ -164,18 +164,18 @@ void MainWindow::InitMenu()
     connect(pMoreInformation, SIGNAL(triggered(bool)), moreInformation, SLOT(show()));
 }
 
-void MainWindow::About()
+void SAKMainWindow::About()
 {
     versionDialog->show();
     versionDialog->activateWindow();
 }
 
-void MainWindow::AboutQt()
+void SAKMainWindow::AboutQt()
 {
     QMessageBox::aboutQt(this, tr("关于Qt"));
 }
 
-void MainWindow::styleActionTriggered()
+void SAKMainWindow::styleActionTriggered()
 {
     QSettings setting;
     setting.setValue(QString(appStyleKey), sender()->objectName());
@@ -199,14 +199,14 @@ void MainWindow::styleActionTriggered()
 #endif
 }
 
-void MainWindow::addTool(QString toolName, QWidget *toolWidget)
+void SAKMainWindow::addTool(QString toolName, QWidget *toolWidget)
 {
     QAction *action = new QAction(toolName);
     toolsMenu->addAction(action);
     connect(action, SIGNAL(triggered(bool)), toolWidget, SLOT(show()));
 }
 
-void MainWindow::changeStylesheet()
+void SAKMainWindow::changeStylesheet()
 {
     /*
      * 样式文件来自互联网，并非本软件作者编写，如有侵权，请联系软件作者删除。
@@ -241,7 +241,7 @@ void MainWindow::changeStylesheet()
     }
 }
 
-void MainWindow::initSkinMenu(QMenu *optionMenu)
+void SAKMainWindow::initSkinMenu(QMenu *optionMenu)
 {
     skins = QMetaEnum::fromType<SAKStyleSheet>();
     QSettings settings;
@@ -261,7 +261,7 @@ void MainWindow::initSkinMenu(QMenu *optionMenu)
         stylesheetMenu->addAction(action);
         stylesheetActionGroup->addAction(action);
 
-        connect(action, &QAction::triggered, this, &MainWindow::changeStylesheet);
+        connect(action, &QAction::triggered, this, &SAKMainWindow::changeStylesheet);
         if (QString(skins.valueToKey(i)).compare(value) == 0){
             action->setChecked(true);
             emit action->triggered();

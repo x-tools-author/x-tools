@@ -26,13 +26,13 @@ namespace Ui {
 class MainWindow;
 }
 
-class MainWindow : public QMainWindow
+class SAKMainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+    explicit SAKMainWindow(QWidget *parent = nullptr);
+    ~SAKMainWindow();
 
     enum SAKStyleSheet{
         QtDefault,

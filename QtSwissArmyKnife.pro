@@ -28,8 +28,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     src/main.cpp \
-    src/mainwindow/MainWindow.cpp \
     src/SAKApplication.cpp \
+    src/mainwindow/SAKMainWindow.cpp \
     src/tabpage/SAKIODeviceWidget.cpp \
     src/tabpage/SAKIODevice.cpp \
     src/tabpage/SAKIODeviceControler.cpp \
@@ -42,8 +42,8 @@ SOURCES += \
     src/mainwindow/MoreInformation.cpp
 
 HEADERS += \
-    src/mainwindow/MainWindow.h \
     src/SAKApplication.h \
+    src/mainwindow/SAKMainWindow.h \
     src/tabpage/SAKIODeviceWidget.hpp \
     src/tabpage/SAKIODevice.h \
     src/tabpage/SAKIODeviceControler.h \
