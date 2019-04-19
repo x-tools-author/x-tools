@@ -81,7 +81,7 @@ RESOURCES += \
     stylesheet/qss.qrc
 
 win32{
-    RC_ICONS = resource/icon/window.ico
+    RC_ICONS = window.ico
 }
 
 # 静态编译版本不需要部署发布（静态编译时，禁用下面的）
