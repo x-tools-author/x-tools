@@ -38,8 +38,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     updateManager = new UpdateManager(QUrl(configureFile), SAKVersion::instance()->getVersion());
 
-    mpTabWidget->setTabsClosable(true);
-
     QHBoxLayout *layout = new QHBoxLayout;
     layout->addWidget(mpTabWidget);
     ui->centralWidget->setLayout(layout);
