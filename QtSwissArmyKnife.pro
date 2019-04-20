@@ -27,6 +27,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    src/SAKGlobal.cpp \
     src/main.cpp \
     src/SAKApplication.cpp \
     src/mainwindow/SAKMainWindow.cpp \
@@ -43,6 +44,7 @@ SOURCES += \
 
 HEADERS += \
     src/SAKApplication.h \
+    src/SAKGlobal.hpp \
     src/mainwindow/SAKMainWindow.h \
     src/tabpage/SAKIODeviceWidget.hpp \
     src/tabpage/SAKIODevice.h \
