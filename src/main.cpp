@@ -15,12 +15,17 @@
 #include <stdlib.h>
 #include <QSettings>
 
+#include "SAKConsole.hpp"
+#include "SAKGlobal.hpp"
+
 int main(int argc, char *argv[])
 {
-#if 0
-    qInstallMessageHandler(SAKAppMsgOutput);
+#if 1
+    qInstallMessageHandler(SAKConsole::messageRedirection);
 #endif
     SAKApplication a(argc, argv);
+
+    qInfo() << "The applincation has started, The log will be save in file:" << SAKGlobal::logFile();
 
     return a.exec();
 }

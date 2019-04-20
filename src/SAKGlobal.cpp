@@ -13,6 +13,9 @@
 #include "SAKGlobal.hpp"
 
 #include <QStandardPaths>
+#include <QFile>
+#include <QDir>
+#include <QDebug>
 
 SAKGlobal::SAKGlobal(QObject* parent)
     :QObject (parent)
@@ -23,7 +26,32 @@ SAKGlobal::SAKGlobal(QObject* parent)
 QString SAKGlobal::logFile()
 {
     QString fileName = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
+
+    QDir dir;
+    if (!dir.exists(fileName)){
+        SAKGlobal::mkMutiDir(fileName);
+    }    
+
     fileName.append("/");
-    fileName.append("SAKLog.txt");
+    fileName.append("QtSwissArmyKnife.txt");
+
     return fileName;
+}
+
+QString SAKGlobal::mkMutiDir(const QString path){
+
+    QDir dir(path);
+    if (dir.exists(path)){
+        return path;
+    }
+
+    QString parentDir = mkMutiDir(path.mid(0,path.lastIndexOf('/')));
+    QString dirname = path.mid(path.lastIndexOf('/') + 1);
+    QDir parentPath(parentDir);
+
+    if ( !dirname.isEmpty() ){
+        parentPath.mkpath(dirname);
+    }
+
+    return parentDir + "/" + dirname;
 }

@@ -11,9 +11,11 @@
 #endif
 
 #include "SAKApplication.h"
+#include "SAKMainWindow.h"
 
 #include <QDebug>
 #include <QSettings>
+#include <QTextCursor>
 
 SAKApplication::SAKApplication(int argc, char **argv):
     QApplication(argc, argv)
@@ -22,6 +24,9 @@ SAKApplication::SAKApplication(int argc, char **argv):
     setOrganizationName(QString("Qter"));
     setOrganizationDomain(QString("IT"));
     setApplicationName(QString("QtSwissArmyKnife"));
+
+    qRegisterMetaType<QTextCursor>("QTextCursor");
+
 #if 1
     QSettings settings;
     QString style = settings.value(QString(SAKMainWindow::appStyle())).toString();

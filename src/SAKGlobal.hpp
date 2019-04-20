@@ -26,6 +26,13 @@ public:
      * @return          -- 日志文件全路径
      */
     static QString logFile();
+
+    /**
+     * @brief mkMutiDir -- 递归创建指定的目录路径
+     * @param path      -- 目录路径
+     * @return          -- 已创建的路径
+     */
+    static QString mkMutiDir(const QString path);
 };
 
 #endif

@@ -17,6 +17,7 @@
 #include "CRCCalculator.h"
 #include "SAKApplication.h"
 #include "MoreInformation.h"
+#include "SAKConsole.hpp"
 
 #ifndef SAK_NO_SERIALPORT_ASSISTANT
 #include "SerialportSAKIODeviceWidget.h"
@@ -25,6 +26,8 @@
 #include <QStyleFactory>
 #include <QSettings>
 #include <QMessageBox>
+#include <QTabBar>
+#include <QSpacerItem>
 
 const static char* configureFile = "http://wuhai.pro/software/QtSwissArmyKnife/update.json";
 const char* SAKMainWindow::appStyleKey = "Universal/appStyle";
@@ -82,6 +85,9 @@ void SAKMainWindow::AddTab()
     UdpSAKIODevice *udpDevice = new UdpSAKIODevice;
     this->mpTabWidget->addTab(new UdpSAKIODeviceWidget(udpDevice, new UdpSAKIODeviceControler), tr("UDP客户端"));
     udpDevice->start();
+
+    /// 终端输出
+    this->mpTabWidget->addTab(new SAKConsole, tr("终端"));
 }
 
 void SAKMainWindow::AddTool()
