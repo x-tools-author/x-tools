@@ -25,6 +25,7 @@ SAKApplication::SAKApplication(int argc, char **argv):
     setOrganizationDomain(QString("IT"));
     setApplicationName(QString("QtSwissArmyKnife"));
 
+    /// 本工程好像并没有使用QTextCursor作为信号参数，根据Qt Creator的提示要求，添加该语句
     qRegisterMetaType<QTextCursor>("QTextCursor");
 
 #if 1
