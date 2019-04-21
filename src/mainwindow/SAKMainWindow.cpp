@@ -32,11 +32,11 @@
 const static char* configureFile = "http://wuhai.pro/software/QtSwissArmyKnife/update.json";
 const char* SAKMainWindow::appStyleKey = "Universal/appStyle";
 SAKMainWindow::SAKMainWindow(QWidget *parent)
-    :QMainWindow(parent)
-    ,mpTabWidget(new QTabWidget)
-    ,ui(new Ui::SAKMainWindow)
-    ,versionDialog(new SAKVersion)
-    ,moreInformation(new MoreInformation)
+    :QMainWindow (parent)
+    ,mpTabWidget (new QTabWidget)
+    ,ui (new Ui::SAKMainWindow)
+    ,versionDialog (new SAKVersion)
+    ,moreInformation (new MoreInformation)
 {
     ui->setupUi(this);
     updateManager = new UpdateManager(QUrl(configureFile), SAKVersion::instance()->getVersion());
@@ -102,6 +102,14 @@ void SAKMainWindow::InitMenu()
     /// 文件菜单
     QMenu *pFileMenu = new QMenu(tr("文件"));
     menuBar()->addMenu(pFileMenu);
+
+    QMenu *tabMenu = new QMenu(tr("新建页面"), this);
+    pFileMenu->addMenu(tabMenu);
+
+    QMenu *windowMenu = new QMenu(tr("新建窗口"), this);
+    pFileMenu->addMenu(windowMenu);
+
+    pFileMenu->addSeparator();
 
     QAction *pExitAction = new QAction(tr("退出"));
     pFileMenu->addAction(pExitAction);
@@ -274,3 +282,4 @@ void SAKMainWindow::initSkinMenu(QMenu *optionMenu)
         }
     }
 }
+

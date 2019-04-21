@@ -44,12 +44,12 @@ public:
 
     static const char* appStyle(){return appStyleKey;}
 private:
-    QTabWidget* mpTabWidget     = nullptr;
-    Ui::SAKMainWindow* ui       = nullptr;
-    QMenu* toolsMenu            = nullptr;
-    SAKVersion* versionDialog   = nullptr;
-    UpdateManager* updateManager= nullptr;
-    MoreInformation* moreInformation = nullptr;
+    QTabWidget* mpTabWidget             = nullptr;
+    Ui::SAKMainWindow* ui               = nullptr;
+    QMenu* toolsMenu                    = nullptr;
+    SAKVersion* versionDialog           = nullptr;
+    UpdateManager* updateManager        = nullptr;
+    MoreInformation* moreInformation    = nullptr;
 
     static const char* appStyleKey;
     const char* appStylesheetKey = "Universal/appStylesheet";
