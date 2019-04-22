@@ -55,3 +55,26 @@ QString SAKGlobal::mkMutiDir(const QString path){
 
     return parentDir + "/" + dirname;
 }
+
+QString SAKGlobal::getIODeviceTypeName(int type)
+{
+    QString name = "none";
+    switch (type) {
+    case SAKEnumIODeviceTypeUDP:
+        name = tr("UDP助手");
+        break;
+    case SAKEnumIODeviceTypeTCPClient:
+        name = tr("TCP客户端");
+        break;
+    case SAKEnumIODeviceTypeTCPServer:
+        name = tr("TCP服务器");
+        break;
+    case SAKEnumIODeviceTypeSerialport:
+        name = tr("串口助手");
+        break;
+    default:
+        break;
+    }
+
+    return name;
+}

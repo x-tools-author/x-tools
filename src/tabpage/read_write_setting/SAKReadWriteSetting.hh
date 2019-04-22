@@ -6,8 +6,8 @@
 *
 * Copyright (C) 2018-2019 wuhai persionnal. All rights reserved.
 *******************************************************************************/
-#ifndef RWPARAMETER_H
-#define RWPARAMETER_H
+#ifndef RWPARAMETER_HH
+#define RWPARAMETER_HH
 
 #include <QDialog>
 #include <QLineEdit>
@@ -16,16 +16,16 @@
 
 
 namespace Ui {
-class RWParameter;
+class SAKReadWriteSetting;
 };
 
-class RWParameter:public QDialog
+class SAKReadWriteSetting:public QDialog
 {
     Q_OBJECT
 public:
-    RWParameter(QWidget* parent = nullptr);
+    SAKReadWriteSetting(QWidget* parent = nullptr);
 private:
-    Ui::RWParameter* ui = nullptr;
+    Ui::SAKReadWriteSetting *ui = nullptr;
 
     QCheckBox* readDelayEnableCheckBox  = nullptr;
     QCheckBox* writeDelayEnableCheckBox = nullptr;

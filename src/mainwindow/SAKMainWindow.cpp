@@ -18,6 +18,7 @@
 #include "SAKApplication.h"
 #include "MoreInformation.h"
 #include "SAKConsole.hpp"
+#include "SAKGlobal.hpp"
 
 #ifndef SAK_NO_SERIALPORT_ASSISTANT
 #include "SerialportSAKIODeviceWidget.h"
@@ -28,6 +29,8 @@
 #include <QMessageBox>
 #include <QTabBar>
 #include <QSpacerItem>
+#include <QMetaEnum>
+#include <QAction>
 
 const static char* configureFile = "http://wuhai.pro/software/QtSwissArmyKnife/update.json";
 const char* SAKMainWindow::appStyleKey = "Universal/appStyle";
@@ -105,9 +108,24 @@ void SAKMainWindow::InitMenu()
 
     QMenu *tabMenu = new QMenu(tr("新建页面"), this);
     pFileMenu->addMenu(tabMenu);
+    QMetaEnum enums = QMetaEnum::fromType<SAKGlobal::SAKEnumIODeviceType>();
+    for (int i = 0; i < enums.keyCount(); i++){
+        QAction *a = new QAction(SAKGlobal::getIODeviceTypeName(i), this);
+        a->setObjectName(SAKGlobal::getIODeviceTypeName(i));
+        QVariant var = QVariant::fromValue<int>(enums.value(i));
+        connect(a, &QAction::triggered, this, &SAKMainWindow::addRemovablePage);
+        tabMenu->addAction(a);
+    }
 
     QMenu *windowMenu = new QMenu(tr("新建窗口"), this);
     pFileMenu->addMenu(windowMenu);
+    for (int i = 0; i < enums.keyCount(); i++){
+        QAction *a = new QAction(SAKGlobal::getIODeviceTypeName(i), this);
+        a->setObjectName(SAKGlobal::getIODeviceTypeName(i));
+        QVariant var = QVariant::fromValue<int>(enums.value(i));
+        connect(a, &QAction::triggered, this, &SAKMainWindow::openIODeviceWindow);
+        windowMenu->addAction(a);
+    }
 
     pFileMenu->addSeparator();
 
@@ -283,3 +301,31 @@ void SAKMainWindow::initSkinMenu(QMenu *optionMenu)
     }
 }
 
+void SAKMainWindow::addRemovablePage()
+{
+    qDebug() << sender()->objectName();
+}
+
+void SAKMainWindow::openIODeviceWindow()
+{
+#if 0
+    int type = qobject_cast<QAction*>(sender())->data().value<int>();
+
+    switch (type) {
+    case SAKGlobal::SAKEnumIODeviceTypeUDP:
+        break;
+    case SAKGlobal::SAKEnumIODeviceTypeTCPClient:
+        break;
+    case SAKGlobal::SAKEnumIODeviceTypeTCPServer:
+        break;
+#ifndef SAK_NO_SERIALPORT_ASSISTANT
+    case SAKGlobal::SAKEnumIODeviceTypeSerialport:
+        SerialportSAKIODevice *serialportDevice = new SerialportSAKIODevice;
+        SerialportSAKIODeviceWidget *widget = new SerialportSAKIODeviceWidget(serialportDevice, new SerialportSAKIODeviceControler);
+        widget->setWindowTitle(sender()->objectName());
+        widget->show();
+        break;
+#endif
+    }
+#endif
+}

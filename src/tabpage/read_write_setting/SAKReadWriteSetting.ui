@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>RWParameter</class>
- <widget class="QDialog" name="RWParameter">
+ <class>SAKReadWriteSetting</class>
+ <widget class="QDialog" name="SAKReadWriteSetting">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -252,7 +252,7 @@
   <connection>
    <sender>pushButton</sender>
    <signal>clicked()</signal>
-   <receiver>RWParameter</receiver>
+   <receiver>SAKReadWriteSetting</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">

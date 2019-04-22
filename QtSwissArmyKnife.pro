@@ -36,11 +36,11 @@ SOURCES += \
     src/tabpage/SAKIODeviceWidget.cpp \
     src/tabpage/SAKIODevice.cpp \
     src/tabpage/SAKIODeviceControler.cpp \
-    src/tabpage/AutoResponseItem.cpp \
-    src/tabpage/AutoResponseSettingPanel.cpp \
+    src/tabpage/read_write_setting/SAKReadWriteSetting.cc \
+    src/tabpage/autoresponse/SAKAutoResponseItem.cpp \
+    src/tabpage/autoresponse/SAKAutoResponseSettingPanel.cpp \
     src/tabpage/highlighter/SAKHighlighter.cpp \
     src/tabpage/highlighter/SAKHighlighterSettingPanel.cpp \
-    src/tabpage/RWParameter.cpp \
     src/mainwindow/SAKVersion.cpp \
     src/mainwindow/MoreInformation.cpp
 
@@ -53,11 +53,11 @@ HEADERS += \
     src/tabpage/SAKIODeviceWidget.hpp \
     src/tabpage/SAKIODevice.h \
     src/tabpage/SAKIODeviceControler.h \
-    src/tabpage/AutoResponseItem.h \
-    src/tabpage/AutoResponseSettingPanel.h \
+    src/tabpage/read_write_setting/SAKReadWriteSetting.hh \
+    src/tabpage/autoresponse/SAKAutoResponseItem.hpp \
+    src/tabpage/autoresponse/SAKAutoResponseSettingPanel.hpp \
     src/tabpage/highlighter/SAKHighlighter.hpp \
     src/tabpage/highlighter/SAKHighlighterSettingPanel.hpp \
-    src/tabpage/RWParameter.h \
     src/mainwindow/SAKVersion.h \
     src/mainwindow/MoreInformation.h
 
@@ -65,10 +65,10 @@ FORMS += \
     src/console/SAKConsole.ui \
     src/mainwindow/SAKMainWindow.ui \
     src/tabpage/SAKIODeviceWidget.ui \
-    src/tabpage/AutoResponseItem.ui \
-    src/tabpage/AutoResponseSettingPanel.ui \
+    src/tabpage/autoresponse/SAKAutoResponseItem.ui \
+    src/tabpage/autoresponse/SAKAutoResponseSettingPanel.ui \
     src/tabpage/highlighter/SAKHighlighterSettingPanel.ui \
-    src/tabpage/RWParameter.ui \
+    src/tabpage/read_write_setting/SAKReadWriteSetting.ui \
     src/mainwindow/SAKVersion.ui \
     src/mainwindow/MoreInformation.ui
 
@@ -81,7 +81,9 @@ INCLUDEPATH += \
     src/TcpServer \
     src/console \
     src/tabpage \
-    src/tabpage/highlighter
+    src/tabpage/highlighter \
+    src/tabpage/autoresponse \
+    src/tabpage/read_write_setting
 
 RESOURCES += \
     SAKResources.qrc \

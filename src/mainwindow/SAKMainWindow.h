@@ -66,6 +66,16 @@ private:
      * @brief initSkinMenu  -- 创建皮肤切换菜单
      */
     void initSkinMenu(QMenu* optionMenu);
+
+    /**
+     * @brief addRemovablePage  -- 添加可删除的设备页面（只能通过信号来调用）
+     */
+    void addRemovablePage();
+
+    /**
+     * @brief openIODeviceWindow    -- 打开一个设备窗口（只能通过信号来调用）
+     */
+    void openIODeviceWindow();
 private slots:
     void AboutQt();
     void About();

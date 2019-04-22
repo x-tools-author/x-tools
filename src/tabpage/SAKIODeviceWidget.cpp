@@ -28,7 +28,7 @@ SAKIODeviceWidget::SAKIODeviceWidget(SAKIODevice *_device, SAKIODeviceControler 
     :QWidget(parent)
     ,device(_device)
     ,controler(_controler)
-    ,autoResponseSettingPanel(new AutoResponseSettingPanel)
+    ,autoResponseSettingPanel(new SAKAutoResponseSettingPanel)
     ,cycleTimer(new QTimer)
     ,customControlerLayout(new QHBoxLayout)
     ,delayTimer(new QTimer)
@@ -218,9 +218,9 @@ void SAKIODeviceWidget::Connect()
     connect(highlighterSettingButton, &QPushButton::clicked, highlighterSettingPanel, &SAKHighlighterSettingPanel::show);
 
     /// 显示读写参数设置窗口、设置参数
-    connect(rwParameterSettingButton, &QPushButton::clicked, &rwParameterSettingDialog, &RWParameter::show);
-    connect(&rwParameterSettingDialog, &RWParameter::readDelayTimeChanged, device, &SAKIODevice::setReadDelayTime);
-    connect(&rwParameterSettingDialog, &RWParameter::writeDelayTimeChanged, device, &SAKIODevice::setWriteDelayTime);
+    connect(rwParameterSettingButton, &QPushButton::clicked, &rwParameterSettingDialog, &SAKReadWriteSetting::show);
+    connect(&rwParameterSettingDialog, &SAKReadWriteSetting::readDelayTimeChanged, device, &SAKIODevice::setReadDelayTime);
+    connect(&rwParameterSettingDialog, &SAKReadWriteSetting::writeDelayTimeChanged, device, &SAKIODevice::setWriteDelayTime);
 }
 
 void SAKIODeviceWidget::afterDeviceOpen()

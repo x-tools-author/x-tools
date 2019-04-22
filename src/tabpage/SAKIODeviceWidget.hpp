@@ -22,8 +22,8 @@
 
 #include "SAKIODevice.h"
 #include "SAKIODeviceControler.h"
-#include "AutoResponseSettingPanel.h"
-#include "RWParameter.h"
+#include "SAKAutoResponseSettingPanel.hpp"
+#include "SAKReadWriteSetting.hh"
 
 class SAKHighlighterSettingPanel;
 
@@ -56,7 +56,7 @@ public:
 private:
     SAKIODevice                 *device                     = nullptr;
     SAKIODeviceControler        *controler                  = nullptr;
-    AutoResponseSettingPanel    *autoResponseSettingPanel   = nullptr;
+    SAKAutoResponseSettingPanel    *autoResponseSettingPanel   = nullptr;
     QTimer                      *cycleTimer                 = nullptr;
     QHBoxLayout                 *customControlerLayout      = nullptr;
     QTimer                      *delayTimer                 = nullptr;
@@ -77,7 +77,7 @@ private:
     QMetaEnum                   textModel;
 
     QPushButton*                rwParameterSettingButton    = nullptr;
-    RWParameter                 rwParameterSettingDialog;
+    SAKReadWriteSetting                 rwParameterSettingDialog;
     ///----------------------------------------------------------------
     void initUI();
     QByteArray dataBytes();

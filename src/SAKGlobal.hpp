@@ -16,6 +16,19 @@ class SAKGlobal:public QObject
     Q_OBJECT
 public:
     /**
+     * @brief The SAKEnumIODeviceType enum  -- io的设备类型
+     */
+    enum SAKEnumIODeviceType {
+#ifndef SAK_NO_SERIALPORT_ASSISTANT
+        SAKEnumIODeviceTypeSerialport,      // 串口设备
+#endif
+        SAKEnumIODeviceTypeUDP,             // udp调试
+        SAKEnumIODeviceTypeTCPClient,       // tcp客户端
+        SAKEnumIODeviceTypeTCPServer        // tcp服务器
+    };
+    Q_ENUM(SAKEnumIODeviceType)
+
+    /**
      * @brief SAKGlobal -- 构造函数
      * @param parent    -- 父控件
      */
@@ -33,6 +46,13 @@ public:
      * @return          -- 已创建的路径
      */
     static QString mkMutiDir(const QString path);
+
+    /**
+     * @brief getIODeviceTypeName   -- 获取设备类型的名称
+     * @param type                  -- 设备类型
+     * @return                      -- 设备类型名称
+     */
+    static QString getIODeviceTypeName(int type);
 };
 
 #endif

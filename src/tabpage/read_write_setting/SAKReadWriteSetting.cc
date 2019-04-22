@@ -14,12 +14,12 @@
 #include <QIntValidator>
 #include <QRegExpValidator>
 
-#include "RWParameter.h"
-#include "ui_RWParameter.h"
+#include "SAKReadWriteSetting.hh"
+#include "ui_SAKReadWriteSetting.h"
 
-RWParameter::RWParameter(QWidget* parent)
+SAKReadWriteSetting::SAKReadWriteSetting(QWidget* parent)
     :QDialog (parent)
-    ,ui(new Ui::RWParameter)
+    ,ui(new Ui::SAKReadWriteSetting)
 {
     ui->setupUi(this);
 
@@ -33,22 +33,22 @@ RWParameter::RWParameter(QWidget* parent)
     writeLineEdit = ui->lineEditWrite;
     setModal(true);
 
-    connect(readDelayEnableCheckBox, &QCheckBox::clicked, this, &RWParameter::setEnableReadDelay);
-    connect(writeDelayEnableCheckBox, &QCheckBox::clicked, this, &RWParameter::setEnableWriteDelay);
+    connect(readDelayEnableCheckBox, &QCheckBox::clicked, this, &SAKReadWriteSetting::setEnableReadDelay);
+    connect(writeDelayEnableCheckBox, &QCheckBox::clicked, this, &SAKReadWriteSetting::setEnableWriteDelay);
 
-    connect(readCustomDelayCheckBox, &QCheckBox::clicked, this, &RWParameter::changedReadDelayTime);
-    connect(writeCustomDelayCheckBox, &QCheckBox::clicked, this, &RWParameter::changedWriteDelayTime);
+    connect(readCustomDelayCheckBox, &QCheckBox::clicked, this, &SAKReadWriteSetting::changedReadDelayTime);
+    connect(writeCustomDelayCheckBox, &QCheckBox::clicked, this, &SAKReadWriteSetting::changedWriteDelayTime);
 
-    connect(readDelayComboBox, &QComboBox::currentTextChanged, this, &RWParameter::changedReadDelayTime);
-    connect(writeDelayComboBox, &QComboBox::currentTextChanged, this, &RWParameter::changedWriteDelayTime);
+    connect(readDelayComboBox, &QComboBox::currentTextChanged, this, &SAKReadWriteSetting::changedReadDelayTime);
+    connect(writeDelayComboBox, &QComboBox::currentTextChanged, this, &SAKReadWriteSetting::changedWriteDelayTime);
 
-    connect(readLineEdit, &QLineEdit::textChanged, this, &RWParameter::changedReadDelayTime);
-    connect(writeLineEdit, &QLineEdit::textChanged, this, &RWParameter::changedWriteDelayTime);
+    connect(readLineEdit, &QLineEdit::textChanged, this, &SAKReadWriteSetting::changedReadDelayTime);
+    connect(writeLineEdit, &QLineEdit::textChanged, this, &SAKReadWriteSetting::changedWriteDelayTime);
 
     initUi();
 }
 
-void RWParameter::initUi()
+void SAKReadWriteSetting::initUi()
 {
     readLineEdit->setValidator(new QRegExpValidator(QRegExp("[0-9][0-9]"), readLineEdit));
     writeLineEdit->setValidator(new QIntValidator(1, 99, writeLineEdit));
@@ -68,7 +68,7 @@ void RWParameter::initUi()
     changedWriteDelayTime();
 }
 
-void RWParameter::setEnableReadDelay()
+void SAKReadWriteSetting::setEnableReadDelay()
 {
     if (readDelayEnableCheckBox->isChecked()){
         readDelayEnableCheckBox->setChecked(true);
@@ -85,7 +85,7 @@ void RWParameter::setEnableReadDelay()
     changedReadDelayTime();
 }
 
-void RWParameter::setEnableWriteDelay()
+void SAKReadWriteSetting::setEnableWriteDelay()
 {
     if (writeDelayEnableCheckBox->isChecked()){
         writeDelayEnableCheckBox->setChecked(true);
@@ -102,7 +102,7 @@ void RWParameter::setEnableWriteDelay()
     changedWriteDelayTime();
 }
 
-void RWParameter::changedReadDelayTime()
+void SAKReadWriteSetting::changedReadDelayTime()
 {
     int time = 0;
     if (readDelayEnableCheckBox->isChecked()){
@@ -117,7 +117,7 @@ void RWParameter::changedReadDelayTime()
     emit readDelayTimeChanged(time);
 }
 
-void RWParameter::changedWriteDelayTime()
+void SAKReadWriteSetting::changedWriteDelayTime()
 {
     int time = 0;
     if (writeDelayEnableCheckBox->isChecked()){
