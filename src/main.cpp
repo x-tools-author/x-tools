@@ -20,7 +20,7 @@
 
 int main(int argc, char *argv[])
 {
-#if 1
+#ifndef QT_DEBUG
     qInstallMessageHandler(SAKConsole::messageRedirection);
 #endif
     SAKApplication a(argc, argv);
