@@ -62,7 +62,6 @@ void SAKLogOutput::run()
 void SAKLogOutput::destroyThis()
 {
     this->exit();
-    this->wait(100);
     this->terminate();
     this->deleteLater();
 }
