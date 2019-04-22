@@ -6,22 +6,22 @@
 *
 * Copyright (C) 2018-2018 wuhai persionnal. All rights reserved.
 *******************************************************************************/
-#ifndef AUTORESPONSEITEM_H
-#define AUTORESPONSEITEM_H
+#ifndef AUTORESPONSEITEM_HPP
+#define AUTORESPONSEITEM_HPP
 
 #include <QWidget>
 #include <QTimer>
 
 namespace Ui {
-class AutoResponseItem;
+class SAKAutoResponseItem;
 }
 
-class AutoResponseItem:public QWidget
+class SAKAutoResponseItem:public QWidget
 {
     Q_OBJECT
 public:
-    AutoResponseItem(QWidget *parent = Q_NULLPTR);
-    ~AutoResponseItem();
+    SAKAutoResponseItem(QWidget *parent = Q_NULLPTR);
+    ~SAKAutoResponseItem();
 
     void setText(QString receiveDataString, QString sendDataString, QString description);
     void showModify();
@@ -30,7 +30,7 @@ protected:
 private:
     bool isModify = false;
     QTimer *clearOutputInfoTimer = nullptr;
-    Ui::AutoResponseItem *ui;
+    Ui::SAKAutoResponseItem *ui;
     ///-----------------------------------------------------------
     void Connect();
 private slots:

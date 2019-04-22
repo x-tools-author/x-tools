@@ -10,8 +10,8 @@
 #pragma execution_character_set("utf-8")
 #endif
 
-#include "AutoResponseSettingPanel.h"
-#include "ui_AutoResponseSettingPanel.h"
+#include "SAKAutoResponseSettingPanel.hpp"
+#include "ui_SAKAutoResponseSettingPanel.h"
 
 #include <QApplication>
 #include <QDateTime>
@@ -29,10 +29,10 @@
 #define ITEM_RECEIVING_DATA "接收数据"
 #define ITEM_SENDING_DATA   "回复数据"
 
-AutoResponseSettingPanel::AutoResponseSettingPanel(QWidget *parent):
+SAKAutoResponseSettingPanel::SAKAutoResponseSettingPanel(QWidget *parent):
     QWidget(parent),
-    ui(new Ui::AutoResponseSettingPanel),
-    autoResponseItemWidget(new AutoResponseItem),
+    ui(new Ui::SAKAutoResponseSettingPanel),
+    autoResponseItemWidget(new SAKAutoResponseItem),
     clearOutputInfoTimer(new QTimer)
 {
     ui->setupUi(this);
@@ -45,12 +45,12 @@ AutoResponseSettingPanel::AutoResponseSettingPanel(QWidget *parent):
     Connect();
 }
 
-AutoResponseSettingPanel::~AutoResponseSettingPanel()
+SAKAutoResponseSettingPanel::~SAKAutoResponseSettingPanel()
 {
     delete ui;
 }
 
-void AutoResponseSettingPanel::Connect()
+void SAKAutoResponseSettingPanel::Connect()
 {
     connect(ui->pushButtonAdd, SIGNAL(clicked(bool)), autoResponseItemWidget, SLOT(show()));
     connect(ui->pushButtonDelete, SIGNAL(clicked(bool)), this, SLOT(deleteAutoResponseItem()));
@@ -64,7 +64,7 @@ void AutoResponseSettingPanel::Connect()
     connect(ui->checkBoxAutoResponse, SIGNAL(clicked(bool)), this, SLOT(enableAutoResponseBtClicked()));
 }
 
-void AutoResponseSettingPanel::addAutoResponseItem(QString receiveData, QString sendData, QString description)
+void SAKAutoResponseSettingPanel::addAutoResponseItem(QString receiveData, QString sendData, QString description)
 {
     if (autoResponseItemList.length() == 9999){
         outputInfo(tr("自动回复数量达到最大值，终止操作！"), QString("red"));
@@ -90,7 +90,7 @@ void AutoResponseSettingPanel::addAutoResponseItem(QString receiveData, QString 
     autoResponseItemList.append(node);
 }
 
-QString AutoResponseSettingPanel::packetItemString(QString receiveData, QString sendData)
+QString SAKAutoResponseSettingPanel::packetItemString(QString receiveData, QString sendData)
 {
     QString itemString;
 
@@ -106,7 +106,7 @@ QString AutoResponseSettingPanel::packetItemString(QString receiveData, QString 
 }
 
 
-void AutoResponseSettingPanel::outputInfo(QString info, QString color)
+void SAKAutoResponseSettingPanel::outputInfo(QString info, QString color)
 {
     QString dateTimeInfo = QDateTime::currentDateTime().toString("yyyy/MM/dd hh:mm:ss ");
     dateTimeInfo = QString("<font color=silver>%1<font>").arg(dateTimeInfo);
@@ -123,12 +123,12 @@ void AutoResponseSettingPanel::outputInfo(QString info, QString color)
     }
 }
 
-void AutoResponseSettingPanel::clearOutputInfo()
+void SAKAutoResponseSettingPanel::clearOutputInfo()
 {
     ui->labelInfo->clear();
 }
 
-void AutoResponseSettingPanel::deleteAutoResponseItem()
+void SAKAutoResponseSettingPanel::deleteAutoResponseItem()
 {
     if (autoResponseItemList.isEmpty()){
         outputInfo(ERR_STR_LIST_IS_EMPTY, QString("red"));
@@ -149,7 +149,7 @@ void AutoResponseSettingPanel::deleteAutoResponseItem()
     }
 }
 
-void AutoResponseSettingPanel::resortTheAutoResponseItemList(int currentRow)
+void SAKAutoResponseSettingPanel::resortTheAutoResponseItemList(int currentRow)
 {
     if (autoResponseItemList.isEmpty()){
         return;
@@ -168,7 +168,7 @@ void AutoResponseSettingPanel::resortTheAutoResponseItemList(int currentRow)
     }
 }
 
-void AutoResponseSettingPanel::modifyAutoResponseItem()
+void SAKAutoResponseSettingPanel::modifyAutoResponseItem()
 {
     if (autoResponseItemList.isEmpty()){
         outputInfo(ERR_STR_LIST_IS_EMPTY, QString("red"));
@@ -185,7 +185,7 @@ void AutoResponseSettingPanel::modifyAutoResponseItem()
     }
 }
 
-void AutoResponseSettingPanel::modifyAutoResponseItem(QString receiveDataString, QString sendDataString, QString description)
+void SAKAutoResponseSettingPanel::modifyAutoResponseItem(QString receiveDataString, QString sendDataString, QString description)
 {
     QListWidgetItem *listWidgetItem = ui->listWidgetAutoResponse->currentItem();
     if ((listWidgetItem == nullptr) || (listWidgetItem == nullptr)){
@@ -203,13 +203,13 @@ void AutoResponseSettingPanel::modifyAutoResponseItem(QString receiveDataString,
     }
 }
 
-void AutoResponseSettingPanel::clearAutoResponseItem()
+void SAKAutoResponseSettingPanel::clearAutoResponseItem()
 {
     ui->listWidgetAutoResponse->clear();
     autoResponseItemList.clear();
 }
 
-void AutoResponseSettingPanel::saveAsFile()
+void SAKAutoResponseSettingPanel::saveAsFile()
 {
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save File"), "", tr("xml (*.xml)"));
     QFile file(fileName);
@@ -257,7 +257,7 @@ void AutoResponseSettingPanel::saveAsFile()
     file.close();
 }
 
-void AutoResponseSettingPanel::readIn()
+void SAKAutoResponseSettingPanel::readIn()
 {
     QString fileName = QFileDialog::getOpenFileName(this, tr("Save File"), "", tr("xml (*.xml)"));
     QFile file(fileName);
@@ -293,17 +293,17 @@ void AutoResponseSettingPanel::readIn()
     }
 }
 
-void AutoResponseSettingPanel::enableAutoResponseBtClicked()
+void SAKAutoResponseSettingPanel::enableAutoResponseBtClicked()
 {
     emit autoResponseFlagChanged(ui->checkBoxAutoResponse->isChecked());
 }
 
-void AutoResponseSettingPanel::setAutoResponseFlag(bool enableAutoResponse)
+void SAKAutoResponseSettingPanel::setAutoResponseFlag(bool enableAutoResponse)
 {
     ui->checkBoxAutoResponse->setChecked(enableAutoResponse);
 }
 
-bool AutoResponseSettingPanel::autoResponseFlag()
+bool SAKAutoResponseSettingPanel::autoResponseFlag()
 {
     return ui->checkBoxAutoResponse->isChecked();
 }

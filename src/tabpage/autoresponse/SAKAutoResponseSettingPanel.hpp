@@ -6,18 +6,18 @@
 *
 * Copyright (C) 2018-2018 wuhai persionnal. All rights reserved.
 *******************************************************************************/
-#ifndef AUTORESPONSESETTINGPANEL_H
-#define AUTORESPONSESETTINGPANEL_H
+#ifndef AUTORESPONSESETTINGPANEL_HPP
+#define AUTORESPONSESETTINGPANEL_HPP
 
 #include <QWidget>
 #include <QListWidgetItem>
 #include <QTimer>
 #include <QStringList>
 
-#include "AutoResponseItem.h"
+#include "SAKAutoResponseItem.hpp"
 
 namespace Ui {
-class AutoResponseSettingPanel;
+class SAKAutoResponseSettingPanel;
 }
 
 typedef struct {
@@ -27,21 +27,21 @@ typedef struct {
     QListWidgetItem *listWidgetItem;
 }AutoResponseNode;
 
-class AutoResponseSettingPanel:public QWidget
+class SAKAutoResponseSettingPanel:public QWidget
 {
    Q_OBJECT
 public:
-    AutoResponseSettingPanel(QWidget *parent = Q_NULLPTR);
-    ~AutoResponseSettingPanel();
+    SAKAutoResponseSettingPanel(QWidget *parent = Q_NULLPTR);
+    ~SAKAutoResponseSettingPanel();
 
     void setAutoResponseFlag(bool enableAutoResponse);
     bool autoResponseFlag();
     QList <AutoResponseNode> autoResponseItems(){return  autoResponseItemList;}
 private:
     int need2modifyItemRow = 0;
-    Ui::AutoResponseSettingPanel *ui;
+    Ui::SAKAutoResponseSettingPanel *ui;
     QList <AutoResponseNode> autoResponseItemList;
-    AutoResponseItem *autoResponseItemWidget;
+    SAKAutoResponseItem *autoResponseItemWidget;
     QTimer *clearOutputInfoTimer = nullptr;
     ///----------------------------------------------------------------------
     void Connect();
