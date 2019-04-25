@@ -65,7 +65,7 @@ protected:
     virtual QWidget *initIODeviceControlPannel(){return new QWidget(this);}
 
     virtual void readBytes() = 0;
-    virtual void sendBytes(QByteArray bytes) = 0;
+    virtual void writeBytes(QByteArray bytes) = 0;
 protected:
     /*
      * 设备管理组
@@ -115,6 +115,14 @@ protected:
     QPushButton *autoResponseSettingPushButton  = nullptr;  /// 自动回复设置面板调出按钮
     QPushButton *highlightSettingPushButton     = nullptr;  /// 高亮设置面板调出按钮
     QPushButton *readWriteSettingPushButton     = nullptr;  /// 读写设置面包调出按钮
+
+
+    Ui::SAKIODeviceWidget2 *ui                  = nullptr;
+
+    /**
+     * @brief initUiPointer -- 初始化指向ui控件的数据成员（指针）
+     */
+    void initUiPointer();
 private:
     /*
      * 动态申请弹窗内存
@@ -141,7 +149,7 @@ private:
     QTimer                      *cycleTimer                 = nullptr;
     QHBoxLayout                 *customControlerLayout      = nullptr;
     QTimer                      *delayTimer                 = nullptr;
-    Ui::SAKIODeviceWidget2       *ui                         = nullptr;
+
     QTimer                      *clearInfoTimer             = nullptr;
 
     QPushButton                 *highlighterSettingButton   = nullptr;
@@ -174,10 +182,7 @@ private:
      */
     void refreshOutputData(QByteArray &data, bool isReceivedData = true);
 
-    /**
-     * @brief initUiPointer -- 初始化指向ui控件的数据成员（指针）
-     */
-    void initUiPointer();
+
 private slots:
     virtual void updateRxImage();
     virtual void updateTxImage();

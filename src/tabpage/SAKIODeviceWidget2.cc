@@ -29,12 +29,12 @@
 
 SAKIODeviceWidget2::SAKIODeviceWidget2(SAKIODevice *_device, SAKIODeviceControler *_controler, QWidget *parent)
     :QWidget(parent)
+    ,ui(new Ui::SAKIODeviceWidget2)
     ,device(_device)
     ,controler(_controler)
     ,cycleTimer(new QTimer)
     ,customControlerLayout(new QHBoxLayout)
     ,delayTimer(new QTimer)
-    ,ui(new Ui::SAKIODeviceWidget2)
     ,clearInfoTimer(new QTimer)
 {
     ui->setupUi(this);    
