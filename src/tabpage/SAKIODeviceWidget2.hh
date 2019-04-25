@@ -1,4 +1,4 @@
-﻿/*
+﻿/**
  * The file is encoding with utf-8 (with BOM)
  *
  * I write the comment with English, it's not because that I'm good at English,
@@ -57,6 +57,12 @@ protected:
      * @brief initIODevice  --该函数必须初始化数据成员device，并且将读写信号分别与 readBytes()、sendBytes(QByteArray bytes)关联
      */
     virtual void initIODevice(){;}
+
+    /**
+     * @brief initIODeviceControlPannel --初始化io设备控制面板
+     * @return                          -- io设备控制面板
+     */
+    virtual QWidget *initIODeviceControlPannel(){return new QWidget(this);}
 
     virtual void readBytes() = 0;
     virtual void sendBytes(QByteArray bytes) = 0;
