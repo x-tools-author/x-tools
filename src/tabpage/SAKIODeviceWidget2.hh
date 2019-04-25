@@ -110,7 +110,7 @@ protected:
     QPushButton *resetTxCountPushButton         = nullptr;  /// 重置发送计数
 
     /*
-     * 其他设计组
+     * 其他设置组
      */
     QPushButton *autoResponseSettingPushButton  = nullptr;  /// 自动回复设置面板调出按钮
     QPushButton *highlightSettingPushButton     = nullptr;  /// 高亮设置面板调出按钮
