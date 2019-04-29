@@ -27,22 +27,22 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    src/SAKGlobal.cpp \
-    src/console/SAKConsole.cpp \
-    src/console/SAKLogOutput.cpp \
-    src/main.cpp \
-    src/SAKApplication.cpp \
-    src/mainwindow/SAKMainWindow.cpp \
-    src/tabpage/SAKIODeviceWidget.cpp \
-    src/tabpage/SAKIODevice.cpp \
-    src/tabpage/SAKIODeviceControler.cpp \
+    src/SAKGlobal.cc \
+    src/console/SAKConsole.cc \
+    src/console/SAKLogOutput.cc \
+    src/main.cc \
+    src/SAKApplication.cc \
+    src/mainwindow/SAKMainWindow.cc \
+    src/tabpage/SAKIODeviceWidget.cc \
+    src/tabpage/SAKIODevice.cc \
+    src/tabpage/SAKIODeviceControler.cc \
     src/tabpage/read_write_setting/SAKReadWriteSetting.cc \
-    src/tabpage/auto_response/SAKAutoResponseItem.cpp \
-    src/tabpage/auto_response/SAKAutoResponseSettingPanel.cpp \
-    src/tabpage/highlighter/SAKHighlighter.cpp \
-    src/tabpage/highlighter/SAKHighlighterSettingPanel.cpp \
-    src/mainwindow/SAKVersion.cpp \
-    src/mainwindow/MoreInformation.cpp
+    src/tabpage/auto_response/SAKAutoResponseItem.cc \
+    src/tabpage/auto_response/SAKAutoResponseSettingPanel.cc \
+    src/tabpage/highlighter/SAKHighlighter.cc \
+    src/tabpage/highlighter/SAKHighlighterSettingPanel.cc \
+    src/mainwindow/SAKVersion.cc \
+    src/mainwindow/MoreInformation.cc
 
 HEADERS += \
     src/SAKApplication.hh \
@@ -139,9 +139,9 @@ winrt || arm-linux{
 !contains(DEFINES, SAK_NO_SERIALPORT_ASSISTANT){
     QT  += serialport
     SOURCES += \
-        src/tabpage_serialport/SerialportSAKIODeviceWidget.cpp \
-        src/tabpage_serialport/SerialportSAKIODevice.cpp \
-        src/tabpage_serialport/SerialportSAKIODeviceControler.cpp
+        src/tabpage_serialport/SerialportSAKIODeviceWidget.cc \
+        src/tabpage_serialport/SerialportSAKIODevice.cc \
+        src/tabpage_serialport/SerialportSAKIODeviceControler.cc
     HEADERS +=
     FORMS   += \
         src/tabpage_serialport/SerialportSAKIODeviceControler.ui
@@ -153,9 +153,9 @@ winrt || arm-linux{
 
 # TCP 客户端
 SOURCES += \
-    src/tabpage_tcp_client/TcpSAKIODevice.cpp \
-    src/tabpage_tcp_client/TcpSAKIODeviceControler.cpp \
-    src/tabpage_tcp_client/TcpSAKIODeviceWidget.cpp
+    src/tabpage_tcp_client/TcpSAKIODevice.cc \
+    src/tabpage_tcp_client/TcpSAKIODeviceControler.cc \
+    src/tabpage_tcp_client/TcpSAKIODeviceWidget.cc
 HEADERS +=
 FORMS   += \
     src/tabpage_tcp_client/TcpSAKIODeviceControler.ui
@@ -164,9 +164,9 @@ INCLUDEPATH += \
 
 # TCP服务器
 SOURCES += \
-    src/tabpage_tcp_server/TcpServerSAKIODeviceWidget.cpp \
-    src/tabpage_tcp_server/TcpServerSAKIODevice.cpp \
-    src/tabpage_tcp_server/TcpServerSAKIODeviceControler.cpp
+    src/tabpage_tcp_server/TcpServerSAKIODeviceWidget.cc \
+    src/tabpage_tcp_server/TcpServerSAKIODevice.cc \
+    src/tabpage_tcp_server/TcpServerSAKIODeviceControler.cc
 HEADERS +=
 FORMS   += \
     src/tabpage_tcp_server/TcpServerSAKIODeviceControler.ui
@@ -175,9 +175,9 @@ INCLUDEPATH += \
 
 # UDP客户端
 SOURCES += \
-    src/tabpage_udp_client/UdpSAKIODevice.cpp \
-    src/tabpage_udp_client/UdpSAKIODeviceControler.cpp \
-    src/tabpage_udp_client/UdpSAKIODeviceWidget.cpp
+    src/tabpage_udp_client/UdpSAKIODevice.cc \
+    src/tabpage_udp_client/UdpSAKIODeviceControler.cc \
+    src/tabpage_udp_client/UdpSAKIODeviceWidget.cc
 HEADERS +=
 FORMS   += \
     src/tabpage_udp_client/UdpSAKIODeviceControler.ui

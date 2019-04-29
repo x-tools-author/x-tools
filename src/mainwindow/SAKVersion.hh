@@ -6,45 +6,72 @@
 *
 * Copyright (C) 2018-2018 wuhai persionnal. All rights reserved.
 *******************************************************************************/
-#ifndef SAKVERSION_HH
-#define SAKVERSION_HH
+#ifdef _MSC_VER
+#pragma execution_character_set("utf-8")
+#endif
 
-#include <QDialog>
-#include <QLabel>
-#include <QPushButton>
+#include "SAKVersion.hh"
+#include "ui_SAKVersion.h"
 
-namespace Ui {
-class SAKVersion;
+#include <QDebug>
+#include <QDesktopServices>
+#include <QUrl>
+#include <QLineEdit>
+
+SAKVersion* SAKVersion::sakVersionSingleton = nullptr;
+SAKVersion::SAKVersion()
+    :ui(new Ui::SAKVersion)
+{
+    Q_ASSERT_X(!sakVersionSingleton, __FUNCTION__, "该类只能有一个实例， 请使用 SAKVersion::instance()获取实例。");
+    sakVersionSingleton = this;
+    ui->setupUi(this);
+
+    version = ui->labelVersion;
+    datetime = ui->labelDatetime;
+    author = ui->labelAuthor;
+    email = ui->labelEmail;
+    qq = ui->labelQQ;
+    blog = ui->labelBlog;
+    blog->installEventFilter(this);
+    blog->setCursor(Qt::PointingHandCursor);
+
+    copyQQ = ui->pushButtonCopy;
+
+    version->setText(QString("1.2.2"));
+    datetime->setText(QString(__DATE__) + " " + QString(__TIME__));
+    author->setText(QString("Qter"));
+    email->setText(QString("Qter.vip@outlook.com"));
+    qq->setText(QString("952218522"));
+    blog->setText(QString("http://wuhai.pro/"));
+
+    setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowTitleHint | Qt::Tool);
+    setModal(true);
+
+    connect(copyQQ, SIGNAL(clicked()), this, SLOT(copyQQNum()));
 }
 
-class SAKVersion:public QDialog
+
+SAKVersion::~SAKVersion()
 {
-    Q_OBJECT
-public:
-    SAKVersion();
-    ~SAKVersion();
-    static SAKVersion* instance(){return sakVersionSingleton;}
-    QString getVersion(){return version->text();}
-    QString getQQNum(){return qq->text();}
-    QString getEmail(){return email->text();}
-private:
-    Ui::SAKVersion* ui          = nullptr;
-    QLabel*         version     = nullptr;  /// 显示版本号
-    QLabel*         datetime    = nullptr;  /// 显示编译时间日期
-    QLabel*         author      = nullptr;  /// 软件作者
-    QLabel*         email       = nullptr;  /// 联系邮箱
-    QLabel*         blog        = nullptr;  /// 博客地址
-    QLabel*         qq          = nullptr;  /// QQ交流群
 
-    QPushButton*    copyQQ      = nullptr;  // 复制qq群号码按钮
+}
 
-    static SAKVersion* sakVersionSingleton;
-protected:
-    bool eventFilter(QObject *o, QEvent *e) final;
-private:
-    void openBlogUrl();
-private slots:
-    void copyQQNum();
-};
+bool SAKVersion::eventFilter(QObject *o, QEvent *e)
+{
+    if (o == blog){
+        if (e->type() == QEvent::MouseButtonPress){
+            QDesktopServices::openUrl(QUrl(blog->text()));
+            return true;
+        }
+    }
 
-#endif
+    return QDialog::eventFilter(o, e);
+}
+
+void SAKVersion::copyQQNum()
+{
+    QLineEdit temp;
+    temp.setText(qq->text());
+    temp.selectAll();
+    temp.copy();
+}
