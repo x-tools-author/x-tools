@@ -37,8 +37,8 @@ SOURCES += \
     src/tabpage/SAKIODevice.cpp \
     src/tabpage/SAKIODeviceControler.cpp \
     src/tabpage/read_write_setting/SAKReadWriteSetting.cc \
-    src/tabpage/autoresponse/SAKAutoResponseItem.cpp \
-    src/tabpage/autoresponse/SAKAutoResponseSettingPanel.cpp \
+    src/tabpage/auto_response/SAKAutoResponseItem.cpp \
+    src/tabpage/auto_response/SAKAutoResponseSettingPanel.cpp \
     src/tabpage/highlighter/SAKHighlighter.cpp \
     src/tabpage/highlighter/SAKHighlighterSettingPanel.cpp \
     src/mainwindow/SAKVersion.cpp \
@@ -47,18 +47,18 @@ SOURCES += \
 HEADERS += \
     src/SAKApplication.hh \
     src/SAKGlobal.hh \
-    src/TabPageSerialPort/SerialportSAKIODevice.hh \
-    src/TabPageSerialPort/SerialportSAKIODeviceControler.hh \
-    src/TabPageSerialPort/SerialportSAKIODeviceWidget.hh \
-    src/TabPageTcpClient/TcpSAKIODevice.hh \
-    src/TabPageTcpClient/TcpSAKIODeviceControler.hh \
-    src/TabPageTcpClient/TcpSAKIODeviceWidget.hh \
-    src/TabPageTcpServer/TcpServerSAKIODevice.hh \
-    src/TabPageTcpServer/TcpServerSAKIODeviceControler.hh \
-    src/TabPageTcpServer/TcpServerSAKIODeviceWidget.hh \
-    src/TabPageUdpClient/UdpSAKIODevice.hh \
-    src/TabPageUdpClient/UdpSAKIODeviceControler.hh \
-    src/TabPageUdpClient/UdpSAKIODeviceWidget.hh \
+    src/tabpage_serialport/SerialportSAKIODevice.hh \
+    src/tabpage_serialport/SerialportSAKIODeviceControler.hh \
+    src/tabpage_serialport/SerialportSAKIODeviceWidget.hh \
+    src/tabpage_tcp_client/TcpSAKIODevice.hh \
+    src/tabpage_tcp_client/TcpSAKIODeviceControler.hh \
+    src/tabpage_tcp_client/TcpSAKIODeviceWidget.hh \
+    src/tabpage_tcp_server/TcpServerSAKIODevice.hh \
+    src/tabpage_tcp_server/TcpServerSAKIODeviceControler.hh \
+    src/tabpage_tcp_server/TcpServerSAKIODeviceWidget.hh \
+    src/tabpage_udp_client/UdpSAKIODevice.hh \
+    src/tabpage_udp_client/UdpSAKIODeviceControler.hh \
+    src/tabpage_udp_client/UdpSAKIODeviceWidget.hh \
     src/console/SAKConsole.hh \
     src/console/SAKLogOutput.hh \
     src/mainwindow/MoreInformation.hh \
@@ -67,8 +67,8 @@ HEADERS += \
     src/tabpage/SAKIODevice.hh \
     src/tabpage/SAKIODeviceControler.hh \
     src/tabpage/SAKIODeviceWidget.hh \
-    src/tabpage/autoresponse/SAKAutoResponseItem.hh \
-    src/tabpage/autoresponse/SAKAutoResponseSettingPanel.hh \
+    src/tabpage/auto_response/SAKAutoResponseItem.hh \
+    src/tabpage/auto_response/SAKAutoResponseSettingPanel.hh \
     src/tabpage/highlighter/SAKHighlighter.hh \
     src/tabpage/highlighter/SAKHighlighterSettingPanel.hh \
     src/tabpage/read_write_setting/SAKReadWriteSetting.hh
@@ -77,8 +77,8 @@ FORMS += \
     src/console/SAKConsole.ui \
     src/mainwindow/SAKMainWindow.ui \
     src/tabpage/SAKIODeviceWidget.ui \
-    src/tabpage/autoresponse/SAKAutoResponseItem.ui \
-    src/tabpage/autoresponse/SAKAutoResponseSettingPanel.ui \
+    src/tabpage/auto_response/SAKAutoResponseItem.ui \
+    src/tabpage/auto_response/SAKAutoResponseSettingPanel.ui \
     src/tabpage/highlighter/SAKHighlighterSettingPanel.ui \
     src/tabpage/read_write_setting/SAKReadWriteSetting.ui \
     src/mainwindow/SAKVersion.ui \
@@ -88,13 +88,10 @@ INCLUDEPATH += \
     src \
     src/mainwindow \
     src/mainwindow/common \
-    src/UdpClient \
-    src/TcpClient \
-    src/TcpServer \
     src/console \
     src/tabpage \
     src/tabpage/highlighter \
-    src/tabpage/autoresponse \
+    src/tabpage/auto_response \
     src/tabpage/read_write_setting
 
 RESOURCES += \
@@ -142,50 +139,50 @@ winrt || arm-linux{
 !contains(DEFINES, SAK_NO_SERIALPORT_ASSISTANT){
     QT  += serialport
     SOURCES += \
-        src/TabPageSerialPort/SerialportSAKIODeviceWidget.cpp \
-        src/TabPageSerialPort/SerialportSAKIODevice.cpp \
-        src/TabPageSerialPort/SerialportSAKIODeviceControler.cpp
+        src/tabpage_serialport/SerialportSAKIODeviceWidget.cpp \
+        src/tabpage_serialport/SerialportSAKIODevice.cpp \
+        src/tabpage_serialport/SerialportSAKIODeviceControler.cpp
     HEADERS +=
     FORMS   += \
-        src/TabPageSerialPort/SerialportSAKIODeviceControler.ui
+        src/tabpage_serialport/SerialportSAKIODeviceControler.ui
     INCLUDEPATH += \
-        src/TabPageSerialPort
+        src/tabpage_serialport
 }else {
     message( "该版本Qt可能不包含串口模块，已经忽略串口模块！（串口助手功能被屏蔽！）" )
 }
 
 # TCP 客户端
 SOURCES += \
-    src/TabPageTcpClient/TcpSAKIODevice.cpp \
-    src/TabPageTcpClient/TcpSAKIODeviceControler.cpp \
-    src/TabPageTcpClient/TcpSAKIODeviceWidget.cpp
+    src/tabpage_tcp_client/TcpSAKIODevice.cpp \
+    src/tabpage_tcp_client/TcpSAKIODeviceControler.cpp \
+    src/tabpage_tcp_client/TcpSAKIODeviceWidget.cpp
 HEADERS +=
 FORMS   += \
-    src/TabPageTcpClient/TcpSAKIODeviceControler.ui
+    src/tabpage_tcp_client/TcpSAKIODeviceControler.ui
 INCLUDEPATH += \
-    src/TabPageTcpClient
+    src/tabpage_tcp_client
 
 # TCP服务器
 SOURCES += \
-    src/TabPageTcpServer/TcpServerSAKIODeviceWidget.cpp \
-    src/TabPageTcpServer/TcpServerSAKIODevice.cpp \
-    src/TabPageTcpServer/TcpServerSAKIODeviceControler.cpp
+    src/tabpage_tcp_server/TcpServerSAKIODeviceWidget.cpp \
+    src/tabpage_tcp_server/TcpServerSAKIODevice.cpp \
+    src/tabpage_tcp_server/TcpServerSAKIODeviceControler.cpp
 HEADERS +=
 FORMS   += \
-    src/TabPageTcpServer/TcpServerSAKIODeviceControler.ui
+    src/tabpage_tcp_server/TcpServerSAKIODeviceControler.ui
 INCLUDEPATH += \
-    src/TabPageTcpServer
+    src/tabpage_tcp_server
 
 # UDP客户端
 SOURCES += \
-    src/TabPageUdpClient/UdpSAKIODevice.cpp \
-    src/TabPageUdpClient/UdpSAKIODeviceControler.cpp \
-    src/TabPageUdpClient/UdpSAKIODeviceWidget.cpp
+    src/tabpage_udp_client/UdpSAKIODevice.cpp \
+    src/tabpage_udp_client/UdpSAKIODeviceControler.cpp \
+    src/tabpage_udp_client/UdpSAKIODeviceWidget.cpp
 HEADERS +=
 FORMS   += \
-    src/TabPageUdpClient/UdpSAKIODeviceControler.ui
+    src/tabpage_udp_client/UdpSAKIODeviceControler.ui
 INCLUDEPATH += \
-    src/TabPageUdpClient
+    src/tabpage_udp_client
 
 DISTFILES += \
     other/update.json
