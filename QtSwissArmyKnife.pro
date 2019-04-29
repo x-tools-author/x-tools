@@ -32,7 +32,7 @@ SOURCES += \
     src/console/SAKLogOutput.cc \
     src/main.cc \
     src/SAKApplication.cc \
-    src/mainwindow/SAKMainWindow.cc \
+    src/main_window/SAKMainWindow.cc \
     src/tabpage/SAKIODeviceWidget.cc \
     src/tabpage/SAKIODevice.cc \
     src/tabpage/SAKIODeviceControler.cc \
@@ -41,8 +41,8 @@ SOURCES += \
     src/tabpage/auto_response/SAKAutoResponseSettingPanel.cc \
     src/tabpage/highlighter/SAKHighlighter.cc \
     src/tabpage/highlighter/SAKHighlighterSettingPanel.cc \
-    src/mainwindow/SAKVersion.cc \
-    src/mainwindow/MoreInformation.cc
+    src/main_window/SAKVersion.cc \
+    src/main_window/MoreInformation.cc
 
 HEADERS += \
     src/SAKApplication.hh \
@@ -61,9 +61,9 @@ HEADERS += \
     src/tabpage_udp_client/UdpSAKIODeviceWidget.hh \
     src/console/SAKConsole.hh \
     src/console/SAKLogOutput.hh \
-    src/mainwindow/MoreInformation.hh \
-    src/mainwindow/SAKMainWindow.hh \
-    src/mainwindow/SAKVersion.hh \
+    src/main_window/MoreInformation.hh \
+    src/main_window/SAKMainWindow.hh \
+    src/main_window/SAKVersion.hh \
     src/tabpage/SAKIODevice.hh \
     src/tabpage/SAKIODeviceControler.hh \
     src/tabpage/SAKIODeviceWidget.hh \
@@ -75,19 +75,19 @@ HEADERS += \
 
 FORMS += \
     src/console/SAKConsole.ui \
-    src/mainwindow/SAKMainWindow.ui \
+    src/main_window/SAKMainWindow.ui \
     src/tabpage/SAKIODeviceWidget.ui \
     src/tabpage/auto_response/SAKAutoResponseItem.ui \
     src/tabpage/auto_response/SAKAutoResponseSettingPanel.ui \
     src/tabpage/highlighter/SAKHighlighterSettingPanel.ui \
     src/tabpage/read_write_setting/SAKReadWriteSetting.ui \
-    src/mainwindow/SAKVersion.ui \
-    src/mainwindow/MoreInformation.ui
+    src/main_window/SAKVersion.ui \
+    src/main_window/MoreInformation.ui
 
 INCLUDEPATH += \
     src \
-    src/mainwindow \
-    src/mainwindow/common \
+    src/main_window \
+    src/main_window/common \
     src/console \
     src/tabpage \
     src/tabpage/highlighter \
