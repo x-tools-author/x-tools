@@ -30,7 +30,7 @@
 #define ITEM_SENDING_DATA   "回复数据"
 
 SAKAutoResponseSettingPanel::SAKAutoResponseSettingPanel(QWidget *parent):
-    QWidget(parent),
+    QDialog(parent),
     ui(new Ui::SAKAutoResponseSettingPanel),
     autoResponseItemWidget(new SAKAutoResponseItem),
     clearOutputInfoTimer(new QTimer)

@@ -9,7 +9,7 @@
 #ifndef AUTORESPONSESETTINGPANEL_HPP
 #define AUTORESPONSESETTINGPANEL_HPP
 
-#include <QWidget>
+#include <QDialog>
 #include <QListWidgetItem>
 #include <QTimer>
 #include <QStringList>
@@ -27,7 +27,7 @@ typedef struct {
     QListWidgetItem *listWidgetItem;
 }AutoResponseNode;
 
-class SAKAutoResponseSettingPanel:public QWidget
+class SAKAutoResponseSettingPanel:public QDialog
 {
    Q_OBJECT
 public:

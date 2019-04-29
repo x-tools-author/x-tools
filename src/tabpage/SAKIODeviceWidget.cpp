@@ -794,3 +794,77 @@ void SAKIODeviceWidget::writeSetting(QString &option, QString &value)
 
     settings.setValue(key, value);
 }
+
+void SAKIODeviceWidget::initUiPointer()
+{
+    /*
+     * 设备管理组
+     */
+    refreshPushButton   = ui->pushButtonRefresh;
+    switchPushButton    = ui->pushButtonOpen;
+    rxLabel             = ui->labelRX;
+    txLabel             = ui->labelTX;
+
+    /*
+     * 输入设置组
+     */
+    inputModelComboBox      = ui->comboBoxInputMode;
+    cycleEnableCheckBox     = ui->checkBoxCycle;
+    cycleTimeLineEdit       = ui->lineEditCycleTime;
+    readinFilePushButton    = ui->pushButtonReadInFile;
+    clearInputPushButton    = ui->pushButtonClearInput;
+    sendPushButton          = ui->pushButtonSendData;
+    inputTextEdit           = ui->textEditInputData;
+
+    /*
+     * 输出设置组
+     */
+    outputModelComboBox     = ui->comboBoxOutputMode;
+    showDateCheckBox        = ui->checkBoxOutputDate;
+    showTimeCheckBox        = ui->checkBoxOutputTime;
+    showMsCheckBox          = ui->checkBoxOutputMS;
+//    showRxDataCheckBox      = ui->checkBoxShowRxOutput;
+//    showTxDataCheckBox      = ui->checkBoxShowTxOutput;
+    clearOutputPushButton   = ui->pushButtonClearOutput;
+    saveOutputPushButton    = ui->pushButtonSaveOutput;
+    outputTextBroswer       = ui->textBrowserOutputData;
+
+    /*
+     * 数据管理组
+     */
+    rxFramesLabel           = ui->labelReceiveFrames;
+    txFramesLabel           = ui->labelSendFrames;
+    rxBytesLabel            = ui->labelReceiveBytes;
+    txBytesLabel            = ui->labelSendBytes;
+    resetRxCountPushButton  = ui->pushButtonResetReceiveDataCount;
+    resetTxCountPushButton  = ui->pushButtonResetSendDataCount;
+
+    /*
+     * 其他设计组
+     */
+    autoResponseSettingPushButton  = ui->pushButtonAutoRespone;
+    highlightSettingPushButton     = ui->pushButtonHighlighting;
+    readWriteSettingPushButton     = ui->pushButtonRWParameter;
+
+    connect(autoResponseSettingPushButton, &QPushButton::clicked, this, &SAKIODeviceWidget::createAutoResponseSettingWindow);
+    connect(highlightSettingPushButton,    &QPushButton::clicked, this, &SAKIODeviceWidget::createHighlightSettingWindow);
+    connect(readWriteSettingPushButton,    &QPushButton::clicked, this, &SAKIODeviceWidget::createReadWriteSettingWindow);
+}
+
+void SAKIODeviceWidget::createAutoResponseSettingWindow()
+{
+    SAKAutoResponseSettingPanel *window = new SAKAutoResponseSettingPanel(this);
+    window->show();
+}
+
+void SAKIODeviceWidget::createHighlightSettingWindow()
+{
+    SAKHighlighterSettingPanel *window = new SAKHighlighterSettingPanel(outputTextBroswer->document(), this);
+    window->show();
+}
+
+void SAKIODeviceWidget::createReadWriteSettingWindow()
+{
+    SAKReadWriteSetting *window = new SAKReadWriteSetting(this);
+    window->show();
+}

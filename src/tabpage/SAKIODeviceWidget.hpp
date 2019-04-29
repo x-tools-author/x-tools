@@ -19,6 +19,9 @@
 #include <QPushButton>
 #include <QComboBox>
 #include <QMetaEnum>
+#include <QLabel>
+#include <QTextEdit>
+#include <QTextBrowser>
 
 #include "SAKIODevice.h"
 #include "SAKIODeviceControler.h"
@@ -53,14 +56,91 @@ public:
         Local8bit
     };
     Q_ENUM(TextDisplayModel)
+protected:
+    /*
+     * 设备管理组
+     */
+    QPushButton *refreshPushButton              = nullptr;  /// 刷新按钮
+    QPushButton *switchPushButton               = nullptr;  /// 打开关闭设备按钮
+    QLabel      *rxLabel                        = nullptr;  /// 接受指示灯
+    QLabel      *txLabel                        = nullptr;  /// 发送指示灯
+
+    /*
+     * 输入设置组
+     */
+    QComboBox   *inputModelComboBox             = nullptr;  /// 输入模式预选框
+    QCheckBox   *cycleEnableCheckBox            = nullptr;  /// 循环使能复选框
+    QLineEdit   *cycleTimeLineEdit              = nullptr;  /// 循环周期输入框
+    QPushButton *readinFilePushButton           = nullptr;  /// 读入文件按钮
+    QPushButton *clearInputPushButton           = nullptr;  /// 清空输入框按钮
+    QPushButton *sendPushButton                 = nullptr;  /// 发送数据按钮
+    QTextEdit   *inputTextEdit                  = nullptr;  /// 数据输入框
+
+    /*
+     * 输出设置组
+     */
+    QComboBox   *outputModelComboBox            = nullptr;  /// 输出模式复选框
+    QCheckBox   *showDateCheckBox               = nullptr;  /// 显示日期使能复选框
+    QCheckBox   *showTimeCheckBox               = nullptr;  /// 显示时间使能复选框
+    QCheckBox   *showMsCheckBox                 = nullptr;  /// 显示毫秒使能复选框
+    QCheckBox   *showRxDataCheckBox             = nullptr;  /// 显示接收数据使能复选框
+    QCheckBox   *showTxDataCheckBox             = nullptr;  /// 显示发送数据使能复选框
+    QPushButton *clearOutputPushButton          = nullptr;  /// 清空输出按钮
+    QPushButton *saveOutputPushButton           = nullptr;  /// 保存输出按钮
+    QTextBrowser *outputTextBroswer             = nullptr;  /// 用于输出显示收发的数据
+
+    /*
+     * 数据管理组
+     */
+    QLabel      *rxFramesLabel                  = nullptr;  /// 用于显示接受帧数
+    QLabel      *txFramesLabel                  = nullptr;  /// 用于显示发送帧数
+    QLabel      *rxBytesLabel                   = nullptr;  /// 用于显示接收字节数
+    QLabel      *txBytesLabel                   = nullptr;  /// 用于显示发送字节数
+    QPushButton *resetRxCountPushButton         = nullptr;  /// 重置接收计数
+    QPushButton *resetTxCountPushButton         = nullptr;  /// 重置发送计数
+
+    /*
+     * 其他设置组
+     */
+    QPushButton *autoResponseSettingPushButton  = nullptr;  /// 自动回复设置面板调出按钮
+    QPushButton *highlightSettingPushButton     = nullptr;  /// 高亮设置面板调出按钮
+    QPushButton *readWriteSettingPushButton     = nullptr;  /// 读写设置面包调出按钮
+
+    /**
+     * @brief ui    -- 界面文件
+     */
+    Ui::SAKIODeviceWidget *ui                  = nullptr;
+
+    /**
+     * @brief initUiPointer -- 初始化指向ui控件的数据成员（指针）
+     */
+    void initUiPointer();
+private:
+    /*
+     * 动态申请弹窗内存
+     */
+
+    /**
+     * @brief createAutoResponseSettingWindow   -- 创建一个自动回复窗口并显示，该窗口关闭后将被销毁
+     */
+    void createAutoResponseSettingWindow();
+
+    /**
+     * @brief createHighlightSettingWindow      -- 创建一个高亮设置窗口并显示，该窗口关闭后将被销毁
+     */
+    void createHighlightSettingWindow();
+
+    /**
+     * @brief createReadWriteSettingWindow      -- 创建一个读写参数设置窗口并显示，该窗口关闭后将被销毁
+     */
+    void createReadWriteSettingWindow();
 private:
     SAKIODevice                 *device                     = nullptr;
     SAKIODeviceControler        *controler                  = nullptr;
-    SAKAutoResponseSettingPanel    *autoResponseSettingPanel   = nullptr;
+    SAKAutoResponseSettingPanel *autoResponseSettingPanel   = nullptr;
     QTimer                      *cycleTimer                 = nullptr;
     QHBoxLayout                 *customControlerLayout      = nullptr;
     QTimer                      *delayTimer                 = nullptr;
-    Ui::SAKIODeviceWidget       *ui                         = nullptr;
     QTimer                      *clearInfoTimer             = nullptr;
     SAKHighlighterSettingPanel  *highlighterSettingPanel    = nullptr;
     QPushButton                 *highlighterSettingButton   = nullptr;

@@ -33,7 +33,6 @@ SOURCES += \
     src/main.cpp \
     src/SAKApplication.cpp \
     src/mainwindow/SAKMainWindow.cpp \
-    src/tabpage/SAKIODeviceWidget2.cc \
     src/tabpage/SAKIODeviceWidget.cpp \
     src/tabpage/SAKIODevice.cpp \
     src/tabpage/SAKIODeviceControler.cpp \
@@ -51,7 +50,6 @@ HEADERS += \
     src/console/SAKConsole.hpp \
     src/console/SAKLogOutput.hpp \
     src/mainwindow/SAKMainWindow.h \
-    src/tabpage/SAKIODeviceWidget2.hh \
     src/tabpage/SAKIODeviceWidget.hpp \
     src/tabpage/SAKIODevice.h \
     src/tabpage/SAKIODeviceControler.h \
@@ -66,7 +64,6 @@ HEADERS += \
 FORMS += \
     src/console/SAKConsole.ui \
     src/mainwindow/SAKMainWindow.ui \
-    src/tabpage/SAKIODeviceWidget2.ui \
     src/tabpage/SAKIODeviceWidget.ui \
     src/tabpage/autoresponse/SAKAutoResponseItem.ui \
     src/tabpage/autoresponse/SAKAutoResponseSettingPanel.ui \
