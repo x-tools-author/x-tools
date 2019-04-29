@@ -10,7 +10,7 @@
 #pragma execution_character_set("utf-8")
 #endif
 
-#include "SAKVersion.h"
+#include "SAKVersion.hh"
 #include "ui_SAKVersion.h"
 
 #include <QDebug>

@@ -45,21 +45,33 @@ SOURCES += \
     src/mainwindow/MoreInformation.cpp
 
 HEADERS += \
-    src/SAKApplication.h \
-    src/SAKGlobal.hpp \
-    src/console/SAKConsole.hpp \
-    src/console/SAKLogOutput.hpp \
-    src/mainwindow/SAKMainWindow.h \
-    src/tabpage/SAKIODeviceWidget.hpp \
-    src/tabpage/SAKIODevice.h \
-    src/tabpage/SAKIODeviceControler.h \
-    src/tabpage/read_write_setting/SAKReadWriteSetting.hh \
-    src/tabpage/autoresponse/SAKAutoResponseItem.hpp \
-    src/tabpage/autoresponse/SAKAutoResponseSettingPanel.hpp \
-    src/tabpage/highlighter/SAKHighlighter.hpp \
-    src/tabpage/highlighter/SAKHighlighterSettingPanel.hpp \
-    src/mainwindow/SAKVersion.h \
-    src/mainwindow/MoreInformation.h
+    src/SAKApplication.hh \
+    src/SAKGlobal.hh \
+    src/TabPageSerialPort/SerialportSAKIODevice.hh \
+    src/TabPageSerialPort/SerialportSAKIODeviceControler.hh \
+    src/TabPageSerialPort/SerialportSAKIODeviceWidget.hh \
+    src/TabPageTcpClient/TcpSAKIODevice.hh \
+    src/TabPageTcpClient/TcpSAKIODeviceControler.hh \
+    src/TabPageTcpClient/TcpSAKIODeviceWidget.hh \
+    src/TabPageTcpServer/TcpServerSAKIODevice.hh \
+    src/TabPageTcpServer/TcpServerSAKIODeviceControler.hh \
+    src/TabPageTcpServer/TcpServerSAKIODeviceWidget.hh \
+    src/TabPageUdpClient/UdpSAKIODevice.hh \
+    src/TabPageUdpClient/UdpSAKIODeviceControler.hh \
+    src/TabPageUdpClient/UdpSAKIODeviceWidget.hh \
+    src/console/SAKConsole.hh \
+    src/console/SAKLogOutput.hh \
+    src/mainwindow/MoreInformation.hh \
+    src/mainwindow/SAKMainWindow.hh \
+    src/mainwindow/SAKVersion.hh \
+    src/tabpage/SAKIODevice.hh \
+    src/tabpage/SAKIODeviceControler.hh \
+    src/tabpage/SAKIODeviceWidget.hh \
+    src/tabpage/autoresponse/SAKAutoResponseItem.hh \
+    src/tabpage/autoresponse/SAKAutoResponseSettingPanel.hh \
+    src/tabpage/highlighter/SAKHighlighter.hh \
+    src/tabpage/highlighter/SAKHighlighterSettingPanel.hh \
+    src/tabpage/read_write_setting/SAKReadWriteSetting.hh
 
 FORMS += \
     src/console/SAKConsole.ui \
@@ -133,10 +145,7 @@ winrt || arm-linux{
         src/TabPageSerialPort/SerialportSAKIODeviceWidget.cpp \
         src/TabPageSerialPort/SerialportSAKIODevice.cpp \
         src/TabPageSerialPort/SerialportSAKIODeviceControler.cpp
-    HEADERS += \
-        src/TabPageSerialPort/SerialportSAKIODeviceWidget.h \
-        src/TabPageSerialPort/SerialportSAKIODevice.h \
-        src/TabPageSerialPort/SerialportSAKIODeviceControler.h
+    HEADERS +=
     FORMS   += \
         src/TabPageSerialPort/SerialportSAKIODeviceControler.ui
     INCLUDEPATH += \
@@ -150,10 +159,7 @@ SOURCES += \
     src/TabPageTcpClient/TcpSAKIODevice.cpp \
     src/TabPageTcpClient/TcpSAKIODeviceControler.cpp \
     src/TabPageTcpClient/TcpSAKIODeviceWidget.cpp
-HEADERS += \
-    src/TabPageTcpClient/TcpSAKIODevice.h \
-    src/TabPageTcpClient/TcpSAKIODeviceControler.h \
-    src/TabPageTcpClient/TcpSAKIODeviceWidget.h
+HEADERS +=
 FORMS   += \
     src/TabPageTcpClient/TcpSAKIODeviceControler.ui
 INCLUDEPATH += \
@@ -164,10 +170,7 @@ SOURCES += \
     src/TabPageTcpServer/TcpServerSAKIODeviceWidget.cpp \
     src/TabPageTcpServer/TcpServerSAKIODevice.cpp \
     src/TabPageTcpServer/TcpServerSAKIODeviceControler.cpp
-HEADERS += \
-    src/TabPageTcpServer/TcpServerSAKIODeviceWidget.h \
-    src/TabPageTcpServer/TcpServerSAKIODevice.h \
-    src/TabPageTcpServer/TcpServerSAKIODeviceControler.h
+HEADERS +=
 FORMS   += \
     src/TabPageTcpServer/TcpServerSAKIODeviceControler.ui
 INCLUDEPATH += \
@@ -178,10 +181,7 @@ SOURCES += \
     src/TabPageUdpClient/UdpSAKIODevice.cpp \
     src/TabPageUdpClient/UdpSAKIODeviceControler.cpp \
     src/TabPageUdpClient/UdpSAKIODeviceWidget.cpp
-HEADERS += \
-    src/TabPageUdpClient/UdpSAKIODevice.h \
-    src/TabPageUdpClient/UdpSAKIODeviceControler.h \
-    src/TabPageUdpClient/UdpSAKIODeviceWidget.h
+HEADERS +=
 FORMS   += \
     src/TabPageUdpClient/UdpSAKIODeviceControler.ui
 INCLUDEPATH += \
