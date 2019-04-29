@@ -8,13 +8,13 @@
 #******************************************************************************/
 
 # 域名解释工具
-include(tools/NSLookup/NSLookup.pri)
+include(Tools/NSLookup/NSLookup.pri)
 
 # 公网获取工具
-include(tools/GetPublicIP/GetPublicIP.pri)
+include(Tools/GetPublicIP/GetPublicIP.pri)
 
 # 软件更新工具
-include(tools/Update/Update.pri)
+include(Tools/Update/Update.pri)
 
 # 万能crc计算器
-include(tools/CRCCalculator/CRCCalculator.pri)
+include(Tools/CRCCalculator/CRCCalculator.pri)
