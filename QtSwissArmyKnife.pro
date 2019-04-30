@@ -96,7 +96,7 @@ INCLUDEPATH += \
 
 RESOURCES += \
     SAKResources.qrc \
-    StyleSheet/qss.qrc
+    Libs/StyleSheet/qss.qrc
 
 win32{
     RC_ICONS = window.ico
