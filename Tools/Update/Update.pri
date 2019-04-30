@@ -9,24 +9,24 @@
 }
 
 HEADERS += \
-    $$PWD/src/CheckForUpdateDialog.h \
-    $$PWD/src/ConfirmUpdateDialog.h \
-    $$PWD/src/DownloadDialog.h \
-    $$PWD/src/HttpAnalyzer.h \
-    $$PWD/src/HttpDownloader.h \
-    $$PWD/src/UpdateManager.h
+    $$PWD/Src/CheckForUpdateDialog.h \
+    $$PWD/Src/ConfirmUpdateDialog.h \
+    $$PWD/Src/DownloadDialog.h \
+    $$PWD/Src/HttpAnalyzer.h \
+    $$PWD/Src/HttpDownloader.h \
+    $$PWD/Src/UpdateManager.h
 
 SOURCES += \
-    $$PWD/src/CheckForUpdateDialog.cpp \
-    $$PWD/src/ConfirmUpdateDialog.cpp \
-    $$PWD/src/DownloadDialog.cpp \
-    $$PWD/src/HttpAnalyzer.cpp \
-    $$PWD/src/HttpDownloader.cpp \
-    $$PWD/src/UpdateManager.cpp
+    $$PWD/Src/CheckForUpdateDialog.cpp \
+    $$PWD/Src/ConfirmUpdateDialog.cpp \
+    $$PWD/Src/DownloadDialog.cpp \
+    $$PWD/Src/HttpAnalyzer.cpp \
+    $$PWD/Src/HttpDownloader.cpp \
+    $$PWD/Src/UpdateManager.cpp
 
 FORMS   += \
-    $$PWD/src/CheckForUpdateDialog.ui \
-    $$PWD/src/ConfirmUpdateDialog.ui \
-    $$PWD/src/DownloadDialog.ui
+    $$PWD/Src/CheckForUpdateDialog.ui \
+    $$PWD/Src/ConfirmUpdateDialog.ui \
+    $$PWD/Src/DownloadDialog.ui
 
-INCLUDEPATH += $$PWD/src
+INCLUDEPATH += $$PWD/Src

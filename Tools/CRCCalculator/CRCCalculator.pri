@@ -1,14 +1,14 @@
 HEADERS += \
-    $$PWD/src/CRCCalculator.h
+    $$PWD/Src/CRCCalculator.h
 
 SOURCES += \
-    $$PWD/src/CRCCalculator.cpp
+    $$PWD/Src/CRCCalculator.cpp
 
 FORMS   += \
-    $$PWD/src/CRCCalculator.ui
+    $$PWD/Src/CRCCalculator.ui
 
 INCLUDEPATH += \
-    $$PWD/src
+    $$PWD/Src
 
 RESOURCES += \
-    $$PWD/resource/resource.qrc
+    $$PWD/Resources/Resources.qrc

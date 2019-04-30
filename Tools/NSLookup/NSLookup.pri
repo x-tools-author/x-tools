@@ -9,13 +9,13 @@
 }
 
 HEADERS += \
-    $$PWD/src/nslookup.h
+    $$PWD/Src/nslookup.h
 
 SOURCES += \
-    $$PWD/src/nslookup.cpp
+    $$PWD/Src/nslookup.cpp
 
 FORMS   += \
-    $$PWD/src/nslookup.ui
+    $$PWD/Src/nslookup.ui
 
 INCLUDEPATH += \
-    $$PWD/src/
+    $$PWD/Src/

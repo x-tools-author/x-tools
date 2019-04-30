@@ -1,7 +1,7 @@
 <RCC>
     <qresource prefix="/images">
-        <file alias="Info.png">resource/images/Info.png</file>
-        <file alias="RtRxGray.png">resource/images/RtRxGray.png</file>
-        <file alias="RtRxRed.png">resource/images/RtRxRed.png</file>
+        <file alias="Info.png">Resources/images/Info.png</file>
+        <file alias="RtRxGray.png">Resources/images/RtRxGray.png</file>
+        <file alias="RtRxRed.png">Resources/images/RtRxRed.png</file>
     </qresource>
 </RCC>

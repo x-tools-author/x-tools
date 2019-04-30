@@ -9,15 +9,15 @@
 }
 
 HEADERS += \
-    $$PWD/src/GetPublicIPThread.h \
-    $$PWD/src/GetPublicIPWidget.h
+    $$PWD/Src/GetPublicIPThread.h \
+    $$PWD/Src/GetPublicIPWidget.h
 
 SOURCES += \
-    $$PWD/src/GetPublicIPThread.cpp \
-    $$PWD/src/GetPublicIPWidget.cpp
+    $$PWD/Src/GetPublicIPThread.cpp \
+    $$PWD/Src/GetPublicIPWidget.cpp
 
 FORMS   += \
-    $$PWD/src/GetPublicIPWidget.ui
+    $$PWD/Src/GetPublicIPWidget.ui
 
 INCLUDEPATH += \
-    $$PWD/src/
+    $$PWD/Src/

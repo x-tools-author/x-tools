@@ -28,71 +28,71 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     Src/SAKGlobal.cc \
-    Src/console/SAKConsole.cc \
-    Src/console/SAKLogOutput.cc \
+    Src/Console/SAKConsole.cc \
+    Src/Console/SAKLogOutput.cc \
     Src/main.cc \
     Src/SAKApplication.cc \
-    Src/main_window/SAKMainWindow.cc \
-    Src/tabpage/SAKIODeviceWidget.cc \
-    Src/tabpage/SAKIODevice.cc \
-    Src/tabpage/SAKIODeviceControler.cc \
-    Src/tabpage/read_write_setting/SAKReadWriteSetting.cc \
-    Src/tabpage/auto_response/SAKAutoResponseItem.cc \
-    Src/tabpage/auto_response/SAKAutoResponseSettingPanel.cc \
-    Src/tabpage/highlighter/SAKHighlighter.cc \
-    Src/tabpage/highlighter/SAKHighlighterSettingPanel.cc \
-    Src/main_window/SAKVersion.cc \
-    Src/main_window/MoreInformation.cc
+    Src/MainWindow/SAKMainWindow.cc \
+    Src/TabpPage/SAKIODeviceWidget.cc \
+    Src/TabpPage/SAKIODevice.cc \
+    Src/TabpPage/SAKIODeviceControler.cc \
+    Src/TabpPage/ReadWriteSetting/SAKReadWriteSetting.cc \
+    Src/TabpPage/AutoResponse/SAKAutoResponseItem.cc \
+    Src/TabpPage/AutoResponse/SAKAutoResponseSettingPanel.cc \
+    Src/TabpPage/Highlighter/SAKHighlighter.cc \
+    Src/TabpPage/Highlighter/SAKHighlighterSettingPanel.cc \
+    Src/MainWindow/SAKVersion.cc \
+    Src/MainWindow/MoreInformation.cc
 
 HEADERS += \
     Src/SAKApplication.hh \
     Src/SAKGlobal.hh \
-    Src/tabpage_serialport/SerialportSAKIODevice.hh \
-    Src/tabpage_serialport/SerialportSAKIODeviceControler.hh \
-    Src/tabpage_serialport/SerialportSAKIODeviceWidget.hh \
-    Src/tabpage_tcp_client/TcpSAKIODevice.hh \
-    Src/tabpage_tcp_client/TcpSAKIODeviceControler.hh \
-    Src/tabpage_tcp_client/TcpSAKIODeviceWidget.hh \
-    Src/tabpage_tcp_server/TcpServerSAKIODevice.hh \
-    Src/tabpage_tcp_server/TcpServerSAKIODeviceControler.hh \
-    Src/tabpage_tcp_server/TcpServerSAKIODeviceWidget.hh \
-    Src/tabpage_udp_client/UdpSAKIODevice.hh \
-    Src/tabpage_udp_client/UdpSAKIODeviceControler.hh \
-    Src/tabpage_udp_client/UdpSAKIODeviceWidget.hh \
-    Src/console/SAKConsole.hh \
-    Src/console/SAKLogOutput.hh \
-    Src/main_window/MoreInformation.hh \
-    Src/main_window/SAKMainWindow.hh \
-    Src/main_window/SAKVersion.hh \
-    Src/tabpage/SAKIODevice.hh \
-    Src/tabpage/SAKIODeviceControler.hh \
-    Src/tabpage/SAKIODeviceWidget.hh \
-    Src/tabpage/auto_response/SAKAutoResponseItem.hh \
-    Src/tabpage/auto_response/SAKAutoResponseSettingPanel.hh \
-    Src/tabpage/highlighter/SAKHighlighter.hh \
-    Src/tabpage/highlighter/SAKHighlighterSettingPanel.hh \
-    Src/tabpage/read_write_setting/SAKReadWriteSetting.hh
+    Src/TabPageSerialportAssistant/SerialportSAKIODevice.hh \
+    Src/TabPageSerialportAssistant/SerialportSAKIODeviceControler.hh \
+    Src/TabPageSerialportAssistant/SerialportSAKIODeviceWidget.hh \
+    Src/TabPageTCPClient/TcpSAKIODevice.hh \
+    Src/TabPageTCPClient/TcpSAKIODeviceControler.hh \
+    Src/TabPageTCPClient/TcpSAKIODeviceWidget.hh \
+    Src/TabPageTCPServer/TcpServerSAKIODevice.hh \
+    Src/TabPageTCPServer/TcpServerSAKIODeviceControler.hh \
+    Src/TabPageTCPServer/TcpServerSAKIODeviceWidget.hh \
+    Src/TabpageUDPClient/UdpSAKIODevice.hh \
+    Src/TabpageUDPClient/UdpSAKIODeviceControler.hh \
+    Src/TabpageUDPClient/UdpSAKIODeviceWidget.hh \
+    Src/Console/SAKConsole.hh \
+    Src/Console/SAKLogOutput.hh \
+    Src/MainWindow/MoreInformation.hh \
+    Src/MainWindow/SAKMainWindow.hh \
+    Src/MainWindow/SAKVersion.hh \
+    Src/TabpPage/SAKIODevice.hh \
+    Src/TabpPage/SAKIODeviceControler.hh \
+    Src/TabpPage/SAKIODeviceWidget.hh \
+    Src/TabpPage/AutoResponse/SAKAutoResponseItem.hh \
+    Src/TabpPage/AutoResponse/SAKAutoResponseSettingPanel.hh \
+    Src/TabpPage/Highlighter/SAKHighlighter.hh \
+    Src/TabpPage/Highlighter/SAKHighlighterSettingPanel.hh \
+    Src/TabpPage/ReadWriteSetting/SAKReadWriteSetting.hh
 
 FORMS += \
-    Src/console/SAKConsole.ui \
-    Src/main_window/SAKMainWindow.ui \
-    Src/tabpage/SAKIODeviceWidget.ui \
-    Src/tabpage/auto_response/SAKAutoResponseItem.ui \
-    Src/tabpage/auto_response/SAKAutoResponseSettingPanel.ui \
-    Src/tabpage/highlighter/SAKHighlighterSettingPanel.ui \
-    Src/tabpage/read_write_setting/SAKReadWriteSetting.ui \
-    Src/main_window/SAKVersion.ui \
-    Src/main_window/MoreInformation.ui
+    Src/Console/SAKConsole.ui \
+    Src/MainWindow/SAKMainWindow.ui \
+    Src/TabpPage/SAKIODeviceWidget.ui \
+    Src/TabpPage/AutoResponse/SAKAutoResponseItem.ui \
+    Src/TabpPage/AutoResponse/SAKAutoResponseSettingPanel.ui \
+    Src/TabpPage/Highlighter/SAKHighlighterSettingPanel.ui \
+    Src/TabpPage/ReadWriteSetting/SAKReadWriteSetting.ui \
+    Src/MainWindow/SAKVersion.ui \
+    Src/MainWindow/MoreInformation.ui
 
 INCLUDEPATH += \
     Src \
-    Src/main_window \
-    Src/main_window/common \
-    Src/console \
-    Src/tabpage \
-    Src/tabpage/highlighter \
-    Src/tabpage/auto_response \
-    Src/tabpage/read_write_setting
+    Src/MainWindow \
+    Src/MainWindow/common \
+    Src/Console \
+    Src/TabpPage \
+    Src/TabpPage/Highlighter \
+    Src/TabpPage/AutoResponse \
+    Src/TabpPage/ReadWriteSetting
 
 RESOURCES += \
     SAKResources.qrc \
@@ -124,7 +124,7 @@ DEFINES += NOT_USING_STATIC_EDITION
 #编译目录配置
 MOC_DIR     = $$OUT_PWD/moc
 OBJECTS_DIR = $$OUT_PWD/obj
-RCC_DIR     = $$OUT_PWD/Resources
+RCC_DIR     = $$OUT_PWD/resources
 UI_DIR      = $$OUT_PWD/ui
 
 #--------------------------------------------------------------------------------------------
@@ -139,50 +139,50 @@ winrt || arm-linux{
 !contains(DEFINES, SAK_NO_SERIALPORT_ASSISTANT){
     QT  += serialport
     SOURCES += \
-        Src/tabpage_serialport/SerialportSAKIODeviceWidget.cc \
-        Src/tabpage_serialport/SerialportSAKIODevice.cc \
-        Src/tabpage_serialport/SerialportSAKIODeviceControler.cc
+        Src/TabPageSerialportAssistant/SerialportSAKIODeviceWidget.cc \
+        Src/TabPageSerialportAssistant/SerialportSAKIODevice.cc \
+        Src/TabPageSerialportAssistant/SerialportSAKIODeviceControler.cc
     HEADERS +=
     FORMS   += \
-        Src/tabpage_serialport/SerialportSAKIODeviceControler.ui
+        Src/TabPageSerialportAssistant/SerialportSAKIODeviceControler.ui
     INCLUDEPATH += \
-        Src/tabpage_serialport
+        Src/TabPageSerialportAssistant
 }else {
     message( "该版本Qt可能不包含串口模块，已经忽略串口模块！（串口助手功能被屏蔽！）" )
 }
 
 # TCP 客户端
 SOURCES += \
-    Src/tabpage_tcp_client/TcpSAKIODevice.cc \
-    Src/tabpage_tcp_client/TcpSAKIODeviceControler.cc \
-    Src/tabpage_tcp_client/TcpSAKIODeviceWidget.cc
+    Src/TabPageTCPClient/TcpSAKIODevice.cc \
+    Src/TabPageTCPClient/TcpSAKIODeviceControler.cc \
+    Src/TabPageTCPClient/TcpSAKIODeviceWidget.cc
 HEADERS +=
 FORMS   += \
-    Src/tabpage_tcp_client/TcpSAKIODeviceControler.ui
+    Src/TabPageTCPClient/TcpSAKIODeviceControler.ui
 INCLUDEPATH += \
-    Src/tabpage_tcp_client
+    Src/TabPageTCPClient
 
 # TCP服务器
 SOURCES += \
-    Src/tabpage_tcp_server/TcpServerSAKIODeviceWidget.cc \
-    Src/tabpage_tcp_server/TcpServerSAKIODevice.cc \
-    Src/tabpage_tcp_server/TcpServerSAKIODeviceControler.cc
+    Src/TabPageTCPServer/TcpServerSAKIODeviceWidget.cc \
+    Src/TabPageTCPServer/TcpServerSAKIODevice.cc \
+    Src/TabPageTCPServer/TcpServerSAKIODeviceControler.cc
 HEADERS +=
 FORMS   += \
-    Src/tabpage_tcp_server/TcpServerSAKIODeviceControler.ui
+    Src/TabPageTCPServer/TcpServerSAKIODeviceControler.ui
 INCLUDEPATH += \
-    Src/tabpage_tcp_server
+    Src/TabPageTCPServer
 
 # UDP客户端
 SOURCES += \
-    Src/tabpage_udp_client/UdpSAKIODevice.cc \
-    Src/tabpage_udp_client/UdpSAKIODeviceControler.cc \
-    Src/tabpage_udp_client/UdpSAKIODeviceWidget.cc
+    Src/TabpageUDPClient/UdpSAKIODevice.cc \
+    Src/TabpageUDPClient/UdpSAKIODeviceControler.cc \
+    Src/TabpageUDPClient/UdpSAKIODeviceWidget.cc
 HEADERS +=
 FORMS   += \
-    Src/tabpage_udp_client/UdpSAKIODeviceControler.ui
+    Src/TabpageUDPClient/UdpSAKIODeviceControler.ui
 INCLUDEPATH += \
-    Src/tabpage_udp_client
+    Src/TabpageUDPClient
 
 DISTFILES += \
     Other/update.json
