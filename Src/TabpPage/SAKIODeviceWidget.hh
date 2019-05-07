@@ -69,14 +69,13 @@ protected:
     QLabel      *txLabel                        = nullptr;  /// 发送指示灯
 private slots:
     void on_refreshPushButton_clicked(){emit need2refresh();}
-    void on_switchPushButton_clicked(){emit need2OpenOrClose();}
-
+    void on_switchPushButton_clicked(){emit need2openOrClose();}
 
      // 输入设置组
 protected:
     TextDisplayModel inputModel;
     bool cyclEnable;
-    quint32 cycleTime;
+    quint32 cycleTime = 0;
 
     QComboBox   *inputModelComboBox             = nullptr;  /// 输入模式预选框
     QCheckBox   *cycleEnableCheckBox            = nullptr;  /// 循环使能复选框
@@ -84,8 +83,14 @@ protected:
     QPushButton *readinFilePushButton           = nullptr;  /// 读入文件按钮
     QPushButton *clearInputPushButton           = nullptr;  /// 清空输入框按钮
     QPushButton *sendPushButton                 = nullptr;  /// 发送数据按钮
-    QTextEdit   *inputTextEdit                  = nullptr;  /// 数据输入框
+    QTextEdit   *inputTextEdit                  = nullptr;  /// 数据输入框        
 private slots:
+    void on_inputModelComboBox_currentTextChanged(const QString &text);
+    void on_cycleEnableCheckBox_clicked();
+    void on_cycleTimeLineEdit_textChanged(const QString &text);
+    void on_readinFilePushButton_clicked();
+    void on_clearInputPushButton_clicked();
+    void on_sendPushButton_clicked();
 
     //数据输出组管理
 protected:
@@ -108,7 +113,7 @@ protected:
     QPushButton *saveOutputPushButton           = nullptr;  /// 保存输出按钮
     QTextBrowser *outputTextBroswer             = nullptr;  /// 用于输出显示收发的数据
 private slots:
-    void on_outputModelComboBox_currentIndexChanged(const QString &text);
+    void on_outputModelComboBox_currentTextChanged(const QString &text);
     void on_showDateCheckBox_clicked();
     void on_autoWrapCheckBox_clicked();
     void on_showTimeCheckBox_clicked();
@@ -161,32 +166,12 @@ private:
     void initUiPointer();    
     void setLabelText(QLabel* label, quint64 text);
 private:
-    /*
-     * 动态申请弹窗内存
-     */
-
-    /**
-     * @brief createAutoResponseSettingWindow   -- 创建一个自动回复窗口并显示，该窗口关闭后将被销毁
-     */
-//    void createAutoResponseSettingWindow();
-
-    /**
-     * @brief createHighlightSettingWindow      -- 创建一个高亮设置窗口并显示，该窗口关闭后将被销毁
-     */
-//    void createHighlightSettingWindow();
-
-    /**
-     * @brief createReadWriteSettingWindow      -- 创建一个读写参数设置窗口并显示，该窗口关闭后将被销毁
-     */
-//    void createReadWriteSettingWindow();
-private:
     const char *logCategory = "SAKIODeviceWidget";
     SAKIODevice                 *device                     = nullptr;
     SAKIODeviceControler        *controler                  = nullptr;
     SAKAutoResponseSettingPanel *autoResponseSettingPanel   = nullptr;
     QTimer                      *cycleTimer                 = nullptr;
     QHBoxLayout                 *customControlerLayout      = nullptr;
-    QTimer                      *delayTimer                 = nullptr;
     QTimer                      *clearInfoTimer             = nullptr;
     SAKHighlighterSettingPanel  *highlighterSettingPanel    = nullptr;
     QPushButton                 *highlighterSettingButton   = nullptr;
@@ -222,11 +207,7 @@ private slots:
     virtual void updateRxImage();
     virtual void updateTxImage();
 
-    void cancleBytesDelay();
     void cancleCycle();
-
-    void setDelayTime(QString time);
-    void readDelayTime();
 
     void setCycleTime(QString time);
     void readCycleTime();
@@ -237,7 +218,6 @@ private slots:
     void setInputMode(QString mode);
     void readInputMode();
 
-    void openFile();
     void textFormatControl();
 
     void outputTimeInfoCheckBoxClicked(bool checked);
@@ -252,9 +232,7 @@ private slots:
     void afterDeviceClose();
 
     void cycleTimerTimeout();
-    void delayTimerTimeout();
     void checkedBoxCycleClicked(bool checked);
-    void checkedBoxDelayClicked(bool checked);
 
     void outputInfo(QString info, QString color = "black", bool prefix = true);
     void outputErrorString(QString str);
@@ -277,7 +255,8 @@ signals:
     void need2open();
     void need2close();
     void need2refresh();
-    void need2OpenOrClose();
+    void need2openOrClose();
+    void need2write();
 };
 
 #endif  // SAKIODEVICEWIDGET_H

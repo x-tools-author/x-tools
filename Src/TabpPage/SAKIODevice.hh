@@ -40,7 +40,7 @@ protected:
     int _readDelayTime = 5;
     int _writeDelayTime = 5;
 private:
-    /// SAKIODeviceSerialport、TcpClientSAKIODevice、TcpServerSAKIODevice、UdpSAKIODevice
+    /// SAKIODeviceSerialport、SAKIODeviceTcpClient、SAKIODeviceTcpServer、SAKIODeviceUdpClient
     QString sakDeviceNmae;
 signals:
     void deviceOpenSuccessfully();

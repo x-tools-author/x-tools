@@ -33,7 +33,6 @@ SAKIODeviceWidget::SAKIODeviceWidget(SAKIODevice *_device, SAKIODeviceControler 
     ,autoResponseSettingPanel (new SAKAutoResponseSettingPanel)
     ,cycleTimer (new QTimer)
     ,customControlerLayout (new QHBoxLayout)
-    ,delayTimer (new QTimer)
     ,ui (new Ui::SAKIODeviceWidget)
     ,clearInfoTimer (new QTimer)
 {
@@ -79,7 +78,6 @@ void SAKIODeviceWidget::initUI()
     showDateCheckBox->setChecked(false);
     showTimeCheckBox->setChecked(true);
     cycleTimeLineEdit->setValidator(new QIntValidator(10, 24*60*60*1000, cycleTimeLineEdit));
-    ui->lineEditBytesDelayTime->setValidator(new QIntValidator(10, 24*60*60*1000, ui->lineEditBytesDelayTime));
 
 #if 0   /// 按钮图标
     clearInputPushButton->setIcon(QApplication::style()->standardIcon(QStyle::SP_DialogResetButton));
@@ -92,7 +90,6 @@ void SAKIODeviceWidget::initUI()
     readOutputMode();
     readInputMode();
     readCycleTime();
-    readDelayTime();
     readAutoResponseFlag();
 
     rxLabel->setPixmap(QPixmap(":/images/RtRxGray.png").scaled(rxtxSize, Qt::KeepAspectRatio));
@@ -172,13 +169,10 @@ void SAKIODeviceWidget::Connect()
     connect(refreshPushButton, SIGNAL(clicked(bool)), controler, SLOT(refresh()));
 
     connect(cycleTimer, SIGNAL(timeout()), this, SLOT(cycleTimerTimeout()));
-    connect(delayTimer, SIGNAL(timeout()), this, SLOT(delayTimerTimeout()));
     connect(cycleEnableCheckBox, SIGNAL(clicked(bool)), this, SLOT(checkedBoxCycleClicked(bool)));
-    connect(ui->checkBoxBytesDelay, SIGNAL(clicked(bool)), this, SLOT(checkedBoxDelayClicked(bool)));
     connect(device, SIGNAL(errorStr(QString)), this, SLOT(outputErrorString(QString)));
     connect(device, SIGNAL(infoStr(QString)), this, SLOT(outputInformationString(QString)));
     connect(inputTextEdit, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
-    connect(readinFilePushButton, SIGNAL(clicked(bool)), this, SLOT(openFile()));
 
     connect(showTimeCheckBox, SIGNAL(clicked(bool)), this, SLOT(outputTimeInfoCheckBoxClicked(bool)));
 
@@ -194,8 +188,6 @@ void SAKIODeviceWidget::Connect()
 
     /// 循环周期
     connect(cycleTimeLineEdit, SIGNAL(textChanged(QString)), this, SLOT(setCycleTime(QString)));
-    /// 字节间延时
-    connect(ui->lineEditBytesDelayTime, SIGNAL(textChanged(QString)), this, SLOT(setDelayTime(QString)));
 
     /// 指示灯
     connect(device, SIGNAL(bytesRead(QByteArray)), this, SLOT(updateRxImage()));
@@ -204,10 +196,6 @@ void SAKIODeviceWidget::Connect()
     /// 文本模式
     connect(inputModelComboBox, SIGNAL(currentTextChanged(QString)), this , SLOT(setInputMode(QString)));
     connect(outputModelComboBox, SIGNAL(currentTextChanged(QString)), this, SLOT(setOutputMode(QString)));
-
-    /// 循环发送与字节间延时发送
-    connect(ui->checkBoxBytesDelay, SIGNAL(clicked(bool)), this, SLOT(cancleCycle()));
-    connect(cycleEnableCheckBox, SIGNAL(clicked(bool)), this, SLOT(cancleBytesDelay()));
 
     /// 弹出自动回复设置面板
     connect(autoResponseSettingPushButton, SIGNAL(clicked(bool)), autoResponseSettingPanel, SLOT(show()));
@@ -240,12 +228,6 @@ void SAKIODeviceWidget::afterDeviceClose()
 
     if (cycleTimer->isActive()){
         cycleTimer->stop();
-        sendPushButton->setEnabled(true);
-        cycleTimeLineEdit->setEnabled(true);
-    }
-
-    if (delayTimer->isActive()){
-        delayTimer->stop();
         sendPushButton->setEnabled(true);
         cycleTimeLineEdit->setEnabled(true);
     }
@@ -298,27 +280,6 @@ void SAKIODeviceWidget::writeBytes()
         }else {
              outputInfo(tipStr, "red");
         }
-    }else if(ui->checkBoxBytesDelay->isChecked()){
-        if (device->isOpen()){
-            dataTemp = dataBytes();
-            if (dataTemp.isEmpty()){
-                dataTemp = QByteArray("(null)");
-            }
-
-            /// 马上发送第一个字节，如果本身只有一个字节，停止后续操作。
-            delayTimerTimeout();
-            if (!dataTemp.isEmpty()){
-                qlonglong delayTime = ui->lineEditBytesDelayTime->text().toLongLong();
-                if (delayTime == 0){
-                    delayTime = 1000;
-                }
-                delayTimer->start(static_cast<int>(delayTime));
-                sendPushButton->setEnabled(false);
-                cycleTimeLineEdit->setEnabled(false);
-            }
-        }else {
-             outputInfo(tipStr, "red");
-        }
     }else{
         if (device->isOpen()){
             emit need2writeBytes(dataBytes());
@@ -339,17 +300,6 @@ void SAKIODeviceWidget::checkedBoxCycleClicked(bool checked)
     }
 }
 
-void SAKIODeviceWidget::checkedBoxDelayClicked(bool checked)
-{
-    if (checked){
-
-    }else {
-        delayTimer->stop();
-        sendPushButton->setEnabled(true);
-        cycleTimeLineEdit->setEnabled(true);
-    }
-}
-
 void SAKIODeviceWidget::cycleTimerTimeout()
 {
     if (device->isOpen()){
@@ -358,35 +308,6 @@ void SAKIODeviceWidget::cycleTimerTimeout()
         cycleTimer->stop();
         outputInfo(tr("设备未就绪，本次发送操作取消！"), "red");
     }
-}
-
-void SAKIODeviceWidget::delayTimerTimeout()
-{
-    if (device->isOpen()){
-        if (dataTemp.isEmpty()){
-            delayTimer->stop();
-            sendPushButton->setEnabled(true);
-            cycleTimeLineEdit->setEnabled(true);
-        }else {
-            QByteArray array;
-            array[0] = dataTemp.at(0);
-            emit need2writeBytes(array);
-            dataTemp.remove(0, 1);
-            if (dataTemp.isEmpty()){
-                delayTimer->stop();
-                sendPushButton->setEnabled(true);
-                cycleTimeLineEdit->setEnabled(true);
-            }
-        }
-    }else {
-        delayTimer->stop();
-        outputInfo(tr("设备未就绪，本次发送操作取消！"), "red");
-    }
-}
-
-void SAKIODeviceWidget::cancleBytesDelay()
-{
-    ui->checkBoxBytesDelay->setChecked(false);
 }
 
 void SAKIODeviceWidget::cancleCycle()
@@ -514,21 +435,6 @@ void SAKIODeviceWidget::bytesRead(QByteArray data)
     refreshOutputData(data, true);
 }
 
-void SAKIODeviceWidget::openFile()
-{
-    QString fileName = QFileDialog::getOpenFileName(this, tr("打开文件"));
-    if (!fileName.isEmpty()){
-        QFile file(fileName);
-        if(file.open(QFile::ReadOnly)){
-            QByteArray data = file.readAll();
-            inputTextEdit->setText(QString(data).toUtf8());
-            file.close();
-        }else{
-            qWarning() << QString("%1 %2").arg(tr("无法打开文件")).arg(fileName);
-        }
-    }
-}
-
 void SAKIODeviceWidget::bytesWritten(QByteArray data)
 {
     qlonglong writeBytes = txBytesLabel->text().toLongLong();
@@ -544,6 +450,7 @@ void SAKIODeviceWidget::bytesWritten(QByteArray data)
 
 void SAKIODeviceWidget::refreshOutputData(QByteArray &data, bool isReceivedData)
 {
+    Q_UNUSED(isReceivedData);
 //    if (ui->checkBoxPause->isChecked()){
 //        return;
 //    }
@@ -645,6 +552,7 @@ void SAKIODeviceWidget::readOutputMode()
     /// 默认使用Ascii输入
     if (value.isEmpty()){
         value = QString(textModel.valueToKey(Ascii));
+        setInputMode(value);
     }
 
     outputModelComboBox->setCurrentText(value);
@@ -695,21 +603,6 @@ void SAKIODeviceWidget::updateRxImage()
     }
 
     b = !b;
-}
-
-void SAKIODeviceWidget::setDelayTime(QString time)
-{
-    QString option = QString("DelayTime");
-    QString value = time;
-    writeSetting(option, value);
-}
-
-void SAKIODeviceWidget::readDelayTime()
-{
-    QString option = QString("DelayTime");
-    QString value = readSetting(option);
-
-    ui->lineEditBytesDelayTime->setText(value);
 }
 
 void SAKIODeviceWidget::setCycleTime(QString time)
@@ -877,8 +770,13 @@ void SAKIODeviceWidget::setLabelText(QLabel *label, quint64 text)
     label->setText(QString::number(text));
 }
 
-void SAKIODeviceWidget::on_outputModelComboBox_currentIndexChanged(const QString &text)
+void SAKIODeviceWidget::on_outputModelComboBox_currentTextChanged(const QString &text)
 {
+    /// 在ui初始化的时候，会出现text为empty的情况
+    if (text.isEmpty()){
+        return;
+    }
+
     QMetaEnum model = QMetaEnum::fromType<TextDisplayModel>();
     bool ok = false;
     int ret = model.keyToValue(text.toLatin1().data(), &ok);
@@ -963,4 +861,73 @@ void SAKIODeviceWidget::on_saveOutputPushButton_clicked()
         QLoggingCategory category(logCategory);
         qCWarning(category) << "Can not open file:" << outFile.fileName() << "," << outFile.errorString();
     }
+}
+
+void SAKIODeviceWidget::on_inputModelComboBox_currentTextChanged(const QString &text)
+{
+    /// 在ui初始化的时候，会出现text为empty的情况
+    if (text.isEmpty()){
+        return;
+    }
+
+    QMetaEnum model = QMetaEnum::fromType<TextDisplayModel>();
+    bool ok = false;
+    int ret = model.keyToValue(text.toLatin1().data(), &ok);
+    if (ok){
+        inputTextMode = static_cast<TextDisplayModel>(ret);
+    }else{
+        QLoggingCategory category(logCategory);
+        qCWarning(category) << "Input text model error!";
+    }
+}
+
+void SAKIODeviceWidget::on_cycleEnableCheckBox_clicked()
+{
+    if (cycleEnableCheckBox->isChecked()){
+        cyclEnable = true;
+    }else{
+        cyclEnable = false;
+    }
+}
+
+void SAKIODeviceWidget::on_cycleTimeLineEdit_textChanged(const QString &text)
+{
+    if (text.isEmpty()){
+        return;
+    }
+
+    bool ok = 0;
+    int ret = text.toInt(&ok);
+    if (ok){
+        cycleTime = static_cast<quint32>(ret);
+    }else{
+        cycleTime = 100;
+        QLoggingCategory category(logCategory);
+        qCWarning(category) << "Cycle time setting error! Cycle time will be set as 100ms!";
+    }
+}
+
+void SAKIODeviceWidget::on_readinFilePushButton_clicked()
+{
+    QString fileName = QFileDialog::getOpenFileName(this, tr("打开文件"));
+    if (!fileName.isEmpty()){
+        QFile file(fileName);
+        if(file.open(QFile::ReadOnly)){
+            QByteArray data = file.readAll();
+            inputTextEdit->setText(QString(data).toUtf8());
+            file.close();
+        }else{
+            qWarning() << QString("%1 %2").arg(tr("无法打开文件")).arg(fileName);
+        }
+    }
+}
+
+void SAKIODeviceWidget::on_clearInputPushButton_clicked()
+{
+    inputTextEdit->clear();
+}
+
+void SAKIODeviceWidget::on_sendPushButton_clicked()
+{
+    emit need2write();
 }
