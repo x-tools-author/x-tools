@@ -21,7 +21,7 @@
      </property>
      <layout class="QGridLayout" name="gridLayout_6">
       <item row="0" column="0">
-       <widget class="QTextBrowser" name="textBrowserOutputData"/>
+       <widget class="QTextBrowser" name="outputTextBroswer"/>
       </item>
      </layout>
     </widget>
@@ -39,7 +39,7 @@
      </property>
      <layout class="QGridLayout" name="gridLayout_4">
       <item row="0" column="0">
-       <widget class="QTextEdit" name="textEditInputData"/>
+       <widget class="QTextEdit" name="inputTextEdit"/>
       </item>
      </layout>
     </widget>
@@ -99,7 +99,7 @@
         </property>
         <layout class="QGridLayout" name="gridLayout_7">
          <item row="1" column="1">
-          <widget class="QLabel" name="labelRX">
+          <widget class="QLabel" name="rxLabel">
            <property name="minimumSize">
             <size>
              <width>22</width>
@@ -122,7 +122,7 @@
          <item row="1" column="2">
           <widget class="QLabel" name="label_5">
            <property name="text">
-            <string>发(Tx)</string>
+            <string>Tx</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -130,7 +130,7 @@
           </widget>
          </item>
          <item row="1" column="3">
-          <widget class="QLabel" name="labelTX">
+          <widget class="QLabel" name="txLabel">
            <property name="minimumSize">
             <size>
              <width>22</width>
@@ -148,7 +148,7 @@
          <item row="1" column="0">
           <widget class="QLabel" name="label">
            <property name="text">
-            <string>收(Rx)</string>
+            <string>Rx</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -156,14 +156,14 @@
           </widget>
          </item>
          <item row="0" column="0" colspan="2">
-          <widget class="QPushButton" name="pushButtonRefresh">
+          <widget class="QPushButton" name="refreshPushButton">
            <property name="text">
             <string>刷新</string>
            </property>
           </widget>
          </item>
          <item row="0" column="2" colspan="2">
-          <widget class="QPushButton" name="pushButtonOpen">
+          <widget class="QPushButton" name="switchPushButton">
            <property name="text">
             <string>打开</string>
            </property>
@@ -199,7 +199,7 @@
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QComboBox" name="comboBoxInputMode">
+          <widget class="QComboBox" name="inputModelComboBox">
            <property name="currentIndex">
             <number>4</number>
            </property>
@@ -236,28 +236,28 @@
           </widget>
          </item>
          <item row="3" column="1">
-          <widget class="QPushButton" name="pushButtonClearInput">
+          <widget class="QPushButton" name="clearInputPushButton">
            <property name="text">
             <string>清空输入</string>
            </property>
           </widget>
          </item>
          <item row="4" column="1">
-          <widget class="QPushButton" name="pushButtonSendData">
+          <widget class="QPushButton" name="sendPushButton">
            <property name="text">
             <string>发送数据</string>
            </property>
           </widget>
          </item>
          <item row="1" column="0" colspan="2">
-          <widget class="QCheckBox" name="checkBoxCycle">
+          <widget class="QCheckBox" name="cycleEnableCheckBox">
            <property name="text">
             <string>循环周期(单位：毫秒)</string>
            </property>
           </widget>
          </item>
          <item row="2" column="0">
-          <widget class="QLineEdit" name="lineEditCycleTime">
+          <widget class="QLineEdit" name="cycleTimeLineEdit">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -270,7 +270,7 @@
           </widget>
          </item>
          <item row="2" column="1">
-          <widget class="QPushButton" name="pushButtonReadInFile">
+          <widget class="QPushButton" name="readinFilePushButton">
            <property name="text">
             <string>读入文件</string>
            </property>
@@ -323,22 +323,28 @@
          <string>数据输出设置</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_2">
-         <item row="2" column="1">
-          <widget class="QCheckBox" name="checkBoxPause">
+         <item row="2" column="0">
+          <widget class="QCheckBox" name="showDateCheckBox">
            <property name="text">
-            <string>暂停输出</string>
+            <string>输出日期</string>
            </property>
           </widget>
          </item>
-         <item row="4" column="0">
-          <widget class="QCheckBox" name="checkBoxOutputTime">
+         <item row="4" column="1">
+          <widget class="QCheckBox" name="showMsCheckBox">
            <property name="text">
-            <string>输出时间</string>
+            <string>显示毫秒</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="checked">
+            <bool>false</bool>
            </property>
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QComboBox" name="comboBoxOutputMode">
+          <widget class="QComboBox" name="outputModelComboBox">
            <property name="currentIndex">
             <number>4</number>
            </property>
@@ -374,23 +380,45 @@
            </item>
           </widget>
          </item>
-         <item row="4" column="1">
-          <widget class="QCheckBox" name="checkBoxOutputMS">
+         <item row="9" column="1">
+          <widget class="QPushButton" name="saveOutputPushButton">
            <property name="text">
-            <string>显示毫秒</string>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="checked">
-            <bool>false</bool>
+            <string>保存输出</string>
            </property>
           </widget>
          </item>
-         <item row="8" column="0" colspan="2">
-          <widget class="QCheckBox" name="checkBoxOutputReceiveDataOnly">
+         <item row="2" column="1">
+          <widget class="QCheckBox" name="autoWrapCheckBox">
            <property name="text">
-            <string>只输出接收到的数据数据</string>
+            <string>自动换行</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1">
+          <widget class="QCheckBox" name="showTxDataCheckBox">
+           <property name="text">
+            <string>显示发送</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <widget class="QCheckBox" name="showRxDataCheckBox">
+           <property name="text">
+            <string>显示接收</string>
+           </property>
+          </widget>
+         </item>
+         <item row="9" column="0">
+          <widget class="QPushButton" name="clearOutputPushButton">
+           <property name="text">
+            <string>清空输出</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QCheckBox" name="showTimeCheckBox">
+           <property name="text">
+            <string>输出时间</string>
            </property>
           </widget>
          </item>
@@ -398,27 +426,6 @@
           <widget class="QLabel" name="label_6">
            <property name="text">
             <string>输出模式</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QCheckBox" name="checkBoxOutputDate">
-           <property name="text">
-            <string>输出日期</string>
-           </property>
-          </widget>
-         </item>
-         <item row="9" column="0">
-          <widget class="QPushButton" name="pushButtonClearOutput">
-           <property name="text">
-            <string>清空输出</string>
-           </property>
-          </widget>
-         </item>
-         <item row="9" column="1">
-          <widget class="QPushButton" name="pushButtonSaveOutput">
-           <property name="text">
-            <string>保存输出</string>
            </property>
           </widget>
          </item>
@@ -458,16 +465,16 @@
           </widget>
          </item>
          <item row="4" column="0">
-          <widget class="QPushButton" name="pushButtonResetSendDataCount">
+          <widget class="QPushButton" name="resetTxCountPushButton">
            <property name="text">
             <string>复位发送</string>
            </property>
           </widget>
          </item>
          <item row="1" column="0">
-          <widget class="QLabel" name="labelSendFrames">
+          <widget class="QLabel" name="txFramesLabel">
            <property name="styleSheet">
-            <string notr="true">QLabel#labelSendFrames{
+            <string notr="true">QLabel#txFramesLabel{
     color:blue
 }</string>
            </property>
@@ -480,9 +487,9 @@
           </widget>
          </item>
          <item row="3" column="0">
-          <widget class="QLabel" name="labelReceiveFrames">
+          <widget class="QLabel" name="rxFramesLabel">
            <property name="styleSheet">
-            <string notr="true">QLabel#labelReceiveFrames{
+            <string notr="true">QLabel#rxFramesLabel{
     color:green
 }</string>
            </property>
@@ -495,9 +502,9 @@
           </widget>
          </item>
          <item row="3" column="1">
-          <widget class="QLabel" name="labelReceiveBytes">
+          <widget class="QLabel" name="rxBytesLabel">
            <property name="styleSheet">
-            <string notr="true">QLabel#labelReceiveBytes{
+            <string notr="true">QLabel#rxBytesLabel{
     color:green
 }</string>
            </property>
@@ -520,9 +527,9 @@
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QLabel" name="labelSendBytes">
+          <widget class="QLabel" name="txBytesLabel">
            <property name="styleSheet">
-            <string notr="true">QLabel#labelSendBytes{
+            <string notr="true">QLabel#txBytesLabel{
     color:blue
 }</string>
            </property>
@@ -545,7 +552,7 @@
           </widget>
          </item>
          <item row="4" column="1">
-          <widget class="QPushButton" name="pushButtonResetReceiveDataCount">
+          <widget class="QPushButton" name="resetRxCountPushButton">
            <property name="text">
             <string>复位接收</string>
            </property>
@@ -561,21 +568,21 @@
         </property>
         <layout class="QGridLayout" name="gridLayout_8">
          <item row="0" column="1">
-          <widget class="QPushButton" name="pushButtonHighlighting">
+          <widget class="QPushButton" name="highlightSettingPushButton">
            <property name="text">
             <string>高亮设置</string>
            </property>
           </widget>
          </item>
          <item row="0" column="0">
-          <widget class="QPushButton" name="pushButtonAutoRespone">
+          <widget class="QPushButton" name="autoResponseSettingPushButton">
            <property name="text">
             <string>自动回复</string>
            </property>
           </widget>
          </item>
          <item row="1" column="0">
-          <widget class="QPushButton" name="pushButtonRWParameter">
+          <widget class="QPushButton" name="readWriteSettingPushButton">
            <property name="text">
             <string>读写参数</string>
            </property>
@@ -683,9 +690,9 @@
  <resources/>
  <connections>
   <connection>
-   <sender>pushButtonClearOutput</sender>
+   <sender>clearOutputPushButton</sender>
    <signal>clicked()</signal>
-   <receiver>textBrowserOutputData</receiver>
+   <receiver>outputTextBroswer</receiver>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -699,9 +706,9 @@
    </hints>
   </connection>
   <connection>
-   <sender>pushButtonClearInput</sender>
+   <sender>clearInputPushButton</sender>
    <signal>clicked()</signal>
-   <receiver>textEditInputData</receiver>
+   <receiver>inputTextEdit</receiver>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">

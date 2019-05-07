@@ -96,7 +96,7 @@ INCLUDEPATH += \
 
 RESOURCES += \
     SAKResources.qrc \
-    Libs/StyleSheet/qss.qrc
+    3rd/StyleSheet/qss.qrc
 
 win32{
     RC_ICONS = window.ico
@@ -129,7 +129,7 @@ UI_DIR      = $$OUT_PWD/ui
 
 #--------------------------------------------------------------------------------------------
 # 子项目
-include(SAKTools.pri)
+include(Src/Modules/SAKTools.pri)
 
 # 取消该宏的定义可以将串口模块屏蔽
 winrt || arm-linux{

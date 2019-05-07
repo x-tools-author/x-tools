@@ -34,6 +34,11 @@ namespace Ui {
 class SAKIODeviceWidget;
 }
 
+/// @warning Hei, Developer! Takeacre of this warning!
+/// 由于使用了信号与槽的自动关联，指向ui控件的指针变量的名称必须与ui控件的objectName保持一致。
+/// 使用designer改变ui控件变量名称时，objectName属性会自动更新，不要在designer中手动更改ui控件的objectName。
+/// objectName与变量名称不一致会导致信号与槽的关联失效。
+
 class SAKIODeviceWidget : public QWidget
 {
     Q_OBJECT
@@ -57,17 +62,22 @@ public:
     };
     Q_ENUM(TextDisplayModel)
 protected:
-    /*
-     * 设备管理组
-     */
+    // 设备管理组
     QPushButton *refreshPushButton              = nullptr;  /// 刷新按钮
     QPushButton *switchPushButton               = nullptr;  /// 打开关闭设备按钮
     QLabel      *rxLabel                        = nullptr;  /// 接受指示灯
     QLabel      *txLabel                        = nullptr;  /// 发送指示灯
+private slots:
+    void on_refreshPushButton_clicked(){emit need2refresh();}
+    void on_switchPushButton_clicked(){emit need2OpenOrClose();}
 
-    /*
-     * 输入设置组
-     */
+
+     // 输入设置组
+protected:
+    TextDisplayModel inputModel;
+    bool cyclEnable;
+    quint32 cycleTime;
+
     QComboBox   *inputModelComboBox             = nullptr;  /// 输入模式预选框
     QCheckBox   *cycleEnableCheckBox            = nullptr;  /// 循环使能复选框
     QLineEdit   *cycleTimeLineEdit              = nullptr;  /// 循环周期输入框
@@ -75,12 +85,21 @@ protected:
     QPushButton *clearInputPushButton           = nullptr;  /// 清空输入框按钮
     QPushButton *sendPushButton                 = nullptr;  /// 发送数据按钮
     QTextEdit   *inputTextEdit                  = nullptr;  /// 数据输入框
+private slots:
 
-    /*
-     * 输出设置组
-     */
+    //数据输出组管理
+protected:
+    TextDisplayModel outputTextModel = SAKIODeviceWidget::Hex;
+    bool showDate;
+    bool autoWrap;
+    bool showTime;
+    bool showMS;
+    bool showRxData;
+    bool showTxData;
+
     QComboBox   *outputModelComboBox            = nullptr;  /// 输出模式复选框
     QCheckBox   *showDateCheckBox               = nullptr;  /// 显示日期使能复选框
+    QCheckBox   *autoWrapCheckBox               = nullptr;  /// 自动换行使能复选框
     QCheckBox   *showTimeCheckBox               = nullptr;  /// 显示时间使能复选框
     QCheckBox   *showMsCheckBox                 = nullptr;  /// 显示毫秒使能复选框
     QCheckBox   *showRxDataCheckBox             = nullptr;  /// 显示接收数据使能复选框
@@ -88,24 +107,49 @@ protected:
     QPushButton *clearOutputPushButton          = nullptr;  /// 清空输出按钮
     QPushButton *saveOutputPushButton           = nullptr;  /// 保存输出按钮
     QTextBrowser *outputTextBroswer             = nullptr;  /// 用于输出显示收发的数据
+private slots:
+    void on_outputModelComboBox_currentIndexChanged(const QString &text);
+    void on_showDateCheckBox_clicked();
+    void on_autoWrapCheckBox_clicked();
+    void on_showTimeCheckBox_clicked();
+    void on_showMsCheckBox_clicked();
+    void on_showRxDataCheckBox_clicked();
+    void on_showTxDataCheckBox_clicked();
+    void on_clearOutputPushButton_clicked();
+    void on_saveOutputPushButton_clicked();
 
-    /*
-     * 数据管理组
-     */
+
+    // 数据管理组
+protected:
+    quint64     receiveFrames                   = 0;        /// 接受帧数
+    quint64     receiveBytes                    = 0;        /// 接受字节数
+    quint64     sendFrames                      = 0;        /// 发送帧数
+    quint64     sendBytes                       = 0;        /// 发送字节数
+
     QLabel      *rxFramesLabel                  = nullptr;  /// 用于显示接受帧数
     QLabel      *txFramesLabel                  = nullptr;  /// 用于显示发送帧数
     QLabel      *rxBytesLabel                   = nullptr;  /// 用于显示接收字节数
     QLabel      *txBytesLabel                   = nullptr;  /// 用于显示发送字节数
     QPushButton *resetRxCountPushButton         = nullptr;  /// 重置接收计数
     QPushButton *resetTxCountPushButton         = nullptr;  /// 重置发送计数
+private slots:
+    void on_resetRxCountPushButton_clicked();
+    void on_resetTxCountPushButton_clicked();
 
-    /*
-     * 其他设置组
-     */
+
+    // 其他设置组
+protected:
     QPushButton *autoResponseSettingPushButton  = nullptr;  /// 自动回复设置面板调出按钮
     QPushButton *highlightSettingPushButton     = nullptr;  /// 高亮设置面板调出按钮
     QPushButton *readWriteSettingPushButton     = nullptr;  /// 读写设置面包调出按钮
+private slots:
+    void on_autoResponseSettingPushButton_clicked();        /// 创建一个高亮设置窗口并显示，该窗口关闭后将被销毁
+    void on_highlightSettingPushButton_clicked();           /// 创建一个高亮设置窗口并显示，该窗口关闭后将被销毁
+    void on_readWriteSettingPushButton();                   /// 创建一个读写参数设置窗口并显示，该窗口关闭后将被销毁
 
+
+
+private:
     /**
      * @brief ui    -- 界面文件
      */
@@ -114,7 +158,8 @@ protected:
     /**
      * @brief initUiPointer -- 初始化指向ui控件的数据成员（指针）
      */
-    void initUiPointer();
+    void initUiPointer();    
+    void setLabelText(QLabel* label, quint64 text);
 private:
     /*
      * 动态申请弹窗内存
@@ -123,18 +168,19 @@ private:
     /**
      * @brief createAutoResponseSettingWindow   -- 创建一个自动回复窗口并显示，该窗口关闭后将被销毁
      */
-    void createAutoResponseSettingWindow();
+//    void createAutoResponseSettingWindow();
 
     /**
      * @brief createHighlightSettingWindow      -- 创建一个高亮设置窗口并显示，该窗口关闭后将被销毁
      */
-    void createHighlightSettingWindow();
+//    void createHighlightSettingWindow();
 
     /**
      * @brief createReadWriteSettingWindow      -- 创建一个读写参数设置窗口并显示，该窗口关闭后将被销毁
      */
-    void createReadWriteSettingWindow();
+//    void createReadWriteSettingWindow();
 private:
+    const char *logCategory = "SAKIODeviceWidget";
     SAKIODevice                 *device                     = nullptr;
     SAKIODeviceControler        *controler                  = nullptr;
     SAKAutoResponseSettingPanel *autoResponseSettingPanel   = nullptr;
@@ -192,7 +238,6 @@ private slots:
     void readInputMode();
 
     void openFile();
-    void saveOutputData();
     void textFormatControl();
 
     void outputTimeInfoCheckBoxClicked(bool checked);
@@ -232,6 +277,7 @@ signals:
     void need2open();
     void need2close();
     void need2refresh();
+    void need2OpenOrClose();
 };
 
 #endif  // SAKIODEVICEWIDGET_H
