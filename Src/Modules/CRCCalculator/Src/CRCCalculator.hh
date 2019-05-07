@@ -9,7 +9,7 @@
 #ifndef CRCCALCULATOR_HH
 #define CRCCALCULATOR_HH
 
-#include <QWidget>
+#include <QDialog>
 #include <QComboBox>
 
 #include <QJsonDocument>
@@ -28,7 +28,7 @@ namespace Ui {
 class CRCCalculator;
 }
 
-class CRCCalculator:public QWidget
+class CRCCalculator:public QDialog
 {
     Q_OBJECT
 public:

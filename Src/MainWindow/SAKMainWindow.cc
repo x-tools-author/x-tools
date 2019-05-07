@@ -14,7 +14,7 @@
 #include "GetPublicIPWidget.h"
 #include "SAKVersion.hh"
 #include "UpdateManager.h"
-#include "CRCCalculator.h"
+#include "CRCCalculator.hh"
 #include "SAKApplication.hh"
 #include "MoreInformation.hh"
 #include "SAKConsole.hh"
@@ -97,7 +97,11 @@ void SAKMainWindow::AddTool()
 {
     addTool(tr("域名转IP"),        new ToolsNsLookup);
     addTool(tr("公网IP获取工具"),   new GetPublicIPWidget);
-    addTool(tr("CRC计算器"),       new CRCCalculator);
+
+    QAction *action = nullptr;
+    action = new QAction("CRC计算器", this);
+    toolsMenu->addAction(action);
+    connect(action, &QAction::triggered, this, &SAKMainWindow::createCRCCalculator);
 }
 
 void SAKMainWindow::InitMenu()
@@ -328,4 +332,10 @@ void SAKMainWindow::openIODeviceWindow()
 #endif
     }
 #endif
+}
+
+void SAKMainWindow::createCRCCalculator()
+{
+    CRCCalculator *cal = new CRCCalculator;
+    cal->show();
 }

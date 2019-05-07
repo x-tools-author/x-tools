@@ -80,6 +80,8 @@ private slots:
     void AboutQt();
     void About();
     void styleActionTriggered();
+private:
+    void createCRCCalculator();
 };
 
 #endif // MAINWINDOW_H

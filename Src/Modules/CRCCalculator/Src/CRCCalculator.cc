@@ -21,7 +21,7 @@
 #include <QLoggingCategory>
 
 CRCCalculator::CRCCalculator(QWidget* parent)
-    :QWidget (parent)
+    :QDialog (parent)
     ,ui(new Ui::CRCCalculator)
 {
     ui->setupUi(this);
@@ -68,6 +68,9 @@ CRCCalculator::CRCCalculator(QWidget* parent)
     connect(parameterComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(changedParameterModel(int)));
     connect(calculatedBt, SIGNAL(clicked()), this, SLOT(calculate()));
     connect(inputTextEdit, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
+
+    setAttribute(Qt::WA_DeleteOnClose, true);
+    setModal(true);
 }
 
 CRCCalculator::~CRCCalculator()
