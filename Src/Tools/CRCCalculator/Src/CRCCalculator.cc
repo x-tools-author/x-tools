@@ -1,21 +1,24 @@
-﻿/*******************************************************************************
-* The file is encoding with utf-8 (with BOM)
-*
-* I write the comment with English, it's not because that I'm good at English,
-* but for "installing B".
-*
-* Copyright (C) 2018-2019 wuhai persionnal. All rights reserved.
-*******************************************************************************/
+﻿/*
+ * The file is encoding with utf-8 (with BOM)
+ *
+ * I write the comment with English, it's not because that I'm good at English,
+ * but for "installing B".
+  *
+ * Copyright (C) 2018-2019 wuhai persionnal. All rights reserved.
+ */
 #ifdef _MSC_VER
 #pragma execution_character_set("utf-8")
 #endif
 
-#include "CRCCalculator.h"
+#include "CRCCalculator.hh"
 #include "ui_CRCCalculator.h"
 
 #include <QFile>
 #include <QDebug>
 #include <QComboBox>
+#include <QMetaEnum>
+#include <QDesktopServices>
+#include <QLoggingCategory>
 
 CRCCalculator::CRCCalculator(QWidget* parent)
     :QWidget (parent)
@@ -23,9 +26,11 @@ CRCCalculator::CRCCalculator(QWidget* parent)
 {
     ui->setupUi(this);
     widthComboBox = ui->comboBoxWidth;
-    for (int i = 1; i < 33; i++){
-        widthComboBox->addItem(QString::number(i));
-    }
+    widthComboBox->addItem(QString::number(8));
+    widthComboBox->addItem(QString::number(16));
+    widthComboBox->addItem(QString::number(32));
+    widthComboBox->setEnabled(false);
+
     parameterComboBox = ui->comboBoxName;
     parameterComboBox->clear();
 
@@ -35,131 +40,87 @@ CRCCalculator::CRCCalculator(QWidget* parent)
     initLineEdit = ui->lineEditInit;
     xorLineEdit = ui->lineEditXOROUT;
 
+    refinCheckBox->setEnabled(false);
+    refoutCheckBox->setEnabled(false);
+    polyLineEdit->setReadOnly(true);
+    initLineEdit->setReadOnly(true);
+    xorLineEdit->setReadOnly(true);
+
     hexRadioBt = ui->radioButtonHex;
     asciiRadioBt = ui->radioButtonASCII;
 
     hexCRCOutput = ui->lineEditOutputHex;
     binCRCOutput = ui->lineEditOutputBin;
+    hexCRCOutput->setReadOnly(true);
+    binCRCOutput->setReadOnly(true);
 
     inputTextEdit = ui->textEdit;
 
     calculatedBt = ui->pushButtonCalculate;
-    calculatedBt->setEnabled(false);
+    labelPolyFormula = ui->labelPolyFormula;
+    labelInfo = ui->labelInfo;
+    labelInfo->installEventFilter(this);
+    labelInfo->setCursor(QCursor(Qt::PointingHandCursor));
 
     /// 读入crc校验算法模型
     initParameterModel();
 
     connect(parameterComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(changedParameterModel(int)));
     connect(calculatedBt, SIGNAL(clicked()), this, SLOT(calculate()));
-
-#if 0
-    setWindowTitle(windowTitle() + tr("(功能未实现)"));
-#endif
     connect(inputTextEdit, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
 }
 
 CRCCalculator::~CRCCalculator()
 {
+    QLoggingCategory category(logCategory);
+    qCInfo(category) << "Goodbye CRCCalculator";
     delete  ui;
 }
 
 void CRCCalculator::initParameterModel()
 {
-    QFile file(":/ParameterModel.json");
-    if (file.open(QFile::ReadOnly)){
-        QByteArray jsonFile = file.readAll();
-        file.close();
+    parameterComboBox->clear();
+    QStringList list = crcInterface.getSupportParameterModels();
+    parameterComboBox->addItems(list);
 
-        QJsonParseError error;
-        QJsonDocument jsonDoc = QJsonDocument::fromJson(jsonFile, &error);
-        if (error.error == QJsonParseError::NoError){
-            if(jsonDoc.isArray()){
-            /**
-                "index" :   索引号
-                "name"  :   crc算法名称
-                "width" :   位宽,
-                "poly"  :   多项式
-                "init"  :   初始值
-                "xor"   :   异或值
-                "refin" :   输入翻转
-                "refout":   输出翻转
-            */
-                QJsonArray jsonArray = jsonDoc.array();
-                for (int i = 0; i < jsonArray.count(); i++){
-                    QJsonValue value = jsonArray.at(i);
-                    QJsonObject obj = value.toObject();
-                    QString str = obj.value("name").toString();
-                    parameterComboBox->addItem(str);
-                }
-            }
-        }else {
-            qWarning() << "Parse error:" << error.errorString();
-        }
-
-    }else {
-        qWarning() << "Can not open json file:" << file.errorString();
-    }
-}
-
-QJsonObject CRCCalculator::jsonObjectAt(int index)
-{
-    QFile file(":/ParameterModel.json");
-    if (file.open(QFile::ReadOnly)){
-        QByteArray jsonFile = file.readAll();
-        file.close();
-
-        QJsonParseError error;
-        QJsonDocument jsonDoc = QJsonDocument::fromJson(jsonFile, &error);
-        if (error.error == QJsonParseError::NoError){
-            if(jsonDoc.isArray()){
-                QJsonArray jsonArray = jsonDoc.array();
-                return jsonArray.at(index).toObject();
-            }
-        }else {
-            qWarning() << "Parse error:" << error.errorString();
-        }
-
-    }else {
-        qWarning() << "Can not open json file:" << file.errorString();
+    QMetaEnum models = QMetaEnum::fromType<CRCInterface::CRCModel>();
+    bool ok = false;
+    int ret = models.keyToValue(parameterComboBox->currentText().toLatin1().constData(), &ok);
+    CRCInterface::CRCModel model = CRCInterface::CRC_8;
+    if (ok){
+        model = static_cast<CRCInterface::CRCModel>(ret);
     }
 
-    QJsonObject obj;
-    return obj;
+    int bitsWidth = crcInterface.getBitsWidth(model);
+    widthComboBox->setCurrentIndex(widthComboBox->findText(QString::number(bitsWidth)));
+    labelPolyFormula->setText(crcInterface.getPolyFormula(model));
 }
 
 void CRCCalculator::changedParameterModel(int index)
 {
-    /// 不支持自定义选项
-    QJsonObject jsonObj = jsonObjectAt(index);
-    if (jsonObj.value("name").toString().compare("自定义") == 0){
-        calculatedBt->setEnabled(false);
-        widthComboBox->setEnabled(true);
-        refinCheckBox->setEnabled(true);
-        refoutCheckBox->setEnabled(true);
-        polyLineEdit->setEnabled(true);
-        initLineEdit->setEnabled(true);
-        xorLineEdit->setEnabled(true);
-    }else {
-        calculatedBt->setEnabled(true);
-        widthComboBox->setEnabled(false);
-        refinCheckBox->setEnabled(false);
-        refoutCheckBox->setEnabled(false);
-        polyLineEdit->setEnabled(false);
-        initLineEdit->setEnabled(false);
-        xorLineEdit->setEnabled(false);
+    Q_UNUSED(index);
+
+    QMetaEnum models = QMetaEnum::fromType<CRCInterface::CRCModel>();
+    bool ok = false;
+    CRCInterface::CRCModel model = CRCInterface::CRC_8;
+    int ret = models.keyToValue(parameterComboBox->currentText().toLatin1().constData(), &ok);
+    if (ok){
+        model = static_cast<CRCInterface::CRCModel>(ret);
+    }else{
+        QLoggingCategory category(logCategory);
+        qCWarning(category) << "Unknow parameter model!";
+        Q_ASSERT_X(false, __FUNCTION__, "Unknow parameter model!");
+        return;
     }
 
-
-    if (!jsonObj.isEmpty()){
-        widthComboBox->setCurrentIndex(widthComboBox->findText(QString::number(jsonObj.value("width").toInt())));
-        polyLineEdit->setText(jsonObj.value("poly").toString());
-        initLineEdit->setText(jsonObj.value("init").toString());
-        xorLineEdit->setText(jsonObj.value("xor").toString());
-        refinCheckBox->setChecked(jsonObj.value("refin").toBool());
-        refoutCheckBox->setChecked(jsonObj.value("refout").toBool());
-    }else {
-        qWarning("error: empty json object");
-    }
+    int bitsWidth = crcInterface.getBitsWidth(model);
+    widthComboBox->setCurrentIndex(widthComboBox->findText(QString::number(bitsWidth)));
+    polyLineEdit->setText(QString("0x%1").arg(QString::number(static_cast<int>(crcInterface.getPoly(model)), 16), bitsWidth/4, '0'));
+    initLineEdit->setText(QString("0x%1").arg(QString::number(static_cast<int>(crcInterface.getInitValue(model)), 16), bitsWidth/4, '0'));
+    xorLineEdit->setText(QString("0x%1").arg(QString::number(static_cast<int>(crcInterface.getXorValue(model)), 16), bitsWidth/4, '0'));
+    refinCheckBox->setChecked(crcInterface.getInputReversal(model));
+    refoutCheckBox->setChecked(crcInterface.getOutputReversal(model));
+    labelPolyFormula->setText(crcInterface.getPolyFormula(model));
 }
 
 void CRCCalculator::calculate()
@@ -180,93 +141,43 @@ void CRCCalculator::calculate()
         inputArray = inputTextEdit->toPlainText().toLatin1();
     }
 
-    int bitsWidth = widthComboBox->currentText().toInt();
-    int poly = polyLineEdit->text().toInt(nullptr, 16);
-    int startValue = initLineEdit->text().toInt(nullptr, 16);
-    int xorValue = xorLineEdit->text().toInt(nullptr, 16);
+    if (inputArray.isEmpty()){
+        return;
+    }
+
+    int bitsWidth = widthComboBox->currentText().toInt();    
+    QMetaEnum models = QMetaEnum::fromType<CRCInterface::CRCModel>();
+    bool ok = false;
+    int ret = models.keyToValue(parameterComboBox->currentText().toLatin1().constData(), &ok);
+    CRCInterface::CRCModel model = CRCInterface::CRC_8;
+    if (ok){
+        model = static_cast<CRCInterface::CRCModel>(ret);
+    }
 
     QString crcHexString = "error";
     QString crcBinString = "error";
 
-    if (bitsWidth == 4){
-
-    }else if (bitsWidth == 5){
-
-    }else if (bitsWidth == 6){
-
-    }else if (bitsWidth == 7){
-
-    }else if (bitsWidth == 8){
-
-    }else if (bitsWidth == 16){
-        quint16 polyTemp = static_cast<quint16>(poly);
-        reverseInt(polyTemp, polyTemp);
-        quint16 crc = crc16(reinterpret_cast<const quint8*>(inputArray.constData()),
-                            static_cast<quint64>(inputArray.length()),
-                            static_cast<quint16>(startValue),
-                            polyTemp);
-        crc ^= xorValue;
+    if (bitsWidth == 8){
+        uint8_t crc = 0;
+        crcInterface.crcCalculate<uint8_t>(reinterpret_cast<uint8_t*>(inputArray.data()), static_cast<uint64_t>(inputArray.length()), crc, model);
         crcHexString = QString("0x%1").arg(QString::number(crc, 16), 2, '0');
-        crcBinString = QString("0x%1").arg(QString::number(crc, 2), 8, '0');
+        crcBinString = QString("%1").arg(QString::number(crc, 2), 8, '0');
+    }else if (bitsWidth == 16){
+        uint16_t crc = 0;
+        crcInterface.crcCalculate<uint16_t>(reinterpret_cast<uint8_t*>(inputArray.data()), static_cast<uint64_t>(inputArray.length()), crc, model);
+        crcHexString = QString("0x%1").arg(QString::number(crc, 16), 4, '0');
+        crcBinString = QString("%1").arg(QString::number(crc, 2), 16, '0');
     }else if (bitsWidth == 32){
-
+        uint32_t crc = 0;
+        crcInterface.crcCalculate<uint32_t>(reinterpret_cast<uint8_t*>(inputArray.data()), static_cast<uint64_t>(inputArray.length()), crc, model);
+        crcHexString = QString("0x%1").arg(QString::number(crc, 16), 8, '0');
+        crcBinString = QString("%1").arg(QString::number(crc, 2), 32, '0');
     }else {
-        qWarning() << "Nonsupport width!";
+        qWarning() << "Not supported bits width!";
     }
 
     hexCRCOutput->setText(crcHexString);
     binCRCOutput->setText(crcBinString);
-}
-
-quint16 CRCCalculator::crc16(const quint8 *inputPtr, quint64 numBytes, quint16 startValue, quint16 poly) {
-
-    quint16 crc;
-    quint64 a;
-    const unsigned char *ptr;
-
-    quint16 crc16Table[256];
-
-    quint16 i;
-    quint16 j;
-    quint16 tableValue;
-    quint16 c;
-    for (i=0; i<256; i++) {
-        tableValue = 0;
-        c   = i;
-        for (j=0; j<8; j++) {
-            if ( (tableValue ^ c) & 0x0001 ){
-                tableValue = ( tableValue >> 1 ) ^ poly;
-            }else{
-                tableValue =   tableValue >> 1;
-            }
-            c = c >> 1;
-        }
-        crc16Table[i] = tableValue;
-    }
-
-    crc = startValue;
-    ptr = inputPtr;
-
-    if ( ptr != nullptr ){
-        for (a=0; a< numBytes; a++) {
-            crc = (crc >> 8) ^ crc16Table[ (crc ^ static_cast<quint16>(*ptr++)) & 0x00FF ];
-        }
-    }
-    return crc;
-}
-
-template<class Tint> void CRCCalculator::reverseInt(Tint &input, Tint &output)
-{
-    int bitsWidth = sizeof (input)*8;
-
-    QString inputStr = QString("%1").arg(QString::number(input, 2), bitsWidth, '0');
-    QString outputStr;
-    outputStr.resize(bitsWidth);
-    for (int i = 0; i < bitsWidth; i++){
-        outputStr.replace(i, 1, inputStr.at(bitsWidth-1-i));
-    }
-
-    output = static_cast<Tint>(outputStr.toULongLong(nullptr, 2));
 }
 
 void CRCCalculator::textFormatControl()
@@ -289,4 +200,16 @@ void CRCCalculator::textFormatControl()
     inputTextEdit->moveCursor(QTextCursor::End);
 
     connect(inputTextEdit, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
+}
+
+bool CRCCalculator::eventFilter(QObject *watched, QEvent *event)
+{
+    if (event->type() == QEvent::MouseButtonDblClick){
+        if (watched == labelInfo){
+            QDesktopServices::openUrl(QUrl(QString("http://www.ip33.com/crc.html")));
+            return true;
+        }
+    }
+
+    return QWidget::eventFilter(watched, event);
 }

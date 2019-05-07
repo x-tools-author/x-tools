@@ -10,6 +10,34 @@
     },
 
     {
+        "name"  :   "CRC_8 x8+x2+x+1",
+        "width" :   8,
+        "poly"  :   "0x07",
+        "init"  :   "0x00",
+        "xor"   :   "0x00",
+        "refin" :   false,
+        "refout":   false
+    },
+    {
+        "name"  :   "CRC_8/ITU x8+x2+x+1",
+        "width" :   8,
+        "poly"  :   "0x07",
+        "init"  :   "0x00",
+        "xor"   :   "0x55",
+        "refin" :   false,
+        "refout":   false
+    },
+    {
+        "name"  :   "CRC_8/ROHC x8+x2+x+1",
+        "width" :   8,
+        "poly"  :   "0x07",
+        "init"  :   "0xff",
+        "xor"   :   "0x55",
+        "refin" :   false,
+        "refout":   false
+    },
+
+    {
         "name"  :   "CRC-16/IBM x16+x15+x2+1",
         "width" :   16,
         "poly"  :   "0x8005",

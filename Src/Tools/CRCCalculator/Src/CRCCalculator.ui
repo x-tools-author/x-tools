@@ -54,8 +54,11 @@ p, li { white-space: pre-wrap; }
    </item>
    <item row="9" column="1" colspan="5">
     <widget class="QLabel" name="labelInfo">
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
      <property name="text">
-      <string/>
+      <string>获取更多crc相关信息，请访问 http://www.ip33.com/crc.html (双击访问)</string>
      </property>
     </widget>
    </item>
@@ -154,9 +157,6 @@ p, li { white-space: pre-wrap; }
      </layout>
     </widget>
    </item>
-   <item row="4" column="1" colspan="5">
-    <widget class="QComboBox" name="comboBoxName"/>
-   </item>
    <item row="2" column="1" colspan="5">
     <widget class="QLabel" name="labelInputType">
      <property name="text">
@@ -233,9 +233,7 @@ p, li { white-space: pre-wrap; }
    <item row="8" column="1" colspan="4">
     <widget class="QLabel" name="label_10">
      <property name="styleSheet">
-      <string notr="true">QLabel{
-	color:&quot;red&quot;
-}</string>
+      <string notr="true"/>
      </property>
      <property name="text">
       <string>高位在左低位在右，使用时请注意高低位顺序！！！</string>
@@ -269,6 +267,30 @@ p, li { white-space: pre-wrap; }
    <item row="5" column="1" colspan="2">
     <widget class="QComboBox" name="comboBoxWidth"/>
    </item>
+   <item row="4" column="1" colspan="2">
+    <widget class="QComboBox" name="comboBoxName"/>
+   </item>
+   <item row="4" column="3">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>多项式公式</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="4" colspan="2">
+    <widget class="QLabel" name="labelPolyFormula">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="label_11">
+     <property name="text">
+      <string>计算面板</string>
+     </property>
+    </widget>
+   </item>
   </layout>
   <zorder>label_6</zorder>
   <zorder>lineEditOutputHex</zorder>
@@ -293,6 +315,9 @@ p, li { white-space: pre-wrap; }
   <zorder>label_9</zorder>
   <zorder>comboBoxWidth</zorder>
   <zorder>lineEditInit</zorder>
+  <zorder>label_4</zorder>
+  <zorder>labelPolyFormula</zorder>
+  <zorder>label_11</zorder>
  </widget>
  <resources/>
  <connections>
