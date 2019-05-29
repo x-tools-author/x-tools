@@ -8,9 +8,6 @@ QT += core gui xml
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets network
 
-# 软件版本号
-#DEFINES += SAK_VERSION=\"\\\"1.0.0\\\"\"
-
 TARGET = QtSwissArmyKnife
 
 TEMPLATE = app
@@ -30,9 +27,10 @@ SOURCES += \
     Src/SAKGlobal.cc \
     Src/Console/SAKConsole.cc \
     Src/Console/SAKLogOutput.cc \
+    Src/TabpPage/SAKTabPage.cc \
     Src/main.cc \
     Src/SAKApplication.cc \
-    Src/MainWindow/SAKMainWindow.cc \
+    Src/SAKMainWindow.cc \
     Src/TabpPage/SAKIODeviceWidget.cc \
     Src/TabpPage/SAKIODevice.cc \
     Src/TabpPage/SAKIODeviceControler.cc \
@@ -41,8 +39,8 @@ SOURCES += \
     Src/TabpPage/AutoResponse/SAKAutoResponseSettingPanel.cc \
     Src/TabpPage/Highlighter/SAKHighlighter.cc \
     Src/TabpPage/Highlighter/SAKHighlighterSettingPanel.cc \
-    Src/MainWindow/SAKVersion.cc \
-    Src/MainWindow/MoreInformation.cc
+    Src/SAKVersion.cc \
+    Src/MoreInformation.cc
 
 HEADERS += \
     Src/SAKApplication.hh \
@@ -56,14 +54,15 @@ HEADERS += \
     Src/TabPageTCPServer/TcpServerSAKIODevice.hh \
     Src/TabPageTCPServer/TcpServerSAKIODeviceControler.hh \
     Src/TabPageTCPServer/TcpServerSAKIODeviceWidget.hh \
+    Src/TabpPage/SAKTabPage.hh \
     Src/TabpageUDPClient/UdpSAKIODevice.hh \
     Src/TabpageUDPClient/UdpSAKIODeviceControler.hh \
     Src/TabpageUDPClient/UdpSAKIODeviceWidget.hh \
     Src/Console/SAKConsole.hh \
     Src/Console/SAKLogOutput.hh \
-    Src/MainWindow/MoreInformation.hh \
-    Src/MainWindow/SAKMainWindow.hh \
-    Src/MainWindow/SAKVersion.hh \
+    Src/MoreInformation.hh \
+    Src/SAKMainWindow.hh \
+    Src/SAKVersion.hh \
     Src/TabpPage/SAKIODevice.hh \
     Src/TabpPage/SAKIODeviceControler.hh \
     Src/TabpPage/SAKIODeviceWidget.hh \
@@ -75,19 +74,19 @@ HEADERS += \
 
 FORMS += \
     Src/Console/SAKConsole.ui \
-    Src/MainWindow/SAKMainWindow.ui \
+    Src/SAKMainWindow.ui \
     Src/TabpPage/SAKIODeviceWidget.ui \
     Src/TabpPage/AutoResponse/SAKAutoResponseItem.ui \
     Src/TabpPage/AutoResponse/SAKAutoResponseSettingPanel.ui \
     Src/TabpPage/Highlighter/SAKHighlighterSettingPanel.ui \
     Src/TabpPage/ReadWriteSetting/SAKReadWriteSetting.ui \
-    Src/MainWindow/SAKVersion.ui \
-    Src/MainWindow/MoreInformation.ui
+    Src/SAKVersion.ui \
+    Src/MoreInformation.ui \
+    Src/TabpPage/SAKTabPage.ui
 
 INCLUDEPATH += \
     Src \
-    Src/MainWindow \
-    Src/MainWindow/common \
+    Src/common \
     Src/Console \
     Src/TabpPage \
     Src/TabpPage/Highlighter \
@@ -95,8 +94,8 @@ INCLUDEPATH += \
     Src/TabpPage/ReadWriteSetting
 
 RESOURCES += \
-    SAKResources.qrc \
-    3rd/StyleSheet/qss.qrc
+    Resources/StyleSheet/qss.qrc \
+    SAKResources.qrc
 
 win32{
     RC_ICONS = window.ico
@@ -184,5 +183,6 @@ FORMS   += \
 INCLUDEPATH += \
     Src/TabpageUDPClient
 
-DISTFILES += \
-    Other/update.json
+#msvc:{
+#    QMAKE_CXXFLAGS += -execution-charset:utf-8
+#}
