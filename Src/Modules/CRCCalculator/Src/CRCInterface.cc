@@ -7,10 +7,6 @@
  * Copyright (C) 2018-2019 woohii persionnal. No rights reserved.
  */
 
-#ifdef _MSC_VER
-#pragma execution_character_set("utf-8")
-#endif
-
 #include <QMetaEnum>
 
 #include "CRCInterface.hh"

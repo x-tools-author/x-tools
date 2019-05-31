@@ -7,10 +7,6 @@
  * @version
  *      20181229  --v1.0.0 create the file.
  */
-#ifdef _MSC_VER
-#pragma execution_character_set("utf-8")
-#endif
-
 #include "HttpAnalyzer.h"
 #include <QDebug>
 #include <QJsonDocument>

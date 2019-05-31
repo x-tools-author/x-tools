@@ -1,8 +1,4 @@
-﻿#ifdef _MSC_VER
-#pragma execution_character_set("utf-8")
-#endif
-
-#include <QFile>
+﻿#include <QFile>
 
 #include "SAKMainWindow.hh"
 #include "ui_SAKMainWindow.h"
@@ -19,6 +15,7 @@
 #include "MoreInformation.hh"
 #include "SAKConsole.hh"
 #include "SAKGlobal.hh"
+#include "QtStyleSheetApi.hh"
 
 #ifndef SAK_NO_SERIALPORT_ASSISTANT
 #include "SerialportSAKIODeviceWidget.hh"
@@ -288,21 +285,22 @@ void SAKMainWindow::initSkinMenu(QMenu *optionMenu)
 
     QMenu *stylesheetMenu = new QMenu("皮肤");
     optionMenu->addMenu(stylesheetMenu);
-    QActionGroup *stylesheetActionGroup = new QActionGroup(this);
-    QAction *action = nullptr;
-    for (int i = 0; i < skins.keyCount(); i++){
-        action = new QAction(QString(skins.valueToKey(i)));
-        action->setCheckable(true);
-        action->setObjectName(QString(skins.valueToKey(i)));
-        stylesheetMenu->addAction(action);
-        stylesheetActionGroup->addAction(action);
+    stylesheetMenu->addActions(QtStyleSheetApi::instance()->actions());
+//    QActionGroup *stylesheetActionGroup = new QActionGroup(this);
+//    QAction *action = nullptr;
+//    for (int i = 0; i < skins.keyCount(); i++){
+//        action = new QAction(QString(skins.valueToKey(i)));
+//        action->setCheckable(true);
+//        action->setObjectName(QString(skins.valueToKey(i)));
+//        stylesheetMenu->addAction(action);
+//        stylesheetActionGroup->addAction(action);
 
-        connect(action, &QAction::triggered, this, &SAKMainWindow::changeStylesheet);
-        if (QString(skins.valueToKey(i)).compare(value) == 0){
-            action->setChecked(true);
-            emit action->triggered();
-        }
-    }
+//        connect(action, &QAction::triggered, this, &SAKMainWindow::changeStylesheet);
+//        if (QString(skins.valueToKey(i)).compare(value) == 0){
+//            action->setChecked(true);
+//            emit action->triggered();
+//        }
+//    }
 }
 
 void SAKMainWindow::addRemovablePage()

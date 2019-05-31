@@ -6,10 +6,6 @@
 *
 * Copyright (C) 2018-2018 wuhai persionnal. All rights reserved.
 *******************************************************************************/
-#ifdef _MSC_VER
-#pragma execution_character_set("utf-8")
-#endif
-
 #include "MoreInformation.hh"
 #include "ui_MoreInformation.h"
 

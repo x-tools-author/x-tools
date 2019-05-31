@@ -6,10 +6,6 @@
   *
  * Copyright (C) 2018-2019 wuhai persionnal. All rights reserved.
  */
-#ifdef _MSC_VER
-#pragma execution_character_set("utf-8")
-#endif
-
 #include "CRCCalculator.hh"
 #include "ui_CRCCalculator.h"
 

@@ -6,11 +6,6 @@
 *
 * Copyright (C) 2018-2018 wuhai persionnal. All rights reserved.
 *******************************************************************************/
-#if _MSC_VER > 1600
-#pragma execution_character_set("utf-8")
-#endif
-
-
 #include "UdpSAKIODeviceWidget.hh"
 
 UdpSAKIODeviceWidget::UdpSAKIODeviceWidget(SAKIODevice *_device, SAKIODeviceControler *_controler, QWidget *parent)

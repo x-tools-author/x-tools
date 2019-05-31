@@ -94,7 +94,6 @@ INCLUDEPATH += \
     Src/TabpPage/ReadWriteSetting
 
 RESOURCES += \
-    Resources/StyleSheet/qss.qrc \
     SAKResources.qrc
 
 win32{
@@ -183,6 +182,9 @@ FORMS   += \
 INCLUDEPATH += \
     Src/TabpageUDPClient
 
-#msvc:{
-#    QMAKE_CXXFLAGS += -execution-charset:utf-8
-#}
+include(Modules/QtStyleSheet/QtStyleSheetApi.pri)
+
+# 解决msvc编译器中文乱码的问题
+msvc:{
+    QMAKE_CXXFLAGS += -execution-charset:utf-8
+}
