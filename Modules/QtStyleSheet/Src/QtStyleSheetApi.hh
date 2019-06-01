@@ -32,7 +32,7 @@ public:
     static QtStyleSheetApi* instance();
     /**
      * @brief actions   -- 获取用于改变样式的action列表
-     * @return
+     * @return          -- 用于切换软件样式的action列表
      */
     QList<QAction *> actions();
 signals:
