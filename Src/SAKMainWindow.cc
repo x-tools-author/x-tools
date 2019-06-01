@@ -16,6 +16,7 @@
 #include "SAKConsole.hh"
 #include "SAKGlobal.hh"
 #include "QtStyleSheetApi.hh"
+#include "QtAppStyleApi.hh"
 
 #ifndef SAK_NO_SERIALPORT_ASSISTANT
 #include "SerialportSAKIODeviceWidget.hh"
@@ -159,21 +160,7 @@ void SAKMainWindow::InitMenu()
 
     QMenu *appStyleMenu = new QMenu(tr("软件风格"));
     optionMenu->addMenu(appStyleMenu);
-    QStringList styleKeys = QStyleFactory::keys();
-    QAction *styleAction;
-    QActionGroup *styleActionGroup = new QActionGroup(this);
-    foreach (QString style, styleKeys) {
-        styleAction = new QAction(style);
-        styleAction->setCheckable(true);
-        styleActionGroup->addAction(styleAction);
-        styleAction->setObjectName(style);
-        appStyleMenu->addAction(styleAction);
-        connect(styleAction, SIGNAL(triggered(bool)), this, SLOT(styleActionTriggered()));
-
-        if (style.compare(value) == 0){
-            styleAction->setChecked(true);
-        }
-    }
+    appStyleMenu->addActions(QtAppStyleApi::instance()->actions());
 #endif
 
     // 帮助菜单

@@ -1,13 +1,11 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2019-05-31T20:50:28
+# Project created by QtCreator 2019-06-01T17:38:28
 #
 #-------------------------------------------------
 HEADERS += \
-    $${PWD}/Src/QtStyleSheetApi.hh
+    $${PWD}/Src/QtAppStyleApi.hh
 SOURCES += \
-    $${PWD}/Src/QtStyleSheetApi.cc
+    $${PWD}/Src/QtAppStyleApi.cc
 INCLUDEPATH += \
     $$PWD/Src
-RESOURCES   += \
-    $$PWD/Resources/StyleSheet/qss.qrc

@@ -13,38 +13,37 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#ifndef QTSTYLESHEETAPI_HH
-#define QTSTYLESHEETAPI_HH
+#ifndef QTAPPSTYLEAPI_HH
+#define QTAPPSTYLEAPI_HH
 
-#include <QMap>
 #include <QList>
 #include <QObject>
 #include <QAction>
 
-class QtStyleSheetApi:public QObject
+class QtAppStyleApi:public QObject
 {
     Q_OBJECT
 public:
     /**
-     * @brief instance  -- 该类必须调用该函数进行实例化
-     * @return          -- 实例化指针
+     * @brief instance  -- 实例化接口，该类必须通过该接口来实例化
+     * @return          -- 实例指针（对象指针）
      */
-    static QtStyleSheetApi* instance();
+    static QtAppStyleApi *instance();
+
     /**
-     * @brief actions   -- 获取用于改变样式的action列表
-     * @return          -- 用于切换软件样式的action列表
+     * @brief actions   -- 获取用于软件风格的action列表
+     * @return          -- action列表
      */
     QList<QAction *> actions();
 signals:
-    /// 应用程序样式改变时，发射该信号
-    void styleSheetChanged(QString styleSheetName);
+    /// 软件风格发生改变时发射该信号
+    void appStyleChanged(QString appStyleName);
 private:
-    static QtStyleSheetApi *_this;
-    QMap<QString, QString> styleSheetMap;
-    QList<QAction *> styleSheetActions;
+    static QtAppStyleApi *_this;
+    QList<QAction *> appStyleActions;
 private:
-    QtStyleSheetApi(QObject *parent = Q_NULLPTR);
-    void changeStyleSheet();
+    QtAppStyleApi(QObject *parent = Q_NULLPTR);
+    void changeAppStyle();
 };
 
 #endif

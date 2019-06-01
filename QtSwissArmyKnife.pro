@@ -182,6 +182,7 @@ FORMS   += \
 INCLUDEPATH += \
     Src/TabpageUDPClient
 
+include(Modules/QtAppStyleApi/QtAppStyleApi.pri)
 include(Modules/QtStyleSheetApi/QtStyleSheetApi.pri)
 
 # 解决msvc编译器中文乱码的问题
