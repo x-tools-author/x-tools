@@ -19,15 +19,12 @@
 #include <QLoggingCategory>
 
 #include "SAKTabPage.hh"
+#include "ui_SAKTabPage.h"
 #include "SAKHighlighterSettingPanel.hh"
 
-#include "ui_SAKTabPage.h"
-
-SAKTabPage::SAKTabPage(SAKIODevice *_device, SAKIODeviceControler *_controler, QWidget *parent)
+SAKTabPage::SAKTabPage(QWidget *parent)
     :QWidget(parent)
-    ,ui(new Ui::SAKTabPage)
-    ,device (_device)
-    ,controler (_controler)                  
+    ,ui(new Ui::SAKTabPage)              
     ,autoResponseSettingPanel (new SAKAutoResponseSettingPanel)
     ,cycleTimer (new QTimer)
     ,customControlerLayout (new QHBoxLayout)
@@ -56,7 +53,6 @@ SAKTabPage::SAKTabPage(SAKIODevice *_device, SAKIODeviceControler *_controler, Q
     highlighterSettingPanel = new SAKHighlighterSettingPanel(outputTextBroswer->document());
 
     Connect();
-    setCustomControler(controler);
     initUI();
 
     clearInfoTimer->setInterval(3*1000);
@@ -89,8 +85,8 @@ void SAKTabPage::initUI()
     readCycleTime();
     readAutoResponseFlag();
 
-    rxLabel->setPixmap(QPixmap(":/images/RtRxGray.png").scaled(rxtxSize, Qt::KeepAspectRatio));
-    txLabel->setPixmap(QPixmap(":/images/RtRxGray.png").scaled(rxtxSize, Qt::KeepAspectRatio));
+//    rxLabel->setPixmap(QPixmap(":/images/RtRxGray.png").scaled(rxtxSize, Qt::KeepAspectRatio));
+//    txLabel->setPixmap(QPixmap(":/images/RtRxGray.png").scaled(rxtxSize, Qt::KeepAspectRatio));
 //    ui->labelInfoIcon->setPixmap(QPixmap(":/images/Info.png").scaled(QSize(ui->labelInfoIcon->width()-4,
 //                                                                           ui->labelInfoIcon->height() - 4),
 //                                                                     Qt::KeepAspectRatio));
@@ -131,19 +127,13 @@ void SAKTabPage::outputReceiveDataOnlyCheckBoxClicked(bool cheaked)
 
 void SAKTabPage::openOrClose()
 {
-    if (device->isOpen()){
-        close();
-    }else{
-        open();
-    }
+//    if (device->isOpen()){
+//        close();
+//    }else{
+//        open();
+//    }
 }
 
-void SAKTabPage::setCustomControler(SAKIODeviceControler *controler)
-{
-    customControlerLayout->addWidget(controler);
-    customControlerLayout->setMargin(0);
-    ui->groupBoxCustom->setLayout(customControlerLayout);
-}
 
 void SAKTabPage::setRefreshPBtText(QString text)
 {
@@ -153,73 +143,73 @@ void SAKTabPage::setRefreshPBtText(QString text)
 void SAKTabPage::Connect()
 {
     /// 打开/关闭设备
-    connect(switchPushButton, SIGNAL(clicked(bool)), this, SLOT(openOrClose()));
-    connect(this, SIGNAL(need2open()), controler, SLOT(open()));
-    connect(this, SIGNAL(need2close()), device, SLOT(close()));
-    connect(controler, SIGNAL(need2open(QString,QString)), device, SLOT(open(QString,QString)));
-    connect(controler, SIGNAL(need2open(QString,QString,QString,QString)), device, SLOT(open(QString,QString,QString,QString)));
-    connect(controler, SIGNAL(need2open(QString,QString,QString,QString,QString)), device, SLOT(open(QString,QString,QString,QString,QString)));
-    connect(device, SIGNAL(deviceOpenSuccessfully()), this, SLOT(afterDeviceOpen()));
-    connect(device, SIGNAL(deviceCloseSuccessfully()), this, SLOT(afterDeviceClose()));
+//    connect(switchPushButton, SIGNAL(clicked(bool)), this, SLOT(openOrClose()));
+//    connect(this, SIGNAL(need2open()), controler, SLOT(open()));
+//    connect(this, SIGNAL(need2close()), device, SLOT(close()));
+//    connect(controler, SIGNAL(need2open(QString,QString)), device, SLOT(open(QString,QString)));
+//    connect(controler, SIGNAL(need2open(QString,QString,QString,QString)), device, SLOT(open(QString,QString,QString,QString)));
+//    connect(controler, SIGNAL(need2open(QString,QString,QString,QString,QString)), device, SLOT(open(QString,QString,QString,QString,QString)));
+//    connect(device, SIGNAL(deviceOpenSuccessfully()), this, SLOT(afterDeviceOpen()));
+//    connect(device, SIGNAL(deviceCloseSuccessfully()), this, SLOT(afterDeviceClose()));
 
-    /// 刷新设备
-    connect(refreshPushButton, SIGNAL(clicked(bool)), controler, SLOT(refresh()));
+//    /// 刷新设备
+//    connect(refreshPushButton, SIGNAL(clicked(bool)), controler, SLOT(refresh()));
 
-    connect(cycleTimer, SIGNAL(timeout()), this, SLOT(cycleTimerTimeout()));
-    connect(cycleEnableCheckBox, SIGNAL(clicked(bool)), this, SLOT(checkedBoxCycleClicked(bool)));
-    connect(device, SIGNAL(errorStr(QString)), this, SLOT(outputErrorString(QString)));
-    connect(device, SIGNAL(infoStr(QString)), this, SLOT(outputInformationString(QString)));
-    connect(inputTextEdit, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
+//    connect(cycleTimer, SIGNAL(timeout()), this, SLOT(cycleTimerTimeout()));
+//    connect(cycleEnableCheckBox, SIGNAL(clicked(bool)), this, SLOT(checkedBoxCycleClicked(bool)));
+//    connect(device, SIGNAL(errorStr(QString)), this, SLOT(outputErrorString(QString)));
+//    connect(device, SIGNAL(infoStr(QString)), this, SLOT(outputInformationString(QString)));
+//    connect(inputTextEdit, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
 
-    connect(showTimeCheckBox, SIGNAL(clicked(bool)), this, SLOT(outputTimeInfoCheckBoxClicked(bool)));
+//    connect(showTimeCheckBox, SIGNAL(clicked(bool)), this, SLOT(outputTimeInfoCheckBoxClicked(bool)));
 
-    /// 数据收发
-    connect(sendPushButton, SIGNAL(clicked(bool)), this, SLOT(writeBytes()));
-    connect(this, SIGNAL(need2writeBytes(QByteArray)), device, SLOT(writeBytes(QByteArray)));
-    connect(device, SIGNAL(bytesRead(QByteArray)), this, SLOT(bytesRead(QByteArray)));
-    connect(device, SIGNAL(bytesWritten(QByteArray)), this, SLOT(bytesWritten(QByteArray)));
+//    /// 数据收发
+//    connect(sendPushButton, SIGNAL(clicked(bool)), this, SLOT(writeBytes()));
+//    connect(this, SIGNAL(need2writeBytes(QByteArray)), device, SLOT(writeBytes(QByteArray)));
+//    connect(device, SIGNAL(bytesRead(QByteArray)), this, SLOT(bytesRead(QByteArray)));
+//    connect(device, SIGNAL(bytesWritten(QByteArray)), this, SLOT(bytesWritten(QByteArray)));
 
-    /// 重置收发计数
-    connect(resetRxCountPushButton, SIGNAL(clicked(bool)), this, SLOT(resetReceiveDataCount()));
-    connect(resetTxCountPushButton, SIGNAL(clicked(bool)), this, SLOT(resetSendDataCount()));
+//    /// 重置收发计数
+//    connect(resetRxCountPushButton, SIGNAL(clicked(bool)), this, SLOT(resetReceiveDataCount()));
+//    connect(resetTxCountPushButton, SIGNAL(clicked(bool)), this, SLOT(resetSendDataCount()));
 
-    /// 循环周期
-    connect(cycleTimeLineEdit, SIGNAL(textChanged(QString)), this, SLOT(setCycleTime(QString)));
+//    /// 循环周期
+//    connect(cycleTimeLineEdit, SIGNAL(textChanged(QString)), this, SLOT(setCycleTime(QString)));
 
-    /// 指示灯
-    connect(device, SIGNAL(bytesRead(QByteArray)), this, SLOT(updateRxImage()));
-    connect(device, SIGNAL(bytesWritten(QByteArray)),  this, SLOT(updateTxImage()));
+//    /// 指示灯
+//    connect(device, SIGNAL(bytesRead(QByteArray)), this, SLOT(updateRxImage()));
+//    connect(device, SIGNAL(bytesWritten(QByteArray)),  this, SLOT(updateTxImage()));
 
-    /// 文本模式
-    connect(inputModelComboBox, SIGNAL(currentTextChanged(QString)), this , SLOT(setInputMode(QString)));
-    connect(outputModelComboBox, SIGNAL(currentTextChanged(QString)), this, SLOT(setOutputMode(QString)));
+//    /// 文本模式
+//    connect(inputModelComboBox, SIGNAL(currentTextChanged(QString)), this , SLOT(setInputMode(QString)));
+//    connect(outputModelComboBox, SIGNAL(currentTextChanged(QString)), this, SLOT(setOutputMode(QString)));
 
-    /// 弹出自动回复设置面板
-    connect(autoResponseSettingPushButton, SIGNAL(clicked(bool)), autoResponseSettingPanel, SLOT(show()));
+//    /// 弹出自动回复设置面板
+//    connect(autoResponseSettingPushButton, SIGNAL(clicked(bool)), autoResponseSettingPanel, SLOT(show()));
 
-    /// 自动回复
-    connect(autoResponseSettingPanel, SIGNAL(autoResponseFlagChanged(bool)), this, SLOT(setAutoResponseFlag(bool)));
-    connect(device, SIGNAL(bytesRead(QByteArray)), this, SLOT(handleReadBytes(QByteArray)));
+//    /// 自动回复
+//    connect(autoResponseSettingPanel, SIGNAL(autoResponseFlagChanged(bool)), this, SLOT(setAutoResponseFlag(bool)));
+//    connect(device, SIGNAL(bytesRead(QByteArray)), this, SLOT(handleReadBytes(QByteArray)));
 
-    /// 高亮显示设置面板
-    connect(highlighterSettingButton, &QPushButton::clicked, highlighterSettingPanel, &SAKHighlighterSettingPanel::show);
+//    /// 高亮显示设置面板
+//    connect(highlighterSettingButton, &QPushButton::clicked, highlighterSettingPanel, &SAKHighlighterSettingPanel::show);
 
-    /// 显示读写参数设置窗口、设置参数
-    connect(rwParameterSettingButton, &QPushButton::clicked, &rwParameterSettingDialog, &SAKReadWriteSetting::show);
-    connect(&rwParameterSettingDialog, &SAKReadWriteSetting::readDelayTimeChanged, device, &SAKIODevice::setReadDelayTime);
-    connect(&rwParameterSettingDialog, &SAKReadWriteSetting::writeDelayTimeChanged, device, &SAKIODevice::setWriteDelayTime);
+//    /// 显示读写参数设置窗口、设置参数
+//    connect(rwParameterSettingButton, &QPushButton::clicked, &rwParameterSettingDialog, &SAKReadWriteSetting::show);
+//    connect(&rwParameterSettingDialog, &SAKReadWriteSetting::readDelayTimeChanged, device, &SAKIODevice::setReadDelayTime);
+//    connect(&rwParameterSettingDialog, &SAKReadWriteSetting::writeDelayTimeChanged, device, &SAKIODevice::setWriteDelayTime);
 }
 
 void SAKTabPage::afterDeviceOpen()
 {
-    controler->afterDeviceOpen();
+//    controler->afterDeviceOpen();
     refreshPushButton->setEnabled(false);
     switchPushButton->setText(tr("关闭"));
 }
 
 void SAKTabPage::afterDeviceClose()
 {
-    controler->afterDeviceClose();
+//    controler->afterDeviceClose();
     refreshPushButton->setEnabled(true);
     switchPushButton->setText(tr("打开"));
 
@@ -265,25 +255,25 @@ void SAKTabPage::writeBytes()
 {
     QString tipStr = tr("设备未就绪，本次发送操作取消！");
 
-    if (cycleEnableCheckBox->isChecked()){
-        if (device->isOpen()){
-            qlonglong cycleTime = cycleTimeLineEdit->text().toLongLong();
-            if (cycleTime == 0){
-                cycleTime = 1000;
-            }
-            cycleTimer->start(static_cast<int>(cycleTime));
-            sendPushButton->setEnabled(false);
-            cycleTimeLineEdit->setEnabled(false);
-        }else {
-             outputInfo(tipStr, "red");
-        }
-    }else{
-        if (device->isOpen()){
-            emit need2writeBytes(dataBytes());
-        }else {
-            outputInfo(tipStr, "red");
-        }
-    }
+//    if (cycleEnableCheckBox->isChecked()){
+//        if (device->isOpen()){
+//            qlonglong cycleTime = cycleTimeLineEdit->text().toLongLong();
+//            if (cycleTime == 0){
+//                cycleTime = 1000;
+//            }
+//            cycleTimer->start(static_cast<int>(cycleTime));
+//            sendPushButton->setEnabled(false);
+//            cycleTimeLineEdit->setEnabled(false);
+//        }else {
+//             outputInfo(tipStr, "red");
+//        }
+//    }else{
+//        if (device->isOpen()){
+//            emit need2writeBytes(dataBytes());
+//        }else {
+//            outputInfo(tipStr, "red");
+//        }
+//    }
 }
 
 void SAKTabPage::checkedBoxCycleClicked(bool checked)
@@ -299,12 +289,12 @@ void SAKTabPage::checkedBoxCycleClicked(bool checked)
 
 void SAKTabPage::cycleTimerTimeout()
 {
-    if (device->isOpen()){
-        emit need2writeBytes(dataBytes());
-    }else {
-        cycleTimer->stop();
-        outputInfo(tr("设备未就绪，本次发送操作取消！"), "red");
-    }
+//    if (device->isOpen()){
+//        emit need2writeBytes(dataBytes());
+//    }else {
+//        cycleTimer->stop();
+//        outputInfo(tr("设备未就绪，本次发送操作取消！"), "red");
+//    }
 }
 
 void SAKTabPage::cancleCycle()
@@ -658,19 +648,19 @@ void SAKTabPage::handleReadBytes(QByteArray data)
 
 QString SAKTabPage::readSetting(QString &option)
 {
-    QSettings settings;
-    QString key = device->deviceName() + "/" + option;
-    QString value = settings.value(key).toString();
+//    QSettings settings;
+//    QString key = device->deviceName() + "/" + option;
+//    QString value = settings.value(key).toString();
 
-    return value;
+    return "  ";
 }
 
 void SAKTabPage::writeSetting(QString &option, QString &value)
 {
-    QSettings settings;
-    QString key = device->deviceName() + "/" + option;
+//    QSettings settings;
+//    QString key = device->deviceName() + "/" + option;
 
-    settings.setValue(key, value);
+//    settings.setValue(key, value);
 }
 
 void SAKTabPage::initUiPointer()

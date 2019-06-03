@@ -17,6 +17,7 @@
 #include "SAKGlobal.hh"
 #include "QtStyleSheetApi.hh"
 #include "QtAppStyleApi.hh"
+#include "SAKTabPage.hh"
 
 #ifndef SAK_NO_SERIALPORT_ASSISTANT
 #include "SerialportSAKIODeviceWidget.hh"
@@ -89,6 +90,8 @@ void SAKMainWindow::AddTab()
 
     /// 终端输出
     this->mpTabWidget->addTab(new SAKConsole, tr("终端"));
+
+    this->mpTabWidget->addTab(new SAKTabPage, tr("串口调试"));
 }
 
 void SAKMainWindow::AddTool()

@@ -22,9 +22,7 @@
 #include <QApplication>
 #include <QTextBrowser>
 
-#include "SAKIODevice.hh"
 #include "SAKReadWriteSetting.hh"
-#include "SAKIODeviceControler.hh"
 #include "SAKAutoResponseSettingPanel.hh"
 
 class SAKHighlighterSettingPanel;
@@ -44,10 +42,9 @@ class SAKTabPage : public QWidget
 {
     Q_OBJECT
 public:
-    SAKTabPage(SAKIODevice *_device, SAKIODeviceControler *_controler, QWidget *parent = Q_NULLPTR);
+    SAKTabPage(QWidget *parent = Q_NULLPTR);
     ~SAKTabPage();
 
-    void setCustomControler(SAKIODeviceControler *controler);
     void setRefreshPBtText(QString text);
 
     /**
@@ -168,8 +165,6 @@ private:
     void setLabelText(QLabel* label, quint64 text);
 private:
     const char *logCategory = "SAKTabPage";
-    SAKIODevice                 *device                     = nullptr;
-    SAKIODeviceControler        *controler                  = nullptr;
     SAKAutoResponseSettingPanel *autoResponseSettingPanel   = nullptr;
     QTimer                      *cycleTimer                 = nullptr;
     QHBoxLayout                 *customControlerLayout      = nullptr;
