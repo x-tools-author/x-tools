@@ -130,21 +130,24 @@ UI_DIR      = $$OUT_PWD/ui
 include(Src/Modules/SAKTools.pri)
 
 # 取消该宏的定义可以将串口模块屏蔽
-winrt || arm-linux{
+winrt || linux-rasp-pi3-g++{
     DEFINES += SAK_NO_SERIALPORT_ASSISTANT
 }
 
 !contains(DEFINES, SAK_NO_SERIALPORT_ASSISTANT){
     QT  += serialport
     SOURCES += \
-        Src/TabPageSerialportAssistant/SerialportSAKIODeviceWidget.cc \
-        Src/TabPageSerialportAssistant/SerialportSAKIODevice.cc \
-        Src/TabPageSerialportAssistant/SerialportSAKIODeviceControler.cc
-    HEADERS +=
+        Src/SerialportAssistant/SAKSerialportAssistant.cc \
+        Src/SerialportAssistant/SAKSerialportAssistantControler.cc \
+        Src/SerialportAssistant/SAKTabPageSerialportAssistant.cc
+    HEADERS += \
+        Src/SerialportAssistant/SAKSerialportAssistant.hh \
+        Src/SerialportAssistant/SAKSerialportAssistantControler.hh \
+        Src/SerialportAssistant/SAKTabPageSerialportAssistant.hh
     FORMS   += \
-        Src/TabPageSerialportAssistant/SerialportSAKIODeviceControler.ui
+        Src/SerialportAssistant/SAKSerialportAssistantControler.ui
     INCLUDEPATH += \
-        Src/TabPageSerialportAssistant
+        Src/SerialportAssistant
 }else {
     message( "该版本Qt可能不包含串口模块，已经忽略串口模块！（串口助手功能被屏蔽！）" )
 }

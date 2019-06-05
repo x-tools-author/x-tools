@@ -184,7 +184,7 @@ private:
     QMetaEnum                   textModel;
 
     QPushButton*                rwParameterSettingButton    = nullptr;
-    SAKReadWriteSetting                 rwParameterSettingDialog;
+    SAKReadWriteSetting         rwParameterSettingDialog;
     ///----------------------------------------------------------------
     void initUI();
     QByteArray dataBytes();
