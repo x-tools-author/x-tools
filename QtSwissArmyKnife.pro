@@ -86,7 +86,7 @@ FORMS += \
 
 INCLUDEPATH += \
     Src \
-    Src/common \
+    Src/Base \
     Src/Console \
     Src/TabpPage \
     Src/TabpPage/Highlighter \
