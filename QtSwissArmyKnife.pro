@@ -24,110 +24,80 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    Src/SAKGlobal.cc \
-    Src/Console/SAKConsole.cc \
-    Src/Console/SAKLogOutput.cc \
-    Src/TabpPage/SAKTabPage.cc \
+    Src/Base/SAKDialog.cc \
+    Src/Base/SAKMessageBox.cc \
+    Src/Base/SAKWidget.cc \
     Src/main.cc \
-    Src/SAKApplication.cc \
-    Src/SAKMainWindow.cc \
-    Src/TabpPage/SAKIODeviceWidget.cc \
-    Src/TabpPage/SAKIODevice.cc \
-    Src/TabpPage/SAKIODeviceControler.cc \
-    Src/TabpPage/ReadWriteSetting/SAKReadWriteSetting.cc \
-    Src/TabpPage/AutoResponse/SAKAutoResponseItem.cc \
-    Src/TabpPage/AutoResponse/SAKAutoResponseSettingPanel.cc \
-    Src/TabpPage/Highlighter/SAKHighlighter.cc \
-    Src/TabpPage/Highlighter/SAKHighlighterSettingPanel.cc \
+    Src/SAKGlobal.cc \
     Src/SAKVersion.cc \
-    Src/MoreInformation.cc
+    Src/SAKMainWindow.cc \
+    Src/SAKApplication.cc \
+    Src/MoreInformation.cc \
+    Src/Console/SAKConsole.cc \
+    Src/Console/SAKLogOutput.cc \      
+    Src/Common/TabPage/SAKTabPage.cc \
+    Src/Common/TabPage/Highlighter/SAKHighlighter.cc \
+    Src/Common/TabPage/AutoResponse/SAKAutoResponseItem.cc \
+    Src/Common/TabPage/ReadWriteSetting/SAKReadWriteSetting.cc \
+    Src/Common/TabPage/Highlighter/SAKHighlighterSettingPanel.cc \
+    Src/Common/TabPage/AutoResponse/SAKAutoResponseSettingPanel.cc
+
 
 HEADERS += \
-    Src/SAKApplication.hh \
+    Src/Base/SAKDialog.hh \
+    Src/Base/SAKMessageBox.hh \
+    Src/Base/SAKWidget.hh \
     Src/SAKGlobal.hh \
-    Src/TabPageSerialportAssistant/SerialportSAKIODevice.hh \
-    Src/TabPageSerialportAssistant/SerialportSAKIODeviceControler.hh \
-    Src/TabPageSerialportAssistant/SerialportSAKIODeviceWidget.hh \
-    Src/TabPageTCPClient/TcpSAKIODevice.hh \
-    Src/TabPageTCPClient/TcpSAKIODeviceControler.hh \
-    Src/TabPageTCPClient/TcpSAKIODeviceWidget.hh \
-    Src/TabPageTCPServer/TcpServerSAKIODevice.hh \
-    Src/TabPageTCPServer/TcpServerSAKIODeviceControler.hh \
-    Src/TabPageTCPServer/TcpServerSAKIODeviceWidget.hh \
-    Src/TabpPage/SAKTabPage.hh \
-    Src/TabpageUDPClient/UdpSAKIODevice.hh \
-    Src/TabpageUDPClient/UdpSAKIODeviceControler.hh \
-    Src/TabpageUDPClient/UdpSAKIODeviceWidget.hh \
-    Src/Console/SAKConsole.hh \
-    Src/Console/SAKLogOutput.hh \
-    Src/MoreInformation.hh \
-    Src/SAKMainWindow.hh \
     Src/SAKVersion.hh \
-    Src/TabpPage/SAKIODevice.hh \
-    Src/TabpPage/SAKIODeviceControler.hh \
-    Src/TabpPage/SAKIODeviceWidget.hh \
-    Src/TabpPage/AutoResponse/SAKAutoResponseItem.hh \
-    Src/TabpPage/AutoResponse/SAKAutoResponseSettingPanel.hh \
-    Src/TabpPage/Highlighter/SAKHighlighter.hh \
-    Src/TabpPage/Highlighter/SAKHighlighterSettingPanel.hh \
-    Src/TabpPage/ReadWriteSetting/SAKReadWriteSetting.hh
+    Src/SAKMainWindow.hh \
+    Src/SAKApplication.hh \
+    Src/MoreInformation.hh \
+    Src/Console/SAKConsole.hh \
+    Src/Console/SAKLogOutput.hh \            
+    Src/Common/TabPage/SAKTabPage.hh \
+    Src/Common/TabPage/Highlighter/SAKHighlighter.hh \
+    Src/Common/TabPage/AutoResponse/SAKAutoResponseItem.hh \
+    Src/Common/TabPage/ReadWriteSetting/SAKReadWriteSetting.hh \
+    Src/Common/TabPage/Highlighter/SAKHighlighterSettingPanel.hh \
+    Src/Common/TabPage/AutoResponse/SAKAutoResponseSettingPanel.hh \
 
-FORMS += \
-    Src/Console/SAKConsole.ui \
-    Src/SAKMainWindow.ui \
-    Src/TabpPage/SAKIODeviceWidget.ui \
-    Src/TabpPage/AutoResponse/SAKAutoResponseItem.ui \
-    Src/TabpPage/AutoResponse/SAKAutoResponseSettingPanel.ui \
-    Src/TabpPage/Highlighter/SAKHighlighterSettingPanel.ui \
-    Src/TabpPage/ReadWriteSetting/SAKReadWriteSetting.ui \
+
+FORMS += \    
     Src/SAKVersion.ui \
+    Src/SAKMainWindow.ui \
     Src/MoreInformation.ui \
-    Src/TabpPage/SAKTabPage.ui
+    Src/Console/SAKConsole.ui \
+    Src/Common/TabPage/SAKTabPage.ui \
+    Src/Common/TabPage/AutoResponse/SAKAutoResponseItem.ui \
+    Src/Common/TabPage/ReadWriteSetting/SAKReadWriteSetting.ui \
+    Src/Common/TabPage/Highlighter/SAKHighlighterSettingPanel.ui \
+    Src/Common/TabPage/AutoResponse/SAKAutoResponseSettingPanel.ui
+
 
 INCLUDEPATH += \
     Src \
     Src/Base \
     Src/Console \
-    Src/TabpPage \
-    Src/TabpPage/Highlighter \
-    Src/TabpPage/AutoResponse \
-    Src/TabpPage/ReadWriteSetting
+    Src/Common/TabPage \
+    Src/Common/TabPage/Highlighter \
+    Src/Common/TabPage/AutoResponse \
+    Src/Common/TabPage/ReadWriteSetting
+
 
 RESOURCES += \
     SAKResources.qrc
 
-win32{
-    RC_ICONS = window.ico
-}
-
-# 静态编译版本不需要部署发布（静态编译时，禁用下面的）
-DEFINES += NOT_USING_STATIC_EDITION
-
-# 编译后不发布部署(发布时采用静态版本进行Qt进行编译)
-#win32{
-#    contains(DEFINES, NOT_USING_STATIC_EDITION){
-#        CONFIG(debug, debug|release) {
-#            win32-msvc {
-#                QMAKE_POST_LINK += $$escape_expand(\\n) $$[QT_INSTALL_BINS]/windeployqt.exe --no-compiler-runtime --no-translations $$OUT_PWD/debug/$${TARGET}.exe $$escape_expand(\\n)
-#            }
-#        } else {
-#            win32-msvc {
-#                QMAKE_POST_LINK += $$escape_expand(\\n) $$[QT_INSTALL_BINS]/windeployqt.exe --no-compiler-runtime --no-translations $$OUT_PWD/release/$${TARGET}.exe $$escape_expand(\\n)
-#            }
-#        }
-#    }
-#}
-
 #--------------------------------------------------------------------------------------------
 #编译目录配置
-MOC_DIR     = $$OUT_PWD/moc
-OBJECTS_DIR = $$OUT_PWD/obj
-RCC_DIR     = $$OUT_PWD/resources
 UI_DIR      = $$OUT_PWD/ui
+MOC_DIR     = $$OUT_PWD/moc
+RCC_DIR     = $$OUT_PWD/res
+OBJECTS_DIR = $$OUT_PWD/obj
+
 
 #--------------------------------------------------------------------------------------------
 # 子项目
-include(Src/Modules/SAKTools.pri)
+include(SAKModulesManager.pri)
 
 # 取消该宏的定义可以将串口模块屏蔽
 winrt || linux-rasp-pi3-g++{
@@ -152,41 +122,9 @@ winrt || linux-rasp-pi3-g++{
     message( "该版本Qt可能不包含串口模块，已经忽略串口模块！（串口助手功能被屏蔽！）" )
 }
 
-# TCP 客户端
-SOURCES += \
-    Src/TabPageTCPClient/TcpSAKIODevice.cc \
-    Src/TabPageTCPClient/TcpSAKIODeviceControler.cc \
-    Src/TabPageTCPClient/TcpSAKIODeviceWidget.cc
-HEADERS +=
-FORMS   += \
-    Src/TabPageTCPClient/TcpSAKIODeviceControler.ui
-INCLUDEPATH += \
-    Src/TabPageTCPClient
-
-# TCP服务器
-SOURCES += \
-    Src/TabPageTCPServer/TcpServerSAKIODeviceWidget.cc \
-    Src/TabPageTCPServer/TcpServerSAKIODevice.cc \
-    Src/TabPageTCPServer/TcpServerSAKIODeviceControler.cc
-HEADERS +=
-FORMS   += \
-    Src/TabPageTCPServer/TcpServerSAKIODeviceControler.ui
-INCLUDEPATH += \
-    Src/TabPageTCPServer
-
-# UDP客户端
-SOURCES += \
-    Src/TabpageUDPClient/UdpSAKIODevice.cc \
-    Src/TabpageUDPClient/UdpSAKIODeviceControler.cc \
-    Src/TabpageUDPClient/UdpSAKIODeviceWidget.cc
-HEADERS +=
-FORMS   += \
-    Src/TabpageUDPClient/UdpSAKIODeviceControler.ui
-INCLUDEPATH += \
-    Src/TabpageUDPClient
-
-include(Modules/QtAppStyleApi/QtAppStyleApi.pri)
-include(Modules/QtStyleSheetApi/QtStyleSheetApi.pri)
+win32{
+    RC_ICONS = window.ico
+}
 
 # 解决msvc编译器中文乱码的问题
 msvc:{

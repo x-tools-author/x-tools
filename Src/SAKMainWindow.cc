@@ -1,35 +1,45 @@
-﻿#include <QFile>
+﻿/*
+ * Copyright (C) 2018-2019 wuuhii. All rights reserved.
+ *
+ * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
+ * project. The project is a open source project, you can get the source from:
+ *     https://github.com/wuuhii/QtSwissArmyKnife
+ *     https://gitee.com/wuuhii/QtSwissArmyKnife
+ *
+ * If you want to know more about the project, please join our QQ group(952218522).
+ * In addition, the email address of the project author is wuuhii@outlook.com.
+ * Welcome to bother.
+ *
+ * I write the comment in English, it's not because that I'm good at English,
+ * but for "installing B".
+ */
+#include <QFile>
+#include <QTabBar>
+#include <QAction>
+#include <QMetaEnum>
+#include <QSettings>
+#include <QSpacerItem>
+#include <QMessageBox>
+#include <QStyleFactory>
 
-#include "SAKMainWindow.hh"
-#include "ui_SAKMainWindow.h"
-
-#include "UdpSAKIODeviceWidget.hh"
-#include "TcpSAKIODeviceWidget.hh"
-#include "TcpServerSAKIODeviceWidget.hh"
 #include "nslookup.h"
-#include "GetPublicIPWidget.h"
+#include "SAKGlobal.hh"
 #include "SAKVersion.hh"
+#include "SAKConsole.hh"
 #include "UpdateManager.h"
 #include "CRCCalculator.hh"
+#include "SAKMainWindow.hh"
+#include "QtAppStyleApi.hh"
 #include "SAKApplication.hh"
 #include "MoreInformation.hh"
-#include "SAKConsole.hh"
-#include "SAKGlobal.hh"
 #include "QtStyleSheetApi.hh"
-#include "QtAppStyleApi.hh"
-#include "SAKTabPage.hh"
+#include "GetPublicIPWidget.h"
+#include "SAKTabPageSerialportAssistant.hh"
 
+#include "ui_SAKMainWindow.h"
 #ifndef SAK_NO_SERIALPORT_ASSISTANT
-#include "SerialportSAKIODeviceWidget.hh"
+#include "SAKTabPageSerialportAssistant.hh"
 #endif
-
-#include <QStyleFactory>
-#include <QSettings>
-#include <QMessageBox>
-#include <QTabBar>
-#include <QSpacerItem>
-#include <QMetaEnum>
-#include <QAction>
 
 const static char* configureFile = "http://wuhai.pro/software/QtSwissArmyKnife/update.json";
 const char* SAKMainWindow::appStyleKey = "Universal/appStyle";
@@ -66,32 +76,10 @@ SAKMainWindow::~SAKMainWindow()
 
 void SAKMainWindow::AddTab()
 {
-#ifndef SAK_NO_SERIALPORT_ASSISTANT
-    /// 串口页(不支持winrt、树莓派...)
-    SerialportSAKIODevice *serialportDevice = new SerialportSAKIODevice;
-    this->mpTabWidget->addTab(new SerialportSAKIODeviceWidget(serialportDevice, new SerialportSAKIODeviceControler), tr("串口助手"));
-    serialportDevice->start();
-#endif
-
-    /// tcp客户端
-    TcpSAKIODevice *tcpDevice = new TcpSAKIODevice;
-    this->mpTabWidget->addTab(new TcpSAKIODeviceWidget(tcpDevice, new TcpSAKIODeviceControler), tr("TCP客户端"));
-    tcpDevice->start();
-
-    /// TCP 服务器
-    TcpServerSAKIODevice *tcpServerDevice = new TcpServerSAKIODevice;
-    this->mpTabWidget->addTab(new TcpServerSAKIODeviceWidget(tcpServerDevice, new TcpServerSAKIODeviceControler), tr("Tcp服务器"));
-    tcpServerDevice->start();
-
-    /// udp客户端
-    UdpSAKIODevice *udpDevice = new UdpSAKIODevice;
-    this->mpTabWidget->addTab(new UdpSAKIODeviceWidget(udpDevice, new UdpSAKIODeviceControler), tr("UDP客户端"));
-    udpDevice->start();
-
+    /// 串口助手
+    this->mpTabWidget->addTab(new SAKTabPageSerialPortAssistant, tr("串口助手"));
     /// 终端输出
     this->mpTabWidget->addTab(new SAKConsole, tr("终端"));
-
-    this->mpTabWidget->addTab(new SAKTabPage, tr("串口调试"));
 }
 
 void SAKMainWindow::AddTool()
@@ -231,11 +219,6 @@ void SAKMainWindow::addTool(QString toolName, QWidget *toolWidget)
 
 void SAKMainWindow::changeStylesheet()
 {
-    /*
-     * 样式文件来自互联网，并非本软件作者编写，如有侵权，请联系软件作者删除。
-     * https://blog.csdn.net/feiyangqingyun/article/details/80211690
-     */
-
     QFile file;
     QString skin = sender()->objectName();
 
