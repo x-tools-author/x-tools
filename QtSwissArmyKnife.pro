@@ -36,6 +36,7 @@ SOURCES += \
     Src/Console/SAKConsole.cc \
     Src/Console/SAKLogOutput.cc \      
     Src/Common/TabPage/SAKTabPage.cc \
+    Src/Common/TabPage/SAKDataFactory.cc \
     Src/Common/TabPage/Highlighter/SAKHighlighter.cc \
     Src/Common/TabPage/AutoResponse/SAKAutoResponseItem.cc \
     Src/Common/TabPage/ReadWriteSetting/SAKReadWriteSetting.cc \
@@ -55,6 +56,7 @@ HEADERS += \
     Src/Console/SAKConsole.hh \
     Src/Console/SAKLogOutput.hh \            
     Src/Common/TabPage/SAKTabPage.hh \
+    Src/Common/TabPage/SAKDataFactory.hh \
     Src/Common/TabPage/Highlighter/SAKHighlighter.hh \
     Src/Common/TabPage/AutoResponse/SAKAutoResponseItem.hh \
     Src/Common/TabPage/ReadWriteSetting/SAKReadWriteSetting.hh \
@@ -108,14 +110,14 @@ winrt || linux-rasp-pi3-g++{
     QT  += serialport
     SOURCES += \
         Src/SerialportAssistant/SAKSerialportAssistant.cc \
-        Src/SerialportAssistant/SAKSerialportAssistantControler.cc \
+        Src/SerialportAssistant/SAKSerialportAssistantController.cc \
         Src/SerialportAssistant/SAKTabPageSerialportAssistant.cc
     HEADERS += \
         Src/SerialportAssistant/SAKSerialportAssistant.hh \
-        Src/SerialportAssistant/SAKSerialportAssistantControler.hh \
+        Src/SerialportAssistant/SAKSerialportAssistantController.hh \
         Src/SerialportAssistant/SAKTabPageSerialportAssistant.hh
     FORMS   += \
-        Src/SerialportAssistant/SAKSerialportAssistantControler.ui
+        Src/SerialportAssistant/SAKSerialportAssistantController.ui
     INCLUDEPATH += \
         Src/SerialportAssistant
 }else {

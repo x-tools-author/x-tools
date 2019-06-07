@@ -13,32 +13,25 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#ifndef SAKTABPAGESERIALPORTASSISTANT_HH
-#define SAKTABPAGESERIALPORTASSISTANT_HH
+#ifndef SAKDATAFACTORY_HH
+#define SAKDATAFACTORY_HH
 
 #include "SAKTabPage.hh"
+#include <QThread>
 
-class SAKSerialportAssistant;
-class SAKSerialportAssistantController;
-class SAKTabPageSerialportAssistant : public SAKTabPage
+class SAKDataFactory:public QThread
 {
     Q_OBJECT
 public:
-    SAKTabPageSerialportAssistant(QWidget *parent = Q_NULLPTR);
-    ~SAKTabPageSerialportAssistant();
+    SAKDataFactory(QObject *parent = Q_NULLPTR);
 
+    void handleTheDataThatNeedsToBeSent(QString rawData, SAKTabPage::TextDisplayModel textModel);
+    void handleTheDataThatNeedsToBeOutputted(QByteArray data, SAKTabPage::OutputParameters parameters);
 private:
-    SAKSerialportAssistant              *serialPortAssistant;
-    SAKSerialportAssistantController    *controller;
-
-    void setUiEnable(bool enable);
-    void changeDeviceStatus(bool opened);
-private:
-    void openOrColoseDevice() final;
-    void refreshDevice() final;
-    QWidget *controllerWidget() final;
-
-    void initSignalAndSlot(bool needToConnect);
+    void run() final;
+signals:
+    void sendBytes(QByteArray data);
+    void outputData(QString data, bool isReceived);
 };
 
 #endif

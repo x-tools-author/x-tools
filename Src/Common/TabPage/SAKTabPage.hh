@@ -1,10 +1,17 @@
 ﻿/*
- * The file is encoding with utf-8 (with BOM)
+ * Copyright (C) 2018-2019 wuuhii. All rights reserved.
  *
- * I write the comment with English, it's not because that I'm good at English,
+ * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
+ * project. The project is a open source project, you can get the source from:
+ *     https://github.com/wuuhii/QtSwissArmyKnife
+ *     https://gitee.com/wuuhii/QtSwissArmyKnife
+ *
+ * If you want to know more about the project, please join our QQ group(952218522).
+ * In addition, the email address of the project author is wuuhii@outlook.com.
+ * Welcome to bother.
+ *
+ * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
- *
- * Copyright (C) 2018-2019 woohii persionnal. No rights reserved.
  */
 #ifndef SAKTABPAGE_HH
 #define SAKTABPAGE_HH
@@ -13,6 +20,7 @@
 #include <QTimer>
 #include <QLabel>
 #include <QWidget>
+#include <QGroupBox>
 #include <QComboBox>
 #include <QDateTime>
 #include <QMetaEnum>
@@ -25,6 +33,7 @@
 #include "SAKReadWriteSetting.hh"
 #include "SAKAutoResponseSettingPanel.hh"
 
+class SAKDataFactory;
 class SAKHighlighterSettingPanel;
 
 namespace Ui {
@@ -45,10 +54,8 @@ public:
     SAKTabPage(QWidget *parent = Q_NULLPTR);
     ~SAKTabPage();
 
-    void setRefreshPBtText(QString text);
-
     /**
-     * @brief The TextDisplayModel 输出输入显示模式
+     * @brief   -- 数据显示模式
      */
     enum TextDisplayModel {
         Bin,
@@ -59,15 +66,118 @@ public:
         Local8bit
     };
     Q_ENUM(TextDisplayModel)
+
+    struct OutputParameters {
+        bool showDate;
+        bool showTime;
+        bool showMS;
+        bool isReceivedData;
+        TextDisplayModel textModel;
+    };
+
+    /**
+     * @brief readDelayTimes    -- 收到读就绪信号后，延时一段时间
+     * @return                  -- 延时时间
+     */
+    unsigned long readDelayTimes();
+    /**
+     * @brief readDelayTimes    -- 智行发送函数前，延时一段时间发送
+     * @return                  -- 延时时间
+     */
+    unsigned long writeDelayTimes();
 protected:
-    // 设备管理组
+    /**
+     * @brief openOrColoseDevice    -- 打开或者关闭设备
+     */
+    virtual void openOrColoseDevice(){}
+    /**
+     * @brief refreshDevice         -- 刷新设备
+     */
+    virtual void refreshDevice(){}
+    /**
+     * @brief controllerWidget  -- 安装控制面板
+     */
+    virtual QWidget *controllerWidget(){return nullptr;}
+    /**
+     * @brief setUpController -- 安装控制器（控制面板）
+     */
+    void setUpController();   
+    /**
+     * @brief bytesRead -- 处理接受到的数据
+     * @param data      -- 接受到的数据
+     */
+    void bytesRead(QByteArray data);
+    /**
+     * @brief bytesWritten  -- 处理已发送的数据
+     * @param data          -- 已发送的数据
+     */
+    void bytesWritten(QByteArray data);
+protected:
+    QTimer cycleTimer;
+    SAKDataFactory *dataFactory;
+private:
+    // 初始化ui
+    void initUI();
+    // 注册用户自定义数据类型，自定义数据类型作为信号参数时，必须先注册
+    void registerMetaType();
+    // 获取输出参数
+    OutputParameters outputParameters();
+    // 写数据
+    void writeBytes(QByteArray data){emit need2writeBytes(data);}
+    // 设置label文本
+    void setLabelText(QLabel *label, qint64 text);
+    // 设置输入框的文本输入格式
+    void textFormatControl();
+signals:
+    /// 该函数并不会真的发送数据，而是发送一个信号，该信号携带需要发送的数据,数据需要经过处理后才能发送
+    void sendRawData(QString data, TextDisplayModel textModel);
+    /// 将读取到的数据或者已发送的数据发射出去处理
+    void dataReadOrwritten(QByteArray data, OutputParameters parameters);
+    /// 子类关联该信号来发送数据即可
+    void need2writeBytes(QByteArray data);
+    /// 子类设备状态（打开/关闭）发生改变时发送该信号
+    void deviceStatusChanged(bool opened);
+
+private:
+    const char *logCategory = "SAKTabPage";
+
+    ///----------------------------------------------------------------
+    QString readSetting(QString &option);
+    void writeSetting(QString &option, QString &value);
+
+    /**
+     * @brief outputData        -- 更新输出数据
+     * @param data              -- 需要输出显示的数据
+     */
+    void outputData(QString data);
+private slots:
+    void updateRxImage();
+    void updateTxImage();
+
+    void cancleCycle();
+
+    void setCycleTime(QString time);
+    void readCycleTime();
+
+    void setOutputMode(QString mode);
+    void readOutputMode();
+
+    void setInputMode(QString mode);
+    void readInputMode();
+
+    void cycleTimerTimeout();
+    void checkedBoxCycleClicked(bool checked);
+
+    void resetSendDataCount();
+    void resetReceiveDataCount();
+protected:
+    // 设备设置
     QPushButton *refreshPushButton              = nullptr;  /// 刷新按钮
     QPushButton *switchPushButton               = nullptr;  /// 打开关闭设备按钮
-    QLabel      *rxLabel                        = nullptr;  /// 接受指示灯
-    QLabel      *txLabel                        = nullptr;  /// 发送指示灯
+    QGroupBox   *deviceSettingGroupBox          = nullptr;  /// 控制面板
 private slots:
-    void on_refreshPushButton_clicked(){emit need2refresh();}
-    void on_switchPushButton_clicked(){emit need2openOrClose();}
+    void on_refreshPushButton_clicked(){refreshDevice();}
+    void on_switchPushButton_clicked(){openOrColoseDevice();}
 
      // 输入设置组
 protected:
@@ -92,14 +202,10 @@ private slots:
 
     //数据输出组管理
 protected:
-    TextDisplayModel outputTextModel = SAKTabPage::Hex;
-    bool showDate;
-    bool autoWrap;
-    bool showTime;
-    bool showMS;
-    bool showRxData;
-    bool showTxData;
+    TextDisplayModel outputTextModel = SAKTabPage::Hex;   
 
+    QLabel      *rxLabel                        = nullptr;  /// 接受指示灯
+    QLabel      *txLabel                        = nullptr;  /// 发送指示灯
     QComboBox   *outputModelComboBox            = nullptr;  /// 输出模式复选框
     QCheckBox   *showDateCheckBox               = nullptr;  /// 显示日期使能复选框
     QCheckBox   *autoWrapCheckBox               = nullptr;  /// 自动换行使能复选框
@@ -112,12 +218,7 @@ protected:
     QTextBrowser *outputTextBroswer             = nullptr;  /// 用于输出显示收发的数据
 private slots:
     void on_outputModelComboBox_currentTextChanged(const QString &text);
-    void on_showDateCheckBox_clicked();
     void on_autoWrapCheckBox_clicked();
-    void on_showTimeCheckBox_clicked();
-    void on_showMsCheckBox_clicked();
-    void on_showRxDataCheckBox_clicked();
-    void on_showTxDataCheckBox_clicked();
     void on_clearOutputPushButton_clicked();
     void on_saveOutputPushButton_clicked();
 
@@ -150,8 +251,6 @@ private slots:
     void on_highlightSettingPushButton_clicked();           /// 创建一个高亮设置窗口并显示，该窗口关闭后将被销毁
     void on_readWriteSettingPushButton();                   /// 创建一个读写参数设置窗口并显示，该窗口关闭后将被销毁
 
-
-
 private:
     /**
      * @brief ui    -- 界面文件
@@ -161,98 +260,10 @@ private:
     /**
      * @brief initUiPointer -- 初始化指向ui控件的数据成员（指针）
      */
-    void initUiPointer();    
-    void setLabelText(QLabel* label, quint64 text);
-private:
-    const char *logCategory = "SAKTabPage";
-    SAKAutoResponseSettingPanel *autoResponseSettingPanel   = nullptr;
-    QTimer                      *cycleTimer                 = nullptr;
-    QHBoxLayout                 *customControlerLayout      = nullptr;
-    QTimer                      *clearInfoTimer             = nullptr;
-    SAKHighlighterSettingPanel  *highlighterSettingPanel    = nullptr;
-    QPushButton                 *highlighterSettingButton   = nullptr;
-
-    QByteArray                  dataTemp                    = "(null)";
-    const QSize                 rxtxSize                    = QSize(18, 18);
-
-    QString                     inputTextMode               = "Hex";
-    QString                     outputTextMode              = "Hex";
-
-    QComboBox*                  inputTextModelComboBox      = nullptr;
-    QComboBox*                  outputTextModelComboBox     = nullptr;
-
-    QMetaEnum                   textModel;
-
-    QPushButton*                rwParameterSettingButton    = nullptr;
-    SAKReadWriteSetting         rwParameterSettingDialog;
-    ///----------------------------------------------------------------
-    void initUI();
-    QByteArray dataBytes();
-    void Connect();
-
-    QString readSetting(QString &option);
-    void writeSetting(QString &option, QString &value);
-
-    /**
-     * @brief refreshOutputData -- 更新输出数据
-     * @param data              -- 需要输出显示的数据
-     * @param isReceivedData    -- true表示数据是接受到的数据，否则是发送数据
-     */
-    void refreshOutputData(QByteArray &data, bool isReceivedData = true);
-private slots:
-    virtual void updateRxImage();
-    virtual void updateTxImage();
-
-    void cancleCycle();
-
-    void setCycleTime(QString time);
-    void readCycleTime();
-
-    void setOutputMode(QString mode);
-    void readOutputMode();
-
-    void setInputMode(QString mode);
-    void readInputMode();
-
-    void textFormatControl();
-
-    void outputTimeInfoCheckBoxClicked(bool checked);
-    void outputReceiveDataOnlyCheckBoxClicked(bool cheaked);
-
-    void openOrClose();
-    void open(){emit need2open();}
-    void close(){emit need2close();}
-    void refresh(){emit need2refresh();}
-
-    void afterDeviceOpen();
-    void afterDeviceClose();
-
-    void cycleTimerTimeout();
-    void checkedBoxCycleClicked(bool checked);
-
-    void outputInfo(QString info, QString color = "black", bool prefix = true);
-    void outputErrorString(QString str);
-    void outputInformationString(QString str);
-    void clearInfo();
-
-    void bytesRead(QByteArray data);
-    void bytesWritten(QByteArray data);
-    void writeBytes();
-
-    void resetSendDataCount();
-    void resetReceiveDataCount();
-
-    void setAutoResponseFlag(bool enableAutoResponse);
-    void readAutoResponseFlag();
-
-    void handleReadBytes(QByteArray data);
-signals:
-    void need2writeBytes(QByteArray data);
-    void need2open();
-    void need2close();
-    void need2refresh();
-    void need2openOrClose();
-    void need2write();
+    void initUiPointer();       
 };
+
+Q_DECLARE_METATYPE(SAKTabPage::TextDisplayModel);
+Q_DECLARE_METATYPE(SAKTabPage::OutputParameters);
 
 #endif  // SAKTabPage_H

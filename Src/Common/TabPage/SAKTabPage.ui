@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1220</width>
-    <height>617</height>
+    <height>619</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -56,7 +56,7 @@ p, li { white-space: pre-wrap; }
     </widget>
    </item>
    <item row="0" column="0" rowspan="4">
-    <widget class="QGroupBox" name="groupBox_2">
+    <widget class="QGroupBox" name="deviceSetting">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
        <horstretch>0</horstretch>
@@ -83,7 +83,13 @@ p, li { white-space: pre-wrap; }
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="QGroupBox" name="groupBoxCustom">
+       <widget class="QGroupBox" name="deviceSettingGroupBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -101,14 +107,14 @@ p, li { white-space: pre-wrap; }
         </property>
         <layout class="QGridLayout" name="gridLayout_9">
          <item row="0" column="1">
-          <widget class="QPushButton" name="pushButton_3">
+          <widget class="QPushButton" name="switchPushButton">
            <property name="text">
             <string>打开</string>
            </property>
           </widget>
          </item>
          <item row="0" column="0">
-          <widget class="QPushButton" name="pushButton_4">
+          <widget class="QPushButton" name="refreshPushButton">
            <property name="text">
             <string>刷新</string>
            </property>
@@ -148,54 +154,6 @@ p, li { white-space: pre-wrap; }
          <string>数据输入设置</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_3">
-         <item row="2" column="1">
-          <widget class="QPushButton" name="clearInputPushButton">
-           <property name="text">
-            <string>清空输入</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1">
-          <widget class="QPushButton" name="readinFilePushButton">
-           <property name="text">
-            <string>读入文件</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLineEdit" name="cycleTimeLineEdit">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="text">
-            <string>1000</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="0" colspan="2">
-          <widget class="Line" name="line_3">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QPushButton" name="pushButton_8">
-           <property name="text">
-            <string>保存输入</string>
-           </property>
-          </widget>
-         </item>
-         <item row="9" column="1">
-          <widget class="QPushButton" name="sendPushButton">
-           <property name="text">
-            <string>发送数据</string>
-           </property>
-          </widget>
-         </item>
          <item row="0" column="1">
           <widget class="QComboBox" name="inputModelComboBox">
            <property name="currentIndex">
@@ -233,15 +191,19 @@ p, li { white-space: pre-wrap; }
            </item>
           </widget>
          </item>
-         <item row="6" column="0" colspan="2">
-          <widget class="QCheckBox" name="checkBox">
+         <item row="3" column="0">
+          <widget class="QPushButton" name="pushButton_8">
            <property name="text">
-            <string>追加CRC校验码</string>
+            <string>保存输入</string>
            </property>
           </widget>
          </item>
-         <item row="7" column="0" colspan="2">
-          <widget class="QComboBox" name="comboBox"/>
+         <item row="2" column="1">
+          <widget class="QPushButton" name="clearInputPushButton">
+           <property name="text">
+            <string>清空输入</string>
+           </property>
+          </widget>
          </item>
          <item row="1" column="0" colspan="2">
           <widget class="QCheckBox" name="cycleEnableCheckBox">
@@ -250,17 +212,27 @@ p, li { white-space: pre-wrap; }
            </property>
           </widget>
          </item>
-         <item row="5" column="0">
-          <widget class="QLabel" name="label_8">
+         <item row="11" column="1">
+          <widget class="QPushButton" name="sendPushButton">
            <property name="text">
-            <string>CRC校验码</string>
+            <string>发送数据</string>
            </property>
           </widget>
          </item>
-         <item row="9" column="0">
-          <widget class="QPushButton" name="pushButton_7">
+         <item row="7" column="0" colspan="2">
+          <widget class="QComboBox" name="comboBox"/>
+         </item>
+         <item row="3" column="1">
+          <widget class="QPushButton" name="readinFilePushButton">
            <property name="text">
-            <string>更多设置</string>
+            <string>读入文件</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0" colspan="2">
+          <widget class="Line" name="line_3">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
            </property>
           </widget>
          </item>
@@ -271,17 +243,51 @@ p, li { white-space: pre-wrap; }
            </property>
           </widget>
          </item>
-         <item row="5" column="1">
+         <item row="2" column="0">
+          <widget class="QLineEdit" name="cycleTimeLineEdit">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>1000</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0" colspan="2">
+          <widget class="QCheckBox" name="checkBox">
+           <property name="text">
+            <string>追加CRC校验码</string>
+           </property>
+          </widget>
+         </item>
+         <item row="11" column="0">
+          <widget class="QPushButton" name="pushButton_7">
+           <property name="text">
+            <string>更多设置</string>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="1">
           <widget class="QLabel" name="label_9">
            <property name="text">
             <string>（null）</string>
            </property>
           </widget>
          </item>
-         <item row="8" column="0" colspan="2">
+         <item row="9" column="0" colspan="2">
           <widget class="Line" name="line_4">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="0">
+          <widget class="QLabel" name="label_8">
+           <property name="text">
+            <string>CRC校验码</string>
            </property>
           </widget>
          </item>
@@ -357,14 +363,14 @@ p, li { white-space: pre-wrap; }
           </widget>
          </item>
          <item row="0" column="3">
-          <widget class="QLabel" name="label_13">
+          <widget class="QLabel" name="txLabel">
            <property name="text">
             <string/>
            </property>
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QLabel" name="label_11">
+          <widget class="QLabel" name="rxLabel">
            <property name="text">
             <string/>
            </property>
