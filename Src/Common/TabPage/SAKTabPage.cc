@@ -33,7 +33,8 @@
 
 SAKTabPage::SAKTabPage(QWidget *parent)
     :QWidget(parent)
-    ,ui(new Ui::SAKTabPage)              
+    ,inputModel (Local8bit)
+    ,ui (new Ui::SAKTabPage)
 {
     /*
      * 安装ui
@@ -127,13 +128,9 @@ void SAKTabPage::setLabelText(QLabel *label, qint64 text)
 
 void SAKTabPage::textFormatControl()
 {
-    return;
     disconnect(inputTextEdit, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
     QString plaintext = inputTextEdit->toPlainText();
-    if (plaintext.isEmpty()){
-        connect(inputTextEdit, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
-        return;
-    }else {
+    if (!plaintext.isEmpty()){
         if (inputModel == SAKTabPage::Bin){
             QString strTemp;
             plaintext.remove(QRegExp("[^0-1]"));
@@ -189,6 +186,23 @@ void SAKTabPage::textFormatControl()
         }
     }
     connect(inputTextEdit, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
+}
+
+void SAKTabPage::outputMessage(QString msg, bool isInfo)
+{
+    QString time = QDateTime::currentDateTime().toString("yyyy/MM/dd hh:mm:ss");
+    time = QString("<font color=silver>%1</font>").arg(time);
+    messageTextBrowser->append(time);
+
+    if (isInfo){
+        msg = QString("<font color=blue>%1</font>").arg(msg);
+    }else{
+        msg = QString("<font color=red>%1</font>").arg(msg);
+        QApplication::beep();
+    }
+
+    messageTextBrowser->append(msg);
+    messageTextBrowser->append("");
 }
 
 void SAKTabPage::checkedBoxCycleClicked(bool checked)
@@ -400,6 +414,11 @@ void SAKTabPage::initUiPointer()
     switchPushButton        = ui->switchPushButton;
     refreshPushButton       = ui->refreshPushButton;
     deviceSettingGroupBox   = ui->deviceSettingGroupBox;
+
+    /*
+     * 消息输出组
+     */
+    messageTextBrowser      = ui->messageTextBrowser;
 
     /*
      * 输入设置组

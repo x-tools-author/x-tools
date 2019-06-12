@@ -112,21 +112,28 @@ protected:
      * @param data          -- 已发送的数据
      */
     void bytesWritten(QByteArray data);
+
+    /**
+     * @brief outputMessage -- 输出信息到ui显示
+     * @param msg           -- 需要输出的消息
+     * @param isInfo        -- 是否为普通消息
+     */
+    void outputMessage(QString msg, bool isInfo = true);
 protected:
     QTimer cycleTimer;
     SAKDataFactory *dataFactory;
 private:
-    // 初始化ui
+    /// 初始化ui
     void initUI();
-    // 注册用户自定义数据类型，自定义数据类型作为信号参数时，必须先注册
+    /// 注册用户自定义数据类型，自定义数据类型作为信号参数时，必须先注册
     void registerMetaType();
-    // 获取输出参数
+    /// 获取输出参数
     OutputParameters outputParameters();
-    // 写数据
+    /// 写数据
     void writeBytes(QByteArray data){emit need2writeBytes(data);}
-    // 设置label文本
+    /// 设置label文本
     void setLabelText(QLabel *label, qint64 text);
-    // 设置输入框的文本输入格式
+    /// 设置输入框的文本输入格式
     void textFormatControl();
 signals:
     /// 该函数并不会真的发送数据，而是发送一个信号，该信号携带需要发送的数据,数据需要经过处理后才能发送
@@ -170,14 +177,19 @@ private slots:
 
     void resetSendDataCount();
     void resetReceiveDataCount();
-protected:
+    // ------------------------------------------------------------------------
     // 设备设置
+protected:    
     QPushButton *refreshPushButton              = nullptr;  /// 刷新按钮
     QPushButton *switchPushButton               = nullptr;  /// 打开关闭设备按钮
     QGroupBox   *deviceSettingGroupBox          = nullptr;  /// 控制面板
 private slots:
     void on_refreshPushButton_clicked(){refreshDevice();}
     void on_switchPushButton_clicked(){openOrColoseDevice();}
+
+    // 消息输出组
+protected:
+    QTextBrowser *messageTextBrowser            = nullptr;  /// 消息输出框
 
      // 输入设置组
 protected:
@@ -255,7 +267,7 @@ private:
     /**
      * @brief ui    -- 界面文件
      */
-    Ui::SAKTabPage *ui                  = nullptr;
+    Ui::SAKTabPage *ui = nullptr;
 
     /**
      * @brief initUiPointer -- 初始化指向ui控件的数据成员（指针）
