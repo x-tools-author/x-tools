@@ -132,9 +132,9 @@ private:
     /// 写数据
     void writeBytes(QByteArray data){emit need2writeBytes(data);}
     /// 设置label文本
-    void setLabelText(QLabel *label, qint64 text);
+    void setLabelText(QLabel *label, quint64 text);
     /// 设置输入框的文本输入格式
-    void textFormatControl();
+    void formattingInputText(TextDisplayModel model);
 signals:
     /// 该函数并不会真的发送数据，而是发送一个信号，该信号携带需要发送的数据,数据需要经过处理后才能发送
     void sendRawData(QString data, TextDisplayModel textModel);
@@ -211,6 +211,7 @@ private slots:
     void on_readinFilePushButton_clicked();
     void on_clearInputPushButton_clicked();
     void on_sendPushButton_clicked();
+    void on_inputTextEdit_textChanged();
 
     //数据输出组管理
 protected:

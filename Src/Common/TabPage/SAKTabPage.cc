@@ -120,18 +120,17 @@ SAKTabPage::OutputParameters SAKTabPage::outputParameters()
     return parameters;
 }
 
-void SAKTabPage::setLabelText(QLabel *label, qint64 text)
+void SAKTabPage::setLabelText(QLabel *label, quint64 text)
 {
     QString str = QString::number(text);
     label->setText(str);
 }
 
-void SAKTabPage::textFormatControl()
+void SAKTabPage::formattingInputText(TextDisplayModel model)
 {
-    disconnect(inputTextEdit, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
     QString plaintext = inputTextEdit->toPlainText();
     if (!plaintext.isEmpty()){
-        if (inputModel == SAKTabPage::Bin){
+        if (model == SAKTabPage::Bin){
             QString strTemp;
             plaintext.remove(QRegExp("[^0-1]"));
             for (int i = 0; i < plaintext.length(); i++){
@@ -142,7 +141,7 @@ void SAKTabPage::textFormatControl()
             }
             inputTextEdit->setText(strTemp);
             inputTextEdit->moveCursor(QTextCursor::End);
-        }else if(inputModel == SAKTabPage::Oct) {
+        }else if(model == SAKTabPage::Oct) {
             QString strTemp;
             plaintext.remove(QRegExp("[^0-7]"));
             for (int i = 0; i < plaintext.length(); i++){
@@ -153,7 +152,7 @@ void SAKTabPage::textFormatControl()
             }
             inputTextEdit->setText(strTemp);
             inputTextEdit->moveCursor(QTextCursor::End);
-        }else if(inputModel == SAKTabPage::Dec) {
+        }else if(model == SAKTabPage::Dec) {
             QString strTemp;
             plaintext.remove(QRegExp("[^0-9]"));
             for (int i = 0; i < plaintext.length(); i++){
@@ -164,7 +163,7 @@ void SAKTabPage::textFormatControl()
             }
             inputTextEdit->setText(strTemp);
             inputTextEdit->moveCursor(QTextCursor::End);
-        }else if(inputModel == SAKTabPage::Hex) {
+        }else if(model == SAKTabPage::Hex) {
             QString strTemp;
             plaintext.remove(QRegExp("[^0-9a-fA-F]"));
             for (int i = 0; i < plaintext.length(); i++){
@@ -175,17 +174,16 @@ void SAKTabPage::textFormatControl()
             }
             inputTextEdit->setText(strTemp.toUpper());
             inputTextEdit->moveCursor(QTextCursor::End);
-        }else if(inputModel == SAKTabPage::Ascii) {
+        }else if(model == SAKTabPage::Ascii) {
             plaintext.remove(QRegExp("[^\0u00-\u007f ]"));
             inputTextEdit->setText(plaintext);
             inputTextEdit->moveCursor(QTextCursor::End);
-        }else if(inputModel == SAKTabPage::Local8bit) {
+        }else if(model == SAKTabPage::Local8bit) {
             /// nothing to do
         }else {
             Q_ASSERT_X(false, __FUNCTION__, "Unknow output mode");
         }
     }
-    connect(inputTextEdit, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
 }
 
 void SAKTabPage::outputMessage(QString msg, bool isInfo)
@@ -550,19 +548,26 @@ void SAKTabPage::on_inputModelComboBox_currentTextChanged(const QString &text)
     /*
      *  在ui初始化的时候，会出现text为empty的情况
      */
-//    if (text.isEmpty()){
-//        return;
-//    }
+    if (text.isEmpty()){
+        return;
+    }
 
-//    QMetaEnum model = QMetaEnum::fromType<TextDisplayModel>();
-//    bool ok = false;
-//    int ret = model.keyToValue(text.toLatin1().data(), &ok);
-//    if (ok){
-//        inputTextMode = static_cast<TextDisplayModel>(ret);
-//    }else{
-//        QLoggingCategory category(logCategory);
-//        qCWarning(category) << "Input text model error!";
-//    }
+    QMetaEnum model = QMetaEnum::fromType<TextDisplayModel>();
+    bool ok = false;
+    int ret = model.keyToValue(text.toLatin1().data(), &ok);
+    if (ok){
+        inputModel = static_cast<TextDisplayModel>(ret);
+    }else{
+        QLoggingCategory category(logCategory);
+        qCWarning(category) << "Input text model error!";
+    }
+
+    /*
+     * 处理输入框已存在的数据
+     */
+    inputTextEdit->blockSignals(true);
+    formattingInputText(inputModel);
+    inputTextEdit->blockSignals(false);
 }
 
 void SAKTabPage::on_cycleEnableCheckBox_clicked()
@@ -614,12 +619,20 @@ void SAKTabPage::on_clearInputPushButton_clicked()
 void SAKTabPage::on_sendPushButton_clicked()
 {
     QString data = inputTextEdit->toPlainText();
-
+#if 0
     QMetaEnum textModelTemp = QMetaEnum::fromType<TextDisplayModel>();
     bool ok = false;
     TextDisplayModel model = static_cast<TextDisplayModel>(textModelTemp.keyToValue(inputModelComboBox->currentText().toLatin1().data(), &ok));
     if (!ok){
         model = SAKTabPage::Hex;
     }
-    emit sendRawData(data, model);
+#endif
+    emit sendRawData(data, inputModel);
+}
+
+void SAKTabPage::on_inputTextEdit_textChanged()
+{
+    inputTextEdit->blockSignals(true);
+    formattingInputText(inputModel);
+    inputTextEdit->blockSignals(false);
 }
