@@ -81,7 +81,7 @@ public:
      */
     unsigned long readDelayTimes();
     /**
-     * @brief readDelayTimes    -- 智行发送函数前，延时一段时间发送
+     * @brief readDelayTimes    -- 执行发送函数前，延时一段时间发送
      * @return                  -- 延时时间
      */
     unsigned long writeDelayTimes();
@@ -185,16 +185,16 @@ private slots:
     // ------------------------------------------------------------------------
     // 设备设置
 protected:    
-    QPushButton *refreshPushButton              = nullptr;  /// 刷新按钮
-    QPushButton *switchPushButton               = nullptr;  /// 打开关闭设备按钮
-    QGroupBox   *deviceSettingGroupBox          = nullptr;  /// 控制面板
+    QPushButton *refreshPushButton              = nullptr;  // 刷新按钮
+    QPushButton *switchPushButton               = nullptr;  // 打开关闭设备按钮
+    QGroupBox   *deviceSettingGroupBox          = nullptr;  // 控制面板
 private slots:
     void on_refreshPushButton_clicked(){refreshDevice();}
     void on_switchPushButton_clicked(){openOrColoseDevice();}
 
     // 消息输出组
 protected:
-    QTextBrowser *messageTextBrowser            = nullptr;  /// 消息输出框
+    QTextBrowser *messageTextBrowser            = nullptr;  // 消息输出框
 
      // 输入设置组
 protected:
@@ -202,13 +202,13 @@ protected:
     bool cyclEnable;
     quint32 cycleTime = 0;
 
-    QComboBox   *inputModelComboBox             = nullptr;  /// 输入模式预选框
-    QCheckBox   *cycleEnableCheckBox            = nullptr;  /// 循环使能复选框
-    QLineEdit   *cycleTimeLineEdit              = nullptr;  /// 循环周期输入框
-    QPushButton *readinFilePushButton           = nullptr;  /// 读入文件按钮
-    QPushButton *clearInputPushButton           = nullptr;  /// 清空输入框按钮
-    QPushButton *sendPushButton                 = nullptr;  /// 发送数据按钮
-    QTextEdit   *inputTextEdit                  = nullptr;  /// 数据输入框        
+    QComboBox   *inputModelComboBox             = nullptr;  // 输入模式预选框
+    QCheckBox   *cycleEnableCheckBox            = nullptr;  // 循环使能复选框
+    QLineEdit   *cycleTimeLineEdit              = nullptr;  // 循环周期输入框
+    QPushButton *readinFilePushButton           = nullptr;  // 读入文件按钮
+    QPushButton *clearInputPushButton           = nullptr;  // 清空输入框按钮
+    QPushButton *sendPushButton                 = nullptr;  // 发送数据按钮
+    QTextEdit   *inputTextEdit                  = nullptr;  // 数据输入框
 private slots:
     void on_inputModelComboBox_currentTextChanged(const QString &text);
     void on_cycleEnableCheckBox_clicked();
@@ -222,18 +222,18 @@ private slots:
 protected:
     TextDisplayModel outputTextModel = SAKTabPage::Hex;   
 
-    QLabel      *rxLabel                        = nullptr;  /// 接受指示灯
-    QLabel      *txLabel                        = nullptr;  /// 发送指示灯
-    QComboBox   *outputModelComboBox            = nullptr;  /// 输出模式复选框
-    QCheckBox   *showDateCheckBox               = nullptr;  /// 显示日期使能复选框
-    QCheckBox   *autoWrapCheckBox               = nullptr;  /// 自动换行使能复选框
-    QCheckBox   *showTimeCheckBox               = nullptr;  /// 显示时间使能复选框
-    QCheckBox   *showMsCheckBox                 = nullptr;  /// 显示毫秒使能复选框
-    QCheckBox   *showRxDataCheckBox             = nullptr;  /// 显示接收数据使能复选框
-    QCheckBox   *showTxDataCheckBox             = nullptr;  /// 显示发送数据使能复选框
-    QPushButton *clearOutputPushButton          = nullptr;  /// 清空输出按钮
-    QPushButton *saveOutputPushButton           = nullptr;  /// 保存输出按钮
-    QTextBrowser *outputTextBroswer             = nullptr;  /// 用于输出显示收发的数据
+    QLabel      *rxLabel                        = nullptr;  // 接受指示灯
+    QLabel      *txLabel                        = nullptr;  // 发送指示灯
+    QComboBox   *outputModelComboBox            = nullptr;  // 输出模式复选框
+    QCheckBox   *showDateCheckBox               = nullptr;  // 显示日期使能复选框
+    QCheckBox   *autoWrapCheckBox               = nullptr;  // 自动换行使能复选框
+    QCheckBox   *showTimeCheckBox               = nullptr;  // 显示时间使能复选框
+    QCheckBox   *showMsCheckBox                 = nullptr;  // 显示毫秒使能复选框
+    QCheckBox   *showRxDataCheckBox             = nullptr;  // 显示接收数据使能复选框
+    QCheckBox   *showTxDataCheckBox             = nullptr;  // 显示发送数据使能复选框
+    QPushButton *clearOutputPushButton          = nullptr;  // 清空输出按钮
+    QPushButton *saveOutputPushButton           = nullptr;  // 保存输出按钮
+    QTextBrowser *outputTextBroswer             = nullptr;  // 用于输出显示收发的数据
 private slots:
     void on_outputModelComboBox_currentTextChanged(const QString &text);
     void on_autoWrapCheckBox_clicked();
@@ -243,17 +243,17 @@ private slots:
 
     // 数据管理组
 protected:
-    quint64     receiveFrames                   = 0;        /// 接受帧数
-    quint64     receiveBytes                    = 0;        /// 接受字节数
-    quint64     sendFrames                      = 0;        /// 发送帧数
-    quint64     sendBytes                       = 0;        /// 发送字节数
+    quint64     receiveFrames                   = 0;        // 接受帧数
+    quint64     receiveBytes                    = 0;        // 接受字节数
+    quint64     sendFrames                      = 0;        // 发送帧数
+    quint64     sendBytes                       = 0;        // 发送字节数
 
-    QLabel      *rxFramesLabel                  = nullptr;  /// 用于显示接受帧数
-    QLabel      *txFramesLabel                  = nullptr;  /// 用于显示发送帧数
-    QLabel      *rxBytesLabel                   = nullptr;  /// 用于显示接收字节数
-    QLabel      *txBytesLabel                   = nullptr;  /// 用于显示发送字节数
-    QPushButton *resetRxCountPushButton         = nullptr;  /// 重置接收计数
-    QPushButton *resetTxCountPushButton         = nullptr;  /// 重置发送计数
+    QLabel      *rxFramesLabel                  = nullptr;  // 用于显示接受帧数
+    QLabel      *txFramesLabel                  = nullptr;  // 用于显示发送帧数
+    QLabel      *rxBytesLabel                   = nullptr;  // 用于显示接收字节数
+    QLabel      *txBytesLabel                   = nullptr;  // 用于显示发送字节数
+    QPushButton *resetRxCountPushButton         = nullptr;  // 重置接收计数
+    QPushButton *resetTxCountPushButton         = nullptr;  // 重置发送计数
 private slots:
     void on_resetRxCountPushButton_clicked();
     void on_resetTxCountPushButton_clicked();
@@ -261,13 +261,13 @@ private slots:
 
     // 其他设置组
 protected:
-    QPushButton *autoResponseSettingPushButton  = nullptr;  /// 自动回复设置面板调出按钮
-    QPushButton *highlightSettingPushButton     = nullptr;  /// 高亮设置面板调出按钮
-    QPushButton *readWriteSettingPushButton     = nullptr;  /// 读写设置面包调出按钮
+    QPushButton *autoResponseSettingPushButton  = nullptr;  // 自动回复设置面板调出按钮
+    QPushButton *highlightSettingPushButton     = nullptr;  // 高亮设置面板调出按钮
+    QPushButton *readWriteSettingPushButton     = nullptr;  // 读写设置面包调出按钮
 private slots:
-    void on_autoResponseSettingPushButton_clicked();        /// 创建一个高亮设置窗口并显示，该窗口关闭后将被销毁
-    void on_highlightSettingPushButton_clicked();           /// 创建一个高亮设置窗口并显示，该窗口关闭后将被销毁
-    void on_readWriteSettingPushButton();                   /// 创建一个读写参数设置窗口并显示，该窗口关闭后将被销毁
+    void on_autoResponseSettingPushButton_clicked();        // 创建一个高亮设置窗口并显示，该窗口关闭后将被销毁
+    void on_highlightSettingPushButton_clicked();           // 创建一个高亮设置窗口并显示，该窗口关闭后将被销毁
+    void on_readWriteSettingPushButton();                   // 创建一个读写参数设置窗口并显示，该窗口关闭后将被销毁
 
 private:
     /**
