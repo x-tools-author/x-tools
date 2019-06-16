@@ -113,7 +113,7 @@ SAKTabPage::OutputParameters SAKTabPage::outputParameters()
     OutputParameters parameters;
     parameters.showMS = showMsCheckBox->isChecked();
     parameters.showDate = showDateCheckBox->isChecked();
-    parameters.showTime = showDateCheckBox->isChecked();
+    parameters.showTime = showTimeCheckBox->isChecked();
 
     QMetaEnum outputTextModelTemp = QMetaEnum::fromType<TextDisplayModel>();
     bool ok = false;
@@ -193,7 +193,7 @@ void SAKTabPage::formattingInputText(TextDisplayModel model)
 
 void SAKTabPage::outputMessage(QString msg, bool isInfo)
 {
-    QString time = QDateTime::currentDateTime().toString("yyyy/MM/dd hh:mm:ss");
+    QString time = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
     time = QString("<font color=silver>%1</font>").arg(time);
     messageTextBrowser->append(time);
 

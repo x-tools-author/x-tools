@@ -70,7 +70,7 @@ void SAKDataFactory::handleTheDataThatNeedsToBeOutputted(QByteArray data, SAKTab
     str.append("[");
 
     if (parameters.showDate){
-        str.append(QDate::currentDate().toString("yyyy/MM/dd "));
+        str.append(QDate::currentDate().toString("yyyy-MM-dd "));
         str = QString("<font color=silver>%1</font>").arg(str);
     }
 
