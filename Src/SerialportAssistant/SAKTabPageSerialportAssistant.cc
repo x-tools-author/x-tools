@@ -55,6 +55,7 @@ void SAKTabPageSerialportAssistant::changeDeviceStatus(bool opened)
             initSignalAndSlot(false);
         }
     }
+    emit deviceStatusChanged(opened);
 }
 void SAKTabPageSerialportAssistant::openOrColoseDevice()
 {
@@ -66,6 +67,7 @@ void SAKTabPageSerialportAssistant::openOrColoseDevice()
         serialPortAssistant = nullptr;
 
         setUiEnable(true);
+        emit deviceStatusChanged(false);
     }else{
         switchPushButton->setText(tr("关闭"));
         const QString name = controller->name();

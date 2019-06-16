@@ -119,6 +119,11 @@ protected:
      * @param isInfo        -- 是否为普通消息
      */
     void outputMessage(QString msg, bool isInfo = true);
+    /**
+     * @brief changedDeviceStatus   -- 设备打开或者关闭时执行该函数
+     * @param opened                -- true: 设备一打开 false：设备已关闭
+     */
+    void changedDeviceStatus(bool opened);
 protected:
     QTimer cycleTimer;
     SAKDataFactory *dataFactory;

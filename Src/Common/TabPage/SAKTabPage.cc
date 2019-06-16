@@ -76,6 +76,11 @@ SAKTabPage::SAKTabPage(QWidget *parent)
      * 初始化ui显示
      */
     initUI();
+
+    /*
+     * 信号关联
+     */
+    connect(this, &SAKTabPage::deviceStatusChanged, this, &SAKTabPage::changedDeviceStatus);
 }
 
 SAKTabPage::~SAKTabPage()
@@ -203,6 +208,16 @@ void SAKTabPage::outputMessage(QString msg, bool isInfo)
     messageTextBrowser->append("");
 }
 
+void SAKTabPage::changedDeviceStatus(bool opened)
+{
+    sendPushButton->setEnabled(opened);
+    if (opened){
+
+    }else{
+
+    }
+}
+
 void SAKTabPage::checkedBoxCycleClicked(bool checked)
 {
     if (checked){
@@ -269,9 +284,9 @@ void SAKTabPage::initUI()
     showDateCheckBox->setChecked(false);
     showTimeCheckBox->setChecked(true);
     showRxDataCheckBox->setChecked(true);
-    showTxDataCheckBox->setChecked(true);
+    showTxDataCheckBox->setChecked(true);    
+    sendPushButton->setEnabled(false);
     cycleTimeLineEdit->setValidator(new QIntValidator(10, 24*60*60*1000, cycleTimeLineEdit));
-
 
     readOutputMode();
     readInputMode();
@@ -280,7 +295,7 @@ void SAKTabPage::initUI()
     rxLabel->setPixmap(QPixmap(":/images/RtRxGray.png").scaled(QSize(18, 18), Qt::KeepAspectRatio));
     txLabel->setPixmap(QPixmap(":/images/RtRxGray.png").scaled(QSize(18, 18), Qt::KeepAspectRatio));
 
-    outputTextBroswer->setLineWrapMode(QTextEdit::WidgetWidth);
+    outputTextBroswer->setLineWrapMode(QTextEdit::WidgetWidth);    
 }
 
 void SAKTabPage::registerMetaType()
@@ -328,6 +343,7 @@ void SAKTabPage::readOutputMode()
 
 void SAKTabPage::setInputMode(QString mode)
 {
+    Q_UNUSED(mode);
 //    QString option = QString("InputMode");
 //    writeSetting(option, mode);
 //    inputTextMode = mode;
@@ -389,6 +405,7 @@ void SAKTabPage::readCycleTime()
 
 QString SAKTabPage::readSetting(QString &option)
 {
+    Q_UNUSED(option);
 //    QSettings settings;
 //    QString key = device->deviceName() + "/" + option;
 //    QString value = settings.value(key).toString();
@@ -398,6 +415,8 @@ QString SAKTabPage::readSetting(QString &option)
 
 void SAKTabPage::writeSetting(QString &option, QString &value)
 {
+    Q_UNUSED(option);
+    Q_UNUSED(value);
 //    QSettings settings;
 //    QString key = device->deviceName() + "/" + option;
 
@@ -619,6 +638,10 @@ void SAKTabPage::on_clearInputPushButton_clicked()
 void SAKTabPage::on_sendPushButton_clicked()
 {
     QString data = inputTextEdit->toPlainText();
+    if (data.isEmpty()){
+        outputMessage(tr("请输入发送数据后尝试"), false);
+        return;
+    }
 #if 0
     QMetaEnum textModelTemp = QMetaEnum::fromType<TextDisplayModel>();
     bool ok = false;
