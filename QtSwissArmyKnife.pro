@@ -22,6 +22,26 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # In order to do so, unTabPage the following line.
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
+HEADERS += \
+    Src/Base/SAKDialog.hh \
+    Src/Base/SAKMessageBox.hh \
+    Src/Base/SAKWidget.hh \
+    Src/SAKGlobal.hh \
+    Src/SAKVersion.hh \
+    Src/SAKMainWindow.hh \
+    Src/SAKApplication.hh \
+    Src/MoreInformation.hh \
+    Src/Console/SAKConsole.hh \
+    Src/Console/SAKLogOutput.hh \
+    Src/Common/TabPage/SAKTabPage.hh \
+    Src/Common/TabPage/SAKDataFactory.hh \
+    Src/Common/TabPage/SAKCRCInterface.hh \
+    Src/Common/TabPage/Highlighter/SAKHighlighter.hh \
+    Src/Common/TabPage/AutoResponse/SAKAutoResponseItem.hh \
+    Src/Common/TabPage/ReadWriteSetting/SAKReadWriteSetting.hh \
+    Src/Common/TabPage/Highlighter/SAKHighlighterSettingPanel.hh \
+    Src/Common/TabPage/AutoResponse/SAKAutoResponseSettingPanel.hh \
+
 
 SOURCES += \
     Src/Base/SAKDialog.cc \
@@ -37,31 +57,12 @@ SOURCES += \
     Src/Console/SAKLogOutput.cc \      
     Src/Common/TabPage/SAKTabPage.cc \
     Src/Common/TabPage/SAKDataFactory.cc \
+    Src/Common/TabPage/SAKCRCInterface.cc \
     Src/Common/TabPage/Highlighter/SAKHighlighter.cc \
     Src/Common/TabPage/AutoResponse/SAKAutoResponseItem.cc \
     Src/Common/TabPage/ReadWriteSetting/SAKReadWriteSetting.cc \
     Src/Common/TabPage/Highlighter/SAKHighlighterSettingPanel.cc \
     Src/Common/TabPage/AutoResponse/SAKAutoResponseSettingPanel.cc
-
-
-HEADERS += \
-    Src/Base/SAKDialog.hh \
-    Src/Base/SAKMessageBox.hh \
-    Src/Base/SAKWidget.hh \
-    Src/SAKGlobal.hh \
-    Src/SAKVersion.hh \
-    Src/SAKMainWindow.hh \
-    Src/SAKApplication.hh \
-    Src/MoreInformation.hh \
-    Src/Console/SAKConsole.hh \
-    Src/Console/SAKLogOutput.hh \            
-    Src/Common/TabPage/SAKTabPage.hh \
-    Src/Common/TabPage/SAKDataFactory.hh \
-    Src/Common/TabPage/Highlighter/SAKHighlighter.hh \
-    Src/Common/TabPage/AutoResponse/SAKAutoResponseItem.hh \
-    Src/Common/TabPage/ReadWriteSetting/SAKReadWriteSetting.hh \
-    Src/Common/TabPage/Highlighter/SAKHighlighterSettingPanel.hh \
-    Src/Common/TabPage/AutoResponse/SAKAutoResponseSettingPanel.hh \
 
 
 FORMS += \    

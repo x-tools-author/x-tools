@@ -29,11 +29,13 @@
 #include "SAKTabPage.hh"
 #include "ui_SAKTabPage.h"
 #include "SAKDataFactory.hh"
+#include "SAKCRCInterface.hh"
 #include "SAKHighlighterSettingPanel.hh"
 
 SAKTabPage::SAKTabPage(QWidget *parent)
     :QWidget(parent)
-    ,inputModel (Local8bit)
+    ,crcInterface (new SAKCRCInterface(this))
+    ,inputModel (Local8bit)    
     ,ui (new Ui::SAKTabPage)
 {
     /*
@@ -295,7 +297,13 @@ void SAKTabPage::initUI()
     rxLabel->setPixmap(QPixmap(":/images/RtRxGray.png").scaled(QSize(18, 18), Qt::KeepAspectRatio));
     txLabel->setPixmap(QPixmap(":/images/RtRxGray.png").scaled(QSize(18, 18), Qt::KeepAspectRatio));
 
-    outputTextBroswer->setLineWrapMode(QTextEdit::WidgetWidth);    
+    outputTextBroswer->setLineWrapMode(QTextEdit::WidgetWidth);
+
+    /*
+     * 设置crc参数模型
+     */
+    QStringList models = crcInterface->supportedParameterModels();
+    crcParameterModelsComboBox->addItems(models);
 }
 
 void SAKTabPage::registerMetaType()
@@ -447,6 +455,7 @@ void SAKTabPage::initUiPointer()
     clearInputPushButton    = ui->clearInputPushButton;
     sendPushButton          = ui->sendPushButton;
     inputTextEdit           = ui->inputTextEdit;
+    crcParameterModelsComboBox = ui->crcParameterModelsComboBox;
 
     /*
      * 输出设置组
@@ -658,4 +667,9 @@ void SAKTabPage::on_inputTextEdit_textChanged()
     inputTextEdit->blockSignals(true);
     formattingInputText(inputModel);
     inputTextEdit->blockSignals(false);
+}
+
+void SAKTabPage::on_crcParameterModelsComboBox_currentTextChanged(const QString &text)
+{
+    qDebug() << __FUNCTION__ << text;
 }

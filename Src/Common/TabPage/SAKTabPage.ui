@@ -220,7 +220,7 @@ p, li { white-space: pre-wrap; }
           </widget>
          </item>
          <item row="7" column="0" colspan="2">
-          <widget class="QComboBox" name="comboBox"/>
+          <widget class="QComboBox" name="crcParameterModelsComboBox"/>
          </item>
          <item row="3" column="1">
           <widget class="QPushButton" name="readinFilePushButton">

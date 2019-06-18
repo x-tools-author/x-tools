@@ -34,6 +34,7 @@
 #include "SAKAutoResponseSettingPanel.hh"
 
 class SAKDataFactory;
+class SAKCRCInterface;
 class SAKHighlighterSettingPanel;
 
 namespace Ui {
@@ -151,7 +152,9 @@ signals:
     void deviceStatusChanged(bool opened);
 
 private:
+    /// 日志类型
     const char *logCategory = "SAKTabPage";
+    SAKCRCInterface *crcInterface;
 
     ///----------------------------------------------------------------
     QString readSetting(QString &option);
@@ -209,6 +212,7 @@ protected:
     QPushButton *clearInputPushButton           = nullptr;  // 清空输入框按钮
     QPushButton *sendPushButton                 = nullptr;  // 发送数据按钮
     QTextEdit   *inputTextEdit                  = nullptr;  // 数据输入框
+    QComboBox   *crcParameterModelsComboBox     = nullptr;  // crc计算参数模型
 private slots:
     void on_inputModelComboBox_currentTextChanged(const QString &text);
     void on_cycleEnableCheckBox_clicked();
@@ -217,6 +221,7 @@ private slots:
     void on_clearInputPushButton_clicked();
     void on_sendPushButton_clicked();
     void on_inputTextEdit_textChanged();
+    void on_crcParameterModelsComboBox_currentTextChanged(const QString &text);
 
     //数据输出组管理
 protected:
