@@ -54,7 +54,6 @@ void QtCryptographicHashCalculator::run()
         qint64 endTime = 0;
         qint64 consumeTime = 0;
         qint64 remainTime = 0;
-        qint64 allTime = 0;
 
         qint64 hours = 0;
         qint64 minutes = 0;
