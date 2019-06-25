@@ -24,3 +24,6 @@ include($${PWD}/Modules/QtAppStyleApi/QtAppStyleApi.pri)
 
 # 软件ui样式
 include($${PWD}/Modules/QtStyleSheetApi/QtStyleSheetApi.pri)
+
+# 文件校验工具
+include($${PWD}/Modules/QtCryptographicHash/QtCryptographicHash.pri)
