@@ -35,6 +35,7 @@
 #include "QtStyleSheetApi.hh"
 #include "GetPublicIPWidget.h"
 #include "SAKTabPageSerialportAssistant.hh"
+#include "QtCryptographicHashController.hh"
 
 #include "ui_SAKMainWindow.h"
 #ifndef SAK_NO_SERIALPORT_ASSISTANT
@@ -86,6 +87,7 @@ void SAKMainWindow::AddTool()
 {
     addTool(tr("域名转IP"),        new ToolsNsLookup);
     addTool(tr("公网IP获取工具"),   new GetPublicIPWidget);
+    addTool(tr("文件校验工具"),     new QtCryptographicHashController);
 
     QAction *action = nullptr;
     action = new QAction("CRC计算器", this);
