@@ -25,7 +25,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 HEADERS += \
     Src/Base/SAKDialog.hh \
     Src/Base/SAKMessageBox.hh \
-    Src/Base/SAKWidget.hh \
+    Src/Base/SAKWidget.hh \    
     Src/SAKGlobal.hh \
     Src/SAKVersion.hh \
     Src/SAKMainWindow.hh \
@@ -33,20 +33,20 @@ HEADERS += \
     Src/MoreInformation.hh \
     Src/Console/SAKConsole.hh \
     Src/Console/SAKLogOutput.hh \
-    Src/Common/TabPage/SAKTabPage.hh \
-    Src/Common/TabPage/SAKDataFactory.hh \
-    Src/Common/TabPage/SAKCRCInterface.hh \
-    Src/Common/TabPage/Highlighter/SAKHighlighter.hh \
-    Src/Common/TabPage/AutoResponse/SAKAutoResponseItem.hh \
-    Src/Common/TabPage/ReadWriteSetting/SAKReadWriteSetting.hh \
-    Src/Common/TabPage/Highlighter/SAKHighlighterSettingPanel.hh \
-    Src/Common/TabPage/AutoResponse/SAKAutoResponseSettingPanel.hh \
+    Src/Common/SAKDebugPage/SAKDebugPage.hh \
+    Src/Common/SAKDebugPage/SAKDataFactory.hh \
+    Src/Common/SAKDebugPage/SAKCRCInterface.hh \
+    Src/Common/SAKDebugPage/Highlighter/SAKHighlighter.hh \
+    Src/Common/SAKDebugPage/AutoResponse/SAKAutoResponseItem.hh \
+    Src/Common/SAKDebugPage/ReadWriteSetting/SAKReadWriteSetting.hh \
+    Src/Common/SAKDebugPage/Highlighter/SAKHighlighterSettingPanel.hh \
+    Src/Common/SAKDebugPage/AutoResponse/SAKAutoResponseSettingPanel.hh \
 
 
 SOURCES += \
     Src/Base/SAKDialog.cc \
     Src/Base/SAKMessageBox.cc \
-    Src/Base/SAKWidget.cc \
+    Src/Base/SAKWidget.cc \    
     Src/main.cc \
     Src/SAKGlobal.cc \
     Src/SAKVersion.cc \
@@ -54,15 +54,15 @@ SOURCES += \
     Src/SAKApplication.cc \
     Src/MoreInformation.cc \
     Src/Console/SAKConsole.cc \
-    Src/Console/SAKLogOutput.cc \      
-    Src/Common/TabPage/SAKTabPage.cc \
-    Src/Common/TabPage/SAKDataFactory.cc \
-    Src/Common/TabPage/SAKCRCInterface.cc \
-    Src/Common/TabPage/Highlighter/SAKHighlighter.cc \
-    Src/Common/TabPage/AutoResponse/SAKAutoResponseItem.cc \
-    Src/Common/TabPage/ReadWriteSetting/SAKReadWriteSetting.cc \
-    Src/Common/TabPage/Highlighter/SAKHighlighterSettingPanel.cc \
-    Src/Common/TabPage/AutoResponse/SAKAutoResponseSettingPanel.cc
+    Src/Console/SAKLogOutput.cc \
+    Src/Common/SAKDebugPage/SAKDebugPage.cc \
+    Src/Common/SAKDebugPage/SAKDataFactory.cc \
+    Src/Common/SAKDebugPage/SAKCRCInterface.cc \
+    Src/Common/SAKDebugPage/Highlighter/SAKHighlighter.cc \
+    Src/Common/SAKDebugPage/AutoResponse/SAKAutoResponseItem.cc \
+    Src/Common/SAKDebugPage/ReadWriteSetting/SAKReadWriteSetting.cc \
+    Src/Common/SAKDebugPage/Highlighter/SAKHighlighterSettingPanel.cc \
+    Src/Common/SAKDebugPage/AutoResponse/SAKAutoResponseSettingPanel.cc
 
 
 FORMS += \    
@@ -70,21 +70,21 @@ FORMS += \
     Src/SAKMainWindow.ui \
     Src/MoreInformation.ui \
     Src/Console/SAKConsole.ui \
-    Src/Common/TabPage/SAKTabPage.ui \
-    Src/Common/TabPage/AutoResponse/SAKAutoResponseItem.ui \
-    Src/Common/TabPage/ReadWriteSetting/SAKReadWriteSetting.ui \
-    Src/Common/TabPage/Highlighter/SAKHighlighterSettingPanel.ui \
-    Src/Common/TabPage/AutoResponse/SAKAutoResponseSettingPanel.ui
+    Src/Common/SAKDebugPage/SAKDebugPage.ui \
+    Src/Common/SAKDebugPage/AutoResponse/SAKAutoResponseItem.ui \
+    Src/Common/SAKDebugPage/ReadWriteSetting/SAKReadWriteSetting.ui \
+    Src/Common/SAKDebugPage/Highlighter/SAKHighlighterSettingPanel.ui \
+    Src/Common/SAKDebugPage/AutoResponse/SAKAutoResponseSettingPanel.ui
 
 
 INCLUDEPATH += \
     Src \
     Src/Base \
     Src/Console \
-    Src/Common/TabPage \
-    Src/Common/TabPage/Highlighter \
-    Src/Common/TabPage/AutoResponse \
-    Src/Common/TabPage/ReadWriteSetting
+    Src/Common/SAKDebugPage \
+    Src/Common/SAKDebugPage/Highlighter \
+    Src/Common/SAKDebugPage/AutoResponse \
+    Src/Common/SAKDebugPage/ReadWriteSetting
 
 
 RESOURCES += \

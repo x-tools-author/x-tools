@@ -16,11 +16,11 @@
 #ifndef SAKTABPAGESERIALPORTASSISTANT_HH
 #define SAKTABPAGESERIALPORTASSISTANT_HH
 
-#include "SAKTabPage.hh"
+#include "SAKDebugPage.hh"
 
 class SAKSerialportAssistant;
 class SAKSerialportAssistantController;
-class SAKTabPageSerialportAssistant : public SAKTabPage
+class SAKTabPageSerialportAssistant : public SAKDebugPage
 {
     Q_OBJECT
 public:

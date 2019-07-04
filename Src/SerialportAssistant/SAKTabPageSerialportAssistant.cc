@@ -22,7 +22,7 @@
 #include "SAKSerialportAssistantController.hh"
 
 SAKTabPageSerialportAssistant::SAKTabPageSerialportAssistant(QWidget *parent)
-    :SAKTabPage (parent)
+    :SAKDebugPage (parent)
     ,serialPortAssistant (nullptr)
     ,controller (new SAKSerialportAssistantController)
 {

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SAKTabPage</class>
- <widget class="QWidget" name="SAKTabPage">
+ <class>SAKDebugPage</class>
+ <widget class="QWidget" name="SAKDebugPage">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -256,13 +256,6 @@ p, li { white-space: pre-wrap; }
            </property>
           </widget>
          </item>
-         <item row="6" column="0" colspan="2">
-          <widget class="QCheckBox" name="checkBox">
-           <property name="text">
-            <string>追加CRC校验码</string>
-           </property>
-          </widget>
-         </item>
          <item row="11" column="0">
           <widget class="QPushButton" name="pushButton_7">
            <property name="text">
@@ -271,7 +264,7 @@ p, li { white-space: pre-wrap; }
           </widget>
          </item>
          <item row="8" column="1">
-          <widget class="QLabel" name="label_9">
+          <widget class="QLabel" name="crcLabel">
            <property name="text">
             <string>（null）</string>
            </property>
@@ -288,6 +281,20 @@ p, li { white-space: pre-wrap; }
           <widget class="QLabel" name="label_8">
            <property name="text">
             <string>CRC校验码</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0">
+          <widget class="QCheckBox" name="addCRCCheckBox">
+           <property name="text">
+            <string>追加CRC</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="1">
+          <widget class="QCheckBox" name="bigeEndianCheckBox">
+           <property name="text">
+            <string>大端</string>
            </property>
           </widget>
          </item>

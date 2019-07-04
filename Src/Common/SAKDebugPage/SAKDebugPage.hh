@@ -30,6 +30,7 @@
 #include <QApplication>
 #include <QTextBrowser>
 
+#include "SAKCRCInterface.hh"
 #include "SAKReadWriteSetting.hh"
 #include "SAKAutoResponseSettingPanel.hh"
 
@@ -38,7 +39,7 @@ class SAKCRCInterface;
 class SAKHighlighterSettingPanel;
 
 namespace Ui {
-class SAKTabPage;
+class SAKDebugPage;
 }
 
 /*
@@ -48,12 +49,12 @@ class SAKTabPage;
  * objectName与变量名称不一致会导致信号与槽的关联失效。
  */
 
-class SAKTabPage : public QWidget
+class SAKDebugPage : public QWidget
 {
     Q_OBJECT
 public:
-    SAKTabPage(QWidget *parent = Q_NULLPTR);
-    ~SAKTabPage();
+    SAKDebugPage(QWidget *parent = Q_NULLPTR);
+    ~SAKDebugPage();
 
     /**
      * @brief   -- 数据显示模式
@@ -68,12 +69,27 @@ public:
     };
     Q_ENUM(TextDisplayModel)
 
+    /**
+     * @brief The OutputParameters struct   -- 输出参数
+     */
     struct OutputParameters {
         bool showDate;
         bool showTime;
         bool showMS;
-        bool isReceivedData;
+        bool isReceivedData;        
         TextDisplayModel textModel;
+    };
+
+    /**
+     * @brief The InputParameters struct    --  输入上下文
+     */
+    struct InputParameters {
+        bool    sendCircularly;             // 循环发送标志
+        bool    addCRC;                     // 追加crc校验数据标志
+        bool    bigEnfian;                  // 大端序添加crc值
+        quint32 cycleTime;                  // 循环发送时间（周期）
+        TextDisplayModel inputModel;        // 数据输入模式
+        SAKCRCInterface::CRCModel crcModel; // crc参数模型
     };
 
     /**
@@ -141,21 +157,25 @@ private:
     void setLabelText(QLabel *label, quint64 text);
     /// 设置输入框的文本输入格式
     void formattingInputText(TextDisplayModel model);
+    /// 计算crc
+    uint32_t crcCalculate(QByteArray data, SAKCRCInterface::CRCModel model);
+    /// 处理文本数据
+    QByteArray cookedData(QString rawData);
 signals:
     /// 该函数并不会真的发送数据，而是发送一个信号，该信号携带需要发送的数据,数据需要经过处理后才能发送
-    void sendRawData(QString data, TextDisplayModel textModel);
+    void sendRawData(QString rawData, InputParameters parameters);
     /// 将读取到的数据或者已发送的数据发射出去处理
     void dataReadOrwritten(QByteArray data, OutputParameters parameters);
     /// 子类关联该信号来发送数据即可
     void need2writeBytes(QByteArray data);
     /// 子类设备状态（打开/关闭）发生改变时发送该信号
     void deviceStatusChanged(bool opened);
-
 private:
     /// 日志类型
     const char *logCategory = "SAKTabPage";
+    /// crc计算接口
     SAKCRCInterface *crcInterface;
-
+    friend class SAKDataFactory;
     ///----------------------------------------------------------------
     QString readSetting(QString &option);
     void writeSetting(QString &option, QString &value);
@@ -164,7 +184,7 @@ private:
      * @brief outputData        -- 更新输出数据
      * @param data              -- 需要输出显示的数据
      */
-    void outputData(QString data);
+    void outputData(QString data);    
 private slots:
     void updateRxImage();
     void updateTxImage();
@@ -185,6 +205,9 @@ private slots:
 
     void resetSendDataCount();
     void resetReceiveDataCount();
+
+
+
     // ------------------------------------------------------------------------
     // 设备设置
 protected:    
@@ -201,23 +224,26 @@ protected:
 
      // 输入设置组
 protected:
-    TextDisplayModel inputModel;
-    bool cyclEnable;
-    quint32 cycleTime = 0;
+    InputParameters inputParameters;                        // 输入参数
 
     QComboBox   *inputModelComboBox             = nullptr;  // 输入模式预选框
     QCheckBox   *cycleEnableCheckBox            = nullptr;  // 循环使能复选框
     QLineEdit   *cycleTimeLineEdit              = nullptr;  // 循环周期输入框
     QPushButton *readinFilePushButton           = nullptr;  // 读入文件按钮
+    QCheckBox   *addCRCCheckBox                 = nullptr;  // 发送数据添加crc校验
+    QCheckBox   *bigeEndianCheckBox             = nullptr;  // crc值以大端形式添加
     QPushButton *clearInputPushButton           = nullptr;  // 清空输入框按钮
     QPushButton *sendPushButton                 = nullptr;  // 发送数据按钮
     QTextEdit   *inputTextEdit                  = nullptr;  // 数据输入框
     QComboBox   *crcParameterModelsComboBox     = nullptr;  // crc计算参数模型
+    QLabel      *crcLabel                       = nullptr;  // crc显示标签
 private slots:
     void on_inputModelComboBox_currentTextChanged(const QString &text);
     void on_cycleEnableCheckBox_clicked();
     void on_cycleTimeLineEdit_textChanged(const QString &text);
     void on_readinFilePushButton_clicked();
+    void on_addCRCCheckBox_clicked();
+    void on_bigeEndianCheckBox_clicked();
     void on_clearInputPushButton_clicked();
     void on_sendPushButton_clicked();
     void on_inputTextEdit_textChanged();
@@ -225,7 +251,7 @@ private slots:
 
     //数据输出组管理
 protected:
-    TextDisplayModel outputTextModel = SAKTabPage::Hex;   
+    TextDisplayModel outputTextModel = SAKDebugPage::Hex;
 
     QLabel      *rxLabel                        = nullptr;  // 接受指示灯
     QLabel      *txLabel                        = nullptr;  // 发送指示灯
@@ -278,7 +304,7 @@ private:
     /**
      * @brief ui    -- 界面文件
      */
-    Ui::SAKTabPage *ui = nullptr;
+    Ui::SAKDebugPage *ui = nullptr;
 
     /**
      * @brief initUiPointer -- 初始化指向ui控件的数据成员（指针）
@@ -286,7 +312,7 @@ private:
     void initUiPointer();       
 };
 
-Q_DECLARE_METATYPE(SAKTabPage::TextDisplayModel);
-Q_DECLARE_METATYPE(SAKTabPage::OutputParameters);
+Q_DECLARE_METATYPE(SAKDebugPage::TextDisplayModel);
+Q_DECLARE_METATYPE(SAKDebugPage::OutputParameters);
 
 #endif  // SAKTabPage_H

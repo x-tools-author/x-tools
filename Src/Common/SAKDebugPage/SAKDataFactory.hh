@@ -16,18 +16,20 @@
 #ifndef SAKDATAFACTORY_HH
 #define SAKDATAFACTORY_HH
 
-#include "SAKTabPage.hh"
 #include <QThread>
+#include "SAKDebugPage.hh"
 
 class SAKDataFactory:public QThread
 {
     Q_OBJECT
 public:
-    SAKDataFactory(QObject *parent = Q_NULLPTR);
+    SAKDataFactory(SAKDebugPage *page, QObject *parent = Q_NULLPTR);
 
-    void handleTheDataThatNeedsToBeSent(QString rawData, SAKTabPage::TextDisplayModel textModel);
-    void handleTheDataThatNeedsToBeOutputted(QByteArray data, SAKTabPage::OutputParameters parameters);
+    void handleTheDataThatNeedsToBeSent(QString rawData, SAKDebugPage::InputParameters parameters);
+    void handleTheDataThatNeedsToBeOutputted(QByteArray data, SAKDebugPage::OutputParameters parameters);
 private:
+    SAKDebugPage *debugPage;
+    // ------------------------------------------------------------------------
     void run() final;
 signals:
     void sendBytes(QByteArray data);
