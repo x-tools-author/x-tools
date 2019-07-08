@@ -263,6 +263,11 @@ QByteArray SAKDebugPage::cookedData(QString rawData)
     return data;
 }
 
+void SAKDebugPage::cycleTimerTimeout()
+{
+    on_sendPushButton_clicked();
+}
+
 void SAKDebugPage::outputMessage(QString msg, bool isInfo)
 {
     QString time = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
@@ -299,16 +304,6 @@ void SAKDebugPage::checkedBoxCycleClicked(bool checked)
         sendPushButton->setEnabled(true);
         cycleTimeLineEdit->setEnabled(true);
     }
-}
-
-void SAKDebugPage::cycleTimerTimeout()
-{
-//    if (device->isOpen()){
-//        emit need2writeBytes(dataBytes());
-//    }else {
-//        cycleTimer->stop();
-//        outputInfo(tr("设备未就绪，本次发送操作取消！"), "red");
-//    }
 }
 
 void SAKDebugPage::cancleCycle()
@@ -676,14 +671,21 @@ void SAKDebugPage::on_cycleEnableCheckBox_clicked()
 {
     if (cycleEnableCheckBox->isChecked()){
         inputParameters.sendCircularly = true;
+        if (!cycleTimer.isActive()){
+            cycleTimer.start();
+        }
     }else{
         inputParameters.sendCircularly = false;
+        if (cycleTimer.isActive()){
+            cycleTimer.stop();
+        }
     }
 }
 
 void SAKDebugPage::on_cycleTimeLineEdit_textChanged(const QString &text)
 {
     if (text.isEmpty()){
+        outputMessage(tr("循环时间不能为空"), false);
         return;
     }
 

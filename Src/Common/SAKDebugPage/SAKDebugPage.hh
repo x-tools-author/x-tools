@@ -142,6 +142,7 @@ protected:
      */
     void changedDeviceStatus(bool opened);
 protected:
+    /// 循环发送定时器
     QTimer cycleTimer;
     SAKDataFactory *dataFactory;
 private:
@@ -161,6 +162,8 @@ private:
     uint32_t crcCalculate(QByteArray data, SAKCRCInterface::CRCModel model);
     /// 处理文本数据
     QByteArray cookedData(QString rawData);
+    /// 循环计时器计数溢出时执行该函数
+    void cycleTimerTimeout();
 signals:
     /// 该函数并不会真的发送数据，而是发送一个信号，该信号携带需要发送的数据,数据需要经过处理后才能发送
     void sendRawData(QString rawData, InputParameters parameters);
@@ -178,7 +181,7 @@ private:
     friend class SAKDataFactory;
     ///----------------------------------------------------------------
     QString readSetting(QString &option);
-    void writeSetting(QString &option, QString &value);
+    void writeSetting(QString &option, QString &value);    
 
     /**
      * @brief outputData        -- 更新输出数据
@@ -200,7 +203,6 @@ private slots:
     void setInputMode(QString mode);
     void readInputMode();
 
-    void cycleTimerTimeout();
     void checkedBoxCycleClicked(bool checked);
 
     void resetSendDataCount();
