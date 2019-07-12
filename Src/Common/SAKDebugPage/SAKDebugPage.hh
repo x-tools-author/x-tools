@@ -302,6 +302,7 @@ private slots:
     void on_highlightSettingPushButton_clicked();           // 创建一个高亮设置窗口并显示，该窗口关闭后将被销毁
     void on_readWriteSettingPushButton();                   // 创建一个读写参数设置窗口并显示，该窗口关闭后将被销毁
 
+
 private:
     /**
      * @brief ui    -- 界面文件
