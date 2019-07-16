@@ -606,7 +606,7 @@ void SAKDebugPage::on_resetTxCountPushButton_clicked()
     setLabelText(txFramesLabel, sendFrames);
 
     sendBytes = 0;
-    setLabelText(txFramesLabel, sendBytes);
+    setLabelText(txBytesLabel, sendBytes);
 }
 
 void SAKDebugPage::on_outputModelComboBox_currentTextChanged(const QString &text)
