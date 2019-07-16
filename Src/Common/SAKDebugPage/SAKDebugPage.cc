@@ -92,6 +92,11 @@ SAKDebugPage::SAKDebugPage(QWidget *parent)
     inputParameters.cycleTime = false;
     inputParameters.inputModel = TextDisplayModel::Ascii;
     inputParameters.crcModel = SAKCRCInterface::CRC_8;
+
+    /*
+     * 注册数据类型
+     */
+    qRegisterMetaType<InputParameters>("InputParameters");
 }
 
 SAKDebugPage::~SAKDebugPage()
@@ -313,7 +318,9 @@ void SAKDebugPage::cancleCycle()
 
 void SAKDebugPage::bytesRead(QByteArray data)
 {
-    /// 更新接收统计
+    /*
+     * 更新数据统计
+     */
     qlonglong receiveFrameCount = rxFramesLabel->text().toLongLong();
     receiveFrameCount += 1;
     rxFramesLabel->setText(QString::number(receiveFrameCount));
@@ -321,6 +328,13 @@ void SAKDebugPage::bytesRead(QByteArray data)
     receiveBytesCount += data.length();
     rxBytesLabel->setText(QString::number(receiveBytesCount));
 
+    /*
+     * 更新状态灯
+     */
+
+    /*
+     * 输出接受到的数据
+     */
     if (showRxDataCheckBox->isChecked()){
         OutputParameters parameters = outputParameters();
         parameters.isReceivedData = true;

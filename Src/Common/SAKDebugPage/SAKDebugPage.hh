@@ -76,7 +76,7 @@ public:
         bool showDate;
         bool showTime;
         bool showMS;
-        bool isReceivedData;        
+        bool isReceivedData;
         TextDisplayModel textModel;
     };
 
@@ -280,6 +280,9 @@ protected:
     quint64     receiveBytes                    = 0;        // 接受字节数
     quint64     sendFrames                      = 0;        // 发送帧数
     quint64     sendBytes                       = 0;        // 发送字节数
+
+    bool        receivedFlag                    = false;    // 接受状态指示灯
+    bool        sendFlag                        = false;    // 接受指示灯状态
 
     QLabel      *rxFramesLabel                  = nullptr;  // 用于显示接受帧数
     QLabel      *txFramesLabel                  = nullptr;  // 用于显示发送帧数
