@@ -13,15 +13,15 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#ifndef UDPTRANSMISSSIONITEM_HH
-#define UDPTRANSMISSSIONITEM_HH
+#ifndef UDPTRANSMISSSION_HH
+#define UDPTRANSMISSSION_HH
 
 #include <QWidget>
 
-class UdpTransmissionItem:public QWidget
+class UdpTransmission:public QWidget
 {
 public:
-    UdpTransmissionItem(QWidget *parent);
+    UdpTransmission(QWidget *parent);
 
 };
 

@@ -13,9 +13,9 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#include "UdpTransmissionItem.hh"
+#include "UdpTransmission.hh"
 
-UdpTransmissionItem::UdpTransmissionItem(QWidget *parent)
+UdpTransmission::UdpTransmission(QWidget *parent)
     :QWidget (parent)
 {
 

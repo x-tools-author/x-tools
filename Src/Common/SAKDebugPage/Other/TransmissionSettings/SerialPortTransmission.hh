@@ -13,15 +13,15 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#ifndef SERIALPORTTRANSMISSIONITEM_HH
-#define SERIALPORTTRANSMISSIONITEM_HH
+#ifndef SERIALPORTTRANSMISSION_HH
+#define SERIALPORTTRANSMISSION_HH
 
 #include <QWidget>
 
-class SerialPortTransmissionItem:public QWidget
+class SerialPortTransmission:public QWidget
 {
 public:
-    SerialPortTransmissionItem(QWidget *parent = nullptr);
+    SerialPortTransmission(QWidget *parent = nullptr);
 };
 
 #endif

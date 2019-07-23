@@ -13,9 +13,9 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#include "SerialPortTransmissionItem.hh"
+#include "SerialPortTransmission.hh"
 
-SerialPortTransmissionItem::SerialPortTransmissionItem(QWidget *parent)
+SerialPortTransmission::SerialPortTransmission(QWidget *parent)
     :QWidget (parent)
 {
 

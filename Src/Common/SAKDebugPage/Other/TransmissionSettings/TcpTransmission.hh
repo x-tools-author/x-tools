@@ -13,15 +13,15 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#ifndef TCPTRANSMISSIONITEM_HH
-#define TCPTRANSMISSIONITEM_HH
+#ifndef TCPTRANSMISSION_HH
+#define TCPTRANSMISSION_HH
 
 #include <QWidget>
 
-class TcpTransmissionItem:public QWidget
+class TcpTransmission:public QWidget
 {
 public:
-    TcpTransmissionItem(QWidget *parent = nullptr);
+    TcpTransmission(QWidget *parent = nullptr);
 };
 
 #endif

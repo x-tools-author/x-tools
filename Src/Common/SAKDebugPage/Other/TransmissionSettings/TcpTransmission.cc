@@ -13,9 +13,9 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#include "TcpTransmissionItem.hh"
+#include "TcpTransmission.hh"
 
-TcpTransmissionItem::TcpTransmissionItem(QWidget *parent)
+TcpTransmission::TcpTransmission(QWidget *parent)
     :QWidget (parent)
 {
 
