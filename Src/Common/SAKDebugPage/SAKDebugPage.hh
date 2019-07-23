@@ -36,6 +36,8 @@
 
 class SAKDataFactory;
 class SAKCRCInterface;
+class SAKOtherSettings;
+class TransmissionSettings;
 class SAKHighlighterSettingPanel;
 
 namespace Ui {
@@ -102,6 +104,8 @@ public:
      * @return                  -- 延时时间
      */
     unsigned long writeDelayTimes();
+
+    friend class SAKOtherSettings;
 protected:
     /**
      * @brief openOrColoseDevice    -- 打开或者关闭设备
@@ -293,18 +297,9 @@ protected:
 private slots:
     void on_resetRxCountPushButton_clicked();
     void on_resetTxCountPushButton_clicked();
-
-
-    // 其他设置组
-protected:
-    QPushButton *autoResponseSettingPushButton  = nullptr;  // 自动回复设置面板调出按钮
-    QPushButton *highlightSettingPushButton     = nullptr;  // 高亮设置面板调出按钮
-    QPushButton *readWriteSettingPushButton     = nullptr;  // 读写设置面包调出按钮
-private slots:
-    void on_autoResponseSettingPushButton_clicked();        // 创建一个高亮设置窗口并显示，该窗口关闭后将被销毁
-    void on_highlightSettingPushButton_clicked();           // 创建一个高亮设置窗口并显示，该窗口关闭后将被销毁
-    void on_readWriteSettingPushButton();                   // 创建一个读写参数设置窗口并显示，该窗口关闭后将被销毁
-
+private:
+    /// 其他设置
+    SAKOtherSettings *otherSettings             = nullptr;
 
 private:
     /**

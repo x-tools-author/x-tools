@@ -30,6 +30,7 @@
 #include "ui_SAKDebugPage.h"
 #include "SAKDataFactory.hh"
 #include "SAKCRCInterface.hh"
+#include "SAKOtherSettings.hh"
 #include "SAKHighlighterSettingPanel.hh"
 
 SAKDebugPage::SAKDebugPage(QWidget *parent)
@@ -41,6 +42,8 @@ SAKDebugPage::SAKDebugPage(QWidget *parent)
      * 安装ui
      */
     ui->setupUi(this);
+
+    otherSettings = new SAKOtherSettings(this, this);
 
     /*
      * 初始化ui指针变量
@@ -564,31 +567,6 @@ void SAKDebugPage::initUiPointer()
     txBytesLabel            = ui->txBytesLabel;
     resetRxCountPushButton  = ui->resetRxCountPushButton;
     resetTxCountPushButton  = ui->resetTxCountPushButton;
-
-    /*
-     * 其他设计组
-     */
-    autoResponseSettingPushButton  = ui->autoResponseSettingPushButton;
-    highlightSettingPushButton     = ui->highlightSettingPushButton;
-    readWriteSettingPushButton     = ui->readWriteSettingPushButton;
-}
-
-void SAKDebugPage::on_autoResponseSettingPushButton_clicked()
-{
-    SAKAutoResponseSettingPanel *window = new SAKAutoResponseSettingPanel(this);
-    window->show();
-}
-
-void SAKDebugPage::on_highlightSettingPushButton_clicked()
-{
-    SAKHighlighterSettingPanel *window = new SAKHighlighterSettingPanel(outputTextBroswer->document(), this);
-    window->show();
-}
-
-void SAKDebugPage::on_readWriteSettingPushButton()
-{
-    SAKReadWriteSetting *window = new SAKReadWriteSetting(this);
-    window->show();
 }
 
 void SAKDebugPage::on_resetRxCountPushButton_clicked()

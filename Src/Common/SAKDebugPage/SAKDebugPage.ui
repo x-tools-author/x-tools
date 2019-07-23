@@ -488,7 +488,7 @@ p, li { white-space: pre-wrap; }
          </size>
         </property>
         <property name="title">
-         <string>吞吐量</string>
+         <string>吞吐量图标</string>
         </property>
        </widget>
       </item>
@@ -670,7 +670,7 @@ p, li { white-space: pre-wrap; }
           </widget>
          </item>
          <item row="2" column="0">
-          <widget class="QPushButton" name="pushButton_6">
+          <widget class="QPushButton" name="transmissionSettingPushButton">
            <property name="text">
             <string>数据转发</string>
            </property>
