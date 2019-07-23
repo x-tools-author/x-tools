@@ -25,7 +25,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 HEADERS += \
     Src/Base/SAKDialog.hh \
     Src/Base/SAKMessageBox.hh \
-    Src/Base/SAKWidget.hh \    
+    Src/Base/SAKWidget.hh \
+    Src/Common/SAKDebugPage/Other/SAKOtherSettings.hh \
+    Src/Common/SAKDebugPage/Other/TransmissionSettings/BaseTransmission.hh \
+    Src/Common/SAKDebugPage/Other/TransmissionSettings/SerialPortTransmission.hh \
+    Src/Common/SAKDebugPage/Other/TransmissionSettings/SerialPortTransmissionItem.hh \
+    Src/Common/SAKDebugPage/Other/TransmissionSettings/TcpTransmission.hh \
+    Src/Common/SAKDebugPage/Other/TransmissionSettings/TcpTransmissionItem.hh \
+    Src/Common/SAKDebugPage/Other/TransmissionSettings/TransmissionSettings.hh \
+    Src/Common/SAKDebugPage/Other/TransmissionSettings/UdpTransmission.hh \
+    Src/Common/SAKDebugPage/Other/TransmissionSettings/UdpTransmissionItem.hh \
     Src/SAKGlobal.hh \
     Src/SAKVersion.hh \
     Src/SAKMainWindow.hh \
@@ -40,13 +49,22 @@ HEADERS += \
     Src/Common/SAKDebugPage/AutoResponse/SAKAutoResponseItem.hh \
     Src/Common/SAKDebugPage/ReadWriteSetting/SAKReadWriteSetting.hh \
     Src/Common/SAKDebugPage/Highlighter/SAKHighlighterSettingPanel.hh \
-    Src/Common/SAKDebugPage/AutoResponse/SAKAutoResponseSettingPanel.hh \
+    Src/Common/SAKDebugPage/AutoResponse/SAKAutoResponseSettingPanel.hh
 
 
 SOURCES += \
     Src/Base/SAKDialog.cc \
     Src/Base/SAKMessageBox.cc \
-    Src/Base/SAKWidget.cc \    
+    Src/Base/SAKWidget.cc \
+    Src/Common/SAKDebugPage/Other/SAKOtherSettings.cc \
+    Src/Common/SAKDebugPage/Other/TransmissionSettings/BaseTransmission.cc \
+    Src/Common/SAKDebugPage/Other/TransmissionSettings/SerialPortTransmission.cc \
+    Src/Common/SAKDebugPage/Other/TransmissionSettings/SerialPortTransmissionItem.cc \
+    Src/Common/SAKDebugPage/Other/TransmissionSettings/TcpTransmission.cc \
+    Src/Common/SAKDebugPage/Other/TransmissionSettings/TcpTransmissionItem.cc \
+    Src/Common/SAKDebugPage/Other/TransmissionSettings/TransmissionSettings.cc \
+    Src/Common/SAKDebugPage/Other/TransmissionSettings/UdpTransmission.cc \
+    Src/Common/SAKDebugPage/Other/TransmissionSettings/UdpTransmissionItem.cc \
     Src/main.cc \
     Src/SAKGlobal.cc \
     Src/SAKVersion.cc \
@@ -65,7 +83,12 @@ SOURCES += \
     Src/Common/SAKDebugPage/AutoResponse/SAKAutoResponseSettingPanel.cc
 
 
-FORMS += \    
+FORMS += \
+    Src/Common/SAKDebugPage/Other/TransmissionSettings/BaseTransmission.ui \
+    Src/Common/SAKDebugPage/Other/TransmissionSettings/SerialPortTransmissionItem.ui \
+    Src/Common/SAKDebugPage/Other/TransmissionSettings/TcpTransmissionItem.ui \
+    Src/Common/SAKDebugPage/Other/TransmissionSettings/TransmissionSettings.ui \
+    Src/Common/SAKDebugPage/Other/TransmissionSettings/UdpTransmissionItem.ui \
     Src/SAKVersion.ui \
     Src/SAKMainWindow.ui \
     Src/MoreInformation.ui \
@@ -84,7 +107,9 @@ INCLUDEPATH += \
     Src/Common/SAKDebugPage \
     Src/Common/SAKDebugPage/Highlighter \
     Src/Common/SAKDebugPage/AutoResponse \
-    Src/Common/SAKDebugPage/ReadWriteSetting
+    Src/Common/SAKDebugPage/ReadWriteSetting \
+    Src/Common/SAKDebugPage/Other/TransmissionSettings \
+    Src/Common/SAKDebugPage/Other
 
 
 RESOURCES += \
