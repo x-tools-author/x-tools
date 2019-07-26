@@ -13,15 +13,25 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#ifndef TCPTRANSMISSIONITEM_HH
-#define TCPTRANSMISSIONITEM_HH
+#ifndef UDPTRANSMISSSIONITEMWIDGET_HH
+#define UDPTRANSMISSSIONITEMWIDGET_HH
 
 #include <QWidget>
 
-class TcpTransmissionItem:public QWidget
+class SAKDebugPage;
+
+namespace Ui {
+class UdpTransmissionItemWidget;
+}
+
+class UdpTransmissionItemWidget:public QWidget
 {
+    Q_OBJECT
 public:
-    TcpTransmissionItem(QWidget *parent = nullptr);
+    UdpTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent);
+private:
+    SAKDebugPage *_debugPage;
+    Ui::UdpTransmissionItemWidget *ui;
 };
 
 #endif

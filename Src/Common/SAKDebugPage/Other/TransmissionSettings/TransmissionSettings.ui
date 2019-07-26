@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>754</width>
-    <height>577</height>
+    <width>791</width>
+    <height>458</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,24 +15,25 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QGroupBox" name="groupBox">
-     <property name="title">
-      <string>串口转发</string>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>0</number>
      </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QGroupBox" name="groupBox_2">
-     <property name="title">
-      <string>UDP转发</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QGroupBox" name="groupBox_3">
-     <property name="title">
-      <string>TCP转发</string>
-     </property>
+     <widget class="QWidget" name="serialPortWidget">
+      <attribute name="title">
+       <string>串口转发</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="udpWidget">
+      <attribute name="title">
+       <string>UDP转发</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tcpWidget">
+      <attribute name="title">
+       <string>TCP转发</string>
+      </attribute>
+     </widget>
     </widget>
    </item>
   </layout>

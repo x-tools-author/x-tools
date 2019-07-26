@@ -13,16 +13,11 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#ifndef UDPTRANSMISSSION_HH
-#define UDPTRANSMISSSION_HH
+#include "TransmissionItemDelegate.hh"
 
-#include <QWidget>
-
-class UdpTransmission:public QWidget
+TransmissionItemDelegate::TransmissionItemDelegate(SAKDebugPage *debugPage, QObject *parent)
+    :QAbstractItemDelegate (parent)
+    ,_debugPage (debugPage)
 {
-public:
-    UdpTransmission(QWidget *parent);
 
-};
-
-#endif
+}

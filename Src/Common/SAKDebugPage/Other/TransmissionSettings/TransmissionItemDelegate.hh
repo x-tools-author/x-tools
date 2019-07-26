@@ -13,10 +13,28 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#include "TcpTransmissionItem.hh"
+#ifndef TRANSMISSIONITEMDELEGATE_HH
+#define TRANSMISSIONITEMDELEGATE_HH
 
-TcpTransmissionItem::TcpTransmissionItem(QWidget *parent)
-    :QWidget (parent)
+#include <QListWidget>
+#include <QAbstractItemDelegate>
+
+class SAKDebugPage;
+
+class TransmissionItemDelegate:public QAbstractItemDelegate
 {
+    Q_OBJECT
+public:
+    TransmissionItemDelegate(SAKDebugPage *debugPage, QObject *parent = nullptr);
 
-}
+    enum TransmissionItemType {
+        SerialPortType,
+        UdpType,
+        TcpType
+    };
+private:
+    SAKDebugPage *_debugPage;
+    TransmissionItemType transmissionItemType = SerialPortType;
+};
+
+#endif

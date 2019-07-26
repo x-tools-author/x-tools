@@ -13,16 +13,25 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#ifndef UDPTRANSMISSSIONITEM_HH
-#define UDPTRANSMISSSIONITEM_HH
+#ifndef SERIALPORTTRANSMISSIONITEMWIDGET_HH
+#define SERIALPORTTRANSMISSIONITEMWIDGET_HH
 
 #include <QWidget>
 
-class UdpTransmissionItem:public QWidget
-{
-public:
-    UdpTransmissionItem(QWidget *parent);
+class SAKDebugPage;
 
+namespace Ui {
+class SerialPortTransmissionItemWidget;
+}
+
+class SerialPortTransmissionItemWidget:public QWidget
+{
+    Q_OBJECT
+public:
+    SerialPortTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent = nullptr);
+private:
+    SAKDebugPage *_debugPage;
+    Ui::SerialPortTransmissionItemWidget *ui;
 };
 
 #endif

@@ -13,15 +13,13 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#ifndef SERIALPORTTRANSMISSIONITEM_HH
-#define SERIALPORTTRANSMISSIONITEM_HH
+#include "TcpTransmissionItemWidget.hh"
+#include "ui_TcpTransmissionItemWidget.h"
 
-#include <QWidget>
-
-class SerialPortTransmissionItem:public QWidget
+TcpTransmissionItemWidget::TcpTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent)
+    :QWidget (parent)
+    ,_debugPage (debugPage)
+    ,ui (new Ui::TcpTransmissionItemWidget)
 {
-public:
-    SerialPortTransmissionItem(QWidget *parent = nullptr);
-};
-
-#endif
+    ui->setupUi(this);
+}

@@ -13,16 +13,25 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#ifndef BASETRANSMISSION_HH
-#define BASETRANSMISSION_HH
+#ifndef TCPTRANSMISSIONITEMWIDGET_HH
+#define TCPTRANSMISSIONITEMWIDGET_HH
 
-#include <QListWidget>
+#include <QWidget>
 
-class BaseTransmission:public QListWidget
+class SAKDebugPage;
+
+namespace Ui {
+class TcpTransmissionItemWidget;
+}
+
+class TcpTransmissionItemWidget:public QWidget
 {
     Q_OBJECT
 public:
-    BaseTransmission(QWidget *parent = nullptr);
+    TcpTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent = nullptr);
+private:
+    SAKDebugPage *_debugPage;
+    Ui::TcpTransmissionItemWidget *ui;
 };
 
 #endif

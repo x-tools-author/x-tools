@@ -1,41 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>UdpTransmissionItem</class>
- <widget class="QWidget" name="UdpTransmissionItem">
+ <class>TcpTransmissionItemWidget</class>
+ <widget class="QWidget" name="TcpTransmissionItemWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>864</width>
-    <height>38</height>
+    <width>747</width>
+    <height>64</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout">
-   <item>
-    <widget class="QCheckBox" name="enableCheckBox">
-     <property name="text">
-      <string>启用</string>
-     </property>
-    </widget>
-   </item>
-   <item>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="1">
     <widget class="QCheckBox" name="customAddressCheckBox">
      <property name="text">
       <string>指定地址端口</string>
      </property>
     </widget>
    </item>
-   <item>
+   <item row="0" column="2">
     <widget class="QLabel" name="label">
      <property name="text">
       <string>地址</string>
      </property>
     </widget>
    </item>
-   <item>
+   <item row="0" column="3">
     <widget class="QComboBox" name="addressComboBox">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -45,34 +38,48 @@
      </property>
     </widget>
    </item>
-   <item>
+   <item row="0" column="0">
+    <widget class="QCheckBox" name="enableCheckBox">
+     <property name="text">
+      <string>启用</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="4">
     <widget class="QLabel" name="label_2">
      <property name="text">
       <string>端口</string>
      </property>
     </widget>
    </item>
-   <item>
+   <item row="0" column="5">
     <widget class="QLineEdit" name="portLineEdit"/>
    </item>
-   <item>
+   <item row="1" column="1">
+    <widget class="QCheckBox" name="checkBox">
+     <property name="text">
+      <string>处理接收到的数据</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2">
     <widget class="QLabel" name="label_3">
      <property name="text">
       <string>目标地址</string>
      </property>
     </widget>
    </item>
-   <item>
+   <item row="1" column="3">
     <widget class="QLineEdit" name="targetAddressLineEdit"/>
    </item>
-   <item>
+   <item row="1" column="4">
     <widget class="QLabel" name="label_4">
      <property name="text">
       <string>目标端口</string>
      </property>
     </widget>
    </item>
-   <item>
+   <item row="1" column="5">
     <widget class="QLineEdit" name="targetPortLineEdit"/>
    </item>
   </layout>

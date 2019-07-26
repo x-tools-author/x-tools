@@ -27,14 +27,11 @@ HEADERS += \
     Src/Base/SAKMessageBox.hh \
     Src/Base/SAKWidget.hh \
     Src/Common/SAKDebugPage/Other/SAKOtherSettings.hh \
-    Src/Common/SAKDebugPage/Other/TransmissionSettings/BaseTransmission.hh \
-    Src/Common/SAKDebugPage/Other/TransmissionSettings/SerialPortTransmission.hh \
-    Src/Common/SAKDebugPage/Other/TransmissionSettings/SerialPortTransmissionItem.hh \
-    Src/Common/SAKDebugPage/Other/TransmissionSettings/TcpTransmission.hh \
-    Src/Common/SAKDebugPage/Other/TransmissionSettings/TcpTransmissionItem.hh \
+    Src/Common/SAKDebugPage/Other/TransmissionSettings/SerialPortTransmissionItemWidget.hh \
+    Src/Common/SAKDebugPage/Other/TransmissionSettings/TcpTransmissionItemWidget.hh \
+    Src/Common/SAKDebugPage/Other/TransmissionSettings/TransmissionPage.hh \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/TransmissionSettings.hh \
-    Src/Common/SAKDebugPage/Other/TransmissionSettings/UdpTransmission.hh \
-    Src/Common/SAKDebugPage/Other/TransmissionSettings/UdpTransmissionItem.hh \
+    Src/Common/SAKDebugPage/Other/TransmissionSettings/UdpTransmissionItemWidget.hh \
     Src/SAKGlobal.hh \
     Src/SAKVersion.hh \
     Src/SAKMainWindow.hh \
@@ -57,14 +54,11 @@ SOURCES += \
     Src/Base/SAKMessageBox.cc \
     Src/Base/SAKWidget.cc \
     Src/Common/SAKDebugPage/Other/SAKOtherSettings.cc \
-    Src/Common/SAKDebugPage/Other/TransmissionSettings/BaseTransmission.cc \
-    Src/Common/SAKDebugPage/Other/TransmissionSettings/SerialPortTransmission.cc \
-    Src/Common/SAKDebugPage/Other/TransmissionSettings/SerialPortTransmissionItem.cc \
-    Src/Common/SAKDebugPage/Other/TransmissionSettings/TcpTransmission.cc \
-    Src/Common/SAKDebugPage/Other/TransmissionSettings/TcpTransmissionItem.cc \
+    Src/Common/SAKDebugPage/Other/TransmissionSettings/SerialPortTransmissionItemWidget.cc \
+    Src/Common/SAKDebugPage/Other/TransmissionSettings/TcpTransmissionItemWidget.cc \
+    Src/Common/SAKDebugPage/Other/TransmissionSettings/TransmissionPage.cc \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/TransmissionSettings.cc \
-    Src/Common/SAKDebugPage/Other/TransmissionSettings/UdpTransmission.cc \
-    Src/Common/SAKDebugPage/Other/TransmissionSettings/UdpTransmissionItem.cc \
+    Src/Common/SAKDebugPage/Other/TransmissionSettings/UdpTransmissionItemWidget.cc \
     Src/main.cc \
     Src/SAKGlobal.cc \
     Src/SAKVersion.cc \
@@ -84,11 +78,11 @@ SOURCES += \
 
 
 FORMS += \
-    Src/Common/SAKDebugPage/Other/TransmissionSettings/BaseTransmission.ui \
-    Src/Common/SAKDebugPage/Other/TransmissionSettings/SerialPortTransmissionItem.ui \
-    Src/Common/SAKDebugPage/Other/TransmissionSettings/TcpTransmissionItem.ui \
+    Src/Common/SAKDebugPage/Other/TransmissionSettings/TransmissionPage.ui \
+    Src/Common/SAKDebugPage/Other/TransmissionSettings/SerialPortTransmissionItemWidget.ui \
+    Src/Common/SAKDebugPage/Other/TransmissionSettings/TcpTransmissionItemWidget.ui \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/TransmissionSettings.ui \
-    Src/Common/SAKDebugPage/Other/TransmissionSettings/UdpTransmissionItem.ui \
+    Src/Common/SAKDebugPage/Other/TransmissionSettings/UdpTransmissionItemWidget.ui \
     Src/SAKVersion.ui \
     Src/SAKMainWindow.ui \
     Src/MoreInformation.ui \

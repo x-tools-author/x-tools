@@ -13,11 +13,13 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#include "BaseTransmission.hh"
+#include "UdpTransmissionItemWidget.hh"
+#include "ui_UdpTransmissionItemWidget.h"
 
-BaseTransmission::BaseTransmission(SAKDebugPage *debugPage, QWidget *parent)
-    :QListWidget (parent)
+UdpTransmissionItemWidget::UdpTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent)
+    :QWidget (parent)
     ,_debugPage (debugPage)
+    ,ui(new Ui::UdpTransmissionItemWidget)
 {
-
+    ui->setupUi(this);
 }

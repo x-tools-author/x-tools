@@ -13,10 +13,13 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#include "UdpTransmission.hh"
+#include "SerialPortTransmissionItemWidget.hh"
+#include "ui_SerialPortTransmissionItemWidget.h"
 
-UdpTransmission::UdpTransmission(QWidget *parent)
+SerialPortTransmissionItemWidget::SerialPortTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget (parent)
+    ,_debugPage (debugPage)
+    ,ui (new Ui::SerialPortTransmissionItemWidget)
 {
-
+    ui->setupUi(this);
 }

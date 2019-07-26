@@ -13,7 +13,9 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
+#include <QHBoxLayout>
 #include "SAKDebugPage.hh"
+#include "TransmissionPage.hh"
 #include "TransmissionSettings.hh"
 #include "ui_TransmissionSettings.h"
 
@@ -24,9 +26,34 @@ TransmissionSettings::TransmissionSettings(SAKDebugPage *debugPage, QWidget *par
 {
     ui->setupUi(this);
     setWindowTitle(tr("数据转发设置"));
+
+    serialPortWidget    = ui->serialPortWidget;
+    udpWidget           = ui->udpWidget;
+    tcpWidget           = ui->tcpWidget;
+
+    auto installWidget = [](QWidget *tab, QWidget *page){
+        QHBoxLayout *layout = new QHBoxLayout(tab);
+        tab->setLayout(layout);
+        layout->addWidget(page);
+    };
+
+    serialPortTransmission = new TransmissionPage (debugPage, this);
+    serialPortTransmission->setTransmissionType(TransmissionPage::SerialPortTransmission);
+    udpTransmission = new TransmissionPage(debugPage, this);
+    udpTransmission->setTransmissionType(TransmissionPage::UdpTransmission);
+    tcpTransmission = new TransmissionPage(debugPage, this);
+    tcpTransmission->setTransmissionType(TransmissionPage::TcpTransmission);
+
+    installWidget(serialPortWidget, serialPortTransmission);
+    installWidget(udpWidget, udpTransmission);
+    installWidget(tcpWidget, tcpTransmission);        
 }
 
 TransmissionSettings::~TransmissionSettings()
 {
     delete ui;
+
+    delete udpTransmission;
+    delete tcpTransmission;
+    delete serialPortTransmission;
 }

@@ -21,6 +21,7 @@
 #include "SAKWidget.hh"
 
 class SAKDebugPage;
+class TransmissionPage;
 
 namespace Ui {
 class TransmissionSettings;
@@ -33,8 +34,15 @@ public:
     TransmissionSettings(SAKDebugPage *debugPage, QWidget *parent = nullptr);
     ~TransmissionSettings();
 private:
-    SAKDebugPage *_debugPage = nullptr;
-    Ui::TransmissionSettings *ui;
+    QWidget                     *serialPortWidget       = nullptr;
+    QWidget                     *udpWidget              = nullptr;
+    QWidget                     *tcpWidget              = nullptr;
+    SAKDebugPage                *_debugPage             = nullptr;
+    Ui::TransmissionSettings    *ui                     = nullptr;
+
+    TransmissionPage            *udpTransmission        = nullptr;
+    TransmissionPage            *tcpTransmission        = nullptr;
+    TransmissionPage            *serialPortTransmission = nullptr;
 };
 
 #endif
