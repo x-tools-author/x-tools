@@ -17,8 +17,7 @@
 #include "ui_TcpTransmissionItemWidget.h"
 
 TcpTransmissionItemWidget::TcpTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent)
-    :QWidget (parent)
-    ,_debugPage (debugPage)
+    :BaseTransmissionItemWidget (debugPage, parent)
     ,ui (new Ui::TcpTransmissionItemWidget)
 {
     ui->setupUi(this);

@@ -27,6 +27,7 @@ HEADERS += \
     Src/Base/SAKMessageBox.hh \
     Src/Base/SAKWidget.hh \
     Src/Common/SAKDebugPage/Other/SAKOtherSettings.hh \
+    Src/Common/SAKDebugPage/Other/TransmissionSettings/BaseTransmissionItemWidget.hh \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/SerialPortTransmissionItemWidget.hh \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/TcpTransmissionItemWidget.hh \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/TransmissionPage.hh \
@@ -54,6 +55,7 @@ SOURCES += \
     Src/Base/SAKMessageBox.cc \
     Src/Base/SAKWidget.cc \
     Src/Common/SAKDebugPage/Other/SAKOtherSettings.cc \
+    Src/Common/SAKDebugPage/Other/TransmissionSettings/BaseTransmissionItemWidget.cc \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/SerialPortTransmissionItemWidget.cc \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/TcpTransmissionItemWidget.cc \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/TransmissionPage.cc \

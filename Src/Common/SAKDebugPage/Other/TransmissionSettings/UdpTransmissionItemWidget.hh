@@ -17,20 +17,18 @@
 #define UDPTRANSMISSSIONITEMWIDGET_HH
 
 #include <QWidget>
-
-class SAKDebugPage;
+#include "BaseTransmissionItemWidget.hh"
 
 namespace Ui {
 class UdpTransmissionItemWidget;
 }
 
-class UdpTransmissionItemWidget:public QWidget
+class UdpTransmissionItemWidget:public BaseTransmissionItemWidget
 {
     Q_OBJECT
 public:
     UdpTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent);
 private:
-    SAKDebugPage *_debugPage;
     Ui::UdpTransmissionItemWidget *ui;
 };
 

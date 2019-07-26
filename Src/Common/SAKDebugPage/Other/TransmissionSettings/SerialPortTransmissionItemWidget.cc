@@ -17,8 +17,7 @@
 #include "ui_SerialPortTransmissionItemWidget.h"
 
 SerialPortTransmissionItemWidget::SerialPortTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent)
-    :QWidget (parent)
-    ,_debugPage (debugPage)
+    :BaseTransmissionItemWidget (debugPage, parent)
     ,ui (new Ui::SerialPortTransmissionItemWidget)
 {
     ui->setupUi(this);

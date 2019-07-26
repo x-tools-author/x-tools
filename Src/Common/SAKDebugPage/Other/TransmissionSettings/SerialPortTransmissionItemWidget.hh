@@ -17,20 +17,18 @@
 #define SERIALPORTTRANSMISSIONITEMWIDGET_HH
 
 #include <QWidget>
-
-class SAKDebugPage;
+#include "BaseTransmissionItemWidget.hh"
 
 namespace Ui {
 class SerialPortTransmissionItemWidget;
 }
 
-class SerialPortTransmissionItemWidget:public QWidget
+class SerialPortTransmissionItemWidget:public BaseTransmissionItemWidget
 {
     Q_OBJECT
 public:
     SerialPortTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent = nullptr);
 private:
-    SAKDebugPage *_debugPage;
     Ui::SerialPortTransmissionItemWidget *ui;
 };
 

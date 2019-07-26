@@ -13,23 +13,19 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#ifndef UDPTRANSMISSSIONITEMWIDGET_HH
-#define UDPTRANSMISSSIONITEMWIDGET_HH
+#ifndef BASETRANSMISSSIONITEMWIDGET_HH
+#define BASETRANSMISSSIONITEMWIDGET_HH
 
 #include <QWidget>
 
 class SAKDebugPage;
 
-namespace Ui {
-class UdpTransmissionItemWidget;
-}
-
-class UdpTransmissionItemWidget:public QWidget
+class BaseTransmissionItemWidget:public QWidget
 {
     Q_OBJECT
 public:
-    UdpTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent);
-private:
+    BaseTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent);
+protected:
     SAKDebugPage *_debugPage;
 };
 

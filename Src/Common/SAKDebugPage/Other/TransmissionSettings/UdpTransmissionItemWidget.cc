@@ -17,8 +17,7 @@
 #include "ui_UdpTransmissionItemWidget.h"
 
 UdpTransmissionItemWidget::UdpTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent)
-    :QWidget (parent)
-    ,_debugPage (debugPage)
+    :BaseTransmissionItemWidget (debugPage, parent)
     ,ui(new Ui::UdpTransmissionItemWidget)
 {
     ui->setupUi(this);

@@ -17,20 +17,18 @@
 #define TCPTRANSMISSIONITEMWIDGET_HH
 
 #include <QWidget>
-
-class SAKDebugPage;
+#include "BaseTransmissionItemWidget.hh"
 
 namespace Ui {
 class TcpTransmissionItemWidget;
 }
 
-class TcpTransmissionItemWidget:public QWidget
+class TcpTransmissionItemWidget:public BaseTransmissionItemWidget
 {
     Q_OBJECT
 public:
     TcpTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent = nullptr);
 private:
-    SAKDebugPage *_debugPage;
     Ui::TcpTransmissionItemWidget *ui;
 };
 

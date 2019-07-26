@@ -13,9 +13,9 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#include "UdpTransmissionItemWidget.hh"
+#include "BaseTransmissionItemWidget.hh"
 
-UdpTransmissionItemWidget::UdpTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent)
+BaseTransmissionItemWidget::BaseTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget (parent)
     ,_debugPage (debugPage)
 {
