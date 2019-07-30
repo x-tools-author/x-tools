@@ -27,9 +27,3 @@ include($${PWD}/Modules/QtStyleSheetApi/QtStyleSheetApi.pri)
 
 # 文件校验工具
 include($${PWD}/Modules/QtCryptographicHash/QtCryptographicHash.pri)
-
-HEADERS += \
-    $$PWD/Src/Common/SAKDebugPage/Other/TransmissionSettings/BaseTransmissionItemWidget.hh
-
-SOURCES += \
-    $$PWD/Src/Common/SAKDebugPage/Other/TransmissionSettings/BaseTransmissionItemWidget.cc
