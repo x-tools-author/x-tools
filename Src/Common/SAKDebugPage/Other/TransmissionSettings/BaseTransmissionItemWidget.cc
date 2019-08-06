@@ -19,5 +19,27 @@ BaseTransmissionItemWidget::BaseTransmissionItemWidget(SAKDebugPage *debugPage, 
     :QWidget (parent)
     ,_debugPage (debugPage)
 {
+    transmissionContext.deviceReady = false;
+    transmissionContext.transmissionEnable = false;
+    transmissionContext.enableHandleReceivedData = true;
+}
 
+void BaseTransmissionItemWidget::write(QByteArray data)
+{
+    Q_UNUSED(data);
+}
+
+void BaseTransmissionItemWidget::setDeviceState(bool ready)
+{
+    transmissionContext.deviceReady = ready;
+}
+
+void BaseTransmissionItemWidget::setTransmissionEnable(bool enable)
+{
+    transmissionContext.transmissionEnable = enable;
+}
+
+void BaseTransmissionItemWidget::setEnableHandleReceivedData(bool enable)
+{
+    transmissionContext.enableHandleReceivedData = enable;
 }

@@ -13,16 +13,30 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#ifndef SAKWIDGET_HH
-#define SAKWIDGET_HH
+#ifndef SAKCOMMONAPI_HH
+#define SAKCOMMONAPI_HH
 
-#include <QWidget>
+#include <QObject>
+#include <QComboBox>
 
-class SAKWidget:public QWidget
+class SAKCommonApi:public QObject
 {
     Q_OBJECT
 public:
-    SAKWidget(QWidget *parent = Q_NULLPTR);
+    static SAKCommonApi *instance();
+private:
+    SAKCommonApi(QObject *parent = nullptr);
+    static SAKCommonApi *_this;
+
+public:
+    /*
+     * 串口相关参数显示初始化
+     */
+    void initComComboBox(QComboBox *comboBox);
+    void initBaudRateComboBox(QComboBox *comboBox);
+    void initDataBitsComboBox(QComboBox *comboBox);
+    void initStopBitsComboBox(QComboBox *comboBox);
+    void initParityComboBox(QComboBox *comboBox);
 };
 
 #endif

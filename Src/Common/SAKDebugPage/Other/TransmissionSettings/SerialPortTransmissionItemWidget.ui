@@ -55,7 +55,7 @@
     <widget class="QComboBox" name="parityComboBox"/>
    </item>
    <item row="1" column="1">
-    <widget class="QCheckBox" name="checkBox_2">
+    <widget class="QCheckBox" name="customBaudrateCheckBox">
      <property name="text">
       <string>自定义波特率</string>
      </property>
@@ -63,22 +63,37 @@
    </item>
    <item row="1" column="2">
     <widget class="QLabel" name="label_2">
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
      <property name="text">
       <string>波特率</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
      </property>
     </widget>
    </item>
    <item row="0" column="1">
-    <widget class="QCheckBox" name="checkBox">
+    <widget class="QCheckBox" name="handleReceiveDataCheckBox">
      <property name="text">
       <string>处理接收到的数据</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
      </property>
     </widget>
    </item>
    <item row="0" column="2">
     <widget class="QLabel" name="label">
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
      <property name="text">
       <string>串口设备</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
      </property>
     </widget>
    </item>

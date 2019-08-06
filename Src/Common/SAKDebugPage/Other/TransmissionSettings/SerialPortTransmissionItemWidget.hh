@@ -17,6 +17,12 @@
 #define SERIALPORTTRANSMISSIONITEMWIDGET_HH
 
 #include <QWidget>
+#include <QLineEdit>
+#include <QCheckBox>
+#include <QComboBox>
+#include <QIODevice>
+#include <QPushButton>
+
 #include "BaseTransmissionItemWidget.hh"
 
 namespace Ui {
@@ -30,6 +36,18 @@ public:
     SerialPortTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent = nullptr);
 private:
     Ui::SerialPortTransmissionItemWidget *ui;
+    QCheckBox   *enableCheckBox;
+    QCheckBox   *handleReceiveDataCheckBox;
+    QComboBox   *comComboBox;
+    QCheckBox   *customBaudrateCheckBox;
+    QComboBox   *baudRateComboBox;
+    QComboBox   *dataBitscomboBox;
+    QComboBox   *stopBitscomboBox;
+    QComboBox   *parityComboBox;
+private slots:
+    void on_enableCheckBox_clicked();
+    void on_handleReceiveDataCheckBox_clicked();
+    void on_customBaudrateCheckBox_clicked();
 };
 
 #endif

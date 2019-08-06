@@ -25,8 +25,30 @@ class BaseTransmissionItemWidget:public QWidget
     Q_OBJECT
 public:
     BaseTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent);
+
+    struct TransmissionContext {
+        bool deviceReady;
+        bool transmissionEnable;
+        bool enableHandleReceivedData;
+    };
 protected:
     SAKDebugPage *_debugPage;
+
+    /// 发送数据
+    virtual void write(QByteArray data);
+    /// 设置设备状态
+    void setDeviceState(bool ready);
+    /// 使能转发
+    void setTransmissionEnable(bool enable);
+    /// 处理接受到的数据（回传接受到的数据）
+    void setEnableHandleReceivedData(bool enable);
+private:
+    struct TransmissionContext transmissionContext;
+signals:
+    /// 读取数据后，发射该信号
+    void bytesRead(QByteArray data);
+    /// 写数据请求信号
+    void writeRequest(QByteArray data);
 };
 
 #endif

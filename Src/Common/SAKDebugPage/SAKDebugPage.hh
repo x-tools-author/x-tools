@@ -104,6 +104,11 @@ public:
      * @return                  -- 延时时间
      */
     unsigned long writeDelayTimes();
+    /**
+     * @brief write             -- 写数据
+     * @param data              -- 代写的数据
+     */
+    void write(QByteArray data);
 
     friend class SAKOtherSettings;
 protected:

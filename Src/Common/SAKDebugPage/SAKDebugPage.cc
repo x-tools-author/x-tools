@@ -118,6 +118,11 @@ unsigned long SAKDebugPage::writeDelayTimes()
     return 0;
 }
 
+void SAKDebugPage::write(QByteArray data)
+{
+    emit need2writeBytes(data);
+}
+
 void SAKDebugPage::setUpController()
 {
     QWidget *controller = controllerWidget();
