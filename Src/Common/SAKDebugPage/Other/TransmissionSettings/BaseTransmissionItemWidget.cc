@@ -21,17 +21,24 @@ BaseTransmissionItemWidget::BaseTransmissionItemWidget(SAKDebugPage *debugPage, 
 {
     transmissionContext.enableHandleReceivedData = true;
 
-    connect(_debugPage, &SAKDebugPage::dataReadOrwritten, this, &BaseTransmissionItemWidget::transmit);
+    connect(_debugPage, &SAKDebugPage::dataReadOrwritten, this, &BaseTransmissionItemWidget::byteReceived);
     connect(this, &BaseTransmissionItemWidget::bytesRead, _debugPage, &SAKDebugPage::write);
 }
 
-void BaseTransmissionItemWidget::transmit(QByteArray data, SAKDebugPage::OutputParameters parameters)
+void BaseTransmissionItemWidget::byteReceived(QByteArray data, SAKDebugPage::OutputParameters parameters)
 {
     Q_UNUSED(data);
-    Q_UNUSED(parameters);
+    if (parameters.isReceivedData){
+        write(data);
+    }
 }
 
 void BaseTransmissionItemWidget::setEnableHandleReceivedData(bool enable)
 {
     transmissionContext.enableHandleReceivedData = enable;
+}
+
+void BaseTransmissionItemWidget::write(QByteArray data)
+{
+    Q_UNUSED(data);
 }

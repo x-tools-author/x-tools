@@ -17,8 +17,7 @@
 #define BASETRANSMISSSIONITEMWIDGET_HH
 
 #include <QWidget>
-#include <QSerialPort>
-
+#include <QIODevice>
 #include "SAKDebugPage.hh"
 
 class BaseTransmissionItemWidget:public QWidget
@@ -31,9 +30,8 @@ public:
         bool enableHandleReceivedData;        
     };
 
-public:
-    /// 转发数据(将收到的数据通过指定的设备进行转发)
-    virtual void transmit(QByteArray data, SAKDebugPage::OutputParameters parameters);
+    /// 转发函数，子类必须重新实现
+    virtual void write(QByteArray data);
 signals:
     /// 读取数据后，发射该信号
     void bytesRead(QByteArray data);
@@ -44,6 +42,9 @@ protected:
 
     /// 处理接受到的数据（回传接受到的数据）
     void setEnableHandleReceivedData(bool enable);
+private:
+    /// 转发数据(将收到的数据通过指定的设备进行转发)
+    void byteReceived(QByteArray data, SAKDebugPage::OutputParameters parameters);
 };
 
 #endif

@@ -48,13 +48,8 @@ SerialPortTransmissionItemWidget::SerialPortTransmissionItemWidget(SAKDebugPage 
     handleReceiveDataCheckBox->setChecked(true);
 }
 
-void SerialPortTransmissionItemWidget::transmit(QByteArray data, SAKDebugPage::OutputParameters parameters)
+void SerialPortTransmissionItemWidget::write(QByteArray data)
 {
-    // 如果数据是收到的数据则进行转发，否则不处理
-    if (!parameters.isReceivedData){
-        return;
-    }
-
     if (serialPort){
         if (serialPort->write(data)){
 #ifdef QT_DEBUG
@@ -73,6 +68,7 @@ void SerialPortTransmissionItemWidget::on_enableCheckBox_clicked()
             dev->close();
             dev->deleteLater();
             dev = nullptr;
+            this->setUiEnable(true);
         }
     };
 
@@ -83,12 +79,15 @@ void SerialPortTransmissionItemWidget::on_enableCheckBox_clicked()
         serialPort->setDataBits(dataBitscomboBox->currentData().value<QSerialPort::DataBits>());
         serialPort->setStopBits(stopBitscomboBox->currentData().value<QSerialPort::StopBits>());
         if (serialPort->open(QSerialPort::ReadWrite)){
+            this->setUiEnable(false);
             connect(serialPort, &QSerialPort::readyRead, this, &SerialPortTransmissionItemWidget::read, Qt::QueuedConnection);
-            qInfo() << tr("串口打开成功：")
+#ifdef QT_DEBUG
+            qInfo() << tr("串口打开成功")
                     << tr("串口名称：") << serialPort->portName()
                     << tr("波特率：") << serialPort->baudRate()
                     << tr("数据位：") << serialPort->dataBits()
                     << tr("校验方式：") << serialPort->parity();
+#endif
         }else{
             _debugPage->outputMessage(serialPort->errorString(), false);
             enableCheckBox->setChecked(false);
@@ -121,4 +120,14 @@ void SerialPortTransmissionItemWidget::read()
             }
         }
     }
+}
+
+void SerialPortTransmissionItemWidget::setUiEnable(bool enable)
+{
+    comComboBox->setEnabled(enable);
+    customBaudrateCheckBox->setEnabled(enable);
+    baudRateComboBox->setEnabled(enable);
+    dataBitscomboBox->setEnabled(enable);
+    stopBitscomboBox->setEnabled(enable);
+    parityComboBox->setEnabled(enable);
 }

@@ -36,7 +36,8 @@ class SerialPortTransmissionItemWidget:public BaseTransmissionItemWidget
 public:
     SerialPortTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent = nullptr);
 protected:
-    virtual void transmit(QByteArray data, SAKDebugPage::OutputParameters parameters);
+    virtual void write(QByteArray data);
+    virtual void read();
 private:
     Ui::SerialPortTransmissionItemWidget *ui;
     QCheckBox   *enableCheckBox;
@@ -54,7 +55,7 @@ private slots:
     void on_handleReceiveDataCheckBox_clicked();
     void on_customBaudrateCheckBox_clicked();
 private:
-    void read();
+    void setUiEnable(bool enable);
 };
 
 #endif
