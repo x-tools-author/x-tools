@@ -53,7 +53,6 @@ private:
     QSerialPort *serialPort;
 private slots:
     void on_enableCheckBox_clicked();
-    void on_handleReceiveDataCheckBox_clicked();
     void on_customBaudrateCheckBox_clicked();
 private:
     void setUiEnable(bool enable);

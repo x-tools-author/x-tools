@@ -17,10 +17,15 @@
 #define UDPTRANSMISSSIONITEMWIDGET_HH
 
 #include <QWidget>
+#include <QCheckBox>
+#include <QComboBox>
+#include <QLineEdit>
+#include <QUdpSocket>
+
 #include "BaseTransmissionItemWidget.hh"
 
 namespace Ui {
-class UdpTransmissionItemWidget;
+    class UdpTransmissionItemWidget;
 }
 
 class UdpTransmissionItemWidget:public BaseTransmissionItemWidget
@@ -28,8 +33,24 @@ class UdpTransmissionItemWidget:public BaseTransmissionItemWidget
     Q_OBJECT
 public:
     UdpTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent);
+
+    virtual void write(QByteArray data);
 private:
     Ui::UdpTransmissionItemWidget *ui;
+    QCheckBox *enableCheckBox;
+    QCheckBox *customAddressCheckBox;
+    QComboBox *addressComboBox;
+    QLineEdit *portLineEdit;
+    QCheckBox *handleReceiveDataCheckBox;
+    QLineEdit *targetAddressLineEdit;
+    QLineEdit *targetPortLineEdit;
+
+    QUdpSocket  *udpSocket;
+private slots:
+    void on_enableCheckBox_clicked();
+private:
+    void read();
+    void setUiEnable(bool enable);
 };
 
 #endif

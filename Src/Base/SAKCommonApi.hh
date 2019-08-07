@@ -37,6 +37,11 @@ public:
     void initDataBitsComboBox(QComboBox *comboBox);
     void initStopBitsComboBox(QComboBox *comboBox);
     void initParityComboBox(QComboBox *comboBox);
+
+    /*
+     * ip地址
+     */
+    void initIpComboBox(QComboBox *comboBox);
 };
 
 #endif

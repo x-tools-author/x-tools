@@ -20,7 +20,7 @@
 #include "BaseTransmissionItemWidget.hh"
 
 namespace Ui {
-class TcpTransmissionItemWidget;
+    class TcpTransmissionItemWidget;
 }
 
 class TcpTransmissionItemWidget:public BaseTransmissionItemWidget

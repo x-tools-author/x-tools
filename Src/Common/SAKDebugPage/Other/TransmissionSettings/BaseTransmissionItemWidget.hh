@@ -26,10 +26,6 @@ class BaseTransmissionItemWidget:public QWidget
 public:
     BaseTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent);
 
-    struct TransmissionContext {
-        bool enableHandleReceivedData;        
-    };
-
     /// 转发函数，子类必须重新实现
     virtual void write(QByteArray data);
 signals:
@@ -38,10 +34,6 @@ signals:
 
 protected:
     SAKDebugPage *_debugPage;
-    struct TransmissionContext transmissionContext;
-
-    /// 处理接受到的数据（回传接受到的数据）
-    void setEnableHandleReceivedData(bool enable);
 private:
     /// 转发数据(将收到的数据通过指定的设备进行转发)
     void byteReceived(QByteArray data, SAKDebugPage::OutputParameters parameters);

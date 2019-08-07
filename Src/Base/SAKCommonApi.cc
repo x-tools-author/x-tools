@@ -16,7 +16,10 @@
 #include "SAKCommonApi.hh"
 
 #include <QSerialPort>
+#include <QHostAddress>
+#include <QAbstractSocket>
 #include <QSerialPortInfo>
+#include <QNetworkInterface>
 
 Q_DECLARE_METATYPE(QSerialPortInfo)
 
@@ -92,5 +95,18 @@ void SAKCommonApi::initParityComboBox(QComboBox *comboBox)
         comboBox->addItem(tr("奇校验"), QVariant::fromValue(QSerialPort::OddParity));
         comboBox->addItem(tr("SpaceParity"), QVariant::fromValue(QSerialPort::SpaceParity));
         comboBox->addItem(tr("MarkParity"), QVariant::fromValue(QSerialPort::MarkParity));
+    }
+}
+
+void SAKCommonApi::initIpComboBox(QComboBox *comboBox)
+{
+    if (comboBox){
+        comboBox->clear();
+        QList<QHostAddress> addresses = QNetworkInterface::allAddresses();
+        for(auto var:addresses){
+            if (var.protocol() == QAbstractSocket::IPv4Protocol) {
+                comboBox->addItem(var.toString());
+            }
+        }
     }
 }

@@ -105,11 +105,6 @@ void SerialPortTransmissionItemWidget::on_enableCheckBox_clicked()
     }
 }
 
-void SerialPortTransmissionItemWidget::on_handleReceiveDataCheckBox_clicked()
-{
-    setEnableHandleReceivedData(handleReceiveDataCheckBox->isChecked());
-}
-
 void SerialPortTransmissionItemWidget::on_customBaudrateCheckBox_clicked()
 {
     baudRateComboBox->setEditable(customBaudrateCheckBox->isChecked());
@@ -120,7 +115,7 @@ void SerialPortTransmissionItemWidget::read()
     if (serialPort){
         QByteArray data = serialPort->readAll();
         if (!data.isEmpty()){
-            if (transmissionContext.enableHandleReceivedData){
+            if (handleReceiveDataCheckBox->isChecked()){
                 emit bytesRead(data);
             }
         }

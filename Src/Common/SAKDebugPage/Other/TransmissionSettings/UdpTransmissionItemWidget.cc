@@ -13,12 +13,89 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
+#include "SAKCommonApi.hh"
 #include "UdpTransmissionItemWidget.hh"
 #include "ui_UdpTransmissionItemWidget.h"
 
 UdpTransmissionItemWidget::UdpTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent)
     :BaseTransmissionItemWidget (debugPage, parent)
     ,ui(new Ui::UdpTransmissionItemWidget)
+    ,udpSocket (nullptr)
 {
     ui->setupUi(this);
+
+    enableCheckBox = ui->enableCheckBox;
+    customAddressCheckBox = ui->customAddressCheckBox;
+    addressComboBox = ui->addressComboBox;
+    portLineEdit = ui->portLineEdit;
+    handleReceiveDataCheckBox = ui->handleReceiveDataCheckBox;
+    targetAddressLineEdit = ui->targetAddressLineEdit;
+    targetPortLineEdit = ui->targetPortLineEdit;
+
+    SAKCommonApi::instance()->initIpComboBox(addressComboBox);
+}
+
+void UdpTransmissionItemWidget::write(QByteArray data)
+{
+    QHostAddress targetAddress(targetAddressLineEdit->text());
+    quint16 targetPort = static_cast<quint16>(targetPortLineEdit->text().toInt());
+    if (!udpSocket->writeDatagram(data, targetAddress, targetPort)){
+
+    }
+}
+
+void UdpTransmissionItemWidget::on_enableCheckBox_clicked()
+{
+    auto closeDev = [&](QUdpSocket *dev){
+        disconnect(dev, &QUdpSocket::readyRead, this, &UdpTransmissionItemWidget::read);
+        dev->deleteLater();
+        dev = nullptr;
+        this->setUiEnable(true);
+    };
+
+    auto bindDev = [&](QHostAddress address, quint16 port){
+        if (udpSocket->bind(address, port)){
+            if (udpSocket->open(QUdpSocket::ReadWrite)){
+                connect(udpSocket, &QUdpSocket::readyRead, this, &UdpTransmissionItemWidget::read);
+                this->setUiEnable(false);
+                return;
+            }
+        }
+
+        _debugPage->outputMessage(udpSocket->errorString(), false);
+        enableCheckBox->setChecked(false);
+        closeDev(udpSocket);
+    };
+
+    if (enableCheckBox->isChecked()){
+        udpSocket = new QUdpSocket;
+        if (customAddressCheckBox->isChecked()){
+            bindDev(QHostAddress(addressComboBox->currentText()), static_cast<quint16>(portLineEdit->text().toInt()));
+        }else{
+            bindDev(QHostAddress::Any, 0);
+        }
+    }else{
+        closeDev(udpSocket);
+    }
+}
+
+void UdpTransmissionItemWidget::read()
+{
+    if (udpSocket){
+        while (udpSocket->hasPendingDatagrams()) {
+            QByteArray data;
+            data.resize(static_cast<int>(udpSocket->pendingDatagramSize()));
+            udpSocket->readDatagram(data.data(), data.length());
+            emit bytesRead(data);
+        }
+    }
+}
+
+void UdpTransmissionItemWidget::setUiEnable(bool enable)
+{
+    customAddressCheckBox->setEnabled(enable);
+    addressComboBox->setEnabled(enable);
+    portLineEdit->setEnabled(enable);
+    targetAddressLineEdit->setEnabled(enable);
+    targetPortLineEdit->setEnabled(enable);
 }
