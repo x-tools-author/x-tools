@@ -13,16 +13,20 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
+#include "SAKDebugPage.hh"
 #include "SAKCommonApi.hh"
 #include "SerialPortTransmissionItemWidget.hh"
 #include "ui_SerialPortTransmissionItemWidget.h"
 
-#include <QSerialPort>
+#include <QDebug>
 #include <QSerialPortInfo>
+
+Q_DECLARE_METATYPE(QSerialPortInfo)
 
 SerialPortTransmissionItemWidget::SerialPortTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent)
     :BaseTransmissionItemWidget (debugPage, parent)
     ,ui (new Ui::SerialPortTransmissionItemWidget)
+    ,serialPort (nullptr)
 {
     ui->setupUi(this);
 
@@ -44,9 +48,57 @@ SerialPortTransmissionItemWidget::SerialPortTransmissionItemWidget(SAKDebugPage 
     handleReceiveDataCheckBox->setChecked(true);
 }
 
+void SerialPortTransmissionItemWidget::transmit(QByteArray data, SAKDebugPage::OutputParameters parameters)
+{
+    // 如果数据是收到的数据则进行转发，否则不处理
+    if (!parameters.isReceivedData){
+        return;
+    }
+
+    if (serialPort){
+        if (serialPort->write(data)){
+#ifdef QT_DEBUG
+            qDebug() << "send data error:" << serialPort->errorString();
+#endif
+        }
+    }
+}
+
 void SerialPortTransmissionItemWidget::on_enableCheckBox_clicked()
 {
-    setTransmissionEnable(enableCheckBox->isChecked());
+    // c++11 lambda表达式
+    auto closeDev = [&](QSerialPort *dev){
+        if (dev){
+            disconnect(dev, &QSerialPort::readyRead, this, &SerialPortTransmissionItemWidget::read);
+            dev->close();
+            dev->deleteLater();
+            dev = nullptr;
+        }
+    };
+
+    if (enableCheckBox->isChecked()){
+        serialPort = new QSerialPort(comComboBox->currentData().value<QSerialPortInfo>());
+        serialPort->setBaudRate(baudRateComboBox->currentData().value<qint32>());
+        serialPort->setParity(parityComboBox->currentData().value<QSerialPort::Parity>());
+        serialPort->setDataBits(dataBitscomboBox->currentData().value<QSerialPort::DataBits>());
+        serialPort->setStopBits(stopBitscomboBox->currentData().value<QSerialPort::StopBits>());
+        if (serialPort->open(QSerialPort::ReadWrite)){
+            connect(serialPort, &QSerialPort::readyRead, this, &SerialPortTransmissionItemWidget::read, Qt::QueuedConnection);
+            qInfo() << tr("串口打开成功：")
+                    << tr("串口名称：") << serialPort->portName()
+                    << tr("波特率：") << serialPort->baudRate()
+                    << tr("数据位：") << serialPort->dataBits()
+                    << tr("校验方式：") << serialPort->parity();
+        }else{
+            _debugPage->outputMessage(serialPort->errorString(), false);
+            enableCheckBox->setChecked(false);
+            closeDev(serialPort);
+        }
+    }else{
+        if (serialPort){
+            closeDev(serialPort);
+        }
+    }
 }
 
 void SerialPortTransmissionItemWidget::on_handleReceiveDataCheckBox_clicked()
@@ -57,4 +109,16 @@ void SerialPortTransmissionItemWidget::on_handleReceiveDataCheckBox_clicked()
 void SerialPortTransmissionItemWidget::on_customBaudrateCheckBox_clicked()
 {
     baudRateComboBox->setEditable(customBaudrateCheckBox->isChecked());
+}
+
+void SerialPortTransmissionItemWidget::read()
+{
+    if (serialPort){
+        QByteArray data = serialPort->readAll();
+        if (!data.isEmpty()){
+            if (transmissionContext.enableHandleReceivedData){
+                emit bytesRead(data);
+            }
+        }
+    }
 }

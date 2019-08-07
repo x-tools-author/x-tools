@@ -109,6 +109,12 @@ public:
      * @param data              -- 代写的数据
      */
     void write(QByteArray data);
+    /**
+     * @brief outputMessage -- 输出信息到ui显示
+     * @param msg           -- 需要输出的消息
+     * @param isInfo        -- 是否为普通消息
+     */
+    void outputMessage(QString msg, bool isInfo = true);
 
     friend class SAKOtherSettings;
 protected:
@@ -137,14 +143,7 @@ protected:
      * @brief bytesWritten  -- 处理已发送的数据
      * @param data          -- 已发送的数据
      */
-    void bytesWritten(QByteArray data);
-
-    /**
-     * @brief outputMessage -- 输出信息到ui显示
-     * @param msg           -- 需要输出的消息
-     * @param isInfo        -- 是否为普通消息
-     */
-    void outputMessage(QString msg, bool isInfo = true);
+    void bytesWritten(QByteArray data);   
     /**
      * @brief changedDeviceStatus   -- 设备打开或者关闭时执行该函数
      * @param opened                -- true: 设备一打开 false：设备已关闭

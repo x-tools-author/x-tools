@@ -19,24 +19,16 @@ BaseTransmissionItemWidget::BaseTransmissionItemWidget(SAKDebugPage *debugPage, 
     :QWidget (parent)
     ,_debugPage (debugPage)
 {
-    transmissionContext.deviceReady = false;
-    transmissionContext.transmissionEnable = false;
     transmissionContext.enableHandleReceivedData = true;
+
+    connect(_debugPage, &SAKDebugPage::dataReadOrwritten, this, &BaseTransmissionItemWidget::transmit);
+    connect(this, &BaseTransmissionItemWidget::bytesRead, _debugPage, &SAKDebugPage::write);
 }
 
-void BaseTransmissionItemWidget::write(QByteArray data)
+void BaseTransmissionItemWidget::transmit(QByteArray data, SAKDebugPage::OutputParameters parameters)
 {
     Q_UNUSED(data);
-}
-
-void BaseTransmissionItemWidget::setDeviceState(bool ready)
-{
-    transmissionContext.deviceReady = ready;
-}
-
-void BaseTransmissionItemWidget::setTransmissionEnable(bool enable)
-{
-    transmissionContext.transmissionEnable = enable;
+    Q_UNUSED(parameters);
 }
 
 void BaseTransmissionItemWidget::setEnableHandleReceivedData(bool enable)
