@@ -27,7 +27,7 @@
 #include "BaseTransmissionItemWidget.hh"
 
 namespace Ui {
-class SerialPortTransmissionItemWidget;
+    class SerialPortTransmissionItemWidget;
 }
 
 class SerialPortTransmissionItemWidget:public BaseTransmissionItemWidget
@@ -35,6 +35,7 @@ class SerialPortTransmissionItemWidget:public BaseTransmissionItemWidget
     Q_OBJECT
 public:
     SerialPortTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent = nullptr);
+    ~SerialPortTransmissionItemWidget();
 protected:
     virtual void write(QByteArray data);
     virtual void read();

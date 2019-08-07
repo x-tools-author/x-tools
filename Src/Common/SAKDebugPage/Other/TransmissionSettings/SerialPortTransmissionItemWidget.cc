@@ -48,6 +48,11 @@ SerialPortTransmissionItemWidget::SerialPortTransmissionItemWidget(SAKDebugPage 
     handleReceiveDataCheckBox->setChecked(true);
 }
 
+SerialPortTransmissionItemWidget::~SerialPortTransmissionItemWidget()
+{
+    delete ui;
+}
+
 void SerialPortTransmissionItemWidget::write(QByteArray data)
 {
     if (serialPort){
