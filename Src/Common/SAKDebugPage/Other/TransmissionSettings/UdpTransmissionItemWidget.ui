@@ -80,6 +80,9 @@
      <property name="text">
       <string>处理接收到的数据</string>
      </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
     </widget>
    </item>
   </layout>
