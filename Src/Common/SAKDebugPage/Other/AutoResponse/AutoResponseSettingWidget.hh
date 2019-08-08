@@ -1,68 +1,41 @@
-﻿/*******************************************************************************
-* The file is encoding with utf-8 (with BOM)
-*
-* I write the comment with English, it's not because that I'm good at English,
-* but for "installing B".
-*
-* Copyright (C) 2018-2018 wuhai persionnal. All rights reserved.
-*******************************************************************************/
-#ifndef AUTORESPONSESETTINGPANEL_HH
-#define AUTORESPONSESETTINGPANEL_HH
+﻿/*
+ * Copyright (C) 2018-2019 wuuhii. All rights reserved.
+ *
+ * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
+ * project. The project is a open source project, you can get the source from:
+ *     https://github.com/wuuhii/QtSwissArmyKnife
+ *     https://gitee.com/wuuhii/QtSwissArmyKnife
+ *
+ * If you want to know more about the project, please join our QQ group(952218522).
+ * In addition, the email address of the project author is wuuhii@outlook.com.
+ * Welcome to bother.
+ *
+ * I write the comment in English, it's not because that I'm good at English,
+ * but for "installing B".
+ */
+#ifndef AUTORESPONSESETTINGWIDGET_HH
+#define AUTORESPONSESETTINGWIDGET_HH
 
-#include <QDialog>
-#include <QListWidgetItem>
 #include <QTimer>
-#include <QStringList>
+#include <QWidget>
+#include <QListWidgetItem>
 
-#include "SAKAutoResponseItem.hh"
+class SAKDebugPage;
 
 namespace Ui {
-class SAKAutoResponseSettingPanel;
+    class AutoResponseSettingWidget;
 }
 
-typedef struct {
-    QString receiveDataString;
-    QString sendDataString;
-    QString description;
-    QListWidgetItem *listWidgetItem;
-}AutoResponseNode;
-
-class SAKAutoResponseSettingPanel:public QDialog
+class AutoResponseSettingWidget:public QWidget
 {
    Q_OBJECT
 public:
-    SAKAutoResponseSettingPanel(QWidget *parent = Q_NULLPTR);
-    ~SAKAutoResponseSettingPanel();
-
-    void setAutoResponseFlag(bool enableAutoResponse);
-    bool autoResponseFlag();
-    QList <AutoResponseNode> autoResponseItems(){return  autoResponseItemList;}
+    AutoResponseSettingWidget(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
+    ~AutoResponseSettingWidget();
 private:
-    int need2modifyItemRow = 0;
-    Ui::SAKAutoResponseSettingPanel *ui;
-    QList <AutoResponseNode> autoResponseItemList;
-    SAKAutoResponseItem *autoResponseItemWidget;
-    QTimer *clearOutputInfoTimer = nullptr;
-    ///----------------------------------------------------------------------
-    void Connect();
-private slots:
-    QString packetItemString(QString receiveData, QString sendData);
-    void resortTheAutoResponseItemList(int currentRow);
-    void outputInfo(QString info, QString color = QString("green"));
-    void clearOutputInfo();
-
-    void addAutoResponseItem(QString receiveData, QString sendData, QString description);
-    void deleteAutoResponseItem();
-    void modifyAutoResponseItem();
-    void modifyAutoResponseItem(QString receiveDataString, QString sendDataString, QString description);
-    void clearAutoResponseItem();
-    void saveAsFile();
-    void readIn();
-    void enableAutoResponseBtClicked();
-signals:
-    void autoResponseFlagChanged(bool enableAutoResponse);
+    SAKDebugPage *_debugPage;
+private:
+    Ui::AutoResponseSettingWidget *ui;
 };
-
-#define ERR_STR_LIST_IS_EMPTY tr("当前列表为空，无法执行该操作！")
 
 #endif

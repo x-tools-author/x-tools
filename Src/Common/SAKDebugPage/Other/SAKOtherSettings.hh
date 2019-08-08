@@ -20,6 +20,7 @@
 #include <QPushButton>
 
 class TransmissionSettings;
+class AutoResponseSettingWidget;
 
 class SAKDebugPage;
 
@@ -28,19 +29,22 @@ class SAKOtherSettings:public QObject
     Q_OBJECT
 public:
     SAKOtherSettings(SAKDebugPage *debugPage, QObject *parent = nullptr);
-    // 其他设置组
+    ~SAKOtherSettings();
+
 private:    
-    QPushButton             *autoResponseSettingPushButton  = nullptr;  // 自动回复设置面板调出按钮
-    QPushButton             *highlightSettingPushButton     = nullptr;  // 高亮设置面板调出按钮
-    QPushButton             *readWriteSettingPushButton     = nullptr;  // 读写设置面板调出按钮
-    QPushButton             *transmissionSettingPushButton  = nullptr;  // 数据转发设置面板调出按钮
-    TransmissionSettings    *transmissionSettings;                      // 数据转发面板
-    SAKDebugPage            *_debugPage                     = nullptr;  // 调试页面
+    QPushButton                 *autoResponseSettingPushButton  = nullptr;  // 自动回复设置面板调出按钮
+    QPushButton                 *highlightSettingPushButton     = nullptr;  // 高亮设置面板调出按钮
+    QPushButton                 *readWriteSettingPushButton     = nullptr;  // 读写设置面板调出按钮
+    QPushButton                 *transmissionSettingPushButton  = nullptr;  // 数据转发设置面板调出按钮
+    TransmissionSettings        *transmissionSettings;                      // 数据转发设置面板
+    AutoResponseSettingWidget   *autoResponseSettingWidget;                 // 自动回复设置面板
+
+    SAKDebugPage                *_debugPage                     = nullptr;  // 调试页面
 private slots:
     void onAutoresponseSettingPushbuttonClicked();
     void onHighlightSettingPushButtonClicked();
     void onReadWriteSettingPushButtonClicked();
-    void oTransmissionSettingPushButtonClicked();
+    void onTransmissionSettingPushButtonClicked();
 };
 
 #endif

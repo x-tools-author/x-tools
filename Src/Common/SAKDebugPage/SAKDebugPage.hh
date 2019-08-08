@@ -32,7 +32,7 @@
 
 #include "SAKCRCInterface.hh"
 #include "SAKReadWriteSetting.hh"
-#include "SAKAutoResponseSettingPanel.hh"
+#include "AutoResponseSettingWidget.hh"
 
 class SAKDataFactory;
 class SAKCRCInterface;

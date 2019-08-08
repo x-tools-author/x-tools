@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SAKAutoResponseSettingWidget</class>
- <widget class="QWidget" name="SAKAutoResponseSettingWidget">
+ <class>AutoResponseSettingWidget</class>
+ <widget class="QWidget" name="AutoResponseSettingWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>841</width>
+    <height>435</height>
    </rect>
   </property>
   <property name="windowTitle">

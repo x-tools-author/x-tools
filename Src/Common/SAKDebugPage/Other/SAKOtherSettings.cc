@@ -14,16 +14,19 @@
  * but for "installing B".
  */
 #include <QDebug>
+
 #include "SAKDebugPage.hh"
 #include "ui_SAKDebugPage.h"
-#include "TransmissionSettings.hh"
 #include "SAKOtherSettings.hh"
+#include "TransmissionSettings.hh"
+#include "AutoResponseSettingWidget.hh"
 
 SAKOtherSettings::SAKOtherSettings(SAKDebugPage *debugPage, QObject *parent)
     :QObject (parent)
     ,_debugPage (debugPage)
 {
     transmissionSettings = new TransmissionSettings(_debugPage);
+    autoResponseSettingWidget = new AutoResponseSettingWidget(_debugPage);
 
     autoResponseSettingPushButton   = debugPage->ui->autoResponseSettingPushButton;
     highlightSettingPushButton      = debugPage->ui->highlightSettingPushButton;
@@ -33,12 +36,25 @@ SAKOtherSettings::SAKOtherSettings(SAKDebugPage *debugPage, QObject *parent)
     connect(autoResponseSettingPushButton, &QPushButton::clicked, this, &SAKOtherSettings::onAutoresponseSettingPushbuttonClicked);
     connect(highlightSettingPushButton,    &QPushButton::clicked, this, &SAKOtherSettings::onHighlightSettingPushButtonClicked);
     connect(readWriteSettingPushButton,    &QPushButton::clicked, this, &SAKOtherSettings::onReadWriteSettingPushButtonClicked);
-    connect(transmissionSettingPushButton, &QPushButton::clicked, this, &SAKOtherSettings::oTransmissionSettingPushButtonClicked);
+    connect(transmissionSettingPushButton, &QPushButton::clicked, this, &SAKOtherSettings::onTransmissionSettingPushButtonClicked);
+}
+
+SAKOtherSettings::~SAKOtherSettings()
+{
+    delete transmissionSettings;
+    delete autoResponseSettingWidget;
+
+    transmissionSettings = nullptr;
+    autoResponseSettingWidget = nullptr;
 }
 
 void SAKOtherSettings::onAutoresponseSettingPushbuttonClicked()
 {
-    delete transmissionSettings;
+    if (autoResponseSettingWidget->isHidden()){
+        autoResponseSettingWidget->show();
+    }else {
+        autoResponseSettingWidget->activateWindow();
+    }
 }
 
 void SAKOtherSettings::onHighlightSettingPushButtonClicked()
@@ -51,7 +67,7 @@ void SAKOtherSettings::onReadWriteSettingPushButtonClicked()
 
 }
 
-void SAKOtherSettings::oTransmissionSettingPushButtonClicked()
+void SAKOtherSettings::onTransmissionSettingPushButtonClicked()
 {
     if (transmissionSettings->isHidden()){
         transmissionSettings->show();
