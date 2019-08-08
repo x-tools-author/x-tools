@@ -17,6 +17,7 @@
 #include "ui_TransmissionPage.h"
 #include "UdpTransmissionItemWidget.hh"
 #include "TcpTransmissionItemWidget.hh"
+#include "BaseTransmissionItemWidget.hh"
 #include "SerialPortTransmissionItemWidget.hh"
 
 TransmissionPage::TransmissionPage(SAKDebugPage *debugPage, QWidget *parent)
@@ -28,6 +29,10 @@ TransmissionPage::TransmissionPage(SAKDebugPage *debugPage, QWidget *parent)
     addItemPushButton = ui->addItemPushButton;
     deleteItemPushButton = ui->addItemPushButton;
     listWidget = ui->listWidget;
+    infoLabel = ui->infoLabel;
+
+    clearMessageInfoTimer.setInterval(5*1000);
+    connect(&clearMessageInfoTimer, &QTimer::timeout, this, &TransmissionPage::clearMessage);
 }
 
 TransmissionPage::~TransmissionPage()
@@ -38,6 +43,25 @@ TransmissionPage::~TransmissionPage()
 void TransmissionPage::setTransmissionType(TransmissionType type)
 {
     transmissionType = type;
+}
+
+void TransmissionPage::outputMessage(QString msg, bool isInfo)
+{
+    QString color = "black";
+    if (!isInfo){
+        color = "red";
+        QApplication::beep();
+    }
+    infoLabel->setStyleSheet(QString("QLabel{color:%1}").arg(color));
+
+    infoLabel->setText(QTime::currentTime().toString("hh:mm:ss ") + msg);
+    clearMessageInfoTimer.start();
+}
+
+void TransmissionPage::clearMessage()
+{
+    clearMessageInfoTimer.stop();
+    infoLabel->clear();
 }
 
 void TransmissionPage::on_addItemPushButton_clicked()
@@ -58,6 +82,8 @@ void TransmissionPage::on_addItemPushButton_clicked()
     }
     item->setSizeHint(QSize(itemWidget->width(), itemWidget->height()));
     listWidget->setItemWidget(item, itemWidget);
+    BaseTransmissionItemWidget *baseItemWidget = reinterpret_cast<BaseTransmissionItemWidget*>(itemWidget);
+    connect(baseItemWidget, &BaseTransmissionItemWidget::requestOutputMessage, this, &TransmissionPage::outputMessage);
 }
 
 void TransmissionPage::on_deleteItemPushButton_clicked()

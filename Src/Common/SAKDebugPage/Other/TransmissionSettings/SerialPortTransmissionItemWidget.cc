@@ -94,7 +94,7 @@ void SerialPortTransmissionItemWidget::on_enableCheckBox_clicked()
                     << tr("校验方式：") << serialPort->parity();
 #endif
         }else{
-            _debugPage->outputMessage(serialPort->errorString(), false);
+            emit requestOutputMessage(serialPort->errorString(), false);
             enableCheckBox->setChecked(false);
             closeDev(serialPort);
         }

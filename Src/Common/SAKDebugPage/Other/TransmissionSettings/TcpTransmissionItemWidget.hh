@@ -17,6 +17,10 @@
 #define TCPTRANSMISSIONITEMWIDGET_HH
 
 #include <QWidget>
+#include <QCheckBox>
+#include <QComboBox>
+#include <QLineEdit>
+#include <QTcpSocket>
 #include "BaseTransmissionItemWidget.hh"
 
 namespace Ui {
@@ -28,8 +32,25 @@ class TcpTransmissionItemWidget:public BaseTransmissionItemWidget
     Q_OBJECT
 public:
     TcpTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent = nullptr);
+
+    virtual void write(QByteArray data);
 private:
     Ui::TcpTransmissionItemWidget *ui;
+    QCheckBox *enableCheckBox;
+    QCheckBox *customAddressCheckBox;
+    QComboBox *addressComboBox;
+    QLineEdit *portLineEdit;
+    QCheckBox *handleReceiveDataCheckBox;
+    QLineEdit *targetAddressLineEdit;
+    QLineEdit *targetPortLineEdit;
+
+    QTcpSocket  *tcpSocket;
+private slots:
+    void on_enableCheckBox_clicked();
+private:
+    void read();
+private:
+    void setUiEnable(bool enable);
 };
 
 #endif

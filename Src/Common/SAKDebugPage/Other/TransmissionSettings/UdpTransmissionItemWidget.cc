@@ -40,7 +40,9 @@ void UdpTransmissionItemWidget::write(QByteArray data)
     QHostAddress targetAddress(targetAddressLineEdit->text());
     quint16 targetPort = static_cast<quint16>(targetPortLineEdit->text().toInt());
     if (!udpSocket->writeDatagram(data, targetAddress, targetPort)){
-
+#ifdef QT_DEBUG
+        qDebug() << "发送数据失败" << udpSocket->errorString();
+#endif
     }
 }
 
@@ -62,7 +64,7 @@ void UdpTransmissionItemWidget::on_enableCheckBox_clicked()
             }
         }
 
-        _debugPage->outputMessage(udpSocket->errorString(), false);
+         emit requestOutputMessage(udpSocket->errorString(), false);
         enableCheckBox->setChecked(false);
         closeDev(udpSocket);
     };

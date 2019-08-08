@@ -16,6 +16,8 @@
 #ifndef TRANSMISSIONPAGE_HH
 #define TRANSMISSIONPAGE_HH
 
+#include <QLabel>
+#include <QTimer>
 #include <QListWidget>
 #include <QPushButton>
 
@@ -43,11 +45,16 @@ private:
     QPushButton *addItemPushButton;
     QPushButton *deleteItemPushButton;
     QListWidget *listWidget;
+    QLabel      *infoLabel;
 
     SAKDebugPage *_debugPage;
     Ui::TransmissionPage *ui;
 
     TransmissionType transmissionType;
+    QTimer clearMessageInfoTimer;
+private:
+    void outputMessage(QString msg, bool isInfo);
+    void clearMessage();
 private slots:
     void on_addItemPushButton_clicked();
     void on_deleteItemPushButton_clicked();

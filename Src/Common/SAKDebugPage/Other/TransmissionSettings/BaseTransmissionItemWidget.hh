@@ -31,12 +31,14 @@ public:
 signals:
     /// 读取数据后，发射该信号
     void bytesRead(QByteArray data);
-
+    /// 输出消息
+    void requestOutputMessage(QString info, bool isInfo = true);
 protected:
     SAKDebugPage *_debugPage;
+    void outputMessage();
 private:
     /// 转发数据(将收到的数据通过指定的设备进行转发)
-    void byteReceived(QByteArray data, SAKDebugPage::OutputParameters parameters);
+    void byteReceived(QByteArray data, SAKDebugPage::OutputParameters parameters);    
 };
 
 #endif
