@@ -23,7 +23,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 HEADERS += \
-    Src/Base/SAKCommonApi.hh \
+    Src/Base/EDBaseApi.hh \
     Src/Base/SAKDialog.hh \
     Src/Base/SAKMessageBox.hh \
     Src/Base/SAKWidget.hh \
@@ -52,7 +52,7 @@ HEADERS += \
 
 
 SOURCES += \
-    Src/Base/SAKCommonApi.cc \
+    Src/Base/EDBaseApi.cc \
     Src/Base/SAKDialog.cc \
     Src/Base/SAKMessageBox.cc \
     Src/Base/SAKWidget.cc \
@@ -149,7 +149,7 @@ winrt || linux-rasp-pi3-g++{
 }
 
 win32{
-    RC_ICONS = window.ico
+    RC_ICONS = Windows.ico
 }
 
 # 解决msvc编译器中文乱码的问题

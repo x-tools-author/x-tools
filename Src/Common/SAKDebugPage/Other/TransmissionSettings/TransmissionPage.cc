@@ -88,7 +88,7 @@ void TransmissionPage::on_addItemPushButton_clicked()
 
 void TransmissionPage::on_deleteItemPushButton_clicked()
 {
-    QListWidgetItem *itemWidget = listWidget->currentItem();
-    listWidget->removeItemWidget(itemWidget);
-    delete itemWidget;
+    QListWidgetItem *item = listWidget->currentItem();
+    listWidget->removeItemWidget(item);
+    delete item;
 }

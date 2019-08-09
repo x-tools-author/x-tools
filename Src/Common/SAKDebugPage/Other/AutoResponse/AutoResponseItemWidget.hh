@@ -17,6 +17,11 @@
 #define AUTORESPONSEITEM_HH
 
 #include <QWidget>
+#include <QLineEdit>
+#include <QComboBox>
+#include <QCheckBox>
+
+class SAKDebugPage;
 
 namespace Ui {
     class AutoResponseItemWidget;
@@ -26,11 +31,23 @@ class AutoResponseItemWidget:public QWidget
 {
     Q_OBJECT
 public:
-    AutoResponseItemWidget(QWidget *parent = Q_NULLPTR);
+    AutoResponseItemWidget(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
     ~AutoResponseItemWidget();
 
+    void setAllAutoResponseDisable(bool disAbel);
 private:
     Ui::AutoResponseItemWidget *ui;
+    QLineEdit   *remarkLineEdit;
+    QLineEdit   *referenceLineEdit;
+    QLineEdit   *responseLineEdit;
+    QCheckBox   *enableCheckBox;
+    QComboBox   *optionComboBox;
+    QComboBox   *referenceDataFromatComboBox;
+    QComboBox   *responseDataFormatComboBox;
+
+    /// 禁止所有自动回复标志
+    bool forbiddenAllAutoResponse;
+    SAKDebugPage *_debugPage;
 };
 
 #endif

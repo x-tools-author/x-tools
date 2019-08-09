@@ -6,86 +6,97 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>510</width>
-    <height>114</height>
+    <width>660</width>
+    <height>116</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>添加自动回复设置</string>
+   <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <property name="leftMargin">
-    <number>9</number>
-   </property>
-   <property name="topMargin">
-    <number>9</number>
-   </property>
-   <property name="rightMargin">
-    <number>9</number>
-   </property>
-   <property name="bottomMargin">
-    <number>9</number>
-   </property>
-   <item row="3" column="0" colspan="3">
-    <widget class="QLabel" name="labelInfo">
+   <item row="3" column="0">
+    <widget class="QCheckBox" name="enableCheckBox">
      <property name="text">
-      <string>收发数据使用16进制格式文本表示，可使用“菜单-&gt;工具-&gt;16进制格式文本生成”工具生成。</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="1">
-    <widget class="QLineEdit" name="lineEditReceiveData">
-     <property name="text">
-      <string>00 11 22 33 44 55 66 77 88 99 0A 0B 0C 0D 0E 0F</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="QLineEdit" name="lineEditSendData">
-     <property name="text">
-      <string>0F 0E 0D 0C 0B 0A 09 08 07 06 05 04 03 02 01 00</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>接收内容</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="label_2">
-     <property name="text">
-      <string>回复内容</string>
+      <string>启用</string>
      </property>
     </widget>
    </item>
    <item row="2" column="0">
     <widget class="QLabel" name="label_3">
      <property name="text">
-      <string>附加说明</string>
+      <string>回复数据</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="1">
-    <widget class="QLineEdit" name="lineEditDescription">
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
      <property name="text">
-      <string>心跳包</string>
+      <string>回复说明</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="2">
-    <widget class="QPushButton" name="pushButtonApply">
+   <item row="1" column="0">
+    <widget class="QLabel" name="label_2">
      <property name="text">
-      <string>确定</string>
+      <string>参考数据</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="2">
-    <widget class="QPushButton" name="pushButtonCancle">
+   <item row="3" column="2">
+    <widget class="QComboBox" name="optionComboBox">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="5">
+    <widget class="QLabel" name="label_6">
      <property name="text">
-      <string>取消</string>
+      <string>回复数据格式</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>回复选项</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="4">
+    <widget class="QComboBox" name="referenceDataFromatComboBox"/>
+   </item>
+   <item row="3" column="3">
+    <widget class="QLabel" name="label_5">
+     <property name="text">
+      <string>参考数据格式</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="6">
+    <widget class="QComboBox" name="responseDataFormatComboBox"/>
+   </item>
+   <item row="2" column="1" colspan="6">
+    <widget class="QLineEdit" name="responseLineEdit">
+     <property name="text">
+      <string>Hi</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1" colspan="6">
+    <widget class="QLineEdit" name="referenceLineEdit">
+     <property name="text">
+      <string>Hello</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1" colspan="6">
+    <widget class="QLineEdit" name="remarkLineEdit">
+     <property name="text">
+      <string>这是一个自动回复示例</string>
      </property>
     </widget>
    </item>

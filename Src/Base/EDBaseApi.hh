@@ -13,20 +13,20 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#ifndef SAKCOMMONAPI_HH
-#define SAKCOMMONAPI_HH
+#ifndef EDBASEAPI_HH
+#define EDBASEAPI_HH
 
 #include <QObject>
 #include <QComboBox>
 
-class SAKCommonApi:public QObject
+class EDBaseApi:public QObject
 {
     Q_OBJECT
 public:
-    static SAKCommonApi *instance();
+    static EDBaseApi *instance();
 private:
-    SAKCommonApi(QObject *parent = nullptr);
-    static SAKCommonApi *_this;
+    EDBaseApi(QObject *parent = nullptr);
+    static EDBaseApi *_this;
 
 public:
     /*

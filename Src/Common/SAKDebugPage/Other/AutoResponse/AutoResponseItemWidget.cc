@@ -18,14 +18,35 @@
 
 #include <QDateTime>
 
-AutoResponseItemWidget::AutoResponseItemWidget(QWidget *parent)
+AutoResponseItemWidget::AutoResponseItemWidget(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget(parent)
     ,ui (new Ui::AutoResponseItemWidget)
+    ,forbiddenAllAutoResponse (false)
+    ,_debugPage (debugPage)
 {
     ui->setupUi(this);
+    remarkLineEdit              = ui->remarkLineEdit;
+    referenceLineEdit           = ui->referenceLineEdit;
+    responseLineEdit            = ui->responseLineEdit;
+    enableCheckBox              = ui->enableCheckBox;
+    optionComboBox              = ui->optionComboBox;
+    referenceDataFromatComboBox = ui->referenceDataFromatComboBox;
+    responseDataFormatComboBox  = ui->responseDataFormatComboBox;
+
+    QStringList optionStrings;
+    optionStrings << tr("接收数据与参考数据相同时自动回复")
+                  << tr("接收数据包含参考数据时自动回复")
+                  << tr("接收数据不包含参考数据时自动回复");
+    optionComboBox->clear();
+    optionComboBox->addItems(optionStrings);
 }
 
 AutoResponseItemWidget::~AutoResponseItemWidget()
 {
     delete ui;
+}
+
+void AutoResponseItemWidget::setAllAutoResponseDisable(bool disAbel)
+{
+    forbiddenAllAutoResponse = disAbel;
 }

@@ -17,7 +17,12 @@
 #define AUTORESPONSESETTINGWIDGET_HH
 
 #include <QTimer>
+#include <QLabel>
 #include <QWidget>
+#include <QCheckBox>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QListWidget>
 #include <QListWidgetItem>
 
 class SAKDebugPage;
@@ -33,7 +38,21 @@ public:
     AutoResponseSettingWidget(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
     ~AutoResponseSettingWidget();
 private:
-    SAKDebugPage *_debugPage;
+    SAKDebugPage    *_debugPage;
+    QListWidget     *listWidget;
+    QCheckBox       *forbidAllCheckBox;
+    QPushButton     *deleteItemPushButton;
+    QPushButton     *addItemPushButton;
+    QLabel          *msgLabel;
+private slots:
+    void on_forbidAllCheckBox_clicked();
+    void on_deleteItemPushButton_clicked();
+    void on_addItemPushButton_clicked();
+private:
+    QTimer clearMessageInfoTimer;
+
+    void outputMessage(QString msg, bool isInfo);
+    void clearMessage();
 private:
     Ui::AutoResponseSettingWidget *ui;
 };

@@ -13,7 +13,7 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#include "SAKCommonApi.hh"
+#include "EDBaseApi.hh"
 
 #include <QSerialPort>
 #include <QHostAddress>
@@ -23,23 +23,23 @@
 
 Q_DECLARE_METATYPE(QSerialPortInfo)
 
-SAKCommonApi *SAKCommonApi::instance()
+EDBaseApi *EDBaseApi::instance()
 {
     if (!_this){
-        new SAKCommonApi;
+        new EDBaseApi;
     }
 
-    return SAKCommonApi::_this;
+    return EDBaseApi::_this;
 }
 
-SAKCommonApi *SAKCommonApi::_this = nullptr;
-SAKCommonApi::SAKCommonApi(QObject *parent)
+EDBaseApi *EDBaseApi::_this = nullptr;
+EDBaseApi::EDBaseApi(QObject *parent)
     :QObject (parent)
 {
 
 }
 
-void SAKCommonApi::initComComboBox(QComboBox *comboBox)
+void EDBaseApi::initComComboBox(QComboBox *comboBox)
 {
     if (comboBox){
         comboBox->clear();
@@ -50,7 +50,7 @@ void SAKCommonApi::initComComboBox(QComboBox *comboBox)
     }
 }
 
-void SAKCommonApi::initBaudRateComboBox(QComboBox *comboBox)
+void EDBaseApi::initBaudRateComboBox(QComboBox *comboBox)
 {
     if (comboBox){
         comboBox->clear();
@@ -63,7 +63,7 @@ void SAKCommonApi::initBaudRateComboBox(QComboBox *comboBox)
     }
 }
 
-void SAKCommonApi::initDataBitsComboBox(QComboBox *comboBox)
+void EDBaseApi::initDataBitsComboBox(QComboBox *comboBox)
 {
     if (comboBox){
         comboBox->clear();
@@ -74,7 +74,7 @@ void SAKCommonApi::initDataBitsComboBox(QComboBox *comboBox)
     }
 }
 
-void SAKCommonApi::initStopBitsComboBox(QComboBox *comboBox)
+void EDBaseApi::initStopBitsComboBox(QComboBox *comboBox)
 {
     if (comboBox){
         comboBox->clear();
@@ -86,7 +86,7 @@ void SAKCommonApi::initStopBitsComboBox(QComboBox *comboBox)
     }
 }
 
-void SAKCommonApi::initParityComboBox(QComboBox *comboBox)
+void EDBaseApi::initParityComboBox(QComboBox *comboBox)
 {
     if (comboBox){
         comboBox->clear();
@@ -98,7 +98,7 @@ void SAKCommonApi::initParityComboBox(QComboBox *comboBox)
     }
 }
 
-void SAKCommonApi::initIpComboBox(QComboBox *comboBox)
+void EDBaseApi::initIpComboBox(QComboBox *comboBox)
 {
     if (comboBox){
         comboBox->clear();
