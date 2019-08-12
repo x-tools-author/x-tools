@@ -16,10 +16,14 @@
 #ifndef AUTORESPONSEITEM_HH
 #define AUTORESPONSEITEM_HH
 
+#include "SAKDebugPage.hh"
+
+#include <QRegExp>
 #include <QWidget>
 #include <QLineEdit>
 #include <QComboBox>
 #include <QCheckBox>
+#include <QRegExpValidator>
 
 class SAKDebugPage;
 
@@ -34,6 +38,10 @@ public:
     AutoResponseItemWidget(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
     ~AutoResponseItemWidget();
 
+    /**
+     * @brief setAllAutoResponseDisable 禁止所有自动回复
+     * @param disAbel 该值为true时，禁止所有回复，否则更具回复示例的使能判断是否自动回复
+     */
     void setAllAutoResponseDisable(bool disAbel);
 private:
     Ui::AutoResponseItemWidget *ui;
@@ -48,6 +56,26 @@ private:
     /// 禁止所有自动回复标志
     bool forbiddenAllAutoResponse;
     SAKDebugPage *_debugPage;
+private:
+    /// 设置输入框文本格式(详情EDBaseApi::EDTextFormat)
+    void setLineEditFormat(QLineEdit *lineEdit, int format);
+    /*
+     * 设置输入框文本格式
+     */
+    void setLineEditFormatBin(QLineEdit *lineEdit);
+    void setLineEditFormatOct(QLineEdit *lineEdit);
+    void setLineEditFormatDec(QLineEdit *lineEdit);
+    void setLineEditFormatHex(QLineEdit *lineEdit);
+    void setLineEditFormatAscii(QLineEdit *lineEdit);
+    void setLineEditFormatUtf8(QLineEdit *lineEdit);
+    void setLineEditFormatLocal(QLineEdit *lineEdit);
+
+    void handleReceiceData(QByteArray data, SAKDebugPage::OutputParameters parameters);
+private slots:
+    void on_referenceDataFromatComboBox_currentTextChanged();
+    void on_responseDataFormatComboBox_currentTextChanged();
+signals:
+    void requestWrite(QByteArray data);
 };
 
 #endif

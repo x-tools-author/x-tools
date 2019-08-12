@@ -24,10 +24,13 @@ class EDBaseApi:public QObject
     Q_OBJECT
 public:
     static EDBaseApi *instance();
+
+    enum EDTextFormat {
+        Bin,Oct,Dec,Hex,Ascii,Utf8,Local
+    };
 private:
     EDBaseApi(QObject *parent = nullptr);
     static EDBaseApi *_this;
-
 public:
     /*
      * 串口相关参数显示初始化
@@ -38,10 +41,10 @@ public:
     void initStopBitsComboBox(QComboBox *comboBox);
     void initParityComboBox(QComboBox *comboBox);
 
-    /*
-     * ip地址
-     */
-    void initIpComboBox(QComboBox *comboBox);
+    /// ip地址
+    void initIpComboBox(QComboBox *comboBox);    
+    /// 文本格式
+    void initTextFormatComboBox(QComboBox *comboBox);
 };
 
 #endif

@@ -110,3 +110,14 @@ void EDBaseApi::initIpComboBox(QComboBox *comboBox)
         }
     }
 }
+
+void EDBaseApi::initTextFormatComboBox(QComboBox *comboBox)
+{
+    comboBox->addItem(tr("二进制"), Bin);
+    comboBox->addItem(tr("八进制"), Oct);
+    comboBox->addItem(tr("十进制"), Dec);
+    comboBox->addItem(tr("十六进制"), Hex);
+    comboBox->addItem(tr("ASCII"), Ascii);
+    comboBox->addItem(tr("UTF8"), Hex);
+    comboBox->addItem(tr("系统地区编码"), Local);
+}
