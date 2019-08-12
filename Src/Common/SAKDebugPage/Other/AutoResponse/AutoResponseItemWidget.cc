@@ -134,6 +134,10 @@ void AutoResponseItemWidget::setLineEditFormatLocal(QLineEdit *lineEdit)
 
 void AutoResponseItemWidget::handleReceiceData(QByteArray data, SAKDebugPage::OutputParameters parameters)
 {
+    if (forbiddenAllAutoResponse){
+        return;
+    }
+
     if (data.isEmpty()){
         return;
     }
