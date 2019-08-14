@@ -35,12 +35,10 @@ AutoResponseItemWidget::AutoResponseItemWidget(SAKDebugPage *debugPage, QWidget 
     referenceDataFromatComboBox = ui->referenceDataFromatComboBox;
     responseDataFormatComboBox  = ui->responseDataFormatComboBox;
 
-    QStringList optionStrings;
-    optionStrings << tr("接收数据与参考数据相同时自动回复")
-                  << tr("接收数据包含参考数据时自动回复")
-                  << tr("接收数据不包含参考数据时自动回复");
     optionComboBox->clear();
-    optionComboBox->addItems(optionStrings);
+    optionComboBox->addItem(tr("接收数据与参考数据相同时自动回复"), QVariant::fromValue<int>(Equivalence));
+    optionComboBox->addItem(tr("接收数据包含参考数据时自动回复"), QVariant::fromValue<int>(Contain));
+    optionComboBox->addItem(tr("接收数据不包含参考数据时自动回复"), QVariant::fromValue<int>(Notcontain));
 
     EDBaseApi::instance()->initTextFormatComboBox(referenceDataFromatComboBox);
     EDBaseApi::instance()->initTextFormatComboBox(responseDataFormatComboBox);
@@ -61,75 +59,41 @@ void AutoResponseItemWidget::setAllAutoResponseDisable(bool disAbel)
 
 void AutoResponseItemWidget::setLineEditFormat(QLineEdit *lineEdit, int format)
 {
+    QRegExp regExpBin("([01][01][01][01][01][01][01][01][ ])*");
+    QRegExp regExpOct("([0-7][0-7][ ])*");
+    QRegExp regExpDec("([0-9][0-9][ ])*");
+    QRegExp regExpHex("([0-9A-F][0-9A-F][ ])*");
+    QRegExp regExpAscii("([a-zA-Z0-9`~!@#$%^&*()-_=+\\|;:'\",<.>/?])*");
+
     if (lineEdit){
         lineEdit->setValidator(nullptr);
         lineEdit->clear();
         switch (format) {
         case EDBaseApi::Bin:
-            setLineEditFormatBin(lineEdit);
+            lineEdit->setValidator(new QRegExpValidator(regExpBin, this));
             break;
         case EDBaseApi::Oct:
-            setLineEditFormatOct(lineEdit);
+            lineEdit->setValidator(new QRegExpValidator(regExpOct, this));
             break;
         case EDBaseApi::Dec:
-            setLineEditFormatDec(lineEdit);
+            lineEdit->setValidator(new QRegExpValidator(regExpDec, this));
             break;
         case EDBaseApi::Hex:
-            setLineEditFormatHex(lineEdit);
+            lineEdit->setValidator(new QRegExpValidator(regExpHex, this));
             break;
         case EDBaseApi::Ascii:
-            setLineEditFormatAscii(lineEdit);
+            lineEdit->setValidator(new QRegExpValidator(regExpAscii, this));
             break;
         case EDBaseApi::Utf8:
-            setLineEditFormatUtf8(lineEdit);
+            lineEdit->setValidator(nullptr);
             break;
         case EDBaseApi::Local:
-            setLineEditFormatLocal(lineEdit);
+            lineEdit->setValidator(nullptr);
             break;
         default:
             break;
         }
     }
-}
-
-void AutoResponseItemWidget::setLineEditFormatBin(QLineEdit *lineEdit)
-{
-    QRegExp regExp("([01][01][01][01][01][01][01][01][ ])*");
-    lineEdit->setValidator(new QRegExpValidator(regExp, this));
-}
-
-void AutoResponseItemWidget::setLineEditFormatOct(QLineEdit *lineEdit)
-{
-    QRegExp regExp("([0-7][0-7][ ])*");
-    lineEdit->setValidator(new QRegExpValidator(regExp, this));
-}
-
-void AutoResponseItemWidget::setLineEditFormatDec(QLineEdit *lineEdit)
-{
-    QRegExp regExp("([0-9][0-9][ ])*");
-    lineEdit->setValidator(new QRegExpValidator(regExp, this));
-}
-
-void AutoResponseItemWidget::setLineEditFormatHex(QLineEdit *lineEdit)
-{
-    QRegExp regExp("([0-9A-F][0-9A-F][ ])*");
-    lineEdit->setValidator(new QRegExpValidator(regExp, this));
-}
-
-void AutoResponseItemWidget::setLineEditFormatAscii(QLineEdit *lineEdit)
-{
-    QRegExp regExp("([a-zA-Z0-9`~!@#$%^&*()-_=+\\|;:'\",<.>/?])*");
-    lineEdit->setValidator(new QRegExpValidator(regExp, this));
-}
-
-void AutoResponseItemWidget::setLineEditFormatUtf8(QLineEdit *lineEdit)
-{
-    lineEdit->setValidator(nullptr);
-}
-
-void AutoResponseItemWidget::setLineEditFormatLocal(QLineEdit *lineEdit)
-{
-    lineEdit->setValidator(nullptr);
 }
 
 void AutoResponseItemWidget::handleReceiceData(QByteArray data, SAKDebugPage::OutputParameters parameters)
@@ -146,10 +110,105 @@ void AutoResponseItemWidget::handleReceiceData(QByteArray data, SAKDebugPage::Ou
         return;
     }
 
+    if (!enableCheckBox->isChecked()){
+        return;
+    }
+
     /*
      * 判断是否回复
      */
+    QString referenceString = referenceLineEdit->text();
+    int referenceFormat = referenceDataFromatComboBox->currentData().toInt();
+    QByteArray referenceData = string2array(referenceString, referenceFormat);
+    if (response(data, referenceData, optionComboBox->currentData().toInt())){
+         QString responseString = responseLineEdit->text();
+         int responseFromat = responseDataFormatComboBox->currentData().toInt();
+         QByteArray responseData = string2array(responseString, responseFromat);
+
+         if (!responseData.isEmpty()){
+             _debugPage->write(data);
+         }
+    }
 }
+
+QByteArray AutoResponseItemWidget::string2array(QString str, int format)
+{
+    auto stringList2Array = [](QStringList strList, int base) -> QByteArray{
+        QByteArray array;
+        for (auto var:strList){
+            array.append(static_cast<char>(var.toInt(nullptr, base)));
+        }
+        return array;
+    };
+
+    QByteArray array;
+    QStringList strList;
+    int base;
+    switch (format) {
+    case EDBaseApi::Bin:
+        base = 2;
+        strList = str.split(' ');
+        array = stringList2Array(strList, base);
+        break;
+    case EDBaseApi::Oct:
+        base = 8;
+        strList = str.split(' ');
+        array = stringList2Array(strList, base);
+        break;
+    case EDBaseApi::Dec:
+        base = 10;
+        strList = str.split(' ');
+        array = stringList2Array(strList, base);
+        break;
+    case EDBaseApi::Hex:
+        base = 16;
+        strList = str.split(' ');
+        array = stringList2Array(strList, base);
+        break;
+    case EDBaseApi::Ascii:
+        array = str.toLatin1();
+        break;
+    case EDBaseApi::Utf8:
+        array = str.toUtf8();
+        break;
+    case EDBaseApi::Local:
+        array = str.toLocal8Bit();
+        break;
+    default:
+        array = str.toLatin1();
+    }
+
+    return array;
+};
+
+bool AutoResponseItemWidget::response(QByteArray receiveData, QByteArray referenceData, int option)
+{
+    if (option == AutoResponseItemWidget::Equivalence){
+        if (QString(receiveData.toHex()).compare(QString(referenceData.toHex())) == 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    if (option == AutoResponseItemWidget::Contain){
+        if (QString(receiveData.toHex()).contains(QString(referenceData.toHex()))){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    if (option == AutoResponseItemWidget::Notcontain){
+        if (QString(receiveData.toHex()).contains(QString(referenceData.toHex()))){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    return false;
+};
 
 void AutoResponseItemWidget::on_referenceDataFromatComboBox_currentTextChanged()
 {

@@ -120,4 +120,6 @@ void EDBaseApi::initTextFormatComboBox(QComboBox *comboBox)
     comboBox->addItem(tr("ASCII"), Ascii);
     comboBox->addItem(tr("UTF8"), Hex);
     comboBox->addItem(tr("系统地区编码"), Local);
+
+    comboBox->setCurrentIndex(4);
 }
