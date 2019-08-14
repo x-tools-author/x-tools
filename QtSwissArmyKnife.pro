@@ -27,8 +27,8 @@ HEADERS += \
     Src/Base/SAKDialog.hh \
     Src/Base/SAKMessageBox.hh \
     Src/Base/SAKWidget.hh \
-    Src/Common/SAKDebugPage/Other/AutoResponse/AutoResponseItemWidget.hh \
-    Src/Common/SAKDebugPage/Other/AutoResponse/AutoResponseSettingWidget.hh \
+    Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseItemWidget.hh \
+    Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.hh \
     Src/Common/SAKDebugPage/Other/SAKOtherSettings.hh \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/BaseTransmissionItemWidget.hh \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/SerialPortTransmissionItemWidget.hh \
@@ -56,8 +56,8 @@ SOURCES += \
     Src/Base/SAKDialog.cc \
     Src/Base/SAKMessageBox.cc \
     Src/Base/SAKWidget.cc \
-    Src/Common/SAKDebugPage/Other/AutoResponse/AutoResponseItemWidget.cc \
-    Src/Common/SAKDebugPage/Other/AutoResponse/AutoResponseSettingWidget.cc \
+    Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseItemWidget.cc \
+    Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.cc \
     Src/Common/SAKDebugPage/Other/SAKOtherSettings.cc \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/BaseTransmissionItemWidget.cc \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/SerialPortTransmissionItemWidget.cc \
@@ -92,10 +92,10 @@ FORMS += \
     Src/MoreInformation.ui \
     Src/Console/SAKConsole.ui \
     Src/Common/SAKDebugPage/SAKDebugPage.ui \
-    Src/Common/SAKDebugPage/Other/AutoResponse/AutoResponseItemWidget.ui \
+    Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseItemWidget.ui \
     Src/Common/SAKDebugPage/ReadWriteSetting/SAKReadWriteSetting.ui \
     Src/Common/SAKDebugPage/Other/Highlighter/SAKHighlighterSettingPanel.ui \
-    Src/Common/SAKDebugPage/Other/AutoResponse/AutoResponseSettingWidget.ui
+    Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.ui
 
 
 INCLUDEPATH += \
@@ -104,7 +104,7 @@ INCLUDEPATH += \
     Src/Console \
     Src/Common/SAKDebugPage \
     Src/Common/SAKDebugPage/Other/Highlighter \
-    Src/Common/SAKDebugPage/Other/AutoResponse \
+    Src/Common/SAKDebugPage/Other/AutoResponseSettings \
     Src/Common/SAKDebugPage/ReadWriteSetting \
     Src/Common/SAKDebugPage/Other/TransmissionSettings \
     Src/Common/SAKDebugPage/Other
