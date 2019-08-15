@@ -6,32 +6,32 @@
  *
  * Copyright (C) 2018-2019 woohii persionnal. No rights reserved.
  */
-#ifndef SAKHIGHLIGHTERSETTINGPANEL_HH
-#define SAKHIGHLIGHTERSETTINGPANEL_HH
+#ifndef HIGHLIGHTERSETTINGSWIDGET_HH
+#define HIGHLIGHTERSETTINGSWIDGET_HH
 
-#include <QDialog>
-#include <QTextDocument>
+#include <QWidget>
 #include <QLineEdit>
 #include <QGridLayout>
 #include <QPushButton>
+#include <QTextDocument>
 
 namespace Ui {
-class SAKHighlighterSettingPanel;
+class HighlightSettingsWidget;
 }
 
-class SAKHighlighter;
+class HighlightSettings;
 
-class SAKHighlighterSettingPanel:public QDialog
+class HighlightSettingsWidget:public QWidget
 {
     Q_OBJECT
 public:
-    SAKHighlighterSettingPanel(QTextDocument *doc, QWidget* parent = nullptr);
-    ~SAKHighlighterSettingPanel();
+    HighlightSettingsWidget(QTextDocument *doc, QWidget* parent = nullptr);
+    ~HighlightSettingsWidget();
 
     bool eventFilter(QObject *watched, QEvent *event);
 private:
-    Ui::SAKHighlighterSettingPanel  *ui             = nullptr;
-    SAKHighlighter                  *highlighter    = nullptr;
+    Ui::HighlightSettingsWidget     *ui             = nullptr;
+    HighlightSettings               *highlighter    = nullptr;
     QLineEdit                       *inputLineEdit  = nullptr;
     QPushButton                     *clearLabelBt   = nullptr;
     QPushButton                     *addLabelBt     = nullptr;

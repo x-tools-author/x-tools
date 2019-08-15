@@ -38,7 +38,7 @@ class SAKDataFactory;
 class SAKCRCInterface;
 class SAKOtherSettings;
 class TransmissionSettings;
-class SAKHighlighterSettingPanel;
+class HighlightSettingsWidget;
 
 namespace Ui {
 class SAKDebugPage;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SAKHighlighterSettingPanel</class>
- <widget class="QWidget" name="SAKHighlighterSettingPanel">
+ <class>HighlightSettingsWidget</class>
+ <widget class="QWidget" name="HighlightSettingsWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -39,7 +39,7 @@
         <x>0</x>
         <y>0</y>
         <width>575</width>
-        <height>276</height>
+        <height>275</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">

@@ -20,6 +20,7 @@
 #include "SAKOtherSettings.hh"
 #include "TransmissionSettings.hh"
 #include "AutoResponseSettingWidget.hh"
+#include "HighlightSettingsWidget.hh"
 
 SAKOtherSettings::SAKOtherSettings(SAKDebugPage *debugPage, QObject *parent)
     :QObject (parent)
@@ -27,6 +28,7 @@ SAKOtherSettings::SAKOtherSettings(SAKDebugPage *debugPage, QObject *parent)
 {
     transmissionSettings = new TransmissionSettings(_debugPage);
     autoResponseSettingWidget = new AutoResponseSettingWidget(_debugPage);
+    highlighterSettingPanel = new HighlightSettingsWidget(_debugPage->ui->outputTextBroswer->document());
 
     autoResponseSettingPushButton   = debugPage->ui->autoResponseSettingPushButton;
     highlightSettingPushButton      = debugPage->ui->highlightSettingPushButton;
@@ -60,6 +62,11 @@ void SAKOtherSettings::onAutoresponseSettingPushbuttonClicked()
 void SAKOtherSettings::onHighlightSettingPushButtonClicked()
 {
 
+    if (highlighterSettingPanel->isHidden()){
+        highlighterSettingPanel->show();
+    }else {
+        highlighterSettingPanel->activateWindow();
+    }
 }
 
 void SAKOtherSettings::onReadWriteSettingPushButtonClicked()

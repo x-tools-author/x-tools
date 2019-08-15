@@ -6,14 +6,14 @@
  *
  * Copyright (C) 2018-2019 woohii persionnal. No rights reserved.
  */
-#ifndef SAKHIGHLIGHTER_HH
-#define SAKHIGHLIGHTER_HH
+#ifndef HIGHLIGHTSETTINGS_HH
+#define HIGHLIGHTSETTINGS_HH
 
-#include <QSyntaxHighlighter>
 #include <QTextDocument>
+#include <QSyntaxHighlighter>
 #include <QRegularExpression>
 
-class SAKHighlighter : public QSyntaxHighlighter
+class HighlightSettings : public QSyntaxHighlighter
 {
     Q_OBJECT
 public:
@@ -21,7 +21,7 @@ public:
      * @brief SAKHighlighter    -- 构造函数，nothing to say.
      * @param parent            -- 父控件，用于释放资源
      */
-    SAKHighlighter(QTextDocument* parent = nullptr);
+    HighlightSettings(QTextDocument* parent = nullptr);
 
     /**
      * @brief setHighlighterKeyWord -- 设置高亮显示关键字

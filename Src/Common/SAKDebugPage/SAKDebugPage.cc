@@ -31,7 +31,7 @@
 #include "SAKDataFactory.hh"
 #include "SAKCRCInterface.hh"
 #include "SAKOtherSettings.hh"
-#include "SAKHighlighterSettingPanel.hh"
+#include "HighlightSettingsWidget.hh"
 
 SAKDebugPage::SAKDebugPage(QWidget *parent)
     :QWidget(parent)

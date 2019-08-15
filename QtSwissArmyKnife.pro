@@ -29,6 +29,8 @@ HEADERS += \
     Src/Base/SAKWidget.hh \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseItemWidget.hh \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.hh \
+    Src/Common/SAKDebugPage/Other/HighlightSettings/HighlightSettings.hh \
+    Src/Common/SAKDebugPage/Other/HighlightSettings/HighlightSettingsWidget.hh \
     Src/Common/SAKDebugPage/Other/SAKOtherSettings.hh \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/BaseTransmissionItemWidget.hh \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/SerialPortTransmissionItemWidget.hh \
@@ -46,9 +48,7 @@ HEADERS += \
     Src/Common/SAKDebugPage/SAKDebugPage.hh \
     Src/Common/SAKDebugPage/SAKDataFactory.hh \
     Src/Common/SAKDebugPage/SAKCRCInterface.hh \
-    Src/Common/SAKDebugPage/Other/HighlightSettings/SAKHighlighter.hh \
-    Src/Common/SAKDebugPage/Other/ReadWriteSettings/SAKReadWriteSetting.hh \
-    Src/Common/SAKDebugPage/Other/HighlightSettings/SAKHighlighterSettingPanel.hh
+    Src/Common/SAKDebugPage/Other/ReadWriteSettings/SAKReadWriteSetting.hh
 
 
 SOURCES += \
@@ -58,6 +58,8 @@ SOURCES += \
     Src/Base/SAKWidget.cc \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseItemWidget.cc \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.cc \
+    Src/Common/SAKDebugPage/Other/HighlightSettings/HighlightSettings.cc \
+    Src/Common/SAKDebugPage/Other/HighlightSettings/HighlightSettingsWidget.cc \
     Src/Common/SAKDebugPage/Other/SAKOtherSettings.cc \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/BaseTransmissionItemWidget.cc \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/SerialPortTransmissionItemWidget.cc \
@@ -76,9 +78,7 @@ SOURCES += \
     Src/Common/SAKDebugPage/SAKDebugPage.cc \
     Src/Common/SAKDebugPage/SAKDataFactory.cc \
     Src/Common/SAKDebugPage/SAKCRCInterface.cc \
-    Src/Common/SAKDebugPage/Other/HighlightSettings/SAKHighlighter.cc \
-    Src/Common/SAKDebugPage/Other/ReadWriteSettings/SAKReadWriteSetting.cc \
-    Src/Common/SAKDebugPage/Other/HighlightSettings/SAKHighlighterSettingPanel.cc
+    Src/Common/SAKDebugPage/Other/ReadWriteSettings/SAKReadWriteSetting.cc
 
 
 FORMS += \
@@ -94,7 +94,7 @@ FORMS += \
     Src/Common/SAKDebugPage/SAKDebugPage.ui \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseItemWidget.ui \
     Src/Common/SAKDebugPage/Other/ReadWriteSettings/SAKReadWriteSetting.ui \
-    Src/Common/SAKDebugPage/Other/HighlightSettings/SAKHighlighterSettingPanel.ui \
+    Src/Common/SAKDebugPage/Other/HighlightSettings/HighlightSettingsWidget.ui \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.ui
 
 

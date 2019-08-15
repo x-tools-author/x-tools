@@ -23,6 +23,7 @@ class TransmissionSettings;
 class AutoResponseSettingWidget;
 
 class SAKDebugPage;
+class HighlightSettingsWidget;
 
 class SAKOtherSettings:public QObject
 {
@@ -38,6 +39,7 @@ private:
     QPushButton                 *transmissionSettingPushButton  = nullptr;  // 数据转发设置面板调出按钮
     TransmissionSettings        *transmissionSettings;                      // 数据转发设置面板
     AutoResponseSettingWidget   *autoResponseSettingWidget;                 // 自动回复设置面板
+    HighlightSettingsWidget  *highlighterSettingPanel;                   // 高亮设置面板
 
     SAKDebugPage                *_debugPage                     = nullptr;  // 调试页面
 private slots:

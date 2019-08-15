@@ -6,16 +6,16 @@
  *
  * Copyright (C) 2018-2019 woohii persionnal. No rights reserved.
  */
-#include "SAKHighlighter.hh"
+#include "HighlightSettings.hh"
 
-SAKHighlighter::SAKHighlighter(QTextDocument* parent)
+HighlightSettings::HighlightSettings(QTextDocument* parent)
     :QSyntaxHighlighter (parent)
 {
     /// 该功能请参考Qt语法高亮显示示例
     setHighlighterKeyWord(QStringList());
 }
 
-void SAKHighlighter::setHighlighterKeyWord(QStringList keyWords)
+void HighlightSettings::setHighlighterKeyWord(QStringList keyWords)
 {
     highlightingRules.clear();
 
@@ -36,7 +36,7 @@ void SAKHighlighter::setHighlighterKeyWord(QStringList keyWords)
     commentEndExpression = QRegularExpression("\\*/");
 }
 
-void SAKHighlighter::highlightBlock(const QString &text)
+void HighlightSettings::highlightBlock(const QString &text)
 {
     foreach (const HighlightingRule &rule, highlightingRules) {
         QRegularExpressionMatchIterator matchIterator = rule.pattern.globalMatch(text);
