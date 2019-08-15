@@ -19,6 +19,7 @@
 #include "ui_SAKDebugPage.h"
 #include "SAKOtherSettings.hh"
 #include "TransmissionSettings.hh"
+#include "FormatSettingsWidget.hh"
 #include "HighlightSettingsWidget.hh"
 #include "MoreOtherSettingsWidget.hh"
 #include "AutoResponseSettingWidget.hh"
@@ -31,18 +32,21 @@ SAKOtherSettings::SAKOtherSettings(SAKDebugPage *debugPage, QObject *parent)
     autoResponseSettingWidget = new AutoResponseSettingWidget(_debugPage);
     highlighterSettingPanel = new HighlightSettingsWidget(_debugPage->ui->outputTextBroswer->document());
     moreOtherSettingsWidget = new MoreOtherSettingsWidget(_debugPage);
+    formatSettingsWidget = new FormatSettingsWidget(_debugPage);
 
     autoResponseSettingPushButton   = _debugPage->ui->autoResponseSettingPushButton;
     highlightSettingPushButton      = _debugPage->ui->highlightSettingPushButton;
     readWriteSettingPushButton      = _debugPage->ui->readWriteSettingPushButton;
     transmissionSettingPushButton   = _debugPage->ui->transmissionSettingPushButton;
-    moreOtherSettingsPushButton     = _debugPage->ui->moreOhterSettingsPushButton;
+    moreOtherSettingsPushButton     = _debugPage->ui->moreOhterSettingsPushButton;    
+    formatSettingsPushButton        = _debugPage->ui->formatSettingsPushButton;
 
     connect(autoResponseSettingPushButton, &QPushButton::clicked, this, &SAKOtherSettings::onAutoresponseSettingPushbuttonClicked);
     connect(highlightSettingPushButton,    &QPushButton::clicked, this, &SAKOtherSettings::onHighlightSettingPushButtonClicked);
     connect(readWriteSettingPushButton,    &QPushButton::clicked, this, &SAKOtherSettings::onReadWriteSettingPushButtonClicked);
     connect(transmissionSettingPushButton, &QPushButton::clicked, this, &SAKOtherSettings::onTransmissionSettingPushButtonClicked);
     connect(moreOtherSettingsPushButton,   &QPushButton::clicked, this, &SAKOtherSettings::onMoreOtherSettingsPushButtonClicked);
+    connect(formatSettingsPushButton,      &QPushButton::clicked, this, &SAKOtherSettings::onFormatSettingsPushButtonClicked);
 }
 
 SAKOtherSettings::~SAKOtherSettings()
@@ -93,5 +97,14 @@ void SAKOtherSettings::onMoreOtherSettingsPushButtonClicked()
         moreOtherSettingsWidget->show();
     }else {
         moreOtherSettingsWidget->activateWindow();
+    }
+}
+
+void SAKOtherSettings::onFormatSettingsPushButtonClicked()
+{
+    if (formatSettingsWidget->isHidden()){
+        formatSettingsWidget->show();
+    }else {
+        formatSettingsWidget->activateWindow();
     }
 }

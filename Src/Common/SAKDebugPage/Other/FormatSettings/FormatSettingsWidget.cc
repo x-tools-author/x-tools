@@ -13,15 +13,19 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#include "SAKDebugPage.hh"
-#include "MoreOtherSettingsWidget.hh"
-#include "ui_MoreOtherSettingsWidget.h"
+#include "FormatSettingsWidget.hh"
+#include "ui_FormatSettingsWidget.h"
 
-
-MoreOtherSettingsWidget::MoreOtherSettingsWidget(SAKDebugPage *debugPage, QWidget *parent)
+FormatSettingsWidget::FormatSettingsWidget(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget (parent)
     ,_debugPage (debugPage)
-    ,ui (new Ui::MoreOtherSettingsWidget)
+    ,ui (new Ui::FormatSettingsWidget)
 {
-    setWindowTitle(tr("更多设置"));
+    ui->setupUi(this);
+    setWindowTitle(tr("格式设置"));
+}
+
+FormatSettingsWidget::~FormatSettingsWidget()
+{
+
 }

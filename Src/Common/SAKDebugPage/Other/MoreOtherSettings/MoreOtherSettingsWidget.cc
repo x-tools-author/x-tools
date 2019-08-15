@@ -23,5 +23,11 @@ MoreOtherSettingsWidget::MoreOtherSettingsWidget(SAKDebugPage *debugPage, QWidge
     ,_debugPage (debugPage)
     ,ui (new Ui::MoreOtherSettingsWidget)
 {
+    ui->setupUi(this);
     setWindowTitle(tr("更多设置"));
+}
+
+MoreOtherSettingsWidget::~MoreOtherSettingsWidget()
+{
+    delete ui;
 }

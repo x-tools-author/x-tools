@@ -29,6 +29,7 @@ class MoreOtherSettingsWidget:public QWidget
     Q_OBJECT
 public:
     MoreOtherSettingsWidget(SAKDebugPage *debugPage, QWidget *parent = nullptr);
+    ~MoreOtherSettingsWidget();
 private:
     SAKDebugPage *_debugPage;
     Ui::MoreOtherSettingsWidget *ui;

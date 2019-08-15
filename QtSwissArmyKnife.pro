@@ -29,6 +29,7 @@ HEADERS += \
     Src/Base/SAKWidget.hh \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseItemWidget.hh \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.hh \
+    Src/Common/SAKDebugPage/Other/FormatSettings/FormatSettingsWidget.hh \
     Src/Common/SAKDebugPage/Other/HighlightSettings/HighlightSettings.hh \
     Src/Common/SAKDebugPage/Other/HighlightSettings/HighlightSettingsWidget.hh \
     Src/Common/SAKDebugPage/Other/MoreOtherSettings/MoreOtherSettingsWidget.hh \
@@ -59,6 +60,7 @@ SOURCES += \
     Src/Base/SAKWidget.cc \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseItemWidget.cc \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.cc \
+    Src/Common/SAKDebugPage/Other/FormatSettings/FormatSettingsWidget.cc \
     Src/Common/SAKDebugPage/Other/HighlightSettings/HighlightSettings.cc \
     Src/Common/SAKDebugPage/Other/HighlightSettings/HighlightSettingsWidget.cc \
     Src/Common/SAKDebugPage/Other/MoreOtherSettings/MoreOtherSettingsWidget.cc \
@@ -84,6 +86,7 @@ SOURCES += \
 
 
 FORMS += \
+    Src/Common/SAKDebugPage/Other/FormatSettings/FormatSettingsWidget.ui \
     Src/Common/SAKDebugPage/Other/MoreOtherSettings/MoreOtherSettingsWidget.ui \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/TransmissionPage.ui \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/SerialPortTransmissionItemWidget.ui \
@@ -111,7 +114,8 @@ INCLUDEPATH += \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings \
     Src/Common/SAKDebugPage/Other/ReadWriteSettings \
     Src/Common/SAKDebugPage/Other/TransmissionSettings \
-    Src/Common/SAKDebugPage/Other/MoreOtherSettings
+    Src/Common/SAKDebugPage/Other/MoreOtherSettings \
+    Src/Common/SAKDebugPage/Other/FormatSettings
 
 
 

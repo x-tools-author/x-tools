@@ -13,25 +13,25 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#ifndef MOREOTHERSETTINGS_HH
-#define MOREOTHERSETTINGS_HH
+#ifndef FORMATSETTINGSWIDGET_HH
+#define FORMATSETTINGSWIDGET_HH
 
 #include <QWidget>
 
 namespace Ui {
-    class MoreOtherSettingsWidget;
+    class FormatSettingsWidget;
 }
 
 class SAKDebugPage;
-
-class MoreOtherSettingsWidget:public QWidget
+class FormatSettingsWidget:public QWidget
 {
     Q_OBJECT
 public:
-    MoreOtherSettingsWidget(SAKDebugPage *debugPage, QWidget *parent = nullptr);
+    FormatSettingsWidget(SAKDebugPage *debugPage, QWidget *parent = nullptr);
+    ~FormatSettingsWidget();
 private:
     SAKDebugPage *_debugPage;
-    Ui::MoreOtherSettingsWidget *ui;
+    Ui::FormatSettingsWidget *ui;
 };
 
 #endif
