@@ -19,8 +19,9 @@
 #include "ui_SAKDebugPage.h"
 #include "SAKOtherSettings.hh"
 #include "TransmissionSettings.hh"
-#include "AutoResponseSettingWidget.hh"
 #include "HighlightSettingsWidget.hh"
+#include "MoreOtherSettingsWidget.hh"
+#include "AutoResponseSettingWidget.hh"
 
 SAKOtherSettings::SAKOtherSettings(SAKDebugPage *debugPage, QObject *parent)
     :QObject (parent)
@@ -29,16 +30,19 @@ SAKOtherSettings::SAKOtherSettings(SAKDebugPage *debugPage, QObject *parent)
     transmissionSettings = new TransmissionSettings(_debugPage);
     autoResponseSettingWidget = new AutoResponseSettingWidget(_debugPage);
     highlighterSettingPanel = new HighlightSettingsWidget(_debugPage->ui->outputTextBroswer->document());
+    moreOtherSettingsWidget = new MoreOtherSettingsWidget(_debugPage);
 
-    autoResponseSettingPushButton   = debugPage->ui->autoResponseSettingPushButton;
-    highlightSettingPushButton      = debugPage->ui->highlightSettingPushButton;
-    readWriteSettingPushButton      = debugPage->ui->readWriteSettingPushButton;
-    transmissionSettingPushButton   = debugPage->ui->transmissionSettingPushButton;
+    autoResponseSettingPushButton   = _debugPage->ui->autoResponseSettingPushButton;
+    highlightSettingPushButton      = _debugPage->ui->highlightSettingPushButton;
+    readWriteSettingPushButton      = _debugPage->ui->readWriteSettingPushButton;
+    transmissionSettingPushButton   = _debugPage->ui->transmissionSettingPushButton;
+    moreOtherSettingsPushButton     = _debugPage->ui->moreOhterSettingsPushButton;
 
     connect(autoResponseSettingPushButton, &QPushButton::clicked, this, &SAKOtherSettings::onAutoresponseSettingPushbuttonClicked);
     connect(highlightSettingPushButton,    &QPushButton::clicked, this, &SAKOtherSettings::onHighlightSettingPushButtonClicked);
     connect(readWriteSettingPushButton,    &QPushButton::clicked, this, &SAKOtherSettings::onReadWriteSettingPushButtonClicked);
     connect(transmissionSettingPushButton, &QPushButton::clicked, this, &SAKOtherSettings::onTransmissionSettingPushButtonClicked);
+    connect(moreOtherSettingsPushButton,   &QPushButton::clicked, this, &SAKOtherSettings::onMoreOtherSettingsPushButtonClicked);
 }
 
 SAKOtherSettings::~SAKOtherSettings()
@@ -80,5 +84,14 @@ void SAKOtherSettings::onTransmissionSettingPushButtonClicked()
         transmissionSettings->show();
     }else {
         transmissionSettings->activateWindow();
+    }
+}
+
+void SAKOtherSettings::onMoreOtherSettingsPushButtonClicked()
+{
+    if (moreOtherSettingsWidget->isHidden()){
+        moreOtherSettingsWidget->show();
+    }else {
+        moreOtherSettingsWidget->activateWindow();
     }
 }

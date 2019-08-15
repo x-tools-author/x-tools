@@ -24,6 +24,7 @@ class AutoResponseSettingWidget;
 
 class SAKDebugPage;
 class HighlightSettingsWidget;
+class MoreOtherSettingsWidget;
 
 class SAKOtherSettings:public QObject
 {
@@ -37,9 +38,11 @@ private:
     QPushButton                 *highlightSettingPushButton     = nullptr;  // 高亮设置面板调出按钮
     QPushButton                 *readWriteSettingPushButton     = nullptr;  // 读写设置面板调出按钮
     QPushButton                 *transmissionSettingPushButton  = nullptr;  // 数据转发设置面板调出按钮
+    QPushButton                 *moreOtherSettingsPushButton    = nullptr;  // 更多其他设置按钮
     TransmissionSettings        *transmissionSettings;                      // 数据转发设置面板
     AutoResponseSettingWidget   *autoResponseSettingWidget;                 // 自动回复设置面板
-    HighlightSettingsWidget  *highlighterSettingPanel;                   // 高亮设置面板
+    HighlightSettingsWidget     *highlighterSettingPanel;                   // 高亮设置面板
+    MoreOtherSettingsWidget     *moreOtherSettingsWidget;                   // 更多设置面板
 
     SAKDebugPage                *_debugPage                     = nullptr;  // 调试页面
 private slots:
@@ -47,6 +50,7 @@ private slots:
     void onHighlightSettingPushButtonClicked();
     void onReadWriteSettingPushButtonClicked();
     void onTransmissionSettingPushButtonClicked();
+    void onMoreOtherSettingsPushButtonClicked();
 };
 
 #endif

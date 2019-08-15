@@ -31,6 +31,7 @@ HEADERS += \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.hh \
     Src/Common/SAKDebugPage/Other/HighlightSettings/HighlightSettings.hh \
     Src/Common/SAKDebugPage/Other/HighlightSettings/HighlightSettingsWidget.hh \
+    Src/Common/SAKDebugPage/Other/MoreOtherSettings/MoreOtherSettingsWidget.hh \
     Src/Common/SAKDebugPage/Other/SAKOtherSettings.hh \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/BaseTransmissionItemWidget.hh \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/SerialPortTransmissionItemWidget.hh \
@@ -60,6 +61,7 @@ SOURCES += \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.cc \
     Src/Common/SAKDebugPage/Other/HighlightSettings/HighlightSettings.cc \
     Src/Common/SAKDebugPage/Other/HighlightSettings/HighlightSettingsWidget.cc \
+    Src/Common/SAKDebugPage/Other/MoreOtherSettings/MoreOtherSettingsWidget.cc \
     Src/Common/SAKDebugPage/Other/SAKOtherSettings.cc \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/BaseTransmissionItemWidget.cc \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/SerialPortTransmissionItemWidget.cc \
@@ -82,6 +84,7 @@ SOURCES += \
 
 
 FORMS += \
+    Src/Common/SAKDebugPage/Other/MoreOtherSettings/MoreOtherSettingsWidget.ui \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/TransmissionPage.ui \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/SerialPortTransmissionItemWidget.ui \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/TcpTransmissionItemWidget.ui \
@@ -103,11 +106,13 @@ INCLUDEPATH += \
     Src/Base \
     Src/Console \
     Src/Common/SAKDebugPage \
+    Src/Common/SAKDebugPage/Other \
     Src/Common/SAKDebugPage/Other/HighlightSettings \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings \
     Src/Common/SAKDebugPage/Other/ReadWriteSettings \
     Src/Common/SAKDebugPage/Other/TransmissionSettings \
-    Src/Common/SAKDebugPage/Other
+    Src/Common/SAKDebugPage/Other/MoreOtherSettings
+
 
 
 RESOURCES += \
