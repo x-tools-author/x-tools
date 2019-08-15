@@ -488,7 +488,7 @@ p, li { white-space: pre-wrap; }
          </size>
         </property>
         <property name="title">
-         <string>读写图表</string>
+         <string>收发图表</string>
         </property>
        </widget>
       </item>
