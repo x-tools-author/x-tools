@@ -33,6 +33,7 @@ HEADERS += \
     Src/Common/SAKDebugPage/Other/HighlightSettings/HighlightSettings.hh \
     Src/Common/SAKDebugPage/Other/HighlightSettings/HighlightSettingsWidget.hh \
     Src/Common/SAKDebugPage/Other/MoreOtherSettings/MoreOtherSettingsWidget.hh \
+    Src/Common/SAKDebugPage/Other/ReadWriteSettings/ReadWriteSettingsWidget.hh \
     Src/Common/SAKDebugPage/Other/SAKOtherSettings.hh \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/BaseTransmissionItemWidget.hh \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/SerialPortTransmissionItemWidget.hh \
@@ -49,8 +50,7 @@ HEADERS += \
     Src/Console/SAKLogOutput.hh \
     Src/Common/SAKDebugPage/SAKDebugPage.hh \
     Src/Common/SAKDebugPage/SAKDataFactory.hh \
-    Src/Common/SAKDebugPage/SAKCRCInterface.hh \
-    Src/Common/SAKDebugPage/Other/ReadWriteSettings/SAKReadWriteSetting.hh
+    Src/Common/SAKDebugPage/SAKCRCInterface.hh
 
 
 SOURCES += \
@@ -64,6 +64,7 @@ SOURCES += \
     Src/Common/SAKDebugPage/Other/HighlightSettings/HighlightSettings.cc \
     Src/Common/SAKDebugPage/Other/HighlightSettings/HighlightSettingsWidget.cc \
     Src/Common/SAKDebugPage/Other/MoreOtherSettings/MoreOtherSettingsWidget.cc \
+    Src/Common/SAKDebugPage/Other/ReadWriteSettings/ReadWriteSettingsWidget.cc \
     Src/Common/SAKDebugPage/Other/SAKOtherSettings.cc \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/BaseTransmissionItemWidget.cc \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/SerialPortTransmissionItemWidget.cc \
@@ -81,8 +82,7 @@ SOURCES += \
     Src/Console/SAKLogOutput.cc \
     Src/Common/SAKDebugPage/SAKDebugPage.cc \
     Src/Common/SAKDebugPage/SAKDataFactory.cc \
-    Src/Common/SAKDebugPage/SAKCRCInterface.cc \
-    Src/Common/SAKDebugPage/Other/ReadWriteSettings/SAKReadWriteSetting.cc
+    Src/Common/SAKDebugPage/SAKCRCInterface.cc
 
 
 FORMS += \
@@ -99,7 +99,7 @@ FORMS += \
     Src/Console/SAKConsole.ui \
     Src/Common/SAKDebugPage/SAKDebugPage.ui \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseItemWidget.ui \
-    Src/Common/SAKDebugPage/Other/ReadWriteSettings/SAKReadWriteSetting.ui \
+    Src/Common/SAKDebugPage/Other/ReadWriteSettings/ReadWriteSettingsWidget.ui \
     Src/Common/SAKDebugPage/Other/HighlightSettings/HighlightSettingsWidget.ui \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.ui
 

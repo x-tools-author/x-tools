@@ -26,6 +26,7 @@ class SAKDebugPage;
 class FormatSettingsWidget;
 class HighlightSettingsWidget;
 class MoreOtherSettingsWidget;
+class ReadWriteSettingsWidget;
 
 class SAKOtherSettings:public QObject
 {
@@ -47,6 +48,7 @@ private:
     HighlightSettingsWidget     *highlighterSettingPanel;                   // 高亮设置面板
     MoreOtherSettingsWidget     *moreOtherSettingsWidget;                   // 更多设置面板
     FormatSettingsWidget        *formatSettingsWidget;                      // 格式分析面板
+    ReadWriteSettingsWidget     *readWriteSettingsWidget;                   // 读写参数设置面板
 
     SAKDebugPage                *_debugPage                     = nullptr;  // 调试页面
 private slots:

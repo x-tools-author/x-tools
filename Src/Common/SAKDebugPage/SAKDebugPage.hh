@@ -31,7 +31,7 @@
 #include <QTextBrowser>
 
 #include "SAKCRCInterface.hh"
-#include "SAKReadWriteSetting.hh"
+#include "ReadWriteSettingsWidget.hh"
 #include "AutoResponseSettingWidget.hh"
 
 class SAKDataFactory;

@@ -22,24 +22,26 @@
 #include "FormatSettingsWidget.hh"
 #include "HighlightSettingsWidget.hh"
 #include "MoreOtherSettingsWidget.hh"
+#include "ReadWriteSettingsWidget.hh"
 #include "AutoResponseSettingWidget.hh"
 
 SAKOtherSettings::SAKOtherSettings(SAKDebugPage *debugPage, QObject *parent)
     :QObject (parent)
     ,_debugPage (debugPage)
 {
-    transmissionSettings = new TransmissionSettings(_debugPage);
-    autoResponseSettingWidget = new AutoResponseSettingWidget(_debugPage);
-    highlighterSettingPanel = new HighlightSettingsWidget(_debugPage->ui->outputTextBroswer->document());
-    moreOtherSettingsWidget = new MoreOtherSettingsWidget(_debugPage);
-    formatSettingsWidget = new FormatSettingsWidget(_debugPage);
+    transmissionSettings        = new TransmissionSettings(_debugPage);
+    autoResponseSettingWidget   = new AutoResponseSettingWidget(_debugPage);
+    highlighterSettingPanel     = new HighlightSettingsWidget(_debugPage->ui->outputTextBroswer->document());
+    moreOtherSettingsWidget     = new MoreOtherSettingsWidget(_debugPage);
+    formatSettingsWidget        = new FormatSettingsWidget(_debugPage);
+    readWriteSettingsWidget     = new ReadWriteSettingsWidget(_debugPage);
 
     autoResponseSettingPushButton   = _debugPage->ui->autoResponseSettingPushButton;
     highlightSettingPushButton      = _debugPage->ui->highlightSettingPushButton;
     readWriteSettingPushButton      = _debugPage->ui->readWriteSettingPushButton;
     transmissionSettingPushButton   = _debugPage->ui->transmissionSettingPushButton;
     moreOtherSettingsPushButton     = _debugPage->ui->moreOhterSettingsPushButton;    
-    formatSettingsPushButton        = _debugPage->ui->formatSettingsPushButton;
+    formatSettingsPushButton        = _debugPage->ui->formatSettingsPushButton;    
 
     connect(autoResponseSettingPushButton, &QPushButton::clicked, this, &SAKOtherSettings::onAutoresponseSettingPushbuttonClicked);
     connect(highlightSettingPushButton,    &QPushButton::clicked, this, &SAKOtherSettings::onHighlightSettingPushButtonClicked);
@@ -79,7 +81,11 @@ void SAKOtherSettings::onHighlightSettingPushButtonClicked()
 
 void SAKOtherSettings::onReadWriteSettingPushButtonClicked()
 {
-
+    if (readWriteSettingsWidget->isHidden()){
+        readWriteSettingsWidget->show();
+    }else {
+        readWriteSettingsWidget->activateWindow();
+    }
 }
 
 void SAKOtherSettings::onTransmissionSettingPushButtonClicked()

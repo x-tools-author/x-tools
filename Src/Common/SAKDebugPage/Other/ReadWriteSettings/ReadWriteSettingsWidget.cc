@@ -1,21 +1,31 @@
-﻿/*******************************************************************************
-* The file is encoding with utf-8 (with BOM)
-*
-* I write the comment with English, it's not because that I'm good at English,
-* but for "installing B".
-*
-* Copyright (C) 2018-2019 wuhai persionnal. All rights reserved.
-*******************************************************************************/
+﻿/*
+ * Copyright (C) 2018-2019 wuuhii. All rights reserved.
+ *
+ * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
+ * project. The project is a open source project, you can get the source from:
+ *     https://github.com/wuuhii/QtSwissArmyKnife
+ *     https://gitee.com/wuuhii/QtSwissArmyKnife
+ *
+ * If you want to know more about the project, please join our QQ group(952218522).
+ * In addition, the email address of the project author is wuuhii@outlook.com.
+ * Welcome to bother.
+ *
+ * I write the comment in English, it's not because that I'm good at English,
+ * but for "installing B".
+ */
+
+#include "SAKDebugPage.hh"
+#include "ReadWriteSettingsWidget.hh"
+#include "ui_ReadWriteSettingsWidget.h"
+
 #include <QDebug>
 #include <QIntValidator>
 #include <QRegExpValidator>
 
-#include "SAKReadWriteSetting.hh"
-#include "ui_SAKReadWriteSetting.h"
-
-SAKReadWriteSetting::SAKReadWriteSetting(QWidget* parent)
+ReadWriteSettingsWidget::ReadWriteSettingsWidget(SAKDebugPage *debugPage, QWidget* parent)
     :QDialog (parent)
-    ,ui(new Ui::SAKReadWriteSetting)
+    ,ui(new Ui::ReadWriteSettingsWidget)
+    ,_debugPage (debugPage)
 {
     ui->setupUi(this);
 
@@ -29,22 +39,22 @@ SAKReadWriteSetting::SAKReadWriteSetting(QWidget* parent)
     writeLineEdit = ui->lineEditWrite;
     setModal(true);
 
-    connect(readDelayEnableCheckBox, &QCheckBox::clicked, this, &SAKReadWriteSetting::setEnableReadDelay);
-    connect(writeDelayEnableCheckBox, &QCheckBox::clicked, this, &SAKReadWriteSetting::setEnableWriteDelay);
+    connect(readDelayEnableCheckBox, &QCheckBox::clicked, this, &ReadWriteSettingsWidget::setEnableReadDelay);
+    connect(writeDelayEnableCheckBox, &QCheckBox::clicked, this, &ReadWriteSettingsWidget::setEnableWriteDelay);
 
-    connect(readCustomDelayCheckBox, &QCheckBox::clicked, this, &SAKReadWriteSetting::changedReadDelayTime);
-    connect(writeCustomDelayCheckBox, &QCheckBox::clicked, this, &SAKReadWriteSetting::changedWriteDelayTime);
+    connect(readCustomDelayCheckBox, &QCheckBox::clicked, this, &ReadWriteSettingsWidget::changedReadDelayTime);
+    connect(writeCustomDelayCheckBox, &QCheckBox::clicked, this, &ReadWriteSettingsWidget::changedWriteDelayTime);
 
-    connect(readDelayComboBox, &QComboBox::currentTextChanged, this, &SAKReadWriteSetting::changedReadDelayTime);
-    connect(writeDelayComboBox, &QComboBox::currentTextChanged, this, &SAKReadWriteSetting::changedWriteDelayTime);
+    connect(readDelayComboBox, &QComboBox::currentTextChanged, this, &ReadWriteSettingsWidget::changedReadDelayTime);
+    connect(writeDelayComboBox, &QComboBox::currentTextChanged, this, &ReadWriteSettingsWidget::changedWriteDelayTime);
 
-    connect(readLineEdit, &QLineEdit::textChanged, this, &SAKReadWriteSetting::changedReadDelayTime);
-    connect(writeLineEdit, &QLineEdit::textChanged, this, &SAKReadWriteSetting::changedWriteDelayTime);
+    connect(readLineEdit, &QLineEdit::textChanged, this, &ReadWriteSettingsWidget::changedReadDelayTime);
+    connect(writeLineEdit, &QLineEdit::textChanged, this, &ReadWriteSettingsWidget::changedWriteDelayTime);
 
     initUi();
 }
 
-void SAKReadWriteSetting::initUi()
+void ReadWriteSettingsWidget::initUi()
 {
     readLineEdit->setValidator(new QRegExpValidator(QRegExp("[0-9][0-9]"), readLineEdit));
     writeLineEdit->setValidator(new QIntValidator(1, 99, writeLineEdit));
@@ -64,7 +74,7 @@ void SAKReadWriteSetting::initUi()
     changedWriteDelayTime();
 }
 
-void SAKReadWriteSetting::setEnableReadDelay()
+void ReadWriteSettingsWidget::setEnableReadDelay()
 {
     if (readDelayEnableCheckBox->isChecked()){
         readDelayEnableCheckBox->setChecked(true);
@@ -81,7 +91,7 @@ void SAKReadWriteSetting::setEnableReadDelay()
     changedReadDelayTime();
 }
 
-void SAKReadWriteSetting::setEnableWriteDelay()
+void ReadWriteSettingsWidget::setEnableWriteDelay()
 {
     if (writeDelayEnableCheckBox->isChecked()){
         writeDelayEnableCheckBox->setChecked(true);
@@ -98,7 +108,7 @@ void SAKReadWriteSetting::setEnableWriteDelay()
     changedWriteDelayTime();
 }
 
-void SAKReadWriteSetting::changedReadDelayTime()
+void ReadWriteSettingsWidget::changedReadDelayTime()
 {
     int time = 0;
     if (readDelayEnableCheckBox->isChecked()){
@@ -113,7 +123,7 @@ void SAKReadWriteSetting::changedReadDelayTime()
     emit readDelayTimeChanged(time);
 }
 
-void SAKReadWriteSetting::changedWriteDelayTime()
+void ReadWriteSettingsWidget::changedWriteDelayTime()
 {
     int time = 0;
     if (writeDelayEnableCheckBox->isChecked()){
