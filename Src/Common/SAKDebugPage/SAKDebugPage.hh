@@ -38,6 +38,7 @@ class SAKDataFactory;
 class SAKCRCInterface;
 class SAKOtherSettings;
 class TransmissionSettings;
+class SAKStatisticsManager;
 class HighlightSettingsWidget;
 
 namespace Ui {
@@ -117,6 +118,7 @@ public:
     void outputMessage(QString msg, bool isInfo = true);
 
     friend class SAKOtherSettings;
+    friend class SAKStatisticsManager;
 protected:
     /**
      * @brief openOrColoseDevice    -- 打开或者关闭设备
@@ -284,26 +286,13 @@ private slots:
 
     // 数据管理组
 protected:
-    quint64     receiveFrames                   = 0;        // 接受帧数
-    quint64     receiveBytes                    = 0;        // 接受字节数
-    quint64     sendFrames                      = 0;        // 发送帧数
-    quint64     sendBytes                       = 0;        // 发送字节数
-
     bool        receivedFlag                    = false;    // 接受状态指示灯
     bool        sendFlag                        = false;    // 接受指示灯状态
-
-    QLabel      *rxFramesLabel                  = nullptr;  // 用于显示接受帧数
-    QLabel      *txFramesLabel                  = nullptr;  // 用于显示发送帧数
-    QLabel      *rxBytesLabel                   = nullptr;  // 用于显示接收字节数
-    QLabel      *txBytesLabel                   = nullptr;  // 用于显示发送字节数
-    QPushButton *resetRxCountPushButton         = nullptr;  // 重置接收计数
-    QPushButton *resetTxCountPushButton         = nullptr;  // 重置发送计数
-private slots:
-    void on_resetRxCountPushButton_clicked();
-    void on_resetTxCountPushButton_clicked();
 private:
     /// 其他设置
     SAKOtherSettings *otherSettings             = nullptr;
+    /// 数据统计
+    SAKStatisticsManager *statisticsManager     = nullptr;
 
 private:
     /**

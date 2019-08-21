@@ -13,104 +13,65 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#include <QDebug>
-
-#include "SAKDebugPage.hh"
 #include "ui_SAKDebugPage.h"
-#include "SAKOtherSettings.hh"
-#include "TransmissionSettings.hh"
-#include "FormatSettingsWidget.hh"
-#include "HighlightSettingsWidget.hh"
-#include "MoreOtherSettingsWidget.hh"
-#include "ReadWriteSettingsWidget.hh"
-#include "AutoResponseSettingWidget.hh"
+#include "SAKStatisticsManager.hh"
 
-SAKOtherSettings::SAKOtherSettings(SAKDebugPage *debugPage, QObject *parent)
+SAKStatisticsManager::SAKStatisticsManager(SAKDebugPage *debugPage, QObject *parent)
     :QObject (parent)
     ,_debugPage (debugPage)
 {
-    transmissionSettings        = new TransmissionSettings(_debugPage);
-    autoResponseSettingWidget   = new AutoResponseSettingWidget(_debugPage);
-    highlighterSettingPanel     = new HighlightSettingsWidget(_debugPage->ui->outputTextBroswer->document());
-    moreOtherSettingsWidget     = new MoreOtherSettingsWidget(_debugPage);
-    formatSettingsWidget        = new FormatSettingsWidget(_debugPage);
-    readWriteSettingsWidget     = new ReadWriteSettingsWidget(_debugPage);
+    txFramesLabel   = _debugPage->ui->txFramesLabel;
+    rxFramesLabel   = _debugPage->ui->rxFramesLabel;
+    txBytesLabel    = _debugPage->ui->txBytesLabel;
+    rxBytesLabel    = _debugPage->ui->rxBytesLabel;
 
-    autoResponseSettingPushButton   = _debugPage->ui->autoResponseSettingPushButton;
-    highlightSettingPushButton      = _debugPage->ui->highlightSettingPushButton;
-    readWriteSettingPushButton      = _debugPage->ui->readWriteSettingPushButton;
-    transmissionSettingPushButton   = _debugPage->ui->transmissionSettingPushButton;
-    moreOtherSettingsPushButton     = _debugPage->ui->moreOhterSettingsPushButton;    
-    formatSettingsPushButton        = _debugPage->ui->formatSettingsPushButton;    
+    resetTxCountPushButton  = _debugPage->ui->resetTxCountPushButton;
+    resetRxCountPushButton  = _debugPage->ui->resetRxCountPushButton;
 
-    connect(autoResponseSettingPushButton, &QPushButton::clicked, this, &SAKOtherSettings::onAutoresponseSettingPushbuttonClicked);
-    connect(highlightSettingPushButton,    &QPushButton::clicked, this, &SAKOtherSettings::onHighlightSettingPushButtonClicked);
-    connect(readWriteSettingPushButton,    &QPushButton::clicked, this, &SAKOtherSettings::onReadWriteSettingPushButtonClicked);
-    connect(transmissionSettingPushButton, &QPushButton::clicked, this, &SAKOtherSettings::onTransmissionSettingPushButtonClicked);
-    connect(moreOtherSettingsPushButton,   &QPushButton::clicked, this, &SAKOtherSettings::onMoreOtherSettingsPushButtonClicked);
-    connect(formatSettingsPushButton,      &QPushButton::clicked, this, &SAKOtherSettings::onFormatSettingsPushButtonClicked);
+    dataContext.rxBytes  = 0;
+    dataContext.txBytes  = 0;
+    dataContext.rxFrames = 0;
+    dataContext.txFrames = 0;
+
+    connect(_debugPage, &SAKDebugPage::dataReadOrwritten, this, &SAKStatisticsManager::dataReadOrwritten);
+    connect(resetRxCountPushButton, &QPushButton::clicked, this, &SAKStatisticsManager::clearRxStatistics);
+    connect(resetTxCountPushButton, &QPushButton::clicked, this, &SAKStatisticsManager::clearTxStatistics);
 }
 
-SAKOtherSettings::~SAKOtherSettings()
+void SAKStatisticsManager::dataReadOrwritten(QByteArray data, SAKDebugPage::OutputParameters parameters)
 {
-    delete transmissionSettings;
-    delete autoResponseSettingWidget;
-
-    transmissionSettings = nullptr;
-    autoResponseSettingWidget = nullptr;
-}
-
-void SAKOtherSettings::onAutoresponseSettingPushbuttonClicked()
-{
-    if (autoResponseSettingWidget->isHidden()){
-        autoResponseSettingWidget->show();
-    }else {
-        autoResponseSettingWidget->activateWindow();
+    if (parameters.isReceivedData){
+        dataContext.rxFrames += 1;
+        dataContext.rxBytes += static_cast<quint64>(data.length());
+        setLabelText(rxFramesLabel, dataContext.rxFrames);
+        setLabelText(rxBytesLabel, dataContext.rxBytes);
+    }else{
+        dataContext.txFrames += 1;
+        dataContext.txBytes += static_cast<quint64>(data.length());
+        setLabelText(txFramesLabel, dataContext.txFrames);
+        setLabelText(txBytesLabel, dataContext.txBytes);
     }
 }
 
-void SAKOtherSettings::onHighlightSettingPushButtonClicked()
+void SAKStatisticsManager::clearRxStatistics()
 {
-
-    if (highlighterSettingPanel->isHidden()){
-        highlighterSettingPanel->show();
-    }else {
-        highlighterSettingPanel->activateWindow();
-    }
+    dataContext.rxBytes = 0;
+    dataContext.rxFrames = 0;
+    setLabelText(rxFramesLabel, dataContext.rxFrames);
+    setLabelText(rxBytesLabel, dataContext.rxBytes);
 }
 
-void SAKOtherSettings::onReadWriteSettingPushButtonClicked()
+void SAKStatisticsManager::clearTxStatistics()
 {
-    if (readWriteSettingsWidget->isHidden()){
-        readWriteSettingsWidget->show();
-    }else {
-        readWriteSettingsWidget->activateWindow();
-    }
+    dataContext.txBytes = 0;
+    dataContext.txFrames = 0;
+    setLabelText(txFramesLabel, dataContext.txFrames);
+    setLabelText(txBytesLabel, dataContext.txBytes);
 }
 
-void SAKOtherSettings::onTransmissionSettingPushButtonClicked()
+void SAKStatisticsManager::setLabelText(QLabel *label, quint64 text)
 {
-    if (transmissionSettings->isHidden()){
-        transmissionSettings->show();
-    }else {
-        transmissionSettings->activateWindow();
-    }
-}
-
-void SAKOtherSettings::onMoreOtherSettingsPushButtonClicked()
-{
-    if (moreOtherSettingsWidget->isHidden()){
-        moreOtherSettingsWidget->show();
-    }else {
-        moreOtherSettingsWidget->activateWindow();
-    }
-}
-
-void SAKOtherSettings::onFormatSettingsPushButtonClicked()
-{
-    if (formatSettingsWidget->isHidden()){
-        formatSettingsWidget->show();
-    }else {
-        formatSettingsWidget->activateWindow();
+    if (label){
+        label->setText(QString::number(text));
     }
 }

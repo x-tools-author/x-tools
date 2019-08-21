@@ -31,6 +31,7 @@
 #include "SAKDataFactory.hh"
 #include "SAKCRCInterface.hh"
 #include "SAKOtherSettings.hh"
+#include "SAKStatisticsManager.hh"
 #include "HighlightSettingsWidget.hh"
 
 SAKDebugPage::SAKDebugPage(QWidget *parent)
@@ -44,6 +45,7 @@ SAKDebugPage::SAKDebugPage(QWidget *parent)
     ui->setupUi(this);
 
     otherSettings = new SAKOtherSettings(this, this);
+    statisticsManager = new SAKStatisticsManager(this);
 
     /*
      * 初始化ui指针变量
@@ -327,16 +329,6 @@ void SAKDebugPage::cancleCycle()
 void SAKDebugPage::bytesRead(QByteArray data)
 {
     /*
-     * 更新数据统计
-     */
-    qlonglong receiveFrameCount = rxFramesLabel->text().toLongLong();
-    receiveFrameCount += 1;
-    rxFramesLabel->setText(QString::number(receiveFrameCount));
-    qlonglong receiveBytesCount = rxBytesLabel->text().toLongLong();
-    receiveBytesCount += data.length();
-    rxBytesLabel->setText(QString::number(receiveBytesCount));
-
-    /*
      * 更新状态灯
      */
 
@@ -352,14 +344,6 @@ void SAKDebugPage::bytesRead(QByteArray data)
 
 void SAKDebugPage::bytesWritten(QByteArray data)
 {
-    qlonglong writeBytes = txBytesLabel->text().toLongLong();
-    writeBytes += data.length();
-    txBytesLabel->setText(QString::number(writeBytes));
-
-    qlonglong writeFrame = txFramesLabel->text().toLongLong();
-    writeFrame += 1;
-    txFramesLabel->setText(QString::number(writeFrame));
-
     if (showTxDataCheckBox->isChecked()){
         OutputParameters parameters = outputParameters();
         parameters.isReceivedData = false;
@@ -406,14 +390,14 @@ void SAKDebugPage::outputData(QString data)
 
 void SAKDebugPage::resetSendDataCount()
 {
-    txBytesLabel->setText("0");
-    txFramesLabel->setText("0");
+//    txBytesLabel->setText("0");
+//    txFramesLabel->setText("0");
 }
 
 void SAKDebugPage::resetReceiveDataCount()
 {
-    rxBytesLabel->setText("0");
-    rxFramesLabel->setText("0");
+//    rxBytesLabel->setText("0");
+//    rxFramesLabel->setText("0");
 }
 
 void SAKDebugPage::setOutputMode(QString mode)
@@ -562,34 +546,6 @@ void SAKDebugPage::initUiPointer()
     clearOutputPushButton   = ui->clearOutputPushButton;
     saveOutputPushButton    = ui->saveOutputPushButton;
     outputTextBroswer       = ui->outputTextBroswer;
-
-    /*
-     * 数据管理组
-     */
-    rxFramesLabel           = ui->rxFramesLabel;
-    txFramesLabel           = ui->txFramesLabel;
-    rxBytesLabel            = ui->rxBytesLabel;
-    txBytesLabel            = ui->txBytesLabel;
-    resetRxCountPushButton  = ui->resetRxCountPushButton;
-    resetTxCountPushButton  = ui->resetTxCountPushButton;
-}
-
-void SAKDebugPage::on_resetRxCountPushButton_clicked()
-{
-    receiveFrames = 0;
-    setLabelText(rxFramesLabel, receiveFrames);
-
-    receiveBytes = 0;
-    setLabelText(rxBytesLabel, receiveBytes);
-}
-
-void SAKDebugPage::on_resetTxCountPushButton_clicked()
-{
-    sendFrames = 0;
-    setLabelText(txFramesLabel, sendFrames);
-
-    sendBytes = 0;
-    setLabelText(txBytesLabel, sendBytes);
 }
 
 void SAKDebugPage::on_outputModelComboBox_currentTextChanged(const QString &text)

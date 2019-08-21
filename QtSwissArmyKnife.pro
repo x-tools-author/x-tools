@@ -41,6 +41,7 @@ HEADERS += \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/TransmissionPage.hh \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/TransmissionSettings.hh \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/UdpTransmissionItemWidget.hh \
+    Src/Common/SAKDebugPage/Statistics/SAKStatisticsManager.hh \
     Src/SAKGlobal.hh \
     Src/SAKVersion.hh \
     Src/SAKMainWindow.hh \
@@ -72,6 +73,7 @@ SOURCES += \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/TransmissionPage.cc \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/TransmissionSettings.cc \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/UdpTransmissionItemWidget.cc \
+    Src/Common/SAKDebugPage/Statistics/SAKStatisticsManager.cc \
     Src/main.cc \
     Src/SAKGlobal.cc \
     Src/SAKVersion.cc \
@@ -115,7 +117,8 @@ INCLUDEPATH += \
     Src/Common/SAKDebugPage/Other/ReadWriteSettings \
     Src/Common/SAKDebugPage/Other/TransmissionSettings \
     Src/Common/SAKDebugPage/Other/MoreOtherSettings \
-    Src/Common/SAKDebugPage/Other/FormatSettings
+    Src/Common/SAKDebugPage/Other/FormatSettings \
+    Src/Common/SAKDebugPage/Statistics
 
 
 

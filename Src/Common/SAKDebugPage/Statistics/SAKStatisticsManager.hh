@@ -13,51 +13,45 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#ifndef SAKOTHERSETTINGS_HH
-#define SAKOTHERSETTINGS_HH
+#ifndef SAKSTATISTICSMANAGER_HH
+#define SAKSTATISTICSMANAGER_HH
 
+#include <QLabel>
 #include <QObject>
 #include <QPushButton>
 
-class TransmissionSettings;
-class AutoResponseSettingWidget;
+#include "SAKDebugPage.hh"
 
-class SAKDebugPage;
-class FormatSettingsWidget;
-class HighlightSettingsWidget;
-class MoreOtherSettingsWidget;
-class ReadWriteSettingsWidget;
-
-class SAKOtherSettings:public QObject
+class SAKStatisticsManager:public QObject
 {
     Q_OBJECT
 public:
-    SAKOtherSettings(SAKDebugPage *debugPage, QObject *parent = nullptr);
-    ~SAKOtherSettings();
+    SAKStatisticsManager(SAKDebugPage *debugPage, QObject *parent = nullptr);
+private:
+    SAKDebugPage *_debugPage;
 
-private:    
-    QPushButton                 *autoResponseSettingPushButton  = nullptr;  // 自动回复设置面板调出按钮
-    QPushButton                 *highlightSettingPushButton     = nullptr;  // 高亮设置面板调出按钮
-    QPushButton                 *readWriteSettingPushButton     = nullptr;  // 读写设置面板调出按钮
-    QPushButton                 *transmissionSettingPushButton  = nullptr;  // 数据转发设置面板调出按钮
-    QPushButton                 *moreOtherSettingsPushButton    = nullptr;  // 更多其他设置按钮
-    QPushButton                 *formatSettingsPushButton       = nullptr;  // 格式设置
+    QLabel *txFramesLabel;
+    QLabel *txBytesLabel;
+    QLabel *rxFramesLabel;
+    QLabel *rxBytesLabel;
 
-    TransmissionSettings        *transmissionSettings;                      // 数据转发设置面板
-    AutoResponseSettingWidget   *autoResponseSettingWidget;                 // 自动回复设置面板
-    HighlightSettingsWidget     *highlighterSettingPanel;                   // 高亮设置面板
-    MoreOtherSettingsWidget     *moreOtherSettingsWidget;                   // 更多设置面板
-    FormatSettingsWidget        *formatSettingsWidget;                      // 格式分析面板
-    ReadWriteSettingsWidget     *readWriteSettingsWidget;                   // 读写参数设置面板
-
-    SAKDebugPage                *_debugPage                     = nullptr;  // 调试页面
-private slots:
-    void onAutoresponseSettingPushbuttonClicked();
-    void onHighlightSettingPushButtonClicked();
-    void onReadWriteSettingPushButtonClicked();
-    void onTransmissionSettingPushButtonClicked();
-    void onMoreOtherSettingsPushButtonClicked();
-    void onFormatSettingsPushButtonClicked();
+    QPushButton *resetTxCountPushButton;
+    QPushButton *resetRxCountPushButton;
+private:
+    /**
+     * @brief 数据统计项
+     */
+    struct DataContext {
+        quint64 txFrames;   // 发送帧数
+        quint64 txBytes;    // 发送字节数
+        quint64 rxFrames;   // 接收帧数
+        quint64 rxBytes;    // 接收字节数
+    }dataContext;
+private:
+    void dataReadOrwritten(QByteArray data, SAKDebugPage::OutputParameters parameters);
+    void clearRxStatistics();
+    void clearTxStatistics();
+    void setLabelText(QLabel *label, quint64 text);
 };
 
 #endif
