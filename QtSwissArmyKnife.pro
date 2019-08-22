@@ -27,7 +27,9 @@ HEADERS += \
     Src/Base/SAKDialog.hh \
     Src/Base/SAKMessageBox.hh \
     Src/Base/SAKWidget.hh \
+    Src/Common/SAKDebugPage/Chart/MoreChart/MoreChartWidget.hh \
     Src/Common/SAKDebugPage/Chart/SAKChartManager.hh \
+    Src/Common/SAKDebugPage/Chart/Throughput/ThroughputWidget.hh \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseItemWidget.hh \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.hh \
     Src/Common/SAKDebugPage/Other/FormatSettings/FormatSettingsWidget.hh \
@@ -60,7 +62,9 @@ SOURCES += \
     Src/Base/SAKDialog.cc \
     Src/Base/SAKMessageBox.cc \
     Src/Base/SAKWidget.cc \
+    Src/Common/SAKDebugPage/Chart/MoreChart/MoreChartWidget.cc \
     Src/Common/SAKDebugPage/Chart/SAKChartManager.cc \
+    Src/Common/SAKDebugPage/Chart/Throughput/ThroughputWidget.cc \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseItemWidget.cc \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.cc \
     Src/Common/SAKDebugPage/Other/FormatSettings/FormatSettingsWidget.cc \
@@ -90,6 +94,8 @@ SOURCES += \
 
 
 FORMS += \
+    Src/Common/SAKDebugPage/Chart/MoreChart/MoreChartWidget.ui \
+    Src/Common/SAKDebugPage/Chart/Throughput/ThroughputWidget.ui \
     Src/Common/SAKDebugPage/Other/FormatSettings/FormatSettingsWidget.ui \
     Src/Common/SAKDebugPage/Other/MoreOtherSettings/MoreOtherSettingsWidget.ui \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/TransmissionPage.ui \
@@ -121,7 +127,9 @@ INCLUDEPATH += \
     Src/Common/SAKDebugPage/Other/MoreOtherSettings \
     Src/Common/SAKDebugPage/Other/FormatSettings \
     Src/Common/SAKDebugPage/Statistics \
-    Src/Common/SAKDebugPage/Chart
+    Src/Common/SAKDebugPage/Chart \
+    Src/Common/SAKDebugPage/Chart/Throughput \
+    Src/Common/SAKDebugPage/Chart/MoreChart
 
 
 

@@ -13,24 +13,24 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#ifndef THROUGHPUTWIDGET_HH
-#define THROUGHPUTWIDGET_HH
+#ifndef MORECHARTWIDGET_HH
+#define MORECHARTWIDGET_HH
 
-#include <QWidget>
+#include "SAKWidget.hh"
 
 class SAKDebugPage;
 namespace Ui {
-    class ThroughputWidget;
+    class MoreChartWidget;
 }
-class ThroughputWidget:public QWidget
+class MoreChartWidget:public SAKWidget
 {
     Q_OBJECT
 public:
-    ThroughputWidget(SAKDebugPage *debugPage, QWidget *parent = nullptr);
-    ~ThroughputWidget();
+    MoreChartWidget(SAKDebugPage *debugPage, QWidget *parent = nullptr);
+    ~MoreChartWidget();
 private:
     SAKDebugPage *_debugPage;
-    Ui::ThroughputWidget *ui;
+    Ui::MoreChartWidget *ui;
 };
 
 #endif

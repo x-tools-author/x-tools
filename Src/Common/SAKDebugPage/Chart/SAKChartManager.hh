@@ -17,12 +17,33 @@
 #define SAKCHART_HH
 
 #include <QObject>
+#include <QPushButton>
 
+class SAKDebugPage;
+class MoreChartWidget;
+class ThroughputWidget;
 class SAKChartManager:public QObject
 {
     Q_OBJECT
 public:
-    SAKChartManager(QObject *parent = nullptr);
+    SAKChartManager(SAKDebugPage *debugPage, QObject *parent = nullptr);
+    ~SAKChartManager();
+private:
+    SAKDebugPage *_debugPage;
+
+    QPushButton *throughputPushButton;
+    QPushButton *moreChartPushButton;
+
+    ThroughputWidget *throughputWidget;
+    MoreChartWidget *moreChartWidget;
+
+    /// 显示吞吐量面板
+    void showThroughputPushWidget();
+    /// 显示更多图表面板
+    void showMoreChartWidget();
+
+    void resetThroughputWidgetPtr();
+    void resetMoreChartPushButtonPtr();
 };
 
 #endif

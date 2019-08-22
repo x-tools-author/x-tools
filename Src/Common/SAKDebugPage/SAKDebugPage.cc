@@ -52,6 +52,7 @@ SAKDebugPage::SAKDebugPage(QWidget *parent)
 
     otherSettings = new SAKOtherSettings(this, this);
     statisticsManager = new SAKStatisticsManager(this);
+    chartManager = new SAKChartManager(this, this);
 
     /*
      * 注册数据类型
@@ -531,6 +532,12 @@ void SAKDebugPage::initUiPointer()
     inputTextEdit           = ui->inputTextEdit;
     crcParameterModelsComboBox = ui->crcParameterModelsComboBox;
     crcLabel                = ui->crcLabel;
+
+    /*
+     * 图表
+     */
+    throughputPushButton    = ui->throughputPushButton;
+    moreChartPushButton     = ui->moreChartPushButton;
 
     /*
      * 数据统计

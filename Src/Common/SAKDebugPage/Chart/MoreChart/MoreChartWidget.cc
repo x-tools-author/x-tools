@@ -14,18 +14,18 @@
  * but for "installing B".
  */
 #include "SAKDebugPage.hh"
-#include "ThroughputWidget.hh"
-#include "ui_ThroughputWidget.h"
+#include "MoreChartWidget.hh"
+#include "ui_MoreChartWidget.h"
 
-ThroughputWidget::ThroughputWidget(SAKDebugPage *debugPage, QWidget *parent)
-    :QWidget (parent)
+MoreChartWidget::MoreChartWidget(SAKDebugPage *debugPage, QWidget *parent)
+    :SAKWidget (parent)
     ,_debugPage (debugPage)
-    ,ui (new Ui::ThroughputWidget)
+    ,ui (new Ui::MoreChartWidget)
 {
-    setAttribute(Qt::WA_DeleteOnClose, true);
+    ui->setupUi(this);
 }
 
-ThroughputWidget::~ThroughputWidget()
+MoreChartWidget::~MoreChartWidget()
 {
     delete ui;
 }

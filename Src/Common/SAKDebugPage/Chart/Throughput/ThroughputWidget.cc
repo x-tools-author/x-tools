@@ -14,25 +14,18 @@
  * but for "installing B".
  */
 #include "SAKDebugPage.hh"
-#include "SAKChartManager.hh"
+#include "ThroughputWidget.hh"
+#include "ui_ThroughputWidget.h"
 
-SAKChartManager::SAKChartManager(SAKDebugPage *debugPage, QObject *parent)
-    :QObject (parent)
+ThroughputWidget::ThroughputWidget(SAKDebugPage *debugPage, QWidget *parent)
+    :QWidget (parent)
     ,_debugPage (debugPage)
+    ,ui (new Ui::ThroughputWidget)
 {
-    throughputPushButton = _debugPage->throughputPushButton;
-    moreChartPushButton = _debugPage->moreChartPushButton;
-
-    connect(throughputPushButton, &QPushButton::clicked, this, &SAKChartManager::showThroughputPushWidget);
-    connect(moreChartPushButton, &QPushButton::clicked, this, &SAKChartManager::showMoreChartWidget);
+    setAttribute(Qt::WA_DeleteOnClose, true);
 }
 
-void SAKChartManager::showThroughputPushWidget()
+ThroughputWidget::~ThroughputWidget()
 {
-
-}
-
-void SAKChartManager::showMoreChartWidget()
-{
-
+    delete ui;
 }

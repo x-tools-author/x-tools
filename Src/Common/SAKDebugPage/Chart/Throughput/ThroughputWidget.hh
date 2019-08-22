@@ -13,28 +13,24 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#ifndef SAKCHART_HH
-#define SAKCHART_HH
+#ifndef THROUGHPUTWIDGET_HH
+#define THROUGHPUTWIDGET_HH
 
-#include <QObject>
-#include <QPushButton>
+#include <QWidget>
 
 class SAKDebugPage;
-class SAKChartManager:public QObject
+namespace Ui {
+    class ThroughputWidget;
+}
+class ThroughputWidget:public QWidget
 {
     Q_OBJECT
 public:
-    SAKChartManager(SAKDebugPage *debugPage, QObject *parent = nullptr);
+    ThroughputWidget(SAKDebugPage *debugPage, QWidget *parent = nullptr);
+    ~ThroughputWidget();
 private:
     SAKDebugPage *_debugPage;
-
-    QPushButton *throughputPushButton;
-    QPushButton *moreChartPushButton;
-
-    /// 显示吞吐量面板
-    void showThroughputPushWidget();
-    /// 显示更多图表面板
-    void showMoreChartWidget();
+    Ui::ThroughputWidget *ui;
 };
 
 #endif

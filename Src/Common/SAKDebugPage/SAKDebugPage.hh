@@ -118,7 +118,8 @@ public:
      */
     void outputMessage(QString msg, bool isInfo = true);
 
-    friend class SAKOtherSettings;
+    friend class SAKChartManager;
+    friend class SAKOtherSettings;   
     friend class SAKStatisticsManager;
 protected:
     /**
@@ -284,7 +285,12 @@ private slots:
     void on_clearOutputPushButton_clicked();
     void on_saveOutputPushButton_clicked();
 
-    // 数据管理组
+    // 图表
+protected:
+    QPushButton *throughputPushButton;
+    QPushButton *moreChartPushButton;
+
+    // 数据统计
 protected:
     bool        receivedFlag                    = false;    // 接受状态指示灯
     bool        sendFlag                        = false;    // 接受指示灯状态
@@ -297,13 +303,14 @@ protected:
     QLabel      *txBytesLabel;
     QPushButton *resetTxCountPushButton;
     QPushButton *resetRxCountPushButton;
+
 private:
     /// 其他设置
     SAKOtherSettings *otherSettings;
     /// 数据统计
     SAKStatisticsManager *statisticsManager;
     /// 图标显示
-    SAKChartManager *chart;
+    SAKChartManager *chartManager;
 
 private:
     /**
