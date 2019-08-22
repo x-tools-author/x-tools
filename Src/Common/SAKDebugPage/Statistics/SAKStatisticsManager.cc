@@ -91,11 +91,11 @@ void SAKStatisticsManager::speedCalculationTimerTimeout()
 {
     auto cal = [](QLabel *label, quint64 &bytes){
         if (bytes < 1024){
-            label->setText(QString("%1B/s").arg(bytes));
+            label->setText(QString("%1 B/s").arg(bytes));
         }else if(bytes < (1024*1024)){
-            label->setText(QString("%1KB/s").arg(bytes/1024));
+            label->setText(QString("%1 KB/s").arg(bytes/1024));
         }else{
-            label->setText(QString("%1MB/s").arg(bytes/(1024*1024)));
+            label->setText(QString("%1 MB/s").arg(bytes/(1024*1024)));
         }
 
         bytes = 0;
