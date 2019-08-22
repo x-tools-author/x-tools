@@ -38,6 +38,10 @@ SAKChartManager::~SAKChartManager()
     if (throughputWidget){
         delete throughputWidget;
     }
+
+    if (moreChartWidget){
+        delete moreChartWidget;
+    }
 }
 
 void SAKChartManager::showThroughputPushWidget()

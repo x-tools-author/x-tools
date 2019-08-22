@@ -95,7 +95,6 @@ SOURCES += \
 
 FORMS += \
     Src/Common/SAKDebugPage/Chart/MoreChart/MoreChartWidget.ui \
-    Src/Common/SAKDebugPage/Chart/Throughput/ThroughputWidget.ui \
     Src/Common/SAKDebugPage/Other/FormatSettings/FormatSettingsWidget.ui \
     Src/Common/SAKDebugPage/Other/MoreOtherSettings/MoreOtherSettingsWidget.ui \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/TransmissionPage.ui \

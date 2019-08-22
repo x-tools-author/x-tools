@@ -16,21 +16,44 @@
 #ifndef THROUGHPUTWIDGET_HH
 #define THROUGHPUTWIDGET_HH
 
+#include "SAKDebugPage.hh"
+
+#include <QTimer>
+#include <QChart>
 #include <QWidget>
+#include <QChartView>
+#include <QLineSeries>
+
+QT_CHARTS_USE_NAMESPACE
 
 class SAKDebugPage;
-namespace Ui {
-    class ThroughputWidget;
-}
+
 class ThroughputWidget:public QWidget
 {
     Q_OBJECT
 public:
     ThroughputWidget(SAKDebugPage *debugPage, QWidget *parent = nullptr);
     ~ThroughputWidget();
+
 private:
+    struct DataContext {
+        qreal rxBytes;
+        qreal txBytes;
+        qreal rxMax;
+        qreal txMax;
+    }dataContext;
+
     SAKDebugPage *_debugPage;
-    Ui::ThroughputWidget *ui;
+
+    QLineSeries *rxLineSeries;
+    QLineSeries *txLineSeries;
+
+    QChart *chart;
+    QChartView *chartView;
+
+    QTimer updateTimer;
+    void updateTimerTimeout();
+    void dataReadOrwritten(QByteArray data, SAKDebugPage::OutputParameters parameters);
 };
 
 #endif
