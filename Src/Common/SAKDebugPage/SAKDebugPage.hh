@@ -34,6 +34,7 @@
 #include "ReadWriteSettingsWidget.hh"
 #include "AutoResponseSettingWidget.hh"
 
+class SAKChartManager;
 class SAKDataFactory;
 class SAKCRCInterface;
 class SAKOtherSettings;
@@ -283,16 +284,26 @@ private slots:
     void on_clearOutputPushButton_clicked();
     void on_saveOutputPushButton_clicked();
 
-
     // 数据管理组
 protected:
     bool        receivedFlag                    = false;    // 接受状态指示灯
     bool        sendFlag                        = false;    // 接受指示灯状态
+
+    QLabel      *rxSpeedLabel;
+    QLabel      *txSpeedLabel;
+    QLabel      *rxFramesLabel;
+    QLabel      *txFramesLabel;
+    QLabel      *rxBytesLabel;
+    QLabel      *txBytesLabel;
+    QPushButton *resetTxCountPushButton;
+    QPushButton *resetRxCountPushButton;
 private:
     /// 其他设置
-    SAKOtherSettings *otherSettings             = nullptr;
+    SAKOtherSettings *otherSettings;
     /// 数据统计
-    SAKStatisticsManager *statisticsManager     = nullptr;
+    SAKStatisticsManager *statisticsManager;
+    /// 图标显示
+    SAKChartManager *chart;
 
 private:
     /**

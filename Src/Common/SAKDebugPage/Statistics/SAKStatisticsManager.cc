@@ -13,29 +13,36 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#include "ui_SAKDebugPage.h"
 #include "SAKStatisticsManager.hh"
 
 SAKStatisticsManager::SAKStatisticsManager(SAKDebugPage *debugPage, QObject *parent)
     :QObject (parent)
     ,_debugPage (debugPage)
 {
-    txFramesLabel   = _debugPage->ui->txFramesLabel;
-    rxFramesLabel   = _debugPage->ui->rxFramesLabel;
-    txBytesLabel    = _debugPage->ui->txBytesLabel;
-    rxBytesLabel    = _debugPage->ui->rxBytesLabel;
+    rxSpeedLabel    = _debugPage->rxSpeedLabel;
+    txSpeedLabel    = _debugPage->txSpeedLabel;
+    txFramesLabel   = _debugPage->txFramesLabel;
+    rxFramesLabel   = _debugPage->rxFramesLabel;
+    txBytesLabel    = _debugPage->txBytesLabel;
+    rxBytesLabel    = _debugPage->rxBytesLabel;
 
-    resetTxCountPushButton  = _debugPage->ui->resetTxCountPushButton;
-    resetRxCountPushButton  = _debugPage->ui->resetRxCountPushButton;
+    resetTxCountPushButton  = _debugPage->resetTxCountPushButton;
+    resetRxCountPushButton  = _debugPage->resetRxCountPushButton;
 
     dataContext.rxBytes  = 0;
     dataContext.txBytes  = 0;
     dataContext.rxFrames = 0;
     dataContext.txFrames = 0;
+    dataContext.rxBytesPerSecond = 0;
+    dataContext.txBytesPerSecond = 0;
 
     connect(_debugPage, &SAKDebugPage::dataReadOrwritten, this, &SAKStatisticsManager::dataReadOrwritten);
     connect(resetRxCountPushButton, &QPushButton::clicked, this, &SAKStatisticsManager::clearRxStatistics);
     connect(resetTxCountPushButton, &QPushButton::clicked, this, &SAKStatisticsManager::clearTxStatistics);
+
+    speedCalculationTimer.setInterval(1*1000);
+    connect(&speedCalculationTimer, &QTimer::timeout, this, &SAKStatisticsManager::speedCalculationTimerTimeout);
+    speedCalculationTimer.start();
 }
 
 void SAKStatisticsManager::dataReadOrwritten(QByteArray data, SAKDebugPage::OutputParameters parameters)
@@ -45,11 +52,15 @@ void SAKStatisticsManager::dataReadOrwritten(QByteArray data, SAKDebugPage::Outp
         dataContext.rxBytes += static_cast<quint64>(data.length());
         setLabelText(rxFramesLabel, dataContext.rxFrames);
         setLabelText(rxBytesLabel, dataContext.rxBytes);
+
+        dataContext.rxBytesPerSecond += static_cast<quint64>(data.length());
     }else{
         dataContext.txFrames += 1;
         dataContext.txBytes += static_cast<quint64>(data.length());
         setLabelText(txFramesLabel, dataContext.txFrames);
         setLabelText(txBytesLabel, dataContext.txBytes);
+
+        dataContext.txBytesPerSecond += static_cast<quint64>(data.length());
     }
 }
 
@@ -74,4 +85,22 @@ void SAKStatisticsManager::setLabelText(QLabel *label, quint64 text)
     if (label){
         label->setText(QString::number(text));
     }
+}
+
+void SAKStatisticsManager::speedCalculationTimerTimeout()
+{
+    auto cal = [](QLabel *label, quint64 &bytes){
+        if (bytes < 1024){
+            label->setText(QString("%1B/s").arg(bytes));
+        }else if(bytes < (1024*1024)){
+            label->setText(QString("%1KB/s").arg(bytes/1024));
+        }else{
+            label->setText(QString("%1MB/s").arg(bytes/(1024*1024)));
+        }
+
+        bytes = 0;
+    };
+
+    cal(rxSpeedLabel, dataContext.rxBytesPerSecond);
+    cal(txSpeedLabel, dataContext.txBytesPerSecond);
 }

@@ -16,6 +16,7 @@
 #ifndef SAKSTATISTICSMANAGER_HH
 #define SAKSTATISTICSMANAGER_HH
 
+#include <QTimer>
 #include <QLabel>
 #include <QObject>
 #include <QPushButton>
@@ -30,6 +31,8 @@ public:
 private:
     SAKDebugPage *_debugPage;
 
+    QLabel *rxSpeedLabel;
+    QLabel *txSpeedLabel;
     QLabel *txFramesLabel;
     QLabel *txBytesLabel;
     QLabel *rxFramesLabel;
@@ -46,12 +49,17 @@ private:
         quint64 txBytes;    // 发送字节数
         quint64 rxFrames;   // 接收帧数
         quint64 rxBytes;    // 接收字节数
+        quint64 rxBytesPerSecond;   // 每秒接收字节数
+        quint64 txBytesPerSecond;   // 每秒发送字节数
     }dataContext;
+
+    QTimer speedCalculationTimer;
 private:
     void dataReadOrwritten(QByteArray data, SAKDebugPage::OutputParameters parameters);
     void clearRxStatistics();
     void clearTxStatistics();
     void setLabelText(QLabel *label, quint64 text);
+    void speedCalculationTimerTimeout();
 };
 
 #endif

@@ -26,6 +26,7 @@
 #include <QIntValidator>
 #include <QLoggingCategory>
 
+#include "SAKChartManager.hh"
 #include "SAKDebugPage.hh"
 #include "ui_SAKDebugPage.h"
 #include "SAKDataFactory.hh"
@@ -44,13 +45,13 @@ SAKDebugPage::SAKDebugPage(QWidget *parent)
      */
     ui->setupUi(this);
 
-    otherSettings = new SAKOtherSettings(this, this);
-    statisticsManager = new SAKStatisticsManager(this);
-
     /*
      * 初始化ui指针变量
      */
     initUiPointer();
+
+    otherSettings = new SAKOtherSettings(this, this);
+    statisticsManager = new SAKStatisticsManager(this);
 
     /*
      * 注册数据类型
@@ -130,7 +131,7 @@ void SAKDebugPage::setUpController()
     QWidget *controller = controllerWidget();
     if (controller){
         QGridLayout *layout = reinterpret_cast<QGridLayout *>(deviceSettingGroupBox->layout());
-        layout->addWidget(controller, 2, 0, 1, 2);
+        layout->addWidget(controller, 0, 0, 1, 2);
     }
 }
 
@@ -530,6 +531,18 @@ void SAKDebugPage::initUiPointer()
     inputTextEdit           = ui->inputTextEdit;
     crcParameterModelsComboBox = ui->crcParameterModelsComboBox;
     crcLabel                = ui->crcLabel;
+
+    /*
+     * 数据统计
+     */
+    rxSpeedLabel            = ui->rxSpeedLabel;
+    txSpeedLabel            = ui->txSpeedLabel;
+    rxFramesLabel           = ui->rxFramesLabel;
+    txFramesLabel           = ui->txFramesLabel;
+    rxBytesLabel            = ui->rxBytesLabel;
+    txBytesLabel            = ui->txBytesLabel;
+    resetTxCountPushButton  = ui->resetTxCountPushButton;
+    resetRxCountPushButton  = ui->resetRxCountPushButton;
 
     /*
      * 输出设置组

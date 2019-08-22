@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT += core gui xml
+QT += core gui xml charts
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets network
 
@@ -27,6 +27,7 @@ HEADERS += \
     Src/Base/SAKDialog.hh \
     Src/Base/SAKMessageBox.hh \
     Src/Base/SAKWidget.hh \
+    Src/Common/SAKDebugPage/Chart/SAKChartManager.hh \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseItemWidget.hh \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.hh \
     Src/Common/SAKDebugPage/Other/FormatSettings/FormatSettingsWidget.hh \
@@ -59,6 +60,7 @@ SOURCES += \
     Src/Base/SAKDialog.cc \
     Src/Base/SAKMessageBox.cc \
     Src/Base/SAKWidget.cc \
+    Src/Common/SAKDebugPage/Chart/SAKChartManager.cc \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseItemWidget.cc \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.cc \
     Src/Common/SAKDebugPage/Other/FormatSettings/FormatSettingsWidget.cc \
@@ -118,7 +120,8 @@ INCLUDEPATH += \
     Src/Common/SAKDebugPage/Other/TransmissionSettings \
     Src/Common/SAKDebugPage/Other/MoreOtherSettings \
     Src/Common/SAKDebugPage/Other/FormatSettings \
-    Src/Common/SAKDebugPage/Statistics
+    Src/Common/SAKDebugPage/Statistics \
+    Src/Common/SAKDebugPage/Chart
 
 
 
