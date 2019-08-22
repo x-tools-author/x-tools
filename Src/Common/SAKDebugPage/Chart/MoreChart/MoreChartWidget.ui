@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ThroughputWidget</class>
+ <widget class="QWidget" name="ThroughputWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>683</width>
+    <height>340</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>吞吐量</string>
+  </property>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
