@@ -30,6 +30,7 @@ HEADERS += \
     Src/Common/SAKDebugPage/Chart/MoreChart/MoreChartWidget.hh \
     Src/Common/SAKDebugPage/Chart/SAKChartManager.hh \
     Src/Common/SAKDebugPage/Chart/Throughput/ThroughputWidget.hh \
+    Src/Common/SAKDebugPage/Message/DebugPageMessageManager.hh \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseItemWidget.hh \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.hh \
     Src/Common/SAKDebugPage/Other/FormatSettings/FormatSettingsWidget.hh \
@@ -44,6 +45,7 @@ HEADERS += \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/TransmissionPage.hh \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/TransmissionSettings.hh \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/UdpTransmissionItemWidget.hh \
+    Src/Common/SAKDebugPage/Output/DebugPageOutputManager.hh \
     Src/Common/SAKDebugPage/Statistics/SAKStatisticsManager.hh \
     Src/SAKGlobal.hh \
     Src/SAKVersion.hh \
@@ -65,6 +67,7 @@ SOURCES += \
     Src/Common/SAKDebugPage/Chart/MoreChart/MoreChartWidget.cc \
     Src/Common/SAKDebugPage/Chart/SAKChartManager.cc \
     Src/Common/SAKDebugPage/Chart/Throughput/ThroughputWidget.cc \
+    Src/Common/SAKDebugPage/Message/DebugPageMessageManager.cc \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseItemWidget.cc \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.cc \
     Src/Common/SAKDebugPage/Other/FormatSettings/FormatSettingsWidget.cc \
@@ -79,6 +82,7 @@ SOURCES += \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/TransmissionPage.cc \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/TransmissionSettings.cc \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/UdpTransmissionItemWidget.cc \
+    Src/Common/SAKDebugPage/Output/DebugPageOutputManager.cc \
     Src/Common/SAKDebugPage/Statistics/SAKStatisticsManager.cc \
     Src/main.cc \
     Src/SAKGlobal.cc \
@@ -128,7 +132,9 @@ INCLUDEPATH += \
     Src/Common/SAKDebugPage/Statistics \
     Src/Common/SAKDebugPage/Chart \
     Src/Common/SAKDebugPage/Chart/Throughput \
-    Src/Common/SAKDebugPage/Chart/MoreChart
+    Src/Common/SAKDebugPage/Chart/MoreChart \
+    Src/Common/SAKDebugPage/Output \
+    Src/Common/SAKDebugPage/Message \
 
 
 

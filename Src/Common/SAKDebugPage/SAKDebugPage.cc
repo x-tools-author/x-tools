@@ -26,38 +26,31 @@
 #include <QIntValidator>
 #include <QLoggingCategory>
 
-#include "SAKChartManager.hh"
 #include "SAKDebugPage.hh"
 #include "ui_SAKDebugPage.h"
 #include "SAKDataFactory.hh"
+#include "SAKChartManager.hh"
 #include "SAKCRCInterface.hh"
 #include "SAKOtherSettings.hh"
 #include "SAKStatisticsManager.hh"
+#include "DebugPageOutputManager.hh"
 #include "HighlightSettingsWidget.hh"
+#include "DebugPageMessageManager.hh"
 
 SAKDebugPage::SAKDebugPage(QWidget *parent)
     :QWidget(parent)
     ,crcInterface (new SAKCRCInterface(this)) 
     ,ui (new Ui::SAKDebugPage)
 {
-    /*
-     * 安装ui
-     */
     ui->setupUi(this);
-
-    /*
-     * 初始化ui指针变量
-     */
     initUiPointer();
-
-    otherSettings = new SAKOtherSettings(this, this);
-    statisticsManager = new SAKStatisticsManager(this);
-    chartManager = new SAKChartManager(this, this);
-
-    /*
-     * 注册数据类型
-     */
     registerMetaType();
+
+    chartManager            = new SAKChartManager(this, this);
+    outputManager           = new DebugPageOutputManager(this, this);
+    otherSettings           = new SAKOtherSettings(this, this);
+    statisticsManager       = new SAKStatisticsManager(this);
+    debugPageMessageManager = new DebugPageMessageManager(this, this);
 
     /*
      * 数据传输关联
@@ -287,19 +280,7 @@ void SAKDebugPage::cycleTimerTimeout()
 
 void SAKDebugPage::outputMessage(QString msg, bool isInfo)
 {
-    QString time = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
-    time = QString("<font color=silver>%1</font>").arg(time);
-    messageTextBrowser->append(time);
-
-    if (isInfo){
-        msg = QString("<font color=blue>%1</font>").arg(msg);
-    }else{
-        msg = QString("<font color=red>%1</font>").arg(msg);
-        QApplication::beep();
-    }
-
-    messageTextBrowser->append(msg);
-    messageTextBrowser->append("");
+    debugPageMessageManager->outputMessage(msg, isInfo);
 }
 
 void SAKDebugPage::changedDeviceStatus(bool opened)
@@ -330,10 +311,6 @@ void SAKDebugPage::cancleCycle()
 
 void SAKDebugPage::bytesRead(QByteArray data)
 {
-    /*
-     * 更新状态灯
-     */
-
     /*
      * 输出接受到的数据
      */

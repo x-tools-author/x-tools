@@ -34,24 +34,19 @@
 #include "ReadWriteSettingsWidget.hh"
 #include "AutoResponseSettingWidget.hh"
 
-class SAKChartManager;
 class SAKDataFactory;
+class SAKChartManager;
 class SAKCRCInterface;
 class SAKOtherSettings;
-class TransmissionSettings;
 class SAKStatisticsManager;
+class TransmissionSettings;
+class DebugPageOutputManager;
 class HighlightSettingsWidget;
+class DebugPageMessageManager;
 
 namespace Ui {
-class SAKDebugPage;
+    class SAKDebugPage;
 }
-
-/*
- * Hei, Developer! Takeacre of this warning!
- * 由于使用了信号与槽的自动关联，指向ui控件的指针变量的名称必须与ui控件的objectName保持一致。
- * 使用designer改变ui控件变量名称时，objectName属性会自动更新，不要在designer中手动更改ui控件的objectName。
- * objectName与变量名称不一致会导致信号与槽的关联失效。
- */
 
 class SAKDebugPage : public QWidget
 {
@@ -111,16 +106,15 @@ public:
      * @param data              -- 代写的数据
      */
     void write(QByteArray data);
-    /**
-     * @brief outputMessage -- 输出信息到ui显示
-     * @param msg           -- 需要输出的消息
-     * @param isInfo        -- 是否为普通消息
-     */
+
+    /// 输出内部信息
     void outputMessage(QString msg, bool isInfo = true);
 
     friend class SAKChartManager;
-    friend class SAKOtherSettings;   
+    friend class SAKOtherSettings;       
     friend class SAKStatisticsManager;
+    friend class DebugPageOutputManager;
+    friend class DebugPageMessageManager;
 protected:
     /**
      * @brief openOrColoseDevice    -- 打开或者关闭设备
@@ -232,9 +226,6 @@ private slots:
     void on_refreshPushButton_clicked(){refreshDevice();}
     void on_switchPushButton_clicked(){openOrColoseDevice();}
 
-    // 消息输出组
-protected:
-    QTextBrowser *messageTextBrowser            = nullptr;  // 消息输出框
 
      // 输入设置组
 protected:
@@ -263,7 +254,11 @@ private slots:
     void on_inputTextEdit_textChanged();
     void on_crcParameterModelsComboBox_currentTextChanged(const QString &text);
 
-    //数据输出组管理
+    //数据输出组管理    
+protected:
+    QTextBrowser *messageTextBrowser            = nullptr;  // 消息输出框
+
+    // 消息输出组
 protected:
     TextDisplayModel outputTextModel = SAKDebugPage::Hex;
 
@@ -305,12 +300,11 @@ protected:
     QPushButton *resetRxCountPushButton;
 
 private:
-    /// 其他设置
-    SAKOtherSettings *otherSettings;
-    /// 数据统计
-    SAKStatisticsManager *statisticsManager;
-    /// 图标显示
-    SAKChartManager *chartManager;
+    SAKChartManager         *chartManager;
+    SAKOtherSettings        *otherSettings;
+    SAKStatisticsManager    *statisticsManager;
+    DebugPageOutputManager  *outputManager;
+    DebugPageMessageManager *debugPageMessageManager;
 
 private:
     /**
