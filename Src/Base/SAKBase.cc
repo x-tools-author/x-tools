@@ -13,7 +13,7 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#include "EDBaseApi.hh"
+#include "SAKBase.hh"
 
 #include <QSerialPort>
 #include <QHostAddress>
@@ -23,23 +23,23 @@
 
 Q_DECLARE_METATYPE(QSerialPortInfo)
 
-EDBaseApi *EDBaseApi::instance()
+SAKBase *SAKBase::instance()
 {
     if (!_this){
-        new EDBaseApi;
+        new SAKBase;
     }
 
-    return EDBaseApi::_this;
+    return SAKBase::_this;
 }
 
-EDBaseApi *EDBaseApi::_this = nullptr;
-EDBaseApi::EDBaseApi(QObject *parent)
+SAKBase *SAKBase::_this = nullptr;
+SAKBase::SAKBase(QObject *parent)
     :QObject (parent)
 {
 
 }
 
-void EDBaseApi::initComComboBox(QComboBox *comboBox)
+void SAKBase::initComComboBox(QComboBox *comboBox)
 {
     if (comboBox){
         comboBox->clear();
@@ -50,7 +50,7 @@ void EDBaseApi::initComComboBox(QComboBox *comboBox)
     }
 }
 
-void EDBaseApi::initBaudRateComboBox(QComboBox *comboBox)
+void SAKBase::initBaudRateComboBox(QComboBox *comboBox)
 {
     if (comboBox){
         comboBox->clear();
@@ -63,7 +63,7 @@ void EDBaseApi::initBaudRateComboBox(QComboBox *comboBox)
     }
 }
 
-void EDBaseApi::initDataBitsComboBox(QComboBox *comboBox)
+void SAKBase::initDataBitsComboBox(QComboBox *comboBox)
 {
     if (comboBox){
         comboBox->clear();
@@ -74,7 +74,7 @@ void EDBaseApi::initDataBitsComboBox(QComboBox *comboBox)
     }
 }
 
-void EDBaseApi::initStopBitsComboBox(QComboBox *comboBox)
+void SAKBase::initStopBitsComboBox(QComboBox *comboBox)
 {
     if (comboBox){
         comboBox->clear();
@@ -86,7 +86,7 @@ void EDBaseApi::initStopBitsComboBox(QComboBox *comboBox)
     }
 }
 
-void EDBaseApi::initParityComboBox(QComboBox *comboBox)
+void SAKBase::initParityComboBox(QComboBox *comboBox)
 {
     if (comboBox){
         comboBox->clear();
@@ -98,7 +98,7 @@ void EDBaseApi::initParityComboBox(QComboBox *comboBox)
     }
 }
 
-void EDBaseApi::initIpComboBox(QComboBox *comboBox)
+void SAKBase::initIpComboBox(QComboBox *comboBox)
 {
     if (comboBox){
         comboBox->clear();
@@ -111,7 +111,7 @@ void EDBaseApi::initIpComboBox(QComboBox *comboBox)
     }
 }
 
-void EDBaseApi::initTextFormatComboBox(QComboBox *comboBox)
+void SAKBase::initTextFormatComboBox(QComboBox *comboBox)
 {
     comboBox->addItem(tr("二进制"), Bin);
     comboBox->addItem(tr("八进制"), Oct);

@@ -13,24 +13,24 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#ifndef EDBASEAPI_HH
-#define EDBASEAPI_HH
+#ifndef SAKBASE_HH
+#define SAKBASE_HH
 
 #include <QObject>
 #include <QComboBox>
 
-class EDBaseApi:public QObject
+class SAKBase:public QObject
 {
     Q_OBJECT
 public:
-    static EDBaseApi *instance();
+    static SAKBase *instance();
 
-    enum EDTextFormat {
+    enum SAKTextFormat {
         Bin,Oct,Dec,Hex,Ascii,Utf8,Local
     };
 private:
-    EDBaseApi(QObject *parent = nullptr);
-    static EDBaseApi *_this;
+    SAKBase(QObject *parent = nullptr);
+    static SAKBase *_this;
 public:
     /*
      * 串口相关参数显示初始化
