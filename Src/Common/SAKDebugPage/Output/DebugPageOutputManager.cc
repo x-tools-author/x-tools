@@ -13,77 +13,23 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#include "SAKDebugPage.hh"
-#include "SAKChartManager.hh"
-#include "MoreChartWidget.hh"
-#include "ThroughputWidget.hh"
+#include "DebugPageOutputManager.hh"
 
-#include <QDebug>
-
-SAKChartManager::SAKChartManager(SAKDebugPage *debugPage, QObject *parent)
+DebugPageOutputManager::DebugPageOutputManager(SAKDebugPage *debugPage, QObject *parent)
     :QObject (parent)
     ,_debugPage (debugPage)
-    ,throughputWidget (nullptr)
-    ,moreChartWidget (nullptr)
 {
-    throughputPushButton = _debugPage->throughputPushButton;
-    moreChartPushButton = _debugPage->moreChartPushButton;
-
-    connect(throughputPushButton, &QPushButton::clicked, this, &SAKChartManager::showThroughputPushWidget);
-    connect(moreChartPushButton, &QPushButton::clicked, this, &SAKChartManager::showMoreChartWidget);
+    rxLabel                 = _debugPage->rxLabel;
+    txLabel                 = _debugPage->txLabel;
+    outputModelComboBox     = _debugPage->outputModelComboBox;
+    showDateCheckBox        = _debugPage->showDateCheckBox;
+    autoWrapCheckBox        = _debugPage->autoWrapCheckBox;
+    showTimeCheckBox        = _debugPage->showTimeCheckBox;
+    showMsCheckBox          = _debugPage->showMsCheckBox;
+    showRxDataCheckBox      = _debugPage->showRxDataCheckBox;
+    showTxDataCheckBox      = _debugPage->showTxDataCheckBox;
+    clearOutputPushButton   = _debugPage->clearOutputPushButton;
+    saveOutputPushButton    = _debugPage->saveOutputPushButton;
+    outputTextBroswer       = _debugPage->outputTextBroswer;
 }
 
-SAKChartManager::~SAKChartManager()
-{
-    if (throughputWidget){
-        delete throughputWidget;
-    }
-
-    if (moreChartWidget){
-        delete moreChartWidget;
-    }
-}
-
-void SAKChartManager::showThroughputPushWidget()
-{
-    if (throughputWidget){
-        if (throughputWidget->isHidden()){
-            throughputWidget->show();
-        }else if (throughputWidget->isMinimized()){
-            throughputWidget->showNormal();
-        }else{
-            throughputWidget->activateWindow();
-        }
-    }else{
-        throughputWidget = new ThroughputWidget(_debugPage);
-        throughputWidget->show();
-        connect(throughputWidget, &QWidget::destroyed, this, &SAKChartManager::resetThroughputWidgetPtr);
-    }
-}
-
-void SAKChartManager::showMoreChartWidget()
-{
-    if (moreChartWidget){
-        if (moreChartWidget->isHidden()){
-            moreChartWidget->show();
-        }else if (moreChartWidget->isMinimized()){
-            moreChartWidget->showNormal();
-        }else{
-            moreChartWidget->activateWindow();
-        }
-    }else{
-        moreChartWidget = new MoreChartWidget(_debugPage);
-        moreChartWidget->show();
-        connect(moreChartWidget, &QWidget::destroyed, this, &SAKChartManager::resetMoreChartPushButtonPtr);
-    }
-}
-
-void SAKChartManager::resetThroughputWidgetPtr()
-{
-    throughputWidget = nullptr;
-}
-
-void SAKChartManager::resetMoreChartPushButtonPtr()
-{
-    moreChartWidget = nullptr;
-}

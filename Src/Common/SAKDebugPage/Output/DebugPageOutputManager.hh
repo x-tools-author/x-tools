@@ -13,37 +13,36 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#ifndef SAKCHART_HH
-#define SAKCHART_HH
+#ifndef DEBUGPAGEOUTPUTMANAGER_HH
+#define DEBUGPAGEOUTPUTMANAGER_HH
+
+#include "SAKDebugPage.hh"
 
 #include <QObject>
-#include <QPushButton>
 
-class SAKDebugPage;
-class MoreChartWidget;
-class ThroughputWidget;
-class SAKChartManager:public QObject
+
+class DebugPageOutputManager:public QObject
 {
     Q_OBJECT
 public:
-    SAKChartManager(SAKDebugPage *debugPage, QObject *parent = nullptr);
-    ~SAKChartManager();
+    DebugPageOutputManager(SAKDebugPage *debugPage, QObject *parent = nullptr);
 private:
     SAKDebugPage *_debugPage;
 
-    QPushButton *throughputPushButton;
-    QPushButton *moreChartPushButton;
-
-    ThroughputWidget *throughputWidget;
-    MoreChartWidget *moreChartWidget;
-
-    /// 显示吞吐量面板
-    void showThroughputPushWidget();
-    /// 显示更多图表面板
-    void showMoreChartWidget();
-
-    void resetThroughputWidgetPtr();
-    void resetMoreChartPushButtonPtr();
+    QTextBrowser *messageTextBrowser;
+    QLabel       *rxLabel;
+    QLabel       *txLabel;
+    QComboBox    *outputModelComboBox;
+    QCheckBox    *showDateCheckBox;
+    QCheckBox    *autoWrapCheckBox;
+    QCheckBox    *showTimeCheckBox;
+    QCheckBox    *showMsCheckBox;
+    QCheckBox    *showRxDataCheckBox;
+    QCheckBox    *showTxDataCheckBox;
+    QPushButton  *clearOutputPushButton;
+    QPushButton  *saveOutputPushButton;
+    QTextBrowser *outputTextBroswer;
 };
+
 
 #endif
