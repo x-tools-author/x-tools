@@ -33,7 +33,9 @@
 #include "SAKCRCInterface.hh"
 #include "SAKOtherSettings.hh"
 #include "SAKStatisticsManager.hh"
+#include "DebugPageInputManager.hh"
 #include "DebugPageOutputManager.hh"
+#include "DebugPageDeviceManager.hh"
 #include "HighlightSettingsWidget.hh"
 #include "DebugPageMessageManager.hh"
 
@@ -50,7 +52,9 @@ SAKDebugPage::SAKDebugPage(QWidget *parent)
     outputManager           = new DebugPageOutputManager(this, this);
     otherSettings           = new SAKOtherSettings(this, this);
     statisticsManager       = new SAKStatisticsManager(this);
+    debugPageDeviceManager  = new DebugPageDeviceManager(this, this);
     debugPageMessageManager = new DebugPageMessageManager(this, this);
+    debugPageInputManager   = new DebugPageInputManager(this, this);
 
     /*
      * 数据传输关联

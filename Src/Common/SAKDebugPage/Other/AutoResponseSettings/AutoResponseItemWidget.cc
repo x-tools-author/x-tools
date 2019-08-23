@@ -13,7 +13,7 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#include "EDBaseApi.hh"
+#include "SAKBase.hh"
 #include "AutoResponseItemWidget.hh"
 #include "ui_AutoResponseItemWidget.h"
 
@@ -40,8 +40,8 @@ AutoResponseItemWidget::AutoResponseItemWidget(SAKDebugPage *debugPage, QWidget 
     optionComboBox->addItem(tr("接收数据包含参考数据时自动回复"), QVariant::fromValue<int>(Contain));
     optionComboBox->addItem(tr("接收数据不包含参考数据时自动回复"), QVariant::fromValue<int>(Notcontain));
 
-    EDBaseApi::instance()->initTextFormatComboBox(referenceDataFromatComboBox);
-    EDBaseApi::instance()->initTextFormatComboBox(responseDataFormatComboBox);
+    SAKBase::instance()->initTextFormatComboBox(referenceDataFromatComboBox);
+    SAKBase::instance()->initTextFormatComboBox(responseDataFormatComboBox);
 
     connect(_debugPage, &SAKDebugPage::dataReadOrwritten, this, &AutoResponseItemWidget::handleReceiceData);
     connect(this, &AutoResponseItemWidget::requestWrite, _debugPage, &SAKDebugPage::write);
@@ -69,25 +69,25 @@ void AutoResponseItemWidget::setLineEditFormat(QLineEdit *lineEdit, int format)
         lineEdit->setValidator(nullptr);
         lineEdit->clear();
         switch (format) {
-        case EDBaseApi::Bin:
+        case SAKBase::Bin:
             lineEdit->setValidator(new QRegExpValidator(regExpBin, this));
             break;
-        case EDBaseApi::Oct:
+        case SAKBase::Oct:
             lineEdit->setValidator(new QRegExpValidator(regExpOct, this));
             break;
-        case EDBaseApi::Dec:
+        case SAKBase::Dec:
             lineEdit->setValidator(new QRegExpValidator(regExpDec, this));
             break;
-        case EDBaseApi::Hex:
+        case SAKBase::Hex:
             lineEdit->setValidator(new QRegExpValidator(regExpHex, this));
             break;
-        case EDBaseApi::Ascii:
+        case SAKBase::Ascii:
             lineEdit->setValidator(new QRegExpValidator(regExpAscii, this));
             break;
-        case EDBaseApi::Utf8:
+        case SAKBase::Utf8:
             lineEdit->setValidator(nullptr);
             break;
-        case EDBaseApi::Local:
+        case SAKBase::Local:
             lineEdit->setValidator(nullptr);
             break;
         default:
@@ -145,33 +145,33 @@ QByteArray AutoResponseItemWidget::string2array(QString str, int format)
     QStringList strList;
     int base;
     switch (format) {
-    case EDBaseApi::Bin:
+    case SAKBase::Bin:
         base = 2;
         strList = str.split(' ');
         array = stringList2Array(strList, base);
         break;
-    case EDBaseApi::Oct:
+    case SAKBase::Oct:
         base = 8;
         strList = str.split(' ');
         array = stringList2Array(strList, base);
         break;
-    case EDBaseApi::Dec:
+    case SAKBase::Dec:
         base = 10;
         strList = str.split(' ');
         array = stringList2Array(strList, base);
         break;
-    case EDBaseApi::Hex:
+    case SAKBase::Hex:
         base = 16;
         strList = str.split(' ');
         array = stringList2Array(strList, base);
         break;
-    case EDBaseApi::Ascii:
+    case SAKBase::Ascii:
         array = str.toLatin1();
         break;
-    case EDBaseApi::Utf8:
+    case SAKBase::Utf8:
         array = str.toUtf8();
         break;
-    case EDBaseApi::Local:
+    case SAKBase::Local:
         array = str.toLocal8Bit();
         break;
     default:

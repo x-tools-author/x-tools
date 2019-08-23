@@ -14,7 +14,7 @@
  * but for "installing B".
  */
 #include "SAKDebugPage.hh"
-#include "EDBaseApi.hh"
+#include "SAKBase.hh"
 #include "SerialPortTransmissionItemWidget.hh"
 #include "ui_SerialPortTransmissionItemWidget.h"
 
@@ -39,11 +39,11 @@ SerialPortTransmissionItemWidget::SerialPortTransmissionItemWidget(SAKDebugPage 
     stopBitscomboBox            = ui->stopBitscomboBox;
     parityComboBox              = ui->parityComboBox;
 
-    EDBaseApi::instance()->initComComboBox(comComboBox);
-    EDBaseApi::instance()->initBaudRateComboBox(baudRateComboBox);
-    EDBaseApi::instance()->initDataBitsComboBox(dataBitscomboBox);
-    EDBaseApi::instance()->initStopBitsComboBox(stopBitscomboBox);
-    EDBaseApi::instance()->initParityComboBox(parityComboBox);
+    SAKBase::instance()->initComComboBox(comComboBox);
+    SAKBase::instance()->initBaudRateComboBox(baudRateComboBox);
+    SAKBase::instance()->initDataBitsComboBox(dataBitscomboBox);
+    SAKBase::instance()->initStopBitsComboBox(stopBitscomboBox);
+    SAKBase::instance()->initParityComboBox(parityComboBox);
 
     handleReceiveDataCheckBox->setChecked(true);
 }

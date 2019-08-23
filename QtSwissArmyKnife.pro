@@ -23,13 +23,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 HEADERS += \
-    Src/Base/EDBaseApi.hh \
+    Src/Base/SAKBase.hh \
     Src/Base/SAKDialog.hh \
     Src/Base/SAKMessageBox.hh \
     Src/Base/SAKWidget.hh \
     Src/Common/SAKDebugPage/Chart/MoreChart/MoreChartWidget.hh \
     Src/Common/SAKDebugPage/Chart/SAKChartManager.hh \
     Src/Common/SAKDebugPage/Chart/Throughput/ThroughputWidget.hh \
+    Src/Common/SAKDebugPage/Device/DebugPageDeviceManager.hh \
+    Src/Common/SAKDebugPage/Input/DebugPageInputManager.hh \
     Src/Common/SAKDebugPage/Message/DebugPageMessageManager.hh \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseItemWidget.hh \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.hh \
@@ -60,13 +62,15 @@ HEADERS += \
 
 
 SOURCES += \
-    Src/Base/EDBaseApi.cc \
+    Src/Base/SAKBase.cc \
     Src/Base/SAKDialog.cc \
     Src/Base/SAKMessageBox.cc \
     Src/Base/SAKWidget.cc \
     Src/Common/SAKDebugPage/Chart/MoreChart/MoreChartWidget.cc \
     Src/Common/SAKDebugPage/Chart/SAKChartManager.cc \
     Src/Common/SAKDebugPage/Chart/Throughput/ThroughputWidget.cc \
+    Src/Common/SAKDebugPage/Device/DebugPageDeviceManager.cc \
+    Src/Common/SAKDebugPage/Input/DebugPageInputManager.cc \
     Src/Common/SAKDebugPage/Message/DebugPageMessageManager.cc \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseItemWidget.cc \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.cc \
@@ -135,7 +139,8 @@ INCLUDEPATH += \
     Src/Common/SAKDebugPage/Chart/MoreChart \
     Src/Common/SAKDebugPage/Output \
     Src/Common/SAKDebugPage/Message \
-
+    Src/Common/SAKDebugPage/Device \
+    Src/Common/SAKDebugPage/Input
 
 
 RESOURCES += \
