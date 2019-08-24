@@ -13,27 +13,28 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#ifndef SAKDATAFACTORY_HH
-#define SAKDATAFACTORY_HH
+#ifndef OUTPUTDATAFACTORY_HH
+#define OUTPUTDATAFACTORY_HH
 
 #include <QThread>
-#include "SAKDebugPage.hh"
+#include "DebugPageOutputManager.hh"
 
-class SAKDataFactory:public QThread
+class OutputDataFactory:public QThread
 {
     Q_OBJECT
 public:
-    SAKDataFactory(SAKDebugPage *page, QObject *parent = Q_NULLPTR);
+    OutputDataFactory(QObject *parent = nullptr);
 
-    void handleTheDataThatNeedsToBeSent(QString rawData, SAKDebugPage::InputParameters parameters);
-    void handleTheDataThatNeedsToBeOutputted(QByteArray data, SAKDebugPage::OutputParameters parameters);
+    /**
+     * @brief cookData 将数据按照指定参数转变为字符串输出
+     * @param rawData 原始数据（已接受数据或者已发送数据）
+     * @param parameters 输出参数
+     */
+    void cookData(QByteArray rawData, DebugPageOutputManager::OutputParameters parameters);
 private:
-    SAKDebugPage *debugPage;
-    // ------------------------------------------------------------------------
     void run() final;
 signals:
-    void sendBytes(QByteArray data);
-    void outputData(QString data, bool isReceived);
+    void dataCooked(QString data);
 };
 
 #endif

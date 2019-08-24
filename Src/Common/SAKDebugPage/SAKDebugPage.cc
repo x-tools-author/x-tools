@@ -61,7 +61,6 @@ SAKDebugPage::SAKDebugPage(QWidget *parent)
      */
     dataFactory = new SAKDataFactory(this);
     connect(this, &SAKDebugPage::sendRawData, dataFactory, &SAKDataFactory::handleTheDataThatNeedsToBeSent);
-    connect(this, &SAKDebugPage::dataReadOrwritten, dataFactory, &SAKDataFactory::handleTheDataThatNeedsToBeOutputted);
     connect(dataFactory, &SAKDataFactory::sendBytes, this, &SAKDebugPage::writeBytes);
     connect(dataFactory, &SAKDataFactory::outputData, this, &SAKDebugPage::outputData);
     dataFactory->start();
@@ -70,11 +69,9 @@ SAKDebugPage::SAKDebugPage(QWidget *parent)
      * 初始化输入输出模式
      */
     inputModelComboBox->clear();
-    outputModelComboBox->clear();
     QMetaEnum textModel = QMetaEnum::fromType<SAKDebugPage::TextDisplayModel>();
     for (int i = 0; i < textModel.keyCount(); i++){
         inputModelComboBox->addItem(QString(textModel.valueToKey(i)));
-        outputModelComboBox->addItem(QString(textModel.valueToKey(i)));
     }
 
     /*
@@ -348,9 +345,6 @@ void SAKDebugPage::initUI()
     readInputMode();
     readCycleTime();
 
-    rxLabel->setPixmap(QPixmap(":/images/RtRxGray.png").scaled(QSize(18, 18), Qt::KeepAspectRatio));
-    txLabel->setPixmap(QPixmap(":/images/RtRxGray.png").scaled(QSize(18, 18), Qt::KeepAspectRatio));
-
     outputTextBroswer->setLineWrapMode(QTextEdit::WidgetWidth);
 
     /*
@@ -427,8 +421,8 @@ void SAKDebugPage::readInputMode()
 //    inputModelComboBox->setCurrentText(value);
 }
 
-void SAKDebugPage::updateTxImage()
-{
+//void SAKDebugPage::updateTxImage()
+//{
 //    static bool b = false;
 //    if (b){
 //        txLabel->setPixmap(QPixmap(":/images/RtRxGray.png").scaled(rxtxSize, Qt::KeepAspectRatio));
@@ -437,10 +431,10 @@ void SAKDebugPage::updateTxImage()
 //    }
 
 //    b = !b;
-}
+//}
 
-void SAKDebugPage::updateRxImage()
-{
+//void SAKDebugPage::updateRxImage()
+//{
 //    static bool b = false;
 //    if (b){
 //        rxLabel->setPixmap(QPixmap(":/images/RtRxGray.png").scaled(rxtxSize, Qt::KeepAspectRatio));
@@ -449,7 +443,7 @@ void SAKDebugPage::updateRxImage()
 //    }
 
 //    b = !b;
-}
+//}
 
 void SAKDebugPage::setCycleTime(QString time)
 {
@@ -549,49 +543,6 @@ void SAKDebugPage::initUiPointer()
     outputTextBroswer       = ui->outputTextBroswer;
 }
 
-void SAKDebugPage::on_outputModelComboBox_currentTextChanged(const QString &text)
-{
-    // 在ui初始化的时候，会出现text为empty的情况
-    if (text.isEmpty()){
-        return;
-    }
-
-    QMetaEnum model = QMetaEnum::fromType<TextDisplayModel>();
-    bool ok = false;
-    int ret = model.keyToValue(text.toLatin1().data(), &ok);
-    if (ok){
-        outputTextModel = static_cast<TextDisplayModel>(ret);
-    }else{
-        QLoggingCategory category(logCategory);
-        qCWarning(category) << "Output text model error!";
-    }
-}
-
-void SAKDebugPage::on_autoWrapCheckBox_clicked()
-{
-
-}
-
-void SAKDebugPage::on_clearOutputPushButton_clicked()
-{
-    outputTextBroswer->clear();
-}
-
-void SAKDebugPage::on_saveOutputPushButton_clicked()
-{
-    QString outFileName = QFileDialog::getSaveFileName();
-    QFile outFile(outFileName);
-
-    if(outFile.open(QIODevice::WriteOnly|QIODevice::Text)){
-        QTextStream outStream(&outFile);
-        outStream << outputTextBroswer->toPlainText();
-        outFile.flush();
-        outFile.close();
-    }else{
-        QLoggingCategory category(logCategory);
-        qCWarning(category) << "Can not open file:" << outFile.fileName() << "," << outFile.errorString();
-    }
-}
 
 void SAKDebugPage::on_inputModelComboBox_currentTextChanged(const QString &text)
 {

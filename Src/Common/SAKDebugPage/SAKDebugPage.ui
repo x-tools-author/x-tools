@@ -346,6 +346,9 @@ p, li { white-space: pre-wrap; }
            <property name="text">
             <string>输出时间</string>
            </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
           </widget>
          </item>
          <item row="6" column="2" colspan="2">
@@ -353,12 +356,18 @@ p, li { white-space: pre-wrap; }
            <property name="text">
             <string>显示发送</string>
            </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
           </widget>
          </item>
          <item row="6" column="0" colspan="2">
           <widget class="QCheckBox" name="showRxDataCheckBox">
            <property name="text">
             <string>显示接收</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -371,15 +380,25 @@ p, li { white-space: pre-wrap; }
          </item>
          <item row="0" column="3">
           <widget class="QLabel" name="txLabel">
+           <property name="styleSheet">
+            <string notr="true">QLabel#txLabel{
+    color:red
+}</string>
+           </property>
            <property name="text">
-            <string/>
+            <string notr="true">C&gt;&gt;&gt;&gt;</string>
            </property>
           </widget>
          </item>
          <item row="0" column="1">
           <widget class="QLabel" name="rxLabel">
+           <property name="styleSheet">
+            <string notr="true">QLabel#rxLabel{
+    color:red
+}</string>
+           </property>
            <property name="text">
-            <string/>
+            <string notr="true">C&lt;&lt;&lt;&lt;</string>
            </property>
           </widget>
          </item>
@@ -439,6 +458,9 @@ p, li { white-space: pre-wrap; }
            <property name="text">
             <string>自动换行</string>
            </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
           </widget>
          </item>
          <item row="0" column="2">
@@ -451,14 +473,14 @@ p, li { white-space: pre-wrap; }
          <item row="9" column="2" colspan="2">
           <widget class="QPushButton" name="outputFilePathPushButton">
            <property name="text">
-            <string>文件路径</string>
+            <string>保存设置</string>
            </property>
           </widget>
          </item>
          <item row="9" column="0" colspan="2">
           <widget class="QCheckBox" name="checkBox_2">
            <property name="text">
-            <string>写入文件</string>
+            <string>保存数据</string>
            </property>
           </widget>
          </item>
@@ -777,5 +799,22 @@ p, li { white-space: pre-wrap; }
   </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>clearOutputPushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>outputTextBroswer</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1060</x>
+     <y>201</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>940</x>
+     <y>201</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

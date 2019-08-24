@@ -48,6 +48,7 @@ HEADERS += \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/TransmissionSettings.hh \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/UdpTransmissionItemWidget.hh \
     Src/Common/SAKDebugPage/Output/DebugPageOutputManager.hh \
+    Src/Common/SAKDebugPage/Output/OutputDataFactory.hh \
     Src/Common/SAKDebugPage/Statistics/SAKStatisticsManager.hh \
     Src/SAKGlobal.hh \
     Src/SAKVersion.hh \
@@ -87,6 +88,7 @@ SOURCES += \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/TransmissionSettings.cc \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/UdpTransmissionItemWidget.cc \
     Src/Common/SAKDebugPage/Output/DebugPageOutputManager.cc \
+    Src/Common/SAKDebugPage/Output/OutputDataFactory.cc \
     Src/Common/SAKDebugPage/Statistics/SAKStatisticsManager.cc \
     Src/main.cc \
     Src/SAKGlobal.cc \

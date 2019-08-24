@@ -57,6 +57,31 @@ public:
     SAKDebugPage(QWidget *parent = Q_NULLPTR);
     ~SAKDebugPage();
 
+signals:
+    /// 读取数据后发射该信号，参数为已读取的数据
+    void dataRead(QByteArray data);
+    /// 发送数据后发射该信号，参数为已发送的数据
+    void dataWritten(QByteArray data);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public:
     /**
      * @brief   -- 数据显示模式
      */
@@ -198,8 +223,8 @@ private:
      */
     void outputData(QString data);    
 private slots:
-    void updateRxImage();
-    void updateTxImage();
+//    void updateRxImage();
+//    void updateTxImage();
 
     void cancleCycle();
 
@@ -277,11 +302,6 @@ protected:
     QPushButton *clearOutputPushButton          = nullptr;  // 清空输出按钮
     QPushButton *saveOutputPushButton           = nullptr;  // 保存输出按钮
     QTextBrowser *outputTextBroswer             = nullptr;  // 用于输出显示收发的数据
-private slots:
-    void on_outputModelComboBox_currentTextChanged(const QString &text);
-    void on_autoWrapCheckBox_clicked();
-    void on_clearOutputPushButton_clicked();
-    void on_saveOutputPushButton_clicked();
 
     // 图表
 protected:

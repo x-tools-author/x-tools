@@ -109,6 +109,10 @@ void SAKTabPageSerialportAssistant::initSignalAndSlot(bool needToConnect)
                 this, &SAKTabPageSerialportAssistant::bytesRead);
         connect(serialPortAssistant, &SAKSerialportAssistant::bytesWrite,
                 this, &SAKTabPageSerialportAssistant::bytesWritten);
+        connect(serialPortAssistant, &SAKSerialportAssistant::bytesWrite,
+                this, &SAKTabPageSerialportAssistant::dataWritten);
+        connect(serialPortAssistant, &SAKSerialportAssistant::bytesRead,
+                this, &SAKTabPageSerialportAssistant::dataRead);
     }else{
         disconnect(serialPortAssistant, &SAKSerialportAssistant::deviceStatuChanged,
                 this, &SAKTabPageSerialportAssistant::changeDeviceStatus);
@@ -118,5 +122,9 @@ void SAKTabPageSerialportAssistant::initSignalAndSlot(bool needToConnect)
                 this, &SAKTabPageSerialportAssistant::bytesRead);
         disconnect(serialPortAssistant, &SAKSerialportAssistant::bytesWrite,
                 this, &SAKTabPageSerialportAssistant::bytesWritten);
+        disconnect(serialPortAssistant, &SAKSerialportAssistant::bytesWrite,
+                this, &SAKTabPageSerialportAssistant::dataWritten);
+        disconnect(serialPortAssistant, &SAKSerialportAssistant::bytesRead,
+                this, &SAKTabPageSerialportAssistant::dataRead);
     }
 }
