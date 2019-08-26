@@ -299,6 +299,8 @@ protected:
     QCheckBox   *showMsCheckBox                 = nullptr;  // 显示毫秒使能复选框
     QCheckBox   *showRxDataCheckBox             = nullptr;  // 显示接收数据使能复选框
     QCheckBox   *showTxDataCheckBox             = nullptr;  // 显示发送数据使能复选框
+    QCheckBox   *saveOutputFileToFilecheckBox   = nullptr;  // 使能输出数据保存
+    QPushButton *outputFilePathPushButton       = nullptr;  // 显示输出设置面板
     QPushButton *clearOutputPushButton          = nullptr;  // 清空输出按钮
     QPushButton *saveOutputPushButton           = nullptr;  // 保存输出按钮
     QTextBrowser *outputTextBroswer             = nullptr;  // 用于输出显示收发的数据

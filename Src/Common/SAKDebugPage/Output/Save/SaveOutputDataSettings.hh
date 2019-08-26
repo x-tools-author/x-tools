@@ -13,28 +13,59 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#ifndef OUTPUTDATAFACTORY_HH
-#define OUTPUTDATAFACTORY_HH
+#ifndef SAVEOUTPUTDATASETTINGS_HH
+#define SAVEOUTPUTDATASETTINGS_HH
 
-#include <QThread>
-#include "DebugPageOutputManager.hh"
+#include <QDialog>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QRadioButton>
 
-class OutputDataFactory:public QThread
+namespace Ui {
+    class SaveOutputDataSettings;
+}
+
+class SaveOutputDataThread;
+class SaveOutputDataSettings:public QDialog
 {
     Q_OBJECT
 public:
-    OutputDataFactory(QObject *parent = nullptr);
+    SaveOutputDataSettings(QWidget *parent = nullptr);
+    ~SaveOutputDataSettings();
 
     /**
-     * @brief cookData 将数据按照指定参数转变为字符串输出
-     * @param rawData 原始数据（已接受数据或者已发送数据）
-     * @param parameters 输出参数
+     * @brief inputData 需要保存的数据由此输入
+     * @param data 需要保存的数据
      */
-    void cookData(QByteArray rawData, DebugPageOutputManager::OutputParameters parameters);
-private:
-    void run() final;
-signals:
-    void dataCooked(QString data);
-};
+    void inputData(QByteArray data);
 
+    struct SaveOutputDataParamters {
+        enum Format{
+            Bin,
+            Utf8,
+            Hex
+        }format;
+        QString fileName;
+    }parameters;
+private:
+    QString defaultPath;
+    SaveOutputDataThread *saveOutputDataThread;
+
+private:
+    Ui::SaveOutputDataSettings *ui;
+
+    QLineEdit    *pathLineEdit;
+    QPushButton  *setFilePushButton;
+    QRadioButton *binRadioButton;
+    QRadioButton *utf8RadioButton;
+    QRadioButton *hexRadioButton;
+    QPushButton  *closePushButton;
+    QPushButton  *clearFilePushButton;
+private slots:
+    void on_setFilePushButton_clicked();
+    void on_clearFilePushButton_clicked();
+signals:
+    void writeDataToFile(QByteArray data, SaveOutputDataParamters parameters);
+};
+Q_DECLARE_METATYPE(SaveOutputDataSettings::SaveOutputDataParamters);
 #endif

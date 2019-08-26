@@ -22,6 +22,7 @@
 #include <QObject>
 
 class OutputDataFactory;
+class SaveOutputDataSettings;
 class DebugPageOutputManager:public QObject
 {
     Q_OBJECT
@@ -42,6 +43,7 @@ public:
 private:
     SAKDebugPage *debugPage;
     OutputDataFactory *dataFactory;
+    SaveOutputDataSettings *outputSettings;
 
     QTimer updateRxFlagTimer;
     void updateRxFlag();
@@ -52,6 +54,8 @@ private:
     qint8 txFlagCount;
 
     void setLineWrapMode();
+    void saveOutputTextToFile();
+    void saveOutputDataSettings();
     void saveOutputDataToFile();
 
     /*
@@ -67,6 +71,8 @@ private:
     QCheckBox    *showMsCheckBox;
     QCheckBox    *showRxDataCheckBox;
     QCheckBox    *showTxDataCheckBox;
+    QCheckBox    *saveOutputFileToFilecheckBox;
+    QPushButton  *outputFilePathPushButton;
     QPushButton  *clearOutputPushButton;
     QPushButton  *saveOutputPushButton;
     QTextBrowser *outputTextBroswer;

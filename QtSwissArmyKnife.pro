@@ -49,6 +49,8 @@ HEADERS += \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/UdpTransmissionItemWidget.hh \
     Src/Common/SAKDebugPage/Output/DebugPageOutputManager.hh \
     Src/Common/SAKDebugPage/Output/OutputDataFactory.hh \
+    Src/Common/SAKDebugPage/Output/Save/SaveOutputDataSettings.hh \
+    Src/Common/SAKDebugPage/Output/Save/SaveOutputDataThread.hh \
     Src/Common/SAKDebugPage/Statistics/SAKStatisticsManager.hh \
     Src/SAKGlobal.hh \
     Src/SAKVersion.hh \
@@ -89,6 +91,8 @@ SOURCES += \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/UdpTransmissionItemWidget.cc \
     Src/Common/SAKDebugPage/Output/DebugPageOutputManager.cc \
     Src/Common/SAKDebugPage/Output/OutputDataFactory.cc \
+    Src/Common/SAKDebugPage/Output/Save/SaveOutputDataSettings.cc \
+    Src/Common/SAKDebugPage/Output/Save/SaveOutputDataThread.cc \
     Src/Common/SAKDebugPage/Statistics/SAKStatisticsManager.cc \
     Src/main.cc \
     Src/SAKGlobal.cc \
@@ -112,6 +116,7 @@ FORMS += \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/TcpTransmissionItemWidget.ui \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/TransmissionSettings.ui \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/UdpTransmissionItemWidget.ui \
+    Src/Common/SAKDebugPage/Output/Save/SaveOutputDataSettings.ui \
     Src/SAKVersion.ui \
     Src/SAKMainWindow.ui \
     Src/MoreInformation.ui \
@@ -140,6 +145,7 @@ INCLUDEPATH += \
     Src/Common/SAKDebugPage/Chart/Throughput \
     Src/Common/SAKDebugPage/Chart/MoreChart \
     Src/Common/SAKDebugPage/Output \
+    Src/Common/SAKDebugPage/Output/Save \
     Src/Common/SAKDebugPage/Message \
     Src/Common/SAKDebugPage/Device \
     Src/Common/SAKDebugPage/Input

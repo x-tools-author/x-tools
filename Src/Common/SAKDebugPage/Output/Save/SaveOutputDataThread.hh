@@ -13,54 +13,21 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#ifndef SAVEOUTPUTDATASETTINGS_HH
-#define SAVEOUTPUTDATASETTINGS_HH
+#ifndef SAVEOUTPUTDATATHREAD_HH
+#define SAVEOUTPUTDATATHREAD_HH
 
-#include <QDialog>
-#include <QLineEdit>
-#include <QPushButton>
-#include <QRadioButton>
+#include "SaveOutputDataSettings.hh"
+#include <QThread>
 
-namespace Ui {
-    class SaveOutputDataSettings;
-}
-
-class SaveOutputDataSettings:public QDialog
+class SaveOutputDataThread:public QThread
 {
     Q_OBJECT
 public:
-    SaveOutputDataSettings(QWidget *parent = nullptr);
-    ~SaveOutputDataSettings();
+    SaveOutputDataThread(QObject *parent = nullptr);
 
-    /**
-     * @brief inputData 需要保存的数据由此输入
-     * @param data 需要保存的数据
-     */
-    void inputData(QByteArray data);
-
-    enum Format{
-        Bin,
-        Utf8,
-        Hex
-    };
+    void writeDataToFile(QByteArray data, SaveOutputDataSettings::SaveOutputDataParamters parameters);
 private:
-    QString defaultPath;
-
-private:
-    Ui::SaveOutputDataSettings *ui;
-
-    QLineEdit    *pathLineEdit;
-    QPushButton  *setFilePushButton;
-    QRadioButton *binRadioButton;
-    QRadioButton *utf8RadioButton;
-    QRadioButton *hexRadioButton;
-    QPushButton  *closePushButton;
-    QPushButton  *clearFilePushButton;
-private slots:
-    void on_setFilePushButton_clicked();
-    void on_clearFilePushButton_clicked();
-signals:
-    void writeDataToFile(QByteArray data, int format);
+    void run() final;
 };
 
 #endif

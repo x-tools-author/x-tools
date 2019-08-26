@@ -13,75 +13,88 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#include <QApplication>
-#include "SAKBase.hh"
-#include "OutputDataFactory.hh"
+#include "SaveOutputDataThread.hh"
+#include "SaveOutputDataSettings.hh"
+#include "ui_SaveOutputDataSettings.h"
 
-OutputDataFactory::OutputDataFactory(QObject *parent)
-    :QThread (parent)
+#include <QDebug>
+#include <QFile>
+#include <QDialog>
+#include <QDateTime>
+#include <QFileDialog>
+#include <QStandardPaths>
+
+SaveOutputDataSettings::SaveOutputDataSettings(QWidget *parent)
+    :QDialog (parent)
+    ,ui (new Ui::SaveOutputDataSettings)
 {
-    moveToThread(this);
+    ui->setupUi(this);
+    setModal(true);
+    qRegisterMetaType<SaveOutputDataParamters>("SaveOutputDataParamters");
+
+    pathLineEdit        = ui->pathLineEdit;
+    setFilePushButton   = ui->setFilePushButton;
+    binRadioButton      = ui->binRadioButton;
+    utf8RadioButton     = ui->utf8RadioButton;
+    hexRadioButton      = ui->hexRadioButton;
+    closePushButton     = ui->closePushButton;
+    clearFilePushButton = ui->clearFilePushButton;
+
+    defaultPath = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
+    pathLineEdit->setText(defaultPath.append("/default.txt"));
+
+    saveOutputDataThread = new SaveOutputDataThread;
+    connect(this, &SaveOutputDataSettings::writeDataToFile, saveOutputDataThread, &SaveOutputDataThread::writeDataToFile);
+    saveOutputDataThread->start();
 }
 
-void OutputDataFactory::run()
+SaveOutputDataSettings::~SaveOutputDataSettings()
 {
-    connect(qApp, &QApplication::lastWindowClosed, this, &OutputDataFactory::terminate);
-    exec();
+    delete ui;
+    saveOutputDataThread->terminate();
+    delete saveOutputDataThread;
 }
 
-void OutputDataFactory::cookData(QByteArray rawData, DebugPageOutputManager::OutputParameters parameters)
+void SaveOutputDataSettings::inputData(QByteArray data)
 {
-    QString str;
-
-    str.append("<font color=silver>[</font>");
-
-    if (parameters.showDate){
-        str.append(QDate::currentDate().toString("yyyy-MM-dd "));
-        str = QString("<font color=silver>%1</font>").arg(str);
+    parameters.fileName = pathLineEdit->text().trimmed();
+    if (binRadioButton->isChecked()){
+        parameters.format = SaveOutputDataParamters::Bin;
+    }else if (utf8RadioButton->isChecked()){
+        parameters.format = SaveOutputDataParamters::Utf8;
+    }else{
+        parameters.format = SaveOutputDataParamters::Hex;
     }
 
-    if (parameters.showTime){
-        if (parameters.showMS){
-            str.append(QTime::currentTime().toString("hh:mm:ss.zzz "));
-        }else {
-            str.append(QTime::currentTime().toString("hh:mm:ss "));
-        }
-        str = QString("<font color=silver>%1</font>").arg(str);
+    emit writeDataToFile(data, parameters);
+}
+
+void SaveOutputDataSettings::on_setFilePushButton_clicked()
+{
+    QString datetime = QDateTime::currentDateTime().toString("yyyyMMddhhmmss");
+    QString fileName;
+    if (binRadioButton->isChecked()){
+        datetime.append(".bin");
+        fileName = QFileDialog::getSaveFileName(this, tr("文件设置"), QString("%1/%2").arg(defaultPath).arg(datetime), QString("bin (*.bin)"));
+    }else{
+        datetime.append(".txt");
+        fileName = QFileDialog::getSaveFileName(this, tr("文件设置"), QString("%1/%2").arg(defaultPath).arg(datetime), QString("txt (*.txt)"));
     }
 
-    if (parameters.isReceivedData){
-        str.append("<font color=blue>Rx</font>");
-    }else {
-        str.append("<font color=purple>Tx</font>");
+    if (!fileName.isEmpty()){
+        pathLineEdit->setText(fileName);
     }
-    str.append("<font color=silver>] </font>");
+}
 
-    if (parameters.textModel == SAKBase::Bin){
-        for (int i = 0; i < rawData.length(); i++){
-            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(rawData.at(i)), 2), 8, '0'));
-        }
-    }else if (parameters.textModel == SAKBase::Oct){
-        for (int i = 0; i < rawData.length(); i++){
-            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(rawData.at(i)), 8), 3, '0'));
-        }
-    }else if (parameters.textModel == SAKBase::Dec){
-        for (int i = 0; i < rawData.length(); i++){
-            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(rawData.at(i)), 10)));
-        }
-    }else if (parameters.textModel == SAKBase::Hex){
-        for (int i = 0; i < rawData.length(); i++){
-            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(rawData.at(i)), 16), 2, '0'));
-        }
-    }else if (parameters.textModel == SAKBase::Ascii){
-        str.append(QString::fromLatin1(rawData));
-    }else if (parameters.textModel == SAKBase::Utf8){
-        str.append(QString::fromUtf8(rawData));
-    }else if (parameters.textModel == SAKBase::Local){
-        str.append(QString::fromLocal8Bit(rawData));
-    }else {
-        str.append(QString::fromUtf8(rawData));
-        Q_ASSERT_X(false, __FUNCTION__, "Unknow output mode");
+void SaveOutputDataSettings::on_clearFilePushButton_clicked()
+{
+    QString fileName = pathLineEdit->text();
+    if (fileName.isEmpty()){
+        return;
     }
 
-    emit dataCooked(str);
+    QFile file(fileName);
+    if (file.open(QFile::ReadWrite | QFile::Truncate)){
+        file.close();
+    }
 }

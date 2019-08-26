@@ -16,6 +16,7 @@
 #include "SAKBase.hh"
 #include "OutputDataFactory.hh"
 #include "DebugPageOutputManager.hh"
+#include "SaveOutputDataSettings.hh"
 
 #include <QFile>
 #include <QDateTime>
@@ -40,12 +41,16 @@ DebugPageOutputManager::DebugPageOutputManager(SAKDebugPage *debugPage, QObject 
     showMsCheckBox          = debugPage->showMsCheckBox;
     showRxDataCheckBox      = debugPage->showRxDataCheckBox;
     showTxDataCheckBox      = debugPage->showTxDataCheckBox;
+    saveOutputFileToFilecheckBox    = debugPage->saveOutputFileToFilecheckBox;
+    outputFilePathPushButton= debugPage->outputFilePathPushButton;
     clearOutputPushButton   = debugPage->clearOutputPushButton;
     saveOutputPushButton    = debugPage->saveOutputPushButton;
     outputTextBroswer       = debugPage->outputTextBroswer;
 
+    connect(saveOutputFileToFilecheckBox, &QCheckBox::clicked, this, &DebugPageOutputManager::saveOutputDataToFile);
     connect(autoWrapCheckBox, &QCheckBox::clicked, this, &DebugPageOutputManager::setLineWrapMode);
-    connect(saveOutputPushButton, &QCheckBox::clicked, this, &DebugPageOutputManager::saveOutputDataToFile);
+    connect(saveOutputPushButton, &QCheckBox::clicked, this, &DebugPageOutputManager::saveOutputTextToFile);
+    connect(outputFilePathPushButton, &QCheckBox::clicked, this, &DebugPageOutputManager::saveOutputDataSettings);
 
 
     // 初始化数据格式预选框
@@ -65,6 +70,8 @@ DebugPageOutputManager::DebugPageOutputManager(SAKDebugPage *debugPage, QObject 
     connect(dataFactory, &OutputDataFactory::dataCooked, this, &DebugPageOutputManager::outputData);
     dataFactory->start();
 
+    outputSettings = new SaveOutputDataSettings;
+
     updateRxFlagTimer.setInterval(200);
     updateTxFlagTimer.setInterval(200);
     connect(&updateRxFlagTimer, &QTimer::timeout, this, &DebugPageOutputManager::updateRxFlag);
@@ -75,6 +82,7 @@ DebugPageOutputManager::~DebugPageOutputManager()
 {
     dataFactory->terminate();
     delete dataFactory;
+    delete outputSettings;
 }
 
 void DebugPageOutputManager::updateRxFlag()
@@ -108,7 +116,7 @@ void DebugPageOutputManager::setLineWrapMode()
     }
 }
 
-void DebugPageOutputManager::saveOutputDataToFile()
+void DebugPageOutputManager::saveOutputTextToFile()
 {
     QString outFileName = QFileDialog::getSaveFileName(nullptr,
                                                        tr("保存文件"),
@@ -128,6 +136,20 @@ void DebugPageOutputManager::saveOutputDataToFile()
     }else{
         debugPage->outputMessage(QString("Can not open file (%1) to save output data:")
                                  .arg(outFile.fileName()) + outFile.errorString(), false);
+    }
+}
+
+void DebugPageOutputManager::saveOutputDataSettings()
+{
+    outputSettings->show();
+}
+
+void DebugPageOutputManager::saveOutputDataToFile()
+{
+    if (saveOutputFileToFilecheckBox->isChecked()){
+        connect(debugPage, &SAKDebugPage::dataRead, outputSettings, &SaveOutputDataSettings::inputData);
+    }else{
+        disconnect(debugPage, &SAKDebugPage::dataRead, outputSettings, &SaveOutputDataSettings::inputData);
     }
 }
 

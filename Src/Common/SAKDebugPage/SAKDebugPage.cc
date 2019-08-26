@@ -538,6 +538,8 @@ void SAKDebugPage::initUiPointer()
     showMsCheckBox          = ui->showMsCheckBox;
     showRxDataCheckBox      = ui->showRxDataCheckBox;
     showTxDataCheckBox      = ui->showTxDataCheckBox;
+    saveOutputFileToFilecheckBox = ui->saveOutputFileToFilecheckBox;
+    outputFilePathPushButton= ui->outputFilePathPushButton;
     clearOutputPushButton   = ui->clearOutputPushButton;
     saveOutputPushButton    = ui->saveOutputPushButton;
     outputTextBroswer       = ui->outputTextBroswer;

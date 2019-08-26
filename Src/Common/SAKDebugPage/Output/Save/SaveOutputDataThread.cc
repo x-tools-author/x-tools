@@ -13,79 +13,50 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
+#include "SaveOutputDataThread.hh"
 #include "SaveOutputDataSettings.hh"
-#include "ui_SaveOutputDataSettings.h"
 
 #include <QFile>
-#include <QDialog>
-#include <QDateTime>
-#include <QFileDialog>
-#include <QStandardPaths>
+#include <QTextStream>
 
-SaveOutputDataSettings::SaveOutputDataSettings(QWidget *parent)
-    :QDialog (parent)
-    ,ui (new Ui::SaveOutputDataSettings)
+SaveOutputDataThread::SaveOutputDataThread(QObject *parent)
+    :QThread (parent)
 {
-    ui->setupUi(this);
-    setModal(true);
-
-    pathLineEdit        = ui->pathLineEdit;
-    setFilePushButton   = ui->setFilePushButton;
-    binRadioButton      = ui->binRadioButton;
-    utf8RadioButton     = ui->utf8RadioButton;
-    hexRadioButton      = ui->hexRadioButton;
-    closePushButton     = ui->closePushButton;
-    clearFilePushButton = ui->clearFilePushButton;
-
-    defaultPath = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
-    pathLineEdit->setText(defaultPath.append("/default.txt"));
+    moveToThread(this);
 }
 
-SaveOutputDataSettings::~SaveOutputDataSettings()
+void SaveOutputDataThread::writeDataToFile(QByteArray data, SaveOutputDataSettings::SaveOutputDataParamters parameters)
 {
-    delete ui;
-}
-
-void SaveOutputDataSettings::inputData(QByteArray data)
-{
-    int format;
-    if (binRadioButton->isChecked()){
-        format = Bin;
-    }else if (utf8RadioButton->isChecked()){
-        format = Utf8;
-    }else{
-        format = Hex;
-    }
-
-    emit writeDataToFile(data, format);
-}
-
-void SaveOutputDataSettings::on_setFilePushButton_clicked()
-{
-    QString datetime = QDateTime::currentDateTime().toString("yyyyMMddhhmmss");
-    QString fileName;
-    if (binRadioButton->isChecked()){
-        datetime.append(".bin");
-        fileName = QFileDialog::getSaveFileName(this, tr("文件设置"), QString("%1/%2").arg(defaultPath).arg(datetime), QString("bin (*.bin)"));
-    }else{
-        datetime.append(".txt");
-        fileName = QFileDialog::getSaveFileName(this, tr("文件设置"), QString("%1/%2").arg(defaultPath).arg(datetime), QString("txt (*.txt)"));
-    }
-
-    if (!fileName.isEmpty()){
-        pathLineEdit->setText(fileName);
-    }
-}
-
-void SaveOutputDataSettings::on_clearFilePushButton_clicked()
-{
-    QString fileName = pathLineEdit->text();
-    if (fileName.isEmpty()){
+    if(parameters.fileName.isEmpty()){
         return;
     }
 
-    QFile file(fileName);
-    if (file.open(QFile::ReadWrite | QFile::Truncate)){
-        file.close();
+    QFile file(parameters.fileName);
+    int format = parameters.format;
+    QTextStream textStream(&file);
+    switch (format) {
+    case SaveOutputDataSettings::SaveOutputDataParamters::Bin:
+        if (file.open(QFile::WriteOnly | QFile::Append)){
+            file.write(data);
+            file.close();
+        }
+        break;
+    case SaveOutputDataSettings::SaveOutputDataParamters::Utf8:
+        if (file.open(QFile::WriteOnly | QFile::Text | QFile::Append)){
+            textStream << QString::fromUtf8(data) << QString("\n");
+            file.close();
+        }
+        break;
+    case SaveOutputDataSettings::SaveOutputDataParamters::Hex:
+        if (file.open(QFile::WriteOnly | QFile::Text | QFile::Append)){
+            textStream << QString(data.toHex(' ')) << QString("\n");
+            file.close();
+        }
+        break;
     }
+}
+
+void SaveOutputDataThread::run()
+{
+    exec();
 }
