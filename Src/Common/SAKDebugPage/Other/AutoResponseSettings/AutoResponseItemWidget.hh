@@ -61,14 +61,14 @@ private:
 
     /// 禁止所有自动回复标志
     bool forbiddenAllAutoResponse;
-    SAKDebugPage *_debugPage;
+    SAKDebugPage *debugPage;
 private:
-    /// 设置输入框文本格式(详情EDBaseApi::EDTextFormat)
+    /// 设置输入框文本格式(详情SAKBase::EDTextFormat)
     void setLineEditFormat(QLineEdit *lineEdit, int format);
 
-    void handleReceiceData(QByteArray data, SAKDebugPage::OutputParameters parameters);
+    void dataRead(QByteArray data);
     QByteArray string2array(QString str, int format);
-    bool response(QByteArray receiveData, QByteArray referenceData, int option);
+    bool response(QByteArray receiveData, QByteArray referenceData, int option);    
 private slots:
     void on_referenceDataFromatComboBox_currentTextChanged();
     void on_responseDataFormatComboBox_currentTextChanged();

@@ -21,15 +21,14 @@
 #include <QObject>
 #include <QPushButton>
 
-#include "SAKDebugPage.hh"
-
+class SAKDebugPage;
 class SAKStatisticsManager:public QObject
 {
     Q_OBJECT
 public:
     SAKStatisticsManager(SAKDebugPage *debugPage, QObject *parent = nullptr);
 private:
-    SAKDebugPage *_debugPage;
+    SAKDebugPage *debugPage;
 
     QLabel *rxSpeedLabel;
     QLabel *txSpeedLabel;
@@ -55,7 +54,8 @@ private:
 
     QTimer speedCalculationTimer;
 private:
-    void dataReadOrwritten(QByteArray data, SAKDebugPage::OutputParameters parameters);
+    void dataRead(QByteArray data);
+    void dataReceived(QByteArray data);
     void clearRxStatistics();
     void clearTxStatistics();
     void setLabelText(QLabel *label, quint64 text);

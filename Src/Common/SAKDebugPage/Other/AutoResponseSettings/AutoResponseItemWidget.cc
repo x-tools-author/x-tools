@@ -24,7 +24,7 @@ AutoResponseItemWidget::AutoResponseItemWidget(SAKDebugPage *debugPage, QWidget 
     :QWidget(parent)
     ,ui (new Ui::AutoResponseItemWidget)
     ,forbiddenAllAutoResponse (false)
-    ,_debugPage (debugPage)
+    ,debugPage (debugPage)
 {
     ui->setupUi(this);
     remarkLineEdit              = ui->remarkLineEdit;
@@ -43,8 +43,8 @@ AutoResponseItemWidget::AutoResponseItemWidget(SAKDebugPage *debugPage, QWidget 
     SAKBase::instance()->initTextFormatComboBox(referenceDataFromatComboBox);
     SAKBase::instance()->initTextFormatComboBox(responseDataFormatComboBox);
 
-    connect(_debugPage, &SAKDebugPage::dataReadOrwritten, this, &AutoResponseItemWidget::handleReceiceData);
-    connect(this, &AutoResponseItemWidget::requestWrite, _debugPage, &SAKDebugPage::write);
+    connect(debugPage, &SAKDebugPage::dataRead, this, &AutoResponseItemWidget::dataRead);
+    connect(this, &AutoResponseItemWidget::requestWrite, debugPage, &SAKDebugPage::write);
 }
 
 AutoResponseItemWidget::~AutoResponseItemWidget()
@@ -96,17 +96,13 @@ void AutoResponseItemWidget::setLineEditFormat(QLineEdit *lineEdit, int format)
     }
 }
 
-void AutoResponseItemWidget::handleReceiceData(QByteArray data, SAKDebugPage::OutputParameters parameters)
+void AutoResponseItemWidget::dataRead(QByteArray data)
 {
     if (forbiddenAllAutoResponse){
         return;
     }
 
     if (data.isEmpty()){
-        return;
-    }
-
-    if (!parameters.isReceivedData){
         return;
     }
 
@@ -126,7 +122,7 @@ void AutoResponseItemWidget::handleReceiceData(QByteArray data, SAKDebugPage::Ou
          QByteArray responseData = string2array(responseString, responseFromat);
 
          if (!responseData.isEmpty()){
-             _debugPage->write(data);
+             debugPage->write(data);
          }
     }
 }

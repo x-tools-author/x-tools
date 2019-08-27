@@ -13,22 +13,15 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
+#include "SAKDebugPage.hh"
 #include "BaseTransmissionItemWidget.hh"
 
 BaseTransmissionItemWidget::BaseTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget (parent)
-    ,_debugPage (debugPage)
+    ,debugPage (debugPage)
 {
-    connect(_debugPage, &SAKDebugPage::dataReadOrwritten, this, &BaseTransmissionItemWidget::byteReceived);
-    connect(this, &BaseTransmissionItemWidget::bytesRead, _debugPage, &SAKDebugPage::write);
-}
-
-void BaseTransmissionItemWidget::byteReceived(QByteArray data, SAKDebugPage::OutputParameters parameters)
-{
-    Q_UNUSED(data);
-    if (parameters.isReceivedData){
-        write(data);
-    }
+    connect(debugPage, &SAKDebugPage::dataRead, this, &BaseTransmissionItemWidget::write);
+    connect(this, &BaseTransmissionItemWidget::bytesRead, debugPage, &SAKDebugPage::write);
 }
 
 void BaseTransmissionItemWidget::write(QByteArray data)

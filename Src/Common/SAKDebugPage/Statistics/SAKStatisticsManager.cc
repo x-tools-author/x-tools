@@ -13,21 +13,22 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
+#include "SAKDebugPage.hh"
 #include "SAKStatisticsManager.hh"
 
 SAKStatisticsManager::SAKStatisticsManager(SAKDebugPage *debugPage, QObject *parent)
     :QObject (parent)
-    ,_debugPage (debugPage)
+    ,debugPage (debugPage)
 {
-    rxSpeedLabel    = _debugPage->rxSpeedLabel;
-    txSpeedLabel    = _debugPage->txSpeedLabel;
-    txFramesLabel   = _debugPage->txFramesLabel;
-    rxFramesLabel   = _debugPage->rxFramesLabel;
-    txBytesLabel    = _debugPage->txBytesLabel;
-    rxBytesLabel    = _debugPage->rxBytesLabel;
+    rxSpeedLabel    = debugPage->rxSpeedLabel;
+    txSpeedLabel    = debugPage->txSpeedLabel;
+    txFramesLabel   = debugPage->txFramesLabel;
+    rxFramesLabel   = debugPage->rxFramesLabel;
+    txBytesLabel    = debugPage->txBytesLabel;
+    rxBytesLabel    = debugPage->rxBytesLabel;
 
-    resetTxCountPushButton  = _debugPage->resetTxCountPushButton;
-    resetRxCountPushButton  = _debugPage->resetRxCountPushButton;
+    resetTxCountPushButton  = debugPage->resetTxCountPushButton;
+    resetRxCountPushButton  = debugPage->resetRxCountPushButton;
 
     dataContext.rxBytes  = 0;
     dataContext.txBytes  = 0;
@@ -36,7 +37,8 @@ SAKStatisticsManager::SAKStatisticsManager(SAKDebugPage *debugPage, QObject *par
     dataContext.rxBytesPerSecond = 0;
     dataContext.txBytesPerSecond = 0;
 
-    connect(_debugPage, &SAKDebugPage::dataReadOrwritten, this, &SAKStatisticsManager::dataReadOrwritten);
+    connect(debugPage, &SAKDebugPage::dataRead, this, &SAKStatisticsManager::dataRead);
+    connect(debugPage, &SAKDebugPage::dataWritten, this, &SAKStatisticsManager::dataReceived);
     connect(resetRxCountPushButton, &QPushButton::clicked, this, &SAKStatisticsManager::clearRxStatistics);
     connect(resetTxCountPushButton, &QPushButton::clicked, this, &SAKStatisticsManager::clearTxStatistics);
 
@@ -45,23 +47,24 @@ SAKStatisticsManager::SAKStatisticsManager(SAKDebugPage *debugPage, QObject *par
     speedCalculationTimer.start();
 }
 
-void SAKStatisticsManager::dataReadOrwritten(QByteArray data, SAKDebugPage::OutputParameters parameters)
+void SAKStatisticsManager::dataRead(QByteArray data)
 {
-    if (parameters.isReceivedData){
-        dataContext.rxFrames += 1;
-        dataContext.rxBytes += static_cast<quint64>(data.length());
-        setLabelText(rxFramesLabel, dataContext.rxFrames);
-        setLabelText(rxBytesLabel, dataContext.rxBytes);
+    dataContext.rxFrames += 1;
+    dataContext.rxBytes += static_cast<quint64>(data.length());
+    setLabelText(rxFramesLabel, dataContext.rxFrames);
+    setLabelText(rxBytesLabel, dataContext.rxBytes);
 
-        dataContext.rxBytesPerSecond += static_cast<quint64>(data.length());
-    }else{
-        dataContext.txFrames += 1;
-        dataContext.txBytes += static_cast<quint64>(data.length());
-        setLabelText(txFramesLabel, dataContext.txFrames);
-        setLabelText(txBytesLabel, dataContext.txBytes);
+    dataContext.rxBytesPerSecond += static_cast<quint64>(data.length());
+}
 
-        dataContext.txBytesPerSecond += static_cast<quint64>(data.length());
-    }
+void SAKStatisticsManager::dataReceived(QByteArray data)
+{
+    dataContext.txFrames += 1;
+    dataContext.txBytes += static_cast<quint64>(data.length());
+    setLabelText(txFramesLabel, dataContext.txFrames);
+    setLabelText(txBytesLabel, dataContext.txBytes);
+
+    dataContext.txBytesPerSecond += static_cast<quint64>(data.length());
 }
 
 void SAKStatisticsManager::clearRxStatistics()

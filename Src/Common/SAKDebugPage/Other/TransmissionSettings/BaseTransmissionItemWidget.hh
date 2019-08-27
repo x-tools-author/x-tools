@@ -18,8 +18,8 @@
 
 #include <QWidget>
 #include <QIODevice>
-#include "SAKDebugPage.hh"
 
+class SAKDebugPage;
 class BaseTransmissionItemWidget:public QWidget
 {
     Q_OBJECT
@@ -34,11 +34,8 @@ signals:
     /// 输出消息
     void requestOutputMessage(QString info, bool isInfo = true);
 protected:
-    SAKDebugPage *_debugPage;
+    SAKDebugPage *debugPage;
     void outputMessage();
-private:
-    /// 转发数据(将收到的数据通过指定的设备进行转发)
-    void byteReceived(QByteArray data, SAKDebugPage::OutputParameters parameters);    
 };
 
 #endif
