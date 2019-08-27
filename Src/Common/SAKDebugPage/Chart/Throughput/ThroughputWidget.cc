@@ -21,7 +21,7 @@
 
 ThroughputWidget::ThroughputWidget(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget (parent)
-    ,_debugPage (debugPage)
+    ,debugPage (debugPage)
 {
     rxLineSeries = new QLineSeries();
     txLineSeries = new QLineSeries();
@@ -62,7 +62,8 @@ ThroughputWidget::ThroughputWidget(SAKDebugPage *debugPage, QWidget *parent)
     connect(&updateTimer, &QTimer::timeout, this, &ThroughputWidget::updateTimerTimeout);
     updateTimer.start();
 
-    connect(_debugPage, &SAKDebugPage::dataReadOrwritten, this, &ThroughputWidget::dataReadOrwritten);
+    connect(debugPage, &SAKDebugPage::dataRead, this, &ThroughputWidget::dataRead);
+    connect(debugPage, &SAKDebugPage::dataWritten, this, &ThroughputWidget::dataWite);
 }
 
 ThroughputWidget::~ThroughputWidget()
@@ -108,11 +109,12 @@ void ThroughputWidget::updateTimerTimeout()
     updateLineSeries(txLineSeries, dataContext.txBytes, dataContext.txMax);
 }
 
-void ThroughputWidget::dataReadOrwritten(QByteArray data, SAKDebugPage::OutputParameters parameters)
+void ThroughputWidget::dataRead(QByteArray data)
 {
-    if (parameters.isReceivedData){
-        dataContext.rxBytes += data.length();
-    }else{
-        dataContext.txBytes += data.length();
-    }
+    dataContext.rxBytes += data.length();
+}
+
+void ThroughputWidget::dataWite(QByteArray data)
+{
+    dataContext.txBytes += data.length();
 }
