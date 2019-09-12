@@ -1,18 +1,52 @@
-# “瑞士军刀”开源项目简介
+# Introduce
 
-&#160; &#160; &#160; &#160;“瑞士军刀”开源项目（以下简称本项目）旨在为广大嵌入式开发者、网络通信开发等相关人员提供一套集串口调试、UDP调试、TCP调试、蓝牙设备调试以及HID设备调试于一身，且提供了诸如域名解释、公网IP获取、CRC计算、加密解密测试等一系列实用工具的开发调试工具集。（简单地说,“瑞士军刀”是开发调试工具集。）
+The goal of this project is to create an easy-to-use, cross-platform, multi-language debugging tool set, emmm...that sounds not bad.
 
-## 项目特性
-&#160; &#160; &#160; &#160;就项目代码而言，本项目架构清晰、代码规范、注释得当；具有一定的综合性和较强的实用性。Qt初学者可以从中学到很多关于Qt的编程知识与及Qt类库的使用技巧。  
-&#160; &#160; &#160; &#160;就本项目的直接产物（二进制文件）而言，它是一个嵌入式开发调试、网络通信开发调试的好帮手。
-
-## 软件附图
-![MainWindow](MainWindow.png)
-
-## 关于本项目
-+ 项目创者：Qter
-+ 联系邮箱：Qter.vip@outlook.com
-+ 博客地址：http://wuhai.pro/
-+ 开发工具：Qt5
-+ 适用平台：windows、Linux、macOS and so on
-+ 版权说明：（略）
+## Function Modules
+### Debug Tools
++ Serial port debug
++ UDP debug
++ TCP debug
++ USB debug (not support yet)
++ HID debug (not support yet)
++ CAN debug (not support yet)
++ MQTT debug (not support yet)
++ HTTP debug (not support yet)
++ COAP debug (not support yet)
++ LWM2M debug (not support yet)
++ Modbus debug (not support yet)
++ Bluetooth debug (not support yet)
++ ...
+### Other Tools
++ File check tool
++ CRC calculator
++ ...
+## Build
++ Window
++ + System: Windows 10
++ + Qt: Qt5.12 32bits
++ + Compiler: msvc 2017
+## Ui
+![MainWindow](MainWindow..png)
+## Links
+### Github
+https://github.com/wuuhii/QtSwissArmyKnife
+### Gitee
+https://github.com/wuuhii/QtSwissArmyKnife
+## 关于项目
++ 项目作者: wuuhii
++ 联系邮箱: wuuhii@outlook.com
++ 作者博客: http://wuhai.pro/
++ 用户交流: 952218522 (Tencent QQ Group)
++ 支持平台: windows、linux、macOS and so on
++ 版权声明: (I do not know what is it yet)
+## ?
+```
+                _           _   
+               | |         (_)
+__      ___   _| |__   __ _ _     
+\ \ /\ / / | | | '_ \ / _` | |    sheng huo bu zhi yan qian de gou qie, hai you yuan fang de gou qie.
+ \ V  V /| |_| | | | | (_| | |           but do not be upset, coding will make you happy.
+  \_/\_/  \__,_|_| |_|\__,_|_|                                                               --KongZi
+```
+                              
