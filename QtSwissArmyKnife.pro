@@ -61,8 +61,7 @@ HEADERS += \
     Src/Console/SAKConsole.hh \
     Src/Console/SAKLogOutput.hh \
     Src/Common/SAKDebugPage/SAKDebugPage.hh \
-#    Src/Common/SAKDebugPage/SAKDataFactory.hh \
-    Src/Common/SAKDebugPage/SAKCRCInterface.hh
+    Src/Base/SAKCRCInterface.hh
 
 
 SOURCES += \
@@ -105,8 +104,7 @@ SOURCES += \
     Src/Console/SAKConsole.cc \
     Src/Console/SAKLogOutput.cc \
     Src/Common/SAKDebugPage/SAKDebugPage.cc \
-#    Src/Common/SAKDebugPage/SAKDataFactory.cc \
-    Src/Common/SAKDebugPage/SAKCRCInterface.cc
+    Src/Base/SAKCRCInterface.cc
 
 
 FORMS += \
