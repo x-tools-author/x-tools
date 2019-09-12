@@ -19,7 +19,7 @@
 #include <QThread>
 #include "DebugPageInputManager.hh"
 
-class CRCInterface;
+class SAKCRCInterface;
 class InputDataFactory:public QThread
 {
     Q_OBJECT
@@ -32,13 +32,27 @@ public:
      * @param parameters 输入参数
      */
     void  cookData(QString rawData, DebugPageInputManager::InputParameters parameters);
+
+    /**
+     * @brief crcCalculate 计算输入数据的crc
+     * @param data 输入数据
+     * @param model crc参数模型
+     * @return crc
+     */
+    quint32 crcCalculate(QByteArray data, int model);
+
+    /**
+     * @brief rawDataToArray 将输入框的数据转换为数组
+     * @param rawData 输入框数据
+     * @param parameters 输入参数
+     * @return 数据
+     */
+    QByteArray rawDataToArray(QString rawData, DebugPageInputManager::InputParameters parameters);
 private:
-    CRCInterface *crcInterface;
+    SAKCRCInterface *crcInterface;
     SAKDebugPage *debugPage;
     // ------------------------------------------------------------------------
-    void run() final;
-    QByteArray rawDataToArray(QString rawData, DebugPageInputManager::InputParameters parameters);
-    quint32 crcCalculate(QByteArray data, int model);
+    void run() final;      
 signals:
     /// 输入数据经过处理后通过该信号对外发射
     void dataCooked(QByteArray);

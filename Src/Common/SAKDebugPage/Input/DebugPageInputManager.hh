@@ -25,6 +25,7 @@
 #include <QPushButton>
 
 class SAKDebugPage;
+class SAKCRCInterface;
 class InputDataFactory;
 class DebugPageInputManager:public QObject
 {
@@ -75,6 +76,8 @@ private:
     void changeEndianFlag();
     /// 清空输入区域
     void clearInputArea();
+    /// 输入框数据发生改变时，执行该函数
+    void inputTextEditTextChanged();
     /// 发送数据
     void sendRawData();
     /// crc参数模型发生改变时执行该函数
@@ -93,7 +96,9 @@ private:
 private:
     InputDataFactory *inputDataFactory;
     InputParameters inputParameters;
+    SAKCRCInterface *crcInterface;
 
+    void updateCRC();
 signals:
     /// 该函数并不会真的发送数据，而是发送一个信号，该信号携带需要发送的数据,数据需要经过处理后才能发送
     void rawDataChanged(QString rawData, InputParameters parameters);
