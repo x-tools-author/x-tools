@@ -78,7 +78,7 @@ SAKMainWindow::~SAKMainWindow()
 void SAKMainWindow::AddTab()
 {
     /// 串口助手
-    this->mpTabWidget->addTab(new SAKTabPageSerialportAssistant, tr("串口助手"));
+    this->mpTabWidget->addTab(new SAKTabPageSerialportAssistant, tr("串口调试"));
     /// 终端输出
     this->mpTabWidget->addTab(new SAKConsole, tr("终端"));
 }
