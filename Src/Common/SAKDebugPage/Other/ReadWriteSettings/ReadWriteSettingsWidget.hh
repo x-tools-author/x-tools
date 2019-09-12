@@ -17,8 +17,6 @@
 #define READWRITESETTINGSWIDGET_HH
 
 #include <QDialog>
-#include <QLineEdit>
-#include <QCheckBox>
 #include <QComboBox>
 
 
@@ -35,26 +33,18 @@ public:
 private:
     Ui::ReadWriteSettingsWidget *ui = nullptr;
 
-    QCheckBox* readDelayEnableCheckBox  = nullptr;
-    QCheckBox* writeDelayEnableCheckBox = nullptr;
-    QComboBox* readDelayComboBox        = nullptr;
-    QComboBox* writeDelayComboBox       = nullptr;
-    QCheckBox* readCustomDelayCheckBox = nullptr;
-    QCheckBox* writeCustomDelayCheckBox = nullptr;
-    QLineEdit* readLineEdit             = nullptr;
-    QLineEdit* writeLineEdit            = nullptr;
+    QComboBox *readParametersComboBox;
+    QComboBox *writeParametersComboBox;
+private slots:
+    void on_readParametersComboBox_currentTextChanged(const QString &text);
+    void on_writeParametersComboBox_currentTextChanged(const QString &text);
 
-    void initUi();
-    void changedReadDelayTime();
-    void changedWriteDelayTime();
-
-    void setEnableReadDelay();
-    void setEnableWriteDelay();
 private:
-    SAKDebugPage *_debugPage;
-signals:
-    void readDelayTimeChanged(int ms);
-    void writeDelayTimeChanged(int ms);
+    SAKDebugPage *debugPage;
+    int waitForReadyReadTime;
+    int waitForBytesWrittenTime;
+
+    void setReadWriteParameters();
 };
 
 #endif
