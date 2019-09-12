@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright (C) 2018-2019 wuuhii. All rights reserved.
+ * Copyright (C) 2019 wuuhii. All rights reserved.
  *
  * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
  * project. The project is a open source project, you can get the source from:
@@ -13,27 +13,35 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#ifndef SAKDATAFACTORY_HH
-#define SAKDATAFACTORY_HH
+#ifndef INPUTDATAFACTORY_HH
+#define INPUTDATAFACTORY_HH
 
 #include <QThread>
-#include "SAKDebugPage.hh"
+#include "DebugPageInputManager.hh"
 
-class SAKDataFactory:public QThread
+class CRCInterface;
+class InputDataFactory:public QThread
 {
     Q_OBJECT
 public:
-    SAKDataFactory(SAKDebugPage *page, QObject *parent = Q_NULLPTR);
+    InputDataFactory(QObject *parent = Q_NULLPTR);
 
-    void handleTheDataThatNeedsToBeSent(QString rawData, SAKDebugPage::InputParameters parameters);
-    void handleTheDataThatNeedsToBeOutputted(QByteArray data, SAKDebugPage::OutputParameters parameters);
+    /**
+     * @brief cookData 处理输入数据
+     * @param rawData 原数据
+     * @param parameters 输入参数
+     */
+    void  cookData(QString rawData, DebugPageInputManager::InputParameters parameters);
 private:
+    CRCInterface *crcInterface;
     SAKDebugPage *debugPage;
     // ------------------------------------------------------------------------
     void run() final;
+    QByteArray rawDataToArray(QString rawData, DebugPageInputManager::InputParameters parameters);
+    quint32 crcCalculate(QByteArray data, int model);
 signals:
-    void sendBytes(QByteArray data);
-    void outputData(QString data, bool isReceived);
+    /// 输入数据经过处理后通过该信号对外发射
+    void dataCooked(QByteArray);
 };
 
 #endif

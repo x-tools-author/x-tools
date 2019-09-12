@@ -13,11 +13,16 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
+#include "SAKDebugPage.hh"
 #include "DebugPageDeviceManager.hh"
 
 DebugPageDeviceManager::DebugPageDeviceManager(SAKDebugPage *debugPage, QObject *parent)
     :QObject (parent)
     ,debugPage (debugPage)
 {
+    refreshPushButton = debugPage->refreshPushButton;
+    switchPushButton = debugPage->switchPushButton;
 
+    connect(refreshPushButton, &QPushButton::clicked, debugPage, &SAKDebugPage::refreshDevice);
+    connect(switchPushButton,  &QPushButton::clicked, debugPage, &SAKDebugPage::openOrColoseDevice);
 }

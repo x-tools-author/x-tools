@@ -26,12 +26,14 @@ SAKTabPageSerialportAssistant::SAKTabPageSerialportAssistant(QWidget *parent)
     ,serialPortAssistant (nullptr)
     ,controller (new SAKSerialportAssistantController)
 {
-    setUpController();       
+    setUpController();
 }
 
 SAKTabPageSerialportAssistant::~SAKTabPageSerialportAssistant()
 {
     controller->deleteLater();
+    serialPortAssistant->terminate();
+    delete serialPortAssistant;
 }
 
 void SAKTabPageSerialportAssistant::setUiEnable(bool enable)
@@ -52,16 +54,15 @@ void SAKTabPageSerialportAssistant::changeDeviceStatus(bool opened)
             serialPortAssistant->terminate();
             delete serialPortAssistant;
             serialPortAssistant = nullptr;
-            initSignalAndSlot(false);
         }
     }
     emit deviceStatusChanged(opened);
 }
+
 void SAKTabPageSerialportAssistant::openOrColoseDevice()
 {
     if (serialPortAssistant){
         switchPushButton->setText(tr("打开"));
-        initSignalAndSlot(false);
         serialPortAssistant->terminate();
         delete serialPortAssistant;
         serialPortAssistant = nullptr;
@@ -75,16 +76,17 @@ void SAKTabPageSerialportAssistant::openOrColoseDevice()
         const QSerialPort::DataBits dataBits = controller->dataBits();
         const QSerialPort::StopBits stopBits = controller->stopBits();
         const QSerialPort::Parity parity = controller->parity();
-        serialPortAssistant = new SAKSerialportAssistant(name,
-                                                         baudRate,
-                                                         dataBits,
-                                                         stopBits,
-                                                         parity,
-                                                         this);
-        initSignalAndSlot(true);
+        serialPortAssistant = new SAKSerialportAssistant(name, baudRate, dataBits, stopBits, parity, this);
+
+        connect(this, &SAKTabPageSerialportAssistant::writeDataRequest,serialPortAssistant, &SAKSerialportAssistant::writeBytes);
+
+        connect(serialPortAssistant, &SAKSerialportAssistant::bytesWriten,         this, &SAKTabPageSerialportAssistant::bytesWritten);
+        connect(serialPortAssistant, &SAKSerialportAssistant::bytesRead,          this, &SAKTabPageSerialportAssistant::bytesRead);
+        connect(serialPortAssistant, &SAKSerialportAssistant::messageChanged,     this, &SAKTabPageSerialportAssistant::outputMessage);
+        connect(serialPortAssistant, &SAKSerialportAssistant::deviceStatuChanged, this, &SAKTabPageSerialportAssistant::changeDeviceStatus);
 
         serialPortAssistant->start();
-    }
+    }    
 }
 
 
@@ -96,35 +98,4 @@ void SAKTabPageSerialportAssistant::refreshDevice()
 QWidget *SAKTabPageSerialportAssistant::controllerWidget()
 {
     return controller;
-}
-
-void SAKTabPageSerialportAssistant::initSignalAndSlot(bool needToConnect)
-{
-    if (needToConnect){
-        connect(serialPortAssistant, &SAKSerialportAssistant::deviceStatuChanged,
-                this, &SAKTabPageSerialportAssistant::changeDeviceStatus);
-        connect(this, &SAKTabPageSerialportAssistant::need2writeBytes,
-                serialPortAssistant, &SAKSerialportAssistant::writeBytes);
-        connect(serialPortAssistant, &SAKSerialportAssistant::bytesRead,
-                this, &SAKTabPageSerialportAssistant::bytesRead);
-        connect(serialPortAssistant, &SAKSerialportAssistant::bytesWrite,
-                this, &SAKTabPageSerialportAssistant::bytesWritten);
-        connect(serialPortAssistant, &SAKSerialportAssistant::bytesWrite,
-                this, &SAKTabPageSerialportAssistant::dataWritten);
-        connect(serialPortAssistant, &SAKSerialportAssistant::bytesRead,
-                this, &SAKTabPageSerialportAssistant::dataRead);
-    }else{
-        disconnect(serialPortAssistant, &SAKSerialportAssistant::deviceStatuChanged,
-                this, &SAKTabPageSerialportAssistant::changeDeviceStatus);
-        disconnect(this, &SAKTabPageSerialportAssistant::need2writeBytes,
-                serialPortAssistant, &SAKSerialportAssistant::writeBytes);
-        disconnect(serialPortAssistant, &SAKSerialportAssistant::bytesRead,
-                this, &SAKTabPageSerialportAssistant::bytesRead);
-        disconnect(serialPortAssistant, &SAKSerialportAssistant::bytesWrite,
-                this, &SAKTabPageSerialportAssistant::bytesWritten);
-        disconnect(serialPortAssistant, &SAKSerialportAssistant::bytesWrite,
-                this, &SAKTabPageSerialportAssistant::dataWritten);
-        disconnect(serialPortAssistant, &SAKSerialportAssistant::bytesRead,
-                this, &SAKTabPageSerialportAssistant::dataRead);
-    }
 }

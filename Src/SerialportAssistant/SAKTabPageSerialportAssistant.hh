@@ -37,8 +37,6 @@ private:
     void openOrColoseDevice() final;
     void refreshDevice() final;
     QWidget *controllerWidget() final;
-
-    void initSignalAndSlot(bool needToConnect);
 };
 
 #endif

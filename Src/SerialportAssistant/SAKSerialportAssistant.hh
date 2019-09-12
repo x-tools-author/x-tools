@@ -20,7 +20,6 @@
 #include <QSerialPort>
 
 class SAKTabPageSerialportAssistant;
-
 class SAKSerialportAssistant:public QThread
 {
     Q_OBJECT
@@ -30,7 +29,7 @@ public:
                            const QSerialPort::DataBits dataBits,
                            const QSerialPort::StopBits stopBits,
                            const QSerialPort::Parity parity,
-                           SAKTabPageSerialportAssistant* tabPage,
+                           SAKTabPageSerialportAssistant *debugPage,
                            QObject *parent = Q_NULLPTR);
     void readBytes();
     void writeBytes(QByteArray data);
@@ -42,14 +41,12 @@ private:
     const QSerialPort::DataBits _dataBits;
     const QSerialPort::StopBits _stopBits;
     const QSerialPort::Parity   _parity;
-
-    SAKTabPageSerialportAssistant *uiInterface;
-
-    QSerialPort *serialPort;
+    QSerialPort                 *serialPort;
+    SAKTabPageSerialportAssistant *debugPage;
 
 signals:
     void bytesRead(QByteArray);
-    void bytesWrite(QByteArray);
+    void bytesWriten(QByteArray);
 
     void deviceStatuChanged(bool opened);
     void messageChanged(QString message, bool isInfo);

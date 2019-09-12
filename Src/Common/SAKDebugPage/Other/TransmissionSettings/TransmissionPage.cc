@@ -20,6 +20,8 @@
 #include "BaseTransmissionItemWidget.hh"
 #include "SerialPortTransmissionItemWidget.hh"
 
+#include <QDateTime>
+
 TransmissionPage::TransmissionPage(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget (parent)
     ,_debugPage (debugPage)

@@ -32,6 +32,7 @@ HEADERS += \
     Src/Common/SAKDebugPage/Chart/Throughput/ThroughputWidget.hh \
     Src/Common/SAKDebugPage/Device/DebugPageDeviceManager.hh \
     Src/Common/SAKDebugPage/Input/DebugPageInputManager.hh \
+    Src/Common/SAKDebugPage/Input/InputDataFactory.hh \
     Src/Common/SAKDebugPage/Message/DebugPageMessageManager.hh \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseItemWidget.hh \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.hh \
@@ -60,7 +61,7 @@ HEADERS += \
     Src/Console/SAKConsole.hh \
     Src/Console/SAKLogOutput.hh \
     Src/Common/SAKDebugPage/SAKDebugPage.hh \
-    Src/Common/SAKDebugPage/SAKDataFactory.hh \
+#    Src/Common/SAKDebugPage/SAKDataFactory.hh \
     Src/Common/SAKDebugPage/SAKCRCInterface.hh
 
 
@@ -74,6 +75,7 @@ SOURCES += \
     Src/Common/SAKDebugPage/Chart/Throughput/ThroughputWidget.cc \
     Src/Common/SAKDebugPage/Device/DebugPageDeviceManager.cc \
     Src/Common/SAKDebugPage/Input/DebugPageInputManager.cc \
+    Src/Common/SAKDebugPage/Input/InputDataFactory.cc \
     Src/Common/SAKDebugPage/Message/DebugPageMessageManager.cc \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseItemWidget.cc \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.cc \
@@ -103,7 +105,7 @@ SOURCES += \
     Src/Console/SAKConsole.cc \
     Src/Console/SAKLogOutput.cc \
     Src/Common/SAKDebugPage/SAKDebugPage.cc \
-    Src/Common/SAKDebugPage/SAKDataFactory.cc \
+#    Src/Common/SAKDebugPage/SAKDataFactory.cc \
     Src/Common/SAKDebugPage/SAKCRCInterface.cc
 
 

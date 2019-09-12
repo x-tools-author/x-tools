@@ -19,6 +19,7 @@
 #include <QSize>
 #include <QTimer>
 #include <QLabel>
+#include <QMutex>
 #include <QWidget>
 #include <QGroupBox>
 #include <QComboBox>
@@ -57,77 +58,7 @@ public:
     SAKDebugPage(QWidget *parent = Q_NULLPTR);
     ~SAKDebugPage();
 
-signals:
-    /// 读取数据后发射该信号，参数为已读取的数据
-    void dataRead(QByteArray data);
-    /// 发送数据后发射该信号，参数为已发送的数据
-    void dataWritten(QByteArray data);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 public:
-    /**
-     * @brief   -- 数据显示模式
-     */
-    enum TextDisplayModel {
-        Bin,
-        Oct,
-        Dec,
-        Hex,
-        Ascii,
-        Local8bit
-    };
-    Q_ENUM(TextDisplayModel)
-
-    /**
-     * @brief The OutputParameters struct   -- 输出参数
-     */
-    struct OutputParameters {
-        bool showDate;
-        bool showTime;
-        bool showMS;
-        bool isReceivedData;
-        TextDisplayModel textModel;
-    };
-
-    /**
-     * @brief The InputParameters struct    --  输入上下文
-     */
-    struct InputParameters {
-        bool    sendCircularly;             // 循环发送标志
-        bool    addCRC;                     // 追加crc校验数据标志
-        bool    bigEnfian;                  // 大端序添加crc值
-        quint32 cycleTime;                  // 循环发送时间（周期）
-        TextDisplayModel inputModel;        // 数据输入模式
-        SAKCRCInterface::CRCModel crcModel; // crc参数模型
-    };
-
-    /**
-     * @brief readDelayTimes    -- 收到读就绪信号后，延时一段时间
-     * @return                  -- 延时时间
-     */
-    unsigned long readDelayTimes();
-    /**
-     * @brief readDelayTimes    -- 执行发送函数前，延时一段时间发送
-     * @return                  -- 延时时间
-     */
-    unsigned long writeDelayTimes();
     /**
      * @brief write             -- 写数据
      * @param data              -- 代写的数据
@@ -137,111 +68,57 @@ public:
     /// 输出内部信息
     void outputMessage(QString msg, bool isInfo = true);
 
-    friend class SAKChartManager;
-    friend class SAKOtherSettings;       
-    friend class SAKStatisticsManager;
-    friend class DebugPageOutputManager;
-    friend class DebugPageDeviceManager;
-    friend class DebugPageMessageManager;
+signals:
+    /// 读取数据后发射该信号，参数为已读取的数据
+    void bytesRead(QByteArray data);
+    /// 发送数据后发射该信号，参数为已发送的数据
+    void bytesWritten(QByteArray data);
+    /// 子类关联该信号来发送数据即可
+    void writeDataRequest(QByteArray data);
+    /// 子类设备状态发生改变时(是否就绪)发送该信号
+    void deviceStatusChanged(bool ready);
+
+    /*
+     * 读写参数
+     */
+public:
+    struct ReadWriteParameters {
+        int waitForBytesWrittenTime;
+        int waitForReadyReadTime;
+    };
+
+    struct ReadWriteParameters readWriteParameters();
+    void setReadWriteParameters(struct ReadWriteParameters parameters);
+private:
+    struct ReadWriteParameters _readWriteParameters;
+    QMutex readWriteParametersQMutex;
+
+
 protected:
     /**
      * @brief openOrColoseDevice    -- 打开或者关闭设备
      */
-    virtual void openOrColoseDevice(){}
+    virtual void openOrColoseDevice();
     /**
      * @brief refreshDevice         -- 刷新设备
      */
-    virtual void refreshDevice(){}
+    virtual void refreshDevice();
     /**
      * @brief controllerWidget  -- 安装控制面板
      */
-    virtual QWidget *controllerWidget(){return nullptr;}
+    virtual QWidget *controllerWidget();
     /**
      * @brief setUpController -- 安装控制器（控制面板）
      */
-    void setUpController();   
-    /**
-     * @brief bytesRead -- 处理接受到的数据
-     * @param data      -- 接受到的数据
-     */
-    void bytesRead(QByteArray data);
-    /**
-     * @brief bytesWritten  -- 处理已发送的数据
-     * @param data          -- 已发送的数据
-     */
-    void bytesWritten(QByteArray data);   
+    void setUpController();
     /**
      * @brief changedDeviceStatus   -- 设备打开或者关闭时执行该函数
      * @param opened                -- true: 设备一打开 false：设备已关闭
      */
     void changedDeviceStatus(bool opened);
-protected:
-    /// 循环发送定时器
-    QTimer cycleTimer;
-    SAKDataFactory *dataFactory;
-private:
-    /// 初始化ui
-    void initUI();
-    /// 注册用户自定义数据类型，自定义数据类型作为信号参数时，必须先注册
-    void registerMetaType();
-    /// 获取输出参数
-    OutputParameters outputParameters();
-    /// 写数据
-    void writeBytes(QByteArray data){emit need2writeBytes(data);}
-    /// 设置label文本
-    void setLabelText(QLabel *label, quint64 text);
-    /// 设置输入框的文本输入格式
-    void formattingInputText(TextDisplayModel model);
-    /// 计算crc
-    uint32_t crcCalculate(QByteArray data, SAKCRCInterface::CRCModel model);
-    /// 处理文本数据
-    QByteArray cookedData(QString rawData);
-    /// 循环计时器计数溢出时执行该函数
-    void cycleTimerTimeout();
-signals:
-    /// 该函数并不会真的发送数据，而是发送一个信号，该信号携带需要发送的数据,数据需要经过处理后才能发送
-    void sendRawData(QString rawData, InputParameters parameters);
-    /// 将读取到的数据或者已发送的数据发射出去处理
-    void dataReadOrwritten(QByteArray data, OutputParameters parameters);
-    /// 子类关联该信号来发送数据即可
-    void need2writeBytes(QByteArray data);
-    /// 子类设备状态（打开/关闭）发生改变时发送该信号
-    void deviceStatusChanged(bool opened);
 private:
     /// 日志类型
     const char *logCategory = "SAKTabPage";
-    /// crc计算接口
-    SAKCRCInterface *crcInterface;
-    friend class SAKDataFactory;
-    ///----------------------------------------------------------------
-    QString readSetting(QString &option);
-    void writeSetting(QString &option, QString &value);    
-
-    /**
-     * @brief outputData        -- 更新输出数据
-     * @param data              -- 需要输出显示的数据
-     */
-    void outputData(QString data);    
-private slots:
-//    void updateRxImage();
-//    void updateTxImage();
-
-    void cancleCycle();
-
-    void setCycleTime(QString time);
-    void readCycleTime();
-
-    void setOutputMode(QString mode);
-    void readOutputMode();
-
-    void setInputMode(QString mode);
-    void readInputMode();
-
-    void checkedBoxCycleClicked(bool checked);
-
-    void resetSendDataCount();
-    void resetReceiveDataCount();
-
 
 
     // ------------------------------------------------------------------------
@@ -250,19 +127,15 @@ protected:
     QPushButton *refreshPushButton              = nullptr;  // 刷新按钮
     QPushButton *switchPushButton               = nullptr;  // 打开关闭设备按钮
     QGroupBox   *deviceSettingGroupBox          = nullptr;  // 控制面板
-private slots:
-    void on_refreshPushButton_clicked(){refreshDevice();}
-    void on_switchPushButton_clicked(){openOrColoseDevice();}
-
+    QFrame      *controllerFrame                = nullptr;  // 设备控制
 
      // 输入设置组
 protected:
-    InputParameters inputParameters;                        // 输入参数
-
     QComboBox   *inputModelComboBox             = nullptr;  // 输入模式预选框
     QCheckBox   *cycleEnableCheckBox            = nullptr;  // 循环使能复选框
     QLineEdit   *cycleTimeLineEdit              = nullptr;  // 循环周期输入框
     QPushButton *readinFilePushButton           = nullptr;  // 读入文件按钮
+    QPushButton *saveInputDataPushButton        = nullptr;  // 保存发送输入框数据
     QCheckBox   *addCRCCheckBox                 = nullptr;  // 发送数据添加crc校验
     QCheckBox   *bigeEndianCheckBox             = nullptr;  // crc值以大端形式添加
     QPushButton *clearInputPushButton           = nullptr;  // 清空输入框按钮
@@ -270,26 +143,14 @@ protected:
     QTextEdit   *inputTextEdit                  = nullptr;  // 数据输入框
     QComboBox   *crcParameterModelsComboBox     = nullptr;  // crc计算参数模型
     QLabel      *crcLabel                       = nullptr;  // crc显示标签
-private slots:
-    void on_inputModelComboBox_currentTextChanged(const QString &text);
-    void on_cycleEnableCheckBox_clicked();
-    void on_cycleTimeLineEdit_textChanged(const QString &text);
-    void on_readinFilePushButton_clicked();
-    void on_addCRCCheckBox_clicked();
-    void on_bigeEndianCheckBox_clicked();
-    void on_clearInputPushButton_clicked();
-    void on_sendPushButton_clicked();
-    void on_inputTextEdit_textChanged();
-    void on_crcParameterModelsComboBox_currentTextChanged(const QString &text);
 
-    //数据输出组管理    
+
+    //数据输出组管理
 protected:
-    QTextBrowser *messageTextBrowser            = nullptr;  // 消息输出框
+    QTextBrowser *messageTextBrowser            = nullptr;  // 消息输出框    
 
     // 消息输出组
 protected:
-    TextDisplayModel outputTextModel = SAKDebugPage::Hex;
-
     QLabel      *rxLabel                        = nullptr;  // 接受指示灯
     QLabel      *txLabel                        = nullptr;  // 发送指示灯
     QComboBox   *outputModelComboBox            = nullptr;  // 输出模式复选框
@@ -342,10 +203,15 @@ private:
     /**
      * @brief initUiPointer -- 初始化指向ui控件的数据成员（指针）
      */
-    void initUiPointer();       
+    void initUiPointer();
+public:
+    friend class SAKChartManager;
+    friend class SAKOtherSettings;
+    friend class SAKStatisticsManager;
+    friend class DebugPageInputManager;
+    friend class DebugPageOutputManager;
+    friend class DebugPageDeviceManager;
+    friend class DebugPageMessageManager;
 };
-
-Q_DECLARE_METATYPE(SAKDebugPage::TextDisplayModel);
-Q_DECLARE_METATYPE(SAKDebugPage::OutputParameters);
 
 #endif  // SAKTabPage_H

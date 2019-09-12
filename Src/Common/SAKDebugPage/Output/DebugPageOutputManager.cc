@@ -59,8 +59,8 @@ DebugPageOutputManager::DebugPageOutputManager(SAKDebugPage *debugPage, QObject 
     /*
      * 处理已接收或者是已发送的数据
      */
-    connect(debugPage, &SAKDebugPage::dataRead, this, &DebugPageOutputManager::bytesRead);
-    connect(debugPage, &SAKDebugPage::dataWritten, this, &DebugPageOutputManager::bytesWritten);
+    connect(debugPage, &SAKDebugPage::bytesRead, this, &DebugPageOutputManager::bytesRead);
+    connect(debugPage, &SAKDebugPage::bytesWritten, this, &DebugPageOutputManager::bytesWritten);
 
     /*
      * 数据先发送到 dataFactory 中进行处理，处理完毕后再输出至界面
@@ -147,9 +147,9 @@ void DebugPageOutputManager::saveOutputDataSettings()
 void DebugPageOutputManager::saveOutputDataToFile()
 {
     if (saveOutputFileToFilecheckBox->isChecked()){
-        connect(debugPage, &SAKDebugPage::dataRead, outputSettings, &SaveOutputDataSettings::inputData);
+        connect(debugPage, &SAKDebugPage::bytesRead, outputSettings, &SaveOutputDataSettings::inputData);
     }else{
-        disconnect(debugPage, &SAKDebugPage::dataRead, outputSettings, &SaveOutputDataSettings::inputData);
+        disconnect(debugPage, &SAKDebugPage::bytesRead, outputSettings, &SaveOutputDataSettings::inputData);
     }
 }
 

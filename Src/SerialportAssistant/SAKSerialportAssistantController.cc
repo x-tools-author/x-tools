@@ -18,6 +18,7 @@
 #include <QLineEdit>
 #include <QSerialPortInfo>
 
+#include "SAKBase.hh"
 #include "SAKSerialportAssistantController.hh"
 #include "ui_SAKSerialportAssistantController.h"
 SAKSerialportAssistantController::SAKSerialportAssistantController(QWidget *parent)
@@ -43,42 +44,11 @@ SAKSerialportAssistantController::~SAKSerialportAssistantController()
 
 void SAKSerialportAssistantController::refresh()
 {
-    QList<QSerialPortInfo> serialPortInfos = QSerialPortInfo::availablePorts();
-    comboBoxSerialports->clear();
-    for (QSerialPortInfo info:serialPortInfos){
-        comboBoxSerialports->addItem(info.portName() + " " + info.description());
-    }
-    if (serialPortInfos.isEmpty()){
-        comboBoxSerialports->addItem(tr("未检测到串口设备"));
-    }
-
-    QList<qint32> standarBuadRates = QSerialPortInfo::standardBaudRates();
-    comboBoxBaudrate->clear();
-    for(qint32 baudRate:standarBuadRates){
-        comboBoxBaudrate->addItem(QString::number(baudRate));
-    }
-    comboBoxBaudrate->setCurrentIndex(6);
-
-    QMetaEnum dataBits = QMetaEnum::fromType<QSerialPort::DataBits>();
-    comboBoxDatabits->clear();
-    for (int i = 0; i < dataBits.keyCount(); i++){
-        comboBoxDatabits->addItem(dataBits.valueToKey(dataBits.value(i)));
-    }
-    comboBoxDatabits->setCurrentIndex(3);
-
-    QMetaEnum stopBitsEnum = QMetaEnum::fromType<QSerialPort::StopBits>();
-    comboBoxStopbits->clear();
-    for (int i = 0; i < stopBitsEnum.keyCount(); i++){
-        comboBoxStopbits->addItem(stopBitsEnum.valueToKey(stopBitsEnum.value(i)));
-    }
-    comboBoxStopbits->setCurrentIndex(0);
-
-    QMetaEnum parotyEnum = QMetaEnum::fromType<QSerialPort::Parity>();
-    comboBoxParity->clear();
-    for (int i = 0; i < stopBitsEnum.keyCount(); i++){
-        comboBoxParity->addItem(parotyEnum.valueToKey(parotyEnum.value(i)));
-    }
-    comboBoxParity->setCurrentIndex(0);
+    SAKBase::instance()->initComComboBox(comboBoxSerialports);
+    SAKBase::instance()->initBaudRateComboBox(comboBoxBaudrate);
+    SAKBase::instance()->initDataBitsComboBox(comboBoxDatabits);
+    SAKBase::instance()->initStopBitsComboBox(comboBoxStopbits);
+    SAKBase::instance()->initParityComboBox(comboBoxParity);
 }
 
 void SAKSerialportAssistantController::setUiEnable(bool enable)
@@ -93,38 +63,17 @@ void SAKSerialportAssistantController::setUiEnable(bool enable)
 
 enum QSerialPort::DataBits SAKSerialportAssistantController::dataBits()
 {
-    QMetaEnum ret = QMetaEnum::fromType<QSerialPort::DataBits>();
-    bool ok = false;
-    int val = ret.keyToValue(comboBoxDatabits->currentText().toLatin1().data(), &ok);
-    if (!ok){
-        val = QSerialPort::Data8;
-    }
-
-    return static_cast<QSerialPort::DataBits>(val);
+    return static_cast<QSerialPort::DataBits>(comboBoxDatabits->currentData().toInt());
 }
 
 enum QSerialPort::StopBits SAKSerialportAssistantController::stopBits()
 {
-    QMetaEnum ret = QMetaEnum::fromType<QSerialPort::StopBits>();
-    bool ok = false;
-    int val = ret.keyToValue(comboBoxDatabits->currentText().toLatin1().data(), &ok);
-    if (!ok){
-        val = QSerialPort::OneStop;
-    }
-
-    return static_cast<QSerialPort::StopBits>(val);
+    return static_cast<QSerialPort::StopBits>(comboBoxStopbits->currentData().toInt());
 }
 
 enum QSerialPort::Parity SAKSerialportAssistantController::parity()
 {
-    QMetaEnum ret = QMetaEnum::fromType<QSerialPort::Parity>();
-    bool ok = false;
-    int val = ret.keyToValue(comboBoxParity->currentText().toLatin1().data(), &ok);
-    if (!ok){
-        val = QSerialPort::NoParity;
-    }
-
-    return static_cast<QSerialPort::Parity>(val);
+    return static_cast<QSerialPort::Parity>(comboBoxParity->currentData().toInt());
 }
 
 QString SAKSerialportAssistantController::name()

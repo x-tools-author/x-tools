@@ -62,8 +62,8 @@ ThroughputWidget::ThroughputWidget(SAKDebugPage *debugPage, QWidget *parent)
     connect(&updateTimer, &QTimer::timeout, this, &ThroughputWidget::updateTimerTimeout);
     updateTimer.start();
 
-    connect(debugPage, &SAKDebugPage::dataRead, this, &ThroughputWidget::dataRead);
-    connect(debugPage, &SAKDebugPage::dataWritten, this, &ThroughputWidget::dataWite);
+    connect(debugPage, &SAKDebugPage::bytesRead, this, &ThroughputWidget::dataRead);
+    connect(debugPage, &SAKDebugPage::bytesWritten, this, &ThroughputWidget::dataWite);
 }
 
 ThroughputWidget::~ThroughputWidget()

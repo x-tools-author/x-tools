@@ -25,15 +25,15 @@ class SAKDataFactory:public QThread
 public:
     SAKDataFactory(SAKDebugPage *page, QObject *parent = Q_NULLPTR);
 
-    void handleTheDataThatNeedsToBeSent(QString rawData, SAKDebugPage::InputParameters parameters);
-    void handleTheDataThatNeedsToBeOutputted(QByteArray data, SAKDebugPage::OutputParameters parameters);
-private:
-    SAKDebugPage *debugPage;
-    // ------------------------------------------------------------------------
-    void run() final;
-signals:
-    void sendBytes(QByteArray data);
-    void outputData(QString data, bool isReceived);
+//    void handleTheDataThatNeedsToBeSent(QString rawData, SAKDebugPage::InputParameters parameters);
+//    void handleTheDataThatNeedsToBeOutputted(QByteArray data, SAKDebugPage::OutputParameters parameters);
+//private:
+//    SAKDebugPage *debugPage;
+//    // ------------------------------------------------------------------------
+//    void run() final;
+//signals:
+//    void sendBytes(QByteArray data);
+//    void outputData(QString data, bool isReceived);
 };
 
 #endif

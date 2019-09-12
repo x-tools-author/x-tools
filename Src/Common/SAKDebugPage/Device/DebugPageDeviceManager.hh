@@ -17,6 +17,7 @@
 #define DEBUGPAGEDEVICEMANAGER_HH
 
 #include <QObject>
+#include <QPushButton>
 
 class SAKDebugPage;
 
@@ -27,6 +28,8 @@ public:
     DebugPageDeviceManager(SAKDebugPage *debugPage, QObject *parent = nullptr);
 private:
     SAKDebugPage *debugPage;
+    QPushButton *switchPushButton;
+    QPushButton *refreshPushButton;
 };
 
 #endif

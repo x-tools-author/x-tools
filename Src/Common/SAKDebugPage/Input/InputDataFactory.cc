@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright (C) 2018-2019 wuuhii. All rights reserved.
+ * Copyright (C) 2019 wuuhii. All rights reserved.
  *
  * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
  * project. The project is a open source project, you can get the source from:
@@ -16,31 +16,68 @@
 #include <QtEndian>
 #include <QApplication>
 
-#include "SAKDataFactory.hh"
+#include "SAKBase.hh"
+#include "CRCInterface.hh"
 #include "SAKCRCInterface.hh"
+#include "InputDataFactory.hh"
 
-SAKDataFactory::SAKDataFactory(SAKDebugPage *page, QObject *parent)
+InputDataFactory::InputDataFactory(QObject *parent)
     :QThread (parent)
-    ,debugPage (page)
+    ,crcInterface (nullptr)
 {
     moveToThread(this);
 }
 
-void SAKDataFactory::run()
+void InputDataFactory::run()
 {
-    connect(qApp, &QApplication::lastWindowClosed, this, &SAKDataFactory::terminate);
+    crcInterface = new CRCInterface(this);
+    connect(qApp, &QApplication::lastWindowClosed, this, &InputDataFactory::terminate);
     exec();
 }
 
-void SAKDataFactory::handleTheDataThatNeedsToBeSent(QString rawData, SAKDebugPage::InputParameters parameters)
+QByteArray InputDataFactory::rawDataToArray(QString rawData, DebugPageInputManager::InputParameters parameters)
 {
-    QByteArray data = debugPage->cookedData(rawData);
+    QByteArray data;
+    if (parameters.inputModel == SAKBase::Bin){
+        QStringList strList = rawData.split(' ');
+        for (QString str:strList){
+            data.append(static_cast<int8_t>(QString(str).toInt(nullptr, 2)));
+        }
+    }else if (parameters.inputModel == SAKBase::Oct){
+        QStringList strList = rawData.split(' ');
+        for (QString str:strList){
+            data.append(static_cast<int8_t>(QString(str).toInt(nullptr, 8)));
+        }
+    }else if (parameters.inputModel == SAKBase::Dec){
+        QStringList strList = rawData.split(' ');
+        for (QString str:strList){
+            data.append(static_cast<int8_t>(QString(str).toInt(nullptr, 10)));
+        }
+    }else if (parameters.inputModel == SAKBase::Hex){
+        QStringList strList = rawData.split(' ');
+        for (QString str:strList){
+            data.append(static_cast<int8_t>(QString(str).toInt(nullptr, 16)));
+        }
+    }else if (parameters.inputModel == SAKBase::Ascii){
+        data = rawData.toLatin1();
+    }else if (parameters.inputModel == SAKBase::Local){
+        data = rawData.toLocal8Bit();
+    }else {
+        Q_ASSERT_X(false, __FUNCTION__, "Unknow input mode");
+    }
+
+    return data;
+}
+
+void InputDataFactory:: cookData(QString rawData, DebugPageInputManager::InputParameters parameters)
+{
+    QByteArray data = rawDataToArray(rawData, parameters);
     if (parameters.addCRC){
-        uint32_t crc  = debugPage->crcCalculate(data, parameters.crcModel);
+        uint32_t crc  = crcCalculate(data, parameters.crcModel);
         uint8_t  crc8  = static_cast<uint8_t>(crc);
         uint16_t crc16 = static_cast<uint16_t>(crc);
-        int bitsWidth = debugPage->crcInterface->getBitsWidth(parameters.crcModel);
-        if (parameters.bigEnfian){
+        int bitsWidth = crcInterface->getBitsWidth(static_cast<CRCInterface::CRCModel>(parameters.crcModel));
+        if (parameters.bigEndian){
             crc16 = qToBigEndian(crc16);
             crc = qToBigEndian(crc);
         }
@@ -60,60 +97,32 @@ void SAKDataFactory::handleTheDataThatNeedsToBeSent(QString rawData, SAKDebugPag
         }
     }
 
-    emit sendBytes(data);
+    emit dataCooked(data);
 }
 
-void SAKDataFactory::handleTheDataThatNeedsToBeOutputted(QByteArray data, SAKDebugPage::OutputParameters parameters)
+uint32_t InputDataFactory::crcCalculate(QByteArray data, int model)
 {
-
-    QString str;
-
-    str.append("[");
-
-    if (parameters.showDate){
-        str.append(QDate::currentDate().toString("yyyy-MM-dd "));
-        str = QString("<font color=silver>%1</font>").arg(str);
+    int bitsWidth = crcInterface->getBitsWidth(static_cast<CRCInterface::CRCModel>(model));
+    uint8_t crc8;
+    uint16_t crc16;
+    uint32_t crc32;
+    quint32 crc = 0;
+    switch (bitsWidth) {
+    case 8:
+        crcInterface->crcCalculate<uint8_t>(reinterpret_cast<uint8_t*>(data.data()), static_cast<quint64>(data.length()), crc8, static_cast<CRCInterface::CRCModel>(model));
+        crc = crc8;
+        break;
+    case 16:
+        crcInterface->crcCalculate<uint16_t>(reinterpret_cast<uint8_t*>(data.data()), static_cast<quint64>(data.length()), crc16, static_cast<CRCInterface::CRCModel>(model));
+        crc = crc16;
+        break;
+    case 32:
+        crcInterface->crcCalculate<uint32_t>(reinterpret_cast<uint8_t*>(data.data()), static_cast<quint64>(data.length()), crc32, static_cast<CRCInterface::CRCModel>(model));
+        crc = crc32;
+        break;
+    default:
+        break;
     }
 
-    if (parameters.showTime){
-        if (parameters.showMS){
-            str.append(QTime::currentTime().toString("hh:mm:ss.z "));
-        }else {
-            str.append(QTime::currentTime().toString("hh:mm:ss "));
-        }
-        str = QString("<font color=silver>%1</font>").arg(str);
-    }
-
-    if (parameters.isReceivedData){
-        str.append("<font color=blue>Rx</font>");
-    }else {
-        str.append("<font color=purple>Tx</font>");
-    }
-    str.append("<font color=silver>] </font>");
-
-    if (parameters.textModel == SAKDebugPage::Bin){
-        for (int i = 0; i < data.length(); i++){
-            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(data.at(i)), 2), 8, '0'));
-        }
-    }else if (parameters.textModel == SAKDebugPage::Oct){
-        for (int i = 0; i < data.length(); i++){
-            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(data.at(i)), 8), 3, '0'));
-        }
-    }else if (parameters.textModel == SAKDebugPage::Dec){
-        for (int i = 0; i < data.length(); i++){
-            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(data.at(i)), 10)));
-        }
-    }else if (parameters.textModel == SAKDebugPage::Hex){
-        for (int i = 0; i < data.length(); i++){
-            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(data.at(i)), 16), 2, '0'));
-        }
-    }else if (parameters.textModel == SAKDebugPage::Ascii){
-        str.append(QString(data));
-    }else if (parameters.textModel == SAKDebugPage::Local8bit){
-        str.append(QString::fromLocal8Bit(data));
-    }else {
-        Q_ASSERT_X(false, __FUNCTION__, "Unknow output mode");
-    }
-
-    emit outputData(str, parameters.isReceivedData);
+    return crc;
 }

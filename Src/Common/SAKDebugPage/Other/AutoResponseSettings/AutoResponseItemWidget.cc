@@ -43,7 +43,7 @@ AutoResponseItemWidget::AutoResponseItemWidget(SAKDebugPage *debugPage, QWidget 
     SAKBase::instance()->initTextFormatComboBox(referenceDataFromatComboBox);
     SAKBase::instance()->initTextFormatComboBox(responseDataFormatComboBox);
 
-    connect(debugPage, &SAKDebugPage::dataRead, this, &AutoResponseItemWidget::dataRead);
+    connect(debugPage, &SAKDebugPage::bytesRead, this, &AutoResponseItemWidget::dataRead);
     connect(this, &AutoResponseItemWidget::requestWrite, debugPage, &SAKDebugPage::write);
 }
 

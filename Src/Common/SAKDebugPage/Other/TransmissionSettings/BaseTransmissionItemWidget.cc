@@ -20,7 +20,7 @@ BaseTransmissionItemWidget::BaseTransmissionItemWidget(SAKDebugPage *debugPage, 
     :QWidget (parent)
     ,debugPage (debugPage)
 {
-    connect(debugPage, &SAKDebugPage::dataRead, this, &BaseTransmissionItemWidget::write);
+    connect(debugPage, &SAKDebugPage::bytesRead, this, &BaseTransmissionItemWidget::write);
     connect(this, &BaseTransmissionItemWidget::bytesRead, debugPage, &SAKDebugPage::write);
 }
 

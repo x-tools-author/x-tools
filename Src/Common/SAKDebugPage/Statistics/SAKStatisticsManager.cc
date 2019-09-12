@@ -37,8 +37,8 @@ SAKStatisticsManager::SAKStatisticsManager(SAKDebugPage *debugPage, QObject *par
     dataContext.rxBytesPerSecond = 0;
     dataContext.txBytesPerSecond = 0;
 
-    connect(debugPage, &SAKDebugPage::dataRead, this, &SAKStatisticsManager::dataRead);
-    connect(debugPage, &SAKDebugPage::dataWritten, this, &SAKStatisticsManager::dataReceived);
+    connect(debugPage, &SAKDebugPage::bytesRead, this, &SAKStatisticsManager::dataRead);
+    connect(debugPage, &SAKDebugPage::bytesWritten, this, &SAKStatisticsManager::dataReceived);
     connect(resetRxCountPushButton, &QPushButton::clicked, this, &SAKStatisticsManager::clearRxStatistics);
     connect(resetTxCountPushButton, &QPushButton::clicked, this, &SAKStatisticsManager::clearTxStatistics);
 
