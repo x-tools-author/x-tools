@@ -24,6 +24,17 @@ SAKCRCInterface::SAKCRCInterface(QObject *parent)
 
 }
 
+void SAKCRCInterface::initCRCComboBox(QComboBox *comboBox)
+{
+    if (comboBox){
+        comboBox->clear();
+        QMetaEnum enums = QMetaEnum::fromType<CRCModel>();
+        for (int i = 0; i < enums.keyCount(); i++){
+            comboBox->addItem(QString(enums.key(i)), QVariant::fromValue(enums.value(i)));
+        }
+    }
+}
+
 uint32_t SAKCRCInterface::getInitValue(SAKCRCInterface::CRCModel model)
 {
     uint32_t init = 0;

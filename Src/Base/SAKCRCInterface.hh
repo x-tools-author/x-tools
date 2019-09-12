@@ -17,6 +17,7 @@
 #define SAKCRCINTERFACE_HH
 
 #include <QObject>
+#include <QComboBox>
 #include <QStringList>
 
 class SAKCRCInterface:public QObject
@@ -52,6 +53,12 @@ public:
         CRC_32_MPEG2
     };
     Q_ENUM(CRCModel)
+
+    /**
+     * @brief initCRCComboBox 初始化控件
+     * @param comboBox 需要初始化的控件
+     */
+    static void initCRCComboBox(QComboBox *comboBox);
 
     /**
      * @brief crcCalculate  -- crc计算
