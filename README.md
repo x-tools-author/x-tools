@@ -1,5 +1,5 @@
+![先来一张图再说](MainWindow.png)
 # Introduce
-
 The goal of this project is to create an easy-to-use, cross-platform, multi-language debugging tool set, emmm...that sounds not bad.
 
 ## Function Modules
