@@ -23,9 +23,9 @@ The goal of this project is to create an easy-to-use, cross-platform, multi-lang
 + ...
 ## Build
 + Window
-+ + System: Windows 10
-+ + Qt: Qt5.12 32bits
-+ + Compiler: msvc 2017
+  + System: Windows 10
+  + Qt: Qt5.12 32bits
+  + Compiler: msvc 2017
 ## Ui
 ![MainWindow](MainWindow..png)
 ## Links
