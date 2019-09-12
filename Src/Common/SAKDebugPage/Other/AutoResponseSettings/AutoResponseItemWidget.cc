@@ -122,7 +122,7 @@ void AutoResponseItemWidget::dataRead(QByteArray data)
          QByteArray responseData = string2array(responseString, responseFromat);
 
          if (!responseData.isEmpty()){
-             debugPage->write(data);
+             debugPage->write(responseData);
          }
     }
 }
