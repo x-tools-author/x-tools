@@ -36,6 +36,7 @@
 #include "QtStyleSheetApi.hh"
 #include "GetPublicIPWidget.h"
 #include "SAKTcpClientDebugPage.hh"
+#include "SAKTcpServerDebugPage.hh"
 #include "SAKTabPageSerialportAssistant.hh"
 #include "QtCryptographicHashController.hh"
 
@@ -85,6 +86,8 @@ void SAKMainWindow::AddTab()
     this->mpTabWidget->addTab(new SAKUdpDebugPage, tr("UDP调试"));
     // tcp客户单
     this->mpTabWidget->addTab(new SAKTcpClientDebugPage, tr("TCP客户端"));
+    // tcp服务器
+    this->mpTabWidget->addTab(new SAKTcpServerDebugPage, tr("TCP服务器"));
     // 终端输出
     this->mpTabWidget->addTab(new SAKConsole, tr("终端"));
 }
