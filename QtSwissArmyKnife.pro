@@ -65,6 +65,9 @@ HEADERS += \
     Src/TcpClient/SAKTcpClientDebugPage.hh \
     Src/TcpClient/SAKTcpClientDevice.hh \
     Src/TcpClient/SAKTcpClientDeviceController.hh \
+    Src/TcpServer/SAKTcpServerDebugPage.hh \
+    Src/TcpServer/SAKTcpServerDevice.hh \
+    Src/TcpServer/SAKTcpServerDeviceController.hh \
     Src/UdpDebug/SAKUdpDebugPage.hh \
     Src/UdpDebug/SAKUdpDevice.hh \
     Src/UdpDebug/SAKUdpDeviceController.hh
@@ -104,6 +107,9 @@ SOURCES += \
     Src/TcpClient/SAKTcpClientDebugPage.cc \
     Src/TcpClient/SAKTcpClientDevice.cc \
     Src/TcpClient/SAKTcpClientDeviceController.cc \
+    Src/TcpServer/SAKTcpServerDebugPage.cc \
+    Src/TcpServer/SAKTcpServerDevice.cc \
+    Src/TcpServer/SAKTcpServerDeviceController.cc \
     Src/UdpDebug/SAKUdpDebugPage.cc \
     Src/UdpDebug/SAKUdpDevice.cc \
     Src/UdpDebug/SAKUdpDeviceController.cc \
@@ -139,6 +145,7 @@ FORMS += \
     Src/Common/SAKDebugPage/Other/HighlightSettings/HighlightSettingsWidget.ui \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.ui \
     Src/TcpClient/SAKTcpClientDeviceController.ui \
+    Src/TcpServer/SAKTcpServerDeviceController.ui \
     Src/UdpDebug/SAKUdpDeviceController.ui
 
 
@@ -166,7 +173,8 @@ INCLUDEPATH += \
 
 INCLUDEPATH += \
     Src/UdpDebug \
-    Src/TcpClient
+    Src/TcpClient \
+    Src/TcpServer
 
 RESOURCES += \
     SAKResources.qrc
