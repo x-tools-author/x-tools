@@ -1,4 +1,3 @@
-![先来一张图再说](MainWindow.png)
 # Introduce
 The goal of this project is to create an easy-to-use, cross-platform, multi-language debugging tool set, emmm...that sounds not bad.
 
@@ -27,7 +26,7 @@ The goal of this project is to create an easy-to-use, cross-platform, multi-lang
   + Qt: Qt5.12 32bits
   + Compiler: msvc 2017
 ## Ui
-![MainWindow](MainWindow..png)
+![先来一张图再说](MainWindow.png)
 ## Links
 ### Github
 https://github.com/wuuhii/QtSwissArmyKnife
