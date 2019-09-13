@@ -27,13 +27,18 @@ SAKTabPageSerialportAssistant::SAKTabPageSerialportAssistant(QWidget *parent)
     ,controller (new SAKSerialportAssistantController)
 {
     setUpController();
+    setWindowTitle(tr("串口调试"));
 }
 
 SAKTabPageSerialportAssistant::~SAKTabPageSerialportAssistant()
 {
-    controller->deleteLater();
-    serialPortAssistant->terminate();
-    delete serialPortAssistant;
+    delete controller;
+    if (serialPortAssistant){
+        serialPortAssistant->terminate();
+        delete serialPortAssistant;
+    }
+
+    qDebug() << QString("串口调试窗口已被销毁");
 }
 
 void SAKTabPageSerialportAssistant::setUiEnable(bool enable)
