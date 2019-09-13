@@ -294,26 +294,34 @@ void SAKMainWindow::addRemovablePage()
 
 void SAKMainWindow::openIODeviceWindow()
 {
-#if 0
     int type = qobject_cast<QAction*>(sender())->data().value<int>();
 
+    QWidget *widget = nullptr;
     switch (type) {
     case SAKGlobal::SAKEnumIODeviceTypeUDP:
+        widget = new SAKUdpDebugPage;
         break;
     case SAKGlobal::SAKEnumIODeviceTypeTCPClient:
+        widget = new SAKTcpClientDebugPage;
         break;
     case SAKGlobal::SAKEnumIODeviceTypeTCPServer:
+        widget = new SAKTcpClientDebugPage;
         break;
+
 #ifndef SAK_NO_SERIALPORT_ASSISTANT
     case SAKGlobal::SAKEnumIODeviceTypeSerialport:
-        SerialportSAKIODevice *serialportDevice = new SerialportSAKIODevice;
-        SerialportSAKIODeviceWidget *widget = new SerialportSAKIODeviceWidget(serialportDevice, new SerialportSAKIODeviceControler);
-        widget->setWindowTitle(sender()->objectName());
-        widget->show();
+        widget = new SAKTabPageSerialportAssistant;
         break;
 #endif
+
+    default:
+        Q_ASSERT_X(false, __FUNCTION__, "Unknow window type.");
+        break;
     }
-#endif
+
+
+    widget->setAttribute(Qt::WA_DeleteOnClose, true);
+    widget->show();
 }
 
 void SAKMainWindow::createCRCCalculator()
