@@ -33,8 +33,10 @@ SAKUdpDebugPage::SAKUdpDebugPage(QWidget *parent)
 SAKUdpDebugPage::~SAKUdpDebugPage()
 {
     udpDeviceController->deleteLater();
-    udpDevice->terminate();
-    delete udpDevice;
+    if (udpDevice){
+        udpDevice->terminate();
+        delete udpDevice;
+    }
 }
 
 void SAKUdpDebugPage::setUiEnable(bool enable)

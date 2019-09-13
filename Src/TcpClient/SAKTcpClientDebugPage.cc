@@ -33,8 +33,11 @@ SAKTcpClientDebugPage::SAKTcpClientDebugPage(QWidget *parent)
 SAKTcpClientDebugPage::~SAKTcpClientDebugPage()
 {
     tcpClientDeviceController->deleteLater();
-    tcpClientDevice->terminate();
-    delete tcpClientDevice;
+
+    if (tcpClientDevice){
+        tcpClientDevice->terminate();
+        delete tcpClientDevice;
+    }
 }
 
 void SAKTcpClientDebugPage::setUiEnable(bool enable)
