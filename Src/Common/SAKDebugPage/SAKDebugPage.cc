@@ -52,7 +52,7 @@ SAKDebugPage::SAKDebugPage(QWidget *parent)
     chartManager            = new SAKChartManager(this, this);
     outputManager           = new DebugPageOutputManager(this, this);
     otherSettings           = new SAKOtherSettings(this, this);
-    statisticsManager       = new SAKStatisticsManager(this);
+    statisticsManager       = new SAKStatisticsManager(this, this);
     debugPageDeviceManager  = new DebugPageDeviceManager(this, this);
     debugPageMessageManager = new DebugPageMessageManager(this, this);
     debugPageInputManager   = new DebugPageInputManager(this, this);
@@ -66,7 +66,6 @@ SAKDebugPage::SAKDebugPage(QWidget *parent)
 SAKDebugPage::~SAKDebugPage()
 {
     delete ui;
-    delete logCategory;
 }
 
 void SAKDebugPage::write(QByteArray data)
