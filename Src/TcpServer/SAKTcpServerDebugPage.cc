@@ -27,6 +27,7 @@ SAKTcpServerDebugPage::SAKTcpServerDebugPage(QWidget *parent)
     ,tcpServerDeviceController (new SAKTcpServerDeviceController)
 {
     setUpController();
+    setWindowTitle(tr("TCP服务器"));
 }
 
 SAKTcpServerDebugPage::~SAKTcpServerDebugPage()
