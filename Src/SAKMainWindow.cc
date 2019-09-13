@@ -128,6 +128,7 @@ void SAKMainWindow::InitMenu()
         a->setObjectName(SAKGlobal::getIODeviceTypeName(i));
         QVariant var = QVariant::fromValue<int>(enums.value(i));
         connect(a, &QAction::triggered, this, &SAKMainWindow::openIODeviceWindow);
+        a->setData(var);
         windowMenu->addAction(a);
     }
 
@@ -305,7 +306,7 @@ void SAKMainWindow::openIODeviceWindow()
         widget = new SAKTcpClientDebugPage;
         break;
     case SAKGlobal::SAKEnumIODeviceTypeTCPServer:
-        widget = new SAKTcpClientDebugPage;
+        widget = new SAKTcpServerDebugPage;
         break;
 
 #ifndef SAK_NO_SERIALPORT_ASSISTANT
