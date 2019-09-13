@@ -13,41 +13,40 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#ifndef SAKTCPCLIENTDEVICECONTROLLER_HH
-#define SAKTCPCLIENTDEVICECONTROLLER_HH
+#ifndef SAKTCPSERVERDEVICECONTROLLER_HH
+#define SAKTCPSERVERDEVICECONTROLLER_HH
 
 #include <QWidget>
 #include <QCheckBox>
 #include <QComboBox>
-#include <QSerialPort>
 
 namespace Ui {
-    class SAKTcpClientDeviceController;
+    class SAKTcpServerDeviceController;
 }
 
-class SAKTcpClientDeviceController:public QWidget
+class SAKTcpServerDeviceController:public QWidget
 {
     Q_OBJECT
 public:
-    SAKTcpClientDeviceController(QWidget *parent = Q_NULLPTR);
-    ~SAKTcpClientDeviceController();
+    SAKTcpServerDeviceController(QWidget *parent = Q_NULLPTR);
+    ~SAKTcpServerDeviceController();
 
-    QString localHost();
-    quint16 localPort();
     QString serverHost();
     quint16 serverPort();
-    bool enableCustomLocalSetting();
+
+    QString currentClientHost();
+    quint16 currentClientPort();
 
     void refresh();
     void setUiEnable(bool enable);
-private:
-    Ui::SAKTcpClientDeviceController *ui;
 
-    QComboBox *localhostComboBox;
-    QLineEdit *localPortlineEdit;
-    QCheckBox *enableLocalSettingCheckBox;
-    QLineEdit *serverHostLineEdit;
+    void addClient(QString host, quint16 port);
+private:
+    Ui::SAKTcpServerDeviceController *ui;
+
+    QComboBox *serverHostComboBox;
     QLineEdit *serverPortLineEdit;
+    QComboBox *clientHostComboBox;
 };
 
 #endif

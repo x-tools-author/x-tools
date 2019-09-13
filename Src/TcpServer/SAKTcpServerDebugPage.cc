@@ -17,32 +17,32 @@
 #include <QWidget>
 #include <QHBoxLayout>
 
-#include "SAKTcpClientDevice.hh"
-#include "SAKTcpClientDebugPage.hh"
-#include "SAKTcpClientDeviceController.hh"
+#include "SAKTcpServerDevice.hh"
+#include "SAKTcpServerDebugPage.hh"
+#include "SAKTcpServerDeviceController.hh"
 
-SAKTcpClientDebugPage::SAKTcpClientDebugPage(QWidget *parent)
+SAKTcpServerDebugPage::SAKTcpServerDebugPage(QWidget *parent)
     :SAKDebugPage (parent)
-    ,tcpClientDevice (nullptr)
-    ,tcpClientDeviceController (new SAKTcpClientDeviceController)
+    ,tcpServerDevice (nullptr)
+    ,tcpServerDeviceController (new SAKTcpServerDeviceController)
 {
     setUpController();
 }
 
-SAKTcpClientDebugPage::~SAKTcpClientDebugPage()
+SAKTcpServerDebugPage::~SAKTcpServerDebugPage()
 {
-    tcpClientDeviceController->deleteLater();
-    tcpClientDevice->terminate();
-    delete tcpClientDevice;
+    tcpServerDeviceController->deleteLater();
+    tcpServerDevice->terminate();
+    delete tcpServerDevice;
 }
 
-void SAKTcpClientDebugPage::setUiEnable(bool enable)
+void SAKTcpServerDebugPage::setUiEnable(bool enable)
 {
-    tcpClientDeviceController->setEnabled(enable);
+    tcpServerDeviceController->setUiEnable(enable);
     refreshPushButton->setEnabled(enable);
 }
 
-void SAKTcpClientDebugPage::changeDeviceStatus(bool opened)
+void SAKTcpServerDebugPage::changeDeviceStatus(bool opened)
 {
     /*
      * 设备打开失败，使能ui, 打开成功，禁止ui
@@ -50,53 +50,73 @@ void SAKTcpClientDebugPage::changeDeviceStatus(bool opened)
     setUiEnable(!opened);
     switchPushButton->setText(opened ? tr("关闭") : tr("打开"));
     if (!opened){
-        if (tcpClientDevice){
-            tcpClientDevice->terminate();
-            delete tcpClientDevice;
-            tcpClientDevice = nullptr;
+        if (tcpServerDevice){
+            tcpServerDevice->terminate();
+            delete tcpServerDevice;
+            tcpServerDevice = nullptr;
         }
     }
     emit deviceStatusChanged(opened);
 }
 
-void SAKTcpClientDebugPage::openOrColoseDevice()
+void SAKTcpServerDebugPage::tryWrite(QByteArray data)
 {
-    if (tcpClientDevice){
+    emit writeBytesRequest(data, tcpServerDeviceController->currentClientHost(), tcpServerDeviceController->currentClientPort());
+}
+
+void SAKTcpServerDebugPage::afterBytesRead(QByteArray data, QString host, quint16 port)
+{
+    if (    (tcpServerDeviceController->currentClientHost().compare(host) == 0)
+         && (tcpServerDeviceController->currentClientPort() == port)){
+        emit bytesRead(data);
+    }    
+}
+
+void SAKTcpServerDebugPage::afterBytesWritten(QByteArray data, QString host, quint16 port)
+{
+    if ((tcpServerDeviceController->currentClientHost().compare(host) == 0) && (tcpServerDeviceController->currentClientPort() == port)){
+        emit bytesWritten(data);
+    }
+}
+
+void SAKTcpServerDebugPage::openOrColoseDevice()
+{
+    if (tcpServerDevice){
         switchPushButton->setText(tr("打开"));
-        tcpClientDevice->terminate();
-        delete tcpClientDevice;
-        tcpClientDevice = nullptr;
+        tcpServerDevice->terminate();
+        delete tcpServerDevice;
+        tcpServerDevice = nullptr;
 
         setUiEnable(true);
         emit deviceStatusChanged(false);
     }else{
         switchPushButton->setText(tr("关闭"));
-        QString localHost = tcpClientDeviceController->localHost();
-        quint16 localPort = tcpClientDeviceController->localPort();
-        bool customSetting = tcpClientDeviceController->enableCustomLocalSetting();
-        QString targetHost = tcpClientDeviceController->serverHost();
-        quint16 targetPort = tcpClientDeviceController->serverPort();
+        QString serverHost = tcpServerDeviceController->serverHost();
+        quint16 serverPort = tcpServerDeviceController->serverPort();
 
-        tcpClientDevice = new SAKTcpClientDevice(localHost, localPort, customSetting, targetHost, targetPort, this);
+        tcpServerDevice = new SAKTcpServerDevice(serverHost, serverPort, this);
 
-        connect(this, &SAKTcpClientDebugPage::writeDataRequest,tcpClientDevice, &SAKTcpClientDevice::writeBytes);
+        connect(this, &SAKTcpServerDebugPage::writeDataRequest,  this, &SAKTcpServerDebugPage::tryWrite);
+        connect(this, &SAKTcpServerDebugPage::writeBytesRequest, tcpServerDevice, &SAKTcpServerDevice::writeBytes);
 
-        connect(tcpClientDevice, &SAKTcpClientDevice::bytesWriten,          this, &SAKTcpClientDebugPage::bytesWritten);
-        connect(tcpClientDevice, &SAKTcpClientDevice::bytesRead,            this, &SAKTcpClientDebugPage::bytesRead);
-        connect(tcpClientDevice, &SAKTcpClientDevice::messageChanged,       this, &SAKTcpClientDebugPage::outputMessage);
-        connect(tcpClientDevice, &SAKTcpClientDevice::deviceStatuChanged,   this, &SAKTcpClientDebugPage::changeDeviceStatus);
+        connect(tcpServerDevice, &SAKTcpServerDevice::newClientConnected, tcpServerDeviceController, &SAKTcpServerDeviceController::addClient);
 
-        tcpClientDevice->start();
+        connect(tcpServerDevice, &SAKTcpServerDevice::bytesWritten,         this, &SAKTcpServerDebugPage::afterBytesWritten);
+        connect(tcpServerDevice, &SAKTcpServerDevice::bytesRead,            this, &SAKTcpServerDebugPage::afterBytesRead);
+        connect(tcpServerDevice, &SAKTcpServerDevice::messageChanged,       this, &SAKTcpServerDebugPage::outputMessage);
+        connect(tcpServerDevice, &SAKTcpServerDevice::deviceStatuChanged,   this, &SAKTcpServerDebugPage::changeDeviceStatus);
+
+        tcpServerDevice->start();
     }    
 }
 
 
-void SAKTcpClientDebugPage::refreshDevice()
+void SAKTcpServerDebugPage::refreshDevice()
 {
-    tcpClientDeviceController->refresh();
+    tcpServerDeviceController->refresh();
 }
 
-QWidget *SAKTcpClientDebugPage::controllerWidget()
+QWidget *SAKTcpServerDebugPage::controllerWidget()
 {
-    return tcpClientDeviceController;
+    return tcpServerDeviceController;
 }

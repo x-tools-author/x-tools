@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SAKTcpClientDeviceController</class>
- <widget class="QWidget" name="SAKTcpClientDeviceController">
+ <class>SAKTcpServerDeviceController</class>
+ <widget class="QWidget" name="SAKTcpServerDeviceController">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>219</width>
-    <height>174</height>
+    <height>117</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -26,62 +26,17 @@
    <property name="bottomMargin">
     <number>0</number>
    </property>
-   <item row="7" column="1">
-    <widget class="QLineEdit" name="serverTargetPortLineEdit">
-     <property name="text">
-      <string>44444</string>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="0">
-    <widget class="QLabel" name="label_2">
-     <property name="text">
-      <string>端口</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="QComboBox" name="localhostComboBox"/>
-   </item>
-   <item row="6" column="1">
-    <widget class="QLineEdit" name="serverHostLineEdit">
-     <property name="text">
-      <string>127.0.0.1</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="0" colspan="2">
-    <widget class="QLabel" name="label_6">
-     <property name="text">
-      <string>服务器主机信息设置</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="0">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>主机</string>
+   <item row="3" column="0" colspan="2">
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
      </property>
     </widget>
    </item>
    <item row="2" column="1">
-    <widget class="QLineEdit" name="localPortlineEdit">
+    <widget class="QLineEdit" name="serverPortLineEdit">
      <property name="text">
-      <string>55555</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0" colspan="2">
-    <widget class="QCheckBox" name="enableLocalSettingCheckBox">
-     <property name="text">
-      <string>指定本地主机信息</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="label_3">
-     <property name="text">
-      <string>主机</string>
+      <string>44444</string>
      </property>
     </widget>
    </item>
@@ -92,19 +47,39 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="0" colspan="2">
-    <widget class="QLabel" name="label_5">
+   <item row="5" column="0">
+    <widget class="QLabel" name="label">
      <property name="text">
-      <string>本地主机信息设置</string>
+      <string>主机</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>主机</string>
      </property>
     </widget>
    </item>
    <item row="4" column="0" colspan="2">
-    <widget class="Line" name="line">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+    <widget class="QLabel" name="label_6">
+     <property name="text">
+      <string>客户端信息设置</string>
      </property>
     </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QComboBox" name="serverhostComboBox"/>
+   </item>
+   <item row="0" column="0" colspan="2">
+    <widget class="QLabel" name="label_5">
+     <property name="text">
+      <string>服务器信息设置</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1">
+    <widget class="QComboBox" name="clientHostComboBox"/>
    </item>
   </layout>
  </widget>

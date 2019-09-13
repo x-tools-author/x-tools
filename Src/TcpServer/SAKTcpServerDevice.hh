@@ -13,24 +13,21 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#ifndef SAKTCPCLIENTDEVICE_HH
-#define SAKTCPCLIENTDEVICE_HH
+#ifndef SAKTCPSERVERDEVICE_HH
+#define SAKTCPSERVERDEVICE_HH
 
 #include <QThread>
+#include <QTcpServer>
 #include <QTcpSocket>
 
 class SAKDebugPage;
-class SAKTcpClientDevice:public QThread
+class SAKTcpServerDevice:public QThread
 {
     Q_OBJECT
 public:
-    SAKTcpClientDevice(QString localHost, quint16 localPort,
-                 bool enableCustomLocalSetting,
-                 QString serverHost, quint16 serverPort,
-                 SAKDebugPage *debugPage,
-                 QObject *parent = Q_NULLPTR);
+    SAKTcpServerDevice(QString serverHost, quint16 serverPort, SAKDebugPage *debugPage, QObject *parent = Q_NULLPTR);
     void readBytes();
-    void writeBytes(QByteArray data);
+    void writeBytes(QByteArray data, QString host, quint16 port);
 private:
     void run();    
 private:
@@ -40,16 +37,19 @@ private:
     QString serverHost;
     quint16 serverPort;
     SAKDebugPage *debugPage;
-    QTcpSocket *tcpSocket;
+    QTcpServer *tcpServer;
 private:
     void afterDisconnected();
+    void newConnection();
 
+    QList<QTcpSocket*> clients;
 signals:
-    void bytesRead(QByteArray);
-    void bytesWriten(QByteArray);
+    void bytesRead(QByteArray data, QString host, quint16 port);
+    void bytesWritten(QByteArray data, QString host, quint16 port);
 
     void deviceStatuChanged(bool opened);
     void messageChanged(QString message, bool isInfo);
+    void newClientConnected(QString host, quint16 port);
 };
 
 #endif

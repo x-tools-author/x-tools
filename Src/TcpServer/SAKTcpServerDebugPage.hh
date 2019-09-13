@@ -13,30 +13,38 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#ifndef SAKTCPCLIENTDEBUGPAGE_HH
-#define SAKTCPCLIENTDEBUGPAGE_HH
+#ifndef SAKTCPSERVERDEBUGPAGE_HH
+#define SAKTCPSERVERDEBUGPAGE_HH
 
 #include "SAKDebugPage.hh"
 
-class SAKTcpClientDevice;
-class SAKTcpClientDeviceController;
-class SAKTcpClientDebugPage : public SAKDebugPage
+class SAKTcpServerDevice;
+class SAKTcpServerDeviceController;
+class SAKTcpServerDebugPage : public SAKDebugPage
 {
     Q_OBJECT
 public:
-    SAKTcpClientDebugPage(QWidget *parent = Q_NULLPTR);
-    ~SAKTcpClientDebugPage();
+    SAKTcpServerDebugPage(QWidget *parent = Q_NULLPTR);
+    ~SAKTcpServerDebugPage();
 
 private:
-    SAKTcpClientDevice *tcpClientDevice;
-    SAKTcpClientDeviceController *tcpClientDeviceController;
+    SAKTcpServerDevice *tcpServerDevice;
+    SAKTcpServerDeviceController *tcpServerDeviceController;
 
     void setUiEnable(bool enable);
     void changeDeviceStatus(bool opened);
+    void tryWrite(QByteArray data);
+
+    void afterBytesRead(QByteArray data, QString host, quint16 port);
+    void afterBytesWritten(QByteArray data, QString host, quint16 port);
+
 private:
     void openOrColoseDevice() final;
     void refreshDevice() final;
     QWidget *controllerWidget() final;
+
+signals:
+    void writeBytesRequest(QByteArray data, QString host, quint16 port);
 };
 
 #endif

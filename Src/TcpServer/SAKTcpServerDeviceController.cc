@@ -19,63 +19,70 @@
 #include <QSerialPortInfo>
 
 #include "SAKBase.hh"
-#include "SAKTcpClientDeviceController.hh"
-#include "ui_SAKTcpClientDeviceController.h"
-SAKTcpClientDeviceController::SAKTcpClientDeviceController(QWidget *parent)
+#include "SAKTcpServerDeviceController.hh"
+#include "ui_SAKTcpServerDeviceController.h"
+SAKTcpServerDeviceController::SAKTcpServerDeviceController(QWidget *parent)
     :QWidget (parent)
-    ,ui (new Ui::SAKTcpClientDeviceController)
+    ,ui (new Ui::SAKTcpServerDeviceController)
 {
     ui->setupUi(this);
 
-    localhostComboBox = ui->localhostComboBox;
-    localPortlineEdit = ui->localPortlineEdit;
-    enableLocalSettingCheckBox = ui->enableLocalSettingCheckBox;
-    serverHostLineEdit = ui->serverHostLineEdit;
-    serverPortLineEdit = ui->serverTargetPortLineEdit;
+    serverHostComboBox = ui->serverhostComboBox;
+    serverPortLineEdit = ui->serverPortLineEdit;
+    clientHostComboBox = ui->clientHostComboBox;
 
     refresh();
 }
 
-SAKTcpClientDeviceController::~SAKTcpClientDeviceController()
+SAKTcpServerDeviceController::~SAKTcpServerDeviceController()
 {
     delete ui;
 }
 
-QString SAKTcpClientDeviceController::localHost()
+QString SAKTcpServerDeviceController::serverHost()
 {
-    return localhostComboBox->currentText();
+    return serverHostComboBox->currentText();
 }
 
-quint16 SAKTcpClientDeviceController::localPort()
-{
-    return static_cast<quint16>(localPortlineEdit->text().toInt());
-}
-
-QString SAKTcpClientDeviceController::serverHost()
-{
-    return serverHostLineEdit->text();
-}
-
-quint16 SAKTcpClientDeviceController::serverPort()
+quint16 SAKTcpServerDeviceController::serverPort()
 {
     return static_cast<quint16>(serverPortLineEdit->text().toInt());
 }
 
-bool SAKTcpClientDeviceController::enableCustomLocalSetting()
+QString SAKTcpServerDeviceController::currentClientHost()
 {
-    return enableLocalSettingCheckBox->isChecked();
+    QStringList host = clientHostComboBox->currentText().split(":");
+
+    return host.first();
 }
 
-void SAKTcpClientDeviceController::refresh()
+quint16 SAKTcpServerDeviceController::currentClientPort()
 {
-    SAKBase::instance()->initIpComboBox(localhostComboBox);
+    QString port = clientHostComboBox->currentText().split(":").last();
+    return static_cast<quint16>(port.toInt());
 }
 
-void SAKTcpClientDeviceController::setUiEnable(bool enable)
+void SAKTcpServerDeviceController::refresh()
 {
-    localhostComboBox->setEnabled(enable);
-    localPortlineEdit->setEnabled(enable);
-    enableLocalSettingCheckBox->setEnabled(enable);
-    serverHostLineEdit->setEnabled(enable);
+    SAKBase::instance()->initIpComboBox(serverHostComboBox);
+}
+
+void SAKTcpServerDeviceController::setUiEnable(bool enable)
+{
+    serverHostComboBox->setEnabled(enable);
     serverPortLineEdit->setEnabled(enable);
+}
+
+void SAKTcpServerDeviceController::addClient(QString host, quint16 port)
+{
+    QString item = host.append(":");
+    item.append(QString::number(port));
+
+    for(int i = 0; i < clientHostComboBox->count(); i++){
+        if (clientHostComboBox->itemText(i).compare(item) == 0){
+            return;
+        }
+    }
+
+    clientHostComboBox->addItem(item);
 }

@@ -18,17 +18,12 @@
 #include <QApplication>
 
 #include "SAKDebugPage.hh"
-#include "SAKTcpClientDevice.hh"
+#include "SAKTcpServerDevice.hh"
 
-SAKTcpClientDevice::SAKTcpClientDevice(QString localHost, quint16 localPort,
-                           bool enableCustomLocalSetting,
-                           QString targetHost, quint16 targetPort,
+SAKTcpServerDevice::SAKTcpServerDevice(QString targetHost, quint16 targetPort,
                            SAKDebugPage *debugPage,
                            QObject *parent)
     :QThread (parent)
-    ,localHost (localHost)
-    ,localPort (localPort)
-    ,enableCustomLocalSetting (enableCustomLocalSetting)
     ,serverHost (targetHost)
     ,serverPort (targetPort)
     ,debugPage (debugPage)
@@ -36,65 +31,64 @@ SAKTcpClientDevice::SAKTcpClientDevice(QString localHost, quint16 localPort,
     moveToThread(this);
 }
 
-void SAKTcpClientDevice::run()
+void SAKTcpServerDevice::run()
 {
-    tcpSocket = new QTcpSocket(this);
+    tcpServer = new QTcpServer(this);
 
-    connect(tcpSocket, &QTcpSocket::readyRead, this, &SAKTcpClientDevice::readBytes);
-    connect(qApp, &QApplication::lastWindowClosed, this, &SAKTcpClientDevice::terminate);
+    connect(qApp, &QApplication::lastWindowClosed, this, &SAKTcpServerDevice::terminate);
+    connect(tcpServer, &QTcpServer::newConnection, this, &SAKTcpServerDevice::newConnection);
 
-    bool bindResult = false;
-    if (enableCustomLocalSetting){
-        bindResult = tcpSocket->bind(QHostAddress(localHost), localPort);
-    }else{
-        bindResult = tcpSocket->bind();
-    }
-
-    if (bindResult){
-        tcpSocket->connectToHost(serverHost, serverPort);
-        if (tcpSocket->waitForConnected()){
-            if (tcpSocket->open(QTcpSocket::ReadWrite)){
-#ifdef QT_DEBUG
-            qDebug() << tcpSocket->localAddress().toString() << tcpSocket->localPort();
-#endif
-                emit deviceStatuChanged(true);
-                exec();
-            }else{
-                emit deviceStatuChanged(false);
-                emit messageChanged(tr("无法打开设备")+tcpSocket->errorString(), false);
-            }
-        }else{
-            emit deviceStatuChanged(false);
-            emit messageChanged(tr("无法连接到服务器")+tcpSocket->errorString(), false);
-        }
-    }else{
+    if (!tcpServer->listen(QHostAddress(serverHost), serverPort)){
         emit deviceStatuChanged(false);
-        emit messageChanged(tr("无法绑定设备")+tcpSocket->errorString(), false);
+        emit messageChanged(tr("服务器监听地址、端口失败：")+tcpServer->errorString(), false);
+    }else{
+        emit deviceStatuChanged(true);
+        exec();
     }
 }
 
-void SAKTcpClientDevice::afterDisconnected()
+void SAKTcpServerDevice::afterDisconnected()
 {
     emit deviceStatuChanged(false);
     emit messageChanged(tr("服务器已断开"), false);
 }
 
-void SAKTcpClientDevice::readBytes()
-{        
-    tcpSocket->waitForReadyRead(debugPage->readWriteParameters().waitForReadyReadTime);
-    QByteArray data = tcpSocket->readAll();
-    if (!data.isEmpty()){
-        emit bytesRead(data);
+void SAKTcpServerDevice::newConnection()
+{
+    while (1) {
+        QTcpSocket *socket = tcpServer->nextPendingConnection();
+        if (socket){
+            clients.append(socket);
+            connect(socket, &QTcpSocket::readyRead, this, &SAKTcpServerDevice::readBytes);
+            connect(socket, &QTcpSocket::disconnected, this, &SAKTcpServerDevice::afterDisconnected);
+
+            emit newClientConnected(socket->peerAddress().toString(), socket->peerPort());
+        }else {
+            return;
+        }
     }
 }
 
-void SAKTcpClientDevice::writeBytes(QByteArray data)
+void SAKTcpServerDevice::readBytes()
+{        
+    QTcpSocket *socket = reinterpret_cast<QTcpSocket*>(sender());
+    socket->waitForReadyRead(debugPage->readWriteParameters().waitForReadyReadTime);
+    QByteArray data = socket->readAll();
+    if (!data.isEmpty()){
+        emit bytesRead(data, socket->peerAddress().toString(), socket->peerPort());
+    }
+}
+
+void SAKTcpServerDevice::writeBytes(QByteArray data, QString host, quint16 port)
 {    
-    qint64 ret = tcpSocket->write(data);
-    tcpSocket->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
-    if (ret == -1){
-        emit messageChanged(tr("发送数据失败：")+tcpSocket->errorString(), false);
-    }else{
-        emit bytesWriten(data);
+    for(auto var:clients){
+        if ((var->peerAddress().toString().compare(host) == 0) && (var->peerPort() == port)){
+            qint64 ret = var->write(data);
+            if (ret == -1){
+                emit messageChanged(tr("无法写入数据:(%1)%2").arg(var->peerAddress().toString().arg(var->error())), false);
+            }else{
+                emit bytesWritten(data, var->peerAddress().toString(), var->peerPort());
+            }
+        }
     }
 }
