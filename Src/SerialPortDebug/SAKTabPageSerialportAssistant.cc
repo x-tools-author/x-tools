@@ -37,8 +37,6 @@ SAKTabPageSerialportAssistant::~SAKTabPageSerialportAssistant()
         serialPortAssistant->terminate();
         delete serialPortAssistant;
     }
-
-    qDebug() << QString("串口调试窗口已被销毁");
 }
 
 void SAKTabPageSerialportAssistant::setUiEnable(bool enable)
