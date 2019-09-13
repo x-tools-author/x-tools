@@ -14,11 +14,13 @@
  * but for "installing B".
  */
 #include <QDebug>
+#include <QHostAddress>
 #include <QApplication>
-#include "SAKUdpDevice.hh"
-#include "SAKDebugPage.hh"
 
-SAKUdpDevice::SAKUdpDevice(QString localHost, quint16 localPort,
+#include "SAKDebugPage.hh"
+#include "SAKTcpClientDevice.hh"
+
+SAKTcpClientDevice::SAKTcpClientDevice(QString localHost, quint16 localPort,
                            bool enableCustomLocalSetting,
                            QString targetHost, quint16 targetPort,
                            SAKDebugPage *debugPage,
@@ -27,66 +29,71 @@ SAKUdpDevice::SAKUdpDevice(QString localHost, quint16 localPort,
     ,localHost (localHost)
     ,localPort (localPort)
     ,enableCustomLocalSetting (enableCustomLocalSetting)
-    ,targetHost (targetHost)
-    ,targetPort (targetPort)
+    ,serverHost (targetHost)
+    ,serverPort (targetPort)
     ,debugPage (debugPage)
 {
     moveToThread(this);
 }
 
-void SAKUdpDevice::run()
+void SAKTcpClientDevice::run()
 {
-    udpSocket = new QUdpSocket(this);
+    tcpSocket = new QTcpSocket(this);
 
-    connect(udpSocket, &QUdpSocket::readyRead, this, &SAKUdpDevice::readBytes);
-    connect(qApp, &QApplication::lastWindowClosed, this, &SAKUdpDevice::terminate);
+    connect(tcpSocket, &QTcpSocket::readyRead, this, &SAKTcpClientDevice::readBytes);
+    connect(qApp, &QApplication::lastWindowClosed, this, &SAKTcpClientDevice::terminate);
 
     bool bindResult = false;
     if (enableCustomLocalSetting){
-        bindResult = udpSocket->bind(QHostAddress(localHost), localPort);
+        bindResult = tcpSocket->bind(QHostAddress(localHost), localPort);
     }else{
-        bindResult = udpSocket->bind();
+        bindResult = tcpSocket->bind();
     }
 
     if (bindResult){
-        if (udpSocket->open(QUdpSocket::ReadWrite)){
+        tcpSocket->connectToHost(serverHost, serverPort);
+        if (tcpSocket->waitForConnected()){
+            if (tcpSocket->open(QTcpSocket::ReadWrite)){
 #ifdef QT_DEBUG
-            qDebug() << udpSocket->localAddress().toString() << udpSocket->localPort();
+            qDebug() << tcpSocket->localAddress().toString() << tcpSocket->localPort();
 #endif
-            emit deviceStatuChanged(true);
-            exec();
+                emit deviceStatuChanged(true);
+                exec();
+            }else{
+                emit deviceStatuChanged(false);
+                emit messageChanged(tr("无法打开设备")+tcpSocket->errorString(), false);
+            }
         }else{
             emit deviceStatuChanged(false);
-            emit messageChanged(tr("无法打开设备")+udpSocket->errorString(), false);
+            emit messageChanged(tr("无法连接到服务器")+tcpSocket->errorString(), false);
         }
     }else{
         emit deviceStatuChanged(false);
-        emit messageChanged(tr("无法绑定设备")+udpSocket->errorString(), false);
+        emit messageChanged(tr("无法绑定设备")+tcpSocket->errorString(), false);
     }
 }
 
-void SAKUdpDevice::readBytes()
+void SAKTcpClientDevice::afterDisconnected()
+{
+    emit deviceStatuChanged(false);
+    emit messageChanged(tr("服务器已断开"), false);
+}
+
+void SAKTcpClientDevice::readBytes()
 {        
-    udpSocket->waitForReadyRead(debugPage->readWriteParameters().waitForReadyReadTime);
-    while (udpSocket->hasPendingDatagrams()) {
-        QByteArray data;
-        data.resize(static_cast<int>(udpSocket->pendingDatagramSize()));
-        qint64 ret = udpSocket->readDatagram(data.data(), data.length());
-        if (ret == -1){
-            emit messageChanged(tr("读取数据失败：")+udpSocket->errorString(), false);
-        }else{
-            emit bytesRead(data);
-        }
-
+    tcpSocket->waitForReadyRead(debugPage->readWriteParameters().waitForReadyReadTime);
+    QByteArray data = tcpSocket->readAll();
+    if (!data.isEmpty()){
+        emit bytesRead(data);
     }
 }
 
-void SAKUdpDevice::writeBytes(QByteArray data)
+void SAKTcpClientDevice::writeBytes(QByteArray data)
 {    
-    qint64 ret = udpSocket->writeDatagram(data, QHostAddress(targetHost), targetPort);
-    udpSocket->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
+    qint64 ret = tcpSocket->write(data);
+    tcpSocket->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
     if (ret == -1){
-        emit messageChanged(tr("发送数据失败：")+udpSocket->errorString(), false);
+        emit messageChanged(tr("发送数据失败：")+tcpSocket->errorString(), false);
     }else{
         emit bytesWriten(data);
     }

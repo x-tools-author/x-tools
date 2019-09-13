@@ -19,63 +19,63 @@
 #include <QSerialPortInfo>
 
 #include "SAKBase.hh"
-#include "SAKUdpDeviceController.hh"
-#include "ui_SAKUdpDeviceController.h"
-SAKUdpDeviceController::SAKUdpDeviceController(QWidget *parent)
+#include "SAKTcpClientDeviceController.hh"
+#include "ui_SAKTcpClientDeviceController.h"
+SAKTcpClientDeviceController::SAKTcpClientDeviceController(QWidget *parent)
     :QWidget (parent)
-    ,ui (new Ui::SAKUdpDeviceController)
+    ,ui (new Ui::SAKTcpClientDeviceController)
 {
     ui->setupUi(this);
 
     localhostComboBox = ui->localhostComboBox;
     localPortlineEdit = ui->localPortlineEdit;
     enableLocalSettingCheckBox = ui->enableLocalSettingCheckBox;
-    targetHostLineEdit = ui->targetHostLineEdit;
-    targetPortLineEdit = ui->targetPortLineEdit;
+    serverHostLineEdit = ui->serverHostLineEdit;
+    serverPortLineEdit = ui->serverTargetPortLineEdit;
 
     refresh();
 }
 
-SAKUdpDeviceController::~SAKUdpDeviceController()
+SAKTcpClientDeviceController::~SAKTcpClientDeviceController()
 {
     delete ui;
 }
 
-QString SAKUdpDeviceController::localHost()
+QString SAKTcpClientDeviceController::localHost()
 {
     return localhostComboBox->currentText();
 }
 
-quint16 SAKUdpDeviceController::localPort()
+quint16 SAKTcpClientDeviceController::localPort()
 {
     return static_cast<quint16>(localPortlineEdit->text().toInt());
 }
 
-QString SAKUdpDeviceController::targetHost()
+QString SAKTcpClientDeviceController::serverHost()
 {
-    return targetHostLineEdit->text();
+    return serverHostLineEdit->text();
 }
 
-quint16 SAKUdpDeviceController::targetPort()
+quint16 SAKTcpClientDeviceController::serverPort()
 {
-    return static_cast<quint16>(targetPortLineEdit->text().toInt());
+    return static_cast<quint16>(serverPortLineEdit->text().toInt());
 }
 
-bool SAKUdpDeviceController::enableCustomLocalSetting()
+bool SAKTcpClientDeviceController::enableCustomLocalSetting()
 {
     return enableLocalSettingCheckBox->isChecked();
 }
 
-void SAKUdpDeviceController::refresh()
+void SAKTcpClientDeviceController::refresh()
 {
     SAKBase::instance()->initIpComboBox(localhostComboBox);
 }
 
-void SAKUdpDeviceController::setUiEnable(bool enable)
+void SAKTcpClientDeviceController::setUiEnable(bool enable)
 {
     localhostComboBox->setEnabled(enable);
     localPortlineEdit->setEnabled(enable);
     enableLocalSettingCheckBox->setEnabled(enable);
-    targetHostLineEdit->setEnabled(enable);
-    targetPortLineEdit->setEnabled(enable);
+    serverHostLineEdit->setEnabled(enable);
+    serverPortLineEdit->setEnabled(enable);
 }

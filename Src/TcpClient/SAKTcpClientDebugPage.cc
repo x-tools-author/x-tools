@@ -17,32 +17,32 @@
 #include <QWidget>
 #include <QHBoxLayout>
 
-#include "SAKUdpDevice.hh"
-#include "SAKUdpDebugPage.hh"
-#include "SAKUdpDeviceController.hh"
+#include "SAKTcpClientDevice.hh"
+#include "SAKTcpClientDebugPage.hh"
+#include "SAKTcpClientDeviceController.hh"
 
-SAKUdpDebugPage::SAKUdpDebugPage(QWidget *parent)
+SAKTcpClientDebugPage::SAKTcpClientDebugPage(QWidget *parent)
     :SAKDebugPage (parent)
-    ,udpDevice (nullptr)
-    ,udpDeviceController (new SAKUdpDeviceController)
+    ,tcpClientDevice (nullptr)
+    ,tcpClientDeviceController (new SAKTcpClientDeviceController)
 {
     setUpController();
 }
 
-SAKUdpDebugPage::~SAKUdpDebugPage()
+SAKTcpClientDebugPage::~SAKTcpClientDebugPage()
 {
-    udpDeviceController->deleteLater();
-    udpDevice->terminate();
-    delete udpDevice;
+    tcpClientDeviceController->deleteLater();
+    tcpClientDevice->terminate();
+    delete tcpClientDevice;
 }
 
-void SAKUdpDebugPage::setUiEnable(bool enable)
+void SAKTcpClientDebugPage::setUiEnable(bool enable)
 {
-    udpDeviceController->setEnabled(enable);
+    tcpClientDeviceController->setEnabled(enable);
     refreshPushButton->setEnabled(enable);
 }
 
-void SAKUdpDebugPage::changeDeviceStatus(bool opened)
+void SAKTcpClientDebugPage::changeDeviceStatus(bool opened)
 {
     /*
      * 设备打开失败，使能ui, 打开成功，禁止ui
@@ -50,53 +50,53 @@ void SAKUdpDebugPage::changeDeviceStatus(bool opened)
     setUiEnable(!opened);
     switchPushButton->setText(opened ? tr("关闭") : tr("打开"));
     if (!opened){
-        if (udpDevice){
-            udpDevice->terminate();
-            delete udpDevice;
-            udpDevice = nullptr;
+        if (tcpClientDevice){
+            tcpClientDevice->terminate();
+            delete tcpClientDevice;
+            tcpClientDevice = nullptr;
         }
     }
     emit deviceStatusChanged(opened);
 }
 
-void SAKUdpDebugPage::openOrColoseDevice()
+void SAKTcpClientDebugPage::openOrColoseDevice()
 {
-    if (udpDevice){
+    if (tcpClientDevice){
         switchPushButton->setText(tr("打开"));
-        udpDevice->terminate();
-        delete udpDevice;
-        udpDevice = nullptr;
+        tcpClientDevice->terminate();
+        delete tcpClientDevice;
+        tcpClientDevice = nullptr;
 
         setUiEnable(true);
         emit deviceStatusChanged(false);
     }else{
         switchPushButton->setText(tr("关闭"));
-        QString localHost = udpDeviceController->localHost();
-        quint16 localPort = udpDeviceController->localPort();
-        bool customSetting = udpDeviceController->enableCustomLocalSetting();
-        QString targetHost = udpDeviceController->targetHost();
-        quint16 targetPort = udpDeviceController->targetPort();
+        QString localHost = tcpClientDeviceController->localHost();
+        quint16 localPort = tcpClientDeviceController->localPort();
+        bool customSetting = tcpClientDeviceController->enableCustomLocalSetting();
+        QString targetHost = tcpClientDeviceController->serverHost();
+        quint16 targetPort = tcpClientDeviceController->serverPort();
 
-        udpDevice = new SAKUdpDevice(localHost, localPort, customSetting, targetHost, targetPort, this);
+        tcpClientDevice = new SAKTcpClientDevice(localHost, localPort, customSetting, targetHost, targetPort, this);
 
-        connect(this, &SAKUdpDebugPage::writeDataRequest,udpDevice, &SAKUdpDevice::writeBytes);
+        connect(this, &SAKTcpClientDebugPage::writeDataRequest,tcpClientDevice, &SAKTcpClientDevice::writeBytes);
 
-        connect(udpDevice, &SAKUdpDevice::bytesWriten,          this, &SAKUdpDebugPage::bytesWritten);
-        connect(udpDevice, &SAKUdpDevice::bytesRead,            this, &SAKUdpDebugPage::bytesRead);
-        connect(udpDevice, &SAKUdpDevice::messageChanged,       this, &SAKUdpDebugPage::outputMessage);
-        connect(udpDevice, &SAKUdpDevice::deviceStatuChanged,   this, &SAKUdpDebugPage::changeDeviceStatus);
+        connect(tcpClientDevice, &SAKTcpClientDevice::bytesWriten,          this, &SAKTcpClientDebugPage::bytesWritten);
+        connect(tcpClientDevice, &SAKTcpClientDevice::bytesRead,            this, &SAKTcpClientDebugPage::bytesRead);
+        connect(tcpClientDevice, &SAKTcpClientDevice::messageChanged,       this, &SAKTcpClientDebugPage::outputMessage);
+        connect(tcpClientDevice, &SAKTcpClientDevice::deviceStatuChanged,   this, &SAKTcpClientDebugPage::changeDeviceStatus);
 
-        udpDevice->start();
+        tcpClientDevice->start();
     }    
 }
 
 
-void SAKUdpDebugPage::refreshDevice()
+void SAKTcpClientDebugPage::refreshDevice()
 {
-    udpDeviceController->refresh();
+    tcpClientDeviceController->refresh();
 }
 
-QWidget *SAKUdpDebugPage::controllerWidget()
+QWidget *SAKTcpClientDebugPage::controllerWidget()
 {
-    return udpDeviceController;
+    return tcpClientDeviceController;
 }

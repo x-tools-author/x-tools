@@ -13,20 +13,20 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#ifndef SAKUDPDEVICE_HH
-#define SAKUDPDEVICE_HH
+#ifndef SAKTCPCLIENTDEVICE_HH
+#define SAKTCPCLIENTDEVICE_HH
 
 #include <QThread>
-#include <QUdpSocket>
+#include <QTcpSocket>
 
 class SAKDebugPage;
-class SAKUdpDevice:public QThread
+class SAKTcpClientDevice:public QThread
 {
     Q_OBJECT
 public:
-    SAKUdpDevice(QString localHost, quint16 localPort,
+    SAKTcpClientDevice(QString localHost, quint16 localPort,
                  bool enableCustomLocalSetting,
-                 QString targetHost, quint16 targetPort,
+                 QString serverHost, quint16 serverPort,
                  SAKDebugPage *debugPage,
                  QObject *parent = Q_NULLPTR);
     void readBytes();
@@ -37,10 +37,12 @@ private:
     QString localHost;
     quint16 localPort;
     bool enableCustomLocalSetting;
-    QString targetHost;
-    quint16 targetPort;
+    QString serverHost;
+    quint16 serverPort;
     SAKDebugPage *debugPage;
-    QUdpSocket *udpSocket;
+    QTcpSocket *tcpSocket;
+private:
+    void afterDisconnected();
 
 signals:
     void bytesRead(QByteArray);

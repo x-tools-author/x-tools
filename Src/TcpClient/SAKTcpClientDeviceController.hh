@@ -13,8 +13,8 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#ifndef SAKUDPDEVICECONTROLLER_HH
-#define SAKUDPDEVICECONTROLLER_HH
+#ifndef SAKTCPCLIENTDEVICECONTROLLER_HH
+#define SAKTCPCLIENTDEVICECONTROLLER_HH
 
 #include <QWidget>
 #include <QCheckBox>
@@ -22,32 +22,32 @@
 #include <QSerialPort>
 
 namespace Ui {
-    class SAKUdpDeviceController;
+    class SAKTcpClientDeviceController;
 }
 
-class SAKUdpDeviceController:public QWidget
+class SAKTcpClientDeviceController:public QWidget
 {
     Q_OBJECT
 public:
-    SAKUdpDeviceController(QWidget *parent = Q_NULLPTR);
-    ~SAKUdpDeviceController();
+    SAKTcpClientDeviceController(QWidget *parent = Q_NULLPTR);
+    ~SAKTcpClientDeviceController();
 
     QString localHost();
     quint16 localPort();
-    QString targetHost();
-    quint16 targetPort();
+    QString serverHost();
+    quint16 serverPort();
     bool enableCustomLocalSetting();
 
     void refresh();
     void setUiEnable(bool enable);
 private:
-    Ui::SAKUdpDeviceController *ui;
+    Ui::SAKTcpClientDeviceController *ui;
 
     QComboBox *localhostComboBox;
     QLineEdit *localPortlineEdit;
     QCheckBox *enableLocalSettingCheckBox;
-    QLineEdit *targetHostLineEdit;
-    QLineEdit *targetPortLineEdit;
+    QLineEdit *serverHostLineEdit;
+    QLineEdit *serverPortLineEdit;
 };
 
 #endif

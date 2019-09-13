@@ -62,6 +62,9 @@ HEADERS += \
     Src/Console/SAKLogOutput.hh \
     Src/Common/SAKDebugPage/SAKDebugPage.hh \
     Src/Base/SAKCRCInterface.hh \
+    Src/TcpClient/SAKTcpClientDebugPage.hh \
+    Src/TcpClient/SAKTcpClientDevice.hh \
+    Src/TcpClient/SAKTcpClientDeviceController.hh \
     Src/UdpDebug/SAKUdpDebugPage.hh \
     Src/UdpDebug/SAKUdpDevice.hh \
     Src/UdpDebug/SAKUdpDeviceController.hh
@@ -98,6 +101,9 @@ SOURCES += \
     Src/Common/SAKDebugPage/Output/Save/SaveOutputDataSettings.cc \
     Src/Common/SAKDebugPage/Output/Save/SaveOutputDataThread.cc \
     Src/Common/SAKDebugPage/Statistics/SAKStatisticsManager.cc \
+    Src/TcpClient/SAKTcpClientDebugPage.cc \
+    Src/TcpClient/SAKTcpClientDevice.cc \
+    Src/TcpClient/SAKTcpClientDeviceController.cc \
     Src/UdpDebug/SAKUdpDebugPage.cc \
     Src/UdpDebug/SAKUdpDevice.cc \
     Src/UdpDebug/SAKUdpDeviceController.cc \
@@ -132,6 +138,7 @@ FORMS += \
     Src/Common/SAKDebugPage/Other/ReadWriteSettings/ReadWriteSettingsWidget.ui \
     Src/Common/SAKDebugPage/Other/HighlightSettings/HighlightSettingsWidget.ui \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.ui \
+    Src/TcpClient/SAKTcpClientDeviceController.ui \
     Src/UdpDebug/SAKUdpDeviceController.ui
 
 
@@ -158,7 +165,8 @@ INCLUDEPATH += \
     Src/Common/SAKDebugPage/Input
 
 INCLUDEPATH += \
-    Src/UdpDebug
+    Src/UdpDebug \
+    Src/TcpClient
 
 RESOURCES += \
     SAKResources.qrc
