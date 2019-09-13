@@ -61,7 +61,10 @@ HEADERS += \
     Src/Console/SAKConsole.hh \
     Src/Console/SAKLogOutput.hh \
     Src/Common/SAKDebugPage/SAKDebugPage.hh \
-    Src/Base/SAKCRCInterface.hh
+    Src/Base/SAKCRCInterface.hh \
+    Src/UdpDebug/SAKUdpDebugPage.hh \
+    Src/UdpDebug/SAKUdpDevice.hh \
+    Src/UdpDebug/SAKUdpDeviceController.hh
 
 
 SOURCES += \
@@ -95,6 +98,9 @@ SOURCES += \
     Src/Common/SAKDebugPage/Output/Save/SaveOutputDataSettings.cc \
     Src/Common/SAKDebugPage/Output/Save/SaveOutputDataThread.cc \
     Src/Common/SAKDebugPage/Statistics/SAKStatisticsManager.cc \
+    Src/UdpDebug/SAKUdpDebugPage.cc \
+    Src/UdpDebug/SAKUdpDevice.cc \
+    Src/UdpDebug/SAKUdpDeviceController.cc \
     Src/main.cc \
     Src/SAKGlobal.cc \
     Src/SAKVersion.cc \
@@ -125,7 +131,8 @@ FORMS += \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseItemWidget.ui \
     Src/Common/SAKDebugPage/Other/ReadWriteSettings/ReadWriteSettingsWidget.ui \
     Src/Common/SAKDebugPage/Other/HighlightSettings/HighlightSettingsWidget.ui \
-    Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.ui
+    Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.ui \
+    Src/UdpDebug/SAKUdpDeviceController.ui
 
 
 INCLUDEPATH += \
@@ -150,6 +157,8 @@ INCLUDEPATH += \
     Src/Common/SAKDebugPage/Device \
     Src/Common/SAKDebugPage/Input
 
+INCLUDEPATH += \
+    Src/UdpDebug
 
 RESOURCES += \
     SAKResources.qrc

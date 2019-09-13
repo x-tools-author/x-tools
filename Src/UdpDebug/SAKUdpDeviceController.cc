@@ -19,93 +19,63 @@
 #include <QSerialPortInfo>
 
 #include "SAKBase.hh"
-#include "SAKSerialportAssistantController.hh"
-#include "ui_SAKSerialportAssistantController.h"
-SAKSerialportAssistantController::SAKSerialportAssistantController(QWidget *parent)
+#include "SAKUdpDeviceController.hh"
+#include "ui_SAKUdpDeviceController.h"
+SAKUdpDeviceController::SAKUdpDeviceController(QWidget *parent)
     :QWidget (parent)
-    ,ui (new Ui::SAKSerialportAssistantController)
+    ,ui (new Ui::SAKUdpDeviceController)
 {
     ui->setupUi(this);
 
-    comboBoxSerialports      = ui->comboBoxSerialports;
-    comboBoxBaudrate         = ui->comboBoxBaudrate;
-    comboBoxDatabits         = ui->comboBoxDatabits;
-    comboBoxStopbits         = ui->comboBoxStopbits;
-    comboBoxParity           = ui->comboBoxParity;
-    checkBoxCustomBaudrate   = ui->checkBoxCustomBaudrate;
+    localhostComboBox = ui->localhostComboBox;
+    localPortlineEdit = ui->localPortlineEdit;
+    enableLocalSettingCheckBox = ui->enableLocalSettingCheckBox;
+    targetHostLineEdit = ui->targetHostLineEdit;
+    targetPortLineEdit = ui->targetPortLineEdit;
 
     refresh();
 }
 
-SAKSerialportAssistantController::~SAKSerialportAssistantController()
+SAKUdpDeviceController::~SAKUdpDeviceController()
 {
     delete ui;
 }
 
-void SAKSerialportAssistantController::refresh()
+QString SAKUdpDeviceController::localHost()
 {
-    SAKBase::instance()->initComComboBox(comboBoxSerialports);
-    SAKBase::instance()->initBaudRateComboBox(comboBoxBaudrate);
-    SAKBase::instance()->initDataBitsComboBox(comboBoxDatabits);
-    SAKBase::instance()->initStopBitsComboBox(comboBoxStopbits);
-    SAKBase::instance()->initParityComboBox(comboBoxParity);
+    return localhostComboBox->currentText();
 }
 
-void SAKSerialportAssistantController::setUiEnable(bool enable)
+quint16 SAKUdpDeviceController::localPort()
 {
-    comboBoxSerialports->setEnabled(enable);
-    comboBoxBaudrate->setEnabled(enable);
-    comboBoxDatabits->setEnabled(enable);
-    comboBoxStopbits->setEnabled(enable);
-    comboBoxParity->setEnabled(enable);
-    checkBoxCustomBaudrate->setEnabled(enable);
+    return static_cast<quint16>(localPortlineEdit->text().toInt());
 }
 
-enum QSerialPort::DataBits SAKSerialportAssistantController::dataBits()
+QString SAKUdpDeviceController::targetHost()
 {
-    return static_cast<QSerialPort::DataBits>(comboBoxDatabits->currentData().toInt());
+    return targetHostLineEdit->text();
 }
 
-enum QSerialPort::StopBits SAKSerialportAssistantController::stopBits()
+quint16 SAKUdpDeviceController::targetPort()
 {
-    return static_cast<QSerialPort::StopBits>(comboBoxStopbits->currentData().toInt());
+    return static_cast<quint16>(targetPortLineEdit->text().toInt());
 }
 
-enum QSerialPort::Parity SAKSerialportAssistantController::parity()
+bool SAKUdpDeviceController::enableCustomLocalSetting()
 {
-    return static_cast<QSerialPort::Parity>(comboBoxParity->currentData().toInt());
+    return enableLocalSettingCheckBox->isChecked();
 }
 
-QString SAKSerialportAssistantController::name()
+void SAKUdpDeviceController::refresh()
 {
-    QString portName = comboBoxSerialports->currentText();
-    portName = portName.split(' ').first();
-    return  portName;
+    SAKBase::instance()->initIpComboBox(localhostComboBox);
 }
 
-qint32 SAKSerialportAssistantController::baudRate()
+void SAKUdpDeviceController::setUiEnable(bool enable)
 {
-    qint32 rate = 9600;
-    bool ok = false;
-    if (comboBoxBaudrate->currentText().isEmpty()){
-        return 9600;
-    }
-
-    rate = comboBoxBaudrate->currentText().toInt(&ok);
-    if (!ok){
-        rate = 9600;
-    }
-
-    return rate;
-}
-
-void SAKSerialportAssistantController::on_checkBoxCustomBaudrate_clicked()
-{
-    if (checkBoxCustomBaudrate->isChecked()){
-        comboBoxBaudrate->setEditable(true);
-        comboBoxBaudrate->lineEdit()->selectAll();
-        comboBoxBaudrate->lineEdit()->setFocus();
-    }else{
-        comboBoxBaudrate->setEditable(false);
-    }
+    localhostComboBox->setEnabled(enable);
+    localPortlineEdit->setEnabled(enable);
+    enableLocalSettingCheckBox->setEnabled(enable);
+    targetHostLineEdit->setEnabled(enable);
+    targetPortLineEdit->setEnabled(enable);
 }

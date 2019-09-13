@@ -13,36 +13,34 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#ifndef SAKSERIALPORTASSISTANT_HH
-#define SAKSERIALPORTASSISTANT_HH
+#ifndef SAKUDPDEVICE_HH
+#define SAKUDPDEVICE_HH
 
 #include <QThread>
-#include <QSerialPort>
+#include <QUdpSocket>
 
-class SAKTabPageSerialportAssistant;
-class SAKSerialportAssistant:public QThread
+class SAKDebugPage;
+class SAKUdpDevice:public QThread
 {
     Q_OBJECT
 public:
-    SAKSerialportAssistant(const QString name,
-                           const qint32 baudRate,
-                           const QSerialPort::DataBits dataBits,
-                           const QSerialPort::StopBits stopBits,
-                           const QSerialPort::Parity parity,
-                           SAKTabPageSerialportAssistant *debugPage,
-                           QObject *parent = Q_NULLPTR);
+    SAKUdpDevice(QString localHost, quint16 localPort,
+                 bool enableCustomLocalSetting,
+                 QString targetHost, quint16 targetPort,
+                 SAKDebugPage *debugPage,
+                 QObject *parent = Q_NULLPTR);
     void readBytes();
     void writeBytes(QByteArray data);
 private:
     void run();    
 private:
-    const QString               _name;
-    const qint32                _baudRate;
-    const QSerialPort::DataBits _dataBits;
-    const QSerialPort::StopBits _stopBits;
-    const QSerialPort::Parity   _parity;
-    QSerialPort                 *serialPort;
-    SAKTabPageSerialportAssistant *debugPage;
+    QString localHost;
+    quint16 localPort;
+    bool enableCustomLocalSetting;
+    QString targetHost;
+    quint16 targetPort;
+    SAKDebugPage *debugPage;
+    QUdpSocket *udpSocket;
 
 signals:
     void bytesRead(QByteArray);

@@ -17,32 +17,32 @@
 #include <QWidget>
 #include <QHBoxLayout>
 
-#include "SAKSerialportAssistant.hh"
-#include "SAKTabPageSerialportAssistant.hh"
-#include "SAKSerialportAssistantController.hh"
+#include "SAKUdpDevice.hh"
+#include "SAKUdpDebugPage.hh"
+#include "SAKUdpDeviceController.hh"
 
-SAKTabPageSerialportAssistant::SAKTabPageSerialportAssistant(QWidget *parent)
+SAKUdpDebugPage::SAKUdpDebugPage(QWidget *parent)
     :SAKDebugPage (parent)
-    ,serialPortAssistant (nullptr)
-    ,controller (new SAKSerialportAssistantController)
+    ,udpDevice (nullptr)
+    ,udpDeviceController (new SAKUdpDeviceController)
 {
     setUpController();
 }
 
-SAKTabPageSerialportAssistant::~SAKTabPageSerialportAssistant()
+SAKUdpDebugPage::~SAKUdpDebugPage()
 {
-    controller->deleteLater();
-    serialPortAssistant->terminate();
-    delete serialPortAssistant;
+    udpDeviceController->deleteLater();
+    udpDevice->terminate();
+    delete udpDevice;
 }
 
-void SAKTabPageSerialportAssistant::setUiEnable(bool enable)
+void SAKUdpDebugPage::setUiEnable(bool enable)
 {
-    controller->setEnabled(enable);
+    udpDeviceController->setEnabled(enable);
     refreshPushButton->setEnabled(enable);
 }
 
-void SAKTabPageSerialportAssistant::changeDeviceStatus(bool opened)
+void SAKUdpDebugPage::changeDeviceStatus(bool opened)
 {
     /*
      * 设备打开失败，使能ui, 打开成功，禁止ui
@@ -50,52 +50,53 @@ void SAKTabPageSerialportAssistant::changeDeviceStatus(bool opened)
     setUiEnable(!opened);
     switchPushButton->setText(opened ? tr("关闭") : tr("打开"));
     if (!opened){
-        if (serialPortAssistant){
-            serialPortAssistant->terminate();
-            delete serialPortAssistant;
-            serialPortAssistant = nullptr;
+        if (udpDevice){
+            udpDevice->terminate();
+            delete udpDevice;
+            udpDevice = nullptr;
         }
     }
     emit deviceStatusChanged(opened);
 }
 
-void SAKTabPageSerialportAssistant::openOrColoseDevice()
+void SAKUdpDebugPage::openOrColoseDevice()
 {
-    if (serialPortAssistant){
+    if (udpDevice){
         switchPushButton->setText(tr("打开"));
-        serialPortAssistant->terminate();
-        delete serialPortAssistant;
-        serialPortAssistant = nullptr;
+        udpDevice->terminate();
+        delete udpDevice;
+        udpDevice = nullptr;
 
         setUiEnable(true);
         emit deviceStatusChanged(false);
     }else{
         switchPushButton->setText(tr("关闭"));
-        const QString name = controller->name();
-        const qint32 baudRate = controller->baudRate();
-        const QSerialPort::DataBits dataBits = controller->dataBits();
-        const QSerialPort::StopBits stopBits = controller->stopBits();
-        const QSerialPort::Parity parity = controller->parity();
-        serialPortAssistant = new SAKSerialportAssistant(name, baudRate, dataBits, stopBits, parity, this);
+        QString localHost = udpDeviceController->localHost();
+        quint16 localPort = udpDeviceController->localPort();
+        bool customSetting = udpDeviceController->enableCustomLocalSetting();
+        QString targetHost = udpDeviceController->targetHost();
+        quint16 targetPort = udpDeviceController->targetPort();
 
-        connect(this, &SAKTabPageSerialportAssistant::writeDataRequest,serialPortAssistant, &SAKSerialportAssistant::writeBytes);
+        udpDevice = new SAKUdpDevice(localHost, localPort, customSetting, targetHost, targetPort, this);
 
-        connect(serialPortAssistant, &SAKSerialportAssistant::bytesWriten,         this, &SAKTabPageSerialportAssistant::bytesWritten);
-        connect(serialPortAssistant, &SAKSerialportAssistant::bytesRead,          this, &SAKTabPageSerialportAssistant::bytesRead);
-        connect(serialPortAssistant, &SAKSerialportAssistant::messageChanged,     this, &SAKTabPageSerialportAssistant::outputMessage);
-        connect(serialPortAssistant, &SAKSerialportAssistant::deviceStatuChanged, this, &SAKTabPageSerialportAssistant::changeDeviceStatus);
+        connect(this, &SAKUdpDebugPage::writeDataRequest,udpDevice, &SAKUdpDevice::writeBytes);
 
-        serialPortAssistant->start();
+        connect(udpDevice, &SAKUdpDevice::bytesWriten,          this, &SAKUdpDebugPage::bytesWritten);
+        connect(udpDevice, &SAKUdpDevice::bytesRead,            this, &SAKUdpDebugPage::bytesRead);
+        connect(udpDevice, &SAKUdpDevice::messageChanged,       this, &SAKUdpDebugPage::outputMessage);
+        connect(udpDevice, &SAKUdpDevice::deviceStatuChanged,   this, &SAKUdpDebugPage::changeDeviceStatus);
+
+        udpDevice->start();
     }    
 }
 
 
-void SAKTabPageSerialportAssistant::refreshDevice()
+void SAKUdpDebugPage::refreshDevice()
 {
-    controller->refresh();
+    udpDeviceController->refresh();
 }
 
-QWidget *SAKTabPageSerialportAssistant::controllerWidget()
+QWidget *SAKUdpDebugPage::controllerWidget()
 {
-    return controller;
+    return udpDeviceController;
 }

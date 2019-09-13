@@ -37,7 +37,7 @@ SAKSerialportAssistant::SAKSerialportAssistant(const QString name,
 
 void SAKSerialportAssistant::run()
 {
-    serialPort = new QSerialPort;
+    serialPort = new QSerialPort(this);
     serialPort->setPortName(_name);
     serialPort->setBaudRate(_baudRate);
     serialPort->setDataBits(_dataBits);

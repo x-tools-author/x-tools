@@ -15,67 +15,78 @@
  */
 #include <QDebug>
 #include <QApplication>
-#include "SAKSerialportAssistant.hh"
-#include "SAKTabPageSerialportAssistant.hh"
+#include "SAKUdpDevice.hh"
+#include "SAKDebugPage.hh"
 
-SAKSerialportAssistant::SAKSerialportAssistant(const QString name,
-                                               const qint32 baudRate,
-                                               const QSerialPort::DataBits dataBits,
-                                               const QSerialPort::StopBits stopBits,
-                                               const QSerialPort::Parity parity, SAKTabPageSerialportAssistant *debugPage,
-                                               QObject *parent)
+SAKUdpDevice::SAKUdpDevice(QString localHost, quint16 localPort,
+                           bool enableCustomLocalSetting,
+                           QString targetHost, quint16 targetPort,
+                           SAKDebugPage *debugPage,
+                           QObject *parent)
     :QThread (parent)
-    ,_name (name)
-    ,_baudRate (baudRate)
-    ,_dataBits (dataBits)
-    ,_stopBits (stopBits)
-    ,_parity (parity)
+    ,localHost (localHost)
+    ,localPort (localPort)
+    ,enableCustomLocalSetting (enableCustomLocalSetting)
+    ,targetHost (targetHost)
+    ,targetPort (targetPort)
     ,debugPage (debugPage)
 {
     moveToThread(this);
 }
 
-void SAKSerialportAssistant::run()
+void SAKUdpDevice::run()
 {
-    serialPort = new QSerialPort;
-    serialPort->setPortName(_name);
-    serialPort->setBaudRate(_baudRate);
-    serialPort->setDataBits(_dataBits);
-    serialPort->setStopBits(_stopBits);
-    serialPort->setParity(_parity);
+    udpSocket = new QUdpSocket(this);
 
+    connect(udpSocket, &QUdpSocket::readyRead, this, &SAKUdpDevice::readBytes);
+    connect(qApp, &QApplication::lastWindowClosed, this, &SAKUdpDevice::terminate);
 
-    connect(serialPort, &QSerialPort::readyRead, this, &SAKSerialportAssistant::readBytes);
-    connect(qApp, &QApplication::lastWindowClosed, this, &SAKSerialportAssistant::terminate);
+    bool bindResult = false;
+    if (enableCustomLocalSetting){
+        bindResult = udpSocket->bind(QHostAddress(localHost), localPort);
+    }else{
+        bindResult = udpSocket->bind();
+    }
 
-    if (serialPort->open(QSerialPort::ReadWrite)){
+    if (bindResult){
+        if (udpSocket->open(QUdpSocket::ReadWrite)){
 #ifdef QT_DEBUG
-        qDebug() << serialPort->portName() << serialPort->baudRate() << serialPort->dataBits() << serialPort->stopBits() << serialPort->parity();
+            qDebug() << udpSocket->localAddress().toString() << udpSocket->localPort();
 #endif
-        emit deviceStatuChanged(true);
-        exec();
+            emit deviceStatuChanged(true);
+            exec();
+        }else{
+            emit deviceStatuChanged(false);
+            emit messageChanged(tr("无法打开设备")+udpSocket->errorString(), false);
+        }
     }else{
         emit deviceStatuChanged(false);
-        emit messageChanged(tr("串口打开失败：") + serialPort->errorString(), false);
+        emit messageChanged(tr("无法绑定设备")+udpSocket->errorString(), false);
     }
 }
 
-void SAKSerialportAssistant::readBytes()
-{    
-    serialPort->waitForReadyRead(debugPage->readWriteParameters().waitForReadyReadTime);
-    QByteArray data = serialPort->readAll();    
-    if (data.isEmpty()){
-        return;
+void SAKUdpDevice::readBytes()
+{        
+    udpSocket->waitForReadyRead(debugPage->readWriteParameters().waitForReadyReadTime);
+    while (udpSocket->hasPendingDatagrams()) {
+        QByteArray data;
+        data.resize(static_cast<int>(udpSocket->pendingDatagramSize()));
+        qint64 ret = udpSocket->readDatagram(data.data(), data.length());
+        if (ret == -1){
+            emit messageChanged(tr("读取数据失败：")+udpSocket->errorString(), false);
+        }else{
+            emit bytesRead(data);
+        }
+
     }
-    emit bytesRead(data);
 }
 
-void SAKSerialportAssistant::writeBytes(QByteArray data)
+void SAKUdpDevice::writeBytes(QByteArray data)
 {    
-    qint64 ret = serialPort->write(data);
-    serialPort->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
+    qint64 ret = udpSocket->writeDatagram(data, QHostAddress(targetHost), targetPort);
+    udpSocket->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
     if (ret == -1){
-        emit messageChanged(tr("串口发送数据失败：") + serialPort->errorString(), false);
+        emit messageChanged(tr("发送数据失败：")+udpSocket->errorString(), false);
     }else{
         emit bytesWriten(data);
     }

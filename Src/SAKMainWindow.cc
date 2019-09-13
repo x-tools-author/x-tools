@@ -31,6 +31,7 @@
 #include "SAKMainWindow.hh"
 #include "QtAppStyleApi.hh"
 #include "SAKApplication.hh"
+#include "SAKUdpDebugPage.hh"
 #include "MoreInformation.hh"
 #include "QtStyleSheetApi.hh"
 #include "GetPublicIPWidget.h"
@@ -77,9 +78,11 @@ SAKMainWindow::~SAKMainWindow()
 
 void SAKMainWindow::AddTab()
 {
-    /// 串口助手
+    // 串口助手
     this->mpTabWidget->addTab(new SAKTabPageSerialportAssistant, tr("串口调试"));
-    /// 终端输出
+    // dup调试
+    this->mpTabWidget->addTab(new SAKUdpDebugPage, tr("UDP调试"));
+    // 终端输出
     this->mpTabWidget->addTab(new SAKConsole, tr("终端"));
 }
 
