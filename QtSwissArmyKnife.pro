@@ -174,17 +174,17 @@ winrt || linux-rasp-pi3-g++{
 !contains(DEFINES, SAK_NO_SERIALPORT_ASSISTANT){
     QT  += serialport
     SOURCES += \
-        Src/SerialportAssistant/SAKSerialportAssistant.cc \
-        Src/SerialportAssistant/SAKSerialportAssistantController.cc \
-        Src/SerialportAssistant/SAKTabPageSerialportAssistant.cc
+        Src/SerialPort/SAKSerialportAssistant.cc \
+        Src/SerialPort/SAKSerialportAssistantController.cc \
+        Src/SerialPort/SAKTabPageSerialportAssistant.cc
     HEADERS += \
-        Src/SerialportAssistant/SAKSerialportAssistant.hh \
-        Src/SerialportAssistant/SAKSerialportAssistantController.hh \
-        Src/SerialportAssistant/SAKTabPageSerialportAssistant.hh
+        Src/SerialPort/SAKSerialportAssistant.hh \
+        Src/SerialPort/SAKSerialportAssistantController.hh \
+        Src/SerialPort/SAKTabPageSerialportAssistant.hh
     FORMS   += \
-        Src/SerialportAssistant/SAKSerialportAssistantController.ui
+        Src/SerialPort/SAKSerialportAssistantController.ui
     INCLUDEPATH += \
-        Src/SerialportAssistant
+        Src/SerialPort
 }else {
     message( "该版本Qt可能不包含串口模块，已经忽略串口模块！（串口助手功能被屏蔽！）" )
 }
