@@ -33,6 +33,7 @@ HEADERS += \
     Src/Common/SAKDebugPage/Device/DebugPageDeviceManager.hh \
     Src/Common/SAKDebugPage/Input/DebugPageInputManager.hh \
     Src/Common/SAKDebugPage/Input/InputDataFactory.hh \
+    Src/Common/SAKDebugPage/Input/InputDataItem.hh \
     Src/Common/SAKDebugPage/Message/DebugPageMessageManager.hh \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseItemWidget.hh \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.hh \
@@ -84,6 +85,7 @@ SOURCES += \
     Src/Common/SAKDebugPage/Device/DebugPageDeviceManager.cc \
     Src/Common/SAKDebugPage/Input/DebugPageInputManager.cc \
     Src/Common/SAKDebugPage/Input/InputDataFactory.cc \
+    Src/Common/SAKDebugPage/Input/InputDataItem.cc \
     Src/Common/SAKDebugPage/Message/DebugPageMessageManager.cc \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseItemWidget.cc \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.cc \
@@ -127,6 +129,7 @@ SOURCES += \
 
 FORMS += \
     Src/Common/SAKDebugPage/Chart/MoreChart/MoreChartWidget.ui \
+    Src/Common/SAKDebugPage/Input/InputDataItem.ui \
     Src/Common/SAKDebugPage/Other/FormatSettings/FormatSettingsWidget.ui \
     Src/Common/SAKDebugPage/Other/MoreOtherSettings/MoreOtherSettingsWidget.ui \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/TransmissionPage.ui \
