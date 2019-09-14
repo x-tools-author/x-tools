@@ -32,7 +32,9 @@ void DebugPageMessageManager::outputMessage(QString msg, bool isInfoMsg)
     messageTextBrowser->append(time);
 
     if (isInfoMsg){
+#if 0
         msg = QString("<font color=blue>%1</font>").arg(msg);
+#endif
     }else{
         msg = QString("<font color=red>%1</font>").arg(msg);
         QApplication::beep();
