@@ -650,6 +650,13 @@ p, li { white-space: pre-wrap; }
            </property>
           </widget>
          </item>
+         <item>
+          <widget class="QPushButton" name="pushButton">
+           <property name="text">
+            <string>清除</string>
+           </property>
+          </widget>
+         </item>
         </layout>
        </widget>
       </item>
@@ -832,6 +839,22 @@ p, li { white-space: pre-wrap; }
     <hint type="destinationlabel">
      <x>940</x>
      <y>201</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>messageTextBrowser</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>89</x>
+     <y>347</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>90</x>
+     <y>297</y>
     </hint>
    </hints>
   </connection>
