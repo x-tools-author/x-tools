@@ -65,7 +65,7 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
                    + QString(" (QQ交流群%1 )").arg(versionDialog->getQQNum())
                    + QString(" 作者邮箱 %1").arg(versionDialog->getEmail()));
 
-    this->resize(1280, 720);
+    this->resize(800, 600);
     this->setMinimumWidth(1024);
 
     AddTab();
