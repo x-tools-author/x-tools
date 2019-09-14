@@ -9,10 +9,12 @@
 #include "SAKVersion.hh"
 #include "ui_SAKVersion.h"
 
-#include <QDebug>
-#include <QDesktopServices>
 #include <QUrl>
 #include <QLineEdit>
+#include <QDateTime>
+#include <QDesktopServices>
+
+static const QDate buildDate = QLocale( QLocale::English ).toDate( QString(__DATE__).replace("  ", " 0"), "MMM dd yyyy");
 
 SAKVersion* SAKVersion::sakVersionSingleton = nullptr;
 SAKVersion::SAKVersion()
@@ -33,10 +35,10 @@ SAKVersion::SAKVersion()
 
     copyQQ = ui->pushButtonCopy;
 
-    version->setText(QString("1.2.2"));
-    datetime->setText(QString(__DATE__) + " " + QString(__TIME__));
+    version->setText(QString("2.0.0"));
+    datetime->setText(buildDate.toString("yyyy/MM/dd") + " " + QString(__TIME__));
     author->setText(QString("Qter"));
-    email->setText(QString("Qter.vip@outlook.com"));
+    email->setText(QString("wuuhii@outlook.com"));
     qq->setText(QString("952218522"));
     blog->setText(QString("http://wuhai.pro/"));
 
