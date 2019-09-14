@@ -9,10 +9,20 @@
 #include "MoreInformation.hh"
 #include "ui_MoreInformation.h"
 
+#include <QFile>
+
 MoreInformation::MoreInformation(QWidget* parent)
     :QDialog (parent)
     ,ui(new Ui::MoreInformation)
 {
     ui->setupUi(this);
     setModal(true);
+
+    textBrowserHistory = ui->textBrowserHistory;
+    textBrowserHistory->clear();
+    QFile file(":/Resources/Files/History.txt");
+    if (file.open(QFile::ReadOnly)){
+        QByteArray data = file.readAll();
+        textBrowserHistory->setText(QString::fromUtf8(data));
+    }
 }

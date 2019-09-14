@@ -10,9 +10,10 @@
 #define MOREINFORMATION_HH
 
 #include <QDialog>
+#include <QTextBrowser>
 
 namespace Ui {
-class MoreInformation;
+    class MoreInformation;
 };
 
 class MoreInformation:public QDialog
@@ -22,6 +23,7 @@ public:
     MoreInformation(QWidget* parent = nullptr);
 private:
     Ui::MoreInformation* ui = nullptr;
+    QTextBrowser *textBrowserHistory;
 };
 
 #endif
