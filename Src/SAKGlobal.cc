@@ -57,7 +57,7 @@ QString SAKGlobal::getIODeviceTypeName(int type)
     QString name = "none";
     switch (type) {
     case SAKEnumIODeviceTypeUDP:
-        name = tr("UDP助手");
+        name = tr("UDP调试");
         break;
     case SAKEnumIODeviceTypeTCPClient:
         name = tr("TCP客户端");
@@ -66,7 +66,7 @@ QString SAKGlobal::getIODeviceTypeName(int type)
         name = tr("TCP服务器");
         break;
     case SAKEnumIODeviceTypeSerialport:
-        name = tr("串口助手");
+        name = tr("串口调试");
         break;
     default:
         break;

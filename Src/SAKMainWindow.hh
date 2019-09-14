@@ -83,6 +83,18 @@ private:
      * @brief openIODeviceWindow    -- 打开一个设备窗口（只能通过信号来调用）
      */
     void openIODeviceWindow();
+    /**
+     * @brief getDebugPage 获取调试页面窗口
+     * @param type 窗口类型
+     * @return  调试页面
+     */
+    QWidget *getDebugPage(int type);
+
+    /**
+     * @brief closeDebugPage 关闭调试页面
+     * @param index 需要关闭的调试页面
+     */
+    void closeDebugPage(int index);
 private slots:
     void AboutQt();
     void About();

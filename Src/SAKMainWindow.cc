@@ -39,11 +39,11 @@
 #include "SAKTcpServerDebugPage.hh"
 #include "SAKTabPageSerialportAssistant.hh"
 #include "QtCryptographicHashController.hh"
-
-#include "ui_SAKMainWindow.h"
 #ifndef SAK_NO_SERIALPORT_ASSISTANT
 #include "SAKTabPageSerialportAssistant.hh"
 #endif
+
+#include "ui_SAKMainWindow.h"
 
 const static char* configureFile = "http://wuhai.pro/software/QtSwissArmyKnife/update.json";
 const char* SAKMainWindow::appStyleKey = "Universal/appStyle";
@@ -71,6 +71,9 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     AddTab();
     InitMenu();
     AddTool();
+
+    mpTabWidget->setTabsClosable(true);
+    connect(mpTabWidget, &QTabWidget::tabCloseRequested, this, &SAKMainWindow::closeDebugPage);
 }
 
 SAKMainWindow::~SAKMainWindow()
@@ -81,7 +84,7 @@ SAKMainWindow::~SAKMainWindow()
 void SAKMainWindow::AddTab()
 {
     // 串口助手
-    this->mpTabWidget->addTab(new SAKTabPageSerialportAssistant, tr("串口调试"));
+    this->mpTabWidget->addTab( new SAKTabPageSerialportAssistant, tr("串口调试"));
     // dup调试
     this->mpTabWidget->addTab(new SAKUdpDebugPage, tr("UDP调试"));
     // tcp客户单
@@ -117,6 +120,7 @@ void SAKMainWindow::InitMenu()
         QAction *a = new QAction(SAKGlobal::getIODeviceTypeName(i), this);
         a->setObjectName(SAKGlobal::getIODeviceTypeName(i));
         QVariant var = QVariant::fromValue<int>(enums.value(i));
+        a->setData(var);
         connect(a, &QAction::triggered, this, &SAKMainWindow::addRemovablePage);
         tabMenu->addAction(a);
     }
@@ -251,13 +255,22 @@ void SAKMainWindow::initSkinMenu(QMenu *optionMenu)
 
 void SAKMainWindow::addRemovablePage()
 {
-    qDebug() << sender()->objectName();
+    int type = qobject_cast<QAction*>(sender())->data().value<int>();
+
+    QWidget *widget = getDebugPage(type);
+    mpTabWidget->addTab(widget, sender()->objectName());
 }
 
 void SAKMainWindow::openIODeviceWindow()
 {
     int type = qobject_cast<QAction*>(sender())->data().value<int>();
 
+    QWidget *widget = getDebugPage(type);
+    widget->show();
+}
+
+QWidget *SAKMainWindow::getDebugPage(int type)
+{
     QWidget *widget = nullptr;
     switch (type) {
     case SAKGlobal::SAKEnumIODeviceTypeUDP:
@@ -281,9 +294,19 @@ void SAKMainWindow::openIODeviceWindow()
         break;
     }
 
-
     widget->setAttribute(Qt::WA_DeleteOnClose, true);
-    widget->show();
+    return widget;
+}
+
+void SAKMainWindow::closeDebugPage(int index)
+{
+    if (index < 4){
+        return;
+    }else{
+        QWidget *w = mpTabWidget->widget(index);
+        mpTabWidget->removeTab(index);
+        w->close();
+    }
 }
 
 void SAKMainWindow::createCRCCalculator()
