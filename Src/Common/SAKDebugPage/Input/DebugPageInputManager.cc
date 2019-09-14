@@ -15,6 +15,7 @@
  */
 #include "SAKBase.hh"
 #include "SAKDebugPage.hh"
+#include "InputDataItem.hh"
 #include "SAKCRCInterface.hh"
 #include "InputDataFactory.hh"
 #include "DebugPageInputManager.hh"
@@ -23,6 +24,7 @@
 #include <QDebug>
 #include <QFileDialog>
 #include <QStandardPaths>
+#include <QListWidgetItem>
 
 DebugPageInputManager::DebugPageInputManager(SAKDebugPage *debugPage, QObject *parent)
     :QObject (parent)
@@ -46,6 +48,9 @@ DebugPageInputManager::DebugPageInputManager(SAKDebugPage *debugPage, QObject *p
     inputTextEdit           = debugPage->inputTextEdit;
     crcParameterModelsComboBox = debugPage->crcParameterModelsComboBox;
     crcLabel                = debugPage->crcLabel;
+    addInputItemPushButton  = debugPage->addInputItemPushButton;
+    deleteInputItemPushButton = debugPage->deleteInputItemPushButton;
+    inputDataItemListWidget = debugPage->inputDataItemListWidget;
 
     sendPushButton->setEnabled(false);
     SAKBase::instance()->initTextFormatComboBox(inputModelComboBox);
@@ -62,6 +67,8 @@ DebugPageInputManager::DebugPageInputManager(SAKDebugPage *debugPage, QObject *p
     connect(sendPushButton,             &QPushButton::clicked,          this, &DebugPageInputManager::sendRawData);
     connect(inputTextEdit,              &QTextEdit::textChanged,        this, &DebugPageInputManager::inputTextEditTextChanged);
     connect(crcParameterModelsComboBox, &QComboBox::currentTextChanged, this, &DebugPageInputManager::changeCRCModel);
+    connect(addInputItemPushButton,     &QPushButton::clicked,          this, &DebugPageInputManager::addInputDataItem);
+    connect(deleteInputItemPushButton,  &QPushButton::clicked,          this, &DebugPageInputManager::deleteInputDataItem);
 
 
     connect(this, &DebugPageInputManager::rawDataChanged, inputDataFactory, &InputDataFactory::cookData);
@@ -70,6 +77,8 @@ DebugPageInputManager::DebugPageInputManager(SAKDebugPage *debugPage, QObject *p
 
     initParameters();
     updateCRC();
+
+    addInputDataItem();
 }
 
 DebugPageInputManager::~DebugPageInputManager()
@@ -88,6 +97,7 @@ void DebugPageInputManager::changeInputModel(const QString &text)
     }
 
     bool ok = false;
+    inputTextEdit->clear();
     inputParameters.inputModel = inputModelComboBox->currentData().toInt(&ok);
     Q_ASSERT_X(ok, __FUNCTION__, "Input model is error");
 }
@@ -168,6 +178,8 @@ void DebugPageInputManager::clearInputArea()
 
 void DebugPageInputManager::inputTextEditTextChanged()
 {
+    formattingInputText(inputTextEdit, inputParameters.inputModel);
+
     updateCRC();
 }
 
@@ -189,6 +201,32 @@ void DebugPageInputManager::changeCRCModel()
     Q_ASSERT_X(ok, __FUNCTION__, "Please check the crc parameters model");
 
     updateCRC();
+}
+
+void DebugPageInputManager::addInputDataItem()
+{
+    QListWidgetItem *item = new QListWidgetItem(inputDataItemListWidget);
+    InputDataItem *itemWidget = new InputDataItem(debugPage, this);
+    item->setSizeHint(itemWidget->size());
+    inputDataItemListWidget->addItem(item);
+    inputDataItemListWidget->setItemWidget(item, itemWidget);
+}
+
+void DebugPageInputManager::deleteInputDataItem()
+{
+    if (inputDataItemListWidget->count() <= 1){
+        debugPage->outputMessage(tr("无法删除，必须保留一个输入模块"), false);
+        return;
+    }
+
+    QListWidgetItem *item = inputDataItemListWidget->takeItem(inputDataItemListWidget->currentRow());
+    if (item){
+        QWidget *itemWWidget = inputDataItemListWidget->itemWidget(item);
+        delete itemWWidget;
+        delete item;
+    }else{
+        debugPage->outputMessage(tr("请选择要删除的输入模块后尝试"), false);
+    }
 }
 
 void DebugPageInputManager::initParameters()
@@ -242,3 +280,70 @@ void DebugPageInputManager::updateCRC()
     int bits = crcInterface->getBitsWidth(static_cast<SAKCRCInterface::CRCModel>(inputParameters.crcModel));
     crcLabel->setText(QString(QString("%1").arg(QString::number(crc, 16), (bits/8)*2, '0')).toUpper().prepend("0x"));
 }
+
+void DebugPageInputManager::formattingInputText(QTextEdit *textEdit, int model)
+{
+    if (!textEdit){
+        return;
+    }
+
+    textEdit->blockSignals(true);
+    QString plaintext = textEdit->toPlainText();
+    if (!plaintext.isEmpty()){
+        if (model == SAKBase::Bin){
+            QString strTemp;
+            plaintext.remove(QRegExp("[^0-1]"));
+            for (int i = 0; i < plaintext.length(); i++){
+                if ((i != 0) && (i % 8 == 0)){
+                    strTemp.append(QChar(' '));
+                }
+                strTemp.append(plaintext.at(i));
+            }
+            textEdit->setText(strTemp);
+            textEdit->moveCursor(QTextCursor::End);
+        }else if(model == SAKBase::Oct) {
+            QString strTemp;
+            plaintext.remove(QRegExp("[^0-7]"));
+            for (int i = 0; i < plaintext.length(); i++){
+                if ((i != 0) && (i % 2 == 0)){
+                    strTemp.append(QChar(' '));
+                }
+                strTemp.append(plaintext.at(i));
+            }
+            textEdit->setText(strTemp);
+            textEdit->moveCursor(QTextCursor::End);
+        }else if(model == SAKBase::Dec) {
+            QString strTemp;
+            plaintext.remove(QRegExp("[^0-9]"));
+            for (int i = 0; i < plaintext.length(); i++){
+                if ((i != 0) && (i % 2 == 0)){
+                    strTemp.append(QChar(' '));
+                }
+                strTemp.append(plaintext.at(i));
+            }
+            textEdit->setText(strTemp);
+            textEdit->moveCursor(QTextCursor::End);
+        }else if(model == SAKBase::Hex) {
+            QString strTemp;
+            plaintext.remove(QRegExp("[^0-9a-fA-F]"));
+            for (int i = 0; i < plaintext.length(); i++){
+                if ((i != 0) && (i % 2 == 0)){
+                    strTemp.append(QChar(' '));
+                }
+                strTemp.append(plaintext.at(i));
+            }
+            textEdit->setText(strTemp.toUpper());
+            textEdit->moveCursor(QTextCursor::End);
+        }else if(model == SAKBase::Ascii) {
+            plaintext.remove(QRegExp("[^\0u00-\u007f ]"));
+            textEdit->setText(plaintext);
+            textEdit->moveCursor(QTextCursor::End);
+        }else if(model == SAKBase::Local) {
+            /// nothing to do
+        }else {
+            Q_ASSERT_X(false, __FUNCTION__, "Unknow input model");
+        }
+    }
+    textEdit->blockSignals(false);
+}
+

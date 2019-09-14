@@ -23,8 +23,10 @@
 #include <QComboBox>
 #include <QCheckBox>
 #include <QPushButton>
+#include <QListWidget>
 
 class SAKDebugPage;
+class InputDataItem;
 class SAKCRCInterface;
 class InputDataFactory;
 class DebugPageInputManager:public QObject
@@ -44,6 +46,8 @@ public:
         int     inputModel;     // 数据输入模式
         int     crcModel;       // crc参数模型
     };
+
+    friend class InputDataItem;
 private:
     SAKDebugPage *debugPage;
 
@@ -59,6 +63,9 @@ private:
     QTextEdit   *inputTextEdit;
     QComboBox   *crcParameterModelsComboBox;
     QLabel      *crcLabel;
+    QPushButton *addInputItemPushButton;
+    QPushButton *deleteInputItemPushButton;
+    QListWidget *inputDataItemListWidget;
 private:
     /// 输入文本格式法神改变时执行该函数
     void changeInputModel(const QString &text);
@@ -82,6 +89,10 @@ private:
     void sendRawData();
     /// crc参数模型发生改变时执行该函数
     void changeCRCModel();
+    /// 添加发送数据输入框
+    void addInputDataItem();
+    /// 删除数据发送输入框
+    void deleteInputDataItem();
 private:
     /// 初始化输入参数
     void initParameters();
@@ -99,6 +110,7 @@ private:
     SAKCRCInterface *crcInterface;
 
     void updateCRC();
+    void formattingInputText(QTextEdit *textEdit, int model);
 signals:
     /// 该函数并不会真的发送数据，而是发送一个信号，该信号携带需要发送的数据,数据需要经过处理后才能发送
     void rawDataChanged(QString rawData, InputParameters parameters);

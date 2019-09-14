@@ -143,6 +143,9 @@ protected:
     QTextEdit   *inputTextEdit                  = nullptr;  // 数据输入框
     QComboBox   *crcParameterModelsComboBox     = nullptr;  // crc计算参数模型
     QLabel      *crcLabel                       = nullptr;  // crc显示标签
+    QPushButton *addInputItemPushButton;
+    QPushButton *deleteInputItemPushButton;
+    QListWidget *inputDataItemListWidget;
 
 
     //数据输出组管理
@@ -203,7 +206,7 @@ private:
     /**
      * @brief initUiPointer -- 初始化指向ui控件的数据成员（指针）
      */
-    void initUiPointer();
+    void initUiPointer();    
 public:
     friend class SAKChartManager;
     friend class SAKOtherSettings;

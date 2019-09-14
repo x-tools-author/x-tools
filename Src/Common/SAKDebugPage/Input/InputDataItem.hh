@@ -13,49 +13,63 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#ifndef INPUTDATAFACTORY_HH
-#define INPUTDATAFACTORY_HH
+#ifndef INPUTDATAITEM_HH
+#define INPUTDATAITEM_HH
 
-#include <QThread>
+#include <QTimer>
+#include <QWidget>
+#include <QCheckBox>
+#include <QComboBox>
+#include <QLineEdit>
+#include <QTextEdit>
+#include <QPushButton>
+
 #include "DebugPageInputManager.hh"
 
+namespace Ui {
+    class InputDataItem;
+}
+
+class SAKDebugPage;
 class SAKCRCInterface;
-class InputDataFactory:public QThread
+class InputDataFactory;
+class DebugPageInputManager;
+class InputDataItem:public QWidget
 {
     Q_OBJECT
 public:
-    InputDataFactory(QObject *parent = Q_NULLPTR);
+    InputDataItem(SAKDebugPage *debugPage, DebugPageInputManager *inputManager, QWidget *parent = Q_NULLPTR);
+    ~InputDataItem();
 
-    /**
-     * @brief cookData 处理输入数据
-     * @param rawData 原数据
-     * @param parameters 输入参数
-     */
-    void  cookData(QString rawData, DebugPageInputManager::InputParameters parameters);
-
-    /**
-     * @brief crcCalculate 计算输入数据的crc
-     * @param data 输入数据
-     * @param model crc参数模型
-     * @return crc
-     */
-    quint32 crcCalculate(QByteArray data, int model);
-
-    /**
-     * @brief rawDataToArray 将输入框的数据转换为数组
-     * @param rawData 输入框数据
-     * @param parameters 输入参数
-     * @return 数据
-     */
-    QByteArray rawDataToArray(QString rawData, DebugPageInputManager::InputParameters parameters);
 private:
-    SAKCRCInterface *crcInterface;
+    Ui::InputDataItem *ui;
+
+    QComboBox   *textFormatComboBox;
+    QCheckBox   *timingCheckBox;
+    QLineEdit   *timingTimeLineEdit;
+    QComboBox   *crcModelComboBox;
+    QCheckBox   *addCrcCheckBox;
+    QCheckBox   *bigEndianCheckBox;
+    QPushButton *sendPushButton;
+    QTextEdit   *inputDataTextEdit;
+private slots:
+    void on_textFormatComboBox_currentIndexChanged(int index);
+    void on_timingCheckBox_clicked();
+    void on_sendPushButton_clicked();
+    void on_inputDataTextEdit_textChanged();
+
+private:
     SAKDebugPage *debugPage;
-    // ------------------------------------------------------------------------
-    void run() final;      
+    SAKCRCInterface *crcInterface;
+    InputDataFactory *factory;
+    DebugPageInputManager *inputManager;
+
+    QTimer sendTimer;
+    DebugPageInputManager::InputParameters inputParameters;
+private:
+    void sendTimerTimeout();
 signals:
-    /// 输入数据经过处理后通过该信号对外发射
-    void dataCooked(QByteArray);
+    void rawDataChanged(QString rawData, DebugPageInputManager::InputParameters parameters);
 };
 
 #endif

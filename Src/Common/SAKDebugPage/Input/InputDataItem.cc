@@ -13,115 +13,89 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#include <QtEndian>
-#include <QApplication>
-
 #include "SAKBase.hh"
+#include "SAKDebugPage.hh"
+#include "InputDataItem.hh"
 #include "SAKCRCInterface.hh"
 #include "InputDataFactory.hh"
 
-InputDataFactory::InputDataFactory(QObject *parent)
-    :QThread (parent)
-    ,crcInterface (nullptr)
+#include "ui_InputDataItem.h"
+
+InputDataItem::InputDataItem(SAKDebugPage *debugPage, DebugPageInputManager *inputManager, QWidget *parent)
+    :QWidget (parent)
+    ,ui (new Ui::InputDataItem)
+    ,debugPage (debugPage)
+    ,crcInterface (new SAKCRCInterface)
+    ,factory (new InputDataFactory)
+    ,inputManager (inputManager)
 {
-    moveToThread(this);
+    ui->setupUi(this);
+    factory->start();
+
+    textFormatComboBox  = ui->textFormatComboBox;
+    timingCheckBox      = ui->timingCheckBox;
+    timingTimeLineEdit  = ui->timingTimeLineEdit;
+    crcModelComboBox    = ui->crcModelComboBox;
+    addCrcCheckBox      = ui->addCrcCheckBox;
+    bigEndianCheckBox   = ui->bigEndianCheckBox;
+    sendPushButton      = ui->sendPushButton;
+    inputDataTextEdit   = ui->inputDataTextEdit;
+
+    SAKBase::instance()->initTextFormatComboBox(textFormatComboBox);
+    crcInterface->initCRCComboBox(crcModelComboBox);
+
+    connect(&sendTimer, &QTimer::timeout, this, &InputDataItem::sendTimerTimeout);
+    connect(this, &InputDataItem::rawDataChanged, factory, &InputDataFactory::cookData);
+    connect(factory, &InputDataFactory::dataCooked, debugPage, &SAKDebugPage::write);
 }
 
-void InputDataFactory:: cookData(QString rawData, DebugPageInputManager::InputParameters parameters)
+InputDataItem::~InputDataItem()
 {
-    QByteArray data = rawDataToArray(rawData, parameters);
-    if (parameters.addCRC){
-        uint32_t crc  = crcCalculate(data, parameters.crcModel);
-        uint8_t  crc8  = static_cast<uint8_t>(crc);
-        uint16_t crc16 = static_cast<uint16_t>(crc);
-        int bitsWidth = crcInterface->getBitsWidth(static_cast<SAKCRCInterface::CRCModel>(parameters.crcModel));
-        if (parameters.bigEndian){
-            crc16 = qToBigEndian(crc16);
-            crc = qToBigEndian(crc);
-        }
+    delete ui;
+    delete crcInterface;
 
-        switch (bitsWidth) {
-        case 8:
-            data.append(reinterpret_cast<char*>(&crc8), 1);
-            break;
-        case 16:
-            data.append(reinterpret_cast<char*>(&crc16), 2);
-            break;
-        case 32:
-            data.append(reinterpret_cast<char*>(&crc), 4);
-            break;
-        default:
-            break;
+    factory->terminate();
+    delete factory;
+}
+
+void InputDataItem::on_textFormatComboBox_currentIndexChanged(int index)
+{
+    Q_UNUSED(index);
+    inputDataTextEdit->clear();
+}
+
+void InputDataItem::on_timingCheckBox_clicked()
+{
+    if (timingCheckBox->isChecked()){
+        int interval = timingTimeLineEdit->text().toInt();
+        if (interval == 0){
+            interval = 1000;
         }
+        sendTimer.start(interval);
+    }else{
+        sendTimer.stop();
     }
-
-    emit dataCooked(data);
 }
 
-quint32 InputDataFactory::crcCalculate(QByteArray data, int model)
+void InputDataItem::on_sendPushButton_clicked()
 {
-    int bitsWidth = crcInterface->getBitsWidth(static_cast<SAKCRCInterface::CRCModel>(model));
-    uint8_t crc8;
-    uint16_t crc16;
-    uint32_t crc32;
-    quint32 crc = 0;
-    switch (bitsWidth) {
-    case 8:
-        crcInterface->crcCalculate<uint8_t>(reinterpret_cast<uint8_t*>(data.data()), static_cast<quint64>(data.length()), crc8, static_cast<SAKCRCInterface::CRCModel>(model));
-        crc = crc8;
-        break;
-    case 16:
-        crcInterface->crcCalculate<uint16_t>(reinterpret_cast<uint8_t*>(data.data()), static_cast<quint64>(data.length()), crc16, static_cast<SAKCRCInterface::CRCModel>(model));
-        crc = crc16;
-        break;
-    case 32:
-        crcInterface->crcCalculate<uint32_t>(reinterpret_cast<uint8_t*>(data.data()), static_cast<quint64>(data.length()), crc32, static_cast<SAKCRCInterface::CRCModel>(model));
-        crc = crc32;
-        break;
-    default:
-        break;
+    sendTimerTimeout();
+}
+
+void InputDataItem::on_inputDataTextEdit_textChanged()
+{
+    inputManager->formattingInputText(inputDataTextEdit, textFormatComboBox->currentData().toInt());
+}
+
+void InputDataItem::sendTimerTimeout()
+{
+    inputParameters.addCRC = addCrcCheckBox->isChecked();
+    inputParameters.crcModel = crcModelComboBox->currentData().toInt();
+    inputParameters.bigEndian = bigEndianCheckBox->isChecked();
+    inputParameters.inputModel = textFormatComboBox->currentData().toInt();
+
+    QString data = inputDataTextEdit->toPlainText();
+    if (!data.isEmpty()){
+        emit rawDataChanged(data, inputParameters);
     }
-
-    return crc;
-}
-
-QByteArray InputDataFactory::rawDataToArray(QString rawData, DebugPageInputManager::InputParameters parameters)
-{
-    QByteArray data;
-    if (parameters.inputModel == SAKBase::Bin){
-        QStringList strList = rawData.split(' ');
-        for (QString str:strList){
-            data.append(static_cast<int8_t>(QString(str).toInt(nullptr, 2)));
-        }
-    }else if (parameters.inputModel == SAKBase::Oct){
-        QStringList strList = rawData.split(' ');
-        for (QString str:strList){
-            data.append(static_cast<int8_t>(QString(str).toInt(nullptr, 8)));
-        }
-    }else if (parameters.inputModel == SAKBase::Dec){
-        QStringList strList = rawData.split(' ');
-        for (QString str:strList){
-            data.append(static_cast<int8_t>(QString(str).toInt(nullptr, 10)));
-        }
-    }else if (parameters.inputModel == SAKBase::Hex){
-        QStringList strList = rawData.split(' ');
-        for (QString str:strList){
-            data.append(static_cast<int8_t>(QString(str).toInt(nullptr, 16)));
-        }
-    }else if (parameters.inputModel == SAKBase::Ascii){
-        data = rawData.toLatin1();
-    }else if (parameters.inputModel == SAKBase::Local){
-        data = rawData.toLocal8Bit();
-    }else {
-        Q_ASSERT_X(false, __FUNCTION__, "Unknow input mode");
-    }
-
-    return data;
-}
-
-void InputDataFactory::run()
-{
-    crcInterface = new SAKCRCInterface(this);
-    connect(qApp, &QApplication::lastWindowClosed, this, &InputDataFactory::terminate);
-    exec();
 }
