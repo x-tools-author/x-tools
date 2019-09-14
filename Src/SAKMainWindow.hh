@@ -86,7 +86,7 @@ private:
 private slots:
     void AboutQt();
     void About();
-    void styleActionTriggered();
+
 private:
     void createCRCCalculator();
 };

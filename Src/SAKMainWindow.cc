@@ -106,7 +106,7 @@ void SAKMainWindow::AddTool()
 
 void SAKMainWindow::InitMenu()
 {
-    /// 文件菜单
+    // 文件菜单
     QMenu *pFileMenu = new QMenu(tr("文件"));
     menuBar()->addMenu(pFileMenu);
 
@@ -138,22 +138,22 @@ void SAKMainWindow::InitMenu()
     pFileMenu->addAction(pExitAction);
     connect(pExitAction, SIGNAL(triggered(bool)), this, SLOT(close()));
 
-    /// 工具菜单
+    // 工具菜单
     QMenu *pToolMenu = new QMenu(tr("工具"));
     menuBar()->addMenu(pToolMenu);
     toolsMenu = pToolMenu;
 
-    /// 选项
+    // 选项
     QMenu *optionMenu = new QMenu(tr("选项"));
     menuBar()->addMenu(optionMenu);
 
-    /// 选项菜单--皮肤切换菜单
+    // 选项菜单--皮肤切换菜单
     initSkinMenu(optionMenu);
 
 #if 1
     QSettings settings;
     QString value = settings.value(appStyleKey).toString();
-    /// 默认使用Qt支持的软件风格的第一种软件风格
+    // 默认使用Qt支持的软件风格的第一种软件风格
     if (value.isEmpty()){
         foreach (QString style,  QStyleFactory::keys()){
             value = style;
@@ -196,30 +196,6 @@ void SAKMainWindow::About()
 void SAKMainWindow::AboutQt()
 {
     QMessageBox::aboutQt(this, tr("关于Qt"));
-}
-
-void SAKMainWindow::styleActionTriggered()
-{
-    QSettings setting;
-    setting.setValue(QString(appStyleKey), sender()->objectName());
-
-#if 1
-    int ret = QMessageBox::information(nullptr, tr("请手动重启软件"),
-                                       tr("更改应用样式完成，重启生效，是否手动重启软件！(点击“是”将关闭软件。)"),
-                                       QMessageBox::Yes|QMessageBox::No);
-    if (ret == QMessageBox::Yes){
-        close();
-    }
-#else
-    /**
-     *  频繁切换导致程序crash，原因不详...........(Fusion样式切换有问题)
-     *  由其它风格切换至function风格或者有function风格切换至其它风格造成程序崩溃
-     *  tmd
-     */
-    qDebug() << sender()->objectName();
-    QString style = sender()->objectName();
-    SAKApplication::setStyle(QStyleFactory::create(style));
-#endif
 }
 
 void SAKMainWindow::addTool(QString toolName, QWidget *toolWidget)
@@ -271,21 +247,6 @@ void SAKMainWindow::initSkinMenu(QMenu *optionMenu)
     QMenu *stylesheetMenu = new QMenu("皮肤");
     optionMenu->addMenu(stylesheetMenu);
     stylesheetMenu->addActions(QtStyleSheetApi::instance()->actions());
-//    QActionGroup *stylesheetActionGroup = new QActionGroup(this);
-//    QAction *action = nullptr;
-//    for (int i = 0; i < skins.keyCount(); i++){
-//        action = new QAction(QString(skins.valueToKey(i)));
-//        action->setCheckable(true);
-//        action->setObjectName(QString(skins.valueToKey(i)));
-//        stylesheetMenu->addAction(action);
-//        stylesheetActionGroup->addAction(action);
-
-//        connect(action, &QAction::triggered, this, &SAKMainWindow::changeStylesheet);
-//        if (QString(skins.valueToKey(i)).compare(value) == 0){
-//            action->setChecked(true);
-//            emit action->triggered();
-//        }
-//    }
 }
 
 void SAKMainWindow::addRemovablePage()
