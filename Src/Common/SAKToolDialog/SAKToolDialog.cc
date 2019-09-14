@@ -13,10 +13,10 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#include "SAKDialog.hh"
+#include "SAKToolDialog.hh"
 
-SAKDialog::SAKDialog(QWidget *parent)
-    :QDialog (parent)
+SAKToolDialog::SAKToolDialog(QWidget *parent)
+    :SAKDialog (parent)
 {
 
 }

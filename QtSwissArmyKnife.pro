@@ -54,6 +54,7 @@ HEADERS += \
     Src/Common/SAKDebugPage/Output/Save/SaveOutputDataSettings.hh \
     Src/Common/SAKDebugPage/Output/Save/SaveOutputDataThread.hh \
     Src/Common/SAKDebugPage/Statistics/SAKStatisticsManager.hh \
+    Src/Common/SAKToolDialog/SAKToolDialog.hh \
     Src/SAKGlobal.hh \
     Src/SAKVersion.hh \
     Src/SAKMainWindow.hh \
@@ -106,6 +107,7 @@ SOURCES += \
     Src/Common/SAKDebugPage/Output/Save/SaveOutputDataSettings.cc \
     Src/Common/SAKDebugPage/Output/Save/SaveOutputDataThread.cc \
     Src/Common/SAKDebugPage/Statistics/SAKStatisticsManager.cc \
+    Src/Common/SAKToolDialog/SAKToolDialog.cc \
     Src/TcpClient/SAKTcpClientDebugPage.cc \
     Src/TcpClient/SAKTcpClientDevice.cc \
     Src/TcpClient/SAKTcpClientDeviceController.cc \

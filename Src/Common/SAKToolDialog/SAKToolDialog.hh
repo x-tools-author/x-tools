@@ -13,16 +13,16 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#ifndef SAKDIALOG_HH
-#define SAKDIALOG_HH
+#ifndef SAKTOOLDIALOG_HH
+#define SAKTOOLDIALOG_HH
 
-#include <QDialog>
+#include "SAKDialog.hh"
 
-class SAKDialog:public QDialog
+class SAKToolDialog:public SAKDialog
 {
     Q_OBJECT
 public:
-    SAKDialog(QWidget *parent = Q_NULLPTR);
+    SAKToolDialog(QWidget *parent = Q_NULLPTR);
 };
 
 #endif
