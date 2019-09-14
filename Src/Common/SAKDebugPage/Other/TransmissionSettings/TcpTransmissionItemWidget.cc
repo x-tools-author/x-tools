@@ -36,10 +36,12 @@ TcpTransmissionItemWidget::TcpTransmissionItemWidget(SAKDebugPage *debugPage, QW
 
 void TcpTransmissionItemWidget::write(QByteArray data)
 {
-    if (!tcpSocket->write(data)){
+    if (tcpSocket){
+        if (!tcpSocket->write(data)){
 #ifdef QT_DEBUG
         qDebug() << "发送取数据失败" << tcpSocket->errorString();
 #endif
+        }
     }
 }
 

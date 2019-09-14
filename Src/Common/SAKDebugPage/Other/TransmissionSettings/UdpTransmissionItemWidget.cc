@@ -35,14 +35,24 @@ UdpTransmissionItemWidget::UdpTransmissionItemWidget(SAKDebugPage *debugPage, QW
     SAKBase::instance()->initIpComboBox(addressComboBox);
 }
 
+UdpTransmissionItemWidget::~UdpTransmissionItemWidget()
+{
+    delete ui;
+    if (udpSocket){
+        delete udpSocket;
+    }
+}
+
 void UdpTransmissionItemWidget::write(QByteArray data)
 {
-    QHostAddress targetAddress(targetAddressLineEdit->text());
-    quint16 targetPort = static_cast<quint16>(targetPortLineEdit->text().toInt());
-    if (!udpSocket->writeDatagram(data, targetAddress, targetPort)){
+    if (udpSocket){
+        QHostAddress targetAddress(targetAddressLineEdit->text());
+        quint16 targetPort = static_cast<quint16>(targetPortLineEdit->text().toInt());
+        if (!udpSocket->writeDatagram(data, targetAddress, targetPort)){
 #ifdef QT_DEBUG
         qDebug() << "发送数据失败" << udpSocket->errorString();
 #endif
+        }
     }
 }
 
@@ -50,13 +60,20 @@ void UdpTransmissionItemWidget::on_enableCheckBox_clicked()
 {
     auto closeDev = [&](QUdpSocket *dev){
         disconnect(dev, &QUdpSocket::readyRead, this, &UdpTransmissionItemWidget::read);
-        dev->deleteLater();
+        delete dev;
         dev = nullptr;
         this->setUiEnable(true);
     };
 
-    auto bindDev = [&](QHostAddress address, quint16 port){
-        if (udpSocket->bind(address, port)){
+    auto bindDev = [&](QHostAddress address, quint16 port, bool customAddressAndPort){
+        bool bindResult = false;
+        if (customAddressAndPort){
+            bindResult = udpSocket->bind(address, port);
+        }else{
+            bindResult = udpSocket->bind();
+        }
+
+        if (bindResult){
             if (udpSocket->open(QUdpSocket::ReadWrite)){
                 connect(udpSocket, &QUdpSocket::readyRead, this, &UdpTransmissionItemWidget::read);
                 this->setUiEnable(false);
@@ -64,7 +81,7 @@ void UdpTransmissionItemWidget::on_enableCheckBox_clicked()
             }
         }
 
-         emit requestOutputMessage(udpSocket->errorString(), false);
+        emit requestOutputMessage(udpSocket->errorString(), false);
         enableCheckBox->setChecked(false);
         closeDev(udpSocket);
     };
@@ -72,9 +89,9 @@ void UdpTransmissionItemWidget::on_enableCheckBox_clicked()
     if (enableCheckBox->isChecked()){
         udpSocket = new QUdpSocket;
         if (customAddressCheckBox->isChecked()){
-            bindDev(QHostAddress(addressComboBox->currentText()), static_cast<quint16>(portLineEdit->text().toInt()));
+            bindDev(QHostAddress(addressComboBox->currentText()), static_cast<quint16>(portLineEdit->text().toInt()), true);
         }else{
-            bindDev(QHostAddress::Any, 0);
+            bindDev(QHostAddress(addressComboBox->currentText()), static_cast<quint16>(portLineEdit->text().toInt()), false);
         }
     }else{
         closeDev(udpSocket);
@@ -83,6 +100,10 @@ void UdpTransmissionItemWidget::on_enableCheckBox_clicked()
 
 void UdpTransmissionItemWidget::read()
 {
+    if (!handleReceiveDataCheckBox->isChecked()){
+        return;
+    }
+
     if (udpSocket){
         while (udpSocket->hasPendingDatagrams()) {
             QByteArray data;

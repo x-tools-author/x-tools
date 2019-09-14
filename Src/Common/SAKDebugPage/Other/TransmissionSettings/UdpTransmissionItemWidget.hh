@@ -33,6 +33,7 @@ class UdpTransmissionItemWidget:public BaseTransmissionItemWidget
     Q_OBJECT
 public:
     UdpTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent);
+    ~UdpTransmissionItemWidget();
 
     virtual void write(QByteArray data);
 private:
