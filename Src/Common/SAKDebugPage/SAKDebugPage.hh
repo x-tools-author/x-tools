@@ -26,6 +26,7 @@
 #include <QDateTime>
 #include <QMetaEnum>
 #include <QTextEdit>
+#include <QGridLayout>
 #include <QPushButton>
 #include <QHBoxLayout>
 #include <QApplication>
@@ -127,7 +128,6 @@ protected:
     QPushButton *refreshPushButton              = nullptr;  // 刷新按钮
     QPushButton *switchPushButton               = nullptr;  // 打开关闭设备按钮
     QGroupBox   *deviceSettingGroupBox          = nullptr;  // 控制面板
-    QFrame      *controllerFrame                = nullptr;  // 设备控制
 
      // 输入设置组
 protected:

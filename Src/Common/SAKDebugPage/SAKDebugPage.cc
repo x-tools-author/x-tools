@@ -125,10 +125,8 @@ void SAKDebugPage::setUpController()
 {
     QWidget *controller = controllerWidget();
     if (controller){
-        QHBoxLayout *layout = new QHBoxLayout(controllerFrame);
-        layout->addWidget(controller);
-        layout->setMargin(0);
-        controllerFrame->setLayout(layout);
+        QGridLayout *layout = reinterpret_cast<QGridLayout*>(deviceSettingGroupBox->layout());
+        layout->addWidget(controller, 2, 0, 1, 2);
     }
 }
 
@@ -150,7 +148,6 @@ void SAKDebugPage::initUiPointer()
     switchPushButton        = ui->switchPushButton;
     refreshPushButton       = ui->refreshPushButton;
     deviceSettingGroupBox   = ui->deviceSettingGroupBox;
-    controllerFrame         = ui->controllerFrame;
 
     /*
      * 消息输出组
