@@ -81,6 +81,9 @@ void TransmissionPage::on_addItemPushButton_clicked()
     case TcpTransmission:
         itemWidget = new TcpTransmissionItemWidget(_debugPage, this);
         break;
+    default:
+        Q_ASSERT_X(false, __FUNCTION__, "Unknow transmissioin type");
+        break;
     }
     item->setSizeHint(QSize(itemWidget->width(), itemWidget->height()));
     listWidget->setItemWidget(item, itemWidget);
