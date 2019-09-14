@@ -65,7 +65,7 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
                    + QString(" (QQ交流群%1 )").arg(versionDialog->getQQNum())
                    + QString(" 作者邮箱 %1").arg(versionDialog->getEmail()));
 
-    this->resize(800, 600);
+    this->resize(1280, 720);
     this->setMinimumWidth(1024);
 
     AddTab();
@@ -92,7 +92,7 @@ void SAKMainWindow::AddTab()
     // tcp服务器
     this->mpTabWidget->addTab(new SAKTcpServerDebugPage, tr("TCP服务器"));
     // 终端输出
-    this->mpTabWidget->addTab(new SAKConsole, tr("终端"));
+    this->mpTabWidget->addTab(new SAKConsole, tr("打印终端"));
 }
 
 void SAKMainWindow::AddTool()
@@ -300,7 +300,7 @@ QWidget *SAKMainWindow::getDebugPage(int type)
 
 void SAKMainWindow::closeDebugPage(int index)
 {
-    if (index < 4){
+    if (index < 5){
         return;
     }else{
         QWidget *w = mpTabWidget->widget(index);
