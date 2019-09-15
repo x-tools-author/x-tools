@@ -58,10 +58,10 @@ void UdpTransmissionItemWidget::write(QByteArray data)
 
 void UdpTransmissionItemWidget::on_enableCheckBox_clicked()
 {
-    auto closeDev = [&](QUdpSocket *dev){
-        disconnect(dev, &QUdpSocket::readyRead, this, &UdpTransmissionItemWidget::read);
-        delete dev;
-        dev = nullptr;
+    auto closeDev = [&](){
+        disconnect(udpSocket, &QUdpSocket::readyRead, this, &UdpTransmissionItemWidget::read);
+        delete udpSocket;
+        udpSocket = nullptr;
         this->setUiEnable(true);
     };
 
@@ -83,7 +83,7 @@ void UdpTransmissionItemWidget::on_enableCheckBox_clicked()
 
         emit requestOutputMessage(udpSocket->errorString(), false);
         enableCheckBox->setChecked(false);
-        closeDev(udpSocket);
+        closeDev();
     };
 
     if (enableCheckBox->isChecked()){
@@ -94,7 +94,7 @@ void UdpTransmissionItemWidget::on_enableCheckBox_clicked()
             bindDev(QHostAddress(addressComboBox->currentText()), static_cast<quint16>(portLineEdit->text().toInt()), false);
         }
     }else{
-        closeDev(udpSocket);
+        closeDev();
     }
 }
 
