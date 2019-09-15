@@ -32,17 +32,18 @@ class TcpTransmissionItemWidget:public BaseTransmissionItemWidget
     Q_OBJECT
 public:
     TcpTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent = nullptr);
+    ~TcpTransmissionItemWidget();
 
     virtual void write(QByteArray data);
 private:
     Ui::TcpTransmissionItemWidget *ui;
     QCheckBox *enableCheckBox;
     QCheckBox *customAddressCheckBox;
-    QComboBox *addressComboBox;
-    QLineEdit *portLineEdit;
+    QComboBox *localAddressComboBox;
+    QLineEdit *localPortLineEdit;
     QCheckBox *handleReceiveDataCheckBox;
-    QLineEdit *targetAddressLineEdit;
-    QLineEdit *targetPortLineEdit;
+    QLineEdit *serverAddressLineEdit;
+    QLineEdit *serverPortLineEdit;
 
     QTcpSocket  *tcpSocket;
 private slots:

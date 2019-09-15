@@ -50,7 +50,7 @@ void SAKTcpServerDevice::run()
 void SAKTcpServerDevice::afterDisconnected()
 {
     emit deviceStatuChanged(false);
-    emit messageChanged(tr("服务器已断开"), false);
+    emit messageChanged(tr("客户端已断开"), false);
 }
 
 void SAKTcpServerDevice::newConnection()

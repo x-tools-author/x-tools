@@ -15,20 +15,32 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="1" column="6">
-    <widget class="QLineEdit" name="targetPortLineEdit"/>
+    <widget class="QLineEdit" name="targetPortLineEdit">
+     <property name="text">
+      <string>55555</string>
+     </property>
+    </widget>
    </item>
    <item row="0" column="3">
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>地址</string>
+      <string>本地地址</string>
      </property>
     </widget>
    </item>
    <item row="0" column="6">
-    <widget class="QLineEdit" name="portLineEdit"/>
+    <widget class="QLineEdit" name="portLineEdit">
+     <property name="text">
+      <string>44444</string>
+     </property>
+    </widget>
    </item>
    <item row="1" column="4">
-    <widget class="QLineEdit" name="targetAddressLineEdit"/>
+    <widget class="QLineEdit" name="targetAddressLineEdit">
+     <property name="text">
+      <string>127.0.0.1</string>
+     </property>
+    </widget>
    </item>
    <item row="0" column="2">
     <widget class="QCheckBox" name="customAddressCheckBox">
@@ -40,7 +52,7 @@
    <item row="0" column="5">
     <widget class="QLabel" name="label_2">
      <property name="text">
-      <string>端口</string>
+      <string>本地端口</string>
      </property>
     </widget>
    </item>

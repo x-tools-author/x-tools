@@ -67,12 +67,12 @@ void SerialPortTransmissionItemWidget::write(QByteArray data)
 void SerialPortTransmissionItemWidget::on_enableCheckBox_clicked()
 {
     // c++11 lambda表达式
-    auto closeDev = [&](QSerialPort *dev){
-        if (dev){
-            disconnect(dev, &QSerialPort::readyRead, this, &SerialPortTransmissionItemWidget::read);
-            dev->close();
-            dev->deleteLater();
-            dev = nullptr;
+    auto closeDev = [&](){
+        if (serialPort){
+            disconnect(serialPort, &QSerialPort::readyRead, this, &SerialPortTransmissionItemWidget::read);
+            serialPort->close();
+            serialPort->deleteLater();
+            serialPort = nullptr;
             this->setUiEnable(true);
         }
     };
@@ -96,11 +96,11 @@ void SerialPortTransmissionItemWidget::on_enableCheckBox_clicked()
         }else{
             emit requestOutputMessage(serialPort->errorString(), false);
             enableCheckBox->setChecked(false);
-            closeDev(serialPort);
+            closeDev();
         }
     }else{
         if (serialPort){
-            closeDev(serialPort);
+            closeDev();
         }
     }
 }

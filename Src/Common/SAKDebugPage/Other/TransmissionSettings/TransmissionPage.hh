@@ -50,7 +50,7 @@ private:
     SAKDebugPage *_debugPage;
     Ui::TransmissionPage *ui;
 
-    TransmissionType transmissionType;
+    int transmissionType;
     QTimer clearMessageInfoTimer;
 private:
     void outputMessage(QString msg, bool isInfo);
