@@ -19,11 +19,11 @@
 #include <QSerialPortInfo>
 
 #include "SAKBase.hh"
-#include "SAKSerialportAssistantController.hh"
-#include "ui_SAKSerialportAssistantController.h"
-SAKSerialportAssistantController::SAKSerialportAssistantController(QWidget *parent)
+#include "SAKSerialPortDeviceController.hh"
+#include "ui_SAKSerialPortDeviceController.h"
+SAKSerialPortDeviceController::SAKSerialPortDeviceController(QWidget *parent)
     :QWidget (parent)
-    ,ui (new Ui::SAKSerialportAssistantController)
+    ,ui (new Ui::SAKSerialPortDeviceController)
 {
     ui->setupUi(this);
 
@@ -37,12 +37,12 @@ SAKSerialportAssistantController::SAKSerialportAssistantController(QWidget *pare
     refresh();
 }
 
-SAKSerialportAssistantController::~SAKSerialportAssistantController()
+SAKSerialPortDeviceController::~SAKSerialPortDeviceController()
 {
     delete ui;
 }
 
-void SAKSerialportAssistantController::refresh()
+void SAKSerialPortDeviceController::refresh()
 {
     SAKBase::instance()->initComComboBox(comboBoxSerialports);
     SAKBase::instance()->initBaudRateComboBox(comboBoxBaudrate);
@@ -51,7 +51,7 @@ void SAKSerialportAssistantController::refresh()
     SAKBase::instance()->initParityComboBox(comboBoxParity);
 }
 
-void SAKSerialportAssistantController::setUiEnable(bool enable)
+void SAKSerialPortDeviceController::setUiEnable(bool enable)
 {
     comboBoxSerialports->setEnabled(enable);
     comboBoxBaudrate->setEnabled(enable);
@@ -61,29 +61,29 @@ void SAKSerialportAssistantController::setUiEnable(bool enable)
     checkBoxCustomBaudrate->setEnabled(enable);
 }
 
-enum QSerialPort::DataBits SAKSerialportAssistantController::dataBits()
+enum QSerialPort::DataBits SAKSerialPortDeviceController::dataBits()
 {
     return static_cast<QSerialPort::DataBits>(comboBoxDatabits->currentData().toInt());
 }
 
-enum QSerialPort::StopBits SAKSerialportAssistantController::stopBits()
+enum QSerialPort::StopBits SAKSerialPortDeviceController::stopBits()
 {
     return static_cast<QSerialPort::StopBits>(comboBoxStopbits->currentData().toInt());
 }
 
-enum QSerialPort::Parity SAKSerialportAssistantController::parity()
+enum QSerialPort::Parity SAKSerialPortDeviceController::parity()
 {
     return static_cast<QSerialPort::Parity>(comboBoxParity->currentData().toInt());
 }
 
-QString SAKSerialportAssistantController::name()
+QString SAKSerialPortDeviceController::name()
 {
     QString portName = comboBoxSerialports->currentText();
     portName = portName.split(' ').first();
     return  portName;
 }
 
-qint32 SAKSerialportAssistantController::baudRate()
+qint32 SAKSerialPortDeviceController::baudRate()
 {
     qint32 rate = 9600;
     bool ok = false;
@@ -99,7 +99,7 @@ qint32 SAKSerialportAssistantController::baudRate()
     return rate;
 }
 
-void SAKSerialportAssistantController::on_checkBoxCustomBaudrate_clicked()
+void SAKSerialPortDeviceController::on_checkBoxCustomBaudrate_clicked()
 {
     if (checkBoxCustomBaudrate->isChecked()){
         comboBoxBaudrate->setEditable(true);

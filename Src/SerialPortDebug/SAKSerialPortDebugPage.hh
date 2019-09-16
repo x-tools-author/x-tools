@@ -18,18 +18,18 @@
 
 #include "SAKDebugPage.hh"
 
-class SAKSerialportAssistant;
-class SAKSerialportAssistantController;
-class SAKTabPageSerialportAssistant : public SAKDebugPage
+class SAKSerialPortDevice;
+class SAKSerialPortDeviceController;
+class SAKSerialPortDebugPage : public SAKDebugPage
 {
     Q_OBJECT
 public:
-    SAKTabPageSerialportAssistant(QWidget *parent = Q_NULLPTR);
-    ~SAKTabPageSerialportAssistant();
+    SAKSerialPortDebugPage(QWidget *parent = Q_NULLPTR);
+    ~SAKSerialPortDebugPage();
 
 private:
-    SAKSerialportAssistant              *serialPortAssistant;
-    SAKSerialportAssistantController    *controller;
+    SAKSerialPortDevice              *serialPortAssistant;
+    SAKSerialPortDeviceController    *controller;
 
     void setUiEnable(bool enable);
     void changeDeviceStatus(bool opened);

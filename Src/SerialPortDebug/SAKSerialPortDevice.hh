@@ -13,23 +13,23 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#ifndef SAKSERIALPORTASSISTANT_HH
-#define SAKSERIALPORTASSISTANT_HH
+#ifndef SAKSERIALPORTDEVICET_HH
+#define SAKSERIALPORTDEVICET_HH
 
 #include <QThread>
 #include <QSerialPort>
 
-class SAKTabPageSerialportAssistant;
-class SAKSerialportAssistant:public QThread
+class SAKSerialPortDebugPage;
+class SAKSerialPortDevice:public QThread
 {
     Q_OBJECT
 public:
-    SAKSerialportAssistant(const QString name,
+    SAKSerialPortDevice(const QString name,
                            const qint32 baudRate,
                            const QSerialPort::DataBits dataBits,
                            const QSerialPort::StopBits stopBits,
                            const QSerialPort::Parity parity,
-                           SAKTabPageSerialportAssistant *debugPage,
+                           SAKSerialPortDebugPage *debugPage,
                            QObject *parent = Q_NULLPTR);
     void readBytes();
     void writeBytes(QByteArray data);
@@ -42,7 +42,7 @@ private:
     const QSerialPort::StopBits _stopBits;
     const QSerialPort::Parity   _parity;
     QSerialPort                 *serialPort;
-    SAKTabPageSerialportAssistant *debugPage;
+    SAKSerialPortDebugPage *debugPage;
 
 signals:
     void bytesRead(QByteArray);

@@ -15,14 +15,14 @@
  */
 #include <QDebug>
 #include <QApplication>
-#include "SAKSerialportAssistant.hh"
-#include "SAKTabPageSerialportAssistant.hh"
+#include "SAKSerialPortDevice.hh"
+#include "SAKSerialPortDebugPage.hh"
 
-SAKSerialportAssistant::SAKSerialportAssistant(const QString name,
+SAKSerialPortDevice::SAKSerialPortDevice(const QString name,
                                                const qint32 baudRate,
                                                const QSerialPort::DataBits dataBits,
                                                const QSerialPort::StopBits stopBits,
-                                               const QSerialPort::Parity parity, SAKTabPageSerialportAssistant *debugPage,
+                                               const QSerialPort::Parity parity, SAKSerialPortDebugPage *debugPage,
                                                QObject *parent)
     :QThread (parent)
     ,_name (name)
@@ -35,7 +35,7 @@ SAKSerialportAssistant::SAKSerialportAssistant(const QString name,
     moveToThread(this);
 }
 
-void SAKSerialportAssistant::run()
+void SAKSerialPortDevice::run()
 {
     serialPort = new QSerialPort(this);
     serialPort->setPortName(_name);
@@ -45,8 +45,8 @@ void SAKSerialportAssistant::run()
     serialPort->setParity(_parity);
 
 
-    connect(serialPort, &QSerialPort::readyRead, this, &SAKSerialportAssistant::readBytes);
-    connect(qApp, &QApplication::lastWindowClosed, this, &SAKSerialportAssistant::terminate);
+    connect(serialPort, &QSerialPort::readyRead, this, &SAKSerialPortDevice::readBytes);
+    connect(qApp, &QApplication::lastWindowClosed, this, &SAKSerialPortDevice::terminate);
 
     if (serialPort->open(QSerialPort::ReadWrite)){
 #ifdef QT_DEBUG
@@ -60,7 +60,7 @@ void SAKSerialportAssistant::run()
     }
 }
 
-void SAKSerialportAssistant::readBytes()
+void SAKSerialPortDevice::readBytes()
 {    
     serialPort->waitForReadyRead(debugPage->readWriteParameters().waitForReadyReadTime);
     QByteArray data = serialPort->readAll();    
@@ -70,7 +70,7 @@ void SAKSerialportAssistant::readBytes()
     emit bytesRead(data);
 }
 
-void SAKSerialportAssistant::writeBytes(QByteArray data)
+void SAKSerialPortDevice::writeBytes(QByteArray data)
 {    
     qint64 ret = serialPort->write(data);
     serialPort->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
