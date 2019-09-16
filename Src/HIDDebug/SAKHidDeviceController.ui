@@ -1,22 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
-<<<<<<< HEAD
  <class>SAKHidDeviceController</class>
  <widget class="QWidget" name="SAKHidDeviceController">
-=======
- <class>SAKUdpDeviceController</class>
- <widget class="QWidget" name="SAKUdpDeviceController">
->>>>>>> developer
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>219</width>
-<<<<<<< HEAD
-    <height>175</height>
-=======
     <height>174</height>
->>>>>>> developer
    </rect>
   </property>
   <property name="windowTitle">

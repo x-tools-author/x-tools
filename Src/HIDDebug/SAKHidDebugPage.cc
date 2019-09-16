@@ -17,7 +17,6 @@
 #include <QWidget>
 #include <QHBoxLayout>
 
-<<<<<<< HEAD
 #include "SAKHidDevice.hh"
 #include "SAKHidDebugPage.hh"
 #include "SAKHidDeviceController.hh"
@@ -26,26 +25,12 @@ SAKHidDebugPage::SAKHidDebugPage(QWidget *parent)
     :SAKDebugPage (parent)
     ,udpDevice (nullptr)
     ,udpDeviceController (new SAKHidDeviceController)
-=======
-#include "SAKUdpDevice.hh"
-#include "SAKUdpDebugPage.hh"
-#include "SAKUdpDeviceController.hh"
-
-SAKUdpDebugPage::SAKUdpDebugPage(QWidget *parent)
-    :SAKDebugPage (parent)
-    ,udpDevice (nullptr)
-    ,udpDeviceController (new SAKUdpDeviceController)
->>>>>>> developer
 {
     setUpController();
     setWindowTitle(tr("UDP调试"));
 }
 
-<<<<<<< HEAD
 SAKHidDebugPage::~SAKHidDebugPage()
-=======
-SAKUdpDebugPage::~SAKUdpDebugPage()
->>>>>>> developer
 {
     udpDeviceController->deleteLater();
     if (udpDevice){
@@ -54,21 +39,13 @@ SAKUdpDebugPage::~SAKUdpDebugPage()
     }
 }
 
-<<<<<<< HEAD
 void SAKHidDebugPage::setUiEnable(bool enable)
-=======
-void SAKUdpDebugPage::setUiEnable(bool enable)
->>>>>>> developer
 {
     udpDeviceController->setEnabled(enable);
     refreshPushButton->setEnabled(enable);
 }
 
-<<<<<<< HEAD
 void SAKHidDebugPage::changeDeviceStatus(bool opened)
-=======
-void SAKUdpDebugPage::changeDeviceStatus(bool opened)
->>>>>>> developer
 {
     /*
      * 设备打开失败，使能ui, 打开成功，禁止ui
@@ -85,11 +62,7 @@ void SAKUdpDebugPage::changeDeviceStatus(bool opened)
     emit deviceStatusChanged(opened);
 }
 
-<<<<<<< HEAD
 void SAKHidDebugPage::openOrColoseDevice()
-=======
-void SAKUdpDebugPage::openOrColoseDevice()
->>>>>>> developer
 {
     if (udpDevice){
         switchPushButton->setText(tr("打开"));
@@ -107,7 +80,6 @@ void SAKUdpDebugPage::openOrColoseDevice()
         QString targetHost = udpDeviceController->targetHost();
         quint16 targetPort = udpDeviceController->targetPort();
 
-<<<<<<< HEAD
         udpDevice = new SAKHidDevice(localHost, localPort, customSetting, targetHost, targetPort, this);
 
         connect(this, &SAKHidDebugPage::writeDataRequest,udpDevice, &SAKHidDevice::writeBytes);
@@ -116,36 +88,18 @@ void SAKUdpDebugPage::openOrColoseDevice()
         connect(udpDevice, &SAKHidDevice::bytesRead,            this, &SAKHidDebugPage::bytesRead);
         connect(udpDevice, &SAKHidDevice::messageChanged,       this, &SAKHidDebugPage::outputMessage);
         connect(udpDevice, &SAKHidDevice::deviceStatuChanged,   this, &SAKHidDebugPage::changeDeviceStatus);
-=======
-        udpDevice = new SAKUdpDevice(localHost, localPort, customSetting, targetHost, targetPort, this);
-
-        connect(this, &SAKUdpDebugPage::writeDataRequest,udpDevice, &SAKUdpDevice::writeBytes);
-
-        connect(udpDevice, &SAKUdpDevice::bytesWriten,          this, &SAKUdpDebugPage::bytesWritten);
-        connect(udpDevice, &SAKUdpDevice::bytesRead,            this, &SAKUdpDebugPage::bytesRead);
-        connect(udpDevice, &SAKUdpDevice::messageChanged,       this, &SAKUdpDebugPage::outputMessage);
-        connect(udpDevice, &SAKUdpDevice::deviceStatuChanged,   this, &SAKUdpDebugPage::changeDeviceStatus);
->>>>>>> developer
 
         udpDevice->start();
     }    
 }
 
 
-<<<<<<< HEAD
 void SAKHidDebugPage::refreshDevice()
-=======
-void SAKUdpDebugPage::refreshDevice()
->>>>>>> developer
 {
     udpDeviceController->refresh();
 }
 
-<<<<<<< HEAD
 QWidget *SAKHidDebugPage::controllerWidget()
-=======
-QWidget *SAKUdpDebugPage::controllerWidget()
->>>>>>> developer
 {
     return udpDeviceController;
 }

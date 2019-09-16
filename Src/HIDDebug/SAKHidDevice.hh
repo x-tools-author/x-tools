@@ -13,31 +13,18 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-<<<<<<< HEAD
 #ifndef SAKHIDDEVICE_HH
 #define SAKHIDDEVICE_HH
-=======
-#ifndef SAKUDPDEVICE_HH
-#define SAKUDPDEVICE_HH
->>>>>>> developer
 
 #include <QThread>
 #include <QUdpSocket>
 
 class SAKDebugPage;
-<<<<<<< HEAD
 class SAKHidDevice:public QThread
 {
     Q_OBJECT
 public:
     SAKHidDevice(QString localHost, quint16 localPort,
-=======
-class SAKUdpDevice:public QThread
-{
-    Q_OBJECT
-public:
-    SAKUdpDevice(QString localHost, quint16 localPort,
->>>>>>> developer
                  bool enableCustomLocalSetting,
                  QString targetHost, quint16 targetPort,
                  SAKDebugPage *debugPage,

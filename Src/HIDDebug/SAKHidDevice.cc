@@ -15,17 +15,10 @@
  */
 #include <QDebug>
 #include <QApplication>
-<<<<<<< HEAD
 #include "SAKHidDevice.hh"
 #include "SAKDebugPage.hh"
 
 SAKHidDevice::SAKHidDevice(QString localHost, quint16 localPort,
-=======
-#include "SAKUdpDevice.hh"
-#include "SAKDebugPage.hh"
-
-SAKUdpDevice::SAKUdpDevice(QString localHost, quint16 localPort,
->>>>>>> developer
                            bool enableCustomLocalSetting,
                            QString targetHost, quint16 targetPort,
                            SAKDebugPage *debugPage,
@@ -41,21 +34,12 @@ SAKUdpDevice::SAKUdpDevice(QString localHost, quint16 localPort,
     moveToThread(this);
 }
 
-<<<<<<< HEAD
 void SAKHidDevice::run()
 {
     udpSocket = new QUdpSocket(this);
 
     connect(udpSocket, &QUdpSocket::readyRead, this, &SAKHidDevice::readBytes);
     connect(qApp, &QApplication::lastWindowClosed, this, &SAKHidDevice::terminate);
-=======
-void SAKUdpDevice::run()
-{
-    udpSocket = new QUdpSocket(this);
-
-    connect(udpSocket, &QUdpSocket::readyRead, this, &SAKUdpDevice::readBytes);
-    connect(qApp, &QApplication::lastWindowClosed, this, &SAKUdpDevice::terminate);
->>>>>>> developer
 
     bool bindResult = false;
     if (enableCustomLocalSetting){
@@ -81,11 +65,7 @@ void SAKUdpDevice::run()
     }
 }
 
-<<<<<<< HEAD
 void SAKHidDevice::readBytes()
-=======
-void SAKUdpDevice::readBytes()
->>>>>>> developer
 {        
     udpSocket->waitForReadyRead(debugPage->readWriteParameters().waitForReadyReadTime);
     while (udpSocket->hasPendingDatagrams()) {
@@ -101,11 +81,7 @@ void SAKUdpDevice::readBytes()
     }
 }
 
-<<<<<<< HEAD
 void SAKHidDevice::writeBytes(QByteArray data)
-=======
-void SAKUdpDevice::writeBytes(QByteArray data)
->>>>>>> developer
 {    
     qint64 ret = udpSocket->writeDatagram(data, QHostAddress(targetHost), targetPort);
     udpSocket->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
