@@ -31,16 +31,17 @@
 #include "SAKMainWindow.hh"
 #include "QtAppStyleApi.hh"
 #include "SAKApplication.hh"
+#include "SAKHidDebugPage.hh"
 #include "SAKUdpDebugPage.hh"
 #include "MoreInformation.hh"
 #include "QtStyleSheetApi.hh"
 #include "GetPublicIPWidget.h"
 #include "SAKTcpClientDebugPage.hh"
 #include "SAKTcpServerDebugPage.hh"
-#include "SAKTabPageSerialportAssistant.hh"
+#include "SAKSerialPortDebugPage.hh"
 #include "QtCryptographicHashController.hh"
 #ifndef SAK_NO_SERIALPORT_ASSISTANT
-#include "SAKTabPageSerialportAssistant.hh"
+#include "SAKSerialPortDebugPage.hh"
 #endif
 
 #include "ui_SAKMainWindow.h"
@@ -84,13 +85,15 @@ SAKMainWindow::~SAKMainWindow()
 void SAKMainWindow::AddTab()
 {
     // 串口助手
-    this->mpTabWidget->addTab( new SAKTabPageSerialportAssistant, tr("串口调试"));
+    this->mpTabWidget->addTab( new SAKSerialPortDebugPage, tr("串口调试"));
     // dup调试
     this->mpTabWidget->addTab(new SAKUdpDebugPage, tr("UDP调试"));
     // tcp客户单
     this->mpTabWidget->addTab(new SAKTcpClientDebugPage, tr("TCP客户端"));
     // tcp服务器
     this->mpTabWidget->addTab(new SAKTcpServerDebugPage, tr("TCP服务器"));
+    // hid调试
+    this->mpTabWidget->addTab(new SAKHidDebugPage, tr("HID调试"));
     // 终端输出
     this->mpTabWidget->addTab(new SAKConsole, tr("打印终端"));
 }
@@ -285,7 +288,7 @@ QWidget *SAKMainWindow::getDebugPage(int type)
 
 #ifndef SAK_NO_SERIALPORT_ASSISTANT
     case SAKGlobal::SAKEnumIODeviceTypeSerialport:
-        widget = new SAKTabPageSerialportAssistant;
+        widget = new SAKSerialPortDebugPage;
         break;
 #endif
 
