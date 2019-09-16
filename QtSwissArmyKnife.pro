@@ -55,6 +55,9 @@ HEADERS += \
     Src/Common/SAKDebugPage/Output/Save/SaveOutputDataThread.hh \
     Src/Common/SAKDebugPage/Statistics/SAKStatisticsManager.hh \
     Src/Common/SAKToolDialog/SAKToolDialog.hh \
+    Src/HIDDebug/SAKHidDebugPage.hh \
+    Src/HIDDebug/SAKHidDevice.hh \
+    Src/HIDDebug/SAKHidDeviceController.hh \
     Src/SAKGlobal.hh \
     Src/SAKVersion.hh \
     Src/SAKMainWindow.hh \
@@ -108,6 +111,9 @@ SOURCES += \
     Src/Common/SAKDebugPage/Output/Save/SaveOutputDataThread.cc \
     Src/Common/SAKDebugPage/Statistics/SAKStatisticsManager.cc \
     Src/Common/SAKToolDialog/SAKToolDialog.cc \
+    Src/HIDDebug/SAKHidDebugPage.cc \
+    Src/HIDDebug/SAKHidDevice.cc \
+    Src/HIDDebug/SAKHidDeviceController.cc \   
     Src/TcpClient/SAKTcpClientDebugPage.cc \
     Src/TcpClient/SAKTcpClientDevice.cc \
     Src/TcpClient/SAKTcpClientDeviceController.cc \
@@ -140,6 +146,7 @@ FORMS += \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/TransmissionSettings.ui \
     Src/Common/SAKDebugPage/Other/TransmissionSettings/UdpTransmissionItemWidget.ui \
     Src/Common/SAKDebugPage/Output/Save/SaveOutputDataSettings.ui \
+    Src/HIDDebug/SAKHidDeviceController.ui \
     Src/SAKVersion.ui \
     Src/SAKMainWindow.ui \
     Src/MoreInformation.ui \
@@ -179,7 +186,8 @@ INCLUDEPATH += \
 INCLUDEPATH += \
     Src/UdpDebug \
     Src/TcpClient \
-    Src/TcpServer
+    Src/TcpServer \
+    Src/HidDebug
 
 RESOURCES += \
     SAKResources.qrc
@@ -204,15 +212,15 @@ winrt || linux-rasp-pi3-g++{
 !contains(DEFINES, SAK_NO_SERIALPORT_ASSISTANT){
     QT  += serialport
     SOURCES += \
-        Src/SerialPortDebug/SAKSerialportAssistant.cc \
-        Src/SerialPortDebug/SAKSerialportAssistantController.cc \
-        Src/SerialPortDebug/SAKTabPageSerialportAssistant.cc
+        Src/SerialPortDebug/SAKSerialPortDebugPage.cc \
+        Src/SerialPortDebug/SAKSerialPortDeviceController.cc \
+        Src/SerialPortDebug/SAKSerialPortDevice.cc
     HEADERS += \
-        Src/SerialPortDebug/SAKSerialportAssistant.hh \
-        Src/SerialPortDebug/SAKSerialportAssistantController.hh \
-        Src/SerialPortDebug/SAKTabPageSerialportAssistant.hh
+        Src/SerialPortDebug/SAKSerialPortDebugPage.hh \
+        Src/SerialPortDebug/SAKSerialPortDeviceController.hh \
+        Src/SerialPortDebug/SAKSerialPortDevice.hh
     FORMS   += \
-        Src/SerialPortDebug/SAKSerialportAssistantController.ui
+        Src/SerialPortDebug/SAKSerialPortDeviceController.ui
     INCLUDEPATH += \
         Src/SerialPortDebug
 }else {

@@ -69,12 +69,12 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     this->resize(800, 600);
     this->setMinimumWidth(1024);
 
-    AddTab();
-    InitMenu();
-    AddTool();
-
     mpTabWidget->setTabsClosable(true);
     connect(mpTabWidget, &QTabWidget::tabCloseRequested, this, &SAKMainWindow::closeDebugPage);
+
+    AddTab();
+    InitMenu();
+    AddTool();   
 }
 
 SAKMainWindow::~SAKMainWindow()
@@ -96,6 +96,13 @@ void SAKMainWindow::AddTab()
     this->mpTabWidget->addTab(new SAKHidDebugPage, tr("HID调试"));
     // 终端输出
     this->mpTabWidget->addTab(new SAKConsole, tr("打印终端"));
+
+    /*
+     * 隐藏关闭按钮（必须在调用setTabsClosable()函数后设置，否则不生效）
+     */
+    for (int i = 0; i < mpTabWidget->count(); i++){
+        mpTabWidget->tabBar()->setTabButton(i, QTabBar::RightSide, nullptr);
+    }
 }
 
 void SAKMainWindow::AddTool()
@@ -303,13 +310,9 @@ QWidget *SAKMainWindow::getDebugPage(int type)
 
 void SAKMainWindow::closeDebugPage(int index)
 {
-    if (index < 5){
-        return;
-    }else{
-        QWidget *w = mpTabWidget->widget(index);
-        mpTabWidget->removeTab(index);
-        w->close();
-    }
+    QWidget *w = mpTabWidget->widget(index);
+    mpTabWidget->removeTab(index);
+    w->close();
 }
 
 void SAKMainWindow::createCRCCalculator()

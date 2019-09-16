@@ -19,11 +19,19 @@
 #include <QSerialPortInfo>
 
 #include "SAKBase.hh"
+<<<<<<< HEAD
 #include "SAKHidDeviceController.hh"
 #include "ui_SAKHidDeviceController.h"
 SAKHidDeviceController::SAKHidDeviceController(QWidget *parent)
     :QWidget (parent)
     ,ui (new Ui::SAKHidDeviceController)
+=======
+#include "SAKUdpDeviceController.hh"
+#include "ui_SAKUdpDeviceController.h"
+SAKUdpDeviceController::SAKUdpDeviceController(QWidget *parent)
+    :QWidget (parent)
+    ,ui (new Ui::SAKUdpDeviceController)
+>>>>>>> developer
 {
     ui->setupUi(this);
 
@@ -36,42 +44,74 @@ SAKHidDeviceController::SAKHidDeviceController(QWidget *parent)
     refresh();
 }
 
+<<<<<<< HEAD
 SAKHidDeviceController::~SAKHidDeviceController()
+=======
+SAKUdpDeviceController::~SAKUdpDeviceController()
+>>>>>>> developer
 {
     delete ui;
 }
 
+<<<<<<< HEAD
 QString SAKHidDeviceController::localHost()
+=======
+QString SAKUdpDeviceController::localHost()
+>>>>>>> developer
 {
     return localhostComboBox->currentText();
 }
 
+<<<<<<< HEAD
 quint16 SAKHidDeviceController::localPort()
+=======
+quint16 SAKUdpDeviceController::localPort()
+>>>>>>> developer
 {
     return static_cast<quint16>(localPortlineEdit->text().toInt());
 }
 
+<<<<<<< HEAD
 QString SAKHidDeviceController::targetHost()
+=======
+QString SAKUdpDeviceController::targetHost()
+>>>>>>> developer
 {
     return targetHostLineEdit->text();
 }
 
+<<<<<<< HEAD
 quint16 SAKHidDeviceController::targetPort()
+=======
+quint16 SAKUdpDeviceController::targetPort()
+>>>>>>> developer
 {
     return static_cast<quint16>(targetPortLineEdit->text().toInt());
 }
 
+<<<<<<< HEAD
 bool SAKHidDeviceController::enableCustomLocalSetting()
+=======
+bool SAKUdpDeviceController::enableCustomLocalSetting()
+>>>>>>> developer
 {
     return enableLocalSettingCheckBox->isChecked();
 }
 
+<<<<<<< HEAD
 void SAKHidDeviceController::refresh()
+=======
+void SAKUdpDeviceController::refresh()
+>>>>>>> developer
 {
     SAKBase::instance()->initIpComboBox(localhostComboBox);
 }
 
+<<<<<<< HEAD
 void SAKHidDeviceController::setUiEnable(bool enable)
+=======
+void SAKUdpDeviceController::setUiEnable(bool enable)
+>>>>>>> developer
 {
     localhostComboBox->setEnabled(enable);
     localPortlineEdit->setEnabled(enable);

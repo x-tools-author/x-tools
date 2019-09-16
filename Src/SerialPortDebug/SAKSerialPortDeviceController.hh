@@ -13,8 +13,8 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#ifndef SAKSERIALPORTASSISTANTCONTROLLER_HH
-#define SAKSERIALPORTASSISTANTCONTROLLER_HH
+#ifndef SAKSERIALPORTDEVICECONTROLLER_HH
+#define SAKSERIALPORTDEVICECONTROLLER_HH
 
 #include <QWidget>
 #include <QCheckBox>
@@ -22,15 +22,15 @@
 #include <QSerialPort>
 
 namespace Ui {
-class SAKSerialportAssistantController;
+    class SAKSerialPortDeviceController;
 }
 
-class SAKSerialportAssistantController:public QWidget
+class SAKSerialPortDeviceController:public QWidget
 {
     Q_OBJECT
 public:
-    SAKSerialportAssistantController(QWidget *parent = Q_NULLPTR);
-    ~SAKSerialportAssistantController();
+    SAKSerialPortDeviceController(QWidget *parent = Q_NULLPTR);
+    ~SAKSerialPortDeviceController();
 
     enum QSerialPort::DataBits  dataBits();
     enum QSerialPort::StopBits  stopBits();
@@ -42,7 +42,7 @@ public:
     void refresh();
     void setUiEnable(bool enable);
 private:
-    Ui::SAKSerialportAssistantController *ui;
+    Ui::SAKSerialPortDeviceController *ui;
 
     QComboBox *comboBoxSerialports      = nullptr;
     QComboBox *comboBoxBaudrate         = nullptr;
