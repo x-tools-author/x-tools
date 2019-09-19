@@ -28,8 +28,8 @@ public:
     ~SAKHidDebugPage();
 
 private:
-    SAKHidDevice *udpDevice;
-    SAKHidDeviceController *udpDeviceController;
+    SAKHidDevice *hidDevice;
+    SAKHidDeviceController *hidDeviceController;
 
     void setUiEnable(bool enable);
     void changeDeviceStatus(bool opened);

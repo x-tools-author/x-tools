@@ -235,3 +235,6 @@ win32{
 msvc:{
     QMAKE_CXXFLAGS += -execution-charset:utf-8
 }
+
+include(3rdParty/HidAPI/HidApi.pri)
+include(Libs/LibUSB/LibUSB/LibUSB.pri)

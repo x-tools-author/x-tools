@@ -40,14 +40,25 @@ public:
 
     void refresh();
     void setUiEnable(bool enable);
+    QString devicePath();
+
+    /**
+     * @brief initHidDeviceComboBox 初始化hid设备
+     * @param comboBox 需要初始化的控件
+     * @param ignoreKeyWord 关键字列表，根据关键字（如： MOUSE、KEYBOARD等）忽略某些hid设备
+     */
+    static void initHidDeviceComboBox(QComboBox *comboBox, QStringList ignoreKeyWord = QStringList());
 private:
     Ui::SAKHidDeviceController *ui;
 
-    QComboBox *localhostComboBox;
-    QLineEdit *localPortlineEdit;
-    QCheckBox *enableLocalSettingCheckBox;
-    QLineEdit *targetHostLineEdit;
-    QLineEdit *targetPortLineEdit;
+    QComboBox * hidDeviceComboBox;
+    QCheckBox *noMouseCheckBox;
+    QCheckBox *noKeyboardCheckBox;
+private slots:
+    void on_noMouseCheckBox_clicked();
+    void on_noKeyboardCheckBox_clicked();
+private:
+    QStringList ignoreKeyWords();
 };
 
 #endif

@@ -14,6 +14,7 @@
  * but for "installing B".
  */
 #include <QList>
+#include <QDebug>
 #include <QMetaEnum>
 #include <QLineEdit>
 #include <QSerialPortInfo>
@@ -21,17 +22,23 @@
 #include "SAKBase.hh"
 #include "SAKHidDeviceController.hh"
 #include "ui_SAKHidDeviceController.h"
+
+extern "C" {
+#include "HidApi.h"
+}
+
 SAKHidDeviceController::SAKHidDeviceController(QWidget *parent)
     :QWidget (parent)
     ,ui (new Ui::SAKHidDeviceController)
 {
     ui->setupUi(this);
 
-    localhostComboBox = ui->localhostComboBox;
-    localPortlineEdit = ui->localPortlineEdit;
-    enableLocalSettingCheckBox = ui->enableLocalSettingCheckBox;
-    targetHostLineEdit = ui->targetHostLineEdit;
-    targetPortLineEdit = ui->targetPortLineEdit;
+    hidDeviceComboBox = ui->hidDeviceComboBox;
+    noMouseCheckBox = ui->noMouseCheckBox;
+    noKeyboardCheckBox = ui->noKeyboardCheckBox;
+
+    int ret = hid_init();
+    Q_ASSERT_X(!ret, __FUNCTION__, "hid init failed");
 
     refresh();
 }
@@ -43,39 +50,102 @@ SAKHidDeviceController::~SAKHidDeviceController()
 
 QString SAKHidDeviceController::localHost()
 {
-    return localhostComboBox->currentText();
+    return "";
 }
 
 quint16 SAKHidDeviceController::localPort()
 {
-    return static_cast<quint16>(localPortlineEdit->text().toInt());
+    return 0;
 }
 
 QString SAKHidDeviceController::targetHost()
 {
-    return targetHostLineEdit->text();
+    return "";
 }
 
 quint16 SAKHidDeviceController::targetPort()
 {
-    return static_cast<quint16>(targetPortLineEdit->text().toInt());
+    return 0;
 }
 
 bool SAKHidDeviceController::enableCustomLocalSetting()
 {
-    return enableLocalSettingCheckBox->isChecked();
+    return false;
 }
 
 void SAKHidDeviceController::refresh()
 {
-    SAKBase::instance()->initIpComboBox(localhostComboBox);
+    initHidDeviceComboBox(hidDeviceComboBox, ignoreKeyWords());
 }
 
 void SAKHidDeviceController::setUiEnable(bool enable)
 {
-    localhostComboBox->setEnabled(enable);
-    localPortlineEdit->setEnabled(enable);
-    enableLocalSettingCheckBox->setEnabled(enable);
-    targetHostLineEdit->setEnabled(enable);
-    targetPortLineEdit->setEnabled(enable);
+    hidDeviceComboBox->setEnabled(enable);
+    noKeyboardCheckBox->setEnabled(enable);
+    noMouseCheckBox->setEnabled(enable);
+}
+
+QString SAKHidDeviceController::devicePath()
+{
+    return hidDeviceComboBox->currentData().toString();
+}
+
+void SAKHidDeviceController::initHidDeviceComboBox(QComboBox *comboBox, QStringList ignoreKeyWord)
+{
+    if (comboBox){
+        comboBox->clear();
+        struct hid_device_info *hidInfo = hid_enumerate(0, 0);
+        struct hid_device_info *hidInfoTemp = hidInfo;
+        do {
+            struct hid_device_info *device = hidInfo;
+            if (device){
+                bool ignore = false;
+                QString item = QString::fromWCharArray(device->product_string);
+                QString path = QString(device->path);
+                for (auto var:ignoreKeyWord){
+                    if (item.contains(var)){
+                        ignore = true;
+                        break;
+                    }
+                }
+
+                if (!ignore){
+                    comboBox->addItem(item, QVariant::fromValue(path));
+                }
+            }
+
+            hidInfo = hidInfo->next;
+        }while(hidInfo->next);
+        hid_free_enumeration(hidInfoTemp);
+    }
+}
+
+void SAKHidDeviceController::on_noMouseCheckBox_clicked()
+{
+    refresh();
+}
+
+void SAKHidDeviceController::on_noKeyboardCheckBox_clicked()
+{
+    refresh();
+}
+
+QStringList SAKHidDeviceController::ignoreKeyWords()
+{
+    QStringList keyWords;
+    QString keyword;
+
+    if (noKeyboardCheckBox->isChecked()){
+        keyword =  QString("keyboard");
+        keyWords.append(keyword);
+        keyWords.append(keyword.toUpper());
+    }
+
+    if (noMouseCheckBox->isChecked()){
+        keyword = QString("mouse");
+        keyWords.append(keyword);
+        keyWords.append(keyword.toUpper());
+    }
+
+    return keyWords;
 }

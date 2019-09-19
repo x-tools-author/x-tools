@@ -23,8 +23,8 @@
 
 SAKHidDebugPage::SAKHidDebugPage(QWidget *parent)
     :SAKDebugPage (parent)
-    ,udpDevice (nullptr)
-    ,udpDeviceController (new SAKHidDeviceController)
+    ,hidDevice (nullptr)
+    ,hidDeviceController (new SAKHidDeviceController)
 {
     setUpController();
     setWindowTitle(tr("UDP调试"));
@@ -32,16 +32,16 @@ SAKHidDebugPage::SAKHidDebugPage(QWidget *parent)
 
 SAKHidDebugPage::~SAKHidDebugPage()
 {
-    udpDeviceController->deleteLater();
-    if (udpDevice){
-        udpDevice->terminate();
-        delete udpDevice;
+    hidDeviceController->deleteLater();
+    if (hidDevice){
+        hidDevice->terminate();
+        delete hidDevice;
     }
 }
 
 void SAKHidDebugPage::setUiEnable(bool enable)
 {
-    udpDeviceController->setEnabled(enable);
+    hidDeviceController->setEnabled(enable);
     refreshPushButton->setEnabled(enable);
 }
 
@@ -53,10 +53,10 @@ void SAKHidDebugPage::changeDeviceStatus(bool opened)
     setUiEnable(!opened);
     switchPushButton->setText(opened ? tr("关闭") : tr("打开"));
     if (!opened){
-        if (udpDevice){
-            udpDevice->terminate();
-            delete udpDevice;
-            udpDevice = nullptr;
+        if (hidDevice){
+            hidDevice->terminate();
+            delete hidDevice;
+            hidDevice = nullptr;
         }
     }
     emit deviceStatusChanged(opened);
@@ -64,42 +64,36 @@ void SAKHidDebugPage::changeDeviceStatus(bool opened)
 
 void SAKHidDebugPage::openOrColoseDevice()
 {
-    if (udpDevice){
+    if (hidDevice){
         switchPushButton->setText(tr("打开"));
-        udpDevice->terminate();
-        delete udpDevice;
-        udpDevice = nullptr;
+        hidDevice->terminate();
+        delete hidDevice;
+        hidDevice = nullptr;
 
         setUiEnable(true);
         emit deviceStatusChanged(false);
     }else{
         switchPushButton->setText(tr("关闭"));
-        QString localHost = udpDeviceController->localHost();
-        quint16 localPort = udpDeviceController->localPort();
-        bool customSetting = udpDeviceController->enableCustomLocalSetting();
-        QString targetHost = udpDeviceController->targetHost();
-        quint16 targetPort = udpDeviceController->targetPort();
+        hidDevice = new SAKHidDevice(this, hidDeviceController->devicePath());
 
-        udpDevice = new SAKHidDevice(localHost, localPort, customSetting, targetHost, targetPort, this);
+        connect(this, &SAKHidDebugPage::writeDataRequest,hidDevice, &SAKHidDevice::writeBytes);
 
-        connect(this, &SAKHidDebugPage::writeDataRequest,udpDevice, &SAKHidDevice::writeBytes);
+        connect(hidDevice, &SAKHidDevice::bytesWriten,          this, &SAKHidDebugPage::bytesWritten);
+        connect(hidDevice, &SAKHidDevice::bytesRead,            this, &SAKHidDebugPage::bytesRead);
+        connect(hidDevice, &SAKHidDevice::messageChanged,       this, &SAKHidDebugPage::outputMessage);
+        connect(hidDevice, &SAKHidDevice::deviceStatuChanged,   this, &SAKHidDebugPage::changeDeviceStatus);
 
-        connect(udpDevice, &SAKHidDevice::bytesWriten,          this, &SAKHidDebugPage::bytesWritten);
-        connect(udpDevice, &SAKHidDevice::bytesRead,            this, &SAKHidDebugPage::bytesRead);
-        connect(udpDevice, &SAKHidDevice::messageChanged,       this, &SAKHidDebugPage::outputMessage);
-        connect(udpDevice, &SAKHidDevice::deviceStatuChanged,   this, &SAKHidDebugPage::changeDeviceStatus);
-
-        udpDevice->start();
+        hidDevice->start();
     }    
 }
 
 
 void SAKHidDebugPage::refreshDevice()
 {
-    udpDeviceController->refresh();
+    hidDeviceController->refresh();
 }
 
 QWidget *SAKHidDebugPage::controllerWidget()
 {
-    return udpDeviceController;
+    return hidDeviceController;
 }

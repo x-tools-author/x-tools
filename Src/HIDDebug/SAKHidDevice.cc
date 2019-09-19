@@ -14,79 +14,71 @@
  * but for "installing B".
  */
 #include <QDebug>
+
 #include <QApplication>
 #include "SAKHidDevice.hh"
 #include "SAKDebugPage.hh"
 
-SAKHidDevice::SAKHidDevice(QString localHost, quint16 localPort,
-                           bool enableCustomLocalSetting,
-                           QString targetHost, quint16 targetPort,
-                           SAKDebugPage *debugPage,
-                           QObject *parent)
-    :QThread (parent)
-    ,localHost (localHost)
-    ,localPort (localPort)
-    ,enableCustomLocalSetting (enableCustomLocalSetting)
-    ,targetHost (targetHost)
-    ,targetPort (targetPort)
+SAKHidDevice::SAKHidDevice(SAKDebugPage *debugPage, QString path, QObject *parent)
+    :QThread (parent)    
     ,debugPage (debugPage)
+    ,path (path)
+    ,hidDevice (nullptr)
+    ,readTimer (nullptr)
 {
     moveToThread(this);
 }
 
+SAKHidDevice::~SAKHidDevice()
+{
+    if (hidDevice){
+        hid_close(hidDevice);
+    }
+
+    if (readTimer){
+        delete readTimer;
+    }
+}
+
 void SAKHidDevice::run()
 {
-    udpSocket = new QUdpSocket(this);
-
-    connect(udpSocket, &QUdpSocket::readyRead, this, &SAKHidDevice::readBytes);
-    connect(qApp, &QApplication::lastWindowClosed, this, &SAKHidDevice::terminate);
-
-    bool bindResult = false;
-    if (enableCustomLocalSetting){
-        bindResult = udpSocket->bind(QHostAddress(localHost), localPort);
-    }else{
-        bindResult = udpSocket->bind();
+    hidDevice = hid_open_path(path.toLatin1().constData());
+    if (!hidDevice){
+        emit messageChanged(tr("无法打开设备")+QString::fromWCharArray(hid_error(hidDevice)), false);
+        return;
     }
 
-    if (bindResult){
-        if (udpSocket->open(QUdpSocket::ReadWrite)){
-#ifdef QT_DEBUG
-            qDebug() << udpSocket->localAddress().toString() << udpSocket->localPort();
-#endif
-            emit deviceStatuChanged(true);
-            exec();
-        }else{
-            emit deviceStatuChanged(false);
-            emit messageChanged(tr("无法打开设备")+udpSocket->errorString(), false);
-        }
-    }else{
-        emit deviceStatuChanged(false);
-        emit messageChanged(tr("无法绑定设备")+udpSocket->errorString(), false);
-    }
+    readTimer = new QTimer;
+    connect(readTimer, &QTimer::timeout, this, &SAKHidDevice::readBytes, Qt::QueuedConnection);
+    readBytes();
+
+    emit deviceStatuChanged(true);
+    hid_set_nonblocking(hidDevice, 0);
+    exec();
 }
 
 void SAKHidDevice::readBytes()
 {        
-    udpSocket->waitForReadyRead(debugPage->readWriteParameters().waitForReadyReadTime);
-    while (udpSocket->hasPendingDatagrams()) {
-        QByteArray data;
-        data.resize(static_cast<int>(udpSocket->pendingDatagramSize()));
-        qint64 ret = udpSocket->readDatagram(data.data(), data.length());
-        if (ret == -1){
-            emit messageChanged(tr("读取数据失败：")+udpSocket->errorString(), false);
-        }else{
-            emit bytesRead(data);
-        }
+    readTimer->stop();
 
+    QByteArray data;
+    data.resize(1024);
+    int ret = hid_read(hidDevice, reinterpret_cast<unsigned char*>(data.data()), static_cast<size_t>(data.length()));
+    if (ret == -1){
+        emit messageChanged(tr("读取数据失败：")+QString::fromWCharArray(hid_error(hidDevice)), false);
+    }else{
+        data.resize(ret);
+        emit bytesRead(data);
     }
+
+    readTimer->start(debugPage->readWriteParameters().waitForReadyReadTime);
 }
 
 void SAKHidDevice::writeBytes(QByteArray data)
 {    
-    qint64 ret = udpSocket->writeDatagram(data, QHostAddress(targetHost), targetPort);
-    udpSocket->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
+    int ret = hid_write(hidDevice, reinterpret_cast<const unsigned char*>(data.constData()), static_cast<size_t>(data.length()));
     if (ret == -1){
-        emit messageChanged(tr("发送数据失败：")+udpSocket->errorString(), false);
+        emit messageChanged(tr("发送数据失败：")+QString::fromWCharArray(hid_error(hidDevice)), false);
     }else{
         emit bytesWriten(data);
     }

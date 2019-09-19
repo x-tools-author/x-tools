@@ -16,31 +16,31 @@
 #ifndef SAKHIDDEVICE_HH
 #define SAKHIDDEVICE_HH
 
+#include <QTimer>
 #include <QThread>
 #include <QUdpSocket>
+
+extern "C" {
+#include "HidApi.h"
+}
 
 class SAKDebugPage;
 class SAKHidDevice:public QThread
 {
     Q_OBJECT
 public:
-    SAKHidDevice(QString localHost, quint16 localPort,
-                 bool enableCustomLocalSetting,
-                 QString targetHost, quint16 targetPort,
-                 SAKDebugPage *debugPage,
-                 QObject *parent = Q_NULLPTR);
+    SAKHidDevice(SAKDebugPage *debugPage, QString path, QObject *parent = Q_NULLPTR);
+    ~SAKHidDevice();
+
     void readBytes();
     void writeBytes(QByteArray data);
 private:
     void run();    
-private:
-    QString localHost;
-    quint16 localPort;
-    bool enableCustomLocalSetting;
-    QString targetHost;
-    quint16 targetPort;
+private:    
     SAKDebugPage *debugPage;
-    QUdpSocket *udpSocket;
+    QString path;
+    hid_device *hidDevice;
+    QTimer *readTimer;
 
 signals:
     void bytesRead(QByteArray);
