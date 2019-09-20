@@ -48,9 +48,11 @@ DebugPageInputManager::DebugPageInputManager(SAKDebugPage *debugPage, QObject *p
     inputTextEdit           = debugPage->inputTextEdit;
     crcParameterModelsComboBox = debugPage->crcParameterModelsComboBox;
     crcLabel                = debugPage->crcLabel;
+#if 0
     addInputItemPushButton  = debugPage->addInputItemPushButton;
     deleteInputItemPushButton = debugPage->deleteInputItemPushButton;
     inputDataItemListWidget = debugPage->inputDataItemListWidget;
+#endif
 
     sendPushButton->setEnabled(false);
     SAKBase::instance()->initTextFormatComboBox(inputModelComboBox);
@@ -67,8 +69,10 @@ DebugPageInputManager::DebugPageInputManager(SAKDebugPage *debugPage, QObject *p
     connect(sendPushButton,             &QPushButton::clicked,          this, &DebugPageInputManager::sendRawData);
     connect(inputTextEdit,              &QTextEdit::textChanged,        this, &DebugPageInputManager::inputTextEditTextChanged);
     connect(crcParameterModelsComboBox, &QComboBox::currentTextChanged, this, &DebugPageInputManager::changeCRCModel);
+#if 0
     connect(addInputItemPushButton,     &QPushButton::clicked,          this, &DebugPageInputManager::addInputDataItem);
     connect(deleteInputItemPushButton,  &QPushButton::clicked,          this, &DebugPageInputManager::deleteInputDataItem);
+#endif
 
 
     connect(this, &DebugPageInputManager::rawDataChanged, inputDataFactory, &InputDataFactory::cookData);
@@ -205,28 +209,28 @@ void DebugPageInputManager::changeCRCModel()
 
 void DebugPageInputManager::addInputDataItem()
 {
-    QListWidgetItem *item = new QListWidgetItem(inputDataItemListWidget);
-    InputDataItem *itemWidget = new InputDataItem(debugPage, this);
-    item->setSizeHint(itemWidget->size());
-    inputDataItemListWidget->addItem(item);
-    inputDataItemListWidget->setItemWidget(item, itemWidget);
+//    QListWidgetItem *item = new QListWidgetItem(inputDataItemListWidget);
+//    InputDataItem *itemWidget = new InputDataItem(debugPage, this);
+//    item->setSizeHint(itemWidget->size());
+//    inputDataItemListWidget->addItem(item);
+//    inputDataItemListWidget->setItemWidget(item, itemWidget);
 }
 
 void DebugPageInputManager::deleteInputDataItem()
 {
-    if (inputDataItemListWidget->count() <= 1){
-        debugPage->outputMessage(tr("无法删除，必须保留一个输入模块"), false);
-        return;
-    }
+//    if (inputDataItemListWidget->count() <= 1){
+//        debugPage->outputMessage(tr("无法删除，必须保留一个输入模块"), false);
+//        return;
+//    }
 
-    QListWidgetItem *item = inputDataItemListWidget->takeItem(inputDataItemListWidget->currentRow());
-    if (item){
-        QWidget *itemWWidget = inputDataItemListWidget->itemWidget(item);
-        delete itemWWidget;
-        delete item;
-    }else{
-        debugPage->outputMessage(tr("请选择要删除的输入模块后尝试"), false);
-    }
+//    QListWidgetItem *item = inputDataItemListWidget->takeItem(inputDataItemListWidget->currentRow());
+//    if (item){
+//        QWidget *itemWWidget = inputDataItemListWidget->itemWidget(item);
+//        delete itemWWidget;
+//        delete item;
+//    }else{
+//        debugPage->outputMessage(tr("请选择要删除的输入模块后尝试"), false);
+//    }
 }
 
 void DebugPageInputManager::initParameters()

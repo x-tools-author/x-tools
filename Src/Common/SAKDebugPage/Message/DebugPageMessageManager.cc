@@ -22,24 +22,24 @@ DebugPageMessageManager::DebugPageMessageManager(SAKDebugPage *debugPage, QObjec
     :QObject (parent)
     ,debugPage (debugPage)
 {
-    messageTextBrowser = this->debugPage->messageTextBrowser;
+    infoLabel = this->debugPage->infoLabel;
 }
 
 void DebugPageMessageManager::outputMessage(QString msg, bool isInfoMsg)
 {
-    QString time = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
-    time = QString("<font color=silver>%1</font>").arg(time);
-    messageTextBrowser->append(time);
+//    QString time = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
+//    time = QString("<font color=silver>%1</font>").arg(time);
+//    infoLabel->append(time);
 
-    if (isInfoMsg){
-#if 0
-        msg = QString("<font color=blue>%1</font>").arg(msg);
-#endif
-    }else{
-        msg = QString("<font color=red>%1</font>").arg(msg);
-        QApplication::beep();
-    }
+//    if (isInfoMsg){
+//#if 0
+//        msg = QString("<font color=blue>%1</font>").arg(msg);
+//#endif
+//    }else{
+//        msg = QString("<font color=red>%1</font>").arg(msg);
+//        QApplication::beep();
+//    }
 
-    messageTextBrowser->append(msg);
-    messageTextBrowser->append("");
+//    infoLabel->append(msg);
+//    infoLabel->append("");
 }

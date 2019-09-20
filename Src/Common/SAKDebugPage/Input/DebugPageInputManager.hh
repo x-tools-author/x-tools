@@ -63,9 +63,11 @@ private:
     QTextEdit   *inputTextEdit;
     QComboBox   *crcParameterModelsComboBox;
     QLabel      *crcLabel;
+#if 0
     QPushButton *addInputItemPushButton;
     QPushButton *deleteInputItemPushButton;
     QListWidget *inputDataItemListWidget;
+#endif
 private:
     /// 输入文本格式法神改变时执行该函数
     void changeInputModel(const QString &text);

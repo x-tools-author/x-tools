@@ -127,7 +127,7 @@ private:
 protected:    
     QPushButton *refreshPushButton              = nullptr;  // 刷新按钮
     QPushButton *switchPushButton               = nullptr;  // 打开关闭设备按钮
-    QGroupBox   *deviceSettingGroupBox          = nullptr;  // 控制面板
+    QFrame      *deviceSettingFrame             = nullptr;  // 控制面板
 
      // 输入设置组
 protected:
@@ -150,7 +150,7 @@ protected:
 
     //数据输出组管理
 protected:
-    QTextBrowser *messageTextBrowser            = nullptr;  // 消息输出框    
+    QLabel *infoLabel                           = nullptr;  // 消息输标签
 
     // 消息输出组
 protected:

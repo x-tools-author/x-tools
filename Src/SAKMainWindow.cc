@@ -67,7 +67,6 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
                    + QString(" 作者邮箱 %1").arg(versionDialog->getEmail()));
 
     this->resize(800, 600);
-    this->setMinimumWidth(1024);
 
     mpTabWidget->setTabsClosable(true);
     connect(mpTabWidget, &QTabWidget::tabCloseRequested, this, &SAKMainWindow::closeDebugPage);

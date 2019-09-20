@@ -60,7 +60,8 @@ SAKDebugPage::SAKDebugPage(QWidget *parent)
     _readWriteParameters.waitForReadyReadTime = MINI_READ_WRITE_WATINGT_TIME;
     _readWriteParameters.waitForBytesWrittenTime = MINI_READ_WRITE_WATINGT_TIME;
 
-    connect(this, &SAKDebugPage::deviceStatusChanged, this, &SAKDebugPage::changedDeviceStatus);    
+    connect(this, &SAKDebugPage::deviceStatusChanged, this, &SAKDebugPage::changedDeviceStatus);
+    resize(800, 600);
 }
 
 SAKDebugPage::~SAKDebugPage()
@@ -125,8 +126,10 @@ void SAKDebugPage::setUpController()
 {
     QWidget *controller = controllerWidget();
     if (controller){
-        QGridLayout *layout = reinterpret_cast<QGridLayout*>(deviceSettingGroupBox->layout());
-        layout->addWidget(controller, 2, 0, 1, 2);
+        QHBoxLayout *layout = new QHBoxLayout(deviceSettingFrame);
+        deviceSettingFrame->setLayout(layout);
+        layout->addWidget(controller);
+        layout->setMargin(0);
     }
 }
 
@@ -147,12 +150,12 @@ void SAKDebugPage::initUiPointer()
      */
     switchPushButton        = ui->switchPushButton;
     refreshPushButton       = ui->refreshPushButton;
-    deviceSettingGroupBox   = ui->deviceSettingGroupBox;
+    deviceSettingFrame      = ui->deviceSettingFrame;
 
     /*
      * 消息输出组
      */
-    messageTextBrowser      = ui->messageTextBrowser;
+    infoLabel               = ui->infoLabel;
 
     /*
      * 输入设置组
@@ -169,15 +172,16 @@ void SAKDebugPage::initUiPointer()
     inputTextEdit           = ui->inputTextEdit;
     crcParameterModelsComboBox = ui->crcParameterModelsComboBox;
     crcLabel                = ui->crcLabel;
+#if 0
     deleteInputItemPushButton = ui->deleteInputItemPushButton;
     addInputItemPushButton  = ui->addInputItemPushButton;
     inputDataItemListWidget = ui->inputDataItemListWidget;
+#endif
 
     /*
      * 图表
      */
     throughputPushButton    = ui->throughputPushButton;
-    moreChartPushButton     = ui->moreChartPushButton;
 
     /*
      * 数据统计

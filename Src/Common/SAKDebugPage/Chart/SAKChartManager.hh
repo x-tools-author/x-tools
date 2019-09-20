@@ -32,7 +32,7 @@ private:
     SAKDebugPage *_debugPage;
 
     QPushButton *throughputPushButton;
-    QPushButton *moreChartPushButton;
+//    QPushButton *moreChartPushButton;
 
     ThroughputWidget *throughputWidget;
     MoreChartWidget *moreChartWidget;

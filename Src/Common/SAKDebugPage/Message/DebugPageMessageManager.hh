@@ -16,6 +16,7 @@
 #ifndef DEBUGPAGEMESSAGEMANAGER_HH
 #define DEBUGPAGEMESSAGEMANAGER_HH
 
+#include <QLabel>
 #include <QObject>
 #include <QTextBrowser>
 
@@ -35,7 +36,7 @@ public:
     void outputMessage(QString msg, bool isInfoMsg = true);
 private:
     SAKDebugPage *debugPage;
-    QTextBrowser *messageTextBrowser;
+    QLabel *infoLabel;
 };
 
 #endif

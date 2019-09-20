@@ -237,4 +237,4 @@ msvc:{
 }
 
 include(3rdParty/HidAPI/HidApi.pri)
-include(Libs/LibUSB/LibUSB/LibUSB.pri)
+include(Libs/LibUSB/LibUSB.pri)
