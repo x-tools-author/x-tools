@@ -32,6 +32,7 @@
 #include "QtAppStyleApi.hh"
 #include "SAKApplication.hh"
 #include "SAKHidDebugPage.hh"
+#include "SAKUsbDebugPage.hh"
 #include "SAKUdpDebugPage.hh"
 #include "MoreInformation.hh"
 #include "QtStyleSheetApi.hh"
@@ -91,6 +92,8 @@ void SAKMainWindow::AddTab()
     this->mpTabWidget->addTab(new SAKTcpClientDebugPage, tr("TCP客户端"));
     // tcp服务器
     this->mpTabWidget->addTab(new SAKTcpServerDebugPage, tr("TCP服务器"));
+    // usb调试
+    this->mpTabWidget->addTab(new SAKUsbDebugPage, tr("USB调试"));
     // hid调试
     this->mpTabWidget->addTab(new SAKHidDebugPage, tr("HID调试"));
     // 终端输出
