@@ -15,10 +15,10 @@
  */
 #include <QDebug>
 #include <QApplication>
-#include "SAKUdpDevice.hh"
+#include "SAKUsbDevice.hh"
 #include "SAKDebugPage.hh"
 
-SAKUdpDevice::SAKUdpDevice(QString localHost, quint16 localPort,
+SAKUsbDevice::SAKUsbDevice(QString localHost, quint16 localPort,
                            bool enableCustomLocalSetting,
                            QString targetHost, quint16 targetPort,
                            SAKDebugPage *debugPage,
@@ -34,38 +34,38 @@ SAKUdpDevice::SAKUdpDevice(QString localHost, quint16 localPort,
     moveToThread(this);
 }
 
-void SAKUdpDevice::run()
+void SAKUsbDevice::run()
 {
-    udpSocket = new QUdpSocket(this);
+//    udpSocket = new QUdpSocket(this);
 
-    connect(udpSocket, &QUdpSocket::readyRead, this, &SAKUdpDevice::readBytes);
-    connect(qApp, &QApplication::lastWindowClosed, this, &SAKUdpDevice::terminate);
+//    connect(udpSocket, &QUdpSocket::readyRead, this, &SAKUdpDevice::readBytes);
+//    connect(qApp, &QApplication::lastWindowClosed, this, &SAKUdpDevice::terminate);
 
-    bool bindResult = false;
-    if (enableCustomLocalSetting){
-        bindResult = udpSocket->bind(QHostAddress(localHost), localPort);
-    }else{
-        bindResult = udpSocket->bind();
-    }
+//    bool bindResult = false;
+//    if (enableCustomLocalSetting){
+//        bindResult = udpSocket->bind(QHostAddress(localHost), localPort);
+//    }else{
+//        bindResult = udpSocket->bind();
+//    }
 
-    if (bindResult){
-        if (udpSocket->open(QUdpSocket::ReadWrite)){
-#ifdef QT_DEBUG
-            qDebug() << udpSocket->localAddress().toString() << udpSocket->localPort();
-#endif
-            emit deviceStatuChanged(true);
-            exec();
-        }else{
-            emit deviceStatuChanged(false);
-            emit messageChanged(tr("无法打开设备")+udpSocket->errorString(), false);
-        }
-    }else{
-        emit deviceStatuChanged(false);
-        emit messageChanged(tr("无法绑定设备")+udpSocket->errorString(), false);
-    }
+//    if (bindResult){
+//        if (udpSocket->open(QUdpSocket::ReadWrite)){
+//#ifdef QT_DEBUG
+//            qDebug() << udpSocket->localAddress().toString() << udpSocket->localPort();
+//#endif
+//            emit deviceStatuChanged(true);
+//            exec();
+//        }else{
+//            emit deviceStatuChanged(false);
+//            emit messageChanged(tr("无法打开设备")+udpSocket->errorString(), false);
+//        }
+//    }else{
+//        emit deviceStatuChanged(false);
+//        emit messageChanged(tr("无法绑定设备")+udpSocket->errorString(), false);
+//    }
 }
 
-void SAKUdpDevice::readBytes()
+void SAKUsbDevice::readBytes()
 {        
     udpSocket->waitForReadyRead(debugPage->readWriteParameters().waitForReadyReadTime);
     while (udpSocket->hasPendingDatagrams()) {
@@ -81,7 +81,7 @@ void SAKUdpDevice::readBytes()
     }
 }
 
-void SAKUdpDevice::writeBytes(QByteArray data)
+void SAKUsbDevice::writeBytes(QByteArray data)
 {    
     qint64 ret = udpSocket->writeDatagram(data, QHostAddress(targetHost), targetPort);
     udpSocket->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);

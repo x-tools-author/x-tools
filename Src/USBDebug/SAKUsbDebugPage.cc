@@ -17,20 +17,20 @@
 #include <QWidget>
 #include <QHBoxLayout>
 
-#include "SAKUdpDevice.hh"
-#include "SAKUdpDebugPage.hh"
-#include "SAKUdpDeviceController.hh"
+#include "SAKUsbDevice.hh"
+#include "SAKUsbDebugPage.hh"
+#include "SAKUsbDeviceController.hh"
 
-SAKUdpDebugPage::SAKUdpDebugPage(QWidget *parent)
+SAKUsbDebugPage::SAKUsbDebugPage(QWidget *parent)
     :SAKDebugPage (parent)
     ,udpDevice (nullptr)
-    ,udpDeviceController (new SAKUdpDeviceController)
+    ,udpDeviceController (new SAKUsbDeviceController)
 {
     setUpController();
     setWindowTitle(tr("UDP调试"));
 }
 
-SAKUdpDebugPage::~SAKUdpDebugPage()
+SAKUsbDebugPage::~SAKUsbDebugPage()
 {
     udpDeviceController->deleteLater();
     if (udpDevice){
@@ -39,13 +39,13 @@ SAKUdpDebugPage::~SAKUdpDebugPage()
     }
 }
 
-void SAKUdpDebugPage::setUiEnable(bool enable)
+void SAKUsbDebugPage::setUiEnable(bool enable)
 {
     udpDeviceController->setEnabled(enable);
     refreshPushButton->setEnabled(enable);
 }
 
-void SAKUdpDebugPage::changeDeviceStatus(bool opened)
+void SAKUsbDebugPage::changeDeviceStatus(bool opened)
 {
     /*
      * 设备打开失败，使能ui, 打开成功，禁止ui
@@ -62,8 +62,8 @@ void SAKUdpDebugPage::changeDeviceStatus(bool opened)
     emit deviceStatusChanged(opened);
 }
 
-void SAKUdpDebugPage::openOrColoseDevice()
-{
+void SAKUsbDebugPage::openOrColoseDevice()
+{/*
     if (udpDevice){
         switchPushButton->setText(tr("打开"));
         udpDevice->terminate();
@@ -90,16 +90,16 @@ void SAKUdpDebugPage::openOrColoseDevice()
         connect(udpDevice, &SAKUdpDevice::deviceStatuChanged,   this, &SAKUdpDebugPage::changeDeviceStatus);
 
         udpDevice->start();
-    }    
+    }    */
 }
 
 
-void SAKUdpDebugPage::refreshDevice()
+void SAKUsbDebugPage::refreshDevice()
 {
     udpDeviceController->refresh();
 }
 
-QWidget *SAKUdpDebugPage::controllerWidget()
+QWidget *SAKUsbDebugPage::controllerWidget()
 {
     return udpDeviceController;
 }

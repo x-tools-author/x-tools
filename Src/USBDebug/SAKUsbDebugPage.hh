@@ -13,23 +13,23 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#ifndef SAKUDPDEBUGPAGE_HH
-#define SAKUDPDEBUGPAGE_HH
+#ifndef SAKUSBDEBUGPAGE_HH
+#define SAKUSBDEBUGPAGE_HH
 
 #include "SAKDebugPage.hh"
 
-class SAKUdpDevice;
-class SAKUdpDeviceController;
-class SAKUdpDebugPage : public SAKDebugPage
+class SAKUsbDevice;
+class SAKUsbDeviceController;
+class SAKUsbDebugPage : public SAKDebugPage
 {
     Q_OBJECT
 public:
-    SAKUdpDebugPage(QWidget *parent = Q_NULLPTR);
-    ~SAKUdpDebugPage();
+    SAKUsbDebugPage(QWidget *parent = Q_NULLPTR);
+    ~SAKUsbDebugPage();
 
 private:
-    SAKUdpDevice *udpDevice;
-    SAKUdpDeviceController *udpDeviceController;
+    SAKUsbDevice *udpDevice;
+    SAKUsbDeviceController *udpDeviceController;
 
     void setUiEnable(bool enable);
     void changeDeviceStatus(bool opened);

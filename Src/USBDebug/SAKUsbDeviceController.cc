@@ -19,11 +19,11 @@
 #include <QSerialPortInfo>
 
 #include "SAKBase.hh"
-#include "SAKUdpDeviceController.hh"
-#include "ui_SAKUdpDeviceController.h"
-SAKUdpDeviceController::SAKUdpDeviceController(QWidget *parent)
+#include "SAKUsbDeviceController.hh"
+#include "ui_SAKUsbDeviceController.h"
+SAKUsbDeviceController::SAKUsbDeviceController(QWidget *parent)
     :QWidget (parent)
-    ,ui (new Ui::SAKUdpDeviceController)
+    ,ui (new Ui::SAKUsbDeviceController)
 {
     ui->setupUi(this);
 
@@ -36,42 +36,42 @@ SAKUdpDeviceController::SAKUdpDeviceController(QWidget *parent)
     refresh();
 }
 
-SAKUdpDeviceController::~SAKUdpDeviceController()
+SAKUsbDeviceController::~SAKUsbDeviceController()
 {
     delete ui;
 }
 
-QString SAKUdpDeviceController::localHost()
+QString SAKUsbDeviceController::localHost()
 {
     return localhostComboBox->currentText();
 }
 
-quint16 SAKUdpDeviceController::localPort()
+quint16 SAKUsbDeviceController::localPort()
 {
     return static_cast<quint16>(localPortlineEdit->text().toInt());
 }
 
-QString SAKUdpDeviceController::targetHost()
+QString SAKUsbDeviceController::targetHost()
 {
     return targetHostLineEdit->text();
 }
 
-quint16 SAKUdpDeviceController::targetPort()
+quint16 SAKUsbDeviceController::targetPort()
 {
     return static_cast<quint16>(targetPortLineEdit->text().toInt());
 }
 
-bool SAKUdpDeviceController::enableCustomLocalSetting()
+bool SAKUsbDeviceController::enableCustomLocalSetting()
 {
     return enableLocalSettingCheckBox->isChecked();
 }
 
-void SAKUdpDeviceController::refresh()
+void SAKUsbDeviceController::refresh()
 {
     SAKBase::instance()->initIpComboBox(localhostComboBox);
 }
 
-void SAKUdpDeviceController::setUiEnable(bool enable)
+void SAKUsbDeviceController::setUiEnable(bool enable)
 {
     localhostComboBox->setEnabled(enable);
     localPortlineEdit->setEnabled(enable);
