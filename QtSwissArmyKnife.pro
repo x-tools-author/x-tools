@@ -73,10 +73,12 @@ HEADERS += \
     Src/TcpServer/SAKTcpServerDebugPage.hh \
     Src/TcpServer/SAKTcpServerDevice.hh \
     Src/TcpServer/SAKTcpServerDeviceController.hh \
+    Src/USBDebug/SAKUsbDebugPage.hh \
+    Src/USBDebug/SAKUsbDevice.hh \
+    Src/USBDebug/SAKUsbDeviceController.hh \
     Src/UdpDebug/SAKUdpDebugPage.hh \
     Src/UdpDebug/SAKUdpDevice.hh \
     Src/UdpDebug/SAKUdpDeviceController.hh
-
 
 SOURCES += \
     Src/Base/SAKBase.cc \
@@ -113,7 +115,10 @@ SOURCES += \
     Src/Common/SAKToolDialog/SAKToolDialog.cc \
     Src/HIDDebug/SAKHidDebugPage.cc \
     Src/HIDDebug/SAKHidDevice.cc \
-    Src/HIDDebug/SAKHidDeviceController.cc \   
+    Src/HIDDebug/SAKHidDeviceController.cc \
+    Src/USBDebug/SAKUsbDebugPage.cc \
+    Src/USBDebug/SAKUsbDevice.cc \
+    Src/USBDebug/SAKUsbDeviceController.cc \
     Src/TcpClient/SAKTcpClientDebugPage.cc \
     Src/TcpClient/SAKTcpClientDevice.cc \
     Src/TcpClient/SAKTcpClientDeviceController.cc \
@@ -133,7 +138,6 @@ SOURCES += \
     Src/Console/SAKLogOutput.cc \
     Src/Common/SAKDebugPage/SAKDebugPage.cc \
     Src/Base/SAKCRCInterface.cc
-
 
 FORMS += \
     Src/Common/SAKDebugPage/Chart/MoreChart/MoreChartWidget.ui \
@@ -158,6 +162,7 @@ FORMS += \
     Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.ui \
     Src/TcpClient/SAKTcpClientDeviceController.ui \
     Src/TcpServer/SAKTcpServerDeviceController.ui \
+    Src/USBDebug/SAKUsbDeviceController.ui \
     Src/UdpDebug/SAKUdpDeviceController.ui
 
 
@@ -187,7 +192,8 @@ INCLUDEPATH += \
     Src/UdpDebug \
     Src/TcpClient \
     Src/TcpServer \
-    Src/HidDebug
+    Src/HidDebug \
+    Src/USBDebug
 
 RESOURCES += \
     SAKResources.qrc
@@ -236,5 +242,7 @@ msvc:{
     QMAKE_CXXFLAGS += -execution-charset:utf-8
 }
 
-include(3rdParty/HidAPI/HidApi.pri)
-include(Libs/LibUSB/LibUSB.pri)
+win32 {
+    include(3rdParty/HidAPI/HidApi.pri)
+    include(Libs/LibUSB/LibUSB.pri)
+}
