@@ -32,25 +32,25 @@ DebugPageOutputManager::DebugPageOutputManager(SAKDebugPage *debugPage, QObject 
     // 注册数据类型（自定义数据类型作为信号参数时，要进行注册，该函数要与宏 Q_DECLARE_METATYPE 配套使用）
     qRegisterMetaType<OutputParameters>("OutputParameters");
 
-    rxLabel                 = debugPage->rxLabel;
-    txLabel                 = debugPage->txLabel;
-    outputModelComboBox     = debugPage->outputModelComboBox;
-    showDateCheckBox        = debugPage->showDateCheckBox;
-    autoWrapCheckBox        = debugPage->autoWrapCheckBox;
-    showTimeCheckBox        = debugPage->showTimeCheckBox;
-    showMsCheckBox          = debugPage->showMsCheckBox;
-    showRxDataCheckBox      = debugPage->showRxDataCheckBox;
-    showTxDataCheckBox      = debugPage->showTxDataCheckBox;
+    rxLabel                         = debugPage->rxLabel;
+    txLabel                         = debugPage->txLabel;
+    outputModelComboBox             = debugPage->outputModelComboBox;
+    showDateCheckBox                = debugPage->showDateCheckBox;
+    autoWrapCheckBox                = debugPage->autoWrapCheckBox;
+    showTimeCheckBox                = debugPage->showTimeCheckBox;
+    showMsCheckBox                  = debugPage->showMsCheckBox;
+    showRxDataCheckBox              = debugPage->showRxDataCheckBox;
+    showTxDataCheckBox              = debugPage->showTxDataCheckBox;
     saveOutputFileToFilecheckBox    = debugPage->saveOutputFileToFilecheckBox;
-    outputFilePathPushButton= debugPage->outputFilePathPushButton;
-    clearOutputPushButton   = debugPage->clearOutputPushButton;
-    saveOutputPushButton    = debugPage->saveOutputPushButton;
-    outputTextBroswer       = debugPage->outputTextBroswer;
+    outputFilePathPushButton        = debugPage->outputFilePathPushButton;
+    clearOutputPushButton           = debugPage->clearOutputPushButton;
+    saveOutputPushButton            = debugPage->saveOutputPushButton;
+    outputTextBroswer               = debugPage->outputTextBroswer;
 
-    connect(saveOutputFileToFilecheckBox, &QCheckBox::clicked, this, &DebugPageOutputManager::saveOutputDataToFile);
-    connect(autoWrapCheckBox, &QCheckBox::clicked, this, &DebugPageOutputManager::setLineWrapMode);
-    connect(saveOutputPushButton, &QCheckBox::clicked, this, &DebugPageOutputManager::saveOutputTextToFile);
-    connect(outputFilePathPushButton, &QCheckBox::clicked, this, &DebugPageOutputManager::saveOutputDataSettings);
+    connect(saveOutputFileToFilecheckBox,   &QCheckBox::clicked, this, &DebugPageOutputManager::saveOutputDataToFile);
+    connect(autoWrapCheckBox,               &QCheckBox::clicked, this, &DebugPageOutputManager::setLineWrapMode);
+    connect(saveOutputPushButton,           &QCheckBox::clicked, this, &DebugPageOutputManager::saveOutputTextToFile);
+    connect(outputFilePathPushButton,       &QCheckBox::clicked, this, &DebugPageOutputManager::saveOutputDataSettings);
 
 
     // 初始化数据格式预选框

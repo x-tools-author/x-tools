@@ -63,11 +63,7 @@ private:
     QTextEdit   *inputTextEdit;
     QComboBox   *crcParameterModelsComboBox;
     QLabel      *crcLabel;
-#if 0
-    QPushButton *addInputItemPushButton;
-    QPushButton *deleteInputItemPushButton;
-    QListWidget *inputDataItemListWidget;
-#endif
+
 private:
     /// 输入文本格式法神改变时执行该函数
     void changeInputModel(const QString &text);
@@ -91,10 +87,7 @@ private:
     void sendRawData();
     /// crc参数模型发生改变时执行该函数
     void changeCRCModel();
-    /// 添加发送数据输入框
-    void addInputDataItem();
-    /// 删除数据发送输入框
-    void deleteInputDataItem();
+
 private:
     /// 初始化输入参数
     void initParameters();
@@ -102,7 +95,7 @@ private:
     void setCycleEnable();    
 private:
     /// 循环发送定时器
-    QTimer cycleTimer;
+    QTimer timingTimer;
     /// 循环发送定时器溢出后，执行该函数，执行该函数后，将会发送一个请求发送数据信号
     void cycleTimerTimeout();
 

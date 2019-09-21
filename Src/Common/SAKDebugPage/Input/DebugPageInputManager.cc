@@ -36,23 +36,18 @@ DebugPageInputManager::DebugPageInputManager(SAKDebugPage *debugPage, QObject *p
 
     crcInterface = new SAKCRCInterface(this);
 
-    inputModelComboBox      = debugPage->inputModelComboBox;
-    cycleEnableCheckBox     = debugPage->cycleEnableCheckBox;
-    cycleTimeLineEdit       = debugPage->cycleTimeLineEdit;
-    saveInputDataPushButton = debugPage->saveInputDataPushButton;
-    readinFilePushButton    = debugPage->readinFilePushButton;
-    addCRCCheckBox          = debugPage->addCRCCheckBox;
-    bigeEndianCheckBox      = debugPage->bigeEndianCheckBox;
-    clearInputPushButton    = debugPage->clearInputPushButton;
-    sendPushButton          = debugPage->sendPushButton;
-    inputTextEdit           = debugPage->inputTextEdit;
-    crcParameterModelsComboBox = debugPage->crcParameterModelsComboBox;
-    crcLabel                = debugPage->crcLabel;
-#if 0
-    addInputItemPushButton  = debugPage->addInputItemPushButton;
-    deleteInputItemPushButton = debugPage->deleteInputItemPushButton;
-    inputDataItemListWidget = debugPage->inputDataItemListWidget;
-#endif
+    inputModelComboBox          = debugPage->inputModelComboBox;
+    cycleEnableCheckBox         = debugPage->cycleEnableCheckBox;
+    cycleTimeLineEdit           = debugPage->cycleTimeLineEdit;
+    saveInputDataPushButton     = debugPage->saveInputDataPushButton;
+    readinFilePushButton        = debugPage->readinFilePushButton;
+    addCRCCheckBox              = debugPage->addCRCCheckBox;
+    bigeEndianCheckBox          = debugPage->bigeEndianCheckBox;
+    clearInputPushButton        = debugPage->clearInputPushButton;
+    sendPushButton              = debugPage->sendPushButton;
+    inputTextEdit               = debugPage->inputTextEdit;
+    crcParameterModelsComboBox  = debugPage->crcParameterModelsComboBox;
+    crcLabel                    = debugPage->crcLabel;
 
     sendPushButton->setEnabled(false);
     SAKBase::instance()->initTextFormatComboBox(inputModelComboBox);
@@ -69,20 +64,13 @@ DebugPageInputManager::DebugPageInputManager(SAKDebugPage *debugPage, QObject *p
     connect(sendPushButton,             &QPushButton::clicked,          this, &DebugPageInputManager::sendRawData);
     connect(inputTextEdit,              &QTextEdit::textChanged,        this, &DebugPageInputManager::inputTextEditTextChanged);
     connect(crcParameterModelsComboBox, &QComboBox::currentTextChanged, this, &DebugPageInputManager::changeCRCModel);
-#if 0
-    connect(addInputItemPushButton,     &QPushButton::clicked,          this, &DebugPageInputManager::addInputDataItem);
-    connect(deleteInputItemPushButton,  &QPushButton::clicked,          this, &DebugPageInputManager::deleteInputDataItem);
-#endif
-
 
     connect(this, &DebugPageInputManager::rawDataChanged, inputDataFactory, &InputDataFactory::cookData);
     connect(inputDataFactory, &InputDataFactory::dataCooked, debugPage, &SAKDebugPage::write);
-    connect(&cycleTimer, &QTimer::timeout, this, &DebugPageInputManager::cycleTimerTimeout);
+    connect(&timingTimer, &QTimer::timeout, this, &DebugPageInputManager::cycleTimerTimeout);
 
     initParameters();
     updateCRC();
-
-    addInputDataItem();
 }
 
 DebugPageInputManager::~DebugPageInputManager()
@@ -109,9 +97,9 @@ void DebugPageInputManager::changeInputModel(const QString &text)
 void DebugPageInputManager::changeCycleEnableFlag()
 {
     if (cycleEnableCheckBox->isChecked()){
-        cycleTimer.start(inputParameters.cycleTime);
+        timingTimer.start(inputParameters.cycleTime);
     }else{
-        cycleTimer.stop();
+        timingTimer.stop();
     }
 }
 
@@ -207,32 +195,6 @@ void DebugPageInputManager::changeCRCModel()
     updateCRC();
 }
 
-void DebugPageInputManager::addInputDataItem()
-{
-//    QListWidgetItem *item = new QListWidgetItem(inputDataItemListWidget);
-//    InputDataItem *itemWidget = new InputDataItem(debugPage, this);
-//    item->setSizeHint(itemWidget->size());
-//    inputDataItemListWidget->addItem(item);
-//    inputDataItemListWidget->setItemWidget(item, itemWidget);
-}
-
-void DebugPageInputManager::deleteInputDataItem()
-{
-//    if (inputDataItemListWidget->count() <= 1){
-//        debugPage->outputMessage(tr("无法删除，必须保留一个输入模块"), false);
-//        return;
-//    }
-
-//    QListWidgetItem *item = inputDataItemListWidget->takeItem(inputDataItemListWidget->currentRow());
-//    if (item){
-//        QWidget *itemWWidget = inputDataItemListWidget->itemWidget(item);
-//        delete itemWWidget;
-//        delete item;
-//    }else{
-//        debugPage->outputMessage(tr("请选择要删除的输入模块后尝试"), false);
-//    }
-}
-
 void DebugPageInputManager::initParameters()
 {
     inputParameters.addCRC = addCRCCheckBox->isChecked();
@@ -262,10 +224,10 @@ void DebugPageInputManager::setCycleEnable()
             cycleTimeLineEdit->setText("50");
             cycleTime = 50;
         }
-        cycleTimer.start(cycleTime);
+        timingTimer.start(cycleTime);
         cycleTimeLineEdit->setEnabled(false);
     }else{
-        cycleTimer.stop();
+        timingTimer.stop();
         cycleTimeLineEdit->setEnabled(true);
     }
 }
