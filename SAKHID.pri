@@ -2,10 +2,6 @@ win32 {
     DEFINES+=SAK_IMPORT_HID_MODULE
 }
 
-unix {
-    DEFINES+=SAK_IMPORT_HID_MODULE
-}
-
 contains(DEFINES, SAK_IMPORT_HID_MODULE){
 include(3rdParty/HidAPI/HidApi.pri)
 }else {
