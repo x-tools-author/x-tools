@@ -27,7 +27,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 include(SAKCOM.pri)
 include(SAKHID.pri)
 include(SAKUSB.pri)
-include(SAKModulesManager.pri)
+include(Modules.pri)
 
 
 HEADERS += \
