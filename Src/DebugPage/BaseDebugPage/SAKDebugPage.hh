@@ -46,7 +46,6 @@ class DebugPageInputManager;
 class DebugPageDeviceManager;
 class DebugPageOutputManager;
 class HighlightSettingsWidget;
-class DebugPageMessageManager;
 
 namespace Ui {
     class SAKDebugPage;
@@ -117,6 +116,10 @@ protected:
      * @param opened                -- true: 设备一打开 false：设备已关闭
      */
     void changedDeviceStatus(bool opened);
+private:
+    QTimer clearInfoTimer;
+    void cleanInfo();
+
 private:
     /// 日志类型
     const char *logCategory = "SAKTabPage";
@@ -194,7 +197,6 @@ private:
     SAKStatisticsManager    *statisticsManager;
     DebugPageOutputManager  *outputManager;
     DebugPageDeviceManager  *debugPageDeviceManager;
-    DebugPageMessageManager *debugPageMessageManager;
     DebugPageInputManager   *debugPageInputManager;
 
 private:
@@ -214,7 +216,6 @@ public:
     friend class DebugPageInputManager;
     friend class DebugPageOutputManager;
     friend class DebugPageDeviceManager;
-    friend class DebugPageMessageManager;
 };
 
 #endif  // SAKTabPage_H

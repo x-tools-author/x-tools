@@ -45,7 +45,6 @@ HEADERS += \
     Src/DebugPage/BaseDebugPage/Input/DebugPageInputManager.hh \
     Src/DebugPage/BaseDebugPage/Input/InputDataFactory.hh \
     Src/DebugPage/BaseDebugPage/Input/InputDataItem.hh \
-    Src/DebugPage/BaseDebugPage/Message/DebugPageMessageManager.hh \
     Src/DebugPage/BaseDebugPage/Other/AutoResponseSettings/AutoResponseItemWidget.hh \
     Src/DebugPage/BaseDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.hh \
     Src/DebugPage/BaseDebugPage/Other/FormatSettings/FormatSettingsWidget.hh \
@@ -99,7 +98,6 @@ SOURCES += \
     Src/DebugPage/BaseDebugPage/Input/DebugPageInputManager.cc \
     Src/DebugPage/BaseDebugPage/Input/InputDataFactory.cc \
     Src/DebugPage/BaseDebugPage/Input/InputDataItem.cc \
-    Src/DebugPage/BaseDebugPage/Message/DebugPageMessageManager.cc \
     Src/DebugPage/BaseDebugPage/Other/AutoResponseSettings/AutoResponseItemWidget.cc \
     Src/DebugPage/BaseDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.cc \
     Src/DebugPage/BaseDebugPage/Other/FormatSettings/FormatSettingsWidget.cc \

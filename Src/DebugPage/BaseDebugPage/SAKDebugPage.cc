@@ -35,7 +35,6 @@
 #include "DebugPageOutputManager.hh"
 #include "DebugPageDeviceManager.hh"
 #include "HighlightSettingsWidget.hh"
-#include "DebugPageMessageManager.hh"
 
 #include "ui_SAKDebugPage.h"
 
@@ -53,7 +52,6 @@ SAKDebugPage::SAKDebugPage(QWidget *parent)
     otherSettings           = new SAKOtherSettings(this, this);
     statisticsManager       = new SAKStatisticsManager(this, this);
     debugPageDeviceManager  = new DebugPageDeviceManager(this, this);
-    debugPageMessageManager = new DebugPageMessageManager(this, this);
     debugPageInputManager   = new DebugPageInputManager(this, this);
 
     _readWriteParameters.waitForReadyReadTime = MINI_READ_WRITE_WATINGT_TIME;
@@ -61,6 +59,9 @@ SAKDebugPage::SAKDebugPage(QWidget *parent)
 
     connect(this, &SAKDebugPage::deviceStatusChanged, this, &SAKDebugPage::changedDeviceStatus);
     resize(800, 600);
+
+    clearInfoTimer.setInterval(8*1000);
+    connect(&clearInfoTimer, &QTimer::timeout, this, &SAKDebugPage::cleanInfo);
 }
 
 SAKDebugPage::~SAKDebugPage()
@@ -75,7 +76,19 @@ void SAKDebugPage::write(QByteArray data)
 
 void SAKDebugPage::outputMessage(QString msg, bool isInfo)
 {
-    debugPageMessageManager->outputMessage(msg, isInfo);
+    QString time = QDateTime::currentDateTime().toString("hh:mm:ss ");
+    time = QString("<font color=silver>%1</font>").arg(time);
+
+    if (!isInfo){
+        infoLabel->setStyleSheet(QString("QLabel{color:black}"));
+    }else{
+        infoLabel->setStyleSheet(QString("QLabel{color:red}"));
+        QApplication::beep();
+    }
+
+    msg.prepend(time);
+    infoLabel->setText(msg);
+    clearInfoTimer.start();
 }
 
 struct SAKDebugPage::ReadWriteParameters SAKDebugPage::readWriteParameters()
@@ -142,6 +155,12 @@ void SAKDebugPage::changedDeviceStatus(bool opened)
     }
 }
 
+void SAKDebugPage::cleanInfo()
+{
+    clearInfoTimer.stop();
+    infoLabel->clear();
+}
+
 void SAKDebugPage::initUiPointer()
 {
     /*
@@ -171,11 +190,6 @@ void SAKDebugPage::initUiPointer()
     inputTextEdit           = ui->inputTextEdit;
     crcParameterModelsComboBox = ui->crcParameterModelsComboBox;
     crcLabel                = ui->crcLabel;
-#if 0
-    deleteInputItemPushButton = ui->deleteInputItemPushButton;
-    addInputItemPushButton  = ui->addInputItemPushButton;
-    inputDataItemListWidget = ui->inputDataItemListWidget;
-#endif
 
     /*
      * 图表
