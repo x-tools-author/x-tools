@@ -108,7 +108,6 @@ void DebugPageInputManager::changeCycleTime()
     bool ok = false;
     inputParameters.cycleTime = cycleTimeLineEdit->text().toInt(&ok);
     if ((!ok) || (inputParameters.cycleTime == 0)){
-        debugPage->outputMessage(tr("循环发送周期设置有误，已设置1000ms"), false);
         inputParameters.cycleTime = 1000;
         cycleTimeLineEdit->setText("1000");
     }
@@ -203,7 +202,6 @@ void DebugPageInputManager::initParameters()
 
     bool ok = false;
     if ((!ok) || (inputParameters.cycleTime == 0)){
-        debugPage->outputMessage(tr("循环发送周期设置有误，已设置1000ms"));
         inputParameters.cycleTime = 1000;
         cycleTimeLineEdit->setText("1000");
     }
