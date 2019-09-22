@@ -27,6 +27,8 @@ DebugPageMessageManager::DebugPageMessageManager(SAKDebugPage *debugPage, QObjec
 
 void DebugPageMessageManager::outputMessage(QString msg, bool isInfoMsg)
 {
+    Q_UNUSED(msg);
+    Q_UNUSED(isInfoMsg);
 //    QString time = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
 //    time = QString("<font color=silver>%1</font>").arg(time);
 //    infoLabel->append(time);
