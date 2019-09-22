@@ -22,6 +22,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # In order to do so, unTabPage the following line.
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
+
+# 子项目
+include(SAKCOM.pri)
+include(SAKHID.pri)
+include(SAKUSB.pri)
+include(SAKModulesManager.pri)
+
+
 HEADERS += \
     Src/Base/SAKBase.hh \
     Src/Base/SAKCRCInterface.hh \
@@ -59,9 +67,6 @@ HEADERS += \
     Src/DebugPage/BaseDebugPage/Output/Save/SaveOutputDataThread.hh \
     Src/DebugPage/BaseDebugPage/SAKDebugPage.hh \
     Src/DebugPage/BaseDebugPage/Statistics/SAKStatisticsManager.hh \
-    Src/DebugPage/HidDebug/SAKHidDebugPage.hh \
-    Src/DebugPage/HidDebug/SAKHidDevice.hh \
-    Src/DebugPage/HidDebug/SAKHidDeviceController.hh \
     Src/DebugPage/TcpClient/SAKTcpClientDebugPage.hh \
     Src/DebugPage/TcpClient/SAKTcpClientDevice.hh \
     Src/DebugPage/TcpClient/SAKTcpClientDeviceController.hh \
@@ -71,9 +76,6 @@ HEADERS += \
     Src/DebugPage/UdpDebug/SAKUdpDebugPage.hh \
     Src/DebugPage/UdpDebug/SAKUdpDevice.hh \
     Src/DebugPage/UdpDebug/SAKUdpDeviceController.hh \
-    Src/DebugPage/UsbDebug/SAKUsbDebugPage.hh \
-    Src/DebugPage/UsbDebug/SAKUsbDevice.hh \
-    Src/DebugPage/UsbDebug/SAKUsbDeviceController.hh \
     Src/MoreInformation.hh \
     Src/SAKApplication.hh \
     Src/SAKGlobal.hh \
@@ -119,9 +121,6 @@ SOURCES += \
     Src/DebugPage/BaseDebugPage/Output/Save/SaveOutputDataThread.cc \
     Src/DebugPage/BaseDebugPage/SAKDebugPage.cc \
     Src/DebugPage/BaseDebugPage/Statistics/SAKStatisticsManager.cc \
-    Src/DebugPage/HidDebug/SAKHidDebugPage.cc \
-    Src/DebugPage/HidDebug/SAKHidDevice.cc \
-    Src/DebugPage/HidDebug/SAKHidDeviceController.cc \
     Src/DebugPage/TcpClient/SAKTcpClientDebugPage.cc \
     Src/DebugPage/TcpClient/SAKTcpClientDevice.cc \
     Src/DebugPage/TcpClient/SAKTcpClientDeviceController.cc \
@@ -130,10 +129,7 @@ SOURCES += \
     Src/DebugPage/TcpServer/SAKTcpServerDeviceController.cc \
     Src/DebugPage/UdpDebug/SAKUdpDebugPage.cc \
     Src/DebugPage/UdpDebug/SAKUdpDevice.cc \
-    Src/DebugPage/UdpDebug/SAKUdpDeviceController.cc \
-    Src/DebugPage/UsbDebug/SAKUsbDebugPage.cc \
-    Src/DebugPage/UsbDebug/SAKUsbDevice.cc \
-    Src/DebugPage/UsbDebug/SAKUsbDeviceController.cc \
+    Src/DebugPage/UdpDebug/SAKUdpDeviceController.cc \    
     Src/MoreInformation.cc \
     Src/SAKApplication.cc \
     Src/SAKGlobal.cc \
@@ -160,12 +156,10 @@ FORMS += \
     Src/DebugPage/BaseDebugPage/Other/TransmissionSettings/UdpTransmissionItemWidget.ui \
     Src/DebugPage/BaseDebugPage/Output/Save/SaveOutputDataSettings.ui \
     Src/DebugPage/BaseDebugPage/SAKDebugPage.ui \
-    Src/DebugPage/ComDebug/SAKSerialPortDeviceController.ui \
-    Src/DebugPage/HidDebug/SAKHidDeviceController.ui \
+    Src/DebugPage/ComDebug/SAKSerialPortDeviceController.ui \    
     Src/DebugPage/TcpClient/SAKTcpClientDeviceController.ui \
     Src/DebugPage/TcpServer/SAKTcpServerDeviceController.ui \
-    Src/DebugPage/UdpDebug/SAKUdpDeviceController.ui \
-    Src/DebugPage/UsbDebug/SAKUsbDeviceController.ui \
+    Src/DebugPage/UdpDebug/SAKUdpDeviceController.ui \    
     Src/MoreInformation.ui \
     Src/SAKMainWindow.ui \
     Src/SAKVersion.ui
@@ -198,9 +192,7 @@ INCLUDEPATH += \
 INCLUDEPATH += \
     Src/DebugPage/UdpDebug \
     Src/DebugPage/TcpClient \
-    Src/DebugPage/TcpServer \
-    Src/DebugPage/HidDebug \
-    Src/DebugPage/USBDebug
+    Src/DebugPage/TcpServer
 
 
 RESOURCES += \
@@ -213,44 +205,11 @@ MOC_DIR     = $$OUT_PWD/moc
 RCC_DIR     = $$OUT_PWD/res
 OBJECTS_DIR = $$OUT_PWD/obj
 
-
 #--------------------------------------------------------------------------------------------
-# 子项目
-include(SAKModulesManager.pri)
-
-# 取消该宏的定义可以将串口模块屏蔽
-winrt || linux-rasp-pi3-g++{
-    DEFINES += SAK_NO_SERIALPORT_ASSISTANT
-}
-
-!contains(DEFINES, SAK_NO_SERIALPORT_ASSISTANT){
-    QT  += serialport
-    SOURCES += \
-        Src/DebugPage/ComDebug/SAKSerialPortDebugPage.cc \
-        Src/DebugPage/ComDebug/SAKSerialPortDeviceController.cc \
-        Src/DebugPage/ComDebug/SAKSerialPortDevice.cc
-    HEADERS += \
-        Src/DebugPage/ComDebug/SAKSerialPortDebugPage.hh \
-        Src/DebugPage/ComDebug/SAKSerialPortDeviceController.hh \
-        Src/DebugPage/ComDebug/SAKSerialPortDevice.hh
-    FORMS   += \
-        Src/DebugPage/ComDebug/SAKSerialPortDeviceController.ui
-    INCLUDEPATH += \
-        Src/DebugPage/ComDebug
-}else {
-    message( "该版本Qt可能不包含串口模块，已经忽略串口模块！（串口助手功能被屏蔽！）" )
-}
-
-win32{
-    RC_ICONS = Windows.ico
-}
-
-# 解决msvc编译器中文乱码的问题
-msvc:{
-    QMAKE_CXXFLAGS += -execution-charset:utf-8
-}
-
+#Windows配置
 win32 {
-    include(3rdParty/HidAPI/HidApi.pri)
-    include(Libs/LibUSB/LibUSB.pri)
+    RC_ICONS = Windows.ico
+    msvc:{
+        QMAKE_CXXFLAGS += -execution-charset:utf-8
+    }
 }

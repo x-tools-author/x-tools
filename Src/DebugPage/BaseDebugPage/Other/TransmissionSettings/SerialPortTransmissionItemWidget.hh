@@ -22,7 +22,10 @@
 #include <QComboBox>
 #include <QIODevice>
 #include <QPushButton>
+
+#ifdef SAK_IMPORT_COM_MODULE
 #include <QSerialPort>
+#endif
 
 #include "BaseTransmissionItemWidget.hh"
 
@@ -35,7 +38,9 @@ class SerialPortTransmissionItemWidget:public BaseTransmissionItemWidget
     Q_OBJECT
 public:
     SerialPortTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent = nullptr);
-    ~SerialPortTransmissionItemWidget();
+
+#ifdef SAK_IMPORT_COM_MODULE
+     ~SerialPortTransmissionItemWidget();
 protected:
     virtual void write(QByteArray data);
     virtual void read();
@@ -56,6 +61,7 @@ private slots:
     void on_customBaudrateCheckBox_clicked();
 private:
     void setUiEnable(bool enable);
+#endif
 };
 
 #endif

@@ -16,7 +16,6 @@
 #include <QList>
 #include <QMetaEnum>
 #include <QLineEdit>
-#include <QSerialPortInfo>
 
 #include "SAKBase.hh"
 #include "SAKTcpClientDeviceController.hh"

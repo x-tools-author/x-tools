@@ -65,10 +65,13 @@ QString SAKGlobal::getIODeviceTypeName(int type)
     case SAKEnumIODeviceTypeTCPServer:
         name = tr("TCP服务器");
         break;
+#ifdef SAK_IMPORT_COM_MODULE
     case SAKEnumIODeviceTypeSerialport:
         name = tr("串口调试");
         break;
+#endif
     default:
+        name = QString("Unknown");
         break;
     }
 

@@ -31,18 +31,24 @@
 #include "SAKMainWindow.hh"
 #include "QtAppStyleApi.hh"
 #include "SAKApplication.hh"
-#include "SAKHidDebugPage.hh"
-#include "SAKUsbDebugPage.hh"
 #include "SAKUdpDebugPage.hh"
 #include "MoreInformation.hh"
 #include "QtStyleSheetApi.hh"
 #include "GetPublicIPWidget.h"
 #include "SAKTcpClientDebugPage.hh"
 #include "SAKTcpServerDebugPage.hh"
-#include "SAKSerialPortDebugPage.hh"
 #include "QtCryptographicHashController.hh"
-#ifndef SAK_NO_SERIALPORT_ASSISTANT
+
+#ifdef SAK_IMPORT_COM_MODULE
 #include "SAKSerialPortDebugPage.hh"
+#endif
+
+#ifdef SAK_IMPORT_HID_MODULE
+#include "SAKHidDebugPage.hh"
+#endif
+
+#ifdef SAK_IMPORT_USB_MODULE
+#include "SAKUsbDebugPage.hh"
 #endif
 
 #include "ui_SAKMainWindow.h"
@@ -87,12 +93,18 @@ void SAKMainWindow::AddTab()
     /*
      * 添加调试页面
      */
+#ifdef SAK_IMPORT_COM_MODULE
     this->mpTabWidget->addTab( new SAKSerialPortDebugPage, tr("串口调试"));
+#endif
     this->mpTabWidget->addTab(new SAKUdpDebugPage, tr("UDP调试"));
     this->mpTabWidget->addTab(new SAKTcpClientDebugPage, tr("TCP客户端"));
     this->mpTabWidget->addTab(new SAKTcpServerDebugPage, tr("TCP服务器"));
+#ifdef SAK_ENABLE_USB_DEBUG
     this->mpTabWidget->addTab(new SAKUsbDebugPage, tr("USB调试"));
+#endif
+#ifdef SAK_IMPORT_HID_MODULE
     this->mpTabWidget->addTab(new SAKHidDebugPage, tr("HID调试"));
+#endif
     this->mpTabWidget->addTab(new SAKConsole, tr("打印终端"));
 
     /*
@@ -291,7 +303,7 @@ QWidget *SAKMainWindow::getDebugPage(int type)
         widget = new SAKTcpServerDebugPage;
         break;
 
-#ifndef SAK_NO_SERIALPORT_ASSISTANT
+#ifdef SAK_IMPORT_COM_MODULE
     case SAKGlobal::SAKEnumIODeviceTypeSerialport:
         widget = new SAKSerialPortDebugPage;
         break;

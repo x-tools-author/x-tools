@@ -13,23 +13,26 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#include "SAKDebugPage.hh"
 #include "SAKBase.hh"
+#include "SAKDebugPage.hh"
 #include "SerialPortTransmissionItemWidget.hh"
 #include "ui_SerialPortTransmissionItemWidget.h"
 
 #include <QDebug>
+#ifdef SAK_IMPORT_COM_MODULE
 #include <QSerialPortInfo>
-
 Q_DECLARE_METATYPE(QSerialPortInfo)
+#endif
 
 SerialPortTransmissionItemWidget::SerialPortTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent)
     :BaseTransmissionItemWidget (debugPage, parent)
+#ifdef SAK_IMPORT_COM_MODULE
     ,ui (new Ui::SerialPortTransmissionItemWidget)
     ,serialPort (nullptr)
-{
+#endif
+{    
+#ifdef SAK_IMPORT_COM_MODULE
     ui->setupUi(this);
-
     enableCheckBox              = ui->enableCheckBox;
     handleReceiveDataCheckBox   = ui->handleReceiveDataCheckBox;
     comComboBox                 = ui->comComboBox;
@@ -46,13 +49,25 @@ SerialPortTransmissionItemWidget::SerialPortTransmissionItemWidget(SAKDebugPage 
     SAKBase::instance()->initParityComboBox(parityComboBox);
 
     handleReceiveDataCheckBox->setChecked(true);
+#else
+    QHBoxLayout *layout = new QHBoxLayout(this);
+    QLabel *label = new QLabel("该版本软件不支持数据通过串口转发", this);
+    label->setObjectName(QString("label%1fkldfjsdajflsadfjasdf").arg(__LINE__));
+    label->setStyleSheet(QString("QLabel#%1{color:red}").arg(label->objectName()));
+    label->setAlignment(Qt::AlignHCenter);
+    layout->addWidget(label, Qt::AlignHCenter);
+    setLayout(layout);
+#endif
 }
 
+#ifdef SAK_IMPORT_COM_MODULE
 SerialPortTransmissionItemWidget::~SerialPortTransmissionItemWidget()
 {
     delete ui;
 }
+#endif
 
+#ifdef SAK_IMPORT_COM_MODULE
 void SerialPortTransmissionItemWidget::write(QByteArray data)
 {
     if (serialPort){
@@ -63,7 +78,9 @@ void SerialPortTransmissionItemWidget::write(QByteArray data)
         }
     }
 }
+#endif
 
+#ifdef SAK_IMPORT_COM_MODULE
 void SerialPortTransmissionItemWidget::on_enableCheckBox_clicked()
 {
     // c++11 lambda表达式
@@ -104,12 +121,16 @@ void SerialPortTransmissionItemWidget::on_enableCheckBox_clicked()
         }
     }
 }
+#endif
 
+#ifdef SAK_IMPORT_COM_MODULE
 void SerialPortTransmissionItemWidget::on_customBaudrateCheckBox_clicked()
 {
     baudRateComboBox->setEditable(customBaudrateCheckBox->isChecked());
 }
+#endif
 
+#ifdef SAK_IMPORT_COM_MODULE
 void SerialPortTransmissionItemWidget::read()
 {
     if (serialPort){
@@ -121,7 +142,9 @@ void SerialPortTransmissionItemWidget::read()
         }
     }
 }
+#endif
 
+#ifdef SAK_IMPORT_COM_MODULE
 void SerialPortTransmissionItemWidget::setUiEnable(bool enable)
 {
     comComboBox->setEnabled(enable);
@@ -131,3 +154,4 @@ void SerialPortTransmissionItemWidget::setUiEnable(bool enable)
     stopBitscomboBox->setEnabled(enable);
     parityComboBox->setEnabled(enable);
 }
+#endif

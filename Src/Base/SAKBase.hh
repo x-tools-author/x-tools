@@ -32,6 +32,7 @@ private:
     SAKBase(QObject *parent = nullptr);
     static SAKBase *_this;
 public:
+#ifdef SAK_IMPORT_COM_MODULE
     /*
      * 串口相关参数显示初始化
      */
@@ -40,6 +41,7 @@ public:
     void initDataBitsComboBox(QComboBox *comboBox);
     void initStopBitsComboBox(QComboBox *comboBox);
     void initParityComboBox(QComboBox *comboBox);
+#endif
 
     /// ip地址
     void initIpComboBox(QComboBox *comboBox);    

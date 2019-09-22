@@ -19,7 +19,7 @@ public:
      * @brief The SAKEnumIODeviceType enum  -- io的设备类型
      */
     enum SAKEnumIODeviceType {
-#ifndef SAK_NO_SERIALPORT_ASSISTANT
+#ifdef SAK_IMPORT_COM_MODULE
         SAKEnumIODeviceTypeSerialport,      // 串口设备
 #endif
         SAKEnumIODeviceTypeUDP,             // udp调试

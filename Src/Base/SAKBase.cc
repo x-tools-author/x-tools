@@ -15,13 +15,16 @@
  */
 #include "SAKBase.hh"
 
-#include <QSerialPort>
+
 #include <QHostAddress>
 #include <QAbstractSocket>
-#include <QSerialPortInfo>
 #include <QNetworkInterface>
 
+#ifdef SAK_IMPORT_COM_MODULE
+#include <QSerialPort>
+#include <QSerialPortInfo>
 Q_DECLARE_METATYPE(QSerialPortInfo)
+#endif
 
 SAKBase *SAKBase::instance()
 {
@@ -39,6 +42,7 @@ SAKBase::SAKBase(QObject *parent)
 
 }
 
+#ifdef SAK_IMPORT_COM_MODULE
 void SAKBase::initComComboBox(QComboBox *comboBox)
 {
     if (comboBox){
@@ -49,7 +53,9 @@ void SAKBase::initComComboBox(QComboBox *comboBox)
         }
     }
 }
+#endif
 
+#ifdef SAK_IMPORT_COM_MODULE
 void SAKBase::initBaudRateComboBox(QComboBox *comboBox)
 {
     if (comboBox){
@@ -62,7 +68,9 @@ void SAKBase::initBaudRateComboBox(QComboBox *comboBox)
         comboBox->setCurrentText("9600");
     }
 }
+#endif
 
+#ifdef SAK_IMPORT_COM_MODULE
 void SAKBase::initDataBitsComboBox(QComboBox *comboBox)
 {
     if (comboBox){
@@ -73,7 +81,9 @@ void SAKBase::initDataBitsComboBox(QComboBox *comboBox)
         comboBox->addItem(tr("5位"), QVariant::fromValue(QSerialPort::Data5));
     }
 }
+#endif
 
+#ifdef SAK_IMPORT_COM_MODULE
 void SAKBase::initStopBitsComboBox(QComboBox *comboBox)
 {
     if (comboBox){
@@ -85,7 +95,9 @@ void SAKBase::initStopBitsComboBox(QComboBox *comboBox)
         comboBox->addItem(tr("2位"), QVariant::fromValue(QSerialPort::TwoStop));
     }
 }
+#endif
 
+#ifdef SAK_IMPORT_COM_MODULE
 void SAKBase::initParityComboBox(QComboBox *comboBox)
 {
     if (comboBox){
@@ -97,6 +109,7 @@ void SAKBase::initParityComboBox(QComboBox *comboBox)
         comboBox->addItem(tr("MarkParity"), QVariant::fromValue(QSerialPort::MarkParity));
     }
 }
+#endif
 
 void SAKBase::initIpComboBox(QComboBox *comboBox)
 {
