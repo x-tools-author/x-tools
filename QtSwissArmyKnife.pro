@@ -38,14 +38,14 @@ HEADERS += \
     Src/Base/SAKWidget.hh \
     Src/Console/SAKConsole.hh \
     Src/Console/SAKLogOutput.hh \
-    Src/DebugPage/BaseDebugPage/Chart/MoreChart/MoreChartWidget.hh \
-    Src/DebugPage/BaseDebugPage/Chart/SAKChartManager.hh \
-    Src/DebugPage/BaseDebugPage/Chart/Throughput/ThroughputWidget.hh \
     Src/DebugPage/BaseDebugPage/Input/DebugPageInputManager.hh \
     Src/DebugPage/BaseDebugPage/Input/InputDataFactory.hh \
     Src/DebugPage/BaseDebugPage/Input/InputDataItem.hh \
     Src/DebugPage/BaseDebugPage/Other/AutoResponseSettings/AutoResponseItemWidget.hh \
     Src/DebugPage/BaseDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.hh \
+    Src/DebugPage/BaseDebugPage/Other/Chart/MoreChart/MoreChartWidget.hh \
+    Src/DebugPage/BaseDebugPage/Other/Chart/SAKChartManager.hh \
+    Src/DebugPage/BaseDebugPage/Other/Chart/Throughput/ThroughputWidget.hh \
     Src/DebugPage/BaseDebugPage/Other/FormatSettings/FormatSettingsWidget.hh \
     Src/DebugPage/BaseDebugPage/Other/HighlightSettings/HighlightSettings.hh \
     Src/DebugPage/BaseDebugPage/Other/HighlightSettings/HighlightSettingsWidget.hh \
@@ -90,14 +90,14 @@ SOURCES += \
     Src/Base/SAKWidget.cc \
     Src/Console/SAKConsole.cc \
     Src/Console/SAKLogOutput.cc \
-    Src/DebugPage/BaseDebugPage/Chart/MoreChart/MoreChartWidget.cc \
-    Src/DebugPage/BaseDebugPage/Chart/SAKChartManager.cc \
-    Src/DebugPage/BaseDebugPage/Chart/Throughput/ThroughputWidget.cc \
     Src/DebugPage/BaseDebugPage/Input/DebugPageInputManager.cc \
     Src/DebugPage/BaseDebugPage/Input/InputDataFactory.cc \
     Src/DebugPage/BaseDebugPage/Input/InputDataItem.cc \
     Src/DebugPage/BaseDebugPage/Other/AutoResponseSettings/AutoResponseItemWidget.cc \
     Src/DebugPage/BaseDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.cc \
+    Src/DebugPage/BaseDebugPage/Other/Chart/MoreChart/MoreChartWidget.cc \
+    Src/DebugPage/BaseDebugPage/Other/Chart/SAKChartManager.cc \
+    Src/DebugPage/BaseDebugPage/Other/Chart/Throughput/ThroughputWidget.cc \
     Src/DebugPage/BaseDebugPage/Other/FormatSettings/FormatSettingsWidget.cc \
     Src/DebugPage/BaseDebugPage/Other/HighlightSettings/HighlightSettings.cc \
     Src/DebugPage/BaseDebugPage/Other/HighlightSettings/HighlightSettingsWidget.cc \
@@ -137,7 +137,7 @@ SOURCES += \
 
 FORMS += \
     Src/Console/SAKConsole.ui \
-    Src/DebugPage/BaseDebugPage/Chart/MoreChart/MoreChartWidget.ui \
+    Src/DebugPage/BaseDebugPage/Other/Chart/MoreChart/MoreChartWidget.ui \
     Src/DebugPage/BaseDebugPage/Input/InputDataItem.ui \
     Src/DebugPage/BaseDebugPage/Other/AutoResponseSettings/AutoResponseItemWidget.ui \
     Src/DebugPage/BaseDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.ui \
@@ -174,9 +174,9 @@ INCLUDEPATH += \
     Src/DebugPage/BaseDebugPage/Other/MoreOtherSettings \
     Src/DebugPage/BaseDebugPage/Other/FormatSettings \
     Src/DebugPage/BaseDebugPage/Statistics \
-    Src/DebugPage/BaseDebugPage/Chart \
-    Src/DebugPage/BaseDebugPage/Chart/Throughput \
-    Src/DebugPage/BaseDebugPage/Chart/MoreChart \
+    Src/DebugPage/BaseDebugPage/Other/Chart \
+    Src/DebugPage/BaseDebugPage/Other/Chart/Throughput \
+    Src/DebugPage/BaseDebugPage/Other/Chart/MoreChart \
     Src/DebugPage/BaseDebugPage/Output \
     Src/DebugPage/BaseDebugPage/Output/Save \
     Src/DebugPage/BaseDebugPage/Message \
