@@ -75,9 +75,12 @@ void SAKDebugPage::write(QByteArray data)
 void SAKDebugPage::outputMessage(QString msg, bool isInfo)
 {
     QString time = QDateTime::currentDateTime().toString("hh:mm:ss ");
+    QString temp;
+    temp.append(time);
+    temp.append(msg);
     time = QString("<font color=silver>%1</font>").arg(time);
 
-    if (!isInfo){
+    if (isInfo){
         infoLabel->setStyleSheet(QString("QLabel{color:black}"));
     }else{
         infoLabel->setStyleSheet(QString("QLabel{color:red}"));
@@ -90,9 +93,9 @@ void SAKDebugPage::outputMessage(QString msg, bool isInfo)
 
     QLoggingCategory category(logCategory);
     if (isInfo){
-        qCInfo(category) << msg;
+        qCInfo(category) << temp;
     }else{
-        qCWarning(category) << msg;
+        qCWarning(category) << temp;
     }
 }
 
