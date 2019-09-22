@@ -33,7 +33,6 @@
 #include "SAKStatisticsManager.hh"
 #include "DebugPageInputManager.hh"
 #include "DebugPageOutputManager.hh"
-#include "DebugPageDeviceManager.hh"
 #include "HighlightSettingsWidget.hh"
 
 #include "ui_SAKDebugPage.h"
@@ -51,7 +50,6 @@ SAKDebugPage::SAKDebugPage(QWidget *parent)
     outputManager           = new DebugPageOutputManager(this, this);
     otherSettings           = new SAKOtherSettings(this, this);
     statisticsManager       = new SAKStatisticsManager(this, this);
-    debugPageDeviceManager  = new DebugPageDeviceManager(this, this);
     debugPageInputManager   = new DebugPageInputManager(this, this);
 
     _readWriteParameters.waitForReadyReadTime = MINI_READ_WRITE_WATINGT_TIME;
@@ -159,6 +157,16 @@ void SAKDebugPage::cleanInfo()
 {
     clearInfoTimer.stop();
     infoLabel->clear();
+}
+
+void SAKDebugPage::on_refreshPushButton_clicked()
+{
+    refreshDevice();
+}
+
+void SAKDebugPage::on_switchPushButton_clicked()
+{
+    openOrColoseDevice();
 }
 
 void SAKDebugPage::initUiPointer()

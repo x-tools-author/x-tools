@@ -41,7 +41,6 @@ HEADERS += \
     Src/DebugPage/BaseDebugPage/Chart/MoreChart/MoreChartWidget.hh \
     Src/DebugPage/BaseDebugPage/Chart/SAKChartManager.hh \
     Src/DebugPage/BaseDebugPage/Chart/Throughput/ThroughputWidget.hh \
-    Src/DebugPage/BaseDebugPage/Device/DebugPageDeviceManager.hh \
     Src/DebugPage/BaseDebugPage/Input/DebugPageInputManager.hh \
     Src/DebugPage/BaseDebugPage/Input/InputDataFactory.hh \
     Src/DebugPage/BaseDebugPage/Input/InputDataItem.hh \
@@ -94,7 +93,6 @@ SOURCES += \
     Src/DebugPage/BaseDebugPage/Chart/MoreChart/MoreChartWidget.cc \
     Src/DebugPage/BaseDebugPage/Chart/SAKChartManager.cc \
     Src/DebugPage/BaseDebugPage/Chart/Throughput/ThroughputWidget.cc \
-    Src/DebugPage/BaseDebugPage/Device/DebugPageDeviceManager.cc \
     Src/DebugPage/BaseDebugPage/Input/DebugPageInputManager.cc \
     Src/DebugPage/BaseDebugPage/Input/InputDataFactory.cc \
     Src/DebugPage/BaseDebugPage/Input/InputDataItem.cc \

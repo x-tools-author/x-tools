@@ -43,7 +43,6 @@ class SAKOtherSettings;
 class SAKStatisticsManager;
 class TransmissionSettings;
 class DebugPageInputManager;
-class DebugPageDeviceManager;
 class DebugPageOutputManager;
 class HighlightSettingsWidget;
 
@@ -131,6 +130,9 @@ protected:
     QPushButton *refreshPushButton              = nullptr;  // 刷新按钮
     QPushButton *switchPushButton               = nullptr;  // 打开关闭设备按钮
     QFrame      *deviceSettingFrame             = nullptr;  // 控制面板
+private slots:
+    void on_refreshPushButton_clicked();
+    void on_switchPushButton_clicked();
 
      // 输入设置组
 protected:
@@ -196,7 +198,6 @@ private:
     SAKOtherSettings        *otherSettings;
     SAKStatisticsManager    *statisticsManager;
     DebugPageOutputManager  *outputManager;
-    DebugPageDeviceManager  *debugPageDeviceManager;
     DebugPageInputManager   *debugPageInputManager;
 
 private:
@@ -215,7 +216,6 @@ public:
     friend class SAKStatisticsManager;
     friend class DebugPageInputManager;
     friend class DebugPageOutputManager;
-    friend class DebugPageDeviceManager;
 };
 
 #endif  // SAKTabPage_H
