@@ -3,6 +3,11 @@ win32 {
     DEFINES+=SAK_IMPORT_COM_MODULE
 }
 
+unix {
+    QT  += serialport
+    DEFINES+=SAK_IMPORT_COM_MODULE
+}
+
 contains(DEFINES, SAK_IMPORT_COM_MODULE){    
     SOURCES += \
         Src/DebugPage/ComDebug/SAKSerialPortDebugPage.cc \
