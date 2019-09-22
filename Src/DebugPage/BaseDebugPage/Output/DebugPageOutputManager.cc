@@ -76,6 +76,8 @@ DebugPageOutputManager::DebugPageOutputManager(SAKDebugPage *debugPage, QObject 
     updateTxFlagTimer.setInterval(200);
     connect(&updateRxFlagTimer, &QTimer::timeout, this, &DebugPageOutputManager::updateRxFlag);
     connect(&updateTxFlagTimer, &QTimer::timeout, this, &DebugPageOutputManager::updateTxFlag);
+
+    outputTextBroswer->document()->setMaximumBlockCount(1000);
 }
 
 DebugPageOutputManager::~DebugPageOutputManager()
@@ -92,7 +94,7 @@ void DebugPageOutputManager::updateRxFlag()
 
     rxFlagCount -= 1;
     if (rxFlagCount == -1){
-        rxFlagCount = 4;
+        rxFlagCount = 8;
     }
 }
 
@@ -102,7 +104,7 @@ void DebugPageOutputManager::updateTxFlag()
     txLabel->setText(QString("C%1").arg(QString(""), txFlagCount, '>'));
 
     txFlagCount += 1;
-    if (txFlagCount == 4){
+    if (txFlagCount == 8){
         txFlagCount = 0;
     }
 }

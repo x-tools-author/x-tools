@@ -27,7 +27,6 @@
 #include <QLoggingCategory>
 
 #include "SAKDebugPage.hh"
-#include "SAKDataFactory.hh"
 #include "SAKChartManager.hh"
 #include "SAKCRCInterface.hh"
 #include "SAKOtherSettings.hh"

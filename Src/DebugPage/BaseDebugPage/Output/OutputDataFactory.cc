@@ -50,9 +50,9 @@ void OutputDataFactory::cookData(QByteArray rawData, DebugPageOutputManager::Out
     }
 
     if (parameters.isReceivedData){
-        str.append("<font color=blue>Rx</font>");
+        str.append("<font color=red>Rx</font>");
     }else {
-        str.append("<font color=purple>Tx</font>");
+        str.append("<font color=blue>Tx</font>");
     }
     str.append("<font color=silver>] </font>");
 

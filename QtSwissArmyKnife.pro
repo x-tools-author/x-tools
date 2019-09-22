@@ -24,176 +24,184 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 HEADERS += \
     Src/Base/SAKBase.hh \
+    Src/Base/SAKCRCInterface.hh \
     Src/Base/SAKDialog.hh \
     Src/Base/SAKMessageBox.hh \
     Src/Base/SAKWidget.hh \
-    Src/Common/SAKDebugPage/Chart/MoreChart/MoreChartWidget.hh \
-    Src/Common/SAKDebugPage/Chart/SAKChartManager.hh \
-    Src/Common/SAKDebugPage/Chart/Throughput/ThroughputWidget.hh \
-    Src/Common/SAKDebugPage/Device/DebugPageDeviceManager.hh \
-    Src/Common/SAKDebugPage/Input/DebugPageInputManager.hh \
-    Src/Common/SAKDebugPage/Input/InputDataFactory.hh \
-    Src/Common/SAKDebugPage/Input/InputDataItem.hh \
-    Src/Common/SAKDebugPage/Message/DebugPageMessageManager.hh \
-    Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseItemWidget.hh \
-    Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.hh \
-    Src/Common/SAKDebugPage/Other/FormatSettings/FormatSettingsWidget.hh \
-    Src/Common/SAKDebugPage/Other/HighlightSettings/HighlightSettings.hh \
-    Src/Common/SAKDebugPage/Other/HighlightSettings/HighlightSettingsWidget.hh \
-    Src/Common/SAKDebugPage/Other/MoreOtherSettings/MoreOtherSettingsWidget.hh \
-    Src/Common/SAKDebugPage/Other/ReadWriteSettings/ReadWriteSettingsWidget.hh \
-    Src/Common/SAKDebugPage/Other/SAKOtherSettings.hh \
-    Src/Common/SAKDebugPage/Other/TransmissionSettings/BaseTransmissionItemWidget.hh \
-    Src/Common/SAKDebugPage/Other/TransmissionSettings/SerialPortTransmissionItemWidget.hh \
-    Src/Common/SAKDebugPage/Other/TransmissionSettings/TcpTransmissionItemWidget.hh \
-    Src/Common/SAKDebugPage/Other/TransmissionSettings/TransmissionPage.hh \
-    Src/Common/SAKDebugPage/Other/TransmissionSettings/TransmissionSettings.hh \
-    Src/Common/SAKDebugPage/Other/TransmissionSettings/UdpTransmissionItemWidget.hh \
-    Src/Common/SAKDebugPage/Output/DebugPageOutputManager.hh \
-    Src/Common/SAKDebugPage/Output/OutputDataFactory.hh \
-    Src/Common/SAKDebugPage/Output/Save/SaveOutputDataSettings.hh \
-    Src/Common/SAKDebugPage/Output/Save/SaveOutputDataThread.hh \
-    Src/Common/SAKDebugPage/Statistics/SAKStatisticsManager.hh \
-    Src/Common/SAKToolDialog/SAKToolDialog.hh \
-    Src/HIDDebug/SAKHidDebugPage.hh \
-    Src/HIDDebug/SAKHidDevice.hh \
-    Src/HIDDebug/SAKHidDeviceController.hh \
-    Src/SAKGlobal.hh \
-    Src/SAKVersion.hh \
-    Src/SAKMainWindow.hh \
-    Src/SAKApplication.hh \
-    Src/MoreInformation.hh \
     Src/Console/SAKConsole.hh \
     Src/Console/SAKLogOutput.hh \
-    Src/Common/SAKDebugPage/SAKDebugPage.hh \
-    Src/Base/SAKCRCInterface.hh \
-    Src/TcpClient/SAKTcpClientDebugPage.hh \
-    Src/TcpClient/SAKTcpClientDevice.hh \
-    Src/TcpClient/SAKTcpClientDeviceController.hh \
-    Src/TcpServer/SAKTcpServerDebugPage.hh \
-    Src/TcpServer/SAKTcpServerDevice.hh \
-    Src/TcpServer/SAKTcpServerDeviceController.hh \
-    Src/USBDebug/SAKUsbDebugPage.hh \
-    Src/USBDebug/SAKUsbDevice.hh \
-    Src/USBDebug/SAKUsbDeviceController.hh \
-    Src/UdpDebug/SAKUdpDebugPage.hh \
-    Src/UdpDebug/SAKUdpDevice.hh \
-    Src/UdpDebug/SAKUdpDeviceController.hh
+    Src/DebugPage/BaseDebugPage/Chart/MoreChart/MoreChartWidget.hh \
+    Src/DebugPage/BaseDebugPage/Chart/SAKChartManager.hh \
+    Src/DebugPage/BaseDebugPage/Chart/Throughput/ThroughputWidget.hh \
+    Src/DebugPage/BaseDebugPage/Device/DebugPageDeviceManager.hh \
+    Src/DebugPage/BaseDebugPage/Input/DebugPageInputManager.hh \
+    Src/DebugPage/BaseDebugPage/Input/InputDataFactory.hh \
+    Src/DebugPage/BaseDebugPage/Input/InputDataItem.hh \
+    Src/DebugPage/BaseDebugPage/Message/DebugPageMessageManager.hh \
+    Src/DebugPage/BaseDebugPage/Other/AutoResponseSettings/AutoResponseItemWidget.hh \
+    Src/DebugPage/BaseDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.hh \
+    Src/DebugPage/BaseDebugPage/Other/FormatSettings/FormatSettingsWidget.hh \
+    Src/DebugPage/BaseDebugPage/Other/HighlightSettings/HighlightSettings.hh \
+    Src/DebugPage/BaseDebugPage/Other/HighlightSettings/HighlightSettingsWidget.hh \
+    Src/DebugPage/BaseDebugPage/Other/MoreOtherSettings/MoreOtherSettingsWidget.hh \
+    Src/DebugPage/BaseDebugPage/Other/ReadWriteSettings/ReadWriteSettingsWidget.hh \
+    Src/DebugPage/BaseDebugPage/Other/SAKOtherSettings.hh \
+    Src/DebugPage/BaseDebugPage/Other/TransmissionSettings/BaseTransmissionItemWidget.hh \
+    Src/DebugPage/BaseDebugPage/Other/TransmissionSettings/SerialPortTransmissionItemWidget.hh \
+    Src/DebugPage/BaseDebugPage/Other/TransmissionSettings/TcpTransmissionItemWidget.hh \
+    Src/DebugPage/BaseDebugPage/Other/TransmissionSettings/TransmissionItemDelegate.hh \
+    Src/DebugPage/BaseDebugPage/Other/TransmissionSettings/TransmissionPage.hh \
+    Src/DebugPage/BaseDebugPage/Other/TransmissionSettings/TransmissionSettings.hh \
+    Src/DebugPage/BaseDebugPage/Other/TransmissionSettings/UdpTransmissionItemWidget.hh \
+    Src/DebugPage/BaseDebugPage/Output/DebugPageOutputManager.hh \
+    Src/DebugPage/BaseDebugPage/Output/OutputDataFactory.hh \
+    Src/DebugPage/BaseDebugPage/Output/Save/SaveOutputDataSettings.hh \
+    Src/DebugPage/BaseDebugPage/Output/Save/SaveOutputDataThread.hh \
+    Src/DebugPage/BaseDebugPage/SAKDebugPage.hh \
+    Src/DebugPage/BaseDebugPage/Statistics/SAKStatisticsManager.hh \
+    Src/DebugPage/HidDebug/SAKHidDebugPage.hh \
+    Src/DebugPage/HidDebug/SAKHidDevice.hh \
+    Src/DebugPage/HidDebug/SAKHidDeviceController.hh \
+    Src/DebugPage/TcpClient/SAKTcpClientDebugPage.hh \
+    Src/DebugPage/TcpClient/SAKTcpClientDevice.hh \
+    Src/DebugPage/TcpClient/SAKTcpClientDeviceController.hh \
+    Src/DebugPage/TcpServer/SAKTcpServerDebugPage.hh \
+    Src/DebugPage/TcpServer/SAKTcpServerDevice.hh \
+    Src/DebugPage/TcpServer/SAKTcpServerDeviceController.hh \
+    Src/DebugPage/UdpDebug/SAKUdpDebugPage.hh \
+    Src/DebugPage/UdpDebug/SAKUdpDevice.hh \
+    Src/DebugPage/UdpDebug/SAKUdpDeviceController.hh \
+    Src/DebugPage/UsbDebug/SAKUsbDebugPage.hh \
+    Src/DebugPage/UsbDebug/SAKUsbDevice.hh \
+    Src/DebugPage/UsbDebug/SAKUsbDeviceController.hh \
+    Src/MoreInformation.hh \
+    Src/SAKApplication.hh \
+    Src/SAKGlobal.hh \
+    Src/SAKMainWindow.hh \
+    Src/SAKVersion.hh \
+    Src/Tools/SAKBaseTool/SAKToolDialog.hh
+
 
 SOURCES += \
     Src/Base/SAKBase.cc \
+    Src/Base/SAKCRCInterface.cc \
     Src/Base/SAKDialog.cc \
     Src/Base/SAKMessageBox.cc \
     Src/Base/SAKWidget.cc \
-    Src/Common/SAKDebugPage/Chart/MoreChart/MoreChartWidget.cc \
-    Src/Common/SAKDebugPage/Chart/SAKChartManager.cc \
-    Src/Common/SAKDebugPage/Chart/Throughput/ThroughputWidget.cc \
-    Src/Common/SAKDebugPage/Device/DebugPageDeviceManager.cc \
-    Src/Common/SAKDebugPage/Input/DebugPageInputManager.cc \
-    Src/Common/SAKDebugPage/Input/InputDataFactory.cc \
-    Src/Common/SAKDebugPage/Input/InputDataItem.cc \
-    Src/Common/SAKDebugPage/Message/DebugPageMessageManager.cc \
-    Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseItemWidget.cc \
-    Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.cc \
-    Src/Common/SAKDebugPage/Other/FormatSettings/FormatSettingsWidget.cc \
-    Src/Common/SAKDebugPage/Other/HighlightSettings/HighlightSettings.cc \
-    Src/Common/SAKDebugPage/Other/HighlightSettings/HighlightSettingsWidget.cc \
-    Src/Common/SAKDebugPage/Other/MoreOtherSettings/MoreOtherSettingsWidget.cc \
-    Src/Common/SAKDebugPage/Other/ReadWriteSettings/ReadWriteSettingsWidget.cc \
-    Src/Common/SAKDebugPage/Other/SAKOtherSettings.cc \
-    Src/Common/SAKDebugPage/Other/TransmissionSettings/BaseTransmissionItemWidget.cc \
-    Src/Common/SAKDebugPage/Other/TransmissionSettings/SerialPortTransmissionItemWidget.cc \
-    Src/Common/SAKDebugPage/Other/TransmissionSettings/TcpTransmissionItemWidget.cc \
-    Src/Common/SAKDebugPage/Other/TransmissionSettings/TransmissionPage.cc \
-    Src/Common/SAKDebugPage/Other/TransmissionSettings/TransmissionSettings.cc \
-    Src/Common/SAKDebugPage/Other/TransmissionSettings/UdpTransmissionItemWidget.cc \
-    Src/Common/SAKDebugPage/Output/DebugPageOutputManager.cc \
-    Src/Common/SAKDebugPage/Output/OutputDataFactory.cc \
-    Src/Common/SAKDebugPage/Output/Save/SaveOutputDataSettings.cc \
-    Src/Common/SAKDebugPage/Output/Save/SaveOutputDataThread.cc \
-    Src/Common/SAKDebugPage/Statistics/SAKStatisticsManager.cc \
-    Src/Common/SAKToolDialog/SAKToolDialog.cc \
-    Src/HIDDebug/SAKHidDebugPage.cc \
-    Src/HIDDebug/SAKHidDevice.cc \
-    Src/HIDDebug/SAKHidDeviceController.cc \
-    Src/USBDebug/SAKUsbDebugPage.cc \
-    Src/USBDebug/SAKUsbDevice.cc \
-    Src/USBDebug/SAKUsbDeviceController.cc \
-    Src/TcpClient/SAKTcpClientDebugPage.cc \
-    Src/TcpClient/SAKTcpClientDevice.cc \
-    Src/TcpClient/SAKTcpClientDeviceController.cc \
-    Src/TcpServer/SAKTcpServerDebugPage.cc \
-    Src/TcpServer/SAKTcpServerDevice.cc \
-    Src/TcpServer/SAKTcpServerDeviceController.cc \
-    Src/UdpDebug/SAKUdpDebugPage.cc \
-    Src/UdpDebug/SAKUdpDevice.cc \
-    Src/UdpDebug/SAKUdpDeviceController.cc \
-    Src/main.cc \
-    Src/SAKGlobal.cc \
-    Src/SAKVersion.cc \
-    Src/SAKMainWindow.cc \
-    Src/SAKApplication.cc \
-    Src/MoreInformation.cc \
     Src/Console/SAKConsole.cc \
     Src/Console/SAKLogOutput.cc \
-    Src/Common/SAKDebugPage/SAKDebugPage.cc \
-    Src/Base/SAKCRCInterface.cc
+    Src/DebugPage/BaseDebugPage/Chart/MoreChart/MoreChartWidget.cc \
+    Src/DebugPage/BaseDebugPage/Chart/SAKChartManager.cc \
+    Src/DebugPage/BaseDebugPage/Chart/Throughput/ThroughputWidget.cc \
+    Src/DebugPage/BaseDebugPage/Device/DebugPageDeviceManager.cc \
+    Src/DebugPage/BaseDebugPage/Input/DebugPageInputManager.cc \
+    Src/DebugPage/BaseDebugPage/Input/InputDataFactory.cc \
+    Src/DebugPage/BaseDebugPage/Input/InputDataItem.cc \
+    Src/DebugPage/BaseDebugPage/Message/DebugPageMessageManager.cc \
+    Src/DebugPage/BaseDebugPage/Other/AutoResponseSettings/AutoResponseItemWidget.cc \
+    Src/DebugPage/BaseDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.cc \
+    Src/DebugPage/BaseDebugPage/Other/FormatSettings/FormatSettingsWidget.cc \
+    Src/DebugPage/BaseDebugPage/Other/HighlightSettings/HighlightSettings.cc \
+    Src/DebugPage/BaseDebugPage/Other/HighlightSettings/HighlightSettingsWidget.cc \
+    Src/DebugPage/BaseDebugPage/Other/MoreOtherSettings/MoreOtherSettingsWidget.cc \
+    Src/DebugPage/BaseDebugPage/Other/ReadWriteSettings/ReadWriteSettingsWidget.cc \
+    Src/DebugPage/BaseDebugPage/Other/SAKOtherSettings.cc \
+    Src/DebugPage/BaseDebugPage/Other/TransmissionSettings/BaseTransmissionItemWidget.cc \
+    Src/DebugPage/BaseDebugPage/Other/TransmissionSettings/SerialPortTransmissionItemWidget.cc \
+    Src/DebugPage/BaseDebugPage/Other/TransmissionSettings/TcpTransmissionItemWidget.cc \
+    Src/DebugPage/BaseDebugPage/Other/TransmissionSettings/TransmissionItemDelegate.cc \
+    Src/DebugPage/BaseDebugPage/Other/TransmissionSettings/TransmissionPage.cc \
+    Src/DebugPage/BaseDebugPage/Other/TransmissionSettings/TransmissionSettings.cc \
+    Src/DebugPage/BaseDebugPage/Other/TransmissionSettings/UdpTransmissionItemWidget.cc \
+    Src/DebugPage/BaseDebugPage/Output/DebugPageOutputManager.cc \
+    Src/DebugPage/BaseDebugPage/Output/OutputDataFactory.cc \
+    Src/DebugPage/BaseDebugPage/Output/Save/SaveOutputDataSettings.cc \
+    Src/DebugPage/BaseDebugPage/Output/Save/SaveOutputDataThread.cc \
+    Src/DebugPage/BaseDebugPage/SAKDebugPage.cc \
+    Src/DebugPage/BaseDebugPage/Statistics/SAKStatisticsManager.cc \
+    Src/DebugPage/HidDebug/SAKHidDebugPage.cc \
+    Src/DebugPage/HidDebug/SAKHidDevice.cc \
+    Src/DebugPage/HidDebug/SAKHidDeviceController.cc \
+    Src/DebugPage/TcpClient/SAKTcpClientDebugPage.cc \
+    Src/DebugPage/TcpClient/SAKTcpClientDevice.cc \
+    Src/DebugPage/TcpClient/SAKTcpClientDeviceController.cc \
+    Src/DebugPage/TcpServer/SAKTcpServerDebugPage.cc \
+    Src/DebugPage/TcpServer/SAKTcpServerDevice.cc \
+    Src/DebugPage/TcpServer/SAKTcpServerDeviceController.cc \
+    Src/DebugPage/UdpDebug/SAKUdpDebugPage.cc \
+    Src/DebugPage/UdpDebug/SAKUdpDevice.cc \
+    Src/DebugPage/UdpDebug/SAKUdpDeviceController.cc \
+    Src/DebugPage/UsbDebug/SAKUsbDebugPage.cc \
+    Src/DebugPage/UsbDebug/SAKUsbDevice.cc \
+    Src/DebugPage/UsbDebug/SAKUsbDeviceController.cc \
+    Src/MoreInformation.cc \
+    Src/SAKApplication.cc \
+    Src/SAKGlobal.cc \
+    Src/SAKMainWindow.cc \
+    Src/SAKVersion.cc \
+    Src/Tools/SAKBaseTool/SAKToolDialog.cc \
+    Src/main.cc
+
 
 FORMS += \
-    Src/Common/SAKDebugPage/Chart/MoreChart/MoreChartWidget.ui \
-    Src/Common/SAKDebugPage/Input/InputDataItem.ui \
-    Src/Common/SAKDebugPage/Other/FormatSettings/FormatSettingsWidget.ui \
-    Src/Common/SAKDebugPage/Other/MoreOtherSettings/MoreOtherSettingsWidget.ui \
-    Src/Common/SAKDebugPage/Other/TransmissionSettings/TransmissionPage.ui \
-    Src/Common/SAKDebugPage/Other/TransmissionSettings/SerialPortTransmissionItemWidget.ui \
-    Src/Common/SAKDebugPage/Other/TransmissionSettings/TcpTransmissionItemWidget.ui \
-    Src/Common/SAKDebugPage/Other/TransmissionSettings/TransmissionSettings.ui \
-    Src/Common/SAKDebugPage/Other/TransmissionSettings/UdpTransmissionItemWidget.ui \
-    Src/Common/SAKDebugPage/Output/Save/SaveOutputDataSettings.ui \
-    Src/HIDDebug/SAKHidDeviceController.ui \
-    Src/SAKVersion.ui \
-    Src/SAKMainWindow.ui \
-    Src/MoreInformation.ui \
     Src/Console/SAKConsole.ui \
-    Src/Common/SAKDebugPage/SAKDebugPage.ui \
-    Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseItemWidget.ui \
-    Src/Common/SAKDebugPage/Other/ReadWriteSettings/ReadWriteSettingsWidget.ui \
-    Src/Common/SAKDebugPage/Other/HighlightSettings/HighlightSettingsWidget.ui \
-    Src/Common/SAKDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.ui \
-    Src/TcpClient/SAKTcpClientDeviceController.ui \
-    Src/TcpServer/SAKTcpServerDeviceController.ui \
-    Src/USBDebug/SAKUsbDeviceController.ui \
-    Src/UdpDebug/SAKUdpDeviceController.ui
+    Src/DebugPage/BaseDebugPage/Chart/MoreChart/MoreChartWidget.ui \
+    Src/DebugPage/BaseDebugPage/Input/InputDataItem.ui \
+    Src/DebugPage/BaseDebugPage/Other/AutoResponseSettings/AutoResponseItemWidget.ui \
+    Src/DebugPage/BaseDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.ui \
+    Src/DebugPage/BaseDebugPage/Other/FormatSettings/FormatSettingsWidget.ui \
+    Src/DebugPage/BaseDebugPage/Other/HighlightSettings/HighlightSettingsWidget.ui \
+    Src/DebugPage/BaseDebugPage/Other/MoreOtherSettings/MoreOtherSettingsWidget.ui \
+    Src/DebugPage/BaseDebugPage/Other/ReadWriteSettings/ReadWriteSettingsWidget.ui \
+    Src/DebugPage/BaseDebugPage/Other/TransmissionSettings/SerialPortTransmissionItemWidget.ui \
+    Src/DebugPage/BaseDebugPage/Other/TransmissionSettings/TcpTransmissionItemWidget.ui \
+    Src/DebugPage/BaseDebugPage/Other/TransmissionSettings/TransmissionPage.ui \
+    Src/DebugPage/BaseDebugPage/Other/TransmissionSettings/TransmissionSettings.ui \
+    Src/DebugPage/BaseDebugPage/Other/TransmissionSettings/UdpTransmissionItemWidget.ui \
+    Src/DebugPage/BaseDebugPage/Output/Save/SaveOutputDataSettings.ui \
+    Src/DebugPage/BaseDebugPage/SAKDebugPage.ui \
+    Src/DebugPage/ComDebug/SAKSerialPortDeviceController.ui \
+    Src/DebugPage/HidDebug/SAKHidDeviceController.ui \
+    Src/DebugPage/TcpClient/SAKTcpClientDeviceController.ui \
+    Src/DebugPage/TcpServer/SAKTcpServerDeviceController.ui \
+    Src/DebugPage/UdpDebug/SAKUdpDeviceController.ui \
+    Src/DebugPage/UsbDebug/SAKUsbDeviceController.ui \
+    Src/MoreInformation.ui \
+    Src/SAKMainWindow.ui \
+    Src/SAKVersion.ui
+
 
 
 INCLUDEPATH += \
     Src \
     Src/Base \
     Src/Console \
-    Src/Common/SAKDebugPage \
-    Src/Common/SAKDebugPage/Other \
-    Src/Common/SAKDebugPage/Other/HighlightSettings \
-    Src/Common/SAKDebugPage/Other/AutoResponseSettings \
-    Src/Common/SAKDebugPage/Other/ReadWriteSettings \
-    Src/Common/SAKDebugPage/Other/TransmissionSettings \
-    Src/Common/SAKDebugPage/Other/MoreOtherSettings \
-    Src/Common/SAKDebugPage/Other/FormatSettings \
-    Src/Common/SAKDebugPage/Statistics \
-    Src/Common/SAKDebugPage/Chart \
-    Src/Common/SAKDebugPage/Chart/Throughput \
-    Src/Common/SAKDebugPage/Chart/MoreChart \
-    Src/Common/SAKDebugPage/Output \
-    Src/Common/SAKDebugPage/Output/Save \
-    Src/Common/SAKDebugPage/Message \
-    Src/Common/SAKDebugPage/Device \
-    Src/Common/SAKDebugPage/Input
+    Src/DebugPage/BaseDebugPage \
+    Src/DebugPage/BaseDebugPage/Other \
+    Src/DebugPage/BaseDebugPage/Other/HighlightSettings \
+    Src/DebugPage/BaseDebugPage/Other/AutoResponseSettings \
+    Src/DebugPage/BaseDebugPage/Other/ReadWriteSettings \
+    Src/DebugPage/BaseDebugPage/Other/TransmissionSettings \
+    Src/DebugPage/BaseDebugPage/Other/MoreOtherSettings \
+    Src/DebugPage/BaseDebugPage/Other/FormatSettings \
+    Src/DebugPage/BaseDebugPage/Statistics \
+    Src/DebugPage/BaseDebugPage/Chart \
+    Src/DebugPage/BaseDebugPage/Chart/Throughput \
+    Src/DebugPage/BaseDebugPage/Chart/MoreChart \
+    Src/DebugPage/BaseDebugPage/Output \
+    Src/DebugPage/BaseDebugPage/Output/Save \
+    Src/DebugPage/BaseDebugPage/Message \
+    Src/DebugPage/BaseDebugPage/Device \
+    Src/DebugPage/BaseDebugPage/Input
+
 
 INCLUDEPATH += \
-    Src/UdpDebug \
-    Src/TcpClient \
-    Src/TcpServer \
-    Src/HidDebug \
-    Src/USBDebug
+    Src/DebugPage/UdpDebug \
+    Src/DebugPage/TcpClient \
+    Src/DebugPage/TcpServer \
+    Src/DebugPage/HidDebug \
+    Src/DebugPage/USBDebug
+
 
 RESOURCES += \
     SAKResources.qrc
@@ -218,17 +226,17 @@ winrt || linux-rasp-pi3-g++{
 !contains(DEFINES, SAK_NO_SERIALPORT_ASSISTANT){
     QT  += serialport
     SOURCES += \
-        Src/SerialPortDebug/SAKSerialPortDebugPage.cc \
-        Src/SerialPortDebug/SAKSerialPortDeviceController.cc \
-        Src/SerialPortDebug/SAKSerialPortDevice.cc
+        Src/DebugPage/ComDebug/SAKSerialPortDebugPage.cc \
+        Src/DebugPage/ComDebug/SAKSerialPortDeviceController.cc \
+        Src/DebugPage/ComDebug/SAKSerialPortDevice.cc
     HEADERS += \
-        Src/SerialPortDebug/SAKSerialPortDebugPage.hh \
-        Src/SerialPortDebug/SAKSerialPortDeviceController.hh \
-        Src/SerialPortDebug/SAKSerialPortDevice.hh
+        Src/DebugPage/ComDebug/SAKSerialPortDebugPage.hh \
+        Src/DebugPage/ComDebug/SAKSerialPortDeviceController.hh \
+        Src/DebugPage/ComDebug/SAKSerialPortDevice.hh
     FORMS   += \
-        Src/SerialPortDebug/SAKSerialPortDeviceController.ui
+        Src/DebugPage/ComDebug/SAKSerialPortDeviceController.ui
     INCLUDEPATH += \
-        Src/SerialPortDebug
+        Src/DebugPage/ComDebug
 }else {
     message( "该版本Qt可能不包含串口模块，已经忽略串口模块！（串口助手功能被屏蔽！）" )
 }
