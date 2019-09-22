@@ -4,6 +4,8 @@ win32 {
 
 contains(DEFINES, SAK_IMPORT_USB_MODULE){
 include(Libs/LibUSB/LibUSB.pri)
+}else {
+    message( "不支持USB调试功能，忽略USB调试模块！（USB调试功能已被屏蔽！）" )
 }
 
 contains(DEFINES, SAK_IMPORT_USB_MODULE){

@@ -17,5 +17,5 @@ contains(DEFINES, SAK_IMPORT_COM_MODULE){
     INCLUDEPATH += \
         Src/DebugPage/ComDebug
 }else {
-    message( "不支持Qt串口功能，忽略串口模块！（串口调试功能已被屏蔽！）" )
+    message( "不支持串口调试功能，忽略串口调试模块！（串口调试功能已被屏蔽！）" )
 }
