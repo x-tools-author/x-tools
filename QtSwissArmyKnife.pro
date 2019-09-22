@@ -156,7 +156,6 @@ FORMS += \
     Src/DebugPage/BaseDebugPage/Other/TransmissionSettings/UdpTransmissionItemWidget.ui \
     Src/DebugPage/BaseDebugPage/Output/Save/SaveOutputDataSettings.ui \
     Src/DebugPage/BaseDebugPage/SAKDebugPage.ui \
-    Src/DebugPage/ComDebug/SAKSerialPortDeviceController.ui \    
     Src/DebugPage/TcpClient/SAKTcpClientDeviceController.ui \
     Src/DebugPage/TcpServer/SAKTcpServerDeviceController.ui \
     Src/DebugPage/UdpDebug/SAKUdpDeviceController.ui \    
