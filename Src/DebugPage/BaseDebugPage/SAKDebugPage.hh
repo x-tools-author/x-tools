@@ -121,7 +121,7 @@ private:
 
 private:
     /// 日志类型
-    const char *logCategory = "SAKTabPage";
+    const char *logCategory = "SAKDebugPage";
 
 
     // ------------------------------------------------------------------------

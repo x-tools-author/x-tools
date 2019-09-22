@@ -87,6 +87,13 @@ void SAKDebugPage::outputMessage(QString msg, bool isInfo)
     msg.prepend(time);
     infoLabel->setText(msg);
     clearInfoTimer.start();
+
+    QLoggingCategory category(logCategory);
+    if (isInfo){
+        qCInfo(category) << msg;
+    }else{
+        qCWarning(category) << msg;
+    }
 }
 
 struct SAKDebugPage::ReadWriteParameters SAKDebugPage::readWriteParameters()
