@@ -13,50 +13,51 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#ifndef INPUTDATAITEM_HH
-#define INPUTDATAITEM_HH
+#ifndef INPUTDATAITEMMANAGER_HH
+#define INPUTDATAITEMMANAGER_HH
 
+#include <QLabel>
 #include <QTimer>
-#include <QWidget>
 #include <QCheckBox>
 #include <QComboBox>
 #include <QLineEdit>
 #include <QTextEdit>
+#include <QListWidget>
 #include <QPushButton>
 
 #include "DebugPageInputManager.hh"
 
 namespace Ui {
-    class InputDataItem;
+    class InputDataItemManager;
 }
 
 class SAKDebugPage;
-class SAKCRCInterface;
-class InputDataFactory;
 class DebugPageInputManager;
-class InputDataItem:public QWidget
+class InputDataItemManager:public QWidget
 {
     Q_OBJECT
 public:
-    InputDataItem(SAKDebugPage *debugPage, DebugPageInputManager *inputManager, QWidget *parent = Q_NULLPTR);
-    ~InputDataItem();
+    InputDataItemManager(SAKDebugPage *debugPage, DebugPageInputManager *inputManager, QWidget *parent = Q_NULLPTR);
+    ~InputDataItemManager();
 
 private:
-    Ui::InputDataItem *ui;
-
-    QComboBox   *textFormatComboBox;
-    QTextEdit   *inputDataTextEdit;
+    Ui::InputDataItemManager    *ui;
+    QPushButton                 *deletePushButton;
+    QPushButton                 *addPushButton;
+    QLabel                      *infoLabel;
+private slots:
+    void on_deletePushButton_clicked();
+    void on_addPushButton_clicked();
 
 private:
-    SAKDebugPage *debugPage;
-    SAKCRCInterface *crcInterface;
-    InputDataFactory *factory;
-    DebugPageInputManager *inputManager;
+    SAKDebugPage            *debugPage;
+    SAKCRCInterface         *crcInterface;
+    InputDataFactory        *factory;
+    DebugPageInputManager   *inputManager;
+    QListWidget             *listWidget;
 
     QTimer sendTimer;
     DebugPageInputManager::InputParameters inputParameters;
-private:
-    void sendTimerTimeout();
 signals:
     void rawDataChanged(QString rawData, DebugPageInputManager::InputParameters parameters);
 };

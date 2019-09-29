@@ -319,7 +319,7 @@ p, li { white-space: pre-wrap; }
     </widget>
    </item>
    <item row="27" column="8">
-    <widget class="QPushButton" name="pushButton_18">
+    <widget class="QPushButton" name="sendPresetPushButton">
      <property name="text">
       <string>发送预设</string>
      </property>
@@ -396,7 +396,7 @@ p, li { white-space: pre-wrap; }
     </widget>
    </item>
    <item row="27" column="7">
-    <widget class="QPushButton" name="pushButton_9">
+    <widget class="QPushButton" name="presetPushButton">
      <property name="text">
       <string>预设数据</string>
      </property>
@@ -602,7 +602,7 @@ p, li { white-space: pre-wrap; }
     </widget>
    </item>
    <item row="25" column="10" colspan="2">
-    <widget class="QPushButton" name="pushButton_21">
+    <widget class="QPushButton" name="timingSendPushButton">
      <property name="text">
       <string>定时发送</string>
      </property>

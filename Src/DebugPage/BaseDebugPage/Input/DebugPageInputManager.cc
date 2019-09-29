@@ -18,6 +18,7 @@
 #include "InputDataItem.hh"
 #include "SAKCRCInterface.hh"
 #include "InputDataFactory.hh"
+#include "InputDataItemManager.hh"
 #include "DebugPageInputManager.hh"
 
 #include <QFile>
@@ -35,6 +36,7 @@ DebugPageInputManager::DebugPageInputManager(SAKDebugPage *debugPage, QObject *p
     inputDataFactory->start();
 
     crcInterface = new SAKCRCInterface(this);
+    inputDataItemManager = new InputDataItemManager(debugPage, this);
 
     inputModelComboBox          = debugPage->inputModelComboBox;
     cycleEnableCheckBox         = debugPage->cycleEnableCheckBox;
@@ -48,6 +50,8 @@ DebugPageInputManager::DebugPageInputManager(SAKDebugPage *debugPage, QObject *p
     inputTextEdit               = debugPage->inputTextEdit;
     crcParameterModelsComboBox  = debugPage->crcParameterModelsComboBox;
     crcLabel                    = debugPage->crcLabel;
+    presetPushButton            = debugPage->presetPushButton;
+    sendPresetPushButton        = debugPage->sendPresetPushButton;
 
     sendPushButton->setEnabled(false);
     SAKBase::instance()->initTextFormatComboBox(inputModelComboBox);
@@ -64,6 +68,8 @@ DebugPageInputManager::DebugPageInputManager(SAKDebugPage *debugPage, QObject *p
     connect(sendPushButton,             &QPushButton::clicked,          this, &DebugPageInputManager::sendRawData);
     connect(inputTextEdit,              &QTextEdit::textChanged,        this, &DebugPageInputManager::inputTextEditTextChanged);
     connect(crcParameterModelsComboBox, &QComboBox::currentTextChanged, this, &DebugPageInputManager::changeCRCModel);
+    connect(presetPushButton,           &QPushButton::clicked,          this, &DebugPageInputManager::setPresetData);
+    connect(sendPresetPushButton,       &QPushButton::clicked,          this, &DebugPageInputManager::sendPresetData);
 
     connect(this, &DebugPageInputManager::rawDataChanged, inputDataFactory, &InputDataFactory::cookData);
     connect(inputDataFactory, &InputDataFactory::dataCooked, debugPage, &SAKDebugPage::write);
@@ -77,6 +83,7 @@ DebugPageInputManager::~DebugPageInputManager()
 {
     inputDataFactory->terminate();
     delete inputDataFactory;
+    delete inputDataItemManager;
 }
 
 void DebugPageInputManager::changeInputModel(const QString &text)
@@ -192,6 +199,20 @@ void DebugPageInputManager::changeCRCModel()
     Q_ASSERT_X(ok, __FUNCTION__, "Please check the crc parameters model");
 
     updateCRC();
+}
+
+void DebugPageInputManager::setPresetData()
+{
+    if (inputDataItemManager->isHidden()){
+        inputDataItemManager->show();
+    }else{
+        inputDataItemManager->activateWindow();
+    }
+}
+
+void DebugPageInputManager::sendPresetData()
+{
+
 }
 
 void DebugPageInputManager::initParameters()

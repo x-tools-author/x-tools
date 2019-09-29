@@ -60,7 +60,7 @@ public:
 public:
     /**
      * @brief write             -- 写数据
-     * @param data              -- 代写的数据
+     * @param data              -- 待写的数据
      */
     void write(QByteArray data);
 
@@ -151,6 +151,8 @@ protected:
     QPushButton *addInputItemPushButton;
     QPushButton *deleteInputItemPushButton;
     QListWidget *inputDataItemListWidget;
+    QPushButton *presetPushButton;
+    QPushButton *sendPresetPushButton;
 
 
     //数据输出组管理

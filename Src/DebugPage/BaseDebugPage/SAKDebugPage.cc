@@ -208,6 +208,8 @@ void SAKDebugPage::initUiPointer()
     inputTextEdit           = ui->inputTextEdit;
     crcParameterModelsComboBox = ui->crcParameterModelsComboBox;
     crcLabel                = ui->crcLabel;
+    presetPushButton        = ui->presetPushButton;
+    sendPresetPushButton    = ui->sendPresetPushButton;
 
     /*
      * 图表

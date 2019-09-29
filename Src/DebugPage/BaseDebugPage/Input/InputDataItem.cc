@@ -33,16 +33,9 @@ InputDataItem::InputDataItem(SAKDebugPage *debugPage, DebugPageInputManager *inp
     factory->start();
 
     textFormatComboBox  = ui->textFormatComboBox;
-    timingCheckBox      = ui->timingCheckBox;
-    timingTimeLineEdit  = ui->timingTimeLineEdit;
-    crcModelComboBox    = ui->crcModelComboBox;
-    addCrcCheckBox      = ui->addCrcCheckBox;
-    bigEndianCheckBox   = ui->bigEndianCheckBox;
-    sendPushButton      = ui->sendPushButton;
     inputDataTextEdit   = ui->inputDataTextEdit;
 
     SAKBase::instance()->initTextFormatComboBox(textFormatComboBox);
-    crcInterface->initCRCComboBox(crcModelComboBox);
 
     connect(&sendTimer, &QTimer::timeout, this, &InputDataItem::sendTimerTimeout);
     connect(this, &InputDataItem::rawDataChanged, factory, &InputDataFactory::cookData);
@@ -58,44 +51,7 @@ InputDataItem::~InputDataItem()
     delete factory;
 }
 
-void InputDataItem::on_textFormatComboBox_currentIndexChanged(int index)
-{
-    Q_UNUSED(index);
-    inputDataTextEdit->clear();
-}
-
-void InputDataItem::on_timingCheckBox_clicked()
-{
-    if (timingCheckBox->isChecked()){
-        int interval = timingTimeLineEdit->text().toInt();
-        if (interval == 0){
-            interval = 1000;
-        }
-        sendTimer.start(interval);
-    }else{
-        sendTimer.stop();
-    }
-}
-
-void InputDataItem::on_sendPushButton_clicked()
-{
-    sendTimerTimeout();
-}
-
-void InputDataItem::on_inputDataTextEdit_textChanged()
-{
-    inputManager->formattingInputText(inputDataTextEdit, textFormatComboBox->currentData().toInt());
-}
-
 void InputDataItem::sendTimerTimeout()
 {
-    inputParameters.addCRC = addCrcCheckBox->isChecked();
-    inputParameters.crcModel = crcModelComboBox->currentData().toInt();
-    inputParameters.bigEndian = bigEndianCheckBox->isChecked();
-    inputParameters.inputModel = textFormatComboBox->currentData().toInt();
 
-    QString data = inputDataTextEdit->toPlainText();
-    if (!data.isEmpty()){
-        emit rawDataChanged(data, inputParameters);
-    }
 }

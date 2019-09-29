@@ -29,6 +29,7 @@ class SAKDebugPage;
 class InputDataItem;
 class SAKCRCInterface;
 class InputDataFactory;
+class InputDataItemManager;
 class DebugPageInputManager:public QObject
 {
     Q_OBJECT
@@ -63,6 +64,8 @@ private:
     QTextEdit   *inputTextEdit;
     QComboBox   *crcParameterModelsComboBox;
     QLabel      *crcLabel;
+    QPushButton *presetPushButton;
+    QPushButton *sendPresetPushButton;
 
 private:
     /// 输入文本格式法神改变时执行该函数
@@ -87,6 +90,10 @@ private:
     void sendRawData();
     /// crc参数模型发生改变时执行该函数
     void changeCRCModel();
+    /// 设置预设数据
+    void setPresetData();
+    /// 发送预设数据
+    void sendPresetData();
 
 private:
     /// 初始化输入参数
@@ -103,6 +110,7 @@ private:
     InputDataFactory *inputDataFactory;
     InputParameters inputParameters;
     SAKCRCInterface *crcInterface;
+    InputDataItemManager *inputDataItemManager;
 
     void updateCRC();
     void formattingInputText(QTextEdit *textEdit, int model);

@@ -41,6 +41,7 @@ HEADERS += \
     Src/DebugPage/BaseDebugPage/Input/DebugPageInputManager.hh \
     Src/DebugPage/BaseDebugPage/Input/InputDataFactory.hh \
     Src/DebugPage/BaseDebugPage/Input/InputDataItem.hh \
+    Src/DebugPage/BaseDebugPage/Input/InputDataItemManager.hh \
     Src/DebugPage/BaseDebugPage/Other/AutoResponseSettings/AutoResponseItemWidget.hh \
     Src/DebugPage/BaseDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.hh \
     Src/DebugPage/BaseDebugPage/Other/Chart/MoreChart/MoreChartWidget.hh \
@@ -93,6 +94,7 @@ SOURCES += \
     Src/DebugPage/BaseDebugPage/Input/DebugPageInputManager.cc \
     Src/DebugPage/BaseDebugPage/Input/InputDataFactory.cc \
     Src/DebugPage/BaseDebugPage/Input/InputDataItem.cc \
+    Src/DebugPage/BaseDebugPage/Input/InputDataItemManager.cc \
     Src/DebugPage/BaseDebugPage/Other/AutoResponseSettings/AutoResponseItemWidget.cc \
     Src/DebugPage/BaseDebugPage/Other/AutoResponseSettings/AutoResponseSettingWidget.cc \
     Src/DebugPage/BaseDebugPage/Other/Chart/MoreChart/MoreChartWidget.cc \
@@ -137,6 +139,7 @@ SOURCES += \
 
 FORMS += \
     Src/Console/SAKConsole.ui \
+    Src/DebugPage/BaseDebugPage/Input/InputDataItemManager.ui \
     Src/DebugPage/BaseDebugPage/Other/Chart/MoreChart/MoreChartWidget.ui \
     Src/DebugPage/BaseDebugPage/Input/InputDataItem.ui \
     Src/DebugPage/BaseDebugPage/Other/AutoResponseSettings/AutoResponseItemWidget.ui \
