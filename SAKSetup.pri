@@ -66,6 +66,6 @@ contains(CONFIG, static){
         }
 
         DEPLOY_TARGET = $$replace(DEPLOY_TARGET, /, \\)
-        QMAKE_POST_LINK += $$DEPLOY_TOOL $$DEPLOY_TARGET --no-compiler-runtime --force --no-translations --no-system-d3d-compiler $$escape_expand(\\n)
+        QMAKE_POST_LINK += $$DEPLOY_TOOL $$DEPLOY_TARGET --force --no-translations $$escape_expand(\\n)
     }
 }
