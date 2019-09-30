@@ -29,6 +29,7 @@ include(SAKHID.pri)
 include(SAKUSB.pri)
 include(Modules.pri)
 
+include(SAKSetup.pri)
 
 HEADERS += \
     Src/Base/SAKBase.hh \
