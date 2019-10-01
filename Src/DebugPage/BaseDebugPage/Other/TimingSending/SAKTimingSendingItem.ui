@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SAKTimingSendingItem</class>
+ <widget class="QWidget" name="SAKTimingSendingItem">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>636</width>
+    <height>115</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>定时发送</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QCheckBox" name="timingCheckBox">
+     <property name="text">
+      <string>定时</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLineEdit" name="timingTimeLineEdit">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>文本格式</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="3">
+    <widget class="QComboBox" name="textFormatComboBox"/>
+   </item>
+   <item row="0" column="4">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>备注说明</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="5">
+    <widget class="QLineEdit" name="remarkLineEdit"/>
+   </item>
+   <item row="1" column="0" colspan="6">
+    <widget class="QTextEdit" name="inputDataTextEdit">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>70</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
