@@ -54,6 +54,8 @@ HEADERS += \
     Src/DebugPage/BaseDebugPage/Other/MoreOtherSettings/MoreOtherSettingsWidget.hh \
     Src/DebugPage/BaseDebugPage/Other/ReadWriteSettings/ReadWriteSettingsWidget.hh \
     Src/DebugPage/BaseDebugPage/Other/SAKOtherSettings.hh \
+    Src/DebugPage/BaseDebugPage/Other/TimingSending/SAKTimingSendingItem.hh \
+    Src/DebugPage/BaseDebugPage/Other/TimingSending/SAKTimingSendingManager.hh \
     Src/DebugPage/BaseDebugPage/Other/TransmissionSettings/BaseTransmissionItemWidget.hh \
     Src/DebugPage/BaseDebugPage/Other/TransmissionSettings/SerialPortTransmissionItemWidget.hh \
     Src/DebugPage/BaseDebugPage/Other/TransmissionSettings/TcpTransmissionItemWidget.hh \
@@ -107,6 +109,8 @@ SOURCES += \
     Src/DebugPage/BaseDebugPage/Other/MoreOtherSettings/MoreOtherSettingsWidget.cc \
     Src/DebugPage/BaseDebugPage/Other/ReadWriteSettings/ReadWriteSettingsWidget.cc \
     Src/DebugPage/BaseDebugPage/Other/SAKOtherSettings.cc \
+    Src/DebugPage/BaseDebugPage/Other/TimingSending/SAKTimingSendingItem.cc \
+    Src/DebugPage/BaseDebugPage/Other/TimingSending/SAKTimingSendingManager.cc \
     Src/DebugPage/BaseDebugPage/Other/TransmissionSettings/BaseTransmissionItemWidget.cc \
     Src/DebugPage/BaseDebugPage/Other/TransmissionSettings/SerialPortTransmissionItemWidget.cc \
     Src/DebugPage/BaseDebugPage/Other/TransmissionSettings/TcpTransmissionItemWidget.cc \
@@ -149,6 +153,8 @@ FORMS += \
     Src/DebugPage/BaseDebugPage/Other/HighlightSettings/HighlightSettingsWidget.ui \
     Src/DebugPage/BaseDebugPage/Other/MoreOtherSettings/MoreOtherSettingsWidget.ui \
     Src/DebugPage/BaseDebugPage/Other/ReadWriteSettings/ReadWriteSettingsWidget.ui \
+    Src/DebugPage/BaseDebugPage/Other/TimingSending/SAKTimingSendingItem.ui \
+    Src/DebugPage/BaseDebugPage/Other/TimingSending/SAKTimingSendingManager.ui \
     Src/DebugPage/BaseDebugPage/Other/TransmissionSettings/SerialPortTransmissionItemWidget.ui \
     Src/DebugPage/BaseDebugPage/Other/TransmissionSettings/TcpTransmissionItemWidget.ui \
     Src/DebugPage/BaseDebugPage/Other/TransmissionSettings/TransmissionPage.ui \
@@ -181,6 +187,7 @@ INCLUDEPATH += \
     Src/DebugPage/BaseDebugPage/Other/Chart \
     Src/DebugPage/BaseDebugPage/Other/Chart/Throughput \
     Src/DebugPage/BaseDebugPage/Other/Chart/MoreChart \
+    Src/DebugPage/BaseDebugPage/Other/TimingSending \
     Src/DebugPage/BaseDebugPage/Output \
     Src/DebugPage/BaseDebugPage/Output/Save \
     Src/DebugPage/BaseDebugPage/Message \

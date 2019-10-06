@@ -23,6 +23,7 @@
 #include "HighlightSettingsWidget.hh"
 #include "MoreOtherSettingsWidget.hh"
 #include "ReadWriteSettingsWidget.hh"
+#include "SAKTimingSendingManager.hh"
 #include "AutoResponseSettingWidget.hh"
 
 SAKOtherSettings::SAKOtherSettings(SAKDebugPage *debugPage, QObject *parent)
@@ -35,13 +36,15 @@ SAKOtherSettings::SAKOtherSettings(SAKDebugPage *debugPage, QObject *parent)
     moreOtherSettingsWidget     = new MoreOtherSettingsWidget(_debugPage);
     formatSettingsWidget        = new FormatSettingsWidget(_debugPage);
     readWriteSettingsWidget     = new ReadWriteSettingsWidget(_debugPage);
+    timingSendingManager        = new SAKTimingSendingManager(_debugPage);
 
     autoResponseSettingPushButton   = _debugPage->ui->autoResponseSettingPushButton;
     highlightSettingPushButton      = _debugPage->ui->highlightSettingPushButton;
     readWriteSettingPushButton      = _debugPage->ui->readWriteSettingPushButton;
     transmissionSettingPushButton   = _debugPage->ui->transmissionSettingPushButton;
     moreOtherSettingsPushButton     = _debugPage->ui->moreOhterSettingsPushButton;    
-    formatSettingsPushButton        = _debugPage->ui->formatSettingsPushButton;    
+    formatSettingsPushButton        = _debugPage->ui->formatSettingsPushButton;
+    timingSendPushButton            = _debugPage->ui->timingSendPushButton;
 
     connect(autoResponseSettingPushButton, &QPushButton::clicked, this, &SAKOtherSettings::onAutoresponseSettingPushbuttonClicked);
     connect(highlightSettingPushButton,    &QPushButton::clicked, this, &SAKOtherSettings::onHighlightSettingPushButtonClicked);
@@ -49,6 +52,7 @@ SAKOtherSettings::SAKOtherSettings(SAKDebugPage *debugPage, QObject *parent)
     connect(transmissionSettingPushButton, &QPushButton::clicked, this, &SAKOtherSettings::onTransmissionSettingPushButtonClicked);
     connect(moreOtherSettingsPushButton,   &QPushButton::clicked, this, &SAKOtherSettings::onMoreOtherSettingsPushButtonClicked);
     connect(formatSettingsPushButton,      &QPushButton::clicked, this, &SAKOtherSettings::onFormatSettingsPushButtonClicked);
+    connect(timingSendPushButton,          &QPushButton::clicked, this, &SAKOtherSettings::onTimingSendPushButtonClicked);
 }
 
 SAKOtherSettings::~SAKOtherSettings()
@@ -112,5 +116,14 @@ void SAKOtherSettings::onFormatSettingsPushButtonClicked()
         formatSettingsWidget->show();
     }else {
         formatSettingsWidget->activateWindow();
+    }
+}
+
+void SAKOtherSettings::onTimingSendPushButtonClicked()
+{
+    if (timingSendingManager->isHidden()){
+        timingSendingManager->show();
+    }else{
+        timingSendingManager->activateWindow();
     }
 }

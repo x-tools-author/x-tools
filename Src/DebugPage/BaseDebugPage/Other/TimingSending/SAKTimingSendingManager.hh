@@ -38,42 +38,13 @@ public:
     SAKTimingSendingManager(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKTimingSendingManager();
 
-    enum AutoResponseOption{
-        Equivalence,    // 相等
-        Contain,        // 包含
-        Notcontain,     // 不包含
-    };
-
-    /**
-     * @brief setAllAutoResponseDisable 禁止所有自动回复
-     * @param disAbel 该值为true时，禁止所有回复，否则更具回复示例的使能判断是否自动回复
-     */
-    void setAllAutoResponseDisable(bool disAbel);
 private:
     Ui::SAKTimingSendingManager *ui;
-    QLineEdit   *remarkLineEdit;
-    QLineEdit   *referenceLineEdit;
-    QLineEdit   *responseLineEdit;
-    QCheckBox   *enableCheckBox;
-    QComboBox   *optionComboBox;
-    QComboBox   *referenceDataFromatComboBox;
-    QComboBox   *responseDataFormatComboBox;
 
-    /// 禁止所有自动回复标志
-    bool forbiddenAllAutoResponse;
-    SAKDebugPage *debugPage;
 private:
-    /// 设置输入框文本格式(详情SAKBase::EDTextFormat)
-    void setLineEditFormat(QLineEdit *lineEdit, int format);
-
-    void dataRead(QByteArray data);
-    QByteArray string2array(QString str, int format);
-    bool response(QByteArray receiveData, QByteArray referenceData, int option);    
-private slots:
-    void on_referenceDataFromatComboBox_currentTextChanged();
-    void on_responseDataFormatComboBox_currentTextChanged();
+    SAKDebugPage *debugPage;
 signals:
-    void requestWrite(QByteArray data);
+    void write(QByteArray data);
 };
 
 #endif

@@ -27,6 +27,7 @@ class FormatSettingsWidget;
 class HighlightSettingsWidget;
 class MoreOtherSettingsWidget;
 class ReadWriteSettingsWidget;
+class SAKTimingSendingManager;
 
 class SAKOtherSettings:public QObject
 {
@@ -42,6 +43,7 @@ private:
     QPushButton                 *transmissionSettingPushButton  = nullptr;  // 数据转发设置面板调出按钮
     QPushButton                 *moreOtherSettingsPushButton    = nullptr;  // 更多其他设置按钮
     QPushButton                 *formatSettingsPushButton       = nullptr;  // 格式设置
+    QPushButton                 *timingSendPushButton           = nullptr;  // 自动会回复
 
     TransmissionSettings        *transmissionSettings;                      // 数据转发设置面板
     AutoResponseSettingWidget   *autoResponseSettingWidget;                 // 自动回复设置面板
@@ -49,6 +51,7 @@ private:
     MoreOtherSettingsWidget     *moreOtherSettingsWidget;                   // 更多设置面板
     FormatSettingsWidget        *formatSettingsWidget;                      // 格式分析面板
     ReadWriteSettingsWidget     *readWriteSettingsWidget;                   // 读写参数设置面板
+    SAKTimingSendingManager     *timingSendingManager;                      // 定时发送设置面板
 
     SAKDebugPage                *_debugPage                     = nullptr;  // 调试页面
 private slots:
@@ -58,6 +61,7 @@ private slots:
     void onTransmissionSettingPushButtonClicked();
     void onMoreOtherSettingsPushButtonClicked();
     void onFormatSettingsPushButtonClicked();
+    void onTimingSendPushButtonClicked();
 };
 
 #endif
