@@ -16,6 +16,7 @@
 #include <QFile>
 #include <QTabBar>
 #include <QAction>
+#include <QSysInfo>
 #include <QMetaEnum>
 #include <QSettings>
 #include <QSpacerItem>
@@ -111,7 +112,11 @@ void SAKMainWindow::AddTab()
      * 隐藏关闭按钮（必须在调用setTabsClosable()函数后设置，否则不生效）
      */
     for (int i = 0; i < mpTabWidget->count(); i++){
-        mpTabWidget->tabBar()->setTabButton(i, QTabBar::RightSide, nullptr);
+        if (QSysInfo::kernelType().contains("winnt")){
+            mpTabWidget->tabBar()->setTabButton(i, QTabBar::RightSide, nullptr);
+        }else{
+            mpTabWidget->tabBar()->setTabButton(i, QTabBar::LeftSide, nullptr);
+        }
     }
 }
 

@@ -4,7 +4,7 @@
 * I write the comment with English, it's not because that I'm good at English,
 * but for "installing B".
 *
-* Copyright (C) 2018-2018 wuhai persionnal. All rights reserved.
+* Copyright (C) 2018-2019 wuhai persionnal. All rights reserved.
 *******************************************************************************/
 #include "SAKVersion.hh"
 #include "ui_SAKVersion.h"
@@ -35,7 +35,7 @@ SAKVersion::SAKVersion()
 
     copyQQ = ui->pushButtonCopy;
 
-    version->setText(QString("2.0.0"));
+    version->setText(QString("2.1.0"));
     datetime->setText(buildDate.toString("yyyy/MM/dd") + " " + QString(__TIME__));
     author->setText(QString("Qter"));
     email->setText(QString("wuuhii@outlook.com"));
