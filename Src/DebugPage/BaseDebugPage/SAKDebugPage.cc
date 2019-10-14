@@ -72,6 +72,11 @@ void SAKDebugPage::write(QByteArray data)
     emit writeDataRequest(data);
 }
 
+void SAKDebugPage::writeRawData(QString rawData, int textFormat)
+{
+    emit writeRawDataRequest(rawData, textFormat);
+}
+
 void SAKDebugPage::outputMessage(QString msg, bool isInfo)
 {
     QString time = QDateTime::currentDateTime().toString("hh:mm:ss ");

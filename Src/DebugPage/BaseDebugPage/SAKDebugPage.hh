@@ -64,6 +64,13 @@ public:
      */
     void write(QByteArray data);
 
+    /**
+     * @brief writeRawData      -- 写数据
+     * @param rawData           -- 代写数据（特殊格式字符串，未经过处理）
+     * @param textFormat        -- SAKBase::SAKTextFormat，文本格式
+     */
+    void writeRawData(QString rawData, int textFormat);
+
     /// 输出内部信息
     void outputMessage(QString msg, bool isInfo = true);
 
@@ -76,6 +83,8 @@ signals:
     void writeDataRequest(QByteArray data);
     /// 子类设备状态发生改变时(是否就绪)发送该信号
     void deviceStatusChanged(bool ready);
+signals:
+    void writeRawDataRequest(QString data, int textFormat);
 
     /*
      * 读写参数

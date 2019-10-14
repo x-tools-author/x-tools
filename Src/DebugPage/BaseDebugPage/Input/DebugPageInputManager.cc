@@ -74,6 +74,7 @@ DebugPageInputManager::DebugPageInputManager(SAKDebugPage *debugPage, QObject *p
     connect(this, &DebugPageInputManager::rawDataChanged, inputDataFactory, &InputDataFactory::cookData);
     connect(inputDataFactory, &InputDataFactory::dataCooked, debugPage, &SAKDebugPage::write);
     connect(&timingTimer, &QTimer::timeout, this, &DebugPageInputManager::cycleTimerTimeout);
+    connect(debugPage, &SAKDebugPage::writeRawDataRequest, this, &DebugPageInputManager::sendOtherRawData);
 
     initParameters();
     updateCRC();
@@ -190,6 +191,14 @@ void DebugPageInputManager::sendRawData()
     }
 
     emit rawDataChanged(data, inputParameters);
+}
+
+void DebugPageInputManager::sendOtherRawData(QString data, int textFormat)
+{
+    InputParameters temp = inputParameters;
+    temp.inputModel = textFormat;
+
+    emit rawDataChanged(data, temp);
 }
 
 void DebugPageInputManager::changeCRCModel()

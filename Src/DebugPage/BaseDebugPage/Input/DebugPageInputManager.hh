@@ -88,6 +88,8 @@ private:
     void inputTextEditTextChanged();
     /// 发送数据
     void sendRawData();
+    /// 发送数据
+    void sendOtherRawData(QString data, int textFormat);
     /// crc参数模型发生改变时执行该函数
     void changeCRCModel();
     /// 设置预设数据

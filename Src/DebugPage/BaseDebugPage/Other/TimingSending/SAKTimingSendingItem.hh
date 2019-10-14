@@ -18,6 +18,7 @@
 
 #include "SAKDebugPage.hh"
 
+#include <QTimer>
 #include <QRegExp>
 #include <QWidget>
 #include <QLineEdit>
@@ -41,8 +42,21 @@ public:
 private:
     Ui::SAKTimingSendingItem *ui;
 
+    QCheckBox *timingCheckBox;
+    QLineEdit *timingTimeLineEdit;
+    QComboBox *textFormatComboBox;
+    QLineEdit *remarkLineEdit;
+    QTextEdit *inputDataTextEdit;
+private slots:
+    void on_timingCheckBox_clicked();
+    void on_timingTimeLineEdit_textChanged(const QString &text);
+
 private:
     SAKDebugPage *debugPage;
+
+private:
+    QTimer writeTimer;
+    void write();
 };
 
 #endif

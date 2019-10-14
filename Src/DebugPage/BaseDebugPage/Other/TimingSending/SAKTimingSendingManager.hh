@@ -16,21 +16,20 @@
 #ifndef SAKTIMINGSENDINGMANAGER_HH
 #define SAKTIMINGSENDINGMANAGER_HH
 
-#include "SAKDebugPage.hh"
-
 #include <QRegExp>
 #include <QWidget>
 #include <QLineEdit>
 #include <QComboBox>
 #include <QCheckBox>
+#include <QListWidget>
+#include <QPushButton>
 #include <QRegExpValidator>
-
-class SAKDebugPage;
 
 namespace Ui {
     class SAKTimingSendingManager;
 }
 
+class SAKDebugPage;
 class SAKTimingSendingManager:public QWidget
 {
     Q_OBJECT
@@ -41,8 +40,20 @@ public:
 private:
     Ui::SAKTimingSendingManager *ui;
 
+    QListWidget *itemListWidget;
+    QPushButton *savePushButton;
+    QPushButton *importPushButton;
+    QPushButton *deletePushButton;
+    QPushButton *addPushButton;
+private slots:
+    void on_savePushButton_clicked();
+    void on_importPushButton_clicked();
+    void on_deletePushButton_clicked();
+    void on_addPushButton_clicked();
+
 private:
     SAKDebugPage *debugPage;
+
 signals:
     void write(QByteArray data);
 };

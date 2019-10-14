@@ -14,6 +14,7 @@
  * but for "installing B".
  */
 #include "SAKBase.hh"
+#include "SAKTimingSendingItem.hh"
 #include "SAKTimingSendingManager.hh"
 
 #include "ui_SAKTimingSendingManager.h"
@@ -27,9 +28,46 @@ SAKTimingSendingManager::SAKTimingSendingManager(SAKDebugPage *debugPage, QWidge
     ,debugPage (debugPage)
 {
     ui->setupUi(this);
+
+    itemListWidget      = ui->itemListWidget;
+    savePushButton      = ui->savePushButton;
+    importPushButton    = ui->importPushButton;
+    deletePushButton    = ui->deletePushButton;
+    addPushButton       = ui->addPushButton;
+
+    on_addPushButton_clicked();
 }
 
 SAKTimingSendingManager::~SAKTimingSendingManager()
 {
     delete ui;
+}
+
+void SAKTimingSendingManager::on_savePushButton_clicked()
+{
+
+}
+
+void SAKTimingSendingManager::on_importPushButton_clicked()
+{
+
+}
+
+void SAKTimingSendingManager::on_deletePushButton_clicked()
+{
+    QListWidgetItem *currentItem = itemListWidget->currentItem();
+    if (currentItem){
+        itemListWidget->removeItemWidget(currentItem);
+        delete currentItem;
+    }
+}
+
+void SAKTimingSendingManager::on_addPushButton_clicked()
+{
+    QListWidgetItem *item = new QListWidgetItem(itemListWidget);
+    itemListWidget->addItem(item);
+
+    SAKTimingSendingItem *itemWidget = new SAKTimingSendingItem(debugPage);
+    item->setSizeHint(itemWidget->size());
+    itemListWidget->setItemWidget(item, itemWidget);
 }
