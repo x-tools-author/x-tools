@@ -49,5 +49,5 @@ __      ___   _| |__   __ _ _
   \_/\_/  \__,_|_| |_|\__,_|_|                                                               --KongZi
 ```
 ## 构建
-[![Build status](https://ci.appveyor.com/api/projects/status/k2jwlry8v57on061?svg=true)](https://ci.appveyor.com/project/wuuhii/qtswissarmyknife)
-
+[![Build status](https://ci.appveyor.com/api/projects/status/k2jwlry8v57on061?svg=true)](https://ci.appveyor.com/project/wuuhii/qtswissarmyknife)  
+[![Build Status](https://travis-ci.org/wuuhii/QtSwissArmyKnife.svg?branch=master)](https://travis-ci.org/wuuhii/QtSwissArmyKnife)
