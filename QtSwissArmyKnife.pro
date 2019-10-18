@@ -4,9 +4,9 @@
 #
 #-------------------------------------------------
 
-QT += core gui xml charts
+QT += core gui xml charts network
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets network
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = QtSwissArmyKnife
 
@@ -21,7 +21,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also make your code fail to compile if you use deprecated APIs.
 # In order to do so, unTabPage the following line.
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
-#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
+DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 # 子项目
 include(SAKCOM.pri)
@@ -30,6 +30,26 @@ include(SAKUSB.pri)
 include(Modules.pri)
 
 include(SAKSetup.pri)
+
+# 开发者可以复制SAKDefaultConfiguration.pri文件为SAKCustomConfiguration.pri，然后根据实际情况修改配置选项
+#
+# Developers can copy the SAKDefaultConfiguration.pri file as SAKCustomConfiguration.pri,
+# then according to the actual situation to modify configuration options
+exists(SAKCustomConfiguration.pri){
+    message("Using custom configuration file")
+    include(SAKCustomConfiguration.pri)
+}else{
+    message("Using default configuration file")
+    include(SAKDefaultConfiguration.pri)
+}
+
+# 开发者可以自定义UI,可参考CustomExample/Custom.pri
+#
+# Developer can design his own ui, please Please refer to the CustomExample/Custom.pri
+exists(Custom/Custom.pri){
+    message("Using custom ui")
+    include(Custom/Custom.pri)
+}
 
 HEADERS += \
     Src/Base/SAKBase.hh \
@@ -204,6 +224,7 @@ INCLUDEPATH += \
 RESOURCES += \
     SAKResources.qrc
 
+RC_ICONS = Windows.ico
 #--------------------------------------------------------------------------------------------
 #编译目录配置
 UI_DIR      = $$OUT_PWD/ui
@@ -213,8 +234,7 @@ OBJECTS_DIR = $$OUT_PWD/obj
 
 #--------------------------------------------------------------------------------------------
 #Windows配置
-win32 {
-    RC_ICONS = Windows.ico
+win32 {    
     msvc:{
         QMAKE_CXXFLAGS += -execution-charset:utf-8
     }
