@@ -1,13 +1,8 @@
 image: 
     Visual Studio 2017
 
-environment:
-    QT_BIN_DIR_32: C:\Qt\5.12.4\msvc2017\bin
-    MSVC_VCVARS32: "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars32.bat"
-
 build_script:
 - cmd: set PATH=%QT_BIN_DIR%;%PATH%
-- cmd: call %MSVC_VCVARS32%
-- cmd: dir
+- cmd: call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars32.bat"
+- cmd: echo %APPVEYOR_PROJECT_NAME%
 - cmd: qmake.exe -makefile -o Makefile QtSwissArmyKnife.pro
-- cmd: nmake
