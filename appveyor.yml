@@ -2,8 +2,8 @@ image:
     Visual Studio 2017
 
 environment:
-    qsak_qmake: C:\Qt\5.12.4\msvc2017\bin\qmake
+    qsak_qmake: C:\Qt\5.12.4\msvc2017\bin
 
 build_script:
 - cmd: set QSAK_QMAKE=C:\Qt\5.12.4\msvc2017\bin\qmake.exe
-- cmd: %QSAK_QMAKE% -v
+- cmd: qmake.exe -v
