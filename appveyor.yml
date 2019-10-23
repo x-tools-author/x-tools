@@ -5,4 +5,4 @@ environment:
     qsak_qmake_folder: C:\Qt\5.12.4\msvc2017\bin
 
 build_script:
-- echo qmake -v
+- qmake -v
