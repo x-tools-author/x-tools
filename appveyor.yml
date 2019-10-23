@@ -5,5 +5,6 @@ environment:
     qsak_qmake: C:\Qt\5.12.4\msvc2017\bin
 
 build_script:
-- cmd: set QSAK_QMAKE=C:\Qt\5.12.4\msvc2017\bin\qmake.exe
-- cmd: C:\Qt\5.12.4\msvc2017\bin\qmake.exe -makefile -o Makefile QtSwissArmyKnife.pro
+- cmd: set PATH=C:\Qt\5.12.4\msvc2017\bin;%PATH%
+- cmd: dir
+- cmd: qmake.exe -makefile -o Makefile QtSwissArmyKnife.pro
