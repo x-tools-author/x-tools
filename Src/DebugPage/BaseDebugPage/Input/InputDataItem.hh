@@ -18,6 +18,7 @@
 
 #include <QTimer>
 #include <QWidget>
+#include <QAction>
 #include <QCheckBox>
 #include <QComboBox>
 #include <QLineEdit>
@@ -45,18 +46,23 @@ private:
     Ui::InputDataItem *ui;
 
     QComboBox   *textFormatComboBox;
+    QLineEdit   *descriptionLineEdit;
     QTextEdit   *inputDataTextEdit;
 
 private:
+    QPushButton *menuPushButton;
+    QAction *action;
     SAKDebugPage *debugPage;
-    SAKCRCInterface *crcInterface;
-    InputDataFactory *factory;
     DebugPageInputManager *inputManager;
 
-    QTimer sendTimer;
     DebugPageInputManager::InputParameters inputParameters;
 private:
-    void sendTimerTimeout();
+    void addDataAction(QPushButton *menuPushButton);
+    void removeDataAction(QPushButton *menuPushButton);
+    void updateActionTitle(const QString &title);
+    void updateTextFormat();
+    void sendRawData();
+
 signals:
     void rawDataChanged(QString rawData, DebugPageInputManager::InputParameters parameters);
 };

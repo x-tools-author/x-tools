@@ -21,37 +21,90 @@
 
 #include "ui_InputDataItem.h"
 
+#include <QMenu>
+#include <QDebug>
+
 InputDataItem::InputDataItem(SAKDebugPage *debugPage, DebugPageInputManager *inputManager, QWidget *parent)
     :QWidget (parent)
     ,ui (new Ui::InputDataItem)
     ,debugPage (debugPage)
-    ,crcInterface (new SAKCRCInterface)
-    ,factory (new InputDataFactory)
     ,inputManager (inputManager)
 {
     ui->setupUi(this);
-    factory->start();
 
     textFormatComboBox  = ui->textFormatComboBox;
+    descriptionLineEdit = ui->descriptionLineEdit;
     inputDataTextEdit   = ui->inputDataTextEdit;
-
     SAKBase::instance()->initTextFormatComboBox(textFormatComboBox);
 
-    connect(&sendTimer, &QTimer::timeout, this, &InputDataItem::sendTimerTimeout);
-    connect(this, &InputDataItem::rawDataChanged, factory, &InputDataFactory::cookData);
-    connect(factory, &InputDataFactory::dataCooked, debugPage, &SAKDebugPage::write);
+    menuPushButton = inputManager->sendPresetPushButton;
+    addDataAction(menuPushButton);
+    connect(descriptionLineEdit, &QLineEdit::textChanged, this, &InputDataItem::updateActionTitle);
+    connect(inputDataTextEdit, &QTextEdit::textChanged, this, &InputDataItem::updateTextFormat);
+
+    connect(textFormatComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), [=](int index){
+        Q_UNUSED(index)
+        inputDataTextEdit->clear();
+    });
 }
 
 InputDataItem::~InputDataItem()
 {
-    delete ui;
-    delete crcInterface;
-
-    factory->terminate();
-    delete factory;
+    removeDataAction(inputManager->presetPushButton);
 }
 
-void InputDataItem::sendTimerTimeout()
+void InputDataItem::addDataAction(QPushButton *menuPushButton)
 {
+    if (!menuPushButton){
+        return;
+    }
 
+    QMenu *menu = menuPushButton->menu();
+    if (!menu){
+        menu = new QMenu(menuPushButton);
+        menuPushButton->setMenu(menu);
+    }
+
+    action = new QAction(descriptionLineEdit->text(), this);
+    menu->addAction(action);
+    connect(action, &QAction::triggered, this, &InputDataItem::sendRawData);
+}
+
+void InputDataItem::removeDataAction(QPushButton *menuPushButton)
+{
+    if (!menuPushButton){
+        return;
+    }
+
+    QMenu *menu = menuPushButton->menu();
+    if (menu){
+        QList<QAction*> actions = menu->actions();
+        if (!actions.isEmpty()){
+            for(auto var:actions){
+                if (action == var){
+                    menu->removeAction(action);
+                }
+            }
+        }
+    }
+}
+
+void InputDataItem::updateActionTitle(const QString &title)
+{
+    action->setText(title);
+}
+
+void InputDataItem::updateTextFormat()
+{
+    inputManager->formattingInputText(inputDataTextEdit, textFormatComboBox->currentData().toInt());
+}
+
+void InputDataItem::sendRawData()
+{
+    QString data = inputDataTextEdit->toPlainText();
+    int format = textFormatComboBox->currentData().toInt();
+
+    if (!data.isEmpty()){
+        debugPage->writeRawData(data, format);
+    }
 }
