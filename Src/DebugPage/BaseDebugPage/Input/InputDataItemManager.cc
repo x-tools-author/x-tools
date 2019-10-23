@@ -51,8 +51,6 @@ void InputDataItemManager::on_deletePushButton_clicked()
     if (item){
         listWidget->removeItemWidget(item);
         delete item;
-    }else{
-
     }
 }
 
