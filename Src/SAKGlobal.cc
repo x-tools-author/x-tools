@@ -66,7 +66,7 @@ QString SAKGlobal::mkMutiDir(const QString path){
 
 QString SAKGlobal::getIODeviceTypeName(int type)
 {
-    QString name = "none";
+    QString name;
     switch (type) {
     case SAKEnumDebugPageTypeUDP:
         name = tr("UDP调试");
@@ -82,8 +82,14 @@ QString SAKGlobal::getIODeviceTypeName(int type)
         name = tr("串口调试");
         break;
 #endif
+    case SAKEnumDebugPageTypeHID:
+        name = tr("HID调试");
+        break;
+    case SAKEnumDebugPageTypeUSB:
+        name = tr("USB调试");
+        break;
     default:
-        name = QString("Unknown");
+        Q_ASSERT_X(false, __FUNCTION__, "Unknow debug page type");
         break;
     }
 

@@ -318,6 +318,17 @@ QWidget *SAKMainWindow::getDebugPage(int type)
         break;
 #endif
 
+#ifdef SAK_IMPORT_HID_MODULE
+    case SAKGlobal::SAKEnumDebugPageTypeHID:
+        widget = new SAKSerialPortDebugPage;
+        break;
+#endif
+
+#ifdef SAK_IMPORT_USB_MODULE
+    case SAKGlobal::SAKEnumDebugPageTypeUSB:
+        widget = new SAKSerialPortDebugPage;
+        break;
+#endif
     default:
         Q_ASSERT_X(false, __FUNCTION__, "Unknow window type.");
         break;

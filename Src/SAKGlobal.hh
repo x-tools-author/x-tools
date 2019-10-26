@@ -22,9 +22,13 @@ public:
 #ifdef SAK_IMPORT_COM_MODULE
         SAKEnumDebugPageTypeCOM,
 #endif
+#ifdef SAK_IMPORT_HID_MODULE
         SAKEnumDebugPageTypeHID,
+#endif
         SAKEnumDebugPageTypeUDP,
+#ifdef SAK_IMPORT_USB_MODULE
         SAKEnumDebugPageTypeUSB,
+#endif
         SAKEnumDebugPageTypeTCPClient,
         SAKEnumDebugPageTypeTCPServer
     };
