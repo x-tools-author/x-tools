@@ -41,32 +41,24 @@ public:
     explicit SAKMainWindow(QWidget *parent = nullptr);
     ~SAKMainWindow();
 
-    enum SAKStyleSheet{
-        QtDefault,
-        FlatWhite,
-        LightBlue,
-        PSBlack
-    };
-    Q_ENUM(SAKStyleSheet)
-
-    static const char* appStyle(){return appStyleKey;}
 private:
     QTabWidget* mpTabWidget             = nullptr;
     Ui::SAKMainWindow* ui               = nullptr;
     QMenu* toolsMenu                    = nullptr;
+    QAction *defaultStyleSheetAction    = nullptr;
     SAKVersion* versionDialog           = nullptr;
     UpdateManager* updateManager        = nullptr;
     MoreInformation* moreInformation    = nullptr;
 
-    static const char* appStyleKey;
+    const char* appStyleKey = "Universal/appStyle";
     const char* appStylesheetKey = "Universal/appStylesheet";
-    QMetaEnum skins;
     /// ----------------------------------------------------
     void AddTab();    
     void AddTool();
 
     void addTool(QString toolName, QWidget *toolWidget);
-    void changeStylesheet();
+    void changeStylesheet(QString styleSheetName);
+    void changeAppStyle(QString appStyle);
 
     void initMenu();
     void initFileMenu();
@@ -97,7 +89,6 @@ private:
     void closeDebugPage(int index);
 
     void About();
-
 private:
     void createCRCCalculator();
 };

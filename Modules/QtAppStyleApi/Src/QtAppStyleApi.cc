@@ -54,6 +54,20 @@ QtAppStyleApi::QtAppStyleApi(QObject *parent)
     }
 }
 
+void QtAppStyleApi::setStyle(QString style)
+{
+    if (style.isEmpty()){
+        style = QStyleFactory::keys().first();
+    }
+
+    for(auto var:_this->appStyleActions){
+        if (var->objectName() == style){
+            var->setChecked(true);
+            emit var->triggered();
+        }
+    }
+}
+
 void QtAppStyleApi::changeAppStyle()
 {
     QString styleName = sender()->objectName();

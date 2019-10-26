@@ -31,6 +31,11 @@ public:
     static QtAppStyleApi *instance();
 
     /**
+     * @brief setStyle 设置样式
+     * @param style 样式名称
+     */
+    void setStyle(QString style);
+    /**
      * @brief actions   -- 获取用于软件风格的action列表
      * @return          -- action列表
      */

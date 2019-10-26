@@ -16,6 +16,7 @@
 #include <QFile>
 #include <QTabBar>
 #include <QAction>
+#include <QVariant>
 #include <QSysInfo>
 #include <QMetaEnum>
 #include <QSettings>
@@ -28,6 +29,7 @@
 #include "SAKGlobal.hh"
 #include "SAKVersion.hh"
 #include "SAKConsole.hh"
+#include "SAKSettings.hh"
 #include "UpdateManager.h"
 #include "CRCCalculator.hh"
 #include "SAKMainWindow.hh"
@@ -56,7 +58,6 @@
 #include "ui_SAKMainWindow.h"
 
 const static char* configureFile = "http://wuhai.pro/software/QtSwissArmyKnife/update.json";
-const char* SAKMainWindow::appStyleKey = "Universal/appStyle";
 SAKMainWindow::SAKMainWindow(QWidget *parent)
     :QMainWindow (parent)
     ,mpTabWidget (new QTabWidget)
@@ -78,11 +79,14 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     this->resize(800, 600);
 
     mpTabWidget->setTabsClosable(true);
-    connect(mpTabWidget, &QTabWidget::tabCloseRequested, this, &SAKMainWindow::closeDebugPage);
+    connect(mpTabWidget, &QTabWidget::tabCloseRequested, this, &SAKMainWindow::closeDebugPage);    
 
     AddTab();
     initMenu();
     AddTool();   
+
+    connect(QtStyleSheetApi::instance(), &QtStyleSheetApi::styleSheetChanged, this, &SAKMainWindow::changeStylesheet);
+    connect(QtAppStyleApi::instance(), &QtAppStyleApi::appStyleChanged, this, &SAKMainWindow::changeAppStyle);
 }
 
 SAKMainWindow::~SAKMainWindow()
@@ -143,34 +147,17 @@ void SAKMainWindow::addTool(QString toolName, QWidget *toolWidget)
     connect(action, SIGNAL(triggered(bool)), toolWidget, SLOT(show()));
 }
 
-void SAKMainWindow::changeStylesheet()
+void SAKMainWindow::changeStylesheet(QString styleSheetName)
 {
-    QFile file;
-    QString skin = sender()->objectName();
-
-    QSettings setting;
-    setting.setValue(QString(appStylesheetKey), skin);
-
-    if (skins.keyToValue(skin.toLatin1().data()) == QtDefault){
-        qApp->setStyleSheet("");
-        return;
-    }else if (skins.keyToValue(skin.toLatin1().data()) == FlatWhite){
-        file.setFileName(":/qss/flatwhite.css");
-    }else if (skins.keyToValue(skin.toLatin1().data()) == LightBlue){
-        file.setFileName(":/qss/lightblue.css");
-    }else if (skins.keyToValue(skin.toLatin1().data()) == PSBlack){
-        file.setFileName(":/qss/psblack.css");
-    }else {
-
+    SAKSettings::instance()->setValue(appStylesheetKey, styleSheetName);
+    if (!styleSheetName.isEmpty()){
+        defaultStyleSheetAction->setChecked(false);
     }
+}
 
-    if (file.open(QFile::ReadOnly)) {
-        QString qss = QLatin1String(file.readAll());
-        QString paletteColor = qss.mid(20, 7);
-        qApp->setPalette(QPalette(QColor(paletteColor)));
-        qApp->setStyleSheet(qss);
-        file.close();
-    }
+void SAKMainWindow::changeAppStyle(QString appStyle)
+{
+    SAKSettings::instance()->setValue(appStyleKey, appStyle);
 }
 
 void SAKMainWindow::initMenu()
@@ -227,29 +214,41 @@ void SAKMainWindow::initOptionMenu()
     QMenu *optionMenu = new QMenu(tr("选项"));
     menuBar()->addMenu(optionMenu);
 
-    skins = QMetaEnum::fromType<SAKStyleSheet>();
-    QSettings settings;
-    QString value = settings.value(appStylesheetKey).toString();
-    if (value.isEmpty()){
-        value = QString(skins.valueToKey(LightBlue));
-    }
-
+    /*
+     * 软件样式，设置默认样式需要重启软件
+     */
     QMenu *stylesheetMenu = new QMenu("皮肤");
     optionMenu->addMenu(stylesheetMenu);
-    stylesheetMenu->addActions(QtStyleSheetApi::instance()->actions());
-
-    value = settings.value(appStyleKey).toString();
-    // 默认使用Qt支持的软件风格的第一种软件风格
-    if (value.isEmpty()){
-        foreach (QString style,  QStyleFactory::keys()){
-            value = style;
-            break;
+    defaultStyleSheetAction = new QAction(tr("Qt默认样式"), this);
+    defaultStyleSheetAction->setCheckable(true);
+    stylesheetMenu->addAction(defaultStyleSheetAction);
+    connect(defaultStyleSheetAction, &QAction::triggered, [=](){
+        for(auto var:QtStyleSheetApi::instance()->actions()){
+            var->setChecked(false);
         }
+
+        changeStylesheet(QString());
+        defaultStyleSheetAction->setChecked(true);
+        QMessageBox::information(this, tr("重启软件生效"), tr("软件样式已更改，重启软件后即可使用默认样式"));
+    });
+
+    stylesheetMenu->addSeparator();
+    stylesheetMenu->addActions(QtStyleSheetApi::instance()->actions());
+    QString styleSheetName = SAKSettings::instance()->value(appStylesheetKey).toString();
+    if (!styleSheetName.isEmpty()){
+        QtStyleSheetApi::instance()->setStyleSheet(styleSheetName);
+    }else{
+        defaultStyleSheetAction->setChecked(true);
     }
 
+    /*
+     * 软件风格，默认使用Qt支持的第一种软件风格
+     */
     QMenu *appStyleMenu = new QMenu(tr("软件风格"));
     optionMenu->addMenu(appStyleMenu);
     appStyleMenu->addActions(QtAppStyleApi::instance()->actions());
+    QString style = SAKSettings::instance()->value(appStyleKey).toString();
+    QtAppStyleApi::instance()->setStyle(style);
 }
 
 void SAKMainWindow::initHelpMenu()

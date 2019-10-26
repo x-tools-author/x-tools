@@ -35,6 +35,8 @@ public:
      * @return          -- 用于切换软件样式的action列表
      */
     QList<QAction *> actions();
+
+    void setStyleSheet(QString styleSheetName);
 signals:
     /// 应用程序样式改变时，发射该信号
     void styleSheetChanged(QString styleSheetName);

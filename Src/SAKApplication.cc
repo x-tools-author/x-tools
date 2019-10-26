@@ -24,14 +24,6 @@ SAKApplication::SAKApplication(int argc, char **argv):
     /// 本工程好像并没有使用QTextCursor作为信号参数，根据Qt Creator的提示要求，添加该语句
     qRegisterMetaType<QTextCursor>("QTextCursor");
 
-#if 1
-    QSettings settings;
-    QString style = settings.value(QString(SAKMainWindow::appStyle())).toString();
-    if (!style.isEmpty()){
-        QApplication::setStyle(QStyleFactory::create(style));
-    }
-#endif
-
     mpMainWindow = new SAKMainWindow;
     mpMainWindow->show();
 }

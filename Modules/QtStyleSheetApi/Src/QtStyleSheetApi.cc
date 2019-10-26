@@ -36,6 +36,29 @@ QList<QAction *> QtStyleSheetApi::actions()
     return styleSheetActions;
 }
 
+void QtStyleSheetApi::setStyleSheet(QString styleSheetName)
+{
+    if (styleSheetName.isEmpty()){
+        return;
+    }
+
+
+    QMapIterator<QString, QString> iterator(styleSheetMap);
+    while(iterator.hasNext()){
+        iterator.next();
+
+        if(iterator.key() == styleSheetName){
+            for(auto var:_this->styleSheetActions){
+                if (var->objectName() == iterator.value()){
+                    var->setChecked(true);
+                    emit var->triggered();
+                    return;
+                }
+            }
+        }
+    }
+}
+
 QtStyleSheetApi::QtStyleSheetApi(QObject *parent)
     :QObject (parent)
 {
