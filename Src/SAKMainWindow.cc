@@ -114,7 +114,6 @@ void SAKMainWindow::AddTab()
     for (int i = 0; i < mpTabWidget->count(); i++){
         if (QSysInfo::kernelType().contains("winnt")){
             mpTabWidget->tabBar()->setTabButton(i, QTabBar::RightSide, nullptr);
-        }else{
             mpTabWidget->tabBar()->setTabButton(i, QTabBar::LeftSide, nullptr);
         }
     }
