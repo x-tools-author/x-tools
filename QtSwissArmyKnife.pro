@@ -102,6 +102,7 @@ HEADERS += \
     Src/SAKApplication.hh \
     Src/SAKGlobal.hh \
     Src/SAKMainWindow.hh \
+    Src/SAKSettings.hh \
     Src/SAKVersion.hh \
     Src/Tools/SAKBaseTool/SAKToolDialog.hh
 
@@ -152,7 +153,8 @@ SOURCES += \
     Src/DebugPage/TcpServer/SAKTcpServerDeviceController.cc \
     Src/DebugPage/UdpDebug/SAKUdpDebugPage.cc \
     Src/DebugPage/UdpDebug/SAKUdpDevice.cc \
-    Src/DebugPage/UdpDebug/SAKUdpDeviceController.cc \    
+    Src/DebugPage/UdpDebug/SAKUdpDeviceController.cc \
+    Src/SAKSettings.cc \
     Src/MoreInformation.cc \
     Src/SAKApplication.cc \
     Src/SAKGlobal.cc \

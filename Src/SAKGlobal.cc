@@ -34,6 +34,18 @@ QString SAKGlobal::logFile()
     return fileName;
 }
 
+QString SAKGlobal::dataPath()
+{
+    QString path = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
+
+    QDir dir;
+    if (!dir.exists(path)){
+        mkMutiDir(path);
+    }
+
+    return path;
+}
+
 QString SAKGlobal::mkMutiDir(const QString path){
 
     QDir dir(path);
@@ -56,17 +68,17 @@ QString SAKGlobal::getIODeviceTypeName(int type)
 {
     QString name = "none";
     switch (type) {
-    case SAKEnumIODeviceTypeUDP:
+    case SAKEnumDebugPageTypeUDP:
         name = tr("UDP调试");
         break;
-    case SAKEnumIODeviceTypeTCPClient:
+    case SAKEnumDebugPageTypeTCPClient:
         name = tr("TCP客户端");
         break;
-    case SAKEnumIODeviceTypeTCPServer:
+    case SAKEnumDebugPageTypeTCPServer:
         name = tr("TCP服务器");
         break;
 #ifdef SAK_IMPORT_COM_MODULE
-    case SAKEnumIODeviceTypeSerialport:
+    case SAKEnumDebugPageTypeCOM:
         name = tr("串口调试");
         break;
 #endif

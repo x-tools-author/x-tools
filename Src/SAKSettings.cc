@@ -7,73 +7,28 @@
  * Copyright (C) 2018-2018 wuhai persionnal. All rights reserved.
  */
 #include "SAKGlobal.hh"
+#include "SAKSettings.hh"
 
-#include <QStandardPaths>
-#include <QFile>
-#include <QDir>
-#include <QDebug>
+#include <QApplication>
 
-SAKGlobal::SAKGlobal(QObject* parent)
-    :QObject (parent)
+SAKSettings* SAKSettings::_instance = nullptr;
+SAKSettings* SAKSettings::instance()
 {
-
-}
-
-QString SAKGlobal::logFile()
-{
-    QString fileName = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
-
-    QDir dir;
-    if (!dir.exists(fileName)){
-        SAKGlobal::mkMutiDir(fileName);
-    }    
-
-    fileName.append("/");
-    fileName.append("QtSwissArmyKnife.txt");
-
-    return fileName;
-}
-
-QString SAKGlobal::mkMutiDir(const QString path){
-
-    QDir dir(path);
-    if (dir.exists(path)){
-        return path;
+    if (!_instance){
+        const QString fileName = QString("%1/%2.ini").arg(SAKGlobal::dataPath()).arg(qApp->applicationName());
+        new SAKSettings(fileName, QSettings::IniFormat, qApp);
     }
 
-    QString parentDir = mkMutiDir(path.mid(0,path.lastIndexOf('/')));
-    QString dirname = path.mid(path.lastIndexOf('/') + 1);
-    QDir parentPath(parentDir);
-
-    if ( !dirname.isEmpty() ){
-        parentPath.mkpath(dirname);
-    }
-
-    return parentDir + "/" + dirname;
+    return _instance;
 }
 
-QString SAKGlobal::getIODeviceTypeName(int type)
+SAKSettings::SAKSettings(const QString &fileName, Format format, QObject *parent)
+    :QSettings(fileName, format, parent)
 {
-    QString name = "none";
-    switch (type) {
-    case SAKEnumIODeviceTypeUDP:
-        name = tr("UDP调试");
-        break;
-    case SAKEnumIODeviceTypeTCPClient:
-        name = tr("TCP客户端");
-        break;
-    case SAKEnumIODeviceTypeTCPServer:
-        name = tr("TCP服务器");
-        break;
-#ifdef SAK_IMPORT_COM_MODULE
-    case SAKEnumIODeviceTypeSerialport:
-        name = tr("串口调试");
-        break;
-#endif
-    default:
-        name = QString("Unknown");
-        break;
-    }
+    _instance = this;
+}
 
-    return name;
+SAKSettings::~SAKSettings()
+{
+    _instance = nullptr;
 }

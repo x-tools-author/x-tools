@@ -17,12 +17,13 @@
 #include <QWidget>
 #include <QHBoxLayout>
 
+#include "SAKGlobal.hh"
 #include "SAKSerialPortDevice.hh"
 #include "SAKSerialPortDebugPage.hh"
 #include "SAKSerialPortDeviceController.hh"
 
 SAKSerialPortDebugPage::SAKSerialPortDebugPage(QWidget *parent)
-    :SAKDebugPage (parent)
+    :SAKDebugPage (SAKGlobal::SAKEnumDebugPageTypeCOM, parent)
     ,serialPortAssistant (nullptr)
     ,controller (new SAKSerialPortDeviceController)
 {

@@ -18,15 +18,17 @@ public:
     /**
      * @brief The SAKEnumIODeviceType enum  -- io的设备类型
      */
-    enum SAKEnumIODeviceType {
+    enum SAKEnumDebugPageType {
 #ifdef SAK_IMPORT_COM_MODULE
-        SAKEnumIODeviceTypeSerialport,      // 串口设备
+        SAKEnumDebugPageTypeCOM,
 #endif
-        SAKEnumIODeviceTypeUDP,             // udp调试
-        SAKEnumIODeviceTypeTCPClient,       // tcp客户端
-        SAKEnumIODeviceTypeTCPServer        // tcp服务器
+        SAKEnumDebugPageTypeHID,
+        SAKEnumDebugPageTypeUDP,
+        SAKEnumDebugPageTypeUSB,
+        SAKEnumDebugPageTypeTCPClient,
+        SAKEnumDebugPageTypeTCPServer
     };
-    Q_ENUM(SAKEnumIODeviceType)
+    Q_ENUM(SAKEnumDebugPageType)
 
     /**
      * @brief SAKGlobal -- 构造函数
@@ -39,6 +41,8 @@ public:
      * @return          -- 日志文件全路径
      */
     static QString logFile();
+
+    static QString dataPath();
 
     /**
      * @brief mkMutiDir -- 递归创建指定的目录路径

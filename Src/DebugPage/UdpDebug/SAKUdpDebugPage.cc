@@ -17,12 +17,13 @@
 #include <QWidget>
 #include <QHBoxLayout>
 
+#include "SAKGlobal.hh"
 #include "SAKUdpDevice.hh"
 #include "SAKUdpDebugPage.hh"
 #include "SAKUdpDeviceController.hh"
 
 SAKUdpDebugPage::SAKUdpDebugPage(QWidget *parent)
-    :SAKDebugPage (parent)
+    :SAKDebugPage (SAKGlobal::SAKEnumDebugPageTypeUDP, parent)
     ,udpDevice (nullptr)
     ,udpDeviceController (new SAKUdpDeviceController)
 {

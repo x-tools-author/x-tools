@@ -54,7 +54,12 @@ class SAKDebugPage : public QWidget
 {
     Q_OBJECT
 public:
-    SAKDebugPage(QWidget *parent = Q_NULLPTR);
+    /**
+     * @brief SAKDebugPage 调试页面基类
+     * @param type 调试页面类型（SAKGlobal::SAKEnumDebugPageType）
+     * @param parent 资源管理类
+     */
+    SAKDebugPage(int type, QWidget *parent = Q_NULLPTR);
     ~SAKDebugPage();
 
 public:
@@ -163,8 +168,19 @@ protected:
     QPushButton *presetPushButton;
     QPushButton *sendPresetPushButton;
 
+    QString settingStringInputModel;
+    QString settingStringCycleTime;
+    QString settingStringAddCRC;
+    QString settingStringBigeEndian;
+    QString settingStringcrcParameterModel;
+private slots:
+    void on_inputModelComboBox_currentIndexChanged(int index);
+    void on_cycleTimeLineEdit_textChanged(const QString &text);
+    void on_addCRCCheckBox_clicked();
+    void on_bigeEndianCheckBox_clicked();
+    void on_crcParameterModelsComboBox_currentIndexChanged(int index);
 
-    //数据输出组管理
+    // 消息输出组管理
 protected:
     QLabel *infoLabel                           = nullptr;  // 消息输标签
 
@@ -184,6 +200,23 @@ protected:
     QPushButton *clearOutputPushButton          = nullptr;  // 清空输出按钮
     QPushButton *saveOutputPushButton           = nullptr;  // 保存输出按钮
     QTextBrowser *outputTextBroswer             = nullptr;  // 用于输出显示收发的数据
+
+    QString settingStringOutputModel;
+    QString settingStringShowDate;
+    QString settingStringAutoWrap;
+    QString settingStringShowTime;
+    QString settingStringShowMs;
+    QString settingStringShowRx;
+    QString settingStringShowTx;
+
+private slots:
+    void on_outputModelComboBox_currentIndexChanged(int index);
+    void on_showDateCheckBox_clicked();
+    void on_autoWrapCheckBox_clicked();
+    void on_showTimeCheckBox_clicked();
+    void on_showMsCheckBox_clicked();
+    void on_showRxDataCheckBox_clicked();
+    void on_showTxDataCheckBox_clicked();
 
     // 图表
 protected:
@@ -227,6 +260,21 @@ public:
     friend class SAKStatisticsManager;
     friend class DebugPageInputManager;
     friend class DebugPageOutputManager;
+
+private:
+    bool isInitializing;
+    int debugPageType = -1;
+    QString settingKey;
+
+    void initSettingKey();
+
+    void initSettingString();
+    void initInputSettingString();
+    void initOutputSettingString();
+
+    void readinSettings();
+    void readinInputSettings();
+    void readinOutputSettings();
 };
 
 #endif  // SAKTabPage_H

@@ -188,7 +188,7 @@ void SAKMainWindow::initFileMenu()
 
     QMenu *tabMenu = new QMenu(tr("新建页面"), this);
     fileMenu->addMenu(tabMenu);
-    QMetaEnum enums = QMetaEnum::fromType<SAKGlobal::SAKEnumIODeviceType>();
+    QMetaEnum enums = QMetaEnum::fromType<SAKGlobal::SAKEnumDebugPageType>();
     for (int i = 0; i < enums.keyCount(); i++){
         QAction *a = new QAction(SAKGlobal::getIODeviceTypeName(i), this);
         a->setObjectName(SAKGlobal::getIODeviceTypeName(i));
@@ -303,18 +303,18 @@ QWidget *SAKMainWindow::getDebugPage(int type)
 {
     QWidget *widget = nullptr;
     switch (type) {
-    case SAKGlobal::SAKEnumIODeviceTypeUDP:
+    case SAKGlobal::SAKEnumDebugPageTypeUDP:
         widget = new SAKUdpDebugPage;
         break;
-    case SAKGlobal::SAKEnumIODeviceTypeTCPClient:
+    case SAKGlobal::SAKEnumDebugPageTypeTCPClient:
         widget = new SAKTcpClientDebugPage;
         break;
-    case SAKGlobal::SAKEnumIODeviceTypeTCPServer:
+    case SAKGlobal::SAKEnumDebugPageTypeTCPServer:
         widget = new SAKTcpServerDebugPage;
         break;
 
 #ifdef SAK_IMPORT_COM_MODULE
-    case SAKGlobal::SAKEnumIODeviceTypeSerialport:
+    case SAKGlobal::SAKEnumDebugPageTypeCOM:
         widget = new SAKSerialPortDebugPage;
         break;
 #endif

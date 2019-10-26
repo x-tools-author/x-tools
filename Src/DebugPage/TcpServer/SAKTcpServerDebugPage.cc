@@ -17,12 +17,13 @@
 #include <QWidget>
 #include <QHBoxLayout>
 
+#include "SAKGlobal.hh"
 #include "SAKTcpServerDevice.hh"
 #include "SAKTcpServerDebugPage.hh"
 #include "SAKTcpServerDeviceController.hh"
 
 SAKTcpServerDebugPage::SAKTcpServerDebugPage(QWidget *parent)
-    :SAKDebugPage (parent)
+    :SAKDebugPage (SAKGlobal::SAKEnumDebugPageTypeTCPServer, parent)
     ,tcpServerDevice (nullptr)
     ,tcpServerDeviceController (new SAKTcpServerDeviceController)
 {

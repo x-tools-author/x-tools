@@ -17,12 +17,13 @@
 #include <QWidget>
 #include <QHBoxLayout>
 
+#include "SAKGlobal.hh"
 #include "SAKHidDevice.hh"
 #include "SAKHidDebugPage.hh"
 #include "SAKHidDeviceController.hh"
 
 SAKHidDebugPage::SAKHidDebugPage(QWidget *parent)
-    :SAKDebugPage (parent)
+    :SAKDebugPage (SAKGlobal::SAKEnumDebugPageTypeHID, parent)
     ,hidDevice (nullptr)
     ,hidDeviceController (new SAKHidDeviceController)
 {

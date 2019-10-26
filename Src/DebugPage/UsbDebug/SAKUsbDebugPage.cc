@@ -17,12 +17,13 @@
 #include <QWidget>
 #include <QHBoxLayout>
 
+#include "SAKGlobal.hh"
 #include "SAKUsbDevice.hh"
 #include "SAKUsbDebugPage.hh"
 #include "SAKUsbDeviceController.hh"
 
 SAKUsbDebugPage::SAKUsbDebugPage(QWidget *parent)
-    :SAKDebugPage (parent)
+    :SAKDebugPage (SAKGlobal::SAKEnumDebugPageTypeUSB, parent)
     ,udpDevice (nullptr)
     ,udpDeviceController (new SAKUsbDeviceController)
 {
