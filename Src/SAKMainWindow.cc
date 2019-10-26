@@ -112,10 +112,8 @@ void SAKMainWindow::AddTab()
      * 隐藏关闭按钮（必须在调用setTabsClosable()函数后设置，否则不生效）
      */
     for (int i = 0; i < mpTabWidget->count(); i++){
-        if (QSysInfo::kernelType().contains("winnt")){
-            mpTabWidget->tabBar()->setTabButton(i, QTabBar::RightSide, nullptr);
-            mpTabWidget->tabBar()->setTabButton(i, QTabBar::LeftSide, nullptr);
-        }
+        mpTabWidget->tabBar()->setTabButton(i, QTabBar::RightSide, nullptr);
+        mpTabWidget->tabBar()->setTabButton(i, QTabBar::LeftSide, nullptr);
     }
 }
 
