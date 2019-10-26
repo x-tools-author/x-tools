@@ -22,6 +22,7 @@
 #include <QSpacerItem>
 #include <QMessageBox>
 #include <QStyleFactory>
+#include <QDesktopServices>
 
 #include "nslookup.h"
 #include "SAKGlobal.hh"
@@ -80,7 +81,7 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     connect(mpTabWidget, &QTabWidget::tabCloseRequested, this, &SAKMainWindow::closeDebugPage);
 
     AddTab();
-    InitMenu();
+    initMenu();
     AddTool();   
 }
 
@@ -129,99 +130,10 @@ void SAKMainWindow::AddTool()
     connect(action, &QAction::triggered, this, &SAKMainWindow::createCRCCalculator);
 }
 
-void SAKMainWindow::InitMenu()
-{
-    // 文件菜单
-    QMenu *pFileMenu = new QMenu(tr("文件"));
-    menuBar()->addMenu(pFileMenu);
-
-    QMenu *tabMenu = new QMenu(tr("新建页面"), this);
-    pFileMenu->addMenu(tabMenu);
-    QMetaEnum enums = QMetaEnum::fromType<SAKGlobal::SAKEnumIODeviceType>();
-    for (int i = 0; i < enums.keyCount(); i++){
-        QAction *a = new QAction(SAKGlobal::getIODeviceTypeName(i), this);
-        a->setObjectName(SAKGlobal::getIODeviceTypeName(i));
-        QVariant var = QVariant::fromValue<int>(enums.value(i));
-        a->setData(var);
-        connect(a, &QAction::triggered, this, &SAKMainWindow::addRemovablePage);
-        tabMenu->addAction(a);
-    }
-
-    QMenu *windowMenu = new QMenu(tr("新建窗口"), this);
-    pFileMenu->addMenu(windowMenu);
-    for (int i = 0; i < enums.keyCount(); i++){
-        QAction *a = new QAction(SAKGlobal::getIODeviceTypeName(i), this);
-        a->setObjectName(SAKGlobal::getIODeviceTypeName(i));
-        QVariant var = QVariant::fromValue<int>(enums.value(i));
-        connect(a, &QAction::triggered, this, &SAKMainWindow::openIODeviceWindow);
-        a->setData(var);
-        windowMenu->addAction(a);
-    }
-
-    pFileMenu->addSeparator();
-
-    QAction *pExitAction = new QAction(tr("退出"));
-    pFileMenu->addAction(pExitAction);
-    connect(pExitAction, SIGNAL(triggered(bool)), this, SLOT(close()));
-
-    // 工具菜单
-    QMenu *pToolMenu = new QMenu(tr("工具"));
-    menuBar()->addMenu(pToolMenu);
-    toolsMenu = pToolMenu;
-
-    // 选项
-    QMenu *optionMenu = new QMenu(tr("选项"));
-    menuBar()->addMenu(optionMenu);
-
-    // 选项菜单--皮肤切换菜单
-    initSkinMenu(optionMenu);
-
-#if 1
-    QSettings settings;
-    QString value = settings.value(appStyleKey).toString();
-    // 默认使用Qt支持的软件风格的第一种软件风格
-    if (value.isEmpty()){
-        foreach (QString style,  QStyleFactory::keys()){
-            value = style;
-            break;
-        }
-    }
-
-    QMenu *appStyleMenu = new QMenu(tr("软件风格"));
-    optionMenu->addMenu(appStyleMenu);
-    appStyleMenu->addActions(QtAppStyleApi::instance()->actions());
-#endif
-
-    // 帮助菜单
-    QMenu *pHelpMenu = new QMenu(tr("帮助"));
-    menuBar()->addMenu(pHelpMenu);
-
-    QAction *pAboutQtAction = new QAction(tr("关于Qt"));
-    pHelpMenu->addAction(pAboutQtAction);
-    connect(pAboutQtAction, SIGNAL(triggered(bool)), this, SLOT(AboutQt()));
-
-    QAction *pAboutAction = new QAction(tr("关于软件"));
-    pHelpMenu->addAction(pAboutAction);
-    connect(pAboutAction, SIGNAL(triggered(bool)), this, SLOT(About()));
-
-    QAction *pUpdateAction = new QAction(tr("检查更新"));
-    pHelpMenu->addAction(pUpdateAction);
-    connect(pUpdateAction, SIGNAL(triggered(bool)), updateManager, SLOT(checkForUpdate()));
-
-    QAction *pMoreInformation = new QAction(tr("更多信息"));
-    pHelpMenu->addAction(pMoreInformation);
-    connect(pMoreInformation, SIGNAL(triggered(bool)), moreInformation, SLOT(show()));
-}
-
 void SAKMainWindow::About()
 {
     versionDialog->show();
     versionDialog->activateWindow();
-}
-
-void SAKMainWindow::AboutQt()
-{
-    QMessageBox::aboutQt(this, tr("关于Qt"));
 }
 
 void SAKMainWindow::addTool(QString toolName, QWidget *toolWidget)
@@ -261,8 +173,60 @@ void SAKMainWindow::changeStylesheet()
     }
 }
 
-void SAKMainWindow::initSkinMenu(QMenu *optionMenu)
+void SAKMainWindow::initMenu()
 {
+    initFileMenu();
+    initToolMenu();
+    initOptionMenu();
+    initHelpMenu();
+}
+
+void SAKMainWindow::initFileMenu()
+{
+    QMenu *fileMenu = new QMenu(tr("文件"), this);
+    menuBar()->addMenu(fileMenu);
+
+    QMenu *tabMenu = new QMenu(tr("新建页面"), this);
+    fileMenu->addMenu(tabMenu);
+    QMetaEnum enums = QMetaEnum::fromType<SAKGlobal::SAKEnumIODeviceType>();
+    for (int i = 0; i < enums.keyCount(); i++){
+        QAction *a = new QAction(SAKGlobal::getIODeviceTypeName(i), this);
+        a->setObjectName(SAKGlobal::getIODeviceTypeName(i));
+        QVariant var = QVariant::fromValue<int>(enums.value(i));
+        a->setData(var);
+        connect(a, &QAction::triggered, this, &SAKMainWindow::addRemovablePage);
+        tabMenu->addAction(a);
+    }
+
+    QMenu *windowMenu = new QMenu(tr("新建窗口"), this);
+    fileMenu->addMenu(windowMenu);
+    for (int i = 0; i < enums.keyCount(); i++){
+        QAction *a = new QAction(SAKGlobal::getIODeviceTypeName(i), this);
+        a->setObjectName(SAKGlobal::getIODeviceTypeName(i));
+        QVariant var = QVariant::fromValue<int>(enums.value(i));
+        connect(a, &QAction::triggered, this, &SAKMainWindow::openIODeviceWindow);
+        a->setData(var);
+        windowMenu->addAction(a);
+    }
+
+    fileMenu->addSeparator();
+    QAction *exitAction = new QAction(tr("退出"));
+    fileMenu->addAction(exitAction);
+    connect(exitAction, SIGNAL(triggered(bool)), this, SLOT(close()));
+}
+
+void SAKMainWindow::initToolMenu()
+{
+    QMenu *toolMenu = new QMenu(tr("工具"));
+    menuBar()->addMenu(toolMenu);
+    toolsMenu = toolMenu;
+}
+
+void SAKMainWindow::initOptionMenu()
+{
+    QMenu *optionMenu = new QMenu(tr("选项"));
+    menuBar()->addMenu(optionMenu);
+
     skins = QMetaEnum::fromType<SAKStyleSheet>();
     QSettings settings;
     QString value = settings.value(appStylesheetKey).toString();
@@ -273,6 +237,50 @@ void SAKMainWindow::initSkinMenu(QMenu *optionMenu)
     QMenu *stylesheetMenu = new QMenu("皮肤");
     optionMenu->addMenu(stylesheetMenu);
     stylesheetMenu->addActions(QtStyleSheetApi::instance()->actions());
+
+    value = settings.value(appStyleKey).toString();
+    // 默认使用Qt支持的软件风格的第一种软件风格
+    if (value.isEmpty()){
+        foreach (QString style,  QStyleFactory::keys()){
+            value = style;
+            break;
+        }
+    }
+
+    QMenu *appStyleMenu = new QMenu(tr("软件风格"));
+    optionMenu->addMenu(appStyleMenu);
+    appStyleMenu->addActions(QtAppStyleApi::instance()->actions());
+}
+
+void SAKMainWindow::initHelpMenu()
+{
+    QMenu *helpMenu = new QMenu(tr("帮助"), this);
+    menuBar()->addMenu(helpMenu);
+
+    QAction *aboutQtAction = new QAction(tr("关于Qt"), this);
+    helpMenu->addAction(aboutQtAction);
+    connect(aboutQtAction, &QAction::triggered, [=](){QMessageBox::aboutQt(this, tr("关于Qt"));});
+
+    QAction *aboutAction = new QAction(tr("关于软件"), this);
+    helpMenu->addAction(aboutAction);
+    connect(aboutAction, &QAction::triggered, this, &SAKMainWindow::About);
+
+    QMenu *srcMenu = new QMenu(tr("获取源码"), this);
+    helpMenu->addMenu(srcMenu);
+    QAction *visitGitHubAction = new QAction(QIcon(":/Resources/Images/GitHub.png"), tr("GitHub"), this);
+    connect(visitGitHubAction, &QAction::triggered, [](){QDesktopServices::openUrl(QUrl(QLatin1String("https://github.com/wuuhii/QtSwissArmyKnife")));});
+    srcMenu->addAction(visitGitHubAction);
+    QAction *visitGiteeAction = new QAction(QIcon(":/Resources/Images/Gitee.png"), tr("Gitee"), this);
+    connect(visitGiteeAction, &QAction::triggered, [](){QDesktopServices::openUrl(QUrl(QLatin1String("https://gitee.com/wuuhii/QtSwissArmyKnife")));});
+    srcMenu->addAction(visitGiteeAction);
+
+    QAction *updateAction = new QAction(tr("检查更新"), this);
+    helpMenu->addAction(updateAction);
+    connect(updateAction, &QAction::triggered, updateManager, &UpdateManager::checkForUpdate);
+
+    QAction *moreInformationAction = new QAction(tr("更多信息"), this);
+    helpMenu->addAction(moreInformationAction);
+    connect(moreInformationAction, &QAction::triggered, moreInformation, &MoreInformation::show);
 }
 
 void SAKMainWindow::addRemovablePage()

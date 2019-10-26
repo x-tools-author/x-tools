@@ -62,17 +62,17 @@ private:
     const char* appStylesheetKey = "Universal/appStylesheet";
     QMetaEnum skins;
     /// ----------------------------------------------------
-    void AddTab();
-    void InitMenu();
+    void AddTab();    
     void AddTool();
 
     void addTool(QString toolName, QWidget *toolWidget);
     void changeStylesheet();
 
-    /**
-     * @brief initSkinMenu  -- 创建皮肤切换菜单
-     */
-    void initSkinMenu(QMenu* optionMenu);
+    void initMenu();
+    void initFileMenu();
+    void initToolMenu();
+    void initOptionMenu();
+    void initHelpMenu();
 
     /**
      * @brief addRemovablePage  -- 添加可删除的设备页面（只能通过信号来调用）
@@ -95,8 +95,7 @@ private:
      * @param index 需要关闭的调试页面
      */
     void closeDebugPage(int index);
-private slots:
-    void AboutQt();
+
     void About();
 
 private:

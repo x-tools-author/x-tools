@@ -25,6 +25,8 @@ class UpdateManager:public QDialog
 public:
     UpdateManager(QUrl configureFile, QString currentVersion = QString("1.0.0"));
     ~UpdateManager();
+
+    void checkForUpdate();
 private:
     QUrl url;
     QString curVer;
@@ -34,8 +36,7 @@ private:
     DownloadDialog* downloadDialog             = nullptr;
     HttpAnalyzer* httpAnalyzer                 = nullptr;
     HttpDownloader* httpDownloader             = nullptr;
-private slots:
-    void checkForUpdate();
+private slots:    
     void showConfirmUpdateDialog(QString version, QUrl url, QString description);
     void showDownloadDialog(QUrl url);
 };

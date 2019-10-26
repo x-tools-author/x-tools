@@ -3,5 +3,7 @@
     <qresource prefix="/">
         <file>Resources/Files/History.txt</file>
         <file>Resources/Images/SAKLogo.png</file>
+        <file>Resources/Images/GitHub.png</file>
+        <file>Resources/Images/Gitee.png</file>
     </qresource>
 </RCC>
