@@ -210,7 +210,7 @@ void SAKDebugPage::on_cycleTimeLineEdit_textChanged(const QString &text)
 void SAKDebugPage::on_addCRCCheckBox_clicked()
 {
     if (!isInitializing){
-        SAKSettings::instance()->setValue(settingStringInputModel, QVariant::fromValue(addCRCCheckBox->isChecked()));
+        SAKSettings::instance()->setValue(settingStringAddCRC, QVariant::fromValue(addCRCCheckBox->isChecked()));
     }
 }
 
@@ -348,18 +348,22 @@ void SAKDebugPage::initUiPointer()
 void SAKDebugPage::initSettingKey()
 {
     switch (debugPageType) {
+#ifdef SAK_IMPORT_COM_MODULE
     case SAKGlobal::SAKEnumDebugPageTypeCOM:
         settingKey = QString("COM");
         break;
+#endif
     case SAKGlobal::SAKEnumDebugPageTypeHID:
         settingKey = QString("HID");
         break;
     case SAKGlobal::SAKEnumDebugPageTypeUDP:
         settingKey = QString("UDP");
         break;
+#ifdef SAK_IMPORT_USB_MODULE
     case SAKGlobal::SAKEnumDebugPageTypeUSB:
         settingKey = QString("USB");
         break;
+#endif
     case SAKGlobal::SAKEnumDebugPageTypeTCPClient:
         settingKey = QString("TCPClient");
         break;
@@ -382,11 +386,11 @@ void SAKDebugPage::initSettingString()
 
 void SAKDebugPage::initInputSettingString()
 {
-    settingStringInputModel        = QString("%1/InputModel").arg(settingKey);
-    settingStringCycleTime         = QString("%1/CycleTime").arg(settingKey);
-    settingStringAddCRC            = QString("%1/outputModel").arg(settingKey);
-    settingStringBigeEndian        = QString("%1/BigeEndian").arg(settingKey);
-    settingStringcrcParameterModel = QString("%1/ParameterModel").arg(settingKey);
+    settingStringInputModel        = QString("%1/inputModel").arg(settingKey);
+    settingStringCycleTime         = QString("%1/cycleTime").arg(settingKey);
+    settingStringAddCRC            = QString("%1/addCRC").arg(settingKey);
+    settingStringBigeEndian        = QString("%1/bigeEndian").arg(settingKey);
+    settingStringcrcParameterModel = QString("%1/parameterModel").arg(settingKey);
 }
 
 void SAKDebugPage::initOutputSettingString()
