@@ -26,7 +26,7 @@ DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs depr
 # 子项目
 include(SAKCOM.pri)
 include(SAKHID.pri)
-include(SAKUSB.pri)
+#include(SAKUSB.pri)
 include(Modules.pri)
 
 include(SAKSetup.pri)
