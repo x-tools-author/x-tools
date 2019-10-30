@@ -3,7 +3,7 @@ win32 {
 }
 
 contains(DEFINES, SAK_IMPORT_HID_MODULE){
-include(3rdParty/HidAPI/HidApi.pri)
+include(Libs/HidApi/HidApi.pri)
 }else {
     message( "不支持HID调试功能，忽略HID调试模块！（HID调试功能已被屏蔽！）" )
 }

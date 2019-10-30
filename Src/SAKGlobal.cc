@@ -82,14 +82,6 @@ QString SAKGlobal::getIODeviceTypeName(int type)
         name = tr("串口调试");
         break;
 #endif
-    case SAKEnumDebugPageTypeHID:
-        name = tr("HID调试");
-        break;
-#ifdef SAK_IMPORT_USB_MODULE
-    case SAKEnumDebugPageTypeUSB:
-        name = tr("USB调试");
-        break;
-#endif
     default:
         Q_ASSERT_X(false, __FUNCTION__, "Unknow debug page type");
         break;

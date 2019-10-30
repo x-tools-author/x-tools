@@ -100,18 +100,11 @@ void SAKMainWindow::AddTab()
      * 添加调试页面
      */
 #ifdef SAK_IMPORT_COM_MODULE
-    this->mpTabWidget->addTab( new SAKSerialPortDebugPage, tr("串口调试"));
+    this->mpTabWidget->addTab( new SAKSerialPortDebugPage,  tr("串口调试"));
 #endif
-    this->mpTabWidget->addTab(new SAKUdpDebugPage, tr("UDP调试"));
-    this->mpTabWidget->addTab(new SAKTcpClientDebugPage, tr("TCP客户端"));
-    this->mpTabWidget->addTab(new SAKTcpServerDebugPage, tr("TCP服务器"));
-#ifdef SAK_ENABLE_USB_DEBUG
-    this->mpTabWidget->addTab(new SAKUsbDebugPage, tr("USB调试"));
-#endif
-#ifdef SAK_IMPORT_HID_MODULE
-    this->mpTabWidget->addTab(new SAKHidDebugPage, tr("HID调试"));
-#endif
-    this->mpTabWidget->addTab(new SAKConsole, tr("打印终端"));
+    this->mpTabWidget->addTab(new SAKUdpDebugPage,          tr("UDP调试"));
+    this->mpTabWidget->addTab(new SAKTcpClientDebugPage,    tr("TCP客户端"));
+    this->mpTabWidget->addTab(new SAKTcpServerDebugPage,    tr("TCP服务器"));
 
     /*
      * 隐藏关闭按钮（必须在调用setTabsClosable()函数后设置，否则不生效）
