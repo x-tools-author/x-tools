@@ -26,7 +26,7 @@ DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs depr
 include(modules/Modules.pri)
 
 # 子项目
-include(SAKCOM.pri)
+include(SAKSerialPort.pri)
 include(SAKSetup.pri)
 
 #--------------------------------------------------------------------------------------------
@@ -104,9 +104,6 @@ HEADERS +=  \
     src/page/output/save/SaveOutputDataSettings.hh \
     src/page/output/save/SaveOutputDataThread.hh \
     src/page/statistics/SAKStatisticsManager.hh \
-    src/serialport/SAKSerialPortDebugPage.hh \
-    src/serialport/SAKSerialPortDevice.hh \
-    src/serialport/SAKSerialPortDeviceController.hh \
     src/tcpclient/SAKTcpClientDebugPage.hh \
     src/tcpclient/SAKTcpClientDevice.hh \
     src/tcpclient/SAKTcpClientDeviceController.hh \
@@ -170,9 +167,6 @@ SOURCES +=  \
     src/page/output/save/SaveOutputDataSettings.cc \
     src/page/output/save/SaveOutputDataThread.cc \
     src/page/statistics/SAKStatisticsManager.cc \
-    src/serialport/SAKSerialPortDebugPage.cc \
-    src/serialport/SAKSerialPortDevice.cc \
-    src/serialport/SAKSerialPortDeviceController.cc \
     src/tcpclient/SAKTcpClientDebugPage.cc \
     src/tcpclient/SAKTcpClientDevice.cc \
     src/tcpclient/SAKTcpClientDeviceController.cc \
@@ -215,7 +209,6 @@ FORMS +=  \
     src/page/other/transmission/TransmissionSettings.ui \
     src/page/other/transmission/UdpTransmissionItemWidget.ui \
     src/page/output/save/SaveOutputDataSettings.ui \
-    src/serialport/SAKSerialPortDeviceController.ui \
     src/tcpclient/SAKTcpClientDeviceController.ui \
     src/tcpserver/SAKTcpServerDeviceController.ui \
     src/tools/crccalculator/CRCCalculator.ui \

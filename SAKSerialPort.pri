@@ -10,17 +10,17 @@ unix {
 
 contains(DEFINES, SAK_IMPORT_COM_MODULE){    
     SOURCES += \
-        Src/DebugPage/ComDebug/SAKSerialPortDebugPage.cc \
-        Src/DebugPage/ComDebug/SAKSerialPortDeviceController.cc \
-        Src/DebugPage/ComDebug/SAKSerialPortDevice.cc
+        src/serialport/SAKSerialPortDebugPage.cc \
+        src/serialport/SAKSerialPortDeviceController.cc \
+        src/serialport/SAKSerialPortDevice.cc
     HEADERS += \
-        Src/DebugPage/ComDebug/SAKSerialPortDebugPage.hh \
-        Src/DebugPage/ComDebug/SAKSerialPortDeviceController.hh \
-        Src/DebugPage/ComDebug/SAKSerialPortDevice.hh
+        src/serialport/SAKSerialPortDebugPage.hh \
+        src/serialport/SAKSerialPortDeviceController.hh \
+        src/serialport/SAKSerialPortDevice.hh
     FORMS   += \
-        Src/DebugPage/ComDebug/SAKSerialPortDeviceController.ui
+        src/serialport/SAKSerialPortDeviceController.ui
     INCLUDEPATH += \
-        Src/DebugPage/ComDebug
+        Src/serialport
 }else {
     message( "不支持串口调试功能，忽略串口调试模块！（串口调试功能已被屏蔽！）" )
 }
