@@ -6,15 +6,6 @@ The goal of this project is to create an easy-to-use, cross-platform, multi-lang
 + Serial port debug
 + UDP debug
 + TCP debug
-+ USB debug (not support yet)
-+ HID debug (not support yet)
-+ CAN debug (not support yet)
-+ MQTT debug (not support yet)
-+ HTTP debug (not support yet)
-+ COAP debug (not support yet)
-+ LWM2M debug (not support yet)
-+ Modbus debug (not support yet)
-+ Bluetooth debug (not support yet)
 + ...
 ### Other Tools
 + File check tool
