@@ -254,10 +254,10 @@ void SAKMainWindow::initHelpMenu()
 
     QMenu *srcMenu = new QMenu(tr("获取源码"), this);
     helpMenu->addMenu(srcMenu);
-    QAction *visitGitHubAction = new QAction(QIcon(":/Resources/Images/GitHub.png"), tr("GitHub"), this);
+    QAction *visitGitHubAction = new QAction(QIcon(":/resources/images/GitHub.png"), tr("GitHub"), this);
     connect(visitGitHubAction, &QAction::triggered, [](){QDesktopServices::openUrl(QUrl(QLatin1String("https://github.com/wuuhii/QtSwissArmyKnife")));});
     srcMenu->addAction(visitGitHubAction);
-    QAction *visitGiteeAction = new QAction(QIcon(":/Resources/Images/Gitee.png"), tr("Gitee"), this);
+    QAction *visitGiteeAction = new QAction(QIcon(":/resources/images/Gitee.png"), tr("Gitee"), this);
     connect(visitGiteeAction, &QAction::triggered, [](){QDesktopServices::openUrl(QUrl(QLatin1String("https://gitee.com/wuuhii/QtSwissArmyKnife")));});
     srcMenu->addAction(visitGiteeAction);
 
