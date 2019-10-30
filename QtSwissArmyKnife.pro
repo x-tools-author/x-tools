@@ -40,12 +40,13 @@ OBJECTS_DIR = $$OUT_PWD/obj
 #--------------------------------------------------------------------------------------------
 #Windows配置
 win32 {
+    RC_ICONS = Windows.ico
     msvc:{
         QMAKE_CXXFLAGS += -execution-charset:utf-8
     }
 }
 
-RC_ICONS = Windows.ico
+
 #--------------------------------------------------------------------------------------------
 #国际化文件
 TRANSLATIONS  += \
