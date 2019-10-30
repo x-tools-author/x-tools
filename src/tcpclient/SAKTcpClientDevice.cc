@@ -71,6 +71,8 @@ void SAKTcpClientDevice::run()
         emit deviceStatuChanged(false);
         emit messageChanged(tr("无法绑定设备")+tcpSocket->errorString(), false);
     }
+
+    exec();
 }
 
 void SAKTcpClientDevice::afterDisconnected()
