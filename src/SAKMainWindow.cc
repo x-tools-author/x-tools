@@ -25,10 +25,8 @@
 #include <QStyleFactory>
 #include <QDesktopServices>
 
-#include "nslookup.h"
 #include "SAKGlobal.hh"
 #include "SAKVersion.hh"
-#include "SAKConsole.hh"
 #include "SAKSettings.hh"
 #include "UpdateManager.h"
 #include "CRCCalculator.hh"
@@ -38,7 +36,6 @@
 #include "SAKUdpDebugPage.hh"
 #include "MoreInformation.hh"
 #include "QtStyleSheetApi.hh"
-#include "GetPublicIPWidget.h"
 #include "SAKTcpClientDebugPage.hh"
 #include "SAKTcpServerDebugPage.hh"
 #include "QtCryptographicHashController.hh"
@@ -117,8 +114,6 @@ void SAKMainWindow::AddTab()
 
 void SAKMainWindow::AddTool()
 {
-    addTool(tr("域名转IP"),        new ToolsNsLookup);
-    addTool(tr("公网IP获取工具"),   new GetPublicIPWidget);
     addTool(tr("文件校验工具"),     new QtCryptographicHashController);
 
     QAction *action = nullptr;

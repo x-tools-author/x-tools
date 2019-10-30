@@ -15,7 +15,6 @@
 #include <stdlib.h>
 #include <QSettings>
 
-#include "SAKConsole.hh"
 #include "SAKGlobal.hh"
 
 int main(int argc, char *argv[])

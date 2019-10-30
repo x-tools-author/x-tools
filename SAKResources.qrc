@@ -1,2 +1,11 @@
 <RCC>
+    <qresource prefix="/">
+        <file>resources/files/History.txt</file>
+        <file>resources/images/America.png</file>
+        <file>resources/images/China.png</file>
+        <file>resources/images/Gitee.png</file>
+        <file>resources/images/GitHub.png</file>
+        <file>resources/images/Japan.png</file>
+        <file>resources/images/SAKLogo.png</file>
+    </qresource>
 </RCC>

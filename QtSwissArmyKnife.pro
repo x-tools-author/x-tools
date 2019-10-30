@@ -45,7 +45,7 @@ win32 {
     }
 }
 
-
+RC_ICONS = Windows.ico
 #--------------------------------------------------------------------------------------------
 #国际化文件
 TRANSLATIONS  += \
@@ -56,17 +56,40 @@ TRANSLATIONS  += \
 
 RESOURCES += \
     SAKResources.qrc \
-    src/tools/CRCCalculator/Resources/Resources.qrc \
-    src/tools/QtStyleSheetApi/Resources/StyleSheet/qss.qrc
 
 
-RC_ICONS = Windows.ico
+INCLUDEPATH += \
+    src \
+    src/base \
+    src/common \
+    src/page \
+    src/page/input \
+    src/page/other \
+    src/page/other/analyze \
+    src/page/other/autoresponse \
+    src/page/other/chart \
+    src/page/other/chart/morechart \
+    src/page/other/chart/throughput \
+    src/page/other/highlight \
+    src/page/other/more \
+    src/page/other/readwrite \
+    src/page/other/timing \
+    src/page/other/transmission \
+    src/page/output \
+    src/page/output/save \
+    src/page/statistics \
+    src/tcpclient \
+    src/tcpserver \
+    src/tools \
+    src/tools/crccalculator \
+    src/tools/filechecker \
+    src/udp \
+    src/update
 
 
 HEADERS +=  \
     src/MoreInformation.hh \
     src/SAKApplication.hh \
-    src/SAKCodingStyle.hh \
     src/SAKGlobal.hh \
     src/SAKMainWindow.hh \
     src/SAKSettings.hh \
@@ -86,6 +109,8 @@ HEADERS +=  \
     src/page/other/autoresponse/AutoResponseItemWidget.hh \
     src/page/other/autoresponse/AutoResponseSettingWidget.hh \
     src/page/other/chart/SAKChartManager.hh \
+    src/page/other/chart/morechart/MoreChartWidget.hh \
+    src/page/other/chart/throughput/ThroughputWidget.hh \
     src/page/other/highlight/HighlightSettings.hh \
     src/page/other/highlight/HighlightSettingsWidget.hh \
     src/page/other/more/MoreOtherSettingsWidget.hh \
@@ -128,7 +153,6 @@ HEADERS +=  \
 SOURCES +=  \
     src/MoreInformation.cc \
     src/SAKApplication.cc \
-    src/SAKCodingStyle.cc \
     src/SAKGlobal.cc \
     src/SAKMainWindow.cc \
     src/SAKSettings.cc \
@@ -149,6 +173,8 @@ SOURCES +=  \
     src/page/other/autoresponse/AutoResponseItemWidget.cc \
     src/page/other/autoresponse/AutoResponseSettingWidget.cc \
     src/page/other/chart/SAKChartManager.cc \
+    src/page/other/chart/morechart/MoreChartWidget.cc \
+    src/page/other/chart/throughput/ThroughputWidget.cc \
     src/page/other/highlight/HighlightSettings.cc \
     src/page/other/highlight/HighlightSettingsWidget.cc \
     src/page/other/more/MoreOtherSettingsWidget.cc \
@@ -198,6 +224,7 @@ FORMS +=  \
     src/page/other/analyze/FormatSettingsWidget.ui \
     src/page/other/autoresponse/AutoResponseItemWidget.ui \
     src/page/other/autoresponse/AutoResponseSettingWidget.ui \
+    src/page/other/chart/morechart/MoreChartWidget.ui \
     src/page/other/highlight/HighlightSettingsWidget.ui \
     src/page/other/more/MoreOtherSettingsWidget.ui \
     src/page/other/readwrite/ReadWriteSettingsWidget.ui \
@@ -217,12 +244,3 @@ FORMS +=  \
     src/update/CheckForUpdateDialog.ui \
     src/update/ConfirmUpdateDialog.ui \
     src/update/DownloadDialog.ui
-
-
-INCLUDEPATH += \
-    Src \
-    Src/Base
-
-DISTFILES += \
-    src/tools/filechecker/QtCryptographicHash.pri \
-    src/update/Update.pri
