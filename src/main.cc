@@ -8,23 +8,9 @@
  */
 #include "SAKApplication.hh"
 
-#include <QMessageLogContext>
-#include <QDateTime>
-#include <QDebug>
-#include <stdio.h>
-#include <stdlib.h>
-#include <QSettings>
-
-#include "SAKGlobal.hh"
-
 int main(int argc, char *argv[])
 {
-#ifndef QT_DEBUG
-    qInstallMessageHandler(SAKConsole::messageRedirection);
-#endif
     SAKApplication a(argc, argv);
-
-    qInfo() << "The applincation has started, The log will be save in file:" << SAKGlobal::logFile();
 
     return a.exec();
 }
