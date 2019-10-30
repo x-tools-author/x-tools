@@ -4,10 +4,10 @@
 #
 #-------------------------------------------------
 HEADERS += \
-    $${PWD}/Src/QtStyleSheetApi.hh
+    $${PWD}/src/QtStyleSheetApi.hh
 SOURCES += \
-    $${PWD}/Src/QtStyleSheetApi.cc
-INCLUDEPATH += \
-    $$PWD/Src
+    $${PWD}/src/QtStyleSheetApi.cc
 RESOURCES   += \
-    $$PWD/Resources/StyleSheet/qss.qrc
+    $$PWD/resources/qss.qrc
+INCLUDEPATH += \
+    $$PWD/src
