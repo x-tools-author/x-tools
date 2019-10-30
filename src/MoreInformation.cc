@@ -20,7 +20,7 @@ MoreInformation::MoreInformation(QWidget* parent)
 
     textBrowserHistory = ui->textBrowserHistory;
     textBrowserHistory->clear();
-    QFile file(":/Resources/Files/History.txt");
+    QFile file(":/resources/files/History.txt");
     if (file.open(QFile::ReadOnly)){
         QByteArray data = file.readAll();
         textBrowserHistory->setText(QString::fromUtf8(data));
