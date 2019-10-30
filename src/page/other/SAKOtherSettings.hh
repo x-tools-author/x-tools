@@ -42,7 +42,6 @@ private:
     QPushButton                 *readWriteSettingPushButton     = nullptr;  // 读写设置面板调出按钮
     QPushButton                 *transmissionSettingPushButton  = nullptr;  // 数据转发设置面板调出按钮
     QPushButton                 *moreOtherSettingsPushButton    = nullptr;  // 更多其他设置按钮
-    QPushButton                 *formatSettingsPushButton       = nullptr;  // 格式设置
     QPushButton                 *timingSendPushButton           = nullptr;  // 自动会回复
 
     TransmissionSettings        *transmissionSettings;                      // 数据转发设置面板

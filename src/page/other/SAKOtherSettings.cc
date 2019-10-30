@@ -43,7 +43,6 @@ SAKOtherSettings::SAKOtherSettings(SAKDebugPage *debugPage, QObject *parent)
     readWriteSettingPushButton      = _debugPage->ui->readWriteSettingPushButton;
     transmissionSettingPushButton   = _debugPage->ui->transmissionSettingPushButton;
     moreOtherSettingsPushButton     = _debugPage->ui->moreOhterSettingsPushButton;    
-    formatSettingsPushButton        = _debugPage->ui->formatSettingsPushButton;
     timingSendPushButton            = _debugPage->ui->timingSendPushButton;
 
     connect(autoResponseSettingPushButton, &QPushButton::clicked, this, &SAKOtherSettings::onAutoresponseSettingPushbuttonClicked);
@@ -51,7 +50,6 @@ SAKOtherSettings::SAKOtherSettings(SAKDebugPage *debugPage, QObject *parent)
     connect(readWriteSettingPushButton,    &QPushButton::clicked, this, &SAKOtherSettings::onReadWriteSettingPushButtonClicked);
     connect(transmissionSettingPushButton, &QPushButton::clicked, this, &SAKOtherSettings::onTransmissionSettingPushButtonClicked);
     connect(moreOtherSettingsPushButton,   &QPushButton::clicked, this, &SAKOtherSettings::onMoreOtherSettingsPushButtonClicked);
-    connect(formatSettingsPushButton,      &QPushButton::clicked, this, &SAKOtherSettings::onFormatSettingsPushButtonClicked);
     connect(timingSendPushButton,          &QPushButton::clicked, this, &SAKOtherSettings::onTimingSendPushButtonClicked);
 }
 
