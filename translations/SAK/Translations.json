@@ -1,0 +1,17 @@
+﻿[
+    {
+        Locale: Chinese
+        Language: zh_CN
+        name: 简体中文
+    },
+    {
+        Locale: Chinese
+        Language: zh_CN
+        name: 繁體中文
+    },
+    {
+        Locale: America
+        Language: en
+        name: English
+    }
+]
