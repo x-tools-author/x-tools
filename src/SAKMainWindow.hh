@@ -24,6 +24,7 @@
 #include <QMessageBox>
 #include <QHBoxLayout>
 #include <QMainWindow>
+#include <QTranslator>
 
 class SAKVersion;
 class UpdateManager;
@@ -45,13 +46,19 @@ private:
     QTabWidget* mpTabWidget             = nullptr;
     Ui::SAKMainWindow* ui               = nullptr;
     QMenu* toolsMenu                    = nullptr;
+    QMenu *languageMenu                 = nullptr;
     QAction *defaultStyleSheetAction    = nullptr;
     SAKVersion* versionDialog           = nullptr;
     UpdateManager* updateManager        = nullptr;
-    MoreInformation* moreInformation    = nullptr;
+    MoreInformation* moreInformation    = nullptr;   
+
+    QTranslator qtTranslator;
+    QTranslator qtBaeTranslator;
+    QTranslator sakTranslator;
 
     const char* appStyleKey = "Universal/appStyle";
     const char* appStylesheetKey = "Universal/appStylesheet";
+    const char* settingStringLanguage = "Universal/language";
     /// ----------------------------------------------------
     void AddTab();    
     void AddTool();
@@ -64,30 +71,16 @@ private:
     void initFileMenu();
     void initToolMenu();
     void initOptionMenu();
+    void initLanguageMenu();
     void initHelpMenu();
 
-    /**
-     * @brief addRemovablePage  -- 添加可删除的设备页面（只能通过信号来调用）
-     */
+
+    void installLanguage();
+    void installLanguageFromLocale(QString language);
     void addRemovablePage();
-
-    /**
-     * @brief openIODeviceWindow    -- 打开一个设备窗口（只能通过信号来调用）
-     */
     void openIODeviceWindow();
-    /**
-     * @brief getDebugPage 获取调试页面窗口
-     * @param type 窗口类型
-     * @return  调试页面
-     */
     QWidget *getDebugPage(int type);
-
-    /**
-     * @brief closeDebugPage 关闭调试页面
-     * @param index 需要关闭的调试页面
-     */
     void closeDebugPage(int index);
-
     void About();
 private:
     void createCRCCalculator();

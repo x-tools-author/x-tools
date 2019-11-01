@@ -12,6 +12,7 @@
 #include <QDebug>
 #include <QSettings>
 #include <QTextCursor>
+#include <QTranslator>
 
 SAKApplication::SAKApplication(int argc, char **argv):
     QApplication(argc, argv)
@@ -23,6 +24,11 @@ SAKApplication::SAKApplication(int argc, char **argv):
 
     /// 本工程好像并没有使用QTextCursor作为信号参数，根据Qt Creator的提示要求，添加该语句
     qRegisterMetaType<QTextCursor>("QTextCursor");
+
+//    QTranslator *qtTranslator = new QTranslator(this);
+//    bool ok = qtTranslator->load(QString(":/translations/Qt_zh_CN.qm"));
+//    installTranslator(qtTranslator);
+//    qDebug() << QString(":/translations/Qt_zh_CN.qm") << ok;
 
     mpMainWindow = new SAKMainWindow;
     mpMainWindow->show();

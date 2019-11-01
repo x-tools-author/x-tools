@@ -7,5 +7,17 @@
         <file>resources/images/GitHub.png</file>
         <file>resources/images/Japan.png</file>
         <file>resources/images/SAKLogo.png</file>
+        <file>translations/Qt/qt_en.qm</file>
+        <file>translations/Qt/qt_zh_CN.qm</file>
+        <file>translations/Qt/qt_zh_TW.qm</file>
+        <file>translations/Qt/qtbase_en.qm</file>
+        <file>translations/Qt/qtbase_zh_CN.qm</file>
+        <file>translations/Qt/qtbase_zh_TW.qm</file>
+        <file>translations/SAK/America.png</file>
+        <file>translations/SAK/China.png</file>
+        <file>translations/SAK/SAK_en.ts</file>
+        <file>translations/SAK/SAK_zh_CN.ts</file>
+        <file>translations/SAK/SAK_zh_TW.ts</file>
+        <file>translations/SAK/Translations.json</file>
     </qresource>
 </RCC>

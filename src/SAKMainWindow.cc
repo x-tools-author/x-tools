@@ -14,15 +14,21 @@
  * but for "installing B".
  */
 #include <QFile>
+
+#include <QLocale>
 #include <QTabBar>
 #include <QAction>
 #include <QVariant>
 #include <QSysInfo>
 #include <QMetaEnum>
 #include <QSettings>
+#include <QJsonArray>
+#include <QJsonObject>
 #include <QSpacerItem>
 #include <QMessageBox>
 #include <QStyleFactory>
+#include <QJsonDocument>
+#include <QJsonParseError>
 #include <QDesktopServices>
 
 #include "SAKGlobal.hh"
@@ -54,6 +60,7 @@
 
 #include "ui_SAKMainWindow.h"
 
+#include <QDebug>
 const static char* configureFile = "http://wuhai.pro/software/QtSwissArmyKnife/update.json";
 SAKMainWindow::SAKMainWindow(QWidget *parent)
     :QMainWindow (parent)
@@ -152,8 +159,9 @@ void SAKMainWindow::initMenu()
 {
     initFileMenu();
     initToolMenu();
-    initOptionMenu();
+    initOptionMenu();    
     initHelpMenu();
+    initLanguageMenu();
 }
 
 void SAKMainWindow::initFileMenu()
@@ -239,6 +247,72 @@ void SAKMainWindow::initOptionMenu()
     QtAppStyleApi::instance()->setStyle(style);
 }
 
+void SAKMainWindow::initLanguageMenu()
+{
+    delete languageMenu;
+    languageMenu = new QMenu(QString("语言(Languang)"), this);
+    menuBar()->addMenu(languageMenu);
+
+    QString language = SAKSettings::instance()->value(settingStringLanguage).toString();
+    if (language.isEmpty()){
+        if (QLocale().country() == QLocale::China){
+            installLanguageFromLocale("zh_CN");
+            languageMenu->setTitle(QString("简体中文"));
+        }else{
+            installLanguageFromLocale("en");
+            languageMenu->setTitle(QString(language.split('-').first()));
+        }
+    }else{
+        installLanguageFromLocale(language);
+        languageMenu->setTitle(language.split('-').last());
+    }
+
+    QFile file(":/translations/SAK/Translations.json");
+    file.open(QFile::ReadOnly);
+    QByteArray jsonData = file.readAll();
+
+    QJsonParseError jsonError;
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(jsonData, &jsonError);
+    if (jsonError.error == QJsonParseError::NoError){
+        if (jsonDocument.isArray()){
+            QJsonArray jsonArray = jsonDocument.array();
+            struct info {
+                QString locale;
+                QString language;
+                QString name;
+            };
+            QList<info> infoList;
+
+            for (int i = 0; i < jsonArray.count(); i++){
+                QJsonObject jsonObject = jsonArray.at(i).toObject();
+                struct info languageInfo;
+                languageInfo.locale = jsonObject.value("locale").toString();
+                languageInfo.language = jsonObject.value("language").toString();
+                languageInfo.name = jsonObject.value("name").toString();
+                infoList.append(languageInfo);
+            }
+
+            QActionGroup *actionGroup = new QActionGroup(this);
+            for(auto var:infoList){
+                QAction *action = new QAction(var.name, languageMenu);
+                languageMenu->addAction(action);
+                action->setCheckable(true);
+                actionGroup->addAction(action);
+                action->setObjectName(var.language);
+                action->setData(QVariant::fromValue<QString>(var.name));
+                action->setIcon(QIcon(QString(":/translations/SAK/%1").arg(var.locale).toLatin1()));
+                connect(action, &QAction::triggered, this, &SAKMainWindow::installLanguage);
+
+                if (var.language == language){
+                    action->setChecked(true);
+                }
+            }
+        }
+    }else{
+        Q_ASSERT_X(false, __FUNCTION__, "Json file parsing failed!");
+    }    
+}
+
 void SAKMainWindow::initHelpMenu()
 {
     QMenu *helpMenu = new QMenu(tr("帮助"), this);
@@ -268,6 +342,37 @@ void SAKMainWindow::initHelpMenu()
     QAction *moreInformationAction = new QAction(tr("更多信息"), this);
     helpMenu->addAction(moreInformationAction);
     connect(moreInformationAction, &QAction::triggered, moreInformation, &MoreInformation::show);
+}
+
+void SAKMainWindow::installLanguage()
+{
+    if (!sender()){
+        return;
+    }
+
+    QString language = sender()->objectName();
+    installLanguageFromLocale(language);
+}
+
+void SAKMainWindow::installLanguageFromLocale(QString language)
+{
+    qtBaeTranslator.load(QString(":/translations/Qt/qtbase_%1.qm").arg(language));
+    qApp->installTranslator(&qtBaeTranslator);
+
+    qtTranslator.load(QString(":/translations/Qt/qt_%1.qm").arg(language));
+    qApp->installTranslator(&qtTranslator);
+
+    sakTranslator.load(QString(":/translations/SAK/SAK_%1.qm").arg(language));
+    qApp->installTranslator(&sakTranslator);
+
+    if (sender()){
+        QAction *action = reinterpret_cast<QAction*>(sender());
+        action->setChecked(true);
+        QString title = action->data().toString();
+        languageMenu->setTitle(title);
+
+        SAKSettings::instance()->setValue(settingStringLanguage, language+"-"+title);
+    }
 }
 
 void SAKMainWindow::addRemovablePage()

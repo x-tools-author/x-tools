@@ -36,7 +36,6 @@ MOC_DIR     = $$OUT_PWD/moc
 RCC_DIR     = $$OUT_PWD/res
 OBJECTS_DIR = $$OUT_PWD/obj
 
-
 #--------------------------------------------------------------------------------------------
 #Windows配置
 win32 {
@@ -50,9 +49,9 @@ win32 {
 #--------------------------------------------------------------------------------------------
 #国际化文件
 TRANSLATIONS  += \
-    Translations/SAK_en.ts \
-    Translations/SAK_zh_CN.ts \
-    Translations/SAK_zh_TW.ts
+    Translations/SAK/SAK_en.ts \
+    Translations/SAK/SAK_zh_CN.ts \
+    Translations/SAK/SAK_zh_TW.ts
 
 
 RESOURCES += \

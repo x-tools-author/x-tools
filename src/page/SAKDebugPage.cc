@@ -163,7 +163,9 @@ void SAKDebugPage::setUpController()
         QHBoxLayout *layout = new QHBoxLayout(deviceSettingFrame);
         deviceSettingFrame->setLayout(layout);
         layout->addWidget(controller);
+#if 0
         layout->setMargin(0);
+#endif
     }
 }
 
