@@ -1,4 +1,5 @@
 *.user
 *.user.*
+build*
 Custom
 SAKCustomConfiguration.pri
