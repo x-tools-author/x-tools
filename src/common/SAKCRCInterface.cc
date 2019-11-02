@@ -8,12 +8,7 @@
  *
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
- * Welcome to bother.
- *
- * I write the comment in English, it's not because that I'm good at English,
- * but for "installing B".
  */
-
 #include <QMetaEnum>
 
 #include "SAKCRCInterface.hh"

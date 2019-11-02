@@ -8,10 +8,6 @@
  *
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
- * Welcome to bother.
- *
- * I write the comment in English, it's not because that I'm good at English,
- * but for "installing B".
  */
 #ifndef TCPTRANSMISSIONITEMWIDGET_HH
 #define TCPTRANSMISSIONITEMWIDGET_HH
@@ -31,7 +27,7 @@ class TcpTransmissionItemWidget:public BaseTransmissionItemWidget
 {
     Q_OBJECT
 public:
-    TcpTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent = nullptr);
+    TcpTransmissionItemWidget(SAKDebugPage *_debugPage, QWidget *parent = nullptr);
     ~TcpTransmissionItemWidget();
 
     virtual void write(QByteArray data);
