@@ -10,10 +10,12 @@
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
 #include "SAKGlobal.hh"
+#include "SAKCRCInterface.hh"
 
 #include <QDir>
 #include <QFile>
 #include <QDebug>
+#include <QMetaEnum>
 #include <QSerialPort>
 #include <QHostAddress>
 #include <QStandardPaths>
@@ -195,6 +197,17 @@ void SAKGlobal::initTextFormatComboBox(QComboBox *comboBox)
         comboBox->addItem(tr("系统地区"), Local);
 
         comboBox->setCurrentIndex(4);
+    }
+}
+
+void SAKGlobal::initCRCComboBox(QComboBox *comboBox)
+{
+    if (comboBox){
+        comboBox->clear();
+        QMetaEnum enums = QMetaEnum::fromType<SAKCRCInterface::CRCModel>();
+        for (int i = 0; i < enums.keyCount(); i++){
+            comboBox->addItem(QString(enums.key(i)), QVariant::fromValue(enums.value(i)));
+        }
     }
 }
 

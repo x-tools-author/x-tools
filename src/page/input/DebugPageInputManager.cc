@@ -51,7 +51,7 @@ DebugPageInputManager::DebugPageInputManager(SAKDebugPage *debugPage, QObject *p
 
     sendPushButton->setEnabled(false);
     SAKGlobal::initTextFormatComboBox(inputModelComboBox);
-    SAKCRCInterface::initCRCComboBox(crcParameterModelsComboBox);
+    SAKGlobal::initCRCComboBox(crcParameterModelsComboBox);
 
     connect(inputModelComboBox,         &QComboBox::currentTextChanged, this, &DebugPageInputManager::changeInputModel);
     connect(cycleEnableCheckBox,        &QCheckBox::clicked,            this, &DebugPageInputManager::changeCycleEnableFlag);

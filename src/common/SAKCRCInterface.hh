@@ -26,8 +26,6 @@ public:
      */
     SAKCRCInterface(QObject *parent = nullptr);
 
-    static void initCRCComboBox(QComboBox *comboBox);
-
     /**
      * @brief The CRCModel enum -- crc算法模型（crc参数模型）
      */

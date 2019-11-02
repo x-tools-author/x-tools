@@ -83,15 +83,21 @@ public:
 
     /**
      * @brief initIpComboBox 获取本机所有ip v4地址，并添加至comboBox中
-     * @param comboBox 需要出示化的comboBox实例指针
+     * @param comboBox 需要初始化的comboBox实例指针
      */
     static void initIpComboBox(QComboBox *comboBox);
 
     /**
      * @brief initTextFormatComboBox 初始化输入文本格式，格式详情查看SAKLineEditInputTextFormat
-     * @param comboBox 需要出示化的comboBox实例指针
+     * @param comboBox 需要初始化的comboBox实例指针
      */
     static void initTextFormatComboBox(QComboBox *comboBox);
+
+    /**
+     * @brief initCRCComboBox 初始化crc列表
+     * @param comboBox 需要初始化的comboBox实例指针
+     */
+    static void initCRCComboBox(QComboBox *comboBox);
 };
 
 #endif
