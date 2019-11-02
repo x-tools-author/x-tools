@@ -21,7 +21,7 @@ The goal of this project is to create an easy-to-use, multi-function, multi-lang
 | Compiler(api)  | MSVC 2017   | GCC 7.3      | CLANG 9      |  GCC 4.9        | api level 28 | api level 28 |
 
 ## Ui-Main Window
-![MainWindow.png](https://github.com/wuuhii/QtSwissArmyKnife/MainWindow.png)
+![MainWindow.png](MainWindow.png)
 
 ## About Project
 + Author   : wuuhii
