@@ -13,7 +13,7 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#include "SAKBase.hh"
+#include "SAKGlobal.hh"
 #include "SAKDebugPage.hh"
 #include "InputDataItem.hh"
 #include "SAKCRCInterface.hh"
@@ -54,7 +54,7 @@ DebugPageInputManager::DebugPageInputManager(SAKDebugPage *debugPage, QObject *p
     sendPresetPushButton        = debugPage->sendPresetPushButton;
 
     sendPushButton->setEnabled(false);
-    SAKBase::instance()->initTextFormatComboBox(inputModelComboBox);
+    SAKGlobal::initTextFormatComboBox(inputModelComboBox);
     SAKCRCInterface::initCRCComboBox(crcParameterModelsComboBox);
 
     connect(inputModelComboBox,         &QComboBox::currentTextChanged, this, &DebugPageInputManager::changeInputModel);
@@ -284,7 +284,7 @@ void DebugPageInputManager::formattingInputText(QTextEdit *textEdit, int model)
     textEdit->blockSignals(true);
     QString plaintext = textEdit->toPlainText();
     if (!plaintext.isEmpty()){
-        if (model == SAKBase::Bin){
+        if (model == SAKGlobal::Bin){
             QString strTemp;
             plaintext.remove(QRegExp("[^0-1]"));
             for (int i = 0; i < plaintext.length(); i++){
@@ -295,7 +295,7 @@ void DebugPageInputManager::formattingInputText(QTextEdit *textEdit, int model)
             }
             textEdit->setText(strTemp);
             textEdit->moveCursor(QTextCursor::End);
-        }else if(model == SAKBase::Oct) {
+        }else if(model == SAKGlobal::Oct) {
             QString strTemp;
             plaintext.remove(QRegExp("[^0-7]"));
             for (int i = 0; i < plaintext.length(); i++){
@@ -306,7 +306,7 @@ void DebugPageInputManager::formattingInputText(QTextEdit *textEdit, int model)
             }
             textEdit->setText(strTemp);
             textEdit->moveCursor(QTextCursor::End);
-        }else if(model == SAKBase::Dec) {
+        }else if(model == SAKGlobal::Dec) {
             QString strTemp;
             plaintext.remove(QRegExp("[^0-9]"));
             for (int i = 0; i < plaintext.length(); i++){
@@ -317,7 +317,7 @@ void DebugPageInputManager::formattingInputText(QTextEdit *textEdit, int model)
             }
             textEdit->setText(strTemp);
             textEdit->moveCursor(QTextCursor::End);
-        }else if(model == SAKBase::Hex) {
+        }else if(model == SAKGlobal::Hex) {
             QString strTemp;
             plaintext.remove(QRegExp("[^0-9a-fA-F]"));
             for (int i = 0; i < plaintext.length(); i++){
@@ -328,11 +328,11 @@ void DebugPageInputManager::formattingInputText(QTextEdit *textEdit, int model)
             }
             textEdit->setText(strTemp.toUpper());
             textEdit->moveCursor(QTextCursor::End);
-        }else if(model == SAKBase::Ascii) {
+        }else if(model == SAKGlobal::Ascii) {
             plaintext.remove(QRegExp("[^\0u00-\u007f ]"));
             textEdit->setText(plaintext);
             textEdit->moveCursor(QTextCursor::End);
-        }else if(model == SAKBase::Local) {
+        }else if(model == SAKGlobal::Local) {
             /// nothing to do
         }else {
             Q_ASSERT_X(false, __FUNCTION__, "Unknow input model");

@@ -13,7 +13,7 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#include "SAKBase.hh"
+#include "SAKGlobal.hh"
 #include "OutputDataFactory.hh"
 #include "DebugPageOutputManager.hh"
 #include "SaveOutputDataSettings.hh"
@@ -54,7 +54,7 @@ DebugPageOutputManager::DebugPageOutputManager(SAKDebugPage *debugPage, QObject 
 
 
     // 初始化数据格式预选框
-    SAKBase::instance()->initTextFormatComboBox(outputModelComboBox);
+    SAKGlobal::initTextFormatComboBox(outputModelComboBox);
 
     /*
      * 处理已接收或者是已发送的数据

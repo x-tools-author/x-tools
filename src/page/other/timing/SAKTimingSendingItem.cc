@@ -13,7 +13,7 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#include "SAKBase.hh"
+#include "SAKGlobal.hh"
 #include "SAKTimingSendingItem.hh"
 
 #include "ui_SAKTimingSendingItem.h"
@@ -42,7 +42,7 @@ SAKTimingSendingItem::SAKTimingSendingItem(SAKDebugPage *debugPage, QWidget *par
     writeTimer.setInterval(timingTimeLineEdit->text().toInt());
     connect(&writeTimer, &QTimer::timeout, this, &SAKTimingSendingItem::write);
 
-    SAKBase::instance()->initTextFormatComboBox(textFormatComboBox);
+    SAKGlobal::initTextFormatComboBox(textFormatComboBox);
 }
 
 SAKTimingSendingItem::~SAKTimingSendingItem()

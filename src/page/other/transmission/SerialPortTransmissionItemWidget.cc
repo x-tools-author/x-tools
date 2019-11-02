@@ -13,8 +13,9 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#include "SAKBase.hh"
+#include "SAKGlobal.hh"
 #include "SAKDebugPage.hh"
+#include "BaseTransmissionItemWidget.hh"
 #include "SerialPortTransmissionItemWidget.hh"
 #include "ui_SerialPortTransmissionItemWidget.h"
 
@@ -24,8 +25,8 @@
 Q_DECLARE_METATYPE(QSerialPortInfo)
 #endif
 
-SerialPortTransmissionItemWidget::SerialPortTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent)
-    :BaseTransmissionItemWidget (debugPage, parent)
+SerialPortTransmissionItemWidget::SerialPortTransmissionItemWidget(SAKDebugPage *_debugPage, QWidget *parent)
+    :BaseTransmissionItemWidget (_debugPage, parent)
 #ifdef SAK_IMPORT_COM_MODULE
     ,ui (new Ui::SerialPortTransmissionItemWidget)
     ,serialPort (nullptr)
@@ -42,11 +43,11 @@ SerialPortTransmissionItemWidget::SerialPortTransmissionItemWidget(SAKDebugPage 
     stopBitscomboBox            = ui->stopBitscomboBox;
     parityComboBox              = ui->parityComboBox;
 
-    SAKBase::instance()->initComComboBox(comComboBox);
-    SAKBase::instance()->initBaudRateComboBox(baudRateComboBox);
-    SAKBase::instance()->initDataBitsComboBox(dataBitscomboBox);
-    SAKBase::instance()->initStopBitsComboBox(stopBitscomboBox);
-    SAKBase::instance()->initParityComboBox(parityComboBox);
+    SAKGlobal::initComComboBox(comComboBox);
+    SAKGlobal::initBaudRateComboBox(baudRateComboBox);
+    SAKGlobal::initDataBitsComboBox(dataBitscomboBox);
+    SAKGlobal::initStopBitsComboBox(stopBitscomboBox);
+    SAKGlobal::initParityComboBox(parityComboBox);
 
     handleReceiveDataCheckBox->setChecked(true);
 #else

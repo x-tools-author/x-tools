@@ -33,11 +33,12 @@ namespace Ui {
     class SerialPortTransmissionItemWidget;
 }
 
+class SAKDebugPage;
 class SerialPortTransmissionItemWidget:public BaseTransmissionItemWidget
 {
     Q_OBJECT
 public:
-    SerialPortTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent = nullptr);
+    SerialPortTransmissionItemWidget(SAKDebugPage *_debugPage, QWidget *parent = nullptr);
 
 #ifdef SAK_IMPORT_COM_MODULE
      ~SerialPortTransmissionItemWidget();

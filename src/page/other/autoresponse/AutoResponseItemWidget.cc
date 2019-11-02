@@ -13,7 +13,7 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#include "SAKBase.hh"
+#include "SAKGlobal.hh"
 #include "AutoResponseItemWidget.hh"
 #include "ui_AutoResponseItemWidget.h"
 
@@ -40,8 +40,8 @@ AutoResponseItemWidget::AutoResponseItemWidget(SAKDebugPage *debugPage, QWidget 
     optionComboBox->addItem(tr("接收数据包含参考数据时自动回复"), QVariant::fromValue<int>(Contain));
     optionComboBox->addItem(tr("接收数据不包含参考数据时自动回复"), QVariant::fromValue<int>(Notcontain));
 
-    SAKBase::instance()->initTextFormatComboBox(referenceDataFromatComboBox);
-    SAKBase::instance()->initTextFormatComboBox(responseDataFormatComboBox);
+    SAKGlobal::initTextFormatComboBox(referenceDataFromatComboBox);
+    SAKGlobal::initTextFormatComboBox(responseDataFormatComboBox);
 
     connect(debugPage, &SAKDebugPage::bytesRead, this, &AutoResponseItemWidget::dataRead);
     connect(this, &AutoResponseItemWidget::requestWrite, debugPage, &SAKDebugPage::write);
@@ -69,25 +69,25 @@ void AutoResponseItemWidget::setLineEditFormat(QLineEdit *lineEdit, int format)
         lineEdit->setValidator(nullptr);
         lineEdit->clear();
         switch (format) {
-        case SAKBase::Bin:
+        case SAKGlobal::Bin:
             lineEdit->setValidator(new QRegExpValidator(regExpBin, this));
             break;
-        case SAKBase::Oct:
+        case SAKGlobal::Oct:
             lineEdit->setValidator(new QRegExpValidator(regExpOct, this));
             break;
-        case SAKBase::Dec:
+        case SAKGlobal::Dec:
             lineEdit->setValidator(new QRegExpValidator(regExpDec, this));
             break;
-        case SAKBase::Hex:
+        case SAKGlobal::Hex:
             lineEdit->setValidator(new QRegExpValidator(regExpHex, this));
             break;
-        case SAKBase::Ascii:
+        case SAKGlobal::Ascii:
             lineEdit->setValidator(new QRegExpValidator(regExpAscii, this));
             break;
-        case SAKBase::Utf8:
+        case SAKGlobal::Utf8:
             lineEdit->setValidator(nullptr);
             break;
-        case SAKBase::Local:
+        case SAKGlobal::Local:
             lineEdit->setValidator(nullptr);
             break;
         default:
@@ -141,33 +141,33 @@ QByteArray AutoResponseItemWidget::string2array(QString str, int format)
     QStringList strList;
     int base;
     switch (format) {
-    case SAKBase::Bin:
+    case SAKGlobal::Bin:
         base = 2;
         strList = str.split(' ');
         array = stringList2Array(strList, base);
         break;
-    case SAKBase::Oct:
+    case SAKGlobal::Oct:
         base = 8;
         strList = str.split(' ');
         array = stringList2Array(strList, base);
         break;
-    case SAKBase::Dec:
+    case SAKGlobal::Dec:
         base = 10;
         strList = str.split(' ');
         array = stringList2Array(strList, base);
         break;
-    case SAKBase::Hex:
+    case SAKGlobal::Hex:
         base = 16;
         strList = str.split(' ');
         array = stringList2Array(strList, base);
         break;
-    case SAKBase::Ascii:
+    case SAKGlobal::Ascii:
         array = str.toLatin1();
         break;
-    case SAKBase::Utf8:
+    case SAKGlobal::Utf8:
         array = str.toUtf8();
         break;
-    case SAKBase::Local:
+    case SAKGlobal::Local:
         array = str.toLocal8Bit();
         break;
     default:

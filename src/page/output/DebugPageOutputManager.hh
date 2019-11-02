@@ -38,7 +38,7 @@ public:
         bool showTime;      // 是否显示时间
         bool showMS;        // 是否显示毫秒
         bool isReceivedData;// 是否为接收到的数据
-        int  textModel;     // 输出数据格式SAKBase::SAKTextFormat
+        int  textModel;     // 输出数据格式SAKGlobal::SAKTextFormat
     };
 private:
     SAKDebugPage *debugPage;

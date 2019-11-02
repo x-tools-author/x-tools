@@ -14,7 +14,7 @@
  * but for "installing B".
  */
 #include <QHostAddress>
-#include "SAKBase.hh"
+#include "SAKGlobal.hh"
 #include "TcpTransmissionItemWidget.hh"
 #include "ui_TcpTransmissionItemWidget.h"
 
@@ -33,7 +33,7 @@ TcpTransmissionItemWidget::TcpTransmissionItemWidget(SAKDebugPage *debugPage, QW
     serverAddressLineEdit = ui->targetAddressLineEdit;
     serverPortLineEdit = ui->targetPortLineEdit;
 
-    SAKBase::instance()->initIpComboBox(localAddressComboBox);
+    SAKGlobal::initIpComboBox(localAddressComboBox);
 }
 
 TcpTransmissionItemWidget::~TcpTransmissionItemWidget()

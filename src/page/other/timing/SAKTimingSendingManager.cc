@@ -13,7 +13,7 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#include "SAKBase.hh"
+#include "SAKGlobal.hh"
 #include "SAKTimingSendingItem.hh"
 #include "SAKTimingSendingManager.hh"
 

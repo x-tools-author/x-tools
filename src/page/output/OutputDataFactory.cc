@@ -14,7 +14,7 @@
  * but for "installing B".
  */
 #include <QApplication>
-#include "SAKBase.hh"
+#include "SAKGlobal.hh"
 #include "OutputDataFactory.hh"
 
 OutputDataFactory::OutputDataFactory(QObject *parent)
@@ -56,27 +56,27 @@ void OutputDataFactory::cookData(QByteArray rawData, DebugPageOutputManager::Out
     }
     str.append("<font color=silver>] </font>");
 
-    if (parameters.textModel == SAKBase::Bin){
+    if (parameters.textModel == SAKGlobal::Bin){
         for (int i = 0; i < rawData.length(); i++){
             str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(rawData.at(i)), 2), 8, '0'));
         }
-    }else if (parameters.textModel == SAKBase::Oct){
+    }else if (parameters.textModel == SAKGlobal::Oct){
         for (int i = 0; i < rawData.length(); i++){
             str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(rawData.at(i)), 8), 3, '0'));
         }
-    }else if (parameters.textModel == SAKBase::Dec){
+    }else if (parameters.textModel == SAKGlobal::Dec){
         for (int i = 0; i < rawData.length(); i++){
             str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(rawData.at(i)), 10)));
         }
-    }else if (parameters.textModel == SAKBase::Hex){
+    }else if (parameters.textModel == SAKGlobal::Hex){
         for (int i = 0; i < rawData.length(); i++){
             str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(rawData.at(i)), 16), 2, '0'));
         }
-    }else if (parameters.textModel == SAKBase::Ascii){
+    }else if (parameters.textModel == SAKGlobal::Ascii){
         str.append(QString::fromLatin1(rawData));
-    }else if (parameters.textModel == SAKBase::Utf8){
+    }else if (parameters.textModel == SAKGlobal::Utf8){
         str.append(QString::fromUtf8(rawData));
-    }else if (parameters.textModel == SAKBase::Local){
+    }else if (parameters.textModel == SAKGlobal::Local){
         str.append(QString::fromLocal8Bit(rawData));
     }else {
         str.append(QString::fromUtf8(rawData));

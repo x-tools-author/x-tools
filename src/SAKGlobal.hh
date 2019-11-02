@@ -10,6 +10,7 @@
 #define SAKGLOBAL_HH
 
 #include <QObject>
+#include <QComboBox>
 
 class SAKGlobal:public QObject
 {
@@ -33,6 +34,10 @@ public:
         SAKEnumDebugPageTypeTCPServer
     };
     Q_ENUM(SAKEnumDebugPageType)
+
+    enum SAKTextFormat {
+        Bin,Oct,Dec,Hex,Ascii,Utf8,Local
+    };
 
     /**
      * @brief SAKGlobal -- 构造函数
@@ -61,6 +66,29 @@ public:
      * @return                      -- 设备类型名称
      */
     static QString getIODeviceTypeName(int type);
+
+#ifdef SAK_IMPORT_COM_MODULE
+    /*
+     * 串口相关参数显示初始化
+     */
+    static void initComComboBox(QComboBox *comboBox);
+    static void initBaudRateComboBox(QComboBox *comboBox);
+    static void initDataBitsComboBox(QComboBox *comboBox);
+    static void initStopBitsComboBox(QComboBox *comboBox);
+    static void initParityComboBox(QComboBox *comboBox);
+#endif
+
+    /**
+     * @brief initIpComboBox 获取本机所有ip v4地址，并添加至comboBox中
+     * @param comboBox 需要出示化的comboBox实例指针
+     */
+    static void initIpComboBox(QComboBox *comboBox);
+
+    /**
+     * @brief initTextFormatComboBox 初始化输入文本格式，格式详情查看SAKLineEditInputTextFormat
+     * @param comboBox 需要出示化的comboBox实例指针
+     */
+    static void initTextFormatComboBox(QComboBox *comboBox);
 };
 
 #endif

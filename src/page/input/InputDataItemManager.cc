@@ -16,7 +16,7 @@
 
 #include <QListWidgetItem>
 
-#include "SAKBase.hh"
+#include "SAKGlobal.hh"
 #include "SAKDebugPage.hh"
 #include "InputDataItem.hh"
 #include "SAKCRCInterface.hh"

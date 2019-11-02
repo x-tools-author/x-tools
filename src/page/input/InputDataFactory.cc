@@ -16,7 +16,7 @@
 #include <QtEndian>
 #include <QApplication>
 
-#include "SAKBase.hh"
+#include "SAKGlobal.hh"
 #include "SAKCRCInterface.hh"
 #include "InputDataFactory.hh"
 
@@ -88,29 +88,29 @@ quint32 InputDataFactory::crcCalculate(QByteArray data, int model)
 QByteArray InputDataFactory::rawDataToArray(QString rawData, DebugPageInputManager::InputParameters parameters)
 {
     QByteArray data;
-    if (parameters.inputModel == SAKBase::Bin){
+    if (parameters.inputModel == SAKGlobal::Bin){
         QStringList strList = rawData.split(' ');
         for (QString str:strList){
             data.append(static_cast<int8_t>(QString(str).toInt(nullptr, 2)));
         }
-    }else if (parameters.inputModel == SAKBase::Oct){
+    }else if (parameters.inputModel == SAKGlobal::Oct){
         QStringList strList = rawData.split(' ');
         for (QString str:strList){
             data.append(static_cast<int8_t>(QString(str).toInt(nullptr, 8)));
         }
-    }else if (parameters.inputModel == SAKBase::Dec){
+    }else if (parameters.inputModel == SAKGlobal::Dec){
         QStringList strList = rawData.split(' ');
         for (QString str:strList){
             data.append(static_cast<int8_t>(QString(str).toInt(nullptr, 10)));
         }
-    }else if (parameters.inputModel == SAKBase::Hex){
+    }else if (parameters.inputModel == SAKGlobal::Hex){
         QStringList strList = rawData.split(' ');
         for (QString str:strList){
             data.append(static_cast<int8_t>(QString(str).toInt(nullptr, 16)));
         }
-    }else if (parameters.inputModel == SAKBase::Ascii){
+    }else if (parameters.inputModel == SAKGlobal::Ascii){
         data = rawData.toLatin1();
-    }else if (parameters.inputModel == SAKBase::Local){
+    }else if (parameters.inputModel == SAKGlobal::Local){
         data = rawData.toLocal8Bit();
     }else {
         Q_ASSERT_X(false, __FUNCTION__, "Unknow input mode");

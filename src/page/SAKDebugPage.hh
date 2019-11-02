@@ -60,7 +60,7 @@ public:
      * @param parent 资源管理类
      */
     SAKDebugPage(int type, QWidget *parent = Q_NULLPTR);
-    ~SAKDebugPage();
+    ~SAKDebugPage();        
 
 public:
     /**
@@ -72,7 +72,7 @@ public:
     /**
      * @brief writeRawData      -- 写数据
      * @param rawData           -- 代写数据（特殊格式字符串，未经过处理）
-     * @param textFormat        -- SAKBase::SAKTextFormat，文本格式
+     * @param textFormat        -- SAKGlobal::SAKTextFormat，文本格式
      */
     void writeRawData(QString rawData, int textFormat);
 

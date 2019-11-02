@@ -18,7 +18,7 @@
 #include <QLineEdit>
 #include <QSerialPortInfo>
 
-#include "SAKBase.hh"
+#include "SAKGlobal.hh"
 #include "SAKSerialPortDeviceController.hh"
 #include "ui_SAKSerialPortDeviceController.h"
 SAKSerialPortDeviceController::SAKSerialPortDeviceController(QWidget *parent)
@@ -44,11 +44,11 @@ SAKSerialPortDeviceController::~SAKSerialPortDeviceController()
 
 void SAKSerialPortDeviceController::refresh()
 {
-    SAKBase::instance()->initComComboBox(comboBoxSerialports);
-    SAKBase::instance()->initBaudRateComboBox(comboBoxBaudrate);
-    SAKBase::instance()->initDataBitsComboBox(comboBoxDatabits);
-    SAKBase::instance()->initStopBitsComboBox(comboBoxStopbits);
-    SAKBase::instance()->initParityComboBox(comboBoxParity);
+    SAKGlobal::initComComboBox(comboBoxSerialports);
+    SAKGlobal::initBaudRateComboBox(comboBoxBaudrate);
+    SAKGlobal::initDataBitsComboBox(comboBoxDatabits);
+    SAKGlobal::initStopBitsComboBox(comboBoxStopbits);
+    SAKGlobal::initParityComboBox(comboBoxParity);
 }
 
 void SAKSerialPortDeviceController::setUiEnable(bool enable)

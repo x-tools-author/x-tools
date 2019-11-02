@@ -13,7 +13,7 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#include "SAKBase.hh"
+#include "SAKGlobal.hh"
 #include "UdpTransmissionItemWidget.hh"
 #include "ui_UdpTransmissionItemWidget.h"
 
@@ -32,7 +32,7 @@ UdpTransmissionItemWidget::UdpTransmissionItemWidget(SAKDebugPage *debugPage, QW
     targetAddressLineEdit = ui->targetAddressLineEdit;
     targetPortLineEdit = ui->targetPortLineEdit;
 
-    SAKBase::instance()->initIpComboBox(addressComboBox);
+    SAKGlobal::initIpComboBox(addressComboBox);
 }
 
 UdpTransmissionItemWidget::~UdpTransmissionItemWidget()

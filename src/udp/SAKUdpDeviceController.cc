@@ -17,7 +17,7 @@
 #include <QMetaEnum>
 #include <QLineEdit>
 
-#include "SAKBase.hh"
+#include "SAKGlobal.hh"
 #include "SAKUdpDeviceController.hh"
 #include "ui_SAKUdpDeviceController.h"
 SAKUdpDeviceController::SAKUdpDeviceController(QWidget *parent)
@@ -67,7 +67,7 @@ bool SAKUdpDeviceController::enableCustomLocalSetting()
 
 void SAKUdpDeviceController::refresh()
 {
-    SAKBase::instance()->initIpComboBox(localhostComboBox);
+    SAKGlobal::initIpComboBox(localhostComboBox);
 }
 
 void SAKUdpDeviceController::setUiEnable(bool enable)

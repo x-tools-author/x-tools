@@ -94,7 +94,6 @@ HEADERS +=  \
     src/SAKMainWindow.hh \
     src/SAKSettings.hh \
     src/SAKVersion.hh \
-    src/base/SAKBase.hh \
     src/base/SAKDialog.hh \
     src/base/SAKMessageBox.hh \
     src/base/SAKWidget.hh \
@@ -157,7 +156,6 @@ SOURCES +=  \
     src/SAKMainWindow.cc \
     src/SAKSettings.cc \
     src/SAKVersion.cc \
-    src/base/SAKBase.cc \
     src/base/SAKDialog.cc \
     src/base/SAKMessageBox.cc \
     src/base/SAKWidget.cc \

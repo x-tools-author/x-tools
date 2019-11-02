@@ -63,7 +63,7 @@ private:
     bool forbiddenAllAutoResponse;
     SAKDebugPage *debugPage;
 private:
-    /// 设置输入框文本格式(详情SAKBase::EDTextFormat)
+    /// 设置输入框文本格式(详情SAKGlobal::EDTextFormat)
     void setLineEditFormat(QLineEdit *lineEdit, int format);
 
     void dataRead(QByteArray data);

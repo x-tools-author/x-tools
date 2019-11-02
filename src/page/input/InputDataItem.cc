@@ -13,7 +13,7 @@
  * I write the comment in English, it's not because that I'm good at English,
  * but for "installing B".
  */
-#include "SAKBase.hh"
+#include "SAKGlobal.hh"
 #include "SAKDebugPage.hh"
 #include "InputDataItem.hh"
 #include "SAKCRCInterface.hh"
@@ -35,7 +35,7 @@ InputDataItem::InputDataItem(SAKDebugPage *debugPage, DebugPageInputManager *inp
     textFormatComboBox  = ui->textFormatComboBox;
     descriptionLineEdit = ui->descriptionLineEdit;
     inputDataTextEdit   = ui->inputDataTextEdit;
-    SAKBase::instance()->initTextFormatComboBox(textFormatComboBox);
+    SAKGlobal::initTextFormatComboBox(textFormatComboBox);
 
     menuPushButton = inputManager->sendPresetPushButton;
     addDataAction(menuPushButton);

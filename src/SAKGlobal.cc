@@ -8,11 +8,16 @@
  */
 #include "SAKGlobal.hh"
 
-#include <QStandardPaths>
-#include <QFile>
 #include <QDir>
+#include <QFile>
 #include <QDebug>
+#include <QSerialPort>
+#include <QHostAddress>
+#include <QStandardPaths>
+#include <QSerialPortInfo>
+#include <QNetworkInterface>
 
+Q_DECLARE_METATYPE(QSerialPortInfo)
 SAKGlobal::SAKGlobal(QObject* parent)
     :QObject (parent)
 {
@@ -89,3 +94,104 @@ QString SAKGlobal::getIODeviceTypeName(int type)
 
     return name;
 }
+
+
+#ifdef SAK_IMPORT_COM_MODULE
+void SAKGlobal::initComComboBox(QComboBox *comboBox)
+{
+    if (comboBox){
+        comboBox->clear();
+        QList<QSerialPortInfo> coms = QSerialPortInfo::availablePorts();
+        for(auto var:coms){
+            comboBox->addItem(var.portName() + " " + var.description(), QVariant::fromValue(var));
+        }
+    }
+}
+#endif
+
+#ifdef SAK_IMPORT_COM_MODULE
+void SAKGlobal::initBaudRateComboBox(QComboBox *comboBox)
+{
+    if (comboBox){
+        comboBox->clear();
+        QList<qint32> bd = QSerialPortInfo::standardBaudRates();
+        for (auto var:bd) {
+            comboBox->addItem(QString::number(var), QVariant::fromValue(var));
+        }
+
+        comboBox->setCurrentText("9600");
+    }
+}
+#endif
+
+#ifdef SAK_IMPORT_COM_MODULE
+void SAKGlobal::initDataBitsComboBox(QComboBox *comboBox)
+{
+    if (comboBox){
+        comboBox->clear();
+        comboBox->addItem(tr("8位"), QVariant::fromValue(QSerialPort::Data8));
+        comboBox->addItem(tr("7位"), QVariant::fromValue(QSerialPort::Data7));
+        comboBox->addItem(tr("6位"), QVariant::fromValue(QSerialPort::Data6));
+        comboBox->addItem(tr("5位"), QVariant::fromValue(QSerialPort::Data5));
+    }
+}
+#endif
+
+#ifdef SAK_IMPORT_COM_MODULE
+void SAKGlobal::initStopBitsComboBox(QComboBox *comboBox)
+{
+    if (comboBox){
+        comboBox->clear();
+        comboBox->addItem(tr("1位"), QVariant::fromValue(QSerialPort::OneStop));
+#ifdef Q_OS_WINDOWS
+        comboBox->addItem(tr("1.5位"), QVariant::fromValue(QSerialPort::OneAndHalfStop));
+#endif
+        comboBox->addItem(tr("2位"), QVariant::fromValue(QSerialPort::TwoStop));
+    }
+}
+#endif
+
+#ifdef SAK_IMPORT_COM_MODULE
+void SAKGlobal::initParityComboBox(QComboBox *comboBox)
+{
+    if (comboBox){
+        comboBox->clear();
+        comboBox->addItem(tr("无校验位"), QVariant::fromValue(QSerialPort::NoParity));
+        comboBox->addItem(tr("偶校验"), QVariant::fromValue(QSerialPort::EvenParity));
+        comboBox->addItem(tr("奇校验"), QVariant::fromValue(QSerialPort::OddParity));
+        comboBox->addItem(tr("SpaceParity"), QVariant::fromValue(QSerialPort::SpaceParity));
+        comboBox->addItem(tr("MarkParity"), QVariant::fromValue(QSerialPort::MarkParity));
+    }
+}
+#endif
+
+void SAKGlobal::initIpComboBox(QComboBox *comboBox)
+{
+    if (comboBox){
+        comboBox->clear();
+        QList<QHostAddress> addresses = QNetworkInterface::allAddresses();
+        for(auto var:addresses){
+            if (var.protocol() == QAbstractSocket::IPv4Protocol) {
+                comboBox->addItem(var.toString());
+            }
+        }
+    }
+}
+
+void SAKGlobal::initTextFormatComboBox(QComboBox *comboBox)
+{
+    if (comboBox){
+        comboBox->clear();
+
+        comboBox->addItem(tr("二进制"), Bin);
+        comboBox->addItem(tr("八进制"), Oct);
+        comboBox->addItem(tr("十进制"), Dec);
+        comboBox->addItem(tr("十六进制"), Hex);
+        comboBox->addItem(tr("ASCII"), Ascii);
+        comboBox->addItem(tr("UTF8"), Hex);
+        comboBox->addItem(tr("系统地区"), Local);
+
+        comboBox->setCurrentIndex(4);
+    }
+}
+

@@ -839,99 +839,99 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
-    <name>SAKBase</name>
+    <name>SAKGlobal</name>
     <message>
-        <location filename="../Src/Base/SAKBase.cc" line="78"/>
+        <location filename="../Src/Base/SAKGlobal.cc" line="78"/>
         <source>8位</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Src/Base/SAKBase.cc" line="79"/>
+        <location filename="../Src/Base/SAKGlobal.cc" line="79"/>
         <source>7位</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Src/Base/SAKBase.cc" line="80"/>
+        <location filename="../Src/Base/SAKGlobal.cc" line="80"/>
         <source>6位</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Src/Base/SAKBase.cc" line="81"/>
+        <location filename="../Src/Base/SAKGlobal.cc" line="81"/>
         <source>5位</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Src/Base/SAKBase.cc" line="91"/>
+        <location filename="../Src/Base/SAKGlobal.cc" line="91"/>
         <source>1位</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Src/Base/SAKBase.cc" line="93"/>
+        <location filename="../Src/Base/SAKGlobal.cc" line="93"/>
         <source>1.5位</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Src/Base/SAKBase.cc" line="95"/>
+        <location filename="../Src/Base/SAKGlobal.cc" line="95"/>
         <source>2位</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Src/Base/SAKBase.cc" line="105"/>
+        <location filename="../Src/Base/SAKGlobal.cc" line="105"/>
         <source>无校验位</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Src/Base/SAKBase.cc" line="106"/>
+        <location filename="../Src/Base/SAKGlobal.cc" line="106"/>
         <source>偶校验</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Src/Base/SAKBase.cc" line="107"/>
+        <location filename="../Src/Base/SAKGlobal.cc" line="107"/>
         <source>奇校验</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Src/Base/SAKBase.cc" line="108"/>
+        <location filename="../Src/Base/SAKGlobal.cc" line="108"/>
         <source>SpaceParity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Src/Base/SAKBase.cc" line="109"/>
+        <location filename="../Src/Base/SAKGlobal.cc" line="109"/>
         <source>MarkParity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Src/Base/SAKBase.cc" line="132"/>
+        <location filename="../Src/Base/SAKGlobal.cc" line="132"/>
         <source>二进制</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Src/Base/SAKBase.cc" line="133"/>
+        <location filename="../Src/Base/SAKGlobal.cc" line="133"/>
         <source>八进制</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Src/Base/SAKBase.cc" line="134"/>
+        <location filename="../Src/Base/SAKGlobal.cc" line="134"/>
         <source>十进制</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Src/Base/SAKBase.cc" line="135"/>
+        <location filename="../Src/Base/SAKGlobal.cc" line="135"/>
         <source>十六进制</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Src/Base/SAKBase.cc" line="136"/>
+        <location filename="../Src/Base/SAKGlobal.cc" line="136"/>
         <source>ASCII</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Src/Base/SAKBase.cc" line="137"/>
+        <location filename="../Src/Base/SAKGlobal.cc" line="137"/>
         <source>UTF8</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Src/Base/SAKBase.cc" line="138"/>
+        <location filename="../Src/Base/SAKGlobal.cc" line="138"/>
         <source>系统地区</source>
         <translation type="unfinished"></translation>
     </message>

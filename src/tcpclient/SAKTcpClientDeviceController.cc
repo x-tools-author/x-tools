@@ -17,7 +17,7 @@
 #include <QMetaEnum>
 #include <QLineEdit>
 
-#include "SAKBase.hh"
+#include "SAKGlobal.hh"
 #include "SAKTcpClientDeviceController.hh"
 #include "ui_SAKTcpClientDeviceController.h"
 SAKTcpClientDeviceController::SAKTcpClientDeviceController(QWidget *parent)
@@ -67,7 +67,7 @@ bool SAKTcpClientDeviceController::enableCustomLocalSetting()
 
 void SAKTcpClientDeviceController::refresh()
 {
-    SAKBase::instance()->initIpComboBox(localhostComboBox);
+    SAKGlobal::initIpComboBox(localhostComboBox);
 }
 
 void SAKTcpClientDeviceController::setUiEnable(bool enable)
