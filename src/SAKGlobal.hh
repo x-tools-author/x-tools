@@ -38,8 +38,8 @@ public:
     };
     Q_ENUM(SAKEnumDebugPageType)
 
-    enum SAKTextFormat {
-        Bin,Oct,Dec,Hex,Ascii,Utf8,Local
+    enum SAKTextInputFormat {
+        Bin,Oct,Dec,Hex,Ascii,Local
     };
 
     /**
@@ -91,7 +91,7 @@ public:
      * @brief initTextFormatComboBox 初始化输入文本格式，格式详情查看SAKLineEditInputTextFormat
      * @param comboBox 需要初始化的comboBox实例指针
      */
-    static void initTextFormatComboBox(QComboBox *comboBox);
+    static void initInputTextFormatComboBox(QComboBox *comboBox);
 
     /**
      * @brief initCRCComboBox 初始化crc列表

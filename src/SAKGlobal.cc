@@ -183,7 +183,7 @@ void SAKGlobal::initIpComboBox(QComboBox *comboBox)
     }
 }
 
-void SAKGlobal::initTextFormatComboBox(QComboBox *comboBox)
+void SAKGlobal::initInputTextFormatComboBox(QComboBox *comboBox)
 {
     if (comboBox){
         comboBox->clear();
@@ -193,8 +193,7 @@ void SAKGlobal::initTextFormatComboBox(QComboBox *comboBox)
         comboBox->addItem(tr("十进制"), Dec);
         comboBox->addItem(tr("十六进制"), Hex);
         comboBox->addItem(tr("ASCII"), Ascii);
-        comboBox->addItem(tr("UTF8"), Hex);
-        comboBox->addItem(tr("系统地区"), Local);
+        comboBox->addItem(tr("系统编码"), Local);
 
         comboBox->setCurrentIndex(4);
     }
