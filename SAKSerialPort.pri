@@ -20,7 +20,7 @@ contains(DEFINES, SAK_IMPORT_COM_MODULE){
     FORMS   += \
         src/serialport/SAKSerialPortDeviceController.ui
     INCLUDEPATH += \
-        Src/serialport
+        src/serialport
 }else {
     message( "不支持串口调试功能，忽略串口调试模块！（串口调试功能已被屏蔽！）" )
 }
