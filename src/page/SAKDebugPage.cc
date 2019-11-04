@@ -159,7 +159,13 @@ void SAKDebugPage::setUpController()
         QHBoxLayout *layout = new QHBoxLayout(deviceSettingFrame);
         deviceSettingFrame->setLayout(layout);
         layout->addWidget(controller);
-#if 0
+
+        /*
+         * qt 5.13及 以上版本setMargin()接口改为setContentsMargins()
+         */
+#if (QT_VERSION >= QT_VERSION_CHECK(5,13,0))
+        layout->setContentsMargins(0);
+#else
         layout->setMargin(0);
 #endif
     }
