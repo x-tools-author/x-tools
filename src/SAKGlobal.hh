@@ -39,7 +39,12 @@ public:
     Q_ENUM(SAKEnumDebugPageType)
 
     enum SAKTextInputFormat {
-        Bin,Oct,Dec,Hex,Ascii,Local
+        Ibin,Ioct,Idec,Ihex,Iascii,Iutf8,Ilocal
+    };
+
+
+    enum SAKTextOutputFormat {
+        Obin,Ooct,Odec,Ohex,Oascii,Outf8,Outf16,Ocf,Ons,Oucs4,Oucs8,Ostdwstring,Olocal
     };
 
     /**
@@ -88,10 +93,16 @@ public:
     static void initIpComboBox(QComboBox *comboBox);
 
     /**
-     * @brief initTextFormatComboBox 初始化输入文本格式，格式详情查看SAKLineEditInputTextFormat
+     * @brief initTextFormatComboBox 初始化输入文本格式，格式详情查看SAKTextInputFormat
      * @param comboBox 需要初始化的comboBox实例指针
      */
     static void initInputTextFormatComboBox(QComboBox *comboBox);
+
+    /**
+     * @brief initOutputTextFormatComboBox 初始化输出文本格式，格式详情查看SAKTextOutputFormat
+     * @param comboBox 需要初始化的comboBox实例指针
+     */
+    static void initOutputTextFormatComboBox(QComboBox *comboBox);
 
     /**
      * @brief initCRCComboBox 初始化crc列表

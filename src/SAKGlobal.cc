@@ -188,15 +188,33 @@ void SAKGlobal::initInputTextFormatComboBox(QComboBox *comboBox)
     if (comboBox){
         comboBox->clear();
 
-        comboBox->addItem(tr("二进制"), Bin);
-        comboBox->addItem(tr("八进制"), Oct);
-        comboBox->addItem(tr("十进制"), Dec);
-        comboBox->addItem(tr("十六进制"), Hex);
-        comboBox->addItem(tr("ASCII"), Ascii);
-        comboBox->addItem(tr("系统编码"), Local);
+        comboBox->addItem(tr("二进制"), Ibin);
+        comboBox->addItem(tr("八进制"), Ioct);
+        comboBox->addItem(tr("十进制"), Idec);
+        comboBox->addItem(tr("十六进制"), Ihex);
+        comboBox->addItem(QString("ASCII"), Iascii);
+        comboBox->addItem(QString("UTF8"), Ihex);
+        comboBox->addItem(tr("系统编码"), Ilocal);
 
         comboBox->setCurrentIndex(4);
     }
+}
+
+void SAKGlobal::initOutputTextFormatComboBox(QComboBox *comboBox)
+{
+    comboBox->addItem(tr("二进制"), Obin);
+    comboBox->addItem(tr("八进制"), Ooct);
+    comboBox->addItem(tr("十进制"), Odec);
+    comboBox->addItem(tr("十六进制"), Ohex);
+    comboBox->addItem(QString("ASCII"), Oascii);
+    comboBox->addItem(QString("UTF8"), Ihex);
+    comboBox->addItem(QString("UTF16"), Outf16);
+    comboBox->addItem(QString("CF"), Ocf);
+    comboBox->addItem(QString("NS"), Ons);
+    comboBox->addItem(QString("UCS4"), Oucs4);
+    comboBox->addItem(QString("UCS8"), Oucs8);
+    comboBox->addItem(tr("宽字符"), Ostdwstring);
+    comboBox->addItem(tr("系统编码"), Olocal);
 }
 
 void SAKGlobal::initCRCComboBox(QComboBox *comboBox)
