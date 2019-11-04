@@ -50,7 +50,7 @@ DebugPageOutputManager::DebugPageOutputManager(SAKDebugPage *debugPage, QObject 
 
 
     // 初始化数据格式预选框
-    SAKGlobal::initTextFormatComboBox(outputModelComboBox);
+    SAKGlobal::initOutputTextFormatComboBox(outputModelComboBox);
 
     /*
      * 处理已接收或者是已发送的数据

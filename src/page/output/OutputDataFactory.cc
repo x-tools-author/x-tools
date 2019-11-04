@@ -52,27 +52,33 @@ void OutputDataFactory::cookData(QByteArray rawData, DebugPageOutputManager::Out
     }
     str.append("<font color=silver>] </font>");
 
-    if (parameters.textModel == SAKGlobal::Bin){
+    if (parameters.textModel == SAKGlobal::Obin){
         for (int i = 0; i < rawData.length(); i++){
             str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(rawData.at(i)), 2), 8, '0'));
         }
-    }else if (parameters.textModel == SAKGlobal::Oct){
+    }else if (parameters.textModel == SAKGlobal::Ooct){
         for (int i = 0; i < rawData.length(); i++){
             str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(rawData.at(i)), 8), 3, '0'));
         }
-    }else if (parameters.textModel == SAKGlobal::Dec){
+    }else if (parameters.textModel == SAKGlobal::Odec){
         for (int i = 0; i < rawData.length(); i++){
             str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(rawData.at(i)), 10)));
         }
-    }else if (parameters.textModel == SAKGlobal::Hex){
+    }else if (parameters.textModel == SAKGlobal::Ohex){
         for (int i = 0; i < rawData.length(); i++){
             str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(rawData.at(i)), 16), 2, '0'));
         }
-    }else if (parameters.textModel == SAKGlobal::Ascii){
+    }else if (parameters.textModel == SAKGlobal::Oascii){
         str.append(QString::fromLatin1(rawData));
-    }else if (parameters.textModel == SAKGlobal::Utf8){
+    }else if (parameters.textModel == SAKGlobal::Outf8){
         str.append(QString::fromUtf8(rawData));
-    }else if (parameters.textModel == SAKGlobal::Local){
+    }else if (parameters.textModel == SAKGlobal::Outf16){
+        str.append(QString::fromUtf16(reinterpret_cast<const ushort*>(rawData.constData()),rawData.length()));
+    }else if (parameters.textModel == SAKGlobal::Oucs4){
+        str.append(QString::fromUcs4(reinterpret_cast<const char32_t*>(rawData.constData()),rawData.length()));
+    }else if (parameters.textModel == SAKGlobal::Ostdwstring){
+        str.append(QString::fromWCharArray(reinterpret_cast<const wchar_t*>(rawData.constData()),rawData.length()));
+    }else if (parameters.textModel == SAKGlobal::Olocal){
         str.append(QString::fromLocal8Bit(rawData));
     }else {
         str.append(QString::fromUtf8(rawData));

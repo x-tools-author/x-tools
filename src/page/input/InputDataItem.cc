@@ -31,7 +31,7 @@ InputDataItem::InputDataItem(SAKDebugPage *debugPage, DebugPageInputManager *inp
     textFormatComboBox  = ui->textFormatComboBox;
     descriptionLineEdit = ui->descriptionLineEdit;
     inputDataTextEdit   = ui->inputDataTextEdit;
-    SAKGlobal::initTextFormatComboBox(textFormatComboBox);
+    SAKGlobal::initInputTextFormatComboBox(textFormatComboBox);
 
     menuPushButton = inputManager->sendPresetPushButton;
     addDataAction(menuPushButton);

@@ -44,7 +44,7 @@ public:
 
 
     enum SAKTextOutputFormat {
-        Obin,Ooct,Odec,Ohex,Oascii,Outf8,Outf16,Ocf,Ons,Oucs4,Oucs8,Ostdwstring,Olocal
+        Obin,Ooct,Odec,Ohex,Oascii,Outf8,Outf16,Oucs4,Ostdwstring,Olocal
     };
 
     /**

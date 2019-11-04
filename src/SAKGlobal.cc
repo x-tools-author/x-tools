@@ -193,7 +193,7 @@ void SAKGlobal::initInputTextFormatComboBox(QComboBox *comboBox)
         comboBox->addItem(tr("十进制"), Idec);
         comboBox->addItem(tr("十六进制"), Ihex);
         comboBox->addItem(QString("ASCII"), Iascii);
-        comboBox->addItem(QString("UTF8"), Ihex);
+        comboBox->addItem(QString("UTF8"), Iutf8);
         comboBox->addItem(tr("系统编码"), Ilocal);
 
         comboBox->setCurrentIndex(4);
@@ -207,12 +207,9 @@ void SAKGlobal::initOutputTextFormatComboBox(QComboBox *comboBox)
     comboBox->addItem(tr("十进制"), Odec);
     comboBox->addItem(tr("十六进制"), Ohex);
     comboBox->addItem(QString("ASCII"), Oascii);
-    comboBox->addItem(QString("UTF8"), Ihex);
+    comboBox->addItem(QString("UTF8"), Outf8);
     comboBox->addItem(QString("UTF16"), Outf16);
-    comboBox->addItem(QString("CF"), Ocf);
-    comboBox->addItem(QString("NS"), Ons);
     comboBox->addItem(QString("UCS4"), Oucs4);
-    comboBox->addItem(QString("UCS8"), Oucs8);
     comboBox->addItem(tr("宽字符"), Ostdwstring);
     comboBox->addItem(tr("系统编码"), Olocal);
 }
