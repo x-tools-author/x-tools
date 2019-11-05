@@ -232,10 +232,10 @@ void SAKDebugPage::on_crcParameterModelsComboBox_currentIndexChanged(int index)
     }
 }
 
-void SAKDebugPage::on_rxTextFormatComboBox_currentIndexChanged(int index)
+void SAKDebugPage::on_outputTextFormatComboBox_currentIndexChanged(int index)
 {
     if (!isInitializing){
-        SAKSettings::instance()->setValue(settingStringRxTextFormat, QVariant::fromValue(index));
+        SAKSettings::instance()->setValue(settingStringOutputTextFormat, QVariant::fromValue(index));
     }
 }
 
@@ -335,8 +335,7 @@ void SAKDebugPage::initUiPointer()
      */
     rxLabel                 = ui->rxLabel;
     txLabel                 = ui->txLabel;
-    rxTextFormatComboBox    = ui->rxTextFormatComboBox;
-    txTextFormatComboBox    = ui->inputModelComboBox;
+    outputTextFormatComboBox= ui->outputTextFormatComboBox;
     autoWrapCheckBox        = ui->autoWrapCheckBox;
     showDateCheckBox        = ui->showDateCheckBox;
     showTimeCheckBox        = ui->showTimeCheckBox;
@@ -392,7 +391,7 @@ void SAKDebugPage::initInputSettingString()
 
 void SAKDebugPage::initOutputSettingString()
 {
-    settingStringRxTextFormat = QString("%1/rxTextFormat").arg(settingKey);
+    settingStringOutputTextFormat = QString("%1/outputTextFormat").arg(settingKey);
     settingStringShowDate    = QString("%1/showDate").arg(settingKey);
     settingStringAutoWrap    = QString("%1/autoWrap").arg(settingKey);
     settingStringShowTime    = QString("%1/showTime").arg(settingKey);
@@ -448,14 +447,14 @@ void SAKDebugPage::readinOutputSettings()
         }
     };
 
-    QVariant var = SAKSettings::instance()->value(settingStringRxTextFormat);
+    QVariant var = SAKSettings::instance()->value(settingStringOutputTextFormat);
     int index = 0;
     if (var.isNull()){
         index = 4;
     }else{
         index = var.toInt();
     }
-    rxTextFormatComboBox->setCurrentIndex(index);
+    outputTextFormatComboBox->setCurrentIndex(index);
 
     var = SAKSettings::instance()->value(settingStringShowDate);
     bool value = SAKSettings::instance()->value(settingStringShowDate).toBool();

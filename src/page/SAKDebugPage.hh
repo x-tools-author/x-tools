@@ -184,8 +184,7 @@ protected:
 protected:
     QLabel      *rxLabel                        = nullptr;  // 接受指示灯
     QLabel      *txLabel                        = nullptr;  // 发送指示灯
-    QComboBox   *txTextFormatComboBox           = nullptr;  // 输出模式复选框(发送)
-    QComboBox   *rxTextFormatComboBox           = nullptr;  // 输出模式复选框（接收）
+    QComboBox   *outputTextFormatComboBox       = nullptr;  // 输出模式复选框（接收）
     QCheckBox   *showDateCheckBox               = nullptr;  // 显示日期使能复选框
     QCheckBox   *autoWrapCheckBox               = nullptr;  // 自动换行使能复选框
     QCheckBox   *showTimeCheckBox               = nullptr;  // 显示时间使能复选框
@@ -198,7 +197,7 @@ protected:
     QPushButton *saveOutputPushButton           = nullptr;  // 保存输出按钮
     QTextBrowser *outputTextBroswer             = nullptr;  // 用于输出显示收发的数据
 
-    QString settingStringRxTextFormat;
+    QString settingStringOutputTextFormat;
     QString settingStringShowDate;
     QString settingStringAutoWrap;
     QString settingStringShowTime;
@@ -207,7 +206,7 @@ protected:
     QString settingStringShowTx;
 
 private slots:
-    void on_rxTextFormatComboBox_currentIndexChanged(int index);
+    void on_outputTextFormatComboBox_currentIndexChanged(int index);
     void on_showDateCheckBox_clicked();
     void on_autoWrapCheckBox_clicked();
     void on_showTimeCheckBox_clicked();

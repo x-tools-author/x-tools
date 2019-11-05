@@ -30,8 +30,7 @@ DebugPageOutputManager::DebugPageOutputManager(SAKDebugPage *debugPage, QObject 
 
     rxLabel                         = debugPage->rxLabel;
     txLabel                         = debugPage->txLabel;
-    txTextFormatComboBox            = debugPage->txTextFormatComboBox;
-    rxTextFormatComboBox            = debugPage->rxTextFormatComboBox;
+    outputTextFormatComboBox        = debugPage->outputTextFormatComboBox;
     showDateCheckBox                = debugPage->showDateCheckBox;
     autoWrapCheckBox                = debugPage->autoWrapCheckBox;
     showTimeCheckBox                = debugPage->showTimeCheckBox;
@@ -51,8 +50,7 @@ DebugPageOutputManager::DebugPageOutputManager(SAKDebugPage *debugPage, QObject 
 
 
     // 初始化数据格式预选框
-    SAKGlobal::initOutputTextFormatComboBox(txTextFormatComboBox);
-    SAKGlobal::initOutputTextFormatComboBox(rxTextFormatComboBox);
+    SAKGlobal::initOutputTextFormatComboBox(outputTextFormatComboBox);
 
     /*
      * 处理已接收或者是已发送的数据
@@ -194,11 +192,7 @@ DebugPageOutputManager::OutputParameters DebugPageOutputManager::outputDataParam
     parameters.showMS   = showMsCheckBox->isChecked();
     parameters.isReceivedData = isReceivedData;
 
-    if (isReceivedData){
-        parameters.textModel= rxTextFormatComboBox->currentData().toInt();
-    }else{
-        parameters.textModel= txTextFormatComboBox->currentData().toInt();
-    }
+    parameters.textModel= outputTextFormatComboBox->currentData().toInt();
 
     return parameters;
 }
