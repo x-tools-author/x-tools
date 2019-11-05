@@ -38,7 +38,7 @@ SAKTimingSendingItem::SAKTimingSendingItem(SAKDebugPage *debugPage, QWidget *par
     writeTimer.setInterval(timingTimeLineEdit->text().toInt());
     connect(&writeTimer, &QTimer::timeout, this, &SAKTimingSendingItem::write);
 
-    SAKGlobal::initTextFormatComboBox(textFormatComboBox);
+    SAKGlobal::initInputTextFormatComboBox(textFormatComboBox);
 }
 
 SAKTimingSendingItem::~SAKTimingSendingItem()

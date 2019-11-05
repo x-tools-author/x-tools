@@ -60,7 +60,8 @@ private:
     QTextBrowser *messageTextBrowser;
     QLabel       *rxLabel;
     QLabel       *txLabel;
-    QComboBox    *outputModelComboBox;
+    QComboBox    *txTextFormatComboBox;
+    QComboBox    *rxTextFormatComboBox;
     QCheckBox    *showDateCheckBox;
     QCheckBox    *autoWrapCheckBox;
     QCheckBox    *showTimeCheckBox;

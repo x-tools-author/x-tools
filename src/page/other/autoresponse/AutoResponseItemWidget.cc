@@ -36,8 +36,8 @@ AutoResponseItemWidget::AutoResponseItemWidget(SAKDebugPage *debugPage, QWidget 
     optionComboBox->addItem(tr("接收数据包含参考数据时自动回复"), QVariant::fromValue<int>(Contain));
     optionComboBox->addItem(tr("接收数据不包含参考数据时自动回复"), QVariant::fromValue<int>(Notcontain));
 
-    SAKGlobal::initTextFormatComboBox(referenceDataFromatComboBox);
-    SAKGlobal::initTextFormatComboBox(responseDataFormatComboBox);
+    SAKGlobal::initInputTextFormatComboBox(referenceDataFromatComboBox);
+    SAKGlobal::initInputTextFormatComboBox(responseDataFormatComboBox);
 
     connect(debugPage, &SAKDebugPage::bytesRead, this, &AutoResponseItemWidget::dataRead);
     connect(this, &AutoResponseItemWidget::requestWrite, debugPage, &SAKDebugPage::write);
@@ -65,25 +65,22 @@ void AutoResponseItemWidget::setLineEditFormat(QLineEdit *lineEdit, int format)
         lineEdit->setValidator(nullptr);
         lineEdit->clear();
         switch (format) {
-        case SAKGlobal::Bin:
+        case SAKGlobal::Ibin:
             lineEdit->setValidator(new QRegExpValidator(regExpBin, this));
             break;
-        case SAKGlobal::Oct:
+        case SAKGlobal::Ioct:
             lineEdit->setValidator(new QRegExpValidator(regExpOct, this));
             break;
-        case SAKGlobal::Dec:
+        case SAKGlobal::Idec:
             lineEdit->setValidator(new QRegExpValidator(regExpDec, this));
             break;
-        case SAKGlobal::Hex:
+        case SAKGlobal::Ihex:
             lineEdit->setValidator(new QRegExpValidator(regExpHex, this));
             break;
-        case SAKGlobal::Ascii:
+        case SAKGlobal::Iascii:
             lineEdit->setValidator(new QRegExpValidator(regExpAscii, this));
             break;
-        case SAKGlobal::Utf8:
-            lineEdit->setValidator(nullptr);
-            break;
-        case SAKGlobal::Local:
+        case SAKGlobal::Ilocal:
             lineEdit->setValidator(nullptr);
             break;
         default:
@@ -137,33 +134,30 @@ QByteArray AutoResponseItemWidget::string2array(QString str, int format)
     QStringList strList;
     int base;
     switch (format) {
-    case SAKGlobal::Bin:
+    case SAKGlobal::Ibin:
         base = 2;
         strList = str.split(' ');
         array = stringList2Array(strList, base);
         break;
-    case SAKGlobal::Oct:
+    case SAKGlobal::Ioct:
         base = 8;
         strList = str.split(' ');
         array = stringList2Array(strList, base);
         break;
-    case SAKGlobal::Dec:
+    case SAKGlobal::Idec:
         base = 10;
         strList = str.split(' ');
         array = stringList2Array(strList, base);
         break;
-    case SAKGlobal::Hex:
+    case SAKGlobal::Ihex:
         base = 16;
         strList = str.split(' ');
         array = stringList2Array(strList, base);
         break;
-    case SAKGlobal::Ascii:
+    case SAKGlobal::Iascii:
         array = str.toLatin1();
         break;
-    case SAKGlobal::Utf8:
-        array = str.toUtf8();
-        break;
-    case SAKGlobal::Local:
+    case SAKGlobal::Ilocal:
         array = str.toLocal8Bit();
         break;
     default:
