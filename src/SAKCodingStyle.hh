@@ -1,58 +1,44 @@
 ﻿/*
- * The file is encoding with utf-8 (with BOM)
+ * Copyright (C) 2018-2019 wuuhii. All rights reserved.
  *
- * I write the comment with English, it's not because that I'm good at English,
- * but for "installing B".
+ * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
+ * project. The project is a open source project, you can get the source from:
+ *     https://github.com/wuuhii/QtSwissArmyKnife
+ *     https://gitee.com/wuuhii/QtSwissArmyKnife
  *
- * Copyright (C) 2018-2018 wuhai persionnal. All rights reserved.
+ * If you want to know more about the project, please join our QQ group(952218522).
+ * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef SAKGLOBAL_HH
-#define SAKGLOBAL_HH
+#ifndef SAKCODINGSTYLE_HH
+#define SAKCODINGSTYLE_HH
 
 #include <QObject>
 
-class SAKGlobal:public QObject
+class SAKCodingStyle:public QObject
 {
     Q_OBJECT
 public:
     /**
-     * @brief The SAKEnumIODeviceType enum  -- io的设备类型
+     * @brief SAKCodingStyle 函数说明，公有函数原则上都需要添加
+     * @param parent 参数parent说明
      */
-    enum SAKEnumIODeviceType {
-#ifndef SAK_NO_SERIALPORT_ASSISTANT
-        SAKEnumIODeviceTypeSerialport,      // 串口设备
-#endif
-        SAKEnumIODeviceTypeUDP,             // udp调试
-        SAKEnumIODeviceTypeTCPClient,       // tcp客户端
-        SAKEnumIODeviceTypeTCPServer        // tcp服务器
-    };
-    Q_ENUM(SAKEnumIODeviceType)
+    SAKCodingStyle(QObject* parent = nullptr);
 
-    /**
-     * @brief SAKGlobal -- 构造函数
-     * @param parent    -- 父控件
+private:
+    /*
+     * 对以下代码段的说明，对以下代码段的说明，对以下代码段的说明
      */
-    SAKGlobal(QObject* parent = nullptr);
+    QString string1;
+    QString string2;
 
-    /**
-     * @brief logFile   -- 获取日志文件（全路径）
-     * @return          -- 日志文件全路径
-     */
-    static QString logFile();
+    /// 这是对数据成员obj1的说明
+    QObject *obj1;
+    /// 这是对数据成员obj1的说明
+    QObject *obj2;
+    QObject *obj3;
 
-    /**
-     * @brief mkMutiDir -- 递归创建指定的目录路径
-     * @param path      -- 目录路径
-     * @return          -- 已创建的路径
-     */
-    static QString mkMutiDir(const QString path);
-
-    /**
-     * @brief getIODeviceTypeName   -- 获取设备类型的名称
-     * @param type                  -- 设备类型
-     * @return                      -- 设备类型名称
-     */
-    static QString getIODeviceTypeName(int type);
+private:
+    void helloWorld();
 };
 
 #endif
