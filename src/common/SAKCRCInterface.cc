@@ -13,22 +13,62 @@
 
 #include "SAKCRCInterface.hh"
 
-template<typename T>
-T crcCalulate2 (quint8 *input, quint32 length, SAKCRCInterface::CRCModel model)
-
-{
-    Q_UNUSE(input);
-    Q_UNUSE(length);
-    Q_UNUSE(model);
-
-    T a = 0;
-    return a;
-}
 
 SAKCRCInterface::SAKCRCInterface(QObject *parent)
     :QObject (parent)
 {
 
+}
+
+QStringList SAKCRCInterface::supportedParameterModels()
+{
+    modelStrings.clear();
+    QMetaEnum models = QMetaEnum::fromType<CRCModel>();
+
+    const char *ch = nullptr;
+    for (int i = 0; i < models.keyCount(); i++) {
+        ch = models.valueToKey(i);
+        if (ch){
+            modelStrings.append(QString(ch));
+        }
+    }
+
+    return modelStrings;
+}
+
+QString SAKCRCInterface::getPolyFormula(SAKCRCInterface::CRCModel model)
+{
+    QString formula = QString("Error: Formula not found");
+
+    switch (model) {
+    case CRC_8:
+    case CRC_8_ITU:
+    case CRC_8_ROHC:
+        formula = QString("x8 + x2 + x + 1");
+        break;
+    case CRC_8_MAXIM:
+        formula = QString("x8 + x5 + x4 + 1");
+        break;
+    case CRC_16_IBM:
+    case CRC_16_MAXIM:
+    case CRC_16_USB:
+    case CRC_16_MODBUS:
+    case CRC_16_CCITT:
+    case CRC_16_CCITT_FALSE:
+    case CRC_16_x25:
+    case CRC_16_XMODEM:
+        formula = QString("x6 + x2 + x5 + 1");
+        break;
+    case CRC_16_DNP:
+        formula = QString("x6+x3+x2+x1+x0+x8+x6+x5+x2+1");
+        break;
+    case CRC_32:
+    case CRC_32_MPEG2:
+        formula = QString("x32+x6+x3+x2+x6+x2+x1+x0+x8+x7+x5+x4+x2+x+1");
+        break;
+    }
+
+    return formula;
 }
 
 uint32_t SAKCRCInterface::getInitValue(SAKCRCInterface::CRCModel model)
@@ -116,15 +156,15 @@ uint32_t SAKCRCInterface::getXorValue(SAKCRCInterface::CRCModel model)
     case CRC_8_ITU:
         value = 0x55;
         break;
-
     case CRC_16_IBM:
-    case CRC_16_MAXIM:
+
     case CRC_16_MODBUS:
     case CRC_16_CCITT:
     case CRC_16_CCITT_FALSE:
     case CRC_16_XMODEM:
         value = 0x0000;
         break;
+    case CRC_16_MAXIM:
     case CRC_16_USB:
     case CRC_16_x25:
     case CRC_16_DNP:
@@ -199,57 +239,6 @@ bool SAKCRCInterface::getOutputReversal(SAKCRCInterface::CRCModel model)
     }
 
     return reversal;
-}
-
-QStringList SAKCRCInterface::supportedParameterModels()
-{
-    modelStrings.clear();
-    QMetaEnum models = QMetaEnum::fromType<CRCModel>();
-
-    const char *ch = nullptr;
-    for (int i = 0; i < models.keyCount(); i++) {
-        ch = models.valueToKey(i);
-        if (ch){
-            modelStrings.append(QString(ch));
-        }
-    }
-
-    return modelStrings;
-}
-
-QString SAKCRCInterface::getPolyFormula(SAKCRCInterface::CRCModel model)
-{
-    QString formula = QString("Error: Formula not found");
-
-    switch (model) {
-    case CRC_8:
-    case CRC_8_ITU:
-    case CRC_8_ROHC:
-        formula = QString("x8 + x2 + x + 1");
-        break;
-    case CRC_8_MAXIM:
-        formula = QString("x8 + x5 + x4 + 1");
-        break;
-    case CRC_16_IBM:
-    case CRC_16_MAXIM:
-    case CRC_16_USB:
-    case CRC_16_MODBUS:
-    case CRC_16_CCITT:
-    case CRC_16_CCITT_FALSE:
-    case CRC_16_x25:
-    case CRC_16_XMODEM:
-        formula = QString("x6 + x2 + x5 + 1");
-        break;
-    case CRC_16_DNP:
-        formula = QString("x6+x3+x2+x1+x0+x8+x6+x5+x2+1");
-        break;
-    case CRC_32:
-    case CRC_32_MPEG2:
-        formula = QString("x32+x6+x3+x2+x6+x2+x1+x0+x8+x7+x5+x4+x2+x+1");
-        break;
-    }
-
-    return formula;
 }
 
 int SAKCRCInterface::getBitsWidth(SAKCRCInterface::CRCModel model)
