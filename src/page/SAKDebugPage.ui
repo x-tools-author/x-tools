@@ -108,13 +108,6 @@ p, li { white-space: pre-wrap; }
      </property>
     </widget>
    </item>
-   <item row="4" column="9" colspan="2">
-    <widget class="QLabel" name="label_27">
-     <property name="text">
-      <string>发送文本格式</string>
-     </property>
-    </widget>
-   </item>
    <item row="29" column="9" colspan="2">
     <widget class="QPushButton" name="transmissionSettingPushButton">
      <property name="text">
@@ -773,7 +766,7 @@ p, li { white-space: pre-wrap; }
    <item row="30" column="0">
     <widget class="QLabel" name="label_23">
      <property name="text">
-      <string>输出输入文本</string>
+      <string>发送数据格式</string>
      </property>
     </widget>
    </item>
@@ -784,18 +777,15 @@ p, li { white-space: pre-wrap; }
      </property>
     </widget>
    </item>
-   <item row="5" column="9">
-    <widget class="QComboBox" name="txTextFormatComboBox"/>
-   </item>
-   <item row="4" column="11" colspan="2">
-    <widget class="QLabel" name="label_12">
-     <property name="text">
-      <string>接收文本格式</string>
-     </property>
-    </widget>
-   </item>
    <item row="5" column="11" colspan="2">
     <widget class="QComboBox" name="rxTextFormatComboBox"/>
+   </item>
+   <item row="5" column="9" colspan="2">
+    <widget class="QLabel" name="label_12">
+     <property name="text">
+      <string>接收数据格式</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

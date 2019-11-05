@@ -163,9 +163,7 @@ void DebugPageOutputManager::bytesRead(QByteArray data)
         return;
     }
 
-    OutputParameters parameters = outputDataParameters();
-    parameters.isReceivedData = true;
-
+    OutputParameters parameters = outputDataParameters(true);
     emit cookData(data, parameters);
 }
 
@@ -179,9 +177,7 @@ void DebugPageOutputManager::bytesWritten(QByteArray data)
         return;
     }
 
-    OutputParameters parameters = outputDataParameters();
-    parameters.isReceivedData = false;
-
+    OutputParameters parameters = outputDataParameters(false);
     emit cookData(data, parameters);
 }
 
@@ -190,13 +186,19 @@ void DebugPageOutputManager::outputData(QString data)
     outputTextBroswer->append(data);
 }
 
-DebugPageOutputManager::OutputParameters DebugPageOutputManager::outputDataParameters()
+DebugPageOutputManager::OutputParameters DebugPageOutputManager::outputDataParameters(bool isReceivedData)
 {
     OutputParameters parameters;
     parameters.showDate = showDateCheckBox->isChecked();
     parameters.showTime = showTimeCheckBox->isChecked();
     parameters.showMS   = showMsCheckBox->isChecked();
-    parameters.textModel= txTextFormatComboBox->currentData().toInt();
+    parameters.isReceivedData = isReceivedData;
+
+    if (isReceivedData){
+        parameters.textModel= rxTextFormatComboBox->currentData().toInt();
+    }else{
+        parameters.textModel= txTextFormatComboBox->currentData().toInt();
+    }
 
     return parameters;
 }

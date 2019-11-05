@@ -78,7 +78,7 @@ private:
     void bytesRead(QByteArray data);
     void bytesWritten(QByteArray data);
     void outputData(QString data);
-    OutputParameters outputDataParameters();
+    OutputParameters outputDataParameters(bool isReceivedData);
 signals:
     void cookData(QByteArray rawData, OutputParameters parameters);
 };

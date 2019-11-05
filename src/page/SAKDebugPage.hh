@@ -199,7 +199,6 @@ protected:
     QTextBrowser *outputTextBroswer             = nullptr;  // 用于输出显示收发的数据
 
     QString settingStringRxTextFormat;
-    QString settingStringTxTextFormat;
     QString settingStringShowDate;
     QString settingStringAutoWrap;
     QString settingStringShowTime;
@@ -209,7 +208,6 @@ protected:
 
 private slots:
     void on_rxTextFormatComboBox_currentIndexChanged(int index);
-    void on_txTextFormatComboBox_currentIndexChanged(int index);
     void on_showDateCheckBox_clicked();
     void on_autoWrapCheckBox_clicked();
     void on_showTimeCheckBox_clicked();

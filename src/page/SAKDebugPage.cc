@@ -239,13 +239,6 @@ void SAKDebugPage::on_rxTextFormatComboBox_currentIndexChanged(int index)
     }
 }
 
-void SAKDebugPage::on_txTextFormatComboBox_currentIndexChanged(int index)
-{
-    if (!isInitializing){
-        SAKSettings::instance()->setValue(settingStringTxTextFormat, QVariant::fromValue(index));
-    }
-}
-
 void SAKDebugPage::on_showDateCheckBox_clicked()
 {
     if (!isInitializing){
@@ -342,8 +335,8 @@ void SAKDebugPage::initUiPointer()
      */
     rxLabel                 = ui->rxLabel;
     txLabel                 = ui->txLabel;
-    txTextFormatComboBox    = ui->txTextFormatComboBox;
     rxTextFormatComboBox    = ui->rxTextFormatComboBox;
+    txTextFormatComboBox    = ui->inputModelComboBox;
     autoWrapCheckBox        = ui->autoWrapCheckBox;
     showDateCheckBox        = ui->showDateCheckBox;
     showTimeCheckBox        = ui->showTimeCheckBox;
@@ -400,7 +393,6 @@ void SAKDebugPage::initInputSettingString()
 void SAKDebugPage::initOutputSettingString()
 {
     settingStringRxTextFormat = QString("%1/rxTextFormat").arg(settingKey);
-    settingStringTxTextFormat = QString("%1/txTextFormat").arg(settingKey);
     settingStringShowDate    = QString("%1/showDate").arg(settingKey);
     settingStringAutoWrap    = QString("%1/autoWrap").arg(settingKey);
     settingStringShowTime    = QString("%1/showTime").arg(settingKey);
@@ -464,15 +456,6 @@ void SAKDebugPage::readinOutputSettings()
         index = var.toInt();
     }
     rxTextFormatComboBox->setCurrentIndex(index);
-
-    var = SAKSettings::instance()->value(settingStringTxTextFormat);
-    index = 0;
-    if (var.isNull()){
-        index = 4;
-    }else{
-        index = var.toInt();
-    }
-    txTextFormatComboBox->setCurrentIndex(index);
 
     var = SAKSettings::instance()->value(settingStringShowDate);
     bool value = SAKSettings::instance()->value(settingStringShowDate).toBool();
