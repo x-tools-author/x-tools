@@ -111,13 +111,13 @@ void SAKDebugPage::outputMessage(QString msg, bool isInfo)
 
 struct SAKDebugPage::ReadWriteParameters SAKDebugPage::readWriteParameters()
 {
-    readWriteParametersQMutex.lock();
     ReadWriteParameters parameters;
+    readWriteParametersQMutex.lock();    
     parameters.waitForReadyReadTime = _readWriteParameters.waitForReadyReadTime;
     parameters.waitForBytesWrittenTime = _readWriteParameters.waitForBytesWrittenTime;
     readWriteParametersQMutex.unlock();
 
-    return  _readWriteParameters;
+    return  parameters;
 }
 
 void SAKDebugPage::setReadWriteParameters(struct ReadWriteParameters parameters)
@@ -232,10 +232,17 @@ void SAKDebugPage::on_crcParameterModelsComboBox_currentIndexChanged(int index)
     }
 }
 
-void SAKDebugPage::on_outputModelComboBox_currentIndexChanged(int index)
+void SAKDebugPage::on_rxTextFormatComboBox_currentIndexChanged(int index)
 {
     if (!isInitializing){
-        SAKSettings::instance()->setValue(settingStringOutputModel, QVariant::fromValue(index));
+        SAKSettings::instance()->setValue(settingStringRxTextFormat, QVariant::fromValue(index));
+    }
+}
+
+void SAKDebugPage::on_txTextFormatComboBox_currentIndexChanged(int index)
+{
+    if (!isInitializing){
+        SAKSettings::instance()->setValue(settingStringTxTextFormat, QVariant::fromValue(index));
     }
 }
 
@@ -335,7 +342,8 @@ void SAKDebugPage::initUiPointer()
      */
     rxLabel                 = ui->rxLabel;
     txLabel                 = ui->txLabel;
-    outputModelComboBox     = ui->outputModelComboBox;
+    txTextFormatComboBox    = ui->txTextFormatComboBox;
+    rxTextFormatComboBox    = ui->rxTextFormatComboBox;
     autoWrapCheckBox        = ui->autoWrapCheckBox;
     showDateCheckBox        = ui->showDateCheckBox;
     showTimeCheckBox        = ui->showTimeCheckBox;
@@ -391,7 +399,8 @@ void SAKDebugPage::initInputSettingString()
 
 void SAKDebugPage::initOutputSettingString()
 {
-    settingStringOutputModel = QString("%1/outputModel").arg(settingKey);
+    settingStringRxTextFormat = QString("%1/rxTextFormat").arg(settingKey);
+    settingStringTxTextFormat = QString("%1/txTextFormat").arg(settingKey);
     settingStringShowDate    = QString("%1/showDate").arg(settingKey);
     settingStringAutoWrap    = QString("%1/autoWrap").arg(settingKey);
     settingStringShowTime    = QString("%1/showTime").arg(settingKey);
@@ -447,14 +456,23 @@ void SAKDebugPage::readinOutputSettings()
         }
     };
 
-    QVariant var = SAKSettings::instance()->value(settingStringOutputModel);
+    QVariant var = SAKSettings::instance()->value(settingStringRxTextFormat);
     int index = 0;
     if (var.isNull()){
         index = 4;
     }else{
         index = var.toInt();
     }
-    outputModelComboBox->setCurrentIndex(index);
+    rxTextFormatComboBox->setCurrentIndex(index);
+
+    var = SAKSettings::instance()->value(settingStringTxTextFormat);
+    index = 0;
+    if (var.isNull()){
+        index = 4;
+    }else{
+        index = var.toInt();
+    }
+    txTextFormatComboBox->setCurrentIndex(index);
 
     var = SAKSettings::instance()->value(settingStringShowDate);
     bool value = SAKSettings::instance()->value(settingStringShowDate).toBool();
