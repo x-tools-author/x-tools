@@ -19,5 +19,8 @@
         <file>translations/SAK/SAK_zh_CN.ts</file>
         <file>translations/SAK/SAK_zh_TW.ts</file>
         <file>translations/SAK/Translations.json</file>
+        <file>translations/SAK/SAK_en.qm</file>
+        <file>translations/SAK/SAK_zh_CN.qm</file>
+        <file>translations/SAK/SAK_zh_TW.qm</file>
     </qresource>
 </RCC>
