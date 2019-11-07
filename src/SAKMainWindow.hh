@@ -42,7 +42,6 @@ private:
     QTabWidget* mpTabWidget             = nullptr;
     Ui::SAKMainWindow* ui               = nullptr;
     QMenu* toolsMenu                    = nullptr;
-    QMenu *languageMenu                 = nullptr;
     QAction *defaultStyleSheetAction    = nullptr;
     SAKVersion* versionDialog           = nullptr;
     UpdateManager* updateManager        = nullptr;
@@ -54,7 +53,6 @@ private:
 
     const char* appStyleKey = "Universal/appStyle";
     const char* appStylesheetKey = "Universal/appStylesheet";
-    const char* settingStringLanguage = "Universal/language";
     /// ----------------------------------------------------
     void AddTab();    
     void AddTool();
@@ -72,7 +70,6 @@ private:
 
 
     void installLanguage();
-    void installLanguageFromLocale(QString language);
     void addRemovablePage();
     void openIODeviceWindow();
     QWidget *getDebugPage(int type);

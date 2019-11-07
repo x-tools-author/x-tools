@@ -12,6 +12,7 @@
 #ifndef SAKAPPLICATION_HH
 #define SAKAPPLICATION_HH
 
+#include <QTranslator>
 #include <QApplication>
 #include <QStyleFactory>
 
@@ -23,8 +24,17 @@ class SAKApplication:public QApplication
 public:
     SAKApplication(int argc, char **argv);
     ~SAKApplication();
+
+    void installLanguage();
+    QString settingStringLanguage(){return _settingStringLanguage;}
 private:
+    const QString _settingStringLanguage = "Universal/language";
+
     SAKMainWindow *mpMainWindow    = nullptr;
+
+    QTranslator qtTranslator;
+    QTranslator qtBaeTranslator;
+    QTranslator sakTranslator;
 };
 
 #endif

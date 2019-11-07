@@ -245,23 +245,22 @@ void SAKMainWindow::initOptionMenu()
 
 void SAKMainWindow::initLanguageMenu()
 {
-    delete languageMenu;
-    languageMenu = new QMenu(QString("语言(Languang)"), this);
+    QMenu *languageMenu = new QMenu(tr("语言"), this);
     menuBar()->addMenu(languageMenu);
 
-    QString language = SAKSettings::instance()->value(settingStringLanguage).toString();
-    if (language.isEmpty()){
-        if (QLocale().country() == QLocale::China){
-            installLanguageFromLocale("zh_CN");
-            languageMenu->setTitle(QString("简体中文"));
-        }else{
-            installLanguageFromLocale("en");
-            languageMenu->setTitle(QString(language.split('-').first()));
-        }
-    }else{
-        installLanguageFromLocale(language.split('-').first());
-        languageMenu->setTitle(language.split('-').last());
-    }
+    QString language = SAKSettings::instance()->value(reinterpret_cast<SAKApplication*>(qApp)->settingStringLanguage()).toString();
+//    if (language.isEmpty()){
+//        if (QLocale().country() == QLocale::China){
+//            installLanguageFromLocale("zh_CN");
+//            languageMenu->setTitle(QString("简体中文"));
+//        }else{
+//            installLanguageFromLocale("en");
+//            languageMenu->setTitle(QString(language.split('-').first()));
+//        }
+//    }else{
+//        installLanguageFromLocale(language.split('-').first());
+//        languageMenu->setTitle(language.split('-').last());
+//    }
 
     QFile file(":/translations/SAK/Translations.json");
     file.open(QFile::ReadOnly);
@@ -299,7 +298,7 @@ void SAKMainWindow::initLanguageMenu()
                 action->setIcon(QIcon(QString(":/translations/SAK/%1").arg(var.locale).toLatin1()));
                 connect(action, &QAction::triggered, this, &SAKMainWindow::installLanguage);
 
-                if (var.language == language){
+                if (var.language == language.split('-').first()){
                     action->setChecked(true);
                 }
             }
@@ -346,29 +345,16 @@ void SAKMainWindow::installLanguage()
         return;
     }
 
-    QString language = sender()->objectName();
-    installLanguageFromLocale(language);
-}
+    QAction *action = reinterpret_cast<QAction*>(sender());
+    action->setChecked(true);
 
-void SAKMainWindow::installLanguageFromLocale(QString language)
-{
-    qtBaeTranslator.load(QString(":/translations/Qt/qtbase_%1.qm").arg(language));
-    qApp->installTranslator(&qtBaeTranslator);
+    QString language = action->objectName();
+    QString name = action->data().toString();
+    SAKSettings::instance()->setValue(reinterpret_cast<SAKApplication*>(qApp)->settingStringLanguage(), language+"-"+name);
 
-    qtTranslator.load(QString(":/translations/Qt/qt_%1.qm").arg(language));
-    qApp->installTranslator(&qtTranslator);
-
-    sakTranslator.load(QString(":/translations/SAK/SAK_%1.qm").arg(language));
-    qApp->installTranslator(&sakTranslator);
-
-    if (sender()){
-        QAction *action = reinterpret_cast<QAction*>(sender());
-        action->setChecked(true);
-        QString title = action->data().toString();
-        languageMenu->setTitle(title);
-
-        SAKSettings::instance()->setValue(settingStringLanguage, language+"-"+title);
-    }
+    QMessageBox::information(this, QString("Restart to Effectived"),
+                             tr("The language of the application has been changed, "
+                                "please to restart the application to effectived"));
 }
 
 void SAKMainWindow::addRemovablePage()

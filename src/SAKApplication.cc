@@ -9,6 +9,7 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
+#include "SAKSettings.hh"
 #include "SAKApplication.hh"
 #include "SAKMainWindow.hh"
 
@@ -20,18 +21,12 @@
 SAKApplication::SAKApplication(int argc, char **argv):
     QApplication(argc, argv)
 {
+    installLanguage();
+
     /// 注册表选项
     setOrganizationName(QString("Qter"));
     setOrganizationDomain(QString("IT"));
     setApplicationName(QString("QtSwissArmyKnife"));
-
-    /// 本工程好像并没有使用QTextCursor作为信号参数，根据Qt Creator的提示要求，添加该语句
-    qRegisterMetaType<QTextCursor>("QTextCursor");
-
-//    QTranslator *qtTranslator = new QTranslator(this);
-//    bool ok = qtTranslator->load(QString(":/translations/Qt_zh_CN.qm"));
-//    installTranslator(qtTranslator);
-//    qDebug() << QString(":/translations/Qt_zh_CN.qm") << ok;
 
     mpMainWindow = new SAKMainWindow;
     mpMainWindow->show();
@@ -40,4 +35,34 @@ SAKApplication::SAKApplication(int argc, char **argv):
 SAKApplication::~SAKApplication()
 {
 
+}
+
+void SAKApplication::installLanguage()
+{
+    QString language = SAKSettings::instance()->value(_settingStringLanguage).toString();
+    QString qmName;
+    if (language.isEmpty()){
+        if (QLocale().country() == QLocale::China){
+            qmName = QString("zh_CN");
+        }else{
+            qmName = QString("en");
+        }
+    }else{
+        qmName = language.split('-').first();
+    }
+
+    qtBaeTranslator.load(QString(":/translations/Qt/qtbase_%1.qm").arg(qmName));
+    qApp->installTranslator(&qtBaeTranslator);
+
+    qtTranslator.load(QString(":/translations/Qt/qt_%1.qm").arg(qmName));
+    qApp->installTranslator(&qtTranslator);
+
+    sakTranslator.load(QString(":/translations/SAK/SAK_%1.qm").arg(qmName));
+    qApp->installTranslator(&sakTranslator);
+
+    if (sender()){
+        QAction *action = reinterpret_cast<QAction*>(sender());
+        action->setChecked(true);
+        QString title = action->data().toString();
+    }
 }
