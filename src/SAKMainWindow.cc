@@ -259,7 +259,7 @@ void SAKMainWindow::initLanguageMenu()
             languageMenu->setTitle(QString(language.split('-').first()));
         }
     }else{
-        installLanguageFromLocale(language);
+        installLanguageFromLocale(language.split('-').first());
         languageMenu->setTitle(language.split('-').last());
     }
 
