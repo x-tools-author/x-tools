@@ -144,18 +144,6 @@ p, li { white-space: pre-wrap; }
      </property>
     </widget>
    </item>
-   <item row="0" column="2">
-    <widget class="QLabel" name="label_3">
-     <property name="styleSheet">
-      <string notr="true">QLabel{
-    color:green
-}</string>
-     </property>
-     <property name="text">
-      <string>数据输出</string>
-     </property>
-    </widget>
-   </item>
    <item row="7" column="9" colspan="2">
     <widget class="QCheckBox" name="showTimeCheckBox">
      <property name="text">
@@ -323,18 +311,6 @@ p, li { white-space: pre-wrap; }
     <widget class="QPushButton" name="clearInputPushButton">
      <property name="text">
       <string>清空输入</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0">
-    <widget class="QLabel" name="label_4">
-     <property name="styleSheet">
-      <string notr="true">QLabel{
-    color:green
-}</string>
-     </property>
-     <property name="text">
-      <string>设备控制</string>
      </property>
     </widget>
    </item>
@@ -620,18 +596,6 @@ p, li { white-space: pre-wrap; }
      </property>
     </widget>
    </item>
-   <item row="0" column="9">
-    <widget class="QLabel" name="label_5">
-     <property name="styleSheet">
-      <string notr="true">QLabel{
-    color:green
-}</string>
-     </property>
-     <property name="text">
-      <string>输出设置</string>
-     </property>
-    </widget>
-   </item>
    <item row="27" column="0">
     <widget class="QLabel" name="label_28">
      <property name="styleSheet">
@@ -784,6 +748,42 @@ p, li { white-space: pre-wrap; }
     <widget class="QLabel" name="label_12">
      <property name="text">
       <string>接收数据格式</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="9" colspan="4">
+    <widget class="QLabel" name="label_5">
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+    color:green
+}</string>
+     </property>
+     <property name="text">
+      <string>输出设置</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2" colspan="7">
+    <widget class="QLabel" name="label_3">
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+    color:green
+}</string>
+     </property>
+     <property name="text">
+      <string>数据输出</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="2">
+    <widget class="QLabel" name="label_4">
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+    color:green
+}</string>
+     </property>
+     <property name="text">
+      <string>设备控制</string>
      </property>
     </widget>
    </item>
