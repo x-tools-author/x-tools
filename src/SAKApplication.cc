@@ -13,7 +13,7 @@
 #include "SAKApplication.hh"
 #include "SAKMainWindow.hh"
 
-#include <QDebug>
+#include <QTimer>
 #include <QSettings>
 #include <QTextCursor>
 #include <QTranslator>
@@ -30,7 +30,13 @@ SAKApplication::SAKApplication(int argc, char **argv):
     setApplicationName(QString("QtSwissArmyKnife"));
 
     mpMainWindow = new SAKMainWindow;
-    mpMainWindow->show();    
+    mpMainWindow->show();
+
+    QTimer::singleShot(5*1000, [=](){
+        if (SAKSettings::instance()->enableAutoCheckForUpdate()){
+            emit this->checkForUpdate();
+        }
+    });
 }
 
 SAKApplication::~SAKApplication()

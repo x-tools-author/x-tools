@@ -35,6 +35,8 @@ private:
     QTranslator qtTranslator;
     QTranslator qtBaeTranslator;
     QTranslator sakTranslator;
+signals:
+    void checkForUpdate();
 };
 
 #endif
