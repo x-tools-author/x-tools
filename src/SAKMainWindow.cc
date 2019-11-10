@@ -208,7 +208,7 @@ void SAKMainWindow::initOptionMenu()
     /*
      * 软件样式，设置默认样式需要重启软件
      */
-    QMenu *stylesheetMenu = new QMenu("皮肤");
+    QMenu *stylesheetMenu = new QMenu(tr("皮肤"));
     optionMenu->addMenu(stylesheetMenu);
     defaultStyleSheetAction = new QAction(tr("Qt默认样式"), this);
     defaultStyleSheetAction->setCheckable(true);
