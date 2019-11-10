@@ -23,8 +23,8 @@
 #include <QTranslator>
 
 class SAKVersion;
-class UpdateManager;
 class MoreInformation;
+class SAKUpdateManager;
 
 namespace Ui {
 class SAKMainWindow;
@@ -44,7 +44,7 @@ private:
     QMenu* toolsMenu                    = nullptr;
     QAction *defaultStyleSheetAction    = nullptr;
     SAKVersion* versionDialog           = nullptr;
-    UpdateManager* updateManager        = nullptr;
+    SAKUpdateManager* updateManager     = nullptr;
     MoreInformation* moreInformation    = nullptr;   
 
     QTranslator qtTranslator;

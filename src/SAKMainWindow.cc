@@ -38,6 +38,7 @@
 #include "SAKUdpDebugPage.hh"
 #include "MoreInformation.hh"
 #include "QtStyleSheetApi.hh"
+#include "SAKUpdateManager.hh"
 #include "SAKTcpClientDebugPage.hh"
 #include "SAKTcpServerDebugPage.hh"
 #include "QtCryptographicHashController.hh"
@@ -56,8 +57,6 @@
 
 #include "ui_SAKMainWindow.h"
 
-#include <QDebug>
-const static char* configureFile = "http://wuhai.pro/software/QtSwissArmyKnife/update.json";
 SAKMainWindow::SAKMainWindow(QWidget *parent)
     :QMainWindow (parent)
     ,mpTabWidget (new QTabWidget)
@@ -66,7 +65,7 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     ,moreInformation (new MoreInformation)
 {
     ui->setupUi(this);
-    updateManager = new UpdateManager(QUrl(configureFile), SAKVersion::instance()->getVersion());
+    updateManager = new SAKUpdateManager(this);
 
     QHBoxLayout *layout = new QHBoxLayout;
     layout->addWidget(mpTabWidget);
@@ -156,8 +155,8 @@ void SAKMainWindow::initMenu()
     initFileMenu();
     initToolMenu();
     initOptionMenu();    
-    initHelpMenu();
     initLanguageMenu();
+    initHelpMenu();    
 }
 
 void SAKMainWindow::initFileMenu()
@@ -249,18 +248,6 @@ void SAKMainWindow::initLanguageMenu()
     menuBar()->addMenu(languageMenu);
 
     QString language = SAKSettings::instance()->value(reinterpret_cast<SAKApplication*>(qApp)->settingStringLanguage()).toString();
-//    if (language.isEmpty()){
-//        if (QLocale().country() == QLocale::China){
-//            installLanguageFromLocale("zh_CN");
-//            languageMenu->setTitle(QString("简体中文"));
-//        }else{
-//            installLanguageFromLocale("en");
-//            languageMenu->setTitle(QString(language.split('-').first()));
-//        }
-//    }else{
-//        installLanguageFromLocale(language.split('-').first());
-//        languageMenu->setTitle(language.split('-').last());
-//    }
 
     QFile file(":/translations/SAK/Translations.json");
     file.open(QFile::ReadOnly);
@@ -332,7 +319,7 @@ void SAKMainWindow::initHelpMenu()
 
     QAction *updateAction = new QAction(tr("检查更新"), this);
     helpMenu->addAction(updateAction);
-    connect(updateAction, &QAction::triggered, updateManager, &UpdateManager::checkForUpdate);
+    connect(updateAction, &QAction::triggered, updateManager, &SAKUpdateManager::show);
 
     QAction *moreInformationAction = new QAction(tr("更多信息"), this);
     helpMenu->addAction(moreInformationAction);
@@ -353,7 +340,7 @@ void SAKMainWindow::installLanguage()
     SAKSettings::instance()->setValue(reinterpret_cast<SAKApplication*>(qApp)->settingStringLanguage(), language+"-"+name);
 
     QMessageBox::information(this, QString("Restart to Effectived"),
-                             tr("The language of the application has been changed, "
+                             QString("The language of the application has been changed, "
                                 "please to restart the application to effectived"));
 }
 
