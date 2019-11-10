@@ -10,20 +10,19 @@
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
 #include "SAKDebugPage.hh"
-#include "SAKMoreSettingWidget.hh"
+#include "SAKMoreSettingsWidget.hh"
 
-#include "ui_SAKMoreSettingWidget.h"
+#include "ui_SAKMoreSettingsWidget.h"
 
-SAKMoreSettingWidget::SAKMoreSettingWidget(SAKDebugPage *debugPage, QWidget *parent)
+SAKMoreSettingsWidget::SAKMoreSettingsWidget(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget (parent)
     ,_debugPage (debugPage)
-    ,ui (new Ui::SAKMoreSettingWidget)
+    ,ui (new Ui::SAKMoreSettingsWidget)
 {
     ui->setupUi(this);
-    setWindowTitle(tr("更多设置"));
 }
 
-SAKMoreSettingWidget::~SAKMoreSettingWidget()
+SAKMoreSettingsWidget::~SAKMoreSettingsWidget()
 {
     delete ui;
 }

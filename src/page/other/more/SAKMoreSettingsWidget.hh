@@ -15,20 +15,20 @@
 #include <QWidget>
 
 namespace Ui {
-    class SAKMoreSettingWidget;
+    class SAKMoreSettingsWidget;
 }
 
 class SAKDebugPage;
 
-class SAKMoreSettingWidget:public QWidget
+class SAKMoreSettingsWidget:public QWidget
 {
     Q_OBJECT
 public:
-    SAKMoreSettingWidget(SAKDebugPage *debugPage, QWidget *parent = nullptr);
-    ~SAKMoreSettingWidget();
+    SAKMoreSettingsWidget(SAKDebugPage *debugPage, QWidget *parent = nullptr);
+    ~SAKMoreSettingsWidget();
 private:
     SAKDebugPage *_debugPage;
-    Ui::SAKMoreSettingWidget *ui;
+    Ui::SAKMoreSettingsWidget *ui;
 };
 
 #endif
