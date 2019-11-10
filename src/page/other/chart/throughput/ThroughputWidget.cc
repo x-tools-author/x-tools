@@ -39,7 +39,7 @@ ThroughputWidget::ThroughputWidget(SAKDebugPage *debugPage, QWidget *parent)
     chart->addSeries(rxLineSeries);
     chart->addSeries(txLineSeries);
     chart->createDefaultAxes();
-    chart->axes(Qt::Horizontal).first()->setRange(QVariant::fromValue(0), QVariant::fromValue(60));;
+    chart->axes(Qt::Horizontal).first()->setRange(QVariant::fromValue(0), QVariant::fromValue(60));
     chart->axes(Qt::Horizontal).first()->setReverse(true);
     reinterpret_cast<QValueAxis*>(chart->axes(Qt::Horizontal).first())->setTickCount(30);
     reinterpret_cast<QValueAxis*>(chart->axes(Qt::Horizontal).first())->setLabelFormat("%d");   // 坐标显示格式（整数）

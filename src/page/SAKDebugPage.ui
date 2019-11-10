@@ -296,13 +296,6 @@
      </property>
     </widget>
    </item>
-   <item row="30" column="13" colspan="2">
-    <widget class="QPushButton" name="highlightSettingPushButton">
-     <property name="text">
-      <string>高亮显示</string>
-     </property>
-    </widget>
-   </item>
    <item row="14" column="11" colspan="2">
     <widget class="QLabel" name="label_14">
      <property name="text">
@@ -366,13 +359,6 @@
     <widget class="QPushButton" name="presetPushButton">
      <property name="text">
       <string>预设数据</string>
-     </property>
-    </widget>
-   </item>
-   <item row="31" column="13" colspan="2">
-    <widget class="QPushButton" name="moreSettingsPushButton">
-     <property name="text">
-      <string>更多设置</string>
      </property>
     </widget>
    </item>
@@ -538,13 +524,6 @@
       </size>
      </property>
     </spacer>
-   </item>
-   <item row="29" column="13" colspan="2">
-    <widget class="QPushButton" name="chartSettingPushButton">
-     <property name="text">
-      <string>收发图表</string>
-     </property>
-    </widget>
    </item>
    <item row="31" column="4">
     <widget class="Line" name="line_5">
@@ -811,6 +790,27 @@ p, li { white-space: pre-wrap; }
     <widget class="Line" name="line_6">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="29" column="13" colspan="2">
+    <widget class="QPushButton" name="highlightSettingPushButton">
+     <property name="text">
+      <string>高亮显示</string>
+     </property>
+    </widget>
+   </item>
+   <item row="30" column="13" colspan="2">
+    <widget class="QPushButton" name="moreSettingsPushButton">
+     <property name="text">
+      <string>更多设置</string>
+     </property>
+    </widget>
+   </item>
+   <item row="31" column="13" colspan="2">
+    <widget class="QPushButton" name="dataVisualizationPushButton">
+     <property name="text">
+      <string>数据可视</string>
      </property>
     </widget>
    </item>

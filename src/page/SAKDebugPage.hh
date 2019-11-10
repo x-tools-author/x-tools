@@ -227,15 +227,18 @@ protected:
 protected:
     QPushButton *transmissionSettingPushButton;
     QPushButton *readWriteSettingPushButton;
-    QPushButton *autoResponseSettingPushButton;
-    QPushButton *chartSettingPushButton;
+    QPushButton *autoResponseSettingPushButton;    
     QPushButton *timingSendingPushButton;
     QPushButton *highlightSettingPushButton;
     QPushButton *moreSettingsPushButton;
 
+    // 数据可视化
+protected:
+    QPushButton *dataVisualizationPushButton;
+
 private:
     SAKChartManager         *chartManager;
-    SAKOtherSettingsManager        *otherSettings;
+    SAKOtherSettingsManager *otherSettings;
     SAKStatisticsManager    *statisticsManager;
     DebugPageOutputManager  *outputManager;
     DebugPageInputManager   *debugPageInputManager;
