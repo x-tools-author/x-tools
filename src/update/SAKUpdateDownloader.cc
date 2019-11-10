@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright (C) 2018-2019 wuuhii. All rights reserved.
+ * Copyright (C) 2019 wuuhii. All rights reserved.
  *
  * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
  * project. The project is a open source project, you can get the source from:
@@ -9,27 +9,28 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#include "HttpDownloader.h"
-#include <QScopedPointer>
 #include <QDebug>
+#include <QScopedPointer>
 #include <QDesktopServices>
 
-HttpDownloader::HttpDownloader()
+#include "SAKUpdateDownloader.hh"
+
+SAKUpdateDownloader::SAKUpdateDownloader()
 {
     moveToThread(this);
 }
 
-HttpDownloader::~HttpDownloader()
+SAKUpdateDownloader::~SAKUpdateDownloader()
 {
 
 }
 
-void HttpDownloader::run()
+void SAKUpdateDownloader::run()
 {
     exec();
 }
 
-void HttpDownloader::downloadFile(QUrl url)
+void SAKUpdateDownloader::downloadFile(QUrl url)
 {
     fileUrl = url;
 
@@ -49,20 +50,20 @@ void HttpDownloader::downloadFile(QUrl url)
     startRequest();
 }
 
-void HttpDownloader::startRequest()
+void SAKUpdateDownloader::startRequest()
 {
     reply = qnam.get(QNetworkRequest(fileUrl));
-    connect(reply, &QNetworkReply::finished, this, &HttpDownloader::downloadFinished);
+    connect(reply, &QNetworkReply::finished, this, &SAKUpdateDownloader::downloadFinished);
 #if 0
     /**
      * 在下载较大文件是，read()函数出现异常，所以，一直等到下载完成才读取所有数据（对于较大的资源，这样做并不好）
      */
-    connect(reply, &QNetworkReply::readyRead, this, &HttpDownloader::read);
+    connect(reply, &QNetworkReply::readyRead, this, &SAKUpdateDownloader::read);
 #endif
-    connect(reply, &QNetworkReply::downloadProgress, this, &HttpDownloader::setProgress);
+    connect(reply, &QNetworkReply::downloadProgress, this, &SAKUpdateDownloader::setProgress);
 }
 
-void HttpDownloader::cancelDownload()
+void SAKUpdateDownloader::cancelDownload()
 {
     httpRequestAborted = true;
 
@@ -71,13 +72,13 @@ void HttpDownloader::cancelDownload()
     }
 }
 
-QString HttpDownloader::tempPath()
+QString SAKUpdateDownloader::tempPath()
 {
     QString str = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
     return str;
 }
 
-QFile* HttpDownloader::openFileForWrite(const QString &fileName)
+QFile* SAKUpdateDownloader::openFileForWrite(const QString &fileName)
 {
     QScopedPointer<QFile> file(new QFile(fileName));
     if (!file->open(QIODevice::WriteOnly)) {
@@ -87,7 +88,7 @@ QFile* HttpDownloader::openFileForWrite(const QString &fileName)
     return file.take();
 }
 
-void HttpDownloader::downloadFinished()
+void SAKUpdateDownloader::downloadFinished()
 {
     QFileInfo fi;
     if (file) {
@@ -106,7 +107,7 @@ void HttpDownloader::downloadFinished()
         return;
     }
 
-    if (reply->error()) {
+    if (reply->error() != QNetworkReply::NoError) {
         QFile::remove(fi.absoluteFilePath());
         qWarning() <<  QString("Download failed:\n%1.").arg(reply->errorString());
         reply->deleteLater();
@@ -120,9 +121,14 @@ void HttpDownloader::downloadFinished()
     QDesktopServices::openUrl(QUrl::fromLocalFile(fi.absoluteFilePath()));
 }
 
-void HttpDownloader::read()
+void SAKUpdateDownloader::read()
 {
     if (file){
         file->write(reply->readAll());
     }
+}
+
+void SAKUpdateDownloader::setProgress(qint64 bytesReceived, qint64 bytesTotal)
+{
+    emit updateProgress(bytesReceived, bytesTotal);
 }

@@ -12,12 +12,16 @@
 #include <QDebug>
 #include <QJsonArray>
 #include <QJsonObject>
-#include <QApplication>
 #include <QJsonDocument>
+#include <QListWidgetItem>
 #include <QNetworkRequest>
 #include <QDesktopServices>
 
+#include "SAKSettings.hh"
+#include "SAKApplication.hh"
 #include "SAKUpdateManager.hh"
+#include "SAKDownloadItemWidget.hh"
+
 #include "ui_SAKUpdateManager.h"
 
 static const char* checkForUpdateUrl = "https://api.github.com/repos/wuuhii/QtSwissArmyKnife/releases/latest";
@@ -33,20 +37,26 @@ SAKUpdateManager::SAKUpdateManager(QWidget *parent)
     noNewVersionTipLabel = ui->noNewVersionTipLabel;
     newVersionCommentsGroupBox = ui->newVersionCommentsGroupBox;
     newVersionCommentsTextBrowser = ui->newVersionCommentsTextBrowser;
+    downloadListListWidget = ui->downloadListListWidget;
+    autoCheckForUpdateCheckBox = ui->autoCheckForUpdateCheckBox;
     visitWebPushButton = ui->visitWebPushButton;
-    backgroundPushButton = ui->backgroundPushButton;
-    downloadUpdatePushButton = ui->downloadUpdatePushButton;
-    cancleUpdatePushButton = ui->cancleUpdatePushButton;
     checkForUpdatePushButton = ui->checkForUpdatePushButton;
     infoLabel = ui->infoLabel;
 
     currentVersionLabel->setText(QApplication::applicationVersion());
     noNewVersionTipLabel->hide();
     visitWebPushButton->setEnabled(false);
-    downloadUpdatePushButton->setEnabled(false);
 
     clearInfoTimer.setInterval(5*1000);
     connect(&clearInfoTimer, &QTimer::timeout, this, &SAKUpdateManager::clearInfo);
+
+    /*
+     * 从配置文件读入配置
+     */
+    bool checked = SAKSettings::instance()->instance()->enableAutoCheckForUpdate();
+    autoCheckForUpdateCheckBox->setChecked(checked);
+
+    connect(reinterpret_cast<SAKApplication*>(QApplication::instance()), &SAKApplication::checkForUpdate, this, &SAKUpdateManager::checkForUpdate);
 
     setModal(true);
 }
@@ -56,9 +66,19 @@ SAKUpdateManager::~SAKUpdateManager()
 
 }
 
+void SAKUpdateManager::checkForUpdate()
+{
+    on_checkForUpdatePushButton_clicked();
+}
+
+bool SAKUpdateManager::enableAutoCheckedForUpdate()
+{
+    return SAKSettings::instance()->enableAutoCheckForUpdate();
+}
+
 void SAKUpdateManager::on_autoCheckForUpdateCheckBox_clicked()
 {
-
+    SAKSettings::instance()->setEnableAutoCheckForUpdate(autoCheckForUpdateCheckBox->isChecked());
 }
 
 void SAKUpdateManager::on_visitWebPushButton_clicked()
@@ -66,27 +86,15 @@ void SAKUpdateManager::on_visitWebPushButton_clicked()
     QDesktopServices::openUrl(QUrl(updateInfo.htmlUrl));
 }
 
-void SAKUpdateManager::on_backgroundPushButton_clicked()
-{
-    close();
-}
-
-void SAKUpdateManager::on_downloadUpdatePushButton_clicked()
-{
-
-}
-
-void SAKUpdateManager::on_cancleUpdatePushButton_clicked()
-{
-    close();
-}
-
 void SAKUpdateManager::on_checkForUpdatePushButton_clicked()
-{
+{    
     updateProgressBar->setMaximum(0);
     updateProgressBar->setMaximum(0);
     noNewVersionTipLabel->hide();
     checkForUpdatePushButton->setEnabled(false);
+
+    newVersionCommentsTextBrowser->clear();
+    clearDownloadList();
 
     networkReply = networkAccessManager.get(QNetworkRequest(QUrl(checkForUpdateUrl)));
     connect(networkReply, &QNetworkReply::finished, this, &SAKUpdateManager::checkForUpdateFinished);
@@ -121,8 +129,9 @@ void SAKUpdateManager::checkForUpdateFinished()
                     newVersionLabel->setText(updateInfo.name.remove("v"));
                     newVersionCommentsTextBrowser->setText(updateInfo.body.replace(QString("\\r\\n"), QString("\r\n")));
 
+                    setupDownloadList(updateInfo);
+
                     visitWebPushButton->setEnabled(true);
-                    downloadUpdatePushButton->setEnabled(true);
                 }else{
                     noNewVersionTipLabel->show();
                 }
@@ -168,6 +177,10 @@ SAKUpdateManager::UpdateInfo SAKUpdateManager::extractUpdateInfo(QByteArray json
             updateInfo.name = jsonObj.value("name").toString();
             updateInfo.browserDownloadUrl  = extractBrowserDownloadUrl(jsonObj.value("assets").toVariant().toJsonArray());
             updateInfo.body = jsonObj.value("body").toString();
+            updateInfo.tarballUrl = jsonObj.value("tarball_url").toString();
+            updateInfo.zipballUrl = jsonObj.value("zipball_url").toString();
+
+            show();
         }else{
             updateInfo.errorString = jsonParseError.errorString();
         }
@@ -216,5 +229,42 @@ bool SAKUpdateManager::isNewVersion(QString remoteVersion)
         return true;
     }else{
         return false;
+    }
+}
+
+void SAKUpdateManager::setupDownloadList(UpdateInfo info)
+{
+    clearDownloadList();
+
+    downloadListListWidget->addItem(QString("Windows"));
+    for(auto var:info.browserDownloadUrl){
+        if (var.contains(QString(".exe"))){
+            QListWidgetItem *item = new QListWidgetItem(QIcon(":/resources/images/Windows.png"), QString(""), downloadListListWidget);
+            SAKDownloadItemWidget *itemWidget = new SAKDownloadItemWidget(var, downloadListListWidget);
+
+            item->setSizeHint(itemWidget->size());
+            downloadListListWidget->setItemWidget(item, itemWidget);
+        }
+    }
+
+    downloadListListWidget->addItem(tr("源码"));
+    QListWidgetItem *item = new QListWidgetItem(QIcon(":/resources/images/Gz.png"), QString(""), downloadListListWidget);
+    SAKDownloadItemWidget *itemWidget = new SAKDownloadItemWidget(info.tarballUrl, downloadListListWidget);
+    item->setSizeHint(itemWidget->size());
+    downloadListListWidget->setItemWidget(item, itemWidget);
+
+
+    item = new QListWidgetItem(QIcon(":/resources/images/Zip.png"), QString(""), downloadListListWidget);
+    itemWidget = new SAKDownloadItemWidget(info.zipballUrl, downloadListListWidget);
+    item->setSizeHint(itemWidget->size());
+    downloadListListWidget->setItemWidget(item, itemWidget);
+}
+
+void SAKUpdateManager::clearDownloadList()
+{
+    while(downloadListListWidget->count()){
+        QListWidgetItem *item = downloadListListWidget->item(0);
+        downloadListListWidget->removeItemWidget(item);
+        delete item;
     }
 }

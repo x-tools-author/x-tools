@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>712</width>
-    <height>372</height>
+    <width>845</width>
+    <height>351</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -33,14 +33,14 @@
      <property name="styleSheet">
       <string notr="true"/>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout">
+     <layout class="QGridLayout" name="gridLayout_4">
       <property name="topMargin">
        <number>0</number>
       </property>
       <property name="bottomMargin">
        <number>0</number>
       </property>
-      <item>
+      <item row="0" column="0">
        <spacer name="horizontalSpacer">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -53,42 +53,21 @@
         </property>
        </spacer>
       </item>
-      <item>
+      <item row="0" column="1">
        <widget class="QCheckBox" name="autoCheckForUpdateCheckBox">
         <property name="text">
          <string>自动检测更新</string>
         </property>
        </widget>
       </item>
-      <item>
+      <item row="0" column="2">
        <widget class="QPushButton" name="visitWebPushButton">
         <property name="text">
          <string>发布网站</string>
         </property>
        </widget>
       </item>
-      <item>
-       <widget class="QPushButton" name="backgroundPushButton">
-        <property name="text">
-         <string>后台下载</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="downloadUpdatePushButton">
-        <property name="text">
-         <string>下载更新</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="cancleUpdatePushButton">
-        <property name="text">
-         <string>取消更新</string>
-        </property>
-       </widget>
-      </item>
-      <item>
+      <item row="0" column="3">
        <widget class="QPushButton" name="checkForUpdatePushButton">
         <property name="text">
          <string>检查更新</string>
@@ -129,7 +108,7 @@
    <item row="1" column="0" rowspan="2">
     <widget class="QLabel" name="updateProgressLabel">
      <property name="text">
-      <string>更新进度</string>
+      <string>检查更新进度</string>
      </property>
     </widget>
    </item>

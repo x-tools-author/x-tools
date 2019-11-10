@@ -9,83 +9,33 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef SAKUPDATEMANAGER_HH
-#define SAKUPDATEMANAGER_HH
+#ifndef SAKDOWNLOADITEMWIDGET_HH
+#define SAKDOWNLOADITEMWIDGET_HH
 
-#include <QTimer>
 #include <QLabel>
-#include <QDialog>
-#include <QGroupBox>
-#include <QCheckBox>
-#include <QListWidget>
+#include <QWidget>
 #include <QPushButton>
-#include <QProgressBar>
-#include <QTextBrowser>
-#include <QNetworkReply>
-#include <QNetworkAccessManager>
 
 namespace Ui {
-    class SAKUpdateManager;
+    class SAKDownloadItemWidget;
 }
 
-class SAKUpdateManager:public QDialog
+class SAKDownloadItemWidget:public QWidget
 {
     Q_OBJECT
 public:
-    SAKUpdateManager(QWidget *parent =  nullptr);
-    ~SAKUpdateManager();
+    SAKDownloadItemWidget(QString downloadUrl, QWidget *parent);
+    ~SAKDownloadItemWidget();
 private:
-    Ui::SAKUpdateManager *ui;
-    QLabel *currentVersionLabel;
-    QLabel *newVersionLabel;
-    QLabel *updateProgressLabel;
-    QProgressBar *updateProgressBar;
-    QLabel *noNewVersionTipLabel;
-    QGroupBox *newVersionCommentsGroupBox;
-    QTextBrowser *newVersionCommentsTextBrowser;
-    QListWidget *downloadListListWidget;
-    QCheckBox *autoCheckForUpdateCheckBox;
-    QPushButton *visitWebPushButton;
-    QPushButton *backgroundPushButton;
-    QPushButton *downloadUpdatePushButton;
-    QPushButton *cancleUpdatePushButton;
-    QPushButton *checkForUpdatePushButton;
-    QLabel *infoLabel;
+    Ui::SAKDownloadItemWidget *ui;
+    QLabel *fileNameLabel;
+    QPushButton *downloadPushButton;
 
 private slots:
-    void on_autoCheckForUpdateCheckBox_clicked();
-    void on_visitWebPushButton_clicked();
-    void on_backgroundPushButton_clicked();
-    void on_downloadUpdatePushButton_clicked();
-    void on_cancleUpdatePushButton_clicked();
-    void on_checkForUpdatePushButton_clicked();
+    void on_downloadPushButton_clicked();
 
 private:
-    struct UpdateInfo{
-        bool isValid;                   // 是否可用
-        QString errorString;            // 错误信息
-
-        QString htmlUrl;                // 发布页面地址
-        QString name;                   // 最新版本号
-        QStringList browserDownloadUrl; // 下载链接
-        QString body;                   // 发布描述
-        QString tarballUrl;             // 源码包（tar.tz）
-        QString zipballUrl;             // 源码包（zip）
-    }updateInfo;
-
-    QTimer clearInfoTimer;
-    QNetworkAccessManager networkAccessManager;
-    QNetworkReply *networkReply;
-
-private:
-    void outputInfo(QString info, bool isError = false);
-    void clearInfo();
-    void checkForUpdateFinished();
-
-    UpdateInfo extractUpdateInfo(QByteArray jsonObjectData);
-    QStringList extractBrowserDownloadUrl(QJsonArray jsonArray);
-    bool isNewVersion(QString remoteVersion);
-    void setupDownloadList(UpdateInfo info);
+    QString downloadUrl;
 };
 
 #endif

@@ -17,6 +17,7 @@
 #include <QDialog>
 #include <QGroupBox>
 #include <QCheckBox>
+#include <QListWidget>
 #include <QPushButton>
 #include <QProgressBar>
 #include <QTextBrowser>
@@ -33,6 +34,9 @@ class SAKUpdateManager:public QDialog
 public:
     SAKUpdateManager(QWidget *parent =  nullptr);
     ~SAKUpdateManager();
+
+    void checkForUpdate();
+    bool enableAutoCheckedForUpdate();
 private:
     Ui::SAKUpdateManager *ui;
     QLabel *currentVersionLabel;
@@ -42,20 +46,15 @@ private:
     QLabel *noNewVersionTipLabel;
     QGroupBox *newVersionCommentsGroupBox;
     QTextBrowser *newVersionCommentsTextBrowser;
+    QListWidget *downloadListListWidget;
     QCheckBox *autoCheckForUpdateCheckBox;
     QPushButton *visitWebPushButton;
-    QPushButton *backgroundPushButton;
-    QPushButton *downloadUpdatePushButton;
-    QPushButton *cancleUpdatePushButton;
     QPushButton *checkForUpdatePushButton;
     QLabel *infoLabel;
 
 private slots:
     void on_autoCheckForUpdateCheckBox_clicked();
     void on_visitWebPushButton_clicked();
-    void on_backgroundPushButton_clicked();
-    void on_downloadUpdatePushButton_clicked();
-    void on_cancleUpdatePushButton_clicked();
     void on_checkForUpdatePushButton_clicked();
 
 private:
@@ -67,6 +66,8 @@ private:
         QString name;                   // 最新版本号
         QStringList browserDownloadUrl; // 下载链接
         QString body;                   // 发布描述
+        QString tarballUrl;             // 源码包（tar.tz）
+        QString zipballUrl;             // 源码包（zip）
     }updateInfo;
 
     QTimer clearInfoTimer;
@@ -81,6 +82,8 @@ private:
     UpdateInfo extractUpdateInfo(QByteArray jsonObjectData);
     QStringList extractBrowserDownloadUrl(QJsonArray jsonArray);
     bool isNewVersion(QString remoteVersion);
+    void setupDownloadList(UpdateInfo info);
+    void clearDownloadList();
 };
 
 #endif
