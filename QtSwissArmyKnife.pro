@@ -141,13 +141,8 @@ HEADERS +=  \
     src/udp/SAKUdpDebugPage.hh \
     src/udp/SAKUdpDevice.hh \
     src/udp/SAKUdpDeviceController.hh \
-    src/update/CheckForUpdateDialog.h \
-    src/update/ConfirmUpdateDialog.h \
-    src/update/DownloadDialog.h \
-    src/update/HttpAnalyzer.h \
-    src/update/HttpDownloader.h \
-    src/update/SAKUpdateManager.hh \
-    src/update/UpdateManager.h
+    src/update/SAKDownloadItemWidget.hh \
+    src/update/SAKUpdateManager.hh
 
 
 SOURCES +=  \
@@ -206,13 +201,8 @@ SOURCES +=  \
     src/udp/SAKUdpDebugPage.cc \
     src/udp/SAKUdpDevice.cc \
     src/udp/SAKUdpDeviceController.cc \
-    src/update/CheckForUpdateDialog.cpp \
-    src/update/ConfirmUpdateDialog.cpp \
-    src/update/DownloadDialog.cpp \
-    src/update/HttpAnalyzer.cpp \
-    src/update/HttpDownloader.cpp \
-    src/update/SAKUpdateManager.cc \
-    src/update/UpdateManager.cpp
+    src/update/SAKDownloadItemWidget.cc \
+    src/update/SAKUpdateManager.cc
 
 FORMS +=  \
     src/MoreInformation.ui \
@@ -241,7 +231,5 @@ FORMS +=  \
     src/tools/crccalculator/CRCCalculator.ui \
     src/tools/filechecker/QtCryptographicHashController.ui \
     src/udp/SAKUdpDeviceController.ui \
-    src/update/CheckForUpdateDialog.ui \
-    src/update/ConfirmUpdateDialog.ui \
-    src/update/DownloadDialog.ui \
+    src/update/SAKDownloadItemWidget.ui \
     src/update/SAKUpdateManager.ui

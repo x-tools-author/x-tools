@@ -22,5 +22,12 @@
         <file>translations/SAK/SAK_en.qm</file>
         <file>translations/SAK/SAK_zh_CN.qm</file>
         <file>translations/SAK/SAK_zh_TW.qm</file>
+        <file>resources/images/Android.png</file>
+        <file>resources/images/Gz.png</file>
+        <file>resources/images/Linux.png</file>
+        <file>resources/images/Mac.png</file>
+        <file>resources/images/Pi.png</file>
+        <file>resources/images/Windows.png</file>
+        <file>resources/images/Zip.png</file>
     </qresource>
 </RCC>
