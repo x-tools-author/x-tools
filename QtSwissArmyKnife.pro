@@ -45,7 +45,6 @@ win32 {
     }
 }
 
-
 #--------------------------------------------------------------------------------------------
 #国际化文件
 TRANSLATIONS  += \
@@ -147,6 +146,7 @@ HEADERS +=  \
     src/update/DownloadDialog.h \
     src/update/HttpAnalyzer.h \
     src/update/HttpDownloader.h \
+    src/update/SAKUpdateManager.hh \
     src/update/UpdateManager.h
 
 
@@ -211,8 +211,8 @@ SOURCES +=  \
     src/update/DownloadDialog.cpp \
     src/update/HttpAnalyzer.cpp \
     src/update/HttpDownloader.cpp \
+    src/update/SAKUpdateManager.cc \
     src/update/UpdateManager.cpp
-
 
 FORMS +=  \
     src/MoreInformation.ui \
@@ -243,4 +243,5 @@ FORMS +=  \
     src/udp/SAKUdpDeviceController.ui \
     src/update/CheckForUpdateDialog.ui \
     src/update/ConfirmUpdateDialog.ui \
-    src/update/DownloadDialog.ui
+    src/update/DownloadDialog.ui \
+    src/update/SAKUpdateManager.ui
