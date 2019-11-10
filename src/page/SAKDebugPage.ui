@@ -50,7 +50,7 @@
 }</string>
      </property>
      <property name="text">
-      <string>C&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</string>
+      <string notr="true">Rx&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -65,7 +65,7 @@
 }</string>
      </property>
      <property name="text">
-      <string>0B/s</string>
+      <string notr="true">0B/s</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -90,7 +90,7 @@
 }</string>
      </property>
      <property name="text">
-      <string>0</string>
+      <string notr="true">0</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -249,7 +249,7 @@
 }</string>
      </property>
      <property name="text">
-      <string>0xFFFFFFFF</string>
+      <string notr="true">0xFFFFFFFF</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -289,7 +289,7 @@
 }</string>
      </property>
      <property name="text">
-      <string>0</string>
+      <string notr="true">0</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -519,7 +519,7 @@
 }</string>
      </property>
      <property name="text">
-      <string>C&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</string>
+      <string notr="true">Tx&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -586,7 +586,7 @@
 }</string>
      </property>
      <property name="text">
-      <string>0</string>
+      <string notr="true">0</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -698,7 +698,7 @@ p, li { white-space: pre-wrap; }
 }</string>
      </property>
      <property name="text">
-      <string>0B/s</string>
+      <string notr="true">0B/s</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -744,7 +744,7 @@ p, li { white-space: pre-wrap; }
       <string/>
      </property>
      <property name="statusTip">
-      <string>wewew</string>
+      <string/>
      </property>
      <property name="text">
       <string>定时(ms)</string>
@@ -793,7 +793,7 @@ p, li { white-space: pre-wrap; }
 }</string>
      </property>
      <property name="text">
-      <string>0</string>
+      <string notr="true">0</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
