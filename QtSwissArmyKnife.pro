@@ -48,9 +48,9 @@ win32 {
 #--------------------------------------------------------------------------------------------
 #国际化文件
 TRANSLATIONS  += \
-    Translations/SAK/SAK_en.ts \
-    Translations/SAK/SAK_zh_CN.ts \
-    Translations/SAK/SAK_zh_TW.ts
+    Translations/sak/SAK_en.ts \
+    Translations/sak/SAK_zh_CN.ts \
+    Translations/sak/SAK_zh_TW.ts
 
 
 RESOURCES += \
