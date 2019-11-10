@@ -118,7 +118,7 @@ void SAKMainWindow::AddTool()
     addTool(tr("文件校验工具"),     new QtCryptographicHashController);
 
     QAction *action = nullptr;
-    action = new QAction("CRC计算器", this);
+    action = new QAction(tr("CRC计算器"), this);
     toolsMenu->addAction(action);
     connect(action, &QAction::triggered, this, &SAKMainWindow::createCRCCalculator);
 }
