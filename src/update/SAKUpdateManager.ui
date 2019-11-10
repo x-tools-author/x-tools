@@ -151,7 +151,7 @@
 }</string>
      </property>
      <property name="text">
-      <string>0.0.0</string>
+      <string notr="true">0.0.0</string>
      </property>
     </widget>
    </item>
