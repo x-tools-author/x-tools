@@ -33,7 +33,7 @@
 #include "SAKAutoResponseSettingsWidget.hh"
 
 class SAKDataFactory;
-class SAKChartManager;
+class SAKDataVisualizationManager;
 class SAKCRCInterface;
 class SAKOtherSettingsManager;
 class SAKStatisticsManager;
@@ -235,9 +235,11 @@ protected:
     // 数据可视化
 protected:
     QPushButton *dataVisualizationPushButton;
+private slots:
+    void on_dataVisualizationPushButton_clicked();
 
 private:
-    SAKChartManager         *chartManager;
+    SAKDataVisualizationManager *dataVisualizationManager;
     SAKOtherSettingsManager *otherSettings;
     SAKStatisticsManager    *statisticsManager;
     DebugPageOutputManager  *outputManager;
@@ -254,7 +256,7 @@ private:
      */
     void initUiPointer();    
 public:
-    friend class SAKChartManager;
+    friend class SAKDataVisualizationManager;
     friend class SAKOtherSettingsManager;
     friend class SAKStatisticsManager;
     friend class DebugPageInputManager;

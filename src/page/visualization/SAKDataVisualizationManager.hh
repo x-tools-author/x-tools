@@ -9,31 +9,34 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef SAKCHART_HH
-#define SAKCHART_HH
+#ifndef SAKDATAVISUALIZATIONMANAGER_HH
+#define SAKDATAVISUALIZATIONMANAGER_HH
 
-#include <QObject>
-#include <QPushButton>
+#include <QWidget>
+#include <QTabWidget>
+
+namespace Ui {
+    class SAKDataVisualizationManager;
+};
 
 class SAKDebugPage;
 class SAKThroughputWidget;
-class SAKChartManager:public QObject
+class SAKDataVisualizationManager:public QWidget
 {
     Q_OBJECT
 public:
-    SAKChartManager(SAKDebugPage *debugPage, QObject *parent = nullptr);
-    ~SAKChartManager();
+    SAKDataVisualizationManager(SAKDebugPage *page, QWidget *parent = nullptr);
+    ~SAKDataVisualizationManager();
 private:
-    SAKDebugPage *_debugPage;
-
-    QPushButton *throughputPushButton;
-
+    SAKDebugPage *debugPage;
     SAKThroughputWidget *throughputWidget;
 
-    /// 显示吞吐量面板
-    void showThroughputPushWidget();
+private:
+    void initPage();
 
-    void resetThroughputWidgetPtr();
+private:
+    Ui::SAKDataVisualizationManager *ui;
+    QTabWidget *tabWidget;
 };
 
 #endif

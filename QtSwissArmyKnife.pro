@@ -122,7 +122,7 @@ HEADERS +=  \
     src/page/output/save/SaveOutputDataSettings.hh \
     src/page/output/save/SaveOutputDataThread.hh \
     src/page/statistics/SAKStatisticsManager.hh \
-    src/page/visualization/SAKChartManager.hh \
+    src/page/visualization/SAKDataVisualizationManager.hh \
     src/page/visualization/throughput/SAKThroughputWidget.hh \
     src/tcpclient/SAKTcpClientDebugPage.hh \
     src/tcpclient/SAKTcpClientDevice.hh \
@@ -180,7 +180,7 @@ SOURCES +=  \
     src/page/output/save/SaveOutputDataSettings.cc \
     src/page/output/save/SaveOutputDataThread.cc \
     src/page/statistics/SAKStatisticsManager.cc \
-    src/page/visualization/SAKChartManager.cc \
+    src/page/visualization/SAKDataVisualizationManager.cc \
     src/page/visualization/throughput/SAKThroughputWidget.cc \
     src/tcpclient/SAKTcpClientDebugPage.cc \
     src/tcpclient/SAKTcpClientDevice.cc \
@@ -218,6 +218,7 @@ FORMS +=  \
     src/page/other/transmission/TransmissionSettings.ui \
     src/page/other/transmission/UdpTransmissionItemWidget.ui \
     src/page/output/save/SaveOutputDataSettings.ui \
+    src/page/visualization/SAKDataVisualizationManager.ui \
     src/tcpclient/SAKTcpClientDeviceController.ui \
     src/tcpserver/SAKTcpServerDeviceController.ui \
     src/tools/crccalculator/CRCCalculator.ui \

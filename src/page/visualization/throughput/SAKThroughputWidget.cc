@@ -29,7 +29,6 @@ SAKThroughputWidget::SAKThroughputWidget(SAKDebugPage *debugPage, QWidget *paren
     dataContext.rxMax = 10;
     dataContext.txMax = 10;
 
-    setAttribute(Qt::WA_DeleteOnClose, true);
     resize(800, 400);
     setWindowTitle(tr("吞吐量"));
 

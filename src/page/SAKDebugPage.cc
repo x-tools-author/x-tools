@@ -24,7 +24,7 @@
 #include "SAKGlobal.hh"
 #include "SAKSettings.hh"
 #include "SAKDebugPage.hh"
-#include "SAKChartManager.hh"
+#include "SAKDataVisualizationManager.hh"
 #include "SAKCRCInterface.hh"
 #include "SAKOtherSettingsManager.hh"
 #include "SAKStatisticsManager.hh"
@@ -47,7 +47,7 @@ SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
     ui->setupUi(this);
     initUiPointer();
 
-    chartManager            = new SAKChartManager(this, this);
+    dataVisualizationManager= new SAKDataVisualizationManager(this);
     outputManager           = new DebugPageOutputManager(this, this);
     otherSettings           = new SAKOtherSettingsManager(this, this);
     statisticsManager       = new SAKStatisticsManager(this, this);
@@ -69,6 +69,7 @@ SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
 SAKDebugPage::~SAKDebugPage()
 {
     delete ui;
+    delete dataVisualizationManager;
 }
 
 void SAKDebugPage::write(QByteArray data)
@@ -350,6 +351,15 @@ void SAKDebugPage::initUiPointer()
      * 数据可视化
      */
     dataVisualizationPushButton = ui->dataVisualizationPushButton;
+}
+
+void SAKDebugPage::on_dataVisualizationPushButton_clicked()
+{
+    if (dataVisualizationManager->isHidden()){
+        dataVisualizationManager->show();
+    }else{
+        dataVisualizationManager->activateWindow();
+    }
 }
 
 void SAKDebugPage::initSettingKey()

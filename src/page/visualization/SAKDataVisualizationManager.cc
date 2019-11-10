@@ -10,45 +10,30 @@
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
 #include "SAKDebugPage.hh"
-#include "SAKChartManager.hh"
 #include "SAKThroughputWidget.hh"
+#include "SAKDataVisualizationManager.hh"
 
-#include <QDebug>
+#include "ui_SAKDataVisualizationManager.h"
 
-SAKChartManager::SAKChartManager(SAKDebugPage *debugPage, QObject *parent)
-    :QObject (parent)
-    ,_debugPage (debugPage)
-    ,throughputWidget (nullptr)
+SAKDataVisualizationManager::SAKDataVisualizationManager(SAKDebugPage *page, QWidget *parent)
+    :QWidget (parent)
+    ,debugPage (page)
+    ,ui (new Ui::SAKDataVisualizationManager)
 {
-    throughputPushButton = _debugPage->dataVisualizationPushButton;
-    connect(throughputPushButton, &QPushButton::clicked, this, &SAKChartManager::showThroughputPushWidget);
+    ui->setupUi(this);
+    tabWidget = ui->tabWidget;
+
+    initPage();
 }
 
-SAKChartManager::~SAKChartManager()
+SAKDataVisualizationManager::~SAKDataVisualizationManager()
 {
-    if (throughputWidget){
-        delete throughputWidget;
-    }
+    delete ui;
+    delete throughputWidget;
 }
 
-void SAKChartManager::showThroughputPushWidget()
+void SAKDataVisualizationManager::initPage()
 {
-    if (throughputWidget){
-        if (throughputWidget->isHidden()){
-            throughputWidget->show();
-        }else if (throughputWidget->isMinimized()){
-            throughputWidget->showNormal();
-        }else{
-            throughputWidget->activateWindow();
-        }
-    }else{
-        throughputWidget = new SAKThroughputWidget(_debugPage);
-        throughputWidget->show();
-        connect(throughputWidget, &QWidget::destroyed, this, &SAKChartManager::resetThroughputWidgetPtr);
-    }
-}
-
-void SAKChartManager::resetThroughputWidgetPtr()
-{
-    throughputWidget = nullptr;
+    throughputWidget = new SAKThroughputWidget(debugPage);
+    tabWidget->addTab(throughputWidget, tr("吞吐量"));
 }
