@@ -9,18 +9,17 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#include "SAKGlobal.hh"
-#include "SAKTimingSendingItem.hh"
-#include "SAKTimingSendingManager.hh"
-
-#include "ui_SAKTimingSendingManager.h"
-
-#include <QDebug>
 #include <QDateTime>
 
-SAKTimingSendingManager::SAKTimingSendingManager(SAKDebugPage *debugPage, QWidget *parent)
+#include "SAKGlobal.hh"
+#include "SAKTimingSendingItemWidget.hh"
+#include "SAKTimingSendingSettingsWidget.hh"
+
+#include "ui_SAKTimingSendingSettingsWidget.h"
+
+SAKTimingSendingSettingsWidget::SAKTimingSendingSettingsWidget(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget(parent)
-    ,ui (new Ui::SAKTimingSendingManager)
+    ,ui (new Ui::SAKTimingSendingSettingsWidget)
     ,debugPage (debugPage)
 {
     ui->setupUi(this);
@@ -34,22 +33,22 @@ SAKTimingSendingManager::SAKTimingSendingManager(SAKDebugPage *debugPage, QWidge
     on_addPushButton_clicked();
 }
 
-SAKTimingSendingManager::~SAKTimingSendingManager()
+SAKTimingSendingSettingsWidget::~SAKTimingSendingSettingsWidget()
 {
     delete ui;
 }
 
-void SAKTimingSendingManager::on_savePushButton_clicked()
+void SAKTimingSendingSettingsWidget::on_savePushButton_clicked()
 {
 
 }
 
-void SAKTimingSendingManager::on_importPushButton_clicked()
+void SAKTimingSendingSettingsWidget::on_importPushButton_clicked()
 {
 
 }
 
-void SAKTimingSendingManager::on_deletePushButton_clicked()
+void SAKTimingSendingSettingsWidget::on_deletePushButton_clicked()
 {
     QListWidgetItem *currentItem = itemListWidget->currentItem();
     if (currentItem){
@@ -58,12 +57,12 @@ void SAKTimingSendingManager::on_deletePushButton_clicked()
     }
 }
 
-void SAKTimingSendingManager::on_addPushButton_clicked()
+void SAKTimingSendingSettingsWidget::on_addPushButton_clicked()
 {
     QListWidgetItem *item = new QListWidgetItem(itemListWidget);
     itemListWidget->addItem(item);
 
-    SAKTimingSendingItem *itemWidget = new SAKTimingSendingItem(debugPage);
+    SAKTimingSendingItemWidget *itemWidget = new SAKTimingSendingItemWidget(debugPage);
     item->setSizeHint(itemWidget->size());
     itemListWidget->setItemWidget(item, itemWidget);
 }

@@ -9,14 +9,13 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef SAKTIMINGSENDINGITEM_HH
-#define SAKTIMINGSENDINGITEM_HH
-
-#include "SAKDebugPage.hh"
+#ifndef SAKTIMINGSENDINGITEMWIDGET_HH
+#define SAKTIMINGSENDINGITEMWIDGET_HH
 
 #include <QTimer>
 #include <QRegExp>
 #include <QWidget>
+#include <QTextEdit>
 #include <QLineEdit>
 #include <QComboBox>
 #include <QCheckBox>
@@ -25,18 +24,18 @@
 class SAKDebugPage;
 
 namespace Ui {
-    class SAKTimingSendingItem;
+    class SAKTimingSendingItemWidget;
 }
 
-class SAKTimingSendingItem:public QWidget
+class SAKTimingSendingItemWidget:public QWidget
 {
     Q_OBJECT
 public:
-    SAKTimingSendingItem(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
-    ~SAKTimingSendingItem();
+    SAKTimingSendingItemWidget(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
+    ~SAKTimingSendingItemWidget();
 
 private:
-    Ui::SAKTimingSendingItem *ui;
+    Ui::SAKTimingSendingItemWidget *ui;
 
     QCheckBox *timingCheckBox;
     QLineEdit *timingTimeLineEdit;

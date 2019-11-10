@@ -22,7 +22,7 @@ class SAKDebugPage;
 class HighlightSettingsWidget;
 class SAKMoreSettingsWidget;
 class SAKReadWriteSettingsWidget;
-class SAKTimingSendingManager;
+class SAKTimingSendingSettingsWidget;
 
 class SAKOtherSettingsManager:public QObject
 {
@@ -43,7 +43,7 @@ private:
     TransmissionSettings        *transmissionSettings;
     SAKReadWriteSettingsWidget     *readWriteSettingsWidget;
     SAKAutoResponseSettingsWidget   *autoResponseSettingWidget;
-    SAKTimingSendingManager     *timingSendingManager;
+    SAKTimingSendingSettingsWidget     *timingSendingManager;
     HighlightSettingsWidget     *highlighterSettingPanel;
     SAKMoreSettingsWidget       *moreSettingsWidget;
 

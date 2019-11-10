@@ -21,7 +21,7 @@
 #include "HighlightSettingsWidget.hh"
 #include "SAKMoreSettingsWidget.hh"
 #include "SAKReadWriteSettingsWidget.hh"
-#include "SAKTimingSendingManager.hh"
+#include "SAKTimingSendingSettingsWidget.hh"
 #include "SAKAutoResponseSettingsWidget.hh"
 
 SAKOtherSettingsManager::SAKOtherSettingsManager(SAKDebugPage *debugPage, QObject *parent)
@@ -33,7 +33,7 @@ SAKOtherSettingsManager::SAKOtherSettingsManager(SAKDebugPage *debugPage, QObjec
     highlighterSettingPanel     = new HighlightSettingsWidget(_debugPage->outputTextBroswer->document());
     moreSettingsWidget     = new SAKMoreSettingsWidget(_debugPage);
     readWriteSettingsWidget     = new SAKReadWriteSettingsWidget(_debugPage);
-    timingSendingManager        = new SAKTimingSendingManager(_debugPage);
+    timingSendingManager        = new SAKTimingSendingSettingsWidget(_debugPage);
 
     autoResponseSettingPushButton   = _debugPage->autoResponseSettingPushButton;
     highlightSettingPushButton      = _debugPage->highlightSettingPushButton;

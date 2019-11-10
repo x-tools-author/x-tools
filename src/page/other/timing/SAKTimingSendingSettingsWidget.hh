@@ -9,8 +9,8 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef SAKTIMINGSENDINGMANAGER_HH
-#define SAKTIMINGSENDINGMANAGER_HH
+#ifndef SAKTIMINGSENDINGSETTINGSWIDGET_HH
+#define SAKTIMINGSENDINGSETTINGSWIDGET_HH
 
 #include <QRegExp>
 #include <QWidget>
@@ -22,19 +22,19 @@
 #include <QRegExpValidator>
 
 namespace Ui {
-    class SAKTimingSendingManager;
+    class SAKTimingSendingSettingsWidget;
 }
 
 class SAKDebugPage;
-class SAKTimingSendingManager:public QWidget
+class SAKTimingSendingSettingsWidget:public QWidget
 {
     Q_OBJECT
 public:
-    SAKTimingSendingManager(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
-    ~SAKTimingSendingManager();
+    SAKTimingSendingSettingsWidget(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
+    ~SAKTimingSendingSettingsWidget();
 
 private:
-    Ui::SAKTimingSendingManager *ui;
+    Ui::SAKTimingSendingSettingsWidget *ui;
 
     QListWidget *itemListWidget;
     QPushButton *savePushButton;

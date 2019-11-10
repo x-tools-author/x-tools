@@ -9,17 +9,18 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#include "SAKGlobal.hh"
-#include "SAKTimingSendingItem.hh"
-
-#include "ui_SAKTimingSendingItem.h"
-
 #include <QDebug>
 #include <QDateTime>
 
-SAKTimingSendingItem::SAKTimingSendingItem(SAKDebugPage *debugPage, QWidget *parent)
+#include "SAKGlobal.hh"
+#include "SAKDebugPage.hh"
+#include "SAKTimingSendingItemWidget.hh"
+
+#include "ui_SAKTimingSendingItemWidget.h"
+
+SAKTimingSendingItemWidget::SAKTimingSendingItemWidget(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget(parent)
-    ,ui (new Ui::SAKTimingSendingItem)
+    ,ui (new Ui::SAKTimingSendingItemWidget)
     ,timingCheckBox (nullptr)
     ,timingTimeLineEdit (nullptr)
     ,textFormatComboBox (nullptr)
@@ -36,30 +37,30 @@ SAKTimingSendingItem::SAKTimingSendingItem(SAKDebugPage *debugPage, QWidget *par
     inputDataTextEdit   = ui->inputDataTextEdit;
 
     writeTimer.setInterval(timingTimeLineEdit->text().toInt());
-    connect(&writeTimer, &QTimer::timeout, this, &SAKTimingSendingItem::write);
+    connect(&writeTimer, &QTimer::timeout, this, &SAKTimingSendingItemWidget::write);
 
     SAKGlobal::initInputTextFormatComboBox(textFormatComboBox);
 }
 
-SAKTimingSendingItem::~SAKTimingSendingItem()
+SAKTimingSendingItemWidget::~SAKTimingSendingItemWidget()
 {
     delete ui;
 }
 
-void SAKTimingSendingItem::on_timingCheckBox_clicked()
+void SAKTimingSendingItemWidget::on_timingCheckBox_clicked()
 {
     if (timingCheckBox){
         timingCheckBox->isChecked() ? writeTimer.start() : writeTimer.stop();
     }
 }
 
-void SAKTimingSendingItem::on_timingTimeLineEdit_textChanged(const QString &text)
+void SAKTimingSendingItemWidget::on_timingTimeLineEdit_textChanged(const QString &text)
 {
     int interval = text.toInt();
     writeTimer.setInterval(interval == 0 ? 1000 : interval);
 }
 
-void SAKTimingSendingItem::write()
+void SAKTimingSendingItemWidget::write()
 {
     QString data = inputDataTextEdit->toPlainText();
 
