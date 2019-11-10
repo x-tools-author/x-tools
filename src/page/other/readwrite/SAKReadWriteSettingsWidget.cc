@@ -10,12 +10,12 @@
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
 #include "SAKDebugPage.hh"
-#include "ReadWriteSettingsWidget.hh"
-#include "ui_ReadWriteSettingsWidget.h"
+#include "SAKReadWriteSettingsWidget.hh"
+#include "ui_SAKReadWriteSettingsWidget.h"
 
-ReadWriteSettingsWidget::ReadWriteSettingsWidget(SAKDebugPage *debugPage, QWidget* parent)
+SAKReadWriteSettingsWidget::SAKReadWriteSettingsWidget(SAKDebugPage *debugPage, QWidget* parent)
     :QDialog (parent)
-    ,ui(new Ui::ReadWriteSettingsWidget)
+    ,ui(new Ui::SAKReadWriteSettingsWidget)
     ,debugPage (debugPage)
 {
     ui->setupUi(this);
@@ -24,19 +24,19 @@ ReadWriteSettingsWidget::ReadWriteSettingsWidget(SAKDebugPage *debugPage, QWidge
     waitForBytesWrittenTime = 5;
 }
 
-void ReadWriteSettingsWidget::on_readParametersComboBox_currentTextChanged(const QString &text)
+void SAKReadWriteSettingsWidget::on_readParametersComboBox_currentTextChanged(const QString &text)
 {
     waitForReadyReadTime = text.toInt();
     setReadWriteParameters();
 }
 
-void ReadWriteSettingsWidget::on_writeParametersComboBox_currentTextChanged(const QString &text)
+void SAKReadWriteSettingsWidget::on_writeParametersComboBox_currentTextChanged(const QString &text)
 {
     waitForBytesWrittenTime = text.toInt();
     setReadWriteParameters();
 }
 
-void ReadWriteSettingsWidget::setReadWriteParameters()
+void SAKReadWriteSettingsWidget::setReadWriteParameters()
 {
     struct SAKDebugPage::ReadWriteParameters parameters;
     parameters.waitForReadyReadTime = waitForReadyReadTime;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>ReadWriteSettingsWidget</class>
- <widget class="QDialog" name="ReadWriteSettingsWidget">
+ <class>SAKReadWriteSettingsWidget</class>
+ <widget class="QDialog" name="SAKReadWriteSettingsWidget">
   <property name="geometry">
    <rect>
     <x>0</x>

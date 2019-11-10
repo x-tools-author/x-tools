@@ -9,25 +9,25 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef READWRITESETTINGSWIDGET_HH
-#define READWRITESETTINGSWIDGET_HH
+#ifndef SAKREADWRITESETTINGSWIDGET_HH
+#define SAKREADWRITESETTINGSWIDGET_HH
 
 #include <QDialog>
 #include <QComboBox>
 
 
 namespace Ui {
-class ReadWriteSettingsWidget;
+class SAKReadWriteSettingsWidget;
 };
 
 class SAKDebugPage;
-class ReadWriteSettingsWidget:public QDialog
+class SAKReadWriteSettingsWidget:public QDialog
 {
     Q_OBJECT
 public:
-    ReadWriteSettingsWidget(SAKDebugPage *debugPage, QWidget* parent = nullptr);
+    SAKReadWriteSettingsWidget(SAKDebugPage *debugPage, QWidget* parent = nullptr);
 private:
-    Ui::ReadWriteSettingsWidget *ui = nullptr;
+    Ui::SAKReadWriteSettingsWidget *ui = nullptr;
 
     QComboBox *readParametersComboBox;
     QComboBox *writeParametersComboBox;
