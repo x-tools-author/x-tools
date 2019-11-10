@@ -9,30 +9,30 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef TCPTRANSMISSIONITEMWIDGET_HH
-#define TCPTRANSMISSIONITEMWIDGET_HH
+#ifndef SAKTCPTRANSMISSIONITEMWIDGET_HH
+#define SAKTCPTRANSMISSIONITEMWIDGET_HH
 
 #include <QWidget>
 #include <QCheckBox>
 #include <QComboBox>
 #include <QLineEdit>
 #include <QTcpSocket>
-#include "BaseTransmissionItemWidget.hh"
+#include "SAKBaseTransmissionItemWidget.hh"
 
 namespace Ui {
-    class TcpTransmissionItemWidget;
+    class SAKTcpTransmissionItemWidget;
 }
 
-class TcpTransmissionItemWidget:public BaseTransmissionItemWidget
+class SAKTcpTransmissionItemWidget:public SAKBaseTransmissionItemWidget
 {
     Q_OBJECT
 public:
-    TcpTransmissionItemWidget(SAKDebugPage *_debugPage, QWidget *parent = nullptr);
-    ~TcpTransmissionItemWidget();
+    SAKTcpTransmissionItemWidget(SAKDebugPage *_debugPage, QWidget *parent = nullptr);
+    ~SAKTcpTransmissionItemWidget();
 
     virtual void write(QByteArray data);
 private:
-    Ui::TcpTransmissionItemWidget *ui;
+    Ui::SAKTcpTransmissionItemWidget *ui;
     QCheckBox *enableCheckBox;
     QCheckBox *customAddressCheckBox;
     QComboBox *localAddressComboBox;

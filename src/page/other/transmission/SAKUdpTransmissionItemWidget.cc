@@ -10,12 +10,13 @@
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
 #include "SAKGlobal.hh"
-#include "UdpTransmissionItemWidget.hh"
-#include "ui_UdpTransmissionItemWidget.h"
+#include "SAKUdpTransmissionItemWidget.hh"
 
-UdpTransmissionItemWidget::UdpTransmissionItemWidget(SAKDebugPage *_debugPage, QWidget *parent)
-    :BaseTransmissionItemWidget (_debugPage, parent)
-    ,ui(new Ui::UdpTransmissionItemWidget)
+#include "ui_SAKUdpTransmissionItemWidget.h"
+
+SAKUdpTransmissionItemWidget::SAKUdpTransmissionItemWidget(SAKDebugPage *_debugPage, QWidget *parent)
+    :SAKBaseTransmissionItemWidget (_debugPage, parent)
+    ,ui(new Ui::SAKUdpTransmissionItemWidget)
     ,udpSocket (nullptr)
 {
     ui->setupUi(this);
@@ -31,7 +32,7 @@ UdpTransmissionItemWidget::UdpTransmissionItemWidget(SAKDebugPage *_debugPage, Q
     SAKGlobal::initIpComboBox(addressComboBox);
 }
 
-UdpTransmissionItemWidget::~UdpTransmissionItemWidget()
+SAKUdpTransmissionItemWidget::~SAKUdpTransmissionItemWidget()
 {
     delete ui;
     if (udpSocket){
@@ -39,7 +40,7 @@ UdpTransmissionItemWidget::~UdpTransmissionItemWidget()
     }
 }
 
-void UdpTransmissionItemWidget::write(QByteArray data)
+void SAKUdpTransmissionItemWidget::write(QByteArray data)
 {
     if (udpSocket){
         QHostAddress targetAddress(targetAddressLineEdit->text());
@@ -52,10 +53,10 @@ void UdpTransmissionItemWidget::write(QByteArray data)
     }
 }
 
-void UdpTransmissionItemWidget::on_enableCheckBox_clicked()
+void SAKUdpTransmissionItemWidget::on_enableCheckBox_clicked()
 {
     auto closeDev = [&](){
-        disconnect(udpSocket, &QUdpSocket::readyRead, this, &UdpTransmissionItemWidget::read);
+        disconnect(udpSocket, &QUdpSocket::readyRead, this, &SAKUdpTransmissionItemWidget::read);
         delete udpSocket;
         udpSocket = nullptr;
         this->setUiEnable(true);
@@ -71,7 +72,7 @@ void UdpTransmissionItemWidget::on_enableCheckBox_clicked()
 
         if (bindResult){
             if (udpSocket->open(QUdpSocket::ReadWrite)){
-                connect(udpSocket, &QUdpSocket::readyRead, this, &UdpTransmissionItemWidget::read);
+                connect(udpSocket, &QUdpSocket::readyRead, this, &SAKUdpTransmissionItemWidget::read);
                 this->setUiEnable(false);
                 return;
             }
@@ -94,7 +95,7 @@ void UdpTransmissionItemWidget::on_enableCheckBox_clicked()
     }
 }
 
-void UdpTransmissionItemWidget::read()
+void SAKUdpTransmissionItemWidget::read()
 {
     if (!handleReceiveDataCheckBox->isChecked()){
         return;
@@ -110,7 +111,7 @@ void UdpTransmissionItemWidget::read()
     }
 }
 
-void UdpTransmissionItemWidget::setUiEnable(bool enable)
+void SAKUdpTransmissionItemWidget::setUiEnable(bool enable)
 {
     customAddressCheckBox->setEnabled(enable);
     addressComboBox->setEnabled(enable);

@@ -9,18 +9,18 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef BASETRANSMISSSIONITEMWIDGET_HH
-#define BASETRANSMISSSIONITEMWIDGET_HH
+#ifndef SAKBASETRANSMISSSIONITEMWIDGET_HH
+#define SAKBASETRANSMISSSIONITEMWIDGET_HH
 
 #include <QWidget>
 #include <QIODevice>
 
 class SAKDebugPage;
-class BaseTransmissionItemWidget:public QWidget
+class SAKBaseTransmissionItemWidget:public QWidget
 {
     Q_OBJECT
 public:
-    BaseTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent);
+    SAKBaseTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent);
 
     /// 转发函数，子类必须重新实现
     virtual void write(QByteArray data);

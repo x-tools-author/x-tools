@@ -9,8 +9,8 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef SERIALPORTTRANSMISSIONITEMWIDGET_HH
-#define SERIALPORTTRANSMISSIONITEMWIDGET_HH
+#ifndef SAKSERIALPORTTRANSMISSIONITEMWIDGET_HH
+#define SAKSERIALPORTTRANSMISSIONITEMWIDGET_HH
 
 #include <QWidget>
 #include <QLineEdit>
@@ -23,26 +23,26 @@
 #include <QSerialPort>
 #endif
 
-#include "BaseTransmissionItemWidget.hh"
+#include "SAKBaseTransmissionItemWidget.hh"
 
 namespace Ui {
-    class SerialPortTransmissionItemWidget;
+    class SAKSerialPortTransmissionItemWidget;
 }
 
 class SAKDebugPage;
-class SerialPortTransmissionItemWidget:public BaseTransmissionItemWidget
+class SAKSerialPortTransmissionItemWidget:public SAKBaseTransmissionItemWidget
 {
     Q_OBJECT
 public:
-    SerialPortTransmissionItemWidget(SAKDebugPage *_debugPage, QWidget *parent = nullptr);
+    SAKSerialPortTransmissionItemWidget(SAKDebugPage *_debugPage, QWidget *parent = nullptr);
 
 #ifdef SAK_IMPORT_COM_MODULE
-     ~SerialPortTransmissionItemWidget();
+     ~SAKSerialPortTransmissionItemWidget();
 protected:
     virtual void write(QByteArray data);
     virtual void read();
 private:
-    Ui::SerialPortTransmissionItemWidget *ui;
+    Ui::SAKSerialPortTransmissionItemWidget *ui;
     QCheckBox   *enableCheckBox;
     QCheckBox   *handleReceiveDataCheckBox;
     QComboBox   *comComboBox;

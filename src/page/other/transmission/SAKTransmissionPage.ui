@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>TransmissionPage</class>
- <widget class="QWidget" name="TransmissionPage">
+ <class>SAKTransmissionPage</class>
+ <widget class="QWidget" name="SAKTransmissionPage">
   <property name="geometry">
    <rect>
     <x>0</x>

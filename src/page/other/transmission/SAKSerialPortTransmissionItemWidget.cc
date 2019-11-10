@@ -9,22 +9,25 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#include "SAKGlobal.hh"
-#include "SAKDebugPage.hh"
-#include "BaseTransmissionItemWidget.hh"
-#include "SerialPortTransmissionItemWidget.hh"
-#include "ui_SerialPortTransmissionItemWidget.h"
-
 #include <QDebug>
+#include <QMetaType>
+
 #ifdef SAK_IMPORT_COM_MODULE
 #include <QSerialPortInfo>
 Q_DECLARE_METATYPE(QSerialPortInfo)
 #endif
 
-SerialPortTransmissionItemWidget::SerialPortTransmissionItemWidget(SAKDebugPage *_debugPage, QWidget *parent)
-    :BaseTransmissionItemWidget (_debugPage, parent)
+#include "SAKGlobal.hh"
+#include "SAKDebugPage.hh"
+#include "SAKBaseTransmissionItemWidget.hh"
+#include "SAKSerialPortTransmissionItemWidget.hh"
+
+#include "ui_SAKSerialPortTransmissionItemWidget.h"
+
+SAKSerialPortTransmissionItemWidget::SAKSerialPortTransmissionItemWidget(SAKDebugPage *_debugPage, QWidget *parent)
+    :SAKBaseTransmissionItemWidget (_debugPage, parent)
 #ifdef SAK_IMPORT_COM_MODULE
-    ,ui (new Ui::SerialPortTransmissionItemWidget)
+    ,ui (new Ui::SAKSerialPortTransmissionItemWidget)
     ,serialPort (nullptr)
 #endif
 {    
@@ -58,14 +61,14 @@ SerialPortTransmissionItemWidget::SerialPortTransmissionItemWidget(SAKDebugPage 
 }
 
 #ifdef SAK_IMPORT_COM_MODULE
-SerialPortTransmissionItemWidget::~SerialPortTransmissionItemWidget()
+SAKSerialPortTransmissionItemWidget::~SAKSerialPortTransmissionItemWidget()
 {
     delete ui;
 }
 #endif
 
 #ifdef SAK_IMPORT_COM_MODULE
-void SerialPortTransmissionItemWidget::write(QByteArray data)
+void SAKSerialPortTransmissionItemWidget::write(QByteArray data)
 {
     if (serialPort){
         if (serialPort->write(data)){
@@ -78,12 +81,12 @@ void SerialPortTransmissionItemWidget::write(QByteArray data)
 #endif
 
 #ifdef SAK_IMPORT_COM_MODULE
-void SerialPortTransmissionItemWidget::on_enableCheckBox_clicked()
+void SAKSerialPortTransmissionItemWidget::on_enableCheckBox_clicked()
 {
     // c++11 lambda表达式
     auto closeDev = [&](){
         if (serialPort){
-            disconnect(serialPort, &QSerialPort::readyRead, this, &SerialPortTransmissionItemWidget::read);
+            disconnect(serialPort, &QSerialPort::readyRead, this, &SAKSerialPortTransmissionItemWidget::read);
             serialPort->close();
             serialPort->deleteLater();
             serialPort = nullptr;
@@ -99,7 +102,7 @@ void SerialPortTransmissionItemWidget::on_enableCheckBox_clicked()
         serialPort->setStopBits(stopBitscomboBox->currentData().value<QSerialPort::StopBits>());
         if (serialPort->open(QSerialPort::ReadWrite)){
             this->setUiEnable(false);
-            connect(serialPort, &QSerialPort::readyRead, this, &SerialPortTransmissionItemWidget::read, Qt::QueuedConnection);
+            connect(serialPort, &QSerialPort::readyRead, this, &SAKSerialPortTransmissionItemWidget::read, Qt::QueuedConnection);
 #ifdef QT_DEBUG
             qInfo() << tr("串口打开成功")
                     << tr("串口名称：") << serialPort->portName()
@@ -121,14 +124,14 @@ void SerialPortTransmissionItemWidget::on_enableCheckBox_clicked()
 #endif
 
 #ifdef SAK_IMPORT_COM_MODULE
-void SerialPortTransmissionItemWidget::on_customBaudrateCheckBox_clicked()
+void SAKSerialPortTransmissionItemWidget::on_customBaudrateCheckBox_clicked()
 {
     baudRateComboBox->setEditable(customBaudrateCheckBox->isChecked());
 }
 #endif
 
 #ifdef SAK_IMPORT_COM_MODULE
-void SerialPortTransmissionItemWidget::read()
+void SAKSerialPortTransmissionItemWidget::read()
 {
     if (serialPort){
         QByteArray data = serialPort->readAll();
@@ -142,7 +145,7 @@ void SerialPortTransmissionItemWidget::read()
 #endif
 
 #ifdef SAK_IMPORT_COM_MODULE
-void SerialPortTransmissionItemWidget::setUiEnable(bool enable)
+void SAKSerialPortTransmissionItemWidget::setUiEnable(bool enable)
 {
     comComboBox->setEnabled(enable);
     customBaudrateCheckBox->setEnabled(enable);

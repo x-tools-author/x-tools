@@ -110,13 +110,13 @@ HEADERS +=  \
     src/page/other/readwrite/SAKReadWriteSettingsWidget.hh \
     src/page/other/timing/SAKTimingSendingItemWidget.hh \
     src/page/other/timing/SAKTimingSendingSettingsWidget.hh \
-    src/page/other/transmission/BaseTransmissionItemWidget.hh \
-    src/page/other/transmission/SerialPortTransmissionItemWidget.hh \
-    src/page/other/transmission/TcpTransmissionItemWidget.hh \
-    src/page/other/transmission/TransmissionItemDelegate.hh \
-    src/page/other/transmission/TransmissionPage.hh \
-    src/page/other/transmission/TransmissionSettings.hh \
-    src/page/other/transmission/UdpTransmissionItemWidget.hh \
+    src/page/other/transmission/SAKBaseTransmissionItemWidget.hh \
+    src/page/other/transmission/SAKSerialPortTransmissionItemWidget.hh \
+    src/page/other/transmission/SAKTcpTransmissionItemWidget.hh \
+    src/page/other/transmission/SAKTransmissionItemDelegate.hh \
+    src/page/other/transmission/SAKTransmissionPage.hh \
+    src/page/other/transmission/SAKTransmissionSettings.hh \
+    src/page/other/transmission/SAKUdpTransmissionItemWidget.hh \
     src/page/output/DebugPageOutputManager.hh \
     src/page/output/OutputDataFactory.hh \
     src/page/output/save/SaveOutputDataSettings.hh \
@@ -168,13 +168,13 @@ SOURCES +=  \
     src/page/other/readwrite/SAKReadWriteSettingsWidget.cc \
     src/page/other/timing/SAKTimingSendingItemWidget.cc \
     src/page/other/timing/SAKTimingSendingSettingsWidget.cc \
-    src/page/other/transmission/BaseTransmissionItemWidget.cc \
-    src/page/other/transmission/SerialPortTransmissionItemWidget.cc \
-    src/page/other/transmission/TcpTransmissionItemWidget.cc \
-    src/page/other/transmission/TransmissionItemDelegate.cc \
-    src/page/other/transmission/TransmissionPage.cc \
-    src/page/other/transmission/TransmissionSettings.cc \
-    src/page/other/transmission/UdpTransmissionItemWidget.cc \
+    src/page/other/transmission/SAKBaseTransmissionItemWidget.cc \
+    src/page/other/transmission/SAKSerialPortTransmissionItemWidget.cc \
+    src/page/other/transmission/SAKTcpTransmissionItemWidget.cc \
+    src/page/other/transmission/SAKTransmissionItemDelegate.cc \
+    src/page/other/transmission/SAKTransmissionPage.cc \
+    src/page/other/transmission/SAKTransmissionSettings.cc \
+    src/page/other/transmission/SAKUdpTransmissionItemWidget.cc \
     src/page/output/DebugPageOutputManager.cc \
     src/page/output/OutputDataFactory.cc \
     src/page/output/save/SaveOutputDataSettings.cc \
@@ -212,11 +212,11 @@ FORMS +=  \
     src/page/other/readwrite/SAKReadWriteSettingsWidget.ui \
     src/page/other/timing/SAKTimingSendingItemWidget.ui \
     src/page/other/timing/SAKTimingSendingSettingsWidget.ui \
-    src/page/other/transmission/SerialPortTransmissionItemWidget.ui \
-    src/page/other/transmission/TcpTransmissionItemWidget.ui \
-    src/page/other/transmission/TransmissionPage.ui \
-    src/page/other/transmission/TransmissionSettings.ui \
-    src/page/other/transmission/UdpTransmissionItemWidget.ui \
+    src/page/other/transmission/SAKSerialPortTransmissionItemWidget.ui \
+    src/page/other/transmission/SAKTcpTransmissionItemWidget.ui \
+    src/page/other/transmission/SAKTransmissionPage.ui \
+    src/page/other/transmission/SAKTransmissionSettings.ui \
+    src/page/other/transmission/SAKUdpTransmissionItemWidget.ui \
     src/page/output/save/SaveOutputDataSettings.ui \
     src/page/visualization/SAKDataVisualizationManager.ui \
     src/tcpclient/SAKTcpClientDeviceController.ui \

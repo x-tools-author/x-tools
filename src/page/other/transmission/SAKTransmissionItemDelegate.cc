@@ -9,11 +9,11 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#include "TransmissionItemDelegate.hh"
+#include "SAKTransmissionItemDelegate.hh"
 
-TransmissionItemDelegate::TransmissionItemDelegate(SAKDebugPage *debugPage, QObject *parent)
+SAKTransmissionItemDelegate::SAKTransmissionItemDelegate(SAKDebugPage *page, QObject *parent)
     :QAbstractItemDelegate (parent)
-    ,_debugPage (debugPage)
+    ,debugPage (page)
 {
 
 }

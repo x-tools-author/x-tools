@@ -10,17 +10,17 @@
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
 #include "SAKDebugPage.hh"
-#include "BaseTransmissionItemWidget.hh"
+#include "SAKBaseTransmissionItemWidget.hh"
 
-BaseTransmissionItemWidget::BaseTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent)
+SAKBaseTransmissionItemWidget::SAKBaseTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget (parent)
     ,debugPage (debugPage)
 {
-    connect(debugPage, &SAKDebugPage::bytesRead, this, &BaseTransmissionItemWidget::write);
-    connect(this, &BaseTransmissionItemWidget::bytesRead, debugPage, &SAKDebugPage::write);
+    connect(debugPage, &SAKDebugPage::bytesRead, this, &SAKBaseTransmissionItemWidget::write);
+    connect(this, &SAKBaseTransmissionItemWidget::bytesRead, debugPage, &SAKDebugPage::write);
 }
 
-void BaseTransmissionItemWidget::write(QByteArray data)
+void SAKBaseTransmissionItemWidget::write(QByteArray data)
 {
     Q_UNUSED(data);
 }

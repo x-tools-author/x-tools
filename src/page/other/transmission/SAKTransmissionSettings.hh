@@ -9,36 +9,36 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef TRANSMISSIONSETTINGS_HH
-#define TRANSMISSIONSETTINGS_HH
+#ifndef SAKTRANSMISSIONSETTINGS_HH
+#define SAKTRANSMISSIONSETTINGS_HH
 
 #include <QWidget>
 #include <QPushButton>
 #include "SAKWidget.hh"
 
 class SAKDebugPage;
-class TransmissionPage;
+class SAKTransmissionPage;
 
 namespace Ui {
-class TransmissionSettings;
+class SAKTransmissionSettings;
 }
 
-class TransmissionSettings:public SAKWidget
+class SAKTransmissionSettings:public SAKWidget
 {
     Q_OBJECT
 public:
-    TransmissionSettings(SAKDebugPage *debugPage, QWidget *parent = nullptr);
-    ~TransmissionSettings();
+    SAKTransmissionSettings(SAKDebugPage *debugPage, QWidget *parent = nullptr);
+    ~SAKTransmissionSettings();
 private:
     QWidget                     *serialPortWidget       = nullptr;
     QWidget                     *udpWidget              = nullptr;
     QWidget                     *tcpWidget              = nullptr;
     SAKDebugPage                *_debugPage             = nullptr;
-    Ui::TransmissionSettings    *ui                     = nullptr;
+    Ui::SAKTransmissionSettings    *ui                     = nullptr;
 
-    TransmissionPage            *udpTransmission        = nullptr;
-    TransmissionPage            *tcpTransmission        = nullptr;
-    TransmissionPage            *serialPortTransmission = nullptr;
+    SAKTransmissionPage            *udpTransmission        = nullptr;
+    SAKTransmissionPage            *tcpTransmission        = nullptr;
+    SAKTransmissionPage            *serialPortTransmission = nullptr;
 };
 
 #endif

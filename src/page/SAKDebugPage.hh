@@ -37,7 +37,7 @@ class SAKDataVisualizationManager;
 class SAKCRCInterface;
 class SAKOtherSettingsManager;
 class SAKStatisticsManager;
-class TransmissionSettings;
+class SAKTransmissionSettings;
 class DebugPageInputManager;
 class DebugPageOutputManager;
 class SAKHighlightSettingsWidget;

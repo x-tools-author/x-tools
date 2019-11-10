@@ -15,7 +15,7 @@
 #include <QObject>
 #include <QPushButton>
 
-class TransmissionSettings;
+class SAKTransmissionSettings;
 class SAKAutoResponseSettingsWidget;
 
 class SAKDebugPage;
@@ -40,7 +40,7 @@ private:
     QPushButton *highlightSettingPushButton;
     QPushButton *moreSettingsPushButton;
 
-    TransmissionSettings        *transmissionSettings;
+    SAKTransmissionSettings        *transmissionSettings;
     SAKReadWriteSettingsWidget     *readWriteSettingsWidget;
     SAKAutoResponseSettingsWidget   *autoResponseSettingWidget;
     SAKTimingSendingSettingsWidget     *timingSendingManager;

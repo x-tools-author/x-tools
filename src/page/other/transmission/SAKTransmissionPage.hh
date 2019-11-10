@@ -9,8 +9,8 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef TRANSMISSIONPAGE_HH
-#define TRANSMISSIONPAGE_HH
+#ifndef SAKTRANSMISSIONPAGE_HH
+#define SAKTRANSMISSIONPAGE_HH
 
 #include <QLabel>
 #include <QTimer>
@@ -20,15 +20,15 @@
 class SAKDebugPage;
 
 namespace Ui {
-class TransmissionPage;
+    class SAKTransmissionPage;
 }
 
-class TransmissionPage:public QWidget
+class SAKTransmissionPage:public QWidget
 {
     Q_OBJECT
 public:
-    TransmissionPage(SAKDebugPage *debugPage, QWidget *parent = nullptr);
-    ~TransmissionPage();
+    SAKTransmissionPage(SAKDebugPage *debugPage, QWidget *parent = nullptr);
+    ~SAKTransmissionPage();
 
     enum TransmissionType {
         SerialPortTransmission,
@@ -44,7 +44,7 @@ private:
     QLabel      *infoLabel;
 
     SAKDebugPage *_debugPage;
-    Ui::TransmissionPage *ui;
+    Ui::SAKTransmissionPage *ui;
 
     int transmissionType;
     QTimer clearMessageInfoTimer;

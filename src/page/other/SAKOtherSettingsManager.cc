@@ -17,7 +17,7 @@
 
 #include "SAKDebugPage.hh"
 #include "SAKOtherSettingsManager.hh"
-#include "TransmissionSettings.hh"
+#include "SAKTransmissionSettings.hh"
 #include "SAKHighlightSettingsWidget.hh"
 #include "SAKMoreSettingsWidget.hh"
 #include "SAKReadWriteSettingsWidget.hh"
@@ -28,7 +28,7 @@ SAKOtherSettingsManager::SAKOtherSettingsManager(SAKDebugPage *debugPage, QObjec
     :QObject (parent)
     ,_debugPage (debugPage)
 {
-    transmissionSettings        = new TransmissionSettings(_debugPage);
+    transmissionSettings        = new SAKTransmissionSettings(_debugPage);
     autoResponseSettingWidget   = new SAKAutoResponseSettingsWidget(_debugPage);
     highlighterSettingPanel     = new SAKHighlightSettingsWidget(_debugPage->outputTextBroswer->document());
     moreSettingsWidget     = new SAKMoreSettingsWidget(_debugPage);

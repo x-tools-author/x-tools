@@ -10,13 +10,15 @@
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
 #include <QHostAddress>
-#include "SAKGlobal.hh"
-#include "TcpTransmissionItemWidget.hh"
-#include "ui_TcpTransmissionItemWidget.h"
 
-TcpTransmissionItemWidget::TcpTransmissionItemWidget(SAKDebugPage *_debugPage, QWidget *parent)
-    :BaseTransmissionItemWidget (_debugPage, parent)
-    ,ui (new Ui::TcpTransmissionItemWidget)
+#include "SAKGlobal.hh"
+#include "SAKTcpTransmissionItemWidget.hh"
+
+#include "ui_SAKTcpTransmissionItemWidget.h"
+
+SAKTcpTransmissionItemWidget::SAKTcpTransmissionItemWidget(SAKDebugPage *_debugPage, QWidget *parent)
+    :SAKBaseTransmissionItemWidget (_debugPage, parent)
+    ,ui (new Ui::SAKTcpTransmissionItemWidget)
     ,tcpSocket (nullptr)
 {
     ui->setupUi(this);
@@ -32,7 +34,7 @@ TcpTransmissionItemWidget::TcpTransmissionItemWidget(SAKDebugPage *_debugPage, Q
     SAKGlobal::initIpComboBox(localAddressComboBox);
 }
 
-TcpTransmissionItemWidget::~TcpTransmissionItemWidget()
+SAKTcpTransmissionItemWidget::~SAKTcpTransmissionItemWidget()
 {
     if (tcpSocket){
         delete tcpSocket;
@@ -40,7 +42,7 @@ TcpTransmissionItemWidget::~TcpTransmissionItemWidget()
     delete ui;
 }
 
-void TcpTransmissionItemWidget::write(QByteArray data)
+void SAKTcpTransmissionItemWidget::write(QByteArray data)
 {
     if (tcpSocket){
         if (!tcpSocket->write(data)){
@@ -51,7 +53,7 @@ void TcpTransmissionItemWidget::write(QByteArray data)
     }
 }
 
-void TcpTransmissionItemWidget::on_enableCheckBox_clicked()
+void SAKTcpTransmissionItemWidget::on_enableCheckBox_clicked()
 {
     auto closeDev = [&](){
         if (tcpSocket){
@@ -59,7 +61,7 @@ void TcpTransmissionItemWidget::on_enableCheckBox_clicked()
             if (tcpSocket->state() == QTcpSocket::ConnectedState){
                 tcpSocket->waitForDisconnected();
             }
-            disconnect(tcpSocket, &QTcpSocket::readyRead, this, &TcpTransmissionItemWidget::read);
+            disconnect(tcpSocket, &QTcpSocket::readyRead, this, &SAKTcpTransmissionItemWidget::read);
             delete tcpSocket;
             tcpSocket = nullptr;
             this->setUiEnable(true);
@@ -84,7 +86,7 @@ void TcpTransmissionItemWidget::on_enableCheckBox_clicked()
             return;
         }
 
-        connect(tcpSocket, &QTcpSocket::readyRead, this, &TcpTransmissionItemWidget::read);
+        connect(tcpSocket, &QTcpSocket::readyRead, this, &SAKTcpTransmissionItemWidget::read);
         tcpSocket->connectToHost(serverAddressLineEdit->text(), static_cast<quint16>(serverPortLineEdit->text().toInt()));
         if (!tcpSocket->waitForConnected()){
             emit requestOutputMessage(tr("无法连接服务器：") + tcpSocket->errorString(), false);
@@ -98,7 +100,7 @@ void TcpTransmissionItemWidget::on_enableCheckBox_clicked()
     }
 }
 
-void TcpTransmissionItemWidget::read()
+void SAKTcpTransmissionItemWidget::read()
 {    
     if (tcpSocket){
         QByteArray data = tcpSocket->readAll();
@@ -108,7 +110,7 @@ void TcpTransmissionItemWidget::read()
     }
 }
 
-void TcpTransmissionItemWidget::setUiEnable(bool enable)
+void SAKTcpTransmissionItemWidget::setUiEnable(bool enable)
 {
     customAddressCheckBox->setEnabled(enable);
     localAddressComboBox->setEnabled(enable);

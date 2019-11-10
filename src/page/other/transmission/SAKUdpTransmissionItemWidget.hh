@@ -9,8 +9,8 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef UDPTRANSMISSSIONITEMWIDGET_HH
-#define UDPTRANSMISSSIONITEMWIDGET_HH
+#ifndef SAKUDPTRANSMISSSIONITEMWIDGET_HH
+#define SAKUDPTRANSMISSSIONITEMWIDGET_HH
 
 #include <QWidget>
 #include <QCheckBox>
@@ -18,22 +18,22 @@
 #include <QLineEdit>
 #include <QUdpSocket>
 
-#include "BaseTransmissionItemWidget.hh"
+#include "SAKBaseTransmissionItemWidget.hh"
 
 namespace Ui {
-    class UdpTransmissionItemWidget;
+    class SAKUdpTransmissionItemWidget;
 }
 
-class UdpTransmissionItemWidget:public BaseTransmissionItemWidget
+class SAKUdpTransmissionItemWidget:public SAKBaseTransmissionItemWidget
 {
     Q_OBJECT
 public:
-    UdpTransmissionItemWidget(SAKDebugPage *_debugPage, QWidget *parent);
-    ~UdpTransmissionItemWidget();
+    SAKUdpTransmissionItemWidget(SAKDebugPage *_debugPage, QWidget *parent);
+    ~SAKUdpTransmissionItemWidget();
 
     virtual void write(QByteArray data);
 private:
-    Ui::UdpTransmissionItemWidget *ui;
+    Ui::SAKUdpTransmissionItemWidget *ui;
     QCheckBox *enableCheckBox;
     QCheckBox *customAddressCheckBox;
     QComboBox *addressComboBox;

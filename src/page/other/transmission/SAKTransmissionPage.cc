@@ -9,19 +9,20 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#include "TransmissionPage.hh"
-#include "ui_TransmissionPage.h"
-#include "UdpTransmissionItemWidget.hh"
-#include "TcpTransmissionItemWidget.hh"
-#include "BaseTransmissionItemWidget.hh"
-#include "SerialPortTransmissionItemWidget.hh"
-
 #include <QDateTime>
 
-TransmissionPage::TransmissionPage(SAKDebugPage *debugPage, QWidget *parent)
+#include "SAKTransmissionPage.hh"
+#include "SAKUdpTransmissionItemWidget.hh"
+#include "SAKTcpTransmissionItemWidget.hh"
+#include "SAKBaseTransmissionItemWidget.hh"
+#include "SAKSerialPortTransmissionItemWidget.hh"
+
+#include "ui_SAKTransmissionPage.h"
+
+SAKTransmissionPage::SAKTransmissionPage(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget (parent)
     ,_debugPage (debugPage)
-    ,ui (new Ui::TransmissionPage)
+    ,ui (new Ui::SAKTransmissionPage)
 {
     ui->setupUi(this);
     addItemPushButton = ui->addItemPushButton;
@@ -30,20 +31,20 @@ TransmissionPage::TransmissionPage(SAKDebugPage *debugPage, QWidget *parent)
     infoLabel = ui->infoLabel;
 
     clearMessageInfoTimer.setInterval(5*1000);
-    connect(&clearMessageInfoTimer, &QTimer::timeout, this, &TransmissionPage::clearMessage);
+    connect(&clearMessageInfoTimer, &QTimer::timeout, this, &SAKTransmissionPage::clearMessage);
 }
 
-TransmissionPage::~TransmissionPage()
+SAKTransmissionPage::~SAKTransmissionPage()
 {
     delete ui;
 }
 
-void TransmissionPage::setTransmissionType(TransmissionType type)
+void SAKTransmissionPage::setTransmissionType(TransmissionType type)
 {
     transmissionType = type;
 }
 
-void TransmissionPage::outputMessage(QString msg, bool isInfo)
+void SAKTransmissionPage::outputMessage(QString msg, bool isInfo)
 {
     QString color = "black";
     if (!isInfo){
@@ -56,26 +57,26 @@ void TransmissionPage::outputMessage(QString msg, bool isInfo)
     clearMessageInfoTimer.start();
 }
 
-void TransmissionPage::clearMessage()
+void SAKTransmissionPage::clearMessage()
 {
     clearMessageInfoTimer.stop();
     infoLabel->clear();
 }
 
-void TransmissionPage::on_addItemPushButton_clicked()
+void SAKTransmissionPage::on_addItemPushButton_clicked()
 {    
     QListWidgetItem *item = new QListWidgetItem(listWidget);
     listWidget->insertItem(listWidget->count(), item);
     QWidget *itemWidget = nullptr;
     switch (transmissionType){
     case SerialPortTransmission:
-        itemWidget = new SerialPortTransmissionItemWidget(_debugPage, this);
+        itemWidget = new SAKSerialPortTransmissionItemWidget(_debugPage, this);
         break;
     case UdpTransmission:
-        itemWidget = new UdpTransmissionItemWidget(_debugPage, this);
+        itemWidget = new SAKUdpTransmissionItemWidget(_debugPage, this);
         break;
     case TcpTransmission:
-        itemWidget = new TcpTransmissionItemWidget(_debugPage, this);
+        itemWidget = new SAKTcpTransmissionItemWidget(_debugPage, this);
         break;
     default:
         Q_ASSERT_X(false, __FUNCTION__, "Unknow transmissioin type");
@@ -83,11 +84,11 @@ void TransmissionPage::on_addItemPushButton_clicked()
     }
     item->setSizeHint(QSize(itemWidget->width(), itemWidget->height()));
     listWidget->setItemWidget(item, itemWidget);
-    BaseTransmissionItemWidget *baseItemWidget = reinterpret_cast<BaseTransmissionItemWidget*>(itemWidget);
-    connect(baseItemWidget, &BaseTransmissionItemWidget::requestOutputMessage, this, &TransmissionPage::outputMessage);
+    SAKBaseTransmissionItemWidget *baseItemWidget = reinterpret_cast<SAKBaseTransmissionItemWidget*>(itemWidget);
+    connect(baseItemWidget, &SAKBaseTransmissionItemWidget::requestOutputMessage, this, &SAKTransmissionPage::outputMessage);
 }
 
-void TransmissionPage::on_deleteItemPushButton_clicked()
+void SAKTransmissionPage::on_deleteItemPushButton_clicked()
 {
     QListWidgetItem *item = listWidget->currentItem();
     listWidget->removeItemWidget(item);

@@ -10,15 +10,17 @@
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
 #include <QHBoxLayout>
-#include "SAKDebugPage.hh"
-#include "TransmissionPage.hh"
-#include "TransmissionSettings.hh"
-#include "ui_TransmissionSettings.h"
 
-TransmissionSettings::TransmissionSettings(SAKDebugPage *debugPage, QWidget *parent)
+#include "SAKDebugPage.hh"
+#include "SAKTransmissionPage.hh"
+#include "SAKTransmissionSettings.hh"
+
+#include "ui_SAKTransmissionSettings.h"
+
+SAKTransmissionSettings::SAKTransmissionSettings(SAKDebugPage *debugPage, QWidget *parent)
     :SAKWidget (parent)
     ,_debugPage (debugPage)
-    ,ui (new Ui::TransmissionSettings)
+    ,ui (new Ui::SAKTransmissionSettings)
 {
     ui->setupUi(this);
     setWindowTitle(tr("数据转发设置"));
@@ -33,19 +35,19 @@ TransmissionSettings::TransmissionSettings(SAKDebugPage *debugPage, QWidget *par
         layout->addWidget(page);
     };
 
-    serialPortTransmission = new TransmissionPage (debugPage, this);
-    serialPortTransmission->setTransmissionType(TransmissionPage::SerialPortTransmission);
-    udpTransmission = new TransmissionPage(debugPage, this);
-    udpTransmission->setTransmissionType(TransmissionPage::UdpTransmission);
-    tcpTransmission = new TransmissionPage(debugPage, this);
-    tcpTransmission->setTransmissionType(TransmissionPage::TcpTransmission);
+    serialPortTransmission = new SAKTransmissionPage (debugPage, this);
+    serialPortTransmission->setTransmissionType(SAKTransmissionPage::SerialPortTransmission);
+    udpTransmission = new SAKTransmissionPage(debugPage, this);
+    udpTransmission->setTransmissionType(SAKTransmissionPage::UdpTransmission);
+    tcpTransmission = new SAKTransmissionPage(debugPage, this);
+    tcpTransmission->setTransmissionType(SAKTransmissionPage::TcpTransmission);
 
     installWidget(serialPortWidget, serialPortTransmission);
     installWidget(udpWidget, udpTransmission);
     installWidget(tcpWidget, tcpTransmission);        
 }
 
-TransmissionSettings::~TransmissionSettings()
+SAKTransmissionSettings::~SAKTransmissionSettings()
 {
     delete ui;
 

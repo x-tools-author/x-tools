@@ -9,19 +9,19 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef TRANSMISSIONITEMDELEGATE_HH
-#define TRANSMISSIONITEMDELEGATE_HH
+#ifndef SAKTRANSMISSIONITEMDELEGATE_HH
+#define SAKTRANSMISSIONITEMDELEGATE_HH
 
 #include <QListWidget>
 #include <QAbstractItemDelegate>
 
 class SAKDebugPage;
 
-class TransmissionItemDelegate:public QAbstractItemDelegate
+class SAKTransmissionItemDelegate:public QAbstractItemDelegate
 {
     Q_OBJECT
 public:
-    TransmissionItemDelegate(SAKDebugPage *debugPage, QObject *parent = nullptr);
+    SAKTransmissionItemDelegate(SAKDebugPage *page, QObject *parent = nullptr);
 
     enum TransmissionItemType {
         SerialPortType,
@@ -29,7 +29,7 @@ public:
         TcpType
     };
 private:
-    SAKDebugPage *_debugPage;
+    SAKDebugPage *debugPage;
     TransmissionItemType transmissionItemType = SerialPortType;
 };
 
