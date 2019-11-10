@@ -23,7 +23,7 @@
 #include <QTranslator>
 
 class SAKVersion;
-class MoreInformation;
+class SAKMoreInformation;
 class SAKUpdateManager;
 
 namespace Ui {
@@ -45,7 +45,7 @@ private:
     QAction *defaultStyleSheetAction    = nullptr;
     SAKVersion* versionDialog           = nullptr;
     SAKUpdateManager* updateManager     = nullptr;
-    MoreInformation* moreInformation    = nullptr;   
+    SAKMoreInformation* moreInformation    = nullptr;   
 
     QTranslator qtTranslator;
     QTranslator qtBaeTranslator;

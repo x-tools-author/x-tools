@@ -85,11 +85,11 @@ INCLUDEPATH += \
 
 
 HEADERS +=  \
-    src/MoreInformation.hh \
     src/SAKApplication.hh \
     src/SAKCodingStyle.hh \
     src/SAKGlobal.hh \
     src/SAKMainWindow.hh \
+    src/SAKMoreInformation.hh \
     src/SAKSettings.hh \
     src/SAKVersion.hh \
     src/base/SAKDialog.hh \
@@ -130,7 +130,6 @@ HEADERS +=  \
     src/tcpserver/SAKTcpServerDebugPage.hh \
     src/tcpserver/SAKTcpServerDevice.hh \
     src/tcpserver/SAKTcpServerDeviceController.hh \
-    src/tools/crccalculator/CRCInterface.hh \
     src/tools/crccalculator/SAKCRCCalculator.hh \
     src/tools/filechecker/QtCryptographicHashCalculator.hh \
     src/tools/filechecker/QtCryptographicHashController.hh \
@@ -142,11 +141,11 @@ HEADERS +=  \
 
 
 SOURCES +=  \
-    src/MoreInformation.cc \
     src/SAKApplication.cc \
     src/SAKCodingStyle.cc \
     src/SAKGlobal.cc \
     src/SAKMainWindow.cc \
+    src/SAKMoreInformation.cc \
     src/SAKSettings.cc \
     src/SAKVersion.cc \
     src/base/SAKDialog.cc \
@@ -188,7 +187,6 @@ SOURCES +=  \
     src/tcpserver/SAKTcpServerDebugPage.cc \
     src/tcpserver/SAKTcpServerDevice.cc \
     src/tcpserver/SAKTcpServerDeviceController.cc \
-    src/tools/crccalculator/CRCInterface.cc \
     src/tools/crccalculator/SAKCRCCalculator.cc \
     src/tools/filechecker/QtCryptographicHashCalculator.cc \
     src/tools/filechecker/QtCryptographicHashController.cc \
@@ -199,8 +197,8 @@ SOURCES +=  \
     src/update/SAKUpdateManager.cc
 
 FORMS +=  \
-    src/MoreInformation.ui \
     src/SAKMainWindow.ui \
+    src/SAKMoreInformation.ui \
     src/SAKVersion.ui \
     src/page/SAKDebugPage.ui \
     src/page/input/SAKInputDataItem.ui \

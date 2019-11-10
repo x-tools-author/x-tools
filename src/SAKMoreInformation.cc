@@ -9,14 +9,14 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#include "MoreInformation.hh"
-#include "ui_MoreInformation.h"
+#include "SAKMoreInformation.hh"
+#include "ui_SAKMoreInformation.h"
 
 #include <QFile>
 
-MoreInformation::MoreInformation(QWidget* parent)
+SAKMoreInformation::SAKMoreInformation(QWidget* parent)
     :QDialog (parent)
-    ,ui(new Ui::MoreInformation)
+    ,ui(new Ui::SAKMoreInformation)
 {
     ui->setupUi(this);
     setModal(true);

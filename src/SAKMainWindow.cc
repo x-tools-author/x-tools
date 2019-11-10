@@ -35,7 +35,7 @@
 #include "QtAppStyleApi.hh"
 #include "SAKApplication.hh"
 #include "SAKUdpDebugPage.hh"
-#include "MoreInformation.hh"
+#include "SAKMoreInformation.hh"
 #include "QtStyleSheetApi.hh"
 #include "SAKUpdateManager.hh"
 #include "SAKTcpClientDebugPage.hh"
@@ -61,7 +61,7 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     ,mpTabWidget (new QTabWidget)
     ,ui (new Ui::SAKMainWindow)
     ,versionDialog (new SAKVersion)
-    ,moreInformation (new MoreInformation)
+    ,moreInformation (new SAKMoreInformation)
 {
     ui->setupUi(this);
     updateManager = new SAKUpdateManager(this);
@@ -322,7 +322,7 @@ void SAKMainWindow::initHelpMenu()
 
     QAction *moreInformationAction = new QAction(tr("更多信息"), this);
     helpMenu->addAction(moreInformationAction);
-    connect(moreInformationAction, &QAction::triggered, moreInformation, &MoreInformation::show);
+    connect(moreInformationAction, &QAction::triggered, moreInformation, &SAKMoreInformation::show);
 }
 
 void SAKMainWindow::installLanguage()

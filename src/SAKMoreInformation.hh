@@ -9,23 +9,23 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef MOREINFORMATION_HH
-#define MOREINFORMATION_HH
+#ifndef SAKMOREINFORMATION_HH
+#define SAKMOREINFORMATION_HH
 
 #include <QDialog>
 #include <QTextBrowser>
 
 namespace Ui {
-    class MoreInformation;
+    class SAKMoreInformation;
 };
 
-class MoreInformation:public QDialog
+class SAKMoreInformation:public QDialog
 {
     Q_OBJECT
 public:
-    MoreInformation(QWidget* parent = nullptr);
+    SAKMoreInformation(QWidget* parent = nullptr);
 private:
-    Ui::MoreInformation* ui = nullptr;
+    Ui::SAKMoreInformation* ui = nullptr;
     QTextBrowser *textBrowserHistory;
 };
 
