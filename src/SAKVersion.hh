@@ -38,6 +38,7 @@ private:
     QLabel*         email       = nullptr;  /// 联系邮箱
     QLabel*         blog        = nullptr;  /// 博客地址
     QLabel*         qq          = nullptr;  /// QQ交流群
+    QLabel*         copyrightLabel;
 
     QPushButton*    copyQQ      = nullptr;  // 复制qq群号码按钮
 

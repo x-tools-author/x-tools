@@ -35,6 +35,7 @@ SAKVersion::SAKVersion()
     blog = ui->labelBlog;
     blog->installEventFilter(this);
     blog->setCursor(Qt::PointingHandCursor);
+    copyrightLabel = ui->copyrightLabel;
 
     copyQQ = ui->pushButtonCopy;
 
@@ -44,6 +45,7 @@ SAKVersion::SAKVersion()
     email->setText(QString("wuuhii@outlook.com"));
     qq->setText(QString("952218522"));
     blog->setText(QString("http://wuhai.pro/"));
+    copyrightLabel->setText(QString("Copyright(C) 2018-%1 Qter. All rights reserved.").arg(buildDate.toString("yyyy")));
 
     setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowTitleHint | Qt::Tool);
     setModal(true);
