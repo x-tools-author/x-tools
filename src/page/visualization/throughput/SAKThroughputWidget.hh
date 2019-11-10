@@ -9,8 +9,8 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef THROUGHPUTWIDGET_HH
-#define THROUGHPUTWIDGET_HH
+#ifndef SAKTHROUGHPUTWIDGET_HH
+#define SAKTHROUGHPUTWIDGET_HH
 
 #include <QTimer>
 #include <QChart>
@@ -21,12 +21,12 @@
 QT_CHARTS_USE_NAMESPACE
 
 class SAKDebugPage;
-class ThroughputWidget:public QWidget
+class SAKThroughputWidget:public QWidget
 {
     Q_OBJECT
 public:
-    ThroughputWidget(SAKDebugPage *debugPage, QWidget *parent = nullptr);
-    ~ThroughputWidget();
+    SAKThroughputWidget(SAKDebugPage *debugPage, QWidget *parent = nullptr);
+    ~SAKThroughputWidget();
 
 private:
     struct DataContext {

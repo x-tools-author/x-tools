@@ -11,8 +11,7 @@
  */
 #include "SAKDebugPage.hh"
 #include "SAKChartManager.hh"
-#include "MoreChartWidget.hh"
-#include "ThroughputWidget.hh"
+#include "SAKThroughputWidget.hh"
 
 #include <QDebug>
 
@@ -20,7 +19,6 @@ SAKChartManager::SAKChartManager(SAKDebugPage *debugPage, QObject *parent)
     :QObject (parent)
     ,_debugPage (debugPage)
     ,throughputWidget (nullptr)
-    ,moreChartWidget (nullptr)
 {
     throughputPushButton = _debugPage->dataVisualizationPushButton;
     connect(throughputPushButton, &QPushButton::clicked, this, &SAKChartManager::showThroughputPushWidget);
@@ -30,10 +28,6 @@ SAKChartManager::~SAKChartManager()
 {
     if (throughputWidget){
         delete throughputWidget;
-    }
-
-    if (moreChartWidget){
-        delete moreChartWidget;
     }
 }
 
@@ -48,35 +42,13 @@ void SAKChartManager::showThroughputPushWidget()
             throughputWidget->activateWindow();
         }
     }else{
-        throughputWidget = new ThroughputWidget(_debugPage);
+        throughputWidget = new SAKThroughputWidget(_debugPage);
         throughputWidget->show();
         connect(throughputWidget, &QWidget::destroyed, this, &SAKChartManager::resetThroughputWidgetPtr);
-    }
-}
-
-void SAKChartManager::showMoreChartWidget()
-{
-    if (moreChartWidget){
-        if (moreChartWidget->isHidden()){
-            moreChartWidget->show();
-        }else if (moreChartWidget->isMinimized()){
-            moreChartWidget->showNormal();
-        }else{
-            moreChartWidget->activateWindow();
-        }
-    }else{
-        moreChartWidget = new MoreChartWidget(_debugPage);
-        moreChartWidget->show();
-        connect(moreChartWidget, &QWidget::destroyed, this, &SAKChartManager::resetMoreChartPushButtonPtr);
     }
 }
 
 void SAKChartManager::resetThroughputWidgetPtr()
 {
     throughputWidget = nullptr;
-}
-
-void SAKChartManager::resetMoreChartPushButtonPtr()
-{
-    moreChartWidget = nullptr;
 }

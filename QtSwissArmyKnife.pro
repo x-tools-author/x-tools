@@ -65,9 +65,6 @@ INCLUDEPATH += \
     src/page/input \
     src/page/other \
     src/page/other/autoresponse \
-    src/page/other/chart \
-    src/page/other/chart/morechart \
-    src/page/other/chart/throughput \
     src/page/other/highlight \
     src/page/other/more \
     src/page/other/readwrite \
@@ -76,6 +73,8 @@ INCLUDEPATH += \
     src/page/output \
     src/page/output/save \
     src/page/statistics \
+    src/page/visualization \
+    src/page/visualization/throughput \
     src/tcpclient \
     src/tcpserver \
     src/tools \
@@ -105,9 +104,6 @@ HEADERS +=  \
     src/page/other/SAKOtherSettingsManager.hh \
     src/page/other/autoresponse/SAKAutoResponseItemWidget.hh \
     src/page/other/autoresponse/SAKAutoResponseSettingsWidget.hh \
-    src/page/other/chart/SAKChartManager.hh \
-    src/page/other/chart/morechart/MoreChartWidget.hh \
-    src/page/other/chart/throughput/ThroughputWidget.hh \
     src/page/other/highlight/SAKHighlightSettings.hh \
     src/page/other/highlight/SAKHighlightSettingsWidget.hh \
     src/page/other/more/SAKMoreSettingsWidget.hh \
@@ -126,6 +122,8 @@ HEADERS +=  \
     src/page/output/save/SaveOutputDataSettings.hh \
     src/page/output/save/SaveOutputDataThread.hh \
     src/page/statistics/SAKStatisticsManager.hh \
+    src/page/visualization/SAKChartManager.hh \
+    src/page/visualization/throughput/SAKThroughputWidget.hh \
     src/tcpclient/SAKTcpClientDebugPage.hh \
     src/tcpclient/SAKTcpClientDevice.hh \
     src/tcpclient/SAKTcpClientDeviceController.hh \
@@ -164,9 +162,6 @@ SOURCES +=  \
     src/page/other/SAKOtherSettingsManager.cc \
     src/page/other/autoresponse/SAKAutoResponseItemWidget.cc \
     src/page/other/autoresponse/SAKAutoResponseSettingsWidget.cc \
-    src/page/other/chart/SAKChartManager.cc \
-    src/page/other/chart/morechart/MoreChartWidget.cc \
-    src/page/other/chart/throughput/ThroughputWidget.cc \
     src/page/other/highlight/SAKHighlightSettings.cc \
     src/page/other/highlight/SAKHighlightSettingsWidget.cc \
     src/page/other/more/SAKMoreSettingsWidget.cc \
@@ -185,6 +180,8 @@ SOURCES +=  \
     src/page/output/save/SaveOutputDataSettings.cc \
     src/page/output/save/SaveOutputDataThread.cc \
     src/page/statistics/SAKStatisticsManager.cc \
+    src/page/visualization/SAKChartManager.cc \
+    src/page/visualization/throughput/SAKThroughputWidget.cc \
     src/tcpclient/SAKTcpClientDebugPage.cc \
     src/tcpclient/SAKTcpClientDevice.cc \
     src/tcpclient/SAKTcpClientDeviceController.cc \
@@ -210,7 +207,6 @@ FORMS +=  \
     src/page/input/InputDataItemManager.ui \
     src/page/other/autoresponse/SAKAutoResponseItemWidget.ui \
     src/page/other/autoresponse/SAKAutoResponseSettingsWidget.ui \
-    src/page/other/chart/morechart/MoreChartWidget.ui \
     src/page/other/highlight/SAKHighlightSettingsWidget.ui \
     src/page/other/more/SAKMoreSettingsWidget.ui \
     src/page/other/readwrite/SAKReadWriteSettingsWidget.ui \

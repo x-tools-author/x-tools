@@ -9,13 +9,13 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#include "SAKDebugPage.hh"
-#include "ThroughputWidget.hh"
-
 #include <QValueAxis>
 #include <QHBoxLayout>
 
-ThroughputWidget::ThroughputWidget(SAKDebugPage *debugPage, QWidget *parent)
+#include "SAKDebugPage.hh"
+#include "SAKThroughputWidget.hh"
+
+SAKThroughputWidget::SAKThroughputWidget(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget (parent)
     ,debugPage (debugPage)
 {
@@ -55,14 +55,14 @@ ThroughputWidget::ThroughputWidget(SAKDebugPage *debugPage, QWidget *parent)
     setLayout(layout);
 
     updateTimer.setInterval(1*1000);
-    connect(&updateTimer, &QTimer::timeout, this, &ThroughputWidget::updateTimerTimeout);
+    connect(&updateTimer, &QTimer::timeout, this, &SAKThroughputWidget::updateTimerTimeout);
     updateTimer.start();
 
-    connect(debugPage, &SAKDebugPage::bytesRead, this, &ThroughputWidget::dataRead);
-    connect(debugPage, &SAKDebugPage::bytesWritten, this, &ThroughputWidget::dataWite);
+    connect(debugPage, &SAKDebugPage::bytesRead, this, &SAKThroughputWidget::dataRead);
+    connect(debugPage, &SAKDebugPage::bytesWritten, this, &SAKThroughputWidget::dataWite);
 }
 
-ThroughputWidget::~ThroughputWidget()
+SAKThroughputWidget::~SAKThroughputWidget()
 {
     delete rxLineSeries;
     delete txLineSeries;
@@ -70,7 +70,7 @@ ThroughputWidget::~ThroughputWidget()
     delete chartView;
 }
 
-void ThroughputWidget::updateTimerTimeout()
+void SAKThroughputWidget::updateTimerTimeout()
 {
     while (rxLineSeries->count() >= 60) {
         rxLineSeries->remove(0);
@@ -105,12 +105,12 @@ void ThroughputWidget::updateTimerTimeout()
     updateLineSeries(txLineSeries, dataContext.txBytes, dataContext.txMax);
 }
 
-void ThroughputWidget::dataRead(QByteArray data)
+void SAKThroughputWidget::dataRead(QByteArray data)
 {
     dataContext.rxBytes += data.length();
 }
 
-void ThroughputWidget::dataWite(QByteArray data)
+void SAKThroughputWidget::dataWite(QByteArray data)
 {
     dataContext.txBytes += data.length();
 }

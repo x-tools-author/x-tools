@@ -16,8 +16,7 @@
 #include <QPushButton>
 
 class SAKDebugPage;
-class MoreChartWidget;
-class ThroughputWidget;
+class SAKThroughputWidget;
 class SAKChartManager:public QObject
 {
     Q_OBJECT
@@ -28,18 +27,13 @@ private:
     SAKDebugPage *_debugPage;
 
     QPushButton *throughputPushButton;
-//    QPushButton *moreChartPushButton;
 
-    ThroughputWidget *throughputWidget;
-    MoreChartWidget *moreChartWidget;
+    SAKThroughputWidget *throughputWidget;
 
     /// 显示吞吐量面板
     void showThroughputPushWidget();
-    /// 显示更多图表面板
-    void showMoreChartWidget();
 
     void resetThroughputWidgetPtr();
-    void resetMoreChartPushButtonPtr();
 };
 
 #endif
