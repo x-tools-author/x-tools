@@ -18,6 +18,7 @@
 #include <QMetaEnum>
 #include <QSerialPort>
 #include <QHostAddress>
+#include <QApplication>
 #include <QStandardPaths>
 #include <QSerialPortInfo>
 #include <QNetworkInterface>
@@ -47,6 +48,7 @@ QString SAKGlobal::logFile()
 QString SAKGlobal::dataPath()
 {
     QString path = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
+    path.insert(path.lastIndexOf("/"),  QString("/Qter"));
 
     QDir dir;
     if (!dir.exists(path)){
