@@ -9,10 +9,6 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#include "AutoResponseItemWidget.hh"
-#include "AutoResponseSettingWidget.hh"
-#include "ui_AutoResponseSettingWidget.h"
-
 #include <QFile>
 #include <QDebug>
 #include <QDateTime>
@@ -22,10 +18,14 @@
 #include <QMessageBox>
 #include <QApplication>
 
-AutoResponseSettingWidget::AutoResponseSettingWidget(SAKDebugPage *debugPage, QWidget *parent)
+#include "SAKAutoResponseItemWidget.hh"
+#include "SAKAutoResponseSettingsWidget.hh"
+#include "ui_SAKAutoResponseSettingsWidget.h"
+
+SAKAutoResponseSettingsWidget::SAKAutoResponseSettingsWidget(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget (parent)
     ,_debugPage (debugPage)
-    ,ui (new Ui::AutoResponseSettingWidget)
+    ,ui (new Ui::SAKAutoResponseSettingsWidget)
 {
     ui->setupUi(this);
     listWidget = ui->listWidget;
@@ -37,25 +37,25 @@ AutoResponseSettingWidget::AutoResponseSettingWidget(SAKDebugPage *debugPage, QW
     setWindowTitle(tr("自动回复设置"));
 
     clearMessageInfoTimer.setInterval(5*1000);
-    connect(&clearMessageInfoTimer, &QTimer::timeout, this, &AutoResponseSettingWidget::clearMessage);
+    connect(&clearMessageInfoTimer, &QTimer::timeout, this, &SAKAutoResponseSettingsWidget::clearMessage);
 }
 
-AutoResponseSettingWidget::~AutoResponseSettingWidget()
+SAKAutoResponseSettingsWidget::~SAKAutoResponseSettingsWidget()
 {
     delete ui;
 }
 
-void AutoResponseSettingWidget::on_forbidAllCheckBox_clicked()
+void SAKAutoResponseSettingsWidget::on_forbidAllCheckBox_clicked()
 {
     for(int i = 0; i < listWidget->count(); i++){
         QListWidgetItem *item = listWidget->item(i);
         QWidget *widget = listWidget->itemWidget(item);
         bool disAble = forbidAllCheckBox->isChecked();
-        reinterpret_cast<AutoResponseItemWidget*>(widget)->setAllAutoResponseDisable(disAble);
+        reinterpret_cast<SAKAutoResponseItemWidget*>(widget)->setAllAutoResponseDisable(disAble);
     }
 }
 
-void AutoResponseSettingWidget::on_deleteItemPushButton_clicked()
+void SAKAutoResponseSettingsWidget::on_deleteItemPushButton_clicked()
 {
     QListWidgetItem *item = listWidget->currentItem();
     if (!item){
@@ -67,17 +67,17 @@ void AutoResponseSettingWidget::on_deleteItemPushButton_clicked()
     delete item;
 }
 
-void AutoResponseSettingWidget::on_addItemPushButton_clicked()
+void SAKAutoResponseSettingsWidget::on_addItemPushButton_clicked()
 {
     QListWidgetItem *item = new QListWidgetItem(listWidget);
     listWidget->addItem(item);
-    AutoResponseItemWidget *itemWidget = new AutoResponseItemWidget(_debugPage, listWidget);
+    SAKAutoResponseItemWidget *itemWidget = new SAKAutoResponseItemWidget(_debugPage, listWidget);
     item->setSizeHint(QSize(itemWidget->width(), itemWidget->height()));
     listWidget->setItemWidget(item, itemWidget);
 }
 
 
-void AutoResponseSettingWidget::outputMessage(QString msg, bool isInfo)
+void SAKAutoResponseSettingsWidget::outputMessage(QString msg, bool isInfo)
 {
     QString color = "black";
     if (!isInfo){
@@ -90,7 +90,7 @@ void AutoResponseSettingWidget::outputMessage(QString msg, bool isInfo)
     clearMessageInfoTimer.start();
 }
 
-void AutoResponseSettingWidget::clearMessage()
+void SAKAutoResponseSettingsWidget::clearMessage()
 {
     clearMessageInfoTimer.stop();
     msgLabel->clear();

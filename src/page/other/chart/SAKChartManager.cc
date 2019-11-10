@@ -22,7 +22,7 @@ SAKChartManager::SAKChartManager(SAKDebugPage *debugPage, QObject *parent)
     ,throughputWidget (nullptr)
     ,moreChartWidget (nullptr)
 {
-    throughputPushButton = _debugPage->throughputPushButton;
+    throughputPushButton = _debugPage->chartSettingPushButton;
 //    moreChartPushButton = _debugPage->moreChartPushButton;
 
     connect(throughputPushButton, &QPushButton::clicked, this, &SAKChartManager::showThroughputPushWidget);

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>AutoResponseSettingWidget</class>
- <widget class="QWidget" name="AutoResponseSettingWidget">
+ <class>SAKAutoResponseSettingsWidget</class>
+ <widget class="QWidget" name="SAKAutoResponseSettingsWidget">
   <property name="geometry">
    <rect>
     <x>0</x>

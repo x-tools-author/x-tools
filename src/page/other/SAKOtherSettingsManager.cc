@@ -16,44 +16,41 @@
 #include <QDebug>
 
 #include "SAKDebugPage.hh"
-#include "ui_SAKDebugPage.h"
-#include "SAKOtherSettings.hh"
+#include "SAKOtherSettingsManager.hh"
 #include "TransmissionSettings.hh"
-#include "FormatSettingsWidget.hh"
 #include "HighlightSettingsWidget.hh"
-#include "MoreOtherSettingsWidget.hh"
-#include "ReadWriteSettingsWidget.hh"
+#include "SAKMoreSettingsWidget.hh"
+#include "SAKReadWriteSettingsWidget.hh"
 #include "SAKTimingSendingManager.hh"
-#include "AutoResponseSettingWidget.hh"
+#include "SAKAutoResponseSettingsWidget.hh"
 
-SAKOtherSettings::SAKOtherSettings(SAKDebugPage *debugPage, QObject *parent)
+SAKOtherSettingsManager::SAKOtherSettingsManager(SAKDebugPage *debugPage, QObject *parent)
     :QObject (parent)
     ,_debugPage (debugPage)
 {
     transmissionSettings        = new TransmissionSettings(_debugPage);
-    autoResponseSettingWidget   = new AutoResponseSettingWidget(_debugPage);
-    highlighterSettingPanel     = new HighlightSettingsWidget(_debugPage->ui->outputTextBroswer->document());
-    moreOtherSettingsWidget     = new MoreOtherSettingsWidget(_debugPage);
-    formatSettingsWidget        = new FormatSettingsWidget(_debugPage);
-    readWriteSettingsWidget     = new ReadWriteSettingsWidget(_debugPage);
+    autoResponseSettingWidget   = new SAKAutoResponseSettingsWidget(_debugPage);
+    highlighterSettingPanel     = new HighlightSettingsWidget(_debugPage->outputTextBroswer->document());
+    moreSettingsWidget     = new SAKMoreSettingsWidget(_debugPage);
+    readWriteSettingsWidget     = new SAKReadWriteSettingsWidget(_debugPage);
     timingSendingManager        = new SAKTimingSendingManager(_debugPage);
 
-    autoResponseSettingPushButton   = _debugPage->ui->autoResponseSettingPushButton;
-    highlightSettingPushButton      = _debugPage->ui->highlightSettingPushButton;
-    readWriteSettingPushButton      = _debugPage->ui->readWriteSettingPushButton;
-    transmissionSettingPushButton   = _debugPage->ui->transmissionSettingPushButton;
-    moreOtherSettingsPushButton     = _debugPage->ui->moreOhterSettingsPushButton;    
-    timingSendPushButton            = _debugPage->ui->timingSendPushButton;
+    autoResponseSettingPushButton   = _debugPage->autoResponseSettingPushButton;
+    highlightSettingPushButton      = _debugPage->highlightSettingPushButton;
+    readWriteSettingPushButton      = _debugPage->readWriteSettingPushButton;
+    transmissionSettingPushButton   = _debugPage->transmissionSettingPushButton;
+    moreSettingsPushButton          = _debugPage->moreSettingsPushButton;
+    timingSendingPushButton         = _debugPage->timingSendingPushButton;
 
-    connect(autoResponseSettingPushButton, &QPushButton::clicked, this, &SAKOtherSettings::onAutoresponseSettingPushbuttonClicked);
-    connect(highlightSettingPushButton,    &QPushButton::clicked, this, &SAKOtherSettings::onHighlightSettingPushButtonClicked);
-    connect(readWriteSettingPushButton,    &QPushButton::clicked, this, &SAKOtherSettings::onReadWriteSettingPushButtonClicked);
-    connect(transmissionSettingPushButton, &QPushButton::clicked, this, &SAKOtherSettings::onTransmissionSettingPushButtonClicked);
-    connect(moreOtherSettingsPushButton,   &QPushButton::clicked, this, &SAKOtherSettings::onMoreOtherSettingsPushButtonClicked);
-    connect(timingSendPushButton,          &QPushButton::clicked, this, &SAKOtherSettings::onTimingSendPushButtonClicked);
+    connect(autoResponseSettingPushButton, &QPushButton::clicked, this, &SAKOtherSettingsManager::onAutoresponseSettingPushbuttonClicked);
+    connect(highlightSettingPushButton,    &QPushButton::clicked, this, &SAKOtherSettingsManager::onHighlightSettingPushButtonClicked);
+    connect(readWriteSettingPushButton,    &QPushButton::clicked, this, &SAKOtherSettingsManager::onReadWriteSettingPushButtonClicked);
+    connect(transmissionSettingPushButton, &QPushButton::clicked, this, &SAKOtherSettingsManager::onTransmissionSettingPushButtonClicked);
+    connect(moreSettingsPushButton,        &QPushButton::clicked, this, &SAKOtherSettingsManager::onMoreSettingsPushButtonClicked);
+    connect(timingSendingPushButton,       &QPushButton::clicked, this, &SAKOtherSettingsManager::onTimingSendingPushButtonClicked);
 }
 
-SAKOtherSettings::~SAKOtherSettings()
+SAKOtherSettingsManager::~SAKOtherSettingsManager()
 {
     delete transmissionSettings;
     delete autoResponseSettingWidget;
@@ -62,7 +59,7 @@ SAKOtherSettings::~SAKOtherSettings()
     autoResponseSettingWidget = nullptr;
 }
 
-void SAKOtherSettings::onAutoresponseSettingPushbuttonClicked()
+void SAKOtherSettingsManager::onAutoresponseSettingPushbuttonClicked()
 {
     if (autoResponseSettingWidget->isHidden()){
         autoResponseSettingWidget->show();
@@ -71,7 +68,7 @@ void SAKOtherSettings::onAutoresponseSettingPushbuttonClicked()
     }
 }
 
-void SAKOtherSettings::onHighlightSettingPushButtonClicked()
+void SAKOtherSettingsManager::onHighlightSettingPushButtonClicked()
 {
 
     if (highlighterSettingPanel->isHidden()){
@@ -81,7 +78,7 @@ void SAKOtherSettings::onHighlightSettingPushButtonClicked()
     }
 }
 
-void SAKOtherSettings::onReadWriteSettingPushButtonClicked()
+void SAKOtherSettingsManager::onReadWriteSettingPushButtonClicked()
 {
     if (readWriteSettingsWidget->isHidden()){
         readWriteSettingsWidget->show();
@@ -90,7 +87,7 @@ void SAKOtherSettings::onReadWriteSettingPushButtonClicked()
     }
 }
 
-void SAKOtherSettings::onTransmissionSettingPushButtonClicked()
+void SAKOtherSettingsManager::onTransmissionSettingPushButtonClicked()
 {
     if (transmissionSettings->isHidden()){
         transmissionSettings->show();
@@ -99,25 +96,16 @@ void SAKOtherSettings::onTransmissionSettingPushButtonClicked()
     }
 }
 
-void SAKOtherSettings::onMoreOtherSettingsPushButtonClicked()
+void SAKOtherSettingsManager::onMoreSettingsPushButtonClicked()
 {
-    if (moreOtherSettingsWidget->isHidden()){
-        moreOtherSettingsWidget->show();
+    if (moreSettingsWidget->isHidden()){
+        moreSettingsWidget->show();
     }else {
-        moreOtherSettingsWidget->activateWindow();
+        moreSettingsWidget->activateWindow();
     }
 }
 
-void SAKOtherSettings::onFormatSettingsPushButtonClicked()
-{
-    if (formatSettingsWidget->isHidden()){
-        formatSettingsWidget->show();
-    }else {
-        formatSettingsWidget->activateWindow();
-    }
-}
-
-void SAKOtherSettings::onTimingSendPushButtonClicked()
+void SAKOtherSettingsManager::onTimingSendingPushButtonClicked()
 {
     if (timingSendingManager->isHidden()){
         timingSendingManager->show();

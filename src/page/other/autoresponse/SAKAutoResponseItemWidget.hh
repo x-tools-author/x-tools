@@ -9,8 +9,8 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com
  */
-#ifndef AUTORESPONSEITEM_HH
-#define AUTORESPONSEITEM_HH
+#ifndef SAKAUTORESPONSEITEMWIDGET_HH
+#define SAKAUTORESPONSEITEMWIDGET_HH
 
 #include "SAKDebugPage.hh"
 
@@ -24,15 +24,15 @@
 class SAKDebugPage;
 
 namespace Ui {
-    class AutoResponseItemWidget;
+    class SAKAutoResponseItemWidget;
 }
 
-class AutoResponseItemWidget:public QWidget
+class SAKAutoResponseItemWidget:public QWidget
 {
     Q_OBJECT
 public:
-    AutoResponseItemWidget(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
-    ~AutoResponseItemWidget();
+    SAKAutoResponseItemWidget(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
+    ~SAKAutoResponseItemWidget();
 
     enum AutoResponseOption{
         Equivalence,    // 相等
@@ -46,7 +46,7 @@ public:
      */
     void setAllAutoResponseDisable(bool disAbel);
 private:
-    Ui::AutoResponseItemWidget *ui;
+    Ui::SAKAutoResponseItemWidget *ui;
     QLineEdit   *remarkLineEdit;
     QLineEdit   *referenceLineEdit;
     QLineEdit   *responseLineEdit;

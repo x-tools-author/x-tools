@@ -9,8 +9,8 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef AUTORESPONSESETTINGWIDGET_HH
-#define AUTORESPONSESETTINGWIDGET_HH
+#ifndef SAKAUTORESPONSESETTINGSWIDGET_HH
+#define SAKAUTORESPONSESETTINGSWIDGET_HH
 
 #include <QTimer>
 #include <QLabel>
@@ -24,15 +24,15 @@
 class SAKDebugPage;
 
 namespace Ui {
-    class AutoResponseSettingWidget;
+    class SAKAutoResponseSettingsWidget;
 }
 
-class AutoResponseSettingWidget:public QWidget
+class SAKAutoResponseSettingsWidget:public QWidget
 {
    Q_OBJECT
 public:
-    AutoResponseSettingWidget(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
-    ~AutoResponseSettingWidget();
+    SAKAutoResponseSettingsWidget(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
+    ~SAKAutoResponseSettingsWidget();
 private:
     SAKDebugPage    *_debugPage;
     QListWidget     *listWidget;
@@ -50,7 +50,7 @@ private:
     void outputMessage(QString msg, bool isInfo);
     void clearMessage();
 private:
-    Ui::AutoResponseSettingWidget *ui;
+    Ui::SAKAutoResponseSettingsWidget *ui;
 };
 
 #endif

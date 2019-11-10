@@ -9,16 +9,16 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#include "SAKGlobal.hh"
-#include "AutoResponseItemWidget.hh"
-#include "ui_AutoResponseItemWidget.h"
-
-#include <QDebug>
 #include <QDateTime>
 
-AutoResponseItemWidget::AutoResponseItemWidget(SAKDebugPage *debugPage, QWidget *parent)
+#include "SAKGlobal.hh"
+#include "SAKAutoResponseItemWidget.hh"
+
+#include "ui_SAKAutoResponseItemWidget.h"
+
+SAKAutoResponseItemWidget::SAKAutoResponseItemWidget(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget(parent)
-    ,ui (new Ui::AutoResponseItemWidget)
+    ,ui (new Ui::SAKAutoResponseItemWidget)
     ,forbiddenAllAutoResponse (false)
     ,debugPage (debugPage)
 {
@@ -39,21 +39,21 @@ AutoResponseItemWidget::AutoResponseItemWidget(SAKDebugPage *debugPage, QWidget 
     SAKGlobal::initInputTextFormatComboBox(referenceDataFromatComboBox);
     SAKGlobal::initInputTextFormatComboBox(responseDataFormatComboBox);
 
-    connect(debugPage, &SAKDebugPage::bytesRead, this, &AutoResponseItemWidget::dataRead);
-    connect(this, &AutoResponseItemWidget::requestWrite, debugPage, &SAKDebugPage::write);
+    connect(debugPage, &SAKDebugPage::bytesRead, this, &SAKAutoResponseItemWidget::dataRead);
+    connect(this, &SAKAutoResponseItemWidget::requestWrite, debugPage, &SAKDebugPage::write);
 }
 
-AutoResponseItemWidget::~AutoResponseItemWidget()
+SAKAutoResponseItemWidget::~SAKAutoResponseItemWidget()
 {
     delete ui;
 }
 
-void AutoResponseItemWidget::setAllAutoResponseDisable(bool disAbel)
+void SAKAutoResponseItemWidget::setAllAutoResponseDisable(bool disAbel)
 {
     forbiddenAllAutoResponse = disAbel;
 }
 
-void AutoResponseItemWidget::setLineEditFormat(QLineEdit *lineEdit, int format)
+void SAKAutoResponseItemWidget::setLineEditFormat(QLineEdit *lineEdit, int format)
 {
     QRegExp regExpBin("([01][01][01][01][01][01][01][01][ ])*");
     QRegExp regExpOct("([0-7][0-7][ ])*");
@@ -89,7 +89,7 @@ void AutoResponseItemWidget::setLineEditFormat(QLineEdit *lineEdit, int format)
     }
 }
 
-void AutoResponseItemWidget::dataRead(QByteArray data)
+void SAKAutoResponseItemWidget::dataRead(QByteArray data)
 {
     if (forbiddenAllAutoResponse){
         return;
@@ -120,7 +120,7 @@ void AutoResponseItemWidget::dataRead(QByteArray data)
     }
 }
 
-QByteArray AutoResponseItemWidget::string2array(QString str, int format)
+QByteArray SAKAutoResponseItemWidget::string2array(QString str, int format)
 {
     auto stringList2Array = [](QStringList strList, int base) -> QByteArray{
         QByteArray array;
@@ -167,9 +167,9 @@ QByteArray AutoResponseItemWidget::string2array(QString str, int format)
     return array;
 };
 
-bool AutoResponseItemWidget::response(QByteArray receiveData, QByteArray referenceData, int option)
+bool SAKAutoResponseItemWidget::response(QByteArray receiveData, QByteArray referenceData, int option)
 {
-    if (option == AutoResponseItemWidget::Equivalence){
+    if (option == SAKAutoResponseItemWidget::Equivalence){
         if (QString(receiveData.toHex()).compare(QString(referenceData.toHex())) == 0){
             return true;
         }else{
@@ -177,7 +177,7 @@ bool AutoResponseItemWidget::response(QByteArray receiveData, QByteArray referen
         }
     }
 
-    if (option == AutoResponseItemWidget::Contain){
+    if (option == SAKAutoResponseItemWidget::Contain){
         if (QString(receiveData.toHex()).contains(QString(referenceData.toHex()))){
             return true;
         }else{
@@ -185,7 +185,7 @@ bool AutoResponseItemWidget::response(QByteArray receiveData, QByteArray referen
         }
     }
 
-    if (option == AutoResponseItemWidget::Notcontain){
+    if (option == SAKAutoResponseItemWidget::Notcontain){
         if (QString(receiveData.toHex()).contains(QString(referenceData.toHex()))){
             return false;
         }else{
@@ -196,12 +196,12 @@ bool AutoResponseItemWidget::response(QByteArray receiveData, QByteArray referen
     return false;
 };
 
-void AutoResponseItemWidget::on_referenceDataFromatComboBox_currentTextChanged()
+void SAKAutoResponseItemWidget::on_referenceDataFromatComboBox_currentTextChanged()
 {
     setLineEditFormat(referenceLineEdit, referenceDataFromatComboBox->currentData().toInt());
 }
 
-void AutoResponseItemWidget::on_responseDataFormatComboBox_currentTextChanged()
+void SAKAutoResponseItemWidget::on_responseDataFormatComboBox_currentTextChanged()
 {
     setLineEditFormat(responseLineEdit, responseDataFormatComboBox->currentData().toInt());
 }
