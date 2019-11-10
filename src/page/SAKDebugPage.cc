@@ -26,11 +26,11 @@
 #include "SAKDebugPage.hh"
 #include "SAKChartManager.hh"
 #include "SAKCRCInterface.hh"
-#include "SAKOtherSettings.hh"
+#include "SAKOtherSettingsManager.hh"
 #include "SAKStatisticsManager.hh"
 #include "DebugPageInputManager.hh"
 #include "DebugPageOutputManager.hh"
-#include "HighlightSettingsWidget.hh"
+#include "SAKHighlightSettingsWidget.hh"
 
 #include "ui_SAKDebugPage.h"
 
@@ -49,7 +49,7 @@ SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
 
     chartManager            = new SAKChartManager(this, this);
     outputManager           = new DebugPageOutputManager(this, this);
-    otherSettings           = new SAKOtherSettings(this, this);
+    otherSettings           = new SAKOtherSettingsManager(this, this);
     statisticsManager       = new SAKStatisticsManager(this, this);
     debugPageInputManager   = new DebugPageInputManager(this, this);
 
@@ -306,23 +306,6 @@ void SAKDebugPage::initUiPointer()
     sendPresetPushButton    = ui->sendPresetPushButton;
 
     /*
-     * 图表
-     */
-    throughputPushButton    = ui->throughputPushButton;
-
-    /*
-     * 数据统计
-     */
-    rxSpeedLabel            = ui->rxSpeedLabel;
-    txSpeedLabel            = ui->txSpeedLabel;
-    rxFramesLabel           = ui->rxFramesLabel;
-    txFramesLabel           = ui->txFramesLabel;
-    rxBytesLabel            = ui->rxBytesLabel;
-    txBytesLabel            = ui->txBytesLabel;
-    resetTxCountPushButton  = ui->resetTxCountPushButton;
-    resetRxCountPushButton  = ui->resetRxCountPushButton;
-
-    /*
      * 输出设置组
      */
     rxLabel                 = ui->rxLabel;
@@ -339,6 +322,30 @@ void SAKDebugPage::initUiPointer()
     clearOutputPushButton   = ui->clearOutputPushButton;
     saveOutputPushButton    = ui->saveOutputPushButton;
     outputTextBroswer       = ui->outputTextBroswer;
+
+
+    /*
+     * 数据统计
+     */
+    rxSpeedLabel            = ui->rxSpeedLabel;
+    txSpeedLabel            = ui->txSpeedLabel;
+    rxFramesLabel           = ui->rxFramesLabel;
+    txFramesLabel           = ui->txFramesLabel;
+    rxBytesLabel            = ui->rxBytesLabel;
+    txBytesLabel            = ui->txBytesLabel;
+    resetTxCountPushButton  = ui->resetTxCountPushButton;
+    resetRxCountPushButton  = ui->resetRxCountPushButton;
+
+    /*
+     * 其他设置
+     */
+    transmissionSettingPushButton = ui->transmissionSettingPushButton;
+    readWriteSettingPushButton = ui->readWriteSettingPushButton;
+    autoResponseSettingPushButton = ui->autoResponseSettingPushButton;
+    chartSettingPushButton = ui->chartSettingPushButton;
+    timingSendingPushButton = ui->timingSendingPushButton;
+    highlightSettingPushButton = ui->highlightSettingPushButton;
+    moreSettingsPushButton = ui->moreSettingsPushButton;
 }
 
 void SAKDebugPage::initSettingKey()

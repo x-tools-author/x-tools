@@ -64,7 +64,6 @@ INCLUDEPATH += \
     src/page \
     src/page/input \
     src/page/other \
-    src/page/other/analyze \
     src/page/other/autoresponse \
     src/page/other/chart \
     src/page/other/chart/morechart \
@@ -103,19 +102,18 @@ HEADERS +=  \
     src/page/input/InputDataFactory.hh \
     src/page/input/InputDataItem.hh \
     src/page/input/InputDataItemManager.hh \
-    src/page/other/SAKOtherSettings.hh \
-    src/page/other/analyze/FormatSettingsWidget.hh \
-    src/page/other/autoresponse/AutoResponseItemWidget.hh \
-    src/page/other/autoresponse/AutoResponseSettingWidget.hh \
+    src/page/other/SAKOtherSettingsManager.hh \
+    src/page/other/autoresponse/SAKAutoResponseItemWidget.hh \
+    src/page/other/autoresponse/SAKAutoResponseSettingsWidget.hh \
     src/page/other/chart/SAKChartManager.hh \
     src/page/other/chart/morechart/MoreChartWidget.hh \
     src/page/other/chart/throughput/ThroughputWidget.hh \
-    src/page/other/highlight/HighlightSettings.hh \
-    src/page/other/highlight/HighlightSettingsWidget.hh \
-    src/page/other/more/MoreOtherSettingsWidget.hh \
-    src/page/other/readwrite/ReadWriteSettingsWidget.hh \
-    src/page/other/timing/SAKTimingSendingItem.hh \
-    src/page/other/timing/SAKTimingSendingManager.hh \
+    src/page/other/highlight/SAKHighlightSettings.hh \
+    src/page/other/highlight/SAKHighlightSettingsWidget.hh \
+    src/page/other/more/SAKMoreSettingsWidget.hh \
+    src/page/other/readwrite/SAKReadWriteSettingsWidget.hh \
+    src/page/other/timing/SAKTimingSendingItemWidget.hh \
+    src/page/other/timing/SAKTimingSendingSettingsWidget.hh \
     src/page/other/transmission/BaseTransmissionItemWidget.hh \
     src/page/other/transmission/SerialPortTransmissionItemWidget.hh \
     src/page/other/transmission/TcpTransmissionItemWidget.hh \
@@ -163,19 +161,18 @@ SOURCES +=  \
     src/page/input/InputDataFactory.cc \
     src/page/input/InputDataItem.cc \
     src/page/input/InputDataItemManager.cc \
-    src/page/other/SAKOtherSettings.cc \
-    src/page/other/analyze/FormatSettingsWidget.cc \
-    src/page/other/autoresponse/AutoResponseItemWidget.cc \
-    src/page/other/autoresponse/AutoResponseSettingWidget.cc \
+    src/page/other/SAKOtherSettingsManager.cc \
+    src/page/other/autoresponse/SAKAutoResponseItemWidget.cc \
+    src/page/other/autoresponse/SAKAutoResponseSettingsWidget.cc \
     src/page/other/chart/SAKChartManager.cc \
     src/page/other/chart/morechart/MoreChartWidget.cc \
     src/page/other/chart/throughput/ThroughputWidget.cc \
-    src/page/other/highlight/HighlightSettings.cc \
-    src/page/other/highlight/HighlightSettingsWidget.cc \
-    src/page/other/more/MoreOtherSettingsWidget.cc \
-    src/page/other/readwrite/ReadWriteSettingsWidget.cc \
-    src/page/other/timing/SAKTimingSendingItem.cc \
-    src/page/other/timing/SAKTimingSendingManager.cc \
+    src/page/other/highlight/SAKHighlightSettings.cc \
+    src/page/other/highlight/SAKHighlightSettingsWidget.cc \
+    src/page/other/more/SAKMoreSettingsWidget.cc \
+    src/page/other/readwrite/SAKReadWriteSettingsWidget.cc \
+    src/page/other/timing/SAKTimingSendingItemWidget.cc \
+    src/page/other/timing/SAKTimingSendingSettingsWidget.cc \
     src/page/other/transmission/BaseTransmissionItemWidget.cc \
     src/page/other/transmission/SerialPortTransmissionItemWidget.cc \
     src/page/other/transmission/TcpTransmissionItemWidget.cc \
@@ -211,15 +208,14 @@ FORMS +=  \
     src/page/SAKDebugPage.ui \
     src/page/input/InputDataItem.ui \
     src/page/input/InputDataItemManager.ui \
-    src/page/other/analyze/FormatSettingsWidget.ui \
-    src/page/other/autoresponse/AutoResponseItemWidget.ui \
-    src/page/other/autoresponse/AutoResponseSettingWidget.ui \
+    src/page/other/autoresponse/SAKAutoResponseItemWidget.ui \
+    src/page/other/autoresponse/SAKAutoResponseSettingsWidget.ui \
     src/page/other/chart/morechart/MoreChartWidget.ui \
-    src/page/other/highlight/HighlightSettingsWidget.ui \
-    src/page/other/more/MoreOtherSettingsWidget.ui \
-    src/page/other/readwrite/ReadWriteSettingsWidget.ui \
-    src/page/other/timing/SAKTimingSendingItem.ui \
-    src/page/other/timing/SAKTimingSendingManager.ui \
+    src/page/other/highlight/SAKHighlightSettingsWidget.ui \
+    src/page/other/more/SAKMoreSettingsWidget.ui \
+    src/page/other/readwrite/SAKReadWriteSettingsWidget.ui \
+    src/page/other/timing/SAKTimingSendingItemWidget.ui \
+    src/page/other/timing/SAKTimingSendingSettingsWidget.ui \
     src/page/other/transmission/SerialPortTransmissionItemWidget.ui \
     src/page/other/transmission/TcpTransmissionItemWidget.ui \
     src/page/other/transmission/TransmissionPage.ui \

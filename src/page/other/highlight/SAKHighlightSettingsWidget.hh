@@ -9,8 +9,8 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef HIGHLIGHTERSETTINGSWIDGET_HH
-#define HIGHLIGHTERSETTINGSWIDGET_HH
+#ifndef SAKHIGHLIGHTERSETTINGSWIDGET_HH
+#define SAKHIGHLIGHTERSETTINGSWIDGET_HH
 
 #include <QWidget>
 #include <QLineEdit>
@@ -19,22 +19,22 @@
 #include <QTextDocument>
 
 namespace Ui {
-class HighlightSettingsWidget;
+class SAKHighlightSettingsWidget;
 }
 
-class HighlightSettings;
+class SAKHighlightSettings;
 
-class HighlightSettingsWidget:public QWidget
+class SAKHighlightSettingsWidget:public QWidget
 {
     Q_OBJECT
 public:
-    HighlightSettingsWidget(QTextDocument *doc, QWidget* parent = nullptr);
-    ~HighlightSettingsWidget();
+    SAKHighlightSettingsWidget(QTextDocument *doc, QWidget* parent = nullptr);
+    ~SAKHighlightSettingsWidget();
 
     bool eventFilter(QObject *watched, QEvent *event);
 private:
-    Ui::HighlightSettingsWidget     *ui             = nullptr;
-    HighlightSettings               *highlighter    = nullptr;
+    Ui::SAKHighlightSettingsWidget  *ui             = nullptr;
+    SAKHighlightSettings            *highlighter    = nullptr;
     QLineEdit                       *inputLineEdit  = nullptr;
     QPushButton                     *clearLabelBt   = nullptr;
     QPushButton                     *addLabelBt     = nullptr;

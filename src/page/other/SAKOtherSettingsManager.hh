@@ -19,7 +19,7 @@ class TransmissionSettings;
 class SAKAutoResponseSettingsWidget;
 
 class SAKDebugPage;
-class HighlightSettingsWidget;
+class SAKHighlightSettingsWidget;
 class SAKMoreSettingsWidget;
 class SAKReadWriteSettingsWidget;
 class SAKTimingSendingSettingsWidget;
@@ -44,7 +44,7 @@ private:
     SAKReadWriteSettingsWidget     *readWriteSettingsWidget;
     SAKAutoResponseSettingsWidget   *autoResponseSettingWidget;
     SAKTimingSendingSettingsWidget     *timingSendingManager;
-    HighlightSettingsWidget     *highlighterSettingPanel;
+    SAKHighlightSettingsWidget     *highlighterSettingPanel;
     SAKMoreSettingsWidget       *moreSettingsWidget;
 
     SAKDebugPage                *_debugPage;

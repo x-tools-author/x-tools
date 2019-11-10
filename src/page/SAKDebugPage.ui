@@ -370,14 +370,14 @@
     </widget>
    </item>
    <item row="31" column="13" colspan="2">
-    <widget class="QPushButton" name="moreOhterSettingsPushButton">
+    <widget class="QPushButton" name="moreSettingsPushButton">
      <property name="text">
       <string>更多设置</string>
      </property>
     </widget>
    </item>
    <item row="30" column="11" colspan="2">
-    <widget class="QPushButton" name="timingSendPushButton">
+    <widget class="QPushButton" name="timingSendingPushButton">
      <property name="text">
       <string>定时发送</string>
      </property>
@@ -540,7 +540,7 @@
     </spacer>
    </item>
    <item row="29" column="13" colspan="2">
-    <widget class="QPushButton" name="throughputPushButton">
+    <widget class="QPushButton" name="chartSettingPushButton">
      <property name="text">
       <string>收发图表</string>
      </property>

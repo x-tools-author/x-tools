@@ -9,16 +9,16 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#include "HighlightSettings.hh"
+#include "SAKHighlightSettings.hh"
 
-HighlightSettings::HighlightSettings(QTextDocument* parent)
+SAKHighlightSettings::SAKHighlightSettings(QTextDocument* parent)
     :QSyntaxHighlighter (parent)
 {
     /// 该功能请参考Qt语法高亮显示示例
     setHighlighterKeyWord(QStringList());
 }
 
-void HighlightSettings::setHighlighterKeyWord(QStringList keyWords)
+void SAKHighlightSettings::setHighlighterKeyWord(QStringList keyWords)
 {
     highlightingRules.clear();
 
@@ -39,7 +39,7 @@ void HighlightSettings::setHighlighterKeyWord(QStringList keyWords)
     commentEndExpression = QRegularExpression("\\*/");
 }
 
-void HighlightSettings::highlightBlock(const QString &text)
+void SAKHighlightSettings::highlightBlock(const QString &text)
 {
     foreach (const HighlightingRule &rule, highlightingRules) {
         QRegularExpressionMatchIterator matchIterator = rule.pattern.globalMatch(text);

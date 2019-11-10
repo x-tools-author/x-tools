@@ -9,14 +9,14 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef HIGHLIGHTSETTINGS_HH
-#define HIGHLIGHTSETTINGS_HH
+#ifndef SAKHIGHLIGHTSETTINGS_HH
+#define SAKHIGHLIGHTSETTINGS_HH
 
 #include <QTextDocument>
 #include <QSyntaxHighlighter>
 #include <QRegularExpression>
 
-class HighlightSettings : public QSyntaxHighlighter
+class SAKHighlightSettings : public QSyntaxHighlighter
 {
     Q_OBJECT
 public:
@@ -24,7 +24,7 @@ public:
      * @brief SAKHighlighter    -- 构造函数，nothing to say.
      * @param parent            -- 父控件，用于释放资源
      */
-    HighlightSettings(QTextDocument* parent = nullptr);
+    SAKHighlightSettings(QTextDocument* parent = nullptr);
 
     /**
      * @brief setHighlighterKeyWord -- 设置高亮显示关键字

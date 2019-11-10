@@ -29,18 +29,18 @@
 #include <QTextBrowser>
 
 #include "SAKCRCInterface.hh"
-#include "ReadWriteSettingsWidget.hh"
-#include "AutoResponseSettingWidget.hh"
+#include "SAKReadWriteSettingsWidget.hh"
+#include "SAKAutoResponseSettingsWidget.hh"
 
 class SAKDataFactory;
 class SAKChartManager;
 class SAKCRCInterface;
-class SAKOtherSettings;
+class SAKOtherSettingsManager;
 class SAKStatisticsManager;
 class TransmissionSettings;
 class DebugPageInputManager;
 class DebugPageOutputManager;
-class HighlightSettingsWidget;
+class SAKHighlightSettingsWidget;
 
 namespace Ui {
     class SAKDebugPage;
@@ -209,11 +209,6 @@ private slots:
     void on_showRxDataCheckBox_clicked();
     void on_showTxDataCheckBox_clicked();
 
-    // 图表
-protected:
-    QPushButton *throughputPushButton;
-    QPushButton *moreChartPushButton;
-
     // 数据统计
 protected:
     bool        receivedFlag                    = false;    // 接受状态指示灯
@@ -228,9 +223,19 @@ protected:
     QPushButton *resetTxCountPushButton;
     QPushButton *resetRxCountPushButton;
 
+    // 其他设置
+protected:
+    QPushButton *transmissionSettingPushButton;
+    QPushButton *readWriteSettingPushButton;
+    QPushButton *autoResponseSettingPushButton;
+    QPushButton *chartSettingPushButton;
+    QPushButton *timingSendingPushButton;
+    QPushButton *highlightSettingPushButton;
+    QPushButton *moreSettingsPushButton;
+
 private:
     SAKChartManager         *chartManager;
-    SAKOtherSettings        *otherSettings;
+    SAKOtherSettingsManager        *otherSettings;
     SAKStatisticsManager    *statisticsManager;
     DebugPageOutputManager  *outputManager;
     DebugPageInputManager   *debugPageInputManager;
@@ -247,7 +252,7 @@ private:
     void initUiPointer();    
 public:
     friend class SAKChartManager;
-    friend class SAKOtherSettings;
+    friend class SAKOtherSettingsManager;
     friend class SAKStatisticsManager;
     friend class DebugPageInputManager;
     friend class DebugPageOutputManager;
