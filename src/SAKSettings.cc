@@ -29,9 +29,22 @@ SAKSettings::SAKSettings(const QString &fileName, Format format, QObject *parent
     :QSettings(fileName, format, parent)
 {
     _instance = this;
+
+    settingStringEnableAutoUpdate = QString("Universal/enableAutoCheckForUpdate");
 }
 
 SAKSettings::~SAKSettings()
 {
     _instance = nullptr;
+}
+
+bool SAKSettings::enableAutoCheckForUpdate()
+{
+    bool enable = value(settingStringEnableAutoUpdate).toBool();
+    return enable;
+}
+
+void SAKSettings::setEnableAutoCheckForUpdate(bool enable)
+{
+    setValue(settingStringEnableAutoUpdate, enable);
 }

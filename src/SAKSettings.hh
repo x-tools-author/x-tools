@@ -23,6 +23,11 @@ private:
     static SAKSettings* _instance;
     SAKSettings(const QString &fileName, QSettings::Format format, QObject *parent = nullptr);
     ~SAKSettings();
+
+public:
+    QString settingStringEnableAutoUpdate;
+    bool enableAutoCheckForUpdate();
+    void setEnableAutoCheckForUpdate(bool enable);
 };
 
 #endif
