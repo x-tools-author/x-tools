@@ -9,7 +9,6 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#include <QDebug>
 #include <QPixmap>
 #include <QDateTime>
 #include <QSettings>
@@ -100,13 +99,6 @@ void SAKDebugPage::outputMessage(QString msg, bool isInfo)
     msg.prepend(time);
     infoLabel->setText(msg);
     clearInfoTimer.start();
-
-    QLoggingCategory category(logCategory);
-    if (isInfo){
-        qCInfo(category) << temp;
-    }else{
-        qCWarning(category) << temp;
-    }
 }
 
 struct SAKDebugPage::ReadWriteParameters SAKDebugPage::readWriteParameters()

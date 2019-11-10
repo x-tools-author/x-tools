@@ -129,11 +129,6 @@ private:
     QTimer clearInfoTimer;
     void cleanInfo();
 
-private:
-    /// 日志类型
-    const char *logCategory = "SAKDebugPage";
-
-
     // ------------------------------------------------------------------------
     // 设备设置
 protected:    
