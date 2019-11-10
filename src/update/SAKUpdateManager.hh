@@ -15,10 +15,11 @@
 #include <QTimer>
 #include <QLabel>
 #include <QDialog>
-#include <QListView>
 #include <QGroupBox>
+#include <QCheckBox>
 #include <QPushButton>
 #include <QProgressBar>
+#include <QTextBrowser>
 #include <QNetworkReply>
 #include <QNetworkAccessManager>
 
@@ -34,12 +35,14 @@ public:
     ~SAKUpdateManager();
 private:
     Ui::SAKUpdateManager *ui;
-    QLabel *currentVersionabel;
+    QLabel *currentVersionLabel;
+    QLabel *newVersionLabel;
     QLabel *updateProgressLabel;
     QProgressBar *updateProgressBar;
     QLabel *noNewVersionTipLabel;
     QGroupBox *newVersionCommentsGroupBox;
-    QListView *newVersionCommentsListView;
+    QTextBrowser *newVersionCommentsTextBrowser;
+    QCheckBox *autoCheckForUpdateCheckBox;
     QPushButton *visitWebPushButton;
     QPushButton *backgroundPushButton;
     QPushButton *downloadUpdatePushButton;
@@ -48,6 +51,7 @@ private:
     QLabel *infoLabel;
 
 private slots:
+    void on_autoCheckForUpdateCheckBox_clicked();
     void on_visitWebPushButton_clicked();
     void on_backgroundPushButton_clicked();
     void on_downloadUpdatePushButton_clicked();
@@ -55,8 +59,17 @@ private slots:
     void on_checkForUpdatePushButton_clicked();
 
 private:
+    struct UpdateInfo{
+        bool isValid;                   // 是否可用
+        QString errorString;            // 错误信息
+
+        QString htmlUrl;                // 发布页面地址
+        QString name;                   // 最新版本号
+        QStringList browserDownloadUrl; // 下载链接
+        QString body;                   // 发布描述
+    }updateInfo;
+
     QTimer clearInfoTimer;
-    QUrl checkForUpdateUrl;
     QNetworkAccessManager networkAccessManager;
     QNetworkReply *networkReply;
 
@@ -64,6 +77,10 @@ private:
     void outputInfo(QString info, bool isError = false);
     void clearInfo();
     void checkForUpdateFinished();
+
+    UpdateInfo extractUpdateInfo(QByteArray jsonObjectData);
+    QStringList extractBrowserDownloadUrl(QJsonArray jsonArray);
+    bool isNewVersion(QString remoteVersion);
 };
 
 #endif
