@@ -1,0 +1,78 @@
+{
+    "url": "https://api.github.com/repos/wuuhii/QtSwissArmyKnife/releases/21003231",
+    "assets_url": "https://api.github.com/repos/wuuhii/QtSwissArmyKnife/releases/21003231/assets",
+    "upload_url": "https://uploads.github.com/repos/wuuhii/QtSwissArmyKnife/releases/21003231/assets{?name,label}",
+    "html_url": "https://github.com/wuuhii/QtSwissArmyKnife/releases/tag/v2.1.0",
+    "id": 21003231,
+    "node_id": "MDc6UmVsZWFzZTIxMDAzMjMx",
+    "tag_name": "v2.1.0",
+    "target_commitish": "master",
+    "name": "v2.1.0",
+    "draft": false,
+    "author": 
+    {
+        "login": "wuuhii",
+        "id": 43397056,
+        "node_id": "MDQ6VXNlcjQzMzk3MDU2",
+        "avatar_url": "https://avatars0.githubusercontent.com/u/43397056?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/wuuhii",
+        "html_url": "https://github.com/wuuhii",
+        "followers_url": "https://api.github.com/users/wuuhii/followers",
+        "following_url": "https://api.github.com/users/wuuhii/following{/other_user}",
+        "gists_url": "https://api.github.com/users/wuuhii/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/wuuhii/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/wuuhii/subscriptions",
+        "organizations_url": "https://api.github.com/users/wuuhii/orgs",
+        "repos_url": "https://api.github.com/users/wuuhii/repos",
+        "events_url": "https://api.github.com/users/wuuhii/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/wuuhii/received_events",
+        "type": "User",
+        "site_admin": false
+    },
+    "prerelease": false,
+    "created_at": "2019-10-27T05:32:21Z",
+    "published_at": "2019-10-27T05:48:10Z",
+    "assets": 
+    [
+        {
+            "url": "https://api.github.com/repos/wuuhii/QtSwissArmyKnife/releases/assets/15757582",
+            "id": 15757582,
+            "node_id": "MDEyOlJlbGVhc2VBc3NldDE1NzU3NTgy",
+            "name": "QtSwissArmyKnife2.1.0.exe",
+            "label": null,
+            "uploader": 
+            {
+                "login": "wuuhii",
+                "id": 43397056,
+                "node_id": "MDQ6VXNlcjQzMzk3MDU2",
+                "avatar_url": "https://avatars0.githubusercontent.com/u/43397056?v=4",
+                "gravatar_id": "",
+                "url": "https://api.github.com/users/wuuhii",
+                "html_url": "https://github.com/wuuhii",
+                "followers_url": "https://api.github.com/users/wuuhii/followers",
+                "following_url": "https://api.github.com/users/wuuhii/following{/other_user}",
+                "gists_url": "https://api.github.com/users/wuuhii/gists{/gist_id}",
+                "starred_url": "https://api.github.com/users/wuuhii/starred{/owner}{/repo}",
+                "subscriptions_url": "https://api.github.com/users/wuuhii/subscriptions",
+                "organizations_url": "https://api.github.com/users/wuuhii/orgs",
+                "repos_url": "https://api.github.com/users/wuuhii/repos",
+                "events_url": "https://api.github.com/users/wuuhii/events{/privacy}",
+                "received_events_url": "https://api.github.com/users/wuuhii/received_events",
+                "type": "User",
+                "site_admin": false
+            },
+            "content_type": "application/x-msdownload",
+            "state": "uploaded",
+            "size": 13730816,
+            "download_count": 35,
+            "created_at": "2019-10-27T05:47:39Z",
+            "updated_at": "2019-10-27T05:47:49Z",
+            "browser_download_url": "https://github.com/wuuhii/QtSwissArmyKnife/releases/download/v2.1.0/QtSwissArmyKnife2.1.0.exe"
+        }
+    ],
+    "tarball_url": "https://api.github.com/repos/wuuhii/QtSwissArmyKnife/tarball/v2.1.0",
+    "zipball_url": "https://api.github.com/repos/wuuhii/QtSwissArmyKnife/zipball/v2.1.0",
+    "body": "新特性\r\n    01. 添加HID调试功能\r\n    02. 部分设置实现记忆保存，重开软件后会自动加载上次设置\r\n    03. 帮助菜单添加项目源码链接，可直接点击访问   \r\n    04. 重构调试页面ui以适应低分辨率设备\r\n    05. 其他交互上的一些修改\r\n    bug修复\r\n    01. udp数据转发造成程序崩溃\r\n    02. tcp数据转发造成程序崩溃\r\n    03. 串口数据转发造成程序崩溃\r\n    说明\r\n    01. 从该版本起，为避免某些杀毒软件的查杀，不再对发布程序进行压缩处理"
+  }
+  
