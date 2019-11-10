@@ -136,10 +136,10 @@ void SAKGlobal::initDataBitsComboBox(QComboBox *comboBox)
 {
     if (comboBox){
         comboBox->clear();
-        comboBox->addItem(tr("8位"), QVariant::fromValue(QSerialPort::Data8));
-        comboBox->addItem(tr("7位"), QVariant::fromValue(QSerialPort::Data7));
-        comboBox->addItem(tr("6位"), QVariant::fromValue(QSerialPort::Data6));
-        comboBox->addItem(tr("5位"), QVariant::fromValue(QSerialPort::Data5));
+        comboBox->addItem("8", QVariant::fromValue(QSerialPort::Data8));
+        comboBox->addItem("7", QVariant::fromValue(QSerialPort::Data7));
+        comboBox->addItem("6", QVariant::fromValue(QSerialPort::Data6));
+        comboBox->addItem("5", QVariant::fromValue(QSerialPort::Data5));
     }
 }
 #endif
@@ -149,11 +149,11 @@ void SAKGlobal::initStopBitsComboBox(QComboBox *comboBox)
 {
     if (comboBox){
         comboBox->clear();
-        comboBox->addItem(tr("1位"), QVariant::fromValue(QSerialPort::OneStop));
+        comboBox->addItem("1", QVariant::fromValue(QSerialPort::OneStop));
 #ifdef Q_OS_WINDOWS
-        comboBox->addItem(tr("1.5位"), QVariant::fromValue(QSerialPort::OneAndHalfStop));
+        comboBox->addItem("1.5", QVariant::fromValue(QSerialPort::OneAndHalfStop));
 #endif
-        comboBox->addItem(tr("2位"), QVariant::fromValue(QSerialPort::TwoStop));
+        comboBox->addItem("2", QVariant::fromValue(QSerialPort::TwoStop));
     }
 }
 #endif
