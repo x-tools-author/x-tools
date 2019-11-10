@@ -249,7 +249,7 @@ void SAKMainWindow::initLanguageMenu()
 
     QString language = SAKSettings::instance()->value(reinterpret_cast<SAKApplication*>(qApp)->settingStringLanguage()).toString();
 
-    QFile file(":/translations/SAK/Translations.json");
+    QFile file(":/translations/sak/Translations.json");
     file.open(QFile::ReadOnly);
     QByteArray jsonData = file.readAll();
 
@@ -282,7 +282,7 @@ void SAKMainWindow::initLanguageMenu()
                 actionGroup->addAction(action);
                 action->setObjectName(var.language);
                 action->setData(QVariant::fromValue<QString>(var.name));
-                action->setIcon(QIcon(QString(":/translations/SAK/%1").arg(var.locale).toLatin1()));
+                action->setIcon(QIcon(QString(":/translations/sak/%1").arg(var.locale).toLatin1()));
                 connect(action, &QAction::triggered, this, &SAKMainWindow::installLanguage);
 
                 if (var.language == language.split('-').first()){
@@ -339,9 +339,8 @@ void SAKMainWindow::installLanguage()
     QString name = action->data().toString();
     SAKSettings::instance()->setValue(reinterpret_cast<SAKApplication*>(qApp)->settingStringLanguage(), language+"-"+name);
 
-    QMessageBox::information(this, QString("Restart to Effectived"),
-                             QString("The language of the application has been changed, "
-                                "please to restart the application to effectived"));
+    QMessageBox::information(this, tr("重启生效"),
+                             tr("软件语言包已更改，重启软件生效！"));
 }
 
 void SAKMainWindow::addRemovablePage()
