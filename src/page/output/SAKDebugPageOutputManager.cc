@@ -10,16 +10,16 @@
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
 #include "SAKGlobal.hh"
-#include "OutputDataFactory.hh"
-#include "DebugPageOutputManager.hh"
-#include "SaveOutputDataSettings.hh"
+#include "SAKOutputDataFactory.hh"
+#include "SAKDebugPageOutputManager.hh"
+#include "SAKSaveOutputDataSettings.hh"
 
 #include <QFile>
 #include <QDateTime>
 #include <QTextStream>
 #include <QFileDialog>
 
-DebugPageOutputManager::DebugPageOutputManager(SAKDebugPage *debugPage, QObject *parent)
+SAKDebugPageOutputManager::SAKDebugPageOutputManager(SAKDebugPage *debugPage, QObject *parent)
     :QObject (parent)
     ,debugPage (debugPage)
     ,rxFlagCount (4)
@@ -43,10 +43,10 @@ DebugPageOutputManager::DebugPageOutputManager(SAKDebugPage *debugPage, QObject 
     saveOutputPushButton            = debugPage->saveOutputPushButton;
     outputTextBroswer               = debugPage->outputTextBroswer;
 
-    connect(saveOutputFileToFilecheckBox,   &QCheckBox::clicked, this, &DebugPageOutputManager::saveOutputDataToFile);
-    connect(autoWrapCheckBox,               &QCheckBox::clicked, this, &DebugPageOutputManager::setLineWrapMode);
-    connect(saveOutputPushButton,           &QCheckBox::clicked, this, &DebugPageOutputManager::saveOutputTextToFile);
-    connect(outputFilePathPushButton,       &QCheckBox::clicked, this, &DebugPageOutputManager::saveOutputDataSettings);
+    connect(saveOutputFileToFilecheckBox,   &QCheckBox::clicked, this, &SAKDebugPageOutputManager::saveOutputDataToFile);
+    connect(autoWrapCheckBox,               &QCheckBox::clicked, this, &SAKDebugPageOutputManager::setLineWrapMode);
+    connect(saveOutputPushButton,           &QCheckBox::clicked, this, &SAKDebugPageOutputManager::saveOutputTextToFile);
+    connect(outputFilePathPushButton,       &QCheckBox::clicked, this, &SAKDebugPageOutputManager::saveOutputDataSettings);
 
 
     // 初始化数据格式预选框
@@ -55,35 +55,35 @@ DebugPageOutputManager::DebugPageOutputManager(SAKDebugPage *debugPage, QObject 
     /*
      * 处理已接收或者是已发送的数据
      */
-    connect(debugPage, &SAKDebugPage::bytesRead, this, &DebugPageOutputManager::bytesRead);
-    connect(debugPage, &SAKDebugPage::bytesWritten, this, &DebugPageOutputManager::bytesWritten);
+    connect(debugPage, &SAKDebugPage::bytesRead, this, &SAKDebugPageOutputManager::bytesRead);
+    connect(debugPage, &SAKDebugPage::bytesWritten, this, &SAKDebugPageOutputManager::bytesWritten);
 
     /*
      * 数据先发送到 dataFactory 中进行处理，处理完毕后再输出至界面
      */
-    dataFactory = new OutputDataFactory;
-    connect(this, &DebugPageOutputManager::cookData, dataFactory, &OutputDataFactory::cookData);
-    connect(dataFactory, &OutputDataFactory::dataCooked, this, &DebugPageOutputManager::outputData);
+    dataFactory = new SAKOutputDataFactory;
+    connect(this, &SAKDebugPageOutputManager::cookData, dataFactory, &SAKOutputDataFactory::cookData);
+    connect(dataFactory, &SAKOutputDataFactory::dataCooked, this, &SAKDebugPageOutputManager::outputData);
     dataFactory->start();
 
-    outputSettings = new SaveOutputDataSettings;
+    outputSettings = new SAKSaveOutputDataSettings;
 
     updateRxFlagTimer.setInterval(200);
     updateTxFlagTimer.setInterval(200);
-    connect(&updateRxFlagTimer, &QTimer::timeout, this, &DebugPageOutputManager::updateRxFlag);
-    connect(&updateTxFlagTimer, &QTimer::timeout, this, &DebugPageOutputManager::updateTxFlag);
+    connect(&updateRxFlagTimer, &QTimer::timeout, this, &SAKDebugPageOutputManager::updateRxFlag);
+    connect(&updateTxFlagTimer, &QTimer::timeout, this, &SAKDebugPageOutputManager::updateTxFlag);
 
     outputTextBroswer->document()->setMaximumBlockCount(1000);
 }
 
-DebugPageOutputManager::~DebugPageOutputManager()
+SAKDebugPageOutputManager::~SAKDebugPageOutputManager()
 {
     dataFactory->terminate();
     delete dataFactory;
     delete outputSettings;
 }
 
-void DebugPageOutputManager::updateRxFlag()
+void SAKDebugPageOutputManager::updateRxFlag()
 {
     updateRxFlagTimer.stop();
     rxLabel->setText(QString("C%1").arg(QString(""), rxFlagCount, '<'));
@@ -94,7 +94,7 @@ void DebugPageOutputManager::updateRxFlag()
     }
 }
 
-void DebugPageOutputManager::updateTxFlag()
+void SAKDebugPageOutputManager::updateTxFlag()
 {
     updateTxFlagTimer.stop();
     txLabel->setText(QString("C%1").arg(QString(""), txFlagCount, '>'));
@@ -105,7 +105,7 @@ void DebugPageOutputManager::updateTxFlag()
     }
 }
 
-void DebugPageOutputManager::setLineWrapMode()
+void SAKDebugPageOutputManager::setLineWrapMode()
 {
     if (autoWrapCheckBox->isChecked()){
         outputTextBroswer->setLineWrapMode(QTextEdit::WidgetWidth);
@@ -114,7 +114,7 @@ void DebugPageOutputManager::setLineWrapMode()
     }
 }
 
-void DebugPageOutputManager::saveOutputTextToFile()
+void SAKDebugPageOutputManager::saveOutputTextToFile()
 {
     QString outFileName = QFileDialog::getSaveFileName(nullptr,
                                                        tr("保存文件"),
@@ -137,21 +137,21 @@ void DebugPageOutputManager::saveOutputTextToFile()
     }
 }
 
-void DebugPageOutputManager::saveOutputDataSettings()
+void SAKDebugPageOutputManager::saveOutputDataSettings()
 {
     outputSettings->show();
 }
 
-void DebugPageOutputManager::saveOutputDataToFile()
+void SAKDebugPageOutputManager::saveOutputDataToFile()
 {
     if (saveOutputFileToFilecheckBox->isChecked()){
-        connect(debugPage, &SAKDebugPage::bytesRead, outputSettings, &SaveOutputDataSettings::inputData);
+        connect(debugPage, &SAKDebugPage::bytesRead, outputSettings, &SAKSaveOutputDataSettings::inputData);
     }else{
-        disconnect(debugPage, &SAKDebugPage::bytesRead, outputSettings, &SaveOutputDataSettings::inputData);
+        disconnect(debugPage, &SAKDebugPage::bytesRead, outputSettings, &SAKSaveOutputDataSettings::inputData);
     }
 }
 
-void DebugPageOutputManager::bytesRead(QByteArray data)
+void SAKDebugPageOutputManager::bytesRead(QByteArray data)
 {
     if (!updateRxFlagTimer.isActive()){
         updateRxFlagTimer.start();
@@ -165,7 +165,7 @@ void DebugPageOutputManager::bytesRead(QByteArray data)
     emit cookData(data, parameters);
 }
 
-void DebugPageOutputManager::bytesWritten(QByteArray data)
+void SAKDebugPageOutputManager::bytesWritten(QByteArray data)
 {
     if (!updateTxFlagTimer.isActive()){
         updateTxFlagTimer.start();
@@ -179,12 +179,12 @@ void DebugPageOutputManager::bytesWritten(QByteArray data)
     emit cookData(data, parameters);
 }
 
-void DebugPageOutputManager::outputData(QString data)
+void SAKDebugPageOutputManager::outputData(QString data)
 {
     outputTextBroswer->append(data);
 }
 
-DebugPageOutputManager::OutputParameters DebugPageOutputManager::outputDataParameters(bool isReceivedData)
+SAKDebugPageOutputManager::OutputParameters SAKDebugPageOutputManager::outputDataParameters(bool isReceivedData)
 {
     OutputParameters parameters;
     parameters.showDate = showDateCheckBox->isChecked();

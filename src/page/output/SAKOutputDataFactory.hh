@@ -9,24 +9,24 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef OUTPUTDATAFACTORY_HH
-#define OUTPUTDATAFACTORY_HH
+#ifndef SAKOUTPUTDATAFACTORY_HH
+#define SAKOUTPUTDATAFACTORY_HH
 
 #include <QThread>
-#include "DebugPageOutputManager.hh"
+#include "SAKDebugPageOutputManager.hh"
 
-class OutputDataFactory:public QThread
+class SAKOutputDataFactory:public QThread
 {
     Q_OBJECT
 public:
-    OutputDataFactory(QObject *parent = nullptr);
+    SAKOutputDataFactory(QObject *parent = nullptr);
 
     /**
      * @brief cookData 将数据按照指定参数转变为字符串输出
      * @param rawData 原始数据（已接受数据或者已发送数据）
      * @param parameters 输出参数
      */
-    void cookData(QByteArray rawData, DebugPageOutputManager::OutputParameters parameters);
+    void cookData(QByteArray rawData, SAKDebugPageOutputManager::OutputParameters parameters);
 private:
     void run() final;
 signals:

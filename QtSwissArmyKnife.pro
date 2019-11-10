@@ -117,10 +117,10 @@ HEADERS +=  \
     src/page/other/transmission/SAKTransmissionPage.hh \
     src/page/other/transmission/SAKTransmissionSettings.hh \
     src/page/other/transmission/SAKUdpTransmissionItemWidget.hh \
-    src/page/output/DebugPageOutputManager.hh \
-    src/page/output/OutputDataFactory.hh \
-    src/page/output/save/SaveOutputDataSettings.hh \
-    src/page/output/save/SaveOutputDataThread.hh \
+    src/page/output/SAKDebugPageOutputManager.hh \
+    src/page/output/SAKOutputDataFactory.hh \
+    src/page/output/save/SAKSaveOutputDataSettings.hh \
+    src/page/output/save/SAKSaveOutputDataThread.hh \
     src/page/statistics/SAKStatisticsManager.hh \
     src/page/visualization/SAKDataVisualizationManager.hh \
     src/page/visualization/throughput/SAKThroughputWidget.hh \
@@ -175,10 +175,10 @@ SOURCES +=  \
     src/page/other/transmission/SAKTransmissionPage.cc \
     src/page/other/transmission/SAKTransmissionSettings.cc \
     src/page/other/transmission/SAKUdpTransmissionItemWidget.cc \
-    src/page/output/DebugPageOutputManager.cc \
-    src/page/output/OutputDataFactory.cc \
-    src/page/output/save/SaveOutputDataSettings.cc \
-    src/page/output/save/SaveOutputDataThread.cc \
+    src/page/output/SAKDebugPageOutputManager.cc \
+    src/page/output/SAKOutputDataFactory.cc \
+    src/page/output/save/SAKSaveOutputDataSettings.cc \
+    src/page/output/save/SAKSaveOutputDataThread.cc \
     src/page/statistics/SAKStatisticsManager.cc \
     src/page/visualization/SAKDataVisualizationManager.cc \
     src/page/visualization/throughput/SAKThroughputWidget.cc \
@@ -217,7 +217,7 @@ FORMS +=  \
     src/page/other/transmission/SAKTransmissionPage.ui \
     src/page/other/transmission/SAKTransmissionSettings.ui \
     src/page/other/transmission/SAKUdpTransmissionItemWidget.ui \
-    src/page/output/save/SaveOutputDataSettings.ui \
+    src/page/output/save/SAKSaveOutputDataSettings.ui \
     src/page/visualization/SAKDataVisualizationManager.ui \
     src/tcpclient/SAKTcpClientDeviceController.ui \
     src/tcpserver/SAKTcpServerDeviceController.ui \

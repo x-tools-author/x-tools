@@ -29,7 +29,7 @@
 #include "SAKOtherSettingsManager.hh"
 #include "SAKStatisticsManager.hh"
 #include "SAKDebugPageInputManager.hh"
-#include "DebugPageOutputManager.hh"
+#include "SAKDebugPageOutputManager.hh"
 #include "SAKHighlightSettingsWidget.hh"
 
 #include "ui_SAKDebugPage.h"
@@ -48,7 +48,7 @@ SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
     initUiPointer();
 
     dataVisualizationManager= new SAKDataVisualizationManager(this);
-    outputManager           = new DebugPageOutputManager(this, this);
+    outputManager           = new SAKDebugPageOutputManager(this, this);
     otherSettings           = new SAKOtherSettingsManager(this, this);
     statisticsManager       = new SAKStatisticsManager(this, this);
     debugPageInputManager   = new SAKDebugPageInputManager(this, this);

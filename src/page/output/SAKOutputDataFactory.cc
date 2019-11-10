@@ -11,21 +11,21 @@
  */
 #include <QApplication>
 #include "SAKGlobal.hh"
-#include "OutputDataFactory.hh"
+#include "SAKOutputDataFactory.hh"
 
-OutputDataFactory::OutputDataFactory(QObject *parent)
+SAKOutputDataFactory::SAKOutputDataFactory(QObject *parent)
     :QThread (parent)
 {
     moveToThread(this);
 }
 
-void OutputDataFactory::run()
+void SAKOutputDataFactory::run()
 {
-    connect(qApp, &QApplication::lastWindowClosed, this, &OutputDataFactory::terminate);
+    connect(qApp, &QApplication::lastWindowClosed, this, &SAKOutputDataFactory::terminate);
     exec();
 }
 
-void OutputDataFactory::cookData(QByteArray rawData, DebugPageOutputManager::OutputParameters parameters)
+void SAKOutputDataFactory::cookData(QByteArray rawData, SAKDebugPageOutputManager::OutputParameters parameters)
 {
     QString str;
 

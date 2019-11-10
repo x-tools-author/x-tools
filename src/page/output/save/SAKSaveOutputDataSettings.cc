@@ -9,10 +9,6 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#include "SaveOutputDataThread.hh"
-#include "SaveOutputDataSettings.hh"
-#include "ui_SaveOutputDataSettings.h"
-
 #include <QDebug>
 #include <QFile>
 #include <QDialog>
@@ -20,9 +16,13 @@
 #include <QFileDialog>
 #include <QStandardPaths>
 
-SaveOutputDataSettings::SaveOutputDataSettings(QWidget *parent)
+#include "SAKSaveOutputDataThread.hh"
+#include "SAKSaveOutputDataSettings.hh"
+#include "ui_SAKSaveOutputDataSettings.h"
+
+SAKSaveOutputDataSettings::SAKSaveOutputDataSettings(QWidget *parent)
     :QDialog (parent)
-    ,ui (new Ui::SaveOutputDataSettings)
+    ,ui (new Ui::SAKSaveOutputDataSettings)
 {
     ui->setupUi(this);
     setModal(true);
@@ -39,19 +39,19 @@ SaveOutputDataSettings::SaveOutputDataSettings(QWidget *parent)
     defaultPath = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
     pathLineEdit->setText(defaultPath.append("/default.txt"));
 
-    saveOutputDataThread = new SaveOutputDataThread;
-    connect(this, &SaveOutputDataSettings::writeDataToFile, saveOutputDataThread, &SaveOutputDataThread::writeDataToFile);
+    saveOutputDataThread = new SAKSaveOutputDataThread;
+    connect(this, &SAKSaveOutputDataSettings::writeDataToFile, saveOutputDataThread, &SAKSaveOutputDataThread::writeDataToFile);
     saveOutputDataThread->start();
 }
 
-SaveOutputDataSettings::~SaveOutputDataSettings()
+SAKSaveOutputDataSettings::~SAKSaveOutputDataSettings()
 {
     delete ui;
     saveOutputDataThread->terminate();
     delete saveOutputDataThread;
 }
 
-void SaveOutputDataSettings::inputData(QByteArray data)
+void SAKSaveOutputDataSettings::inputData(QByteArray data)
 {
     parameters.fileName = pathLineEdit->text().trimmed();
     if (binRadioButton->isChecked()){
@@ -65,7 +65,7 @@ void SaveOutputDataSettings::inputData(QByteArray data)
     emit writeDataToFile(data, parameters);
 }
 
-void SaveOutputDataSettings::on_setFilePushButton_clicked()
+void SAKSaveOutputDataSettings::on_setFilePushButton_clicked()
 {
     QString datetime = QDateTime::currentDateTime().toString("yyyyMMddhhmmss");
     QString fileName;
@@ -82,7 +82,7 @@ void SaveOutputDataSettings::on_setFilePushButton_clicked()
     }
 }
 
-void SaveOutputDataSettings::on_clearFilePushButton_clicked()
+void SAKSaveOutputDataSettings::on_clearFilePushButton_clicked()
 {
     QString fileName = pathLineEdit->text();
     if (fileName.isEmpty()){

@@ -39,7 +39,7 @@ class SAKOtherSettingsManager;
 class SAKStatisticsManager;
 class SAKTransmissionSettings;
 class SAKDebugPageInputManager;
-class DebugPageOutputManager;
+class SAKDebugPageOutputManager;
 class SAKHighlightSettingsWidget;
 
 namespace Ui {
@@ -242,7 +242,7 @@ private:
     SAKDataVisualizationManager *dataVisualizationManager;
     SAKOtherSettingsManager *otherSettings;
     SAKStatisticsManager    *statisticsManager;
-    DebugPageOutputManager  *outputManager;
+    SAKDebugPageOutputManager  *outputManager;
     SAKDebugPageInputManager   *debugPageInputManager;
 
 private:
@@ -260,7 +260,7 @@ public:
     friend class SAKOtherSettingsManager;
     friend class SAKStatisticsManager;
     friend class SAKDebugPageInputManager;
-    friend class DebugPageOutputManager;
+    friend class SAKDebugPageOutputManager;
 
 private:
     bool isInitializing;

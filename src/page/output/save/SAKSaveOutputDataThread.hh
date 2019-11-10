@@ -9,19 +9,20 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef SAVEOUTPUTDATATHREAD_HH
-#define SAVEOUTPUTDATATHREAD_HH
+#ifndef SAKSAVEOUTPUTDATATHREAD_HH
+#define SAKSAVEOUTPUTDATATHREAD_HH
 
-#include "SaveOutputDataSettings.hh"
 #include <QThread>
 
-class SaveOutputDataThread:public QThread
+#include "SAKSaveOutputDataSettings.hh"
+
+class SAKSaveOutputDataThread:public QThread
 {
     Q_OBJECT
 public:
-    SaveOutputDataThread(QObject *parent = nullptr);
+    SAKSaveOutputDataThread(QObject *parent = nullptr);
 
-    void writeDataToFile(QByteArray data, SaveOutputDataSettings::SaveOutputDataParamters parameters);
+    void writeDataToFile(QByteArray data, SAKSaveOutputDataSettings::SaveOutputDataParamters parameters);
 private:
     void run() final;
 };

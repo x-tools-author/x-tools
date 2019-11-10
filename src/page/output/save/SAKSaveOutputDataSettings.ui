@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SaveOutputDataSettings</class>
- <widget class="QDialog" name="SaveOutputDataSettings">
+ <class>SAKSaveOutputDataSettings</class>
+ <widget class="QDialog" name="SAKSaveOutputDataSettings">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -112,7 +112,7 @@
   <connection>
    <sender>closePushButton</sender>
    <signal>clicked()</signal>
-   <receiver>SaveOutputDataSettings</receiver>
+   <receiver>SAKSaveOutputDataSettings</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">

@@ -9,8 +9,8 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef SAVEOUTPUTDATASETTINGS_HH
-#define SAVEOUTPUTDATASETTINGS_HH
+#ifndef SAKSAVEOUTPUTDATASETTINGS_HH
+#define SAKSAVEOUTPUTDATASETTINGS_HH
 
 #include <QDialog>
 #include <QLineEdit>
@@ -18,16 +18,16 @@
 #include <QRadioButton>
 
 namespace Ui {
-    class SaveOutputDataSettings;
+    class SAKSaveOutputDataSettings;
 }
 
-class SaveOutputDataThread;
-class SaveOutputDataSettings:public QDialog
+class SAKSaveOutputDataThread;
+class SAKSaveOutputDataSettings:public QDialog
 {
     Q_OBJECT
 public:
-    SaveOutputDataSettings(QWidget *parent = nullptr);
-    ~SaveOutputDataSettings();
+    SAKSaveOutputDataSettings(QWidget *parent = nullptr);
+    ~SAKSaveOutputDataSettings();
 
     /**
      * @brief inputData 需要保存的数据由此输入
@@ -45,10 +45,10 @@ public:
     }parameters;
 private:
     QString defaultPath;
-    SaveOutputDataThread *saveOutputDataThread;
+    SAKSaveOutputDataThread *saveOutputDataThread;
 
 private:
-    Ui::SaveOutputDataSettings *ui;
+    Ui::SAKSaveOutputDataSettings *ui;
 
     QLineEdit    *pathLineEdit;
     QPushButton  *setFilePushButton;
@@ -63,5 +63,5 @@ private slots:
 signals:
     void writeDataToFile(QByteArray data, SaveOutputDataParamters parameters);
 };
-Q_DECLARE_METATYPE(SaveOutputDataSettings::SaveOutputDataParamters);
+Q_DECLARE_METATYPE(SAKSaveOutputDataSettings::SaveOutputDataParamters);
 #endif

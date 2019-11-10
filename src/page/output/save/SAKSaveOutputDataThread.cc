@@ -9,19 +9,19 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#include "SaveOutputDataThread.hh"
-#include "SaveOutputDataSettings.hh"
+#include "SAKSaveOutputDataThread.hh"
+#include "SAKSaveOutputDataSettings.hh"
 
 #include <QFile>
 #include <QTextStream>
 
-SaveOutputDataThread::SaveOutputDataThread(QObject *parent)
+SAKSaveOutputDataThread::SAKSaveOutputDataThread(QObject *parent)
     :QThread (parent)
 {
     moveToThread(this);
 }
 
-void SaveOutputDataThread::writeDataToFile(QByteArray data, SaveOutputDataSettings::SaveOutputDataParamters parameters)
+void SAKSaveOutputDataThread::writeDataToFile(QByteArray data, SAKSaveOutputDataSettings::SaveOutputDataParamters parameters)
 {
     if(parameters.fileName.isEmpty()){
         return;
@@ -31,19 +31,19 @@ void SaveOutputDataThread::writeDataToFile(QByteArray data, SaveOutputDataSettin
     int format = parameters.format;
     QTextStream textStream(&file);
     switch (format) {
-    case SaveOutputDataSettings::SaveOutputDataParamters::Bin:
+    case SAKSaveOutputDataSettings::SaveOutputDataParamters::Bin:
         if (file.open(QFile::WriteOnly | QFile::Append)){
             file.write(data);
             file.close();
         }
         break;
-    case SaveOutputDataSettings::SaveOutputDataParamters::Utf8:
+    case SAKSaveOutputDataSettings::SaveOutputDataParamters::Utf8:
         if (file.open(QFile::WriteOnly | QFile::Text | QFile::Append)){
             textStream << QString::fromUtf8(data) << QString("\n");
             file.close();
         }
         break;
-    case SaveOutputDataSettings::SaveOutputDataParamters::Hex:
+    case SAKSaveOutputDataSettings::SaveOutputDataParamters::Hex:
         if (file.open(QFile::WriteOnly | QFile::Text | QFile::Append)){
             textStream << QString(data.toHex(' ')) << QString("\n");
             file.close();
@@ -52,7 +52,7 @@ void SaveOutputDataThread::writeDataToFile(QByteArray data, SaveOutputDataSettin
     }
 }
 
-void SaveOutputDataThread::run()
+void SAKSaveOutputDataThread::run()
 {
     exec();
 }

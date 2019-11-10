@@ -9,22 +9,22 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef DEBUGPAGEOUTPUTMANAGER_HH
-#define DEBUGPAGEOUTPUTMANAGER_HH
+#ifndef SAKDEBUGPAGEOUTPUTMANAGER_HH
+#define SAKDEBUGPAGEOUTPUTMANAGER_HH
 
 #include "SAKDebugPage.hh"
 
 #include <QTimer>
 #include <QObject>
 
-class OutputDataFactory;
-class SaveOutputDataSettings;
-class DebugPageOutputManager:public QObject
+class SAKOutputDataFactory;
+class SAKSaveOutputDataSettings;
+class SAKDebugPageOutputManager:public QObject
 {
     Q_OBJECT
 public:
-    DebugPageOutputManager(SAKDebugPage *debugPage, QObject *parent = nullptr);
-    ~DebugPageOutputManager();
+    SAKDebugPageOutputManager(SAKDebugPage *debugPage, QObject *parent = nullptr);
+    ~SAKDebugPageOutputManager();
 
     /**
      * @brief 输出参数
@@ -38,8 +38,8 @@ public:
     };
 private:
     SAKDebugPage *debugPage;
-    OutputDataFactory *dataFactory;
-    SaveOutputDataSettings *outputSettings;
+    SAKOutputDataFactory *dataFactory;
+    SAKSaveOutputDataSettings *outputSettings;
 
     QTimer updateRxFlagTimer;
     void updateRxFlag();
@@ -81,6 +81,6 @@ private:
 signals:
     void cookData(QByteArray rawData, OutputParameters parameters);
 };
-Q_DECLARE_METATYPE(DebugPageOutputManager::OutputParameters);
+Q_DECLARE_METATYPE(SAKDebugPageOutputManager::OutputParameters);
 
 #endif
