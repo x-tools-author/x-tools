@@ -9,26 +9,26 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef MOREOTHERSETTINGS_HH
-#define MOREOTHERSETTINGS_HH
+#ifndef SAKMOREOTHERSETTINGS_HH
+#define SAKMOREOTHERSETTINGS_HH
 
 #include <QWidget>
 
 namespace Ui {
-    class MoreOtherSettingsWidget;
+    class SAKMoreSettingWidget;
 }
 
 class SAKDebugPage;
 
-class MoreOtherSettingsWidget:public QWidget
+class SAKMoreSettingWidget:public QWidget
 {
     Q_OBJECT
 public:
-    MoreOtherSettingsWidget(SAKDebugPage *debugPage, QWidget *parent = nullptr);
-    ~MoreOtherSettingsWidget();
+    SAKMoreSettingWidget(SAKDebugPage *debugPage, QWidget *parent = nullptr);
+    ~SAKMoreSettingWidget();
 private:
     SAKDebugPage *_debugPage;
-    Ui::MoreOtherSettingsWidget *ui;
+    Ui::SAKMoreSettingWidget *ui;
 };
 
 #endif
