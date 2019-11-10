@@ -38,7 +38,7 @@ class SAKCRCInterface;
 class SAKOtherSettingsManager;
 class SAKStatisticsManager;
 class SAKTransmissionSettings;
-class DebugPageInputManager;
+class SAKDebugPageInputManager;
 class DebugPageOutputManager;
 class SAKHighlightSettingsWidget;
 
@@ -243,7 +243,7 @@ private:
     SAKOtherSettingsManager *otherSettings;
     SAKStatisticsManager    *statisticsManager;
     DebugPageOutputManager  *outputManager;
-    DebugPageInputManager   *debugPageInputManager;
+    SAKDebugPageInputManager   *debugPageInputManager;
 
 private:
     /**
@@ -259,7 +259,7 @@ public:
     friend class SAKDataVisualizationManager;
     friend class SAKOtherSettingsManager;
     friend class SAKStatisticsManager;
-    friend class DebugPageInputManager;
+    friend class SAKDebugPageInputManager;
     friend class DebugPageOutputManager;
 
 private:

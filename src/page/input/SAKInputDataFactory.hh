@@ -9,25 +9,26 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef INPUTDATAFACTORY_HH
-#define INPUTDATAFACTORY_HH
+#ifndef SAKINPUTDATAFACTORY_HH
+#define SAKINPUTDATAFACTORY_HH
 
 #include <QThread>
-#include "DebugPageInputManager.hh"
+
+#include "SAKDebugPageInputManager.hh"
 
 class SAKCRCInterface;
-class InputDataFactory:public QThread
+class SAKInputDataFactory:public QThread
 {
     Q_OBJECT
 public:
-    InputDataFactory(QObject *parent = Q_NULLPTR);
+    SAKInputDataFactory(QObject *parent = Q_NULLPTR);
 
     /**
      * @brief cookData 处理输入数据
      * @param rawData 原数据
      * @param parameters 输入参数
      */
-    void  cookData(QString rawData, DebugPageInputManager::InputParameters parameters);
+    void  cookData(QString rawData, SAKDebugPageInputManager::InputParameters parameters);
 
     /**
      * @brief crcCalculate 计算输入数据的crc
@@ -43,7 +44,7 @@ public:
      * @param parameters 输入参数
      * @return 数据
      */
-    QByteArray rawDataToArray(QString rawData, DebugPageInputManager::InputParameters parameters);
+    QByteArray rawDataToArray(QString rawData, SAKDebugPageInputManager::InputParameters parameters);
 private:
     SAKCRCInterface *crcInterface;
     SAKDebugPage *debugPage;

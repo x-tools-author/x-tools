@@ -9,20 +9,20 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#include "SAKGlobal.hh"
-#include "SAKDebugPage.hh"
-#include "InputDataItem.hh"
-#include "SAKCRCInterface.hh"
-#include "InputDataFactory.hh"
-
-#include "ui_InputDataItem.h"
-
 #include <QMenu>
 #include <QDebug>
 
-InputDataItem::InputDataItem(SAKDebugPage *debugPage, DebugPageInputManager *inputManager, QWidget *parent)
+#include "SAKGlobal.hh"
+#include "SAKDebugPage.hh"
+#include "SAKInputDataItem.hh"
+#include "SAKCRCInterface.hh"
+#include "SAKInputDataFactory.hh"
+
+#include "ui_SAKInputDataItem.h"
+
+SAKInputDataItem::SAKInputDataItem(SAKDebugPage *debugPage, SAKDebugPageInputManager *inputManager, QWidget *parent)
     :QWidget (parent)
-    ,ui (new Ui::InputDataItem)
+    ,ui (new Ui::SAKInputDataItem)
     ,debugPage (debugPage)
     ,inputManager (inputManager)
 {
@@ -35,8 +35,8 @@ InputDataItem::InputDataItem(SAKDebugPage *debugPage, DebugPageInputManager *inp
 
     menuPushButton = inputManager->sendPresetPushButton;
     addDataAction(menuPushButton);
-    connect(descriptionLineEdit, &QLineEdit::textChanged, this, &InputDataItem::updateActionTitle);
-    connect(inputDataTextEdit, &QTextEdit::textChanged, this, &InputDataItem::updateTextFormat);
+    connect(descriptionLineEdit, &QLineEdit::textChanged, this, &SAKInputDataItem::updateActionTitle);
+    connect(inputDataTextEdit, &QTextEdit::textChanged, this, &SAKInputDataItem::updateTextFormat);
 
     connect(textFormatComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), [=](int index){
         Q_UNUSED(index)
@@ -44,12 +44,12 @@ InputDataItem::InputDataItem(SAKDebugPage *debugPage, DebugPageInputManager *inp
     });
 }
 
-InputDataItem::~InputDataItem()
+SAKInputDataItem::~SAKInputDataItem()
 {
     removeDataAction(inputManager->presetPushButton);
 }
 
-void InputDataItem::addDataAction(QPushButton *menuPushButton)
+void SAKInputDataItem::addDataAction(QPushButton *menuPushButton)
 {
     if (!menuPushButton){
         return;
@@ -63,10 +63,10 @@ void InputDataItem::addDataAction(QPushButton *menuPushButton)
 
     action = new QAction(descriptionLineEdit->text(), this);
     menu->addAction(action);
-    connect(action, &QAction::triggered, this, &InputDataItem::sendRawData);
+    connect(action, &QAction::triggered, this, &SAKInputDataItem::sendRawData);
 }
 
-void InputDataItem::removeDataAction(QPushButton *menuPushButton)
+void SAKInputDataItem::removeDataAction(QPushButton *menuPushButton)
 {
     if (!menuPushButton){
         return;
@@ -85,17 +85,17 @@ void InputDataItem::removeDataAction(QPushButton *menuPushButton)
     }
 }
 
-void InputDataItem::updateActionTitle(const QString &title)
+void SAKInputDataItem::updateActionTitle(const QString &title)
 {
     action->setText(title);
 }
 
-void InputDataItem::updateTextFormat()
+void SAKInputDataItem::updateTextFormat()
 {
     inputManager->formattingInputText(inputDataTextEdit, textFormatComboBox->currentData().toInt());
 }
 
-void InputDataItem::sendRawData()
+void SAKInputDataItem::sendRawData()
 {
     QString data = inputDataTextEdit->toPlainText();
     int format = textFormatComboBox->currentData().toInt();

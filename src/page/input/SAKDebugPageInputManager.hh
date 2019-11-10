@@ -9,8 +9,8 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef DEBUGPAGEINPUTMANAGER_HH
-#define DEBUGPAGEINPUTMANAGER_HH
+#ifndef SAKDEBUGPAGEINPUTMANAGER_HH
+#define SAKDEBUGPAGEINPUTMANAGER_HH
 
 #include <QLabel>
 #include <QTimer>
@@ -22,16 +22,16 @@
 #include <QListWidget>
 
 class SAKDebugPage;
-class InputDataItem;
+class SAKInputDataItem;
 class SAKCRCInterface;
-class InputDataFactory;
-class InputDataItemManager;
-class DebugPageInputManager:public QObject
+class SAKInputDataFactory;
+class SAKInputDataItemManager;
+class SAKDebugPageInputManager:public QObject
 {
     Q_OBJECT
 public:
-    DebugPageInputManager(SAKDebugPage *debugPage, QObject *parent = nullptr);
-    ~DebugPageInputManager();
+    SAKDebugPageInputManager(SAKDebugPage *debugPage, QObject *parent = nullptr);
+    ~SAKDebugPageInputManager();
 
     /**
      * @brief The InputParameters struct    --  输入上下文
@@ -44,7 +44,7 @@ public:
         int     crcModel;       // crc参数模型
     };
 
-    friend class InputDataItem;
+    friend class SAKInputDataItem;
 private:
     SAKDebugPage *debugPage;
 
@@ -105,10 +105,10 @@ private:
     void cycleTimerTimeout();
 
 private:
-    InputDataFactory *inputDataFactory;
+    SAKInputDataFactory *inputDataFactory;
     InputParameters inputParameters;
     SAKCRCInterface *crcInterface;
-    InputDataItemManager *inputDataItemManager;
+    SAKInputDataItemManager *inputDataItemManager;
 
     void updateCRC();
     void formattingInputText(QTextEdit *textEdit, int model);
@@ -116,6 +116,6 @@ signals:
     /// 该函数并不会真的发送数据，而是发送一个信号，该信号携带需要发送的数据,数据需要经过处理后才能发送
     void rawDataChanged(QString rawData, InputParameters parameters);
 };
-Q_DECLARE_METATYPE(DebugPageInputManager::InputParameters);
+Q_DECLARE_METATYPE(SAKDebugPageInputManager::InputParameters);
 
 #endif

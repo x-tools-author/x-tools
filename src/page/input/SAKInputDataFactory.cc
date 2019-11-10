@@ -14,16 +14,16 @@
 
 #include "SAKGlobal.hh"
 #include "SAKCRCInterface.hh"
-#include "InputDataFactory.hh"
+#include "SAKInputDataFactory.hh"
 
-InputDataFactory::InputDataFactory(QObject *parent)
+SAKInputDataFactory::SAKInputDataFactory(QObject *parent)
     :QThread (parent)
     ,crcInterface (nullptr)
 {
     moveToThread(this);
 }
 
-void InputDataFactory:: cookData(QString rawData, DebugPageInputManager::InputParameters parameters)
+void SAKInputDataFactory:: cookData(QString rawData, SAKDebugPageInputManager::InputParameters parameters)
 {
     QByteArray data = rawDataToArray(rawData, parameters);
     if (parameters.addCRC){
@@ -54,7 +54,7 @@ void InputDataFactory:: cookData(QString rawData, DebugPageInputManager::InputPa
     emit dataCooked(data);
 }
 
-quint32 InputDataFactory::crcCalculate(QByteArray data, int model)
+quint32 SAKInputDataFactory::crcCalculate(QByteArray data, int model)
 {
     int bitsWidth = crcInterface->getBitsWidth(static_cast<SAKCRCInterface::CRCModel>(model));
     uint8_t crc8;
@@ -81,7 +81,7 @@ quint32 InputDataFactory::crcCalculate(QByteArray data, int model)
     return crc;
 }
 
-QByteArray InputDataFactory::rawDataToArray(QString rawData, DebugPageInputManager::InputParameters parameters)
+QByteArray SAKInputDataFactory::rawDataToArray(QString rawData, SAKDebugPageInputManager::InputParameters parameters)
 {
     QByteArray data;
     if (parameters.inputModel == SAKGlobal::Ibin){
@@ -118,9 +118,9 @@ QByteArray InputDataFactory::rawDataToArray(QString rawData, DebugPageInputManag
     return data;
 }
 
-void InputDataFactory::run()
+void SAKInputDataFactory::run()
 {
     crcInterface = new SAKCRCInterface(this);
-    connect(qApp, &QApplication::lastWindowClosed, this, &InputDataFactory::terminate);
+    connect(qApp, &QApplication::lastWindowClosed, this, &SAKInputDataFactory::terminate);
     exec();
 }

@@ -9,8 +9,8 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef INPUTDATAITEMMANAGER_HH
-#define INPUTDATAITEMMANAGER_HH
+#ifndef SAKINPUTDATAITEMMANAGER_HH
+#define SAKINPUTDATAITEMMANAGER_HH
 
 #include <QLabel>
 #include <QTimer>
@@ -21,23 +21,23 @@
 #include <QListWidget>
 #include <QPushButton>
 
-#include "DebugPageInputManager.hh"
+#include "SAKDebugPageInputManager.hh"
 
 namespace Ui {
-    class InputDataItemManager;
+    class SAKInputDataItemManager;
 }
 
 class SAKDebugPage;
-class DebugPageInputManager;
-class InputDataItemManager:public QWidget
+class SAKDebugPageInputManager;
+class SAKInputDataItemManager:public QWidget
 {
     Q_OBJECT
 public:
-    InputDataItemManager(SAKDebugPage *debugPage, DebugPageInputManager *inputManager, QWidget *parent = Q_NULLPTR);
-    ~InputDataItemManager();
+    SAKInputDataItemManager(SAKDebugPage *debugPage, SAKDebugPageInputManager *inputManager, QWidget *parent = Q_NULLPTR);
+    ~SAKInputDataItemManager();
 
 private:
-    Ui::InputDataItemManager    *ui;
+    Ui::SAKInputDataItemManager *ui;
     QPushButton                 *deletePushButton;
     QPushButton                 *addPushButton;
     QLabel                      *infoLabel;
@@ -48,14 +48,14 @@ private slots:
 private:
     SAKDebugPage            *debugPage;
     SAKCRCInterface         *crcInterface;
-    InputDataFactory        *factory;
-    DebugPageInputManager   *inputManager;
+    SAKInputDataFactory        *factory;
+    SAKDebugPageInputManager   *inputManager;
     QListWidget             *listWidget;
 
     QTimer sendTimer;
-    DebugPageInputManager::InputParameters inputParameters;
+    SAKDebugPageInputManager::InputParameters inputParameters;
 signals:
-    void rawDataChanged(QString rawData, DebugPageInputManager::InputParameters parameters);
+    void rawDataChanged(QString rawData, SAKDebugPageInputManager::InputParameters parameters);
 };
 
 #endif

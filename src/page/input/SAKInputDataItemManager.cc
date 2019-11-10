@@ -13,19 +13,19 @@
 
 #include "SAKGlobal.hh"
 #include "SAKDebugPage.hh"
-#include "InputDataItem.hh"
+#include "SAKInputDataItem.hh"
 #include "SAKCRCInterface.hh"
-#include "InputDataFactory.hh"
-#include "InputDataItemManager.hh"
+#include "SAKInputDataFactory.hh"
+#include "SAKInputDataItemManager.hh"
 
-#include "ui_InputDataItemManager.h"
+#include "ui_SAKInputDataItemManager.h"
 
-InputDataItemManager::InputDataItemManager(SAKDebugPage *debugPage, DebugPageInputManager *inputManager, QWidget *parent)
+SAKInputDataItemManager::SAKInputDataItemManager(SAKDebugPage *debugPage, SAKDebugPageInputManager *inputManager, QWidget *parent)
     :QWidget (parent)
-    ,ui (new Ui::InputDataItemManager)
+    ,ui (new Ui::SAKInputDataItemManager)
     ,debugPage (debugPage)
     ,crcInterface (new SAKCRCInterface)
-    ,factory (new InputDataFactory)
+    ,factory (new SAKInputDataFactory)
     ,inputManager (inputManager)
 {
     ui->setupUi(this);
@@ -35,12 +35,12 @@ InputDataItemManager::InputDataItemManager(SAKDebugPage *debugPage, DebugPageInp
     infoLabel           = ui->infoLabel;
 }
 
-InputDataItemManager::~InputDataItemManager()
+SAKInputDataItemManager::~SAKInputDataItemManager()
 {
     delete ui;
 }
 
-void InputDataItemManager::on_deletePushButton_clicked()
+void SAKInputDataItemManager::on_deletePushButton_clicked()
 {
     QListWidgetItem *item = listWidget->currentItem();
     if (item){
@@ -49,10 +49,10 @@ void InputDataItemManager::on_deletePushButton_clicked()
     }
 }
 
-void InputDataItemManager::on_addPushButton_clicked()
+void SAKInputDataItemManager::on_addPushButton_clicked()
 {
     QListWidgetItem *item = new QListWidgetItem(listWidget);
-    InputDataItem *itemWidget = new InputDataItem(debugPage, inputManager, this);
+    SAKInputDataItem *itemWidget = new SAKInputDataItem(debugPage, inputManager, this);
     item->setSizeHint(itemWidget->sizeHint());
     listWidget->addItem(item);
     listWidget->setItemWidget(item, itemWidget);

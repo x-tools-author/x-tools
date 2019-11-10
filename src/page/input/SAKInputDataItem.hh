@@ -9,8 +9,8 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef INPUTDATAITEM_HH
-#define INPUTDATAITEM_HH
+#ifndef SAKINPUTDATAITEM_HH
+#define SAKINPUTDATAITEM_HH
 
 #include <QTimer>
 #include <QWidget>
@@ -21,25 +21,25 @@
 #include <QTextEdit>
 #include <QPushButton>
 
-#include "DebugPageInputManager.hh"
+#include "SAKDebugPageInputManager.hh"
 
 namespace Ui {
-    class InputDataItem;
+    class SAKInputDataItem;
 }
 
 class SAKDebugPage;
 class SAKCRCInterface;
-class InputDataFactory;
-class DebugPageInputManager;
-class InputDataItem:public QWidget
+class SAKInputDataFactory;
+class SAKDebugPageInputManager;
+class SAKInputDataItem:public QWidget
 {
     Q_OBJECT
 public:
-    InputDataItem(SAKDebugPage *debugPage, DebugPageInputManager *inputManager, QWidget *parent = Q_NULLPTR);
-    ~InputDataItem();
+    SAKInputDataItem(SAKDebugPage *debugPage, SAKDebugPageInputManager *inputManager, QWidget *parent = Q_NULLPTR);
+    ~SAKInputDataItem();
 
 private:
-    Ui::InputDataItem *ui;
+    Ui::SAKInputDataItem *ui;
 
     QComboBox   *textFormatComboBox;
     QLineEdit   *descriptionLineEdit;
@@ -49,9 +49,9 @@ private:
     QPushButton *menuPushButton;
     QAction *action;
     SAKDebugPage *debugPage;
-    DebugPageInputManager *inputManager;
+    SAKDebugPageInputManager *inputManager;
 
-    DebugPageInputManager::InputParameters inputParameters;
+    SAKDebugPageInputManager::InputParameters inputParameters;
 private:
     void addDataAction(QPushButton *menuPushButton);
     void removeDataAction(QPushButton *menuPushButton);
@@ -60,7 +60,7 @@ private:
     void sendRawData();
 
 signals:
-    void rawDataChanged(QString rawData, DebugPageInputManager::InputParameters parameters);
+    void rawDataChanged(QString rawData, SAKDebugPageInputManager::InputParameters parameters);
 };
 
 #endif

@@ -97,10 +97,10 @@ HEADERS +=  \
     src/base/SAKWidget.hh \
     src/common/SAKCRCInterface.hh \
     src/page/SAKDebugPage.hh \
-    src/page/input/DebugPageInputManager.hh \
-    src/page/input/InputDataFactory.hh \
-    src/page/input/InputDataItem.hh \
-    src/page/input/InputDataItemManager.hh \
+    src/page/input/SAKDebugPageInputManager.hh \
+    src/page/input/SAKInputDataFactory.hh \
+    src/page/input/SAKInputDataItem.hh \
+    src/page/input/SAKInputDataItemManager.hh \
     src/page/other/SAKOtherSettingsManager.hh \
     src/page/other/autoresponse/SAKAutoResponseItemWidget.hh \
     src/page/other/autoresponse/SAKAutoResponseSettingsWidget.hh \
@@ -155,10 +155,10 @@ SOURCES +=  \
     src/common/SAKCRCInterface.cc \
     src/main.cc \
     src/page/SAKDebugPage.cc \
-    src/page/input/DebugPageInputManager.cc \
-    src/page/input/InputDataFactory.cc \
-    src/page/input/InputDataItem.cc \
-    src/page/input/InputDataItemManager.cc \
+    src/page/input/SAKDebugPageInputManager.cc \
+    src/page/input/SAKInputDataFactory.cc \
+    src/page/input/SAKInputDataItem.cc \
+    src/page/input/SAKInputDataItemManager.cc \
     src/page/other/SAKOtherSettingsManager.cc \
     src/page/other/autoresponse/SAKAutoResponseItemWidget.cc \
     src/page/other/autoresponse/SAKAutoResponseSettingsWidget.cc \
@@ -203,8 +203,8 @@ FORMS +=  \
     src/SAKMainWindow.ui \
     src/SAKVersion.ui \
     src/page/SAKDebugPage.ui \
-    src/page/input/InputDataItem.ui \
-    src/page/input/InputDataItemManager.ui \
+    src/page/input/SAKInputDataItem.ui \
+    src/page/input/SAKInputDataItemManager.ui \
     src/page/other/autoresponse/SAKAutoResponseItemWidget.ui \
     src/page/other/autoresponse/SAKAutoResponseSettingsWidget.ui \
     src/page/other/highlight/SAKHighlightSettingsWidget.ui \

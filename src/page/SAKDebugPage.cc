@@ -28,7 +28,7 @@
 #include "SAKCRCInterface.hh"
 #include "SAKOtherSettingsManager.hh"
 #include "SAKStatisticsManager.hh"
-#include "DebugPageInputManager.hh"
+#include "SAKDebugPageInputManager.hh"
 #include "DebugPageOutputManager.hh"
 #include "SAKHighlightSettingsWidget.hh"
 
@@ -51,7 +51,7 @@ SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
     outputManager           = new DebugPageOutputManager(this, this);
     otherSettings           = new SAKOtherSettingsManager(this, this);
     statisticsManager       = new SAKStatisticsManager(this, this);
-    debugPageInputManager   = new DebugPageInputManager(this, this);
+    debugPageInputManager   = new SAKDebugPageInputManager(this, this);
 
     _readWriteParameters.waitForReadyReadTime = MINI_READ_WRITE_WATINGT_TIME;
     _readWriteParameters.waitForBytesWrittenTime = MINI_READ_WRITE_WATINGT_TIME;
