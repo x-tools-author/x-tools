@@ -9,19 +9,17 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#include "CRCCalculator.hh"
-#include "ui_CRCCalculator.h"
-
-#include <QFile>
-#include <QDebug>
 #include <QComboBox>
 #include <QMetaEnum>
 #include <QDesktopServices>
 #include <QLoggingCategory>
 
-CRCCalculator::CRCCalculator(QWidget* parent)
+#include "SAKCRCCalculator.hh"
+#include "ui_SAKCRCCalculator.h"
+
+SAKCRCCalculator::SAKCRCCalculator(QWidget* parent)
     :QDialog (parent)
-    ,ui(new Ui::CRCCalculator)
+    ,ui(new Ui::SAKCRCCalculator)
 {
     ui->setupUi(this);
     widthComboBox = ui->comboBoxWidth;
@@ -72,25 +70,25 @@ CRCCalculator::CRCCalculator(QWidget* parent)
     setModal(true);
 }
 
-CRCCalculator::~CRCCalculator()
+SAKCRCCalculator::~SAKCRCCalculator()
 {
     QLoggingCategory category(logCategory);
     qCInfo(category) << "Goodbye CRCCalculator";
     delete  ui;
 }
 
-void CRCCalculator::initParameterModel()
+void SAKCRCCalculator::initParameterModel()
 {
     parameterComboBox->clear();
-    QStringList list = crcInterface.getSupportParameterModels();
+    QStringList list = crcInterface.supportedParameterModels();
     parameterComboBox->addItems(list);
 
-    QMetaEnum models = QMetaEnum::fromType<CRCInterface::CRCModel>();
+    QMetaEnum models = QMetaEnum::fromType<SAKCRCInterface::CRCModel>();
     bool ok = false;
     int ret = models.keyToValue(parameterComboBox->currentText().toLatin1().constData(), &ok);
-    CRCInterface::CRCModel model = CRCInterface::CRC_8;
+    SAKCRCInterface::CRCModel model = SAKCRCInterface::CRC_8;
     if (ok){
-        model = static_cast<CRCInterface::CRCModel>(ret);
+        model = static_cast<SAKCRCInterface::CRCModel>(ret);
     }
 
     int bitsWidth = crcInterface.getBitsWidth(model);
@@ -98,16 +96,16 @@ void CRCCalculator::initParameterModel()
     labelPolyFormula->setText(crcInterface.getPolyFormula(model));
 }
 
-void CRCCalculator::changedParameterModel(int index)
+void SAKCRCCalculator::changedParameterModel(int index)
 {
-    Q_UNUSED(index);
+    Q_UNUSED(index)
 
-    QMetaEnum models = QMetaEnum::fromType<CRCInterface::CRCModel>();
+    QMetaEnum models = QMetaEnum::fromType<SAKCRCInterface::CRCModel>();
     bool ok = false;
-    CRCInterface::CRCModel model = CRCInterface::CRC_8;
+    SAKCRCInterface::CRCModel model = SAKCRCInterface::CRC_8;
     int ret = models.keyToValue(parameterComboBox->currentText().toLatin1().constData(), &ok);
     if (ok){
-        model = static_cast<CRCInterface::CRCModel>(ret);
+        model = static_cast<SAKCRCInterface::CRCModel>(ret);
     }else{
         QLoggingCategory category(logCategory);
         qCWarning(category) << "Unknow parameter model!";
@@ -125,7 +123,7 @@ void CRCCalculator::changedParameterModel(int index)
     labelPolyFormula->setText(crcInterface.getPolyFormula(model));
 }
 
-void CRCCalculator::calculate()
+void SAKCRCCalculator::calculate()
 {
     QByteArray inputArray;
     if (hexRadioBt->isChecked()){
@@ -148,30 +146,27 @@ void CRCCalculator::calculate()
     }
 
     int bitsWidth = widthComboBox->currentText().toInt();    
-    QMetaEnum models = QMetaEnum::fromType<CRCInterface::CRCModel>();
+    QMetaEnum models = QMetaEnum::fromType<SAKCRCInterface::CRCModel>();
     bool ok = false;
     int ret = models.keyToValue(parameterComboBox->currentText().toLatin1().constData(), &ok);
-    CRCInterface::CRCModel model = CRCInterface::CRC_8;
+    SAKCRCInterface::CRCModel model = SAKCRCInterface::CRC_8;
     if (ok){
-        model = static_cast<CRCInterface::CRCModel>(ret);
+        model = static_cast<SAKCRCInterface::CRCModel>(ret);
     }
 
     QString crcHexString = "error";
     QString crcBinString = "error";
 
     if (bitsWidth == 8){
-        uint8_t crc = 0;
-        crcInterface.crcCalculate<uint8_t>(reinterpret_cast<uint8_t*>(inputArray.data()), static_cast<uint64_t>(inputArray.length()), crc, model);
+        uint8_t crc = crcInterface.crcCalculate<uint8_t>(reinterpret_cast<uint8_t*>(inputArray.data()), static_cast<uint64_t>(inputArray.length()), model);
         crcHexString = QString("0x%1").arg(QString::number(crc, 16), 2, '0');
         crcBinString = QString("%1").arg(QString::number(crc, 2), 8, '0');
     }else if (bitsWidth == 16){
-        uint16_t crc = 0;
-        crcInterface.crcCalculate<uint16_t>(reinterpret_cast<uint8_t*>(inputArray.data()), static_cast<uint64_t>(inputArray.length()), crc, model);
+        uint16_t crc = crcInterface.crcCalculate<uint8_t>(reinterpret_cast<uint8_t*>(inputArray.data()), static_cast<uint64_t>(inputArray.length()), model);
         crcHexString = QString("0x%1").arg(QString::number(crc, 16), 4, '0');
         crcBinString = QString("%1").arg(QString::number(crc, 2), 16, '0');
     }else if (bitsWidth == 32){
-        uint32_t crc = 0;
-        crcInterface.crcCalculate<uint32_t>(reinterpret_cast<uint8_t*>(inputArray.data()), static_cast<uint64_t>(inputArray.length()), crc, model);
+        uint32_t crc = crcInterface.crcCalculate<uint8_t>(reinterpret_cast<uint8_t*>(inputArray.data()), static_cast<uint64_t>(inputArray.length()), model);
         crcHexString = QString("0x%1").arg(QString::number(crc, 16), 8, '0');
         crcBinString = QString("%1").arg(QString::number(crc, 2), 32, '0');
     }else {
@@ -182,7 +177,7 @@ void CRCCalculator::calculate()
     binCRCOutput->setText(crcBinString);
 }
 
-void CRCCalculator::textFormatControl()
+void SAKCRCCalculator::textFormatControl()
 {
     if (asciiRadioBt->isChecked()){
         return;
@@ -204,7 +199,7 @@ void CRCCalculator::textFormatControl()
     connect(inputTextEdit, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
 }
 
-bool CRCCalculator::eventFilter(QObject *watched, QEvent *event)
+bool SAKCRCCalculator::eventFilter(QObject *watched, QEvent *event)
 {
     if (event->type() == QEvent::MouseButtonDblClick){
         if (watched == labelInfo){

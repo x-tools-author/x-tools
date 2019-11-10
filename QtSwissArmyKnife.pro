@@ -130,8 +130,8 @@ HEADERS +=  \
     src/tcpserver/SAKTcpServerDebugPage.hh \
     src/tcpserver/SAKTcpServerDevice.hh \
     src/tcpserver/SAKTcpServerDeviceController.hh \
-    src/tools/crccalculator/CRCCalculator.hh \
     src/tools/crccalculator/CRCInterface.hh \
+    src/tools/crccalculator/SAKCRCCalculator.hh \
     src/tools/filechecker/QtCryptographicHashCalculator.hh \
     src/tools/filechecker/QtCryptographicHashController.hh \
     src/udp/SAKUdpDebugPage.hh \
@@ -188,8 +188,8 @@ SOURCES +=  \
     src/tcpserver/SAKTcpServerDebugPage.cc \
     src/tcpserver/SAKTcpServerDevice.cc \
     src/tcpserver/SAKTcpServerDeviceController.cc \
-    src/tools/crccalculator/CRCCalculator.cc \
     src/tools/crccalculator/CRCInterface.cc \
+    src/tools/crccalculator/SAKCRCCalculator.cc \
     src/tools/filechecker/QtCryptographicHashCalculator.cc \
     src/tools/filechecker/QtCryptographicHashController.cc \
     src/udp/SAKUdpDebugPage.cc \
@@ -221,7 +221,7 @@ FORMS +=  \
     src/page/visualization/SAKDataVisualizationManager.ui \
     src/tcpclient/SAKTcpClientDeviceController.ui \
     src/tcpserver/SAKTcpServerDeviceController.ui \
-    src/tools/crccalculator/CRCCalculator.ui \
+    src/tools/crccalculator/SAKCRCCalculator.ui \
     src/tools/filechecker/QtCryptographicHashController.ui \
     src/udp/SAKUdpDeviceController.ui \
     src/update/SAKDownloadItemWidget.ui \

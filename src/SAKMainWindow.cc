@@ -30,8 +30,7 @@
 #include "SAKGlobal.hh"
 #include "SAKVersion.hh"
 #include "SAKSettings.hh"
-#include "UpdateManager.h"
-#include "CRCCalculator.hh"
+#include "SAKCRCCalculator.hh"
 #include "SAKMainWindow.hh"
 #include "QtAppStyleApi.hh"
 #include "SAKApplication.hh"
@@ -408,6 +407,6 @@ void SAKMainWindow::closeDebugPage(int index)
 
 void SAKMainWindow::createCRCCalculator()
 {
-    CRCCalculator *cal = new CRCCalculator;
+    SAKCRCCalculator *cal = new SAKCRCCalculator;
     cal->show();
 }

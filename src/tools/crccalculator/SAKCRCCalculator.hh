@@ -9,8 +9,8 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef CRCCALCULATOR_HH
-#define CRCCALCULATOR_HH
+#ifndef SAKCRCCALCULATOR_HH
+#define SAKCRCCALCULATOR_HH
 
 #include <QDialog>
 #include <QComboBox>
@@ -25,25 +25,25 @@
 #include <QPushButton>
 #include <QLabel>
 
-#include "CRCInterface.hh"
+#include "SAKCRCInterface.hh"
 
 namespace Ui {
-class CRCCalculator;
+    class SAKCRCCalculator;
 }
 
-class CRCCalculator:public QDialog
+class SAKCRCCalculator:public QDialog
 {
     Q_OBJECT
 public:
-    CRCCalculator(QWidget* parent = nullptr);
-    ~CRCCalculator();
+    SAKCRCCalculator(QWidget* parent = nullptr);
+    ~SAKCRCCalculator();
 protected:
     bool eventFilter(QObject *watched, QEvent *event);
 private:
     const char *logCategory = "CRCCalculator";
-    CRCInterface crcInterface;
+    SAKCRCInterface crcInterface;
 
-    Ui::CRCCalculator* ui;
+    Ui::SAKCRCCalculator* ui;
     QComboBox* widthComboBox = nullptr;
     QComboBox* parameterComboBox = nullptr;
 
