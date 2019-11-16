@@ -23,6 +23,8 @@ SAKDataVisualizationManager::SAKDataVisualizationManager(SAKDebugPage *page, QWi
     ui->setupUi(this);
     tabWidget = ui->tabWidget;
 
+    setAttribute(Qt::WA_DeleteOnClose, true);
+
     initPage();
 }
 

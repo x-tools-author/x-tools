@@ -24,13 +24,13 @@
 #include "SAKGlobal.hh"
 #include "SAKSettings.hh"
 #include "SAKDebugPage.hh"
-#include "SAKDataVisualizationManager.hh"
 #include "SAKCRCInterface.hh"
-#include "SAKOtherSettingsManager.hh"
 #include "SAKStatisticsManager.hh"
+#include "SAKOtherSettingsManager.hh"
 #include "SAKDebugPageInputManager.hh"
 #include "SAKDebugPageOutputManager.hh"
 #include "SAKHighlightSettingsWidget.hh"
+#include "SAKDataVisualizationManager.hh"
 
 #include "ui_SAKDebugPage.h"
 
@@ -47,11 +47,11 @@ SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
     ui->setupUi(this);
     initUiPointer();
 
-    dataVisualizationManager= new SAKDataVisualizationManager(this);
     outputManager           = new SAKDebugPageOutputManager(this, this);
     otherSettings           = new SAKOtherSettingsManager(this, this);
     statisticsManager       = new SAKStatisticsManager(this, this);
     debugPageInputManager   = new SAKDebugPageInputManager(this, this);
+    dataVisualizationManager= nullptr;
 
     _readWriteParameters.waitForReadyReadTime = MINI_READ_WRITE_WATINGT_TIME;
     _readWriteParameters.waitForBytesWrittenTime = MINI_READ_WRITE_WATINGT_TIME;
@@ -355,11 +355,20 @@ void SAKDebugPage::initUiPointer()
 
 void SAKDebugPage::on_dataVisualizationPushButton_clicked()
 {
-    if (dataVisualizationManager->isHidden()){
-        dataVisualizationManager->show();
+    if (dataVisualizationManager){
+        if (dataVisualizationManager->isHidden()){
+            dataVisualizationManager->show();
+        }else{
+            dataVisualizationManager->activateWindow();
+        }
     }else{
-        dataVisualizationManager->activateWindow();
+        dataVisualizationManager = new SAKDataVisualizationManager(this);
+        dataVisualizationManager->show();
+        connect(dataVisualizationManager, &SAKDataVisualizationManager::destroyed, [&](){
+            dataVisualizationManager = nullptr;
+        });
     }
+
 }
 
 void SAKDebugPage::initSettingKey()

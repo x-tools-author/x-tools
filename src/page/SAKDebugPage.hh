@@ -33,14 +33,14 @@
 #include "SAKAutoResponseSettingsWidget.hh"
 
 class SAKDataFactory;
-class SAKDataVisualizationManager;
 class SAKCRCInterface;
-class SAKOtherSettingsManager;
 class SAKStatisticsManager;
+class SAKOtherSettingsManager;
 class SAKTransmissionSettings;
 class SAKDebugPageInputManager;
 class SAKDebugPageOutputManager;
 class SAKHighlightSettingsWidget;
+class SAKDataVisualizationManager;
 
 namespace Ui {
     class SAKDebugPage;
