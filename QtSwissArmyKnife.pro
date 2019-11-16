@@ -36,6 +36,8 @@ MOC_DIR     = $$OUT_PWD/moc
 RCC_DIR     = $$OUT_PWD/res
 OBJECTS_DIR = $$OUT_PWD/obj
 
+message($${CONFIG})
+
 #--------------------------------------------------------------------------------------------
 #Windows配置
 win32 {
