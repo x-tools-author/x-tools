@@ -167,11 +167,8 @@ void SAKDebugPage::setUpController()
 void SAKDebugPage::changedDeviceStatus(bool opened)
 {
     sendPushButton->setEnabled(opened);
-    if (opened){
-
-    }else{
-
-    }
+    sendPresetPushButton->setEnabled(opened);
+    cycleEnableCheckBox->setEnabled(opened);
 }
 
 void SAKDebugPage::cleanInfo()

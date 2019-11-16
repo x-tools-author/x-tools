@@ -50,6 +50,8 @@ SAKDebugPageInputManager::SAKDebugPageInputManager(SAKDebugPage *debugPage, QObj
     sendPresetPushButton        = debugPage->sendPresetPushButton;
 
     sendPushButton->setEnabled(false);
+    sendPresetPushButton->setEnabled(false);
+    cycleEnableCheckBox->setEnabled(false);
     SAKGlobal::initInputTextFormatComboBox(inputModelComboBox);
     SAKGlobal::initCRCComboBox(crcParameterModelsComboBox);
 
