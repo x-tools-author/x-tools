@@ -26,7 +26,6 @@ class SAKVersion:public QDialog
 public:
     SAKVersion(QWidget *parent = nullptr);
     ~SAKVersion();
-    static SAKVersion* instance(){return sakVersionSingleton;}
     QString getVersion(){return version->text();}
     QString getQQNum(){return qq->text();}
     QString getEmail(){return email->text();}
@@ -41,8 +40,6 @@ private:
     QLabel*         copyrightLabel;
 
     QPushButton*    copyQQ      = nullptr;  // 复制qq群号码按钮
-
-    static SAKVersion* sakVersionSingleton;
 protected:
     bool eventFilter(QObject *o, QEvent *e) final;
 private:

@@ -22,9 +22,8 @@
 #include <QMainWindow>
 #include <QTranslator>
 
-class SAKVersion;
-class SAKMoreInformation;
 class SAKUpdateManager;
+class SAKMoreInformation;
 
 namespace Ui {
 class SAKMainWindow;
@@ -43,9 +42,8 @@ private:
     Ui::SAKMainWindow* ui               = nullptr;
     QMenu* toolsMenu                    = nullptr;
     QAction *defaultStyleSheetAction    = nullptr;
-    SAKVersion* versionDialog           = nullptr;
     SAKUpdateManager* updateManager     = nullptr;
-    SAKMoreInformation* moreInformation    = nullptr;   
+    SAKMoreInformation* moreInformation = nullptr;
 
     QTranslator qtTranslator;
     QTranslator qtBaeTranslator;

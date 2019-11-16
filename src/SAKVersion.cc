@@ -9,23 +9,22 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#include "SAKVersion.hh"
-#include "ui_SAKVersion.h"
-
 #include <QUrl>
 #include <QLineEdit>
 #include <QDateTime>
 #include <QDesktopServices>
 
+#include "SAKVersion.hh"
+#include "SAKApplication.hh"
+
+#include "ui_SAKVersion.h"
+
 static const QDate buildDate = QLocale( QLocale::English ).toDate( QString(__DATE__).replace("  ", " 0"), "MMM dd yyyy");
 
-SAKVersion* SAKVersion::sakVersionSingleton = nullptr;
 SAKVersion::SAKVersion(QWidget *parent)
     :QDialog(parent)
     ,ui(new Ui::SAKVersion)
 {
-    Q_ASSERT_X(!sakVersionSingleton, __FUNCTION__, "该类只能有一个实例， 请使用 SAKVersion::instance()获取实例。");
-    sakVersionSingleton = this;
     ui->setupUi(this);
 
     version = ui->labelVersion;
@@ -40,7 +39,7 @@ SAKVersion::SAKVersion(QWidget *parent)
 
     copyQQ = ui->pushButtonCopy;
 
-    version->setText(QString("2.2.0"));
+    version->setText(reinterpret_cast<SAKApplication*>(qApp)->applicationVersion());
     datetime->setText(buildDate.toString("yyyy/MM/dd") + " " + QString(__TIME__));
     author->setText(QString("Qter"));
     email->setText(QString("wuuhii@outlook.com"));
@@ -57,7 +56,7 @@ SAKVersion::SAKVersion(QWidget *parent)
 
 SAKVersion::~SAKVersion()
 {
-
+    delete ui;
 }
 
 bool SAKVersion::eventFilter(QObject *o, QEvent *e)

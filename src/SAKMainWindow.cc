@@ -60,7 +60,6 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     :QMainWindow (parent)
     ,mpTabWidget (new QTabWidget)
     ,ui (new Ui::SAKMainWindow)
-    ,versionDialog (new SAKVersion)
     ,moreInformation (new SAKMoreInformation)
 {
     ui->setupUi(this);
@@ -69,7 +68,7 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     QHBoxLayout *layout = new QHBoxLayout;
     layout->addWidget(mpTabWidget);
     ui->centralWidget->setLayout(layout);
-    setWindowTitle(tr("瑞士军刀--开发调试工具集") + " v" + versionDialog->getVersion());
+    setWindowTitle(tr("瑞士军刀--开发调试工具集") + " v" + reinterpret_cast<SAKApplication*>(qApp)->applicationVersion());
 
     this->resize(800, 600);
 
@@ -122,8 +121,10 @@ void SAKMainWindow::AddTool()
 
 void SAKMainWindow::About()
 {
-    versionDialog->show();
-    versionDialog->activateWindow();
+    SAKVersion verDialog;
+    verDialog.show();
+    verDialog.activateWindow();
+    verDialog.exec();
 }
 
 void SAKMainWindow::addTool(QString toolName, QWidget *toolWidget)
