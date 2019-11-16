@@ -334,7 +334,7 @@ void SAKMainWindow::installLanguage()
     QString language = action->objectName();
     QString name = action->data().toString();
     SAKSettings::instance()->setValue(reinterpret_cast<SAKApplication*>(qApp)->settingStringLanguage(), language+"-"+name);
-
+    reinterpret_cast<SAKApplication*>(qApp)->installLanguage();
     QMessageBox::information(this, tr("重启生效"),
                              tr("软件语言包已更改，重启软件生效！"));
 }
