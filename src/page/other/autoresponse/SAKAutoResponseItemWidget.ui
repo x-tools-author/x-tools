@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>660</width>
+    <width>515</width>
     <height>116</height>
    </rect>
   </property>
@@ -14,27 +14,17 @@
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="3" column="0">
-    <widget class="QCheckBox" name="enableCheckBox">
-     <property name="text">
-      <string>启用</string>
-     </property>
-     <property name="checked">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="label_3">
-     <property name="text">
-      <string>回复数据</string>
-     </property>
-    </widget>
-   </item>
    <item row="0" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
       <string>回复说明</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLineEdit" name="remarkLineEdit">
+     <property name="text">
+      <string>这是一个自动回复示例</string>
      </property>
     </widget>
    </item>
@@ -45,7 +35,55 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="2">
+   <item row="1" column="1">
+    <widget class="QLineEdit" name="referenceLineEdit">
+     <property name="text">
+      <string>Hello</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2">
+    <widget class="QLabel" name="label_5">
+     <property name="text">
+      <string>参考数据格式</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="3">
+    <widget class="QComboBox" name="referenceDataFromatComboBox"/>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>回复数据</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QLineEdit" name="responseLineEdit">
+     <property name="text">
+      <string>Hi</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2">
+    <widget class="QLabel" name="label_6">
+     <property name="text">
+      <string>回复数据格式</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="3">
+    <widget class="QComboBox" name="responseDataFormatComboBox"/>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>回复选项</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1" colspan="3">
     <widget class="QComboBox" name="optionComboBox">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -55,51 +93,13 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="5">
-    <widget class="QLabel" name="label_6">
+   <item row="0" column="2" colspan="2">
+    <widget class="QCheckBox" name="enableCheckBox">
      <property name="text">
-      <string>回复数据格式</string>
+      <string>启用</string>
      </property>
-    </widget>
-   </item>
-   <item row="3" column="1">
-    <widget class="QLabel" name="label_4">
-     <property name="text">
-      <string>回复选项</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="4">
-    <widget class="QComboBox" name="referenceDataFromatComboBox"/>
-   </item>
-   <item row="3" column="3">
-    <widget class="QLabel" name="label_5">
-     <property name="text">
-      <string>参考数据格式</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="6">
-    <widget class="QComboBox" name="responseDataFormatComboBox"/>
-   </item>
-   <item row="2" column="1" colspan="6">
-    <widget class="QLineEdit" name="responseLineEdit">
-     <property name="text">
-      <string>Hi</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1" colspan="6">
-    <widget class="QLineEdit" name="referenceLineEdit">
-     <property name="text">
-      <string>Hello</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="1" colspan="6">
-    <widget class="QLineEdit" name="remarkLineEdit">
-     <property name="text">
-      <string>这是一个自动回复示例</string>
+     <property name="checked">
+      <bool>true</bool>
      </property>
     </widget>
    </item>
