@@ -184,8 +184,7 @@ void SAKDebugPageInputManager::sendRawData()
 {
     QString data = inputTextEdit->toPlainText();
     if (data.isEmpty()){
-        debugPage->outputMessage(tr("请输入发送数据后尝试"), false);
-        return;
+        data = QString("(empty)");
     }
 
     emit rawDataChanged(data, inputParameters);
