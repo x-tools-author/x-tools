@@ -810,7 +810,7 @@ p, li { white-space: pre-wrap; }
    <item row="31" column="13" colspan="2">
     <widget class="QPushButton" name="dataVisualizationPushButton">
      <property name="text">
-      <string>数据可视</string>
+      <string>数据图表</string>
      </property>
     </widget>
    </item>
