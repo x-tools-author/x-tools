@@ -47,7 +47,6 @@ SAKVersion::SAKVersion(QWidget *parent)
     blog->setText(QString("http://wuhai.pro/"));
     copyrightLabel->setText(QString("Copyright(C) 2018-%1 Qter. All rights reserved.").arg(buildDate.toString("yyyy")));
 
-    setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowTitleHint | Qt::Tool);
     setModal(true);
 
     connect(copyQQ, SIGNAL(clicked()), this, SLOT(copyQQNum()));
