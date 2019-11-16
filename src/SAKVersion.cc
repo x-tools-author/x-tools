@@ -20,8 +20,9 @@
 static const QDate buildDate = QLocale( QLocale::English ).toDate( QString(__DATE__).replace("  ", " 0"), "MMM dd yyyy");
 
 SAKVersion* SAKVersion::sakVersionSingleton = nullptr;
-SAKVersion::SAKVersion()
-    :ui(new Ui::SAKVersion)
+SAKVersion::SAKVersion(QWidget *parent)
+    :QDialog(parent)
+    ,ui(new Ui::SAKVersion)
 {
     Q_ASSERT_X(!sakVersionSingleton, __FUNCTION__, "该类只能有一个实例， 请使用 SAKVersion::instance()获取实例。");
     sakVersionSingleton = this;

@@ -24,7 +24,7 @@ class SAKVersion:public QDialog
 {
     Q_OBJECT
 public:
-    SAKVersion();
+    SAKVersion(QWidget *parent = nullptr);
     ~SAKVersion();
     static SAKVersion* instance(){return sakVersionSingleton;}
     QString getVersion(){return version->text();}
