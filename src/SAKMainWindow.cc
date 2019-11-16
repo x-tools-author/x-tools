@@ -121,7 +121,7 @@ void SAKMainWindow::AddTool()
 
 void SAKMainWindow::About()
 {
-    SAKVersion verDialog;
+    SAKVersion verDialog(this);
     verDialog.show();
     verDialog.activateWindow();
     verDialog.exec();
