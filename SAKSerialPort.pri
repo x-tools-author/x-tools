@@ -1,6 +1,8 @@
 win32 {
-    QT  += serialport
-    DEFINES+=SAK_IMPORT_COM_MODULE
+    !winrt{
+        QT  += serialport
+        DEFINES+=SAK_IMPORT_COM_MODULE
+    }
 }
 
 unix {
