@@ -169,19 +169,19 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/other/autoresponse/SAKAutoResponseItemWidget.ui" line="20"/>
+        <location filename="../../src/page/other/autoresponse/SAKAutoResponseItemWidget.ui" line="34"/>
         <source>启用</source>
         <translation>Enable</translation>
     </message>
     <message>
-        <location filename="../../src/page/other/autoresponse/SAKAutoResponseItemWidget.ui" line="30"/>
+        <location filename="../../src/page/other/autoresponse/SAKAutoResponseItemWidget.ui" line="68"/>
         <source>回复数据</source>
         <translation>Response Data</translation>
     </message>
     <message>
-        <location filename="../../src/page/other/autoresponse/SAKAutoResponseItemWidget.ui" line="37"/>
+        <location filename="../../src/page/other/autoresponse/SAKAutoResponseItemWidget.ui" line="20"/>
         <source>回复说明</source>
-        <translation>Response Comment</translation>
+        <translation>Item Comment</translation>
     </message>
     <message>
         <location filename="../../src/page/other/autoresponse/SAKAutoResponseItemWidget.ui" line="44"/>
@@ -189,49 +189,49 @@
         <translation>Reference Data</translation>
     </message>
     <message>
-        <location filename="../../src/page/other/autoresponse/SAKAutoResponseItemWidget.ui" line="61"/>
+        <location filename="../../src/page/other/autoresponse/SAKAutoResponseItemWidget.ui" line="82"/>
         <source>回复数据格式</source>
-        <translation>Response Text Format</translation>
+        <translation>Formats</translation>
     </message>
     <message>
-        <location filename="../../src/page/other/autoresponse/SAKAutoResponseItemWidget.ui" line="68"/>
+        <location filename="../../src/page/other/autoresponse/SAKAutoResponseItemWidget.ui" line="92"/>
         <source>回复选项</source>
         <translation>Response Options</translation>
     </message>
     <message>
-        <location filename="../../src/page/other/autoresponse/SAKAutoResponseItemWidget.ui" line="78"/>
+        <location filename="../../src/page/other/autoresponse/SAKAutoResponseItemWidget.ui" line="58"/>
         <source>参考数据格式</source>
-        <translation>Reference Format</translation>
+        <translation>Formats</translation>
     </message>
     <message>
-        <location filename="../../src/page/other/autoresponse/SAKAutoResponseItemWidget.ui" line="88"/>
+        <location filename="../../src/page/other/autoresponse/SAKAutoResponseItemWidget.ui" line="75"/>
         <source>Hi</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/other/autoresponse/SAKAutoResponseItemWidget.ui" line="95"/>
+        <location filename="../../src/page/other/autoresponse/SAKAutoResponseItemWidget.ui" line="51"/>
         <source>Hello</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/page/other/autoresponse/SAKAutoResponseItemWidget.ui" line="102"/>
+        <location filename="../../src/page/other/autoresponse/SAKAutoResponseItemWidget.ui" line="27"/>
         <source>这是一个自动回复示例</source>
         <translation>This is a example</translation>
     </message>
     <message>
         <location filename="../../src/page/other/autoresponse/SAKAutoResponseItemWidget.cc" line="35"/>
         <source>接收数据与参考数据相同时自动回复</source>
-        <translation>Receive data and reference data at the same time automatic reply</translation>
+        <translation>Receive data is equal to the reference data</translation>
     </message>
     <message>
         <location filename="../../src/page/other/autoresponse/SAKAutoResponseItemWidget.cc" line="36"/>
         <source>接收数据包含参考数据时自动回复</source>
-        <translation>Automatic reply when receiving data including reference data</translation>
+        <translation>Receive data is contains the reference data</translation>
     </message>
     <message>
         <location filename="../../src/page/other/autoresponse/SAKAutoResponseItemWidget.cc" line="37"/>
         <source>接收数据不包含参考数据时自动回复</source>
-        <translation>Automatic reply when received data does not contain reference data</translation>
+        <translation>Receive data is not contains the reference data</translation>
     </message>
 </context>
 <context>
