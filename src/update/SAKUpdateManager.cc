@@ -134,6 +134,7 @@ void SAKUpdateManager::checkForUpdateFinished()
                     visitWebPushButton->setEnabled(true);
                 }else{
                     noNewVersionTipLabel->show();
+                    newVersionLabel->setText(updateInfo.name.remove("v"));
                 }
 
                 QApplication::beep();
