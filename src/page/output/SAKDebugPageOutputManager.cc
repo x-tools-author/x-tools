@@ -68,8 +68,8 @@ SAKDebugPageOutputManager::SAKDebugPageOutputManager(SAKDebugPage *debugPage, QO
 
     outputSettings = new SAKSaveOutputDataSettings;
 
-    updateRxFlagTimer.setInterval(200);
-    updateTxFlagTimer.setInterval(200);
+    updateRxFlagTimer.setInterval(20);
+    updateTxFlagTimer.setInterval(20);
     connect(&updateRxFlagTimer, &QTimer::timeout, this, &SAKDebugPageOutputManager::updateRxFlag);
     connect(&updateTxFlagTimer, &QTimer::timeout, this, &SAKDebugPageOutputManager::updateTxFlag);
 
