@@ -22,7 +22,7 @@ SAKApplication::SAKApplication(int argc, char **argv):
     QApplication(argc, argv)
 {
     installLanguage();
-    setApplicationVersion(QString("2.0.0"));
+    setApplicationVersion(QString("2.2.0"));
 
     /// 注册表选项
     setOrganizationName(QString("Qter"));
