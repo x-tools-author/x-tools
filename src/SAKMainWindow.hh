@@ -37,13 +37,17 @@ public:
     explicit SAKMainWindow(QWidget *parent = nullptr);
     ~SAKMainWindow();
 
+protected:
+      bool eventFilter(QObject *obj, QEvent *event);
+
 private:
     QTabWidget* mpTabWidget             = nullptr;
     Ui::SAKMainWindow* ui               = nullptr;
-    QMenu* toolsMenu                    = nullptr;
+    QMenu* toolsMenu                    = nullptr;    
     QAction *defaultStyleSheetAction    = nullptr;
     SAKUpdateManager* updateManager     = nullptr;
     SAKMoreInformation* moreInformation = nullptr;
+    QList<QLabel*> qqLabels;
 
     QTranslator qtTranslator;
     QTranslator qtBaeTranslator;
@@ -65,6 +69,7 @@ private:
     void initOptionMenu();
     void initLanguageMenu();
     void initHelpMenu();
+    void initStatusBar();
 
 
     void installLanguage();

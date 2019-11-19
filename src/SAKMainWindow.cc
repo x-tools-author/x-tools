@@ -18,6 +18,8 @@
 #include <QSysInfo>
 #include <QMetaEnum>
 #include <QSettings>
+#include <QStatusBar>
+#include <QClipboard>
 #include <QJsonArray>
 #include <QJsonObject>
 #include <QSpacerItem>
@@ -65,12 +67,17 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     ui->setupUi(this);
     updateManager = new SAKUpdateManager(this);
 
+
     QHBoxLayout *layout = new QHBoxLayout;
     layout->addWidget(mpTabWidget);
-    ui->centralWidget->setLayout(layout);
-    setWindowTitle(tr("瑞士军刀--开发调试工具集") + " v" + reinterpret_cast<SAKApplication*>(qApp)->applicationVersion());
 
-    this->resize(800, 600);
+    QWidget *centralWidget = new QWidget(this);
+    setCentralWidget(centralWidget);
+    centralWidget->setLayout(layout);
+
+    resize(800, 600);
+    centralWidget->layout()->setContentsMargins(6, 6, 6, 0);
+    setWindowTitle(tr("瑞士军刀--开发调试工具集") + " v" + reinterpret_cast<SAKApplication*>(qApp)->applicationVersion());
 
     mpTabWidget->setTabsClosable(true);
     connect(mpTabWidget, &QTabWidget::tabCloseRequested, this, &SAKMainWindow::closeDebugPage);    
@@ -78,6 +85,7 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     AddTab();
     initMenu();
     AddTool();   
+    initStatusBar();
 
     connect(QtStyleSheetApi::instance(), &QtStyleSheetApi::styleSheetChanged, this, &SAKMainWindow::changeStylesheet);
     connect(QtAppStyleApi::instance(), &QtAppStyleApi::appStyleChanged, this, &SAKMainWindow::changeAppStyle);
@@ -86,6 +94,25 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
 SAKMainWindow::~SAKMainWindow()
 {
     delete ui;
+}
+
+bool SAKMainWindow::eventFilter(QObject *obj, QEvent *event)
+{
+    for (auto var:qqLabels){
+        if (obj == var){
+            if (event->type() == QEvent::MouseButtonDblClick){
+                if (qqLabels.length() == 3){
+                    QApplication::clipboard()->setText(qqLabels.at(1)->text());
+                    return true;
+                }else{
+                    Q_ASSERT_X(false, __FUNCTION__, "qq label error");
+                }
+            }
+        }
+    }
+
+
+    return QMainWindow::eventFilter(obj, event);
 }
 
 void SAKMainWindow::AddTab()
@@ -321,6 +348,18 @@ void SAKMainWindow::initHelpMenu()
     QAction *moreInformationAction = new QAction(tr("更多信息"), this);
     helpMenu->addAction(moreInformationAction);
     connect(moreInformationAction, &QAction::triggered, moreInformation, &SAKMoreInformation::show);
+}
+
+void SAKMainWindow::initStatusBar()
+{
+    QStringList info;
+    info << tr("QQ交流群") << QString("952218522") << tr("(双击复制)");
+    for(auto var:info){
+        QLabel *label = new QLabel(var, this);
+        label->installEventFilter(this);
+        statusBar()->addPermanentWidget(label);
+        qqLabels.append(label);
+    }
 }
 
 void SAKMainWindow::installLanguage()
