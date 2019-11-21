@@ -1,11 +1,8 @@
 <RCC>
     <qresource prefix="/">
         <file>resources/files/History.txt</file>
-        <file>resources/images/America.png</file>
-        <file>resources/images/China.png</file>
         <file>resources/images/Gitee.png</file>
         <file>resources/images/GitHub.png</file>
-        <file>resources/images/Japan.png</file>
         <file>resources/images/SAKLogo.png</file>
         <file>translations/qt/qt_en.qm</file>
         <file>translations/qt/qt_zh_CN.qm</file>
@@ -29,5 +26,6 @@
         <file>resources/images/Pi.png</file>
         <file>resources/images/Windows.png</file>
         <file>resources/images/Zip.png</file>
+        <file>resources/images/Qt.png</file>
     </qresource>
 </RCC>
