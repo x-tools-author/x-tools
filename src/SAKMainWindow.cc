@@ -179,8 +179,9 @@ void SAKMainWindow::initMenu()
     initFileMenu();
     initToolMenu();
     initOptionMenu();    
-    initLanguageMenu();
-    initHelpMenu();    
+    initLanguageMenu();    
+    initLinksMenu();
+    initHelpMenu();
 }
 
 void SAKMainWindow::initFileMenu()
@@ -348,6 +349,32 @@ void SAKMainWindow::initHelpMenu()
     QAction *moreInformationAction = new QAction(tr("更多信息"), this);
     helpMenu->addAction(moreInformationAction);
     connect(moreInformationAction, &QAction::triggered, moreInformation, &SAKMoreInformation::show);
+}
+
+void SAKMainWindow::initLinksMenu()
+{
+    QMenu *linksMenu = new QMenu(tr("链接"), this);
+    menuBar()->addMenu(linksMenu);
+
+    struct Link {
+        QString name;
+        QString url;
+    };
+    QList<Link> linkList;
+
+    linkList << Link{tr("Qt官方下载"), QString("http://download.qt.io/official_releases/qt")}
+             << Link{tr("Qt官方博客"), QString("https://www.qt.io/blog")}
+             << Link{tr("Qt发布信息"), QString("https://wiki.qt.io/Qt_5.12_Release")};
+
+    for (auto var:linkList){
+        QAction *action = new QAction(QIcon(":/resources/images/Qt.png"), var.name, this);
+        action->setObjectName(var.url);
+        linksMenu->addAction(action);
+
+        connect(action, &QAction::triggered, this, [=](){
+            QDesktopServices::openUrl(QUrl(sender()->objectName()));
+        });
+    }
 }
 
 void SAKMainWindow::initStatusBar()

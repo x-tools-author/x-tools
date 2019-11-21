@@ -69,6 +69,7 @@ private:
     void initOptionMenu();
     void initLanguageMenu();
     void initHelpMenu();
+    void initLinksMenu();
     void initStatusBar();
 
 
