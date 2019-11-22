@@ -79,7 +79,7 @@ void SAKUdpDebugPage::openOrColoseDevice()
 
         udpDevice = new SAKUdpDevice(localHost, localPort, customSetting, targetHost, targetPort, this);
 
-        connect(this, &SAKUdpDebugPage::writeDataRequest,udpDevice, &SAKUdpDevice::writeBytes);
+        connect(this, &SAKUdpDebugPage::writeDataRequest, udpDevice, &SAKUdpDevice::writeBytes);
 
         connect(udpDevice, &SAKUdpDevice::bytesWriten,          this, &SAKUdpDebugPage::bytesWritten);
         connect(udpDevice, &SAKUdpDevice::bytesRead,            this, &SAKUdpDebugPage::bytesRead);

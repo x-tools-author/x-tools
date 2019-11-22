@@ -27,6 +27,11 @@ SAKUdpDeviceController::SAKUdpDeviceController(QWidget *parent)
     enableLocalSettingCheckBox = ui->enableLocalSettingCheckBox;
     targetHostLineEdit = ui->targetHostLineEdit;
     targetPortLineEdit = ui->targetPortLineEdit;
+    broadcastCheckBox = ui->broadcastCheckBox;
+    broadcastPortLineEdit = ui->broadcastPortLineEdit;
+    multicastCheckBox = ui->multicastCheckBox;
+    multicastAddressLineEdit = ui->multicastAddressLineEdit;
+    multicastPortLineEdit = ui->multicastPortLineEdit;
 
     refresh();
 }

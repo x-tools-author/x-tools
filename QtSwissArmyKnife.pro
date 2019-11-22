@@ -29,6 +29,10 @@ include(modules/Modules.pri)
 include(SAKSerialPort.pri)
 include(SAKSetup.pri)
 
+exists(private/SAKPrivate.pri){
+    include(private/SAKPrivate.pri)
+}
+
 #--------------------------------------------------------------------------------------------
 #编译目录配置
 UI_DIR      = $$OUT_PWD/ui

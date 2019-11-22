@@ -43,6 +43,11 @@ private:
     QCheckBox *enableLocalSettingCheckBox;
     QLineEdit *targetHostLineEdit;
     QLineEdit *targetPortLineEdit;
+    QCheckBox *broadcastCheckBox;
+    QLineEdit *broadcastPortLineEdit;
+    QCheckBox *multicastCheckBox;
+    QLineEdit *multicastAddressLineEdit;
+    QLineEdit *multicastPortLineEdit;
 };
 
 #endif
