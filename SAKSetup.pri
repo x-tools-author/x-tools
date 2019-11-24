@@ -66,6 +66,10 @@ contains(CONFIG, static){
         }
 
         DEPLOY_TARGET=$$replace(DEPLOY_TARGET, /, \\)
-        QMAKE_POST_LINK+=$$DEPLOY_TOOL $$DEPLOY_TARGET --force --no-translations
+        msvc {
+            QMAKE_POST_LINK+=$$DEPLOY_TOOL $$DEPLOY_TARGET --force --no-translations $$escape_expand(\\n)
+        }else{
+            QMAKE_POST_LINK+=$$DEPLOY_TOOL $$DEPLOY_TARGET --force --no-translations
+        }
     }
 }
