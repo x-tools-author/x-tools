@@ -16,7 +16,9 @@
 #include <QFile>
 #include <QDebug>
 #include <QMetaEnum>
+#ifdef SAK_IMPORT_COM_MODULE
 #include <QSerialPort>
+#endif
 #include <QHostAddress>
 #include <QApplication>
 #include <QStandardPaths>
