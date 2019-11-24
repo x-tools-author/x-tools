@@ -62,7 +62,7 @@ void QtCryptographicHashCalculator::run()
         int dataBlock = 1024*1024;
 
         while (1) {                       
-            startTime = QDateTime::currentSecsSinceEpoch();
+            startTime = QDateTime::currentDateTime().toMSecsSinceEpoch();
 
             QByteArray array = file.read(dataBlock);
             consumeBytes += array.length();
@@ -92,7 +92,7 @@ void QtCryptographicHashCalculator::run()
             /*
              * 计算剩余时间
              */
-            endTime = QDateTime::currentSecsSinceEpoch();
+            endTime = QDateTime::currentDateTime().toMSecsSinceEpoch();
             consumeTime = endTime - startTime;
             if (consumeTime != 0){
                 remainTime = remainBytes/dataBlock*consumeTime;
