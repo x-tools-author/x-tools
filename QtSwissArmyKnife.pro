@@ -98,6 +98,7 @@ HEADERS +=  \
     src/base/SAKMessageBox.hh \
     src/base/SAKWidget.hh \
     src/common/SAKCRCInterface.hh \
+    src/common/SAKCommonInterface.hh \
     src/page/SAKDebugPage.hh \
     src/page/input/SAKDebugPageInputManager.hh \
     src/page/input/SAKInputDataFactory.hh \
@@ -152,6 +153,7 @@ SOURCES +=  \
     src/base/SAKMessageBox.cc \
     src/base/SAKWidget.cc \
     src/common/SAKCRCInterface.cc \
+    src/common/SAKCommonInterface.cc \
     src/main.cc \
     src/page/SAKDebugPage.cc \
     src/page/input/SAKDebugPageInputManager.cc \
