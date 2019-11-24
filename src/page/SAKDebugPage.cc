@@ -15,6 +15,7 @@
 #include <QKeyEvent>
 #include <QMetaEnum>
 #include <QScrollBar>
+#include <QMessageBox>
 #include <QHBoxLayout>
 #include <QFileDialog>
 #include <QTextStream>
@@ -30,7 +31,9 @@
 #include "SAKDebugPageInputManager.hh"
 #include "SAKDebugPageOutputManager.hh"
 #include "SAKHighlightSettingsWidget.hh"
+#ifdef SAK_IMPORT_CHARTS_MODULE
 #include "SAKDataVisualizationManager.hh"
+#endif
 
 #include "ui_SAKDebugPage.h"
 
@@ -51,7 +54,9 @@ SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
     otherSettings           = new SAKOtherSettingsManager(this, this);
     statisticsManager       = new SAKStatisticsManager(this, this);
     debugPageInputManager   = new SAKDebugPageInputManager(this, this);
+#ifdef SAK_IMPORT_CHARTS_MODULE
     dataVisualizationManager= nullptr;
+#endif
 
     _readWriteParameters.waitForReadyReadTime = MINI_READ_WRITE_WATINGT_TIME;
     _readWriteParameters.waitForBytesWrittenTime = MINI_READ_WRITE_WATINGT_TIME;
@@ -69,7 +74,9 @@ SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
 SAKDebugPage::~SAKDebugPage()
 {
     delete ui;
+#ifdef SAK_IMPORT_CHARTS_MODULE
     delete dataVisualizationManager;
+#endif
 }
 
 void SAKDebugPage::write(QByteArray data)
@@ -352,6 +359,7 @@ void SAKDebugPage::initUiPointer()
 
 void SAKDebugPage::on_dataVisualizationPushButton_clicked()
 {
+#ifdef SAK_IMPORT_CHARTS_MODULE
     if (dataVisualizationManager){
         if (dataVisualizationManager->isHidden()){
             dataVisualizationManager->show();
@@ -365,7 +373,9 @@ void SAKDebugPage::on_dataVisualizationPushButton_clicked()
             dataVisualizationManager = nullptr;
         });
     }
-
+#else
+    QMessageBox::warning(this, tr("不支持的功能"), tr("该功能已被开发者禁用，可能原因是该平台不支持该功能"));
+#endif
 }
 
 void SAKDebugPage::initSettingKey()

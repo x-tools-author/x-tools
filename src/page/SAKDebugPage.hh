@@ -40,7 +40,9 @@ class SAKTransmissionSettings;
 class SAKDebugPageInputManager;
 class SAKDebugPageOutputManager;
 class SAKHighlightSettingsWidget;
+#ifdef SAK_IMPORT_CHARTS_MODULE
 class SAKDataVisualizationManager;
+#endif
 
 namespace Ui {
     class SAKDebugPage;
@@ -239,7 +241,9 @@ private slots:
     void on_dataVisualizationPushButton_clicked();
 
 private:
+#ifdef SAK_IMPORT_CHARTS_MODULE
     SAKDataVisualizationManager *dataVisualizationManager;
+#endif
     SAKOtherSettingsManager *otherSettings;
     SAKStatisticsManager    *statisticsManager;
     SAKDebugPageOutputManager  *outputManager;

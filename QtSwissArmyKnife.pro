@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT += core gui xml charts network
+QT += core gui xml network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -23,11 +23,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-include(modules/Modules.pri)
-
 # 子项目
-include(SAKSerialPort.pri)
 include(SAKSetup.pri)
+include(SAKDataVis.pri)
+include(SAKSerialPort.pri)
+include(modules/Modules.pri)
 
 exists(private/SAKPrivate.pri){
     include(private/SAKPrivate.pri)
@@ -77,8 +77,6 @@ INCLUDEPATH += \
     src/page/output \
     src/page/output/save \
     src/page/statistics \
-    src/page/visualization \
-    src/page/visualization/throughput \
     src/tcpclient \
     src/tcpserver \
     src/tools \
@@ -126,8 +124,6 @@ HEADERS +=  \
     src/page/output/save/SAKSaveOutputDataSettings.hh \
     src/page/output/save/SAKSaveOutputDataThread.hh \
     src/page/statistics/SAKStatisticsManager.hh \
-    src/page/visualization/SAKDataVisualizationManager.hh \
-    src/page/visualization/throughput/SAKThroughputWidget.hh \
     src/tcpclient/SAKTcpClientDebugPage.hh \
     src/tcpclient/SAKTcpClientDevice.hh \
     src/tcpclient/SAKTcpClientDeviceController.hh \
@@ -183,8 +179,6 @@ SOURCES +=  \
     src/page/output/save/SAKSaveOutputDataSettings.cc \
     src/page/output/save/SAKSaveOutputDataThread.cc \
     src/page/statistics/SAKStatisticsManager.cc \
-    src/page/visualization/SAKDataVisualizationManager.cc \
-    src/page/visualization/throughput/SAKThroughputWidget.cc \
     src/tcpclient/SAKTcpClientDebugPage.cc \
     src/tcpclient/SAKTcpClientDevice.cc \
     src/tcpclient/SAKTcpClientDeviceController.cc \
@@ -220,7 +214,6 @@ FORMS +=  \
     src/page/other/transmission/SAKTransmissionSettings.ui \
     src/page/other/transmission/SAKUdpTransmissionItemWidget.ui \
     src/page/output/save/SAKSaveOutputDataSettings.ui \
-    src/page/visualization/SAKDataVisualizationManager.ui \
     src/tcpclient/SAKTcpClientDeviceController.ui \
     src/tcpserver/SAKTcpServerDeviceController.ui \
     src/tools/crccalculator/SAKCRCCalculator.ui \
