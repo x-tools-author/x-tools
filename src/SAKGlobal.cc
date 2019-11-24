@@ -27,7 +27,9 @@
 #include "SAKGlobal.hh"
 #include "SAKCRCInterface.hh"
 
+#ifdef SAK_IMPORT_COM_MODULE
 Q_DECLARE_METATYPE(QSerialPortInfo)
+#endif
 SAKGlobal::SAKGlobal(QObject* parent)
     :QObject (parent)
 {
