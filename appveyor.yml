@@ -2,6 +2,6 @@ image:
     Visual Studio 2017
 
 build_script:
-- cmd: set PATH=C:\Qt\5.12.4\msvc2017\bin;%PATH%
+- cmd: set PATH=C:\Qt\5.13.2\msvc2017\bin;%PATH%
 - cmd: call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars32.bat"
 - cmd: qmake -makefile -o Makefile QtSwissArmyKnife.pro
