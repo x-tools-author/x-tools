@@ -1,11 +1,4 @@
-win32 {
-    !winrt{
-        QT  += serialport
-        DEFINES+=SAK_IMPORT_COM_MODULE
-    }
-}
-
-unix {
+qtHaveModule(serialport){
     QT  += serialport
     DEFINES+=SAK_IMPORT_COM_MODULE
 }
@@ -24,5 +17,5 @@ contains(DEFINES, SAK_IMPORT_COM_MODULE){
     INCLUDEPATH += \
         src/serialport
 }else {
-    message( "不支持串口调试功能，忽略串口调试模块！（串口调试功能已被屏蔽！）" )
+    warning("The Qt edition has no serialport module, the program will not has serialport debuging functioin.")
 }
