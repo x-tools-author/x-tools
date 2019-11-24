@@ -65,7 +65,7 @@ contains(CONFIG, static){
             DEPLOY_TARGET = $${OUT_PWD}/release/$${TARGET}.exe
         }
 
-        DEPLOY_TARGET = $$replace(DEPLOY_TARGET, /, \\)
-        QMAKE_POST_LINK += $$DEPLOY_TOOL $$DEPLOY_TARGET --force --no-translations $$escape_expand(\\n)
+        DEPLOY_TARGET=$$replace(DEPLOY_TARGET, /, \\)
+        QMAKE_POST_LINK+=$$DEPLOY_TOOL $$DEPLOY_TARGET --force --no-translations
     }
 }
