@@ -9,9 +9,6 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#include "SAKGlobal.hh"
-#include "SAKCRCInterface.hh"
-
 #include <QDir>
 #include <QFile>
 #include <QDebug>
@@ -22,8 +19,13 @@
 #include <QHostAddress>
 #include <QApplication>
 #include <QStandardPaths>
+#ifdef SAK_IMPORT_COM_MODULE
 #include <QSerialPortInfo>
+#endif
 #include <QNetworkInterface>
+
+#include "SAKGlobal.hh"
+#include "SAKCRCInterface.hh"
 
 Q_DECLARE_METATYPE(QSerialPortInfo)
 SAKGlobal::SAKGlobal(QObject* parent)
