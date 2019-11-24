@@ -9,11 +9,12 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#include "SAKSaveOutputDataThread.hh"
-#include "SAKSaveOutputDataSettings.hh"
-
 #include <QFile>
 #include <QTextStream>
+
+#include "SAKCommonInterface.hh"
+#include "SAKSaveOutputDataThread.hh"
+#include "SAKSaveOutputDataSettings.hh"
 
 SAKSaveOutputDataThread::SAKSaveOutputDataThread(QObject *parent)
     :QThread (parent)
@@ -45,7 +46,13 @@ void SAKSaveOutputDataThread::writeDataToFile(QByteArray data, SAKSaveOutputData
         break;
     case SAKSaveOutputDataSettings::SaveOutputDataParamters::Hex:
         if (file.open(QFile::WriteOnly | QFile::Text | QFile::Append)){
+#if (QT_VERSION >= QT_VERSION_CHECK(5,9,0))
             textStream << QString(data.toHex(' ')) << QString("\n");
+#else
+            SAKCommonInterface comInterface;
+            QByteArray temp = comInterface.byteArrayToHex(data, ' ');
+            textStream << temp << QString("\n");
+#endif
             file.close();
         }
         break;
