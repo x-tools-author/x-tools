@@ -1,1 +1,0 @@
-sonar-scanner.bat -D"sonar.projectKey=QtSwissArmyKnife" -D"sonar.sources=." -D"sonar.host.url=http://sq.lan.com" -D"sonar.login=45bc9fb5913f04ae9ee1dd5c6d812cc4f4d1c483"
