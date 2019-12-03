@@ -31,6 +31,14 @@ SAKSerialPortDevice::SAKSerialPortDevice(const QString name,
     moveToThread(this);
 }
 
+SAKSerialPortDevice::~SAKSerialPortDevice()
+{
+    if (serialPort){
+        serialPort->blockSignals(true);
+        serialPort->close();
+    }
+}
+
 void SAKSerialPortDevice::run()
 {
     serialPort = new QSerialPort(this);
@@ -50,9 +58,10 @@ void SAKSerialPortDevice::run()
 #endif
         emit deviceStatuChanged(true);
         exec();
-    }else{
+    }else{        
         emit deviceStatuChanged(false);
         emit messageChanged(tr("串口打开失败：") + serialPort->errorString(), false);
+        return;
     }
 }
 

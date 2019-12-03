@@ -27,6 +27,7 @@ public:
                            const QSerialPort::Parity parity,
                            SAKSerialPortDebugPage *debugPage,
                            QObject *parent = Q_NULLPTR);
+    ~SAKSerialPortDevice();
     void readBytes();
     void writeBytes(QByteArray data);
 private:
