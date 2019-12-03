@@ -90,12 +90,12 @@ INCLUDEPATH += \
 
 HEADERS +=  \
     src/SAKApplication.hh \
+    src/SAKApplicationInformation.hh \
     src/SAKCodingStyle.hh \
     src/SAKGlobal.hh \
     src/SAKMainWindow.hh \
     src/SAKMoreInformation.hh \
     src/SAKSettings.hh \
-    src/SAKVersion.hh \
     src/base/SAKDialog.hh \
     src/base/SAKMessageBox.hh \
     src/base/SAKWidget.hh \
@@ -145,12 +145,12 @@ HEADERS +=  \
 
 SOURCES +=  \
     src/SAKApplication.cc \
+    src/SAKApplicationInformation.cc \
     src/SAKCodingStyle.cc \
     src/SAKGlobal.cc \
     src/SAKMainWindow.cc \
     src/SAKMoreInformation.cc \
     src/SAKSettings.cc \
-    src/SAKVersion.cc \
     src/base/SAKDialog.cc \
     src/base/SAKMessageBox.cc \
     src/base/SAKWidget.cc \
@@ -201,7 +201,6 @@ SOURCES +=  \
 FORMS +=  \
     src/SAKMainWindow.ui \
     src/SAKMoreInformation.ui \
-    src/SAKVersion.ui \
     src/page/SAKDebugPage.ui \
     src/page/input/SAKInputDataItem.ui \
     src/page/input/SAKInputDataItemManager.ui \

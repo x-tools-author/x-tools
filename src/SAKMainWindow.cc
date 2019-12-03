@@ -30,18 +30,18 @@
 #include <QDesktopServices>
 
 #include "SAKGlobal.hh"
-#include "SAKVersion.hh"
 #include "SAKSettings.hh"
-#include "SAKCRCCalculator.hh"
 #include "SAKMainWindow.hh"
 #include "QtAppStyleApi.hh"
 #include "SAKApplication.hh"
 #include "SAKUdpDebugPage.hh"
-#include "SAKMoreInformation.hh"
 #include "QtStyleSheetApi.hh"
+#include "SAKCRCCalculator.hh"
 #include "SAKUpdateManager.hh"
+#include "SAKMoreInformation.hh"
 #include "SAKTcpClientDebugPage.hh"
 #include "SAKTcpServerDebugPage.hh"
+#include "SAKApplicationInformation.hh"
 #include "QtCryptographicHashController.hh"
 
 #ifdef SAK_IMPORT_COM_MODULE
@@ -76,8 +76,10 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     centralWidget->setLayout(layout);
 
     resize(800, 600);
-    centralWidget->layout()->setContentsMargins(6, 6, 6, 0);
-    setWindowTitle(tr("瑞士军刀--开发调试工具集") + " v" + reinterpret_cast<SAKApplication*>(qApp)->applicationVersion());
+    centralWidget->layout()->setContentsMargins(6, 6, 6, 6);
+    setWindowTitle(tr("瑞士军刀--嵌入式调试工具集")
+                   + " v" + SAKApplicationInformation::instance()->version()
+                   + " " + tr("用户交流QQ群") + " " + SAKApplicationInformation::instance()->qqGroupNumber());
 
     mpTabWidget->setTabsClosable(true);
     connect(mpTabWidget, &QTabWidget::tabCloseRequested, this, &SAKMainWindow::closeDebugPage);    
@@ -85,7 +87,6 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     AddTab();
     initMenu();
     AddTool();   
-    initStatusBar();
 
     connect(QtStyleSheetApi::instance(), &QtStyleSheetApi::styleSheetChanged, this, &SAKMainWindow::changeStylesheet);
     connect(QtAppStyleApi::instance(), &QtAppStyleApi::appStyleChanged, this, &SAKMainWindow::changeAppStyle);
@@ -98,20 +99,6 @@ SAKMainWindow::~SAKMainWindow()
 
 bool SAKMainWindow::eventFilter(QObject *obj, QEvent *event)
 {
-    for (auto var:qqLabels){
-        if (obj == var){
-            if (event->type() == QEvent::MouseButtonDblClick){
-                if (qqLabels.length() == 3){
-                    QApplication::clipboard()->setText(qqLabels.at(1)->text());
-                    return true;
-                }else{
-                    Q_ASSERT_X(false, __FUNCTION__, "qq label error");
-                }
-            }
-        }
-    }
-
-
     return QMainWindow::eventFilter(obj, event);
 }
 
@@ -148,10 +135,26 @@ void SAKMainWindow::AddTool()
 
 void SAKMainWindow::About()
 {
-    SAKVersion verDialog(this);
-    verDialog.show();
-    verDialog.activateWindow();
-    verDialog.exec();
+    QMessageBox::information(this, tr("关于"), QString("%1:%2\n"
+                                                     "%3:%4\n"
+                                                     "%5:%6\n"
+                                                     "%7:%8\n"
+                                                     "%9:%10\n"
+                                                     "%11:%12\n"
+                                                     "%13:%14\n"
+                                                     "%15:%16\n"
+                                                     "%17:%18\n\n"
+                                                     "%19:%20")
+                             .arg(tr("软件版本")).arg(SAKApplicationInformation::instance()->version())
+                             .arg(tr("软件作者")).arg(SAKApplicationInformation::instance()->authorName())
+                             .arg(tr("作者昵称")).arg(SAKApplicationInformation::instance()->authorNickname())
+                             .arg(tr("发布网站")).arg(SAKApplicationInformation::instance()->officeUrl())
+                             .arg(tr("联系邮箱")).arg(SAKApplicationInformation::instance()->email())
+                             .arg(tr("QQ账号")).arg(SAKApplicationInformation::instance()->qqNumber())
+                             .arg(tr("QQ交流群")).arg(SAKApplicationInformation::instance()->qqGroupNumber())
+                             .arg(tr("编译时间")).arg(SAKApplicationInformation::instance()->buildTime())
+                             .arg(tr("版权信息")).arg(SAKApplicationInformation::instance()->copyright())
+                             .arg(tr("业务合作")).arg(SAKApplicationInformation::instance()->business()));
 }
 
 void SAKMainWindow::addTool(QString toolName, QWidget *toolWidget)
@@ -377,18 +380,6 @@ void SAKMainWindow::initLinksMenu()
     }
 }
 
-void SAKMainWindow::initStatusBar()
-{
-    QStringList info;
-    info << tr("QQ交流群") << QString("952218522") << tr("(双击复制)");
-    for(auto var:info){
-        QLabel *label = new QLabel(var, this);
-        label->installEventFilter(this);
-        statusBar()->addPermanentWidget(label);
-        qqLabels.append(label);
-    }
-}
-
 void SAKMainWindow::installLanguage()
 {
     if (!sender()){
@@ -458,7 +449,6 @@ QWidget *SAKMainWindow::getDebugPage(int type)
         break;
     }
 
-    widget->setAttribute(Qt::WA_DeleteOnClose, true);
     return widget;
 }
 

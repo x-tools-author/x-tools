@@ -47,7 +47,6 @@ private:
     QAction *defaultStyleSheetAction    = nullptr;
     SAKUpdateManager* updateManager     = nullptr;
     SAKMoreInformation* moreInformation = nullptr;
-    QList<QLabel*> qqLabels;
 
     QTranslator qtTranslator;
     QTranslator qtBaeTranslator;
@@ -70,8 +69,6 @@ private:
     void initLanguageMenu();
     void initHelpMenu();
     void initLinksMenu();
-    void initStatusBar();
-
 
     void installLanguage();
     void addRemovablePage();

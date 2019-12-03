@@ -9,20 +9,22 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#include "SAKSettings.hh"
-#include "SAKApplication.hh"
-#include "SAKMainWindow.hh"
 
 #include <QTimer>
 #include <QSettings>
 #include <QTextCursor>
 #include <QTranslator>
 
+#include "SAKSettings.hh"
+#include "SAKMainWindow.hh"
+#include "SAKApplication.hh"
+#include "SAKApplicationInformation.hh"
+
 SAKApplication::SAKApplication(int argc, char **argv):
     QApplication(argc, argv)
 {
     installLanguage();
-    setApplicationVersion(QString("2.2.0"));
+    setApplicationVersion(SAKApplicationInformation::instance()->version());
 
     /// 注册表选项
     setOrganizationName(QString("Qter"));

@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright (C) 2018-2019 wuuhii. All rights reserved.
+ * Copyright (C) 2019 wuuhii. All rights reserved.
  *
  * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
  * project. The project is a open source project, you can get the source from:
@@ -9,227 +9,80 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#include <QDir>
-#include <QFile>
-#include <QDebug>
-#include <QMetaEnum>
-#ifdef SAK_IMPORT_COM_MODULE
-#include <QSerialPort>
-#endif
-#include <QHostAddress>
-#include <QApplication>
-#include <QStandardPaths>
-#ifdef SAK_IMPORT_COM_MODULE
-#include <QSerialPortInfo>
-#endif
-#include <QNetworkInterface>
 
-#include "SAKGlobal.hh"
-#include "SAKCRCInterface.hh"
+#include <QLocale>
+#include <QDateTime>
 
-#ifdef SAK_IMPORT_COM_MODULE
-Q_DECLARE_METATYPE(QSerialPortInfo)
-#endif
-SAKGlobal::SAKGlobal(QObject* parent)
+#include "SAKApplicationInformation.hh"
+
+SAKApplicationInformation *SAKApplicationInformation::thisInstance = nullptr;
+static const QDate buildDate = QLocale( QLocale::English ).toDate( QString(__DATE__).replace("  ", " 0"), "MMM dd yyyy");
+SAKApplicationInformation::SAKApplicationInformation(QObject *parent)
     :QObject (parent)
 {
-
+    thisInstance = this;
 }
 
-QString SAKGlobal::logFile()
+SAKApplicationInformation::~SAKApplicationInformation()
 {
-    QString fileName = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
-
-    QDir dir;
-    if (!dir.exists(fileName)){
-        SAKGlobal::mkMutiDir(fileName);
-    }    
-
-    fileName.append("/");
-    fileName.append("QtSwissArmyKnife.txt");
-
-    return fileName;
+    thisInstance = nullptr;
 }
 
-QString SAKGlobal::dataPath()
+SAKApplicationInformation* SAKApplicationInformation::instance()
 {
-    QString path = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
-    path.insert(path.lastIndexOf("/"),  QString("/Qter"));
-
-    QDir dir;
-    if (!dir.exists(path)){
-        mkMutiDir(path);
+    if (!thisInstance){
+        new SAKApplicationInformation;
     }
 
-    return path;
+    return thisInstance;
 }
 
-QString SAKGlobal::mkMutiDir(const QString path){
-
-    QDir dir(path);
-    if (dir.exists(path)){
-        return path;
-    }
-
-    QString parentDir = mkMutiDir(path.mid(0,path.lastIndexOf('/')));
-    QString dirname = path.mid(path.lastIndexOf('/') + 1);
-    QDir parentPath(parentDir);
-
-    if ( !dirname.isEmpty() ){
-        parentPath.mkpath(dirname);
-    }
-
-    return parentDir + "/" + dirname;
-}
-
-QString SAKGlobal::getIODeviceTypeName(int type)
+QString SAKApplicationInformation::email()
 {
-    QString name;
-    switch (type) {
-    case SAKEnumDebugPageTypeUDP:
-        name = tr("UDP调试");
-        break;
-    case SAKEnumDebugPageTypeTCPClient:
-        name = tr("TCP客户端");
-        break;
-    case SAKEnumDebugPageTypeTCPServer:
-        name = tr("TCP服务器");
-        break;
-#ifdef SAK_IMPORT_COM_MODULE
-    case SAKEnumDebugPageTypeCOM:
-        name = tr("串口调试");
-        break;
-#endif
-    default:
-        Q_ASSERT_X(false, __FUNCTION__, "Unknow debug page type");
-        break;
-    }
-
-    return name;
+    return QString("wuuhii@outlook.com");
 }
 
-
-#ifdef SAK_IMPORT_COM_MODULE
-void SAKGlobal::initComComboBox(QComboBox *comboBox)
+QString SAKApplicationInformation::qqGroupNumber()
 {
-    if (comboBox){
-        comboBox->clear();
-        QList<QSerialPortInfo> coms = QSerialPortInfo::availablePorts();
-        for(auto var:coms){
-            comboBox->addItem(var.portName() + " " + var.description(), QVariant::fromValue(var));
-        }
-    }
+    return QString("952218522");
 }
-#endif
 
-#ifdef SAK_IMPORT_COM_MODULE
-void SAKGlobal::initBaudRateComboBox(QComboBox *comboBox)
+QString SAKApplicationInformation::authorName()
 {
-    if (comboBox){
-        comboBox->clear();
-        QList<qint32> bd = QSerialPortInfo::standardBaudRates();
-        for (auto var:bd) {
-            comboBox->addItem(QString::number(var), QVariant::fromValue(var));
-        }
-
-        comboBox->setCurrentText("9600");
-    }
+    return QString("Qter");
 }
-#endif
 
-#ifdef SAK_IMPORT_COM_MODULE
-void SAKGlobal::initDataBitsComboBox(QComboBox *comboBox)
+QString SAKApplicationInformation::authorNickname()
 {
-    if (comboBox){
-        comboBox->clear();
-        comboBox->addItem("8", QVariant::fromValue(QSerialPort::Data8));
-        comboBox->addItem("7", QVariant::fromValue(QSerialPort::Data7));
-        comboBox->addItem("6", QVariant::fromValue(QSerialPort::Data6));
-        comboBox->addItem("5", QVariant::fromValue(QSerialPort::Data5));
-    }
+    return QString("Qt开发小王子");
 }
-#endif
 
-#ifdef SAK_IMPORT_COM_MODULE
-void SAKGlobal::initStopBitsComboBox(QComboBox *comboBox)
+QString SAKApplicationInformation::version()
 {
-    if (comboBox){
-        comboBox->clear();
-        comboBox->addItem("1", QVariant::fromValue(QSerialPort::OneStop));
-#ifdef Q_OS_WINDOWS
-        comboBox->addItem("1.5", QVariant::fromValue(QSerialPort::OneAndHalfStop));
-#endif
-        comboBox->addItem("2", QVariant::fromValue(QSerialPort::TwoStop));
-    }
+    return QString("2.3.0");
 }
-#endif
 
-#ifdef SAK_IMPORT_COM_MODULE
-void SAKGlobal::initParityComboBox(QComboBox *comboBox)
+QString SAKApplicationInformation::buildTime()
 {
-    if (comboBox){
-        comboBox->clear();
-        comboBox->addItem(tr("无校验位"), QVariant::fromValue(QSerialPort::NoParity));
-        comboBox->addItem(tr("偶校验"), QVariant::fromValue(QSerialPort::EvenParity));
-        comboBox->addItem(tr("奇校验"), QVariant::fromValue(QSerialPort::OddParity));
-        comboBox->addItem(tr("SpaceParity"), QVariant::fromValue(QSerialPort::SpaceParity));
-        comboBox->addItem(tr("MarkParity"), QVariant::fromValue(QSerialPort::MarkParity));
-    }
+    return (buildDate.toString("yyyy/MM/dd") + " " + QString(__TIME__));
 }
-#endif
 
-void SAKGlobal::initIpComboBox(QComboBox *comboBox)
+QString SAKApplicationInformation::officeUrl()
 {
-    if (comboBox){
-        comboBox->clear();
-        QList<QHostAddress> addresses = QNetworkInterface::allAddresses();
-        for(auto var:addresses){
-            if (var.protocol() == QAbstractSocket::IPv4Protocol) {
-                comboBox->addItem(var.toString());
-            }
-        }
-    }
+    return QString("wuhai.pro");
 }
 
-void SAKGlobal::initInputTextFormatComboBox(QComboBox *comboBox)
+QString SAKApplicationInformation::qqNumber()
 {
-    if (comboBox){
-        comboBox->clear();
-
-        comboBox->addItem(tr("二进制"), Ibin);
-        comboBox->addItem(tr("八进制"), Ioct);
-        comboBox->addItem(tr("十进制"), Idec);
-        comboBox->addItem(tr("十六进制"), Ihex);
-        comboBox->addItem(QString("ASCII"), Iascii);
-        comboBox->addItem(QString("UTF8"), Iutf8);
-        comboBox->addItem(tr("系统编码"), Ilocal);
-
-        comboBox->setCurrentIndex(4);
-    }
+    return QString("2869470394");
 }
 
-void SAKGlobal::initOutputTextFormatComboBox(QComboBox *comboBox)
+QString SAKApplicationInformation::copyright()
 {
-    comboBox->addItem(tr("二进制"), Obin);
-    comboBox->addItem(tr("八进制"), Ooct);
-    comboBox->addItem(tr("十进制"), Odec);
-    comboBox->addItem(tr("十六进制"), Ohex);
-    comboBox->addItem(QString("ASCII"), Oascii);
-    comboBox->addItem(QString("UTF8"), Outf8);
-    comboBox->addItem(QString("UTF16"), Outf16);
-    comboBox->addItem(QString("UCS4"), Oucs4);
-    comboBox->addItem(tr("宽字符"), Ostdwstring);
-    comboBox->addItem(tr("系统编码"), Olocal);
+    return QString("Copyright(©) 2018-%1 Qter. All rights reserved").arg(buildDate.toString("yyyy"));
 }
 
-void SAKGlobal::initCRCComboBox(QComboBox *comboBox)
+QString SAKApplicationInformation::business()
 {
-    if (comboBox){
-        comboBox->clear();
-        QMetaEnum enums = QMetaEnum::fromType<SAKCRCInterface::CRCModel>();
-        for (int i = 0; i < enums.keyCount(); i++){
-            comboBox->addItem(QString(enums.key(i)), QVariant::fromValue(enums.value(i)));
-        }
-    }
+    return tr("软件定制开发，请联系作者");
 }
-
