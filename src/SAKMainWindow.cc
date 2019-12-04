@@ -76,7 +76,7 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     centralWidget->setLayout(layout);
 
     centralWidget->layout()->setContentsMargins(6, 6, 6, 6);
-    setWindowTitle(tr("瑞士军刀--调试工具集")
+    setWindowTitle(tr("瑞士军刀--开发调试工具集")
                    + " v" + SAKApplicationInformation::instance()->version()
                    + " " + tr("用户交流QQ群") + " " + SAKApplicationInformation::instance()->qqGroupNumber());
 
