@@ -64,7 +64,7 @@
 
 SAKMainWindow::SAKMainWindow(QWidget *parent)
     :QMainWindow (parent)
-    ,mpTabWidget (new QTabWidget)
+    ,tabWidget (new QTabWidget)
     ,ui (new Ui::SAKMainWindow)
     ,moreInformation (new SAKMoreInformation)
 {
@@ -73,7 +73,7 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
 
 
     QHBoxLayout *layout = new QHBoxLayout;
-    layout->addWidget(mpTabWidget);
+    layout->addWidget(tabWidget);
 #ifdef Q_OS_ANDROID
     setWindowFlags(Qt::FramelessWindowHint);
     QScrollArea* scrollArea = new QScrollArea(this);
@@ -98,12 +98,12 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
                    + " v" + SAKApplicationInformation::instance()->version()
                    + " " + tr("用户交流QQ群") + " " + SAKApplicationInformation::instance()->qqGroupNumber());
 
-    mpTabWidget->setTabsClosable(true);
-    connect(mpTabWidget, &QTabWidget::tabCloseRequested, this, &SAKMainWindow::closeDebugPage);    
+    tabWidget->setTabsClosable(true);
+    connect(tabWidget, &QTabWidget::tabCloseRequested, this, &SAKMainWindow::closeDebugPage);
 
-    AddTab();
+    addTab();
     initMenu();
-    AddTool();   
+    addTool();
 
     connect(QtStyleSheetApi::instance(), &QtStyleSheetApi::styleSheetChanged, this, &SAKMainWindow::changeStylesheet);
     connect(QtAppStyleApi::instance(), &QtAppStyleApi::appStyleChanged, this, &SAKMainWindow::changeAppStyle);
@@ -119,28 +119,28 @@ bool SAKMainWindow::eventFilter(QObject *obj, QEvent *event)
     return QMainWindow::eventFilter(obj, event);
 }
 
-void SAKMainWindow::AddTab()
+void SAKMainWindow::addTab()
 {
     /*
      * 添加调试页面
      */
 #ifdef SAK_IMPORT_COM_MODULE
-    this->mpTabWidget->addTab( new SAKSerialPortDebugPage,  tr("串口调试"));
+    this->tabWidget->addTab( new SAKSerialPortDebugPage,  tr("串口调试"));
 #endif
-    this->mpTabWidget->addTab(new SAKUdpDebugPage,          tr("UDP调试"));
-    this->mpTabWidget->addTab(new SAKTcpClientDebugPage,    tr("TCP客户端"));
-    this->mpTabWidget->addTab(new SAKTcpServerDebugPage,    tr("TCP服务器"));
+    this->tabWidget->addTab(new SAKUdpDebugPage,          tr("UDP调试"));
+    this->tabWidget->addTab(new SAKTcpClientDebugPage,    tr("TCP客户端"));
+    this->tabWidget->addTab(new SAKTcpServerDebugPage,    tr("TCP服务器"));
 
     /*
      * 隐藏关闭按钮（必须在调用setTabsClosable()函数后设置，否则不生效）
      */
-    for (int i = 0; i < mpTabWidget->count(); i++){
-        mpTabWidget->tabBar()->setTabButton(i, QTabBar::RightSide, nullptr);
-        mpTabWidget->tabBar()->setTabButton(i, QTabBar::LeftSide, nullptr);
+    for (int i = 0; i < tabWidget->count(); i++){
+        tabWidget->tabBar()->setTabButton(i, QTabBar::RightSide, nullptr);
+        tabWidget->tabBar()->setTabButton(i, QTabBar::LeftSide, nullptr);
     }
 }
 
-void SAKMainWindow::AddTool()
+void SAKMainWindow::addTool()
 {
     addTool(tr("文件校验工具"),     new QtCryptographicHashController);
 
@@ -419,7 +419,7 @@ void SAKMainWindow::addRemovablePage()
     int type = qobject_cast<QAction*>(sender())->data().value<int>();
 
     QWidget *widget = getDebugPage(type);
-    mpTabWidget->addTab(widget, sender()->objectName());
+    tabWidget->addTab(widget, sender()->objectName());
 }
 
 void SAKMainWindow::openIODeviceWindow()
@@ -471,8 +471,8 @@ QWidget *SAKMainWindow::getDebugPage(int type)
 
 void SAKMainWindow::closeDebugPage(int index)
 {
-    QWidget *w = mpTabWidget->widget(index);
-    mpTabWidget->removeTab(index);
+    QWidget *w = tabWidget->widget(index);
+    tabWidget->removeTab(index);
     w->close();
 }
 

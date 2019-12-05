@@ -41,7 +41,7 @@ protected:
       bool eventFilter(QObject *obj, QEvent *event);
 
 private:
-    QTabWidget* mpTabWidget             = nullptr;
+    QTabWidget* tabWidget             = nullptr;
     Ui::SAKMainWindow* ui               = nullptr;
     QMenu* toolsMenu                    = nullptr;    
     QAction *defaultStyleSheetAction    = nullptr;
@@ -55,8 +55,8 @@ private:
     const char* appStyleKey = "Universal/appStyle";
     const char* appStylesheetKey = "Universal/appStylesheet";
     /// ----------------------------------------------------
-    void AddTab();    
-    void AddTool();
+    void addTab();    
+    void addTool();
 
     void addTool(QString toolName, QWidget *toolWidget);
     void changeStylesheet(QString styleSheetName);
