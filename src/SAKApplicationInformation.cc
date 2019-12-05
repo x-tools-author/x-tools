@@ -84,5 +84,5 @@ QString SAKApplicationInformation::copyright()
 
 QString SAKApplicationInformation::business()
 {
-    return tr("软件定制开发，请联系作者");
+    return tr("软件定制开发，可联系作者");
 }
