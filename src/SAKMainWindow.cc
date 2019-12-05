@@ -9,8 +9,9 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#include <QFile>
 
+#include <QFile>
+#include <QRect>
 #include <QLocale>
 #include <QTabBar>
 #include <QAction>
@@ -21,11 +22,14 @@
 #include <QStatusBar>
 #include <QClipboard>
 #include <QJsonArray>
+#include <QScrollBar>
+#include <QScrollArea>
 #include <QJsonObject>
 #include <QSpacerItem>
 #include <QMessageBox>
 #include <QStyleFactory>
 #include <QJsonDocument>
+#include <QDesktopWidget>
 #include <QJsonParseError>
 #include <QDesktopServices>
 
@@ -70,12 +74,26 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
 
     QHBoxLayout *layout = new QHBoxLayout;
     layout->addWidget(mpTabWidget);
+#ifdef Q_OS_ANDROID
+    setWindowFlags(Qt::FramelessWindowHint);
+    QScrollArea* scrollArea = new QScrollArea(this);
+    scrollArea->setWidgetResizable(true);
+    setCentralWidget(scrollArea);
+    scrollArea->setLayout(layout);
+    scrollArea->layout()->setContentsMargins(6, 6, 6, 6);
+    scrollArea->setWidget(mpTabWidget);
+    scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
+    QDesktopWidget *desktop = QApplication::desktop();
+    QRect rect = desktop->screenGeometry(mpTabWidget);
+    mpTabWidget->setFixedWidth(rect.width());
+#else
     QWidget *centralWidget = new QWidget(this);
     setCentralWidget(centralWidget);
     centralWidget->setLayout(layout);
 
     centralWidget->layout()->setContentsMargins(6, 6, 6, 6);
+#endif
     setWindowTitle(tr("瑞士军刀--开发调试工具集")
                    + " v" + SAKApplicationInformation::instance()->version()
                    + " " + tr("用户交流QQ群") + " " + SAKApplicationInformation::instance()->qqGroupNumber());
