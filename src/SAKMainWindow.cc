@@ -152,16 +152,16 @@ void SAKMainWindow::addTool()
 
 void SAKMainWindow::About()
 {
-    QMessageBox::information(this, tr("关于"), QString("%1:%2\n"
-                                                     "%3:%4\n"
-                                                     "%5:%6\n"
-                                                     "%7:%8\n"
-                                                     "%9:%10\n"
-                                                     "%11:%12\n"
-                                                     "%13:%14\n"
-                                                     "%15:%16\n"
-                                                     "%17:%18\n\n"
-                                                     "%19:%20")
+    QMessageBox::information(this, tr("关于"), QString("<font color=green>%1</font><br />%2<br />"
+                                                     "<font color=green>%3</font><br />%4<br />"
+                                                     "<font color=green>%5</font><br />%6<br />"
+                                                     "<font color=green>%7</font><br />%8<br />"
+                                                     "<font color=green>%9</font><br />%10<br />"
+                                                     "<font color=green>%11</font><br />%12<br />"
+                                                     "<font color=green>%13</font><br />%14<br />"
+                                                     "<font color=green>%15</font><br />%16<br />"
+                                                     "<font color=green>%17</font><br />%18<br /><br />"
+                                                     "<font color=red>%19</font><br />%20")
                              .arg(tr("软件版本")).arg(SAKApplicationInformation::instance()->version())
                              .arg(tr("软件作者")).arg(SAKApplicationInformation::instance()->authorName())
                              .arg(tr("作者昵称")).arg(SAKApplicationInformation::instance()->authorNickname())
