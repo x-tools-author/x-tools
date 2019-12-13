@@ -9,16 +9,21 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
+
 #include <QList>
 #include <QMetaEnum>
 #include <QLineEdit>
 
 #include "SAKGlobal.hh"
+#include "SAKUdpDevice.hh"
 #include "SAKUdpDeviceController.hh"
+#include "SAKUdpAdvanceSettingWidget.hh"
+
 #include "ui_SAKUdpDeviceController.h"
 SAKUdpDeviceController::SAKUdpDeviceController(QWidget *parent)
     :QWidget (parent)
     ,ui (new Ui::SAKUdpDeviceController)
+    ,udpAdvanceSettingWidget (new SAKUdpAdvanceSettingWidget)
 {
     ui->setupUi(this);
 
@@ -27,17 +32,15 @@ SAKUdpDeviceController::SAKUdpDeviceController(QWidget *parent)
     enableLocalSettingCheckBox = ui->enableLocalSettingCheckBox;
     targetHostLineEdit = ui->targetHostLineEdit;
     targetPortLineEdit = ui->targetPortLineEdit;
-    broadcastCheckBox = ui->broadcastCheckBox;
-    broadcastPortLineEdit = ui->broadcastPortLineEdit;
-    multicastCheckBox = ui->multicastCheckBox;
-    multicastAddressLineEdit = ui->multicastAddressLineEdit;
-    multicastPortLineEdit = ui->multicastPortLineEdit;
+    advanceUdpPushButton = ui->advanceUdpPushButton;
+    advanceUdpPushButton->setEnabled(false);
 
     refresh();
 }
 
 SAKUdpDeviceController::~SAKUdpDeviceController()
 {
+    delete udpAdvanceSettingWidget;
     delete ui;
 }
 
@@ -78,4 +81,17 @@ void SAKUdpDeviceController::setUiEnable(bool enable)
     enableLocalSettingCheckBox->setEnabled(enable);
     targetHostLineEdit->setEnabled(enable);
     targetPortLineEdit->setEnabled(enable);
+    advanceUdpPushButton->setEnabled(!enable);
+}
+
+void SAKUdpDeviceController::setUdpDevice(SAKUdpDevice *device)
+{
+    udpAdvanceSettingWidget->setUdpDevice(device);
+}
+
+void SAKUdpDeviceController::on_advanceUdpPushButton_clicked()
+{
+    if (udpAdvanceSettingWidget){
+        udpAdvanceSettingWidget->isHidden() ? udpAdvanceSettingWidget->show() : udpAdvanceSettingWidget->activateWindow();
+    }
 }

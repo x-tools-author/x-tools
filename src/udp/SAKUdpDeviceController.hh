@@ -12,14 +12,18 @@
 #ifndef SAKUDPDEVICECONTROLLER_HH
 #define SAKUDPDEVICECONTROLLER_HH
 
+#include <QMutex>
 #include <QWidget>
 #include <QCheckBox>
 #include <QComboBox>
+#include <QPushButton>
 
 namespace Ui {
     class SAKUdpDeviceController;
 }
 
+class SAKUdpDevice;
+class SAKUdpAdvanceSettingWidget;
 class SAKUdpDeviceController:public QWidget
 {
     Q_OBJECT
@@ -35,6 +39,7 @@ public:
 
     void refresh();
     void setUiEnable(bool enable);
+    void setUdpDevice(SAKUdpDevice* device);
 private:
     Ui::SAKUdpDeviceController *ui;
 
@@ -43,11 +48,12 @@ private:
     QCheckBox *enableLocalSettingCheckBox;
     QLineEdit *targetHostLineEdit;
     QLineEdit *targetPortLineEdit;
-    QCheckBox *broadcastCheckBox;
-    QLineEdit *broadcastPortLineEdit;
-    QCheckBox *multicastCheckBox;
-    QLineEdit *multicastAddressLineEdit;
-    QLineEdit *multicastPortLineEdit;
+    QPushButton* advanceUdpPushButton;
+private slots:
+    void on_advanceUdpPushButton_clicked();
+
+private:
+    SAKUdpAdvanceSettingWidget* udpAdvanceSettingWidget;
 };
 
 #endif

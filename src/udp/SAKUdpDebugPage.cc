@@ -24,7 +24,7 @@ SAKUdpDebugPage::SAKUdpDebugPage(QWidget *parent)
     ,udpDeviceController (new SAKUdpDeviceController)
 {
     setUpController();
-    setWindowTitle(tr("UDP调试"));
+    setWindowTitle(tr("UDP调试"));    
 }
 
 SAKUdpDebugPage::~SAKUdpDebugPage()
@@ -38,7 +38,10 @@ SAKUdpDebugPage::~SAKUdpDebugPage()
 
 void SAKUdpDebugPage::setUiEnable(bool enable)
 {
-    udpDeviceController->setEnabled(enable);
+    udpDeviceController->setUiEnable(enable);
+    if (!enable){
+        udpDeviceController->setUdpDevice(udpDevice);
+    }
     refreshPushButton->setEnabled(enable);
 }
 
