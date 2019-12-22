@@ -81,12 +81,12 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     setCentralWidget(scrollArea);
     scrollArea->setLayout(layout);
     scrollArea->layout()->setContentsMargins(6, 6, 6, 6);
-    scrollArea->setWidget(mpTabWidget);
+    scrollArea->setWidget(tabWidget);
     scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
     QDesktopWidget *desktop = QApplication::desktop();
-    QRect rect = desktop->screenGeometry(mpTabWidget);
-    mpTabWidget->setFixedWidth(rect.width());
+    QRect rect = desktop->screenGeometry(tabWidget);
+    tabWidget->setFixedWidth(rect.width());
 #else
     QWidget *centralWidget = new QWidget(this);
     setCentralWidget(centralWidget);
