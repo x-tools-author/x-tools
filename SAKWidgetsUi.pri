@@ -1,3 +1,7 @@
+include(SAKDataVis.pri)
+include(SAKSerialPort.pri)
+include(modules/Modules.pri)
+
 INCLUDEPATH += \
     src \
     src/base \

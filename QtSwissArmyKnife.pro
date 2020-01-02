@@ -27,9 +27,6 @@ CONFIG += c++11
 
 # 子项目
 include(SAKSetup.pri)
-include(SAKDataVis.pri)
-include(SAKSerialPort.pri)
-include(modules/Modules.pri)
 include(SAKCore.pri)
 include(SAKQmlUi.pri)
 include(SAKWidgetsUi.pri)
