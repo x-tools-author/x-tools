@@ -9,32 +9,16 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef SAKAPPLICATION_HH
-#define SAKAPPLICATION_HH
+#ifndef SAKDIALOG_HH
+#define SAKDIALOG_HH
 
-#include <QTranslator>
-#include <QApplication>
-#include <QStyleFactory>
+#include <QDialog>
 
-class SAKMainWindow;
-class SAKApplication:public QApplication
+class SAKDialog:public QDialog
 {
     Q_OBJECT
 public:
-    SAKApplication(int argc, char **argv);
-    ~SAKApplication();
-
-    void installLanguage();
-    QString settingStringLanguage();
-private:
-    QString _settingStringLanguage;
-    SAKMainWindow *mpMainWindow;
-
-    QTranslator qtTranslator;
-    QTranslator qtBaeTranslator;
-    QTranslator sakTranslator;
-signals:
-    void checkForUpdate();
+    SAKDialog(QWidget *parent = Q_NULLPTR);
 };
 
 #endif
