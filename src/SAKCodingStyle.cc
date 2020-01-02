@@ -26,3 +26,14 @@ void SAKCodingStyle::helloWorld()
 {
 
 }
+
+QString SAKCodingStyle::stringProperty1()
+{
+    return _stringProperty1;
+}
+
+void SAKCodingStyle::setStringProperty1(QString str)
+{
+    _stringProperty1 = str;
+    emit stringProperty1Changed;
+}
