@@ -5,19 +5,19 @@ qtHaveModule(charts){
 
 contains(DEFINES, SAK_IMPORT_CHARTS_MODULE){
     INCLUDEPATH += \
-        $$PWD/src/page/visualization \
-        $$PWD/src/page/visualization/throughput
+        $$PWD/ui/widgets/page/visualization \
+        $$PWD/ui/widgets/page/visualization/throughput
 
     FORMS += \
-        $$PWD/src/page/visualization/SAKDataVisualizationManager.ui
+        $$PWD//ui/widgets/page/visualization/SAKDataVisualizationManager.ui
 
     HEADERS += \
-        $$PWD/src/page/visualization/SAKDataVisualizationManager.hh \
-        $$PWD/src/page/visualization/throughput/SAKThroughputWidget.hh
+        $$PWD//ui/widgets/page/visualization/SAKDataVisualizationManager.hh \
+        $$PWD//ui/widgets/page/visualization/throughput/SAKThroughputWidget.hh
 
     SOURCES += \
-        $$PWD/src/page/visualization/SAKDataVisualizationManager.cc \
-        $$PWD/src/page/visualization/throughput/SAKThroughputWidget.cc
+        $$PWD//ui/widgets/page/visualization/SAKDataVisualizationManager.cc \
+        $$PWD//ui/widgets/page/visualization/throughput/SAKThroughputWidget.cc
 }else {
     warning("The Qt edition has no charts module, the program will not have data visualization functioin.")
 }

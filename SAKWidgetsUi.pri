@@ -1,20 +1,30 @@
+include(SAKDataVis.pri)
+include(SAKSerialPort.pri)
+include(SAKSetup.pri)
 include($$PWD/ui/widgets/qtappstyle/QtAppStyle.pri)
 include($$PWD/ui/widgets/qtstylesheet/QtStyleSheet.pri)
 
 INCLUDEPATH += \
     $$PWD/ui/widgets \
     $$PWD/ui/widgets/base \
-    $$PWD/ui/widgets/input \
-    $$PWD/ui/widgets/other \
-    $$PWD/ui/widgets/other/autoresponse \
-    $$PWD/ui/widgets/other/highlight \
-    $$PWD/ui/widgets/other/more \
-    $$PWD/ui/widgets/other/readwrite \
-    $$PWD/ui/widgets/other/timing \
-    $$PWD/ui/widgets/other/transmission
-
-DISTFILES += \
-    $$PWD/ui/widgets/tools/filechecker/QtCryptographicHash.pri
+    $$PWD/ui/widgets/page \
+    $$PWD/ui/widgets/page/input \
+    $$PWD/ui/widgets/page/other \
+    $$PWD/ui/widgets/page/other/autoresponse \
+    $$PWD/ui/widgets/page/other/highlight \
+    $$PWD/ui/widgets/page/other/more \
+    $$PWD/ui/widgets/page/other/readwrite \
+    $$PWD/ui/widgets/page/other/timing \
+    $$PWD/ui/widgets/page/other/transmission \
+    $$PWD/ui/widgets/page/output \
+    $$PWD/ui/widgets/page/output/save \
+    $$PWD/ui/widgets/page/statistics \
+    $$PWD/ui/widgets/tcpclient \
+    $$PWD/ui/widgets/tcpserver \
+    $$PWD/ui/widgets/tools/crccalculator \
+    $$PWD/ui/widgets/tools/filechecker \
+    $$PWD/ui/widgets/udp \
+    $$PWD/ui/widgets/update
 
 FORMS += \
     $$PWD/ui/widgets/SAKMainWindow.ui \
@@ -35,7 +45,6 @@ FORMS += \
     $$PWD/ui/widgets/page/other/transmission/SAKTransmissionSettings.ui \
     $$PWD/ui/widgets/page/other/transmission/SAKUdpTransmissionItemWidget.ui \
     $$PWD/ui/widgets/page/output/save/SAKSaveOutputDataSettings.ui \
-    $$PWD/ui/widgets/page/visualization/SAKDataVisualizationManager.ui \
     $$PWD/ui/widgets/serialport/SAKSerialPortDeviceController.ui \
     $$PWD/ui/widgets/tcpclient/SAKTcpClientDeviceController.ui \
     $$PWD/ui/widgets/tcpserver/SAKTcpServerDeviceController.ui \
@@ -78,8 +87,6 @@ HEADERS += \
     $$PWD/ui/widgets/page/output/save/SAKSaveOutputDataSettings.hh \
     $$PWD/ui/widgets/page/output/save/SAKSaveOutputDataThread.hh \
     $$PWD/ui/widgets/page/statistics/SAKStatisticsManager.hh \
-    $$PWD/ui/widgets/page/visualization/SAKDataVisualizationManager.hh \
-    $$PWD/ui/widgets/page/visualization/throughput/SAKThroughputWidget.hh \
     $$PWD/ui/widgets/serialport/SAKSerialPortDebugPage.hh \
     $$PWD/ui/widgets/serialport/SAKSerialPortDevice.hh \
     $$PWD/ui/widgets/serialport/SAKSerialPortDeviceController.hh \
@@ -131,8 +138,6 @@ SOURCES += \
     $$PWD/ui/widgets/page/output/save/SAKSaveOutputDataSettings.cc \
     $$PWD/ui/widgets/page/output/save/SAKSaveOutputDataThread.cc \
     $$PWD/ui/widgets/page/statistics/SAKStatisticsManager.cc \
-    $$PWD/ui/widgets/page/visualization/SAKDataVisualizationManager.cc \
-    $$PWD/ui/widgets/page/visualization/throughput/SAKThroughputWidget.cc \
     $$PWD/ui/widgets/serialport/SAKSerialPortDebugPage.cc \
     $$PWD/ui/widgets/serialport/SAKSerialPortDevice.cc \
     $$PWD/ui/widgets/serialport/SAKSerialPortDeviceController.cc \
