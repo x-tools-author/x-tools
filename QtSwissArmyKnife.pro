@@ -30,9 +30,9 @@ include(SAKSetup.pri)
 include(SAKDataVis.pri)
 include(SAKSerialPort.pri)
 include(modules/Modules.pri)
-include(QtSwissArmyKnifeBackend.pri)
-include(QtSwissArmyKnifeQmlFrontend.pri)
-include(QtSwissArmyKnifeWidgetFrontend.pri)
+include(SAKCore.pri)
+include(SAKQmlUi.pri)
+include(SAKWidgetsUi.pri)
 
 exists(private/SAKPrivate.pri){
     include(private/SAKPrivate.pri)
