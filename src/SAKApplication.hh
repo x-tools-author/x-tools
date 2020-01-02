@@ -17,7 +17,6 @@
 #include <QStyleFactory>
 
 class SAKMainWindow;
-
 class SAKApplication:public QApplication
 {
     Q_OBJECT
