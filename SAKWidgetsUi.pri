@@ -45,7 +45,6 @@ FORMS += \
     $$PWD/ui/widgets/page/other/transmission/SAKTransmissionSettings.ui \
     $$PWD/ui/widgets/page/other/transmission/SAKUdpTransmissionItemWidget.ui \
     $$PWD/ui/widgets/page/output/save/SAKSaveOutputDataSettings.ui \
-    $$PWD/ui/widgets/serialport/SAKSerialPortDeviceController.ui \
     $$PWD/ui/widgets/tcpclient/SAKTcpClientDeviceController.ui \
     $$PWD/ui/widgets/tcpserver/SAKTcpServerDeviceController.ui \
     $$PWD/ui/widgets/tools/crccalculator/SAKCRCCalculator.ui \
@@ -87,9 +86,6 @@ HEADERS += \
     $$PWD/ui/widgets/page/output/save/SAKSaveOutputDataSettings.hh \
     $$PWD/ui/widgets/page/output/save/SAKSaveOutputDataThread.hh \
     $$PWD/ui/widgets/page/statistics/SAKStatisticsManager.hh \
-    $$PWD/ui/widgets/serialport/SAKSerialPortDebugPage.hh \
-    $$PWD/ui/widgets/serialport/SAKSerialPortDevice.hh \
-    $$PWD/ui/widgets/serialport/SAKSerialPortDeviceController.hh \
     $$PWD/ui/widgets/tcpclient/SAKTcpClientDebugPage.hh \
     $$PWD/ui/widgets/tcpclient/SAKTcpClientDevice.hh \
     $$PWD/ui/widgets/tcpclient/SAKTcpClientDeviceController.hh \
@@ -138,9 +134,6 @@ SOURCES += \
     $$PWD/ui/widgets/page/output/save/SAKSaveOutputDataSettings.cc \
     $$PWD/ui/widgets/page/output/save/SAKSaveOutputDataThread.cc \
     $$PWD/ui/widgets/page/statistics/SAKStatisticsManager.cc \
-    $$PWD/ui/widgets/serialport/SAKSerialPortDebugPage.cc \
-    $$PWD/ui/widgets/serialport/SAKSerialPortDevice.cc \
-    $$PWD/ui/widgets/serialport/SAKSerialPortDeviceController.cc \
     $$PWD/ui/widgets/tcpclient/SAKTcpClientDebugPage.cc \
     $$PWD/ui/widgets/tcpclient/SAKTcpClientDevice.cc \
     $$PWD/ui/widgets/tcpclient/SAKTcpClientDeviceController.cc \
