@@ -1,3 +1,18 @@
+include($$PWD/ui/widgets/qtappstyle/QtAppStyle.pri)
+include($$PWD/ui/widgets/qtstylesheet/QtStyleSheet.pri)
+
+INCLUDEPATH += \
+    $$PWD/ui/widgets \
+    $$PWD/ui/widgets/base \
+    $$PWD/ui/widgets/input \
+    $$PWD/ui/widgets/other \
+    $$PWD/ui/widgets/other/autoresponse \
+    $$PWD/ui/widgets/other/highlight \
+    $$PWD/ui/widgets/other/more \
+    $$PWD/ui/widgets/other/readwrite \
+    $$PWD/ui/widgets/other/timing \
+    $$PWD/ui/widgets/other/transmission
+
 DISTFILES += \
     $$PWD/ui/widgets/tools/filechecker/QtCryptographicHash.pri
 
