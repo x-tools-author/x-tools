@@ -35,5 +35,5 @@ QString SAKCodingStyle::stringProperty1()
 void SAKCodingStyle::setStringProperty1(QString str)
 {
     _stringProperty1 = str;
-    emit stringProperty1Changed;
+    emit stringProperty1Changed();
 }

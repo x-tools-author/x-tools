@@ -44,7 +44,7 @@ private:
 private:
     QString _stringProperty1;
     QString stringProperty1();
-    void setStringProperty1();
+    void setStringProperty1(QString str);
 signals:
     void stringProperty1Changed();
 private:
