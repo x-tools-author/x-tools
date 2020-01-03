@@ -27,5 +27,6 @@
         <file>resources/images/Windows.png</file>
         <file>resources/images/Zip.png</file>
         <file>resources/images/Qt.png</file>
+        <file alias="qml/mainwindow/MainWindow.qml">ui/qml/MainWindow.qml</file>
     </qresource>
 </RCC>
