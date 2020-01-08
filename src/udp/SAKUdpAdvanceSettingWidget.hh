@@ -9,45 +9,47 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef SAKUDPDEVICECONTROLLER_HH
-#define SAKUDPDEVICECONTROLLER_HH
+#ifndef SAKUDPADCANCESETTINGS_HH
+#define SAKUDPADCANCESETTINGS_HH
 
 #include <QWidget>
+#include <QLineEdit>
 #include <QCheckBox>
-#include <QComboBox>
+#include <QPushButton>
+#include <QListWidget>
 
 namespace Ui {
-    class SAKUdpDeviceController;
+    class SAKUdpAdvanceSettingsWidget;
 }
 
-class SAKUdpDeviceController:public QWidget
+class SAKUdpDevice;
+class SAKUdpAdvanceSettingWidget:public QWidget
 {
     Q_OBJECT
 public:
-    SAKUdpDeviceController(QWidget *parent = Q_NULLPTR);
-    ~SAKUdpDeviceController();
+    SAKUdpAdvanceSettingWidget(QWidget *parent = Q_NULLPTR);
+    ~SAKUdpAdvanceSettingWidget();
 
-    QString localHost();
-    quint16 localPort();
-    QString targetHost();
-    quint16 targetPort();
-    bool enableCustomLocalSetting();
-
-    void refresh();
-    void setUiEnable(bool enable);
+    void setUdpDevice(SAKUdpDevice* device);
 private:
-    Ui::SAKUdpDeviceController *ui;
+    Ui::SAKUdpAdvanceSettingsWidget *ui;
 
-    QComboBox *localhostComboBox;
-    QLineEdit *localPortlineEdit;
-    QCheckBox *enableLocalSettingCheckBox;
-    QLineEdit *targetHostLineEdit;
-    QLineEdit *targetPortLineEdit;
-    QCheckBox *broadcastCheckBox;
-    QLineEdit *broadcastPortLineEdit;
-    QCheckBox *multicastCheckBox;
-    QLineEdit *multicastAddressLineEdit;
-    QLineEdit *multicastPortLineEdit;
+    QCheckBox* unicastCheckBox;
+    QCheckBox* broadcastCheckBox;
+    QLineEdit* broadcastPortLineEdit;
+    QCheckBox* multicastCheckBox;
+    QListWidget* listWidget;
+    QPushButton* deletePushButton;
+    QPushButton* addPushButton;
+private slots:
+    void on_unicastCheckBox_clicked();
+    void on_broadcastCheckBox_clicked();
+    void on_multicastCheckBox_clicked();
+    void on_deletePushButton_clicked();
+    void on_addPushButton_clicked();
+private:
+    SAKUdpDevice* udpDevice;
+    bool isInitUi;
 };
 
 #endif

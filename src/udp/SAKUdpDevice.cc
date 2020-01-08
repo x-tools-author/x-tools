@@ -30,6 +30,11 @@ SAKUdpDevice::SAKUdpDevice(QString localHost, quint16 localPort,
     moveToThread(this);
 }
 
+SAKUdpDevice::~SAKUdpDevice()
+{
+    qDebug() << __FUNCTION__;
+}
+
 void SAKUdpDevice::run()
 {
     udpSocket = new QUdpSocket(this);
@@ -79,11 +84,112 @@ void SAKUdpDevice::readBytes()
 
 void SAKUdpDevice::writeBytes(QByteArray data)
 {    
-    qint64 ret = udpSocket->writeDatagram(data, QHostAddress(targetHost), targetPort);
-    udpSocket->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
-    if (ret == -1){
-        emit messageChanged(tr("发送数据失败：")+udpSocket->errorString(), false);
-    }else{
-        emit bytesWriten(data);
+    /*
+     * 单播
+     */
+    if (parametersContextInstance().enableUnicast){
+        qint64 ret = udpSocket->writeDatagram(data, QHostAddress(targetHost), targetPort);
+        udpSocket->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
+        if (ret == -1){
+            emit messageChanged(tr("发送数据失败：")+udpSocket->errorString(), false);
+        }else{
+            emit bytesWriten(data);
+        }
     }
+
+    /*
+     * 组播
+     */
+    if (parametersContextInstance().enableMulticast){
+        for(auto var:parametersContextInstance().multicastInfoList){
+            if (var.enable){
+                udpSocket->writeDatagram(data, QHostAddress(var.address), var.port);
+                emit bytesWriten(data);
+            }
+        }
+    }
+
+    /*
+     * 广播
+     */
+    if (parametersContextInstance().enableBroadcast){
+        ParametersContext context = parametersContextInstance();
+        udpSocket->writeDatagram(data, QHostAddress::Broadcast, context.broadcastPort);
+        emit bytesWriten(data);
+#ifdef QT_DEBUG
+        qDebug() << __FUNCTION__ << "broadcast" << "->" << "255.255.255.255" << "(" << localHost << ")" << context.broadcastPort;
+#endif
+    }
+}
+
+void SAKUdpDevice::setUnicastEnable(bool enable)
+{
+    parametersContextMutex.lock();
+    parametersContext.enableUnicast = enable;
+    parametersContextMutex.unlock();
+}
+
+void SAKUdpDevice::setBroadcastEnable(bool enable)
+{
+    parametersContextMutex.lock();
+    parametersContext.enableBroadcast = enable;
+    parametersContextMutex.unlock();
+}
+
+void SAKUdpDevice::setBroadcastPort(quint16 port)
+{
+    parametersContextMutex.lock();
+    parametersContext.broadcastPort = port;
+    parametersContextMutex.unlock();
+}
+
+void SAKUdpDevice::addMulticastInfo(bool enable, QString address, quint16 port)
+{
+    parametersContextMutex.lock();
+    ParametersContext::MulticastInfo info{enable, address, port};
+    parametersContext.multicastInfoList.append(info);
+    udpSocket->joinMulticastGroup(QHostAddress(address));
+    parametersContextMutex.unlock();
+}
+
+void SAKUdpDevice::removeMulticastInfo(QString address, quint16 port)
+{
+    parametersContextMutex.lock();
+    for(int i = 0; 0 < parametersContext.multicastInfoList.length(); i++){
+        ParametersContext::MulticastInfo info = parametersContext.multicastInfoList.at(i);
+        if ((address == info.address) && (port == info.port)){
+            udpSocket->leaveMulticastGroup(QHostAddress(address));
+            parametersContext.multicastInfoList.removeAt(i);
+        }
+    }
+    parametersContextMutex.unlock();
+}
+
+void SAKUdpDevice::setMulticastEnable(bool enable, QString address, quint16 port)
+{
+    parametersContextMutex.lock();
+    for(int i = 0; 0 < parametersContext.multicastInfoList.length(); i++){
+        ParametersContext::MulticastInfo newInfo{enable, address, port};
+        ParametersContext::MulticastInfo oldInfo = parametersContext.multicastInfoList.at(i);
+        if ((address == oldInfo.address) && (port == oldInfo.port)){
+            parametersContext.multicastInfoList.replace(i, newInfo);
+        }
+    }
+    parametersContextMutex.unlock();
+}
+
+void SAKUdpDevice::setMulticastEnable(bool enable)
+{
+    parametersContextMutex.lock();
+    parametersContext.enableMulticast = enable;
+    parametersContextMutex.unlock();
+}
+
+const SAKUdpDevice::ParametersContext SAKUdpDevice::parametersContextInstance()
+{
+    parametersContextMutex.lock();
+    ParametersContext context = parametersContext;
+    parametersContextMutex.unlock();
+
+    return context;
 }

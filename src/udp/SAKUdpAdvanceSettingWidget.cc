@@ -9,73 +9,70 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#include <QList>
-#include <QMetaEnum>
-#include <QLineEdit>
 
-#include "SAKGlobal.hh"
-#include "SAKUdpDeviceController.hh"
-#include "ui_SAKUdpDeviceController.h"
-SAKUdpDeviceController::SAKUdpDeviceController(QWidget *parent)
+#include "SAKUdpDevice.hh"
+#include "SAKUdpAdvanceSettingWidget.hh"
+
+#include "ui_SAKUdpAdvanceSettingWidget.h"
+
+SAKUdpAdvanceSettingWidget::SAKUdpAdvanceSettingWidget(QWidget *parent)
     :QWidget (parent)
-    ,ui (new Ui::SAKUdpDeviceController)
+    ,ui (new Ui::SAKUdpAdvanceSettingsWidget)
+    ,isInitUi (true)
 {
     ui->setupUi(this);
 
-    localhostComboBox = ui->localhostComboBox;
-    localPortlineEdit = ui->localPortlineEdit;
-    enableLocalSettingCheckBox = ui->enableLocalSettingCheckBox;
-    targetHostLineEdit = ui->targetHostLineEdit;
-    targetPortLineEdit = ui->targetPortLineEdit;
+    unicastCheckBox = ui->unicastCheckBox;
     broadcastCheckBox = ui->broadcastCheckBox;
     broadcastPortLineEdit = ui->broadcastPortLineEdit;
     multicastCheckBox = ui->multicastCheckBox;
-    multicastAddressLineEdit = ui->multicastAddressLineEdit;
-    multicastPortLineEdit = ui->multicastPortLineEdit;
+    listWidget = ui->listWidget;
+    deletePushButton = ui->deletePushButton;
+    addPushButton = ui->addPushButton;
 
-    refresh();
+    isInitUi = false;
 }
 
-SAKUdpDeviceController::~SAKUdpDeviceController()
+SAKUdpAdvanceSettingWidget::~SAKUdpAdvanceSettingWidget()
 {
     delete ui;
 }
 
-QString SAKUdpDeviceController::localHost()
+void SAKUdpAdvanceSettingWidget::setUdpDevice(SAKUdpDevice *device)
 {
-    return localhostComboBox->currentText();
+    Q_CHECK_PTR(device);
+    udpDevice = device;
 }
 
-quint16 SAKUdpDeviceController::localPort()
+void SAKUdpAdvanceSettingWidget::on_unicastCheckBox_clicked()
 {
-    return static_cast<quint16>(localPortlineEdit->text().toInt());
+    if (!isInitUi){
+        bool enable = unicastCheckBox->isChecked();
+        udpDevice->setUnicastEnable(enable);
+    }
 }
 
-QString SAKUdpDeviceController::targetHost()
+void SAKUdpAdvanceSettingWidget::on_broadcastCheckBox_clicked()
 {
-    return targetHostLineEdit->text();
+    if (!isInitUi){
+        bool enable = broadcastCheckBox->isChecked();
+        broadcastPortLineEdit->setEnabled(!enable);
+        udpDevice->setBroadcastEnable(enable);
+        udpDevice->setBroadcastPort(quint16(broadcastPortLineEdit->text().toInt()));
+    }
 }
 
-quint16 SAKUdpDeviceController::targetPort()
+void SAKUdpAdvanceSettingWidget::on_multicastCheckBox_clicked()
 {
-    return static_cast<quint16>(targetPortLineEdit->text().toInt());
+
 }
 
-bool SAKUdpDeviceController::enableCustomLocalSetting()
+void SAKUdpAdvanceSettingWidget::on_deletePushButton_clicked()
 {
-    return enableLocalSettingCheckBox->isChecked();
+
 }
 
-void SAKUdpDeviceController::refresh()
+void SAKUdpAdvanceSettingWidget::on_addPushButton_clicked()
 {
-    SAKGlobal::initIpComboBox(localhostComboBox);
-}
 
-void SAKUdpDeviceController::setUiEnable(bool enable)
-{
-    localhostComboBox->setEnabled(enable);
-    localPortlineEdit->setEnabled(enable);
-    enableLocalSettingCheckBox->setEnabled(enable);
-    targetHostLineEdit->setEnabled(enable);
-    targetPortLineEdit->setEnabled(enable);
 }
