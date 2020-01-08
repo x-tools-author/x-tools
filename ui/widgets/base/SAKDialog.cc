@@ -9,31 +9,10 @@
  * If you want to know more about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#include <QDebug>
+#include "SAKDialog.hh"
 
-#include "SAKCodingStyle.hh"
-
-SAKCodingStyle::SAKCodingStyle(QObject *parent)
-    :QObject (parent)
-    ,obj1 (nullptr)
-    ,obj2 (nullptr)
-    ,obj3 (nullptr)
+SAKDialog::SAKDialog(QWidget *parent)
+    :QDialog (parent)
 {
 
-}
-
-void SAKCodingStyle::helloWorld()
-{
-
-}
-
-QString SAKCodingStyle::stringProperty1()
-{
-    return _stringProperty1;
-}
-
-void SAKCodingStyle::setStringProperty1(QString str)
-{
-    _stringProperty1 = str;
-    emit stringProperty1Changed();
 }

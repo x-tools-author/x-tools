@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT += core gui xml network
+QT += core gui xml network qml
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -27,9 +27,9 @@ CONFIG += c++11
 
 # 子项目
 include(SAKSetup.pri)
-include(SAKDataVis.pri)
-include(SAKSerialPort.pri)
-include(modules/Modules.pri)
+include(SAKCore.pri)
+include(SAKQmlUi.pri)
+include(SAKWidgetsUi.pri)
 
 exists(private/SAKPrivate.pri){
     include(private/SAKPrivate.pri)
@@ -58,10 +58,10 @@ TRANSLATIONS  += \
     Translations/sak/SAK_zh_CN.ts \
     Translations/sak/SAK_zh_TW.ts
 
-
 RESOURCES += \
     SAKResources.qrc \
 
+<<<<<<< HEAD
 
 INCLUDEPATH += \
     src \
@@ -228,6 +228,8 @@ FORMS +=  \
     src/update/SAKDownloadItemWidget.ui \
     src/update/SAKUpdateManager.ui
 
+=======
+>>>>>>> 0151947104ab983fbf818927eaf2e133bb5bd86c
 DISTFILES += \
     android/AndroidManifest.xml \
     android/build.gradle \

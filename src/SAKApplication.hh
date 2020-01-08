@@ -17,7 +17,6 @@
 #include <QStyleFactory>
 
 class SAKMainWindow;
-
 class SAKApplication:public QApplication
 {
     Q_OBJECT
@@ -26,11 +25,10 @@ public:
     ~SAKApplication();
 
     void installLanguage();
-    QString settingStringLanguage(){return _settingStringLanguage;}
+    QString settingStringLanguage();
 private:
-    const QString _settingStringLanguage = "Universal/language";
-
-    SAKMainWindow *mpMainWindow    = nullptr;
+    QString _settingStringLanguage;
+    SAKMainWindow *mpMainWindow;
 
     QTranslator qtTranslator;
     QTranslator qtBaeTranslator;
