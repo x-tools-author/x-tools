@@ -6,7 +6,7 @@
  *     https://github.com/wuuhii/QtSwissArmyKnife
  *     https://gitee.com/wuuhii/QtSwissArmyKnife
  *
- * If you want to know more about the project, please join our QQ group(952218522).
+ * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
 #ifndef SAKAPPLICATION_HH
