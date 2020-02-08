@@ -52,7 +52,6 @@ private:
     QTranslator qtBaeTranslator;
     QTranslator sakTranslator;
 
-    const char* appStyleKey = "Universal/appStyle";
     const char* appStylesheetKey = "Universal/appStylesheet";
     /// ----------------------------------------------------
     void addTab();    

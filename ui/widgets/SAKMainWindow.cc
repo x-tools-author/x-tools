@@ -101,6 +101,35 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     tabWidget->setTabsClosable(true);
     connect(tabWidget, &QTabWidget::tabCloseRequested, this, &SAKMainWindow::closeDebugPage);
 
+
+    /*
+     * 以下代码是设置软件风格
+     * 对于MACOS来说不设置为Windows（MACOS软件风格有两种，一种是Windows，另外一种好像是MACOS，不太确定）
+     * 对于Windows或者Linux系统来说，设置Funsion为默认软件风格
+     * 安卓系统不设置软件风格
+     * 2020年02月09号 Qt5.12 --by Qter
+     */
+#ifndef Q_OS_ANDROID
+    QString settingStyle = SAKSettings::instance()->appStyle();
+    if (settingStyle.isEmpty()){
+        QStringList styleKeys = QStyleFactory::keys();
+#ifdef Q_OS_MACOS
+        QString uglyStyle("Windows");
+        for(auto var:styleKeys){
+            if (var != uglyStyle){
+                changeAppStyle(var);
+                break;
+            }
+    }
+#else
+        QString defaultStyle("Fusion");
+        if (styleKeys.contains(defaultStyle)){
+            changeAppStyle(defaultStyle);
+        }
+#endif
+    }
+#endif
+
     addTab();
     initMenu();
     addTool();
@@ -191,7 +220,7 @@ void SAKMainWindow::changeStylesheet(QString styleSheetName)
 
 void SAKMainWindow::changeAppStyle(QString appStyle)
 {
-    SAKSettings::instance()->setValue(appStyleKey, appStyle);
+    SAKSettings::instance()->setAppStyle(appStyle);
 }
 
 void SAKMainWindow::initMenu()
@@ -283,7 +312,7 @@ void SAKMainWindow::initOptionMenu()
     QMenu *appStyleMenu = new QMenu(tr("软件风格"));
     optionMenu->addMenu(appStyleMenu);
     appStyleMenu->addActions(QtAppStyleApi::instance()->actions());
-    QString style = SAKSettings::instance()->value(appStyleKey).toString();
+    QString style = SAKSettings::instance()->appStyle();
     QtAppStyleApi::instance()->setStyle(style);
 }
 
