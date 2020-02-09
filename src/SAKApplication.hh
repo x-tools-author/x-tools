@@ -27,7 +27,6 @@ public:
     void installLanguage();
     QString settingStringLanguage();
 private:
-    QString _settingStringLanguage;
     SAKMainWindow *mpMainWindow;
 
     QTranslator qtTranslator;

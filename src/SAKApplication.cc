@@ -23,8 +23,6 @@ SAKApplication::SAKApplication(int argc, char **argv)
     :QApplication (argc, argv)
     ,mpMainWindow (Q_NULLPTR)
 {
-    _settingStringLanguage = QString("Universal/language");
-
     installLanguage();
     setApplicationVersion(SAKApplicationInformation::instance()->version());
 
@@ -50,7 +48,7 @@ SAKApplication::~SAKApplication()
 
 void SAKApplication::installLanguage()
 {
-    QString language = SAKSettings::instance()->value(_settingStringLanguage).toString();
+    QString language = SAKSettings::instance()->language();
     QString qmName;
     if (language.isEmpty()){
         if (QLocale().country() == QLocale::China){
@@ -76,9 +74,4 @@ void SAKApplication::installLanguage()
         action->setChecked(true);
         QString title = action->data().toString();
     }
-}
-
-QString SAKApplication::settingStringLanguage()
-{
-    return _settingStringLanguage;
 }
