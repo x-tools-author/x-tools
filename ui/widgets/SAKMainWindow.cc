@@ -212,7 +212,7 @@ void SAKMainWindow::addTool(QString toolName, QWidget *toolWidget)
 
 void SAKMainWindow::changeStylesheet(QString styleSheetName)
 {
-    SAKSettings::instance()->setValue(appStylesheetKey, styleSheetName);
+    SAKSettings::instance()->setAppStylesheet(styleSheetName);
     if (!styleSheetName.isEmpty()){
         defaultStyleSheetAction->setChecked(false);
     }
@@ -299,7 +299,7 @@ void SAKMainWindow::initOptionMenu()
 
     stylesheetMenu->addSeparator();
     stylesheetMenu->addActions(QtStyleSheetApi::instance()->actions());
-    QString styleSheetName = SAKSettings::instance()->value(appStylesheetKey).toString();
+    QString styleSheetName = SAKSettings::instance()->appStylesheet();
     if (!styleSheetName.isEmpty()){
         QtStyleSheetApi::instance()->setStyleSheet(styleSheetName);
     }else{
