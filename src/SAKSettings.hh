@@ -19,6 +19,7 @@ class SAKSettings:public QSettings
     Q_OBJECT
     Q_PROPERTY(bool enableAutoCheckForUpdate READ enableAutoCheckForUpdate WRITE setEnableAutoCheckForUpdate NOTIFY enableAutoCheckForUpdateChanged)
     Q_PROPERTY(QString appStyle READ appStyle WRITE setAppStyle NOTIFY appStyleChanged)
+    Q_PROPERTY(QString appStylesheet READ appStylesheet WRITE setAppStylesheet NOTIFY appStylesheetChanged)
 public:
     static SAKSettings* instance();
 private:
@@ -47,6 +48,17 @@ private:
     QString appStyleKey;
 signals:
     void appStyleChanged();
+
+    /*
+     * 以下是软件样式设置相关成员
+     */
+public:
+    QString appStylesheet();
+    void setAppStylesheet(QString stylesheet);
+private:
+    QString appStylesheetKey;
+signals:
+    void appStylesheetChanged();
 };
 
 #endif

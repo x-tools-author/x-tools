@@ -32,6 +32,7 @@ SAKSettings::SAKSettings(const QString &fileName, Format format, QObject *parent
 
     enableAutoCheckForUpdateKey = QString("Universal/enableAutoCheckForUpdate");
     appStyleKey = QString("Universal/appStyle");
+    appStylesheetKey = QString("Universal/appStylesheet");
 }
 
 SAKSettings::~SAKSettings()
@@ -60,4 +61,14 @@ void SAKSettings::setAppStyle(QString style)
 {
     setValue(appStyleKey, style);
     emit appStyleChanged();
+}
+
+QString SAKSettings::appStylesheet()
+{
+    return value(appStylesheetKey).toString();
+}
+
+void SAKSettings::setAppStylesheet(QString stylesheet)
+{
+    setValue(appStylesheetKey, stylesheet);
 }
