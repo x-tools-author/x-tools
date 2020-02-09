@@ -17,6 +17,7 @@
 class SAKSettings:public QSettings
 {
     Q_OBJECT
+    Q_PROPERTY(bool enableAutoCheckForUpdate READ enableAutoCheckForUpdate WRITE setEnableAutoCheckForUpdate NOTIFY enableAutoCheckForUpdateChanged)
     Q_PROPERTY(QString appStyle READ appStyle WRITE setAppStyle NOTIFY appStyleChanged)
 public:
     static SAKSettings* instance();
@@ -25,10 +26,16 @@ private:
     SAKSettings(const QString &fileName, QSettings::Format format, QObject *parent = nullptr);
     ~SAKSettings();
 
-public:
-    QString settingStringEnableAutoUpdate;
+    /*
+     * 以下是软件自动更新使能设置的相关成员
+     */
+public:    
     bool enableAutoCheckForUpdate();
     void setEnableAutoCheckForUpdate(bool enable);
+private:
+    QString enableAutoCheckForUpdateKey;
+signals:
+    void enableAutoCheckForUpdateChanged();
 
     /*
      * 以下软件风格设置相关成员

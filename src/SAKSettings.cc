@@ -30,7 +30,7 @@ SAKSettings::SAKSettings(const QString &fileName, Format format, QObject *parent
 {
     _instance = this;
 
-    settingStringEnableAutoUpdate = QString("Universal/enableAutoCheckForUpdate");
+    enableAutoCheckForUpdateKey = QString("Universal/enableAutoCheckForUpdate");
     appStyleKey = QString("Universal/appStyle");
 }
 
@@ -41,13 +41,14 @@ SAKSettings::~SAKSettings()
 
 bool SAKSettings::enableAutoCheckForUpdate()
 {
-    bool enable = value(settingStringEnableAutoUpdate).toBool();
+    bool enable = value(enableAutoCheckForUpdateKey).toBool();
     return enable;
 }
 
 void SAKSettings::setEnableAutoCheckForUpdate(bool enable)
-{
-    setValue(settingStringEnableAutoUpdate, enable);
+{    
+    setValue(enableAutoCheckForUpdateKey, enable);
+    emit enableAutoCheckForUpdateChanged();
 }
 
 QString SAKSettings::appStyle()
