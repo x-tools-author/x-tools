@@ -321,7 +321,7 @@ void SAKMainWindow::initLanguageMenu()
     QMenu *languageMenu = new QMenu(tr("语言"), this);
     menuBar()->addMenu(languageMenu);
 
-    QString language = SAKSettings::instance()->value(reinterpret_cast<SAKApplication*>(qApp)->settingStringLanguage()).toString();
+    QString language = SAKSettings::instance()->language();
 
     QFile file(":/translations/sak/Translations.json");
     file.open(QFile::ReadOnly);
@@ -437,7 +437,7 @@ void SAKMainWindow::installLanguage()
 
     QString language = action->objectName();
     QString name = action->data().toString();
-    SAKSettings::instance()->setValue(reinterpret_cast<SAKApplication*>(qApp)->settingStringLanguage(), language+"-"+name);
+    SAKSettings::instance()->setLanguage(language+"-"+name);
     reinterpret_cast<SAKApplication*>(qApp)->installLanguage();
     QMessageBox::information(this, tr("重启生效"),
                              tr("软件语言包已更改，重启软件生效！"));
