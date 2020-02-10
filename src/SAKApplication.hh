@@ -24,6 +24,9 @@ public:
     SAKApplication(int argc, char **argv);
     ~SAKApplication();
 
+    /**
+     * @brief installLanguage 安装语言包
+     */
     void installLanguage();
 private:
     SAKMainWindow *mpMainWindow;
