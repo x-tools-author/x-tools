@@ -69,7 +69,7 @@ void SAKApplication::installLanguage()
     sakTranslator.load(QString(":/translations/sak/SAK_%1.qm").arg(qmName));
     qApp->installTranslator(&sakTranslator);
 
-    if (sender()){
+    if (sender() && inherits("QAction")){
         QAction *action = reinterpret_cast<QAction*>(sender());
         action->setChecked(true);
         QString title = action->data().toString();
