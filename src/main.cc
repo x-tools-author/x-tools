@@ -14,6 +14,7 @@
 int main(int argc, char *argv[])
 {
     SAKApplication a(argc, argv);
+    a.setupUi(false);
 
     return a.exec();
 }
