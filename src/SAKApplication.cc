@@ -21,7 +21,7 @@
 
 SAKApplication::SAKApplication(int argc, char **argv)
     : QApplication (argc, argv)
-    , mpMainWindow (Q_NULLPTR)
+    , mainWindow (Q_NULLPTR)
     , qmlApplicationEngine(Q_NULLPTR)
 {
     installLanguage();
@@ -41,9 +41,9 @@ SAKApplication::SAKApplication(int argc, char **argv)
 
 SAKApplication::~SAKApplication()
 {
-    if (mpMainWindow){
-        delete mpMainWindow;
-        mpMainWindow = Q_NULLPTR;
+    if (mainWindow){
+        delete mainWindow;
+        mainWindow = Q_NULLPTR;
     }
 }
 
@@ -80,9 +80,9 @@ void SAKApplication::installLanguage()
 void SAKApplication::setupUi(bool classicalUi)
 {
     if (classicalUi){
-        if (!mpMainWindow){
-            mpMainWindow = new SAKMainWindow;
-            mpMainWindow->show();
+        if (!mainWindow){
+            mainWindow = new SAKMainWindow;
+            mainWindow->show();
         }
 
         if (qmlApplicationEngine){
@@ -99,9 +99,9 @@ void SAKApplication::setupUi(bool classicalUi)
             qmlApplicationEngine->load("qrc:/qml/mainwindow/MainWindow.qml");
         }
 
-        if (mpMainWindow){
-            delete  mpMainWindow;
-            mpMainWindow = Q_NULLPTR;
+        if (mainWindow){
+            delete  mainWindow;
+            mainWindow = Q_NULLPTR;
         }
     }
 }

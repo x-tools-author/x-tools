@@ -36,7 +36,7 @@ public:
      */
     void setupUi(bool classicalUi);
 private:
-    SAKMainWindow *mpMainWindow;
+    SAKMainWindow *mainWindow;
     QQmlApplicationEngine *qmlApplicationEngine;
 
     QTranslator qtTranslator;
