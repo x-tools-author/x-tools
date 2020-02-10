@@ -25,7 +25,6 @@ public:
     ~SAKApplication();
 
     void installLanguage();
-    QString settingStringLanguage();
 private:
     SAKMainWindow *mpMainWindow;
 
