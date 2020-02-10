@@ -100,6 +100,7 @@ void SAKApplication::setupUi(bool classicalUi)
         }
 
         if (mainWindow){
+            mainWindow->close();
             delete  mainWindow;
             mainWindow = Q_NULLPTR;
         }
