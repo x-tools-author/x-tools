@@ -322,7 +322,7 @@ void SAKMainWindow::initOptionMenu()
     QActionGroup *uiTypeActionGroup = new QActionGroup(this);
     QStringList actionsString = QStringList() << tr("经典界面") << tr("现代界面");
     for (int i = 0; i < actionsString.length(); i++){
-        QAction *action = new QAction(tr("经典界面"), this);
+        QAction *action = new QAction(actionsString.at(i), this);
         action->setData(QVariant::fromValue(i == 0 ? true : false));
         action->setCheckable(true);
         uiTypeActionGroup->addAction(action);
