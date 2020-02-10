@@ -5,4 +5,5 @@ ApplicationWindow {
     id: mainwindow
     width: 800
     height: 600
+    visible: true
 }
