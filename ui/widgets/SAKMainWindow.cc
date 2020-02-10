@@ -282,7 +282,7 @@ void SAKMainWindow::initOptionMenu()
     /*
      * 软件样式，设置默认样式需要重启软件
      */
-    QMenu *stylesheetMenu = new QMenu(tr("皮肤"));
+    QMenu *stylesheetMenu = new QMenu(tr("皮肤"), this);
     optionMenu->addMenu(stylesheetMenu);
     defaultStyleSheetAction = new QAction(tr("Qt默认样式"), this);
     defaultStyleSheetAction->setCheckable(true);
@@ -309,11 +309,30 @@ void SAKMainWindow::initOptionMenu()
     /*
      * 软件风格，默认使用Qt支持的第一种软件风格
      */
-    QMenu *appStyleMenu = new QMenu(tr("软件风格"));
+    QMenu *appStyleMenu = new QMenu(tr("软件风格"), this);
     optionMenu->addMenu(appStyleMenu);
     appStyleMenu->addActions(QtAppStyleApi::instance()->actions());
     QString style = SAKSettings::instance()->appStyle();
     QtAppStyleApi::instance()->setStyle(style);
+
+    /*
+     * ui类型
+     */
+    QMenu *uiTypeMenu = new QMenu(tr("界面类型"), this);
+    QActionGroup *uiTypeActionGroup = new QActionGroup(this);
+    QStringList actionsString = QStringList() << tr("经典界面") << tr("现代界面");
+    for (int i = 0; i < actionsString.length(); i++){
+        QAction *action = new QAction(tr("经典界面"), this);
+        action->setData(QVariant::fromValue(i == 0 ? true : false));
+        action->setCheckable(true);
+        uiTypeActionGroup->addAction(action);
+        uiTypeMenu->addAction(action);
+        connect(action, &QAction::triggered, this, &SAKMainWindow::changeUi);
+    }
+
+    bool isClasscalUi = SAKSettings::instance()->isClassicalUi();
+    uiTypeActionGroup->actions().at(isClasscalUi ? 0 : 1)->setChecked(true);
+    optionMenu->addMenu(uiTypeMenu);
 }
 
 void SAKMainWindow::initLanguageMenu()
@@ -509,4 +528,18 @@ void SAKMainWindow::createCRCCalculator()
 {
     SAKCRCCalculator *cal = new SAKCRCCalculator;
     cal->show();
+}
+
+void SAKMainWindow::changeUi()
+{
+    QObject *obj = sender();
+    if (obj){
+        if (obj->inherits("QAction")){
+            QAction *action = reinterpret_cast<QAction*>(obj);
+            bool isClassicalUi = action->data().toBool();
+            action->setChecked(true);
+            SAKSettings::instance()->setIsClassicalUi(isClassicalUi);
+            reinterpret_cast<SAKApplication*>(qApp)->setupUi(isClassicalUi);
+        }
+    }
 }
