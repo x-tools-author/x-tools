@@ -27,9 +27,8 @@ CONFIG += c++11
 
 # 子项目
 include(SAKSetup.pri)
-include(SAKCore.pri)
-include(SAKQmlUi.pri)
-include(SAKWidgetsUi.pri)
+include(SAKBackend.pri)
+include(SAKFrontend.pri)
 
 exists(private/SAKPrivate.pri){
     include(private/SAKPrivate.pri)
