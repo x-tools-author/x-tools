@@ -34,6 +34,7 @@ SAKSettings::SAKSettings(const QString &fileName, Format format, QObject *parent
     appStyleKey = QString("Universal/appStyle");
     appStylesheetKey = QString("Universal/appStylesheet");
     languageKey = QString("Universal/language");
+    isClassicalUiKey = QString("Universal/isClassicalUi");
 }
 
 SAKSettings::~SAKSettings()
@@ -83,4 +84,15 @@ void SAKSettings::setLanguage(QString language)
 {
     setValue(languageKey, language);
     emit languageChanged();
+}
+
+bool SAKSettings::isClassicalUi()
+{
+    return value(isClassicalUiKey).toBool();
+}
+
+void SAKSettings::setIsClassicalUi(bool isClassicalUi)
+{
+    setValue(isClassicalUiKey, isClassicalUi);
+    emit isClassicalUiChanged();
 }

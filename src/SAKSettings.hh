@@ -21,6 +21,7 @@ class SAKSettings:public QSettings
     Q_PROPERTY(QString appStyle READ appStyle WRITE setAppStyle NOTIFY appStyleChanged)
     Q_PROPERTY(QString appStylesheet READ appStylesheet WRITE setAppStylesheet NOTIFY appStylesheetChanged)
     Q_PROPERTY(QString language READ language WRITE setLanguage NOTIFY languageChanged)
+    Q_PROPERTY(bool isClassicalUi READ isClassicalUi WRITE setIsClassicalUi NOTIFY isClassicalUiChanged)
 public:
     static SAKSettings* instance();
 private:
@@ -63,6 +64,15 @@ private:
     QString languageKey;
 signals:
     void languageChanged();
+
+    /// @brief ui类型配置相关选项
+public:
+    bool isClassicalUi();
+    void setIsClassicalUi(bool isClassicalUi);
+private:
+    QString isClassicalUiKey;
+signals:
+    void isClassicalUiChanged();
 };
 
 #endif
