@@ -20,8 +20,9 @@
 #include "SAKApplicationInformation.hh"
 
 SAKApplication::SAKApplication(int argc, char **argv)
-    :QApplication (argc, argv)
-    ,mpMainWindow (Q_NULLPTR)
+    : QApplication (argc, argv)
+    , mpMainWindow (Q_NULLPTR)
+    , qmlApplicationEngine(Q_NULLPTR)
 {
     installLanguage();
     setApplicationVersion(SAKApplicationInformation::instance()->version());
@@ -30,9 +31,6 @@ SAKApplication::SAKApplication(int argc, char **argv)
     setOrganizationName(QString("Qter"));
     setOrganizationDomain(QString("IT"));
     setApplicationName(QString("QtSwissArmyKnife"));
-
-    mpMainWindow = new SAKMainWindow;
-    mpMainWindow->show();
 
     QTimer::singleShot(5*1000, [=](){
         if (SAKSettings::instance()->enableAutoCheckForUpdate()){
@@ -43,7 +41,10 @@ SAKApplication::SAKApplication(int argc, char **argv)
 
 SAKApplication::~SAKApplication()
 {
-
+    if (mpMainWindow){
+        delete mpMainWindow;
+        mpMainWindow = Q_NULLPTR;
+    }
 }
 
 void SAKApplication::installLanguage()
@@ -73,5 +74,34 @@ void SAKApplication::installLanguage()
         QAction *action = reinterpret_cast<QAction*>(sender());
         action->setChecked(true);
         QString title = action->data().toString();
+    }
+}
+
+void SAKApplication::setupUi(bool classicalUi)
+{
+    if (classicalUi){
+        if (!mpMainWindow){
+            mpMainWindow = new SAKMainWindow;
+            mpMainWindow->show();
+        }
+
+        if (qmlApplicationEngine){
+            QList<QObject*> rootObjectList = qmlApplicationEngine->rootObjects();
+            for (auto var:rootObjectList){
+                delete var;
+            }
+            delete qmlApplicationEngine;
+            qmlApplicationEngine = Q_NULLPTR;
+        }
+    }else{
+        if (!qmlApplicationEngine){
+            qmlApplicationEngine = new QQmlApplicationEngine(this);
+            qmlApplicationEngine->load("qrc:/qml/mainwindow/MainWindow.qml");
+        }
+
+        if (mpMainWindow){
+            delete  mpMainWindow;
+            mpMainWindow = Q_NULLPTR;
+        }
     }
 }

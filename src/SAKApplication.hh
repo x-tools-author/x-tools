@@ -15,6 +15,7 @@
 #include <QTranslator>
 #include <QApplication>
 #include <QStyleFactory>
+#include <QQmlApplicationEngine>
 
 class SAKMainWindow;
 class SAKApplication:public QApplication
@@ -28,8 +29,15 @@ public:
      * @brief installLanguage 安装语言包
      */
     void installLanguage();
+
+    /**
+     * @brief setupUi 安装/切换ui
+     * @param classicalUi 该值为true时，切换为经典ui（基于味道哥特式），否则切换为“现代ui”（基于qml）
+     */
+    void setupUi(bool classicalUi);
 private:
     SAKMainWindow *mpMainWindow;
+    QQmlApplicationEngine *qmlApplicationEngine;
 
     QTranslator qtTranslator;
     QTranslator qtBaeTranslator;
