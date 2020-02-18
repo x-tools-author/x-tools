@@ -7,7 +7,7 @@
  *     https://gitee.com/wuuhii/QtSwissArmyKnife
  *
  * For more information about the project, please join our QQ group(952218522).
- * In addition, the email address of the project author is wuuhii@outlook.com.
+ * In addition, the email address of the project author is qter188@outlook.com.
  */
 #ifndef SAKHIGHLIGHTERSETTINGSWIDGET_HH
 #define SAKHIGHLIGHTERSETTINGSWIDGET_HH
