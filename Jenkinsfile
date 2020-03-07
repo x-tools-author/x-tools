@@ -10,7 +10,7 @@ pipeline {
             }
         
             steps {
-                bat 'mkdir build&&cd build&&%{SAK_QMAKE}% -makefile -o Makefile %{WORKSPACE}%/QtSwissArmyKnife.pro&&%{SAK_NMAKE}%'
+                bat '%{SAK_QMAKE}% -makefile -o Makefile QtSwissArmyKnife.pro&&%{SAK_NMAKE}%'
             }
         }
         stage('Build') {
