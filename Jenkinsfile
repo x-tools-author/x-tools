@@ -1,20 +1,17 @@
+Jenkinsfile (Declarative Pipeline)
 pipeline {
-        agent none
-        stages {
-          stage("build & SonarQube analysis") {
+    agent any
+    stages {
+        stage("build") {
             agent any
             steps {
-              withSonarQubeEnv('sq.lan.com') {
-                sh 'mvn clean package sonar:sonar'
-              }
+                withSonarQubeEnv('sq.lan.com') {
+                    cmd 'echo hello Jenkinsfile'
+                    cmd 'set PATH=D:\qt\5.12\windows_5.12.6_msvc2017_32bits_static\bin;%PATH%'
+                    cmd 'call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars32.bat"'
+                    cmd 'qmake -makefile -o Makefile QtSwissArmyKnife.pro'
+                }
             }
-          }
-          stage("Quality Gate") {
-            steps {
-              timeout(time: 1, unit: 'HOURS') {
-                waitForQualityGate abortPipeline: true
-              }
-            }
-          }
         }
-      }
+    }
+}
