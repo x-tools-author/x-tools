@@ -2,17 +2,16 @@ pipeline {
     agent any
 
     stages {
-        stage('Setup environment') {
+        stage('Windows 32 bit release building') {
             steps {
-                echo 'Setup environment....'
-                bat 'set PATH=C:/Qt/5.13.2/msvc2017/bin;%PATH%'
-                //bat 'call C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Auxiliary/Build/vcvars32.bat'
+                bat 'set PATH=D:/qt/5.12/windows_5.12.6_msvc2017_32bits_static/bin;%PATH%'
+                bat 'set PATH=C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx86/x86;%PATH%'
+                bat 'qmake -makefile -o Makefile QtSwissArmyKnife.pro CONFIG+=release'
             }
         }
         stage('Build') {
             steps {
                 echo 'Deploying....'
-                bat 'qmake -makefile -o Makefile QtSwissArmyKnife.pro'
             }
         }
         stage('Test') {
