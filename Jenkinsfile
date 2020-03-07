@@ -5,7 +5,7 @@ pipeline {
         stage('Setup environment') {
             steps {
                 echo 'Setup environment....'
-                set PATH=C:\\Qt\\5.13.2\\msvc2017\\bin;%PATH%
+                bat 'set PATH=C:\Qt\5.13.2\msvc2017\bin;%PATH%'
             }
         }
         stage('Build') {
