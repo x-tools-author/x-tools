@@ -1,6 +1,4 @@
-﻿Jenkinsfile (Declarative Pipeline)
-
-pipeline {
+﻿pipeline {
     agent any
 
     stages {
