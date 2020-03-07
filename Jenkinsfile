@@ -1,15 +1,24 @@
 Jenkinsfile (Declarative Pipeline)
+
 pipeline {
     agent any
+
     stages {
-        stage("build") {
-            agent any
+        stage('Build') {
             steps {
-                echo hello Jenkinsfile
-                set PATH=D:\qt\5.12\windows_5.12.6_msvc2017_32bits_static\bin;%PATH%
-                call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars32.bat"
-                qmake -makefile -o Makefile QtSwissArmyKnife.pro
+                echo 'Building..'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
             }
         }
     }
 }
+
