@@ -4,13 +4,17 @@ pipeline {
     stages {
         stage('Setup environment') {
             steps {
-                set PATH=C:\Qt\5.13.2\msvc2017\bin;%PATH%
-                call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars32.bat"
+                echo 'Setup environment....'
             }
         }
         stage('Build') {
             steps {
-                qmake -makefile -o Makefile QtSwissArmyKnife.pro
+                echo 'Deploying....'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Test....'
             }
         }
         stage('Deploy') {
