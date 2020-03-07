@@ -6,7 +6,8 @@ pipeline {
             steps {
                 echo 'Setup environment....'
                 bat 'set PATH=C:/Qt/5.13.2/msvc2017/bin;%PATH%'
-                bat 'C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Auxiliary/Build/vcvars32.bat'
+                bat 'set PATH=C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Auxiliary/Build;%PATH%'
+                bat 'vcvars32.bat'
             }
         }
         stage('Build') {
