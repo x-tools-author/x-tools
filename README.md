@@ -1,10 +1,9 @@
-# Project
-
-[![Build status](https://ci.appveyor.com/api/projects/status/si4q8a8e7i4sxvbl?svg=true)](https://ci.appveyor.com/project/wuuhii/qtswissarmyknife) [![Build Status](https://travis-ci.org/wuuhii/QtSwissArmyKnife.svg?branch=master)](https://travis-ci.org/wuuhii/QtSwissArmyKnife)
-
-## Introduce
+# "Swiss Army Knigfe"
 
 The goal of this project is to create an easy-to-use, multi-function, multi-language and cross-platform debugging tool set.
+
+[中文](./doc/zh_CN/README.md)  
+
 
 ## Debug Tools
 
