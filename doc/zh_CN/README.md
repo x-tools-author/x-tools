@@ -6,7 +6,7 @@ QSAK（Qt Swiss Army Knife）是一款基于Qt开源框架打造的多功能、�
 
 ## 调试功能
 
-| F \| P         | Windows x86 | Linux x86    | MacOS        | Raspberry Pi    | Android v7   | Android v8   | Android x86  |
+| F \\ P         | Windows x86 | Linux x86    | MacOS        | Raspberry Pi    | Android v7   | Android v8   | Android x86  |
 | -------------- | ----------- | ------------ | ------------ | --------------- | ------------ | ------------ | ------------ |
 | SerialPorrt    | Y           | Y            | Y            |  N              | N            | N            | N            |
 | TcpClient      | Y           | Y            | Y            |  Y              | N            | N            | N            |
@@ -39,7 +39,7 @@ QSAK（Qt Swiss Army Knife）是一款基于Qt开源框架打造的多功能、�
 
 ## 构建环境
 
-| E \| T         | Windows x86 | Linux x86    | MacOS        | ios             | Raspberry pi5   | Android        |
+| E \\ T         | Windows x86 | Linux x86    | MacOS        | ios             | Raspberry pi5   | Android        |
 | -------------- | ----------- | ------------ | ------------ | ------------    | --------------- |--------------- |
 | Qt Version     | 5.15        | 5.15         | Qt 5.15      |  Qt 15          | 5.15            | 5.15           |
 | Compiler       | msvc 2017   | g++ 7.3      | clang 9      |  clang 9        | g++ 8.3         | g++ 4.9        |
@@ -50,7 +50,7 @@ QSAK（Qt Swiss Army Knife）是一款基于Qt开源框架打造的多功能、�
 
 注：**E：开发环境 T：目标平台**
 
-## Ui-Main Window
+## 主界面预览
 
 ![MainWindow.png](MainWindow.png)
 
