@@ -20,7 +20,7 @@ QSAK（Qt Swiss Army Knife）是一款基于Qt开源框架打造的多功能、�
 | HTTP           | N           | N            | N            |  N              | N            | N            | N            |
 | HTTPS          | N           | N            | N            |  N              | N            | N            | N            |
 
-注：**F: Function P: Platform**
+注：**F：功能 P：开发平台**
 
 ## 协议解释
 
@@ -48,7 +48,7 @@ QSAK（Qt Swiss Army Knife）是一款基于Qt开源框架打造的多功能、�
 | SDK            | /           | /            | /            | /               | /               | r24            |
 | Xcode          | /           | /            | 10           | 10              | /               | /              |
 
-注：**E: 开发环境 T: 目标平台**
+注：**E：开发环境 T：目标平台**
 
 ## Ui-Main Window
 
