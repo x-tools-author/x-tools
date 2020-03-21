@@ -36,14 +36,14 @@ SAKApplication::SAKApplication(int argc, char **argv)
             emit this->checkForUpdate();
         }
     });
+
+    mainWindow = new SAKMainWindow;
+    mainWindow->show();
 }
 
 SAKApplication::~SAKApplication()
 {
-    if (mainWindow){
-        delete mainWindow;
-        mainWindow = Q_NULLPTR;
-    }
+
 }
 
 void SAKApplication::installLanguage()
@@ -73,13 +73,5 @@ void SAKApplication::installLanguage()
         QAction *action = reinterpret_cast<QAction*>(sender());
         action->setChecked(true);
         QString title = action->data().toString();
-    }
-}
-
-void SAKApplication::setupUi()
-{
-    if (!mainWindow){
-        mainWindow = new SAKMainWindow;
-        mainWindow->show();
     }
 }

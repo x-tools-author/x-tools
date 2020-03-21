@@ -28,9 +28,6 @@ public:
      * @brief installLanguage 安装语言包
      */
     void installLanguage();
-
-    /// @brief 安装ui
-    void setupUi();
 private:
     SAKMainWindow *mainWindow;
 

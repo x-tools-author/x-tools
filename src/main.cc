@@ -9,14 +9,10 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#include "SAKSettings.hh"
 #include "SAKApplication.hh"
 
 int main(int argc, char *argv[])
 {
     SAKApplication a(argc, argv);
-
-    a.setupUi();
-
     return a.exec();
 }
