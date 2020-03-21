@@ -1,4 +1,4 @@
-# "Swiss Army Knigfe"
+# "Swiss Army Knife"
 
 The goal of this project is to create an easy-to-use, multi-function, multi-language and cross-platform debugging tool set.
 
