@@ -29,11 +29,8 @@ public:
      */
     void installLanguage();
 
-    /**
-     * @brief setupUi 安装/切换ui
-     * @param classicalUi 该值为true时，切换为经典ui（基于味道哥特式），否则切换为“现代ui”（基于qml）
-     */
-    void setupUi(bool classicalUi);
+    /// @brief 安装ui
+    void setupUi();
 private:
     SAKMainWindow *mainWindow;
 

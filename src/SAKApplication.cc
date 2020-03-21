@@ -76,9 +76,8 @@ void SAKApplication::installLanguage()
     }
 }
 
-void SAKApplication::setupUi(bool classicalUi)
+void SAKApplication::setupUi()
 {
-    Q_UNUSED(classicalUi);
     if (!mainWindow){
         mainWindow = new SAKMainWindow;
         mainWindow->show();
