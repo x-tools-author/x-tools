@@ -165,8 +165,6 @@ HEADERS += \
     src/base/page/output/save/SAKSaveOutputDataSettings.hh \
     src/base/page/output/save/SAKSaveOutputDataThread.hh \
     src/base/page/statistics/SAKStatisticsManager.hh \
-    src/base/page/visualization/SAKDataVisualizationManager.hh \
-    src/base/page/visualization/throughput/SAKThroughputWidget.hh \
     src/common/SAKCRCInterface.hh \
     src/common/SAKCommonInterface.hh \
     src/common/SAKDataStruct.hh \
@@ -223,8 +221,6 @@ SOURCES += \
     src/base/page/output/save/SAKSaveOutputDataSettings.cc \
     src/base/page/output/save/SAKSaveOutputDataThread.cc \
     src/base/page/statistics/SAKStatisticsManager.cc \
-    src/base/page/visualization/SAKDataVisualizationManager.cc \
-    src/base/page/visualization/throughput/SAKThroughputWidget.cc \
     src/common/SAKCRCInterface.cc \
     src/common/SAKCommonInterface.cc \
     src/common/SAKDataStruct.cc \
