@@ -27,7 +27,6 @@ CONFIG += c++11
 
 # 子项目
 include(SAKSetup.pri)
-include(SAKSetup.pri)
 include(SAKDataVis.pri)
 include(SAKModules.pri)
 include(SAKSerialPort.pri)
@@ -69,9 +68,7 @@ DISTFILES += \
     android/gradle/wrapper/gradle-wrapper.properties \
     android/gradlew \
     android/gradlew.bat \
-    android/res/values/libs.xml \
-    src/Modules.pri \
-    src/tools/filechecker/QtCryptographicHash.pri
+    android/res/values/libs.xml
 
 contains(ANDROID_TARGET_ARCH,arm64-v8a) {
     ANDROID_PACKAGE_SOURCE_DIR = \
