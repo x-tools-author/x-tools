@@ -15,7 +15,6 @@
 #include <QTranslator>
 #include <QApplication>
 #include <QStyleFactory>
-#include <QQmlApplicationEngine>
 
 class SAKMainWindow;
 class SAKApplication:public QApplication
@@ -37,7 +36,6 @@ public:
     void setupUi(bool classicalUi);
 private:
     SAKMainWindow *mainWindow;
-    QQmlApplicationEngine *qmlApplicationEngine;
 
     QTranslator qtTranslator;
     QTranslator qtBaeTranslator;

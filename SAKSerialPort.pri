@@ -4,18 +4,21 @@ qtHaveModule(serialport){
 }
 
 contains(DEFINES, SAK_IMPORT_COM_MODULE){    
-    SOURCES += \
-        ui/widgets/serialport/SAKSerialPortDebugPage.cc \
-        ui/widgets/serialport/SAKSerialPortDeviceController.cc \
-        ui/widgets/serialport/SAKSerialPortDevice.cc
+    FORMS += \
+        $$PWD/src/serialport/SAKSerialPortDeviceController.ui
+
     HEADERS += \
-        ui/widgets/serialport/SAKSerialPortDebugPage.hh \
-        ui/widgets/serialport/SAKSerialPortDeviceController.hh \
-        ui/widgets/serialport/SAKSerialPortDevice.hh
-    FORMS   += \
-        ui/widgets/serialport/SAKSerialPortDeviceController.ui
+        $$PWD/src/serialport/SAKSerialPortDebugPage.hh \
+        $$PWD/src/serialport/SAKSerialPortDevice.hh \
+        $$PWD/src/serialport/SAKSerialPortDeviceController.hh
+
+    SOURCES += \
+        $$PWD/src/serialport/SAKSerialPortDebugPage.cc \
+        $$PWD/src/serialport/SAKSerialPortDevice.cc \
+        $$PWD/src/serialport/SAKSerialPortDeviceController.cc
+
     INCLUDEPATH += \
-        ui/widgets/serialport
+        $$PWD/src/serialport
 }else {
     warning("The Qt edition has no serialport module, the program will not has serialport debuging functioin.")
 }
