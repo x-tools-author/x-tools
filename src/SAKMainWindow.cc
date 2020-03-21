@@ -539,7 +539,7 @@ void SAKMainWindow::changeUi()
             bool isClassicalUi = action->data().toBool();
             action->setChecked(true);
             SAKSettings::instance()->setIsClassicalUi(isClassicalUi);
-            reinterpret_cast<SAKApplication*>(qApp)->setupUi(isClassicalUi);
+            reinterpret_cast<SAKApplication*>(qApp)->setupUi();
         }
     }
 }
