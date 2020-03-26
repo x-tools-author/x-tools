@@ -96,7 +96,6 @@ INCLUDEPATH += \
     src/pages/tcpclient \
     src/pages/tcpserver \
     src/pages/udp \
-    src/tools/filechecker \
     src/update
 
 FORMS += \
@@ -123,7 +122,6 @@ FORMS += \
     src/pages/tcpserver/SAKTcpServerDeviceController.ui \
     src/pages/udp/SAKUdpAdvanceSettingWidget.ui \
     src/pages/udp/SAKUdpDeviceController.ui \
-    src/tools/filechecker/QtCryptographicHashController.ui \
     src/update/SAKDownloadItemWidget.ui \
     src/update/SAKUpdateManager.ui
 
@@ -177,8 +175,6 @@ HEADERS += \
     src/pages/udp/SAKUdpDebugPage.hh \
     src/pages/udp/SAKUdpDevice.hh \
     src/pages/udp/SAKUdpDeviceController.hh \
-    src/tools/filechecker/QtCryptographicHashCalculator.hh \
-    src/tools/filechecker/QtCryptographicHashController.hh \
     src/update/SAKDownloadItemWidget.hh \
     src/update/SAKUpdateManager.hh
 
@@ -233,7 +229,5 @@ SOURCES += \
     src/pages/udp/SAKUdpDebugPage.cc \
     src/pages/udp/SAKUdpDevice.cc \
     src/pages/udp/SAKUdpDeviceController.cc \
-    src/tools/filechecker/QtCryptographicHashCalculator.cc \
-    src/tools/filechecker/QtCryptographicHashController.cc \
     src/update/SAKDownloadItemWidget.cc \
     src/update/SAKUpdateManager.cc
