@@ -46,7 +46,9 @@
 #include "SAKTcpClientDebugPage.hh"
 #include "SAKTcpServerDebugPage.hh"
 #include "SAKApplicationInformation.hh"
+#ifdef SAK_IMPORT_FILECHECKER_MODULE
 #include "QtCryptographicHashController.hh"
+#endif
 
 #ifdef SAK_IMPORT_COM_MODULE
 #include "SAKSerialPortDebugPage.hh"
@@ -171,7 +173,9 @@ void SAKMainWindow::addTab()
 
 void SAKMainWindow::addTool()
 {
+#ifdef SAK_IMPORT_FILECHECKER_MODULE
     addTool(tr("文件校验工具"),     new QtCryptographicHashController);
+#endif
 
     QAction *action = nullptr;
     action = new QAction(tr("CRC计算器"), this);
@@ -205,7 +209,7 @@ void SAKMainWindow::About()
 
 void SAKMainWindow::addTool(QString toolName, QWidget *toolWidget)
 {
-    QAction *action = new QAction(toolName);
+    QAction *action = new QAction(toolName, this);
     toolsMenu->addAction(action);
     connect(action, SIGNAL(triggered(bool)), toolWidget, SLOT(show()));
 }
@@ -262,7 +266,7 @@ void SAKMainWindow::initFileMenu()
     }
 
     fileMenu->addSeparator();
-    QAction *exitAction = new QAction(tr("退出"));
+    QAction *exitAction = new QAction(tr("退出"), this);
     fileMenu->addAction(exitAction);
     connect(exitAction, SIGNAL(triggered(bool)), this, SLOT(close()));
 }

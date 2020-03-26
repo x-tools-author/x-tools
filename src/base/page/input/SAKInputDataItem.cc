@@ -37,11 +37,14 @@ SAKInputDataItem::SAKInputDataItem(SAKDebugPage *debugPage, SAKDebugPageInputMan
     addDataAction(menuPushButton);
     connect(descriptionLineEdit, &QLineEdit::textChanged, this, &SAKInputDataItem::updateActionTitle);
     connect(inputDataTextEdit, &QTextEdit::textChanged, this, &SAKInputDataItem::updateTextFormat);
-
+#if 1
+    connect(textFormatComboBox, &QComboBox::currentTextChanged, inputDataTextEdit, &QTextEdit::clear);
+#else
     connect(textFormatComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), [=](int index){
         Q_UNUSED(index)
         inputDataTextEdit->clear();
     });
+#endif
 }
 
 SAKInputDataItem::~SAKInputDataItem()
