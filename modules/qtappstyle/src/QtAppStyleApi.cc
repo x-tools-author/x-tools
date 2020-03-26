@@ -40,7 +40,7 @@ QtAppStyleApi::QtAppStyleApi(QObject *parent)
     QActionGroup *styleActionGroup = new QActionGroup(this);
     QStringList styleKeys = QStyleFactory::keys();
     for (QString style : styleKeys) {
-        styleAction = new QAction(style);
+        styleAction = new QAction(style, this);
         styleAction->setCheckable(true);
         styleAction->setObjectName(style);
         styleAction->setActionGroup(styleActionGroup);
