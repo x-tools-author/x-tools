@@ -27,6 +27,7 @@ CONFIG += c++11
 
 # 子项目
 include(SAKSetup.pri)
+include(SAKTools.pri)
 include(SAKDataVis.pri)
 include(SAKModules.pri)
 include(SAKSerialPort.pri)
@@ -95,7 +96,6 @@ INCLUDEPATH += \
     src/pages/tcpclient \
     src/pages/tcpserver \
     src/pages/udp \
-    src/tools/crccalculator \
     src/tools/filechecker \
     src/update
 
@@ -123,7 +123,6 @@ FORMS += \
     src/pages/tcpserver/SAKTcpServerDeviceController.ui \
     src/pages/udp/SAKUdpAdvanceSettingWidget.ui \
     src/pages/udp/SAKUdpDeviceController.ui \
-    src/tools/crccalculator/SAKCRCCalculator.ui \
     src/tools/filechecker/QtCryptographicHashController.ui \
     src/update/SAKDownloadItemWidget.ui \
     src/update/SAKUpdateManager.ui
@@ -178,7 +177,6 @@ HEADERS += \
     src/pages/udp/SAKUdpDebugPage.hh \
     src/pages/udp/SAKUdpDevice.hh \
     src/pages/udp/SAKUdpDeviceController.hh \
-    src/tools/crccalculator/SAKCRCCalculator.hh \
     src/tools/filechecker/QtCryptographicHashCalculator.hh \
     src/tools/filechecker/QtCryptographicHashController.hh \
     src/update/SAKDownloadItemWidget.hh \
@@ -235,7 +233,6 @@ SOURCES += \
     src/pages/udp/SAKUdpDebugPage.cc \
     src/pages/udp/SAKUdpDevice.cc \
     src/pages/udp/SAKUdpDeviceController.cc \
-    src/tools/crccalculator/SAKCRCCalculator.cc \
     src/tools/filechecker/QtCryptographicHashCalculator.cc \
     src/tools/filechecker/QtCryptographicHashController.cc \
     src/update/SAKDownloadItemWidget.cc \
