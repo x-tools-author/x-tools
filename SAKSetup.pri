@@ -67,7 +67,6 @@ contains(CONFIG, static){
 
         DEPLOY_TARGET=$$replace(DEPLOY_TARGET, /, \\)
         msvc {
-#            QMAKE_POST_LINK+=$$DEPLOY_TOOL $$DEPLOY_TARGET --force --qmldir $$replace(QMAKE_QMAKE, "qmake.exe", "../qml") --no-translations $$escape_expand(\\n)
             QMAKE_POST_LINK+=$$DEPLOY_TOOL $$DEPLOY_TARGET --force --no-translations $$escape_expand(\\n)
         }else{
             QMAKE_POST_LINK+=$$DEPLOY_TOOL $$DEPLOY_TARGET --force --no-translations
