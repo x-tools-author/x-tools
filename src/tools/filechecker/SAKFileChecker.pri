@@ -18,5 +18,5 @@ contains(DEFINES, SAK_IMPORT_COM_MODULE){
         $$PWD/src/QtCryptographicHashCalculator.cc \
         $$PWD/src/QtCryptographicHashController.cc
 }else {
-    warning("The Qt edition does not supports the QCryptographicHash::Algorithm enum type, the program will not has file chcker function module.")
+    warning("The Qt edition does not support the QCryptographicHash::Algorithm enum type, the program will not has file chcker function module.")
 }
