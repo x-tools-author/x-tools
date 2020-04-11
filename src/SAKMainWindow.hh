@@ -76,7 +76,6 @@ private:
     void About();
 private:
     void createCRCCalculator();
-    void changeUi();
 };
 
 #endif // MAINWINDOW_H
