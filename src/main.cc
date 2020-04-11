@@ -13,6 +13,10 @@
 
 int main(int argc, char *argv[])
 {
+#ifdef Q_OS_ANDROID
+    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling, false);
+    QApplication::setAttribute(Qt::AA_Use96Dpi, true);
+#endif
     SAKApplication a(argc, argv);
     return a.exec();
 }

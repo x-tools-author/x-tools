@@ -76,7 +76,7 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
 
     QHBoxLayout *layout = new QHBoxLayout;
     layout->addWidget(tabWidget);
-#ifdef Q_OS_ANDROID
+#if 0
     setWindowFlags(Qt::FramelessWindowHint);
     QScrollArea* scrollArea = new QScrollArea(this);
     scrollArea->setWidgetResizable(true);
