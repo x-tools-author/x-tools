@@ -117,7 +117,6 @@ FORMS += \
     src/base/page/other/transmission/SAKTransmissionSettings.ui \
     src/base/page/other/transmission/SAKUdpTransmissionItemWidget.ui \
     src/base/page/output/save/SAKSaveOutputDataSettings.ui \
-    src/base/page/visualization/SAKDataVisualizationManager.ui \
     src/pages/tcpclient/SAKTcpClientDeviceController.ui \
     src/pages/tcpserver/SAKTcpServerDeviceController.ui \
     src/pages/udp/SAKUdpAdvanceSettingWidget.ui \
