@@ -30,8 +30,7 @@ SAKUdpAdvanceSettingWidget::SAKUdpAdvanceSettingWidget(QWidget *parent)
     deletePushButton = ui->deletePushButton;
     addPushButton = ui->addPushButton;
 
-    isInitUi = false;
-    udpDevice->setUnicastEnable(unicastCheckBox->isChecked());
+    isInitUi = false;   
 }
 
 SAKUdpAdvanceSettingWidget::~SAKUdpAdvanceSettingWidget()
@@ -43,6 +42,7 @@ void SAKUdpAdvanceSettingWidget::setUdpDevice(SAKUdpDevice *device)
 {
     Q_CHECK_PTR(device);
     udpDevice = device;
+    udpDevice->setUnicastEnable(unicastCheckBox->isChecked());
 }
 
 void SAKUdpAdvanceSettingWidget::on_unicastCheckBox_clicked()
