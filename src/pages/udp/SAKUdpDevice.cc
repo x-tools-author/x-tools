@@ -84,9 +84,7 @@ void SAKUdpDevice::readBytes()
 
 void SAKUdpDevice::writeBytes(QByteArray data)
 {    
-    /*
-     * 单播
-     */
+    /// @brief 单播
     if (parametersContextInstance().enableUnicast){
         qint64 ret = udpSocket->writeDatagram(data, QHostAddress(targetHost), targetPort);
         udpSocket->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
@@ -97,9 +95,7 @@ void SAKUdpDevice::writeBytes(QByteArray data)
         }
     }
 
-    /*
-     * 组播
-     */
+    /// @brief 组播
     if (parametersContextInstance().enableMulticast){
         for(auto var:parametersContextInstance().multicastInfoList){
             if (var.enable){
@@ -109,9 +105,7 @@ void SAKUdpDevice::writeBytes(QByteArray data)
         }
     }
 
-    /*
-     * 广播
-     */
+    /// @brief 广播
     if (parametersContextInstance().enableBroadcast){
         ParametersContext context = parametersContextInstance();
         udpSocket->writeDatagram(data, QHostAddress::Broadcast, context.broadcastPort);

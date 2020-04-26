@@ -31,6 +31,7 @@ SAKUdpAdvanceSettingWidget::SAKUdpAdvanceSettingWidget(QWidget *parent)
     addPushButton = ui->addPushButton;
 
     isInitUi = false;
+    udpDevice->setUnicastEnable(unicastCheckBox->isChecked());
 }
 
 SAKUdpAdvanceSettingWidget::~SAKUdpAdvanceSettingWidget()
