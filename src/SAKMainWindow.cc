@@ -9,7 +9,7 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-
+#include <QDir>
 #include <QFile>
 #include <QRect>
 #include <QLocale>
@@ -34,6 +34,7 @@
 #include <QDesktopServices>
 
 #include "SAKGlobal.hh"
+#include "SAKSettings.hh"
 #include "SAKSettings.hh"
 #include "SAKMainWindow.hh"
 #include "QtAppStyleApi.hh"
@@ -283,9 +284,7 @@ void SAKMainWindow::initOptionMenu()
     QMenu *optionMenu = new QMenu(tr("选项"));
     menuBar()->addMenu(optionMenu);
 
-    /*
-     * 软件样式，设置默认样式需要重启软件
-     */
+    /// @brief 软件样式，设置默认样式需要重启软件
     QMenu *stylesheetMenu = new QMenu(tr("皮肤"), this);
     optionMenu->addMenu(stylesheetMenu);
     defaultStyleSheetAction = new QAction(tr("Qt默认样式"), this);
@@ -310,9 +309,7 @@ void SAKMainWindow::initOptionMenu()
         defaultStyleSheetAction->setChecked(true);
     }
 
-    /*
-     * 软件风格，默认使用Qt支持的第一种软件风格
-     */
+    /// @brief 软件风格，默认使用Qt支持的第一种软件风格
     QMenu *appStyleMenu = new QMenu(tr("软件风格"), this);
     optionMenu->addMenu(appStyleMenu);
     appStyleMenu->addActions(QtAppStyleApi::instance()->actions());
