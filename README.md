@@ -1,41 +1,26 @@
-# "Swiss Army Knife"
+# Swiss Army Knife
 
-The goal of this project is to create an easy-to-use, multi-function, multi-language and cross-platform debugging tool set.
+[中文](./doc/zh_CN/README.md)
+***************
+QSAK (Qt Swiss Army Knife) is a multi-functional, cross-platform debugging tool based on Qt open source framework.It integrates debugging functions such as serial port debugging, network port debugging, bluetooth debugging, USB debugging, HID debugging, CAN bus debugging, and MODBUS debugging. It has the ability to interpret and debug MAVLink, MODBUS, MQTT and other communication protocols. It can run on Windows, Linux, macOS, ios, Android, Raspberry Pi and other devices.**The goal of the project is to create a software version of the Swiss army knife.**
 
-[中文](./doc/zh_CN/README.md)  
+## Development Environment
 
+Qt 5.15.x，other versions may be available, but the project authors do not fix problems encountered during the development of other versions.
 
-## Debug Tools
-
-| Debuging Tools | Windows x86 | Linux x86    | MacOS        | Raspberry Pi3/4 | Andrroid     | Andrroid x86 |
-| -------------- | ----------- | ------------ | ------------ | --------------- | ------------ | ------------ |
-| SerialPorrt    | √           | √            | √            |  ×              | ×            | ×            |
-| TcpClient      | √           | √            | √            |  √              | x            | ×            |
-| TcpServer      | √           | √            | √            |  √              | x            | ×            |
-| UDP            | √           | √            | √            |  √              | x            | ×            |
-| HID            | x           | x            | x            |  x              | x            | ×            |
-| USB            | x           | x            | x            |  x              | x            | ×            |
-| Bluetooth      | x(Win 10)   | x            | x            |  x              | x            | ×            |
-
-## Build Tools
-
-| Build Tools    | Windows x86 | Linux x86    | MacOS        | Raspberry Pi3/4 | Andrroid     | Andrroid x86 |
-| -------------- | ----------- | ------------ | ------------ | --------------- | ------------ | ------------ |
-| Qt Version     | 5.12 32bit  | 5.12         | Qt 5.12      |  Qt 5.7         | 5.12         | 5.12         |
-| Compiler(api)  | MSVC 2017   | GCC 7.3      | CLANG 9      |  GCC 4.9        | api level 28 | api level 28 |
-
-## Ui-Main Window
+## Main Window
 
 ![MainWindow.png](MainWindow.png)
 
-## About Project
+## About the Project
 
-+ Author   : wuuhii
-+ E-mail   : wuuhii@outlook.com
-+ Blog     : <http://wuhai.pro/>
-+ QQ Grroup: 952218522 (Tencent QQ Group)
-+ Platforrm: Windows、Linux、MacOS、Android and so on
-+ Copyright: (I do not know what is it yet)
+* Author：wuuhii
+* E-mail：wuuhii@outlook.com
+* Offical：<https://www.qsak.pro/>
+* User Communication: 952218522 (QQ Group)
+* Qt Technology Communication：723516989 (QQ Group)
+
+***************
 
 ```txt
                 _           _
