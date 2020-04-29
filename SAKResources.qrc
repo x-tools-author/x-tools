@@ -27,5 +27,7 @@
         <file>resources/images/Windows.png</file>
         <file>resources/images/Zip.png</file>
         <file>resources/images/Qt.png</file>
+        <file>resources/images/QSAKQQ.jpg</file>
+        <file>resources/images/QtQQ.jpg</file>
     </qresource>
 </RCC>

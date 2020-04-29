@@ -69,8 +69,7 @@ DISTFILES += \
     android/gradle/wrapper/gradle-wrapper.properties \
     android/gradlew \
     android/gradlew.bat \
-    android/res/values/libs.xml \
-    src/Modules.pri
+    android/res/values/libs.xml
 
 contains(ANDROID_TARGET_ARCH,arm64-v8a) {
     ANDROID_PACKAGE_SOURCE_DIR = \
@@ -81,6 +80,7 @@ INCLUDEPATH += \
     src \
     src/base \
     src/common \
+    src/qrcode \
     src/base/page \
     src/base/page/input \
     src/base/page/other \
@@ -122,6 +122,7 @@ FORMS += \
     src/pages/udp/SAKUdpAdvanceSettingWidget.ui \
     src/pages/udp/SAKUdpDeviceController.ui \
     src/pages/udp/SAKUdpMulticastEditingDialog.ui \
+    src/qrcode/SAKQRCodeDialog.ui \
     src/update/SAKDownloadItemWidget.ui \
     src/update/SAKUpdateManager.ui
 
@@ -176,6 +177,8 @@ HEADERS += \
     src/pages/udp/SAKUdpDevice.hh \
     src/pages/udp/SAKUdpDeviceController.hh \
     src/pages/udp/SAKUdpMulticastEditingDialog.hh \
+    src/qrcode/SAKQRCodeDialog.hh \
+    src/qrcode/SAKQRCodeWidget.hh \
     src/update/SAKDownloadItemWidget.hh \
     src/update/SAKUpdateManager.hh
 
@@ -231,5 +234,7 @@ SOURCES += \
     src/pages/udp/SAKUdpDevice.cc \
     src/pages/udp/SAKUdpDeviceController.cc \
     src/pages/udp/SAKUdpMulticastEditingDialog.cc \
+    src/qrcode/SAKQRCodeDialog.cc \
+    src/qrcode/SAKQRCodeWidget.cc \
     src/update/SAKDownloadItemWidget.cc \
     src/update/SAKUpdateManager.cc
