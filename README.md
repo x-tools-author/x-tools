@@ -2,7 +2,7 @@
 
 [中文](./doc/zh_CN/README.md)
 ***************
-QSAK (Qt Swiss Army Knife) is a multi-functional, cross-platform debugging tool based on Qt open source framework.It integrates debugging functions such as serial port debugging, network port debugging, bluetooth debugging, USB debugging, HID debugging, CAN bus debugging, and MODBUS debugging. It has the ability to interpret and debug MAVLink, MODBUS, MQTT and other communication protocols. It can run on Windows, Linux, macOS, ios, Android, Raspberry Pi and other devices.**The goal of the project is to create a software edition of the Swiss army knife.**
+QSAK (Qt Swiss Army Knife) is a multi-functional, cross-platform debugging tool based on Qt open source framework.It integrates debugging functions such as serial port debugging, network port debugging, bluetooth debugging, USB debugging, HID debugging, CAN bus debugging, and MODBUS debugging. It has the ability to interpret and debug MAVLink, MODBUS, MQTT and other communication protocols. It can run on Windows, Linux, macOS, ios, Android, Raspberry Pi and other devices.**The goal of the project is to create a software edition of the Swiss-Army-Knife.**
 
 ## Development Environment
 
