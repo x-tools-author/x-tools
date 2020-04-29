@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SAKQRCode</class>
- <widget class="QDialog" name="SAKQRCode">
+ <class>SAKQRCodeDialog</class>
+ <widget class="QDialog" name="SAKQRCodeDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>510</width>
-    <height>548</height>
+    <width>545</width>
+    <height>633</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>二维码</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>

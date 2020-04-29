@@ -9,28 +9,35 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#include <QImage>
+#include <QRectF>
+#include <QPainter>
+#include "SAKQRCodeWidget.hh"
 
-#include "SAKQRCodeDialog.hh"
-#include "ui_SAKQRCodeDialog.h"
-
-SAKQRCodeDialog::SAKQRCodeDialog(QWidget *parent)
-    : QDialog(parent)
-    , ui(new Ui::SAKQRCodeDialog)
+SAKQRCodeWidget::SAKQRCodeWidget(QSize size, QString image, QWidget *parent)
+    : QWidget(parent)
+    , size(size)
+    , image(image)
 {
-    ui->setupUi(this);
-    setModal(true);
-
-    tabWidget = ui->tabWidget;
-    tabWidget->clear();
+    resize(size.width(), size.height());
 }
 
-SAKQRCodeDialog::~SAKQRCodeDialog()
+SAKQRCodeWidget::~SAKQRCodeWidget()
 {
 
 }
 
-void SAKQRCodeDialog::addQRCode(QString qrcode)
+void SAKQRCodeWidget::paintEvent(QPaintEvent *event)
 {
-    QImage iamge(qrcode);
+    Q_UNUSED(event);
+
+    QPixmap qrCode(image);
+    qrCode = qrCode.scaled(size, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    int w = qrCode.width();
+    int h = qrCode.height();
+
+    QRectF target((width()-w)/2, (height()-h)/2, w, h);
+    QRectF source(0, 0, w, h);
+
+    QPainter painter(this);
+    painter.drawPixmap(target, qrCode, source);
 }

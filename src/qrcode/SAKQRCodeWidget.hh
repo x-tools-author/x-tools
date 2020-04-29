@@ -9,27 +9,23 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef SAKQRCODEDIALOG_HH
-#define SAKQRCODEDIALOG_HH
+#ifndef SAKQRCODEWIDGET_HH
+#define SAKQRCODEWIDGET_HH
 
-#include <QDialog>
-#include <QTabWidget>
+#include <QWidget>
 
-namespace Ui {
-    class SAKQRCodeDialog;
-}
-class SAKQRCodeDialog : public QDialog
+/// @brief 显示一张二维码图片
+class SAKQRCodeWidget : public QWidget
 {
     Q_OBJECT
 public:
-    SAKQRCodeDialog(QWidget *parent = Q_NULLPTR);
-    ~SAKQRCodeDialog();
+    SAKQRCodeWidget(QSize size, QString image, QWidget *parent = Q_NULLPTR);
+    ~SAKQRCodeWidget();
+protected:
+    void paintEvent(QPaintEvent *event) override;
 private:
-    Ui::SAKQRCodeDialog *ui;
-    QTabWidget *tabWidget;
-private:
-    /// @brief 添加二维码，参数为二维码图片路径，如":/resources/images/QSAKQQ.jpg"
-    void addQRCode(QString qrcode);
+    QSize size;
+    QString image;
 };
 
 #endif
