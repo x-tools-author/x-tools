@@ -39,6 +39,7 @@
 #include "SAKMainWindow.hh"
 #include "QtAppStyleApi.hh"
 #include "SAKApplication.hh"
+#include "SAKQRCodeDialog.hh"
 #include "SAKUdpDebugPage.hh"
 #include "QtStyleSheetApi.hh"
 #include "SAKCRCCalculator.hh"
@@ -73,6 +74,7 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     updateManager = new SAKUpdateManager(this);
+    qrCodeDialog = new SAKQRCodeDialog(this);
 
 
     QHBoxLayout *layout = new QHBoxLayout;
@@ -399,6 +401,11 @@ void SAKMainWindow::initHelpMenu()
     QAction *moreInformationAction = new QAction(tr("更多信息"), this);
     helpMenu->addAction(moreInformationAction);
     connect(moreInformationAction, &QAction::triggered, moreInformation, &SAKMoreInformation::show);
+
+    helpMenu->addSeparator();
+    QAction *qrCodeAction = new QAction(tr("二维码"), this);
+    helpMenu->addAction(qrCodeAction);
+    connect(qrCodeAction, &QAction::triggered, qrCodeDialog, &SAKQRCodeDialog::show);
 }
 
 void SAKMainWindow::initLinksMenu()

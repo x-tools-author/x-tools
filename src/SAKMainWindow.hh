@@ -22,6 +22,7 @@
 #include <QMainWindow>
 #include <QTranslator>
 
+class SAKQRCodeDialog;
 class SAKUpdateManager;
 class SAKMoreInformation;
 
@@ -41,12 +42,13 @@ protected:
       bool eventFilter(QObject *obj, QEvent *event);
 
 private:
-    QTabWidget* tabWidget             = nullptr;
-    Ui::SAKMainWindow* ui               = nullptr;
-    QMenu* toolsMenu                    = nullptr;    
+    QTabWidget *tabWidget               = nullptr;
+    Ui::SAKMainWindow *ui               = nullptr;
+    QMenu *toolsMenu                    = nullptr;
     QAction *defaultStyleSheetAction    = nullptr;
-    SAKUpdateManager* updateManager     = nullptr;
-    SAKMoreInformation* moreInformation = nullptr;
+    SAKUpdateManager *updateManager     = nullptr;
+    SAKMoreInformation *moreInformation = nullptr;
+    SAKQRCodeDialog *qrCodeDialog       = nullptr;
 
     QTranslator qtTranslator;
     QTranslator qtBaeTranslator;
