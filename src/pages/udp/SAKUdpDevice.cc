@@ -98,10 +98,8 @@ void SAKUdpDevice::writeBytes(QByteArray data)
     /// @brief 组播
     if (parametersContextInstance().enableMulticast){
         for(auto var:parametersContextInstance().multicastInfoList){
-            if (var.enable){
-                udpSocket->writeDatagram(data, QHostAddress(var.address), var.port);
-                emit bytesWriten(data);
-            }
+            udpSocket->writeDatagram(data, QHostAddress(var.address), var.port);
+            emit bytesWriten(data);
         }
     }
 
@@ -137,10 +135,11 @@ void SAKUdpDevice::setBroadcastPort(quint16 port)
     parametersContextMutex.unlock();
 }
 
-void SAKUdpDevice::addMulticastInfo(bool enable, QString address, quint16 port)
+void SAKUdpDevice::addMulticastInfo(QString address, quint16 port)
 {
+    qDebug() << address;
     parametersContextMutex.lock();
-    ParametersContext::MulticastInfo info{enable, address, port};
+    ParametersContext::MulticastInfo info{address, port};
     parametersContext.multicastInfoList.append(info);
     udpSocket->joinMulticastGroup(QHostAddress(address));
     parametersContextMutex.unlock();
@@ -154,19 +153,7 @@ void SAKUdpDevice::removeMulticastInfo(QString address, quint16 port)
         if ((address == info.address) && (port == info.port)){
             udpSocket->leaveMulticastGroup(QHostAddress(address));
             parametersContext.multicastInfoList.removeAt(i);
-        }
-    }
-    parametersContextMutex.unlock();
-}
-
-void SAKUdpDevice::setMulticastEnable(bool enable, QString address, quint16 port)
-{
-    parametersContextMutex.lock();
-    for(int i = 0; 0 < parametersContext.multicastInfoList.length(); i++){
-        ParametersContext::MulticastInfo newInfo{enable, address, port};
-        ParametersContext::MulticastInfo oldInfo = parametersContext.multicastInfoList.at(i);
-        if ((address == oldInfo.address) && (port == oldInfo.port)){
-            parametersContext.multicastInfoList.replace(i, newInfo);
+            udpSocket->leaveMulticastGroup(QHostAddress(address));
         }
     }
     parametersContextMutex.unlock();

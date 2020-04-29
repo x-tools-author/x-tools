@@ -60,12 +60,15 @@
      <property name="text">
       <string notr="true"/>
      </property>
+     <property name="maxLength">
+      <number>5</number>
+     </property>
     </widget>
    </item>
    <item row="1" column="0" colspan="3">
     <widget class="QLineEdit" name="addressLineEdit">
      <property name="text">
-      <string notr="true"/>
+      <string notr="true">224.0.0.255</string>
      </property>
     </widget>
    </item>

@@ -121,6 +121,7 @@ FORMS += \
     src/pages/tcpserver/SAKTcpServerDeviceController.ui \
     src/pages/udp/SAKUdpAdvanceSettingWidget.ui \
     src/pages/udp/SAKUdpDeviceController.ui \
+    src/pages/udp/SAKUdpMulticastEditingDialog.ui \
     src/update/SAKDownloadItemWidget.ui \
     src/update/SAKUpdateManager.ui
 
@@ -174,6 +175,7 @@ HEADERS += \
     src/pages/udp/SAKUdpDebugPage.hh \
     src/pages/udp/SAKUdpDevice.hh \
     src/pages/udp/SAKUdpDeviceController.hh \
+    src/pages/udp/SAKUdpMulticastEditingDialog.hh \
     src/update/SAKDownloadItemWidget.hh \
     src/update/SAKUpdateManager.hh
 
@@ -228,5 +230,6 @@ SOURCES += \
     src/pages/udp/SAKUdpDebugPage.cc \
     src/pages/udp/SAKUdpDevice.cc \
     src/pages/udp/SAKUdpDeviceController.cc \
+    src/pages/udp/SAKUdpMulticastEditingDialog.cc \
     src/update/SAKDownloadItemWidget.cc \
     src/update/SAKUpdateManager.cc

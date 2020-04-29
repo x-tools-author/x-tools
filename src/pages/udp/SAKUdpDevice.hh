@@ -49,7 +49,6 @@ public:
         quint16 broadcastPort;
 
         struct MulticastInfo{
-            bool enable;
             QString address;
             quint16 port;
         };
@@ -76,11 +75,10 @@ public:
 
     /**
      * @brief addMulticastInfo 添加组播
-     * @param enable 该值为true是，使能该组播地址
      * @param address 组播地址
      * @param port 组播端口
      */
-    void addMulticastInfo(bool enable, QString address, quint16 port);
+    void addMulticastInfo(QString address, quint16 port);
 
     /**
      * @brief removeMulticastInfo 移除组播
@@ -88,14 +86,6 @@ public:
      * @param port 组播端口
      */
     void removeMulticastInfo(QString address, quint16 port);
-
-    /**
-     * @brief setMulticastEnable 启用/静止单个组播
-     * @param enable 该值为true是允许该组播
-     * @param address 广播地址
-     * @param port 广播端口
-     */
-    void setMulticastEnable(bool enable, QString address, quint16 port);
 
     /**
      * @brief setMulticastEnable 启用/静止组播功能（总开关）
@@ -125,5 +115,5 @@ signals:
     void deviceStatuChanged(bool opened);
     void messageChanged(QString message, bool isInfo);
 };
-
+Q_DECLARE_METATYPE(SAKUdpDevice::ParametersContext::MulticastInfo)
 #endif
