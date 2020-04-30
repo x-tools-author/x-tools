@@ -56,5 +56,6 @@
         <file>resources/icons/下拉@2x.png</file>
         <file>resources/icons/形状 1.png</file>
         <file>resources/icons/形状 1@2x.png</file>
+        <file>qml/MainWindowToolBar.qml</file>
     </qresource>
 </RCC>
