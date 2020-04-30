@@ -30,5 +30,31 @@
         <file>resources/images/QSAKQQ.jpg</file>
         <file>resources/images/QtQQ.jpg</file>
         <file>qml/MainWindow.qml</file>
+        <file>resources/icons/矩形 2 拷贝 3.png</file>
+        <file>resources/icons/矩形 2 拷贝 3@2x.png</file>
+        <file>resources/icons/矩形 2.png</file>
+        <file>resources/icons/矩形 2@2x.png</file>
+        <file>resources/icons/矩形 3.png</file>
+        <file>resources/icons/矩形 3@2x.png</file>
+        <file>resources/icons/控制.png</file>
+        <file>resources/icons/控制@2x.png</file>
+        <file>resources/icons/其他.png</file>
+        <file>resources/icons/其他@2x.png</file>
+        <file>resources/icons/设置 (1).png</file>
+        <file>resources/icons/设置 (1)@2x.png</file>
+        <file>resources/icons/矢量图军用刀制品.png</file>
+        <file>resources/icons/矢量图军用刀制品@2x.png</file>
+        <file>resources/icons/输出.png</file>
+        <file>resources/icons/输出@2x.png</file>
+        <file>resources/icons/输入 (1).png</file>
+        <file>resources/icons/输入 (1)@2x.png</file>
+        <file>resources/icons/输入.png</file>
+        <file>resources/icons/输入@2x.png</file>
+        <file>resources/icons/统计.png</file>
+        <file>resources/icons/统计@2x.png</file>
+        <file>resources/icons/下拉.png</file>
+        <file>resources/icons/下拉@2x.png</file>
+        <file>resources/icons/形状 1.png</file>
+        <file>resources/icons/形状 1@2x.png</file>
     </qresource>
 </RCC>
