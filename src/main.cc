@@ -17,6 +17,9 @@ int main(int argc, char *argv[])
     QApplication::setAttribute(Qt::AA_EnableHighDpiScaling, false);
     QApplication::setAttribute(Qt::AA_Use96Dpi, true);
 #endif
-    SAKApplication a(argc, argv);
-    return a.exec();
+    SAKApplication app(argc, argv);
+
+    app.setupUi();
+
+    return app.exec();
 }

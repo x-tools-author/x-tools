@@ -43,14 +43,6 @@
 #                                       Appx mapping file
 #  --verbose <level>         Verbose level (0-2).
 
-
-
-# The file was create by wuuhii(wuuhii@outlook.com) on September 30, 2019.
-
-# History:
-# 20190930  Creating the file.
-
-
 contains(CONFIG, static){
     # 静态版本不需要部署
 }else{
@@ -66,10 +58,6 @@ contains(CONFIG, static){
         }
 
         DEPLOY_TARGET=$$replace(DEPLOY_TARGET, /, \\)
-        msvc {
-            QMAKE_POST_LINK+=$$DEPLOY_TOOL $$DEPLOY_TARGET --force --no-translations $$escape_expand(\\n)
-        }else{
-            QMAKE_POST_LINK+=$$DEPLOY_TOOL $$DEPLOY_TARGET --force --no-translations
-        }
+        QMAKE_POST_LINK+=$$DEPLOY_TOOL $$DEPLOY_TARGET --force --no-translations --qmldir $$replace(QMAKE_QMAKE, "qmake.exe", "../qml") $$escape_expand(\\n)
     }
 }

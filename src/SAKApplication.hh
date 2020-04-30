@@ -12,13 +12,10 @@
 #ifndef SAKAPPLICATION_HH
 #define SAKAPPLICATION_HH
 
-#include <QTranslator>
-#include <QApplication>
-#include <QStyleFactory>
-#
+#include <QGuiApplication>
+#include <QQmlApplicationEngine>
 
-class SAKMainWindow;
-class SAKApplication:public QApplication
+class SAKApplication:public QGuiApplication
 {
     Q_OBJECT
 public:
@@ -26,17 +23,11 @@ public:
     ~SAKApplication();
 
     /**
-     * @brief installLanguage 安装语言包
+     * @brief setupUi 加载ui界面
      */
-    void installLanguage();
+    void setupUi();
 private:
-    SAKMainWindow *mainWindow;
-
-    QTranslator qtTranslator;
-    QTranslator qtBaeTranslator;
-    QTranslator sakTranslator;
-signals:
-    void checkForUpdate();
+    QQmlApplicationEngine qmlAppEngine;
 };
 
 #endif
