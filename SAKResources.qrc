@@ -57,5 +57,18 @@
         <file>resources/icons/形状 1.png</file>
         <file>resources/icons/形状 1@2x.png</file>
         <file>qml/MainWindowToolBar.qml</file>
+        <file>qml/page/DebugPage.qml</file>
+        <file>qml/MainWindowTabBar.qml</file>
+        <file>qml/MainWindowTabButton.qml</file>
+        <file>qml/component/SAKTitle.qml</file>
+        <file>qml/base/SAKLabel.qml</file>
+        <file>qml/page/DebugPageBlockOutputtArea.qml</file>
+        <file>qml/page/DebugPageBlock.qml</file>
+        <file>qml/page/DebugPageBlockDeviceSettings.qml</file>
+        <file>qml/page/DebugPageBlockInputArea.qml</file>
+        <file>qml/page/DebugPageBlockInputSettings.qml</file>
+        <file>qml/page/DebugPageBlockOtherSettings.qml</file>
+        <file>qml/page/DebugPageBlockOutputSettings.qml</file>
+        <file>qml/page/DebugPageBlockStatisticsArea.qml</file>
     </qresource>
 </RCC>
