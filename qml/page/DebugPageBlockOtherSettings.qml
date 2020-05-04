@@ -3,7 +3,12 @@ import QtQuick.Controls 2.12
 
 import "qrc:/qml/component"
 
-Rectangle {
-    id: toolBar
-    color: "#00000000"
+DebugPageBlock {
+    id: root
+    sakIcon: "qrc:/resources/icons/其他.png"
+    sakTitle: qsTr("其他设置")
+
+    contentItem: Item{
+
+    }
 }

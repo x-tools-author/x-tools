@@ -1,99 +1,98 @@
 ﻿import QtQuick 2.12
-import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
 
-ToolBar {
-    id: toolBar
-    height: 28
-    background: Rectangle {
-        color: "#161616"
-        anchors.fill: toolBar
+import "qrc:/qml/component"
 
-        MouseArea {
-            anchors.fill: parent
+Item {
+    id: root
 
-            property bool moveEffective: false
-            property real pressedX: 0
-            property real pressedY: 0
+    property var _topMargin: 0
+    property var _bottomMargin: 0
+    property var _leftMargin: 0
+    property var _rightMargin: 0
 
-            onPressed: {
-                moveEffective = true
-                pressedX = mouseX
-                pressedY = mouseY
-            }
+    property var _leftPannelWidth: 180
+    property var _rightPannelWidth: 180
+    property var _bottomPannelHeight: 150
 
-            onMouseXChanged: {
-                if (moveEffective){
-                    mainWindow.setX(mainWindow.x - (pressedX-mouseX))
-                    mainWindow.setY(mainWindow.y - (pressedY-mouseY))
-                }
-            }
+    property var _spacing: 2
 
-            onReleased: {
-                moveEffective = false
-            }
+    DebugPageBlockDeviceSettings {
+        id: deviceSettings
+        width: _leftPannelWidth
+        anchors{
+            top: parent.top
+            bottom: inputSettings.top
+            left: parent.left
+            topMargin: _topMargin
+            bottomMargin: _spacing
+            leftMargin: _leftMargin
         }
+    }
 
-        Row {
-            spacing: 5
-            anchors{left: parent.left;leftMargin: 10; verticalCenter: parent.verticalCenter}
-            Image {
-                source: "qrc:/resources/icons/矢量图军用刀制品.png"
-                fillMode: Image.PreserveAspectFit
-                anchors.verticalCenter: parent.verticalCenter
-            }
-
-            Label {
-                text: qsTr("瑞士军刀")
-                color: "#FFFFFF"
-                anchors.verticalCenter: parent.verticalCenter
-                verticalAlignment: Qt.AlignVCenter
-                font.pixelSize: 14
-                font.weight: Font.Normal
-                font.bold: true
-            }
+    DebugPageBlockInputSettings {
+        id: inputSettings
+        width: _leftPannelWidth
+        height: _bottomPannelHeight
+        anchors{
+            bottom: parent.bottom
+            left: parent.left
+            bottomMargin: _bottomMargin
+            leftMargin: _leftMargin
         }
+    }
 
-        Row {
-            anchors.right: parent.right
-            Repeater {
-                model: 3
+    DebugPageBlockOutputtArea {
+        id: outputtArea
+        anchors{
+            top: parent.top
+            bottom: inputArea.top
+            left: deviceSettings.right
+            right: outputSettings.left
+            topMargin: _topMargin
+            bottomMargin: _spacing
+            leftMargin: _spacing
+            rightMargin: _spacing
+        }
+    }
 
-                Rectangle {
-                    height: toolBar.height
-                    width: height
-                    color: mouseArea.containsMouse ? (index == 2 ? "red" : "#30FFFFFF")  : "#00000000"
+    DebugPageBlockInputArea {
+        id: inputArea
+        width: 250
+        height: _bottomPannelHeight
+        anchors{
+            bottom: parent.bottom
+            left: inputSettings.right
+            right: otherSettings.left
+            bottomMargin: _bottomMargin
+            leftMargin: _spacing
+            rightMargin: _spacing
+        }
+    }
 
-                    Text {
-                        anchors.centerIn: parent
-                        text: index == 0 ? "🗕" : (index == 1 ? (mainWindow.visibility === Window.Maximized ? "🗗" : "🗖") : "🗙")
-                        color: "#FFFFFF"
-                    }
+    DebugPageBlockOutputSettings {
+        id: outputSettings
+        width: _rightPannelWidth
+        height: 100
+        anchors{
+            top: parent.top
+            bottom: otherSettings.top
+            right: parent.right
+            topMargin: _topMargin
+            bottomMargin: _spacing
+            rightMargin: _rightMargin
+        }
+    }
 
-                    MouseArea {
-                        id: mouseArea
-                        anchors.fill: parent
-                        hoverEnabled: true
-
-                        onClicked: {
-                            switch(index){
-                            case 0:
-                                mainWindow.showMinimized()
-                                break;
-                            case 1:
-                                if(mainWindow.visibility === Window.Maximized){
-                                    mainWindow.showNormal()
-                                }else{
-                                    mainWindow.showMaximized()
-                                }
-                                break
-                            case 2:
-                                mainWindow.close()
-                            }
-                        }
-                    }
-                }
-            }
+    DebugPageBlockOtherSettings {
+        id: otherSettings
+        width: _rightPannelWidth
+        height: _bottomPannelHeight
+        anchors{
+            bottom: parent.bottom
+            right: parent.right
+            bottomMargin: _bottomMargin
+            rightMargin: _rightMargin
         }
     }
 }

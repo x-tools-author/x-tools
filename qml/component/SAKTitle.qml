@@ -1,31 +1,35 @@
 ﻿import QtQuick 2.12
-import QtQuick.Window 2.12
-import QtQuick.Controls 2.12
 
-import "qrc:/qml/page"
+import "qrc:/qml/base"
 
-Window {
-    id: mainWindow
-    visible: true
-    width: 800
-    height: 600
-    title: qsTr("瑞士军刀")
-    flags: Qt.FramelessWindowHint | Qt.Dialog
+Rectangle {
+    id: root
+    height: 35
+    color: "#80101010"
 
-    Page {
-        anchors.fill: parent
-        background: Rectangle{color: "#222222"}
-        header: MainWindowToolBar{}
-        contentItem: Item{
-            MainWindowTabBar {
-                id: tabBar
-                anchors{left: parent.left;right: parent.right;top:parent.top}
-            }
+    property alias icon: icon.source
+    property alias title: title.text
 
-            Item {
-                id: pageViewer
-                anchors{left: parent.left; right: parent.right; top: tabBar.bottom; bottom: parent.bottom}
-            }
+    Row {
+        spacing: 10
+        leftPadding: 5
+        anchors.verticalCenter: parent.verticalCenter
+
+        Image {
+            id: icon
+            fillMode: Image.PreserveAspectFit
+            anchors.verticalCenter: parent.verticalCenter
+            verticalAlignment: Qt.AlignVCenter
+            horizontalAlignment: Qt.AlignHCenter
+        }
+
+        SAKLabel {
+            id: title
+            color: "#999999"
+            font.pixelSize: 14
+            verticalAlignment: Text.AlignVCenter
+            anchors.verticalCenter: parent.verticalCenter
         }
     }
+
 }
