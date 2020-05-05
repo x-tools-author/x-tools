@@ -2,4 +2,5 @@
 
 Label {
     id: root
+    color: "#FFFFFF"
 }

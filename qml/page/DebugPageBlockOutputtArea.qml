@@ -1,7 +1,7 @@
 ﻿import QtQuick 2.12
 import QtQuick.Controls 2.12
 
-import "qrc:/qml/component"
+import "qrc:/qml/base"
 
 DebugPageBlock {
     id: root
@@ -9,6 +9,12 @@ DebugPageBlock {
     sakTitle: qsTr("数据输出")
 
     contentItem: Item{
-
+        SAKTextArea {
+            readOnly: true
+            anchors {
+                fill: parent
+                margins: 5
+            }
+        }
     }
 }

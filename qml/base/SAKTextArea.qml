@@ -1,7 +1,12 @@
 ﻿import QtQuick 2.12
+import QtQuick.Controls 2.12
 
-Text {
+TextArea {
     id: root
     color: "#FFFFFF"
-    font.pixelSize: 12
+    font.pixelSize: 14
+
+    background: Rectangle {
+        color: "#FF222222"
+    }
 }

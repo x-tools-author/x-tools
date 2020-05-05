@@ -11,16 +11,15 @@ Item {
     property var _leftMargin: 0
     property var _rightMargin: 0
 
-    property var _leftPannelWidth: 180
-    property var _rightPannelWidth: 180
-    property var _bottomPannelHeight: 150
-
+    property var _leftPannelWidth: 166
+    property var _rightPannelWidth: 166
+    property var _bottomPannelHeight: 137
     property var _spacing: 2
 
     DebugPageBlockDeviceSettings {
         id: deviceSettings
         width: _leftPannelWidth
-        anchors{
+        anchors {
             top: parent.top
             bottom: inputSettings.top
             left: parent.left
@@ -34,7 +33,7 @@ Item {
         id: inputSettings
         width: _leftPannelWidth
         height: _bottomPannelHeight
-        anchors{
+        anchors {
             bottom: parent.bottom
             left: parent.left
             bottomMargin: _bottomMargin
@@ -44,7 +43,7 @@ Item {
 
     DebugPageBlockOutputtArea {
         id: outputtArea
-        anchors{
+        anchors {
             top: parent.top
             bottom: inputArea.top
             left: deviceSettings.right
@@ -60,7 +59,7 @@ Item {
         id: inputArea
         width: 250
         height: _bottomPannelHeight
-        anchors{
+        anchors {
             bottom: parent.bottom
             left: inputSettings.right
             right: otherSettings.left
@@ -73,8 +72,7 @@ Item {
     DebugPageBlockOutputSettings {
         id: outputSettings
         width: _rightPannelWidth
-        height: 100
-        anchors{
+        anchors {
             top: parent.top
             bottom: otherSettings.top
             right: parent.right
@@ -88,7 +86,7 @@ Item {
         id: otherSettings
         width: _rightPannelWidth
         height: _bottomPannelHeight
-        anchors{
+        anchors {
             bottom: parent.bottom
             right: parent.right
             bottomMargin: _bottomMargin

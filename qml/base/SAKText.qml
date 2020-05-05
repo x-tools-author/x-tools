@@ -1,6 +1,8 @@
-﻿import QtQuick.Controls 2.12
+﻿import QtQuick 2.12
 
-Label {
+Text {
     id: root
     color: "#FFFFFF"
+    font.pixelSize: 12
+    verticalAlignment: Text.AlignVCenter
 }
