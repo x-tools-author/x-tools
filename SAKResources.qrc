@@ -70,5 +70,9 @@
         <file>qml/page/DebugPageBlockOtherSettings.qml</file>
         <file>qml/page/DebugPageBlockOutputSettings.qml</file>
         <file>qml/page/DebugPageBlockStatisticsArea.qml</file>
+        <file>qml/base/SAKButton.qml</file>
+        <file>qml/base/SAKCheckBox.qml</file>
+        <file>qml/base/SAKComboBox.qml</file>
+        <file>resources/icons/上拉.png</file>
     </qresource>
 </RCC>
