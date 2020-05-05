@@ -74,5 +74,8 @@
         <file>qml/base/SAKCheckBox.qml</file>
         <file>qml/base/SAKComboBox.qml</file>
         <file>resources/icons/上拉.png</file>
+        <file>qml/base/SAKText.qml</file>
+        <file>qml/base/SAKTextArea.qml</file>
+        <file>qml/base/SAKLineEdit.qml</file>
     </qresource>
 </RCC>
