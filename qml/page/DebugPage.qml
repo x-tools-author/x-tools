@@ -6,6 +6,8 @@ import "qrc:/qml/component"
 Item {
     id: root
 
+    property string controlPannel: ""
+
     property var _topMargin: 0
     property var _bottomMargin: 0
     property var _leftMargin: 0
@@ -92,5 +94,15 @@ Item {
             bottomMargin: _bottomMargin
             rightMargin: _rightMargin
         }
+    }
+
+    Component.onCompleted: {
+        if (controlPannel !== ""){
+            createControlPannel(controlPannel)
+        }
+    }
+
+    function createControlPannel(source){
+        deviceSettings.createControlPannel(source)
     }
 }

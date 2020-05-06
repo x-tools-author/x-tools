@@ -77,5 +77,9 @@
         <file>qml/base/SAKText.qml</file>
         <file>qml/base/SAKTextArea.qml</file>
         <file>qml/base/SAKLineEdit.qml</file>
+        <file>qml/console/ConsolePage.qml</file>
+        <file>qml/settings/SettingsPage.qml</file>
+        <file>qml/tools/ToolsPage.qml</file>
+        <file>qml/SAKSerialportControl.qml</file>
     </qresource>
 </RCC>

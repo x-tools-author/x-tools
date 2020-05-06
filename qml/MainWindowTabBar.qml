@@ -7,7 +7,7 @@ Rectangle {
     color: "#101010"
     height: 28
 
-    property var tabButtons: [qsTr("串口调试"), qsTr("UDP调试"), qsTr("TCP客户端"), qsTr("TCP服务器")]
+    property var tabButtons: []
     property int currentIndex: 0
 
     RowLayout {
@@ -36,92 +36,28 @@ Rectangle {
                 MouseArea {
                     anchors.fill: parent
                     cursorShape: Qt.PointingHandCursor
+                    enabled: !retct.visible
                     onClicked: {
                         currentIndex = index
+                        console.info(modelData)
                     }
                 }
-            }
-        }
 
-        Rectangle {
-            width: 2
-            height: root.height*0.6
-            color: "#01D766"
-        }
-
-        Label {
-            height: parent.height
-            text: qsTr("工具")
-            color: (currentIndex == tabButtonsRepeater.count) ?  "#01D766" : "#FFFFFF"
-            font.pixelSize: 12
-            verticalAlignment: Qt.AlignVCenter
-            Layout.fillHeight: true
-
-
-            Rectangle {
-                anchors{left: parent.left;right: parent.right;bottom: parent.bottom}
-                height: 2
-                color: "#01D766"
-                visible: currentIndex == tabButtonsRepeater.count
-            }
-
-            MouseArea {
-                anchors.fill: parent
-                cursorShape: Qt.PointingHandCursor
-                onClicked: {
-                    currentIndex = tabButtonsRepeater.count
+                // 间隔符
+                Rectangle {
+                    id: retct
+                    width: 2
+                    height: root.height*0.6
+                    color: "#01D766"
+                    visible: modelData === " "
+                    anchors.centerIn: parent
                 }
             }
         }
+    }
 
-        Label {
-            height: parent.height
-            text: qsTr("软件设置")
-            color: (currentIndex == tabButtonsRepeater.count+1) ?  "#01D766" : "#FFFFFF"
-            font.pixelSize: 12
-            verticalAlignment: Qt.AlignVCenter
-            Layout.fillHeight: true
-
-
-            Rectangle {
-                anchors{left: parent.left;right: parent.right;bottom: parent.bottom}
-                height: 2
-                color: "#01D766"
-                visible: currentIndex == tabButtonsRepeater.count+1
-            }
-
-            MouseArea {
-                anchors.fill: parent
-                cursorShape: Qt.PointingHandCursor
-                onClicked: {
-                    currentIndex = tabButtonsRepeater.count+1
-                }
-            }
-        }
-
-        Label {
-            height: parent.height
-            text: qsTr("终端输出")
-            color: (currentIndex == tabButtonsRepeater.count+2) ?  "#01D766" : "#FFFFFF"
-            font.pixelSize: 12
-            verticalAlignment: Qt.AlignVCenter
-            Layout.fillHeight: true
-
-
-            Rectangle {
-                anchors{left: parent.left;right: parent.right;bottom: parent.bottom}
-                height: 2
-                color: "#01D766"
-                visible: currentIndex == tabButtonsRepeater.count+2
-            }
-
-            MouseArea {
-                anchors.fill: parent
-                cursorShape: Qt.PointingHandCursor
-                onClicked: {
-                    currentIndex = tabButtonsRepeater.count+2
-                }
-            }
-        }
+    function push(_title){
+        tabButtons.push(_title)
+        tabButtonsRepeater.model = tabButtons
     }
 }

@@ -17,7 +17,7 @@ ComboBox {
     popup: Popup {
         padding: 0
         width: root.width
-        height: 25*(root.count+1)
+        height: 25*root.count
         background: Rectangle {
             color: "#00000000"
         }
@@ -28,12 +28,6 @@ ComboBox {
                 left: parent.left
                 right: parent.right
                 top: parent.top
-            }
-
-            // 占位符
-            Item {
-                height: root.height
-                width: 1
             }
 
             Repeater {
