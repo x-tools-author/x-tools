@@ -9,15 +9,31 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#include "SAKDebugger.hh"
+#include <QGuiApplication>
 
-SAKDebugger::SAKDebugger(QObject *parent)
+#include "SAKDebugger.hh"
+#include "SAKDebuggerDeviceSerialport.hh"
+
+SAKDebugger::SAKDebugger(int type, QObject *parent)
     :QObject (parent)
 {
+    if (!parent){
+        setParent(qApp);
+    }
 
+    if (type == DebuggerTypeSerialport){
+        device = new SAKDebuggerDeviceSerialport(this);
+    }
 }
 
 SAKDebugger::~SAKDebugger()
 {
+    device->requestInterruption();
+    device->quit();
+    device->wait();
+}
 
+SAKDebugger *SAKDebugger::createDebugger(int type)
+{
+    return new SAKDebugger(type);
 }
