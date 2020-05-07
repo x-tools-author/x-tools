@@ -9,17 +9,27 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
+#include <QQmlEngine>
+
+#include "SAKDebugger.hh"
 #include "SAKApplication.hh"
+#include "SAKDebuggerManager.hh"
 
 SAKApplication::SAKApplication(int argc, char **argv)
     : QGuiApplication (argc, argv)
 {
-
+    registerCustomType();
 }
 
 SAKApplication::~SAKApplication()
 {
 
+}
+
+void SAKApplication::registerCustomType()
+{
+    qmlRegisterUncreatableType<SAKDebugger>("SAK.CustomType", 1, 0, "SAKDebugger", "Can not insance the calss(SAKDebugger) on qml!");
+    qmlRegisterSingletonType<SAKDebuggerManager>("SAK.CustomType", 1, 0, "SAKDebuggerManager", [](QQmlEngine *, QJSEngine *)->QObject*{return SAKDebuggerManager::instance();});
 }
 
 void SAKApplication::setupUi()

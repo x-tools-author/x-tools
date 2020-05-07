@@ -31,7 +31,9 @@ ComboBox {
             }
 
             Repeater {
-                model: root.count
+                id: popupRepeater
+                model: root.model
+
                 Rectangle {
                     width: root.width
                     height: _itemHeight

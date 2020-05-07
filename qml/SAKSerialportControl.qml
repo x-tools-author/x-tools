@@ -1,6 +1,8 @@
 ﻿import QtQuick 2.12
 import QtQuick.Layouts 1.12
 
+import SAK.CustomType 1.0
+
 import "qrc:/qml/base"
 
 GridLayout {
@@ -10,6 +12,8 @@ GridLayout {
     anchors.right: parent.right
     anchors.top: parent.top
 
+    property SAKDebugger sakdebugger: null
+
     SAKText {
         text: qsTr("串口选择")
         height: 25
@@ -17,7 +21,8 @@ GridLayout {
     }
 
     SAKComboBox {
-        model: ["COM1", "COM2"]
+        id: coms
+        model: sakdebugger ? ["COM55", "COM66"] : []
         Layout.fillWidth: true
     }
 

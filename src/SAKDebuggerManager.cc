@@ -9,31 +9,36 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
+#include <QQmlEngine>
 #include <QGuiApplication>
 
 #include "SAKDebugger.hh"
-#include "SAKDebuggerDeviceSerialport.hh"
+#include "SAKDebuggerManager.hh"
 
-SAKDebugger::SAKDebugger(int type, QObject *parent)
+SAKDebuggerManager *SAKDebuggerManager::instancePtr = Q_NULLPTR;
+SAKDebuggerManager::SAKDebuggerManager(QObject *parent)
     :QObject (parent)
 {
-    if (!parent){
-        setParent(qApp);
-    }
-
-    if (type == DebuggerTypeSerialport){
-        device = new SAKDebuggerDeviceSerialport(this);
-    }
+    instancePtr = this;
+    QQmlEngine::setObjectOwnership(this, QQmlEngine::CppOwnership);
 }
 
-SAKDebugger::~SAKDebugger()
+SAKDebuggerManager::~SAKDebuggerManager()
 {
-    device->requestInterruption();
-    device->quit();
-    device->wait();
+
 }
 
-SAKDebugger *SAKDebugger::createDebugger(int type)
+SAKDebuggerManager *SAKDebuggerManager::instance()
 {
-    return new SAKDebugger(type);
+    if (!instancePtr){
+        new SAKDebuggerManager(qApp);
+    }
+
+    Q_ASSERT_X(instancePtr, __FUNCTION__, "Can not instance the class(SAKDebuggerManager)!");
+    return instancePtr;
+}
+
+SAKDebugger *SAKDebuggerManager::createDebugger(int type)
+{
+    return new SAKDebugger(type, qApp);
 }

@@ -81,5 +81,8 @@
         <file>qml/settings/SettingsPage.qml</file>
         <file>qml/tools/ToolsPage.qml</file>
         <file>qml/SAKSerialportControl.qml</file>
+        <file>qml/SAKTcpClientControl.qml</file>
+        <file>qml/SAKTcpServerControl.qml</file>
+        <file>qml/SAKUdpControl.qml</file>
     </qresource>
 </RCC>

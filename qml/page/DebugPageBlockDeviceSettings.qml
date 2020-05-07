@@ -2,6 +2,8 @@
 import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
 
+import SAK.CustomType 1.0
+
 import "qrc:/qml/base"
 
 DebugPageBlock {
@@ -20,11 +22,12 @@ DebugPageBlock {
         }
     }
 
-    function createControlPannel(source){
+    function createControlPannel(source, debuggerType){
         if (source){
             var component = Qt.createComponent(source);
             if (component && (component.status === Component.Ready)){
-                component.createObject(controlPannel);
+                var obj = component.createObject(controlPannel);
+                obj.sakdebugger = SAKDebuggerManager.createDebugger(debuggerType)
             }else{
                 console.error("Oh, something is error!")
             }

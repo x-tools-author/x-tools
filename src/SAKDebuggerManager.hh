@@ -9,26 +9,25 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef SAKDEBUGGER_HH
-#define SAKDEBUGGER_HH
+#ifndef SAKDEBUGGERMANAGER_HH
+#define SAKDEBUGGERMANAGER_HH
 
 #include <QObject>
 
-class SAKDebuggerDevice;
-class SAKDebugger : public QObject
+class SAKDebugger;
+/// @brief 调试器管理类，该类是单实例类
+class SAKDebuggerManager : public QObject
 {
     Q_OBJECT
+private:
+    SAKDebuggerManager(QObject *parent = Q_NULLPTR);
+    ~SAKDebuggerManager();
 public:
-    enum SAKDebuggertype {
-        DebuggerTypeSerialport,
-        DebuggerTypeUDP,
-        DebuggerTypeTcpClient,
-        DebuggerTypeTcpServer
-    };
-    Q_ENUM(SAKDebuggertype)
-
-    SAKDebugger(int type, QObject *parent = Q_NULLPTR);
-    ~SAKDebugger();
+    /**
+     * @brief instance 获取调试器管理类实例指针
+     * @return 实例指针
+     */
+    static SAKDebuggerManager *instance();
 
     /**
      * @brief createDebugger 创建调试器
@@ -37,7 +36,7 @@ public:
      */
     Q_INVOKABLE static SAKDebugger *createDebugger(int type);
 private:
-    SAKDebuggerDevice *device;
+    static SAKDebuggerManager *instancePtr;
 };
 
 #endif

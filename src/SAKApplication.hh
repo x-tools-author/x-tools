@@ -23,6 +23,11 @@ public:
     ~SAKApplication();
 
     /**
+     * @brief registerCustomType 创建自定义类型
+     */
+    void registerCustomType();
+
+    /**
      * @brief setupUi 加载ui界面
      */
     void setupUi();

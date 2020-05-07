@@ -1,6 +1,8 @@
 ﻿import QtQuick 2.12
 import QtQuick.Layouts 1.12
 
+import SAK.CustomType 1.0
+
 import "qrc:/qml/base"
 
 GridLayout {
@@ -9,6 +11,8 @@ GridLayout {
     anchors.left: parent.left
     anchors.right: parent.right
     anchors.top: parent.top
+
+    property SAKDebugger sakdebugger: null
 
     SAKText {
         text: qsTr("串口选择")

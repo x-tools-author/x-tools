@@ -2,6 +2,8 @@
 import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
 
+import SAK.CustomType 1.0
+
 import "qrc:/qml/page"
 import "qrc:/qml/tools"
 import "qrc:/qml/console"
@@ -37,14 +39,14 @@ Window {
                 Repeater {
                     id: debugPageRepeater
                     model: [                                            // true表示页面为调试页面
-                        ["qrc:/qml/SAKSerialportControl.qml",           true,  qsTr("串口调试")],
-                        ["qrc:/qml/SAKSerialportControl.qml",           true,  qsTr("UDP调试")],
-                        ["qrc:/qml/SAKSerialportControl.qml",           true,  qsTr("TCP客户端")],
-                        ["qrc:/qml/SAKSerialportControl.qml",           true,  qsTr("TCP服务器")],
-                        ["",                                            false, " "],// 间隔符
-                        ["qrc:/qml/tools/ToolsPage.qml",                false, qsTr("实用工具")],
-                        ["qrc:/qml/settings/SettingsPage.qml",          false, qsTr("软件设置")],
-                        ["qrc:/qml/console/ConsolePage.qml",            false, qsTr("终端输出")],
+                        ["qrc:/qml/SAKSerialportControl.qml",           true,  SAKDebugger.DebuggerTypeSerialport,  qsTr("串口调试")],
+                        ["qrc:/qml/SAKUdpControl.qml",                  true,  SAKDebugger.DebuggerTypeUDP,         qsTr("UDP调试"), ],
+                        ["qrc:/qml/SAKTcpClientControl.qml",            true,  SAKDebugger.DebuggerTypeTcpClient,   qsTr("TCP客户端")],
+                        ["qrc:/qml/SAKTcpServerControl.qml",            true,  SAKDebugger.DebuggerTypeTcpServer,   qsTr("TCP服务器")],
+                        ["",                                            false, -1,                                  " "],// 间隔符
+                        ["qrc:/qml/tools/ToolsPage.qml",                false, -1,                                  qsTr("实用工具")],
+                        ["qrc:/qml/settings/SettingsPage.qml",          false, -1,                                  qsTr("软件设置")],
+                        ["qrc:/qml/console/ConsolePage.qml",            false, -1,                                  qsTr("终端输出")],
                     ]
 
                     Loader {
@@ -69,7 +71,7 @@ Window {
                         }
 
                         onLoaded: {
-                            tabBar.push(modelData[2])
+                            tabBar.push(modelData[3])
                             if (modelData[1]){
                                 // 指定调试页面的设备控制面板
                                 item.createControlPannel(modelData[0])

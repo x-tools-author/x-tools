@@ -9,15 +9,16 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#include "SAKDebugger.hh"
+#include "SAKDebuggerDevice.hh"
 
-SAKDebugger::SAKDebugger(QObject *parent)
-    :QObject (parent)
+SAKDebuggerDevice::SAKDebuggerDevice(SAKDebugger *debugger, QObject *parent)
+    :QThread (parent)
+    ,debugger (debugger)
 {
 
 }
 
-SAKDebugger::~SAKDebugger()
+SAKDebuggerDevice::~SAKDebuggerDevice()
 {
 
 }

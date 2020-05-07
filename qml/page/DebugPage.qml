@@ -18,6 +18,8 @@ Item {
     property var _bottomPannelHeight: 137
     property var _spacing: 2
 
+    property var deviceSettingsPanel: deviceSettings
+
     DebugPageBlockDeviceSettings {
         id: deviceSettings
         width: _leftPannelWidth
@@ -96,13 +98,7 @@ Item {
         }
     }
 
-    Component.onCompleted: {
-        if (controlPannel !== ""){
-            createControlPannel(controlPannel)
-        }
-    }
-
-    function createControlPannel(source){
-        deviceSettings.createControlPannel(source)
+    function createControlPannel(source, debuggerType){
+        deviceSettings.createControlPannel(source, debuggerType)
     }
 }

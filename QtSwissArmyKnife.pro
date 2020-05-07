@@ -24,6 +24,16 @@ DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs depr
 CONFIG += c++11
 
 #--------------------------------------------------------------------------------------------
+#工程仅适用于qt5.12
+equals(QT_MAJOR_VERSION, 5){
+    !equals(QT_MINOR_VERSION, 12){
+        error("The project is for Qt5.12 only!")
+    }
+}else{
+    error("The project is for Qt5 only!")
+}
+
+#--------------------------------------------------------------------------------------------
 #编译目录配置
 UI_DIR      = $$OUT_PWD/ui
 MOC_DIR     = $$OUT_PWD/moc
@@ -46,9 +56,8 @@ TRANSLATIONS  += \
     Translations/sak/SAK_zh_CN.ts \
     Translations/sak/SAK_zh_TW.ts
 
-RESOURCES += \
-    SAKResources.qrc
-
+#--------------------------------------------------------------------------------------------
+#安卓配置
 DISTFILES += \
     android/AndroidManifest.xml \
     android/build.gradle \
@@ -63,11 +72,36 @@ contains(ANDROID_TARGET_ARCH,arm64-v8a) {
         $$PWD/android
 }
 
+#--------------------------------------------------------------------------------------------
+#子工程
 include(SAKSetup.pri)
+include(SAKSerialport.pri)
 
+#--------------------------------------------------------------------------------------------
+#资源文件
+RESOURCES += \
+    SAKResources.qrc
+
+#--------------------------------------------------------------------------------------------
+#头文件目录
+INCLUDEPATH += \
+    src/debugger \
+    src/debugger/device \
+    src/debugger/input \
+    src/debugger/input/input \
+    src/debugger/input/settings
+
+#--------------------------------------------------------------------------------------------
+#源码
 HEADERS += \
-    src/SAKApplication.hh
+    src/SAKApplication.hh \
+    src/SAKDebuggerManager.hh \
+    src/debugger/SAKDebugger.hh \
+    src/debugger/device/SAKDebuggerDevice.hh
 
 SOURCES += \
     src/SAKApplication.cc \
+    src/SAKDebuggerManager.cc \
+    src/debugger/SAKDebugger.cc \
+    src/debugger/device/SAKDebuggerDevice.cc \
     src/main.cc

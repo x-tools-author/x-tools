@@ -9,16 +9,29 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#include "SAKDebuggerDevice.hh"
+#include "SAKDebuggerDeviceSerialport.hh"
 
-SAKDebuggerDevice::SAKDebuggerDevice(SAKDebugger *debugger, QObject *parent)
-    :QThread (parent)
-    ,debugger (debugger)
+SAKDebuggerDeviceSerialport::SAKDebuggerDeviceSerialport(SAKDebugger *debugger, QObject *parent)
+    :SAKDebuggerDevice (debugger, parent)
+    ,serialport (Q_NULLPTR)
 {
 
 }
 
-SAKDebuggerDevice::~SAKDebuggerDevice()
+SAKDebuggerDeviceSerialport::~SAKDebuggerDeviceSerialport()
 {
 
+}
+
+void SAKDebuggerDeviceSerialport::run()
+{
+    serialport = new QSerialPort;
+    while (1) {
+        /// @brief “优雅地”地退出线程
+        if (isInterruptionRequested()){
+            break;
+        }
+    }
+
+    delete serialport;
 }

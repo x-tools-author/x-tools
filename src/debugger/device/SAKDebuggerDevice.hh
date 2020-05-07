@@ -9,17 +9,25 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef SAKDEBUGGER_HH
-#define SAKDEBUGGER_HH
+#ifndef SAKDEBUGGERDEVICE_HH
+#define SAKDEBUGGERDEVICE_HH
 
-#include <QObject>
+#include <QThread>
 
-class SAKDebugger : public QObject
+class SAKDebugger;
+class SAKDebuggerDevice : public QThread
 {
     Q_OBJECT
 public:
-    SAKDebugger(QObject *parent = Q_NULLPTR);
-    ~SAKDebugger();
+    SAKDebuggerDevice(SAKDebugger *debugger, QObject *parent = Q_NULLPTR);
+    ~SAKDebuggerDevice();
+private:
+    SAKDebugger *debugger;
+signals:
+    /// @brief 读取到数据后出发该信号
+    void bytesRead(QByteArray bytes);
+    /// @brief 数据成功写入后出发该信号
+    void bytesWritten(QByteArray bytes);
 };
 
 #endif
