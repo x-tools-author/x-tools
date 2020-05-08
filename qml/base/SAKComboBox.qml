@@ -40,7 +40,7 @@ ComboBox {
                 Rectangle {
                     width: (root.width > _maxPopupLength) ? root.width : _maxPopupLength
                     height: _itemHeight
-                    color: mouseArea.containsMouse ? "#FF101010" : "#FF222222"
+                    color: itemText.text === root.currentText ? "#FF101010" : mouseArea.containsMouse ? "#FF101010" : "#FF222222"
                     Text {
                         id: itemText
                         text: modelData
