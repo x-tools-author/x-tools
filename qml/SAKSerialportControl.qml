@@ -81,6 +81,12 @@ GridLayout {
                         currentIndex = ret
                     }
                 }
+                if (index == 1){
+                    ret = find("Data8")
+                    if (ret > 0){
+                        currentIndex = ret
+                    }
+                }
             }
         }
     }
