@@ -9,32 +9,45 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
+#include <QMetaEnum>
 #include <QGuiApplication>
 
 #include "SAKDebugger.hh"
+#include "SAKCRCInterface.hh"
+#include "SAKDebuggerInputManager.hh"
 #include "SAKDebuggerDeviceSerialport.hh"
 
 SAKDebugger::SAKDebugger(int type, QObject *parent)
     :QObject (parent)
     ,debuggerType(type)
+    ,crcInterface (new SAKCRCInterface)
+    ,_inputManager (new SAKDebuggerInputManager)
 {
     if (!parent){
         setParent(qApp);
     }
 
     if (type == DebuggerTypeSerialport){
-        device = new SAKDebuggerDeviceSerialport(this);
+        _device = new SAKDebuggerDeviceSerialport(this);
     }
 }
 
 SAKDebugger::~SAKDebugger()
 {
-    device->requestInterruption();
-    device->quit();
-    device->wait();
+    delete crcInterface;
+    delete _inputManager;
+
+    _device->requestInterruption();
+    _device->quit();
+    _device->wait();
 }
 
-SAKDebuggerDevice *SAKDebugger::debuggerDevice()
+SAKDebuggerDevice *SAKDebugger::device()
 {
-    return device;
+    return _device;
+}
+
+SAKDebuggerInputManager *SAKDebugger::inputManager()
+{
+    return _inputManager;
 }

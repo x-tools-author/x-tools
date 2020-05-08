@@ -14,11 +14,15 @@
 
 #include <QObject>
 
+class SAKCRCInterface;
 class SAKDebuggerDevice;
+class SAKDebuggerInputManager;
 class SAKDebuggerDeviceSerialport;
 class SAKDebugger : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(SAKDebuggerDevice* device READ device NOTIFY deviceChanged)
+    Q_PROPERTY(SAKDebuggerInputManager* inputManager READ inputManager CONSTANT)
 public:
     enum SAKDebuggertype {
         DebuggerTypeSerialport,
@@ -30,11 +34,17 @@ public:
 
     SAKDebugger(int type, QObject *parent = Q_NULLPTR);
     ~SAKDebugger();
-
-    Q_INVOKABLE SAKDebuggerDevice* debuggerDevice();
 private:
-    SAKDebuggerDevice *device;
     int debuggerType;
+    SAKCRCInterface *crcInterface;
+private:
+    SAKDebuggerDevice *_device;
+    SAKDebuggerDevice *device();
+
+    SAKDebuggerInputManager *_inputManager;
+    SAKDebuggerInputManager *inputManager();
+signals:
+    void deviceChanged();
 };
 
 #endif
