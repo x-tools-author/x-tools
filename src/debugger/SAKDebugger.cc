@@ -16,6 +16,7 @@
 
 SAKDebugger::SAKDebugger(int type, QObject *parent)
     :QObject (parent)
+    ,debuggerType(type)
 {
     if (!parent){
         setParent(qApp);
@@ -33,7 +34,7 @@ SAKDebugger::~SAKDebugger()
     device->wait();
 }
 
-SAKDebugger *SAKDebugger::createDebugger(int type)
+SAKDebuggerDevice *SAKDebugger::debuggerDevice()
 {
-    return new SAKDebugger(type);
+    return device;
 }

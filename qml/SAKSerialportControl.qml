@@ -13,6 +13,11 @@ GridLayout {
     anchors.top: parent.top
 
     property SAKDebugger sakdebugger: null
+    property SAKDebuggerDeviceSerialport device: sakdebugger ? sakdebugger.debuggerDevice() : null
+    property var baudRates: device ? device.baudRates : []
+    property var stopBits: device ? device.stopBits : []
+    property var paritys: device ? device.paritys : []
+    property var dataBits: device ? device.dataBits : []
 
     SAKText {
         text: qsTr("串口选择")
@@ -22,31 +27,51 @@ GridLayout {
 
     SAKComboBox {
         id: coms
-        model: sakdebugger ? ["COM55", "COM66"] : []
+        model: sakdebugger ? (device ? device.serialports : []) : []
         Layout.fillWidth: true
     }
 
     SAKCheckBox {
+        id: sakCheckBox
         text: qsTr("自定义波特率")
         Layout.columnSpan: 2
+
+        onCheckedChanged: {
+            comboBoxRepeater.itemAt(0).visible = !checked
+            textRepeater.itemAt(0).visible = !checked
+        }
+    }
+
+    SAKText {
+        text: qsTr("波特率")
+        Layout.column: 0
+        Layout.row: index+2
+        visible: sakCheckBox.checked
+    }
+
+    SAKLineEdit {
+        visible: sakCheckBox.checked
+        Layout.fillWidth: true
     }
 
     Repeater {
+        id: textRepeater
         model: [qsTr("波特率"), qsTr("数据位"), qsTr("停止位"), qsTr("奇偶位")]
 
         SAKText {
             text: modelData
             Layout.column: 0
-            Layout.row: index+2
+            Layout.row: index+3
         }
     }
 
     Repeater {
+        id: comboBoxRepeater
         model: 4
         SAKComboBox {
-            model: ["9600", "115200"]
+            model: index == 0 ? baudRates : (index == 1 ? dataBits : (index == 2 ? stopBits : (index == 3 ? paritys : [])))
             Layout.column: 1
-            Layout.row: index+2
+            Layout.row: index+3
             Layout.fillWidth: true
         }
     }

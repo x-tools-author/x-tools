@@ -15,6 +15,7 @@
 #include <QObject>
 
 class SAKDebuggerDevice;
+class SAKDebuggerDeviceSerialport;
 class SAKDebugger : public QObject
 {
     Q_OBJECT
@@ -30,14 +31,10 @@ public:
     SAKDebugger(int type, QObject *parent = Q_NULLPTR);
     ~SAKDebugger();
 
-    /**
-     * @brief createDebugger 创建调试器
-     * @param type 调试器类型，详情查看SAKDebugger::SAKDebuggertype
-     * @return 调试器实例指针
-     */
-    Q_INVOKABLE static SAKDebugger *createDebugger(int type);
+    Q_INVOKABLE SAKDebuggerDevice* debuggerDevice();
 private:
     SAKDebuggerDevice *device;
+    int debuggerType;
 };
 
 #endif

@@ -6,9 +6,12 @@ ComboBox {
     font.pixelSize: 12
     implicitHeight: 25
     implicitWidth: 70
+    clip: true
+    rightPadding: 25
 
     property var _leftPadding: 5
     property var _itemHeight: 25
+    property var _maxPopupLength: 0
 
     background: Rectangle {
         color: "#FF222222"
@@ -16,7 +19,7 @@ ComboBox {
 
     popup: Popup {
         padding: 0
-        width: root.width
+        width: (root.width > _maxPopupLength) ? root.width : _maxPopupLength
         height: 25*root.count
         background: Rectangle {
             color: "#00000000"
@@ -35,17 +38,24 @@ ComboBox {
                 model: root.model
 
                 Rectangle {
-                    width: root.width
+                    width: (root.width > _maxPopupLength) ? root.width : _maxPopupLength
                     height: _itemHeight
                     color: mouseArea.containsMouse ? "#FF101010" : "#FF222222"
                     Text {
-                        text: root.textAt(index)
+                        id: itemText
+                        text: modelData
                         color: "#FFFFFF"
                         leftPadding: _leftPadding
                         verticalAlignment: Qt.AlignVCenter
                         anchors {
                             left: parent.left
                             verticalCenter: parent.verticalCenter
+                        }
+
+                        Component.onCompleted: {
+                            if (itemText.width > _maxPopupLength){
+                                _maxPopupLength = itemText.width+5
+                            }
                         }
                     }
 
@@ -68,8 +78,10 @@ ComboBox {
         text: root.currentText
         font: root.font
         color: "#FFFFFF"
+        clip: true
         verticalAlignment: Text.AlignVCenter
         leftPadding: _leftPadding
+        rightPadding: root.rightPadding
         anchors {
             left: parent.left
             verticalCenter: parent.verticalCenter
