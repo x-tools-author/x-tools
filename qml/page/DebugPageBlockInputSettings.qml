@@ -38,7 +38,7 @@ DebugPageBlock {
             }
 
             SAKComboBox {
-                model: inputSettings ? inputSettings.crcParameterModel : []
+                model: inputSettings ? inputSettings.crcParameterModel : 15
             }
 
             SAKText {
@@ -47,7 +47,7 @@ DebugPageBlock {
             }
 
             SAKComboBox {
-                model: ["Bin", "Otc", "Dec", "Otc", "Hex"]
+                model: inputSettings ? inputSettings.textFormats : 6
             }
         }
     }
