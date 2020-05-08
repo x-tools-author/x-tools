@@ -1,6 +1,8 @@
 ﻿import QtQuick 2.12
 import QtQuick.Controls 2.12
 
+import SAK.CustomType 1.0
+
 import "qrc:/qml/component"
 
 Page {
@@ -9,6 +11,7 @@ Page {
 
     property string sakIcon: ""
     property string sakTitle: ""
+    property SAKDebugger sakdebugger: null
 
     header: SAKTitle{
         icon: sakIcon

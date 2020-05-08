@@ -9,17 +9,26 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef SAKDEBUGGER_HH
-#define SAKDEBUGGER_HH
+#ifndef SAKDEBUGGERINPURTSETTINGS_HH
+#define SAKDEBUGGERINPURTSETTINGS_HH
 
 #include <QObject>
 
-class SAKDebugger : public QObject
+class SAKDebuggerInputSettings : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(QStringList crcParameterModel READ crcParameterModel CONSTANT)
 public:
-    SAKDebugger(QObject *parent = Q_NULLPTR);
-    ~SAKDebugger();
+    SAKDebuggerInputSettings(QObject *parent = Q_NULLPTR);
+    ~SAKDebuggerInputSettings();
+
+    /**
+     * @brief avalidCRCParameterModel 获取调试器支持的crc参数模型
+     * @return crc参数模型列表
+     */
+    static QStringList avalidCRCParameterModel();
+private:
+    QStringList crcParameterModel();
 };
 
 #endif

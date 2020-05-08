@@ -9,17 +9,22 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef SAKDEBUGGER_HH
-#define SAKDEBUGGER_HH
+#ifndef SAKDEBUGGERINPUTMANAGER_HH
+#define SAKDEBUGGERINPUTMANAGER_HH
 
 #include <QObject>
 
-class SAKDebugger : public QObject
+class SAKDebuggerInputSettings;
+class SAKDebuggerInputManager : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(SAKDebuggerInputSettings* inputSettings READ inputSettings CONSTANT)
 public:
-    SAKDebugger(QObject *parent = Q_NULLPTR);
-    ~SAKDebugger();
+    SAKDebuggerInputManager(QObject *parent = Q_NULLPTR);
+    ~SAKDebuggerInputManager();
+private:
+    SAKDebuggerInputSettings *_inputSettings;
+    SAKDebuggerInputSettings *inputSettings();
 };
 
 #endif

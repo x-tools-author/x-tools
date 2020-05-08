@@ -9,15 +9,36 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#include "SAKDebugger.hh"
+#include <QMetaEnum>
 
-SAKDebugger::SAKDebugger(QObject *parent)
+#include "SAKCRCInterface.hh"
+#include "SAKDebuggerInputSettings.hh"
+
+SAKDebuggerInputSettings::SAKDebuggerInputSettings(QObject *parent)
     :QObject (parent)
 {
 
 }
 
-SAKDebugger::~SAKDebugger()
+SAKDebuggerInputSettings::~SAKDebuggerInputSettings()
 {
 
+}
+
+QStringList SAKDebuggerInputSettings::avalidCRCParameterModel()
+{
+    QStringList list;
+    QMetaEnum metaEnum = QMetaEnum::fromType<SAKCRCInterface::CRCModel>();
+    for (int i = 0; i < metaEnum.keyCount(); i++){
+        QString str = QString(metaEnum.key(i));
+        list.append(str);
+    }
+
+    return list;
+}
+
+
+QStringList SAKDebuggerInputSettings::crcParameterModel()
+{
+    return avalidCRCParameterModel();
 }

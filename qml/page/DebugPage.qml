@@ -1,6 +1,8 @@
 ﻿import QtQuick 2.12
 import QtQuick.Controls 2.12
 
+import SAK.CustomType 1.0
+
 import "qrc:/qml/component"
 
 Item {
@@ -19,9 +21,11 @@ Item {
     property var _spacing: 2
 
     property var deviceSettingsPanel: deviceSettings
+    property SAKDebugger _sakDebugger: null
 
     DebugPageBlockDeviceSettings {
         id: deviceSettings
+        sakdebugger: _sakDebugger
         width: _leftPannelWidth
         anchors {
             top: parent.top
@@ -31,10 +35,17 @@ Item {
             bottomMargin: _spacing
             leftMargin: _leftMargin
         }
+
+        onSakdebuggerChanged: {
+            if (sakdebugger){
+                setControlPannelDebugger()
+            }
+        }
     }
 
     DebugPageBlockInputSettings {
         id: inputSettings
+        sakdebugger: _sakDebugger
         width: _leftPannelWidth
         height: _bottomPannelHeight
         anchors {
@@ -47,6 +58,7 @@ Item {
 
     DebugPageBlockOutputtArea {
         id: outputtArea
+        sakdebugger: _sakDebugger
         anchors {
             top: parent.top
             bottom: inputArea.top
@@ -61,6 +73,7 @@ Item {
 
     DebugPageBlockInputArea {
         id: inputArea
+        sakdebugger: _sakDebugger
         width: 250
         height: _bottomPannelHeight
         anchors {
@@ -75,6 +88,7 @@ Item {
 
     DebugPageBlockOutputSettings {
         id: outputSettings
+        sakdebugger: _sakDebugger
         width: _rightPannelWidth
         anchors {
             top: parent.top
@@ -88,6 +102,7 @@ Item {
 
     DebugPageBlockOtherSettings {
         id: otherSettings
+        sakdebugger: _sakDebugger
         width: _rightPannelWidth
         height: _bottomPannelHeight
         anchors {
@@ -99,6 +114,7 @@ Item {
     }
 
     function createControlPannel(source, debuggerType){
-        deviceSettings.createControlPannel(source, debuggerType)
+        deviceSettings.createControlPannel(source)
+        _sakDebugger = SAKDebuggerManager.createDebugger(debuggerType)
     }
 }

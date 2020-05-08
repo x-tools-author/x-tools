@@ -13,7 +13,7 @@ GridLayout {
     anchors.top: parent.top
 
     property SAKDebugger sakdebugger: null
-    property SAKDebuggerDeviceSerialport device: sakdebugger ? sakdebugger.debuggerDevice() : null
+    property SAKDebuggerDeviceSerialport device: sakdebugger ? sakdebugger.device : null
     property var baudRates: device ? device.baudRates : []
     property var stopBits: device ? device.stopBits : []
     property var paritys: device ? device.paritys : []

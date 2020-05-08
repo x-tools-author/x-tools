@@ -1,6 +1,8 @@
 ﻿import QtQuick 2.12
 import QtQuick.Controls 2.12
 
+import SAK.CustomType 1.0
+
 import "qrc:/qml/base"
 import "qrc:/qml/component"
 
@@ -8,6 +10,9 @@ DebugPageBlock {
     id: root
     sakIcon: "qrc:/resources/icons/设置 (1).png"
     sakTitle: qsTr("输入设置")
+
+    property SAKDebuggerInputManager inputManager: sakdebugger ? sakdebugger.inputManager : null
+    property SAKDebuggerInputSettings inputSettings: inputManager ? inputManager.inputSettings : null
 
     contentItem: Item{
         Grid {
@@ -33,7 +38,7 @@ DebugPageBlock {
             }
 
             SAKComboBox {
-                model: ["CRC8", "CRC9"]
+                model: inputSettings ? inputSettings.crcParameterModel : []
             }
 
             SAKText {

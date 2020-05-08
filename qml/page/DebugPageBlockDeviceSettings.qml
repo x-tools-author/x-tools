@@ -10,6 +10,7 @@ DebugPageBlock {
     id: root
     sakIcon: "qrc:/resources/icons/控制.png"
     sakTitle: qsTr("设备控制")
+    property var deviceControlPannel: null
 
     contentItem: Item{
         Rectangle {
@@ -22,15 +23,19 @@ DebugPageBlock {
         }
     }
 
-    function createControlPannel(source, debuggerType){
+    function createControlPannel(source){
         if (source){
             var component = Qt.createComponent(source);
             if (component && (component.status === Component.Ready)){
                 var obj = component.createObject(controlPannel);
-                obj.sakdebugger = SAKDebuggerManager.createDebugger(debuggerType)
+                root.deviceControlPannel = obj
             }else{
                 console.error("Oh, something is error!")
             }
         }
+    }
+
+    function setControlPannelDebugger(){
+        deviceControlPannel.sakdebugger = sakdebugger
     }
 }
