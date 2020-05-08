@@ -42,3 +42,15 @@ QStringList SAKDebuggerInputSettings::crcParameterModel()
 {
     return avalidCRCParameterModel();
 }
+
+QStringList SAKDebuggerInputSettings::textFormats()
+{
+    QStringList list;
+    QMetaEnum metaEnum = QMetaEnum::fromType<InputTextFormat>();
+    for (int i = 0; i < metaEnum.keyCount(); i++){
+        QString str = QString(metaEnum.key(i));
+        list.append(str);
+    }
+
+    return list;
+}

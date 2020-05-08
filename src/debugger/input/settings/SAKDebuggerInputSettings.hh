@@ -18,7 +18,18 @@ class SAKDebuggerInputSettings : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QStringList crcParameterModel READ crcParameterModel CONSTANT)
+    Q_PROPERTY(QStringList textFormats READ textFormats CONSTANT)
 public:
+    enum InputTextFormat {
+        Bin,
+        Otc,
+        Dec,
+        Hex,
+        Ascii,
+        System
+    };
+    Q_ENUM(InputTextFormat)
+
     SAKDebuggerInputSettings(QObject *parent = Q_NULLPTR);
     ~SAKDebuggerInputSettings();
 
@@ -29,6 +40,7 @@ public:
     static QStringList avalidCRCParameterModel();
 private:
     QStringList crcParameterModel();
+    QStringList textFormats();
 };
 
 #endif
