@@ -73,6 +73,15 @@ GridLayout {
             Layout.column: 1
             Layout.row: index+3
             Layout.fillWidth: true
+
+            onModelChanged: {
+                if (index == 0){
+                    var ret = find("9600")
+                    if (ret > 0){
+                        currentIndex = ret
+                    }
+                }
+            }
         }
     }
 
