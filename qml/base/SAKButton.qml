@@ -8,13 +8,14 @@ Button {
     font.pixelSize: 12
 
     property alias color: label.color
+    property alias customEnable: mouseArea.enabled
 
     background: Rectangle {
         color: mouseArea.containsMouse ? "#FF01D766" : "#FF222222"
         MouseArea {
             id: mouseArea
             anchors.fill: parent
-            cursorShape: Qt.PointingHandCursor
+            cursorShape: enabled ? Qt.PointingHandCursor : Qt.ForbiddenCursor
             hoverEnabled: true
             onClicked: {
                root.clicked()

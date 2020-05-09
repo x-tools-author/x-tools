@@ -12,6 +12,7 @@ ComboBox {
     property var _leftPadding: 5
     property var _itemHeight: 25
     property var _maxPopupLength: 0
+    property bool customEnable: true
 
     background: Rectangle {
         color: "#FF222222"
@@ -97,5 +98,11 @@ ComboBox {
             rightMargin: 5
             verticalCenter: parent.verticalCenter
         }
+    }
+
+    MouseArea {
+        anchors.fill: parent
+        visible: !customEnable
+        cursorShape: Qt.ForbiddenCursor
     }
 }
