@@ -148,6 +148,7 @@ GridLayout {
         ]
 
         SAKButton {
+            id: bt
             text: index == 1 ? (device ? (device.deviceIsOpened ? modelData[1] : modelData[0]) : modelData[0]) : modelData[0]
             Layout.fillWidth: true
             customEnable: index == 0 ? (device ? !device.deviceIsOpened : false) : true
@@ -162,6 +163,15 @@ GridLayout {
                         if (device){
                             device.open()
                         }
+                    }
+                }
+            }
+
+            Connections {
+                target: device
+                onDeviceIsOpenedChanged: {
+                    if (index == 1){
+                        bt.color = device.deviceIsOpened ? "#FF0000" : "#FFFFFF"
                     }
                 }
             }
