@@ -29,16 +29,32 @@ GridLayout {
         id: coms
         model: sakdebugger ? (device ? device.serialports : []) : []
         Layout.fillWidth: true
+        customEnable: device ? !device.deviceIsOpened : false
+
+        onCurrentTextChanged: {
+            if (device){
+                device.paraPortName  = currentText
+            }
+        }
     }
 
     SAKCheckBox {
         id: sakCheckBox
         text: qsTr("自定义波特率")
         Layout.columnSpan: 2
+        enabled: device ? !device.deviceIsOpened : false
 
         onCheckedChanged: {
             comboBoxRepeater.itemAt(0).visible = !checked
             textRepeater.itemAt(0).visible = !checked
+
+            if (device){
+                if (checked){
+                    device.paraBaudRate = customBd.text
+                }else{
+                    device.paraBaudRate = comboBoxRepeater.itemAt(0).currentText
+                }
+            }
         }
     }
 
@@ -50,8 +66,18 @@ GridLayout {
     }
 
     SAKLineEdit {
+        id: customBd
         visible: sakCheckBox.checked
         Layout.fillWidth: true
+        readOnly: device ? device.deviceIsOpened : false
+
+        onTextChanged: {
+            if (device){
+                if (sakCheckBox.checked){
+                    device.paraBaudRate = text
+                }
+            }
+        }
     }
 
     Repeater {
@@ -73,6 +99,29 @@ GridLayout {
             Layout.column: 1
             Layout.row: index+3
             Layout.fillWidth: true
+            customEnable: device ? !device.deviceIsOpened : false
+
+            onCurrentTextChanged: {
+                if (device){
+                    switch (index){
+                    case 0:
+                        device.paraBaudRate = currentText
+                        break;
+                    case 1:
+                        device.paraDataBits = currentText
+                        break;
+                    case 2:
+                        device.paraStopBits = currentText
+                        break;
+                    case 3:
+                        device.paraParity = currentText
+                        break;
+                    default:
+                        console.info("Unknow type")
+                        break;
+                    }
+                }
+            }
 
             onModelChanged: {
                 if (index == 0){
@@ -92,11 +141,30 @@ GridLayout {
     }
 
     Repeater {
-        model: [qsTr("刷新设备"), qsTr("打开设备")]
+        id: deviceButtonRepeater
+        model: [
+            [qsTr("刷新设备"), qsTr("刷新设备")],
+            [qsTr("打开设备"), qsTr("关闭设备")]
+        ]
 
         SAKButton {
-            text: modelData
+            text: index == 1 ? (device ? (device.deviceIsOpened ? modelData[1] : modelData[0]) : modelData[0]) : modelData[0]
             Layout.fillWidth: true
+            customEnable: index == 0 ? (device ? !device.deviceIsOpened : false) : true
+
+            onClicked: {
+                if (customEnable){
+                    if (index == 0){
+                        if (device){
+                            device.refresh()
+                        }
+                    }else{
+                        if (device){
+                            device.open()
+                        }
+                    }
+                }
+            }
         }
     }
 }

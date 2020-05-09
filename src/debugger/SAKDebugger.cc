@@ -9,12 +9,14 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
+#include <QDebug>
 #include <QMetaEnum>
 #include <QGuiApplication>
 
 #include "SAKDebugger.hh"
 #include "SAKCRCInterface.hh"
 #include "SAKDebuggerInputManager.hh"
+#include "SAKDebuggerOutputManager.hh"
 #include "SAKDebuggerDeviceSerialport.hh"
 
 SAKDebugger::SAKDebugger(int type, QObject *parent)
@@ -22,6 +24,7 @@ SAKDebugger::SAKDebugger(int type, QObject *parent)
     ,debuggerType(type)
     ,crcInterface (new SAKCRCInterface)
     ,_inputManager (new SAKDebuggerInputManager)
+    ,_outputManager (new SAKDebuggerOutputManager)
 {
     if (!parent){
         setParent(qApp);
@@ -30,16 +33,27 @@ SAKDebugger::SAKDebugger(int type, QObject *parent)
     if (type == DebuggerTypeSerialport){
         _device = new SAKDebuggerDeviceSerialport(this);
     }
+
+    _device->start();
 }
 
 SAKDebugger::~SAKDebugger()
 {
     delete crcInterface;
     delete _inputManager;
+    delete _outputManager;
 
     _device->requestInterruption();
     _device->quit();
     _device->wait();
+}
+
+void SAKDebugger::setMessage(QString msg, bool isError)
+{
+    messageMutex.lock();
+    Q_UNUSED(isError);
+    qDebug() << __FUNCTION__ << msg;
+    messageMutex.unlock();
 }
 
 SAKDebuggerDevice *SAKDebugger::device()
@@ -50,4 +64,9 @@ SAKDebuggerDevice *SAKDebugger::device()
 SAKDebuggerInputManager *SAKDebugger::inputManager()
 {
     return _inputManager;
+}
+
+SAKDebuggerOutputManager *SAKDebugger::outputManager()
+{
+    return _outputManager;
 }

@@ -9,22 +9,22 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#include "SAKDebuggerInputManager.hh"
-#include "SAKDebuggerInputSettings.hh"
+#include "SAKDebuggerOutputManager.hh"
+#include "SAKDebuggerOutputSettings.hh"
 
-SAKDebuggerInputManager::SAKDebuggerInputManager(QObject *parent)
+SAKDebuggerOutputManager::SAKDebuggerOutputManager(QObject *parent)
     :QObject (parent)
-    ,_inputSettings (new SAKDebuggerInputSettings)
+    ,_outputSettings (new SAKDebuggerOutputSettings)
 {
 
 }
 
-SAKDebuggerInputManager::~SAKDebuggerInputManager()
+SAKDebuggerOutputManager::~SAKDebuggerOutputManager()
 {
-    delete _inputSettings;
+    delete _outputSettings;
 }
 
-SAKDebuggerInputSettings *SAKDebuggerInputManager::inputSettings()
+SAKDebuggerOutputSettings *SAKDebuggerOutputManager::outputSettings()
 {
-    return _inputSettings;
+    return _outputSettings;
 }

@@ -14,6 +14,7 @@
 #include <QQmlEngine>
 #include <QSerialPortInfo>
 
+#include "SAKDebugger.hh"
 #include "SAKDebuggerDeviceSerialport.hh"
 
 SAKDebuggerDeviceSerialport::SAKDebuggerDeviceSerialport(SAKDebugger *debugger, QObject *parent)
@@ -55,6 +56,9 @@ QStringList SAKDebuggerDeviceSerialport::avalidStopBits()
     QMetaEnum metaEnum = QMetaEnum::fromType<QSerialPort::StopBits>();
     for (int i = 0; i < metaEnum.keyCount(); i++){
         QString str = QString(metaEnum.key(i));
+        if (str.contains("Unknown")){
+            continue;
+        }
         list.append(str);
     }
 
@@ -67,6 +71,9 @@ QStringList SAKDebuggerDeviceSerialport::avalidParitys()
     QMetaEnum metaEnum = QMetaEnum::fromType<QSerialPort::Parity>();
     for (int i = 0; i < metaEnum.keyCount(); i++){
         QString str = QString(metaEnum.key(i));
+        if (str.contains("Unknown")){
+            continue;
+        }
         list.append(str);
     }
 
@@ -79,10 +86,30 @@ QStringList SAKDebuggerDeviceSerialport::avalidDataBits()
     QMetaEnum metaEnum = QMetaEnum::fromType<QSerialPort::DataBits>();
     for (int i = 0; i < metaEnum.keyCount(); i++){
         QString str = QString(metaEnum.key(i));
+        if (str.contains("Unknown")){
+            continue;
+        }
         list.append(str);
     }
 
     return list;
+}
+
+void SAKDebuggerDeviceSerialport::open()
+{
+    if (serialport->isOpen()){
+        openRequest = false;
+        clostRequest = true;
+    }else{
+        openRequest = true;
+        clostRequest = false;
+    }
+}
+
+void SAKDebuggerDeviceSerialport::refresh()
+{
+    _serialports = avalidSerialports();
+    emit serialportsChanged();
 }
 
 void SAKDebuggerDeviceSerialport::run()
@@ -93,9 +120,69 @@ void SAKDebuggerDeviceSerialport::run()
         if (isInterruptionRequested()){
             break;
         }
+
+        /// @brief 打开串口
+        if (openRequest){
+            openRequest = false;
+            if (serialport->isOpen()){
+                serialport->close();
+            }
+
+            if (openActually(serialport)){
+                emit deviceStateChanged(true);
+            }else{
+                emit deviceStateChanged(false);
+            }
+        }
+
+        /// @brief 关闭串口
+        if (clostRequest){
+            clostRequest = false;
+            serialport->close();
+            debugger->setMessage(tr("串口已关闭"));
+            emit deviceStateChanged(false);
+        }
+
+        msleep(readInterval);
     }
 
     delete serialport;
+}
+
+bool SAKDebuggerDeviceSerialport::openActually(QSerialPort *port)
+{
+    if (port){
+        QMetaEnum parityEnum = QMetaEnum::fromType<QSerialPort::Parity>();
+        QSerialPort::Parity parity = static_cast<QSerialPort::Parity>(parityEnum.keyToValue(parameterContext.parity.toLatin1().data()));
+
+        QMetaEnum dataBitsEnum = QMetaEnum::fromType<QSerialPort::DataBits>();
+        QSerialPort::DataBits dataBits = static_cast<QSerialPort::DataBits>(dataBitsEnum.keyToValue(parameterContext.dataBits.toLatin1().data()));
+
+        QMetaEnum stopBitsEnum = QMetaEnum::fromType<QSerialPort::StopBits>();
+        QSerialPort::StopBits stopBits = static_cast<QSerialPort::StopBits>(stopBitsEnum.keyToValue(parameterContext.stopBits.toLatin1().data()));
+
+        port->setParity(parity);
+        port->setBaudRate(parameterContext.baudRate.toInt());
+        port->setDataBits(dataBits);
+        port->setStopBits(stopBits);
+        port->setPortName(parameterContext.portName);
+
+        qDebug() << serialport->portName() << " "
+                 << serialport->baudRate() << " "
+                 << serialport->dataBits() << " "
+                 << serialport->stopBits() << " "
+                 << serialport->parity() << " ";
+        if (port->open(QSerialPort::ReadWrite)){
+            debugger->setMessage(tr("打开串口成功"));
+            return true;
+        }else{
+            debugger->setMessage(tr("打开串口失败:") + port->errorString(), true);
+            return false;
+        }
+    }
+
+    Q_ASSERT_X(false, __FUNCTION__, "Oh, a null pointer");
+    return false;
 }
 
 QStringList SAKDebuggerDeviceSerialport::serialports()
@@ -121,4 +208,58 @@ QStringList SAKDebuggerDeviceSerialport::paritys()
 QStringList SAKDebuggerDeviceSerialport::dataBits()
 {
     return avalidDataBits();
+}
+
+QString SAKDebuggerDeviceSerialport::paraPortName()
+{
+    return parameterContext.portName;
+}
+
+void SAKDebuggerDeviceSerialport::setParaPortName(QString name)
+{
+    parameterContext.portName = name;
+    emit paraPortNameChanged();
+}
+
+QString SAKDebuggerDeviceSerialport::paraBaudRate()
+{
+    return parameterContext.baudRate;
+}
+
+void SAKDebuggerDeviceSerialport::setParaBaudRate(QString br)
+{
+    parameterContext.baudRate = br;
+    emit paraBaudRateChanged();
+}
+
+QString SAKDebuggerDeviceSerialport::paraDataBits()
+{
+    return parameterContext.dataBits;
+}
+
+void SAKDebuggerDeviceSerialport::setParaDataBits(QString db)
+{
+    parameterContext.dataBits = db;
+}
+
+QString SAKDebuggerDeviceSerialport::paraStopBits()
+{
+    return parameterContext.stopBits;
+}
+
+void SAKDebuggerDeviceSerialport::setParaStopBits(QString sb)
+{
+    parameterContext.stopBits = sb;
+    emit paraStopBitsChanged();
+}
+
+QString SAKDebuggerDeviceSerialport::paraParity()
+{
+    return parameterContext.parity;
+}
+
+void SAKDebuggerDeviceSerialport::setParaParity(QString p)
+{
+    parameterContext.parity = p;
+    emit paraParityChanged();
 }

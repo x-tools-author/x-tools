@@ -9,38 +9,40 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef SAKDEBUGGERINPURTSETTINGS_HH
-#define SAKDEBUGGERINPURTSETTINGS_HH
+#ifndef SAKDEBUGGEROUTPURTSETTINGS_HH
+#define SAKDEBUGGEROUTPURTSETTINGS_HH
 
 #include <QObject>
 
-class SAKDebuggerInputSettings : public QObject
+class SAKDebuggerOutputSettings : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QStringList crcParameterModel READ crcParameterModel CONSTANT)
     Q_PROPERTY(QStringList textFormats READ textFormats CONSTANT)
+    Q_PROPERTY(QString currentTextFormat READ currentTextFormat WRITE setCurrentTextFormat NOTIFY currentTextFormatChanged)
 public:
-    enum InputTextFormat {
+    enum OutputTextFormat {
         Bin,
         Otc,
         Dec,
         Hex,
         Ascii,
+        Utf8,
+        Utf16,
+        Ucs4,
         System
     };
-    Q_ENUM(InputTextFormat)
+    Q_ENUM(OutputTextFormat)
 
-    SAKDebuggerInputSettings(QObject *parent = Q_NULLPTR);
-    ~SAKDebuggerInputSettings();
-
-    /**
-     * @brief avalidCRCParameterModel 获取调试器支持的crc参数模型
-     * @return crc参数模型列表
-     */
-    static QStringList avalidCRCParameterModel();
+    SAKDebuggerOutputSettings(QObject *parent = Q_NULLPTR);
+    ~SAKDebuggerOutputSettings();
 private:
-    QStringList crcParameterModel();
     QStringList textFormats();
+
+    QString _currentTextFormat;
+    QString currentTextFormat();
+    void setCurrentTextFormat(QString format);
+signals:
+    void currentTextFormatChanged();
 };
 
 #endif

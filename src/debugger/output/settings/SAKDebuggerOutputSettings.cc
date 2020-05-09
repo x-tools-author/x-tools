@@ -11,24 +11,24 @@
  */
 #include <QMetaEnum>
 
-#include "SAKCRCInterface.hh"
-#include "SAKDebuggerInputSettings.hh"
+#include "SAKDebuggerOutputSettings.hh"
 
-SAKDebuggerInputSettings::SAKDebuggerInputSettings(QObject *parent)
+SAKDebuggerOutputSettings::SAKDebuggerOutputSettings(QObject *parent)
     :QObject (parent)
+    ,_currentTextFormat ("Hex")
 {
 
 }
 
-SAKDebuggerInputSettings::~SAKDebuggerInputSettings()
+SAKDebuggerOutputSettings::~SAKDebuggerOutputSettings()
 {
 
 }
 
-QStringList SAKDebuggerInputSettings::avalidCRCParameterModel()
+QStringList SAKDebuggerOutputSettings::textFormats()
 {
     QStringList list;
-    QMetaEnum metaEnum = QMetaEnum::fromType<SAKCRCInterface::CRCModel>();
+    QMetaEnum metaEnum = QMetaEnum::fromType<OutputTextFormat>();
     for (int i = 0; i < metaEnum.keyCount(); i++){
         QString str = QString(metaEnum.key(i));
         list.append(str);
@@ -37,20 +37,13 @@ QStringList SAKDebuggerInputSettings::avalidCRCParameterModel()
     return list;
 }
 
-
-QStringList SAKDebuggerInputSettings::crcParameterModel()
+QString SAKDebuggerOutputSettings::currentTextFormat()
 {
-    return avalidCRCParameterModel();
+    return _currentTextFormat;
 }
 
-QStringList SAKDebuggerInputSettings::textFormats()
+void SAKDebuggerOutputSettings::setCurrentTextFormat(QString format)
 {
-    QStringList list;
-    QMetaEnum metaEnum = QMetaEnum::fromType<InputTextFormat>();
-    for (int i = 0; i < metaEnum.keyCount(); i++){
-        QString str = QString(metaEnum.key(i));
-        list.append(str);
-    }
-
-    return list;
+    _currentTextFormat = format;
+    emit currentTextFormatChanged();
 }

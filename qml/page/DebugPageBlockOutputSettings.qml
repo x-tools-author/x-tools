@@ -1,6 +1,8 @@
 ﻿import QtQuick 2.12
 import QtQuick.Controls 2.12
 
+import SAK.CustomType 1.0
+
 import "qrc:/qml/base"
 
 DebugPageBlock {
@@ -8,6 +10,8 @@ DebugPageBlock {
     sakIcon: "qrc:/resources/icons/设置 (1).png"
     sakTitle: qsTr("输出设置")
 
+    property SAKDebuggerOutputManager outputManager: sakdebugger ? sakdebugger.outputManager : null
+    property SAKDebuggerOutputSettings outputSettings: outputManager ? outputManager.outputSettings : null
     property var _leftPadding: 5
 
     contentItem: Item{
@@ -26,7 +30,15 @@ DebugPageBlock {
                 verticalAlignment: Text.AlignVCenter
             }
             SAKComboBox {
-                model: ["Bin", "Otc", "Dec", "Hex", "Ascii", "Utf8", "System"]
+                model: outputSettings ? outputSettings.textFormats : 9
+                onModelChanged: {
+                    if (outputSettings){
+                        var ret = find(outputSettings.currentTextFormat)
+                        if (ret > 0){
+                            currentIndex = ret
+                        }
+                    }
+                }
             }
             Repeater {
                 model: [qsTr("输出日期"), qsTr("输出时间"), qsTr("显示毫秒"), qsTr("自动换行"), qsTr("显示接收"), qsTr("显示发送")]

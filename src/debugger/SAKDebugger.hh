@@ -12,17 +12,20 @@
 #ifndef SAKDEBUGGER_HH
 #define SAKDEBUGGER_HH
 
+#include <QMutex>
 #include <QObject>
 
 class SAKCRCInterface;
 class SAKDebuggerDevice;
 class SAKDebuggerInputManager;
+class SAKDebuggerOutputManager;
 class SAKDebuggerDeviceSerialport;
 class SAKDebugger : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(SAKDebuggerDevice* device READ device NOTIFY deviceChanged)
     Q_PROPERTY(SAKDebuggerInputManager* inputManager READ inputManager CONSTANT)
+    Q_PROPERTY(SAKDebuggerOutputManager* outputManager READ outputManager CONSTANT)
 public:
     enum SAKDebuggertype {
         DebuggerTypeSerialport,
@@ -34,15 +37,26 @@ public:
 
     SAKDebugger(int type, QObject *parent = Q_NULLPTR);
     ~SAKDebugger();
+
+    /**
+     * @brief setMessage 输出消息，可在不同线程中调用该接口，该接口是线程安全的
+     * @param msg 消息类容
+     * @param isError 为true是表示消息时错误消息
+     */
+    void setMessage(QString msg, bool isError = false);
 private:
     int debuggerType;
     SAKCRCInterface *crcInterface;
+    QMutex messageMutex;
 private:
     SAKDebuggerDevice *_device;
     SAKDebuggerDevice *device();
 
     SAKDebuggerInputManager *_inputManager;
     SAKDebuggerInputManager *inputManager();
+
+    SAKDebuggerOutputManager *_outputManager;
+    SAKDebuggerOutputManager *outputManager();
 signals:
     void deviceChanged();
 };
