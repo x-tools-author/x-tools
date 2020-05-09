@@ -89,8 +89,12 @@ INCLUDEPATH += \
     src/debugger \
     src/debugger/device \
     src/debugger/input \
-    src/debugger/input/input \
-    src/debugger/input/settings
+    src/debugger/input/settings \
+    src/debugger/input/textinput \
+    src/debugger/output \
+    src/debugger/output/settings \
+    src/debugger/output/textoutput \
+
 
 #--------------------------------------------------------------------------------------------
 #源码
@@ -101,7 +105,9 @@ HEADERS += \
     src/debugger/SAKDebugger.hh \
     src/debugger/device/SAKDebuggerDevice.hh \
     src/debugger/input/SAKDebuggerInputManager.hh \
-    src/debugger/input/settings/SAKDebuggerInputSettings.hh
+    src/debugger/input/settings/SAKDebuggerInputSettings.hh \
+    src/debugger/output/SAKDebuggerOutputManager.hh \
+    src/debugger/output/settings/SAKDebuggerOutputSettings.hh
 
 SOURCES += \
     src/SAKApplication.cc \
@@ -111,4 +117,6 @@ SOURCES += \
     src/debugger/device/SAKDebuggerDevice.cc \
     src/debugger/input/SAKDebuggerInputManager.cc \
     src/debugger/input/settings/SAKDebuggerInputSettings.cc \
+    src/debugger/output/SAKDebuggerOutputManager.cc \
+    src/debugger/output/settings/SAKDebuggerOutputSettings.cc \
     src/main.cc
