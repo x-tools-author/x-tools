@@ -143,6 +143,11 @@ void SAKDebuggerDeviceSerialport::run()
             emit deviceStateChanged(false);
         }
 
+        if (serialport->isOpen()){
+            QByteArray bytes = serialport->readAll();
+            emit bytesRead(bytes);
+        }
+
         msleep(readInterval);
     }
 
