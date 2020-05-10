@@ -12,7 +12,9 @@
 #ifndef SAKDEBUGGERDEVICE_HH
 #define SAKDEBUGGERDEVICE_HH
 
+#include <QMutex>
 #include <QThread>
+#include <QWaitCondition>
 
 class SAKDebugger;
 class SAKDebuggerDevice : public QThread
@@ -31,11 +33,27 @@ public:
      * @brief refres 刷新设备，必须在子类中重新实现
      */
     virtual void refresh(){};
+
+    /**
+     * @brief wakeMe 唤醒线程
+     */
+    void wakeMe();
 protected:
     bool openRequest;
     bool clostRequest;
     quint64 readInterval;
     SAKDebugger *debugger;
+    QMutex deviceMutex;
+    QWaitCondition deviceWaitCondition;
+private:
+    QMutex dataListMutex;
+    /// @brief 待发送数据,子类定时检测该列表，存在数据则发送
+    QList<QByteArray> dataList;
+protected:
+    /// @brief 将待发送数据添加值待发送数据列表中
+    void writeBytes(QByteArray bytes);
+    /// @brief 从待发送数据列表中提取数据
+    QByteArray takeArrayFromDataList();
 signals:
     /// @brief 读取到数据后出发该信号
     void bytesRead(QByteArray bytes);

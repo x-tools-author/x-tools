@@ -9,48 +9,26 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#include <QMetaEnum>
+#include "SAKDebuggerTextInput.hh"
 
-#include "SAKCRCInterface.hh"
-#include "SAKDebuggerInputSettings.hh"
-
-SAKDebuggerInputSettings::SAKDebuggerInputSettings(QObject *parent)
+SAKDebuggerTextInput::SAKDebuggerTextInput(SAKDebugger *debugger, QObject *parent)
     :QObject (parent)
+    ,debugger (debugger)
 {
 
 }
 
-SAKDebuggerInputSettings::~SAKDebuggerInputSettings()
+SAKDebuggerTextInput::~SAKDebuggerTextInput()
 {
 
 }
 
-QStringList SAKDebuggerInputSettings::avalidCRCParameterModel()
+void SAKDebuggerTextInput::writeBytes()
 {
-    QStringList list;
-    QMetaEnum metaEnum = QMetaEnum::fromType<SAKCRCInterface::CRCModel>();
-    for (int i = 0; i < metaEnum.keyCount(); i++){
-        QString str = QString(metaEnum.key(i));
-        list.append(str);
-    }
-
-    return list;
+    writeBytes(QByteArray("Hello"));
 }
 
-
-QStringList SAKDebuggerInputSettings::crcParameterModel()
+void SAKDebuggerTextInput::writeBytes(QByteArray bytes)
 {
-    return avalidCRCParameterModel();
-}
-
-QStringList SAKDebuggerInputSettings::textFormats()
-{
-    QStringList list;
-    QMetaEnum metaEnum = QMetaEnum::fromType<InputTextFormat>();
-    for (int i = 0; i < metaEnum.keyCount(); i++){
-        QString str = QString(metaEnum.key(i));
-        list.append(str);
-    }
-
-    return list;
+    emit writeBytesRequest(bytes);
 }

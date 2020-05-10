@@ -9,38 +9,34 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef SAKDEBUGGERINPURTSETTINGS_HH
-#define SAKDEBUGGERINPURTSETTINGS_HH
+#ifndef SAKDEBUGGERTEXTINPUT_HH
+#define SAKDEBUGGERTEXTINPUT_HH
 
 #include <QObject>
 
-class SAKDebuggerInputSettings : public QObject
+class SAKDebugger;
+class SAKDebuggerTextInput : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QStringList crcParameterModel READ crcParameterModel CONSTANT)
-    Q_PROPERTY(QStringList textFormats READ textFormats CONSTANT)
-public:
-    enum InputTextFormat {
-        Bin,
-        Otc,
-        Dec,
-        Hex,
-        Ascii,
-        System
-    };
-    Q_ENUM(InputTextFormat)
 
-    SAKDebuggerInputSettings(QObject *parent = Q_NULLPTR);
-    ~SAKDebuggerInputSettings();
+public:
+    SAKDebuggerTextInput(SAKDebugger *debugger, QObject *parent = Q_NULLPTR);
+    ~SAKDebuggerTextInput();
 
     /**
-     * @brief avalidCRCParameterModel 获取调试器支持的crc参数模型
-     * @return crc参数模型列表
+     * @brief writeBytes 发送数据（数据并不是在该函数中直接发出）
      */
-    static QStringList avalidCRCParameterModel();
+    Q_INVOKABLE void writeBytes();
+
+    /**
+     * @brief wirteBytes 发送数据
+     * @param bytes 待发送数据
+     */
+    void writeBytes(QByteArray bytes);
 private:
-    QStringList crcParameterModel();
-    QStringList textFormats();
+    SAKDebugger *debugger;
+signals:
+    void writeBytesRequest(QByteArray bytes);
 };
 
 #endif

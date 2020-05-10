@@ -14,6 +14,7 @@
 
 #include <QObject>
 
+class SAKDebugger;
 class SAKDebuggerOutputSettings : public QObject
 {
     Q_OBJECT
@@ -33,8 +34,10 @@ public:
     };
     Q_ENUM(OutputTextFormat)
 
-    SAKDebuggerOutputSettings(QObject *parent = Q_NULLPTR);
+    SAKDebuggerOutputSettings(SAKDebugger *debugger, QObject *parent = Q_NULLPTR);
     ~SAKDebuggerOutputSettings();
+private:
+    SAKDebugger *debugger;
 private:
     QStringList textFormats();
 

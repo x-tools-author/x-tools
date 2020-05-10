@@ -1,6 +1,8 @@
 ﻿import QtQuick 2.12
 import QtQuick.Controls 2.12
 
+import SAK.CustomType 1.0
+
 import "qrc:/qml/base"
 
 DebugPageBlock {
@@ -8,8 +10,12 @@ DebugPageBlock {
     sakIcon: "qrc:/resources/icons/输入 (1).png"
     sakTitle: qsTr("数据输入")
 
+    property SAKDebuggerInputManager inputManager: sakdebugger ? sakdebugger.inputManager : null
+    property SAKDebuggerTextInput textInput: inputManager ? inputManager.textInput: null
+
     contentItem: Item{
         SAKTextArea {
+            id: sakTextArea
             height: 58
             anchors {
                 top: parent.top
@@ -37,7 +43,17 @@ DebugPageBlock {
                     text: modelData
 
                     onClicked: {
-                        console.info(modelData)
+                        if (index == 0){
+                            sakTextArea.clear()
+                        }
+
+                        if (index == 1){
+                           textInput.writeBytes()
+                        }
+
+                        if (index == 3){
+                            textInput.writeBytes()
+                        }
                     }
                 }
             }

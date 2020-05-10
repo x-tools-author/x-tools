@@ -14,17 +14,25 @@
 
 #include <QObject>
 
+class SAKDebugger;
+class SAKDebuggerTextOutput;
 class SAKDebuggerOutputSettings;
 class SAKDebuggerOutputManager : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(SAKDebuggerOutputSettings* outputSettings READ outputSettings CONSTANT)
+    Q_PROPERTY(SAKDebuggerTextOutput* textOutput READ textOutput CONSTANT)
 public:
-    SAKDebuggerOutputManager(QObject *parent = Q_NULLPTR);
+    SAKDebuggerOutputManager(SAKDebugger *debugger, QObject *parent = Q_NULLPTR);
     ~SAKDebuggerOutputManager();
+private:
+    SAKDebugger *debugger;
 private:
     SAKDebuggerOutputSettings *_outputSettings;
     SAKDebuggerOutputSettings *outputSettings();
+
+    SAKDebuggerTextOutput* _textOutput;
+    SAKDebuggerTextOutput* textOutput();
 };
 
 #endif

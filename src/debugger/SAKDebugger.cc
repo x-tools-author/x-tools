@@ -23,15 +23,17 @@ SAKDebugger::SAKDebugger(int type, QObject *parent)
     :QObject (parent)
     ,debuggerType(type)
     ,crcInterface (new SAKCRCInterface)
-    ,_inputManager (new SAKDebuggerInputManager)
-    ,_outputManager (new SAKDebuggerOutputManager)
 {
-    if (!parent){
-        setParent(qApp);
-    }
-
+    /// @brief 注意初始化顺序，不能乱
+    _inputManager = new SAKDebuggerInputManager(this);
     if (type == DebuggerTypeSerialport){
         _device = new SAKDebuggerDeviceSerialport(this);
+    }
+    _outputManager = new SAKDebuggerOutputManager(this);
+
+    /// @brief 未指定parent的，统一将parent设置为qApp
+    if (!parent){
+        setParent(qApp);
     }
 
     _device->start();
@@ -43,6 +45,7 @@ SAKDebugger::~SAKDebugger()
     delete _inputManager;
     delete _outputManager;
 
+    _device->wakeMe();
     _device->requestInterruption();
     _device->quit();
     _device->wait();
@@ -54,6 +57,16 @@ void SAKDebugger::setMessage(QString msg, bool isError)
     Q_UNUSED(isError);
     qDebug() << __FUNCTION__ << msg;
     messageMutex.unlock();
+}
+
+SAKDebuggerInputManager *SAKDebugger::inputManagerInstance()
+{
+    return _inputManager;
+}
+
+SAKDebuggerDevice *SAKDebugger::deviceInstance()
+{
+    return _device;
 }
 
 SAKDebuggerDevice *SAKDebugger::device()

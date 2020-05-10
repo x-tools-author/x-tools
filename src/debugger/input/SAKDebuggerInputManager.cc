@@ -9,22 +9,51 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
+#include "SAKDebuggerTextInput.hh"
 #include "SAKDebuggerInputManager.hh"
 #include "SAKDebuggerInputSettings.hh"
 
-SAKDebuggerInputManager::SAKDebuggerInputManager(QObject *parent)
+SAKDebuggerInputManager::SAKDebuggerInputManager(SAKDebugger *debugger, QObject *parent)
     :QObject (parent)
-    ,_inputSettings (new SAKDebuggerInputSettings)
+    ,debugger (debugger)
 {
-
+    _inputSettings = new SAKDebuggerInputSettings(debugger);
+    _textInput = new SAKDebuggerTextInput(debugger);
 }
 
 SAKDebuggerInputManager::~SAKDebuggerInputManager()
 {
     delete _inputSettings;
+    delete _textInput;
+}
+
+SAKDebuggerInputSettings *SAKDebuggerInputManager::inputSettingsInstance()
+{
+    return _inputSettings;
+}
+
+SAKDebuggerTextInput *SAKDebuggerInputManager::textInputInstance()
+{
+    return _textInput;
 }
 
 SAKDebuggerInputSettings *SAKDebuggerInputManager::inputSettings()
 {
     return _inputSettings;
+}
+
+SAKDebuggerTextInput* SAKDebuggerInputManager::textInput()
+{
+    return _textInput;
+}
+
+QString SAKDebuggerInputManager::currentString()
+{
+    return _currentString;
+}
+
+void SAKDebuggerInputManager::setCurrentString(QString str)
+{
+    _currentString = str;
+    emit currentStringChanged();
 }

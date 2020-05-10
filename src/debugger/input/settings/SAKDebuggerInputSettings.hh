@@ -14,6 +14,7 @@
 
 #include <QObject>
 
+class SAKDebugger;
 class SAKDebuggerInputSettings : public QObject
 {
     Q_OBJECT
@@ -30,7 +31,7 @@ public:
     };
     Q_ENUM(InputTextFormat)
 
-    SAKDebuggerInputSettings(QObject *parent = Q_NULLPTR);
+    SAKDebuggerInputSettings(SAKDebugger *debugger, QObject *parent = Q_NULLPTR);
     ~SAKDebuggerInputSettings();
 
     /**
@@ -38,6 +39,8 @@ public:
      * @return crc参数模型列表
      */
     static QStringList avalidCRCParameterModel();
+private:
+    SAKDebugger *debugger;
 private:
     QStringList crcParameterModel();
     QStringList textFormats();

@@ -84,5 +84,7 @@
         <file>qml/SAKTcpClientControl.qml</file>
         <file>qml/SAKTcpServerControl.qml</file>
         <file>qml/SAKUdpControl.qml</file>
+        <file>src/debugger/output/textoutput/SAKDebuggerTextOutput.cc</file>
+        <file>src/debugger/output/textoutput/SAKDebuggerTextOutput.hh</file>
     </qresource>
 </RCC>

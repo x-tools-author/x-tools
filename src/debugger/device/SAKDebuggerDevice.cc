@@ -9,7 +9,10 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
+#include "SAKDebugger.hh"
 #include "SAKDebuggerDevice.hh"
+#include "SAKDebuggerTextInput.hh"
+#include "SAKDebuggerInputManager.hh"
 
 SAKDebuggerDevice::SAKDebuggerDevice(SAKDebugger *debugger, QObject *parent)
     :QThread (parent)
@@ -20,11 +23,41 @@ SAKDebuggerDevice::SAKDebuggerDevice(SAKDebugger *debugger, QObject *parent)
     ,_deviceIsOpened (false)
 {
     connect(this, &SAKDebuggerDevice::deviceStateChanged, this, &SAKDebuggerDevice::setDeviceIsOpened);
+
+    /// @brief 关联发送请求
+    SAKDebuggerTextInput *textInput = debugger->inputManagerInstance()->textInputInstance();
+    connect(textInput, &SAKDebuggerTextInput::writeBytesRequest, this, &SAKDebuggerDevice::writeBytes);
 }
 
 SAKDebuggerDevice::~SAKDebuggerDevice()
 {
 
+}
+
+void SAKDebuggerDevice::wakeMe()
+{
+    deviceWaitCondition.wakeAll();
+}
+
+void SAKDebuggerDevice::writeBytes(QByteArray bytes)
+{
+    dataListMutex.lock();
+    dataList.append(bytes);
+    dataListMutex.unlock();
+
+    /// @brief 唤醒线程进行数据发送
+    deviceWaitCondition.wakeAll();
+}
+
+QByteArray SAKDebuggerDevice::takeArrayFromDataList()
+{
+    QByteArray array;
+    dataListMutex.lock();
+    if (dataList.length()){
+        array = dataList.takeFirst();
+    }
+    dataListMutex.unlock();
+    return array;
 }
 
 bool SAKDebuggerDevice::deviceIsOpened()

@@ -104,6 +104,8 @@ void SAKDebuggerDeviceSerialport::open()
         openRequest = true;
         clostRequest = false;
     }
+
+    deviceWaitCondition.wakeAll();
 }
 
 void SAKDebuggerDeviceSerialport::refresh()
@@ -143,12 +145,40 @@ void SAKDebuggerDeviceSerialport::run()
             emit deviceStateChanged(false);
         }
 
+        /// @brief 读取数据的前提是设备已打开
         if (serialport->isOpen()){
+            /// @brief 日了哈士奇，没有这行居然读不到数据（qt5.12.8）
+            serialport->waitForReadyRead(1);
             QByteArray bytes = serialport->readAll();
-            emit bytesRead(bytes);
+            if (bytes.length()){
+                emit bytesRead(bytes);
+            }
         }
 
-        msleep(readInterval);
+        /// @brief 发送数据
+        while(1) {
+            if (serialport->isOpen()){
+                QByteArray array = takeArrayFromDataList();
+                if (array.isEmpty()){
+                    break;
+                }else {
+                    qint64 ret = serialport->write(array);
+                    serialport->waitForBytesWritten();
+                    if (ret == -1){
+                        debugger->setMessage(tr("发送数据失败:") + serialport->errorString());
+                    }else{
+                        bytesWritten(array);
+                    }
+                }
+            }else{
+                break;
+            }
+        }
+
+        /// @brief 等待，有数据需要发送是线程会被唤醒
+        deviceMutex.lock();
+        deviceWaitCondition.wait(&deviceMutex, readInterval);
+        deviceMutex.unlock();
     }
 
     if (serialport->isOpen()){

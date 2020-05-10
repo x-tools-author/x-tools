@@ -44,6 +44,18 @@ public:
      * @param isError 为true是表示消息时错误消息
      */
     void setMessage(QString msg, bool isError = false);
+
+    /**
+     * @brief inputManagerInstance 获取输入管理类实例指针
+     * @return 输入管理类实例指针
+     */
+    SAKDebuggerInputManager *inputManagerInstance();
+
+    /**
+     * @brief deviceInstance 获取设备实例指针
+     * @return 设备实例指针
+     */
+    SAKDebuggerDevice *deviceInstance();
 private:
     int debuggerType;
     SAKCRCInterface *crcInterface;

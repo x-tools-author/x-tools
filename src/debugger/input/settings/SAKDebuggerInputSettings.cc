@@ -11,11 +11,13 @@
  */
 #include <QMetaEnum>
 
+
 #include "SAKCRCInterface.hh"
 #include "SAKDebuggerInputSettings.hh"
 
-SAKDebuggerInputSettings::SAKDebuggerInputSettings(QObject *parent)
+SAKDebuggerInputSettings::SAKDebuggerInputSettings(SAKDebugger *debugger, QObject *parent)
     :QObject (parent)
+    ,debugger (debugger)
 {
 
 }

@@ -9,43 +9,25 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef SAKDEBUGGEROUTPURTSETTINGS_HH
-#define SAKDEBUGGEROUTPURTSETTINGS_HH
+#ifndef SAKDEBUGGERTEXTOUTPUT_HH
+#define SAKDEBUGGERTEXTOUTPUT_HH
 
 #include <QObject>
 
 class SAKDebugger;
-class SAKDebuggerOutputSettings : public QObject
+class SAKDebuggerTextOutput : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QStringList textFormats READ textFormats CONSTANT)
-    Q_PROPERTY(QString currentTextFormat READ currentTextFormat WRITE setCurrentTextFormat NOTIFY currentTextFormatChanged)
 public:
-    enum OutputTextFormat {
-        Bin,
-        Otc,
-        Dec,
-        Hex,
-        Ascii,
-        Utf8,
-        Utf16,
-        Ucs4,
-        System
-    };
-    Q_ENUM(OutputTextFormat)
-
-    SAKDebuggerOutputSettings(SAKDebugger *debugger, QObject *parent = Q_NULLPTR);
-    ~SAKDebuggerOutputSettings();
+    SAKDebuggerTextOutput(SAKDebugger *debugger, QObject *parent = Q_NULLPTR);
+    ~SAKDebuggerTextOutput();
 private:
     SAKDebugger *debugger;
 private:
-    QStringList textFormats();
-
-    QString _currentTextFormat;
-    QString currentTextFormat();
-    void setCurrentTextFormat(QString format);
+    /// @brief 输出信心，参数为设备读取到的数据
+    void outputText(QByteArray text);
 signals:
-    void currentTextFormatChanged();
+    void outputTextRequest(QString text);
 };
 
 #endif

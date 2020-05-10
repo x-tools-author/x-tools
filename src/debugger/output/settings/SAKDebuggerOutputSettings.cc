@@ -13,8 +13,9 @@
 
 #include "SAKDebuggerOutputSettings.hh"
 
-SAKDebuggerOutputSettings::SAKDebuggerOutputSettings(QObject *parent)
+SAKDebuggerOutputSettings::SAKDebuggerOutputSettings(SAKDebugger *debugger, QObject *parent)
     :QObject (parent)
+    ,debugger (debugger)
     ,_currentTextFormat ("Hex")
 {
 
