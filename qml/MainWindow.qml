@@ -21,7 +21,9 @@ Window {
     Page {
         anchors.fill: parent
         background: Rectangle{color: "#222222"}
-        header: MainWindowToolBar{}
+        header: MainWindowToolBar{
+            title: mainWindow.title
+        }
         contentItem: Item{
             MainWindowTabBar {
                 id: tabBar

@@ -5,6 +5,8 @@ import QtQuick.Controls 2.12
 ToolBar {
     id: toolBar
     height: 28
+    property alias title: titleLabel.text
+
     background: Rectangle {
         color: "#161616"
         anchors.fill: toolBar
@@ -44,6 +46,7 @@ ToolBar {
             }
 
             Label {
+                id: titleLabel
                 text: qsTr("瑞士军刀")
                 color: "#FFFFFF"
                 anchors.verticalCenter: parent.verticalCenter
