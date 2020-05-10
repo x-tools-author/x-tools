@@ -14,7 +14,7 @@ Window {
     visible: true
     width: 800
     height: 600
-    title: qsTr("瑞士军刀")
+    title: qsTr("瑞士军刀-V3版本正在开发中，请使用V2分支")
     flags: Qt.FramelessWindowHint | Qt.Dialog
     property var _currentIndex: 0
 
