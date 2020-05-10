@@ -151,6 +151,9 @@ void SAKDebuggerDeviceSerialport::run()
         msleep(readInterval);
     }
 
+    if (serialport->isOpen()){
+        serialport->close();
+    }
     delete serialport;
 }
 
