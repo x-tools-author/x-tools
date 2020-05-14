@@ -12,6 +12,7 @@ DebugPageBlock {
 
     property SAKDebuggerOutputManager outputManager: sakdebugger ? sakdebugger.outputManager : null
     property SAKDebuggerOutputSettings outputSettings: outputManager ? outputManager.outputSettings : null
+    property SAKDebuggerOutputStatistics statistics: outputSettings ? outputSettings.statistics : null
     property var _leftPadding: 5
 
     contentItem: Item{
@@ -39,12 +40,55 @@ DebugPageBlock {
                         }
                     }
                 }
+
+                onCurrentTextChanged: {
+                    if (outputSettings){
+                        outputSettings.currentTextFormat = currentText
+                    }
+                }
             }
             Repeater {
-                model: [qsTr("输出日期"), qsTr("输出时间"), qsTr("显示毫秒"), qsTr("自动换行"), qsTr("显示接收"), qsTr("显示发送")]
+                model: [
+                    [qsTr("输出日期"), false],
+                    [qsTr("输出时间"), true],
+                    [qsTr("显示毫秒"), false],
+                    [qsTr("自动换行"), false],
+                    [qsTr("显示接收"), true],
+                    [qsTr("显示发送"), true]
+                ]
 
                 SAKCheckBox {
-                    text: modelData
+                    text: modelData[0]
+                    onCheckedChanged: {
+                        if (outputSettings){
+                            switch (index){
+                            case 0:
+                                outputSettings.outputDate = checked
+                                break;
+                            case 1:
+                                outputSettings.outputTime = checked
+                                break;
+                            case 2:
+                                outputSettings.outputMs = checked
+                                break;
+                            case 3:
+                                outputSettings.outputWrap = checked
+                                break;
+                            case 4:
+                                outputSettings.outputRx = checked
+                                break;
+                            case 5:
+                                outputSettings.outputTx = checked
+                                break;
+                            default:
+                                break;
+                            }
+                        }
+                    }
+
+                    Component.onCompleted: {
+                        checked = modelData[1]
+                    }
                 }
             }
 
@@ -59,12 +103,12 @@ DebugPageBlock {
 
             Repeater {
                 model: [
-                    qsTr("发送速率"), "0",
-                    qsTr("发送帧数"), "0",
-                    qsTr("发送字节"), "0",
-                    qsTr("接收速率"), "0",
-                    qsTr("接收帧数"), "0",
-                    qsTr("接收字节"), "0"
+                    qsTr("发送速率"), statistics ? statistics.txSpeed  : "0",
+                    qsTr("发送帧数"), statistics ? statistics.txFrames : "0",
+                    qsTr("发送字节"), statistics ? statistics.txBytes  : "0",
+                    qsTr("接收速率"), statistics ? statistics.rxSpeed  : "0",
+                    qsTr("接收帧数"), statistics ? statistics.rxFrames : "0",
+                    qsTr("接收字节"), statistics ? statistics.rxBytes  : "0",
                 ]
                 SAKLabel {
                     id: sakLabel
@@ -95,7 +139,13 @@ DebugPageBlock {
                     color: modelData[1]
 
                     onClicked: {
-                        console.info(modelData)
+                        if (statistics && (index == 0)){
+                            statistics.clearRxStatistics()
+                        }
+
+                        if (statistics && (index == 1)){
+                            statistics.clearTxStatistics()
+                        }
                     }
                 }
             }
