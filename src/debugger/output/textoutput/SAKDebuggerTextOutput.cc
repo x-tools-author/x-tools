@@ -20,14 +20,14 @@ SAKDebuggerTextOutput::SAKDebuggerTextOutput(SAKDebugger *debugger, QObject *par
     :QObject (parent)
     ,debugger (debugger)
 {
-    textFactory = new SAKDebuggerOutputTextFactory(debugger);
-    connect(textFactory, &SAKDebuggerOutputTextFactory::dataCooked, this, &SAKDebuggerTextOutput::dataCooked);
-    textFactory->start();
+//    textFactory = new SAKDebuggerOutputTextFactory(debugger);
+//    connect(textFactory, &SAKDebuggerOutputTextFactory::dataCooked, this, &SAKDebuggerTextOutput::dataCooked);
+//    textFactory->start();
 
-    SAKDebuggerDevice *device = debugger->deviceInstance();
-    connect(device, &SAKDebuggerDevice::bytesRead, this, &SAKDebuggerTextOutput::outputTextRx, Qt::QueuedConnection);
-    connect(device, &SAKDebuggerDevice::bytesWritten, this, &SAKDebuggerTextOutput::outputTextTx, Qt::QueuedConnection);
-    outputSettings = debugger->outputManagerInstance()->outputSettingsInstance();
+//    SAKDebuggerDevice *device = debugger->deviceInstance();
+//    connect(device, &SAKDebuggerDevice::bytesRead, this, &SAKDebuggerTextOutput::outputTextRx, Qt::QueuedConnection);
+//    connect(device, &SAKDebuggerDevice::bytesWritten, this, &SAKDebuggerTextOutput::outputTextTx, Qt::QueuedConnection);
+//    outputSettings = debugger->outputManagerInstance()->outputSettingsInstance();
 }
 
 SAKDebuggerTextOutput::~SAKDebuggerTextOutput()

@@ -19,7 +19,7 @@ SAKDebuggerOutputSettings::SAKDebuggerOutputSettings(SAKDebugger *debugger, QObj
     ,debugger (debugger)
     ,_currentTextFormat ("Hex")
 {
-    _statistics = new SAKDebuggerOutputStatistics(debugger);
+//    _statistics = new SAKDebuggerOutputStatistics(debugger);
 }
 
 SAKDebuggerOutputSettings::~SAKDebuggerOutputSettings()
