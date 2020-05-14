@@ -9,27 +9,54 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef SAKDEBUGGERTEXTOUTPUT_HH
-#define SAKDEBUGGERTEXTOUTPUT_HH
+#ifndef SAKDEBUGGERTOUTPUTTEXTFACTORY_HH
+#define SAKDEBUGGERTOUTPUTTEXTFACTORY_HH
 
-#include <QObject>
+#include <QMutex>
+#include <QThread>
+#include <QWaitCondition>
 
 class SAKDebugger;
 class SAKDebuggerOutputSettings;
-class SAKDebuggerTextOutput : public QObject
+class SAKDebuggerOutputTextFactory : public QThread
 {
     Q_OBJECT
 public:
-    SAKDebuggerTextOutput(SAKDebugger *debugger, QObject *parent = Q_NULLPTR);
-    ~SAKDebuggerTextOutput();
+    SAKDebuggerOutputTextFactory(SAKDebugger *debugger, QObject *parent = Q_NULLPTR);
+    ~SAKDebuggerOutputTextFactory();
+
+    /// @brief 文本处理信息
+    struct TextContext {
+        bool isRxData;          // true表示数据为已读取的数据，false表示数据为已发送的数据
+        QByteArray text;        // 待处理数据
+    };
+
+    /**
+     * @brief addRawData 添加待处理数据
+     * @param text 待处理数据
+     * @param isRxData true表示数据为接收数据，false表示数据为发送数据
+     */
+    void addRawData(QByteArray text, bool isRxData);
+
+    /**
+     * @brief wakeMe 唤醒线程
+     */
+    void wakeMe();
+protected:
+    void run() final;
 private:
     SAKDebugger *debugger;
     SAKDebuggerOutputSettings *outputSettings;
+    QMutex textInfosListMutex;
+    QList<TextContext> textInfosList;
+    QWaitCondition threadWaitCondition;
+    QMutex threadMutex;
 private:
-    /// @brief 输出信息，参数为设备读取到的数据
-    void outputText(QByteArray text);
+    TextContext takeRawData();
+    QString prefixString(bool date, bool time, bool ms, bool isRxData);
+    QString dataToString(QByteArray rawData, int textModel);
 signals:
-    void outputTextRequest(QString text);
+    void dataCooked(QString text);
 };
 
 #endif
