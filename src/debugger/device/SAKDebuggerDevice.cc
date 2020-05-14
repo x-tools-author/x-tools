@@ -42,7 +42,9 @@ void SAKDebuggerDevice::wakeMe()
 void SAKDebuggerDevice::writeBytes(QByteArray bytes)
 {
     dataListMutex.lock();
-    dataList.append(bytes);
+    if (_deviceIsOpened){
+        dataList.append(bytes);
+    }
     dataListMutex.unlock();
 
     /// @brief 唤醒线程进行数据发送
