@@ -15,6 +15,12 @@ DebugPageBlock {
     property SAKDebuggerOutputStatistics statistics: outputSettings ? outputSettings.statistics : null
     property var _leftPadding: 5
 
+    signal outputSettingsHasChanged();
+
+    onOutputSettingsChanged: {
+        outputSettingsHasChanged()
+    }
+
     contentItem: Item{
         Grid {
             id: grid
@@ -58,6 +64,7 @@ DebugPageBlock {
                 ]
 
                 SAKCheckBox {
+                    id: checkBox
                     text: modelData[0]
                     onCheckedChanged: {
                         if (outputSettings){
@@ -88,6 +95,36 @@ DebugPageBlock {
 
                     Component.onCompleted: {
                         checked = modelData[1]
+                    }
+
+                    Connections {
+                        target: root
+                        onOutputSettingsHasChanged: {
+                            if (outputSettings){
+                                switch (index){
+                                case 0:
+                                   outputSettings.outputDate = checkBox.checked
+                                    break;
+                                case 1:
+                                    outputSettings.outputTime  = checkBox.checked
+                                    break;
+                                case 2:
+                                    outputSettings.outputMs = checkBox.checked
+                                    break;
+                                case 3:
+                                    outputSettings.outputWrap = checkBox.checked
+                                    break;
+                                case 4:
+                                    outputSettings.outputRx = checkBox.checked
+                                    break;
+                                case 5:
+                                    outputSettings.outputTx = checkBox.checked
+                                    break;
+                                default:
+                                    break;
+                                }
+                            }
+                        }
                     }
                 }
             }
