@@ -27,6 +27,11 @@ SAKDebuggerOutputManager::~SAKDebuggerOutputManager()
     delete _textOutput;
 }
 
+SAKDebuggerOutputSettings *SAKDebuggerOutputManager::outputSettingsInstance()
+{
+    return _outputSettings;
+}
+
 SAKDebuggerOutputSettings *SAKDebuggerOutputManager::outputSettings()
 {
     return _outputSettings;

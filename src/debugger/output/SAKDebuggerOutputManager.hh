@@ -25,6 +25,12 @@ class SAKDebuggerOutputManager : public QObject
 public:
     SAKDebuggerOutputManager(SAKDebugger *debugger, QObject *parent = Q_NULLPTR);
     ~SAKDebuggerOutputManager();
+
+    /**
+     * @brief outputSettingsInstance 获取输出设置类实例指针
+     * @return 输出设置类实例指针
+     */
+    SAKDebuggerOutputSettings *outputSettingsInstance();
 private:
     SAKDebugger *debugger;
 private:
