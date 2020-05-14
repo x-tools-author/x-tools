@@ -108,6 +108,7 @@ HEADERS += \
     src/debugger/input/textinput/SAKDebuggerTextInput.hh \
     src/debugger/output/SAKDebuggerOutputManager.hh \
     src/debugger/output/settings/SAKDebuggerOutputSettings.hh \
+    src/debugger/output/textoutput/SAKDebuggerOutputTextFactory.hh \
     src/debugger/output/textoutput/SAKDebuggerTextOutput.hh
 
 SOURCES += \
@@ -121,5 +122,6 @@ SOURCES += \
     src/debugger/input/textinput/SAKDebuggerTextInput.cc \
     src/debugger/output/SAKDebuggerOutputManager.cc \
     src/debugger/output/settings/SAKDebuggerOutputSettings.cc \
+    src/debugger/output/textoutput/SAKDebuggerOutputTextFactory.cc \
     src/debugger/output/textoutput/SAKDebuggerTextOutput.cc \
     src/main.cc
