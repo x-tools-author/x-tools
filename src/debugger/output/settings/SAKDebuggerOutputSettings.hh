@@ -12,6 +12,7 @@
 #ifndef SAKDEBUGGEROUTPURTSETTINGS_HH
 #define SAKDEBUGGEROUTPURTSETTINGS_HH
 
+#include <QMutex>
 #include <QObject>
 
 class SAKDebugger;
@@ -20,7 +21,16 @@ class SAKDebuggerOutputSettings : public QObject
     Q_OBJECT
     Q_PROPERTY(QStringList textFormats READ textFormats CONSTANT)
     Q_PROPERTY(QString currentTextFormat READ currentTextFormat WRITE setCurrentTextFormat NOTIFY currentTextFormatChanged)
+
+    /// @brief 以下是输出参数相关属性
+    Q_PROPERTY(bool outputDate READ outputDate WRITE setOutputDate NOTIFY outputDateChanged)
+    Q_PROPERTY(bool outputTime READ outputTime WRITE setOutputTime NOTIFY outputTimeChanged)
+    Q_PROPERTY(bool outputMs READ outputMs WRITE setOutputMs NOTIFY outputMsChanged)
+    Q_PROPERTY(bool outputRx READ outputRx WRITE setOutputRx NOTIFY outputRxChanged)
+    Q_PROPERTY(bool outputTx READ outputTx WRITE setOutputTx NOTIFY outputTxChanged)
+    Q_PROPERTY(bool outputWrap READ outputWrap WRITE setOutputWrap NOTIFY outputWrapChanged)
 public:
+    /// @brief 输出格式格式
     enum OutputTextFormat {
         Bin,
         Otc,
@@ -34,18 +44,60 @@ public:
     };
     Q_ENUM(OutputTextFormat)
 
+    /// @brief 输出参数上下文
+    struct ParametersContext {
+        bool outputDate;    // 输出数据时显示日期
+        bool outputTime;    // 输出数据时显示时间
+        bool outputMs;      // 输出数据时时间精确到毫秒
+        bool outputRx;      // 允许输出已接收的数据
+        bool outputTx;      // 允许输出已发送的数据
+        bool outputWrap;    // 显示自动换行
+    };
+
     SAKDebuggerOutputSettings(SAKDebugger *debugger, QObject *parent = Q_NULLPTR);
     ~SAKDebuggerOutputSettings();
+
+    /**
+     * @brief parameters 获取输出参数
+     * @return 输出参数
+     */
+    struct ParametersContext parameters();
 private:
     SAKDebugger *debugger;
+    QMutex parameterCtxMutex;
+    struct ParametersContext parameterCtx;
 private:
     QStringList textFormats();
 
     QString _currentTextFormat;
     QString currentTextFormat();
     void setCurrentTextFormat(QString format);
+
+    bool outputDate();
+    void setOutputDate(bool enable);
+
+    bool outputTime();
+    void setOutputTime(bool enable);
+
+    bool outputMs();
+    void setOutputMs(bool enable);
+
+    bool outputRx();
+    void setOutputRx(bool enable);
+
+    bool outputTx();
+    void setOutputTx(bool enable);
+
+    bool outputWrap();
+    void setOutputWrap(bool enable);
 signals:
     void currentTextFormatChanged();
+    void outputDateChanged();
+    void outputTimeChanged();
+    void outputMsChanged();
+    void outputRxChanged();
+    void outputTxChanged();
+    void outputWrapChanged();
 };
 
 #endif

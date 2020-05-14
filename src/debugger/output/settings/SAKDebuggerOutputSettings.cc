@@ -26,6 +26,21 @@ SAKDebuggerOutputSettings::~SAKDebuggerOutputSettings()
 
 }
 
+SAKDebuggerOutputSettings::ParametersContext SAKDebuggerOutputSettings::parameters()
+{
+    ParametersContext paraCtx;
+    parameterCtxMutex.lock();
+    paraCtx.outputMs = parameterCtx.outputMs;
+    paraCtx.outputRx = parameterCtx.outputRx;
+    paraCtx.outputTx = parameterCtx.outputTx;
+    paraCtx.outputDate = parameterCtx.outputDate;
+    paraCtx.outputTime = parameterCtx.outputTime;
+    paraCtx.outputWrap = parameterCtx.outputWrap;
+    parameterCtxMutex.unlock();
+
+    return paraCtx;
+}
+
 QStringList SAKDebuggerOutputSettings::textFormats()
 {
     QStringList list;
@@ -47,4 +62,94 @@ void SAKDebuggerOutputSettings::setCurrentTextFormat(QString format)
 {
     _currentTextFormat = format;
     emit currentTextFormatChanged();
+}
+
+bool SAKDebuggerOutputSettings::outputDate()
+{
+    parameterCtxMutex.lock();
+    bool en = parameterCtx.outputDate;
+    parameterCtxMutex.unlock();
+    return en;
+}
+
+void SAKDebuggerOutputSettings::setOutputDate(bool enable)
+{
+    parameterCtxMutex.lock();
+    parameterCtx.outputDate = enable;
+    parameterCtxMutex.unlock();
+}
+
+bool SAKDebuggerOutputSettings::outputTime()
+{
+    parameterCtxMutex.lock();
+    bool en = parameterCtx.outputTime;
+    parameterCtxMutex.unlock();
+    return en;
+}
+
+void SAKDebuggerOutputSettings::setOutputTime(bool enable)
+{
+    parameterCtxMutex.lock();
+    parameterCtx.outputTime = enable;
+    parameterCtxMutex.unlock();
+}
+
+bool SAKDebuggerOutputSettings::outputMs()
+{
+    parameterCtxMutex.lock();
+    bool en = parameterCtx.outputMs;
+    parameterCtxMutex.unlock();
+    return en;
+}
+
+void SAKDebuggerOutputSettings::setOutputMs(bool enable)
+{
+    parameterCtxMutex.lock();
+    parameterCtx.outputMs = enable;
+    parameterCtxMutex.unlock();
+}
+
+bool SAKDebuggerOutputSettings::outputRx()
+{
+    parameterCtxMutex.lock();
+    bool en = parameterCtx.outputRx;
+    parameterCtxMutex.unlock();
+    return en;
+}
+
+void SAKDebuggerOutputSettings::setOutputRx(bool enable)
+{
+    parameterCtxMutex.lock();
+    parameterCtx.outputRx = enable;
+    parameterCtxMutex.unlock();
+}
+
+bool SAKDebuggerOutputSettings::outputTx()
+{
+    parameterCtxMutex.lock();
+    bool en = parameterCtx.outputTx;
+    parameterCtxMutex.unlock();
+    return en;
+}
+
+void SAKDebuggerOutputSettings::setOutputTx(bool enable)
+{
+    parameterCtxMutex.lock();
+    parameterCtx.outputTx = enable;
+    parameterCtxMutex.unlock();
+}
+
+bool SAKDebuggerOutputSettings::outputWrap()
+{
+    parameterCtxMutex.lock();
+    bool en = parameterCtx.outputWrap;
+    parameterCtxMutex.unlock();
+    return en;
+}
+
+void SAKDebuggerOutputSettings::setOutputWrap(bool enable)
+{
+    parameterCtxMutex.lock();
+    parameterCtx.outputWrap = enable;
+    parameterCtxMutex.unlock();
 }
