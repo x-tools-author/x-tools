@@ -12,18 +12,19 @@
 #include <QMetaEnum>
 
 #include "SAKDebuggerOutputSettings.hh"
+#include "SAKDebuggerOutputStatistics.hh"
 
 SAKDebuggerOutputSettings::SAKDebuggerOutputSettings(SAKDebugger *debugger, QObject *parent)
     :QObject (parent)
     ,debugger (debugger)
     ,_currentTextFormat ("Hex")
 {
-
+    _statistics = new SAKDebuggerOutputStatistics(debugger);
 }
 
 SAKDebuggerOutputSettings::~SAKDebuggerOutputSettings()
 {
-
+    delete _statistics;
 }
 
 SAKDebuggerOutputSettings::ParametersContext SAKDebuggerOutputSettings::parameters()
@@ -51,6 +52,11 @@ QStringList SAKDebuggerOutputSettings::textFormats()
     }
 
     return list;
+}
+
+SAKDebuggerOutputStatistics *SAKDebuggerOutputSettings::statistics()
+{
+    return _statistics;
 }
 
 QString SAKDebuggerOutputSettings::currentTextFormat()

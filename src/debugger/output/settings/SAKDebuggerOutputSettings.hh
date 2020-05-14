@@ -16,10 +16,12 @@
 #include <QObject>
 
 class SAKDebugger;
+class SAKDebuggerOutputStatistics;
 class SAKDebuggerOutputSettings : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QStringList textFormats READ textFormats CONSTANT)
+    Q_PROPERTY(SAKDebuggerOutputStatistics* statistics READ statistics CONSTANT)
     Q_PROPERTY(QString currentTextFormat READ currentTextFormat WRITE setCurrentTextFormat NOTIFY currentTextFormatChanged)
 
     /// @brief 以下是输出参数相关属性
@@ -71,6 +73,9 @@ private:
     struct ParametersContext parameterCtx;
 private:
     QStringList textFormats();
+
+    SAKDebuggerOutputStatistics *_statistics;
+    SAKDebuggerOutputStatistics *statistics();
 
     QString _currentTextFormat;
     QString currentTextFormat();
