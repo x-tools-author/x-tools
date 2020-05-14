@@ -16,13 +16,12 @@
 #include <QThread>
 #include <QWaitCondition>
 
-class SAKDebugger;
 class SAKDebuggerOutputSettings;
 class SAKDebuggerOutputTextFactory : public QThread
 {
     Q_OBJECT
 public:
-    SAKDebuggerOutputTextFactory(SAKDebugger *debugger, QObject *parent = Q_NULLPTR);
+    SAKDebuggerOutputTextFactory(QObject *parent = Q_NULLPTR);
     ~SAKDebuggerOutputTextFactory();
 
     /// @brief 文本处理信息
@@ -51,7 +50,6 @@ public:
 protected:
     void run() final;
 private:
-    SAKDebugger *debugger;
     SAKDebuggerOutputSettings *outputSettings;
     QMutex textInfosListMutex;
     QList<TextContext> textInfosList;

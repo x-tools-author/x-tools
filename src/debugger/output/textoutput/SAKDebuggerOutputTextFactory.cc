@@ -9,15 +9,16 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
+#include <QDebug>
 #include <QDateTime>
+
 #include "SAKDebugger.hh"
 #include "SAKDebuggerOutputManager.hh"
 #include "SAKDebuggerOutputSettings.hh"
 #include "SAKDebuggerOutputTextFactory.hh"
 
-SAKDebuggerOutputTextFactory::SAKDebuggerOutputTextFactory(SAKDebugger *debugger, QObject *parent)
+SAKDebuggerOutputTextFactory::SAKDebuggerOutputTextFactory(QObject *parent)
     :QThread (parent)
-    ,debugger (debugger)
 {
 
 }
