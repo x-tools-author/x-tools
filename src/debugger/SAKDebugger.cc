@@ -64,6 +64,11 @@ SAKDebuggerInputManager *SAKDebugger::inputManagerInstance()
     return _inputManager;
 }
 
+SAKDebuggerOutputManager *SAKDebugger::outputManagerInstance()
+{
+    return _outputManager;
+}
+
 SAKDebuggerDevice *SAKDebugger::deviceInstance()
 {
     return _device;

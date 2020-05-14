@@ -52,6 +52,12 @@ public:
     SAKDebuggerInputManager *inputManagerInstance();
 
     /**
+     * @brief outputManagerInstance 获取输出管理类实例指针
+     * @return 输出管理类实例指针
+     */
+    SAKDebuggerOutputManager *outputManagerInstance();
+
+    /**
      * @brief deviceInstance 获取设备实例指针
      * @return 设备实例指针
      */
