@@ -77,6 +77,7 @@ void SAKDebuggerOutputSettings::setOutputDate(bool enable)
     parameterCtxMutex.lock();
     parameterCtx.outputDate = enable;
     parameterCtxMutex.unlock();
+    emit outputDateChanged();
 }
 
 bool SAKDebuggerOutputSettings::outputTime()
@@ -92,6 +93,7 @@ void SAKDebuggerOutputSettings::setOutputTime(bool enable)
     parameterCtxMutex.lock();
     parameterCtx.outputTime = enable;
     parameterCtxMutex.unlock();
+    emit outputTimeChanged();
 }
 
 bool SAKDebuggerOutputSettings::outputMs()
@@ -107,6 +109,7 @@ void SAKDebuggerOutputSettings::setOutputMs(bool enable)
     parameterCtxMutex.lock();
     parameterCtx.outputMs = enable;
     parameterCtxMutex.unlock();
+    emit outputMsChanged();
 }
 
 bool SAKDebuggerOutputSettings::outputRx()
@@ -122,6 +125,7 @@ void SAKDebuggerOutputSettings::setOutputRx(bool enable)
     parameterCtxMutex.lock();
     parameterCtx.outputRx = enable;
     parameterCtxMutex.unlock();
+    emit outputRxChanged();
 }
 
 bool SAKDebuggerOutputSettings::outputTx()
@@ -137,6 +141,7 @@ void SAKDebuggerOutputSettings::setOutputTx(bool enable)
     parameterCtxMutex.lock();
     parameterCtx.outputTx = enable;
     parameterCtxMutex.unlock();
+    emit outputTxChanged();
 }
 
 bool SAKDebuggerOutputSettings::outputWrap()
@@ -152,4 +157,5 @@ void SAKDebuggerOutputSettings::setOutputWrap(bool enable)
     parameterCtxMutex.lock();
     parameterCtx.outputWrap = enable;
     parameterCtxMutex.unlock();
+    emit outputWrapChanged();
 }
