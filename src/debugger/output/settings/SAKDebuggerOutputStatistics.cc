@@ -105,7 +105,7 @@ QString SAKDebuggerOutputStatistics::txSpeed()
 
 QString SAKDebuggerOutputStatistics::rxFrames()
 {
-    return QString::number(dataContext.txFrames);
+    return QString::number(dataContext.rxFrames);
 }
 
 QString SAKDebuggerOutputStatistics::rxBytes()
