@@ -9,6 +9,7 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
+#include <QDebug>
 #include <QMetaEnum>
 
 #include "SAKDebuggerOutputSettings.hh"
@@ -37,6 +38,7 @@ SAKDebuggerOutputSettings::ParametersContext SAKDebuggerOutputSettings::paramete
     paraCtx.outputDate = parameterCtx.outputDate;
     paraCtx.outputTime = parameterCtx.outputTime;
     paraCtx.outputWrap = parameterCtx.outputWrap;
+    paraCtx.outputFormat = parameterCtx.outputFormat;
     parameterCtxMutex.unlock();
 
     return paraCtx;
@@ -74,7 +76,7 @@ void SAKDebuggerOutputSettings::setCurrentTextFormat(QString format)
     parameterCtxMutex.lock();
     QMetaEnum metaEnum = QMetaEnum::fromType<OutputTextFormat>();
     parameterCtx.outputFormat = metaEnum.keyToValue(format.toLatin1().data());
-    parameterCtxMutex.lock();
+    parameterCtxMutex.unlock();
 
     _currentTextFormat = format;
     emit currentTextFormatChanged();
