@@ -25,6 +25,7 @@ DebugPageBlock {
                 implicitWidth: parent.width
                 implicitHeight: parent.height
                 readOnly: true
+                textFormat: Text.RichText
             }
         }
     }
