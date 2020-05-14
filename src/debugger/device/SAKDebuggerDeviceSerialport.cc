@@ -167,7 +167,7 @@ void SAKDebuggerDeviceSerialport::run()
                     if (ret == -1){
                         debugger->setMessage(tr("发送数据失败:") + serialport->errorString());
                     }else{
-                        bytesWritten(array);
+                        emit bytesWritten(array);
                     }
                 }
             }else{
