@@ -67,6 +67,12 @@ public:
      * @return 输出参数
      */
     struct ParametersContext parameters();
+
+    /**
+     * @brief statistics 获取统计类实例指针
+     * @return 统计类实例指针
+     */
+    SAKDebuggerOutputStatistics *statisticsInstance();
 private:
     SAKDebugger *debugger;
     QMutex parameterCtxMutex;

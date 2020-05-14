@@ -19,7 +19,7 @@ SAKDebuggerOutputSettings::SAKDebuggerOutputSettings(SAKDebugger *debugger, QObj
     ,debugger (debugger)
     ,_currentTextFormat ("Hex")
 {
-//    _statistics = new SAKDebuggerOutputStatistics(debugger);
+    _statistics = new SAKDebuggerOutputStatistics;
 }
 
 SAKDebuggerOutputSettings::~SAKDebuggerOutputSettings()
@@ -40,6 +40,11 @@ SAKDebuggerOutputSettings::ParametersContext SAKDebuggerOutputSettings::paramete
     parameterCtxMutex.unlock();
 
     return paraCtx;
+}
+
+SAKDebuggerOutputStatistics * SAKDebuggerOutputSettings::statisticsInstance()
+{
+    return _statistics;
 }
 
 QStringList SAKDebuggerOutputSettings::textFormats()

@@ -18,7 +18,9 @@
 #include "SAKDebuggerTextOutput.hh"
 #include "SAKDebuggerInputManager.hh"
 #include "SAKDebuggerOutputManager.hh"
+#include "SAKDebuggerOutputSettings.hh"
 #include "SAKDebuggerDeviceSerialport.hh"
+#include "SAKDebuggerOutputStatistics.hh"
 
 SAKDebugger::SAKDebugger(int type, QObject *parent)
     :QObject (parent)
@@ -32,6 +34,7 @@ SAKDebugger::SAKDebugger(int type, QObject *parent)
     }
     _outputManager = new SAKDebuggerOutputManager(this);
     _outputManager->textOutputInstance()->setDevice(_device);
+    _outputManager->outputSettingsInstance()->statisticsInstance()->setDevice(_device);
 
     /// @brief 未指定parent的，统一将parent设置为qApp
     if (!parent){

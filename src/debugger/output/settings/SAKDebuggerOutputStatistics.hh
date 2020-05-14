@@ -15,7 +15,8 @@
 #include <QTimer>
 #include <QObject>
 
-class SAKDebugger;
+
+class SAKDebuggerDevice;
 /// @brief 数据统计
 class SAKDebuggerOutputStatistics:public QObject
 {
@@ -27,7 +28,7 @@ class SAKDebuggerOutputStatistics:public QObject
     Q_PROPERTY(QString rxFrames READ rxFrames NOTIFY rxFramesChanged)
     Q_PROPERTY(QString rxBytes  READ rxBytes  NOTIFY rxBytesChanged)
 public:
-    SAKDebuggerOutputStatistics(SAKDebugger *debugger, QObject *parent = Q_NULLPTR);
+    SAKDebuggerOutputStatistics(QObject *parent = Q_NULLPTR);
 
     /**
      * @brief clearRxStatistics 清空接收数据统计
@@ -38,8 +39,12 @@ public:
      * @brief clearTxStatistics 清空发送数据统计
      */
     Q_INVOKABLE void clearTxStatistics();
-private:
-    SAKDebugger *debugger;
+
+    /**
+     * @brief setDevice 关联设备相关操作
+     * @param device 设备实例
+     */
+    void setDevice(SAKDebuggerDevice *device);
 private:
     /// @brief 统计选项
     struct DataContext {

@@ -13,9 +13,8 @@
 #include "SAKDebuggerDevice.hh"
 #include "SAKDebuggerOutputStatistics.hh"
 
-SAKDebuggerOutputStatistics::SAKDebuggerOutputStatistics(SAKDebugger *debugger, QObject *parent)
+SAKDebuggerOutputStatistics::SAKDebuggerOutputStatistics(QObject *parent)
     :QObject (parent)
-    ,debugger (debugger)
 {
     dataContext.rxBytes  = 0;
     dataContext.txBytes  = 0;
@@ -23,11 +22,6 @@ SAKDebuggerOutputStatistics::SAKDebuggerOutputStatistics(SAKDebugger *debugger, 
     dataContext.txFrames = 0;
     dataContext.rxBytesPerSecond = 0;
     dataContext.txBytesPerSecond = 0;
-
-    /// @brief 关联读写数据
-    SAKDebuggerDevice *device = debugger->deviceInstance();
-    connect(device, &SAKDebuggerDevice::bytesRead, this, &SAKDebuggerOutputStatistics::bytesRead);
-    connect(device, &SAKDebuggerDevice::bytesWritten, this, &SAKDebuggerOutputStatistics::bytesWritten);
 
     speedCalculationTimer.setInterval(1*1000);
     connect(&speedCalculationTimer, &QTimer::timeout, this, &SAKDebuggerOutputStatistics::updateSpeed);
@@ -50,6 +44,13 @@ void SAKDebuggerOutputStatistics::clearTxStatistics()
 
     txBytesChanged();
     txFramesChanged();
+}
+
+void SAKDebuggerOutputStatistics::setDevice(SAKDebuggerDevice *device)
+{
+    /// @brief 关联读写数据
+    connect(device, &SAKDebuggerDevice::bytesRead, this, &SAKDebuggerOutputStatistics::bytesRead);
+    connect(device, &SAKDebuggerDevice::bytesWritten, this, &SAKDebuggerOutputStatistics::bytesWritten);
 }
 
 void SAKDebuggerOutputStatistics::updateSpeed()
