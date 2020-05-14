@@ -60,6 +60,11 @@ QString SAKDebuggerOutputSettings::currentTextFormat()
 
 void SAKDebuggerOutputSettings::setCurrentTextFormat(QString format)
 {
+    parameterCtxMutex.lock();
+    QMetaEnum metaEnum = QMetaEnum::fromType<OutputTextFormat>();
+    parameterCtx.outputFormat = metaEnum.keyToValue(format.toLatin1().data());
+    parameterCtxMutex.lock();
+
     _currentTextFormat = format;
     emit currentTextFormatChanged();
 }

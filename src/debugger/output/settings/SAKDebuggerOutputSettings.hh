@@ -33,13 +33,14 @@ public:
     /// @brief 输出格式格式
     enum OutputTextFormat {
         Bin,
-        Otc,
+        Oct,
         Dec,
         Hex,
         Ascii,
         Utf8,
         Utf16,
         Ucs4,
+        StdW,
         System
     };
     Q_ENUM(OutputTextFormat)
@@ -52,6 +53,8 @@ public:
         bool outputRx;      // 允许输出已接收的数据
         bool outputTx;      // 允许输出已发送的数据
         bool outputWrap;    // 显示自动换行
+
+        int outputFormat;   // 文本格式
     };
 
     SAKDebuggerOutputSettings(SAKDebugger *debugger, QObject *parent = Q_NULLPTR);

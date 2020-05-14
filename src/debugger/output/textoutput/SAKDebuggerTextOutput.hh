@@ -15,6 +15,8 @@
 #include <QObject>
 
 class SAKDebugger;
+class SAKDebuggerOutputSettings;
+class SAKDebuggerOutputTextFactory;
 class SAKDebuggerTextOutput : public QObject
 {
     Q_OBJECT
@@ -23,9 +25,15 @@ public:
     ~SAKDebuggerTextOutput();
 private:
     SAKDebugger *debugger;
+    SAKDebuggerOutputSettings *outputSettings;
+    SAKDebuggerOutputTextFactory *textFactory;
 private:
-    /// @brief 输出信心，参数为设备读取到的数据
-    void outputText(QByteArray text);
+    /// @brief 输出信息，参数为设备读取到的数据
+    void outputText(QByteArray text, bool isRxData);
+    void outputTextRx(QByteArray text);
+    void outputTextTx(QByteArray text);
+   /// @brief 槽函数，接收factor处理后的数据
+    void dataCooked(QString text);
 signals:
     void outputTextRequest(QString text);
 };
