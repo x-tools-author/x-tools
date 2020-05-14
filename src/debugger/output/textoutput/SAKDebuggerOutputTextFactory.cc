@@ -19,7 +19,7 @@ SAKDebuggerOutputTextFactory::SAKDebuggerOutputTextFactory(SAKDebugger *debugger
     :QThread (parent)
     ,debugger (debugger)
 {
-    outputSettings = debugger->outputManagerInstance()->outputSettingsInstance();
+
 }
 
 SAKDebuggerOutputTextFactory::~SAKDebuggerOutputTextFactory()
@@ -76,6 +76,16 @@ void SAKDebuggerOutputTextFactory::addRawData(QByteArray text, bool isRxData)
 void SAKDebuggerOutputTextFactory::wakeMe()
 {
     threadWaitCondition.wakeAll();
+}
+
+void SAKDebuggerOutputTextFactory::setOutputSettings(SAKDebuggerOutputSettings *settings)
+{
+    if (settings){
+        outputSettings = settings;
+        start();
+    }else{
+        Q_ASSERT_X(false, __FUNCTION__, "Oh, a null pointer");
+    }
 }
 
 SAKDebuggerOutputTextFactory::TextContext SAKDebuggerOutputTextFactory::takeRawData()

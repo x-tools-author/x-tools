@@ -15,6 +15,7 @@
 
 #include "SAKDebugger.hh"
 #include "SAKCRCInterface.hh"
+#include "SAKDebuggerTextOutput.hh"
 #include "SAKDebuggerInputManager.hh"
 #include "SAKDebuggerOutputManager.hh"
 #include "SAKDebuggerDeviceSerialport.hh"
@@ -30,6 +31,7 @@ SAKDebugger::SAKDebugger(int type, QObject *parent)
         _device = new SAKDebuggerDeviceSerialport(this);
     }
     _outputManager = new SAKDebuggerOutputManager(this);
+    _outputManager->textOutputInstance()->setDevice(_device);
 
     /// @brief 未指定parent的，统一将parent设置为qApp
     if (!parent){

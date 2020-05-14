@@ -42,6 +42,12 @@ public:
      * @brief wakeMe 唤醒线程
      */
     void wakeMe();
+
+    /**
+     * @brief setOutputSettings 赋值
+     * @param settings 输出设置类实例
+     */
+    void setOutputSettings(SAKDebuggerOutputSettings *settings);
 protected:
     void run() final;
 private:

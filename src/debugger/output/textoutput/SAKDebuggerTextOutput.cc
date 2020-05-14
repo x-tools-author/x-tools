@@ -20,22 +20,34 @@ SAKDebuggerTextOutput::SAKDebuggerTextOutput(SAKDebugger *debugger, QObject *par
     :QObject (parent)
     ,debugger (debugger)
 {
-//    textFactory = new SAKDebuggerOutputTextFactory(debugger);
-//    connect(textFactory, &SAKDebuggerOutputTextFactory::dataCooked, this, &SAKDebuggerTextOutput::dataCooked);
-//    textFactory->start();
-
-//    SAKDebuggerDevice *device = debugger->deviceInstance();
-//    connect(device, &SAKDebuggerDevice::bytesRead, this, &SAKDebuggerTextOutput::outputTextRx, Qt::QueuedConnection);
-//    connect(device, &SAKDebuggerDevice::bytesWritten, this, &SAKDebuggerTextOutput::outputTextTx, Qt::QueuedConnection);
-//    outputSettings = debugger->outputManagerInstance()->outputSettingsInstance();
+    textFactory = new SAKDebuggerOutputTextFactory(debugger);
+    connect(textFactory, &SAKDebuggerOutputTextFactory::dataCooked, this, &SAKDebuggerTextOutput::dataCooked);
 }
 
 SAKDebuggerTextOutput::~SAKDebuggerTextOutput()
 {
-    textFactory->requestInterruption();
-    textFactory->quit();
-    textFactory->wait();
-    delete textFactory;
+    if (textFactory){
+        textFactory->requestInterruption();
+        textFactory->quit();
+        textFactory->wait();
+        delete textFactory;
+    }
+}
+
+SAKDebuggerOutputTextFactory *SAKDebuggerTextOutput::textFactoryInstance()
+{
+    return textFactory;
+}
+
+void SAKDebuggerTextOutput::setDevice(SAKDebuggerDevice *device)
+{
+    if (device){
+        connect(device, &SAKDebuggerDevice::bytesRead, this, &SAKDebuggerTextOutput::outputTextRx, Qt::QueuedConnection);
+        connect(device, &SAKDebuggerDevice::bytesWritten, this, &SAKDebuggerTextOutput::outputTextTx, Qt::QueuedConnection);
+        outputSettings = debugger->outputManagerInstance()->outputSettingsInstance();
+    }else{
+        Q_ASSERT_X(false, __FUNCTION__, "Oh, a null pointer!");
+    }
 }
 
 void SAKDebuggerTextOutput::outputText(QByteArray text, bool isRxData)

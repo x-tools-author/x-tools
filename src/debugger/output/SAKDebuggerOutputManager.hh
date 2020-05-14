@@ -31,6 +31,12 @@ public:
      * @return 输出设置类实例指针
      */
     SAKDebuggerOutputSettings *outputSettingsInstance();
+
+    /**
+     * @brief textOutputInstance 获取文本输出类实例指针
+     * @return 文本输出类实例指针
+     */
+    SAKDebuggerTextOutput *textOutputInstance();
 private:
     SAKDebugger *debugger;
 private:

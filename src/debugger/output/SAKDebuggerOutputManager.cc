@@ -12,6 +12,7 @@
 #include "SAKDebuggerTextOutput.hh"
 #include "SAKDebuggerOutputManager.hh"
 #include "SAKDebuggerOutputSettings.hh"
+#include "SAKDebuggerOutputTextFactory.hh"
 
 SAKDebuggerOutputManager::SAKDebuggerOutputManager(SAKDebugger *debugger, QObject *parent)
     :QObject (parent)
@@ -19,6 +20,7 @@ SAKDebuggerOutputManager::SAKDebuggerOutputManager(SAKDebugger *debugger, QObjec
 {
     _outputSettings = new SAKDebuggerOutputSettings(debugger);
     _textOutput = new SAKDebuggerTextOutput(debugger);
+    _textOutput->textFactoryInstance()->setOutputSettings(_outputSettings);
 }
 
 SAKDebuggerOutputManager::~SAKDebuggerOutputManager()
@@ -30,6 +32,11 @@ SAKDebuggerOutputManager::~SAKDebuggerOutputManager()
 SAKDebuggerOutputSettings *SAKDebuggerOutputManager::outputSettingsInstance()
 {
     return _outputSettings;
+}
+
+SAKDebuggerTextOutput *SAKDebuggerOutputManager::textOutputInstance()
+{
+    return _textOutput;
 }
 
 SAKDebuggerOutputSettings *SAKDebuggerOutputManager::outputSettings()

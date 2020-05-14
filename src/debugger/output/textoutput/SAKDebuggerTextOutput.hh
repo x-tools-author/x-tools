@@ -15,6 +15,7 @@
 #include <QObject>
 
 class SAKDebugger;
+class SAKDebuggerDevice;
 class SAKDebuggerOutputSettings;
 class SAKDebuggerOutputTextFactory;
 class SAKDebuggerTextOutput : public QObject
@@ -23,6 +24,18 @@ class SAKDebuggerTextOutput : public QObject
 public:
     SAKDebuggerTextOutput(SAKDebugger *debugger, QObject *parent = Q_NULLPTR);
     ~SAKDebuggerTextOutput();
+
+    /**
+     * @brief textFactoryInstance 获取数据处理类实例指针
+     * @return 数据处理类实例指针
+     */
+    SAKDebuggerOutputTextFactory *textFactoryInstance();
+
+    /**
+     * @brief setDevice 关联与设备相关的操作
+     * @param device 设备实例指针
+     */
+    void setDevice(SAKDebuggerDevice *device);
 private:
     SAKDebugger *debugger;
     SAKDebuggerOutputSettings *outputSettings;
