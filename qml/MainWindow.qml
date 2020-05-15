@@ -46,9 +46,10 @@ Window {
                         ["qrc:/qml/SAKTcpClientControl.qml",            true,  SAKDebugger.DebuggerTypeTcpClient,   qsTr("TCP客户端")],
                         ["qrc:/qml/SAKTcpServerControl.qml",            true,  SAKDebugger.DebuggerTypeTcpServer,   qsTr("TCP服务器")],
                         ["",                                            false, -1,                                  " "],// 间隔符
-                        ["qrc:/qml/tools/ToolsPage.qml",                false, -1,                                  qsTr("实用工具")],
-                        ["qrc:/qml/settings/SettingsPage.qml",          false, -1,                                  qsTr("软件设置")],
-                        ["qrc:/qml/console/ConsolePage.qml",            false, -1,                                  qsTr("终端输出")],
+                        ["qrc:/qml/tools/ToolsPage.qml",                false, -1,                                  qsTr("工具")],
+                        ["qrc:/qml/settings/SettingsPage.qml",          false, -1,                                  qsTr("设置")],
+                        ["qrc:/qml/help/HelpPage.qml",                  false, -1,                                  qsTr("帮助")],
+                        ["qrc:/qml/console/ConsolePage.qml",            false, -1,                                  qsTr("终端")],
                     ]
 
                     Loader {
