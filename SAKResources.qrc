@@ -84,5 +84,13 @@
         <file>qml/SAKTcpClientControl.qml</file>
         <file>qml/SAKTcpServerControl.qml</file>
         <file>qml/SAKUdpControl.qml</file>
+        <file>qml/help/HelpPage.qml</file>
+        <file>qml/help/HelpPage3rd.qml</file>
+        <file>qml/help/HelpPageAboutQt.qml</file>
+        <file>qml/help/HelpPageAboutSAK.qml</file>
+        <file>qml/help/HelpPageBuy.qml</file>
+        <file>qml/help/HelpPageDonation.qml</file>
+        <file>qml/help/HelpPageHistory.qml</file>
+        <file>qml/help/HelpPagePanel.qml</file>
     </qresource>
 </RCC>

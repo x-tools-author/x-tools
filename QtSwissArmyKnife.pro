@@ -93,7 +93,8 @@ INCLUDEPATH += \
     src/debugger/input/textinput \
     src/debugger/output \
     src/debugger/output/settings \
-    src/debugger/output/textoutput
+    src/debugger/output/textoutput \
+    src/help
 
 #--------------------------------------------------------------------------------------------
 #源码
@@ -110,7 +111,14 @@ HEADERS += \
     src/debugger/output/settings/SAKDebuggerOutputSettings.hh \
     src/debugger/output/settings/SAKDebuggerOutputStatistics.hh \
     src/debugger/output/textoutput/SAKDebuggerOutputTextFactory.hh \
-    src/debugger/output/textoutput/SAKDebuggerTextOutput.hh
+    src/debugger/output/textoutput/SAKDebuggerTextOutput.hh \
+    src/help/SAKHelp3rdController.hh \
+    src/help/SAKHelpAboutQtController.hh \
+    src/help/SAKHelpAboutSAKController.hh \
+    src/help/SAKHelpBuyController.hh \
+    src/help/SAKHelpDonationController.hh \
+    src/help/SAKHelpHistoryController.hh \
+    src/help/SAKHelpManager.hh
 
 SOURCES += \
     src/SAKApplication.cc \
@@ -126,4 +134,11 @@ SOURCES += \
     src/debugger/output/settings/SAKDebuggerOutputStatistics.cc \
     src/debugger/output/textoutput/SAKDebuggerOutputTextFactory.cc \
     src/debugger/output/textoutput/SAKDebuggerTextOutput.cc \
+    src/help/SAKHelp3rdController.cc \
+    src/help/SAKHelpAboutQtController.cc \
+    src/help/SAKHelpAboutSAKController.cc \
+    src/help/SAKHelpBuyController.cc \
+    src/help/SAKHelpDonationController.cc \
+    src/help/SAKHelpHistoryController.cc \
+    src/help/SAKHelpManager.cc \
     src/main.cc
