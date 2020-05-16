@@ -41,10 +41,10 @@ Window {
                 Repeater {
                     id: debugPageRepeater
                     model: [                                            // true表示页面为调试页面
-                        ["qrc:/qml/SAKSerialportControl.qml",           true,  SAKDebugger.DebuggerTypeSerialport,  qsTr("串口调试")],
-                        ["qrc:/qml/SAKUdpControl.qml",                  true,  SAKDebugger.DebuggerTypeUDP,         qsTr("UDP调试"), ],
-                        ["qrc:/qml/SAKTcpClientControl.qml",            true,  SAKDebugger.DebuggerTypeTcpClient,   qsTr("TCP客户端")],
-                        ["qrc:/qml/SAKTcpServerControl.qml",            true,  SAKDebugger.DebuggerTypeTcpServer,   qsTr("TCP服务器")],
+                        ["qrc:/qml/SAKSerialportControl.qml",           true,  SAKDebugger.DebuggerTypeSerialport,  "COM"],
+                        ["qrc:/qml/SAKUdpControl.qml",                  true,  SAKDebugger.DebuggerTypeUDP,         "UDP", ],
+                        ["qrc:/qml/SAKTcpClientControl.qml",            true,  SAKDebugger.DebuggerTypeTcpClient,   "TCP-C"],
+                        ["qrc:/qml/SAKTcpServerControl.qml",            true,  SAKDebugger.DebuggerTypeTcpServer,   "TCP-S"],
                         ["",                                            false, -1,                                  " "],// 间隔符
                         ["qrc:/qml/tools/ToolsPage.qml",                false, -1,                                  qsTr("工具")],
                         ["qrc:/qml/settings/SettingsPage.qml",          false, -1,                                  qsTr("设置")],
