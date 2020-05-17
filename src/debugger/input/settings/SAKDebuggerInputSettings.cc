@@ -11,15 +11,19 @@
  */
 #include <QMetaEnum>
 
-
 #include "SAKCRCInterface.hh"
 #include "SAKDebuggerInputSettings.hh"
+
+#define MINI_CYCLIC_TIME 50
 
 SAKDebuggerInputSettings::SAKDebuggerInputSettings(SAKDebugger *debugger, QObject *parent)
     :QObject (parent)
     ,debugger (debugger)
+    ,_cyclicTime (MINI_CYCLIC_TIME)
 {
-
+    connect(&cyclicTimer, &QTimer::timeout, this, [&](){
+        emit writeBytesRequest();
+    });
 }
 
 SAKDebuggerInputSettings::~SAKDebuggerInputSettings()
@@ -39,6 +43,20 @@ QStringList SAKDebuggerInputSettings::avalidCRCParameterModel()
     return list;
 }
 
+void SAKDebuggerInputSettings::startTimer(bool startRequest)
+{
+    if (startRequest){
+        cyclicTimer.start(_cyclicTime >= MINI_CYCLIC_TIME ? _cyclicTime : MINI_CYCLIC_TIME);
+    }else{
+        cyclicTimer.stop();
+    }
+}
+
+void SAKDebuggerInputSettings::writeBytes()
+{
+    emit writeBytesRequest();
+}
+
 
 QStringList SAKDebuggerInputSettings::crcParameterModel()
 {
@@ -55,4 +73,16 @@ QStringList SAKDebuggerInputSettings::textFormats()
     }
 
     return list;
+}
+
+QString SAKDebuggerInputSettings::cyclicTime()
+{
+    return QString::number(_cyclicTime);
+}
+
+void SAKDebuggerInputSettings::setCyclicTime(QString ct)
+{
+    quint32 ret = ct.toUInt();
+    _cyclicTime = ret >= MINI_CYCLIC_TIME ? ret : MINI_CYCLIC_TIME;
+    emit cyclicTimeChanged();
 }

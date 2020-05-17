@@ -26,10 +26,23 @@ DebugPageBlock {
 
             SAKCheckBox {
                 text: qsTr("定时发送")
+
+                onCheckedChanged: {
+                    if (inputSettings){
+                        inputSettings.startTimer(checked)
+                    }
+                }
             }
 
             SAKLineEdit {
                 placeholderText: qsTr("单位:ms")
+                maximumLength: 4
+
+                Component.onCompleted: {
+                    if (inputSettings){
+                        text = inputSettings.cyclicTime
+                    }
+                }
             }
 
             SAKText {

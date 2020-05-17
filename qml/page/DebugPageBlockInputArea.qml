@@ -12,10 +12,20 @@ DebugPageBlock {
 
     property SAKDebuggerInputManager inputManager: sakdebugger ? sakdebugger.inputManager : null
     property SAKDebuggerTextInput textInput: inputManager ? inputManager.textInput: null
+    property SAKDebuggerInputSettings inputSettings: inputManager ? inputManager.inputSettings : null
+
+    Connections {
+        target: inputSettings
+        onWriteBytesRequest: {
+            if (textInput){
+                textInput.writeRawData(textinputArea.text)
+            }
+        }
+    }
 
     contentItem: Item{
         SAKTextArea {
-            id: sakTextArea
+            id: textinputArea
             height: 58
             anchors {
                 top: parent.top
@@ -43,12 +53,16 @@ DebugPageBlock {
                     text: modelData
 
                     onClicked: {
+                        if (!(textinputArea && textInput)){
+                            return
+                        }
+
                         if (index == 0){
-                            sakTextArea.clear()
+                            textinputArea.clear()
                         }
 
                         if (index == 1){
-                           textInput.writeBytes()
+                           textInput.writeRawData(textinputArea.text)
                         }
 
                         if (index == 3){

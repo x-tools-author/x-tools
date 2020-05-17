@@ -15,6 +15,7 @@
 #include <QObject>
 
 class SAKDebugger;
+class SAKDebuggerInputSettings;
 class SAKDebuggerTextInput : public QObject
 {
     Q_OBJECT
@@ -24,15 +25,16 @@ public:
     ~SAKDebuggerTextInput();
 
     /**
-     * @brief writeBytes 发送数据（数据并不是在该函数中直接发出）
-     */
-    Q_INVOKABLE void writeBytes();
-
-    /**
      * @brief wirteBytes 发送数据
      * @param bytes 待发送数据
      */
-    void writeBytes(QByteArray bytes);
+    Q_INVOKABLE void writeBytes(QByteArray bytes);
+
+    /**
+     * @brief writeRawData 写（发送）数据
+     * @param data 待发送数据，格式为输入框文本格式
+     */
+    Q_INVOKABLE void writeRawData(QString data);
 private:
     SAKDebugger *debugger;
 signals:

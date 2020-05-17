@@ -9,7 +9,10 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
+#include <QDebug>
+
 #include "SAKDebuggerTextInput.hh"
+#include "SAKDebuggerInputSettings.hh"
 
 SAKDebuggerTextInput::SAKDebuggerTextInput(SAKDebugger *debugger, QObject *parent)
     :QObject (parent)
@@ -23,12 +26,16 @@ SAKDebuggerTextInput::~SAKDebuggerTextInput()
 
 }
 
-void SAKDebuggerTextInput::writeBytes()
-{
-    writeBytes(QByteArray("Hello"));
-}
-
 void SAKDebuggerTextInput::writeBytes(QByteArray bytes)
 {
     emit writeBytesRequest(bytes);
+}
+
+void SAKDebuggerTextInput::writeRawData(QString data)
+{
+    if (data.length()){
+        emit writeBytesRequest(data.toLatin1());
+    }else{
+        emit writeBytesRequest(QByteArray("(empty)"));
+    }
 }
