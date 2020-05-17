@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT += core gui qml
+QT += core gui widgets qml
 
 TARGET = QtSwissArmyKnife
 
