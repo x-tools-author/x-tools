@@ -12,10 +12,18 @@
 #ifndef SAKAPPLICATION_HH
 #define SAKAPPLICATION_HH
 
+#ifdef Q_OS_ANDROID
 #include <QGuiApplication>
+#else
+#include <QApplication>
+#endif
 #include <QQmlApplicationEngine>
 
+#ifdef Q_OS_ANDROID
 class SAKApplication:public QGuiApplication
+#else
+class SAKApplication:public QApplication
+#endif
 {
     Q_OBJECT
 public:

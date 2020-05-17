@@ -25,7 +25,11 @@
 #include "SAKDebuggerOutputStatistics.hh"
 
 SAKApplication::SAKApplication(int argc, char **argv)
-    : QGuiApplication (argc, argv)
+#ifdef Q_OS_ANDROID
+    :QGuiApplication(argc, argv)
+#else
+    :QApplication(argc, argv)
+#endif
 {
     /// @brief 取消FileDialog警告
     setOrganizationName("Qter");
