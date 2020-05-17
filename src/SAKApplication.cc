@@ -27,6 +27,10 @@
 SAKApplication::SAKApplication(int argc, char **argv)
     : QGuiApplication (argc, argv)
 {
+    /// @brief 取消FileDialog警告
+    setOrganizationName("Qter");
+    setOrganizationDomain("IT");
+
     registerCustomType();
 }
 
