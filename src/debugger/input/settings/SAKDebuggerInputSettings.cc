@@ -57,7 +57,6 @@ void SAKDebuggerInputSettings::writeBytes()
     emit writeBytesRequest();
 }
 
-
 QStringList SAKDebuggerInputSettings::crcParameterModel()
 {
     return avalidCRCParameterModel();
