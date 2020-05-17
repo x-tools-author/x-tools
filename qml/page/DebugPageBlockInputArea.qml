@@ -53,7 +53,7 @@ DebugPageBlock {
                     text: modelData
 
                     onClicked: {
-                        if (!(textinputArea && textInput)){
+                        if (!(inputSettings && textInput)){
                             return
                         }
 
@@ -84,6 +84,30 @@ DebugPageBlock {
                 SAKCheckBox {
                     anchors.verticalCenter: parent.verticalCenter
                     text: modelData
+
+                    onCheckedChanged: {
+                        if (textInput){
+                            if (index == 0){
+                                textInput.addCRCFlag = checked
+                            }
+
+                            if (index == 1){
+                                textInput.bigEndianCRCFlag = checked
+                            }
+                        }
+                    }
+
+                    Component.onCompleted: {
+                        if (textInput){
+                            if (index == 0){
+                                checked = textInput.addCRCFlag
+                            }
+
+                            if (index == 1){
+                                checked = textInput.bigEndianCRCFlag
+                            }
+                        }
+                    }
                 }
             }
         }
