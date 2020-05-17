@@ -57,6 +57,24 @@ void SAKDebuggerInputSettings::writeBytes()
     emit writeBytesRequest();
 }
 
+int SAKDebuggerInputSettings::paraCurrentCRCModel()
+{
+    currentCRCModelMutex.lock();
+    int model = _currentCRCModel;
+    currentCRCModelMutex.unlock();
+
+    return model;
+}
+
+int SAKDebuggerInputSettings::paraCurrentInputFromat()
+{
+    currentInputFormatMutex.lock();
+    int ret = _currentInputFormat;
+    currentInputFormatMutex.unlock();
+
+    return ret;
+}
+
 QStringList SAKDebuggerInputSettings::crcParameterModel()
 {
     return avalidCRCParameterModel();
@@ -84,4 +102,42 @@ void SAKDebuggerInputSettings::setCyclicTime(QString ct)
     quint32 ret = ct.toUInt();
     _cyclicTime = ret >= MINI_CYCLIC_TIME ? ret : MINI_CYCLIC_TIME;
     emit cyclicTimeChanged();
+}
+
+QString SAKDebuggerInputSettings::currentCRCModel()
+{
+    QMetaEnum metaEnum = QMetaEnum::fromType<SAKCRCInterface::CRCModel>();
+    currentCRCModelMutex.lock();
+    QString ret = QString(metaEnum.valueToKey(_currentCRCModel));
+    currentCRCModelMutex.unlock();
+    return ret;
+}
+
+void SAKDebuggerInputSettings::setCurrentCRCModel(QString model)
+{
+    QMetaEnum metaEnum = QMetaEnum::fromType<SAKCRCInterface::CRCModel>();
+    int ret = metaEnum.keyToValue(model.toLatin1().data());
+    currentCRCModelMutex.lock();
+    _currentCRCModel = ret;
+    currentCRCModelMutex.unlock();
+    emit currentCRCModelChanged();
+}
+
+QString SAKDebuggerInputSettings::currentInputFromat()
+{
+    QMetaEnum metaEnum = QMetaEnum::fromType<InputTextFormat>();
+    currentInputFormatMutex.lock();
+    QString ret = QString(metaEnum.valueToKey(_currentInputFormat));
+    currentInputFormatMutex.unlock();
+    return ret;
+}
+
+void SAKDebuggerInputSettings::setCurrentInputFromat(QString model)
+{
+    QMetaEnum metaEnum = QMetaEnum::fromType<InputTextFormat>();
+    int ret = metaEnum.keyToValue(model.toLatin1().data());
+    currentInputFormatMutex.lock();
+    _currentInputFormat = ret;
+    currentInputFormatMutex.unlock();
+    emit currentInputFromatChanged();
 }

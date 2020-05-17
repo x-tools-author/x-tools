@@ -19,7 +19,6 @@ class SAKDebuggerInputSettings;
 class SAKDebuggerTextInput : public QObject
 {
     Q_OBJECT
-
 public:
     SAKDebuggerTextInput(SAKDebugger *debugger, QObject *parent = Q_NULLPTR);
     ~SAKDebuggerTextInput();

@@ -13,6 +13,7 @@
 #define SAKDEBUGGERINPURTSETTINGS_HH
 
 #include <QTimer>
+#include <QMutex>
 #include <QObject>
 
 class SAKDebugger;
@@ -22,6 +23,9 @@ class SAKDebuggerInputSettings : public QObject
     Q_PROPERTY(QStringList crcParameterModel READ crcParameterModel CONSTANT)
     Q_PROPERTY(QStringList textFormats READ textFormats CONSTANT)
     Q_PROPERTY(QString cyclicTime READ cyclicTime WRITE setCyclicTime NOTIFY cyclicTimeChanged)
+
+    Q_PROPERTY(QString currentCRCModel READ currentCRCModel WRITE setCurrentCRCModel NOTIFY currentCRCModelChanged)
+    Q_PROPERTY(QString currentInputFromat READ currentInputFromat WRITE setCurrentInputFromat NOTIFY currentInputFromatChanged)
 public:
     enum InputTextFormat {
         Bin,
@@ -52,12 +56,27 @@ public:
      * @brief writeBytes 发射发送请求信号
      */
     Q_INVOKABLE void writeBytes();
+
+    /**
+     * @brief paraCurrentCRCModel 获取当前crc参数模型
+     * @return 当前crc参数模型
+     */
+    int paraCurrentCRCModel();
+
+    /**
+     * @brief paraCurrentInputFromat 获取当前输入格式
+     * @return 当前输入格式
+     */
+    int paraCurrentInputFromat();
 private:
     SAKDebugger *debugger;
     QTimer cyclicTimer;
 private:
     QStringList crcParameterModel();
     QStringList textFormats();
+
+    QMutex currentCRCModelMutex;
+    QMutex currentInputFormatMutex;
 signals:
     /// @brief 定时器溢出时发射该信号
     void writeBytesRequest();
@@ -65,8 +84,18 @@ private:
     quint32 _cyclicTime;
     QString cyclicTime();
     void setCyclicTime(QString ct);
+
+    int _currentCRCModel;
+    QString currentCRCModel();
+    void setCurrentCRCModel(QString model);
+
+    int _currentInputFormat;
+    QString currentInputFromat();
+    void setCurrentInputFromat(QString model);
 signals:
     void cyclicTimeChanged();
+    void currentCRCModelChanged();
+    void currentInputFromatChanged();
 };
 
 #endif
