@@ -73,10 +73,23 @@ public:
      * @return 统计类实例指针
      */
     SAKDebuggerOutputStatistics *statisticsInstance();
+
+    /**
+     * @brief clearOutput 清空输出
+     */
+    Q_INVOKABLE void clearOutput();
+
+    /**
+     * @brief saveOutputData 保存输出
+     */
+    Q_INVOKABLE void saveOutputData();
 private:
     SAKDebugger *debugger;
     QMutex parameterCtxMutex;
     struct ParametersContext parameterCtx;
+signals:
+    void clearOutputReauest();
+    void saveOutputDataRequest();
 private:
     QStringList textFormats();
 

@@ -9,6 +9,12 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
+#include <QFile>
+#include <QDebug>
+#include <QTextStream>
+#include <QFileDialog>
+#include <QStandardPaths>
+
 #include "SAKDebugger.hh"
 #include "SAKDebuggerDevice.hh"
 #include "SAKDebuggerTextOutput.hh"
@@ -48,6 +54,21 @@ void SAKDebuggerTextOutput::setDevice(SAKDebuggerDevice *device)
     }else{
         Q_ASSERT_X(false, __FUNCTION__, "Oh, a null pointer!");
     }
+}
+
+void SAKDebuggerTextOutput::saveDataToFile(QString data)
+{
+    QString fileName = QFileDialog::getSaveFileName(Q_NULLPTR, tr("保存文件"),
+                                                    QStandardPaths::writableLocation(QStandardPaths::DesktopLocation)+"/SAKData.txt",
+                                                    tr("Text (*.txt);;All (*)"));
+    if (fileName.length()){
+        QFile file(fileName);
+        if (file.open(QFile::WriteOnly|QFile::Truncate|QFile::Text)){
+            QTextStream outStream(&file);
+                outStream << data;
+        }
+    }
+    qDebug() << data;
 }
 
 void SAKDebuggerTextOutput::outputText(QByteArray text, bool isRxData)

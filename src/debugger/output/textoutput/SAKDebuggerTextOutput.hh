@@ -36,6 +36,12 @@ public:
      * @param device 设备实例指针
      */
     void setDevice(SAKDebuggerDevice *device);
+
+    /**
+     * @brief saveDataToFile 将输出数据保存至文件
+     * @param data 带保存数据
+     */
+    Q_INVOKABLE void saveDataToFile(QString data);
 private:
     SAKDebugger *debugger;
     SAKDebuggerOutputSettings *outputSettings;

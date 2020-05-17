@@ -49,6 +49,16 @@ SAKDebuggerOutputStatistics * SAKDebuggerOutputSettings::statisticsInstance()
     return _statistics;
 }
 
+void SAKDebuggerOutputSettings::clearOutput()
+{
+    emit clearOutputReauest();
+}
+
+void SAKDebuggerOutputSettings::saveOutputData()
+{
+    emit saveOutputDataRequest();
+}
+
 QStringList SAKDebuggerOutputSettings::textFormats()
 {
     QStringList list;

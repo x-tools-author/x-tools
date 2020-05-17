@@ -195,14 +195,22 @@ DebugPageBlock {
                 }
             }
             Repeater {
-                model: [qsTr("清空输入"), qsTr("保存输入")]
+                model: [qsTr("清空输出"), qsTr("保存输出")]
 
                 SAKButton {
                     text: modelData
                     height: 25
 
                     onClicked: {
-                        console.info(modelData)
+                        if (outputSettings){
+                            if (index === 0){
+                                outputSettings.clearOutput()
+                            }
+
+                            if (index == 1){
+                                outputSettings.saveOutputData()
+                            }
+                        }
                     }
                 }
             }
