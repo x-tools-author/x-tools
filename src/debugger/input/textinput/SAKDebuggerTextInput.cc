@@ -15,8 +15,10 @@
 #include "SAKDebuggerInputSettings.hh"
 
 SAKDebuggerTextInput::SAKDebuggerTextInput(SAKDebugger *debugger, QObject *parent)
-    :QObject (parent)
-    ,debugger (debugger)
+    :QObject(parent)
+    ,debugger(debugger)
+    ,_addCRCFlag(false)
+    ,_bigEndianCRCFlag(false)
 {
 
 }
@@ -38,4 +40,58 @@ void SAKDebuggerTextInput::writeRawData(QString data)
     }else{
         emit writeBytesRequest(QByteArray("(empty)"));
     }
+}
+
+bool SAKDebuggerTextInput::paraAddCRCFlag()
+{
+    addCRCFlagMutex.lock();
+    bool flag = _addCRCFlag;
+    addCRCFlagMutex.unlock();
+
+    return flag;
+}
+
+bool SAKDebuggerTextInput::paraBigEndianCRCFlag()
+{
+    bigEndianCRCFlagMutex.lock();
+    bool flag = _bigEndianCRCFlag;
+    bigEndianCRCFlagMutex.unlock();
+
+    return flag;
+}
+
+bool SAKDebuggerTextInput::addCRCFlag()
+{
+    addCRCFlagMutex.lock();
+    bool flag = _addCRCFlag;
+    addCRCFlagMutex.unlock();
+
+    return flag;
+}
+
+void SAKDebuggerTextInput::setAddCRCFlag(bool flag)
+{
+    addCRCFlagMutex.lock();
+    _addCRCFlag = flag;
+    addCRCFlagMutex.unlock();
+
+    emit addCRCFlagChanged();
+}
+
+bool SAKDebuggerTextInput::bigEndianCRCFlag()
+{
+    bigEndianCRCFlagMutex.lock();
+    bool flag = _bigEndianCRCFlag;
+    bigEndianCRCFlagMutex.unlock();
+
+    return flag;
+}
+
+void SAKDebuggerTextInput::setBigEndianCRCFlag(bool flag)
+{
+    bigEndianCRCFlagMutex.lock();
+    _bigEndianCRCFlag = flag;
+    bigEndianCRCFlagMutex.unlock();
+
+    emit bigEndianCRCFlagChanged();
 }

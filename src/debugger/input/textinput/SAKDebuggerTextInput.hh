@@ -12,6 +12,7 @@
 #ifndef SAKDEBUGGERTEXTINPUT_HH
 #define SAKDEBUGGERTEXTINPUT_HH
 
+#include <QMutex>
 #include <QObject>
 
 class SAKDebugger;
@@ -19,6 +20,9 @@ class SAKDebuggerInputSettings;
 class SAKDebuggerTextInput : public QObject
 {
     Q_OBJECT
+
+    Q_PROPERTY(bool addCRCFlag READ addCRCFlag WRITE setAddCRCFlag NOTIFY addCRCFlagChanged)
+    Q_PROPERTY(bool bigEndianCRCFlag READ bigEndianCRCFlag WRITE setBigEndianCRCFlag NOTIFY bigEndianCRCFlagChanged)
 public:
     SAKDebuggerTextInput(SAKDebugger *debugger, QObject *parent = Q_NULLPTR);
     ~SAKDebuggerTextInput();
@@ -34,10 +38,35 @@ public:
      * @param data 待发送数据，格式为输入框文本格式
      */
     Q_INVOKABLE void writeRawData(QString data);
+
+    /**
+     * @brief paraAddCRCFlag 获取是否添加crc标志
+     * @return 添加crc标志
+     */
+    bool paraAddCRCFlag();
+
+    /**
+     * @brief paraBigEndianCRCFlag 获取是否大端形式追加crc标志
+     * @return crc字节序标志
+     */
+    bool paraBigEndianCRCFlag();
 private:
     SAKDebugger *debugger;
+    QMutex addCRCFlagMutex;
+    QMutex bigEndianCRCFlagMutex;
 signals:
     void writeBytesRequest(QByteArray bytes);
+private:
+    bool _addCRCFlag;
+    bool addCRCFlag();
+    void setAddCRCFlag(bool flag);
+
+    bool _bigEndianCRCFlag;
+    bool bigEndianCRCFlag();
+    void setBigEndianCRCFlag(bool flag);
+signals:
+    void addCRCFlagChanged();
+    void bigEndianCRCFlagChanged();
 };
 
 #endif
