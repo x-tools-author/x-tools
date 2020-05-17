@@ -140,10 +140,10 @@ DebugPageBlock {
 
             Repeater {
                 model: [
-                    qsTr("发送速率"), statistics ? statistics.txSpeed  : "0",
+                    qsTr("发送速率"), statistics ? statistics.txSpeed  : "0B/s",
                     qsTr("发送帧数"), statistics ? statistics.txFrames : "0",
                     qsTr("发送字节"), statistics ? statistics.txBytes  : "0",
-                    qsTr("接收速率"), statistics ? statistics.rxSpeed  : "0",
+                    qsTr("接收速率"), statistics ? statistics.rxSpeed  : "0B/s",
                     qsTr("接收帧数"), statistics ? statistics.rxFrames : "0",
                     qsTr("接收字节"), statistics ? statistics.rxBytes  : "0",
                 ]
