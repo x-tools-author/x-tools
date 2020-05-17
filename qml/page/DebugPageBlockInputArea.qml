@@ -66,7 +66,7 @@ DebugPageBlock {
                         }
 
                         if (index == 3){
-                            textInput.writeBytes()
+                            textInput.writeBytes(textinputArea.text)
                         }
                     }
                 }
