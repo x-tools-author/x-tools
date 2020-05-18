@@ -10,6 +10,7 @@
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
 #include "SAKApplication.hh"
+#include "SAKConsoleManager.hh"
 
 int main(int argc, char *argv[])
 {
@@ -19,7 +20,17 @@ int main(int argc, char *argv[])
 #endif
     SAKApplication app(argc, argv);
 
+#ifdef QT_NO_DEBUG
+    /// @brief 消息重定位，发布版本有效
+    SAKConsoleManager *consoleManager = SAKConsoleManager::instance();
+    qInstallMessageHandler(SAKConsoleManager::consoleOutput);
+#endif
+
+    /// @brief 开始加载ui
     app.setupUi();
 
     return app.exec();
+#ifdef QT_NO_DEBUG
+    consoleManager->deleteLater();
+#endif
 }
