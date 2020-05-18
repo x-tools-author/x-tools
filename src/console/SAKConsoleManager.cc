@@ -9,87 +9,64 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#include <QDebug>
-#include <QMetaEnum>
-#include <QGuiApplication>
+#include <QCoreApplication>
 
-#include "SAKDebugger.hh"
-#include "SAKCRCInterface.hh"
-#include "SAKDebuggerTextOutput.hh"
-#include "SAKDebuggerInputManager.hh"
-#include "SAKDebuggerOutputManager.hh"
-#include "SAKDebuggerOutputSettings.hh"
-#include "SAKDebuggerDeviceSerialport.hh"
-#include "SAKDebuggerOutputStatistics.hh"
+#include "SAKConsoleMessage.hh"
+#include "SAKConsoleManager.hh"
 
-SAKDebugger::SAKDebugger(int type, QObject *parent)
-    :QObject (parent)
-    ,debuggerType(type)
-    ,crcInterface (new SAKCRCInterface)
+SAKConsoleManager* SAKConsoleManager::instancePtr = Q_NULLPTR;
+SAKConsoleManager::SAKConsoleManager(QObject *parent)
+    :QObject(parent)
 {
-    /// @brief 注意初始化顺序，不能乱
-    _inputManager = new SAKDebuggerInputManager(this);
-    if (type == DebuggerTypeSerialport){
-        _device = new SAKDebuggerDeviceSerialport(this);
-    }
-    _outputManager = new SAKDebuggerOutputManager(this);
-    _outputManager->textOutputInstance()->setDevice(_device);
-    _outputManager->outputSettingsInstance()->statisticsInstance()->setDevice(_device);
+    instancePtr = this;
+}
 
-    /// @brief 未指定parent的，统一将parent设置为qApp
-    if (!parent){
-        setParent(qApp);
+SAKConsoleManager::~SAKConsoleManager()
+{
+    instancePtr = Q_NULLPTR;
+}
+
+SAKConsoleManager* SAKConsoleManager::instance()
+{
+    if (!instancePtr){
+        new SAKConsoleManager;
     }
 
-    _device->start();
+    Q_ASSERT_X(instancePtr, __FUNCTION__, "Oh, a null pointer!");
+    return instancePtr;
 }
 
-SAKDebugger::~SAKDebugger()
+void SAKConsoleManager::consoleOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
-    delete crcInterface;
-    delete _inputManager;
-    delete _outputManager;
+    QString function = context.function ? QString(context.function) : QString("Unknow");
+    QString color;
+    switch (type) {
+    case QtDebugMsg:
+    case QtInfoMsg:
+        color = QString("#FFFFFFFF");
+        break;
+    case QtWarningMsg:
+    case QtCriticalMsg:
+    case QtFatalMsg:
+        color = QString("#FFFF0000");
+        break;
+    }
 
-    _device->wakeMe();
-    _device->requestInterruption();
-    _device->quit();
-    _device->wait();
+    instancePtr->messagesListMutex.lock();
+    if (instancePtr){
+       SAKConsoleMessage *msgPtr = new SAKConsoleMessage(type, color, function, msg, instancePtr);
+       instancePtr->_messagesList.prepend(QVariant::fromValue(msgPtr));
+
+       while (instancePtr->_messagesList.length() > 1000) {
+           instancePtr->_messagesList.removeLast();
+       }
+
+       emit instancePtr->messagesListChanged();
+    }
+    instancePtr->messagesListMutex.unlock();
 }
 
-void SAKDebugger::setMessage(QString msg, bool isError)
+QVariantList SAKConsoleManager::messagesList()
 {
-    messageMutex.lock();
-    Q_UNUSED(isError);
-    qDebug() << __FUNCTION__ << msg;
-    messageMutex.unlock();
-}
-
-SAKDebuggerInputManager *SAKDebugger::inputManagerInstance()
-{
-    return _inputManager;
-}
-
-SAKDebuggerOutputManager *SAKDebugger::outputManagerInstance()
-{
-    return _outputManager;
-}
-
-SAKDebuggerDevice *SAKDebugger::deviceInstance()
-{
-    return _device;
-}
-
-SAKDebuggerDevice *SAKDebugger::device()
-{
-    return _device;
-}
-
-SAKDebuggerInputManager *SAKDebugger::inputManager()
-{
-    return _inputManager;
-}
-
-SAKDebuggerOutputManager *SAKDebugger::outputManager()
-{
-    return _outputManager;
+    return _messagesList;
 }

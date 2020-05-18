@@ -9,36 +9,28 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef SAKCONSOLEMANAGER_HH
-#define SAKCONSOLEMANAGER_HH
+#ifndef SAKCONSOLEMESSAGE_HH
+#define SAKCONSOLEMESSAGE_HH
 
 #include <QMutex>
 #include <QObject>
 #include <QtGlobal>
 
-/// @brief 终端输出管理类
-class SAKConsoleManager : public QObject
+/// @brief 消息类
+class SAKConsoleMessage : public QObject
 {
     Q_OBJECT
-private:
-    SAKConsoleManager(QObject *parent = Q_NULLPTR);
-    ~SAKConsoleManager();
+    Q_PROPERTY(QString color READ color CONSTANT)
+    Q_PROPERTY(QString msg READ msg CONSTANT)
 public:
-    /**
-     * @brief instance 获取实例指针
-     * @return 实力指针
-     */
-    static SAKConsoleManager* instance();
-
-    /**
-     * @brief consoleOutput 终端输出
-     * @param type 消息类型
-     * @param context 消息上下文
-     * @param msg 消息文本
-     */
-    static void consoleOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg);
+    SAKConsoleMessage(QtMsgType type, QString color, QString function, QString msg, QObject *parent = Q_NULLPTR);
+    ~SAKConsoleMessage();
 private:
-    static SAKConsoleManager* instancePtr;
+    QString _color;
+    QString color();
+
+    QString _msg;
+    QString msg();
 };
 
 #endif

@@ -9,51 +9,49 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#include <QCoreApplication>
-#include "SAKConsoleManager.hh"
+#include <QDateTime>
+#include "SAKConsoleMessage.hh"
 
-SAKConsoleManager* SAKConsoleManager::instancePtr = Q_NULLPTR;
-SAKConsoleManager::SAKConsoleManager(QObject *parent)
+SAKConsoleMessage::SAKConsoleMessage(QtMsgType type, QString color, QString function, QString msg, QObject *parent)
     :QObject(parent)
+    ,_color(color)
+    ,_msg(msg)
 {
-    instancePtr = this;
-}
+    QString dateTime = QDateTime::currentDateTime().toString("yyyy/MM/dd hh:mm:ss ");
 
-SAKConsoleManager::~SAKConsoleManager()
-{
-    instancePtr = Q_NULLPTR;
-}
-
-SAKConsoleManager* SAKConsoleManager::instance()
-{
-    if (!instancePtr){
-        new SAKConsoleManager(qApp);
+    QString typeString;
+    switch (type) {
+    case QtDebugMsg:
+        typeString = QString("[D] ");
+        break;
+    case QtInfoMsg:
+        typeString = QString("[I] ");
+        break;
+    case QtWarningMsg:
+        typeString = QString("[W] ");
+        break;
+    case QtCriticalMsg:
+        typeString = QString("[C] ");
+        break;
+    case QtFatalMsg:
+        typeString = QString("[F] ");
+        break;
     }
 
-    Q_ASSERT_X(instancePtr, __FUNCTION__, "Oh, a null pointer!");
-    return instancePtr;
+    _msg = (typeString + dateTime + function + _msg);
 }
 
-void SAKConsoleManager:: consoleOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)
-  {
-      QByteArray localMsg = msg.toLocal8Bit();
-      const char *file = context.file ? context.file : "";
-      const char *function = context.function ? context.function : "";
-      switch (type) {
-      case QtDebugMsg:
-          fprintf(stderr, "Debug: %s (%s:%u, %s)\n", localMsg.constData(), file, context.line, function);
-          break;
-      case QtInfoMsg:
-          fprintf(stderr, "Info: %s (%s:%u, %s)\n", localMsg.constData(), file, context.line, function);
-          break;
-      case QtWarningMsg:
-          fprintf(stderr, "Warning: %s (%s:%u, %s)\n", localMsg.constData(), file, context.line, function);
-          break;
-      case QtCriticalMsg:
-          fprintf(stderr, "Critical: %s (%s:%u, %s)\n", localMsg.constData(), file, context.line, function);
-          break;
-      case QtFatalMsg:
-          fprintf(stderr, "Fatal: %s (%s:%u, %s)\n", localMsg.constData(), file, context.line, function);
-          break;
-      }
-  }
+SAKConsoleMessage::~SAKConsoleMessage()
+{
+
+}
+
+QString SAKConsoleMessage::color()
+{
+    return _color;
+}
+
+QString SAKConsoleMessage::msg()
+{
+    return _msg;
+}

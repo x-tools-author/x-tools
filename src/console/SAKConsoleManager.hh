@@ -9,74 +9,44 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef SAKDEBUGGER_HH
-#define SAKDEBUGGER_HH
+#ifndef SAKCONSOLEMANAGER_HH
+#define SAKCONSOLEMANAGER_HH
 
 #include <QMutex>
 #include <QObject>
+#include <QtGlobal>
+#include <QVariantList>
 
-class SAKCRCInterface;
-class SAKDebuggerDevice;
-class SAKDebuggerInputManager;
-class SAKDebuggerOutputManager;
-class SAKDebuggerDeviceSerialport;
-class SAKDebugger : public QObject
+/// @brief 终端输出管理类
+class SAKConsoleManager : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(SAKDebuggerDevice* device READ device NOTIFY deviceChanged)
-    Q_PROPERTY(SAKDebuggerInputManager* inputManager READ inputManager CONSTANT)
-    Q_PROPERTY(SAKDebuggerOutputManager* outputManager READ outputManager CONSTANT)
+    Q_PROPERTY(QVariantList messagesList READ messagesList NOTIFY messagesListChanged)
+private:
+    SAKConsoleManager(QObject *parent = Q_NULLPTR);
+    ~SAKConsoleManager();
 public:
-    enum SAKDebuggertype {
-        DebuggerTypeSerialport,
-        DebuggerTypeUDP,
-        DebuggerTypeTcpClient,
-        DebuggerTypeTcpServer
-    };
-    Q_ENUM(SAKDebuggertype)
-
-    SAKDebugger(int type, QObject *parent = Q_NULLPTR);
-    ~SAKDebugger();
+    /**
+     * @brief instance 获取实例指针
+     * @return 实力指针
+     */
+    static SAKConsoleManager* instance();
 
     /**
-     * @brief setMessage 输出消息，可在不同线程中调用该接口，该接口是线程安全的
-     * @param msg 消息类容
-     * @param isError 为true是表示消息时错误消息
+     * @brief consoleOutput 终端输出
+     * @param type 消息类型
+     * @param context 消息上下文
+     * @param msg 消息文本
      */
-    void setMessage(QString msg, bool isError = false);
-
-    /**
-     * @brief inputManagerInstance 获取输入管理类实例指针
-     * @return 输入管理类实例指针
-     */
-    SAKDebuggerInputManager *inputManagerInstance();
-
-    /**
-     * @brief outputManagerInstance 获取输出管理类实例指针
-     * @return 输出管理类实例指针
-     */
-    SAKDebuggerOutputManager *outputManagerInstance();
-
-    /**
-     * @brief deviceInstance 获取设备实例指针
-     * @return 设备实例指针
-     */
-    SAKDebuggerDevice *deviceInstance();
+    static void consoleOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg);
 private:
-    int debuggerType;
-    SAKCRCInterface *crcInterface;
-    QMutex messageMutex;
+    static SAKConsoleManager* instancePtr;
+    QMutex messagesListMutex;
 private:
-    SAKDebuggerDevice *_device;
-    SAKDebuggerDevice *device();
-
-    SAKDebuggerInputManager *_inputManager;
-    SAKDebuggerInputManager *inputManager();
-
-    SAKDebuggerOutputManager *_outputManager;
-    SAKDebuggerOutputManager *outputManager();
+    QVariantList _messagesList;
+    QVariantList messagesList();
 signals:
-    void deviceChanged();
+    void messagesListChanged();
 };
 
 #endif
