@@ -69,6 +69,59 @@ void SAKDebuggerTextInput::setInputSettings(SAKDebuggerInputSettings *settings)
     inputTextFactory->setInputSettings(inputSettings);
 }
 
+QString SAKDebuggerTextInput::formattingInputText(QString srcString)
+{
+    QString formattedText;
+    int format = inputSettings->paraCurrentInputFromat();
+
+    if (!srcString.isEmpty()){
+        if (format == SAKDebuggerInputSettings::Bin){
+            QString strTemp;
+            srcString.remove(QRegExp("[^0-1]"));
+            for (int i = 0; i < srcString.length(); i++){
+                if ((i != 0) && (i % 8 == 0)){
+                    formattedText.append(QChar(' '));
+                }
+                formattedText.append(srcString.at(i));
+            }
+        }else if(format == SAKDebuggerInputSettings::Otc) {
+            srcString.remove(QRegExp("[^0-7]"));
+            for (int i = 0; i < srcString.length(); i++){
+                if ((i != 0) && (i % 2 == 0)){
+                    formattedText.append(QChar(' '));
+                }
+                formattedText.append(srcString.at(i));
+            }
+        }else if(format == SAKDebuggerInputSettings::Dec) {
+            srcString.remove(QRegExp("[^0-9]"));
+            for (int i = 0; i < srcString.length(); i++){
+                if ((i != 0) && (i % 2 == 0)){
+                    formattedText.append(QChar(' '));
+                }
+                formattedText.append(srcString.at(i));
+            }
+        }else if(format == SAKDebuggerInputSettings::Hex) {
+            srcString.remove(QRegExp("[^0-9a-fA-F]"));
+            for (int i = 0; i < srcString.length(); i++){
+                if ((i != 0) && (i % 2 == 0)){
+                    formattedText.append(QChar(' '));
+                }
+                formattedText.append(srcString.at(i));
+            }
+        }else if(format == SAKDebuggerInputSettings::Ascii) {
+            srcString.remove(QRegExp("[^\0u00-\u007f ]"));
+        }else if(format == SAKDebuggerInputSettings::Utf8) {
+            /// @brief nothing to do
+        }else if(format == SAKDebuggerInputSettings::System) {
+            /// @brief nothing to do
+        }else {
+            Q_ASSERT_X(false, __FUNCTION__, "Unknow input model");
+        }
+    }
+
+    return formattedText;
+}
+
 bool SAKDebuggerTextInput::addCRCFlag()
 {
     addCRCFlagMutex.lock();

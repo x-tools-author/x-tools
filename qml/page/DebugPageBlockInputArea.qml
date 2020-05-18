@@ -35,6 +35,12 @@ DebugPageBlock {
                 leftMargin: 5
                 rightMargin: 5
             }
+
+            onTextChanged: {
+                var ret = textInput.formattingInputText(text)
+                textinputArea.text = ret
+                textinputArea.cursorPosition = textinputArea.length
+            }
         }
 
         Row {

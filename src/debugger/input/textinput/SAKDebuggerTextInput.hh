@@ -57,6 +57,13 @@ public:
      * @param settings 输入设备类实例指针
      */
     void setInputSettings(SAKDebuggerInputSettings *settings);
+
+    /**
+     * @brief formattingInputText 将输出输入按照参数进行格式化
+     * @param srcString 输入数据
+     * @return 格式化后的数据
+     */
+    Q_INVOKABLE QString formattingInputText(QString srcString);
 private:
     SAKDebugger *debugger;
     QMutex addCRCFlagMutex;
