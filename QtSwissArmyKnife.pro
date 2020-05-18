@@ -86,6 +86,7 @@ RESOURCES += \
 #头文件目录
 INCLUDEPATH += \
     src/common \
+    src/console \
     src/debugger \
     src/debugger/device \
     src/debugger/input \
@@ -102,6 +103,8 @@ HEADERS += \
     src/SAKApplication.hh \
     src/SAKDebuggerManager.hh \
     src/common/SAKCRCInterface.hh \
+    src/console/SAKConsoleManager.hh \
+    src/console/SAKConsoleMessage.hh \
     src/debugger/SAKDebugger.hh \
     src/debugger/device/SAKDebuggerDevice.hh \
     src/debugger/input/SAKDebuggerInputManager.hh \
@@ -124,6 +127,8 @@ SOURCES += \
     src/SAKApplication.cc \
     src/SAKDebuggerManager.cc \
     src/common/SAKCRCInterface.cc \
+    src/console/SAKConsoleManager.cc \
+    src/console/SAKConsoleMessage.cc \
     src/debugger/SAKDebugger.cc \
     src/debugger/device/SAKDebuggerDevice.cc \
     src/debugger/input/SAKDebuggerInputManager.cc \
