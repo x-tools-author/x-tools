@@ -14,6 +14,8 @@
 #include "SAKDebugger.hh"
 #include "SAKApplication.hh"
 #include "SAKDebuggerDevice.hh"
+#include "SAKConsoleMessage.hh"
+#include "SAKConsoleManager.hh"
 #include "SAKDebuggerManager.hh"
 #include "SAKDebuggerTextInput.hh"
 #include "SAKDebuggerTextOutput.hh"
@@ -47,6 +49,7 @@ void SAKApplication::registerCustomType()
 {
     qmlRegisterUncreatableType<SAKDebugger>("SAK.CustomType", 1, 0, "SAKDebugger", "Can not insance the calss(SAKDebugger) on qml!");
     qmlRegisterUncreatableType<SAKDebuggerDevice>("SAK.CustomType", 1, 0, "SAKDebuggerDevice", "Can not insance the calss(SAKDebugger) on qml!");
+    qmlRegisterUncreatableType<SAKConsoleMessage>("SAK.CustomType", 1, 0, "SAKConsoleMessage", "Can not insance the calss(SAKConsoleMessage) on qml!");
     qmlRegisterUncreatableType<SAKDebuggerTextInput>("SAK.CustomType", 1, 0, "SAKDebuggerTextInput", "Can not insance the calss(SAKDebuggerTextInput) on qml!");
     qmlRegisterUncreatableType<SAKDebuggerTextOutput>("SAK.CustomType", 1, 0, "SAKDebuggerTextOutput", "Can not insance the calss(SAKDebuggerTextOutput) on qml!");
     qmlRegisterUncreatableType<SAKDebuggerInputManager>("SAK.CustomType", 1, 0, "SAKDebuggerInputManager", "Can not insance the calss(SAKDebuggerInputManager) on qml!");
@@ -56,6 +59,7 @@ void SAKApplication::registerCustomType()
     qmlRegisterUncreatableType<SAKDebuggerDeviceSerialport>("SAK.CustomType", 1, 0, "SAKDebuggerDeviceSerialport", "Can not insance the calss(SAKDebuggerDeviceSerialport) on qml!");
     qmlRegisterUncreatableType<SAKDebuggerOutputStatistics>("SAK.CustomType", 1, 0, "SAKDebuggerOutputStatistics", "Can not insance the calss(SAKDebuggerOutputStatistics) on qml!");
 
+    qmlRegisterSingletonType<SAKConsoleManager>("SAK.CustomType", 1, 0, "SAKConsoleManager", [](QQmlEngine *, QJSEngine *)->QObject*{return SAKConsoleManager::instance();});
     qmlRegisterSingletonType<SAKDebuggerManager>("SAK.CustomType", 1, 0, "SAKDebuggerManager", [](QQmlEngine *, QJSEngine *)->QObject*{return SAKDebuggerManager::instance();});
 }
 
