@@ -19,6 +19,8 @@ SAKDebuggerInputManager::SAKDebuggerInputManager(SAKDebugger *debugger, QObject 
 {
     _inputSettings = new SAKDebuggerInputSettings(debugger);
     _textInput = new SAKDebuggerTextInput(debugger);
+
+    _textInput->setInputSettings(_inputSettings);
 }
 
 SAKDebuggerInputManager::~SAKDebuggerInputManager()

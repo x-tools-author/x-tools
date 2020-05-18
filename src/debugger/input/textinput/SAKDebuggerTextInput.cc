@@ -13,6 +13,7 @@
 
 #include "SAKDebuggerTextInput.hh"
 #include "SAKDebuggerInputSettings.hh"
+#include "SAKDebuggerInputTextFactory.hh"
 
 SAKDebuggerTextInput::SAKDebuggerTextInput(SAKDebugger *debugger, QObject *parent)
     :QObject(parent)
@@ -20,12 +21,18 @@ SAKDebuggerTextInput::SAKDebuggerTextInput(SAKDebugger *debugger, QObject *paren
     ,_addCRCFlag(false)
     ,_bigEndianCRCFlag(false)
 {
-
+    inputTextFactory = new SAKDebuggerInputTextFactory;
+    inputTextFactory->setTextInput(this);
+    connect(inputTextFactory, &SAKDebuggerInputTextFactory::dataCooked, this, &SAKDebuggerTextInput::writeBytesRequest);
 }
 
 SAKDebuggerTextInput::~SAKDebuggerTextInput()
 {
-
+    inputTextFactory->requestInterruption();
+    inputTextFactory->exit();
+    inputTextFactory->wakeMe();
+    inputTextFactory->wait();
+    delete inputTextFactory;
 }
 
 void SAKDebuggerTextInput::writeBytes(QByteArray bytes)
@@ -35,11 +42,7 @@ void SAKDebuggerTextInput::writeBytes(QByteArray bytes)
 
 void SAKDebuggerTextInput::writeRawData(QString data)
 {
-    if (data.length()){
-        emit writeBytesRequest(data.toLatin1());
-    }else{
-        emit writeBytesRequest(QByteArray("(empty)"));
-    }
+    inputTextFactory->addRawData(data.length() ? data : QString("empty"));
 }
 
 bool SAKDebuggerTextInput::paraAddCRCFlag()
@@ -58,6 +61,12 @@ bool SAKDebuggerTextInput::paraBigEndianCRCFlag()
     bigEndianCRCFlagMutex.unlock();
 
     return flag;
+}
+
+void SAKDebuggerTextInput::setInputSettings(SAKDebuggerInputSettings *settings)
+{
+    inputSettings = settings;
+    inputTextFactory->setInputSettings(inputSettings);
 }
 
 bool SAKDebuggerTextInput::addCRCFlag()

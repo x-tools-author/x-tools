@@ -33,6 +33,7 @@ public:
         Dec,
         Hex,
         Ascii,
+        Utf8,
         System
     };
     Q_ENUM(InputTextFormat)

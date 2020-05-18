@@ -9,64 +9,63 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef SAKDEBUGGERTEXTINPUT_HH
-#define SAKDEBUGGERTEXTINPUT_HH
+#ifndef SAKDEBUGGERINPUTTEXTFACTORY_HH
+#define SAKDEBUGGERINPUTTEXTFACTORY_HH
 
 #include <QMutex>
-#include <QObject>
+#include <QThread>
+#include <QWaitCondition>
 
-class SAKDebugger;
+class SAKDebuggerTextInput;
 class SAKDebuggerInputSettings;
-class SAKDebuggerTextInput : public QObject
+class SAKDebuggerInputTextFactory : public QThread
 {
     Q_OBJECT
-
-    Q_PROPERTY(bool addCRCFlag READ addCRCFlag WRITE setAddCRCFlag NOTIFY addCRCFlagChanged)
-    Q_PROPERTY(bool bigEndianCRCFlag READ bigEndianCRCFlag WRITE setBigEndianCRCFlag NOTIFY bigEndianCRCFlagChanged)
 public:
-    SAKDebuggerTextInput(SAKDebugger *debugger, QObject *parent = Q_NULLPTR);
-    ~SAKDebuggerTextInput();
+    SAKDebuggerInputTextFactory(QObject *parent = Q_NULLPTR);
+    ~SAKDebuggerInputTextFactory();
 
     /**
-     * @brief wirteBytes 发送数据
-     * @param bytes 待发送数据
+     * @brief addRawData 将待发送原始数据添加至发送数据处理列表中
+     * @param rawData 输入文本
      */
-    Q_INVOKABLE void writeBytes(QByteArray bytes);
+    void addRawData(QString rawData);
 
     /**
-     * @brief writeRawData 写（发送）数据
-     * @param data 待发送数据，格式为输入框文本格式
+     * @brief wakeMe 唤醒线程
      */
-    Q_INVOKABLE void writeRawData(QString data);
+    void wakeMe();
 
     /**
-     * @brief paraAddCRCFlag 获取是否添加crc标志
-     * @return 添加crc标志
+     * @brief setInputSettings 赋值
+     * @param settings 输入设置类指针
      */
-    bool paraAddCRCFlag();
+    void setInputSettings(SAKDebuggerInputSettings *settings);
 
     /**
-     * @brief paraBigEndianCRCFlag 获取是否大端形式追加crc标志
-     * @return crc字节序标志
+     * @brief setTextInput 赋值
+     * @param input 文本输入管理类实例
      */
-    bool paraBigEndianCRCFlag();
+    void setTextInput(SAKDebuggerTextInput *input);
+protected:
+    void run() final;
 private:
-    SAKDebugger *debugger;
-    QMutex addCRCFlagMutex;
-    QMutex bigEndianCRCFlagMutex;
-signals:
-    void writeBytesRequest(QByteArray bytes);
+    QStringList rawDataList;
+    QMutex rawDataListMutex;
+    QMutex threadMutex;
+    QWaitCondition threadWaitCondition;
+    SAKDebuggerInputSettings *inputSettings;
+    SAKDebuggerTextInput *textInput;
 private:
-    bool _addCRCFlag;
-    bool addCRCFlag();
-    void setAddCRCFlag(bool flag);
-
-    bool _bigEndianCRCFlag;
-    bool bigEndianCRCFlag();
-    void setBigEndianCRCFlag(bool flag);
+    /// @brief 提取待处理数据链表中的第一个元素，如果链表为空则返回空（empty）字符串
+    QString takeRawData();
+    /// @brief 将数据按照参数处理
+    QByteArray cookData(QString rawData, int format);
+    /// @brief 计算输入数据crc
+    QByteArray crcCalculate(QByteArray input, bool bigEndian, int model);
 signals:
-    void addCRCFlagChanged();
-    void bigEndianCRCFlagChanged();
+    /// @brief 根据参数完成处理后的数据由此信号发出
+    void dataCooked(QByteArray bytes);
 };
 
 #endif

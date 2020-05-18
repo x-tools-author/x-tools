@@ -17,6 +17,7 @@
 
 class SAKDebugger;
 class SAKDebuggerInputSettings;
+class SAKDebuggerInputTextFactory;
 class SAKDebuggerTextInput : public QObject
 {
     Q_OBJECT
@@ -50,10 +51,18 @@ public:
      * @return crc字节序标志
      */
     bool paraBigEndianCRCFlag();
+
+    /**
+     * @brief setInputSettings 赋值
+     * @param settings 输入设备类实例指针
+     */
+    void setInputSettings(SAKDebuggerInputSettings *settings);
 private:
     SAKDebugger *debugger;
     QMutex addCRCFlagMutex;
     QMutex bigEndianCRCFlagMutex;
+    SAKDebuggerInputTextFactory *inputTextFactory;
+    SAKDebuggerInputSettings *inputSettings;
 signals:
     void writeBytesRequest(QByteArray bytes);
 private:
