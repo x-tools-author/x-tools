@@ -60,7 +60,7 @@ DebugPageBlock {
             }
 
             SAKComboBox {
-                model: inputSettings ? inputSettings.textFormats : 6
+                model: inputSettings ? inputSettings.textFormats : 7
             }
         }
     }
