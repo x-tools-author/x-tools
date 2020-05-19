@@ -14,12 +14,14 @@
 
 #include <QObject>
 
+class SAKHelp3rdController;
 class SAKHelpAboutQtController;
 class SAKHelpHistoryController;
 class SAKHelpAboutSAKController;
 class SAKHelpManager : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(SAKHelp3rdController* trdController READ trdController CONSTANT)
     Q_PROPERTY(SAKHelpAboutQtController* aboutQtController READ aboutQtController CONSTANT)
     Q_PROPERTY(SAKHelpAboutSAKController* aboutSAKController READ aboutSAKController CONSTANT)
     Q_PROPERTY(SAKHelpHistoryController* historyController READ  historyController CONSTANT)
@@ -31,6 +33,9 @@ public:
 private:
     static SAKHelpManager *instancePtr;
 private:
+    SAKHelp3rdController *_trdController;
+    SAKHelp3rdController *trdController();
+
     SAKHelpAboutQtController *_aboutQtController;
     SAKHelpAboutQtController *aboutQtController();
 

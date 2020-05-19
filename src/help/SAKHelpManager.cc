@@ -12,6 +12,7 @@
 #include <QCoreApplication>
 
 #include "SAKHelpManager.hh"
+#include "SAKHelp3rdController.hh"
 #include "SAKHelpHistoryController.hh"
 #include "SAKHelpAboutQtController.hh"
 #include "SAKHelpAboutSAKController.hh"
@@ -21,6 +22,7 @@ SAKHelpManager::SAKHelpManager(QObject *parent)
     :QObject (parent)
 {
     instancePtr = this;
+    _trdController = new SAKHelp3rdController(this);
     _aboutQtController = new SAKHelpAboutQtController(this);
     _aboutSAKController = new SAKHelpAboutSAKController(this);
     _historyController = new SAKHelpHistoryController(this);
@@ -39,6 +41,11 @@ SAKHelpManager *SAKHelpManager::instance()
 
     Q_ASSERT_X(instancePtr, __FUNCTION__, "Oh, a null pointer!");
     return instancePtr;
+}
+
+SAKHelp3rdController *SAKHelpManager::trdController()
+{
+    return _trdController;
 }
 
 SAKHelpAboutQtController *SAKHelpManager::aboutQtController()
