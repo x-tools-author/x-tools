@@ -60,6 +60,7 @@ Item {
             height: parent.height
             ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
             Column {
+                id: pagePanelColumn
                 spacing: 10
                 width: rightPanelScrollView.width
                 topPadding: 5
@@ -77,6 +78,13 @@ Item {
                     width: pannelWidth
                     anchors.horizontalCenter: parent.horizontalCenter
                 }
+
+                HelpPageHistory {
+                    id: history
+                    title: qsTr("发布历史")
+                    width: pannelWidth
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
             }
         }
     }
@@ -84,6 +92,7 @@ Item {
     Component.onCompleted: {
         panelTitles.push(aboutQt.title)
         panelTitles.push(aboutSAK.title)
+        panelTitles.push(history.title)
         panelTitlesRepeater.model = panelTitles
     }
 }

@@ -12,6 +12,7 @@
 #include <QCoreApplication>
 
 #include "SAKHelpManager.hh"
+#include "SAKHelpHistoryController.hh"
 #include "SAKHelpAboutQtController.hh"
 #include "SAKHelpAboutSAKController.hh"
 
@@ -22,6 +23,7 @@ SAKHelpManager::SAKHelpManager(QObject *parent)
     instancePtr = this;
     _aboutQtController = new SAKHelpAboutQtController(this);
     _aboutSAKController = new SAKHelpAboutSAKController(this);
+    _historyController = new SAKHelpHistoryController(this);
 }
 
 SAKHelpManager::~SAKHelpManager()
@@ -47,4 +49,9 @@ SAKHelpAboutQtController *SAKHelpManager::aboutQtController()
 SAKHelpAboutSAKController *SAKHelpManager::aboutSAKController()
 {
     return _aboutSAKController;
+}
+
+SAKHelpHistoryController *SAKHelpManager::historyController()
+{
+    return _historyController;
 }

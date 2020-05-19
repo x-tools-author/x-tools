@@ -14,12 +14,21 @@
 
 #include <QObject>
 
+class SAKHelpManager;
 class SAKHelpHistoryController : public QObject
 {
     Q_OBJECT
-public:
+private:
     SAKHelpHistoryController(QObject *parent = Q_NULLPTR);
     ~SAKHelpHistoryController();
+public:
+    friend class SAKHelpManager;
+
+    /**
+     * @brief readinHistoryInfo 读入发布历史信息
+     * @return 历史信息描述
+     */
+    Q_INVOKABLE QString readinHistoryInfo();
 };
 
 #endif
