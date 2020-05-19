@@ -10,6 +10,7 @@
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
 #include <QUrl>
+#include <QDateTime>
 #include <QDesktopServices>
 #include <QCoreApplication>
 
@@ -44,6 +45,19 @@ QString SAKHelpAboutSAKController::authorName()
 QString SAKHelpAboutSAKController::authorEmail()
 {
     return QString("wuuhii@outlook.com");
+}
+
+QString SAKHelpAboutSAKController::buildDateTime()
+{
+    QString dateString(__DATE__);
+    QString timeString(__TIME__);
+
+    QString dateTimeString;
+    dateTimeString.append(dateString);
+    dateTimeString.append(" ");
+    dateTimeString.append(timeString);
+
+    return dateTimeString;
 }
 
 QString SAKHelpAboutSAKController::copyright()

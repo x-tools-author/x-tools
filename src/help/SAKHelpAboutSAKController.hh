@@ -21,6 +21,7 @@ class SAKHelpAboutSAKController : public QObject
     Q_PROPERTY(QString appVersion READ appVersion CONSTANT)
     Q_PROPERTY(QString authorName READ authorName CONSTANT)
     Q_PROPERTY(QString authorEmail READ authorEmail CONSTANT)
+    Q_PROPERTY(QString buildDateTime READ buildDateTime CONSTANT)
     Q_PROPERTY(QString copyright READ copyright CONSTANT)
 
     Q_PROPERTY(QString githubUrl READ githubUrl CONSTANT)
@@ -40,6 +41,7 @@ private:
     QString appVersion();
     QString authorName();
     QString authorEmail();
+    QString buildDateTime();
     QString copyright();
 
     QString githubUrl();

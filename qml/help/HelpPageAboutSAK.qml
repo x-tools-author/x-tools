@@ -12,6 +12,7 @@ HelpPagePanel {
 
     property var infos: [
         qsTr("软件版本"), aboutSAKController.appVersion,
+        qsTr("构建信息"), aboutSAKController.buildDateTime,
         qsTr("软件作者"), aboutSAKController.authorName,
         qsTr("联系邮箱"), aboutSAKController.authorEmail,
         qsTr("版权声明"), aboutSAKController.copyright,
