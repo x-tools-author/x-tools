@@ -19,8 +19,9 @@ HelpPagePanel {
     ]
 
     property var urls: [
-        qsTr("github托管地址"), aboutSAKController.githubUrl,
-        qsTr("gittee托管地址"), aboutSAKController.gitteeUrl
+        qsTr("github托管站点"), aboutSAKController.githubUrl,
+        qsTr("gittee托管站点"), aboutSAKController.gitteeUrl,
+        qsTr("qsak发布站点"), aboutSAKController.officialRelease
     ]
 
     GridLayout {

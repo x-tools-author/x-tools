@@ -79,9 +79,9 @@ Item {
                     anchors.horizontalCenter: parent.horizontalCenter
                 }
 
-                HelpPageFeedback {
-                    id: feedback
-                    title: qsTr("反馈交流")
+                HelpPage3rd {
+                    id: panel3rd
+                    title: qsTr("第三方库")
                     width: pannelWidth
                     anchors.horizontalCenter: parent.horizontalCenter
                 }
@@ -92,6 +92,20 @@ Item {
                     width: pannelWidth
                     anchors.horizontalCenter: parent.horizontalCenter
                 }
+
+                HelpPageFeedback {
+                    id: feedback
+                    title: qsTr("反馈交流")
+                    width: pannelWidth
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
+
+                HelpPageBuy {
+                    id: pageBuy
+                    title: qsTr("软件购买")
+                    width: pannelWidth
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
             }
         }
     }
@@ -99,8 +113,10 @@ Item {
     Component.onCompleted: {
         panelTitles.push(aboutQt.title)
         panelTitles.push(aboutSAK.title)
-        panelTitles.push(feedback.title)
+        panelTitles.push(panel3rd.title)
         panelTitles.push(history.title)
+        panelTitles.push(feedback.title)
+        panelTitles.push(pageBuy.title)
         panelTitlesRepeater.model = panelTitles
     }
 }
