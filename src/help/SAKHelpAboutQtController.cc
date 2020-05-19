@@ -11,6 +11,7 @@
  */
 #include <QUrl>
 #include <QDesktopServices>
+
 #include "SAKHelpAboutQtController.hh"
 
 SAKHelpAboutQtController::SAKHelpAboutQtController(QObject *parent)
