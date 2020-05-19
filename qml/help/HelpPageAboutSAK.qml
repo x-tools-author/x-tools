@@ -14,7 +14,7 @@ HelpPagePanel {
         qsTr("软件版本"), aboutSAKController.appVersion,
         qsTr("软件作者"), aboutSAKController.authorName,
         qsTr("联系邮箱"), aboutSAKController.authorEmail,
-        qsTr("版本声明"), aboutSAKController.copyright,
+        qsTr("版权声明"), aboutSAKController.copyright,
     ]
 
     property var urls: [
