@@ -14,12 +14,36 @@
 
 #include <QObject>
 
+class SAKHelpManager;
 class SAKHelpAboutSAKController : public QObject
 {
     Q_OBJECT
-public:
+    Q_PROPERTY(QString appVersion READ appVersion CONSTANT)
+    Q_PROPERTY(QString authorName READ authorName CONSTANT)
+    Q_PROPERTY(QString authorEmail READ authorEmail CONSTANT)
+    Q_PROPERTY(QString copyright READ copyright CONSTANT)
+
+    Q_PROPERTY(QString githubUrl READ githubUrl CONSTANT)
+    Q_PROPERTY(QString gitteeUrl READ gitteeUrl CONSTANT)
+private:
     SAKHelpAboutSAKController(QObject *parent = Q_NULLPTR);
     ~SAKHelpAboutSAKController();
+public:
+    friend class SAKHelpManager;
+
+    /**
+     * @brief openUrl 打开链接
+     * @param url 链接地址
+     */
+    Q_INVOKABLE void openUrl(QString url);
+private:
+    QString appVersion();
+    QString authorName();
+    QString authorEmail();
+    QString copyright();
+
+    QString githubUrl();
+    QString gitteeUrl();
 };
 
 #endif

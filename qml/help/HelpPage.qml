@@ -1,73 +1,89 @@
 ﻿import QtQuick 2.12
+import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
+
+import "qrc:/qml/base"
 
 Item {
     id: root
 
     property int panelIndex: 0
-    property var panelsInfo: [
-        ["qrc:/qml/help/HelpPageAboutQt.qml",   qsTr("关于Qt")],
-        ["qrc:/qml/help/HelpPageAboutSAK.qml",  qsTr("关于软件")],
-        ["qrc:/qml/help/HelpPageBuy.qml",       qsTr("购买软件")],
-        ["qrc:/qml/help/HelpPageDonation.qml",  qsTr("支持开发")],
-        ["qrc:/qml/help/HelpPageHistory.qml",   qsTr("历史版本")],
-        ["qrc:/qml/help/HelpPage3rd.qml",       qsTr("第三方库")]
-    ]
+    property var panelTitles: []
+    property var pannelWidth: 500
 
-    Item {
-        id: centralItem
+    ScrollView {
+        id: leftPanelScrollView
+        clip: true
+        width: 150
+        ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
         anchors {
-            fill: parent
-            margins: 5
+            top: parent.top
+            bottom: parent.bottom
         }
 
-        ScrollView {
-            id: leftPanelScrollView
-            clip: true
+        background: Rectangle {
+            color: "#161616"
+        }
+
+        ColumnLayout {
             width: 150
-            ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
-            anchors {
-                top: parent.top
-                bottom: parent.bottom
-                left: parent.left
-            }
-
-            Column {
-                anchors{
-                    left: parent.left
-                    right: parent.right
-                }
-
-                Repeater {
-                    model: panelsInfo
-                    Button {
-                        text: modelData[1]
-                        onClicked: {
-                            panelIndex = index
-                        }
+            // 占位
+            Item {width: 1; height: 1}
+            Repeater {
+                id: panelTitlesRepeater
+                model: panelTitles
+                SAKButton {
+                    text: modelData
+                    Layout.minimumWidth: (leftPanelScrollView.width-4)
+                    Layout.alignment: Qt.AlignHCenter
+                    onClicked: {
+                        panelIndex = index
                     }
                 }
             }
         }
+    }
 
-        Item {
-            id: rightPanelScrollView
-            clip: true
-            width: centralItem.width - leftPanelScrollView.width - 5
-            anchors {
-                top: parent.top
-                bottom: parent.bottom
-                right: parent.right
-            }
+    Rectangle {
+        id: rightPanelScrollView
+        clip: true
+        color: "#161616"
+        width: root.width - leftPanelScrollView.width - 2
+        anchors {
+            top: parent.top
+            bottom: parent.bottom
+            right: parent.right
+        }
 
-            Repeater {
-                model: panelsInfo
-                Loader {
-                    anchors.fill: rightPanelScrollView
-                    source: modelData[0]
-                    visible: panelIndex === index
+        ScrollView {
+            width: parent.width
+            height: parent.height
+            ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
+            Column {
+                spacing: 10
+                width: rightPanelScrollView.width
+                topPadding: 5
+
+                HelpPageAboutQt {
+                    id: aboutQt
+                    title: qsTr("关于Qt")
+                    width: pannelWidth
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
+
+                HelpPageAboutSAK {
+                    id: aboutSAK
+                    title: qsTr("关于软件")
+                    width: pannelWidth
+                    anchors.horizontalCenter: parent.horizontalCenter
                 }
             }
         }
+    }
+
+    Component.onCompleted: {
+        panelTitles.push(aboutQt.title)
+        panelTitles.push(aboutSAK.title)
+        panelTitlesRepeater.model = panelTitles
     }
 }

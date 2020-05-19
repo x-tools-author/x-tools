@@ -1,13 +1,32 @@
 ﻿import QtQuick 2.12
 import QtQuick.Controls 2.12
 
-TextArea {
+GroupBox {
     id: root
-    color: "#FFFFFF"
-    selectByMouse: true
     font.pixelSize: 14
 
     background: Rectangle {
-        color: "#FF222222"
+        color: "#222222"
+    }
+
+    label: Label {
+        x: root.leftPadding
+        y: 5
+        width: root.availableWidth
+        text: root.title
+        color: "#FFFFFF"
+        elide: Text.ElideRight
+        font.pixelSize: 16
+        font.bold: true
+
+        Rectangle {
+            anchors {
+                top: parent.bottom
+                topMargin: 2
+            }
+            color: "#161616"
+            width: parent.width
+            height: 2
+        }
     }
 }

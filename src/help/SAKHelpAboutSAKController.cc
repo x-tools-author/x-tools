@@ -9,6 +9,10 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
+#include <QUrl>
+#include <QDesktopServices>
+#include <QCoreApplication>
+
 #include "SAKHelpAboutSAKController.hh"
 
 SAKHelpAboutSAKController::SAKHelpAboutSAKController(QObject *parent)
@@ -20,4 +24,41 @@ SAKHelpAboutSAKController::SAKHelpAboutSAKController(QObject *parent)
 SAKHelpAboutSAKController::~SAKHelpAboutSAKController()
 {
 
+}
+
+void SAKHelpAboutSAKController::openUrl(QString url)
+{
+    QDesktopServices::openUrl(QUrl(url));
+}
+
+QString SAKHelpAboutSAKController::appVersion()
+{
+    return qApp->applicationVersion();
+}
+
+QString SAKHelpAboutSAKController::authorName()
+{
+    return QString("Qter");
+}
+
+QString SAKHelpAboutSAKController::authorEmail()
+{
+    return QString("wuuhii@outlook.com");
+}
+
+QString SAKHelpAboutSAKController::copyright()
+{
+    QString yyyy = QString(__DATE__).split(' ').last();
+    QString info = QString("Copyright 2018-%1 Qter, All rights reserved.").arg(yyyy);
+    return info;
+}
+
+QString SAKHelpAboutSAKController::githubUrl()
+{
+    return QString("https://github.com/wuuhii/QtSwissArmyKnife");
+}
+
+QString SAKHelpAboutSAKController::gitteeUrl()
+{
+    return QString("https://gitee.com/wuuhii/QtSwissArmyKnife");
 }
