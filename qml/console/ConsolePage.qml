@@ -10,33 +10,33 @@ Item {
     id: root
     anchors.fill: parent
 
-    property var consoleManager: SAKConsoleManager
+//    property var consoleManager: SAKConsoleManager
 
-    Rectangle {
-        anchors.fill: parent
-        color: "#161616"
-    }
+//    Rectangle {
+//        anchors.fill: parent
+//        color: "#161616"
+//    }
 
-    ScrollView {
-        clip: true
-        anchors {
-            fill: parent
-            margins: 5
-        }
+//    ScrollView {
+//        clip: true
+//        anchors {
+//            fill: parent
+//            margins: 5
+//        }
 
-        ColumnLayout {
-            width: parent.width
-            Repeater {
-                model: consoleManager.messagesList
-                SAKLabel {
-                    text: msgItem.msg
-                    color: msgItem.color
-                    wrapMode: Text.WrapAnywhere
-                    Layout.fillWidth: true
+//        ColumnLayout {
+//            width: parent.width
+//            Repeater {
+//                model: consoleManager.messagesList
+//                SAKLabel {
+//                    text: msgItem.msg
+//                    color: msgItem.color
+//                    wrapMode: Text.WrapAnywhere
+//                    Layout.fillWidth: true
 
-                    property SAKConsoleMessage msgItem: modelData
-                }
-            }
-        }
-    }
+//                    property SAKConsoleMessage msgItem: modelData
+//                }
+//            }
+//        }
+//    }
 }
