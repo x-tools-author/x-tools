@@ -9,7 +9,7 @@ Item {
 
     property int panelIndex: 0
     property var panelTitles: []
-    property var pannelWidth: 500
+    property var pannelWidth: (rightPanelScrollView.width*0.8)
 
     ScrollView {
         id: leftPanelScrollView
@@ -79,6 +79,13 @@ Item {
                     anchors.horizontalCenter: parent.horizontalCenter
                 }
 
+                HelpPageFeedback {
+                    id: feedback
+                    title: qsTr("反馈交流")
+                    width: pannelWidth
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
+
                 HelpPageHistory {
                     id: history
                     title: qsTr("发布历史")
@@ -92,6 +99,7 @@ Item {
     Component.onCompleted: {
         panelTitles.push(aboutQt.title)
         panelTitles.push(aboutSAK.title)
+        panelTitles.push(feedback.title)
         panelTitles.push(history.title)
         panelTitlesRepeater.model = panelTitles
     }
