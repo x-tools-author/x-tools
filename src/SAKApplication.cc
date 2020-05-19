@@ -18,6 +18,7 @@
 #include "SAKConsoleMessage.hh"
 #include "SAKConsoleManager.hh"
 #include "SAKDebuggerManager.hh"
+#include "SAKHelp3rdController.hh"
 #include "SAKDebuggerTextInput.hh"
 #include "SAKDebuggerTextOutput.hh"
 #include "SAKDebuggerInputManager.hh"
@@ -55,6 +56,7 @@ void SAKApplication::registerCustomType()
     qmlRegisterUncreatableType<SAKDebugger>("SAK.CustomType", 1, 0, "SAKDebugger", "Can not insance the calss(SAKDebugger) on qml!");
     qmlRegisterUncreatableType<SAKDebuggerDevice>("SAK.CustomType", 1, 0, "SAKDebuggerDevice", "Can not insance the calss(SAKDebugger) on qml!");
     qmlRegisterUncreatableType<SAKConsoleMessage>("SAK.CustomType", 1, 0, "SAKConsoleMessage", "Can not insance the calss(SAKConsoleMessage) on qml!");
+    qmlRegisterUncreatableType<SAKHelp3rdController>("SAK.CustomType", 1, 0, "SAKHelp3rdController", "Can not insance the calss(SAKHelp3rdController) on qml!");
     qmlRegisterUncreatableType<SAKDebuggerTextInput>("SAK.CustomType", 1, 0, "SAKDebuggerTextInput", "Can not insance the calss(SAKDebuggerTextInput) on qml!");
     qmlRegisterUncreatableType<SAKDebuggerTextOutput>("SAK.CustomType", 1, 0, "SAKDebuggerTextOutput", "Can not insance the calss(SAKDebuggerTextOutput) on qml!");
     qmlRegisterUncreatableType<SAKDebuggerInputManager>("SAK.CustomType", 1, 0, "SAKDebuggerInputManager", "Can not insance the calss(SAKDebuggerInputManager) on qml!");
