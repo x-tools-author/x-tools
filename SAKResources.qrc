@@ -92,5 +92,6 @@
         <file>qml/help/HelpPageDonation.qml</file>
         <file>qml/help/HelpPageHistory.qml</file>
         <file>qml/help/HelpPagePanel.qml</file>
+        <file>qml/base/SAKGroupBox.qml</file>
     </qresource>
 </RCC>
