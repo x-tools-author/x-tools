@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 #endif
     SAKApplication app(argc, argv);
 
-#ifdef QT_NO_DEBUG
+#ifndef QT_NO_DEBUG
     /// @brief 消息重定位，发布版本有效
     SAKConsoleManager *consoleManager = SAKConsoleManager::instance();
     qInstallMessageHandler(SAKConsoleManager::consoleOutput);
@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
     app.setupUi();
 
     return app.exec();
-#ifdef QT_NO_DEBUG
+#ifndef QT_NO_DEBUG
     consoleManager->deleteLater();
 #endif
 }
