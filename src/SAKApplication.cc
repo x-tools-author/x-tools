@@ -24,6 +24,7 @@
 #include "SAKDebuggerInputSettings.hh"
 #include "SAKDebuggerOutputManager.hh"
 #include "SAKHelpAboutQtController.hh"
+#include "SAKHelpHistoryController.hh"
 #include "SAKDebuggerOutputSettings.hh"
 #include "SAKHelpAboutSAKController.hh"
 #include "SAKDebuggerDeviceSerialport.hh"
@@ -59,6 +60,7 @@ void SAKApplication::registerCustomType()
     qmlRegisterUncreatableType<SAKDebuggerInputManager>("SAK.CustomType", 1, 0, "SAKDebuggerInputManager", "Can not insance the calss(SAKDebuggerInputManager) on qml!");
     qmlRegisterUncreatableType<SAKDebuggerInputSettings>("SAK.CustomType", 1, 0, "SAKDebuggerInputSettings", "Can not insance the calss(SAKDebuggerInputSettings) on qml!");
     qmlRegisterUncreatableType<SAKDebuggerOutputManager>("SAK.CustomType", 1, 0, "SAKDebuggerOutputManager", "Can not insance the calss(SAKDebuggerOutputManager) on qml!");
+    qmlRegisterUncreatableType<SAKHelpHistoryController>("SAK.CustomType", 1, 0, "SAKHelpHistoryController", "Can not insance the calss(SAKHelpHistoryController) on qml!");
     qmlRegisterUncreatableType<SAKHelpAboutQtController>("SAK.CustomType", 1, 0, "SAKHelpAboutQtController", "Can not insance the calss(SAKHelpAboutQtController) on qml!");
     qmlRegisterUncreatableType<SAKHelpAboutSAKController>("SAK.CustomType", 1, 0, "SAKHelpAboutSAKController", "Can not insance the calss(SAKHelpAboutSAKController) on qml!");
     qmlRegisterUncreatableType<SAKDebuggerOutputSettings>("SAK.CustomType", 1, 0, "SAKDebuggerOutputSettings", "Can not insance the calss(SAKDebuggerOutputSettings) on qml!");
