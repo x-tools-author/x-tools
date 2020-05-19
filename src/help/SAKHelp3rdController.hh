@@ -14,12 +14,21 @@
 
 #include <QObject>
 
+class SAKHelpManager;
 class SAKHelp3rdController : public QObject
 {
     Q_OBJECT
-public:
+private:
     SAKHelp3rdController(QObject *parent = Q_NULLPTR);
     ~SAKHelp3rdController();
+public:
+    friend class SAKHelpManager;
+
+    /**
+     * @brief openUrl 打开链接
+     * @param url 链接地址
+     */
+    Q_INVOKABLE void openUrl(QString url);
 };
 
 #endif

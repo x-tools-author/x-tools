@@ -9,6 +9,9 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
+#include <QUrl>
+#include <QDesktopServices>
+
 #include "SAKHelp3rdController.hh"
 
 SAKHelp3rdController::SAKHelp3rdController(QObject *parent)
@@ -20,4 +23,9 @@ SAKHelp3rdController::SAKHelp3rdController(QObject *parent)
 SAKHelp3rdController::~SAKHelp3rdController()
 {
 
+}
+
+void SAKHelp3rdController::openUrl(QString url)
+{
+    QDesktopServices::openUrl(QUrl(url));
 }
