@@ -76,3 +76,8 @@ QString SAKHelpAboutSAKController::gitteeUrl()
 {
     return QString("https://gitee.com/wuuhii/QtSwissArmyKnife");
 }
+
+QString SAKHelpAboutSAKController::officialRelease()
+{
+    return QString("https://qsak.pro");
+}

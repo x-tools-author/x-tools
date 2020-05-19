@@ -26,6 +26,7 @@ class SAKHelpAboutSAKController : public QObject
 
     Q_PROPERTY(QString githubUrl READ githubUrl CONSTANT)
     Q_PROPERTY(QString gitteeUrl READ gitteeUrl CONSTANT)
+    Q_PROPERTY(QString officialRelease READ officialRelease CONSTANT)
 private:
     SAKHelpAboutSAKController(QObject *parent = Q_NULLPTR);
     ~SAKHelpAboutSAKController();
@@ -46,6 +47,7 @@ private:
 
     QString githubUrl();
     QString gitteeUrl();
+    QString officialRelease();
 };
 
 #endif
