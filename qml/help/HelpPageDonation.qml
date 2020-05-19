@@ -2,8 +2,12 @@
 import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
 
+import SAK.CustomType 1.0
+
 HelpPagePanel {
     id: root
+
+    property SAKHelpDonationController donationController: helpManager.donationController
 
     property var images: [
         "qrc:/resources/images/QSAKQQ.jpg",
