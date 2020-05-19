@@ -9,7 +9,7 @@ Item {
 
     property int panelIndex: 0
     property var panelTitles: []
-    property var pannelWidth: (rightPanelScrollView.width*0.8)
+    property var pannelWidth: (rightPanelRect.width*0.8)
 
     ScrollView {
         id: leftPanelScrollView
@@ -45,7 +45,7 @@ Item {
     }
 
     Rectangle {
-        id: rightPanelScrollView
+        id: rightPanelRect
         clip: true
         color: "#161616"
         width: root.width - leftPanelScrollView.width - 2
@@ -55,14 +55,27 @@ Item {
             right: parent.right
         }
 
+
+
         ScrollView {
+            id: rightPanelScrollView
             width: parent.width
             height: parent.height
             ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
+            ScrollBar.vertical:  ScrollBar {
+                id: verticalScrollBar
+                anchors.right: parent.right
+                anchors.top: parent.top
+                anchors.bottom: parent.bottom
+                hoverEnabled: true
+
+                onPositionChanged: console.info(position)
+            }
+
             Column {
                 id: pagePanelColumn
                 spacing: 10
-                width: rightPanelScrollView.width
+                width: rightPanelRect.width
                 topPadding: 5
 
                 HelpPageAboutQt {
