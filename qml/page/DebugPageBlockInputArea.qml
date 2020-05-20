@@ -14,6 +14,8 @@ DebugPageBlock {
     property SAKDebuggerTextInput textInput: inputManager ? inputManager.textInput: null
     property SAKDebuggerInputSettings inputSettings: inputManager ? inputManager.inputSettings : null
 
+    signal openPresetDataPopupRequest()
+
     Connections {
         target: inputSettings
         onWriteBytesRequest: {
@@ -69,7 +71,7 @@ DebugPageBlock {
                         }
 
                         if (index == 1){
-                           textInput.writeRawData(textinputArea.text)
+                            openPresetDataPopupRequest()
                         }
 
                         if (index == 3){

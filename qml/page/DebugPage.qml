@@ -84,6 +84,10 @@ Item {
             leftMargin: _spacing
             rightMargin: _spacing
         }
+
+        onOpenPresetDataPopupRequest: {
+            presetDataPopup.open()
+        }
     }
 
     DebugPageBlockOutputSettings {
@@ -111,6 +115,12 @@ Item {
             bottomMargin: _bottomMargin
             rightMargin: _rightMargin
         }
+    }
+
+    DebugPagePopupPresetData {
+        id: presetDataPopup
+        x: (root.width-presetDataPopup.width)/2
+        y: (root.height-presetDataPopup.height)/2
     }
 
     function createControlPannel(source, debuggerType){
