@@ -36,7 +36,7 @@ public:
 
     /**
      * @brief instance
-     * @return
+     * @return 实例指针
      */
     static SAKUpdateManager *instance();
 private:
