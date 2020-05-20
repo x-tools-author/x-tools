@@ -95,7 +95,8 @@ INCLUDEPATH += \
     src/debugger/output \
     src/debugger/output/settings \
     src/debugger/output/textoutput \
-    src/help
+    src/help \
+    src/update
 
 #--------------------------------------------------------------------------------------------
 #源码
