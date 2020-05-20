@@ -103,13 +103,6 @@ Item {
                     anchors.horizontalCenter: parent.horizontalCenter
                 }
 
-                HelpPageHistory {
-                    id: history
-                    title: qsTr("发布历史")
-                    width: panelWidth
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
-
                 HelpPageFeedback {
                     id: feedback
                     title: qsTr("反馈交流")
@@ -123,6 +116,13 @@ Item {
                     width: panelWidth
                     anchors.horizontalCenter: parent.horizontalCenter
                 }
+
+                HelpPageHistory {
+                    id: history
+                    title: qsTr("发布历史")
+                    width: panelWidth
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
             }
         }
     }
@@ -131,17 +131,17 @@ Item {
         panelTitles.push(aboutQt.title)
         panelTitles.push(aboutSAK.title)
         panelTitles.push(panel3rd.title)
-        panelTitles.push(history.title)
         panelTitles.push(feedback.title)
         panelTitles.push(pageBuy.title)
+         panelTitles.push(history.title)
         panelTitlesRepeater.model = panelTitles
 
         panelItemsHeight.push(aboutQt.height    + pagePanelColumn.topPadding)
         panelItemsHeight.push(aboutSAK.height   + 5)
         panelItemsHeight.push(panel3rd.height   + 5)
-        panelItemsHeight.push(history.height    + 5)
         panelItemsHeight.push(feedback.height   + 5)
-        panelItemsHeight.push(pageBuy.height    + 5 + pagePanelColumn.bottomPadding)
+        panelItemsHeight.push(pageBuy.height    + 5)
+        panelItemsHeight.push(history.height    + 5 + pagePanelColumn.bottomPadding)
 
         for (var i = 0; i < panelItemsHeight.length; i++){
             panelHeight += panelItemsHeight[i]
