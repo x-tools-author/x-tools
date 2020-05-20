@@ -9,7 +9,9 @@ Item {
 
     property int panelIndex: 0
     property var panelTitles: []
-    property var pannelWidth: (rightPanelRect.width*0.8)
+    property var panelWidth: (rightPanelRect.width*0.8)
+    property var panelHeight: 0
+    property var panelItemsHeight: []
 
     ScrollView {
         id: leftPanelScrollView
@@ -37,7 +39,11 @@ Item {
                     Layout.minimumWidth: (leftPanelScrollView.width-4)
                     Layout.alignment: Qt.AlignHCenter
                     onClicked: {
-                        panelIndex = index
+                        var h = 0
+                        for (var i = 0; i < index; i++){
+                            h = h + panelItemsHeight[i]
+                        }
+                        verticalScrollBar.position = h/panelHeight
                     }
                 }
             }
@@ -68,8 +74,6 @@ Item {
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
                 hoverEnabled: true
-
-                onPositionChanged: console.info(position)
             }
 
             Column {
@@ -81,42 +85,42 @@ Item {
                 HelpPageAboutQt {
                     id: aboutQt
                     title: qsTr("关于Qt")
-                    width: pannelWidth
+                    width: panelWidth
                     anchors.horizontalCenter: parent.horizontalCenter
                 }
 
                 HelpPageAboutSAK {
                     id: aboutSAK
                     title: qsTr("关于软件")
-                    width: pannelWidth
+                    width: panelWidth
                     anchors.horizontalCenter: parent.horizontalCenter
                 }
 
                 HelpPage3rd {
                     id: panel3rd
                     title: qsTr("第三方库")
-                    width: pannelWidth
+                    width: panelWidth
                     anchors.horizontalCenter: parent.horizontalCenter
                 }
 
                 HelpPageHistory {
                     id: history
                     title: qsTr("发布历史")
-                    width: pannelWidth
+                    width: panelWidth
                     anchors.horizontalCenter: parent.horizontalCenter
                 }
 
                 HelpPageFeedback {
                     id: feedback
                     title: qsTr("反馈交流")
-                    width: pannelWidth
+                    width: panelWidth
                     anchors.horizontalCenter: parent.horizontalCenter
                 }
 
                 HelpPageBuy {
                     id: pageBuy
                     title: qsTr("软件购买")
-                    width: pannelWidth
+                    width: panelWidth
                     anchors.horizontalCenter: parent.horizontalCenter
                 }
             }
@@ -131,5 +135,16 @@ Item {
         panelTitles.push(feedback.title)
         panelTitles.push(pageBuy.title)
         panelTitlesRepeater.model = panelTitles
+
+        panelItemsHeight.push(aboutQt.height    + pagePanelColumn.topPadding)
+        panelItemsHeight.push(aboutSAK.height   + 5)
+        panelItemsHeight.push(panel3rd.height   + 5)
+        panelItemsHeight.push(history.height    + 5)
+        panelItemsHeight.push(feedback.height   + 5)
+        panelItemsHeight.push(pageBuy.height    + 5 + pagePanelColumn.bottomPadding)
+
+        for (var i = 0; i < panelItemsHeight.length; i++){
+            panelHeight += panelItemsHeight[i]
+        }
     }
 }
