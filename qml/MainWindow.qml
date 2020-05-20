@@ -48,6 +48,7 @@ Window {
                         ["",                                            false, -1,                                  " "],// 间隔符
                         ["qrc:/qml/tools/ToolsPage.qml",                false, -1,                                  qsTr("工具")],
                         ["qrc:/qml/settings/SettingsPage.qml",          false, -1,                                  qsTr("设置")],
+                        ["qrc:/qml/update/UpdatePage.qml",              false, -1,                                  qsTr("更新")],
                         ["qrc:/qml/help/HelpPage.qml",                  false, -1,                                  qsTr("帮助")],
                         ["qrc:/qml/console/ConsolePage.qml",            false, -1,                                  qsTr("终端")],
                     ]

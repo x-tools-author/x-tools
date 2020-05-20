@@ -6,10 +6,10 @@ Item {
 
     Rectangle {
         anchors.fill: parent
-        color: "green"
+        color: "red"
         Text {
             anchors.centerIn: parent
-            text: qsTr("软件设置")
+            text: qsTr("更新")
         }
     }
 }
