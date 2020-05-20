@@ -24,6 +24,8 @@ SAKUpdateManager *SAKUpdateManager::instancePtr = Q_NULLPTR;
 SAKUpdateManager::SAKUpdateManager(QObject *parent)
     :QObject(parent)
 {
+    instancePtr = this;
+
     _appVersion = QCoreApplication::applicationVersion();
     _remoteVersion = QString("0.0.0");
 }
