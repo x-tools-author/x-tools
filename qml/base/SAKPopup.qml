@@ -6,7 +6,7 @@ Popup {
     id: root
 
     background: Rectangle {
-        color: "#222222"
+        color: "#161616"
         border.width: 1
         border.color: "gray"
     }
