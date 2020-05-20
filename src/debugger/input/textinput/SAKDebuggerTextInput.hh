@@ -18,12 +18,15 @@
 class SAKDebugger;
 class SAKDebuggerInputSettings;
 class SAKDebuggerInputTextFactory;
+class SAKDebuggerInputTextDataPresetController;
+/// @brief 为文本输入提供一些接口
 class SAKDebuggerTextInput : public QObject
 {
     Q_OBJECT
 
     Q_PROPERTY(bool addCRCFlag READ addCRCFlag WRITE setAddCRCFlag NOTIFY addCRCFlagChanged)
     Q_PROPERTY(bool bigEndianCRCFlag READ bigEndianCRCFlag WRITE setBigEndianCRCFlag NOTIFY bigEndianCRCFlagChanged)
+    Q_PROPERTY(SAKDebuggerInputTextDataPresetController* dataPresetController READ dataPresetController CONSTANT)
 public:
     SAKDebuggerTextInput(SAKDebugger *debugger, QObject *parent = Q_NULLPTR);
     ~SAKDebuggerTextInput();
@@ -80,6 +83,9 @@ private:
     bool _bigEndianCRCFlag;
     bool bigEndianCRCFlag();
     void setBigEndianCRCFlag(bool flag);
+
+    SAKDebuggerInputTextDataPresetController *_dataPresetController;
+    SAKDebuggerInputTextDataPresetController *dataPresetController();
 signals:
     void addCRCFlagChanged();
     void bigEndianCRCFlagChanged();

@@ -14,6 +14,7 @@
 #include "SAKDebuggerTextInput.hh"
 #include "SAKDebuggerInputSettings.hh"
 #include "SAKDebuggerInputTextFactory.hh"
+#include "SAKDebuggerInputTextDataPresetController.hh"
 
 SAKDebuggerTextInput::SAKDebuggerTextInput(SAKDebugger *debugger, QObject *parent)
     :QObject(parent)
@@ -22,6 +23,7 @@ SAKDebuggerTextInput::SAKDebuggerTextInput(SAKDebugger *debugger, QObject *paren
     ,_bigEndianCRCFlag(false)
 {
     inputTextFactory = new SAKDebuggerInputTextFactory;
+    _dataPresetController = new SAKDebuggerInputTextDataPresetController(this);
     inputTextFactory->setTextInput(this);
     connect(inputTextFactory, &SAKDebuggerInputTextFactory::dataCooked, this, &SAKDebuggerTextInput::writeBytesRequest);
 }
@@ -164,4 +166,9 @@ void SAKDebuggerTextInput::setBigEndianCRCFlag(bool flag)
     bigEndianCRCFlagMutex.unlock();
 
     emit bigEndianCRCFlagChanged();
+}
+
+SAKDebuggerInputTextDataPresetController *SAKDebuggerTextInput::dataPresetController()
+{
+    return _dataPresetController;
 }
