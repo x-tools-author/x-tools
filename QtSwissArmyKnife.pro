@@ -122,7 +122,8 @@ HEADERS += \
     src/help/SAKHelpBuyController.hh \
     src/help/SAKHelpDonationController.hh \
     src/help/SAKHelpHistoryController.hh \
-    src/help/SAKHelpManager.hh
+    src/help/SAKHelpManager.hh \
+    src/update/SAKUpdateManager.hh
 
 SOURCES += \
     src/SAKApplication.cc \
@@ -148,4 +149,5 @@ SOURCES += \
     src/help/SAKHelpDonationController.cc \
     src/help/SAKHelpHistoryController.cc \
     src/help/SAKHelpManager.cc \
-    src/main.cc
+    src/main.cc \
+    src/update/SAKUpdateManager.cc
