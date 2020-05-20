@@ -14,6 +14,7 @@
 #include "SAKDebugger.hh"
 #include "SAKApplication.hh"
 #include "SAKHelpManager.hh"
+#include "SAKUpdateManager.hh"
 #include "SAKDebuggerDevice.hh"
 #include "SAKConsoleMessage.hh"
 #include "SAKConsoleManager.hh"
@@ -44,7 +45,11 @@ SAKApplication::SAKApplication(int argc, char **argv)
     setOrganizationName("Qter");
     setOrganizationDomain("IT");
 
+    SAKHelpManager::instance();
+    SAKUpdateManager::instance();
     SAKConsoleManager::instance();
+    SAKDebuggerManager::instance();
+
     registerCustomType();
 }
 
@@ -74,6 +79,7 @@ void SAKApplication::registerCustomType()
     qmlRegisterUncreatableType<SAKDebuggerOutputStatistics>("SAK.CustomType", 1, 0, "SAKDebuggerOutputStatistics", "Can not insance the calss(SAKDebuggerOutputStatistics) on qml!");
 
     qmlRegisterSingletonType<SAKHelpManager>("SAK.CustomType", 1, 0, "SAKHelpManager", [](QQmlEngine *, QJSEngine *)->QObject*{return SAKHelpManager::instance();});
+    qmlRegisterSingletonType<SAKUpdateManager>("SAK.CustomType", 1, 0, "SAKUpdateManager", [](QQmlEngine *, QJSEngine *)->QObject*{return SAKUpdateManager::instance();});
     qmlRegisterSingletonType<SAKConsoleManager>("SAK.CustomType", 1, 0, "SAKConsoleManager", [](QQmlEngine *, QJSEngine *)->QObject*{return SAKConsoleManager::instance();});
     qmlRegisterSingletonType<SAKDebuggerManager>("SAK.CustomType", 1, 0, "SAKDebuggerManager", [](QQmlEngine *, QJSEngine *)->QObject*{return SAKDebuggerManager::instance();});
 }
