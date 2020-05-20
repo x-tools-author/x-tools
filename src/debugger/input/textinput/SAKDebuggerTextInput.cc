@@ -127,7 +127,6 @@ QString SAKDebuggerTextInput::formattingInputText(QString srcString)
         }
     }
 
-    qDebug() << __FUNCTION__ << format << srcString << formattedText;
     return formattedText;
 }
 
