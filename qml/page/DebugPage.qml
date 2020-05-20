@@ -119,6 +119,7 @@ Item {
 
     DebugPagePopupPresetData {
         id: presetDataPopup
+        sakdebugger: _sakDebugger
         x: (root.width-presetDataPopup.width)/2
         y: (root.height-presetDataPopup.height)/2
     }
