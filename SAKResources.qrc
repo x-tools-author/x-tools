@@ -95,5 +95,6 @@
         <file>qml/base/SAKGroupBox.qml</file>
         <file>qml/help/HelpPageFeedback.qml</file>
         <file>qml/base/SAKPopup.qml</file>
+        <file>qml/page/DebugPagePopupPresetData.qml</file>
     </qresource>
 </RCC>
