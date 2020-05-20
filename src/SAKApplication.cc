@@ -45,11 +45,13 @@ SAKApplication::SAKApplication(int argc, char **argv)
     setOrganizationName("Qter");
     setOrganizationDomain("IT");
 
+    /// @brief 实例化管理类
     SAKHelpManager::instance();
     SAKUpdateManager::instance();
     SAKConsoleManager::instance();
     SAKDebuggerManager::instance();
 
+    /// @brief 注册自定义qml类型
     registerCustomType();
 }
 
