@@ -33,6 +33,7 @@
 #include "SAKHelpDonationController.hh"
 #include "SAKDebuggerDeviceSerialport.hh"
 #include "SAKDebuggerOutputStatistics.hh"
+#include "SAKDebuggerInputTextDataPresetController.hh"
 
 SAKApplication::SAKApplication(int argc, char **argv)
 #ifdef Q_OS_ANDROID
@@ -79,6 +80,7 @@ void SAKApplication::registerCustomType()
     qmlRegisterUncreatableType<SAKDebuggerOutputSettings>("SAK.CustomType", 1, 0, "SAKDebuggerOutputSettings", "Can not insance the calss(SAKDebuggerOutputSettings) on qml!");
     qmlRegisterUncreatableType<SAKDebuggerDeviceSerialport>("SAK.CustomType", 1, 0, "SAKDebuggerDeviceSerialport", "Can not insance the calss(SAKDebuggerDeviceSerialport) on qml!");
     qmlRegisterUncreatableType<SAKDebuggerOutputStatistics>("SAK.CustomType", 1, 0, "SAKDebuggerOutputStatistics", "Can not insance the calss(SAKDebuggerOutputStatistics) on qml!");
+    qmlRegisterUncreatableType<SAKDebuggerInputTextDataPresetController>("SAK.CustomType", 1, 0, "SAKDebuggerInputTextDataPresetController", "Can not insance the calss(SAKDebuggerInputTextDataPresetController) on qml!");
 
     qmlRegisterSingletonType<SAKHelpManager>("SAK.CustomType", 1, 0, "SAKHelpManager", [](QQmlEngine *, QJSEngine *)->QObject*{return SAKHelpManager::instance();});
     qmlRegisterSingletonType<SAKUpdateManager>("SAK.CustomType", 1, 0, "SAKUpdateManager", [](QQmlEngine *, QJSEngine *)->QObject*{return SAKUpdateManager::instance();});
