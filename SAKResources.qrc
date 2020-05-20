@@ -94,5 +94,6 @@
         <file>qml/help/HelpPagePanel.qml</file>
         <file>qml/base/SAKGroupBox.qml</file>
         <file>qml/help/HelpPageFeedback.qml</file>
+        <file>qml/base/SAKPopup.qml</file>
     </qresource>
 </RCC>
