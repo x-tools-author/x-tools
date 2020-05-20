@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright (C) 2019 wuuhii. All rights reserved.
+ * Copyright (C) 2019-2020 wuuhii. All rights reserved.
  *
  * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
  * project. The project is a open source project, you can get the source from:
@@ -13,50 +13,32 @@
 #define SAKUPDATEMANAGER_HH
 
 #include <QTimer>
-#include <QLabel>
-#include <QDialog>
-#include <QGroupBox>
-#include <QCheckBox>
-#include <QListWidget>
-#include <QPushButton>
-#include <QProgressBar>
-#include <QTextBrowser>
+#include <QThread>
 #include <QNetworkReply>
 #include <QNetworkAccessManager>
 
-namespace Ui {
-    class SAKUpdateManager;
-}
-
-class SAKUpdateManager:public QDialog
+/// @brief 更新管理类实例，该类是单实例类
+class SAKUpdateManager:public QObject
 {
     Q_OBJECT
-public:
-    SAKUpdateManager(QWidget *parent =  nullptr);
-    ~SAKUpdateManager();
-
-    void checkForUpdate();
-    bool enableAutoCheckedForUpdate();
+    Q_PROPERTY(QString appVersion READ appVersion CONSTANT)
+    Q_PROPERTY(QString remoteVersion READ remoteVersion WRITE setRemoteVersion NOTIFY remoteVersionChanged)
+    Q_PROPERTY(QString msgString READ msgString WRITE setMsgString NOTIFY msgStringChanged)
+    Q_PROPERTY(QString updateDescription READ updateDescription WRITE setUpdateDescription NOTIFY updateDescriptionChanged)
 private:
-    Ui::SAKUpdateManager *ui;
-    QLabel *currentVersionLabel;
-    QLabel *newVersionLabel;
-    QLabel *updateProgressLabel;
-    QProgressBar *updateProgressBar;
-    QLabel *noNewVersionTipLabel;
-    QGroupBox *newVersionCommentsGroupBox;
-    QTextBrowser *newVersionCommentsTextBrowser;
-    QListWidget *downloadListListWidget;
-    QCheckBox *autoCheckForUpdateCheckBox;
-    QPushButton *visitWebPushButton;
-    QPushButton *checkForUpdatePushButton;
-    QLabel *infoLabel;
+    SAKUpdateManager(QObject *parent = Q_NULLPTR);
+    ~SAKUpdateManager();
+public:
+    /**
+     * @brief checkForUpdate 检查更新入口
+     */
+    void checkForUpdate();
 
-private slots:
-    void on_autoCheckForUpdateCheckBox_clicked();
-    void on_visitWebPushButton_clicked();
-    void on_checkForUpdatePushButton_clicked();
-
+    /**
+     * @brief instance
+     * @return
+     */
+    static SAKUpdateManager *instance();
 private:
     struct UpdateInfo{
         bool isValid;                   // 是否可用
@@ -70,20 +52,34 @@ private:
         QString zipballUrl;             // 源码包（zip）
     }updateInfo;
 
-    QTimer clearInfoTimer;
     QNetworkAccessManager networkAccessManager;
     QNetworkReply *networkReply;
-
+    static SAKUpdateManager *instancePtr;
 private:
-    void outputInfo(QString info, bool isError = false);
-    void clearInfo();
     void checkForUpdateFinished();
 
     UpdateInfo extractUpdateInfo(QByteArray jsonObjectData);
     QStringList extractBrowserDownloadUrl(QJsonArray jsonArray);
     bool isNewVersion(QString remoteVersion);
-    void setupDownloadList(UpdateInfo info);
-    void clearDownloadList();
+private:
+    QString _appVersion;
+    QString appVersion();
+
+    QString _remoteVersion;
+    QString remoteVersion();
+    void setRemoteVersion(QString ver);
+
+    QString _msgString;
+    QString msgString();
+    void setMsgString(QString msg);
+
+    QString _updateDescription;
+    QString updateDescription();
+    void setUpdateDescription(QString des);
+signals:
+    void remoteVersionChanged();
+    void msgStringChanged();
+    void updateDescriptionChanged();
 };
 
 #endif

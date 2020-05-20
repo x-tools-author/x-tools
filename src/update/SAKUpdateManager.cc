@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright (C) 2019 wuuhii. All rights reserved.
+ * Copyright (C) 2019-2020 wuuhii. All rights reserved.
  *
  * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
  * project. The project is a open source project, you can get the source from:
@@ -13,52 +13,19 @@
 #include <QJsonArray>
 #include <QJsonObject>
 #include <QJsonDocument>
-#include <QListWidgetItem>
 #include <QNetworkRequest>
 #include <QDesktopServices>
+#include <QGuiApplication>
 
-#include "SAKSettings.hh"
-#include "SAKApplication.hh"
 #include "SAKUpdateManager.hh"
-#include "SAKDownloadItemWidget.hh"
-
-#include "ui_SAKUpdateManager.h"
 
 static const char* checkForUpdateUrl = "https://api.github.com/repos/wuuhii/QtSwissArmyKnife/releases/latest";
-SAKUpdateManager::SAKUpdateManager(QWidget *parent)
-    :QDialog(parent)
-    ,ui (new Ui::SAKUpdateManager)
+SAKUpdateManager *SAKUpdateManager::instancePtr = Q_NULLPTR;
+SAKUpdateManager::SAKUpdateManager(QObject *parent)
+    :QObject(parent)
 {
-    ui->setupUi(this);
-    currentVersionLabel = ui->currentVersionLabel;
-    newVersionLabel = ui->newVersionLabel;
-    updateProgressLabel = ui->updateProgressLabel;
-    updateProgressBar = ui->updateProgressBar;
-    noNewVersionTipLabel = ui->noNewVersionTipLabel;
-    newVersionCommentsGroupBox = ui->newVersionCommentsGroupBox;
-    newVersionCommentsTextBrowser = ui->newVersionCommentsTextBrowser;
-    downloadListListWidget = ui->downloadListListWidget;
-    autoCheckForUpdateCheckBox = ui->autoCheckForUpdateCheckBox;
-    visitWebPushButton = ui->visitWebPushButton;
-    checkForUpdatePushButton = ui->checkForUpdatePushButton;
-    infoLabel = ui->infoLabel;
-
-    currentVersionLabel->setText(QApplication::applicationVersion());
-    noNewVersionTipLabel->hide();
-    visitWebPushButton->setEnabled(false);
-
-    clearInfoTimer.setInterval(5*1000);
-    connect(&clearInfoTimer, &QTimer::timeout, this, &SAKUpdateManager::clearInfo);
-
-    /*
-     * 从配置文件读入配置
-     */
-    bool checked = SAKSettings::instance()->instance()->enableAutoCheckForUpdate();
-    autoCheckForUpdateCheckBox->setChecked(checked);
-
-    connect(reinterpret_cast<SAKApplication*>(QApplication::instance()), &SAKApplication::checkForUpdate, this, &SAKUpdateManager::checkForUpdate);
-
-    setModal(true);
+    _appVersion = QCoreApplication::applicationVersion();
+    _remoteVersion = QString("0.0.0");
 }
 
 SAKUpdateManager::~SAKUpdateManager()
@@ -68,54 +35,20 @@ SAKUpdateManager::~SAKUpdateManager()
 
 void SAKUpdateManager::checkForUpdate()
 {
-    on_checkForUpdatePushButton_clicked();
-}
-
-bool SAKUpdateManager::enableAutoCheckedForUpdate()
-{
-    return SAKSettings::instance()->enableAutoCheckForUpdate();
-}
-
-void SAKUpdateManager::on_autoCheckForUpdateCheckBox_clicked()
-{
-    SAKSettings::instance()->setEnableAutoCheckForUpdate(autoCheckForUpdateCheckBox->isChecked());
-}
-
-void SAKUpdateManager::on_visitWebPushButton_clicked()
-{
-    QDesktopServices::openUrl(QUrl(updateInfo.htmlUrl));
-}
-
-void SAKUpdateManager::on_checkForUpdatePushButton_clicked()
-{    
-    updateProgressBar->setMaximum(0);
-    updateProgressBar->setMaximum(0);
-    noNewVersionTipLabel->hide();
-    checkForUpdatePushButton->setEnabled(false);
-
-    newVersionCommentsTextBrowser->clear();
-    clearDownloadList();
-
     networkReply = networkAccessManager.get(QNetworkRequest(QUrl(checkForUpdateUrl)));
-    connect(networkReply, &QNetworkReply::finished, this, &SAKUpdateManager::checkForUpdateFinished);
+    connect(networkReply, &QNetworkReply::finished,
+            this, &SAKUpdateManager::checkForUpdateFinished,
+            static_cast<Qt::ConnectionType>(Qt::AutoConnection|Qt::UniqueConnection));
 }
 
-void SAKUpdateManager::outputInfo(QString info, bool isError)
+SAKUpdateManager *SAKUpdateManager::instance()
 {
-    if (isError){
-        info = QString("<font color=red>%1</font>").arg(info);
-    }else{
-        info = QString("<font color=blue>%1</font>").arg(info);
+    if (!instancePtr){
+        new SAKUpdateManager;
     }
 
-    infoLabel->setText(info);
-    clearInfoTimer.start();
-}
-
-void SAKUpdateManager::clearInfo()
-{
-    clearInfoTimer.stop();
-    infoLabel->clear();
+    Q_ASSERT_X(instancePtr, __FUNCTION__, "Oh, a null pointer");
+    return instancePtr;
 }
 
 void SAKUpdateManager::checkForUpdateFinished()
@@ -126,34 +59,21 @@ void SAKUpdateManager::checkForUpdateFinished()
             updateInfo = extractUpdateInfo(data);
             if (updateInfo.isValid){
                 if (isNewVersion(updateInfo.name)){
-                    newVersionLabel->setText(updateInfo.name.remove("v"));
-                    newVersionCommentsTextBrowser->setText(updateInfo.body.replace(QString("\\r\\n"), QString("\r\n")));
-
-                    setupDownloadList(updateInfo);
-
-                    visitWebPushButton->setEnabled(true);
+                    setRemoteVersion(updateInfo.name.remove("v"));
+                    setUpdateDescription(updateInfo.body.replace(QString("\\r\\n"), QString("\r\n")));
                 }else{
-                    noNewVersionTipLabel->show();
-                    newVersionLabel->setText(updateInfo.name.remove("v"));
+                    setRemoteVersion(updateInfo.name.remove("v"));
                 }
-
-                QApplication::beep();
-                updateProgressBar->setMinimum(0);
-                updateProgressBar->setMaximum(100);
-                updateProgressBar->setValue(100);
             }else{
-                outputInfo(updateInfo.errorString, true);
+                setMsgString(updateInfo.errorString);
             }
         }else{
-            QApplication::beep();            
-            outputInfo(networkReply->errorString(), true);
+            setMsgString(networkReply->errorString());
         }
     }
 
-    checkForUpdatePushButton->setEnabled(true);
-
     delete networkReply;
-    networkReply = nullptr;
+    networkReply = Q_NULLPTR;
 }
 
 SAKUpdateManager::UpdateInfo SAKUpdateManager::extractUpdateInfo(QByteArray jsonObjectData)
@@ -167,9 +87,7 @@ SAKUpdateManager::UpdateInfo SAKUpdateManager::extractUpdateInfo(QByteArray json
         QJsonParseError jsonParseError;
         QJsonDocument jsonDoc = QJsonDocument::fromJson(jsonObjectData, &jsonParseError);
 
-        /*
-         * 数据格式可查看：resources/files/GitHubLatestReleasesDatastruct.json
-         */
+        /// @brief 数据格式可查看：resources/files/GitHubLatestReleasesDatastruct.json
         if (jsonParseError.error == QJsonParseError::NoError){
             updateInfo.isValid = true;
             QJsonObject jsonObj = jsonDoc.toVariant().toJsonObject();
@@ -180,8 +98,6 @@ SAKUpdateManager::UpdateInfo SAKUpdateManager::extractUpdateInfo(QByteArray json
             updateInfo.body = jsonObj.value("body").toString();
             updateInfo.tarballUrl = jsonObj.value("tarball_url").toString();
             updateInfo.zipballUrl = jsonObj.value("zipball_url").toString();
-
-            show();
         }else{
             updateInfo.errorString = jsonParseError.errorString();
         }
@@ -222,7 +138,7 @@ bool SAKUpdateManager::isNewVersion(QString remoteVersion)
         return ver;
     };
 
-    QString localVersion = QApplication::applicationVersion();
+    QString localVersion = _appVersion;
     int remoteVer = versionStringToInt(remoteVersion);
     int localVer = versionStringToInt(localVersion);
 
@@ -233,39 +149,40 @@ bool SAKUpdateManager::isNewVersion(QString remoteVersion)
     }
 }
 
-void SAKUpdateManager::setupDownloadList(UpdateInfo info)
+QString SAKUpdateManager::appVersion()
 {
-    clearDownloadList();
-
-    downloadListListWidget->addItem(QString("Windows"));
-    for(auto var:info.browserDownloadUrl){
-        if (var.contains(QString(".exe"))){
-            QListWidgetItem *item = new QListWidgetItem(QIcon(":/resources/images/Windows.png"), QString(""), downloadListListWidget);
-            SAKDownloadItemWidget *itemWidget = new SAKDownloadItemWidget(var, downloadListListWidget);
-
-            item->setSizeHint(itemWidget->size());
-            downloadListListWidget->setItemWidget(item, itemWidget);
-        }
-    }
-
-    downloadListListWidget->addItem(tr("源码"));
-    QListWidgetItem *item = new QListWidgetItem(QIcon(":/resources/images/Gz.png"), QString(""), downloadListListWidget);
-    SAKDownloadItemWidget *itemWidget = new SAKDownloadItemWidget(info.tarballUrl, downloadListListWidget);
-    item->setSizeHint(itemWidget->size());
-    downloadListListWidget->setItemWidget(item, itemWidget);
-
-
-    item = new QListWidgetItem(QIcon(":/resources/images/Zip.png"), QString(""), downloadListListWidget);
-    itemWidget = new SAKDownloadItemWidget(info.zipballUrl, downloadListListWidget);
-    item->setSizeHint(itemWidget->size());
-    downloadListListWidget->setItemWidget(item, itemWidget);
+    return _appVersion;
 }
 
-void SAKUpdateManager::clearDownloadList()
+QString SAKUpdateManager::remoteVersion()
 {
-    while(downloadListListWidget->count()){
-        QListWidgetItem *item = downloadListListWidget->item(0);
-        downloadListListWidget->removeItemWidget(item);
-        delete item;
-    }
+    return _remoteVersion;
+}
+
+void SAKUpdateManager::setRemoteVersion(QString ver)
+{
+    _remoteVersion = ver;
+    emit remoteVersionChanged();
+}
+
+QString SAKUpdateManager::msgString()
+{
+    return _msgString;
+}
+
+void SAKUpdateManager::setMsgString(QString msg)
+{
+    _msgString = msg;
+    emit msgStringChanged();
+}
+
+QString SAKUpdateManager::updateDescription()
+{
+    return _updateDescription;
+}
+
+void SAKUpdateManager::setUpdateDescription(QString des)
+{
+    _updateDescription = des;
+    emit updateDescriptionChanged();
 }
