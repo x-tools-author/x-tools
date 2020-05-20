@@ -52,6 +52,11 @@ DebugPageBlock {
 
             SAKComboBox {
                 model: inputSettings ? inputSettings.crcParameterModel : 15
+                onCurrentTextChanged: {
+                    if (inputSettings){
+                        inputSettings.currentCRCModel = currentText
+                    }
+                }
             }
 
             SAKText {
@@ -61,6 +66,11 @@ DebugPageBlock {
 
             SAKComboBox {
                 model: inputSettings ? inputSettings.textFormats : 7
+                onCurrentTextChanged: {
+                    if (inputSettings){
+                        inputSettings.currentInputFromat = currentText
+                    }
+                }
             }
         }
     }

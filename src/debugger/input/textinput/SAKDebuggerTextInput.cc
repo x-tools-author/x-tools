@@ -77,7 +77,7 @@ QString SAKDebuggerTextInput::formattingInputText(QString srcString)
     if (!srcString.isEmpty()){
         if (format == SAKDebuggerInputSettings::Bin){
             QString strTemp;
-            srcString.remove(QRegExp("[^0-1]"));
+            srcString = srcString.remove(QRegExp("[^0-1]"));
             for (int i = 0; i < srcString.length(); i++){
                 if ((i != 0) && (i % 8 == 0)){
                     formattedText.append(QChar(' '));
@@ -85,7 +85,7 @@ QString SAKDebuggerTextInput::formattingInputText(QString srcString)
                 formattedText.append(srcString.at(i));
             }
         }else if(format == SAKDebuggerInputSettings::Otc) {
-            srcString.remove(QRegExp("[^0-7]"));
+            srcString = srcString.remove(QRegExp("[^0-7]"));
             for (int i = 0; i < srcString.length(); i++){
                 if ((i != 0) && (i % 2 == 0)){
                     formattedText.append(QChar(' '));
@@ -93,7 +93,7 @@ QString SAKDebuggerTextInput::formattingInputText(QString srcString)
                 formattedText.append(srcString.at(i));
             }
         }else if(format == SAKDebuggerInputSettings::Dec) {
-            srcString.remove(QRegExp("[^0-9]"));
+            srcString = srcString.remove(QRegExp("[^0-9]"));
             for (int i = 0; i < srcString.length(); i++){
                 if ((i != 0) && (i % 2 == 0)){
                     formattedText.append(QChar(' '));
@@ -101,24 +101,33 @@ QString SAKDebuggerTextInput::formattingInputText(QString srcString)
                 formattedText.append(srcString.at(i));
             }
         }else if(format == SAKDebuggerInputSettings::Hex) {
-            srcString.remove(QRegExp("[^0-9a-fA-F]"));
+            srcString = srcString.remove(QRegExp("[^0-9a-fA-F]"));
             for (int i = 0; i < srcString.length(); i++){
                 if ((i != 0) && (i % 2 == 0)){
                     formattedText.append(QChar(' '));
                 }
                 formattedText.append(srcString.at(i));
             }
+            formattedText = formattedText.toUpper();
         }else if(format == SAKDebuggerInputSettings::Ascii) {
-            srcString.remove(QRegExp("[^\0u00-\u007f ]"));
+            for (int i = 0; i < srcString.length(); i++){
+                QChar qch = srcString.at(i);
+                ushort uc = qch.unicode();
+                if ((uc >= 0) && (uc < 127)){
+                    formattedText.append(qch);
+                }
+            }
         }else if(format == SAKDebuggerInputSettings::Utf8) {
-            /// @brief nothing to do
+            formattedText = srcString;
         }else if(format == SAKDebuggerInputSettings::System) {
-            /// @brief nothing to do
+            formattedText = srcString;
         }else {
             Q_ASSERT_X(false, __FUNCTION__, "Unknow input model");
+            qWarning() << "Unknow input model!";
         }
     }
 
+    qDebug() << __FUNCTION__ << format << srcString << formattedText;
     return formattedText;
 }
 

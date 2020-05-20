@@ -40,6 +40,7 @@ DebugPageBlock {
                 var ret = textInput.formattingInputText(text)
                 textinputArea.text = ret
                 textinputArea.cursorPosition = textinputArea.length
+                console.info(ret)
             }
         }
 
