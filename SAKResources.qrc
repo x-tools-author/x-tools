@@ -96,5 +96,6 @@
         <file>qml/help/HelpPageFeedback.qml</file>
         <file>qml/base/SAKPopup.qml</file>
         <file>qml/page/DebugPagePopupPresetData.qml</file>
+        <file>qml/update/UpdatePage.qml</file>
     </qresource>
 </RCC>
