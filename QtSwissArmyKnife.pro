@@ -111,6 +111,7 @@ HEADERS += \
     src/debugger/input/SAKDebuggerInputManager.hh \
     src/debugger/input/settings/SAKDebuggerInputSettings.hh \
     src/debugger/input/textinput/SAKDebuggerInputTextDataPresetController.hh \
+    src/debugger/input/textinput/SAKDebuggerInputTextDataPresetItem.hh \
     src/debugger/input/textinput/SAKDebuggerInputTextFactory.hh \
     src/debugger/input/textinput/SAKDebuggerTextInput.hh \
     src/debugger/output/SAKDebuggerOutputManager.hh \
@@ -138,6 +139,7 @@ SOURCES += \
     src/debugger/input/SAKDebuggerInputManager.cc \
     src/debugger/input/settings/SAKDebuggerInputSettings.cc \
     src/debugger/input/textinput/SAKDebuggerInputTextDataPresetController.cc \
+    src/debugger/input/textinput/SAKDebuggerInputTextDataPresetItem.cc \
     src/debugger/input/textinput/SAKDebuggerInputTextFactory.cc \
     src/debugger/input/textinput/SAKDebuggerTextInput.cc \
     src/debugger/output/SAKDebuggerOutputManager.cc \
