@@ -13,17 +13,30 @@
 #define SAKDEBUGGERINPUTTEXTDATAPRESETCONTROLLER_HH
 
 #include <QObject>
+#include <QVariantList>
 
 class SAKDebuggerTextInput;
+class SAKDebuggerInputTextDataPresetItem;
 /// @brief 为预设数据功能提供一些接口
 class SAKDebuggerInputTextDataPresetController : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(QVariantList dataPresetItem READ dataPresetItem NOTIFY dataPresetItemChanged)
 private:
     SAKDebuggerInputTextDataPresetController(QObject *parent = Q_NULLPTR);
     ~SAKDebuggerInputTextDataPresetController();
 public:
     friend class SAKDebuggerTextInput;
+
+    /**
+     * @brief createDataPresetItem 穿件一个数据条目
+     */
+    Q_INVOKABLE void createDataPresetItem();
+private:
+    QVariantList _dataPresetItem;
+    QVariantList dataPresetItem();
+signals:
+    void dataPresetItemChanged();
 };
 
 #endif

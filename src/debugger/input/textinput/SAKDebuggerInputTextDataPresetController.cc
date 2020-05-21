@@ -9,6 +9,7 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
+#include "SAKDebuggerInputTextDataPresetItem.hh"
 #include "SAKDebuggerInputTextDataPresetController.hh"
 
 SAKDebuggerInputTextDataPresetController::SAKDebuggerInputTextDataPresetController(QObject *parent)
@@ -20,4 +21,16 @@ SAKDebuggerInputTextDataPresetController::SAKDebuggerInputTextDataPresetControll
 SAKDebuggerInputTextDataPresetController::~SAKDebuggerInputTextDataPresetController()
 {
 
+}
+
+void SAKDebuggerInputTextDataPresetController::createDataPresetItem()
+{
+    SAKDebuggerInputTextDataPresetItem *item = new SAKDebuggerInputTextDataPresetItem(this);
+    _dataPresetItem.append(QVariant::fromValue(item));
+    emit dataPresetItemChanged();
+}
+
+QVariantList SAKDebuggerInputTextDataPresetController::dataPresetItem()
+{
+    return _dataPresetItem;
 }

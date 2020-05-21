@@ -23,7 +23,7 @@ class SAKDebuggerInputTextDataPresetItem : public QObject
     Q_PROPERTY(QString itemFormat READ itemFormat WRITE setItemFormat NOTIFY itemFormatChanged)
     Q_PROPERTY(QString itemText READ itemText WRITE setItemText NOTIFY itemTextChanged)
     Q_PROPERTY(QStringList formats READ formats CONSTANT)
-private:
+public:
     SAKDebuggerInputTextDataPresetItem(QObject *parent = Q_NULLPTR);
     SAKDebuggerInputTextDataPresetItem(QString id, QString name, QString format, QString text, QObject *parent = Q_NULLPTR);
     ~SAKDebuggerInputTextDataPresetItem();
