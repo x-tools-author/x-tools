@@ -1,4 +1,5 @@
 ﻿import QtQuick 2.12
+import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
 
 import SAK.CustomType 1.0
@@ -24,57 +25,107 @@ SAKPopup {
                 left: parent.left
                 right: parent.right
             }
-            Row {
-                id: addRow
-                spacing: 5
+            GridLayout {
+                columns: 7
                 SAKLabel {
                     text: qsTr("分类名称")
-                    anchors.verticalCenter: parent.verticalCenter
+                    Layout.alignment: Qt.AlignVCenter
+                    Layout.row: 0
+                    Layout.column: 0
                 }
 
                 SAKLineEdit {
                     text: qsTr("控制类")
-                    anchors.verticalCenter: parent.verticalCenter
+                    Layout.alignment: Qt.AlignVCenter
+                    Layout.row: 0
+                    Layout.column: 1
                 }
 
                 SAKButton {
                     text: qsTr("添加分类")
-                    anchors.verticalCenter: parent.verticalCenter
+                    Layout.alignment: Qt.AlignVCenter
+                    Layout.row: 0
+                    Layout.column: 2
                 }
 
                 SAKLabel {
                     text: qsTr("已建分类")
-                    anchors.verticalCenter: parent.verticalCenter
+                    Layout.alignment: Qt.AlignVCenter
+                    Layout.row: 0
+                    Layout.column: 3
                 }
 
                 SAKComboBox {
-                    anchors.verticalCenter: parent.verticalCenter
+                    Layout.alignment: Qt.AlignVCenter
+                    Layout.row: 0
+                    Layout.column: 4
                 }
 
                 SAKButton {
                     text: qsTr("删除分类")
-                    anchors.verticalCenter: parent.verticalCenter
+                    Layout.alignment: Qt.AlignVCenter
+                    Layout.row: 0
+                    Layout.column: 5
                 }
-            }
 
-            Row {
-                id: newRow
-                spacing: 5
-                anchors {
-                    top: addRow.bottom
-                    topMargin: 5
+                Item {
+                    height: 1
+                    Layout.fillWidth: true
+                    Layout.row: 0
+                    Layout.column: 6
                 }
+
                 SAKLabel {
                     text: qsTr("所属分类")
-                    anchors.verticalCenter: parent.verticalCenter
+                    Layout.alignment: Qt.AlignVCenter
+                    Layout.row: 1
+                    Layout.column: 0
                 }
-                SAKComboBox {
-                    anchors.verticalCenter: parent.verticalCenter
 
+                SAKComboBox {
+                    Layout.alignment: Qt.AlignVCenter
+                    Layout.row: 1
+                    Layout.column: 1
                 }
+
                 SAKButton {
                     text: qsTr("添加条目")
-                    anchors.verticalCenter: parent.verticalCenter
+                    Layout.alignment: Qt.AlignVCenter
+                    Layout.row: 1
+                    Layout.column: 2
+
+                    onClicked: {
+                        dataPresetController.createDataPresetItem()
+                        console.info("dfdfdf")
+                    }
+                }
+
+                SAKLabel {
+                    text: qsTr("重新命名")
+                    Layout.alignment: Qt.AlignVCenter
+                    Layout.row: 1
+                    Layout.column: 3
+                }
+
+                SAKLineEdit {
+                    text: qsTr("新名称")
+                    Layout.alignment: Qt.AlignVCenter
+                    Layout.row: 1
+                    Layout.column: 4
+                }
+
+                SAKButton {
+                    text: qsTr("重命名分类")
+                    Layout.alignment: Qt.AlignVCenter
+                    Layout.row: 1
+                    Layout.column: 5
+                }
+
+                Item {
+                    height: 1
+                    Layout.fillWidth: true
+                    Layout.row: 1
+                    Layout.column: 6
                 }
             }
         }
@@ -92,6 +143,32 @@ SAKPopup {
                 anchors.fill: parent
                 background: Rectangle{
                     color: "#222222"
+                }
+
+                Column {
+                    width: 200
+                    spacing: 5
+                    Repeater {
+                        model: dataPresetController ? dataPresetController.dataPresetItem : []
+                        Label {
+                            text: dataPresetItem.itemID
+                            color: "red"
+
+                            property SAKDebuggerInputTextDataPresetItem dataPresetItem: modelData
+                        }
+//                        Rectangle {
+//                            width: 10
+//                            height: 10
+//                        }
+                    }
+                    Repeater {
+                        model: 10
+
+                        Rectangle {
+                            width: 10
+                            height: 10
+                        }
+                    }
                 }
             }
         }
