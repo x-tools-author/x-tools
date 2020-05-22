@@ -1,6 +1,7 @@
 ﻿import QtQuick 2.12
 import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
+import QtGraphicalEffects 1.12
 
 import SAK.CustomType 1.0
 
@@ -96,7 +97,6 @@ SAKPopup {
 
                     onClicked: {
                         dataPresetController.createDataPresetItem()
-                        console.info("dfdfdf")
                     }
                 }
 
@@ -130,7 +130,8 @@ SAKPopup {
             }
         }
 
-        Item {
+        Rectangle {
+            color: "#10ffffff"
             anchors {
                 top: topItem.bottom
                 bottom: parent.bottom
@@ -139,35 +140,94 @@ SAKPopup {
                 topMargin: 5
             }
 
-            ScrollView {
+            ListView {
+                id: dataPresetItemListView
+                clip: true
+                model: dataPresetController.dataPresetItems
+                spacing: 5
                 anchors.fill: parent
-                background: Rectangle{
-                    color: "#222222"
+                highlight: Rectangle {
+                    color: "#20ffffff"
                 }
+                delegate: Item {
+                    id: dataPresetItemItem
+                    width: parent.width
+                    height: dataPresetItemGridLayout.height + 12
 
-                Column {
-                    width: 200
-                    spacing: 5
-                    Repeater {
-                        model: dataPresetController ? dataPresetController.dataPresetItem : []
-                        Label {
-                            text: dataPresetItem.itemID
-                            color: "red"
+                    property SAKDebuggerInputTextDataPresetItem dataPresetItem: modelData
 
-                            property SAKDebuggerInputTextDataPresetItem dataPresetItem: modelData
+                    Rectangle {
+                        id:  dataPresetItemInfoRect
+                        color: "#161616"
+                        anchors {
+                            fill: parent
+                            margins: 6
                         }
-//                        Rectangle {
-//                            width: 10
-//                            height: 10
-//                        }
+
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: dataPresetItemListView.currentIndex = index
+                        }
+
+                        GridLayout {
+                            id: dataPresetItemGridLayout
+                            width: parent.width
+                            columns: 8
+
+                            SAKLabel {
+                                text: qsTr("所属分类")
+                            }
+
+                            SAKComboBox {
+
+                            }
+
+                            SAKLabel {
+                                text: qsTr("数据格式")
+                            }
+
+                            SAKComboBox {
+                                model: dataPresetItemItem.dataPresetItem.formats
+                            }
+
+                            SAKLabel {
+                                text: qsTr("名称")
+                            }
+
+                            SAKLineEdit {
+                                Component.onCompleted: text = dataPresetItemItem.dataPresetItem.itemText
+                            }
+
+                            SAKButton {
+                                text: qsTr("修改名称")
+                            }
+
+                            SAKLabel {
+                                Layout.fillWidth: true
+                                height: 1
+                                text: " "
+                            }
+
+                            SAKTextArea {
+                                Layout.fillWidth: true
+                                Layout.columnSpan: 8
+                                implicitHeight: 50
+
+                                Component.onCompleted: {
+                                    text = dataPresetItemItem.dataPresetItem.itemText
+                                }
+                            }
+                        }
                     }
-                    Repeater {
-                        model: 10
 
-                        Rectangle {
-                            width: 10
-                            height: 10
-                        }
+                    DropShadow {
+                        anchors.fill: dataPresetItemInfoRect
+                        horizontalOffset: 0
+                        verticalOffset: 0
+                        radius: 8.0
+                        samples: 20
+                        color: "#90000000"
+                        source: dataPresetItemInfoRect
                     }
                 }
             }
