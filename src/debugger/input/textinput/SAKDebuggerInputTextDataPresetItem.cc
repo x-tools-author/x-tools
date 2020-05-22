@@ -27,12 +27,18 @@ SAKDebuggerInputTextDataPresetItem::SAKDebuggerInputTextDataPresetItem(QObject *
     _itemText = QString("QQ:952218522");
 }
 
-SAKDebuggerInputTextDataPresetItem::SAKDebuggerInputTextDataPresetItem(QString id, QString name, QString format, QString text, QObject *parent)
+SAKDebuggerInputTextDataPresetItem::SAKDebuggerInputTextDataPresetItem(QString id,
+                                                                       QString name,
+                                                                       QString format,
+                                                                       QString text,
+                                                                       QString group,
+                                                                       QObject *parent)
     :QObject(parent)
     ,_itemID(id)
     ,_itemName(name)
     ,_itemFormat(format)
     ,_itemText(text)
+    ,_itemGroup(group)
 {
 
 }
@@ -78,6 +84,17 @@ void SAKDebuggerInputTextDataPresetItem::setItemText(QString text)
 {
     _itemText = text;
     emit itemTextChanged();
+}
+
+QString SAKDebuggerInputTextDataPresetItem::itemGroup()
+{
+    return _itemGroup;
+}
+
+void SAKDebuggerInputTextDataPresetItem::setItemGroup(QString group)
+{
+    _itemGroup = group;
+    emit itemGroupChanged();
 }
 
 QStringList SAKDebuggerInputTextDataPresetItem::formats()

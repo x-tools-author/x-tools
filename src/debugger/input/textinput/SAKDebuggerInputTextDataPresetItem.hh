@@ -22,10 +22,11 @@ class SAKDebuggerInputTextDataPresetItem : public QObject
     Q_PROPERTY(QString itemName READ itemName WRITE setItemName NOTIFY itemNameChanged)
     Q_PROPERTY(QString itemFormat READ itemFormat WRITE setItemFormat NOTIFY itemFormatChanged)
     Q_PROPERTY(QString itemText READ itemText WRITE setItemText NOTIFY itemTextChanged)
+    Q_PROPERTY(QString itemGroup READ itemGroup WRITE setItemGroup NOTIFY itemGroupChanged)
     Q_PROPERTY(QStringList formats READ formats CONSTANT)
 public:
     SAKDebuggerInputTextDataPresetItem(QObject *parent = Q_NULLPTR);
-    SAKDebuggerInputTextDataPresetItem(QString id, QString name, QString format, QString text, QObject *parent = Q_NULLPTR);
+    SAKDebuggerInputTextDataPresetItem(QString id, QString name, QString format, QString text, QString group, QObject *parent = Q_NULLPTR);
     ~SAKDebuggerInputTextDataPresetItem();
 private:
     /// @brief 预设数据唯一标识
@@ -47,12 +48,18 @@ private:
     QString itemText();
     void setItemText(QString text);
 
+    /// @brief 分组名称
+    QString _itemGroup;
+    QString itemGroup();
+    void setItemGroup(QString group);
+
     /// @brief 文本格式列表
     QStringList formats();
 signals:
     void itemNameChanged();
     void itemFormatChanged();
     void itemTextChanged();
+    void itemGroupChanged();
 };
 
 #endif
