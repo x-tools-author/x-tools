@@ -26,11 +26,11 @@ SAKDebuggerInputTextDataPresetController::~SAKDebuggerInputTextDataPresetControl
 void SAKDebuggerInputTextDataPresetController::createDataPresetItem()
 {
     SAKDebuggerInputTextDataPresetItem *item = new SAKDebuggerInputTextDataPresetItem(this);
-    _dataPresetItem.append(QVariant::fromValue(item));
-    emit dataPresetItemChanged();
+    _dataPresetItems.append(QVariant::fromValue(item));
+    emit dataPresetItemsChanged();
 }
 
-QVariantList SAKDebuggerInputTextDataPresetController::dataPresetItem()
+QVariantList SAKDebuggerInputTextDataPresetController::dataPresetItems()
 {
-    return _dataPresetItem;
+    return _dataPresetItems;
 }

@@ -21,7 +21,7 @@ class SAKDebuggerInputTextDataPresetItem;
 class SAKDebuggerInputTextDataPresetController : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QVariantList dataPresetItem READ dataPresetItem NOTIFY dataPresetItemChanged)
+    Q_PROPERTY(QVariantList dataPresetItems READ dataPresetItems NOTIFY dataPresetItemsChanged)
 private:
     SAKDebuggerInputTextDataPresetController(QObject *parent = Q_NULLPTR);
     ~SAKDebuggerInputTextDataPresetController();
@@ -33,10 +33,10 @@ public:
      */
     Q_INVOKABLE void createDataPresetItem();
 private:
-    QVariantList _dataPresetItem;
-    QVariantList dataPresetItem();
+    QVariantList _dataPresetItems;
+    QVariantList dataPresetItems();
 signals:
-    void dataPresetItemChanged();
+    void dataPresetItemsChanged();
 };
 
 #endif
