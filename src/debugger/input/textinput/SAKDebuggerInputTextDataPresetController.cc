@@ -30,7 +30,28 @@ void SAKDebuggerInputTextDataPresetController::createDataPresetItem()
     emit dataPresetItemsChanged();
 }
 
+void SAKDebuggerInputTextDataPresetController::addGroup(QString name)
+{
+    if (!_groups.contains(name)){
+        _groups.append(name);
+        emit groupsChanged();
+    }
+}
+
+void SAKDebuggerInputTextDataPresetController::removeGroup(QString name)
+{
+    if (_groups.contains(name)){
+        _groups.removeOne(name);
+        emit groupsChanged();
+    }
+}
+
 QVariantList SAKDebuggerInputTextDataPresetController::dataPresetItems()
 {
     return _dataPresetItems;
+}
+
+QStringList SAKDebuggerInputTextDataPresetController::groups()
+{
+    return _groups;
 }

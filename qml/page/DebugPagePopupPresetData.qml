@@ -29,14 +29,15 @@ SAKPopup {
             GridLayout {
                 columns: 7
                 SAKLabel {
-                    text: qsTr("分类名称")
+                    text: qsTr("分组名称")
                     Layout.alignment: Qt.AlignVCenter
                     Layout.row: 0
                     Layout.column: 0
                 }
 
                 SAKLineEdit {
-                    text: qsTr("控制类")
+                    id: groupNameLineEdit
+                    text: ""
                     Layout.alignment: Qt.AlignVCenter
                     Layout.row: 0
                     Layout.column: 1
@@ -47,19 +48,25 @@ SAKPopup {
                     Layout.alignment: Qt.AlignVCenter
                     Layout.row: 0
                     Layout.column: 2
+
+                    onClicked: {
+                        dataPresetController.addGroup(groupNameLineEdit.text)
+                    }
                 }
 
                 SAKLabel {
-                    text: qsTr("已建分类")
+                    text: qsTr("已建分组")
                     Layout.alignment: Qt.AlignVCenter
                     Layout.row: 0
                     Layout.column: 3
                 }
 
                 SAKComboBox {
+                    id: groupsComboBox
                     Layout.alignment: Qt.AlignVCenter
                     Layout.row: 0
                     Layout.column: 4
+                    model: dataPresetController.groups
                 }
 
                 SAKButton {
@@ -67,6 +74,10 @@ SAKPopup {
                     Layout.alignment: Qt.AlignVCenter
                     Layout.row: 0
                     Layout.column: 5
+
+                    onClicked: {
+                        dataPresetController.removeGroup(groupsComboBox.currentText)
+                    }
                 }
 
                 Item {
@@ -77,13 +88,14 @@ SAKPopup {
                 }
 
                 SAKLabel {
-                    text: qsTr("所属分类")
+                    text: qsTr("所属分组")
                     Layout.alignment: Qt.AlignVCenter
                     Layout.row: 1
                     Layout.column: 0
                 }
 
                 SAKComboBox {
+                    model: dataPresetController.groups
                     Layout.alignment: Qt.AlignVCenter
                     Layout.row: 1
                     Layout.column: 1
