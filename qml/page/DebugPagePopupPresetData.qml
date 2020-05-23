@@ -195,7 +195,7 @@ SAKPopup {
                             }
 
                             SAKLineEdit {
-                                Component.onCompleted: text = dataPresetItemItem.dataPresetItem.itemText
+                                Component.onCompleted: text = dataPresetItemItem.dataPresetItem.itemName
                             }
 
                             SAKButton {
