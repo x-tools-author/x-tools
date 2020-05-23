@@ -18,7 +18,7 @@
 #include "ui_SAKTransmissionSettings.h"
 
 SAKTransmissionSettings::SAKTransmissionSettings(SAKDebugPage *debugPage, QWidget *parent)
-    :SAKWidget (parent)
+    :QWidget(parent)
     ,_debugPage (debugPage)
     ,ui (new Ui::SAKTransmissionSettings)
 {

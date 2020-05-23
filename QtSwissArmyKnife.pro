@@ -78,45 +78,45 @@ contains(ANDROID_TARGET_ARCH,arm64-v8a) {
 
 INCLUDEPATH += \
     src \
-    src/base \
     src/common \
-    src/qrcode \
-    src/base/page \
-    src/base/page/input \
-    src/base/page/other \
-    src/base/page/other/autoresponse \
-    src/base/page/other/highlight \
-    src/base/page/other/more \
-    src/base/page/other/readwrite \
-    src/base/page/other/timing \
-    src/base/page/other/transmission \
-    src/base/page/output \
-    src/base/page/output/save \
-    src/base/page/statistics \
+    src/pages \
+    src/pages/page \
+    src/pages/page/input \
+    src/pages/page/other \
+    src/pages/page/other/autoresponse \
+    src/pages/page/other/highlight \
+    src/pages/page/other/more \
+    src/pages/page/other/readwrite \
+    src/pages/page/other/timing \
+    src/pages/page/other/transmission \
+    src/pages/page/output \
+    src/pages/page/output/save \
+    src/pages/page/statistics \
     src/pages/tcpclient \
     src/pages/tcpserver \
     src/pages/udp \
+    src/qrcode \
     src/update
 
 FORMS += \
     src/SAKMainWindow.ui \
     src/SAKMoreInformation.ui \
-    src/base/page/SAKDebugPage.ui \
-    src/base/page/input/SAKInputDataItem.ui \
-    src/base/page/input/SAKInputDataItemManager.ui \
-    src/base/page/other/autoresponse/SAKAutoResponseItemWidget.ui \
-    src/base/page/other/autoresponse/SAKAutoResponseSettingsWidget.ui \
-    src/base/page/other/highlight/SAKHighlightSettingsWidget.ui \
-    src/base/page/other/more/SAKMoreSettingsWidget.ui \
-    src/base/page/other/readwrite/SAKReadWriteSettingsWidget.ui \
-    src/base/page/other/timing/SAKTimingSendingItemWidget.ui \
-    src/base/page/other/timing/SAKTimingSendingSettingsWidget.ui \
-    src/base/page/other/transmission/SAKSerialPortTransmissionItemWidget.ui \
-    src/base/page/other/transmission/SAKTcpTransmissionItemWidget.ui \
-    src/base/page/other/transmission/SAKTransmissionPage.ui \
-    src/base/page/other/transmission/SAKTransmissionSettings.ui \
-    src/base/page/other/transmission/SAKUdpTransmissionItemWidget.ui \
-    src/base/page/output/save/SAKSaveOutputDataSettings.ui \
+    src/pages/page/SAKDebugPage.ui \
+    src/pages/page/input/SAKInputDataItem.ui \
+    src/pages/page/input/SAKInputDataItemManager.ui \
+    src/pages/page/other/autoresponse/SAKAutoResponseItemWidget.ui \
+    src/pages/page/other/autoresponse/SAKAutoResponseSettingsWidget.ui \
+    src/pages/page/other/highlight/SAKHighlightSettingsWidget.ui \
+    src/pages/page/other/more/SAKMoreSettingsWidget.ui \
+    src/pages/page/other/readwrite/SAKReadWriteSettingsWidget.ui \
+    src/pages/page/other/timing/SAKTimingSendingItemWidget.ui \
+    src/pages/page/other/timing/SAKTimingSendingSettingsWidget.ui \
+    src/pages/page/other/transmission/SAKSerialPortTransmissionItemWidget.ui \
+    src/pages/page/other/transmission/SAKTcpTransmissionItemWidget.ui \
+    src/pages/page/other/transmission/SAKTransmissionPage.ui \
+    src/pages/page/other/transmission/SAKTransmissionSettings.ui \
+    src/pages/page/other/transmission/SAKUdpTransmissionItemWidget.ui \
+    src/pages/page/output/save/SAKSaveOutputDataSettings.ui \
     src/pages/tcpclient/SAKTcpClientDeviceController.ui \
     src/pages/tcpserver/SAKTcpServerDeviceController.ui \
     src/pages/udp/SAKUdpAdvanceSettingWidget.ui \
@@ -134,35 +134,32 @@ HEADERS += \
     src/SAKMainWindow.hh \
     src/SAKMoreInformation.hh \
     src/SAKSettings.hh \
-    src/base/SAKDialog.hh \
-    src/base/SAKMessageBox.hh \
-    src/base/SAKWidget.hh \
-    src/base/page/SAKDebugPage.hh \
-    src/base/page/input/SAKDebugPageInputManager.hh \
-    src/base/page/input/SAKInputDataFactory.hh \
-    src/base/page/input/SAKInputDataItem.hh \
-    src/base/page/input/SAKInputDataItemManager.hh \
-    src/base/page/other/SAKOtherSettingsManager.hh \
-    src/base/page/other/autoresponse/SAKAutoResponseItemWidget.hh \
-    src/base/page/other/autoresponse/SAKAutoResponseSettingsWidget.hh \
-    src/base/page/other/highlight/SAKHighlightSettings.hh \
-    src/base/page/other/highlight/SAKHighlightSettingsWidget.hh \
-    src/base/page/other/more/SAKMoreSettingsWidget.hh \
-    src/base/page/other/readwrite/SAKReadWriteSettingsWidget.hh \
-    src/base/page/other/timing/SAKTimingSendingItemWidget.hh \
-    src/base/page/other/timing/SAKTimingSendingSettingsWidget.hh \
-    src/base/page/other/transmission/SAKBaseTransmissionItemWidget.hh \
-    src/base/page/other/transmission/SAKSerialPortTransmissionItemWidget.hh \
-    src/base/page/other/transmission/SAKTcpTransmissionItemWidget.hh \
-    src/base/page/other/transmission/SAKTransmissionItemDelegate.hh \
-    src/base/page/other/transmission/SAKTransmissionPage.hh \
-    src/base/page/other/transmission/SAKTransmissionSettings.hh \
-    src/base/page/other/transmission/SAKUdpTransmissionItemWidget.hh \
-    src/base/page/output/SAKDebugPageOutputManager.hh \
-    src/base/page/output/SAKOutputDataFactory.hh \
-    src/base/page/output/save/SAKSaveOutputDataSettings.hh \
-    src/base/page/output/save/SAKSaveOutputDataThread.hh \
-    src/base/page/statistics/SAKStatisticsManager.hh \
+    src/pages/page/SAKDebugPage.hh \
+    src/pages/page/input/SAKDebugPageInputManager.hh \
+    src/pages/page/input/SAKInputDataFactory.hh \
+    src/pages/page/input/SAKInputDataItem.hh \
+    src/pages/page/input/SAKInputDataItemManager.hh \
+    src/pages/page/other/SAKOtherSettingsManager.hh \
+    src/pages/page/other/autoresponse/SAKAutoResponseItemWidget.hh \
+    src/pages/page/other/autoresponse/SAKAutoResponseSettingsWidget.hh \
+    src/pages/page/other/highlight/SAKHighlightSettings.hh \
+    src/pages/page/other/highlight/SAKHighlightSettingsWidget.hh \
+    src/pages/page/other/more/SAKMoreSettingsWidget.hh \
+    src/pages/page/other/readwrite/SAKReadWriteSettingsWidget.hh \
+    src/pages/page/other/timing/SAKTimingSendingItemWidget.hh \
+    src/pages/page/other/timing/SAKTimingSendingSettingsWidget.hh \
+    src/pages/page/other/transmission/SAKBaseTransmissionItemWidget.hh \
+    src/pages/page/other/transmission/SAKSerialPortTransmissionItemWidget.hh \
+    src/pages/page/other/transmission/SAKTcpTransmissionItemWidget.hh \
+    src/pages/page/other/transmission/SAKTransmissionItemDelegate.hh \
+    src/pages/page/other/transmission/SAKTransmissionPage.hh \
+    src/pages/page/other/transmission/SAKTransmissionSettings.hh \
+    src/pages/page/other/transmission/SAKUdpTransmissionItemWidget.hh \
+    src/pages/page/output/SAKDebugPageOutputManager.hh \
+    src/pages/page/output/SAKOutputDataFactory.hh \
+    src/pages/page/output/save/SAKSaveOutputDataSettings.hh \
+    src/pages/page/output/save/SAKSaveOutputDataThread.hh \
+    src/pages/page/statistics/SAKStatisticsManager.hh \
     src/common/SAKCRCInterface.hh \
     src/common/SAKCommonInterface.hh \
     src/common/SAKDataStruct.hh \
@@ -190,35 +187,32 @@ SOURCES += \
     src/SAKMainWindow.cc \
     src/SAKMoreInformation.cc \
     src/SAKSettings.cc \
-    src/base/SAKDialog.cc \
-    src/base/SAKMessageBox.cc \
-    src/base/SAKWidget.cc \
-    src/base/page/SAKDebugPage.cc \
-    src/base/page/input/SAKDebugPageInputManager.cc \
-    src/base/page/input/SAKInputDataFactory.cc \
-    src/base/page/input/SAKInputDataItem.cc \
-    src/base/page/input/SAKInputDataItemManager.cc \
-    src/base/page/other/SAKOtherSettingsManager.cc \
-    src/base/page/other/autoresponse/SAKAutoResponseItemWidget.cc \
-    src/base/page/other/autoresponse/SAKAutoResponseSettingsWidget.cc \
-    src/base/page/other/highlight/SAKHighlightSettings.cc \
-    src/base/page/other/highlight/SAKHighlightSettingsWidget.cc \
-    src/base/page/other/more/SAKMoreSettingsWidget.cc \
-    src/base/page/other/readwrite/SAKReadWriteSettingsWidget.cc \
-    src/base/page/other/timing/SAKTimingSendingItemWidget.cc \
-    src/base/page/other/timing/SAKTimingSendingSettingsWidget.cc \
-    src/base/page/other/transmission/SAKBaseTransmissionItemWidget.cc \
-    src/base/page/other/transmission/SAKSerialPortTransmissionItemWidget.cc \
-    src/base/page/other/transmission/SAKTcpTransmissionItemWidget.cc \
-    src/base/page/other/transmission/SAKTransmissionItemDelegate.cc \
-    src/base/page/other/transmission/SAKTransmissionPage.cc \
-    src/base/page/other/transmission/SAKTransmissionSettings.cc \
-    src/base/page/other/transmission/SAKUdpTransmissionItemWidget.cc \
-    src/base/page/output/SAKDebugPageOutputManager.cc \
-    src/base/page/output/SAKOutputDataFactory.cc \
-    src/base/page/output/save/SAKSaveOutputDataSettings.cc \
-    src/base/page/output/save/SAKSaveOutputDataThread.cc \
-    src/base/page/statistics/SAKStatisticsManager.cc \
+    src/pages/page/SAKDebugPage.cc \
+    src/pages/page/input/SAKDebugPageInputManager.cc \
+    src/pages/page/input/SAKInputDataFactory.cc \
+    src/pages/page/input/SAKInputDataItem.cc \
+    src/pages/page/input/SAKInputDataItemManager.cc \
+    src/pages/page/other/SAKOtherSettingsManager.cc \
+    src/pages/page/other/autoresponse/SAKAutoResponseItemWidget.cc \
+    src/pages/page/other/autoresponse/SAKAutoResponseSettingsWidget.cc \
+    src/pages/page/other/highlight/SAKHighlightSettings.cc \
+    src/pages/page/other/highlight/SAKHighlightSettingsWidget.cc \
+    src/pages/page/other/more/SAKMoreSettingsWidget.cc \
+    src/pages/page/other/readwrite/SAKReadWriteSettingsWidget.cc \
+    src/pages/page/other/timing/SAKTimingSendingItemWidget.cc \
+    src/pages/page/other/timing/SAKTimingSendingSettingsWidget.cc \
+    src/pages/page/other/transmission/SAKBaseTransmissionItemWidget.cc \
+    src/pages/page/other/transmission/SAKSerialPortTransmissionItemWidget.cc \
+    src/pages/page/other/transmission/SAKTcpTransmissionItemWidget.cc \
+    src/pages/page/other/transmission/SAKTransmissionItemDelegate.cc \
+    src/pages/page/other/transmission/SAKTransmissionPage.cc \
+    src/pages/page/other/transmission/SAKTransmissionSettings.cc \
+    src/pages/page/other/transmission/SAKUdpTransmissionItemWidget.cc \
+    src/pages/page/output/SAKDebugPageOutputManager.cc \
+    src/pages/page/output/SAKOutputDataFactory.cc \
+    src/pages/page/output/save/SAKSaveOutputDataSettings.cc \
+    src/pages/page/output/save/SAKSaveOutputDataThread.cc \
+    src/pages/page/statistics/SAKStatisticsManager.cc \
     src/common/SAKCRCInterface.cc \
     src/common/SAKCommonInterface.cc \
     src/common/SAKDataStruct.cc \

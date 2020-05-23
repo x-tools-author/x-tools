@@ -14,7 +14,6 @@
 
 #include <QWidget>
 #include <QPushButton>
-#include "SAKWidget.hh"
 
 class SAKDebugPage;
 class SAKTransmissionPage;
@@ -23,7 +22,7 @@ namespace Ui {
 class SAKTransmissionSettings;
 }
 
-class SAKTransmissionSettings:public SAKWidget
+class SAKTransmissionSettings:public QWidget
 {
     Q_OBJECT
 public:
