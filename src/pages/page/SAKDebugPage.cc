@@ -22,6 +22,7 @@
 #include <QIntValidator>
 #include <QLoggingCategory>
 
+#include "SAKDevice.hh"
 #include "SAKGlobal.hh"
 #include "SAKSettings.hh"
 #include "SAKDebugPage.hh"
@@ -41,9 +42,14 @@
 
 SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
     :QWidget(parent)
+    ,device(new SAKDevice)
     ,ui (new Ui::SAKDebugPage)
     ,debugPageType (type)
 {
+    /// @brief 读写关联
+    connect(this, &SAKDebugPage::writeDataRequest, device, &SAKDevice::writeBytes);
+    connect(device, &SAKDevice::bytesRead, this, &SAKDebugPage::bytesRead);
+
     isInitializing = true;
     initSettingString();
 
@@ -73,9 +79,17 @@ SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
 
 SAKDebugPage::~SAKDebugPage()
 {
+    device->requestInterruption();
+    device->wakeMe();
+    device->exit();
+    device->wait();
+    delete device;
+    device = Q_NULLPTR;
+
     delete ui;
 #ifdef SAK_IMPORT_CHARTS_MODULE
     delete dataVisualizationManager;
+    dataVisualizationManager = Q_NULLPTR;
 #endif
 }
 
