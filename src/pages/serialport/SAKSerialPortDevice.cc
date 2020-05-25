@@ -39,9 +39,19 @@ SAKSerialPortDevice::~SAKSerialPortDevice()
 
 }
 
+void SAKSerialPortDevice::writeBytes(QByteArray data)
+{
+    waitingForWrittenBytesList.append(data);
+}
+
+void SAKSerialPortDevice::wakeMe()
+{
+    threadWaitCondition.wakeAll();
+}
+
 void SAKSerialPortDevice::run()
 {
-    serialPort = new QSerialPort(this);
+    serialPort = new QSerialPort;
     serialPort->setPortName(_name);
     serialPort->setBaudRate(_baudRate);
     serialPort->setDataBits(_dataBits);
@@ -49,40 +59,46 @@ void SAKSerialPortDevice::run()
     serialPort->setParity(_parity);
     serialPort->setFlowControl(_flowControl);
 
-
-    connect(serialPort, &QSerialPort::readyRead, this, &SAKSerialPortDevice::readBytes);
-    connect(qApp, &QApplication::lastWindowClosed, this, &SAKSerialPortDevice::terminate);
-
     if (serialPort->open(QSerialPort::ReadWrite)){
-#ifdef QT_DEBUG
-        qDebug() << serialPort->portName() << serialPort->baudRate() << serialPort->dataBits() << serialPort->stopBits() << serialPort->parity();
-#endif
         emit deviceStatuChanged(true);
-        exec();
+        while (1){
+            /// @brief 优雅地退出线程
+            if (isInterruptionRequested()){
+                break;
+            }
+
+            /// @brief 读取数据
+            serialPort->waitForReadyRead(debugPage->readWriteParameters().waitForReadyReadTime);
+            QByteArray bytes = serialPort->readAll();
+            if (bytes.length()){
+                emit bytesRead(bytes);
+            }
+
+            /// @brief 写入数据
+            while (waitingForWrittenBytesList.length()){
+                QByteArray var = waitingForWrittenBytesList.takeFirst();
+                qint64 ret = serialPort->write(var);
+                serialPort->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
+                if (ret == -1){
+                    emit messageChanged(tr("串口发送数据失败：") + serialPort->errorString(), false);
+                }else{
+                    emit bytesWriten(var);
+                }
+            }
+
+            threadMutex.lock();
+            threadWaitCondition.wait(&threadMutex, 25);
+            threadMutex.unlock();
+        }
+
+        /// @brief 关闭清理串口
+        serialPort->clear();
+        serialPort->close();
+        delete serialPort;
+        serialPort = Q_NULLPTR;
     }else{        
         emit deviceStatuChanged(false);
         emit messageChanged(tr("串口打开失败：") + serialPort->errorString(), false);
         return;
-    }
-}
-
-void SAKSerialPortDevice::readBytes()
-{    
-    serialPort->waitForReadyRead(debugPage->readWriteParameters().waitForReadyReadTime);
-    QByteArray data = serialPort->readAll();    
-    if (data.isEmpty()){
-        return;
-    }
-    emit bytesRead(data);
-}
-
-void SAKSerialPortDevice::writeBytes(QByteArray data)
-{    
-    qint64 ret = serialPort->write(data);
-    serialPort->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
-    if (ret == -1){
-        emit messageChanged(tr("串口发送数据失败：") + serialPort->errorString(), false);
-    }else{
-        emit bytesWriten(data);
     }
 }

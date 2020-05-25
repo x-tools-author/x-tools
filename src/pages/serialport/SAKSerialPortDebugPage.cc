@@ -31,8 +31,12 @@ SAKSerialPortDebugPage::~SAKSerialPortDebugPage()
 {
     delete controller;
     if (serialPortAssistant){
-        serialPortAssistant->terminate();
+        serialPortAssistant->wakeMe();
+        serialPortAssistant->requestInterruption();
+        serialPortAssistant->exit();
+        serialPortAssistant->wait();
         delete serialPortAssistant;
+        serialPortAssistant = Q_NULLPTR;
     }
 }
 
@@ -63,7 +67,10 @@ void SAKSerialPortDebugPage::openOrColoseDevice()
 {
     if (serialPortAssistant){
         switchPushButton->setText(tr("打开"));
-        serialPortAssistant->terminate();
+        serialPortAssistant->requestInterruption();
+        serialPortAssistant->wakeMe();
+        serialPortAssistant->exit();
+        serialPortAssistant->wait();
         delete serialPortAssistant;
         serialPortAssistant = Q_NULLPTR;
 
