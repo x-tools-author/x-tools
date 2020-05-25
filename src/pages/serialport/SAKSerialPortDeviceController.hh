@@ -40,13 +40,13 @@ public:
 private:
     Ui::SAKSerialPortDeviceController *ui;
 
-    QComboBox *comboBoxSerialports      = nullptr;
-    QComboBox *comboBoxBaudrate         = nullptr;
-    QComboBox *comboBoxDatabits         = nullptr;
-    QComboBox *comboBoxStopbits         = nullptr;
-    QComboBox *comboBoxParity           = nullptr;
-    QComboBox *flowControlBoxParity     = nullptr;
-    QCheckBox *checkBoxCustomBaudrate   = nullptr;
+    QComboBox *comboBoxSerialports;
+    QComboBox *comboBoxBaudrate;
+    QComboBox *comboBoxDatabits;
+    QComboBox *comboBoxStopbits;
+    QComboBox *comboBoxParity;
+    QComboBox *flowControlBoxParity;
+    QCheckBox *checkBoxCustomBaudrate;
 private slots:
     void on_checkBoxCustomBaudrate_clicked();
 };

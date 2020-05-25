@@ -20,6 +20,13 @@
 SAKSerialPortDeviceController::SAKSerialPortDeviceController(QWidget *parent)
     :QWidget (parent)
     ,ui (new Ui::SAKSerialPortDeviceController)
+    ,comboBoxSerialports(Q_NULLPTR)
+    ,comboBoxBaudrate(Q_NULLPTR)
+    ,comboBoxDatabits(Q_NULLPTR)
+    ,comboBoxStopbits(Q_NULLPTR)
+    ,comboBoxParity(Q_NULLPTR)
+    ,flowControlBoxParity(Q_NULLPTR)
+    ,checkBoxCustomBaudrate(Q_NULLPTR)
 {
     ui->setupUi(this);
 
