@@ -36,10 +36,7 @@ SAKSerialPortDevice::SAKSerialPortDevice(const QString name,
 
 SAKSerialPortDevice::~SAKSerialPortDevice()
 {
-//    if (serialPort){
-//        serialPort->blockSignals(true);
-//        serialPort->close();
-//    }
+
 }
 
 void SAKSerialPortDevice::run()
