@@ -46,13 +46,7 @@ void SAKSaveOutputDataThread::writeDataToFile(QByteArray data, SAKSaveOutputData
         break;
     case SAKSaveOutputDataSettings::SaveOutputDataParamters::Hex:
         if (file.open(QFile::WriteOnly | QFile::Text | QFile::Append)){
-#if (QT_VERSION >= QT_VERSION_CHECK(5,9,0))
             textStream << QString(data.toHex(' ')) << QString("\n");
-#else
-            SAKCommonInterface comInterface;
-            QByteArray temp = comInterface.byteArrayToHex(data, ' ');
-            textStream << temp << QString("\n");
-#endif
             file.close();
         }
         break;
