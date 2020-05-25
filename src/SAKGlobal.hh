@@ -82,6 +82,7 @@ public:
     static void initDataBitsComboBox(QComboBox *comboBox);
     static void initStopBitsComboBox(QComboBox *comboBox);
     static void initParityComboBox(QComboBox *comboBox);
+    static void initFlowControlComboBox(QComboBox *comboBox);
 #endif
 
     /**

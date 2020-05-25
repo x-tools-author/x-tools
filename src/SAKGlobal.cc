@@ -116,7 +116,7 @@ void SAKGlobal::initComComboBox(QComboBox *comboBox)
         comboBox->clear();
         QList<QSerialPortInfo> coms = QSerialPortInfo::availablePorts();
         for(auto var:coms){
-            comboBox->addItem(var.portName() + " " + var.description(), QVariant::fromValue(var));
+            comboBox->addItem(var.portName());
         }
     }
 }
@@ -172,8 +172,20 @@ void SAKGlobal::initParityComboBox(QComboBox *comboBox)
         comboBox->addItem(tr("无校验位"), QVariant::fromValue(QSerialPort::NoParity));
         comboBox->addItem(tr("偶校验"), QVariant::fromValue(QSerialPort::EvenParity));
         comboBox->addItem(tr("奇校验"), QVariant::fromValue(QSerialPort::OddParity));
-        comboBox->addItem(tr("SpaceParity"), QVariant::fromValue(QSerialPort::SpaceParity));
-        comboBox->addItem(tr("MarkParity"), QVariant::fromValue(QSerialPort::MarkParity));
+        comboBox->addItem(tr("空格检验"), QVariant::fromValue(QSerialPort::SpaceParity));
+        comboBox->addItem(tr("标记校验"), QVariant::fromValue(QSerialPort::MarkParity));
+    }
+}
+#endif
+
+#ifdef SAK_IMPORT_COM_MODULE
+void SAKGlobal::initFlowControlComboBox(QComboBox *comboBox)
+{
+    if (comboBox){
+        comboBox->clear();
+        comboBox->addItem(tr("无"), QVariant::fromValue(QSerialPort::NoFlowControl));
+        comboBox->addItem(tr("硬件流控"), QVariant::fromValue(QSerialPort::HardwareControl));
+        comboBox->addItem(tr("软件流控"), QVariant::fromValue(QSerialPort::SoftwareControl));
     }
 }
 #endif
