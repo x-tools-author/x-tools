@@ -31,7 +31,7 @@ SAKSerialPortDevice::SAKSerialPortDevice(const QString name,
     ,_flowControl(flowControl)
     ,debugPage(debugPage)
 {
-    moveToThread(this);
+
 }
 
 SAKSerialPortDevice::~SAKSerialPortDevice()
