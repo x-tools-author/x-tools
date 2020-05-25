@@ -32,6 +32,7 @@
 #include "SAKReadWriteSettingsWidget.hh"
 #include "SAKAutoResponseSettingsWidget.hh"
 
+class SAKDevice;
 class SAKDataFactory;
 class SAKCRCInterface;
 class SAKStatisticsManager;
@@ -76,7 +77,8 @@ public:
 
     /// 输出内部信息
     void outputMessage(QString msg, bool isInfo = true);
-
+private:
+    SAKDevice *device;
 signals:
     /// 读取数据后发射该信号，参数为已读取的数据
     void bytesRead(QByteArray data);
