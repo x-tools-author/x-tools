@@ -20,23 +20,23 @@
 SAKSerialPortDeviceController::SAKSerialPortDeviceController(QWidget *parent)
     :QWidget (parent)
     ,ui (new Ui::SAKSerialPortDeviceController)
-    ,comboBoxSerialports(Q_NULLPTR)
-    ,comboBoxBaudrate(Q_NULLPTR)
-    ,comboBoxDatabits(Q_NULLPTR)
-    ,comboBoxStopbits(Q_NULLPTR)
-    ,comboBoxParity(Q_NULLPTR)
-    ,flowControlBoxParity(Q_NULLPTR)
-    ,checkBoxCustomBaudrate(Q_NULLPTR)
+    ,serialportsComboBox(Q_NULLPTR)
+    ,baudrateComboBox(Q_NULLPTR)
+    ,databitsComboBox(Q_NULLPTR)
+    ,stopbitsComboBox(Q_NULLPTR)
+    ,parityComboBox(Q_NULLPTR)
+    ,flowControlComboBox(Q_NULLPTR)
+    ,customBaudrateCheckBox(Q_NULLPTR)
 {
     ui->setupUi(this);
 
-    comboBoxSerialports      = ui->comboBoxSerialports;
-    comboBoxBaudrate         = ui->comboBoxBaudrate;
-    comboBoxDatabits         = ui->comboBoxDatabits;
-    comboBoxStopbits         = ui->comboBoxStopbits;
-    comboBoxParity           = ui->comboBoxParity;
-    flowControlBoxParity     = ui->flowControlComboBox;
-    checkBoxCustomBaudrate   = ui->checkBoxCustomBaudrate;
+    serialportsComboBox      = ui->serialportsComboBox;
+    baudrateComboBox         = ui->baudrateComboBox;
+    databitsComboBox         = ui->databitsComboBox;
+    stopbitsComboBox         = ui->stopbitsComboBox;
+    parityComboBox           = ui->parityComboBox;
+    flowControlComboBox      = ui->flowControlComboBox;
+    customBaudrateCheckBox   = ui->customBaudrateCheckBox;
 
     refresh();
 }
@@ -48,42 +48,43 @@ SAKSerialPortDeviceController::~SAKSerialPortDeviceController()
 
 void SAKSerialPortDeviceController::refresh()
 {
-    SAKGlobal::initComComboBox(comboBoxSerialports);
-    SAKGlobal::initBaudRateComboBox(comboBoxBaudrate);
-    SAKGlobal::initDataBitsComboBox(comboBoxDatabits);
-    SAKGlobal::initStopBitsComboBox(comboBoxStopbits);
-    SAKGlobal::initParityComboBox(comboBoxParity);
-    SAKGlobal::initFlowControlComboBox(flowControlBoxParity);
+    SAKGlobal::initComComboBox(serialportsComboBox);
+    SAKGlobal::initBaudRateComboBox(baudrateComboBox);
+    SAKGlobal::initDataBitsComboBox(databitsComboBox);
+    SAKGlobal::initStopBitsComboBox(stopbitsComboBox);
+    SAKGlobal::initParityComboBox(parityComboBox);
+    SAKGlobal::initFlowControlComboBox(flowControlComboBox);
 }
 
 void SAKSerialPortDeviceController::setUiEnable(bool enable)
 {
-    comboBoxSerialports->setEnabled(enable);
-    comboBoxBaudrate->setEnabled(enable);
-    comboBoxDatabits->setEnabled(enable);
-    comboBoxStopbits->setEnabled(enable);
-    comboBoxParity->setEnabled(enable);
-    checkBoxCustomBaudrate->setEnabled(enable);
+    serialportsComboBox->setEnabled(enable);
+    baudrateComboBox->setEnabled(enable);
+    databitsComboBox->setEnabled(enable);
+    stopbitsComboBox->setEnabled(enable);
+    parityComboBox->setEnabled(enable);
+    customBaudrateCheckBox->setEnabled(enable);
+    flowControlComboBox->setEnabled(enable);
 }
 
 enum QSerialPort::DataBits SAKSerialPortDeviceController::dataBits()
 {
-    return static_cast<QSerialPort::DataBits>(comboBoxDatabits->currentData().toInt());
+    return static_cast<QSerialPort::DataBits>(databitsComboBox->currentData().toInt());
 }
 
 enum QSerialPort::StopBits SAKSerialPortDeviceController::stopBits()
 {
-    return static_cast<QSerialPort::StopBits>(comboBoxStopbits->currentData().toInt());
+    return static_cast<QSerialPort::StopBits>(stopbitsComboBox->currentData().toInt());
 }
 
 enum QSerialPort::Parity SAKSerialPortDeviceController::parity()
 {
-    return static_cast<QSerialPort::Parity>(comboBoxParity->currentData().toInt());
+    return static_cast<QSerialPort::Parity>(parityComboBox->currentData().toInt());
 }
 
 QString SAKSerialPortDeviceController::name()
 {
-    QString portName = comboBoxSerialports->currentText();
+    QString portName = serialportsComboBox->currentText();
     portName = portName.split(' ').first();
     return  portName;
 }
@@ -92,11 +93,11 @@ qint32 SAKSerialPortDeviceController::baudRate()
 {
     qint32 rate = 9600;
     bool ok = false;
-    if (comboBoxBaudrate->currentText().isEmpty()){
+    if (baudrateComboBox->currentText().isEmpty()){
         return 9600;
     }
 
-    rate = comboBoxBaudrate->currentText().toInt(&ok);
+    rate = baudrateComboBox->currentText().toInt(&ok);
     if (!ok){
         rate = 9600;
     }
@@ -104,13 +105,13 @@ qint32 SAKSerialPortDeviceController::baudRate()
     return rate;
 }
 
-void SAKSerialPortDeviceController::on_checkBoxCustomBaudrate_clicked()
+void SAKSerialPortDeviceController::on_customBaudrateCheckBox_clicked()
 {
-    if (checkBoxCustomBaudrate->isChecked()){
-        comboBoxBaudrate->setEditable(true);
-        comboBoxBaudrate->lineEdit()->selectAll();
-        comboBoxBaudrate->lineEdit()->setFocus();
+    if (customBaudrateCheckBox->isChecked()){
+        baudrateComboBox->setEditable(true);
+        baudrateComboBox->lineEdit()->selectAll();
+        baudrateComboBox->lineEdit()->setFocus();
     }else{
-        comboBoxBaudrate->setEditable(false);
+        baudrateComboBox->setEditable(false);
     }
 }

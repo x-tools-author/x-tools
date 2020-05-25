@@ -27,10 +27,10 @@
     <number>0</number>
    </property>
    <item row="3" column="1">
-    <widget class="QComboBox" name="comboBoxBaudrate"/>
+    <widget class="QComboBox" name="baudrateComboBox"/>
    </item>
    <item row="2" column="0" colspan="2">
-    <widget class="QCheckBox" name="checkBoxCustomBaudrate">
+    <widget class="QCheckBox" name="customBaudrateCheckBox">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
        <horstretch>0</horstretch>
@@ -56,7 +56,7 @@
     </widget>
    </item>
    <item row="1" column="0" colspan="2">
-    <widget class="QComboBox" name="comboBoxSerialports">
+    <widget class="QComboBox" name="serialportsComboBox">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
        <horstretch>0</horstretch>
@@ -72,7 +72,7 @@
     </widget>
    </item>
    <item row="5" column="1">
-    <widget class="QComboBox" name="comboBoxStopbits"/>
+    <widget class="QComboBox" name="stopbitsComboBox"/>
    </item>
    <item row="3" column="0">
     <widget class="QLabel" name="label_2">
@@ -121,7 +121,7 @@
     </widget>
    </item>
    <item row="4" column="1">
-    <widget class="QComboBox" name="comboBoxDatabits">
+    <widget class="QComboBox" name="databitsComboBox">
      <property name="currentText">
       <string notr="true"/>
      </property>
@@ -131,7 +131,7 @@
     </widget>
    </item>
    <item row="6" column="1">
-    <widget class="QComboBox" name="comboBoxParity"/>
+    <widget class="QComboBox" name="parityComboBox"/>
    </item>
    <item row="7" column="0">
     <widget class="QLabel" name="label_6">
