@@ -160,9 +160,7 @@ void SAKDebugPage::setUpController()
         deviceSettingFrame->setLayout(layout);
         layout->addWidget(controller);
 
-        /*
-         * qt 5.13及 以上版本setMargin()接口改为setContentsMargins()
-         */
+        /// @brief qt5.13及以上版本setMargin()接口改为setContentsMargins()
 #if (QT_VERSION >= QT_VERSION_CHECK(5,13,0))
         layout->setContentsMargins(0, 0, 0, 0);
 #else
