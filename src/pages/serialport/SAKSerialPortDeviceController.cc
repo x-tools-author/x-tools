@@ -28,6 +28,7 @@ SAKSerialPortDeviceController::SAKSerialPortDeviceController(QWidget *parent)
     comboBoxDatabits         = ui->comboBoxDatabits;
     comboBoxStopbits         = ui->comboBoxStopbits;
     comboBoxParity           = ui->comboBoxParity;
+    flowControlBoxParity     = ui->flowControlComboBox;
     checkBoxCustomBaudrate   = ui->checkBoxCustomBaudrate;
 
     refresh();
@@ -45,6 +46,7 @@ void SAKSerialPortDeviceController::refresh()
     SAKGlobal::initDataBitsComboBox(comboBoxDatabits);
     SAKGlobal::initStopBitsComboBox(comboBoxStopbits);
     SAKGlobal::initParityComboBox(comboBoxParity);
+    SAKGlobal::initFlowControlComboBox(flowControlBoxParity);
 }
 
 void SAKSerialPortDeviceController::setUiEnable(bool enable)

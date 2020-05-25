@@ -45,6 +45,7 @@ private:
     QComboBox *comboBoxDatabits         = nullptr;
     QComboBox *comboBoxStopbits         = nullptr;
     QComboBox *comboBoxParity           = nullptr;
+    QComboBox *flowControlBoxParity     = nullptr;
     QCheckBox *checkBoxCustomBaudrate   = nullptr;
 private slots:
     void on_checkBoxCustomBaudrate_clicked();
