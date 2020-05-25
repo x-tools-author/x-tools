@@ -26,3 +26,28 @@ void SAKDevice::wakeMe()
 {
     threadWaitCondition.wakeAll();
 }
+
+void SAKDevice::writeBytes(QByteArray bytes)
+{
+    waitingForWritingBytesListMutex.lock();
+    if (bytes.length()){
+        waitingForWritingBytesList.append(bytes);
+    }else{
+        waitingForWritingBytesList.append(QByteArray("empty"));
+    }
+    waitingForWritingBytesListMutex.unlock();
+}
+
+QByteArray SAKDevice::takeWaitingForWrittingBytes()
+{
+    QByteArray bytes;
+    waitingForWritingBytesListMutex.lock();
+    if (waitingForWritingBytesList.length()){
+        bytes = waitingForWritingBytesList.takeFirst();
+    }else{
+        bytes = QByteArray();
+    }
+    waitingForWritingBytesListMutex.unlock();
+
+    return bytes;
+}
