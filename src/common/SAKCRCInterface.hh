@@ -19,7 +19,7 @@ class SAKCRCInterface:public QObject
 {
     Q_OBJECT
 public:
-    SAKCRCInterface(QObject *parent = nullptr);
+    SAKCRCInterface(QObject *parent = Q_NULLPTR);
 
 
     /// crc算法模型（crc参数模型）

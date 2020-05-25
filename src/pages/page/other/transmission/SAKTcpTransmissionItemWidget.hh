@@ -27,7 +27,7 @@ class SAKTcpTransmissionItemWidget:public SAKBaseTransmissionItemWidget
 {
     Q_OBJECT
 public:
-    SAKTcpTransmissionItemWidget(SAKDebugPage *_debugPage, QWidget *parent = nullptr);
+    SAKTcpTransmissionItemWidget(SAKDebugPage *_debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKTcpTransmissionItemWidget();
 
     virtual void write(QByteArray data);

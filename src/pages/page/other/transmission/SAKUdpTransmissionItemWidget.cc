@@ -17,7 +17,7 @@
 SAKUdpTransmissionItemWidget::SAKUdpTransmissionItemWidget(SAKDebugPage *_debugPage, QWidget *parent)
     :SAKBaseTransmissionItemWidget (_debugPage, parent)
     ,ui(new Ui::SAKUdpTransmissionItemWidget)
-    ,udpSocket (nullptr)
+    ,udpSocket (Q_NULLPTR)
 {
     ui->setupUi(this);
 
@@ -58,7 +58,7 @@ void SAKUdpTransmissionItemWidget::on_enableCheckBox_clicked()
     auto closeDev = [&](){
         disconnect(udpSocket, &QUdpSocket::readyRead, this, &SAKUdpTransmissionItemWidget::read);
         delete udpSocket;
-        udpSocket = nullptr;
+        udpSocket = Q_NULLPTR;
         this->setUiEnable(true);
     };
 

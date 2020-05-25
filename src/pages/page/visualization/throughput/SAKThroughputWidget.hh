@@ -25,7 +25,7 @@ class SAKThroughputWidget:public QWidget
 {
     Q_OBJECT
 public:
-    SAKThroughputWidget(SAKDebugPage *debugPage, QWidget *parent = nullptr);
+    SAKThroughputWidget(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKThroughputWidget();
 
 private:

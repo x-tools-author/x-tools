@@ -32,7 +32,7 @@ class SAKUpdateManager:public QDialog
 {
     Q_OBJECT
 public:
-    SAKUpdateManager(QWidget *parent =  nullptr);
+    SAKUpdateManager(QWidget *parent =  Q_NULLPTR);
     ~SAKUpdateManager();
 
     void checkForUpdate();

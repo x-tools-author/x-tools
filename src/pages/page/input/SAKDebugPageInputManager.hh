@@ -30,7 +30,7 @@ class SAKDebugPageInputManager:public QObject
 {
     Q_OBJECT
 public:
-    SAKDebugPageInputManager(SAKDebugPage *debugPage, QObject *parent = nullptr);
+    SAKDebugPageInputManager(SAKDebugPage *debugPage, QObject *parent = Q_NULLPTR);
     ~SAKDebugPageInputManager();
 
     /**

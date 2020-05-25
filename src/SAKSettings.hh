@@ -26,7 +26,7 @@ public:
     static SAKSettings* instance();
 private:
     static SAKSettings* _instance;
-    SAKSettings(const QString &fileName, QSettings::Format format, QObject *parent = nullptr);
+    SAKSettings(const QString &fileName, QSettings::Format format, QObject *parent = Q_NULLPTR);
     ~SAKSettings();
 
     /// @brief 以下是软件自动更新使能设置的相关成员

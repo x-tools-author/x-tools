@@ -62,7 +62,7 @@ void SAKAutoResponseItemWidget::setLineEditFormat(QLineEdit *lineEdit, int forma
     QRegExp regExpAscii("([a-zA-Z0-9`~!@#$%^&*()-_=+\\|;:'\",<.>/?])*");
 
     if (lineEdit){
-        lineEdit->setValidator(nullptr);
+        lineEdit->setValidator(Q_NULLPTR);
         lineEdit->clear();
         switch (format) {
         case SAKGlobal::Ibin:
@@ -81,7 +81,7 @@ void SAKAutoResponseItemWidget::setLineEditFormat(QLineEdit *lineEdit, int forma
             lineEdit->setValidator(new QRegExpValidator(regExpAscii, this));
             break;
         case SAKGlobal::Ilocal:
-            lineEdit->setValidator(nullptr);
+            lineEdit->setValidator(Q_NULLPTR);
             break;
         default:
             break;
@@ -125,7 +125,7 @@ QByteArray SAKAutoResponseItemWidget::string2array(QString str, int format)
     auto stringList2Array = [](QStringList strList, int base) -> QByteArray{
         QByteArray array;
         for (auto var:strList){
-            array.append(static_cast<char>(var.toInt(nullptr, base)));
+            array.append(static_cast<char>(var.toInt(Q_NULLPTR, base)));
         }
         return array;
     };

@@ -14,7 +14,7 @@
 
 #include <QApplication>
 
-SAKSettings* SAKSettings::_instance = nullptr;
+SAKSettings* SAKSettings::_instance = Q_NULLPTR;
 SAKSettings* SAKSettings::instance()
 {
     if (!_instance){
@@ -39,7 +39,7 @@ SAKSettings::SAKSettings(const QString &fileName, Format format, QObject *parent
 
 SAKSettings::~SAKSettings()
 {
-    _instance = nullptr;
+    _instance = Q_NULLPTR;
 }
 
 bool SAKSettings::enableAutoCheckForUpdate()

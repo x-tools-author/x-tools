@@ -24,7 +24,7 @@ public:
      * @brief SAKHighlighter    -- 构造函数，nothing to say.
      * @param parent            -- 父控件，用于释放资源
      */
-    SAKHighlightSettings(QTextDocument* parent = nullptr);
+    SAKHighlightSettings(QTextDocument* parent = Q_NULLPTR);
 
     /**
      * @brief setHighlighterKeyWord -- 设置高亮显示关键字

@@ -34,7 +34,7 @@ class SAKSerialPortTransmissionItemWidget:public SAKBaseTransmissionItemWidget
 {
     Q_OBJECT
 public:
-    SAKSerialPortTransmissionItemWidget(SAKDebugPage *_debugPage, QWidget *parent = nullptr);
+    SAKSerialPortTransmissionItemWidget(SAKDebugPage *_debugPage, QWidget *parent = Q_NULLPTR);
 
 #ifdef SAK_IMPORT_COM_MODULE
      ~SAKSerialPortTransmissionItemWidget();

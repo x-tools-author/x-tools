@@ -15,7 +15,7 @@
 
 #include "SAKApplicationInformation.hh"
 
-SAKApplicationInformation *SAKApplicationInformation::thisInstance = nullptr;
+SAKApplicationInformation *SAKApplicationInformation::thisInstance = Q_NULLPTR;
 static const QDate buildDate = QLocale( QLocale::English ).toDate( QString(__DATE__).replace("  ", " 0"), "MMM dd yyyy");
 SAKApplicationInformation::SAKApplicationInformation(QObject *parent)
     :QObject (parent)
@@ -25,7 +25,7 @@ SAKApplicationInformation::SAKApplicationInformation(QObject *parent)
 
 SAKApplicationInformation::~SAKApplicationInformation()
 {
-    thisInstance = nullptr;
+    thisInstance = Q_NULLPTR;
 }
 
 SAKApplicationInformation* SAKApplicationInformation::instance()

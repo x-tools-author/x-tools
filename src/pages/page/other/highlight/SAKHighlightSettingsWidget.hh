@@ -28,16 +28,16 @@ class SAKHighlightSettingsWidget:public QWidget
 {
     Q_OBJECT
 public:
-    SAKHighlightSettingsWidget(QTextDocument *doc, QWidget* parent = nullptr);
+    SAKHighlightSettingsWidget(QTextDocument *doc, QWidget* parent = Q_NULLPTR);
     ~SAKHighlightSettingsWidget();
 
     bool eventFilter(QObject *watched, QEvent *event);
 private:
-    Ui::SAKHighlightSettingsWidget  *ui             = nullptr;
-    SAKHighlightSettings            *highlighter    = nullptr;
-    QLineEdit                       *inputLineEdit  = nullptr;
-    QPushButton                     *clearLabelBt   = nullptr;
-    QPushButton                     *addLabelBt     = nullptr;
+    Ui::SAKHighlightSettingsWidget  *ui             = Q_NULLPTR;
+    SAKHighlightSettings            *highlighter    = Q_NULLPTR;
+    QLineEdit                       *inputLineEdit  = Q_NULLPTR;
+    QPushButton                     *clearLabelBt   = Q_NULLPTR;
+    QPushButton                     *addLabelBt     = Q_NULLPTR;
 
     QGridLayout                     labelLayout;
     QList<QPushButton*>             labelList;

@@ -134,27 +134,27 @@ private:
     // ------------------------------------------------------------------------
     // 设备设置
 protected:    
-    QPushButton *refreshPushButton              = nullptr;  // 刷新按钮
-    QPushButton *switchPushButton               = nullptr;  // 打开关闭设备按钮
-    QFrame      *deviceSettingFrame             = nullptr;  // 控制面板
+    QPushButton *refreshPushButton              = Q_NULLPTR;  // 刷新按钮
+    QPushButton *switchPushButton               = Q_NULLPTR;  // 打开关闭设备按钮
+    QFrame      *deviceSettingFrame             = Q_NULLPTR;  // 控制面板
 private slots:
     void on_refreshPushButton_clicked();
     void on_switchPushButton_clicked();
 
      // 输入设置组
 protected:
-    QComboBox   *inputModelComboBox             = nullptr;  // 输入模式预选框
-    QCheckBox   *cycleEnableCheckBox            = nullptr;  // 循环使能复选框
-    QLineEdit   *cycleTimeLineEdit              = nullptr;  // 循环周期输入框
-    QPushButton *readinFilePushButton           = nullptr;  // 读入文件按钮
-    QPushButton *saveInputDataPushButton        = nullptr;  // 保存发送输入框数据
-    QCheckBox   *addCRCCheckBox                 = nullptr;  // 发送数据添加crc校验
-    QCheckBox   *bigeEndianCheckBox             = nullptr;  // crc值以大端形式添加
-    QPushButton *clearInputPushButton           = nullptr;  // 清空输入框按钮
-    QPushButton *sendPushButton                 = nullptr;  // 发送数据按钮
-    QTextEdit   *inputTextEdit                  = nullptr;  // 数据输入框
-    QComboBox   *crcParameterModelsComboBox     = nullptr;  // crc计算参数模型
-    QLabel      *crcLabel                       = nullptr;  // crc显示标签
+    QComboBox   *inputModelComboBox             = Q_NULLPTR;  // 输入模式预选框
+    QCheckBox   *cycleEnableCheckBox            = Q_NULLPTR;  // 循环使能复选框
+    QLineEdit   *cycleTimeLineEdit              = Q_NULLPTR;  // 循环周期输入框
+    QPushButton *readinFilePushButton           = Q_NULLPTR;  // 读入文件按钮
+    QPushButton *saveInputDataPushButton        = Q_NULLPTR;  // 保存发送输入框数据
+    QCheckBox   *addCRCCheckBox                 = Q_NULLPTR;  // 发送数据添加crc校验
+    QCheckBox   *bigeEndianCheckBox             = Q_NULLPTR;  // crc值以大端形式添加
+    QPushButton *clearInputPushButton           = Q_NULLPTR;  // 清空输入框按钮
+    QPushButton *sendPushButton                 = Q_NULLPTR;  // 发送数据按钮
+    QTextEdit   *inputTextEdit                  = Q_NULLPTR;  // 数据输入框
+    QComboBox   *crcParameterModelsComboBox     = Q_NULLPTR;  // crc计算参数模型
+    QLabel      *crcLabel                       = Q_NULLPTR;  // crc显示标签
     QPushButton *addInputItemPushButton;
     QPushButton *deleteInputItemPushButton;
     QListWidget *inputDataItemListWidget;
@@ -175,24 +175,24 @@ private slots:
 
     // 消息输出组管理
 protected:
-    QLabel *infoLabel                           = nullptr;  // 消息输标签
+    QLabel *infoLabel                           = Q_NULLPTR;  // 消息输标签
 
     // 消息输出组
 protected:
-    QLabel      *rxLabel                        = nullptr;  // 接受指示灯
-    QLabel      *txLabel                        = nullptr;  // 发送指示灯
-    QComboBox   *outputTextFormatComboBox       = nullptr;  // 输出模式复选框（接收）
-    QCheckBox   *showDateCheckBox               = nullptr;  // 显示日期使能复选框
-    QCheckBox   *autoWrapCheckBox               = nullptr;  // 自动换行使能复选框
-    QCheckBox   *showTimeCheckBox               = nullptr;  // 显示时间使能复选框
-    QCheckBox   *showMsCheckBox                 = nullptr;  // 显示毫秒使能复选框
-    QCheckBox   *showRxDataCheckBox             = nullptr;  // 显示接收数据使能复选框
-    QCheckBox   *showTxDataCheckBox             = nullptr;  // 显示发送数据使能复选框
-    QCheckBox   *saveOutputFileToFilecheckBox   = nullptr;  // 使能输出数据保存
-    QPushButton *outputFilePathPushButton       = nullptr;  // 显示输出设置面板
-    QPushButton *clearOutputPushButton          = nullptr;  // 清空输出按钮
-    QPushButton *saveOutputPushButton           = nullptr;  // 保存输出按钮
-    QTextBrowser *outputTextBroswer             = nullptr;  // 用于输出显示收发的数据
+    QLabel      *rxLabel                        = Q_NULLPTR;  // 接受指示灯
+    QLabel      *txLabel                        = Q_NULLPTR;  // 发送指示灯
+    QComboBox   *outputTextFormatComboBox       = Q_NULLPTR;  // 输出模式复选框（接收）
+    QCheckBox   *showDateCheckBox               = Q_NULLPTR;  // 显示日期使能复选框
+    QCheckBox   *autoWrapCheckBox               = Q_NULLPTR;  // 自动换行使能复选框
+    QCheckBox   *showTimeCheckBox               = Q_NULLPTR;  // 显示时间使能复选框
+    QCheckBox   *showMsCheckBox                 = Q_NULLPTR;  // 显示毫秒使能复选框
+    QCheckBox   *showRxDataCheckBox             = Q_NULLPTR;  // 显示接收数据使能复选框
+    QCheckBox   *showTxDataCheckBox             = Q_NULLPTR;  // 显示发送数据使能复选框
+    QCheckBox   *saveOutputFileToFilecheckBox   = Q_NULLPTR;  // 使能输出数据保存
+    QPushButton *outputFilePathPushButton       = Q_NULLPTR;  // 显示输出设置面板
+    QPushButton *clearOutputPushButton          = Q_NULLPTR;  // 清空输出按钮
+    QPushButton *saveOutputPushButton           = Q_NULLPTR;  // 保存输出按钮
+    QTextBrowser *outputTextBroswer             = Q_NULLPTR;  // 用于输出显示收发的数据
 
     QString settingStringOutputTextFormat;
     QString settingStringShowDate;
@@ -253,7 +253,7 @@ private:
     /**
      * @brief ui    -- 界面文件
      */
-    Ui::SAKDebugPage *ui = nullptr;
+    Ui::SAKDebugPage *ui = Q_NULLPTR;
 
     /**
      * @brief initUiPointer -- 初始化指向ui控件的数据成员（指针）

@@ -19,7 +19,7 @@ class SAKOutputDataFactory:public QThread
 {
     Q_OBJECT
 public:
-    SAKOutputDataFactory(QObject *parent = nullptr);
+    SAKOutputDataFactory(QObject *parent = Q_NULLPTR);
 
     /**
      * @brief cookData 将数据按照指定参数转变为字符串输出

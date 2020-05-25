@@ -35,7 +35,7 @@ class SAKCRCCalculator:public QDialog
 {
     Q_OBJECT
 public:
-    SAKCRCCalculator(QWidget* parent = nullptr);
+    SAKCRCCalculator(QWidget* parent = Q_NULLPTR);
     ~SAKCRCCalculator();
 protected:
     bool eventFilter(QObject *watched, QEvent *event);
@@ -44,26 +44,26 @@ private:
     SAKCRCInterface crcInterface;
 
     Ui::SAKCRCCalculator* ui;
-    QComboBox* widthComboBox = nullptr;
-    QComboBox* parameterComboBox = nullptr;
+    QComboBox* widthComboBox = Q_NULLPTR;
+    QComboBox* parameterComboBox = Q_NULLPTR;
 
-    QCheckBox* refinCheckBox = nullptr;
-    QCheckBox* refoutCheckBox = nullptr;
-    QLineEdit* polyLineEdit = nullptr;
-    QLineEdit* initLineEdit = nullptr;
-    QLineEdit* xorLineEdit = nullptr;
+    QCheckBox* refinCheckBox = Q_NULLPTR;
+    QCheckBox* refoutCheckBox = Q_NULLPTR;
+    QLineEdit* polyLineEdit = Q_NULLPTR;
+    QLineEdit* initLineEdit = Q_NULLPTR;
+    QLineEdit* xorLineEdit = Q_NULLPTR;
 
-    QRadioButton* hexRadioBt = nullptr;
-    QRadioButton* asciiRadioBt = nullptr;
+    QRadioButton* hexRadioBt = Q_NULLPTR;
+    QRadioButton* asciiRadioBt = Q_NULLPTR;
 
-    QLineEdit* hexCRCOutput = nullptr;
-    QLineEdit* binCRCOutput = nullptr;
+    QLineEdit* hexCRCOutput = Q_NULLPTR;
+    QLineEdit* binCRCOutput = Q_NULLPTR;
 
-    QTextEdit* inputTextEdit = nullptr;
+    QTextEdit* inputTextEdit = Q_NULLPTR;
 
-    QPushButton* calculatedBt = nullptr;
-    QLabel *labelPolyFormula = nullptr;
-    QLabel *labelInfo = nullptr;
+    QPushButton* calculatedBt = Q_NULLPTR;
+    QLabel *labelPolyFormula = Q_NULLPTR;
+    QLabel *labelInfo = Q_NULLPTR;
 
     void initParameterModel();
 private slots:

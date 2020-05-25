@@ -21,11 +21,11 @@
 SAKTimingSendingItemWidget::SAKTimingSendingItemWidget(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget(parent)
     ,ui (new Ui::SAKTimingSendingItemWidget)
-    ,timingCheckBox (nullptr)
-    ,timingTimeLineEdit (nullptr)
-    ,textFormatComboBox (nullptr)
-    ,remarkLineEdit (nullptr)
-    ,inputDataTextEdit (nullptr)
+    ,timingCheckBox (Q_NULLPTR)
+    ,timingTimeLineEdit (Q_NULLPTR)
+    ,textFormatComboBox (Q_NULLPTR)
+    ,remarkLineEdit (Q_NULLPTR)
+    ,inputDataTextEdit (Q_NULLPTR)
     ,debugPage (debugPage)
 {
     ui->setupUi(this);

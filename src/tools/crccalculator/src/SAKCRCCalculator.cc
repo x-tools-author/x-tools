@@ -134,7 +134,7 @@ void SAKCRCCalculator::calculate()
             if (strList.at(i).isEmpty()){
                 continue;
             }
-            ch = static_cast<char>(strList.at(i).toInt(nullptr, 16));
+            ch = static_cast<char>(strList.at(i).toInt(Q_NULLPTR, 16));
             inputArray.append(ch);
         }
     }else{

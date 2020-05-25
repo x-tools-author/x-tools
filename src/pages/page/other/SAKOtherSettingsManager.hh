@@ -28,7 +28,7 @@ class SAKOtherSettingsManager:public QObject
 {
     Q_OBJECT
 public:
-    SAKOtherSettingsManager(SAKDebugPage *debugPage, QObject *parent = nullptr);
+    SAKOtherSettingsManager(SAKDebugPage *debugPage, QObject *parent = Q_NULLPTR);
     ~SAKOtherSettingsManager();
 
 private:

@@ -22,7 +22,7 @@ class SAKStatisticsManager:public QObject
 {
     Q_OBJECT
 public:
-    SAKStatisticsManager(SAKDebugPage *debugPage, QObject *parent = nullptr);
+    SAKStatisticsManager(SAKDebugPage *debugPage, QObject *parent = Q_NULLPTR);
 private:
     SAKDebugPage *debugPage;
 

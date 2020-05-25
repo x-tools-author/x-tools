@@ -16,7 +16,7 @@
 
 #include "QtStyleSheetApi.hh"
 
-QtStyleSheetApi *QtStyleSheetApi::_this = nullptr;
+QtStyleSheetApi *QtStyleSheetApi::_this = Q_NULLPTR;
 QtStyleSheetApi *QtStyleSheetApi::instance()
 {
     if (_this){

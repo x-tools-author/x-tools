@@ -21,7 +21,7 @@ class SAKCommonInterface:public QObject
      */
     Q_OBJECT
 public:
-    SAKCommonInterface(QObject *parent = nullptr);
+    SAKCommonInterface(QObject *parent = Q_NULLPTR);
 
     QByteArray byteArrayToHex(QByteArray &array, char separator);
 };

@@ -27,7 +27,7 @@ public:
      * @brief SAKCodingStyle 函数说明，公有函数原则上都需要添加
      * @param parent 参数parent说明
      */
-    SAKCodingStyle(QObject* parent = nullptr);
+    SAKCodingStyle(QObject* parent = Q_NULLPTR);
 
 private:
     /*

@@ -20,7 +20,7 @@ class QtCryptographicHashCalculator:public QThread
 {
     Q_OBJECT
 public:
-    QtCryptographicHashCalculator(QtCryptographicHashController *controller, QObject *parent = nullptr);
+    QtCryptographicHashCalculator(QtCryptographicHashController *controller, QObject *parent = Q_NULLPTR);
 private:
     QtCryptographicHashController *cryptographicHashController;
     // ------------------------------------------------------------------------

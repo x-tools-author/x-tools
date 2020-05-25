@@ -49,7 +49,7 @@ public:
      * @brief SAKGlobal -- 构造函数
      * @param parent    -- 父控件
      */
-    SAKGlobal(QObject* parent = nullptr);
+    SAKGlobal(QObject* parent = Q_NULLPTR);
 
     /**
      * @brief logFile   -- 获取日志文件（全路径）

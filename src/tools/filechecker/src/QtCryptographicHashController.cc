@@ -20,7 +20,7 @@
 QtCryptographicHashController::QtCryptographicHashController(QWidget *parent)
     :QWidget (parent)
     ,ui (new Ui::QtCryptographicHashController)
-    ,calculator (nullptr)
+    ,calculator (Q_NULLPTR)
 {
     ui->setupUi(this);
 
@@ -147,7 +147,7 @@ void QtCryptographicHashController::on_startStopPushButton_clicked()
         calculator->blockSignals(true);
         calculator->terminate();
         calculator->deleteLater();
-        calculator = nullptr;
+        calculator = Q_NULLPTR;
         setUiEnable(true);
         startStopPushButton->setText(tr("开始计算"));
         setUiEnable(true);

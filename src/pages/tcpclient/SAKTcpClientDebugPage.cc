@@ -20,7 +20,7 @@
 
 SAKTcpClientDebugPage::SAKTcpClientDebugPage(QWidget *parent)
     :SAKDebugPage (SAKGlobal::SAKEnumDebugPageTypeTCPClient, parent)
-    ,tcpClientDevice (nullptr)
+    ,tcpClientDevice (Q_NULLPTR)
     ,tcpClientDeviceController (new SAKTcpClientDeviceController)
 {
     setUpController();
@@ -54,7 +54,7 @@ void SAKTcpClientDebugPage::changeDeviceStatus(bool opened)
         if (tcpClientDevice){
             tcpClientDevice->terminate();
             delete tcpClientDevice;
-            tcpClientDevice = nullptr;
+            tcpClientDevice = Q_NULLPTR;
         }
     }
     emit deviceStatusChanged(opened);
@@ -66,7 +66,7 @@ void SAKTcpClientDebugPage::openOrColoseDevice()
         switchPushButton->setText(tr("打开"));
         tcpClientDevice->terminate();
         delete tcpClientDevice;
-        tcpClientDevice = nullptr;
+        tcpClientDevice = Q_NULLPTR;
 
         setUiEnable(true);
         emit deviceStatusChanged(false);

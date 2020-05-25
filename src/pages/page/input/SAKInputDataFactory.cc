@@ -18,7 +18,7 @@
 
 SAKInputDataFactory::SAKInputDataFactory(QObject *parent)
     :QThread (parent)
-    ,crcInterface (nullptr)
+    ,crcInterface (Q_NULLPTR)
 {
     moveToThread(this);
 }
@@ -87,22 +87,22 @@ QByteArray SAKInputDataFactory::rawDataToArray(QString rawData, SAKDebugPageInpu
     if (parameters.inputModel == SAKGlobal::Ibin){
         QStringList strList = rawData.split(' ');
         for (QString str:strList){
-            data.append(static_cast<int8_t>(QString(str).toInt(nullptr, 2)));
+            data.append(static_cast<int8_t>(QString(str).toInt(Q_NULLPTR, 2)));
         }
     }else if (parameters.inputModel == SAKGlobal::Ioct){
         QStringList strList = rawData.split(' ');
         for (QString str:strList){
-            data.append(static_cast<int8_t>(QString(str).toInt(nullptr, 8)));
+            data.append(static_cast<int8_t>(QString(str).toInt(Q_NULLPTR, 8)));
         }
     }else if (parameters.inputModel == SAKGlobal::Idec){
         QStringList strList = rawData.split(' ');
         for (QString str:strList){
-            data.append(static_cast<int8_t>(QString(str).toInt(nullptr, 10)));
+            data.append(static_cast<int8_t>(QString(str).toInt(Q_NULLPTR, 10)));
         }
     }else if (parameters.inputModel == SAKGlobal::Ihex){
         QStringList strList = rawData.split(' ');
         for (QString str:strList){
-            data.append(static_cast<int8_t>(QString(str).toInt(nullptr, 16)));
+            data.append(static_cast<int8_t>(QString(str).toInt(Q_NULLPTR, 16)));
         }
     }else if (parameters.inputModel == SAKGlobal::Iascii){
         data = rawData.toLatin1();

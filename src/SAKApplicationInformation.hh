@@ -35,7 +35,7 @@ public:
     QString copyright();
     QString business();
 private:
-    SAKApplicationInformation(QObject *parent = nullptr);
+    SAKApplicationInformation(QObject *parent = Q_NULLPTR);
     ~SAKApplicationInformation();
 
     static SAKApplicationInformation *thisInstance;

@@ -24,7 +24,7 @@ class SAKMoreSettingsWidget:public QWidget
 {
     Q_OBJECT
 public:
-    SAKMoreSettingsWidget(SAKDebugPage *debugPage, QWidget *parent = nullptr);
+    SAKMoreSettingsWidget(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKMoreSettingsWidget();
 private:
     SAKDebugPage *_debugPage;

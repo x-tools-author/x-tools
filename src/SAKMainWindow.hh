@@ -35,20 +35,20 @@ class SAKMainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit SAKMainWindow(QWidget *parent = nullptr);
+    explicit SAKMainWindow(QWidget *parent = Q_NULLPTR);
     ~SAKMainWindow();
 
 protected:
       bool eventFilter(QObject *obj, QEvent *event);
 
 private:
-    QTabWidget *tabWidget               = nullptr;
-    Ui::SAKMainWindow *ui               = nullptr;
-    QMenu *toolsMenu                    = nullptr;
-    QAction *defaultStyleSheetAction    = nullptr;
-    SAKUpdateManager *updateManager     = nullptr;
-    SAKMoreInformation *moreInformation = nullptr;
-    SAKQRCodeDialog *qrCodeDialog       = nullptr;
+    QTabWidget *tabWidget               = Q_NULLPTR;
+    Ui::SAKMainWindow *ui               = Q_NULLPTR;
+    QMenu *toolsMenu                    = Q_NULLPTR;
+    QAction *defaultStyleSheetAction    = Q_NULLPTR;
+    SAKUpdateManager *updateManager     = Q_NULLPTR;
+    SAKMoreInformation *moreInformation = Q_NULLPTR;
+    SAKQRCodeDialog *qrCodeDialog       = Q_NULLPTR;
 
     QTranslator qtTranslator;
     QTranslator qtBaeTranslator;

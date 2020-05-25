@@ -55,8 +55,8 @@ SAKOtherSettingsManager::~SAKOtherSettingsManager()
     delete transmissionSettings;
     delete autoResponseSettingWidget;
 
-    transmissionSettings = nullptr;
-    autoResponseSettingWidget = nullptr;
+    transmissionSettings = Q_NULLPTR;
+    autoResponseSettingWidget = Q_NULLPTR;
 }
 
 void SAKOtherSettingsManager::onAutoresponseSettingPushbuttonClicked()

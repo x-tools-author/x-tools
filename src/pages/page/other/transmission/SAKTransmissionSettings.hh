@@ -26,18 +26,18 @@ class SAKTransmissionSettings:public QWidget
 {
     Q_OBJECT
 public:
-    SAKTransmissionSettings(SAKDebugPage *debugPage, QWidget *parent = nullptr);
+    SAKTransmissionSettings(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKTransmissionSettings();
 private:
-    QWidget                     *serialPortWidget       = nullptr;
-    QWidget                     *udpWidget              = nullptr;
-    QWidget                     *tcpWidget              = nullptr;
-    SAKDebugPage                *_debugPage             = nullptr;
-    Ui::SAKTransmissionSettings    *ui                     = nullptr;
+    QWidget                     *serialPortWidget       = Q_NULLPTR;
+    QWidget                     *udpWidget              = Q_NULLPTR;
+    QWidget                     *tcpWidget              = Q_NULLPTR;
+    SAKDebugPage                *_debugPage             = Q_NULLPTR;
+    Ui::SAKTransmissionSettings    *ui                     = Q_NULLPTR;
 
-    SAKTransmissionPage            *udpTransmission        = nullptr;
-    SAKTransmissionPage            *tcpTransmission        = nullptr;
-    SAKTransmissionPage            *serialPortTransmission = nullptr;
+    SAKTransmissionPage            *udpTransmission        = Q_NULLPTR;
+    SAKTransmissionPage            *tcpTransmission        = Q_NULLPTR;
+    SAKTransmissionPage            *serialPortTransmission = Q_NULLPTR;
 };
 
 #endif

@@ -55,7 +55,7 @@ SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
     statisticsManager       = new SAKStatisticsManager(this, this);
     debugPageInputManager   = new SAKDebugPageInputManager(this, this);
 #ifdef SAK_IMPORT_CHARTS_MODULE
-    dataVisualizationManager= nullptr;
+    dataVisualizationManager= Q_NULLPTR;
 #endif
 
     _readWriteParameters.waitForReadyReadTime = MINI_READ_WRITE_WATINGT_TIME;
@@ -149,7 +149,7 @@ void SAKDebugPage::refreshDevice()
 
 QWidget *SAKDebugPage::controllerWidget()
 {
-    return nullptr;
+    return Q_NULLPTR;
 }
 
 void SAKDebugPage::setUpController()
@@ -368,7 +368,7 @@ void SAKDebugPage::on_dataVisualizationPushButton_clicked()
         dataVisualizationManager = new SAKDataVisualizationManager(this);
         dataVisualizationManager->show();
         connect(dataVisualizationManager, &SAKDataVisualizationManager::destroyed, [&](){
-            dataVisualizationManager = nullptr;
+            dataVisualizationManager = Q_NULLPTR;
         });
     }
 #else

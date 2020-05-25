@@ -15,7 +15,7 @@
 
 #include "QtAppStyleApi.hh"
 
-QtAppStyleApi *QtAppStyleApi::_this = nullptr;
+QtAppStyleApi *QtAppStyleApi::_this = Q_NULLPTR;
 QtAppStyleApi *QtAppStyleApi::instance()
 {
     if (_this){
@@ -36,7 +36,7 @@ QtAppStyleApi::QtAppStyleApi(QObject *parent)
 {
     _this = this;
 
-    QAction *styleAction = nullptr;
+    QAction *styleAction = Q_NULLPTR;
     QActionGroup *styleActionGroup = new QActionGroup(this);
     QStringList styleKeys = QStyleFactory::keys();
     for (QString style : styleKeys) {

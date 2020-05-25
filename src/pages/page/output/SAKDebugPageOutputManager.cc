@@ -116,7 +116,7 @@ void SAKDebugPageOutputManager::setLineWrapMode()
 
 void SAKDebugPageOutputManager::saveOutputTextToFile()
 {
-    QString outFileName = QFileDialog::getSaveFileName(nullptr,
+    QString outFileName = QFileDialog::getSaveFileName(Q_NULLPTR,
                                                        tr("保存文件"),
                                                        QString("./%1.txt")
                                                        .arg(QDateTime::currentDateTime().toString("yyyyMMddhhmmss")),

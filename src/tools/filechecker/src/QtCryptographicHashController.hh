@@ -31,7 +31,7 @@ class QtCryptographicHashController : public QWidget
 {
     Q_OBJECT
 public:
-    QtCryptographicHashController(QWidget *parent = nullptr);
+    QtCryptographicHashController(QWidget *parent = Q_NULLPTR);
 
     void setUiEnable(bool enable);
     QString fileName(){return _fileName;}

@@ -153,7 +153,7 @@ void SAKUpdateManager::checkForUpdateFinished()
     checkForUpdatePushButton->setEnabled(true);
 
     delete networkReply;
-    networkReply = nullptr;
+    networkReply = Q_NULLPTR;
 }
 
 SAKUpdateManager::UpdateInfo SAKUpdateManager::extractUpdateInfo(QByteArray jsonObjectData)

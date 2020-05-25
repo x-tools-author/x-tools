@@ -26,7 +26,7 @@ class SAKSaveOutputDataSettings:public QDialog
 {
     Q_OBJECT
 public:
-    SAKSaveOutputDataSettings(QWidget *parent = nullptr);
+    SAKSaveOutputDataSettings(QWidget *parent = Q_NULLPTR);
     ~SAKSaveOutputDataSettings();
 
     /**

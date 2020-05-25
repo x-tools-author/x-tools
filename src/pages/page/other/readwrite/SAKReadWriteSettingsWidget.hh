@@ -25,9 +25,9 @@ class SAKReadWriteSettingsWidget:public QDialog
 {
     Q_OBJECT
 public:
-    SAKReadWriteSettingsWidget(SAKDebugPage *debugPage, QWidget* parent = nullptr);
+    SAKReadWriteSettingsWidget(SAKDebugPage *debugPage, QWidget* parent = Q_NULLPTR);
 private:
-    Ui::SAKReadWriteSettingsWidget *ui = nullptr;
+    Ui::SAKReadWriteSettingsWidget *ui = Q_NULLPTR;
 
     QComboBox *readParametersComboBox;
     QComboBox *writeParametersComboBox;

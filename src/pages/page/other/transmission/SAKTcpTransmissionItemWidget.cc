@@ -19,7 +19,7 @@
 SAKTcpTransmissionItemWidget::SAKTcpTransmissionItemWidget(SAKDebugPage *_debugPage, QWidget *parent)
     :SAKBaseTransmissionItemWidget (_debugPage, parent)
     ,ui (new Ui::SAKTcpTransmissionItemWidget)
-    ,tcpSocket (nullptr)
+    ,tcpSocket (Q_NULLPTR)
 {
     ui->setupUi(this);
 
@@ -63,7 +63,7 @@ void SAKTcpTransmissionItemWidget::on_enableCheckBox_clicked()
             }
             disconnect(tcpSocket, &QTcpSocket::readyRead, this, &SAKTcpTransmissionItemWidget::read);
             delete tcpSocket;
-            tcpSocket = nullptr;
+            tcpSocket = Q_NULLPTR;
             this->setUiEnable(true);
         }
     };

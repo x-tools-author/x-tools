@@ -23,9 +23,9 @@ class SAKMoreInformation:public QDialog
 {
     Q_OBJECT
 public:
-    SAKMoreInformation(QWidget* parent = nullptr);
+    SAKMoreInformation(QWidget* parent = Q_NULLPTR);
 private:
-    Ui::SAKMoreInformation* ui = nullptr;
+    Ui::SAKMoreInformation* ui = Q_NULLPTR;
     QTextBrowser *textBrowserHistory;
 };
 

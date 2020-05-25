@@ -23,7 +23,7 @@ class SAKDebugPageOutputManager:public QObject
 {
     Q_OBJECT
 public:
-    SAKDebugPageOutputManager(SAKDebugPage *debugPage, QObject *parent = nullptr);
+    SAKDebugPageOutputManager(SAKDebugPage *debugPage, QObject *parent = Q_NULLPTR);
     ~SAKDebugPageOutputManager();
 
     /**

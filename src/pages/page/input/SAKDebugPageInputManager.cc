@@ -121,7 +121,7 @@ void SAKDebugPageInputManager::changeCycleTime()
 
 void SAKDebugPageInputManager::saveInputDataToFile()
 {
-    QString fileName = QFileDialog::getSaveFileName(nullptr,
+    QString fileName = QFileDialog::getSaveFileName(Q_NULLPTR,
                                                     tr("保存文件"),
                                                     QStandardPaths::writableLocation(QStandardPaths::DesktopLocation)+QString("input.txt"),
                                                     QString("Text (*.txt)"));
@@ -145,7 +145,7 @@ void SAKDebugPageInputManager::saveInputDataToFile()
 
 void SAKDebugPageInputManager::readinFile()
 {
-    QString fileName = QFileDialog::getOpenFileName(nullptr, tr("打开文件"));
+    QString fileName = QFileDialog::getOpenFileName(Q_NULLPTR, tr("打开文件"));
     if (!fileName.isEmpty()){
         QFile file(fileName);
         if(file.open(QFile::ReadOnly)){

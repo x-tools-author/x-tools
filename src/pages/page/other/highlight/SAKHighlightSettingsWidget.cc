@@ -115,7 +115,7 @@ bool SAKHighlightSettingsWidget::eventFilter(QObject *watched, QEvent *event)
 
 void SAKHighlightSettingsWidget::clearLabel()
 {
-    QPushButton *bt = nullptr;
+    QPushButton *bt = Q_NULLPTR;
     while (!labelList.isEmpty()) {
         bt = labelList.takeFirst();
         bt->deleteLater();

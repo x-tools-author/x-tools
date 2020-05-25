@@ -169,8 +169,8 @@ void SAKMainWindow::addTab()
      * 隐藏关闭按钮（必须在调用setTabsClosable()函数后设置，否则不生效）
      */
     for (int i = 0; i < tabWidget->count(); i++){
-        tabWidget->tabBar()->setTabButton(i, QTabBar::RightSide, nullptr);
-        tabWidget->tabBar()->setTabButton(i, QTabBar::LeftSide, nullptr);
+        tabWidget->tabBar()->setTabButton(i, QTabBar::RightSide, Q_NULLPTR);
+        tabWidget->tabBar()->setTabButton(i, QTabBar::LeftSide, Q_NULLPTR);
     }
 }
 
@@ -180,7 +180,7 @@ void SAKMainWindow::addTool()
     addTool(tr("文件校验工具"),     new QtCryptographicHashController);
 #endif
 
-    QAction *action = nullptr;
+    QAction *action = Q_NULLPTR;
     action = new QAction(tr("CRC计算器"), this);
     toolsMenu->addAction(action);
     connect(action, &QAction::triggered, this, &SAKMainWindow::createCRCCalculator);
@@ -469,7 +469,7 @@ void SAKMainWindow::openIODeviceWindow()
 
 QWidget *SAKMainWindow::getDebugPage(int type)
 {
-    QWidget *widget = nullptr;
+    QWidget *widget = Q_NULLPTR;
     switch (type) {
     case SAKGlobal::SAKEnumDebugPageTypeUDP:
         widget = new SAKUdpDebugPage;

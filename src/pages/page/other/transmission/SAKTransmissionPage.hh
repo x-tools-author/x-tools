@@ -27,7 +27,7 @@ class SAKTransmissionPage:public QWidget
 {
     Q_OBJECT
 public:
-    SAKTransmissionPage(SAKDebugPage *debugPage, QWidget *parent = nullptr);
+    SAKTransmissionPage(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKTransmissionPage();
 
     enum TransmissionType {

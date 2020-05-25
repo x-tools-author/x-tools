@@ -20,7 +20,7 @@
 
 SAKSerialPortDebugPage::SAKSerialPortDebugPage(QWidget *parent)
     :SAKDebugPage (SAKGlobal::SAKEnumDebugPageTypeCOM, parent)
-    ,serialPortAssistant (nullptr)
+    ,serialPortAssistant (Q_NULLPTR)
     ,controller (new SAKSerialPortDeviceController)
 {
     setUpController();
@@ -53,7 +53,7 @@ void SAKSerialPortDebugPage::changeDeviceStatus(bool opened)
         if (serialPortAssistant){
             serialPortAssistant->terminate();
             delete serialPortAssistant;
-            serialPortAssistant = nullptr;
+            serialPortAssistant = Q_NULLPTR;
         }
     }
     emit deviceStatusChanged(opened);
@@ -65,7 +65,7 @@ void SAKSerialPortDebugPage::openOrColoseDevice()
         switchPushButton->setText(tr("打开"));
         serialPortAssistant->terminate();
         delete serialPortAssistant;
-        serialPortAssistant = nullptr;
+        serialPortAssistant = Q_NULLPTR;
 
         setUiEnable(true);
         emit deviceStatusChanged(false);

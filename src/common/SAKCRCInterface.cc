@@ -25,7 +25,7 @@ QStringList SAKCRCInterface::supportedParameterModels()
     modelStrings.clear();
     QMetaEnum models = QMetaEnum::fromType<CRCModel>();
 
-    const char *ch = nullptr;
+    const char *ch = Q_NULLPTR;
     for (int i = 0; i < models.keyCount(); i++) {
         ch = models.valueToKey(i);
         if (ch){

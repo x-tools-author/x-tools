@@ -67,7 +67,7 @@ void SAKTransmissionPage::on_addItemPushButton_clicked()
 {    
     QListWidgetItem *item = new QListWidgetItem(listWidget);
     listWidget->insertItem(listWidget->count(), item);
-    QWidget *itemWidget = nullptr;
+    QWidget *itemWidget = Q_NULLPTR;
     switch (transmissionType){
     case SerialPortTransmission:
         itemWidget = new SAKSerialPortTransmissionItemWidget(_debugPage, this);

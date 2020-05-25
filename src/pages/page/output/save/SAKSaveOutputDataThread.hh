@@ -20,7 +20,7 @@ class SAKSaveOutputDataThread:public QThread
 {
     Q_OBJECT
 public:
-    SAKSaveOutputDataThread(QObject *parent = nullptr);
+    SAKSaveOutputDataThread(QObject *parent = Q_NULLPTR);
 
     void writeDataToFile(QByteArray data, SAKSaveOutputDataSettings::SaveOutputDataParamters parameters);
 private:

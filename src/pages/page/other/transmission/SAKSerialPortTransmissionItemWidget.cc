@@ -28,7 +28,7 @@ SAKSerialPortTransmissionItemWidget::SAKSerialPortTransmissionItemWidget(SAKDebu
     :SAKBaseTransmissionItemWidget (_debugPage, parent)
 #ifdef SAK_IMPORT_COM_MODULE
     ,ui (new Ui::SAKSerialPortTransmissionItemWidget)
-    ,serialPort (nullptr)
+    ,serialPort (Q_NULLPTR)
 #endif
 {    
 #ifdef SAK_IMPORT_COM_MODULE
@@ -89,7 +89,7 @@ void SAKSerialPortTransmissionItemWidget::on_enableCheckBox_clicked()
             disconnect(serialPort, &QSerialPort::readyRead, this, &SAKSerialPortTransmissionItemWidget::read);
             serialPort->close();
             serialPort->deleteLater();
-            serialPort = nullptr;
+            serialPort = Q_NULLPTR;
             this->setUiEnable(true);
         }
     };

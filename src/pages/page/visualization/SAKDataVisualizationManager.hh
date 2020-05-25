@@ -25,7 +25,7 @@ class SAKDataVisualizationManager:public QWidget
 {
     Q_OBJECT
 public:
-    SAKDataVisualizationManager(SAKDebugPage *page, QWidget *parent = nullptr);
+    SAKDataVisualizationManager(SAKDebugPage *page, QWidget *parent = Q_NULLPTR);
     ~SAKDataVisualizationManager();
 private:
     SAKDebugPage *debugPage;

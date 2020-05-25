@@ -15,9 +15,9 @@
 
 SAKCodingStyle::SAKCodingStyle(QObject *parent)
     :QObject (parent)
-    ,obj1 (nullptr)
-    ,obj2 (nullptr)
-    ,obj3 (nullptr)
+    ,obj1 (Q_NULLPTR)
+    ,obj2 (Q_NULLPTR)
+    ,obj3 (Q_NULLPTR)
 {
 
 }

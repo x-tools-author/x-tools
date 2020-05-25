@@ -20,7 +20,7 @@
 
 SAKUdpDebugPage::SAKUdpDebugPage(QWidget *parent)
     :SAKDebugPage (SAKGlobal::SAKEnumDebugPageTypeUDP, parent)
-    ,udpDevice (nullptr)
+    ,udpDevice (Q_NULLPTR)
     ,udpDeviceController (new SAKUdpDeviceController)
 {
     setUpController();
@@ -56,7 +56,7 @@ void SAKUdpDebugPage::changeDeviceStatus(bool opened)
         if (udpDevice){
             udpDevice->terminate();
             delete udpDevice;
-            udpDevice = nullptr;
+            udpDevice = Q_NULLPTR;
         }
     }
     emit deviceStatusChanged(opened);
@@ -68,7 +68,7 @@ void SAKUdpDebugPage::openOrColoseDevice()
         switchPushButton->setText(tr("打开"));
         udpDevice->terminate();
         delete udpDevice;
-        udpDevice = nullptr;
+        udpDevice = Q_NULLPTR;
 
         setUiEnable(true);
         emit deviceStatusChanged(false);

@@ -21,7 +21,7 @@ class SAKTransmissionItemDelegate:public QAbstractItemDelegate
 {
     Q_OBJECT
 public:
-    SAKTransmissionItemDelegate(SAKDebugPage *page, QObject *parent = nullptr);
+    SAKTransmissionItemDelegate(SAKDebugPage *page, QObject *parent = Q_NULLPTR);
 
     enum TransmissionItemType {
         SerialPortType,
