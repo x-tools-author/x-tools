@@ -28,12 +28,12 @@ public:
     SAKSerialPortDeviceController(QWidget *parent = Q_NULLPTR);
     ~SAKSerialPortDeviceController();
 
-    enum QSerialPort::DataBits  dataBits();
-    enum QSerialPort::StopBits  stopBits();
-    enum QSerialPort::Parity    parity();
-
-    QString                     name();
-    qint32                      baudRate();
+    enum QSerialPort::DataBits dataBits();
+    enum QSerialPort::StopBits stopBits();
+    enum QSerialPort::Parity parity();
+    enum QSerialPort::FlowControl flowControl();
+    QString name();
+    qint32 baudRate();
 
     void refresh();
     void setUiEnable(bool enable);

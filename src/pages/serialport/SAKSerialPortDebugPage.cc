@@ -76,7 +76,9 @@ void SAKSerialPortDebugPage::openOrColoseDevice()
         const QSerialPort::DataBits dataBits = controller->dataBits();
         const QSerialPort::StopBits stopBits = controller->stopBits();
         const QSerialPort::Parity parity = controller->parity();
-        serialPortAssistant = new SAKSerialPortDevice(name, baudRate, dataBits, stopBits, parity, this);
+        const QSerialPort::FlowControl flowControl = controller->flowControl();
+
+        serialPortAssistant = new SAKSerialPortDevice(name, baudRate, dataBits, stopBits, parity, flowControl, this);
 
         connect(this, &SAKSerialPortDebugPage::writeDataRequest,serialPortAssistant, &SAKSerialPortDevice::writeBytes);
 

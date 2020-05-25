@@ -21,25 +21,27 @@ class SAKSerialPortDevice:public QThread
     Q_OBJECT
 public:
     SAKSerialPortDevice(const QString name,
-                           const qint32 baudRate,
-                           const QSerialPort::DataBits dataBits,
-                           const QSerialPort::StopBits stopBits,
-                           const QSerialPort::Parity parity,
-                           SAKSerialPortDebugPage *debugPage,
-                           QObject *parent = Q_NULLPTR);
+                        const qint32 baudRate,
+                        const QSerialPort::DataBits dataBits,
+                        const QSerialPort::StopBits stopBits,
+                        const QSerialPort::Parity parity,
+                        const QSerialPort::FlowControl flowControl,
+                        SAKSerialPortDebugPage *debugPage,
+                        QObject *parent = Q_NULLPTR);
     ~SAKSerialPortDevice();
     void readBytes();
     void writeBytes(QByteArray data);
 private:
     void run();    
 private:
-    const QString               _name;
-    const qint32                _baudRate;
-    const QSerialPort::DataBits _dataBits;
-    const QSerialPort::StopBits _stopBits;
-    const QSerialPort::Parity   _parity;
-    QSerialPort                 *serialPort;
-    SAKSerialPortDebugPage *debugPage;
+    const QString                   _name;
+    const qint32                    _baudRate;
+    const QSerialPort::DataBits     _dataBits;
+    const QSerialPort::StopBits     _stopBits;
+    const QSerialPort::Parity       _parity;
+    const QSerialPort::FlowControl  _flowControl;
+    QSerialPort                     *serialPort;
+    SAKSerialPortDebugPage          *debugPage;
 
 signals:
     void bytesRead(QByteArray);

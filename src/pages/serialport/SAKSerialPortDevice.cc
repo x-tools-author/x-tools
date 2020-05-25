@@ -15,18 +15,21 @@
 #include "SAKSerialPortDebugPage.hh"
 
 SAKSerialPortDevice::SAKSerialPortDevice(const QString name,
-                                               const qint32 baudRate,
-                                               const QSerialPort::DataBits dataBits,
-                                               const QSerialPort::StopBits stopBits,
-                                               const QSerialPort::Parity parity, SAKSerialPortDebugPage *debugPage,
-                                               QObject *parent)
-    :QThread (parent)
-    ,_name (name)
-    ,_baudRate (baudRate)
-    ,_dataBits (dataBits)
-    ,_stopBits (stopBits)
-    ,_parity (parity)
-    ,debugPage (debugPage)
+                                         const qint32 baudRate,
+                                         const QSerialPort::DataBits dataBits,
+                                         const QSerialPort::StopBits stopBits,
+                                         const QSerialPort::Parity parity,
+                                         const QSerialPort::FlowControl flowControl,
+                                         SAKSerialPortDebugPage *debugPage,
+                                         QObject *parent)
+    :QThread(parent)
+    ,_name(name)
+    ,_baudRate(baudRate)
+    ,_dataBits(dataBits)
+    ,_stopBits(stopBits)
+    ,_parity(parity)
+    ,_flowControl(flowControl)
+    ,debugPage(debugPage)
 {
     moveToThread(this);
 }
@@ -47,6 +50,7 @@ void SAKSerialPortDevice::run()
     serialPort->setDataBits(_dataBits);
     serialPort->setStopBits(_stopBits);
     serialPort->setParity(_parity);
+    serialPort->setFlowControl(_flowControl);
 
 
     connect(serialPort, &QSerialPort::readyRead, this, &SAKSerialPortDevice::readBytes);

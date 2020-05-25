@@ -82,6 +82,11 @@ enum QSerialPort::Parity SAKSerialPortDeviceController::parity()
     return static_cast<QSerialPort::Parity>(parityComboBox->currentData().toInt());
 }
 
+enum QSerialPort::FlowControl SAKSerialPortDeviceController::flowControl()
+{
+     return static_cast<QSerialPort::FlowControl>(flowControlComboBox->currentData().toInt());
+}
+
 QString SAKSerialPortDeviceController::name()
 {
     QString portName = serialportsComboBox->currentText();
