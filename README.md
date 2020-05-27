@@ -14,8 +14,8 @@ Qt 5.12.x，other versions may be available, but the project authors do not fix 
 
 ## About the Project
 
-* Author：wuuhii
-* E-mail：wuuhii@outlook.com
+* Author：Qter
+* E-mail：qsak@foxmail.com
 * Offical：<https://www.qsak.pro/>
 * User Communication: 952218522 (QQ Group)
 * Qt Technology Communication：723516989 (QQ Group)
