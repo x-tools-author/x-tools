@@ -6,17 +6,13 @@
 
 ```txt
 openssl
-    ├─android
-    ├─linux
-    │  ├─x86-1.1.1d-gcc7.3-shared
-    │  ├─x86-1.1.1d-gcc7.3-static
-    │  ├─x86_64-1.1.1d-gcc7.3-shared
-    │  └─x86_64-1.1.1d-gcc7.3-static
-    ├─macos
-    ├─pi3
-    └─windows
-        ├─x86-1.1.1d-msvc2017-md
-        ├─x86-1.1.1d-msvc2017-mt
-        ├─x86_64-1.1.1d-msvc2017-md
-        └─x86_64-1.1.1d-msvc2017-mt
+    └─1.1.1g
+        ├─linux
+        │  ├─amd64
+        │  ├─armv7
+        │  ├─armv8
+        │  └─x86
+        └─windows
+            ├─amd64
+            └─x86
 ```
