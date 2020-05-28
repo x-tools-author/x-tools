@@ -9,19 +9,17 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef SAKCOMMOMINTERFACE_HH
-#define SAKCOMMOMINTERFACE_HH
+#ifndef SAKINTERFACE_HH
+#define SAKINTERFACE_HH
 
 #include <QObject>
 
-class SAKCommonInterface:public QObject
+/// @brief 该类提供了一些接口，用来替代新版本Qt中引入的函数，目的是使得旧版本Qt也能编译本工程
+class SAKInterface:public QObject
 {
-    /*
-     * 该类提供了一些接口，用来替代新版本Qt中引入的函数，目的是使得旧版本Qt也能编译本工程
-     */
     Q_OBJECT
 public:
-    SAKCommonInterface(QObject *parent = Q_NULLPTR);
+    SAKInterface(QObject *parent = Q_NULLPTR);
 
     QByteArray byteArrayToHex(QByteArray &array, char separator);
 };

@@ -9,15 +9,15 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#include "SAKCommonInterface.hh"
+#include "SAKInterface.hh"
 
-SAKCommonInterface::SAKCommonInterface(QObject *parent)
+SAKInterface::SAKInterface(QObject *parent)
     :QObject (parent)
 {
 
 }
 
-QByteArray SAKCommonInterface::byteArrayToHex(QByteArray &array, char separator)
+QByteArray SAKInterface::byteArrayToHex(QByteArray &array, char separator)
 {
     if (array.isEmpty()){
         return array;
