@@ -12,7 +12,7 @@
 #include <QFile>
 #include <QTextStream>
 
-#include "SAKCommonInterface.hh"
+#include "SAKInterface.hh"
 #include "SAKSaveOutputDataThread.hh"
 #include "SAKSaveOutputDataSettings.hh"
 
@@ -48,8 +48,8 @@ void SAKSaveOutputDataThread::writeDataToFile(QByteArray data, SAKSaveOutputData
         if (file.open(QFile::WriteOnly | QFile::Text | QFile::Append)){
             /// @brief  QByteArray::toHex(char separator)是Qt5.9中引入的
 #if (QT_VERSION_MINOR < 9)
-            SAKCommonInterface commonInterface;
-            textStream << QString(commonInterface.byteArrayToHex(data, ' ')) << QString("\n");
+            SAKInterface interface;
+            textStream << QString(interface.byteArrayToHex(data, ' ')) << QString("\n");
 #else
             textStream << QString(data.toHex(' ')) << QString("\n");
 #endif
