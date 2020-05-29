@@ -75,7 +75,11 @@ public:
      */
     void writeRawData(QString rawData, int textFormat);
 
-    /// 输出内部信息
+    /**
+     * @brief outputMessage 向ui输出信息
+     * @param msg 带输出信息
+     * @param isInfo true表示一般信息，false表示错误、警告信息
+     */
     void outputMessage(QString msg, bool isInfo = true);
 private:
     SAKDevice *device;
