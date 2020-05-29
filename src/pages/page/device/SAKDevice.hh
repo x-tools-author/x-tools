@@ -22,11 +22,9 @@ class SAKDebugPage;
 class SAKDevice:public QThread
 {
     Q_OBJECT
-private:
+public:
     SAKDevice(QObject *parent = Q_NULLPTR);
     ~SAKDevice();
-public:
-    friend SAKDebugPage;
 
     /**
      * @brief wakeMe 唤醒线程
@@ -38,20 +36,24 @@ public:
      * @param bytes 待发送数据
      */
     void writeBytes(QByteArray bytes);
-protected:
-    QMutex threadMutex;
-    QWaitCondition threadWaitCondition;
-protected:
-    /// @brief 提取待发送数据,无数据则返回空数据
-    QByteArray takeWaitingForWrittingBytes();
-private:
-    QMutex waitingForWritingBytesListMutex;
-    QList<QByteArray> waitingForWritingBytesList;
 signals:
     /// @brief 数据发送成功后触发该信号
     void bytesWritten(QByteArray bytes);
     /// @brief 数据读取后触发该信号
     void bytesRead(QByteArray bytes);
+    /// @brief 输出消息
+    void messageChanged(QString msg, bool isInfo);
+    /// @brief 设备开关状态发送改变是触发该信号
+    void deviceStateChanged(bool isOpened);
+protected:
+    QMutex threadMutex;
+    QWaitCondition threadWaitCondition;
+    /*************************************************************************/
+    /// @brief 提取待发送数据,无数据则返回空数据
+    QByteArray takeWaitingForWrittingBytes();
+private:
+    QMutex waitingForWritingBytesListMutex;
+    QList<QByteArray> waitingForWritingBytesList;
 };
 
 #endif

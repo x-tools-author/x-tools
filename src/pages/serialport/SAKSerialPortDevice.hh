@@ -17,8 +17,10 @@
 #include <QSerialPort>
 #include <QWaitCondition>
 
+#include "SAKDevice.hh"
+
 class SAKSerialPortDebugPage;
-class SAKSerialPortDevice:public QThread
+class SAKSerialPortDevice:public SAKDevice
 {
     Q_OBJECT
 public:
@@ -31,17 +33,6 @@ public:
                         SAKSerialPortDebugPage *debugPage,
                         QObject *parent = Q_NULLPTR);
     ~SAKSerialPortDevice();
-
-    /**
-     * @brief writeBytes 发送数据接口
-     * @param data 大发送数据
-     */
-    void writeBytes(QByteArray data);
-
-    /**
-     * @brief wakeMe 唤醒线程
-     */
-    void wakeMe();
 private:
     void run();    
 private:
@@ -53,9 +44,6 @@ private:
     const QSerialPort::FlowControl  _flowControl;
     QSerialPort                     *serialPort;
     SAKSerialPortDebugPage          *debugPage;
-    QMutex threadMutex;
-    QWaitCondition threadWaitCondition;
-    QList<QByteArray> waitingForWrittenBytesList;
 signals:
     void bytesRead(QByteArray);
     void bytesWriten(QByteArray);

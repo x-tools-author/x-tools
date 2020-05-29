@@ -61,6 +61,11 @@ public:
     SAKDebugPage(int type, QWidget *parent = Q_NULLPTR);
     ~SAKDebugPage();        
 
+    /**
+     * @brief changeDeviceState 更改设备状态
+     * @param isOpened true表示设备已打开，false表示设备已关闭
+     */
+    void changeDeviceState(bool isOpened);
 public:
     /**
      * @brief write             -- 写数据
@@ -81,6 +86,12 @@ public:
      * @param isInfo true表示一般信息，false表示错误、警告信息
      */
     void outputMessage(QString msg, bool isInfo = true);
+protected:
+    /**
+     * @brief setupDevice 初始化与设备有关的信号关联
+     * @brief dev 设备实例指针
+     */
+    void setupDevice(SAKDevice *dev);
 private:
     SAKDevice *device;
 signals:

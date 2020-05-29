@@ -22,7 +22,7 @@ SAKSerialPortDevice::SAKSerialPortDevice(const QString name,
                                          const QSerialPort::FlowControl flowControl,
                                          SAKSerialPortDebugPage *debugPage,
                                          QObject *parent)
-    :QThread(parent)
+    :SAKDevice(parent)
     ,_name(name)
     ,_baudRate(baudRate)
     ,_dataBits(dataBits)
@@ -39,16 +39,6 @@ SAKSerialPortDevice::~SAKSerialPortDevice()
 
 }
 
-void SAKSerialPortDevice::writeBytes(QByteArray data)
-{
-    waitingForWrittenBytesList.append(data);
-}
-
-void SAKSerialPortDevice::wakeMe()
-{
-    threadWaitCondition.wakeAll();
-}
-
 void SAKSerialPortDevice::run()
 {
     serialPort = new QSerialPort;
@@ -61,7 +51,7 @@ void SAKSerialPortDevice::run()
 
     if (serialPort->open(QSerialPort::ReadWrite)){
         emit deviceStatuChanged(true);
-        while (1){
+        while (true){
             /// @brief 优雅地退出线程
             if (isInterruptionRequested()){
                 break;
@@ -75,14 +65,18 @@ void SAKSerialPortDevice::run()
             }
 
             /// @brief 写入数据
-            while (waitingForWrittenBytesList.length()){
-                QByteArray var = waitingForWrittenBytesList.takeFirst();
-                qint64 ret = serialPort->write(var);
-                serialPort->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
-                if (ret == -1){
-                    emit messageChanged(tr("串口发送数据失败：") + serialPort->errorString(), false);
+            while (true){
+                QByteArray var = takeWaitingForWrittingBytes();
+                if (var.length()){
+                    qint64 ret = serialPort->write(var);
+                    serialPort->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
+                    if (ret == -1){
+                        emit messageChanged(tr("串口发送数据失败：") + serialPort->errorString(), false);
+                    }else{
+                        emit bytesWriten(var);
+                    }
                 }else{
-                    emit bytesWriten(var);
+                    break;
                 }
             }
 

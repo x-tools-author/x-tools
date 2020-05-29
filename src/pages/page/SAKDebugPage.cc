@@ -42,7 +42,7 @@
 
 SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
     :QWidget(parent)
-    ,device(new SAKDevice)
+    ,device(Q_NULLPTR)
     ,ui (new Ui::SAKDebugPage)
     ,debugPageType (type)
 {
@@ -79,18 +79,27 @@ SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
 
 SAKDebugPage::~SAKDebugPage()
 {
-    device->requestInterruption();
-    device->wakeMe();
-    device->exit();
-    device->wait();
-    delete device;
-    device = Q_NULLPTR;
+    if (device){
+        device->requestInterruption();
+        device->wakeMe();
+        device->exit();
+        device->wait();
+        delete device;
+        device = Q_NULLPTR;
+    }
 
     delete ui;
 #ifdef SAK_IMPORT_CHARTS_MODULE
     delete dataVisualizationManager;
     dataVisualizationManager = Q_NULLPTR;
 #endif
+}
+
+void SAKDebugPage::changeDeviceState(bool isOpened)
+{
+    sendPushButton->setEnabled(isOpened);
+    sendPresetPushButton->setEnabled(isOpened);
+    cycleEnableCheckBox->setEnabled(isOpened);
 }
 
 void SAKDebugPage::write(QByteArray data)
@@ -123,6 +132,19 @@ void SAKDebugPage::outputMessage(QString msg, bool isInfo)
     clearInfoTimer.start();
 }
 
+void SAKDebugPage::setupDevice(SAKDevice *dev)
+{
+    if (dev){
+        device = dev;
+
+        connect(this, &SAKDebugPage::writeDataRequest, dev, &SAKDevice::writeBytes);
+        connect(device, &SAKDevice::bytesWritten, this, &SAKDebugPage::bytesWritten);
+        connect(device, &SAKDevice::bytesRead, this, &SAKDebugPage::bytesRead);
+        connect(device, &SAKDevice::messageChanged, this, &SAKDebugPage::outputMessage);
+        connect(device, &SAKDevice::deviceStateChanged, this, &SAKDebugPage::changeDeviceState);
+    }
+}
+
 struct SAKDebugPage::ReadWriteParameters SAKDebugPage::readWriteParameters()
 {
     ReadWriteParameters parameters;
@@ -153,7 +175,16 @@ void SAKDebugPage::setReadWriteParameters(struct ReadWriteParameters parameters)
 
 void SAKDebugPage::openOrColoseDevice()
 {
-
+    if (device->isRunning()){
+        device->requestInterruption();
+        device->wakeMe();
+        device->exit();
+        device->wait();
+        switchPushButton->setText(tr("打开"));
+    }else{
+        device->start();
+        switchPushButton->setText(tr("关闭"));
+    }
 }
 
 void SAKDebugPage::refreshDevice()
