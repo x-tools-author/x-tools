@@ -11,6 +11,7 @@
  */
 #include <QDebug>
 #include <QApplication>
+
 #include "SAKUdpDevice.hh"
 #include "SAKUdpDebugPage.hh"
 
@@ -52,7 +53,6 @@ void SAKUdpDevice::setBroadcastPort(quint16 port)
 
 void SAKUdpDevice::addMulticastInfo(QString address, quint16 port)
 {
-    qDebug() << address;
     parametersContextMutex.lock();
     ParametersContext::MulticastInfo info{address, port};
     parametersContext.multicastInfoList.append(info);
@@ -83,7 +83,7 @@ void SAKUdpDevice::setMulticastEnable(bool enable)
 
 void SAKUdpDevice::run()
 {
-    udpSocket = new QUdpSocket(this);
+    udpSocket = new QUdpSocket;
 
     bool bindResult = false;
     if (enableCustomLocalSetting){
@@ -92,45 +92,52 @@ void SAKUdpDevice::run()
         bindResult = udpSocket->bind();
     }
 
-    if (bindResult){
-        if (udpSocket->open(QUdpSocket::ReadWrite)){
-            emit deviceStateChanged(true);
-        }else{
-            delete udpSocket;
-            emit deviceStateChanged(false);
-            emit messageChanged(tr("无法打开设备")+udpSocket->errorString(), false);
-            return;
-        }
-    }else{
+    if (!bindResult){
         delete udpSocket;
         emit deviceStateChanged(false);
         emit messageChanged(tr("无法绑定设备")+udpSocket->errorString(), false);
         return;
     }
 
-    while (true){
-        /// @brief 响应外部中断请求
-        if (isInterruptionRequested()){
-            break;
-        }
+    if (udpSocket->open(QUdpSocket::ReadWrite)){
+        emit deviceStateChanged(true);
 
-        /// @brief 读取数据
-        readActually();
-
-        /// @brief 发送数据
         while (true){
-            QByteArray bytes = takeWaitingForWrittingBytes();
-            if (bytes.length()){
-                writeActually(bytes);
-            }else{
+            /// @brief 响应外部中断请求
+            if (isInterruptionRequested()){
                 break;
             }
+
+            /// @brief 读取数据
+            readActually();
+
+            /// @brief 发送数据
+            while (true){
+                QByteArray bytes = takeWaitingForWrittingBytes();
+                if (bytes.length()){
+                    writeActually(bytes);
+                }else{
+                    break;
+                }
+            }
+
+            /// @brief 线程时间处理
+            eventLoop.processEvents();
+
+            /// @brief 线程睡眠
+            threadMutex.lock();
+            threadWaitCondition.wait(&threadMutex, debugPage->readWriteParameters().runIntervalTime);
+            threadMutex.unlock();
         }
 
-        /// @brief 线程睡眠
-        threadMutex.lock();
-        threadWaitCondition.wait(&threadMutex, debugPage->readWriteParameters().runIntervalTime);
-        threadMutex.unlock();
+        udpSocket->close();
+        delete udpSocket;
+        udpSocket = Q_NULLPTR;
+        emit deviceStateChanged(false);
+    }else{
+        delete udpSocket;
+        emit deviceStateChanged(false);
+        emit messageChanged(tr("无法打开设备")+udpSocket->errorString(), false);
     }
 }
 
