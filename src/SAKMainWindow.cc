@@ -187,7 +187,7 @@ void SAKMainWindow::addTool()
     connect(action, &QAction::triggered, this, &SAKMainWindow::createCRCCalculator);
 }
 
-void SAKMainWindow::About()
+void SAKMainWindow::about()
 {
     QMessageBox::information(this, tr("关于"), QString("<font color=green>%1</font><br />%2<br />"
                                                      "<font color=green>%3</font><br />%4<br />"
@@ -384,7 +384,7 @@ void SAKMainWindow::initHelpMenu()
 
     QAction *aboutAction = new QAction(tr("关于软件"), this);
     helpMenu->addAction(aboutAction);
-    connect(aboutAction, &QAction::triggered, this, &SAKMainWindow::About);
+    connect(aboutAction, &QAction::triggered, this, &SAKMainWindow::about);
 
     QMenu *srcMenu = new QMenu(tr("获取源码"), this);
     helpMenu->addMenu(srcMenu);

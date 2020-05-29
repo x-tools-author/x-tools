@@ -75,7 +75,7 @@ private:
     void openIODeviceWindow();
     QWidget *getDebugPage(int type);
     void closeDebugPage(int index);
-    void About();
+    void about();
 private:
     void createCRCCalculator();
 };
