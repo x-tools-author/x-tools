@@ -25,7 +25,7 @@ SAKTcpClientDebugPage::SAKTcpClientDebugPage(QWidget *parent)
     ,tcpClientDeviceController (new SAKTcpClientDeviceController)
 {
     initPage();
-    setWindowTitle(SAKGlobal::getIODeviceTypeName(SAKDataStruct::DebugPageTypeTCPClient));
+    setWindowTitle(SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeTCPClient));
 }
 
 SAKTcpClientDebugPage::~SAKTcpClientDebugPage()

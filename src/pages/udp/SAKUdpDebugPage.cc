@@ -25,7 +25,7 @@ SAKUdpDebugPage::SAKUdpDebugPage(QWidget *parent)
     ,udpDeviceController (new SAKUdpDeviceController)
 {
     initPage();
-    setWindowTitle(SAKGlobal::getIODeviceTypeName(SAKDataStruct::DebugPageTypeUDP));
+    setWindowTitle(SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeUDP));
 }
 
 SAKUdpDebugPage::~SAKUdpDebugPage()

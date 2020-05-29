@@ -250,8 +250,8 @@ void SAKMainWindow::initFileMenu()
     fileMenu->addMenu(tabMenu);
     QMetaEnum enums = QMetaEnum::fromType<SAKDataStruct::SAKEnumDebugPageType>();
     for (int i = 0; i < enums.keyCount(); i++){
-        QAction *a = new QAction(SAKGlobal::getIODeviceTypeName(i), this);
-        a->setObjectName(SAKGlobal::getIODeviceTypeName(i));
+        QAction *a = new QAction(SAKGlobal::getNameOfDebugPage(i), this);
+        a->setObjectName(SAKGlobal::getNameOfDebugPage(i));
         QVariant var = QVariant::fromValue<int>(enums.value(i));
         a->setData(var);
         connect(a, &QAction::triggered, this, &SAKMainWindow::addRemovablePage);
@@ -261,8 +261,8 @@ void SAKMainWindow::initFileMenu()
     QMenu *windowMenu = new QMenu(tr("新建窗口"), this);
     fileMenu->addMenu(windowMenu);
     for (int i = 0; i < enums.keyCount(); i++){
-        QAction *a = new QAction(SAKGlobal::getIODeviceTypeName(i), this);
-        a->setObjectName(SAKGlobal::getIODeviceTypeName(i));
+        QAction *a = new QAction(SAKGlobal::getNameOfDebugPage(i), this);
+        a->setObjectName(SAKGlobal::getNameOfDebugPage(i));
         QVariant var = QVariant::fromValue<int>(enums.value(i));
         connect(a, &QAction::triggered, this, &SAKMainWindow::openIODeviceWindow);
         a->setData(var);

@@ -41,11 +41,11 @@ public:
     static QString mkMutiDir(const QString path);
 
     /**
-     * @brief getIODeviceTypeName   -- 获取设备类型的名称
-     * @param type                  -- 设备类型
+     * @brief getNameOfDebugPage    -- 获取设备调试页面的名称
+     * @param type                  -- 设备类型，详见SAKDataStruct::SAKEnumDebugPageType
      * @return                      -- 设备类型名称
      */
-    static QString getIODeviceTypeName(int type);
+    static QString getNameOfDebugPage(int type);
 
 #ifdef SAK_IMPORT_COM_MODULE
     /*

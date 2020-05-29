@@ -83,7 +83,7 @@ QString SAKGlobal::mkMutiDir(const QString path){
     return parentDir + "/" + dirname;
 }
 
-QString SAKGlobal::getIODeviceTypeName(int type)
+QString SAKGlobal::getNameOfDebugPage(int type)
 {
     QString name;
     switch (type) {
