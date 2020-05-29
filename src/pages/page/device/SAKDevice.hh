@@ -38,15 +38,12 @@ public:
      * @param bytes 待发送数据
      */
     void writeBytes(QByteArray bytes);
-
-    /**
-     * @brief takeWaitingForWrittingBytes 提取待发送数据,无数据则返回空数据
-     * @return 一帧待发送数据
-     */
-    QByteArray takeWaitingForWrittingBytes();
 protected:
     QMutex threadMutex;
     QWaitCondition threadWaitCondition;
+protected:
+    /// @brief 提取待发送数据,无数据则返回空数据
+    QByteArray takeWaitingForWrittingBytes();
 private:
     QMutex waitingForWritingBytesListMutex;
     QList<QByteArray> waitingForWritingBytesList;
