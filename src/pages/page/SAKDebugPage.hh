@@ -73,12 +73,6 @@ public:
     friend class SAKDebugPageOutputManager;
 
     /**
-     * @brief changeDeviceState 更改设备状态
-     * @param isOpened true表示设备已打开，false表示设备已关闭
-     */
-    void changeDeviceState(bool isOpened);
-
-    /**
      * @brief write             -- 写数据
      * @param data              -- 待写的数据
      */
@@ -161,7 +155,7 @@ protected:
      * @brief changedDeviceStatus   -- 设备打开或者关闭时执行该函数
      * @param opened                -- true: 设备一打开 false：设备已关闭
      */
-    void changedDeviceStatus(bool opened);
+    void changedDeviceState(bool opened);
 
 
 

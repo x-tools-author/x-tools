@@ -67,7 +67,7 @@ SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
     _readWriteParameters.waitForReadyReadTime = MINI_READ_WRITE_WATINGT_TIME;
     _readWriteParameters.waitForBytesWrittenTime = MINI_READ_WRITE_WATINGT_TIME;
 
-    connect(this, &SAKDebugPage::deviceStatusChanged, this, &SAKDebugPage::changedDeviceStatus);
+    connect(this, &SAKDebugPage::deviceStatusChanged, this, &SAKDebugPage::changedDeviceState);
     resize(800, 600);
 
     clearInfoTimer.setInterval(8*1000);
@@ -93,13 +93,6 @@ SAKDebugPage::~SAKDebugPage()
     delete dataVisualizationManager;
     dataVisualizationManager = Q_NULLPTR;
 #endif
-}
-
-void SAKDebugPage::changeDeviceState(bool isOpened)
-{
-    sendPushButton->setEnabled(isOpened);
-    sendPresetPushButton->setEnabled(isOpened);
-    cycleEnableCheckBox->setEnabled(isOpened);
 }
 
 void SAKDebugPage::write(QByteArray data)
@@ -141,7 +134,7 @@ void SAKDebugPage::setupDevice(SAKDevice *dev)
         connect(device, &SAKDevice::bytesWritten, this, &SAKDebugPage::bytesWritten);
         connect(device, &SAKDevice::bytesRead, this, &SAKDebugPage::bytesRead);
         connect(device, &SAKDevice::messageChanged, this, &SAKDebugPage::outputMessage);
-        connect(device, &SAKDevice::deviceStateChanged, this, &SAKDebugPage::changeDeviceState);
+        connect(device, &SAKDevice::deviceStateChanged, this, &SAKDebugPage::changedDeviceState);
     }
 }
 
@@ -350,7 +343,7 @@ void SAKDebugPage::setupController()
     }
 }
 
-void SAKDebugPage::changedDeviceStatus(bool opened)
+void SAKDebugPage::changedDeviceState(bool opened)
 {
     sendPushButton->setEnabled(opened);
     sendPresetPushButton->setEnabled(opened);
