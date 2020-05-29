@@ -49,6 +49,7 @@ namespace Ui {
     class SAKDebugPage;
 }
 
+/// @brief 调试页面
 class SAKDebugPage : public QWidget
 {
     Q_OBJECT
@@ -94,10 +95,15 @@ public:
 protected:
     /// @brief 刷新设备
     virtual void refreshDevice();
-    /// @brief 打开或者关闭设备
-    virtual void openOrColoseDevice();
     /// @brief 返回控制面板
     virtual QWidget *controllerWidget();
+    /// @brief 创建设备
+    virtual SAKDevice* createDevice();
+    /// @brief 初始化页面，子类在重新实现所有虚函数后，条用该函数即可
+    void initPage();
+
+    /// @brief 打开或者关闭设备
+    void openOrColoseDevice();
     /// 初始化与设备有关的信号关联
     void setupDevice(SAKDevice *dev);
     /// @brief 安装设备控制面板

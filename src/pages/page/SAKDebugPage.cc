@@ -43,8 +43,8 @@
 SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
     :QWidget(parent)
     ,device(Q_NULLPTR)
-    ,ui (new Ui::SAKDebugPage)
-    ,debugPageType (type)
+    ,debugPageType(type)
+    ,ui(new Ui::SAKDebugPage)
 {
     /// @brief 读写关联
     connect(this, &SAKDebugPage::writeDataRequest, device, &SAKDevice::writeBytes);
@@ -130,6 +130,21 @@ void SAKDebugPage::refreshDevice()
 
 }
 
+QWidget *SAKDebugPage::controllerWidget()
+{
+    return Q_NULLPTR;
+}
+
+SAKDevice *SAKDebugPage::createDevice()
+{
+    return Q_NULLPTR;
+}
+
+void SAKDebugPage::initPage()
+{
+    setupController();
+}
+
 void SAKDebugPage::openOrColoseDevice()
 {
     if (device->isRunning()){
@@ -142,11 +157,6 @@ void SAKDebugPage::openOrColoseDevice()
         device->start();
         switchPushButton->setText(tr("关闭"));
     }
-}
-
-QWidget *SAKDebugPage::controllerWidget()
-{
-    return Q_NULLPTR;
 }
 
 void SAKDebugPage::setupDevice(SAKDevice *dev)
