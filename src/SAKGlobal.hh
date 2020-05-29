@@ -31,6 +31,10 @@ public:
      */
     static QString logFile();
 
+    /**
+     * @brief dataPath 获取软件数据缓存目录
+     * @return 软件数据缓存目录
+     */
     static QString dataPath();
 
     /**
