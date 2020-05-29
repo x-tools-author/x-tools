@@ -52,9 +52,7 @@ public:
     static QString getNameOfDebugPage(int type);
 
 #ifdef SAK_IMPORT_COM_MODULE
-    /*
-     * 串口相关参数显示初始化
-     */
+    /// @brief 串口相关参数显示初始化
     static void initComComboBox(QComboBox *comboBox);
     static void initBaudRateComboBox(QComboBox *comboBox);
     static void initDataBitsComboBox(QComboBox *comboBox);
