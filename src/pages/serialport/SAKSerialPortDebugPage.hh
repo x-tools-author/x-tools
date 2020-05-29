@@ -31,10 +31,9 @@ protected:
     SAKDevice *createDevice() final;
     void refreshDevice() final;
     QWidget *controllerWidget() final;
+    void setUiEnable(bool enable) final;
 private:
     SAKSerialPortDeviceController *controller;
-private:
-    void setUiEnable(bool enable);
 };
 
 #endif

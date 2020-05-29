@@ -165,6 +165,11 @@ SAKDevice *SAKDebugPage::createDevice()
     return Q_NULLPTR;
 }
 
+void SAKDebugPage::setUiEnable(bool ebable)
+{
+    Q_UNUSED(ebable);
+}
+
 void SAKDebugPage::initPage()
 {
     setupController();
@@ -176,6 +181,8 @@ void SAKDebugPage::changedDeviceState(bool opened)
     sendPushButton->setEnabled(opened);
     sendPresetPushButton->setEnabled(opened);
     cycleEnableCheckBox->setEnabled(opened);
+
+    setUiEnable(!opened);
 }
 
 void SAKDebugPage::initSettingKey()

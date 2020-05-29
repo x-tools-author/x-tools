@@ -113,6 +113,8 @@ protected:
     virtual QWidget *controllerWidget();
     /// @brief 创建设备,创建的设备由基类管理，不能在子类中对设备进行销毁操作
     virtual SAKDevice* createDevice();
+    /// @brief 使能ui
+    virtual void setUiEnable(bool ebable);
     /// @brief 初始化页面，子类在重新实现所有虚函数后，条用该函数即可
     void initPage();
 private:
