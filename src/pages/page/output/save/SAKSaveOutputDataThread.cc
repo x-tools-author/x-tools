@@ -47,7 +47,7 @@ void SAKSaveOutputDataThread::writeDataToFile(QByteArray data, SAKSaveOutputData
     case SAKSaveOutputDataSettings::SaveOutputDataParamters::Hex:
         if (file.open(QFile::WriteOnly | QFile::Text | QFile::Append)){
             /// @brief  QByteArray::toHex(char separator)是Qt5.9中引入的
-#if (QT_VERSION_MINOR < 9)
+#if (QT_VERSION < QT_VERSION_CHECK(5,9,0))
             SAKInterface interface;
             textStream << QString(interface.byteArrayToHex(data, ' ')) << QString("\n");
 #else
