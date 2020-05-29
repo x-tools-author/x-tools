@@ -22,6 +22,12 @@ class SAKUdpDebugPage : public SAKDebugPage
 public:
     SAKUdpDebugPage(QWidget *parent = Q_NULLPTR);
     ~SAKUdpDebugPage();
+
+    /**
+     * @brief controllerInstance 获取
+     * @return
+     */
+    SAKUdpDeviceController *controllerInstance();
 protected:
     void refreshDevice() final;
     QWidget *controllerWidget() final;

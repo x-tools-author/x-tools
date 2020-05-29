@@ -14,7 +14,6 @@
 
 #include <QMutex>
 #include <QThread>
-#include <QEventLoop>
 #include <QWaitCondition>
 
 class SAKDebugPage;
@@ -49,7 +48,6 @@ signals:
 protected:
     QMutex threadMutex;
     QWaitCondition threadWaitCondition;
-    QEventLoop eventLoop;
     /*************************************************************************/
     /// @brief 提取待发送数据,无数据则返回空数据
     QByteArray takeWaitingForWrittingBytes();

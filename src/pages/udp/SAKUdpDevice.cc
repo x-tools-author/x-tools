@@ -10,14 +10,17 @@
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
 #include <QDebug>
+#include <QEventLoop>
 #include <QApplication>
 
 #include "SAKUdpDevice.hh"
 #include "SAKUdpDebugPage.hh"
+#include "SAKUdpDeviceController.hh"
 
 SAKUdpDevice::SAKUdpDevice(SAKUdpDebugPage *debugPage,
                            QObject *parent)
     :SAKDevice(parent)
+    ,enableCustomLocalSetting(false)
     ,debugPage (debugPage)
 {
     parametersContext.enableUnicast = true;
@@ -83,8 +86,15 @@ void SAKUdpDevice::setMulticastEnable(bool enable)
 
 void SAKUdpDevice::run()
 {
-    udpSocket = new QUdpSocket;
+    QEventLoop eventLoop;
+    SAKUdpDeviceController *deviceController = debugPage->controllerInstance();
+    enableCustomLocalSetting = deviceController->enableCustomLocalSetting();
+    localHost = deviceController->localHost();
+    localPort = deviceController->localPort();
+    targetHost = deviceController->targetHost();
+    targetPort = deviceController->targetPort();
 
+    udpSocket = new QUdpSocket;
     bool bindResult = false;
     if (enableCustomLocalSetting){
         bindResult = udpSocket->bind(QHostAddress(localHost), localPort);
@@ -93,9 +103,9 @@ void SAKUdpDevice::run()
     }
 
     if (!bindResult){
-        delete udpSocket;
         emit deviceStateChanged(false);
         emit messageChanged(tr("无法绑定设备")+udpSocket->errorString(), false);
+        delete udpSocket;
         return;
     }
 
@@ -125,38 +135,37 @@ void SAKUdpDevice::run()
             while (true){
                 QByteArray bytes = takeWaitingForWrittingBytes();
                 if (bytes.length()){
-                    qDebug() << QString(bytes.toHex(' ')).toUpper();
-//                    /// @brief 单播
-//                    if (parametersContextInstance().enableUnicast){
-//                        qint64 ret = udpSocket->writeDatagram(bytes, QHostAddress(targetHost), targetPort);
-//                        udpSocket->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
-//                        if (ret == -1){
-//                            emit messageChanged(tr("发送数据失败：")+udpSocket->errorString(), false);
-//                        }else{
-//                            emit bytesWritten(bytes);
-//                        }
-//                    }
+                    /// @brief 单播
+                    if (parametersContextInstance().enableUnicast){
+                        qint64 ret = udpSocket->writeDatagram(bytes, QHostAddress(targetHost), targetPort);
+                        udpSocket->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
+                        if (ret == -1){
+                            emit messageChanged(tr("发送数据失败：")+udpSocket->errorString(), false);
+                        }else{
+                            emit bytesWritten(bytes);
+                        }
+                    }
 
-//                    /// @brief 组播
-//                    if (parametersContextInstance().enableMulticast){
-//                        for(auto var:parametersContextInstance().multicastInfoList){
-//                            udpSocket->writeDatagram(bytes, QHostAddress(var.address), var.port);
-//                            emit bytesWritten(bytes);
-//                        }
-//                    }
+                    /// @brief 组播
+                    if (parametersContextInstance().enableMulticast){
+                        for(auto var:parametersContextInstance().multicastInfoList){
+                            udpSocket->writeDatagram(bytes, QHostAddress(var.address), var.port);
+                            emit bytesWritten(bytes);
+                        }
+                    }
 
-//                    /// @brief 广播
-//                    if (parametersContextInstance().enableBroadcast){
-//                        ParametersContext context = parametersContextInstance();
-//                        udpSocket->writeDatagram(bytes, QHostAddress::Broadcast, context.broadcastPort);
-//                        emit bytesWritten(bytes);
-//                    }
+                    /// @brief 广播
+                    if (parametersContextInstance().enableBroadcast){
+                        ParametersContext context = parametersContextInstance();
+                        udpSocket->writeDatagram(bytes, QHostAddress::Broadcast, context.broadcastPort);
+                        emit bytesWritten(bytes);
+                    }
                 }else{
                     break;
                 }
             }
 
-            /// @brief 线程时间处理
+            /// @brief 线程事件处理
             eventLoop.processEvents();
 
             /// @brief 线程睡眠
@@ -170,9 +179,9 @@ void SAKUdpDevice::run()
         udpSocket = Q_NULLPTR;
         emit deviceStateChanged(false);
     }else{
-        delete udpSocket;
         emit deviceStateChanged(false);
         emit messageChanged(tr("无法打开设备")+udpSocket->errorString(), false);
+        delete udpSocket;
     }
 }
 

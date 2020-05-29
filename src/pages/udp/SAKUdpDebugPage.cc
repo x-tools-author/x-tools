@@ -32,6 +32,11 @@ SAKUdpDebugPage::~SAKUdpDebugPage()
     udpDeviceController->deleteLater();
 }
 
+SAKUdpDeviceController *SAKUdpDebugPage::controllerInstance()
+{
+    return udpDeviceController;
+}
+
 void SAKUdpDebugPage::refreshDevice()
 {
     udpDeviceController->refresh();
