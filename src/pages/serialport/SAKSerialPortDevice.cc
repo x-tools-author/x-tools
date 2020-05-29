@@ -34,20 +34,20 @@ void SAKSerialPortDevice::run()
 {
     QEventLoop eventLoop;
     SAKSerialPortDeviceController *controller = debugPage->controllerInstance();
-    _name = controller->name();
-    _baudRate = controller->baudRate();
-    _dataBits = controller->dataBits();
-    _stopBits = controller->stopBits();
-    _parity = controller->parity();
-    _flowControl = controller->flowControl();
+    name = controller->name();
+    baudRate = controller->baudRate();
+    dataBits = controller->dataBits();
+    stopBits = controller->stopBits();
+    parity = controller->parity();
+    flowControl = controller->flowControl();
 
     serialPort = new QSerialPort;
-    serialPort->setPortName(_name);
-    serialPort->setBaudRate(_baudRate);
-    serialPort->setDataBits(_dataBits);
-    serialPort->setStopBits(_stopBits);
-    serialPort->setParity(_parity);
-    serialPort->setFlowControl(_flowControl);
+    serialPort->setPortName(name);
+    serialPort->setBaudRate(baudRate);
+    serialPort->setDataBits(dataBits);
+    serialPort->setStopBits(stopBits);
+    serialPort->setParity(parity);
+    serialPort->setFlowControl(flowControl);
 
     if (serialPort->open(QSerialPort::ReadWrite)){
         emit deviceStateChanged(true);
