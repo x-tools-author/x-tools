@@ -113,16 +113,20 @@ private:
     void initSettingString();
     void initInputSettingString();
     void initOutputSettingString();
+
     /// @brief 从配置文件中读入配置选项
     void readinSettings();
     void readinInputSettings();
     void readinOutputSettings();
+
     /// @brief 清空ui消息显示
     void cleanInfo();
+
     /// @brief 打开或者关闭设备
     void openOrColoseDevice();
     void closeDevice();
     void openDevice();
+
     /// 初始化与设备有关的信号关联
     void setupDevice();
     /// @brief 安装设备控制面板

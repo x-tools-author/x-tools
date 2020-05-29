@@ -59,7 +59,7 @@ void SAKUdpDebugPage::changeDeviceStatus(bool opened)
             udpDevice = Q_NULLPTR;
         }
     }
-    emit deviceStateChanged(opened);
+//    emit deviceStateChanged(opened);
 }
 
 //void SAKUdpDebugPage::openOrColoseDevice()
