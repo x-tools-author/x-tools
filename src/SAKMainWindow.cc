@@ -3,8 +3,8 @@
  *
  * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
  * project. The project is a open source project, you can get the source from:
- *     https://github.com/wuuhii/QtSwissArmyKnife
- *     https://gitee.com/wuuhii/QtSwissArmyKnife
+ *     https://github.com/qsak/QtSwissArmyKnife
+ *     https://gitee.com/qsak/QtSwissArmyKnife
  *
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
@@ -388,10 +388,10 @@ void SAKMainWindow::initHelpMenu()
     QMenu *srcMenu = new QMenu(tr("获取源码"), this);
     helpMenu->addMenu(srcMenu);
     QAction *visitGitHubAction = new QAction(QIcon(":/resources/images/GitHub.png"), tr("GitHub"), this);
-    connect(visitGitHubAction, &QAction::triggered, [](){QDesktopServices::openUrl(QUrl(QLatin1String("https://github.com/wuuhii/QtSwissArmyKnife")));});
+    connect(visitGitHubAction, &QAction::triggered, [](){QDesktopServices::openUrl(QUrl(QLatin1String("https://github.com/qsak/QtSwissArmyKnife")));});
     srcMenu->addAction(visitGitHubAction);
     QAction *visitGiteeAction = new QAction(QIcon(":/resources/images/Gitee.png"), tr("Gitee"), this);
-    connect(visitGiteeAction, &QAction::triggered, [](){QDesktopServices::openUrl(QUrl(QLatin1String("https://gitee.com/wuuhii/QtSwissArmyKnife")));});
+    connect(visitGiteeAction, &QAction::triggered, [](){QDesktopServices::openUrl(QUrl(QLatin1String("https://gitee.com/qsak/QtSwissArmyKnife")));});
     srcMenu->addAction(visitGiteeAction);
 
     QAction *updateAction = new QAction(tr("检查更新"), this);
