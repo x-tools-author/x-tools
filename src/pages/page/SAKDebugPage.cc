@@ -323,6 +323,7 @@ void SAKDebugPage::cleanInfo()
 
 void SAKDebugPage::openOrColoseDevice()
 {
+    switchPushButton->setEnabled(false);
     if (!device){
         setupDevice();
     }
@@ -334,6 +335,7 @@ void SAKDebugPage::openOrColoseDevice()
             openDevice();
         }
     }
+    switchPushButton->setEnabled(true);
 }
 
 void SAKDebugPage::openDevice()
