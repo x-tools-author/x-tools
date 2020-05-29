@@ -92,21 +92,18 @@ public:
      */
     void outputMessage(QString msg, bool isInfo = true);
 protected:
-    /**
-     * @brief setupDevice 初始化与设备有关的信号关联
-     * @brief dev 设备实例指针
-     */
-    void setupDevice(SAKDevice *dev);
-
-    /**
-     * @brief refreshDevice         -- 刷新设备
-     */
+    /// @brief 刷新设备
     virtual void refreshDevice();
-
-    /**
-     * @brief openOrColoseDevice    -- 打开或者关闭设备
-     */
+    /// @brief 打开或者关闭设备
     virtual void openOrColoseDevice();
+    /// @brief 返回控制面板
+    virtual QWidget *controllerWidget();
+    /// 初始化与设备有关的信号关联
+    void setupDevice(SAKDevice *dev);
+    /// @brief 安装设备控制面板
+    void setupController();
+    /// @brief 更改设备状态
+    void changedDeviceState(bool opened);
 private:
     SAKDevice *device;
     bool isInitializing;
@@ -144,18 +141,6 @@ public:
 private:
     struct ReadWriteParameters _readWriteParameters;
     QMutex readWriteParametersQMutex;
-protected:
-    /// @brief 返回控制面板
-    virtual QWidget *controllerWidget();
-    /**
-     * @brief setUpController -- 安装控制器（控制面板）
-     */
-    void setupController();
-    /**
-     * @brief changedDeviceStatus   -- 设备打开或者关闭时执行该函数
-     * @param opened                -- true: 设备一打开 false：设备已关闭
-     */
-    void changedDeviceState(bool opened);
 
 
 

@@ -125,19 +125,6 @@ void SAKDebugPage::outputMessage(QString msg, bool isInfo)
     clearInfoTimer.start();
 }
 
-void SAKDebugPage::setupDevice(SAKDevice *dev)
-{
-    if (dev){
-        device = dev;
-
-        connect(this, &SAKDebugPage::writeDataRequest, dev, &SAKDevice::writeBytes);
-        connect(device, &SAKDevice::bytesWritten, this, &SAKDebugPage::bytesWritten);
-        connect(device, &SAKDevice::bytesRead, this, &SAKDebugPage::bytesRead);
-        connect(device, &SAKDevice::messageChanged, this, &SAKDebugPage::outputMessage);
-        connect(device, &SAKDevice::deviceStateChanged, this, &SAKDebugPage::changedDeviceState);
-    }
-}
-
 void SAKDebugPage::refreshDevice()
 {
 
@@ -157,6 +144,47 @@ void SAKDebugPage::openOrColoseDevice()
     }
 }
 
+QWidget *SAKDebugPage::controllerWidget()
+{
+    return Q_NULLPTR;
+}
+
+void SAKDebugPage::setupDevice(SAKDevice *dev)
+{
+    if (dev){
+        device = dev;
+
+        connect(this, &SAKDebugPage::writeDataRequest, dev, &SAKDevice::writeBytes);
+        connect(device, &SAKDevice::bytesWritten, this, &SAKDebugPage::bytesWritten);
+        connect(device, &SAKDevice::bytesRead, this, &SAKDebugPage::bytesRead);
+        connect(device, &SAKDevice::messageChanged, this, &SAKDebugPage::outputMessage);
+        connect(device, &SAKDevice::deviceStateChanged, this, &SAKDebugPage::changedDeviceState);
+    }
+}
+
+void SAKDebugPage::setupController()
+{
+    QWidget *controller = controllerWidget();
+    if (controller){
+        QHBoxLayout *layout = new QHBoxLayout(deviceSettingFrame);
+        deviceSettingFrame->setLayout(layout);
+        layout->addWidget(controller);
+
+        /// @brief qt5.13及以上版本setMargin()接口改为setContentsMargins()
+#if (QT_VERSION >= QT_VERSION_CHECK(5,13,0))
+        layout->setContentsMargins(0, 0, 0, 0);
+#else
+        layout->setMargin(0);
+#endif
+    }
+}
+
+void SAKDebugPage::changedDeviceState(bool opened)
+{
+    sendPushButton->setEnabled(opened);
+    sendPresetPushButton->setEnabled(opened);
+    cycleEnableCheckBox->setEnabled(opened);
+}
 
 void SAKDebugPage::initSettingKey()
 {
@@ -319,35 +347,6 @@ void SAKDebugPage::setReadWriteParameters(struct ReadWriteParameters parameters)
     _readWriteParameters.waitForReadyReadTime = parameters.waitForReadyReadTime;
     _readWriteParameters.waitForBytesWrittenTime = parameters.waitForBytesWrittenTime;
     readWriteParametersQMutex.unlock();
-}
-
-QWidget *SAKDebugPage::controllerWidget()
-{
-    return Q_NULLPTR;
-}
-
-void SAKDebugPage::setupController()
-{
-    QWidget *controller = controllerWidget();
-    if (controller){
-        QHBoxLayout *layout = new QHBoxLayout(deviceSettingFrame);
-        deviceSettingFrame->setLayout(layout);
-        layout->addWidget(controller);
-
-        /// @brief qt5.13及以上版本setMargin()接口改为setContentsMargins()
-#if (QT_VERSION >= QT_VERSION_CHECK(5,13,0))
-        layout->setContentsMargins(0, 0, 0, 0);
-#else
-        layout->setMargin(0);
-#endif
-    }
-}
-
-void SAKDebugPage::changedDeviceState(bool opened)
-{
-    sendPushButton->setEnabled(opened);
-    sendPresetPushButton->setEnabled(opened);
-    cycleEnableCheckBox->setEnabled(opened);
 }
 
 void SAKDebugPage::on_refreshPushButton_clicked()
