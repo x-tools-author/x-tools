@@ -30,7 +30,7 @@ private:
     void setUiEnable(bool enable);
     void changeDeviceStatus(bool opened);
 private:
-    void openOrColoseDevice() final;
+//    void openOrColoseDevice() final;
     void refreshDevice() final;
     QWidget *controllerWidget() final;
 };

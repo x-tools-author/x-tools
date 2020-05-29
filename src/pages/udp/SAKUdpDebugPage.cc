@@ -23,7 +23,7 @@ SAKUdpDebugPage::SAKUdpDebugPage(QWidget *parent)
     ,udpDevice (Q_NULLPTR)
     ,udpDeviceController (new SAKUdpDeviceController)
 {
-    setupController();
+    initPage();
     setWindowTitle(tr("UDP调试"));    
 }
 
@@ -62,36 +62,36 @@ void SAKUdpDebugPage::changeDeviceStatus(bool opened)
     emit deviceStatusChanged(opened);
 }
 
-void SAKUdpDebugPage::openOrColoseDevice()
-{
-    if (udpDevice){
-        switchPushButton->setText(tr("打开"));
-        udpDevice->terminate();
-        delete udpDevice;
-        udpDevice = Q_NULLPTR;
+//void SAKUdpDebugPage::openOrColoseDevice()
+//{
+//    if (udpDevice){
+//        switchPushButton->setText(tr("打开"));
+//        udpDevice->terminate();
+//        delete udpDevice;
+//        udpDevice = Q_NULLPTR;
 
-        setUiEnable(true);
-        emit deviceStatusChanged(false);
-    }else{
-        switchPushButton->setText(tr("关闭"));
-        QString localHost = udpDeviceController->localHost();
-        quint16 localPort = udpDeviceController->localPort();
-        bool customSetting = udpDeviceController->enableCustomLocalSetting();
-        QString targetHost = udpDeviceController->targetHost();
-        quint16 targetPort = udpDeviceController->targetPort();
+//        setUiEnable(true);
+//        emit deviceStatusChanged(false);
+//    }else{
+//        switchPushButton->setText(tr("关闭"));
+//        QString localHost = udpDeviceController->localHost();
+//        quint16 localPort = udpDeviceController->localPort();
+//        bool customSetting = udpDeviceController->enableCustomLocalSetting();
+//        QString targetHost = udpDeviceController->targetHost();
+//        quint16 targetPort = udpDeviceController->targetPort();
 
-        udpDevice = new SAKUdpDevice(localHost, localPort, customSetting, targetHost, targetPort, this);
+//        udpDevice = new SAKUdpDevice(localHost, localPort, customSetting, targetHost, targetPort, this);
 
-        connect(this, &SAKUdpDebugPage::writeDataRequest, udpDevice, &SAKUdpDevice::writeBytes);
+//        connect(this, &SAKUdpDebugPage::writeDataRequest, udpDevice, &SAKUdpDevice::writeBytes);
 
-        connect(udpDevice, &SAKUdpDevice::bytesWriten,          this, &SAKUdpDebugPage::bytesWritten);
-        connect(udpDevice, &SAKUdpDevice::bytesRead,            this, &SAKUdpDebugPage::bytesRead);
-        connect(udpDevice, &SAKUdpDevice::messageChanged,       this, &SAKUdpDebugPage::outputMessage);
-        connect(udpDevice, &SAKUdpDevice::deviceStatuChanged,   this, &SAKUdpDebugPage::changeDeviceStatus);
+//        connect(udpDevice, &SAKUdpDevice::bytesWriten,          this, &SAKUdpDebugPage::bytesWritten);
+//        connect(udpDevice, &SAKUdpDevice::bytesRead,            this, &SAKUdpDebugPage::bytesRead);
+//        connect(udpDevice, &SAKUdpDevice::messageChanged,       this, &SAKUdpDebugPage::outputMessage);
+//        connect(udpDevice, &SAKUdpDevice::deviceStatuChanged,   this, &SAKUdpDebugPage::changeDeviceStatus);
 
-        udpDevice->start();
-    }    
-}
+//        udpDevice->start();
+//    }
+//}
 
 
 void SAKUdpDebugPage::refreshDevice()

@@ -23,7 +23,7 @@ SAKSerialPortDebugPage::SAKSerialPortDebugPage(QWidget *parent)
     ,serialPortAssistant (Q_NULLPTR)
     ,controller (new SAKSerialPortDeviceController)
 {
-    setupController();
+    initPage();
     setWindowTitle(tr("串口调试"));
 }
 
@@ -63,40 +63,40 @@ void SAKSerialPortDebugPage::changeDeviceStatus(bool opened)
     emit deviceStatusChanged(opened);
 }
 
-void SAKSerialPortDebugPage::openOrColoseDevice()
-{
-    if (serialPortAssistant){
-        switchPushButton->setText(tr("打开"));
-        serialPortAssistant->requestInterruption();
-        serialPortAssistant->wakeMe();
-        serialPortAssistant->exit();
-        serialPortAssistant->wait();
-        delete serialPortAssistant;
-        serialPortAssistant = Q_NULLPTR;
+//void SAKSerialPortDebugPage::openOrColoseDevice()
+//{
+//    if (serialPortAssistant){
+//        switchPushButton->setText(tr("打开"));
+//        serialPortAssistant->requestInterruption();
+//        serialPortAssistant->wakeMe();
+//        serialPortAssistant->exit();
+//        serialPortAssistant->wait();
+//        delete serialPortAssistant;
+//        serialPortAssistant = Q_NULLPTR;
 
-        setUiEnable(true);
-        emit deviceStatusChanged(false);
-    }else{
-        switchPushButton->setText(tr("关闭"));
-        const QString name = controller->name();
-        const qint32 baudRate = controller->baudRate();
-        const QSerialPort::DataBits dataBits = controller->dataBits();
-        const QSerialPort::StopBits stopBits = controller->stopBits();
-        const QSerialPort::Parity parity = controller->parity();
-        const QSerialPort::FlowControl flowControl = controller->flowControl();
+//        setUiEnable(true);
+//        emit deviceStatusChanged(false);
+//    }else{
+//        switchPushButton->setText(tr("关闭"));
+//        const QString name = controller->name();
+//        const qint32 baudRate = controller->baudRate();
+//        const QSerialPort::DataBits dataBits = controller->dataBits();
+//        const QSerialPort::StopBits stopBits = controller->stopBits();
+//        const QSerialPort::Parity parity = controller->parity();
+//        const QSerialPort::FlowControl flowControl = controller->flowControl();
 
-        serialPortAssistant = new SAKSerialPortDevice(name, baudRate, dataBits, stopBits, parity, flowControl, this);
+//        serialPortAssistant = new SAKSerialPortDevice(name, baudRate, dataBits, stopBits, parity, flowControl, this);
 
-        connect(this, &SAKSerialPortDebugPage::writeDataRequest,serialPortAssistant, &SAKSerialPortDevice::writeBytes);
+//        connect(this, &SAKSerialPortDebugPage::writeDataRequest,serialPortAssistant, &SAKSerialPortDevice::writeBytes);
 
-        connect(serialPortAssistant, &SAKSerialPortDevice::bytesWriten,         this, &SAKSerialPortDebugPage::bytesWritten);
-        connect(serialPortAssistant, &SAKSerialPortDevice::bytesRead,          this, &SAKSerialPortDebugPage::bytesRead);
-        connect(serialPortAssistant, &SAKSerialPortDevice::messageChanged,     this, &SAKSerialPortDebugPage::outputMessage);
-        connect(serialPortAssistant, &SAKSerialPortDevice::deviceStatuChanged, this, &SAKSerialPortDebugPage::changeDeviceStatus);
+//        connect(serialPortAssistant, &SAKSerialPortDevice::bytesWriten,         this, &SAKSerialPortDebugPage::bytesWritten);
+//        connect(serialPortAssistant, &SAKSerialPortDevice::bytesRead,          this, &SAKSerialPortDebugPage::bytesRead);
+//        connect(serialPortAssistant, &SAKSerialPortDevice::messageChanged,     this, &SAKSerialPortDebugPage::outputMessage);
+//        connect(serialPortAssistant, &SAKSerialPortDevice::deviceStatuChanged, this, &SAKSerialPortDebugPage::changeDeviceStatus);
 
-        serialPortAssistant->start();
-    }    
-}
+//        serialPortAssistant->start();
+//    }
+//}
 
 
 void SAKSerialPortDebugPage::refreshDevice()
