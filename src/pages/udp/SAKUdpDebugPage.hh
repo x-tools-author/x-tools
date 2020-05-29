@@ -22,17 +22,14 @@ class SAKUdpDebugPage : public SAKDebugPage
 public:
     SAKUdpDebugPage(QWidget *parent = Q_NULLPTR);
     ~SAKUdpDebugPage();
-
+protected:
+    void refreshDevice() final;
+    QWidget *controllerWidget() final;
 private:
     SAKUdpDevice *udpDevice;
     SAKUdpDeviceController *udpDeviceController;
 
     void setUiEnable(bool enable);
-    void changeDeviceStatus(bool opened);
-private:
-//    void openOrColoseDevice() final;
-    void refreshDevice() final;
-    QWidget *controllerWidget() final;
 };
 
 #endif

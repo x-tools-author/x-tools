@@ -37,64 +37,6 @@ SAKUdpDebugPage::~SAKUdpDebugPage()
     }
 }
 
-void SAKUdpDebugPage::setUiEnable(bool enable)
-{
-    udpDeviceController->setUiEnable(enable);
-    if (!enable){
-        udpDeviceController->setUdpDevice(udpDevice);
-    }
-    refreshPushButton->setEnabled(enable);
-}
-
-void SAKUdpDebugPage::changeDeviceStatus(bool opened)
-{
-    /*
-     * 设备打开失败，使能ui, 打开成功，禁止ui
-     */
-    setUiEnable(!opened);
-    switchPushButton->setText(opened ? tr("关闭") : tr("打开"));
-    if (!opened){
-        if (udpDevice){
-            udpDevice->terminate();
-            delete udpDevice;
-            udpDevice = Q_NULLPTR;
-        }
-    }
-//    emit deviceStateChanged(opened);
-}
-
-//void SAKUdpDebugPage::openOrColoseDevice()
-//{
-//    if (udpDevice){
-//        switchPushButton->setText(tr("打开"));
-//        udpDevice->terminate();
-//        delete udpDevice;
-//        udpDevice = Q_NULLPTR;
-
-//        setUiEnable(true);
-//        emit deviceStatusChanged(false);
-//    }else{
-//        switchPushButton->setText(tr("关闭"));
-//        QString localHost = udpDeviceController->localHost();
-//        quint16 localPort = udpDeviceController->localPort();
-//        bool customSetting = udpDeviceController->enableCustomLocalSetting();
-//        QString targetHost = udpDeviceController->targetHost();
-//        quint16 targetPort = udpDeviceController->targetPort();
-
-//        udpDevice = new SAKUdpDevice(localHost, localPort, customSetting, targetHost, targetPort, this);
-
-//        connect(this, &SAKUdpDebugPage::writeDataRequest, udpDevice, &SAKUdpDevice::writeBytes);
-
-//        connect(udpDevice, &SAKUdpDevice::bytesWriten,          this, &SAKUdpDebugPage::bytesWritten);
-//        connect(udpDevice, &SAKUdpDevice::bytesRead,            this, &SAKUdpDebugPage::bytesRead);
-//        connect(udpDevice, &SAKUdpDevice::messageChanged,       this, &SAKUdpDebugPage::outputMessage);
-//        connect(udpDevice, &SAKUdpDevice::deviceStatuChanged,   this, &SAKUdpDebugPage::changeDeviceStatus);
-
-//        udpDevice->start();
-//    }
-//}
-
-
 void SAKUdpDebugPage::refreshDevice()
 {
     udpDeviceController->refresh();
@@ -103,4 +45,13 @@ void SAKUdpDebugPage::refreshDevice()
 QWidget *SAKUdpDebugPage::controllerWidget()
 {
     return udpDeviceController;
+}
+
+void SAKUdpDebugPage::setUiEnable(bool enable)
+{
+    udpDeviceController->setUiEnable(enable);
+    if (!enable){
+        udpDeviceController->setUdpDevice(udpDevice);
+    }
+    refreshPushButton->setEnabled(enable);
 }
