@@ -46,10 +46,6 @@ SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
     ,debugPageType(type)
     ,ui(new Ui::SAKDebugPage)
 {
-    /// @brief 读写关联
-    connect(this, &SAKDebugPage::requestWriteData, device, &SAKDevice::writeBytes);
-    connect(device, &SAKDevice::bytesRead, this, &SAKDebugPage::bytesRead);
-
     isInitializing = true;
     initSettingString();
 
