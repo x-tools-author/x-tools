@@ -16,39 +16,26 @@
 #include <QThread>
 #include <QUdpSocket>
 
+#include "SAKDevice.hh"
+
 class SAKDebugPage;
-class SAKUdpDevice:public QThread
+class SAKUdpDevice:public SAKDevice
 {
     Q_OBJECT
 public:
-    SAKUdpDevice(QString localHost, quint16 localPort,
-                 bool enableCustomLocalSetting,
-                 QString targetHost, quint16 targetPort,
-                 SAKDebugPage *debugPage,
-                 QObject *parent = Q_NULLPTR);
+    SAKUdpDevice(SAKDebugPage *debugPage, QObject *parent = Q_NULLPTR);
     ~SAKUdpDevice();
-
-    /**
-     * @brief readBytes 读取数据
-     */
-    void readBytes();
-
-    /**
-     * @brief writeBytes 写数据
-     * @param data 代写数据
-     */
-    void writeBytes(QByteArray data);
 
     /**
      * @brief 参数上下文
      */
     struct ParametersContext{
-        bool enableUnicast;
-        bool enableMulticast;
-        bool enableBroadcast;
-        quint16 broadcastPort;
+        bool enableUnicast;     // 允许单播
+        bool enableMulticast;   // 允许组播
+        bool enableBroadcast;   // 允许广播
+        quint16 broadcastPort;  // 广播端口
 
-        struct MulticastInfo{
+        struct MulticastInfo{   // 组播信息
             QString address;
             quint16 port;
         };
@@ -92,14 +79,11 @@ public:
      * @param enable 该值为true是，使能组播功能，否则禁止全部组播。
      */
     void setMulticastEnable(bool enable);
+protected:
+    void run() final;
 private:
     QMutex parametersContextMutex;
-    ParametersContext parametersContext;
-    const ParametersContext parametersContextInstance();
-
-private:
-    void run();    
-private:
+    ParametersContext parametersContext;    
     QString localHost;
     quint16 localPort;
     bool enableCustomLocalSetting;
@@ -107,13 +91,10 @@ private:
     quint16 targetPort;
     SAKDebugPage *debugPage;
     QUdpSocket *udpSocket;
-
-signals:
-    void bytesRead(QByteArray);
-    void bytesWriten(QByteArray);
-
-    void deviceStatuChanged(bool opened);
-    void messageChanged(QString message, bool isInfo);
+private:
+    void readActually();
+    void writeActually(QByteArray data);
+    const ParametersContext parametersContextInstance();
 };
 Q_DECLARE_METATYPE(SAKUdpDevice::ParametersContext::MulticastInfo)
 #endif
