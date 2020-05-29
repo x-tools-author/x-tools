@@ -101,15 +101,6 @@ protected:
     virtual SAKDevice* createDevice();
     /// @brief 初始化页面，子类在重新实现所有虚函数后，条用该函数即可
     void initPage();
-
-    /// @brief 打开或者关闭设备
-    void openOrColoseDevice();
-    /// 初始化与设备有关的信号关联
-    void setupDevice();
-    /// @brief 安装设备控制面板
-    void setupController();
-    /// @brief 更改设备状态
-    void changedDeviceState(bool opened);
 private:
     SAKDevice *device;
     bool isInitializing;
@@ -128,6 +119,14 @@ private:
     void readinOutputSettings();
     /// @brief 清空ui消息显示
     void cleanInfo();
+    /// @brief 打开或者关闭设备
+    void openOrColoseDevice();
+    /// 初始化与设备有关的信号关联
+    void setupDevice();
+    /// @brief 安装设备控制面板
+    void setupController();
+    /// @brief 更改设备状态
+    void changedDeviceState(bool opened);
 signals:
     /// 读取数据后发射该信号，参数为已读取的数据
     void bytesRead(QByteArray data);
