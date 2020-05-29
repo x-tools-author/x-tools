@@ -188,10 +188,10 @@ void SAKDebugPage::initSettingKey()
         settingKey = QString("UDP");
         break;
     case SAKDataStruct::DebugPageTypeTCPClient:
-        settingKey = QString("TCPClient");
+        settingKey = QString("TCPC");
         break;
     case SAKDataStruct::DebugPageTypeTCPServer:
-        settingKey = QString("TCPServer");
+        settingKey = QString("TCPS");
         break;
     default:
         settingKey = QString("UnknowDebugPage");
