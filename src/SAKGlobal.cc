@@ -171,7 +171,7 @@ void SAKGlobal::initParityComboBox(QComboBox *comboBox)
 {
     if (comboBox){
         comboBox->clear();
-        comboBox->addItem(tr("无校验位"), QVariant::fromValue(QSerialPort::NoParity));
+        comboBox->addItem(tr("无"), QVariant::fromValue(QSerialPort::NoParity));
         comboBox->addItem(tr("偶校验"), QVariant::fromValue(QSerialPort::EvenParity));
         comboBox->addItem(tr("奇校验"), QVariant::fromValue(QSerialPort::OddParity));
         comboBox->addItem(tr("空格检验"), QVariant::fromValue(QSerialPort::SpaceParity));
