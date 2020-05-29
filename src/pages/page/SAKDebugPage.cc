@@ -143,6 +143,7 @@ SAKDevice *SAKDebugPage::createDevice()
 void SAKDebugPage::initPage()
 {
     setupController();
+    setupDevice();
 }
 
 void SAKDebugPage::openOrColoseDevice()
@@ -159,12 +160,11 @@ void SAKDebugPage::openOrColoseDevice()
     }
 }
 
-void SAKDebugPage::setupDevice(SAKDevice *dev)
+void SAKDebugPage::setupDevice()
 {
-    if (dev){
-        device = dev;
-
-        connect(this, &SAKDebugPage::writeDataRequest, dev, &SAKDevice::writeBytes);
+    device = createDevice();
+    if (device){
+        connect(this, &SAKDebugPage::writeDataRequest, device, &SAKDevice::writeBytes);
         connect(device, &SAKDevice::bytesWritten, this, &SAKDebugPage::bytesWritten);
         connect(device, &SAKDevice::bytesRead, this, &SAKDebugPage::bytesRead);
         connect(device, &SAKDevice::messageChanged, this, &SAKDebugPage::outputMessage);

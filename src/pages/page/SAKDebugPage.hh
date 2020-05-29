@@ -105,7 +105,7 @@ protected:
     /// @brief 打开或者关闭设备
     void openOrColoseDevice();
     /// 初始化与设备有关的信号关联
-    void setupDevice(SAKDevice *dev);
+    void setupDevice();
     /// @brief 安装设备控制面板
     void setupController();
     /// @brief 更改设备状态
