@@ -164,6 +164,143 @@ void SAKDebugPage::openOrColoseDevice()
     }
 }
 
+
+void SAKDebugPage::initSettingKey()
+{
+    switch (debugPageType) {
+#ifdef SAK_IMPORT_COM_MODULE
+    case SAKGlobal::SAKEnumDebugPageTypeCOM:
+        settingKey = QString("COM");
+        break;
+#endif
+    case SAKGlobal::SAKEnumDebugPageTypeUDP:
+        settingKey = QString("UDP");
+        break;
+    case SAKGlobal::SAKEnumDebugPageTypeTCPClient:
+        settingKey = QString("TCPClient");
+        break;
+    case SAKGlobal::SAKEnumDebugPageTypeTCPServer:
+        settingKey = QString("TCPServer");
+        break;
+    default:
+        settingKey = QString("UnknowDebugPage");
+        Q_ASSERT_X(false, __FUNCTION__, "Invalid type of debug page");
+        break;
+    }
+}
+
+void SAKDebugPage::initSettingString()
+{
+    initSettingKey();
+    initInputSettingString();
+    initOutputSettingString();
+}
+
+void SAKDebugPage::initInputSettingString()
+{
+    settingStringInputModel        = QString("%1/inputModel").arg(settingKey);
+    settingStringCycleTime         = QString("%1/cycleTime").arg(settingKey);
+    settingStringAddCRC            = QString("%1/addCRC").arg(settingKey);
+    settingStringBigeEndian        = QString("%1/bigeEndian").arg(settingKey);
+    settingStringcrcParameterModel = QString("%1/parameterModel").arg(settingKey);
+}
+
+void SAKDebugPage::initOutputSettingString()
+{
+    settingStringOutputTextFormat = QString("%1/outputTextFormat").arg(settingKey);
+    settingStringShowDate    = QString("%1/showDate").arg(settingKey);
+    settingStringAutoWrap    = QString("%1/autoWrap").arg(settingKey);
+    settingStringShowTime    = QString("%1/showTime").arg(settingKey);
+    settingStringShowMs      = QString("%1/showMs").arg(settingKey);
+    settingStringShowRx      = QString("%1/showRx").arg(settingKey);
+    settingStringShowTx      = QString("%1/showTx").arg(settingKey);
+}
+
+void SAKDebugPage::readinSettings()
+{
+    readinInputSettings();
+    readinOutputSettings();
+}
+
+void SAKDebugPage::readinInputSettings()
+{
+    QVariant var = SAKSettings::instance()->value(settingStringInputModel);
+    int index = 0;
+    if (var.isNull()){
+        index = 4;
+    }else{
+        index = var.toInt();
+    }
+    inputModelComboBox->setCurrentIndex(index);
+
+    var = SAKSettings::instance()->value(settingStringCycleTime);
+    QString cycleTime;
+    if (var.isNull()){
+        cycleTime = QString("1000");
+    }else{
+         cycleTime = var.toString();
+    }
+    cycleTimeLineEdit->setText(cycleTime);
+
+    bool value = SAKSettings::instance()->value(settingStringAddCRC).toBool();
+    addCRCCheckBox->setChecked(value);
+
+    value = SAKSettings::instance()->value(settingStringBigeEndian).toBool();
+    bigeEndianCheckBox->setChecked(value);
+
+    index = SAKSettings::instance()->value(settingStringcrcParameterModel).toInt();
+    crcParameterModelsComboBox->setCurrentIndex(index);
+}
+
+void SAKDebugPage::readinOutputSettings()
+{
+    // 某些设置默认为勾选
+    auto setValue = [](QVariant &var){
+        if (var.isNull()){
+            return true;
+        }else{
+            return var.toBool();
+        }
+    };
+
+    QVariant var = SAKSettings::instance()->value(settingStringOutputTextFormat);
+    int index = 0;
+    if (var.isNull()){
+        index = 4;
+    }else{
+        index = var.toInt();
+    }
+    outputTextFormatComboBox->setCurrentIndex(index);
+
+    var = SAKSettings::instance()->value(settingStringShowDate);
+    bool value = SAKSettings::instance()->value(settingStringShowDate).toBool();
+    showDateCheckBox->setChecked(value);
+
+    var = SAKSettings::instance()->value(settingStringAutoWrap);
+    value = setValue(var);
+    autoWrapCheckBox->setChecked(value);
+
+    var = SAKSettings::instance()->value(settingStringShowTime).toBool();
+    showTimeCheckBox->setChecked(value);
+
+    value = SAKSettings::instance()->value(settingStringShowMs).toBool();
+    showMsCheckBox->setChecked(value);
+
+    var = SAKSettings::instance()->value(settingStringShowRx);
+    value = setValue(var);
+    showRxDataCheckBox->setChecked(value);
+
+    var = SAKSettings::instance()->value(settingStringShowTx);
+    value = setValue(var);
+    showTxDataCheckBox->setChecked(value);
+}
+
+void SAKDebugPage::cleanInfo()
+{
+    clearInfoTimer.stop();
+    infoLabel->clear();
+}
+
 struct SAKDebugPage::ReadWriteParameters SAKDebugPage::readWriteParameters()
 {
     ReadWriteParameters parameters;
@@ -218,12 +355,6 @@ void SAKDebugPage::changedDeviceStatus(bool opened)
     sendPushButton->setEnabled(opened);
     sendPresetPushButton->setEnabled(opened);
     cycleEnableCheckBox->setEnabled(opened);
-}
-
-void SAKDebugPage::cleanInfo()
-{
-    clearInfoTimer.stop();
-    infoLabel->clear();
 }
 
 void SAKDebugPage::on_refreshPushButton_clicked()
@@ -403,134 +534,4 @@ void SAKDebugPage::on_dataVisualizationPushButton_clicked()
 #else
     QMessageBox::warning(this, tr("不支持的功能"), tr("该功能已被开发者禁用，可能原因是该平台不支持该功能"));
 #endif
-}
-
-void SAKDebugPage::initSettingKey()
-{
-    switch (debugPageType) {
-#ifdef SAK_IMPORT_COM_MODULE
-    case SAKGlobal::SAKEnumDebugPageTypeCOM:
-        settingKey = QString("COM");
-        break;
-#endif
-    case SAKGlobal::SAKEnumDebugPageTypeUDP:
-        settingKey = QString("UDP");
-        break;
-    case SAKGlobal::SAKEnumDebugPageTypeTCPClient:
-        settingKey = QString("TCPClient");
-        break;
-    case SAKGlobal::SAKEnumDebugPageTypeTCPServer:
-        settingKey = QString("TCPServer");
-        break;
-    default:
-        settingKey = QString("UnknowDebugPage");
-        Q_ASSERT_X(false, __FUNCTION__, "Invalid type of debug page");
-        break;
-    }
-}
-
-void SAKDebugPage::initSettingString()
-{
-    initSettingKey();
-    initInputSettingString();
-    initOutputSettingString();
-}
-
-void SAKDebugPage::initInputSettingString()
-{
-    settingStringInputModel        = QString("%1/inputModel").arg(settingKey);
-    settingStringCycleTime         = QString("%1/cycleTime").arg(settingKey);
-    settingStringAddCRC            = QString("%1/addCRC").arg(settingKey);
-    settingStringBigeEndian        = QString("%1/bigeEndian").arg(settingKey);
-    settingStringcrcParameterModel = QString("%1/parameterModel").arg(settingKey);
-}
-
-void SAKDebugPage::initOutputSettingString()
-{
-    settingStringOutputTextFormat = QString("%1/outputTextFormat").arg(settingKey);
-    settingStringShowDate    = QString("%1/showDate").arg(settingKey);
-    settingStringAutoWrap    = QString("%1/autoWrap").arg(settingKey);
-    settingStringShowTime    = QString("%1/showTime").arg(settingKey);
-    settingStringShowMs      = QString("%1/showMs").arg(settingKey);
-    settingStringShowRx      = QString("%1/showRx").arg(settingKey);
-    settingStringShowTx      = QString("%1/showTx").arg(settingKey);
-}
-
-void SAKDebugPage::readinSettings()
-{
-    readinInputSettings();
-    readinOutputSettings();
-}
-
-void SAKDebugPage::readinInputSettings()
-{
-    QVariant var = SAKSettings::instance()->value(settingStringInputModel);
-    int index = 0;
-    if (var.isNull()){
-        index = 4;
-    }else{
-        index = var.toInt();
-    }
-    inputModelComboBox->setCurrentIndex(index);
-
-    var = SAKSettings::instance()->value(settingStringCycleTime);
-    QString cycleTime;
-    if (var.isNull()){
-        cycleTime = QString("1000");
-    }else{
-         cycleTime = var.toString();
-    }
-    cycleTimeLineEdit->setText(cycleTime);
-
-    bool value = SAKSettings::instance()->value(settingStringAddCRC).toBool();
-    addCRCCheckBox->setChecked(value);
-
-    value = SAKSettings::instance()->value(settingStringBigeEndian).toBool();
-    bigeEndianCheckBox->setChecked(value);
-
-    index = SAKSettings::instance()->value(settingStringcrcParameterModel).toInt();
-    crcParameterModelsComboBox->setCurrentIndex(index);
-}
-
-void SAKDebugPage::readinOutputSettings()
-{
-    // 某些设置默认为勾选
-    auto setValue = [](QVariant &var){
-        if (var.isNull()){
-            return true;
-        }else{
-            return var.toBool();
-        }
-    };
-
-    QVariant var = SAKSettings::instance()->value(settingStringOutputTextFormat);
-    int index = 0;
-    if (var.isNull()){
-        index = 4;
-    }else{
-        index = var.toInt();
-    }
-    outputTextFormatComboBox->setCurrentIndex(index);
-
-    var = SAKSettings::instance()->value(settingStringShowDate);
-    bool value = SAKSettings::instance()->value(settingStringShowDate).toBool();
-    showDateCheckBox->setChecked(value);
-
-    var = SAKSettings::instance()->value(settingStringAutoWrap);
-    value = setValue(var);
-    autoWrapCheckBox->setChecked(value);
-
-    var = SAKSettings::instance()->value(settingStringShowTime).toBool();
-    showTimeCheckBox->setChecked(value);
-
-    value = SAKSettings::instance()->value(settingStringShowMs).toBool();
-    showMsCheckBox->setChecked(value);
-
-    var = SAKSettings::instance()->value(settingStringShowRx);
-    value = setValue(var);
-    showRxDataCheckBox->setChecked(value);
-
-    var = SAKSettings::instance()->value(settingStringShowTx);
-    value = setValue(var);
-    showTxDataCheckBox->setChecked(value);
 }

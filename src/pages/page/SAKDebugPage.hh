@@ -61,6 +61,11 @@ public:
     SAKDebugPage(int type, QWidget *parent = Q_NULLPTR);
     ~SAKDebugPage();
 
+    struct ReadWriteParameters {
+        int waitForBytesWrittenTime;
+        int waitForReadyReadTime;
+    };
+
     friend class SAKDataVisualizationManager;
     friend class SAKOtherSettingsManager;
     friend class SAKStatisticsManager;
@@ -113,6 +118,7 @@ private:
     bool isInitializing;
     int debugPageType = -1;
     QString settingKey;
+    QTimer clearInfoTimer;
 private:
     void initSettingKey();
     /// @brief 初始化配置选项名称
@@ -123,6 +129,8 @@ private:
     void readinSettings();
     void readinInputSettings();
     void readinOutputSettings();
+    /// @brief 清空ui消息显示
+    void cleanInfo();
 signals:
     /// 读取数据后发射该信号，参数为已读取的数据
     void bytesRead(QByteArray data);
@@ -132,25 +140,18 @@ signals:
     void writeDataRequest(QByteArray data);
     /// 子类设备状态发生改变时(是否就绪)发送该信号
     void deviceStatusChanged(bool ready);
-signals:
+    /// 请求处理输出
     void writeRawDataRequest(QString data, int textFormat);
 
     /// @brief 读写参数
 public:
-    struct ReadWriteParameters {
-        int waitForBytesWrittenTime;
-        int waitForReadyReadTime;
-    };
-
     struct ReadWriteParameters readWriteParameters();
     void setReadWriteParameters(struct ReadWriteParameters parameters);
 private:
     struct ReadWriteParameters _readWriteParameters;
     QMutex readWriteParametersQMutex;
 protected:
-    /**
-     * @brief controllerWidget  -- 安装控制面板
-     */
+    /// @brief 返回控制面板
     virtual QWidget *controllerWidget();
     /**
      * @brief setUpController -- 安装控制器（控制面板）
@@ -161,9 +162,17 @@ protected:
      * @param opened                -- true: 设备一打开 false：设备已关闭
      */
     void changedDeviceStatus(bool opened);
+
+
+
+
+    /*************************************************************************/
+    /// @brief ui文件初始化
 private:
-    QTimer clearInfoTimer;
-    void cleanInfo();
+    Ui::SAKDebugPage *ui = Q_NULLPTR;
+private:
+    /// @brief initUiPointer -- 初始化指向ui控件的数据成员（指针）
+    void initUiPointer();
 
     /*************************************************************************/
     /// @brief 设备设置
@@ -286,14 +295,6 @@ private:
     SAKStatisticsManager *statisticsManager;
     SAKDebugPageOutputManager *outputManager;
     SAKDebugPageInputManager *debugPageInputManager;
-
-    /*************************************************************************/
-    /// @brief ui文件初始化
-private:
-    Ui::SAKDebugPage *ui = Q_NULLPTR;
-private:
-    /// @brief initUiPointer -- 初始化指向ui控件的数据成员（指针）
-    void initUiPointer();    
 };
 
 #endif  // SAKTabPage_H
