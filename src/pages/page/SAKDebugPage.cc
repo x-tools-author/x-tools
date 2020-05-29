@@ -291,15 +291,17 @@ void SAKDebugPage::cleanInfo()
 
 void SAKDebugPage::openOrColoseDevice()
 {
-    if (device->isRunning()){
-        device->requestInterruption();
-        device->wakeMe();
-        device->exit();
-        device->wait();
-        switchPushButton->setText(tr("打开"));
-    }else{
-        device->start();
-        switchPushButton->setText(tr("关闭"));
+    if (device){
+        if (device->isRunning()){
+            device->requestInterruption();
+            device->wakeMe();
+            device->exit();
+            device->wait();
+            switchPushButton->setText(tr("打开"));
+        }else{
+            device->start();
+            switchPushButton->setText(tr("关闭"));
+        }
     }
 }
 

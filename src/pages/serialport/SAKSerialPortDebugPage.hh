@@ -22,16 +22,15 @@ class SAKSerialPortDebugPage : public SAKDebugPage
 public:
     SAKSerialPortDebugPage(QWidget *parent = Q_NULLPTR);
     ~SAKSerialPortDebugPage();
-
-private:
-    SAKSerialPortDevice              *serialPortAssistant;
-    SAKSerialPortDeviceController    *controller;
-
-    void setUiEnable(bool enable);
-    void changeDeviceStatus(bool opened);
-private:
+protected:
+    SAKDevice *createDevice() final;
     void refreshDevice() final;
     QWidget *controllerWidget() final;
+private:
+    SAKSerialPortDevice *serialPortAssistant;
+    SAKSerialPortDeviceController *controller;
+private:
+    void setUiEnable(bool enable);
 };
 
 #endif

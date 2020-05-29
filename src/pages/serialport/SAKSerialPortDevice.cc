@@ -14,22 +14,28 @@
 #include "SAKSerialPortDevice.hh"
 #include "SAKSerialPortDebugPage.hh"
 
-SAKSerialPortDevice::SAKSerialPortDevice(const QString name,
-                                         const qint32 baudRate,
-                                         const QSerialPort::DataBits dataBits,
-                                         const QSerialPort::StopBits stopBits,
-                                         const QSerialPort::Parity parity,
-                                         const QSerialPort::FlowControl flowControl,
-                                         SAKSerialPortDebugPage *debugPage,
-                                         QObject *parent)
+//SAKSerialPortDevice::SAKSerialPortDevice(const QString name,
+//                                         const qint32 baudRate,
+//                                         const QSerialPort::DataBits dataBits,
+//                                         const QSerialPort::StopBits stopBits,
+//                                         const QSerialPort::Parity parity,
+//                                         const QSerialPort::FlowControl flowControl,
+//                                         SAKSerialPortDebugPage *debugPage,
+//                                         QObject *parent)
+//    :SAKDevice(parent)
+//    ,_name(name)
+//    ,_baudRate(baudRate)
+//    ,_dataBits(dataBits)
+//    ,_stopBits(stopBits)
+//    ,_parity(parity)
+//    ,_flowControl(flowControl)
+//    ,debugPage(debugPage)
+//{
+
+//}
+
+SAKSerialPortDevice::SAKSerialPortDevice(QObject *parent)
     :SAKDevice(parent)
-    ,_name(name)
-    ,_baudRate(baudRate)
-    ,_dataBits(dataBits)
-    ,_stopBits(stopBits)
-    ,_parity(parity)
-    ,_flowControl(flowControl)
-    ,debugPage(debugPage)
 {
 
 }

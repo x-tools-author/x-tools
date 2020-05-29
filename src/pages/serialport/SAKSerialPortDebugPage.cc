@@ -30,74 +30,13 @@ SAKSerialPortDebugPage::SAKSerialPortDebugPage(QWidget *parent)
 SAKSerialPortDebugPage::~SAKSerialPortDebugPage()
 {
     delete controller;
-    if (serialPortAssistant){
-        serialPortAssistant->wakeMe();
-        serialPortAssistant->requestInterruption();
-        serialPortAssistant->exit();
-        serialPortAssistant->wait();
-        delete serialPortAssistant;
-        serialPortAssistant = Q_NULLPTR;
-    }
 }
 
-void SAKSerialPortDebugPage::setUiEnable(bool enable)
+SAKDevice *SAKSerialPortDebugPage::createDevice()
 {
-    controller->setEnabled(enable);
-    refreshPushButton->setEnabled(enable);
+    serialPortAssistant = new SAKSerialPortDevice;
+    return serialPortAssistant;
 }
-
-void SAKSerialPortDebugPage::changeDeviceStatus(bool opened)
-{
-    /*
-     * 设备打开失败，使能ui, 打开成功，禁止ui
-     */
-    setUiEnable(!opened);
-    switchPushButton->setText(opened ? tr("关闭") : tr("打开"));
-    if (!opened){
-        if (serialPortAssistant){
-            serialPortAssistant->terminate();
-            delete serialPortAssistant;
-            serialPortAssistant = Q_NULLPTR;
-        }
-    }
-    emit deviceStatusChanged(opened);
-}
-
-//void SAKSerialPortDebugPage::openOrColoseDevice()
-//{
-//    if (serialPortAssistant){
-//        switchPushButton->setText(tr("打开"));
-//        serialPortAssistant->requestInterruption();
-//        serialPortAssistant->wakeMe();
-//        serialPortAssistant->exit();
-//        serialPortAssistant->wait();
-//        delete serialPortAssistant;
-//        serialPortAssistant = Q_NULLPTR;
-
-//        setUiEnable(true);
-//        emit deviceStatusChanged(false);
-//    }else{
-//        switchPushButton->setText(tr("关闭"));
-//        const QString name = controller->name();
-//        const qint32 baudRate = controller->baudRate();
-//        const QSerialPort::DataBits dataBits = controller->dataBits();
-//        const QSerialPort::StopBits stopBits = controller->stopBits();
-//        const QSerialPort::Parity parity = controller->parity();
-//        const QSerialPort::FlowControl flowControl = controller->flowControl();
-
-//        serialPortAssistant = new SAKSerialPortDevice(name, baudRate, dataBits, stopBits, parity, flowControl, this);
-
-//        connect(this, &SAKSerialPortDebugPage::writeDataRequest,serialPortAssistant, &SAKSerialPortDevice::writeBytes);
-
-//        connect(serialPortAssistant, &SAKSerialPortDevice::bytesWriten,         this, &SAKSerialPortDebugPage::bytesWritten);
-//        connect(serialPortAssistant, &SAKSerialPortDevice::bytesRead,          this, &SAKSerialPortDebugPage::bytesRead);
-//        connect(serialPortAssistant, &SAKSerialPortDevice::messageChanged,     this, &SAKSerialPortDebugPage::outputMessage);
-//        connect(serialPortAssistant, &SAKSerialPortDevice::deviceStatuChanged, this, &SAKSerialPortDebugPage::changeDeviceStatus);
-
-//        serialPortAssistant->start();
-//    }
-//}
-
 
 void SAKSerialPortDebugPage::refreshDevice()
 {
@@ -107,4 +46,10 @@ void SAKSerialPortDebugPage::refreshDevice()
 QWidget *SAKSerialPortDebugPage::controllerWidget()
 {
     return controller;
+}
+
+void SAKSerialPortDebugPage::setUiEnable(bool enable)
+{
+    controller->setEnabled(enable);
+    refreshPushButton->setEnabled(enable);
 }
