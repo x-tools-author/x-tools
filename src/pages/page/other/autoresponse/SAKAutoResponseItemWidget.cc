@@ -12,6 +12,7 @@
 #include <QDateTime>
 
 #include "SAKGlobal.hh"
+#include "SAKDataStruct.hh"
 #include "SAKAutoResponseItemWidget.hh"
 
 #include "ui_SAKAutoResponseItemWidget.h"
@@ -65,22 +66,22 @@ void SAKAutoResponseItemWidget::setLineEditFormat(QLineEdit *lineEdit, int forma
         lineEdit->setValidator(Q_NULLPTR);
         lineEdit->clear();
         switch (format) {
-        case SAKGlobal::Ibin:
+        case SAKDataStruct::InputFormatBin:
             lineEdit->setValidator(new QRegExpValidator(regExpBin, this));
             break;
-        case SAKGlobal::Ioct:
+        case SAKDataStruct::InputFormatOct:
             lineEdit->setValidator(new QRegExpValidator(regExpOct, this));
             break;
-        case SAKGlobal::Idec:
+        case SAKDataStruct::InputFormatDec:
             lineEdit->setValidator(new QRegExpValidator(regExpDec, this));
             break;
-        case SAKGlobal::Ihex:
+        case SAKDataStruct::InputFormatHex:
             lineEdit->setValidator(new QRegExpValidator(regExpHex, this));
             break;
-        case SAKGlobal::Iascii:
+        case SAKDataStruct::InputFormatAscii:
             lineEdit->setValidator(new QRegExpValidator(regExpAscii, this));
             break;
-        case SAKGlobal::Ilocal:
+        case SAKDataStruct::InputFormatLocal:
             lineEdit->setValidator(Q_NULLPTR);
             break;
         default:
@@ -134,30 +135,30 @@ QByteArray SAKAutoResponseItemWidget::string2array(QString str, int format)
     QStringList strList;
     int base;
     switch (format) {
-    case SAKGlobal::Ibin:
+    case SAKDataStruct::InputFormatBin:
         base = 2;
         strList = str.split(' ');
         array = stringList2Array(strList, base);
         break;
-    case SAKGlobal::Ioct:
+    case SAKDataStruct::InputFormatOct:
         base = 8;
         strList = str.split(' ');
         array = stringList2Array(strList, base);
         break;
-    case SAKGlobal::Idec:
+    case SAKDataStruct::InputFormatDec:
         base = 10;
         strList = str.split(' ');
         array = stringList2Array(strList, base);
         break;
-    case SAKGlobal::Ihex:
+    case SAKDataStruct::InputFormatHex:
         base = 16;
         strList = str.split(' ');
         array = stringList2Array(strList, base);
         break;
-    case SAKGlobal::Iascii:
+    case SAKDataStruct::InputFormatAscii:
         array = str.toLatin1();
         break;
-    case SAKGlobal::Ilocal:
+    case SAKDataStruct::InputFormatLocal:
         array = str.toLocal8Bit();
         break;
     default:

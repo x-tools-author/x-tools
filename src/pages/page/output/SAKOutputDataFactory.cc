@@ -10,7 +10,9 @@
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
 #include <QApplication>
+
 #include "SAKGlobal.hh"
+#include "SAKDataStruct.hh"
 #include "SAKOutputDataFactory.hh"
 
 SAKOutputDataFactory::SAKOutputDataFactory(QObject *parent)
@@ -52,33 +54,33 @@ void SAKOutputDataFactory::cookData(QByteArray rawData, SAKDebugPageOutputManage
     }
     str.append("<font color=silver>] </font>");
 
-    if (parameters.textModel == SAKGlobal::Obin){
+    if (parameters.textModel == SAKDataStruct::OutputFormatBin){
         for (int i = 0; i < rawData.length(); i++){
             str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(rawData.at(i)), 2), 8, '0'));
         }
-    }else if (parameters.textModel == SAKGlobal::Ooct){
+    }else if (parameters.textModel == SAKDataStruct::OutputFormatOct){
         for (int i = 0; i < rawData.length(); i++){
             str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(rawData.at(i)), 8), 3, '0'));
         }
-    }else if (parameters.textModel == SAKGlobal::Odec){
+    }else if (parameters.textModel == SAKDataStruct::OutputFormatDec){
         for (int i = 0; i < rawData.length(); i++){
             str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(rawData.at(i)), 10)));
         }
-    }else if (parameters.textModel == SAKGlobal::Ohex){
+    }else if (parameters.textModel == SAKDataStruct::OutputFormatHex){
         for (int i = 0; i < rawData.length(); i++){
             str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(rawData.at(i)), 16), 2, '0'));
         }
-    }else if (parameters.textModel == SAKGlobal::Oascii){
+    }else if (parameters.textModel == SAKDataStruct::OutputFormatAscii){
         str.append(QString::fromLatin1(rawData));
-    }else if (parameters.textModel == SAKGlobal::Outf8){
+    }else if (parameters.textModel == SAKDataStruct::OutputFormatUtf8){
         str.append(QString::fromUtf8(rawData));
-    }else if (parameters.textModel == SAKGlobal::Outf16){
+    }else if (parameters.textModel == SAKDataStruct::OutputFormatUtf16){
         str.append(QString::fromUtf16(reinterpret_cast<const ushort*>(rawData.constData()),rawData.length()));
-    }else if (parameters.textModel == SAKGlobal::Oucs4){
+    }else if (parameters.textModel == SAKDataStruct::OutputFormatUcs4){
         str.append(QString::fromUcs4(reinterpret_cast<const char32_t*>(rawData.constData()),rawData.length()));
-    }else if (parameters.textModel == SAKGlobal::Ostdwstring){
+    }else if (parameters.textModel == SAKDataStruct::OutputFormatStdwstring){
         str.append(QString::fromWCharArray(reinterpret_cast<const wchar_t*>(rawData.constData()),rawData.length()));
-    }else if (parameters.textModel == SAKGlobal::Olocal){
+    }else if (parameters.textModel == SAKDataStruct::OutputFormatLocal){
         str.append(QString::fromLocal8Bit(rawData));
     }else {
         str.append(QString::fromUtf8(rawData));

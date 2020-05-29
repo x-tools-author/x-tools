@@ -36,6 +36,32 @@ public:
         DebugPageTypeTCPServer
     };
     Q_ENUM(SAKEnumDebugPageType)
+
+    /// @brief 文本输出格式
+    enum SAKTextInputFormat {
+        InputFormatBin,
+        InputFormatOct,
+        InputFormatDec,
+        InputFormatHex,
+        InputFormatAscii,
+        InputFormatUtf8,
+        InputFormatLocal
+    };
+    Q_ENUM(SAKTextInputFormat)
+
+    /// @brief 文本输出格式
+    enum SAKTextOutputFormat {
+        OutputFormatBin,
+        OutputFormatOct,
+        OutputFormatDec,
+        OutputFormatHex,
+        OutputFormatAscii,
+        OutputFormatUtf8,
+        OutputFormatLocal,
+        OutputFormatUtf16,
+        OutputFormatUcs4,
+        OutputFormatStdwstring
+    };
 };
 
 #endif

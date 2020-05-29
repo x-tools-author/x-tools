@@ -13,6 +13,7 @@
 #include <QApplication>
 
 #include "SAKGlobal.hh"
+#include "SAKDataStruct.hh"
 #include "SAKCRCInterface.hh"
 #include "SAKInputDataFactory.hh"
 
@@ -84,31 +85,31 @@ quint32 SAKInputDataFactory::crcCalculate(QByteArray data, int model)
 QByteArray SAKInputDataFactory::rawDataToArray(QString rawData, SAKDebugPageInputManager::InputParameters parameters)
 {
     QByteArray data;
-    if (parameters.inputModel == SAKGlobal::Ibin){
+    if (parameters.inputModel == SAKDataStruct::InputFormatBin){
         QStringList strList = rawData.split(' ');
         for (QString str:strList){
             data.append(static_cast<int8_t>(QString(str).toInt(Q_NULLPTR, 2)));
         }
-    }else if (parameters.inputModel == SAKGlobal::Ioct){
+    }else if (parameters.inputModel == SAKDataStruct::InputFormatOct){
         QStringList strList = rawData.split(' ');
         for (QString str:strList){
             data.append(static_cast<int8_t>(QString(str).toInt(Q_NULLPTR, 8)));
         }
-    }else if (parameters.inputModel == SAKGlobal::Idec){
+    }else if (parameters.inputModel == SAKDataStruct::InputFormatDec){
         QStringList strList = rawData.split(' ');
         for (QString str:strList){
             data.append(static_cast<int8_t>(QString(str).toInt(Q_NULLPTR, 10)));
         }
-    }else if (parameters.inputModel == SAKGlobal::Ihex){
+    }else if (parameters.inputModel == SAKDataStruct::InputFormatHex){
         QStringList strList = rawData.split(' ');
         for (QString str:strList){
             data.append(static_cast<int8_t>(QString(str).toInt(Q_NULLPTR, 16)));
         }
-    }else if (parameters.inputModel == SAKGlobal::Iascii){
+    }else if (parameters.inputModel == SAKDataStruct::InputFormatAscii){
         data = rawData.toLatin1();
-    }else if (parameters.inputModel == SAKGlobal::Iutf8){
+    }else if (parameters.inputModel == SAKDataStruct::InputFormatUtf8){
         data = rawData.toUtf8();
-    }else if (parameters.inputModel == SAKGlobal::Ilocal){
+    }else if (parameters.inputModel == SAKDataStruct::InputFormatUtf8){
         data = rawData.toLocal8Bit();
     }else {
         data = rawData.toLocal8Bit();

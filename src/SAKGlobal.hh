@@ -19,13 +19,6 @@ class SAKGlobal:public QObject
 {
     Q_OBJECT
 public:
-    enum SAKTextInputFormat {
-        Ibin,Ioct,Idec,Ihex,Iascii,Iutf8,Ilocal
-    };
-    enum SAKTextOutputFormat {
-        Obin,Ooct,Odec,Ohex,Oascii,Outf8,Olocal,Outf16,Oucs4,Ostdwstring
-    };
-
     /**
      * @brief SAKGlobal -- 构造函数
      * @param parent    -- 父控件

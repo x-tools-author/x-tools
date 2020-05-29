@@ -9,19 +9,20 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#include "SAKGlobal.hh"
-#include "SAKDebugPage.hh"
-#include "SAKInputDataItem.hh"
-#include "SAKCRCInterface.hh"
-#include "SAKInputDataFactory.hh"
-#include "SAKInputDataItemManager.hh"
-#include "SAKDebugPageInputManager.hh"
-
 #include <QFile>
 #include <QDebug>
 #include <QFileDialog>
 #include <QStandardPaths>
 #include <QListWidgetItem>
+
+#include "SAKGlobal.hh"
+#include "SAKDebugPage.hh"
+#include "SAKDataStruct.hh"
+#include "SAKInputDataItem.hh"
+#include "SAKCRCInterface.hh"
+#include "SAKInputDataFactory.hh"
+#include "SAKInputDataItemManager.hh"
+#include "SAKDebugPageInputManager.hh"
 
 SAKDebugPageInputManager::SAKDebugPageInputManager(SAKDebugPage *debugPage, QObject *parent)
     :QObject (parent)
@@ -281,7 +282,7 @@ void SAKDebugPageInputManager::formattingInputText(QTextEdit *textEdit, int mode
     textEdit->blockSignals(true);
     QString plaintext = textEdit->toPlainText();
     if (!plaintext.isEmpty()){
-        if (model == SAKGlobal::Ibin){
+        if (model == SAKDataStruct::InputFormatBin){
             QString strTemp;
             plaintext.remove(QRegExp("[^0-1]"));
             for (int i = 0; i < plaintext.length(); i++){
@@ -292,7 +293,7 @@ void SAKDebugPageInputManager::formattingInputText(QTextEdit *textEdit, int mode
             }
             textEdit->setText(strTemp);
             textEdit->moveCursor(QTextCursor::End);
-        }else if(model == SAKGlobal::Ioct) {
+        }else if(model == SAKDataStruct::InputFormatOct) {
             QString strTemp;
             plaintext.remove(QRegExp("[^0-7]"));
             for (int i = 0; i < plaintext.length(); i++){
@@ -303,7 +304,7 @@ void SAKDebugPageInputManager::formattingInputText(QTextEdit *textEdit, int mode
             }
             textEdit->setText(strTemp);
             textEdit->moveCursor(QTextCursor::End);
-        }else if(model == SAKGlobal::Idec) {
+        }else if(model == SAKDataStruct::InputFormatDec) {
             QString strTemp;
             plaintext.remove(QRegExp("[^0-9]"));
             for (int i = 0; i < plaintext.length(); i++){
@@ -314,7 +315,7 @@ void SAKDebugPageInputManager::formattingInputText(QTextEdit *textEdit, int mode
             }
             textEdit->setText(strTemp);
             textEdit->moveCursor(QTextCursor::End);
-        }else if(model == SAKGlobal::Ihex) {
+        }else if(model == SAKDataStruct::InputFormatHex) {
             QString strTemp;
             plaintext.remove(QRegExp("[^0-9a-fA-F]"));
             for (int i = 0; i < plaintext.length(); i++){
@@ -325,13 +326,13 @@ void SAKDebugPageInputManager::formattingInputText(QTextEdit *textEdit, int mode
             }
             textEdit->setText(strTemp.toUpper());
             textEdit->moveCursor(QTextCursor::End);
-        }else if(model == SAKGlobal::Iascii) {
+        }else if(model == SAKDataStruct::InputFormatAscii) {
             plaintext.remove(QRegExp("[^\0u00-\u007f ]"));
             textEdit->setText(plaintext);
             textEdit->moveCursor(QTextCursor::End);
-        }else if(model == SAKGlobal::Iutf8) {
+        }else if(model == SAKDataStruct::InputFormatUtf8) {
             /// nothing to do
-        }else if(model == SAKGlobal::Ilocal) {
+        }else if(model == SAKDataStruct::InputFormatLocal) {
             /// nothing to do
         }else {
             Q_ASSERT_X(false, __FUNCTION__, "Unknow input model");
