@@ -128,6 +128,7 @@ struct SAKDebugPage::ReadWriteParameters SAKDebugPage::readWriteParameters()
     readWriteParametersQMutex.lock();
     parameters.waitForReadyReadTime = _readWriteParameters.waitForReadyReadTime;
     parameters.waitForBytesWrittenTime = _readWriteParameters.waitForBytesWrittenTime;
+    parameters.runIntervalTime = _readWriteParameters.runIntervalTime;
     readWriteParametersQMutex.unlock();
 
     return  parameters;
