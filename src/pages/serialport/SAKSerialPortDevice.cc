@@ -87,6 +87,7 @@ void SAKSerialPortDevice::run()
         serialPort->close();
         delete serialPort;
         serialPort = Q_NULLPTR;
+        emit deviceStateChanged(false);
     }else{        
         emit deviceStateChanged(false);
         emit messageChanged(tr("串口打开失败：") + serialPort->errorString(), false);

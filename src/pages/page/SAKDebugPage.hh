@@ -138,8 +138,6 @@ signals:
     void requestWriteData(QByteArray data);
     /// 请求处理输出
     void requestWriteRawData(QString data, int textFormat);
-    /// 子类设备状态发生改变时(是否就绪)发送该信号
-    void deviceStateChanged(bool isOpened);
 
     /// @brief 读写参数
 public:
