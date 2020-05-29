@@ -10,7 +10,9 @@
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
 #include <QDebug>
+#include <QEventLoop>
 #include <QApplication>
+
 #include "SAKSerialPortDevice.hh"
 #include "SAKSerialPortDebugPage.hh"
 #include "SAKSerialPortDeviceController.hh"
@@ -30,6 +32,7 @@ SAKSerialPortDevice::~SAKSerialPortDevice()
 
 void SAKSerialPortDevice::run()
 {
+    QEventLoop eventLoop;
     SAKSerialPortDeviceController *controller = debugPage->controllerInstance();
     _name = controller->name();
     _baudRate = controller->baudRate();
@@ -77,6 +80,10 @@ void SAKSerialPortDevice::run()
                 }
             }
 
+            /// @brief 处理线程事件
+            eventLoop.processEvents();
+
+            /// @brief 线程睡眠
             threadMutex.lock();
             threadWaitCondition.wait(&threadMutex, 25);
             threadMutex.unlock();

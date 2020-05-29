@@ -62,9 +62,11 @@ public:
     SAKDebugPage(int type, QWidget *parent = Q_NULLPTR);
     ~SAKDebugPage();
 
+    /// @brief 读写参数，参数单位为ms
     struct ReadWriteParameters {
-        int waitForBytesWrittenTime;
-        int waitForReadyReadTime;
+        int waitForBytesWrittenTime;// 写等待时间
+        int waitForReadyReadTime;   // 读就绪等待时间
+        int runIntervalTime;        // while循环执行时间间隔
     };
 
     friend class SAKDataVisualizationManager;
@@ -92,6 +94,18 @@ public:
      * @param isInfo true表示一般信息，false表示错误、警告信息
      */
     void outputMessage(QString msg, bool isInfo = true);
+
+    /**
+     * @brief readWriteParameters 获取读写参数
+     * @return 读写参数
+     */
+    ReadWriteParameters readWriteParameters();
+
+    /**
+     * @brief setReadWriteParameters 设置读写参数
+     * @param parameters 读写参数
+     */
+    void setReadWriteParameters(ReadWriteParameters parameters);
 protected:
     /// @brief 刷新设备
     virtual void refreshDevice();
@@ -107,6 +121,8 @@ private:
     int debugPageType = -1;
     QString settingKey;
     QTimer clearInfoTimer;
+    struct ReadWriteParameters _readWriteParameters;
+    QMutex readWriteParametersQMutex;
 private:
     void initSettingKey();
     /// @brief 初始化配置选项名称
@@ -143,13 +159,6 @@ signals:
     /// 请求处理输出
     void requestWriteRawData(QString data, int textFormat);
 
-    /// @brief 读写参数
-public:
-    struct ReadWriteParameters readWriteParameters();
-    void setReadWriteParameters(struct ReadWriteParameters parameters);
-private:
-    struct ReadWriteParameters _readWriteParameters;
-    QMutex readWriteParametersQMutex;
 
 
 

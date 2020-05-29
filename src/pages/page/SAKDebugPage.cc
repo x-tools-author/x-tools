@@ -120,6 +120,33 @@ void SAKDebugPage::outputMessage(QString msg, bool isInfo)
     clearInfoTimer.start();
 }
 
+struct SAKDebugPage::ReadWriteParameters SAKDebugPage::readWriteParameters()
+{
+    ReadWriteParameters parameters;
+    readWriteParametersQMutex.lock();
+    parameters.waitForReadyReadTime = _readWriteParameters.waitForReadyReadTime;
+    parameters.waitForBytesWrittenTime = _readWriteParameters.waitForBytesWrittenTime;
+    readWriteParametersQMutex.unlock();
+
+    return  parameters;
+}
+
+void SAKDebugPage::setReadWriteParameters(struct ReadWriteParameters parameters)
+{
+    if (parameters.waitForReadyReadTime < MINI_READ_WRITE_WATINGT_TIME){
+        parameters.waitForReadyReadTime = MINI_READ_WRITE_WATINGT_TIME;
+    }
+
+    if (parameters.waitForBytesWrittenTime < MINI_READ_WRITE_WATINGT_TIME){
+        parameters.waitForBytesWrittenTime = MINI_READ_WRITE_WATINGT_TIME;
+    }
+
+    readWriteParametersQMutex.lock();
+    _readWriteParameters.waitForReadyReadTime = parameters.waitForReadyReadTime;
+    _readWriteParameters.waitForBytesWrittenTime = parameters.waitForBytesWrittenTime;
+    readWriteParametersQMutex.unlock();
+}
+
 void SAKDebugPage::refreshDevice()
 {
 
@@ -348,33 +375,6 @@ void SAKDebugPage::setupController()
         layout->setMargin(0);
 #endif
     }
-}
-
-struct SAKDebugPage::ReadWriteParameters SAKDebugPage::readWriteParameters()
-{
-    ReadWriteParameters parameters;
-    readWriteParametersQMutex.lock();    
-    parameters.waitForReadyReadTime = _readWriteParameters.waitForReadyReadTime;
-    parameters.waitForBytesWrittenTime = _readWriteParameters.waitForBytesWrittenTime;
-    readWriteParametersQMutex.unlock();
-
-    return  parameters;
-}
-
-void SAKDebugPage::setReadWriteParameters(struct ReadWriteParameters parameters)
-{
-    if (parameters.waitForReadyReadTime < MINI_READ_WRITE_WATINGT_TIME){
-        parameters.waitForReadyReadTime = MINI_READ_WRITE_WATINGT_TIME;
-    }
-
-    if (parameters.waitForBytesWrittenTime < MINI_READ_WRITE_WATINGT_TIME){
-        parameters.waitForBytesWrittenTime = MINI_READ_WRITE_WATINGT_TIME;
-    }
-
-    readWriteParametersQMutex.lock();
-    _readWriteParameters.waitForReadyReadTime = parameters.waitForReadyReadTime;
-    _readWriteParameters.waitForBytesWrittenTime = parameters.waitForBytesWrittenTime;
-    readWriteParametersQMutex.unlock();
 }
 
 void SAKDebugPage::on_refreshPushButton_clicked()
