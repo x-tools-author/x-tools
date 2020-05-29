@@ -526,11 +526,11 @@ void SAKDebugPage::initUiPointer()
 
     /// @brief 其他设置
     transmissionSettingPushButton = ui->transmissionSettingPushButton;
-    readWriteSettingPushButton = ui->readWriteSettingPushButton;
+    readWriteSettingPushButton    = ui->readWriteSettingPushButton;
     autoResponseSettingPushButton = ui->autoResponseSettingPushButton;    
-    timingSendingPushButton = ui->timingSendingPushButton;
-    highlightSettingPushButton = ui->highlightSettingPushButton;
-    moreSettingsPushButton = ui->moreSettingsPushButton;    
+    timingSendingPushButton       = ui->timingSendingPushButton;
+    highlightSettingPushButton    = ui->highlightSettingPushButton;
+    moreSettingsPushButton        = ui->moreSettingsPushButton;
 
     /// @brief 数据可视化
     dataVisualizationPushButton = ui->dataVisualizationPushButton;
