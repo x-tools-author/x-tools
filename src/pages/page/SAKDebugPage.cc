@@ -340,7 +340,7 @@ void SAKDebugPage::openDevice()
 {
     if (device){
         device->start();
-        switchPushButton->setText(tr("关闭"));
+        switchPushButton->setText(tr("关闭设备"));
     }
 }
 
@@ -353,7 +353,7 @@ void SAKDebugPage::closeDevice()
         device->wait();
         device->deleteLater();
         device = Q_NULLPTR;
-        switchPushButton->setText(tr("打开"));
+        switchPushButton->setText(tr("打开设备"));
     }
 }
 
