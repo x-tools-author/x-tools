@@ -322,21 +322,15 @@ void SAKDebugPage::on_showTxDataCheckBox_clicked()
 
 void SAKDebugPage::initUiPointer()
 {
-    /*
-     * 设备管理组
-     */
+    /// @brief 设备管理组
     switchPushButton        = ui->switchPushButton;
     refreshPushButton       = ui->refreshPushButton;
     deviceSettingFrame      = ui->deviceSettingFrame;
 
-    /*
-     * 消息输出组
-     */
+    /// @brief 消息输出组
     infoLabel               = ui->infoLabel;
 
-    /*
-     * 输入设置组
-     */
+    /// @brief 输入设置组
     inputModelComboBox      = ui->inputModelComboBox;
     cycleEnableCheckBox     = ui->cycleEnableCheckBox;
     cycleTimeLineEdit       = ui->cycleTimeLineEdit;
@@ -352,9 +346,7 @@ void SAKDebugPage::initUiPointer()
     presetPushButton        = ui->presetPushButton;
     sendPresetPushButton    = ui->sendPresetPushButton;
 
-    /*
-     * 输出设置组
-     */
+    /// @brief 输出设置组
     rxLabel                 = ui->rxLabel;
     txLabel                 = ui->txLabel;
     outputTextFormatComboBox= ui->outputTextFormatComboBox;
@@ -370,10 +362,7 @@ void SAKDebugPage::initUiPointer()
     saveOutputPushButton    = ui->saveOutputPushButton;
     outputTextBroswer       = ui->outputTextBroswer;
 
-
-    /*
-     * 数据统计
-     */
+    /// @brief 数据统计
     rxSpeedLabel            = ui->rxSpeedLabel;
     txSpeedLabel            = ui->txSpeedLabel;
     rxFramesLabel           = ui->rxFramesLabel;
@@ -383,9 +372,7 @@ void SAKDebugPage::initUiPointer()
     resetTxCountPushButton  = ui->resetTxCountPushButton;
     resetRxCountPushButton  = ui->resetRxCountPushButton;
 
-    /*
-     * 其他设置
-     */
+    /// @brief 其他设置
     transmissionSettingPushButton = ui->transmissionSettingPushButton;
     readWriteSettingPushButton = ui->readWriteSettingPushButton;
     autoResponseSettingPushButton = ui->autoResponseSettingPushButton;    
@@ -393,9 +380,7 @@ void SAKDebugPage::initUiPointer()
     highlightSettingPushButton = ui->highlightSettingPushButton;
     moreSettingsPushButton = ui->moreSettingsPushButton;    
 
-    /*
-     * 数据可视化
-     */
+    /// @brief 数据可视化
     dataVisualizationPushButton = ui->dataVisualizationPushButton;
 }
 

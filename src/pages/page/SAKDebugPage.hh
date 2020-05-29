@@ -59,14 +59,20 @@ public:
      * @param parent 资源管理类
      */
     SAKDebugPage(int type, QWidget *parent = Q_NULLPTR);
-    ~SAKDebugPage();        
+    ~SAKDebugPage();
+
+    friend class SAKDataVisualizationManager;
+    friend class SAKOtherSettingsManager;
+    friend class SAKStatisticsManager;
+    friend class SAKDebugPageInputManager;
+    friend class SAKDebugPageOutputManager;
 
     /**
      * @brief changeDeviceState 更改设备状态
      * @param isOpened true表示设备已打开，false表示设备已关闭
      */
     void changeDeviceState(bool isOpened);
-public:
+
     /**
      * @brief write             -- 写数据
      * @param data              -- 待写的数据
@@ -104,6 +110,19 @@ protected:
     virtual void openOrColoseDevice();
 private:
     SAKDevice *device;
+    bool isInitializing;
+    int debugPageType = -1;
+    QString settingKey;
+private:
+    void initSettingKey();
+    /// @brief 初始化配置选项名称
+    void initSettingString();
+    void initInputSettingString();
+    void initOutputSettingString();
+    /// @brief 从配置文件中读入配置选项
+    void readinSettings();
+    void readinInputSettings();
+    void readinOutputSettings();
 signals:
     /// 读取数据后发射该信号，参数为已读取的数据
     void bytesRead(QByteArray data);
@@ -128,10 +147,7 @@ public:
 private:
     struct ReadWriteParameters _readWriteParameters;
     QMutex readWriteParametersQMutex;
-
-
 protected:
-
     /**
      * @brief controllerWidget  -- 安装控制面板
      */
@@ -149,9 +165,9 @@ private:
     QTimer clearInfoTimer;
     void cleanInfo();
 
-    // ------------------------------------------------------------------------
-    // 设备设置
-protected:    
+    /*************************************************************************/
+    /// @brief 设备设置
+protected:
     QPushButton *refreshPushButton              = Q_NULLPTR;  // 刷新按钮
     QPushButton *switchPushButton               = Q_NULLPTR;  // 打开关闭设备按钮
     QFrame      *deviceSettingFrame             = Q_NULLPTR;  // 控制面板
@@ -159,7 +175,8 @@ private slots:
     void on_refreshPushButton_clicked();
     void on_switchPushButton_clicked();
 
-     // 输入设置组
+    /*************************************************************************/
+    /// @brief 输入设置组
 protected:
     QComboBox   *inputModelComboBox             = Q_NULLPTR;  // 输入模式预选框
     QCheckBox   *cycleEnableCheckBox            = Q_NULLPTR;  // 循环使能复选框
@@ -191,11 +208,13 @@ private slots:
     void on_bigeEndianCheckBox_clicked();
     void on_crcParameterModelsComboBox_currentIndexChanged(int index);
 
-    // 消息输出组管理
+    /*************************************************************************/
+    /// @brief 消息输出组管理
 protected:
     QLabel *infoLabel                           = Q_NULLPTR;  // 消息输标签
 
-    // 消息输出组
+    /*************************************************************************/
+    /// @brief 数据输出组
 protected:
     QLabel      *rxLabel                        = Q_NULLPTR;  // 接受指示灯
     QLabel      *txLabel                        = Q_NULLPTR;  // 发送指示灯
@@ -219,7 +238,6 @@ protected:
     QString settingStringShowMs;
     QString settingStringShowRx;
     QString settingStringShowTx;
-
 private slots:
     void on_outputTextFormatComboBox_currentIndexChanged(int index);
     void on_showDateCheckBox_clicked();
@@ -229,7 +247,8 @@ private slots:
     void on_showRxDataCheckBox_clicked();
     void on_showTxDataCheckBox_clicked();
 
-    // 数据统计
+    /*************************************************************************/
+    /// @brief 数据统计
 protected:
     bool        receivedFlag                    = false;    // 接受状态指示灯
     bool        sendFlag                        = false;    // 接受指示灯状态
@@ -243,7 +262,8 @@ protected:
     QPushButton *resetTxCountPushButton;
     QPushButton *resetRxCountPushButton;
 
-    // 其他设置
+    /*************************************************************************/
+    /// @brief 其他设置
 protected:
     QPushButton *transmissionSettingPushButton;
     QPushButton *readWriteSettingPushButton;
@@ -252,52 +272,28 @@ protected:
     QPushButton *highlightSettingPushButton;
     QPushButton *moreSettingsPushButton;
 
-    // 数据可视化
+    /*************************************************************************/
+    /// @brief 数据可视化
 protected:
     QPushButton *dataVisualizationPushButton;
 private slots:
     void on_dataVisualizationPushButton_clicked();
-
 private:
 #ifdef SAK_IMPORT_CHARTS_MODULE
     SAKDataVisualizationManager *dataVisualizationManager;
 #endif
     SAKOtherSettingsManager *otherSettings;
-    SAKStatisticsManager    *statisticsManager;
-    SAKDebugPageOutputManager  *outputManager;
-    SAKDebugPageInputManager   *debugPageInputManager;
+    SAKStatisticsManager *statisticsManager;
+    SAKDebugPageOutputManager *outputManager;
+    SAKDebugPageInputManager *debugPageInputManager;
 
-private:
-    /**
-     * @brief ui    -- 界面文件
-     */
-    Ui::SAKDebugPage *ui = Q_NULLPTR;
-
-    /**
-     * @brief initUiPointer -- 初始化指向ui控件的数据成员（指针）
-     */
-    void initUiPointer();    
-public:
-    friend class SAKDataVisualizationManager;
-    friend class SAKOtherSettingsManager;
-    friend class SAKStatisticsManager;
-    friend class SAKDebugPageInputManager;
-    friend class SAKDebugPageOutputManager;
-
-private:
-    bool isInitializing;
-    int debugPageType = -1;
-    QString settingKey;
     /*************************************************************************/
-    void initSettingKey();
-    /// @brief 初始化配置选项名称
-    void initSettingString();
-    void initInputSettingString();
-    void initOutputSettingString();
-    /// @brief 从配置文件中读入配置选项
-    void readinSettings();
-    void readinInputSettings();
-    void readinOutputSettings();
+    /// @brief ui文件初始化
+private:
+    Ui::SAKDebugPage *ui = Q_NULLPTR;
+private:
+    /// @brief initUiPointer -- 初始化指向ui控件的数据成员（指针）
+    void initUiPointer();    
 };
 
 #endif  // SAKTabPage_H
