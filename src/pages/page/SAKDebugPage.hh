@@ -288,13 +288,13 @@ private:
     bool isInitializing;
     int debugPageType = -1;
     QString settingKey;
-
+    /*************************************************************************/
     void initSettingKey();
-
+    /// @brief 初始化配置选项名称
     void initSettingString();
     void initInputSettingString();
     void initOutputSettingString();
-
+    /// @brief 从配置文件中读入配置选项
     void readinSettings();
     void readinInputSettings();
     void readinOutputSettings();
