@@ -92,6 +92,16 @@ protected:
      * @brief dev 设备实例指针
      */
     void setupDevice(SAKDevice *dev);
+
+    /**
+     * @brief refreshDevice         -- 刷新设备
+     */
+    virtual void refreshDevice();
+
+    /**
+     * @brief openOrColoseDevice    -- 打开或者关闭设备
+     */
+    virtual void openOrColoseDevice();
 private:
     SAKDevice *device;
 signals:
@@ -106,9 +116,7 @@ signals:
 signals:
     void writeRawDataRequest(QString data, int textFormat);
 
-    /*
-     * 读写参数
-     */
+    /// @brief 读写参数
 public:
     struct ReadWriteParameters {
         int waitForBytesWrittenTime;
@@ -123,14 +131,7 @@ private:
 
 
 protected:
-    /**
-     * @brief openOrColoseDevice    -- 打开或者关闭设备
-     */
-    virtual void openOrColoseDevice();
-    /**
-     * @brief refreshDevice         -- 刷新设备
-     */
-    virtual void refreshDevice();
+
     /**
      * @brief controllerWidget  -- 安装控制面板
      */

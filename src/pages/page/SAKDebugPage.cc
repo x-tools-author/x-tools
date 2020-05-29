@@ -145,6 +145,25 @@ void SAKDebugPage::setupDevice(SAKDevice *dev)
     }
 }
 
+void SAKDebugPage::refreshDevice()
+{
+
+}
+
+void SAKDebugPage::openOrColoseDevice()
+{
+    if (device->isRunning()){
+        device->requestInterruption();
+        device->wakeMe();
+        device->exit();
+        device->wait();
+        switchPushButton->setText(tr("打开"));
+    }else{
+        device->start();
+        switchPushButton->setText(tr("关闭"));
+    }
+}
+
 struct SAKDebugPage::ReadWriteParameters SAKDebugPage::readWriteParameters()
 {
     ReadWriteParameters parameters;
@@ -170,26 +189,6 @@ void SAKDebugPage::setReadWriteParameters(struct ReadWriteParameters parameters)
     _readWriteParameters.waitForReadyReadTime = parameters.waitForReadyReadTime;
     _readWriteParameters.waitForBytesWrittenTime = parameters.waitForBytesWrittenTime;
     readWriteParametersQMutex.unlock();
-}
-
-
-void SAKDebugPage::openOrColoseDevice()
-{
-    if (device->isRunning()){
-        device->requestInterruption();
-        device->wakeMe();
-        device->exit();
-        device->wait();
-        switchPushButton->setText(tr("打开"));
-    }else{
-        device->start();
-        switchPushButton->setText(tr("关闭"));
-    }
-}
-
-void SAKDebugPage::refreshDevice()
-{
-
 }
 
 QWidget *SAKDebugPage::controllerWidget()
