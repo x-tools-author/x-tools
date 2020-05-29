@@ -57,7 +57,7 @@ void SAKTcpServerDebugPage::changeDeviceStatus(bool opened)
             tcpServerDevice = Q_NULLPTR;
         }
     }
-    emit deviceStatusChanged(opened);
+    emit deviceStateChanged(opened);
 }
 
 void SAKTcpServerDebugPage::tryWrite(QByteArray data)

@@ -97,7 +97,7 @@ protected:
     virtual void refreshDevice();
     /// @brief 返回控制面板
     virtual QWidget *controllerWidget();
-    /// @brief 创建设备
+    /// @brief 创建设备,创建的设备由基类管理，不能在子类中对设备进行销毁操作
     virtual SAKDevice* createDevice();
     /// @brief 初始化页面，子类在重新实现所有虚函数后，条用该函数即可
     void initPage();
@@ -121,6 +121,8 @@ private:
     void cleanInfo();
     /// @brief 打开或者关闭设备
     void openOrColoseDevice();
+    void closeDevice();
+    void openDevice();
     /// 初始化与设备有关的信号关联
     void setupDevice();
     /// @brief 安装设备控制面板
@@ -133,11 +135,11 @@ signals:
     /// 发送数据后发射该信号，参数为已发送的数据
     void bytesWritten(QByteArray data);
     /// 子类关联该信号来发送数据即可
-    void writeDataRequest(QByteArray data);
-    /// 子类设备状态发生改变时(是否就绪)发送该信号
-    void deviceStatusChanged(bool ready);
+    void requestWriteData(QByteArray data);
     /// 请求处理输出
-    void writeRawDataRequest(QString data, int textFormat);
+    void requestWriteRawData(QString data, int textFormat);
+    /// 子类设备状态发生改变时(是否就绪)发送该信号
+    void deviceStateChanged(bool isOpened);
 
     /// @brief 读写参数
 public:

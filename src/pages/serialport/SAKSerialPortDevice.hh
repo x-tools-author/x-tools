@@ -24,15 +24,7 @@ class SAKSerialPortDevice:public SAKDevice
 {
     Q_OBJECT
 public:
-//    SAKSerialPortDevice(const QString name,
-//                        const qint32 baudRate,
-//                        const QSerialPort::DataBits dataBits,
-//                        const QSerialPort::StopBits stopBits,
-//                        const QSerialPort::Parity parity,
-//                        const QSerialPort::FlowControl flowControl,
-//                        SAKSerialPortDebugPage *debugPage,
-//                        QObject *parent = Q_NULLPTR);
-    SAKSerialPortDevice(QObject *parent = Q_NULLPTR);
+    SAKSerialPortDevice(SAKSerialPortDebugPage *debugPage, QObject *parent = Q_NULLPTR);
     ~SAKSerialPortDevice();
 protected:
     void run() final;
@@ -45,12 +37,6 @@ private:
     QSerialPort::FlowControl  _flowControl;
     QSerialPort               *serialPort;
     SAKSerialPortDebugPage    *debugPage;
-signals:
-    void bytesRead(QByteArray);
-    void bytesWriten(QByteArray);
-
-    void deviceStatuChanged(bool opened);
-    void messageChanged(QString message, bool isInfo);
 };
 
 #endif

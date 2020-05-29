@@ -13,29 +13,12 @@
 #include <QApplication>
 #include "SAKSerialPortDevice.hh"
 #include "SAKSerialPortDebugPage.hh"
+#include "SAKSerialPortDeviceController.hh"
 
-//SAKSerialPortDevice::SAKSerialPortDevice(const QString name,
-//                                         const qint32 baudRate,
-//                                         const QSerialPort::DataBits dataBits,
-//                                         const QSerialPort::StopBits stopBits,
-//                                         const QSerialPort::Parity parity,
-//                                         const QSerialPort::FlowControl flowControl,
-//                                         SAKSerialPortDebugPage *debugPage,
-//                                         QObject *parent)
-//    :SAKDevice(parent)
-//    ,_name(name)
-//    ,_baudRate(baudRate)
-//    ,_dataBits(dataBits)
-//    ,_stopBits(stopBits)
-//    ,_parity(parity)
-//    ,_flowControl(flowControl)
-//    ,debugPage(debugPage)
-//{
-
-//}
-
-SAKSerialPortDevice::SAKSerialPortDevice(QObject *parent)
+SAKSerialPortDevice::SAKSerialPortDevice(SAKSerialPortDebugPage *debugPage, QObject *parent)
     :SAKDevice(parent)
+    ,serialPort(Q_NULLPTR)
+    ,debugPage(debugPage)
 {
 
 }
@@ -47,6 +30,14 @@ SAKSerialPortDevice::~SAKSerialPortDevice()
 
 void SAKSerialPortDevice::run()
 {
+    SAKSerialPortDeviceController *controller = debugPage->controllerInstance();
+    _name = controller->name();
+    _baudRate = controller->baudRate();
+    _dataBits = controller->dataBits();
+    _stopBits = controller->stopBits();
+    _parity = controller->parity();
+    _flowControl = controller->flowControl();
+
     serialPort = new QSerialPort;
     serialPort->setPortName(_name);
     serialPort->setBaudRate(_baudRate);
@@ -56,7 +47,7 @@ void SAKSerialPortDevice::run()
     serialPort->setFlowControl(_flowControl);
 
     if (serialPort->open(QSerialPort::ReadWrite)){
-        emit deviceStatuChanged(true);
+        emit deviceStateChanged(true);
         while (true){
             /// @brief 优雅地退出线程
             if (isInterruptionRequested()){
@@ -79,7 +70,7 @@ void SAKSerialPortDevice::run()
                     if (ret == -1){
                         emit messageChanged(tr("串口发送数据失败：") + serialPort->errorString(), false);
                     }else{
-                        emit bytesWriten(var);
+                        emit bytesWritten(var);
                     }
                 }else{
                     break;
@@ -97,7 +88,7 @@ void SAKSerialPortDevice::run()
         delete serialPort;
         serialPort = Q_NULLPTR;
     }else{        
-        emit deviceStatuChanged(false);
+        emit deviceStateChanged(false);
         emit messageChanged(tr("串口打开失败：") + serialPort->errorString(), false);
         return;
     }

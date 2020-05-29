@@ -72,7 +72,7 @@ SAKDebugPageInputManager::SAKDebugPageInputManager(SAKDebugPage *debugPage, QObj
     connect(this, &SAKDebugPageInputManager::rawDataChanged, inputDataFactory, &SAKInputDataFactory::cookData);
     connect(inputDataFactory, &SAKInputDataFactory::dataCooked, debugPage, &SAKDebugPage::write);
     connect(&timingTimer, &QTimer::timeout, this, &SAKDebugPageInputManager::cycleTimerTimeout);
-    connect(debugPage, &SAKDebugPage::writeRawDataRequest, this, &SAKDebugPageInputManager::sendOtherRawData);
+    connect(debugPage, &SAKDebugPage::requestWriteRawData, this, &SAKDebugPageInputManager::sendOtherRawData);
 
     initParameters();
     updateCRC();

@@ -20,7 +20,6 @@
 
 SAKSerialPortDebugPage::SAKSerialPortDebugPage(QWidget *parent)
     :SAKDebugPage (SAKGlobal::SAKEnumDebugPageTypeCOM, parent)
-    ,serialPortAssistant (Q_NULLPTR)
     ,controller (new SAKSerialPortDeviceController)
 {
     initPage();
@@ -32,10 +31,15 @@ SAKSerialPortDebugPage::~SAKSerialPortDebugPage()
     delete controller;
 }
 
+SAKSerialPortDeviceController *SAKSerialPortDebugPage::controllerInstance()
+{
+    return controller;
+}
+
 SAKDevice *SAKSerialPortDebugPage::createDevice()
 {
-    serialPortAssistant = new SAKSerialPortDevice;
-    return serialPortAssistant;
+    SAKSerialPortDevice *ret = new SAKSerialPortDevice(this);
+    return ret;
 }
 
 void SAKSerialPortDebugPage::refreshDevice()

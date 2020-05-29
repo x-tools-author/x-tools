@@ -57,7 +57,7 @@ void SAKTcpClientDebugPage::changeDeviceStatus(bool opened)
             tcpClientDevice = Q_NULLPTR;
         }
     }
-    emit deviceStatusChanged(opened);
+    emit deviceStateChanged(opened);
 }
 
 //void SAKTcpClientDebugPage::openOrColoseDevice()

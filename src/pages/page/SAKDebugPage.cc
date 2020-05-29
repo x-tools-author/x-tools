@@ -47,7 +47,7 @@ SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
     ,ui(new Ui::SAKDebugPage)
 {
     /// @brief 读写关联
-    connect(this, &SAKDebugPage::writeDataRequest, device, &SAKDevice::writeBytes);
+    connect(this, &SAKDebugPage::requestWriteData, device, &SAKDevice::writeBytes);
     connect(device, &SAKDevice::bytesRead, this, &SAKDebugPage::bytesRead);
 
     isInitializing = true;
@@ -67,7 +67,7 @@ SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
     _readWriteParameters.waitForReadyReadTime = MINI_READ_WRITE_WATINGT_TIME;
     _readWriteParameters.waitForBytesWrittenTime = MINI_READ_WRITE_WATINGT_TIME;
 
-    connect(this, &SAKDebugPage::deviceStatusChanged, this, &SAKDebugPage::changedDeviceState);
+    connect(this, &SAKDebugPage::deviceStateChanged, this, &SAKDebugPage::changedDeviceState);
     resize(800, 600);
 
     clearInfoTimer.setInterval(8*1000);
@@ -97,12 +97,12 @@ SAKDebugPage::~SAKDebugPage()
 
 void SAKDebugPage::write(QByteArray data)
 {
-    emit writeDataRequest(data);
+    emit requestWriteData(data);
 }
 
 void SAKDebugPage::writeRawData(QString rawData, int textFormat)
 {
-    emit writeRawDataRequest(rawData, textFormat);
+    emit requestWriteRawData(rawData, textFormat);
 }
 
 void SAKDebugPage::outputMessage(QString msg, bool isInfo)
@@ -291,29 +291,47 @@ void SAKDebugPage::cleanInfo()
 
 void SAKDebugPage::openOrColoseDevice()
 {
+    if (!device){
+        setupDevice();
+    }
+
     if (device){
         if (device->isRunning()){
-            device->requestInterruption();
-            device->wakeMe();
-            device->exit();
-            device->wait();
-            switchPushButton->setText(tr("打开"));
+            closeDevice();
         }else{
-            device->start();
-            switchPushButton->setText(tr("关闭"));
+            openDevice();
         }
     }
+}
+
+void SAKDebugPage::openDevice()
+{
+    device->start();
+    switchPushButton->setText(tr("关闭"));
+}
+
+void SAKDebugPage::closeDevice()
+{
+    device->requestInterruption();
+    device->wakeMe();
+    device->exit();
+    device->wait();
+    device->deleteLater();
+    device = Q_NULLPTR;
+    switchPushButton->setText(tr("打开"));
+    emit deviceStateChanged(false);
 }
 
 void SAKDebugPage::setupDevice()
 {
     device = createDevice();
     if (device){
-        connect(this, &SAKDebugPage::writeDataRequest, device, &SAKDevice::writeBytes);
+        connect(this, &SAKDebugPage::requestWriteData, device, &SAKDevice::writeBytes);
         connect(device, &SAKDevice::bytesWritten, this, &SAKDebugPage::bytesWritten);
         connect(device, &SAKDevice::bytesRead, this, &SAKDebugPage::bytesRead);
         connect(device, &SAKDevice::messageChanged, this, &SAKDebugPage::outputMessage);
         connect(device, &SAKDevice::deviceStateChanged, this, &SAKDebugPage::changedDeviceState);
+        connect(device, &SAKDevice::finished, this, &SAKDebugPage::closeDevice);
     }
 }
 
