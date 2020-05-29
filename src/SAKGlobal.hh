@@ -19,25 +19,6 @@ class SAKGlobal:public QObject
 {
     Q_OBJECT
 public:
-    /**
-     * @brief The SAKEnumIODeviceType enum  -- io的设备类型
-     */
-    enum SAKEnumDebugPageType {
-#ifdef SAK_IMPORT_COM_MODULE
-        SAKEnumDebugPageTypeCOM,
-#endif
-#ifdef SAK_IMPORT_HID_MODULE
-        SAKEnumDebugPageTypeHID,
-#endif
-        SAKEnumDebugPageTypeUDP,
-#ifdef SAK_IMPORT_USB_MODULE
-        SAKEnumDebugPageTypeUSB,
-#endif
-        SAKEnumDebugPageTypeTCPClient,
-        SAKEnumDebugPageTypeTCPServer
-    };
-    Q_ENUM(SAKEnumDebugPageType)
-
     enum SAKTextInputFormat {
         Ibin,Ioct,Idec,Ihex,Iascii,Iutf8,Ilocal
     };

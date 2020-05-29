@@ -25,6 +25,7 @@
 #include <QNetworkInterface>
 
 #include "SAKGlobal.hh"
+#include "SAKDataStruct.hh"
 #include "SAKCRCInterface.hh"
 
 #ifdef SAK_IMPORT_COM_MODULE
@@ -86,22 +87,23 @@ QString SAKGlobal::getIODeviceTypeName(int type)
 {
     QString name;
     switch (type) {
-    case SAKEnumDebugPageTypeUDP:
+    case SAKDataStruct::DebugPageTypeUDP:
         name = tr("UDP调试");
         break;
-    case SAKEnumDebugPageTypeTCPClient:
+    case SAKDataStruct::DebugPageTypeTCPClient:
         name = tr("TCP客户端");
         break;
-    case SAKEnumDebugPageTypeTCPServer:
+    case SAKDataStruct::DebugPageTypeTCPServer:
         name = tr("TCP服务器");
         break;
 #ifdef SAK_IMPORT_COM_MODULE
-    case SAKEnumDebugPageTypeCOM:
+    case SAKDataStruct::DebugPageTypeCOM:
         name = tr("串口调试");
         break;
 #endif
     default:
         Q_ASSERT_X(false, __FUNCTION__, "Unknow debug page type");
+        name = QString("Unknow");
         break;
     }
 

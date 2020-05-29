@@ -36,6 +36,7 @@
 #include "SAKGlobal.hh"
 #include "SAKSettings.hh"
 #include "SAKSettings.hh"
+#include "SAKDataStruct.hh"
 #include "SAKMainWindow.hh"
 #include "QtAppStyleApi.hh"
 #include "SAKApplication.hh"
@@ -247,7 +248,7 @@ void SAKMainWindow::initFileMenu()
 
     QMenu *tabMenu = new QMenu(tr("新建页面"), this);
     fileMenu->addMenu(tabMenu);
-    QMetaEnum enums = QMetaEnum::fromType<SAKGlobal::SAKEnumDebugPageType>();
+    QMetaEnum enums = QMetaEnum::fromType<SAKDataStruct::SAKEnumDebugPageType>();
     for (int i = 0; i < enums.keyCount(); i++){
         QAction *a = new QAction(SAKGlobal::getIODeviceTypeName(i), this);
         a->setObjectName(SAKGlobal::getIODeviceTypeName(i));
@@ -471,30 +472,30 @@ QWidget *SAKMainWindow::getDebugPage(int type)
 {
     QWidget *widget = Q_NULLPTR;
     switch (type) {
-    case SAKGlobal::SAKEnumDebugPageTypeUDP:
+    case SAKDataStruct::DebugPageTypeUDP:
         widget = new SAKUdpDebugPage;
         break;
-    case SAKGlobal::SAKEnumDebugPageTypeTCPClient:
+    case SAKDataStruct::DebugPageTypeTCPClient:
         widget = new SAKTcpClientDebugPage;
         break;
-    case SAKGlobal::SAKEnumDebugPageTypeTCPServer:
+    case SAKDataStruct::DebugPageTypeTCPServer:
         widget = new SAKTcpServerDebugPage;
         break;
 
 #ifdef SAK_IMPORT_COM_MODULE
-    case SAKGlobal::SAKEnumDebugPageTypeCOM:
+    case SAKDataStruct::DebugPageTypeCOM:
         widget = new SAKSerialPortDebugPage;
         break;
 #endif
 
 #ifdef SAK_IMPORT_HID_MODULE
-    case SAKGlobal::SAKEnumDebugPageTypeHID:
+    case SAKDataStruct::DebugPageTypeHID:
         widget = new SAKSerialPortDebugPage;
         break;
 #endif
 
 #ifdef SAK_IMPORT_USB_MODULE
-    case SAKGlobal::SAKEnumDebugPageTypeUSB:
+    case SAKDataStruct::DebugPageTypeUSB:
         widget = new SAKSerialPortDebugPage;
         break;
 #endif

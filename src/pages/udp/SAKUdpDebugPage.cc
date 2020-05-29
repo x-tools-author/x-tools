@@ -15,16 +15,17 @@
 
 #include "SAKGlobal.hh"
 #include "SAKUdpDevice.hh"
+#include "SAKDataStruct.hh"
 #include "SAKUdpDebugPage.hh"
 #include "SAKUdpDeviceController.hh"
 
 SAKUdpDebugPage::SAKUdpDebugPage(QWidget *parent)
-    :SAKDebugPage (SAKGlobal::SAKEnumDebugPageTypeUDP, parent)
+    :SAKDebugPage (SAKDataStruct::DebugPageTypeUDP, parent)
     ,udpDevice (Q_NULLPTR)
     ,udpDeviceController (new SAKUdpDeviceController)
 {
     initPage();
-    setWindowTitle(tr("UDP调试"));    
+    setWindowTitle(SAKGlobal::getIODeviceTypeName(SAKDataStruct::DebugPageTypeUDP));
 }
 
 SAKUdpDebugPage::~SAKUdpDebugPage()

@@ -26,6 +26,7 @@
 #include "SAKGlobal.hh"
 #include "SAKSettings.hh"
 #include "SAKDebugPage.hh"
+#include "SAKDataStruct.hh"
 #include "SAKCRCInterface.hh"
 #include "SAKStatisticsManager.hh"
 #include "SAKOtherSettingsManager.hh"
@@ -179,17 +180,17 @@ void SAKDebugPage::initSettingKey()
 {
     switch (debugPageType) {
 #ifdef SAK_IMPORT_COM_MODULE
-    case SAKGlobal::SAKEnumDebugPageTypeCOM:
+    case SAKDataStruct::DebugPageTypeCOM:
         settingKey = QString("COM");
         break;
 #endif
-    case SAKGlobal::SAKEnumDebugPageTypeUDP:
+    case SAKDataStruct::DebugPageTypeUDP:
         settingKey = QString("UDP");
         break;
-    case SAKGlobal::SAKEnumDebugPageTypeTCPClient:
+    case SAKDataStruct::DebugPageTypeTCPClient:
         settingKey = QString("TCPClient");
         break;
-    case SAKGlobal::SAKEnumDebugPageTypeTCPServer:
+    case SAKDataStruct::DebugPageTypeTCPServer:
         settingKey = QString("TCPServer");
         break;
     default:

@@ -14,17 +14,18 @@
 #include <QHBoxLayout>
 
 #include "SAKGlobal.hh"
+#include "SAKDataStruct.hh"
 #include "SAKTcpServerDevice.hh"
 #include "SAKTcpServerDebugPage.hh"
 #include "SAKTcpServerDeviceController.hh"
 
 SAKTcpServerDebugPage::SAKTcpServerDebugPage(QWidget *parent)
-    :SAKDebugPage (SAKGlobal::SAKEnumDebugPageTypeTCPServer, parent)
+    :SAKDebugPage (SAKDataStruct::DebugPageTypeTCPServer, parent)
     ,tcpServerDevice (Q_NULLPTR)
     ,tcpServerDeviceController (new SAKTcpServerDeviceController)
 {
     initPage();
-    setWindowTitle(tr("TCP服务器"));
+    setWindowTitle(SAKGlobal::getIODeviceTypeName(SAKDataStruct::DebugPageTypeTCPServer));
 }
 
 SAKTcpServerDebugPage::~SAKTcpServerDebugPage()

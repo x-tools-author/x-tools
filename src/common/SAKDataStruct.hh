@@ -19,6 +19,23 @@ class SAKDataStruct:public QObject
     Q_OBJECT
 public:
     SAKDataStruct(QObject* parent = Q_NULLPTR);
+
+    /// @brief 支持调试的设备类型
+    enum SAKEnumDebugPageType {
+#ifdef SAK_IMPORT_COM_MODULE
+        DebugPageTypeCOM,
+#endif
+#ifdef SAK_IMPORT_HID_MODULE
+        DebugPageTypeHID,
+#endif
+        DebugPageTypeUDP,
+#ifdef SAK_IMPORT_USB_MODULE
+        DebugPageTypeUSB,
+#endif
+        DebugPageTypeTCPClient,
+        DebugPageTypeTCPServer
+    };
+    Q_ENUM(SAKEnumDebugPageType)
 };
 
 #endif

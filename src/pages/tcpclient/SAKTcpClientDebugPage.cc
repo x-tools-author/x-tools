@@ -14,17 +14,18 @@
 #include <QHBoxLayout>
 
 #include "SAKGlobal.hh"
+#include "SAKDataStruct.hh"
 #include "SAKTcpClientDevice.hh"
 #include "SAKTcpClientDebugPage.hh"
 #include "SAKTcpClientDeviceController.hh"
 
 SAKTcpClientDebugPage::SAKTcpClientDebugPage(QWidget *parent)
-    :SAKDebugPage (SAKGlobal::SAKEnumDebugPageTypeTCPClient, parent)
+    :SAKDebugPage (SAKDataStruct::DebugPageTypeTCPClient, parent)
     ,tcpClientDevice (Q_NULLPTR)
     ,tcpClientDeviceController (new SAKTcpClientDeviceController)
 {
     initPage();
-    setWindowTitle(tr("TCP客户端"));
+    setWindowTitle(SAKGlobal::getIODeviceTypeName(SAKDataStruct::DebugPageTypeTCPClient));
 }
 
 SAKTcpClientDebugPage::~SAKTcpClientDebugPage()

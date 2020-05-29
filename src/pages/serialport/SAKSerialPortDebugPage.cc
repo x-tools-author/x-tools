@@ -14,16 +14,17 @@
 #include <QHBoxLayout>
 
 #include "SAKGlobal.hh"
+#include "SAKDataStruct.hh"
 #include "SAKSerialPortDevice.hh"
 #include "SAKSerialPortDebugPage.hh"
 #include "SAKSerialPortDeviceController.hh"
 
 SAKSerialPortDebugPage::SAKSerialPortDebugPage(QWidget *parent)
-    :SAKDebugPage (SAKGlobal::SAKEnumDebugPageTypeCOM, parent)
+    :SAKDebugPage (SAKDataStruct::DebugPageTypeCOM, parent)
     ,controller (new SAKSerialPortDeviceController)
 {
     initPage();
-    setWindowTitle(tr("串口调试"));
+    setWindowTitle(SAKGlobal::getIODeviceTypeName(SAKDataStruct::DebugPageTypeCOM));
 }
 
 SAKSerialPortDebugPage::~SAKSerialPortDebugPage()
