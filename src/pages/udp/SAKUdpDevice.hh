@@ -92,8 +92,6 @@ private:
     SAKUdpDebugPage *debugPage;
     QUdpSocket *udpSocket;
 private:
-    void readActually();
-    void writeActually(QByteArray data);
     const ParametersContext parametersContextInstance();
 };
 Q_DECLARE_METATYPE(SAKUdpDevice::ParametersContext::MulticastInfo)

@@ -22,7 +22,9 @@
 SAKUdpAdvanceSettingWidget::SAKUdpAdvanceSettingWidget(QWidget *parent)
     :QWidget (parent)
     ,ui (new Ui::SAKUdpAdvanceSettingsWidget)
+    ,udpDevice(Q_NULLPTR)
     ,isInitUi (true)
+
 {
     ui->setupUi(this);
 

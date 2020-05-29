@@ -45,7 +45,7 @@ QByteArray SAKDevice::takeWaitingForWrittingBytes()
     if (waitingForWritingBytesList.length()){
         bytes = waitingForWritingBytesList.takeFirst();
     }else{
-        bytes = QByteArray();
+        bytes = QByteArray("");
     }
     waitingForWritingBytesListMutex.unlock();
 

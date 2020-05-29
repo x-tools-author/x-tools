@@ -109,13 +109,48 @@ void SAKUdpDevice::run()
             }
 
             /// @brief 读取数据
-            readActually();
+            udpSocket->waitForReadyRead(debugPage->readWriteParameters().waitForReadyReadTime);
+            while (udpSocket->hasPendingDatagrams()) {
+                QByteArray data;
+                data.resize(static_cast<int>(udpSocket->pendingDatagramSize()));
+                qint64 ret = udpSocket->readDatagram(data.data(), data.length());
+                if (ret == -1){
+                    emit messageChanged(tr("读取数据失败：")+udpSocket->errorString(), false);
+                }else{
+                    emit bytesRead(data);
+                }
+            }
 
             /// @brief 发送数据
             while (true){
                 QByteArray bytes = takeWaitingForWrittingBytes();
                 if (bytes.length()){
-                    writeActually(bytes);
+                    qDebug() << QString(bytes.toHex(' ')).toUpper();
+//                    /// @brief 单播
+//                    if (parametersContextInstance().enableUnicast){
+//                        qint64 ret = udpSocket->writeDatagram(bytes, QHostAddress(targetHost), targetPort);
+//                        udpSocket->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
+//                        if (ret == -1){
+//                            emit messageChanged(tr("发送数据失败：")+udpSocket->errorString(), false);
+//                        }else{
+//                            emit bytesWritten(bytes);
+//                        }
+//                    }
+
+//                    /// @brief 组播
+//                    if (parametersContextInstance().enableMulticast){
+//                        for(auto var:parametersContextInstance().multicastInfoList){
+//                            udpSocket->writeDatagram(bytes, QHostAddress(var.address), var.port);
+//                            emit bytesWritten(bytes);
+//                        }
+//                    }
+
+//                    /// @brief 广播
+//                    if (parametersContextInstance().enableBroadcast){
+//                        ParametersContext context = parametersContextInstance();
+//                        udpSocket->writeDatagram(bytes, QHostAddress::Broadcast, context.broadcastPort);
+//                        emit bytesWritten(bytes);
+//                    }
                 }else{
                     break;
                 }
@@ -138,50 +173,6 @@ void SAKUdpDevice::run()
         delete udpSocket;
         emit deviceStateChanged(false);
         emit messageChanged(tr("无法打开设备")+udpSocket->errorString(), false);
-    }
-}
-
-void SAKUdpDevice::readActually()
-{
-    udpSocket->waitForReadyRead(debugPage->readWriteParameters().waitForReadyReadTime);
-    while (udpSocket->hasPendingDatagrams()) {
-        QByteArray data;
-        data.resize(static_cast<int>(udpSocket->pendingDatagramSize()));
-        qint64 ret = udpSocket->readDatagram(data.data(), data.length());
-        if (ret == -1){
-            emit messageChanged(tr("读取数据失败：")+udpSocket->errorString(), false);
-        }else{
-            emit bytesRead(data);
-        }
-    }
-}
-
-void SAKUdpDevice::writeActually(QByteArray data)
-{
-    /// @brief 单播
-    if (parametersContextInstance().enableUnicast){
-        qint64 ret = udpSocket->writeDatagram(data, QHostAddress(targetHost), targetPort);
-        udpSocket->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
-        if (ret == -1){
-            emit messageChanged(tr("发送数据失败：")+udpSocket->errorString(), false);
-        }else{
-            emit bytesWritten(data);
-        }
-    }
-
-    /// @brief 组播
-    if (parametersContextInstance().enableMulticast){
-        for(auto var:parametersContextInstance().multicastInfoList){
-            udpSocket->writeDatagram(data, QHostAddress(var.address), var.port);
-            emit bytesWritten(data);
-        }
-    }
-
-    /// @brief 广播
-    if (parametersContextInstance().enableBroadcast){
-        ParametersContext context = parametersContextInstance();
-        udpSocket->writeDatagram(data, QHostAddress::Broadcast, context.broadcastPort);
-        emit bytesWritten(data);
     }
 }
 

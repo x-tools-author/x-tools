@@ -44,9 +44,13 @@ QWidget *SAKUdpDebugPage::controllerWidget()
 
 SAKDevice *SAKUdpDebugPage::createDevice()
 {
+#if 0
     SAKUdpDevice *ptr = new SAKUdpDevice(this);
     udpDeviceController->setUdpDevice(ptr);
     return ptr;
+#else
+    return Q_NULLPTR;
+#endif
 }
 
 void SAKUdpDebugPage::setUiEnable(bool enable)
