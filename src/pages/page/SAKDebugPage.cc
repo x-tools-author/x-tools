@@ -333,7 +333,7 @@ QWidget *SAKDebugPage::controllerWidget()
     return Q_NULLPTR;
 }
 
-void SAKDebugPage::setUpController()
+void SAKDebugPage::setupController()
 {
     QWidget *controller = controllerWidget();
     if (controller){

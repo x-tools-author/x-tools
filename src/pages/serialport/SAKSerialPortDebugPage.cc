@@ -23,7 +23,7 @@ SAKSerialPortDebugPage::SAKSerialPortDebugPage(QWidget *parent)
     ,serialPortAssistant (Q_NULLPTR)
     ,controller (new SAKSerialPortDeviceController)
 {
-    setUpController();
+    setupController();
     setWindowTitle(tr("串口调试"));
 }
 

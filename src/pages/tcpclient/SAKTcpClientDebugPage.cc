@@ -23,7 +23,7 @@ SAKTcpClientDebugPage::SAKTcpClientDebugPage(QWidget *parent)
     ,tcpClientDevice (Q_NULLPTR)
     ,tcpClientDeviceController (new SAKTcpClientDeviceController)
 {
-    setUpController();
+    setupController();
     setWindowTitle(tr("TCP客户端"));
 }
 

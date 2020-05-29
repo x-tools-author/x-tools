@@ -23,7 +23,7 @@ SAKUdpDebugPage::SAKUdpDebugPage(QWidget *parent)
     ,udpDevice (Q_NULLPTR)
     ,udpDeviceController (new SAKUdpDeviceController)
 {
-    setUpController();
+    setupController();
     setWindowTitle(tr("UDP调试"));    
 }
 

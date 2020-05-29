@@ -156,7 +156,7 @@ protected:
     /**
      * @brief setUpController -- 安装控制器（控制面板）
      */
-    void setUpController();
+    void setupController();
     /**
      * @brief changedDeviceStatus   -- 设备打开或者关闭时执行该函数
      * @param opened                -- true: 设备一打开 false：设备已关闭
