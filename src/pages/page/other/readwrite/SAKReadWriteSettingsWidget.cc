@@ -36,11 +36,18 @@ void SAKReadWriteSettingsWidget::on_writeParametersComboBox_currentTextChanged(c
     setReadWriteParameters();
 }
 
+void SAKReadWriteSettingsWidget::on_intervalParameterComboBox_currentTextChanged(const QString &text)
+{
+    runIntervalTime = text.toInt();
+    setReadWriteParameters();
+}
+
 void SAKReadWriteSettingsWidget::setReadWriteParameters()
 {
     struct SAKDebugPage::ReadWriteParameters parameters;
     parameters.waitForReadyReadTime = waitForReadyReadTime;
     parameters.waitForBytesWrittenTime = waitForBytesWrittenTime;
+    parameters.runIntervalTime = runIntervalTime;
 
     debugPage->setReadWriteParameters(parameters);
 }

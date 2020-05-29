@@ -31,14 +31,17 @@ private:
 
     QComboBox *readParametersComboBox;
     QComboBox *writeParametersComboBox;
+    QComboBox *intervalParameterComboBox;
 private slots:
     void on_readParametersComboBox_currentTextChanged(const QString &text);
     void on_writeParametersComboBox_currentTextChanged(const QString &text);
+    void on_intervalParameterComboBox_currentTextChanged(const QString &text);
 
 private:
     SAKDebugPage *debugPage;
     int waitForReadyReadTime;
     int waitForBytesWrittenTime;
+    int runIntervalTime;
 
     void setReadWriteParameters();
 };

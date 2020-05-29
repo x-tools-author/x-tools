@@ -85,7 +85,7 @@ void SAKSerialPortDevice::run()
 
             /// @brief 线程睡眠
             threadMutex.lock();
-            threadWaitCondition.wait(&threadMutex, 25);
+            threadWaitCondition.wait(&threadMutex, debugPage->readWriteParameters().runIntervalTime);
             threadMutex.unlock();
         }
 

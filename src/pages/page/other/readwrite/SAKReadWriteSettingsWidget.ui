@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>432</width>
-    <height>82</height>
+    <height>108</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,13 +18,6 @@
     <widget class="QLabel" name="label_3">
      <property name="text">
       <string>根据收发数据大小合理设置读写参数能有效改善数据分帧等情况</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>读数据等待时间</string>
      </property>
     </widget>
    </item>
@@ -93,6 +86,13 @@
      </item>
     </widget>
    </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>读数据等待时间</string>
+     </property>
+    </widget>
+   </item>
    <item row="2" column="0">
     <widget class="QLabel" name="label_2">
      <property name="text">
@@ -156,6 +156,100 @@
      <item>
       <property name="text">
        <string>50</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>100</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>读写时间间隔</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QComboBox" name="intervalParameterComboBox">
+     <property name="currentText">
+      <string>25</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>5</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>10</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>15</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>20</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>25</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>30</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>35</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>40</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>45</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>50</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>55</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>60</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>70</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>80</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>90</string>
       </property>
      </item>
      <item>

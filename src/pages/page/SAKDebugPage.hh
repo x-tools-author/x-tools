@@ -273,7 +273,7 @@ protected:
 protected:
     QPushButton *transmissionSettingPushButton;
     QPushButton *readWriteSettingPushButton;
-    QPushButton *autoResponseSettingPushButton;    
+    QPushButton *autoResponseSettingPushButton;
     QPushButton *timingSendingPushButton;
     QPushButton *highlightSettingPushButton;
     QPushButton *moreSettingsPushButton;
