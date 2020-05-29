@@ -12,9 +12,9 @@
 #include <QDebug>
 #include <QApplication>
 #include "SAKUdpDevice.hh"
-#include "SAKDebugPage.hh"
+#include "SAKUdpDebugPage.hh"
 
-SAKUdpDevice::SAKUdpDevice(SAKDebugPage *debugPage,
+SAKUdpDevice::SAKUdpDevice(SAKUdpDebugPage *debugPage,
                            QObject *parent)
     :SAKDevice(parent)
     ,debugPage (debugPage)

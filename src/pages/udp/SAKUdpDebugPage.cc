@@ -21,7 +21,6 @@
 
 SAKUdpDebugPage::SAKUdpDebugPage(QWidget *parent)
     :SAKDebugPage (SAKDataStruct::DebugPageTypeUDP, parent)
-    ,udpDevice (Q_NULLPTR)
     ,udpDeviceController (new SAKUdpDeviceController)
 {
     initPage();
@@ -31,10 +30,6 @@ SAKUdpDebugPage::SAKUdpDebugPage(QWidget *parent)
 SAKUdpDebugPage::~SAKUdpDebugPage()
 {
     udpDeviceController->deleteLater();
-    if (udpDevice){
-        udpDevice->terminate();
-        delete udpDevice;
-    }
 }
 
 void SAKUdpDebugPage::refreshDevice()
@@ -47,11 +42,15 @@ QWidget *SAKUdpDebugPage::controllerWidget()
     return udpDeviceController;
 }
 
+SAKDevice *SAKUdpDebugPage::createDevice()
+{
+    SAKUdpDevice *ptr = new SAKUdpDevice(this);
+    udpDeviceController->setUdpDevice(ptr);
+    return ptr;
+}
+
 void SAKUdpDebugPage::setUiEnable(bool enable)
 {
     udpDeviceController->setUiEnable(enable);
-    if (!enable){
-        udpDeviceController->setUdpDevice(udpDevice);
-    }
     refreshPushButton->setEnabled(enable);
 }

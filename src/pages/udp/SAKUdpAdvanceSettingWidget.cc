@@ -44,11 +44,12 @@ SAKUdpAdvanceSettingWidget::~SAKUdpAdvanceSettingWidget()
 
 void SAKUdpAdvanceSettingWidget::setUdpDevice(SAKUdpDevice *device)
 {
-    Q_CHECK_PTR(device);
-    udpDevice = device;
-    udpDevice->setUnicastEnable(unicastCheckBox->isChecked());
-    udpDevice->setMulticastEnable(multicastCheckBox->isChecked());
-    udpDevice->setBroadcastEnable(broadcastCheckBox->isChecked());
+    if (device){
+        udpDevice = device;
+        udpDevice->setUnicastEnable(unicastCheckBox->isChecked());
+        udpDevice->setMulticastEnable(multicastCheckBox->isChecked());
+        udpDevice->setBroadcastEnable(broadcastCheckBox->isChecked());
+    }
 }
 
 void SAKUdpAdvanceSettingWidget::on_unicastCheckBox_clicked()

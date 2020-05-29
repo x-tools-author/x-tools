@@ -18,12 +18,12 @@
 
 #include "SAKDevice.hh"
 
-class SAKDebugPage;
+class SAKUdpDebugPage;
 class SAKUdpDevice:public SAKDevice
 {
     Q_OBJECT
 public:
-    SAKUdpDevice(SAKDebugPage *debugPage, QObject *parent = Q_NULLPTR);
+    SAKUdpDevice(SAKUdpDebugPage *debugPage, QObject *parent = Q_NULLPTR);
     ~SAKUdpDevice();
 
     /**
@@ -89,7 +89,7 @@ private:
     bool enableCustomLocalSetting;
     QString targetHost;
     quint16 targetPort;
-    SAKDebugPage *debugPage;
+    SAKUdpDebugPage *debugPage;
     QUdpSocket *udpSocket;
 private:
     void readActually();

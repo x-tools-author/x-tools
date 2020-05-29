@@ -25,11 +25,10 @@ public:
 protected:
     void refreshDevice() final;
     QWidget *controllerWidget() final;
+    SAKDevice* createDevice() final;
+    void setUiEnable(bool enable) final;
 private:
-    SAKUdpDevice *udpDevice;
     SAKUdpDeviceController *udpDeviceController;
-
-    void setUiEnable(bool enable);
 };
 
 #endif
