@@ -35,7 +35,6 @@ private:
     void afterBytesWritten(QByteArray data, QString host, quint16 port);
 
 private:
-//    void openOrColoseDevice() final;
     void refreshDevice() final;
     QWidget *controllerWidget() final;
 
