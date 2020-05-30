@@ -21,7 +21,6 @@
 
 SAKTcpClientDebugPage::SAKTcpClientDebugPage(QWidget *parent)
     :SAKDebugPage (SAKDataStruct::DebugPageTypeTCPClient, parent)
-    ,tcpClientDevice (Q_NULLPTR)
     ,tcpClientDeviceController (new SAKTcpClientDeviceController)
 {
     initPage();
@@ -31,35 +30,12 @@ SAKTcpClientDebugPage::SAKTcpClientDebugPage(QWidget *parent)
 SAKTcpClientDebugPage::~SAKTcpClientDebugPage()
 {
     tcpClientDeviceController->deleteLater();
-
-    if (tcpClientDevice){
-        tcpClientDevice->terminate();
-        delete tcpClientDevice;
-    }
 }
 
-void SAKTcpClientDebugPage::setUiEnable(bool enable)
+SAKTcpClientDeviceController *SAKTcpClientDebugPage::controllerInstance()
 {
-    tcpClientDeviceController->setEnabled(enable);
-    refreshPushButton->setEnabled(enable);
+    return tcpClientDeviceController;
 }
-
-void SAKTcpClientDebugPage::changeDeviceStatus(bool opened)
-{
-    /*
-     * 设备打开失败，使能ui, 打开成功，禁止ui
-     */
-    setUiEnable(!opened);
-    switchPushButton->setText(opened ? tr("关闭") : tr("打开"));
-    if (!opened){
-        if (tcpClientDevice){
-            tcpClientDevice->terminate();
-            delete tcpClientDevice;
-            tcpClientDevice = Q_NULLPTR;
-        }
-    }
-}
-
 
 void SAKTcpClientDebugPage::refreshDevice()
 {
@@ -69,4 +45,16 @@ void SAKTcpClientDebugPage::refreshDevice()
 QWidget *SAKTcpClientDebugPage::controllerWidget()
 {
     return tcpClientDeviceController;
+}
+
+SAKDevice *SAKTcpClientDebugPage::createDevice()
+{
+    SAKTcpClientDevice *device = new SAKTcpClientDevice(this);
+    return device;
+}
+
+void SAKTcpClientDebugPage::setUiEnable(bool enable)
+{
+    tcpClientDeviceController->setEnabled(enable);
+    refreshPushButton->setEnabled(enable);
 }

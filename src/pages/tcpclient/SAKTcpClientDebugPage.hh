@@ -23,15 +23,18 @@ public:
     SAKTcpClientDebugPage(QWidget *parent = Q_NULLPTR);
     ~SAKTcpClientDebugPage();
 
-private:
-    SAKTcpClientDevice *tcpClientDevice;
-    SAKTcpClientDeviceController *tcpClientDeviceController;
-
-    void setUiEnable(bool enable);
-    void changeDeviceStatus(bool opened);
-private:
+    /**
+     * @brief controllerInstance 获取控制类实例
+     * @return 控制类实例
+     */
+    SAKTcpClientDeviceController *controllerInstance();
+protected:
     void refreshDevice() final;
     QWidget *controllerWidget() final;
+    SAKDevice* createDevice() final;
+    void setUiEnable(bool enable) final;
+private:
+    SAKTcpClientDeviceController *tcpClientDeviceController;
 };
 
 #endif

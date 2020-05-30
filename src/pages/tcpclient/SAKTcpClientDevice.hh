@@ -15,37 +15,26 @@
 #include <QThread>
 #include <QTcpSocket>
 
-class SAKDebugPage;
-class SAKTcpClientDevice:public QThread
+#include "SAKDevice.hh"
+
+class SAKTcpClientDebugPage;
+class SAKTcpClientDevice:public SAKDevice
 {
     Q_OBJECT
 public:
-    SAKTcpClientDevice(QString localHost, quint16 localPort,
-                 bool enableCustomLocalSetting,
-                 QString serverHost, quint16 serverPort,
-                 SAKDebugPage *debugPage,
-                 QObject *parent = Q_NULLPTR);
-    void readBytes();
-    void writeBytes(QByteArray data);
+    SAKTcpClientDevice(SAKTcpClientDebugPage *debugPage, QObject *parent = Q_NULLPTR);
 private:
-    void run();    
+    void run() final;
 private:
     QString localHost;
     quint16 localPort;
     bool enableCustomLocalSetting;
     QString serverHost;
     quint16 serverPort;
-    SAKDebugPage *debugPage;
+    SAKTcpClientDebugPage *debugPage;
     QTcpSocket *tcpSocket;
 private:
     void afterDisconnected();
-
-signals:
-    void bytesRead(QByteArray);
-    void bytesWriten(QByteArray);
-
-    void deviceStatuChanged(bool opened);
-    void messageChanged(QString message, bool isInfo);
 };
 
 #endif

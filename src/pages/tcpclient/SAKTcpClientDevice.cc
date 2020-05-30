@@ -10,34 +10,32 @@
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
 #include <QDebug>
+#include <QEventLoop>
 #include <QHostAddress>
 #include <QApplication>
 
-#include "SAKDebugPage.hh"
 #include "SAKTcpClientDevice.hh"
+#include "SAKTcpClientDebugPage.hh"
+#include "SAKTcpClientDeviceController.hh"
 
-SAKTcpClientDevice::SAKTcpClientDevice(QString localHost, quint16 localPort,
-                           bool enableCustomLocalSetting,
-                           QString targetHost, quint16 targetPort,
-                           SAKDebugPage *debugPage,
-                           QObject *parent)
-    :QThread (parent)
-    ,localHost (localHost)
-    ,localPort (localPort)
-    ,enableCustomLocalSetting (enableCustomLocalSetting)
-    ,serverHost (targetHost)
-    ,serverPort (targetPort)
+SAKTcpClientDevice::SAKTcpClientDevice(SAKTcpClientDebugPage *debugPage, QObject *parent)
+    :SAKDevice(parent)
     ,debugPage (debugPage)
 {
-    moveToThread(this);
+
 }
 
 void SAKTcpClientDevice::run()
 {
-    tcpSocket = new QTcpSocket(this);
+    QEventLoop eventLoop;
+    SAKTcpClientDeviceController *deviceController = debugPage->controllerInstance();
+    localHost = deviceController->localHost();
+    localPort = deviceController->localPort();
+    serverHost = deviceController->serverHost();
+    serverPort = deviceController->serverPort();
+    enableCustomLocalSetting = deviceController->enableCustomLocalSetting();
 
-    connect(tcpSocket, &QTcpSocket::readyRead, this, &SAKTcpClientDevice::readBytes);
-    connect(qApp, &QApplication::lastWindowClosed, this, &SAKTcpClientDevice::terminate);
+    tcpSocket = new QTcpSocket;
 
     bool bindResult = false;
     if (enableCustomLocalSetting){
@@ -46,53 +44,85 @@ void SAKTcpClientDevice::run()
         bindResult = tcpSocket->bind();
     }
 
-    if (bindResult){
-        tcpSocket->connectToHost(serverHost, serverPort);
-        if (tcpSocket->waitForConnected()){
-            if (tcpSocket->open(QTcpSocket::ReadWrite)){
-#ifdef QT_DEBUG
-            qDebug() << tcpSocket->localAddress().toString() << tcpSocket->localPort();
-#endif
-                emit deviceStatuChanged(true);
-                exec();
-            }else{
-                emit deviceStatuChanged(false);
-                emit messageChanged(tr("无法打开设备")+tcpSocket->errorString(), false);
-            }
-        }else{
-            emit deviceStatuChanged(false);
-            emit messageChanged(tr("无法连接到服务器")+tcpSocket->errorString(), false);
-        }
-    }else{
-        emit deviceStatuChanged(false);
+    if (!bindResult){
+        emit deviceStateChanged(false);
         emit messageChanged(tr("无法绑定设备")+tcpSocket->errorString(), false);
+        delete tcpSocket;
+        return;
     }
 
-    exec();
-}
-
-void SAKTcpClientDevice::afterDisconnected()
-{
-    emit deviceStatuChanged(false);
-    emit messageChanged(tr("服务器已断开"), false);
-}
-
-void SAKTcpClientDevice::readBytes()
-{        
-    tcpSocket->waitForReadyRead(debugPage->readWriteParameters().waitForReadyReadTime);
-    QByteArray data = tcpSocket->readAll();
-    if (!data.isEmpty()){
-        emit bytesRead(data);
+    tcpSocket->connectToHost(serverHost, serverPort);
+    if (tcpSocket->state() != QTcpSocket::ConnectedState){
+        if (!tcpSocket->waitForConnected()){
+            emit deviceStateChanged(false);
+            emit messageChanged(tr("无法连接到服务器")+tcpSocket->errorString(), false);
+            delete tcpSocket;
+            return;
+        }
     }
-}
 
-void SAKTcpClientDevice::writeBytes(QByteArray data)
-{    
-    qint64 ret = tcpSocket->write(data);
-    tcpSocket->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
-    if (ret == -1){
-        emit messageChanged(tr("发送数据失败：")+tcpSocket->errorString(), false);
+
+    if (tcpSocket->open(QTcpSocket::ReadWrite)){
+        emit deviceStateChanged(true);
+
+        while (true) {
+            /// @brief 响应中断
+            if (isInterruptionRequested()){
+                break;
+            }
+
+            /// @brief 读取数据
+            tcpSocket->waitForReadyRead(debugPage->readWriteParameters().waitForReadyReadTime);
+            QByteArray bytes = tcpSocket->readAll();
+            if (!bytes.isEmpty()){
+                emit bytesRead(bytes);
+            }
+
+            /// @brief 发送数据
+            while (true){
+                QByteArray bytes = takeWaitingForWrittingBytes();
+                if (bytes.length()){
+                    qint64 ret = tcpSocket->write(bytes);
+                    tcpSocket->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
+                    if (ret == -1){
+                        emit messageChanged(tr("发送数据失败：")+tcpSocket->errorString(), false);
+                    }else{
+                        emit bytesWritten(bytes);
+                    }
+                }else{
+                    break;
+                }
+            }
+
+            /// @brief 检查服务器状态
+            if (tcpSocket->state() == QTcpSocket::UnconnectedState){
+                emit messageChanged(tr("服务器已断开"), true);
+                break;
+            }
+
+            /// @brief 处理线程事件
+            eventLoop.processEvents();
+
+            /// @brief 线程睡眠
+            threadMutex.lock();
+            threadWaitCondition.wait(&threadMutex, debugPage->readWriteParameters().waitForBytesWrittenTime);
+            threadMutex.unlock();
+        }
+
+        /// @brief 退出前断开与服务器的链接
+        if (tcpSocket->state() == QTcpSocket::ClosingState){
+            tcpSocket->disconnectFromHost();
+            if (tcpSocket->state() == QTcpSocket::ConnectedState){
+                if(!tcpSocket->waitForConnected()){
+                    emit messageChanged(tr("无法断开与服务器的链接：")+tcpSocket->errorString(), true);
+                }
+            }
+        }
+        tcpSocket->close();
+        delete tcpSocket;
+        emit deviceStateChanged(false);
     }else{
-        emit bytesWriten(data);
+        emit deviceStateChanged(false);
+        emit messageChanged(tr("无法打开设备")+tcpSocket->errorString(), false);
     }
 }
