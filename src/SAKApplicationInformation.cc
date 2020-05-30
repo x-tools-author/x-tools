@@ -59,7 +59,7 @@ QString SAKApplicationInformation::authorNickname()
 
 QString SAKApplicationInformation::version()
 {
-    return QString("2.3.0");
+    return QString("3.0.0");
 }
 
 QString SAKApplicationInformation::buildTime()
