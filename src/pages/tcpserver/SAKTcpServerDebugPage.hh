@@ -23,23 +23,18 @@ public:
     SAKTcpServerDebugPage(QWidget *parent = Q_NULLPTR);
     ~SAKTcpServerDebugPage();
 
-private:
-    SAKTcpServerDevice *tcpServerDevice;
-    SAKTcpServerDeviceController *tcpServerDeviceController;
-
-    void setUiEnable(bool enable);
-    void changeDeviceStatus(bool opened);
-    void tryWrite(QByteArray data);
-
-    void afterBytesRead(QByteArray data, QString host, quint16 port);
-    void afterBytesWritten(QByteArray data, QString host, quint16 port);
-
-private:
+    /**
+     * @brief controllerInstance 获取控制类实例指针
+     * @return 控制类实例
+     */
+    SAKTcpServerDeviceController *controllerInstance();
+protected:
     void refreshDevice() final;
     QWidget *controllerWidget() final;
-
-signals:
-    void writeBytesRequest(QByteArray data, QString host, quint16 port);
+    SAKDevice* createDevice() final;
+    void setUiEnable(bool enable);
+private:
+    SAKTcpServerDeviceController *tcpServerDeviceController;
 };
 
 #endif
