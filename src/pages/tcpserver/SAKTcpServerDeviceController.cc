@@ -81,3 +81,16 @@ void SAKTcpServerDeviceController::addClient(QString host, quint16 port)
 
     clientHostComboBox->addItem(item);
 }
+
+void SAKTcpServerDeviceController::removeClient(QString host, quint16 port)
+{
+    QString item = host.append(":");
+    item.append(QString::number(port));
+
+    for(int i = 0; i < clientHostComboBox->count(); i++){
+        if (clientHostComboBox->itemText(i) == item){
+            clientHostComboBox->removeItem(i);
+            break;
+        }
+    }
+}

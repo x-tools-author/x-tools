@@ -37,6 +37,7 @@ public:
     void setUiEnable(bool enable);
 
     void addClient(QString host, quint16 port);
+    void removeClient(QString host, quint16 port);
 private:
     Ui::SAKTcpServerDeviceController *ui;
 
