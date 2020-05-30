@@ -16,6 +16,7 @@
 #include <QWidget>
 #include <QCheckBox>
 #include <QComboBox>
+#include <QTcpSocket>
 
 namespace Ui {
     class SAKTcpServerDeviceController;
@@ -37,8 +38,8 @@ public:
     void refresh();
     void setUiEnable(bool enable);
 
-    void addClient(QString host, quint16 port);
-    void removeClient(QString host, quint16 port);
+    void addClient(QString host, quint16 port, QTcpSocket *socket);
+    void removeClient(QTcpSocket *socket);
 private:
     Ui::SAKTcpServerDeviceController *ui;
 

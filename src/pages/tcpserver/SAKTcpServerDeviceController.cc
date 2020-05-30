@@ -10,6 +10,7 @@
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
 #include <QList>
+#include <QDebug>
 #include <QMetaEnum>
 #include <QLineEdit>
 
@@ -79,7 +80,7 @@ void SAKTcpServerDeviceController::setUiEnable(bool enable)
     serverPortLineEdit->setEnabled(enable);
 }
 
-void SAKTcpServerDeviceController::addClient(QString host, quint16 port)
+void SAKTcpServerDeviceController::addClient(QString host, quint16 port, QTcpSocket *socket)
 {
     QString item = host.append(":");
     item.append(QString::number(port));
@@ -92,18 +93,15 @@ void SAKTcpServerDeviceController::addClient(QString host, quint16 port)
         }
     }
 
-    clientHostComboBox->addItem(item);
+    clientHostComboBox->addItem(item, QVariant::fromValue(socket));
     uiMutex.unlock();
 }
 
-void SAKTcpServerDeviceController::removeClient(QString host, quint16 port)
+void SAKTcpServerDeviceController::removeClient(QTcpSocket *socket)
 {
-    QString item = host.append(":");
-    item.append(QString::number(port));
-
     uiMutex.lock();
     for(int i = 0; i < clientHostComboBox->count(); i++){
-        if (clientHostComboBox->itemText(i) == item){
+        if (clientHostComboBox->itemData(i).value<QTcpSocket*>() == socket){
             clientHostComboBox->removeItem(i);
             break;
         }
