@@ -36,25 +36,36 @@ SAKTcpServerDeviceController::~SAKTcpServerDeviceController()
 
 QString SAKTcpServerDeviceController::serverHost()
 {
-    return serverHostComboBox->currentText();
+    uiMutex.lock();
+    QString host = serverHostComboBox->currentText();
+    uiMutex.unlock();
+    return host;
 }
 
 quint16 SAKTcpServerDeviceController::serverPort()
 {
-    return static_cast<quint16>(serverPortLineEdit->text().toInt());
+    uiMutex.lock();
+    quint16 port = static_cast<quint16>(serverPortLineEdit->text().toInt());
+    uiMutex.unlock();
+    return port;
 }
 
 QString SAKTcpServerDeviceController::currentClientHost()
 {
+    uiMutex.lock();
     QStringList host = clientHostComboBox->currentText().split(":");
-
-    return host.first();
+    QString address = host.first();
+    uiMutex.unlock();
+    return address;
 }
 
 quint16 SAKTcpServerDeviceController::currentClientPort()
 {
+    uiMutex.lock();
     QString port = clientHostComboBox->currentText().split(":").last();
-    return static_cast<quint16>(port.toInt());
+    quint16 portTemp = static_cast<quint16>(port.toInt());
+    uiMutex.unlock();
+    return portTemp;
 }
 
 void SAKTcpServerDeviceController::refresh()
@@ -73,13 +84,16 @@ void SAKTcpServerDeviceController::addClient(QString host, quint16 port)
     QString item = host.append(":");
     item.append(QString::number(port));
 
+    uiMutex.lock();
     for(int i = 0; i < clientHostComboBox->count(); i++){
         if (clientHostComboBox->itemText(i).compare(item) == 0){
+            uiMutex.unlock();
             return;
         }
     }
 
     clientHostComboBox->addItem(item);
+    uiMutex.unlock();
 }
 
 void SAKTcpServerDeviceController::removeClient(QString host, quint16 port)
@@ -87,10 +101,12 @@ void SAKTcpServerDeviceController::removeClient(QString host, quint16 port)
     QString item = host.append(":");
     item.append(QString::number(port));
 
+    uiMutex.lock();
     for(int i = 0; i < clientHostComboBox->count(); i++){
         if (clientHostComboBox->itemText(i) == item){
             clientHostComboBox->removeItem(i);
             break;
         }
     }
+    uiMutex.unlock();
 }

@@ -12,6 +12,7 @@
 #ifndef SAKTCPSERVERDEVICECONTROLLER_HH
 #define SAKTCPSERVERDEVICECONTROLLER_HH
 
+#include <QMutex>
 #include <QWidget>
 #include <QCheckBox>
 #include <QComboBox>
@@ -44,6 +45,7 @@ private:
     QComboBox *serverHostComboBox;
     QLineEdit *serverPortLineEdit;
     QComboBox *clientHostComboBox;
+    QMutex uiMutex;
 };
 
 #endif
