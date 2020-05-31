@@ -15,34 +15,34 @@
 #include <QSqlError>
 #include <QCoreApplication>
 
-#include "SAKDebugPageDatabaseManager.hh"
+#include "SAKDebugPageDatabaseInterface.hh"
 
-SAKDebugPageDatabaseManager *SAKDebugPageDatabaseManager::instancePtr = Q_NULLPTR;
-SAKDebugPageDatabaseManager::SAKDebugPageDatabaseManager(QObject *parent)
+SAKDebugPageDatabaseInterface *SAKDebugPageDatabaseInterface::instancePtr = Q_NULLPTR;
+SAKDebugPageDatabaseInterface::SAKDebugPageDatabaseInterface(QObject *parent)
     :QObject(parent)
 {
     instancePtr = this;
     initDatabase();
 }
 
-SAKDebugPageDatabaseManager::~SAKDebugPageDatabaseManager()
+SAKDebugPageDatabaseInterface::~SAKDebugPageDatabaseInterface()
 {
     if (sakDatabase.isOpen()){
         sakDatabase.close();
     }
 }
 
-SAKDebugPageDatabaseManager* SAKDebugPageDatabaseManager::instance()
+SAKDebugPageDatabaseInterface* SAKDebugPageDatabaseInterface::instance()
 {
     if (!instancePtr){
-        new SAKDebugPageDatabaseManager(reinterpret_cast<QObject*>(qApp));
+        new SAKDebugPageDatabaseInterface(reinterpret_cast<QObject*>(qApp));
     }
 
     Q_ASSERT_X(instancePtr, __FUNCTION__, "Oh, a null pointer");
     return instancePtr;
 }
 
-void SAKDebugPageDatabaseManager::initDatabase()
+void SAKDebugPageDatabaseInterface::initDatabase()
 {
     /// @brief 连接数据库
     sakDatabase = QSqlDatabase::addDatabase("QSQLITE");

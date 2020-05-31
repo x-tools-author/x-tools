@@ -137,7 +137,7 @@ HEADERS += \
     src/SAKSettings.hh \
     src/common/SAKInterface.hh \
     src/pages/page/SAKDebugPage.hh \
-    src/pages/page/SAKDebugPageDatabaseManager.hh \
+    src/pages/page/SAKDebugPageDatabaseInterface.hh \
     src/pages/page/device/SAKDevice.hh \
     src/pages/page/input/SAKDebugPageInputManager.hh \
     src/pages/page/input/SAKInputDataFactory.hh \
@@ -192,7 +192,7 @@ SOURCES += \
     src/SAKSettings.cc \
     src/common/SAKInterface.cc \
     src/pages/page/SAKDebugPage.cc \
-    src/pages/page/SAKDebugPageDatabaseManager.cc \
+    src/pages/page/SAKDebugPageDatabaseInterface.cc \
     src/pages/page/device/SAKDevice.cc \
     src/pages/page/input/SAKDebugPageInputManager.cc \
     src/pages/page/input/SAKInputDataFactory.cc \
