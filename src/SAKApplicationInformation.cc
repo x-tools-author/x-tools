@@ -39,7 +39,7 @@ SAKApplicationInformation* SAKApplicationInformation::instance()
 
 QString SAKApplicationInformation::email()
 {
-    return QString("wuuhii@outlook.com");
+    return QString("qsak@foxmail.com");
 }
 
 QString SAKApplicationInformation::qqGroupNumber()
@@ -69,7 +69,7 @@ QString SAKApplicationInformation::buildTime()
 
 QString SAKApplicationInformation::officeUrl()
 {
-    return QString("wuhai.pro");
+    return QString("https://qsak.pro");
 }
 
 QString SAKApplicationInformation::qqNumber()
@@ -84,5 +84,5 @@ QString SAKApplicationInformation::copyright()
 
 QString SAKApplicationInformation::business()
 {
-    return tr("软件定制开发，可联系作者");
+    return tr("上位机定制开发，可联系作者洽谈");
 }
