@@ -12,6 +12,7 @@
 #ifndef SAKSERIALPORTDEVICECONTROLLER_HH
 #define SAKSERIALPORTDEVICECONTROLLER_HH
 
+#include <QMutex>
 #include <QWidget>
 #include <QCheckBox>
 #include <QComboBox>
@@ -37,6 +38,8 @@ public:
 
     void refresh();
     void setUiEnable(bool enable);
+private:
+    QMutex uiMutex;
 private:
     Ui::SAKSerialPortDeviceController *ui;
 

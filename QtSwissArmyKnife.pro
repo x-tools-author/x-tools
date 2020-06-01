@@ -26,6 +26,7 @@ DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs depr
 CONFIG += c++11
 
 # 子项目
+include(SAKHID.pri)
 include(SAKSetup.pri)
 include(SAKTools.pri)
 include(SAKDataVis.pri)
@@ -78,6 +79,7 @@ contains(ANDROID_TARGET_ARCH,arm64-v8a) {
 
 INCLUDEPATH += \
     src \
+    src/moreinfo \
     src/common \
     src/pages \
     src/pages/page \
@@ -101,7 +103,7 @@ INCLUDEPATH += \
 
 FORMS += \
     src/SAKMainWindow.ui \
-    src/SAKMoreInformation.ui \
+    src/moreinfo/SAKMoreInformation.ui \
     src/pages/page/SAKDebugPage.ui \
     src/pages/page/input/SAKInputDataItem.ui \
     src/pages/page/input/SAKInputDataItemManager.ui \
@@ -128,14 +130,14 @@ FORMS += \
     src/update/SAKUpdateManager.ui
 
 HEADERS += \
+    src/SAK.hh \
     src/SAKApplication.hh \
-    src/SAKApplicationInformation.hh \
     src/SAKCodingStyle.hh \
     src/SAKGlobal.hh \
     src/SAKMainWindow.hh \
-    src/SAKMoreInformation.hh \
     src/SAKSettings.hh \
     src/common/SAKInterface.hh \
+    src/moreinfo/SAKMoreInformation.hh \
     src/pages/page/SAKDebugPage.hh \
     src/pages/page/SAKDebugPageDatabaseInterface.hh \
     src/pages/page/device/SAKDevice.hh \
@@ -183,14 +185,14 @@ HEADERS += \
     src/update/SAKUpdateManager.hh
 
 SOURCES += \
+    src/SAK.cc \
     src/SAKApplication.cc \
-    src/SAKApplicationInformation.cc \
     src/SAKCodingStyle.cc \
     src/SAKGlobal.cc \
     src/SAKMainWindow.cc \
-    src/SAKMoreInformation.cc \
     src/SAKSettings.cc \
     src/common/SAKInterface.cc \
+    src/moreinfo/SAKMoreInformation.cc \
     src/pages/page/SAKDebugPage.cc \
     src/pages/page/SAKDebugPageDatabaseInterface.cc \
     src/pages/page/device/SAKDevice.cc \

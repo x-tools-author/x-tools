@@ -46,27 +46,42 @@ SAKUdpDeviceController::~SAKUdpDeviceController()
 
 QString SAKUdpDeviceController::localHost()
 {
-    return localhostComboBox->currentText();
+    uiMutex->lock();
+    QString ret = localhostComboBox->currentText();
+    uiMutex->unlock();
+    return ret;
 }
 
 quint16 SAKUdpDeviceController::localPort()
 {
-    return static_cast<quint16>(localPortlineEdit->text().toInt());
+    uiMutex->lock();
+    quint16 ret = static_cast<quint16>(localPortlineEdit->text().toInt());
+    uiMutex->unlock();
+    return ret;
 }
 
 QString SAKUdpDeviceController::targetHost()
 {
-    return targetHostLineEdit->text();
+    uiMutex->lock();
+    QString ret = targetHostLineEdit->text();
+    uiMutex->unlock();
+    return ret;
 }
 
 quint16 SAKUdpDeviceController::targetPort()
 {
-    return static_cast<quint16>(targetPortLineEdit->text().toInt());
+    uiMutex->lock();
+    quint16 ret = static_cast<quint16>(targetPortLineEdit->text().toInt());
+    uiMutex->unlock();
+    return ret;
 }
 
 bool SAKUdpDeviceController::enableCustomLocalSetting()
 {
-    return enableLocalSettingCheckBox->isChecked();
+    uiMutex->lock();
+    bool ret = enableLocalSettingCheckBox->isChecked();
+    uiMutex->unlock();
+    return ret;
 }
 
 void SAKUdpDeviceController::refresh()

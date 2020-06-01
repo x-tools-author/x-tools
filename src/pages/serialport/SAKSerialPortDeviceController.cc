@@ -48,16 +48,19 @@ SAKSerialPortDeviceController::~SAKSerialPortDeviceController()
 
 void SAKSerialPortDeviceController::refresh()
 {
+    uiMutex.lock();
     SAKGlobal::initComComboBox(serialportsComboBox);
     SAKGlobal::initBaudRateComboBox(baudrateComboBox);
     SAKGlobal::initDataBitsComboBox(databitsComboBox);
     SAKGlobal::initStopBitsComboBox(stopbitsComboBox);
     SAKGlobal::initParityComboBox(parityComboBox);
     SAKGlobal::initFlowControlComboBox(flowControlComboBox);
+    uiMutex.unlock();
 }
 
 void SAKSerialPortDeviceController::setUiEnable(bool enable)
 {
+    uiMutex.lock();
     serialportsComboBox->setEnabled(enable);
     baudrateComboBox->setEnabled(enable);
     databitsComboBox->setEnabled(enable);
@@ -65,37 +68,53 @@ void SAKSerialPortDeviceController::setUiEnable(bool enable)
     parityComboBox->setEnabled(enable);
     customBaudrateCheckBox->setEnabled(enable);
     flowControlComboBox->setEnabled(enable);
+    uiMutex.unlock();
 }
 
 enum QSerialPort::DataBits SAKSerialPortDeviceController::dataBits()
 {
-    return static_cast<QSerialPort::DataBits>(databitsComboBox->currentData().toInt());
+    uiMutex.lock();
+    QSerialPort::DataBits ret = static_cast<QSerialPort::DataBits>(databitsComboBox->currentData().toInt());
+    uiMutex.unlock();
+    return ret;
 }
 
 enum QSerialPort::StopBits SAKSerialPortDeviceController::stopBits()
 {
-    return static_cast<QSerialPort::StopBits>(stopbitsComboBox->currentData().toInt());
+    uiMutex.lock();
+    QSerialPort::StopBits ret = static_cast<QSerialPort::StopBits>(stopbitsComboBox->currentData().toInt());
+    uiMutex.unlock();
+    return ret;
 }
 
 enum QSerialPort::Parity SAKSerialPortDeviceController::parity()
 {
-    return static_cast<QSerialPort::Parity>(parityComboBox->currentData().toInt());
+    uiMutex.lock();
+    QSerialPort::Parity ret = static_cast<QSerialPort::Parity>(parityComboBox->currentData().toInt());
+    uiMutex.unlock();
+    return ret;
 }
 
 enum QSerialPort::FlowControl SAKSerialPortDeviceController::flowControl()
 {
-     return static_cast<QSerialPort::FlowControl>(flowControlComboBox->currentData().toInt());
+    uiMutex.lock();
+    QSerialPort::FlowControl ret = static_cast<QSerialPort::FlowControl>(flowControlComboBox->currentData().toInt());
+    uiMutex.unlock();
+    return ret;
 }
 
 QString SAKSerialPortDeviceController::name()
 {
+    uiMutex.lock();
     QString portName = serialportsComboBox->currentText();
     portName = portName.split(' ').first();
+    uiMutex.unlock();
     return  portName;
 }
 
 qint32 SAKSerialPortDeviceController::baudRate()
 {
+    uiMutex.lock();
     qint32 rate = 9600;
     bool ok = false;
     if (baudrateComboBox->currentText().isEmpty()){
@@ -106,12 +125,14 @@ qint32 SAKSerialPortDeviceController::baudRate()
     if (!ok){
         rate = 9600;
     }
+    uiMutex.unlock();
 
     return rate;
 }
 
 void SAKSerialPortDeviceController::on_customBaudrateCheckBox_clicked()
 {
+    uiMutex.lock();
     if (customBaudrateCheckBox->isChecked()){
         baudrateComboBox->setEditable(true);
         baudrateComboBox->lineEdit()->selectAll();
@@ -119,4 +140,5 @@ void SAKSerialPortDeviceController::on_customBaudrateCheckBox_clicked()
     }else{
         baudrateComboBox->setEditable(false);
     }
+    uiMutex.unlock();
 }

@@ -17,14 +17,14 @@
 #include "SAKSettings.hh"
 #include "SAKMainWindow.hh"
 #include "SAKApplication.hh"
-#include "SAKApplicationInformation.hh"
+#include "SAK.hh"
 
 SAKApplication::SAKApplication(int argc, char **argv)
     : QApplication (argc, argv)
     , mainWindow (Q_NULLPTR)
 {
     installLanguage();
-    setApplicationVersion(SAKApplicationInformation::instance()->version());
+    setApplicationVersion(SAK::instance()->version());
 
     /// 注册表选项
     setOrganizationName(QString("Qter"));

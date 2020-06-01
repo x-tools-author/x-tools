@@ -38,27 +38,43 @@ SAKTcpClientDeviceController::~SAKTcpClientDeviceController()
 
 QString SAKTcpClientDeviceController::localHost()
 {
-    return localhostComboBox->currentText();
+    uiMutex.lock();
+    QString ret = localhostComboBox->currentText();
+    uiMutex.unlock();
+    return ret;
 }
 
 quint16 SAKTcpClientDeviceController::localPort()
 {
-    return static_cast<quint16>(localPortlineEdit->text().toInt());
+    uiMutex.lock();
+    quint16 ret = static_cast<quint16>(localPortlineEdit->text().toInt());
+    uiMutex.unlock();
+    return ret;
 }
 
 QString SAKTcpClientDeviceController::serverHost()
 {
-    return serverHostLineEdit->text();
+    uiMutex.lock();
+    QString ret = serverHostLineEdit->text();
+    uiMutex.unlock();
+    return ret;
 }
 
 quint16 SAKTcpClientDeviceController::serverPort()
 {
-    return static_cast<quint16>(serverPortLineEdit->text().toInt());
+    uiMutex.lock();
+    quint16 ret = static_cast<quint16>(serverPortLineEdit->text().toInt());
+    uiMutex.unlock();
+
+    return ret;
 }
 
 bool SAKTcpClientDeviceController::enableCustomLocalSetting()
 {
-    return enableLocalSettingCheckBox->isChecked();
+    uiMutex.lock();
+    bool ret = enableLocalSettingCheckBox->isChecked();
+    uiMutex.unlock();
+    return ret;
 }
 
 void SAKTcpClientDeviceController::refresh()

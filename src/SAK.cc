@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright (C) 2019 wuuhii. All rights reserved.
+ * Copyright (C) 2019-2020 Qter. All rights reserved.
  *
  * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
  * project. The project is a open source project, you can get the source from:
@@ -13,76 +13,76 @@
 #include <QLocale>
 #include <QDateTime>
 
-#include "SAKApplicationInformation.hh"
+#include "SAK.hh"
 
-SAKApplicationInformation *SAKApplicationInformation::thisInstance = Q_NULLPTR;
+SAK *SAK::thisInstance = Q_NULLPTR;
 static const QDate buildDate = QLocale( QLocale::English ).toDate( QString(__DATE__).replace("  ", " 0"), "MMM dd yyyy");
-SAKApplicationInformation::SAKApplicationInformation(QObject *parent)
+SAK::SAK(QObject *parent)
     :QObject (parent)
 {
     thisInstance = this;
 }
 
-SAKApplicationInformation::~SAKApplicationInformation()
+SAK::~SAK()
 {
     thisInstance = Q_NULLPTR;
 }
 
-SAKApplicationInformation* SAKApplicationInformation::instance()
+SAK* SAK::instance()
 {
     if (!thisInstance){
-        new SAKApplicationInformation;
+        new SAK;
     }
 
     return thisInstance;
 }
 
-QString SAKApplicationInformation::email()
+QString SAK::email()
 {
-    return QString("wuuhii@outlook.com");
+    return QString("qsak@foxmail.com");
 }
 
-QString SAKApplicationInformation::qqGroupNumber()
+QString SAK::qqGroupNumber()
 {
     return QString("952218522");
 }
 
-QString SAKApplicationInformation::authorName()
+QString SAK::authorName()
 {
     return QString("Qter");
 }
 
-QString SAKApplicationInformation::authorNickname()
+QString SAK::authorNickname()
 {
     return QString("Qt开发小王子");
 }
 
-QString SAKApplicationInformation::version()
+QString SAK::version()
 {
     return QString("3.0.0");
 }
 
-QString SAKApplicationInformation::buildTime()
+QString SAK::buildTime()
 {
     return (buildDate.toString("yyyy/MM/dd") + " " + QString(__TIME__));
 }
 
-QString SAKApplicationInformation::officeUrl()
+QString SAK::officeUrl()
 {
-    return QString("wuhai.pro");
+    return QString("https://qsak.pro");
 }
 
-QString SAKApplicationInformation::qqNumber()
+QString SAK::qqNumber()
 {
     return QString("2869470394");
 }
 
-QString SAKApplicationInformation::copyright()
+QString SAK::copyright()
 {
     return QString("Copyright(©) 2018-%1 Qter. All rights reserved").arg(buildDate.toString("yyyy"));
 }
 
-QString SAKApplicationInformation::business()
+QString SAK::business()
 {
-    return tr("软件定制开发，可联系作者");
+    return tr("上位机定制开发，可联系作者洽谈");
 }

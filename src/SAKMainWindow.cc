@@ -48,7 +48,7 @@
 #include "SAKMoreInformation.hh"
 #include "SAKTcpClientDebugPage.hh"
 #include "SAKTcpServerDebugPage.hh"
-#include "SAKApplicationInformation.hh"
+#include "SAK.hh"
 #ifdef SAK_IMPORT_FILECHECKER_MODULE
 #include "QtCryptographicHashController.hh"
 #endif
@@ -101,8 +101,8 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     centralWidget->layout()->setContentsMargins(6, 6, 6, 6);
 #endif
     setWindowTitle(tr("瑞士军刀--开发调试工具集")
-                   + " v" + SAKApplicationInformation::instance()->version()
-                   + " " + tr("用户交流QQ群") + " " + SAKApplicationInformation::instance()->qqGroupNumber());
+                   + " v" + SAK::instance()->version()
+                   + " " + tr("用户交流QQ群") + " " + SAK::instance()->qqGroupNumber());
 
     tabWidget->setTabsClosable(true);
     connect(tabWidget, &QTabWidget::tabCloseRequested, this, &SAKMainWindow::closeDebugPage);
@@ -199,16 +199,16 @@ void SAKMainWindow::about()
                                                      "<font color=green>%15</font><br />%16<br />"
                                                      "<font color=green>%17</font><br />%18<br />"
                                                      "<font color=red>%19</font><br />%20")
-                             .arg(tr("软件版本")).arg(SAKApplicationInformation::instance()->version())
-                             .arg(tr("软件作者")).arg(SAKApplicationInformation::instance()->authorName())
-                             .arg(tr("作者昵称")).arg(SAKApplicationInformation::instance()->authorNickname())
-                             .arg(tr("发布网站")).arg(SAKApplicationInformation::instance()->officeUrl())
-                             .arg(tr("联系邮箱")).arg(SAKApplicationInformation::instance()->email())
-                             .arg(tr("QQ账号")).arg(SAKApplicationInformation::instance()->qqNumber())
-                             .arg(tr("QQ交流群")).arg(SAKApplicationInformation::instance()->qqGroupNumber())
-                             .arg(tr("编译时间")).arg(SAKApplicationInformation::instance()->buildTime())
-                             .arg(tr("版权信息")).arg(SAKApplicationInformation::instance()->copyright())
-                             .arg(tr("业务合作")).arg(SAKApplicationInformation::instance()->business()));
+                             .arg(tr("软件版本")).arg(SAK::instance()->version())
+                             .arg(tr("软件作者")).arg(SAK::instance()->authorName())
+                             .arg(tr("作者昵称")).arg(SAK::instance()->authorNickname())
+                             .arg(tr("发布网站")).arg(SAK::instance()->officeUrl())
+                             .arg(tr("联系邮箱")).arg(SAK::instance()->email())
+                             .arg(tr("QQ账号")).arg(SAK::instance()->qqNumber())
+                             .arg(tr("QQ交流群")).arg(SAK::instance()->qqGroupNumber())
+                             .arg(tr("编译时间")).arg(SAK::instance()->buildTime())
+                             .arg(tr("版权信息")).arg(SAK::instance()->copyright())
+                             .arg(tr("业务合作")).arg(SAK::instance()->business()));
 }
 
 void SAKMainWindow::addTool(QString toolName, QWidget *toolWidget)
