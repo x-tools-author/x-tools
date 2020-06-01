@@ -15,5 +15,4 @@ win32 {
     LIBS += -lsetupapi
 
     QMAKE_LFLAGS_DEBUG += /DEBUG /NODEFAULTLIB:libc.lib /NODEFAULTLIB:libcmt.lib /NODEFAULTLIB:msvcrt.lib /NODEFAULTLIB:libcd.lib /NODEFAULTLIB:libcmtd.lib
-    QMAKE_CXXFLAGS_WARN_OFF += C4267
 }
