@@ -48,17 +48,13 @@ void SAKHidDevice::run()
     while (true) {
         /// @brief 响应中中断
         if (isInterruptionRequested()){
-            return;
+            break;
         }
 
         /// @brief 读取数据
         QByteArray data;
         data.resize(1024);
         int ret = hid_read(hidDevice, reinterpret_cast<unsigned char*>(data.data()), static_cast<size_t>(data.length()));
-        if (ret == -1){
-            emit messageChanged(tr("读取数据失败：")+QString::fromWCharArray(hid_error(hidDevice)), false);
-        }
-
         if(ret > 0){
             data.resize(ret);
             emit bytesRead(data);
@@ -87,4 +83,5 @@ void SAKHidDevice::run()
     }
 
     hid_exit();
+    emit deviceStateChanged(false);
 }
