@@ -161,7 +161,7 @@ void SAKMainWindow::addTab()
     this->tabWidget->addTab( new SAKSerialPortDebugPage, tr("串口调试"));
 #endif
 #ifdef SAK_IMPORT_HID_MODULE
-    this->tabWidget->addTab( new SAKHidDebugPage, tr("HID调试"));
+    this->tabWidget->addTab( new SAKHidDebugPage, tr("HID调试(Beta)"));
 #endif
     this->tabWidget->addTab(new SAKUdpDebugPage, tr("UDP调试"));
     this->tabWidget->addTab(new SAKTcpClientDebugPage, tr("TCP客户端"));
