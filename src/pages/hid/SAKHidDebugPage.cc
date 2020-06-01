@@ -23,6 +23,7 @@ SAKHidDebugPage::SAKHidDebugPage(QWidget *parent)
     :SAKDebugPage (SAKDataStruct::DebugPageTypeHID, parent)
     ,controller (new SAKHidDeviceController)
 {
+    initPage();
     setWindowTitle(SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeHID));
 }
 

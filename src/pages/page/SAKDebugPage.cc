@@ -202,6 +202,11 @@ void SAKDebugPage::initSettingKey()
         settingKey = QString("COM");
         break;
 #endif
+#ifdef SAK_IMPORT_HID_MODULE
+        case SAKDataStruct::DebugPageTypeHID:
+        settingKey = QString("HID");
+        break;
+#endif
     case SAKDataStruct::DebugPageTypeUDP:
         settingKey = QString("UDP");
         break;

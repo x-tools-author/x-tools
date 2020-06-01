@@ -32,6 +32,9 @@ SAKHidDeviceController::SAKHidDeviceController(QWidget *parent)
     noMouseCheckBox = ui->noMouseCheckBox;
     noKeyboardCheckBox = ui->noKeyboardCheckBox;
 
+    noMouseCheckBox->setChecked(true);
+    noKeyboardCheckBox->setChecked(true);
+
     int ret = hid_init();
     Q_ASSERT_X(!ret, __FUNCTION__, "hid init failed");
 
@@ -42,31 +45,6 @@ SAKHidDeviceController::~SAKHidDeviceController()
 {
     hid_exit();
     delete ui;
-}
-
-QString SAKHidDeviceController::localHost()
-{
-    return "";
-}
-
-quint16 SAKHidDeviceController::localPort()
-{
-    return 0;
-}
-
-QString SAKHidDeviceController::targetHost()
-{
-    return "";
-}
-
-quint16 SAKHidDeviceController::targetPort()
-{
-    return 0;
-}
-
-bool SAKHidDeviceController::enableCustomLocalSetting()
-{
-    return false;
 }
 
 void SAKHidDeviceController::refresh()
@@ -99,7 +77,7 @@ void SAKHidDeviceController::initHidDeviceComboBox(QComboBox *comboBox, QStringL
                 QString item = QString::fromWCharArray(device->product_string);
                 QString path = QString(device->path);
                 for (auto var:ignoreKeyWord){
-                    if (item.contains(var)){
+                    if (item.toUpper().contains(var)){
                         ignore = true;
                         break;
                     }

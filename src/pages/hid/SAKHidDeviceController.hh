@@ -27,12 +27,6 @@ public:
     SAKHidDeviceController(QWidget *parent = Q_NULLPTR);
     ~SAKHidDeviceController();
 
-    QString localHost();
-    quint16 localPort();
-    QString targetHost();
-    quint16 targetPort();
-    bool enableCustomLocalSetting();
-
     void refresh();
     void setUiEnable(bool enable);
     QString devicePath();

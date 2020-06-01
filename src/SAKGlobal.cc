@@ -101,6 +101,11 @@ QString SAKGlobal::getNameOfDebugPage(int type)
         name = tr("串口调试");
         break;
 #endif
+#ifdef SAK_IMPORT_HID_MODULE
+    case SAKDataStruct::DebugPageTypeHID:
+        name = tr("HID调试");
+        break;
+#endif
     default:
         Q_ASSERT_X(false, __FUNCTION__, "Unknow debug page type");
         name = QString("Unknow");
