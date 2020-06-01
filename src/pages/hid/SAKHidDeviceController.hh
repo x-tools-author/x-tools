@@ -12,7 +12,9 @@
 #ifndef SAKHIDDEVICECONTROLLER_HH
 #define SAKHIDDEVICECONTROLLER_HH
 
+#include <QMutex>
 #include <QWidget>
+#include <QLineEdit>
 #include <QCheckBox>
 #include <QComboBox>
 
@@ -37,12 +39,28 @@ public:
      * @param ignoreKeyWord 关键字列表，根据关键字（如： MOUSE、KEYBOARD等）忽略某些hid设备
      */
     static void initHidDeviceComboBox(QComboBox *comboBox, QStringList ignoreKeyWord = QStringList());
+
+    /**
+     * @brief endpoint 获取末端号
+     * @return 末端编号
+     */
+    quint8 endpoint();
+
+    /**
+     * @brief cmd 获取命令编号
+     * @return 命令编号
+     */
+    quint8 cmd();
+private:
+    QMutex uiMutex;
 private:
     Ui::SAKHidDeviceController *ui;
 
-    QComboBox * hidDeviceComboBox;
+    QComboBox *hidDeviceComboBox;
     QCheckBox *noMouseCheckBox;
     QCheckBox *noKeyboardCheckBox;
+    QLineEdit *endpointLineEdit;
+    QLineEdit *cmdLineEdit;
 private slots:
     void on_noMouseCheckBox_clicked();
     void on_noKeyboardCheckBox_clicked();
