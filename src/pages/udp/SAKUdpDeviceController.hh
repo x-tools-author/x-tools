@@ -41,8 +41,9 @@ public:
     void setUiEnable(bool enable);
     void setUdpDevice(SAKUdpDevice* device);
 private:
+    QMutex *uiMutex;
+private:
     Ui::SAKUdpDeviceController *ui;
-
     QComboBox *localhostComboBox;
     QLineEdit *localPortlineEdit;
     QCheckBox *enableLocalSettingCheckBox;
@@ -51,7 +52,6 @@ private:
     QPushButton* advanceUdpPushButton;
 private slots:
     void on_advanceUdpPushButton_clicked();
-
 private:
     SAKUdpAdvanceSettingWidget* udpAdvanceSettingWidget;
 };
