@@ -18,6 +18,7 @@
 #include <QSqlQuery>
 #include <QSqlDatabase>
 
+class SAKDebugPage;
 /// @brief 为数据库读写提供了一套接口，主要是用户配置内容的读写
 class SAKDebugPageDatabaseInterface : public QObject
 {
@@ -38,6 +39,8 @@ public:
     struct PresettingDataTable{
 
     };
+
+    friend SAKDebugPage;
 private:
     SAKDebugPageDatabaseInterface(QObject *parent = Q_NULLPTR);
     ~SAKDebugPageDatabaseInterface();

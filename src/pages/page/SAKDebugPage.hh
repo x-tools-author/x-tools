@@ -44,6 +44,7 @@ class SAKHighlightSettingsWidget;
 #ifdef SAK_IMPORT_CHARTS_MODULE
 class SAKDataVisualizationManager;
 #endif
+class SAKDebugPageDatabaseInterface;
 
 namespace Ui {
     class SAKDebugPage;
@@ -106,6 +107,12 @@ public:
      * @param parameters 读写参数
      */
     void setReadWriteParameters(ReadWriteParameters parameters);
+
+    /**
+     * @brief databaseInterfaceInstance 获取数据库接口类实例
+     * @return 数据库接口类实例
+     */
+    SAKDebugPageDatabaseInterface *databaseInterfaceInstance();
 protected:
     /// @brief 刷新设备
     virtual void refreshDevice();
@@ -125,6 +132,7 @@ private:
     QTimer clearInfoTimer;
     struct ReadWriteParameters _readWriteParameters;
     QMutex readWriteParametersQMutex;
+    SAKDebugPageDatabaseInterface *databaseInterface;
 private:
     void initSettingKey();
     /// @brief 初始化配置选项名称

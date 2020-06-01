@@ -36,6 +36,7 @@
 #ifdef SAK_IMPORT_CHARTS_MODULE
 #include "SAKDataVisualizationManager.hh"
 #endif
+#include "SAKDebugPageDatabaseInterface.hh"
 
 #include "ui_SAKDebugPage.h"
 
@@ -43,10 +44,12 @@
 
 SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
     :QWidget(parent)
-    ,device(Q_NULLPTR)
+    ,device(Q_NULLPTR)    
     ,debugPageType(type)
     ,ui(new Ui::SAKDebugPage)
 {
+    databaseInterface = SAKDebugPageDatabaseInterface::instance();
+
     isInitializing = true;
     initSettingString();
 
@@ -85,6 +88,7 @@ SAKDebugPage::~SAKDebugPage()
         device = Q_NULLPTR;
     }
 
+    delete databaseInterface;
     delete ui;
 #ifdef SAK_IMPORT_CHARTS_MODULE
     delete dataVisualizationManager;
@@ -148,6 +152,11 @@ void SAKDebugPage::setReadWriteParameters(struct ReadWriteParameters parameters)
     _readWriteParameters.waitForReadyReadTime = parameters.waitForReadyReadTime;
     _readWriteParameters.waitForBytesWrittenTime = parameters.waitForBytesWrittenTime;
     readWriteParametersQMutex.unlock();
+}
+
+SAKDebugPageDatabaseInterface *SAKDebugPage::databaseInterfaceInstance()
+{
+   return databaseInterface;
 }
 
 void SAKDebugPage::refreshDevice()
