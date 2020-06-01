@@ -26,6 +26,7 @@ DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs depr
 CONFIG += c++11
 
 # 子项目
+include(SAKHID.pri)
 include(SAKSetup.pri)
 include(SAKTools.pri)
 include(SAKDataVis.pri)
