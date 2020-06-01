@@ -5,6 +5,8 @@ win32 {
         HEADERS += 3rd/hidapi/hidapi/hidapi.h
         SOURCES += 3rd/hidapi/windows/hid.c
         INCLUDEPATH += 3rd/hidapi/hidapi
+        # 屏蔽64位源码编译时的警告
+        QMAKE_CFLAGS_WARN_OFF += /wd4267
 
         DEFINES += SAK_IMPORT_HID_MODULE
     }else{
