@@ -14,7 +14,7 @@
 
 #include <QObject>
 
-class SAKApplicationInformation:public QObject
+class SAK:public QObject
 {
     Q_OBJECT
 public:
@@ -22,7 +22,7 @@ public:
      * @brief instance 获取app信息示例
      * @return App信息示例
      */
-    static SAKApplicationInformation* instance();
+    static SAK* instance();
 
     QString email();
     QString qqGroupNumber();
@@ -35,10 +35,10 @@ public:
     QString copyright();
     QString business();
 private:
-    SAKApplicationInformation(QObject *parent = Q_NULLPTR);
-    ~SAKApplicationInformation();
+    SAK(QObject *parent = Q_NULLPTR);
+    ~SAK();
 
-    static SAKApplicationInformation *thisInstance;
+    static SAK *thisInstance;
 };
 
 #endif

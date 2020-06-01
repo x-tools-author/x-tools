@@ -128,8 +128,8 @@ FORMS += \
     src/update/SAKUpdateManager.ui
 
 HEADERS += \
+    src/SAK.hh \
     src/SAKApplication.hh \
-    src/SAKApplicationInformation.hh \
     src/SAKCodingStyle.hh \
     src/SAKGlobal.hh \
     src/SAKMainWindow.hh \
@@ -183,8 +183,8 @@ HEADERS += \
     src/update/SAKUpdateManager.hh
 
 SOURCES += \
+    src/SAK.cc \
     src/SAKApplication.cc \
-    src/SAKApplicationInformation.cc \
     src/SAKCodingStyle.cc \
     src/SAKGlobal.cc \
     src/SAKMainWindow.cc \
