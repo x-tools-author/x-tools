@@ -17,8 +17,7 @@
 #include "SAKUdpDebugPage.hh"
 #include "SAKUdpDeviceController.hh"
 
-SAKUdpDevice::SAKUdpDevice(SAKUdpDebugPage *debugPage,
-                           QObject *parent)
+SAKUdpDevice::SAKUdpDevice(SAKUdpDebugPage *debugPage, QObject *parent)
     :SAKDevice(parent)
     ,enableCustomLocalSetting(false)
     ,debugPage (debugPage)
