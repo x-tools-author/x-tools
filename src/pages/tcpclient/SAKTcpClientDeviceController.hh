@@ -12,6 +12,7 @@
 #ifndef SAKTCPCLIENTDEVICECONTROLLER_HH
 #define SAKTCPCLIENTDEVICECONTROLLER_HH
 
+#include <QMutex>
 #include <QWidget>
 #include <QCheckBox>
 #include <QComboBox>
@@ -36,8 +37,9 @@ public:
     void refresh();
     void setUiEnable(bool enable);
 private:
+    QMutex uiMutex;
+private:
     Ui::SAKTcpClientDeviceController *ui;
-
     QComboBox *localhostComboBox;
     QLineEdit *localPortlineEdit;
     QCheckBox *enableLocalSettingCheckBox;
