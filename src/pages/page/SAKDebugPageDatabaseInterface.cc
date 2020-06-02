@@ -15,6 +15,7 @@
 #include <QSqlError>
 #include <QCoreApplication>
 
+#include "SAKGlobal.hh"
 #include "SAKDebugPageDatabaseInterface.hh"
 
 SAKDebugPageDatabaseInterface *SAKDebugPageDatabaseInterface::instancePtr = Q_NULLPTR;
@@ -46,7 +47,7 @@ void SAKDebugPageDatabaseInterface::initDatabase()
 {
     /// @brief 连接数据库
     sakDatabase = QSqlDatabase::addDatabase("QSQLITE");
-    sakDatabase.setDatabaseName(QString("./QSAKDatabase.sqlite3"));
+    sakDatabase.setDatabaseName(SAKGlobal::dataPath().append(QString("/QSAKDatabase.sqlite3")));
     /// @brief 以下是可选设置选项，对sqlite数据库来说,以下选项是无效的
     sakDatabase.setHostName("localhost");
     sakDatabase.setUserName("Qter");
