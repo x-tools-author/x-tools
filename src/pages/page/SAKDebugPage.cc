@@ -272,7 +272,7 @@ void SAKDebugPage::readinInputSettings()
     if (var.isNull()){
         cycleTime = QString("1000");
     }else{
-         cycleTime = var.toString();
+        cycleTime = var.toString();
     }
     cycleTimeLineEdit->setText(cycleTime);
 
