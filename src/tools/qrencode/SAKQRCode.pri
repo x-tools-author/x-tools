@@ -23,17 +23,17 @@ win32 {
             3rd/libqrencode/rsecc.c \
             3rd/libqrencode/split.c
 
-        DEFINES += SAK_IMPORT_HID_MODULE
+        DEFINES += SAK_IMPORT_QRCODE_MODULE
         DEFINES += HAVE_CONFIG_H
     }
 }
 
-contains(DEFINES, SAK_IMPORT_HID_MODULE){
+contains(DEFINES, SAK_IMPORT_QRCODE_MODULE){
     HEADERS += \
         $$PWD/src/config.h
 
     INCLUDEPATH += \
         $$PWD/src
 }else {
-    message("The QRCode module is not supported by the platform, the program will not has QRCode tool.")
+    message("The QRCode module is not supported by the platform, the program will not has QRCode-Creator.")
 }
