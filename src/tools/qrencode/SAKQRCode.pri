@@ -1,5 +1,12 @@
 win32 {
     exists($${PWD}/../../../3rd/libqrencode/qrencode.h){
+        DEFINES += SAK_IMPORT_QRCODE_MODULE
+        DEFINES += HAVE_CONFIG_H
+    }
+}
+
+# libqrencode 源文件
+contains(DEFINES, SAK_IMPORT_QRCODE_MODULE){
         HEADERS += \
             3rd/libqrencode/bitstream.h \
             3rd/libqrencode/mask.h \
@@ -22,10 +29,6 @@ win32 {
             3rd/libqrencode/qrspec.c \
             3rd/libqrencode/rsecc.c \
             3rd/libqrencode/split.c
-
-        DEFINES += SAK_IMPORT_QRCODE_MODULE
-        DEFINES += HAVE_CONFIG_H
-    }
 }
 
 contains(DEFINES, SAK_IMPORT_QRCODE_MODULE){
