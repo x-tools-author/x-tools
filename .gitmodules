@@ -1,3 +1,6 @@
 [submodule "3rd/hidapi"]
 	path = 3rd/hidapi
 	url = https://github.com/libusb/hidapi.git
+[submodule "3rd/libqrencode"]
+	path = 3rd/libqrencode
+	url = https://github.com/fukuchi/libqrencode.git
