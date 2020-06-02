@@ -17,11 +17,6 @@
 class SAKSettings:public QSettings
 {
     Q_OBJECT
-    Q_PROPERTY(bool enableAutoCheckForUpdate READ enableAutoCheckForUpdate WRITE setEnableAutoCheckForUpdate NOTIFY enableAutoCheckForUpdateChanged)
-    Q_PROPERTY(QString appStyle READ appStyle WRITE setAppStyle NOTIFY appStyleChanged)
-    Q_PROPERTY(QString appStylesheet READ appStylesheet WRITE setAppStylesheet NOTIFY appStylesheetChanged)
-    Q_PROPERTY(QString language READ language WRITE setLanguage NOTIFY languageChanged)
-    Q_PROPERTY(bool isClassicalUi READ isClassicalUi WRITE setIsClassicalUi NOTIFY isClassicalUiChanged)
 public:
     static SAKSettings* instance();
 private:
@@ -33,46 +28,20 @@ private:
 public:    
     bool enableAutoCheckForUpdate();
     void setEnableAutoCheckForUpdate(bool enable);
-private:
-    QString enableAutoCheckForUpdateKey;
-signals:
-    void enableAutoCheckForUpdateChanged();
 
-     /// @brief 以下软件风格设置相关成员
-public:
     QString appStyle();
     void setAppStyle(QString style);
-private:
-    QString appStyleKey;
-signals:
-    void appStyleChanged();
 
-     /// @brief 以下是软件样式设置相关成员
-public:
     QString appStylesheet();
     void setAppStylesheet(QString stylesheet);
-private:
-    QString appStylesheetKey;
-signals:
-    void appStylesheetChanged();
 
-    /// @brief 语言配置相关选项
-public:
     QString language();
     void setLanguage(QString language);
 private:
+    QString enableAutoCheckForUpdateKey;
+    QString appStyleKey;
+    QString appStylesheetKey;
     QString languageKey;
-signals:
-    void languageChanged();
-
-    /// @brief ui类型配置相关选项
-public:
-    bool isClassicalUi();
-    void setIsClassicalUi(bool isClassicalUi);
-private:
-    QString isClassicalUiKey;
-signals:
-    void isClassicalUiChanged();
 };
 
 #endif
