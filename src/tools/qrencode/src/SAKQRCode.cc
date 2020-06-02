@@ -11,9 +11,9 @@
  */
 #include <QRectF>
 #include <QPainter>
-#include "SAKQRCodeWidget.hh"
+#include "SAKQRCode.hh"
 
-SAKQRCodeWidget::SAKQRCodeWidget(QSize size, QString image, QWidget *parent)
+SAKQRCode::SAKQRCode(QSize size, QString image, QWidget *parent)
     : QWidget(parent)
     , size(size)
     , image(image)
@@ -21,12 +21,12 @@ SAKQRCodeWidget::SAKQRCodeWidget(QSize size, QString image, QWidget *parent)
     resize(size.width(), size.height());
 }
 
-SAKQRCodeWidget::~SAKQRCodeWidget()
+SAKQRCode::~SAKQRCode()
 {
 
 }
 
-void SAKQRCodeWidget::paintEvent(QPaintEvent *event)
+void SAKQRCode::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event);
 

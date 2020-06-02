@@ -33,6 +33,7 @@
 #include <QJsonParseError>
 #include <QDesktopServices>
 
+#include "SAK.hh"
 #include "SAKGlobal.hh"
 #include "SAKSettings.hh"
 #include "SAKSettings.hh"
@@ -43,22 +44,22 @@
 #include "SAKQRCodeDialog.hh"
 #include "SAKUdpDebugPage.hh"
 #include "QtStyleSheetApi.hh"
+#ifdef SAK_IMPORT_HID_MODULE
+#include "SAKHidDebugPage.hh"
+#endif
+#ifdef SAK_IMPORT_QRCODE_MODULE
+#include "SAKQRCodeCreator.hh"
+#endif
 #include "SAKCRCCalculator.hh"
 #include "SAKUpdateManager.hh"
 #include "SAKMoreInformation.hh"
 #include "SAKTcpClientDebugPage.hh"
 #include "SAKTcpServerDebugPage.hh"
-#include "SAK.hh"
-#ifdef SAK_IMPORT_FILECHECKER_MODULE
-#include "QtCryptographicHashController.hh"
-#endif
-
 #ifdef SAK_IMPORT_COM_MODULE
 #include "SAKSerialPortDebugPage.hh"
 #endif
-
-#ifdef SAK_IMPORT_HID_MODULE
-#include "SAKHidDebugPage.hh"
+#ifdef SAK_IMPORT_FILECHECKER_MODULE
+#include "QtCryptographicHashController.hh"
 #endif
 
 #ifdef SAK_IMPORT_USB_MODULE
@@ -180,6 +181,10 @@ void SAKMainWindow::addTool()
 {
 #ifdef SAK_IMPORT_FILECHECKER_MODULE
     addTool(tr("文件校验工具"),     new QtCryptographicHashController);
+#endif
+
+#ifdef SAK_IMPORT_QRCODE_MODULE
+    addTool(tr("二维码生成工具"), new SAKQRCodeCreator);
 #endif
 
     QAction *action = Q_NULLPTR;

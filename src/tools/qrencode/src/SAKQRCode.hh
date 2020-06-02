@@ -9,18 +9,18 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef SAKQRCODEWIDGET_HH
-#define SAKQRCODEWIDGET_HH
+#ifndef SAKQRCODE_HH
+#define SAKQRCODE_HH
 
 #include <QWidget>
 
 /// @brief 显示一张二维码图片
-class SAKQRCodeWidget : public QWidget
+class SAKQRCode : public QWidget
 {
     Q_OBJECT
 public:
-    SAKQRCodeWidget(QSize size, QString image, QWidget *parent = Q_NULLPTR);
-    ~SAKQRCodeWidget();
+    SAKQRCode(QSize size, QString image, QWidget *parent = Q_NULLPTR);
+    ~SAKQRCode();
 protected:
     void paintEvent(QPaintEvent *event) override;
 private:

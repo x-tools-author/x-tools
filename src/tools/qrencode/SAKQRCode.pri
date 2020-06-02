@@ -32,6 +32,17 @@ contains(DEFINES, SAK_IMPORT_QRCODE_MODULE){
 }
 
 contains(DEFINES, SAK_IMPORT_QRCODE_MODULE){
+    FORMS += \
+        $$PWD/src/SAKQRCodeCreator.ui
+
+    HEADERS += \
+        $$PWD/src/SAKQRCode.hh \
+        $$PWD/src/SAKQRCodeCreator.hh
+
+    SOURCES += \
+        $$PWD/src/SAKQRCode.cc \
+        $$PWD/src/SAKQRCodeCreator.cc
+
     HEADERS += \
         $$PWD/src/config.h
 
