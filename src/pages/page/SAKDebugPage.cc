@@ -207,6 +207,11 @@ void SAKDebugPage::initSettingKey()
         settingKey = QString("HID");
         break;
 #endif
+#ifdef SAK_IMPORT_USB_MODULE
+    case SAKDataStruct::DebugPageTypeUSB:
+    settingKey = QString("USB");
+    break;
+#endif
     case SAKDataStruct::DebugPageTypeUDP:
         settingKey = QString("UDP");
         break;

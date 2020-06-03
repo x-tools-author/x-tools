@@ -106,6 +106,11 @@ QString SAKGlobal::getNameOfDebugPage(int type)
         name = tr("HID调试");
         break;
 #endif
+#ifdef SAK_IMPORT_USB_MODULE
+    case SAKDataStruct::DebugPageTypeUSB:
+        name = tr("USB调试");
+        break;
+#endif
     default:
         Q_ASSERT_X(false, __FUNCTION__, "Unknow debug page type");
         name = QString("Unknow");
