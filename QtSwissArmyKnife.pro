@@ -27,6 +27,7 @@ CONFIG += c++11
 
 # 子项目
 include(SAKHID.pri)
+include(SAKUSB.pri)
 include(SAKSetup.pri)
 include(SAKTools.pri)
 include(SAKDataVis.pri)

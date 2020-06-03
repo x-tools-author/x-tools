@@ -4,3 +4,6 @@
 [submodule "3rd/libqrencode"]
 	path = 3rd/libqrencode
 	url = https://github.com/fukuchi/libqrencode.git
+[submodule "3rd/libusb"]
+	path = 3rd/libusb
+	url = https://github.com/libusb/libusb.git
