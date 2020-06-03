@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright (C) 2019-2020 wuuhii. All rights reserved.
+ * Copyright (C) 2020 wuuhii. All rights reserved.
  *
  * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
  * project. The project is a open source project, you can get the source from:
@@ -15,22 +15,22 @@
 #include <QLineEdit>
 #include <QSerialPortInfo>
 
-#include "SAKHidDeviceController.hh"
-#include "ui_SAKHidDeviceController.h"
+#include "SAKUsbDeviceController.hh"
+#include "ui_SAKUsbDeviceController.h"
 
 extern "C" {
 #include "hidapi.h"
 }
 
-SAKHidDeviceController::SAKHidDeviceController(QWidget *parent)
+SAKUsbDeviceController::SAKUsbDeviceController(QWidget *parent)
     :QWidget (parent)
-    ,ui (new Ui::SAKHidDeviceController)
+    ,ui (new Ui::SAKUsbDeviceController)
 {
     ui->setupUi(this);
 
-    hidDeviceComboBox = ui->hidDeviceComboBox;
-    noMouseCheckBox = ui->noMouseCheckBox;
-    noKeyboardCheckBox = ui->noKeyboardCheckBox;
+//    UsbDeviceComboBox = ui->UsbDeviceComboBox;
+//    noMouseCheckBox = ui->noMouseCheckBox;
+//    noKeyboardCheckBox = ui->noKeyboardCheckBox;
     endpointLineEdit = ui->endpointLineEdit;
     cmdLineEdit = ui->cmdLineEdit;
 
@@ -38,38 +38,38 @@ SAKHidDeviceController::SAKHidDeviceController(QWidget *parent)
     noKeyboardCheckBox->setChecked(true);
 
     int ret = hid_init();
-    Q_ASSERT_X(!ret, __FUNCTION__, "hid init failed");
+    Q_ASSERT_X(!ret, __FUNCTION__, "Usb init failed");
 
     refresh();
 }
 
-SAKHidDeviceController::~SAKHidDeviceController()
+SAKUsbDeviceController::~SAKUsbDeviceController()
 {
     hid_exit();
     delete ui;
 }
 
-void SAKHidDeviceController::refresh()
+void SAKUsbDeviceController::refresh()
 {
-    initHidDeviceComboBox(hidDeviceComboBox, ignoreKeyWords());
+    initUsbDeviceComboBox(UsbDeviceComboBox, ignoreKeyWords());
 }
 
-void SAKHidDeviceController::setUiEnable(bool enable)
+void SAKUsbDeviceController::setUiEnable(bool enable)
 {
-    hidDeviceComboBox->setEnabled(enable);
+    UsbDeviceComboBox->setEnabled(enable);
     noKeyboardCheckBox->setEnabled(enable);
     noMouseCheckBox->setEnabled(enable);
 }
 
-QString SAKHidDeviceController::devicePath()
+QString SAKUsbDeviceController::devicePath()
 {
     uiMutex.lock();
-    auto ret = hidDeviceComboBox->currentData().toString();
+    auto ret = UsbDeviceComboBox->currentData().toString();
     uiMutex.unlock();
     return ret;
 }
 
-void SAKHidDeviceController::initHidDeviceComboBox(QComboBox *comboBox, QStringList ignoreKeyWord)
+void SAKUsbDeviceController::initUsbDeviceComboBox(QComboBox *comboBox, QStringList ignoreKeyWord)
 {
     if (comboBox){
         comboBox->clear();
@@ -99,7 +99,7 @@ void SAKHidDeviceController::initHidDeviceComboBox(QComboBox *comboBox, QStringL
     }
 }
 
-quint8 SAKHidDeviceController::endpoint()
+quint8 SAKUsbDeviceController::endpoint()
 {
     uiMutex.lock();
     auto ret = static_cast<quint8>(endpointLineEdit->text().toInt());
@@ -107,7 +107,7 @@ quint8 SAKHidDeviceController::endpoint()
     return ret;
 }
 
-quint8 SAKHidDeviceController::cmd()
+quint8 SAKUsbDeviceController::cmd()
 {
     uiMutex.lock();
     auto ret = static_cast<quint8>(cmdLineEdit->text().toInt());
@@ -115,17 +115,17 @@ quint8 SAKHidDeviceController::cmd()
     return ret;
 }
 
-void SAKHidDeviceController::on_noMouseCheckBox_clicked()
+void SAKUsbDeviceController::on_noMouseCheckBox_clicked()
 {
     refresh();
 }
 
-void SAKHidDeviceController::on_noKeyboardCheckBox_clicked()
+void SAKUsbDeviceController::on_noKeyboardCheckBox_clicked()
 {
     refresh();
 }
 
-QStringList SAKHidDeviceController::ignoreKeyWords()
+QStringList SAKUsbDeviceController::ignoreKeyWords()
 {
     QStringList keyWords;
     QString keyword;

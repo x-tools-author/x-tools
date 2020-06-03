@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright (C) 2019-2020 wuuhii. All rights reserved.
+ * Copyright (C) 2020 wuuhii. All rights reserved.
  *
  * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
  * project. The project is a open source project, you can get the source from:
@@ -13,11 +13,11 @@
 #include <QEventLoop>
 
 #include <QApplication>
-#include "SAKHidDevice.hh"
-#include "SAKHidDebugPage.hh"
-#include "SAKHidDeviceController.hh"
+#include "SAKUsbDevice.hh"
+#include "SAKUsbDebugPage.hh"
+#include "SAKUsbDeviceController.hh"
 
-SAKHidDevice::SAKHidDevice(SAKHidDebugPage *debugPage, QObject *parent)
+SAKUsbDevice::SAKUsbDevice(SAKUsbDebugPage *debugPage, QObject *parent)
     :SAKDevice(parent)
     ,debugPage (debugPage)
     ,hidDevice (nullptr)
@@ -25,15 +25,15 @@ SAKHidDevice::SAKHidDevice(SAKHidDebugPage *debugPage, QObject *parent)
 
 }
 
-SAKHidDevice::~SAKHidDevice()
+SAKUsbDevice::~SAKUsbDevice()
 {
 
 }
 
-void SAKHidDevice::run()
+void SAKUsbDevice::run()
 {
     QEventLoop eventLoop;
-    SAKHidDeviceController *deviceController = debugPage->controllerInstance();
+    SAKUsbDeviceController *deviceController = debugPage->controllerInstance();
     path = deviceController->devicePath();
     hidDevice = hid_open_path(path.toLatin1().constData());
     if (!hidDevice){

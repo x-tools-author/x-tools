@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright (C) 2019-2020 wuuhii. All rights reserved.
+ * Copyright (C) 2020 wuuhii. All rights reserved.
  *
  * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
  * project. The project is a open source project, you can get the source from:
@@ -9,32 +9,32 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef SAKHIDDEBUGPAGE_HH
-#define SAKHIDDEBUGPAGE_HH
+#ifndef SAKUSBDEBUGPAGE_HH
+#define SAKUSBDEBUGPAGE_HH
 
 #include "SAKDebugPage.hh"
 
-class SAKHidDevice;
-class SAKHidDeviceController;
-class SAKHidDebugPage : public SAKDebugPage
+class SAKUsbDevice;
+class SAKUsbDeviceController;
+class SAKUsbDebugPage : public SAKDebugPage
 {
     Q_OBJECT
 public:
-    SAKHidDebugPage(QWidget *parent = Q_NULLPTR);
-    ~SAKHidDebugPage();
+    SAKUsbDebugPage(QWidget *parent = Q_NULLPTR);
+    ~SAKUsbDebugPage();
 
     /**
-     * @brief hidDeviceControllerInstance
+     * @brief UsbDeviceControllerInstance
      * @return
      */
-    SAKHidDeviceController *controllerInstance();
+    SAKUsbDeviceController *controllerInstance();
 protected:
     void refreshDevice() final;
     QWidget *controllerWidget() final;
     SAKDevice* createDevice() final;
     void setUiEnable(bool ebable) final;
 private:
-    SAKHidDeviceController *controller;
+    SAKUsbDeviceController *controller;
 };
 
 #endif

@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright (C) 2019-2020 wuuhii. All rights reserved.
+ * Copyright (C) 2020 wuuhii. All rights reserved.
  *
  * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
  * project. The project is a open source project, you can get the source from:
@@ -14,46 +14,46 @@
 #include <QHBoxLayout>
 
 #include "SAKGlobal.hh"
-#include "SAKHidDevice.hh"
+#include "SAKUsbDevice.hh"
 #include "SAKDataStruct.hh"
-#include "SAKHidDebugPage.hh"
-#include "SAKHidDeviceController.hh"
+#include "SAKUsbDebugPage.hh"
+#include "SAKUsbDeviceController.hh"
 
-SAKHidDebugPage::SAKHidDebugPage(QWidget *parent)
-    :SAKDebugPage (SAKDataStruct::DebugPageTypeHID, parent)
-    ,controller (new SAKHidDeviceController)
+SAKUsbDebugPage::SAKUsbDebugPage(QWidget *parent)
+    :SAKDebugPage (SAKDataStruct::DebugPageTypeUSB, parent)
+    ,controller (new SAKUsbDeviceController)
 {
     initPage();
-    setWindowTitle(SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeHID));
+    setWindowTitle(SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeUSB));
 }
 
-SAKHidDebugPage::~SAKHidDebugPage()
+SAKUsbDebugPage::~SAKUsbDebugPage()
 {
     controller->deleteLater();
 }
 
-SAKHidDeviceController *SAKHidDebugPage::controllerInstance()
+SAKUsbDeviceController *SAKUsbDebugPage::controllerInstance()
 {
     return controller;
 }
 
-void SAKHidDebugPage::refreshDevice()
+void SAKUsbDebugPage::refreshDevice()
 {
     controller->refresh();
 }
 
-QWidget *SAKHidDebugPage::controllerWidget()
+QWidget *SAKUsbDebugPage::controllerWidget()
 {
     return controller;
 }
 
-SAKDevice* SAKHidDebugPage::createDevice()
+SAKDevice* SAKUsbDebugPage::createDevice()
 {
-    auto ret = new SAKHidDevice(this);
+    auto ret = new SAKUsbDevice(this);
     return ret;
 }
 
-void SAKHidDebugPage::setUiEnable(bool enable)
+void SAKUsbDebugPage::setUiEnable(bool enable)
 {
     controller->setEnabled(enable);
     refreshPushButton->setEnabled(enable);

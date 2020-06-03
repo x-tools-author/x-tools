@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright (C) 2019-2020 wuuhii. All rights reserved.
+ * Copyright (C) 2020 wuuhii. All rights reserved.
  *
  * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
  * project. The project is a open source project, you can get the source from:
@@ -9,8 +9,8 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
-#ifndef SAKHIDDEVICECONTROLLER_HH
-#define SAKHIDDEVICECONTROLLER_HH
+#ifndef SAKUSBDEVICECONTROLLER_HH
+#define SAKUSBDEVICECONTROLLER_HH
 
 #include <QMutex>
 #include <QWidget>
@@ -19,26 +19,26 @@
 #include <QComboBox>
 
 namespace Ui {
-    class SAKHidDeviceController;
+    class SAKUsbDeviceController;
 }
 
-class SAKHidDeviceController:public QWidget
+class SAKUsbDeviceController:public QWidget
 {
     Q_OBJECT
 public:
-    SAKHidDeviceController(QWidget *parent = Q_NULLPTR);
-    ~SAKHidDeviceController();
+    SAKUsbDeviceController(QWidget *parent = Q_NULLPTR);
+    ~SAKUsbDeviceController();
 
     void refresh();
     void setUiEnable(bool enable);
     QString devicePath();
 
     /**
-     * @brief initHidDeviceComboBox 初始化hid设备
+     * @brief initUsbDeviceComboBox 初始化Usb设备
      * @param comboBox 需要初始化的控件
-     * @param ignoreKeyWord 关键字列表，根据关键字（如： MOUSE、KEYBOARD等）忽略某些hid设备
+     * @param ignoreKeyWord 关键字列表，根据关键字（如： MOUSE、KEYBOARD等）忽略某些Usb设备
      */
-    static void initHidDeviceComboBox(QComboBox *comboBox, QStringList ignoreKeyWord = QStringList());
+    static void initUsbDeviceComboBox(QComboBox *comboBox, QStringList ignoreKeyWord = QStringList());
 
     /**
      * @brief endpoint 获取末端号
@@ -54,9 +54,9 @@ public:
 private:
     QMutex uiMutex;
 private:
-    Ui::SAKHidDeviceController *ui;
+    Ui::SAKUsbDeviceController *ui;
 
-    QComboBox *hidDeviceComboBox;
+    QComboBox *UsbDeviceComboBox;
     QCheckBox *noMouseCheckBox;
     QCheckBox *noKeyboardCheckBox;
     QLineEdit *endpointLineEdit;
