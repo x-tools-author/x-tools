@@ -67,9 +67,9 @@ public:
     /// @brief 调试页面自动回复数据结构
     struct SAKStructAutoResponseItem {
         quint64 id;                 /// 自动回复条目ID,回复条目唯一标识符（取值为数据产生时的时间戳）
-        QString named;              /// 该自动回复数据名称
-        QString referenceDatad;     /// 参考数据
-        QString responseDatad;      /// 回复数据
+        QString name;               /// 该自动回复数据名称
+        QString referenceData;      /// 参考数据
+        QString responseData;       /// 回复数据
         bool enabled;               /// 该自动回复是否生效
         quint32 referenceFormat;    /// 参考数据格式，详情查看SAKEnumTextInputFormat
         quint32 responseFormat;     /// 回复数据格式，详情查看SAKEnumTextInputFormat
