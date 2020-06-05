@@ -55,22 +55,86 @@ SAKDebugPageDatabaseInterface* SAKDebugPageDatabaseInterface::instance()
 
 void SAKDebugPageDatabaseInterface::insertAutoResponseItem(QString tableName, SAKDataStruct::SAKStructAutoResponseItem item)
 {
-
+    AutoResponseTable table = tableNmaeToAutoResponseTable(tableName);
+    bool ret = sakDatabaseQuery.exec(QString("INSERT INTO %1(%2,%3,%4,%5,%6,%7,%8,%9) VALUES(%10,%11,%12,%13,%14,%15,%16)")
+                                     .arg(table.tableName)
+                                     .arg(table.idColumn)
+                                     .arg(table.nameColumn)
+                                     .arg(table.referenceDataColumn)
+                                     .arg(table.responseDataColumn)
+                                     .arg(table.enableColumn)
+                                     .arg(table.referenceFormatColumn)
+                                     .arg(table.responseFormatColumn)
+                                     .arg(item.id)
+                                     .arg(item.name)
+                                     .arg(item.referenceData)
+                                     .arg(item.responseData)
+                                     .arg(item.enabled)
+                                     .arg(item.referenceFormat)
+                                     .arg(item.responseFormat));
+    if (!ret){
+        qWarning() << __FUNCTION__ << "Insert record to " << table.tableName << " table failed: " << sakDatabaseQuery.lastError().text();
+    }
 }
 
 void SAKDebugPageDatabaseInterface::deleteAutoResponseItem(QString tableName, SAKDataStruct::SAKStructAutoResponseItem item)
 {
-
+    bool ret = sakDatabaseQuery.exec(QString("DELETE FROM %1 WHERE ID=%2")
+                                     .arg(tableName)
+                                     .arg(item.id));
+    if (!ret){
+        qWarning() << __FUNCTION__ << "delete record form " << tableName << " table failed: " << sakDatabaseQuery.lastError().text();
+    }
 }
 
 void SAKDebugPageDatabaseInterface::updateAutoResponseItem(QString tableName, SAKDataStruct::SAKStructAutoResponseItem item)
 {
-
+    AutoResponseTable table = tableNmaeToAutoResponseTable(tableName);
+    bool ret = sakDatabaseQuery.exec(QString("UPDATE %1 SET %2=%3, %4=%5, %6=%7, %8=%9, %10=%11, %12=%13 ,%14=%15, WHERE ID=%17")
+                                     .arg(table.tableName)
+                                     .arg(table.idColumn)
+                                     .arg(item.id)
+                                     .arg(table.nameColumn)
+                                     .arg(item.name)
+                                     .arg(table.referenceDataColumn)
+                                     .arg(item.referenceData)
+                                     .arg(table.responseDataColumn)
+                                     .arg(item.responseData)
+                                     .arg(table.enableColumn)
+                                     .arg(item.enabled)
+                                     .arg(table.referenceFormatColumn)
+                                     .arg(item.referenceFormat)
+                                     .arg(table.responseFormatColumn)
+                                     .arg(item.responseFormat));
+    if (!ret){
+        qWarning() << __FUNCTION__ << "Update record form " << table.tableName << " table failed: " << sakDatabaseQuery.lastError().text();
+    }
 }
 
 QList<SAKDataStruct::SAKStructAutoResponseItem> SAKDebugPageDatabaseInterface::selectAutoResponseItem(QString tableName)
 {
+    AutoResponseTable table = tableNmaeToAutoResponseTable(tableName);
+    bool ret = sakDatabaseQuery.exec(QString("SELECT * FROM %1").arg(table.tableName));
 
+    QList<SAKDataStruct::SAKStructAutoResponseItem> itemList;
+    if (ret){
+        SAKDataStruct::SAKStructAutoResponseItem item;
+        while (sakDatabaseQuery.next()) {
+            item.id = sakDatabaseQuery.value(table.idColumn).toULongLong();
+            item.name = sakDatabaseQuery.value(table.idColumn).toString();
+            item.referenceData = sakDatabaseQuery.value(table.idColumn).toString();
+            item.responseData = sakDatabaseQuery.value(table.idColumn).toString();
+            item.enabled = sakDatabaseQuery.value(table.idColumn).toBool();
+            item.referenceFormat = sakDatabaseQuery.value(table.idColumn).toUInt();
+            item.responseFormat = sakDatabaseQuery.value(table.idColumn).toUInt();
+
+            itemList.append(item);
+        }
+    }else{
+        qWarning() << __FUNCTION__ << "Select record form " << table.tableName << " table failed: " << sakDatabaseQuery.lastError().text();
+    }
+
+    return itemList;
 }
 
 void SAKDebugPageDatabaseInterface::initDatabase()
@@ -142,4 +206,16 @@ bool SAKDebugPageDatabaseInterface::createAutoResponseTable(const AutoResponseTa
                                              .arg(table.referenceFormatColumn)
                                              .arg(table.responseFormatColumn));
     return ret;
+}
+
+SAKDebugPageDatabaseInterface::AutoResponseTable SAKDebugPageDatabaseInterface::tableNmaeToAutoResponseTable(QString tableName)
+{
+    AutoResponseTable table;
+    for (auto var : autoResponseTableList){
+        if (tableName.compare(var.tableName) == 0){
+            table = var;
+            break;
+        }
+    }
+    return table;
 }

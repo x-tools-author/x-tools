@@ -92,6 +92,8 @@ private:
     void createTables();
     void createAutoResponseTables();
     bool createAutoResponseTable(const AutoResponseTable &table);
+
+    AutoResponseTable tableNmaeToAutoResponseTable(QString tableName);
 };
 
 #endif
