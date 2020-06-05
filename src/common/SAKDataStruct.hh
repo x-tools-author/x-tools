@@ -74,6 +74,14 @@ public:
         quint32 referenceFormat;    /// 参考数据格式，详情查看SAKEnumTextInputFormat
         quint32 responseFormat;     /// 回复数据格式，详情查看SAKEnumTextInputFormat
     };
+
+    /// @brief 调试页面定时发送数据结构
+    struct TimingSendingItem {
+        quint32 interval;   /// 定时间隔
+        quint32 format;     /// 文本格式
+        QString comment;    /// 备注
+        QString data;       /// 定时发送数据
+    };
 public:
     /**
      * @brief autoResponseTableName 获取自动数据库中自动应答数据表的表名称
@@ -81,6 +89,13 @@ public:
      * @return 数据表名称
      */
     static QString autoResponseTableName(int type);
+
+    /**
+     * @brief timingSendingTableName 获取定时发送数据表的表名称
+     * @param type 调试类型，详情查看SAKEnumDebugPageType
+     * @return 数据表名称
+     */
+    static QString timingSendingTableName(int type);
 };
 
 #endif

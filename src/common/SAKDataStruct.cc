@@ -26,3 +26,12 @@ QString SAKDataStruct::autoResponseTableName(int type)
 
     return name;
 }
+
+QString SAKDataStruct::timingSendingTableName(int type)
+{
+    QMetaEnum metaEnum = QMetaEnum::fromType<SAKDataStruct::SAKEnumDebugPageType>();
+    QString name = QString(metaEnum.valueToKey(type));
+    name.prepend(QString("TimingSendingTable_"));
+
+    return name;
+}
