@@ -137,6 +137,11 @@ QList<SAKDataStruct::SAKStructAutoResponseItem> SAKDebugPageDatabaseInterface::s
     return itemList;
 }
 
+void SAKDebugPageDatabaseInterface::insertTimingSendingItem(QString tableName, SAKDataStruct::TimingSendingItem item)
+{
+    Q_UNUSED(item);
+}
+
 void SAKDebugPageDatabaseInterface::initDatabase()
 {
     /// @brief 连接数据库

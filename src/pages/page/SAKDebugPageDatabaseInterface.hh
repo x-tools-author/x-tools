@@ -88,6 +88,13 @@ public:
      * @return 自动回复条目参数信息列表
      */
     QList<SAKDataStruct::SAKStructAutoResponseItem> selectAutoResponseItem(QString tableName);
+
+    /**
+     * @brief insertTimingSendingItem 插入定时发送条目
+     * @param tableName 数据表名称
+     * @param item 数据信息
+     */
+    void insertTimingSendingItem(QString tableName, SAKDataStruct::TimingSendingItem item);
 private:
     static SAKDebugPageDatabaseInterface *instancePtr;
     QSqlDatabase sakDatabase;
