@@ -9,10 +9,20 @@
  * For more information about the project, please join our QQ group(952218522).
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
+#include <QMetaEnum>
 #include "SAKDataStruct.hh"
 
 SAKDataStruct::SAKDataStruct(QObject* parent)
     :QObject (parent)
 {
 
+}
+
+QString SAKDataStruct::autoResponseTableName(int type)
+{
+    QMetaEnum metaEnum = QMetaEnum::fromType<SAKDataStruct::SAKEnumDebugPageType>();
+    QString name = QString(metaEnum.valueToKey(type));
+    name.prepend(QString("AutoResponseTable_"));
+
+    return name;
 }

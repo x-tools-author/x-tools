@@ -74,6 +74,13 @@ public:
         quint32 referenceFormat;    /// 参考数据格式，详情查看SAKEnumTextInputFormat
         quint32 responseFormat;     /// 回复数据格式，详情查看SAKEnumTextInputFormat
     };
+public:
+    /**
+     * @brief autoResponseTableName 获取自动数据库中自动应答数据表的表名称
+     * @param type 调试类型，详情查看SAKEnumDebugPageType
+     * @return 数据表名称
+     */
+    static QString autoResponseTableName(int type);
 };
 
 #endif

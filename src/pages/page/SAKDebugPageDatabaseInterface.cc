@@ -19,7 +19,6 @@
 
 #include "SAKGlobal.hh"
 #include "SAKSettings.hh"
-#include "SAKDataStruct.hh"
 #include "SAKDebugPageDatabaseInterface.hh"
 
 SAKDebugPageDatabaseInterface *SAKDebugPageDatabaseInterface::instancePtr = Q_NULLPTR;
@@ -54,6 +53,26 @@ SAKDebugPageDatabaseInterface* SAKDebugPageDatabaseInterface::instance()
     return instancePtr;
 }
 
+void SAKDebugPageDatabaseInterface::insertAutoResponseItem(QString tableName, SAKDataStruct::SAKStructAutoResponseItem item)
+{
+
+}
+
+void SAKDebugPageDatabaseInterface::deleteAutoResponseItem(QString tableName, SAKDataStruct::SAKStructAutoResponseItem item)
+{
+
+}
+
+void SAKDebugPageDatabaseInterface::updateAutoResponseItem(QString tableName, SAKDataStruct::SAKStructAutoResponseItem item)
+{
+
+}
+
+QList<SAKDataStruct::SAKStructAutoResponseItem> SAKDebugPageDatabaseInterface::selectAutoResponseItem(QString tableName)
+{
+
+}
+
 void SAKDebugPageDatabaseInterface::initDatabase()
 {
     /// @brief 连接数据库
@@ -84,8 +103,7 @@ void SAKDebugPageDatabaseInterface::createAutoResponseTables()
     QMetaEnum metaEnum = QMetaEnum::fromType<SAKDataStruct::SAKEnumDebugPageType>();
     AutoResponseTable autoResponseTable;
     for (int i = 0; i < metaEnum.keyCount(); i++){
-        autoResponseTable.tableName = QString(metaEnum.valueToKey(i));
-        autoResponseTable.tableName.prepend(QString("AutoResponseTable_"));
+        autoResponseTable.tableName = SAKDataStruct::autoResponseTableName(i);
         autoResponseTable.idColumn = QString("ID");
         autoResponseTable.nameColumn = QString("Name");
         autoResponseTable.referenceDataColumn = QString("ReferenceData");

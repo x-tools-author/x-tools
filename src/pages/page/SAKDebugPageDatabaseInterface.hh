@@ -18,13 +18,20 @@
 #include <QSqlQuery>
 #include <QSqlDatabase>
 
+#include "SAKDataStruct.hh"
+
 class SAKDebugPage;
 /// @brief 为数据库读写提供了一套接口，主要是用户配置内容的读写
 class SAKDebugPageDatabaseInterface : public QObject
 {
     Q_OBJECT
+private:
+    SAKDebugPageDatabaseInterface(QObject *parent = Q_NULLPTR);
+    ~SAKDebugPageDatabaseInterface();
 public:
     friend SAKDebugPage;
+    static SAKDebugPageDatabaseInterface *instance();
+
     /// @brief 自动应答数据表
     struct AutoResponseTable {
         QString tableName;              /// 自动回复表名称
@@ -46,11 +53,34 @@ public:
     struct PresettingDataTable{
 
     };
-private:
-    SAKDebugPageDatabaseInterface(QObject *parent = Q_NULLPTR);
-    ~SAKDebugPageDatabaseInterface();
-public:
-    static SAKDebugPageDatabaseInterface *instance();
+
+    /**
+     * @brief insertAutoResponseItem 添加自动回复条目
+     * @param tableName 表格名称
+     * @param item 自动回复参数
+     */
+    void insertAutoResponseItem(QString tableName, SAKDataStruct::SAKStructAutoResponseItem item);
+
+    /**
+     * @brief deleteAutoResponseItem 删除自动回复条目
+     * @param tableName 表格名称
+     * @param item 自动回复信息（参数中ID字段有效即可）
+     */
+    void deleteAutoResponseItem(QString tableName, SAKDataStruct::SAKStructAutoResponseItem item);
+
+    /**
+     * @brief updateAutoResponseItem 更新自动回复条目
+     * @param tableName 表格名称
+     * @param item 自动回复信息
+     */
+    void updateAutoResponseItem(QString tableName, SAKDataStruct::SAKStructAutoResponseItem item);
+
+    /**
+     * @brief selectAutoResponseItem 从数据库中读出所有自动回复条目
+     * @param tableName 表格名称
+     * @return 自动回复条目参数信息列表
+     */
+    QList<SAKDataStruct::SAKStructAutoResponseItem> selectAutoResponseItem(QString tableName);
 private:
     static SAKDebugPageDatabaseInterface *instancePtr;
     QSqlDatabase sakDatabase;
