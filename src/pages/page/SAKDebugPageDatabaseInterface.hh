@@ -46,7 +46,14 @@ public:
 
     /// @brief 定时发送数据表
     struct TimingSendingTable {
-
+        QString tableName;      /// 表格名称
+        struct Column {
+            QString id;
+            QString interval;   /// 定时间隔
+            QString format;     /// 文本格式
+            QString comment;    /// 备注
+            QString data;       /// 定时发送数据
+        }column;
     };
 
     /// @brief 数据预设数据表
@@ -86,12 +93,15 @@ private:
     QSqlDatabase sakDatabase;
     QSqlQuery sakDatabaseQuery;
     QList<AutoResponseTable> autoResponseTableList;
+    QList<TimingSendingTable> timingSendingTableList;
     QString databaseName;
 private:
     void initDatabase();
     void createTables();
     void createAutoResponseTables();
     bool createAutoResponseTable(const AutoResponseTable &table);
+    void createTimingSendingTables();
+    bool createTimingSendingTable(const TimingSendingTable &table);
 
     AutoResponseTable tableNmaeToAutoResponseTable(QString tableName);
 };

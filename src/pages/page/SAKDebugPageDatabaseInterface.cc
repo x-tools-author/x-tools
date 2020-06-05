@@ -159,6 +159,7 @@ void SAKDebugPageDatabaseInterface::initDatabase()
 void SAKDebugPageDatabaseInterface::createTables()
 {
     createAutoResponseTables();
+    createTimingSendingTables();
 }
 
 void SAKDebugPageDatabaseInterface::createAutoResponseTables()
@@ -205,6 +206,46 @@ bool SAKDebugPageDatabaseInterface::createAutoResponseTable(const AutoResponseTa
                                              .arg(table.enableColumn)
                                              .arg(table.referenceFormatColumn)
                                              .arg(table.responseFormatColumn));
+    return ret;
+}
+
+void SAKDebugPageDatabaseInterface::createTimingSendingTables()
+{
+    /// @brief 定时发送数据表名称
+    QMetaEnum metaEnum = QMetaEnum::fromType<SAKDataStruct::SAKEnumDebugPageType>();
+    TimingSendingTable timingSendingTable;
+    for (int i = 0; i < metaEnum.keyCount(); i++){
+        timingSendingTable.tableName = SAKDataStruct::autoResponseTableName(i);
+        timingSendingTable.column.id = QString("ID");
+        timingSendingTable.column.interval = QString("Interval");
+        timingSendingTable.column.format = QString("Format");
+        timingSendingTable.column.comment = QString("Comment");
+        timingSendingTable.column.data = QString("Data");
+
+        timingSendingTableList.append(timingSendingTable);
+    }
+
+    for (auto var : timingSendingTableList){
+        if (!createTimingSendingTable(var)){
+            qWarning() << QString("Carete table(%1) failed:%2").arg(var.tableName).arg(sakDatabaseQuery.lastError().text());
+        }
+    }
+}
+
+bool SAKDebugPageDatabaseInterface::createTimingSendingTable(const TimingSendingTable &table)
+{
+    bool ret = sakDatabaseQuery.exec(QString("CREATE TABLE %1 \
+                                              ( \
+                                              %2 INTEGER PRIMARY KEY NOT NULL, \
+                                              %3 TEXT NOT NULL, \
+                                              %4 TEXT NOT NULL, \
+                                              %5 TEXT NOT NULL \
+                                              )")
+                                             .arg(table.tableName)
+                                             .arg(table.column.id)
+                                             .arg(table.column.interval)
+                                             .arg(table.column.format)
+                                             .arg(table.column.data));
     return ret;
 }
 
