@@ -16,6 +16,7 @@
 #include <QCoreApplication>
 
 #include "SAKGlobal.hh"
+#include "SAKSettings.hh"
 #include "SAKDebugPageDatabaseInterface.hh"
 
 SAKDebugPageDatabaseInterface *SAKDebugPageDatabaseInterface::instancePtr = Q_NULLPTR;
@@ -23,6 +24,12 @@ SAKDebugPageDatabaseInterface::SAKDebugPageDatabaseInterface(QObject *parent)
     :QObject(parent)
 {
     instancePtr = this;
+
+    QString databaseName = SAKSettings::instance()->fileName();
+    QStringList strList = databaseName.split('/');
+    databaseName.remove(strList.last());
+    databaseName.append(QString("QSAKDatabase.sqlite3"));
+
     initDatabase();
 }
 
@@ -47,7 +54,7 @@ void SAKDebugPageDatabaseInterface::initDatabase()
 {
     /// @brief 连接数据库
     sakDatabase = QSqlDatabase::addDatabase("QSQLITE");
-    sakDatabase.setDatabaseName(SAKGlobal::dataPath().append(QString("/QSAKDatabase.sqlite3")));
+    sakDatabase.setDatabaseName(databaseName);
     /// @brief 以下是可选设置选项，对sqlite数据库来说,以下选项是无效的
     sakDatabase.setHostName("localhost");
     sakDatabase.setUserName("Qter");
