@@ -14,15 +14,16 @@
 #include <QTextCursor>
 #include <QTranslator>
 
+#include "SAK.hh"
 #include "SAKSettings.hh"
 #include "SAKMainWindow.hh"
 #include "SAKApplication.hh"
-#include "SAK.hh"
 
 SAKApplication::SAKApplication(int argc, char **argv)
     : QApplication (argc, argv)
     , mainWindow (Q_NULLPTR)
 {
+    SAKSettings::instance();
     installLanguage();
     setApplicationVersion(SAK::instance()->version());
 
