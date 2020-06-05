@@ -26,8 +26,14 @@ class SAKDebugPageDatabaseInterface : public QObject
 public:
     /// @brief 自动应答数据表
     struct AutoResponseTable {
-        bool enable;
-        int format;
+        QString tableName;          /// 自动回复表名称
+        QString idColumn;           /// 自动回复条目ID
+        QString nameColumn;         /// 自动回复条目名称
+        QString referenceDataColumn;/// 自动回复条目参考数据
+        QString responseDataColumn; /// 自动回复条目回复数据
+        bool enableColumn;          /// 是否使能该自动回复条目
+        int referenceFormatColumn;  /// 自动回复条目参考数据格式
+        int responseFormatColumn;   /// 自动回复条目应答数据格式
     };
 
     /// @brief 定时发送数据表
@@ -50,6 +56,8 @@ private:
     static SAKDebugPageDatabaseInterface *instancePtr;
     QSqlDatabase sakDatabase;
     QSqlQuery sakDatabaseQuery;
+    AutoResponseTable autoResponseTable;
+    QString databaseName;
 private:
     void initDatabase();
 };
