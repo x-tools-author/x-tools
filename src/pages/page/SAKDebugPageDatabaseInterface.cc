@@ -12,11 +12,14 @@
  * Official Web : https://qsak.pro
  */
 #include <QDebug>
+#include <QMetaEnum>
 #include <QSqlError>
+#include <QDateTime>
 #include <QCoreApplication>
 
 #include "SAKGlobal.hh"
 #include "SAKSettings.hh"
+#include "SAKDataStruct.hh"
 #include "SAKDebugPageDatabaseInterface.hh"
 
 SAKDebugPageDatabaseInterface *SAKDebugPageDatabaseInterface::instancePtr = Q_NULLPTR;
@@ -25,11 +28,12 @@ SAKDebugPageDatabaseInterface::SAKDebugPageDatabaseInterface(QObject *parent)
 {
     instancePtr = this;
 
+    /// @brief 初始化数据库
     QString databaseName = SAKSettings::instance()->fileName();
     QStringList strList = databaseName.split('/');
-    databaseName.remove(strList.last());
+    databaseName = databaseName.remove(strList.last());
     databaseName.append(QString("QSAKDatabase.sqlite3"));
-
+    qInfo() << "The name of database:" << databaseName;
     initDatabase();
 }
 
@@ -60,14 +64,64 @@ void SAKDebugPageDatabaseInterface::initDatabase()
     sakDatabase.setUserName("Qter");
     sakDatabase.setPassword("QterPassword");
 
-    /// @brief 关联查询，设置写同步
+    /// @brief 关联查询，初始化数据表
     sakDatabaseQuery = QSqlQuery(sakDatabase);
     if (sakDatabase.open()){
-        /// @brief 以下语句据说能提高插入速度
-#if 0
-        spinqQuery.exec("PRAGMA synchronous = OFF");
-#endif
+        createTables();
     }else{
         qWarning() << __FUNCTION__ << "QSAKDatabase.sqlite3 open failed: " << sakDatabase.lastError().text();
     }
+}
+
+void SAKDebugPageDatabaseInterface::createTables()
+{
+    createAutoResponseTables();
+}
+
+void SAKDebugPageDatabaseInterface::createAutoResponseTables()
+{
+    /// @brief 自动回复数据表名称
+    QMetaEnum metaEnum = QMetaEnum::fromType<SAKDataStruct::SAKEnumDebugPageType>();
+    AutoResponseTable autoResponseTable;
+    for (int i = 0; i < metaEnum.keyCount(); i++){
+        autoResponseTable.tableName = QString(metaEnum.valueToKey(i));
+        autoResponseTable.tableName.prepend(QString("AutoResponseTable_"));
+        autoResponseTable.idColumn = QString("ID");
+        autoResponseTable.nameColumn = QString("Name");
+        autoResponseTable.referenceDataColumn = QString("ReferenceData");
+        autoResponseTable.responseDataColumn = QString("ResponseData");
+        autoResponseTable.enableColumn = QString("Enable");
+        autoResponseTable.referenceFormatColumn = QString(QString("ReferenceFormat"));
+        autoResponseTable.responseFormatColumn = QString(QString("ResponseFormat"));
+        autoResponseTableList.append(autoResponseTable);
+    }
+
+    for (auto var : autoResponseTableList){
+        if (!createAutoResponseTable(var)){
+            qWarning() << QString("Carete table failed:%1").arg(sakDatabaseQuery.lastError().text());
+        }
+    }
+}
+
+bool SAKDebugPageDatabaseInterface::createAutoResponseTable(const AutoResponseTable &table)
+{
+    bool ret = sakDatabaseQuery.exec(QString("CREATE TABLE %1 \
+                                              ( \
+                                              %2 INTEGER PRIMARY KEY NOT NULL, \
+                                              %3 TEXT NOT NULL, \
+                                              %4 TEXT NOT NULL, \
+                                              %5 TEXT NOT NULL, \
+                                              %6 BOOL NOT NULL, \
+                                              %7 INTEGER NOT NULL, \
+                                              %8 INTEGER NOT NULL \
+                                              )")
+                                             .arg(table.tableName)
+                                             .arg(table.idColumn)
+                                             .arg(table.nameColumn)
+                                             .arg(table.referenceDataColumn)
+                                             .arg(table.responseDataColumn)
+                                             .arg(table.enableColumn)
+                                             .arg(table.referenceFormatColumn)
+                                             .arg(table.responseFormatColumn));
+    return ret;
 }
