@@ -38,7 +38,7 @@ public:
     Q_ENUM(SAKEnumDebugPageType)
 
     /// @brief 文本输出格式
-    enum SAKTextInputFormat {
+    enum SAKEnumTextInputFormat {
         InputFormatBin,
         InputFormatOct,
         InputFormatDec,
@@ -47,10 +47,10 @@ public:
         InputFormatUtf8,
         InputFormatLocal
     };
-    Q_ENUM(SAKTextInputFormat)
+    Q_ENUM(SAKEnumTextInputFormat)
 
     /// @brief 文本输出格式
-    enum SAKTextOutputFormat {
+    enum SAKEnumTextOutputFormat {
         OutputFormatBin,
         OutputFormatOct,
         OutputFormatDec,
@@ -62,6 +62,7 @@ public:
         OutputFormatUcs4,
         OutputFormatStdwstring
     };
+    Q_ENUM(SAKEnumTextOutputFormat)
 };
 
 #endif
