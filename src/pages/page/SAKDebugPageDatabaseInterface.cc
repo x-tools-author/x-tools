@@ -28,7 +28,7 @@ SAKDebugPageDatabaseInterface::SAKDebugPageDatabaseInterface(QObject *parent)
     instancePtr = this;
 
     /// @brief 初始化数据库
-    QString databaseName = SAKSettings::instance()->fileName();
+    databaseName = SAKSettings::instance()->fileName();
     QStringList strList = databaseName.split('/');
     databaseName = databaseName.remove(strList.last());
     databaseName.append(QString("QSAKDatabase.sqlite3"));
@@ -142,11 +142,18 @@ void SAKDebugPageDatabaseInterface::insertTimingSendingItem(QString tableName, S
     Q_UNUSED(item);
 }
 
+bool SAKDebugPageDatabaseInterface::isTableExist(QString tableName)
+{
+   bool ret = sakDatabaseQuery.exec(QString("SELECT * FROM %1").arg(tableName));
+   return ret;
+}
+
 void SAKDebugPageDatabaseInterface::initDatabase()
 {
     /// @brief 连接数据库
     sakDatabase = QSqlDatabase::addDatabase("QSQLITE");
     sakDatabase.setDatabaseName(databaseName);
+    qDebug() << __FUNCTION__ << databaseName;
     /// @brief 以下是可选设置选项，对sqlite数据库来说,以下选项是无效的
     sakDatabase.setHostName("localhost");
     sakDatabase.setUserName("Qter");
@@ -185,6 +192,10 @@ void SAKDebugPageDatabaseInterface::createAutoResponseTables()
     }
 
     for (auto var : autoResponseTableList){
+        if (isTableExist(var.tableName)){
+            continue;
+        }
+
         if (!createAutoResponseTable(var)){
             qWarning() << QString("Carete table failed:%1").arg(sakDatabaseQuery.lastError().text());
         }
@@ -220,7 +231,7 @@ void SAKDebugPageDatabaseInterface::createTimingSendingTables()
     QMetaEnum metaEnum = QMetaEnum::fromType<SAKDataStruct::SAKEnumDebugPageType>();
     TimingSendingTable timingSendingTable;
     for (int i = 0; i < metaEnum.keyCount(); i++){
-        timingSendingTable.tableName = SAKDataStruct::autoResponseTableName(i);
+        timingSendingTable.tableName = SAKDataStruct::timingSendingTableName(i);
         timingSendingTable.column.id = QString("ID");
         timingSendingTable.column.interval = QString("Interval");
         timingSendingTable.column.format = QString("Format");
@@ -231,6 +242,10 @@ void SAKDebugPageDatabaseInterface::createTimingSendingTables()
     }
 
     for (auto var : timingSendingTableList){
+        if (isTableExist(var.tableName)){
+            continue;
+        }
+
         if (!createTimingSendingTable(var)){
             qWarning() << QString("Carete table(%1) failed:%2").arg(var.tableName).arg(sakDatabaseQuery.lastError().text());
         }

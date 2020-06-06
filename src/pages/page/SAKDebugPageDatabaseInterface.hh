@@ -103,6 +103,7 @@ private:
     QList<TimingSendingTable> timingSendingTableList;
     QString databaseName;
 private:
+    bool isTableExist(QString tableName);
     void initDatabase();
     void createTables();
     void createAutoResponseTables();
