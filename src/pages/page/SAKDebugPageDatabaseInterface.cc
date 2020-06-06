@@ -32,7 +32,6 @@ SAKDebugPageDatabaseInterface::SAKDebugPageDatabaseInterface(QObject *parent)
     QStringList strList = databaseName.split('/');
     databaseName = databaseName.remove(strList.last());
     databaseName.append(QString("QSAKDatabase.sqlite3"));
-    qInfo() << "The name of database:" << databaseName;
     initDatabase();
 }
 
@@ -139,7 +138,22 @@ QList<SAKDataStruct::SAKStructAutoResponseItem> SAKDebugPageDatabaseInterface::s
 
 void SAKDebugPageDatabaseInterface::insertTimingSendingItem(QString tableName, SAKDataStruct::TimingSendingItem item)
 {
-    Q_UNUSED(item);
+    TimingSendingTable table = tableNameToTimingSendingTable(tableName);
+    bool ret = sakDatabaseQuery.exec(QString("INSERT INTO %1(%2,%3,%4,%5,%6) VALUES(%7,%8,%9,%10,%11)")
+                                     .arg(table.tableName)
+                                     .arg(table.column.id)
+                                     .arg(table.column.interval)
+                                     .arg(table.column.format)
+                                     .arg(table.column.comment)
+                                     .arg(table.column.data)
+                                     .arg(item.id)
+                                     .arg(item.interval)
+                                     .arg(item.format)
+                                     .arg(item.comment)
+                                     .arg(item.data));
+    if (!ret){
+        qWarning() << __FUNCTION__ << "Insert record to " << table.tableName << " table failed: " << sakDatabaseQuery.lastError().text();
+    }
 }
 
 bool SAKDebugPageDatabaseInterface::isTableExist(QString tableName)
@@ -153,7 +167,6 @@ void SAKDebugPageDatabaseInterface::initDatabase()
     /// @brief 连接数据库
     sakDatabase = QSqlDatabase::addDatabase("QSQLITE");
     sakDatabase.setDatabaseName(databaseName);
-    qDebug() << __FUNCTION__ << databaseName;
     /// @brief 以下是可选设置选项，对sqlite数据库来说,以下选项是无效的
     sakDatabase.setHostName("localhost");
     sakDatabase.setUserName("Qter");
@@ -273,6 +286,18 @@ SAKDebugPageDatabaseInterface::AutoResponseTable SAKDebugPageDatabaseInterface::
 {
     AutoResponseTable table;
     for (auto var : autoResponseTableList){
+        if (tableName.compare(var.tableName) == 0){
+            table = var;
+            break;
+        }
+    }
+    return table;
+}
+
+SAKDebugPageDatabaseInterface::TimingSendingTable SAKDebugPageDatabaseInterface::tableNameToTimingSendingTable(QString tableName)
+{
+    TimingSendingTable table;
+    for(auto var : timingSendingTableList){
         if (tableName.compare(var.tableName) == 0){
             table = var;
             break;

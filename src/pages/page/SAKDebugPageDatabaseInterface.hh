@@ -112,6 +112,7 @@ private:
     bool createTimingSendingTable(const TimingSendingTable &table);
 
     AutoResponseTable tableNmaeToAutoResponseTable(QString tableName);
+    TimingSendingTable tableNameToTimingSendingTable(QString tableName);
 };
 
 #endif
