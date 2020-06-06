@@ -13,13 +13,17 @@
 #define SAKQRCODECREATOR_HH
 
 #include <QWidget>
-
+namespace Ui {
+    class SAKQRCodeCreator;
+}
 class SAKQRCodeCreator:public QWidget
 {
     Q_OBJECT
 public:
     SAKQRCodeCreator(QWidget *parent = Q_NULLPTR);
     ~SAKQRCodeCreator();
+private:
+    Ui::SAKQRCodeCreator *ui;
 };
 
 #endif

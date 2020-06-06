@@ -10,14 +10,15 @@
  * In addition, the email address of the project author is wuuhii@outlook.com.
  */
 #include "SAKQRCodeCreator.hh"
-
+#include "ui_SAKQRCodeCreator.h"
 SAKQRCodeCreator::SAKQRCodeCreator(QWidget *parent)
     :QWidget(parent)
+    ,ui(new Ui::SAKQRCodeCreator)
 {
-
+    ui->setupUi(this);
 }
 
 SAKQRCodeCreator::~SAKQRCodeCreator()
 {
-
+    delete ui;
 }
