@@ -94,7 +94,28 @@ public:
      * @param tableName 数据表名称
      * @param item 数据信息
      */
-    void insertTimingSendingItem(QString tableName, SAKDataStruct::TimingSendingItem item);
+    void insertTimingSendingItem(QString tableName, SAKDataStruct::SAKStructTimingSendingItem item);
+
+    /**
+     * @brief deleteTimingSendingItem 删除定时发送条目
+     * @param tableName 定时发送条目数据表名称
+     * @param item 数据信息
+     */
+    void deleteTimingSendingItem(QString tableName, SAKDataStruct::SAKStructTimingSendingItem item);
+
+    /**
+     * @brief updateTimingSendingItem 更新数据表中相应数据条目的数据
+     * @param tableName 定时发送条目所在数据表的数据表名称
+     * @param item 数据表名称
+     */
+    void updateTimingSendingItem(QString tableName, SAKDataStruct::SAKStructTimingSendingItem item);
+
+    /**
+     * @brief selectTimingSendingItem 提取数据数据库中保存的定时发送条目的数据信息
+     * @param tableName 数据表名称
+     * @return 定时发送条目数据信息列表
+     */
+    QList<SAKDataStruct::SAKStructTimingSendingItem> selectTimingSendingItem(QString tableName);
 private:
     static SAKDebugPageDatabaseInterface *instancePtr;
     QSqlDatabase sakDatabase;
@@ -111,6 +132,7 @@ private:
     void createTimingSendingTables();
     bool createTimingSendingTable(const TimingSendingTable &table);
 
+    void deleteItemFromTable(QString tableName, quint64 id);
     AutoResponseTable tableNmaeToAutoResponseTable(QString tableName);
     TimingSendingTable tableNameToTimingSendingTable(QString tableName);
 };

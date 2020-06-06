@@ -78,12 +78,7 @@ void SAKDebugPageDatabaseInterface::insertAutoResponseItem(QString tableName, SA
 
 void SAKDebugPageDatabaseInterface::deleteAutoResponseItem(QString tableName, SAKDataStruct::SAKStructAutoResponseItem item)
 {
-    bool ret = sakDatabaseQuery.exec(QString("DELETE FROM %1 WHERE ID=%2")
-                                     .arg(tableName)
-                                     .arg(item.id));
-    if (!ret){
-        qWarning() << __FUNCTION__ << "delete record form " << tableName << " table failed: " << sakDatabaseQuery.lastError().text();
-    }
+    deleteItemFromTable(tableName, item.id);
 }
 
 void SAKDebugPageDatabaseInterface::updateAutoResponseItem(QString tableName, SAKDataStruct::SAKStructAutoResponseItem item)
@@ -136,7 +131,7 @@ QList<SAKDataStruct::SAKStructAutoResponseItem> SAKDebugPageDatabaseInterface::s
     return itemList;
 }
 
-void SAKDebugPageDatabaseInterface::insertTimingSendingItem(QString tableName, SAKDataStruct::TimingSendingItem item)
+void SAKDebugPageDatabaseInterface::insertTimingSendingItem(QString tableName, SAKDataStruct::SAKStructTimingSendingItem item)
 {
     TimingSendingTable table = tableNameToTimingSendingTable(tableName);
     bool ret = sakDatabaseQuery.exec(QString("INSERT INTO %1(%2,%3,%4,%5,%6) VALUES(%7,%8,%9,%10,%11)")
@@ -154,6 +149,55 @@ void SAKDebugPageDatabaseInterface::insertTimingSendingItem(QString tableName, S
     if (!ret){
         qWarning() << __FUNCTION__ << "Insert record to " << table.tableName << " table failed: " << sakDatabaseQuery.lastError().text();
     }
+}
+
+void SAKDebugPageDatabaseInterface::deleteTimingSendingItem(QString tableName, SAKDataStruct::SAKStructTimingSendingItem item)
+{
+    deleteItemFromTable(tableName, item.id);
+}
+
+void SAKDebugPageDatabaseInterface::updateTimingSendingItem(QString tableName, SAKDataStruct::SAKStructTimingSendingItem item)
+{
+    TimingSendingTable table = tableNameToTimingSendingTable(tableName);
+    bool ret = sakDatabaseQuery.exec(QString("UPDATE %1 SET %2=%3, %4=%5, %6=%7, %8=%9, %10=%11, WHERE ID=%17")
+                                     .arg(table.tableName)
+                                     .arg(table.column.id)
+                                     .arg(item.id)
+                                     .arg(table.column.interval)
+                                     .arg(item.interval)
+                                     .arg(table.column.format)
+                                     .arg(item.format)
+                                     .arg(table.column.comment)
+                                     .arg(item.comment)
+                                     .arg(table.column.data)
+                                     .arg(item.data));
+    if (!ret){
+        qWarning() << __FUNCTION__ << "Update record form " << table.tableName << " table failed: " << sakDatabaseQuery.lastError().text();
+    }
+}
+
+QList<SAKDataStruct::SAKStructTimingSendingItem> SAKDebugPageDatabaseInterface::selectTimingSendingItem(QString tableName)
+{
+    TimingSendingTable table = tableNameToTimingSendingTable(tableName);
+    bool ret = sakDatabaseQuery.exec(QString("SELECT * FROM %1").arg(table.tableName));
+
+    QList<SAKDataStruct::SAKStructTimingSendingItem> itemList;
+    if (ret){
+        SAKDataStruct::SAKStructTimingSendingItem item;
+        while (sakDatabaseQuery.next()) {
+            item.id = sakDatabaseQuery.value(table.column.id).toULongLong();
+            item.interval = sakDatabaseQuery.value(table.column.interval).toUInt();
+            item.format = sakDatabaseQuery.value(table.column.format).toUInt();
+            item.comment = sakDatabaseQuery.value(table.column.comment).toString();
+            item.data = sakDatabaseQuery.value(table.column.data).toBool();
+
+            itemList.append(item);
+        }
+    }else{
+        qWarning() << __FUNCTION__ << "Select record form " << table.tableName << " table failed: " << sakDatabaseQuery.lastError().text();
+    }
+
+    return itemList;
 }
 
 bool SAKDebugPageDatabaseInterface::isTableExist(QString tableName)
@@ -280,6 +324,16 @@ bool SAKDebugPageDatabaseInterface::createTimingSendingTable(const TimingSending
                                              .arg(table.column.format)
                                              .arg(table.column.data));
     return ret;
+}
+
+void SAKDebugPageDatabaseInterface::deleteItemFromTable(QString tableName, quint64 id)
+{
+    bool ret = sakDatabaseQuery.exec(QString("DELETE FROM %1 WHERE ID=%2")
+                                     .arg(tableName)
+                                     .arg(id));
+    if (!ret){
+        qWarning() << __FUNCTION__ << "delete record form " << tableName << " table failed: " << sakDatabaseQuery.lastError().text();
+    }
 }
 
 SAKDebugPageDatabaseInterface::AutoResponseTable SAKDebugPageDatabaseInterface::tableNmaeToAutoResponseTable(QString tableName)
