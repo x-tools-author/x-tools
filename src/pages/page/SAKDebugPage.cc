@@ -88,11 +88,21 @@ SAKDebugPage::~SAKDebugPage()
         device = Q_NULLPTR;
     }
 
-    delete databaseInterface;
-    delete ui;
+    if (databaseInterfaceInstance()){
+        delete databaseInterface;
+        databaseInterface = Q_NULLPTR;
+    }
+
+    if (ui){
+        delete ui;
+        ui = Q_NULLPTR;
+    }
+
 #ifdef SAK_IMPORT_CHARTS_MODULE
-    delete dataVisualizationManager;
-    dataVisualizationManager = Q_NULLPTR;
+    if (dataVisualizationManager){
+        delete dataVisualizationManager;
+        dataVisualizationManager = Q_NULLPTR;
+    }
 #endif
 }
 
