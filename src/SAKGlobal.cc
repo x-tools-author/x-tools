@@ -206,12 +206,14 @@ void SAKGlobal::initIpComboBox(QComboBox *comboBox)
 {
     if (comboBox){
         comboBox->clear();
+        comboBox->addItem(QString("0.0.0.0"));
         QList<QHostAddress> addresses = QNetworkInterface::allAddresses();
         for(auto var:addresses){
             if (var.protocol() == QAbstractSocket::IPv4Protocol) {
                 comboBox->addItem(var.toString());
             }
         }
+        comboBox->addItem(QString("::"));
     }
 }
 
