@@ -41,7 +41,7 @@ public:
     void setUiEnable(bool enable);
     void setUdpDevice(SAKUdpDevice* device);
 private:
-    QMutex *uiMutex;
+    QMutex uiMutex;
 private:
     Ui::SAKUdpDeviceController *ui;
     QComboBox *localhostComboBox;
