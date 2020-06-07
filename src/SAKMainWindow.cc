@@ -464,16 +464,16 @@ void SAKMainWindow::installLanguage()
 void SAKMainWindow::addRemovablePage()
 {
     int type = qobject_cast<QAction*>(sender())->data().value<int>();
-
     QWidget *widget = getDebugPage(type);
+    widget->setAttribute(Qt::WA_DeleteOnClose, true);
     tabWidget->addTab(widget, sender()->objectName());
 }
 
 void SAKMainWindow::openIODeviceWindow()
 {
     int type = qobject_cast<QAction*>(sender())->data().value<int>();
-
     QWidget *widget = getDebugPage(type);
+    widget->setAttribute(Qt::WA_DeleteOnClose, true);
     widget->show();
 }
 
@@ -518,7 +518,9 @@ QWidget *SAKMainWindow::getDebugPage(int type)
 
 void SAKMainWindow::closeDebugPage(int index)
 {
+    QWidget *w = tabWidget->widget(index);
     tabWidget->removeTab(index);
+    w->close();
 }
 
 void SAKMainWindow::createCRCCalculator()
