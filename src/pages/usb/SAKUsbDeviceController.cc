@@ -28,9 +28,9 @@ SAKUsbDeviceController::SAKUsbDeviceController(QWidget *parent)
 {
     ui->setupUi(this);
 
-//    UsbDeviceComboBox = ui->UsbDeviceComboBox;
-//    noMouseCheckBox = ui->noMouseCheckBox;
-//    noKeyboardCheckBox = ui->noKeyboardCheckBox;
+    usbDeviceComboBox = ui->hidDeviceComboBox;
+    noMouseCheckBox = ui->noMouseCheckBox;
+    noKeyboardCheckBox = ui->noKeyboardCheckBox;
     endpointLineEdit = ui->endpointLineEdit;
     cmdLineEdit = ui->cmdLineEdit;
 
@@ -51,12 +51,12 @@ SAKUsbDeviceController::~SAKUsbDeviceController()
 
 void SAKUsbDeviceController::refresh()
 {
-    initUsbDeviceComboBox(UsbDeviceComboBox, ignoreKeyWords());
+    initUsbDeviceComboBox(usbDeviceComboBox, ignoreKeyWords());
 }
 
 void SAKUsbDeviceController::setUiEnable(bool enable)
 {
-    UsbDeviceComboBox->setEnabled(enable);
+    usbDeviceComboBox->setEnabled(enable);
     noKeyboardCheckBox->setEnabled(enable);
     noMouseCheckBox->setEnabled(enable);
 }
@@ -64,7 +64,7 @@ void SAKUsbDeviceController::setUiEnable(bool enable)
 QString SAKUsbDeviceController::devicePath()
 {
     uiMutex.lock();
-    auto ret = UsbDeviceComboBox->currentData().toString();
+    auto ret = usbDeviceComboBox->currentData().toString();
     uiMutex.unlock();
     return ret;
 }

@@ -56,7 +56,7 @@ private:
 private:
     Ui::SAKUsbDeviceController *ui;
 
-    QComboBox *UsbDeviceComboBox;
+    QComboBox *usbDeviceComboBox;
     QCheckBox *noMouseCheckBox;
     QCheckBox *noKeyboardCheckBox;
     QLineEdit *endpointLineEdit;
