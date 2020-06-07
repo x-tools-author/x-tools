@@ -67,9 +67,9 @@ SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
     _readWriteParameters.waitForReadyReadTime = MINI_READ_WRITE_WATINGT_TIME;
     _readWriteParameters.waitForBytesWrittenTime = MINI_READ_WRITE_WATINGT_TIME;
     _readWriteParameters.runIntervalTime = 25;
-
+#if 0
     resize(800, 600);
-
+#endif
     clearInfoTimer.setInterval(8*1000);
     connect(&clearInfoTimer, &QTimer::timeout, this, &SAKDebugPage::cleanInfo);
 
