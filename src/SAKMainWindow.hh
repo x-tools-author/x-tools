@@ -40,7 +40,6 @@ public:
 
 protected:
       bool eventFilter(QObject *obj, QEvent *event);
-
 private:
     QTabWidget *tabWidget               = Q_NULLPTR;
     Ui::SAKMainWindow *ui               = Q_NULLPTR;

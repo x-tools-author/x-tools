@@ -499,13 +499,13 @@ QWidget *SAKMainWindow::getDebugPage(int type)
 
 #ifdef SAK_IMPORT_HID_MODULE
     case SAKDataStruct::DebugPageTypeHID:
-        widget = new SAKSerialPortDebugPage;
+        widget = new SAKHidDebugPage;
         break;
 #endif
 
 #ifdef SAK_IMPORT_USB_MODULE
     case SAKDataStruct::DebugPageTypeUSB:
-        widget = new SAKSerialPortDebugPage;
+        widget = new SAKUsbDebugPage;
         break;
 #endif
     default:
@@ -518,9 +518,7 @@ QWidget *SAKMainWindow::getDebugPage(int type)
 
 void SAKMainWindow::closeDebugPage(int index)
 {
-    QWidget *w = tabWidget->widget(index);
     tabWidget->removeTab(index);
-    w->close();
 }
 
 void SAKMainWindow::createCRCCalculator()
