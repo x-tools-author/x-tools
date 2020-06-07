@@ -88,11 +88,6 @@ SAKDebugPage::~SAKDebugPage()
         device = Q_NULLPTR;
     }
 
-    if (databaseInterfaceInstance()){
-        delete databaseInterface;
-        databaseInterface = Q_NULLPTR;
-    }
-
     if (ui){
         delete ui;
         ui = Q_NULLPTR;
