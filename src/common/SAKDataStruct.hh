@@ -64,7 +64,7 @@ public:
     };
     Q_ENUM(SAKEnumTextOutputFormat)
 
-    /// @brief 调试页面自动回复数据结构
+    /// @brief 调试页面自动回复数据的数据结构
     struct SAKStructAutoResponseItem {
         quint64 id;                 /// 自动回复条目ID,回复条目唯一标识符（取值为数据产生时的时间戳）
         QString name;               /// 该自动回复数据名称
@@ -75,13 +75,22 @@ public:
         quint32 responseFormat;     /// 回复数据格式，详情查看SAKEnumTextInputFormat
     };
 
-    /// @brief 调试页面定时发送数据结构
+    /// @brief 调试页面定时发送数的据结构
     struct SAKStructTimingSendingItem {
         quint64 id;
         quint32 interval;   /// 定时间隔
         quint32 format;     /// 文本格式
         QString comment;    /// 备注
         QString data;       /// 定时发送数据
+    };
+
+    /// @brief 调试页面预设数据的数据结构
+    struct SAKStructPresettingDataItem{
+        quint64 id;
+        quint32 format;     /// 预设数据格式
+        QString comment;    /// 预设数据备注
+        quint32 classify;   /// 预设数据分类
+        QString data;       /// 预设数据
     };
 public:
     /**
