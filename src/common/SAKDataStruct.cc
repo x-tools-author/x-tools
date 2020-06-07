@@ -35,3 +35,12 @@ QString SAKDataStruct::timingSendingTableName(int type)
 
     return name;
 }
+
+QString SAKDataStruct::presettingDataTableName(int type)
+{
+    QMetaEnum metaEnum = QMetaEnum::fromType<SAKDataStruct::SAKStructPresettingDataItem>();
+    QString name = QString(metaEnum.valueToKey(type));
+    name.prepend(QString("PresettingDataTable_"));
+
+    return name;
+}

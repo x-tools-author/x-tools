@@ -106,6 +106,13 @@ public:
      * @return 数据表名称
      */
     static QString timingSendingTableName(int type);
+
+    /**
+     * @brief presettingDataTableName 获取数据预设数据表的表名称
+     * @param type 调试类型，详情查看SAKEnumDebugPageType
+     * @return 数据表名称
+     */
+    static QString presettingDataTableName(int type);
 };
 
 #endif

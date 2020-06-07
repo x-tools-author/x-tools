@@ -84,7 +84,7 @@ void SAKDebugPageDatabaseInterface::deleteAutoResponseItem(QString tableName, SA
 void SAKDebugPageDatabaseInterface::updateAutoResponseItem(QString tableName, SAKDataStruct::SAKStructAutoResponseItem item)
 {
     AutoResponseTable table = tableNmaeToAutoResponseTable(tableName);
-    bool ret = sakDatabaseQuery.exec(QString("UPDATE %1 SET %2=%3, %4=%5, %6=%7, %8=%9, %10=%11, %12=%13 ,%14=%15, WHERE ID=%17")
+    bool ret = sakDatabaseQuery.exec(QString("UPDATE %1 SET %2=%3, %4=%5, %6=%7, %8=%9, %10=%11, %12=%13 ,%14=%15, WHERE ID=%16")
                                      .arg(table.tableName)
                                      .arg(table.idColumn)
                                      .arg(item.id)
@@ -200,6 +200,74 @@ QList<SAKDataStruct::SAKStructTimingSendingItem> SAKDebugPageDatabaseInterface::
     return itemList;
 }
 
+void SAKDebugPageDatabaseInterface::insertPresettingDataItem(QString tableName, SAKDataStruct::SAKStructPresettingDataItem item)
+{
+    PresettingDataTable table = tableNameToPresettingDataTable(tableName);
+    bool ret = sakDatabaseQuery.exec(QString("INSERT INTO %1(%2,%3,%4,%5,%6) VALUES(%7,%8,%9,%10,%11)")
+                                     .arg(table.tableName)
+                                     .arg(table.column.id)
+                                     .arg(table.column.format)
+                                     .arg(table.column.comment)
+                                     .arg(table.column.data)
+                                     .arg(item.id)
+                                     .arg(item.format)
+                                     .arg(item.comment)
+                                     .arg(item.classify)
+                                     .arg(item.data));
+    if (!ret){
+        qWarning() << __FUNCTION__ << "Insert record to " << table.tableName << " table failed: " << sakDatabaseQuery.lastError().text();
+    }
+}
+
+void SAKDebugPageDatabaseInterface::deletePresettingDataItem(QString tableName, SAKDataStruct::SAKStructPresettingDataItem item)
+{
+    deleteItemFromTable(tableName, item.id);
+}
+
+void SAKDebugPageDatabaseInterface::updatePresettingDataItem(QString tableName, SAKDataStruct::SAKStructPresettingDataItem item)
+{
+    PresettingDataTable table = tableNameToPresettingDataTable(tableName);
+    bool ret = sakDatabaseQuery.exec(QString("UPDATE %1 SET %2=%3, %4=%5, %6=%7, %8=%9, %10=%11, WHERE ID=%12")
+                                     .arg(table.tableName)
+                                     .arg(table.column.id)
+                                     .arg(item.id)
+                                     .arg(table.column.format)
+                                     .arg(item.format)
+                                     .arg(table.column.comment)
+                                     .arg(item.comment)
+                                     .arg(table.column.classify)
+                                     .arg(item.classify)
+                                     .arg(table.column.data)
+                                     .arg(item.data));
+    if (!ret){
+        qWarning() << __FUNCTION__ << "Update record form " << table.tableName << " table failed: " << sakDatabaseQuery.lastError().text();
+    }
+}
+
+QList<SAKDataStruct::SAKStructPresettingDataItem> SAKDebugPageDatabaseInterface::selectPresettingDataItem(QString tableName)
+{
+    PresettingDataTable table = tableNameToPresettingDataTable(tableName);
+    bool ret = sakDatabaseQuery.exec(QString("SELECT * FROM %1").arg(table.tableName));
+
+    QList<SAKDataStruct::SAKStructPresettingDataItem> itemList;
+    if (ret){
+        SAKDataStruct::SAKStructPresettingDataItem item;
+        while (sakDatabaseQuery.next()) {
+            item.id = sakDatabaseQuery.value(table.column.id).toULongLong();
+            item.format = sakDatabaseQuery.value(table.column.format).toUInt();
+            item.comment = sakDatabaseQuery.value(table.column.format).toString();
+            item.classify = sakDatabaseQuery.value(table.column.comment).toUInt();
+            item.data = sakDatabaseQuery.value(table.column.data).toString();
+
+            itemList.append(item);
+        }
+    }else{
+        qWarning() << __FUNCTION__ << "Select record form " << table.tableName << " table failed: " << sakDatabaseQuery.lastError().text();
+    }
+
+    return itemList;
+}
+
 bool SAKDebugPageDatabaseInterface::isTableExist(QString tableName)
 {
    bool ret = sakDatabaseQuery.exec(QString("SELECT * FROM %1").arg(tableName));
@@ -229,6 +297,7 @@ void SAKDebugPageDatabaseInterface::createTables()
 {
     createAutoResponseTables();
     createTimingSendingTables();
+    createPresettingDataTables();
 }
 
 void SAKDebugPageDatabaseInterface::createAutoResponseTables()
@@ -326,6 +395,52 @@ bool SAKDebugPageDatabaseInterface::createTimingSendingTable(const TimingSending
     return ret;
 }
 
+void SAKDebugPageDatabaseInterface::createPresettingDataTables()
+{
+    /// @brief 定时发送数据表名称
+    QMetaEnum metaEnum = QMetaEnum::fromType<SAKDataStruct::SAKEnumDebugPageType>();
+    PresettingDataTable presettingDataTable;
+    for (int i = 0; i < metaEnum.keyCount(); i++){
+        presettingDataTable.tableName = SAKDataStruct::presettingDataTableName(i);
+        presettingDataTable.column.id = QString("ID");
+        presettingDataTable.column.format = QString("Format");
+        presettingDataTable.column.comment = QString("Comment");
+        presettingDataTable.column.classify = QString("Classify");
+        presettingDataTable.column.data = QString("Data");
+
+        presettingDataTableList.append(presettingDataTable);
+    }
+
+    for (auto var : presettingDataTableList){
+        if (isTableExist(var.tableName)){
+            continue;
+        }
+
+        if (!createPresettingDataTable(var)){
+            qWarning() << QString("Carete table(%1) failed:%2").arg(var.tableName).arg(sakDatabaseQuery.lastError().text());
+        }
+    }
+}
+
+bool SAKDebugPageDatabaseInterface::createPresettingDataTable(const PresettingDataTable &table)
+{
+    bool ret = sakDatabaseQuery.exec(QString("CREATE TABLE %1 \
+                                              ( \
+                                              %2 INTEGER PRIMARY KEY NOT NULL, \
+                                              %3 INTEGER NOT NULL, \
+                                              %4 TEXT NOT NULL, \
+                                              %5 INTEGER NOT NULL, \
+                                              %6 TEXT NOT NULL \
+                                              )")
+                                             .arg(table.tableName)
+                                             .arg(table.column.id)
+                                             .arg(table.column.format)
+                                             .arg(table.column.comment)
+                                             .arg(table.column.classify)
+                                             .arg(table.column.data));
+    return ret;
+}
+
 void SAKDebugPageDatabaseInterface::deleteItemFromTable(QString tableName, quint64 id)
 {
     bool ret = sakDatabaseQuery.exec(QString("DELETE FROM %1 WHERE ID=%2")
@@ -352,6 +467,18 @@ SAKDebugPageDatabaseInterface::TimingSendingTable SAKDebugPageDatabaseInterface:
 {
     TimingSendingTable table;
     for(auto var : timingSendingTableList){
+        if (tableName.compare(var.tableName) == 0){
+            table = var;
+            break;
+        }
+    }
+    return table;
+}
+
+SAKDebugPageDatabaseInterface::PresettingDataTable SAKDebugPageDatabaseInterface::tableNameToPresettingDataTable(QString tableName)
+{
+    PresettingDataTable table;
+    for(auto var : presettingDataTableList){
         if (tableName.compare(var.tableName) == 0){
             table = var;
             break;

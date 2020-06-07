@@ -60,10 +60,10 @@ public:
     struct PresettingDataTable{
         QString tableName;
         struct Column {
-            quint64 id;
-            quint32 format;
+            QString id;
+            QString format;
             QString comment;
-            quint32 classify;
+            QString classify;
             QString data;
         }column;
     };
@@ -123,12 +123,41 @@ public:
      * @return 定时发送条目数据信息列表
      */
     QList<SAKDataStruct::SAKStructTimingSendingItem> selectTimingSendingItem(QString tableName);
+
+    /**
+     * @brief insertPresettingDataItem 插入预设数据条目
+     * @param tableName 预设数据表名称
+     * @param item 数据信息
+     */
+    void insertPresettingDataItem(QString tableName, SAKDataStruct::SAKStructPresettingDataItem item);
+
+    /**
+     * @brief deletePresettingDataItem 删除预设数据条目
+     * @param tableName 预设数据条目表名称
+     * @param item 数据信息
+     */
+    void deletePresettingDataItem(QString tableName, SAKDataStruct::SAKStructPresettingDataItem item);
+
+    /**
+     * @brief updatePresettingDataItem 更新预设数据条目的数据信息
+     * @param tableName 预设数据条目表名称
+     * @param item 数据信息
+     */
+    void updatePresettingDataItem(QString tableName, SAKDataStruct::SAKStructPresettingDataItem item);
+
+    /**
+     * @brief selectPresettingDataItem 获取预设数据条目数据表中保存的预设数据条目
+     * @param tableName 预设数据条目表名称
+     * @return 预设数据条目列表
+     */
+    QList<SAKDataStruct::SAKStructPresettingDataItem> selectPresettingDataItem(QString tableName);
 private:
     static SAKDebugPageDatabaseInterface *instancePtr;
     QSqlDatabase sakDatabase;
     QSqlQuery sakDatabaseQuery;
     QList<AutoResponseTable> autoResponseTableList;
     QList<TimingSendingTable> timingSendingTableList;
+    QList<PresettingDataTable> presettingDataTableList;
     QString databaseName;
 private:
     bool isTableExist(QString tableName);
@@ -138,10 +167,13 @@ private:
     bool createAutoResponseTable(const AutoResponseTable &table);
     void createTimingSendingTables();
     bool createTimingSendingTable(const TimingSendingTable &table);
+    void createPresettingDataTables();
+    bool createPresettingDataTable(const PresettingDataTable &table);
 
     void deleteItemFromTable(QString tableName, quint64 id);
     AutoResponseTable tableNmaeToAutoResponseTable(QString tableName);
     TimingSendingTable tableNameToTimingSendingTable(QString tableName);
+    PresettingDataTable tableNameToPresettingDataTable(QString tableName);
 };
 
 #endif
