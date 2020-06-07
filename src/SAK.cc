@@ -79,7 +79,7 @@ QString SAK::qqNumber()
 
 QString SAK::copyright()
 {
-    return QString("Copyright(©) 2018-%1 Qter. All rights reserved").arg(buildDate.toString("yyyy"));
+    return QString("Copyright 2018-%1 Qter. All rights reserved").arg(buildDate.toString("yyyy"));
 }
 
 QString SAK::business()
