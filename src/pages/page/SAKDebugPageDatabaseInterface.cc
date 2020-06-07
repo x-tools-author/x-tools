@@ -39,6 +39,7 @@ SAKDebugPageDatabaseInterface::~SAKDebugPageDatabaseInterface()
 {
     if (sakDatabase.isOpen()){
         sakDatabase.close();
+        instancePtr = Q_NULLPTR;
     }
 }
 
