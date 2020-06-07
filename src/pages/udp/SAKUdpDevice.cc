@@ -110,7 +110,6 @@ void SAKUdpDevice::run()
 
     if (udpSocket->open(QUdpSocket::ReadWrite)){
         emit deviceStateChanged(true);
-
         while (true){
             /// @brief 响应外部中断请求
             if (isInterruptionRequested()){
