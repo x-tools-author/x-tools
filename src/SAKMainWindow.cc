@@ -159,14 +159,17 @@ void SAKMainWindow::addTab()
 {
     /// @brief 添加调试页面
 #ifdef SAK_IMPORT_COM_MODULE
-    this->tabWidget->addTab( new SAKSerialPortDebugPage, tr("串口调试"));
+    this->tabWidget->addTab(new SAKSerialPortDebugPage, SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeCOM));
 #endif
 #ifdef SAK_IMPORT_HID_MODULE
-    this->tabWidget->addTab( new SAKHidDebugPage, tr("HID调试(Beta)"));
+    this->tabWidget->addTab(new SAKHidDebugPage, SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeHID));
 #endif
-    this->tabWidget->addTab(new SAKUdpDebugPage, tr("UDP调试"));
-    this->tabWidget->addTab(new SAKTcpClientDebugPage, tr("TCP客户端"));
-    this->tabWidget->addTab(new SAKTcpServerDebugPage, tr("TCP服务器"));
+#ifdef SAK_IMPORT_USB_MODULE
+    this->tabWidget->addTab(new SAKUsbDebugPage, SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeUSB));
+#endif
+    this->tabWidget->addTab(new SAKUdpDebugPage, SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeUDP));
+    this->tabWidget->addTab(new SAKTcpClientDebugPage, SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeTCPClient));
+    this->tabWidget->addTab(new SAKTcpServerDebugPage, SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeTCPServer));
 
     /*
      * 隐藏关闭按钮（必须在调用setTabsClosable()函数后设置，否则不生效）
