@@ -34,14 +34,16 @@ public:
 
     /// @brief 自动应答数据表
     struct AutoResponseTable {
-        QString tableName;              /// 自动回复表名称
-        QString idColumn;               /// 自动回复条目ID
-        QString nameColumn;             /// 自动回复条目名称
-        QString referenceDataColumn;    /// 自动回复条目参考数据
-        QString responseDataColumn;     /// 自动回复条目回复数据
-        QString enableColumn;           /// 是否使能该自动回复条目
-        QString referenceFormatColumn;  /// 自动回复条目参考数据格式
-        QString responseFormatColumn;   /// 自动回复条目应答数据格式
+        QString tableName;          /// 自动回复表名称
+        struct Column {
+            QString id;             /// 自动回复条目ID
+            QString name;           /// 自动回复条目名称
+            QString referenceData;  /// 自动回复条目参考数据
+            QString responseData;   /// 自动回复条目回复数据
+            QString enable;         /// 是否使能该自动回复条目
+            QString referenceFormat;/// 自动回复条目参考数据格式
+            QString responseFormat; /// 自动回复条目应答数据格式
+        }column;
     };
 
     /// @brief 定时发送数据表

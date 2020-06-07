@@ -57,13 +57,13 @@ void SAKDebugPageDatabaseInterface::insertAutoResponseItem(QString tableName, SA
     AutoResponseTable table = tableNmaeToAutoResponseTable(tableName);
     bool ret = sakDatabaseQuery.exec(QString("INSERT INTO %1(%2,%3,%4,%5,%6,%7,%8,%9) VALUES(%10,%11,%12,%13,%14,%15,%16)")
                                      .arg(table.tableName)
-                                     .arg(table.idColumn)
-                                     .arg(table.nameColumn)
-                                     .arg(table.referenceDataColumn)
-                                     .arg(table.responseDataColumn)
-                                     .arg(table.enableColumn)
-                                     .arg(table.referenceFormatColumn)
-                                     .arg(table.responseFormatColumn)
+                                     .arg(table.column.id)
+                                     .arg(table.column.name)
+                                     .arg(table.column.referenceData)
+                                     .arg(table.column.responseData)
+                                     .arg(table.column.enable)
+                                     .arg(table.column.referenceFormat)
+                                     .arg(table.column.responseFormat)
                                      .arg(item.id)
                                      .arg(item.name)
                                      .arg(item.referenceData)
@@ -86,19 +86,19 @@ void SAKDebugPageDatabaseInterface::updateAutoResponseItem(QString tableName, SA
     AutoResponseTable table = tableNmaeToAutoResponseTable(tableName);
     bool ret = sakDatabaseQuery.exec(QString("UPDATE %1 SET %2=%3, %4=%5, %6=%7, %8=%9, %10=%11, %12=%13 ,%14=%15, WHERE ID=%16")
                                      .arg(table.tableName)
-                                     .arg(table.idColumn)
+                                     .arg(table.column.id)
                                      .arg(item.id)
-                                     .arg(table.nameColumn)
+                                     .arg(table.column.name)
                                      .arg(item.name)
-                                     .arg(table.referenceDataColumn)
+                                     .arg(table.column.referenceData)
                                      .arg(item.referenceData)
-                                     .arg(table.responseDataColumn)
+                                     .arg(table.column.responseData)
                                      .arg(item.responseData)
-                                     .arg(table.enableColumn)
+                                     .arg(table.column.enable)
                                      .arg(item.enabled)
-                                     .arg(table.referenceFormatColumn)
+                                     .arg(table.column.referenceFormat)
                                      .arg(item.referenceFormat)
-                                     .arg(table.responseFormatColumn)
+                                     .arg(table.column.responseFormat)
                                      .arg(item.responseFormat));
     if (!ret){
         qWarning() << __FUNCTION__ << "Update record form " << table.tableName << " table failed: " << sakDatabaseQuery.lastError().text();
@@ -114,13 +114,13 @@ QList<SAKDataStruct::SAKStructAutoResponseItem> SAKDebugPageDatabaseInterface::s
     if (ret){
         SAKDataStruct::SAKStructAutoResponseItem item;
         while (sakDatabaseQuery.next()) {
-            item.id = sakDatabaseQuery.value(table.idColumn).toULongLong();
-            item.name = sakDatabaseQuery.value(table.idColumn).toString();
-            item.referenceData = sakDatabaseQuery.value(table.idColumn).toString();
-            item.responseData = sakDatabaseQuery.value(table.idColumn).toString();
-            item.enabled = sakDatabaseQuery.value(table.idColumn).toBool();
-            item.referenceFormat = sakDatabaseQuery.value(table.idColumn).toUInt();
-            item.responseFormat = sakDatabaseQuery.value(table.idColumn).toUInt();
+            item.id = sakDatabaseQuery.value(table.column.id).toULongLong();
+            item.name = sakDatabaseQuery.value(table.column.name).toString();
+            item.referenceData = sakDatabaseQuery.value(table.column.referenceData).toString();
+            item.responseData = sakDatabaseQuery.value(table.column.responseData).toString();
+            item.enabled = sakDatabaseQuery.value(table.column.enable).toBool();
+            item.referenceFormat = sakDatabaseQuery.value(table.column.referenceFormat).toUInt();
+            item.responseFormat = sakDatabaseQuery.value(table.column.responseFormat).toUInt();
 
             itemList.append(item);
         }
@@ -307,13 +307,13 @@ void SAKDebugPageDatabaseInterface::createAutoResponseTables()
     AutoResponseTable autoResponseTable;
     for (int i = 0; i < metaEnum.keyCount(); i++){
         autoResponseTable.tableName = SAKDataStruct::autoResponseTableName(i);
-        autoResponseTable.idColumn = QString("ID");
-        autoResponseTable.nameColumn = QString("Name");
-        autoResponseTable.referenceDataColumn = QString("ReferenceData");
-        autoResponseTable.responseDataColumn = QString("ResponseData");
-        autoResponseTable.enableColumn = QString("Enable");
-        autoResponseTable.referenceFormatColumn = QString(QString("ReferenceFormat"));
-        autoResponseTable.responseFormatColumn = QString(QString("ResponseFormat"));
+        autoResponseTable.column.id = QString("ID");
+        autoResponseTable.column.name = QString("Name");
+        autoResponseTable.column.referenceData = QString("ReferenceData");
+        autoResponseTable.column.responseData = QString("ResponseData");
+        autoResponseTable.column.enable = QString("Enable");
+        autoResponseTable.column.referenceFormat = QString(QString("ReferenceFormat"));
+        autoResponseTable.column.responseFormat = QString(QString("ResponseFormat"));
         autoResponseTableList.append(autoResponseTable);
     }
 
@@ -341,13 +341,13 @@ bool SAKDebugPageDatabaseInterface::createAutoResponseTable(const AutoResponseTa
                                               %8 INTEGER NOT NULL \
                                               )")
                                              .arg(table.tableName)
-                                             .arg(table.idColumn)
-                                             .arg(table.nameColumn)
-                                             .arg(table.referenceDataColumn)
-                                             .arg(table.responseDataColumn)
-                                             .arg(table.enableColumn)
-                                             .arg(table.referenceFormatColumn)
-                                             .arg(table.responseFormatColumn));
+                                             .arg(table.column.id)
+                                             .arg(table.column.name)
+                                             .arg(table.column.referenceData)
+                                             .arg(table.column.responseData)
+                                             .arg(table.column.enable)
+                                             .arg(table.column.referenceFormat)
+                                             .arg(table.column.responseFormat));
     return ret;
 }
 
