@@ -58,7 +58,14 @@ public:
 
     /// @brief 数据预设数据表
     struct PresettingDataTable{
-
+        QString tableName;
+        struct Column {
+            quint64 id;
+            quint32 format;
+            QString comment;
+            quint32 classify;
+            QString data;
+        }column;
     };
 
     /**
