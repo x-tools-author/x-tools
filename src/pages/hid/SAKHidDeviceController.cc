@@ -31,8 +31,6 @@ SAKHidDeviceController::SAKHidDeviceController(QWidget *parent)
     hidDeviceComboBox = ui->hidDeviceComboBox;
     noMouseCheckBox = ui->noMouseCheckBox;
     noKeyboardCheckBox = ui->noKeyboardCheckBox;
-    endpointLineEdit = ui->endpointLineEdit;
-    cmdLineEdit = ui->cmdLineEdit;
 
     noMouseCheckBox->setChecked(true);
     noKeyboardCheckBox->setChecked(true);
@@ -97,22 +95,6 @@ void SAKHidDeviceController::initHidDeviceComboBox(QComboBox *comboBox, QStringL
         }while(hidInfo->next);
         hid_free_enumeration(hidInfoTemp);
     }
-}
-
-quint8 SAKHidDeviceController::endpoint()
-{
-    uiMutex.lock();
-    auto ret = static_cast<quint8>(endpointLineEdit->text().toInt());
-    uiMutex.unlock();
-    return ret;
-}
-
-quint8 SAKHidDeviceController::cmd()
-{
-    uiMutex.lock();
-    auto ret = static_cast<quint8>(cmdLineEdit->text().toInt());
-    uiMutex.unlock();
-    return ret;
 }
 
 void SAKHidDeviceController::on_noMouseCheckBox_clicked()

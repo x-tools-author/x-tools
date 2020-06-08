@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>219</width>
-    <height>134</height>
+    <height>82</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -26,41 +26,10 @@
    <property name="bottomMargin">
     <number>0</number>
    </property>
-   <item row="0" column="0">
-    <widget class="QLabel" name="label_3">
+   <item row="3" column="0" colspan="2">
+    <widget class="QCheckBox" name="noMouseCheckBox">
      <property name="text">
-      <string>选择HID设备</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>末端标号</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0" colspan="2">
-    <widget class="QComboBox" name="hidDeviceComboBox"/>
-   </item>
-   <item row="5" column="0">
-    <widget class="QLabel" name="label_2">
-     <property name="text">
-      <string>命令编号</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="1">
-    <widget class="QLineEdit" name="endpointLineEdit">
-     <property name="text">
-      <string notr="true">0</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="1">
-    <widget class="QLineEdit" name="cmdLineEdit">
-     <property name="text">
-      <string notr="true">80</string>
+      <string>不显示鼠标设备</string>
      </property>
     </widget>
    </item>
@@ -71,12 +40,15 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="0" colspan="2">
-    <widget class="QCheckBox" name="noMouseCheckBox">
+   <item row="0" column="0">
+    <widget class="QLabel" name="label_3">
      <property name="text">
-      <string>不显示鼠标设备</string>
+      <string>选择HID设备</string>
      </property>
     </widget>
+   </item>
+   <item row="1" column="0" colspan="2">
+    <widget class="QComboBox" name="hidDeviceComboBox"/>
    </item>
   </layout>
  </widget>

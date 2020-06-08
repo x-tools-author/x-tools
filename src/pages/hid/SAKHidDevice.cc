@@ -64,10 +64,6 @@ void SAKHidDevice::run()
         while (true) {
             QByteArray bytes = takeWaitingForWrittingBytes();
             if (bytes.length()){
-                quint8 endpoint = deviceController->endpoint();
-                quint8 cmd = deviceController->cmd();
-                bytes.prepend(reinterpret_cast<char*>(&cmd), 1);
-                bytes.prepend(reinterpret_cast<char*>(&endpoint), 1);
                 int ret = hid_write(hidDevice, reinterpret_cast<const unsigned char*>(bytes.constData()), static_cast<size_t>(bytes.length()));
                 if (ret == -1){
                     emit messageChanged(tr("发送数据失败：")+QString::fromWCharArray(hid_error(hidDevice)), false);
