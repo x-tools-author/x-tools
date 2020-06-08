@@ -37,9 +37,11 @@ public:
 private:
     QTimer clearMessageInfoTimer;
     SAKDebugPage *debugPage;
+    SAKDebugPageDatabaseInterface *databaseInterface;
 private:
     void outputMessage(QString msg, bool isInfo);
     void clearMessage();
+    void readInRecord();
 private:
     Ui::SAKAutoResponseSettingsWidget *ui;
     QListWidget *listWidget;

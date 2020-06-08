@@ -32,6 +32,15 @@ class SAKAutoResponseItemWidget:public QWidget
     Q_OBJECT
 public:
     SAKAutoResponseItemWidget(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
+    SAKAutoResponseItemWidget(SAKDebugPage *debugPage,
+                              quint64 id,
+                              QString name,
+                              QString referenceData,
+                              QString responseData,
+                              bool enabled,
+                              quint32 referenceFormat,
+                              quint32 responseFormat,
+                              QWidget *parent = Q_NULLPTR);
     ~SAKAutoResponseItemWidget();
 
     /**
@@ -39,26 +48,33 @@ public:
      * @param disAbel 该值为true时，禁止所有回复，否则更具回复示例的使能判断是否自动回复
      */
     void setAllAutoResponseDisable(bool disable);
+
+    quint64 parameterID();
+    QString parameterName();
+    QString parameterRefernceData();
+    QString parameterResponseData();
+    bool parameterEnable();
+    quint32 parameterReferenceFormat();
+    quint32 parameterResponseFormat();
 private:
     bool forbiddenAllAutoResponse;
     SAKDebugPage *debugPage;
+    quint64 id;
 private:
-    /// @brief 设置输入框文本格式(SAKDataStruct::SAKEnumTextInputFormat)
     void setLineEditFormat(QLineEdit *lineEdit, int format);
-    /// @brief 读取数据后执行该函数，参数为已读取的数据
     void bytesRead(QByteArray bytes);
     QByteArray string2array(QString str, int format);
-    /// @brief 判断是否需要回复
     bool response(QByteArray receiveData, QByteArray referenceData, int option);
+    void initUi();
 private:
     Ui::SAKAutoResponseItemWidget *ui;
-    QLineEdit   *remarkLineEdit;
-    QLineEdit   *referenceLineEdit;
-    QLineEdit   *responseLineEdit;
-    QCheckBox   *enableCheckBox;
-    QComboBox   *optionComboBox;
-    QComboBox   *referenceDataFromatComboBox;
-    QComboBox   *responseDataFormatComboBox;
+    QLineEdit *remarkLineEdit;
+    QLineEdit *referenceLineEdit;
+    QLineEdit *responseLineEdit;
+    QCheckBox *enableCheckBox;
+    QComboBox *optionComboBox;
+    QComboBox *referenceDataFromatComboBox;
+    QComboBox *responseDataFormatComboBox;
 private slots:
     void on_referenceDataFromatComboBox_currentTextChanged();
     void on_responseDataFormatComboBox_currentTextChanged();

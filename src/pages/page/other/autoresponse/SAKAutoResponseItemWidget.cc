@@ -23,24 +23,32 @@ SAKAutoResponseItemWidget::SAKAutoResponseItemWidget(SAKDebugPage *debugPage, QW
     ,debugPage(debugPage)
     ,ui(new Ui::SAKAutoResponseItemWidget)
 {
-    ui->setupUi(this);
-    remarkLineEdit              = ui->remarkLineEdit;
-    referenceLineEdit           = ui->referenceLineEdit;
-    responseLineEdit            = ui->responseLineEdit;
-    enableCheckBox              = ui->enableCheckBox;
-    optionComboBox              = ui->optionComboBox;
-    referenceDataFromatComboBox = ui->referenceDataFromatComboBox;
-    responseDataFormatComboBox  = ui->responseDataFormatComboBox;
+    initUi();
+    id = QDateTime::currentMSecsSinceEpoch();
+}
 
-    optionComboBox->clear();
-    optionComboBox->addItem(tr("接收数据等于参考数据时自动回复"), QVariant::fromValue<int>(SAKDataStruct::AutoResponseOptionEqual));
-    optionComboBox->addItem(tr("接收数据包含参考数据时自动回复"), QVariant::fromValue<int>(SAKDataStruct::AutoResponseOptionContain));
-    optionComboBox->addItem(tr("接收数据不包含参考数据时自动回复"), QVariant::fromValue<int>(SAKDataStruct::AutoResponseOptionDoNotContain));
-
-    SAKGlobal::initInputTextFormatComboBox(referenceDataFromatComboBox);
-    SAKGlobal::initInputTextFormatComboBox(responseDataFormatComboBox);
-
-    connect(debugPage, &SAKDebugPage::bytesRead, this, &SAKAutoResponseItemWidget::bytesRead);
+SAKAutoResponseItemWidget::SAKAutoResponseItemWidget(SAKDebugPage *debugPage,
+                                                     quint64 id,
+                                                     QString name,
+                                                     QString referenceData,
+                                                     QString responseData,
+                                                     bool enabled,
+                                                     quint32 referenceFormat,
+                                                     quint32 responseFormat,
+                                                     QWidget *parent)
+    :QWidget(parent)
+    ,forbiddenAllAutoResponse(false)
+    ,debugPage(debugPage)
+    ,id(id)
+    ,ui(new Ui::SAKAutoResponseItemWidget)
+{
+    initUi();
+    remarkLineEdit->setText(name);
+    referenceLineEdit->setText(referenceData);
+    responseLineEdit->setText(responseData);
+    enableCheckBox->setChecked(enabled);
+    referenceDataFromatComboBox->setCurrentIndex(referenceFormat);
+    responseDataFormatComboBox->setCurrentIndex(responseFormat);
 }
 
 SAKAutoResponseItemWidget::~SAKAutoResponseItemWidget()
@@ -51,6 +59,41 @@ SAKAutoResponseItemWidget::~SAKAutoResponseItemWidget()
 void SAKAutoResponseItemWidget::setAllAutoResponseDisable(bool disable)
 {
     forbiddenAllAutoResponse = disable;
+}
+
+quint64 SAKAutoResponseItemWidget::parameterID()
+{
+    return id;
+}
+
+QString SAKAutoResponseItemWidget::parameterName()
+{
+    return remarkLineEdit->text();
+}
+
+QString SAKAutoResponseItemWidget::parameterRefernceData()
+{
+    return referenceLineEdit->text();
+}
+
+QString SAKAutoResponseItemWidget::parameterResponseData()
+{
+    return responseLineEdit->text();
+}
+
+bool SAKAutoResponseItemWidget::parameterEnable()
+{
+    return enableCheckBox->isChecked();
+}
+
+quint32 SAKAutoResponseItemWidget::parameterReferenceFormat()
+{
+    return referenceDataFromatComboBox->currentIndex();
+}
+
+quint32 SAKAutoResponseItemWidget::parameterResponseFormat()
+{
+    return responseDataFormatComboBox->currentIndex();
 }
 
 void SAKAutoResponseItemWidget::setLineEditFormat(QLineEdit *lineEdit, int format)
@@ -181,6 +224,28 @@ bool SAKAutoResponseItemWidget::response(QByteArray receiveData, QByteArray refe
 
     return false;
 };
+
+void SAKAutoResponseItemWidget::initUi()
+{
+    ui->setupUi(this);
+    remarkLineEdit              = ui->remarkLineEdit;
+    referenceLineEdit           = ui->referenceLineEdit;
+    responseLineEdit            = ui->responseLineEdit;
+    enableCheckBox              = ui->enableCheckBox;
+    optionComboBox              = ui->optionComboBox;
+    referenceDataFromatComboBox = ui->referenceDataFromatComboBox;
+    responseDataFormatComboBox  = ui->responseDataFormatComboBox;
+
+    optionComboBox->clear();
+    optionComboBox->addItem(tr("接收数据等于参考数据时自动回复"), QVariant::fromValue<int>(SAKDataStruct::AutoResponseOptionEqual));
+    optionComboBox->addItem(tr("接收数据包含参考数据时自动回复"), QVariant::fromValue<int>(SAKDataStruct::AutoResponseOptionContain));
+    optionComboBox->addItem(tr("接收数据不包含参考数据时自动回复"), QVariant::fromValue<int>(SAKDataStruct::AutoResponseOptionDoNotContain));
+
+    SAKGlobal::initInputTextFormatComboBox(referenceDataFromatComboBox);
+    SAKGlobal::initInputTextFormatComboBox(responseDataFormatComboBox);
+
+    connect(debugPage, &SAKDebugPage::bytesRead, this, &SAKAutoResponseItemWidget::bytesRead);
+}
 
 void SAKAutoResponseItemWidget::on_referenceDataFromatComboBox_currentTextChanged()
 {
