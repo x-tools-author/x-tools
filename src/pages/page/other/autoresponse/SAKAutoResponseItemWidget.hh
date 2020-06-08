@@ -21,12 +21,12 @@
 #include <QCheckBox>
 #include <QRegExpValidator>
 
-class SAKDebugPage;
-
 namespace Ui {
     class SAKAutoResponseItemWidget;
 }
 
+class SAKDebugPage;
+/// @brief 自动回复条目
 class SAKAutoResponseItemWidget:public QWidget
 {
     Q_OBJECT
@@ -34,17 +34,22 @@ public:
     SAKAutoResponseItemWidget(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKAutoResponseItemWidget();
 
-    enum AutoResponseOption{
-        Equivalence,    // 相等
-        Contain,        // 包含
-        Notcontain,     // 不包含
-    };
-
     /**
      * @brief setAllAutoResponseDisable 禁止所有自动回复
      * @param disAbel 该值为true时，禁止所有回复，否则更具回复示例的使能判断是否自动回复
      */
-    void setAllAutoResponseDisable(bool disAbel);
+    void setAllAutoResponseDisable(bool disable);
+private:
+    bool forbiddenAllAutoResponse;
+    SAKDebugPage *debugPage;
+private:
+    /// @brief 设置输入框文本格式(SAKDataStruct::SAKEnumTextInputFormat)
+    void setLineEditFormat(QLineEdit *lineEdit, int format);
+    /// @brief 读取数据后执行该函数，参数为已读取的数据
+    void bytesRead(QByteArray bytes);
+    QByteArray string2array(QString str, int format);
+    /// @brief 判断是否需要回复
+    bool response(QByteArray receiveData, QByteArray referenceData, int option);
 private:
     Ui::SAKAutoResponseItemWidget *ui;
     QLineEdit   *remarkLineEdit;
@@ -54,22 +59,9 @@ private:
     QComboBox   *optionComboBox;
     QComboBox   *referenceDataFromatComboBox;
     QComboBox   *responseDataFormatComboBox;
-
-    /// 禁止所有自动回复标志
-    bool forbiddenAllAutoResponse;
-    SAKDebugPage *debugPage;
-private:
-    /// 设置输入框文本格式(详情SAKGlobal::EDTextFormat)
-    void setLineEditFormat(QLineEdit *lineEdit, int format);
-
-    void dataRead(QByteArray data);
-    QByteArray string2array(QString str, int format);
-    bool response(QByteArray receiveData, QByteArray referenceData, int option);    
 private slots:
     void on_referenceDataFromatComboBox_currentTextChanged();
     void on_responseDataFormatComboBox_currentTextChanged();
-signals:
-    void requestWrite(QByteArray data);
 };
 
 #endif

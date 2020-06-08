@@ -19,9 +19,9 @@
 
 SAKAutoResponseItemWidget::SAKAutoResponseItemWidget(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget(parent)
-    ,ui (new Ui::SAKAutoResponseItemWidget)
-    ,forbiddenAllAutoResponse (false)
-    ,debugPage (debugPage)
+    ,forbiddenAllAutoResponse(false)
+    ,debugPage(debugPage)
+    ,ui(new Ui::SAKAutoResponseItemWidget)
 {
     ui->setupUi(this);
     remarkLineEdit              = ui->remarkLineEdit;
@@ -33,15 +33,14 @@ SAKAutoResponseItemWidget::SAKAutoResponseItemWidget(SAKDebugPage *debugPage, QW
     responseDataFormatComboBox  = ui->responseDataFormatComboBox;
 
     optionComboBox->clear();
-    optionComboBox->addItem(tr("接收数据与参考数据相同时自动回复"), QVariant::fromValue<int>(Equivalence));
-    optionComboBox->addItem(tr("接收数据包含参考数据时自动回复"), QVariant::fromValue<int>(Contain));
-    optionComboBox->addItem(tr("接收数据不包含参考数据时自动回复"), QVariant::fromValue<int>(Notcontain));
+    optionComboBox->addItem(tr("接收数据等于参考数据时自动回复"), QVariant::fromValue<int>(SAKDataStruct::AutoResponseOptionEqual));
+    optionComboBox->addItem(tr("接收数据包含参考数据时自动回复"), QVariant::fromValue<int>(SAKDataStruct::AutoResponseOptionContain));
+    optionComboBox->addItem(tr("接收数据不包含参考数据时自动回复"), QVariant::fromValue<int>(SAKDataStruct::AutoResponseOptionDoNotContain));
 
     SAKGlobal::initInputTextFormatComboBox(referenceDataFromatComboBox);
     SAKGlobal::initInputTextFormatComboBox(responseDataFormatComboBox);
 
-    connect(debugPage, &SAKDebugPage::bytesRead, this, &SAKAutoResponseItemWidget::dataRead);
-    connect(this, &SAKAutoResponseItemWidget::requestWrite, debugPage, &SAKDebugPage::write);
+    connect(debugPage, &SAKDebugPage::bytesRead, this, &SAKAutoResponseItemWidget::bytesRead);
 }
 
 SAKAutoResponseItemWidget::~SAKAutoResponseItemWidget()
@@ -49,9 +48,9 @@ SAKAutoResponseItemWidget::~SAKAutoResponseItemWidget()
     delete ui;
 }
 
-void SAKAutoResponseItemWidget::setAllAutoResponseDisable(bool disAbel)
+void SAKAutoResponseItemWidget::setAllAutoResponseDisable(bool disable)
 {
-    forbiddenAllAutoResponse = disAbel;
+    forbiddenAllAutoResponse = disable;
 }
 
 void SAKAutoResponseItemWidget::setLineEditFormat(QLineEdit *lineEdit, int format)
@@ -90,13 +89,13 @@ void SAKAutoResponseItemWidget::setLineEditFormat(QLineEdit *lineEdit, int forma
     }
 }
 
-void SAKAutoResponseItemWidget::dataRead(QByteArray data)
+void SAKAutoResponseItemWidget::bytesRead(QByteArray bytes)
 {
     if (forbiddenAllAutoResponse){
         return;
     }
 
-    if (data.isEmpty()){
+    if (bytes.isEmpty()){
         return;
     }
 
@@ -104,13 +103,11 @@ void SAKAutoResponseItemWidget::dataRead(QByteArray data)
         return;
     }
 
-    /*
-     * 判断是否回复
-     */
+    /// @brief 判断是否回复
     QString referenceString = referenceLineEdit->text();
     int referenceFormat = referenceDataFromatComboBox->currentData().toInt();
     QByteArray referenceData = string2array(referenceString, referenceFormat);
-    if (response(data, referenceData, optionComboBox->currentData().toInt())){
+    if (response(bytes, referenceData, optionComboBox->currentData().toInt())){
          QString responseString = responseLineEdit->text();
          int responseFromat = responseDataFormatComboBox->currentData().toInt();
          QByteArray responseData = string2array(responseString, responseFromat);
@@ -170,28 +167,16 @@ QByteArray SAKAutoResponseItemWidget::string2array(QString str, int format)
 
 bool SAKAutoResponseItemWidget::response(QByteArray receiveData, QByteArray referenceData, int option)
 {
-    if (option == SAKAutoResponseItemWidget::Equivalence){
-        if (QString(receiveData.toHex()).compare(QString(referenceData.toHex())) == 0){
-            return true;
-        }else{
-            return false;
-        }
+    if (option == SAKDataStruct::AutoResponseOptionEqual){
+        return (QString(receiveData.toHex()).compare(QString(referenceData.toHex())) == 0);
     }
 
-    if (option == SAKAutoResponseItemWidget::Contain){
-        if (QString(receiveData.toHex()).contains(QString(referenceData.toHex()))){
-            return true;
-        }else{
-            return false;
-        }
+    if (option == SAKDataStruct::AutoResponseOptionContain){
+        return (QString(receiveData.toHex()).contains(QString(referenceData.toHex())));
     }
 
-    if (option == SAKAutoResponseItemWidget::Notcontain){
-        if (QString(receiveData.toHex()).contains(QString(referenceData.toHex()))){
-            return false;
-        }else{
-            return true;
-        }
+    if (option == SAKDataStruct::AutoResponseOptionDoNotContain){
+        return !(QString(receiveData.toHex()).contains(QString(referenceData.toHex())));
     }
 
     return false;
