@@ -64,6 +64,14 @@ public:
     };
     Q_ENUM(SAKEnumTextOutputFormat)
 
+    /// @brief 调试页面，自动回复选项
+    enum SAKEnumAutoResponseOption {
+        AutoResponseOptionEqual,        // 接收数据与参考数据相等时回复
+        AutoResponseOptionContain,      // 接收数据包含参考数据时回复
+        AutoResponseOptionDoNotContain  // 接收数据不包含参考数据时回复
+    };
+    Q_ENUM(SAKEnumAutoResponseOption)
+
     /// @brief 调试页面自动回复数据的数据结构
     struct SAKStructAutoResponseItem {
         quint64 id;                 /// 自动回复条目ID,回复条目唯一标识符（取值为数据产生时的时间戳）
