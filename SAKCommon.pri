@@ -1,2 +1,2 @@
-# 清空ui信息显示时间间隔（单位为 毫秒）
+# 清空ui信息显示时间间隔（单位为毫秒）
 DEFINES += SAK_CLEAR_MESSAGE_INTERVAL=8000
