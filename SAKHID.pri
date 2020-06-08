@@ -31,5 +31,5 @@ contains(DEFINES, SAK_IMPORT_HID_MODULE){
     INCLUDEPATH += \
         $$PWD/src/pages/hid
 }else {
-    message("The HID module is not supported by the platform, the program will not has hid debuging functioin.")
+    message("The HID module is not supported by the platform, the program will not has hid debuging function.")
 }
