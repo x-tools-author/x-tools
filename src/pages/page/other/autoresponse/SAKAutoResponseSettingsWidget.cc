@@ -24,7 +24,7 @@
 
 SAKAutoResponseSettingsWidget::SAKAutoResponseSettingsWidget(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget (parent)
-    ,_debugPage (debugPage)
+    ,debugPage (debugPage)
     ,ui (new Ui::SAKAutoResponseSettingsWidget)
 {
     ui->setupUi(this);
@@ -71,11 +71,10 @@ void SAKAutoResponseSettingsWidget::on_addItemPushButton_clicked()
 {
     QListWidgetItem *item = new QListWidgetItem(listWidget);
     listWidget->addItem(item);
-    SAKAutoResponseItemWidget *itemWidget = new SAKAutoResponseItemWidget(_debugPage, listWidget);
+    SAKAutoResponseItemWidget *itemWidget = new SAKAutoResponseItemWidget(debugPage, listWidget);
     item->setSizeHint(QSize(itemWidget->width(), itemWidget->height()));
     listWidget->setItemWidget(item, itemWidget);
 }
-
 
 void SAKAutoResponseSettingsWidget::outputMessage(QString msg, bool isInfo)
 {

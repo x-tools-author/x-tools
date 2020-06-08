@@ -27,6 +27,7 @@ namespace Ui {
     class SAKAutoResponseSettingsWidget;
 }
 
+class SAKDebugPageDatabaseInterface;
 class SAKAutoResponseSettingsWidget:public QWidget
 {
    Q_OBJECT
@@ -34,23 +35,22 @@ public:
     SAKAutoResponseSettingsWidget(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKAutoResponseSettingsWidget();
 private:
-    SAKDebugPage    *_debugPage;
-    QListWidget     *listWidget;
-    QCheckBox       *forbidAllCheckBox;
-    QPushButton     *deleteItemPushButton;
-    QPushButton     *addItemPushButton;
-    QLabel          *msgLabel;
-private slots:
-    void on_forbidAllCheckBox_clicked();
-    void on_deleteItemPushButton_clicked();
-    void on_addItemPushButton_clicked();
-private:
     QTimer clearMessageInfoTimer;
-
+    SAKDebugPage *debugPage;
+private:
     void outputMessage(QString msg, bool isInfo);
     void clearMessage();
 private:
     Ui::SAKAutoResponseSettingsWidget *ui;
+    QListWidget *listWidget;
+    QCheckBox *forbidAllCheckBox;
+    QPushButton *deleteItemPushButton;
+    QPushButton *addItemPushButton;
+    QLabel *msgLabel;
+private slots:
+    void on_forbidAllCheckBox_clicked();
+    void on_deleteItemPushButton_clicked();
+    void on_addItemPushButton_clicked();
 };
 
 #endif
