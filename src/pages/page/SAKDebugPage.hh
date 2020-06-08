@@ -113,6 +113,12 @@ public:
      * @return 数据库接口类实例
      */
     SAKDebugPageDatabaseInterface *databaseInterfaceInstance();
+
+    /**
+     * @brief pageType 获取调试页面类型（SAKDataStruct::SAKEnumDebugPageType）
+     * @return 调试页面类型
+     */
+    quint32 pageType();
 protected:
     /// @brief 刷新设备
     virtual void refreshDevice();

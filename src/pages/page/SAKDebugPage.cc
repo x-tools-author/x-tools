@@ -164,6 +164,11 @@ SAKDebugPageDatabaseInterface *SAKDebugPage::databaseInterfaceInstance()
    return databaseInterface;
 }
 
+quint32 SAKDebugPage::pageType()
+{
+    return debugPageType;
+}
+
 void SAKDebugPage::refreshDevice()
 {
 
