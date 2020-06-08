@@ -1,15 +1,11 @@
 ﻿/*
- * Copyright 2020 Qter. All rights reserved.
+ * Copyright 2018-2020 Qter(qsak@foxmail.com). All rights reserved.
  *
- * This file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
- * project, which is an open source project. you can get the source from:
- *     https://github.com/qsak/QtSwissArmyKnife
- * or
- *     https://gitee.com/qsak/QtSwissArmyKnife
- * ----------------------------------------------------------------------------
- * QQ Group     : 952218522
- * Bug Report   : qsak@foxmail.com
- * Official Web : https://qsak.pro
+ * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
+ * project(https://www.qsak.pro). The project is an open source project. You can
+ * get the source of the project from: "https://github.com/qsak/QtSwissArmyKnife"
+ * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
+ * group which number is 952218522 to have a communication.
  */
 #ifndef SAKDEBUGPAGEDATABASEMANAGER_HH
 #define SAKDEBUGPAGEDATABASEMANAGER_HH

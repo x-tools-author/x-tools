@@ -45,7 +45,7 @@
 
 
 
-# The file was create by wuuhii(wuuhii@outlook.com) on September 30, 2019.
+# The file was create by Qter(qsak@foxmail.com) on September 30, 2019.
 
 # History:
 # 20190930  Creating the file.
