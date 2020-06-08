@@ -39,9 +39,10 @@ SAKAutoResponseSettingsWidget::SAKAutoResponseSettingsWidget(SAKDebugPage *debug
     setWindowTitle(tr("自动回复设置"));
     databaseInterface = SAKDebugPageDatabaseInterface::instance();
 
-    clearMessageInfoTimer.setInterval(5*1000);
+    clearMessageInfoTimer.setInterval(SAK_CLEAR_MESSAGE_INTERVAL);
     connect(&clearMessageInfoTimer, &QTimer::timeout, this, &SAKAutoResponseSettingsWidget::clearMessage);
 
+    /// @brief 从数据库读入记录
     readInRecord();
 }
 
@@ -68,6 +69,13 @@ void SAKAutoResponseSettingsWidget::on_deleteItemPushButton_clicked()
         return;
     }
 
+    /// @brief 删除数据库记录
+    QString tableName = SAKDataStruct::autoResponseTableName(debugPage->pageType());
+    SAKDataStruct::SAKStructAutoResponseItem dataItem;
+    SAKAutoResponseItemWidget *w = reinterpret_cast<SAKAutoResponseItemWidget*>(listWidget->itemWidget(item));
+    dataItem.id = w->parameterID();
+    databaseInterface->deleteAutoResponseItem(tableName, dataItem);
+
     listWidget->removeItemWidget(item);
     delete item;
 }
@@ -79,6 +87,18 @@ void SAKAutoResponseSettingsWidget::on_addItemPushButton_clicked()
     SAKAutoResponseItemWidget *itemWidget = new SAKAutoResponseItemWidget(debugPage, listWidget);
     item->setSizeHint(QSize(itemWidget->width(), itemWidget->height()));
     listWidget->setItemWidget(item, itemWidget);
+
+    /// @brief 添加数据库记录
+    SAKDataStruct::SAKStructAutoResponseItem dataItem;
+    dataItem.id = itemWidget->parameterID();
+    dataItem.name = itemWidget->parameterName();
+    dataItem.enabled = itemWidget->parameterEnable();
+    dataItem.responseData = itemWidget->parameterResponseData();
+    dataItem.referenceData = itemWidget->parameterRefernceData();
+    dataItem.responseFormat = itemWidget->parameterResponseFormat();
+    dataItem.referenceFormat = itemWidget->parameterReferenceFormat();
+    QString tableName = SAKDataStruct::autoResponseTableName(debugPage->pageType());
+    databaseInterface->insertAutoResponseItem(tableName, dataItem);
 }
 
 void SAKAutoResponseSettingsWidget::outputMessage(QString msg, bool isInfo)
