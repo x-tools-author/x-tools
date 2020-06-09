@@ -230,30 +230,31 @@ void SAKAutoResponseSettingsWidget::on_importPushButton_clicked()
         file.close();
 
         QJsonDocument jsc = QJsonDocument::fromJson(array);
-        if (jsc.isArray()){
-            QJsonArray jsa = jsc.array();
-            for (int i = 0; i < jsa.count(); i++){
-                if (jsa.at(i).isObject()){
-                    QJsonObject jso = jsa.at(i).toObject();
-                    AutoResponseItemKey itemKey;
-                    SAKDataStruct::SAKStructAutoResponseItem responseItem;
-                    responseItem.id = jso.value(itemKey.id).toVariant().toULongLong();
-                    responseItem.name = jso.value(itemKey.name).toVariant().toString();
-                    responseItem.enable = jso.value(itemKey.enable).toVariant().toBool();
-                    responseItem.option = jso.value(itemKey.option).toVariant().toUInt();
-                    responseItem.responseData = jso.value(itemKey.responseData).toVariant().toString();
-                    responseItem.referenceData = jso.value(itemKey.referenceData).toVariant().toString();
-                    responseItem.responseFormat = jso.value(itemKey.responseFormat).toVariant().toUInt();
-                    responseItem.referenceFormat = jso.value(itemKey.referenceFormat).toVariant().toUInt();
+        if (!jsc.isArray()){
+            outputMessage(QString("QJsonDocument is not json array"), false);
+            return;
+        }
 
-                    /// @brief 不存在则新建
-                    if (!contains(responseItem.id)){
-                        innerCreateItem(responseItem, debugPage, listWidget);
-                    }
+        QJsonArray jsa = jsc.array();
+        for (int i = 0; i < jsa.count(); i++){
+            if (jsa.at(i).isObject()){
+                QJsonObject jso = jsa.at(i).toObject();
+                AutoResponseItemKey itemKey;
+                SAKDataStruct::SAKStructAutoResponseItem responseItem;
+                responseItem.id = jso.value(itemKey.id).toVariant().toULongLong();
+                responseItem.name = jso.value(itemKey.name).toVariant().toString();
+                responseItem.enable = jso.value(itemKey.enable).toVariant().toBool();
+                responseItem.option = jso.value(itemKey.option).toVariant().toUInt();
+                responseItem.responseData = jso.value(itemKey.responseData).toVariant().toString();
+                responseItem.referenceData = jso.value(itemKey.referenceData).toVariant().toString();
+                responseItem.responseFormat = jso.value(itemKey.responseFormat).toVariant().toUInt();
+                responseItem.referenceFormat = jso.value(itemKey.referenceFormat).toVariant().toUInt();
+
+                /// @brief 不存在则新建
+                if (!contains(responseItem.id)){
+                    innerCreateItem(responseItem, debugPage, listWidget);
                 }
             }
-        }else{
-            outputMessage(QString("QJsonDocument is not json array"), false);
         }
     }else{
         outputMessage(file.errorString(), false);
