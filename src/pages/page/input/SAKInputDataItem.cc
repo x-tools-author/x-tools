@@ -19,16 +19,17 @@
 #include "ui_SAKInputDataItem.h"
 
 SAKInputDataItem::SAKInputDataItem(SAKDebugPage *debugPage, SAKDebugPageInputManager *inputManager, QWidget *parent)
-    :QWidget (parent)
-    ,ui (new Ui::SAKInputDataItem)
-    ,debugPage (debugPage)
-    ,inputManager (inputManager)
+    :QWidget(parent)
+    ,debugPage(debugPage)
+    ,inputManager(inputManager)
+    ,ui(new Ui::SAKInputDataItem)
 {
     ui->setupUi(this);
 
-    textFormatComboBox  = ui->textFormatComboBox;
+    textFormatComboBox = ui->textFormatComboBox;
     descriptionLineEdit = ui->descriptionLineEdit;
-    inputDataTextEdit   = ui->inputDataTextEdit;
+    inputDataTextEdit = ui->inputDataTextEdit;
+    updatePushButton = ui->updatePushButton;
     SAKGlobal::initInputTextFormatComboBox(textFormatComboBox);
 
     menuPushButton = inputManager->sendPresetPushButton;
@@ -104,4 +105,9 @@ void SAKInputDataItem::sendRawData()
     if (!data.isEmpty()){
         debugPage->writeRawData(data, format);
     }
+}
+
+void SAKInputDataItem::on_updatePushButton_clicked()
+{
+
 }

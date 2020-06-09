@@ -35,20 +35,11 @@ class SAKInputDataItem:public QWidget
 public:
     SAKInputDataItem(SAKDebugPage *debugPage, SAKDebugPageInputManager *inputManager, QWidget *parent = Q_NULLPTR);
     ~SAKInputDataItem();
-
-private:
-    Ui::SAKInputDataItem *ui;
-
-    QComboBox   *textFormatComboBox;
-    QLineEdit   *descriptionLineEdit;
-    QTextEdit   *inputDataTextEdit;
-
 private:
     QPushButton *menuPushButton;
     QAction *action;
     SAKDebugPage *debugPage;
     SAKDebugPageInputManager *inputManager;
-
     SAKDebugPageInputManager::InputParameters inputParameters;
 private:
     void addDataAction(QPushButton *menuPushButton);
@@ -56,9 +47,16 @@ private:
     void updateActionTitle(const QString &title);
     void updateTextFormat();
     void sendRawData();
-
 signals:
     void rawDataChanged(QString rawData, SAKDebugPageInputManager::InputParameters parameters);
+private:
+    Ui::SAKInputDataItem *ui;
+    QComboBox *textFormatComboBox;
+    QLineEdit *descriptionLineEdit;
+    QTextEdit *inputDataTextEdit;
+    QPushButton *updatePushButton;
+private slots:
+    void on_updatePushButton_clicked();
 };
 
 #endif
