@@ -24,6 +24,7 @@ SAKAutoResponseItemWidget::SAKAutoResponseItemWidget(SAKDebugPage *debugPage, QW
 {
     initUi();
     id = QDateTime::currentMSecsSinceEpoch();
+    remarkLineEdit->setText(QString::number(id));
 }
 
 SAKAutoResponseItemWidget::SAKAutoResponseItemWidget(SAKDebugPage *debugPage,
@@ -34,6 +35,7 @@ SAKAutoResponseItemWidget::SAKAutoResponseItemWidget(SAKDebugPage *debugPage,
                                                      bool enabled,
                                                      quint32 referenceFormat,
                                                      quint32 responseFormat,
+                                                     quint32 option,
                                                      QWidget *parent)
     :QWidget(parent)
     ,forbiddenAllAutoResponse(false)
@@ -48,6 +50,7 @@ SAKAutoResponseItemWidget::SAKAutoResponseItemWidget(SAKDebugPage *debugPage,
     enableCheckBox->setChecked(enabled);
     referenceDataFromatComboBox->setCurrentIndex(referenceFormat);
     responseDataFormatComboBox->setCurrentIndex(responseFormat);
+    optionComboBox->setCurrentIndex(option);
 }
 
 SAKAutoResponseItemWidget::~SAKAutoResponseItemWidget()
@@ -93,6 +96,11 @@ quint32 SAKAutoResponseItemWidget::parameterReferenceFormat()
 quint32 SAKAutoResponseItemWidget::parameterResponseFormat()
 {
     return responseDataFormatComboBox->currentIndex();
+}
+
+quint32 SAKAutoResponseItemWidget::parameterOption()
+{
+    return optionComboBox->currentIndex();
 }
 
 void SAKAutoResponseItemWidget::setLineEditFormat(QLineEdit *lineEdit, int format)
@@ -268,5 +276,6 @@ void SAKAutoResponseItemWidget::on_updatePushButton_clicked()
     item.referenceData = parameterRefernceData();
     item.responseFormat = parameterResponseFormat();
     item.referenceFormat = parameterReferenceFormat();
+    item.option = parameterOption();
     SAKDebugPageDatabaseInterface::instance()->updateAutoResponseItem(tableName, item);
 }

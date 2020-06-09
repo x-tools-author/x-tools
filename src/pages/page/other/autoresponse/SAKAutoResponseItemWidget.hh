@@ -38,6 +38,7 @@ public:
                               bool enabled,
                               quint32 referenceFormat,
                               quint32 responseFormat,
+                              quint32 option,
                               QWidget *parent = Q_NULLPTR);
     ~SAKAutoResponseItemWidget();
 
@@ -54,6 +55,7 @@ public:
     bool parameterEnable();
     quint32 parameterReferenceFormat();
     quint32 parameterResponseFormat();
+    quint32 parameterOption();
 private:
     bool forbiddenAllAutoResponse;
     SAKDebugPage *debugPage;

@@ -101,6 +101,7 @@ void SAKAutoResponseSettingsWidget::on_addItemPushButton_clicked()
     dataItem.referenceData = itemWidget->parameterRefernceData();
     dataItem.responseFormat = itemWidget->parameterResponseFormat();
     dataItem.referenceFormat = itemWidget->parameterReferenceFormat();
+    dataItem.option = itemWidget->parameterOption();
     QString tableName = SAKDataStruct::autoResponseTableName(debugPage->pageType());
     databaseInterface->insertAutoResponseItem(tableName, dataItem);
 }
@@ -139,6 +140,7 @@ void SAKAutoResponseSettingsWidget::readInRecord()
                                                                               var.enabled,
                                                                               var.referenceFormat,
                                                                               var.responseFormat,
+                                                                              var.option,
                                                                               listWidget);
         item->setSizeHint(QSize(itemWidget->width(), itemWidget->height()));
         listWidget->setItemWidget(item, itemWidget);
