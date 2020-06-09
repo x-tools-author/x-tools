@@ -80,6 +80,12 @@ void SAKAutoResponseSettingsWidget::on_deleteItemPushButton_clicked()
 
 void SAKAutoResponseSettingsWidget::on_addItemPushButton_clicked()
 {
+    /// @brief 限制数量
+    if (listWidget->count() >= SAK_MAX_AUTO_RESPONSE_COUNT){
+        outputMessage(tr("数据已达到上限，不能新建数据"), false);
+        return;
+    }
+
     QListWidgetItem *item = new QListWidgetItem(listWidget);
     listWidget->addItem(item);
     SAKAutoResponseItemWidget *itemWidget = new SAKAutoResponseItemWidget(debugPage, listWidget);
