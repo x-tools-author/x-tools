@@ -66,7 +66,7 @@ void SAKDebugPageDatabaseInterface::insertAutoResponseItem(QString tableName, SA
                                      .arg(item.name)
                                      .arg(item.referenceData)
                                      .arg(item.responseData)
-                                     .arg(item.enabled)
+                                     .arg(item.enable)
                                      .arg(item.referenceFormat)
                                      .arg(item.responseFormat)
                                      .arg(item.option));
@@ -94,7 +94,7 @@ void SAKDebugPageDatabaseInterface::updateAutoResponseItem(QString tableName, SA
                                      .arg(table.column.responseData)
                                      .arg(item.responseData)
                                      .arg(table.column.enable)
-                                     .arg(item.enabled)
+                                     .arg(item.enable)
                                      .arg(table.column.referenceFormat)
                                      .arg(item.referenceFormat)
                                      .arg(table.column.responseFormat)
@@ -120,7 +120,7 @@ QList<SAKDataStruct::SAKStructAutoResponseItem> SAKDebugPageDatabaseInterface::s
             item.name = sakDatabaseQuery.value(table.column.name).toString();
             item.referenceData = sakDatabaseQuery.value(table.column.referenceData).toString();
             item.responseData = sakDatabaseQuery.value(table.column.responseData).toString();
-            item.enabled = sakDatabaseQuery.value(table.column.enable).toBool();
+            item.enable = sakDatabaseQuery.value(table.column.enable).toBool();
             item.referenceFormat = sakDatabaseQuery.value(table.column.referenceFormat).toUInt();
             item.responseFormat = sakDatabaseQuery.value(table.column.responseFormat).toUInt();
             item.option = sakDatabaseQuery.value(table.column.option).toUInt();

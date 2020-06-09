@@ -76,7 +76,7 @@ public:
         QString name;               /// 该自动回复数据名称
         QString referenceData;      /// 参考数据
         QString responseData;       /// 回复数据
-        bool enabled;               /// 该自动回复是否生效
+        bool enable;                /// 该自动回复是否生效
         quint32 referenceFormat;    /// 参考数据格式，详情查看SAKEnumTextInputFormat
         quint32 responseFormat;     /// 回复数据格式，详情查看SAKEnumTextInputFormat
         quint32 option;             /// 回复选项
