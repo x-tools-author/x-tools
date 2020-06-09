@@ -32,6 +32,17 @@ class SAKAutoResponseSettingsWidget:public QWidget
 public:
     SAKAutoResponseSettingsWidget(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKAutoResponseSettingsWidget();
+
+    struct AutoResponseItemKey {
+        const QString id = QString("id");
+        const QString name = QString("name");
+        const QString referenceData = QString("referenceData");
+        const QString responseData = QString("responseData");
+        const QString enable = QString("enable");
+        const QString referenceFormat = QString("referenceFormat");
+        const QString responseFormat = QString("responseFormat");
+        const QString option = QString("option");
+    };
 private:
     QTimer clearMessageInfoTimer;
     SAKDebugPage *debugPage;
@@ -40,17 +51,22 @@ private:
     void outputMessage(QString msg, bool isInfo);
     void clearMessage();
     void readInRecord();
+    bool contains(quint64 paraiD);
 private:
     Ui::SAKAutoResponseSettingsWidget *ui;
     QListWidget *listWidget;
     QCheckBox *forbidAllCheckBox;
     QPushButton *deleteItemPushButton;
     QPushButton *addItemPushButton;
+    QPushButton *outportPushButton;
+    QPushButton *importPushButton;
     QLabel *msgLabel;
 private slots:
     void on_forbidAllCheckBox_clicked();
     void on_deleteItemPushButton_clicked();
     void on_addItemPushButton_clicked();
+    void on_outportPushButton_clicked();
+    void on_importPushButton_clicked();
 };
 
 #endif
