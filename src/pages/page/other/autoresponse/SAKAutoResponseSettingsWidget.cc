@@ -253,6 +253,9 @@ void SAKAutoResponseSettingsWidget::on_importPushButton_clicked()
                 /// @brief 不存在则新建
                 if (!contains(responseItem.id)){
                     innerCreateItem(responseItem, debugPage, listWidget);
+
+                    QString tableName = SAKDataStruct::autoResponseTableName(debugPage->pageType());
+                    databaseInterface->insertAutoResponseItem(tableName, responseItem);
                 }
             }
         }
