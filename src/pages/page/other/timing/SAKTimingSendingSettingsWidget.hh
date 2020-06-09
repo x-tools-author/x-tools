@@ -35,7 +35,7 @@ private:
     Ui::SAKTimingSendingSettingsWidget *ui;
 
     QListWidget *itemListWidget;
-    QPushButton *savePushButton;
+    QPushButton *outportPushButton;
     QPushButton *importPushButton;
     QPushButton *deletePushButton;
     QPushButton *addPushButton;

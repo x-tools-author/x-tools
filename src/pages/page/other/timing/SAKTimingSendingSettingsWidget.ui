@@ -18,9 +18,9 @@
     <widget class="QListWidget" name="itemListWidget"/>
    </item>
    <item row="1" column="1">
-    <widget class="QPushButton" name="savePushButton">
+    <widget class="QPushButton" name="outportPushButton">
      <property name="text">
-      <string>保存</string>
+      <string>导出</string>
      </property>
     </widget>
    </item>

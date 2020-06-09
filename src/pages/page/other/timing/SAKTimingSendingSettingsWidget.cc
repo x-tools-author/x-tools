@@ -22,11 +22,11 @@ SAKTimingSendingSettingsWidget::SAKTimingSendingSettingsWidget(SAKDebugPage *deb
 {
     ui->setupUi(this);
 
-    itemListWidget      = ui->itemListWidget;
-    savePushButton      = ui->savePushButton;
-    importPushButton    = ui->importPushButton;
-    deletePushButton    = ui->deletePushButton;
-    addPushButton       = ui->addPushButton;
+    itemListWidget = ui->itemListWidget;
+    outportPushButton = ui->outportPushButton;
+    importPushButton = ui->importPushButton;
+    deletePushButton = ui->deletePushButton;
+    addPushButton = ui->addPushButton;
 
     on_addPushButton_clicked();
 }
