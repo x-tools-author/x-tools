@@ -26,7 +26,7 @@ namespace Ui {
 }
 
 class SAKDebugPage;
-class SAKDebugPageInputManager;
+/// @brief 预设数据管理窗口
 class SAKInputDataItemManager:public QWidget
 {
     Q_OBJECT
@@ -34,22 +34,20 @@ public:
     SAKInputDataItemManager(SAKDebugPage *debugPage, SAKDebugPageInputManager *inputManager, QWidget *parent = Q_NULLPTR);
     ~SAKInputDataItemManager();
 private:
+    SAKDebugPage *debugPage;
+    SAKCRCInterface *crcInterface;
+    SAKInputDataFactory *factory;
+    SAKDebugPageInputManager *inputManager;
+    QListWidget *listWidget;
+    SAKDebugPageInputManager::InputParameters inputParameters;
+private:
     Ui::SAKInputDataItemManager *ui;
-    QPushButton                 *deletePushButton;
-    QPushButton                 *addPushButton;
-    QLabel                      *infoLabel;
+    QPushButton *deletePushButton;
+    QPushButton *addPushButton;
+    QLabel *infoLabel;
 private slots:
     void on_deletePushButton_clicked();
     void on_addPushButton_clicked();
-private:
-    SAKDebugPage            *debugPage;
-    SAKCRCInterface         *crcInterface;
-    SAKInputDataFactory        *factory;
-    SAKDebugPageInputManager   *inputManager;
-    QListWidget             *listWidget;
-    SAKDebugPageInputManager::InputParameters inputParameters;
-signals:
-    void rawDataChanged(QString rawData, SAKDebugPageInputManager::InputParameters parameters);
 };
 
 #endif

@@ -19,12 +19,12 @@
 #include "ui_SAKInputDataItemManager.h"
 
 SAKInputDataItemManager::SAKInputDataItemManager(SAKDebugPage *debugPage, SAKDebugPageInputManager *inputManager, QWidget *parent)
-    :QWidget (parent)
-    ,ui (new Ui::SAKInputDataItemManager)
-    ,debugPage (debugPage)
-    ,crcInterface (new SAKCRCInterface)
-    ,factory (new SAKInputDataFactory)
-    ,inputManager (inputManager)
+    :QWidget(parent)
+    ,debugPage(debugPage)
+    ,crcInterface(new SAKCRCInterface)
+    ,factory(new SAKInputDataFactory)
+    ,inputManager(inputManager)
+    ,ui(new Ui::SAKInputDataItemManager)
 {
     ui->setupUi(this);
     deletePushButton    = ui->deletePushButton;
@@ -35,6 +35,7 @@ SAKInputDataItemManager::SAKInputDataItemManager(SAKDebugPage *debugPage, SAKDeb
 
 SAKInputDataItemManager::~SAKInputDataItemManager()
 {
+    delete crcInterface;
     delete ui;
 }
 
