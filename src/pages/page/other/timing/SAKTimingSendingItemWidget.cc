@@ -18,21 +18,22 @@
 
 SAKTimingSendingItemWidget::SAKTimingSendingItemWidget(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget(parent)
-    ,ui (new Ui::SAKTimingSendingItemWidget)
-    ,timingCheckBox (Q_NULLPTR)
-    ,timingTimeLineEdit (Q_NULLPTR)
-    ,textFormatComboBox (Q_NULLPTR)
-    ,remarkLineEdit (Q_NULLPTR)
-    ,inputDataTextEdit (Q_NULLPTR)
-    ,debugPage (debugPage)
+    ,ui(new Ui::SAKTimingSendingItemWidget)
+    ,timingCheckBox(Q_NULLPTR)
+    ,timingTimeLineEdit(Q_NULLPTR)
+    ,textFormatComboBox(Q_NULLPTR)
+    ,remarkLineEdit(Q_NULLPTR)
+    ,inputDataTextEdit(Q_NULLPTR)
+    ,debugPage(debugPage)
 {
     ui->setupUi(this);
 
-    timingCheckBox      = ui->timingCheckBox;
-    timingTimeLineEdit  = ui->timingTimeLineEdit;
-    textFormatComboBox  = ui->textFormatComboBox;
-    remarkLineEdit      = ui->remarkLineEdit;
-    inputDataTextEdit   = ui->inputDataTextEdit;
+    timingCheckBox = ui->timingCheckBox;
+    timingTimeLineEdit = ui->timingTimeLineEdit;
+    textFormatComboBox = ui->textFormatComboBox;
+    remarkLineEdit = ui->remarkLineEdit;
+    inputDataTextEdit = ui->inputDataTextEdit;
+    updatePushButton = ui->updatePushButton;
 
     writeTimer.setInterval(timingTimeLineEdit->text().toInt());
     connect(&writeTimer, &QTimer::timeout, this, &SAKTimingSendingItemWidget::write);

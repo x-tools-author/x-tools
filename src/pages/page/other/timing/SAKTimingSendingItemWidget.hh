@@ -17,6 +17,7 @@
 #include <QLineEdit>
 #include <QComboBox>
 #include <QCheckBox>
+#include <QPushButton>
 #include <QRegExpValidator>
 
 class SAKDebugPage;
@@ -40,6 +41,7 @@ private:
     QComboBox *textFormatComboBox;
     QLineEdit *remarkLineEdit;
     QTextEdit *inputDataTextEdit;
+    QPushButton *updatePushButton;
 private slots:
     void on_timingCheckBox_clicked();
     void on_timingTimeLineEdit_textChanged(const QString &text);
