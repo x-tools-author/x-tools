@@ -40,7 +40,7 @@ private:
     QPushButton *deletePushButton;
     QPushButton *addPushButton;
 private slots:
-    void on_savePushButton_clicked();
+    void on_outportPushButton_clicked();
     void on_importPushButton_clicked();
     void on_deletePushButton_clicked();
     void on_addPushButton_clicked();

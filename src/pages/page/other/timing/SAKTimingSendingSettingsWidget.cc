@@ -36,7 +36,7 @@ SAKTimingSendingSettingsWidget::~SAKTimingSendingSettingsWidget()
     delete ui;
 }
 
-void SAKTimingSendingSettingsWidget::on_savePushButton_clicked()
+void SAKTimingSendingSettingsWidget::on_outportPushButton_clicked()
 {
 
 }
