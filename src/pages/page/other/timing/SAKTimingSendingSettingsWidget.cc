@@ -37,6 +37,13 @@ SAKTimingSendingSettingsWidget::SAKTimingSendingSettingsWidget(SAKDebugPage *deb
     importPushButton = ui->importPushButton;
     deletePushButton = ui->deletePushButton;
     addPushButton = ui->addPushButton;
+    messageLabel = ui->messageLabel;
+
+    clearMessageTimer.setInterval(SAK_CLEAR_MESSAGE_INTERVAL);
+    connect(&clearMessageTimer, &QTimer::timeout, this, [&](){
+        clearMessageTimer.stop();
+        messageLabel->clear();
+    });
 
     databaseInterface = SAKDebugPageDatabaseInterface::instance();
     tableName = SAKDataStruct::timingSendingTableName(this->debugPage->pageType());
@@ -91,6 +98,18 @@ bool SAKTimingSendingSettingsWidget::contains(quint64 paraID)
     return contain;
 }
 
+void SAKTimingSendingSettingsWidget::outputMessage(QString msg, bool isError)
+{
+    QString color = "black";
+    if (isError){
+        color = "red";
+        QApplication::beep();
+    }
+    messageLabel->setStyleSheet(QString("QLabel{color:%1}").arg(color));
+    messageLabel->setText(QTime::currentTime().toString("hh:mm:ss ") + msg);
+    clearMessageTimer.start();
+}
+
 void SAKTimingSendingSettingsWidget::on_outportPushButton_clicked()
 {
     QList<SAKDataStruct::SAKStructTimingSendingItem> itemList = databaseInterface->selectTimingSendingItem(tableName);
@@ -141,6 +160,7 @@ void SAKTimingSendingSettingsWidget::on_importPushButton_clicked()
 
         QJsonDocument jsc = QJsonDocument::fromJson(array);
         if (!jsc.isArray()){
+            outputMessage(tr("文件数据格式有误"), true);
             return;
         }
 
@@ -163,6 +183,8 @@ void SAKTimingSendingSettingsWidget::on_importPushButton_clicked()
                 }
             }
         }
+    }else{
+        outputMessage(file.errorString(), true);
     }
 }
 

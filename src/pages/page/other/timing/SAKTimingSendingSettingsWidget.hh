@@ -10,6 +10,8 @@
 #ifndef SAKTIMINGSENDINGSETTINGSWIDGET_HH
 #define SAKTIMINGSENDINGSETTINGSWIDGET_HH
 
+#include <QTimer>
+#include <QLabel>
 #include <QRegExp>
 #include <QWidget>
 #include <QLineEdit>
@@ -43,9 +45,11 @@ private:
     SAKDebugPage *debugPage;
     QString tableName;
     SAKDebugPageDatabaseInterface *databaseInterface;
+    QTimer clearMessageTimer;
 private:
     void readinRecord();
     bool contains(quint64 paraID);
+    void outputMessage(QString msg, bool isError = false);
 private:
     Ui::SAKTimingSendingSettingsWidget *ui;
     QListWidget *itemListWidget;
@@ -53,6 +57,7 @@ private:
     QPushButton *importPushButton;
     QPushButton *deletePushButton;
     QPushButton *addPushButton;
+    QLabel *messageLabel;
 private slots:
     void on_outportPushButton_clicked();
     void on_importPushButton_clicked();
