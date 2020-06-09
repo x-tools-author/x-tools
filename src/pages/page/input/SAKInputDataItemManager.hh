@@ -26,6 +26,7 @@ namespace Ui {
 }
 
 class SAKDebugPage;
+class SAKDebugPageDatabaseInterface;
 /// @brief 预设数据管理窗口
 class SAKInputDataItemManager:public QWidget
 {
@@ -40,6 +41,10 @@ private:
     SAKDebugPageInputManager *inputManager;
     QListWidget *listWidget;
     SAKDebugPageInputManager::InputParameters inputParameters;
+    QString tableName;
+    SAKDebugPageDatabaseInterface *databaseInterface;
+private:
+    void readinRecord();
 private:
     Ui::SAKInputDataItemManager *ui;
     QPushButton *deletePushButton;

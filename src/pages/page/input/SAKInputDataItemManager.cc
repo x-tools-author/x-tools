@@ -11,10 +11,12 @@
 
 #include "SAKGlobal.hh"
 #include "SAKDebugPage.hh"
+#include "SAKDataStruct.hh"
 #include "SAKInputDataItem.hh"
 #include "SAKCRCInterface.hh"
 #include "SAKInputDataFactory.hh"
 #include "SAKInputDataItemManager.hh"
+#include "SAKDebugPageDatabaseInterface.hh"
 
 #include "ui_SAKInputDataItemManager.h"
 
@@ -31,6 +33,10 @@ SAKInputDataItemManager::SAKInputDataItemManager(SAKDebugPage *debugPage, SAKDeb
     addPushButton       = ui->addPushButton;
     listWidget          = ui->itemListWidget;
     infoLabel           = ui->infoLabel;
+
+    tableName = SAKDataStruct::presettingDataTableName(debugPage->pageType());
+    databaseInterface = SAKDebugPageDatabaseInterface::instance();
+    readinRecord();
 }
 
 SAKInputDataItemManager::~SAKInputDataItemManager()
@@ -39,10 +45,20 @@ SAKInputDataItemManager::~SAKInputDataItemManager()
     delete ui;
 }
 
+void SAKInputDataItemManager::readinRecord()
+{
+
+}
+
 void SAKInputDataItemManager::on_deletePushButton_clicked()
 {
     QListWidgetItem *item = listWidget->currentItem();
     if (item){
+        SAKInputDataItem *itemWidget = reinterpret_cast<SAKInputDataItem*>(listWidget->itemWidget(item));
+        SAKDataStruct::SAKStructPresettingDataItem dataItem;
+        dataItem.id = itemWidget->parameterID();
+        databaseInterface->deletePresettingDataItem(tableName, dataItem);
+
         listWidget->removeItemWidget(item);
         delete item;
     }
@@ -55,4 +71,13 @@ void SAKInputDataItemManager::on_addPushButton_clicked()
     item->setSizeHint(itemWidget->sizeHint());
     listWidget->addItem(item);
     listWidget->setItemWidget(item, itemWidget);
+
+    /// @brief 添加记录至数据库
+    SAKDataStruct::SAKStructPresettingDataItem dataItem;
+    dataItem.id = itemWidget->parameterID();
+    dataItem.data = itemWidget->parameterData();
+    dataItem.format = itemWidget->parameterFormat();
+    dataItem.comment = itemWidget->parameterComment();
+    dataItem.classify = itemWidget->parameterClassify();
+    databaseInterface->insertPresettingDataItem(tableName, dataItem);
 }

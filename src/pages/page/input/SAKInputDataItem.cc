@@ -30,6 +30,7 @@ SAKInputDataItem::SAKInputDataItem(SAKDebugPage *debugPage, SAKDebugPageInputMan
     descriptionLineEdit = ui->descriptionLineEdit;
     inputDataTextEdit = ui->inputDataTextEdit;
     updatePushButton = ui->updatePushButton;
+    classifyComboBox = ui->classifyComboBox;
     SAKGlobal::initInputTextFormatComboBox(textFormatComboBox);
 
     menuPushButton = inputManager->sendPresetPushButton;
@@ -49,6 +50,31 @@ SAKInputDataItem::SAKInputDataItem(SAKDebugPage *debugPage, SAKDebugPageInputMan
 SAKInputDataItem::~SAKInputDataItem()
 {
     removeDataAction(inputManager->presetPushButton);
+}
+
+quint64 SAKInputDataItem::parameterID()
+{
+    return id;
+}
+
+quint32 SAKInputDataItem::parameterFormat()
+{
+    return textFormatComboBox->currentIndex();
+}
+
+QString SAKInputDataItem::parameterComment()
+{
+    return descriptionLineEdit->text();
+}
+
+quint32 SAKInputDataItem::parameterClassify()
+{
+    return classifyComboBox->currentIndex();
+}
+
+QString SAKInputDataItem::parameterData()
+{
+    return inputDataTextEdit->toPlainText();
 }
 
 void SAKInputDataItem::addDataAction(QPushButton *menuPushButton)
