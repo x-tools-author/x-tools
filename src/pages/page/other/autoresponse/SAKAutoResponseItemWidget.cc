@@ -12,6 +12,7 @@
 #include "SAKGlobal.hh"
 #include "SAKDataStruct.hh"
 #include "SAKAutoResponseItemWidget.hh"
+#include "SAKDebugPageDatabaseInterface.hh"
 
 #include "ui_SAKAutoResponseItemWidget.h"
 
@@ -226,11 +227,12 @@ bool SAKAutoResponseItemWidget::response(QByteArray receiveData, QByteArray refe
 void SAKAutoResponseItemWidget::initUi()
 {
     ui->setupUi(this);
-    remarkLineEdit              = ui->remarkLineEdit;
-    referenceLineEdit           = ui->referenceLineEdit;
-    responseLineEdit            = ui->responseLineEdit;
-    enableCheckBox              = ui->enableCheckBox;
-    optionComboBox              = ui->optionComboBox;
+    remarkLineEdit = ui->remarkLineEdit;
+    referenceLineEdit = ui->referenceLineEdit;
+    responseLineEdit = ui->responseLineEdit;
+    enableCheckBox = ui->enableCheckBox;
+    optionComboBox = ui->optionComboBox;
+    updatePushButton = ui->updatePushButton;
     referenceDataFromatComboBox = ui->referenceDataFromatComboBox;
     responseDataFormatComboBox  = ui->responseDataFormatComboBox;
 
@@ -253,4 +255,18 @@ void SAKAutoResponseItemWidget::on_referenceDataFromatComboBox_currentTextChange
 void SAKAutoResponseItemWidget::on_responseDataFormatComboBox_currentTextChanged()
 {
     setLineEditFormat(responseLineEdit, responseDataFormatComboBox->currentData().toInt());
+}
+
+void SAKAutoResponseItemWidget::on_updatePushButton_clicked()
+{
+    QString tableName = SAKDataStruct::autoResponseTableName(debugPage->pageType());
+    SAKDataStruct::SAKStructAutoResponseItem item;
+    item.id = parameterID();
+    item.name = parameterName();
+    item.enabled = parameterEnable();
+    item.responseData = parameterResponseData();
+    item.referenceData = parameterRefernceData();
+    item.responseFormat = parameterResponseFormat();
+    item.referenceFormat = parameterReferenceFormat();
+    SAKDebugPageDatabaseInterface::instance()->updateAutoResponseItem(tableName, item);
 }
