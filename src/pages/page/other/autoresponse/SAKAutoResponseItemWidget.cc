@@ -271,7 +271,7 @@ void SAKAutoResponseItemWidget::on_updatePushButton_clicked()
     SAKDataStruct::SAKStructAutoResponseItem item;
     item.id = parameterID();
     item.name = parameterName();
-    item.enabled = parameterEnable();
+    item.enable = parameterEnable();
     item.responseData = parameterResponseData();
     item.referenceData = parameterRefernceData();
     item.responseFormat = parameterResponseFormat();
