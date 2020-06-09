@@ -51,7 +51,7 @@ private:
     void outputMessage(QString msg, bool isInfo);
     void clearMessage();
     void readInRecord();
-    bool contains(quint64 paraiD);
+    bool contains(quint64 paraID);
 private:
     Ui::SAKAutoResponseSettingsWidget *ui;
     QListWidget *listWidget;

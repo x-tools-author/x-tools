@@ -101,14 +101,14 @@ void SAKAutoResponseSettingsWidget::readInRecord()
     }
 }
 
-bool SAKAutoResponseSettingsWidget::contains(quint64 paraiD)
+bool SAKAutoResponseSettingsWidget::contains(quint64 paraID)
 {
     bool contain = false;
     for (int i = 0; i < listWidget->count(); i++){
         QListWidgetItem *item = listWidget->item(i);
         QWidget *w = listWidget->itemWidget(item);
         SAKAutoResponseItemWidget *itemWidget = reinterpret_cast<SAKAutoResponseItemWidget*>(w);
-        if (itemWidget->parameterID() == paraiD){
+        if (itemWidget->parameterID() == paraID){
             contain = true;
             break;
         }
