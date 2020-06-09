@@ -39,6 +39,7 @@ public:
             QString enable;         /// 是否使能该自动回复条目
             QString referenceFormat;/// 自动回复条目参考数据格式
             QString responseFormat; /// 自动回复条目应答数据格式
+            QString option;         /// 自动回复条目应答选项
         }column;
     };
 
