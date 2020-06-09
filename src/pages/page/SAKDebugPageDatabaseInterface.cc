@@ -137,7 +137,7 @@ QList<SAKDataStruct::SAKStructAutoResponseItem> SAKDebugPageDatabaseInterface::s
 void SAKDebugPageDatabaseInterface::insertTimingSendingItem(QString tableName, SAKDataStruct::SAKStructTimingSendingItem item)
 {
     TimingSendingTable table = tableNameToTimingSendingTable(tableName);
-    bool ret = sakDatabaseQuery.exec(QString("INSERT INTO %1(%2,%3,%4,%5,%6) VALUES(%7,%8,%9,%10,%11)")
+    bool ret = sakDatabaseQuery.exec(QString("INSERT INTO %1(%2,%3,%4,%5,%6) VALUES(%7,%8,%9,'%10','%11')")
                                      .arg(table.tableName)
                                      .arg(table.column.id)
                                      .arg(table.column.interval)
@@ -162,7 +162,7 @@ void SAKDebugPageDatabaseInterface::deleteTimingSendingItem(QString tableName, S
 void SAKDebugPageDatabaseInterface::updateTimingSendingItem(QString tableName, SAKDataStruct::SAKStructTimingSendingItem item)
 {
     TimingSendingTable table = tableNameToTimingSendingTable(tableName);
-    bool ret = sakDatabaseQuery.exec(QString("UPDATE %1 SET %2=%3, %4=%5, %6=%7, %8=%9, %10=%11, WHERE ID=%17")
+    bool ret = sakDatabaseQuery.exec(QString("UPDATE '%1' SET %2=%3,%4=%5,%6=%7,%8='%9',%10='%11' WHERE ID=%12")
                                      .arg(table.tableName)
                                      .arg(table.column.id)
                                      .arg(item.id)
@@ -173,7 +173,8 @@ void SAKDebugPageDatabaseInterface::updateTimingSendingItem(QString tableName, S
                                      .arg(table.column.comment)
                                      .arg(item.comment)
                                      .arg(table.column.data)
-                                     .arg(item.data));
+                                     .arg(item.data)
+                                     .arg(item.id));
     if (!ret){
         qWarning() << __FUNCTION__ << "Update record form " << table.tableName << " table failed: " << sakDatabaseQuery.lastError().text();
     }
@@ -192,7 +193,7 @@ QList<SAKDataStruct::SAKStructTimingSendingItem> SAKDebugPageDatabaseInterface::
             item.interval = sakDatabaseQuery.value(table.column.interval).toUInt();
             item.format = sakDatabaseQuery.value(table.column.format).toUInt();
             item.comment = sakDatabaseQuery.value(table.column.comment).toString();
-            item.data = sakDatabaseQuery.value(table.column.data).toBool();
+            item.data = sakDatabaseQuery.value(table.column.data).toString();
 
             itemList.append(item);
         }
@@ -389,14 +390,16 @@ bool SAKDebugPageDatabaseInterface::createTimingSendingTable(const TimingSending
     bool ret = sakDatabaseQuery.exec(QString("CREATE TABLE %1 \
                                               ( \
                                               %2 INTEGER PRIMARY KEY NOT NULL, \
-                                              %3 TEXT NOT NULL, \
-                                              %4 TEXT NOT NULL, \
-                                              %5 TEXT NOT NULL \
+                                              %3 INTEGER NOT NULL, \
+                                              %4 INTEGER NOT NULL, \
+                                              %5 TEXT NOT NULL, \
+                                              %6 TEXT NOT NULL \
                                               )")
                                              .arg(table.tableName)
                                              .arg(table.column.id)
                                              .arg(table.column.interval)
                                              .arg(table.column.format)
+                                             .arg(table.column.comment)
                                              .arg(table.column.data));
     return ret;
 }
