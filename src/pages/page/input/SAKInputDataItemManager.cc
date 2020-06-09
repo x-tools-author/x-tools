@@ -45,9 +45,17 @@ SAKInputDataItemManager::~SAKInputDataItemManager()
     delete ui;
 }
 
-void SAKInputDataItemManager::readinRecord()
+void innerCreateItem(SAKDataStruct::SAKStructPresettingDataItem &var, SAKDebugPage *debugPage, QListWidget *listWidget)
 {
 
+}
+
+void SAKInputDataItemManager::readinRecord()
+{
+    QList<SAKDataStruct::SAKStructPresettingDataItem> itemList = databaseInterface->selectPresettingDataItem(tableName);
+    for (auto var : itemList){
+        innerCreateItem(var, debugPage, listWidget);
+    }
 }
 
 void SAKInputDataItemManager::on_deletePushButton_clicked()
