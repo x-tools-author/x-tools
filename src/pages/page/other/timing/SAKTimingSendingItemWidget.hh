@@ -31,11 +31,29 @@ class SAKTimingSendingItemWidget:public QWidget
     Q_OBJECT
 public:
     SAKTimingSendingItemWidget(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
+    SAKTimingSendingItemWidget(SAKDebugPage *debugPage,
+                               quint64 id,
+                               quint32 interval,
+                               quint32 format,
+                               QString comment,
+                               QString data,
+                               QWidget *parent = Q_NULLPTR);
     ~SAKTimingSendingItemWidget();
 
+    quint64 parameterID();
+    quint32 parameterInterval();
+    quint32 parameterFormat();
+    QString parameterComment();
+    QString parameterData();
+private:
+    SAKDebugPage *debugPage;
+    quint64 id;
+    QTimer writeTimer;
+private:
+    void write();
+    void initUi();
 private:
     Ui::SAKTimingSendingItemWidget *ui;
-
     QCheckBox *timingCheckBox;
     QLineEdit *timingTimeLineEdit;
     QComboBox *textFormatComboBox;
@@ -45,13 +63,7 @@ private:
 private slots:
     void on_timingCheckBox_clicked();
     void on_timingTimeLineEdit_textChanged(const QString &text);
-
-private:
-    SAKDebugPage *debugPage;
-
-private:
-    QTimer writeTimer;
-    void write();
+    void on_updatePushButton_clicked();
 };
 
 #endif

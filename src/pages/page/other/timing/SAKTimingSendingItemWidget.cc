@@ -12,19 +12,82 @@
 
 #include "SAKGlobal.hh"
 #include "SAKDebugPage.hh"
+#include "SAKDataStruct.hh"
 #include "SAKTimingSendingItemWidget.hh"
+#include "SAKDebugPageDatabaseInterface.hh"
 
 #include "ui_SAKTimingSendingItemWidget.h"
 
 SAKTimingSendingItemWidget::SAKTimingSendingItemWidget(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget(parent)
-    ,ui(new Ui::SAKTimingSendingItemWidget)
-    ,timingCheckBox(Q_NULLPTR)
-    ,timingTimeLineEdit(Q_NULLPTR)
-    ,textFormatComboBox(Q_NULLPTR)
-    ,remarkLineEdit(Q_NULLPTR)
-    ,inputDataTextEdit(Q_NULLPTR)
     ,debugPage(debugPage)
+    ,ui(new Ui::SAKTimingSendingItemWidget)
+{
+    initUi();
+    id = QDateTime::currentMSecsSinceEpoch();
+}
+
+SAKTimingSendingItemWidget::SAKTimingSendingItemWidget(SAKDebugPage *debugPage,
+                                                       quint64 id,
+                                                       quint32 interval,
+                                                       quint32 format,
+                                                       QString comment,
+                                                       QString data,
+                                                       QWidget *parent)
+    :QWidget(parent)
+    ,debugPage(debugPage)
+    ,id(id)
+    ,ui(new Ui::SAKTimingSendingItemWidget)
+{
+    initUi();
+
+    timingTimeLineEdit->setText(QString::number(interval));
+    textFormatComboBox->setCurrentIndex(format);
+    remarkLineEdit->setText(comment);
+    inputDataTextEdit->setText(data);
+}
+
+SAKTimingSendingItemWidget::~SAKTimingSendingItemWidget()
+{
+    delete ui;
+}
+
+quint64 SAKTimingSendingItemWidget::parameterID()
+{
+    return id;
+}
+
+quint32 SAKTimingSendingItemWidget::parameterInterval()
+{
+    return timingTimeLineEdit->text().toUInt();
+}
+
+quint32 SAKTimingSendingItemWidget::parameterFormat()
+{
+    return textFormatComboBox->currentIndex();
+}
+
+QString SAKTimingSendingItemWidget::parameterComment()
+{
+    return remarkLineEdit->text();
+}
+
+QString SAKTimingSendingItemWidget::parameterData()
+{
+    return inputDataTextEdit->toPlainText();
+}
+
+void SAKTimingSendingItemWidget::write()
+{
+    QString data = inputDataTextEdit->toPlainText();
+
+    if (!data.isEmpty()){
+        int textFormat = this->textFormatComboBox->currentData().toInt();
+        debugPage->writeRawData(data, textFormat);
+    }
+}
+
+void SAKTimingSendingItemWidget::initUi()
 {
     ui->setupUi(this);
 
@@ -41,11 +104,6 @@ SAKTimingSendingItemWidget::SAKTimingSendingItemWidget(SAKDebugPage *debugPage, 
     SAKGlobal::initInputTextFormatComboBox(textFormatComboBox);
 }
 
-SAKTimingSendingItemWidget::~SAKTimingSendingItemWidget()
-{
-    delete ui;
-}
-
 void SAKTimingSendingItemWidget::on_timingCheckBox_clicked()
 {
     if (timingCheckBox){
@@ -59,13 +117,15 @@ void SAKTimingSendingItemWidget::on_timingTimeLineEdit_textChanged(const QString
     writeTimer.setInterval(interval == 0 ? 1000 : interval);
 }
 
-void SAKTimingSendingItemWidget::write()
+void SAKTimingSendingItemWidget::on_updatePushButton_clicked()
 {
-    QString data = inputDataTextEdit->toPlainText();
-
-    if (!data.isEmpty()){
-        int textFormat = this->textFormatComboBox->currentData().toInt();
-        debugPage->writeRawData(data, textFormat);
-    }
+    QString tableName = SAKDataStruct::timingSendingTableName(debugPage->pageType());
+    SAKDataStruct::SAKStructTimingSendingItem sendingItem;
+    sendingItem.id = parameterID();
+    sendingItem.data = parameterData();
+    sendingItem.format = parameterFormat();
+    sendingItem.comment = parameterComment();
+    sendingItem.interval = parameterInterval();
+    SAKDebugPageDatabaseInterface *databaseInterface = SAKDebugPageDatabaseInterface::instance();
+    databaseInterface->updateTimingSendingItem(tableName, sendingItem);
 }
-

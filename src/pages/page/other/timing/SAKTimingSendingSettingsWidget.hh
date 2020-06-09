@@ -24,6 +24,7 @@ namespace Ui {
 }
 
 class SAKDebugPage;
+class SAKDebugPageDatabaseInterface;
 class SAKTimingSendingSettingsWidget:public QWidget
 {
     Q_OBJECT
@@ -31,9 +32,22 @@ public:
     SAKTimingSendingSettingsWidget(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKTimingSendingSettingsWidget();
 
+    struct TimingSendingItemKey {
+        const QString id = QString("id");
+        const QString interval = QString("interval");
+        const QString format = QString("format");
+        const QString comment = QString("comment");
+        const QString data = QString("data");
+    };
+private:
+    SAKDebugPage *debugPage;
+    QString tableName;
+    SAKDebugPageDatabaseInterface *databaseInterface;
+private:
+    void readinRecord();
+    bool contains(quint64 paraID);
 private:
     Ui::SAKTimingSendingSettingsWidget *ui;
-
     QListWidget *itemListWidget;
     QPushButton *outportPushButton;
     QPushButton *importPushButton;
@@ -44,12 +58,6 @@ private slots:
     void on_importPushButton_clicked();
     void on_deletePushButton_clicked();
     void on_addPushButton_clicked();
-
-private:
-    SAKDebugPage *debugPage;
-
-signals:
-    void write(QByteArray data);
 };
 
 #endif
