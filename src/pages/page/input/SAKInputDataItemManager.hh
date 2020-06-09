@@ -33,7 +33,6 @@ class SAKInputDataItemManager:public QWidget
 public:
     SAKInputDataItemManager(SAKDebugPage *debugPage, SAKDebugPageInputManager *inputManager, QWidget *parent = Q_NULLPTR);
     ~SAKInputDataItemManager();
-
 private:
     Ui::SAKInputDataItemManager *ui;
     QPushButton                 *deletePushButton;
@@ -42,15 +41,12 @@ private:
 private slots:
     void on_deletePushButton_clicked();
     void on_addPushButton_clicked();
-
 private:
     SAKDebugPage            *debugPage;
     SAKCRCInterface         *crcInterface;
     SAKInputDataFactory        *factory;
     SAKDebugPageInputManager   *inputManager;
     QListWidget             *listWidget;
-
-    QTimer sendTimer;
     SAKDebugPageInputManager::InputParameters inputParameters;
 signals:
     void rawDataChanged(QString rawData, SAKDebugPageInputManager::InputParameters parameters);
