@@ -76,7 +76,6 @@ SAKDebugPageOutputManager::SAKDebugPageOutputManager(SAKDebugPage *debugPage, QO
 
 SAKDebugPageOutputManager::~SAKDebugPageOutputManager()
 {
-    dataFactory->terminate();
     delete dataFactory;
     delete outputSettings;
 }
