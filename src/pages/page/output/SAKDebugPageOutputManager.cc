@@ -23,7 +23,7 @@ SAKDebugPageOutputManager::SAKDebugPageOutputManager(SAKDebugPage *debugPage, QO
     ,rxFlagCount (4)
     ,txFlagCount (0)
 {
-    // 注册数据类型（自定义数据类型作为信号参数时，要进行注册，该函数要与宏 Q_DECLARE_METATYPE 配套使用）
+    /// @brief 注册数据类型（自定义数据类型作为信号参数时，要进行注册，该函数要与宏 Q_DECLARE_METATYPE 配套使用）
     qRegisterMetaType<OutputParameters>("OutputParameters");
 
     rxLabel                         = debugPage->rxLabel;
@@ -46,19 +46,14 @@ SAKDebugPageOutputManager::SAKDebugPageOutputManager(SAKDebugPage *debugPage, QO
     connect(saveOutputPushButton,           &QCheckBox::clicked, this, &SAKDebugPageOutputManager::saveOutputTextToFile);
     connect(outputFilePathPushButton,       &QCheckBox::clicked, this, &SAKDebugPageOutputManager::saveOutputDataSettings);
 
-
-    // 初始化数据格式预选框
+    /// @brief 初始化数据格式预选框
     SAKGlobal::initOutputTextFormatComboBox(outputTextFormatComboBox);
 
-    /*
-     * 处理已接收或者是已发送的数据
-     */
+    /// @brief 处理已接收或者是已发送的数据
     connect(debugPage, &SAKDebugPage::bytesRead, this, &SAKDebugPageOutputManager::bytesRead);
     connect(debugPage, &SAKDebugPage::bytesWritten, this, &SAKDebugPageOutputManager::bytesWritten);
 
-    /*
-     * 数据先发送到 dataFactory 中进行处理，处理完毕后再输出至界面
-     */
+    /// @brief 数据先发送到 dataFactory 中进行处理，处理完毕后再输出至界面
     dataFactory = new SAKOutputDataFactory;
     connect(this, &SAKDebugPageOutputManager::cookData, dataFactory, &SAKOutputDataFactory::cookData);
     connect(dataFactory, &SAKOutputDataFactory::dataCooked, this, &SAKDebugPageOutputManager::outputData);
