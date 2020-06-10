@@ -241,9 +241,7 @@ void SAKDebugPageInputManager::initParameters()
 void SAKDebugPageInputManager::setCycleEnable()
 {
     if (cycleEnableCheckBox->isChecked()){
-        /*
-         * 如果输入框输入内容不符合规范，默认循环周期为50ms
-         */
+        /// @brief 如果输入框输入内容不符合规范，默认循环周期为50ms
         bool ok = false;
         int cycleTime = cycleTimeLineEdit->text().toInt(&ok);
         if (ok){
