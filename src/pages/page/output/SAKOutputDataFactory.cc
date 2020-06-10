@@ -7,7 +7,7 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
-#include <QApplication>
+#include <QEventLoop>
 
 #include "SAKGlobal.hh"
 #include "SAKDataStruct.hh"
@@ -16,16 +16,46 @@
 SAKOutputDataFactory::SAKOutputDataFactory(QObject *parent)
     :QThread (parent)
 {
-    moveToThread(this);
+
+}
+
+SAKOutputDataFactory::~SAKOutputDataFactory()
+{
+    requestInterruption();
+    threadWaitCondition.wakeAll();
+    wait();
 }
 
 void SAKOutputDataFactory::run()
 {
-    connect(qApp, &QApplication::lastWindowClosed, this, &SAKOutputDataFactory::terminate);
-    exec();
+    QEventLoop eventLoop;
+    while (true) {
+        /// @brief 响应外部中断请求
+        if (isInterruptionRequested()){
+            break;
+        }
+
+        /// @brief 处理数据
+        while (true) {
+            RawDataStruct rawData = takeRawData();
+            if (rawData.rawData.length()){
+                innerCookData(rawData.rawData, rawData.parameters);
+            }else{
+                break;
+            }
+        }
+
+        /// @brief 处理事件循环
+        eventLoop.processEvents();
+
+        /// @brief 线程睡眠
+        threadMutex.lock();
+        threadWaitCondition.wait(&threadMutex, 50);
+        threadMutex.unlock();
+    }
 }
 
-void SAKOutputDataFactory::cookData(QByteArray rawData, SAKDebugPageOutputManager::OutputParameters parameters)
+void SAKOutputDataFactory::innerCookData(QByteArray rawData, SAKDebugPageOutputManager::OutputParameters parameters)
 {
     QString str;
 
@@ -86,4 +116,29 @@ void SAKOutputDataFactory::cookData(QByteArray rawData, SAKDebugPageOutputManage
     }
 
     emit dataCooked(str);
+}
+
+SAKOutputDataFactory::RawDataStruct SAKOutputDataFactory::takeRawData()
+{
+    RawDataStruct rawData;
+    rawDataListMutex.lock();
+    if (rawDataList.length()){
+        rawData = rawDataList.takeFirst();
+    }
+    rawDataListMutex.unlock();
+
+    return rawData;
+}
+
+void SAKOutputDataFactory::cookData(QByteArray rawData, SAKDebugPageOutputManager::OutputParameters parameters)
+{
+    RawDataStruct rawDataStruct;
+    rawDataStruct.rawData = rawData;
+    rawDataStruct.parameters = parameters;
+
+    rawDataListMutex.lock();
+    rawDataList.append(rawDataStruct);
+    rawDataListMutex.unlock();
+
+    threadWaitCondition.wakeAll();
 }

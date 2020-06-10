@@ -10,7 +10,10 @@
 #ifndef SAKOUTPUTDATAFACTORY_HH
 #define SAKOUTPUTDATAFACTORY_HH
 
+#include <QMutex>
 #include <QThread>
+#include <QWaitCondition>
+
 #include "SAKDebugPageOutputManager.hh"
 
 class SAKOutputDataFactory:public QThread
@@ -18,6 +21,7 @@ class SAKOutputDataFactory:public QThread
     Q_OBJECT
 public:
     SAKOutputDataFactory(QObject *parent = Q_NULLPTR);
+    ~SAKOutputDataFactory();
 
     /**
      * @brief cookData 将数据按照指定参数转变为字符串输出
@@ -25,8 +29,21 @@ public:
      * @param parameters 输出参数
      */
     void cookData(QByteArray rawData, SAKDebugPageOutputManager::OutputParameters parameters);
-private:
+protected:
     void run() final;
+private:
+    struct RawDataStruct {
+        QByteArray rawData;
+        SAKDebugPageOutputManager::OutputParameters parameters;
+    };
+
+    QList<RawDataStruct> rawDataList;
+    QMutex rawDataListMutex;
+    QMutex threadMutex;
+    QWaitCondition threadWaitCondition;
+private:
+    void innerCookData(QByteArray rawData, SAKDebugPageOutputManager::OutputParameters parameters);
+    RawDataStruct takeRawData();
 signals:
     void dataCooked(QString data);
 };
