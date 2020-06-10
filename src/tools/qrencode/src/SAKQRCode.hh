@@ -10,6 +10,7 @@
 #ifndef SAKQRCODE_HH
 #define SAKQRCODE_HH
 
+#include <QPixmap>
 #include <QWidget>
 
 /// @brief 显示一张二维码图片
@@ -17,13 +18,24 @@ class SAKQRCode : public QWidget
 {
     Q_OBJECT
 public:
-    SAKQRCode(QSize size, QString image, QWidget *parent = Q_NULLPTR);
+    SAKQRCode(QWidget *parent = Q_NULLPTR);
     ~SAKQRCode();
+
+    /**
+     * @brief updateQRCode 更新二维码
+     * @param pixmap 二维码图片
+     */
+    void updateQRCode(QPixmap pixmap);
+
+    /**
+     * @brief qrCode 获取二维码
+     * @return 二维码
+     */
+    QPixmap qrCode();
 protected:
     void paintEvent(QPaintEvent *event) override;
 private:
-    QSize size;
-    QString image;
+    QPixmap innerPixmap;
 };
 
 #endif

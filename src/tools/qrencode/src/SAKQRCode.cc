@@ -11,12 +11,10 @@
 #include <QPainter>
 #include "SAKQRCode.hh"
 
-SAKQRCode::SAKQRCode(QSize size, QString image, QWidget *parent)
-    : QWidget(parent)
-    , size(size)
-    , image(image)
+SAKQRCode::SAKQRCode(QWidget *parent)
+    :QWidget(parent)
 {
-    resize(size.width(), size.height());
+
 }
 
 SAKQRCode::~SAKQRCode()
@@ -24,18 +22,30 @@ SAKQRCode::~SAKQRCode()
 
 }
 
+void SAKQRCode::updateQRCode(QPixmap pixmap)
+{
+    innerPixmap = pixmap;
+    update();
+}
+
+QPixmap SAKQRCode::qrCode()
+{
+    return innerPixmap;
+}
+
 void SAKQRCode::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event);
+    if (innerPixmap.isNull()){
+        return;
+    }
 
-    QPixmap qrCode(image);
-    qrCode = qrCode.scaled(size, Qt::KeepAspectRatio, Qt::SmoothTransformation);
-    int w = qrCode.width();
-    int h = qrCode.height();
+   int qrCodeLeftMargin = (width()-innerPixmap.width())/2;
+   int qrCodeTopMargin = (height()-innerPixmap.height())/2;
 
-    QRectF target((width()-w)/2, (height()-h)/2, w, h);
-    QRectF source(0, 0, w, h);
-
-    QPainter painter(this);
-    painter.drawPixmap(target, qrCode, source);
+   /// @brief 绘制二维码
+   QPainter painter(this);
+   QRect qrCodeRect = QRect(qrCodeLeftMargin, qrCodeTopMargin, innerPixmap.height(), innerPixmap.height());
+   innerPixmap = innerPixmap.scaledToHeight(qrCodeRect.height());
+   painter.drawPixmap(qrCodeRect, innerPixmap);
 }

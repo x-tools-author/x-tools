@@ -10,18 +10,40 @@
 #ifndef SAKQRCODECREATOR_HH
 #define SAKQRCODECREATOR_HH
 
+#include <QPixmap>
 #include <QWidget>
+#include <QPushButton>
+#include <QPlainTextEdit>
+
 namespace Ui {
     class SAKQRCodeCreator;
 }
+
+class SAKQRCode;
+/// @brief 二维码生成工具
 class SAKQRCodeCreator:public QWidget
 {
     Q_OBJECT
 public:
     SAKQRCodeCreator(QWidget *parent = Q_NULLPTR);
     ~SAKQRCodeCreator();
+
+    /**
+     * @brief encodeString 将字符串编码成二维码图片
+     * @param text 输入信息
+     * @param width 二维码宽度
+     * @return 二维码图片
+     */
+    QPixmap encodeString(const QString &text, int width = 100);
 private:
     Ui::SAKQRCodeCreator *ui;
+    SAKQRCode *qrCodeWidget;
+    QPlainTextEdit *plainTextEdit;
+    QPushButton *savePushButton;
+    QPushButton *createPushButton;
+private slots:
+    void on_savePushButton_clicked();
+    void on_createPushButton_clicked();
 };
 
 #endif
