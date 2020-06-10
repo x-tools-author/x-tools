@@ -45,7 +45,7 @@ SAKDebugPageInputManager::SAKDebugPageInputManager(SAKDebugPage *debugPage, QObj
     inputDataFactory = new SAKInputDataFactory;
     inputDataFactory->start();
 
-    crcInterface = new SAKCRCInterface(this);
+    crcInterface = new SAKCRCInterface;
     inputDataItemManager = new SAKInputDataItemManager(debugPage, this);
 
     sendPushButton->setEnabled(false);
@@ -80,7 +80,9 @@ SAKDebugPageInputManager::SAKDebugPageInputManager(SAKDebugPage *debugPage, QObj
 SAKDebugPageInputManager::~SAKDebugPageInputManager()
 {
     inputDataFactory->terminate();
+    inputDataFactory->wait();
     delete inputDataFactory;
+    delete crcInterface;
     delete inputDataItemManager;
 }
 
