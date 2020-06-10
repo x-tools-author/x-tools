@@ -88,9 +88,7 @@ SAKDebugPageInputManager::~SAKDebugPageInputManager()
 
 void SAKDebugPageInputManager::changeInputModel(const QString &text)
 {
-    /*
-     *  在ui初始化的时候，会出现text为empty的情况
-     */
+    /// @brief 在ui初始化的时候，会出现text为empty的情况
     if (text.isEmpty()){
         return;
     }
