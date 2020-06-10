@@ -23,10 +23,10 @@ Qt 5.12.x，其他版本也可能适用，但项目作者不会对其他版本�
 ***************
 
 ```txt
-                _           _
-               | |         (_)
-__      ___   _| |__   __ _ _
-\ \ /\ / / | | | '_ \ / _` | |    sheng huo bu zhi yan qian de gou qie, hai you yuan fang de gou qie.
- \ V  V /| |_| | | | | (_| | |           but do not be upset, coding will make you happy.
-  \_/\_/  \__,_|_| |_|\__,_|_|                                                               --Confucius
+   ____  __
+  / __ \/ /____  _____
+ / / / / __/ _ \/ ___/ sheng huo bu zhi yan qian de gou qie, hai you yuan fang de gou qie.
+/ /_/ / /_/  __/ /     but do not be upset, coding will make you happy.
+\___\_\__/\___/_/                                                             --Confucius
+
 ```
