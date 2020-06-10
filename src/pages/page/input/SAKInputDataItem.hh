@@ -34,6 +34,14 @@ class SAKInputDataItem:public QWidget
     Q_OBJECT
 public:
     SAKInputDataItem(SAKDebugPage *debugPage, SAKDebugPageInputManager *inputManager, QWidget *parent = Q_NULLPTR);
+    SAKInputDataItem(quint64 id,
+                     quint32 format,
+                     QString comment,
+                     quint32 classify,
+                     QString data,
+                     SAKDebugPage *debugPage,
+                     SAKDebugPageInputManager *inputManager,
+                     QWidget *parent = Q_NULLPTR);
     ~SAKInputDataItem();
 
     quint64 parameterID();
@@ -54,6 +62,7 @@ private:
     void updateActionTitle(const QString &title);
     void updateTextFormat();
     void sendRawData();
+    void initUi();
 signals:
     void rawDataChanged(QString rawData, SAKDebugPageInputManager::InputParameters parameters);
 private:
