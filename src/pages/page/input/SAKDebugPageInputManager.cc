@@ -327,8 +327,13 @@ void SAKDebugPageInputManager::formattingInputText(QTextEdit *textEdit, int mode
             textEdit->setText(strTemp.toUpper());
             textEdit->moveCursor(QTextCursor::End);
         }else if(model == SAKDataStruct::InputFormatAscii) {
-            plaintext.remove(QRegExp("[^\0u00-\u007f ]"));
-            textEdit->setText(plaintext);
+            QString newString;
+            for (int i = 0; i < plaintext.count(); i++){
+                if (plaintext.at(i).unicode() <= 127){
+                    newString.append(plaintext.at(i));
+                }
+            }
+            textEdit->setText(newString);
             textEdit->moveCursor(QTextCursor::End);
         }else if(model == SAKDataStruct::InputFormatUtf8) {
             /// nothing to do
