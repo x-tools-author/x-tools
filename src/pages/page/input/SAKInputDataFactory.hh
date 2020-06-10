@@ -53,6 +53,7 @@ private:
         QString rawData;
         SAKDebugPageInputManager::InputParameters parameters;
     };
+
     QList<RawDataStruct> rawDataList;
     QMutex rawDataListMutex;
     QMutex threadMutex;
