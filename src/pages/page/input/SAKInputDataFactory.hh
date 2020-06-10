@@ -26,7 +26,7 @@ public:
      * @param rawData 原数据
      * @param parameters 输入参数
      */
-    void  cookData(QString rawData, SAKDebugPageInputManager::InputParameters parameters);
+    void cookData(QString rawData, SAKDebugPageInputManager::InputParameters parameters);
 
     /**
      * @brief crcCalculate 计算输入数据的crc
