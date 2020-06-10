@@ -10,7 +10,9 @@
 #ifndef SAKINPUTDATAFACTORY_HH
 #define SAKINPUTDATAFACTORY_HH
 
+#include <QMutex>
 #include <QThread>
+#include <QWaitCondition>
 
 #include "SAKDebugPageInputManager.hh"
 
@@ -20,6 +22,7 @@ class SAKInputDataFactory:public QThread
     Q_OBJECT
 public:
     SAKInputDataFactory(QObject *parent = Q_NULLPTR);
+    ~SAKInputDataFactory();
 
     /**
      * @brief cookData 处理输入数据
@@ -43,13 +46,24 @@ public:
      * @return 数据
      */
     QByteArray rawDataToArray(QString rawData, SAKDebugPageInputManager::InputParameters parameters);
+protected:
+    void run() final;
 private:
+    struct RawDataStruct {
+        QString rawData;
+        SAKDebugPageInputManager::InputParameters parameters;
+    };
+    QList<RawDataStruct> rawDataList;
+    QMutex rawDataListMutex;
+    QMutex threadMutex;
+    QWaitCondition threadCondition;
     SAKCRCInterface *crcInterface;
     SAKDebugPage *debugPage;
-    // ------------------------------------------------------------------------
-    void run() final;      
+private:
+    RawDataStruct takeRawData();
+    void innnerCookData(QString rawData, SAKDebugPageInputManager::InputParameters parameters);
 signals:
-    /// 输入数据经过处理后通过该信号对外发射
+    /// @brief 输入数据经过处理后通过该信号对外发射
     void dataCooked(QByteArray);
 };
 

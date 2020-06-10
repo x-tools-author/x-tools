@@ -8,7 +8,7 @@
  * group which number is 952218522 to have a communication.
  */
 #include <QtEndian>
-#include <QApplication>
+#include <QEventLoop>
 
 #include "SAKGlobal.hh"
 #include "SAKDataStruct.hh"
@@ -19,38 +19,26 @@ SAKInputDataFactory::SAKInputDataFactory(QObject *parent)
     :QThread (parent)
     ,crcInterface (Q_NULLPTR)
 {
-    moveToThread(this);
+
 }
 
-void SAKInputDataFactory:: cookData(QString rawData, SAKDebugPageInputManager::InputParameters parameters)
+SAKInputDataFactory::~SAKInputDataFactory()
 {
-    QByteArray data = rawDataToArray(rawData, parameters);
-    if (parameters.addCRC){
-        uint32_t crc  = crcCalculate(data, parameters.crcModel);
-        uint8_t  crc8  = static_cast<uint8_t>(crc);
-        uint16_t crc16 = static_cast<uint16_t>(crc);
-        int bitsWidth = crcInterface->getBitsWidth(static_cast<SAKCRCInterface::CRCModel>(parameters.crcModel));
-        if (parameters.bigEndian){
-            crc16 = qToBigEndian(crc16);
-            crc = qToBigEndian(crc);
-        }
+    requestInterruption();
+    threadCondition.wakeAll();
+    exit();
+    wait();
+}
 
-        switch (bitsWidth) {
-        case 8:
-            data.append(reinterpret_cast<char*>(&crc8), 1);
-            break;
-        case 16:
-            data.append(reinterpret_cast<char*>(&crc16), 2);
-            break;
-        case 32:
-            data.append(reinterpret_cast<char*>(&crc), 4);
-            break;
-        default:
-            break;
-        }
-    }
+void SAKInputDataFactory::cookData(QString rawData, SAKDebugPageInputManager::InputParameters parameters)
+{
+    RawDataStruct rawDataStruct;
+    rawDataListMutex.lock();
+    rawDataStruct.rawData = rawData;
+    rawDataStruct.parameters = parameters;
+    rawDataListMutex.unlock();
 
-    emit dataCooked(data);
+    threadCondition.wakeAll();
 }
 
 quint32 SAKInputDataFactory::crcCalculate(QByteArray data, int model)
@@ -119,7 +107,75 @@ QByteArray SAKInputDataFactory::rawDataToArray(QString rawData, SAKDebugPageInpu
 
 void SAKInputDataFactory::run()
 {
-    crcInterface = new SAKCRCInterface(this);
-    connect(qApp, &QApplication::lastWindowClosed, this, &SAKInputDataFactory::terminate);
-    exec();
+    QEventLoop eventLoop;
+    crcInterface = new SAKCRCInterface;
+    while (true) {
+        if (isInterruptionRequested()){
+            break;
+        }
+
+        /// @brief 处理数据
+        while (true) {
+            RawDataStruct rawDataStruct = takeRawData();
+            if (rawDataStruct.rawData.length()){
+                innnerCookData(rawDataStruct.rawData, rawDataStruct.parameters);
+            }else{
+                break;
+            }
+        }
+
+        /// @brief 处理驱动事件
+        eventLoop.processEvents();
+
+        /// @brief 线程睡眠
+        threadMutex.lock();
+        threadCondition.wait(&threadMutex, 50);
+        threadMutex.unlock();
+    }
+
+    delete crcInterface;
+    crcInterface = Q_NULLPTR;
+}
+
+SAKInputDataFactory::RawDataStruct SAKInputDataFactory::takeRawData()
+{
+    RawDataStruct rawDataStruct;
+    rawDataListMutex.lock();
+    if (rawDataList.length()){
+        rawDataStruct = rawDataList.takeFirst();
+    }
+    rawDataListMutex.unlock();
+
+    return rawDataStruct;
+}
+
+void SAKInputDataFactory::innnerCookData(QString rawData, SAKDebugPageInputManager::InputParameters parameters)
+{
+    QByteArray data = rawDataToArray(rawData, parameters);
+    if (parameters.addCRC){
+        uint32_t crc  = crcCalculate(data, parameters.crcModel);
+        uint8_t  crc8  = static_cast<uint8_t>(crc);
+        uint16_t crc16 = static_cast<uint16_t>(crc);
+        int bitsWidth = crcInterface->getBitsWidth(static_cast<SAKCRCInterface::CRCModel>(parameters.crcModel));
+        if (parameters.bigEndian){
+            crc16 = qToBigEndian(crc16);
+            crc = qToBigEndian(crc);
+        }
+
+        switch (bitsWidth) {
+        case 8:
+            data.append(reinterpret_cast<char*>(&crc8), 1);
+            break;
+        case 16:
+            data.append(reinterpret_cast<char*>(&crc16), 2);
+            break;
+        case 32:
+            data.append(reinterpret_cast<char*>(&crc), 4);
+            break;
+        default:
+            break;
+        }
+    }
+
+    emit dataCooked(data);
 }
