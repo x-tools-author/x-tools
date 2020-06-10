@@ -79,8 +79,6 @@ SAKDebugPageInputManager::SAKDebugPageInputManager(SAKDebugPage *debugPage, QObj
 
 SAKDebugPageInputManager::~SAKDebugPageInputManager()
 {
-    inputDataFactory->terminate();
-    inputDataFactory->wait();
     delete inputDataFactory;
     delete crcInterface;
     delete inputDataItemManager;
