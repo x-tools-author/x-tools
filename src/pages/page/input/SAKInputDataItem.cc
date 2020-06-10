@@ -73,7 +73,13 @@ QString SAKInputDataItem::parameterComment()
 
 quint32 SAKInputDataItem::parameterClassify()
 {
-    return classifyComboBox->currentIndex();
+    quint32 ret;
+    if (classifyComboBox->count()){
+        ret = classifyComboBox->currentIndex();
+    }else{
+        ret = 0;
+    }
+    return ret;
 }
 
 QString SAKInputDataItem::parameterData()
@@ -146,6 +152,7 @@ void SAKInputDataItem::initUi()
     inputDataTextEdit = ui->inputDataTextEdit;
     updatePushButton = ui->updatePushButton;
     classifyComboBox = ui->classifyComboBox;
+    classifyComboBox->addItem(tr("默认"));
     SAKGlobal::initInputTextFormatComboBox(textFormatComboBox);
 
     menuPushButton = inputManager->sendPresetPushButton;
