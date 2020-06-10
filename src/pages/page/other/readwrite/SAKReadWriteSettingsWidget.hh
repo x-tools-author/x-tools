@@ -24,6 +24,7 @@ class SAKReadWriteSettingsWidget:public QDialog
     Q_OBJECT
 public:
     SAKReadWriteSettingsWidget(SAKDebugPage *debugPage, QWidget* parent = Q_NULLPTR);
+    ~SAKReadWriteSettingsWidget();
 private:
     Ui::SAKReadWriteSettingsWidget *ui = Q_NULLPTR;
 

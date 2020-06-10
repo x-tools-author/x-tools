@@ -57,6 +57,7 @@ SAKInputDataItemManager::~SAKInputDataItemManager()
 {
     delete crcInterface;
     delete ui;
+    delete factory;
 }
 
 void innerCreateItem(SAKDataStruct::SAKStructPresettingDataItem &var, SAKDebugPage *debugPage, SAKDebugPageInputManager *inputManager, QListWidget *listWidget, SAKInputDataItemManager *itemManager)

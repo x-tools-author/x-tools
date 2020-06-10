@@ -22,6 +22,11 @@ SAKReadWriteSettingsWidget::SAKReadWriteSettingsWidget(SAKDebugPage *debugPage, 
     waitForBytesWrittenTime = 5;
 }
 
+SAKReadWriteSettingsWidget::~SAKReadWriteSettingsWidget()
+{
+    delete ui;
+}
+
 void SAKReadWriteSettingsWidget::on_readParametersComboBox_currentTextChanged(const QString &text)
 {
     waitForReadyReadTime = text.toInt();
