@@ -128,9 +128,11 @@ void SAKInputDataFactory::run()
         eventLoop.processEvents();
 
         /// @brief 线程睡眠
-        threadMutex.lock();
-        threadCondition.wait(&threadMutex, 50);
-        threadMutex.unlock();
+        if (!isInterruptionRequested()){
+            threadMutex.lock();
+            threadCondition.wait(&threadMutex, 50);
+            threadMutex.unlock();
+        }
     }
 
     delete crcInterface;
