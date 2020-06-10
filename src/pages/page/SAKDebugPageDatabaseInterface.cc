@@ -207,11 +207,12 @@ QList<SAKDataStruct::SAKStructTimingSendingItem> SAKDebugPageDatabaseInterface::
 void SAKDebugPageDatabaseInterface::insertPresettingDataItem(QString tableName, SAKDataStruct::SAKStructPresettingDataItem item)
 {
     PresettingDataTable table = tableNameToPresettingDataTable(tableName);
-    bool ret = sakDatabaseQuery.exec(QString("INSERT INTO %1(%2,%3,%4,%5,%6) VALUES(%7,%8,%9,%10,%11)")
+    bool ret = sakDatabaseQuery.exec(QString("INSERT INTO %1(%2,%3,%4,%5,%6) VALUES(%7,%8,'%9',%10,'%11')")
                                      .arg(table.tableName)
                                      .arg(table.column.id)
                                      .arg(table.column.format)
                                      .arg(table.column.comment)
+                                     .arg(table.column.classify)
                                      .arg(table.column.data)
                                      .arg(item.id)
                                      .arg(item.format)
@@ -231,7 +232,7 @@ void SAKDebugPageDatabaseInterface::deletePresettingDataItem(QString tableName, 
 void SAKDebugPageDatabaseInterface::updatePresettingDataItem(QString tableName, SAKDataStruct::SAKStructPresettingDataItem item)
 {
     PresettingDataTable table = tableNameToPresettingDataTable(tableName);
-    bool ret = sakDatabaseQuery.exec(QString("UPDATE %1 SET %2=%3, %4=%5, %6=%7, %8=%9, %10=%11, WHERE ID=%12")
+    bool ret = sakDatabaseQuery.exec(QString("UPDATE %1 SET %2=%3, %4=%5, %6='%7', %8=%9, %10='%11' WHERE ID=%12")
                                      .arg(table.tableName)
                                      .arg(table.column.id)
                                      .arg(item.id)
@@ -242,7 +243,8 @@ void SAKDebugPageDatabaseInterface::updatePresettingDataItem(QString tableName, 
                                      .arg(table.column.classify)
                                      .arg(item.classify)
                                      .arg(table.column.data)
-                                     .arg(item.data));
+                                     .arg(item.data)
+                                     .arg(item.id));
     if (!ret){
         qWarning() << __FUNCTION__ << "Update record form " << table.tableName << " table failed: " << sakDatabaseQuery.lastError().text();
     }
@@ -259,8 +261,8 @@ QList<SAKDataStruct::SAKStructPresettingDataItem> SAKDebugPageDatabaseInterface:
         while (sakDatabaseQuery.next()) {
             item.id = sakDatabaseQuery.value(table.column.id).toULongLong();
             item.format = sakDatabaseQuery.value(table.column.format).toUInt();
-            item.comment = sakDatabaseQuery.value(table.column.format).toString();
-            item.classify = sakDatabaseQuery.value(table.column.comment).toUInt();
+            item.comment = sakDatabaseQuery.value(table.column.comment).toString();
+            item.classify = sakDatabaseQuery.value(table.column.classify).toUInt();
             item.data = sakDatabaseQuery.value(table.column.data).toString();
 
             itemList.append(item);
