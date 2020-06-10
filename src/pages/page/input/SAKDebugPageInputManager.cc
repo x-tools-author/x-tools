@@ -25,14 +25,7 @@
 SAKDebugPageInputManager::SAKDebugPageInputManager(SAKDebugPage *debugPage, QObject *parent)
     :QObject (parent)
     ,debugPage (debugPage)
-{   
-    qRegisterMetaType<InputParameters>("InputParameters");
-    inputDataFactory = new SAKInputDataFactory;
-    inputDataFactory->start();
-
-    crcInterface = new SAKCRCInterface(this);
-    inputDataItemManager = new SAKInputDataItemManager(debugPage, this);
-
+{
     inputModelComboBox          = debugPage->inputModelComboBox;
     cycleEnableCheckBox         = debugPage->cycleEnableCheckBox;
     cycleTimeLineEdit           = debugPage->cycleTimeLineEdit;
@@ -47,6 +40,13 @@ SAKDebugPageInputManager::SAKDebugPageInputManager(SAKDebugPage *debugPage, QObj
     crcLabel                    = debugPage->crcLabel;
     presetPushButton            = debugPage->presetPushButton;
     sendPresetPushButton        = debugPage->sendPresetPushButton;
+
+    qRegisterMetaType<InputParameters>("InputParameters");
+    inputDataFactory = new SAKInputDataFactory;
+    inputDataFactory->start();
+
+    crcInterface = new SAKCRCInterface(this);
+    inputDataItemManager = new SAKInputDataItemManager(debugPage, this);
 
     sendPushButton->setEnabled(false);
     sendPresetPushButton->setEnabled(false);
