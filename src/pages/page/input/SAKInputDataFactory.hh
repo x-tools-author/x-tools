@@ -17,6 +17,7 @@
 #include "SAKDebugPageInputManager.hh"
 
 class SAKCRCInterface;
+/// @brief 输入数据处理类
 class SAKInputDataFactory:public QThread
 {
     Q_OBJECT
