@@ -33,11 +33,11 @@ SAKInputDataFactory::~SAKInputDataFactory()
 void SAKInputDataFactory::cookData(QString rawData, SAKDebugPageInputManager::InputParameters parameters)
 {
     RawDataStruct rawDataStruct;
-    rawDataListMutex.lock();
     rawDataStruct.rawData = rawData;
     rawDataStruct.parameters = parameters;
+    rawDataListMutex.lock();
     rawDataListMutex.unlock();
-
+    rawDataList.append(rawDataStruct);
     threadCondition.wakeAll();
 }
 
