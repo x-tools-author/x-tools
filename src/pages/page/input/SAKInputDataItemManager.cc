@@ -59,7 +59,7 @@ SAKInputDataItemManager::~SAKInputDataItemManager()
     delete ui;
 }
 
-void innerCreateItem(SAKDataStruct::SAKStructPresettingDataItem &var, SAKDebugPage *debugPage, SAKDebugPageInputManager *inputManager, QListWidget *listWidget)
+void innerCreateItem(SAKDataStruct::SAKStructPresettingDataItem &var, SAKDebugPage *debugPage, SAKDebugPageInputManager *inputManager, QListWidget *listWidget, SAKInputDataItemManager *itemManager)
 {
     QListWidgetItem *item = new QListWidgetItem(listWidget);
     SAKInputDataItem *itemWidget = new SAKInputDataItem(var.id,
@@ -69,7 +69,7 @@ void innerCreateItem(SAKDataStruct::SAKStructPresettingDataItem &var, SAKDebugPa
                                                         var.data,
                                                         debugPage,
                                                         inputManager,
-                                                        listWidget);
+                                                        itemManager);
     item->setSizeHint(itemWidget->sizeHint());
     listWidget->addItem(item);
     listWidget->setItemWidget(item, itemWidget);
@@ -79,7 +79,7 @@ void SAKInputDataItemManager::readinRecord()
 {
     QList<SAKDataStruct::SAKStructPresettingDataItem> itemList = databaseInterface->selectPresettingDataItem(tableName);
     for (auto var : itemList){
-        innerCreateItem(var, debugPage, inputManager, listWidget);
+        innerCreateItem(var, debugPage, inputManager, listWidget, this);
     }
 }
 
@@ -215,9 +215,7 @@ void SAKInputDataItemManager::on_importPushButton_clicked()
 
                 /// @brief 不存在则新建
                 if (!contains(responseItem.id)){
-                    innerCreateItem(responseItem, debugPage, inputManager, listWidget);
-
-                    QString tableName = SAKDataStruct::autoResponseTableName(debugPage->pageType());
+                    innerCreateItem(responseItem, debugPage, inputManager, listWidget, this);
                     databaseInterface->insertPresettingDataItem(tableName, responseItem);
                 }
             }
