@@ -128,6 +128,7 @@ FORMS += \
     src/pages/udp/SAKUdpAdvanceSettingWidget.ui \
     src/pages/udp/SAKUdpDeviceController.ui \
     src/pages/udp/SAKUdpMulticastEditingDialog.ui \
+    src/pages/websocketclient/SAKWebSocketClientDeviceController.ui \
     src/qrcode/SAKQRCodeDialog.ui \
     src/update/SAKDownloadItemWidget.ui \
     src/update/SAKUpdateManager.ui
@@ -182,6 +183,9 @@ HEADERS += \
     src/pages/udp/SAKUdpDevice.hh \
     src/pages/udp/SAKUdpDeviceController.hh \
     src/pages/udp/SAKUdpMulticastEditingDialog.hh \
+    src/pages/websocketclient/SAKWebSocketClientDebugPage.hh \
+    src/pages/websocketclient/SAKWebSocketClientDevice.hh \
+    src/pages/websocketclient/SAKWebSocketClientDeviceController.hh \
     src/qrcode/SAKQRCodeDialog.hh \
     src/qrcode/SAKQRCodeWidget.hh \
     src/startui/SAKSplashScreen.hh \
@@ -239,6 +243,9 @@ SOURCES += \
     src/pages/udp/SAKUdpDevice.cc \
     src/pages/udp/SAKUdpDeviceController.cc \
     src/pages/udp/SAKUdpMulticastEditingDialog.cc \
+    src/pages/websocketclient/SAKWebSocketClientDebugPage.cc \
+    src/pages/websocketclient/SAKWebSocketClientDevice.cc \
+    src/pages/websocketclient/SAKWebSocketClientDeviceController.cc \
     src/qrcode/SAKQRCodeDialog.cc \
     src/qrcode/SAKQRCodeWidget.cc \
     src/startui/SAKSplashScreen.cc \
