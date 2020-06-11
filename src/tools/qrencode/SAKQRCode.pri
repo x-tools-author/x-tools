@@ -1,4 +1,4 @@
-win32 {
+win32|unix {
     exists($${PWD}/../../../3rd/libqrencode/qrencode.h){
         DEFINES += SAK_IMPORT_QRCODE_MODULE
         DEFINES += HAVE_CONFIG_H
