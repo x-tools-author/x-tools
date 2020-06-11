@@ -7,6 +7,7 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
+#include "SAKMainWindow.hh"
 #include "SAKApplication.hh"
 
 int main(int argc, char *argv[])
@@ -16,5 +17,10 @@ int main(int argc, char *argv[])
     QApplication::setAttribute(Qt::AA_Use96Dpi, true);
 #endif
     SAKApplication a(argc, argv);
+
+    /// @brief 显示主窗口
+    SAKMainWindow mainWindow;
+    mainWindow.show();
+
     return a.exec();
 }
