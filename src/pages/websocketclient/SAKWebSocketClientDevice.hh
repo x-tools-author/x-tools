@@ -10,12 +10,10 @@
 #ifndef SAKWEBSOCKETCLIENTDEVICE_HH
 #define SAKWEBSOCKETCLIENTDEVICE_HH
 
-#include <QThread>
-#include <QTcpSocket>
-
 #include "SAKDevice.hh"
 
 class SAKWebSocketClientDebugPage;
+/// @brief web socket 客户端
 class SAKWebSocketClientDevice:public SAKDevice
 {
     Q_OBJECT
@@ -24,15 +22,7 @@ public:
 private:
     void run() final;
 private:
-    QString localHost;
-    quint16 localPort;
-    bool enableCustomLocalSetting;
-    QString serverHost;
-    quint16 serverPort;
     SAKWebSocketClientDebugPage *debugPage;
-    QTcpSocket *tcpSocket;
-private:
-    void afterDisconnected();
 };
 
 #endif
