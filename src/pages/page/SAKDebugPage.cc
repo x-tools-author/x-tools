@@ -229,6 +229,12 @@ void SAKDebugPage::initSettingKey()
     case SAKDataStruct::DebugPageTypeTCPServer:
         settingKey = QString("TCPS");
         break;
+    case SAKDataStruct::DebugPageTypeWebSocketClient:
+        settingKey = QString("WEBSOCKETC");
+        break;
+    case SAKDataStruct::DebugPageTypeWebSocketServer:
+        settingKey = QString("WEBSOCKETS");
+        break;
     default:
         settingKey = QString("UnknowDebugPage");
         Q_ASSERT_X(false, __FUNCTION__, "Invalid type of debug page");
