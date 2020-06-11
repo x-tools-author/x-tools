@@ -29,5 +29,6 @@
         <file>resources/images/Qt.png</file>
         <file>resources/images/QSAKQQ.jpg</file>
         <file>resources/images/QtQQ.jpg</file>
+        <file>resources/images/StartUi.jpg</file>
     </qresource>
 </RCC>

@@ -101,6 +101,7 @@ INCLUDEPATH += \
     src/pages/tcpserver \
     src/pages/udp \
     src/qrcode \
+    src/startui \
     src/update
 
 FORMS += \
@@ -183,6 +184,7 @@ HEADERS += \
     src/pages/udp/SAKUdpMulticastEditingDialog.hh \
     src/qrcode/SAKQRCodeDialog.hh \
     src/qrcode/SAKQRCodeWidget.hh \
+    src/startui/SAKSplashScreen.hh \
     src/update/SAKDownloadItemWidget.hh \
     src/update/SAKUpdateManager.hh
 
@@ -239,5 +241,6 @@ SOURCES += \
     src/pages/udp/SAKUdpMulticastEditingDialog.cc \
     src/qrcode/SAKQRCodeDialog.cc \
     src/qrcode/SAKQRCodeWidget.cc \
+    src/startui/SAKSplashScreen.cc \
     src/update/SAKDownloadItemWidget.cc \
     src/update/SAKUpdateManager.cc
