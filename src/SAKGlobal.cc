@@ -200,18 +200,24 @@ void SAKGlobal::initFlowControlComboBox(QComboBox *comboBox)
 }
 #endif
 
-void SAKGlobal::initIpComboBox(QComboBox *comboBox)
+void SAKGlobal::initIpComboBox(QComboBox *comboBox, bool appendHostAny)
 {
     if (comboBox){
         comboBox->clear();
         comboBox->addItem(QString("0.0.0.0"));
+        comboBox->addItem(QString("255.255.255.255"));
         QList<QHostAddress> addresses = QNetworkInterface::allAddresses();
         for(auto var:addresses){
             if (var.protocol() == QAbstractSocket::IPv4Protocol) {
                 comboBox->addItem(var.toString());
             }
         }
+        comboBox->addItem(QString("::1"));
         comboBox->addItem(QString("::"));
+
+        if (appendHostAny){
+            comboBox->addItem(QString(SAK_HOST_ADDRESS_ANY));
+        }
     }
 }
 
