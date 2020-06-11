@@ -45,8 +45,10 @@ SAKSaveOutputDataSettings::SAKSaveOutputDataSettings(QWidget *parent)
 SAKSaveOutputDataSettings::~SAKSaveOutputDataSettings()
 {
     delete ui;
-    saveOutputDataThread->terminate();
     delete saveOutputDataThread;
+
+    ui = Q_NULLPTR;
+    saveOutputDataThread = Q_NULLPTR;
 }
 
 void SAKSaveOutputDataSettings::inputData(QByteArray data)
