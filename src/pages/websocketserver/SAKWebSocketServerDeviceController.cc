@@ -78,7 +78,7 @@ void SAKWebSocketServerDeviceController::setUiEnable(bool enable)
     serverPortLineEdit->setEnabled(enable);
 }
 
-void SAKWebSocketServerDeviceController::addClient(QString host, quint16 port, QTcpSocket *socket)
+void SAKWebSocketServerDeviceController::addClient(QString host, quint16 port, QWebSocket *socket)
 {
     QString item = host.append(":");
     item.append(QString::number(port));
@@ -95,11 +95,11 @@ void SAKWebSocketServerDeviceController::addClient(QString host, quint16 port, Q
     uiMutex.unlock();
 }
 
-void SAKWebSocketServerDeviceController::removeClient(QTcpSocket *socket)
+void SAKWebSocketServerDeviceController::removeClient(QWebSocket *socket)
 {
     uiMutex.lock();
     for(int i = 0; i < clientHostComboBox->count(); i++){
-        if (clientHostComboBox->itemData(i).value<QTcpSocket*>() == socket){
+        if (clientHostComboBox->itemData(i).value<QWebSocket*>() == socket){
             clientHostComboBox->removeItem(i);
             break;
         }

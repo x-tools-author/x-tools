@@ -14,7 +14,7 @@
 #include <QWidget>
 #include <QCheckBox>
 #include <QComboBox>
-#include <QTcpSocket>
+#include <QWebSocket>
 
 namespace Ui {
     class SAKWebSocketServerDeviceController;
@@ -36,8 +36,8 @@ public:
     void refresh();
     void setUiEnable(bool enable);
 
-    void addClient(QString host, quint16 port, QTcpSocket *socket);
-    void removeClient(QTcpSocket *socket);
+    void addClient(QString host, quint16 port, QWebSocket *socket);
+    void removeClient(QWebSocket *socket);
 private:
     Ui::SAKWebSocketServerDeviceController *ui;
 

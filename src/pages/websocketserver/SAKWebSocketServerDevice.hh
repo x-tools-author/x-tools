@@ -11,8 +11,8 @@
 #define SAKWEBSOCKETSERVERDEVICE_HH
 
 #include <QThread>
-#include <QTcpServer>
-#include <QTcpSocket>
+#include <QWebSocket>
+#include <QWebSocketServer>
 
 #include "SAKDevice.hh"
 
@@ -33,10 +33,10 @@ private:
     QString serverHost;
     quint16 serverPort;
     SAKWebSocketServerDebugPage *debugPage;
-    QTcpServer *tcpServer;
+    QWebSocketServer *webSocketServer;
 private:
-    void innerReadBytes(QTcpSocket *socket, SAKWebSocketServerDeviceController *deviceController);
-    void innerWriteBytes(QTcpSocket *socket, QByteArray bytes, SAKWebSocketServerDeviceController *deviceController);
+    void innerReadBytes(QWebSocket *socket, SAKWebSocketServerDeviceController *deviceController);
+    void innerWriteBytes(QWebSocket *socket, QByteArray bytes, SAKWebSocketServerDeviceController *deviceController);
 };
 
 #endif
