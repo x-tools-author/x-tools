@@ -14,7 +14,6 @@
 #include <QApplication>
 #include <QStyleFactory>
 
-class SAKMainWindow;
 class SAKApplication:public QApplication
 {
     Q_OBJECT
@@ -27,8 +26,6 @@ public:
      */
     void installLanguage();
 private:
-    SAKMainWindow *mainWindow;
-
     QTranslator qtTranslator;
     QTranslator qtBaeTranslator;
     QTranslator sakTranslator;

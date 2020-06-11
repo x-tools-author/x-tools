@@ -8,18 +8,17 @@
  * group which number is 952218522 to have a communication.
  */
 #include <QTimer>
+#include <QAction>
 #include <QSettings>
 #include <QTextCursor>
 #include <QTranslator>
 
 #include "SAK.hh"
 #include "SAKSettings.hh"
-#include "SAKMainWindow.hh"
 #include "SAKApplication.hh"
 
 SAKApplication::SAKApplication(int argc, char **argv)
     : QApplication (argc, argv)
-    , mainWindow (Q_NULLPTR)
 {
     SAKSettings::instance();
     installLanguage();
@@ -35,9 +34,6 @@ SAKApplication::SAKApplication(int argc, char **argv)
             emit this->checkForUpdate();
         }
     });
-
-    mainWindow = new SAKMainWindow;
-    mainWindow->show();
 }
 
 SAKApplication::~SAKApplication()
