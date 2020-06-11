@@ -15,7 +15,8 @@ SAKSplashScreen::SAKSplashScreen()
 {
     instancePtr = this;
     setWindowFlags(windowFlags() | Qt::WindowStaysOnTopHint);
-    showMessage(tr("瑞士军刀正在启动..."), Qt::AlignBottom, QColor(255, 255, 255));
+    setMessage(tr("瑞士军刀正在启动..."));
+    setAttribute(Qt::WA_DeleteOnClose, true);
 }
 
 SAKSplashScreen::~SAKSplashScreen()
