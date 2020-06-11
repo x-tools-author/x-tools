@@ -19,14 +19,7 @@ SAKWebSocketClientDeviceController::SAKWebSocketClientDeviceController(QWidget *
     ,ui (new Ui::SAKWebSocketClientDeviceController)
 {
     ui->setupUi(this);
-
-    localhostComboBox = ui->localhostComboBox;
-    localPortlineEdit = ui->localPortlineEdit;
-    enableLocalSettingCheckBox = ui->enableLocalSettingCheckBox;
-    serverHostLineEdit = ui->serverHostLineEdit;
-    serverPortLineEdit = ui->serverTargetPortLineEdit;
-
-    refresh();
+    serverAddressLineEdit = ui->serverHostLineEdit;
 }
 
 SAKWebSocketClientDeviceController::~SAKWebSocketClientDeviceController()
@@ -34,57 +27,15 @@ SAKWebSocketClientDeviceController::~SAKWebSocketClientDeviceController()
     delete ui;
 }
 
-QString SAKWebSocketClientDeviceController::localHost()
+QString SAKWebSocketClientDeviceController::serverAddress()
 {
     uiMutex.lock();
-    QString ret = localhostComboBox->currentText();
+    QString ret = serverAddressLineEdit->text();
     uiMutex.unlock();
     return ret;
-}
-
-quint16 SAKWebSocketClientDeviceController::localPort()
-{
-    uiMutex.lock();
-    quint16 ret = static_cast<quint16>(localPortlineEdit->text().toInt());
-    uiMutex.unlock();
-    return ret;
-}
-
-QString SAKWebSocketClientDeviceController::serverHost()
-{
-    uiMutex.lock();
-    QString ret = serverHostLineEdit->text();
-    uiMutex.unlock();
-    return ret;
-}
-
-quint16 SAKWebSocketClientDeviceController::serverPort()
-{
-    uiMutex.lock();
-    quint16 ret = static_cast<quint16>(serverPortLineEdit->text().toInt());
-    uiMutex.unlock();
-
-    return ret;
-}
-
-bool SAKWebSocketClientDeviceController::enableCustomLocalSetting()
-{
-    uiMutex.lock();
-    bool ret = enableLocalSettingCheckBox->isChecked();
-    uiMutex.unlock();
-    return ret;
-}
-
-void SAKWebSocketClientDeviceController::refresh()
-{
-    SAKGlobal::initIpComboBox(localhostComboBox);
 }
 
 void SAKWebSocketClientDeviceController::setUiEnable(bool enable)
 {
-    localhostComboBox->setEnabled(enable);
-    localPortlineEdit->setEnabled(enable);
-    enableLocalSettingCheckBox->setEnabled(enable);
-    serverHostLineEdit->setEnabled(enable);
-    serverPortLineEdit->setEnabled(enable);
+    serverAddressLineEdit->setEnabled(enable);
 }

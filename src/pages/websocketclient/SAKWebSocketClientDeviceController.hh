@@ -18,7 +18,7 @@
 namespace Ui {
     class SAKWebSocketClientDeviceController;
 }
-
+/// @brief web socket 客户端控制类
 class SAKWebSocketClientDeviceController:public QWidget
 {
     Q_OBJECT
@@ -26,23 +26,13 @@ public:
     SAKWebSocketClientDeviceController(QWidget *parent = Q_NULLPTR);
     ~SAKWebSocketClientDeviceController();
 
-    QString localHost();
-    quint16 localPort();
-    QString serverHost();
-    quint16 serverPort();
-    bool enableCustomLocalSetting();
-
-    void refresh();
+    QString serverAddress();
     void setUiEnable(bool enable);
 private:
     QMutex uiMutex;
 private:
     Ui::SAKWebSocketClientDeviceController *ui;
-    QComboBox *localhostComboBox;
-    QLineEdit *localPortlineEdit;
-    QCheckBox *enableLocalSettingCheckBox;
-    QLineEdit *serverHostLineEdit;
-    QLineEdit *serverPortLineEdit;
+    QLineEdit *serverAddressLineEdit;
 };
 
 #endif
