@@ -83,7 +83,7 @@ bool SAKUdpDeviceController::enableCustomLocalSetting()
 
 void SAKUdpDeviceController::refresh()
 {
-    SAKGlobal::initIpComboBox(localhostComboBox);
+    SAKGlobal::initIpComboBox(localhostComboBox, true);
 }
 
 void SAKUdpDeviceController::setUiEnable(bool enable)

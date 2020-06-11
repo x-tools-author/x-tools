@@ -94,7 +94,11 @@ void SAKUdpDevice::run()
     udpSocket = new QUdpSocket;
     bool bindResult = false;
     if (enableCustomLocalSetting){
-        bindResult = udpSocket->bind(QHostAddress(localHost), localPort);
+        if (localHost.compare(SAK_HOST_ADDRESS_ANY) == 0){
+            bindResult = udpSocket->bind(QHostAddress::Any, localPort);
+        }else{
+            bindResult = udpSocket->bind(QHostAddress(localHost), localPort);
+        }
     }else{
         bindResult = udpSocket->bind();
     }
