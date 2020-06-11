@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2018-2020 Qter(qsak@foxmail.com). All rights reserved.
+ * Copyright 2020 Qter(qsak@foxmail.com). All rights reserved.
  *
  * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
  * project(https://www.qsak.pro). The project is an open source project. You can
@@ -13,46 +13,46 @@
 
 #include "SAKGlobal.hh"
 #include "SAKDataStruct.hh"
-#include "SAKTcpClientDevice.hh"
-#include "SAKTcpClientDebugPage.hh"
-#include "SAKTcpClientDeviceController.hh"
+#include "SAKWebSocketServerDevice.hh"
+#include "SAKWebSocketServerDebugPage.hh"
+#include "SAKWebSocketServerDeviceController.hh"
 
-SAKTcpClientDebugPage::SAKTcpClientDebugPage(QWidget *parent)
+SAKWebSocketServerDebugPage::SAKWebSocketServerDebugPage(QWidget *parent)
     :SAKDebugPage (SAKDataStruct::DebugPageTypeTCPClient, parent)
-    ,tcpClientDeviceController (new SAKTcpClientDeviceController)
+    ,webSocketServerDeviceController (new SAKWebSocketServerDeviceController)
 {
     initPage();
     setWindowTitle(SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeTCPClient));
 }
 
-SAKTcpClientDebugPage::~SAKTcpClientDebugPage()
+SAKWebSocketServerDebugPage::~SAKWebSocketServerDebugPage()
 {
-    tcpClientDeviceController->deleteLater();
+    webSocketServerDeviceController->deleteLater();
 }
 
-SAKTcpClientDeviceController *SAKTcpClientDebugPage::controllerInstance()
+SAKWebSocketServerDeviceController *SAKWebSocketServerDebugPage::controllerInstance()
 {
-    return tcpClientDeviceController;
+    return webSocketServerDeviceController;
 }
 
-void SAKTcpClientDebugPage::refreshDevice()
+void SAKWebSocketServerDebugPage::refreshDevice()
 {
-    tcpClientDeviceController->refresh();
+    webSocketServerDeviceController->refresh();
 }
 
-QWidget *SAKTcpClientDebugPage::controllerWidget()
+QWidget *SAKWebSocketServerDebugPage::controllerWidget()
 {
-    return tcpClientDeviceController;
+    return webSocketServerDeviceController;
 }
 
-SAKDevice *SAKTcpClientDebugPage::createDevice()
+SAKDevice *SAKWebSocketServerDebugPage::createDevice()
 {
-    SAKTcpClientDevice *device = new SAKTcpClientDevice(this);
+    SAKWebSocketServerDevice *device = new SAKWebSocketServerDevice(this);
     return device;
 }
 
-void SAKTcpClientDebugPage::setUiEnable(bool enable)
+void SAKWebSocketServerDebugPage::setUiEnable(bool enable)
 {
-    tcpClientDeviceController->setEnabled(enable);
+    webSocketServerDeviceController->setEnabled(enable);
     refreshPushButton->setEnabled(enable);
 }

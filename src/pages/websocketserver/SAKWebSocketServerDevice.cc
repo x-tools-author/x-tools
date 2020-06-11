@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2018-2020 Qter(qsak@foxmail.com). All rights reserved.
+ * Copyright 2020 Qter(qsak@foxmail.com). All rights reserved.
  *
  * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
  * project(https://www.qsak.pro). The project is an open source project. You can
@@ -12,21 +12,21 @@
 #include <QHostAddress>
 #include <QApplication>
 
-#include "SAKTcpClientDevice.hh"
-#include "SAKTcpClientDebugPage.hh"
-#include "SAKTcpClientDeviceController.hh"
+#include "SAKWebSocketServerDevice.hh"
+#include "SAKWebSocketServerDebugPage.hh"
+#include "SAKWebSocketServerDeviceController.hh"
 
-SAKTcpClientDevice::SAKTcpClientDevice(SAKTcpClientDebugPage *debugPage, QObject *parent)
+SAKWebSocketServerDevice::SAKWebSocketServerDevice(SAKWebSocketServerDebugPage *debugPage, QObject *parent)
     :SAKDevice(parent)
     ,debugPage (debugPage)
 {
 
 }
 
-void SAKTcpClientDevice::run()
+void SAKWebSocketServerDevice::run()
 {
     QEventLoop eventLoop;
-    SAKTcpClientDeviceController *deviceController = debugPage->controllerInstance();
+    SAKWebSocketServerDeviceController *deviceController = debugPage->controllerInstance();
     localHost = deviceController->localHost();
     localPort = deviceController->localPort();
     serverHost = deviceController->serverHost();
