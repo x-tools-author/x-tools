@@ -9,6 +9,7 @@
  */
 #include "SAKMainWindow.hh"
 #include "SAKApplication.hh"
+#include "SAKSplashScreen.hh"
 
 int main(int argc, char *argv[])
 {
@@ -16,11 +17,18 @@ int main(int argc, char *argv[])
     QApplication::setAttribute(Qt::AA_EnableHighDpiScaling, false);
     QApplication::setAttribute(Qt::AA_Use96Dpi, true);
 #endif
-    SAKApplication a(argc, argv);
+    SAKApplication app(argc, argv);
+
+    /// @brief 显示启动界面
+    SAKSplashScreen *splashScreen = SAKSplashScreen::instance();
+    splashScreen->show();
+    app.processEvents();
 
     /// @brief 显示主窗口
     SAKMainWindow mainWindow;
     mainWindow.show();
 
-    return a.exec();
+    /// @brief 进入时间循环
+    splashScreen->finish(&mainWindow);
+    return app.exec();
 }
