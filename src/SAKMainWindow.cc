@@ -169,9 +169,7 @@ void SAKMainWindow::addTab()
     this->tabWidget->addTab(new SAKTcpClientDebugPage, SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeTCPClient));
     this->tabWidget->addTab(new SAKTcpServerDebugPage, SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeTCPServer));
 
-    /*
-     * 隐藏关闭按钮（必须在调用setTabsClosable()函数后设置，否则不生效）
-     */
+    /// @brief 隐藏关闭按钮（必须在调用setTabsClosable()函数后设置，否则不生效）
     for (int i = 0; i < tabWidget->count(); i++){
         tabWidget->tabBar()->setTabButton(i, QTabBar::RightSide, Q_NULLPTR);
         tabWidget->tabBar()->setTabButton(i, QTabBar::LeftSide, Q_NULLPTR);
