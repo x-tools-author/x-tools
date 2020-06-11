@@ -100,6 +100,8 @@ INCLUDEPATH += \
     src/pages/tcpclient \
     src/pages/tcpserver \
     src/pages/udp \
+    src/pages/websocketclient \
+    src/pages/websocketserver \
     src/qrcode \
     src/startui \
     src/update
@@ -129,6 +131,7 @@ FORMS += \
     src/pages/udp/SAKUdpDeviceController.ui \
     src/pages/udp/SAKUdpMulticastEditingDialog.ui \
     src/pages/websocketclient/SAKWebSocketClientDeviceController.ui \
+    src/pages/websocketserver/SAKWebSocketServerDeviceController.ui \
     src/qrcode/SAKQRCodeDialog.ui \
     src/update/SAKDownloadItemWidget.ui \
     src/update/SAKUpdateManager.ui
@@ -186,6 +189,9 @@ HEADERS += \
     src/pages/websocketclient/SAKWebSocketClientDebugPage.hh \
     src/pages/websocketclient/SAKWebSocketClientDevice.hh \
     src/pages/websocketclient/SAKWebSocketClientDeviceController.hh \
+    src/pages/websocketserver/SAKWebSocketServerDebugPage.hh \
+    src/pages/websocketserver/SAKWebSocketServerDevice.hh \
+    src/pages/websocketserver/SAKWebSocketServerDeviceController.hh \
     src/qrcode/SAKQRCodeDialog.hh \
     src/qrcode/SAKQRCodeWidget.hh \
     src/startui/SAKSplashScreen.hh \
@@ -246,6 +252,9 @@ SOURCES += \
     src/pages/websocketclient/SAKWebSocketClientDebugPage.cc \
     src/pages/websocketclient/SAKWebSocketClientDevice.cc \
     src/pages/websocketclient/SAKWebSocketClientDeviceController.cc \
+    src/pages/websocketserver/SAKWebSocketServerDebugPage.cc \
+    src/pages/websocketserver/SAKWebSocketServerDevice.cc \
+    src/pages/websocketserver/SAKWebSocketServerDeviceController.cc \
     src/qrcode/SAKQRCodeDialog.cc \
     src/qrcode/SAKQRCodeWidget.cc \
     src/startui/SAKSplashScreen.cc \
