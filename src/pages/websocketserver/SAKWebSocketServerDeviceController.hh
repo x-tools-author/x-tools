@@ -19,7 +19,7 @@
 namespace Ui {
     class SAKWebSocketServerDeviceController;
 }
-
+/// @brief web socket 服务器设备控制类
 class SAKWebSocketServerDeviceController:public QWidget
 {
     Q_OBJECT

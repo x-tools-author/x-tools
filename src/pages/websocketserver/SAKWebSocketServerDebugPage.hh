@@ -14,6 +14,7 @@
 
 class SAKWebSocketServerDevice;
 class SAKWebSocketServerDeviceController;
+/// @brief web socket服务器调试页面
 class SAKWebSocketServerDebugPage : public SAKDebugPage
 {
     Q_OBJECT
