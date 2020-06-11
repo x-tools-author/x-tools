@@ -7,23 +7,24 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
-#ifndef SAKWebSocketServerDevice_HH
-#define SAKWebSocketServerDevice_HH
+#ifndef SAKWEBSOCKETSERVERDEVICE_HH
+#define SAKWEBSOCKETSERVERDEVICE_HH
 
 #include <QThread>
+#include <QTcpServer>
 #include <QTcpSocket>
 
 #include "SAKDevice.hh"
 
 class SAKWebSocketServerDebugPage;
-/// @brief web socket服务器设备
-class SAKWebSocketServerDevice : public SAKDevice
+class SAKWebSocketServerDeviceController;
+class SAKWebSocketServerDevice:public SAKDevice
 {
     Q_OBJECT
 public:
     SAKWebSocketServerDevice(SAKWebSocketServerDebugPage *debugPage, QObject *parent = Q_NULLPTR);
 private:
-    void run() final;
+    void run();    
 private:
     QString localHost;
     quint16 localPort;
@@ -31,9 +32,10 @@ private:
     QString serverHost;
     quint16 serverPort;
     SAKWebSocketServerDebugPage *debugPage;
-    QTcpSocket *tcpSocket;
+    QTcpServer *tcpServer;
 private:
-    void afterDisconnected();
+    void innerReadBytes(QTcpSocket *socket, SAKWebSocketServerDeviceController *deviceController);
+    void innerWriteBytes(QTcpSocket *socket, QByteArray bytes, SAKWebSocketServerDeviceController *deviceController);
 };
 
 #endif

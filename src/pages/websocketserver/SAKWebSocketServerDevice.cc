@@ -12,13 +12,15 @@
 #include <QHostAddress>
 #include <QApplication>
 
+#include "SAKDebugPage.hh"
 #include "SAKWebSocketServerDevice.hh"
 #include "SAKWebSocketServerDebugPage.hh"
 #include "SAKWebSocketServerDeviceController.hh"
 
 SAKWebSocketServerDevice::SAKWebSocketServerDevice(SAKWebSocketServerDebugPage *debugPage, QObject *parent)
     :SAKDevice(parent)
-    ,debugPage (debugPage)
+    ,debugPage(debugPage)
+    ,tcpServer(Q_NULLPTR)
 {
 
 }
@@ -27,100 +29,108 @@ void SAKWebSocketServerDevice::run()
 {
     QEventLoop eventLoop;
     SAKWebSocketServerDeviceController *deviceController = debugPage->controllerInstance();
-    localHost = deviceController->localHost();
-    localPort = deviceController->localPort();
     serverHost = deviceController->serverHost();
     serverPort = deviceController->serverPort();
-    enableCustomLocalSetting = deviceController->enableCustomLocalSetting();
 
-    tcpSocket = new QTcpSocket;
-
-    bool bindResult = false;
-    if (enableCustomLocalSetting){
-        bindResult = tcpSocket->bind(QHostAddress(localHost), localPort);
-    }else{
-        bindResult = tcpSocket->bind();
-    }
-
-    if (!bindResult){
+    QList<QTcpSocket*> clientList;
+    tcpServer = new QTcpServer;
+    if (!tcpServer->listen(QHostAddress(serverHost), serverPort)){
         emit deviceStateChanged(false);
-        emit messageChanged(tr("无法绑定设备")+tcpSocket->errorString(), false);
-        delete tcpSocket;
+        emit messageChanged(tr("服务器监听地址、端口失败：")+tcpServer->errorString(), false);
         return;
-    }
-
-    tcpSocket->connectToHost(serverHost, serverPort);
-    if (tcpSocket->state() != QTcpSocket::ConnectedState){
-        if (!tcpSocket->waitForConnected()){
-            emit deviceStateChanged(false);
-            emit messageChanged(tr("无法连接到服务器")+tcpSocket->errorString(), false);
-            delete tcpSocket;
-            return;
-        }
-    }
-
-
-    if (tcpSocket->open(QTcpSocket::ReadWrite)){
-        emit deviceStateChanged(true);
-
-        while (true) {
-            /// @brief 响应中断
-            if (isInterruptionRequested()){
-                break;
-            }
-
-            /// @brief 读取数据
-            tcpSocket->waitForReadyRead(debugPage->readWriteParameters().waitForReadyReadTime);
-            QByteArray bytes = tcpSocket->readAll();
-            if (!bytes.isEmpty()){
-                emit bytesRead(bytes);
-            }
-
-            /// @brief 发送数据
-            while (true){
-                QByteArray bytes = takeWaitingForWrittingBytes();
-                if (bytes.length()){
-                    qint64 ret = tcpSocket->write(bytes);
-                    tcpSocket->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
-                    if (ret == -1){
-                        emit messageChanged(tr("发送数据失败：")+tcpSocket->errorString(), false);
-                    }else{
-                        emit bytesWritten(bytes);
-                    }
-                }else{
-                    break;
-                }
-            }
-
-            /// @brief 检查服务器状态
-            if (tcpSocket->state() == QTcpSocket::UnconnectedState){
-                emit messageChanged(tr("服务器已断开"), true);
-                break;
-            }
-
-            /// @brief 处理线程事件
-            eventLoop.processEvents();
-
-            /// @brief 线程睡眠
-            threadMutex.lock();
-            threadWaitCondition.wait(&threadMutex, debugPage->readWriteParameters().waitForBytesWrittenTime);
-            threadMutex.unlock();
-        }
-
-        /// @brief 退出前断开与服务器的链接
-        if (tcpSocket->state() == QTcpSocket::ClosingState){
-            tcpSocket->disconnectFromHost();
-            if (tcpSocket->state() == QTcpSocket::ConnectedState){
-                if(!tcpSocket->waitForConnected()){
-                    emit messageChanged(tr("无法断开与服务器的链接：")+tcpSocket->errorString(), true);
-                }
-            }
-        }
-        tcpSocket->close();
-        delete tcpSocket;
-        emit deviceStateChanged(false);
     }else{
-        emit deviceStateChanged(false);
-        emit messageChanged(tr("无法打开设备")+tcpSocket->errorString(), false);
+        emit deviceStateChanged(true);
+    }
+
+    while (true){
+        /// @brief 响应中断
+        if (isInterruptionRequested()){
+            break;
+        }
+
+        /// @brief 处理接入
+        while (tcpServer->hasPendingConnections()){
+            QTcpSocket *socket = tcpServer->nextPendingConnection();
+            if (socket){
+                clientList.append(socket);
+                deviceController->addClient(socket->peerAddress().toString(), socket->peerPort(), socket);
+            }
+        }
+
+        /// @brief 检查链接状态，移除已断开的链接
+        for (auto var : clientList){
+            QList<QTcpSocket*> offLineClientList;
+            if (var->state() != QTcpSocket::ConnectedState){
+                offLineClientList.append(var);
+            }
+
+            for (auto var : offLineClientList){
+                /// @brief socket（127.0.0.1）断开链接后无法获取：peerAddress及eerPort
+                deviceController->removeClient(var);
+                clientList.removeOne(var);
+            }
+        }
+
+        /// @brief 读取数据
+        for (auto var : clientList){
+            innerReadBytes(var, deviceController);
+        }
+
+        /// @brief 写数据
+        while (true){
+            QByteArray bytes = takeWaitingForWrittingBytes();
+            if (bytes.length()){
+                for (auto var : clientList){
+                    innerWriteBytes(var, bytes, deviceController);
+                }
+            }else{
+                break;
+            }
+        }
+
+        /// @brief 处理线程事件
+        eventLoop.processEvents();
+
+        /// @brief 线程睡眠
+        threadMutex.lock();
+        threadWaitCondition.wait(&threadMutex, debugPage->readWriteParameters().runIntervalTime);
+        threadMutex.unlock();
+    }
+
+    tcpServer->close();
+    delete tcpServer;
+    emit deviceStateChanged(false);
+}
+
+void SAKWebSocketServerDevice::innerReadBytes(QTcpSocket *socket, SAKWebSocketServerDeviceController *deviceController)
+{        
+    socket->waitForReadyRead(debugPage->readWriteParameters().waitForReadyReadTime);
+    QByteArray bytes = socket->readAll();
+    QString currentClientHost = deviceController->currentClientHost();
+    QString peerHost = socket->peerAddress().toString();
+    quint16 currentClientPort = deviceController->currentClientPort();
+    quint16 peerPort = socket->peerPort();
+
+    if (bytes.length()){
+        if ((currentClientHost == peerHost) && (currentClientPort == peerPort)){
+            emit bytesRead(bytes);
+        }
+    }
+}
+
+void SAKWebSocketServerDevice::innerWriteBytes(QTcpSocket *socket, QByteArray bytes, SAKWebSocketServerDeviceController *deviceController)
+{    
+    QString currentClientHost = deviceController->currentClientHost();
+    QString peerHost = socket->peerAddress().toString();
+    quint16 currentClientPort = deviceController->currentClientPort();
+    quint16 peerPort = socket->peerPort();
+    if ((currentClientHost == peerHost) && (currentClientPort == peerPort)){
+        qint64 ret = socket->write(bytes);
+        socket->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
+        if (ret == -1){
+            emit messageChanged(tr("无法写入数据:(%1)%2").arg(socket->peerAddress().toString().arg(socket->error())), false);
+        }else{
+            emit bytesWritten(bytes);
+        }
     }
 }

@@ -14,12 +14,12 @@
 #include <QWidget>
 #include <QCheckBox>
 #include <QComboBox>
+#include <QTcpSocket>
 
 namespace Ui {
     class SAKWebSocketServerDeviceController;
 }
 
-/// @brief websocket服务器设备控制类
 class SAKWebSocketServerDeviceController:public QWidget
 {
     Q_OBJECT
@@ -27,23 +27,24 @@ public:
     SAKWebSocketServerDeviceController(QWidget *parent = Q_NULLPTR);
     ~SAKWebSocketServerDeviceController();
 
-    QString localHost();
-    quint16 localPort();
     QString serverHost();
     quint16 serverPort();
-    bool enableCustomLocalSetting();
+
+    QString currentClientHost();
+    quint16 currentClientPort();
 
     void refresh();
     void setUiEnable(bool enable);
-private:
-    QMutex uiMutex;
+
+    void addClient(QString host, quint16 port, QTcpSocket *socket);
+    void removeClient(QTcpSocket *socket);
 private:
     Ui::SAKWebSocketServerDeviceController *ui;
-    QComboBox *localhostComboBox;
-    QLineEdit *localPortlineEdit;
-    QCheckBox *enableLocalSettingCheckBox;
-    QLineEdit *serverHostLineEdit;
+
+    QComboBox *serverHostComboBox;
     QLineEdit *serverPortLineEdit;
+    QComboBox *clientHostComboBox;
+    QMutex uiMutex;
 };
 
 #endif

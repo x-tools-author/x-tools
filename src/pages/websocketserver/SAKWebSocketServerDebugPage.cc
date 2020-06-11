@@ -18,41 +18,41 @@
 #include "SAKWebSocketServerDeviceController.hh"
 
 SAKWebSocketServerDebugPage::SAKWebSocketServerDebugPage(QWidget *parent)
-    :SAKDebugPage (SAKDataStruct::DebugPageTypeTCPClient, parent)
-    ,webSocketServerDeviceController (new SAKWebSocketServerDeviceController)
+    :SAKDebugPage (SAKDataStruct::DebugPageTypeTCPServer, parent)
+    ,tcpServerDeviceController (new SAKWebSocketServerDeviceController)
 {
     initPage();
-    setWindowTitle(SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeTCPClient));
+    setWindowTitle(SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeTCPServer));
 }
 
 SAKWebSocketServerDebugPage::~SAKWebSocketServerDebugPage()
 {
-    webSocketServerDeviceController->deleteLater();
+    tcpServerDeviceController->deleteLater();
 }
 
 SAKWebSocketServerDeviceController *SAKWebSocketServerDebugPage::controllerInstance()
 {
-    return webSocketServerDeviceController;
+    return tcpServerDeviceController;
 }
 
 void SAKWebSocketServerDebugPage::refreshDevice()
 {
-    webSocketServerDeviceController->refresh();
+    tcpServerDeviceController->refresh();
 }
 
 QWidget *SAKWebSocketServerDebugPage::controllerWidget()
 {
-    return webSocketServerDeviceController;
-}
-
-SAKDevice *SAKWebSocketServerDebugPage::createDevice()
-{
-    SAKWebSocketServerDevice *device = new SAKWebSocketServerDevice(this);
-    return device;
+    return tcpServerDeviceController;
 }
 
 void SAKWebSocketServerDebugPage::setUiEnable(bool enable)
 {
-    webSocketServerDeviceController->setEnabled(enable);
+    tcpServerDeviceController->setUiEnable(enable);
     refreshPushButton->setEnabled(enable);
+}
+
+SAKDevice* SAKWebSocketServerDebugPage::createDevice()
+{
+    SAKWebSocketServerDevice *device = new SAKWebSocketServerDevice(this);
+    return device;
 }

@@ -8,24 +8,22 @@
  * group which number is 952218522 to have a communication.
  */
 #include <QList>
+#include <QDebug>
 #include <QMetaEnum>
 #include <QLineEdit>
 
 #include "SAKGlobal.hh"
 #include "SAKWebSocketServerDeviceController.hh"
 #include "ui_SAKWebSocketServerDeviceController.h"
-
 SAKWebSocketServerDeviceController::SAKWebSocketServerDeviceController(QWidget *parent)
     :QWidget (parent)
     ,ui (new Ui::SAKWebSocketServerDeviceController)
 {
     ui->setupUi(this);
 
-    localhostComboBox = ui->localhostComboBox;
-    localPortlineEdit = ui->localPortlineEdit;
-    enableLocalSettingCheckBox = ui->enableLocalSettingCheckBox;
-    serverHostLineEdit = ui->serverHostLineEdit;
-    serverPortLineEdit = ui->serverTargetPortLineEdit;
+    serverHostComboBox = ui->serverhostComboBox;
+    serverPortLineEdit = ui->serverPortLineEdit;
+    clientHostComboBox = ui->clientHostComboBox;
 
     refresh();
 }
@@ -35,57 +33,76 @@ SAKWebSocketServerDeviceController::~SAKWebSocketServerDeviceController()
     delete ui;
 }
 
-QString SAKWebSocketServerDeviceController::localHost()
-{
-    uiMutex.lock();
-    QString ret = localhostComboBox->currentText();
-    uiMutex.unlock();
-    return ret;
-}
-
-quint16 SAKWebSocketServerDeviceController::localPort()
-{
-    uiMutex.lock();
-    quint16 ret = static_cast<quint16>(localPortlineEdit->text().toInt());
-    uiMutex.unlock();
-    return ret;
-}
-
 QString SAKWebSocketServerDeviceController::serverHost()
 {
     uiMutex.lock();
-    QString ret = serverHostLineEdit->text();
+    QString host = serverHostComboBox->currentText();
     uiMutex.unlock();
-    return ret;
+    return host;
 }
 
 quint16 SAKWebSocketServerDeviceController::serverPort()
 {
     uiMutex.lock();
-    quint16 ret = static_cast<quint16>(serverPortLineEdit->text().toInt());
+    quint16 port = static_cast<quint16>(serverPortLineEdit->text().toInt());
     uiMutex.unlock();
-
-    return ret;
+    return port;
 }
 
-bool SAKWebSocketServerDeviceController::enableCustomLocalSetting()
+QString SAKWebSocketServerDeviceController::currentClientHost()
 {
     uiMutex.lock();
-    bool ret = enableLocalSettingCheckBox->isChecked();
+    QStringList host = clientHostComboBox->currentText().split(":");
+    QString address = host.first();
     uiMutex.unlock();
-    return ret;
+    return address;
+}
+
+quint16 SAKWebSocketServerDeviceController::currentClientPort()
+{
+    uiMutex.lock();
+    QString port = clientHostComboBox->currentText().split(":").last();
+    quint16 portTemp = static_cast<quint16>(port.toInt());
+    uiMutex.unlock();
+    return portTemp;
 }
 
 void SAKWebSocketServerDeviceController::refresh()
 {
-    SAKGlobal::initIpComboBox(localhostComboBox);
+    SAKGlobal::initIpComboBox(serverHostComboBox);
 }
 
 void SAKWebSocketServerDeviceController::setUiEnable(bool enable)
 {
-    localhostComboBox->setEnabled(enable);
-    localPortlineEdit->setEnabled(enable);
-    enableLocalSettingCheckBox->setEnabled(enable);
-    serverHostLineEdit->setEnabled(enable);
+    serverHostComboBox->setEnabled(enable);
     serverPortLineEdit->setEnabled(enable);
+}
+
+void SAKWebSocketServerDeviceController::addClient(QString host, quint16 port, QTcpSocket *socket)
+{
+    QString item = host.append(":");
+    item.append(QString::number(port));
+
+    uiMutex.lock();
+    for(int i = 0; i < clientHostComboBox->count(); i++){
+        if (clientHostComboBox->itemText(i).compare(item) == 0){
+            uiMutex.unlock();
+            return;
+        }
+    }
+
+    clientHostComboBox->addItem(item, QVariant::fromValue(socket));
+    uiMutex.unlock();
+}
+
+void SAKWebSocketServerDeviceController::removeClient(QTcpSocket *socket)
+{
+    uiMutex.lock();
+    for(int i = 0; i < clientHostComboBox->count(); i++){
+        if (clientHostComboBox->itemData(i).value<QTcpSocket*>() == socket){
+            clientHostComboBox->removeItem(i);
+            break;
+        }
+    }
+    uiMutex.unlock();
 }
