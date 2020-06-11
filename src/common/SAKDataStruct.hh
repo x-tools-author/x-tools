@@ -31,7 +31,9 @@ public:
         DebugPageTypeUSB,
 #endif
         DebugPageTypeTCPClient,
-        DebugPageTypeTCPServer
+        DebugPageTypeTCPServer,
+        DebugPageTypeWebSocketClient,
+        DebugPageTypeWebSocketServer
     };
     Q_ENUM(SAKEnumDebugPageType)
 
