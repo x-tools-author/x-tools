@@ -56,8 +56,10 @@
 #ifdef SAK_IMPORT_COM_MODULE
 #include "SAKSerialPortDebugPage.hh"
 #endif
+#ifdef SAK_IMPORT_WEBSOCKET_MODULE
 #include "SAKWebSocketClientDebugPage.hh"
 #include "SAKWebSocketServerDebugPage.hh"
+#endif
 #ifdef SAK_IMPORT_FILECHECKER_MODULE
 #include "QtCryptographicHashController.hh"
 #endif
@@ -170,8 +172,10 @@ void SAKMainWindow::addTab()
     this->tabWidget->addTab(new SAKUdpDebugPage, SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeUDP));
     this->tabWidget->addTab(new SAKTcpClientDebugPage, SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeTCPClient));
     this->tabWidget->addTab(new SAKTcpServerDebugPage, SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeTCPServer));
+#ifdef SAK_IMPORT_WEBSOCKET_MODULE
     this->tabWidget->addTab(new SAKWebSocketClientDebugPage, SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeWebSocketClient));
     this->tabWidget->addTab(new SAKWebSocketServerDebugPage, SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeWebSocketServer));
+#endif
 
     /// @brief 隐藏关闭按钮（必须在调用setTabsClosable()函数后设置，否则不生效）
     for (int i = 0; i < tabWidget->count(); i++){
@@ -490,12 +494,14 @@ QWidget *SAKMainWindow::getDebugPage(int type)
     case SAKDataStruct::DebugPageTypeTCPServer:
         widget = new SAKTcpServerDebugPage;
         break;
+#ifdef SAK_IMPORT_WEBSOCKET_MODULE
     case SAKDataStruct::DebugPageTypeWebSocketClient:
         widget = new SAKWebSocketClientDebugPage;
         break;
     case SAKDataStruct::DebugPageTypeWebSocketServer:
         widget = new SAKWebSocketServerDebugPage;
         break;
+#endif
 #ifdef SAK_IMPORT_COM_MODULE
     case SAKDataStruct::DebugPageTypeCOM:
         widget = new SAKSerialPortDebugPage;

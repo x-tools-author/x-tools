@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT += core gui xml network sql websockets
+QT += core gui xml network sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -33,6 +33,7 @@ include(SAKTools.pri)
 include(SAKCommon.pri)
 include(SAKDataVis.pri)
 include(SAKModules.pri)
+include(SAKWebSocket.pri)
 include(SAKSerialPort.pri)
 
 exists(private/SAKPrivate.pri){
@@ -100,8 +101,6 @@ INCLUDEPATH += \
     src/pages/tcpclient \
     src/pages/tcpserver \
     src/pages/udp \
-    src/pages/websocketclient \
-    src/pages/websocketserver \
     src/qrcode \
     src/startui \
     src/update
@@ -130,8 +129,6 @@ FORMS += \
     src/pages/udp/SAKUdpAdvanceSettingWidget.ui \
     src/pages/udp/SAKUdpDeviceController.ui \
     src/pages/udp/SAKUdpMulticastEditingDialog.ui \
-    src/pages/websocketclient/SAKWebSocketClientDeviceController.ui \
-    src/pages/websocketserver/SAKWebSocketServerDeviceController.ui \
     src/qrcode/SAKQRCodeDialog.ui \
     src/update/SAKDownloadItemWidget.ui \
     src/update/SAKUpdateManager.ui
@@ -186,12 +183,6 @@ HEADERS += \
     src/pages/udp/SAKUdpDevice.hh \
     src/pages/udp/SAKUdpDeviceController.hh \
     src/pages/udp/SAKUdpMulticastEditingDialog.hh \
-    src/pages/websocketclient/SAKWebSocketClientDebugPage.hh \
-    src/pages/websocketclient/SAKWebSocketClientDevice.hh \
-    src/pages/websocketclient/SAKWebSocketClientDeviceController.hh \
-    src/pages/websocketserver/SAKWebSocketServerDebugPage.hh \
-    src/pages/websocketserver/SAKWebSocketServerDevice.hh \
-    src/pages/websocketserver/SAKWebSocketServerDeviceController.hh \
     src/qrcode/SAKQRCodeDialog.hh \
     src/qrcode/SAKQRCodeWidget.hh \
     src/startui/SAKSplashScreen.hh \
@@ -249,12 +240,6 @@ SOURCES += \
     src/pages/udp/SAKUdpDevice.cc \
     src/pages/udp/SAKUdpDeviceController.cc \
     src/pages/udp/SAKUdpMulticastEditingDialog.cc \
-    src/pages/websocketclient/SAKWebSocketClientDebugPage.cc \
-    src/pages/websocketclient/SAKWebSocketClientDevice.cc \
-    src/pages/websocketclient/SAKWebSocketClientDeviceController.cc \
-    src/pages/websocketserver/SAKWebSocketServerDebugPage.cc \
-    src/pages/websocketserver/SAKWebSocketServerDevice.cc \
-    src/pages/websocketserver/SAKWebSocketServerDeviceController.cc \
     src/qrcode/SAKQRCodeDialog.cc \
     src/qrcode/SAKQRCodeWidget.cc \
     src/startui/SAKSplashScreen.cc \
