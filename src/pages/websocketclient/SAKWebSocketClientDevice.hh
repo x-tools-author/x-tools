@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2018-2020 Qter(qsak@foxmail.com). All rights reserved.
+ * Copyright 2020 Qter(qsak@foxmail.com). All rights reserved.
  *
  * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
  * project(https://www.qsak.pro). The project is an open source project. You can
@@ -7,20 +7,20 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
-#ifndef SAKTCPCLIENTDEVICE_HH
-#define SAKTCPCLIENTDEVICE_HH
+#ifndef SAKWEBSOCKETCLIENTDEVICE_HH
+#define SAKWEBSOCKETCLIENTDEVICE_HH
 
 #include <QThread>
 #include <QTcpSocket>
 
 #include "SAKDevice.hh"
 
-class SAKTcpClientDebugPage;
-class SAKTcpClientDevice:public SAKDevice
+class SAKWebSocketClientDebugPage;
+class SAKWebSocketClientDevice:public SAKDevice
 {
     Q_OBJECT
 public:
-    SAKTcpClientDevice(SAKTcpClientDebugPage *debugPage, QObject *parent = Q_NULLPTR);
+    SAKWebSocketClientDevice(SAKWebSocketClientDebugPage *debugPage, QObject *parent = Q_NULLPTR);
 private:
     void run() final;
 private:
@@ -29,7 +29,7 @@ private:
     bool enableCustomLocalSetting;
     QString serverHost;
     quint16 serverPort;
-    SAKTcpClientDebugPage *debugPage;
+    SAKWebSocketClientDebugPage *debugPage;
     QTcpSocket *tcpSocket;
 private:
     void afterDisconnected();

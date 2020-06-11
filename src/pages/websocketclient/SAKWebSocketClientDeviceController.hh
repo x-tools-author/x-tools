@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2018-2020 Qter(qsak@foxmail.com). All rights reserved.
+ * Copyright 2020 Qter(qsak@foxmail.com). All rights reserved.
  *
  * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
  * project(https://www.qsak.pro). The project is an open source project. You can
@@ -7,8 +7,8 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
-#ifndef SAKTCPCLIENTDEVICECONTROLLER_HH
-#define SAKTCPCLIENTDEVICECONTROLLER_HH
+#ifndef SAKWebSocketClientDeviceController_HH
+#define SAKWebSocketClientDeviceController_HH
 
 #include <QMutex>
 #include <QWidget>
@@ -16,15 +16,15 @@
 #include <QComboBox>
 
 namespace Ui {
-    class SAKTcpClientDeviceController;
+    class SAKWebSocketClientDeviceController;
 }
 
-class SAKTcpClientDeviceController:public QWidget
+class SAKWebSocketClientDeviceController:public QWidget
 {
     Q_OBJECT
 public:
-    SAKTcpClientDeviceController(QWidget *parent = Q_NULLPTR);
-    ~SAKTcpClientDeviceController();
+    SAKWebSocketClientDeviceController(QWidget *parent = Q_NULLPTR);
+    ~SAKWebSocketClientDeviceController();
 
     QString localHost();
     quint16 localPort();
@@ -37,7 +37,7 @@ public:
 private:
     QMutex uiMutex;
 private:
-    Ui::SAKTcpClientDeviceController *ui;
+    Ui::SAKWebSocketClientDeviceController *ui;
     QComboBox *localhostComboBox;
     QLineEdit *localPortlineEdit;
     QCheckBox *enableLocalSettingCheckBox;
