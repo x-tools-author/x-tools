@@ -246,6 +246,8 @@ void SAKMainWindow::changeAppStyle(QString appStyle)
 
 void SAKMainWindow::initMenu()
 {
+    QMenuBar *menuBar = new QMenuBar(Q_NULLPTR);
+    setMenuBar(menuBar);
     initFileMenu();
     initToolMenu();
     initOptionMenu();    

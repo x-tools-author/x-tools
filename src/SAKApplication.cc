@@ -15,11 +15,17 @@
 
 #include "SAK.hh"
 #include "SAKSettings.hh"
+#include "SAKMainWindow.hh"
 #include "SAKApplication.hh"
+#include "SAKSplashScreen.hh"
 
 SAKApplication::SAKApplication(int argc, char **argv)
     : QApplication (argc, argv)
 {
+    SAKSplashScreen *splashScreen = SAKSplashScreen::instance();
+    splashScreen->show();
+    processEvents();
+
     SAKSettings::instance();
     installLanguage();
     setApplicationVersion(SAK::instance()->version());
@@ -34,6 +40,10 @@ SAKApplication::SAKApplication(int argc, char **argv)
             emit this->checkForUpdate();
         }
     });
+
+    QMainWindow *mainWindow = new SAKMainWindow;
+    mainWindow->show();
+    splashScreen->finish(mainWindow);
 }
 
 SAKApplication::~SAKApplication()

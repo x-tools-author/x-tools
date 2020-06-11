@@ -19,16 +19,11 @@ int main(int argc, char *argv[])
 #endif
     SAKApplication app(argc, argv);
 
-    /// @brief 显示启动界面
-    SAKSplashScreen *splashScreen = SAKSplashScreen::instance();
-    splashScreen->show();
-    app.processEvents();
-
-    /// @brief 显示主窗口
+    /// @brief 在Deepin 15系统中，在main函数中创建SAKMainWindow会导致程序崩溃(Qt5.12.8)
+#if 0
     SAKMainWindow mainWindow;
     mainWindow.show();
+#endif
 
-    /// @brief 进入时间循环
-    splashScreen->finish(&mainWindow);
     return app.exec();
 }
