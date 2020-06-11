@@ -8,6 +8,7 @@
  * group which number is 952218522 to have a communication.
  */
 #include <QFile>
+#include <QEventLoop>
 #include <QTextStream>
 
 #include "SAKInterface.hh"
@@ -17,7 +18,14 @@
 SAKSaveOutputDataThread::SAKSaveOutputDataThread(QObject *parent)
     :QThread (parent)
 {
-    moveToThread(this);
+
+}
+
+SAKSaveOutputDataThread::~SAKSaveOutputDataThread()
+{
+    requestInterruption();
+    threadWaitCondition.wakeAll();
+    wait();
 }
 
 void SAKSaveOutputDataThread::writeDataToFile(QByteArray data, SAKSaveOutputDataSettings::SaveOutputDataParamters parameters)
@@ -26,6 +34,49 @@ void SAKSaveOutputDataThread::writeDataToFile(QByteArray data, SAKSaveOutputData
         return;
     }
 
+    DataInfoStruct dataInfo;
+    dataInfo.data = data;
+    dataInfo.parameters = parameters;
+    dataListMutex.lock();
+    dataList.append(dataInfo);
+    dataListMutex.unlock();
+
+    threadWaitCondition.wakeAll();
+}
+
+void SAKSaveOutputDataThread::run()
+{
+    QEventLoop eventLoop;
+    while (true) {
+        /// @brief 响应外部中断
+        if (isInterruptionRequested()){
+            break;
+        }
+
+        /// @brief 写数据
+        while (true) {
+            DataInfoStruct info = takeDataInfo();
+            if (info.data.length()){
+                innerWriteDataToFile(info.data, info.parameters);
+            }else{
+                break;
+            }
+        }
+
+        /// @brief 事件输出
+        eventLoop.processEvents();
+
+        /// @brief 线程睡眠
+        if (!isInterruptionRequested()){
+            threadMutex.lock();
+            threadWaitCondition.wait(&threadMutex, 100);
+            threadMutex.unlock();
+        }
+    }
+}
+
+void SAKSaveOutputDataThread::innerWriteDataToFile(QByteArray data, SAKSaveOutputDataSettings::SaveOutputDataParamters parameters)
+{
     QFile file(parameters.fileName);
     int format = parameters.format;
     QTextStream textStream(&file);
@@ -57,7 +108,14 @@ void SAKSaveOutputDataThread::writeDataToFile(QByteArray data, SAKSaveOutputData
     }
 }
 
-void SAKSaveOutputDataThread::run()
+SAKSaveOutputDataThread::DataInfoStruct SAKSaveOutputDataThread::takeDataInfo()
 {
-    exec();
+    DataInfoStruct info;
+    dataListMutex.lock();
+    if (dataList.length()){
+        info = dataList.takeFirst();
+    }
+    dataListMutex.unlock();
+
+    return info;
 }

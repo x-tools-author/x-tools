@@ -10,7 +10,9 @@
 #ifndef SAKSAVEOUTPUTDATATHREAD_HH
 #define SAKSAVEOUTPUTDATATHREAD_HH
 
+#include <QMutex>
 #include <QThread>
+#include <QWaitCondition>
 
 #include "SAKSaveOutputDataSettings.hh"
 
@@ -19,10 +21,24 @@ class SAKSaveOutputDataThread:public QThread
     Q_OBJECT
 public:
     SAKSaveOutputDataThread(QObject *parent = Q_NULLPTR);
+    ~SAKSaveOutputDataThread();
 
     void writeDataToFile(QByteArray data, SAKSaveOutputDataSettings::SaveOutputDataParamters parameters);
-private:
+protected:
     void run() final;
+private:
+    struct DataInfoStruct {
+        QByteArray data;
+        SAKSaveOutputDataSettings::SaveOutputDataParamters parameters;
+    };
+
+    QList<DataInfoStruct> dataList;
+    QMutex dataListMutex;
+    QMutex threadMutex;
+    QWaitCondition threadWaitCondition;
+private:
+    void innerWriteDataToFile(QByteArray data, SAKSaveOutputDataSettings::SaveOutputDataParamters parameters);
+    DataInfoStruct takeDataInfo();
 };
 
 #endif
