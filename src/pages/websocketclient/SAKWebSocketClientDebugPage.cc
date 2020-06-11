@@ -37,7 +37,7 @@ SAKWebSocketClientDeviceController *SAKWebSocketClientDebugPage::controllerInsta
 
 void SAKWebSocketClientDebugPage::refreshDevice()
 {
-    webSocketClientDeviceController->refresh();
+    /// @brief Nothing to do.
 }
 
 QWidget *SAKWebSocketClientDebugPage::controllerWidget()
