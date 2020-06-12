@@ -25,8 +25,8 @@ SAKWebSocketServerDeviceController::SAKWebSocketServerDeviceController(QWidget *
     serverPortLineEdit = ui->serverPortLineEdit;
     clientHostComboBox = ui->clientHostComboBox;
     sendingTypeComboBox = ui->sendingTypeComboBox;
-
     SAKGlobal::initWebSocketSendingTypeComboBox(sendingTypeComboBox);
+    /// @brief 获取本机网络地址
     refresh();
 }
 
