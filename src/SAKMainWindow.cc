@@ -79,7 +79,6 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     updateManager = new SAKUpdateManager(this);
     qrCodeDialog = new SAKQRCodeDialog(this);
 
-
     QHBoxLayout *layout = new QHBoxLayout;
     layout->addWidget(tabWidget);
 #if 0
@@ -108,7 +107,6 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
 
     tabWidget->setTabsClosable(true);
     connect(tabWidget, &QTabWidget::tabCloseRequested, this, &SAKMainWindow::closeDebugPage);
-
 
     /*
      * 以下代码是设置软件风格
