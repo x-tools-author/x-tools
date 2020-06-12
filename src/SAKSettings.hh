@@ -12,18 +12,21 @@
 
 #include <QSettings>
 
+/// @brief 配置文件读写类
 class SAKSettings:public QSettings
 {
     Q_OBJECT
-public:
-    static SAKSettings* instance();
 private:
-    static SAKSettings* _instance;
     SAKSettings(const QString &fileName, QSettings::Format format, QObject *parent = Q_NULLPTR);
     ~SAKSettings();
+public:
+    /**
+     * @brief instance 获取配置文件读写类实例指针
+     * @return 配置文件读写类实例指针
+     */
+    static SAKSettings* instance();
 
     /// @brief 以下是软件自动更新使能设置的相关成员
-public:    
     bool enableAutoCheckForUpdate();
     void setEnableAutoCheckForUpdate(bool enable);
 
@@ -35,6 +38,8 @@ public:
 
     QString language();
     void setLanguage(QString language);
+private:
+    static SAKSettings* _instance;
 private:
     QString enableAutoCheckForUpdateKey;
     QString appStyleKey;

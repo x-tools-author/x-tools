@@ -7,10 +7,10 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
+#include <QCoreApplication>
+
 #include "SAKGlobal.hh"
 #include "SAKSettings.hh"
-
-#include <QApplication>
 
 SAKSettings* SAKSettings::_instance = Q_NULLPTR;
 SAKSettings* SAKSettings::instance()
