@@ -83,6 +83,12 @@ public:
      * @param comboBox 需要初始化的comboBox实例指针
      */
     static void initCRCComboBox(QComboBox *comboBox);
+
+    /**
+     * @brief initWebSocketSendingTypeComboBox 初始化web socket发送接口选择框
+     * @param comboBox 需要初始化的comboBox实例指针
+     */
+    static void initWebSocketSendingTypeComboBox(QComboBox *comboBox);
 };
 
 #endif

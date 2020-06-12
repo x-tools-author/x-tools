@@ -277,3 +277,10 @@ void SAKGlobal::initCRCComboBox(QComboBox *comboBox)
     }
 }
 
+void SAKGlobal::initWebSocketSendingTypeComboBox(QComboBox *comboBox)
+{
+    if (comboBox){
+        comboBox->addItem(tr("文本发送方式"), SAKDataStruct::WebSocketSendingTypeText);
+        comboBox->addItem(tr("二进制发送方式"), SAKDataStruct::WebSocketSendingTypeBin);
+    }
+}
