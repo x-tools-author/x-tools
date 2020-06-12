@@ -13,6 +13,7 @@
 #include <QApplication>
 
 #include "SAKDebugPage.hh"
+#include "SAKDataStruct.hh"
 #include "SAKWebSocketServerDevice.hh"
 #include "SAKWebSocketServerDebugPage.hh"
 #include "SAKWebSocketServerDeviceController.hh"
@@ -55,26 +56,20 @@ void SAKWebSocketServerDevice::run()
             if (socket){
                 clientList.append(socket);
                 deviceController->addClient(socket->peerAddress().toString(), socket->peerPort(), socket);
+                /// @brief 读数据
+                connect(socket, &QWebSocket::textMessageReceived, [&](const QString message){
+                    innerReadBytes(socket, message.toLatin1(), deviceController);
+                });
+                /// @brief 读数据
+                connect(socket, &QWebSocket::binaryMessageReceived, [&](const QByteArray message){
+                    innerReadBytes(socket, message, deviceController);
+                });
+                /// @brief 断开连接后移除先关数据
+                connect(socket, &QWebSocket::disconnected, [&](){
+                    deviceController->removeClient(socket);
+                    clientList.removeOne(socket);
+                });
             }
-        }
-
-        /// @brief 检查链接状态，移除已断开的链接
-        for (auto var : clientList){
-            QList<QWebSocket*> offLineClientList;
-            if (var->state() != QTcpSocket::ConnectedState){
-                offLineClientList.append(var);
-            }
-
-            for (auto var : offLineClientList){
-                /// @brief socket（127.0.0.1）断开链接后无法获取：peerAddress及eerPort
-                deviceController->removeClient(var);
-                clientList.removeOne(var);
-            }
-        }
-
-        /// @brief 读取数据
-        for (auto var : clientList){
-            innerReadBytes(var, deviceController);
         }
 
         /// @brief 写数据
@@ -100,38 +95,42 @@ void SAKWebSocketServerDevice::run()
 
     webSocketServer->close();
     delete webSocketServer;
+    deviceController->clearClient();
     emit deviceStateChanged(false);
 }
 
-void SAKWebSocketServerDevice::innerReadBytes(QWebSocket *socket, SAKWebSocketServerDeviceController *deviceController)
+void SAKWebSocketServerDevice::innerReadBytes(QWebSocket *socket, QByteArray bytes, SAKWebSocketServerDeviceController *deviceController)
 {        
-//    socket->waitForReadyRead(debugPage->readWriteParameters().waitForReadyReadTime);
-//    QByteArray bytes = socket->readAll();
-//    QString currentClientHost = deviceController->currentClientHost();
-//    QString peerHost = socket->peerAddress().toString();
-//    quint16 currentClientPort = deviceController->currentClientPort();
-//    quint16 peerPort = socket->peerPort();
+    QString currentClientHost = deviceController->currentClientHost();
+    QString peerHost = socket->peerAddress().toString();
+    quint16 currentClientPort = deviceController->currentClientPort();
+    quint16 peerPort = socket->peerPort();
 
-//    if (bytes.length()){
-//        if ((currentClientHost == peerHost) && (currentClientPort == peerPort)){
-//            emit bytesRead(bytes);
-//        }
-//    }
+    if (bytes.length()){
+        if ((currentClientHost == peerHost) && (currentClientPort == peerPort)){
+            emit bytesRead(bytes);
+        }
+    }
 }
 
 void SAKWebSocketServerDevice::innerWriteBytes(QWebSocket *socket, QByteArray bytes, SAKWebSocketServerDeviceController *deviceController)
 {    
-//    QString currentClientHost = deviceController->currentClientHost();
-//    QString peerHost = socket->peerAddress().toString();
-//    quint16 currentClientPort = deviceController->currentClientPort();
-//    quint16 peerPort = socket->peerPort();
-//    if ((currentClientHost == peerHost) && (currentClientPort == peerPort)){
-//        qint64 ret = socket->write(bytes);
-//        socket->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
-//        if (ret == -1){
-//            emit messageChanged(tr("无法写入数据:(%1)%2").arg(socket->peerAddress().toString().arg(socket->error())), false);
-//        }else{
-//            emit bytesWritten(bytes);
-//        }
-//    }
+    QString currentClientHost = deviceController->currentClientHost();
+    QString peerHost = socket->peerAddress().toString();
+    quint16 currentClientPort = deviceController->currentClientPort();
+    quint16 peerPort = socket->peerPort();
+    if ((currentClientHost == peerHost) && (currentClientPort == peerPort)){
+        qint64 ret = 0;
+        if (deviceController->sendingType() == SAKDataStruct::WebSocketSendingTypeText){
+            ret = socket->sendTextMessage(QString(bytes));
+        }else{
+            ret = socket->sendBinaryMessage(bytes);
+        }
+
+        if (ret == -1){
+            emit messageChanged(tr("无法写入数据:(%1)%2").arg(socket->peerAddress().toString().arg(socket->error())), false);
+        }else{
+            emit bytesWritten(bytes);
+        }
+    }
 }

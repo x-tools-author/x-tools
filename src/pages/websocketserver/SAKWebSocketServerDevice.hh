@@ -35,7 +35,7 @@ private:
     SAKWebSocketServerDebugPage *debugPage;
     QWebSocketServer *webSocketServer;
 private:
-    void innerReadBytes(QWebSocket *socket, SAKWebSocketServerDeviceController *deviceController);
+    void innerReadBytes(QWebSocket *socket, QByteArray bytes, SAKWebSocketServerDeviceController *deviceController);
     void innerWriteBytes(QWebSocket *socket, QByteArray bytes, SAKWebSocketServerDeviceController *deviceController);
 };
 
