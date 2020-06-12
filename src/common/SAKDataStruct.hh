@@ -72,6 +72,12 @@ public:
     };
     Q_ENUM(SAKEnumAutoResponseOption)
 
+    /// @brief web socket 发送接口类型
+    enum SAKEnumWebSocketSendingType {
+        WebSocketSendingTypeText,
+        WebSocketSendingTypeBin,
+    };
+
     /// @brief 调试页面自动回复数据的数据结构
     struct SAKStructAutoResponseItem {
         quint64 id;                 /// 自动回复条目ID,回复条目唯一标识符（取值为数据产生时的时间戳）
