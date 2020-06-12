@@ -12,7 +12,6 @@
 #include <QDateTime>
 #include <QJsonArray>
 #include <QFileDialog>
-#include <QDomElement>
 #include <QTextStream>
 #include <QMessageBox>
 #include <QJsonObject>
