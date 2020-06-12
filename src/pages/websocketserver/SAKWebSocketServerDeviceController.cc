@@ -24,7 +24,9 @@ SAKWebSocketServerDeviceController::SAKWebSocketServerDeviceController(QWidget *
     serverHostComboBox = ui->serverhostComboBox;
     serverPortLineEdit = ui->serverPortLineEdit;
     clientHostComboBox = ui->clientHostComboBox;
+    sendingTypeComboBox = ui->sendingTypeComboBox;
 
+    SAKGlobal::initWebSocketSendingTypeComboBox(sendingTypeComboBox);
     refresh();
 }
 
@@ -67,6 +69,14 @@ quint16 SAKWebSocketServerDeviceController::currentClientPort()
     return portTemp;
 }
 
+quint32 SAKWebSocketServerDeviceController::sendingType()
+{
+    uiMutex.lock();
+    quint32 ret = sendingTypeComboBox->currentData().toInt();
+    uiMutex.unlock();
+    return ret;
+}
+
 void SAKWebSocketServerDeviceController::refresh()
 {
     SAKGlobal::initIpComboBox(serverHostComboBox);
@@ -104,5 +114,12 @@ void SAKWebSocketServerDeviceController::removeClient(QWebSocket *socket)
             break;
         }
     }
+    uiMutex.unlock();
+}
+
+void SAKWebSocketServerDeviceController::clearClient()
+{
+    uiMutex.lock();
+    clientHostComboBox->clear();
     uiMutex.unlock();
 }

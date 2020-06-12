@@ -29,21 +29,23 @@ public:
 
     QString serverHost();
     quint16 serverPort();
-
     QString currentClientHost();
     quint16 currentClientPort();
+    quint32 sendingType();
 
     void refresh();
     void setUiEnable(bool enable);
 
     void addClient(QString host, quint16 port, QWebSocket *socket);
     void removeClient(QWebSocket *socket);
+    void clearClient();
 private:
     Ui::SAKWebSocketServerDeviceController *ui;
 
     QComboBox *serverHostComboBox;
     QLineEdit *serverPortLineEdit;
     QComboBox *clientHostComboBox;
+    QComboBox *sendingTypeComboBox;
     QMutex uiMutex;
 };
 
