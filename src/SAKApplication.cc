@@ -7,11 +7,14 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
+#include <QRect>
 #include <QTimer>
+#include <QScreen>
 #include <QAction>
 #include <QSettings>
 #include <QTextCursor>
 #include <QTranslator>
+#include <QDesktopWidget>
 
 #include "SAK.hh"
 #include "SAKSettings.hh"
@@ -45,6 +48,13 @@ SAKApplication::SAKApplication(int argc, char **argv)
     QMainWindow *mainWindow = new SAKMainWindow;
     mainWindow->show();
     splashScreen->finish(mainWindow);
+
+    /// @brief 窗口居中显示
+    QDesktopWidget *desktop = QApplication::desktop();
+    int currentScreen = desktop->screenNumber(mainWindow);
+    QList<QScreen*> screenList = QGuiApplication::screens();
+    QScreen *screen = screenList.at(currentScreen);
+    mainWindow->move((screen->geometry().width() - mainWindow->width())/2, (screen->geometry().height() - mainWindow->height())/2);
 }
 
 SAKApplication::~SAKApplication()
