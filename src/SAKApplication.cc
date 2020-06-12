@@ -31,7 +31,7 @@ SAKApplication::SAKApplication(int argc, char **argv)
     installLanguage();
     setApplicationVersion(SAK::instance()->version());
 
-    /// 注册表选项
+    /// @brief 注册表选项
     setOrganizationName(QString("Qter"));
     setOrganizationDomain(QString("IT"));
     setApplicationName(QString("QtSwissArmyKnife"));
