@@ -25,9 +25,9 @@ DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs depr
 
 CONFIG += c++11
 
-QSAK_APP_NAME        = "qtswissarmyKnife"
-QSAK_ORG_NAME        = "qsak.org"
-QSAK_ORG_DOMAIN      = "org.qtswissarmyknife"
+QSAK_APP_NAME        = "QtSwissArmyKnife"
+QSAK_ORG_NAME        = "Qter"
+QSAK_ORG_DOMAIN      = "IT"
 QSAK_APP_DESCRIPTION = "Qt Swiss Army Knife is a multi-functional, cross-platform debugging tool based on Qt open source framework."
 QSAK_APP_COPYRIGHT   = "Copyright (C) 2020 Qter(qsak@foxmail.com). All rights reserved."
 
