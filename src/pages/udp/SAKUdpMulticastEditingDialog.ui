@@ -14,20 +14,6 @@
    <string>添加组播</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>组播地址</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="label_2">
-     <property name="text">
-      <string>组播端口</string>
-     </property>
-    </widget>
-   </item>
    <item row="4" column="1">
     <widget class="QPushButton" name="pushButton">
      <property name="text">
@@ -69,6 +55,20 @@
     <widget class="QLineEdit" name="addressLineEdit">
      <property name="text">
       <string notr="true">224.0.0.255</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="3">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>组播地址</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="3">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>组播端口</string>
      </property>
     </widget>
    </item>
