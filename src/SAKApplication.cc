@@ -26,6 +26,7 @@ SAKApplication::SAKApplication(int argc, char **argv)
     splashScreen->show();
     processEvents();
 
+    setApplicationVersion(SAK_VERSION);
     SAKSettings::instance();
     installLanguage();
     setApplicationVersion(SAK::instance()->version());

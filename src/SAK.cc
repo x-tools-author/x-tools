@@ -56,7 +56,7 @@ QString SAK::authorNickname()
 
 QString SAK::version()
 {
-    return QString("3.0.0");
+    return SAK_VERSION;
 }
 
 QString SAK::buildTime()
