@@ -16,6 +16,7 @@
 #include <QPushButton>
 
 class SAKDebugPage;
+/// @brief 数据统计
 class SAKStatisticsManager:public QObject
 {
     Q_OBJECT
@@ -34,9 +35,7 @@ private:
     QPushButton *resetTxCountPushButton;
     QPushButton *resetRxCountPushButton;
 private:
-    /**
-     * @brief 数据统计项
-     */
+    /// @brief 数据统计项
     struct DataContext {
         quint64 txFrames;   // 发送帧数
         quint64 txBytes;    // 发送字节数
@@ -45,7 +44,6 @@ private:
         quint64 rxBytesPerSecond;   // 每秒接收字节数
         quint64 txBytesPerSecond;   // 每秒发送字节数
     }dataContext;
-
     QTimer speedCalculationTimer;
 private:
     void dataRead(QByteArray data);
