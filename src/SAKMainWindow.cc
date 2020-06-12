@@ -431,7 +431,6 @@ void SAKMainWindow::initLinksMenu()
         QString url;
     };
     QList<Link> linkList;
-
     linkList << Link{tr("Qt官方下载"), QString("http://download.qt.io/official_releases/qt")}
              << Link{tr("Qt官方博客"), QString("https://www.qt.io/blog")}
              << Link{tr("Qt发布信息"), QString("https://wiki.qt.io/Qt_5.12_Release")};
