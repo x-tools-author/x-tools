@@ -27,7 +27,7 @@ class SAKMoreInformation;
 namespace Ui {
     class SAKMainWindow;
 }
-
+/// @brief 程序主窗口
 class SAKMainWindow : public QMainWindow
 {
     Q_OBJECT
