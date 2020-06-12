@@ -13,6 +13,7 @@
 #include <QHostAddress>
 #include <QAbstractSocket>
 
+#include "SAKDataStruct.hh"
 #include "SAKWebSocketClientDevice.hh"
 #include "SAKWebSocketClientDebugPage.hh"
 #include "SAKWebSocketClientDeviceController.hh"
@@ -43,6 +44,9 @@ void SAKWebSocketClientDevice::run()
         requestInterruption();
     });
 
+    /// @brief 错误处理
+    connect(webSocket, SIGNAL(error(QAbstractSocket::SocketError)), this, SLOT(errorSlot(QAbstractSocket::SocketError)));
+
     webSocket->open(serverAddress);
 
     while (true) {
@@ -56,7 +60,16 @@ void SAKWebSocketClientDevice::run()
             QByteArray bytes = takeWaitingForWrittingBytes();
             if (bytes.length()){
                 if (webSocket->state() == QAbstractSocket::ConnectedState){
-                    webSocket->sendTextMessage(QString(bytes));
+                    qint64 ret = 0;
+                    if (deviceController->sendingType() == SAKDataStruct::WebSocketSendingTypeText){
+                        ret = webSocket->sendTextMessage(QString(bytes));
+                    }else{
+                        ret = webSocket->sendBinaryMessage(bytes);
+                    }
+
+                    if (ret != -1){
+                        emit bytesWritten(bytes);
+                    }
                 }
             }else{
                 break;
@@ -77,4 +90,10 @@ void SAKWebSocketClientDevice::run()
     webSocket->close();
     webSocket->deleteLater();
     webSocket = Q_NULLPTR;
+}
+
+void SAKWebSocketClientDevice::errorSlot(QAbstractSocket::SocketError error)
+{
+    messageChanged(tr("连接错误：%1").arg(error), false);
+    requestInterruption();
 }

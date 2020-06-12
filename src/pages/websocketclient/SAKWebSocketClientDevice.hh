@@ -10,6 +10,7 @@
 #ifndef SAKWEBSOCKETCLIENTDEVICE_HH
 #define SAKWEBSOCKETCLIENTDEVICE_HH
 
+#include <QAbstractSocket>
 #include "SAKDevice.hh"
 
 class SAKWebSocketClientDebugPage;
@@ -23,6 +24,8 @@ private:
     void run() final;
 private:
     SAKWebSocketClientDebugPage *debugPage;
+private slots:
+    void errorSlot(QAbstractSocket::SocketError error);
 };
 
 #endif
