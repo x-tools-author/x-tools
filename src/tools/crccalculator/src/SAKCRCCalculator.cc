@@ -17,6 +17,7 @@
 
 SAKCRCCalculator::SAKCRCCalculator(QWidget* parent)
     :QDialog (parent)
+    ,logCategory("CRCCalculator")
     ,ui(new Ui::SAKCRCCalculator)
 {
     ui->setupUi(this);

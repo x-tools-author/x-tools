@@ -38,30 +38,30 @@ public:
 protected:
     bool eventFilter(QObject *watched, QEvent *event);
 private:
-    const char *logCategory = "CRCCalculator";
+    const char *logCategory;
     SAKCRCInterface crcInterface;
 
     Ui::SAKCRCCalculator* ui;
-    QComboBox* widthComboBox = Q_NULLPTR;
-    QComboBox* parameterComboBox = Q_NULLPTR;
+    QComboBox* widthComboBox;
+    QComboBox* parameterComboBox;
 
-    QCheckBox* refinCheckBox = Q_NULLPTR;
-    QCheckBox* refoutCheckBox = Q_NULLPTR;
-    QLineEdit* polyLineEdit = Q_NULLPTR;
-    QLineEdit* initLineEdit = Q_NULLPTR;
-    QLineEdit* xorLineEdit = Q_NULLPTR;
+    QCheckBox* refinCheckBox;
+    QCheckBox* refoutCheckBox;
+    QLineEdit* polyLineEdit;
+    QLineEdit* initLineEdit;
+    QLineEdit* xorLineEdit;
 
-    QRadioButton* hexRadioBt = Q_NULLPTR;
-    QRadioButton* asciiRadioBt = Q_NULLPTR;
+    QRadioButton* hexRadioBt;
+    QRadioButton* asciiRadioBt;
 
-    QLineEdit* hexCRCOutput = Q_NULLPTR;
-    QLineEdit* binCRCOutput = Q_NULLPTR;
+    QLineEdit* hexCRCOutput;
+    QLineEdit* binCRCOutput;
 
-    QTextEdit* inputTextEdit = Q_NULLPTR;
+    QTextEdit* inputTextEdit;
 
-    QPushButton* calculatedBt = Q_NULLPTR;
-    QLabel *labelPolyFormula = Q_NULLPTR;
-    QLabel *labelInfo = Q_NULLPTR;
+    QPushButton* calculatedBt;
+    QLabel *labelPolyFormula;
+    QLabel *labelInfo;
 
     void initParameterModel();
 private slots:
