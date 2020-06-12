@@ -150,7 +150,6 @@ FORMS += \
 HEADERS += \
     src/SAK.hh \
     src/SAKApplication.hh \
-    src/SAKCodingStyle.hh \
     src/SAKGlobal.hh \
     src/SAKMainWindow.hh \
     src/SAKSettings.hh \
@@ -206,7 +205,6 @@ HEADERS += \
 SOURCES += \
     src/SAK.cc \
     src/SAKApplication.cc \
-    src/SAKCodingStyle.cc \
     src/SAKGlobal.cc \
     src/SAKMainWindow.cc \
     src/SAKSettings.cc \
