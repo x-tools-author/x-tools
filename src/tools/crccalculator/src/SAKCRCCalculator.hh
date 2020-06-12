@@ -10,18 +10,17 @@
 #ifndef SAKCRCCALCULATOR_HH
 #define SAKCRCCALCULATOR_HH
 
+#include <QLabel>
 #include <QDialog>
 #include <QComboBox>
-
-#include <QJsonDocument>
-#include <QJsonObject>
-#include <QJsonArray>
-#include <QJsonParseError>
-#include <QCheckBox>
-#include <QRadioButton>
 #include <QTextEdit>
+#include <QCheckBox>
+#include <QJsonArray>
+#include <QJsonObject>
 #include <QPushButton>
-#include <QLabel>
+#include <QRadioButton>
+#include <QJsonDocument>
+#include <QJsonParseError>
 
 #include "SAKCRCInterface.hh"
 
@@ -29,6 +28,7 @@ namespace Ui {
     class SAKCRCCalculator;
 }
 
+/// @brief crc计算器
 class SAKCRCCalculator:public QDialog
 {
     Q_OBJECT
@@ -40,7 +40,13 @@ protected:
 private:
     const char *logCategory;
     SAKCRCInterface crcInterface;
-
+private:
+    void initParameterModel();
+private slots:
+    void calculate();
+    void textFormatControl();
+    void changedParameterModel(int index);
+private:
     Ui::SAKCRCCalculator* ui;
     QComboBox* widthComboBox;
     QComboBox* parameterComboBox;
@@ -62,11 +68,5 @@ private:
     QPushButton* calculatedBt;
     QLabel *labelPolyFormula;
     QLabel *labelInfo;
-
-    void initParameterModel();
-private slots:
-    void changedParameterModel(int index);
-    void calculate();
-    void textFormatControl();
 };
 #endif

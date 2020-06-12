@@ -58,13 +58,14 @@ SAKCRCCalculator::SAKCRCCalculator(QWidget* parent)
     labelInfo->installEventFilter(this);
     labelInfo->setCursor(QCursor(Qt::PointingHandCursor));
 
-    /// 读入crc校验算法模型
+    /// @brief 读入crc校验算法模型
     initParameterModel();
-
+    /// @brief 旧式信号与槽关联
     connect(parameterComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(changedParameterModel(int)));
     connect(calculatedBt, SIGNAL(clicked()), this, SLOT(calculate()));
     connect(inputTextEdit, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
 
+    /// @brief 窗口关闭后串口资源将被销毁
     setAttribute(Qt::WA_DeleteOnClose, true);
     setModal(true);
 }
@@ -95,33 +96,6 @@ void SAKCRCCalculator::initParameterModel()
     labelPolyFormula->setText(crcInterface.getPolyFormula(model));
 }
 
-void SAKCRCCalculator::changedParameterModel(int index)
-{
-    Q_UNUSED(index)
-
-    QMetaEnum models = QMetaEnum::fromType<SAKCRCInterface::CRCModel>();
-    bool ok = false;
-    SAKCRCInterface::CRCModel model = SAKCRCInterface::CRC_8;
-    int ret = models.keyToValue(parameterComboBox->currentText().toLatin1().constData(), &ok);
-    if (ok){
-        model = static_cast<SAKCRCInterface::CRCModel>(ret);
-    }else{
-        QLoggingCategory category(logCategory);
-        qCWarning(category) << "Unknow parameter model!";
-        Q_ASSERT_X(false, __FUNCTION__, "Unknow parameter model!");
-        return;
-    }
-
-    int bitsWidth = crcInterface.getBitsWidth(model);
-    widthComboBox->setCurrentIndex(widthComboBox->findText(QString::number(bitsWidth)));
-    polyLineEdit->setText(QString("0x%1").arg(QString::number(static_cast<int>(crcInterface.getPoly(model)), 16), bitsWidth/4, '0'));
-    initLineEdit->setText(QString("0x%1").arg(QString::number(static_cast<int>(crcInterface.getInitValue(model)), 16), bitsWidth/4, '0'));
-    xorLineEdit->setText(QString("0x%1").arg(QString::number(static_cast<int>(crcInterface.getXorValue(model)), 16), bitsWidth/4, '0'));
-    refinCheckBox->setChecked(crcInterface.getInputReversal(model));
-    refoutCheckBox->setChecked(crcInterface.getOutputReversal(model));
-    labelPolyFormula->setText(crcInterface.getPolyFormula(model));
-}
-
 void SAKCRCCalculator::calculate()
 {
     QByteArray inputArray;
@@ -144,7 +118,7 @@ void SAKCRCCalculator::calculate()
         return;
     }
 
-    int bitsWidth = widthComboBox->currentText().toInt();    
+    int bitsWidth = widthComboBox->currentText().toInt();
     QMetaEnum models = QMetaEnum::fromType<SAKCRCInterface::CRCModel>();
     bool ok = false;
     int ret = models.keyToValue(parameterComboBox->currentText().toLatin1().constData(), &ok);
@@ -196,6 +170,33 @@ void SAKCRCCalculator::textFormatControl()
     inputTextEdit->moveCursor(QTextCursor::End);
 
     connect(inputTextEdit, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
+}
+
+void SAKCRCCalculator::changedParameterModel(int index)
+{
+    Q_UNUSED(index)
+
+    QMetaEnum models = QMetaEnum::fromType<SAKCRCInterface::CRCModel>();
+    bool ok = false;
+    SAKCRCInterface::CRCModel model = SAKCRCInterface::CRC_8;
+    int ret = models.keyToValue(parameterComboBox->currentText().toLatin1().constData(), &ok);
+    if (ok){
+        model = static_cast<SAKCRCInterface::CRCModel>(ret);
+    }else{
+        QLoggingCategory category(logCategory);
+        qCWarning(category) << "Unknow parameter model!";
+        Q_ASSERT_X(false, __FUNCTION__, "Unknow parameter model!");
+        return;
+    }
+
+    int bitsWidth = crcInterface.getBitsWidth(model);
+    widthComboBox->setCurrentIndex(widthComboBox->findText(QString::number(bitsWidth)));
+    polyLineEdit->setText(QString("0x%1").arg(QString::number(static_cast<int>(crcInterface.getPoly(model)), 16), bitsWidth/4, '0'));
+    initLineEdit->setText(QString("0x%1").arg(QString::number(static_cast<int>(crcInterface.getInitValue(model)), 16), bitsWidth/4, '0'));
+    xorLineEdit->setText(QString("0x%1").arg(QString::number(static_cast<int>(crcInterface.getXorValue(model)), 16), bitsWidth/4, '0'));
+    refinCheckBox->setChecked(crcInterface.getInputReversal(model));
+    refoutCheckBox->setChecked(crcInterface.getOutputReversal(model));
+    labelPolyFormula->setText(crcInterface.getPolyFormula(model));
 }
 
 bool SAKCRCCalculator::eventFilter(QObject *watched, QEvent *event)
