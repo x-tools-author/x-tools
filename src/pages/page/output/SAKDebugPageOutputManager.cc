@@ -20,7 +20,7 @@
 SAKDebugPageOutputManager::SAKDebugPageOutputManager(SAKDebugPage *debugPage, QObject *parent)
     :QObject (parent)
     ,debugPage (debugPage)
-    ,rxFlagCount (4)
+    ,rxFlagCount (5)
     ,txFlagCount (0)
 {
     /// @brief 注册数据类型（自定义数据类型作为信号参数时，要进行注册，该函数要与宏 Q_DECLARE_METATYPE 配套使用）
@@ -82,7 +82,7 @@ void SAKDebugPageOutputManager::updateRxFlag()
 
     rxFlagCount -= 1;
     if (rxFlagCount == -1){
-        rxFlagCount = 8;
+        rxFlagCount = 5;
     }
 }
 
@@ -92,7 +92,7 @@ void SAKDebugPageOutputManager::updateTxFlag()
     txLabel->setText(QString("C%1").arg(QString(""), txFlagCount, '>'));
 
     txFlagCount += 1;
-    if (txFlagCount == 8){
+    if (txFlagCount == 6){
         txFlagCount = 0;
     }
 }
