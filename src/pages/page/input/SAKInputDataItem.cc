@@ -153,6 +153,7 @@ void SAKInputDataItem::initUi()
     updatePushButton = ui->updatePushButton;
     classifyComboBox = ui->classifyComboBox;
     classifyComboBox->addItem(tr("默认"));
+    classifyComboBox->setEnabled(false);
     SAKGlobal::initInputTextFormatComboBox(textFormatComboBox);
 
     menuPushButton = inputManager->sendPresetPushButton;
