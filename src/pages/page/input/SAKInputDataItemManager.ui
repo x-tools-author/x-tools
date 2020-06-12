@@ -14,7 +14,7 @@
    <string>发送数据预设</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="2" column="0">
+   <item row="1" column="0">
     <widget class="QLabel" name="infoLabel">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -27,7 +27,28 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="4">
+   <item row="1" column="1">
+    <widget class="QPushButton" name="outportPushButton">
+     <property name="text">
+      <string>导出</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2">
+    <widget class="QPushButton" name="importPushButton">
+     <property name="text">
+      <string>导入</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="3">
+    <widget class="QPushButton" name="deletePushButton">
+     <property name="text">
+      <string>删除</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="4">
     <widget class="QPushButton" name="addPushButton">
      <property name="text">
       <string>添加</string>
@@ -35,121 +56,7 @@
     </widget>
    </item>
    <item row="0" column="0" colspan="5">
-    <widget class="QGroupBox" name="groupBox">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="title">
-      <string>分组管理</string>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_2">
-      <item row="0" column="0">
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>分组名称</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QLineEdit" name="nameLineEdit">
-        <property name="text">
-         <string notr="true"/>
-        </property>
-        <property name="placeholderText">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="6">
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>已建分组</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QComboBox" name="comboBox"/>
-      </item>
-      <item row="1" column="2">
-       <widget class="QPushButton" name="deletePushButton_2">
-        <property name="text">
-         <string>删除分组</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="3">
-       <widget class="QLabel" name="label_3">
-        <property name="text">
-         <string>重新命名</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="4">
-       <widget class="QLineEdit" name="renameLineEdit">
-        <property name="text">
-         <string notr="true"/>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="5">
-       <widget class="QPushButton" name="renamePushButton">
-        <property name="text">
-         <string>重新命名</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="2">
-       <widget class="QPushButton" name="createPushButton">
-        <property name="text">
-         <string>新建分组</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="1" column="0" colspan="5">
     <widget class="QListWidget" name="itemListWidget"/>
-   </item>
-   <item row="2" column="3">
-    <widget class="QPushButton" name="deletePushButton">
-     <property name="text">
-      <string>删除</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="2">
-    <widget class="QPushButton" name="importPushButton">
-     <property name="text">
-      <string>导入</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1">
-    <widget class="QPushButton" name="outportPushButton">
-     <property name="text">
-      <string>导出</string>
-     </property>
-    </widget>
    </item>
   </layout>
  </widget>
