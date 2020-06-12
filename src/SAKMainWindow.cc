@@ -27,7 +27,6 @@
 #include <QMessageBox>
 #include <QStyleFactory>
 #include <QJsonDocument>
-#include <QDesktopWidget>
 #include <QJsonParseError>
 #include <QDesktopServices>
 
