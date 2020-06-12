@@ -22,7 +22,7 @@ SAKWebSocketClientDevice::SAKWebSocketClientDevice(SAKWebSocketClientDebugPage *
     :SAKDevice(parent)
     ,debugPage (debugPage)
 {
-
+    qRegisterMetaType<QAbstractSocket::SocketError>("QAbstractSocket::SocketError");
 }
 
 void SAKWebSocketClientDevice::run()
@@ -90,6 +90,7 @@ void SAKWebSocketClientDevice::run()
     webSocket->close();
     webSocket->deleteLater();
     webSocket = Q_NULLPTR;
+    emit deviceStateChanged(false);
 }
 
 void SAKWebSocketClientDevice::errorSlot(QAbstractSocket::SocketError error)
