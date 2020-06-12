@@ -45,6 +45,9 @@
 #ifdef SAK_IMPORT_HID_MODULE
 #include "SAKHidDebugPage.hh"
 #endif
+#ifdef SAK_IMPORT_USB_MODULE
+#include "SAKUsbDebugPage.hh"
+#endif
 #ifdef SAK_IMPORT_QRCODE_MODULE
 #include "SAKQRCodeCreator.hh"
 #endif
@@ -62,10 +65,6 @@
 #endif
 #ifdef SAK_IMPORT_FILECHECKER_MODULE
 #include "QtCryptographicHashController.hh"
-#endif
-
-#ifdef SAK_IMPORT_USB_MODULE
-#include "SAKUsbDebugPage.hh"
 #endif
 
 #include "ui_SAKMainWindow.h"
