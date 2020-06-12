@@ -54,7 +54,6 @@ SAKInputDataItem::SAKInputDataItem(quint64 id,
 SAKInputDataItem::~SAKInputDataItem()
 {
     delete ui;
-    removeDataAction(inputManager->presetPushButton);
 }
 
 quint64 SAKInputDataItem::parameterID()
