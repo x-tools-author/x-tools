@@ -20,6 +20,8 @@ SAKWebSocketClientDeviceController::SAKWebSocketClientDeviceController(QWidget *
 {
     ui->setupUi(this);
     serverAddressLineEdit = ui->serverHostLineEdit;
+    sendingTypeComboBox = ui->sendingTypeComboBox;
+    SAKGlobal::initWebSocketSendingTypeComboBox(sendingTypeComboBox);
 }
 
 SAKWebSocketClientDeviceController::~SAKWebSocketClientDeviceController()
@@ -38,4 +40,12 @@ QString SAKWebSocketClientDeviceController::serverAddress()
 void SAKWebSocketClientDeviceController::setUiEnable(bool enable)
 {
     serverAddressLineEdit->setEnabled(enable);
+}
+
+quint32 SAKWebSocketClientDeviceController::sendingType()
+{
+    uiMutex.lock();
+    quint32 ret = sendingTypeComboBox->currentData().toUInt();
+    uiMutex.unlock();
+    return ret;
 }

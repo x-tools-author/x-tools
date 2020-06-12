@@ -28,11 +28,13 @@ public:
 
     QString serverAddress();
     void setUiEnable(bool enable);
+    quint32 sendingType();
 private:
     QMutex uiMutex;
 private:
     Ui::SAKWebSocketClientDeviceController *ui;
     QLineEdit *serverAddressLineEdit;
+    QComboBox *sendingTypeComboBox;
 };
 
 #endif
