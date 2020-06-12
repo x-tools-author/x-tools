@@ -12,7 +12,7 @@
 
 #include <QSettings>
 
-/// @brief 配置文件读写类
+/// @brief 配置文件读写类，该类是一个单实例类，只能通过SAKSettings::instance()接口来穿件获取其实例
 class SAKSettings:public QSettings
 {
     Q_OBJECT
@@ -30,12 +30,15 @@ public:
     bool enableAutoCheckForUpdate();
     void setEnableAutoCheckForUpdate(bool enable);
 
+    /// @brief 软件风格配置信息读写
     QString appStyle();
     void setAppStyle(QString style);
 
+    /// @brief 软件样式配置信息读写
     QString appStylesheet();
     void setAppStylesheet(QString stylesheet);
 
+    /// @brief 程序语言配置信息读写
     QString language();
     void setLanguage(QString language);
 private:
