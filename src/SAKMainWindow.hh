@@ -25,33 +25,18 @@ class SAKUpdateManager;
 class SAKMoreInformation;
 
 namespace Ui {
-class SAKMainWindow;
+    class SAKMainWindow;
 }
 
 class SAKMainWindow : public QMainWindow
 {
     Q_OBJECT
-
 public:
     explicit SAKMainWindow(QWidget *parent = Q_NULLPTR);
     ~SAKMainWindow();
-
 protected:
       bool eventFilter(QObject *obj, QEvent *event);
 private:
-    QTabWidget *tabWidget               = Q_NULLPTR;
-    Ui::SAKMainWindow *ui               = Q_NULLPTR;
-    QMenu *toolsMenu                    = Q_NULLPTR;
-    QAction *defaultStyleSheetAction    = Q_NULLPTR;
-    SAKUpdateManager *updateManager     = Q_NULLPTR;
-    SAKMoreInformation *moreInformation = Q_NULLPTR;
-    SAKQRCodeDialog *qrCodeDialog       = Q_NULLPTR;
-
-    QTranslator qtTranslator;
-    QTranslator qtBaeTranslator;
-    QTranslator sakTranslator;
-
-    /// ----------------------------------------------------
     void addTab();    
     void addTool();
 
@@ -73,8 +58,21 @@ private:
     QWidget *getDebugPage(int type);
     void closeDebugPage(int index);
     void about();
-private:
+
     void createCRCCalculator();
+private:
+    QTabWidget *tabWidget;
+    QMenu *toolsMenu;
+    QAction *defaultStyleSheetAction;
+    SAKUpdateManager *updateManager;
+    SAKMoreInformation *moreInformation;
+    SAKQRCodeDialog *qrCodeDialog;
+
+    QTranslator qtTranslator;
+    QTranslator qtBaeTranslator;
+    QTranslator sakTranslator;
+private:
+    Ui::SAKMainWindow *ui;
 };
 
 #endif // MAINWINDOW_H

@@ -70,10 +70,10 @@
 #include "ui_SAKMainWindow.h"
 
 SAKMainWindow::SAKMainWindow(QWidget *parent)
-    :QMainWindow (parent)
-    ,tabWidget (new QTabWidget)
-    ,ui (new Ui::SAKMainWindow)
-    ,moreInformation (new SAKMoreInformation)
+    :QMainWindow(parent)
+    ,tabWidget(new QTabWidget)
+    ,moreInformation(new SAKMoreInformation)
+    ,ui(new Ui::SAKMainWindow)
 {
     ui->setupUi(this);
     updateManager = new SAKUpdateManager(this);
