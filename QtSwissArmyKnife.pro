@@ -25,6 +25,19 @@ DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs depr
 
 CONFIG += c++11
 
+QSAK_APP_NAME        = "qtswissarmyKnife"
+QSAK_ORG_NAME        = "qsak.org"
+QSAK_ORG_DOMAIN      = "org.qtswissarmyknife"
+QSAK_APP_DESCRIPTION = "Qt Swiss Army Knife is a multi-functional, cross-platform debugging tool based on Qt open source framework."
+QSAK_APP_COPYRIGHT   = "Copyright (C) 2020 Qter(qsak@foxmail.com). All rights reserved."
+
+win32 {
+    QMAKE_TARGET_COMPANY        = "$${QSAK_ORG_NAME}"
+    QMAKE_TARGET_DESCRIPTION    = "$${QSAK_APP_DESCRIPTION}"
+    QMAKE_TARGET_COPYRIGHT      = "$${QSAK_APP_COPYRIGHT}"
+    QMAKE_TARGET_PRODUCT        = "$${QSAK_APP_NAME}"
+}
+
 # 子项目
 #include(SAKHID.pri)
 #include(SAKUSB.pri)
