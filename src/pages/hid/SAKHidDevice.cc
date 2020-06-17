@@ -33,6 +33,7 @@ void SAKHidDevice::run()
     QEventLoop eventLoop;
     SAKHidDeviceController *deviceController = debugPage->controllerInstance();
     path = deviceController->devicePath();
+    hid_init();
     hidDevice = hid_open_path(path.toLatin1().constData());
     if (!hidDevice){
         emit deviceStateChanged(false);
@@ -40,9 +41,14 @@ void SAKHidDevice::run()
         return;
     }
 
-    emit deviceStateChanged(true);
-    hid_set_nonblocking(hidDevice, 1);
+    /// @brief 读取数据不阻塞
+    int ret = hid_set_nonblocking(hidDevice, 1);
+    if (ret < 0){
+        emit deviceStateChanged(false);
+        emit messageChanged(tr("读取方式设置失败：")+QString::fromWCharArray(hid_error(hidDevice)), false);
+    }
 
+    emit deviceStateChanged(true);
     while (true) {
         /// @brief 响应中中断
         if (isInterruptionRequested()){
@@ -51,10 +57,16 @@ void SAKHidDevice::run()
 
         /// @brief 读取数据
         QByteArray data;
-        data.resize(1024);
+        data.resize(50);
+        data.fill('\0');
+#if 1
         int ret = hid_read(hidDevice, reinterpret_cast<unsigned char*>(data.data()), static_cast<size_t>(data.length()));
-        if(ret > 0){
-            data.resize(ret);
+#else
+        int ret = hid_get_feature_report(hidDevice, reinterpret_cast<unsigned char*>(data.data()), static_cast<size_t>(data.length()));
+#endif
+        if(ret == 0){
+            QString temp(data);
+            qDebug() << __FUNCTION__ << temp.length();
             emit bytesRead(data);
         }
 
@@ -72,6 +84,9 @@ void SAKHidDevice::run()
                 break;
             }
         }
+
+        /// @brief 处理事件
+        eventLoop.processEvents();
 
         /// @brief 线程睡眠
         threadMutex.lock();
