@@ -22,7 +22,7 @@
 
 #include "ui_SAKUpdateManager.h"
 
-static const char* checkForUpdateUrl = "https://api.github.com/repos/wuuhii/QtSwissArmyKnife/releases/latest";
+static const char* checkForUpdateUrl = "https://api.github.com/repos/qsak/QtSwissArmyKnife/releases/latest";
 SAKUpdateManager::SAKUpdateManager(QWidget *parent)
     :QDialog(parent)
     ,ui (new Ui::SAKUpdateManager)
