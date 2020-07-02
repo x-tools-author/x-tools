@@ -21,6 +21,7 @@
 #include "SAKInputDataFactory.hh"
 #include "SAKInputDataItemManager.hh"
 #include "SAKDebugPageInputManager.hh"
+#include "SAKInputCrcSettingsDialog.hh"
 
 SAKDebugPageInputManager::SAKDebugPageInputManager(SAKDebugPage *debugPage, QObject *parent)
     :QObject (parent)
@@ -47,6 +48,8 @@ SAKDebugPageInputManager::SAKDebugPageInputManager(SAKDebugPage *debugPage, QObj
 
     crcInterface = new SAKCRCInterface;
     inputDataItemManager = new SAKInputDataItemManager(debugPage, this);
+    crcSettingsDialog = new SAKInputCrcSettingsDialog;
+
 
     sendPushButton->setEnabled(false);
     sendPresetPushButton->setEnabled(false);
@@ -82,6 +85,7 @@ SAKDebugPageInputManager::~SAKDebugPageInputManager()
     delete inputDataFactory;
     delete crcInterface;
     delete inputDataItemManager;
+    delete crcSettingsDialog;
 }
 
 void SAKDebugPageInputManager::changeInputModel(const QString &text)

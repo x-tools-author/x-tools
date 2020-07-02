@@ -24,6 +24,7 @@ class SAKInputDataItem;
 class SAKCRCInterface;
 class SAKInputDataFactory;
 class SAKInputDataItemManager;
+class SAKInputCrcSettingsDialog;
 class SAKDebugPageInputManager:public QObject
 {
     Q_OBJECT
@@ -107,6 +108,7 @@ private:
     InputParameters inputParameters;
     SAKCRCInterface *crcInterface;
     SAKInputDataItemManager *inputDataItemManager;
+    SAKInputCrcSettingsDialog *crcSettingsDialog;
 
     void updateCRC();
     void formattingInputText(QTextEdit *textEdit, int model);

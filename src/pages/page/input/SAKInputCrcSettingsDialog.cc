@@ -8,10 +8,10 @@
  * group which number is 952218522 to have a communication.
  */
 
-#include "SAKInputCrcSettingDialog.hh"
+#include "SAKInputCrcSettingsDialog.hh"
 #include "ui_SAKInputCrcSettingDialog.h"
 
-SAKInputCrcSettingDialog::SAKInputCrcSettingDialog(QWidget *parent)
+SAKInputCrcSettingsDialog::SAKInputCrcSettingsDialog(QWidget *parent)
     :QDialog(parent)
     ,ui(new Ui::SAKInputCrcSettingDialog)
 {
@@ -20,14 +20,14 @@ SAKInputCrcSettingDialog::SAKInputCrcSettingDialog(QWidget *parent)
     endSpinBox = ui->endSpinBox;
 }
 
-SAKInputCrcSettingDialog::~SAKInputCrcSettingDialog()
+SAKInputCrcSettingsDialog::~SAKInputCrcSettingsDialog()
 {
     delete ui;
 }
 
-SAKInputCrcSettingDialog::ParameterContext SAKInputCrcSettingDialog::parametersContext()
+SAKInputCrcSettingsDialog::ParameterContext SAKInputCrcSettingsDialog::parametersContext()
 {
-    SAKInputCrcSettingDialog::ParameterContext ctx;
+    SAKInputCrcSettingsDialog::ParameterContext ctx;
     parameterCtxMutex.lock();
     ctx.endByte = parameterCtx.endByte;
     ctx.startByte = parameterCtx.startByte;
@@ -36,21 +36,21 @@ SAKInputCrcSettingDialog::ParameterContext SAKInputCrcSettingDialog::parametersC
     return ctx;
 }
 
-void SAKInputCrcSettingDialog::on_bigEndianCheckBox_clicked()
+void SAKInputCrcSettingsDialog::on_bigEndianCheckBox_clicked()
 {
     parameterCtxMutex.lock();
     parameterCtx.isBigEndianCRC = bigEndianCheckBox->isChecked();
     parameterCtxMutex.unlock();
 }
 
-void SAKInputCrcSettingDialog::on_startSpinBox_valueChanged(int value)
+void SAKInputCrcSettingsDialog::on_startSpinBox_valueChanged(int value)
 {
     parameterCtxMutex.lock();
     parameterCtx.startByte = value;
     parameterCtxMutex.unlock();
 }
 
-void SAKInputCrcSettingDialog::on_endSpinBox_valueChanged(int value)
+void SAKInputCrcSettingsDialog::on_endSpinBox_valueChanged(int value)
 {
     parameterCtxMutex.lock();
     parameterCtx.endByte = value;
