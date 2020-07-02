@@ -4,29 +4,29 @@ qtHaveModule(websockets){
 }
 
 contains(DEFINES, SAK_IMPORT_WEBSOCKET_MODULE){
+    INCLUDEPATH += \
+        $$PWD/src/pages/websocket/client \
+        $$PWD/src/pages/websocket/server
+
     FORMS += \
-    src/pages/websocketclient/SAKWebSocketClientDeviceController.ui \
-    src/pages/websocketserver/SAKWebSocketServerDeviceController.ui
+        $$PWD/src/pages/websocket/client/SAKWebSocketClientDeviceController.ui \
+        $$PWD/src/pages/websocket/server/SAKWebSocketServerDeviceController.ui
 
     HEADERS += \
-        src/pages/websocketclient/SAKWebSocketClientDebugPage.hh \
-        src/pages/websocketclient/SAKWebSocketClientDevice.hh \
-        src/pages/websocketclient/SAKWebSocketClientDeviceController.hh \
-        src/pages/websocketserver/SAKWebSocketServerDebugPage.hh \
-        src/pages/websocketserver/SAKWebSocketServerDevice.hh \
-        src/pages/websocketserver/SAKWebSocketServerDeviceController.hh
+        $$PWD/src/pages/websocket/client/SAKWebSocketClientDebugPage.hh \
+        $$PWD/src/pages/websocket/client/SAKWebSocketClientDevice.hh \
+        $$PWD/src/pages/websocket/client/SAKWebSocketClientDeviceController.hh \
+        $$PWD/src/pages/websocket/server/SAKWebSocketServerDebugPage.hh \
+        $$PWD/src/pages/websocket/server/SAKWebSocketServerDevice.hh \
+        $$PWD/src/pages/websocket/server/SAKWebSocketServerDeviceController.hh
 
     SOURCES += \
-        src/pages/websocketclient/SAKWebSocketClientDebugPage.cc \
-        src/pages/websocketclient/SAKWebSocketClientDevice.cc \
-        src/pages/websocketclient/SAKWebSocketClientDeviceController.cc \
-        src/pages/websocketserver/SAKWebSocketServerDebugPage.cc \
-        src/pages/websocketserver/SAKWebSocketServerDevice.cc \
-        src/pages/websocketserver/SAKWebSocketServerDeviceController.cc
-
-    INCLUDEPATH += \
-        $$PWD/src/pages/websocketclient \
-        $$PWD/src/pages/websocketserver
+        $$PWD/src/pages/websocket/client/SAKWebSocketClientDebugPage.cc \
+        $$PWD/src/pages/websocket/client/SAKWebSocketClientDevice.cc \
+        $$PWD/src/pages/websocket/client/SAKWebSocketClientDeviceController.cc \
+        $$PWD/src/pages/websocket/server/SAKWebSocketServerDebugPage.cc \
+        $$PWD/src/pages/websocket/server/SAKWebSocketServerDevice.cc \
+        $$PWD/src/pages/websocket/server/SAKWebSocketServerDeviceController.cc
 }else {
     message("The Qt edition has no websocket module, the program will not has websocket debuging functioin.")
 }
