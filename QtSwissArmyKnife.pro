@@ -44,8 +44,8 @@ exists(private/SAKPrivate.pri){
 QSAK_APP_NAME        = "QtSwissArmyKnife"
 QSAK_ORG_NAME        = "Qter"
 QSAK_ORG_DOMAIN      = "IT"
-QSAK_APP_DESCRIPTION = "Qt Swiss Army Knife is a multi-functional, cross-platform debugging tool based on Qt open source framework."
-QSAK_APP_COPYRIGHT   = "Copyright (C) 2020 Qter(qsak@foxmail.com). All rights reserved."
+QSAK_APP_DESCRIPTION = "Qt Swiss Army Knife is a multi-functional, cross-platform debugging tool which is based on Qt technology."
+QSAK_APP_COPYRIGHT   = "Copyright 2018-2020 Qter(qsak@foxmail.com). All rights reserved."
 
 win32 {
     QMAKE_TARGET_COMPANY        = "$${QSAK_ORG_NAME}"
