@@ -12,11 +12,11 @@
 #include <QLineEdit>
 
 #include "SAKGlobal.hh"
-#include "SAKTcpClientDeviceController.hh"
-#include "ui_SAKTcpClientDeviceController.h"
-SAKTcpClientDeviceController::SAKTcpClientDeviceController(QWidget *parent)
+#include "SAKSctpClientDeviceController.hh"
+#include "ui_SAKSctpClientDeviceController.h"
+SAKSctpClientDeviceController::SAKSctpClientDeviceController(QWidget *parent)
     :QWidget (parent)
-    ,ui (new Ui::SAKTcpClientDeviceController)
+    ,ui (new Ui::SAKSctpClientDeviceController)
 {
     ui->setupUi(this);
 
@@ -29,12 +29,12 @@ SAKTcpClientDeviceController::SAKTcpClientDeviceController(QWidget *parent)
     refresh();
 }
 
-SAKTcpClientDeviceController::~SAKTcpClientDeviceController()
+SAKSctpClientDeviceController::~SAKSctpClientDeviceController()
 {
     delete ui;
 }
 
-QString SAKTcpClientDeviceController::localHost()
+QString SAKSctpClientDeviceController::localHost()
 {
     uiMutex.lock();
     QString ret = localhostComboBox->currentText();
@@ -42,7 +42,7 @@ QString SAKTcpClientDeviceController::localHost()
     return ret;
 }
 
-quint16 SAKTcpClientDeviceController::localPort()
+quint16 SAKSctpClientDeviceController::localPort()
 {
     uiMutex.lock();
     quint16 ret = static_cast<quint16>(localPortlineEdit->text().toInt());
@@ -50,7 +50,7 @@ quint16 SAKTcpClientDeviceController::localPort()
     return ret;
 }
 
-QString SAKTcpClientDeviceController::serverHost()
+QString SAKSctpClientDeviceController::serverHost()
 {
     uiMutex.lock();
     QString ret = serverHostLineEdit->text();
@@ -58,7 +58,7 @@ QString SAKTcpClientDeviceController::serverHost()
     return ret;
 }
 
-quint16 SAKTcpClientDeviceController::serverPort()
+quint16 SAKSctpClientDeviceController::serverPort()
 {
     uiMutex.lock();
     quint16 ret = static_cast<quint16>(serverPortLineEdit->text().toInt());
@@ -67,7 +67,7 @@ quint16 SAKTcpClientDeviceController::serverPort()
     return ret;
 }
 
-bool SAKTcpClientDeviceController::enableCustomLocalSetting()
+bool SAKSctpClientDeviceController::enableCustomLocalSetting()
 {
     uiMutex.lock();
     bool ret = enableLocalSettingCheckBox->isChecked();
@@ -75,12 +75,12 @@ bool SAKTcpClientDeviceController::enableCustomLocalSetting()
     return ret;
 }
 
-void SAKTcpClientDeviceController::refresh()
+void SAKSctpClientDeviceController::refresh()
 {
     SAKGlobal::initIpComboBox(localhostComboBox);
 }
 
-void SAKTcpClientDeviceController::setUiEnable(bool enable)
+void SAKSctpClientDeviceController::setUiEnable(bool enable)
 {
     localhostComboBox->setEnabled(enable);
     localPortlineEdit->setEnabled(enable);

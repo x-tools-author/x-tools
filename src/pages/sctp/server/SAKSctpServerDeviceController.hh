@@ -7,8 +7,8 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
-#ifndef SAKTCPSERVERDEVICECONTROLLER_HH
-#define SAKTCPSERVERDEVICECONTROLLER_HH
+#ifndef SAKSCTPSERVERDEVICECONTROLLER_HH
+#define SAKSCTPSERVERDEVICECONTROLLER_HH
 
 #include <QMutex>
 #include <QWidget>
@@ -17,15 +17,15 @@
 #include <QTcpSocket>
 
 namespace Ui {
-    class SAKTcpServerDeviceController;
+    class SAKSctpServerDeviceController;
 }
 
-class SAKTcpServerDeviceController:public QWidget
+class SAKSctpServerDeviceController:public QWidget
 {
     Q_OBJECT
 public:
-    SAKTcpServerDeviceController(QWidget *parent = Q_NULLPTR);
-    ~SAKTcpServerDeviceController();
+    SAKSctpServerDeviceController(QWidget *parent = Q_NULLPTR);
+    ~SAKSctpServerDeviceController();
 
     QString serverHost();
     quint16 serverPort();
@@ -39,7 +39,7 @@ public:
     void addClient(QString host, quint16 port, QTcpSocket *socket);
     void removeClient(QTcpSocket *socket);
 private:
-    Ui::SAKTcpServerDeviceController *ui;
+    Ui::SAKSctpServerDeviceController *ui;
 
     QComboBox *serverHostComboBox;
     QLineEdit *serverPortLineEdit;

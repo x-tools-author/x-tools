@@ -13,45 +13,45 @@
 
 #include "SAKGlobal.hh"
 #include "SAKDataStruct.hh"
-#include "SAKTcpClientDevice.hh"
-#include "SAKTcpClientDebugPage.hh"
-#include "SAKTcpClientDeviceController.hh"
+#include "SAKSctpClientDevice.hh"
+#include "SAKSctpClientDebugPage.hh"
+#include "SAKSctpClientDeviceController.hh"
 
-SAKTcpClientDebugPage::SAKTcpClientDebugPage(QWidget *parent)
+SAKSctpClientDebugPage::SAKSctpClientDebugPage(QWidget *parent)
     :SAKDebugPage (SAKDataStruct::DebugPageTypeTCPClient, parent)
-    ,tcpClientDeviceController (new SAKTcpClientDeviceController)
+    ,tcpClientDeviceController (new SAKSctpClientDeviceController)
 {
     initPage();
     setWindowTitle(SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeTCPClient));
 }
 
-SAKTcpClientDebugPage::~SAKTcpClientDebugPage()
+SAKSctpClientDebugPage::~SAKSctpClientDebugPage()
 {
     tcpClientDeviceController->deleteLater();
 }
 
-SAKTcpClientDeviceController *SAKTcpClientDebugPage::controllerInstance()
+SAKSctpClientDeviceController *SAKSctpClientDebugPage::controllerInstance()
 {
     return tcpClientDeviceController;
 }
 
-void SAKTcpClientDebugPage::refreshDevice()
+void SAKSctpClientDebugPage::refreshDevice()
 {
     tcpClientDeviceController->refresh();
 }
 
-QWidget *SAKTcpClientDebugPage::controllerWidget()
+QWidget *SAKSctpClientDebugPage::controllerWidget()
 {
     return tcpClientDeviceController;
 }
 
-SAKDevice *SAKTcpClientDebugPage::createDevice()
+SAKDevice *SAKSctpClientDebugPage::createDevice()
 {
-    SAKTcpClientDevice *device = new SAKTcpClientDevice(this);
+    SAKSctpClientDevice *device = new SAKSctpClientDevice(this);
     return device;
 }
 
-void SAKTcpClientDebugPage::setUiEnable(bool enable)
+void SAKSctpClientDebugPage::setUiEnable(bool enable)
 {
     tcpClientDeviceController->setEnabled(enable);
     refreshPushButton->setEnabled(enable);

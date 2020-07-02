@@ -12,21 +12,21 @@
 #include <QHostAddress>
 #include <QApplication>
 
-#include "SAKTcpClientDevice.hh"
-#include "SAKTcpClientDebugPage.hh"
-#include "SAKTcpClientDeviceController.hh"
+#include "SAKSctpClientDevice.hh"
+#include "SAKSctpClientDebugPage.hh"
+#include "SAKSctpClientDeviceController.hh"
 
-SAKTcpClientDevice::SAKTcpClientDevice(SAKTcpClientDebugPage *debugPage, QObject *parent)
+SAKSctpClientDevice::SAKSctpClientDevice(SAKSctpClientDebugPage *debugPage, QObject *parent)
     :SAKDevice(parent)
     ,debugPage (debugPage)
 {
 
 }
 
-void SAKTcpClientDevice::run()
+void SAKSctpClientDevice::run()
 {
     QEventLoop eventLoop;
-    SAKTcpClientDeviceController *deviceController = debugPage->controllerInstance();
+    SAKSctpClientDeviceController *deviceController = debugPage->controllerInstance();
     localHost = deviceController->localHost();
     localPort = deviceController->localPort();
     serverHost = deviceController->serverHost();

@@ -7,32 +7,32 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
-#ifndef SAKTCPCLIENTDEBUGPAGE_HH
-#define SAKTCPCLIENTDEBUGPAGE_HH
+#ifndef SAKSCTPCLIENTDEBUGPAGE_HH
+#define SAKSCTPCLIENTDEBUGPAGE_HH
 
 #include "SAKDebugPage.hh"
 
-class SAKTcpClientDevice;
-class SAKTcpClientDeviceController;
-class SAKTcpClientDebugPage : public SAKDebugPage
+class SAKSctpClientDevice;
+class SAKSctpClientDeviceController;
+class SAKSctpClientDebugPage : public SAKDebugPage
 {
     Q_OBJECT
 public:
-    SAKTcpClientDebugPage(QWidget *parent = Q_NULLPTR);
-    ~SAKTcpClientDebugPage();
+    SAKSctpClientDebugPage(QWidget *parent = Q_NULLPTR);
+    ~SAKSctpClientDebugPage();
 
     /**
      * @brief controllerInstance 获取控制类实例
      * @return 控制类实例
      */
-    SAKTcpClientDeviceController *controllerInstance();
+    SAKSctpClientDeviceController *controllerInstance();
 protected:
     void refreshDevice() final;
     QWidget *controllerWidget() final;
     SAKDevice* createDevice() final;
     void setUiEnable(bool enable) final;
 private:
-    SAKTcpClientDeviceController *tcpClientDeviceController;
+    SAKSctpClientDeviceController *tcpClientDeviceController;
 };
 
 #endif

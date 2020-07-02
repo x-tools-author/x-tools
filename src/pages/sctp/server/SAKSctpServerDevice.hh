@@ -7,8 +7,8 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
-#ifndef SAKTCPSERVERDEVICE_HH
-#define SAKTCPSERVERDEVICE_HH
+#ifndef SAKSCTPSERVERDEVICE_HH
+#define SAKSCTPSERVERDEVICE_HH
 
 #include <QThread>
 #include <QTcpServer>
@@ -16,13 +16,13 @@
 
 #include "SAKDevice.hh"
 
-class SAKTcpServerDebugPage;
-class SAKTcpServerDeviceController;
-class SAKTcpServerDevice:public SAKDevice
+class SAKSctpServerDebugPage;
+class SAKSctpServerDeviceController;
+class SAKSctpServerDevice:public SAKDevice
 {
     Q_OBJECT
 public:
-    SAKTcpServerDevice(SAKTcpServerDebugPage *debugPage, QObject *parent = Q_NULLPTR);
+    SAKSctpServerDevice(SAKSctpServerDebugPage *debugPage, QObject *parent = Q_NULLPTR);
 private:
     void run();    
 private:
@@ -31,11 +31,11 @@ private:
     bool enableCustomLocalSetting;
     QString serverHost;
     quint16 serverPort;
-    SAKTcpServerDebugPage *debugPage;
+    SAKSctpServerDebugPage *debugPage;
     QTcpServer *tcpServer;
 private:
-    void innerReadBytes(QTcpSocket *socket, SAKTcpServerDeviceController *deviceController);
-    void innerWriteBytes(QTcpSocket *socket, QByteArray bytes, SAKTcpServerDeviceController *deviceController);
+    void innerReadBytes(QTcpSocket *socket, SAKSctpServerDeviceController *deviceController);
+    void innerWriteBytes(QTcpSocket *socket, QByteArray bytes, SAKSctpServerDeviceController *deviceController);
 };
 
 #endif

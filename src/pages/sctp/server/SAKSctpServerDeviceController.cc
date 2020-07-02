@@ -13,11 +13,11 @@
 #include <QLineEdit>
 
 #include "SAKGlobal.hh"
-#include "SAKTcpServerDeviceController.hh"
-#include "ui_SAKTcpServerDeviceController.h"
-SAKTcpServerDeviceController::SAKTcpServerDeviceController(QWidget *parent)
+#include "SAKSctpServerDeviceController.hh"
+#include "ui_SAKSctpServerDeviceController.h"
+SAKSctpServerDeviceController::SAKSctpServerDeviceController(QWidget *parent)
     :QWidget (parent)
-    ,ui (new Ui::SAKTcpServerDeviceController)
+    ,ui (new Ui::SAKSctpServerDeviceController)
 {
     ui->setupUi(this);
 
@@ -28,12 +28,12 @@ SAKTcpServerDeviceController::SAKTcpServerDeviceController(QWidget *parent)
     refresh();
 }
 
-SAKTcpServerDeviceController::~SAKTcpServerDeviceController()
+SAKSctpServerDeviceController::~SAKSctpServerDeviceController()
 {
     delete ui;
 }
 
-QString SAKTcpServerDeviceController::serverHost()
+QString SAKSctpServerDeviceController::serverHost()
 {
     uiMutex.lock();
     QString host = serverHostComboBox->currentText();
@@ -41,7 +41,7 @@ QString SAKTcpServerDeviceController::serverHost()
     return host;
 }
 
-quint16 SAKTcpServerDeviceController::serverPort()
+quint16 SAKSctpServerDeviceController::serverPort()
 {
     uiMutex.lock();
     quint16 port = static_cast<quint16>(serverPortLineEdit->text().toInt());
@@ -49,7 +49,7 @@ quint16 SAKTcpServerDeviceController::serverPort()
     return port;
 }
 
-QString SAKTcpServerDeviceController::currentClientHost()
+QString SAKSctpServerDeviceController::currentClientHost()
 {
     uiMutex.lock();
     QStringList host = clientHostComboBox->currentText().split(":");
@@ -58,7 +58,7 @@ QString SAKTcpServerDeviceController::currentClientHost()
     return address;
 }
 
-quint16 SAKTcpServerDeviceController::currentClientPort()
+quint16 SAKSctpServerDeviceController::currentClientPort()
 {
     uiMutex.lock();
     QString port = clientHostComboBox->currentText().split(":").last();
@@ -67,18 +67,18 @@ quint16 SAKTcpServerDeviceController::currentClientPort()
     return portTemp;
 }
 
-void SAKTcpServerDeviceController::refresh()
+void SAKSctpServerDeviceController::refresh()
 {
     SAKGlobal::initIpComboBox(serverHostComboBox);
 }
 
-void SAKTcpServerDeviceController::setUiEnable(bool enable)
+void SAKSctpServerDeviceController::setUiEnable(bool enable)
 {
     serverHostComboBox->setEnabled(enable);
     serverPortLineEdit->setEnabled(enable);
 }
 
-void SAKTcpServerDeviceController::addClient(QString host, quint16 port, QTcpSocket *socket)
+void SAKSctpServerDeviceController::addClient(QString host, quint16 port, QTcpSocket *socket)
 {
     QString item = host.append(":");
     item.append(QString::number(port));
@@ -95,7 +95,7 @@ void SAKTcpServerDeviceController::addClient(QString host, quint16 port, QTcpSoc
     uiMutex.unlock();
 }
 
-void SAKTcpServerDeviceController::removeClient(QTcpSocket *socket)
+void SAKSctpServerDeviceController::removeClient(QTcpSocket *socket)
 {
     uiMutex.lock();
     for(int i = 0; i < clientHostComboBox->count(); i++){

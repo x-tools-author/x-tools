@@ -13,11 +13,11 @@
 #include <QApplication>
 
 #include "SAKDebugPage.hh"
-#include "SAKTcpServerDevice.hh"
-#include "SAKTcpServerDebugPage.hh"
-#include "SAKTcpServerDeviceController.hh"
+#include "SAKSctpServerDevice.hh"
+#include "SAKSctpServerDebugPage.hh"
+#include "SAKSctpServerDeviceController.hh"
 
-SAKTcpServerDevice::SAKTcpServerDevice(SAKTcpServerDebugPage *debugPage, QObject *parent)
+SAKSctpServerDevice::SAKSctpServerDevice(SAKSctpServerDebugPage *debugPage, QObject *parent)
     :SAKDevice(parent)
     ,debugPage(debugPage)
     ,tcpServer(Q_NULLPTR)
@@ -25,10 +25,10 @@ SAKTcpServerDevice::SAKTcpServerDevice(SAKTcpServerDebugPage *debugPage, QObject
 
 }
 
-void SAKTcpServerDevice::run()
+void SAKSctpServerDevice::run()
 {
     QEventLoop eventLoop;
-    SAKTcpServerDeviceController *deviceController = debugPage->controllerInstance();
+    SAKSctpServerDeviceController *deviceController = debugPage->controllerInstance();
     serverHost = deviceController->serverHost();
     serverPort = deviceController->serverPort();
 
@@ -102,7 +102,7 @@ void SAKTcpServerDevice::run()
     emit deviceStateChanged(false);
 }
 
-void SAKTcpServerDevice::innerReadBytes(QTcpSocket *socket, SAKTcpServerDeviceController *deviceController)
+void SAKSctpServerDevice::innerReadBytes(QTcpSocket *socket, SAKSctpServerDeviceController *deviceController)
 {        
     socket->waitForReadyRead(debugPage->readWriteParameters().waitForReadyReadTime);
     QByteArray bytes = socket->readAll();
@@ -118,7 +118,7 @@ void SAKTcpServerDevice::innerReadBytes(QTcpSocket *socket, SAKTcpServerDeviceCo
     }
 }
 
-void SAKTcpServerDevice::innerWriteBytes(QTcpSocket *socket, QByteArray bytes, SAKTcpServerDeviceController *deviceController)
+void SAKSctpServerDevice::innerWriteBytes(QTcpSocket *socket, QByteArray bytes, SAKSctpServerDeviceController *deviceController)
 {    
     QString currentClientHost = deviceController->currentClientHost();
     QString peerHost = socket->peerAddress().toString();

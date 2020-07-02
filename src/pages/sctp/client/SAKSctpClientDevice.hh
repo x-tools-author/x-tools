@@ -7,20 +7,20 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
-#ifndef SAKTCPCLIENTDEVICE_HH
-#define SAKTCPCLIENTDEVICE_HH
+#ifndef SAKSCTPCLIENTDEVICE_HH
+#define SAKSCTPCLIENTDEVICE_HH
 
 #include <QThread>
 #include <QTcpSocket>
 
 #include "SAKDevice.hh"
 
-class SAKTcpClientDebugPage;
-class SAKTcpClientDevice:public SAKDevice
+class SAKSctpClientDebugPage;
+class SAKSctpClientDevice:public SAKDevice
 {
     Q_OBJECT
 public:
-    SAKTcpClientDevice(SAKTcpClientDebugPage *debugPage, QObject *parent = Q_NULLPTR);
+    SAKSctpClientDevice(SAKSctpClientDebugPage *debugPage, QObject *parent = Q_NULLPTR);
 private:
     void run() final;
 private:
@@ -29,7 +29,7 @@ private:
     bool enableCustomLocalSetting;
     QString serverHost;
     quint16 serverPort;
-    SAKTcpClientDebugPage *debugPage;
+    SAKSctpClientDebugPage *debugPage;
     QTcpSocket *tcpSocket;
 private:
     void afterDisconnected();
