@@ -113,8 +113,8 @@ INCLUDEPATH += \
     src/pages/page/output \
     src/pages/page/output/save \
     src/pages/page/statistics \
-    src/pages/tcpclient \
-    src/pages/tcpserver \
+    src/pages/tcp/client \
+    src/pages/tcp/server \
     src/pages/udp \
     src/qrcode \
     src/startui \
@@ -140,8 +140,8 @@ FORMS += \
     src/pages/page/other/transmission/SAKTransmissionSettings.ui \
     src/pages/page/other/transmission/SAKUdpTransmissionItemWidget.ui \
     src/pages/page/output/save/SAKSaveOutputDataSettings.ui \
-    src/pages/tcpclient/SAKTcpClientDeviceController.ui \
-    src/pages/tcpserver/SAKTcpServerDeviceController.ui \
+    src/pages/tcp/client/SAKTcpClientDeviceController.ui \
+    src/pages/tcp/server/SAKTcpServerDeviceController.ui \
     src/pages/udp/SAKUdpAdvanceSettingWidget.ui \
     src/pages/udp/SAKUdpDeviceController.ui \
     src/pages/udp/SAKUdpMulticastEditingDialog.ui \
@@ -188,12 +188,12 @@ HEADERS += \
     src/pages/page/statistics/SAKStatisticsManager.hh \
     src/common/SAKCRCInterface.hh \
     src/common/SAKDataStruct.hh \
-    src/pages/tcpclient/SAKTcpClientDebugPage.hh \
-    src/pages/tcpclient/SAKTcpClientDevice.hh \
-    src/pages/tcpclient/SAKTcpClientDeviceController.hh \
-    src/pages/tcpserver/SAKTcpServerDebugPage.hh \
-    src/pages/tcpserver/SAKTcpServerDevice.hh \
-    src/pages/tcpserver/SAKTcpServerDeviceController.hh \
+    src/pages/tcp/client/SAKTcpClientDebugPage.hh \
+    src/pages/tcp/client/SAKTcpClientDevice.hh \
+    src/pages/tcp/client/SAKTcpClientDeviceController.hh \
+    src/pages/tcp/server/SAKTcpServerDebugPage.hh \
+    src/pages/tcp/server/SAKTcpServerDevice.hh \
+    src/pages/tcp/server/SAKTcpServerDeviceController.hh \
     src/pages/udp/SAKUdpAdvanceSettingWidget.hh \
     src/pages/udp/SAKUdpDebugPage.hh \
     src/pages/udp/SAKUdpDevice.hh \
@@ -245,12 +245,12 @@ SOURCES += \
     src/common/SAKCRCInterface.cc \
     src/common/SAKDataStruct.cc \
     src/main.cc \
-    src/pages/tcpclient/SAKTcpClientDebugPage.cc \
-    src/pages/tcpclient/SAKTcpClientDevice.cc \
-    src/pages/tcpclient/SAKTcpClientDeviceController.cc \
-    src/pages/tcpserver/SAKTcpServerDebugPage.cc \
-    src/pages/tcpserver/SAKTcpServerDevice.cc \
-    src/pages/tcpserver/SAKTcpServerDeviceController.cc \
+    src/pages/tcp/client/SAKTcpClientDebugPage.cc \
+    src/pages/tcp/client/SAKTcpClientDevice.cc \
+    src/pages/tcp/client/SAKTcpClientDeviceController.cc \
+    src/pages/tcp/server/SAKTcpServerDebugPage.cc \
+    src/pages/tcp/server/SAKTcpServerDevice.cc \
+    src/pages/tcp/server/SAKTcpServerDeviceController.cc \
     src/pages/udp/SAKUdpAdvanceSettingWidget.cc \
     src/pages/udp/SAKUdpDebugPage.cc \
     src/pages/udp/SAKUdpDevice.cc \
