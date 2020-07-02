@@ -45,6 +45,7 @@ SAKApplication::SAKApplication(int argc, char **argv)
         }
     });
 
+    /// @brief 实例化主窗口
     QMainWindow *mainWindow = new SAKMainWindow;
     mainWindow->show();
     splashScreen->finish(mainWindow);
@@ -84,10 +85,4 @@ void SAKApplication::installLanguage()
 
     sakTranslator.load(QString(":/translations/sak/SAK_%1.qm").arg(qmName));
     qApp->installTranslator(&sakTranslator);
-
-    if (sender() && inherits("QAction")){
-        QAction *action = reinterpret_cast<QAction*>(sender());
-        action->setChecked(true);
-        QString title = action->data().toString();
-    }
 }
