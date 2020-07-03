@@ -56,11 +56,17 @@ private:
     void changeStylesheet(QString styleSheetName);
     void changeAppStyle(QString appStyle);
 
+    /// @brief 显示关于软件弹窗
     void about();
+    /// @brief 切换软件显示语言
     void installLanguage();
+    /// @brief 追加页面
     void appendRemovablePage();
+    /// @brief 移除页面
     void removeRemovableDebugPage(int index);
+    /// @brief 打开调试页面窗口
     void openDebugPageWidget();
+    /// @brief 生成调试页面
     QWidget *debugPageFromType(int type);
 private slots:
     /// @brief 显示工具窗口
