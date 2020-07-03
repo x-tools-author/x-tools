@@ -28,6 +28,7 @@ public:
 #endif
         ToolTypeCRCCalculator
     };
+    Q_ENUM(SAKEnumToolType);
 
     /// @brief 支持调试的设备类型
     enum SAKEnumDebugPageType {
@@ -52,7 +53,7 @@ public:
         DebugPageTypeWebSocketServer
 #endif
     };
-    Q_ENUM(SAKEnumDebugPageType)
+    Q_ENUM(SAKEnumDebugPageType);
 
     /// @brief 文本输出格式
     enum SAKEnumTextInputFormat {
@@ -64,7 +65,7 @@ public:
         InputFormatUtf8,
         InputFormatLocal
     };
-    Q_ENUM(SAKEnumTextInputFormat)
+    Q_ENUM(SAKEnumTextInputFormat);
 
     /// @brief 文本输出格式
     enum SAKEnumTextOutputFormat {
@@ -79,7 +80,7 @@ public:
         OutputFormatUcs4,
         OutputFormatStdwstring
     };
-    Q_ENUM(SAKEnumTextOutputFormat)
+    Q_ENUM(SAKEnumTextOutputFormat);
 
     /// @brief 调试页面，自动回复选项
     enum SAKEnumAutoResponseOption {
@@ -87,13 +88,14 @@ public:
         AutoResponseOptionContain,      // 接收数据包含参考数据时回复
         AutoResponseOptionDoNotContain  // 接收数据不包含参考数据时回复
     };
-    Q_ENUM(SAKEnumAutoResponseOption)
+    Q_ENUM(SAKEnumAutoResponseOption);
 
     /// @brief web socket 发送接口类型
     enum SAKEnumWebSocketSendingType {
         WebSocketSendingTypeText,
         WebSocketSendingTypeBin,
     };
+    Q_ENUM(SAKEnumWebSocketSendingType);
 
     /// @brief 调试页面自动回复数据的数据结构
     struct SAKStructAutoResponseItem {
