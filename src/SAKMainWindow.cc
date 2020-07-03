@@ -75,7 +75,11 @@
 SAKMainWindow::SAKMainWindow(QWidget *parent)
     :QMainWindow(parent)
     ,tabWidget(new QTabWidget)
+    ,toolsMenu(Q_NULLPTR)
+    ,defaultStyleSheetAction(Q_NULLPTR)
+    ,updateManager(Q_NULLPTR)
     ,moreInformation(new SAKMoreInformation)
+    ,qrCodeDialog(Q_NULLPTR)
     ,ui(new Ui::SAKMainWindow)
 {
     ui->setupUi(this);
