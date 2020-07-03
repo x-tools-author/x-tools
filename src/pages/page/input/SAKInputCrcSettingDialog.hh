@@ -40,8 +40,8 @@ public:
      */
     ParameterContext parametersContext();
 private:
-    ParameterContext parameterCtx;
-    QMutex parameterCtxMutex;
+    ParameterContext _parametersContext;
+    QMutex parametersContextMutex;
 private:
     Ui::SAKInputCrcSettingDialog *ui;
     QCheckBox *bigEndianCheckBox;
