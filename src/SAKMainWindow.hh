@@ -55,7 +55,7 @@ private:
     void installLanguage();
     void addRemovablePage();
     void openIODeviceWindow();
-    QWidget *getDebugPage(int type);
+    QWidget *debugPageFromType(int type);
     void closeDebugPage(int index);
     void about();
 

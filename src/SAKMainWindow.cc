@@ -139,7 +139,23 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     }
 #endif
 
-    addTab();
+    /// @brief 创建调试页面
+    QMetaEnum metaEnum = QMetaEnum::fromType<SAKDataStruct::SAKEnumDebugPageType>();
+    for (int i = 0; i < metaEnum.keyCount(); i++){
+        QString name = SAKGlobal::debugPageNameFromType(metaEnum.value(i));
+        QWidget *page = debugPageFromType(metaEnum.value(i));
+        if (page){
+            tabWidget->addTab(page, name);
+        }
+    }
+
+    /// @brief 隐藏tab widget的关闭按钮（必须在调用setTabsClosable()函数后设置，否则不生效）
+    for (int i = 0; i < tabWidget->count(); i++){
+        tabWidget->tabBar()->setTabButton(i, QTabBar::RightSide, Q_NULLPTR);
+        tabWidget->tabBar()->setTabButton(i, QTabBar::LeftSide, Q_NULLPTR);
+    }
+
+
     initMenu();
     addTool();
 
@@ -472,7 +488,7 @@ void SAKMainWindow::installLanguage()
 void SAKMainWindow::addRemovablePage()
 {
     int type = qobject_cast<QAction*>(sender())->data().value<int>();
-    QWidget *widget = getDebugPage(type);
+    QWidget *widget = debugPageFromType(type);
     widget->setAttribute(Qt::WA_DeleteOnClose, true);
     tabWidget->addTab(widget, sender()->objectName());
 }
@@ -480,12 +496,12 @@ void SAKMainWindow::addRemovablePage()
 void SAKMainWindow::openIODeviceWindow()
 {
     int type = qobject_cast<QAction*>(sender())->data().value<int>();
-    QWidget *widget = getDebugPage(type);
+    QWidget *widget = debugPageFromType(type);
     widget->setAttribute(Qt::WA_DeleteOnClose, true);
     widget->show();
 }
 
-QWidget *SAKMainWindow::getDebugPage(int type)
+QWidget *SAKMainWindow::debugPageFromType(int type)
 {
     QWidget *widget = Q_NULLPTR;
     switch (type) {
