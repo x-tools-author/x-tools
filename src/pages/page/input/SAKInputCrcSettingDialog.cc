@@ -14,6 +14,9 @@
 SAKInputCrcSettingDialog::SAKInputCrcSettingDialog(QWidget *parent)
     :QDialog(parent)
     ,ui(new Ui::SAKInputCrcSettingDialog)
+    ,bigEndianCheckBox(Q_NULLPTR)
+    ,startSpinBox(Q_NULLPTR)
+    ,endSpinBox(Q_NULLPTR)
 {
     bigEndianCheckBox = ui->bigEndianCheckBox;
     startSpinBox = ui->startSpinBox;

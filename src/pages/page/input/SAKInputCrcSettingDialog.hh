@@ -27,6 +27,7 @@ public:
     SAKInputCrcSettingDialog(QWidget *parent = Q_NULLPTR);
     ~SAKInputCrcSettingDialog();
 
+    /// @brief crc参数上下文
     struct ParameterContext {
         bool isBigEndianCRC;
         quint32 startByte;
