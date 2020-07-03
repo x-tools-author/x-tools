@@ -11,7 +11,7 @@
 #define SAKSCTPCLIENTDEVICE_HH
 
 #include <QThread>
-#include <QTcpSocket>
+#include <QSctpSocket>
 
 #include "SAKDevice.hh"
 
@@ -30,7 +30,7 @@ private:
     QString serverHost;
     quint16 serverPort;
     SAKSctpClientDebugPage *debugPage;
-    QTcpSocket *tcpSocket;
+    QSctpSocket *sctpSocket;
 private:
     void afterDisconnected();
 };

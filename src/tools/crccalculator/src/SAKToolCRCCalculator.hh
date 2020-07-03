@@ -26,7 +26,7 @@
 #include "SAKCRCInterface.hh"
 
 namespace Ui {
-    class SAKCRCCalculator;
+    class SAKToolCRCCalculator;
 }
 
 /// @brief crc计算器
@@ -48,7 +48,7 @@ private slots:
     void textFormatControl();
     void changedParameterModel(int index);
 private:
-    Ui::SAKCRCCalculator* ui;
+    Ui::SAKToolCRCCalculator* ui;
     QComboBox* widthComboBox;
     QComboBox* parameterComboBox;
 

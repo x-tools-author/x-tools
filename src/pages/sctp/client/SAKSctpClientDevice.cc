@@ -33,34 +33,34 @@ void SAKSctpClientDevice::run()
     serverPort = deviceController->serverPort();
     enableCustomLocalSetting = deviceController->enableCustomLocalSetting();
 
-    tcpSocket = new QTcpSocket;
+    sctpSocket = new QSctpSocket(Q_NULLPTR);
 
     bool bindResult = false;
     if (enableCustomLocalSetting){
-        bindResult = tcpSocket->bind(QHostAddress(localHost), localPort);
+        bindResult = sctpSocket->bind(QHostAddress(localHost), localPort);
     }else{
-        bindResult = tcpSocket->bind();
+        bindResult = sctpSocket->bind();
     }
 
     if (!bindResult){
         emit deviceStateChanged(false);
-        emit messageChanged(tr("无法绑定设备")+tcpSocket->errorString(), false);
-        delete tcpSocket;
+        emit messageChanged(tr("无法绑定设备")+sctpSocket->errorString(), false);
+        delete sctpSocket;
         return;
     }
 
-    tcpSocket->connectToHost(serverHost, serverPort);
-    if (tcpSocket->state() != QTcpSocket::ConnectedState){
-        if (!tcpSocket->waitForConnected()){
+    sctpSocket->connectToHost(serverHost, serverPort);
+    if (sctpSocket->state() != QTcpSocket::ConnectedState){
+        if (!sctpSocket->waitForConnected()){
             emit deviceStateChanged(false);
-            emit messageChanged(tr("无法连接到服务器")+tcpSocket->errorString(), false);
-            delete tcpSocket;
+            emit messageChanged(tr("无法连接到服务器")+sctpSocket->errorString(), false);
+            delete sctpSocket;
             return;
         }
     }
 
 
-    if (tcpSocket->open(QTcpSocket::ReadWrite)){
+    if (sctpSocket->open(QTcpSocket::ReadWrite)){
         emit deviceStateChanged(true);
 
         while (true) {
@@ -70,8 +70,8 @@ void SAKSctpClientDevice::run()
             }
 
             /// @brief 读取数据
-            tcpSocket->waitForReadyRead(debugPage->readWriteParameters().waitForReadyReadTime);
-            QByteArray bytes = tcpSocket->readAll();
+            sctpSocket->waitForReadyRead(debugPage->readWriteParameters().waitForReadyReadTime);
+            QByteArray bytes = sctpSocket->readAll();
             if (!bytes.isEmpty()){
                 emit bytesRead(bytes);
             }
@@ -80,10 +80,10 @@ void SAKSctpClientDevice::run()
             while (true){
                 QByteArray bytes = takeWaitingForWrittingBytes();
                 if (bytes.length()){
-                    qint64 ret = tcpSocket->write(bytes);
-                    tcpSocket->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
+                    qint64 ret = sctpSocket->write(bytes);
+                    sctpSocket->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
                     if (ret == -1){
-                        emit messageChanged(tr("发送数据失败：")+tcpSocket->errorString(), false);
+                        emit messageChanged(tr("发送数据失败：")+sctpSocket->errorString(), false);
                     }else{
                         emit bytesWritten(bytes);
                     }
@@ -93,7 +93,7 @@ void SAKSctpClientDevice::run()
             }
 
             /// @brief 检查服务器状态
-            if (tcpSocket->state() == QTcpSocket::UnconnectedState){
+            if (sctpSocket->state() == QTcpSocket::UnconnectedState){
                 emit messageChanged(tr("服务器已断开"), true);
                 break;
             }
@@ -108,19 +108,19 @@ void SAKSctpClientDevice::run()
         }
 
         /// @brief 退出前断开与服务器的链接
-        if (tcpSocket->state() == QTcpSocket::ClosingState){
-            tcpSocket->disconnectFromHost();
-            if (tcpSocket->state() == QTcpSocket::ConnectedState){
-                if(!tcpSocket->waitForConnected()){
-                    emit messageChanged(tr("无法断开与服务器的链接：")+tcpSocket->errorString(), true);
+        if (sctpSocket->state() == QTcpSocket::ClosingState){
+            sctpSocket->disconnectFromHost();
+            if (sctpSocket->state() == QTcpSocket::ConnectedState){
+                if(!sctpSocket->waitForConnected()){
+                    emit messageChanged(tr("无法断开与服务器的链接：")+sctpSocket->errorString(), true);
                 }
             }
         }
-        tcpSocket->close();
-        delete tcpSocket;
+        sctpSocket->close();
+        delete sctpSocket;
         emit deviceStateChanged(false);
     }else{
         emit deviceStateChanged(false);
-        emit messageChanged(tr("无法打开设备")+tcpSocket->errorString(), false);
+        emit messageChanged(tr("无法打开设备")+sctpSocket->errorString(), false);
     }
 }

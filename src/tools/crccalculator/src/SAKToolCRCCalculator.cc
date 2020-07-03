@@ -13,12 +13,12 @@
 #include <QLoggingCategory>
 
 #include "SAKToolCRCCalculator.hh"
-#include "ui_SAKCRCCalculator.h"
+#include "ui_SAKToolCRCCalculator.h"
 
 SAKToolCRCCalculator::SAKToolCRCCalculator(QWidget* parent)
     :SAKToolBase (parent)
     ,logCategory("CRCCalculator")
-    ,ui(new Ui::SAKCRCCalculator)
+    ,ui(new Ui::SAKToolCRCCalculator)
 {
     ui->setupUi(this);
     widthComboBox = ui->comboBoxWidth;
