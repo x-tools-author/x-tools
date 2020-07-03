@@ -134,6 +134,27 @@ QString SAKGlobal::debugPageNameFromType(int type)
     return name;
 }
 
+QString SAKGlobal::toolNameFromType(int type)
+{
+    QString name("Unknow name of tool");
+    switch (type) {
+#ifdef SAK_IMPORT_FILECHECKER_MODULE
+    case SAKDataStruct::ToolTypeFileChecker:
+        name = QString("文件校验器");
+        break;
+#endif
+    case SAKDataStruct::ToolTypeCRCCalculator:
+        name = QString("CRC计算器");
+        break;
+#ifdef SAK_IMPORT_QRCODE_MODULE
+    case SAKDataStruct::ToolTypeQRCodeCreator:
+        name = QString("二维码生成器");
+        break;
+#endif
+    }
+
+    return name;
+}
 
 #ifdef SAK_IMPORT_COM_MODULE
 void SAKGlobal::initComComboBox(QComboBox *comboBox)

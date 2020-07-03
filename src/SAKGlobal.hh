@@ -49,6 +49,13 @@ public:
      */
     static QString debugPageNameFromType(int type);
 
+    /**
+     * @brief toolNameFromType 获取使用工具名称
+     * @param type 工具类型，详情查看SAKDataStruct::SAKEnumToolType
+     * @return 工具名称
+     */
+    static QString toolNameFromType(int type);
+
 #ifdef SAK_IMPORT_COM_MODULE
     /// @brief 串口相关参数显示初始化
     static void initComComboBox(QComboBox *comboBox);
