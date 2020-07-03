@@ -173,37 +173,6 @@ bool SAKMainWindow::eventFilter(QObject *obj, QEvent *event)
     return QMainWindow::eventFilter(obj, event);
 }
 
-void SAKMainWindow::addTab()
-{
-    /// @brief 添加调试页面
-#ifdef SAK_IMPORT_COM_MODULE
-    this->tabWidget->addTab(new SAKSerialPortDebugPage, SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeCOM));
-#endif
-#ifdef SAK_IMPORT_HID_MODULE
-    this->tabWidget->addTab(new SAKHidDebugPage, SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeHID));
-#endif
-#ifdef SAK_IMPORT_USB_MODULE
-    this->tabWidget->addTab(new SAKUsbDebugPage, SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeUSB));
-#endif
-    this->tabWidget->addTab(new SAKUdpDebugPage, SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeUDP));
-    this->tabWidget->addTab(new SAKTcpClientDebugPage, SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeTCPClient));
-    this->tabWidget->addTab(new SAKTcpServerDebugPage, SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeTCPServer));
-#ifdef SAK_IMPORT_SCTP_MODULE
-    this->tabWidget->addTab(new SAKSctpClientDebugPage, SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeSCTPClient));
-    this->tabWidget->addTab(new SAKSctpServerDebugPage, SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeSCTPServer));
-#endif
-#ifdef SAK_IMPORT_WEBSOCKET_MODULE
-    this->tabWidget->addTab(new SAKWebSocketClientDebugPage, SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeWebSocketClient));
-    this->tabWidget->addTab(new SAKWebSocketServerDebugPage, SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeWebSocketServer));
-#endif
-
-    /// @brief 隐藏关闭按钮（必须在调用setTabsClosable()函数后设置，否则不生效）
-    for (int i = 0; i < tabWidget->count(); i++){
-        tabWidget->tabBar()->setTabButton(i, QTabBar::RightSide, Q_NULLPTR);
-        tabWidget->tabBar()->setTabButton(i, QTabBar::LeftSide, Q_NULLPTR);
-    }
-}
-
 void SAKMainWindow::addTool()
 {
 #ifdef SAK_IMPORT_FILECHECKER_MODULE

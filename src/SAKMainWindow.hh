@@ -36,8 +36,7 @@ public:
     ~SAKMainWindow();
 protected:
       bool eventFilter(QObject *obj, QEvent *event);
-private:
-    void addTab();    
+private: 
     void addTool();
 
     void addTool(QString toolName, QWidget *toolWidget);
