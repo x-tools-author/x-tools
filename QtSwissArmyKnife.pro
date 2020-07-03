@@ -124,7 +124,7 @@ FORMS += \
     src/SAKMainWindow.ui \
     src/moreinfo/SAKMoreInformation.ui \
     src/pages/page/SAKDebugPage.ui \
-    src/pages/page/input/SAKInputCrcSettingDialog.ui \
+    src/pages/page/input/SAKInputCrcSettingsDialog.ui \
     src/pages/page/input/SAKInputDataItem.ui \
     src/pages/page/input/SAKInputDataItemManager.ui \
     src/pages/page/other/autoresponse/SAKAutoResponseItemWidget.ui \
