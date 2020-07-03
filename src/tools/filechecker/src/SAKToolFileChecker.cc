@@ -16,7 +16,7 @@
 #include "ui_SAKToolFileChecker.h"
 
 SAKToolFileChecker::SAKToolFileChecker(QWidget *parent)
-    :QWidget (parent)
+    :SAKToolBase (parent)
     ,ui (new Ui::SAKToolFileChecker)
     ,calculator (Q_NULLPTR)
 {

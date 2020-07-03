@@ -20,12 +20,14 @@
 #include <QProgressBar>
 #include <QCryptographicHash>
 
+#include "SAKToolBase.hh"
+
 namespace Ui {
-class SAKToolFileChecker;
+    class SAKToolFileChecker;
 }
 
 class QtCryptographicHashCalculator;
-class SAKToolFileChecker : public QWidget
+class SAKToolFileChecker : public SAKToolBase
 {
     Q_OBJECT
 public:
