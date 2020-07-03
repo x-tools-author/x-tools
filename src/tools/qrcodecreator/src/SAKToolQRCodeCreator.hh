@@ -15,13 +15,15 @@
 #include <QPushButton>
 #include <QPlainTextEdit>
 
+#include "SAKToolBase.hh"
+
 namespace Ui {
     class SAKToolQRCodeCreator;
 }
 
 class SAKQRCode;
 /// @brief 二维码生成工具
-class SAKToolQRCodeCreator:public QWidget
+class SAKToolQRCodeCreator:public SAKToolBase
 {
     Q_OBJECT
 public:
