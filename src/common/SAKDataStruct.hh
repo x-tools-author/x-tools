@@ -18,6 +18,17 @@ class SAKDataStruct:public QObject
 public:
     SAKDataStruct(QObject* parent = Q_NULLPTR);
 
+    /// @brief 支持的调试工具类型
+    enum SAKEnumToolType {
+#ifdef SAK_IMPORT_FILECHECKER_MODULE
+        ToolTypeFileChecker,
+#endif
+#ifdef SAK_IMPORT_QRCODE_MODULE
+        ToolTypeQRCodeCreator,
+#endif
+        ToolTypeCRCCalculator
+    };
+
     /// @brief 支持调试的设备类型
     enum SAKEnumDebugPageType {
 #ifdef SAK_IMPORT_COM_MODULE
