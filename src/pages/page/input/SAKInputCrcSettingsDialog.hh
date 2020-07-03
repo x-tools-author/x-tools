@@ -20,12 +20,12 @@ namespace Ui {
 }
 
 /// @brief crc设置弹窗
-class SAKInputCrcSettingDialog : public QDialog
+class SAKInputCrcSettingsDialog : public QDialog
 {
     Q_OBJECT
 public:
-    SAKInputCrcSettingDialog(QWidget *parent = Q_NULLPTR);
-    ~SAKInputCrcSettingDialog();
+    SAKInputCrcSettingsDialog(QWidget *parent = Q_NULLPTR);
+    ~SAKInputCrcSettingsDialog();
 
     /// @brief crc参数上下文
     struct ParameterContext {

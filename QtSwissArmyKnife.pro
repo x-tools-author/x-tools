@@ -161,7 +161,7 @@ HEADERS += \
     src/pages/page/SAKDebugPageDatabaseInterface.hh \
     src/pages/page/device/SAKDevice.hh \
     src/pages/page/input/SAKDebugPageInputManager.hh \
-    src/pages/page/input/SAKInputCrcSettingDialog.hh \
+    src/pages/page/input/SAKInputCrcSettingsDialog.hh \
     src/pages/page/input/SAKInputDataFactory.hh \
     src/pages/page/input/SAKInputDataItem.hh \
     src/pages/page/input/SAKInputDataItemManager.hh \
@@ -217,7 +217,7 @@ SOURCES += \
     src/pages/page/SAKDebugPageDatabaseInterface.cc \
     src/pages/page/device/SAKDevice.cc \
     src/pages/page/input/SAKDebugPageInputManager.cc \
-    src/pages/page/input/SAKInputCrcSettingDialog.cc \
+    src/pages/page/input/SAKInputCrcSettingsDialog.cc \
     src/pages/page/input/SAKInputDataFactory.cc \
     src/pages/page/input/SAKInputDataItem.cc \
     src/pages/page/input/SAKInputDataItemManager.cc \
