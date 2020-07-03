@@ -34,8 +34,6 @@ class SAKMainWindow : public QMainWindow
 public:
     explicit SAKMainWindow(QWidget *parent = Q_NULLPTR);
     ~SAKMainWindow();
-protected:
-      bool eventFilter(QObject *obj, QEvent *event);
 private: 
     void addTool();
 

@@ -168,11 +168,6 @@ SAKMainWindow::~SAKMainWindow()
     delete ui;
 }
 
-bool SAKMainWindow::eventFilter(QObject *obj, QEvent *event)
-{
-    return QMainWindow::eventFilter(obj, event);
-}
-
 void SAKMainWindow::addTool()
 {
 #ifdef SAK_IMPORT_FILECHECKER_MODULE
