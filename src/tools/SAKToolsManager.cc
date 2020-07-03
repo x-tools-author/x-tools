@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2018-2020 Qter(qsak@foxmail.com). All rights reserved.
+ * Copyright 2020 Qter(qsak@foxmail.com). All rights reserved.
  *
  * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
  * project(https://www.qsak.pro). The project is an open source project. You can
@@ -7,45 +7,94 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
-#include <QRectF>
-#include <QPainter>
-#include "SAKQRCode.hh"
+#include <QWidget>
+#include <QMetaEnum>
+#include <QMapIterator>
 
-SAKQRCode::SAKQRCode(QWidget *parent)
-    :QWidget(parent)
+#include "SAKDataStruct.hh"
+#include "SAKToolsManager.hh"
+#include "SAKCRCCalculator.hh"
+#ifdef SAK_IMPORT_QRCODE_MODULE
+#include "SAKQRCodeCreator.hh"
+#endif
+#ifdef SAK_IMPORT_FILECHECKER_MODULE
+#include "QtCryptographicHashController.hh"
+#endif
+
+SAKToolsManager* SAKToolsManager::instancePtr = Q_NULLPTR;
+SAKToolsManager::SAKToolsManager(QObject *parent)
+    :QObject(parent)
 {
+    instancePtr = this;
 
+    /// @brief 创建工具
+    QMetaEnum metaEnum = QMetaEnum::fromType<SAKDataStruct::SAKEnumToolType>();
+    for (int i = 0; i < metaEnum.keyCount(); i++){
+        QWidget *toolWidget = toolWidgetFromType(metaEnum.value(i));
+        if (toolWidget){
+            toolsMap.insert(metaEnum.value(i), toolWidget);
+        }
+    }
 }
 
-SAKQRCode::~SAKQRCode()
+SAKToolsManager::~SAKToolsManager()
 {
-
+    instancePtr = Q_NULLPTR;
+    QMapIterator<int, QWidget *> i(toolsMap);
+    while (i.hasNext()) {
+        QWidget *w = i.value();
+        if (w){
+            w->close();
+            w->deleteLater();
+            w = Q_NULLPTR;
+        }
+    }
 }
 
-void SAKQRCode::updateQRCode(QPixmap pixmap)
+SAKToolsManager* SAKToolsManager::instance()
 {
-    innerPixmap = pixmap;
-    update();
+    if (!instancePtr){
+        new SAKToolsManager;
+    }
+    Q_ASSERT_X(instancePtr, __FUNCTION__, "Can not instance the class, which name is SAKToolsManager.");
+
+    return instancePtr;
 }
 
-QPixmap SAKQRCode::qrCode()
+void SAKToolsManager::showToolWidget(int type)
 {
-    return innerPixmap;
+    QWidget *toolWidget = toolsMap.value(type);
+    if (toolWidget){
+        if (toolWidget->isHidden()){
+            toolWidget->show();
+        }else{
+            toolWidget->activateWindow();
+        }
+    }else{
+        Q_ASSERT_X(false, __FUNCTION__, "Unknow tool type!");
+    }
 }
 
-void SAKQRCode::paintEvent(QPaintEvent *event)
+QWidget *SAKToolsManager::toolWidgetFromType(int type)
 {
-    Q_UNUSED(event);
-    if (innerPixmap.isNull()){
-        return;
+    QWidget *toolWidget = Q_NULLPTR;
+    switch (type) {
+#ifdef SAK_IMPORT_FILECHECKER_MODULE
+    case SAKDataStruct::ToolTypeFileChecker:
+        toolWidget = new QtCryptographicHashController;
+        break;
+#endif
+    case SAKDataStruct::ToolTypeCRCCalculator:
+        toolWidget = new SAKCRCCalculator;
+        break;
+#ifdef SAK_IMPORT_QRCODE_MODULE
+    case SAKDataStruct::ToolTypeQRCodeCreator:
+        toolWidget = new SAKQRCodeCreator;
+        break;
+#endif
+    default:
+        break;
     }
 
-   int qrCodeLeftMargin = (width()-innerPixmap.width())/2;
-   int qrCodeTopMargin = (height()-innerPixmap.height())/2;
-
-   /// @brief 绘制二维码
-   QPainter painter(this);
-   QRect qrCodeRect = QRect(qrCodeLeftMargin, qrCodeTopMargin, innerPixmap.height(), innerPixmap.height());
-   innerPixmap = innerPixmap.scaledToHeight(qrCodeRect.height());
-   painter.drawPixmap(qrCodeRect, innerPixmap);
+    return toolWidget;
 }
