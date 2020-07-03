@@ -160,8 +160,8 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
         tabWidget->tabBar()->setTabButton(i, QTabBar::LeftSide, Q_NULLPTR);
     }
 
-
-    initMenu();
+    /// @brief 初始化菜单栏
+    initMenuBar();
 
     /// @brief 初始化工具，该步骤需要在完成菜单栏初始化后进行
     QMetaEnum toolTypeMetaEnum = QMetaEnum::fromType<SAKDataStruct::SAKEnumToolType>();
@@ -227,7 +227,7 @@ void SAKMainWindow::changeAppStyle(QString appStyle)
     SAKSettings::instance()->setAppStyle(appStyle);
 }
 
-void SAKMainWindow::initMenu()
+void SAKMainWindow::initMenuBar()
 {
     QMenuBar *menuBar = new QMenuBar(Q_NULLPTR);
     setMenuBar(menuBar);

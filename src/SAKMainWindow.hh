@@ -38,7 +38,7 @@ private:
     void changeStylesheet(QString styleSheetName);
     void changeAppStyle(QString appStyle);
 
-    void initMenu();
+    void initMenuBar();
     void initFileMenu();
     void initToolMenu();
     void initOptionMenu();
