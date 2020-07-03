@@ -2,11 +2,11 @@ INCLUDEPATH += \
     $$PWD/src
 
 FORMS += \
-    $$PWD/src/SAKCRCCalculator.ui
+    $$PWD/src/SAKToolCRCCalculator.ui
 
 HEADERS += \
-    $$PWD/src/SAKCRCCalculator.hh
+    $$PWD/src/SAKToolCRCCalculator.hh
 
 SOURCES += \
-    $$PWD/src/SAKCRCCalculator.cc
+    $$PWD/src/SAKToolCRCCalculator.cc
 

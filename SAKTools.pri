@@ -11,4 +11,4 @@ SOURCES += \
 
 include(src/tools/filechecker/SAKToolFileChecker.pri)
 include(src/tools/qrcodecreator/SAKToolQRCodeCreator.pri)
-include(src/tools/crccalculator/SAKCRCCalculator.pri)
+include(src/tools/crccalculator/SAKToolCRCCalculator.pri)

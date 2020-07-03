@@ -55,7 +55,7 @@
 #include "SAKSctpClientDebugPage.hh"
 #include "SAKSctpServerDebugPage.hh"
 #endif
-#include "SAKCRCCalculator.hh"
+#include "SAKToolCRCCalculator.hh"
 #include "SAKUpdateManager.hh"
 #include "SAKMoreInformation.hh"
 #include "SAKTcpClientDebugPage.hh"

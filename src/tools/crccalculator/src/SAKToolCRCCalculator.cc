@@ -12,10 +12,10 @@
 #include <QDesktopServices>
 #include <QLoggingCategory>
 
-#include "SAKCRCCalculator.hh"
+#include "SAKToolCRCCalculator.hh"
 #include "ui_SAKCRCCalculator.h"
 
-SAKCRCCalculator::SAKCRCCalculator(QWidget* parent)
+SAKToolCRCCalculator::SAKToolCRCCalculator(QWidget* parent)
     :QDialog (parent)
     ,logCategory("CRCCalculator")
     ,ui(new Ui::SAKCRCCalculator)
@@ -66,14 +66,14 @@ SAKCRCCalculator::SAKCRCCalculator(QWidget* parent)
     connect(inputTextEdit, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
 }
 
-SAKCRCCalculator::~SAKCRCCalculator()
+SAKToolCRCCalculator::~SAKToolCRCCalculator()
 {
     QLoggingCategory category(logCategory);
     qCInfo(category) << "Goodbye CRCCalculator";
     delete  ui;
 }
 
-void SAKCRCCalculator::initParameterModel()
+void SAKToolCRCCalculator::initParameterModel()
 {
     parameterComboBox->clear();
     QStringList list = crcInterface.supportedParameterModels();
@@ -92,7 +92,7 @@ void SAKCRCCalculator::initParameterModel()
     labelPolyFormula->setText(crcInterface.getPolyFormula(model));
 }
 
-void SAKCRCCalculator::calculate()
+void SAKToolCRCCalculator::calculate()
 {
     QByteArray inputArray;
     if (hexRadioBt->isChecked()){
@@ -146,7 +146,7 @@ void SAKCRCCalculator::calculate()
     binCRCOutput->setText(crcBinString);
 }
 
-void SAKCRCCalculator::textFormatControl()
+void SAKToolCRCCalculator::textFormatControl()
 {
     if (asciiRadioBt->isChecked()){
         return;
@@ -168,7 +168,7 @@ void SAKCRCCalculator::textFormatControl()
     connect(inputTextEdit, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
 }
 
-void SAKCRCCalculator::changedParameterModel(int index)
+void SAKToolCRCCalculator::changedParameterModel(int index)
 {
     Q_UNUSED(index)
 
@@ -195,7 +195,7 @@ void SAKCRCCalculator::changedParameterModel(int index)
     labelPolyFormula->setText(crcInterface.getPolyFormula(model));
 }
 
-bool SAKCRCCalculator::eventFilter(QObject *watched, QEvent *event)
+bool SAKToolCRCCalculator::eventFilter(QObject *watched, QEvent *event)
 {
     if (event->type() == QEvent::MouseButtonDblClick){
         if (watched == labelInfo){

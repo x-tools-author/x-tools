@@ -13,7 +13,7 @@
 
 #include "SAKDataStruct.hh"
 #include "SAKToolsManager.hh"
-#include "SAKCRCCalculator.hh"
+#include "SAKToolCRCCalculator.hh"
 #ifdef SAK_IMPORT_QRCODE_MODULE
 #include "SAKToolQRCodeCreator.hh"
 #endif
@@ -85,7 +85,7 @@ QWidget *SAKToolsManager::toolWidgetFromType(int type)
         break;
 #endif
     case SAKDataStruct::ToolTypeCRCCalculator:
-        toolWidget = new SAKCRCCalculator;
+        toolWidget = new SAKToolCRCCalculator;
         break;
 #ifdef SAK_IMPORT_QRCODE_MODULE
     case SAKDataStruct::ToolTypeQRCodeCreator:

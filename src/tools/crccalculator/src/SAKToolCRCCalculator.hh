@@ -7,8 +7,8 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
-#ifndef SAKCRCCALCULATOR_HH
-#define SAKCRCCALCULATOR_HH
+#ifndef SAKTOOLCRCCALCULATOR_HH
+#define SAKTOOLCRCCALCULATOR_HH
 
 #include <QLabel>
 #include <QDialog>
@@ -29,12 +29,12 @@ namespace Ui {
 }
 
 /// @brief crc计算器
-class SAKCRCCalculator:public QDialog
+class SAKToolCRCCalculator:public QDialog
 {
     Q_OBJECT
 public:
-    SAKCRCCalculator(QWidget* parent = Q_NULLPTR);
-    ~SAKCRCCalculator();
+    SAKToolCRCCalculator(QWidget* parent = Q_NULLPTR);
+    ~SAKToolCRCCalculator();
 protected:
     bool eventFilter(QObject *watched, QEvent *event);
 private:
