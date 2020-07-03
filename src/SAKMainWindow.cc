@@ -114,7 +114,7 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
                    + " " + tr("用户交流QQ群") + " " + SAK::instance()->qqGroupNumber());
 
     tabWidget->setTabsClosable(true);
-    connect(tabWidget, &QTabWidget::tabCloseRequested, this, &SAKMainWindow::closeDebugPage);
+    connect(tabWidget, &QTabWidget::tabCloseRequested, this, &SAKMainWindow::removeRemovableDebugPage);
 
     /*
      * 以下代码是设置软件风格
@@ -184,51 +184,14 @@ SAKMainWindow::~SAKMainWindow()
     delete ui;
 }
 
-void SAKMainWindow::about()
-{
-    QMessageBox::information(this, tr("关于"), QString("<font color=green>%1</font><br />%2<br />"
-                                                     "<font color=green>%3</font><br />%4<br />"
-                                                     "<font color=green>%5</font><br />%6<br />"
-                                                     "<font color=green>%7</font><br /><a href=%8>%8</a><br />"
-                                                     "<font color=green>%9</font><br />%10<br />"
-                                                     "<font color=green>%11</font><br />%12<br />"
-                                                     "<font color=green>%13</font><br />%14<br />"
-                                                     "<font color=green>%15</font><br />%16<br />"
-                                                     "<font color=green>%17</font><br />%18<br />"
-                                                     "<font color=red>%19</font><br />%20")
-                             .arg(tr("软件版本")).arg(SAK::instance()->version())
-                             .arg(tr("软件作者")).arg(SAK::instance()->authorName())
-                             .arg(tr("作者昵称")).arg(SAK::instance()->authorNickname())
-                             .arg(tr("发布网站")).arg(SAK::instance()->officeUrl())
-                             .arg(tr("联系邮箱")).arg(SAK::instance()->email())
-                             .arg(tr("QQ账号")).arg(SAK::instance()->qqNumber())
-                             .arg(tr("QQ交流群")).arg(SAK::instance()->qqGroupNumber())
-                             .arg(tr("编译时间")).arg(SAK::instance()->buildTime())
-                             .arg(tr("版权信息")).arg(SAK::instance()->copyright())
-                             .arg(tr("业务合作")).arg(SAK::instance()->business()));
-}
-
-void SAKMainWindow::changeStylesheet(QString styleSheetName)
-{
-    SAKSettings::instance()->setAppStylesheet(styleSheetName);
-    if (!styleSheetName.isEmpty()){
-        defaultStyleSheetAction->setChecked(false);
-    }
-}
-
-void SAKMainWindow::changeAppStyle(QString appStyle)
-{
-    SAKSettings::instance()->setAppStyle(appStyle);
-}
-
 void SAKMainWindow::initMenuBar()
 {
     QMenuBar *menuBar = new QMenuBar(Q_NULLPTR);
     setMenuBar(menuBar);
     initFileMenu();
     initToolMenu();
-    initOptionMenu();    
-    initLanguageMenu();    
+    initOptionMenu();
+    initLanguageMenu();
     initLinksMenu();
     initHelpMenu();
 }
@@ -246,7 +209,7 @@ void SAKMainWindow::initFileMenu()
         a->setObjectName(SAKGlobal::debugPageNameFromType(i));
         QVariant var = QVariant::fromValue<int>(enums.value(i));
         a->setData(var);
-        connect(a, &QAction::triggered, this, &SAKMainWindow::addRemovablePage);
+        connect(a, &QAction::triggered, this, &SAKMainWindow::appendRemovablePage);
         tabMenu->addAction(a);
     }
 
@@ -256,7 +219,7 @@ void SAKMainWindow::initFileMenu()
         QAction *a = new QAction(SAKGlobal::debugPageNameFromType(i), this);
         a->setObjectName(SAKGlobal::debugPageNameFromType(i));
         QVariant var = QVariant::fromValue<int>(enums.value(i));
-        connect(a, &QAction::triggered, this, &SAKMainWindow::openIODeviceWindow);
+        connect(a, &QAction::triggered, this, &SAKMainWindow::openDebugPageWidget);
         a->setData(var);
         windowMenu->addAction(a);
     }
@@ -362,7 +325,7 @@ void SAKMainWindow::initLanguageMenu()
         }
     }else{
         Q_ASSERT_X(false, __FUNCTION__, "Json file parsing failed!");
-    }    
+    }
 }
 
 void SAKMainWindow::initHelpMenu()
@@ -426,6 +389,43 @@ void SAKMainWindow::initLinksMenu()
     }
 }
 
+void SAKMainWindow::changeStylesheet(QString styleSheetName)
+{
+    SAKSettings::instance()->setAppStylesheet(styleSheetName);
+    if (!styleSheetName.isEmpty()){
+        defaultStyleSheetAction->setChecked(false);
+    }
+}
+
+void SAKMainWindow::changeAppStyle(QString appStyle)
+{
+    SAKSettings::instance()->setAppStyle(appStyle);
+}
+
+void SAKMainWindow::about()
+{
+    QMessageBox::information(this, tr("关于"), QString("<font color=green>%1</font><br />%2<br />"
+                                                     "<font color=green>%3</font><br />%4<br />"
+                                                     "<font color=green>%5</font><br />%6<br />"
+                                                     "<font color=green>%7</font><br /><a href=%8>%8</a><br />"
+                                                     "<font color=green>%9</font><br />%10<br />"
+                                                     "<font color=green>%11</font><br />%12<br />"
+                                                     "<font color=green>%13</font><br />%14<br />"
+                                                     "<font color=green>%15</font><br />%16<br />"
+                                                     "<font color=green>%17</font><br />%18<br />"
+                                                     "<font color=red>%19</font><br />%20")
+                             .arg(tr("软件版本")).arg(SAK::instance()->version())
+                             .arg(tr("软件作者")).arg(SAK::instance()->authorName())
+                             .arg(tr("作者昵称")).arg(SAK::instance()->authorNickname())
+                             .arg(tr("发布网站")).arg(SAK::instance()->officeUrl())
+                             .arg(tr("联系邮箱")).arg(SAK::instance()->email())
+                             .arg(tr("QQ账号")).arg(SAK::instance()->qqNumber())
+                             .arg(tr("QQ交流群")).arg(SAK::instance()->qqGroupNumber())
+                             .arg(tr("编译时间")).arg(SAK::instance()->buildTime())
+                             .arg(tr("版权信息")).arg(SAK::instance()->copyright())
+                             .arg(tr("业务合作")).arg(SAK::instance()->business()));
+}
+
 void SAKMainWindow::installLanguage()
 {
     if (!sender()){
@@ -442,7 +442,7 @@ void SAKMainWindow::installLanguage()
     QMessageBox::information(this, tr("重启生效"), tr("软件语言包已更改，重启软件生效！"));
 }
 
-void SAKMainWindow::addRemovablePage()
+void SAKMainWindow::appendRemovablePage()
 {
     int type = qobject_cast<QAction*>(sender())->data().value<int>();
     QWidget *widget = debugPageFromType(type);
@@ -450,7 +450,14 @@ void SAKMainWindow::addRemovablePage()
     tabWidget->addTab(widget, sender()->objectName());
 }
 
-void SAKMainWindow::openIODeviceWindow()
+void SAKMainWindow::removeRemovableDebugPage(int index)
+{
+    QWidget *w = tabWidget->widget(index);
+    tabWidget->removeTab(index);
+    w->close();
+}
+
+void SAKMainWindow::openDebugPageWidget()
 {
     int type = qobject_cast<QAction*>(sender())->data().value<int>();
     QWidget *widget = debugPageFromType(type);
@@ -510,13 +517,6 @@ QWidget *SAKMainWindow::debugPageFromType(int type)
     }
 
     return widget;
-}
-
-void SAKMainWindow::closeDebugPage(int index)
-{
-    QWidget *w = tabWidget->widget(index);
-    tabWidget->removeTab(index);
-    w->close();
 }
 
 void SAKMainWindow::showToolWidget()

@@ -45,9 +45,6 @@ private:
     SAKMoreInformation *moreInformation;
     SAKQRCodeDialog *qrCodeDialog;
 private: 
-    void changeStylesheet(QString styleSheetName);
-    void changeAppStyle(QString appStyle);
-
     void initMenuBar();
     void initFileMenu();
     void initToolMenu();
@@ -56,12 +53,15 @@ private:
     void initHelpMenu();
     void initLinksMenu();
 
-    void installLanguage();
-    void addRemovablePage();
-    void openIODeviceWindow();
-    QWidget *debugPageFromType(int type);
-    void closeDebugPage(int index);
+    void changeStylesheet(QString styleSheetName);
+    void changeAppStyle(QString appStyle);
+
     void about();
+    void installLanguage();
+    void appendRemovablePage();
+    void removeRemovableDebugPage(int index);
+    void openDebugPageWidget();
+    QWidget *debugPageFromType(int type);
 private slots:
     /// @brief 显示工具窗口
     void showToolWidget();
