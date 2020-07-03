@@ -181,8 +181,6 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
         });
     }
 
-    addTool();
-
     connect(QtStyleSheetApi::instance(), &QtStyleSheetApi::styleSheetChanged, this, &SAKMainWindow::changeStylesheet);
     connect(QtAppStyleApi::instance(), &QtAppStyleApi::appStyleChanged, this, &SAKMainWindow::changeAppStyle);
 }
@@ -190,22 +188,6 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
 SAKMainWindow::~SAKMainWindow()
 {
     delete ui;
-}
-
-void SAKMainWindow::addTool()
-{
-#ifdef SAK_IMPORT_FILECHECKER_MODULE
-    addTool(tr("文件校验工具"),     new QtCryptographicHashController);
-#endif
-
-#ifdef SAK_IMPORT_QRCODE_MODULE
-    addTool(tr("二维码生成工具"), new SAKQRCodeCreator);
-#endif
-
-    QAction *action = Q_NULLPTR;
-    action = new QAction(tr("CRC计算器"), this);
-    toolsMenu->addAction(action);
-    connect(action, &QAction::triggered, this, &SAKMainWindow::createCRCCalculator);
 }
 
 void SAKMainWindow::about()
@@ -230,13 +212,6 @@ void SAKMainWindow::about()
                              .arg(tr("编译时间")).arg(SAK::instance()->buildTime())
                              .arg(tr("版权信息")).arg(SAK::instance()->copyright())
                              .arg(tr("业务合作")).arg(SAK::instance()->business()));
-}
-
-void SAKMainWindow::addTool(QString toolName, QWidget *toolWidget)
-{
-    QAction *action = new QAction(toolName, this);
-    toolsMenu->addAction(action);
-    connect(action, &QAction::triggered, SAKToolsManager::instance(), &SAKToolsManager::showToolWidget);
 }
 
 void SAKMainWindow::changeStylesheet(QString styleSheetName)

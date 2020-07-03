@@ -35,9 +35,6 @@ public:
     explicit SAKMainWindow(QWidget *parent = Q_NULLPTR);
     ~SAKMainWindow();
 private: 
-    void addTool();
-
-    void addTool(QString toolName, QWidget *toolWidget);
     void changeStylesheet(QString styleSheetName);
     void changeAppStyle(QString appStyle);
 
