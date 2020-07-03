@@ -522,14 +522,16 @@ void SAKMainWindow::closeDebugPage(int index)
 void SAKMainWindow::showToolWidget()
 {
     QObject *obj = sender();
-    if (obj){
-        if (obj->inherits("QAction")){
-            bool ok = false;
-            QAction *action = qobject_cast<QAction *>(obj);
-            int type = action->data().toInt(&ok);
-            if (ok){
-                SAKToolsManager::instance()->showToolWidget(type);
-            }
+    if (!obj){
+        return;
+    }
+
+    if (obj->inherits("QAction")){
+        bool ok = false;
+        QAction *action = qobject_cast<QAction *>(obj);
+        int type = action->data().toInt(&ok);
+        if (ok){
+            SAKToolsManager::instance()->showToolWidget(type);
         }
     }
 }
