@@ -5,7 +5,6 @@
     03. crc计算添加计算字段选择功能（not yet）
     04. 串口波形（not yet）
     05. 粘包处理（not yet）
-    06. 添加sctp调试功能（not yet）
     bug修复
     01. 发送数据是，ui大小在变动（树莓派平台）
 
