@@ -49,7 +49,7 @@
 #include "SAKUsbDebugPage.hh"
 #endif
 #ifdef SAK_IMPORT_QRCODE_MODULE
-#include "SAKQRCodeCreator.hh"
+#include "SAKToolQRCodeCreator.hh"
 #endif
 #ifdef SAK_IMPORT_SCTP_MODULE
 #include "SAKSctpClientDebugPage.hh"

@@ -7,8 +7,8 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
-#ifndef SAKQRCODECREATOR_HH
-#define SAKQRCODECREATOR_HH
+#ifndef SAKTOOLQRCODECREATOR_HH
+#define SAKTOOLQRCODECREATOR_HH
 
 #include <QPixmap>
 #include <QWidget>
@@ -16,17 +16,17 @@
 #include <QPlainTextEdit>
 
 namespace Ui {
-    class SAKQRCodeCreator;
+    class SAKToolQRCodeCreator;
 }
 
 class SAKQRCode;
 /// @brief 二维码生成工具
-class SAKQRCodeCreator:public QWidget
+class SAKToolQRCodeCreator:public QWidget
 {
     Q_OBJECT
 public:
-    SAKQRCodeCreator(QWidget *parent = Q_NULLPTR);
-    ~SAKQRCodeCreator();
+    SAKToolQRCodeCreator(QWidget *parent = Q_NULLPTR);
+    ~SAKToolQRCodeCreator();
 
     /**
      * @brief encodeString 将字符串编码成二维码图片
@@ -36,7 +36,7 @@ public:
      */
     QPixmap encodeString(const QString &text, int width = 100);
 private:
-    Ui::SAKQRCodeCreator *ui;
+    Ui::SAKToolQRCodeCreator *ui;
     SAKQRCode *qrCodeWidget;
     QPlainTextEdit *plainTextEdit;
     QPushButton *savePushButton;

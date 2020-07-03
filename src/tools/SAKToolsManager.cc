@@ -15,7 +15,7 @@
 #include "SAKToolsManager.hh"
 #include "SAKCRCCalculator.hh"
 #ifdef SAK_IMPORT_QRCODE_MODULE
-#include "SAKQRCodeCreator.hh"
+#include "SAKToolQRCodeCreator.hh"
 #endif
 #ifdef SAK_IMPORT_FILECHECKER_MODULE
 #include "QtCryptographicHashController.hh"
@@ -89,7 +89,7 @@ QWidget *SAKToolsManager::toolWidgetFromType(int type)
         break;
 #ifdef SAK_IMPORT_QRCODE_MODULE
     case SAKDataStruct::ToolTypeQRCodeCreator:
-        toolWidget = new SAKQRCodeCreator;
+        toolWidget = new SAKToolQRCodeCreator;
         break;
 #endif
     default:

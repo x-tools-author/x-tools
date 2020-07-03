@@ -14,17 +14,17 @@
 #include <QStandardPaths>
 
 #include "SAKQRCode.hh"
-#include "SAKQRCodeCreator.hh"
+#include "SAKToolQRCodeCreator.hh"
 
 extern "C" {
     #include "qrencode.h"
 }
 
-#include "ui_SAKQRCodeCreator.h"
+#include "ui_SAKToolQRCodeCreator.h"
 
-SAKQRCodeCreator::SAKQRCodeCreator(QWidget *parent)
+SAKToolQRCodeCreator::SAKToolQRCodeCreator(QWidget *parent)
     :QWidget(parent)
-    ,ui(new Ui::SAKQRCodeCreator)
+    ,ui(new Ui::SAKToolQRCodeCreator)
 {
     ui->setupUi(this);
     plainTextEdit = ui->plainTextEdit;
@@ -39,13 +39,13 @@ SAKQRCodeCreator::SAKQRCodeCreator(QWidget *parent)
     w->setLayout(hBoxLayout);
 }
 
-SAKQRCodeCreator::~SAKQRCodeCreator()
+SAKToolQRCodeCreator::~SAKToolQRCodeCreator()
 {
     delete ui;
     delete qrCodeWidget;
 }
 
-QPixmap SAKQRCodeCreator::encodeString(const QString &text, int width)
+QPixmap SAKToolQRCodeCreator::encodeString(const QString &text, int width)
 {
     if (text.length() == 0){
         return QPixmap();
@@ -91,7 +91,7 @@ QPixmap SAKQRCodeCreator::encodeString(const QString &text, int width)
     return QPixmap::fromImage(image.scaledToWidth(width));
 }
 
-void SAKQRCodeCreator::on_savePushButton_clicked()
+void SAKToolQRCodeCreator::on_savePushButton_clicked()
 {
     QPixmap pix = qrCodeWidget->qrCode();
     if (pix.isNull()){
@@ -111,7 +111,7 @@ void SAKQRCodeCreator::on_savePushButton_clicked()
     }
 }
 
-void SAKQRCodeCreator::on_createPushButton_clicked()
+void SAKToolQRCodeCreator::on_createPushButton_clicked()
 {
     QPixmap pix = encodeString(plainTextEdit->toPlainText(), 100);
     qrCodeWidget->updateQRCode(pix);
