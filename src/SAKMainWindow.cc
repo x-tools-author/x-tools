@@ -41,6 +41,7 @@
 #include "SAKQRCodeDialog.hh"
 #include "SAKUdpDebugPage.hh"
 #include "QtStyleSheetApi.hh"
+#include "SAKToolsManager.hh"
 #ifdef SAK_IMPORT_HID_MODULE
 #include "SAKHidDebugPage.hh"
 #endif
@@ -161,6 +162,25 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
 
 
     initMenu();
+
+    /// @brief 初始化工具，该步骤需要在完成菜单栏初始化后进行
+    QMetaEnum toolTypeMetaEnum = QMetaEnum::fromType<SAKDataStruct::SAKEnumToolType>();
+    for (int i = 0; i < toolTypeMetaEnum.keyCount(); i++){
+        QString name = SAKGlobal::toolNameFromType(toolTypeMetaEnum.value(i));
+        QAction *action = new QAction(name, this);
+        action->setData(QVariant::fromValue(toolTypeMetaEnum.value(i)));
+        toolsMenu->addAction(action);
+
+        /// @brief 关联点击操作
+        connect(action, &QAction::triggered, this, [=](){
+            bool ok = false;
+            int type = action->data().toInt(&ok);
+            if (ok){
+                SAKToolsManager::instance()->showToolWidget(type);
+            }
+        });
+    }
+
     addTool();
 
     connect(QtStyleSheetApi::instance(), &QtStyleSheetApi::styleSheetChanged, this, &SAKMainWindow::changeStylesheet);
@@ -216,7 +236,7 @@ void SAKMainWindow::addTool(QString toolName, QWidget *toolWidget)
 {
     QAction *action = new QAction(toolName, this);
     toolsMenu->addAction(action);
-    connect(action, SIGNAL(triggered(bool)), toolWidget, SLOT(show()));
+    connect(action, &QAction::triggered, SAKToolsManager::instance(), &SAKToolsManager::showToolWidget);
 }
 
 void SAKMainWindow::changeStylesheet(QString styleSheetName)
