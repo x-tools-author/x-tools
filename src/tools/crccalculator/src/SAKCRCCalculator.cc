@@ -64,10 +64,6 @@ SAKCRCCalculator::SAKCRCCalculator(QWidget* parent)
     connect(parameterComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(changedParameterModel(int)));
     connect(calculatedBt, SIGNAL(clicked()), this, SLOT(calculate()));
     connect(inputTextEdit, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
-
-    /// @brief 窗口关闭后串口资源将被销毁
-    setAttribute(Qt::WA_DeleteOnClose, true);
-    setModal(true);
 }
 
 SAKCRCCalculator::~SAKCRCCalculator()
