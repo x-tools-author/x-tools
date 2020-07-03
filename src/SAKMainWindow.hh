@@ -34,6 +34,16 @@ class SAKMainWindow : public QMainWindow
 public:
     explicit SAKMainWindow(QWidget *parent = Q_NULLPTR);
     ~SAKMainWindow();
+private:
+    QTranslator qtTranslator;
+    QTranslator qtBaeTranslator;
+    QTranslator sakTranslator;
+
+    QMenu *toolsMenu;
+    QAction *defaultStyleSheetAction;
+    SAKUpdateManager *updateManager;
+    SAKMoreInformation *moreInformation;
+    SAKQRCodeDialog *qrCodeDialog;
 private: 
     void changeStylesheet(QString styleSheetName);
     void changeAppStyle(QString appStyle);
@@ -56,18 +66,8 @@ private slots:
     /// @brief 显示工具窗口
     void showToolWidget();
 private:
-    QTabWidget *tabWidget;
-    QMenu *toolsMenu;
-    QAction *defaultStyleSheetAction;
-    SAKUpdateManager *updateManager;
-    SAKMoreInformation *moreInformation;
-    SAKQRCodeDialog *qrCodeDialog;
-
-    QTranslator qtTranslator;
-    QTranslator qtBaeTranslator;
-    QTranslator sakTranslator;
-private:
     Ui::SAKMainWindow *ui;
+    QTabWidget *tabWidget;
 };
 
 #endif // MAINWINDOW_H
