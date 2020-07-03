@@ -22,6 +22,7 @@
 #include <QJsonDocument>
 #include <QJsonParseError>
 
+#include "SAKToolBase.hh"
 #include "SAKCRCInterface.hh"
 
 namespace Ui {
@@ -29,7 +30,7 @@ namespace Ui {
 }
 
 /// @brief crc计算器
-class SAKToolCRCCalculator:public QDialog
+class SAKToolCRCCalculator:public SAKToolBase
 {
     Q_OBJECT
 public:

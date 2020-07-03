@@ -16,7 +16,7 @@
 #include "ui_SAKCRCCalculator.h"
 
 SAKToolCRCCalculator::SAKToolCRCCalculator(QWidget* parent)
-    :QDialog (parent)
+    :SAKToolBase (parent)
     ,logCategory("CRCCalculator")
     ,ui(new Ui::SAKCRCCalculator)
 {
