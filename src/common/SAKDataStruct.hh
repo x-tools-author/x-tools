@@ -32,8 +32,14 @@ public:
 #endif
         DebugPageTypeTCPClient,
         DebugPageTypeTCPServer,
+#ifdef SAK_IMPORT_SCTP_MODULE
+        DebugPageTypeSCTPClient,
+        DebugPageTypeSCTPServer,
+#endif
+#ifdef SAK_IMPORT_WEBSOCKET_MODULE
         DebugPageTypeWebSocketClient,
         DebugPageTypeWebSocketServer
+#endif
     };
     Q_ENUM(SAKEnumDebugPageType)
 

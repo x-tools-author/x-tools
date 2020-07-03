@@ -50,6 +50,10 @@
 #ifdef SAK_IMPORT_QRCODE_MODULE
 #include "SAKQRCodeCreator.hh"
 #endif
+#ifdef SAK_IMPORT_SCTP_MODULE
+#include "SAKSctpClientDebugPage.hh"
+#include "SAKSctpServerDebugPage.hh"
+#endif
 #include "SAKCRCCalculator.hh"
 #include "SAKUpdateManager.hh"
 #include "SAKMoreInformation.hh"
@@ -168,6 +172,10 @@ void SAKMainWindow::addTab()
     this->tabWidget->addTab(new SAKUdpDebugPage, SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeUDP));
     this->tabWidget->addTab(new SAKTcpClientDebugPage, SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeTCPClient));
     this->tabWidget->addTab(new SAKTcpServerDebugPage, SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeTCPServer));
+#ifdef SAK_IMPORT_SCTP_MODULE
+    this->tabWidget->addTab(new SAKSctpClientDebugPage, SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeSCTPClient));
+    this->tabWidget->addTab(new SAKSctpServerDebugPage, SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeSCTPServer));
+#endif
 #ifdef SAK_IMPORT_WEBSOCKET_MODULE
     this->tabWidget->addTab(new SAKWebSocketClientDebugPage, SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeWebSocketClient));
     this->tabWidget->addTab(new SAKWebSocketServerDebugPage, SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeWebSocketServer));
@@ -490,6 +498,14 @@ QWidget *SAKMainWindow::getDebugPage(int type)
     case SAKDataStruct::DebugPageTypeTCPServer:
         widget = new SAKTcpServerDebugPage;
         break;
+#ifdef SAK_IMPORT_SCTP_MODULE
+    case SAKDataStruct::DebugPageTypeSCTPClient:
+        widget = new SAKSctpClientDebugPage;
+        break;
+    case SAKDataStruct::DebugPageTypeSCTPServer:
+        widget = new SAKSctpServerDebugPage;
+        break;
+#endif
 #ifdef SAK_IMPORT_WEBSOCKET_MODULE
     case SAKDataStruct::DebugPageTypeWebSocketClient:
         widget = new SAKWebSocketClientDebugPage;

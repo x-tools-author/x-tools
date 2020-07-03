@@ -94,6 +94,14 @@ QString SAKGlobal::getNameOfDebugPage(int type)
     case SAKDataStruct::DebugPageTypeTCPServer:
         name = tr("TCP服务器");
         break;
+#ifdef SAK_IMPORT_SCTP_MODULE
+    case SAKDataStruct::DebugPageTypeSCTPClient:
+        name = tr("SCTP客户端");
+        break;
+    case SAKDataStruct::DebugPageTypeSCTPServer:
+        name = tr("SCTP服务器");
+        break;
+#endif
 #ifdef SAK_IMPORT_WEBSOCKET_MODULE
     case SAKDataStruct::DebugPageTypeWebSocketClient:
         name = tr("WebSocket客户端");
