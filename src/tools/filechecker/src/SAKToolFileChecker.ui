@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>QtCryptographicHashController</class>
- <widget class="QWidget" name="QtCryptographicHashController">
+ <class>SAKToolFileChecker</class>
+ <widget class="QWidget" name="SAKToolFileChecker">
   <property name="geometry">
    <rect>
     <x>0</x>

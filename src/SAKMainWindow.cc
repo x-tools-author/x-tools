@@ -68,7 +68,7 @@
 #include "SAKWebSocketServerDebugPage.hh"
 #endif
 #ifdef SAK_IMPORT_FILECHECKER_MODULE
-#include "QtCryptographicHashController.hh"
+#include "SAKToolFileChecker.hh"
 #endif
 
 #include "ui_SAKMainWindow.h"

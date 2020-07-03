@@ -12,12 +12,12 @@
 #include <QFileDialog>
 
 #include "QtCryptographicHashCalculator.hh"
-#include "QtCryptographicHashController.hh"
-#include "ui_QtCryptographicHashController.h"
+#include "SAKToolFileChecker.hh"
+#include "ui_SAKToolFileChecker.h"
 
-QtCryptographicHashController::QtCryptographicHashController(QWidget *parent)
+SAKToolFileChecker::SAKToolFileChecker(QWidget *parent)
     :QWidget (parent)
-    ,ui (new Ui::QtCryptographicHashController)
+    ,ui (new Ui::SAKToolFileChecker)
     ,calculator (Q_NULLPTR)
 {
     ui->setupUi(this);
@@ -60,19 +60,19 @@ QtCryptographicHashController::QtCryptographicHashController(QWidget *parent)
      * 5秒自动清除输出信息
      */
     clearMessageTimer.setInterval(5*1000);
-    connect(&clearMessageTimer, &QTimer::timeout, this, &QtCryptographicHashController::clearMessage);
+    connect(&clearMessageTimer, &QTimer::timeout, this, &SAKToolFileChecker::clearMessage);
 
     upperCheckBox->setChecked(true);
     setWindowTitle(tr("文件校验工具"));
 }
 
-void QtCryptographicHashController::setUiEnable(bool enable)
+void SAKToolFileChecker::setUiEnable(bool enable)
 {
     algorithmComboBox->setEnabled(enable);
     openPushButton->setEnabled(enable);
 }
 
-void QtCryptographicHashController::updateResult(QByteArray result)
+void SAKToolFileChecker::updateResult(QByteArray result)
 {
     QString resultString = QString(result.toHex());
     if (upperCheckBox->isChecked()){
@@ -82,7 +82,7 @@ void QtCryptographicHashController::updateResult(QByteArray result)
     }
 }
 
-void QtCryptographicHashController::outputMessage(QString msg, bool isErrMsg)
+void SAKToolFileChecker::outputMessage(QString msg, bool isErrMsg)
 {
     if (isErrMsg){
         QApplication::beep();
@@ -95,30 +95,30 @@ void QtCryptographicHashController::outputMessage(QString msg, bool isErrMsg)
     clearMessageTimer.start();
 }
 
-void QtCryptographicHashController::updateProgressBar(int currentValue)
+void SAKToolFileChecker::updateProgressBar(int currentValue)
 {
     calculatorProgressBar->setValue(currentValue);
 }
 
-void QtCryptographicHashController::changeRemainTime(QString remainTime)
+void SAKToolFileChecker::changeRemainTime(QString remainTime)
 {
     QString str = tr("估计剩余时间");
     remainTimeLabel->setText(QString("%1 %2").arg(str).arg(remainTime));
 }
 
-void QtCryptographicHashController::finished()
+void SAKToolFileChecker::finished()
 {
     on_startStopPushButton_clicked();
 }
 
-void QtCryptographicHashController::clearMessage()
+void SAKToolFileChecker::clearMessage()
 {
     clearMessageTimer.stop();
     messageLabel->clear();
     remainTimeLabel->clear();
 }
 
-void QtCryptographicHashController::on_openPushButton_clicked()
+void SAKToolFileChecker::on_openPushButton_clicked()
 {
     _fileName = QFileDialog::getOpenFileName();
     filePathlineEdit->setText(_fileName);
@@ -131,7 +131,7 @@ void QtCryptographicHashController::on_openPushButton_clicked()
     messageLabel->clear();
 }
 
-void QtCryptographicHashController::on_algorithmComboBox_currentIndexChanged(int index)
+void SAKToolFileChecker::on_algorithmComboBox_currentIndexChanged(int index)
 {
     QMetaEnum algorithms = QMetaEnum::fromType<QCryptographicHash::Algorithm>();
     _algorithm = static_cast<QCryptographicHash::Algorithm>(algorithms.value(index));
@@ -139,7 +139,7 @@ void QtCryptographicHashController::on_algorithmComboBox_currentIndexChanged(int
     calculatorProgressBar->setValue(0);
 }
 
-void QtCryptographicHashController::on_startStopPushButton_clicked()
+void SAKToolFileChecker::on_startStopPushButton_clicked()
 {
     if (calculator){
         calculator->blockSignals(true);
@@ -151,14 +151,14 @@ void QtCryptographicHashController::on_startStopPushButton_clicked()
         setUiEnable(true);
     }else{
         calculator = new QtCryptographicHashCalculator(this);
-        connect(calculator, &QThread::finished, this, &QtCryptographicHashController::finished);
+        connect(calculator, &QThread::finished, this, &SAKToolFileChecker::finished);
         calculator->start();
         startStopPushButton->setText(tr("停止计算"));
         setUiEnable(false);
     }
 }
 
-void QtCryptographicHashController::on_upperCheckBox_clicked()
+void SAKToolFileChecker::on_upperCheckBox_clicked()
 {
     QString temp = resultLineEdit->text();
     if (upperCheckBox->isChecked()){

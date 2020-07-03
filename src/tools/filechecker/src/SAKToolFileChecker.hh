@@ -7,8 +7,8 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
-#ifndef QTCRYPTOGRAPHICHASHCONTROLLER_HH
-#define QTCRYPTOGRAPHICHASHCONTROLLER_HH
+#ifndef SAKTOOLFILECHECKER_HH
+#define SAKTOOLFILECHECKER_HH
 
 #include <QTimer>
 #include <QLabel>
@@ -21,15 +21,15 @@
 #include <QCryptographicHash>
 
 namespace Ui {
-class QtCryptographicHashController;
+class SAKToolFileChecker;
 }
 
 class QtCryptographicHashCalculator;
-class QtCryptographicHashController : public QWidget
+class SAKToolFileChecker : public QWidget
 {
     Q_OBJECT
 public:
-    QtCryptographicHashController(QWidget *parent = Q_NULLPTR);
+    SAKToolFileChecker(QWidget *parent = Q_NULLPTR);
 
     void setUiEnable(bool enable);
     QString fileName(){return _fileName;}
@@ -39,7 +39,7 @@ public:
     void updateProgressBar(int currentValue);
     void changeRemainTime(QString remainTime);
 private:
-    Ui::QtCryptographicHashController *ui;
+    Ui::SAKToolFileChecker *ui;
     QString _fileName = QString("E:/ISO/Linux/Debian/debian-live-9.9.0-amd64-kde.iso");
     QCryptographicHash::Algorithm _algorithm = QCryptographicHash::Md5;
     QtCryptographicHashCalculator *calculator;

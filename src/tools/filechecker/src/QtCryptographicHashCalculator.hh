@@ -12,15 +12,15 @@
 
 #include <QThread>
 
-class QtCryptographicHashController;
+class SAKToolFileChecker;
 
 class QtCryptographicHashCalculator:public QThread
 {
     Q_OBJECT
 public:
-    QtCryptographicHashCalculator(QtCryptographicHashController *controller, QObject *parent = Q_NULLPTR);
+    QtCryptographicHashCalculator(SAKToolFileChecker *controller, QObject *parent = Q_NULLPTR);
 private:
-    QtCryptographicHashController *cryptographicHashController;
+    SAKToolFileChecker *cryptographicHashController;
     // ------------------------------------------------------------------------
     void run() final;
 signals:

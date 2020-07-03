@@ -8,15 +8,15 @@ contains(DEFINES, SAK_IMPORT_FILECHECKER_MODULE){
         $$PWD/src
 
     FORMS += \
-        $$PWD/src/QtCryptographicHashController.ui
+    $$PWD/src/SAKToolFileChecker.ui
 
     HEADERS += \
         $$PWD/src/QtCryptographicHashCalculator.hh \
-        $$PWD/src/QtCryptographicHashController.hh
+    $$PWD/src/SAKToolFileChecker.hh
 
     SOURCES += \
         $$PWD/src/QtCryptographicHashCalculator.cc \
-        $$PWD/src/QtCryptographicHashController.cc
+    $$PWD/src/SAKToolFileChecker.cc
 }else {
     warning("The Qt edition does not support the QCryptographicHash::Algorithm enum type, the program will not has file chcker function module.")
 }
