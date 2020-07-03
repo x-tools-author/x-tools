@@ -52,8 +52,9 @@ private:
     QWidget *debugPageFromType(int type);
     void closeDebugPage(int index);
     void about();
-
-    void createCRCCalculator();
+private slots:
+    /// @brief 显示工具窗口
+    void showToolWidget();
 private:
     QTabWidget *tabWidget;
     QMenu *toolsMenu;

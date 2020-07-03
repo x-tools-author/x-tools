@@ -172,13 +172,7 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
         toolsMenu->addAction(action);
 
         /// @brief 关联点击操作
-        connect(action, &QAction::triggered, this, [=](){
-            bool ok = false;
-            int type = action->data().toInt(&ok);
-            if (ok){
-                SAKToolsManager::instance()->showToolWidget(type);
-            }
-        });
+        connect(action, &QAction::triggered, this, &SAKMainWindow::showToolWidget);
     }
 
     connect(QtStyleSheetApi::instance(), &QtStyleSheetApi::styleSheetChanged, this, &SAKMainWindow::changeStylesheet);
@@ -525,8 +519,17 @@ void SAKMainWindow::closeDebugPage(int index)
     w->close();
 }
 
-void SAKMainWindow::createCRCCalculator()
+void SAKMainWindow::showToolWidget()
 {
-    SAKCRCCalculator *cal = new SAKCRCCalculator;
-    cal->show();
+    QObject *obj = sender();
+    if (obj){
+        if (obj->inherits("QAction")){
+            bool ok = false;
+            QAction *action = qobject_cast<QAction *>(obj);
+            int type = action->data().toInt(&ok);
+            if (ok){
+                SAKToolsManager::instance()->showToolWidget(type);
+            }
+        }
+    }
 }
