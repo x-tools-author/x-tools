@@ -16,7 +16,7 @@
 #include <QCheckBox>
 
 namespace Ui {
-    class SAKInputCrcSettingDialog;
+    class SAKInputCrcSettingsDialog;
 }
 
 /// @brief crc设置弹窗
@@ -43,7 +43,7 @@ private:
     ParameterContext _parametersContext;
     QMutex parametersContextMutex;
 private:
-    Ui::SAKInputCrcSettingDialog *ui;
+    Ui::SAKInputCrcSettingsDialog *ui;
     QCheckBox *bigEndianCheckBox;
     QSpinBox *startSpinBox;
     QSpinBox *endSpinBox;

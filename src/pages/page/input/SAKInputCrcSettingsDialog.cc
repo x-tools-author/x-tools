@@ -9,11 +9,11 @@
  */
 
 #include "SAKInputCrcSettingsDialog.hh"
-#include "ui_SAKInputCrcSettingDialog.h"
+#include "ui_SAKInputCrcSettingsDialog.h"
 
 SAKInputCrcSettingsDialog::SAKInputCrcSettingsDialog(QWidget *parent)
     :QDialog(parent)
-    ,ui(new Ui::SAKInputCrcSettingDialog)
+    ,ui(new Ui::SAKInputCrcSettingsDialog)
 {
     bigEndianCheckBox = ui->bigEndianCheckBox;
     startSpinBox = ui->startSpinBox;
@@ -28,31 +28,31 @@ SAKInputCrcSettingsDialog::~SAKInputCrcSettingsDialog()
 SAKInputCrcSettingsDialog::ParameterContext SAKInputCrcSettingsDialog::parametersContext()
 {
     SAKInputCrcSettingsDialog::ParameterContext ctx;
-    parameterCtxMutex.lock();
-    ctx.endByte = parameterCtx.endByte;
-    ctx.startByte = parameterCtx.startByte;
-    ctx.isBigEndianCRC = parameterCtx.isBigEndianCRC;
-    parameterCtxMutex.unlock();
+    parametersContextMutex.lock();
+    ctx.endByte = _parametersContext.endByte;
+    ctx.startByte = _parametersContext.startByte;
+    ctx.isBigEndianCRC = _parametersContext.isBigEndianCRC;
+    parametersContextMutex.unlock();
     return ctx;
 }
 
 void SAKInputCrcSettingsDialog::on_bigEndianCheckBox_clicked()
 {
-    parameterCtxMutex.lock();
-    parameterCtx.isBigEndianCRC = bigEndianCheckBox->isChecked();
-    parameterCtxMutex.unlock();
+    parametersContextMutex.lock();
+    _parametersContext.isBigEndianCRC = bigEndianCheckBox->isChecked();
+    parametersContextMutex.unlock();
 }
 
 void SAKInputCrcSettingsDialog::on_startSpinBox_valueChanged(int value)
 {
-    parameterCtxMutex.lock();
-    parameterCtx.startByte = value;
-    parameterCtxMutex.unlock();
+    parametersContextMutex.lock();
+    _parametersContext.startByte = value;
+    parametersContextMutex.unlock();
 }
 
 void SAKInputCrcSettingsDialog::on_endSpinBox_valueChanged(int value)
 {
-    parameterCtxMutex.lock();
-    parameterCtx.endByte = value;
-    parameterCtxMutex.unlock();
+    parametersContextMutex.lock();
+    _parametersContext.endByte = value;
+    parametersContextMutex.unlock();
 }
