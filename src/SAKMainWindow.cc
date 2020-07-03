@@ -109,9 +109,10 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
 
     centralWidget->layout()->setContentsMargins(6, 6, 6, 6);
 #endif
-    setWindowTitle(tr("瑞士军刀--开发调试工具集")
-                   + " v" + SAK::instance()->version()
-                   + " " + tr("用户交流QQ群") + " " + SAK::instance()->qqGroupNumber());
+    QString title = QString(tr("瑞士军刀--开发调试工具集") + QString(" "));
+    title.append(QString("v") = SAK::instance()->version() + QString(" "));
+    title.append(tr("用户交流QQ群") + " " + SAK::instance()->qqGroupNumber());
+    setWindowTitle(title);
 
     tabWidget->setTabsClosable(true);
     connect(tabWidget, &QTabWidget::tabCloseRequested, this, &SAKMainWindow::removeRemovableDebugPage);
