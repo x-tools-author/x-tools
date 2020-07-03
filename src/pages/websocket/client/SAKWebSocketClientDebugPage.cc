@@ -22,7 +22,7 @@ SAKWebSocketClientDebugPage::SAKWebSocketClientDebugPage(QWidget *parent)
     ,webSocketClientDeviceController (new SAKWebSocketClientDeviceController)
 {
     initPage();
-    setWindowTitle(SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeTCPClient));
+    setWindowTitle(SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeTCPClient));
 }
 
 SAKWebSocketClientDebugPage::~SAKWebSocketClientDebugPage()

@@ -81,7 +81,7 @@ QString SAKGlobal::mkMutiDir(const QString path){
     return parentDir + "/" + dirname;
 }
 
-QString SAKGlobal::getNameOfDebugPage(int type)
+QString SAKGlobal::debugPageNameFromType(int type)
 {
     QString name;
     switch (type) {

@@ -161,7 +161,7 @@ void SAKMainWindow::addTab()
 {
     /// @brief 添加调试页面
 #ifdef SAK_IMPORT_COM_MODULE
-    this->tabWidget->addTab(new SAKSerialPortDebugPage, SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeCOM));
+    this->tabWidget->addTab(new SAKSerialPortDebugPage, SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeCOM));
 #endif
 #ifdef SAK_IMPORT_HID_MODULE
     this->tabWidget->addTab(new SAKHidDebugPage, SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeHID));
@@ -169,16 +169,16 @@ void SAKMainWindow::addTab()
 #ifdef SAK_IMPORT_USB_MODULE
     this->tabWidget->addTab(new SAKUsbDebugPage, SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeUSB));
 #endif
-    this->tabWidget->addTab(new SAKUdpDebugPage, SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeUDP));
-    this->tabWidget->addTab(new SAKTcpClientDebugPage, SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeTCPClient));
-    this->tabWidget->addTab(new SAKTcpServerDebugPage, SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeTCPServer));
+    this->tabWidget->addTab(new SAKUdpDebugPage, SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeUDP));
+    this->tabWidget->addTab(new SAKTcpClientDebugPage, SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeTCPClient));
+    this->tabWidget->addTab(new SAKTcpServerDebugPage, SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeTCPServer));
 #ifdef SAK_IMPORT_SCTP_MODULE
-    this->tabWidget->addTab(new SAKSctpClientDebugPage, SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeSCTPClient));
-    this->tabWidget->addTab(new SAKSctpServerDebugPage, SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeSCTPServer));
+    this->tabWidget->addTab(new SAKSctpClientDebugPage, SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeSCTPClient));
+    this->tabWidget->addTab(new SAKSctpServerDebugPage, SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeSCTPServer));
 #endif
 #ifdef SAK_IMPORT_WEBSOCKET_MODULE
-    this->tabWidget->addTab(new SAKWebSocketClientDebugPage, SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeWebSocketClient));
-    this->tabWidget->addTab(new SAKWebSocketServerDebugPage, SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeWebSocketServer));
+    this->tabWidget->addTab(new SAKWebSocketClientDebugPage, SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeWebSocketClient));
+    this->tabWidget->addTab(new SAKWebSocketServerDebugPage, SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeWebSocketServer));
 #endif
 
     /// @brief 隐藏关闭按钮（必须在调用setTabsClosable()函数后设置，否则不生效）
@@ -269,8 +269,8 @@ void SAKMainWindow::initFileMenu()
     fileMenu->addMenu(tabMenu);
     QMetaEnum enums = QMetaEnum::fromType<SAKDataStruct::SAKEnumDebugPageType>();
     for (int i = 0; i < enums.keyCount(); i++){
-        QAction *a = new QAction(SAKGlobal::getNameOfDebugPage(i), this);
-        a->setObjectName(SAKGlobal::getNameOfDebugPage(i));
+        QAction *a = new QAction(SAKGlobal::debugPageNameFromType(i), this);
+        a->setObjectName(SAKGlobal::debugPageNameFromType(i));
         QVariant var = QVariant::fromValue<int>(enums.value(i));
         a->setData(var);
         connect(a, &QAction::triggered, this, &SAKMainWindow::addRemovablePage);
@@ -280,8 +280,8 @@ void SAKMainWindow::initFileMenu()
     QMenu *windowMenu = new QMenu(tr("新建窗口"), this);
     fileMenu->addMenu(windowMenu);
     for (int i = 0; i < enums.keyCount(); i++){
-        QAction *a = new QAction(SAKGlobal::getNameOfDebugPage(i), this);
-        a->setObjectName(SAKGlobal::getNameOfDebugPage(i));
+        QAction *a = new QAction(SAKGlobal::debugPageNameFromType(i), this);
+        a->setObjectName(SAKGlobal::debugPageNameFromType(i));
         QVariant var = QVariant::fromValue<int>(enums.value(i));
         connect(a, &QAction::triggered, this, &SAKMainWindow::openIODeviceWindow);
         a->setData(var);

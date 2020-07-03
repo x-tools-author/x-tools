@@ -22,7 +22,7 @@ SAKSctpServerDebugPage::SAKSctpServerDebugPage(QWidget *parent)
     ,tcpServerDeviceController (new SAKSctpServerDeviceController)
 {
     initPage();
-    setWindowTitle(SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeTCPServer));
+    setWindowTitle(SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeTCPServer));
 }
 
 SAKSctpServerDebugPage::~SAKSctpServerDebugPage()

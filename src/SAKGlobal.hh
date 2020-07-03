@@ -43,11 +43,11 @@ public:
     static QString mkMutiDir(const QString path);
 
     /**
-     * @brief getNameOfDebugPage    -- 获取设备调试页面的名称
+     * @brief debugPageNameFromType -- 获取设备调试页面的名称
      * @param type                  -- 设备类型，详见SAKDataStruct::SAKEnumDebugPageType
      * @return                      -- 设备类型名称
      */
-    static QString getNameOfDebugPage(int type);
+    static QString debugPageNameFromType(int type);
 
 #ifdef SAK_IMPORT_COM_MODULE
     /// @brief 串口相关参数显示初始化
