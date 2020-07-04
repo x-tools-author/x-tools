@@ -41,7 +41,14 @@ public:
         int     cycleTime;      // 循环发送时间（周期）
         int     inputModel;     // 数据输入模式
         int     crcModel;       // crc参数模型
+        int     startByte;      // crc数据起始字段
+        int     endByte;        // crc数据结束字段（从右边开始数）
     };
+
+    /**
+     * @brief showCrcSettingsDialog 显示crc参数设置弹窗
+     */
+    void showCrcSettingsDialog();
 
     friend class SAKInputDataItem;
 private:
@@ -53,7 +60,6 @@ private:
     QPushButton *saveInputDataPushButton;
     QPushButton *readinFilePushButton;
     QCheckBox   *addCRCCheckBox;
-    QCheckBox   *bigeEndianCheckBox;
     QPushButton *clearInputPushButton;
     QPushButton *sendPushButton;
     QTextEdit   *inputTextEdit;
@@ -75,8 +81,6 @@ private:
     void readinFile();
     /// crc添加标志发生该表是执行该函数
     void changeAddCRCFlag();
-    /// 字节序标志发生改变时，执行该函数
-    void changeEndianFlag();
     /// 清空输入区域
     void clearInputArea();
     /// 输入框数据发生改变时，执行该函数

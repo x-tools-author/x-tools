@@ -33,7 +33,6 @@ SAKDebugPageInputManager::SAKDebugPageInputManager(SAKDebugPage *debugPage, QObj
     saveInputDataPushButton     = debugPage->saveInputDataPushButton;
     readinFilePushButton        = debugPage->readinFilePushButton;
     addCRCCheckBox              = debugPage->addCRCCheckBox;
-    bigeEndianCheckBox          = debugPage->bigeEndianCheckBox;
     clearInputPushButton        = debugPage->clearInputPushButton;
     sendPushButton              = debugPage->sendPushButton;
     inputTextEdit               = debugPage->inputTextEdit;
@@ -63,7 +62,6 @@ SAKDebugPageInputManager::SAKDebugPageInputManager(SAKDebugPage *debugPage, QObj
     connect(saveInputDataPushButton,    &QPushButton::clicked,          this, &SAKDebugPageInputManager::saveInputDataToFile);
     connect(readinFilePushButton,       &QPushButton::clicked,          this, &SAKDebugPageInputManager::readinFile);
     connect(addCRCCheckBox,             &QCheckBox::clicked,            this, &SAKDebugPageInputManager::changeAddCRCFlag);
-    connect(bigeEndianCheckBox,         &QCheckBox::clicked,            this, &SAKDebugPageInputManager::changeEndianFlag);
     connect(clearInputPushButton,       &QPushButton::clicked,          this, &SAKDebugPageInputManager::clearInputArea);
     connect(sendPushButton,             &QPushButton::clicked,          this, &SAKDebugPageInputManager::sendRawData);
     connect(inputTextEdit,              &QTextEdit::textChanged,        this, &SAKDebugPageInputManager::inputTextEditTextChanged);
@@ -86,6 +84,11 @@ SAKDebugPageInputManager::~SAKDebugPageInputManager()
     delete crcInterface;
     delete inputDataItemManager;
     delete crcSettingsDialog;
+}
+
+void SAKDebugPageInputManager::showCrcSettingsDialog()
+{
+    crcSettingsDialog->show();
 }
 
 void SAKDebugPageInputManager::changeInputModel(const QString &text)
@@ -164,11 +167,6 @@ void SAKDebugPageInputManager::changeAddCRCFlag()
     inputParameters.addCRC = addCRCCheckBox->isChecked();
 }
 
-void SAKDebugPageInputManager::changeEndianFlag()
-{
-    inputParameters.bigEndian = bigeEndianCheckBox->isChecked();
-}
-
 void SAKDebugPageInputManager::clearInputArea()
 {
     inputTextEdit->clear();
@@ -225,7 +223,6 @@ void SAKDebugPageInputManager::sendPresetData()
 void SAKDebugPageInputManager::initParameters()
 {
     inputParameters.addCRC = addCRCCheckBox->isChecked();
-    inputParameters.bigEndian = bigeEndianCheckBox->isChecked();
     inputParameters.cycleTime = cycleTimeLineEdit->text().toInt();
 
     bool ok = false;
