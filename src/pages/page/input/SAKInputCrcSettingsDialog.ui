@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>291</width>
+    <width>284</width>
     <height>186</height>
    </rect>
   </property>
@@ -86,7 +86,7 @@
       <item row="3" column="0" colspan="2">
        <widget class="QLabel" name="label_4">
         <property name="text">
-         <string>结束字节从右边开始，首字节为第1字节</string>
+         <string>结束字节从右边开始，最后一个字节为第1字节</string>
         </property>
        </widget>
       </item>
