@@ -298,9 +298,6 @@ void SAKDebugPage::readinInputSettings()
     bool value = SAKSettings::instance()->value(settingStringAddCRC).toBool();
     addCRCCheckBox->setChecked(value);
 
-    value = SAKSettings::instance()->value(settingStringBigeEndian).toBool();
-    bigeEndianCheckBox->setChecked(value);
-
     index = SAKSettings::instance()->value(settingStringcrcParameterModel).toInt();
     crcParameterModelsComboBox->setCurrentIndex(index);
 }
@@ -453,11 +450,9 @@ void SAKDebugPage::on_addCRCCheckBox_clicked()
     }
 }
 
-void SAKDebugPage::on_bigeEndianCheckBox_clicked()
+void SAKDebugPage::on_crcSettingsPushButton_clicked()
 {
-    if (!isInitializing){
-        SAKSettings::instance()->setValue(settingStringBigeEndian, QVariant::fromValue(bigeEndianCheckBox->isChecked()));
-    }
+    debugPageInputManager->showCrcSettingsDialog();
 }
 
 void SAKDebugPage::on_crcParameterModelsComboBox_currentIndexChanged(int index)
@@ -533,7 +528,7 @@ void SAKDebugPage::initUiPointer()
     saveInputDataPushButton = ui->saveInputDataPushButton;
     readinFilePushButton    = ui->readinFilePushButton;
     addCRCCheckBox          = ui->addCRCCheckBox;
-    bigeEndianCheckBox      = ui->bigeEndianCheckBox;
+    crcSettingsPushButton   = ui->crcSettingsPushButton;
     clearInputPushButton    = ui->clearInputPushButton;
     sendPushButton          = ui->sendPushButton;
     inputTextEdit           = ui->inputTextEdit;

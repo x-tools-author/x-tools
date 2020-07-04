@@ -204,7 +204,7 @@ protected:
     QPushButton *readinFilePushButton;
     QPushButton *saveInputDataPushButton;
     QCheckBox   *addCRCCheckBox;
-    QCheckBox   *bigeEndianCheckBox;
+    QPushButton *crcSettingsPushButton;
     QPushButton *clearInputPushButton;
     QPushButton *sendPushButton;
     QTextEdit   *inputTextEdit;
@@ -225,7 +225,7 @@ private slots:
     void on_inputModelComboBox_currentIndexChanged(int index);
     void on_cycleTimeLineEdit_textChanged(const QString &text);
     void on_addCRCCheckBox_clicked();
-    void on_bigeEndianCheckBox_clicked();
+    void on_crcSettingsPushButton_clicked();
     void on_crcParameterModelsComboBox_currentIndexChanged(int index);
 
     /*************************************************************************/
