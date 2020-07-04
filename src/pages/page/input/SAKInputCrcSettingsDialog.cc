@@ -15,9 +15,12 @@ SAKInputCrcSettingsDialog::SAKInputCrcSettingsDialog(QWidget *parent)
     :QDialog(parent)
     ,ui(new Ui::SAKInputCrcSettingsDialog)
 {
+    ui->setupUi(this);
     bigEndianCheckBox = ui->bigEndianCheckBox;
     startSpinBox = ui->startSpinBox;
     endSpinBox = ui->endSpinBox;
+    setModal(true);
+    setWindowTitle(tr("CRC参数设置"));
 }
 
 SAKInputCrcSettingsDialog::~SAKInputCrcSettingsDialog()
