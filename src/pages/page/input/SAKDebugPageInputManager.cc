@@ -48,7 +48,18 @@ SAKDebugPageInputManager::SAKDebugPageInputManager(SAKDebugPage *debugPage, QObj
     crcInterface = new SAKCRCInterface;
     inputDataItemManager = new SAKInputDataItemManager(debugPage, this);
     crcSettingsDialog = new SAKInputCrcSettingsDialog;
+    SAKInputCrcSettingsDialog::ParameterContext ctx = crcSettingsDialog->parametersContext();
+    inputParameters.bigEndian = ctx.bigEndianCRC;
+    inputParameters.startByte = ctx.startByte;
+    inputParameters.endByte = ctx.endByte;
 
+    /// @brief 弹窗参数更新后，更新输入参数
+    connect(crcSettingsDialog, &SAKInputCrcSettingsDialog::parametersChanged, this, [&](){
+        SAKInputCrcSettingsDialog::ParameterContext ctx = crcSettingsDialog->parametersContext();
+        inputParameters.bigEndian = ctx.bigEndianCRC;
+        inputParameters.startByte = ctx.startByte;
+        inputParameters.endByte = ctx.endByte;
+    });
 
     sendPushButton->setEnabled(false);
     sendPresetPushButton->setEnabled(false);
@@ -262,8 +273,8 @@ void SAKDebugPageInputManager::updateCRC()
 {
     QString rawData = inputTextEdit->toPlainText();
     QByteArray cookedData = inputDataFactory->rawDataToArray(rawData, inputParameters);
-    quint32 crc = inputDataFactory->crcCalculate(cookedData, inputParameters.crcModel);
 
+    quint32 crc = inputDataFactory->crcCalculate(cookedData, inputParameters.crcModel);
     int bits = crcInterface->getBitsWidth(static_cast<SAKCRCInterface::CRCModel>(inputParameters.crcModel));
     crcLabel->setText(QString(QString("%1").arg(QString::number(crc, 16), (bits/8)*2, '0')).toUpper().prepend("0x"));
 }
