@@ -29,7 +29,7 @@ public:
 
     /// @brief crc参数上下文
     struct ParameterContext {
-        bool isBigEndianCRC;
+        bool bigEndianCRC;
         quint32 startByte;
         quint32 endByte;    // 结束字节，从右边开始，如结束字节为最后的字节，则该值为1
     };
@@ -40,17 +40,19 @@ public:
      */
     ParameterContext parametersContext();
 private:
-    ParameterContext _parametersContext;
-    QMutex parametersContextMutex;
+    ParameterContext mParametersContext;
+    QMutex mParametersContextMutex;
 private:
-    Ui::SAKInputCrcSettingsDialog *ui;
-    QCheckBox *bigEndianCheckBox;
-    QSpinBox *startSpinBox;
-    QSpinBox *endSpinBox;
+    Ui::SAKInputCrcSettingsDialog *mUi;
+    QCheckBox *mBigEndianCheckBox;
+    QSpinBox *mStartSpinBox;
+    QSpinBox *mEndSpinBox;
 private slots:
     void on_bigEndianCheckBox_clicked();
     void on_startSpinBox_valueChanged(int value);
     void on_endSpinBox_valueChanged(int value);
+signals:
+    void parametersChanged();
 };
 
 #endif

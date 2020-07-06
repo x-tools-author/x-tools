@@ -7,55 +7,63 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
+#include <QTimer>
 
 #include "SAKInputCrcSettingsDialog.hh"
 #include "ui_SAKInputCrcSettingsDialog.h"
 
 SAKInputCrcSettingsDialog::SAKInputCrcSettingsDialog(QWidget *parent)
     :QDialog(parent)
-    ,ui(new Ui::SAKInputCrcSettingsDialog)
+    ,mUi(new Ui::SAKInputCrcSettingsDialog)
 {
-    ui->setupUi(this);
-    bigEndianCheckBox = ui->bigEndianCheckBox;
-    startSpinBox = ui->startSpinBox;
-    endSpinBox = ui->endSpinBox;
+    mUi->setupUi(this);
+    mBigEndianCheckBox = mUi->bigEndianCheckBox;
+    mStartSpinBox = mUi->startSpinBox;
+    mEndSpinBox = mUi->endSpinBox;
     setModal(true);
     setWindowTitle(tr("CRC参数设置"));
+
+    mParametersContext.bigEndianCRC = mBigEndianCheckBox->isChecked();
+    mParametersContext.startByte = mStartSpinBox->value();
+    mParametersContext.endByte = mStartSpinBox->value();
 }
 
 SAKInputCrcSettingsDialog::~SAKInputCrcSettingsDialog()
 {
-    delete ui;
+    delete mUi;
 }
 
 SAKInputCrcSettingsDialog::ParameterContext SAKInputCrcSettingsDialog::parametersContext()
 {
     SAKInputCrcSettingsDialog::ParameterContext ctx;
-    parametersContextMutex.lock();
-    ctx.endByte = _parametersContext.endByte;
-    ctx.startByte = _parametersContext.startByte;
-    ctx.isBigEndianCRC = _parametersContext.isBigEndianCRC;
-    parametersContextMutex.unlock();
+    mParametersContextMutex.lock();
+    ctx.endByte = mParametersContext.endByte;
+    ctx.startByte = mParametersContext.startByte;
+    ctx.bigEndianCRC = mParametersContext.bigEndianCRC;
+    mParametersContextMutex.unlock();
     return ctx;
 }
 
 void SAKInputCrcSettingsDialog::on_bigEndianCheckBox_clicked()
 {
-    parametersContextMutex.lock();
-    _parametersContext.isBigEndianCRC = bigEndianCheckBox->isChecked();
-    parametersContextMutex.unlock();
+    mParametersContextMutex.lock();
+    mParametersContext.bigEndianCRC = mBigEndianCheckBox->isChecked();
+    mParametersContextMutex.unlock();
+    emit parametersChanged();
 }
 
 void SAKInputCrcSettingsDialog::on_startSpinBox_valueChanged(int value)
 {
-    parametersContextMutex.lock();
-    _parametersContext.startByte = value;
-    parametersContextMutex.unlock();
+    mParametersContextMutex.lock();
+    mParametersContext.startByte = value;
+    mParametersContextMutex.unlock();
+    emit parametersChanged();
 }
 
 void SAKInputCrcSettingsDialog::on_endSpinBox_valueChanged(int value)
 {
-    parametersContextMutex.lock();
-    _parametersContext.endByte = value;
-    parametersContextMutex.unlock();
+    mParametersContextMutex.lock();
+    mParametersContext.endByte = value;
+    mParametersContextMutex.unlock();
+    emit parametersChanged();
 }
