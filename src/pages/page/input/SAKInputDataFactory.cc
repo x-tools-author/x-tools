@@ -7,6 +7,7 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
+#include <QDebug>
 #include <QtEndian>
 #include <QEventLoop>
 
@@ -100,6 +101,13 @@ QByteArray SAKInputDataFactory::rawDataToArray(QString rawData, SAKDebugPageInpu
     }else {
         data = rawData.toLocal8Bit();
         Q_ASSERT_X(false, __FUNCTION__, "Unknow input mode");
+    }
+
+    /// @brief 根据参数修剪数据
+    if ((data.length() >= (parameters.startByte-1)) && (data.length() >= (data.length()-(parameters.startByte-1)-(parameters.endByte-1)))){
+        data = QByteArray(data.data()+(parameters.startByte-1), data.length()-(parameters.startByte-1)-(parameters.endByte-1));
+    }else{
+        qWarning() << __FUNCTION__ << "Data error!";
     }
 
     return data;
