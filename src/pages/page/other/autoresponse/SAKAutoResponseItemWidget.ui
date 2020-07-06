@@ -6,14 +6,29 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>515</width>
-    <height>119</height>
+    <width>474</width>
+    <height>103</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>4</number>
+   </property>
+   <property name="topMargin">
+    <number>4</number>
+   </property>
+   <property name="rightMargin">
+    <number>6</number>
+   </property>
+   <property name="bottomMargin">
+    <number>4</number>
+   </property>
+   <property name="spacing">
+    <number>4</number>
+   </property>
    <item row="0" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
@@ -24,7 +39,7 @@
    <item row="0" column="1">
     <widget class="QLineEdit" name="remarkLineEdit">
      <property name="text">
-      <string notr="true"/>
+      <string notr="true">示例</string>
      </property>
     </widget>
    </item>
@@ -38,7 +53,7 @@
    <item row="1" column="1">
     <widget class="QLineEdit" name="referenceLineEdit">
      <property name="text">
-      <string>Hello</string>
+      <string notr="true">Hello</string>
      </property>
     </widget>
    </item>
@@ -62,7 +77,7 @@
    <item row="2" column="1">
     <widget class="QLineEdit" name="responseLineEdit">
      <property name="text">
-      <string>Hi</string>
+      <string notr="true">Hi</string>
      </property>
     </widget>
    </item>
@@ -83,16 +98,6 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="1" colspan="3">
-    <widget class="QComboBox" name="optionComboBox">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-    </widget>
-   </item>
    <item row="0" column="2">
     <widget class="QCheckBox" name="enableCheckBox">
      <property name="text">
@@ -110,6 +115,36 @@
      </property>
      <property name="text">
       <string>更新记录</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QComboBox" name="optionComboBox">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2">
+    <widget class="QCheckBox" name="delayResponseCheckBox">
+     <property name="text">
+      <string>延时回复</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="3">
+    <widget class="QLineEdit" name="delayResponseLineEdit">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string notr="true">1000</string>
      </property>
     </widget>
    </item>
