@@ -10,13 +10,13 @@
 #ifndef SAKAUTORESPONSEITEMWIDGET_HH
 #define SAKAUTORESPONSEITEMWIDGET_HH
 
-#include "SAKDebugPage.hh"
 #include <QTimer>
 #include <QRegExp>
 #include <QWidget>
 #include <QLineEdit>
 #include <QComboBox>
 #include <QCheckBox>
+#include <QPushButton>
 #include <QRegExpValidator>
 
 namespace Ui {

@@ -19,13 +19,13 @@
 #include <QListWidget>
 #include <QListWidgetItem>
 
-class SAKDebugPage;
-
 namespace Ui {
     class SAKAutoResponseSettingsWidget;
 }
 
+class SAKDebugPage;
 class SAKDebugPageDatabaseInterface;
+/// @brief 自动回复设置窗口
 class SAKAutoResponseSettingsWidget:public QWidget
 {
    Q_OBJECT

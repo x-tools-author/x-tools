@@ -11,6 +11,7 @@
 #include <QDateTime>
 
 #include "SAKGlobal.hh"
+#include "SAKDebugPage.hh"
 #include "SAKDataStruct.hh"
 #include "SAKAutoResponseItemWidget.hh"
 #include "SAKDebugPageDatabaseInterface.hh"
@@ -175,7 +176,6 @@ void SAKAutoResponseItemWidget::bytesRead(QByteArray bytes)
                 info->expectedTimestamp = QDateTime::currentMSecsSinceEpoch() + delayTime - 20;
                 info->data = responseData;
                 delayWritingInfoList.append(info);
-                qDebug() << __FUNCTION__;
              }else{
                  debugPage->write(responseData);
              }

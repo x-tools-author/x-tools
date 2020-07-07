@@ -19,6 +19,8 @@
 #include <QJsonDocument>
 #include <QStandardPaths>
 
+#include "SAKDebugPage.hh"
+#include "SAKDataStruct.hh"
 #include "SAKAutoResponseItemWidget.hh"
 #include "SAKAutoResponseSettingsWidget.hh"
 #include "SAKDebugPageDatabaseInterface.hh"
