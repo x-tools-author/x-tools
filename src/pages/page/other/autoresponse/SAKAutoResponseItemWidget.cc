@@ -170,6 +170,10 @@ void SAKAutoResponseItemWidget::bytesRead(QByteArray bytes)
              /// @brief 延时回复
              if (delayResponseCheckBox->isChecked()){
                 quint32 delayTime = delayResponseLineEdit->text().toUInt();
+                if (delayTime < 40){
+                    delayTime = 20;
+                }
+
                 /// @brief 延时回复
                 DelayWritingInfo *info = new DelayWritingInfo;
                 /// @brief 减20是因为延时回复使用20毫秒的定时器
