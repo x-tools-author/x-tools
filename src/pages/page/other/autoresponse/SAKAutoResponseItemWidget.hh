@@ -11,7 +11,7 @@
 #define SAKAUTORESPONSEITEMWIDGET_HH
 
 #include "SAKDebugPage.hh"
-
+#include <QTimer>
 #include <QRegExp>
 #include <QWidget>
 #include <QLineEdit>
@@ -60,12 +60,21 @@ private:
     bool forbiddenAllAutoResponse;
     SAKDebugPage *debugPage;
     quint64 id;
+
+    struct DelayWritingInfo{
+        quint64 expectedTimestamp;
+        QByteArray data;
+    };
+    QTimer delayToWritingTimer;
+    QList<DelayWritingInfo*> delayWritingInfoList;
 private:
     void setLineEditFormat(QLineEdit *lineEdit, int format);
     void bytesRead(QByteArray bytes);
     QByteArray string2array(QString str, int format);
     bool response(QByteArray receiveData, QByteArray referenceData, int option);
     void initUi();
+    void initDelayWritingTimer();
+    void delayToWritBytes();
 private:
     Ui::SAKAutoResponseItemWidget *ui;
     QLineEdit *remarkLineEdit;
@@ -76,6 +85,8 @@ private:
     QComboBox *referenceDataFromatComboBox;
     QComboBox *responseDataFormatComboBox;
     QPushButton *updatePushButton;
+    QCheckBox *delayResponseCheckBox;
+    QLineEdit *delayResponseLineEdit;
 private slots:
     void on_referenceDataFromatComboBox_currentTextChanged();
     void on_responseDataFormatComboBox_currentTextChanged();
