@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>474</width>
-    <height>103</height>
+    <height>110</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -29,34 +29,6 @@
    <property name="spacing">
     <number>4</number>
    </property>
-   <item row="0" column="0">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>回复说明</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="1">
-    <widget class="QLineEdit" name="remarkLineEdit">
-     <property name="text">
-      <string notr="true">示例</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="label_2">
-     <property name="text">
-      <string>参考数据</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="QLineEdit" name="referenceLineEdit">
-     <property name="text">
-      <string notr="true">Hello</string>
-     </property>
-    </widget>
-   </item>
    <item row="1" column="2">
     <widget class="QLabel" name="label_5">
      <property name="text">
@@ -64,20 +36,30 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="3">
-    <widget class="QComboBox" name="referenceDataFromatComboBox"/>
+   <item row="3" column="3">
+    <widget class="QLineEdit" name="delayResponseLineEdit">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string notr="true">1000</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>回复说明</string>
+     </property>
+    </widget>
    </item>
    <item row="2" column="0">
     <widget class="QLabel" name="label_3">
      <property name="text">
       <string>回复数据</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1">
-    <widget class="QLineEdit" name="responseLineEdit">
-     <property name="text">
-      <string notr="true">Hi</string>
      </property>
     </widget>
    </item>
@@ -87,9 +69,6 @@
       <string>回复数据格式</string>
      </property>
     </widget>
-   </item>
-   <item row="2" column="3">
-    <widget class="QComboBox" name="responseDataFormatComboBox"/>
    </item>
    <item row="3" column="0">
     <widget class="QLabel" name="label_4">
@@ -105,16 +84,6 @@
      </property>
      <property name="checked">
       <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="3">
-    <widget class="QPushButton" name="updatePushButton">
-     <property name="toolTip">
-      <string>更新数据库中相应的数据记录</string>
-     </property>
-     <property name="text">
-      <string>更新记录</string>
      </property>
     </widget>
    </item>
@@ -135,16 +104,54 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="3">
-    <widget class="QLineEdit" name="delayResponseLineEdit">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
+   <item row="1" column="1">
+    <widget class="QLineEdit" name="referenceLineEdit">
+     <property name="text">
+      <string notr="true">Hello</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="3">
+    <widget class="QComboBox" name="referenceDataFromatComboBox"/>
+   </item>
+   <item row="2" column="3">
+    <widget class="QComboBox" name="responseDataFormatComboBox"/>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>参考数据</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="3">
+    <widget class="QPushButton" name="updatePushButton">
+     <property name="toolTip">
+      <string>更新数据库中相应的数据记录</string>
      </property>
      <property name="text">
-      <string notr="true">1000</string>
+      <string>更新记录</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QLineEdit" name="responseLineEdit">
+     <property name="text">
+      <string notr="true">Hi</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLineEdit" name="remarkLineEdit">
+     <property name="text">
+      <string notr="true">示例</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="4">
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
      </property>
     </widget>
    </item>
