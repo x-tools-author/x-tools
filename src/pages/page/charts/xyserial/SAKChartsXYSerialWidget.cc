@@ -23,3 +23,8 @@ SAKChartsXYSerialWidget::~SAKChartsXYSerialWidget()
 {
     delete ui;
 }
+
+void SAKChartsXYSerialWidget::inputBytes(QByteArray bytes)
+{
+
+}
