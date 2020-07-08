@@ -7,24 +7,23 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
-#ifndef SAKCHARTSXYSERIALWIDGET_HH
-#define SAKCHARTSXYSERIALWIDGET_HH
+#ifndef SAKXYSERIALEDITDIALOG_HH
+#define SAKXYSERIALEDITDIALOG_HH
 
-#include <QWidget>
+#include <QDialog>
 #include <QTabWidget>
 
 namespace Ui {
-    class SAKChartsXYSerialWidget;
+    class SAKXYSerialEditDialog;
 };
 
-class SAKThroughputWidget;
 /// @brief 散点图及曲线图显示类
-class SAKChartsXYSerialWidget:public QWidget
+class SAKXYSerialEditDialog:public QDialog
 {
     Q_OBJECT
 public:
-    SAKChartsXYSerialWidget(QWidget *parent = Q_NULLPTR);
-    ~SAKChartsXYSerialWidget();
+    SAKXYSerialEditDialog(QWidget *parent = Q_NULLPTR);
+    ~SAKXYSerialEditDialog();
 
     /// @brief 从数据帧中提取图表数据的参数上下文
     struct ExtractParametersContext {
@@ -46,14 +45,8 @@ public:
             DataTypeUfloat64
         }dataType;
     };
-
-    /**
-     * @brief inputBytes 数据输入接口，参数bytes按照一帧数据来处理
-     * @param bytes 数据
-     */
-    void inputBytes(QByteArray bytes);
 private:
-    Ui::SAKChartsXYSerialWidget *ui;
+    Ui::SAKXYSerialEditDialog *mUi;
 };
 
 #endif

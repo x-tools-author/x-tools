@@ -8,23 +8,18 @@
  * group which number is 952218522 to have a communication.
  */
 #include "SAKDebugPage.hh"
-#include "SAKChartsXYSerialWidget.hh"
+#include "SAKXYSerialEditDialog.hh"
 
-#include "ui_SAKChartsXYSerialWidget.h"
+#include "ui_SAKXYSerialEditDialog.h"
 
-SAKChartsXYSerialWidget::SAKChartsXYSerialWidget(QWidget *parent)
-    :QWidget (parent)
-    ,ui (new Ui::SAKChartsXYSerialWidget)
+SAKXYSerialEditDialog::SAKXYSerialEditDialog(QWidget *parent)
+    :QDialog (parent)
+    ,mUi (new Ui::SAKXYSerialEditDialog)
 {
-    ui->setupUi(this);
+    mUi->setupUi(this);
 }
 
-SAKChartsXYSerialWidget::~SAKChartsXYSerialWidget()
+SAKXYSerialEditDialog::~SAKXYSerialEditDialog()
 {
-    delete ui;
-}
-
-void SAKChartsXYSerialWidget::inputBytes(QByteArray bytes)
-{
-
+    delete mUi;
 }
