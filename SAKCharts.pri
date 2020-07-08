@@ -25,3 +25,12 @@ contains(DEFINES, SAK_IMPORT_CHARTS_MODULE){
 }else {
     message("The Qt edition has no charts module, the program will not have chart viewer.")
 }
+
+FORMS += \
+    $$PWD/src/pages/page/charts/xyserial/SAKXYSerialEditDialog.ui
+
+HEADERS += \
+    $$PWD/src/pages/page/charts/xyserial/SAKXYSerialEditDialog.hh
+
+SOURCES += \
+    $$PWD/src/pages/page/charts/xyserial/SAKXYSerialEditDialog.cc
