@@ -32,7 +32,7 @@ CONFIG += c++11
 include(SAKSetup.pri)
 include(SAKTools.pri)
 include(SAKCommon.pri)
-include(SAKDataVis.pri)
+include(SAKCharts.pri)
 include(SAKModules.pri)
 include(SAKWebSocket.pri)
 include(SAKSerialPort.pri)
