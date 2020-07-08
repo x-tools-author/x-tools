@@ -9,11 +9,11 @@ contains(DEFINES, SAK_IMPORT_CHARTS_MODULE){
 
     HEADERS += \
     $$PWD/src/pages/page/charts/SAKChartsManager.hh \
-        $$PWD/src/pages/page/charts/throughput/SAKThroughputWidget.hh
+    $$PWD/src/pages/page/charts/throughput/SAKChartsThroughputWidget.hh
 
     SOURCES += \
     $$PWD/src/pages/page/charts/SAKChartsManager.cc \
-        $$PWD/src/pages/page/charts/throughput/SAKThroughputWidget.cc
+    $$PWD/src/pages/page/charts/throughput/SAKChartsThroughputWidget.cc
 
     INCLUDEPATH += \
         $$PWD/src/pages/page/charts \
