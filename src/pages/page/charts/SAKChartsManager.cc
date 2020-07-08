@@ -31,6 +31,7 @@ SAKChartsManager::SAKChartsManager(SAKDebugPage *page, QWidget *parent)
     mTabWidget->addTab(mThroughputWidget, tr("吞吐量"));
 
     mXYSerialWidget = new SAKChartsXYSerialWidget;
+    connect(mDebugPage, &SAKDebugPage::bytesRead, mXYSerialWidget, &SAKChartsXYSerialWidget::inputBytes);
     mTabWidget->addTab(mXYSerialWidget, tr("波形图"));
 }
 
