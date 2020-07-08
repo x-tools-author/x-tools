@@ -42,7 +42,7 @@ public:
     QString language();
     void setLanguage(QString language);
 private:
-    static SAKSettings* _instance;
+    static SAKSettings* instancePtr;
 private:
     QString enableAutoCheckForUpdateKey;
     QString appStyleKey;
