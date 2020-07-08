@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2018-2020 Qter(qsak@foxmail.com). All rights reserved.
+ * Copyright 2020 Qter(qsak@foxmail.com). All rights reserved.
  *
  * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
  * project(https://www.qsak.pro). The project is an open source project. You can
@@ -7,32 +7,26 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
-#ifndef SAKDATAVISUALIZATIONMANAGER_HH
-#define SAKDATAVISUALIZATIONMANAGER_HH
+#ifndef SAKCHARTSXYSERIALWIDGET_HH
+#define SAKCHARTSXYSERIALWIDGET_HH
 
 #include <QWidget>
 #include <QTabWidget>
 
 namespace Ui {
-    class SAKChartsManager;
+    class SAKChartsXYSerialWidget;
 };
 
 class SAKDebugPage;
 class SAKThroughputWidget;
-class SAKChartsManager:public QWidget
+class SAKChartsXYSerialWidget:public QWidget
 {
     Q_OBJECT
 public:
-    SAKChartsManager(SAKDebugPage *page, QWidget *parent = Q_NULLPTR);
-    ~SAKChartsManager();
+    SAKChartsXYSerialWidget(QWidget *parent = Q_NULLPTR);
+    ~SAKChartsXYSerialWidget();
 private:
-    SAKDebugPage *debugPage;
-    SAKThroughputWidget *throughputWidget;
-private:
-    void initPage();
-private:
-    Ui::SAKChartsManager *ui;
-    QTabWidget *tabWidget;
+    Ui::SAKChartsXYSerialWidget *ui;
 };
 
 #endif
