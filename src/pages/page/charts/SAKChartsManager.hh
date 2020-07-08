@@ -27,12 +27,12 @@ public:
     SAKChartsManager(SAKDebugPage *page, QWidget *parent = Q_NULLPTR);
     ~SAKChartsManager();
 private:
-    SAKDebugPage *debugPage;
-    SAKChartsXYSerialWidget *xySerialWidget;
-    SAKChartsThroughputWidget *throughputWidget;
+    SAKDebugPage *mDebugPage;
+    SAKChartsXYSerialWidget *mXYSerialWidget;
+    SAKChartsThroughputWidget *mThroughputWidget;
 private:
-    Ui::SAKChartsManager *ui;
-    QTabWidget *tabWidget;
+    Ui::SAKChartsManager *mUi;
+    QTabWidget *mTabWidget;
 };
 
 #endif

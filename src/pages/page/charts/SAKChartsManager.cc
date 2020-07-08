@@ -16,24 +16,25 @@
 
 SAKChartsManager::SAKChartsManager(SAKDebugPage *page, QWidget *parent)
     :QWidget (parent)
-    ,debugPage (page)
-    ,ui (new Ui::SAKChartsManager)
+    ,mDebugPage (page)
+    ,mUi (new Ui::SAKChartsManager)
 {
-    ui->setupUi(this);
-    tabWidget = ui->tabWidget;
+    mUi->setupUi(this);
+    mTabWidget = mUi->tabWidget;
+    Q_ASSERT_X(page, __FUNCTION__, "The parameter(page) can not be null!");
 
 #if 0
     setAttribute(Qt::WA_DeleteOnClose, true);
 #endif
 
-    throughputWidget = new SAKChartsThroughputWidget(debugPage);
-    tabWidget->addTab(throughputWidget, tr("吞吐量"));
+    mThroughputWidget = new SAKChartsThroughputWidget(mDebugPage);
+    mTabWidget->addTab(mThroughputWidget, tr("吞吐量"));
 
-    xySerialWidget = new SAKChartsXYSerialWidget;
-    tabWidget->addTab(xySerialWidget, tr("波形图"));
+    mXYSerialWidget = new SAKChartsXYSerialWidget;
+    mTabWidget->addTab(mXYSerialWidget, tr("波形图"));
 }
 
 SAKChartsManager::~SAKChartsManager()
 {
-    delete ui;
+    delete mUi;
 }
