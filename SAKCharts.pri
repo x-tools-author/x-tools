@@ -5,14 +5,14 @@ qtHaveModule(charts){
 
 contains(DEFINES, SAK_IMPORT_CHARTS_MODULE){
     FORMS += \
-        $$PWD/src/pages/page/charts/SAKDataVisualizationManager.ui
+    $$PWD/src/pages/page/charts/SAKChartsManager.ui
 
     HEADERS += \
-        $$PWD/src/pages/page/charts/SAKDataVisualizationManager.hh \
+    $$PWD/src/pages/page/charts/SAKChartsManager.hh \
         $$PWD/src/pages/page/charts/throughput/SAKThroughputWidget.hh
 
     SOURCES += \
-        $$PWD/src/pages/page/charts/SAKDataVisualizationManager.cc \
+    $$PWD/src/pages/page/charts/SAKChartsManager.cc \
         $$PWD/src/pages/page/charts/throughput/SAKThroughputWidget.cc
 
     INCLUDEPATH += \
