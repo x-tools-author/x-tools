@@ -8,15 +8,15 @@
  * group which number is 952218522 to have a communication.
  */
 #include "SAKDebugPage.hh"
+#include "SAKChartsManager.hh"
 #include "SAKThroughputWidget.hh"
-#include "SAKDataVisualizationManager.hh"
 
-#include "ui_SAKDataVisualizationManager.h"
+#include "ui_SAKChartsManager.h"
 
-SAKDataVisualizationManager::SAKDataVisualizationManager(SAKDebugPage *page, QWidget *parent)
+SAKChartsManager::SAKChartsManager(SAKDebugPage *page, QWidget *parent)
     :QWidget (parent)
     ,debugPage (page)
-    ,ui (new Ui::SAKDataVisualizationManager)
+    ,ui (new Ui::SAKChartsManager)
 {
     ui->setupUi(this);
     tabWidget = ui->tabWidget;
@@ -26,13 +26,13 @@ SAKDataVisualizationManager::SAKDataVisualizationManager(SAKDebugPage *page, QWi
     initPage();
 }
 
-SAKDataVisualizationManager::~SAKDataVisualizationManager()
+SAKChartsManager::~SAKChartsManager()
 {
     delete ui;
     delete throughputWidget;
 }
 
-void SAKDataVisualizationManager::initPage()
+void SAKChartsManager::initPage()
 {
     throughputWidget = new SAKThroughputWidget(debugPage);
     tabWidget->addTab(throughputWidget, tr("吞吐量"));

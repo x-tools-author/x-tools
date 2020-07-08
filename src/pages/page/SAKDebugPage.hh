@@ -40,7 +40,7 @@ class SAKDebugPageInputManager;
 class SAKDebugPageOutputManager;
 class SAKHighlightSettingsWidget;
 #ifdef SAK_IMPORT_CHARTS_MODULE
-class SAKDataVisualizationManager;
+class SAKChartsManager;
 #endif
 class SAKDebugPageDatabaseInterface;
 
@@ -68,7 +68,7 @@ public:
         int runIntervalTime;        // while循环执行时间间隔
     };
 
-    friend class SAKDataVisualizationManager;
+    friend class SAKChartsManager;
     friend class SAKOtherSettingsManager;
     friend class SAKStatisticsManager;
     friend class SAKDebugPageInputManager;
@@ -300,7 +300,7 @@ private slots:
     void on_dataVisualizationPushButton_clicked();
 private:
 #ifdef SAK_IMPORT_CHARTS_MODULE
-    SAKDataVisualizationManager *dataVisualizationManager;
+    SAKChartsManager *dataVisualizationManager;
 #endif
     SAKOtherSettingsManager *otherSettings;
     SAKStatisticsManager *statisticsManager;

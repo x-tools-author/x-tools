@@ -32,7 +32,7 @@
 #include "SAKDebugPageOutputManager.hh"
 #include "SAKHighlightSettingsWidget.hh"
 #ifdef SAK_IMPORT_CHARTS_MODULE
-#include "SAKDataVisualizationManager.hh"
+#include "SAKChartsManager.hh"
 #endif
 #include "SAKDebugPageDatabaseInterface.hh"
 
@@ -585,9 +585,9 @@ void SAKDebugPage::on_dataVisualizationPushButton_clicked()
             dataVisualizationManager->activateWindow();
         }
     }else{
-        dataVisualizationManager = new SAKDataVisualizationManager(this);
+        dataVisualizationManager = new SAKChartsManager(this);
         dataVisualizationManager->show();
-        connect(dataVisualizationManager, &SAKDataVisualizationManager::destroyed, [&](){
+        connect(dataVisualizationManager, &SAKChartsManager::destroyed, [&](){
             dataVisualizationManager = Q_NULLPTR;
         });
     }

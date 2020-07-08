@@ -14,26 +14,24 @@
 #include <QTabWidget>
 
 namespace Ui {
-    class SAKDataVisualizationManager;
+    class SAKChartsManager;
 };
 
 class SAKDebugPage;
 class SAKThroughputWidget;
-class SAKDataVisualizationManager:public QWidget
+class SAKChartsManager:public QWidget
 {
     Q_OBJECT
 public:
-    SAKDataVisualizationManager(SAKDebugPage *page, QWidget *parent = Q_NULLPTR);
-    ~SAKDataVisualizationManager();
+    SAKChartsManager(SAKDebugPage *page, QWidget *parent = Q_NULLPTR);
+    ~SAKChartsManager();
 private:
     SAKDebugPage *debugPage;
     SAKThroughputWidget *throughputWidget;
-
 private:
     void initPage();
-
 private:
-    Ui::SAKDataVisualizationManager *ui;
+    Ui::SAKChartsManager *ui;
     QTabWidget *tabWidget;
 };
 
