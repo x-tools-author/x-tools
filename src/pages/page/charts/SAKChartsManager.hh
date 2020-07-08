@@ -18,6 +18,7 @@ namespace Ui {
 };
 
 class SAKDebugPage;
+class SAKChartsXYSerialWidget;
 class SAKChartsThroughputWidget;
 class SAKChartsManager:public QWidget
 {
@@ -27,9 +28,8 @@ public:
     ~SAKChartsManager();
 private:
     SAKDebugPage *debugPage;
+    SAKChartsXYSerialWidget *xySerialWidget;
     SAKChartsThroughputWidget *throughputWidget;
-private:
-    void initPage();
 private:
     Ui::SAKChartsManager *ui;
     QTabWidget *tabWidget;

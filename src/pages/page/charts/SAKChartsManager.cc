@@ -9,6 +9,7 @@
  */
 #include "SAKDebugPage.hh"
 #include "SAKChartsManager.hh"
+#include "SAKChartsXYSerialWidget.hh"
 #include "SAKChartsThroughputWidget.hh"
 
 #include "ui_SAKChartsManager.h"
@@ -21,19 +22,18 @@ SAKChartsManager::SAKChartsManager(SAKDebugPage *page, QWidget *parent)
     ui->setupUi(this);
     tabWidget = ui->tabWidget;
 
+#if 0
     setAttribute(Qt::WA_DeleteOnClose, true);
+#endif
 
-    initPage();
+    throughputWidget = new SAKChartsThroughputWidget(debugPage);
+    tabWidget->addTab(throughputWidget, tr("吞吐量"));
+
+    xySerialWidget = new SAKChartsXYSerialWidget;
+    tabWidget->addTab(xySerialWidget, tr("波形图"));
 }
 
 SAKChartsManager::~SAKChartsManager()
 {
     delete ui;
-    delete throughputWidget;
-}
-
-void SAKChartsManager::initPage()
-{
-    throughputWidget = new SAKChartsThroughputWidget(debugPage);
-    tabWidget->addTab(throughputWidget, tr("吞吐量"));
 }
