@@ -11,9 +11,9 @@
 #include <QHBoxLayout>
 
 #include "SAKDebugPage.hh"
-#include "SAKThroughputWidget.hh"
+#include "SAKChartsThroughputWidget.hh"
 
-SAKThroughputWidget::SAKThroughputWidget(SAKDebugPage *debugPage, QWidget *parent)
+SAKChartsThroughputWidget::SAKChartsThroughputWidget(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget (parent)
     ,debugPage (debugPage)
 {
@@ -52,14 +52,14 @@ SAKThroughputWidget::SAKThroughputWidget(SAKDebugPage *debugPage, QWidget *paren
     setLayout(layout);
 
     updateTimer.setInterval(1*1000);
-    connect(&updateTimer, &QTimer::timeout, this, &SAKThroughputWidget::updateTimerTimeout);
+    connect(&updateTimer, &QTimer::timeout, this, &SAKChartsThroughputWidget::updateTimerTimeout);
     updateTimer.start();
 
-    connect(debugPage, &SAKDebugPage::bytesRead, this, &SAKThroughputWidget::dataRead);
-    connect(debugPage, &SAKDebugPage::bytesWritten, this, &SAKThroughputWidget::dataWite);
+    connect(debugPage, &SAKDebugPage::bytesRead, this, &SAKChartsThroughputWidget::dataRead);
+    connect(debugPage, &SAKDebugPage::bytesWritten, this, &SAKChartsThroughputWidget::dataWite);
 }
 
-SAKThroughputWidget::~SAKThroughputWidget()
+SAKChartsThroughputWidget::~SAKChartsThroughputWidget()
 {
     delete rxLineSeries;
     delete txLineSeries;
@@ -67,7 +67,7 @@ SAKThroughputWidget::~SAKThroughputWidget()
     delete chartView;
 }
 
-void SAKThroughputWidget::updateTimerTimeout()
+void SAKChartsThroughputWidget::updateTimerTimeout()
 {
     while (rxLineSeries->count() >= 60) {
         rxLineSeries->remove(0);
@@ -102,12 +102,12 @@ void SAKThroughputWidget::updateTimerTimeout()
     updateLineSeries(txLineSeries, dataContext.txBytes, dataContext.txMax);
 }
 
-void SAKThroughputWidget::dataRead(QByteArray data)
+void SAKChartsThroughputWidget::dataRead(QByteArray data)
 {
     dataContext.rxBytes += data.length();
 }
 
-void SAKThroughputWidget::dataWite(QByteArray data)
+void SAKChartsThroughputWidget::dataWite(QByteArray data)
 {
     dataContext.txBytes += data.length();
 }

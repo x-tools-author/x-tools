@@ -7,8 +7,8 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
-#ifndef SAKTHROUGHPUTWIDGET_HH
-#define SAKTHROUGHPUTWIDGET_HH
+#ifndef SAKCHARTSTHROUGHPUTWIDGET_HH
+#define SAKCHARTSTHROUGHPUTWIDGET_HH
 
 #include <QTimer>
 #include <QChart>
@@ -19,13 +19,12 @@
 QT_CHARTS_USE_NAMESPACE
 
 class SAKDebugPage;
-class SAKThroughputWidget:public QWidget
+class SAKChartsThroughputWidget:public QWidget
 {
     Q_OBJECT
 public:
-    SAKThroughputWidget(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
-    ~SAKThroughputWidget();
-
+    SAKChartsThroughputWidget(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
+    ~SAKChartsThroughputWidget();
 private:
     struct DataContext {
         qreal rxBytes;

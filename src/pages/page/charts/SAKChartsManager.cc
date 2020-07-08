@@ -9,7 +9,7 @@
  */
 #include "SAKDebugPage.hh"
 #include "SAKChartsManager.hh"
-#include "SAKThroughputWidget.hh"
+#include "SAKChartsThroughputWidget.hh"
 
 #include "ui_SAKChartsManager.h"
 
@@ -34,6 +34,6 @@ SAKChartsManager::~SAKChartsManager()
 
 void SAKChartsManager::initPage()
 {
-    throughputWidget = new SAKThroughputWidget(debugPage);
+    throughputWidget = new SAKChartsThroughputWidget(debugPage);
     tabWidget->addTab(throughputWidget, tr("吞吐量"));
 }
