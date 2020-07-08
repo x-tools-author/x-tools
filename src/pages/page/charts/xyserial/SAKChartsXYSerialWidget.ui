@@ -6,30 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>719</width>
-    <height>355</height>
+    <width>720</width>
+    <height>349</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>波形图</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="3">
+   <item row="1" column="4">
     <widget class="QPushButton" name="addPushButton">
      <property name="text">
       <string>添加</string>
      </property>
     </widget>
-   </item>
-   <item row="1" column="2">
-    <widget class="QPushButton" name="deletePushButton">
-     <property name="text">
-      <string>删除</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0" colspan="4">
-    <widget class="QWidget" name="chartViewerWidget" native="true"/>
    </item>
    <item row="1" column="0">
     <spacer name="horizontalSpacer">
@@ -44,10 +34,34 @@
      </property>
     </spacer>
    </item>
+   <item row="1" column="2">
+    <widget class="QPushButton" name="deletePushButton">
+     <property name="text">
+      <string>删除</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="5">
+    <widget class="QWidget" name="chartViewerWidget" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
    <item row="1" column="1">
     <widget class="QPushButton" name="closePushButton">
      <property name="text">
       <string>关闭</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="3">
+    <widget class="QPushButton" name="pushButton">
+     <property name="text">
+      <string>编辑</string>
      </property>
     </widget>
    </item>
@@ -62,12 +76,12 @@
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>486</x>
-     <y>329</y>
+     <x>410</x>
+     <y>326</y>
     </hint>
     <hint type="destinationlabel">
-     <x>529</x>
-     <y>350</y>
+     <x>6</x>
+     <y>4</y>
     </hint>
    </hints>
   </connection>
