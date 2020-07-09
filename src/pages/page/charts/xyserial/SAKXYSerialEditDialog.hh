@@ -12,6 +12,7 @@
 
 #include <QMap>
 #include <QDialog>
+#include <QSpinBox>
 #include <QLineEdit>
 #include <QCheckBox>
 #include <QComboBox>
@@ -61,18 +62,29 @@ public:
 
     SAKXYSerialEditDialog(QWidget *parent = Q_NULLPTR);
     ~SAKXYSerialEditDialog();
+
+    /**
+     * @brief setParameters 设置参数上下文，调用该函数会更新ui显示
+     * @param ctx 参数上下文
+     */
+    void setParameters(ParametersContext ctx);
 private:
     QMap<quint32, QString> mDataTypeMap;
     ParametersContext mParametersContext;
 private:
     Ui::SAKXYSerialEditDialog *mUi;
     QComboBox *mDataTypeComboBox;
-    QLineEdit *mStartByteLineEdit;
-    QCheckBox *mIsBigEndianCheckBox;
+    QSpinBox *mStartByteSpinBox;
+    QCheckBox *mBigEndianCheckBox;
     QComboBox *mChartTypeComboBox;
     QLineEdit *mChartNameLineEdit;
     QPushButton *mChartColorPushButton;
 private slots:
+    void on_dataTypeComboBox_currentIndexChanged(int index);
+    void on_startByteSpinBox_valueChanged(int value);
+    void on_bigEndianCheckBox_clicked();
+    void on_chartTypeComboBox_currentIndexChanged(int index);
+    void on_chartNameLineEdit_currentTextChanged(const QString &text);
     void on_chartColorPushButton_clicked();
 };
 

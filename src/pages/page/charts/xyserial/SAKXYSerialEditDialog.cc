@@ -22,8 +22,8 @@ SAKXYSerialEditDialog::SAKXYSerialEditDialog(QWidget *parent)
 {
     mUi->setupUi(this);
     mDataTypeComboBox = mUi->dataTypeComboBox;
-    mStartByteLineEdit = mUi->startByteLineEdit;
-    mIsBigEndianCheckBox = mUi->bigEndianCheckBox;
+    mStartByteSpinBox = mUi->startByteSpinBox;
+    mBigEndianCheckBox = mUi->bigEndianCheckBox;
     mChartTypeComboBox = mUi->chartTypeComboBox;
     mChartNameLineEdit = mUi->chartNameLineEdit;
     mChartColorPushButton = mUi->chartColorPushButton;
@@ -61,6 +61,56 @@ SAKXYSerialEditDialog::SAKXYSerialEditDialog(QWidget *parent)
 SAKXYSerialEditDialog::~SAKXYSerialEditDialog()
 {
     delete mUi;
+}
+
+void SAKXYSerialEditDialog::setParameters(ParametersContext ctx)
+{
+    /// @brief 更新ui
+    for (int i = 0; i < mDataTypeComboBox->count(); i++){
+        if (mDataTypeComboBox->itemData(i).toInt() == ctx.extractParameters.dataType){
+            mDataTypeComboBox->setCurrentIndex(i);
+        }
+    }
+    mStartByteSpinBox->setValue(ctx.extractParameters.startIndex);
+    mBigEndianCheckBox->setChecked(ctx.extractParameters.isBigEndian);
+
+    for (int i = 0; i < mChartTypeComboBox->count(); i++){
+        if (mChartTypeComboBox->itemData(i).toInt() == ctx.chartParameters.chartType){
+            mChartTypeComboBox->setCurrentIndex(i);
+        }
+    }
+    mChartNameLineEdit->setText(ctx.chartParameters.chartName);
+    mChartColorPushButton->setStyleSheet(QString("QPushButton{background:%1}").arg(ctx.chartParameters.chartColor));
+
+    /// @brief 更新参数（更新ui的同时会更新部分参数，但不是全部）
+    mParametersContext = ctx;
+}
+
+void SAKXYSerialEditDialog::on_dataTypeComboBox_currentIndexChanged(int index)
+{
+    int type = mDataTypeComboBox->itemData(index).toInt();
+    mParametersContext.extractParameters.dataType = ParametersContext::ExtractParametersContext::DataType(type);
+}
+
+void SAKXYSerialEditDialog::on_startByteSpinBox_valueChanged(int value)
+{
+    mParametersContext.extractParameters.startIndex = value;
+}
+
+void SAKXYSerialEditDialog::on_bigEndianCheckBox_clicked()
+{
+    mParametersContext.extractParameters.isBigEndian = mBigEndianCheckBox->isChecked();
+}
+
+void SAKXYSerialEditDialog::on_chartTypeComboBox_currentIndexChanged(int index)
+{
+    int type = mDataTypeComboBox->itemData(index).toInt();
+    mParametersContext.chartParameters.chartType = ParametersContext::ChartParametersContext::ChartType(type);
+}
+
+void SAKXYSerialEditDialog::on_chartNameLineEdit_currentTextChanged(const QString &text)
+{
+    mParametersContext.chartParameters.chartName = text.isEmpty() ? QString("Empty") : text;
 }
 
 void SAKXYSerialEditDialog::on_chartColorPushButton_clicked()
