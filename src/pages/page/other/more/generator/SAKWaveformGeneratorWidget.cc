@@ -12,9 +12,8 @@
 
 #include "ui_SAKWaveformGeneratorWidget.h"
 
-SAKWaveformGeneratorWidget::SAKWaveformGeneratorWidget(SAKDebugPage *debugPage, QWidget *parent)
+SAKWaveformGeneratorWidget::SAKWaveformGeneratorWidget(QWidget *parent)
     :QWidget (parent)
-    ,_debugPage (debugPage)
     ,ui (new Ui::SAKWaveformGeneratorWidget)
 {
     ui->setupUi(this);
