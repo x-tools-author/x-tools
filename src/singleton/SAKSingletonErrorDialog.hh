@@ -12,6 +12,7 @@
 
 #include <QObject>
 
+/// @brief 警告弹窗
 class SAKSingletonErrorDialog : public QObject
 {
     Q_OBJECT

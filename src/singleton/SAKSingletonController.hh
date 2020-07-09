@@ -12,6 +12,7 @@
 
 #include <QObject>
 
+/// @brief 单实例控制类
 class SAKSingletonController:public QObject
 {
     Q_OBJECT
