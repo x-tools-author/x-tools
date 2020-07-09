@@ -146,6 +146,7 @@ FORMS += \
     src/pages/udp/SAKUdpDeviceController.ui \
     src/pages/udp/SAKUdpMulticastEditingDialog.ui \
     src/qrcode/SAKQRCodeDialog.ui \
+    src/singleton/SAKSingletonErrorDialog.ui \
     src/update/SAKDownloadItemWidget.ui \
     src/update/SAKUpdateManager.ui
 
@@ -202,6 +203,8 @@ HEADERS += \
     src/pages/udp/SAKUdpMulticastEditingDialog.hh \
     src/qrcode/SAKQRCodeDialog.hh \
     src/qrcode/SAKQRCodeWidget.hh \
+    src/singleton/SAKSingletonController.hh \
+    src/singleton/SAKSingletonErrorDialog.hh \
     src/startui/SAKSplashScreen.hh \
     src/update/SAKDownloadItemWidget.hh \
     src/update/SAKUpdateManager.hh
@@ -260,6 +263,8 @@ SOURCES += \
     src/pages/udp/SAKUdpMulticastEditingDialog.cc \
     src/qrcode/SAKQRCodeDialog.cc \
     src/qrcode/SAKQRCodeWidget.cc \
+    src/singleton/SAKSingletonController.cc \
+    src/singleton/SAKSingletonErrorDialog.cc \
     src/startui/SAKSplashScreen.cc \
     src/update/SAKDownloadItemWidget.cc \
     src/update/SAKUpdateManager.cc
