@@ -7,26 +7,24 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
-#ifndef SAKMOREOTHERSETTINGS_HH
-#define SAKMOREOTHERSETTINGS_HH
+#ifndef SAKWAVEFORMGENRATOR_HH
+#define SAKWAVEFORMGENRATOR_HH
 
 #include <QWidget>
 
 namespace Ui {
-    class SAKMoreSettingsWidget;
+    class SAKWaveformGeneratorWidget;
 }
 
-class SAKDebugPage;
-
-class SAKMoreSettingsWidget:public QWidget
+/// @brief 波形发生器，支持正玄波、余弦波、方波、三角波
+class SAKWaveformGeneratorWidget:public QWidget
 {
     Q_OBJECT
 public:
-    SAKMoreSettingsWidget(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
-    ~SAKMoreSettingsWidget();
+    SAKWaveformGeneratorWidget(QWidget *parent = Q_NULLPTR);
+    ~SAKWaveformGeneratorWidget();
 private:
-    SAKDebugPage *_debugPage;
-    Ui::SAKMoreSettingsWidget *ui;
+    Ui::SAKWaveformGeneratorWidget *ui;
 };
 
 #endif
