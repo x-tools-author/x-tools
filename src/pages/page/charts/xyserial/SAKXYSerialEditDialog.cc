@@ -63,6 +63,11 @@ SAKXYSerialEditDialog::~SAKXYSerialEditDialog()
     delete mUi;
 }
 
+SAKXYSerialEditDialog::ParametersContext SAKXYSerialEditDialog::parameters()
+{
+    return mParametersContext;
+}
+
 void SAKXYSerialEditDialog::setParameters(ParametersContext ctx)
 {
     /// @brief 更新ui

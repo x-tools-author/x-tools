@@ -64,6 +64,12 @@ public:
     ~SAKXYSerialEditDialog();
 
     /**
+     * @brief parameters 获取参数
+     * @return 参数
+     */
+    ParametersContext parameters();
+
+    /**
      * @brief setParameters 设置参数上下文，调用该函数会更新ui显示
      * @param ctx 参数上下文
      */
