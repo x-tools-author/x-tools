@@ -14,6 +14,9 @@
 #include <QTabWidget>
 #include <QPushButton>
 
+#include <QChartView>
+QT_CHARTS_USE_NAMESPACE
+
 namespace Ui {
     class SAKChartsXYSerialWidget;
 };
@@ -55,8 +58,10 @@ public:
     void inputBytes(QByteArray bytes);
 private:
     SAKXYSerialEditDialog *mXYSerialEditDialog;
+    QChartView *mChartView;
 private:
     Ui::SAKChartsXYSerialWidget *mUi;
+    QWidget *mChartViewerWidget;
     QPushButton *mDeletePushButton;
     QPushButton *mEditPushButton;
     QPushButton *mAddPushButton;
