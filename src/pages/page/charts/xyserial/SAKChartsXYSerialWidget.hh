@@ -12,8 +12,12 @@
 
 #include <QChart>
 #include <QWidget>
+#include <QValueAxis>
 #include <QTabWidget>
 #include <QPushButton>
+#include <QLineSeries>
+#include <QDateTimeAxis>
+#include <QScatterSeries>
 
 #include <QChartView>
 QT_CHARTS_USE_NAMESPACE
@@ -40,6 +44,8 @@ private:
     SAKXYSerialEditDialog *mXYSerialEditDialog;
     QChartView *mChartView;
     QChart *mChart;
+    QValueAxis *mYAxis;
+    QDateTimeAxis *mXAxis;
 private:
     Ui::SAKChartsXYSerialWidget *mUi;
     QWidget *mChartViewerWidget;

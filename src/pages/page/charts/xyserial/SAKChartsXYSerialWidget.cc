@@ -8,9 +8,8 @@
  * group which number is 952218522 to have a communication.
  */
 #include <QDialog>
-#include <QValueAxis>
+#include <QDateTime>
 #include <QHBoxLayout>
-#include <QDateTimeAxis>
 
 #include "SAKXYSerialEditDialog.hh"
 #include "SAKChartsXYSerialWidget.hh"
@@ -33,12 +32,15 @@ SAKChartsXYSerialWidget::SAKChartsXYSerialWidget(QWidget *parent)
     mChartView = new QChartView(mChartViewerWidget);
     mChart = new QChart;
     mChartView->setChart(mChart);
+    mChartView->setRenderHint(QPainter::Antialiasing);
 
-    QDateTimeAxis *xAxis = new QDateTimeAxis;
-    mChart->addAxis(xAxis, Qt::AlignHorizontal_Mask);
+    mXAxis = new QDateTimeAxis;
+    mXAxis->setRange(QDateTime::currentDateTime(), QDateTime::currentDateTime().addSecs(60));
+    mChart->addAxis(mXAxis, Qt::AlignBottom);
 
-    QValueAxis *yAxis = new QValueAxis;
-    mChart->addAxis(yAxis, Qt::AlignVertical_Mask);
+    mYAxis = new QValueAxis;
+    mYAxis->setRange(0, 100);
+    mChart->addAxis(mYAxis, Qt::AlignLeft);
 
     QHBoxLayout *layout = new QHBoxLayout(mChartViewerWidget);
     layout->addWidget(mChartView);
@@ -71,4 +73,16 @@ void SAKChartsXYSerialWidget::on_addPushButton_clicked()
     }
 
     SAKXYSerialEditDialog::ParametersContext ctx = mXYSerialEditDialog->parameters();
+    QXYSeries *xySerial = Q_NULLPTR;
+    if (ctx.chartParameters.chartType == SAKXYSerialEditDialog::ParametersContext::ChartParametersContext::ChartTypeLine){
+        xySerial = new QLineSeries;
+    }else{
+        xySerial = new QScatterSeries;
+    }
+
+    mChart->addSeries(xySerial);
+    xySerial->append(QDateTime::currentMSecsSinceEpoch(), 1);
+    xySerial->append(QDateTime::currentMSecsSinceEpoch()+1000, 1);
+    xySerial->attachAxis(mXAxis);
+    xySerial->attachAxis(mYAxis);
 }
