@@ -58,7 +58,7 @@
    <item row="1" column="0">
     <widget class="QPushButton" name="chartSettingsPushButton">
      <property name="text">
-      <string>图标设置</string>
+      <string>图表设置</string>
      </property>
     </widget>
    </item>
