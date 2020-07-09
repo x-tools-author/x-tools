@@ -56,6 +56,16 @@ SAKXYSerialEditDialog::SAKXYSerialEditDialog(QWidget *parent)
 
     /// @brief 设置该窗口为模态弹窗
     setModal(true);
+
+    /// @brief 初始化参数
+    mParametersContext.extractParameters.dataType = ParametersContext::ExtractParametersContext::DataType(mDataTypeComboBox->currentData().toInt());
+    mParametersContext.extractParameters.startIndex = mStartByteSpinBox->value();
+    mParametersContext.extractParameters.isBigEndian = mBigEndianCheckBox->isChecked();
+    mParametersContext.chartParameters.chartName = mChartNameLineEdit->text();
+    mParametersContext.chartParameters.chartType = ParametersContext::ChartParametersContext::ChartType( mChartTypeComboBox->currentData().toInt());
+    if(mParametersContext.chartParameters.chartColor.isEmpty()){
+        mParametersContext.chartParameters.chartColor = QString("#ff0000");
+    }
 }
 
 SAKXYSerialEditDialog::~SAKXYSerialEditDialog()
