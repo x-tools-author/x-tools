@@ -61,9 +61,6 @@ public:
 
     SAKXYSerialEditDialog(QWidget *parent = Q_NULLPTR);
     ~SAKXYSerialEditDialog();
-
-    void editXYSerial();
-    void addXYSerial();
 private:
     QMap<quint32, QString> mDataTypeMap;
     ParametersContext mParametersContext;

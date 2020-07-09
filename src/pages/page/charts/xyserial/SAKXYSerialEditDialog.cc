@@ -60,13 +60,3 @@ SAKXYSerialEditDialog::~SAKXYSerialEditDialog()
 {
     delete mUi;
 }
-
-void SAKXYSerialEditDialog::editXYSerial()
-{
-    show();
-}
-
-void SAKXYSerialEditDialog::addXYSerial()
-{
-    show();
-}
