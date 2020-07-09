@@ -118,6 +118,7 @@ INCLUDEPATH += \
     src/pages/udp \
     src/qrcode \
     src/startui \
+    src/singleton \
     src/update
 
 FORMS += \
