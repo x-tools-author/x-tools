@@ -72,6 +72,8 @@ private:
     QComboBox *mChartTypeComboBox;
     QLineEdit *mChartNameLineEdit;
     QPushButton *mChartColorPushButton;
+private slots:
+    void on_chartColorPushButton_clicked();
 };
 
 #endif

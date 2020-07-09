@@ -7,6 +7,8 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
+#include <QColor>
+#include <QColorDialog>
 #include <QMapIterator>
 
 #include "SAKDebugPage.hh"
@@ -59,4 +61,17 @@ SAKXYSerialEditDialog::SAKXYSerialEditDialog(QWidget *parent)
 SAKXYSerialEditDialog::~SAKXYSerialEditDialog()
 {
     delete mUi;
+}
+
+void SAKXYSerialEditDialog::on_chartColorPushButton_clicked()
+{
+    QColor color = QColorDialog::getColor(Qt::white, this, tr("颜色设置"));
+    if (!color.isValid()){
+        return;
+    }
+
+    /// @brief "#000000"
+    QString hexRgb = color.name(QColor::HexRgb);
+    mParametersContext.chartParameters.chartColor = hexRgb;
+    mChartColorPushButton->setStyleSheet(QString("QPushButton{background:%1}").arg(hexRgb));
 }
