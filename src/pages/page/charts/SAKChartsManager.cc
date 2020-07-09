@@ -27,12 +27,12 @@ SAKChartsManager::SAKChartsManager(SAKDebugPage *page, QWidget *parent)
     setAttribute(Qt::WA_DeleteOnClose, true);
 #endif
 
-    mThroughputWidget = new SAKChartsThroughputWidget(mDebugPage);
-    mTabWidget->addTab(mThroughputWidget, tr("吞吐量"));
-
     mXYSerialWidget = new SAKChartsXYSerialWidget;
     connect(mDebugPage, &SAKDebugPage::bytesRead, mXYSerialWidget, &SAKChartsXYSerialWidget::inputBytes);
     mTabWidget->addTab(mXYSerialWidget, tr("波形图"));
+
+    mThroughputWidget = new SAKChartsThroughputWidget(mDebugPage);
+    mTabWidget->addTab(mThroughputWidget, tr("吞吐量"));
 }
 
 SAKChartsManager::~SAKChartsManager()
