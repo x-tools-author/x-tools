@@ -59,7 +59,7 @@
     </widget>
    </item>
    <item row="1" column="3">
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="editPushButton">
      <property name="text">
       <string>编辑</string>
      </property>

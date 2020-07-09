@@ -7,24 +7,38 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
-#include "SAKDebugPage.hh"
+#include "SAKXYSerialEditDialog.hh"
 #include "SAKChartsXYSerialWidget.hh"
 
 #include "ui_SAKChartsXYSerialWidget.h"
 
 SAKChartsXYSerialWidget::SAKChartsXYSerialWidget(QWidget *parent)
     :QWidget (parent)
-    ,ui (new Ui::SAKChartsXYSerialWidget)
+    ,mUi (new Ui::SAKChartsXYSerialWidget)
 {
-    ui->setupUi(this);
+    mUi->setupUi(this);
+    mXYSerialEditDialog = new SAKXYSerialEditDialog(this);
+    mDeletePushButton = mUi->deletePushButton;
+    mEditPushButton = mUi->editPushButton;
+    mAddPushButton = mUi->addPushButton;
 }
 
 SAKChartsXYSerialWidget::~SAKChartsXYSerialWidget()
 {
-    delete ui;
+    delete mUi;
 }
 
 void SAKChartsXYSerialWidget::inputBytes(QByteArray bytes)
 {
+    Q_UNUSED(bytes);
+}
 
+void SAKChartsXYSerialWidget::on_editPushButton_clicked()
+{
+    mXYSerialEditDialog->show();
+}
+
+void SAKChartsXYSerialWidget::on_addPushButton_clicked()
+{
+    mXYSerialEditDialog->show();
 }

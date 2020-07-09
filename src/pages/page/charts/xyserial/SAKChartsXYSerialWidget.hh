@@ -12,12 +12,13 @@
 
 #include <QWidget>
 #include <QTabWidget>
+#include <QPushButton>
 
 namespace Ui {
     class SAKChartsXYSerialWidget;
 };
 
-class SAKThroughputWidget;
+class SAKXYSerialEditDialog;
 /// @brief 散点图及曲线图显示类
 class SAKChartsXYSerialWidget:public QWidget
 {
@@ -53,7 +54,15 @@ public:
      */
     void inputBytes(QByteArray bytes);
 private:
-    Ui::SAKChartsXYSerialWidget *ui;
+    SAKXYSerialEditDialog *mXYSerialEditDialog;
+private:
+    Ui::SAKChartsXYSerialWidget *mUi;
+    QPushButton *mDeletePushButton;
+    QPushButton *mEditPushButton;
+    QPushButton *mAddPushButton;
+private slots:
+    void on_editPushButton_clicked();
+    void on_addPushButton_clicked();
 };
 
 #endif
