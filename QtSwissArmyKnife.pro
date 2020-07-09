@@ -132,6 +132,7 @@ FORMS += \
     src/pages/page/other/autoresponse/SAKAutoResponseSettingsWidget.ui \
     src/pages/page/other/highlight/SAKHighlightSettingsWidget.ui \
     src/pages/page/other/more/SAKMoreSettingsWidget.ui \
+    src/pages/page/other/more/generator/SAKWaveformGeneratorWidget.ui \
     src/pages/page/other/readwrite/SAKReadWriteSettingsWidget.ui \
     src/pages/page/other/timing/SAKTimingSendingItemWidget.ui \
     src/pages/page/other/timing/SAKTimingSendingSettingsWidget.ui \
@@ -174,6 +175,7 @@ HEADERS += \
     src/pages/page/other/highlight/SAKHighlightSettings.hh \
     src/pages/page/other/highlight/SAKHighlightSettingsWidget.hh \
     src/pages/page/other/more/SAKMoreSettingsWidget.hh \
+    src/pages/page/other/more/generator/SAKWaveformGeneratorWidget.hh \
     src/pages/page/other/readwrite/SAKReadWriteSettingsWidget.hh \
     src/pages/page/other/timing/SAKTimingSendingItemWidget.hh \
     src/pages/page/other/timing/SAKTimingSendingSettingsWidget.hh \
@@ -233,6 +235,7 @@ SOURCES += \
     src/pages/page/other/highlight/SAKHighlightSettings.cc \
     src/pages/page/other/highlight/SAKHighlightSettingsWidget.cc \
     src/pages/page/other/more/SAKMoreSettingsWidget.cc \
+    src/pages/page/other/more/generator/SAKWaveformGeneratorWidget.cc \
     src/pages/page/other/readwrite/SAKReadWriteSettingsWidget.cc \
     src/pages/page/other/timing/SAKTimingSendingItemWidget.cc \
     src/pages/page/other/timing/SAKTimingSendingSettingsWidget.cc \
