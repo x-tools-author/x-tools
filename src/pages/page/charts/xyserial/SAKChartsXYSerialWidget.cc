@@ -24,6 +24,7 @@ SAKChartsXYSerialWidget::SAKChartsXYSerialWidget(QWidget *parent)
 {
     mUi->setupUi(this);
     mChartViewerWidget = mUi->chartViewerWidget;
+    mChartSettingsPushButton = mUi->chartSettingsPushButton;
     mDeletePushButton = mUi->deletePushButton;
     mEditPushButton = mUi->editPushButton;
     mAddPushButton = mUi->addPushButton;
@@ -55,6 +56,11 @@ SAKChartsXYSerialWidget::~SAKChartsXYSerialWidget()
 void SAKChartsXYSerialWidget::inputBytes(QByteArray bytes)
 {
     Q_UNUSED(bytes);
+}
+
+void SAKChartsXYSerialWidget::on_chartSettingsPushButton_clicked()
+{
+
 }
 
 void SAKChartsXYSerialWidget::on_editPushButton_clicked()
