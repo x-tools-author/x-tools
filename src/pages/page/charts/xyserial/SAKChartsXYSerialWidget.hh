@@ -10,6 +10,7 @@
 #ifndef SAKCHARTSXYSERIALWIDGET_HH
 #define SAKCHARTSXYSERIALWIDGET_HH
 
+#include <QChart>
 #include <QWidget>
 #include <QTabWidget>
 #include <QPushButton>
@@ -38,6 +39,7 @@ public:
 private:
     SAKXYSerialEditDialog *mXYSerialEditDialog;
     QChartView *mChartView;
+    QChart *mChart;
 private:
     Ui::SAKChartsXYSerialWidget *mUi;
     QWidget *mChartViewerWidget;

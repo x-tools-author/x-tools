@@ -8,7 +8,9 @@
  * group which number is 952218522 to have a communication.
  */
 #include <QDialog>
+#include <QValueAxis>
 #include <QHBoxLayout>
+#include <QDateTimeAxis>
 
 #include "SAKXYSerialEditDialog.hh"
 #include "SAKChartsXYSerialWidget.hh"
@@ -29,6 +31,15 @@ SAKChartsXYSerialWidget::SAKChartsXYSerialWidget(QWidget *parent)
 
     /// @brief 初始化表格视图
     mChartView = new QChartView(mChartViewerWidget);
+    mChart = new QChart;
+    mChartView->setChart(mChart);
+
+    QDateTimeAxis *xAxis = new QDateTimeAxis;
+    mChart->addAxis(xAxis, Qt::AlignHorizontal_Mask);
+
+    QValueAxis *yAxis = new QValueAxis;
+    mChart->addAxis(yAxis, Qt::AlignVertical_Mask);
+
     QHBoxLayout *layout = new QHBoxLayout(mChartViewerWidget);
     layout->addWidget(mChartView);
     mChartViewerWidget->setLayout(layout);
@@ -58,4 +69,6 @@ void SAKChartsXYSerialWidget::on_addPushButton_clicked()
     if (mXYSerialEditDialog->exec() != QDialog::Accepted){
         return;
     }
+
+    SAKXYSerialEditDialog::ParametersContext ctx = mXYSerialEditDialog->parameters();
 }
