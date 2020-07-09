@@ -7,6 +7,7 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
+#include <QDialog>
 #include <QHBoxLayout>
 
 #include "SAKXYSerialEditDialog.hh"
@@ -46,9 +47,15 @@ void SAKChartsXYSerialWidget::inputBytes(QByteArray bytes)
 void SAKChartsXYSerialWidget::on_editPushButton_clicked()
 {
     mXYSerialEditDialog->show();
+    if (mXYSerialEditDialog->exec() != QDialog::Accepted){
+        return;
+    }
 }
 
 void SAKChartsXYSerialWidget::on_addPushButton_clicked()
 {
     mXYSerialEditDialog->show();
+    if (mXYSerialEditDialog->exec() != QDialog::Accepted){
+        return;
+    }
 }
