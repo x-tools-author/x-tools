@@ -92,7 +92,7 @@
       <item row="2" column="1">
        <widget class="QPushButton" name="chartColorPushButton">
         <property name="text">
-         <string notr="true"/>
+         <string notr="true">   </string>
         </property>
        </widget>
       </item>
