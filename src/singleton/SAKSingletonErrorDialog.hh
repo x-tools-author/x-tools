@@ -10,15 +10,21 @@
 #ifndef SAKSINGLETONERRORDIALOG_HH
 #define SAKSINGLETONERRORDIALOG_HH
 
-#include <QObject>
+#include <QDialog>
+
+namespace Ui {
+    class SAKSingletonErrorDialog;
+};
 
 /// @brief 警告弹窗
-class SAKSingletonErrorDialog : public QObject
+class SAKSingletonErrorDialog : public QDialog
 {
     Q_OBJECT
 public:
-    SAKSingletonErrorDialog(QObject *parent = Q_NULLPTR);
+    SAKSingletonErrorDialog(QWidget *parent = Q_NULLPTR);
     ~SAKSingletonErrorDialog();
+private:
+    Ui::SAKSingletonErrorDialog *mUi;
 };
 
 #endif

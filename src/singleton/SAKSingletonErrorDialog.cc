@@ -8,14 +8,16 @@
  * group which number is 952218522 to have a communication.
  */
 #include "SAKSingletonErrorDialog.hh"
+#include "ui_SAKSingletonErrorDialog.h"
 
-SAKSingletonErrorDialog::SAKSingletonErrorDialog(QObject *parent)
-    :QObject(parent)
+SAKSingletonErrorDialog::SAKSingletonErrorDialog(QWidget *parent)
+    :QDialog(parent)
+    ,mUi(new Ui::SAKSingletonErrorDialog)
 {
-
+    mUi->setupUi(this);
 }
 
 SAKSingletonErrorDialog::~SAKSingletonErrorDialog()
 {
-
+    delete mUi;
 }
