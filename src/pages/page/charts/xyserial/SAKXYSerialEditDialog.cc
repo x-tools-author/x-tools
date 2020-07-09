@@ -123,7 +123,7 @@ void SAKXYSerialEditDialog::on_chartTypeComboBox_currentIndexChanged(int index)
     mParametersContext.chartParameters.chartType = ParametersContext::ChartParametersContext::ChartType(type);
 }
 
-void SAKXYSerialEditDialog::on_chartNameLineEdit_currentTextChanged(const QString &text)
+void SAKXYSerialEditDialog::on_chartNameLineEdit_textChanged(const QString &text)
 {
     mParametersContext.chartParameters.chartName = text.isEmpty() ? QString("Empty") : text;
 }

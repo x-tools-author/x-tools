@@ -90,7 +90,7 @@ private slots:
     void on_startByteSpinBox_valueChanged(int value);
     void on_bigEndianCheckBox_clicked();
     void on_chartTypeComboBox_currentIndexChanged(int index);
-    void on_chartNameLineEdit_currentTextChanged(const QString &text);
+    void on_chartNameLineEdit_textChanged(const QString &text);
     void on_chartColorPushButton_clicked();
 };
 
