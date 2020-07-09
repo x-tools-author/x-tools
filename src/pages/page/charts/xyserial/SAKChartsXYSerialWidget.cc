@@ -64,7 +64,7 @@ void SAKChartsXYSerialWidget::inputBytes(QByteArray bytes)
 
 void SAKChartsXYSerialWidget::on_chartSettingsPushButton_clicked()
 {
-
+    mChartSettingsDialog->show();
 }
 
 void SAKChartsXYSerialWidget::on_editPushButton_clicked()
