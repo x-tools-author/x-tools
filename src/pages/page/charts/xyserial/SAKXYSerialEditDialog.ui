@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>495</width>
+    <width>486</width>
     <height>154</height>
    </rect>
   </property>
@@ -34,7 +34,14 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QComboBox" name="dataTypeComboBox"/>
+       <widget class="QComboBox" name="dataTypeComboBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="label_2">
@@ -43,17 +50,20 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="startByteLineEdit">
-        <property name="text">
-         <string notr="true"/>
-        </property>
-       </widget>
-      </item>
       <item row="2" column="0" colspan="2">
        <widget class="QCheckBox" name="bigEndianCheckBox">
         <property name="text">
          <string>大端字节序</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QSpinBox" name="startByteSpinBox">
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>999</number>
         </property>
        </widget>
       </item>
