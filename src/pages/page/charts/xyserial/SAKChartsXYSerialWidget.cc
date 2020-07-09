@@ -12,6 +12,7 @@
 #include <QHBoxLayout>
 
 #include "SAKXYSerialEditDialog.hh"
+#include "SAKChartSettingsDialog.hh"
 #include "SAKChartsXYSerialWidget.hh"
 
 #include "ui_SAKChartsXYSerialWidget.h"
@@ -20,6 +21,7 @@
 SAKChartsXYSerialWidget::SAKChartsXYSerialWidget(QWidget *parent)
     :QWidget (parent)
     ,mXYSerialEditDialog(new SAKXYSerialEditDialog)
+    ,mChartSettingsDialog (new SAKChartSettingsDialog)
     ,mUi (new Ui::SAKChartsXYSerialWidget)
 {
     mUi->setupUi(this);
@@ -51,6 +53,8 @@ SAKChartsXYSerialWidget::SAKChartsXYSerialWidget(QWidget *parent)
 SAKChartsXYSerialWidget::~SAKChartsXYSerialWidget()
 {
     delete mUi;
+    delete mChartSettingsDialog;
+    delete mXYSerialEditDialog;
 }
 
 void SAKChartsXYSerialWidget::inputBytes(QByteArray bytes)
