@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>图表参数设置</string>
   </property>
  </widget>
  <resources/>
