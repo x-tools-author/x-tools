@@ -16,17 +16,15 @@ namespace Ui {
     class SAKProtocolAnalyzerWidget;
 }
 
-class SAKDebugPage;
-
+/// @brief 协议分析面板
 class SAKProtocolAnalyzerWidget:public QWidget
 {
     Q_OBJECT
 public:
-    SAKProtocolAnalyzerWidget(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
+    SAKProtocolAnalyzerWidget(QWidget *parent = Q_NULLPTR);
     ~SAKProtocolAnalyzerWidget();
 private:
-    SAKDebugPage *_debugPage;
-    Ui::SAKProtocolAnalyzerWidget *ui;
+    Ui::SAKProtocolAnalyzerWidget *mUi;
 };
 
 #endif

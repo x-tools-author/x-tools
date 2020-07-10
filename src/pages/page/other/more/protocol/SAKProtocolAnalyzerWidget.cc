@@ -7,20 +7,18 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
-#include "SAKDebugPage.hh"
 #include "SAKProtocolAnalyzerWidget.hh"
 
 #include "ui_SAKProtocolAnalyzerWidget.h"
 
-SAKProtocolAnalyzerWidget::SAKProtocolAnalyzerWidget(SAKDebugPage *debugPage, QWidget *parent)
+SAKProtocolAnalyzerWidget::SAKProtocolAnalyzerWidget(QWidget *parent)
     :QWidget (parent)
-    ,_debugPage (debugPage)
-    ,ui (new Ui::SAKProtocolAnalyzerWidget)
+    ,mUi (new Ui::SAKProtocolAnalyzerWidget)
 {
-    ui->setupUi(this);
+    mUi->setupUi(this);
 }
 
 SAKProtocolAnalyzerWidget::~SAKProtocolAnalyzerWidget()
 {
-    delete ui;
+    delete mUi;
 }
