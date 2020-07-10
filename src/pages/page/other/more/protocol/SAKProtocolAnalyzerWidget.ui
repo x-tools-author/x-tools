@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>协议分析</string>
+   <string notr="true">协议分析</string>
   </property>
  </widget>
  <resources/>
