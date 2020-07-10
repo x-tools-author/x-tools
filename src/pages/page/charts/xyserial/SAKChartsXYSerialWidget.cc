@@ -20,7 +20,6 @@
 
 #include "ui_SAKChartsXYSerialWidget.h"
 
-
 SAKChartsXYSerialWidget::SAKChartsXYSerialWidget(QWidget *parent)
     :QWidget (parent)
     ,mXYSerialEditDialog(new SAKChartsXYSerialEditDialog)
