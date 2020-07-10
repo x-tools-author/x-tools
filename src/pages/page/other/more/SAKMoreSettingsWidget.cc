@@ -9,7 +9,7 @@
  */
 #include "SAKDebugPage.hh"
 #include "SAKMoreSettingsWidget.hh"
-#include "SAKProtocolAnalyzerWidget.h"
+#include "SAKProtocolAnalyzerWidget.hh"
 
 #include "ui_SAKMoreSettingsWidget.h"
 
@@ -21,7 +21,7 @@ SAKMoreSettingsWidget::SAKMoreSettingsWidget(SAKDebugPage *debugPage, QWidget *p
     mUi->setupUi(this);
     mTabWidget = mUi->tabWidget;
 
-    mTabWidget->addTab(new SAKProtocolAnalyzerWidget, tr(""))
+    mTabWidget->addTab(new SAKProtocolAnalyzerWidget, tr("协议分析器"));
 }
 
 SAKMoreSettingsWidget::~SAKMoreSettingsWidget()
