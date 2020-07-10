@@ -81,9 +81,16 @@ private:
             return;
         }
 
+        /// @brief 添加坐标点
         T *ptr = reinterpret_cast<T *>(data.data());
+        qreal xValue = qreal(QDateTime::currentMSecsSinceEpoch());
         T yValue = *ptr;
-        xySerial->append(qreal(QDateTime::currentMSecsSinceEpoch()), qreal(yValue));
+        xySerial->append(xValue, qreal(yValue));
+
+        /// @brief 移动图表，使得新显示在可见区域
+        if (mXAxis->max().toMSecsSinceEpoch() < xValue){
+            mChart->scroll(10, 0);
+        }
     }
 private:
     Ui::SAKChartsXYSerialWidget *mUi;

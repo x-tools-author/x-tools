@@ -7,6 +7,7 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
+#include <QTimer>
 #include <QDialog>
 #include <QAction>
 #include <QHBoxLayout>
@@ -67,6 +68,17 @@ SAKChartsXYSerialWidget::SAKChartsXYSerialWidget(QWidget *parent)
     mAppendPointInterfaceMap.insert(SAKXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeUint64, &SAKChartsXYSerialWidget::appendPointUint64);
     mAppendPointInterfaceMap.insert(SAKXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeFloat32, &SAKChartsXYSerialWidget::appendPointFloat32);
     mAppendPointInterfaceMap.insert(SAKXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeFloat64, &SAKChartsXYSerialWidget::appendPointFloat64);
+
+#if 1
+    QTimer *testTimer = new QTimer(this);
+    testTimer->setInterval(1000);
+    connect(testTimer, &QTimer::timeout, this, [&](){
+        quint64 value = qrand()%100;
+        QByteArray data(reinterpret_cast<char*>(&value), sizeof(8));
+        inputBytes(data);
+    });
+    testTimer->start();
+#endif
 }
 
 SAKChartsXYSerialWidget::~SAKChartsXYSerialWidget()
