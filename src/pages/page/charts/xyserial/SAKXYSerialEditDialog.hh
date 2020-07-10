@@ -41,11 +41,8 @@ public:
                 DataTypeInt64,
                 DataTypeUint64,
                 DataTypeFloat16,
-                DataTypeUfloat16,
                 DataTypeFloat32,
-                DataTypeUfloat32,
                 DataTypeFloat64,
-                DataTypeUfloat64
             }dataType;
             quint8 startIndex;
             bool isBigEndian;
