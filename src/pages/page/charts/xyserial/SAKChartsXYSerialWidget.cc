@@ -11,6 +11,7 @@
 #include <QAction>
 #include <QDateTime>
 #include <QHBoxLayout>
+#include <QMapIterator>
 
 #include "SAKXYSerialEditDialog.hh"
 #include "SAKChartSettingsDialog.hh"
@@ -62,6 +63,16 @@ SAKChartsXYSerialWidget::~SAKChartsXYSerialWidget()
     delete mUi;
     delete mChartSettingsDialog;
     delete mXYSerialEditDialog;
+
+    /// @brief 删除参数
+    QMapIterator<QXYSeries *, void *> iterator(mXYSerialParametersMap);
+    while (iterator.hasNext()) {
+        iterator.next();
+        void *ptr = iterator.value();
+        SAKXYSerialEditDialog::ParametersContext *ctx = reinterpret_cast<SAKXYSerialEditDialog::ParametersContext *>(ptr);
+        delete ctx;
+    }
+    mXYSerialParametersMap.clear();
 }
 
 void SAKChartsXYSerialWidget::inputBytes(QByteArray bytes)
