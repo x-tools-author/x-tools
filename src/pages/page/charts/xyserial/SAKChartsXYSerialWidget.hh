@@ -68,7 +68,7 @@ private:
     void appendPointInt16(QByteArray data, QXYSeries *xySerial);
     void appendPointUint16(QByteArray data, QXYSeries *xySerial);
     void appendPointInt32(QByteArray data, QXYSeries *xySerial);
-    void appendPointUin32(QByteArray data, QXYSeries *xySerial);
+    void appendPointUint32(QByteArray data, QXYSeries *xySerial);
     void appendPointInt64(QByteArray data, QXYSeries *xySerial);
     void appendPointUint64(QByteArray data, QXYSeries *xySerial);
     void appendPointFloat32(QByteArray data, QXYSeries *xySerial);

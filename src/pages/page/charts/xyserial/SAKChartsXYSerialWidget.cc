@@ -55,6 +55,18 @@ SAKChartsXYSerialWidget::SAKChartsXYSerialWidget(QWidget *parent)
     mEditMenu = new QMenu(mEditPushButton);
     mDeletePushButton->setMenu(mDeleteMenu);
     mEditPushButton->setMenu(mEditMenu);
+
+    /// @brief 初始化映射变量，键为数据类型，值为成员函数指针
+    mAppendPointInterfaceMap.insert(SAKXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeInt8, &SAKChartsXYSerialWidget::appendPointInt8);
+    mAppendPointInterfaceMap.insert(SAKXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeUint8, &SAKChartsXYSerialWidget::appendPointUint8);
+    mAppendPointInterfaceMap.insert(SAKXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeInt16, &SAKChartsXYSerialWidget::appendPointInt16);
+    mAppendPointInterfaceMap.insert(SAKXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeUint16, &SAKChartsXYSerialWidget::appendPointUint16);
+    mAppendPointInterfaceMap.insert(SAKXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeInt32, &SAKChartsXYSerialWidget::appendPointInt32);
+    mAppendPointInterfaceMap.insert(SAKXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeUint32, &SAKChartsXYSerialWidget::appendPointUint32);
+    mAppendPointInterfaceMap.insert(SAKXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeInt64, &SAKChartsXYSerialWidget::appendPointInt64);
+    mAppendPointInterfaceMap.insert(SAKXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeUint64, &SAKChartsXYSerialWidget::appendPointUint64);
+    mAppendPointInterfaceMap.insert(SAKXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeFloat32, &SAKChartsXYSerialWidget::appendPointFloat32);
+    mAppendPointInterfaceMap.insert(SAKXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeFloat64, &SAKChartsXYSerialWidget::appendPointFloat64);
 }
 
 SAKChartsXYSerialWidget::~SAKChartsXYSerialWidget()
@@ -199,7 +211,7 @@ void SAKChartsXYSerialWidget::appendPointInt32(QByteArray data, QXYSeries *xySer
     appendPointActually<qint32>(data, xySerial);
 }
 
-void SAKChartsXYSerialWidget::appendPointUin32(QByteArray data, QXYSeries *xySerial)
+void SAKChartsXYSerialWidget::appendPointUint32(QByteArray data, QXYSeries *xySerial)
 {
     appendPointActually<quint32>(data, xySerial);
 }
