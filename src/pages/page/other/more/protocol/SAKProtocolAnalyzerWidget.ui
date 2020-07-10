@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SAKMoreSettingsWidget</class>
+ <widget class="QWidget" name="SAKMoreSettingsWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>630</width>
+    <height>307</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>更多设置</string>
+  </property>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
