@@ -30,6 +30,7 @@ SAKChartsXYSerialWidget::SAKChartsXYSerialWidget(QWidget *parent)
     mUi->setupUi(this);
     mChartViewerWidget = mUi->chartViewerWidget;
     mChartSettingsPushButton = mUi->chartSettingsPushButton;
+    mClearPushButton = mUi->clearPushButton;
     mDeletePushButton = mUi->deletePushButton;
     mEditPushButton = mUi->editPushButton;
     mAddPushButton = mUi->addPushButton;
@@ -43,6 +44,7 @@ SAKChartsXYSerialWidget::SAKChartsXYSerialWidget(QWidget *parent)
     mXAxis = new QDateTimeAxis;
     mXAxis->setRange(QDateTime::currentDateTime(), QDateTime::currentDateTime().addSecs(60));
     mXAxis->setFormat(QString("mm:ss"));
+    mXAxis->setTickCount(10);
     mChart->addAxis(mXAxis, Qt::AlignBottom);
 
     mYAxis = new QValueAxis;
@@ -262,6 +264,18 @@ void SAKChartsXYSerialWidget::appendPointFloat64(QByteArray data, QXYSeries *xyS
 void SAKChartsXYSerialWidget::on_chartSettingsPushButton_clicked()
 {
     mChartSettingsDialog->show();
+}
+
+void SAKChartsXYSerialWidget::on_clearPushButton_clicked()
+{
+    /// @brief 清空全部坐标点
+    for (auto var : mChart->series()){
+        reinterpret_cast<QXYSeries*>(var)->clear();
+    }
+
+    /// @brief 重置缩放，更新横坐标
+    mChart->zoomReset();
+    mXAxis->setRange(QDateTime::currentDateTime(), QDateTime::currentDateTime().addSecs(60));
 }
 
 void SAKChartsXYSerialWidget::on_addPushButton_clicked()

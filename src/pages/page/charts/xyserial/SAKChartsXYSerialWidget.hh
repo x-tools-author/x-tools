@@ -97,11 +97,13 @@ private:
     Ui::SAKChartsXYSerialWidget *mUi;
     QWidget *mChartViewerWidget;
     QPushButton *mChartSettingsPushButton;
+    QPushButton *mClearPushButton;
     QPushButton *mDeletePushButton;
     QPushButton *mEditPushButton;
     QPushButton *mAddPushButton;
 private slots:
     void on_chartSettingsPushButton_clicked();
+    void on_clearPushButton_clicked();
     void on_addPushButton_clicked();
 };
 
