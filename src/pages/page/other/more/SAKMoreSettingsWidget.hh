@@ -11,13 +11,14 @@
 #define SAKMOREOTHERSETTINGS_HH
 
 #include <QWidget>
+#include <QTabWidget>
 
 namespace Ui {
     class SAKMoreSettingsWidget;
 }
 
 class SAKDebugPage;
-
+class SAKProtocolAnalyzerWidget;
 class SAKMoreSettingsWidget:public QWidget
 {
     Q_OBJECT
@@ -25,8 +26,10 @@ public:
     SAKMoreSettingsWidget(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKMoreSettingsWidget();
 private:
-    SAKDebugPage *_debugPage;
-    Ui::SAKMoreSettingsWidget *ui;
+    SAKDebugPage *mDebugPage;
+private:
+    Ui::SAKMoreSettingsWidget *mUi;
+    QTabWidget *mTabWidget;
 };
 
 #endif
