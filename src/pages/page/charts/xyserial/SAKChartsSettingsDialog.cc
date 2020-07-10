@@ -7,19 +7,19 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
-#include "SAKChartSettingsDialog.hh"
+#include "SAKChartsSettingsDialog.hh"
 
-#include "ui_SAKChartSettingsDialog.h"
+#include "ui_SAKChartsSettingsDialog.h"
 
-SAKChartSettingsDialog::SAKChartSettingsDialog(QWidget *parent)
+SAKChartsSettingsDialog::SAKChartsSettingsDialog(QWidget *parent)
     :QDialog (parent)
-    ,mUi (new Ui::SAKChartSettingsDialog)
+    ,mUi (new Ui::SAKChartsSettingsDialog)
 {
     mUi->setupUi(this);
 
 }
 
-SAKChartSettingsDialog::~SAKChartSettingsDialog()
+SAKChartsSettingsDialog::~SAKChartsSettingsDialog()
 {
     delete mUi;
 }
