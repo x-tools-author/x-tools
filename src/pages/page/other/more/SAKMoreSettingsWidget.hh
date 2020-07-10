@@ -19,6 +19,7 @@ namespace Ui {
 
 class SAKDebugPage;
 class SAKProtocolAnalyzerWidget;
+class SAKWaveformGeneratorWidget;
 class SAKMoreSettingsWidget:public QWidget
 {
     Q_OBJECT

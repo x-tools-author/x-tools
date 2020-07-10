@@ -10,6 +10,7 @@
 #include "SAKDebugPage.hh"
 #include "SAKMoreSettingsWidget.hh"
 #include "SAKProtocolAnalyzerWidget.hh"
+#include "SAKWaveformGeneratorWidget.hh"
 
 #include "ui_SAKMoreSettingsWidget.h"
 
@@ -22,6 +23,7 @@ SAKMoreSettingsWidget::SAKMoreSettingsWidget(SAKDebugPage *debugPage, QWidget *p
     mTabWidget = mUi->tabWidget;
 
     mTabWidget->addTab(new SAKProtocolAnalyzerWidget, tr("协议分析器"));
+    mTabWidget->addTab(new SAKWaveformGeneratorWidget, tr("波形发生器"));
 }
 
 SAKMoreSettingsWidget::~SAKMoreSettingsWidget()
