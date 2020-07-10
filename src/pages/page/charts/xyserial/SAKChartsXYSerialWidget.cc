@@ -13,9 +13,10 @@
 #include <QHBoxLayout>
 #include <QMapIterator>
 
+#include "SAKChartsXYSerialWidget.hh"
+#include "SAKChartsXYSerialChartView.hh"
 #include "SAKChartsXYSerialEditDialog.hh"
 #include "SAKChartsXYSerialChartViewSettingsDialog.hh"
-#include "SAKChartsXYSerialWidget.hh"
 
 #include "ui_SAKChartsXYSerialWidget.h"
 
@@ -34,8 +35,8 @@ SAKChartsXYSerialWidget::SAKChartsXYSerialWidget(QWidget *parent)
     mAddPushButton = mUi->addPushButton;
 
     /// @brief 初始化表格视图
-    mChartView = new QChartView(mChartViewerWidget);
     mChart = new QChart;
+    mChartView = new SAKChartsXYSerialChartView(mChart, mChartViewerWidget);
     mChartView->setChart(mChart);
     mChartView->setRenderHint(QPainter::Antialiasing);
 

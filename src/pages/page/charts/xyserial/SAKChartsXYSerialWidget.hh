@@ -28,6 +28,7 @@ namespace Ui {
     class SAKChartsXYSerialWidget;
 };
 
+class SAKChartsXYSerialChartView;
 class SAKChartsXYSerialEditDialog;
 class SAKChartsXYSerialChartViewSettingsDialog;
 /// @brief 散点图及曲线图显示类
@@ -46,7 +47,7 @@ public:
 private:
     SAKChartsXYSerialEditDialog *mXYSerialEditDialog;
     SAKChartsXYSerialChartViewSettingsDialog *mChartSettingsDialog;
-    QChartView *mChartView;
+    SAKChartsXYSerialChartView *mChartView;
     QChart *mChart;
     QValueAxis *mYAxis;
     QDateTimeAxis *mXAxis;
