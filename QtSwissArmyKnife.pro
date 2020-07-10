@@ -107,6 +107,8 @@ INCLUDEPATH += \
     src/pages/page/other/autoresponse \
     src/pages/page/other/highlight \
     src/pages/page/other/more \
+    src/pages/page/other/more/generator \
+    src/pages/page/other/more/protocol \
     src/pages/page/other/readwrite \
     src/pages/page/other/timing \
     src/pages/page/other/transmission \
