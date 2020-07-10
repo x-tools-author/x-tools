@@ -14,17 +14,10 @@
    <string>波形图</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="2">
-    <widget class="QPushButton" name="clearPushButton">
-     <property name="text">
-      <string>清空</string>
-     </property>
-    </widget>
-   </item>
    <item row="1" column="4">
-    <widget class="QPushButton" name="editPushButton">
+    <widget class="QPushButton" name="deletePushButton">
      <property name="text">
-      <string>编辑</string>
+      <string>删除</string>
      </property>
     </widget>
    </item>
@@ -41,17 +34,10 @@
      </property>
     </spacer>
    </item>
-   <item row="1" column="3">
-    <widget class="QPushButton" name="deletePushButton">
-     <property name="text">
-      <string>删除</string>
-     </property>
-    </widget>
-   </item>
    <item row="1" column="5">
-    <widget class="QPushButton" name="addPushButton">
+    <widget class="QPushButton" name="editPushButton">
      <property name="text">
-      <string>添加</string>
+      <string>编辑</string>
      </property>
     </widget>
    </item>
@@ -62,13 +48,34 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="0" colspan="6">
+   <item row="1" column="3">
+    <widget class="QPushButton" name="clearPushButton">
+     <property name="text">
+      <string>清空</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="7">
     <widget class="QWidget" name="chartViewerWidget" native="true">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="6">
+    <widget class="QPushButton" name="addPushButton">
+     <property name="text">
+      <string>添加</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2">
+    <widget class="QCheckBox" name="pauseCheckBox">
+     <property name="text">
+      <string>暂停输入</string>
      </property>
     </widget>
    </item>
