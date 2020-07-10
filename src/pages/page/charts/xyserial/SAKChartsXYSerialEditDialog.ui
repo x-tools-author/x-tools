@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SAKXYSerialEditDialog</class>
- <widget class="QDialog" name="SAKXYSerialEditDialog">
+ <class>SAKChartsXYSerialEditDialog</class>
+ <widget class="QDialog" name="SAKChartsXYSerialEditDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -102,7 +102,7 @@
       <item row="2" column="1">
        <widget class="QPushButton" name="chartColorPushButton">
         <property name="text">
-         <string notr="true">   </string>
+         <string notr="true"/>
         </property>
        </widget>
       </item>
@@ -192,7 +192,7 @@
   <connection>
    <sender>cancelPushButton</sender>
    <signal>clicked()</signal>
-   <receiver>SAKXYSerialEditDialog</receiver>
+   <receiver>SAKChartsXYSerialEditDialog</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -208,7 +208,7 @@
   <connection>
    <sender>okPushButton</sender>
    <signal>clicked()</signal>
-   <receiver>SAKXYSerialEditDialog</receiver>
+   <receiver>SAKChartsXYSerialEditDialog</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">

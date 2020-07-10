@@ -7,8 +7,8 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
-#ifndef SAKXYSERIALEDITDIALOG_HH
-#define SAKXYSERIALEDITDIALOG_HH
+#ifndef SAKCHARTSXYSERIALEDITDIALOG_HH
+#define SAKCHARTSXYSERIALEDITDIALOG_HH
 
 #include <QMap>
 #include <QColor>
@@ -20,11 +20,11 @@
 #include <QPushButton>
 
 namespace Ui {
-    class SAKXYSerialEditDialog;
+    class SAKChartsXYSerialEditDialog;
 };
 
 /// @brief 散点图及曲线图显示类
-class SAKXYSerialEditDialog:public QDialog
+class SAKChartsXYSerialEditDialog:public QDialog
 {
     Q_OBJECT
 public:
@@ -57,8 +57,8 @@ public:
         }chartParameters;
     };
 
-    SAKXYSerialEditDialog(QWidget *parent = Q_NULLPTR);
-    ~SAKXYSerialEditDialog();
+    SAKChartsXYSerialEditDialog(QWidget *parent = Q_NULLPTR);
+    ~SAKChartsXYSerialEditDialog();
 
     /**
      * @brief parameters 获取参数
@@ -83,7 +83,7 @@ private:
     QMap<quint32, int> mLengthOfDataTypeMap;
     ParametersContext mParametersContext;
 private:
-    Ui::SAKXYSerialEditDialog *mUi;
+    Ui::SAKChartsXYSerialEditDialog *mUi;
     QComboBox *mDataTypeComboBox;
     QSpinBox *mStartByteSpinBox;
     QCheckBox *mBigEndianCheckBox;

@@ -11,13 +11,13 @@
 #include <QMapIterator>
 
 #include "SAKDebugPage.hh"
-#include "SAKXYSerialEditDialog.hh"
+#include "SAKChartsXYSerialEditDialog.hh"
 
-#include "ui_SAKXYSerialEditDialog.h"
+#include "ui_SAKChartsXYSerialEditDialog.h"
 
-SAKXYSerialEditDialog::SAKXYSerialEditDialog(QWidget *parent)
+SAKChartsXYSerialEditDialog::SAKChartsXYSerialEditDialog(QWidget *parent)
     :QDialog (parent)
-    ,mUi (new Ui::SAKXYSerialEditDialog)
+    ,mUi (new Ui::SAKChartsXYSerialEditDialog)
 {
     mUi->setupUi(this);
     mDataTypeComboBox = mUi->dataTypeComboBox;
@@ -74,17 +74,17 @@ SAKXYSerialEditDialog::SAKXYSerialEditDialog(QWidget *parent)
     }
 }
 
-SAKXYSerialEditDialog::~SAKXYSerialEditDialog()
+SAKChartsXYSerialEditDialog::~SAKChartsXYSerialEditDialog()
 {
     delete mUi;
 }
 
-SAKXYSerialEditDialog::ParametersContext SAKXYSerialEditDialog::parameters()
+SAKChartsXYSerialEditDialog::ParametersContext SAKChartsXYSerialEditDialog::parameters()
 {
     return mParametersContext;
 }
 
-void SAKXYSerialEditDialog::setParameters(ParametersContext ctx)
+void SAKChartsXYSerialEditDialog::setParameters(ParametersContext ctx)
 {
     /// @brief 更新ui
     for (int i = 0; i < mDataTypeComboBox->count(); i++){
@@ -107,40 +107,40 @@ void SAKXYSerialEditDialog::setParameters(ParametersContext ctx)
     mParametersContext = ctx;
 }
 
-int SAKXYSerialEditDialog::lengthOfDataType(int type)
+int SAKChartsXYSerialEditDialog::lengthOfDataType(int type)
 {
     int len = mLengthOfDataTypeMap.value(type, 0);
     return len;
 }
 
-void SAKXYSerialEditDialog::on_dataTypeComboBox_currentIndexChanged(int index)
+void SAKChartsXYSerialEditDialog::on_dataTypeComboBox_currentIndexChanged(int index)
 {
     int type = mDataTypeComboBox->itemData(index).toInt();
     mParametersContext.extractParameters.dataType = ParametersContext::ExtractParametersContext::DataType(type);
 }
 
-void SAKXYSerialEditDialog::on_startByteSpinBox_valueChanged(int value)
+void SAKChartsXYSerialEditDialog::on_startByteSpinBox_valueChanged(int value)
 {
     mParametersContext.extractParameters.startIndex = value;
 }
 
-void SAKXYSerialEditDialog::on_bigEndianCheckBox_clicked()
+void SAKChartsXYSerialEditDialog::on_bigEndianCheckBox_clicked()
 {
     mParametersContext.extractParameters.isBigEndian = mBigEndianCheckBox->isChecked();
 }
 
-void SAKXYSerialEditDialog::on_chartTypeComboBox_currentIndexChanged(int index)
+void SAKChartsXYSerialEditDialog::on_chartTypeComboBox_currentIndexChanged(int index)
 {
     int type = mDataTypeComboBox->itemData(index).toInt();
     mParametersContext.chartParameters.chartType = ParametersContext::ChartParametersContext::ChartType(type);
 }
 
-void SAKXYSerialEditDialog::on_chartNameLineEdit_textChanged(const QString &text)
+void SAKChartsXYSerialEditDialog::on_chartNameLineEdit_textChanged(const QString &text)
 {
     mParametersContext.chartParameters.chartName = text.isEmpty() ? QString("Empty") : text;
 }
 
-void SAKXYSerialEditDialog::on_chartColorPushButton_clicked()
+void SAKChartsXYSerialEditDialog::on_chartColorPushButton_clicked()
 {
     QColor color = QColorDialog::getColor(Qt::white, this, tr("颜色设置"));
     if (!color.isValid()){

@@ -13,7 +13,7 @@
 #include <QHBoxLayout>
 #include <QMapIterator>
 
-#include "SAKXYSerialEditDialog.hh"
+#include "SAKChartsXYSerialEditDialog.hh"
 #include "SAKChartsSettingsDialog.hh"
 #include "SAKChartsXYSerialWidget.hh"
 
@@ -22,7 +22,7 @@
 
 SAKChartsXYSerialWidget::SAKChartsXYSerialWidget(QWidget *parent)
     :QWidget (parent)
-    ,mXYSerialEditDialog(new SAKXYSerialEditDialog)
+    ,mXYSerialEditDialog(new SAKChartsXYSerialEditDialog)
     ,mChartSettingsDialog (new SAKChartsSettingsDialog)
     ,mUi (new Ui::SAKChartsXYSerialWidget)
 {
@@ -58,16 +58,16 @@ SAKChartsXYSerialWidget::SAKChartsXYSerialWidget(QWidget *parent)
     mEditPushButton->setMenu(mEditMenu);
 
     /// @brief 初始化映射变量，键为数据类型，值为成员函数指针
-    mAppendPointInterfaceMap.insert(SAKXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeInt8, &SAKChartsXYSerialWidget::appendPointInt8);
-    mAppendPointInterfaceMap.insert(SAKXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeUint8, &SAKChartsXYSerialWidget::appendPointUint8);
-    mAppendPointInterfaceMap.insert(SAKXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeInt16, &SAKChartsXYSerialWidget::appendPointInt16);
-    mAppendPointInterfaceMap.insert(SAKXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeUint16, &SAKChartsXYSerialWidget::appendPointUint16);
-    mAppendPointInterfaceMap.insert(SAKXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeInt32, &SAKChartsXYSerialWidget::appendPointInt32);
-    mAppendPointInterfaceMap.insert(SAKXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeUint32, &SAKChartsXYSerialWidget::appendPointUint32);
-    mAppendPointInterfaceMap.insert(SAKXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeInt64, &SAKChartsXYSerialWidget::appendPointInt64);
-    mAppendPointInterfaceMap.insert(SAKXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeUint64, &SAKChartsXYSerialWidget::appendPointUint64);
-    mAppendPointInterfaceMap.insert(SAKXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeFloat32, &SAKChartsXYSerialWidget::appendPointFloat32);
-    mAppendPointInterfaceMap.insert(SAKXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeFloat64, &SAKChartsXYSerialWidget::appendPointFloat64);
+    mAppendPointInterfaceMap.insert(SAKChartsXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeInt8, &SAKChartsXYSerialWidget::appendPointInt8);
+    mAppendPointInterfaceMap.insert(SAKChartsXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeUint8, &SAKChartsXYSerialWidget::appendPointUint8);
+    mAppendPointInterfaceMap.insert(SAKChartsXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeInt16, &SAKChartsXYSerialWidget::appendPointInt16);
+    mAppendPointInterfaceMap.insert(SAKChartsXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeUint16, &SAKChartsXYSerialWidget::appendPointUint16);
+    mAppendPointInterfaceMap.insert(SAKChartsXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeInt32, &SAKChartsXYSerialWidget::appendPointInt32);
+    mAppendPointInterfaceMap.insert(SAKChartsXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeUint32, &SAKChartsXYSerialWidget::appendPointUint32);
+    mAppendPointInterfaceMap.insert(SAKChartsXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeInt64, &SAKChartsXYSerialWidget::appendPointInt64);
+    mAppendPointInterfaceMap.insert(SAKChartsXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeUint64, &SAKChartsXYSerialWidget::appendPointUint64);
+    mAppendPointInterfaceMap.insert(SAKChartsXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeFloat32, &SAKChartsXYSerialWidget::appendPointFloat32);
+    mAppendPointInterfaceMap.insert(SAKChartsXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeFloat64, &SAKChartsXYSerialWidget::appendPointFloat64);
 
 #if 1
     QTimer *testTimer = new QTimer(this);
@@ -92,7 +92,7 @@ SAKChartsXYSerialWidget::~SAKChartsXYSerialWidget()
     while (iterator.hasNext()) {
         iterator.next();
         void *ptr = iterator.value();
-        SAKXYSerialEditDialog::ParametersContext *ctx = reinterpret_cast<SAKXYSerialEditDialog::ParametersContext *>(ptr);
+        SAKChartsXYSerialEditDialog::ParametersContext *ctx = reinterpret_cast<SAKChartsXYSerialEditDialog::ParametersContext *>(ptr);
         delete ctx;
     }
     mXYSerialParametersMap.clear();
@@ -148,7 +148,7 @@ void SAKChartsXYSerialWidget::editXYSerial()
 
     QXYSeries *xySerial = action->data().value<QXYSeries *>();
     void *voidPtr = mXYSerialParametersMap.value(xySerial);
-    SAKXYSerialEditDialog::ParametersContext *ctx = reinterpret_cast<SAKXYSerialEditDialog::ParametersContext *>(voidPtr);
+    SAKChartsXYSerialEditDialog::ParametersContext *ctx = reinterpret_cast<SAKChartsXYSerialEditDialog::ParametersContext *>(voidPtr);
     mXYSerialEditDialog->setParameters(*ctx);
     mXYSerialEditDialog->show();
     if (mXYSerialEditDialog->exec() == QDialog::Accepted){
@@ -172,7 +172,7 @@ QAction *SAKChartsXYSerialWidget::senderToAction(QObject *sender)
 
 void SAKChartsXYSerialWidget::appendPoint(QXYSeries *xySerial, QByteArray frame, void *parametersCtx)
 {
-    SAKXYSerialEditDialog::ParametersContext *ctx = reinterpret_cast<SAKXYSerialEditDialog::ParametersContext *>(parametersCtx);
+    SAKChartsXYSerialEditDialog::ParametersContext *ctx = reinterpret_cast<SAKChartsXYSerialEditDialog::ParametersContext *>(parametersCtx);
     int offset = ctx->extractParameters.startIndex-1;
     int dataType = ctx->extractParameters.dataType;
     int dataLength = mXYSerialEditDialog->lengthOfDataType(dataType);
@@ -260,9 +260,9 @@ void SAKChartsXYSerialWidget::on_addPushButton_clicked()
         return;
     }
 
-    SAKXYSerialEditDialog::ParametersContext ctx = mXYSerialEditDialog->parameters();
+    SAKChartsXYSerialEditDialog::ParametersContext ctx = mXYSerialEditDialog->parameters();
     QXYSeries *xySerial = Q_NULLPTR;
-    if (ctx.chartParameters.chartType == SAKXYSerialEditDialog::ParametersContext::ChartParametersContext::ChartTypeLine){
+    if (ctx.chartParameters.chartType == SAKChartsXYSerialEditDialog::ParametersContext::ChartParametersContext::ChartTypeLine){
         xySerial = new QLineSeries;
     }else{
         xySerial = new QScatterSeries;
@@ -277,7 +277,7 @@ void SAKChartsXYSerialWidget::on_addPushButton_clicked()
     xySerial->setName(ctx.chartParameters.chartName);
 
     /// @brief 保存参数
-    SAKXYSerialEditDialog::ParametersContext *ctxPtr = new SAKXYSerialEditDialog::ParametersContext;
+    SAKChartsXYSerialEditDialog::ParametersContext *ctxPtr = new SAKChartsXYSerialEditDialog::ParametersContext;
     *ctxPtr = ctx;
     mXYSerialParametersMap.insert(xySerial, ctxPtr);
 
