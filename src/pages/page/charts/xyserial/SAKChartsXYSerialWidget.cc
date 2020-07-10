@@ -14,7 +14,7 @@
 #include <QMapIterator>
 
 #include "SAKChartsXYSerialEditDialog.hh"
-#include "SAKChartsSettingsDialog.hh"
+#include "SAKChartsXYSerialChartViewSettingsDialog.hh"
 #include "SAKChartsXYSerialWidget.hh"
 
 #include "ui_SAKChartsXYSerialWidget.h"
@@ -23,7 +23,7 @@
 SAKChartsXYSerialWidget::SAKChartsXYSerialWidget(QWidget *parent)
     :QWidget (parent)
     ,mXYSerialEditDialog(new SAKChartsXYSerialEditDialog)
-    ,mChartSettingsDialog (new SAKChartsSettingsDialog)
+    ,mChartSettingsDialog (new SAKChartsXYSerialChartViewSettingsDialog)
     ,mUi (new Ui::SAKChartsXYSerialWidget)
 {
     mUi->setupUi(this);

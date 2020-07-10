@@ -7,8 +7,8 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
-#ifndef SAKCHARTSSETTINGSDIALOG_HH
-#define SAKCHARTSSETTINGSDIALOG_HH
+#ifndef SAKCHARTSXYSERIALCHARTVIEWSETTINGSDIALOG_HH
+#define SAKCHARTSXYSERIALCHARTVIEWSETTINGSDIALOG_HH
 
 #include <QMap>
 #include <QDialog>
@@ -19,18 +19,18 @@
 #include <QPushButton>
 
 namespace Ui {
-    class SAKChartsSettingsDialog;
+    class SAKChartsXYSerialChartViewSettingsDialog;
 };
 
 /// @brief 图标参数设置类
-class SAKChartsSettingsDialog:public QDialog
+class SAKChartsXYSerialChartViewSettingsDialog:public QDialog
 {
     Q_OBJECT
 public:
-    SAKChartsSettingsDialog(QWidget *parent = Q_NULLPTR);
-    ~SAKChartsSettingsDialog();
+    SAKChartsXYSerialChartViewSettingsDialog(QWidget *parent = Q_NULLPTR);
+    ~SAKChartsXYSerialChartViewSettingsDialog();
 private:
-    Ui::SAKChartsSettingsDialog *mUi;
+    Ui::SAKChartsXYSerialChartViewSettingsDialog *mUi;
 };
 
 #endif
