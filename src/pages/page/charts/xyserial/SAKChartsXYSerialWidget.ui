@@ -15,9 +15,9 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="1" column="2">
-    <widget class="QPushButton" name="closePushButton">
+    <widget class="QPushButton" name="clearPushButton">
      <property name="text">
-      <string>关闭</string>
+      <string>清空</string>
      </property>
     </widget>
    </item>
@@ -75,22 +75,5 @@
   </layout>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>closePushButton</sender>
-   <signal>clicked()</signal>
-   <receiver>SAKChartsXYSerialWidget</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>410</x>
-     <y>326</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>6</x>
-     <y>4</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>
