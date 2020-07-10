@@ -1,58 +1,33 @@
-/****************************************************************************
-**
-** Copyright (C) 2016 The Qt Company Ltd.
-** Contact: https://www.qt.io/licensing/
-**
-** This file is part of the Qt Charts module of the Qt Toolkit.
-**
-** $QT_BEGIN_LICENSE:GPL$
-** Commercial License Usage
-** Licensees holding valid commercial Qt licenses may use this file in
-** accordance with the commercial license agreement provided with the
-** Software or, alternatively, in accordance with the terms contained in
-** a written agreement between you and The Qt Company. For licensing terms
-** and conditions see https://www.qt.io/terms-conditions. For further
-** information use the contact form at https://www.qt.io/contact-us.
-**
-** GNU General Public License Usage
-** Alternatively, this file may be used under the terms of the GNU
-** General Public License version 3 or (at your option) any later version
-** approved by the KDE Free Qt Foundation. The licenses are as published by
-** the Free Software Foundation and appearing in the file LICENSE.GPL3
-** included in the packaging of this file. Please review the following
-** information to ensure the GNU General Public License requirements will
-** be met: https://www.gnu.org/licenses/gpl-3.0.html.
-**
-** $QT_END_LICENSE$
-**
-****************************************************************************/
+/*
+ * Copyright 2020 Qter(qsak@foxmail.com). All rights reserved.
+ *
+ * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
+ * project(https://www.qsak.pro). The project is an open source project. You can
+ * get the source of the project from: "https://github.com/qsak/QtSwissArmyKnife"
+ * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
+ * group which number is 952218522 to have a communication.
+ */
+#ifndef SAKCHARTSXYSERIALCHARTVIEW_HH
+#define SAKCHARTSXYSERIALCHARTVIEW_HH
 
-#ifndef CHARTVIEW_H
-#define CHARTVIEW_H
-
-#include <QtCharts/QChartView>
-#include <QtWidgets/QRubberBand>
+#include <QChartView>
+#include <QRubberBand>
 
 QT_CHARTS_USE_NAMESPACE
 
-//![1]
-class ChartView : public QChartView
-//![1]
+/// @brief 图表视图(对Qt官方示例的重构)
+class SAKChartsXYSerialChartView : public QChartView
 {
 public:
-    ChartView(QChart *chart, QWidget *parent = 0);
-
-//![2]
+    SAKChartsXYSerialChartView(QChart *chart, QWidget *parent = 0);
 protected:
     bool viewportEvent(QEvent *event);
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);
     void keyPressEvent(QKeyEvent *event);
-//![2]
-
 private:
-    bool m_isTouching;
+    bool mIsTouching;
 };
 
 #endif
