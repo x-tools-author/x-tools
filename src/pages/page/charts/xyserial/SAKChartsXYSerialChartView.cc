@@ -82,7 +82,7 @@ void SAKChartsXYSerialChartView::wheelEvent(QWheelEvent *event)
         mIsTouching = false;
     }
 
-    if (event->delta() > 0){
+    if (event->angleDelta().y() > 0){
         chart()->zoomOut();
     }else{
         chart()->zoomIn();

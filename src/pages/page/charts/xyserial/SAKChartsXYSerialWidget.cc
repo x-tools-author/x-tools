@@ -12,6 +12,7 @@
 #include <QAction>
 #include <QHBoxLayout>
 #include <QMapIterator>
+#include <QRandomGenerator>
 
 #include "SAKChartsXYSerialWidget.hh"
 #include "SAKChartsXYSerialChartView.hh"
@@ -77,7 +78,11 @@ SAKChartsXYSerialWidget::SAKChartsXYSerialWidget(QWidget *parent)
     QTimer *testTimer = new QTimer(this);
     testTimer->setInterval(1000);
     connect(testTimer, &QTimer::timeout, this, [&](){
+#if QT_VERSION >= QT_VERSION_CHECK(5, 10, 0)
+        quint64 value = QRandomGenerator::global()->generate()%100;
+#else
         quint64 value = qrand()%100;
+#endif
         QByteArray data(reinterpret_cast<char*>(&value), sizeof(8));
         inputBytes(data);
     });
