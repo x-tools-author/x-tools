@@ -16,7 +16,6 @@ SAKChartsXYSerialChartViewSettingsDialog::SAKChartsXYSerialChartViewSettingsDial
     ,mUi (new Ui::SAKChartsXYSerialChartViewSettingsDialog)
 {
     mUi->setupUi(this);
-
 }
 
 SAKChartsXYSerialChartViewSettingsDialog::~SAKChartsXYSerialChartViewSettingsDialog()
