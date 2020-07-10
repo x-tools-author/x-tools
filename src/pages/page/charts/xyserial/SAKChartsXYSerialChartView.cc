@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2020 Qter(qsak@foxmail.com). All rights reserved.
  *
  * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
@@ -8,6 +8,8 @@
  * group which number is 952218522 to have a communication.
  */
 #include <QMouseEvent>
+#include <QWheelEvent>
+
 #include "SAKChartsXYSerialChartView.hh"
 
 SAKChartsXYSerialChartView::SAKChartsXYSerialChartView(QChart *chart, QWidget *parent) :
@@ -35,28 +37,58 @@ bool SAKChartsXYSerialChartView::viewportEvent(QEvent *event)
 
 void SAKChartsXYSerialChartView::mousePressEvent(QMouseEvent *event)
 {
-    if (mIsTouching)
+    if (mIsTouching){
         return;
+    }
+
     QChartView::mousePressEvent(event);
 }
 
 void SAKChartsXYSerialChartView::mouseMoveEvent(QMouseEvent *event)
 {
-    if (mIsTouching)
+    if (mIsTouching){
         return;
+    }
+
     QChartView::mouseMoveEvent(event);
 }
 
 void SAKChartsXYSerialChartView::mouseReleaseEvent(QMouseEvent *event)
 {
-    if (mIsTouching)
+    if (mIsTouching){
         mIsTouching = false;
+    }
 
     // Because we disabled animations when touch event was detected
     // we must put them back on.
     chart()->setAnimationOptions(QChart::SeriesAnimations);
 
     QChartView::mouseReleaseEvent(event);
+}
+
+void SAKChartsXYSerialChartView::mouseDoubleClickEvent(QMouseEvent *event)
+{
+    if (mIsTouching){
+        mIsTouching = false;
+    }
+
+    chart()->zoomReset();
+    QChartView::mouseDoubleClickEvent(event);
+}
+
+void SAKChartsXYSerialChartView::wheelEvent(QWheelEvent *event)
+{
+    if (mIsTouching){
+        mIsTouching = false;
+    }
+
+    if (event->delta() > 0){
+        chart()->zoomOut();
+    }else{
+        chart()->zoomIn();
+    }
+
+    QChartView::wheelEvent(event);
 }
 
 void SAKChartsXYSerialChartView::keyPressEvent(QKeyEvent *event)
