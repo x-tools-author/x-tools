@@ -8,19 +8,19 @@
  * group which number is 952218522 to have a communication.
  */
 #include "SAKDebugPage.hh"
-#include "SAKMoreSettingsWidget.hh"
+#include "SAKProtocolAnalyzerWidget.hh"
 
-#include "ui_SAKMoreSettingsWidget.h"
+#include "ui_SAKProtocolAnalyzerWidget.h"
 
-SAKMoreSettingsWidget::SAKMoreSettingsWidget(SAKDebugPage *debugPage, QWidget *parent)
+SAKProtocolAnalyzerWidget::SAKProtocolAnalyzerWidget(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget (parent)
     ,_debugPage (debugPage)
-    ,ui (new Ui::SAKMoreSettingsWidget)
+    ,ui (new Ui::SAKProtocolAnalyzerWidget)
 {
     ui->setupUi(this);
 }
 
-SAKMoreSettingsWidget::~SAKMoreSettingsWidget()
+SAKProtocolAnalyzerWidget::~SAKProtocolAnalyzerWidget()
 {
     delete ui;
 }
