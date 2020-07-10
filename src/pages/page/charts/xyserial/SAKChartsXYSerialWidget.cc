@@ -42,6 +42,7 @@ SAKChartsXYSerialWidget::SAKChartsXYSerialWidget(QWidget *parent)
 
     mXAxis = new QDateTimeAxis;
     mXAxis->setRange(QDateTime::currentDateTime(), QDateTime::currentDateTime().addSecs(60));
+    mXAxis->setFormat(QString("mm:ss"));
     mChart->addAxis(mXAxis, Qt::AlignBottom);
 
     mYAxis = new QValueAxis;
@@ -156,6 +157,15 @@ void SAKChartsXYSerialWidget::editXYSerial()
         *ctx = mXYSerialEditDialog->parameters();
         xySerial->setColor(ctx->chartParameters.chartColor);
         xySerial->setName(ctx->chartParameters.chartName);
+    }
+
+    /// @brief 更改菜单项文本显示
+    action->setText(ctx->chartParameters.chartName);
+    for (auto var : mDeleteMenu->actions()){
+        if (var->data().value<QXYSeries *>() == xySerial){
+            var->setText(ctx->chartParameters.chartName);
+            break;
+        }
     }
 }
 
