@@ -13,6 +13,7 @@
 #include <QMenu>
 #include <QChart>
 #include <QWidget>
+#include <QDateTime>
 #include <QValueAxis>
 #include <QTabWidget>
 #include <QPushButton>
@@ -53,10 +54,38 @@ private:
     QMap<QXYSeries *, void *> mXYSerialParametersMap;
     QMenu *mDeleteMenu;
     QMenu *mEditMenu;
+    /// @brief 将数据类型映射为添加坐标点的接口
+    QMap<int, void (SAKChartsXYSerialWidget::*)(QByteArray, QXYSeries *)> mAppendPointInterfaceMap;
 private slots:
     void deleteXYSerial();
     void editXYSerial();
+private:
     QAction *senderToAction(QObject *sender);
+    /// @brief 添加坐标点, parametersCtx类型为SAKXYSerialEditDialog::ParametersContext实例指针
+    void appendPoint(QXYSeries *xySerial, QByteArray frame, void *parametersCtx);
+    void appendPointInt8(QByteArray data, QXYSeries *xySerial);
+    void appendPointUint8(QByteArray data, QXYSeries *xySerial);
+    void appendPointInt16(QByteArray data, QXYSeries *xySerial);
+    void appendPointUint16(QByteArray data, QXYSeries *xySerial);
+    void appendPointInt32(QByteArray data, QXYSeries *xySerial);
+    void appendPointUin32(QByteArray data, QXYSeries *xySerial);
+    void appendPointInt64(QByteArray data, QXYSeries *xySerial);
+    void appendPointUint64(QByteArray data, QXYSeries *xySerial);
+    void appendPointFloat16(QByteArray data, QXYSeries *xySerial);
+    void appendPointFloat32(QByteArray data, QXYSeries *xySerial);
+    void appendPointFloat64(QByteArray data, QXYSeries *xySerial);
+    /// @brief 添加坐标点函数模板
+    template<typename T>
+    void appendPointActually(QByteArray data, QXYSeries *xySerial){
+        if (data.length() < sizeof(T)){
+            Q_ASSERT_X(false, __FUNCTION__, "Data error: lack of data!");
+            return;
+        }
+
+        T *ptr = reinterpret_cast<T *>(data.data());
+        T yValue = *ptr;
+        xySerial->append(qreal(QDateTime::currentMSecsSinceEpoch()), qreal(yValue));
+    }
 private:
     Ui::SAKChartsXYSerialWidget *mUi;
     QWidget *mChartViewerWidget;

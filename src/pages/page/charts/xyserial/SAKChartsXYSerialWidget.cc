@@ -9,7 +9,6 @@
  */
 #include <QDialog>
 #include <QAction>
-#include <QDateTime>
 #include <QHBoxLayout>
 #include <QMapIterator>
 
@@ -77,7 +76,19 @@ SAKChartsXYSerialWidget::~SAKChartsXYSerialWidget()
 
 void SAKChartsXYSerialWidget::inputBytes(QByteArray bytes)
 {
-    Q_UNUSED(bytes);
+    /// @brief 不处理数空数组
+    if (bytes.isEmpty()){
+        return;
+    }
+
+    QMapIterator<QXYSeries *, void *> iterator(mXYSerialParametersMap);
+    while (iterator.hasNext()) {
+        iterator.next();
+        QXYSeries *xySerial = iterator.key();
+        void *ctx = iterator.value();
+        /// @brief 添加坐标点
+        appendPoint(xySerial, bytes, ctx);
+    }
 }
 
 void SAKChartsXYSerialWidget::deleteXYSerial()
@@ -133,6 +144,89 @@ QAction *SAKChartsXYSerialWidget::senderToAction(QObject *sender)
     }
 
     return action;
+}
+
+void SAKChartsXYSerialWidget::appendPoint(QXYSeries *xySerial, QByteArray frame, void *parametersCtx)
+{
+    SAKXYSerialEditDialog::ParametersContext *ctx = reinterpret_cast<SAKXYSerialEditDialog::ParametersContext *>(parametersCtx);
+    int offset = ctx->extractParameters.startIndex-1;
+    int dataType = ctx->extractParameters.dataType;
+    int dataLength = mXYSerialEditDialog->lengthOfDataType(dataType);
+    if (dataLength){
+        int minLen = offset + dataLength;
+        if (frame.length() >= minLen){
+            QByteArray data(frame.data()+offset, dataLength);
+            /// @brief 处理大端序
+            if (ctx->extractParameters.isBigEndian){
+                QByteArray temp;
+                for (int i = 0; i < data.length(); i++){
+                    temp.append(data.length()-1-i);
+                }
+                data = temp;
+            }
+
+            /// @brief 通过指针调用成员函数
+            if (mAppendPointInterfaceMap.contains(ctx->extractParameters.dataType)){
+                void (SAKChartsXYSerialWidget::*interface)(QByteArray, QXYSeries *) = mAppendPointInterfaceMap.value(dataType);
+                (this->*interface)(data, xySerial);
+            }
+        }
+    }
+}
+
+void SAKChartsXYSerialWidget::appendPointInt8(QByteArray data, QXYSeries *xySerial)
+{
+    appendPointActually<qint8>(data, xySerial);
+}
+
+void SAKChartsXYSerialWidget::appendPointUint8(QByteArray data, QXYSeries *xySerial)
+{
+    appendPointActually<quint8>(data, xySerial);
+}
+
+void SAKChartsXYSerialWidget::appendPointInt16(QByteArray data, QXYSeries *xySerial)
+{
+    appendPointActually<qint16>(data, xySerial);
+}
+
+void SAKChartsXYSerialWidget::appendPointUint16(QByteArray data, QXYSeries *xySerial)
+{
+    appendPointActually<quint16>(data, xySerial);
+}
+
+void SAKChartsXYSerialWidget::appendPointInt32(QByteArray data, QXYSeries *xySerial)
+{
+    appendPointActually<qint32>(data, xySerial);
+}
+
+void SAKChartsXYSerialWidget::appendPointUin32(QByteArray data, QXYSeries *xySerial)
+{
+    appendPointActually<quint32>(data, xySerial);
+}
+
+void SAKChartsXYSerialWidget::appendPointInt64(QByteArray data, QXYSeries *xySerial)
+{
+    appendPointActually<qint64>(data, xySerial);
+}
+
+void SAKChartsXYSerialWidget::appendPointUint64(QByteArray data, QXYSeries *xySerial)
+{
+    appendPointActually<quint64>(data, xySerial);
+}
+
+void SAKChartsXYSerialWidget::appendPointFloat16(QByteArray data, QXYSeries *xySerial)
+{
+    appendPointActually<qfloat16>(data, xySerial);
+}
+
+void SAKChartsXYSerialWidget::appendPointFloat32(QByteArray data, QXYSeries *xySerial)
+{
+    appendPointActually<float>(data, xySerial);
+}
+
+void SAKChartsXYSerialWidget::appendPointFloat64(QByteArray data, QXYSeries *xySerial)
+{
+    appendPointActually<double>(data, xySerial);
 }
 
 void SAKChartsXYSerialWidget::on_chartSettingsPushButton_clicked()
