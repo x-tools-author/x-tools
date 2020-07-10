@@ -11,6 +11,7 @@
 #define SAKXYSERIALEDITDIALOG_HH
 
 #include <QMap>
+#include <QColor>
 #include <QDialog>
 #include <QSpinBox>
 #include <QLineEdit>
@@ -56,7 +57,7 @@ public:
                 ChartTypeScatter
             }chartType;
             QString chartName;
-            QString chartColor;
+            QColor chartColor;
         }chartParameters;
     };
 

@@ -7,7 +7,6 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
-#include <QColor>
 #include <QColorDialog>
 #include <QMapIterator>
 
@@ -63,7 +62,7 @@ SAKXYSerialEditDialog::SAKXYSerialEditDialog(QWidget *parent)
     mParametersContext.extractParameters.isBigEndian = mBigEndianCheckBox->isChecked();
     mParametersContext.chartParameters.chartName = mChartNameLineEdit->text();
     mParametersContext.chartParameters.chartType = ParametersContext::ChartParametersContext::ChartType( mChartTypeComboBox->currentData().toInt());
-    if(mParametersContext.chartParameters.chartColor.isEmpty()){
+    if(!mParametersContext.chartParameters.chartColor.isValid()){
         mParametersContext.chartParameters.chartColor = QString("#ff0000");
     }
 }
@@ -95,7 +94,7 @@ void SAKXYSerialEditDialog::setParameters(ParametersContext ctx)
         }
     }
     mChartNameLineEdit->setText(ctx.chartParameters.chartName);
-    mChartColorPushButton->setStyleSheet(QString("QPushButton{background:%1}").arg(ctx.chartParameters.chartColor));
+    mChartColorPushButton->setStyleSheet(QString("QPushButton{background:%1}").arg(ctx.chartParameters.chartColor.name(QColor::HexRgb)));
 
     /// @brief 更新参数（更新ui的同时会更新部分参数，但不是全部）
     mParametersContext = ctx;
@@ -137,6 +136,6 @@ void SAKXYSerialEditDialog::on_chartColorPushButton_clicked()
 
     /// @brief "#000000"
     QString hexRgb = color.name(QColor::HexRgb);
-    mParametersContext.chartParameters.chartColor = hexRgb;
+    mParametersContext.chartParameters.chartColor = color;
     mChartColorPushButton->setStyleSheet(QString("QPushButton{background:%1}").arg(hexRgb));
 }
