@@ -42,6 +42,21 @@ SAKXYSerialEditDialog::SAKXYSerialEditDialog(QWidget *parent)
     mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeFloat64, tr("有符号64位浮点数"));
     mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeUfloat64, tr("无符号64位浮点数"));
 
+    mLengthOfDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeInt8, 1);
+    mLengthOfDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeUint8, 1);
+    mLengthOfDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeInt16, 2);
+    mLengthOfDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeUint16, 2);
+    mLengthOfDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeInt32, 4);
+    mLengthOfDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeUint32, 4);
+    mLengthOfDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeInt64, 8);
+    mLengthOfDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeUint64, 8);
+    mLengthOfDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeFloat16, 2);
+    mLengthOfDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeUfloat16, 2);
+    mLengthOfDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeFloat32, 4);
+    mLengthOfDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeUfloat32, 4);
+    mLengthOfDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeFloat64, 8);
+    mLengthOfDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeUfloat64, 8);
+
     /// @brief 初始化数据类型选择框
     QMapIterator<quint32, QString> dataTypeMapInterator(mDataTypeMap);
     while (dataTypeMapInterator.hasNext()) {
@@ -98,6 +113,12 @@ void SAKXYSerialEditDialog::setParameters(ParametersContext ctx)
 
     /// @brief 更新参数（更新ui的同时会更新部分参数，但不是全部）
     mParametersContext = ctx;
+}
+
+int SAKXYSerialEditDialog::lengthOfDataType(int type)
+{
+    int len = mLengthOfDataTypeMap.value(type, 0);
+    return len;
 }
 
 void SAKXYSerialEditDialog::on_dataTypeComboBox_currentIndexChanged(int index)

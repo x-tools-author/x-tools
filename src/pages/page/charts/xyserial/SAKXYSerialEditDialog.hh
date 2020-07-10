@@ -75,8 +75,16 @@ public:
      * @param ctx 参数上下文
      */
     void setParameters(ParametersContext ctx);
+
+    /**
+     * @brief lengthOfDataType 获取数据类型的字节长度
+     * @param type 数据类型：ParametersContext::ExtractParametersContext::DataType
+     * @return 数据类型字节长度
+     */
+    int lengthOfDataType(int type);
 private:
     QMap<quint32, QString> mDataTypeMap;
+    QMap<quint32, int> mLengthOfDataTypeMap;
     ParametersContext mParametersContext;
 private:
     Ui::SAKXYSerialEditDialog *mUi;
