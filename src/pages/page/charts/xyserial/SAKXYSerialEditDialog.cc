@@ -35,7 +35,6 @@ SAKXYSerialEditDialog::SAKXYSerialEditDialog(QWidget *parent)
     mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeUint32, tr("无符号32位整数"));
     mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeInt64, tr("有符号64位整数"));
     mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeUint64, tr("无符号64位整数"));
-    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeFloat16, tr("有符号16位浮点数"));
     mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeFloat32, tr("有符号32位浮点数"));
     mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeFloat64, tr("有符号64位浮点数"));
 
@@ -47,7 +46,6 @@ SAKXYSerialEditDialog::SAKXYSerialEditDialog(QWidget *parent)
     mLengthOfDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeUint32, 4);
     mLengthOfDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeInt64, 8);
     mLengthOfDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeUint64, 8);
-    mLengthOfDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeFloat16, 2);
     mLengthOfDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeFloat32, 4);
     mLengthOfDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeFloat64, 8);
 

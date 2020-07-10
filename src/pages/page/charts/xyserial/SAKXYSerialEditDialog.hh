@@ -40,7 +40,6 @@ public:
                 DataTypeUint32,
                 DataTypeInt64,
                 DataTypeUint64,
-                DataTypeFloat16,
                 DataTypeFloat32,
                 DataTypeFloat64,
             }dataType;
