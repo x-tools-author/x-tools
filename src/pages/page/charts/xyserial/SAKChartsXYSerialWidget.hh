@@ -14,6 +14,7 @@
 #include <QChart>
 #include <QWidget>
 #include <QDateTime>
+#include <QCheckBox>
 #include <QValueAxis>
 #include <QTabWidget>
 #include <QPushButton>
@@ -97,6 +98,7 @@ private:
     Ui::SAKChartsXYSerialWidget *mUi;
     QWidget *mChartViewerWidget;
     QPushButton *mChartSettingsPushButton;
+    QCheckBox *mPauseCheckBox;
     QPushButton *mClearPushButton;
     QPushButton *mDeletePushButton;
     QPushButton *mEditPushButton;

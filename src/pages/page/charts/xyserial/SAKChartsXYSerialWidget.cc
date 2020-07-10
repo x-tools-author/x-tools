@@ -30,6 +30,7 @@ SAKChartsXYSerialWidget::SAKChartsXYSerialWidget(QWidget *parent)
     mUi->setupUi(this);
     mChartViewerWidget = mUi->chartViewerWidget;
     mChartSettingsPushButton = mUi->chartSettingsPushButton;
+    mPauseCheckBox = mUi->pauseCheckBox;
     mClearPushButton = mUi->clearPushButton;
     mDeletePushButton = mUi->deletePushButton;
     mEditPushButton = mUi->editPushButton;
@@ -104,8 +105,8 @@ SAKChartsXYSerialWidget::~SAKChartsXYSerialWidget()
 
 void SAKChartsXYSerialWidget::inputBytes(QByteArray bytes)
 {
-    /// @brief 不处理数空数组
-    if (bytes.isEmpty()){
+    /// @brief 不处理数空数组,暂停输入时也不处理数据
+    if (bytes.isEmpty() || mPauseCheckBox->isChecked()){
         return;
     }
 
