@@ -71,36 +71,57 @@ void SAKChartsXYSerialWidget::inputBytes(QByteArray bytes)
 
 void SAKChartsXYSerialWidget::deleteXYSerial()
 {
-    /// @brief 不通过信号调用该函数是无效的
-    if (!sender()){
-        Q_ASSERT_X(false, __FUNCTION__, "Can not called the function directly");
+    /// @brief 确保是通过按钮信息号（删除按钮的菜单项触发）调用该函数的
+    QAction *action = senderToAction(sender());
+    if (!action){
+         Q_ASSERT_X(false, __FUNCTION__, "Can not called the function directly");
         return;
     }
 
-    /// @brief 确保是通过按钮信息号（删除按钮的菜单项触发）调用该函数的
-    if (sender()->inherits("QAction")){
-        QAction *action = qobject_cast<QAction *>(sender());
-        QXYSeries *xySerial = action->data().value<QXYSeries *>();
-
-        /// @brief 删除相关资源
-        mChart->removeSeries(xySerial);
-        mXYSerialParametersMap.remove(xySerial);
-        action->deleteLater();
-        for (auto var : mEditMenu->actions()){
-            if (var->data().value<QXYSeries *>() == xySerial){
-                var->deleteLater();
-                break;
-            }
+    /// @brief 删除相关资源
+    QXYSeries *xySerial = action->data().value<QXYSeries *>();
+    mChart->removeSeries(xySerial);
+    mXYSerialParametersMap.remove(xySerial);
+    action->deleteLater();
+    for (auto var : mEditMenu->actions()){
+        if (var->data().value<QXYSeries *>() == xySerial){
+            var->deleteLater();
+            break;
         }
     }
 }
 
 void SAKChartsXYSerialWidget::editXYSerial()
 {
-    mXYSerialEditDialog->show();
-    if (mXYSerialEditDialog->exec() != QDialog::Accepted){
+    /// @brief 确保是通过按钮信息号（删除按钮的菜单项触发）调用该函数的
+    QAction *action = senderToAction(sender());
+    if (!action){
+         Q_ASSERT_X(false, __FUNCTION__, "Can not called the function directly");
         return;
     }
+
+    QXYSeries *xySerial = action->data().value<QXYSeries *>();
+    void *voidPtr = mXYSerialParametersMap.value(xySerial);
+    SAKXYSerialEditDialog::ParametersContext *ctx = reinterpret_cast<SAKXYSerialEditDialog::ParametersContext *>(voidPtr);
+    mXYSerialEditDialog->setParameters(*ctx);
+    mXYSerialEditDialog->show();
+    if (mXYSerialEditDialog->exec() == QDialog::Accepted){
+        *ctx = mXYSerialEditDialog->parameters();
+        xySerial->setColor(ctx->chartParameters.chartColor);
+        xySerial->setName(ctx->chartParameters.chartName);
+    }
+}
+
+QAction *SAKChartsXYSerialWidget::senderToAction(QObject *sender)
+{
+    QAction *action = Q_NULLPTR;
+    if (sender){
+        if (sender->inherits("QAction")){
+            action = qobject_cast<QAction *>(sender);
+        }
+    }
+
+    return action;
 }
 
 void SAKChartsXYSerialWidget::on_chartSettingsPushButton_clicked()

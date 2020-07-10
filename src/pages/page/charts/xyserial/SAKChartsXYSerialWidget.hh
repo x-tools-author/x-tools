@@ -56,6 +56,7 @@ private:
 private slots:
     void deleteXYSerial();
     void editXYSerial();
+    QAction *senderToAction(QObject *sender);
 private:
     Ui::SAKChartsXYSerialWidget *mUi;
     QWidget *mChartViewerWidget;
