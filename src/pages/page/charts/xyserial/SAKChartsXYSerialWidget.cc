@@ -214,11 +214,6 @@ void SAKChartsXYSerialWidget::appendPointUint64(QByteArray data, QXYSeries *xySe
     appendPointActually<quint64>(data, xySerial);
 }
 
-void SAKChartsXYSerialWidget::appendPointFloat16(QByteArray data, QXYSeries *xySerial)
-{
-    appendPointActually<qfloat16>(data, xySerial);
-}
-
 void SAKChartsXYSerialWidget::appendPointFloat32(QByteArray data, QXYSeries *xySerial)
 {
     appendPointActually<float>(data, xySerial);

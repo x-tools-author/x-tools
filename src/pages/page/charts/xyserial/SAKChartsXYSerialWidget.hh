@@ -71,7 +71,6 @@ private:
     void appendPointUin32(QByteArray data, QXYSeries *xySerial);
     void appendPointInt64(QByteArray data, QXYSeries *xySerial);
     void appendPointUint64(QByteArray data, QXYSeries *xySerial);
-    void appendPointFloat16(QByteArray data, QXYSeries *xySerial);
     void appendPointFloat32(QByteArray data, QXYSeries *xySerial);
     void appendPointFloat64(QByteArray data, QXYSeries *xySerial);
     /// @brief 添加坐标点函数模板
