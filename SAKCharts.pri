@@ -4,30 +4,30 @@ qtHaveModule(charts){
 }
 
 contains(DEFINES, SAK_IMPORT_CHARTS_MODULE){
-    INCLUDEPATH += \
-        $$PWD/src/pages/page/charts \
-        $$PWD/src/pages/page/charts/throughput \
-        $$PWD/src/pages/page/charts/xyserial
+INCLUDEPATH += \
+    $$PWD/src/pages/page/charts \
+    $$PWD/src/pages/page/charts/throughput \
+    $$PWD/src/pages/page/charts/xyserial
 
-    FORMS += \
-        $$PWD/src/pages/page/charts/xyserial/SAKChartsSettingsDialog.ui \
-        $$PWD/src/pages/page/charts/SAKChartsManager.ui \
-        $$PWD/src/pages/page/charts/xyserial/SAKChartsXYSerialWidget.ui \
-        $$PWD/src/pages/page/charts/xyserial/SAKChartsXYSerialEditDialog.ui
+FORMS += \
+    $$PWD/src/pages/page/charts/xyserial/SAKChartsXYSerialChartViewSettingsDialog.ui \
+    $$PWD/src/pages/page/charts/SAKChartsManager.ui \
+    $$PWD/src/pages/page/charts/xyserial/SAKChartsXYSerialWidget.ui \
+    $$PWD/src/pages/page/charts/xyserial/SAKChartsXYSerialEditDialog.ui
 
-    HEADERS += \
-        $$PWD/src/pages/page/charts/SAKChartsManager.hh \
-        $$PWD/src/pages/page/charts/throughput/SAKChartsThroughputWidget.hh \
-        $$PWD/src/pages/page/charts/xyserial/SAKChartsSettingsDialog.hh \
-        $$PWD/src/pages/page/charts/xyserial/SAKChartsXYSerialEditDialog.hh \
-        $$PWD/src/pages/page/charts/xyserial/SAKChartsXYSerialWidget.hh
+HEADERS += \
+    $$PWD/src/pages/page/charts/SAKChartsManager.hh \
+    $$PWD/src/pages/page/charts/throughput/SAKChartsThroughputWidget.hh \
+    $$PWD/src/pages/page/charts/xyserial/SAKChartsXYSerialChartViewSettingsDialog.hh \
+    $$PWD/src/pages/page/charts/xyserial/SAKChartsXYSerialEditDialog.hh \
+    $$PWD/src/pages/page/charts/xyserial/SAKChartsXYSerialWidget.hh
 
-    SOURCES += \
-        $$PWD/src/pages/page/charts/SAKChartsManager.cc \
-        $$PWD/src/pages/page/charts/throughput/SAKChartsThroughputWidget.cc \
-        $$PWD/src/pages/page/charts/xyserial/SAKChartsSettingsDialog.cc \
-        $$PWD/src/pages/page/charts/xyserial/SAKChartsXYSerialEditDialog.cc \
-        $$PWD/src/pages/page/charts/xyserial/SAKChartsXYSerialWidget.cc
+SOURCES += \
+    $$PWD/src/pages/page/charts/SAKChartsManager.cc \
+    $$PWD/src/pages/page/charts/throughput/SAKChartsThroughputWidget.cc \
+    $$PWD/src/pages/page/charts/xyserial/SAKChartsXYSerialChartViewSettingsDialog.cc \
+    $$PWD/src/pages/page/charts/xyserial/SAKChartsXYSerialEditDialog.cc \
+    $$PWD/src/pages/page/charts/xyserial/SAKChartsXYSerialWidget.cc
 }else {
     message("The Qt edition has no charts module, the program will not have chart viewer.")
 }
