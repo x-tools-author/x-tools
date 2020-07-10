@@ -70,7 +70,8 @@ SAKChartsXYSerialEditDialog::SAKChartsXYSerialEditDialog(QWidget *parent)
     mParametersContext.chartParameters.chartName = mChartNameLineEdit->text();
     mParametersContext.chartParameters.chartType = ParametersContext::ChartParametersContext::ChartType( mChartTypeComboBox->currentData().toInt());
     if(!mParametersContext.chartParameters.chartColor.isValid()){
-        mParametersContext.chartParameters.chartColor = QString("#ff0000");
+        mParametersContext.chartParameters.chartColor = QString("#0000ff");
+        mChartColorPushButton->setStyleSheet(QString("QPushButton{background:%1}").arg(mParametersContext.chartParameters.chartColor.name(QColor::HexRgb)));
     }
 }
 
