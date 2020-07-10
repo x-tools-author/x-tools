@@ -8,6 +8,7 @@
  * group which number is 952218522 to have a communication.
  */
 #include <QDialog>
+#include <QAction>
 #include <QDateTime>
 #include <QHBoxLayout>
 
@@ -48,6 +49,12 @@ SAKChartsXYSerialWidget::SAKChartsXYSerialWidget(QWidget *parent)
     QHBoxLayout *layout = new QHBoxLayout(mChartViewerWidget);
     layout->addWidget(mChartView);
     mChartViewerWidget->setLayout(layout);
+
+    /// @brief 菜单初始化
+    mDeleteMenu = new QMenu(mDeletePushButton);
+    mEditMenu = new QMenu(mEditPushButton);
+    mDeletePushButton->setMenu(mDeleteMenu);
+    mEditPushButton->setMenu(mEditMenu);
 }
 
 SAKChartsXYSerialWidget::~SAKChartsXYSerialWidget()
@@ -62,17 +69,43 @@ void SAKChartsXYSerialWidget::inputBytes(QByteArray bytes)
     Q_UNUSED(bytes);
 }
 
-void SAKChartsXYSerialWidget::on_chartSettingsPushButton_clicked()
+void SAKChartsXYSerialWidget::deleteXYSerial()
 {
-    mChartSettingsDialog->show();
+    /// @brief 不通过信号调用该函数是无效的
+    if (!sender()){
+        Q_ASSERT_X(false, __FUNCTION__, "Can not called the function directly");
+        return;
+    }
+
+    /// @brief 确保是通过按钮信息号（删除按钮的菜单项触发）调用该函数的
+    if (sender()->inherits("QAction")){
+        QAction *action = qobject_cast<QAction *>(sender());
+        QXYSeries *xySerial = action->data().value<QXYSeries *>();
+
+        /// @brief 删除相关资源
+        mChart->removeSeries(xySerial);
+        mXYSerialParametersMap.remove(xySerial);
+        action->deleteLater();
+        for (auto var : mEditMenu->actions()){
+            if (var->data().value<QXYSeries *>() == xySerial){
+                var->deleteLater();
+                break;
+            }
+        }
+    }
 }
 
-void SAKChartsXYSerialWidget::on_editPushButton_clicked()
+void SAKChartsXYSerialWidget::editXYSerial()
 {
     mXYSerialEditDialog->show();
     if (mXYSerialEditDialog->exec() != QDialog::Accepted){
         return;
     }
+}
+
+void SAKChartsXYSerialWidget::on_chartSettingsPushButton_clicked()
+{
+    mChartSettingsDialog->show();
 }
 
 void SAKChartsXYSerialWidget::on_addPushButton_clicked()
@@ -95,4 +128,22 @@ void SAKChartsXYSerialWidget::on_addPushButton_clicked()
     xySerial->append(QDateTime::currentMSecsSinceEpoch()+1000, 1);
     xySerial->attachAxis(mXAxis);
     xySerial->attachAxis(mYAxis);
+    xySerial->setColor(ctx.chartParameters.chartColor);
+    xySerial->setName(ctx.chartParameters.chartName);
+
+    /// @brief 保存参数
+    SAKXYSerialEditDialog::ParametersContext *ctxPtr = new SAKXYSerialEditDialog::ParametersContext;
+    *ctxPtr = ctx;
+    mXYSerialParametersMap.insert(xySerial, ctxPtr);
+
+    /// @brief 添加删除菜单选项
+    QAction *action = new QAction(ctxPtr->chartParameters.chartName, this);
+    action->setData(QVariant::fromValue(xySerial));
+    mDeleteMenu->addAction(action);
+    connect(action, &QAction::triggered, this, &SAKChartsXYSerialWidget::deleteXYSerial);
+    /// @brief 添加编辑菜单选项
+    action = new QAction(ctxPtr->chartParameters.chartName, this);
+    action->setData(QVariant::fromValue(xySerial));
+    mEditMenu->addAction(action);
+    connect(action, &QAction::triggered, this, &SAKChartsXYSerialWidget::editXYSerial);
 }

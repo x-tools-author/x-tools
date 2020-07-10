@@ -10,6 +10,7 @@
 #ifndef SAKCHARTSXYSERIALWIDGET_HH
 #define SAKCHARTSXYSERIALWIDGET_HH
 
+#include <QMenu>
 #include <QChart>
 #include <QWidget>
 #include <QValueAxis>
@@ -48,6 +49,13 @@ private:
     QChart *mChart;
     QValueAxis *mYAxis;
     QDateTimeAxis *mXAxis;
+    /// @brief 映射的键为曲线或者散点图的实例地址，值为曲线图或散点图的参数实例指针，数据类型为：SAKXYSerialEditDialog::ParametersContext
+    QMap<QXYSeries *, void *> mXYSerialParametersMap;
+    QMenu *mDeleteMenu;
+    QMenu *mEditMenu;
+private slots:
+    void deleteXYSerial();
+    void editXYSerial();
 private:
     Ui::SAKChartsXYSerialWidget *mUi;
     QWidget *mChartViewerWidget;
@@ -57,7 +65,6 @@ private:
     QPushButton *mAddPushButton;
 private slots:
     void on_chartSettingsPushButton_clicked();
-    void on_editPushButton_clicked();
     void on_addPushButton_clicked();
 };
 
