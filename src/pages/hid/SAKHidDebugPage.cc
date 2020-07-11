@@ -22,7 +22,7 @@ SAKHidDebugPage::SAKHidDebugPage(QWidget *parent)
     ,controller (new SAKHidDeviceController)
 {
     initPage();
-    setWindowTitle(SAKGlobal::getNameOfDebugPage(SAKDataStruct::DebugPageTypeHID));
+    setWindowTitle(SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeHID));
 }
 
 SAKHidDebugPage::~SAKHidDebugPage()
