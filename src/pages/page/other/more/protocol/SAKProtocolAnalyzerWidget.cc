@@ -28,6 +28,7 @@ SAKProtocolAnalyzerWidget::SAKProtocolAnalyzerWidget(QWidget *parent)
 
     setLineEditFormat(mStartLineEdit);
     setLineEditFormat(mEndLineEdit);
+    mAnalyzer->start();
 }
 
 SAKProtocolAnalyzerWidget::~SAKProtocolAnalyzerWidget()
