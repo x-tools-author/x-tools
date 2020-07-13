@@ -22,8 +22,11 @@ SAKMoreSettingsWidget::SAKMoreSettingsWidget(SAKDebugPage *debugPage, QWidget *p
     mUi->setupUi(this);
     mTabWidget = mUi->tabWidget;
 
-    mTabWidget->addTab(new SAKProtocolAnalyzerWidget, tr("协议分析器"));
-    mTabWidget->addTab(new SAKWaveformGeneratorWidget, tr("波形发生器"));
+    mProtocolAnalyzerWidget = new SAKProtocolAnalyzerWidget;
+    mTabWidget->addTab(mProtocolAnalyzerWidget, tr("协议分析器"));
+
+    mWaveformGeneratorWidget = new SAKWaveformGeneratorWidget;
+    mTabWidget->addTab(mWaveformGeneratorWidget, tr("波形发生器"));
 }
 
 SAKMoreSettingsWidget::~SAKMoreSettingsWidget()

@@ -28,6 +28,8 @@ public:
     ~SAKMoreSettingsWidget();
 private:
     SAKDebugPage *mDebugPage;
+    SAKProtocolAnalyzerWidget *mProtocolAnalyzerWidget;
+    SAKWaveformGeneratorWidget *mWaveformGeneratorWidget;
 private:
     Ui::SAKMoreSettingsWidget *mUi;
     QTabWidget *mTabWidget;
