@@ -401,7 +401,7 @@ void SAKDebugPage::setupDevice()
 #if 0
         connect(device, &SAKDevice::bytesRead, this, &SAKDebugPage::bytesRead);
 #else
-        /// @brief 设备读取到的数据传输至协议分析器中，分析完车的数据回传至调试页面中
+        /// @brief 设备读取到的数据传输至协议分析器中，分析完成的数据回传至调试页面中
         SAKMoreSettingsWidget *moreSettingsWidget = otherSettings->moreSettingsWidget();
         SAKProtocolAnalyzerWidget *protocolAnalyzerWidget = moreSettingsWidget->protocolAnalyzerWidget();
         connect(device, &SAKDevice::bytesRead, protocolAnalyzerWidget, &SAKProtocolAnalyzerWidget::inputBytes);
