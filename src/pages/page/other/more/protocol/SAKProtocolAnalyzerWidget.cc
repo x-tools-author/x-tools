@@ -7,6 +7,8 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
+#include <QRegExpValidator>
+
 #include "SAKProtocolAnalyzer.hh"
 #include "SAKProtocolAnalyzerWidget.hh"
 
@@ -23,6 +25,9 @@ SAKProtocolAnalyzerWidget::SAKProtocolAnalyzerWidget(QWidget *parent)
     mStartLineEdit = mUi->startLineEdit;
     mEndLineEdit = mUi->endLineEdit;
     mDisableCheckBox = mUi->disableCheckBox;
+
+    setLineEditFormat(mStartLineEdit);
+    setLineEditFormat(mEndLineEdit);
 }
 
 SAKProtocolAnalyzerWidget::~SAKProtocolAnalyzerWidget()
@@ -31,27 +36,53 @@ SAKProtocolAnalyzerWidget::~SAKProtocolAnalyzerWidget()
     delete mAnalyzer;
 }
 
+SAKProtocolAnalyzer *SAKProtocolAnalyzerWidget::protocolAnalyzer()
+{
+    return mAnalyzer;
+}
+
+void SAKProtocolAnalyzerWidget::setLineEditFormat(QLineEdit *lineEdit)
+{
+    QRegExp regExpHex("([0-9A-F][0-9A-F][ ])*");
+    if (lineEdit){
+        lineEdit->setValidator(Q_NULLPTR);
+        lineEdit->setValidator(new QRegExpValidator(regExpHex, this));
+    }
+}
+
 void SAKProtocolAnalyzerWidget::on_fixedLengthCheckBox_clicked()
 {
-
+    mAnalyzer->setFixed(mFixedLengthCheckBox->isChecked());
 }
 
 void SAKProtocolAnalyzerWidget::on_lengthLineEdit_textChanged(const QString &text)
 {
-
+    mAnalyzer->setLength(text.toInt());
 }
 
 void SAKProtocolAnalyzerWidget::on_startLineEdit_textChanged(const QString &text)
 {
-
+    QStringList list = text.split(' ');
+    QByteArray startBytes;
+    for (auto var : list){
+        quint8 v = var.toUInt(Q_NULLPTR, 16);
+        startBytes.append(reinterpret_cast<char*>(&v), 1);
+    }
+    mAnalyzer->setStartArray(startBytes);
 }
 
 void SAKProtocolAnalyzerWidget::on_endLineEdit_textChanged(const QString &text)
 {
-
+    QStringList list = text.split(' ');
+    QByteArray endBytes;
+    for (auto var : list){
+        quint8 v = var.toUInt(Q_NULLPTR, 16);
+        endBytes.append(reinterpret_cast<char*>(&v), 1);
+    }
+    mAnalyzer->setStartArray(endBytes);
 }
 
 void SAKProtocolAnalyzerWidget::on_disableCheckBox_clicked()
 {
-
+    mAnalyzer->setEnable(mDisableCheckBox->isChecked());
 }

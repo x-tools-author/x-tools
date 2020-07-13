@@ -26,8 +26,12 @@ class SAKProtocolAnalyzerWidget:public QWidget
 public:
     SAKProtocolAnalyzerWidget(QWidget *parent = Q_NULLPTR);
     ~SAKProtocolAnalyzerWidget();
+
+    SAKProtocolAnalyzer *protocolAnalyzer();
 private:
     SAKProtocolAnalyzer *mAnalyzer;
+private:
+    void setLineEditFormat(QLineEdit *lineEdit);
 private:
     Ui::SAKProtocolAnalyzerWidget *mUi;
     QCheckBox *mFixedLengthCheckBox;
