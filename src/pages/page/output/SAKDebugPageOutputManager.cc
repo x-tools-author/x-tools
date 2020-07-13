@@ -26,20 +26,20 @@ SAKDebugPageOutputManager::SAKDebugPageOutputManager(SAKDebugPage *debugPage, QO
     /// @brief 注册数据类型（自定义数据类型作为信号参数时，要进行注册，该函数要与宏 Q_DECLARE_METATYPE 配套使用）
     qRegisterMetaType<OutputParameters>("OutputParameters");
 
-    rxLabel                         = debugPage->rxLabel;
-    txLabel                         = debugPage->txLabel;
-    outputTextFormatComboBox        = debugPage->outputTextFormatComboBox;
-    showDateCheckBox                = debugPage->showDateCheckBox;
-    autoWrapCheckBox                = debugPage->autoWrapCheckBox;
-    showTimeCheckBox                = debugPage->showTimeCheckBox;
-    showMsCheckBox                  = debugPage->showMsCheckBox;
-    showRxDataCheckBox              = debugPage->showRxDataCheckBox;
-    showTxDataCheckBox              = debugPage->showTxDataCheckBox;
-    saveOutputFileToFilecheckBox    = debugPage->saveOutputFileToFilecheckBox;
-    outputFilePathPushButton        = debugPage->outputFilePathPushButton;
-    clearOutputPushButton           = debugPage->clearOutputPushButton;
-    saveOutputPushButton            = debugPage->saveOutputPushButton;
-    outputTextBroswer               = debugPage->outputTextBroswer;
+    rxLabel                         = debugPage->mRxLabel;
+    txLabel                         = debugPage->mTxLabel;
+    outputTextFormatComboBox        = debugPage->mOutputTextFormatComboBox;
+    showDateCheckBox                = debugPage->mShowDateCheckBox;
+    autoWrapCheckBox                = debugPage->mAutoWrapCheckBox;
+    showTimeCheckBox                = debugPage->mShowTimeCheckBox;
+    showMsCheckBox                  = debugPage->mShowMsCheckBox;
+    showRxDataCheckBox              = debugPage->mShowRxDataCheckBox;
+    showTxDataCheckBox              = debugPage->mShowTxDataCheckBox;
+    saveOutputFileToFilecheckBox    = debugPage->mSaveOutputFileToFilecheckBox;
+    outputFilePathPushButton        = debugPage->mOutputFilePathPushButton;
+    clearOutputPushButton           = debugPage->mClearOutputPushButton;
+    saveOutputPushButton            = debugPage->mSaveOutputPushButton;
+    outputTextBroswer               = debugPage->mOutputTextBroswer;
 
     connect(saveOutputFileToFilecheckBox,   &QCheckBox::clicked, this, &SAKDebugPageOutputManager::saveOutputDataToFile);
     connect(autoWrapCheckBox,               &QCheckBox::clicked, this, &SAKDebugPageOutputManager::setLineWrapMode);

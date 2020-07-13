@@ -54,5 +54,5 @@ SAKDevice *SAKWebSocketClientDebugPage::createDevice()
 void SAKWebSocketClientDebugPage::setUiEnable(bool enable)
 {
     webSocketClientDeviceController->setEnabled(enable);
-    refreshPushButton->setEnabled(enable);
+    mRefreshPushButton->setEnabled(enable);
 }

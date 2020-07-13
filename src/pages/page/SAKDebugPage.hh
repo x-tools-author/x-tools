@@ -188,9 +188,9 @@ private:
     /*************************************************************************/
     /// @brief 设备设置
 protected:
-    QPushButton *refreshPushButton;
-    QPushButton *switchPushButton;
-    QFrame      *deviceSettingFrame;
+    QPushButton *mRefreshPushButton;
+    QPushButton *mSwitchPushButton;
+    QFrame *mDeviceSettingFrame;
 private slots:
     void on_refreshPushButton_clicked();
     void on_switchPushButton_clicked();
@@ -198,29 +198,29 @@ private slots:
     /*************************************************************************/
     /// @brief 输入设置组
 protected:
-    QComboBox   *inputModelComboBox;
-    QCheckBox   *cycleEnableCheckBox;
-    QLineEdit   *cycleTimeLineEdit;
-    QPushButton *readinFilePushButton;
-    QPushButton *saveInputDataPushButton;
-    QCheckBox   *addCRCCheckBox;
-    QPushButton *crcSettingsPushButton;
-    QPushButton *clearInputPushButton;
-    QPushButton *sendPushButton;
-    QTextEdit   *inputTextEdit;
-    QComboBox   *crcParameterModelsComboBox;
-    QLabel      *crcLabel;
-    QPushButton *addInputItemPushButton;
-    QPushButton *deleteInputItemPushButton;
-    QListWidget *inputDataItemListWidget;
-    QPushButton *presetPushButton;
-    QPushButton *sendPresetPushButton;
+    QComboBox *mInputModelComboBox;
+    QCheckBox *mCycleEnableCheckBox;
+    QLineEdit *mCycleTimeLineEdit;
+    QPushButton *mReadinFilePushButton;
+    QPushButton *mSaveInputDataPushButton;
+    QCheckBox *mAddCRCCheckBox;
+    QPushButton *mCrcSettingsPushButton;
+    QPushButton *mClearInputPushButton;
+    QPushButton *mSendPushButton;
+    QTextEdit *mInputTextEdit;
+    QComboBox *mCrcParameterModelsComboBox;
+    QLabel *mCrcLabel;
+    QPushButton *mAddInputItemPushButton;
+    QPushButton *mDeleteInputItemPushButton;
+    QListWidget *mInputDataItemListWidget;
+    QPushButton *mPresetPushButton;
+    QPushButton *mSendPresetPushButton;
 
-    QString settingStringInputModel;
-    QString settingStringCycleTime;
-    QString settingStringAddCRC;
-    QString settingStringBigeEndian;
-    QString settingStringcrcParameterModel;
+    QString mSettingStringInputModel;
+    QString mSettingStringCycleTime;
+    QString mSettingStringAddCRC;
+    QString mSettingStringBigeEndian;
+    QString mSettingStringcrcParameterModel;
 private slots:
     void on_inputModelComboBox_currentIndexChanged(int index);
     void on_cycleTimeLineEdit_textChanged(const QString &text);
@@ -231,33 +231,33 @@ private slots:
     /*************************************************************************/
     /// @brief 消息输出组管理
 protected:
-    QLabel *infoLabel;
+    QLabel *mInfoLabel;
 
     /*************************************************************************/
     /// @brief 数据输出组
 protected:
-    QLabel       *rxLabel;
-    QLabel       *txLabel;
-    QComboBox    *outputTextFormatComboBox;
-    QCheckBox    *showDateCheckBox;
-    QCheckBox    *autoWrapCheckBox;
-    QCheckBox    *showTimeCheckBox;
-    QCheckBox    *showMsCheckBox;
-    QCheckBox    *showRxDataCheckBox;
-    QCheckBox    *showTxDataCheckBox;
-    QCheckBox    *saveOutputFileToFilecheckBox;
-    QPushButton  *outputFilePathPushButton;
-    QPushButton  *clearOutputPushButton;
-    QPushButton  *saveOutputPushButton;
-    QTextBrowser *outputTextBroswer;
+    QLabel *mRxLabel;
+    QLabel *mTxLabel;
+    QComboBox *mOutputTextFormatComboBox;
+    QCheckBox *mShowDateCheckBox;
+    QCheckBox *mAutoWrapCheckBox;
+    QCheckBox *mShowTimeCheckBox;
+    QCheckBox *mShowMsCheckBox;
+    QCheckBox *mShowRxDataCheckBox;
+    QCheckBox *mShowTxDataCheckBox;
+    QCheckBox *mSaveOutputFileToFilecheckBox;
+    QPushButton *mOutputFilePathPushButton;
+    QPushButton *mClearOutputPushButton;
+    QPushButton *mSaveOutputPushButton;
+    QTextBrowser *mOutputTextBroswer;
 
-    QString settingStringOutputTextFormat;
-    QString settingStringShowDate;
-    QString settingStringAutoWrap;
-    QString settingStringShowTime;
-    QString settingStringShowMs;
-    QString settingStringShowRx;
-    QString settingStringShowTx;
+    QString mSettingStringOutputTextFormat;
+    QString mSettingStringShowDate;
+    QString mSettingStringAutoWrap;
+    QString mSettingStringShowTime;
+    QString mSettingStringShowMs;
+    QString mSettingStringShowRx;
+    QString mSettingStringShowTx;
 private slots:
     void on_outputTextFormatComboBox_currentIndexChanged(int index);
     void on_showDateCheckBox_clicked();
@@ -270,27 +270,27 @@ private slots:
     /*************************************************************************/
     /// @brief 数据统计
 protected:
-    bool        receivedFlag;
-    bool        sendFlag;
+    bool mReceivedFlag;
+    bool mSendFlag;
 
-    QLabel      *rxSpeedLabel;
-    QLabel      *txSpeedLabel;
-    QLabel      *rxFramesLabel;
-    QLabel      *txFramesLabel;
-    QLabel      *rxBytesLabel;
-    QLabel      *txBytesLabel;
-    QPushButton *resetTxCountPushButton;
-    QPushButton *resetRxCountPushButton;
+    QLabel *mRxSpeedLabel;
+    QLabel *mTxSpeedLabel;
+    QLabel *mRxFramesLabel;
+    QLabel *mTxFramesLabel;
+    QLabel *mRxBytesLabel;
+    QLabel *mTxBytesLabel;
+    QPushButton *mResetTxCountPushButton;
+    QPushButton *mResetRxCountPushButton;
 
     /*************************************************************************/
     /// @brief 其他设置
 protected:
-    QPushButton *transmissionSettingPushButton;
-    QPushButton *readWriteSettingPushButton;
-    QPushButton *autoResponseSettingPushButton;
-    QPushButton *timingSendingPushButton;
-    QPushButton *highlightSettingPushButton;
-    QPushButton *moreSettingsPushButton;
+    QPushButton *mTransmissionSettingPushButton;
+    QPushButton *mReadWriteSettingPushButton;
+    QPushButton *mAutoResponseSettingPushButton;
+    QPushButton *mTimingSendingPushButton;
+    QPushButton *mHighlightSettingPushButton;
+    QPushButton *mMoreSettingsPushButton;
 
     /*************************************************************************/
     /// @brief 数据可视化

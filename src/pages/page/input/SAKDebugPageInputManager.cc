@@ -27,19 +27,19 @@ SAKDebugPageInputManager::SAKDebugPageInputManager(SAKDebugPage *debugPage, QObj
     :QObject (parent)
     ,debugPage (debugPage)
 {
-    inputModelComboBox          = debugPage->inputModelComboBox;
-    cycleEnableCheckBox         = debugPage->cycleEnableCheckBox;
-    cycleTimeLineEdit           = debugPage->cycleTimeLineEdit;
-    saveInputDataPushButton     = debugPage->saveInputDataPushButton;
-    readinFilePushButton        = debugPage->readinFilePushButton;
-    addCRCCheckBox              = debugPage->addCRCCheckBox;
-    clearInputPushButton        = debugPage->clearInputPushButton;
-    sendPushButton              = debugPage->sendPushButton;
-    inputTextEdit               = debugPage->inputTextEdit;
-    crcParameterModelsComboBox  = debugPage->crcParameterModelsComboBox;
-    crcLabel                    = debugPage->crcLabel;
-    presetPushButton            = debugPage->presetPushButton;
-    sendPresetPushButton        = debugPage->sendPresetPushButton;
+    inputModelComboBox          = debugPage->mInputModelComboBox;
+    cycleEnableCheckBox         = debugPage->mCycleEnableCheckBox;
+    cycleTimeLineEdit           = debugPage->mCycleTimeLineEdit;
+    saveInputDataPushButton     = debugPage->mSaveInputDataPushButton;
+    readinFilePushButton        = debugPage->mReadinFilePushButton;
+    addCRCCheckBox              = debugPage->mAddCRCCheckBox;
+    clearInputPushButton        = debugPage->mClearInputPushButton;
+    sendPushButton              = debugPage->mSendPushButton;
+    inputTextEdit               = debugPage->mInputTextEdit;
+    crcParameterModelsComboBox  = debugPage->mCrcParameterModelsComboBox;
+    crcLabel                    = debugPage->mCrcLabel;
+    presetPushButton            = debugPage->mPresetPushButton;
+    sendPresetPushButton        = debugPage->mSendPresetPushButton;
 
     qRegisterMetaType<InputParameters>("InputParameters");
     inputDataFactory = new SAKInputDataFactory;

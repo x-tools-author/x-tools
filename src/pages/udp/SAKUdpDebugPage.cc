@@ -55,5 +55,5 @@ SAKDevice *SAKUdpDebugPage::createDevice()
 void SAKUdpDebugPage::setUiEnable(bool enable)
 {
     udpDeviceController->setUiEnable(enable);
-    refreshPushButton->setEnabled(enable);
+    mRefreshPushButton->setEnabled(enable);
 }

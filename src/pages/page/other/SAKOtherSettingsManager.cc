@@ -24,17 +24,17 @@ SAKOtherSettingsManager::SAKOtherSettingsManager(SAKDebugPage *debugPage, QObjec
 {
     transmissionSettings        = new SAKTransmissionSettings(_debugPage);
     autoResponseSettingWidget   = new SAKAutoResponseSettingsWidget(_debugPage);
-    highlighterSettingPanel     = new SAKHighlightSettingsWidget(_debugPage->outputTextBroswer->document());
+    highlighterSettingPanel     = new SAKHighlightSettingsWidget(_debugPage->mOutputTextBroswer->document());
     mMoreSettingsWidget          = new SAKMoreSettingsWidget(_debugPage);
     readWriteSettingsWidget     = new SAKReadWriteSettingsWidget(_debugPage);
     timingSendingManager        = new SAKTimingSendingSettingsWidget(_debugPage);
 
-    autoResponseSettingPushButton   = _debugPage->autoResponseSettingPushButton;
-    highlightSettingPushButton      = _debugPage->highlightSettingPushButton;
-    readWriteSettingPushButton      = _debugPage->readWriteSettingPushButton;
-    transmissionSettingPushButton   = _debugPage->transmissionSettingPushButton;
-    moreSettingsPushButton          = _debugPage->moreSettingsPushButton;
-    timingSendingPushButton         = _debugPage->timingSendingPushButton;
+    autoResponseSettingPushButton   = _debugPage->mAutoResponseSettingPushButton;
+    highlightSettingPushButton      = _debugPage->mHighlightSettingPushButton;
+    readWriteSettingPushButton      = _debugPage->mReadWriteSettingPushButton;
+    transmissionSettingPushButton   = _debugPage->mTransmissionSettingPushButton;
+    moreSettingsPushButton          = _debugPage->mMoreSettingsPushButton;
+    timingSendingPushButton         = _debugPage->mTimingSendingPushButton;
 
     connect(autoResponseSettingPushButton, &QPushButton::clicked, this, &SAKOtherSettingsManager::onAutoresponseSettingPushbuttonClicked);
     connect(highlightSettingPushButton,    &QPushButton::clicked, this, &SAKOtherSettingsManager::onHighlightSettingPushButtonClicked);

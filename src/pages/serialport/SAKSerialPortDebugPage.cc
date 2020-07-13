@@ -54,5 +54,5 @@ QWidget *SAKSerialPortDebugPage::controllerWidget()
 void SAKSerialPortDebugPage::setUiEnable(bool enable)
 {
     controller->setEnabled(enable);
-    refreshPushButton->setEnabled(enable);
+    mRefreshPushButton->setEnabled(enable);
 }

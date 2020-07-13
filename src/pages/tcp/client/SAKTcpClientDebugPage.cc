@@ -54,5 +54,5 @@ SAKDevice *SAKTcpClientDebugPage::createDevice()
 void SAKTcpClientDebugPage::setUiEnable(bool enable)
 {
     tcpClientDeviceController->setEnabled(enable);
-    refreshPushButton->setEnabled(enable);
+    mRefreshPushButton->setEnabled(enable);
 }

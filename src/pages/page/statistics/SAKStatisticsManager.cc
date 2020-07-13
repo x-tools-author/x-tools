@@ -14,15 +14,15 @@ SAKStatisticsManager::SAKStatisticsManager(SAKDebugPage *debugPage, QObject *par
     :QObject (parent)
     ,debugPage (debugPage)
 {
-    rxSpeedLabel    = debugPage->rxSpeedLabel;
-    txSpeedLabel    = debugPage->txSpeedLabel;
-    txFramesLabel   = debugPage->txFramesLabel;
-    rxFramesLabel   = debugPage->rxFramesLabel;
-    txBytesLabel    = debugPage->txBytesLabel;
-    rxBytesLabel    = debugPage->rxBytesLabel;
+    rxSpeedLabel    = debugPage->mRxSpeedLabel;
+    txSpeedLabel    = debugPage->mTxSpeedLabel;
+    txFramesLabel   = debugPage->mTxFramesLabel;
+    rxFramesLabel   = debugPage->mRxFramesLabel;
+    txBytesLabel    = debugPage->mTxBytesLabel;
+    rxBytesLabel    = debugPage->mRxBytesLabel;
 
-    resetTxCountPushButton  = debugPage->resetTxCountPushButton;
-    resetRxCountPushButton  = debugPage->resetRxCountPushButton;
+    resetTxCountPushButton  = debugPage->mResetTxCountPushButton;
+    resetRxCountPushButton  = debugPage->mResetRxCountPushButton;
 
     dataContext.rxBytes  = 0;
     dataContext.txBytes  = 0;

@@ -48,7 +48,7 @@ QWidget *SAKTcpServerDebugPage::controllerWidget()
 void SAKTcpServerDebugPage::setUiEnable(bool enable)
 {
     tcpServerDeviceController->setUiEnable(enable);
-    refreshPushButton->setEnabled(enable);
+    mRefreshPushButton->setEnabled(enable);
 }
 
 SAKDevice* SAKTcpServerDebugPage::createDevice()
