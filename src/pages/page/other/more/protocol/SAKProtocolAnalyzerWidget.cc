@@ -80,7 +80,7 @@ void SAKProtocolAnalyzerWidget::on_endLineEdit_textChanged(const QString &text)
         quint8 v = var.toUInt(Q_NULLPTR, 16);
         endBytes.append(reinterpret_cast<char*>(&v), 1);
     }
-    mAnalyzer->setStartArray(endBytes);
+    mAnalyzer->setEndArray(endBytes);
 }
 
 void SAKProtocolAnalyzerWidget::on_disableCheckBox_clicked()
