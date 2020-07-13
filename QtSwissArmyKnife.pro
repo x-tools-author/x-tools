@@ -179,6 +179,7 @@ HEADERS += \
     src/pages/page/other/highlight/SAKHighlightSettingsWidget.hh \
     src/pages/page/other/more/SAKMoreSettingsWidget.hh \
     src/pages/page/other/more/generator/SAKWaveformGeneratorWidget.hh \
+    src/pages/page/other/more/protocol/SAKProtocolAnalyzer.hh \
     src/pages/page/other/more/protocol/SAKProtocolAnalyzerWidget.hh \
     src/pages/page/other/readwrite/SAKReadWriteSettingsWidget.hh \
     src/pages/page/other/timing/SAKTimingSendingItemWidget.hh \
@@ -240,6 +241,7 @@ SOURCES += \
     src/pages/page/other/highlight/SAKHighlightSettingsWidget.cc \
     src/pages/page/other/more/SAKMoreSettingsWidget.cc \
     src/pages/page/other/more/generator/SAKWaveformGeneratorWidget.cc \
+    src/pages/page/other/more/protocol/SAKProtocolAnalyzer.cc \
     src/pages/page/other/more/protocol/SAKProtocolAnalyzerWidget.cc \
     src/pages/page/other/readwrite/SAKReadWriteSettingsWidget.cc \
     src/pages/page/other/timing/SAKTimingSendingItemWidget.cc \
