@@ -37,7 +37,7 @@ void SAKProtocolAnalyzer::run()
     QEventLoop eventLoop;
     int maxTempLength = 2048;
     while (1) {
-        /// @brief 处理外部中断时间
+        /// @brief 处理外部中断事件
         if (isInterruptionRequested()){
             break;
         }
@@ -113,12 +113,14 @@ void SAKProtocolAnalyzer::run()
         mWaitingAnalyzingBytesMutex.unlock();
 
 
-        /// @brief 处理事件吹动
-        eventLoop.processEvents();
-        /// @brief 每隔20毫秒处理一次数据
-        mThreadMutex.lock();
-        mThreadCondition.wait(&mThreadMutex, 20);
-        mThreadMutex.unlock();
+        if (!isInterruptionRequested()){
+            /// @brief 处理事件吹动
+            eventLoop.processEvents();
+            /// @brief 每隔20毫秒处理一次数据
+            mThreadMutex.lock();
+            mThreadCondition.wait(&mThreadMutex, 20);
+            mThreadMutex.unlock();
+        }
     }
 }
 
