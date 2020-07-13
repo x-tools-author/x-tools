@@ -36,11 +36,6 @@ SAKProtocolAnalyzerWidget::~SAKProtocolAnalyzerWidget()
     delete mAnalyzer;
 }
 
-SAKProtocolAnalyzer *SAKProtocolAnalyzerWidget::protocolAnalyzer()
-{
-    return mAnalyzer;
-}
-
 void SAKProtocolAnalyzerWidget::inputBytes(QByteArray bytes)
 {
     mAnalyzer->appendBytes(bytes);

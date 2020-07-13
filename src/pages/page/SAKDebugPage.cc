@@ -404,9 +404,8 @@ void SAKDebugPage::setupDevice()
         /// @brief 设备读取到的数据传输至协议分析器中，分析完车的数据回传至调试页面中
         SAKMoreSettingsWidget *moreSettingsWidget = otherSettings->moreSettingsWidget();
         SAKProtocolAnalyzerWidget *protocolAnalyzerWidget = moreSettingsWidget->protocolAnalyzerWidget();
-        SAKProtocolAnalyzer *protocolAnalyzer = protocolAnalyzerWidget->protocolAnalyzer();
-        connect(device, &SAKDevice::bytesRead, protocolAnalyzer, &SAKProtocolAnalyzer::appendBytes);
-        connect(protocolAnalyzer, &SAKProtocolAnalyzer::bytesAnalized, this, &SAKDebugPage::bytesRead);
+        connect(device, &SAKDevice::bytesRead, protocolAnalyzerWidget, &SAKProtocolAnalyzerWidget::inputBytes);
+        connect(protocolAnalyzerWidget, &SAKProtocolAnalyzerWidget::bytesAnalysed, this, &SAKDebugPage::bytesRead);
 #endif
         connect(device, &SAKDevice::messageChanged, this, &SAKDebugPage::outputMessage);
         connect(device, &SAKDevice::deviceStateChanged, this, &SAKDebugPage::changedDeviceState);
