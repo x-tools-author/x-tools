@@ -15,6 +15,7 @@
 SAKProtocolAnalyzer::SAKProtocolAnalyzer(QObject *parent)
     :QThread(parent)
 {
+    mParameters.enable = false;
     mParameters.fixed = false;
     mParameters.length = 0;
     mParameters.startArray = QByteArray();
@@ -138,7 +139,16 @@ void SAKProtocolAnalyzer::wakeMe()
 
 void SAKProtocolAnalyzer::appendBytes(QByteArray array)
 {
-    mWaitingAnalyzingBytesMutex.lock();
-    mWaitingAnalyzingBytes.append(array);
-    mWaitingAnalyzingBytesMutex.unlock();
+    mParametersMutex.lock();
+    ParametersContext parameters = mParameters;
+    mParametersMutex.unlock();
+
+    if (parameters.enable){
+        mWaitingAnalyzingBytesMutex.lock();
+        mWaitingAnalyzingBytes.append(array);
+        mWaitingAnalyzingBytesMutex.unlock();
+    }else{
+        /// @brief 不使用协议分析提取功能，直接将数据对外发送
+        emit bytesAnalized(array);
+    }
 }

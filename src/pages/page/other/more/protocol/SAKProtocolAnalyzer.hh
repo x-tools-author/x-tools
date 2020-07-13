@@ -21,6 +21,7 @@ class SAKProtocolAnalyzer:public QThread
 public:
     /// @brief 参数上下文
     struct ParametersContext {
+        bool enable; // 协议分析提取功能是否生效（使能），true表示使能
         bool fixed; // 协议帧长度是否固定，true表示固定
         qint32 length; // 协议的固定长度，fixed为true时该参数可用
         QByteArray startArray; // 协议起始标志，fixed为false时该参数可用
