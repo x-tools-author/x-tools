@@ -74,7 +74,7 @@ SAKChartsXYSerialWidget::SAKChartsXYSerialWidget(QWidget *parent)
     mAppendPointInterfaceMap.insert(SAKChartsXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeFloat32, &SAKChartsXYSerialWidget::appendPointFloat32);
     mAppendPointInterfaceMap.insert(SAKChartsXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeFloat64, &SAKChartsXYSerialWidget::appendPointFloat64);
 
-#if 1
+#ifdef QT_DEBUG
     QTimer *testTimer = new QTimer(this);
     testTimer->setInterval(1000);
     connect(testTimer, &QTimer::timeout, this, [&](){
