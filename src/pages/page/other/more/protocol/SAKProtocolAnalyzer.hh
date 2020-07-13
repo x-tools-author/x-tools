@@ -47,11 +47,12 @@ public:
      */
     void appendBytes(QByteArray array);
 
-    /**
-     * @brief setParameters 设置提取参数
-     * @param parameters 参数
-     */
-    void setParameters(ParametersContext parameters);
+    /// @brief 以下是参数设置接口
+    void setEnable(bool enable);
+    void setFixed(bool fixed);
+    void setLength(int length);
+    void setStartArray(QByteArray array);
+    void setEndArray(QByteArray array);
 protected:
     void run() final;
 private:

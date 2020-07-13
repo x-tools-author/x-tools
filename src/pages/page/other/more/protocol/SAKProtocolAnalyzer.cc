@@ -152,3 +152,38 @@ void SAKProtocolAnalyzer::appendBytes(QByteArray array)
         emit bytesAnalized(array);
     }
 }
+
+void SAKProtocolAnalyzer::setEnable(bool enable)
+{
+    mParametersMutex.lock();
+    mParameters.enable = enable;
+    mParametersMutex.unlock();
+}
+
+void SAKProtocolAnalyzer::setFixed(bool fixed)
+{
+    mParametersMutex.lock();
+    mParameters.fixed = fixed;
+    mParametersMutex.unlock();
+}
+
+void SAKProtocolAnalyzer::setLength(int length)
+{
+    mParametersMutex.lock();
+    mParameters.length = length;
+    mParametersMutex.unlock();
+}
+
+void SAKProtocolAnalyzer::setStartArray(QByteArray array)
+{
+    mParametersMutex.lock();
+    mParameters.startArray = array;
+    mParametersMutex.unlock();
+}
+
+void SAKProtocolAnalyzer::setEndArray(QByteArray array)
+{
+    mParametersMutex.lock();
+    mParameters.endArray = array;
+    mParametersMutex.unlock();
+}
