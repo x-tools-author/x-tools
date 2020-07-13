@@ -28,6 +28,7 @@ public:
     ~SAKProtocolAnalyzerWidget();
 
     SAKProtocolAnalyzer *protocolAnalyzer();
+    void inputBytes(QByteArray bytes);
 private:
     SAKProtocolAnalyzer *mAnalyzer;
 private:
@@ -45,6 +46,8 @@ private slots:
     void on_startLineEdit_textChanged(const QString &text);
     void on_endLineEdit_textChanged(const QString &text);
     void on_disableCheckBox_clicked();
+signals:
+    void bytesAnalysed(QByteArray bytes);
 };
 
 #endif

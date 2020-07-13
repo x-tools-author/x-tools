@@ -41,6 +41,11 @@ SAKProtocolAnalyzer *SAKProtocolAnalyzerWidget::protocolAnalyzer()
     return mAnalyzer;
 }
 
+void SAKProtocolAnalyzerWidget::inputBytes(QByteArray bytes)
+{
+    mAnalyzer->appendBytes(bytes);
+}
+
 void SAKProtocolAnalyzerWidget::setLineEditFormat(QLineEdit *lineEdit)
 {
     QRegExp regExpHex("([0-9A-F][0-9A-F][ ])*");
