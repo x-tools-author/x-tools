@@ -11,11 +11,14 @@
 #define SAKPROTOCOLANALYZERWIDGET_HH
 
 #include <QWidget>
+#include <QCheckBox>
+#include <QLineEdit>
 
 namespace Ui {
     class SAKProtocolAnalyzerWidget;
 }
 
+class SAKProtocolAnalyzer;
 /// @brief 协议分析面板
 class SAKProtocolAnalyzerWidget:public QWidget
 {
@@ -24,7 +27,20 @@ public:
     SAKProtocolAnalyzerWidget(QWidget *parent = Q_NULLPTR);
     ~SAKProtocolAnalyzerWidget();
 private:
+    SAKProtocolAnalyzer *mAnalyzer;
+private:
     Ui::SAKProtocolAnalyzerWidget *mUi;
+    QCheckBox *mFixedLengthCheckBox;
+    QLineEdit *mLengthLineEdit;
+    QLineEdit *mStartLineEdit;
+    QLineEdit *mEndLineEdit;
+    QCheckBox *mDisableCheckBox;
+private slots:
+    void on_fixedLengthCheckBox_clicked();
+    void on_lengthLineEdit_textChanged(const QString &text);
+    void on_startLineEdit_textChanged(const QString &text);
+    void on_endLineEdit_textChanged(const QString &text);
+    void on_disableCheckBox_clicked();
 };
 
 #endif
