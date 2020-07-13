@@ -33,3 +33,8 @@ SAKMoreSettingsWidget::~SAKMoreSettingsWidget()
 {
     delete mUi;
 }
+
+SAKProtocolAnalyzerWidget *SAKMoreSettingsWidget::protocolAnalyzerWidget()
+{
+    return mProtocolAnalyzerWidget;
+}

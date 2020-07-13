@@ -26,6 +26,12 @@ class SAKMoreSettingsWidget:public QWidget
 public:
     SAKMoreSettingsWidget(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKMoreSettingsWidget();
+
+    /**
+     * @brief protocolAnalyzerWidget 获取“协议分析器”设置面板
+     * @return 协议分析器设置面板
+     */
+    SAKProtocolAnalyzerWidget *protocolAnalyzerWidget();
 private:
     SAKDebugPage *mDebugPage;
     SAKProtocolAnalyzerWidget *mProtocolAnalyzerWidget;

@@ -25,7 +25,7 @@ SAKOtherSettingsManager::SAKOtherSettingsManager(SAKDebugPage *debugPage, QObjec
     transmissionSettings        = new SAKTransmissionSettings(_debugPage);
     autoResponseSettingWidget   = new SAKAutoResponseSettingsWidget(_debugPage);
     highlighterSettingPanel     = new SAKHighlightSettingsWidget(_debugPage->outputTextBroswer->document());
-    moreSettingsWidget          = new SAKMoreSettingsWidget(_debugPage);
+    mMoreSettingsWidget          = new SAKMoreSettingsWidget(_debugPage);
     readWriteSettingsWidget     = new SAKReadWriteSettingsWidget(_debugPage);
     timingSendingManager        = new SAKTimingSendingSettingsWidget(_debugPage);
 
@@ -49,16 +49,21 @@ SAKOtherSettingsManager::~SAKOtherSettingsManager()
     delete transmissionSettings;
     delete autoResponseSettingWidget;
     delete highlighterSettingPanel;
-    delete moreSettingsWidget;
+    delete mMoreSettingsWidget;
     delete readWriteSettingsWidget;
     delete timingSendingManager;
 
     transmissionSettings = Q_NULLPTR;
     autoResponseSettingWidget = Q_NULLPTR;
     highlighterSettingPanel = Q_NULLPTR;
-    moreSettingsWidget = Q_NULLPTR;
+    mMoreSettingsWidget = Q_NULLPTR;
     readWriteSettingsWidget = Q_NULLPTR;
     timingSendingManager = Q_NULLPTR;
+}
+
+SAKMoreSettingsWidget *SAKOtherSettingsManager::moreSettingsWidget()
+{
+    return mMoreSettingsWidget;
 }
 
 void SAKOtherSettingsManager::onAutoresponseSettingPushbuttonClicked()
@@ -100,10 +105,10 @@ void SAKOtherSettingsManager::onTransmissionSettingPushButtonClicked()
 
 void SAKOtherSettingsManager::onMoreSettingsPushButtonClicked()
 {
-    if (moreSettingsWidget->isHidden()){
-        moreSettingsWidget->show();
+    if (mMoreSettingsWidget->isHidden()){
+        mMoreSettingsWidget->show();
     }else {
-        moreSettingsWidget->activateWindow();
+        mMoreSettingsWidget->activateWindow();
     }
 }
 

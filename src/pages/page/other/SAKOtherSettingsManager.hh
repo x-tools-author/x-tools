@@ -29,6 +29,11 @@ public:
     SAKOtherSettingsManager(SAKDebugPage *debugPage, QObject *parent = Q_NULLPTR);
     ~SAKOtherSettingsManager();
 
+    /**
+     * @brief moreSettingsWidget 获取“更多设置”控制面板
+     * @return “更多设置控制面板”
+     */
+    SAKMoreSettingsWidget *moreSettingsWidget();
 private:
     QPushButton *transmissionSettingPushButton;
     QPushButton *readWriteSettingPushButton;
@@ -43,7 +48,7 @@ private:
     SAKAutoResponseSettingsWidget   *autoResponseSettingWidget;
     SAKTimingSendingSettingsWidget     *timingSendingManager;
     SAKHighlightSettingsWidget     *highlighterSettingPanel;
-    SAKMoreSettingsWidget       *moreSettingsWidget;
+    SAKMoreSettingsWidget *mMoreSettingsWidget;
 
     SAKDebugPage                *_debugPage;
 private slots:
