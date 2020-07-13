@@ -39,7 +39,7 @@ SAKProtocolAnalyzerWidget::~SAKProtocolAnalyzerWidget()
 
 void SAKProtocolAnalyzerWidget::inputBytes(QByteArray bytes)
 {
-    mAnalyzer->appendBytes(bytes);
+    mAnalyzer->inputBytes(bytes);
 }
 
 void SAKProtocolAnalyzerWidget::setLineEditFormat(QLineEdit *lineEdit)

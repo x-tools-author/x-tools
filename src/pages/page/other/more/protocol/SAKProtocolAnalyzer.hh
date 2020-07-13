@@ -42,10 +42,10 @@ public:
     void wakeMe();
 
     /**
-     * @brief appendBytes 添加数据
+     * @brief inputBytes 添加数据
      * @param array 待分析数据
      */
-    void appendBytes(QByteArray array);
+    void inputBytes(QByteArray array);
 
     /// @brief 以下是参数设置接口
     void setEnable(bool enable);

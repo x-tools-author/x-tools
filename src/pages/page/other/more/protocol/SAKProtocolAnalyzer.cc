@@ -137,7 +137,7 @@ void SAKProtocolAnalyzer::wakeMe()
     mThreadCondition.wakeAll();
 }
 
-void SAKProtocolAnalyzer::appendBytes(QByteArray array)
+void SAKProtocolAnalyzer::inputBytes(QByteArray array)
 {
     mParametersMutex.lock();
     ParametersContext parameters = mParameters;
