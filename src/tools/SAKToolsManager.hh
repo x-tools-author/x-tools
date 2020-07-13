@@ -33,7 +33,7 @@ public:
     void showToolWidget(int type);
 private:
     static SAKToolsManager *instancePtr;
-    QMap<int, QWidget *> toolsMap;
+    QMap<int, QWidget *> mToolsMap;
 private:
     /// @brief 创建指定类型的工具
     QWidget *toolWidgetFromType(int type);

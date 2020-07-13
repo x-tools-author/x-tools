@@ -32,7 +32,7 @@ SAKToolsManager::SAKToolsManager(QObject *parent)
     for (int i = 0; i < metaEnum.keyCount(); i++){
         QWidget *toolWidget = toolWidgetFromType(metaEnum.value(i));
         if (toolWidget){
-            toolsMap.insert(metaEnum.value(i), toolWidget);
+            mToolsMap.insert(metaEnum.value(i), toolWidget);
         }
     }
 }
@@ -40,7 +40,7 @@ SAKToolsManager::SAKToolsManager(QObject *parent)
 SAKToolsManager::~SAKToolsManager()
 {
     instancePtr = Q_NULLPTR;
-    QMapIterator<int, QWidget *> i(toolsMap);
+    QMapIterator<int, QWidget *> i(mToolsMap);
     while (i.hasNext()) {
         QWidget *w = i.value();
         if (w){
@@ -63,7 +63,7 @@ SAKToolsManager* SAKToolsManager::instance()
 
 void SAKToolsManager::showToolWidget(int type)
 {
-    QWidget *toolWidget = toolsMap.value(type);
+    QWidget *toolWidget = mToolsMap.value(type);
     if (toolWidget){
         if (toolWidget->isHidden()){
             toolWidget->show();
