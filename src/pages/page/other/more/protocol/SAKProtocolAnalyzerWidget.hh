@@ -27,6 +27,10 @@ public:
     SAKProtocolAnalyzerWidget(QWidget *parent = Q_NULLPTR);
     ~SAKProtocolAnalyzerWidget();
 
+    /**
+     * @brief inputBytes 数据输入接口
+     * @param bytes 待分析数据
+     */
     void inputBytes(QByteArray bytes);
 private:
     SAKProtocolAnalyzer *mAnalyzer;
