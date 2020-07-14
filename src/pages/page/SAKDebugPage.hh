@@ -129,14 +129,14 @@ protected:
     /// @brief 初始化页面，子类在重新实现所有虚函数后，条用该函数即可
     void initPage();
 private:
-    SAKDevice *device;
-    bool isInitializing;
-    int debugPageType = -1;
-    QString settingKey;
-    QTimer clearInfoTimer;
-    struct ReadWriteParameters _readWriteParameters;
-    QMutex readWriteParametersQMutex;
-    SAKDebugPageDatabaseInterface *databaseInterface;
+    SAKDevice *mDevice;
+    bool mIsInitializing;
+    int mDebugPageType = -1;
+    QString mSettingKey;
+    QTimer mClearInfoTimer;
+    struct ReadWriteParameters mRreadWriteParameters;
+    QMutex mReadWriteParametersMutex;
+    SAKDebugPageDatabaseInterface *mDatabaseInterface;
 private:
     void initSettingKey();
     /// @brief 初始化配置选项名称
@@ -180,7 +180,7 @@ signals:
     /*************************************************************************/
     /// @brief ui文件初始化
 private:
-    Ui::SAKDebugPage *ui;
+    Ui::SAKDebugPage *mUi;
 private:
     /// @brief initUiPointer -- 初始化指向ui控件的数据成员（指针）
     void initUiPointer();

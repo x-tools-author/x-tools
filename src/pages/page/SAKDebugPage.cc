@@ -45,16 +45,16 @@
 
 SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
     :QWidget(parent)
-    ,device(Q_NULLPTR)    
-    ,debugPageType(type)
-    ,ui(new Ui::SAKDebugPage)
+    ,mDevice(Q_NULLPTR)    
+    ,mDebugPageType(type)
+    ,mUi(new Ui::SAKDebugPage)
 {
-    databaseInterface = SAKDebugPageDatabaseInterface::instance();
+    mDatabaseInterface = SAKDebugPageDatabaseInterface::instance();
 
-    isInitializing = true;
+    mIsInitializing = true;
     initSettingString();
 
-    ui->setupUi(this);
+    mUi->setupUi(this);
     initUiPointer();
 
     mOutputManager           = new SAKDebugPageOutputManager(this, this);
@@ -65,33 +65,33 @@ SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
     mDataVisualizationManager= Q_NULLPTR;
 #endif
 
-    _readWriteParameters.waitForReadyReadTime = MINI_READ_WRITE_WATINGT_TIME;
-    _readWriteParameters.waitForBytesWrittenTime = MINI_READ_WRITE_WATINGT_TIME;
-    _readWriteParameters.runIntervalTime = 25;
+    mRreadWriteParameters.waitForReadyReadTime = MINI_READ_WRITE_WATINGT_TIME;
+    mRreadWriteParameters.waitForBytesWrittenTime = MINI_READ_WRITE_WATINGT_TIME;
+    mRreadWriteParameters.runIntervalTime = 25;
 #if 0
     resize(800, 600);
 #endif
-    clearInfoTimer.setInterval(8*1000);
-    connect(&clearInfoTimer, &QTimer::timeout, this, &SAKDebugPage::cleanInfo);
+    mClearInfoTimer.setInterval(8*1000);
+    connect(&mClearInfoTimer, &QTimer::timeout, this, &SAKDebugPage::cleanInfo);
 
     readinSettings();
-    isInitializing = false;
+    mIsInitializing = false;
 }
 
 SAKDebugPage::~SAKDebugPage()
 {
-    if (device){
-        device->requestInterruption();
-        device->wakeMe();
-        device->exit();
-        device->wait();
-        delete device;
-        device = Q_NULLPTR;
+    if (mDevice){
+        mDevice->requestInterruption();
+        mDevice->wakeMe();
+        mDevice->exit();
+        mDevice->wait();
+        delete mDevice;
+        mDevice = Q_NULLPTR;
     }
 
-    if (ui){
-        delete ui;
-        ui = Q_NULLPTR;
+    if (mUi){
+        delete mUi;
+        mUi = Q_NULLPTR;
     }
 
 #ifdef SAK_IMPORT_CHARTS_MODULE
@@ -129,17 +129,17 @@ void SAKDebugPage::outputMessage(QString msg, bool isInfo)
 
     msg.prepend(time);
     mInfoLabel->setText(msg);
-    clearInfoTimer.start();
+    mClearInfoTimer.start();
 }
 
 struct SAKDebugPage::ReadWriteParameters SAKDebugPage::readWriteParameters()
 {
     ReadWriteParameters parameters;
-    readWriteParametersQMutex.lock();
-    parameters.waitForReadyReadTime = _readWriteParameters.waitForReadyReadTime;
-    parameters.waitForBytesWrittenTime = _readWriteParameters.waitForBytesWrittenTime;
-    parameters.runIntervalTime = _readWriteParameters.runIntervalTime;
-    readWriteParametersQMutex.unlock();
+    mReadWriteParametersMutex.lock();
+    parameters.waitForReadyReadTime = mRreadWriteParameters.waitForReadyReadTime;
+    parameters.waitForBytesWrittenTime = mRreadWriteParameters.waitForBytesWrittenTime;
+    parameters.runIntervalTime = mRreadWriteParameters.runIntervalTime;
+    mReadWriteParametersMutex.unlock();
 
     return  parameters;
 }
@@ -154,20 +154,20 @@ void SAKDebugPage::setReadWriteParameters(struct ReadWriteParameters parameters)
         parameters.waitForBytesWrittenTime = MINI_READ_WRITE_WATINGT_TIME;
     }
 
-    readWriteParametersQMutex.lock();
-    _readWriteParameters.waitForReadyReadTime = parameters.waitForReadyReadTime;
-    _readWriteParameters.waitForBytesWrittenTime = parameters.waitForBytesWrittenTime;
-    readWriteParametersQMutex.unlock();
+    mReadWriteParametersMutex.lock();
+    mRreadWriteParameters.waitForReadyReadTime = parameters.waitForReadyReadTime;
+    mRreadWriteParameters.waitForBytesWrittenTime = parameters.waitForBytesWrittenTime;
+    mReadWriteParametersMutex.unlock();
 }
 
 SAKDebugPageDatabaseInterface *SAKDebugPage::databaseInterfaceInstance()
 {
-   return databaseInterface;
+   return mDatabaseInterface;
 }
 
 quint32 SAKDebugPage::pageType()
 {
-    return debugPageType;
+    return mDebugPageType;
 }
 
 void SAKDebugPage::refreshDevice()
@@ -207,10 +207,10 @@ void SAKDebugPage::changedDeviceState(bool opened)
 
 void SAKDebugPage::initSettingKey()
 {
-    switch (debugPageType) {
+    switch (mDebugPageType) {
 #ifdef SAK_IMPORT_COM_MODULE
     case SAKDataStruct::DebugPageTypeCOM:
-        settingKey = QString("COM");
+        mSettingKey = QString("COM");
         break;
 #endif
 #ifdef SAK_IMPORT_HID_MODULE
@@ -224,22 +224,22 @@ void SAKDebugPage::initSettingKey()
     break;
 #endif
     case SAKDataStruct::DebugPageTypeUDP:
-        settingKey = QString("UDP");
+        mSettingKey = QString("UDP");
         break;
     case SAKDataStruct::DebugPageTypeTCPClient:
-        settingKey = QString("TCPC");
+        mSettingKey = QString("TCPC");
         break;
     case SAKDataStruct::DebugPageTypeTCPServer:
-        settingKey = QString("TCPS");
+        mSettingKey = QString("TCPS");
         break;
     case SAKDataStruct::DebugPageTypeWebSocketClient:
-        settingKey = QString("WEBSOCKETC");
+        mSettingKey = QString("WEBSOCKETC");
         break;
     case SAKDataStruct::DebugPageTypeWebSocketServer:
-        settingKey = QString("WEBSOCKETS");
+        mSettingKey = QString("WEBSOCKETS");
         break;
     default:
-        settingKey = QString("UnknowDebugPage");
+        mSettingKey = QString("UnknowDebugPage");
         Q_ASSERT_X(false, __FUNCTION__, "Invalid type of debug page");
         break;
     }
@@ -254,22 +254,22 @@ void SAKDebugPage::initSettingString()
 
 void SAKDebugPage::initInputSettingString()
 {
-    mSettingStringInputModel        = QString("%1/inputModel").arg(settingKey);
-    mSettingStringCycleTime         = QString("%1/cycleTime").arg(settingKey);
-    mSettingStringAddCRC            = QString("%1/addCRC").arg(settingKey);
-    mSettingStringBigeEndian        = QString("%1/bigeEndian").arg(settingKey);
-    mSettingStringcrcParameterModel = QString("%1/parameterModel").arg(settingKey);
+    mSettingStringInputModel        = QString("%1/inputModel").arg(mSettingKey);
+    mSettingStringCycleTime         = QString("%1/cycleTime").arg(mSettingKey);
+    mSettingStringAddCRC            = QString("%1/addCRC").arg(mSettingKey);
+    mSettingStringBigeEndian        = QString("%1/bigeEndian").arg(mSettingKey);
+    mSettingStringcrcParameterModel = QString("%1/parameterModel").arg(mSettingKey);
 }
 
 void SAKDebugPage::initOutputSettingString()
 {
-    mSettingStringOutputTextFormat = QString("%1/outputTextFormat").arg(settingKey);
-    mSettingStringShowDate    = QString("%1/showDate").arg(settingKey);
-    mSettingStringAutoWrap    = QString("%1/autoWrap").arg(settingKey);
-    mSettingStringShowTime    = QString("%1/showTime").arg(settingKey);
-    mSettingStringShowMs      = QString("%1/showMs").arg(settingKey);
-    mSettingStringShowRx      = QString("%1/showRx").arg(settingKey);
-    mSettingStringShowTx      = QString("%1/showTx").arg(settingKey);
+    mSettingStringOutputTextFormat = QString("%1/outputTextFormat").arg(mSettingKey);
+    mSettingStringShowDate    = QString("%1/showDate").arg(mSettingKey);
+    mSettingStringAutoWrap    = QString("%1/autoWrap").arg(mSettingKey);
+    mSettingStringShowTime    = QString("%1/showTime").arg(mSettingKey);
+    mSettingStringShowMs      = QString("%1/showMs").arg(mSettingKey);
+    mSettingStringShowRx      = QString("%1/showRx").arg(mSettingKey);
+    mSettingStringShowTx      = QString("%1/showTx").arg(mSettingKey);
 }
 
 void SAKDebugPage::readinSettings()
@@ -350,19 +350,19 @@ void SAKDebugPage::readinOutputSettings()
 
 void SAKDebugPage::cleanInfo()
 {
-    clearInfoTimer.stop();
+    mClearInfoTimer.stop();
     mInfoLabel->clear();
 }
 
 void SAKDebugPage::openOrColoseDevice()
 {
     mSwitchPushButton->setEnabled(false);
-    if (!device){
+    if (!mDevice){
         setupDevice();
     }
 
-    if (device){
-        if (device->isRunning()){
+    if (mDevice){
+        if (mDevice->isRunning()){
             closeDevice();
         }else{
             openDevice();
@@ -373,43 +373,43 @@ void SAKDebugPage::openOrColoseDevice()
 
 void SAKDebugPage::openDevice()
 {
-    if (device){
-        device->start();
+    if (mDevice){
+        mDevice->start();
         mSwitchPushButton->setText(tr("关闭设备"));
     }
 }
 
 void SAKDebugPage::closeDevice()
 {
-    if (device){
-        device->requestInterruption();
-        device->wakeMe();
-        device->exit();
-        device->wait();
-        device->deleteLater();
-        device = Q_NULLPTR;
+    if (mDevice){
+        mDevice->requestInterruption();
+        mDevice->wakeMe();
+        mDevice->exit();
+        mDevice->wait();
+        mDevice->deleteLater();
+        mDevice = Q_NULLPTR;
         mSwitchPushButton->setText(tr("打开设备"));
     }
 }
 
 void SAKDebugPage::setupDevice()
 {
-    device = createDevice();
-    if (device){
-        connect(this, &SAKDebugPage::requestWriteData, device, &SAKDevice::writeBytes);
-        connect(device, &SAKDevice::bytesWritten, this, &SAKDebugPage::bytesWritten);
+    mDevice = createDevice();
+    if (mDevice){
+        connect(this, &SAKDebugPage::requestWriteData, mDevice, &SAKDevice::writeBytes);
+        connect(mDevice, &SAKDevice::bytesWritten, this, &SAKDebugPage::bytesWritten);
 #if 0
         connect(device, &SAKDevice::bytesRead, this, &SAKDebugPage::bytesRead);
 #else
         /// @brief 设备读取到的数据传输至协议分析器中，分析完成的数据回传至调试页面中
         SAKMoreSettingsWidget *moreSettingsWidget = mOtherSettings->moreSettingsWidget();
         SAKProtocolAnalyzerWidget *protocolAnalyzerWidget = moreSettingsWidget->protocolAnalyzerWidget();
-        connect(device, &SAKDevice::bytesRead, protocolAnalyzerWidget, &SAKProtocolAnalyzerWidget::inputBytes);
+        connect(mDevice, &SAKDevice::bytesRead, protocolAnalyzerWidget, &SAKProtocolAnalyzerWidget::inputBytes);
         connect(protocolAnalyzerWidget, &SAKProtocolAnalyzerWidget::bytesAnalysed, this, &SAKDebugPage::bytesRead);
 #endif
-        connect(device, &SAKDevice::messageChanged, this, &SAKDebugPage::outputMessage);
-        connect(device, &SAKDevice::deviceStateChanged, this, &SAKDebugPage::changedDeviceState);
-        connect(device, &SAKDevice::finished, this, &SAKDebugPage::closeDevice);
+        connect(mDevice, &SAKDevice::messageChanged, this, &SAKDebugPage::outputMessage);
+        connect(mDevice, &SAKDevice::deviceStateChanged, this, &SAKDebugPage::changedDeviceState);
+        connect(mDevice, &SAKDevice::finished, this, &SAKDebugPage::closeDevice);
     }
 }
 
@@ -442,21 +442,21 @@ void SAKDebugPage::on_switchPushButton_clicked()
 
 void SAKDebugPage::on_inputModelComboBox_currentIndexChanged(int index)
 {
-    if (!isInitializing){
+    if (!mIsInitializing){
         SAKSettings::instance()->setValue(mSettingStringInputModel, QVariant::fromValue(index));
     }
 }
 
 void SAKDebugPage::on_cycleTimeLineEdit_textChanged(const QString &text)
 {
-    if (!isInitializing){
+    if (!mIsInitializing){
         SAKSettings::instance()->setValue(mSettingStringCycleTime, QVariant::fromValue(text));
     }
 }
 
 void SAKDebugPage::on_addCRCCheckBox_clicked()
 {
-    if (!isInitializing){
+    if (!mIsInitializing){
         SAKSettings::instance()->setValue(mSettingStringAddCRC, QVariant::fromValue(mAddCRCCheckBox->isChecked()));
     }
 }
@@ -468,56 +468,56 @@ void SAKDebugPage::on_crcSettingsPushButton_clicked()
 
 void SAKDebugPage::on_crcParameterModelsComboBox_currentIndexChanged(int index)
 {
-    if (!isInitializing){
+    if (!mIsInitializing){
         SAKSettings::instance()->setValue(mSettingStringcrcParameterModel, QVariant::fromValue(index));
     }
 }
 
 void SAKDebugPage::on_outputTextFormatComboBox_currentIndexChanged(int index)
 {
-    if (!isInitializing){
+    if (!mIsInitializing){
         SAKSettings::instance()->setValue(mSettingStringOutputTextFormat, QVariant::fromValue(index));
     }
 }
 
 void SAKDebugPage::on_showDateCheckBox_clicked()
 {
-    if (!isInitializing){
+    if (!mIsInitializing){
         SAKSettings::instance()->setValue(mSettingStringShowDate, QVariant::fromValue(mShowDateCheckBox->isChecked()));
     }
 }
 
 void SAKDebugPage::on_autoWrapCheckBox_clicked()
 {
-    if (!isInitializing){
+    if (!mIsInitializing){
         SAKSettings::instance()->setValue(mSettingStringAutoWrap, QVariant::fromValue(mAutoWrapCheckBox->isChecked()));
     }
 }
 
 void SAKDebugPage::on_showTimeCheckBox_clicked()
 {
-    if (!isInitializing){
+    if (!mIsInitializing){
         SAKSettings::instance()->setValue(mSettingStringShowTime, QVariant::fromValue(mShowTimeCheckBox->isChecked()));
     }
 }
 
 void SAKDebugPage::on_showMsCheckBox_clicked()
 {
-    if (!isInitializing){
+    if (!mIsInitializing){
         SAKSettings::instance()->setValue(mSettingStringShowMs, QVariant::fromValue(mShowMsCheckBox->isChecked()));
     }
 }
 
 void SAKDebugPage::on_showRxDataCheckBox_clicked()
 {
-    if (!isInitializing){
+    if (!mIsInitializing){
         SAKSettings::instance()->setValue(mSettingStringShowRx, QVariant::fromValue(mShowRxDataCheckBox->isChecked()));
     }
 }
 
 void SAKDebugPage::on_showTxDataCheckBox_clicked()
 {
-    if (!isInitializing){
+    if (!mIsInitializing){
         SAKSettings::instance()->setValue(mSettingStringShowTx, QVariant::fromValue(mShowTxDataCheckBox->isChecked()));
     }
 }
@@ -525,65 +525,65 @@ void SAKDebugPage::on_showTxDataCheckBox_clicked()
 void SAKDebugPage::initUiPointer()
 {
     /// @brief 设备管理组
-    mSwitchPushButton        = ui->switchPushButton;
-    mRefreshPushButton       = ui->refreshPushButton;
-    mDeviceSettingFrame      = ui->deviceSettingFrame;
+    mSwitchPushButton        = mUi->switchPushButton;
+    mRefreshPushButton       = mUi->refreshPushButton;
+    mDeviceSettingFrame      = mUi->deviceSettingFrame;
 
     /// @brief 消息输出组
-    mInfoLabel               = ui->infoLabel;
+    mInfoLabel               = mUi->infoLabel;
 
     /// @brief 输入设置组
-    mInputModelComboBox      = ui->inputModelComboBox;
-    mCycleEnableCheckBox     = ui->cycleEnableCheckBox;
-    mCycleTimeLineEdit       = ui->cycleTimeLineEdit;
-    mSaveInputDataPushButton = ui->saveInputDataPushButton;
-    mReadinFilePushButton    = ui->readinFilePushButton;
-    mAddCRCCheckBox          = ui->addCRCCheckBox;
-    mCrcSettingsPushButton   = ui->crcSettingsPushButton;
-    mClearInputPushButton    = ui->clearInputPushButton;
-    mSendPushButton          = ui->sendPushButton;
-    mInputTextEdit           = ui->inputTextEdit;
-    mCrcParameterModelsComboBox = ui->crcParameterModelsComboBox;
-    mCrcLabel                = ui->crcLabel;
-    mPresetPushButton        = ui->presetPushButton;
-    mSendPresetPushButton    = ui->sendPresetPushButton;
+    mInputModelComboBox      = mUi->inputModelComboBox;
+    mCycleEnableCheckBox     = mUi->cycleEnableCheckBox;
+    mCycleTimeLineEdit       = mUi->cycleTimeLineEdit;
+    mSaveInputDataPushButton = mUi->saveInputDataPushButton;
+    mReadinFilePushButton    = mUi->readinFilePushButton;
+    mAddCRCCheckBox          = mUi->addCRCCheckBox;
+    mCrcSettingsPushButton   = mUi->crcSettingsPushButton;
+    mClearInputPushButton    = mUi->clearInputPushButton;
+    mSendPushButton          = mUi->sendPushButton;
+    mInputTextEdit           = mUi->inputTextEdit;
+    mCrcParameterModelsComboBox = mUi->crcParameterModelsComboBox;
+    mCrcLabel                = mUi->crcLabel;
+    mPresetPushButton        = mUi->presetPushButton;
+    mSendPresetPushButton    = mUi->sendPresetPushButton;
 
     /// @brief 输出设置组
-    mRxLabel                 = ui->rxLabel;
-    mTxLabel                 = ui->txLabel;
-    mOutputTextFormatComboBox= ui->outputTextFormatComboBox;
-    mAutoWrapCheckBox        = ui->autoWrapCheckBox;
-    mShowDateCheckBox        = ui->showDateCheckBox;
-    mShowTimeCheckBox        = ui->showTimeCheckBox;
-    mShowMsCheckBox          = ui->showMsCheckBox;
-    mShowRxDataCheckBox      = ui->showRxDataCheckBox;
-    mShowTxDataCheckBox      = ui->showTxDataCheckBox;
-    mSaveOutputFileToFilecheckBox = ui->saveOutputFileToFilecheckBox;
-    mOutputFilePathPushButton= ui->outputFilePathPushButton;
-    mClearOutputPushButton   = ui->clearOutputPushButton;
-    mSaveOutputPushButton    = ui->saveOutputPushButton;
-    mOutputTextBroswer       = ui->outputTextBroswer;
+    mRxLabel                 = mUi->rxLabel;
+    mTxLabel                 = mUi->txLabel;
+    mOutputTextFormatComboBox= mUi->outputTextFormatComboBox;
+    mAutoWrapCheckBox        = mUi->autoWrapCheckBox;
+    mShowDateCheckBox        = mUi->showDateCheckBox;
+    mShowTimeCheckBox        = mUi->showTimeCheckBox;
+    mShowMsCheckBox          = mUi->showMsCheckBox;
+    mShowRxDataCheckBox      = mUi->showRxDataCheckBox;
+    mShowTxDataCheckBox      = mUi->showTxDataCheckBox;
+    mSaveOutputFileToFilecheckBox = mUi->saveOutputFileToFilecheckBox;
+    mOutputFilePathPushButton= mUi->outputFilePathPushButton;
+    mClearOutputPushButton   = mUi->clearOutputPushButton;
+    mSaveOutputPushButton    = mUi->saveOutputPushButton;
+    mOutputTextBroswer       = mUi->outputTextBroswer;
 
     /// @brief 数据统计
-    mRxSpeedLabel            = ui->rxSpeedLabel;
-    mTxSpeedLabel            = ui->txSpeedLabel;
-    mRxFramesLabel           = ui->rxFramesLabel;
-    mTxFramesLabel           = ui->txFramesLabel;
-    mRxBytesLabel            = ui->rxBytesLabel;
-    mTxBytesLabel            = ui->txBytesLabel;
-    mResetTxCountPushButton  = ui->resetTxCountPushButton;
-    mResetRxCountPushButton  = ui->resetRxCountPushButton;
+    mRxSpeedLabel            = mUi->rxSpeedLabel;
+    mTxSpeedLabel            = mUi->txSpeedLabel;
+    mRxFramesLabel           = mUi->rxFramesLabel;
+    mTxFramesLabel           = mUi->txFramesLabel;
+    mRxBytesLabel            = mUi->rxBytesLabel;
+    mTxBytesLabel            = mUi->txBytesLabel;
+    mResetTxCountPushButton  = mUi->resetTxCountPushButton;
+    mResetRxCountPushButton  = mUi->resetRxCountPushButton;
 
     /// @brief 其他设置
-    mTransmissionSettingPushButton = ui->transmissionSettingPushButton;
-    mReadWriteSettingPushButton    = ui->readWriteSettingPushButton;
-    mAutoResponseSettingPushButton = ui->autoResponseSettingPushButton;
-    mTimingSendingPushButton       = ui->timingSendingPushButton;
-    mHighlightSettingPushButton    = ui->highlightSettingPushButton;
-    mMoreSettingsPushButton        = ui->moreSettingsPushButton;
+    mTransmissionSettingPushButton = mUi->transmissionSettingPushButton;
+    mReadWriteSettingPushButton    = mUi->readWriteSettingPushButton;
+    mAutoResponseSettingPushButton = mUi->autoResponseSettingPushButton;
+    mTimingSendingPushButton       = mUi->timingSendingPushButton;
+    mHighlightSettingPushButton    = mUi->highlightSettingPushButton;
+    mMoreSettingsPushButton        = mUi->moreSettingsPushButton;
 
     /// @brief 数据可视化
-    mDataVisualizationPushButton = ui->dataVisualizationPushButton;
+    mDataVisualizationPushButton = mUi->dataVisualizationPushButton;
 }
 
 void SAKDebugPage::on_dataVisualizationPushButton_clicked()
