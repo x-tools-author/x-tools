@@ -54,7 +54,7 @@ SAKApplication::SAKApplication(int argc, char **argv)
     /// @brief 5秒后发射检查更新信号
     QTimer::singleShot(5*1000, [=](){
         if (SAKSettings::instance()->enableAutoCheckForUpdate()){
-            emit this->checkForUpdate();
+            emit this->checkForUpdateRequest();
         }
     });
 

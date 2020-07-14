@@ -30,7 +30,7 @@ private:
     QTranslator qtBaeTranslator;
     QTranslator sakTranslator;
 signals:
-    void checkForUpdate();
+    void checkForUpdateRequest();
 };
 
 #endif
