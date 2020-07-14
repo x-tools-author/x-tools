@@ -65,7 +65,7 @@ private:
     /// @brief 生成调试页面
     QWidget *debugPageFromType(int type);
 private slots:
-    /// @brief 显示工具窗口
+    /// @brief 显示工具窗口，该函数只能通过“工具”菜单的菜单项来调用
     void showToolWidget();
 private:
     Ui::SAKMainWindow *mUi;
