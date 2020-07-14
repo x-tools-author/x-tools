@@ -48,7 +48,7 @@ exists(private/SAKPrivate.pri){
 QSAK_APP_NAME        = "QtSwissArmyKnife"
 QSAK_ORG_NAME        = "Qter"
 QSAK_ORG_DOMAIN      = "IT"
-QSAK_APP_DESCRIPTION = "Qt Swiss Army Knife is a multi-functional, cross-platform debugging tool which is based on Qt technology."
+QSAK_APP_DESCRIPTION = "Qt Swiss Army Knife"
 QSAK_APP_COPYRIGHT   = "Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved."
 
 win32 {
