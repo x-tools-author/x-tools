@@ -35,10 +35,6 @@ public:
     explicit SAKMainWindow(QWidget *parent = Q_NULLPTR);
     ~SAKMainWindow();
 private:
-    QTranslator mQtTranslator;
-    QTranslator mQtBaseTranslator;
-    QTranslator mSakTranslator;
-
     QMenu *mToolsMenu;
     QAction *mDefaultStyleSheetAction;
     SAKUpdateManager *mUpdateManager;
