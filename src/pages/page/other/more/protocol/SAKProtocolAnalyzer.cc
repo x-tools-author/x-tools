@@ -66,53 +66,55 @@ void SAKProtocolAnalyzer::run()
                     emit bytesAnalized(temp);
                 }
             }else{  // 长度小于或者等于0，不再提取数据
-                emit bytesAnalized(mWaitingAnalyzingBytes);
-                mWaitingAnalyzingBytes.clear();
+                if (mWaitingAnalyzingBytes.length()){
+                    emit bytesAnalized(mWaitingAnalyzingBytes);
+                    mWaitingAnalyzingBytes.clear();
+                }
             }
         }else{  // 根据首尾标志提取
             /// @brief 未指定首尾标志时，将数据全部发出
             if (parameters.startArray.isEmpty() && parameters.endArray.isEmpty()){
-                emit bytesAnalized(mWaitingAnalyzingBytes);
-                mWaitingAnalyzingBytes.clear();
-                continue;
-            }
-
-            while(mWaitingAnalyzingBytes.length() > (parameters.startArray.length() + parameters.endArray.length())){
-                /// @brief 匹配起始字节
-                bool startBytesMatched = true;
-                for (int i = 0; i < parameters.startArray.length(); i++){
-                    if (parameters.startArray.at(i) != mWaitingAnalyzingBytes.at(i)){
-                        startBytesMatched = false;
-                        mWaitingAnalyzingBytes.remove(i, 1);
-                        break;
-                    }
+                if (mWaitingAnalyzingBytes.length()){
+                    emit bytesAnalized(mWaitingAnalyzingBytes);
+                    mWaitingAnalyzingBytes.clear();
                 }
+            }else{
+                while(mWaitingAnalyzingBytes.length() > (parameters.startArray.length() + parameters.endArray.length())){
+                    /// @brief 匹配起始字节
+                    bool startBytesMatched = true;
+                    for (int i = 0; i < parameters.startArray.length(); i++){
+                        if (parameters.startArray.at(i) != mWaitingAnalyzingBytes.at(i)){
+                            startBytesMatched = false;
+                            mWaitingAnalyzingBytes.remove(i, 1);
+                            break;
+                        }
+                    }
 
-                /// @brief 匹配结束字节
-                bool endBytesMatched = true;
-                quint32 frameLength = 0;
-                if (parameters.endArray.isEmpty()){
-                    endBytesMatched = true;
-                }else {
-                    int ret = mWaitingAnalyzingBytes.indexOf(parameters.endArray, parameters.startArray.length());
-                    if (ret >= 0){
+                    /// @brief 匹配结束字节
+                    bool endBytesMatched = true;
+                    quint32 frameLength = 0;
+                    if (parameters.endArray.isEmpty()){
                         endBytesMatched = true;
-                        frameLength = ret + parameters.endArray.length();
-                    }else{
-                        endBytesMatched = false;
+                    }else {
+                        int ret = mWaitingAnalyzingBytes.indexOf(parameters.endArray, parameters.startArray.length());
+                        if (ret >= 0){
+                            endBytesMatched = true;
+                            frameLength = ret + parameters.endArray.length();
+                        }else{
+                            endBytesMatched = false;
+                        }
                     }
-                }
 
-                /// @brief 起始字节及结束字节都匹配完成后才对外发送数据
-                if (startBytesMatched && endBytesMatched){
-                    QByteArray temp(mWaitingAnalyzingBytes.data(), frameLength);
-                    emit bytesAnalized(temp);
-                    mWaitingAnalyzingBytes.remove(0, temp.length());
+                    /// @brief 起始字节及结束字节都匹配完成后才对外发送数据
+                    if (startBytesMatched && endBytesMatched){
+                        QByteArray temp(mWaitingAnalyzingBytes.data(), frameLength);
+                        emit bytesAnalized(temp);
+                        mWaitingAnalyzingBytes.remove(0, temp.length());
+                    }
                 }
             }
         }
         mWaitingAnalyzingBytesMutex.unlock();
-
 
         if (!isInterruptionRequested()){
             /// @brief 处理事件吹动
@@ -139,6 +141,11 @@ void SAKProtocolAnalyzer::wakeMe()
 
 void SAKProtocolAnalyzer::inputBytes(QByteArray array)
 {
+    /// @brief 不处理空数据
+    if (array.isEmpty()){
+        return;
+    }
+
     mParametersMutex.lock();
     ParametersContext parameters = mParameters;
     mParametersMutex.unlock();
