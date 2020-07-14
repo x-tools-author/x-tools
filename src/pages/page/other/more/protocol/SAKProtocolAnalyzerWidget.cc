@@ -7,6 +7,7 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
+#include <QDebug>
 #include <QRegExpValidator>
 
 #include "SAKProtocolAnalyzer.hh"
@@ -25,9 +26,11 @@ SAKProtocolAnalyzerWidget::SAKProtocolAnalyzerWidget(QWidget *parent)
     mStartLineEdit = mUi->startLineEdit;
     mEndLineEdit = mUi->endLineEdit;
     mDisableCheckBox = mUi->disableCheckBox;
+    mClearPushButton = mUi->clearPushButton;
 
     setLineEditFormat(mStartLineEdit);
     setLineEditFormat(mEndLineEdit);
+    connect(mAnalyzer, &SAKProtocolAnalyzer::bytesAnalized, this, &SAKProtocolAnalyzerWidget::bytesAnalysed);
     mAnalyzer->start();
 }
 
@@ -87,5 +90,10 @@ void SAKProtocolAnalyzerWidget::on_endLineEdit_textChanged(const QString &text)
 
 void SAKProtocolAnalyzerWidget::on_disableCheckBox_clicked()
 {
-    mAnalyzer->setEnable(mDisableCheckBox->isChecked());
+    mAnalyzer->setEnable(!mDisableCheckBox->isChecked());
+}
+
+void SAKProtocolAnalyzerWidget::on_clearPushButton_clicked()
+{
+    mAnalyzer->clearData();
 }

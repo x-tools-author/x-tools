@@ -13,6 +13,7 @@
 #include <QWidget>
 #include <QCheckBox>
 #include <QLineEdit>
+#include <QPushButton>
 
 namespace Ui {
     class SAKProtocolAnalyzerWidget;
@@ -43,12 +44,14 @@ private:
     QLineEdit *mStartLineEdit;
     QLineEdit *mEndLineEdit;
     QCheckBox *mDisableCheckBox;
+    QPushButton *mClearPushButton;
 private slots:
     void on_fixedLengthCheckBox_clicked();
     void on_lengthLineEdit_textChanged(const QString &text);
     void on_startLineEdit_textChanged(const QString &text);
     void on_endLineEdit_textChanged(const QString &text);
     void on_disableCheckBox_clicked();
+    void on_clearPushButton_clicked();
 signals:
     void bytesAnalysed(QByteArray bytes);
 };
