@@ -8,7 +8,11 @@ QT += core gui network sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = QtSwissArmyKnife
+contains(CONFIG, debug, debug|release){
+    TARGET = QtSwissArmyKnifed
+}else{
+    TARGET = QtSwissArmyKnife
+}
 
 TEMPLATE = app
 
