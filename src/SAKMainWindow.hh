@@ -54,7 +54,7 @@ private:
 
     /// @brief 显示关于软件弹窗
     void about();
-    /// @brief 切换软件显示语言
+    /// @brief 切换软件显示语言，重启软件生效，该函数只能通过“选项”>>“语言”菜单下的菜单选项来调用
     void installLanguage();
     /// @brief 追加页面
     void appendRemovablePage();

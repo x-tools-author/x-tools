@@ -433,14 +433,15 @@ void SAKMainWindow::installLanguage()
         return;
     }
 
-    QAction *action = reinterpret_cast<QAction*>(sender());
-    action->setChecked(true);
+    if (sender()->inherits("QAction")){
+        QAction *action = reinterpret_cast<QAction*>(sender());
+        action->setChecked(true);
 
-    QString language = action->objectName();
-    QString name = action->data().toString();
-    SAKSettings::instance()->setLanguage(language+"-"+name);
-    reinterpret_cast<SAKApplication*>(qApp)->installLanguage();
-    QMessageBox::information(this, tr("重启生效"), tr("软件语言包已更改，重启软件生效！"));
+        QString language = action->objectName();
+        QString name = action->data().toString();
+        SAKSettings::instance()->setLanguage(language+"-"+name);
+        QMessageBox::information(this, tr("重启生效"), tr("软件语言包已更改，重启软件生效！"));
+    }
 }
 
 void SAKMainWindow::appendRemovablePage()
