@@ -461,10 +461,16 @@ void SAKMainWindow::removeRemovableDebugPage(int index)
 
 void SAKMainWindow::openDebugPageWidget()
 {
-    int type = qobject_cast<QAction*>(sender())->data().value<int>();
-    QWidget *widget = debugPageFromType(type);
-    widget->setAttribute(Qt::WA_DeleteOnClose, true);
-    widget->show();
+    if (!sender()){
+        return;
+    }
+
+    if (sender()->inherits("QAction")){
+        int type = qobject_cast<QAction*>(sender())->data().value<int>();
+        QWidget *widget = debugPageFromType(type);
+        widget->setAttribute(Qt::WA_DeleteOnClose, true);
+        widget->show();
+    }
 }
 
 QWidget *SAKMainWindow::debugPageFromType(int type)
