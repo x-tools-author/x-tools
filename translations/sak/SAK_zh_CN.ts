@@ -1360,27 +1360,32 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SAKProtocolAnalyzerWidget</name>
     <message>
-        <location filename="../../src/pages/page/other/more/protocol/SAKProtocolAnalyzerWidget.ui" line="23"/>
+        <location filename="../../src/pages/page/other/more/protocol/SAKProtocolAnalyzerWidget.ui" line="63"/>
         <source>协议起始标志</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/other/more/protocol/SAKProtocolAnalyzerWidget.ui" line="30"/>
+        <location filename="../../src/pages/page/other/more/protocol/SAKProtocolAnalyzerWidget.ui" line="20"/>
         <source>协议结束标志</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/other/more/protocol/SAKProtocolAnalyzerWidget.ui" line="47"/>
+        <location filename="../../src/pages/page/other/more/protocol/SAKProtocolAnalyzerWidget.ui" line="40"/>
         <source>固定长度</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/other/more/protocol/SAKProtocolAnalyzerWidget.ui" line="59"/>
+        <location filename="../../src/pages/page/other/more/protocol/SAKProtocolAnalyzerWidget.ui" line="70"/>
+        <source>清空数据缓存</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/pages/page/other/more/protocol/SAKProtocolAnalyzerWidget.ui" line="108"/>
         <source>数据超过2048字节后将强制输出</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/other/more/protocol/SAKProtocolAnalyzerWidget.ui" line="82"/>
+        <location filename="../../src/pages/page/other/more/protocol/SAKProtocolAnalyzerWidget.ui" line="53"/>
         <source>禁用协议分析功能</source>
         <translation type="unfinished"></translation>
     </message>

@@ -1581,27 +1581,32 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SAKProtocolAnalyzerWidget</name>
     <message>
-        <location filename="../../src/pages/page/other/more/protocol/SAKProtocolAnalyzerWidget.ui" line="23"/>
+        <location filename="../../src/pages/page/other/more/protocol/SAKProtocolAnalyzerWidget.ui" line="63"/>
         <source>协议起始标志</source>
         <translation>協議起始標誌</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/other/more/protocol/SAKProtocolAnalyzerWidget.ui" line="30"/>
+        <location filename="../../src/pages/page/other/more/protocol/SAKProtocolAnalyzerWidget.ui" line="20"/>
         <source>协议结束标志</source>
         <translation>協議結束標誌</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/other/more/protocol/SAKProtocolAnalyzerWidget.ui" line="47"/>
+        <location filename="../../src/pages/page/other/more/protocol/SAKProtocolAnalyzerWidget.ui" line="40"/>
         <source>固定长度</source>
         <translation>固定長度</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/other/more/protocol/SAKProtocolAnalyzerWidget.ui" line="59"/>
+        <location filename="../../src/pages/page/other/more/protocol/SAKProtocolAnalyzerWidget.ui" line="70"/>
+        <source>清空数据缓存</source>
+        <translation>清空數據緩存</translation>
+    </message>
+    <message>
+        <location filename="../../src/pages/page/other/more/protocol/SAKProtocolAnalyzerWidget.ui" line="108"/>
         <source>数据超过2048字节后将强制输出</source>
         <translation>數據超過2048字節後將強制輸出</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/other/more/protocol/SAKProtocolAnalyzerWidget.ui" line="82"/>
+        <location filename="../../src/pages/page/other/more/protocol/SAKProtocolAnalyzerWidget.ui" line="53"/>
         <source>禁用协议分析功能</source>
         <translation>禁用協議分析功能</translation>
     </message>
