@@ -34,7 +34,9 @@ SAKApplication::SAKApplication(int argc, char **argv)
 
     /// @brief 初始化全部变量
     SAKSettings::instance();
+#if 0
     SAKSqlDatabase::instance();
+#endif
 
     /// @brief 设置软件版本，SAK_VERSION在SAKCommon中定义
 #ifndef SAK_VERSION
