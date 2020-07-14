@@ -35,15 +35,15 @@ public:
     explicit SAKMainWindow(QWidget *parent = Q_NULLPTR);
     ~SAKMainWindow();
 private:
-    QTranslator qtTranslator;
-    QTranslator qtBaeTranslator;
-    QTranslator sakTranslator;
+    QTranslator mQtTranslator;
+    QTranslator mQtBaseTranslator;
+    QTranslator mSakTranslator;
 
-    QMenu *toolsMenu;
-    QAction *defaultStyleSheetAction;
-    SAKUpdateManager *updateManager;
-    SAKMoreInformation *moreInformation;
-    SAKQRCodeDialog *qrCodeDialog;
+    QMenu *mToolsMenu;
+    QAction *mDefaultStyleSheetAction;
+    SAKUpdateManager *mUpdateManager;
+    SAKMoreInformation *mMoreInformation;
+    SAKQRCodeDialog *mQrCodeDialog;
 private: 
     void initMenuBar();
     void initFileMenu();
@@ -72,8 +72,8 @@ private slots:
     /// @brief 显示工具窗口
     void showToolWidget();
 private:
-    Ui::SAKMainWindow *ui;
-    QTabWidget *tabWidget;
+    Ui::SAKMainWindow *mUi;
+    QTabWidget *mTabWidget;
 };
 
 #endif // MAINWINDOW_H

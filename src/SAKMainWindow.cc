@@ -75,20 +75,20 @@
 
 SAKMainWindow::SAKMainWindow(QWidget *parent)
     :QMainWindow(parent)
-    ,toolsMenu(Q_NULLPTR)
-    ,defaultStyleSheetAction(Q_NULLPTR)
-    ,updateManager(Q_NULLPTR)
-    ,moreInformation(new SAKMoreInformation)
-    ,qrCodeDialog(Q_NULLPTR)
-    ,ui(new Ui::SAKMainWindow)
-    ,tabWidget(new QTabWidget)
+    ,mToolsMenu(Q_NULLPTR)
+    ,mDefaultStyleSheetAction(Q_NULLPTR)
+    ,mUpdateManager(Q_NULLPTR)
+    ,mMoreInformation(new SAKMoreInformation)
+    ,mQrCodeDialog(Q_NULLPTR)
+    ,mUi(new Ui::SAKMainWindow)
+    ,mTabWidget(new QTabWidget)
 {
-    ui->setupUi(this);
-    updateManager = new SAKUpdateManager(this);
-    qrCodeDialog = new SAKQRCodeDialog(this);
+    mUi->setupUi(this);
+    mUpdateManager = new SAKUpdateManager(this);
+    mQrCodeDialog = new SAKQRCodeDialog(this);
 
     QHBoxLayout *layout = new QHBoxLayout();
-    layout->addWidget(tabWidget);
+    layout->addWidget(mTabWidget);
 #if 0
     setWindowFlags(Qt::FramelessWindowHint);
     QScrollArea* scrollArea = new QScrollArea(this);
@@ -114,8 +114,8 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     title.append(tr("用户交流QQ群") + " " + SAK::instance()->qqGroupNumber());
     setWindowTitle(title);
 
-    tabWidget->setTabsClosable(true);
-    connect(tabWidget, &QTabWidget::tabCloseRequested, this, &SAKMainWindow::removeRemovableDebugPage);
+    mTabWidget->setTabsClosable(true);
+    connect(mTabWidget, &QTabWidget::tabCloseRequested, this, &SAKMainWindow::removeRemovableDebugPage);
 
     /*
      * 以下代码是设置软件风格
@@ -151,14 +151,14 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
         QString name = SAKGlobal::debugPageNameFromType(metaEnum.value(i));
         QWidget *page = debugPageFromType(metaEnum.value(i));
         if (page){
-            tabWidget->addTab(page, name);
+            mTabWidget->addTab(page, name);
         }
     }
 
     /// @brief 隐藏tab widget的关闭按钮（必须在调用setTabsClosable()函数后设置，否则不生效）
-    for (int i = 0; i < tabWidget->count(); i++){
-        tabWidget->tabBar()->setTabButton(i, QTabBar::RightSide, Q_NULLPTR);
-        tabWidget->tabBar()->setTabButton(i, QTabBar::LeftSide, Q_NULLPTR);
+    for (int i = 0; i < mTabWidget->count(); i++){
+        mTabWidget->tabBar()->setTabButton(i, QTabBar::RightSide, Q_NULLPTR);
+        mTabWidget->tabBar()->setTabButton(i, QTabBar::LeftSide, Q_NULLPTR);
     }
 
     /// @brief 初始化菜单栏
@@ -170,7 +170,7 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
         QString name = SAKGlobal::toolNameFromType(toolTypeMetaEnum.value(i));
         QAction *action = new QAction(name, this);
         action->setData(QVariant::fromValue(toolTypeMetaEnum.value(i)));
-        toolsMenu->addAction(action);
+        mToolsMenu->addAction(action);
 
         /// @brief 关联点击操作
         connect(action, &QAction::triggered, this, &SAKMainWindow::showToolWidget);
@@ -182,7 +182,7 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
 
 SAKMainWindow::~SAKMainWindow()
 {
-    delete ui;
+    delete mUi;
 }
 
 void SAKMainWindow::initMenuBar()
@@ -235,7 +235,7 @@ void SAKMainWindow::initToolMenu()
 {
     QMenu *toolMenu = new QMenu(tr("工具"));
     menuBar()->addMenu(toolMenu);
-    toolsMenu = toolMenu;
+    mToolsMenu = toolMenu;
 }
 
 void SAKMainWindow::initOptionMenu()
@@ -246,16 +246,16 @@ void SAKMainWindow::initOptionMenu()
     /// @brief 软件样式，设置默认样式需要重启软件
     QMenu *stylesheetMenu = new QMenu(tr("皮肤"), this);
     optionMenu->addMenu(stylesheetMenu);
-    defaultStyleSheetAction = new QAction(tr("Qt默认样式"), this);
-    defaultStyleSheetAction->setCheckable(true);
-    stylesheetMenu->addAction(defaultStyleSheetAction);
-    connect(defaultStyleSheetAction, &QAction::triggered, [=](){
+    mDefaultStyleSheetAction = new QAction(tr("Qt默认样式"), this);
+    mDefaultStyleSheetAction->setCheckable(true);
+    stylesheetMenu->addAction(mDefaultStyleSheetAction);
+    connect(mDefaultStyleSheetAction, &QAction::triggered, [=](){
         for(auto var:QtStyleSheetApi::instance()->actions()){
             var->setChecked(false);
         }
 
         changeStylesheet(QString());
-        defaultStyleSheetAction->setChecked(true);
+        mDefaultStyleSheetAction->setChecked(true);
         QMessageBox::information(this, tr("重启软件生效"), tr("软件样式已更改，重启软件后即可使用默认样式"));
     });
 
@@ -265,7 +265,7 @@ void SAKMainWindow::initOptionMenu()
     if (!styleSheetName.isEmpty()){
         QtStyleSheetApi::instance()->setStyleSheet(styleSheetName);
     }else{
-        defaultStyleSheetAction->setChecked(true);
+        mDefaultStyleSheetAction->setChecked(true);
     }
 
     /// @brief 软件风格，默认使用Qt支持的第一种软件风格
@@ -353,16 +353,16 @@ void SAKMainWindow::initHelpMenu()
 
     QAction *updateAction = new QAction(tr("检查更新"), this);
     helpMenu->addAction(updateAction);
-    connect(updateAction, &QAction::triggered, updateManager, &SAKUpdateManager::show);
+    connect(updateAction, &QAction::triggered, mUpdateManager, &SAKUpdateManager::show);
 
     QAction *moreInformationAction = new QAction(tr("更多信息"), this);
     helpMenu->addAction(moreInformationAction);
-    connect(moreInformationAction, &QAction::triggered, moreInformation, &SAKMoreInformation::show);
+    connect(moreInformationAction, &QAction::triggered, mMoreInformation, &SAKMoreInformation::show);
 
     helpMenu->addSeparator();
     QAction *qrCodeAction = new QAction(tr("二维码"), this);
     helpMenu->addAction(qrCodeAction);
-    connect(qrCodeAction, &QAction::triggered, qrCodeDialog, &SAKQRCodeDialog::show);
+    connect(qrCodeAction, &QAction::triggered, mQrCodeDialog, &SAKQRCodeDialog::show);
 }
 
 void SAKMainWindow::initLinksMenu()
@@ -394,7 +394,7 @@ void SAKMainWindow::changeStylesheet(QString styleSheetName)
 {
     SAKSettings::instance()->setAppStylesheet(styleSheetName);
     if (!styleSheetName.isEmpty()){
-        defaultStyleSheetAction->setChecked(false);
+        mDefaultStyleSheetAction->setChecked(false);
     }
 }
 
@@ -448,13 +448,13 @@ void SAKMainWindow::appendRemovablePage()
     int type = qobject_cast<QAction*>(sender())->data().value<int>();
     QWidget *widget = debugPageFromType(type);
     widget->setAttribute(Qt::WA_DeleteOnClose, true);
-    tabWidget->addTab(widget, sender()->objectName());
+    mTabWidget->addTab(widget, sender()->objectName());
 }
 
 void SAKMainWindow::removeRemovableDebugPage(int index)
 {
-    QWidget *w = tabWidget->widget(index);
-    tabWidget->removeTab(index);
+    QWidget *w = mTabWidget->widget(index);
+    mTabWidget->removeTab(index);
     w->close();
 }
 
