@@ -42,15 +42,16 @@ SAKApplication::SAKApplication(int argc, char **argv)
 #else
     setApplicationVersion(SAK_VERSION);
 #endif
-    SAKSettings::instance();
+
+    /// @brief 安装语言包，必须在构造界面控件之前调用，否则短语翻译不生效
     installLanguage();
-    setApplicationVersion(SAK::instance()->version());
 
     /// @brief 注册表选项
     setOrganizationName(QString("Qter"));
     setOrganizationDomain(QString("IT"));
     setApplicationName(QString("QtSwissArmyKnife"));
 
+    /// @brief 5秒后执行检查更新操作
     QTimer::singleShot(5*1000, [=](){
         if (SAKSettings::instance()->enableAutoCheckForUpdate()){
             emit this->checkForUpdate();
