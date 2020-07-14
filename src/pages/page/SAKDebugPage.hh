@@ -295,17 +295,17 @@ protected:
     /*************************************************************************/
     /// @brief 数据可视化
 protected:
-    QPushButton *dataVisualizationPushButton;
+    QPushButton *mDataVisualizationPushButton;
 private slots:
     void on_dataVisualizationPushButton_clicked();
 private:
 #ifdef SAK_IMPORT_CHARTS_MODULE
-    SAKChartsManager *dataVisualizationManager;
+    SAKChartsManager *mDataVisualizationManager;
 #endif
-    SAKOtherSettingsManager *otherSettings;
-    SAKStatisticsManager *statisticsManager;
-    SAKDebugPageOutputManager *outputManager;
-    SAKDebugPageInputManager *debugPageInputManager;
+    SAKOtherSettingsManager *mOtherSettings;
+    SAKStatisticsManager *mStatisticsManager;
+    SAKDebugPageOutputManager *mOutputManager;
+    SAKDebugPageInputManager *mDebugPageInputManager;
 };
 
 #endif  // SAKTabPage_H

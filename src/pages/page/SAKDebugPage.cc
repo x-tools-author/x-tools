@@ -57,12 +57,12 @@ SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
     ui->setupUi(this);
     initUiPointer();
 
-    outputManager           = new SAKDebugPageOutputManager(this, this);
-    otherSettings           = new SAKOtherSettingsManager(this, this);
-    statisticsManager       = new SAKStatisticsManager(this, this);
-    debugPageInputManager   = new SAKDebugPageInputManager(this, this);
+    mOutputManager           = new SAKDebugPageOutputManager(this, this);
+    mOtherSettings           = new SAKOtherSettingsManager(this, this);
+    mStatisticsManager       = new SAKStatisticsManager(this, this);
+    mDebugPageInputManager   = new SAKDebugPageInputManager(this, this);
 #ifdef SAK_IMPORT_CHARTS_MODULE
-    dataVisualizationManager= Q_NULLPTR;
+    mDataVisualizationManager= Q_NULLPTR;
 #endif
 
     _readWriteParameters.waitForReadyReadTime = MINI_READ_WRITE_WATINGT_TIME;
@@ -95,9 +95,9 @@ SAKDebugPage::~SAKDebugPage()
     }
 
 #ifdef SAK_IMPORT_CHARTS_MODULE
-    if (dataVisualizationManager){
-        delete dataVisualizationManager;
-        dataVisualizationManager = Q_NULLPTR;
+    if (mDataVisualizationManager){
+        delete mDataVisualizationManager;
+        mDataVisualizationManager = Q_NULLPTR;
     }
 #endif
 }
@@ -402,7 +402,7 @@ void SAKDebugPage::setupDevice()
         connect(device, &SAKDevice::bytesRead, this, &SAKDebugPage::bytesRead);
 #else
         /// @brief 设备读取到的数据传输至协议分析器中，分析完成的数据回传至调试页面中
-        SAKMoreSettingsWidget *moreSettingsWidget = otherSettings->moreSettingsWidget();
+        SAKMoreSettingsWidget *moreSettingsWidget = mOtherSettings->moreSettingsWidget();
         SAKProtocolAnalyzerWidget *protocolAnalyzerWidget = moreSettingsWidget->protocolAnalyzerWidget();
         connect(device, &SAKDevice::bytesRead, protocolAnalyzerWidget, &SAKProtocolAnalyzerWidget::inputBytes);
         connect(protocolAnalyzerWidget, &SAKProtocolAnalyzerWidget::bytesAnalysed, this, &SAKDebugPage::bytesRead);
@@ -463,7 +463,7 @@ void SAKDebugPage::on_addCRCCheckBox_clicked()
 
 void SAKDebugPage::on_crcSettingsPushButton_clicked()
 {
-    debugPageInputManager->showCrcSettingsDialog();
+    mDebugPageInputManager->showCrcSettingsDialog();
 }
 
 void SAKDebugPage::on_crcParameterModelsComboBox_currentIndexChanged(int index)
@@ -583,23 +583,23 @@ void SAKDebugPage::initUiPointer()
     mMoreSettingsPushButton        = ui->moreSettingsPushButton;
 
     /// @brief 数据可视化
-    dataVisualizationPushButton = ui->dataVisualizationPushButton;
+    mDataVisualizationPushButton = ui->dataVisualizationPushButton;
 }
 
 void SAKDebugPage::on_dataVisualizationPushButton_clicked()
 {
 #ifdef SAK_IMPORT_CHARTS_MODULE
-    if (dataVisualizationManager){
-        if (dataVisualizationManager->isHidden()){
-            dataVisualizationManager->show();
+    if (mDataVisualizationManager){
+        if (mDataVisualizationManager->isHidden()){
+            mDataVisualizationManager->show();
         }else{
-            dataVisualizationManager->activateWindow();
+            mDataVisualizationManager->activateWindow();
         }
     }else{
-        dataVisualizationManager = new SAKChartsManager(this);
-        dataVisualizationManager->show();
-        connect(dataVisualizationManager, &SAKChartsManager::destroyed, [&](){
-            dataVisualizationManager = Q_NULLPTR;
+        mDataVisualizationManager = new SAKChartsManager(this);
+        mDataVisualizationManager->show();
+        connect(mDataVisualizationManager, &SAKChartsManager::destroyed, [&](){
+            mDataVisualizationManager = Q_NULLPTR;
         });
     }
 #else
