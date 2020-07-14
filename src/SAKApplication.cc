@@ -18,18 +18,30 @@
 
 #include "SAK.hh"
 #include "SAKSettings.hh"
+#include "SAKSettings.hh"
 #include "SAKMainWindow.hh"
+#include "SAKSqlDatabase.hh"
 #include "SAKApplication.hh"
 #include "SAKSplashScreen.hh"
 
 SAKApplication::SAKApplication(int argc, char **argv)
     : QApplication (argc, argv)
 {
+    /// @brief 率先显示启动页面
     SAKSplashScreen *splashScreen = SAKSplashScreen::instance();
     splashScreen->show();
     processEvents();
 
+    /// @brief 初始化全部变量
+    SAKSettings::instance();
+    SAKSqlDatabase::instance();
+
+    /// @brief 设置软件版本，SAK_VERSION在SAKCommon中定义
+#ifndef SAK_VERSION
+    setApplicationVersion(QString("0.0.0"));
+#else
     setApplicationVersion(SAK_VERSION);
+#endif
     SAKSettings::instance();
     installLanguage();
     setApplicationVersion(SAK::instance()->version());
