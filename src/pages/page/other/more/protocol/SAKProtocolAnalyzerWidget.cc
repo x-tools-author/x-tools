@@ -63,6 +63,7 @@ void SAKProtocolAnalyzerWidget::on_lengthLineEdit_textChanged(const QString &tex
 
 void SAKProtocolAnalyzerWidget::on_startLineEdit_textChanged(const QString &text)
 {
+    text.trimmed();
     QStringList list = text.split(' ');
     QByteArray startBytes;
     for (auto var : list){
@@ -74,6 +75,7 @@ void SAKProtocolAnalyzerWidget::on_startLineEdit_textChanged(const QString &text
 
 void SAKProtocolAnalyzerWidget::on_endLineEdit_textChanged(const QString &text)
 {
+    text.trimmed();
     QStringList list = text.split(' ');
     QByteArray endBytes;
     for (auto var : list){
