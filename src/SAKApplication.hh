@@ -26,9 +26,9 @@ public:
      */
     void installLanguage();
 private:
-    QTranslator qtTranslator;
-    QTranslator qtBaeTranslator;
-    QTranslator sakTranslator;
+    QTranslator mQtTranslator;
+    QTranslator mQtBaseTranslator;
+    QTranslator mSakTranslator;
 signals:
     void checkForUpdateRequest();
 };
