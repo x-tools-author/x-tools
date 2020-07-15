@@ -29,6 +29,7 @@ int main(int argc, char *argv[])
     QObject::connect(&controller, &SAKSingletonController::showMainWindowInstanceRequest, app.mainWindow(), &SAKMainWindow::activateWindow);
     if (controller.isInstanceExist()){
         SAKSingletonErrorDialog dialog;
+        QApplication::beep();
         dialog.exec();
         controller.setFlag();
         return -1024;
