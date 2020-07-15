@@ -15,6 +15,7 @@ SAKSingletonErrorDialog::SAKSingletonErrorDialog(QWidget *parent)
     ,mUi(new Ui::SAKSingletonErrorDialog)
 {
     mUi->setupUi(this);
+    setWindowFlags(windowFlags() | Qt::WindowStaysOnTopHint);
 }
 
 SAKSingletonErrorDialog::~SAKSingletonErrorDialog()
