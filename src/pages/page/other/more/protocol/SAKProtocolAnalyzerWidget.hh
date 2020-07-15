@@ -11,6 +11,7 @@
 #define SAKPROTOCOLANALYZERWIDGET_HH
 
 #include <QWidget>
+#include <QSettings>
 #include <QCheckBox>
 #include <QLineEdit>
 #include <QPushButton>
@@ -25,7 +26,7 @@ class SAKProtocolAnalyzerWidget:public QWidget
 {
     Q_OBJECT
 public:
-    SAKProtocolAnalyzerWidget(QWidget *parent = Q_NULLPTR);
+    SAKProtocolAnalyzerWidget(QSettings *settings, QWidget *parent = Q_NULLPTR);
     ~SAKProtocolAnalyzerWidget();
 
     /**
@@ -34,6 +35,14 @@ public:
      */
     void inputBytes(QByteArray bytes);
 private:
+    /// @brief 配置选项
+    const QString mSettingKeyFixed;
+    const QString mSettingKeyLenth;
+    const QString mSettingKeyStartBytes;
+    const QString mSettingKeyEndBytes;
+    const QString mSettingKeyEnable;
+
+    QSettings *mSettings;
     SAKProtocolAnalyzer *mAnalyzer;
 private:
     void setLineEditFormat(QLineEdit *lineEdit);
