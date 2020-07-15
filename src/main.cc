@@ -7,7 +7,12 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
+#include <QDebug>
+
+#include "SAKMainWindow.hh"
 #include "SAKApplication.hh"
+#include "SAKSingletonController.hh"
+#include "SAKSingletonErrorDialog.hh"
 
 int main(int argc, char *argv[])
 {
@@ -17,5 +22,17 @@ int main(int argc, char *argv[])
 #endif
 
     SAKApplication app(argc, argv);
+
+    /// @brief 检测是够存在已运行的实例，如果存在，终止本次启动,同时激活已启动的程序
+    SAKSingletonController controller;
+    QObject::connect(&controller, &SAKSingletonController::showMainWindowInstanceRequest, app.mainWindow(), &SAKMainWindow::show);
+    QObject::connect(&controller, &SAKSingletonController::showMainWindowInstanceRequest, app.mainWindow(), &SAKMainWindow::activateWindow);
+    if (controller.isInstanceExist()){
+        SAKSingletonErrorDialog dialog;
+        dialog.exec();
+        controller.setFlag();
+        return -1024;
+    }
+
     return app.exec();
 }
