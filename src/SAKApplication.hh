@@ -37,8 +37,6 @@ private:
     QTranslator mQtBaseTranslator;
     QTranslator mSakTranslator;
     SAKMainWindow *mMainWindow;
-signals:
-    void checkForUpdateRequest();
 };
 
 #endif

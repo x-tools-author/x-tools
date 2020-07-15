@@ -54,13 +54,6 @@ SAKApplication::SAKApplication(int argc, char **argv)
     setOrganizationDomain(QString("IT"));
     setApplicationName(QString("QtSwissArmyKnife"));
 
-    /// @brief 5秒后发射检查更新信号
-    QTimer::singleShot(5*1000, [=](){
-        if (SAKSettings::instance()->enableAutoCheckForUpdate()){
-            emit this->checkForUpdateRequest();
-        }
-    });
-
     /// @brief 实例化主窗口
     mMainWindow = new SAKMainWindow;
     mMainWindow->show();
