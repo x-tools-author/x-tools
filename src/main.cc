@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 
     SAKApplication app(argc, argv);
 
-    /// @brief 检测是够存在已运行的实例，如果存在，终止本次启动,同时激活已启动的程序
+    /// @brief 检测是否存在已运行的实例，如果存在，终止本次启动,同时激活已启动的程序
     SAKSingletonController controller;
     QObject::connect(&controller, &SAKSingletonController::showMainWindowInstanceRequest, app.mainWindow(), &SAKMainWindow::show);
     QObject::connect(&controller, &SAKSingletonController::showMainWindowInstanceRequest, app.mainWindow(), &SAKMainWindow::activateWindow);
