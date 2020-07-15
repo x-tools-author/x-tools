@@ -7,6 +7,7 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
+#include "SAKSettings.hh"
 #include "SAKDebugPage.hh"
 #include "SAKMoreSettingsWidget.hh"
 #include "SAKProtocolAnalyzerWidget.hh"
@@ -22,7 +23,7 @@ SAKMoreSettingsWidget::SAKMoreSettingsWidget(SAKDebugPage *debugPage, QWidget *p
     mUi->setupUi(this);
     mTabWidget = mUi->tabWidget;
 
-    mProtocolAnalyzerWidget = new SAKProtocolAnalyzerWidget;
+    mProtocolAnalyzerWidget = new SAKProtocolAnalyzerWidget(SAKSettings::instance());
     mTabWidget->addTab(mProtocolAnalyzerWidget, tr("协议分析器"));
 
     mWaveformGeneratorWidget = new SAKWaveformGeneratorWidget;
