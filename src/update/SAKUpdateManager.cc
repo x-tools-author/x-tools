@@ -54,8 +54,6 @@ SAKUpdateManager::SAKUpdateManager(QWidget *parent)
     bool checked = SAKSettings::instance()->instance()->enableAutoCheckForUpdate();
     autoCheckForUpdateCheckBox->setChecked(checked);
 
-    connect(reinterpret_cast<SAKApplication*>(QApplication::instance()), &SAKApplication::checkForUpdateRequest, this, &SAKUpdateManager::checkForUpdate);
-
     setModal(true);
 }
 
