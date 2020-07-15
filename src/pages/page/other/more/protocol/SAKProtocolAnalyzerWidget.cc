@@ -73,11 +73,17 @@ void SAKProtocolAnalyzerWidget::setLineEditFormat(QLineEdit *lineEdit)
 void SAKProtocolAnalyzerWidget::on_fixedLengthCheckBox_clicked()
 {
     mAnalyzer->setFixed(mFixedLengthCheckBox->isChecked());
+    if (mSettings){
+        mSettings->setValue(mSettingKeyFixed, mFixedLengthCheckBox->isChecked());
+    }
 }
 
 void SAKProtocolAnalyzerWidget::on_lengthLineEdit_textChanged(const QString &text)
 {
     mAnalyzer->setLength(text.toInt());
+    if (mSettings){
+        mSettings->setValue(mSettingKeyLenth, mLengthLineEdit->text());
+    }
 }
 
 void SAKProtocolAnalyzerWidget::on_startLineEdit_textChanged(const QString &text)
@@ -90,6 +96,9 @@ void SAKProtocolAnalyzerWidget::on_startLineEdit_textChanged(const QString &text
         startBytes.append(reinterpret_cast<char*>(&v), 1);
     }
     mAnalyzer->setStartArray(startBytes);
+    if (mSettings){
+        mSettings->setValue(mSettingKeyStartBytes, mStartLineEdit->text());
+    }
 }
 
 void SAKProtocolAnalyzerWidget::on_endLineEdit_textChanged(const QString &text)
@@ -102,11 +111,17 @@ void SAKProtocolAnalyzerWidget::on_endLineEdit_textChanged(const QString &text)
         endBytes.append(reinterpret_cast<char*>(&v), 1);
     }
     mAnalyzer->setEndArray(endBytes);
+    if (mSettings){
+        mSettings->setValue(mSettingKeyEndBytes, mEndLineEdit->text());
+    }
 }
 
 void SAKProtocolAnalyzerWidget::on_disableCheckBox_clicked()
 {
     mAnalyzer->setEnable(!mDisableCheckBox->isChecked());
+    if (mSettings){
+        mSettings->setValue(mSettingKeyEnable, mDisableCheckBox->isChecked());
+    }
 }
 
 void SAKProtocolAnalyzerWidget::on_clearPushButton_clicked()
