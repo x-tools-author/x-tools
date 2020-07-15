@@ -25,7 +25,8 @@
 #include "SAKSplashScreen.hh"
 
 SAKApplication::SAKApplication(int argc, char **argv)
-    : QApplication (argc, argv)
+    :QApplication (argc, argv)
+    ,mMainWindow(Q_NULLPTR)
 {
     /// @brief 率先显示启动页面
     SAKSplashScreen *splashScreen = SAKSplashScreen::instance();
@@ -61,16 +62,16 @@ SAKApplication::SAKApplication(int argc, char **argv)
     });
 
     /// @brief 实例化主窗口
-    QMainWindow *mainWindow = new SAKMainWindow;
-    mainWindow->show();
-    splashScreen->finish(mainWindow);
+    mMainWindow = new SAKMainWindow;
+    mMainWindow->show();
+    splashScreen->finish(mMainWindow);
 
     /// @brief 窗口居中显示
     QDesktopWidget *desktop = QApplication::desktop();
-    int currentScreen = desktop->screenNumber(mainWindow);
+    int currentScreen = desktop->screenNumber(mMainWindow);
     QList<QScreen*> screenList = QGuiApplication::screens();
     QScreen *screen = screenList.at(currentScreen);
-    mainWindow->move((screen->geometry().width() - mainWindow->width())/2, (screen->geometry().height() - mainWindow->height())/2);
+    mMainWindow->move((screen->geometry().width() - mMainWindow->width())/2, (screen->geometry().height() - mMainWindow->height())/2);
 }
 
 SAKApplication::~SAKApplication()
@@ -100,4 +101,9 @@ void SAKApplication::installLanguage()
 
     mSakTranslator.load(QString(":/translations/sak/SAK_%1.qm").arg(qmName));
     qApp->installTranslator(&mSakTranslator);
+}
+
+SAKMainWindow *SAKApplication::mainWindow()
+{
+    return mMainWindow;
 }
