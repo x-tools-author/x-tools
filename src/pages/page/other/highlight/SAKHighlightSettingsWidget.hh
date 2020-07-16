@@ -17,11 +17,11 @@
 #include <QTextDocument>
 
 namespace Ui {
-class SAKHighlightSettingsWidget;
+    class SAKHighlightSettingsWidget;
 }
 
 class SAKHighlightSettings;
-
+/// @brief 高亮设置窗口
 class SAKHighlightSettingsWidget:public QWidget
 {
     Q_OBJECT
