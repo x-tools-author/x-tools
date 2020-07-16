@@ -14,25 +14,26 @@
 
 SAKHighlightSettingsWidget::SAKHighlightSettingsWidget(QTextDocument *doc, QWidget* parent)
     :QWidget (parent)
-    ,ui (new Ui::SAKHighlightSettingsWidget)
+    ,mUi (new Ui::SAKHighlightSettingsWidget)
 {
-    ui->setupUi(this);
-    ui->frame->setLayout(&labelLayout);
+    mUi->setupUi(this);
+    mLabelLayout = new QGridLayout(mUi->frame);
+    mUi->frame->setLayout(mLabelLayout);
 
-    highlighter = new SAKHighlightSettings(doc);
-    inputLineEdit = ui->lineEdit;
-    clearLabelBt = ui->pushButtonClear;
-    addLabelBt = ui->pushButtonAdd;
+    mHighlighter = new SAKHighlightSettings(doc);
+    mInputLineEdit = mUi->lineEdit;
+    mClearLabelBt = mUi->pushButtonClear;
+    mAddLabelBt = mUi->pushButtonAdd;
 
-    inputLineEdit->installEventFilter(this);
+    mInputLineEdit->installEventFilter(this);
 
-    connect(clearLabelBt, &QPushButton::clicked, this, &SAKHighlightSettingsWidget::clearLabel);
-    connect(addLabelBt, &QPushButton::clicked, this, &SAKHighlightSettingsWidget::addLabelFromInput);
+    connect(mClearLabelBt, &QPushButton::clicked, this, &SAKHighlightSettingsWidget::clearLabel);
+    connect(mAddLabelBt, &QPushButton::clicked, this, &SAKHighlightSettingsWidget::addLabelFromInput);
 }
 
 SAKHighlightSettingsWidget::~SAKHighlightSettingsWidget()
 {
-    delete ui;
+    delete mUi;
 }
 
 void SAKHighlightSettingsWidget::addLabel(QString str)
@@ -42,8 +43,8 @@ void SAKHighlightSettingsWidget::addLabel(QString str)
     }
 
     QStringList keyWords;
-    for (int i = 0; i < labelList.length(); i++){
-        QString temp = labelList.at(i)->text();
+    for (int i = 0; i < mLabelList.length(); i++){
+        QString temp = mLabelList.at(i)->text();
         /// 标签重复不处理
         if (temp.compare(str) == 0){
             return;
@@ -54,7 +55,7 @@ void SAKHighlightSettingsWidget::addLabel(QString str)
 
     QPushButton* tempLabel = new QPushButton(str);
     tempLabel->installEventFilter(this);
-    labelList.append(tempLabel);
+    mLabelList.append(tempLabel);
 
     resetLabelViewer();
 
@@ -64,15 +65,15 @@ void SAKHighlightSettingsWidget::addLabel(QString str)
 
 void SAKHighlightSettingsWidget::addLabelFromInput()
 {
-    QString str = inputLineEdit->text();
+    QString str = mInputLineEdit->text();
     addLabel(str);
 }
 
 void SAKHighlightSettingsWidget::deleteLabel(QPushButton *bt)
 {
-    for (int i= 0; i < labelList.length(); i++){
-        if (labelList.at(i) == bt){
-            QPushButton *BtTemp = labelList.takeAt(i);
+    for (int i= 0; i < mLabelList.length(); i++){
+        if (mLabelList.at(i) == bt){
+            QPushButton *BtTemp = mLabelList.takeAt(i);
             BtTemp->deleteLater();
             break;
         }
@@ -81,8 +82,8 @@ void SAKHighlightSettingsWidget::deleteLabel(QPushButton *bt)
     resetLabelViewer();
 
     QStringList keyWords;
-    for (int i = 0; i < labelList.length(); i++){
-        keyWords.append(labelList.at(i)->text());
+    for (int i = 0; i < mLabelList.length(); i++){
+        keyWords.append(mLabelList.at(i)->text());
     }    
 
     resetHighlightKeyword(keyWords);
@@ -91,9 +92,9 @@ void SAKHighlightSettingsWidget::deleteLabel(QPushButton *bt)
 bool SAKHighlightSettingsWidget::eventFilter(QObject *watched, QEvent *event)
 {
     if (event->type() == QEvent::MouseButtonDblClick){
-        for (int i = 0; i < labelList.length(); i++){
-            if (labelList.at(i) == watched){
-                deleteLabel(labelList.at(i));
+        for (int i = 0; i < mLabelList.length(); i++){
+            if (mLabelList.at(i) == watched){
+                deleteLabel(mLabelList.at(i));
                 return true;
             }
         }
@@ -102,8 +103,8 @@ bool SAKHighlightSettingsWidget::eventFilter(QObject *watched, QEvent *event)
     if (event->type() == QEvent::KeyPress){
         QKeyEvent* e = dynamic_cast<QKeyEvent*>(event);
         if ((e->key() == Qt::Key_Enter) || e->key() == Qt::Key_Return){
-            addLabel(inputLineEdit->text());
-            inputLineEdit->clear();
+            addLabel(mInputLineEdit->text());
+            mInputLineEdit->clear();
             return true;
         }
     }
@@ -114,8 +115,8 @@ bool SAKHighlightSettingsWidget::eventFilter(QObject *watched, QEvent *event)
 void SAKHighlightSettingsWidget::clearLabel()
 {
     QPushButton *bt = Q_NULLPTR;
-    while (!labelList.isEmpty()) {
-        bt = labelList.takeFirst();
+    while (!mLabelList.isEmpty()) {
+        bt = mLabelList.takeFirst();
         bt->deleteLater();
     }
 
@@ -124,13 +125,13 @@ void SAKHighlightSettingsWidget::clearLabel()
 
 void SAKHighlightSettingsWidget::resetLabelViewer()
 {
-    for (int index = 0; index < labelList.count(); index++){
-        labelLayout.addWidget(labelList.at(index), index/5, index%5);
+    for (int index = 0; index < mLabelList.count(); index++){
+        mLabelLayout->addWidget(mLabelList.at(index), index/5, index%5);
     }
 }
 
 void SAKHighlightSettingsWidget::resetHighlightKeyword(QStringList keyWords)
 {
-    highlighter->setHighlighterKeyWord(keyWords);
-    highlighter->rehighlight();
+    mHighlighter->setHighlighterKeyWord(keyWords);
+    mHighlighter->rehighlight();
 }

@@ -17,11 +17,11 @@
 #include <QTextDocument>
 
 namespace Ui {
-class SAKHighlightSettingsWidget;
+    class SAKHighlightSettingsWidget;
 }
 
 class SAKHighlightSettings;
-
+/// @brief 高亮设置窗口
 class SAKHighlightSettingsWidget:public QWidget
 {
     Q_OBJECT
@@ -29,23 +29,29 @@ public:
     SAKHighlightSettingsWidget(QTextDocument *doc, QWidget* parent = Q_NULLPTR);
     ~SAKHighlightSettingsWidget();
 
+    /**
+     * @brief eventFilter 事件过滤器
+     * @param watched 监控对象
+     * @param event 实事件
+     * @return 是否被过滤
+     */
     bool eventFilter(QObject *watched, QEvent *event);
 private:
-    Ui::SAKHighlightSettingsWidget  *ui             = Q_NULLPTR;
-    SAKHighlightSettings            *highlighter    = Q_NULLPTR;
-    QLineEdit                       *inputLineEdit  = Q_NULLPTR;
-    QPushButton                     *clearLabelBt   = Q_NULLPTR;
-    QPushButton                     *addLabelBt     = Q_NULLPTR;
-
-    QGridLayout                     labelLayout;
-    QList<QPushButton*>             labelList;
-private:    
-    void clearLabel();    
+    void clearLabel();
     void resetLabelViewer();
     void addLabelFromInput();
     void addLabel(QString str);
     void deleteLabel(QPushButton *bt);
     void resetHighlightKeyword(QStringList keyWords);
+private:
+    QGridLayout *mLabelLayout;
+    QList<QPushButton*> mLabelList;
+private:
+    Ui::SAKHighlightSettingsWidget *mUi;
+    SAKHighlightSettings *mHighlighter;
+    QLineEdit *mInputLineEdit;
+    QPushButton *mClearLabelBt;
+    QPushButton *mAddLabelBt;
 };
 
 #endif
