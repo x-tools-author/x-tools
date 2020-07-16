@@ -120,7 +120,7 @@ void SAKProtocolAnalyzerWidget::on_disableCheckBox_clicked()
 {
     mAnalyzer->setEnable(!mDisableCheckBox->isChecked());
     if (mSettings){
-        mSettings->setValue(mSettingKeyEnable, mDisableCheckBox->isChecked());
+        mSettings->setValue(mSettingKeyEnable, !mDisableCheckBox->isChecked());
     }
 }
 
