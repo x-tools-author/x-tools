@@ -6,7 +6,7 @@ QSAK (Qt Swiss Army Knife) is a multi-functional, cross-platform debugging tool 
 
 ## Development Environment
 
-Qt 5.12.x，other versions may be available, but the project authors do not fix problems encountered during the development of other versions.
+Qt 5.15.x，other versions may be available, but the project authors do not fix problems encountered during the development of other versions.
 
 ## Main Window
 
