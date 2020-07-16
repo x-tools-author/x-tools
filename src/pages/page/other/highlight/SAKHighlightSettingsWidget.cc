@@ -126,7 +126,7 @@ void SAKHighlightSettingsWidget::clearLabel()
 void SAKHighlightSettingsWidget::resetLabelViewer()
 {
     for (int index = 0; index < mLabelList.count(); index++){
-        mLabelLayout.addWidget(mLabelList.at(index), index/5, index%5);
+        mLabelLayout->addWidget(mLabelList.at(index), index/5, index%5);
     }
 }
 
