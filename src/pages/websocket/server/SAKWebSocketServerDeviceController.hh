@@ -40,13 +40,12 @@ public:
     void removeClient(QWebSocket *socket);
     void clearClient();
 private:
-    Ui::SAKWebSocketServerDeviceController *ui;
-
-    QComboBox *serverHostComboBox;
-    QLineEdit *serverPortLineEdit;
-    QComboBox *clientHostComboBox;
-    QComboBox *sendingTypeComboBox;
-    QMutex uiMutex;
+    Ui::SAKWebSocketServerDeviceController *mUi;
+    QComboBox *mServerHostComboBox;
+    QLineEdit *mServerPortLineEdit;
+    QComboBox *mClientHostComboBox;
+    QComboBox *mSendingTypeComboBox;
+    QMutex mUiMutex;
 };
 
 #endif
