@@ -69,7 +69,7 @@ SAKApplication::SAKApplication(int argc, char **argv)
 
 SAKApplication::~SAKApplication()
 {
-
+    delete mMainWindow;
 }
 
 void SAKApplication::installLanguage()
