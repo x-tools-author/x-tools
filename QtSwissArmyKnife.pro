@@ -38,6 +38,7 @@ include(SAKTools.pri)
 include(SAKCommon.pri)
 include(SAKCharts.pri)
 include(SAKModules.pri)
+include(SAKBluetooth.pri)
 include(SAKWebSocket.pri)
 include(SAKSerialPort.pri)
 
