@@ -260,7 +260,13 @@ void SAKMainWindow::initOptionMenu()
 
         changeStylesheet(QString());
         mDefaultStyleSheetAction->setChecked(true);
-        QMessageBox::information(this, tr("重启软件生效"), tr("软件样式已更改，重启软件后即可使用默认样式"));
+        int ret = QMessageBox::information(this, tr("重启软件生效"), tr("软件样式已更改，是否重启软件使设置生效？"), QMessageBox::Ok | QMessageBox::Cancel);
+        if (ret == QMessageBox::Ok){
+            qApp->setPalette(QPalette());
+            qApp->setStyleSheet(QString(""));
+            qApp->closeAllWindows();
+            qApp->exit(SAK_REBOOT_CODE);
+        }
     });
 
     stylesheetMenu->addSeparator();
@@ -444,7 +450,11 @@ void SAKMainWindow::installLanguage()
         QString language = action->objectName();
         QString name = action->data().toString();
         SAKSettings::instance()->setLanguage(language+"-"+name);
-        QMessageBox::information(this, tr("重启生效"), tr("软件语言包已更改，重启软件生效！"));
+        int ret = QMessageBox::information(this, tr("重启生效"), tr("软件语言包已更改，是否重启软件使设置生效？"), QMessageBox::Ok | QMessageBox::Cancel);
+        if (ret == QMessageBox::Ok){
+            qApp->closeAllWindows();
+            qApp->exit(SAK_REBOOT_CODE);
+        }
     }
 }
 
