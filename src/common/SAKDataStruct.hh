@@ -48,6 +48,10 @@ public:
         DebugPageTypeSCTPClient,
         DebugPageTypeSCTPServer,
 #endif
+#ifdef SAK_IMPORT_BLUETOOTH_MODULE
+        DebugPageTypeBluetoothClient,
+        DebugPageTypeBluetoothServer,
+#endif
 #ifdef SAK_IMPORT_WEBSOCKET_MODULE
         DebugPageTypeWebSocketClient,
         DebugPageTypeWebSocketServer

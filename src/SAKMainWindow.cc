@@ -63,6 +63,10 @@
 #ifdef SAK_IMPORT_COM_MODULE
 #include "SAKSerialPortDebugPage.hh"
 #endif
+#ifdef SAK_IMPORT_BLUETOOTH_MODULE
+#include "SAKBluetoothClientDebugPage.hh"
+#include "SAKBluetoothServerDebugPage.hh"
+#endif
 #ifdef SAK_IMPORT_WEBSOCKET_MODULE
 #include "SAKWebSocketClientDebugPage.hh"
 #include "SAKWebSocketServerDebugPage.hh"
@@ -507,16 +511,22 @@ QWidget *SAKMainWindow::debugPageFromType(int type)
         widget = new SAKSerialPortDebugPage;
         break;
 #endif
-
 #ifdef SAK_IMPORT_HID_MODULE
     case SAKDataStruct::DebugPageTypeHID:
         widget = new SAKHidDebugPage;
         break;
 #endif
-
 #ifdef SAK_IMPORT_USB_MODULE
     case SAKDataStruct::DebugPageTypeUSB:
         widget = new SAKUsbDebugPage;
+        break;
+#endif
+#ifdef SAK_IMPORT_BLUETOOTH_MODULE
+    case SAKDataStruct::DebugPageTypeBluetoothClient:
+        widget = new SAKBluetoothClientDebugPage;
+        break;
+    case SAKDataStruct::DebugPageTypeBluetoothServer:
+        widget = new SAKBluetoothServerDebugPage;
         break;
 #endif
     default:

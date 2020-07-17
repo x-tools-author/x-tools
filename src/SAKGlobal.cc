@@ -125,6 +125,14 @@ QString SAKGlobal::debugPageNameFromType(int type)
         name = tr("USB调试");
         break;
 #endif
+#ifdef SAK_IMPORT_BLUETOOTH_MODULE
+    case SAKDataStruct::DebugPageTypeBluetoothClient:
+        name = tr("蓝牙客户端");
+        break;
+    case SAKDataStruct::DebugPageTypeBluetoothServer:
+        name = tr("蓝牙服务器");
+        break;
+#endif
     default:
         Q_ASSERT_X(false, __FUNCTION__, "Unknow debug page type");
         name = QString("Unknow");
