@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2020 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
  * project(https://www.qsak.pro). The project is an open source project. You can
@@ -13,11 +13,11 @@
 #include <QApplication>
 
 #include "SAKDebugPage.hh"
-#include "SAKTcpServerDevice.hh"
-#include "SAKTcpServerDebugPage.hh"
-#include "SAKTcpServerDeviceController.hh"
+#include "SAKBluetoothServerDevice.hh"
+#include "SAKBluetoothServerDebugPage.hh"
+#include "SAKBluetoothServerDeviceController.hh"
 
-SAKTcpServerDevice::SAKTcpServerDevice(SAKTcpServerDebugPage *debugPage, QObject *parent)
+SAKBluetoothServerDevice::SAKBluetoothServerDevice(SAKBluetoothServerDebugPage *debugPage, QObject *parent)
     :SAKDevice(parent)
     ,debugPage(debugPage)
     ,tcpServer(Q_NULLPTR)
@@ -25,10 +25,10 @@ SAKTcpServerDevice::SAKTcpServerDevice(SAKTcpServerDebugPage *debugPage, QObject
 
 }
 
-void SAKTcpServerDevice::run()
+void SAKBluetoothServerDevice::run()
 {
     QEventLoop eventLoop;
-    SAKTcpServerDeviceController *deviceController = debugPage->controllerInstance();
+    SAKBluetoothServerDeviceController *deviceController = debugPage->controllerInstance();
     serverHost = deviceController->serverHost();
     serverPort = deviceController->serverPort();
 
@@ -102,7 +102,7 @@ void SAKTcpServerDevice::run()
     emit deviceStateChanged(false);
 }
 
-void SAKTcpServerDevice::innerReadBytes(QTcpSocket *socket, SAKTcpServerDeviceController *deviceController)
+void SAKBluetoothServerDevice::innerReadBytes(QTcpSocket *socket, SAKBluetoothServerDeviceController *deviceController)
 {        
     socket->waitForReadyRead(debugPage->readWriteParameters().waitForReadyReadTime);
     QByteArray bytes = socket->readAll();
@@ -118,7 +118,7 @@ void SAKTcpServerDevice::innerReadBytes(QTcpSocket *socket, SAKTcpServerDeviceCo
     }
 }
 
-void SAKTcpServerDevice::innerWriteBytes(QTcpSocket *socket, QByteArray bytes, SAKTcpServerDeviceController *deviceController)
+void SAKBluetoothServerDevice::innerWriteBytes(QTcpSocket *socket, QByteArray bytes, SAKBluetoothServerDeviceController *deviceController)
 {    
     QString currentClientHost = deviceController->currentClientHost();
     QString peerHost = socket->peerAddress().toString();

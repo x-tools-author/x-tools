@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2020 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
  * project(https://www.qsak.pro). The project is an open source project. You can
@@ -7,8 +7,8 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
-#ifndef SAKTCPSERVERDEVICECONTROLLER_HH
-#define SAKTCPSERVERDEVICECONTROLLER_HH
+#ifndef SAKBLUETOOTHSERVERDEVICECONTROLLER_HH
+#define SAKBLUETOOTHSERVERDEVICECONTROLLER_HH
 
 #include <QMutex>
 #include <QWidget>
@@ -17,15 +17,15 @@
 #include <QTcpSocket>
 
 namespace Ui {
-    class SAKTcpServerDeviceController;
+    class SAKBluetoothServerDeviceController;
 }
 
-class SAKTcpServerDeviceController:public QWidget
+class SAKBluetoothServerDeviceController:public QWidget
 {
     Q_OBJECT
 public:
-    SAKTcpServerDeviceController(QWidget *parent = Q_NULLPTR);
-    ~SAKTcpServerDeviceController();
+    SAKBluetoothServerDeviceController(QWidget *parent = Q_NULLPTR);
+    ~SAKBluetoothServerDeviceController();
 
     QString serverHost();
     quint16 serverPort();
@@ -39,7 +39,7 @@ public:
     void addClient(QString host, quint16 port, QTcpSocket *socket);
     void removeClient(QTcpSocket *socket);
 private:
-    Ui::SAKTcpServerDeviceController *ui;
+    Ui::SAKBluetoothServerDeviceController *ui;
 
     QComboBox *serverHostComboBox;
     QLineEdit *serverPortLineEdit;

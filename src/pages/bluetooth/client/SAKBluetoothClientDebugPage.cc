@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2020 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
  * project(https://www.qsak.pro). The project is an open source project. You can
@@ -13,45 +13,45 @@
 
 #include "SAKGlobal.hh"
 #include "SAKDataStruct.hh"
-#include "SAKTcpClientDevice.hh"
-#include "SAKTcpClientDebugPage.hh"
-#include "SAKTcpClientDeviceController.hh"
+#include "SAKBluetoothClientDevice.hh"
+#include "SAKBluetoothClientDebugPage.hh"
+#include "SAKBluetoothClientDeviceController.hh"
 
-SAKTcpClientDebugPage::SAKTcpClientDebugPage(QWidget *parent)
+SAKBluetoothClientDebugPage::SAKBluetoothClientDebugPage(QWidget *parent)
     :SAKDebugPage (SAKDataStruct::DebugPageTypeTCPClient, parent)
-    ,tcpClientDeviceController (new SAKTcpClientDeviceController)
+    ,tcpClientDeviceController (new SAKBluetoothClientDeviceController)
 {
     initPage();
     setWindowTitle(SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeTCPClient));
 }
 
-SAKTcpClientDebugPage::~SAKTcpClientDebugPage()
+SAKBluetoothClientDebugPage::~SAKBluetoothClientDebugPage()
 {
     tcpClientDeviceController->deleteLater();
 }
 
-SAKTcpClientDeviceController *SAKTcpClientDebugPage::controllerInstance()
+SAKBluetoothClientDeviceController *SAKBluetoothClientDebugPage::controllerInstance()
 {
     return tcpClientDeviceController;
 }
 
-void SAKTcpClientDebugPage::refreshDevice()
+void SAKBluetoothClientDebugPage::refreshDevice()
 {
     tcpClientDeviceController->refresh();
 }
 
-QWidget *SAKTcpClientDebugPage::controllerWidget()
+QWidget *SAKBluetoothClientDebugPage::controllerWidget()
 {
     return tcpClientDeviceController;
 }
 
-SAKDevice *SAKTcpClientDebugPage::createDevice()
+SAKDevice *SAKBluetoothClientDebugPage::createDevice()
 {
-    SAKTcpClientDevice *device = new SAKTcpClientDevice(this);
+    SAKBluetoothClientDevice *device = new SAKBluetoothClientDevice(this);
     return device;
 }
 
-void SAKTcpClientDebugPage::setUiEnable(bool enable)
+void SAKBluetoothClientDebugPage::setUiEnable(bool enable)
 {
     tcpClientDeviceController->setEnabled(enable);
     mRefreshPushButton->setEnabled(enable);

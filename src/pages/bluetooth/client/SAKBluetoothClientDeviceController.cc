@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2020 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
  * project(https://www.qsak.pro). The project is an open source project. You can
@@ -12,11 +12,11 @@
 #include <QLineEdit>
 
 #include "SAKGlobal.hh"
-#include "SAKTcpClientDeviceController.hh"
-#include "ui_SAKTcpClientDeviceController.h"
-SAKTcpClientDeviceController::SAKTcpClientDeviceController(QWidget *parent)
+#include "SAKBluetoothClientDeviceController.hh"
+#include "ui_SAKBluetoothClientDeviceController.h"
+SAKBluetoothClientDeviceController::SAKBluetoothClientDeviceController(QWidget *parent)
     :QWidget (parent)
-    ,ui (new Ui::SAKTcpClientDeviceController)
+    ,ui (new Ui::SAKBluetoothClientDeviceController)
 {
     ui->setupUi(this);
 
@@ -29,12 +29,12 @@ SAKTcpClientDeviceController::SAKTcpClientDeviceController(QWidget *parent)
     refresh();
 }
 
-SAKTcpClientDeviceController::~SAKTcpClientDeviceController()
+SAKBluetoothClientDeviceController::~SAKBluetoothClientDeviceController()
 {
     delete ui;
 }
 
-QString SAKTcpClientDeviceController::localHost()
+QString SAKBluetoothClientDeviceController::localHost()
 {
     uiMutex.lock();
     QString ret = localhostComboBox->currentText();
@@ -42,7 +42,7 @@ QString SAKTcpClientDeviceController::localHost()
     return ret;
 }
 
-quint16 SAKTcpClientDeviceController::localPort()
+quint16 SAKBluetoothClientDeviceController::localPort()
 {
     uiMutex.lock();
     quint16 ret = static_cast<quint16>(localPortlineEdit->text().toInt());
@@ -50,7 +50,7 @@ quint16 SAKTcpClientDeviceController::localPort()
     return ret;
 }
 
-QString SAKTcpClientDeviceController::serverHost()
+QString SAKBluetoothClientDeviceController::serverHost()
 {
     uiMutex.lock();
     QString ret = serverHostLineEdit->text();
@@ -58,7 +58,7 @@ QString SAKTcpClientDeviceController::serverHost()
     return ret;
 }
 
-quint16 SAKTcpClientDeviceController::serverPort()
+quint16 SAKBluetoothClientDeviceController::serverPort()
 {
     uiMutex.lock();
     quint16 ret = static_cast<quint16>(serverPortLineEdit->text().toInt());
@@ -67,7 +67,7 @@ quint16 SAKTcpClientDeviceController::serverPort()
     return ret;
 }
 
-bool SAKTcpClientDeviceController::enableCustomLocalSetting()
+bool SAKBluetoothClientDeviceController::enableCustomLocalSetting()
 {
     uiMutex.lock();
     bool ret = enableLocalSettingCheckBox->isChecked();
@@ -75,12 +75,12 @@ bool SAKTcpClientDeviceController::enableCustomLocalSetting()
     return ret;
 }
 
-void SAKTcpClientDeviceController::refresh()
+void SAKBluetoothClientDeviceController::refresh()
 {
     SAKGlobal::initIpComboBox(localhostComboBox);
 }
 
-void SAKTcpClientDeviceController::setUiEnable(bool enable)
+void SAKBluetoothClientDeviceController::setUiEnable(bool enable)
 {
     localhostComboBox->setEnabled(enable);
     localPortlineEdit->setEnabled(enable);

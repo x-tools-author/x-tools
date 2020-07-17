@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2020 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
  * project(https://www.qsak.pro). The project is an open source project. You can
@@ -13,46 +13,46 @@
 
 #include "SAKGlobal.hh"
 #include "SAKDataStruct.hh"
-#include "SAKTcpServerDevice.hh"
-#include "SAKTcpServerDebugPage.hh"
-#include "SAKTcpServerDeviceController.hh"
+#include "SAKBluetoothServerDevice.hh"
+#include "SAKBluetoothServerDebugPage.hh"
+#include "SAKBluetoothServerDeviceController.hh"
 
-SAKTcpServerDebugPage::SAKTcpServerDebugPage(QWidget *parent)
+SAKBluetoothServerDebugPage::SAKBluetoothServerDebugPage(QWidget *parent)
     :SAKDebugPage (SAKDataStruct::DebugPageTypeTCPServer, parent)
-    ,tcpServerDeviceController (new SAKTcpServerDeviceController)
+    ,tcpServerDeviceController (new SAKBluetoothServerDeviceController)
 {
     initPage();
     setWindowTitle(SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeTCPServer));
 }
 
-SAKTcpServerDebugPage::~SAKTcpServerDebugPage()
+SAKBluetoothServerDebugPage::~SAKBluetoothServerDebugPage()
 {
     tcpServerDeviceController->deleteLater();
 }
 
-SAKTcpServerDeviceController *SAKTcpServerDebugPage::controllerInstance()
+SAKBluetoothServerDeviceController *SAKBluetoothServerDebugPage::controllerInstance()
 {
     return tcpServerDeviceController;
 }
 
-void SAKTcpServerDebugPage::refreshDevice()
+void SAKBluetoothServerDebugPage::refreshDevice()
 {
     tcpServerDeviceController->refresh();
 }
 
-QWidget *SAKTcpServerDebugPage::controllerWidget()
+QWidget *SAKBluetoothServerDebugPage::controllerWidget()
 {
     return tcpServerDeviceController;
 }
 
-void SAKTcpServerDebugPage::setUiEnable(bool enable)
+void SAKBluetoothServerDebugPage::setUiEnable(bool enable)
 {
     tcpServerDeviceController->setUiEnable(enable);
     mRefreshPushButton->setEnabled(enable);
 }
 
-SAKDevice* SAKTcpServerDebugPage::createDevice()
+SAKDevice* SAKBluetoothServerDebugPage::createDevice()
 {
-    SAKTcpServerDevice *device = new SAKTcpServerDevice(this);
+    SAKBluetoothServerDevice *device = new SAKBluetoothServerDevice(this);
     return device;
 }

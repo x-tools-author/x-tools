@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2020 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
  * project(https://www.qsak.pro). The project is an open source project. You can
@@ -7,8 +7,8 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
-#ifndef SAKTCPSERVERDEVICE_HH
-#define SAKTCPSERVERDEVICE_HH
+#ifndef SAKBLUETOOTHSERVERDEVICE_HH
+#define SAKBLUETOOTHSERVERDEVICE_HH
 
 #include <QThread>
 #include <QTcpServer>
@@ -16,13 +16,13 @@
 
 #include "SAKDevice.hh"
 
-class SAKTcpServerDebugPage;
-class SAKTcpServerDeviceController;
-class SAKTcpServerDevice:public SAKDevice
+class SAKBluetoothServerDebugPage;
+class SAKBluetoothServerDeviceController;
+class SAKBluetoothServerDevice:public SAKDevice
 {
     Q_OBJECT
 public:
-    SAKTcpServerDevice(SAKTcpServerDebugPage *debugPage, QObject *parent = Q_NULLPTR);
+    SAKBluetoothServerDevice(SAKBluetoothServerDebugPage *debugPage, QObject *parent = Q_NULLPTR);
 private:
     void run();    
 private:
@@ -31,11 +31,11 @@ private:
     bool enableCustomLocalSetting;
     QString serverHost;
     quint16 serverPort;
-    SAKTcpServerDebugPage *debugPage;
+    SAKBluetoothServerDebugPage *debugPage;
     QTcpServer *tcpServer;
 private:
-    void innerReadBytes(QTcpSocket *socket, SAKTcpServerDeviceController *deviceController);
-    void innerWriteBytes(QTcpSocket *socket, QByteArray bytes, SAKTcpServerDeviceController *deviceController);
+    void innerReadBytes(QTcpSocket *socket, SAKBluetoothServerDeviceController *deviceController);
+    void innerWriteBytes(QTcpSocket *socket, QByteArray bytes, SAKBluetoothServerDeviceController *deviceController);
 };
 
 #endif
