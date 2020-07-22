@@ -37,7 +37,7 @@ class SAKDebugPageStatisticsManager;
 class SAKDebugPageOtherManager;
 class SAKTransmissionSettings;
 class SAKDebugPageInputManager;
-class SAKDebugPageOutputManager;
+class SAKDebugPageOutputController;
 class SAKHighlightSettingsWidget;
 #ifdef SAK_IMPORT_CHARTS_MODULE
 class SAKChartsManager;
@@ -72,7 +72,7 @@ public:
     friend class SAKDebugPageOtherManager;
     friend class SAKDebugPageStatisticsManager;
     friend class SAKDebugPageInputManager;
-    friend class SAKDebugPageOutputManager;
+    friend class SAKDebugPageOutputController;
 
     /**
      * @brief write             -- 写数据
@@ -304,7 +304,7 @@ private:
 #endif
     SAKDebugPageOtherManager *mOtherSettings;
     SAKDebugPageStatisticsManager *mStatisticsManager;
-    SAKDebugPageOutputManager *mOutputManager;
+    SAKDebugPageOutputController *mOutputManager;
     SAKDebugPageInputManager *mDebugPageInputManager;
 };
 

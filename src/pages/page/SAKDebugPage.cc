@@ -31,7 +31,7 @@
 #include "SAKMoreSettingsWidget.hh"
 #include "SAKDebugPageOtherManager.hh"
 #include "SAKDebugPageInputManager.hh"
-#include "SAKDebugPageOutputManager.hh"
+#include "SAKDebugPageOutputController.hh"
 #include "SAKProtocolAnalyzerWidget.hh"
 #include "SAKHighlightSettingsWidget.hh"
 #ifdef SAK_IMPORT_CHARTS_MODULE
@@ -57,7 +57,7 @@ SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
     mUi->setupUi(this);
     initUiPointer();
 
-    mOutputManager           = new SAKDebugPageOutputManager(this, this);
+    mOutputManager           = new SAKDebugPageOutputController(this, this);
     mOtherSettings           = new SAKDebugPageOtherManager(this, this);
     mStatisticsManager       = new SAKDebugPageStatisticsManager(this, this);
     mDebugPageInputManager   = new SAKDebugPageInputManager(this, this);

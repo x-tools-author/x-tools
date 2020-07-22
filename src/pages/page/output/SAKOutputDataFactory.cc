@@ -56,7 +56,7 @@ void SAKOutputDataFactory::run()
     }
 }
 
-void SAKOutputDataFactory::innerCookData(QByteArray rawData, SAKDebugPageOutputManager::OutputParameters parameters)
+void SAKOutputDataFactory::innerCookData(QByteArray rawData, SAKDebugPageOutputController::OutputParameters parameters)
 {
     QString str;
 
@@ -76,40 +76,40 @@ void SAKOutputDataFactory::innerCookData(QByteArray rawData, SAKDebugPageOutputM
         str = QString("<font color=silver>%1</font>").arg(str);
     }
 
-    if (parameters.isReceivedData){
+    if (parameters.isReadData){
         str.append("<font color=red>Rx</font>");
     }else {
         str.append("<font color=blue>Tx</font>");
     }
     str.append("<font color=silver>] </font>");
 
-    if (parameters.textModel == SAKDataStruct::OutputFormatBin){
+    if (parameters.format == SAKDataStruct::OutputFormatBin){
         for (int i = 0; i < rawData.length(); i++){
             str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(rawData.at(i)), 2), 8, '0'));
         }
-    }else if (parameters.textModel == SAKDataStruct::OutputFormatOct){
+    }else if (parameters.format == SAKDataStruct::OutputFormatOct){
         for (int i = 0; i < rawData.length(); i++){
             str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(rawData.at(i)), 8), 3, '0'));
         }
-    }else if (parameters.textModel == SAKDataStruct::OutputFormatDec){
+    }else if (parameters.format == SAKDataStruct::OutputFormatDec){
         for (int i = 0; i < rawData.length(); i++){
             str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(rawData.at(i)), 10)));
         }
-    }else if (parameters.textModel == SAKDataStruct::OutputFormatHex){
+    }else if (parameters.format == SAKDataStruct::OutputFormatHex){
         for (int i = 0; i < rawData.length(); i++){
             str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(rawData.at(i)), 16), 2, '0'));
         }
-    }else if (parameters.textModel == SAKDataStruct::OutputFormatAscii){
+    }else if (parameters.format == SAKDataStruct::OutputFormatAscii){
         str.append(QString::fromLatin1(rawData));
-    }else if (parameters.textModel == SAKDataStruct::OutputFormatUtf8){
+    }else if (parameters.format == SAKDataStruct::OutputFormatUtf8){
         str.append(QString::fromUtf8(rawData));
-    }else if (parameters.textModel == SAKDataStruct::OutputFormatUtf16){
+    }else if (parameters.format == SAKDataStruct::OutputFormatUtf16){
         str.append(QString::fromUtf16(reinterpret_cast<const ushort*>(rawData.constData()),rawData.length()));
-    }else if (parameters.textModel == SAKDataStruct::OutputFormatUcs4){
+    }else if (parameters.format == SAKDataStruct::OutputFormatUcs4){
         str.append(QString::fromUcs4(reinterpret_cast<const char32_t*>(rawData.constData()),rawData.length()));
-    }else if (parameters.textModel == SAKDataStruct::OutputFormatStdwstring){
+    }else if (parameters.format == SAKDataStruct::OutputFormatStdwstring){
         str.append(QString::fromWCharArray(reinterpret_cast<const wchar_t*>(rawData.constData()),rawData.length()));
-    }else if (parameters.textModel == SAKDataStruct::OutputFormatLocal){
+    }else if (parameters.format == SAKDataStruct::OutputFormatLocal){
         str.append(QString::fromLocal8Bit(rawData));
     }else {
         str.append(QString::fromUtf8(rawData));
@@ -131,7 +131,7 @@ SAKOutputDataFactory::RawDataStruct SAKOutputDataFactory::takeRawData()
     return rawData;
 }
 
-void SAKOutputDataFactory::cookData(QByteArray rawData, SAKDebugPageOutputManager::OutputParameters parameters)
+void SAKOutputDataFactory::cookData(QByteArray rawData, SAKDebugPageOutputController::OutputParameters parameters)
 {
     RawDataStruct rawDataStruct;
     rawDataStruct.rawData = rawData;
