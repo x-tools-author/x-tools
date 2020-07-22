@@ -12,7 +12,7 @@
 SAKDebugPageDevice::SAKDebugPageDevice(QObject *parent)
     :QThread(parent)
 {
-
+    // nothing to do
 }
 
 void SAKDebugPageDevice::wakeMe()
