@@ -29,7 +29,7 @@ public:
 protected:
     void refreshDevice() final;
     QWidget *controllerWidget() final;
-    SAKDevice* createDevice() final;
+    SAKDebugPageDevice* createDevice() final;
     void setUiEnable(bool enable);
 private:
     SAKTcpServerDeviceController *tcpServerDeviceController;

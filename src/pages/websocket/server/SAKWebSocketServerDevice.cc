@@ -19,7 +19,7 @@
 #include "SAKWebSocketServerDeviceController.hh"
 
 SAKWebSocketServerDevice::SAKWebSocketServerDevice(SAKWebSocketServerDebugPage *debugPage, QObject *parent)
-    :SAKDevice(parent)
+    :SAKDebugPageDevice(parent)
     ,mDebugPage(debugPage)
     ,mWebSocketServer(Q_NULLPTR)
 {

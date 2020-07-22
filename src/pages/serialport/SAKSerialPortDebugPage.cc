@@ -35,7 +35,7 @@ SAKSerialPortDeviceController *SAKSerialPortDebugPage::controllerInstance()
     return controller;
 }
 
-SAKDevice *SAKSerialPortDebugPage::createDevice()
+SAKDebugPageDevice *SAKSerialPortDebugPage::createDevice()
 {
     SAKSerialPortDevice *ret = new SAKSerialPortDevice(this);
     return ret;

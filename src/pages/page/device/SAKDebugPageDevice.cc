@@ -7,25 +7,25 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
-#include "SAKDevice.hh"
+#include "SAKDebugPageDevice.hh"
 
-SAKDevice::SAKDevice(QObject *parent)
+SAKDebugPageDevice::SAKDebugPageDevice(QObject *parent)
     :QThread(parent)
 {
 
 }
 
-SAKDevice::~SAKDevice()
+SAKDebugPageDevice::~SAKDebugPageDevice()
 {
 
 }
 
-void SAKDevice::wakeMe()
+void SAKDebugPageDevice::wakeMe()
 {
     threadWaitCondition.wakeAll();
 }
 
-void SAKDevice::writeBytes(QByteArray bytes)
+void SAKDebugPageDevice::writeBytes(QByteArray bytes)
 {
     waitingForWritingBytesListMutex.lock();
     if (bytes.length()){
@@ -36,7 +36,7 @@ void SAKDevice::writeBytes(QByteArray bytes)
     waitingForWritingBytesListMutex.unlock();
 }
 
-QByteArray SAKDevice::takeWaitingForWrittingBytes()
+QByteArray SAKDebugPageDevice::takeWaitingForWrittingBytes()
 {
     QByteArray bytes;
     waitingForWritingBytesListMutex.lock();

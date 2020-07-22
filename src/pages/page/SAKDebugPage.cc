@@ -20,7 +20,7 @@
 #include <QIntValidator>
 #include <QLoggingCategory>
 
-#include "SAKDevice.hh"
+#include "SAKDebugPageDevice.hh"
 #include "SAKGlobal.hh"
 #include "SAKSettings.hh"
 #include "SAKDebugPage.hh"
@@ -180,7 +180,7 @@ QWidget *SAKDebugPage::controllerWidget()
     return Q_NULLPTR;
 }
 
-SAKDevice *SAKDebugPage::createDevice()
+SAKDebugPageDevice *SAKDebugPage::createDevice()
 {
     return Q_NULLPTR;
 }
@@ -396,20 +396,20 @@ void SAKDebugPage::setupDevice()
 {
     mDevice = createDevice();
     if (mDevice){
-        connect(this, &SAKDebugPage::requestWriteData, mDevice, &SAKDevice::writeBytes);
-        connect(mDevice, &SAKDevice::bytesWritten, this, &SAKDebugPage::bytesWritten);
+        connect(this, &SAKDebugPage::requestWriteData, mDevice, &SAKDebugPageDevice::writeBytes);
+        connect(mDevice, &SAKDebugPageDevice::bytesWritten, this, &SAKDebugPage::bytesWritten);
 #if 0
         connect(device, &SAKDevice::bytesRead, this, &SAKDebugPage::bytesRead);
 #else
         /// @brief 设备读取到的数据传输至协议分析器中，分析完成的数据回传至调试页面中
         SAKMoreSettingsWidget *moreSettingsWidget = mOtherSettings->moreSettingsWidget();
         SAKProtocolAnalyzerWidget *protocolAnalyzerWidget = moreSettingsWidget->protocolAnalyzerWidget();
-        connect(mDevice, &SAKDevice::bytesRead, protocolAnalyzerWidget, &SAKProtocolAnalyzerWidget::inputBytes);
+        connect(mDevice, &SAKDebugPageDevice::bytesRead, protocolAnalyzerWidget, &SAKProtocolAnalyzerWidget::inputBytes);
         connect(protocolAnalyzerWidget, &SAKProtocolAnalyzerWidget::bytesAnalysed, this, &SAKDebugPage::bytesRead);
 #endif
-        connect(mDevice, &SAKDevice::messageChanged, this, &SAKDebugPage::outputMessage);
-        connect(mDevice, &SAKDevice::deviceStateChanged, this, &SAKDebugPage::changedDeviceState);
-        connect(mDevice, &SAKDevice::finished, this, &SAKDebugPage::closeDevice);
+        connect(mDevice, &SAKDebugPageDevice::messageChanged, this, &SAKDebugPage::outputMessage);
+        connect(mDevice, &SAKDebugPageDevice::deviceStateChanged, this, &SAKDebugPage::changedDeviceState);
+        connect(mDevice, &SAKDebugPageDevice::finished, this, &SAKDebugPage::closeDevice);
     }
 }
 

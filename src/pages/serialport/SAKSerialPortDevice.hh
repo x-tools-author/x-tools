@@ -15,10 +15,10 @@
 #include <QSerialPort>
 #include <QWaitCondition>
 
-#include "SAKDevice.hh"
+#include "SAKDebugPageDevice.hh"
 
 class SAKSerialPortDebugPage;
-class SAKSerialPortDevice:public SAKDevice
+class SAKSerialPortDevice:public SAKDebugPageDevice
 {
     Q_OBJECT
 public:

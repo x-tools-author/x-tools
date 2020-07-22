@@ -45,7 +45,7 @@ QWidget *SAKWebSocketClientDebugPage::controllerWidget()
     return webSocketClientDeviceController;
 }
 
-SAKDevice *SAKWebSocketClientDebugPage::createDevice()
+SAKDebugPageDevice *SAKWebSocketClientDebugPage::createDevice()
 {
     SAKWebSocketClientDevice *device = new SAKWebSocketClientDevice(this);
     return device;

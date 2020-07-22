@@ -14,10 +14,10 @@
 #include <QThread>
 #include <QUdpSocket>
 
-#include "SAKDevice.hh"
+#include "SAKDebugPageDevice.hh"
 
 class SAKUdpDebugPage;
-class SAKUdpDevice:public SAKDevice
+class SAKUdpDevice:public SAKDebugPageDevice
 {
     Q_OBJECT
 public:

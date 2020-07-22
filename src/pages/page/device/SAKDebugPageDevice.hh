@@ -17,12 +17,12 @@
 class SAKDebugPage;
 
 /// @brief 设备抽象类
-class SAKDevice:public QThread
+class SAKDebugPageDevice:public QThread
 {
     Q_OBJECT
 public:
-    SAKDevice(QObject *parent = Q_NULLPTR);
-    ~SAKDevice();
+    SAKDebugPageDevice(QObject *parent = Q_NULLPTR);
+    ~SAKDebugPageDevice();
 
     /**
      * @brief wakeMe 唤醒线程

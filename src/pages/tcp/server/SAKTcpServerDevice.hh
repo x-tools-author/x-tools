@@ -14,11 +14,11 @@
 #include <QTcpServer>
 #include <QTcpSocket>
 
-#include "SAKDevice.hh"
+#include "SAKDebugPageDevice.hh"
 
 class SAKTcpServerDebugPage;
 class SAKTcpServerDeviceController;
-class SAKTcpServerDevice:public SAKDevice
+class SAKTcpServerDevice:public SAKDebugPageDevice
 {
     Q_OBJECT
 public:

@@ -14,12 +14,12 @@
 #include <QWebSocket>
 #include <QWebSocketServer>
 
-#include "SAKDevice.hh"
+#include "SAKDebugPageDevice.hh"
 
 class SAKWebSocketServerDebugPage;
 class SAKWebSocketServerDeviceController;
 /// @brief web socket服务器设备
-class SAKWebSocketServerDevice:public SAKDevice
+class SAKWebSocketServerDevice:public SAKDebugPageDevice
 {
     Q_OBJECT
 public:

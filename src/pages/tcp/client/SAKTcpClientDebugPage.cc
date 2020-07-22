@@ -45,7 +45,7 @@ QWidget *SAKTcpClientDebugPage::controllerWidget()
     return tcpClientDeviceController;
 }
 
-SAKDevice *SAKTcpClientDebugPage::createDevice()
+SAKDebugPageDevice *SAKTcpClientDebugPage::createDevice()
 {
     SAKTcpClientDevice *device = new SAKTcpClientDevice(this);
     return device;

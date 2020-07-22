@@ -11,11 +11,11 @@
 #define SAKWEBSOCKETCLIENTDEVICE_HH
 
 #include <QAbstractSocket>
-#include "SAKDevice.hh"
+#include "SAKDebugPageDevice.hh"
 
 class SAKWebSocketClientDebugPage;
 /// @brief web socket 客户端
-class SAKWebSocketClientDevice:public SAKDevice
+class SAKWebSocketClientDevice:public SAKDebugPageDevice
 {
     Q_OBJECT
 public:

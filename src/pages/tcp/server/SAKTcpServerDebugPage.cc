@@ -51,7 +51,7 @@ void SAKTcpServerDebugPage::setUiEnable(bool enable)
     mRefreshPushButton->setEnabled(enable);
 }
 
-SAKDevice* SAKTcpServerDebugPage::createDevice()
+SAKDebugPageDevice* SAKTcpServerDebugPage::createDevice()
 {
     SAKTcpServerDevice *device = new SAKTcpServerDevice(this);
     return device;

@@ -26,7 +26,7 @@ public:
      */
     SAKSerialPortDeviceController *controllerInstance();
 protected:
-    SAKDevice *createDevice() final;
+    SAKDebugPageDevice *createDevice() final;
     void refreshDevice() final;
     QWidget *controllerWidget() final;
     void setUiEnable(bool enable) final;
