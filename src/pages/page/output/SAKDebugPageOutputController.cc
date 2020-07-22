@@ -27,6 +27,7 @@ SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugPage *debugPa
     // OutputParameters will be signal parameter, the step must be execute
     qRegisterMetaType<OutputParameters>("OutputParameters");
 
+    // initialize ui component
     mRxLabel = debugPage->mRxLabel;
     mTxLabel = debugPage->mTxLabel;
     mOutputTextFormatComboBox = debugPage->mOutputTextFormatComboBox;
@@ -41,33 +42,34 @@ SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugPage *debugPa
     mClearOutputPushButton = debugPage->mClearOutputPushButton;
     mSaveOutputPushButton = debugPage->mSaveOutputPushButton;
     mOutputTextBroswer = debugPage->mOutputTextBroswer;
+    SAKGlobal::initOutputTextFormatComboBox(mOutputTextFormatComboBox);
 
     connect(mSaveOutputFileToFilecheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::saveOutputDataToFile);
     connect(mAutoWrapCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::setLineWrapMode);
     connect(mSaveOutputPushButton, &QCheckBox::clicked, this, &SAKDebugPageOutputController::saveOutputTextToFile);
     connect(mOutputFilePathPushButton, &QCheckBox::clicked, this, &SAKDebugPageOutputController::saveOutputDataSettings);
 
-    /// @brief 初始化数据格式预选框
-    SAKGlobal::initOutputTextFormatComboBox(mOutputTextFormatComboBox);
-
-    /// @brief 处理已接收或者是已发送的数据
+    // input data
     connect(debugPage, &SAKDebugPage::bytesRead, this, &SAKDebugPageOutputController::bytesRead);
     connect(debugPage, &SAKDebugPage::bytesWritten, this, &SAKDebugPageOutputController::bytesWritten);
 
-    /// @brief 数据先发送到 dataFactory 中进行处理，处理完毕后再输出至界面
+    // handle raw data
     mDataFactory = new SAKOutputDataFactory;
     connect(this, &SAKDebugPageOutputController::cookData, mDataFactory, &SAKOutputDataFactory::cookData);
     connect(mDataFactory, &SAKOutputDataFactory::dataCooked, this, &SAKDebugPageOutputController::outputData);
     mDataFactory->start();
 
-    mOutputSettings = new SAKSaveOutputDataSettings;
-
+    // animation
     mUpdateRxAnimationTimer.setInterval(20);
     mUpdateTxAnimationTimer.setInterval(20);
     connect(&mUpdateRxAnimationTimer, &QTimer::timeout, this, &SAKDebugPageOutputController::updateRxAnimation);
     connect(&mUpdateTxAnimationTimer, &QTimer::timeout, this, &SAKDebugPageOutputController::updateTxAnimation);
 
+    // do something make memory happy
     mOutputTextBroswer->document()->setMaximumBlockCount(1000);
+
+    // the class is used to save data to file
+    mOutputSettings = new SAKSaveOutputDataSettings;
 }
 
 SAKDebugPageOutputController::~SAKDebugPageOutputController()
@@ -182,7 +184,7 @@ SAKDebugPageOutputController::OutputParameters SAKDebugPageOutputController::out
     OutputParameters parameters;
     parameters.showDate = mShowDateCheckBox->isChecked();
     parameters.showTime = mShowTimeCheckBox->isChecked();
-    parameters.showMS   = mShowMsCheckBox->isChecked();
+    parameters.showMS = mShowMsCheckBox->isChecked();
     parameters.isReadData = isReceivedData;
 
     parameters.format= mOutputTextFormatComboBox->currentData().toInt();
