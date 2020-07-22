@@ -88,9 +88,9 @@ void SAKWebSocketServerDevice::run()
         eventLoop.processEvents();
 
         /// @brief 线程睡眠
-        threadMutex.lock();
-        threadWaitCondition.wait(&threadMutex, mDebugPage->readWriteParameters().runIntervalTime);
-        threadMutex.unlock();
+        mThreadMutex.lock();
+        mThreadWaitCondition.wait(&mThreadMutex, mDebugPage->readWriteParameters().runIntervalTime);
+        mThreadMutex.unlock();
     }
 
     mWebSocketServer->close();

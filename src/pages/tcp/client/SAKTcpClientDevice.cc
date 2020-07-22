@@ -102,9 +102,9 @@ void SAKTcpClientDevice::run()
             eventLoop.processEvents();
 
             /// @brief 线程睡眠
-            threadMutex.lock();
-            threadWaitCondition.wait(&threadMutex, debugPage->readWriteParameters().waitForBytesWrittenTime);
-            threadMutex.unlock();
+            mThreadMutex.lock();
+            mThreadWaitCondition.wait(&mThreadMutex, debugPage->readWriteParameters().waitForBytesWrittenTime);
+            mThreadMutex.unlock();
         }
 
         /// @brief 退出前断开与服务器的链接

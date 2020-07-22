@@ -1,57 +1,48 @@
 ﻿/*
  * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
  *
- * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
- * project(https://www.qsak.pro). The project is an open source project. You can
- * get the source of the project from: "https://github.com/qsak/QtSwissArmyKnife"
- * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
- * group which number is 952218522 to have a communication.
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKDEVICE_HH
-#define SAKDEVICE_HH
-
+#ifndef SAKDEBUGPAGEDEVICE_HH
+#define SAKDDEBUGPAGEEVICE_HH
 #include <QMutex>
 #include <QThread>
 #include <QWaitCondition>
 
-class SAKDebugPage;
-
-/// @brief 设备抽象类
+/// @brief device abstract class
 class SAKDebugPageDevice:public QThread
 {
     Q_OBJECT
 public:
     SAKDebugPageDevice(QObject *parent = Q_NULLPTR);
-    ~SAKDebugPageDevice();
 
     /**
-     * @brief wakeMe 唤醒线程
+     * @brief wakeMe: wake the thread
      */
     void wakeMe();
 
     /**
-     * @brief writeBytes 发送数据请求
-     * @param bytes 待发送数据
+     * @brief writeBytes: write bytes to device
+     * @param bytes: bytes need to be wirtten
      */
     void writeBytes(QByteArray bytes);
-signals:
-    /// @brief 数据发送成功后触发该信号
-    void bytesWritten(QByteArray bytes);
-    /// @brief 数据读取后触发该信号
-    void bytesRead(QByteArray bytes);
-    /// @brief 输出消息
-    void messageChanged(QString msg, bool isInfo);
-    /// @brief 设备开关状态发送改变是触发该信号
-    void deviceStateChanged(bool isOpened);
 protected:
-    QMutex threadMutex;
-    QWaitCondition threadWaitCondition;
-    /*************************************************************************/
-    /// @brief 提取待发送数据,无数据则返回空数据
+    QMutex mThreadMutex;
+    QWaitCondition mThreadWaitCondition;
+protected:
     QByteArray takeWaitingForWrittingBytes();
 private:
-    QMutex waitingForWritingBytesListMutex;
-    QList<QByteArray> waitingForWritingBytesList;
+    QMutex mWaitingForWritingBytesListMutex;
+    QList<QByteArray> mWaitingForWritingBytesList;
+signals:
+    void bytesWritten(QByteArray bytes);
+    void bytesRead(QByteArray bytes);
+    void messageChanged(QString msg, bool isInfo);
+    void deviceStateChanged(bool isOpened);
 };
 
 #endif
