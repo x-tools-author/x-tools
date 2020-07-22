@@ -1,16 +1,16 @@
 ﻿/*
  * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
  *
- * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
- * project(https://www.qsak.pro). The project is an open source project. You can
- * get the source of the project from: "https://github.com/qsak/QtSwissArmyKnife"
- * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
- * group which number is 952218522 to have a communication.
+ * The file is encoded using "utf8 with bom". It is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  */
 #include "SAKDebugPage.hh"
-#include "SAKStatisticsManager.hh"
+#include "SAKDebugPageStatisticsManager.hh"
 
-SAKStatisticsManager::SAKStatisticsManager(SAKDebugPage *debugPage, QObject *parent)
+SAKDebugPageStatisticsManager::SAKDebugPageStatisticsManager(SAKDebugPage *debugPage, QObject *parent)
     :QObject (parent)
     ,debugPage (debugPage)
 {
@@ -31,17 +31,17 @@ SAKStatisticsManager::SAKStatisticsManager(SAKDebugPage *debugPage, QObject *par
     dataContext.rxBytesPerSecond = 0;
     dataContext.txBytesPerSecond = 0;
 
-    connect(debugPage, &SAKDebugPage::bytesRead, this, &SAKStatisticsManager::dataRead);
-    connect(debugPage, &SAKDebugPage::bytesWritten, this, &SAKStatisticsManager::dataReceived);
-    connect(resetRxCountPushButton, &QPushButton::clicked, this, &SAKStatisticsManager::clearRxStatistics);
-    connect(resetTxCountPushButton, &QPushButton::clicked, this, &SAKStatisticsManager::clearTxStatistics);
+    connect(debugPage, &SAKDebugPage::bytesRead, this, &SAKDebugPageStatisticsManager::dataRead);
+    connect(debugPage, &SAKDebugPage::bytesWritten, this, &SAKDebugPageStatisticsManager::dataReceived);
+    connect(resetRxCountPushButton, &QPushButton::clicked, this, &SAKDebugPageStatisticsManager::clearRxStatistics);
+    connect(resetTxCountPushButton, &QPushButton::clicked, this, &SAKDebugPageStatisticsManager::clearTxStatistics);
 
     speedCalculationTimer.setInterval(1*1000);
-    connect(&speedCalculationTimer, &QTimer::timeout, this, &SAKStatisticsManager::speedCalculationTimerTimeout);
+    connect(&speedCalculationTimer, &QTimer::timeout, this, &SAKDebugPageStatisticsManager::speedCalculationTimerTimeout);
     speedCalculationTimer.start();
 }
 
-void SAKStatisticsManager::dataRead(QByteArray data)
+void SAKDebugPageStatisticsManager::dataRead(QByteArray data)
 {
     dataContext.rxFrames += 1;
     dataContext.rxBytes += static_cast<quint64>(data.length());
@@ -51,7 +51,7 @@ void SAKStatisticsManager::dataRead(QByteArray data)
     dataContext.rxBytesPerSecond += static_cast<quint64>(data.length());
 }
 
-void SAKStatisticsManager::dataReceived(QByteArray data)
+void SAKDebugPageStatisticsManager::dataReceived(QByteArray data)
 {
     dataContext.txFrames += 1;
     dataContext.txBytes += static_cast<quint64>(data.length());
@@ -61,7 +61,7 @@ void SAKStatisticsManager::dataReceived(QByteArray data)
     dataContext.txBytesPerSecond += static_cast<quint64>(data.length());
 }
 
-void SAKStatisticsManager::clearRxStatistics()
+void SAKDebugPageStatisticsManager::clearRxStatistics()
 {
     dataContext.rxBytes = 0;
     dataContext.rxFrames = 0;
@@ -69,7 +69,7 @@ void SAKStatisticsManager::clearRxStatistics()
     setLabelText(rxBytesLabel, dataContext.rxBytes);
 }
 
-void SAKStatisticsManager::clearTxStatistics()
+void SAKDebugPageStatisticsManager::clearTxStatistics()
 {
     dataContext.txBytes = 0;
     dataContext.txFrames = 0;
@@ -77,14 +77,14 @@ void SAKStatisticsManager::clearTxStatistics()
     setLabelText(txBytesLabel, dataContext.txBytes);
 }
 
-void SAKStatisticsManager::setLabelText(QLabel *label, quint64 text)
+void SAKDebugPageStatisticsManager::setLabelText(QLabel *label, quint64 text)
 {
     if (label){
         label->setText(QString::number(text));
     }
 }
 
-void SAKStatisticsManager::speedCalculationTimerTimeout()
+void SAKDebugPageStatisticsManager::speedCalculationTimerTimeout()
 {
     auto cal = [](QLabel *label, quint64 &bytes){
         if (bytes < 1024){

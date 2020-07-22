@@ -27,7 +27,7 @@
 #include "SAKDataStruct.hh"
 #include "SAKCRCInterface.hh"
 #include "SAKProtocolAnalyzer.hh"
-#include "SAKStatisticsManager.hh"
+#include "SAKDebugPageStatisticsManager.hh"
 #include "SAKMoreSettingsWidget.hh"
 #include "SAKOtherSettingsManager.hh"
 #include "SAKDebugPageInputManager.hh"
@@ -59,7 +59,7 @@ SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
 
     mOutputManager           = new SAKDebugPageOutputManager(this, this);
     mOtherSettings           = new SAKOtherSettingsManager(this, this);
-    mStatisticsManager       = new SAKStatisticsManager(this, this);
+    mStatisticsManager       = new SAKDebugPageStatisticsManager(this, this);
     mDebugPageInputManager   = new SAKDebugPageInputManager(this, this);
 #ifdef SAK_IMPORT_CHARTS_MODULE
     mDataVisualizationManager= Q_NULLPTR;

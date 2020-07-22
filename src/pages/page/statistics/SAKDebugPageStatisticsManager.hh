@@ -1,14 +1,14 @@
 ﻿/*
  * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
  *
- * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
- * project(https://www.qsak.pro). The project is an open source project. You can
- * get the source of the project from: "https://github.com/qsak/QtSwissArmyKnife"
- * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
- * group which number is 952218522 to have a communication.
+ * The file is encoded using "utf8 with bom". It is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKSTATISTICSMANAGER_HH
-#define SAKSTATISTICSMANAGER_HH
+#ifndef SAKDEBUGPAGESTATISTICSMANAGER_HH
+#define SAKDEBUGPAGESTATISTICSMANAGER_HH
 
 #include <QTimer>
 #include <QLabel>
@@ -16,12 +16,12 @@
 #include <QPushButton>
 
 class SAKDebugPage;
-/// @brief 数据统计
-class SAKStatisticsManager:public QObject
+/// @brief statistics received bytes, frames and sent bytes, frames
+class SAKDebugPageStatisticsManager:public QObject
 {
     Q_OBJECT
 public:
-    SAKStatisticsManager(SAKDebugPage *debugPage, QObject *parent = Q_NULLPTR);
+    SAKDebugPageStatisticsManager(SAKDebugPage *debugPage, QObject *parent = Q_NULLPTR);
 private:
     SAKDebugPage *debugPage;
 
