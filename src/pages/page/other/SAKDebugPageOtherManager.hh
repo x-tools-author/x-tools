@@ -13,15 +13,15 @@
 #include <QObject>
 #include <QPushButton>
 
-class SAKTransmissionSettings;
-class SAKAutoResponseSettingsWidget;
-
 class SAKDebugPage;
-class SAKHighlightSettingsWidget;
 class SAKMoreSettingsWidget;
+class SAKTransmissionSettings;
+class SAKHighlightSettingsWidget;
 class SAKReadWriteSettingsWidget;
+class SAKAutoResponseSettingsWidget;
 class SAKTimingSendingSettingsWidget;
 
+/// @brief other setting module
 class SAKDebugPageOtherManager:public QObject
 {
     Q_OBJECT
@@ -30,34 +30,33 @@ public:
     ~SAKDebugPageOtherManager();
 
     /**
-     * @brief moreSettingsWidget 获取“更多设置”控制面板
-     * @return “更多设置控制面板”
+     * @brief moreSettingsWidget: get the more settings widget
+     * @return widget: setting widget
      */
     SAKMoreSettingsWidget *moreSettingsWidget();
 private:
-    QPushButton *transmissionSettingPushButton;
-    QPushButton *readWriteSettingPushButton;
-    QPushButton *autoResponseSettingPushButton;
-    QPushButton *chartSettingPushButton;
+    SAKDebugPage *mDebugPage;
+
+    QPushButton *moreSettingsPushButton;
     QPushButton *timingSendingPushButton;
     QPushButton *highlightSettingPushButton;
-    QPushButton *moreSettingsPushButton;
+    QPushButton *readWriteSettingPushButton;
+    QPushButton *autoResponseSettingPushButton;
+    QPushButton *transmissionSettingPushButton;
 
-    SAKTransmissionSettings        *transmissionSettings;
-    SAKReadWriteSettingsWidget     *readWriteSettingsWidget;
-    SAKAutoResponseSettingsWidget   *autoResponseSettingWidget;
-    SAKTimingSendingSettingsWidget     *timingSendingManager;
-    SAKHighlightSettingsWidget     *highlighterSettingPanel;
     SAKMoreSettingsWidget *mMoreSettingsWidget;
-
-    SAKDebugPage                *_debugPage;
+    SAKTransmissionSettings *mTransmissionSettings;
+    SAKHighlightSettingsWidget *mHighlightSettingsWidget;
+    SAKReadWriteSettingsWidget *mReadWriteSettingsWidget;
+    SAKAutoResponseSettingsWidget *mAutoResponseSettingWidget;
+    SAKTimingSendingSettingsWidget *mTimingSendingSettingsWidget;
 private slots:
-    void onTransmissionSettingPushButtonClicked();
-    void onReadWriteSettingPushButtonClicked();
-    void onAutoresponseSettingPushbuttonClicked();
-    void onTimingSendingPushButtonClicked();
-    void onHighlightSettingPushButtonClicked();    
     void onMoreSettingsPushButtonClicked();
+    void onTimingSendingPushButtonClicked();
+    void onReadWriteSettingPushButtonClicked();
+    void onHighlightSettingPushButtonClicked();
+    void onAutoresponseSettingPushbuttonClicked();
+    void onTransmissionSettingPushButtonClicked();
 };
 
 #endif
