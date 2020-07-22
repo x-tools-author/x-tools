@@ -113,7 +113,7 @@ void SAKAutoResponseItemWidget::setLineEditFormat(QLineEdit *lineEdit, int forma
     QRegExp regExpOct("([0-7][0-7][ ])*");
     QRegExp regExpDec("([0-9][0-9][ ])*");
     QRegExp regExpHex("([0-9A-F][0-9A-F][ ])*");
-    QRegExp regExpAscii("([a-zA-Z0-9`~!@#$%^&*()-_=+\\|;:'\",<.>/?])*");
+    QRegExp regExpAscii("([a-zA-Z0-9`~!@#$%^&*()-_=+\\|;:'\",<.>/? ])*");
 
     if (lineEdit){
         lineEdit->setValidator(Q_NULLPTR);
