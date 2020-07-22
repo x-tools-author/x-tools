@@ -24,7 +24,7 @@ SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugPage *debugPa
     ,mRxAnimationgCount (5)
     ,mTxAnimationCount (0)
 {
-    /// @brief 注册数据类型（自定义数据类型作为信号参数时，要进行注册，该函数要与宏 Q_DECLARE_METATYPE 配套使用）
+    // OutputParameters will be signal parameter, the step must be execute
     qRegisterMetaType<OutputParameters>("OutputParameters");
 
     mRxLabel                         = debugPage->mRxLabel;

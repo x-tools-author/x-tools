@@ -21,7 +21,7 @@
 class SAKDebugPage;
 class SAKOutputDataFactory;
 class SAKSaveOutputDataSettings;
-/// @brief output data manager
+/// @brief output data controller
 class SAKDebugPageOutputController:public QObject
 {
     Q_OBJECT
