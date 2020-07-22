@@ -1,22 +1,27 @@
 ﻿/*
  * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
  *
- * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
- * project(https://www.qsak.pro). The project is an open source project. You can
- * get the source of the project from: "https://github.com/qsak/QtSwissArmyKnife"
- * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
- * group which number is 952218522 to have a communication.
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  */
 #ifndef SAKDEBUGPAGEOUTPUTMANAGER_HH
 #define SAKDEBUGPAGEOUTPUTMANAGER_HH
-
-#include "SAKDebugPage.hh"
-
+#include <QTimer>
+#include <QLabel>
 #include <QTimer>
 #include <QObject>
+#include <QComboBox>
+#include <QCheckBox>
+#include <QPushButton>
+#include <QTextBrowser>
 
+class SAKDebugPage;
 class SAKOutputDataFactory;
 class SAKSaveOutputDataSettings;
+/// @brief output data manager
 class SAKDebugPageOutputManager:public QObject
 {
     Q_OBJECT
