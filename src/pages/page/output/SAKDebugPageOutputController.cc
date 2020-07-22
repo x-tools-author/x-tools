@@ -15,8 +15,8 @@
 #include "SAKGlobal.hh"
 #include "SAKDebugPage.hh"
 #include "SAKOutputDataFactory.hh"
-#include "SAKDebugPageOutputController.hh"
 #include "SAKSaveOutputDataSettings.hh"
+#include "SAKDebugPageOutputController.hh"
 
 SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugPage *debugPage, QObject *parent)
     :QObject (parent)
@@ -27,25 +27,25 @@ SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugPage *debugPa
     // OutputParameters will be signal parameter, the step must be execute
     qRegisterMetaType<OutputParameters>("OutputParameters");
 
-    mRxLabel                         = debugPage->mRxLabel;
-    mTxLabel                         = debugPage->mTxLabel;
-    mOutputTextFormatComboBox        = debugPage->mOutputTextFormatComboBox;
-    mShowDateCheckBox                = debugPage->mShowDateCheckBox;
-    mAutoWrapCheckBox                = debugPage->mAutoWrapCheckBox;
-    mShowTimeCheckBox                = debugPage->mShowTimeCheckBox;
-    mShowMsCheckBox                  = debugPage->mShowMsCheckBox;
-    mShowRxDataCheckBox              = debugPage->mShowRxDataCheckBox;
-    mShowTxDataCheckBox              = debugPage->mShowTxDataCheckBox;
-    mSaveOutputFileToFilecheckBox    = debugPage->mSaveOutputFileToFilecheckBox;
-    mOutputFilePathPushButton        = debugPage->mOutputFilePathPushButton;
-    mClearOutputPushButton           = debugPage->mClearOutputPushButton;
-    mSaveOutputPushButton            = debugPage->mSaveOutputPushButton;
-    mOutputTextBroswer               = debugPage->mOutputTextBroswer;
+    mRxLabel = debugPage->mRxLabel;
+    mTxLabel = debugPage->mTxLabel;
+    mOutputTextFormatComboBox = debugPage->mOutputTextFormatComboBox;
+    mShowDateCheckBox = debugPage->mShowDateCheckBox;
+    mAutoWrapCheckBox = debugPage->mAutoWrapCheckBox;
+    mShowTimeCheckBox = debugPage->mShowTimeCheckBox;
+    mShowMsCheckBox = debugPage->mShowMsCheckBox;
+    mShowRxDataCheckBox = debugPage->mShowRxDataCheckBox;
+    mShowTxDataCheckBox = debugPage->mShowTxDataCheckBox;
+    mSaveOutputFileToFilecheckBox = debugPage->mSaveOutputFileToFilecheckBox;
+    mOutputFilePathPushButton = debugPage->mOutputFilePathPushButton;
+    mClearOutputPushButton = debugPage->mClearOutputPushButton;
+    mSaveOutputPushButton = debugPage->mSaveOutputPushButton;
+    mOutputTextBroswer = debugPage->mOutputTextBroswer;
 
-    connect(mSaveOutputFileToFilecheckBox,   &QCheckBox::clicked, this, &SAKDebugPageOutputController::saveOutputDataToFile);
-    connect(mAutoWrapCheckBox,               &QCheckBox::clicked, this, &SAKDebugPageOutputController::setLineWrapMode);
-    connect(mSaveOutputPushButton,           &QCheckBox::clicked, this, &SAKDebugPageOutputController::saveOutputTextToFile);
-    connect(mOutputFilePathPushButton,       &QCheckBox::clicked, this, &SAKDebugPageOutputController::saveOutputDataSettings);
+    connect(mSaveOutputFileToFilecheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::saveOutputDataToFile);
+    connect(mAutoWrapCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::setLineWrapMode);
+    connect(mSaveOutputPushButton, &QCheckBox::clicked, this, &SAKDebugPageOutputController::saveOutputTextToFile);
+    connect(mOutputFilePathPushButton, &QCheckBox::clicked, this, &SAKDebugPageOutputController::saveOutputDataSettings);
 
     /// @brief 初始化数据格式预选框
     SAKGlobal::initOutputTextFormatComboBox(mOutputTextFormatComboBox);
