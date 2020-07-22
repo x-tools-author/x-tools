@@ -9,7 +9,6 @@
  */
 #ifndef SAKDEBUGPAGESTATISTICSMANAGER_HH
 #define SAKDEBUGPAGESTATISTICSMANAGER_HH
-
 #include <QLabel>
 #include <QObject>
 #include <QPushButton>
