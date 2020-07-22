@@ -177,7 +177,7 @@ HEADERS += \
     src/pages/page/input/SAKInputDataFactory.hh \
     src/pages/page/input/SAKInputDataItem.hh \
     src/pages/page/input/SAKInputDataItemManager.hh \
-    src/pages/page/other/SAKOtherSettingsManager.hh \
+    src/pages/page/other/SAKDebugPageOtherManager.hh \
     src/pages/page/other/autoresponse/SAKAutoResponseItemWidget.hh \
     src/pages/page/other/autoresponse/SAKAutoResponseSettingsWidget.hh \
     src/pages/page/other/highlight/SAKHighlightSettings.hh \
@@ -239,7 +239,7 @@ SOURCES += \
     src/pages/page/input/SAKInputDataFactory.cc \
     src/pages/page/input/SAKInputDataItem.cc \
     src/pages/page/input/SAKInputDataItemManager.cc \
-    src/pages/page/other/SAKOtherSettingsManager.cc \
+    src/pages/page/other/SAKDebugPageOtherManager.cc \
     src/pages/page/other/autoresponse/SAKAutoResponseItemWidget.cc \
     src/pages/page/other/autoresponse/SAKAutoResponseSettingsWidget.cc \
     src/pages/page/other/highlight/SAKHighlightSettings.cc \

@@ -1,16 +1,16 @@
 ﻿/*
  * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
  *
- * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
- * project(https://www.qsak.pro). The project is an open source project. You can
- * get the source of the project from: "https://github.com/qsak/QtSwissArmyKnife"
- * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
- * group which number is 952218522 to have a communication.
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  */
 #include <QDebug>
 
 #include "SAKDebugPage.hh"
-#include "SAKOtherSettingsManager.hh"
+#include "SAKDebugPageOtherManager.hh"
 #include "SAKTransmissionSettings.hh"
 #include "SAKHighlightSettingsWidget.hh"
 #include "SAKMoreSettingsWidget.hh"
@@ -18,7 +18,7 @@
 #include "SAKTimingSendingSettingsWidget.hh"
 #include "SAKAutoResponseSettingsWidget.hh"
 
-SAKOtherSettingsManager::SAKOtherSettingsManager(SAKDebugPage *debugPage, QObject *parent)
+SAKDebugPageOtherManager::SAKDebugPageOtherManager(SAKDebugPage *debugPage, QObject *parent)
     :QObject (parent)
     ,_debugPage (debugPage)
 {
@@ -36,15 +36,15 @@ SAKOtherSettingsManager::SAKOtherSettingsManager(SAKDebugPage *debugPage, QObjec
     moreSettingsPushButton          = _debugPage->mMoreSettingsPushButton;
     timingSendingPushButton         = _debugPage->mTimingSendingPushButton;
 
-    connect(autoResponseSettingPushButton, &QPushButton::clicked, this, &SAKOtherSettingsManager::onAutoresponseSettingPushbuttonClicked);
-    connect(highlightSettingPushButton,    &QPushButton::clicked, this, &SAKOtherSettingsManager::onHighlightSettingPushButtonClicked);
-    connect(readWriteSettingPushButton,    &QPushButton::clicked, this, &SAKOtherSettingsManager::onReadWriteSettingPushButtonClicked);
-    connect(transmissionSettingPushButton, &QPushButton::clicked, this, &SAKOtherSettingsManager::onTransmissionSettingPushButtonClicked);
-    connect(moreSettingsPushButton,        &QPushButton::clicked, this, &SAKOtherSettingsManager::onMoreSettingsPushButtonClicked);
-    connect(timingSendingPushButton,       &QPushButton::clicked, this, &SAKOtherSettingsManager::onTimingSendingPushButtonClicked);
+    connect(autoResponseSettingPushButton, &QPushButton::clicked, this, &SAKDebugPageOtherManager::onAutoresponseSettingPushbuttonClicked);
+    connect(highlightSettingPushButton,    &QPushButton::clicked, this, &SAKDebugPageOtherManager::onHighlightSettingPushButtonClicked);
+    connect(readWriteSettingPushButton,    &QPushButton::clicked, this, &SAKDebugPageOtherManager::onReadWriteSettingPushButtonClicked);
+    connect(transmissionSettingPushButton, &QPushButton::clicked, this, &SAKDebugPageOtherManager::onTransmissionSettingPushButtonClicked);
+    connect(moreSettingsPushButton,        &QPushButton::clicked, this, &SAKDebugPageOtherManager::onMoreSettingsPushButtonClicked);
+    connect(timingSendingPushButton,       &QPushButton::clicked, this, &SAKDebugPageOtherManager::onTimingSendingPushButtonClicked);
 }
 
-SAKOtherSettingsManager::~SAKOtherSettingsManager()
+SAKDebugPageOtherManager::~SAKDebugPageOtherManager()
 {
     delete transmissionSettings;
     delete autoResponseSettingWidget;
@@ -61,12 +61,12 @@ SAKOtherSettingsManager::~SAKOtherSettingsManager()
     timingSendingManager = Q_NULLPTR;
 }
 
-SAKMoreSettingsWidget *SAKOtherSettingsManager::moreSettingsWidget()
+SAKMoreSettingsWidget *SAKDebugPageOtherManager::moreSettingsWidget()
 {
     return mMoreSettingsWidget;
 }
 
-void SAKOtherSettingsManager::onAutoresponseSettingPushbuttonClicked()
+void SAKDebugPageOtherManager::onAutoresponseSettingPushbuttonClicked()
 {
     if (autoResponseSettingWidget->isHidden()){
         autoResponseSettingWidget->show();
@@ -75,7 +75,7 @@ void SAKOtherSettingsManager::onAutoresponseSettingPushbuttonClicked()
     }
 }
 
-void SAKOtherSettingsManager::onHighlightSettingPushButtonClicked()
+void SAKDebugPageOtherManager::onHighlightSettingPushButtonClicked()
 {
 
     if (highlighterSettingPanel->isHidden()){
@@ -85,7 +85,7 @@ void SAKOtherSettingsManager::onHighlightSettingPushButtonClicked()
     }
 }
 
-void SAKOtherSettingsManager::onReadWriteSettingPushButtonClicked()
+void SAKDebugPageOtherManager::onReadWriteSettingPushButtonClicked()
 {
     if (readWriteSettingsWidget->isHidden()){
         readWriteSettingsWidget->show();
@@ -94,7 +94,7 @@ void SAKOtherSettingsManager::onReadWriteSettingPushButtonClicked()
     }
 }
 
-void SAKOtherSettingsManager::onTransmissionSettingPushButtonClicked()
+void SAKDebugPageOtherManager::onTransmissionSettingPushButtonClicked()
 {
     if (transmissionSettings->isHidden()){
         transmissionSettings->show();
@@ -103,7 +103,7 @@ void SAKOtherSettingsManager::onTransmissionSettingPushButtonClicked()
     }
 }
 
-void SAKOtherSettingsManager::onMoreSettingsPushButtonClicked()
+void SAKDebugPageOtherManager::onMoreSettingsPushButtonClicked()
 {
     if (mMoreSettingsWidget->isHidden()){
         mMoreSettingsWidget->show();
@@ -112,7 +112,7 @@ void SAKOtherSettingsManager::onMoreSettingsPushButtonClicked()
     }
 }
 
-void SAKOtherSettingsManager::onTimingSendingPushButtonClicked()
+void SAKDebugPageOtherManager::onTimingSendingPushButtonClicked()
 {
     if (timingSendingManager->isHidden()){
         timingSendingManager->show();
