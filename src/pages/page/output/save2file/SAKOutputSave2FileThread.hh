@@ -7,15 +7,15 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
-#ifndef SAKSAVEOUTPUTDATATHREAD_HH
-#define SAKSAVEOUTPUTDATATHREAD_HH
+#ifndef SAKOUTPUTSAVE2FILETHREAD_HH
+#define SAKOUTPUTSAVE2FILETHREAD_HH
 
 #include <QMutex>
 #include <QThread>
 #include <QWaitCondition>
 
 #include "SAKOutputSave2FileDialog.hh"
-
+/// @brief the task of the thread is that writting data to file
 class SAKOutputSave2FileThread:public QThread
 {
     Q_OBJECT
@@ -23,22 +23,23 @@ public:
     SAKOutputSave2FileThread(QObject *parent = Q_NULLPTR);
     ~SAKOutputSave2FileThread();
 
-    void writeDataToFile(QByteArray data, SAKOutputSave2FileDialog::SaveOutputDataParamters parameters);
+    void writeDataToFile(QByteArray data, SAKOutputSave2FileDialog::ParametersContext parameters);
 protected:
     void run() final;
 private:
     struct DataInfoStruct {
         QByteArray data;
-        SAKOutputSave2FileDialog::SaveOutputDataParamters parameters;
+        SAKOutputSave2FileDialog::ParametersContext parameters;
     };
 
-    QList<DataInfoStruct> dataList;
-    QMutex dataListMutex;
-    QMutex threadMutex;
-    QWaitCondition threadWaitCondition;
+    QList<DataInfoStruct> mDataList;
+    QMutex mDataListMutex;
+    QMutex mThreadMutex;
+    QWaitCondition mThreadWaitCondition;
 private:
-    void innerWriteDataToFile(QByteArray data, SAKOutputSave2FileDialog::SaveOutputDataParamters parameters);
+    void innerWriteDataToFile(QByteArray data, SAKOutputSave2FileDialog::ParametersContext parameters);
     DataInfoStruct takeDataInfo();
+    QString bytes2String(QByteArray bytes, int format);
 };
 
 #endif

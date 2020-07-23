@@ -8,10 +8,10 @@
  * group which number is 952218522 to have a communication.
  */
 #include <QFile>
+#include <QDateTime>
 #include <QEventLoop>
 #include <QTextStream>
 
-#include "SAKInterface.hh"
 #include "SAKOutputSave2FileThread.hh"
 #include "SAKOutputSave2FileDialog.hh"
 
@@ -24,11 +24,11 @@ SAKOutputSave2FileThread::SAKOutputSave2FileThread(QObject *parent)
 SAKOutputSave2FileThread::~SAKOutputSave2FileThread()
 {
     requestInterruption();
-    threadWaitCondition.wakeAll();
+    mThreadWaitCondition.wakeAll();
     wait();
 }
 
-void SAKOutputSave2FileThread::writeDataToFile(QByteArray data, SAKOutputSave2FileDialog::SaveOutputDataParamters parameters)
+void SAKOutputSave2FileThread::writeDataToFile(QByteArray data, SAKOutputSave2FileDialog::ParametersContext parameters)
 {
     if(parameters.fileName.isEmpty()){
         return;
@@ -37,23 +37,18 @@ void SAKOutputSave2FileThread::writeDataToFile(QByteArray data, SAKOutputSave2Fi
     DataInfoStruct dataInfo;
     dataInfo.data = data;
     dataInfo.parameters = parameters;
-    dataListMutex.lock();
-    dataList.append(dataInfo);
-    dataListMutex.unlock();
+    mDataListMutex.lock();
+    mDataList.append(dataInfo);
+    mDataListMutex.unlock();
 
-    threadWaitCondition.wakeAll();
+    mThreadWaitCondition.wakeAll();
 }
 
 void SAKOutputSave2FileThread::run()
 {
     QEventLoop eventLoop;
     while (true) {
-        /// @brief 响应外部中断
-        if (isInterruptionRequested()){
-            break;
-        }
-
-        /// @brief 写数据
+        // wirte data to file
         while (true) {
             DataInfoStruct info = takeDataInfo();
             if (info.data.length()){
@@ -63,59 +58,75 @@ void SAKOutputSave2FileThread::run()
             }
         }
 
-        /// @brief 事件输出
+        // emmmm...
         eventLoop.processEvents();
 
-        /// @brief 线程睡眠
-        if (!isInterruptionRequested()){
-            threadMutex.lock();
-            threadWaitCondition.wait(&threadMutex, 100);
-            threadMutex.unlock();
+        // if no interruption requested, the thread will sleep
+        if (isInterruptionRequested()){
+            break;
+        }else{
+            mThreadMutex.lock();
+            mThreadWaitCondition.wait(&mThreadMutex);
+            mThreadMutex.unlock();
         }
     }
 }
 
-void SAKOutputSave2FileThread::innerWriteDataToFile(QByteArray data, SAKOutputSave2FileDialog::SaveOutputDataParamters parameters)
+void SAKOutputSave2FileThread::innerWriteDataToFile(QByteArray data, SAKOutputSave2FileDialog::ParametersContext parameters)
 {
     QFile file(parameters.fileName);
     int format = parameters.format;
     QTextStream textStream(&file);
-    switch (format) {
-    case SAKOutputSave2FileDialog::SaveOutputDataParamters::Bin:
-        if (file.open(QFile::WriteOnly | QFile::Append)){
-            file.write(data);
-            file.close();
-        }
-        break;
-    case SAKOutputSave2FileDialog::SaveOutputDataParamters::Utf8:
-        if (file.open(QFile::WriteOnly | QFile::Text | QFile::Append)){
-            textStream << QString::fromUtf8(data) << QString("\n");
-            file.close();
-        }
-        break;
-    case SAKOutputSave2FileDialog::SaveOutputDataParamters::Hex:
-        if (file.open(QFile::WriteOnly | QFile::Text | QFile::Append)){
-            /// @brief  QByteArray::toHex(char separator)是Qt5.9中引入的
-#if (QT_VERSION < QT_VERSION_CHECK(5,9,0))
-            SAKInterface interface;
-            textStream << QString(interface.byteArrayToHex(data, ' ')) << QString("\n");
-#else
-            textStream << QString(data.toHex(' ')) << QString("\n");
-#endif
-            file.close();
-        }
-        break;
+
+    QString dataString;
+    if (file.open(QFile::WriteOnly | QFile::Text | QFile::Append)){
+        dataString = bytes2String(data, format);
+        QString outString = QString("[%1%2]%2")
+                .arg(parameters.saveTimestamp ? QString(QDateTime::currentDateTime().toString("hh:mm:ss ")) : QString(""))
+                .arg(parameters.type == SAKOutputSave2FileDialog::ParametersContext::Read ? QString("Rx") : QString("Tx"))
+                .arg(dataString);
+        textStream << outString;
+        file.close();
     }
 }
 
 SAKOutputSave2FileThread::DataInfoStruct SAKOutputSave2FileThread::takeDataInfo()
 {
     DataInfoStruct info;
-    dataListMutex.lock();
-    if (dataList.length()){
-        info = dataList.takeFirst();
+    mDataListMutex.lock();
+    if (mDataList.length()){
+        info = mDataList.takeFirst();
     }
-    dataListMutex.unlock();
+    mDataListMutex.unlock();
 
     return info;
+}
+
+QString SAKOutputSave2FileThread::bytes2String(QByteArray bytes, int format)
+{
+    QString str;
+    switch (format) {
+    case SAKOutputSave2FileDialog::ParametersContext::Bin:
+        for (int i = 0; i < bytes.length(); i++){
+            QString temp = QString::number(int(bytes.at(i)), 2);
+            str.append(temp + QString(" "));
+        }
+        str.trimmed();
+        break;
+    case SAKOutputSave2FileDialog::ParametersContext::Hex:
+        for (int i = 0; i < bytes.length(); i++){
+            QString temp = QString("%1").arg(QString::number(int(bytes.at(i)), 16), 2, '0');
+            str.append(temp + QString(" "));
+        }
+        str.trimmed();
+        break;
+    case SAKOutputSave2FileDialog::ParametersContext::Utf8:
+        str = QString::fromUtf8(bytes);
+        break;
+    default:
+        str = tr("Unknow text format!");
+        break;
+    }
+
+    return str;
 }
