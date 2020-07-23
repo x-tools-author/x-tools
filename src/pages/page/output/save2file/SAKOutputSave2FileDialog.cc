@@ -19,8 +19,9 @@
 #include "ui_SAKOutputSave2FileDialog.h"
 
 SAKOutputSave2FileDialog::SAKOutputSave2FileDialog(QWidget *parent)
-    :QDialog (parent)
-    ,mUi (new Ui::SAKOutputSave2FileDialog)
+    :QDialog(parent)
+    ,mSettings(Q_NULLPTR)
+    ,mUi(new Ui::SAKOutputSave2FileDialog)
 {
     mUi->setupUi(this);
     setModal(true);
@@ -71,6 +72,11 @@ void SAKOutputSave2FileDialog::bytesWritten(QByteArray bytes)
     }
 }
 
+void SAKOutputSave2FileDialog::setSettings(QSettings *settings)
+{
+    mSettings = settings;
+}
+
 SAKOutputSave2FileDialog::ParametersContext SAKOutputSave2FileDialog::parameters(ParametersContext::DataType type)
 {
     SAKOutputSave2FileDialog::ParametersContext parametersCtx;
@@ -110,4 +116,34 @@ void SAKOutputSave2FileDialog::on_truncatePushButton_clicked()
     if (file.open(QFile::ReadWrite | QFile::Truncate)){
         file.close();
     }
+}
+
+void SAKOutputSave2FileDialog::on_readDataCheckBox_clicked()
+{
+
+}
+
+void SAKOutputSave2FileDialog::on_writtenDataCheckBox_clicked()
+{
+
+}
+
+void SAKOutputSave2FileDialog::on_timestampCheckBox_clicked()
+{
+
+}
+
+void SAKOutputSave2FileDialog::on_binRadioButton_clicked()
+{
+
+}
+
+void SAKOutputSave2FileDialog::on_hexRadioButton_clicked()
+{
+
+}
+
+void SAKOutputSave2FileDialog::on_utf8RadioButton_clicked()
+{
+
 }

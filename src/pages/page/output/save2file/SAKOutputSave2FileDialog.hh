@@ -13,6 +13,7 @@
 #include <QDialog>
 #include <QLineEdit>
 #include <QCheckBox>
+#include <QSettings>
 #include <QPushButton>
 #include <QRadioButton>
 
@@ -47,9 +48,16 @@ public:
      * @param bytes: bytes need to be save to file
      */
     void bytesWritten(QByteArray bytes);
+
+    /**
+     * @brief setSettings: if set a valide settings value, some operations will save to setting file
+     * @param settings: instance ptr
+     */
+    void setSettings(QSettings *settings);
 private:
     QString mDefaultPath;
     SAKOutputSave2FileThread *mSaveOutputDataThread;
+    QSettings *mSettings;
 private:
     ParametersContext parameters(ParametersContext::DataType type);
 signals:
@@ -69,6 +77,12 @@ private:
 private slots:
     void on_selectPushButton_clicked();
     void on_truncatePushButton_clicked();
+    void on_readDataCheckBox_clicked();
+    void on_writtenDataCheckBox_clicked();
+    void on_timestampCheckBox_clicked();
+    void on_binRadioButton_clicked();
+    void on_hexRadioButton_clicked();
+    void on_utf8RadioButton_clicked();
 };
 Q_DECLARE_METATYPE(SAKOutputSave2FileDialog::ParametersContext);
 #endif
