@@ -570,7 +570,7 @@
    <item row="31" column="9">
     <widget class="QPushButton" name="presetPushButton">
      <property name="text">
-      <string>Preset</string>
+      <string>SetPreset</string>
      </property>
     </widget>
    </item>
