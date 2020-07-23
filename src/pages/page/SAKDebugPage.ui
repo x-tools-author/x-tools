@@ -466,6 +466,9 @@
    </item>
    <item row="9" column="12" colspan="2">
     <widget class="QCheckBox" name="saveOutputToFileCheckBox">
+     <property name="toolTip">
+      <string>Enable to write data to file</string>
+     </property>
      <property name="text">
       <string>写入文件</string>
      </property>
