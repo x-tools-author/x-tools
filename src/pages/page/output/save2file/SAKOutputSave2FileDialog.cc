@@ -16,11 +16,11 @@
 
 #include "SAKOutputSave2FileThread.hh"
 #include "SAKOutputSave2FileDialog.hh"
-#include "ui_SAKSaveOutputDataSettings.h"
+#include "ui_SAKOutputSave2FileDialog.h"
 
 SAKOutputSave2FileDialog::SAKOutputSave2FileDialog(QWidget *parent)
     :QDialog (parent)
-    ,ui (new Ui::SAKSaveOutputDataSettings)
+    ,ui (new Ui::SAKOutputSave2FileDialog)
 {
     ui->setupUi(this);
     setModal(true);

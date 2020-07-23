@@ -149,7 +149,7 @@ FORMS += \
     src/pages/page/other/transmission/SAKTransmissionPage.ui \
     src/pages/page/other/transmission/SAKTransmissionSettings.ui \
     src/pages/page/other/transmission/SAKUdpTransmissionItemWidget.ui \
-    src/pages/page/output/save2file/SAKSaveOutputDataSettings.ui \
+    src/pages/page/output/save2file/SAKOutputSave2FileDialog.ui \
     src/pages/tcp/client/SAKTcpClientDeviceController.ui \
     src/pages/tcp/server/SAKTcpServerDeviceController.ui \
     src/pages/udp/SAKUdpAdvanceSettingWidget.ui \

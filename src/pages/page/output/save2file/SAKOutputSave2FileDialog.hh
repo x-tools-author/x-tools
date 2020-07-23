@@ -16,7 +16,7 @@
 #include <QRadioButton>
 
 namespace Ui {
-    class SAKSaveOutputDataSettings;
+    class SAKOutputSave2FileDialog;
 }
 
 class SAKOutputSave2FileThread;
@@ -46,7 +46,7 @@ private:
     SAKOutputSave2FileThread *saveOutputDataThread;
 
 private:
-    Ui::SAKSaveOutputDataSettings *ui;
+    Ui::SAKOutputSave2FileDialog *ui;
 
     QLineEdit    *pathLineEdit;
     QPushButton  *setFilePushButton;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SAKSaveOutputDataSettings</class>
- <widget class="QDialog" name="SAKSaveOutputDataSettings">
+ <class>SAKOutputSave2FileDialog</class>
+ <widget class="QDialog" name="SAKOutputSave2FileDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -112,7 +112,7 @@
   <connection>
    <sender>closePushButton</sender>
    <signal>clicked()</signal>
-   <receiver>SAKSaveOutputDataSettings</receiver>
+   <receiver>SAKOutputSave2FileDialog</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
