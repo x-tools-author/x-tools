@@ -197,7 +197,6 @@ HEADERS += \
     src/pages/page/other/transmission/SAKTransmissionSettings.hh \
     src/pages/page/other/transmission/SAKUdpTransmissionItemWidget.hh \
     src/pages/page/output/SAKDebugPageOutputController.hh \
-    src/pages/page/output/SAKOutputDataFactory.hh \
     src/pages/page/output/save/SAKSaveOutputDataSettings.hh \
     src/pages/page/output/save/SAKSaveOutputDataThread.hh \
     src/common/SAKCRCInterface.hh \
@@ -259,7 +258,6 @@ SOURCES += \
     src/pages/page/other/transmission/SAKTransmissionSettings.cc \
     src/pages/page/other/transmission/SAKUdpTransmissionItemWidget.cc \
     src/pages/page/output/SAKDebugPageOutputController.cc \
-    src/pages/page/output/SAKOutputDataFactory.cc \
     src/pages/page/output/save/SAKSaveOutputDataSettings.cc \
     src/pages/page/output/save/SAKSaveOutputDataThread.cc \
     src/common/SAKCRCInterface.cc \
