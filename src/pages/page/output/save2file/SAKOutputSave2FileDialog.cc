@@ -1,11 +1,11 @@
 ﻿/*
  * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
  *
- * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
- * project(https://www.qsak.pro). The project is an open source project. You can
- * get the source of the project from: "https://github.com/qsak/QtSwissArmyKnife"
- * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
- * group which number is 952218522 to have a communication.
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  */
 #include <QDebug>
 #include <QFile>
@@ -20,71 +20,87 @@
 
 SAKOutputSave2FileDialog::SAKOutputSave2FileDialog(QWidget *parent)
     :QDialog (parent)
-    ,ui (new Ui::SAKOutputSave2FileDialog)
+    ,mUi (new Ui::SAKOutputSave2FileDialog)
 {
-    ui->setupUi(this);
+    mUi->setupUi(this);
     setModal(true);
-    qRegisterMetaType<SaveOutputDataParamters>("SaveOutputDataParamters");
+    qRegisterMetaType<ParametersContext>("SaveOutputDataParamters");
 
-    pathLineEdit        = ui->pathLineEdit;
-    setFilePushButton   = ui->setFilePushButton;
-    binRadioButton      = ui->binRadioButton;
-    utf8RadioButton     = ui->utf8RadioButton;
-    hexRadioButton      = ui->hexRadioButton;
-    closePushButton     = ui->closePushButton;
-    clearFilePushButton = ui->clearFilePushButton;
+    // Initailizing ui component pointer
+    mPathLineEdit = mUi->pathLineEdit;
+    mSelectPushButton = mUi->selectPushButton;
+    mReadDataCheckBox = mUi->readDataCheckBox;
+    mWrittenDataCheckBox = mUi->writtenDataCheckBox;
+    mTimestampCheckBox = mUi->timestampCheckBox;
+    mBinRadioButton = mUi->binRadioButton;
+    mUtf8RadioButton = mUi->utf8RadioButton;
+    mHexRadioButton = mUi->hexRadioButton;
+    mOkPushButton = mUi->okPushButton;
+    mTruncatePushButton = mUi->TruncatePushButton;
 
-    defaultPath = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
-    pathLineEdit->setText(defaultPath.append("/default.txt"));
+    // Set default path for output file
+    mDefaultPath = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
+    mPathLineEdit->setText(mDefaultPath.append("/default.txt"));
 
-    saveOutputDataThread = new SAKOutputSave2FileThread;
-    connect(this, &SAKOutputSave2FileDialog::writeDataToFile, saveOutputDataThread, &SAKOutputSave2FileThread::writeDataToFile);
-    saveOutputDataThread->start();
+    // The task of thread is that writting data to file.
+    mSaveOutputDataThread = new SAKOutputSave2FileThread(this);
+    connect(this, &SAKOutputSave2FileDialog::writeDataToFile, mSaveOutputDataThread, &SAKOutputSave2FileThread::writeDataToFile);
+    mSaveOutputDataThread->start();
 }
 
 SAKOutputSave2FileDialog::~SAKOutputSave2FileDialog()
 {
-    delete ui;
-    delete saveOutputDataThread;
-
-    ui = Q_NULLPTR;
-    saveOutputDataThread = Q_NULLPTR;
+    delete mUi;
+    mUi = Q_NULLPTR;
 }
 
-void SAKOutputSave2FileDialog::inputData(QByteArray data)
+void SAKOutputSave2FileDialog::bytesRead(QByteArray bytes)
 {
-    parameters.fileName = pathLineEdit->text().trimmed();
-    if (binRadioButton->isChecked()){
-        parameters.format = SaveOutputDataParamters::Bin;
-    }else if (utf8RadioButton->isChecked()){
-        parameters.format = SaveOutputDataParamters::Utf8;
-    }else{
-        parameters.format = SaveOutputDataParamters::Hex;
+    SAKOutputSave2FileDialog::ParametersContext parametersCtx = parameters(ParametersContext::Read);
+    if (mReadDataCheckBox->isChecked()){
+        emit writeDataToFile(bytes, parametersCtx);
     }
+}
 
-    emit writeDataToFile(data, parameters);
+void SAKOutputSave2FileDialog::bytesWritten(QByteArray bytes)
+{
+    SAKOutputSave2FileDialog::ParametersContext parametersCtx = parameters(ParametersContext::Written);
+    if (mWrittenDataCheckBox->isChecked()){
+        emit writeDataToFile(bytes, parametersCtx);
+    }
+}
+
+SAKOutputSave2FileDialog::ParametersContext SAKOutputSave2FileDialog::parameters(ParametersContext::DataType type)
+{
+    SAKOutputSave2FileDialog::ParametersContext parametersCtx;
+    parametersCtx.fileName = mPathLineEdit->text().trimmed();
+    if (mBinRadioButton->isChecked()){
+        parametersCtx.format = ParametersContext::Bin;
+    }else if (mUtf8RadioButton->isChecked()){
+        parametersCtx.format = ParametersContext::Utf8;
+    }else{
+        parametersCtx.format = ParametersContext::Hex;
+    }
+    parametersCtx.type = type;
+    parametersCtx.saveTimestamp = mUi->timestampCheckBox->isChecked();
+    return parametersCtx;
 }
 
 void SAKOutputSave2FileDialog::on_setFilePushButton_clicked()
 {
     QString datetime = QDateTime::currentDateTime().toString("yyyyMMddhhmmss");
     QString fileName;
-    if (binRadioButton->isChecked()){
-        datetime.append(".bin");
-        fileName = QFileDialog::getSaveFileName(this, tr("文件设置"), QString("%1/%2").arg(defaultPath).arg(datetime), QString("bin (*.bin)"));
-    }else{
-        datetime.append(".txt");
-        fileName = QFileDialog::getSaveFileName(this, tr("文件设置"), QString("%1/%2").arg(defaultPath).arg(datetime), QString("txt (*.txt)"));
-    }
+    datetime.append(".txt");
+    fileName = QFileDialog::getSaveFileName(this, tr("Save file"), QString("%1/%2").arg(mDefaultPath).arg(datetime), QString("txt (*.txt)"));
 
     if (!fileName.isEmpty()){
-        pathLineEdit->setText(fileName);
+        mPathLineEdit->setText(fileName);
     }
 }
 
 void SAKOutputSave2FileDialog::on_clearFilePushButton_clicked()
 {
-    QString fileName = pathLineEdit->text();
+    QString fileName = mPathLineEdit->text();
     if (fileName.isEmpty()){
         return;
     }

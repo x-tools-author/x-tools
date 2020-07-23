@@ -7,66 +7,33 @@
     <x>0</x>
     <y>0</y>
     <width>497</width>
-    <height>200</height>
+    <height>218</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>数据保存设置</string>
+   <string>Parameters Editing</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0" colspan="3">
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
-      <string>文件设置</string>
+      <string>File editing</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="0" column="1">
        <widget class="QLineEdit" name="pathLineEdit"/>
       </item>
       <item row="0" column="2">
-       <widget class="QPushButton" name="setFilePushButton">
+       <widget class="QPushButton" name="selectPushButton">
         <property name="text">
-         <string>设置文件</string>
+         <string>Select</string>
         </property>
        </widget>
       </item>
       <item row="0" column="0">
        <widget class="QLabel" name="label">
         <property name="text">
-         <string>输出文件</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="1" column="0" colspan="3">
-    <widget class="QGroupBox" name="groupBox_3">
-     <property name="title">
-      <string>格式设置</string>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_3">
-      <item row="2" column="0">
-       <widget class="QRadioButton" name="hexRadioButton">
-        <property name="text">
-         <string>以十六进制文本格式保存至文件</string>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <widget class="QRadioButton" name="binRadioButton">
-        <property name="text">
-         <string>以二进制格式保存至文件</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QRadioButton" name="utf8RadioButton">
-        <property name="text">
-         <string>以UFT8文本格式保存至文件</string>
+         <string>File path</string>
         </property>
        </widget>
       </item>
@@ -74,35 +41,123 @@
     </widget>
    </item>
    <item row="2" column="2">
-    <widget class="QPushButton" name="closePushButton">
+    <widget class="QPushButton" name="okPushButton">
      <property name="text">
-      <string>确定</string>
+      <string>OK</string>
      </property>
     </widget>
    </item>
    <item row="2" column="1">
-    <widget class="QPushButton" name="clearFilePushButton">
+    <widget class="QPushButton" name="TruncatePushButton">
+     <property name="toolTip">
+      <string>All earlier data will be clean</string>
+     </property>
      <property name="text">
-      <string>清空文件</string>
+      <string>Truncate</string>
      </property>
     </widget>
    </item>
    <item row="2" column="0">
-    <widget class="QLabel" name="label_2sssss">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
      </property>
-     <property name="styleSheet">
-      <string notr="true">QLabel#label_2sssss {
-    color:red
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="0" colspan="3">
+    <widget class="QGroupBox" name="groupBox_3">
+     <property name="title">
+      <string>Parameters editing</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="3" column="1">
+       <widget class="QRadioButton" name="utf8RadioButton">
+        <property name="text">
+         <string>Utf8</string>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="timestampCheckBox">
+        <property name="text">
+         <string>Save timestamp</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="readDataCheckBox">
+        <property name="text">
+         <string>Save read data</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="writtenDataCheckBox">
+        <property name="text">
+         <string>Save written data</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QRadioButton" name="binRadioButton">
+        <property name="text">
+         <string>Bin</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QRadioButton" name="hexRadioButton">
+        <property name="text">
+         <string>Hex</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLabel" name="label_2">
+        <property name="styleSheet">
+         <string notr="true">QLabel{
+    color:green
 }</string>
-     </property>
-     <property name="text">
-      <string>只保存接收到的数据</string>
-     </property>
+        </property>
+        <property name="text">
+         <string>Text Format</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="styleSheet">
+         <string notr="true">QLabel{
+    color:green
+}</string>
+        </property>
+        <property name="text">
+         <string>Input Option</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </item>
   </layout>
@@ -110,7 +165,7 @@
  <resources/>
  <connections>
   <connection>
-   <sender>closePushButton</sender>
+   <sender>okPushButton</sender>
    <signal>clicked()</signal>
    <receiver>SAKOutputSave2FileDialog</receiver>
    <slot>accept()</slot>

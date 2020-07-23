@@ -1,17 +1,18 @@
 ﻿/*
  * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
  *
- * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
- * project(https://www.qsak.pro). The project is an open source project. You can
- * get the source of the project from: "https://github.com/qsak/QtSwissArmyKnife"
- * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
- * group which number is 952218522 to have a communication.
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKSAVEOUTPUTDATASETTINGS_HH
-#define SAKSAVEOUTPUTDATASETTINGS_HH
+#ifndef SAKOUTPUTSAVE2FILEDIALOG_HH
+#define SAKOUTPUTSAVE2FILEDIALOG_HH
 
 #include <QDialog>
 #include <QLineEdit>
+#include <QCheckBox>
 #include <QPushButton>
 #include <QRadioButton>
 
@@ -25,42 +26,49 @@ class SAKOutputSave2FileDialog : public QDialog
 {
     Q_OBJECT
 public:
+    struct ParametersContext {
+        enum TextFormat{Bin, Utf8, Hex}format;
+        enum DataType {Read,Written}type;
+        QString fileName;
+        bool saveTimestamp;
+    };
+
     SAKOutputSave2FileDialog(QWidget *parent = Q_NULLPTR);
     ~SAKOutputSave2FileDialog();
 
     /**
-     * @brief inputData 需要保存的数据由此输入
-     * @param data 需要保存的数据
+     * @brief bytesRead: handle the read bytes
+     * @param bytes: bytes need to be save to file
      */
-    void inputData(QByteArray data);
+    void bytesRead(QByteArray bytes);
 
-    struct SaveOutputDataParamters {
-        enum Format{
-            Bin,
-            Utf8,
-            Hex
-        }format;
-        QString fileName;
-    }parameters;
+    /**
+     * @brief bytesWritten: handle the written bytes
+     * @param bytes: bytes need to be save to file
+     */
+    void bytesWritten(QByteArray bytes);
 private:
-    QString defaultPath;
-    SAKOutputSave2FileThread *saveOutputDataThread;
-
+    QString mDefaultPath;
+    SAKOutputSave2FileThread *mSaveOutputDataThread;
 private:
-    Ui::SAKOutputSave2FileDialog *ui;
-
-    QLineEdit *pathLineEdit;
-    QPushButton *setFilePushButton;
-    QRadioButton *binRadioButton;
-    QRadioButton *utf8RadioButton;
-    QRadioButton *hexRadioButton;
-    QPushButton *closePushButton;
-    QPushButton *clearFilePushButton;
+    ParametersContext parameters(ParametersContext::DataType type);
+signals:
+    void writeDataToFile(QByteArray data, ParametersContext mParametersContext);
+private:
+    Ui::SAKOutputSave2FileDialog *mUi;
+    QLineEdit *mPathLineEdit;
+    QPushButton *mSelectPushButton;
+    QCheckBox *mReadDataCheckBox;
+    QCheckBox *mWrittenDataCheckBox;
+    QCheckBox *mTimestampCheckBox;
+    QRadioButton *mBinRadioButton;
+    QRadioButton *mHexRadioButton;
+    QRadioButton *mUtf8RadioButton;
+    QPushButton *mOkPushButton;
+    QPushButton *mTruncatePushButton;
 private slots:
     void on_setFilePushButton_clicked();
     void on_clearFilePushButton_clicked();
-signals:
-    void writeDataToFile(QByteArray data, SaveOutputDataParamters parameters);
 };
-Q_DECLARE_METATYPE(SAKOutputSave2FileDialog::SaveOutputDataParamters);
+Q_DECLARE_METATYPE(SAKOutputSave2FileDialog::ParametersContext);
 #endif
