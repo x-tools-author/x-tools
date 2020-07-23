@@ -23,6 +23,9 @@ SAKOutputSave2FileThread::SAKOutputSave2FileThread(QObject *parent)
 
 SAKOutputSave2FileThread::~SAKOutputSave2FileThread()
 {
+    // flush temp data
+    mThreadWaitCondition.wakeAll();
+    // exit thread
     requestInterruption();
     mThreadWaitCondition.wakeAll();
     wait();
@@ -81,11 +84,11 @@ void SAKOutputSave2FileThread::innerWriteDataToFile(QByteArray data, SAKOutputSa
     QString dataString;
     if (file.open(QFile::WriteOnly | QFile::Text | QFile::Append)){
         dataString = bytes2String(data, format);
-        QString outString = QString("[%1%2]%2")
+        QString outString = QString("[%1%2]%3")
                 .arg(parameters.saveTimestamp ? QString(QDateTime::currentDateTime().toString("hh:mm:ss ")) : QString(""))
                 .arg(parameters.type == SAKOutputSave2FileDialog::ParametersContext::Read ? QString("Rx") : QString("Tx"))
                 .arg(dataString);
-        textStream << outString;
+        textStream << outString << "\n";
         file.close();
     }
 }
