@@ -24,6 +24,7 @@ SAKOutputSave2FileDialog::SAKOutputSave2FileDialog(QWidget *parent)
 {
     mUi->setupUi(this);
     setModal(true);
+    // ParametersContext will be signal parameter, the step must be done, or will be error.
     qRegisterMetaType<ParametersContext>("SaveOutputDataParamters");
 
     // Initailizing ui component pointer
@@ -36,7 +37,7 @@ SAKOutputSave2FileDialog::SAKOutputSave2FileDialog(QWidget *parent)
     mUtf8RadioButton = mUi->utf8RadioButton;
     mHexRadioButton = mUi->hexRadioButton;
     mOkPushButton = mUi->okPushButton;
-    mTruncatePushButton = mUi->TruncatePushButton;
+    mTruncatePushButton = mUi->truncatePushButton;
 
     // Set default path for output file
     mDefaultPath = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
@@ -86,7 +87,7 @@ SAKOutputSave2FileDialog::ParametersContext SAKOutputSave2FileDialog::parameters
     return parametersCtx;
 }
 
-void SAKOutputSave2FileDialog::on_setFilePushButton_clicked()
+void SAKOutputSave2FileDialog::on_selectPushButton_clicked()
 {
     QString datetime = QDateTime::currentDateTime().toString("yyyyMMddhhmmss");
     QString fileName;
@@ -98,7 +99,7 @@ void SAKOutputSave2FileDialog::on_setFilePushButton_clicked()
     }
 }
 
-void SAKOutputSave2FileDialog::on_clearFilePushButton_clicked()
+void SAKOutputSave2FileDialog::on_truncatePushButton_clicked()
 {
     QString fileName = mPathLineEdit->text();
     if (fileName.isEmpty()){

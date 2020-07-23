@@ -67,8 +67,8 @@ private:
     QPushButton *mOkPushButton;
     QPushButton *mTruncatePushButton;
 private slots:
-    void on_setFilePushButton_clicked();
-    void on_clearFilePushButton_clicked();
+    void on_selectPushButton_clicked();
+    void on_truncatePushButton_clicked();
 };
 Q_DECLARE_METATYPE(SAKOutputSave2FileDialog::ParametersContext);
 #endif
