@@ -20,12 +20,12 @@ namespace Ui {
 class SAKDebugPage;
 class SAKChartsXYSerialWidget;
 class SAKChartsThroughputWidget;
-class SAKChartsManager:public QWidget
+class SAKChartsController:public QWidget
 {
     Q_OBJECT
 public:
-    SAKChartsManager(SAKDebugPage *page, QWidget *parent = Q_NULLPTR);
-    ~SAKChartsManager();
+    SAKChartsController(SAKDebugPage *page, QWidget *parent = Q_NULLPTR);
+    ~SAKChartsController();
 private:
     SAKDebugPage *mDebugPage;
     SAKChartsXYSerialWidget *mXYSerialWidget;
