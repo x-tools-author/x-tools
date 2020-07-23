@@ -26,7 +26,7 @@
 
 #include "ui_SAKInputDataItemManager.h"
 
-SAKInputDataItemManager::SAKInputDataItemManager(SAKDebugPage *debugPage, SAKDebugPageInputManager *inputManager, QWidget *parent)
+SAKInputDataItemManager::SAKInputDataItemManager(SAKDebugPage *debugPage, SAKDebugPageInputController *inputManager, QWidget *parent)
     :QWidget(parent)
     ,debugPage(debugPage)
     ,crcInterface(new SAKCRCInterface)
@@ -60,7 +60,7 @@ SAKInputDataItemManager::~SAKInputDataItemManager()
     delete factory;
 }
 
-void innerCreateItem(SAKDataStruct::SAKStructPresettingDataItem &var, SAKDebugPage *debugPage, SAKDebugPageInputManager *inputManager, QListWidget *listWidget, SAKInputDataItemManager *itemManager)
+void innerCreateItem(SAKDataStruct::SAKStructPresettingDataItem &var, SAKDebugPage *debugPage, SAKDebugPageInputController *inputManager, QListWidget *listWidget, SAKInputDataItemManager *itemManager)
 {
     QListWidgetItem *item = new QListWidgetItem(listWidget);
     SAKInputDataItem *itemWidget = new SAKInputDataItem(var.id,

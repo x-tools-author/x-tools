@@ -25,12 +25,12 @@ class SAKCRCInterface;
 class SAKInputDataFactory;
 class SAKInputDataItemManager;
 class SAKInputCrcSettingsDialog;
-class SAKDebugPageInputManager:public QObject
+class SAKDebugPageInputController:public QObject
 {
     Q_OBJECT
 public:
-    SAKDebugPageInputManager(SAKDebugPage *debugPage, QObject *parent = Q_NULLPTR);
-    ~SAKDebugPageInputManager();
+    SAKDebugPageInputController(SAKDebugPage *debugPage, QObject *parent = Q_NULLPTR);
+    ~SAKDebugPageInputController();
 
     /**
      * @brief The InputParameters struct    --  输入上下文
@@ -120,6 +120,6 @@ signals:
     /// 该函数并不会真的发送数据，而是发送一个信号，该信号携带需要发送的数据,数据需要经过处理后才能发送
     void rawDataChanged(QString rawData, InputParameters parameters);
 };
-Q_DECLARE_METATYPE(SAKDebugPageInputManager::InputParameters);
+Q_DECLARE_METATYPE(SAKDebugPageInputController::InputParameters);
 
 #endif

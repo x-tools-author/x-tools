@@ -14,7 +14,7 @@
 #include <QThread>
 #include <QWaitCondition>
 
-#include "SAKDebugPageInputManager.hh"
+#include "SAKDebugPageInputController.hh"
 
 class SAKCRCInterface;
 /// @brief 输入数据处理类
@@ -30,7 +30,7 @@ public:
      * @param rawData 原数据
      * @param parameters 输入参数
      */
-    void cookData(QString rawData, SAKDebugPageInputManager::InputParameters parameters);
+    void cookData(QString rawData, SAKDebugPageInputController::InputParameters parameters);
 
     /**
      * @brief crcCalculate 计算输入数据的crc
@@ -46,13 +46,13 @@ public:
      * @param parameters 输入参数
      * @return 数据
      */
-    QByteArray rawDataToArray(QString rawData, SAKDebugPageInputManager::InputParameters parameters);
+    QByteArray rawDataToArray(QString rawData, SAKDebugPageInputController::InputParameters parameters);
 protected:
     void run() final;
 private:
     struct RawDataStruct {
         QString rawData;
-        SAKDebugPageInputManager::InputParameters parameters;
+        SAKDebugPageInputController::InputParameters parameters;
     };
 
     QList<RawDataStruct> rawDataList;
@@ -63,7 +63,7 @@ private:
     SAKDebugPage *debugPage;
 private:
     RawDataStruct takeRawData();
-    void innnerCookData(QString rawData, SAKDebugPageInputManager::InputParameters parameters);
+    void innnerCookData(QString rawData, SAKDebugPageInputController::InputParameters parameters);
 signals:
     /// @brief 输入数据经过处理后通过该信号对外发射
     void dataCooked(QByteArray);

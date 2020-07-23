@@ -36,7 +36,7 @@ class SAKCRCInterface;
 class SAKDebugPageStatisticsController;
 class SAKDebugPageOtherController;
 class SAKTransmissionSettings;
-class SAKDebugPageInputManager;
+class SAKDebugPageInputController;
 class SAKDebugPageOutputController;
 class SAKHighlightSettingsWidget;
 #ifdef SAK_IMPORT_CHARTS_MODULE
@@ -71,7 +71,7 @@ public:
     friend class SAKChartsManager;
     friend class SAKDebugPageOtherController;
     friend class SAKDebugPageStatisticsController;
-    friend class SAKDebugPageInputManager;
+    friend class SAKDebugPageInputController;
     friend class SAKDebugPageOutputController;
 
     /**
@@ -305,7 +305,7 @@ private:
     SAKDebugPageOtherController *mOtherSettings;
     SAKDebugPageStatisticsController *mStatisticsManager;
     SAKDebugPageOutputController *mOutputManager;
-    SAKDebugPageInputManager *mDebugPageInputManager;
+    SAKDebugPageInputController *mDebugPageInputManager;
 };
 
 #endif  // SAKTabPage_H

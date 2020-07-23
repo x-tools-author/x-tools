@@ -19,7 +19,7 @@
 #include <QTextEdit>
 #include <QPushButton>
 
-#include "SAKDebugPageInputManager.hh"
+#include "SAKDebugPageInputController.hh"
 
 namespace Ui {
     class SAKInputDataItem;
@@ -28,19 +28,19 @@ namespace Ui {
 class SAKDebugPage;
 class SAKCRCInterface;
 class SAKInputDataFactory;
-class SAKDebugPageInputManager;
+class SAKDebugPageInputController;
 class SAKInputDataItem:public QWidget
 {
     Q_OBJECT
 public:
-    SAKInputDataItem(SAKDebugPage *debugPage, SAKDebugPageInputManager *inputManager, QWidget *parent = Q_NULLPTR);
+    SAKInputDataItem(SAKDebugPage *debugPage, SAKDebugPageInputController *inputManager, QWidget *parent = Q_NULLPTR);
     SAKInputDataItem(quint64 id,
                      quint32 format,
                      QString comment,
                      quint32 classify,
                      QString data,
                      SAKDebugPage *debugPage,
-                     SAKDebugPageInputManager *inputManager,
+                     SAKDebugPageInputController *inputManager,
                      QWidget *parent = Q_NULLPTR);
     ~SAKInputDataItem();
 
@@ -53,8 +53,8 @@ private:
     QPushButton *menuPushButton;
     QAction *action;
     SAKDebugPage *debugPage;
-    SAKDebugPageInputManager *inputManager;
-    SAKDebugPageInputManager::InputParameters inputParameters;
+    SAKDebugPageInputController *inputManager;
+    SAKDebugPageInputController::InputParameters inputParameters;
     quint64 id;
 private:
     void addDataAction(QPushButton *menuPushButton);
@@ -64,7 +64,7 @@ private:
     void sendRawData();
     void initUi();
 signals:
-    void rawDataChanged(QString rawData, SAKDebugPageInputManager::InputParameters parameters);
+    void rawDataChanged(QString rawData, SAKDebugPageInputController::InputParameters parameters);
 private:
     Ui::SAKInputDataItem *ui;
     QComboBox *textFormatComboBox;

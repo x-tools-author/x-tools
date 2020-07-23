@@ -20,7 +20,7 @@
 
 #include "ui_SAKInputDataItem.h"
 
-SAKInputDataItem::SAKInputDataItem(SAKDebugPage *debugPage, SAKDebugPageInputManager *inputManager, QWidget *parent)
+SAKInputDataItem::SAKInputDataItem(SAKDebugPage *debugPage, SAKDebugPageInputController *inputManager, QWidget *parent)
     :QWidget(parent)
     ,debugPage(debugPage)
     ,inputManager(inputManager)
@@ -36,7 +36,7 @@ SAKInputDataItem::SAKInputDataItem(quint64 id,
                                    quint32 classify,
                                    QString data,
                                    SAKDebugPage *debugPage,
-                                   SAKDebugPageInputManager *inputManager,
+                                   SAKDebugPageInputController *inputManager,
                                    QWidget *parent)
     :QWidget(parent)
     ,debugPage(debugPage)

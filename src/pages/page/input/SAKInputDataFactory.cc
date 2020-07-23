@@ -31,7 +31,7 @@ SAKInputDataFactory::~SAKInputDataFactory()
     wait();
 }
 
-void SAKInputDataFactory::cookData(QString rawData, SAKDebugPageInputManager::InputParameters parameters)
+void SAKInputDataFactory::cookData(QString rawData, SAKDebugPageInputController::InputParameters parameters)
 {
     RawDataStruct rawDataStruct;
     rawDataStruct.rawData = rawData;
@@ -69,7 +69,7 @@ quint32 SAKInputDataFactory::crcCalculate(QByteArray data, int model)
     return crc;
 }
 
-QByteArray SAKInputDataFactory::rawDataToArray(QString rawData, SAKDebugPageInputManager::InputParameters parameters)
+QByteArray SAKInputDataFactory::rawDataToArray(QString rawData, SAKDebugPageInputController::InputParameters parameters)
 {
     QByteArray data;
     if (parameters.inputModel == SAKDataStruct::InputFormatBin){
@@ -159,7 +159,7 @@ SAKInputDataFactory::RawDataStruct SAKInputDataFactory::takeRawData()
     return rawDataStruct;
 }
 
-void SAKInputDataFactory::innnerCookData(QString rawData, SAKDebugPageInputManager::InputParameters parameters)
+void SAKInputDataFactory::innnerCookData(QString rawData, SAKDebugPageInputController::InputParameters parameters)
 {
     QByteArray data = rawDataToArray(rawData, parameters);
     if (parameters.addCRC){
