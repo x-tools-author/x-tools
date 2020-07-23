@@ -6,24 +6,24 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>284</width>
+    <width>314</width>
     <height>186</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string notr="true">Dialog</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
-      <string>字节序设置</string>
+      <string>Endian</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
        <widget class="QCheckBox" name="bigEndianCheckBox">
         <property name="text">
-         <string>大端序CRC</string>
+         <string>Big endian</string>
         </property>
        </widget>
       </item>
@@ -33,7 +33,7 @@
    <item>
     <widget class="QGroupBox" name="groupBox_2">
      <property name="title">
-      <string>计算字段设置</string>
+      <string>Section settings</string>
      </property>
      <layout class="QGridLayout" name="gridLayout">
       <item row="1" column="1">
@@ -49,21 +49,21 @@
       <item row="2" column="0" colspan="2">
        <widget class="QLabel" name="label_3">
         <property name="text">
-         <string>起始字节从1起开始</string>
+         <string>Start byte is from left, the first byte is one</string>
         </property>
        </widget>
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>结束字节</string>
+         <string>End bytes</string>
         </property>
        </widget>
       </item>
       <item row="0" column="0">
        <widget class="QLabel" name="label">
         <property name="text">
-         <string>起始字节</string>
+         <string>Start bytes</string>
         </property>
        </widget>
       </item>
@@ -86,7 +86,7 @@
       <item row="3" column="0" colspan="2">
        <widget class="QLabel" name="label_4">
         <property name="text">
-         <string>结束字节从右边开始，最后一个字节为第1字节</string>
+         <string>End byte is from right, the last byte is one</string>
         </property>
        </widget>
       </item>
