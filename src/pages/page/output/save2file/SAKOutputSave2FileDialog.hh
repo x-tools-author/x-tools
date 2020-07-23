@@ -20,7 +20,8 @@ namespace Ui {
 }
 
 class SAKOutputSave2FileThread;
-class SAKOutputSave2FileDialog:public QDialog
+/// @brief saving parameters editing dialog
+class SAKOutputSave2FileDialog : public QDialog
 {
     Q_OBJECT
 public:
@@ -48,13 +49,13 @@ private:
 private:
     Ui::SAKOutputSave2FileDialog *ui;
 
-    QLineEdit    *pathLineEdit;
-    QPushButton  *setFilePushButton;
+    QLineEdit *pathLineEdit;
+    QPushButton *setFilePushButton;
     QRadioButton *binRadioButton;
     QRadioButton *utf8RadioButton;
     QRadioButton *hexRadioButton;
-    QPushButton  *closePushButton;
-    QPushButton  *clearFilePushButton;
+    QPushButton *closePushButton;
+    QPushButton *clearFilePushButton;
 private slots:
     void on_setFilePushButton_clicked();
     void on_clearFilePushButton_clicked();
