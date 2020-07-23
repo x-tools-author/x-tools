@@ -7,8 +7,8 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
-#ifndef SAKDEBUGPAGEINPUTMANAGER_HH
-#define SAKDEBUGPAGEINPUTMANAGER_HH
+#ifndef SAKDEBUGPAGEINPUTCONTROLLER_HH
+#define SAKDEBUGPAGEINPUTCONTROLLER_HH
 
 #include <QLabel>
 #include <QTimer>
