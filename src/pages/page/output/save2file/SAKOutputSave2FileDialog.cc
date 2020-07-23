@@ -18,9 +18,13 @@
 #include "SAKOutputSave2FileDialog.hh"
 #include "ui_SAKOutputSave2FileDialog.h"
 
-SAKOutputSave2FileDialog::SAKOutputSave2FileDialog(QWidget *parent)
+SAKOutputSave2FileDialog::SAKOutputSave2FileDialog(QSettings *settings, QWidget *parent)
     :QDialog(parent)
-    ,mSettings(Q_NULLPTR)
+    ,mSettings(settings)
+    ,mSettingKeyReadData(QString("DebugPage/readData"))
+    ,mSettingKeyWrittenData(QString("DebugPage/writtenData"))
+    ,mSettingKeyTimestamp(QString("DebugPage/saveTimestamp"))
+    ,mSettingKeyDataType(QString("DebugPage/dataType"))
     ,mUi(new Ui::SAKOutputSave2FileDialog)
 {
     mUi->setupUi(this);
@@ -48,6 +52,50 @@ SAKOutputSave2FileDialog::SAKOutputSave2FileDialog(QWidget *parent)
     mSaveOutputDataThread = new SAKOutputSave2FileThread(this);
     connect(this, &SAKOutputSave2FileDialog::writeDataToFile, mSaveOutputDataThread, &SAKOutputSave2FileThread::writeDataToFile);
     mSaveOutputDataThread->start();
+
+    // Readin setting info
+    if (mSettings){
+        QVariant var = mSettings->value(mSettingKeyReadData);
+        if (var.isNull()){
+            mReadDataCheckBox->setChecked(true);
+        }else{
+            mReadDataCheckBox->setChecked(var.toBool());
+        }
+
+        var = mSettings->value(mSettingKeyWrittenData);
+        if (var.isNull()){
+            mWrittenDataCheckBox->setChecked(true);
+        }else{
+            mWrittenDataCheckBox->setChecked(var.toBool());
+        }
+
+        var = mSettings->value(mSettingKeyTimestamp);
+        if (var.isNull()){
+            mTimestampCheckBox->setChecked(true);
+        }else{
+            mTimestampCheckBox->setChecked(var.toBool());
+        }
+
+        var =  mSettings->value(mSettingKeyDataType);
+        if (var.isNull()){
+            mHexRadioButton->setChecked(true);
+        }else{
+            int ret = var.toInt();
+            switch (ret) {
+            case ParametersContext::Bin:
+                mBinRadioButton->setChecked(true);
+                break;
+            case ParametersContext::Hex:
+                mHexRadioButton->setChecked(true);
+                break;
+            case ParametersContext::Utf8:
+                mUtf8RadioButton->setChecked(true);
+                break;
+            default:
+                break;
+            }
+        }
+    }
 }
 
 SAKOutputSave2FileDialog::~SAKOutputSave2FileDialog()
@@ -70,11 +118,6 @@ void SAKOutputSave2FileDialog::bytesWritten(QByteArray bytes)
     if (mWrittenDataCheckBox->isChecked()){
         emit writeDataToFile(bytes, parametersCtx);
     }
-}
-
-void SAKOutputSave2FileDialog::setSettings(QSettings *settings)
-{
-    mSettings = settings;
 }
 
 SAKOutputSave2FileDialog::ParametersContext SAKOutputSave2FileDialog::parameters(ParametersContext::DataType type)
@@ -120,30 +163,42 @@ void SAKOutputSave2FileDialog::on_truncatePushButton_clicked()
 
 void SAKOutputSave2FileDialog::on_readDataCheckBox_clicked()
 {
-
+    if (mSettings){
+        mSettings->setValue(mSettingKeyReadData, mReadDataCheckBox->isChecked());
+    }
 }
 
 void SAKOutputSave2FileDialog::on_writtenDataCheckBox_clicked()
 {
-
+    if (mSettings){
+        mSettings->setValue(mSettingKeyWrittenData, mWrittenDataCheckBox->isChecked());
+    }
 }
 
 void SAKOutputSave2FileDialog::on_timestampCheckBox_clicked()
 {
-
+    if (mSettings){
+        mSettings->setValue(mSettingKeyTimestamp, mTimestampCheckBox->isChecked());
+    }
 }
 
 void SAKOutputSave2FileDialog::on_binRadioButton_clicked()
 {
-
+    if (mSettings){
+        mSettings->setValue(mSettingKeyDataType, ParametersContext::Bin);
+    }
 }
 
 void SAKOutputSave2FileDialog::on_hexRadioButton_clicked()
 {
-
+    if (mSettings){
+        mSettings->setValue(mSettingKeyDataType, ParametersContext::Hex);
+    }
 }
 
 void SAKOutputSave2FileDialog::on_utf8RadioButton_clicked()
 {
-
+    if (mSettings){
+        mSettings->setValue(mSettingKeyDataType, ParametersContext::Utf8);
+    }
 }

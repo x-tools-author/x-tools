@@ -34,7 +34,7 @@ public:
         bool saveTimestamp;
     };
 
-    SAKOutputSave2FileDialog(QWidget *parent = Q_NULLPTR);
+    SAKOutputSave2FileDialog(QSettings *settings, QWidget *parent = Q_NULLPTR);
     ~SAKOutputSave2FileDialog();
 
     /**
@@ -48,16 +48,14 @@ public:
      * @param bytes: bytes need to be save to file
      */
     void bytesWritten(QByteArray bytes);
-
-    /**
-     * @brief setSettings: if set a valide settings value, some operations will save to setting file
-     * @param settings: instance ptr
-     */
-    void setSettings(QSettings *settings);
 private:
     QString mDefaultPath;
     SAKOutputSave2FileThread *mSaveOutputDataThread;
     QSettings *mSettings;
+    const QString mSettingKeyReadData;
+    const QString mSettingKeyWrittenData;
+    const QString mSettingKeyTimestamp;
+    const QString mSettingKeyDataType;
 private:
     ParametersContext parameters(ParametersContext::DataType type);
 signals:

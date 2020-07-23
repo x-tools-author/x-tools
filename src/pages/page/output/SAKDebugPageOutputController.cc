@@ -14,6 +14,7 @@
 #include <QFileDialog>
 
 #include "SAKGlobal.hh"
+#include "SAKSettings.hh"
 #include "SAKDebugPage.hh"
 #include "SAKDataStruct.hh"
 #include "SAKOutputSave2FileDialog.hh"
@@ -64,7 +65,7 @@ SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugPage *debugPa
     mOutputTextBroswer->document()->setMaximumBlockCount(1000);
 
     // the class is used to save data to file
-    mSave2FileDialog = new SAKOutputSave2FileDialog;
+    mSave2FileDialog = new SAKOutputSave2FileDialog(SAKSettings::instance());
 
     // the thread will started when the class is initailzed
     start();
