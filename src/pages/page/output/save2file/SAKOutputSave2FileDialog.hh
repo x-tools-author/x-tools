@@ -19,13 +19,13 @@ namespace Ui {
     class SAKSaveOutputDataSettings;
 }
 
-class SAKSaveOutputDataThread;
-class SAKSaveOutputDataSettings:public QDialog
+class SAKOutputSave2FileThread;
+class SAKOutputSave2FileDialog:public QDialog
 {
     Q_OBJECT
 public:
-    SAKSaveOutputDataSettings(QWidget *parent = Q_NULLPTR);
-    ~SAKSaveOutputDataSettings();
+    SAKOutputSave2FileDialog(QWidget *parent = Q_NULLPTR);
+    ~SAKOutputSave2FileDialog();
 
     /**
      * @brief inputData 需要保存的数据由此输入
@@ -43,7 +43,7 @@ public:
     }parameters;
 private:
     QString defaultPath;
-    SAKSaveOutputDataThread *saveOutputDataThread;
+    SAKOutputSave2FileThread *saveOutputDataThread;
 
 private:
     Ui::SAKSaveOutputDataSettings *ui;
@@ -61,5 +61,5 @@ private slots:
 signals:
     void writeDataToFile(QByteArray data, SaveOutputDataParamters parameters);
 };
-Q_DECLARE_METATYPE(SAKSaveOutputDataSettings::SaveOutputDataParamters);
+Q_DECLARE_METATYPE(SAKOutputSave2FileDialog::SaveOutputDataParamters);
 #endif

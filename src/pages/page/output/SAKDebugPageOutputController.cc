@@ -16,7 +16,7 @@
 #include "SAKGlobal.hh"
 #include "SAKDebugPage.hh"
 #include "SAKDataStruct.hh"
-#include "SAKSaveOutputDataSettings.hh"
+#include "SAKOutputSave2FileDialog.hh"
 #include "SAKDebugPageOutputController.hh"
 
 SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugPage *debugPage, QObject *parent)
@@ -64,7 +64,7 @@ SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugPage *debugPa
     mOutputTextBroswer->document()->setMaximumBlockCount(1000);
 
     // the class is used to save data to file
-    mOutputSettings = new SAKSaveOutputDataSettings;
+    mSave2FileDialog = new SAKOutputSave2FileDialog;
 
     // the thread will started when the class is initailzed
     start();
@@ -79,7 +79,7 @@ SAKDebugPageOutputController::~SAKDebugPageOutputController()
     wait();
 
     // free memory
-    delete mOutputSettings;
+    delete mSave2FileDialog;
 }
 
 void SAKDebugPageOutputController::run()
@@ -166,15 +166,15 @@ void SAKDebugPageOutputController::saveOutputTextToFile()
 
 void SAKDebugPageOutputController::saveOutputDataSettings()
 {
-    mOutputSettings->show();
+    mSave2FileDialog->show();
 }
 
 void SAKDebugPageOutputController::saveOutputDataToFile()
 {
     if (mSaveOutputToFileCheckBox->isChecked()){
-        connect(mDebugPage, &SAKDebugPage::bytesRead, mOutputSettings, &SAKSaveOutputDataSettings::inputData);
+        connect(mDebugPage, &SAKDebugPage::bytesRead, mSave2FileDialog, &SAKOutputSave2FileDialog::inputData);
     }else{
-        disconnect(mDebugPage, &SAKDebugPage::bytesRead, mOutputSettings, &SAKSaveOutputDataSettings::inputData);
+        disconnect(mDebugPage, &SAKDebugPage::bytesRead, mSave2FileDialog, &SAKOutputSave2FileDialog::inputData);
     }
 }
 

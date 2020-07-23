@@ -14,11 +14,11 @@
 #include <QFileDialog>
 #include <QStandardPaths>
 
-#include "SAKSaveOutputDataThread.hh"
-#include "SAKSaveOutputDataSettings.hh"
+#include "SAKOutputSave2FileThread.hh"
+#include "SAKOutputSave2FileDialog.hh"
 #include "ui_SAKSaveOutputDataSettings.h"
 
-SAKSaveOutputDataSettings::SAKSaveOutputDataSettings(QWidget *parent)
+SAKOutputSave2FileDialog::SAKOutputSave2FileDialog(QWidget *parent)
     :QDialog (parent)
     ,ui (new Ui::SAKSaveOutputDataSettings)
 {
@@ -37,12 +37,12 @@ SAKSaveOutputDataSettings::SAKSaveOutputDataSettings(QWidget *parent)
     defaultPath = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
     pathLineEdit->setText(defaultPath.append("/default.txt"));
 
-    saveOutputDataThread = new SAKSaveOutputDataThread;
-    connect(this, &SAKSaveOutputDataSettings::writeDataToFile, saveOutputDataThread, &SAKSaveOutputDataThread::writeDataToFile);
+    saveOutputDataThread = new SAKOutputSave2FileThread;
+    connect(this, &SAKOutputSave2FileDialog::writeDataToFile, saveOutputDataThread, &SAKOutputSave2FileThread::writeDataToFile);
     saveOutputDataThread->start();
 }
 
-SAKSaveOutputDataSettings::~SAKSaveOutputDataSettings()
+SAKOutputSave2FileDialog::~SAKOutputSave2FileDialog()
 {
     delete ui;
     delete saveOutputDataThread;
@@ -51,7 +51,7 @@ SAKSaveOutputDataSettings::~SAKSaveOutputDataSettings()
     saveOutputDataThread = Q_NULLPTR;
 }
 
-void SAKSaveOutputDataSettings::inputData(QByteArray data)
+void SAKOutputSave2FileDialog::inputData(QByteArray data)
 {
     parameters.fileName = pathLineEdit->text().trimmed();
     if (binRadioButton->isChecked()){
@@ -65,7 +65,7 @@ void SAKSaveOutputDataSettings::inputData(QByteArray data)
     emit writeDataToFile(data, parameters);
 }
 
-void SAKSaveOutputDataSettings::on_setFilePushButton_clicked()
+void SAKOutputSave2FileDialog::on_setFilePushButton_clicked()
 {
     QString datetime = QDateTime::currentDateTime().toString("yyyyMMddhhmmss");
     QString fileName;
@@ -82,7 +82,7 @@ void SAKSaveOutputDataSettings::on_setFilePushButton_clicked()
     }
 }
 
-void SAKSaveOutputDataSettings::on_clearFilePushButton_clicked()
+void SAKOutputSave2FileDialog::on_clearFilePushButton_clicked()
 {
     QString fileName = pathLineEdit->text();
     if (fileName.isEmpty()){

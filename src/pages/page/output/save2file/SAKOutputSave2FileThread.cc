@@ -12,23 +12,23 @@
 #include <QTextStream>
 
 #include "SAKInterface.hh"
-#include "SAKSaveOutputDataThread.hh"
-#include "SAKSaveOutputDataSettings.hh"
+#include "SAKOutputSave2FileThread.hh"
+#include "SAKOutputSave2FileDialog.hh"
 
-SAKSaveOutputDataThread::SAKSaveOutputDataThread(QObject *parent)
+SAKOutputSave2FileThread::SAKOutputSave2FileThread(QObject *parent)
     :QThread (parent)
 {
 
 }
 
-SAKSaveOutputDataThread::~SAKSaveOutputDataThread()
+SAKOutputSave2FileThread::~SAKOutputSave2FileThread()
 {
     requestInterruption();
     threadWaitCondition.wakeAll();
     wait();
 }
 
-void SAKSaveOutputDataThread::writeDataToFile(QByteArray data, SAKSaveOutputDataSettings::SaveOutputDataParamters parameters)
+void SAKOutputSave2FileThread::writeDataToFile(QByteArray data, SAKOutputSave2FileDialog::SaveOutputDataParamters parameters)
 {
     if(parameters.fileName.isEmpty()){
         return;
@@ -44,7 +44,7 @@ void SAKSaveOutputDataThread::writeDataToFile(QByteArray data, SAKSaveOutputData
     threadWaitCondition.wakeAll();
 }
 
-void SAKSaveOutputDataThread::run()
+void SAKOutputSave2FileThread::run()
 {
     QEventLoop eventLoop;
     while (true) {
@@ -75,25 +75,25 @@ void SAKSaveOutputDataThread::run()
     }
 }
 
-void SAKSaveOutputDataThread::innerWriteDataToFile(QByteArray data, SAKSaveOutputDataSettings::SaveOutputDataParamters parameters)
+void SAKOutputSave2FileThread::innerWriteDataToFile(QByteArray data, SAKOutputSave2FileDialog::SaveOutputDataParamters parameters)
 {
     QFile file(parameters.fileName);
     int format = parameters.format;
     QTextStream textStream(&file);
     switch (format) {
-    case SAKSaveOutputDataSettings::SaveOutputDataParamters::Bin:
+    case SAKOutputSave2FileDialog::SaveOutputDataParamters::Bin:
         if (file.open(QFile::WriteOnly | QFile::Append)){
             file.write(data);
             file.close();
         }
         break;
-    case SAKSaveOutputDataSettings::SaveOutputDataParamters::Utf8:
+    case SAKOutputSave2FileDialog::SaveOutputDataParamters::Utf8:
         if (file.open(QFile::WriteOnly | QFile::Text | QFile::Append)){
             textStream << QString::fromUtf8(data) << QString("\n");
             file.close();
         }
         break;
-    case SAKSaveOutputDataSettings::SaveOutputDataParamters::Hex:
+    case SAKOutputSave2FileDialog::SaveOutputDataParamters::Hex:
         if (file.open(QFile::WriteOnly | QFile::Text | QFile::Append)){
             /// @brief  QByteArray::toHex(char separator)是Qt5.9中引入的
 #if (QT_VERSION < QT_VERSION_CHECK(5,9,0))
@@ -108,7 +108,7 @@ void SAKSaveOutputDataThread::innerWriteDataToFile(QByteArray data, SAKSaveOutpu
     }
 }
 
-SAKSaveOutputDataThread::DataInfoStruct SAKSaveOutputDataThread::takeDataInfo()
+SAKOutputSave2FileThread::DataInfoStruct SAKOutputSave2FileThread::takeDataInfo()
 {
     DataInfoStruct info;
     dataListMutex.lock();

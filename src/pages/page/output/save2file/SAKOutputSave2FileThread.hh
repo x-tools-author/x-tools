@@ -14,22 +14,22 @@
 #include <QThread>
 #include <QWaitCondition>
 
-#include "SAKSaveOutputDataSettings.hh"
+#include "SAKOutputSave2FileDialog.hh"
 
-class SAKSaveOutputDataThread:public QThread
+class SAKOutputSave2FileThread:public QThread
 {
     Q_OBJECT
 public:
-    SAKSaveOutputDataThread(QObject *parent = Q_NULLPTR);
-    ~SAKSaveOutputDataThread();
+    SAKOutputSave2FileThread(QObject *parent = Q_NULLPTR);
+    ~SAKOutputSave2FileThread();
 
-    void writeDataToFile(QByteArray data, SAKSaveOutputDataSettings::SaveOutputDataParamters parameters);
+    void writeDataToFile(QByteArray data, SAKOutputSave2FileDialog::SaveOutputDataParamters parameters);
 protected:
     void run() final;
 private:
     struct DataInfoStruct {
         QByteArray data;
-        SAKSaveOutputDataSettings::SaveOutputDataParamters parameters;
+        SAKOutputSave2FileDialog::SaveOutputDataParamters parameters;
     };
 
     QList<DataInfoStruct> dataList;
@@ -37,7 +37,7 @@ private:
     QMutex threadMutex;
     QWaitCondition threadWaitCondition;
 private:
-    void innerWriteDataToFile(QByteArray data, SAKSaveOutputDataSettings::SaveOutputDataParamters parameters);
+    void innerWriteDataToFile(QByteArray data, SAKOutputSave2FileDialog::SaveOutputDataParamters parameters);
     DataInfoStruct takeDataInfo();
 };
 

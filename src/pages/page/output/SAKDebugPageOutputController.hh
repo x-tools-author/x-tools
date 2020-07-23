@@ -22,7 +22,7 @@
 #include <QWaitCondition>
 
 class SAKDebugPage;
-class SAKSaveOutputDataSettings;
+class SAKOutputSave2FileDialog;
 /// @brief output data controller
 class SAKDebugPageOutputController:public QThread
 {
@@ -42,7 +42,7 @@ protected:
     void run() final;
 private:
     SAKDebugPage *mDebugPage;
-    SAKSaveOutputDataSettings *mOutputSettings;
+    SAKOutputSave2FileDialog *mSave2FileDialog;
 
     // animation
     QTimer mUpdateRxAnimationTimer;
