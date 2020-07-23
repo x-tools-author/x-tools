@@ -34,7 +34,7 @@ class SAKDebugPageDevice;
 class SAKDataFactory;
 class SAKCRCInterface;
 class SAKDebugPageStatisticsController;
-class SAKDebugPageOtherManager;
+class SAKDebugPageOtherController;
 class SAKTransmissionSettings;
 class SAKDebugPageInputManager;
 class SAKDebugPageOutputController;
@@ -69,7 +69,7 @@ public:
     };
 
     friend class SAKChartsManager;
-    friend class SAKDebugPageOtherManager;
+    friend class SAKDebugPageOtherController;
     friend class SAKDebugPageStatisticsController;
     friend class SAKDebugPageInputManager;
     friend class SAKDebugPageOutputController;
@@ -302,7 +302,7 @@ private:
 #ifdef SAK_IMPORT_CHARTS_MODULE
     SAKChartsManager *mDataVisualizationManager;
 #endif
-    SAKDebugPageOtherManager *mOtherSettings;
+    SAKDebugPageOtherController *mOtherSettings;
     SAKDebugPageStatisticsController *mStatisticsManager;
     SAKDebugPageOutputController *mOutputManager;
     SAKDebugPageInputManager *mDebugPageInputManager;

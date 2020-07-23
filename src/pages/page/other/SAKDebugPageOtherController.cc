@@ -12,13 +12,13 @@
 #include "SAKDebugPage.hh"
 #include "SAKMoreSettingsWidget.hh"
 #include "SAKTransmissionSettings.hh"
-#include "SAKDebugPageOtherManager.hh"
 #include "SAKHighlightSettingsWidget.hh"
 #include "SAKReadWriteSettingsWidget.hh"
+#include "SAKDebugPageOtherController.hh"
 #include "SAKAutoResponseSettingsWidget.hh"
 #include "SAKTimingSendingSettingsWidget.hh"
 
-SAKDebugPageOtherManager::SAKDebugPageOtherManager(SAKDebugPage *debugPage, QObject *parent)
+SAKDebugPageOtherController::SAKDebugPageOtherController(SAKDebugPage *debugPage, QObject *parent)
     :QObject (parent)
     ,mDebugPage (debugPage)
 {
@@ -36,15 +36,15 @@ SAKDebugPageOtherManager::SAKDebugPageOtherManager(SAKDebugPage *debugPage, QObj
     autoResponseSettingPushButton = mDebugPage->mAutoResponseSettingPushButton;
     transmissionSettingPushButton = mDebugPage->mTransmissionSettingPushButton;
 
-    connect(moreSettingsPushButton,  &QPushButton::clicked, this, &SAKDebugPageOtherManager::onMoreSettingsPushButtonClicked);
-    connect(timingSendingPushButton, &QPushButton::clicked, this, &SAKDebugPageOtherManager::onTimingSendingPushButtonClicked);
-    connect(highlightSettingPushButton, &QPushButton::clicked, this, &SAKDebugPageOtherManager::onHighlightSettingPushButtonClicked);
-    connect(readWriteSettingPushButton, &QPushButton::clicked, this, &SAKDebugPageOtherManager::onReadWriteSettingPushButtonClicked);
-    connect(transmissionSettingPushButton, &QPushButton::clicked, this, &SAKDebugPageOtherManager::onTransmissionSettingPushButtonClicked);
-    connect(autoResponseSettingPushButton, &QPushButton::clicked, this, &SAKDebugPageOtherManager::onAutoresponseSettingPushbuttonClicked);
+    connect(moreSettingsPushButton,  &QPushButton::clicked, this, &SAKDebugPageOtherController::onMoreSettingsPushButtonClicked);
+    connect(timingSendingPushButton, &QPushButton::clicked, this, &SAKDebugPageOtherController::onTimingSendingPushButtonClicked);
+    connect(highlightSettingPushButton, &QPushButton::clicked, this, &SAKDebugPageOtherController::onHighlightSettingPushButtonClicked);
+    connect(readWriteSettingPushButton, &QPushButton::clicked, this, &SAKDebugPageOtherController::onReadWriteSettingPushButtonClicked);
+    connect(transmissionSettingPushButton, &QPushButton::clicked, this, &SAKDebugPageOtherController::onTransmissionSettingPushButtonClicked);
+    connect(autoResponseSettingPushButton, &QPushButton::clicked, this, &SAKDebugPageOtherController::onAutoresponseSettingPushbuttonClicked);
 }
 
-SAKDebugPageOtherManager::~SAKDebugPageOtherManager()
+SAKDebugPageOtherController::~SAKDebugPageOtherController()
 {
     delete mMoreSettingsWidget;
     delete mTransmissionSettings;
@@ -61,12 +61,12 @@ SAKDebugPageOtherManager::~SAKDebugPageOtherManager()
     mTimingSendingSettingsWidget = Q_NULLPTR;
 }
 
-SAKMoreSettingsWidget *SAKDebugPageOtherManager::moreSettingsWidget()
+SAKMoreSettingsWidget *SAKDebugPageOtherController::moreSettingsWidget()
 {
     return mMoreSettingsWidget;
 }
 
-void SAKDebugPageOtherManager::onMoreSettingsPushButtonClicked()
+void SAKDebugPageOtherController::onMoreSettingsPushButtonClicked()
 {
     if (mMoreSettingsWidget->isHidden()){
         mMoreSettingsWidget->show();
@@ -75,7 +75,7 @@ void SAKDebugPageOtherManager::onMoreSettingsPushButtonClicked()
     }
 }
 
-void SAKDebugPageOtherManager::onTimingSendingPushButtonClicked()
+void SAKDebugPageOtherController::onTimingSendingPushButtonClicked()
 {
     if (mTimingSendingSettingsWidget->isHidden()){
         mTimingSendingSettingsWidget->show();
@@ -84,7 +84,7 @@ void SAKDebugPageOtherManager::onTimingSendingPushButtonClicked()
     }
 }
 
-void SAKDebugPageOtherManager::onReadWriteSettingPushButtonClicked()
+void SAKDebugPageOtherController::onReadWriteSettingPushButtonClicked()
 {
     if (mReadWriteSettingsWidget->isHidden()){
         mReadWriteSettingsWidget->show();
@@ -93,7 +93,7 @@ void SAKDebugPageOtherManager::onReadWriteSettingPushButtonClicked()
     }
 }
 
-void SAKDebugPageOtherManager::onHighlightSettingPushButtonClicked()
+void SAKDebugPageOtherController::onHighlightSettingPushButtonClicked()
 {
 
     if (mHighlightSettingsWidget->isHidden()){
@@ -103,7 +103,7 @@ void SAKDebugPageOtherManager::onHighlightSettingPushButtonClicked()
     }
 }
 
-void SAKDebugPageOtherManager::onTransmissionSettingPushButtonClicked()
+void SAKDebugPageOtherController::onTransmissionSettingPushButtonClicked()
 {
     if (mTransmissionSettings->isHidden()){
         mTransmissionSettings->show();
@@ -112,7 +112,7 @@ void SAKDebugPageOtherManager::onTransmissionSettingPushButtonClicked()
     }
 }
 
-void SAKDebugPageOtherManager::onAutoresponseSettingPushbuttonClicked()
+void SAKDebugPageOtherController::onAutoresponseSettingPushbuttonClicked()
 {
     if (mAutoResponseSettingWidget->isHidden()){
         mAutoResponseSettingWidget->show();

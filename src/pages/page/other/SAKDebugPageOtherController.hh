@@ -22,12 +22,12 @@ class SAKAutoResponseSettingsWidget;
 class SAKTimingSendingSettingsWidget;
 
 /// @brief other setting module
-class SAKDebugPageOtherManager:public QObject
+class SAKDebugPageOtherController:public QObject
 {
     Q_OBJECT
 public:
-    SAKDebugPageOtherManager(SAKDebugPage *debugPage, QObject *parent = Q_NULLPTR);
-    ~SAKDebugPageOtherManager();
+    SAKDebugPageOtherController(SAKDebugPage *debugPage, QObject *parent = Q_NULLPTR);
+    ~SAKDebugPageOtherController();
 
     /**
      * @brief moreSettingsWidget: get the more settings widget
