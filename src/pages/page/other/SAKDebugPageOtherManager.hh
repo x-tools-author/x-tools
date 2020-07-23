@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKDEBUGPAGEOTHERSMANAGER_HH
-#define SAKDEBUGPAGEOTHERSMANAGER_HH
+#ifndef SAKDEBUGPAGEOTHERSCONTROLLER_HH
+#define SAKDEBUGPAGEOTHERSCONTROLLER_HH
 
 #include <QObject>
 #include <QPushButton>
