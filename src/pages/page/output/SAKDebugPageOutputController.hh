@@ -9,20 +9,22 @@
  */
 #ifndef SAKDEBUGPAGEOUTPUTMANAGER_HH
 #define SAKDEBUGPAGEOUTPUTMANAGER_HH
+
+#include <QMutex>
 #include <QTimer>
 #include <QLabel>
 #include <QTimer>
-#include <QObject>
+#include <QThread>
 #include <QComboBox>
 #include <QCheckBox>
 #include <QPushButton>
 #include <QTextBrowser>
+#include <QWaitCondition>
 
 class SAKDebugPage;
-class SAKOutputDataFactory;
 class SAKSaveOutputDataSettings;
 /// @brief output data controller
-class SAKDebugPageOutputController:public QObject
+class SAKDebugPageOutputController:public QThread
 {
     Q_OBJECT
 public:
@@ -36,9 +38,10 @@ public:
         bool isReadData; // true: data is read data, false: data is written data
         int  format; // output data format, such as bin, otc and so on
     };
+protected:
+    void run() final;
 private:
     SAKDebugPage *mDebugPage;
-    SAKOutputDataFactory *mDataFactory;
     SAKSaveOutputDataSettings *mOutputSettings;
 
     // animation
@@ -63,8 +66,22 @@ private:
     QPushButton *mClearOutputPushButton;
     QPushButton *mSaveOutputPushButton;
     QTextBrowser *mOutputTextBroswer;
+
+    // thread controller
+    QMutex mThreadMutex;
+    QWaitCondition mThreadWaitCondition;
+
+    // temp data
+    struct RawDataStruct {
+        QByteArray rawData;
+        OutputParameters parameters;
+    };
+    QList<RawDataStruct> mRawDataList;
+    QMutex mRawDataListMutex;
 private:
+    // C<<<<<
     void updateRxAnimation();
+    // C>>>>>
     void updateTxAnimation();
     void setLineWrapMode();
     void saveOutputTextToFile();
@@ -74,9 +91,11 @@ private:
     void bytesWritten(QByteArray data);
     void outputData(QString data);
     OutputParameters outputDataParameters(bool isReadData);
+    RawDataStruct takeRawData();
+    // the function is called by child thread only!
+    void innerCookData(QByteArray rawData, OutputParameters parameters);
 signals:
-    void cookData(QByteArray rawData, OutputParameters parameters);
+    void dataCooked(QString data);
 };
-Q_DECLARE_METATYPE(SAKDebugPageOutputController::OutputParameters);
 
 #endif
