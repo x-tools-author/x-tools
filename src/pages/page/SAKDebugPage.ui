@@ -594,7 +594,7 @@
    <item row="31" column="11">
     <widget class="QPushButton" name="sendPushButton">
      <property name="text">
-      <string>Write</string>
+      <string>Send</string>
      </property>
     </widget>
    </item>
