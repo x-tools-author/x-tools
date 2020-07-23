@@ -172,9 +172,11 @@ void SAKDebugPageOutputController::saveOutputDataSettings()
 void SAKDebugPageOutputController::saveOutputDataToFile()
 {
     if (mSaveOutputToFileCheckBox->isChecked()){
-        connect(mDebugPage, &SAKDebugPage::bytesRead, mSave2FileDialog, &SAKOutputSave2FileDialog::inputData);
+        connect(mDebugPage, &SAKDebugPage::bytesRead, mSave2FileDialog, &SAKOutputSave2FileDialog::bytesRead);
+        connect(mDebugPage, &SAKDebugPage::bytesWritten, mSave2FileDialog, &SAKOutputSave2FileDialog::bytesWritten);
     }else{
-        disconnect(mDebugPage, &SAKDebugPage::bytesRead, mSave2FileDialog, &SAKOutputSave2FileDialog::inputData);
+        disconnect(mDebugPage, &SAKDebugPage::bytesRead, mSave2FileDialog, &SAKOutputSave2FileDialog::bytesRead);
+        disconnect(mDebugPage, &SAKDebugPage::bytesWritten, mSave2FileDialog, &SAKOutputSave2FileDialog::bytesWritten);
     }
 }
 
