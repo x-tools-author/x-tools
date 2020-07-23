@@ -61,7 +61,7 @@ private:
     QCheckBox *mShowMsCheckBox;
     QCheckBox *mShowRxDataCheckBox;
     QCheckBox *mShowTxDataCheckBox;
-    QCheckBox *mSaveOutputFileToFilecheckBox;
+    QCheckBox *mSaveOutputToFileCheckBox;
     QPushButton *mOutputFilePathPushButton;
     QPushButton *mClearOutputPushButton;
     QPushButton *mSaveOutputPushButton;

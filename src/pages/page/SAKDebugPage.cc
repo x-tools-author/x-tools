@@ -558,7 +558,7 @@ void SAKDebugPage::initUiPointer()
     mShowMsCheckBox          = mUi->showMsCheckBox;
     mShowRxDataCheckBox      = mUi->showRxDataCheckBox;
     mShowTxDataCheckBox      = mUi->showTxDataCheckBox;
-    mSaveOutputFileToFilecheckBox = mUi->saveOutputFileToFilecheckBox;
+    mSaveOutputToFileCheckBox = mUi->saveOutputToFileCheckBox;
     mOutputFilePathPushButton= mUi->outputFilePathPushButton;
     mClearOutputPushButton   = mUi->clearOutputPushButton;
     mSaveOutputPushButton    = mUi->saveOutputPushButton;

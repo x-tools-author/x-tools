@@ -35,14 +35,14 @@ SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugPage *debugPa
     mShowMsCheckBox = debugPage->mShowMsCheckBox;
     mShowRxDataCheckBox = debugPage->mShowRxDataCheckBox;
     mShowTxDataCheckBox = debugPage->mShowTxDataCheckBox;
-    mSaveOutputFileToFilecheckBox = debugPage->mSaveOutputFileToFilecheckBox;
+    mSaveOutputToFileCheckBox = debugPage->mSaveOutputToFileCheckBox;
     mOutputFilePathPushButton = debugPage->mOutputFilePathPushButton;
     mClearOutputPushButton = debugPage->mClearOutputPushButton;
     mSaveOutputPushButton = debugPage->mSaveOutputPushButton;
     mOutputTextBroswer = debugPage->mOutputTextBroswer;
     SAKGlobal::initOutputTextFormatComboBox(mOutputTextFormatComboBox);
 
-    connect(mSaveOutputFileToFilecheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::saveOutputDataToFile);
+    connect(mSaveOutputToFileCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::saveOutputDataToFile);
     connect(mAutoWrapCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::setLineWrapMode);
     connect(mSaveOutputPushButton, &QCheckBox::clicked, this, &SAKDebugPageOutputController::saveOutputTextToFile);
     connect(mOutputFilePathPushButton, &QCheckBox::clicked, this, &SAKDebugPageOutputController::saveOutputDataSettings);
@@ -171,7 +171,7 @@ void SAKDebugPageOutputController::saveOutputDataSettings()
 
 void SAKDebugPageOutputController::saveOutputDataToFile()
 {
-    if (mSaveOutputFileToFilecheckBox->isChecked()){
+    if (mSaveOutputToFileCheckBox->isChecked()){
         connect(mDebugPage, &SAKDebugPage::bytesRead, mOutputSettings, &SAKSaveOutputDataSettings::inputData);
     }else{
         disconnect(mDebugPage, &SAKDebugPage::bytesRead, mOutputSettings, &SAKSaveOutputDataSettings::inputData);
