@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>314</width>
+    <width>350</width>
     <height>186</height>
    </rect>
   </property>
@@ -54,7 +54,7 @@
 }</string>
         </property>
         <property name="text">
-         <string>Start byte is from left, the first byte is one</string>
+         <string>Start byte is start from left, the first byte is one</string>
         </property>
        </widget>
       </item>
@@ -96,7 +96,7 @@
 }</string>
         </property>
         <property name="text">
-         <string>End byte is from right, the last byte is one</string>
+         <string>End byte is start from right, the last byte is one</string>
         </property>
        </widget>
       </item>
