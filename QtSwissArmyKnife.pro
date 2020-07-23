@@ -118,7 +118,7 @@ INCLUDEPATH += \
     src/pages/page/other/timing \
     src/pages/page/other/transmission \
     src/pages/page/output \
-    src/pages/page/output/save \
+    src/pages/page/output/save2file \
     src/pages/page/statistics \
     src/pages/tcp/client \
     src/pages/tcp/server \
@@ -149,7 +149,7 @@ FORMS += \
     src/pages/page/other/transmission/SAKTransmissionPage.ui \
     src/pages/page/other/transmission/SAKTransmissionSettings.ui \
     src/pages/page/other/transmission/SAKUdpTransmissionItemWidget.ui \
-    src/pages/page/output/save/SAKSaveOutputDataSettings.ui \
+    src/pages/page/output/save2file/SAKSaveOutputDataSettings.ui \
     src/pages/tcp/client/SAKTcpClientDeviceController.ui \
     src/pages/tcp/server/SAKTcpServerDeviceController.ui \
     src/pages/udp/SAKUdpAdvanceSettingWidget.ui \
@@ -197,10 +197,10 @@ HEADERS += \
     src/pages/page/other/transmission/SAKTransmissionSettings.hh \
     src/pages/page/other/transmission/SAKUdpTransmissionItemWidget.hh \
     src/pages/page/output/SAKDebugPageOutputController.hh \
-    src/pages/page/output/save/SAKSaveOutputDataSettings.hh \
-    src/pages/page/output/save/SAKSaveOutputDataThread.hh \
+    src/pages/page/output/save2file/SAKOutputSave2FileDialog.hh \
     src/common/SAKCRCInterface.hh \
     src/common/SAKDataStruct.hh \
+    src/pages/page/output/save2file/SAKOutputSave2FileThread.hh \
     src/pages/page/statistics/SAKDebugPageStatisticsManager.hh \
     src/pages/tcp/client/SAKTcpClientDebugPage.hh \
     src/pages/tcp/client/SAKTcpClientDevice.hh \
@@ -258,11 +258,11 @@ SOURCES += \
     src/pages/page/other/transmission/SAKTransmissionSettings.cc \
     src/pages/page/other/transmission/SAKUdpTransmissionItemWidget.cc \
     src/pages/page/output/SAKDebugPageOutputController.cc \
-    src/pages/page/output/save/SAKSaveOutputDataSettings.cc \
-    src/pages/page/output/save/SAKSaveOutputDataThread.cc \
+    src/pages/page/output/save2file/SAKOutputSave2FileDialog.cc \
     src/common/SAKCRCInterface.cc \
     src/common/SAKDataStruct.cc \
     src/main.cc \
+    src/pages/page/output/save2file/SAKOutputSave2FileThread.cc \
     src/pages/page/statistics/SAKDebugPageStatisticsManager.cc \
     src/pages/tcp/client/SAKTcpClientDebugPage.cc \
     src/pages/tcp/client/SAKTcpClientDevice.cc \
