@@ -21,6 +21,7 @@
 SAKOutputSave2FileDialog::SAKOutputSave2FileDialog(QSettings *settings, QWidget *parent)
     :QDialog(parent)
     ,mSettings(settings)
+    ,mSettingsOutputPath(QString("DebugPage/outputPath"))
     ,mSettingKeyReadData(QString("DebugPage/readData"))
     ,mSettingKeyWrittenData(QString("DebugPage/writtenData"))
     ,mSettingKeyTimestamp(QString("DebugPage/saveTimestamp"))
@@ -44,10 +45,6 @@ SAKOutputSave2FileDialog::SAKOutputSave2FileDialog(QSettings *settings, QWidget 
     mOkPushButton = mUi->okPushButton;
     mTruncatePushButton = mUi->truncatePushButton;
 
-    // Set default path for output file
-    mDefaultPath = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
-    mPathLineEdit->setText(mDefaultPath.append("/default.txt"));
-
     // The task of thread is that writting data to file.
     mSaveOutputDataThread = new SAKOutputSave2FileThread(this);
     connect(this, &SAKOutputSave2FileDialog::writeDataToFile, mSaveOutputDataThread, &SAKOutputSave2FileThread::writeDataToFile);
@@ -55,26 +52,33 @@ SAKOutputSave2FileDialog::SAKOutputSave2FileDialog(QSettings *settings, QWidget 
 
     // Readin setting info
     if (mSettings){
-        QVariant var = mSettings->value(mSettingKeyReadData);
-        if (var.isNull()){
-            mReadDataCheckBox->setChecked(true);
+        QVariant var = mSettings->value(mSettingsOutputPath);
+        if (!var.isNull()){
+            mPathLineEdit->setText(var.toString());
         }else{
-            mReadDataCheckBox->setChecked(var.toBool());
+            // Set default path for output file
+            mDefaultPath = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
+            mPathLineEdit->setText(mDefaultPath.append("/default.txt"));
         }
 
-        var = mSettings->value(mSettingKeyWrittenData);
-        if (var.isNull()){
-            mWrittenDataCheckBox->setChecked(true);
-        }else{
-            mWrittenDataCheckBox->setChecked(var.toBool());
+        struct TempInfo {
+            QCheckBox *checkBox;
+            QString key;
+        };
+        QList<TempInfo> list;
+        list << TempInfo{mReadDataCheckBox, mSettingKeyReadData}
+             << TempInfo{mWrittenDataCheckBox, mSettingKeyWrittenData}
+             << TempInfo{mTimestampCheckBox, mSettingKeyTimestamp};
+
+        for (auto info : list){
+            QVariant var = mSettings->value(info.key);
+            if (var.isNull()){
+                info.checkBox->setChecked(true);
+            }else{
+                info.checkBox->setChecked(var.toBool());
+            }
         }
 
-        var = mSettings->value(mSettingKeyTimestamp);
-        if (var.isNull()){
-            mTimestampCheckBox->setChecked(true);
-        }else{
-            mTimestampCheckBox->setChecked(var.toBool());
-        }
 
         var =  mSettings->value(mSettingKeyDataType);
         if (var.isNull()){
@@ -134,6 +138,13 @@ SAKOutputSave2FileDialog::ParametersContext SAKOutputSave2FileDialog::parameters
     parametersCtx.type = type;
     parametersCtx.saveTimestamp = mUi->timestampCheckBox->isChecked();
     return parametersCtx;
+}
+
+void SAKOutputSave2FileDialog::on_pathLineEdit_textChanged(const QString &text)
+{
+    if (mSettings){
+        mSettings->setValue(mSettingsOutputPath, text);
+    }
 }
 
 void SAKOutputSave2FileDialog::on_selectPushButton_clicked()

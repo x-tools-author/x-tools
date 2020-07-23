@@ -52,6 +52,7 @@ private:
     QString mDefaultPath;
     SAKOutputSave2FileThread *mSaveOutputDataThread;
     QSettings *mSettings;
+    const QString mSettingsOutputPath;
     const QString mSettingKeyReadData;
     const QString mSettingKeyWrittenData;
     const QString mSettingKeyTimestamp;
@@ -73,6 +74,7 @@ private:
     QPushButton *mOkPushButton;
     QPushButton *mTruncatePushButton;
 private slots:
+    void on_pathLineEdit_textChanged(const QString &text);
     void on_selectPushButton_clicked();
     void on_truncatePushButton_clicked();
     void on_readDataCheckBox_clicked();
