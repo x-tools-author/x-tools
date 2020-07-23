@@ -44,6 +44,7 @@ void SAKOutputSave2FileThread::writeDataToFile(QByteArray data, SAKOutputSave2Fi
     mDataList.append(dataInfo);
     mDataListMutex.unlock();
 
+    // Wake the thread to write data
     mThreadWaitCondition.wakeAll();
 }
 
