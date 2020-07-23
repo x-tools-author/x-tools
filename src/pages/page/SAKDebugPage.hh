@@ -33,7 +33,7 @@
 class SAKDebugPageDevice;
 class SAKDataFactory;
 class SAKCRCInterface;
-class SAKDebugPageStatisticsManager;
+class SAKDebugPageStatisticsController;
 class SAKDebugPageOtherManager;
 class SAKTransmissionSettings;
 class SAKDebugPageInputManager;
@@ -70,7 +70,7 @@ public:
 
     friend class SAKChartsManager;
     friend class SAKDebugPageOtherManager;
-    friend class SAKDebugPageStatisticsManager;
+    friend class SAKDebugPageStatisticsController;
     friend class SAKDebugPageInputManager;
     friend class SAKDebugPageOutputController;
 
@@ -303,7 +303,7 @@ private:
     SAKChartsManager *mDataVisualizationManager;
 #endif
     SAKDebugPageOtherManager *mOtherSettings;
-    SAKDebugPageStatisticsManager *mStatisticsManager;
+    SAKDebugPageStatisticsController *mStatisticsManager;
     SAKDebugPageOutputController *mOutputManager;
     SAKDebugPageInputManager *mDebugPageInputManager;
 };

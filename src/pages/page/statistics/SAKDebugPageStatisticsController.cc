@@ -10,9 +10,9 @@
 #include <QTimer>
 
 #include "SAKDebugPage.hh"
-#include "SAKDebugPageStatisticsManager.hh"
+#include "SAKDebugPageStatisticsController.hh"
 
-SAKDebugPageStatisticsManager::SAKDebugPageStatisticsManager(SAKDebugPage *debugPage, QObject *parent)
+SAKDebugPageStatisticsController::SAKDebugPageStatisticsController(SAKDebugPage *debugPage, QObject *parent)
     :QObject(parent)
     ,mDebugPage(debugPage)
 {
@@ -36,20 +36,20 @@ SAKDebugPageStatisticsManager::SAKDebugPageStatisticsManager(SAKDebugPage *debug
         mResetRxCountPushButton = mDebugPage->mResetRxCountPushButton;
 
         // emmm...
-        connect(debugPage, &SAKDebugPage::bytesRead, this, &SAKDebugPageStatisticsManager::bytesRead);
-        connect(debugPage, &SAKDebugPage::bytesWritten, this, &SAKDebugPageStatisticsManager::bytesWritten);
-        connect(mResetRxCountPushButton, &QPushButton::clicked, this, &SAKDebugPageStatisticsManager::clearRxStatistics);
-        connect(mResetTxCountPushButton, &QPushButton::clicked, this, &SAKDebugPageStatisticsManager::clearTxStatistics);
+        connect(debugPage, &SAKDebugPage::bytesRead, this, &SAKDebugPageStatisticsController::bytesRead);
+        connect(debugPage, &SAKDebugPage::bytesWritten, this, &SAKDebugPageStatisticsController::bytesWritten);
+        connect(mResetRxCountPushButton, &QPushButton::clicked, this, &SAKDebugPageStatisticsController::clearRxStatistics);
+        connect(mResetTxCountPushButton, &QPushButton::clicked, this, &SAKDebugPageStatisticsController::clearTxStatistics);
 
         // update speed
         QTimer *speedTimer = new QTimer(this);
         speedTimer->setInterval(1*1000);
-        connect(speedTimer, &QTimer::timeout, this, &SAKDebugPageStatisticsManager::updateSpeed);
+        connect(speedTimer, &QTimer::timeout, this, &SAKDebugPageStatisticsController::updateSpeed);
         speedTimer->start();
     }
 }
 
-void SAKDebugPageStatisticsManager::bytesRead(QByteArray data)
+void SAKDebugPageStatisticsController::bytesRead(QByteArray data)
 {
     mParametersContext.rxFrames += 1;
     mParametersContext.rxBytes += static_cast<quint64>(data.length());
@@ -59,7 +59,7 @@ void SAKDebugPageStatisticsManager::bytesRead(QByteArray data)
     mParametersContext.rxSpeed += static_cast<quint64>(data.length());
 }
 
-void SAKDebugPageStatisticsManager::bytesWritten(QByteArray data)
+void SAKDebugPageStatisticsController::bytesWritten(QByteArray data)
 {
     mParametersContext.txFrames += 1;
     mParametersContext.txBytes += static_cast<quint64>(data.length());
@@ -69,7 +69,7 @@ void SAKDebugPageStatisticsManager::bytesWritten(QByteArray data)
     mParametersContext.txSpeed += static_cast<quint64>(data.length());
 }
 
-void SAKDebugPageStatisticsManager::clearRxStatistics()
+void SAKDebugPageStatisticsController::clearRxStatistics()
 {
     mParametersContext.rxBytes = 0;
     mParametersContext.rxFrames = 0;
@@ -77,7 +77,7 @@ void SAKDebugPageStatisticsManager::clearRxStatistics()
     setLabelText(mRxBytesLabel, mParametersContext.rxBytes);
 }
 
-void SAKDebugPageStatisticsManager::clearTxStatistics()
+void SAKDebugPageStatisticsController::clearTxStatistics()
 {
     mParametersContext.txBytes = 0;
     mParametersContext.txFrames = 0;
@@ -85,7 +85,7 @@ void SAKDebugPageStatisticsManager::clearTxStatistics()
     setLabelText(mTxBytesLabel, mParametersContext.txBytes);
 }
 
-void SAKDebugPageStatisticsManager::updateSpeed()
+void SAKDebugPageStatisticsController::updateSpeed()
 {
     auto toSpeedString = [](QLabel *label, quint64 &bytes){
         if (bytes < 1024){
@@ -103,7 +103,7 @@ void SAKDebugPageStatisticsManager::updateSpeed()
     toSpeedString(mTxSpeedLabel, mParametersContext.txSpeed);
 }
 
-void SAKDebugPageStatisticsManager::setLabelText(QLabel *label, quint64 text)
+void SAKDebugPageStatisticsController::setLabelText(QLabel *label, quint64 text)
 {
     if (label){
         label->setText(QString::number(text));

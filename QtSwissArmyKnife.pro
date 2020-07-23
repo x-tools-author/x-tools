@@ -201,7 +201,7 @@ HEADERS += \
     src/common/SAKCRCInterface.hh \
     src/common/SAKDataStruct.hh \
     src/pages/page/output/save2file/SAKOutputSave2FileThread.hh \
-    src/pages/page/statistics/SAKDebugPageStatisticsManager.hh \
+    src/pages/page/statistics/SAKDebugPageStatisticsController.hh \
     src/pages/tcp/client/SAKTcpClientDebugPage.hh \
     src/pages/tcp/client/SAKTcpClientDevice.hh \
     src/pages/tcp/client/SAKTcpClientDeviceController.hh \
@@ -263,7 +263,7 @@ SOURCES += \
     src/common/SAKDataStruct.cc \
     src/main.cc \
     src/pages/page/output/save2file/SAKOutputSave2FileThread.cc \
-    src/pages/page/statistics/SAKDebugPageStatisticsManager.cc \
+    src/pages/page/statistics/SAKDebugPageStatisticsController.cc \
     src/pages/tcp/client/SAKTcpClientDebugPage.cc \
     src/pages/tcp/client/SAKTcpClientDevice.cc \
     src/pages/tcp/client/SAKTcpClientDeviceController.cc \

@@ -7,19 +7,20 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKDEBUGPAGESTATISTICSMANAGER_HH
-#define SAKDEBUGPAGESTATISTICSMANAGER_HH
+#ifndef SAKDEBUGPAGESTATISTICSCONTROLLER_HH
+#define SAKDEBUGPAGESTATISTICSCONTROLLER_HH
+
 #include <QLabel>
 #include <QObject>
 #include <QPushButton>
 
 class SAKDebugPage;
 /// @brief statistics received bytes, frames and sent bytes, frames
-class SAKDebugPageStatisticsManager:public QObject
+class SAKDebugPageStatisticsController:public QObject
 {
     Q_OBJECT
 public:
-    SAKDebugPageStatisticsManager(SAKDebugPage *mDebugPage, QObject *parent = Q_NULLPTR);
+    SAKDebugPageStatisticsController(SAKDebugPage *mDebugPage, QObject *parent = Q_NULLPTR);
 private:
     SAKDebugPage *mDebugPage;
     QLabel *mRxSpeedLabel;
