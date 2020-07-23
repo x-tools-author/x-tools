@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>838</width>
+    <width>851</width>
     <height>484</height>
    </rect>
   </property>
@@ -39,7 +39,7 @@
    <item row="2" column="12" colspan="2">
     <widget class="QLabel" name="label_6">
      <property name="text">
-      <string>发送状态</string>
+      <string>Tx status</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -49,28 +49,31 @@
    <item row="30" column="12" colspan="2">
     <widget class="QPushButton" name="timingSendingPushButton">
      <property name="text">
-      <string>定时发送</string>
+      <string>Timing</string>
      </property>
     </widget>
    </item>
    <item row="31" column="10">
     <widget class="QPushButton" name="sendPresetPushButton">
      <property name="text">
-      <string>发送预设</string>
+      <string>Preset</string>
      </property>
     </widget>
    </item>
    <item row="30" column="0">
     <widget class="QLabel" name="label_23">
      <property name="text">
-      <string>输入数据格式</string>
+      <string>Text format</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
      </property>
     </widget>
    </item>
    <item row="31" column="0">
     <widget class="QPushButton" name="readinFilePushButton">
      <property name="text">
-      <string>读入文件</string>
+      <string>Import</string>
      </property>
     </widget>
    </item>
@@ -82,7 +85,7 @@
 }</string>
      </property>
      <property name="text">
-      <string>输入设置</string>
+      <string>Input settings</string>
      </property>
     </widget>
    </item>
@@ -96,7 +99,7 @@
    <item row="29" column="12" colspan="2">
     <widget class="QPushButton" name="autoResponseSettingPushButton">
      <property name="text">
-      <string>自动回复</string>
+      <string>Response</string>
      </property>
     </widget>
    </item>
@@ -118,14 +121,14 @@
    <item row="28" column="14" colspan="2">
     <widget class="QPushButton" name="readWriteSettingPushButton">
      <property name="text">
-      <string>读写参数</string>
+      <string>Analyzer</string>
      </property>
     </widget>
    </item>
    <item row="6" column="12" colspan="2">
     <widget class="QCheckBox" name="showDateCheckBox">
      <property name="text">
-      <string>输出日期</string>
+      <string>ShowDate</string>
      </property>
     </widget>
    </item>
@@ -153,7 +156,7 @@
    <item row="9" column="14" colspan="2">
     <widget class="QPushButton" name="outputFilePathPushButton">
      <property name="text">
-      <string>保存设置</string>
+      <string>Parameters</string>
      </property>
     </widget>
    </item>
@@ -166,7 +169,7 @@
       <string/>
      </property>
      <property name="text">
-      <string>定时(ms)</string>
+      <string>Timing</string>
      </property>
     </widget>
    </item>
@@ -188,7 +191,7 @@
    <item row="6" column="14" colspan="2">
     <widget class="QCheckBox" name="autoWrapCheckBox">
      <property name="text">
-      <string>自动换行</string>
+      <string>Wrap</string>
      </property>
      <property name="checked">
       <bool>true</bool>
@@ -198,7 +201,7 @@
    <item row="13" column="12" colspan="2">
     <widget class="QLabel" name="label_13">
      <property name="text">
-      <string>发送速率</string>
+      <string>Tx speed</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -213,7 +216,7 @@
 }</string>
      </property>
      <property name="text">
-      <string>数据统计</string>
+      <string>Data statistics</string>
      </property>
     </widget>
    </item>
@@ -235,7 +238,7 @@
    <item row="20" column="12" colspan="2">
     <widget class="QPushButton" name="resetTxCountPushButton">
      <property name="text">
-      <string>复位发送</string>
+      <string>ResetTx</string>
      </property>
     </widget>
    </item>
@@ -278,7 +281,7 @@
       <item row="2" column="1">
        <widget class="QPushButton" name="switchPushButton">
         <property name="text">
-         <string>打开设备</string>
+         <string>Open</string>
         </property>
        </widget>
       </item>
@@ -340,7 +343,7 @@
       <item row="2" column="0">
        <widget class="QPushButton" name="refreshPushButton">
         <property name="text">
-         <string>刷新设备</string>
+         <string>Refresh</string>
         </property>
        </widget>
       </item>
@@ -363,7 +366,7 @@
    <item row="29" column="14" colspan="2">
     <widget class="QPushButton" name="highlightSettingPushButton">
      <property name="text">
-      <string>高亮显示</string>
+      <string>Highlight</string>
      </property>
     </widget>
    </item>
@@ -385,7 +388,7 @@
    <item row="7" column="12" colspan="2">
     <widget class="QCheckBox" name="showTimeCheckBox">
      <property name="text">
-      <string>输出时间</string>
+      <string>ShowTime</string>
      </property>
      <property name="checked">
       <bool>true</bool>
@@ -412,28 +415,28 @@
    <item row="29" column="0">
     <widget class="QLabel" name="label_2">
      <property name="text">
-      <string>CRC参数模型</string>
+      <string>CRC model</string>
      </property>
     </widget>
    </item>
    <item row="5" column="12" colspan="2">
     <widget class="QLabel" name="label_12">
      <property name="text">
-      <string>输出数据格式</string>
+      <string>Output format</string>
      </property>
     </widget>
    </item>
    <item row="28" column="12" colspan="2">
     <widget class="QPushButton" name="transmissionSettingPushButton">
      <property name="text">
-      <string>数据转发</string>
+      <string>Emit</string>
      </property>
     </widget>
    </item>
    <item row="16" column="12" colspan="2">
     <widget class="QLabel" name="label_11">
      <property name="text">
-      <string>接收速率</string>
+      <string>Rx speed</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -443,7 +446,7 @@
    <item row="31" column="6">
     <widget class="QCheckBox" name="addCRCCheckBox">
      <property name="text">
-      <string>添加CRC</string>
+      <string>AddCRC</string>
      </property>
     </widget>
    </item>
@@ -460,7 +463,7 @@
    <item row="30" column="14" colspan="2">
     <widget class="QPushButton" name="moreSettingsPushButton">
      <property name="text">
-      <string>更多设置</string>
+      <string>More&gt;&gt;&gt;</string>
      </property>
     </widget>
    </item>
@@ -470,14 +473,14 @@
       <string>Enable to write data to file</string>
      </property>
      <property name="text">
-      <string>写入文件</string>
+      <string>Write2File</string>
      </property>
     </widget>
    </item>
    <item row="31" column="1">
     <widget class="QPushButton" name="saveInputDataPushButton">
      <property name="text">
-      <string>保存输入</string>
+      <string>Save</string>
      </property>
     </widget>
    </item>
@@ -489,7 +492,7 @@
 }</string>
      </property>
      <property name="text">
-      <string>输出设置</string>
+      <string>Output settings</string>
      </property>
     </widget>
    </item>
@@ -524,7 +527,7 @@
    <item row="31" column="2">
     <widget class="QPushButton" name="clearInputPushButton">
      <property name="text">
-      <string>清空输入</string>
+      <string>Clear</string>
      </property>
     </widget>
    </item>
@@ -536,7 +539,7 @@
 }</string>
      </property>
      <property name="text">
-      <string>数据输出</string>
+      <string>Data input</string>
      </property>
     </widget>
    </item>
@@ -548,7 +551,7 @@
 }</string>
      </property>
      <property name="text">
-      <string>其他设置</string>
+      <string>Other settings</string>
      </property>
     </widget>
    </item>
@@ -560,21 +563,21 @@
 }</string>
      </property>
      <property name="text">
-      <string>数据输入</string>
+      <string>Data input</string>
      </property>
     </widget>
    </item>
    <item row="31" column="9">
     <widget class="QPushButton" name="presetPushButton">
      <property name="text">
-      <string>预设数据</string>
+      <string>Preset</string>
      </property>
     </widget>
    </item>
    <item row="7" column="14" colspan="2">
     <widget class="QCheckBox" name="showMsCheckBox">
      <property name="text">
-      <string>显示毫秒</string>
+      <string>ShowMS</string>
      </property>
     </widget>
    </item>
@@ -591,7 +594,7 @@
    <item row="31" column="11">
     <widget class="QPushButton" name="sendPushButton">
      <property name="text">
-      <string>发送数据</string>
+      <string>Write</string>
      </property>
     </widget>
    </item>
@@ -608,7 +611,7 @@
    <item row="8" column="12" colspan="2">
     <widget class="QCheckBox" name="showRxDataCheckBox">
      <property name="text">
-      <string>显示接收</string>
+      <string>ShowRx</string>
      </property>
      <property name="checked">
       <bool>true</bool>
@@ -618,7 +621,7 @@
    <item row="15" column="12" colspan="2">
     <widget class="QLabel" name="label_15">
      <property name="text">
-      <string>发送字节</string>
+      <string>Tx bytes</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -635,7 +638,7 @@
    <item row="18" column="12" colspan="2">
     <widget class="QLabel" name="label_18">
      <property name="text">
-      <string>接收字节</string>
+      <string>Rx bytes</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -663,7 +666,7 @@
    <item row="17" column="12" colspan="2">
     <widget class="QLabel" name="label_16">
      <property name="text">
-      <string>接收帧数</string>
+      <string>Rx frames</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -676,7 +679,7 @@
       <enum>Qt::LeftToRight</enum>
      </property>
      <property name="text">
-      <string>当前CRC值</string>
+      <string>CRC value</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -713,7 +716,7 @@ p, li { white-space: pre-wrap; }
       </sizepolicy>
      </property>
      <property name="text">
-      <string>接收状态</string>
+      <string>Rx status</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -723,7 +726,7 @@ p, li { white-space: pre-wrap; }
    <item row="8" column="14" colspan="2">
     <widget class="QCheckBox" name="showTxDataCheckBox">
      <property name="text">
-      <string>显示发送</string>
+      <string>ShowTx</string>
      </property>
      <property name="checked">
       <bool>true</bool>
@@ -748,14 +751,14 @@ p, li { white-space: pre-wrap; }
    <item row="10" column="12" colspan="2">
     <widget class="QPushButton" name="clearOutputPushButton">
      <property name="text">
-      <string>清空输出</string>
+      <string>Clear</string>
      </property>
     </widget>
    </item>
    <item row="10" column="14" colspan="2">
     <widget class="QPushButton" name="saveOutputPushButton">
      <property name="text">
-      <string>保存输出</string>
+      <string>Save</string>
      </property>
     </widget>
    </item>
@@ -767,14 +770,14 @@ p, li { white-space: pre-wrap; }
 }</string>
      </property>
      <property name="text">
-      <string>设备控制</string>
+      <string>Device control</string>
      </property>
     </widget>
    </item>
    <item row="20" column="14" colspan="2">
     <widget class="QPushButton" name="resetRxCountPushButton">
      <property name="text">
-      <string>复位接收</string>
+      <string>ResetRx</string>
      </property>
     </widget>
    </item>
@@ -796,14 +799,14 @@ p, li { white-space: pre-wrap; }
    <item row="31" column="14" colspan="2">
     <widget class="QPushButton" name="dataVisualizationPushButton">
      <property name="text">
-      <string>数据图表</string>
+      <string>Charts</string>
      </property>
     </widget>
    </item>
    <item row="14" column="12" colspan="2">
     <widget class="QLabel" name="label_14">
      <property name="text">
-      <string>发送帧数</string>
+      <string>Tx frames</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -813,7 +816,7 @@ p, li { white-space: pre-wrap; }
    <item row="31" column="7">
     <widget class="QPushButton" name="crcSettingsPushButton">
      <property name="text">
-      <string>CRC设置</string>
+      <string>CRCSettings</string>
      </property>
     </widget>
    </item>
