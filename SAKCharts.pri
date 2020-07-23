@@ -10,8 +10,8 @@ INCLUDEPATH += \
     $$PWD/src/pages/page/charts/xyserial
 
 FORMS += \
+    $$PWD/src/pages/page/charts/SAKChartsController.ui \
     $$PWD/src/pages/page/charts/xyserial/SAKChartsXYSerialChartViewSettingsDialog.ui \
-    $$PWD/src/pages/page/charts/SAKChartsManager.ui \
     $$PWD/src/pages/page/charts/xyserial/SAKChartsXYSerialWidget.ui \
     $$PWD/src/pages/page/charts/xyserial/SAKChartsXYSerialEditDialog.ui
 

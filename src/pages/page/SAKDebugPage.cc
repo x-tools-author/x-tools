@@ -35,7 +35,7 @@
 #include "SAKProtocolAnalyzerWidget.hh"
 #include "SAKHighlightSettingsWidget.hh"
 #ifdef SAK_IMPORT_CHARTS_MODULE
-#include "SAKChartsManager.hh"
+#include "SAKChartsController.hh"
 #endif
 #include "SAKDebugPageDatabaseInterface.hh"
 
@@ -596,9 +596,9 @@ void SAKDebugPage::on_dataVisualizationPushButton_clicked()
             mDataVisualizationManager->activateWindow();
         }
     }else{
-        mDataVisualizationManager = new SAKChartsManager(this);
+        mDataVisualizationManager = new SAKChartsController(this);
         mDataVisualizationManager->show();
-        connect(mDataVisualizationManager, &SAKChartsManager::destroyed, [&](){
+        connect(mDataVisualizationManager, &SAKChartsController::destroyed, [&](){
             mDataVisualizationManager = Q_NULLPTR;
         });
     }

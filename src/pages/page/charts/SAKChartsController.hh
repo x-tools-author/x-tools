@@ -14,7 +14,7 @@
 #include <QTabWidget>
 
 namespace Ui {
-    class SAKChartsManager;
+    class SAKChartsController;
 };
 
 class SAKDebugPage;
@@ -31,7 +31,7 @@ private:
     SAKChartsXYSerialWidget *mXYSerialWidget;
     SAKChartsThroughputWidget *mThroughputWidget;
 private:
-    Ui::SAKChartsManager *mUi;
+    Ui::SAKChartsController *mUi;
     QTabWidget *mTabWidget;
 };
 

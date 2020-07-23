@@ -12,12 +12,12 @@
 #include "SAKChartsXYSerialWidget.hh"
 #include "SAKChartsThroughputWidget.hh"
 
-#include "ui_SAKChartsManager.h"
+#include "ui_SAKChartsController.h"
 
 SAKChartsController::SAKChartsController(SAKDebugPage *page, QWidget *parent)
     :QWidget (parent)
     ,mDebugPage (page)
-    ,mUi (new Ui::SAKChartsManager)
+    ,mUi (new Ui::SAKChartsController)
 {
     mUi->setupUi(this);
     mTabWidget = mUi->tabWidget;
