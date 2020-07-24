@@ -34,7 +34,7 @@ public:
         bool saveTimestamp;
     };
 
-    SAKOutputSave2FileDialog(QSettings *settings, QWidget *parent = Q_NULLPTR);
+    SAKOutputSave2FileDialog(QSettings *settings = Q_NULLPTR, QWidget *parent = Q_NULLPTR);
     ~SAKOutputSave2FileDialog();
 
     /**
