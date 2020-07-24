@@ -109,7 +109,8 @@ INCLUDEPATH += \
     src/pages/page/device \
     src/pages/page/input \
     src/pages/page/input/crcsettings \
-    src/pages/page/input/preset \
+    src/pages/page/input/datafactory \
+    src/pages/page/input/datapreset \
     src/pages/page/other \
     src/pages/page/other/autoresponse \
     src/pages/page/other/highlight \
@@ -135,8 +136,8 @@ FORMS += \
     src/moreinfo/SAKMoreInformation.ui \
     src/pages/page/SAKDebugPage.ui \
     src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui \
-    src/pages/page/input/preset/SAKInputDataItem.ui \
-    src/pages/page/input/preset/SAKInputDataItemManager.ui \
+    src/pages/page/input/datapreset/SAKInputDataItem.ui \
+    src/pages/page/input/datapreset/SAKInputDataItemManager.ui \
     src/pages/page/other/autoresponse/SAKAutoResponseItemWidget.ui \
     src/pages/page/other/autoresponse/SAKAutoResponseSettingsWidget.ui \
     src/pages/page/other/highlight/SAKHighlightSettingsWidget.ui \
@@ -176,9 +177,9 @@ HEADERS += \
     src/pages/page/device/SAKDebugPageDevice.hh \
     src/pages/page/input/SAKDebugPageInputController.hh \
     src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.hh \
-    src/pages/page/input/preset/SAKInputDataFactory.hh \
-    src/pages/page/input/preset/SAKInputDataItem.hh \
-    src/pages/page/input/preset/SAKInputDataItemManager.hh \
+    src/pages/page/input/datafactory/SAKInputDataFactory.hh \
+    src/pages/page/input/datapreset/SAKInputDataItem.hh \
+    src/pages/page/input/datapreset/SAKInputDataItemManager.hh \
     src/pages/page/other/SAKDebugPageOtherController.hh \
     src/pages/page/other/autoresponse/SAKAutoResponseItemWidget.hh \
     src/pages/page/other/autoresponse/SAKAutoResponseSettingsWidget.hh \
@@ -237,9 +238,9 @@ SOURCES += \
     src/pages/page/device/SAKDebugPageDevice.cc \
     src/pages/page/input/SAKDebugPageInputController.cc \
     src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.cc \
-    src/pages/page/input/preset/SAKInputDataFactory.cc \
-    src/pages/page/input/preset/SAKInputDataItem.cc \
-    src/pages/page/input/preset/SAKInputDataItemManager.cc \
+    src/pages/page/input/datafactory/SAKInputDataFactory.cc \
+    src/pages/page/input/datapreset/SAKInputDataItem.cc \
+    src/pages/page/input/datapreset/SAKInputDataItemManager.cc \
     src/pages/page/other/SAKDebugPageOtherController.cc \
     src/pages/page/other/autoresponse/SAKAutoResponseItemWidget.cc \
     src/pages/page/other/autoresponse/SAKAutoResponseSettingsWidget.cc \
