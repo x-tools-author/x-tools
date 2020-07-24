@@ -56,12 +56,12 @@ private:
         SAKDebugPageInputController::InputParametersContext parameters;
     };
 
-    QList<RawDataStruct> mRawDataList;
     QMutex mRawDataListMutex;
     QMutex mThreadMutex;
+    SAKDebugPage *mDebugPage;
     QWaitCondition mThreadCondition;
     SAKCRCInterface *mCrcInterface;
-    SAKDebugPage *mDebugPage;
+    QList<RawDataStruct> mRawDataList;
 private:
     RawDataStruct takeRawData();
     void innnerCookData(QString rawData, SAKDebugPageInputController::InputParametersContext parameters);
