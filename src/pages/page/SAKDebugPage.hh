@@ -357,4 +357,4 @@ private slots:
     void on_dataVisualizationPushButton_clicked();
 };
 
-#endif  // SAKTabPage_H
+#endif  // SAKTABPAGE_HH
