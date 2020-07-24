@@ -102,6 +102,79 @@ void SAKDebugPageInputController::showCrcSettingsDialog()
     mCrcSettingsDialog->show();
 }
 
+void SAKDebugPageInputController::formattingInputText(QTextEdit *textEdit, int model)
+{
+    if (!textEdit){
+        return;
+    }
+
+    textEdit->blockSignals(true);
+    QString plaintext = textEdit->toPlainText();
+    if (!plaintext.isEmpty()){
+        if (model == SAKDataStruct::InputFormatBin){
+            QString strTemp;
+            plaintext.remove(QRegExp("[^0-1]"));
+            for (int i = 0; i < plaintext.length(); i++){
+                if ((i != 0) && (i % 8 == 0)){
+                    strTemp.append(QChar(' '));
+                }
+                strTemp.append(plaintext.at(i));
+            }
+            textEdit->setText(strTemp);
+            textEdit->moveCursor(QTextCursor::End);
+        }else if(model == SAKDataStruct::InputFormatOct) {
+            QString strTemp;
+            plaintext.remove(QRegExp("[^0-7]"));
+            for (int i = 0; i < plaintext.length(); i++){
+                if ((i != 0) && (i % 2 == 0)){
+                    strTemp.append(QChar(' '));
+                }
+                strTemp.append(plaintext.at(i));
+            }
+            textEdit->setText(strTemp);
+            textEdit->moveCursor(QTextCursor::End);
+        }else if(model == SAKDataStruct::InputFormatDec) {
+            QString strTemp;
+            plaintext.remove(QRegExp("[^0-9]"));
+            for (int i = 0; i < plaintext.length(); i++){
+                if ((i != 0) && (i % 2 == 0)){
+                    strTemp.append(QChar(' '));
+                }
+                strTemp.append(plaintext.at(i));
+            }
+            textEdit->setText(strTemp);
+            textEdit->moveCursor(QTextCursor::End);
+        }else if(model == SAKDataStruct::InputFormatHex) {
+            QString strTemp;
+            plaintext.remove(QRegExp("[^0-9a-fA-F]"));
+            for (int i = 0; i < plaintext.length(); i++){
+                if ((i != 0) && (i % 2 == 0)){
+                    strTemp.append(QChar(' '));
+                }
+                strTemp.append(plaintext.at(i));
+            }
+            textEdit->setText(strTemp.toUpper());
+            textEdit->moveCursor(QTextCursor::End);
+        }else if(model == SAKDataStruct::InputFormatAscii) {
+            QString newString;
+            for (int i = 0; i < plaintext.count(); i++){
+                if (plaintext.at(i).unicode() <= 127){
+                    newString.append(plaintext.at(i));
+                }
+            }
+            textEdit->setText(newString);
+            textEdit->moveCursor(QTextCursor::End);
+        }else if(model == SAKDataStruct::InputFormatUtf8) {
+            /// nothing to do
+        }else if(model == SAKDataStruct::InputFormatLocal) {
+            /// nothing to do
+        }else {
+            Q_ASSERT_X(false, __FUNCTION__, "Unknow input model");
+        }
+    }
+    textEdit->blockSignals(false);
+}
+
 void SAKDebugPageInputController::changeInputModel(const QString &text)
 {
     /// @brief 在ui初始化的时候，会出现text为empty的情况
@@ -279,75 +352,3 @@ void SAKDebugPageInputController::updateCRC()
     mCrcLabel->setText(QString(QString("%1").arg(QString::number(crc, 16), (bits/8)*2, '0')).toUpper().prepend("0x"));
 }
 
-void SAKDebugPageInputController::formattingInputText(QTextEdit *textEdit, int model)
-{
-    if (!textEdit){
-        return;
-    }
-
-    textEdit->blockSignals(true);
-    QString plaintext = textEdit->toPlainText();
-    if (!plaintext.isEmpty()){
-        if (model == SAKDataStruct::InputFormatBin){
-            QString strTemp;
-            plaintext.remove(QRegExp("[^0-1]"));
-            for (int i = 0; i < plaintext.length(); i++){
-                if ((i != 0) && (i % 8 == 0)){
-                    strTemp.append(QChar(' '));
-                }
-                strTemp.append(plaintext.at(i));
-            }
-            textEdit->setText(strTemp);
-            textEdit->moveCursor(QTextCursor::End);
-        }else if(model == SAKDataStruct::InputFormatOct) {
-            QString strTemp;
-            plaintext.remove(QRegExp("[^0-7]"));
-            for (int i = 0; i < plaintext.length(); i++){
-                if ((i != 0) && (i % 2 == 0)){
-                    strTemp.append(QChar(' '));
-                }
-                strTemp.append(plaintext.at(i));
-            }
-            textEdit->setText(strTemp);
-            textEdit->moveCursor(QTextCursor::End);
-        }else if(model == SAKDataStruct::InputFormatDec) {
-            QString strTemp;
-            plaintext.remove(QRegExp("[^0-9]"));
-            for (int i = 0; i < plaintext.length(); i++){
-                if ((i != 0) && (i % 2 == 0)){
-                    strTemp.append(QChar(' '));
-                }
-                strTemp.append(plaintext.at(i));
-            }
-            textEdit->setText(strTemp);
-            textEdit->moveCursor(QTextCursor::End);
-        }else if(model == SAKDataStruct::InputFormatHex) {
-            QString strTemp;
-            plaintext.remove(QRegExp("[^0-9a-fA-F]"));
-            for (int i = 0; i < plaintext.length(); i++){
-                if ((i != 0) && (i % 2 == 0)){
-                    strTemp.append(QChar(' '));
-                }
-                strTemp.append(plaintext.at(i));
-            }
-            textEdit->setText(strTemp.toUpper());
-            textEdit->moveCursor(QTextCursor::End);
-        }else if(model == SAKDataStruct::InputFormatAscii) {
-            QString newString;
-            for (int i = 0; i < plaintext.count(); i++){
-                if (plaintext.at(i).unicode() <= 127){
-                    newString.append(plaintext.at(i));
-                }
-            }
-            textEdit->setText(newString);
-            textEdit->moveCursor(QTextCursor::End);
-        }else if(model == SAKDataStruct::InputFormatUtf8) {
-            /// nothing to do
-        }else if(model == SAKDataStruct::InputFormatLocal) {
-            /// nothing to do
-        }else {
-            Q_ASSERT_X(false, __FUNCTION__, "Unknow input model");
-        }
-    }
-    textEdit->blockSignals(false);
-}

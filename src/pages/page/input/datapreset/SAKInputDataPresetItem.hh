@@ -17,61 +17,65 @@
 #include <QComboBox>
 #include <QLineEdit>
 #include <QTextEdit>
+#include <QSqlQuery>
 #include <QPushButton>
-
-#include "SAKDebugPageInputController.hh"
+#include <QSqlDatabase>
 
 namespace Ui {
     class SAKInputDataPresetItem;
 }
 
-class SAKDebugPage;
-class SAKCRCInterface;
-class SAKInputDataFactory;
-class SAKDebugPageInputController;
 // Preset data parameters editting widget
 class SAKInputDataPresetItem:public QWidget
 {
     Q_OBJECT
 public:
-    SAKInputDataPresetItem(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
-    SAKInputDataPresetItem(quint64 id,
+    SAKInputDataPresetItem(QSqlDatabase *sqlDatabase = Q_NULLPTR, QWidget *parent = Q_NULLPTR);
+    SAKInputDataPresetItem(quint64 itemID,
                            quint32 format,
                            QString comment,
-                           quint32 classify,
                            QString data,
-                           SAKDebugPage *debugPage,
+                           QSqlDatabase *sqlDatabase = Q_NULLPTR,
                            QWidget *parent = Q_NULLPTR);
     ~SAKInputDataPresetItem();
 
-    quint64 parameterID();
-    quint32 parameterFormat();
-    QString parameterComment();
-    quint32 parameterClassify();
-    QString parameterData();
+    /**
+     * @brief itemID: Get the id of the item
+     * @return The id of the item
+     */
+    quint64 itemID();
+
+    /**
+     * @brief itemDescription: Get the description of the item
+     * @return The description of the item
+     */
+    QString itemDescription();
+
+    /**
+     * @brief itemText: Get the text of the item
+     * @return The text of the item
+     */
+    QString itemText();
+
+    /**
+     * @brief itemTextFromat: Get the text format of the item
+     * @return The text format of the item
+     */
+    int itemTextFromat();
 private:
-    QPushButton *menuPushButton;
-    QAction *action;
-    SAKDebugPage *debugPage;
-    SAKDebugPageInputController *inputManager;
-    SAKDebugPageInputController::InputParametersContext inputParameters;
-    quint64 id;
+    quint64 mItemID;
+    QSqlDatabase *mSqlDatabase;
 private:
-    void addDataAction(QPushButton *menuPushButton);
-    void removeDataAction(QPushButton *menuPushButton);
-    void updateActionTitle(const QString &title);
-    void updateTextFormat();
-    void sendRawData();
     void initUi();
-signals:
-    void rawDataChanged(QString rawData, SAKDebugPageInputController::InputParametersContext parameters);
 private:
-    Ui::SAKInputDataPresetItem *ui;
-    QComboBox *textFormatComboBox;
-    QLineEdit *descriptionLineEdit;
-    QTextEdit *inputDataTextEdit;
+    Ui::SAKInputDataPresetItem *mUi;
+    QComboBox *mTextFormatComboBox;
+    QLineEdit *mDescriptionLineEdit;
+    QTextEdit *mInputTextEdit;
 private slots:
-//    void on_updatePushButton_clicked();
+    void on_textFormatComboBox_currentTextChanged(const QString &text);
+    void on_descriptionLineEdit_currentTextChanged(const QString &text);
+    void on_inputTextEdit_currentTextChanged(const QString &text);
 };
 
 #endif

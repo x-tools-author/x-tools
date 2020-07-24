@@ -50,7 +50,12 @@ public:
      */
     void showCrcSettingsDialog();
 
-    friend class SAKInputDataPresetItem;
+    /**
+     * @brief formattingInputText: formattting input text According to model
+     * @param textEdit: Text source
+     * @param model: text model
+     */
+    static void formattingInputText(QTextEdit *textEdit, int model);
 private:
     SAKDebugPage *mDebugPage;
     QComboBox *mInputModelComboBox;
@@ -91,7 +96,6 @@ private:
     void setCycleEnable();       
     void cycleTimerTimeout();
     void updateCRC();
-    void formattingInputText(QTextEdit *textEdit, int model);
 signals:
     void rawDataChanged(QString rawData, InputParametersContext parameters);
 };

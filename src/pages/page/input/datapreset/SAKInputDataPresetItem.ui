@@ -70,7 +70,7 @@
     </spacer>
    </item>
    <item row="1" column="0" colspan="6">
-    <widget class="QTextEdit" name="inputDataTextEdit">
+    <widget class="QTextEdit" name="inputTextEdit">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
        <horstretch>0</horstretch>

@@ -16,150 +16,86 @@
 #include "SAKCRCInterface.hh"
 #include "SAKInputDataFactory.hh"
 #include "SAKInputDataPresetItem.hh"
+#include "SAKDebugPageInputController.hh"
 #include "SAKDebugPageDatabaseInterface.hh"
 
 #include "ui_SAKInputDataPresetItem.h"
 
-SAKInputDataPresetItem::SAKInputDataPresetItem(SAKDebugPage *debugPage, QWidget *parent)
+SAKInputDataPresetItem::SAKInputDataPresetItem(QSqlDatabase *sqlDatabase, QWidget *parent)
     :QWidget(parent)
-    ,debugPage(debugPage)
-    ,ui(new Ui::SAKInputDataPresetItem)
+    ,mSqlDatabase(sqlDatabase)
+    ,mUi(new Ui::SAKInputDataPresetItem)
 {
     initUi();
-    id = QDateTime::currentMSecsSinceEpoch();
+    mItemID = QDateTime::currentMSecsSinceEpoch();
 }
 
 SAKInputDataPresetItem::SAKInputDataPresetItem(quint64 id,
-                                   quint32 format,
-                                   QString comment,
-                                   quint32 classify,
-                                   QString data,
-                                   SAKDebugPage *debugPage,
-                                   QWidget *parent)
+                                               quint32 format,
+                                               QString comment,
+                                               QString data,
+                                               QSqlDatabase *sqlDatabase,
+                                               QWidget *parent)
     :QWidget(parent)
-    ,debugPage(debugPage)
-    ,id(id)
-    ,ui(new Ui::SAKInputDataPresetItem)
+    ,mItemID(id)
+    ,mSqlDatabase(sqlDatabase)
+    ,mUi(new Ui::SAKInputDataPresetItem)
 {
     initUi();
-    textFormatComboBox->setCurrentIndex(format);
-    descriptionLineEdit->setText(comment);
-    Q_UNUSED(classify);
-    inputDataTextEdit->setText(data);
+    mTextFormatComboBox->setCurrentIndex(format);
+    mDescriptionLineEdit->setText(comment);
+    mInputTextEdit->setText(data);
 }
 
 SAKInputDataPresetItem::~SAKInputDataPresetItem()
 {
-    delete ui;
+    delete mUi;
 }
 
-quint64 SAKInputDataPresetItem::parameterID()
+quint64 SAKInputDataPresetItem::itemID()
 {
-    return id;
+    return mItemID;
 }
 
-quint32 SAKInputDataPresetItem::parameterFormat()
+QString SAKInputDataPresetItem::itemDescription()
 {
-    return textFormatComboBox->currentIndex();
+    return mDescriptionLineEdit->text();
 }
 
-QString SAKInputDataPresetItem::parameterComment()
+QString SAKInputDataPresetItem::itemText()
 {
-    return descriptionLineEdit->text();
+    return mInputTextEdit->toPlainText();
 }
 
-quint32 SAKInputDataPresetItem::parameterClassify()
+int SAKInputDataPresetItem::itemTextFromat()
 {
-    quint32 ret = 0;
-    return ret;
-}
-
-QString SAKInputDataPresetItem::parameterData()
-{
-    return inputDataTextEdit->toPlainText();
-}
-
-void SAKInputDataPresetItem::addDataAction(QPushButton *menuPushButton)
-{
-    if (!menuPushButton){
-        return;
-    }
-
-    QMenu *menu = menuPushButton->menu();
-    if (!menu){
-        menu = new QMenu(menuPushButton);
-        menuPushButton->setMenu(menu);
-    }
-
-    action = new QAction(descriptionLineEdit->text(), this);
-    menu->addAction(action);
-    connect(action, &QAction::triggered, this, &SAKInputDataPresetItem::sendRawData);
-}
-
-void SAKInputDataPresetItem::removeDataAction(QPushButton *menuPushButton)
-{
-    if (!menuPushButton){
-        return;
-    }
-
-    QMenu *menu = menuPushButton->menu();
-    if (menu){
-        QList<QAction*> actions = menu->actions();
-        if (!actions.isEmpty()){
-            for(auto var:actions){
-                if (action == var){
-                    menu->removeAction(action);
-                }
-            }
-        }
-    }
-}
-
-void SAKInputDataPresetItem::updateActionTitle(const QString &title)
-{
-    action->setText(title);
-}
-
-void SAKInputDataPresetItem::updateTextFormat()
-{
-    inputManager->formattingInputText(inputDataTextEdit, textFormatComboBox->currentData().toInt());
-}
-
-void SAKInputDataPresetItem::sendRawData()
-{
-    QString data = inputDataTextEdit->toPlainText();
-    int format = textFormatComboBox->currentData().toInt();
-
-    if (!data.isEmpty()){
-        debugPage->writeRawData(data, format);
-    }
+    return mTextFormatComboBox->currentData().toInt();
 }
 
 void SAKInputDataPresetItem::initUi()
 {
-    ui->setupUi(this);
-    inputManager = debugPage->inputController();
+    mUi->setupUi(this);
 
-    textFormatComboBox = ui->textFormatComboBox;
-    descriptionLineEdit = ui->descriptionLineEdit;
-    inputDataTextEdit = ui->inputDataTextEdit;
-    SAKGlobal::initInputTextFormatComboBox(textFormatComboBox);
-
-    menuPushButton = inputManager->mSendPresetPushButton;
-    addDataAction(menuPushButton);
-    connect(descriptionLineEdit, &QLineEdit::textChanged, this, &SAKInputDataPresetItem::updateActionTitle);
-    connect(inputDataTextEdit, &QTextEdit::textChanged, this, &SAKInputDataPresetItem::updateTextFormat);
-    connect(textFormatComboBox, &QComboBox::currentTextChanged, inputDataTextEdit, &QTextEdit::clear);
+    mTextFormatComboBox = mUi->textFormatComboBox;
+    mDescriptionLineEdit = mUi->descriptionLineEdit;
+    mInputTextEdit = mUi->inputTextEdit;
+    SAKGlobal::initInputTextFormatComboBox(mTextFormatComboBox);
 }
 
-//void SAKInputDataPresetItem::on_updatePushButton_clicked()
-//{
-//    QString tableName = SAKDataStruct::presettingDataTableName(debugPage->pageType());
-//    SAKDataStruct::SAKStructPresettingDataItem item;
-//    item.id = parameterID();
-//    item.data = parameterData();
-//    item.format = parameterFormat();
-//    item.comment = parameterComment();
-//    item.classify = parameterClassify();
-//    SAKDebugPageDatabaseInterface::instance()->updatePresettingDataItem(tableName, item);
-//}
+void SAKInputDataPresetItem::on_textFormatComboBox_currentTextChanged(const QString &text)
+{
+    mInputTextEdit->clear();
+    Q_UNUSED(text);
+}
+
+void SAKInputDataPresetItem::on_descriptionLineEdit_currentTextChanged(const QString &text)
+{
+    Q_UNUSED(text);
+}
+
+void SAKInputDataPresetItem::on_inputTextEdit_currentTextChanged(const QString &text)
+{
+    // It seems to be not OOP
+    SAKDebugPageInputController::formattingInputText(mInputTextEdit, mTextFormatComboBox->currentData().toInt());
+    Q_UNUSED(text);
+}

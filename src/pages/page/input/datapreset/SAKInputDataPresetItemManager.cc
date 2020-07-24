@@ -64,12 +64,10 @@ void innerCreateItem(SAKDataStruct::SAKStructPresettingDataItem &var, SAKDebugPa
 {
     QListWidgetItem *item = new QListWidgetItem(listWidget);
     SAKInputDataPresetItem *itemWidget = new SAKInputDataPresetItem(var.id,
-                                                        var.format,
-                                                        var.comment,
-                                                        var.classify,
-                                                        var.data,
-                                                        debugPage,
-                                                        itemManager);
+                                                                    var.format,
+                                                                    var.comment,
+                                                                    var.data,
+                                                                    Q_NULLPTR);
     item->setSizeHint(itemWidget->sizeHint());
     listWidget->addItem(item);
     listWidget->setItemWidget(item, itemWidget);
@@ -103,7 +101,7 @@ bool SAKInputDataPresetItemManager::contains(quint64 paraID)
         QListWidgetItem *item = listWidget->item(i);
         QWidget *w = listWidget->itemWidget(item);
         SAKInputDataPresetItem *itemWidget = reinterpret_cast<SAKInputDataPresetItem*>(w);
-        if (itemWidget->parameterID() == paraID){
+        if (itemWidget->itemID() == paraID){
             contain = true;
             break;
         }
@@ -118,7 +116,7 @@ void SAKInputDataPresetItemManager::on_deletePushButton_clicked()
     if (item){
         SAKInputDataPresetItem *itemWidget = reinterpret_cast<SAKInputDataPresetItem*>(listWidget->itemWidget(item));
         SAKDataStruct::SAKStructPresettingDataItem dataItem;
-        dataItem.id = itemWidget->parameterID();
+        dataItem.id = itemWidget->itemID();
         databaseInterface->deletePresettingDataItem(tableName, dataItem);
 
         listWidget->removeItemWidget(item);
@@ -129,19 +127,19 @@ void SAKInputDataPresetItemManager::on_deletePushButton_clicked()
 void SAKInputDataPresetItemManager::on_addPushButton_clicked()
 {
     QListWidgetItem *item = new QListWidgetItem(listWidget);
-    SAKInputDataPresetItem *itemWidget = new SAKInputDataPresetItem(debugPage, this);
+    SAKInputDataPresetItem *itemWidget = new SAKInputDataPresetItem(nullptr, this);
     item->setSizeHint(itemWidget->sizeHint());
     listWidget->addItem(item);
     listWidget->setItemWidget(item, itemWidget);
 
     /// @brief 添加记录至数据库
-    SAKDataStruct::SAKStructPresettingDataItem dataItem;
-    dataItem.id = itemWidget->parameterID();
-    dataItem.data = itemWidget->parameterData();
-    dataItem.format = itemWidget->parameterFormat();
-    dataItem.comment = itemWidget->parameterComment();
-    dataItem.classify = itemWidget->parameterClassify();
-    databaseInterface->insertPresettingDataItem(tableName, dataItem);
+//    SAKDataStruct::SAKStructPresettingDataItem dataItem;
+//    dataItem.id = itemWidget->itemID();
+//    dataItem.data = itemWidget->itemText();
+//    dataItem.format = itemWidget->parameterFormat();
+//    dataItem.comment = itemWidget->itemDescription();
+//    dataItem.classify = itemWidget->parameterClassify();
+//    databaseInterface->insertPresettingDataItem(tableName, dataItem);
 }
 
 void SAKInputDataPresetItemManager::on_outportPushButton_clicked()
