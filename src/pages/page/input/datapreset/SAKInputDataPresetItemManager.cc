@@ -21,18 +21,18 @@
 #include "SAKCRCInterface.hh"
 #include "SAKInputDataPresetItem.hh"
 #include "SAKInputDataFactory.hh"
-#include "SAKInputDataItemManager.hh"
+#include "SAKInputDataPresetItemManager.hh"
 #include "SAKDebugPageDatabaseInterface.hh"
 
-#include "ui_SAKInputDataItemManager.h"
+#include "ui_SAKInputDataPresetItemManager.h"
 
-SAKInputDataItemManager::SAKInputDataItemManager(SAKDebugPage *debugPage, SAKDebugPageInputController *inputManager, QWidget *parent)
+SAKInputDataPresetItemManager::SAKInputDataPresetItemManager(SAKDebugPage *debugPage, SAKDebugPageInputController *inputManager, QWidget *parent)
     :QWidget(parent)
     ,debugPage(debugPage)
     ,crcInterface(new SAKCRCInterface)
     ,factory(new SAKInputDataFactory)
     ,inputManager(inputManager)
-    ,ui(new Ui::SAKInputDataItemManager)
+    ,ui(new Ui::SAKInputDataPresetItemManager)
 {
     ui->setupUi(this);
     deletePushButton = ui->deletePushButton;
@@ -53,14 +53,14 @@ SAKInputDataItemManager::SAKInputDataItemManager(SAKDebugPage *debugPage, SAKDeb
     readinRecord();
 }
 
-SAKInputDataItemManager::~SAKInputDataItemManager()
+SAKInputDataPresetItemManager::~SAKInputDataPresetItemManager()
 {
     delete crcInterface;
     delete ui;
     delete factory;
 }
 
-void innerCreateItem(SAKDataStruct::SAKStructPresettingDataItem &var, SAKDebugPage *debugPage, SAKDebugPageInputController *inputManager, QListWidget *listWidget, SAKInputDataItemManager *itemManager)
+void innerCreateItem(SAKDataStruct::SAKStructPresettingDataItem &var, SAKDebugPage *debugPage, SAKDebugPageInputController *inputManager, QListWidget *listWidget, SAKInputDataPresetItemManager *itemManager)
 {
     QListWidgetItem *item = new QListWidgetItem(listWidget);
     SAKInputDataPresetItem *itemWidget = new SAKInputDataPresetItem(var.id,
@@ -76,7 +76,7 @@ void innerCreateItem(SAKDataStruct::SAKStructPresettingDataItem &var, SAKDebugPa
     listWidget->setItemWidget(item, itemWidget);
 }
 
-void SAKInputDataItemManager::readinRecord()
+void SAKInputDataPresetItemManager::readinRecord()
 {
     QList<SAKDataStruct::SAKStructPresettingDataItem> itemList = databaseInterface->selectPresettingDataItem(tableName);
     for (auto var : itemList){
@@ -84,7 +84,7 @@ void SAKInputDataItemManager::readinRecord()
     }
 }
 
-void SAKInputDataItemManager::outputMessage(QString msg, bool isError)
+void SAKInputDataPresetItemManager::outputMessage(QString msg, bool isError)
 {
     QString color = "black";
     if (isError){
@@ -97,7 +97,7 @@ void SAKInputDataItemManager::outputMessage(QString msg, bool isError)
     clearMessageInfoTimer.start();
 }
 
-bool SAKInputDataItemManager::contains(quint64 paraID)
+bool SAKInputDataPresetItemManager::contains(quint64 paraID)
 {
     bool contain = false;
     for (int i = 0; i < listWidget->count(); i++){
@@ -113,7 +113,7 @@ bool SAKInputDataItemManager::contains(quint64 paraID)
     return contain;
 }
 
-void SAKInputDataItemManager::on_deletePushButton_clicked()
+void SAKInputDataPresetItemManager::on_deletePushButton_clicked()
 {
     QListWidgetItem *item = listWidget->currentItem();
     if (item){
@@ -127,7 +127,7 @@ void SAKInputDataItemManager::on_deletePushButton_clicked()
     }
 }
 
-void SAKInputDataItemManager::on_addPushButton_clicked()
+void SAKInputDataPresetItemManager::on_addPushButton_clicked()
 {
     QListWidgetItem *item = new QListWidgetItem(listWidget);
     SAKInputDataPresetItem *itemWidget = new SAKInputDataPresetItem(debugPage, inputManager, this);
@@ -145,7 +145,7 @@ void SAKInputDataItemManager::on_addPushButton_clicked()
     databaseInterface->insertPresettingDataItem(tableName, dataItem);
 }
 
-void SAKInputDataItemManager::on_outportPushButton_clicked()
+void SAKInputDataPresetItemManager::on_outportPushButton_clicked()
 {
     /// @brief 从数据库中读入记录
     QList<SAKDataStruct::SAKStructPresettingDataItem> itemList = databaseInterface->selectPresettingDataItem(tableName);
@@ -187,7 +187,7 @@ void SAKInputDataItemManager::on_outportPushButton_clicked()
     }
 }
 
-void SAKInputDataItemManager::on_importPushButton_clicked()
+void SAKInputDataPresetItemManager::on_importPushButton_clicked()
 {
     QString defaultPath = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
     QString fileName = QFileDialog::getOpenFileName(this, tr("导出数据"), defaultPath, QString("json (*.json)"));

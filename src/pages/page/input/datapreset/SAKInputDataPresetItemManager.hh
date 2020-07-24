@@ -22,18 +22,18 @@
 #include "SAKDebugPageInputController.hh"
 
 namespace Ui {
-    class SAKInputDataItemManager;
+    class SAKInputDataPresetItemManager;
 }
 
 class SAKDebugPage;
 class SAKDebugPageDatabaseInterface;
 /// @brief 预设数据管理窗口
-class SAKInputDataItemManager:public QWidget
+class SAKInputDataPresetItemManager:public QWidget
 {
     Q_OBJECT
 public:
-    SAKInputDataItemManager(SAKDebugPage *debugPage, SAKDebugPageInputController *inputManager, QWidget *parent = Q_NULLPTR);
-    ~SAKInputDataItemManager();
+    SAKInputDataPresetItemManager(SAKDebugPage *debugPage, SAKDebugPageInputController *inputManager, QWidget *parent = Q_NULLPTR);
+    ~SAKInputDataPresetItemManager();
 
     struct InputDataItemKey {
         const QString id = QString("id");
@@ -57,7 +57,7 @@ private:
     void outputMessage(QString msg, bool isError = false);
     bool contains(quint64 paraID);
 private:
-    Ui::SAKInputDataItemManager *ui;
+    Ui::SAKInputDataPresetItemManager *ui;
     QPushButton *deletePushButton;
     QPushButton *addPushButton;
     QPushButton *outportPushButton;

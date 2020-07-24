@@ -136,8 +136,8 @@ FORMS += \
     src/moreinfo/SAKMoreInformation.ui \
     src/pages/page/SAKDebugPage.ui \
     src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui \
-    src/pages/page/input/datapreset/SAKInputDataItemManager.ui \
     src/pages/page/input/datapreset/SAKInputDataPresetItem.ui \
+    src/pages/page/input/datapreset/SAKInputDataPresetItemManager.ui \
     src/pages/page/other/autoresponse/SAKAutoResponseItemWidget.ui \
     src/pages/page/other/autoresponse/SAKAutoResponseSettingsWidget.ui \
     src/pages/page/other/highlight/SAKHighlightSettingsWidget.ui \
@@ -178,8 +178,8 @@ HEADERS += \
     src/pages/page/input/SAKDebugPageInputController.hh \
     src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.hh \
     src/pages/page/input/datafactory/SAKInputDataFactory.hh \
-    src/pages/page/input/datapreset/SAKInputDataItemManager.hh \
     src/pages/page/input/datapreset/SAKInputDataPresetItem.hh \
+    src/pages/page/input/datapreset/SAKInputDataPresetItemManager.hh \
     src/pages/page/other/SAKDebugPageOtherController.hh \
     src/pages/page/other/autoresponse/SAKAutoResponseItemWidget.hh \
     src/pages/page/other/autoresponse/SAKAutoResponseSettingsWidget.hh \
@@ -239,8 +239,8 @@ SOURCES += \
     src/pages/page/input/SAKDebugPageInputController.cc \
     src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.cc \
     src/pages/page/input/datafactory/SAKInputDataFactory.cc \
-    src/pages/page/input/datapreset/SAKInputDataItemManager.cc \
     src/pages/page/input/datapreset/SAKInputDataPresetItem.cc \
+    src/pages/page/input/datapreset/SAKInputDataPresetItemManager.cc \
     src/pages/page/other/SAKDebugPageOtherController.cc \
     src/pages/page/other/autoresponse/SAKAutoResponseItemWidget.cc \
     src/pages/page/other/autoresponse/SAKAutoResponseSettingsWidget.cc \
