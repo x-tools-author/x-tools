@@ -169,12 +169,12 @@ private:
     SAKDebugPageDatabaseInterface *mDatabaseInterface;
 
 #ifdef SAK_IMPORT_CHARTS_MODULE
-    SAKDebugPageChartsController *mDataVisualizationManager;
+    SAKDebugPageChartsController *mChartsController;
 #endif
-    SAKDebugPageOtherController *mOtherSettings;
-    SAKDebugPageStatisticsController *mStatisticsManager;
-    SAKDebugPageOutputController *mOutputManager;
-    SAKDebugPageInputController *mDebugPageInputManager;
+    SAKDebugPageOtherController *mOtherController;
+    SAKDebugPageStatisticsController *mStatisticsController;
+    SAKDebugPageOutputController *mOutputController;
+    SAKDebugPageInputController *mInputController;
 private:
     void initSettingKey();
     /// @brief 初始化配置选项名称

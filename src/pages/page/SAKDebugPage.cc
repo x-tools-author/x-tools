@@ -60,12 +60,12 @@ SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
     mUi->setupUi(this);
     initUiPointer();
 
-    mOutputManager           = new SAKDebugPageOutputController(this, this);
-    mOtherSettings           = new SAKDebugPageOtherController(this, this);
-    mStatisticsManager       = new SAKDebugPageStatisticsController(this, this);
-    mDebugPageInputManager   = new SAKDebugPageInputController(this, this);
+    mOutputController           = new SAKDebugPageOutputController(this, this);
+    mOtherController           = new SAKDebugPageOtherController(this, this);
+    mStatisticsController       = new SAKDebugPageStatisticsController(this, this);
+    mInputController   = new SAKDebugPageInputController(this, this);
 #ifdef SAK_IMPORT_CHARTS_MODULE
-    mDataVisualizationManager= new SAKDebugPageChartsController(this);
+    mChartsController= new SAKDebugPageChartsController(this);
 #endif
 
     mRreadWriteParameters.waitForReadyReadTime = MINI_READ_WRITE_WATINGT_TIME;
@@ -98,9 +98,9 @@ SAKDebugPage::~SAKDebugPage()
     }
 
 #ifdef SAK_IMPORT_CHARTS_MODULE
-    if (mDataVisualizationManager){
-        delete mDataVisualizationManager;
-        mDataVisualizationManager = Q_NULLPTR;
+    if (mChartsController){
+        delete mChartsController;
+        mChartsController = Q_NULLPTR;
     }
 #endif
 }
@@ -175,29 +175,29 @@ quint32 SAKDebugPage::pageType()
 
 SAKDebugPageOtherController *SAKDebugPage::otherController()
 {
-    return mOtherSettings;
+    return mOtherController;
 }
 
 SAKDebugPageInputController *SAKDebugPage::inputController()
 {
-    return mDebugPageInputManager;
+    return mInputController;
 }
 
 #ifdef SAK_IMPORT_CHARTS_MODULE
 SAKDebugPageChartsController *SAKDebugPage::chartsController()
 {
-   return mDataVisualizationManager;
+   return mChartsController;
 }
 #endif
 
 SAKDebugPageOutputController *SAKDebugPage::outputController()
 {
-    return mOutputManager;
+    return mOutputController;
 }
 
 SAKDebugPageStatisticsController *SAKDebugPage::statisticsController()
 {
-    return mStatisticsManager;
+    return mStatisticsController;
 }
 
 void SAKDebugPage::refreshDevice()
@@ -432,7 +432,7 @@ void SAKDebugPage::setupDevice()
         connect(device, &SAKDevice::bytesRead, this, &SAKDebugPage::bytesRead);
 #else
         /// @brief 设备读取到的数据传输至协议分析器中，分析完成的数据回传至调试页面中
-        SAKMoreSettingsWidget *moreSettingsWidget = mOtherSettings->moreSettingsWidget();
+        SAKMoreSettingsWidget *moreSettingsWidget = mOtherController->moreSettingsWidget();
         SAKProtocolAnalyzerWidget *protocolAnalyzerWidget = moreSettingsWidget->protocolAnalyzerWidget();
         connect(mDevice, &SAKDebugPageDevice::bytesRead, protocolAnalyzerWidget, &SAKProtocolAnalyzerWidget::inputBytes);
         connect(protocolAnalyzerWidget, &SAKProtocolAnalyzerWidget::bytesAnalysed, this, &SAKDebugPage::bytesRead);
@@ -493,7 +493,7 @@ void SAKDebugPage::on_addCRCCheckBox_clicked()
 
 void SAKDebugPage::on_crcSettingsPushButton_clicked()
 {
-    mDebugPageInputManager->showCrcSettingsDialog();
+    mInputController->showCrcSettingsDialog();
 }
 
 void SAKDebugPage::on_crcParameterModelsComboBox_currentIndexChanged(int index)
@@ -619,17 +619,17 @@ void SAKDebugPage::initUiPointer()
 void SAKDebugPage::on_dataVisualizationPushButton_clicked()
 {
 #ifdef SAK_IMPORT_CHARTS_MODULE
-    if (mDataVisualizationManager){
-        if (mDataVisualizationManager->isHidden()){
-            mDataVisualizationManager->show();
+    if (mChartsController){
+        if (mChartsController->isHidden()){
+            mChartsController->show();
         }else{
-            mDataVisualizationManager->activateWindow();
+            mChartsController->activateWindow();
         }
     }else{
-        mDataVisualizationManager = new SAKDebugPageChartsController(this);
-        mDataVisualizationManager->show();
-        connect(mDataVisualizationManager, &SAKDebugPageChartsController::destroyed, [&](){
-            mDataVisualizationManager = Q_NULLPTR;
+        mChartsController = new SAKDebugPageChartsController(this);
+        mChartsController->show();
+        connect(mChartsController, &SAKDebugPageChartsController::destroyed, [&](){
+            mChartsController = Q_NULLPTR;
         });
     }
 #else
