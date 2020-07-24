@@ -168,13 +168,14 @@ private:
     QMutex mReadWriteParametersMutex;
     SAKDebugPageDatabaseInterface *mDatabaseInterface;
 
+    // Debug page modules
+    SAKDebugPageOtherController *mOtherController;
+    SAKDebugPageInputController *mInputController;
 #ifdef SAK_IMPORT_CHARTS_MODULE
     SAKDebugPageChartsController *mChartsController;
 #endif
-    SAKDebugPageOtherController *mOtherController;
-    SAKDebugPageStatisticsController *mStatisticsController;
     SAKDebugPageOutputController *mOutputController;
-    SAKDebugPageInputController *mInputController;
+    SAKDebugPageStatisticsController *mStatisticsController;
 private:
     void initSettingKey();
     /// @brief 初始化配置选项名称
