@@ -7,8 +7,8 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
-#ifndef SAKCHARTSMANAGER_HH
-#define SAKCHARTSMANAGER_HH
+#ifndef SAKDEBUGPAGECHARTSMANAGER_HH
+#define SAKDEBUGPAGECHARTSMANAGER_HH
 
 #include <QWidget>
 #include <QTabWidget>
@@ -20,12 +20,12 @@ namespace Ui {
 class SAKDebugPage;
 class SAKChartsXYSerialWidget;
 class SAKChartsThroughputWidget;
-class SAKChartsController:public QWidget
+class SAKDebugPageChartsController:public QWidget
 {
     Q_OBJECT
 public:
-    SAKChartsController(SAKDebugPage *page, QWidget *parent = Q_NULLPTR);
-    ~SAKChartsController();
+    SAKDebugPageChartsController(SAKDebugPage *page, QWidget *parent = Q_NULLPTR);
+    ~SAKDebugPageChartsController();
 private:
     SAKDebugPage *mDebugPage;
     SAKChartsXYSerialWidget *mXYSerialWidget;

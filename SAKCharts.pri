@@ -16,7 +16,7 @@ FORMS += \
     $$PWD/src/pages/page/charts/xyserial/SAKChartsXYSerialEditDialog.ui
 
 HEADERS += \
-    $$PWD/src/pages/page/charts/SAKChartsController.hh \
+    $$PWD/src/pages/page/charts/SAKDebugPageChartsController.hh \
     $$PWD/src/pages/page/charts/xyserial/SAKChartsXYSerialChartView.hh \
     $$PWD/src/pages/page/charts/throughput/SAKChartsThroughputWidget.hh \
     $$PWD/src/pages/page/charts/xyserial/SAKChartsXYSerialChartViewSettingsDialog.hh \
@@ -24,7 +24,7 @@ HEADERS += \
     $$PWD/src/pages/page/charts/xyserial/SAKChartsXYSerialWidget.hh
 
 SOURCES += \
-    $$PWD/src/pages/page/charts/SAKChartsController.cc \
+    $$PWD/src/pages/page/charts/SAKDebugPageChartsController.cc \
     $$PWD/src/pages/page/charts/xyserial/SAKChartsXYSerialChartView.cc \
     $$PWD/src/pages/page/charts/throughput/SAKChartsThroughputWidget.cc \
     $$PWD/src/pages/page/charts/xyserial/SAKChartsXYSerialChartViewSettingsDialog.cc \

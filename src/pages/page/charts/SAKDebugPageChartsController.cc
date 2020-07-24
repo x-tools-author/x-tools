@@ -8,13 +8,13 @@
  * group which number is 952218522 to have a communication.
  */
 #include "SAKDebugPage.hh"
-#include "SAKChartsController.hh"
+#include "SAKDebugPageChartsController.hh"
 #include "SAKChartsXYSerialWidget.hh"
 #include "SAKChartsThroughputWidget.hh"
 
 #include "ui_SAKChartsController.h"
 
-SAKChartsController::SAKChartsController(SAKDebugPage *page, QWidget *parent)
+SAKDebugPageChartsController::SAKDebugPageChartsController(SAKDebugPage *page, QWidget *parent)
     :QWidget (parent)
     ,mDebugPage (page)
     ,mUi (new Ui::SAKChartsController)
@@ -35,7 +35,7 @@ SAKChartsController::SAKChartsController(SAKDebugPage *page, QWidget *parent)
     mTabWidget->addTab(mThroughputWidget, tr("吞吐量"));
 }
 
-SAKChartsController::~SAKChartsController()
+SAKDebugPageChartsController::~SAKDebugPageChartsController()
 {
     delete mUi;
 }
