@@ -115,6 +115,38 @@ public:
      * @return 调试页面类型
      */
     quint32 pageType();
+
+    /**
+     * @brief otherController: Get SAKDebugPageOtherController instance pointer
+     * @return SAKDebugPageOtherController instance pointer
+     */
+    SAKDebugPageOtherController *otherController();
+
+    /**
+     * @brief inputController: Get SAKDebugPageInputController instance pointer
+     * @return SAKDebugPageInputController instance pointer
+     */
+    SAKDebugPageInputController *inputController();
+
+#ifdef SAK_IMPORT_CHARTS_MODULE
+    /**
+     * @brief chartsController: Get SAKDebugPageChartsController instance pointer
+     * @return SAKDebugPageChartsController instance pointer
+     */
+    SAKDebugPageChartsController *chartsController();
+#endif
+
+    /**
+     * @brief outputController: Get SAKDebugPageOutputController instance pointer
+     * @return SAKDebugPageOutputController instance pointer
+     */
+    SAKDebugPageOutputController *outputController();
+
+    /**
+     * @brief statisticsController: Get SAKDebugPageStatisticsController instance pointer
+     * @return SAKDebugPageStatisticsController instance pointer
+     */
+    SAKDebugPageStatisticsController *statisticsController();
 protected:
     /// @brief 刷新设备
     virtual void refreshDevice();
@@ -135,6 +167,14 @@ private:
     struct ReadWriteParameters mRreadWriteParameters;
     QMutex mReadWriteParametersMutex;
     SAKDebugPageDatabaseInterface *mDatabaseInterface;
+
+#ifdef SAK_IMPORT_CHARTS_MODULE
+    SAKDebugPageChartsController *mDataVisualizationManager;
+#endif
+    SAKDebugPageOtherController *mOtherSettings;
+    SAKDebugPageStatisticsController *mStatisticsManager;
+    SAKDebugPageOutputController *mOutputManager;
+    SAKDebugPageInputController *mDebugPageInputManager;
 private:
     void initSettingKey();
     /// @brief 初始化配置选项名称
@@ -296,14 +336,6 @@ protected:
     QPushButton *mDataVisualizationPushButton;
 private slots:
     void on_dataVisualizationPushButton_clicked();
-private:
-#ifdef SAK_IMPORT_CHARTS_MODULE
-    SAKDebugPageChartsController *mDataVisualizationManager;
-#endif
-    SAKDebugPageOtherController *mOtherSettings;
-    SAKDebugPageStatisticsController *mStatisticsManager;
-    SAKDebugPageOutputController *mOutputManager;
-    SAKDebugPageInputController *mDebugPageInputManager;
 };
 
 #endif  // SAKTabPage_H

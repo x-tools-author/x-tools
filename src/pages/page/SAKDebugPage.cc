@@ -173,6 +173,33 @@ quint32 SAKDebugPage::pageType()
     return mDebugPageType;
 }
 
+SAKDebugPageOtherController *SAKDebugPage::otherController()
+{
+    return mOtherSettings;
+}
+
+SAKDebugPageInputController *SAKDebugPage::inputController()
+{
+    return mDebugPageInputManager;
+}
+
+#ifdef SAK_IMPORT_CHARTS_MODULE
+SAKDebugPageChartsController *SAKDebugPage::chartsController()
+{
+   return mDataVisualizationManager;
+}
+#endif
+
+SAKDebugPageOutputController *SAKDebugPage::outputController()
+{
+    return mOutputManager;
+}
+
+SAKDebugPageStatisticsController *SAKDebugPage::statisticsController()
+{
+    return mStatisticsManager;
+}
+
 void SAKDebugPage::refreshDevice()
 {
 
