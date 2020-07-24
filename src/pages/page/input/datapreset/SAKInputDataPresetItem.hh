@@ -45,7 +45,7 @@ public:
         const QString id = QString("ID");
         const QString format = QString("Format");
         const QString description = QString("Description");
-        const QString text = QString("text");
+        const QString text = QString("Text");
     };
 
     /**

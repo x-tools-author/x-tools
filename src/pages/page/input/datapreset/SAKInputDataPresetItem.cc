@@ -9,6 +9,7 @@
  */
 #include <QMenu>
 #include <QDebug>
+#include <QSqlError>
 
 #include "SAKGlobal.hh"
 #include "SAKDebugPage.hh"
@@ -116,6 +117,15 @@ void SAKInputDataPresetItem::on_inputTextEdit_currentTextChanged(const QString &
 
     // update record
     if (mTableName.length() && mSqlDatabase){
-
+        DatabaseColumns columns;
+        const QString queryString = QString("UPDATE %1 SET %2='%3' WHERE %4=%5")
+                .arg(mTableName)
+                .arg(columns.text)
+                .arg(text)
+                .arg(columns.id)
+                .arg(mItemID);
+        if(!mSqlQuery->exec(queryString)){
+            qWarning() << __FUNCTION__ << "Can not update record:" << mSqlQuery->lastError().text();
+        }
     }
 }
