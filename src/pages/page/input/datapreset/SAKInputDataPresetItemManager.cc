@@ -67,6 +67,8 @@ void innerCreateItem(SAKDataStruct::SAKStructPresettingDataItem &var, SAKDebugPa
                                                                     var.format,
                                                                     var.comment,
                                                                     var.data,
+                                                                    debugPage->pageType(),
+                                                                    Q_NULLPTR,
                                                                     Q_NULLPTR);
     item->setSizeHint(itemWidget->sizeHint());
     listWidget->addItem(item);
@@ -127,7 +129,7 @@ void SAKInputDataPresetItemManager::on_deletePushButton_clicked()
 void SAKInputDataPresetItemManager::on_addPushButton_clicked()
 {
     QListWidgetItem *item = new QListWidgetItem(listWidget);
-    SAKInputDataPresetItem *itemWidget = new SAKInputDataPresetItem(nullptr, this);
+    SAKInputDataPresetItem *itemWidget = new SAKInputDataPresetItem(debugPage->pageType(), nullptr, this);
     item->setSizeHint(itemWidget->sizeHint());
     listWidget->addItem(item);
     listWidget->setItemWidget(item, itemWidget);

@@ -135,42 +135,24 @@ void SAKInputDataPresetItem::updateRecord(QString columnName, QVariant value, bo
 void SAKInputDataPresetItem::on_textFormatComboBox_currentTextChanged(const QString &text)
 {
     mInputTextEdit->clear();
-    Q_UNUSED(text);
 
     // update record
     int format = mTextFormatComboBox->findText(text);
     if (mTableName.length() && mSqlDatabase){
         DatabaseColumns columns;
-        const QString queryString = QString("UPDATE %1 SET %2=%3 WHERE %4=%5")
-                .arg(mTableName)
-                .arg(columns.description)
-                .arg(format)
-                .arg(columns.id)
-                .arg(mItemID);
-        if(!mSqlQuery->exec(queryString)){
-            qWarning() << __FUNCTION__ << "Can not update record:" << mSqlQuery->lastError().text();
-        }
+        updateRecord(columns.format, QVariant::fromValue(format), false);
     }
 }
 
 void SAKInputDataPresetItem::on_descriptionLineEdit_currentTextChanged(const QString &text)
 {
-    Q_UNUSED(text);
-    emit descriptionChanged(text.length() ? text : tr("Empty"));
-
     // update record
     if (mTableName.length() && mSqlDatabase){
         DatabaseColumns columns;
-        const QString queryString = QString("UPDATE %1 SET %2='%3' WHERE %4=%5")
-                .arg(mTableName)
-                .arg(columns.description)
-                .arg(text)
-                .arg(columns.id)
-                .arg(mItemID);
-        if(!mSqlQuery->exec(queryString)){
-            qWarning() << __FUNCTION__ << "Can not update record:" << mSqlQuery->lastError().text();
-        }
+        updateRecord(columns.format, QVariant::fromValue(text), true);
     }
+
+    emit descriptionChanged(text.length() ? text : tr("Empty"));
 }
 
 void SAKInputDataPresetItem::on_inputTextEdit_textChanged()
@@ -182,14 +164,6 @@ void SAKInputDataPresetItem::on_inputTextEdit_textChanged()
     QString text = mInputTextEdit->toPlainText();
     if (mTableName.length() && mSqlDatabase){
         DatabaseColumns columns;
-        const QString queryString = QString("UPDATE %1 SET %2='%3' WHERE %4=%5")
-                .arg(mTableName)
-                .arg(columns.text)
-                .arg(text)
-                .arg(columns.id)
-                .arg(mItemID);
-        if(!mSqlQuery->exec(queryString)){
-            qWarning() << __FUNCTION__ << "Can not update record:" << mSqlQuery->lastError().text();
-        }
+        updateRecord(columns.format, QVariant::fromValue(text), true);
     }
 }
