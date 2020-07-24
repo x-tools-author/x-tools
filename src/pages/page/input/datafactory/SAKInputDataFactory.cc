@@ -25,6 +25,9 @@ SAKInputDataFactory::SAKInputDataFactory(QObject *parent)
 
 SAKInputDataFactory::~SAKInputDataFactory()
 {
+    // Wake the thread to handle temp data
+    mThreadCondition.wakeAll();
+    // Exit the thread
     requestInterruption();
     mThreadCondition.wakeAll();
     exit();
