@@ -68,9 +68,9 @@ public:
         int runIntervalTime;        // while循环执行时间间隔
     };
 
-    friend class SAKDebugPageChartsController;
     friend class SAKDebugPageOtherController;
     friend class SAKDebugPageInputController;
+    friend class SAKDebugPageChartsController;
     friend class SAKDebugPageOutputController;
     friend class SAKDebugPageStatisticsController;
 
