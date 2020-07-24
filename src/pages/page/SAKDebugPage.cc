@@ -20,20 +20,23 @@
 #include <QIntValidator>
 #include <QLoggingCategory>
 
-#include "SAKDebugPageDevice.hh"
 #include "SAKGlobal.hh"
 #include "SAKSettings.hh"
 #include "SAKDebugPage.hh"
 #include "SAKDataStruct.hh"
 #include "SAKCRCInterface.hh"
+#include "SAKDebugPageDevice.hh"
 #include "SAKProtocolAnalyzer.hh"
-#include "SAKDebugPageStatisticsController.hh"
 #include "SAKMoreSettingsWidget.hh"
+#include "SAKProtocolAnalyzerWidget.hh"
+#include "SAKHighlightSettingsWidget.hh"
+#include "SAKReadWriteSettingsWidget.hh"
 #include "SAKDebugPageOtherController.hh"
 #include "SAKDebugPageInputController.hh"
 #include "SAKDebugPageOutputController.hh"
-#include "SAKProtocolAnalyzerWidget.hh"
-#include "SAKHighlightSettingsWidget.hh"
+#include "SAKAutoResponseSettingsWidget.hh"
+#include "SAKDebugPageStatisticsController.hh"
+
 #ifdef SAK_IMPORT_CHARTS_MODULE
 #include "SAKDebugPageChartsController.hh"
 #endif

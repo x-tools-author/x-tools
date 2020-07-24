@@ -15,34 +15,32 @@
 #include <QLabel>
 #include <QMutex>
 #include <QWidget>
+#include <QCheckBox>
 #include <QGroupBox>
 #include <QComboBox>
 #include <QDateTime>
 #include <QMetaEnum>
 #include <QTextEdit>
+#include <QListWidget>
 #include <QGridLayout>
 #include <QPushButton>
 #include <QHBoxLayout>
 #include <QApplication>
 #include <QTextBrowser>
 
-#include "SAKCRCInterface.hh"
-#include "SAKReadWriteSettingsWidget.hh"
-#include "SAKAutoResponseSettingsWidget.hh"
-
-class SAKDebugPageDevice;
 class SAKDataFactory;
 class SAKCRCInterface;
-class SAKDebugPageStatisticsController;
-class SAKDebugPageOtherController;
+class SAKDebugPageDevice;
 class SAKTransmissionSettings;
+class SAKDebugPageOtherController;
+class SAKHighlightSettingsWidget;
 class SAKDebugPageInputController;
 class SAKDebugPageOutputController;
-class SAKHighlightSettingsWidget;
 #ifdef SAK_IMPORT_CHARTS_MODULE
 class SAKDebugPageChartsController;
 #endif
 class SAKDebugPageDatabaseInterface;
+class SAKDebugPageStatisticsController;
 
 namespace Ui {
     class SAKDebugPage;
