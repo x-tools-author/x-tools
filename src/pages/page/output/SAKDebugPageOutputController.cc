@@ -105,7 +105,7 @@ void SAKDebugPageOutputController::run()
             break;
         }else{
             mThreadMutex.lock();
-            mThreadWaitCondition.wait(&mThreadMutex);
+            mThreadWaitCondition.wait(&mThreadMutex, 50);
             mThreadMutex.unlock();
         }
     }
