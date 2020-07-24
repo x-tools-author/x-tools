@@ -46,16 +46,11 @@ namespace Ui {
     class SAKDebugPage;
 }
 
-/// @brief 调试页面
+/// @brief Debugging page
 class SAKDebugPage : public QWidget
 {
     Q_OBJECT
 public:
-    /**
-     * @brief SAKDebugPage 调试页面基类
-     * @param type 调试页面类型（SAKGlobal::SAKEnumDebugPageType）
-     * @param parent 资源管理类
-     */
     SAKDebugPage(int type, QWidget *parent = Q_NULLPTR);
     ~SAKDebugPage();
 
@@ -73,22 +68,22 @@ public:
     friend class SAKDebugPageStatisticsController;
 
     /**
-     * @brief write             -- 写数据
-     * @param data              -- 待写的数据
+     * @brief write: Write data to device
+     * @param data: Data need to be written
      */
     void write(QByteArray data);
 
     /**
-     * @brief writeRawData      -- 写数据
-     * @param rawData           -- 代写数据（特殊格式字符串，未经过处理）
-     * @param textFormat        -- SAKGlobal::SAKTextFormat，文本格式
+     * @brief writeRawData: Write raw data
+     * @param rawData: Input text
+     * @param textFormat: input text fromat
      */
     void writeRawData(QString rawData, int textFormat);
 
     /**
-     * @brief outputMessage 向ui输出信息
-     * @param msg 带输出信息
-     * @param isInfo true表示一般信息，false表示错误、警告信息
+     * @brief outputMessage: Output message to ui
+     * @param msg: The message that need to be show
+     * @param isInfo: true-text color is green, false-text color is red
      */
     void outputMessage(QString msg, bool isInfo = true);
 
@@ -105,14 +100,14 @@ public:
     void setReadWriteParameters(ReadWriteParameters parameters);
 
     /**
-     * @brief databaseInterfaceInstance 获取数据库接口类实例
-     * @return 数据库接口类实例
+     * @brief databaseInterfaceInstance: Get the interface for database operation
+     * @return The interface for database operation
      */
     SAKDebugPageDatabaseInterface *databaseInterfaceInstance();
 
     /**
-     * @brief pageType 获取调试页面类型（SAKDataStruct::SAKEnumDebugPageType）
-     * @return 调试页面类型
+     * @brief pageType: The type of debugging page.(SAKDataStruct::SAKEnumDebugPageType)
+     * @return Type of debugging page
      */
     quint32 pageType();
 
