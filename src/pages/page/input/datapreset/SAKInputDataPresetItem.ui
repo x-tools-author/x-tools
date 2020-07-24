@@ -52,7 +52,7 @@
    <item row="0" column="3">
     <widget class="QLineEdit" name="descriptionLineEdit">
      <property name="text">
-      <string>Just a sample</string>
+      <string>Just a exsample</string>
      </property>
     </widget>
    </item>
