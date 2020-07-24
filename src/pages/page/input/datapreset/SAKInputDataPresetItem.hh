@@ -69,12 +69,10 @@ signals:
 private:
     Ui::SAKInputDataPresetItem *ui;
     QComboBox *textFormatComboBox;
-    QComboBox *classifyComboBox;
     QLineEdit *descriptionLineEdit;
     QTextEdit *inputDataTextEdit;
-    QPushButton *updatePushButton;
 private slots:
-    void on_updatePushButton_clicked();
+//    void on_updatePushButton_clicked();
 };
 
 #endif

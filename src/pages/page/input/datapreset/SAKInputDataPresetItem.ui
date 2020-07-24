@@ -23,16 +23,9 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string notr="true">Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="3">
-    <widget class="QLineEdit" name="descriptionLineEdit">
-     <property name="text">
-      <string>心跳包</string>
-     </property>
-    </widget>
-   </item>
    <item row="0" column="1">
     <widget class="QComboBox" name="textFormatComboBox">
      <item>
@@ -45,28 +38,25 @@
    <item row="0" column="2">
     <widget class="QLabel" name="label_2">
      <property name="text">
-      <string>输入描述</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="5">
-    <widget class="QComboBox" name="classifyComboBox"/>
-   </item>
-   <item row="0" column="4">
-    <widget class="QLabel" name="label_3">
-     <property name="text">
-      <string>所属分类</string>
+      <string>Description</string>
      </property>
     </widget>
    </item>
    <item row="0" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>输入格式</string>
+      <string>Text format</string>
      </property>
     </widget>
    </item>
-   <item row="0" column="6">
+   <item row="0" column="3">
+    <widget class="QLineEdit" name="descriptionLineEdit">
+     <property name="text">
+      <string>Just a sample</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="4">
     <spacer name="horizontalSpacer">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -79,17 +69,7 @@
      </property>
     </spacer>
    </item>
-   <item row="0" column="7">
-    <widget class="QPushButton" name="updatePushButton">
-     <property name="toolTip">
-      <string>更新数据库中相应的数据记录</string>
-     </property>
-     <property name="text">
-      <string>更新记录</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0" colspan="8">
+   <item row="1" column="0" colspan="6">
     <widget class="QTextEdit" name="inputDataTextEdit">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -104,14 +84,14 @@
       </size>
      </property>
      <property name="html">
-      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+      <string notr="true">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;QQ:952218522&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="placeholderText">
-      <string>请输入需要发送的数据</string>
+      <string>Please input the data that need to be written</string>
      </property>
     </widget>
    </item>
