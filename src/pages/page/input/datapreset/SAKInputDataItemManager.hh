@@ -48,7 +48,7 @@ private:
     SAKInputDataFactory *factory;
     SAKDebugPageInputController *inputManager;
     QListWidget *listWidget;
-    SAKDebugPageInputController::InputParameters inputParameters;
+    SAKDebugPageInputController::InputParametersContext inputParameters;
     QString tableName;
     SAKDebugPageDatabaseInterface *databaseInterface;
     QTimer clearMessageInfoTimer;

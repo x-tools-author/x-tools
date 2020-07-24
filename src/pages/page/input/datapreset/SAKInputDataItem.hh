@@ -54,7 +54,7 @@ private:
     QAction *action;
     SAKDebugPage *debugPage;
     SAKDebugPageInputController *inputManager;
-    SAKDebugPageInputController::InputParameters inputParameters;
+    SAKDebugPageInputController::InputParametersContext inputParameters;
     quint64 id;
 private:
     void addDataAction(QPushButton *menuPushButton);
@@ -64,7 +64,7 @@ private:
     void sendRawData();
     void initUi();
 signals:
-    void rawDataChanged(QString rawData, SAKDebugPageInputController::InputParameters parameters);
+    void rawDataChanged(QString rawData, SAKDebugPageInputController::InputParametersContext parameters);
 private:
     Ui::SAKInputDataItem *ui;
     QComboBox *textFormatComboBox;
