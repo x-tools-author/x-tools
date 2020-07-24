@@ -1,11 +1,11 @@
 ﻿/*
  * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
  *
- * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
- * project(https://www.qsak.pro). The project is an open source project. You can
- * get the source of the project from: "https://github.com/qsak/QtSwissArmyKnife"
- * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
- * group which number is 952218522 to have a communication.
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  */
 #ifndef SAKINPUTDATAFACTORY_HH
 #define SAKINPUTDATAFACTORY_HH
@@ -17,7 +17,7 @@
 #include "SAKDebugPageInputController.hh"
 
 class SAKCRCInterface;
-/// @brief 输入数据处理类
+/// @brief handle the input data
 class SAKInputDataFactory:public QThread
 {
     Q_OBJECT
@@ -26,33 +26,33 @@ public:
     ~SAKInputDataFactory();
 
     /**
-     * @brief cookData 处理输入数据
-     * @param rawData 原数据
-     * @param parameters 输入参数
+     * @brief cookData: handle the input data
+     * @param rawData: input data
+     * @param parameters: input parameters
      */
-    void cookData(QString rawData, SAKDebugPageInputController::InputParameters parameters);
+    void cookData(QString rawData, SAKDebugPageInputController::InputParametersContext parameters);
 
     /**
-     * @brief crcCalculate 计算输入数据的crc
-     * @param data 输入数据
-     * @param model crc参数模型
-     * @return crc
+     * @brief crcCalculate: calculate crc for input data
+     * @param data: input data
+     * @param model: crc parameters model
+     * @return crc value
      */
     quint32 crcCalculate(QByteArray data, int model);
 
     /**
-     * @brief rawDataToArray 将输入框的数据转换为数组
-     * @param rawData 输入框数据
-     * @param parameters 输入参数
-     * @return 数据
+     * @brief rawDataToArray: text to byte array
+     * @param rawData: input text
+     * @param parameters: input parameters
+     * @return byte array
      */
-    QByteArray rawDataToArray(QString rawData, SAKDebugPageInputController::InputParameters parameters);
+    QByteArray rawDataToArray(QString rawData, SAKDebugPageInputController::InputParametersContext parameters);
 protected:
     void run() final;
 private:
     struct RawDataStruct {
         QString rawData;
-        SAKDebugPageInputController::InputParameters parameters;
+        SAKDebugPageInputController::InputParametersContext parameters;
     };
 
     QList<RawDataStruct> rawDataList;
@@ -63,9 +63,9 @@ private:
     SAKDebugPage *debugPage;
 private:
     RawDataStruct takeRawData();
-    void innnerCookData(QString rawData, SAKDebugPageInputController::InputParameters parameters);
+    void innnerCookData(QString rawData, SAKDebugPageInputController::InputParametersContext parameters);
 signals:
-    /// @brief 输入数据经过处理后通过该信号对外发射
+    // the data can be send directly
     void dataCooked(QByteArray);
 };
 
