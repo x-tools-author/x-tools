@@ -65,7 +65,7 @@ SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
     mStatisticsManager       = new SAKDebugPageStatisticsController(this, this);
     mDebugPageInputManager   = new SAKDebugPageInputController(this, this);
 #ifdef SAK_IMPORT_CHARTS_MODULE
-    mDataVisualizationManager= Q_NULLPTR;
+    mDataVisualizationManager= new SAKDebugPageChartsController(this);
 #endif
 
     mRreadWriteParameters.waitForReadyReadTime = MINI_READ_WRITE_WATINGT_TIME;
