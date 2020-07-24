@@ -27,6 +27,7 @@ class SAKInputDataFactory;
 class SAKInputDataPresetItem;
 class SAKInputCrcSettingsDialog;
 class SAKInputDataPresetItemManager;
+/// @brief input module controller
 class SAKDebugPageInputController:public QObject
 {
     Q_OBJECT
@@ -52,24 +53,24 @@ public:
     friend class SAKInputDataPresetItem;
 private:
     SAKDebugPage *mDebugPage;
-    QComboBox   *mInputModelComboBox;
-    QCheckBox   *mCycleEnableCheckBox;
-    QLineEdit   *mCycleTimeLineEdit;
+    QComboBox *mInputModelComboBox;
+    QCheckBox *mCycleEnableCheckBox;
+    QLineEdit *mCycleTimeLineEdit;
     QPushButton *mSaveInputDataPushButton;
     QPushButton *mReadinFilePushButton;
-    QCheckBox   *mAddCRCCheckBox;
+    QCheckBox *mAddCRCCheckBox;
     QPushButton *mClearInputPushButton;
     QPushButton *mSendPushButton;
-    QTextEdit   *mInputTextEdit;
-    QComboBox   *mCrcParameterModelsComboBox;
-    QLabel      *mCrcLabel;
+    QTextEdit *mInputTextEdit;
+    QComboBox *mCrcParameterModelsComboBox;
+    QLabel *mCrcLabel;
     QPushButton *mPresetPushButton;
     QPushButton *mSendPresetPushButton;
 
     QTimer mTimingTimer;
     SAKInputDataFactory *mInputDataFactory;
     InputParametersContext mInputParameters;
-    SAKCRCInterface * mCrcInterface;
+    SAKCRCInterface *mCrcInterface;
     SAKInputDataPresetItemManager *mInputDataItemManager;
     SAKInputCrcSettingsDialog *mCrcSettingsDialog;
 private:
