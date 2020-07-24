@@ -16,12 +16,12 @@
 #include "SAKGlobal.hh"
 #include "SAKDebugPage.hh"
 #include "SAKDataStruct.hh"
-#include "SAKInputDataItem.hh"
 #include "SAKCRCInterface.hh"
 #include "SAKInputDataFactory.hh"
-#include "SAKInputDataItemManager.hh"
-#include "SAKDebugPageInputController.hh"
+#include "SAKInputDataPresetItem.hh"
 #include "SAKInputCrcSettingsDialog.hh"
+#include "SAKDebugPageInputController.hh"
+#include "SAKInputDataPresetItemManager.hh"
 
 SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugPage *debugPage, QObject *parent)
     :QObject (parent)
@@ -41,12 +41,12 @@ SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugPage *debugPage
     presetPushButton            = debugPage->mPresetPushButton;
     sendPresetPushButton        = debugPage->mSendPresetPushButton;
 
-    qRegisterMetaType<InputParameters>("InputParameters");
+    qRegisterMetaType<InputParametersContext>("InputParameters");
     inputDataFactory = new SAKInputDataFactory;
     inputDataFactory->start();
 
     crcInterface = new SAKCRCInterface;
-    inputDataItemManager = new SAKInputDataItemManager(debugPage, this);
+    inputDataItemManager = new SAKInputDataPresetItemManager(debugPage, this);
     crcSettingsDialog = new SAKInputCrcSettingsDialog;
     SAKInputCrcSettingsDialog::ParameterContext ctx = crcSettingsDialog->parametersContext();
     inputParameters.bigEndian = ctx.bigEndianCRC;
@@ -202,7 +202,7 @@ void SAKDebugPageInputController::sendRawData()
 
 void SAKDebugPageInputController::sendOtherRawData(QString data, int textFormat)
 {
-    InputParameters temp = inputParameters;
+    InputParametersContext temp = inputParameters;
     temp.inputModel = textFormat;
 
     emit rawDataChanged(data, temp);
@@ -351,4 +351,3 @@ void SAKDebugPageInputController::formattingInputText(QTextEdit *textEdit, int m
     }
     textEdit->blockSignals(false);
 }
-

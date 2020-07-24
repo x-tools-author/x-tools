@@ -12,18 +12,20 @@
 
 #include <QLabel>
 #include <QTimer>
+#include <QMutex>
 #include <QObject>
 #include <QTextEdit>
 #include <QComboBox>
 #include <QCheckBox>
 #include <QPushButton>
 #include <QListWidget>
+#include <QWaitCondition>
 
 class SAKDebugPage;
-class SAKInputDataItem;
+class SAKInputDataPresetItem;
 class SAKCRCInterface;
 class SAKInputDataFactory;
-class SAKInputDataItemManager;
+class SAKInputDataPresetItemManager;
 class SAKInputCrcSettingsDialog;
 class SAKDebugPageInputController:public QObject
 {
@@ -32,7 +34,7 @@ public:
     SAKDebugPageInputController(SAKDebugPage *debugPage, QObject *parent = Q_NULLPTR);
     ~SAKDebugPageInputController();
 
-    struct InputParameters {
+    struct InputParametersContext {
         bool    addCRC; // true: append crc value to the tail of data frame
         bool    bigEndian; // true: crc value is big endian
         int     cycleTime; // auto send data interval
@@ -47,10 +49,9 @@ public:
      */
     void showCrcSettingsDialog();
 
-    friend class SAKInputDataItem;
+    friend class SAKInputDataPresetItem;
 private:
     SAKDebugPage *debugPage;
-
     QComboBox   *inputModelComboBox;
     QCheckBox   *cycleEnableCheckBox;
     QLineEdit   *cycleTimeLineEdit;
@@ -64,6 +65,13 @@ private:
     QLabel      *crcLabel;
     QPushButton *presetPushButton;
     QPushButton *sendPresetPushButton;
+
+    QTimer timingTimer;
+    SAKInputDataFactory *inputDataFactory;
+    InputParametersContext inputParameters;
+    SAKCRCInterface *crcInterface;
+    SAKInputDataPresetItemManager *inputDataItemManager;
+    SAKInputCrcSettingsDialog *crcSettingsDialog;
 private:
     void changeInputModel(const QString &text);
     void changeCycleEnableFlag();
@@ -78,24 +86,14 @@ private:
     void changeCRCModel();
     void setPresetData();
     void sendPresetData();
-private:
     void initParameters();
-    void setCycleEnable();    
-private:
-    QTimer timingTimer;
+    void setCycleEnable();       
     void cycleTimerTimeout();
-private:
-    SAKInputDataFactory *inputDataFactory;
-    InputParameters inputParameters;
-    SAKCRCInterface *crcInterface;
-    SAKInputDataItemManager *inputDataItemManager;
-    SAKInputCrcSettingsDialog *crcSettingsDialog;
-
     void updateCRC();
     void formattingInputText(QTextEdit *textEdit, int model);
 signals:
-    void rawDataChanged(QString rawData, InputParameters parameters);
+    void rawDataChanged(QString rawData, InputParametersContext parameters);
 };
-Q_DECLARE_METATYPE(SAKDebugPageInputController::InputParameters);
+Q_DECLARE_METATYPE(SAKDebugPageInputController::InputParametersContext);
 
 #endif
