@@ -34,14 +34,13 @@ class SAKInputDataPresetItem:public QWidget
 {
     Q_OBJECT
 public:
-    SAKInputDataPresetItem(SAKDebugPage *debugPage, SAKDebugPageInputController *inputManager, QWidget *parent = Q_NULLPTR);
+    SAKInputDataPresetItem(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
     SAKInputDataPresetItem(quint64 id,
                            quint32 format,
                            QString comment,
                            quint32 classify,
                            QString data,
                            SAKDebugPage *debugPage,
-                           SAKDebugPageInputController *inputManager,
                            QWidget *parent = Q_NULLPTR);
     ~SAKInputDataPresetItem();
 

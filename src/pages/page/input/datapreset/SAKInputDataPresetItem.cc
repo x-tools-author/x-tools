@@ -20,13 +20,13 @@
 
 #include "ui_SAKInputDataPresetItem.h"
 
-SAKInputDataPresetItem::SAKInputDataPresetItem(SAKDebugPage *debugPage, SAKDebugPageInputController *inputManager, QWidget *parent)
+SAKInputDataPresetItem::SAKInputDataPresetItem(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget(parent)
     ,debugPage(debugPage)
-    ,inputManager(inputManager)
     ,ui(new Ui::SAKInputDataPresetItem)
 {
     initUi();
+    inputManager = debugPage->inputController();
     id = QDateTime::currentMSecsSinceEpoch();
 }
 
@@ -36,15 +36,14 @@ SAKInputDataPresetItem::SAKInputDataPresetItem(quint64 id,
                                    quint32 classify,
                                    QString data,
                                    SAKDebugPage *debugPage,
-                                   SAKDebugPageInputController *inputManager,
                                    QWidget *parent)
     :QWidget(parent)
     ,debugPage(debugPage)
-    ,inputManager(inputManager)
     ,id(id)
     ,ui(new Ui::SAKInputDataPresetItem)
 {
     initUi();
+    inputManager = debugPage->inputController();
     textFormatComboBox->setCurrentIndex(format);
     descriptionLineEdit->setText(comment);
     Q_UNUSED(classify);
