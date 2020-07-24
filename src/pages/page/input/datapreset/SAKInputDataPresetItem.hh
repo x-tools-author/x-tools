@@ -29,6 +29,7 @@ class SAKDebugPage;
 class SAKCRCInterface;
 class SAKInputDataFactory;
 class SAKDebugPageInputController;
+// Preset data parameters editting widget
 class SAKInputDataPresetItem:public QWidget
 {
     Q_OBJECT
