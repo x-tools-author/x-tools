@@ -99,7 +99,7 @@ QByteArray SAKInputDataFactory::rawDataToArray(QString rawData, SAKDebugPageInpu
         data = rawData.toLatin1();
     }else if (parameters.inputModel == SAKDataStruct::InputFormatUtf8){
         data = rawData.toUtf8();
-    }else if (parameters.inputModel == SAKDataStruct::InputFormatUtf8){
+    }else if (parameters.inputModel == SAKDataStruct::InputFormatLocal){
         data = rawData.toLocal8Bit();
     }else {
         data = rawData.toLocal8Bit();
