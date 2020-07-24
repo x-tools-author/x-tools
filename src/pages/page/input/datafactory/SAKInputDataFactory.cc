@@ -18,7 +18,7 @@
 
 SAKInputDataFactory::SAKInputDataFactory(QObject *parent)
     :QThread (parent)
-    ,crcInterface (Q_NULLPTR)
+    ,mCrcInterface (Q_NULLPTR)
 {
 
 }
@@ -26,7 +26,7 @@ SAKInputDataFactory::SAKInputDataFactory(QObject *parent)
 SAKInputDataFactory::~SAKInputDataFactory()
 {
     requestInterruption();
-    threadCondition.wakeAll();
+    mThreadCondition.wakeAll();
     exit();
     wait();
 }
@@ -36,30 +36,30 @@ void SAKInputDataFactory::cookData(QString rawData, SAKDebugPageInputController:
     RawDataStruct rawDataStruct;
     rawDataStruct.rawData = rawData;
     rawDataStruct.parameters = parameters;
-    rawDataListMutex.lock();
-    rawDataListMutex.unlock();
-    rawDataList.append(rawDataStruct);
-    threadCondition.wakeAll();
+    mRawDataListMutex.lock();
+    mRawDataListMutex.unlock();
+    mRawDataList.append(rawDataStruct);
+    mThreadCondition.wakeAll();
 }
 
 quint32 SAKInputDataFactory::crcCalculate(QByteArray data, int model)
 {
-    int bitsWidth = crcInterface->getBitsWidth(static_cast<SAKCRCInterface::CRCModel>(model));
+    int bitsWidth = mCrcInterface->getBitsWidth(static_cast<SAKCRCInterface::CRCModel>(model));
     uint8_t crc8;
     uint16_t crc16;
     uint32_t crc32;
     quint32 crc = 0;
     switch (bitsWidth) {
     case 8:
-        crc8 = crcInterface->crcCalculate<uint8_t>(reinterpret_cast<uint8_t*>(data.data()), static_cast<quint64>(data.length()), static_cast<SAKCRCInterface::CRCModel>(model));
+        crc8 = mCrcInterface->crcCalculate<uint8_t>(reinterpret_cast<uint8_t*>(data.data()), static_cast<quint64>(data.length()), static_cast<SAKCRCInterface::CRCModel>(model));
         crc = crc8;
         break;
     case 16:
-        crc16 = crcInterface->crcCalculate<uint16_t>(reinterpret_cast<uint8_t*>(data.data()), static_cast<quint64>(data.length()), static_cast<SAKCRCInterface::CRCModel>(model));
+        crc16 = mCrcInterface->crcCalculate<uint16_t>(reinterpret_cast<uint8_t*>(data.data()), static_cast<quint64>(data.length()), static_cast<SAKCRCInterface::CRCModel>(model));
         crc = crc16;
         break;
     case 32:
-        crc32 = crcInterface->crcCalculate<uint32_t>(reinterpret_cast<uint8_t*>(data.data()), static_cast<quint64>(data.length()), static_cast<SAKCRCInterface::CRCModel>(model));
+        crc32 = mCrcInterface->crcCalculate<uint32_t>(reinterpret_cast<uint8_t*>(data.data()), static_cast<quint64>(data.length()), static_cast<SAKCRCInterface::CRCModel>(model));
         crc = crc32;
         break;
     default:
@@ -116,7 +116,7 @@ QByteArray SAKInputDataFactory::rawDataToArray(QString rawData, SAKDebugPageInpu
 void SAKInputDataFactory::run()
 {
     QEventLoop eventLoop;
-    crcInterface = new SAKCRCInterface;
+    mCrcInterface = new SAKCRCInterface;
     while (true) {
         if (isInterruptionRequested()){
             break;
@@ -137,24 +137,24 @@ void SAKInputDataFactory::run()
 
         /// @brief 线程睡眠
         if (!isInterruptionRequested()){
-            threadMutex.lock();
-            threadCondition.wait(&threadMutex, 50);
-            threadMutex.unlock();
+            mThreadMutex.lock();
+            mThreadCondition.wait(&mThreadMutex, 50);
+            mThreadMutex.unlock();
         }
     }
 
-    delete crcInterface;
-    crcInterface = Q_NULLPTR;
+    delete mCrcInterface;
+    mCrcInterface = Q_NULLPTR;
 }
 
 SAKInputDataFactory::RawDataStruct SAKInputDataFactory::takeRawData()
 {
     RawDataStruct rawDataStruct;
-    rawDataListMutex.lock();
-    if (rawDataList.length()){
-        rawDataStruct = rawDataList.takeFirst();
+    mRawDataListMutex.lock();
+    if (mRawDataList.length()){
+        rawDataStruct = mRawDataList.takeFirst();
     }
-    rawDataListMutex.unlock();
+    mRawDataListMutex.unlock();
 
     return rawDataStruct;
 }
@@ -166,7 +166,7 @@ void SAKInputDataFactory::innnerCookData(QString rawData, SAKDebugPageInputContr
         uint32_t crc  = crcCalculate(data, parameters.crcModel);
         uint8_t  crc8  = static_cast<uint8_t>(crc);
         uint16_t crc16 = static_cast<uint16_t>(crc);
-        int bitsWidth = crcInterface->getBitsWidth(static_cast<SAKCRCInterface::CRCModel>(parameters.crcModel));
+        int bitsWidth = mCrcInterface->getBitsWidth(static_cast<SAKCRCInterface::CRCModel>(parameters.crcModel));
         if (parameters.bigEndian){
             crc16 = qToBigEndian(crc16);
             crc = qToBigEndian(crc);

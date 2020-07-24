@@ -50,17 +50,18 @@ public:
 protected:
     void run() final;
 private:
+    // just using for inner
     struct RawDataStruct {
         QString rawData;
         SAKDebugPageInputController::InputParametersContext parameters;
     };
 
-    QList<RawDataStruct> rawDataList;
-    QMutex rawDataListMutex;
-    QMutex threadMutex;
-    QWaitCondition threadCondition;
-    SAKCRCInterface *crcInterface;
-    SAKDebugPage *debugPage;
+    QList<RawDataStruct> mRawDataList;
+    QMutex mRawDataListMutex;
+    QMutex mThreadMutex;
+    QWaitCondition mThreadCondition;
+    SAKCRCInterface *mCrcInterface;
+    SAKDebugPage *mDebugPage;
 private:
     RawDataStruct takeRawData();
     void innnerCookData(QString rawData, SAKDebugPageInputController::InputParametersContext parameters);
