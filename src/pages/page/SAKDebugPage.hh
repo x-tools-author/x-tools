@@ -70,9 +70,9 @@ public:
 
     friend class SAKChartsController;
     friend class SAKDebugPageOtherController;
-    friend class SAKDebugPageStatisticsController;
     friend class SAKDebugPageInputController;
     friend class SAKDebugPageOutputController;
+    friend class SAKDebugPageStatisticsController;
 
     /**
      * @brief write             -- 写数据
