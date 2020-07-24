@@ -79,6 +79,7 @@ private:
     QString mTableName;
 private:
     void initializeVariable();
+    void updateRecord(QString columnName, QVariant value, bool isString);
 private:
     Ui::SAKInputDataPresetItem *mUi;
     QComboBox *mTextFormatComboBox;

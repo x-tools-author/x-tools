@@ -90,11 +90,45 @@ void SAKInputDataPresetItem::initializeVariable()
     mInputTextEdit = mUi->inputTextEdit;
     SAKGlobal::initInputTextFormatComboBox(mTextFormatComboBox);
 
-    // tale name fo database
+    // Table name fo database
     mTableName = SAKDataStruct::presettingDataTableName(mPageType);
 
     if (mSqlDatabase){
         mSqlQuery = new QSqlQuery(*mSqlDatabase);
+
+        // Create the table if it is not existed
+        if (!mSqlDatabase->tables().contains(mTableName)){
+            DatabaseColumns columns;
+            const QString queryString = QString("CREATE TABLE %1 \
+                                                (\
+                                                 %2 INTEGER PRIMARY KEY NOT NULL, \
+                                                 %3 INTEGER NOT NULL, \
+                                                 %4 TEXT NOT NULL, \
+                                                 %5 TEXT NOT NULL, \
+                                                 )")
+                                                .arg(mTableName)
+                                                .arg(columns.id)
+                                                .arg(columns.format)
+                                                .arg(columns.description)
+                                                .arg(columns.text);
+            if(!mSqlQuery->exec(queryString)){
+                qWarning() << __FUNCTION__ << "Create table failed: " << mSqlQuery->lastError().text();
+            }
+        }
+    }
+}
+
+void SAKInputDataPresetItem::updateRecord(QString columnName, QVariant value, bool isString)
+{
+    DatabaseColumns columns;
+    const QString queryString = QString("UPDATE %1 SET %2=%3 WHERE %4=%5")
+            .arg(mTableName)
+            .arg(columnName)
+            .arg(isString ? QString("'%1'").arg(value.toString()) : QString("%1").arg(value.toInt()))
+            .arg(columns.id)
+            .arg(mItemID);
+    if(!mSqlQuery->exec(queryString)){
+        qWarning() << __FUNCTION__ << QString("Can not update record(%1):%2").arg(columnName).arg(mSqlQuery->lastError().text());
     }
 }
 
@@ -102,12 +136,41 @@ void SAKInputDataPresetItem::on_textFormatComboBox_currentTextChanged(const QStr
 {
     mInputTextEdit->clear();
     Q_UNUSED(text);
+
+    // update record
+    int format = mTextFormatComboBox->findText(text);
+    if (mTableName.length() && mSqlDatabase){
+        DatabaseColumns columns;
+        const QString queryString = QString("UPDATE %1 SET %2=%3 WHERE %4=%5")
+                .arg(mTableName)
+                .arg(columns.description)
+                .arg(format)
+                .arg(columns.id)
+                .arg(mItemID);
+        if(!mSqlQuery->exec(queryString)){
+            qWarning() << __FUNCTION__ << "Can not update record:" << mSqlQuery->lastError().text();
+        }
+    }
 }
 
 void SAKInputDataPresetItem::on_descriptionLineEdit_currentTextChanged(const QString &text)
 {
     Q_UNUSED(text);
     emit descriptionChanged(text.length() ? text : tr("Empty"));
+
+    // update record
+    if (mTableName.length() && mSqlDatabase){
+        DatabaseColumns columns;
+        const QString queryString = QString("UPDATE %1 SET %2='%3' WHERE %4=%5")
+                .arg(mTableName)
+                .arg(columns.description)
+                .arg(text)
+                .arg(columns.id)
+                .arg(mItemID);
+        if(!mSqlQuery->exec(queryString)){
+            qWarning() << __FUNCTION__ << "Can not update record:" << mSqlQuery->lastError().text();
+        }
+    }
 }
 
 void SAKInputDataPresetItem::on_inputTextEdit_textChanged()
