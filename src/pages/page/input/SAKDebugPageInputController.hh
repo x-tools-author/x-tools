@@ -31,7 +31,7 @@ class SAKDebugPageInputController:public QObject
 {
     Q_OBJECT
 public:
-    SAKDebugPageInputController(SAKDebugPage *debugPage, QObject *parent = Q_NULLPTR);
+    SAKDebugPageInputController(SAKDebugPage *mDebugPage, QObject *parent = Q_NULLPTR);
     ~SAKDebugPageInputController();
 
     struct InputParametersContext {
@@ -51,27 +51,27 @@ public:
 
     friend class SAKInputDataPresetItem;
 private:
-    SAKDebugPage *debugPage;
-    QComboBox   *inputModelComboBox;
-    QCheckBox   *cycleEnableCheckBox;
-    QLineEdit   *cycleTimeLineEdit;
-    QPushButton *saveInputDataPushButton;
-    QPushButton *readinFilePushButton;
-    QCheckBox   *addCRCCheckBox;
-    QPushButton *clearInputPushButton;
-    QPushButton *sendPushButton;
-    QTextEdit   *inputTextEdit;
-    QComboBox   *crcParameterModelsComboBox;
-    QLabel      *crcLabel;
-    QPushButton *presetPushButton;
-    QPushButton *sendPresetPushButton;
+    SAKDebugPage *mDebugPage;
+    QComboBox   *mInputModelComboBox;
+    QCheckBox   *mCycleEnableCheckBox;
+    QLineEdit   *mCycleTimeLineEdit;
+    QPushButton *mSaveInputDataPushButton;
+    QPushButton *mReadinFilePushButton;
+    QCheckBox   *mAddCRCCheckBox;
+    QPushButton *mClearInputPushButton;
+    QPushButton *mSendPushButton;
+    QTextEdit   *mInputTextEdit;
+    QComboBox   *mCrcParameterModelsComboBox;
+    QLabel      *mCrcLabel;
+    QPushButton *mPresetPushButton;
+    QPushButton *mSendPresetPushButton;
 
-    QTimer timingTimer;
-    SAKInputDataFactory *inputDataFactory;
-    InputParametersContext inputParameters;
-    SAKCRCInterface *crcInterface;
-    SAKInputDataPresetItemManager *inputDataItemManager;
-    SAKInputCrcSettingsDialog *crcSettingsDialog;
+    QTimer mTimingTimer;
+    SAKInputDataFactory *mInputDataFactory;
+    InputParametersContext mInputParameters;
+    SAKCRCInterface * mCrcInterface;
+    SAKInputDataPresetItemManager *mInputDataItemManager;
+    SAKInputCrcSettingsDialog *mCrcSettingsDialog;
 private:
     void changeInputModel(const QString &text);
     void changeCycleEnableFlag();

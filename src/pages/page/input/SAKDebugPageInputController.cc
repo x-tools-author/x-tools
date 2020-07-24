@@ -25,64 +25,64 @@
 
 SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugPage *debugPage, QObject *parent)
     :QObject (parent)
-    ,debugPage (debugPage)
+    ,mDebugPage (debugPage)
 {
-    inputModelComboBox          = debugPage->mInputModelComboBox;
-    cycleEnableCheckBox         = debugPage->mCycleEnableCheckBox;
-    cycleTimeLineEdit           = debugPage->mCycleTimeLineEdit;
-    saveInputDataPushButton     = debugPage->mSaveInputDataPushButton;
-    readinFilePushButton        = debugPage->mReadinFilePushButton;
-    addCRCCheckBox              = debugPage->mAddCRCCheckBox;
-    clearInputPushButton        = debugPage->mClearInputPushButton;
-    sendPushButton              = debugPage->mSendPushButton;
-    inputTextEdit               = debugPage->mInputTextEdit;
-    crcParameterModelsComboBox  = debugPage->mCrcParameterModelsComboBox;
-    crcLabel                    = debugPage->mCrcLabel;
-    presetPushButton            = debugPage->mPresetPushButton;
-    sendPresetPushButton        = debugPage->mSendPresetPushButton;
+    mInputModelComboBox          = debugPage->mInputModelComboBox;
+    mCycleEnableCheckBox         = debugPage->mCycleEnableCheckBox;
+    mCycleTimeLineEdit           = debugPage->mCycleTimeLineEdit;
+    mSaveInputDataPushButton     = debugPage->mSaveInputDataPushButton;
+    mReadinFilePushButton        = debugPage->mReadinFilePushButton;
+    mAddCRCCheckBox              = debugPage->mAddCRCCheckBox;
+    mClearInputPushButton        = debugPage->mClearInputPushButton;
+    mSendPushButton              = debugPage->mSendPushButton;
+    mInputTextEdit               = debugPage->mInputTextEdit;
+    mCrcParameterModelsComboBox  = debugPage->mCrcParameterModelsComboBox;
+    mCrcLabel                    = debugPage->mCrcLabel;
+    mPresetPushButton            = debugPage->mPresetPushButton;
+    mSendPresetPushButton        = debugPage->mSendPresetPushButton;
 
     qRegisterMetaType<InputParametersContext>("InputParameters");
-    inputDataFactory = new SAKInputDataFactory;
-    inputDataFactory->start();
+    mInputDataFactory = new SAKInputDataFactory;
+    mInputDataFactory->start();
 
-    crcInterface = new SAKCRCInterface;
-    inputDataItemManager = new SAKInputDataPresetItemManager(debugPage, this);
-    crcSettingsDialog = new SAKInputCrcSettingsDialog;
-    SAKInputCrcSettingsDialog::ParameterContext ctx = crcSettingsDialog->parametersContext();
-    inputParameters.bigEndian = ctx.bigEndianCRC;
-    inputParameters.startByte = ctx.startByte;
-    inputParameters.endByte = ctx.endByte;
+     mCrcInterface = new SAKCRCInterface;
+    mInputDataItemManager = new SAKInputDataPresetItemManager(debugPage, this);
+    mCrcSettingsDialog = new SAKInputCrcSettingsDialog;
+    SAKInputCrcSettingsDialog::ParameterContext ctx = mCrcSettingsDialog->parametersContext();
+    mInputParameters.bigEndian = ctx.bigEndianCRC;
+    mInputParameters.startByte = ctx.startByte;
+    mInputParameters.endByte = ctx.endByte;
 
     /// @brief 弹窗参数更新后，更新输入参数
-    connect(crcSettingsDialog, &SAKInputCrcSettingsDialog::parametersChanged, this, [&](){
-        SAKInputCrcSettingsDialog::ParameterContext ctx = crcSettingsDialog->parametersContext();
-        inputParameters.bigEndian = ctx.bigEndianCRC;
-        inputParameters.startByte = ctx.startByte;
-        inputParameters.endByte = ctx.endByte;
+    connect(mCrcSettingsDialog, &SAKInputCrcSettingsDialog::parametersChanged, this, [&](){
+        SAKInputCrcSettingsDialog::ParameterContext ctx = mCrcSettingsDialog->parametersContext();
+        mInputParameters.bigEndian = ctx.bigEndianCRC;
+        mInputParameters.startByte = ctx.startByte;
+        mInputParameters.endByte = ctx.endByte;
     });
 
-    sendPushButton->setEnabled(false);
-    sendPresetPushButton->setEnabled(false);
-    cycleEnableCheckBox->setEnabled(false);
-    SAKGlobal::initInputTextFormatComboBox(inputModelComboBox);
-    SAKGlobal::initCRCComboBox(crcParameterModelsComboBox);
+    mSendPushButton->setEnabled(false);
+    mSendPresetPushButton->setEnabled(false);
+    mCycleEnableCheckBox->setEnabled(false);
+    SAKGlobal::initInputTextFormatComboBox(mInputModelComboBox);
+    SAKGlobal::initCRCComboBox(mCrcParameterModelsComboBox);
 
-    connect(inputModelComboBox,         &QComboBox::currentTextChanged, this, &SAKDebugPageInputController::changeInputModel);
-    connect(cycleEnableCheckBox,        &QCheckBox::clicked,            this, &SAKDebugPageInputController::changeCycleEnableFlag);
-    connect(cycleTimeLineEdit,          &QLineEdit::textChanged,        this, &SAKDebugPageInputController::changeCycleTime);
-    connect(saveInputDataPushButton,    &QPushButton::clicked,          this, &SAKDebugPageInputController::saveInputDataToFile);
-    connect(readinFilePushButton,       &QPushButton::clicked,          this, &SAKDebugPageInputController::readinFile);
-    connect(addCRCCheckBox,             &QCheckBox::clicked,            this, &SAKDebugPageInputController::changeAddCRCFlag);
-    connect(clearInputPushButton,       &QPushButton::clicked,          this, &SAKDebugPageInputController::clearInputArea);
-    connect(sendPushButton,             &QPushButton::clicked,          this, &SAKDebugPageInputController::sendRawData);
-    connect(inputTextEdit,              &QTextEdit::textChanged,        this, &SAKDebugPageInputController::inputTextEditTextChanged);
-    connect(crcParameterModelsComboBox, &QComboBox::currentTextChanged, this, &SAKDebugPageInputController::changeCRCModel);
-    connect(presetPushButton,           &QPushButton::clicked,          this, &SAKDebugPageInputController::setPresetData);
-    connect(sendPresetPushButton,       &QPushButton::clicked,          this, &SAKDebugPageInputController::sendPresetData);
+    connect(mInputModelComboBox,         &QComboBox::currentTextChanged, this, &SAKDebugPageInputController::changeInputModel);
+    connect(mCycleEnableCheckBox,        &QCheckBox::clicked,            this, &SAKDebugPageInputController::changeCycleEnableFlag);
+    connect(mCycleTimeLineEdit,          &QLineEdit::textChanged,        this, &SAKDebugPageInputController::changeCycleTime);
+    connect(mSaveInputDataPushButton,    &QPushButton::clicked,          this, &SAKDebugPageInputController::saveInputDataToFile);
+    connect(mReadinFilePushButton,       &QPushButton::clicked,          this, &SAKDebugPageInputController::readinFile);
+    connect(mAddCRCCheckBox,             &QCheckBox::clicked,            this, &SAKDebugPageInputController::changeAddCRCFlag);
+    connect(mClearInputPushButton,       &QPushButton::clicked,          this, &SAKDebugPageInputController::clearInputArea);
+    connect(mSendPushButton,             &QPushButton::clicked,          this, &SAKDebugPageInputController::sendRawData);
+    connect(mInputTextEdit,              &QTextEdit::textChanged,        this, &SAKDebugPageInputController::inputTextEditTextChanged);
+    connect(mCrcParameterModelsComboBox, &QComboBox::currentTextChanged, this, &SAKDebugPageInputController::changeCRCModel);
+    connect(mPresetPushButton,           &QPushButton::clicked,          this, &SAKDebugPageInputController::setPresetData);
+    connect(mSendPresetPushButton,       &QPushButton::clicked,          this, &SAKDebugPageInputController::sendPresetData);
 
-    connect(this, &SAKDebugPageInputController::rawDataChanged, inputDataFactory, &SAKInputDataFactory::cookData);
-    connect(inputDataFactory, &SAKInputDataFactory::dataCooked, debugPage, &SAKDebugPage::write);
-    connect(&timingTimer, &QTimer::timeout, this, &SAKDebugPageInputController::cycleTimerTimeout);
+    connect(this, &SAKDebugPageInputController::rawDataChanged, mInputDataFactory, &SAKInputDataFactory::cookData);
+    connect(mInputDataFactory, &SAKInputDataFactory::dataCooked, debugPage, &SAKDebugPage::write);
+    connect(&mTimingTimer, &QTimer::timeout, this, &SAKDebugPageInputController::cycleTimerTimeout);
     connect(debugPage, &SAKDebugPage::requestWriteRawData, this, &SAKDebugPageInputController::sendOtherRawData);
 
     initParameters();
@@ -91,15 +91,15 @@ SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugPage *debugPage
 
 SAKDebugPageInputController::~SAKDebugPageInputController()
 {
-    delete inputDataFactory;
-    delete crcInterface;
-    delete inputDataItemManager;
-    delete crcSettingsDialog;
+    delete mInputDataFactory;
+    delete  mCrcInterface;
+    delete mInputDataItemManager;
+    delete mCrcSettingsDialog;
 }
 
 void SAKDebugPageInputController::showCrcSettingsDialog()
 {
-    crcSettingsDialog->show();
+    mCrcSettingsDialog->show();
 }
 
 void SAKDebugPageInputController::changeInputModel(const QString &text)
@@ -110,27 +110,27 @@ void SAKDebugPageInputController::changeInputModel(const QString &text)
     }
 
     bool ok = false;
-    inputTextEdit->clear();
-    inputParameters.inputModel = inputModelComboBox->currentData().toInt(&ok);
+    mInputTextEdit->clear();
+    mInputParameters.inputModel = mInputModelComboBox->currentData().toInt(&ok);
     Q_ASSERT_X(ok, __FUNCTION__, "Input model is error");
 }
 
 void SAKDebugPageInputController::changeCycleEnableFlag()
 {
-    if (cycleEnableCheckBox->isChecked()){
-        timingTimer.start(inputParameters.cycleTime);
+    if (mCycleEnableCheckBox->isChecked()){
+        mTimingTimer.start(mInputParameters.cycleTime);
     }else{
-        timingTimer.stop();
+        mTimingTimer.stop();
     }
 }
 
 void SAKDebugPageInputController::changeCycleTime()
 {
     bool ok = false;
-    inputParameters.cycleTime = cycleTimeLineEdit->text().toInt(&ok);
-    if ((!ok) || (inputParameters.cycleTime == 0)){
-        inputParameters.cycleTime = 1000;
-        cycleTimeLineEdit->setText("1000");
+    mInputParameters.cycleTime = mCycleTimeLineEdit->text().toInt(&ok);
+    if ((!ok) || (mInputParameters.cycleTime == 0)){
+        mInputParameters.cycleTime = 1000;
+        mCycleTimeLineEdit->setText("1000");
     }
 }
 
@@ -147,14 +147,14 @@ void SAKDebugPageInputController::saveInputDataToFile()
 
     QFile file(fileName);
     if (file.open(QFile::WriteOnly)){
-        QByteArray data = inputTextEdit->toPlainText().toUtf8();
+        QByteArray data = mInputTextEdit->toPlainText().toUtf8();
         qint64 ret = file.write(data);
         if (ret == -1){
-            debugPage->outputMessage(file.errorString(), false);
+            mDebugPage->outputMessage(file.errorString(), false);
         }
         file.close();
     }else {
-        debugPage->outputMessage(file.errorString(), false);
+        mDebugPage->outputMessage(file.errorString(), false);
     }
 }
 
@@ -165,44 +165,44 @@ void SAKDebugPageInputController::readinFile()
         QFile file(fileName);
         if(file.open(QFile::ReadOnly)){
             QByteArray data = file.readAll();
-            inputTextEdit->setText(QString(data).toUtf8());
+            mInputTextEdit->setText(QString(data).toUtf8());
             file.close();
         }else{
-            debugPage->outputMessage( QString("%1 %2").arg(tr("无法打开文件")).arg(fileName));
+            mDebugPage->outputMessage( QString("%1 %2").arg(tr("无法打开文件")).arg(fileName));
         }
     }
 }
 
 void SAKDebugPageInputController::changeAddCRCFlag()
 {
-    inputParameters.addCRC = addCRCCheckBox->isChecked();
+    mInputParameters.addCRC = mAddCRCCheckBox->isChecked();
 }
 
 void SAKDebugPageInputController::clearInputArea()
 {
-    inputTextEdit->clear();
+    mInputTextEdit->clear();
 }
 
 void SAKDebugPageInputController::inputTextEditTextChanged()
 {
-    formattingInputText(inputTextEdit, inputParameters.inputModel);
+    formattingInputText(mInputTextEdit, mInputParameters.inputModel);
 
     updateCRC();
 }
 
 void SAKDebugPageInputController::sendRawData()
 {
-    QString data = inputTextEdit->toPlainText();
+    QString data = mInputTextEdit->toPlainText();
     if (data.isEmpty()){
         data = QString("(empty)");
     }
 
-    emit rawDataChanged(data, inputParameters);
+    emit rawDataChanged(data, mInputParameters);
 }
 
 void SAKDebugPageInputController::sendOtherRawData(QString data, int textFormat)
 {
-    InputParametersContext temp = inputParameters;
+    InputParametersContext temp = mInputParameters;
     temp.inputModel = textFormat;
 
     emit rawDataChanged(data, temp);
@@ -211,7 +211,7 @@ void SAKDebugPageInputController::sendOtherRawData(QString data, int textFormat)
 void SAKDebugPageInputController::changeCRCModel()
 {
     bool ok = false;
-    inputParameters.crcModel = crcParameterModelsComboBox->currentData().toInt(&ok);
+    mInputParameters.crcModel = mCrcParameterModelsComboBox->currentData().toInt(&ok);
     Q_ASSERT_X(ok, __FUNCTION__, "Please check the crc parameters model");
 
     updateCRC();
@@ -219,10 +219,10 @@ void SAKDebugPageInputController::changeCRCModel()
 
 void SAKDebugPageInputController::setPresetData()
 {
-    if (inputDataItemManager->isHidden()){
-        inputDataItemManager->show();
+    if (mInputDataItemManager->isHidden()){
+        mInputDataItemManager->show();
     }else{
-        inputDataItemManager->activateWindow();
+        mInputDataItemManager->activateWindow();
     }
 }
 
@@ -233,34 +233,34 @@ void SAKDebugPageInputController::sendPresetData()
 
 void SAKDebugPageInputController::initParameters()
 {
-    inputParameters.addCRC = addCRCCheckBox->isChecked();
-    inputParameters.cycleTime = cycleTimeLineEdit->text().toInt();
+    mInputParameters.addCRC = mAddCRCCheckBox->isChecked();
+    mInputParameters.cycleTime = mCycleTimeLineEdit->text().toInt();
 
     bool ok = false;
-    if ((!ok) || (inputParameters.cycleTime == 0)){
-        inputParameters.cycleTime = 1000;
-        cycleTimeLineEdit->setText("1000");
+    if ((!ok) || (mInputParameters.cycleTime == 0)){
+        mInputParameters.cycleTime = 1000;
+        mCycleTimeLineEdit->setText("1000");
     }
 
-    inputParameters.inputModel = inputModelComboBox->currentData().toInt();
-    inputParameters.crcModel = crcParameterModelsComboBox->currentData().toInt();
+    mInputParameters.inputModel = mInputModelComboBox->currentData().toInt();
+    mInputParameters.crcModel = mCrcParameterModelsComboBox->currentData().toInt();
 }
 
 void SAKDebugPageInputController::setCycleEnable()
 {
-    if (cycleEnableCheckBox->isChecked()){
+    if (mCycleEnableCheckBox->isChecked()){
         /// @brief 如果输入框输入内容不符合规范，默认循环周期为50ms
         bool ok = false;
-        int cycleTime = cycleTimeLineEdit->text().toInt(&ok);
+        int cycleTime = mCycleTimeLineEdit->text().toInt(&ok);
         if (ok){
-            cycleTimeLineEdit->setText("50");
+            mCycleTimeLineEdit->setText("50");
             cycleTime = 50;
         }
-        timingTimer.start(cycleTime);
-        cycleTimeLineEdit->setEnabled(false);
+        mTimingTimer.start(cycleTime);
+        mCycleTimeLineEdit->setEnabled(false);
     }else{
-        timingTimer.stop();
-        cycleTimeLineEdit->setEnabled(true);
+        mTimingTimer.stop();
+        mCycleTimeLineEdit->setEnabled(true);
     }
 }
 
@@ -271,12 +271,12 @@ void SAKDebugPageInputController::cycleTimerTimeout()
 
 void SAKDebugPageInputController::updateCRC()
 {
-    QString rawData = inputTextEdit->toPlainText();
-    QByteArray cookedData = inputDataFactory->rawDataToArray(rawData, inputParameters);
+    QString rawData = mInputTextEdit->toPlainText();
+    QByteArray cookedData = mInputDataFactory->rawDataToArray(rawData, mInputParameters);
 
-    quint32 crc = inputDataFactory->crcCalculate(cookedData, inputParameters.crcModel);
-    int bits = crcInterface->getBitsWidth(static_cast<SAKCRCInterface::CRCModel>(inputParameters.crcModel));
-    crcLabel->setText(QString(QString("%1").arg(QString::number(crc, 16), (bits/8)*2, '0')).toUpper().prepend("0x"));
+    quint32 crc = mInputDataFactory->crcCalculate(cookedData, mInputParameters.crcModel);
+    int bits =  mCrcInterface->getBitsWidth(static_cast<SAKCRCInterface::CRCModel>(mInputParameters.crcModel));
+    mCrcLabel->setText(QString(QString("%1").arg(QString::number(crc, 16), (bits/8)*2, '0')).toUpper().prepend("0x"));
 }
 
 void SAKDebugPageInputController::formattingInputText(QTextEdit *textEdit, int model)

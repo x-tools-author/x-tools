@@ -146,7 +146,7 @@ void SAKInputDataPresetItem::initUi()
     inputDataTextEdit = ui->inputDataTextEdit;
     SAKGlobal::initInputTextFormatComboBox(textFormatComboBox);
 
-    menuPushButton = inputManager->sendPresetPushButton;
+    menuPushButton = inputManager->mSendPresetPushButton;
     addDataAction(menuPushButton);
     connect(descriptionLineEdit, &QLineEdit::textChanged, this, &SAKInputDataPresetItem::updateActionTitle);
     connect(inputDataTextEdit, &QTextEdit::textChanged, this, &SAKInputDataPresetItem::updateTextFormat);
