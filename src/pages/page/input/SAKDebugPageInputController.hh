@@ -22,11 +22,11 @@
 #include <QWaitCondition>
 
 class SAKDebugPage;
-class SAKInputDataPresetItem;
 class SAKCRCInterface;
 class SAKInputDataFactory;
-class SAKInputDataPresetItemManager;
+class SAKInputDataPresetItem;
 class SAKInputCrcSettingsDialog;
+class SAKInputDataPresetItemManager;
 class SAKDebugPageInputController:public QObject
 {
     Q_OBJECT
