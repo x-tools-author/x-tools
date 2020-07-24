@@ -148,15 +148,33 @@ public:
      */
     SAKDebugPageStatisticsController *statisticsController();
 protected:
-    /// @brief 刷新设备
+    /**
+     * @brief refreshDevice: Refresh system device
+     */
     virtual void refreshDevice();
-    /// @brief 返回控制面板
+
+    /**
+     * @brief controllerWidget: Get device control widget
+     * @return Device control widget
+     */
     virtual QWidget *controllerWidget();
-    /// @brief 创建设备,创建的设备由基类管理，不能在子类中对设备进行销毁操作
+
+    /**
+     * @brief createDevice: Create the device instance
+     * @return Device instance pointer
+     */
     virtual SAKDebugPageDevice* createDevice();
-    /// @brief 使能ui
+
+    /**
+     * @brief setUiEnable: Set some components enable or disable
+     * @param ebable: true-enable ui components, false-disable ui components
+     */
     virtual void setUiEnable(bool ebable);
-    /// @brief 初始化页面，子类在重新实现所有虚函数后，条用该函数即可
+
+    /**
+     * @brief initPage: Initializing,
+     * the function must be called in the constructor of child class
+     */
     void initPage();
 private:
     SAKDebugPageDevice *mDevice;
