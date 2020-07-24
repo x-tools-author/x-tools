@@ -110,12 +110,13 @@ void SAKInputDataPresetItem::on_descriptionLineEdit_currentTextChanged(const QSt
     emit descriptionChanged(text.length() ? text : tr("Empty"));
 }
 
-void SAKInputDataPresetItem::on_inputTextEdit_currentTextChanged(const QString &text)
+void SAKInputDataPresetItem::on_inputTextEdit_textChanged()
 {
     // It seems to be not OOP
     SAKDebugPageInputController::formattingInputText(mInputTextEdit, mTextFormatComboBox->currentData().toInt());
 
     // update record
+    QString text = mInputTextEdit->toPlainText();
     if (mTableName.length() && mSqlDatabase){
         DatabaseColumns columns;
         const QString queryString = QString("UPDATE %1 SET %2='%3' WHERE %4=%5")
