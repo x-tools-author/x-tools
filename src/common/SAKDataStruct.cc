@@ -20,7 +20,9 @@ QString SAKDataStruct::autoResponseTableName(int type)
 {
     QMetaEnum metaEnum = QMetaEnum::fromType<SAKDataStruct::SAKEnumDebugPageType>();
     QString name = QString(metaEnum.valueToKey(type));
-    name.prepend(QString("AutoResponseTable_"));
+    if (name.length()){
+        name.prepend(QString("AutoResponseTable_"));
+    }
 
     return name;
 }
@@ -29,7 +31,9 @@ QString SAKDataStruct::timingSendingTableName(int type)
 {
     QMetaEnum metaEnum = QMetaEnum::fromType<SAKDataStruct::SAKEnumDebugPageType>();
     QString name = QString(metaEnum.valueToKey(type));
-    name.prepend(QString("TimingSendingTable_"));
+    if (name.length()){
+        name.prepend(QString("TimingSendingTable_"));
+    }
 
     return name;
 }
@@ -38,7 +42,9 @@ QString SAKDataStruct::presettingDataTableName(int type)
 {
     QMetaEnum metaEnum = QMetaEnum::fromType<SAKDataStruct::SAKEnumDebugPageType>();
     QString name = QString(metaEnum.valueToKey(type));
-    name.prepend(QString("PresettingDataTable_"));
+    if (name.length()){
+        name.prepend(QString("PresettingDataTable_"));
+    }
 
     return name;
 }
