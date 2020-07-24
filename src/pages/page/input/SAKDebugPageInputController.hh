@@ -79,16 +79,11 @@ private:
     void setPresetData();
     void sendPresetData();
 private:
-    /// 初始化输入参数
     void initParameters();
-    /// 启动/停止循环发送定时器
     void setCycleEnable();    
 private:
-    /// 循环发送定时器
     QTimer timingTimer;
-    /// 循环发送定时器溢出后，执行该函数，执行该函数后，将会发送一个请求发送数据信号
     void cycleTimerTimeout();
-
 private:
     SAKInputDataFactory *inputDataFactory;
     InputParameters inputParameters;
@@ -99,7 +94,6 @@ private:
     void updateCRC();
     void formattingInputText(QTextEdit *textEdit, int model);
 signals:
-    /// 该函数并不会真的发送数据，而是发送一个信号，该信号携带需要发送的数据,数据需要经过处理后才能发送
     void rawDataChanged(QString rawData, InputParameters parameters);
 };
 Q_DECLARE_METATYPE(SAKDebugPageInputController::InputParameters);
