@@ -32,8 +32,8 @@ class SAKDataFactory;
 class SAKCRCInterface;
 class SAKDebugPageDevice;
 class SAKTransmissionSettings;
-class SAKDebugPageOtherController;
 class SAKHighlightSettingsWidget;
+class SAKDebugPageOtherController;
 class SAKDebugPageInputController;
 class SAKDebugPageOutputController;
 #ifdef SAK_IMPORT_CHARTS_MODULE
