@@ -26,7 +26,6 @@ SAKInputDataPresetItem::SAKInputDataPresetItem(SAKDebugPage *debugPage, QWidget 
     ,ui(new Ui::SAKInputDataPresetItem)
 {
     initUi();
-    inputManager = debugPage->inputController();
     id = QDateTime::currentMSecsSinceEpoch();
 }
 
@@ -43,7 +42,6 @@ SAKInputDataPresetItem::SAKInputDataPresetItem(quint64 id,
     ,ui(new Ui::SAKInputDataPresetItem)
 {
     initUi();
-    inputManager = debugPage->inputController();
     textFormatComboBox->setCurrentIndex(format);
     descriptionLineEdit->setText(comment);
     Q_UNUSED(classify);
@@ -140,6 +138,7 @@ void SAKInputDataPresetItem::sendRawData()
 void SAKInputDataPresetItem::initUi()
 {
     ui->setupUi(this);
+    inputManager = debugPage->inputController();
 
     textFormatComboBox = ui->textFormatComboBox;
     descriptionLineEdit = ui->descriptionLineEdit;
