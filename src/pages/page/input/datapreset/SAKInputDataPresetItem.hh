@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKINPUTDATAITEM_HH
-#define SAKINPUTDATAITEM_HH
+#ifndef SAKINPUTDATAPRESETITEM_HH
+#define SAKINPUTDATAPRESETITEM_HH
 
 #include <QTimer>
 #include <QWidget>
