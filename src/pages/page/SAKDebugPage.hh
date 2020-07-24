@@ -216,29 +216,25 @@ private:
     /// @brief 更改设备状态
     void changedDeviceState(bool opened);
 signals:
-    /// 读取数据后发射该信号，参数为已读取的数据
+    // Emit the read data
     void bytesRead(QByteArray data);
-    /// 发送数据后发射该信号，参数为已发送的数据
+    // Emit the written data
     void bytesWritten(QByteArray data);
     /// 子类关联该信号来发送数据即可
     void requestWriteData(QByteArray data);
     /// 请求处理输出
     void requestWriteRawData(QString data, int textFormat);
 
-
-
-
-
-    /*************************************************************************/
-    /// @brief ui文件初始化
+    // ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+    // ui component
 private:
     Ui::SAKDebugPage *mUi;
 private:
-    /// @brief initUiPointer -- 初始化指向ui控件的数据成员（指针）
+    // All variable about ui will be initialize in the function
     void initUiPointer();
 
     /*************************************************************************/
-    /// @brief 设备设置
+    // Device control module
 protected:
     QPushButton *mRefreshPushButton;
     QPushButton *mSwitchPushButton;
@@ -248,7 +244,7 @@ private slots:
     void on_switchPushButton_clicked();
 
     /*************************************************************************/
-    /// @brief 输入设置组
+    // Data input settings module
 protected:
     QComboBox *mInputModelComboBox;
     QCheckBox *mCycleEnableCheckBox;
@@ -281,12 +277,12 @@ private slots:
     void on_crcParameterModelsComboBox_currentIndexChanged(int index);
 
     /*************************************************************************/
-    /// @brief 消息输出组管理
+    // Message output module
 protected:
     QLabel *mInfoLabel;
 
     /*************************************************************************/
-    /// @brief 数据输出组
+    // Data output module
 protected:
     QLabel *mRxLabel;
     QLabel *mTxLabel;
@@ -320,7 +316,7 @@ private slots:
     void on_showTxDataCheckBox_clicked();
 
     /*************************************************************************/
-    /// @brief 数据统计
+    // Data statistics module
 protected:
     bool mReceivedFlag;
     bool mSendFlag;
@@ -335,7 +331,7 @@ protected:
     QPushButton *mResetRxCountPushButton;
 
     /*************************************************************************/
-    /// @brief 其他设置
+    // Other settings module
 protected:
     QPushButton *mTransmissionSettingPushButton;
     QPushButton *mReadWriteSettingPushButton;
@@ -345,7 +341,7 @@ protected:
     QPushButton *mMoreSettingsPushButton;
 
     /*************************************************************************/
-    /// @brief 数据可视化
+    // Charts module
 protected:
     QPushButton *mDataVisualizationPushButton;
 private slots:
