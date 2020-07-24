@@ -171,6 +171,7 @@ void SAKInputDataFactory::innnerCookData(QString rawData, SAKDebugPageInputContr
 #endif
         }
 
+        // Calculate the crc value of input data
         uint32_t crc  = crcCalculate(crcInputData, parameters.crcModel);
         uint8_t  crc8  = static_cast<uint8_t>(crc);
         uint16_t crc16 = static_cast<uint16_t>(crc);
@@ -180,6 +181,7 @@ void SAKInputDataFactory::innnerCookData(QString rawData, SAKDebugPageInputContr
             crc = qToBigEndian(crc);
         }
 
+        // append crc byte to data
         switch (bitsWidth) {
         case 8:
             data.append(reinterpret_cast<char*>(&crc8), 1);
