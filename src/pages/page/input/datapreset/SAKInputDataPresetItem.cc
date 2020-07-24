@@ -21,35 +21,43 @@
 
 #include "ui_SAKInputDataPresetItem.h"
 
-SAKInputDataPresetItem::SAKInputDataPresetItem(QSqlDatabase *sqlDatabase, QWidget *parent)
+SAKInputDataPresetItem::SAKInputDataPresetItem(int pageType, QSqlDatabase *sqlDatabase, QWidget *parent)
     :QWidget(parent)
+    ,mPageType(pageType)
     ,mSqlDatabase(sqlDatabase)
+    ,mSqlQuery(Q_NULLPTR)
     ,mUi(new Ui::SAKInputDataPresetItem)
 {
-    initUi();
+    initializeVariable();
     mItemID = QDateTime::currentMSecsSinceEpoch();
 }
 
 SAKInputDataPresetItem::SAKInputDataPresetItem(quint64 id,
                                                quint32 format,
                                                QString comment,
-                                               QString data,
+                                               QString text,
+                                               int pageType,
                                                QSqlDatabase *sqlDatabase,
                                                QWidget *parent)
     :QWidget(parent)
     ,mItemID(id)
+    ,mPageType(pageType)
     ,mSqlDatabase(sqlDatabase)
+    ,mSqlQuery(Q_NULLPTR)
     ,mUi(new Ui::SAKInputDataPresetItem)
 {
-    initUi();
+    initializeVariable();
     mTextFormatComboBox->setCurrentIndex(format);
     mDescriptionLineEdit->setText(comment);
-    mInputTextEdit->setText(data);
+    mInputTextEdit->setText(text);
 }
 
 SAKInputDataPresetItem::~SAKInputDataPresetItem()
 {
     delete mUi;
+    if (mSqlQuery){
+        delete mSqlQuery;
+    }
 }
 
 quint64 SAKInputDataPresetItem::itemID()
@@ -72,7 +80,7 @@ int SAKInputDataPresetItem::itemTextFromat()
     return mTextFormatComboBox->currentData().toInt();
 }
 
-void SAKInputDataPresetItem::initUi()
+void SAKInputDataPresetItem::initializeVariable()
 {
     mUi->setupUi(this);
 
@@ -80,6 +88,13 @@ void SAKInputDataPresetItem::initUi()
     mDescriptionLineEdit = mUi->descriptionLineEdit;
     mInputTextEdit = mUi->inputTextEdit;
     SAKGlobal::initInputTextFormatComboBox(mTextFormatComboBox);
+
+    // tale name fo database
+    mTableName = SAKDataStruct::presettingDataTableName(mPageType);
+
+    if (mSqlDatabase){
+        mSqlQuery = new QSqlQuery(*mSqlDatabase);
+    }
 }
 
 void SAKInputDataPresetItem::on_textFormatComboBox_currentTextChanged(const QString &text)
@@ -91,11 +106,16 @@ void SAKInputDataPresetItem::on_textFormatComboBox_currentTextChanged(const QStr
 void SAKInputDataPresetItem::on_descriptionLineEdit_currentTextChanged(const QString &text)
 {
     Q_UNUSED(text);
+    emit descriptionChanged(text.length() ? text : tr("Empty"));
 }
 
 void SAKInputDataPresetItem::on_inputTextEdit_currentTextChanged(const QString &text)
 {
     // It seems to be not OOP
     SAKDebugPageInputController::formattingInputText(mInputTextEdit, mTextFormatComboBox->currentData().toInt());
-    Q_UNUSED(text);
+
+    // update record
+    if (mTableName.length() && mSqlDatabase){
+
+    }
 }

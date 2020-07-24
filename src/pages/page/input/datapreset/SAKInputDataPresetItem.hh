@@ -25,19 +25,28 @@ namespace Ui {
     class SAKInputDataPresetItem;
 }
 
+class SAKDebugPage;
 // Preset data parameters editting widget
 class SAKInputDataPresetItem:public QWidget
 {
     Q_OBJECT
 public:
-    SAKInputDataPresetItem(QSqlDatabase *sqlDatabase = Q_NULLPTR, QWidget *parent = Q_NULLPTR);
+    SAKInputDataPresetItem(int pageType, QSqlDatabase *sqlDatabase = Q_NULLPTR, QWidget *parent = Q_NULLPTR);
     SAKInputDataPresetItem(quint64 itemID,
                            quint32 format,
                            QString comment,
-                           QString data,
+                           QString text,
+                           int pageType,
                            QSqlDatabase *sqlDatabase = Q_NULLPTR,
                            QWidget *parent = Q_NULLPTR);
     ~SAKInputDataPresetItem();
+
+    struct DatabaseColumns {
+        const QString id = QString("ID");
+        const QString format = QString("Format");
+        const QString description = QString("Description");
+        const QString text = QString("text");
+    };
 
     /**
      * @brief itemID: Get the id of the item
@@ -64,9 +73,12 @@ public:
     int itemTextFromat();
 private:
     quint64 mItemID;
+    int mPageType;
     QSqlDatabase *mSqlDatabase;
+    QSqlQuery *mSqlQuery;
+    QString mTableName;
 private:
-    void initUi();
+    void initializeVariable();
 private:
     Ui::SAKInputDataPresetItem *mUi;
     QComboBox *mTextFormatComboBox;
@@ -76,6 +88,8 @@ private slots:
     void on_textFormatComboBox_currentTextChanged(const QString &text);
     void on_descriptionLineEdit_currentTextChanged(const QString &text);
     void on_inputTextEdit_currentTextChanged(const QString &text);
+signals:
+    void descriptionChanged(const QString &text);
 };
 
 #endif
