@@ -106,13 +106,6 @@ QByteArray SAKInputDataFactory::rawDataToArray(QString rawData, SAKDebugPageInpu
         Q_ASSERT_X(false, __FUNCTION__, "Unknow input mode");
     }
 
-    /// @brief 根据参数修剪数据
-    if ((data.length() >= (parameters.startByte-1)) && (data.length() >= (data.length()-(parameters.startByte-1)-(parameters.endByte-1)))){
-        data = QByteArray(data.data()+(parameters.startByte-1), data.length()-(parameters.startByte-1)-(parameters.endByte-1));
-    }else{
-        qWarning() << __FUNCTION__ << "Data error!";
-    }
-
     return data;
 }
 
@@ -166,7 +159,19 @@ void SAKInputDataFactory::innnerCookData(QString rawData, SAKDebugPageInputContr
 {
     QByteArray data = rawDataToArray(rawData, parameters);
     if (parameters.addCRC){
-        uint32_t crc  = crcCalculate(data, parameters.crcModel);
+        // Extract crc section
+        QByteArray crcInputData;
+        int startIndex = parameters.startByte - 1;
+        int endIndex = data.length() - (parameters.startByte - 1) - (parameters.endByte - 1);
+        if ((data.length() >= startIndex) && (data.length() >= endIndex)){
+            crcInputData = QByteArray(startIndex, endIndex);
+        }else{
+#ifdef QT_DEBUG
+            qWarning() << __FUNCTION__ << "The lenght of input data is error, can not extract crc section!";
+#endif
+        }
+
+        uint32_t crc  = crcCalculate(crcInputData, parameters.crcModel);
         uint8_t  crc8  = static_cast<uint8_t>(crc);
         uint16_t crc16 = static_cast<uint16_t>(crc);
         int bitsWidth = mCrcInterface->getBitsWidth(static_cast<SAKCRCInterface::CRCModel>(parameters.crcModel));
