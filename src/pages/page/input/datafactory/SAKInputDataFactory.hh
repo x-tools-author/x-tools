@@ -50,7 +50,7 @@ public:
 protected:
     void run() final;
 private:
-    // just using for inner
+    // Just using for inner
     struct RawDataStruct {
         QString rawData;
         SAKDebugPageInputController::InputParametersContext parameters;
@@ -66,8 +66,8 @@ private:
     RawDataStruct takeRawData();
     void innnerCookData(QString rawData, SAKDebugPageInputController::InputParametersContext parameters);
 signals:
-    // the data can be send directly
-    void dataCooked(QByteArray);
+    // The data can be send directly
+    void dataCooked(QByteArray data);
 };
 
 #endif

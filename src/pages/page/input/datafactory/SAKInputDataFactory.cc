@@ -179,7 +179,7 @@ void SAKInputDataFactory::innnerCookData(QString rawData, SAKDebugPageInputContr
             crc = qToBigEndian(crc);
         }
 
-        // append crc byte to data
+        // Append crc byte to data
         switch (bitsWidth) {
         case 8:
             data.append(reinterpret_cast<char*>(&crc8), 1);
