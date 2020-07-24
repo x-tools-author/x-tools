@@ -14,23 +14,23 @@
 #include "SAKDebugPage.hh"
 #include "SAKDataStruct.hh"
 #include "SAKCRCInterface.hh"
-#include "SAKInputDataItem.hh"
+#include "SAKInputDataPresetItem.hh"
 #include "SAKInputDataFactory.hh"
 #include "SAKDebugPageDatabaseInterface.hh"
 
-#include "ui_SAKInputDataItem.h"
+#include "ui_SAKInputDataPresetItem.h"
 
-SAKInputDataItem::SAKInputDataItem(SAKDebugPage *debugPage, SAKDebugPageInputController *inputManager, QWidget *parent)
+SAKInputDataPresetItem::SAKInputDataPresetItem(SAKDebugPage *debugPage, SAKDebugPageInputController *inputManager, QWidget *parent)
     :QWidget(parent)
     ,debugPage(debugPage)
     ,inputManager(inputManager)
-    ,ui(new Ui::SAKInputDataItem)
+    ,ui(new Ui::SAKInputDataPresetItem)
 {
     initUi();
     id = QDateTime::currentMSecsSinceEpoch();
 }
 
-SAKInputDataItem::SAKInputDataItem(quint64 id,
+SAKInputDataPresetItem::SAKInputDataPresetItem(quint64 id,
                                    quint32 format,
                                    QString comment,
                                    quint32 classify,
@@ -42,7 +42,7 @@ SAKInputDataItem::SAKInputDataItem(quint64 id,
     ,debugPage(debugPage)
     ,inputManager(inputManager)
     ,id(id)
-    ,ui(new Ui::SAKInputDataItem)
+    ,ui(new Ui::SAKInputDataPresetItem)
 {
     initUi();
     textFormatComboBox->setCurrentIndex(format);
@@ -51,27 +51,27 @@ SAKInputDataItem::SAKInputDataItem(quint64 id,
     inputDataTextEdit->setText(data);
 }
 
-SAKInputDataItem::~SAKInputDataItem()
+SAKInputDataPresetItem::~SAKInputDataPresetItem()
 {
     delete ui;
 }
 
-quint64 SAKInputDataItem::parameterID()
+quint64 SAKInputDataPresetItem::parameterID()
 {
     return id;
 }
 
-quint32 SAKInputDataItem::parameterFormat()
+quint32 SAKInputDataPresetItem::parameterFormat()
 {
     return textFormatComboBox->currentIndex();
 }
 
-QString SAKInputDataItem::parameterComment()
+QString SAKInputDataPresetItem::parameterComment()
 {
     return descriptionLineEdit->text();
 }
 
-quint32 SAKInputDataItem::parameterClassify()
+quint32 SAKInputDataPresetItem::parameterClassify()
 {
     quint32 ret;
     if (classifyComboBox->count()){
@@ -82,12 +82,12 @@ quint32 SAKInputDataItem::parameterClassify()
     return ret;
 }
 
-QString SAKInputDataItem::parameterData()
+QString SAKInputDataPresetItem::parameterData()
 {
     return inputDataTextEdit->toPlainText();
 }
 
-void SAKInputDataItem::addDataAction(QPushButton *menuPushButton)
+void SAKInputDataPresetItem::addDataAction(QPushButton *menuPushButton)
 {
     if (!menuPushButton){
         return;
@@ -101,10 +101,10 @@ void SAKInputDataItem::addDataAction(QPushButton *menuPushButton)
 
     action = new QAction(descriptionLineEdit->text(), this);
     menu->addAction(action);
-    connect(action, &QAction::triggered, this, &SAKInputDataItem::sendRawData);
+    connect(action, &QAction::triggered, this, &SAKInputDataPresetItem::sendRawData);
 }
 
-void SAKInputDataItem::removeDataAction(QPushButton *menuPushButton)
+void SAKInputDataPresetItem::removeDataAction(QPushButton *menuPushButton)
 {
     if (!menuPushButton){
         return;
@@ -123,17 +123,17 @@ void SAKInputDataItem::removeDataAction(QPushButton *menuPushButton)
     }
 }
 
-void SAKInputDataItem::updateActionTitle(const QString &title)
+void SAKInputDataPresetItem::updateActionTitle(const QString &title)
 {
     action->setText(title);
 }
 
-void SAKInputDataItem::updateTextFormat()
+void SAKInputDataPresetItem::updateTextFormat()
 {
     inputManager->formattingInputText(inputDataTextEdit, textFormatComboBox->currentData().toInt());
 }
 
-void SAKInputDataItem::sendRawData()
+void SAKInputDataPresetItem::sendRawData()
 {
     QString data = inputDataTextEdit->toPlainText();
     int format = textFormatComboBox->currentData().toInt();
@@ -143,7 +143,7 @@ void SAKInputDataItem::sendRawData()
     }
 }
 
-void SAKInputDataItem::initUi()
+void SAKInputDataPresetItem::initUi()
 {
     ui->setupUi(this);
 
@@ -158,12 +158,12 @@ void SAKInputDataItem::initUi()
 
     menuPushButton = inputManager->sendPresetPushButton;
     addDataAction(menuPushButton);
-    connect(descriptionLineEdit, &QLineEdit::textChanged, this, &SAKInputDataItem::updateActionTitle);
-    connect(inputDataTextEdit, &QTextEdit::textChanged, this, &SAKInputDataItem::updateTextFormat);
+    connect(descriptionLineEdit, &QLineEdit::textChanged, this, &SAKInputDataPresetItem::updateActionTitle);
+    connect(inputDataTextEdit, &QTextEdit::textChanged, this, &SAKInputDataPresetItem::updateTextFormat);
     connect(textFormatComboBox, &QComboBox::currentTextChanged, inputDataTextEdit, &QTextEdit::clear);
 }
 
-void SAKInputDataItem::on_updatePushButton_clicked()
+void SAKInputDataPresetItem::on_updatePushButton_clicked()
 {
     QString tableName = SAKDataStruct::presettingDataTableName(debugPage->pageType());
     SAKDataStruct::SAKStructPresettingDataItem item;

@@ -22,27 +22,27 @@
 #include "SAKDebugPageInputController.hh"
 
 namespace Ui {
-    class SAKInputDataItem;
+    class SAKInputDataPresetItem;
 }
 
 class SAKDebugPage;
 class SAKCRCInterface;
 class SAKInputDataFactory;
 class SAKDebugPageInputController;
-class SAKInputDataItem:public QWidget
+class SAKInputDataPresetItem:public QWidget
 {
     Q_OBJECT
 public:
-    SAKInputDataItem(SAKDebugPage *debugPage, SAKDebugPageInputController *inputManager, QWidget *parent = Q_NULLPTR);
-    SAKInputDataItem(quint64 id,
-                     quint32 format,
-                     QString comment,
-                     quint32 classify,
-                     QString data,
-                     SAKDebugPage *debugPage,
-                     SAKDebugPageInputController *inputManager,
-                     QWidget *parent = Q_NULLPTR);
-    ~SAKInputDataItem();
+    SAKInputDataPresetItem(SAKDebugPage *debugPage, SAKDebugPageInputController *inputManager, QWidget *parent = Q_NULLPTR);
+    SAKInputDataPresetItem(quint64 id,
+                           quint32 format,
+                           QString comment,
+                           quint32 classify,
+                           QString data,
+                           SAKDebugPage *debugPage,
+                           SAKDebugPageInputController *inputManager,
+                           QWidget *parent = Q_NULLPTR);
+    ~SAKInputDataPresetItem();
 
     quint64 parameterID();
     quint32 parameterFormat();
@@ -66,7 +66,7 @@ private:
 signals:
     void rawDataChanged(QString rawData, SAKDebugPageInputController::InputParametersContext parameters);
 private:
-    Ui::SAKInputDataItem *ui;
+    Ui::SAKInputDataPresetItem *ui;
     QComboBox *textFormatComboBox;
     QComboBox *classifyComboBox;
     QLineEdit *descriptionLineEdit;

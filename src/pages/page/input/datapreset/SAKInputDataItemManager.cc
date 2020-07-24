@@ -19,7 +19,7 @@
 #include "SAKDebugPage.hh"
 #include "SAKDataStruct.hh"
 #include "SAKCRCInterface.hh"
-#include "SAKInputDataItem.hh"
+#include "SAKInputDataPresetItem.hh"
 #include "SAKInputDataFactory.hh"
 #include "SAKInputDataItemManager.hh"
 #include "SAKDebugPageDatabaseInterface.hh"
@@ -63,7 +63,7 @@ SAKInputDataItemManager::~SAKInputDataItemManager()
 void innerCreateItem(SAKDataStruct::SAKStructPresettingDataItem &var, SAKDebugPage *debugPage, SAKDebugPageInputController *inputManager, QListWidget *listWidget, SAKInputDataItemManager *itemManager)
 {
     QListWidgetItem *item = new QListWidgetItem(listWidget);
-    SAKInputDataItem *itemWidget = new SAKInputDataItem(var.id,
+    SAKInputDataPresetItem *itemWidget = new SAKInputDataPresetItem(var.id,
                                                         var.format,
                                                         var.comment,
                                                         var.classify,
@@ -103,7 +103,7 @@ bool SAKInputDataItemManager::contains(quint64 paraID)
     for (int i = 0; i < listWidget->count(); i++){
         QListWidgetItem *item = listWidget->item(i);
         QWidget *w = listWidget->itemWidget(item);
-        SAKInputDataItem *itemWidget = reinterpret_cast<SAKInputDataItem*>(w);
+        SAKInputDataPresetItem *itemWidget = reinterpret_cast<SAKInputDataPresetItem*>(w);
         if (itemWidget->parameterID() == paraID){
             contain = true;
             break;
@@ -117,7 +117,7 @@ void SAKInputDataItemManager::on_deletePushButton_clicked()
 {
     QListWidgetItem *item = listWidget->currentItem();
     if (item){
-        SAKInputDataItem *itemWidget = reinterpret_cast<SAKInputDataItem*>(listWidget->itemWidget(item));
+        SAKInputDataPresetItem *itemWidget = reinterpret_cast<SAKInputDataPresetItem*>(listWidget->itemWidget(item));
         SAKDataStruct::SAKStructPresettingDataItem dataItem;
         dataItem.id = itemWidget->parameterID();
         databaseInterface->deletePresettingDataItem(tableName, dataItem);
@@ -130,7 +130,7 @@ void SAKInputDataItemManager::on_deletePushButton_clicked()
 void SAKInputDataItemManager::on_addPushButton_clicked()
 {
     QListWidgetItem *item = new QListWidgetItem(listWidget);
-    SAKInputDataItem *itemWidget = new SAKInputDataItem(debugPage, inputManager, this);
+    SAKInputDataPresetItem *itemWidget = new SAKInputDataPresetItem(debugPage, inputManager, this);
     item->setSizeHint(itemWidget->sizeHint());
     listWidget->addItem(item);
     listWidget->setItemWidget(item, itemWidget);
