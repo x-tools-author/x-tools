@@ -114,11 +114,7 @@ void SAKInputDataFactory::run()
     QEventLoop eventLoop;
     mCrcInterface = new SAKCRCInterface;
     while (true) {
-        if (isInterruptionRequested()){
-            break;
-        }
-
-        /// @brief 处理数据
+        // Handle input data
         while (true) {
             RawDataStruct rawDataStruct = takeRawData();
             if (rawDataStruct.rawData.length()){
@@ -128,14 +124,16 @@ void SAKInputDataFactory::run()
             }
         }
 
-        /// @brief 处理驱动事件
+        // emmmm...
         eventLoop.processEvents();
 
-        /// @brief 线程睡眠
+        // Do something make cpu happy
         if (!isInterruptionRequested()){
             mThreadMutex.lock();
             mThreadCondition.wait(&mThreadMutex, 50);
             mThreadMutex.unlock();
+        }else{
+            break;
         }
     }
 
