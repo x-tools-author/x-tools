@@ -163,7 +163,6 @@ private:
     void createPresettingDataTables();
     bool createPresettingDataTable(const DataPresetItemTable &table);
 
-    void deleteItemFromTable(QString tableName, quint64 id);
     AutoResponseTable tableNmaeToAutoResponseTable(QString tableName);
     TimingSendingTable tableNameToTimingSendingTable(QString tableName);
     DataPresetItemTable tableNameToPresettingDataTable(QString tableName);

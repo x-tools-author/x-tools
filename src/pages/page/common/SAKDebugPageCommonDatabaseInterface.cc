@@ -77,7 +77,7 @@ void SAKDebugPageCommonDatabaseInterface::insertAutoResponseItem(QString tableNa
 
 void SAKDebugPageCommonDatabaseInterface::deleteAutoResponseItem(QString tableName, SAKDataStruct::SAKStructAutoResponseItem item)
 {
-    deleteItemFromTable(tableName, item.id);
+    deleteRecord(tableName, item.id);
 }
 
 void SAKDebugPageCommonDatabaseInterface::updateAutoResponseItem(QString tableName, SAKDataStruct::SAKStructAutoResponseItem item)
@@ -156,7 +156,7 @@ void SAKDebugPageCommonDatabaseInterface::insertTimingSendingItem(QString tableN
 
 void SAKDebugPageCommonDatabaseInterface::deleteTimingSendingItem(QString tableName, SAKDataStruct::SAKStructTimingSendingItem item)
 {
-    deleteItemFromTable(tableName, item.id);
+    deleteRecord(tableName, item.id);
 }
 
 void SAKDebugPageCommonDatabaseInterface::updateTimingSendingItem(QString tableName, SAKDataStruct::SAKStructTimingSendingItem item)
@@ -224,7 +224,7 @@ void SAKDebugPageCommonDatabaseInterface::insertDataPresetItem(QString tableName
 
 void SAKDebugPageCommonDatabaseInterface::deleteDataPresetItem(QString tableName, SAKDataStruct::SAKStructPresettingDataItem item)
 {
-    deleteItemFromTable(tableName, item.id);
+    deleteRecord(tableName, item.id);
 }
 
 void SAKDebugPageCommonDatabaseInterface::updateDataPresetItem(QString tableName, SAKDataStruct::SAKStructPresettingDataItem item)
@@ -476,16 +476,6 @@ bool SAKDebugPageCommonDatabaseInterface::createPresettingDataTable(const DataPr
                                              .arg(table.columns.classify)
                                              .arg(table.columns.text));
     return ret;
-}
-
-void SAKDebugPageCommonDatabaseInterface::deleteItemFromTable(QString tableName, quint64 id)
-{
-    bool ret = sakDatabaseQuery.exec(QString("DELETE FROM %1 WHERE ID=%2")
-                                     .arg(tableName)
-                                     .arg(id));
-    if (!ret){
-        qWarning() << __FUNCTION__ << "delete record form " << tableName << " table failed: " << sakDatabaseQuery.lastError().text();
-    }
 }
 
 SAKDebugPageCommonDatabaseInterface::AutoResponseTable SAKDebugPageCommonDatabaseInterface::tableNmaeToAutoResponseTable(QString tableName)
