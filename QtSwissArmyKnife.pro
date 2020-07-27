@@ -174,6 +174,7 @@ HEADERS += \
     src/common/SAKInterface.hh \
     src/moreinfo/SAKMoreInformation.hh \
     src/pages/page/SAKDebugPage.hh \
+    src/pages/page/common/SAKDebugPageCommonDatabaseInterface.hh \
     src/pages/page/device/SAKDebugPageDevice.hh \
     src/pages/page/input/SAKDebugPageInputController.hh \
     src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.hh \
@@ -234,6 +235,7 @@ SOURCES += \
     src/common/SAKInterface.cc \
     src/moreinfo/SAKMoreInformation.cc \
     src/pages/page/SAKDebugPage.cc \
+    src/pages/page/common/SAKDebugPageCommonDatabaseInterface.cc \
     src/pages/page/device/SAKDebugPageDevice.cc \
     src/pages/page/input/SAKDebugPageInputController.cc \
     src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.cc \
