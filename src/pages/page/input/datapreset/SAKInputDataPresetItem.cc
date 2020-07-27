@@ -144,7 +144,7 @@ void SAKInputDataPresetItem::on_textFormatComboBox_currentTextChanged(const QStr
     }
 }
 
-void SAKInputDataPresetItem::on_descriptionLineEdit_currentTextChanged(const QString &text)
+void SAKInputDataPresetItem::on_descriptionLineEdit_textChanged(const QString &text)
 {
     // update record
     if (mTableName.length() && mSqlDatabase){

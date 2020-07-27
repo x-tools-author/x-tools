@@ -87,7 +87,7 @@ private:
     QTextEdit *mInputTextEdit;
 private slots:
     void on_textFormatComboBox_currentTextChanged(const QString &text);
-    void on_descriptionLineEdit_currentTextChanged(const QString &text);
+    void on_descriptionLineEdit_textChanged(const QString &text);
     void on_inputTextEdit_textChanged();
 signals:
     void descriptionChanged(const QString &text);
