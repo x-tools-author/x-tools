@@ -152,9 +152,9 @@ void SAKInputDataPresetItemManager::on_deletePushButton_clicked()
     QListWidgetItem *item = listWidget->currentItem();
     if (item){
         SAKInputDataPresetItem *itemWidget = reinterpret_cast<SAKInputDataPresetItem*>(listWidget->itemWidget(item));
-        SAKDataStruct::SAKStructPresettingDataItem dataItem;
-        dataItem.id = itemWidget->itemID();
-//        databaseInterface->deletePresettingDataItem(tableName, dataItem);
+        quint64 id = itemWidget->itemID();
+        // delete record from database
+        databaseInterface->deleteRecord(tableName, id);
 
         listWidget->removeItemWidget(item);
         delete item;
