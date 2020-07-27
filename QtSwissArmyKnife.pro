@@ -4,7 +4,13 @@
 #
 #-------------------------------------------------
 
-QT += core gui network sql
+QT += core gui network
+qtHaveModule(sql){
+    QT  += sql
+    DEFINES+=SAK_IMPORT_SQL_MODULE
+}else{
+    message("The Qt edition has no sql module, the program will not has function about sql.")
+}
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
