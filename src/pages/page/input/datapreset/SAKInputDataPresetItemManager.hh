@@ -19,8 +19,6 @@
 #include <QListWidget>
 #include <QPushButton>
 
-#include "SAKDebugPageInputController.hh"
-
 namespace Ui {
     class SAKInputDataPresetItemManager;
 }
@@ -31,7 +29,7 @@ class SAKInputDataPresetItemManager:public QWidget
 {
     Q_OBJECT
 public:
-    SAKInputDataPresetItemManager(SAKDebugPage *debugPage, SAKDebugPageInputController *inputManager, QWidget *parent = Q_NULLPTR);
+    SAKInputDataPresetItemManager(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKInputDataPresetItemManager();
 
     struct InputDataItemKey {
@@ -43,11 +41,7 @@ public:
     };
 private:
     SAKDebugPage *debugPage;
-    SAKCRCInterface *crcInterface;
-    SAKInputDataFactory *factory;
-    SAKDebugPageInputController *inputManager;
     QListWidget *listWidget;
-    SAKDebugPageInputController::InputParametersContext inputParameters;
     QString tableName;
     QTimer clearMessageInfoTimer;
 private:

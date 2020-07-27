@@ -26,12 +26,9 @@
 
 #include "ui_SAKInputDataPresetItemManager.h"
 
-SAKInputDataPresetItemManager::SAKInputDataPresetItemManager(SAKDebugPage *debugPage, SAKDebugPageInputController *inputManager, QWidget *parent)
+SAKInputDataPresetItemManager::SAKInputDataPresetItemManager(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget(parent)
     ,debugPage(debugPage)
-    ,crcInterface(new SAKCRCInterface)
-    ,factory(new SAKInputDataFactory)
-    ,inputManager(inputManager)
     ,ui(new Ui::SAKInputDataPresetItemManager)
 {
     ui->setupUi(this);
@@ -55,12 +52,10 @@ SAKInputDataPresetItemManager::SAKInputDataPresetItemManager(SAKDebugPage *debug
 
 SAKInputDataPresetItemManager::~SAKInputDataPresetItemManager()
 {
-    delete crcInterface;
     delete ui;
-    delete factory;
 }
 
-void innerCreateItem(SAKDataStruct::SAKStructPresettingDataItem &var, SAKDebugPage *debugPage, SAKDebugPageInputController *inputManager, QListWidget *listWidget, SAKInputDataPresetItemManager *itemManager)
+void innerCreateItem(SAKDataStruct::SAKStructPresettingDataItem &var, SAKDebugPage *debugPage, QListWidget *listWidget)
 {
     QListWidgetItem *item = new QListWidgetItem(listWidget);
     SAKInputDataPresetItem *itemWidget = new SAKInputDataPresetItem(var.id,
@@ -215,7 +210,7 @@ void SAKInputDataPresetItemManager::on_importPushButton_clicked()
 
                 /// @brief 不存在则新建
                 if (!contains(responseItem.id)){
-                    innerCreateItem(responseItem, debugPage, inputManager, listWidget, this);
+                    innerCreateItem(responseItem, debugPage, listWidget);
 //                    databaseInterface->insertPresettingDataItem(tableName, responseItem);
                 }
             }
