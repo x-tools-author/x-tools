@@ -21,10 +21,9 @@
 
 #include "ui_SAKInputDataPresetItem.h"
 
-SAKInputDataPresetItem::SAKInputDataPresetItem(int pageType, QSqlDatabase *sqlDatabase, QWidget *parent)
+SAKInputDataPresetItem::SAKInputDataPresetItem(int pageType, QWidget *parent)
     :QWidget(parent)
     ,mPageType(pageType)
-    ,mSqlDatabase(sqlDatabase)
     ,mSqlQuery(Q_NULLPTR)
     ,mUi(new Ui::SAKInputDataPresetItem)
 {
@@ -36,13 +35,9 @@ SAKInputDataPresetItem::SAKInputDataPresetItem(quint64 id,
                                                quint32 format,
                                                QString description,
                                                QString text,
-                                               int pageType,
-                                               QSqlDatabase *sqlDatabase,
                                                QWidget *parent)
     :QWidget(parent)
     ,mItemID(id)
-    ,mPageType(pageType)
-    ,mSqlDatabase(sqlDatabase)
     ,mSqlQuery(Q_NULLPTR)
     ,mUi(new Ui::SAKInputDataPresetItem)
 {
