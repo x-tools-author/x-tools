@@ -255,6 +255,9 @@ void SAKDebugPageCommonDatabaseInterface::updateRecord(QString tableName, QStrin
             .arg(recordID);
     if(!sakDatabaseQuery.exec(queryString)){
         qWarning() << __FUNCTION__ << QString("Can not update record(%1):%2").arg(columnName).arg(sakDatabaseQuery.lastError().text());
+#ifdef QT_DEBUG
+        qDebug() << __FUNCTION__ << queryString;
+#endif
     }
 #else
     Q_UNUSED(tableName);
