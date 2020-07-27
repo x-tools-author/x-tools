@@ -21,7 +21,7 @@
 
 #include "ui_SAKInputDataPresetItem.h"
 
-SAKInputDataPresetItem::SAKInputDataPresetItem(int pageType, QWidget *parent)
+SAKInputDataPresetItem::SAKInputDataPresetItem(QWidget *parent)
     :QWidget(parent)
     ,mUi(new Ui::SAKInputDataPresetItem)
 {

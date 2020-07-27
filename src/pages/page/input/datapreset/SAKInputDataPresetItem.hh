@@ -28,7 +28,7 @@ class SAKInputDataPresetItem:public QWidget
 {
     Q_OBJECT
 public:
-    SAKInputDataPresetItem(int pageType, QWidget *parent = Q_NULLPTR);
+    SAKInputDataPresetItem(QWidget *parent = Q_NULLPTR);
     SAKInputDataPresetItem(quint64 id,
                            quint32 format,
                            QString description,
