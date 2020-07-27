@@ -24,6 +24,7 @@ namespace Ui {
 }
 
 class SAKDebugPage;
+class SAKDebugPageCommonDatabaseInterface;
 /// @brief 预设数据管理窗口
 class SAKInputDataPresetItemManager:public QWidget
 {
@@ -44,10 +45,15 @@ private:
     QListWidget *listWidget;
     QString tableName;
     QTimer clearMessageInfoTimer;
+    SAKDebugPageCommonDatabaseInterface *databaseInterface;
 private:
     void readinRecord();
     void outputMessage(QString msg, bool isError = false);
     bool contains(quint64 paraID);
+    // update record
+    void updateFormat(int format);
+    void updateDescription(const QString &text);
+    void updateText(QString text);
 private:
     Ui::SAKInputDataPresetItemManager *ui;
     QPushButton *deletePushButton;
