@@ -45,8 +45,8 @@ SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugPage *debugPage
     mInputDataFactory = new SAKInputDataFactory;
     mInputDataFactory->start();
 
-     mCrcInterface = new SAKCRCInterface;
-    mInputDataItemManager = new SAKInputDataPresetItemManager(debugPage, this);
+    mCrcInterface = new SAKCRCInterface;
+    mInputDataItemManager = new SAKInputDataPresetItemManager(debugPage);
     mCrcSettingsDialog = new SAKInputCrcSettingsDialog;
     SAKInputCrcSettingsDialog::ParameterContext ctx = mCrcSettingsDialog->parametersContext();
     mInputParameters.bigEndian = ctx.bigEndianCRC;
