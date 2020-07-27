@@ -122,8 +122,18 @@ public:
      */
     QList<SAKDataStruct::SAKStructTimingSendingItem> selectTimingSendingItem(QString tableName);
 
-    // Interface of data preset module
+    /**
+     * @brief insertDataPresetItem: Insert record to database
+     * @param tableName: table name of database
+     * @param item: item that contains information of record
+     */
     void insertDataPresetItem(QString tableName, SAKDataStruct::SAKStructPresettingDataItem item);
+
+    /**
+     * @brief selectDataPresetItem: Select records
+     * @param tableName: Table name
+     * @return records
+     */
     QList<SAKDataStruct::SAKStructPresettingDataItem> selectDataPresetItem(QString tableName);
 
     /**
