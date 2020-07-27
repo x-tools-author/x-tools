@@ -62,7 +62,6 @@ public:
             QString id;
             QString format;
             QString description;
-            QString classify;
             QString text;
         }columns;
     };

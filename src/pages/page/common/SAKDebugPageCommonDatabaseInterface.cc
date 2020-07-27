@@ -232,7 +232,7 @@ void SAKDebugPageCommonDatabaseInterface::deletePresettingDataItem(QString table
 void SAKDebugPageCommonDatabaseInterface::updatePresettingDataItem(QString tableName, SAKDataStruct::SAKStructPresettingDataItem item)
 {
     DataPresetItemTable table = tableNameToPresettingDataTable(tableName);
-    bool ret = sakDatabaseQuery.exec(QString("UPDATE %1 SET %2=%3, %4=%5, %6='%7', %8=%9, %10='%11' WHERE ID=%12")
+    bool ret = sakDatabaseQuery.exec(QString("UPDATE %1 SET %2=%3, %4=%5, %6='%7', %8='%9', WHERE %10=%11")
                                      .arg(table.tableName)
                                      .arg(table.columns.id)
                                      .arg(item.id)
@@ -240,10 +240,9 @@ void SAKDebugPageCommonDatabaseInterface::updatePresettingDataItem(QString table
                                      .arg(item.format)
                                      .arg(table.columns.description)
                                      .arg(item.comment)
-                                     .arg(table.columns.classify)
-                                     .arg(item.classify)
                                      .arg(table.columns.text)
                                      .arg(item.data)
+                                     .arg(table.columns.id)
                                      .arg(item.id));
     if (!ret){
         qWarning() << __FUNCTION__ << "Update record form " << table.tableName << " table failed: " << sakDatabaseQuery.lastError().text();
@@ -262,7 +261,6 @@ QList<SAKDataStruct::SAKStructPresettingDataItem> SAKDebugPageCommonDatabaseInte
             item.id = sakDatabaseQuery.value(table.columns.id).toULongLong();
             item.format = sakDatabaseQuery.value(table.columns.format).toUInt();
             item.comment = sakDatabaseQuery.value(table.columns.description).toString();
-            item.classify = sakDatabaseQuery.value(table.columns.classify).toUInt();
             item.data = sakDatabaseQuery.value(table.columns.text).toString();
 
             itemList.append(item);
