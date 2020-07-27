@@ -274,6 +274,26 @@ QList<SAKDataStruct::SAKStructPresettingDataItem> SAKDebugPageCommonDatabaseInte
     return itemList;
 }
 
+void SAKDebugPageCommonDatabaseInterface::updateRecord(QString tableName, QString columnName, QVariant value, QString recordID, bool valueIsString)
+{
+#ifdef SAK_IMPORT_SQL_MODULE
+    const QString queryString = QString("UPDATE %1 SET %2=%3 WHERE ID=%4")
+            .arg(tableName)
+            .arg(columnName)
+            .arg(valueIsString ? QString("'%1'").arg(value.toString()) : QString("%1").arg(value.toInt()))
+            .arg(recordID);
+    if(!sakDatabaseQuery.exec(queryString)){
+        qWarning() << __FUNCTION__ << QString("Can not update record(%1):%2").arg(columnName).arg(sakDatabaseQuery.lastError().text());
+    }
+#else
+    Q_UNUSED(tableName);
+    Q_UNUSED(columnName);
+    Q_UNUSED(value);
+    Q_UNUSED(recordID);
+    Q_UNUSED(valueIsString);
+#endif
+}
+
 bool SAKDebugPageCommonDatabaseInterface::isTableExist(QString tableName)
 {
    bool ret = sakDatabaseQuery.exec(QString("SELECT * FROM %1").arg(tableName));

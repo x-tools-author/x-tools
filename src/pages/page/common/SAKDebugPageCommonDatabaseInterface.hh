@@ -17,7 +17,7 @@
 #include "SAKDataStruct.hh"
 
 class SAKDebugPage;
-/// @brief 为数据库读写提供了一套接口，主要是用户配置内容的读写
+/// @brief If Qt has sql module, some parameters will be written to database
 class SAKDebugPageCommonDatabaseInterface : public QObject
 {
     Q_OBJECT
@@ -150,6 +150,16 @@ public:
      * @return 预设数据条目列表
      */
     QList<SAKDataStruct::SAKStructPresettingDataItem> selectPresettingDataItem(QString tableName);
+
+    /**
+     * @brief updateRecord: Update the record of table
+     * @param tableName: The table name that need to be updated
+     * @param columnName: The column that need to be updated
+     * @param value: the new value of record
+     * @param recordID: The ID of record that need to be update
+     * @param valueIsString: ture-the value type is string, false-the value type is not string
+     */
+    void updateRecord(QString tableName, QString columnName, QVariant value, QString recordID, bool valueIsString);
 private:
     static SAKDebugPageCommonDatabaseInterface *instancePtr;
     QSqlDatabase sakDatabase;
