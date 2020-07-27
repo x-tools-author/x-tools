@@ -7,8 +7,8 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
-#ifndef SAKDEBUGPAGEDATABASEMANAGER_HH
-#define SAKDEBUGPAGEDATABASEMANAGER_HH
+#ifndef SAKDEBUGPAGECOMMONDATABASEMANAGER_HH
+#define SAKDEBUGPAGECOMMONDATABASEMANAGER_HH
 
 #include <QObject>
 #include <QSqlQuery>
@@ -18,15 +18,15 @@
 
 class SAKDebugPage;
 /// @brief 为数据库读写提供了一套接口，主要是用户配置内容的读写
-class SAKDebugPageDatabaseInterface : public QObject
+class SAKDebugPageCommonDatabaseInterface : public QObject
 {
     Q_OBJECT
 private:
-    SAKDebugPageDatabaseInterface(QObject *parent = Q_NULLPTR);
-    ~SAKDebugPageDatabaseInterface();
+    SAKDebugPageCommonDatabaseInterface(QObject *parent = Q_NULLPTR);
+    ~SAKDebugPageCommonDatabaseInterface();
 public:
     friend SAKDebugPage;
-    static SAKDebugPageDatabaseInterface *instance();
+    static SAKDebugPageCommonDatabaseInterface *instance();
 
     /// @brief 自动应答数据表
     struct AutoResponseTable {
@@ -151,7 +151,7 @@ public:
      */
     QList<SAKDataStruct::SAKStructPresettingDataItem> selectPresettingDataItem(QString tableName);
 private:
-    static SAKDebugPageDatabaseInterface *instancePtr;
+    static SAKDebugPageCommonDatabaseInterface *instancePtr;
     QSqlDatabase sakDatabase;
     QSqlQuery sakDatabaseQuery;
     QList<AutoResponseTable> autoResponseTableList;
