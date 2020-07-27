@@ -62,6 +62,8 @@ public:
 private:
     quint64 mItemID;
 private:
+    void initializingItem();
+private:
     Ui::SAKInputDataPresetItem *mUi;
     QComboBox *mTextFormatComboBox;
     QLineEdit *mDescriptionLineEdit;

@@ -25,7 +25,7 @@ SAKInputDataPresetItem::SAKInputDataPresetItem(QWidget *parent)
     :QWidget(parent)
     ,mUi(new Ui::SAKInputDataPresetItem)
 {
-    mUi->setupUi(this);
+    initializingItem();
     mItemID = QDateTime::currentMSecsSinceEpoch();
 }
 
@@ -38,7 +38,7 @@ SAKInputDataPresetItem::SAKInputDataPresetItem(quint64 id,
     ,mItemID(id)
     ,mUi(new Ui::SAKInputDataPresetItem)
 {
-    mUi->setupUi(this);
+    initializingItem();
     mTextFormatComboBox->setCurrentIndex(format);
     mDescriptionLineEdit->setText(description);
     mInputTextEdit->setText(text);
@@ -69,8 +69,20 @@ int SAKInputDataPresetItem::itemTextFromat()
     return mTextFormatComboBox->currentData().toInt();
 }
 
+void SAKInputDataPresetItem::initializingItem()
+{
+    mUi->setupUi(this);
+    mTextFormatComboBox = mUi->textFormatComboBox;
+    mDescriptionLineEdit = mUi->descriptionLineEdit;
+    mInputTextEdit = mUi->inputTextEdit;
+
+    SAKGlobal::initInputTextFormatComboBox(mTextFormatComboBox);
+}
+
 void SAKInputDataPresetItem::on_textFormatComboBox_currentTextChanged(const QString &text)
 {
+    mInputTextEdit->clear();
+
     Q_UNUSED(text);
     int format = mTextFormatComboBox->currentData().toInt();
     emit formatChanged(format);
@@ -84,5 +96,8 @@ void SAKInputDataPresetItem::on_descriptionLineEdit_textChanged(const QString &t
 void SAKInputDataPresetItem::on_inputTextEdit_textChanged()
 {
     QString text = mInputTextEdit->toPlainText();
+    int format = mTextFormatComboBox->currentData().toInt();
+    SAKDebugPageInputController::formattingInputText(mInputTextEdit, format);
+
     emit textChanged(text);
 }
