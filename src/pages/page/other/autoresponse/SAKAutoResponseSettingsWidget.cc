@@ -23,7 +23,7 @@
 #include "SAKDataStruct.hh"
 #include "SAKAutoResponseItemWidget.hh"
 #include "SAKAutoResponseSettingsWidget.hh"
-#include "SAKDebugPageDatabaseInterface.hh"
+#include "SAKDebugPageCommonDatabaseInterface.hh"
 
 #include "ui_SAKAutoResponseSettingsWidget.h"
 

@@ -20,7 +20,6 @@
 #include "SAKSettings.hh"
 #include "SAKSettings.hh"
 #include "SAKMainWindow.hh"
-#include "SAKSqlDatabase.hh"
 #include "SAKApplication.hh"
 #include "SAKSplashScreen.hh"
 
