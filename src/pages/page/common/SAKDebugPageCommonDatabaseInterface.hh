@@ -137,6 +137,13 @@ public:
      * @param valueIsString: ture-the value type is string, false-the value type is not string
      */
     void updateRecord(QString tableName, QString columnName, QVariant value, quint64 recordID, bool valueIsString);
+
+    /**
+     * @brief deleteRecord: Delete record from database
+     * @param tableName: table name
+     * @param recordID: id of the record that need to be delete
+     */
+    void deleteRecord(QString tableName, quint64 recordID);
 private:
     static SAKDebugPageCommonDatabaseInterface *instancePtr;
     QSqlDatabase sakDatabase;

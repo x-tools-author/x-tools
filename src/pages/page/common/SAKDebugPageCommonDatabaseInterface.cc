@@ -290,6 +290,16 @@ void SAKDebugPageCommonDatabaseInterface::updateRecord(QString tableName, QStrin
 #endif
 }
 
+void SAKDebugPageCommonDatabaseInterface::deleteRecord(QString tableName, quint64 recordID)
+{
+    bool ret = sakDatabaseQuery.exec(QString("DELETE FROM %1 WHERE ID=%2")
+                                     .arg(tableName)
+                                     .arg(recordID));
+    if (!ret){
+        qWarning() << __FUNCTION__ << "delete record form " << tableName << " table failed: " << sakDatabaseQuery.lastError().text();
+    }
+}
+
 bool SAKDebugPageCommonDatabaseInterface::isTableExist(QString tableName)
 {
    bool ret = sakDatabaseQuery.exec(QString("SELECT * FROM %1").arg(tableName));
