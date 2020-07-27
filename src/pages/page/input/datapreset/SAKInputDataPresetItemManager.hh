@@ -49,6 +49,7 @@ private:
     void readinRecord();
     void outputMessage(QString msg, bool isError = false);
     bool contains(quint64 paraID);
+    void appendDataPresetItem(QWidget *iw);
     // update record
     void updateFormat(int format);
     void updateDescription(const QString &text);

@@ -18,7 +18,6 @@
 #include "SAKGlobal.hh"
 #include "SAKDebugPage.hh"
 #include "SAKDataStruct.hh"
-#include "SAKSqlDatabase.hh"
 #include "SAKCRCInterface.hh"
 #include "SAKInputDataFactory.hh"
 #include "SAKInputDataPresetItem.hh"
@@ -75,7 +74,8 @@ void SAKInputDataPresetItemManager::readinRecord()
 {
     QList<SAKDataStruct::SAKStructPresettingDataItem> itemList = databaseInterface->selectDataPresetItem(tableName);
     for (auto var : itemList){
-        innerCreateItem(var, listWidget);
+        QWidget *iw = innerCreateItem(var, listWidget);
+        appendDataPresetItem(iw);
     }
 }
 
@@ -106,6 +106,14 @@ bool SAKInputDataPresetItemManager::contains(quint64 paraID)
     }
 
     return contain;
+}
+
+void SAKInputDataPresetItemManager::appendDataPresetItem(QWidget *iw)
+{
+    SAKInputDataPresetItem *item = reinterpret_cast<SAKInputDataPresetItem*>(iw);
+    connect(item, &SAKInputDataPresetItem::formatChanged, this, &SAKInputDataPresetItemManager::updateFormat);
+    connect(item, &SAKInputDataPresetItem::textChanged, this, &SAKInputDataPresetItemManager::updateText);
+    connect(item, &SAKInputDataPresetItem::descriptionChanged, this, &SAKInputDataPresetItemManager::updateDescription);
 }
 
 void SAKInputDataPresetItemManager::updateFormat(int format)
@@ -168,6 +176,7 @@ void SAKInputDataPresetItemManager::on_addPushButton_clicked()
     item->setSizeHint(itemWidget->sizeHint());
     listWidget->addItem(item);
     listWidget->setItemWidget(item, itemWidget);
+    appendDataPresetItem(itemWidget);
 
     // Add item to database
     SAKDataStruct::SAKStructPresettingDataItem dataItem;
@@ -243,13 +252,14 @@ void SAKInputDataPresetItemManager::on_importPushButton_clicked()
                 responseItem.id = jso.value(itemKey.id).toVariant().toULongLong();
                 responseItem.format = jso.value(itemKey.format).toVariant().toUInt();
                 responseItem.description = jso.value(itemKey.description).toVariant().toString();
-                responseItem.classify = jso.value(itemKey.classify).toVariant().toUInt();
                 responseItem.text = jso.value(itemKey.text).toVariant().toString();
 
-                /// @brief 不存在则新建
+                // If item is not exist, creating an item
                 if (!contains(responseItem.id)){
-                    innerCreateItem(responseItem, listWidget);
-//                    databaseInterface->insertPresettingDataItem(tableName, responseItem);
+                    QWidget *iw = innerCreateItem(responseItem, listWidget);
+                    appendDataPresetItem(iw);
+                    // Insert record to database
+                    databaseInterface->insertDataPresetItem(tableName, responseItem);
                 }
             }
         }
