@@ -14,7 +14,6 @@
 #include "SAKDebugPage.hh"
 #include "SAKDataStruct.hh"
 #include "SAKAutoResponseItemWidget.hh"
-#include "SAKDebugPageDatabaseInterface.hh"
 
 #include "ui_SAKAutoResponseItemWidget.h"
 
@@ -333,5 +332,5 @@ void SAKAutoResponseItemWidget::on_updatePushButton_clicked()
     item.responseFormat = parameterResponseFormat();
     item.referenceFormat = parameterReferenceFormat();
     item.option = parameterOption();
-    SAKDebugPageDatabaseInterface::instance()->updateAutoResponseItem(tableName, item);
+//    SAKDebugPageDatabaseInterface::instance()->updateAutoResponseItem(tableName, item);
 }

@@ -22,7 +22,6 @@
 #include "SAKInputDataFactory.hh"
 #include "SAKInputDataPresetItem.hh"
 #include "SAKInputDataPresetItemManager.hh"
-#include "SAKDebugPageDatabaseInterface.hh"
 
 #include "ui_SAKInputDataPresetItemManager.h"
 
@@ -49,7 +48,7 @@ SAKInputDataPresetItemManager::SAKInputDataPresetItemManager(SAKDebugPage *debug
     });
 
     tableName = SAKDataStruct::presettingDataTableName(debugPage->pageType());
-    databaseInterface = SAKDebugPageDatabaseInterface::instance();
+//    databaseInterface = SAKDebugPageDatabaseInterface::instance();
     readinRecord();
 }
 
@@ -77,10 +76,10 @@ void innerCreateItem(SAKDataStruct::SAKStructPresettingDataItem &var, SAKDebugPa
 
 void SAKInputDataPresetItemManager::readinRecord()
 {
-    QList<SAKDataStruct::SAKStructPresettingDataItem> itemList = databaseInterface->selectPresettingDataItem(tableName);
-    for (auto var : itemList){
-        innerCreateItem(var, debugPage, inputManager, listWidget, this);
-    }
+//    QList<SAKDataStruct::SAKStructPresettingDataItem> itemList = databaseInterface->selectPresettingDataItem(tableName);
+//    for (auto var : itemList){
+//        innerCreateItem(var, debugPage, inputManager, listWidget, this);
+//    }
 }
 
 void SAKInputDataPresetItemManager::outputMessage(QString msg, bool isError)
@@ -119,7 +118,7 @@ void SAKInputDataPresetItemManager::on_deletePushButton_clicked()
         SAKInputDataPresetItem *itemWidget = reinterpret_cast<SAKInputDataPresetItem*>(listWidget->itemWidget(item));
         SAKDataStruct::SAKStructPresettingDataItem dataItem;
         dataItem.id = itemWidget->itemID();
-        databaseInterface->deletePresettingDataItem(tableName, dataItem);
+//        databaseInterface->deletePresettingDataItem(tableName, dataItem);
 
         listWidget->removeItemWidget(item);
         delete item;
@@ -147,7 +146,7 @@ void SAKInputDataPresetItemManager::on_addPushButton_clicked()
 void SAKInputDataPresetItemManager::on_outportPushButton_clicked()
 {
     /// @brief 从数据库中读入记录
-    QList<SAKDataStruct::SAKStructPresettingDataItem> itemList = databaseInterface->selectPresettingDataItem(tableName);
+    QList<SAKDataStruct::SAKStructPresettingDataItem> itemList;// = databaseInterface->selectPresettingDataItem(tableName);
     if (itemList.isEmpty()){
         return;
     }
@@ -216,7 +215,7 @@ void SAKInputDataPresetItemManager::on_importPushButton_clicked()
                 /// @brief 不存在则新建
                 if (!contains(responseItem.id)){
                     innerCreateItem(responseItem, debugPage, inputManager, listWidget, this);
-                    databaseInterface->insertPresettingDataItem(tableName, responseItem);
+//                    databaseInterface->insertPresettingDataItem(tableName, responseItem);
                 }
             }
         }

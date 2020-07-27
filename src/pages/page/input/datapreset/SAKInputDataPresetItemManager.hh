@@ -26,7 +26,6 @@ namespace Ui {
 }
 
 class SAKDebugPage;
-class SAKDebugPageDatabaseInterface;
 /// @brief 预设数据管理窗口
 class SAKInputDataPresetItemManager:public QWidget
 {
@@ -50,7 +49,6 @@ private:
     QListWidget *listWidget;
     SAKDebugPageInputController::InputParametersContext inputParameters;
     QString tableName;
-    SAKDebugPageDatabaseInterface *databaseInterface;
     QTimer clearMessageInfoTimer;
 private:
     void readinRecord();

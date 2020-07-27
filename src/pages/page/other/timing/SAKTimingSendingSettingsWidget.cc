@@ -20,7 +20,6 @@
 #include "SAKDebugPage.hh"
 #include "SAKDataStruct.hh"
 #include "SAKTimingSendingItemWidget.hh"
-#include "SAKDebugPageDatabaseInterface.hh"
 #include "SAKTimingSendingSettingsWidget.hh"
 
 #include "ui_SAKTimingSendingSettingsWidget.h"
@@ -45,7 +44,7 @@ SAKTimingSendingSettingsWidget::SAKTimingSendingSettingsWidget(SAKDebugPage *deb
         messageLabel->clear();
     });
 
-    databaseInterface = SAKDebugPageDatabaseInterface::instance();
+//    databaseInterface = SAKDebugPageDatabaseInterface::instance();
     tableName = SAKDataStruct::timingSendingTableName(this->debugPage->pageType());
     readinRecord();
 }
@@ -72,14 +71,14 @@ void innerCreateItem(SAKDataStruct::SAKStructTimingSendingItem &var, SAKDebugPag
 
 void SAKTimingSendingSettingsWidget::readinRecord()
 {
-    QList<SAKDataStruct::SAKStructTimingSendingItem> itemList = databaseInterface->selectTimingSendingItem(tableName);
-    if (itemList.isEmpty()){
-        return;
-    }
+//    QList<SAKDataStruct::SAKStructTimingSendingItem> itemList = databaseInterface->selectTimingSendingItem(tableName);
+//    if (itemList.isEmpty()){
+//        return;
+//    }
 
-    for (auto var : itemList){
-        innerCreateItem(var, debugPage, itemListWidget);
-    }
+//    for (auto var : itemList){
+//        innerCreateItem(var, debugPage, itemListWidget);
+//    }
 }
 
 bool SAKTimingSendingSettingsWidget::contains(quint64 paraID)
@@ -112,41 +111,41 @@ void SAKTimingSendingSettingsWidget::outputMessage(QString msg, bool isError)
 
 void SAKTimingSendingSettingsWidget::on_outportPushButton_clicked()
 {
-    QList<SAKDataStruct::SAKStructTimingSendingItem> itemList = databaseInterface->selectTimingSendingItem(tableName);
-    if (itemList.isEmpty()){
-        return;
-    }
+//    QList<SAKDataStruct::SAKStructTimingSendingItem> itemList = databaseInterface->selectTimingSendingItem(tableName);
+//    if (itemList.isEmpty()){
+//        return;
+//    }
 
-    QJsonArray jsonArray;
-    TimingSendingItemKey itemKey;
-    for (auto var : itemList){
-        QJsonObject obj;
-        obj.insert(itemKey.id, QVariant::fromValue(var.id).toJsonValue());
-        obj.insert(itemKey.data, QVariant::fromValue(var.data).toJsonValue());
-        obj.insert(itemKey.format, QVariant::fromValue(var.format).toJsonValue());
-        obj.insert(itemKey.comment, QVariant::fromValue(var.comment).toJsonValue());
-        obj.insert(itemKey.interval, QVariant::fromValue(var.interval).toJsonValue());
-        jsonArray.append(QJsonValue(obj));
-    }
-    QJsonDocument jsonDoc;
-    jsonDoc.setArray(jsonArray);
+//    QJsonArray jsonArray;
+//    TimingSendingItemKey itemKey;
+//    for (auto var : itemList){
+//        QJsonObject obj;
+//        obj.insert(itemKey.id, QVariant::fromValue(var.id).toJsonValue());
+//        obj.insert(itemKey.data, QVariant::fromValue(var.data).toJsonValue());
+//        obj.insert(itemKey.format, QVariant::fromValue(var.format).toJsonValue());
+//        obj.insert(itemKey.comment, QVariant::fromValue(var.comment).toJsonValue());
+//        obj.insert(itemKey.interval, QVariant::fromValue(var.interval).toJsonValue());
+//        jsonArray.append(QJsonValue(obj));
+//    }
+//    QJsonDocument jsonDoc;
+//    jsonDoc.setArray(jsonArray);
 
-    /// @brief 打开文件，导出的数据将保存至该文件
-    QString defaultName = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
-    defaultName.append(QString("/"));
-    defaultName.append(QDateTime::currentDateTime().toString("yyyyMMddhhmmss"));
-    defaultName.append(".json");
-    QString fileName = QFileDialog::getSaveFileName(this, tr("导出数据"), defaultName, QString("json (*.json)"));
-    if (fileName.isEmpty()){
-        return;
-    }
+//    /// @brief 打开文件，导出的数据将保存至该文件
+//    QString defaultName = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
+//    defaultName.append(QString("/"));
+//    defaultName.append(QDateTime::currentDateTime().toString("yyyyMMddhhmmss"));
+//    defaultName.append(".json");
+//    QString fileName = QFileDialog::getSaveFileName(this, tr("导出数据"), defaultName, QString("json (*.json)"));
+//    if (fileName.isEmpty()){
+//        return;
+//    }
 
-    /// @brief 保存至文件
-    QFile file(fileName);
-    if (file.open(QFile::ReadWrite)){
-        file.write(jsonDoc.toJson());
-        file.close();
-    }
+//    /// @brief 保存至文件
+//    QFile file(fileName);
+//    if (file.open(QFile::ReadWrite)){
+//        file.write(jsonDoc.toJson());
+//        file.close();
+//    }
 }
 
 void SAKTimingSendingSettingsWidget::on_importPushButton_clicked()
@@ -179,7 +178,7 @@ void SAKTimingSendingSettingsWidget::on_importPushButton_clicked()
                 /// @brief 不存在则新建
                 if (!contains(responseItem.id)){
                     innerCreateItem(responseItem, debugPage, itemListWidget);
-                    databaseInterface->insertTimingSendingItem(tableName, responseItem);
+//                    databaseInterface->insertTimingSendingItem(tableName, responseItem);
                 }
             }
         }
@@ -195,7 +194,7 @@ void SAKTimingSendingSettingsWidget::on_deletePushButton_clicked()
         SAKTimingSendingItemWidget *w = reinterpret_cast<SAKTimingSendingItemWidget*>(itemListWidget->itemWidget(currentItem));
         SAKDataStruct::SAKStructTimingSendingItem sendingItem;
         sendingItem.id = w->parameterID();
-        databaseInterface->deleteTimingSendingItem(tableName, sendingItem);
+//        databaseInterface->deleteTimingSendingItem(tableName, sendingItem);
 
         itemListWidget->removeItemWidget(currentItem);
         delete currentItem;
@@ -218,5 +217,5 @@ void SAKTimingSendingSettingsWidget::on_addPushButton_clicked()
     sendingItem.format = itemWidget->parameterFormat();
     sendingItem.comment = itemWidget->parameterComment();
     sendingItem.interval = itemWidget->parameterInterval();
-    databaseInterface->insertTimingSendingItem(tableName, sendingItem);
+//    databaseInterface->insertTimingSendingItem(tableName, sendingItem);
 }

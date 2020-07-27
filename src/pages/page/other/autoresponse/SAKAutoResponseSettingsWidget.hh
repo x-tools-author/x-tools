@@ -24,7 +24,6 @@ namespace Ui {
 }
 
 class SAKDebugPage;
-class SAKDebugPageDatabaseInterface;
 /// @brief 自动回复设置窗口
 class SAKAutoResponseSettingsWidget:public QWidget
 {
@@ -46,7 +45,6 @@ public:
 private:
     QTimer clearMessageInfoTimer;
     SAKDebugPage *debugPage;
-    SAKDebugPageDatabaseInterface *databaseInterface;
 private:
     void outputMessage(QString msg, bool isInfo);
     void clearMessage();

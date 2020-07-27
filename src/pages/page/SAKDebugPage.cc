@@ -34,13 +34,11 @@
 #include "SAKDebugPageOtherController.hh"
 #include "SAKDebugPageInputController.hh"
 #include "SAKDebugPageOutputController.hh"
-#include "SAKAutoResponseSettingsWidget.hh"
-#include "SAKDebugPageStatisticsController.hh"
-
 #ifdef SAK_IMPORT_CHARTS_MODULE
 #include "SAKDebugPageChartsController.hh"
 #endif
-#include "SAKDebugPageDatabaseInterface.hh"
+#include "SAKAutoResponseSettingsWidget.hh"
+#include "SAKDebugPageStatisticsController.hh"
 
 #include "ui_SAKDebugPage.h"
 
@@ -52,8 +50,6 @@ SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
     ,mDebugPageType(type)
     ,mUi(new Ui::SAKDebugPage)
 {
-    mDatabaseInterface = SAKDebugPageDatabaseInterface::instance();
-
     mIsInitializing = true;
     initSettingString();
 
@@ -161,11 +157,6 @@ void SAKDebugPage::setReadWriteParameters(struct ReadWriteParameters parameters)
     mRreadWriteParameters.waitForReadyReadTime = parameters.waitForReadyReadTime;
     mRreadWriteParameters.waitForBytesWrittenTime = parameters.waitForBytesWrittenTime;
     mReadWriteParametersMutex.unlock();
-}
-
-SAKDebugPageDatabaseInterface *SAKDebugPage::databaseInterfaceInstance()
-{
-   return mDatabaseInterface;
 }
 
 quint32 SAKDebugPage::pageType()

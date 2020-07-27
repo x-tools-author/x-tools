@@ -14,7 +14,6 @@
 #include "SAKDebugPage.hh"
 #include "SAKDataStruct.hh"
 #include "SAKTimingSendingItemWidget.hh"
-#include "SAKDebugPageDatabaseInterface.hh"
 
 #include "ui_SAKTimingSendingItemWidget.h"
 
@@ -126,6 +125,6 @@ void SAKTimingSendingItemWidget::on_updatePushButton_clicked()
     sendingItem.format = parameterFormat();
     sendingItem.comment = parameterComment();
     sendingItem.interval = parameterInterval();
-    SAKDebugPageDatabaseInterface *databaseInterface = SAKDebugPageDatabaseInterface::instance();
-    databaseInterface->updateTimingSendingItem(tableName, sendingItem);
+//    SAKDebugPageDatabaseInterface *databaseInterface = SAKDebugPageDatabaseInterface::instance();
+//    databaseInterface->updateTimingSendingItem(tableName, sendingItem);
 }

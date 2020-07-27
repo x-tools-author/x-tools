@@ -39,7 +39,6 @@ class SAKDebugPageOutputController;
 #ifdef SAK_IMPORT_CHARTS_MODULE
 class SAKDebugPageChartsController;
 #endif
-class SAKDebugPageDatabaseInterface;
 class SAKDebugPageStatisticsController;
 
 namespace Ui {
@@ -98,12 +97,6 @@ public:
      * @param parameters 读写参数
      */
     void setReadWriteParameters(ReadWriteParameters parameters);
-
-    /**
-     * @brief databaseInterfaceInstance: Get the interface for database operation
-     * @return The interface for database operation
-     */
-    SAKDebugPageDatabaseInterface *databaseInterfaceInstance();
 
     /**
      * @brief pageType: The type of debugging page.(SAKDataStruct::SAKEnumDebugPageType)
@@ -179,7 +172,6 @@ private:
     QTimer mClearInfoTimer;
     struct ReadWriteParameters mRreadWriteParameters;
     QMutex mReadWriteParametersMutex;
-    SAKDebugPageDatabaseInterface *mDatabaseInterface;
 
     // Debug page modules
     SAKDebugPageOtherController *mOtherController;

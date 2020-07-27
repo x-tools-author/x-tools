@@ -26,7 +26,6 @@ namespace Ui {
 }
 
 class SAKDebugPage;
-class SAKDebugPageDatabaseInterface;
 class SAKTimingSendingSettingsWidget:public QWidget
 {
     Q_OBJECT
@@ -44,7 +43,6 @@ public:
 private:
     SAKDebugPage *debugPage;
     QString tableName;
-    SAKDebugPageDatabaseInterface *databaseInterface;
     QTimer clearMessageTimer;
 private:
     void readinRecord();
