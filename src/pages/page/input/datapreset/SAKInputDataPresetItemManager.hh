@@ -33,12 +33,11 @@ public:
     SAKInputDataPresetItemManager(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKInputDataPresetItemManager();
 
-    struct InputDataItemKey {
+    struct DataPresetItemContext {
         const QString id = QString("id");
         const QString format = QString("format");
-        const QString comment = QString("comment");
-        const QString classify = QString("classify");
-        const QString data = QString("data");
+        const QString description = QString("comment");
+        const QString text = QString("data");
     };
 private:
     SAKDebugPage *debugPage;

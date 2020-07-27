@@ -61,7 +61,7 @@ QWidget *innerCreateItem(SAKDataStruct::SAKStructPresettingDataItem &var, QListW
     QListWidgetItem *item = new QListWidgetItem(listWidget);
     SAKInputDataPresetItem *itemWidget = new SAKInputDataPresetItem(var.id,
                                                                     var.format,
-                                                                    var.comment,
+                                                                    var.description,
                                                                     var.text,
                                                                     Q_NULLPTR);
     item->setSizeHint(itemWidget->sizeHint());
@@ -169,36 +169,31 @@ void SAKInputDataPresetItemManager::on_addPushButton_clicked()
     listWidget->addItem(item);
     listWidget->setItemWidget(item, itemWidget);
 
-    // If table is not existed, create the table.
-
-
-    /// @brief 添加记录至数据库
-//    SAKDataStruct::SAKStructPresettingDataItem dataItem;
-//    dataItem.id = itemWidget->itemID();
-//    dataItem.data = itemWidget->itemText();
-//    dataItem.format = itemWidget->parameterFormat();
-//    dataItem.comment = itemWidget->itemDescription();
-//    dataItem.classify = itemWidget->parameterClassify();
-//    databaseInterface->insertPresettingDataItem(tableName, dataItem);
+    // Add item to database
+    SAKDataStruct::SAKStructPresettingDataItem dataItem;
+    dataItem.id = itemWidget->itemID();
+    dataItem.text = itemWidget->itemText();
+    dataItem.format = itemWidget->itemTextFromat();
+    dataItem.description = itemWidget->itemDescription();
+    databaseInterface->insertDataPresetItem(tableName, dataItem);
 }
 
 void SAKInputDataPresetItemManager::on_outportPushButton_clicked()
 {
     /// @brief 从数据库中读入记录
-    QList<SAKDataStruct::SAKStructPresettingDataItem> itemList;// = databaseInterface->selectPresettingDataItem(tableName);
+    QList<SAKDataStruct::SAKStructPresettingDataItem> itemList = databaseInterface->selectDataPresetItem(tableName);
     if (itemList.isEmpty()){
         return;
     }
 
     QJsonArray jsonArray;
-    InputDataItemKey itemKey;
+    DataPresetItemContext itemKey;
     for (auto var : itemList){
         QJsonObject obj;
         obj.insert(itemKey.id, QVariant::fromValue(var.id).toJsonValue());
         obj.insert(itemKey.format, QVariant::fromValue(var.format).toJsonValue());
-        obj.insert(itemKey.comment, QVariant::fromValue(var.comment).toJsonValue());
-        obj.insert(itemKey.classify, QVariant::fromValue(var.classify).toJsonValue());
-        obj.insert(itemKey.data, QVariant::fromValue(var.text).toJsonValue());
+        obj.insert(itemKey.description, QVariant::fromValue(var.description).toJsonValue());
+        obj.insert(itemKey.text, QVariant::fromValue(var.text).toJsonValue());
         jsonArray.append(QJsonValue(obj));
     }
     QJsonDocument jsonDoc;
@@ -243,13 +238,13 @@ void SAKInputDataPresetItemManager::on_importPushButton_clicked()
         for (int i = 0; i < jsa.count(); i++){
             if (jsa.at(i).isObject()){
                 QJsonObject jso = jsa.at(i).toObject();
-                InputDataItemKey itemKey;
+                DataPresetItemContext itemKey;
                 SAKDataStruct::SAKStructPresettingDataItem responseItem;
                 responseItem.id = jso.value(itemKey.id).toVariant().toULongLong();
                 responseItem.format = jso.value(itemKey.format).toVariant().toUInt();
-                responseItem.comment = jso.value(itemKey.comment).toVariant().toString();
+                responseItem.description = jso.value(itemKey.description).toVariant().toString();
                 responseItem.classify = jso.value(itemKey.classify).toVariant().toUInt();
-                responseItem.text = jso.value(itemKey.data).toVariant().toString();
+                responseItem.text = jso.value(itemKey.text).toVariant().toString();
 
                 /// @brief 不存在则新建
                 if (!contains(responseItem.id)){
