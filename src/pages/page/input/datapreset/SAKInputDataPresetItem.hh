@@ -32,9 +32,9 @@ class SAKInputDataPresetItem:public QWidget
     Q_OBJECT
 public:
     SAKInputDataPresetItem(int pageType, QSqlDatabase *sqlDatabase = Q_NULLPTR, QWidget *parent = Q_NULLPTR);
-    SAKInputDataPresetItem(quint64 itemID,
+    SAKInputDataPresetItem(quint64 id,
                            quint32 format,
-                           QString comment,
+                           QString description,
                            QString text,
                            int pageType,
                            QSqlDatabase *sqlDatabase = Q_NULLPTR,

@@ -34,7 +34,7 @@ SAKInputDataPresetItem::SAKInputDataPresetItem(int pageType, QSqlDatabase *sqlDa
 
 SAKInputDataPresetItem::SAKInputDataPresetItem(quint64 id,
                                                quint32 format,
-                                               QString comment,
+                                               QString description,
                                                QString text,
                                                int pageType,
                                                QSqlDatabase *sqlDatabase,
@@ -48,7 +48,7 @@ SAKInputDataPresetItem::SAKInputDataPresetItem(quint64 id,
 {
     initializeVariable();
     mTextFormatComboBox->setCurrentIndex(format);
-    mDescriptionLineEdit->setText(comment);
+    mDescriptionLineEdit->setText(description);
     mInputTextEdit->setText(text);
 }
 
