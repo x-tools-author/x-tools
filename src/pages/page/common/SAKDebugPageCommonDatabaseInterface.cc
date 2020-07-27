@@ -207,18 +207,16 @@ QList<SAKDataStruct::SAKStructTimingSendingItem> SAKDebugPageCommonDatabaseInter
 void SAKDebugPageCommonDatabaseInterface::insertPresettingDataItem(QString tableName, SAKDataStruct::SAKStructPresettingDataItem item)
 {
     DataPresetItemTable table = tableNameToPresettingDataTable(tableName);
-    bool ret = sakDatabaseQuery.exec(QString("INSERT INTO %1(%2,%3,%4,%5,%6) VALUES(%7,%8,'%9',%10,'%11')")
+    bool ret = sakDatabaseQuery.exec(QString("INSERT INTO %1(%2,%3,%4,%5) VALUES(%6, %7,%8,'%9','%10',)")
                                      .arg(table.tableName)
                                      .arg(table.columns.id)
                                      .arg(table.columns.format)
                                      .arg(table.columns.description)
-                                     .arg(table.columns.classify)
                                      .arg(table.columns.text)
                                      .arg(item.id)
                                      .arg(item.format)
                                      .arg(item.comment)
-                                     .arg(item.classify)
-                                     .arg(item.data));
+                                     .arg(item.text));
     if (!ret){
         qWarning() << __FUNCTION__ << "Insert record to " << table.tableName << " table failed: " << sakDatabaseQuery.lastError().text();
     }
@@ -241,7 +239,7 @@ void SAKDebugPageCommonDatabaseInterface::updatePresettingDataItem(QString table
                                      .arg(table.columns.description)
                                      .arg(item.comment)
                                      .arg(table.columns.text)
-                                     .arg(item.data)
+                                     .arg(item.text)
                                      .arg(table.columns.id)
                                      .arg(item.id));
     if (!ret){
@@ -261,7 +259,7 @@ QList<SAKDataStruct::SAKStructPresettingDataItem> SAKDebugPageCommonDatabaseInte
             item.id = sakDatabaseQuery.value(table.columns.id).toULongLong();
             item.format = sakDatabaseQuery.value(table.columns.format).toUInt();
             item.comment = sakDatabaseQuery.value(table.columns.description).toString();
-            item.data = sakDatabaseQuery.value(table.columns.text).toString();
+            item.text = sakDatabaseQuery.value(table.columns.text).toString();
 
             itemList.append(item);
         }

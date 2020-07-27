@@ -128,7 +128,7 @@ public:
         quint32 format;     /// 预设数据格式
         QString comment;    /// 预设数据备注
         quint32 classify;   /// 预设数据分类
-        QString data;       /// 预设数据
+        QString text;       /// 预设数据
     };
 public:
     /**
