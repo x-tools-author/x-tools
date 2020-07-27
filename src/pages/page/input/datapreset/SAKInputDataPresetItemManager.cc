@@ -18,6 +18,7 @@
 #include "SAKGlobal.hh"
 #include "SAKDebugPage.hh"
 #include "SAKDataStruct.hh"
+#include "SAKSqlDatabase.hh"
 #include "SAKCRCInterface.hh"
 #include "SAKInputDataFactory.hh"
 #include "SAKInputDataPresetItem.hh"
@@ -67,7 +68,7 @@ void innerCreateItem(SAKDataStruct::SAKStructPresettingDataItem &var, SAKDebugPa
                                                                     var.comment,
                                                                     var.data,
                                                                     debugPage->pageType(),
-                                                                    Q_NULLPTR,
+                                                                    SAKSqlDatabase::instance(),
                                                                     Q_NULLPTR);
     item->setSizeHint(itemWidget->sizeHint());
     listWidget->addItem(item);
@@ -128,7 +129,7 @@ void SAKInputDataPresetItemManager::on_deletePushButton_clicked()
 void SAKInputDataPresetItemManager::on_addPushButton_clicked()
 {
     QListWidgetItem *item = new QListWidgetItem(listWidget);
-    SAKInputDataPresetItem *itemWidget = new SAKInputDataPresetItem(debugPage->pageType(), nullptr, this);
+    SAKInputDataPresetItem *itemWidget = new SAKInputDataPresetItem(debugPage->pageType(), SAKSqlDatabase::instance(), this);
     item->setSizeHint(itemWidget->sizeHint());
     listWidget->addItem(item);
     listWidget->setItemWidget(item, itemWidget);
