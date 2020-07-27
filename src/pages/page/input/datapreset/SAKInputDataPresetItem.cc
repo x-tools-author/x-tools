@@ -25,6 +25,7 @@ SAKInputDataPresetItem::SAKInputDataPresetItem(QWidget *parent)
     :QWidget(parent)
     ,mUi(new Ui::SAKInputDataPresetItem)
 {
+    mUi->setupUi(this);
     mItemID = QDateTime::currentMSecsSinceEpoch();
 }
 
@@ -37,6 +38,7 @@ SAKInputDataPresetItem::SAKInputDataPresetItem(quint64 id,
     ,mItemID(id)
     ,mUi(new Ui::SAKInputDataPresetItem)
 {
+    mUi->setupUi(this);
     mTextFormatComboBox->setCurrentIndex(format);
     mDescriptionLineEdit->setText(description);
     mInputTextEdit->setText(text);
