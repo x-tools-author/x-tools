@@ -71,15 +71,18 @@ int SAKInputDataPresetItem::itemTextFromat()
 
 void SAKInputDataPresetItem::on_textFormatComboBox_currentTextChanged(const QString &text)
 {
-
+    Q_UNUSED(text);
+    int format = mTextFormatComboBox->currentData().toInt();
+    emit formatChanged(format);
 }
 
 void SAKInputDataPresetItem::on_descriptionLineEdit_textChanged(const QString &text)
 {
-
+    emit descriptionChanged(text);
 }
 
 void SAKInputDataPresetItem::on_inputTextEdit_textChanged()
 {
-
+    QString text = mInputTextEdit->toPlainText();
+    emit textChanged(text);
 }
