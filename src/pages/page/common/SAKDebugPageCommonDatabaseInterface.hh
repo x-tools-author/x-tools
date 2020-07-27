@@ -28,43 +28,43 @@ public:
     friend SAKDebugPage;
     static SAKDebugPageCommonDatabaseInterface *instance();
 
-    /// @brief 自动应答数据表
+    /// @brief Auto response item record
     struct AutoResponseTable {
-        QString tableName;          /// 自动回复表名称
-        struct Column {
-            QString id;             /// 自动回复条目ID
-            QString name;           /// 自动回复条目名称
-            QString referenceData;  /// 自动回复条目参考数据
-            QString responseData;   /// 自动回复条目回复数据
-            QString enable;         /// 是否使能该自动回复条目
-            QString referenceFormat;/// 自动回复条目参考数据格式
-            QString responseFormat; /// 自动回复条目应答数据格式
-            QString option;         /// 自动回复条目应答选项
-        }column;
+        QString tableName;
+        struct Columns {
+            QString id;
+            QString name;
+            QString referenceData;
+            QString responseData;
+            QString enable;
+            QString referenceFormat;
+            QString responseFormat;
+            QString option;
+        }columns;
     };
 
     /// @brief 定时发送数据表
     struct TimingSendingTable {
         QString tableName;      /// 表格名称
-        struct Column {
+        struct Columns {
             QString id;
             QString interval;   /// 定时间隔
             QString format;     /// 文本格式
             QString comment;    /// 备注
             QString data;       /// 定时发送数据
-        }column;
+        }columns;
     };
 
     /// @brief 数据预设数据表
-    struct PresettingDataTable{
+    struct DataPresetItemTable{
         QString tableName;
-        struct Column {
+        struct Columns {
             QString id;
             QString format;
-            QString comment;
+            QString description;
             QString classify;
-            QString data;
-        }column;
+            QString text;
+        }columns;
     };
 
     /**
@@ -166,7 +166,7 @@ private:
     QSqlQuery sakDatabaseQuery;
     QList<AutoResponseTable> autoResponseTableList;
     QList<TimingSendingTable> timingSendingTableList;
-    QList<PresettingDataTable> presettingDataTableList;
+    QList<DataPresetItemTable> presettingDataTableList;
     QString databaseName;
 private:
     bool isTableExist(QString tableName);
@@ -177,12 +177,12 @@ private:
     void createTimingSendingTables();
     bool createTimingSendingTable(const TimingSendingTable &table);
     void createPresettingDataTables();
-    bool createPresettingDataTable(const PresettingDataTable &table);
+    bool createPresettingDataTable(const DataPresetItemTable &table);
 
     void deleteItemFromTable(QString tableName, quint64 id);
     AutoResponseTable tableNmaeToAutoResponseTable(QString tableName);
     TimingSendingTable tableNameToTimingSendingTable(QString tableName);
-    PresettingDataTable tableNameToPresettingDataTable(QString tableName);
+    DataPresetItemTable tableNameToPresettingDataTable(QString tableName);
 };
 
 #endif
