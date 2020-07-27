@@ -25,7 +25,6 @@ namespace Ui {
     class SAKInputDataPresetItem;
 }
 
-class SAKDebugPage;
 // Preset data parameters editting widget
 class SAKInputDataPresetItem:public QWidget
 {
