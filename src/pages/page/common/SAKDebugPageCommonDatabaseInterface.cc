@@ -442,7 +442,6 @@ void SAKDebugPageCommonDatabaseInterface::createPresettingDataTables()
         presettingDataTable.columns.id = QString("ID");
         presettingDataTable.columns.format = QString("Format");
         presettingDataTable.columns.description = QString("Comment");
-        presettingDataTable.columns.classify = QString("Classify");
         presettingDataTable.columns.text = QString("Data");
 
         presettingDataTableList.append(presettingDataTable);
@@ -466,14 +465,12 @@ bool SAKDebugPageCommonDatabaseInterface::createPresettingDataTable(const DataPr
                                               %2 INTEGER PRIMARY KEY NOT NULL, \
                                               %3 INTEGER NOT NULL, \
                                               %4 TEXT NOT NULL, \
-                                              %5 INTEGER NOT NULL, \
-                                              %6 TEXT NOT NULL \
+                                              %5 TEXT NOT NULL \
                                               )")
                                              .arg(table.tableName)
                                              .arg(table.columns.id)
                                              .arg(table.columns.format)
                                              .arg(table.columns.description)
-                                             .arg(table.columns.classify)
                                              .arg(table.columns.text));
     return ret;
 }
