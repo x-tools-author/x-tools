@@ -90,7 +90,9 @@ private slots:
     void on_descriptionLineEdit_textChanged(const QString &text);
     void on_inputTextEdit_textChanged();
 signals:
+    void formatChanged(int format);
     void descriptionChanged(const QString &text);
+    void textChanged(QString text);
 };
 
 #endif
