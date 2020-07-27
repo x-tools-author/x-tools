@@ -17,9 +17,7 @@
 #include <QComboBox>
 #include <QLineEdit>
 #include <QTextEdit>
-#include <QSqlQuery>
 #include <QPushButton>
-#include <QSqlDatabase>
 
 namespace Ui {
     class SAKInputDataPresetItem;
@@ -37,13 +35,6 @@ public:
                            QString text,
                            QWidget *parent = Q_NULLPTR);
     ~SAKInputDataPresetItem();
-
-    struct DatabaseColumns {
-        const QString id = QString("ID");
-        const QString format = QString("Format");
-        const QString description = QString("Description");
-        const QString text = QString("Text");
-    };
 
     /**
      * @brief itemID: Get the id of the item
@@ -70,13 +61,6 @@ public:
     int itemTextFromat();
 private:
     quint64 mItemID;
-    int mPageType;
-    QSqlDatabase *mSqlDatabase;
-    QSqlQuery *mSqlQuery;
-    QString mTableName;
-private:
-    void initializeVariable();
-    void updateRecord(QString columnName, QVariant value, bool isString);
 private:
     Ui::SAKInputDataPresetItem *mUi;
     QComboBox *mTextFormatComboBox;
