@@ -124,8 +124,6 @@ public:
 
     // Interface of data preset module
     void insertDataPresetItem(QString tableName, SAKDataStruct::SAKStructPresettingDataItem item);
-    void deleteDataPresetItem(QString tableName, SAKDataStruct::SAKStructPresettingDataItem item);
-    void updateDataPresetItem(QString tableName, SAKDataStruct::SAKStructPresettingDataItem item);
     QList<SAKDataStruct::SAKStructPresettingDataItem> selectDataPresetItem(QString tableName);
 
     /**

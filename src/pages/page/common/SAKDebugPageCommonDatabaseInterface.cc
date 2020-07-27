@@ -222,31 +222,6 @@ void SAKDebugPageCommonDatabaseInterface::insertDataPresetItem(QString tableName
     }
 }
 
-void SAKDebugPageCommonDatabaseInterface::deleteDataPresetItem(QString tableName, SAKDataStruct::SAKStructPresettingDataItem item)
-{
-    deleteRecord(tableName, item.id);
-}
-
-void SAKDebugPageCommonDatabaseInterface::updateDataPresetItem(QString tableName, SAKDataStruct::SAKStructPresettingDataItem item)
-{
-    DataPresetItemTable table = tableNameToPresettingDataTable(tableName);
-    bool ret = sakDatabaseQuery.exec(QString("UPDATE %1 SET %2=%3, %4=%5, %6='%7', %8='%9', WHERE %10=%11")
-                                     .arg(table.tableName)
-                                     .arg(table.columns.id)
-                                     .arg(item.id)
-                                     .arg(table.columns.format)
-                                     .arg(item.format)
-                                     .arg(table.columns.description)
-                                     .arg(item.description)
-                                     .arg(table.columns.text)
-                                     .arg(item.text)
-                                     .arg(table.columns.id)
-                                     .arg(item.id));
-    if (!ret){
-        qWarning() << __FUNCTION__ << "Update record form " << table.tableName << " table failed: " << sakDatabaseQuery.lastError().text();
-    }
-}
-
 QList<SAKDataStruct::SAKStructPresettingDataItem> SAKDebugPageCommonDatabaseInterface::selectDataPresetItem(QString tableName)
 {
     DataPresetItemTable table = tableNameToPresettingDataTable(tableName);
