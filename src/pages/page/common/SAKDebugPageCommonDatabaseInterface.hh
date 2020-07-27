@@ -136,7 +136,7 @@ public:
      * @param recordID: The ID of record that need to be update
      * @param valueIsString: ture-the value type is string, false-the value type is not string
      */
-    void updateRecord(QString tableName, QString columnName, QVariant value, QString recordID, bool valueIsString);
+    void updateRecord(QString tableName, QString columnName, QVariant value, quint64 recordID, bool valueIsString);
 private:
     static SAKDebugPageCommonDatabaseInterface *instancePtr;
     QSqlDatabase sakDatabase;

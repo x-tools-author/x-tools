@@ -270,7 +270,7 @@ QList<SAKDataStruct::SAKStructPresettingDataItem> SAKDebugPageCommonDatabaseInte
     return itemList;
 }
 
-void SAKDebugPageCommonDatabaseInterface::updateRecord(QString tableName, QString columnName, QVariant value, QString recordID, bool valueIsString)
+void SAKDebugPageCommonDatabaseInterface::updateRecord(QString tableName, QString columnName, QVariant value, quint64 recordID, bool valueIsString)
 {
 #ifdef SAK_IMPORT_SQL_MODULE
     const QString queryString = QString("UPDATE %1 SET %2=%3 WHERE ID=%4")
