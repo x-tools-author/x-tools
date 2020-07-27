@@ -204,7 +204,7 @@ QList<SAKDataStruct::SAKStructTimingSendingItem> SAKDebugPageCommonDatabaseInter
     return itemList;
 }
 
-void SAKDebugPageCommonDatabaseInterface::insertPresettingDataItem(QString tableName, SAKDataStruct::SAKStructPresettingDataItem item)
+void SAKDebugPageCommonDatabaseInterface::insertDataPresetItem(QString tableName, SAKDataStruct::SAKStructPresettingDataItem item)
 {
     DataPresetItemTable table = tableNameToPresettingDataTable(tableName);
     bool ret = sakDatabaseQuery.exec(QString("INSERT INTO %1(%2,%3,%4,%5) VALUES(%6, %7,%8,'%9','%10',)")
@@ -222,12 +222,12 @@ void SAKDebugPageCommonDatabaseInterface::insertPresettingDataItem(QString table
     }
 }
 
-void SAKDebugPageCommonDatabaseInterface::deletePresettingDataItem(QString tableName, SAKDataStruct::SAKStructPresettingDataItem item)
+void SAKDebugPageCommonDatabaseInterface::deleteDataPresetItem(QString tableName, SAKDataStruct::SAKStructPresettingDataItem item)
 {
     deleteItemFromTable(tableName, item.id);
 }
 
-void SAKDebugPageCommonDatabaseInterface::updatePresettingDataItem(QString tableName, SAKDataStruct::SAKStructPresettingDataItem item)
+void SAKDebugPageCommonDatabaseInterface::updateDataPresetItem(QString tableName, SAKDataStruct::SAKStructPresettingDataItem item)
 {
     DataPresetItemTable table = tableNameToPresettingDataTable(tableName);
     bool ret = sakDatabaseQuery.exec(QString("UPDATE %1 SET %2=%3, %4=%5, %6='%7', %8='%9', WHERE %10=%11")
@@ -247,7 +247,7 @@ void SAKDebugPageCommonDatabaseInterface::updatePresettingDataItem(QString table
     }
 }
 
-QList<SAKDataStruct::SAKStructPresettingDataItem> SAKDebugPageCommonDatabaseInterface::selectPresettingDataItem(QString tableName)
+QList<SAKDataStruct::SAKStructPresettingDataItem> SAKDebugPageCommonDatabaseInterface::selectDataPresetItem(QString tableName)
 {
     DataPresetItemTable table = tableNameToPresettingDataTable(tableName);
     bool ret = sakDatabaseQuery.exec(QString("SELECT * FROM %1").arg(table.tableName));

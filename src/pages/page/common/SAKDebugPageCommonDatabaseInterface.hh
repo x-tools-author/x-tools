@@ -122,33 +122,11 @@ public:
      */
     QList<SAKDataStruct::SAKStructTimingSendingItem> selectTimingSendingItem(QString tableName);
 
-    /**
-     * @brief insertPresettingDataItem 插入预设数据条目
-     * @param tableName 预设数据表名称
-     * @param item 数据信息
-     */
-    void insertPresettingDataItem(QString tableName, SAKDataStruct::SAKStructPresettingDataItem item);
-
-    /**
-     * @brief deletePresettingDataItem 删除预设数据条目
-     * @param tableName 预设数据条目表名称
-     * @param item 数据信息
-     */
-    void deletePresettingDataItem(QString tableName, SAKDataStruct::SAKStructPresettingDataItem item);
-
-    /**
-     * @brief updatePresettingDataItem 更新预设数据条目的数据信息
-     * @param tableName 预设数据条目表名称
-     * @param item 数据信息
-     */
-    void updatePresettingDataItem(QString tableName, SAKDataStruct::SAKStructPresettingDataItem item);
-
-    /**
-     * @brief selectPresettingDataItem 获取预设数据条目数据表中保存的预设数据条目
-     * @param tableName 预设数据条目表名称
-     * @return 预设数据条目列表
-     */
-    QList<SAKDataStruct::SAKStructPresettingDataItem> selectPresettingDataItem(QString tableName);
+    // Interface of data preset module
+    void insertDataPresetItem(QString tableName, SAKDataStruct::SAKStructPresettingDataItem item);
+    void deleteDataPresetItem(QString tableName, SAKDataStruct::SAKStructPresettingDataItem item);
+    void updateDataPresetItem(QString tableName, SAKDataStruct::SAKStructPresettingDataItem item);
+    QList<SAKDataStruct::SAKStructPresettingDataItem> selectDataPresetItem(QString tableName);
 
     /**
      * @brief updateRecord: Update the record of table
