@@ -79,7 +79,8 @@ void SAKOtherTimingSentItemManager::readinRecord()
     }
 
     for (auto var : itemList){
-        innerCreateItem(var, mDebugPage, mItemListWidget);
+        SAKOtherTimingSentItem *item = innerCreateItem(var, mDebugPage, mItemListWidget);
+        initializingItem(item);
     }
 }
 
@@ -190,17 +191,17 @@ void SAKOtherTimingSentItemManager::on_outportPushButton_clicked()
     QJsonDocument jsonDoc;
     jsonDoc.setArray(jsonArray);
 
-    /// @brief 打开文件，导出的数据将保存至该文件
+    // Open file
     QString defaultName = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
     defaultName.append(QString("/"));
     defaultName.append(QDateTime::currentDateTime().toString("yyyyMMddhhmmss"));
     defaultName.append(".json");
-    QString fileName = QFileDialog::getSaveFileName(this, tr("导出数据"), defaultName, QString("json (*.json)"));
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Outport data"), defaultName, QString("json (*.json)"));
     if (fileName.isEmpty()){
         return;
     }
 
-    /// @brief 保存至文件
+    // Write data to file
     QFile file(fileName);
     if (file.open(QFile::ReadWrite)){
         file.write(jsonDoc.toJson());
@@ -211,7 +212,7 @@ void SAKOtherTimingSentItemManager::on_outportPushButton_clicked()
 void SAKOtherTimingSentItemManager::on_importPushButton_clicked()
 {
     QString defaultPath = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
-    QString fileName = QFileDialog::getOpenFileName(this, tr("导出数据"), defaultPath, QString("json (*.json)"));
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Import data"), defaultPath, QString("json (*.json)"));
     QFile file(fileName);
     if (file.open(QFile::ReadWrite)){
         QByteArray array = file.readAll();
@@ -219,7 +220,7 @@ void SAKOtherTimingSentItemManager::on_importPushButton_clicked()
 
         QJsonDocument jsc = QJsonDocument::fromJson(array);
         if (!jsc.isArray()){
-            outputMessage(tr("文件数据格式有误"), true);
+            outputMessage(tr("Format error!"), true);
             return;
         }
 
@@ -235,10 +236,11 @@ void SAKOtherTimingSentItemManager::on_importPushButton_clicked()
                 responseItem.comment = jso.value(itemKey.description).toVariant().toString();
                 responseItem.interval = jso.value(itemKey.interval).toVariant().toUInt();
 
-                /// @brief 不存在则新建
+                // If item is not exist, creating an item
                 if (!contains(responseItem.id)){
-                    innerCreateItem(responseItem, mDebugPage, mItemListWidget);
-//                    databaseInterface->insertTimingSendingItem(tableName, responseItem);
+                    SAKOtherTimingSentItem *item = innerCreateItem(responseItem, mDebugPage, mItemListWidget);
+                    initializingItem(item);
+                    mDatabaseInterface->insertTimingSentItem(mTableName, responseItem);
                 }
             }
         }
@@ -254,7 +256,7 @@ void SAKOtherTimingSentItemManager::on_deletePushButton_clicked()
         SAKOtherTimingSentItem *w = reinterpret_cast<SAKOtherTimingSentItem*>(mItemListWidget->itemWidget(currentItem));
         SAKDataStruct::SAKStructTimingSentItem sendingItem;
         sendingItem.id = w->itemID();
-//        databaseInterface->deleteTimingSendingItem(tableName, sendingItem);
+        mDatabaseInterface->deleteRecord(mTableName, sendingItem.id);
 
         mItemListWidget->removeItemWidget(currentItem);
         delete currentItem;
@@ -270,12 +272,12 @@ void SAKOtherTimingSentItemManager::on_addPushButton_clicked()
     item->setSizeHint(itemWidget->size());
     mItemListWidget->setItemWidget(item, itemWidget);
 
-    /// @brief 插入定时发送记录
+    // Insert record to database
     SAKDataStruct::SAKStructTimingSentItem sendingItem;
     sendingItem.id = itemWidget->itemID();
     sendingItem.data = itemWidget->itemText();
     sendingItem.format = itemWidget->itemFormat();
     sendingItem.comment = itemWidget->itemDescription();
     sendingItem.interval = itemWidget->itemInterval();
-//    databaseInterface->insertTimingSendingItem(tableName, sendingItem);
+    mDatabaseInterface->insertTimingSentItem(mTableName, sendingItem);
 }
