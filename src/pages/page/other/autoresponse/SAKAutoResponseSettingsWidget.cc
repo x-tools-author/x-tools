@@ -109,7 +109,7 @@ bool SAKAutoResponseSettingsWidget::contains(quint64 paraID)
         QListWidgetItem *item = listWidget->item(i);
         QWidget *w = listWidget->itemWidget(item);
         SAKOtherAutoResponseItem *itemWidget = reinterpret_cast<SAKOtherAutoResponseItem*>(w);
-        if (itemWidget->parameterID() == paraID){
+        if (itemWidget->itemID() == paraID){
             contain = true;
             break;
         }
@@ -140,7 +140,7 @@ void SAKAutoResponseSettingsWidget::on_deleteItemPushButton_clicked()
     QString tableName = SAKDataStruct::autoResponseTableName(debugPage->pageType());
     SAKDataStruct::SAKStructAutoResponseItem dataItem;
     SAKOtherAutoResponseItem *w = reinterpret_cast<SAKOtherAutoResponseItem*>(listWidget->itemWidget(item));
-    dataItem.id = w->parameterID();
+    dataItem.id = w->itemID();
 //    databaseInterface->deleteAutoResponseItem(tableName, dataItem);
 
     listWidget->removeItemWidget(item);
@@ -163,14 +163,14 @@ void SAKAutoResponseSettingsWidget::on_addItemPushButton_clicked()
 
     /// @brief 添加数据库记录
     SAKDataStruct::SAKStructAutoResponseItem dataItem;
-    dataItem.id = itemWidget->parameterID();
-    dataItem.name = itemWidget->parameterName();
-    dataItem.enable = itemWidget->parameterEnable();
-    dataItem.responseData = itemWidget->parameterResponseData();
-    dataItem.referenceData = itemWidget->parameterRefernceData();
-    dataItem.responseFormat = itemWidget->parameterResponseFormat();
-    dataItem.referenceFormat = itemWidget->parameterReferenceFormat();
-    dataItem.option = itemWidget->parameterOption();
+    dataItem.id = itemWidget->itemID();
+    dataItem.name = itemWidget->itemDescription();
+    dataItem.enable = itemWidget->itemEnable();
+    dataItem.responseData = itemWidget->itemResponseText();
+    dataItem.referenceData = itemWidget->itemRefernceText();
+    dataItem.responseFormat = itemWidget->itemResponseFormat();
+    dataItem.referenceFormat = itemWidget->itemReferenceFormat();
+    dataItem.option = itemWidget->itemOption();
     QString tableName = SAKDataStruct::autoResponseTableName(debugPage->pageType());
 //    databaseInterface->insertAutoResponseItem(tableName, dataItem);
 }

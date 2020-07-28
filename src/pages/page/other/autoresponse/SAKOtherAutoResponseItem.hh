@@ -48,19 +48,20 @@ public:
      */
     void setAllAutoResponseDisable(bool disable);
 
-    quint64 parameterID();
-    QString parameterName();
-    QString parameterRefernceData();
-    QString parameterResponseData();
-    bool parameterEnable();
-    quint32 parameterReferenceFormat();
-    quint32 parameterResponseFormat();
-    quint32 parameterOption();
+    quint64 itemID();
+    QString itemDescription();
+    QString itemRefernceText();
+    QString itemResponseText();
+    bool itemEnable();
+    quint32 itemReferenceFormat();
+    quint32 itemResponseFormat();
+    quint32 itemOption();
 private:
     bool forbiddenAllAutoResponse;
     SAKDebugPage *debugPage;
     quint64 id;
 
+    // delay response
     struct DelayWritingInfo{
         quint64 expectedTimestamp;
         QByteArray data;

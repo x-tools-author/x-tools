@@ -66,42 +66,42 @@ void SAKOtherAutoResponseItem::setAllAutoResponseDisable(bool disable)
     forbiddenAllAutoResponse = disable;
 }
 
-quint64 SAKOtherAutoResponseItem::parameterID()
+quint64 SAKOtherAutoResponseItem::itemID()
 {
     return id;
 }
 
-QString SAKOtherAutoResponseItem::parameterName()
+QString SAKOtherAutoResponseItem::itemDescription()
 {
     return remarkLineEdit->text();
 }
 
-QString SAKOtherAutoResponseItem::parameterRefernceData()
+QString SAKOtherAutoResponseItem::itemRefernceText()
 {
     return referenceLineEdit->text();
 }
 
-QString SAKOtherAutoResponseItem::parameterResponseData()
+QString SAKOtherAutoResponseItem::itemResponseText()
 {
     return responseLineEdit->text();
 }
 
-bool SAKOtherAutoResponseItem::parameterEnable()
+bool SAKOtherAutoResponseItem::itemEnable()
 {
     return enableCheckBox->isChecked();
 }
 
-quint32 SAKOtherAutoResponseItem::parameterReferenceFormat()
+quint32 SAKOtherAutoResponseItem::itemReferenceFormat()
 {
     return referenceDataFromatComboBox->currentIndex();
 }
 
-quint32 SAKOtherAutoResponseItem::parameterResponseFormat()
+quint32 SAKOtherAutoResponseItem::itemResponseFormat()
 {
     return responseDataFormatComboBox->currentIndex();
 }
 
-quint32 SAKOtherAutoResponseItem::parameterOption()
+quint32 SAKOtherAutoResponseItem::itemOption()
 {
     return optionComboBox->currentIndex();
 }
@@ -324,13 +324,13 @@ void SAKOtherAutoResponseItem::on_updatePushButton_clicked()
 {
     QString tableName = SAKDataStruct::autoResponseTableName(debugPage->pageType());
     SAKDataStruct::SAKStructAutoResponseItem item;
-    item.id = parameterID();
-    item.name = parameterName();
-    item.enable = parameterEnable();
-    item.responseData = parameterResponseData();
-    item.referenceData = parameterRefernceData();
-    item.responseFormat = parameterResponseFormat();
-    item.referenceFormat = parameterReferenceFormat();
-    item.option = parameterOption();
+    item.id = itemID();
+    item.name = itemDescription();
+    item.enable = itemEnable();
+    item.responseData = itemResponseText();
+    item.referenceData = itemRefernceText();
+    item.responseFormat = itemResponseFormat();
+    item.referenceFormat = itemReferenceFormat();
+    item.option = itemOption();
 //    SAKDebugPageDatabaseInterface::instance()->updateAutoResponseItem(tableName, item);
 }
