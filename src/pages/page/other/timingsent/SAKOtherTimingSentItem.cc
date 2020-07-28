@@ -20,7 +20,7 @@
 SAKOtherTimingSentItem::SAKOtherTimingSentItem(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget(parent)
     ,debugPage(debugPage)
-    ,ui(new Ui::SAKTimingSendingItemWidget)
+    ,ui(new Ui::SAKOtherTimingSentItem)
 {
     initUi();
     id = QDateTime::currentMSecsSinceEpoch();
@@ -36,7 +36,7 @@ SAKOtherTimingSentItem::SAKOtherTimingSentItem(SAKDebugPage *debugPage,
     :QWidget(parent)
     ,debugPage(debugPage)
     ,id(id)
-    ,ui(new Ui::SAKTimingSendingItemWidget)
+    ,ui(new Ui::SAKOtherTimingSentItem)
 {
     initUi();
 

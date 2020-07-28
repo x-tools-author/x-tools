@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SAKTimingSendingItemWidget</class>
- <widget class="QWidget" name="SAKTimingSendingItemWidget">
+ <class>SAKOtherTimingSentItem</class>
+ <widget class="QWidget" name="SAKOtherTimingSentItem">
   <property name="geometry">
    <rect>
     <x>0</x>
