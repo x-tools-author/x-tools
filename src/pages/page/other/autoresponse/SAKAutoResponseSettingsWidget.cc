@@ -69,6 +69,8 @@ void innerCreateItem(SAKDataStruct::SAKStructAutoResponseItem &var, SAKDebugPage
                                                                           var.referenceFormat,
                                                                           var.responseFormat,
                                                                           var.option,
+                                                                        var.delay,
+                                                                        var.interval,
                                                                           listWidget);
     item->setSizeHint(QSize(itemWidget->width(), itemWidget->height()));
     listWidget->setItemWidget(item, itemWidget);

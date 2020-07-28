@@ -111,6 +111,8 @@ public:
         quint32 referenceFormat;    /// 参考数据格式，详情查看SAKEnumTextInputFormat
         quint32 responseFormat;     /// 回复数据格式，详情查看SAKEnumTextInputFormat
         quint32 option;             /// 回复选项
+        bool delay; // true-response delayly
+        quint32 interval; // delay interval
     };
 
     /// @brief 调试页面定时发送数的据结构
