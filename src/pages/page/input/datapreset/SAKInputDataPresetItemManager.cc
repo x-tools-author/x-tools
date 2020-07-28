@@ -45,7 +45,7 @@ SAKInputDataPresetItemManager::SAKInputDataPresetItemManager(SAKDebugPage *debug
         mInfoLabel->clear();
     });
 
-    mTableName = SAKDataStruct::presettingDataTableName(debugPage->pageType());
+    mTableName = SAKDataStruct::presettingDataTableName(mDebugPage->pageType());
     mDatabaseInterface = SAKDebugPageCommonDatabaseInterface::instance();
     readinRecord();
 }
