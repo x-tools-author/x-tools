@@ -89,6 +89,15 @@ private:
     QCheckBox *mDelayResponseCheckBox;
     QLineEdit *mDelayResponseLineEdit;
 private slots:
+    void on_descriptionLineEdit_textChanged(const QString &text);
+    void on_referenceLineEdit_textChanged(const QString &text);
+    void on_responseLineEdit_textChanged(const QString &text);
+    void on_enableCheckBox_clicked();
+    void on_optionComboBox_currentIndexChanged(const QString &text);
+    void on_referenceDataFromatComboBox_currentIndexChanged(const QString &text);
+    void on_responseDataFormatComboBox_currentIndexChanged(const QString &text);
+    void on_delayResponseCheckBox_clicked();
+    void on_delayResponseLineEdit_textChanged(const QString &text);
     void on_referenceDataFromatComboBox_currentTextChanged();
     void on_responseDataFormatComboBox_currentTextChanged();
 };

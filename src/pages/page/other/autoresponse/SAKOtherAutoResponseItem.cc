@@ -309,6 +309,51 @@ void SAKOtherAutoResponseItem::delayToWritBytes()
     mTimestampChecker.start();
 }
 
+void SAKOtherAutoResponseItem::on_descriptionLineEdit_textChanged(const QString &text)
+{
+
+}
+
+void SAKOtherAutoResponseItem::on_referenceLineEdit_textChanged(const QString &text)
+{
+
+}
+
+void SAKOtherAutoResponseItem::on_responseLineEdit_textChanged(const QString &text)
+{
+
+}
+
+void SAKOtherAutoResponseItem::on_enableCheckBox_clicked()
+{
+
+}
+
+void SAKOtherAutoResponseItem::on_optionComboBox_currentIndexChanged(const QString &text)
+{
+
+}
+
+void SAKOtherAutoResponseItem::on_referenceDataFromatComboBox_currentIndexChanged(const QString &text)
+{
+    setLineEditFormat(mReferenceLineEdit, mReferenceDataFromatComboBox->currentData().toInt());
+}
+
+void SAKOtherAutoResponseItem::on_responseDataFormatComboBox_currentIndexChanged(const QString &text)
+{
+    setLineEditFormat(mResponseLineEdit, mResponseDataFormatComboBox->currentData().toInt());
+}
+
+void SAKOtherAutoResponseItem::on_delayResponseCheckBox_clicked()
+{
+
+}
+
+void SAKOtherAutoResponseItem::on_delayResponseLineEdit_textChanged(const QString &text)
+{
+
+}
+
 void SAKOtherAutoResponseItem::on_referenceDataFromatComboBox_currentTextChanged()
 {
     setLineEditFormat(mReferenceLineEdit, mReferenceDataFromatComboBox->currentData().toInt());
