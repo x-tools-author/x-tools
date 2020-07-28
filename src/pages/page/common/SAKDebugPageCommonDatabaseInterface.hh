@@ -99,7 +99,7 @@ public:
      * @param tableName 数据表名称
      * @param item 数据信息
      */
-    void insertTimingSendingItem(QString tableName, SAKDataStruct::SAKStructTimingSentItem item);
+    void insertTimingSentItem(QString tableName, SAKDataStruct::SAKStructTimingSentItem item);
 
     /**
      * @brief selectTimingSendingItem 提取数据数据库中保存的定时发送条目的数据信息

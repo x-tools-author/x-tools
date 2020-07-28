@@ -134,7 +134,7 @@ QList<SAKDataStruct::SAKStructAutoResponseItem> SAKDebugPageCommonDatabaseInterf
     return itemList;
 }
 
-void SAKDebugPageCommonDatabaseInterface::insertTimingSendingItem(QString tableName, SAKDataStruct::SAKStructTimingSentItem item)
+void SAKDebugPageCommonDatabaseInterface::insertTimingSentItem(QString tableName, SAKDataStruct::SAKStructTimingSentItem item)
 {
     TimingSendingTable table = tableNameToTimingSendingTable(tableName);
     bool ret = sakDatabaseQuery.exec(QString("INSERT INTO %1(%2,%3,%4,%5,%6) VALUES(%7,%8,%9,'%10','%11')")
