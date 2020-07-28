@@ -43,8 +43,8 @@ public:
     ~SAKOtherAutoResponseItem();
 
     /**
-     * @brief setAllAutoResponseDisable 禁止所有自动回复
-     * @param disAbel 该值为true时，禁止所有回复，否则更具回复示例的使能判断是否自动回复
+     * @brief setAllAutoResponseDisable: Set enable flag
+     * @param disable: true-disable all auto response item
      */
     void setAllAutoResponseDisable(bool disable);
 
