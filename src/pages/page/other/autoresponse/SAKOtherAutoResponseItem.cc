@@ -30,15 +30,15 @@ SAKOtherAutoResponseItem::SAKOtherAutoResponseItem(SAKDebugPage *debugPage, QWid
 }
 
 SAKOtherAutoResponseItem::SAKOtherAutoResponseItem(SAKDebugPage *debugPage,
-                                                     quint64 id,
-                                                     QString name,
-                                                     QString referenceData,
-                                                     QString responseData,
-                                                     bool enabled,
-                                                     quint32 referenceFormat,
-                                                     quint32 responseFormat,
-                                                     quint32 option,
-                                                     QWidget *parent)
+                                                   quint64 id,
+                                                   QString name,
+                                                   QString referenceData,
+                                                   QString responseData,
+                                                   bool enabled,
+                                                   quint32 referenceFormat,
+                                                   quint32 responseFormat,
+                                                   quint32 option,
+                                                   QWidget *parent)
     :QWidget(parent)
     ,forbiddenAllAutoResponse(false)
     ,debugPage(debugPage)
