@@ -76,6 +76,7 @@ private slots:
 signals:
     void itemDeleted(SAKInputDataPresetItem *item);
     void itemAdded(SAKInputDataPresetItem *item);
+    void descriptionChanged(SAKInputDataPresetItem *item);
 };
 
 #endif

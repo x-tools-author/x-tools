@@ -150,6 +150,7 @@ void SAKInputDataPresetItemManager::updateDescription(const QString &text)
 
             SAKDebugPageCommonDatabaseInterface::DataPresetItemTable table;
             mDatabaseInterface->updateRecord(mTableName, table.columns.description, QVariant::fromValue(text), id, true);
+            emit descriptionChanged(item);
         }
     }
 }
