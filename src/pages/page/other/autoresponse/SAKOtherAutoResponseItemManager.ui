@@ -11,20 +11,20 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Auto response settings</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="1" column="5">
     <widget class="QPushButton" name="addItemPushButton">
      <property name="text">
-      <string>添加</string>
+      <string>Add</string>
      </property>
     </widget>
    </item>
    <item row="1" column="0">
     <widget class="QCheckBox" name="forbidAllCheckBox">
      <property name="text">
-      <string>禁用所有自动回复</string>
+      <string>Disable all</string>
      </property>
     </widget>
    </item>
@@ -34,7 +34,7 @@
    <item row="1" column="4">
     <widget class="QPushButton" name="deleteItemPushButton">
      <property name="text">
-      <string>删除</string>
+      <string>Delete</string>
      </property>
     </widget>
    </item>
@@ -54,14 +54,14 @@
    <item row="1" column="2">
     <widget class="QPushButton" name="outportPushButton">
      <property name="text">
-      <string>导出</string>
+      <string>outport</string>
      </property>
     </widget>
    </item>
    <item row="1" column="3">
     <widget class="QPushButton" name="importPushButton">
      <property name="text">
-      <string>导入</string>
+      <string>Import</string>
      </property>
     </widget>
    </item>

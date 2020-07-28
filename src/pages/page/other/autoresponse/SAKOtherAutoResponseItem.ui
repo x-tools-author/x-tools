@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string notr="true">Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="leftMargin">
@@ -32,7 +32,7 @@
    <item row="1" column="2">
     <widget class="QLabel" name="label_5">
      <property name="text">
-      <string>参考数据格式</string>
+      <string>Text format</string>
      </property>
     </widget>
    </item>
@@ -52,28 +52,28 @@
    <item row="0" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>回复说明</string>
+      <string>Description</string>
      </property>
     </widget>
    </item>
    <item row="2" column="0">
     <widget class="QLabel" name="label_3">
      <property name="text">
-      <string>回复数据</string>
+      <string>Response text</string>
      </property>
     </widget>
    </item>
    <item row="2" column="2">
     <widget class="QLabel" name="label_6">
      <property name="text">
-      <string>回复数据格式</string>
+      <string>Text format</string>
      </property>
     </widget>
    </item>
    <item row="3" column="0">
     <widget class="QLabel" name="label_4">
      <property name="text">
-      <string>回复选项</string>
+      <string>Response option</string>
      </property>
     </widget>
    </item>
@@ -90,7 +90,7 @@
    <item row="3" column="2">
     <widget class="QCheckBox" name="delayResponseCheckBox">
      <property name="text">
-      <string>延时回复</string>
+      <string>Delay</string>
      </property>
     </widget>
    </item>
@@ -110,7 +110,7 @@
    <item row="1" column="0">
     <widget class="QLabel" name="label_2">
      <property name="text">
-      <string>参考数据</string>
+      <string>Reference text</string>
      </property>
     </widget>
    </item>
@@ -124,7 +124,7 @@
    <item row="0" column="1">
     <widget class="QLineEdit" name="descriptionLineEdit">
      <property name="text">
-      <string notr="true">示例</string>
+      <string>Example</string>
      </property>
     </widget>
    </item>
@@ -138,7 +138,7 @@
    <item row="0" column="2" colspan="2">
     <widget class="QCheckBox" name="enableCheckBox">
      <property name="text">
-      <string>启用</string>
+      <string>Enable</string>
      </property>
      <property name="checked">
       <bool>true</bool>
