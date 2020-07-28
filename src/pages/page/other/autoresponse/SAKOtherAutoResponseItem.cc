@@ -52,11 +52,11 @@ SAKOtherAutoResponseItem::SAKOtherAutoResponseItem(SAKDebugPage *debugPage,
 {
     commonInitializing();
     mDescriptionLineEdit->setText(name);
-    mReferenceLineEdit->setText(referenceData);
-    mResponseLineEdit->setText(responseData);
     mEnableCheckBox->setChecked(enabled);
     mReferenceDataFromatComboBox->setCurrentIndex(referenceFormat);
     mResponseDataFormatComboBox->setCurrentIndex(responseFormat);
+    mReferenceLineEdit->setText(referenceData);
+    mResponseLineEdit->setText(responseData);
     mOptionComboBox->setCurrentIndex(option);
     mDelayResponseCheckBox->setChecked(delay);
     mDelayResponseLineEdit->setText(QString::number(interval));
