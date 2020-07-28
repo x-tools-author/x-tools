@@ -14,17 +14,19 @@
 #include "SAKDebugPage.hh"
 #include "SAKDataStruct.hh"
 #include "SAKOtherTimingSentItem.hh"
-#include "SAKDebugPageCommonDatabaseInterface.hh"
+#include "SAKDebugPageInputController.hh"
 
 #include "ui_SAKOtherTimingSentItem.h"
 
 SAKOtherTimingSentItem::SAKOtherTimingSentItem(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget(parent)
     ,mDebugPage(debugPage)
+    ,isInitializing(true)
     ,mUi(new Ui::SAKOtherTimingSentItem)
 {
     commonInitializing();
     mID = QDateTime::currentMSecsSinceEpoch();
+    isInitializing = false;
 }
 
 SAKOtherTimingSentItem::SAKOtherTimingSentItem(SAKDebugPage *debugPage,
@@ -37,6 +39,7 @@ SAKOtherTimingSentItem::SAKOtherTimingSentItem(SAKDebugPage *debugPage,
     :QWidget(parent)
     ,mDebugPage(debugPage)
     ,mID(id)
+    ,isInitializing(true)
     ,mUi(new Ui::SAKOtherTimingSentItem)
 {
     commonInitializing();
@@ -45,6 +48,7 @@ SAKOtherTimingSentItem::SAKOtherTimingSentItem(SAKDebugPage *debugPage,
     mTextFormatComboBox->setCurrentIndex(format);
     mDescriptionLineEdit->setText(comment);
     mInputDataTextEdit->setText(data);
+    isInitializing = false;
 }
 
 SAKOtherTimingSentItem::~SAKOtherTimingSentItem()
@@ -92,7 +96,6 @@ void SAKOtherTimingSentItem::write()
 void SAKOtherTimingSentItem::commonInitializing()
 {
     mUi->setupUi(this);
-    mDatabaseInterface = SAKDebugPageCommonDatabaseInterface::instance();
 
     mEnableCheckBox = mUi->enableCheckBox;
     mIntervalLineEdit = mUi->intervalLineEdit;
@@ -115,21 +118,36 @@ void SAKOtherTimingSentItem::on_enableCheckBox_clicked()
 
 void SAKOtherTimingSentItem::on_intervalLineEdit_textChanged(const QString &text)
 {
-    int interval = text.toInt();
-    mWriteTimer.setInterval(interval > 20 ? 20 : interval);
+    if (!isInitializing){
+        int interval = text.toInt();
+        mWriteTimer.setInterval(interval > 20 ? 20 : interval);
+    }
 }
 
 void SAKOtherTimingSentItem::on_textFormatComboBox_currentTextChanged(const QString &text)
 {
-
+    Q_UNUSED(text);
+    if (!isInitializing){
+        mInputDataTextEdit->clear();
+        int format = mTextFormatComboBox->currentData().toInt();
+        emit formatChanged(format);
+    }
 }
 
 void SAKOtherTimingSentItem::on_descriptionLineEdit_textChanged(const QString &text)
 {
-
+    if (!isInitializing){
+        emit descriptionChanged(text);
+    }
 }
 
 void SAKOtherTimingSentItem::on_inputDataTextEdit_textChanged()
 {
+    if (!isInitializing){
+        QString text = mInputDataTextEdit->toPlainText();
+        int format = mTextFormatComboBox->currentData().toInt();
+        SAKDebugPageInputController::formattingInputText(mInputDataTextEdit, format);
 
+        emit inputTextChanged(text);
+    }
 }

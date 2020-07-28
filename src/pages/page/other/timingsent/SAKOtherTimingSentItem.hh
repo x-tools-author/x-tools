@@ -24,7 +24,6 @@ namespace Ui {
     class SAKOtherTimingSentItem;
 }
 class SAKDebugPage;
-class SAKDebugPageCommonDatabaseInterface;
 /// @brief Timing sent item
 class SAKOtherTimingSentItem:public QWidget
 {
@@ -49,7 +48,7 @@ private:
     SAKDebugPage *mDebugPage;
     quint64 mID;
     QTimer mWriteTimer;
-    SAKDebugPageCommonDatabaseInterface *mDatabaseInterface;
+    bool isInitializing;
 private:
     void write();
     void commonInitializing();
@@ -66,6 +65,11 @@ private slots:
     void on_textFormatComboBox_currentTextChanged(const QString &text);
     void on_descriptionLineEdit_textChanged(const QString &text);
     void on_inputDataTextEdit_textChanged();
+signals:
+    void intervalChanged(int interval);
+    void formatChanged(int format);
+    void descriptionChanged(QString description);
+    void inputTextChanged(QString text);
 };
 
 #endif
