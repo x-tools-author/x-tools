@@ -21,7 +21,7 @@
 
 #include "SAKDebugPage.hh"
 #include "SAKDataStruct.hh"
-#include "SAKAutoResponseItemWidget.hh"
+#include "SAKOtherAutoResponseItem.hh"
 #include "SAKAutoResponseSettingsWidget.hh"
 #include "SAKDebugPageCommonDatabaseInterface.hh"
 
@@ -60,7 +60,7 @@ void innerCreateItem(SAKDataStruct::SAKStructAutoResponseItem &var, SAKDebugPage
 {
     QListWidgetItem *item = new QListWidgetItem(listWidget);
     listWidget->addItem(item);
-    SAKAutoResponseItemWidget *itemWidget = new SAKAutoResponseItemWidget(debugPage,
+    SAKOtherAutoResponseItem *itemWidget = new SAKOtherAutoResponseItem(debugPage,
                                                                           var.id,
                                                                           var.name,
                                                                           var.referenceData,
@@ -108,7 +108,7 @@ bool SAKAutoResponseSettingsWidget::contains(quint64 paraID)
     for (int i = 0; i < listWidget->count(); i++){
         QListWidgetItem *item = listWidget->item(i);
         QWidget *w = listWidget->itemWidget(item);
-        SAKAutoResponseItemWidget *itemWidget = reinterpret_cast<SAKAutoResponseItemWidget*>(w);
+        SAKOtherAutoResponseItem *itemWidget = reinterpret_cast<SAKOtherAutoResponseItem*>(w);
         if (itemWidget->parameterID() == paraID){
             contain = true;
             break;
@@ -124,7 +124,7 @@ void SAKAutoResponseSettingsWidget::on_forbidAllCheckBox_clicked()
         QListWidgetItem *item = listWidget->item(i);
         QWidget *widget = listWidget->itemWidget(item);
         bool disAble = forbidAllCheckBox->isChecked();
-        reinterpret_cast<SAKAutoResponseItemWidget*>(widget)->setAllAutoResponseDisable(disAble);
+        reinterpret_cast<SAKOtherAutoResponseItem*>(widget)->setAllAutoResponseDisable(disAble);
     }
 }
 
@@ -139,7 +139,7 @@ void SAKAutoResponseSettingsWidget::on_deleteItemPushButton_clicked()
     /// @brief 删除数据库记录
     QString tableName = SAKDataStruct::autoResponseTableName(debugPage->pageType());
     SAKDataStruct::SAKStructAutoResponseItem dataItem;
-    SAKAutoResponseItemWidget *w = reinterpret_cast<SAKAutoResponseItemWidget*>(listWidget->itemWidget(item));
+    SAKOtherAutoResponseItem *w = reinterpret_cast<SAKOtherAutoResponseItem*>(listWidget->itemWidget(item));
     dataItem.id = w->parameterID();
 //    databaseInterface->deleteAutoResponseItem(tableName, dataItem);
 
@@ -157,7 +157,7 @@ void SAKAutoResponseSettingsWidget::on_addItemPushButton_clicked()
 
     QListWidgetItem *item = new QListWidgetItem(listWidget);
     listWidget->addItem(item);
-    SAKAutoResponseItemWidget *itemWidget = new SAKAutoResponseItemWidget(debugPage, listWidget);
+    SAKOtherAutoResponseItem *itemWidget = new SAKOtherAutoResponseItem(debugPage, listWidget);
     item->setSizeHint(QSize(itemWidget->width(), itemWidget->height()));
     listWidget->setItemWidget(item, itemWidget);
 

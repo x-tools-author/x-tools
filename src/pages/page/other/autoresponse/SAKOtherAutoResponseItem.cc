@@ -13,11 +13,11 @@
 #include "SAKGlobal.hh"
 #include "SAKDebugPage.hh"
 #include "SAKDataStruct.hh"
-#include "SAKAutoResponseItemWidget.hh"
+#include "SAKOtherAutoResponseItem.hh"
 
 #include "ui_SAKAutoResponseItemWidget.h"
 
-SAKAutoResponseItemWidget::SAKAutoResponseItemWidget(SAKDebugPage *debugPage, QWidget *parent)
+SAKOtherAutoResponseItem::SAKOtherAutoResponseItem(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget(parent)
     ,forbiddenAllAutoResponse(false)
     ,debugPage(debugPage)
@@ -29,7 +29,7 @@ SAKAutoResponseItemWidget::SAKAutoResponseItemWidget(SAKDebugPage *debugPage, QW
     initDelayWritingTimer();
 }
 
-SAKAutoResponseItemWidget::SAKAutoResponseItemWidget(SAKDebugPage *debugPage,
+SAKOtherAutoResponseItem::SAKOtherAutoResponseItem(SAKDebugPage *debugPage,
                                                      quint64 id,
                                                      QString name,
                                                      QString referenceData,
@@ -56,57 +56,57 @@ SAKAutoResponseItemWidget::SAKAutoResponseItemWidget(SAKDebugPage *debugPage,
     initDelayWritingTimer();
 }
 
-SAKAutoResponseItemWidget::~SAKAutoResponseItemWidget()
+SAKOtherAutoResponseItem::~SAKOtherAutoResponseItem()
 {
     delete ui;
 }
 
-void SAKAutoResponseItemWidget::setAllAutoResponseDisable(bool disable)
+void SAKOtherAutoResponseItem::setAllAutoResponseDisable(bool disable)
 {
     forbiddenAllAutoResponse = disable;
 }
 
-quint64 SAKAutoResponseItemWidget::parameterID()
+quint64 SAKOtherAutoResponseItem::parameterID()
 {
     return id;
 }
 
-QString SAKAutoResponseItemWidget::parameterName()
+QString SAKOtherAutoResponseItem::parameterName()
 {
     return remarkLineEdit->text();
 }
 
-QString SAKAutoResponseItemWidget::parameterRefernceData()
+QString SAKOtherAutoResponseItem::parameterRefernceData()
 {
     return referenceLineEdit->text();
 }
 
-QString SAKAutoResponseItemWidget::parameterResponseData()
+QString SAKOtherAutoResponseItem::parameterResponseData()
 {
     return responseLineEdit->text();
 }
 
-bool SAKAutoResponseItemWidget::parameterEnable()
+bool SAKOtherAutoResponseItem::parameterEnable()
 {
     return enableCheckBox->isChecked();
 }
 
-quint32 SAKAutoResponseItemWidget::parameterReferenceFormat()
+quint32 SAKOtherAutoResponseItem::parameterReferenceFormat()
 {
     return referenceDataFromatComboBox->currentIndex();
 }
 
-quint32 SAKAutoResponseItemWidget::parameterResponseFormat()
+quint32 SAKOtherAutoResponseItem::parameterResponseFormat()
 {
     return responseDataFormatComboBox->currentIndex();
 }
 
-quint32 SAKAutoResponseItemWidget::parameterOption()
+quint32 SAKOtherAutoResponseItem::parameterOption()
 {
     return optionComboBox->currentIndex();
 }
 
-void SAKAutoResponseItemWidget::setLineEditFormat(QLineEdit *lineEdit, int format)
+void SAKOtherAutoResponseItem::setLineEditFormat(QLineEdit *lineEdit, int format)
 {
     QRegExp regExpBin("([01][01][01][01][01][01][01][01][ ])*");
     QRegExp regExpOct("([0-7][0-7][ ])*");
@@ -142,7 +142,7 @@ void SAKAutoResponseItemWidget::setLineEditFormat(QLineEdit *lineEdit, int forma
     }
 }
 
-void SAKAutoResponseItemWidget::bytesRead(QByteArray bytes)
+void SAKOtherAutoResponseItem::bytesRead(QByteArray bytes)
 {
     if (forbiddenAllAutoResponse){
         return;
@@ -186,7 +186,7 @@ void SAKAutoResponseItemWidget::bytesRead(QByteArray bytes)
     }
 }
 
-QByteArray SAKAutoResponseItemWidget::string2array(QString str, int format)
+QByteArray SAKOtherAutoResponseItem::string2array(QString str, int format)
 {
     auto stringList2Array = [](QStringList strList, int base) -> QByteArray{
         QByteArray array;
@@ -233,7 +233,7 @@ QByteArray SAKAutoResponseItemWidget::string2array(QString str, int format)
     return array;
 };
 
-bool SAKAutoResponseItemWidget::response(QByteArray receiveData, QByteArray referenceData, int option)
+bool SAKOtherAutoResponseItem::response(QByteArray receiveData, QByteArray referenceData, int option)
 {
     if (option == SAKDataStruct::AutoResponseOptionEqual){
         return (QString(receiveData.toHex()).compare(QString(referenceData.toHex())) == 0);
@@ -250,7 +250,7 @@ bool SAKAutoResponseItemWidget::response(QByteArray receiveData, QByteArray refe
     return false;
 };
 
-void SAKAutoResponseItemWidget::initUi()
+void SAKOtherAutoResponseItem::initUi()
 {
     ui->setupUi(this);
     remarkLineEdit = ui->remarkLineEdit;
@@ -272,17 +272,17 @@ void SAKAutoResponseItemWidget::initUi()
     SAKGlobal::initInputTextFormatComboBox(referenceDataFromatComboBox);
     SAKGlobal::initInputTextFormatComboBox(responseDataFormatComboBox);
 
-    connect(debugPage, &SAKDebugPage::bytesRead, this, &SAKAutoResponseItemWidget::bytesRead);
+    connect(debugPage, &SAKDebugPage::bytesRead, this, &SAKOtherAutoResponseItem::bytesRead);
 }
 
-void SAKAutoResponseItemWidget::initDelayWritingTimer()
+void SAKOtherAutoResponseItem::initDelayWritingTimer()
 {
     delayToWritingTimer.setInterval(20);
-    connect(&delayToWritingTimer, &QTimer::timeout, this, &SAKAutoResponseItemWidget::delayToWritBytes);
+    connect(&delayToWritingTimer, &QTimer::timeout, this, &SAKOtherAutoResponseItem::delayToWritBytes);
     delayToWritingTimer.start();
 }
 
-void SAKAutoResponseItemWidget::delayToWritBytes()
+void SAKOtherAutoResponseItem::delayToWritBytes()
 {
     delayToWritingTimer.stop();
     QList<DelayWritingInfo> temp;
@@ -310,17 +310,17 @@ void SAKAutoResponseItemWidget::delayToWritBytes()
     delayToWritingTimer.start();
 }
 
-void SAKAutoResponseItemWidget::on_referenceDataFromatComboBox_currentTextChanged()
+void SAKOtherAutoResponseItem::on_referenceDataFromatComboBox_currentTextChanged()
 {
     setLineEditFormat(referenceLineEdit, referenceDataFromatComboBox->currentData().toInt());
 }
 
-void SAKAutoResponseItemWidget::on_responseDataFormatComboBox_currentTextChanged()
+void SAKOtherAutoResponseItem::on_responseDataFormatComboBox_currentTextChanged()
 {
     setLineEditFormat(responseLineEdit, responseDataFormatComboBox->currentData().toInt());
 }
 
-void SAKAutoResponseItemWidget::on_updatePushButton_clicked()
+void SAKOtherAutoResponseItem::on_updatePushButton_clicked()
 {
     QString tableName = SAKDataStruct::autoResponseTableName(debugPage->pageType());
     SAKDataStruct::SAKStructAutoResponseItem item;

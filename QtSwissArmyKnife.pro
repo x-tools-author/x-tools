@@ -187,8 +187,8 @@ HEADERS += \
     src/pages/page/input/datapreset/SAKInputDataPresetItem.hh \
     src/pages/page/input/datapreset/SAKInputDataPresetItemManager.hh \
     src/pages/page/other/SAKDebugPageOtherController.hh \
-    src/pages/page/other/autoresponse/SAKAutoResponseItemWidget.hh \
     src/pages/page/other/autoresponse/SAKAutoResponseSettingsWidget.hh \
+    src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.hh \
     src/pages/page/other/highlight/SAKHighlightSettings.hh \
     src/pages/page/other/highlight/SAKHighlightSettingsWidget.hh \
     src/pages/page/other/more/SAKMoreSettingsWidget.hh \
@@ -247,8 +247,8 @@ SOURCES += \
     src/pages/page/input/datapreset/SAKInputDataPresetItem.cc \
     src/pages/page/input/datapreset/SAKInputDataPresetItemManager.cc \
     src/pages/page/other/SAKDebugPageOtherController.cc \
-    src/pages/page/other/autoresponse/SAKAutoResponseItemWidget.cc \
     src/pages/page/other/autoresponse/SAKAutoResponseSettingsWidget.cc \
+    src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.cc \
     src/pages/page/other/highlight/SAKHighlightSettings.cc \
     src/pages/page/other/highlight/SAKHighlightSettingsWidget.cc \
     src/pages/page/other/more/SAKMoreSettingsWidget.cc \

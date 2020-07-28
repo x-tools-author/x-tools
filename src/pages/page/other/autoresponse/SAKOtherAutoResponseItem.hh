@@ -25,12 +25,12 @@ namespace Ui {
 
 class SAKDebugPage;
 /// @brief 自动回复条目
-class SAKAutoResponseItemWidget:public QWidget
+class SAKOtherAutoResponseItem:public QWidget
 {
     Q_OBJECT
 public:
-    SAKAutoResponseItemWidget(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
-    SAKAutoResponseItemWidget(SAKDebugPage *debugPage,
+    SAKOtherAutoResponseItem(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
+    SAKOtherAutoResponseItem(SAKDebugPage *debugPage,
                               quint64 id,
                               QString name,
                               QString referenceData,
@@ -40,7 +40,7 @@ public:
                               quint32 responseFormat,
                               quint32 option,
                               QWidget *parent = Q_NULLPTR);
-    ~SAKAutoResponseItemWidget();
+    ~SAKOtherAutoResponseItem();
 
     /**
      * @brief setAllAutoResponseDisable 禁止所有自动回复
