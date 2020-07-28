@@ -336,11 +336,13 @@ void SAKOtherAutoResponseItem::on_optionComboBox_currentIndexChanged(const QStri
 
 void SAKOtherAutoResponseItem::on_referenceDataFromatComboBox_currentIndexChanged(const QString &text)
 {
+    Q_UNUSED(text);
     setLineEditFormat(mReferenceLineEdit, mReferenceDataFromatComboBox->currentData().toInt());
 }
 
 void SAKOtherAutoResponseItem::on_responseDataFormatComboBox_currentIndexChanged(const QString &text)
 {
+    Q_UNUSED(text);
     setLineEditFormat(mResponseLineEdit, mResponseDataFormatComboBox->currentData().toInt());
 }
 
