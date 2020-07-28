@@ -150,7 +150,7 @@ public:
      * @param type 调试类型，详情查看SAKEnumDebugPageType
      * @return 数据表名称
      */
-    static QString presettingDataTableName(int type);
+    static QString dataPresetTableName(int type);
 };
 
 #endif

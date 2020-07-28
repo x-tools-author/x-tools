@@ -426,7 +426,7 @@ void SAKDebugPageCommonDatabaseInterface::createPresettingDataTables()
     QMetaEnum metaEnum = QMetaEnum::fromType<SAKDataStruct::SAKEnumDebugPageType>();
     DataPresetItemTable presettingDataTable;
     for (int i = 0; i < metaEnum.keyCount(); i++){
-        presettingDataTable.tableName = SAKDataStruct::presettingDataTableName(i);
+        presettingDataTable.tableName = SAKDataStruct::dataPresetTableName(i);
         presettingDataTableList.append(presettingDataTable);
     }
 
