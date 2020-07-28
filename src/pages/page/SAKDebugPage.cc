@@ -37,7 +37,7 @@
 #ifdef SAK_IMPORT_CHARTS_MODULE
 #include "SAKDebugPageChartsController.hh"
 #endif
-#include "SAKAutoResponseSettingsWidget.hh"
+#include "SAKOtherAutoResponseItemManager.hh"
 #include "SAKDebugPageStatisticsController.hh"
 
 #include "ui_SAKDebugPage.h"

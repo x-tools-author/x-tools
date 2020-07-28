@@ -18,7 +18,7 @@ class SAKMoreSettingsWidget;
 class SAKTransmissionSettings;
 class SAKHighlightSettingsWidget;
 class SAKReadWriteSettingsWidget;
-class SAKAutoResponseSettingsWidget;
+class SAKOtherAutoResponseItemManager;
 class SAKOtherTimingSentItemManager;
 
 /// @brief other setting module
@@ -48,7 +48,7 @@ private:
     SAKTransmissionSettings *mTransmissionSettings;
     SAKHighlightSettingsWidget *mHighlightSettingsWidget;
     SAKReadWriteSettingsWidget *mReadWriteSettingsWidget;
-    SAKAutoResponseSettingsWidget *mAutoResponseSettingWidget;
+    SAKOtherAutoResponseItemManager *mAutoResponseSettingWidget;
     SAKOtherTimingSentItemManager *mTimingSendingSettingsWidget;
 private slots:
     void onMoreSettingsPushButtonClicked();

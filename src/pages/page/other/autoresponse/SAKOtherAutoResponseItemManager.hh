@@ -1,11 +1,11 @@
 ﻿/*
  * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
  *
- * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
- * project(https://www.qsak.pro). The project is an open source project. You can
- * get the source of the project from: "https://github.com/qsak/QtSwissArmyKnife"
- * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
- * group which number is 952218522 to have a communication.
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  */
 #ifndef SAKAUTORESPONSESETTINGSWIDGET_HH
 #define SAKAUTORESPONSESETTINGSWIDGET_HH
@@ -20,17 +20,17 @@
 #include <QListWidgetItem>
 
 namespace Ui {
-    class SAKAutoResponseSettingsWidget;
+    class SAKOtherAutoResponseItemManager;
 }
 
 class SAKDebugPage;
-/// @brief 自动回复设置窗口
-class SAKAutoResponseSettingsWidget:public QWidget
+/// @brief Auto response item manager
+class SAKOtherAutoResponseItemManager:public QWidget
 {
    Q_OBJECT
 public:
-    SAKAutoResponseSettingsWidget(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
-    ~SAKAutoResponseSettingsWidget();
+    SAKOtherAutoResponseItemManager(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
+    ~SAKOtherAutoResponseItemManager();
 
     struct AutoResponseItemKey {
         const QString id = QString("id");
@@ -51,7 +51,7 @@ private:
     void readInRecord();
     bool contains(quint64 paraID);
 private:
-    Ui::SAKAutoResponseSettingsWidget *ui;
+    Ui::SAKOtherAutoResponseItemManager *ui;
     QListWidget *listWidget;
     QCheckBox *forbidAllCheckBox;
     QPushButton *deleteItemPushButton;

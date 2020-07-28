@@ -1,11 +1,11 @@
 ﻿/*
  * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
  *
- * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
- * project(https://www.qsak.pro). The project is an open source project. You can
- * get the source of the project from: "https://github.com/qsak/QtSwissArmyKnife"
- * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
- * group which number is 952218522 to have a communication.
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  */
 #include <QFile>
 #include <QDebug>
@@ -22,15 +22,15 @@
 #include "SAKDebugPage.hh"
 #include "SAKDataStruct.hh"
 #include "SAKOtherAutoResponseItem.hh"
-#include "SAKAutoResponseSettingsWidget.hh"
+#include "SAKOtherAutoResponseItemManager.hh"
 #include "SAKDebugPageCommonDatabaseInterface.hh"
 
-#include "ui_SAKAutoResponseSettingsWidget.h"
+#include "ui_SAKOtherAutoResponseItemManager.h"
 
-SAKAutoResponseSettingsWidget::SAKAutoResponseSettingsWidget(SAKDebugPage *debugPage, QWidget *parent)
+SAKOtherAutoResponseItemManager::SAKOtherAutoResponseItemManager(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget (parent)
     ,debugPage (debugPage)
-    ,ui (new Ui::SAKAutoResponseSettingsWidget)
+    ,ui (new Ui::SAKOtherAutoResponseItemManager)
 {
     ui->setupUi(this);
     listWidget = ui->listWidget;
@@ -45,13 +45,13 @@ SAKAutoResponseSettingsWidget::SAKAutoResponseSettingsWidget(SAKDebugPage *debug
 //    databaseInterface = SAKDebugPageDatabaseInterface::instance();
 
     clearMessageInfoTimer.setInterval(SAK_CLEAR_MESSAGE_INTERVAL);
-    connect(&clearMessageInfoTimer, &QTimer::timeout, this, &SAKAutoResponseSettingsWidget::clearMessage);
+    connect(&clearMessageInfoTimer, &QTimer::timeout, this, &SAKOtherAutoResponseItemManager::clearMessage);
 
     /// @brief 从数据库读入记录
     readInRecord();
 }
 
-SAKAutoResponseSettingsWidget::~SAKAutoResponseSettingsWidget()
+SAKOtherAutoResponseItemManager::~SAKOtherAutoResponseItemManager()
 {
     delete ui;
 }
@@ -76,7 +76,7 @@ void innerCreateItem(SAKDataStruct::SAKStructAutoResponseItem &var, SAKDebugPage
     listWidget->setItemWidget(item, itemWidget);
 }
 
-void SAKAutoResponseSettingsWidget::outputMessage(QString msg, bool isInfo)
+void SAKOtherAutoResponseItemManager::outputMessage(QString msg, bool isInfo)
 {
     QString color = "black";
     if (!isInfo){
@@ -89,13 +89,13 @@ void SAKAutoResponseSettingsWidget::outputMessage(QString msg, bool isInfo)
     clearMessageInfoTimer.start();
 }
 
-void SAKAutoResponseSettingsWidget::clearMessage()
+void SAKOtherAutoResponseItemManager::clearMessage()
 {
     clearMessageInfoTimer.stop();
     msgLabel->clear();
 }
 
-void SAKAutoResponseSettingsWidget::readInRecord()
+void SAKOtherAutoResponseItemManager::readInRecord()
 {
     QString tableName = SAKDataStruct::autoResponseTableName(debugPage->pageType());
 //    QList<SAKDataStruct::SAKStructAutoResponseItem> itemList = databaseInterface->selectAutoResponseItem(tableName);
@@ -104,7 +104,7 @@ void SAKAutoResponseSettingsWidget::readInRecord()
 //    }
 }
 
-bool SAKAutoResponseSettingsWidget::contains(quint64 paraID)
+bool SAKOtherAutoResponseItemManager::contains(quint64 paraID)
 {
     bool contain = false;
     for (int i = 0; i < listWidget->count(); i++){
@@ -120,7 +120,7 @@ bool SAKAutoResponseSettingsWidget::contains(quint64 paraID)
     return contain;
 }
 
-void SAKAutoResponseSettingsWidget::on_forbidAllCheckBox_clicked()
+void SAKOtherAutoResponseItemManager::on_forbidAllCheckBox_clicked()
 {
     for(int i = 0; i < listWidget->count(); i++){
         QListWidgetItem *item = listWidget->item(i);
@@ -130,7 +130,7 @@ void SAKAutoResponseSettingsWidget::on_forbidAllCheckBox_clicked()
     }
 }
 
-void SAKAutoResponseSettingsWidget::on_deleteItemPushButton_clicked()
+void SAKOtherAutoResponseItemManager::on_deleteItemPushButton_clicked()
 {
     QListWidgetItem *item = listWidget->currentItem();
     if (!item){
@@ -149,7 +149,7 @@ void SAKAutoResponseSettingsWidget::on_deleteItemPushButton_clicked()
     delete item;
 }
 
-void SAKAutoResponseSettingsWidget::on_addItemPushButton_clicked()
+void SAKOtherAutoResponseItemManager::on_addItemPushButton_clicked()
 {
     /// @brief 限制数量
     if (listWidget->count() >= SAK_MAX_AUTO_RESPONSE_COUNT){
@@ -177,7 +177,7 @@ void SAKAutoResponseSettingsWidget::on_addItemPushButton_clicked()
 //    databaseInterface->insertAutoResponseItem(tableName, dataItem);
 }
 
-void SAKAutoResponseSettingsWidget::on_outportPushButton_clicked()
+void SAKOtherAutoResponseItemManager::on_outportPushButton_clicked()
 {
     /// @brief 从数据库中读入记录
     QString tableName = SAKDataStruct::autoResponseTableName(debugPage->pageType());
@@ -223,7 +223,7 @@ void SAKAutoResponseSettingsWidget::on_outportPushButton_clicked()
     }
 }
 
-void SAKAutoResponseSettingsWidget::on_importPushButton_clicked()
+void SAKOtherAutoResponseItemManager::on_importPushButton_clicked()
 {
     QString defaultPath = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
     QString fileName = QFileDialog::getOpenFileName(this, tr("导出数据"), defaultPath, QString("json (*.json)"));

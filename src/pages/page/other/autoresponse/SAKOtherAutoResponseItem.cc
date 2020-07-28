@@ -164,7 +164,7 @@ void SAKOtherAutoResponseItem::bytesRead(QByteArray bytes)
         return;
     }
 
-    /// @brief 判断是否回复
+    // Judge whether to reply or not
     QString referenceString = mReferenceLineEdit->text();
     int referenceFormat = mReferenceDataFromatComboBox->currentData().toInt();
     QByteArray referenceData = string2array(referenceString, referenceFormat);
@@ -174,16 +174,15 @@ void SAKOtherAutoResponseItem::bytesRead(QByteArray bytes)
          QByteArray responseData = string2array(responseString, responseFromat);
 
          if (!responseData.isEmpty()){
-             /// @brief 延时回复
+             // Response delayly
              if (mDelayResponseCheckBox->isChecked()){
                 quint32 delayTime = mDelayResponseLineEdit->text().toUInt();
                 if (delayTime < 40){
                     delayTime = 20;
                 }
 
-                /// @brief 延时回复
+                // Response info
                 DelayWritingInfo *info = new DelayWritingInfo;
-                /// @brief 减20是因为延时回复使用20毫秒的定时器
                 info->expectedTimestamp = QDateTime::currentMSecsSinceEpoch() + delayTime - 20;
                 info->data = responseData;
                 mWaitForWrittenInfoList.append(info);
@@ -272,9 +271,9 @@ void SAKOtherAutoResponseItem::commonInitializing()
     mDelayResponseLineEdit = mUi->delayResponseLineEdit;
 
     mOptionComboBox->clear();
-    mOptionComboBox->addItem(tr("接收数据等于参考数据时自动回复"), QVariant::fromValue<int>(SAKDataStruct::AutoResponseOptionEqual));
-    mOptionComboBox->addItem(tr("接收数据包含参考数据时自动回复"), QVariant::fromValue<int>(SAKDataStruct::AutoResponseOptionContain));
-    mOptionComboBox->addItem(tr("接收数据不包含参考数据时自动回复"), QVariant::fromValue<int>(SAKDataStruct::AutoResponseOptionDoNotContain));
+    mOptionComboBox->addItem(tr("Rx data is equal to reference data"), QVariant::fromValue<int>(SAKDataStruct::AutoResponseOptionEqual));
+    mOptionComboBox->addItem(tr("Rx data Contains reference data"), QVariant::fromValue<int>(SAKDataStruct::AutoResponseOptionContain));
+    mOptionComboBox->addItem(tr("Rx data does not Contains reference data"), QVariant::fromValue<int>(SAKDataStruct::AutoResponseOptionDoNotContain));
 
     SAKGlobal::initInputTextFormatComboBox(mReferenceDataFromatComboBox);
     SAKGlobal::initInputTextFormatComboBox(mResponseDataFormatComboBox);
@@ -305,12 +304,12 @@ void SAKOtherAutoResponseItem::delayToWritBytes()
         }
     }
 
-    /// @brief 发送数据
+    // Write data
     for (auto var : temp){
         mDebugPage->write(var.data);
     }
 
-    /// @brief 删除已发送的数据
+    // Delte the data that has been written
     for (auto var : need2removeList){
         mWaitForWrittenInfoList.removeOne(var);
     }
