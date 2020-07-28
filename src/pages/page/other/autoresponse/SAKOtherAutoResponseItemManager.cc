@@ -57,7 +57,7 @@ SAKOtherAutoResponseItemManager::~SAKOtherAutoResponseItemManager()
     delete mUi;
 }
 
-void innerCreateItem(SAKDataStruct::SAKStructAutoResponseItem &var, SAKDebugPage *debugPage, QListWidget *listWidget)
+SAKOtherAutoResponseItem *innerCreateItem(SAKDataStruct::SAKStructAutoResponseItem &var, SAKDebugPage *debugPage, QListWidget *listWidget)
 {
     QListWidgetItem *item = new QListWidgetItem(listWidget);
     listWidget->addItem(item);
@@ -75,6 +75,7 @@ void innerCreateItem(SAKDataStruct::SAKStructAutoResponseItem &var, SAKDebugPage
                                                                         listWidget);
     item->setSizeHint(QSize(itemWidget->width(), itemWidget->height()));
     listWidget->setItemWidget(item, itemWidget);
+    return itemWidget;
 }
 
 void SAKOtherAutoResponseItemManager::outputMessage(QString msg, bool isInfo)
