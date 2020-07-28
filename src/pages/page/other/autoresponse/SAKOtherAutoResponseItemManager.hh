@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKAUTORESPONSESETTINGSWIDGET_HH
-#define SAKAUTORESPONSESETTINGSWIDGET_HH
+#ifndef SAKOTHERAUTORESPONSEITEMMANAGER_HH
+#define SAKOTHERAUTORESPONSEITEMMANAGER_HH
 
 #include <QTimer>
 #include <QLabel>
