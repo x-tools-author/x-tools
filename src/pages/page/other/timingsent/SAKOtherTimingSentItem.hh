@@ -53,16 +53,17 @@ private:
     void commonInitializing();
 private:
     Ui::SAKOtherTimingSentItem *ui;
-    QCheckBox *timingCheckBox;
-    QLineEdit *timingTimeLineEdit;
+    QCheckBox *enableCheckBox;
+    QLineEdit *intervalLineEdit;
     QComboBox *textFormatComboBox;
     QLineEdit *descriptionLineEdit;
     QTextEdit *inputDataTextEdit;
-    QPushButton *updatePushButton;
 private slots:
-    void on_timingCheckBox_clicked();
-    void on_timingTimeLineEdit_textChanged(const QString &text);
-    void on_updatePushButton_clicked();
+    void on_enableCheckBox_clicked();
+    void on_intervalLineEdit_textChanged(const QString &text);
+    void on_textFormatComboBox_currentTextChanged(const QString &text);
+    void on_descriptionLineEdit_textChanged(const QString &text);
+    void on_inputDataTextEdit_textChanged();
 };
 
 #endif

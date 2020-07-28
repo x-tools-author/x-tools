@@ -40,7 +40,7 @@ SAKOtherTimingSentItem::SAKOtherTimingSentItem(SAKDebugPage *debugPage,
 {
     commonInitializing();
 
-    timingTimeLineEdit->setText(QString::number(interval));
+    intervalLineEdit->setText(QString::number(interval));
     textFormatComboBox->setCurrentIndex(format);
     descriptionLineEdit->setText(comment);
     inputDataTextEdit->setText(data);
@@ -58,7 +58,7 @@ quint64 SAKOtherTimingSentItem::itemID()
 
 quint32 SAKOtherTimingSentItem::itemInterval()
 {
-    return timingTimeLineEdit->text().toUInt();
+    return intervalLineEdit->text().toUInt();
 }
 
 quint32 SAKOtherTimingSentItem::itemFormat()
@@ -90,14 +90,13 @@ void SAKOtherTimingSentItem::commonInitializing()
 {
     ui->setupUi(this);
 
-    timingCheckBox = ui->timingCheckBox;
-    timingTimeLineEdit = ui->timingTimeLineEdit;
+    enableCheckBox = ui->enableCheckBox;
+    intervalLineEdit = ui->intervalLineEdit;
     textFormatComboBox = ui->textFormatComboBox;
     descriptionLineEdit = ui->descriptionLineEdit;
     inputDataTextEdit = ui->inputDataTextEdit;
-    updatePushButton = ui->updatePushButton;
 
-    mWriteTimer.setInterval(timingTimeLineEdit->text().toInt());
+    mWriteTimer.setInterval(intervalLineEdit->text().toInt());
     connect(&mWriteTimer, &QTimer::timeout, this, &SAKOtherTimingSentItem::write);
 
     SAKGlobal::initInputTextFormatComboBox(textFormatComboBox);
@@ -105,8 +104,8 @@ void SAKOtherTimingSentItem::commonInitializing()
 
 void SAKOtherTimingSentItem::on_timingCheckBox_clicked()
 {
-    if (timingCheckBox){
-        timingCheckBox->isChecked() ? mWriteTimer.start() : mWriteTimer.stop();
+    if (enableCheckBox){
+        enableCheckBox->isChecked() ? mWriteTimer.start() : mWriteTimer.stop();
     }
 }
 
