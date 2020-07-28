@@ -66,6 +66,7 @@ SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugPage *debugPage
     // Preset items changed
     connect(mInputDataItemManager, &SAKInputDataPresetItemManager::itemAdded, this, &SAKDebugPageInputController::appendAction);
     connect(mInputDataItemManager, &SAKInputDataPresetItemManager::itemDeleted, this, &SAKDebugPageInputController::removeAction);
+    connect(mInputDataItemManager, &SAKInputDataPresetItemManager::descriptionChanged, this, &SAKDebugPageInputController::changeDescription);
 
     // Update parameters
     connect(mCrcSettingsDialog, &SAKInputCrcSettingsDialog::parametersChanged, this, [&](){
@@ -375,6 +376,17 @@ void SAKDebugPageInputController::removeAction(SAKInputDataPresetItem *item)
     for (auto var : actionList){
         if (var->data().value<SAKInputDataPresetItem*>() == item){
             var->deleteLater();
+            break;
+        }
+    }
+}
+
+void SAKDebugPageInputController::changeDescription(SAKInputDataPresetItem *item)
+{
+    QList<QAction*> actionList = mSendPresetPushButton->menu()->actions();
+    for (auto var : actionList){
+        if (var->data().value<SAKInputDataPresetItem*>() == item){
+            var->setText(item->itemDescription());
             break;
         }
     }

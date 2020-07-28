@@ -97,6 +97,7 @@ private:
     void updateCRC();
     void appendAction(SAKInputDataPresetItem *item);
     void removeAction(SAKInputDataPresetItem *item);
+    void changeDescription(SAKInputDataPresetItem *item);
     void actionTriggered();
 signals:
     void rawDataChanged(QString rawData, InputParametersContext parameters);
