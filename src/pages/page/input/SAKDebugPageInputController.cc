@@ -53,7 +53,7 @@ SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugPage *debugPage
     mInputParameters.startByte = ctx.startByte;
     mInputParameters.endByte = ctx.endByte;
 
-    /// @brief 弹窗参数更新后，更新输入参数
+    // Update parameters
     connect(mCrcSettingsDialog, &SAKInputCrcSettingsDialog::parametersChanged, this, [&](){
         SAKInputCrcSettingsDialog::ParameterContext ctx = mCrcSettingsDialog->parametersContext();
         mInputParameters.bigEndian = ctx.bigEndianCRC;
@@ -177,7 +177,7 @@ void SAKDebugPageInputController::formattingInputText(QTextEdit *textEdit, int m
 
 void SAKDebugPageInputController::changeInputModel(const QString &text)
 {
-    /// @brief 在ui初始化的时候，会出现text为empty的情况
+    // Ignore empty text
     if (text.isEmpty()){
         return;
     }
@@ -210,7 +210,7 @@ void SAKDebugPageInputController::changeCycleTime()
 void SAKDebugPageInputController::saveInputDataToFile()
 {
     QString fileName = QFileDialog::getSaveFileName(Q_NULLPTR,
-                                                    tr("保存文件"),
+                                                    tr("Save File"),
                                                     QStandardPaths::writableLocation(QStandardPaths::DesktopLocation)+QString("input.txt"),
                                                     QString("Text (*.txt)"));
 
@@ -233,7 +233,7 @@ void SAKDebugPageInputController::saveInputDataToFile()
 
 void SAKDebugPageInputController::readinFile()
 {
-    QString fileName = QFileDialog::getOpenFileName(Q_NULLPTR, tr("打开文件"));
+    QString fileName = QFileDialog::getOpenFileName(Q_NULLPTR, tr("Open File"));
     if (!fileName.isEmpty()){
         QFile file(fileName);
         if(file.open(QFile::ReadOnly)){
@@ -241,7 +241,7 @@ void SAKDebugPageInputController::readinFile()
             mInputTextEdit->setText(QString(data).toUtf8());
             file.close();
         }else{
-            mDebugPage->outputMessage( QString("%1 %2").arg(tr("无法打开文件")).arg(fileName));
+            mDebugPage->outputMessage(QString("%1:%2").arg(tr("Can not open file")).arg(fileName));
         }
     }
 }
