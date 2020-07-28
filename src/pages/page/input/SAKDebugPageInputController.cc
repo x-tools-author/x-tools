@@ -85,7 +85,6 @@ SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugPage *debugPage
     connect(mInputTextEdit,              &QTextEdit::textChanged,        this, &SAKDebugPageInputController::inputTextEditTextChanged);
     connect(mCrcParameterModelsComboBox, &QComboBox::currentTextChanged, this, &SAKDebugPageInputController::changeCRCModel);
     connect(mPresetPushButton,           &QPushButton::clicked,          this, &SAKDebugPageInputController::setPresetData);
-    connect(mSendPresetPushButton,       &QPushButton::clicked,          this, &SAKDebugPageInputController::sendPresetData);
 
     connect(this, &SAKDebugPageInputController::rawDataChanged, mInputDataFactory, &SAKInputDataFactory::cookData);
     connect(mInputDataFactory, &SAKInputDataFactory::dataCooked, debugPage, &SAKDebugPage::write);
@@ -304,11 +303,6 @@ void SAKDebugPageInputController::setPresetData()
     }else{
         mInputDataItemManager->activateWindow();
     }
-}
-
-void SAKDebugPageInputController::sendPresetData()
-{
-
 }
 
 void SAKDebugPageInputController::initParameters()

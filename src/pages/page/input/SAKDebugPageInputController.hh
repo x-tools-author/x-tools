@@ -91,7 +91,6 @@ private:
     void sendOtherRawData(QString data, int textFormat);
     void changeCRCModel();
     void setPresetData();
-    void sendPresetData();
     void initParameters();
     void setCycleEnable();       
     void cycleTimerTimeout();
