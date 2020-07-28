@@ -60,12 +60,12 @@ SAKOtherTimingSentItem *innerCreateItem(SAKDataStruct::SAKStructTimingSentItem &
     QListWidgetItem *item = new QListWidgetItem(listWidget);
     listWidget->addItem(item);
     SAKOtherTimingSentItem *itemWidget = new SAKOtherTimingSentItem(debugPage,
-                                                                            var.id,
-                                                                            var.interval,
-                                                                            var.format,
-                                                                            var.comment,
-                                                                            var.data,
-                                                                            Q_NULLPTR);
+                                                                    var.id,
+                                                                    var.interval,
+                                                                    var.format,
+                                                                    var.comment,
+                                                                    var.data,
+                                                                    Q_NULLPTR);
     item->setSizeHint(itemWidget->size());
     listWidget->setItemWidget(item, itemWidget);
     return itemWidget;
