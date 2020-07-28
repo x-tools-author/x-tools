@@ -29,9 +29,9 @@ class SAKOtherTimingSentItem:public QWidget
 {
     Q_OBJECT
 public:
-    SAKOtherTimingSentItem(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
-    SAKOtherTimingSentItem(SAKDebugPage *debugPage,
-                           quint64 id,
+    SAKOtherTimingSentItem(SAKDebugPage *mDebugPage, QWidget *parent = Q_NULLPTR);
+    SAKOtherTimingSentItem(SAKDebugPage *mDebugPage,
+                           quint64 mID,
                            quint32 interval,
                            quint32 format,
                            QString comment,
@@ -45,12 +45,12 @@ public:
     QString itemDescription();
     QString itemText();
 private:
-    SAKDebugPage *debugPage;
-    quint64 id;
-    QTimer writeTimer;
+    SAKDebugPage *mDebugPage;
+    quint64 mID;
+    QTimer mWriteTimer;
 private:
     void write();
-    void initUi();
+    void commonInitializing();
 private:
     Ui::SAKOtherTimingSentItem *ui;
     QCheckBox *timingCheckBox;

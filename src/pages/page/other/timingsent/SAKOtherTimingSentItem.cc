@@ -19,11 +19,11 @@
 
 SAKOtherTimingSentItem::SAKOtherTimingSentItem(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget(parent)
-    ,debugPage(debugPage)
+    ,mDebugPage(debugPage)
     ,ui(new Ui::SAKOtherTimingSentItem)
 {
-    initUi();
-    id = QDateTime::currentMSecsSinceEpoch();
+    commonInitializing();
+    mID = QDateTime::currentMSecsSinceEpoch();
 }
 
 SAKOtherTimingSentItem::SAKOtherTimingSentItem(SAKDebugPage *debugPage,
@@ -34,11 +34,11 @@ SAKOtherTimingSentItem::SAKOtherTimingSentItem(SAKDebugPage *debugPage,
                                                QString data,
                                                QWidget *parent)
     :QWidget(parent)
-    ,debugPage(debugPage)
-    ,id(id)
+    ,mDebugPage(debugPage)
+    ,mID(id)
     ,ui(new Ui::SAKOtherTimingSentItem)
 {
-    initUi();
+    commonInitializing();
 
     timingTimeLineEdit->setText(QString::number(interval));
     textFormatComboBox->setCurrentIndex(format);
@@ -53,7 +53,7 @@ SAKOtherTimingSentItem::~SAKOtherTimingSentItem()
 
 quint64 SAKOtherTimingSentItem::itemID()
 {
-    return id;
+    return mID;
 }
 
 quint32 SAKOtherTimingSentItem::itemInterval()
@@ -82,11 +82,11 @@ void SAKOtherTimingSentItem::write()
 
     if (!data.isEmpty()){
         int textFormat = this->textFormatComboBox->currentData().toInt();
-        debugPage->writeRawData(data, textFormat);
+        mDebugPage->writeRawData(data, textFormat);
     }
 }
 
-void SAKOtherTimingSentItem::initUi()
+void SAKOtherTimingSentItem::commonInitializing()
 {
     ui->setupUi(this);
 
@@ -97,8 +97,8 @@ void SAKOtherTimingSentItem::initUi()
     inputDataTextEdit = ui->inputDataTextEdit;
     updatePushButton = ui->updatePushButton;
 
-    writeTimer.setInterval(timingTimeLineEdit->text().toInt());
-    connect(&writeTimer, &QTimer::timeout, this, &SAKOtherTimingSentItem::write);
+    mWriteTimer.setInterval(timingTimeLineEdit->text().toInt());
+    connect(&mWriteTimer, &QTimer::timeout, this, &SAKOtherTimingSentItem::write);
 
     SAKGlobal::initInputTextFormatComboBox(textFormatComboBox);
 }
@@ -106,19 +106,19 @@ void SAKOtherTimingSentItem::initUi()
 void SAKOtherTimingSentItem::on_timingCheckBox_clicked()
 {
     if (timingCheckBox){
-        timingCheckBox->isChecked() ? writeTimer.start() : writeTimer.stop();
+        timingCheckBox->isChecked() ? mWriteTimer.start() : mWriteTimer.stop();
     }
 }
 
 void SAKOtherTimingSentItem::on_timingTimeLineEdit_textChanged(const QString &text)
 {
     int interval = text.toInt();
-    writeTimer.setInterval(interval == 0 ? 1000 : interval);
+    mWriteTimer.setInterval(interval == 0 ? 1000 : interval);
 }
 
 void SAKOtherTimingSentItem::on_updatePushButton_clicked()
 {
-    QString tableName = SAKDataStruct::timingSendingTableName(debugPage->pageType());
+    QString tableName = SAKDataStruct::timingSendingTableName(mDebugPage->pageType());
     SAKDataStruct::SAKStructTimingSendingItem sendingItem;
     sendingItem.id = itemID();
     sendingItem.data = itemText();
