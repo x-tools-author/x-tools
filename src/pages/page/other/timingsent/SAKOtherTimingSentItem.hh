@@ -31,12 +31,12 @@ class SAKOtherTimingSentItem:public QWidget
 public:
     SAKOtherTimingSentItem(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
     SAKOtherTimingSentItem(SAKDebugPage *debugPage,
-                               quint64 id,
-                               quint32 interval,
-                               quint32 format,
-                               QString comment,
-                               QString data,
-                               QWidget *parent = Q_NULLPTR);
+                           quint64 id,
+                           quint32 interval,
+                           quint32 format,
+                           QString comment,
+                           QString data,
+                           QWidget *parent = Q_NULLPTR);
     ~SAKOtherTimingSentItem();
 
     quint64 parameterID();
