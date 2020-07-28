@@ -26,6 +26,7 @@ namespace Ui {
 }
 
 class SAKDebugPage;
+class SAKOtherTimingSentItem;
 class SAKDebugPageCommonDatabaseInterface;
 /// @brief Timing sent item manager
 class SAKOtherTimingSentItemManager:public QWidget
@@ -46,10 +47,17 @@ private:
     SAKDebugPage *mDebugPage;
     QString mTableName;
     QTimer mClearMessageTimer;
+    SAKDebugPageCommonDatabaseInterface *mDatabaseInterface;
 private:
     void readinRecord();
     bool contains(quint64 paraID);
     void outputMessage(QString msg, bool isError = false);
+    void initializingItem(SAKOtherTimingSentItem *item);
+    // update record
+    void changeInterval(int interval);
+    void changeFormat(int format);
+    void changeDescription(QString description);
+    void changeInputText(QString text);
 private:
     Ui::SAKOtherTimingSentItemManager *mUi;
     QListWidget *mItemListWidget;

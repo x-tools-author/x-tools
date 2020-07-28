@@ -45,7 +45,7 @@ SAKOtherTimingSentItemManager::SAKOtherTimingSentItemManager(SAKDebugPage *debug
         mMessageLabel->clear();
     });
 
-//    databaseInterface = SAKDebugPageDatabaseInterface::instance();
+    mDatabaseInterface = SAKDebugPageCommonDatabaseInterface::instance();
     mTableName = SAKDataStruct::timingSendingTableName(this->mDebugPage->pageType());
     readinRecord();
 }
@@ -55,7 +55,7 @@ SAKOtherTimingSentItemManager::~SAKOtherTimingSentItemManager()
     delete mUi;
 }
 
-void innerCreateItem(SAKDataStruct::SAKStructTimingSendingItem &var, SAKDebugPage *debugPage, QListWidget *listWidget)
+SAKOtherTimingSentItem *innerCreateItem(SAKDataStruct::SAKStructTimingSendingItem &var, SAKDebugPage *debugPage, QListWidget *listWidget)
 {
     QListWidgetItem *item = new QListWidgetItem(listWidget);
     listWidget->addItem(item);
@@ -68,18 +68,19 @@ void innerCreateItem(SAKDataStruct::SAKStructTimingSendingItem &var, SAKDebugPag
                                                                             Q_NULLPTR);
     item->setSizeHint(itemWidget->size());
     listWidget->setItemWidget(item, itemWidget);
+    return itemWidget;
 }
 
 void SAKOtherTimingSentItemManager::readinRecord()
 {
-//    QList<SAKDataStruct::SAKStructTimingSendingItem> itemList = databaseInterface->selectTimingSendingItem(tableName);
-//    if (itemList.isEmpty()){
-//        return;
-//    }
+    QList<SAKDataStruct::SAKStructTimingSendingItem> itemList = mDatabaseInterface->selectTimingSendingItem(mTableName);
+    if (itemList.isEmpty()){
+        return;
+    }
 
-//    for (auto var : itemList){
-//        innerCreateItem(var, debugPage, itemListWidget);
-//    }
+    for (auto var : itemList){
+        innerCreateItem(var, mDebugPage, mItemListWidget);
+    }
 }
 
 bool SAKOtherTimingSentItemManager::contains(quint64 paraID)
@@ -110,43 +111,101 @@ void SAKOtherTimingSentItemManager::outputMessage(QString msg, bool isError)
     mClearMessageTimer.start();
 }
 
+void SAKOtherTimingSentItemManager::initializingItem(SAKOtherTimingSentItem *item)
+{
+    if (item){
+        connect(item, &SAKOtherTimingSentItem::intervalChanged, this, &SAKOtherTimingSentItemManager::changeInterval);
+        connect(item, &SAKOtherTimingSentItem::formatChanged, this, &SAKOtherTimingSentItemManager::changeFormat);
+        connect(item, &SAKOtherTimingSentItem::descriptionChanged, this, &SAKOtherTimingSentItemManager::changeDescription);
+        connect(item, &SAKOtherTimingSentItem::inputTextChanged, this, &SAKOtherTimingSentItemManager::changeInputText);
+    }
+}
+
+void SAKOtherTimingSentItemManager::changeInterval(int interval)
+{
+    if(sender()){
+        if (sender()->inherits("SAKOtherTimingSentItem")){
+            SAKOtherTimingSentItem *item = qobject_cast<SAKOtherTimingSentItem*>(sender());
+            SAKDebugPageCommonDatabaseInterface::TimingSendingTable table;
+            quint64 id = item->itemID();
+            mDatabaseInterface->updateRecord(mTableName, table.columns.interval, QVariant::fromValue(interval), id, false);
+        }
+    }
+}
+
+void SAKOtherTimingSentItemManager::changeFormat(int format)
+{
+    if(sender()){
+        if (sender()->inherits("SAKOtherTimingSentItem")){
+            SAKOtherTimingSentItem *item = qobject_cast<SAKOtherTimingSentItem*>(sender());
+            SAKDebugPageCommonDatabaseInterface::TimingSendingTable table;
+            quint64 id = item->itemID();
+            mDatabaseInterface->updateRecord(mTableName, table.columns.format, QVariant::fromValue(format), id, false);
+        }
+    }
+}
+
+void SAKOtherTimingSentItemManager::changeDescription(QString description)
+{
+    if(sender()){
+        if (sender()->inherits("SAKOtherTimingSentItem")){
+            SAKOtherTimingSentItem *item = qobject_cast<SAKOtherTimingSentItem*>(sender());
+            SAKDebugPageCommonDatabaseInterface::TimingSendingTable table;
+            quint64 id = item->itemID();
+            mDatabaseInterface->updateRecord(mTableName, table.columns.description, QVariant::fromValue(description), id, true);
+        }
+    }
+}
+
+void SAKOtherTimingSentItemManager::changeInputText(QString text)
+{
+    if(sender()){
+        if (sender()->inherits("SAKOtherTimingSentItem")){
+            SAKOtherTimingSentItem *item = qobject_cast<SAKOtherTimingSentItem*>(sender());
+            SAKDebugPageCommonDatabaseInterface::TimingSendingTable table;
+            quint64 id = item->itemID();
+            mDatabaseInterface->updateRecord(mTableName, table.columns.text, QVariant::fromValue(text), id, true);
+        }
+    }
+}
+
 void SAKOtherTimingSentItemManager::on_outportPushButton_clicked()
 {
-//    QList<SAKDataStruct::SAKStructTimingSendingItem> itemList = databaseInterface->selectTimingSendingItem(tableName);
-//    if (itemList.isEmpty()){
-//        return;
-//    }
+    QList<SAKDataStruct::SAKStructTimingSendingItem> itemList = mDatabaseInterface->selectTimingSendingItem(mTableName);
+    if (itemList.isEmpty()){
+        return;
+    }
 
-//    QJsonArray jsonArray;
-//    TimingSendingItemKey itemKey;
-//    for (auto var : itemList){
-//        QJsonObject obj;
-//        obj.insert(itemKey.id, QVariant::fromValue(var.id).toJsonValue());
-//        obj.insert(itemKey.data, QVariant::fromValue(var.data).toJsonValue());
-//        obj.insert(itemKey.format, QVariant::fromValue(var.format).toJsonValue());
-//        obj.insert(itemKey.comment, QVariant::fromValue(var.comment).toJsonValue());
-//        obj.insert(itemKey.interval, QVariant::fromValue(var.interval).toJsonValue());
-//        jsonArray.append(QJsonValue(obj));
-//    }
-//    QJsonDocument jsonDoc;
-//    jsonDoc.setArray(jsonArray);
+    QJsonArray jsonArray;
+    TimingSendingItemKey itemKey;
+    for (auto var : itemList){
+        QJsonObject obj;
+        obj.insert(itemKey.id, QVariant::fromValue(var.id).toJsonValue());
+        obj.insert(itemKey.text, QVariant::fromValue(var.data).toJsonValue());
+        obj.insert(itemKey.format, QVariant::fromValue(var.format).toJsonValue());
+        obj.insert(itemKey.description, QVariant::fromValue(var.comment).toJsonValue());
+        obj.insert(itemKey.interval, QVariant::fromValue(var.interval).toJsonValue());
+        jsonArray.append(QJsonValue(obj));
+    }
+    QJsonDocument jsonDoc;
+    jsonDoc.setArray(jsonArray);
 
-//    /// @brief 打开文件，导出的数据将保存至该文件
-//    QString defaultName = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
-//    defaultName.append(QString("/"));
-//    defaultName.append(QDateTime::currentDateTime().toString("yyyyMMddhhmmss"));
-//    defaultName.append(".json");
-//    QString fileName = QFileDialog::getSaveFileName(this, tr("导出数据"), defaultName, QString("json (*.json)"));
-//    if (fileName.isEmpty()){
-//        return;
-//    }
+    /// @brief 打开文件，导出的数据将保存至该文件
+    QString defaultName = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
+    defaultName.append(QString("/"));
+    defaultName.append(QDateTime::currentDateTime().toString("yyyyMMddhhmmss"));
+    defaultName.append(".json");
+    QString fileName = QFileDialog::getSaveFileName(this, tr("导出数据"), defaultName, QString("json (*.json)"));
+    if (fileName.isEmpty()){
+        return;
+    }
 
-//    /// @brief 保存至文件
-//    QFile file(fileName);
-//    if (file.open(QFile::ReadWrite)){
-//        file.write(jsonDoc.toJson());
-//        file.close();
-//    }
+    /// @brief 保存至文件
+    QFile file(fileName);
+    if (file.open(QFile::ReadWrite)){
+        file.write(jsonDoc.toJson());
+        file.close();
+    }
 }
 
 void SAKOtherTimingSentItemManager::on_importPushButton_clicked()
