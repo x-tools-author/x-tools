@@ -39,6 +39,8 @@ public:
                              quint32 referenceFormat,
                              quint32 responseFormat,
                              quint32 option,
+                             bool delay,
+                             int interval,
                              QWidget *parent = Q_NULLPTR);
     ~SAKOtherAutoResponseItem();
 

@@ -38,6 +38,8 @@ SAKOtherAutoResponseItem::SAKOtherAutoResponseItem(SAKDebugPage *debugPage,
                                                    quint32 referenceFormat,
                                                    quint32 responseFormat,
                                                    quint32 option,
+                                                   bool delay,
+                                                   int interval,
                                                    QWidget *parent)
     :QWidget(parent)
     ,mForbiddenAllAutoResponse(false)
@@ -53,6 +55,8 @@ SAKOtherAutoResponseItem::SAKOtherAutoResponseItem(SAKDebugPage *debugPage,
     mReferenceDataFromatComboBox->setCurrentIndex(referenceFormat);
     mResponseDataFormatComboBox->setCurrentIndex(responseFormat);
     mOptionComboBox->setCurrentIndex(option);
+    mDelayResponseCheckBox->setChecked(delay);
+    mDelayResponseLineEdit->setText(QString::number(interval));
     initDelayWritingTimer();
 }
 
