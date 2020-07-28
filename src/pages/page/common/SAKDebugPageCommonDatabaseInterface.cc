@@ -180,7 +180,7 @@ void SAKDebugPageCommonDatabaseInterface::updateTimingSendingItem(QString tableN
     }
 }
 
-QList<SAKDataStruct::SAKStructTimingSendingItem> SAKDebugPageCommonDatabaseInterface::selectTimingSendingItem(QString tableName)
+QList<SAKDataStruct::SAKStructTimingSendingItem> SAKDebugPageCommonDatabaseInterface::selectTimingSentItem(QString tableName)
 {
     TimingSendingTable table = tableNameToTimingSendingTable(tableName);
     bool ret = sakDatabaseQuery.exec(QString("SELECT * FROM %1").arg(table.tableName));

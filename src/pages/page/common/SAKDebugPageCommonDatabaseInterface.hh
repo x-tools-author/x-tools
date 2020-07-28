@@ -120,7 +120,7 @@ public:
      * @param tableName 数据表名称
      * @return 定时发送条目数据信息列表
      */
-    QList<SAKDataStruct::SAKStructTimingSendingItem> selectTimingSendingItem(QString tableName);
+    QList<SAKDataStruct::SAKStructTimingSendingItem> selectTimingSentItem(QString tableName);
 
     /**
      * @brief insertDataPresetItem: Insert record to database

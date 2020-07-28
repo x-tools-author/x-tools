@@ -73,7 +73,7 @@ SAKOtherTimingSentItem *innerCreateItem(SAKDataStruct::SAKStructTimingSendingIte
 
 void SAKOtherTimingSentItemManager::readinRecord()
 {
-    QList<SAKDataStruct::SAKStructTimingSendingItem> itemList = mDatabaseInterface->selectTimingSendingItem(mTableName);
+    QList<SAKDataStruct::SAKStructTimingSendingItem> itemList = mDatabaseInterface->selectTimingSentItem(mTableName);
     if (itemList.isEmpty()){
         return;
     }
@@ -171,7 +171,7 @@ void SAKOtherTimingSentItemManager::changeInputText(QString text)
 
 void SAKOtherTimingSentItemManager::on_outportPushButton_clicked()
 {
-    QList<SAKDataStruct::SAKStructTimingSendingItem> itemList = mDatabaseInterface->selectTimingSendingItem(mTableName);
+    QList<SAKDataStruct::SAKStructTimingSendingItem> itemList = mDatabaseInterface->selectTimingSentItem(mTableName);
     if (itemList.isEmpty()){
         return;
     }
