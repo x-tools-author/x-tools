@@ -41,6 +41,8 @@ public:
         const QString referenceFormat = QString("referenceFormat");
         const QString responseFormat = QString("responseFormat");
         const QString option = QString("option");
+        const QString delay = QString("delay");
+        const QString interval = QString("interval");
     };
 private:
     QTimer clearMessageInfoTimer;
