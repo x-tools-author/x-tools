@@ -25,7 +25,7 @@ namespace Ui {
 
 class SAKDebugPage;
 class SAKDebugPageCommonDatabaseInterface;
-/// @brief 预设数据管理窗口
+/// @brief Data preset item manager widget
 class SAKInputDataPresetItemManager:public QWidget
 {
     Q_OBJECT
