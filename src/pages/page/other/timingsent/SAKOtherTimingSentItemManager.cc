@@ -20,11 +20,11 @@
 #include "SAKDebugPage.hh"
 #include "SAKDataStruct.hh"
 #include "SAKOtherTimingSentItem.hh"
-#include "SAKTimingSendingSettingsWidget.hh"
+#include "SAKOtherTimingSentItemManager.hh"
 
-#include "ui_SAKTimingSendingSettingsWidget.h"
+#include "ui_SAKOtherTimingSentItemManager.h"
 
-SAKTimingSendingSettingsWidget::SAKTimingSendingSettingsWidget(SAKDebugPage *debugPage, QWidget *parent)
+SAKOtherTimingSentItemManager::SAKOtherTimingSentItemManager(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget(parent)
     ,debugPage(debugPage)
     ,ui(new Ui::SAKTimingSendingSettingsWidget)
@@ -49,7 +49,7 @@ SAKTimingSendingSettingsWidget::SAKTimingSendingSettingsWidget(SAKDebugPage *deb
     readinRecord();
 }
 
-SAKTimingSendingSettingsWidget::~SAKTimingSendingSettingsWidget()
+SAKOtherTimingSentItemManager::~SAKOtherTimingSentItemManager()
 {
     delete ui;
 }
@@ -69,7 +69,7 @@ void innerCreateItem(SAKDataStruct::SAKStructTimingSendingItem &var, SAKDebugPag
     listWidget->setItemWidget(item, itemWidget);
 }
 
-void SAKTimingSendingSettingsWidget::readinRecord()
+void SAKOtherTimingSentItemManager::readinRecord()
 {
 //    QList<SAKDataStruct::SAKStructTimingSendingItem> itemList = databaseInterface->selectTimingSendingItem(tableName);
 //    if (itemList.isEmpty()){
@@ -81,7 +81,7 @@ void SAKTimingSendingSettingsWidget::readinRecord()
 //    }
 }
 
-bool SAKTimingSendingSettingsWidget::contains(quint64 paraID)
+bool SAKOtherTimingSentItemManager::contains(quint64 paraID)
 {
     bool contain = false;
     for (int i = 0; i < itemListWidget->count(); i++){
@@ -97,7 +97,7 @@ bool SAKTimingSendingSettingsWidget::contains(quint64 paraID)
     return contain;
 }
 
-void SAKTimingSendingSettingsWidget::outputMessage(QString msg, bool isError)
+void SAKOtherTimingSentItemManager::outputMessage(QString msg, bool isError)
 {
     QString color = "black";
     if (isError){
@@ -109,7 +109,7 @@ void SAKTimingSendingSettingsWidget::outputMessage(QString msg, bool isError)
     clearMessageTimer.start();
 }
 
-void SAKTimingSendingSettingsWidget::on_outportPushButton_clicked()
+void SAKOtherTimingSentItemManager::on_outportPushButton_clicked()
 {
 //    QList<SAKDataStruct::SAKStructTimingSendingItem> itemList = databaseInterface->selectTimingSendingItem(tableName);
 //    if (itemList.isEmpty()){
@@ -148,7 +148,7 @@ void SAKTimingSendingSettingsWidget::on_outportPushButton_clicked()
 //    }
 }
 
-void SAKTimingSendingSettingsWidget::on_importPushButton_clicked()
+void SAKOtherTimingSentItemManager::on_importPushButton_clicked()
 {
     QString defaultPath = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
     QString fileName = QFileDialog::getOpenFileName(this, tr("导出数据"), defaultPath, QString("json (*.json)"));
@@ -187,7 +187,7 @@ void SAKTimingSendingSettingsWidget::on_importPushButton_clicked()
     }
 }
 
-void SAKTimingSendingSettingsWidget::on_deletePushButton_clicked()
+void SAKOtherTimingSentItemManager::on_deletePushButton_clicked()
 {
     QListWidgetItem *currentItem = itemListWidget->currentItem();
     if (currentItem){
@@ -201,7 +201,7 @@ void SAKTimingSendingSettingsWidget::on_deletePushButton_clicked()
     }
 }
 
-void SAKTimingSendingSettingsWidget::on_addPushButton_clicked()
+void SAKOtherTimingSentItemManager::on_addPushButton_clicked()
 {
     QListWidgetItem *item = new QListWidgetItem(itemListWidget);
     itemListWidget->addItem(item);

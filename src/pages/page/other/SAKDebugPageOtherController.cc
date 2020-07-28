@@ -16,7 +16,7 @@
 #include "SAKReadWriteSettingsWidget.hh"
 #include "SAKDebugPageOtherController.hh"
 #include "SAKAutoResponseSettingsWidget.hh"
-#include "SAKTimingSendingSettingsWidget.hh"
+#include "SAKOtherTimingSentItemManager.hh"
 
 SAKDebugPageOtherController::SAKDebugPageOtherController(SAKDebugPage *debugPage, QObject *parent)
     :QObject (parent)
@@ -27,7 +27,7 @@ SAKDebugPageOtherController::SAKDebugPageOtherController(SAKDebugPage *debugPage
     mHighlightSettingsWidget = new SAKHighlightSettingsWidget(mDebugPage->mOutputTextBroswer->document());
     mReadWriteSettingsWidget = new SAKReadWriteSettingsWidget(mDebugPage);
     mAutoResponseSettingWidget = new SAKAutoResponseSettingsWidget(mDebugPage);
-    mTimingSendingSettingsWidget = new SAKTimingSendingSettingsWidget(mDebugPage);
+    mTimingSendingSettingsWidget = new SAKOtherTimingSentItemManager(mDebugPage);
 
     moreSettingsPushButton = mDebugPage->mMoreSettingsPushButton;
     timingSendingPushButton = mDebugPage->mTimingSendingPushButton;

@@ -19,7 +19,7 @@ class SAKTransmissionSettings;
 class SAKHighlightSettingsWidget;
 class SAKReadWriteSettingsWidget;
 class SAKAutoResponseSettingsWidget;
-class SAKTimingSendingSettingsWidget;
+class SAKOtherTimingSentItemManager;
 
 /// @brief other setting module
 class SAKDebugPageOtherController:public QObject
@@ -49,7 +49,7 @@ private:
     SAKHighlightSettingsWidget *mHighlightSettingsWidget;
     SAKReadWriteSettingsWidget *mReadWriteSettingsWidget;
     SAKAutoResponseSettingsWidget *mAutoResponseSettingWidget;
-    SAKTimingSendingSettingsWidget *mTimingSendingSettingsWidget;
+    SAKOtherTimingSentItemManager *mTimingSendingSettingsWidget;
 private slots:
     void onMoreSettingsPushButtonClicked();
     void onTimingSendingPushButtonClicked();

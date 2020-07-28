@@ -22,16 +22,16 @@
 #include <QRegExpValidator>
 
 namespace Ui {
-    class SAKTimingSendingSettingsWidget;
+    class SAKOtherTimingSentItemManager;
 }
 
 class SAKDebugPage;
-class SAKTimingSendingSettingsWidget:public QWidget
+class SAKOtherTimingSentItemManager:public QWidget
 {
     Q_OBJECT
 public:
-    SAKTimingSendingSettingsWidget(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
-    ~SAKTimingSendingSettingsWidget();
+    SAKOtherTimingSentItemManager(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
+    ~SAKOtherTimingSentItemManager();
 
     struct TimingSendingItemKey {
         const QString id = QString("id");
@@ -49,7 +49,7 @@ private:
     bool contains(quint64 paraID);
     void outputMessage(QString msg, bool isError = false);
 private:
-    Ui::SAKTimingSendingSettingsWidget *ui;
+    Ui::SAKOtherTimingSentItemManager *ui;
     QListWidget *itemListWidget;
     QPushButton *outportPushButton;
     QPushButton *importPushButton;
