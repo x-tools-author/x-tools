@@ -166,6 +166,8 @@ void SAKInputDataPresetItemManager::on_deletePushButton_clicked()
 
         mListWidget->removeItemWidget(item);
         delete item;
+    }else{
+        outputMessage(tr("Plese select an item first."));
     }
 }
 
