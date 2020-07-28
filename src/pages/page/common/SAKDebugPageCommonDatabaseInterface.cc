@@ -248,11 +248,21 @@ QList<SAKDataStruct::SAKStructPresettingDataItem> SAKDebugPageCommonDatabaseInte
 void SAKDebugPageCommonDatabaseInterface::updateRecord(QString tableName, QString columnName, QVariant value, quint64 recordID, bool valueIsString)
 {
 #ifdef SAK_IMPORT_SQL_MODULE
-    const QString queryString = QString("UPDATE %1 SET %2=%3 WHERE ID=%4")
-            .arg(tableName)
-            .arg(columnName)
-            .arg(valueIsString ? QString("'%1'").arg(value.toString()) : QString("%1").arg(value.toInt()))
-            .arg(recordID);
+    QString queryString;
+    if (valueIsString){
+        queryString = QString("UPDATE %1 SET %2='%3' WHERE ID=%4")
+                .arg(tableName)
+                .arg(columnName)
+                .arg(value.toString())
+                .arg(recordID);
+    }else{
+        queryString = QString("UPDATE %1 SET %2=%3 WHERE ID=%4")
+                .arg(tableName)
+                .arg(columnName)
+                .arg(value.toInt())
+                .arg(recordID);
+    }
+
     if(!sakDatabaseQuery.exec(queryString)){
         qWarning() << __FUNCTION__ << QString("Can not update record(%1):%2").arg(columnName).arg(sakDatabaseQuery.lastError().text());
 #ifdef QT_DEBUG
@@ -417,11 +427,6 @@ void SAKDebugPageCommonDatabaseInterface::createPresettingDataTables()
     DataPresetItemTable presettingDataTable;
     for (int i = 0; i < metaEnum.keyCount(); i++){
         presettingDataTable.tableName = SAKDataStruct::presettingDataTableName(i);
-        presettingDataTable.columns.id = QString("ID");
-        presettingDataTable.columns.format = QString("Format");
-        presettingDataTable.columns.description = QString("Comment");
-        presettingDataTable.columns.text = QString("Data");
-
         presettingDataTableList.append(presettingDataTable);
     }
 
@@ -482,7 +487,7 @@ SAKDebugPageCommonDatabaseInterface::DataPresetItemTable SAKDebugPageCommonDatab
     DataPresetItemTable table;
     for(auto var : presettingDataTableList){
         if (tableName.compare(var.tableName) == 0){
-            table = var;
+            table.tableName = var.tableName;
             break;
         }
     }

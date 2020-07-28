@@ -55,14 +55,14 @@ public:
         }columns;
     };
 
-    /// @brief 数据预设数据表
+    // data preset table context
     struct DataPresetItemTable{
         QString tableName;
         struct Columns {
-            QString id;
-            QString format;
-            QString description;
-            QString text;
+            const QString id = QString("ID");
+            const QString format = QString("Format");
+            const QString description = QString("Description");
+            const QString text = QString("Text");
         }columns;
     };
 
