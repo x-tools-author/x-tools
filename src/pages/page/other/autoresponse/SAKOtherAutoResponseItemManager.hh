@@ -29,7 +29,7 @@ class SAKOtherAutoResponseItemManager:public QWidget
 {
    Q_OBJECT
 public:
-    SAKOtherAutoResponseItemManager(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
+    SAKOtherAutoResponseItemManager(SAKDebugPage *mDebugPage, QWidget *parent = Q_NULLPTR);
     ~SAKOtherAutoResponseItemManager();
 
     struct AutoResponseItemKey {
@@ -45,22 +45,22 @@ public:
         const QString interval = QString("interval");
     };
 private:
-    QTimer clearMessageInfoTimer;
-    SAKDebugPage *debugPage;
+    QTimer mClearMessageInfoTimer;
+    SAKDebugPage *mDebugPage;
 private:
     void outputMessage(QString msg, bool isInfo);
     void clearMessage();
     void readInRecord();
     bool contains(quint64 paraID);
 private:
-    Ui::SAKOtherAutoResponseItemManager *ui;
-    QListWidget *listWidget;
-    QCheckBox *forbidAllCheckBox;
-    QPushButton *deleteItemPushButton;
-    QPushButton *addItemPushButton;
-    QPushButton *outportPushButton;
-    QPushButton *importPushButton;
-    QLabel *msgLabel;
+    Ui::SAKOtherAutoResponseItemManager *mUi;
+    QListWidget *mListWidget;
+    QCheckBox *mForbidAllCheckBox;
+    QPushButton *mDeleteItemPushButton;
+    QPushButton *mAddItemPushButton;
+    QPushButton *mOutportPushButton;
+    QPushButton *mImportPushButton;
+    QLabel *mMsgLabel;
 private slots:
     void on_forbidAllCheckBox_clicked();
     void on_deleteItemPushButton_clicked();
