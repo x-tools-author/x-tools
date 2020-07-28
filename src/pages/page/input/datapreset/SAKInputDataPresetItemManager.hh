@@ -24,6 +24,7 @@ namespace Ui {
 }
 
 class SAKDebugPage;
+class SAKInputDataPresetItem;
 class SAKDebugPageCommonDatabaseInterface;
 /// @brief Data preset item manager widget
 class SAKInputDataPresetItemManager:public QWidget
@@ -66,6 +67,9 @@ private slots:
     void on_addPushButton_clicked();
     void on_outportPushButton_clicked();
     void on_importPushButton_clicked();
+signals:
+    void itemDeleted(SAKInputDataPresetItem *item);
+    void itemAdded(SAKInputDataPresetItem *item);
 };
 
 #endif

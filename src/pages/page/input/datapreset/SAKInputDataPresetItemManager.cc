@@ -114,6 +114,7 @@ void SAKInputDataPresetItemManager::appendDataPresetItem(QWidget *iw)
     connect(item, &SAKInputDataPresetItem::formatChanged, this, &SAKInputDataPresetItemManager::updateFormat);
     connect(item, &SAKInputDataPresetItem::textChanged, this, &SAKInputDataPresetItemManager::updateText);
     connect(item, &SAKInputDataPresetItem::descriptionChanged, this, &SAKInputDataPresetItemManager::updateDescription);
+    emit itemAdded(item);
 }
 
 void SAKInputDataPresetItemManager::updateFormat(int format)
@@ -165,6 +166,7 @@ void SAKInputDataPresetItemManager::on_deletePushButton_clicked()
         mDatabaseInterface->deleteRecord(mTableName, id);
 
         mListWidget->removeItemWidget(item);
+        emit itemDeleted(itemWidget);
         delete item;
     }else{
         outputMessage(tr("Plese select an item first."));
