@@ -102,7 +102,8 @@ void SAKOtherAutoResponseItemManager::readInRecord()
     QString tableName = SAKDataStruct::autoResponseTableName(mDebugPage->pageType());
     QList<SAKDataStruct::SAKStructAutoResponseItem> itemList = mDatabaseInterface->selectAutoResponseItem(tableName);
     for (auto var : itemList){
-        innerCreateItem(var, mDebugPage, mListWidget);
+        SAKOtherAutoResponseItem *item = innerCreateItem(var, mDebugPage, mListWidget);
+        initializingItem(item);
     }
 }
 
@@ -120,6 +121,21 @@ bool SAKOtherAutoResponseItemManager::contains(quint64 paraID)
     }
 
     return contain;
+}
+
+void SAKOtherAutoResponseItemManager::initializingItem(SAKOtherAutoResponseItem *item)
+{
+    if (item){
+        connect(item, &SAKOtherAutoResponseItem::descriptionChanged, this, &SAKOtherAutoResponseItemManager::changeDescription);
+        connect(item, &SAKOtherAutoResponseItem::referenceTextChanged, this, &SAKOtherAutoResponseItemManager::changeReferenceText);
+        connect(item, &SAKOtherAutoResponseItem::responseTextChanged, this, &SAKOtherAutoResponseItemManager::changeResponseText);
+        connect(item, &SAKOtherAutoResponseItem::enableChanged, this, &SAKOtherAutoResponseItemManager::changeDelay);
+        connect(item, &SAKOtherAutoResponseItem::optionChanged, this, &SAKOtherAutoResponseItemManager::changeOption);
+        connect(item, &SAKOtherAutoResponseItem::referenceFormatChanged, this, &SAKOtherAutoResponseItemManager::changeReferenceFormat);
+        connect(item, &SAKOtherAutoResponseItem::responseFromatChanged, this, &SAKOtherAutoResponseItemManager::changeResponseFromat);
+        connect(item, &SAKOtherAutoResponseItem::delayChanged, this, &SAKOtherAutoResponseItemManager::changeDelay);
+        connect(item, &SAKOtherAutoResponseItem::intervalChanged, this, &SAKOtherAutoResponseItemManager::changeInterval);
+    }
 }
 
 void SAKOtherAutoResponseItemManager::changeDescription(const QString &description)
@@ -359,10 +375,11 @@ void SAKOtherAutoResponseItemManager::on_importPushButton_clicked()
 
                 /// @brief 不存在则新建
                 if (!contains(responseItem.id)){
-                    innerCreateItem(responseItem, mDebugPage, mListWidget);
+                    SAKOtherAutoResponseItem *item = innerCreateItem(responseItem, mDebugPage, mListWidget);
+                    initializingItem(item);
 
                     QString tableName = SAKDataStruct::autoResponseTableName(mDebugPage->pageType());
-//                    databaseInterface->insertAutoResponseItem(tableName, responseItem);
+                    mDatabaseInterface->insertAutoResponseItem(tableName, responseItem);
                 }
             }
         }

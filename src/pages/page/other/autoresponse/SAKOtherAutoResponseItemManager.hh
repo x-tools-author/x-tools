@@ -56,6 +56,7 @@ private:
     void clearMessage();
     void readInRecord();
     bool contains(quint64 paraID);
+    void initializingItem(SAKOtherAutoResponseItem *item);
     // update record
     void changeDescription(const QString &description);
     void changeReferenceText(const QString &text);
