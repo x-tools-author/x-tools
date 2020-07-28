@@ -37,8 +37,8 @@ public:
     struct AutoResponseItemKey {
         const QString id = QString("id");
         const QString description = QString("description");
-        const QString referenceData = QString("referenceData");
-        const QString responseData = QString("responseData");
+        const QString referenceText = QString("referenceText");
+        const QString responseText = QString("responseText");
         const QString enable = QString("enable");
         const QString referenceFormat = QString("referenceFormat");
         const QString responseFormat = QString("responseFormat");
