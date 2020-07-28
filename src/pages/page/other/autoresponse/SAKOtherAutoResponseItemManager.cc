@@ -191,7 +191,7 @@ void SAKOtherAutoResponseItemManager::on_outportPushButton_clicked()
     for (auto var : itemList){
         QJsonObject obj;
         obj.insert(itemKey.id, QVariant::fromValue(var.id).toJsonValue());
-        obj.insert(itemKey.name, QVariant::fromValue(var.name).toJsonValue());
+        obj.insert(itemKey.description, QVariant::fromValue(var.name).toJsonValue());
         obj.insert(itemKey.enable, QVariant::fromValue(var.enable).toJsonValue());
         obj.insert(itemKey.option, QVariant::fromValue(var.option).toJsonValue());
         obj.insert(itemKey.responseData, QVariant::fromValue(var.responseData).toJsonValue());
@@ -245,7 +245,7 @@ void SAKOtherAutoResponseItemManager::on_importPushButton_clicked()
                 AutoResponseItemKey itemKey;
                 SAKDataStruct::SAKStructAutoResponseItem responseItem;
                 responseItem.id = jso.value(itemKey.id).toVariant().toULongLong();
-                responseItem.name = jso.value(itemKey.name).toVariant().toString();
+                responseItem.name = jso.value(itemKey.description).toVariant().toString();
                 responseItem.enable = jso.value(itemKey.enable).toVariant().toBool();
                 responseItem.option = jso.value(itemKey.option).toVariant().toUInt();
                 responseItem.responseData = jso.value(itemKey.responseData).toVariant().toString();
