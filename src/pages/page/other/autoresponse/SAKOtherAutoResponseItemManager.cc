@@ -137,7 +137,7 @@ void SAKOtherAutoResponseItemManager::changeReferenceText(const QString &text)
     if (item){
         SAKDebugPageCommonDatabaseInterface::AutoResponseTable table;
         quint64 id = item->itemID();
-        mDatabaseInterface->updateRecord(mTableName, table.columns.referenceData, QVariant::fromValue(text), id, true);
+        mDatabaseInterface->updateRecord(mTableName, table.columns.referenceText, QVariant::fromValue(text), id, true);
     }
 }
 
@@ -147,7 +147,7 @@ void SAKOtherAutoResponseItemManager::changeResponseText(const QString &text)
     if (item){
         SAKDebugPageCommonDatabaseInterface::AutoResponseTable table;
         quint64 id = item->itemID();
-        mDatabaseInterface->updateRecord(mTableName, table.columns.responseData, QVariant::fromValue(text), id, true);
+        mDatabaseInterface->updateRecord(mTableName, table.columns.responseText, QVariant::fromValue(text), id, true);
     }
 }
 

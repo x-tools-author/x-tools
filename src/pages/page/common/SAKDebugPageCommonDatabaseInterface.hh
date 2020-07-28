@@ -34,8 +34,8 @@ public:
         struct Columns {
             const QString id = QString("ID");
             const QString description = QString("Description");
-            const QString referenceData = QString("ReferenceData");
-            const QString responseData = QString("ResponseData");
+            const QString referenceText = QString("ReferenceText");
+            const QString responseText = QString("ResponseText");
             const QString enable = QString("Enable");
             const QString referenceFormat = QString("ReferenceFormat");
             const QString responseFormat = QString("ResponseFormat");

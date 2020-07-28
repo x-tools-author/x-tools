@@ -56,8 +56,8 @@ void SAKDebugPageCommonDatabaseInterface::insertAutoResponseItem(QString tableNa
                                      .arg(table.tableName)
                                      .arg(table.columns.id)
                                      .arg(table.columns.description)
-                                     .arg(table.columns.referenceData)
-                                     .arg(table.columns.responseData)
+                                     .arg(table.columns.referenceText)
+                                     .arg(table.columns.responseText)
                                      .arg(table.columns.enable)
                                      .arg(table.columns.referenceFormat)
                                      .arg(table.columns.responseFormat)
@@ -90,8 +90,8 @@ QList<SAKDataStruct::SAKStructAutoResponseItem> SAKDebugPageCommonDatabaseInterf
         while (sakDatabaseQuery.next()) {
             item.id = sakDatabaseQuery.value(table.columns.id).toULongLong();
             item.name = sakDatabaseQuery.value(table.columns.description).toString();
-            item.referenceData = sakDatabaseQuery.value(table.columns.referenceData).toString();
-            item.responseData = sakDatabaseQuery.value(table.columns.responseData).toString();
+            item.referenceData = sakDatabaseQuery.value(table.columns.referenceText).toString();
+            item.responseData = sakDatabaseQuery.value(table.columns.responseText).toString();
             item.enable = sakDatabaseQuery.value(table.columns.enable).toBool();
             item.referenceFormat = sakDatabaseQuery.value(table.columns.referenceFormat).toUInt();
             item.responseFormat = sakDatabaseQuery.value(table.columns.responseFormat).toUInt();
@@ -305,8 +305,8 @@ bool SAKDebugPageCommonDatabaseInterface::createAutoResponseTable(const AutoResp
                                              .arg(table.tableName)
                                              .arg(table.columns.id)
                                              .arg(table.columns.description)
-                                             .arg(table.columns.referenceData)
-                                             .arg(table.columns.responseData)
+                                             .arg(table.columns.referenceText)
+                                             .arg(table.columns.responseText)
                                              .arg(table.columns.enable)
                                              .arg(table.columns.referenceFormat)
                                              .arg(table.columns.responseFormat)
