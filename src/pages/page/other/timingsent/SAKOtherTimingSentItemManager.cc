@@ -46,7 +46,7 @@ SAKOtherTimingSentItemManager::SAKOtherTimingSentItemManager(SAKDebugPage *debug
     });
 
     mDatabaseInterface = SAKDebugPageCommonDatabaseInterface::instance();
-    mTableName = SAKDataStruct::timingSendingTableName(this->mDebugPage->pageType());
+    mTableName = SAKDataStruct::timingSendingTableName(mDebugPage->pageType());
     readinRecord();
 }
 
