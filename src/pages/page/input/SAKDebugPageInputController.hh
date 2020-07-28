@@ -96,6 +96,9 @@ private:
     void setCycleEnable();       
     void cycleTimerTimeout();
     void updateCRC();
+    void appendAction(SAKInputDataPresetItem *item);
+    void removeAction(SAKInputDataPresetItem *item);
+    void actionTriggered();
 signals:
     void rawDataChanged(QString rawData, InputParametersContext parameters);
 };

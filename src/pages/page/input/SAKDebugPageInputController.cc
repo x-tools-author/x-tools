@@ -7,8 +7,10 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
+#include <QMenu>
 #include <QFile>
 #include <QDebug>
+#include <QAction>
 #include <QFileDialog>
 #include <QStandardPaths>
 #include <QListWidgetItem>
@@ -40,6 +42,7 @@ SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugPage *debugPage
     mCrcLabel                    = debugPage->mCrcLabel;
     mPresetPushButton            = debugPage->mPresetPushButton;
     mSendPresetPushButton        = debugPage->mSendPresetPushButton;
+    mSendPresetPushButton->setMenu(new QMenu("", mSendPresetPushButton));
 
     qRegisterMetaType<InputParametersContext>("InputParameters");
     mInputDataFactory = new SAKInputDataFactory;
@@ -52,6 +55,10 @@ SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugPage *debugPage
     mInputParameters.bigEndian = ctx.bigEndianCRC;
     mInputParameters.startByte = ctx.startByte;
     mInputParameters.endByte = ctx.endByte;
+
+    // Preset items changed
+    connect(mInputDataItemManager, &SAKInputDataPresetItemManager::itemAdded, this, &SAKDebugPageInputController::appendAction);
+    connect(mInputDataItemManager, &SAKInputDataPresetItemManager::itemDeleted, this, &SAKDebugPageInputController::removeAction);
 
     // Update parameters
     connect(mCrcSettingsDialog, &SAKInputCrcSettingsDialog::parametersChanged, this, [&](){
@@ -352,3 +359,35 @@ void SAKDebugPageInputController::updateCRC()
     mCrcLabel->setText(QString(QString("%1").arg(QString::number(crc, 16), (bits/8)*2, '0')).toUpper().prepend("0x"));
 }
 
+void SAKDebugPageInputController::appendAction(SAKInputDataPresetItem *item)
+{
+    QString description = item->itemDescription();
+    QAction *action = new QAction(description, mSendPresetPushButton);
+    action->setData(QVariant::fromValue(item));
+    connect(action, &QAction::triggered, this, &SAKDebugPageInputController::actionTriggered);
+}
+
+void SAKDebugPageInputController::removeAction(SAKInputDataPresetItem *item)
+{
+    QList<QAction*> actionList = mSendPresetPushButton->menu()->actions();
+    for (auto var : actionList){
+        if (var->data().value<SAKInputDataPresetItem*>() == item){
+            var->deleteLater();
+            break;
+        }
+    }
+}
+
+void SAKDebugPageInputController::actionTriggered()
+{
+    if (sender()){
+        if (sender()->inherits("QAction")){
+            QAction *action = qobject_cast<QAction*>(sender());
+            SAKInputDataPresetItem *item = action->data().value<SAKInputDataPresetItem *>();
+            int format = item->itemTextFromat();
+            QString text = item->itemText();
+
+            sendOtherRawData(text, format);
+        }
+    }
+}
