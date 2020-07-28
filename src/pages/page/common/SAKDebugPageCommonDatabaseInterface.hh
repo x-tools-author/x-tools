@@ -95,16 +95,16 @@ public:
     QList<SAKDataStruct::SAKStructAutoResponseItem> selectAutoResponseItem(QString tableName);
 
     /**
-     * @brief insertTimingSendingItem 插入定时发送条目
-     * @param tableName 数据表名称
-     * @param item 数据信息
+     * @brief insertTimingSendingItem: Insert record to database
+     * @param tableName: Target table name
+     * @param item: Record item
      */
     void insertTimingSentItem(QString tableName, SAKDataStruct::SAKStructTimingSentItem item);
 
     /**
-     * @brief selectTimingSendingItem 提取数据数据库中保存的定时发送条目的数据信息
-     * @param tableName 数据表名称
-     * @return 定时发送条目数据信息列表
+     * @brief selectTimingSendingItem: Query records
+     * @param tableName: Table name
+     * @return records
      */
     QList<SAKDataStruct::SAKStructTimingSentItem> selectTimingSentItem(QString tableName);
 
