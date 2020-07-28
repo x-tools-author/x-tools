@@ -21,37 +21,38 @@
 #include "SAKDataStruct.hh"
 #include "SAKOtherTimingSentItem.hh"
 #include "SAKOtherTimingSentItemManager.hh"
+#include "SAKDebugPageCommonDatabaseInterface.hh"
 
 #include "ui_SAKOtherTimingSentItemManager.h"
 
 SAKOtherTimingSentItemManager::SAKOtherTimingSentItemManager(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget(parent)
-    ,debugPage(debugPage)
-    ,ui(new Ui::SAKOtherTimingSentItemManager)
+    ,mDebugPage(debugPage)
+    ,mUi(new Ui::SAKOtherTimingSentItemManager)
 {
-    ui->setupUi(this);
+    mUi->setupUi(this);
 
-    itemListWidget = ui->itemListWidget;
-    outportPushButton = ui->outportPushButton;
-    importPushButton = ui->importPushButton;
-    deletePushButton = ui->deletePushButton;
-    addPushButton = ui->addPushButton;
-    messageLabel = ui->messageLabel;
+    mItemListWidget = mUi->itemListWidget;
+    mOutportPushButton = mUi->outportPushButton;
+    mImportPushButton = mUi->importPushButton;
+    mDeletePushButton = mUi->deletePushButton;
+    mAddPushButton = mUi->addPushButton;
+    mMessageLabel = mUi->messageLabel;
 
-    clearMessageTimer.setInterval(SAK_CLEAR_MESSAGE_INTERVAL);
-    connect(&clearMessageTimer, &QTimer::timeout, this, [&](){
-        clearMessageTimer.stop();
-        messageLabel->clear();
+    mClearMessageTimer.setInterval(SAK_CLEAR_MESSAGE_INTERVAL);
+    connect(&mClearMessageTimer, &QTimer::timeout, this, [&](){
+        mClearMessageTimer.stop();
+        mMessageLabel->clear();
     });
 
 //    databaseInterface = SAKDebugPageDatabaseInterface::instance();
-    tableName = SAKDataStruct::timingSendingTableName(this->debugPage->pageType());
+    mTableName = SAKDataStruct::timingSendingTableName(this->mDebugPage->pageType());
     readinRecord();
 }
 
 SAKOtherTimingSentItemManager::~SAKOtherTimingSentItemManager()
 {
-    delete ui;
+    delete mUi;
 }
 
 void innerCreateItem(SAKDataStruct::SAKStructTimingSendingItem &var, SAKDebugPage *debugPage, QListWidget *listWidget)
@@ -84,9 +85,9 @@ void SAKOtherTimingSentItemManager::readinRecord()
 bool SAKOtherTimingSentItemManager::contains(quint64 paraID)
 {
     bool contain = false;
-    for (int i = 0; i < itemListWidget->count(); i++){
-        QListWidgetItem *item = itemListWidget->item(i);
-        QWidget *w = itemListWidget->itemWidget(item);
+    for (int i = 0; i < mItemListWidget->count(); i++){
+        QListWidgetItem *item = mItemListWidget->item(i);
+        QWidget *w = mItemListWidget->itemWidget(item);
         SAKOtherTimingSentItem *itemWidget = reinterpret_cast<SAKOtherTimingSentItem*>(w);
         if (itemWidget->itemID() == paraID){
             contain = true;
@@ -104,9 +105,9 @@ void SAKOtherTimingSentItemManager::outputMessage(QString msg, bool isError)
         color = "red";
         QApplication::beep();
     }
-    messageLabel->setStyleSheet(QString("QLabel{color:%1}").arg(color));
-    messageLabel->setText(QTime::currentTime().toString("hh:mm:ss ") + msg);
-    clearMessageTimer.start();
+    mMessageLabel->setStyleSheet(QString("QLabel{color:%1}").arg(color));
+    mMessageLabel->setText(QTime::currentTime().toString("hh:mm:ss ") + msg);
+    mClearMessageTimer.start();
 }
 
 void SAKOtherTimingSentItemManager::on_outportPushButton_clicked()
@@ -177,7 +178,7 @@ void SAKOtherTimingSentItemManager::on_importPushButton_clicked()
 
                 /// @brief 不存在则新建
                 if (!contains(responseItem.id)){
-                    innerCreateItem(responseItem, debugPage, itemListWidget);
+                    innerCreateItem(responseItem, mDebugPage, mItemListWidget);
 //                    databaseInterface->insertTimingSendingItem(tableName, responseItem);
                 }
             }
@@ -189,26 +190,26 @@ void SAKOtherTimingSentItemManager::on_importPushButton_clicked()
 
 void SAKOtherTimingSentItemManager::on_deletePushButton_clicked()
 {
-    QListWidgetItem *currentItem = itemListWidget->currentItem();
+    QListWidgetItem *currentItem = mItemListWidget->currentItem();
     if (currentItem){
-        SAKOtherTimingSentItem *w = reinterpret_cast<SAKOtherTimingSentItem*>(itemListWidget->itemWidget(currentItem));
+        SAKOtherTimingSentItem *w = reinterpret_cast<SAKOtherTimingSentItem*>(mItemListWidget->itemWidget(currentItem));
         SAKDataStruct::SAKStructTimingSendingItem sendingItem;
         sendingItem.id = w->itemID();
 //        databaseInterface->deleteTimingSendingItem(tableName, sendingItem);
 
-        itemListWidget->removeItemWidget(currentItem);
+        mItemListWidget->removeItemWidget(currentItem);
         delete currentItem;
     }
 }
 
 void SAKOtherTimingSentItemManager::on_addPushButton_clicked()
 {
-    QListWidgetItem *item = new QListWidgetItem(itemListWidget);
-    itemListWidget->addItem(item);
+    QListWidgetItem *item = new QListWidgetItem(mItemListWidget);
+    mItemListWidget->addItem(item);
 
-    SAKOtherTimingSentItem *itemWidget = new SAKOtherTimingSentItem(debugPage);
+    SAKOtherTimingSentItem *itemWidget = new SAKOtherTimingSentItem(mDebugPage);
     item->setSizeHint(itemWidget->size());
-    itemListWidget->setItemWidget(item, itemWidget);
+    mItemListWidget->setItemWidget(item, itemWidget);
 
     /// @brief 插入定时发送记录
     SAKDataStruct::SAKStructTimingSendingItem sendingItem;

@@ -26,11 +26,13 @@ namespace Ui {
 }
 
 class SAKDebugPage;
+class SAKDebugPageCommonDatabaseInterface;
+/// @brief Timing sent item manager
 class SAKOtherTimingSentItemManager:public QWidget
 {
     Q_OBJECT
 public:
-    SAKOtherTimingSentItemManager(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
+    SAKOtherTimingSentItemManager(SAKDebugPage *mDebugPage, QWidget *parent = Q_NULLPTR);
     ~SAKOtherTimingSentItemManager();
 
     struct TimingSendingItemKey {
@@ -41,21 +43,21 @@ public:
         const QString text = QString("text");
     };
 private:
-    SAKDebugPage *debugPage;
-    QString tableName;
-    QTimer clearMessageTimer;
+    SAKDebugPage *mDebugPage;
+    QString mTableName;
+    QTimer mClearMessageTimer;
 private:
     void readinRecord();
     bool contains(quint64 paraID);
     void outputMessage(QString msg, bool isError = false);
 private:
-    Ui::SAKOtherTimingSentItemManager *ui;
-    QListWidget *itemListWidget;
-    QPushButton *outportPushButton;
-    QPushButton *importPushButton;
-    QPushButton *deletePushButton;
-    QPushButton *addPushButton;
-    QLabel *messageLabel;
+    Ui::SAKOtherTimingSentItemManager *mUi;
+    QListWidget *mItemListWidget;
+    QPushButton *mOutportPushButton;
+    QPushButton *mImportPushButton;
+    QPushButton *mDeletePushButton;
+    QPushButton *mAddPushButton;
+    QLabel *mMessageLabel;
 private slots:
     void on_outportPushButton_clicked();
     void on_importPushButton_clicked();
