@@ -39,11 +39,11 @@ public:
                            QWidget *parent = Q_NULLPTR);
     ~SAKOtherTimingSentItem();
 
-    quint64 parameterID();
-    quint32 parameterInterval();
-    quint32 parameterFormat();
-    QString parameterComment();
-    QString parameterData();
+    quint64 itemID();
+    quint32 itemInterval();
+    quint32 itemFormat();
+    QString itemDescription();
+    QString itemText();
 private:
     SAKDebugPage *debugPage;
     quint64 id;

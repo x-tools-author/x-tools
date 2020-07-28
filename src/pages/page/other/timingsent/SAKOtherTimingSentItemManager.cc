@@ -88,7 +88,7 @@ bool SAKOtherTimingSentItemManager::contains(quint64 paraID)
         QListWidgetItem *item = itemListWidget->item(i);
         QWidget *w = itemListWidget->itemWidget(item);
         SAKOtherTimingSentItem *itemWidget = reinterpret_cast<SAKOtherTimingSentItem*>(w);
-        if (itemWidget->parameterID() == paraID){
+        if (itemWidget->itemID() == paraID){
             contain = true;
             break;
         }
@@ -193,7 +193,7 @@ void SAKOtherTimingSentItemManager::on_deletePushButton_clicked()
     if (currentItem){
         SAKOtherTimingSentItem *w = reinterpret_cast<SAKOtherTimingSentItem*>(itemListWidget->itemWidget(currentItem));
         SAKDataStruct::SAKStructTimingSendingItem sendingItem;
-        sendingItem.id = w->parameterID();
+        sendingItem.id = w->itemID();
 //        databaseInterface->deleteTimingSendingItem(tableName, sendingItem);
 
         itemListWidget->removeItemWidget(currentItem);
@@ -212,10 +212,10 @@ void SAKOtherTimingSentItemManager::on_addPushButton_clicked()
 
     /// @brief 插入定时发送记录
     SAKDataStruct::SAKStructTimingSendingItem sendingItem;
-    sendingItem.id = itemWidget->parameterID();
-    sendingItem.data = itemWidget->parameterData();
-    sendingItem.format = itemWidget->parameterFormat();
-    sendingItem.comment = itemWidget->parameterComment();
-    sendingItem.interval = itemWidget->parameterInterval();
+    sendingItem.id = itemWidget->itemID();
+    sendingItem.data = itemWidget->itemText();
+    sendingItem.format = itemWidget->itemFormat();
+    sendingItem.comment = itemWidget->itemDescription();
+    sendingItem.interval = itemWidget->itemInterval();
 //    databaseInterface->insertTimingSendingItem(tableName, sendingItem);
 }

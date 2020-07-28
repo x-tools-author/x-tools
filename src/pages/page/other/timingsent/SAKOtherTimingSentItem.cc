@@ -51,27 +51,27 @@ SAKOtherTimingSentItem::~SAKOtherTimingSentItem()
     delete ui;
 }
 
-quint64 SAKOtherTimingSentItem::parameterID()
+quint64 SAKOtherTimingSentItem::itemID()
 {
     return id;
 }
 
-quint32 SAKOtherTimingSentItem::parameterInterval()
+quint32 SAKOtherTimingSentItem::itemInterval()
 {
     return timingTimeLineEdit->text().toUInt();
 }
 
-quint32 SAKOtherTimingSentItem::parameterFormat()
+quint32 SAKOtherTimingSentItem::itemFormat()
 {
     return textFormatComboBox->currentIndex();
 }
 
-QString SAKOtherTimingSentItem::parameterComment()
+QString SAKOtherTimingSentItem::itemDescription()
 {
     return descriptionLineEdit->text();
 }
 
-QString SAKOtherTimingSentItem::parameterData()
+QString SAKOtherTimingSentItem::itemText()
 {
     return inputDataTextEdit->toPlainText();
 }
@@ -120,11 +120,11 @@ void SAKOtherTimingSentItem::on_updatePushButton_clicked()
 {
     QString tableName = SAKDataStruct::timingSendingTableName(debugPage->pageType());
     SAKDataStruct::SAKStructTimingSendingItem sendingItem;
-    sendingItem.id = parameterID();
-    sendingItem.data = parameterData();
-    sendingItem.format = parameterFormat();
-    sendingItem.comment = parameterComment();
-    sendingItem.interval = parameterInterval();
+    sendingItem.id = itemID();
+    sendingItem.data = itemText();
+    sendingItem.format = itemFormat();
+    sendingItem.comment = itemDescription();
+    sendingItem.interval = itemInterval();
 //    SAKDebugPageDatabaseInterface *databaseInterface = SAKDebugPageDatabaseInterface::instance();
 //    databaseInterface->updateTimingSendingItem(tableName, sendingItem);
 }
