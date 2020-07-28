@@ -30,7 +30,7 @@ class SAKInputDataPresetItemManager:public QWidget
 {
     Q_OBJECT
 public:
-    SAKInputDataPresetItemManager(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
+    SAKInputDataPresetItemManager(SAKDebugPage *mDebugPage, QWidget *parent = Q_NULLPTR);
     ~SAKInputDataPresetItemManager();
 
     struct DataPresetItemContext {
@@ -40,11 +40,11 @@ public:
         const QString text = QString("data");
     };
 private:
-    SAKDebugPage *debugPage;
-    QListWidget *listWidget;
-    QString tableName;
-    QTimer clearMessageInfoTimer;
-    SAKDebugPageCommonDatabaseInterface *databaseInterface;
+    SAKDebugPage *mDebugPage;
+    QListWidget *mListWidget;
+    QString mTableName;
+    QTimer mClearMessageInfoTimer;
+    SAKDebugPageCommonDatabaseInterface *mDatabaseInterface;
 private:
     void readinRecord();
     void outputMessage(QString msg, bool isError = false);
@@ -55,12 +55,12 @@ private:
     void updateDescription(const QString &text);
     void updateText(QString text);
 private:
-    Ui::SAKInputDataPresetItemManager *ui;
-    QPushButton *deletePushButton;
-    QPushButton *addPushButton;
-    QPushButton *outportPushButton;
-    QPushButton *importPushButton;
-    QLabel *infoLabel;
+    Ui::SAKInputDataPresetItemManager *mUi;
+    QPushButton *mDeletePushButton;
+    QPushButton *mAddPushButton;
+    QPushButton *mOutportPushButton;
+    QPushButton *mImportPushButton;
+    QLabel *mInfoLabel;
 private slots:
     void on_deletePushButton_clicked();
     void on_addPushButton_clicked();

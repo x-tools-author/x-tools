@@ -28,31 +28,31 @@
 
 SAKInputDataPresetItemManager::SAKInputDataPresetItemManager(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget(parent)
-    ,debugPage(debugPage)
-    ,ui(new Ui::SAKInputDataPresetItemManager)
+    ,mDebugPage(debugPage)
+    ,mUi(new Ui::SAKInputDataPresetItemManager)
 {
-    ui->setupUi(this);
-    deletePushButton = ui->deletePushButton;
-    addPushButton = ui->addPushButton;
-    listWidget = ui->itemListWidget;
-    infoLabel = ui->infoLabel;
-    outportPushButton = ui->outportPushButton;
-    importPushButton = ui->importPushButton;
+    mUi->setupUi(this);
+    mDeletePushButton = mUi->deletePushButton;
+    mAddPushButton = mUi->addPushButton;
+    mListWidget = mUi->itemListWidget;
+    mInfoLabel = mUi->infoLabel;
+    mOutportPushButton = mUi->outportPushButton;
+    mImportPushButton = mUi->importPushButton;
 
-    clearMessageInfoTimer.setInterval(SAK_CLEAR_MESSAGE_INTERVAL);
-    connect(&clearMessageInfoTimer, &QTimer::timeout, this, [&](){
-        clearMessageInfoTimer.stop();
-        infoLabel->clear();
+    mClearMessageInfoTimer.setInterval(SAK_CLEAR_MESSAGE_INTERVAL);
+    connect(&mClearMessageInfoTimer, &QTimer::timeout, this, [&](){
+        mClearMessageInfoTimer.stop();
+        mInfoLabel->clear();
     });
 
-    tableName = SAKDataStruct::presettingDataTableName(debugPage->pageType());
-    databaseInterface = SAKDebugPageCommonDatabaseInterface::instance();
+    mTableName = SAKDataStruct::presettingDataTableName(debugPage->pageType());
+    mDatabaseInterface = SAKDebugPageCommonDatabaseInterface::instance();
     readinRecord();
 }
 
 SAKInputDataPresetItemManager::~SAKInputDataPresetItemManager()
 {
-    delete ui;
+    delete mUi;
 }
 
 QWidget *innerCreateItem(SAKDataStruct::SAKStructPresettingDataItem &var, QListWidget *listWidget)
@@ -72,9 +72,9 @@ QWidget *innerCreateItem(SAKDataStruct::SAKStructPresettingDataItem &var, QListW
 
 void SAKInputDataPresetItemManager::readinRecord()
 {
-    QList<SAKDataStruct::SAKStructPresettingDataItem> itemList = databaseInterface->selectDataPresetItem(tableName);
+    QList<SAKDataStruct::SAKStructPresettingDataItem> itemList = mDatabaseInterface->selectDataPresetItem(mTableName);
     for (auto var : itemList){
-        QWidget *iw = innerCreateItem(var, listWidget);
+        QWidget *iw = innerCreateItem(var, mListWidget);
         appendDataPresetItem(iw);
     }
 }
@@ -86,18 +86,18 @@ void SAKInputDataPresetItemManager::outputMessage(QString msg, bool isError)
         color = "red";
         QApplication::beep();
     }
-    infoLabel->setStyleSheet(QString("QLabel{color:%1}").arg(color));
+    mInfoLabel->setStyleSheet(QString("QLabel{color:%1}").arg(color));
 
-    infoLabel->setText(QTime::currentTime().toString("hh:mm:ss ") + msg);
-    clearMessageInfoTimer.start();
+    mInfoLabel->setText(QTime::currentTime().toString("hh:mm:ss ") + msg);
+    mClearMessageInfoTimer.start();
 }
 
 bool SAKInputDataPresetItemManager::contains(quint64 paraID)
 {
     bool contain = false;
-    for (int i = 0; i < listWidget->count(); i++){
-        QListWidgetItem *item = listWidget->item(i);
-        QWidget *w = listWidget->itemWidget(item);
+    for (int i = 0; i < mListWidget->count(); i++){
+        QListWidgetItem *item = mListWidget->item(i);
+        QWidget *w = mListWidget->itemWidget(item);
         SAKInputDataPresetItem *itemWidget = reinterpret_cast<SAKInputDataPresetItem*>(w);
         if (itemWidget->itemID() == paraID){
             contain = true;
@@ -124,7 +124,7 @@ void SAKInputDataPresetItemManager::updateFormat(int format)
             quint64 id = item->itemID();
 
             SAKDebugPageCommonDatabaseInterface::DataPresetItemTable table;
-            databaseInterface->updateRecord(tableName, table.columns.format, QVariant::fromValue(format), id, false);
+            mDatabaseInterface->updateRecord(mTableName, table.columns.format, QVariant::fromValue(format), id, false);
         }
     }
 }
@@ -137,7 +137,7 @@ void SAKInputDataPresetItemManager::updateDescription(const QString &text)
             quint64 id = item->itemID();
 
             SAKDebugPageCommonDatabaseInterface::DataPresetItemTable table;
-            databaseInterface->updateRecord(tableName, table.columns.description, QVariant::fromValue(text), id, true);
+            mDatabaseInterface->updateRecord(mTableName, table.columns.description, QVariant::fromValue(text), id, true);
         }
     }
 }
@@ -150,32 +150,32 @@ void SAKInputDataPresetItemManager::updateText(QString text)
             quint64 id = item->itemID();
 
             SAKDebugPageCommonDatabaseInterface::DataPresetItemTable table;
-            databaseInterface->updateRecord(tableName, table.columns.text, QVariant::fromValue(text), id, true);
+            mDatabaseInterface->updateRecord(mTableName, table.columns.text, QVariant::fromValue(text), id, true);
         }
     }
 }
 
 void SAKInputDataPresetItemManager::on_deletePushButton_clicked()
 {
-    QListWidgetItem *item = listWidget->currentItem();
+    QListWidgetItem *item = mListWidget->currentItem();
     if (item){
-        SAKInputDataPresetItem *itemWidget = reinterpret_cast<SAKInputDataPresetItem*>(listWidget->itemWidget(item));
+        SAKInputDataPresetItem *itemWidget = reinterpret_cast<SAKInputDataPresetItem*>(mListWidget->itemWidget(item));
         quint64 id = itemWidget->itemID();
         // delete record from database
-        databaseInterface->deleteRecord(tableName, id);
+        mDatabaseInterface->deleteRecord(mTableName, id);
 
-        listWidget->removeItemWidget(item);
+        mListWidget->removeItemWidget(item);
         delete item;
     }
 }
 
 void SAKInputDataPresetItemManager::on_addPushButton_clicked()
 {
-    QListWidgetItem *item = new QListWidgetItem(listWidget);
+    QListWidgetItem *item = new QListWidgetItem(mListWidget);
     SAKInputDataPresetItem *itemWidget = new SAKInputDataPresetItem(this);
     item->setSizeHint(itemWidget->sizeHint());
-    listWidget->addItem(item);
-    listWidget->setItemWidget(item, itemWidget);
+    mListWidget->addItem(item);
+    mListWidget->setItemWidget(item, itemWidget);
     appendDataPresetItem(itemWidget);
 
     // Add item to database
@@ -184,13 +184,13 @@ void SAKInputDataPresetItemManager::on_addPushButton_clicked()
     dataItem.text = itemWidget->itemText();
     dataItem.format = itemWidget->itemTextFromat();
     dataItem.description = itemWidget->itemDescription();
-    databaseInterface->insertDataPresetItem(tableName, dataItem);
+    mDatabaseInterface->insertDataPresetItem(mTableName, dataItem);
 }
 
 void SAKInputDataPresetItemManager::on_outportPushButton_clicked()
 {
     /// @brief 从数据库中读入记录
-    QList<SAKDataStruct::SAKStructPresettingDataItem> itemList = databaseInterface->selectDataPresetItem(tableName);
+    QList<SAKDataStruct::SAKStructPresettingDataItem> itemList = mDatabaseInterface->selectDataPresetItem(mTableName);
     if (itemList.isEmpty()){
         return;
     }
@@ -256,10 +256,10 @@ void SAKInputDataPresetItemManager::on_importPushButton_clicked()
 
                 // If item is not exist, creating an item
                 if (!contains(responseItem.id)){
-                    QWidget *iw = innerCreateItem(responseItem, listWidget);
+                    QWidget *iw = innerCreateItem(responseItem, mListWidget);
                     appendDataPresetItem(iw);
                     // Insert record to database
-                    databaseInterface->insertDataPresetItem(tableName, responseItem);
+                    mDatabaseInterface->insertDataPresetItem(mTableName, responseItem);
                 }
             }
         }
