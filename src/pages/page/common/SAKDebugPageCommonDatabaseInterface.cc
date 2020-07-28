@@ -154,32 +154,6 @@ void SAKDebugPageCommonDatabaseInterface::insertTimingSendingItem(QString tableN
     }
 }
 
-void SAKDebugPageCommonDatabaseInterface::deleteTimingSendingItem(QString tableName, SAKDataStruct::SAKStructTimingSentItem item)
-{
-    deleteRecord(tableName, item.id);
-}
-
-void SAKDebugPageCommonDatabaseInterface::updateTimingSendingItem(QString tableName, SAKDataStruct::SAKStructTimingSentItem item)
-{
-    TimingSendingTable table = tableNameToTimingSendingTable(tableName);
-    bool ret = sakDatabaseQuery.exec(QString("UPDATE '%1' SET %2=%3,%4=%5,%6=%7,%8='%9',%10='%11' WHERE ID=%12")
-                                     .arg(table.tableName)
-                                     .arg(table.columns.id)
-                                     .arg(item.id)
-                                     .arg(table.columns.interval)
-                                     .arg(item.interval)
-                                     .arg(table.columns.format)
-                                     .arg(item.format)
-                                     .arg(table.columns.description)
-                                     .arg(item.comment)
-                                     .arg(table.columns.text)
-                                     .arg(item.data)
-                                     .arg(item.id));
-    if (!ret){
-        qWarning() << __FUNCTION__ << "Update record form " << table.tableName << " table failed: " << sakDatabaseQuery.lastError().text();
-    }
-}
-
 QList<SAKDataStruct::SAKStructTimingSentItem> SAKDebugPageCommonDatabaseInterface::selectTimingSentItem(QString tableName)
 {
     TimingSendingTable table = tableNameToTimingSendingTable(tableName);
