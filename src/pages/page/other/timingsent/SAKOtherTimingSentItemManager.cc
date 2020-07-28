@@ -122,6 +122,18 @@ void SAKOtherTimingSentItemManager::initializingItem(SAKOtherTimingSentItem *ite
     }
 }
 
+SAKOtherTimingSentItem *SAKOtherTimingSentItemManager::sender2item(QObject *sender)
+{
+    SAKOtherTimingSentItem *item = Q_NULLPTR;
+    if (sender){
+        if (sender->inherits("SAKOtherTimingSentItem")){
+            item = qobject_cast<SAKOtherTimingSentItem*>(sender);
+        }
+    }
+
+    return item;
+}
+
 void SAKOtherTimingSentItemManager::changeInterval(int interval)
 {
     if(sender()){

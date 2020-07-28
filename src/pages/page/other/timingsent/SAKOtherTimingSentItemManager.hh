@@ -53,6 +53,7 @@ private:
     bool contains(quint64 paraID);
     void outputMessage(QString msg, bool isError = false);
     void initializingItem(SAKOtherTimingSentItem *item);
+    SAKOtherTimingSentItem *sender2item(QObject *sender);
     // update record
     void changeInterval(int interval);
     void changeFormat(int format);
