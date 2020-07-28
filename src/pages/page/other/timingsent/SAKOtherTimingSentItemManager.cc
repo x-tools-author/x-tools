@@ -136,49 +136,41 @@ SAKOtherTimingSentItem *SAKOtherTimingSentItemManager::sender2item(QObject *send
 
 void SAKOtherTimingSentItemManager::changeInterval(int interval)
 {
-    if(sender()){
-        if (sender()->inherits("SAKOtherTimingSentItem")){
-            SAKOtherTimingSentItem *item = qobject_cast<SAKOtherTimingSentItem*>(sender());
-            SAKDebugPageCommonDatabaseInterface::TimingSendingTable table;
-            quint64 id = item->itemID();
-            mDatabaseInterface->updateRecord(mTableName, table.columns.interval, QVariant::fromValue(interval), id, false);
-        }
+    SAKOtherTimingSentItem *item = sender2item(sender());
+    if (item){
+        SAKDebugPageCommonDatabaseInterface::TimingSendingTable table;
+        quint64 id = item->itemID();
+        mDatabaseInterface->updateRecord(mTableName, table.columns.interval, QVariant::fromValue(interval), id, false);
     }
 }
 
 void SAKOtherTimingSentItemManager::changeFormat(int format)
 {
-    if(sender()){
-        if (sender()->inherits("SAKOtherTimingSentItem")){
-            SAKOtherTimingSentItem *item = qobject_cast<SAKOtherTimingSentItem*>(sender());
-            SAKDebugPageCommonDatabaseInterface::TimingSendingTable table;
-            quint64 id = item->itemID();
-            mDatabaseInterface->updateRecord(mTableName, table.columns.format, QVariant::fromValue(format), id, false);
-        }
+    SAKOtherTimingSentItem *item = sender2item(sender());
+    if (item){
+        SAKDebugPageCommonDatabaseInterface::TimingSendingTable table;
+        quint64 id = item->itemID();
+        mDatabaseInterface->updateRecord(mTableName, table.columns.format, QVariant::fromValue(format), id, false);
     }
 }
 
 void SAKOtherTimingSentItemManager::changeDescription(QString description)
 {
-    if(sender()){
-        if (sender()->inherits("SAKOtherTimingSentItem")){
-            SAKOtherTimingSentItem *item = qobject_cast<SAKOtherTimingSentItem*>(sender());
-            SAKDebugPageCommonDatabaseInterface::TimingSendingTable table;
-            quint64 id = item->itemID();
-            mDatabaseInterface->updateRecord(mTableName, table.columns.description, QVariant::fromValue(description), id, true);
-        }
+    SAKOtherTimingSentItem *item = sender2item(sender());
+    if (item){
+        SAKDebugPageCommonDatabaseInterface::TimingSendingTable table;
+        quint64 id = item->itemID();
+        mDatabaseInterface->updateRecord(mTableName, table.columns.description, QVariant::fromValue(description), id, true);
     }
 }
 
 void SAKOtherTimingSentItemManager::changeInputText(QString text)
 {
-    if(sender()){
-        if (sender()->inherits("SAKOtherTimingSentItem")){
-            SAKOtherTimingSentItem *item = qobject_cast<SAKOtherTimingSentItem*>(sender());
-            SAKDebugPageCommonDatabaseInterface::TimingSendingTable table;
-            quint64 id = item->itemID();
-            mDatabaseInterface->updateRecord(mTableName, table.columns.text, QVariant::fromValue(text), id, true);
-        }
+    SAKOtherTimingSentItem *item = sender2item(sender());
+    if (item){
+        SAKDebugPageCommonDatabaseInterface::TimingSendingTable table;
+        quint64 id = item->itemID();
+        mDatabaseInterface->updateRecord(mTableName, table.columns.text, QVariant::fromValue(text), id, true);
     }
 }
 
