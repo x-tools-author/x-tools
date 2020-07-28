@@ -42,7 +42,7 @@ SAKOtherAutoResponseItemManager::SAKOtherAutoResponseItemManager(SAKDebugPage *d
     mMsgLabel = mUi->msgLabel;
     mTableName = SAKDataStruct::autoResponseTableName(mDebugPage->pageType());
 
-    setWindowTitle(tr("Auto response settings"));
+//    setWindowTitle(tr("Auto response settings"));
     mDatabaseInterface = SAKDebugPageCommonDatabaseInterface::instance();
 
     mClearMessageInfoTimer.setInterval(SAK_CLEAR_MESSAGE_INTERVAL);
