@@ -20,12 +20,11 @@
 #include <QPushButton>
 #include <QRegExpValidator>
 
-class SAKDebugPage;
-
 namespace Ui {
     class SAKOtherTimingSentItem;
 }
-
+class SAKDebugPage;
+/// @brief Timing sent item
 class SAKOtherTimingSentItem:public QWidget
 {
     Q_OBJECT
