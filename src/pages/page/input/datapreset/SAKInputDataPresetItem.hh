@@ -61,6 +61,7 @@ public:
     int itemTextFromat();
 private:
     quint64 mItemID;
+    bool mInitializing;
 private:
     void initializingItem();
 private:

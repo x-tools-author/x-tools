@@ -23,10 +23,12 @@
 
 SAKInputDataPresetItem::SAKInputDataPresetItem(QWidget *parent)
     :QWidget(parent)
+    ,mInitializing(true)
     ,mUi(new Ui::SAKInputDataPresetItem)
 {
     initializingItem();
     mItemID = QDateTime::currentMSecsSinceEpoch();
+    mInitializing = false;
 }
 
 SAKInputDataPresetItem::SAKInputDataPresetItem(quint64 id,
@@ -36,12 +38,14 @@ SAKInputDataPresetItem::SAKInputDataPresetItem(quint64 id,
                                                QWidget *parent)
     :QWidget(parent)
     ,mItemID(id)
+    ,mInitializing(true)
     ,mUi(new Ui::SAKInputDataPresetItem)
 {
     initializingItem();
     mTextFormatComboBox->setCurrentIndex(format);
     mDescriptionLineEdit->setText(description);
     mInputTextEdit->setText(text);
+    mInitializing = false;
 }
 
 SAKInputDataPresetItem::~SAKInputDataPresetItem()
@@ -81,23 +85,29 @@ void SAKInputDataPresetItem::initializingItem()
 
 void SAKInputDataPresetItem::on_textFormatComboBox_currentTextChanged(const QString &text)
 {
-    mInputTextEdit->clear();
+    if (!mInitializing){
+        mInputTextEdit->clear();
 
-    Q_UNUSED(text);
-    int format = mTextFormatComboBox->currentData().toInt();
-    emit formatChanged(format);
+        Q_UNUSED(text);
+        int format = mTextFormatComboBox->currentData().toInt();
+        emit formatChanged(format);
+    }
 }
 
 void SAKInputDataPresetItem::on_descriptionLineEdit_textChanged(const QString &text)
 {
-    emit descriptionChanged(text);
+    if (!mInitializing){
+        emit descriptionChanged(text);
+    }
 }
 
 void SAKInputDataPresetItem::on_inputTextEdit_textChanged()
 {
-    QString text = mInputTextEdit->toPlainText();
-    int format = mTextFormatComboBox->currentData().toInt();
-    SAKDebugPageInputController::formattingInputText(mInputTextEdit, format);
+    if (!mInitializing){
+        QString text = mInputTextEdit->toPlainText();
+        int format = mTextFormatComboBox->currentData().toInt();
+        SAKDebugPageInputController::formattingInputText(mInputTextEdit, format);
 
-    emit textChanged(text);
+        emit textChanged(text);
+    }
 }
