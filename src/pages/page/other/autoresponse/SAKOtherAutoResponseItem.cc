@@ -21,14 +21,14 @@ SAKOtherAutoResponseItem::SAKOtherAutoResponseItem(SAKDebugPage *debugPage, QWid
     :QWidget(parent)
     ,mForbiddenAllAutoResponse(false)
     ,mDebugPage(debugPage)
-    ,isInitializing(true)
+    ,mIsInitializing(true)
     ,mUi(new Ui::SAKOtherAutoResponseItem)
 {
     commonInitializing();
     mID = QDateTime::currentMSecsSinceEpoch();
     mDescriptionLineEdit->setText(QString::number(mID));
     initDelayWritingTimer();
-    isInitializing = false;
+    mIsInitializing = false;
 }
 
 SAKOtherAutoResponseItem::SAKOtherAutoResponseItem(SAKDebugPage *debugPage,
@@ -47,21 +47,21 @@ SAKOtherAutoResponseItem::SAKOtherAutoResponseItem(SAKDebugPage *debugPage,
     ,mForbiddenAllAutoResponse(false)
     ,mDebugPage(debugPage)
     ,mID(id)
-    ,isInitializing(true)
+    ,mIsInitializing(true)
     ,mUi(new Ui::SAKOtherAutoResponseItem)
 {
     commonInitializing();
     mDescriptionLineEdit->setText(name);
     mReferenceLineEdit->setText(referenceData);
     mResponseLineEdit->setText(responseData);
-    enableCheckBox->setChecked(enabled);
+    mEnableCheckBox->setChecked(enabled);
     mReferenceDataFromatComboBox->setCurrentIndex(referenceFormat);
     mResponseDataFormatComboBox->setCurrentIndex(responseFormat);
     mOptionComboBox->setCurrentIndex(option);
     mDelayResponseCheckBox->setChecked(delay);
     mDelayResponseLineEdit->setText(QString::number(interval));
     initDelayWritingTimer();
-    isInitializing = false;
+    mIsInitializing = false;
 }
 
 SAKOtherAutoResponseItem::~SAKOtherAutoResponseItem()
@@ -96,7 +96,7 @@ QString SAKOtherAutoResponseItem::itemResponseText()
 
 bool SAKOtherAutoResponseItem::itemEnable()
 {
-    return enableCheckBox->isChecked();
+    return mEnableCheckBox->isChecked();
 }
 
 quint32 SAKOtherAutoResponseItem::itemReferenceFormat()
@@ -160,7 +160,7 @@ void SAKOtherAutoResponseItem::bytesRead(QByteArray bytes)
         return;
     }
 
-    if (!enableCheckBox->isChecked()){
+    if (!mEnableCheckBox->isChecked()){
         return;
     }
 
@@ -264,7 +264,7 @@ void SAKOtherAutoResponseItem::commonInitializing()
     mDescriptionLineEdit = mUi->descriptionLineEdit;
     mReferenceLineEdit = mUi->referenceLineEdit;
     mResponseLineEdit = mUi->responseLineEdit;
-    enableCheckBox = mUi->enableCheckBox;
+    mEnableCheckBox = mUi->enableCheckBox;
     mOptionComboBox = mUi->optionComboBox;
     mReferenceDataFromatComboBox = mUi->referenceDataFromatComboBox;
     mResponseDataFormatComboBox  = mUi->responseDataFormatComboBox;

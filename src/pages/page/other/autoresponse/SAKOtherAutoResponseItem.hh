@@ -63,7 +63,7 @@ private:
     bool mForbiddenAllAutoResponse;
     SAKDebugPage *mDebugPage;
     quint64 mID;
-    bool isInitializing;
+    bool mIsInitializing;
     // delay response
     struct DelayWritingInfo{
         quint64 expectedTimestamp;
@@ -84,7 +84,7 @@ private:
     QLineEdit *mDescriptionLineEdit;
     QLineEdit *mReferenceLineEdit;
     QLineEdit *mResponseLineEdit;
-    QCheckBox *enableCheckBox;
+    QCheckBox *mEnableCheckBox;
     QComboBox *mOptionComboBox;
     QComboBox *mReferenceDataFromatComboBox;
     QComboBox *mResponseDataFormatComboBox;
