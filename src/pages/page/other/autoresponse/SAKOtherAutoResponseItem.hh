@@ -59,6 +59,8 @@ public:
     quint32 itemReferenceFormat();
     quint32 itemResponseFormat();
     quint32 itemOption();
+    bool delay();
+    quint32 interval();
 private:
     bool mForbiddenAllAutoResponse;
     SAKDebugPage *mDebugPage;

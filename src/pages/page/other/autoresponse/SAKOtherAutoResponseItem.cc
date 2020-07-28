@@ -114,6 +114,16 @@ quint32 SAKOtherAutoResponseItem::itemOption()
     return mOptionComboBox->currentIndex();
 }
 
+bool SAKOtherAutoResponseItem::delay()
+{
+    return mDelayResponseCheckBox->isChecked();
+}
+
+quint32 SAKOtherAutoResponseItem::interval()
+{
+    return mDescriptionLineEdit->text().toInt();
+}
+
 void SAKOtherAutoResponseItem::setLineEditFormat(QLineEdit *lineEdit, int format)
 {
     QRegExp regExpBin("([01][01][01][01][01][01][01][01][ ])*");
