@@ -24,6 +24,7 @@ namespace Ui {
 }
 
 class SAKDebugPage;
+class SAKOtherAutoResponseItem;
 class SAKDebugPageCommonDatabaseInterface;
 /// @brief Auto response item manager
 class SAKOtherAutoResponseItemManager:public QWidget
@@ -49,11 +50,23 @@ private:
     QTimer mClearMessageInfoTimer;
     SAKDebugPage *mDebugPage;
     SAKDebugPageCommonDatabaseInterface *mDatabaseInterface;
+    QString mTableName;
 private:
     void outputMessage(QString msg, bool isInfo);
     void clearMessage();
     void readInRecord();
     bool contains(quint64 paraID);
+    // update record
+    void changeDescription(const QString &description);
+    void changeReferenceText(const QString &text);
+    void changeResponseText(const QString &text);
+    void changeEnable(bool enable);
+    void changeOption(int option);
+    void changeReferenceFormat(int format);
+    void changeResponseFromat(int format);
+    void changeDelay(bool delay);
+    void changeInterval(int interval);
+    SAKOtherAutoResponseItem *sender2item(QObject *sender);
 private:
     Ui::SAKOtherAutoResponseItemManager *mUi;
     QListWidget *mListWidget;

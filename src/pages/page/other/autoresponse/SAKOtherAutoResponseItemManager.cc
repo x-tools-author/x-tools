@@ -40,6 +40,7 @@ SAKOtherAutoResponseItemManager::SAKOtherAutoResponseItemManager(SAKDebugPage *d
     mOutportPushButton = mUi->outportPushButton;
     mImportPushButton = mUi->importPushButton;
     mMsgLabel = mUi->msgLabel;
+    mTableName = SAKDataStruct::autoResponseTableName(mDebugPage->pageType());
 
     setWindowTitle(tr("Auto response settings"));
     mDatabaseInterface = SAKDebugPageCommonDatabaseInterface::instance();
@@ -118,6 +119,107 @@ bool SAKOtherAutoResponseItemManager::contains(quint64 paraID)
     }
 
     return contain;
+}
+
+void SAKOtherAutoResponseItemManager::changeDescription(const QString &description)
+{
+    SAKOtherAutoResponseItem *item = sender2item(sender());
+    if (item){
+        SAKDebugPageCommonDatabaseInterface::AutoResponseTable table;
+        quint64 id = item->itemID();
+        mDatabaseInterface->updateRecord(mTableName, table.columns.description, QVariant::fromValue(description), id, true);
+    }
+}
+
+void SAKOtherAutoResponseItemManager::changeReferenceText(const QString &text)
+{
+    SAKOtherAutoResponseItem *item = sender2item(sender());
+    if (item){
+        SAKDebugPageCommonDatabaseInterface::AutoResponseTable table;
+        quint64 id = item->itemID();
+        mDatabaseInterface->updateRecord(mTableName, table.columns.referenceData, QVariant::fromValue(text), id, true);
+    }
+}
+
+void SAKOtherAutoResponseItemManager::changeResponseText(const QString &text)
+{
+    SAKOtherAutoResponseItem *item = sender2item(sender());
+    if (item){
+        SAKDebugPageCommonDatabaseInterface::AutoResponseTable table;
+        quint64 id = item->itemID();
+        mDatabaseInterface->updateRecord(mTableName, table.columns.responseData, QVariant::fromValue(text), id, true);
+    }
+}
+
+void SAKOtherAutoResponseItemManager::changeEnable(bool enable)
+{
+    SAKOtherAutoResponseItem *item = sender2item(sender());
+    if (item){
+        SAKDebugPageCommonDatabaseInterface::AutoResponseTable table;
+        quint64 id = item->itemID();
+        mDatabaseInterface->updateRecord(mTableName, table.columns.enable, QVariant::fromValue(enable), id, false);
+    }
+}
+
+void SAKOtherAutoResponseItemManager::changeOption(int option)
+{
+    SAKOtherAutoResponseItem *item = sender2item(sender());
+    if (item){
+        SAKDebugPageCommonDatabaseInterface::AutoResponseTable table;
+        quint64 id = item->itemID();
+        mDatabaseInterface->updateRecord(mTableName, table.columns.option, QVariant::fromValue(option), id, false);
+    }
+}
+
+void SAKOtherAutoResponseItemManager::changeReferenceFormat(int format)
+{
+    SAKOtherAutoResponseItem *item = sender2item(sender());
+    if (item){
+        SAKDebugPageCommonDatabaseInterface::AutoResponseTable table;
+        quint64 id = item->itemID();
+        mDatabaseInterface->updateRecord(mTableName, table.columns.referenceFormat, QVariant::fromValue(format), id, false);
+    }
+}
+
+void SAKOtherAutoResponseItemManager::changeResponseFromat(int format)
+{
+    SAKOtherAutoResponseItem *item = sender2item(sender());
+    if (item){
+        SAKDebugPageCommonDatabaseInterface::AutoResponseTable table;
+        quint64 id = item->itemID();
+        mDatabaseInterface->updateRecord(mTableName, table.columns.responseFormat, QVariant::fromValue(format), id, false);
+    }
+}
+
+void SAKOtherAutoResponseItemManager::changeDelay(bool delay)
+{
+    SAKOtherAutoResponseItem *item = sender2item(sender());
+    if (item){
+        SAKDebugPageCommonDatabaseInterface::AutoResponseTable table;
+        quint64 id = item->itemID();
+        mDatabaseInterface->updateRecord(mTableName, table.columns.delay, QVariant::fromValue(delay), id, false);
+    }
+}
+
+void SAKOtherAutoResponseItemManager::changeInterval(int interval)
+{
+    SAKOtherAutoResponseItem *item = sender2item(sender());
+    if (item){
+        SAKDebugPageCommonDatabaseInterface::AutoResponseTable table;
+        quint64 id = item->itemID();
+        mDatabaseInterface->updateRecord(mTableName, table.columns.interval, QVariant::fromValue(interval), id, false);
+    }
+}
+
+SAKOtherAutoResponseItem *SAKOtherAutoResponseItemManager::sender2item(QObject *sender)
+{
+    SAKOtherAutoResponseItem *item = Q_NULLPTR;
+    if (sender){
+        if (sender->inherits("SAKOtherAutoResponseItem")){
+            item = qobject_cast<SAKOtherAutoResponseItem*>(sender);
+        }
+    }
+    return item;
 }
 
 void SAKOtherAutoResponseItemManager::on_forbidAllCheckBox_clicked()
