@@ -74,20 +74,6 @@ public:
     void insertAutoResponseItem(QString tableName, SAKDataStruct::SAKStructAutoResponseItem item);
 
     /**
-     * @brief deleteAutoResponseItem 删除自动回复条目
-     * @param tableName 表格名称
-     * @param item 自动回复信息（参数中ID字段有效即可）
-     */
-    void deleteAutoResponseItem(QString tableName, SAKDataStruct::SAKStructAutoResponseItem item);
-
-    /**
-     * @brief updateAutoResponseItem 更新自动回复条目
-     * @param tableName 表格名称
-     * @param item 自动回复信息
-     */
-    void updateAutoResponseItem(QString tableName, SAKDataStruct::SAKStructAutoResponseItem item);
-
-    /**
      * @brief selectAutoResponseItem 从数据库中读出所有自动回复条目
      * @param tableName 表格名称
      * @return 自动回复条目参数信息列表

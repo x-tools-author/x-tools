@@ -75,38 +75,6 @@ void SAKDebugPageCommonDatabaseInterface::insertAutoResponseItem(QString tableNa
     }
 }
 
-void SAKDebugPageCommonDatabaseInterface::deleteAutoResponseItem(QString tableName, SAKDataStruct::SAKStructAutoResponseItem item)
-{
-    deleteRecord(tableName, item.id);
-}
-
-void SAKDebugPageCommonDatabaseInterface::updateAutoResponseItem(QString tableName, SAKDataStruct::SAKStructAutoResponseItem item)
-{
-    AutoResponseTable table = tableNmaeToAutoResponseTable(tableName);
-    bool ret = sakDatabaseQuery.exec(QString("UPDATE %1 SET %2=%3,%4='%5',%6='%7',%8='%9',%10=%11,%12=%13,%14=%15,%16=%17 WHERE ID=%18")
-                                     .arg(table.tableName)
-                                     .arg(table.columns.id)
-                                     .arg(item.id)
-                                     .arg(table.columns.name)
-                                     .arg(item.name)
-                                     .arg(table.columns.referenceData)
-                                     .arg(item.referenceData)
-                                     .arg(table.columns.responseData)
-                                     .arg(item.responseData)
-                                     .arg(table.columns.enable)
-                                     .arg(item.enable)
-                                     .arg(table.columns.referenceFormat)
-                                     .arg(item.referenceFormat)
-                                     .arg(table.columns.responseFormat)
-                                     .arg(item.responseFormat)
-                                     .arg(table.columns.option)
-                                     .arg(item.option)
-                                     .arg(item.id));
-    if (!ret){
-        qWarning() << __FUNCTION__ << "Update record form " << table.tableName << " table failed: " << sakDatabaseQuery.lastError().text();
-    }
-}
-
 QList<SAKDataStruct::SAKStructAutoResponseItem> SAKDebugPageCommonDatabaseInterface::selectAutoResponseItem(QString tableName)
 {
     AutoResponseTable table = tableNmaeToAutoResponseTable(tableName);
