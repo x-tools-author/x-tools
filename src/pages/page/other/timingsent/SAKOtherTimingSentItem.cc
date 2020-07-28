@@ -79,12 +79,14 @@ QString SAKOtherTimingSentItem::itemText()
 
 void SAKOtherTimingSentItem::write()
 {
+    mWriteTimer.stop();
     QString data = mInputDataTextEdit->toPlainText();
 
     if (!data.isEmpty()){
         int textFormat = this->mTextFormatComboBox->currentData().toInt();
         mDebugPage->writeRawData(data, textFormat);
     }
+    mWriteTimer.start();
 }
 
 void SAKOtherTimingSentItem::commonInitializing()
@@ -114,7 +116,7 @@ void SAKOtherTimingSentItem::on_enableCheckBox_clicked()
 void SAKOtherTimingSentItem::on_intervalLineEdit_textChanged(const QString &text)
 {
     int interval = text.toInt();
-    mWriteTimer.setInterval(interval == 0 ? 1000 : interval);
+    mWriteTimer.setInterval(interval > 20 ? 20 : interval);
 }
 
 void SAKOtherTimingSentItem::on_textFormatComboBox_currentTextChanged(const QString &text)
