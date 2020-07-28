@@ -319,47 +319,74 @@ void SAKOtherAutoResponseItem::delayToWritBytes()
 
 void SAKOtherAutoResponseItem::on_descriptionLineEdit_textChanged(const QString &text)
 {
-
+    if (!mIsInitializing){
+        emit descriptionChanged(text);
+    }
 }
 
 void SAKOtherAutoResponseItem::on_referenceLineEdit_textChanged(const QString &text)
 {
-
+    if (!mIsInitializing){
+        emit referenceTextChanged(text);
+    }
 }
 
 void SAKOtherAutoResponseItem::on_responseLineEdit_textChanged(const QString &text)
 {
-
+    if (!mIsInitializing){
+        emit responseTextChanged(text);
+    }
 }
 
 void SAKOtherAutoResponseItem::on_enableCheckBox_clicked()
 {
-
+    if (!mIsInitializing){
+        emit enableChanged(mEnableCheckBox->isChecked());
+    }
 }
 
 void SAKOtherAutoResponseItem::on_optionComboBox_currentIndexChanged(const QString &text)
 {
-
+    if (!mIsInitializing){
+        Q_UNUSED(text);
+        int option = mOptionComboBox->currentData().toInt();
+        emit optionChanged(option);
+    }
 }
 
 void SAKOtherAutoResponseItem::on_referenceDataFromatComboBox_currentIndexChanged(const QString &text)
 {
     Q_UNUSED(text);
     setLineEditFormat(mReferenceLineEdit, mReferenceDataFromatComboBox->currentData().toInt());
+
+    if (!mIsInitializing){
+        int format = mReferenceDataFromatComboBox->currentData().toInt();
+        emit referenceFormatChanged(format);
+    }
 }
 
 void SAKOtherAutoResponseItem::on_responseDataFormatComboBox_currentIndexChanged(const QString &text)
 {
     Q_UNUSED(text);
     setLineEditFormat(mResponseLineEdit, mResponseDataFormatComboBox->currentData().toInt());
+
+    if (!mIsInitializing){
+        int format = mResponseDataFormatComboBox->currentData().toInt();
+        emit responseFromatChanged(format);
+    }
 }
 
 void SAKOtherAutoResponseItem::on_delayResponseCheckBox_clicked()
 {
-
+    if (!mIsInitializing){
+        emit delayChanged(mDelayResponseCheckBox->isChecked());
+    }
 }
 
 void SAKOtherAutoResponseItem::on_delayResponseLineEdit_textChanged(const QString &text)
 {
-
+    if (!mIsInitializing){
+        int interval = text.toInt();
+        emit intervalChanged(interval);
+    }
 }

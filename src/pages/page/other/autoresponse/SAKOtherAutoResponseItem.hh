@@ -100,6 +100,16 @@ private slots:
     void on_responseDataFormatComboBox_currentIndexChanged(const QString &text);
     void on_delayResponseCheckBox_clicked();
     void on_delayResponseLineEdit_textChanged(const QString &text);
+signals:
+    void descriptionChanged(const QString &description);
+    void referenceTextChanged(const QString &text);
+    void responseTextChanged(const QString &text);
+    void enableChanged(bool enable);
+    void optionChanged(int option);
+    void referenceFormatChanged(int format);
+    void responseFromatChanged(int format);
+    void delayChanged(bool delay);
+    void intervalChanged(int interval);
 };
 
 #endif
