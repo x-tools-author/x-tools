@@ -189,7 +189,7 @@ void SAKInputDataPresetItemManager::on_addPushButton_clicked()
 
 void SAKInputDataPresetItemManager::on_outportPushButton_clicked()
 {
-    /// @brief 从数据库中读入记录
+    // Read in records from database
     QList<SAKDataStruct::SAKStructPresettingDataItem> itemList = mDatabaseInterface->selectDataPresetItem(mTableName);
     if (itemList.isEmpty()){
         return;
@@ -208,17 +208,17 @@ void SAKInputDataPresetItemManager::on_outportPushButton_clicked()
     QJsonDocument jsonDoc;
     jsonDoc.setArray(jsonArray);
 
-    /// @brief 打开文件，导出的数据将保存至该文件
+    // Open file
     QString defaultName = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
     defaultName.append(QString("/"));
     defaultName.append(QDateTime::currentDateTime().toString("yyyyMMddhhmmss"));
     defaultName.append(".json");
-    QString fileName = QFileDialog::getSaveFileName(this, tr("导出数据"), defaultName, QString("json (*.json)"));
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Outport data"), defaultName, QString("json (*.json)"));
     if (fileName.isEmpty()){
         return;
     }
 
-    /// @brief 保存至文件
+    // Write data to file
     QFile file(fileName);
     if (file.open(QFile::ReadWrite)){
         file.write(jsonDoc.toJson());
@@ -231,7 +231,7 @@ void SAKInputDataPresetItemManager::on_outportPushButton_clicked()
 void SAKInputDataPresetItemManager::on_importPushButton_clicked()
 {
     QString defaultPath = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
-    QString fileName = QFileDialog::getOpenFileName(this, tr("导出数据"), defaultPath, QString("json (*.json)"));
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Import data"), defaultPath, QString("json (*.json)"));
     QFile file(fileName);
     if (file.open(QFile::ReadWrite)){
         QByteArray array = file.readAll();
