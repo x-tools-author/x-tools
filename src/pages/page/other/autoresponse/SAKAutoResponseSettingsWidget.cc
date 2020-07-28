@@ -61,17 +61,17 @@ void innerCreateItem(SAKDataStruct::SAKStructAutoResponseItem &var, SAKDebugPage
     QListWidgetItem *item = new QListWidgetItem(listWidget);
     listWidget->addItem(item);
     SAKOtherAutoResponseItem *itemWidget = new SAKOtherAutoResponseItem(debugPage,
-                                                                          var.id,
-                                                                          var.name,
-                                                                          var.referenceData,
-                                                                          var.responseData,
-                                                                          var.enable,
-                                                                          var.referenceFormat,
-                                                                          var.responseFormat,
-                                                                          var.option,
+                                                                        var.id,
+                                                                        var.name,
+                                                                        var.referenceData,
+                                                                        var.responseData,
+                                                                        var.enable,
+                                                                        var.referenceFormat,
+                                                                        var.responseFormat,
+                                                                        var.option,
                                                                         var.delay,
                                                                         var.interval,
-                                                                          listWidget);
+                                                                        listWidget);
     item->setSizeHint(QSize(itemWidget->width(), itemWidget->height()));
     listWidget->setItemWidget(item, itemWidget);
 }
