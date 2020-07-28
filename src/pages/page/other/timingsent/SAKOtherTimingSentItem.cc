@@ -27,12 +27,12 @@ SAKOtherTimingSentItem::SAKOtherTimingSentItem(SAKDebugPage *debugPage, QWidget 
 }
 
 SAKOtherTimingSentItem::SAKOtherTimingSentItem(SAKDebugPage *debugPage,
-                                                       quint64 id,
-                                                       quint32 interval,
-                                                       quint32 format,
-                                                       QString comment,
-                                                       QString data,
-                                                       QWidget *parent)
+                                               quint64 id,
+                                               quint32 interval,
+                                               quint32 format,
+                                               QString comment,
+                                               QString data,
+                                               QWidget *parent)
     :QWidget(parent)
     ,debugPage(debugPage)
     ,id(id)
