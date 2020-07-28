@@ -21,7 +21,7 @@
 SAKOtherTimingSentItem::SAKOtherTimingSentItem(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget(parent)
     ,mDebugPage(debugPage)
-    ,ui(new Ui::SAKOtherTimingSentItem)
+    ,mUi(new Ui::SAKOtherTimingSentItem)
 {
     commonInitializing();
     mID = QDateTime::currentMSecsSinceEpoch();
@@ -37,19 +37,19 @@ SAKOtherTimingSentItem::SAKOtherTimingSentItem(SAKDebugPage *debugPage,
     :QWidget(parent)
     ,mDebugPage(debugPage)
     ,mID(id)
-    ,ui(new Ui::SAKOtherTimingSentItem)
+    ,mUi(new Ui::SAKOtherTimingSentItem)
 {
     commonInitializing();
 
-    intervalLineEdit->setText(QString::number(interval));
-    textFormatComboBox->setCurrentIndex(format);
-    descriptionLineEdit->setText(comment);
-    inputDataTextEdit->setText(data);
+    mIntervalLineEdit->setText(QString::number(interval));
+    mTextFormatComboBox->setCurrentIndex(format);
+    mDescriptionLineEdit->setText(comment);
+    mInputDataTextEdit->setText(data);
 }
 
 SAKOtherTimingSentItem::~SAKOtherTimingSentItem()
 {
-    delete ui;
+    delete mUi;
 }
 
 quint64 SAKOtherTimingSentItem::itemID()
@@ -59,55 +59,55 @@ quint64 SAKOtherTimingSentItem::itemID()
 
 quint32 SAKOtherTimingSentItem::itemInterval()
 {
-    return intervalLineEdit->text().toUInt();
+    return mIntervalLineEdit->text().toUInt();
 }
 
 quint32 SAKOtherTimingSentItem::itemFormat()
 {
-    return textFormatComboBox->currentIndex();
+    return mTextFormatComboBox->currentIndex();
 }
 
 QString SAKOtherTimingSentItem::itemDescription()
 {
-    return descriptionLineEdit->text();
+    return mDescriptionLineEdit->text();
 }
 
 QString SAKOtherTimingSentItem::itemText()
 {
-    return inputDataTextEdit->toPlainText();
+    return mInputDataTextEdit->toPlainText();
 }
 
 void SAKOtherTimingSentItem::write()
 {
-    QString data = inputDataTextEdit->toPlainText();
+    QString data = mInputDataTextEdit->toPlainText();
 
     if (!data.isEmpty()){
-        int textFormat = this->textFormatComboBox->currentData().toInt();
+        int textFormat = this->mTextFormatComboBox->currentData().toInt();
         mDebugPage->writeRawData(data, textFormat);
     }
 }
 
 void SAKOtherTimingSentItem::commonInitializing()
 {
-    ui->setupUi(this);
-    databaseInterface = SAKDebugPageCommonDatabaseInterface::instance();
+    mUi->setupUi(this);
+    mDatabaseInterface = SAKDebugPageCommonDatabaseInterface::instance();
 
-    enableCheckBox = ui->enableCheckBox;
-    intervalLineEdit = ui->intervalLineEdit;
-    textFormatComboBox = ui->textFormatComboBox;
-    descriptionLineEdit = ui->descriptionLineEdit;
-    inputDataTextEdit = ui->inputDataTextEdit;
+    mEnableCheckBox = mUi->enableCheckBox;
+    mIntervalLineEdit = mUi->intervalLineEdit;
+    mTextFormatComboBox = mUi->textFormatComboBox;
+    mDescriptionLineEdit = mUi->descriptionLineEdit;
+    mInputDataTextEdit = mUi->inputDataTextEdit;
 
-    mWriteTimer.setInterval(intervalLineEdit->text().toInt());
+    mWriteTimer.setInterval(mIntervalLineEdit->text().toInt());
     connect(&mWriteTimer, &QTimer::timeout, this, &SAKOtherTimingSentItem::write);
 
-    SAKGlobal::initInputTextFormatComboBox(textFormatComboBox);
+    SAKGlobal::initInputTextFormatComboBox(mTextFormatComboBox);
 }
 
 void SAKOtherTimingSentItem::on_enableCheckBox_clicked()
 {
-    if (enableCheckBox){
-        enableCheckBox->isChecked() ? mWriteTimer.start() : mWriteTimer.stop();
+    if (mEnableCheckBox){
+        mEnableCheckBox->isChecked() ? mWriteTimer.start() : mWriteTimer.stop();
     }
 }
 

@@ -49,17 +49,17 @@ private:
     SAKDebugPage *mDebugPage;
     quint64 mID;
     QTimer mWriteTimer;
-    SAKDebugPageCommonDatabaseInterface *databaseInterface;
+    SAKDebugPageCommonDatabaseInterface *mDatabaseInterface;
 private:
     void write();
     void commonInitializing();
 private:
-    Ui::SAKOtherTimingSentItem *ui;
-    QCheckBox *enableCheckBox;
-    QLineEdit *intervalLineEdit;
-    QComboBox *textFormatComboBox;
-    QLineEdit *descriptionLineEdit;
-    QTextEdit *inputDataTextEdit;
+    Ui::SAKOtherTimingSentItem *mUi;
+    QCheckBox *mEnableCheckBox;
+    QLineEdit *mIntervalLineEdit;
+    QComboBox *mTextFormatComboBox;
+    QLineEdit *mDescriptionLineEdit;
+    QTextEdit *mInputDataTextEdit;
 private slots:
     void on_enableCheckBox_clicked();
     void on_intervalLineEdit_textChanged(const QString &text);
