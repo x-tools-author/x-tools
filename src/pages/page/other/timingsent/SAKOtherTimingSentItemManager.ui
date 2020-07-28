@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>定时发送</string>
+   <string>Timing Sent</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0" colspan="6">
@@ -20,28 +20,28 @@
    <item row="1" column="1">
     <widget class="QPushButton" name="outportPushButton">
      <property name="text">
-      <string>导出</string>
+      <string>Outport</string>
      </property>
     </widget>
    </item>
    <item row="1" column="4">
     <widget class="QPushButton" name="deletePushButton">
      <property name="text">
-      <string>删除</string>
+      <string>Delete</string>
      </property>
     </widget>
    </item>
    <item row="1" column="2">
     <widget class="QPushButton" name="importPushButton">
      <property name="text">
-      <string>导入</string>
+      <string>Import</string>
      </property>
     </widget>
    </item>
    <item row="1" column="5">
     <widget class="QPushButton" name="addPushButton">
      <property name="text">
-      <string>添加</string>
+      <string>Add</string>
      </property>
     </widget>
    </item>
