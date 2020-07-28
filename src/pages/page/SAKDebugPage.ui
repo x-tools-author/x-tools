@@ -539,7 +539,7 @@
 }</string>
      </property>
      <property name="text">
-      <string>Data input</string>
+      <string>Data output</string>
      </property>
     </widget>
    </item>
