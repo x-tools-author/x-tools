@@ -20,7 +20,7 @@
 #include <QRegExpValidator>
 
 namespace Ui {
-    class SAKAutoResponseItemWidget;
+    class SAKOtherAutoResponseItem;
 }
 
 class SAKDebugPage;
@@ -76,7 +76,7 @@ private:
     void initDelayWritingTimer();
     void delayToWritBytes();
 private:
-    Ui::SAKAutoResponseItemWidget *ui;
+    Ui::SAKOtherAutoResponseItem *ui;
     QLineEdit *remarkLineEdit;
     QLineEdit *referenceLineEdit;
     QLineEdit *responseLineEdit;

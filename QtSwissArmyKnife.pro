@@ -145,8 +145,8 @@ FORMS += \
     src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui \
     src/pages/page/input/datapreset/SAKInputDataPresetItem.ui \
     src/pages/page/input/datapreset/SAKInputDataPresetItemManager.ui \
-    src/pages/page/other/autoresponse/SAKAutoResponseItemWidget.ui \
     src/pages/page/other/autoresponse/SAKAutoResponseSettingsWidget.ui \
+    src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.ui \
     src/pages/page/other/highlight/SAKHighlightSettingsWidget.ui \
     src/pages/page/other/more/SAKMoreSettingsWidget.ui \
     src/pages/page/other/more/generator/SAKWaveformGeneratorWidget.ui \

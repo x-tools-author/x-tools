@@ -15,13 +15,13 @@
 #include "SAKDataStruct.hh"
 #include "SAKOtherAutoResponseItem.hh"
 
-#include "ui_SAKAutoResponseItemWidget.h"
+#include "ui_SAKOtherAutoResponseItem.h"
 
 SAKOtherAutoResponseItem::SAKOtherAutoResponseItem(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget(parent)
     ,forbiddenAllAutoResponse(false)
     ,debugPage(debugPage)
-    ,ui(new Ui::SAKAutoResponseItemWidget)
+    ,ui(new Ui::SAKOtherAutoResponseItem)
 {
     initUi();
     id = QDateTime::currentMSecsSinceEpoch();
@@ -43,7 +43,7 @@ SAKOtherAutoResponseItem::SAKOtherAutoResponseItem(SAKDebugPage *debugPage,
     ,forbiddenAllAutoResponse(false)
     ,debugPage(debugPage)
     ,id(id)
-    ,ui(new Ui::SAKAutoResponseItemWidget)
+    ,ui(new Ui::SAKOtherAutoResponseItem)
 {
     initUi();
     remarkLineEdit->setText(name);
