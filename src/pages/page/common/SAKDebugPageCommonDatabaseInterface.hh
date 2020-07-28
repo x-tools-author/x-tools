@@ -99,28 +99,28 @@ public:
      * @param tableName 数据表名称
      * @param item 数据信息
      */
-    void insertTimingSendingItem(QString tableName, SAKDataStruct::SAKStructTimingSendingItem item);
+    void insertTimingSendingItem(QString tableName, SAKDataStruct::SAKStructTimingSentItem item);
 
     /**
      * @brief deleteTimingSendingItem 删除定时发送条目
      * @param tableName 定时发送条目数据表名称
      * @param item 数据信息
      */
-    void deleteTimingSendingItem(QString tableName, SAKDataStruct::SAKStructTimingSendingItem item);
+    void deleteTimingSendingItem(QString tableName, SAKDataStruct::SAKStructTimingSentItem item);
 
     /**
      * @brief updateTimingSendingItem 更新数据表中相应数据条目的数据
      * @param tableName 定时发送条目所在数据表的数据表名称
      * @param item 数据表名称
      */
-    void updateTimingSendingItem(QString tableName, SAKDataStruct::SAKStructTimingSendingItem item);
+    void updateTimingSendingItem(QString tableName, SAKDataStruct::SAKStructTimingSentItem item);
 
     /**
      * @brief selectTimingSendingItem 提取数据数据库中保存的定时发送条目的数据信息
      * @param tableName 数据表名称
      * @return 定时发送条目数据信息列表
      */
-    QList<SAKDataStruct::SAKStructTimingSendingItem> selectTimingSentItem(QString tableName);
+    QList<SAKDataStruct::SAKStructTimingSentItem> selectTimingSentItem(QString tableName);
 
     /**
      * @brief insertDataPresetItem: Insert record to database

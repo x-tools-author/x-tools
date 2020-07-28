@@ -134,7 +134,7 @@ QList<SAKDataStruct::SAKStructAutoResponseItem> SAKDebugPageCommonDatabaseInterf
     return itemList;
 }
 
-void SAKDebugPageCommonDatabaseInterface::insertTimingSendingItem(QString tableName, SAKDataStruct::SAKStructTimingSendingItem item)
+void SAKDebugPageCommonDatabaseInterface::insertTimingSendingItem(QString tableName, SAKDataStruct::SAKStructTimingSentItem item)
 {
     TimingSendingTable table = tableNameToTimingSendingTable(tableName);
     bool ret = sakDatabaseQuery.exec(QString("INSERT INTO %1(%2,%3,%4,%5,%6) VALUES(%7,%8,%9,'%10','%11')")
@@ -154,12 +154,12 @@ void SAKDebugPageCommonDatabaseInterface::insertTimingSendingItem(QString tableN
     }
 }
 
-void SAKDebugPageCommonDatabaseInterface::deleteTimingSendingItem(QString tableName, SAKDataStruct::SAKStructTimingSendingItem item)
+void SAKDebugPageCommonDatabaseInterface::deleteTimingSendingItem(QString tableName, SAKDataStruct::SAKStructTimingSentItem item)
 {
     deleteRecord(tableName, item.id);
 }
 
-void SAKDebugPageCommonDatabaseInterface::updateTimingSendingItem(QString tableName, SAKDataStruct::SAKStructTimingSendingItem item)
+void SAKDebugPageCommonDatabaseInterface::updateTimingSendingItem(QString tableName, SAKDataStruct::SAKStructTimingSentItem item)
 {
     TimingSendingTable table = tableNameToTimingSendingTable(tableName);
     bool ret = sakDatabaseQuery.exec(QString("UPDATE '%1' SET %2=%3,%4=%5,%6=%7,%8='%9',%10='%11' WHERE ID=%12")
@@ -180,14 +180,14 @@ void SAKDebugPageCommonDatabaseInterface::updateTimingSendingItem(QString tableN
     }
 }
 
-QList<SAKDataStruct::SAKStructTimingSendingItem> SAKDebugPageCommonDatabaseInterface::selectTimingSentItem(QString tableName)
+QList<SAKDataStruct::SAKStructTimingSentItem> SAKDebugPageCommonDatabaseInterface::selectTimingSentItem(QString tableName)
 {
     TimingSendingTable table = tableNameToTimingSendingTable(tableName);
     bool ret = sakDatabaseQuery.exec(QString("SELECT * FROM %1").arg(table.tableName));
 
-    QList<SAKDataStruct::SAKStructTimingSendingItem> itemList;
+    QList<SAKDataStruct::SAKStructTimingSentItem> itemList;
     if (ret){
-        SAKDataStruct::SAKStructTimingSendingItem item;
+        SAKDataStruct::SAKStructTimingSentItem item;
         while (sakDatabaseQuery.next()) {
             item.id = sakDatabaseQuery.value(table.columns.id).toULongLong();
             item.interval = sakDatabaseQuery.value(table.columns.interval).toUInt();

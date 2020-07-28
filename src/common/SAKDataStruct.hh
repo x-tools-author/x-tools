@@ -114,7 +114,7 @@ public:
     };
 
     /// @brief 调试页面定时发送数的据结构
-    struct SAKStructTimingSendingItem {
+    struct SAKStructTimingSentItem {
         quint64 id;
         quint32 interval;   /// 定时间隔
         quint32 format;     /// 文本格式
