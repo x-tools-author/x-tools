@@ -275,6 +275,7 @@ void SAKOtherTimingSentItemManager::on_addPushButton_clicked()
     SAKOtherTimingSentItem *itemWidget = new SAKOtherTimingSentItem(mDebugPage);
     item->setSizeHint(itemWidget->size());
     mItemListWidget->setItemWidget(item, itemWidget);
+    initializingItem(itemWidget);
 
     // Insert record to database
     SAKDataStruct::SAKStructTimingSentItem sendingItem;
