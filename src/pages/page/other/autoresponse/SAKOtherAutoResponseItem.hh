@@ -31,15 +31,15 @@ class SAKOtherAutoResponseItem:public QWidget
 public:
     SAKOtherAutoResponseItem(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
     SAKOtherAutoResponseItem(SAKDebugPage *debugPage,
-                              quint64 id,
-                              QString name,
-                              QString referenceData,
-                              QString responseData,
-                              bool enabled,
-                              quint32 referenceFormat,
-                              quint32 responseFormat,
-                              quint32 option,
-                              QWidget *parent = Q_NULLPTR);
+                             quint64 id,
+                             QString name,
+                             QString referenceData,
+                             QString responseData,
+                             bool enabled,
+                             quint32 referenceFormat,
+                             quint32 responseFormat,
+                             quint32 option,
+                             QWidget *parent = Q_NULLPTR);
     ~SAKOtherAutoResponseItem();
 
     /**
