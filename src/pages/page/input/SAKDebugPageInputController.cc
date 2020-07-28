@@ -49,7 +49,14 @@ SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugPage *debugPage
     mInputDataFactory->start();
 
     mCrcInterface = new SAKCRCInterface;
+
+    // Add actions after new.
     mInputDataItemManager = new SAKInputDataPresetItemManager(debugPage);
+    QList<SAKInputDataPresetItem*> list = mInputDataItemManager->itemList();
+    for (auto var : list){
+        appendAction(var);
+    }
+
     mCrcSettingsDialog = new SAKInputCrcSettingsDialog;
     SAKInputCrcSettingsDialog::ParameterContext ctx = mCrcSettingsDialog->parametersContext();
     mInputParameters.bigEndian = ctx.bigEndianCRC;
@@ -358,6 +365,7 @@ void SAKDebugPageInputController::appendAction(SAKInputDataPresetItem *item)
     QString description = item->itemDescription();
     QAction *action = new QAction(description, mSendPresetPushButton);
     action->setData(QVariant::fromValue(item));
+    mSendPresetPushButton->menu()->addAction(action);
     connect(action, &QAction::triggered, this, &SAKDebugPageInputController::actionTriggered);
 }
 
