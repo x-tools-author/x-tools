@@ -43,15 +43,15 @@ public:
         }columns;
     };
 
-    /// @brief 定时发送数据表
+    // timing sent table context
     struct TimingSendingTable {
-        QString tableName;      /// 表格名称
+        QString tableName;
         struct Columns {
-            QString id;
-            QString interval;   /// 定时间隔
-            QString format;     /// 文本格式
-            QString comment;    /// 备注
-            QString data;       /// 定时发送数据
+            const QString id = QString("ID");
+            const QString interval = QString("Interval");
+            const QString format = QString("Format");
+            const QString description = QString("Description");
+            const QString text = QString("Text");
         }columns;
     };
 

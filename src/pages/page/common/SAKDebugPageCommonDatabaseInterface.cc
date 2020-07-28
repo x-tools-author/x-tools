@@ -142,8 +142,8 @@ void SAKDebugPageCommonDatabaseInterface::insertTimingSendingItem(QString tableN
                                      .arg(table.columns.id)
                                      .arg(table.columns.interval)
                                      .arg(table.columns.format)
-                                     .arg(table.columns.comment)
-                                     .arg(table.columns.data)
+                                     .arg(table.columns.description)
+                                     .arg(table.columns.text)
                                      .arg(item.id)
                                      .arg(item.interval)
                                      .arg(item.format)
@@ -170,9 +170,9 @@ void SAKDebugPageCommonDatabaseInterface::updateTimingSendingItem(QString tableN
                                      .arg(item.interval)
                                      .arg(table.columns.format)
                                      .arg(item.format)
-                                     .arg(table.columns.comment)
+                                     .arg(table.columns.description)
                                      .arg(item.comment)
-                                     .arg(table.columns.data)
+                                     .arg(table.columns.text)
                                      .arg(item.data)
                                      .arg(item.id));
     if (!ret){
@@ -192,8 +192,8 @@ QList<SAKDataStruct::SAKStructTimingSendingItem> SAKDebugPageCommonDatabaseInter
             item.id = sakDatabaseQuery.value(table.columns.id).toULongLong();
             item.interval = sakDatabaseQuery.value(table.columns.interval).toUInt();
             item.format = sakDatabaseQuery.value(table.columns.format).toUInt();
-            item.comment = sakDatabaseQuery.value(table.columns.comment).toString();
-            item.data = sakDatabaseQuery.value(table.columns.data).toString();
+            item.comment = sakDatabaseQuery.value(table.columns.description).toString();
+            item.data = sakDatabaseQuery.value(table.columns.text).toString();
 
             itemList.append(item);
         }
@@ -381,12 +381,6 @@ void SAKDebugPageCommonDatabaseInterface::createTimingSendingTables()
     TimingSendingTable timingSendingTable;
     for (int i = 0; i < metaEnum.keyCount(); i++){
         timingSendingTable.tableName = SAKDataStruct::timingSendingTableName(i);
-        timingSendingTable.columns.id = QString("ID");
-        timingSendingTable.columns.interval = QString("Interval");
-        timingSendingTable.columns.format = QString("Format");
-        timingSendingTable.columns.comment = QString("Comment");
-        timingSendingTable.columns.data = QString("Data");
-
         timingSendingTableList.append(timingSendingTable);
     }
 
@@ -415,8 +409,8 @@ bool SAKDebugPageCommonDatabaseInterface::createTimingSendingTable(const TimingS
                                              .arg(table.columns.id)
                                              .arg(table.columns.interval)
                                              .arg(table.columns.format)
-                                             .arg(table.columns.comment)
-                                             .arg(table.columns.data));
+                                             .arg(table.columns.description)
+                                             .arg(table.columns.text));
     return ret;
 }
 
@@ -475,7 +469,7 @@ SAKDebugPageCommonDatabaseInterface::TimingSendingTable SAKDebugPageCommonDataba
     TimingSendingTable table;
     for(auto var : timingSendingTableList){
         if (tableName.compare(var.tableName) == 0){
-            table = var;
+            table.tableName = var.tableName;
             break;
         }
     }
