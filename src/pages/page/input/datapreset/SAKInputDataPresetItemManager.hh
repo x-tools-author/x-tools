@@ -40,6 +40,12 @@ public:
         const QString description = QString("comment");
         const QString text = QString("data");
     };
+
+    /**
+     * @brief itemList: Get the item list
+     * @return Item list
+     */
+    QList<SAKInputDataPresetItem*> itemList();
 private:
     SAKDebugPage *mDebugPage;
     QListWidget *mListWidget;

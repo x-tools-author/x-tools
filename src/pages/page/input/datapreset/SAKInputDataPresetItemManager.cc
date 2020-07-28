@@ -55,6 +55,17 @@ SAKInputDataPresetItemManager::~SAKInputDataPresetItemManager()
     delete mUi;
 }
 
+QList<SAKInputDataPresetItem*> SAKInputDataPresetItemManager::itemList()
+{
+    QList<SAKInputDataPresetItem*> itemWidgetList;
+    for (int i = 0; i < mListWidget->count(); i++){
+        QListWidgetItem *item = mListWidget->item(i);
+        QWidget *itemWidget = mListWidget->itemWidget(item);
+        itemWidgetList.append(qobject_cast<SAKInputDataPresetItem*>(itemWidget));
+    }
+    return itemWidgetList;
+}
+
 QWidget *innerCreateItem(SAKDataStruct::SAKStructPresettingDataItem &var, QListWidget *listWidget)
 {
     QListWidgetItem *item = new QListWidgetItem(listWidget);
