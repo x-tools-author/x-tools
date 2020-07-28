@@ -353,13 +353,3 @@ void SAKOtherAutoResponseItem::on_delayResponseLineEdit_textChanged(const QStrin
 {
 
 }
-
-void SAKOtherAutoResponseItem::on_referenceDataFromatComboBox_currentTextChanged()
-{
-    setLineEditFormat(mReferenceLineEdit, mReferenceDataFromatComboBox->currentData().toInt());
-}
-
-void SAKOtherAutoResponseItem::on_responseDataFormatComboBox_currentTextChanged()
-{
-    setLineEditFormat(mResponseLineEdit, mResponseDataFormatComboBox->currentData().toInt());
-}
