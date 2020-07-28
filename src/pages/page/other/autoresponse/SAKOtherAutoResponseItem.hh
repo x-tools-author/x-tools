@@ -63,7 +63,7 @@ private:
     bool mForbiddenAllAutoResponse;
     SAKDebugPage *mDebugPage;
     quint64 mID;
-
+    bool isInitializing;
     // delay response
     struct DelayWritingInfo{
         quint64 expectedTimestamp;

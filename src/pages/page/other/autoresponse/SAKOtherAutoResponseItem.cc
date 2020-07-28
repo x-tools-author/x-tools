@@ -21,12 +21,14 @@ SAKOtherAutoResponseItem::SAKOtherAutoResponseItem(SAKDebugPage *debugPage, QWid
     :QWidget(parent)
     ,mForbiddenAllAutoResponse(false)
     ,mDebugPage(debugPage)
+    ,isInitializing(true)
     ,mUi(new Ui::SAKOtherAutoResponseItem)
 {
     commonInitializing();
     mID = QDateTime::currentMSecsSinceEpoch();
     mDescriptionLineEdit->setText(QString::number(mID));
     initDelayWritingTimer();
+    isInitializing = false;
 }
 
 SAKOtherAutoResponseItem::SAKOtherAutoResponseItem(SAKDebugPage *debugPage,
@@ -45,6 +47,7 @@ SAKOtherAutoResponseItem::SAKOtherAutoResponseItem(SAKDebugPage *debugPage,
     ,mForbiddenAllAutoResponse(false)
     ,mDebugPage(debugPage)
     ,mID(id)
+    ,isInitializing(true)
     ,mUi(new Ui::SAKOtherAutoResponseItem)
 {
     commonInitializing();
@@ -58,6 +61,7 @@ SAKOtherAutoResponseItem::SAKOtherAutoResponseItem(SAKDebugPage *debugPage,
     mDelayResponseCheckBox->setChecked(delay);
     mDelayResponseLineEdit->setText(QString::number(interval));
     initDelayWritingTimer();
+    isInitializing = false;
 }
 
 SAKOtherAutoResponseItem::~SAKOtherAutoResponseItem()
