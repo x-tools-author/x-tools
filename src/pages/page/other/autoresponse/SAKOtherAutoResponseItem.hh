@@ -76,7 +76,7 @@ private:
     void bytesRead(QByteArray bytes);
     QByteArray string2array(QString str, int format);
     bool response(QByteArray receiveData, QByteArray referenceData, int option);
-    void initUi();
+    void commonInitializing();
     void initDelayWritingTimer();
     void delayToWritBytes();
 private:

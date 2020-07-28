@@ -23,7 +23,7 @@ SAKOtherAutoResponseItem::SAKOtherAutoResponseItem(SAKDebugPage *debugPage, QWid
     ,mDebugPage(debugPage)
     ,mUi(new Ui::SAKOtherAutoResponseItem)
 {
-    initUi();
+    commonInitializing();
     mID = QDateTime::currentMSecsSinceEpoch();
     mDescriptionLineEdit->setText(QString::number(mID));
     initDelayWritingTimer();
@@ -47,7 +47,7 @@ SAKOtherAutoResponseItem::SAKOtherAutoResponseItem(SAKDebugPage *debugPage,
     ,mID(id)
     ,mUi(new Ui::SAKOtherAutoResponseItem)
 {
-    initUi();
+    commonInitializing();
     mDescriptionLineEdit->setText(name);
     mReferenceLineEdit->setText(referenceData);
     mResponseLineEdit->setText(responseData);
@@ -254,7 +254,7 @@ bool SAKOtherAutoResponseItem::response(QByteArray receiveData, QByteArray refer
     return false;
 };
 
-void SAKOtherAutoResponseItem::initUi()
+void SAKOtherAutoResponseItem::commonInitializing()
 {
     mUi->setupUi(this);
     mDescriptionLineEdit = mUi->descriptionLineEdit;
