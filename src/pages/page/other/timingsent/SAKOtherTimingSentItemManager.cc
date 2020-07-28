@@ -170,9 +170,9 @@ void SAKOtherTimingSentItemManager::on_importPushButton_clicked()
                 TimingSendingItemKey itemKey;
                 SAKDataStruct::SAKStructTimingSendingItem responseItem;
                 responseItem.id = jso.value(itemKey.id).toVariant().toULongLong();
-                responseItem.data = jso.value(itemKey.data).toVariant().toString();
+                responseItem.data = jso.value(itemKey.text).toVariant().toString();
                 responseItem.format = jso.value(itemKey.format).toVariant().toUInt();
-                responseItem.comment = jso.value(itemKey.comment).toVariant().toString();
+                responseItem.comment = jso.value(itemKey.description).toVariant().toString();
                 responseItem.interval = jso.value(itemKey.interval).toVariant().toUInt();
 
                 /// @brief 不存在则新建

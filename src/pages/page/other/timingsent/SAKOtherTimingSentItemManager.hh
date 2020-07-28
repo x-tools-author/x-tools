@@ -37,8 +37,8 @@ public:
         const QString id = QString("id");
         const QString interval = QString("interval");
         const QString format = QString("format");
-        const QString comment = QString("comment");
-        const QString data = QString("data");
+        const QString description = QString("description");
+        const QString text = QString("text");
     };
 private:
     SAKDebugPage *debugPage;
