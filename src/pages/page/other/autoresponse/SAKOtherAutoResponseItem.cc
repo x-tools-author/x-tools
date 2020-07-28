@@ -19,13 +19,13 @@
 
 SAKOtherAutoResponseItem::SAKOtherAutoResponseItem(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget(parent)
-    ,forbiddenAllAutoResponse(false)
-    ,debugPage(debugPage)
+    ,mForbiddenAllAutoResponse(false)
+    ,mDebugPage(debugPage)
     ,ui(new Ui::SAKOtherAutoResponseItem)
 {
     initUi();
-    id = QDateTime::currentMSecsSinceEpoch();
-    remarkLineEdit->setText(QString::number(id));
+    mID = QDateTime::currentMSecsSinceEpoch();
+    remarkLineEdit->setText(QString::number(mID));
     initDelayWritingTimer();
 }
 
@@ -40,9 +40,9 @@ SAKOtherAutoResponseItem::SAKOtherAutoResponseItem(SAKDebugPage *debugPage,
                                                    quint32 option,
                                                    QWidget *parent)
     :QWidget(parent)
-    ,forbiddenAllAutoResponse(false)
-    ,debugPage(debugPage)
-    ,id(id)
+    ,mForbiddenAllAutoResponse(false)
+    ,mDebugPage(debugPage)
+    ,mID(id)
     ,ui(new Ui::SAKOtherAutoResponseItem)
 {
     initUi();
@@ -63,12 +63,12 @@ SAKOtherAutoResponseItem::~SAKOtherAutoResponseItem()
 
 void SAKOtherAutoResponseItem::setAllAutoResponseDisable(bool disable)
 {
-    forbiddenAllAutoResponse = disable;
+    mForbiddenAllAutoResponse = disable;
 }
 
 quint64 SAKOtherAutoResponseItem::itemID()
 {
-    return id;
+    return mID;
 }
 
 QString SAKOtherAutoResponseItem::itemDescription()
@@ -144,7 +144,7 @@ void SAKOtherAutoResponseItem::setLineEditFormat(QLineEdit *lineEdit, int format
 
 void SAKOtherAutoResponseItem::bytesRead(QByteArray bytes)
 {
-    if (forbiddenAllAutoResponse){
+    if (mForbiddenAllAutoResponse){
         return;
     }
 
@@ -178,9 +178,9 @@ void SAKOtherAutoResponseItem::bytesRead(QByteArray bytes)
                 /// @brief 减20是因为延时回复使用20毫秒的定时器
                 info->expectedTimestamp = QDateTime::currentMSecsSinceEpoch() + delayTime - 20;
                 info->data = responseData;
-                delayWritingInfoList.append(info);
+                mWaitForWrittenInfoList.append(info);
              }else{
-                 debugPage->write(responseData);
+                 mDebugPage->write(responseData);
              }
          }
     }
@@ -272,23 +272,23 @@ void SAKOtherAutoResponseItem::initUi()
     SAKGlobal::initInputTextFormatComboBox(referenceDataFromatComboBox);
     SAKGlobal::initInputTextFormatComboBox(responseDataFormatComboBox);
 
-    connect(debugPage, &SAKDebugPage::bytesRead, this, &SAKOtherAutoResponseItem::bytesRead);
+    connect(mDebugPage, &SAKDebugPage::bytesRead, this, &SAKOtherAutoResponseItem::bytesRead);
 }
 
 void SAKOtherAutoResponseItem::initDelayWritingTimer()
 {
-    delayToWritingTimer.setInterval(20);
-    connect(&delayToWritingTimer, &QTimer::timeout, this, &SAKOtherAutoResponseItem::delayToWritBytes);
-    delayToWritingTimer.start();
+    mTimestampChecker.setInterval(20);
+    connect(&mTimestampChecker, &QTimer::timeout, this, &SAKOtherAutoResponseItem::delayToWritBytes);
+    mTimestampChecker.start();
 }
 
 void SAKOtherAutoResponseItem::delayToWritBytes()
 {
-    delayToWritingTimer.stop();
+    mTimestampChecker.stop();
     QList<DelayWritingInfo> temp;
     QList<DelayWritingInfo*> need2removeList;
-    for (int i = 0; i < delayWritingInfoList.length(); i++){
-        DelayWritingInfo *infoPtr = delayWritingInfoList.at(i);
+    for (int i = 0; i < mWaitForWrittenInfoList.length(); i++){
+        DelayWritingInfo *infoPtr = mWaitForWrittenInfoList.at(i);
         if (quint64(QDateTime::currentMSecsSinceEpoch()) > infoPtr->expectedTimestamp){
             DelayWritingInfo info;
             info.data = infoPtr->data;
@@ -300,14 +300,14 @@ void SAKOtherAutoResponseItem::delayToWritBytes()
 
     /// @brief 发送数据
     for (auto var : temp){
-        debugPage->write(var.data);
+        mDebugPage->write(var.data);
     }
 
     /// @brief 删除已发送的数据
     for (auto var : need2removeList){
-        delayWritingInfoList.removeOne(var);
+        mWaitForWrittenInfoList.removeOne(var);
     }
-    delayToWritingTimer.start();
+    mTimestampChecker.start();
 }
 
 void SAKOtherAutoResponseItem::on_referenceDataFromatComboBox_currentTextChanged()
@@ -322,7 +322,7 @@ void SAKOtherAutoResponseItem::on_responseDataFormatComboBox_currentTextChanged(
 
 void SAKOtherAutoResponseItem::on_updatePushButton_clicked()
 {
-    QString tableName = SAKDataStruct::autoResponseTableName(debugPage->pageType());
+    QString tableName = SAKDataStruct::autoResponseTableName(mDebugPage->pageType());
     SAKDataStruct::SAKStructAutoResponseItem item;
     item.id = itemID();
     item.name = itemDescription();

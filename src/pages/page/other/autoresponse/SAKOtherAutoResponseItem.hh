@@ -29,9 +29,9 @@ class SAKOtherAutoResponseItem:public QWidget
 {
     Q_OBJECT
 public:
-    SAKOtherAutoResponseItem(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
-    SAKOtherAutoResponseItem(SAKDebugPage *debugPage,
-                             quint64 id,
+    SAKOtherAutoResponseItem(SAKDebugPage *mDebugPage, QWidget *parent = Q_NULLPTR);
+    SAKOtherAutoResponseItem(SAKDebugPage *mDebugPage,
+                             quint64 mID,
                              QString name,
                              QString referenceData,
                              QString responseData,
@@ -57,17 +57,17 @@ public:
     quint32 itemResponseFormat();
     quint32 itemOption();
 private:
-    bool forbiddenAllAutoResponse;
-    SAKDebugPage *debugPage;
-    quint64 id;
+    bool mForbiddenAllAutoResponse;
+    SAKDebugPage *mDebugPage;
+    quint64 mID;
 
     // delay response
     struct DelayWritingInfo{
         quint64 expectedTimestamp;
         QByteArray data;
     };
-    QTimer delayToWritingTimer;
-    QList<DelayWritingInfo*> delayWritingInfoList;
+    QTimer mTimestampChecker;
+    QList<DelayWritingInfo*> mWaitForWrittenInfoList;
 private:
     void setLineEditFormat(QLineEdit *lineEdit, int format);
     void bytesRead(QByteArray bytes);
