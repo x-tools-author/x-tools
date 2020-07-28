@@ -23,22 +23,22 @@
 class SAKDebugPage;
 
 namespace Ui {
-    class SAKTimingSendingItemWidget;
+    class SAKOtherTimingSentItem;
 }
 
-class SAKTimingSendingItemWidget:public QWidget
+class SAKOtherTimingSentItem:public QWidget
 {
     Q_OBJECT
 public:
-    SAKTimingSendingItemWidget(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
-    SAKTimingSendingItemWidget(SAKDebugPage *debugPage,
+    SAKOtherTimingSentItem(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
+    SAKOtherTimingSentItem(SAKDebugPage *debugPage,
                                quint64 id,
                                quint32 interval,
                                quint32 format,
                                QString comment,
                                QString data,
                                QWidget *parent = Q_NULLPTR);
-    ~SAKTimingSendingItemWidget();
+    ~SAKOtherTimingSentItem();
 
     quint64 parameterID();
     quint32 parameterInterval();
@@ -53,7 +53,7 @@ private:
     void write();
     void initUi();
 private:
-    Ui::SAKTimingSendingItemWidget *ui;
+    Ui::SAKOtherTimingSentItem *ui;
     QCheckBox *timingCheckBox;
     QLineEdit *timingTimeLineEdit;
     QComboBox *textFormatComboBox;

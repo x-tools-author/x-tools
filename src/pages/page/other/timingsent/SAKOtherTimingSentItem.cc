@@ -13,11 +13,11 @@
 #include "SAKGlobal.hh"
 #include "SAKDebugPage.hh"
 #include "SAKDataStruct.hh"
-#include "SAKTimingSendingItemWidget.hh"
+#include "SAKOtherTimingSentItem.hh"
 
-#include "ui_SAKTimingSendingItemWidget.h"
+#include "ui_SAKOtherTimingSentItem.h"
 
-SAKTimingSendingItemWidget::SAKTimingSendingItemWidget(SAKDebugPage *debugPage, QWidget *parent)
+SAKOtherTimingSentItem::SAKOtherTimingSentItem(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget(parent)
     ,debugPage(debugPage)
     ,ui(new Ui::SAKTimingSendingItemWidget)
@@ -26,7 +26,7 @@ SAKTimingSendingItemWidget::SAKTimingSendingItemWidget(SAKDebugPage *debugPage, 
     id = QDateTime::currentMSecsSinceEpoch();
 }
 
-SAKTimingSendingItemWidget::SAKTimingSendingItemWidget(SAKDebugPage *debugPage,
+SAKOtherTimingSentItem::SAKOtherTimingSentItem(SAKDebugPage *debugPage,
                                                        quint64 id,
                                                        quint32 interval,
                                                        quint32 format,
@@ -46,37 +46,37 @@ SAKTimingSendingItemWidget::SAKTimingSendingItemWidget(SAKDebugPage *debugPage,
     inputDataTextEdit->setText(data);
 }
 
-SAKTimingSendingItemWidget::~SAKTimingSendingItemWidget()
+SAKOtherTimingSentItem::~SAKOtherTimingSentItem()
 {
     delete ui;
 }
 
-quint64 SAKTimingSendingItemWidget::parameterID()
+quint64 SAKOtherTimingSentItem::parameterID()
 {
     return id;
 }
 
-quint32 SAKTimingSendingItemWidget::parameterInterval()
+quint32 SAKOtherTimingSentItem::parameterInterval()
 {
     return timingTimeLineEdit->text().toUInt();
 }
 
-quint32 SAKTimingSendingItemWidget::parameterFormat()
+quint32 SAKOtherTimingSentItem::parameterFormat()
 {
     return textFormatComboBox->currentIndex();
 }
 
-QString SAKTimingSendingItemWidget::parameterComment()
+QString SAKOtherTimingSentItem::parameterComment()
 {
     return remarkLineEdit->text();
 }
 
-QString SAKTimingSendingItemWidget::parameterData()
+QString SAKOtherTimingSentItem::parameterData()
 {
     return inputDataTextEdit->toPlainText();
 }
 
-void SAKTimingSendingItemWidget::write()
+void SAKOtherTimingSentItem::write()
 {
     QString data = inputDataTextEdit->toPlainText();
 
@@ -86,7 +86,7 @@ void SAKTimingSendingItemWidget::write()
     }
 }
 
-void SAKTimingSendingItemWidget::initUi()
+void SAKOtherTimingSentItem::initUi()
 {
     ui->setupUi(this);
 
@@ -98,25 +98,25 @@ void SAKTimingSendingItemWidget::initUi()
     updatePushButton = ui->updatePushButton;
 
     writeTimer.setInterval(timingTimeLineEdit->text().toInt());
-    connect(&writeTimer, &QTimer::timeout, this, &SAKTimingSendingItemWidget::write);
+    connect(&writeTimer, &QTimer::timeout, this, &SAKOtherTimingSentItem::write);
 
     SAKGlobal::initInputTextFormatComboBox(textFormatComboBox);
 }
 
-void SAKTimingSendingItemWidget::on_timingCheckBox_clicked()
+void SAKOtherTimingSentItem::on_timingCheckBox_clicked()
 {
     if (timingCheckBox){
         timingCheckBox->isChecked() ? writeTimer.start() : writeTimer.stop();
     }
 }
 
-void SAKTimingSendingItemWidget::on_timingTimeLineEdit_textChanged(const QString &text)
+void SAKOtherTimingSentItem::on_timingTimeLineEdit_textChanged(const QString &text)
 {
     int interval = text.toInt();
     writeTimer.setInterval(interval == 0 ? 1000 : interval);
 }
 
-void SAKTimingSendingItemWidget::on_updatePushButton_clicked()
+void SAKOtherTimingSentItem::on_updatePushButton_clicked()
 {
     QString tableName = SAKDataStruct::timingSendingTableName(debugPage->pageType());
     SAKDataStruct::SAKStructTimingSendingItem sendingItem;

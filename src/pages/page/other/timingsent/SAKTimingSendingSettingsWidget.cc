@@ -19,7 +19,7 @@
 #include "SAKGlobal.hh"
 #include "SAKDebugPage.hh"
 #include "SAKDataStruct.hh"
-#include "SAKTimingSendingItemWidget.hh"
+#include "SAKOtherTimingSentItem.hh"
 #include "SAKTimingSendingSettingsWidget.hh"
 
 #include "ui_SAKTimingSendingSettingsWidget.h"
@@ -58,7 +58,7 @@ void innerCreateItem(SAKDataStruct::SAKStructTimingSendingItem &var, SAKDebugPag
 {
     QListWidgetItem *item = new QListWidgetItem(listWidget);
     listWidget->addItem(item);
-    SAKTimingSendingItemWidget *itemWidget = new SAKTimingSendingItemWidget(debugPage,
+    SAKOtherTimingSentItem *itemWidget = new SAKOtherTimingSentItem(debugPage,
                                                                             var.id,
                                                                             var.interval,
                                                                             var.format,
@@ -87,7 +87,7 @@ bool SAKTimingSendingSettingsWidget::contains(quint64 paraID)
     for (int i = 0; i < itemListWidget->count(); i++){
         QListWidgetItem *item = itemListWidget->item(i);
         QWidget *w = itemListWidget->itemWidget(item);
-        SAKTimingSendingItemWidget *itemWidget = reinterpret_cast<SAKTimingSendingItemWidget*>(w);
+        SAKOtherTimingSentItem *itemWidget = reinterpret_cast<SAKOtherTimingSentItem*>(w);
         if (itemWidget->parameterID() == paraID){
             contain = true;
             break;
@@ -191,7 +191,7 @@ void SAKTimingSendingSettingsWidget::on_deletePushButton_clicked()
 {
     QListWidgetItem *currentItem = itemListWidget->currentItem();
     if (currentItem){
-        SAKTimingSendingItemWidget *w = reinterpret_cast<SAKTimingSendingItemWidget*>(itemListWidget->itemWidget(currentItem));
+        SAKOtherTimingSentItem *w = reinterpret_cast<SAKOtherTimingSentItem*>(itemListWidget->itemWidget(currentItem));
         SAKDataStruct::SAKStructTimingSendingItem sendingItem;
         sendingItem.id = w->parameterID();
 //        databaseInterface->deleteTimingSendingItem(tableName, sendingItem);
@@ -206,7 +206,7 @@ void SAKTimingSendingSettingsWidget::on_addPushButton_clicked()
     QListWidgetItem *item = new QListWidgetItem(itemListWidget);
     itemListWidget->addItem(item);
 
-    SAKTimingSendingItemWidget *itemWidget = new SAKTimingSendingItemWidget(debugPage);
+    SAKOtherTimingSentItem *itemWidget = new SAKOtherTimingSentItem(debugPage);
     item->setSizeHint(itemWidget->size());
     itemListWidget->setItemWidget(item, itemWidget);
 
