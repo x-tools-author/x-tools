@@ -121,6 +121,7 @@ void SAKOtherTimingSentItem::on_intervalLineEdit_textChanged(const QString &text
     if (!isInitializing){
         int interval = text.toInt();
         mWriteTimer.setInterval(interval > 20 ? 20 : interval);
+        emit intervalChanged(interval);
     }
 }
 
