@@ -14,6 +14,7 @@
 #include "SAKDebugPage.hh"
 #include "SAKDataStruct.hh"
 #include "SAKOtherTimingSentItem.hh"
+#include "SAKDebugPageCommonDatabaseInterface.hh"
 
 #include "ui_SAKOtherTimingSentItem.h"
 
@@ -89,6 +90,7 @@ void SAKOtherTimingSentItem::write()
 void SAKOtherTimingSentItem::commonInitializing()
 {
     ui->setupUi(this);
+    databaseInterface = SAKDebugPageCommonDatabaseInterface::instance();
 
     enableCheckBox = ui->enableCheckBox;
     intervalLineEdit = ui->intervalLineEdit;
@@ -102,28 +104,30 @@ void SAKOtherTimingSentItem::commonInitializing()
     SAKGlobal::initInputTextFormatComboBox(textFormatComboBox);
 }
 
-void SAKOtherTimingSentItem::on_timingCheckBox_clicked()
+void SAKOtherTimingSentItem::on_enableCheckBox_clicked()
 {
     if (enableCheckBox){
         enableCheckBox->isChecked() ? mWriteTimer.start() : mWriteTimer.stop();
     }
 }
 
-void SAKOtherTimingSentItem::on_timingTimeLineEdit_textChanged(const QString &text)
+void SAKOtherTimingSentItem::on_intervalLineEdit_textChanged(const QString &text)
 {
     int interval = text.toInt();
     mWriteTimer.setInterval(interval == 0 ? 1000 : interval);
 }
 
-void SAKOtherTimingSentItem::on_updatePushButton_clicked()
+void SAKOtherTimingSentItem::on_textFormatComboBox_currentTextChanged(const QString &text)
 {
-    QString tableName = SAKDataStruct::timingSendingTableName(mDebugPage->pageType());
-    SAKDataStruct::SAKStructTimingSendingItem sendingItem;
-    sendingItem.id = itemID();
-    sendingItem.data = itemText();
-    sendingItem.format = itemFormat();
-    sendingItem.comment = itemDescription();
-    sendingItem.interval = itemInterval();
-//    SAKDebugPageDatabaseInterface *databaseInterface = SAKDebugPageDatabaseInterface::instance();
-//    databaseInterface->updateTimingSendingItem(tableName, sendingItem);
+
+}
+
+void SAKOtherTimingSentItem::on_descriptionLineEdit_textChanged(const QString &text)
+{
+
+}
+
+void SAKOtherTimingSentItem::on_inputDataTextEdit_textChanged()
+{
+
 }

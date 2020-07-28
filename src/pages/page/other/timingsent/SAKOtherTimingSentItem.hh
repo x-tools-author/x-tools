@@ -24,6 +24,7 @@ namespace Ui {
     class SAKOtherTimingSentItem;
 }
 class SAKDebugPage;
+class SAKDebugPageCommonDatabaseInterface;
 /// @brief Timing sent item
 class SAKOtherTimingSentItem:public QWidget
 {
@@ -48,6 +49,7 @@ private:
     SAKDebugPage *mDebugPage;
     quint64 mID;
     QTimer mWriteTimer;
+    SAKDebugPageCommonDatabaseInterface *databaseInterface;
 private:
     void write();
     void commonInitializing();
