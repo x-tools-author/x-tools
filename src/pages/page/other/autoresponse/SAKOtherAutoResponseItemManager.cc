@@ -41,13 +41,13 @@ SAKOtherAutoResponseItemManager::SAKOtherAutoResponseItemManager(SAKDebugPage *d
     mImportPushButton = mUi->importPushButton;
     mMsgLabel = mUi->msgLabel;
 
-    setWindowTitle(tr("自动回复设置"));
-//    databaseInterface = SAKDebugPageDatabaseInterface::instance();
+    setWindowTitle(tr("Auto response settings"));
+    mDatabaseInterface = SAKDebugPageCommonDatabaseInterface::instance();
 
     mClearMessageInfoTimer.setInterval(SAK_CLEAR_MESSAGE_INTERVAL);
     connect(&mClearMessageInfoTimer, &QTimer::timeout, this, &SAKOtherAutoResponseItemManager::clearMessage);
 
-    /// @brief 从数据库读入记录
+    // Read in record from database
     readInRecord();
 }
 
@@ -98,10 +98,10 @@ void SAKOtherAutoResponseItemManager::clearMessage()
 void SAKOtherAutoResponseItemManager::readInRecord()
 {
     QString tableName = SAKDataStruct::autoResponseTableName(mDebugPage->pageType());
-//    QList<SAKDataStruct::SAKStructAutoResponseItem> itemList = databaseInterface->selectAutoResponseItem(tableName);
-//    for (auto var : itemList){
-//        innerCreateItem(var, debugPage, listWidget);
-//    }
+    QList<SAKDataStruct::SAKStructAutoResponseItem> itemList = mDatabaseInterface->selectAutoResponseItem(tableName);
+    for (auto var : itemList){
+        innerCreateItem(var, mDebugPage, mListWidget);
+    }
 }
 
 bool SAKOtherAutoResponseItemManager::contains(quint64 paraID)
@@ -134,16 +134,15 @@ void SAKOtherAutoResponseItemManager::on_deleteItemPushButton_clicked()
 {
     QListWidgetItem *item = mListWidget->currentItem();
     if (!item){
-        outputMessage(tr("未选择行，请选择要删除的行后重试"), false);
+        outputMessage(tr("Please select an item first!"), false);
         return;
     }
 
-    /// @brief 删除数据库记录
+    // Delete record from database
     QString tableName = SAKDataStruct::autoResponseTableName(mDebugPage->pageType());
-    SAKDataStruct::SAKStructAutoResponseItem dataItem;
     SAKOtherAutoResponseItem *w = reinterpret_cast<SAKOtherAutoResponseItem*>(mListWidget->itemWidget(item));
-    dataItem.id = w->itemID();
-//    databaseInterface->deleteAutoResponseItem(tableName, dataItem);
+    quint64 id = w->itemID();
+    mDatabaseInterface->deleteRecord(tableName, id);
 
     mListWidget->removeItemWidget(item);
     delete item;
@@ -151,9 +150,9 @@ void SAKOtherAutoResponseItemManager::on_deleteItemPushButton_clicked()
 
 void SAKOtherAutoResponseItemManager::on_addItemPushButton_clicked()
 {
-    /// @brief 限制数量
+    // Check length fo item
     if (mListWidget->count() >= SAK_MAX_AUTO_RESPONSE_COUNT){
-        outputMessage(tr("数据已达到上限，不能新建数据"), false);
+        outputMessage(tr("Items are too many, operation will be ignored!"), false);
         return;
     }
 
@@ -163,7 +162,7 @@ void SAKOtherAutoResponseItemManager::on_addItemPushButton_clicked()
     item->setSizeHint(QSize(itemWidget->width(), itemWidget->height()));
     mListWidget->setItemWidget(item, itemWidget);
 
-    /// @brief 添加数据库记录
+    // Add record
     SAKDataStruct::SAKStructAutoResponseItem dataItem;
     dataItem.id = itemWidget->itemID();
     dataItem.name = itemWidget->itemDescription();
@@ -173,8 +172,10 @@ void SAKOtherAutoResponseItemManager::on_addItemPushButton_clicked()
     dataItem.responseFormat = itemWidget->itemResponseFormat();
     dataItem.referenceFormat = itemWidget->itemReferenceFormat();
     dataItem.option = itemWidget->itemOption();
+    dataItem.delay = itemWidget->delay();
+    dataItem.interval = itemWidget->interval();
     QString tableName = SAKDataStruct::autoResponseTableName(mDebugPage->pageType());
-//    databaseInterface->insertAutoResponseItem(tableName, dataItem);
+    mDatabaseInterface->insertAutoResponseItem(tableName, dataItem);
 }
 
 void SAKOtherAutoResponseItemManager::on_outportPushButton_clicked()
