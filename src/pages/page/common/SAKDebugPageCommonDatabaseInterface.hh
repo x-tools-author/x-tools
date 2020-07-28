@@ -67,16 +67,16 @@ public:
     };
 
     /**
-     * @brief insertAutoResponseItem 添加自动回复条目
-     * @param tableName 表格名称
-     * @param item 自动回复参数
+     * @brief insertAutoResponseItem: Insert record
+     * @param tableName: table name of database
+     * @param item: Item that contains record info
      */
     void insertAutoResponseItem(QString tableName, SAKDataStruct::SAKStructAutoResponseItem item);
 
     /**
-     * @brief selectAutoResponseItem 从数据库中读出所有自动回复条目
-     * @param tableName 表格名称
-     * @return 自动回复条目参数信息列表
+     * @brief selectAutoResponseItem: Query records
+     * @param tableName: table name
+     * @return records
      */
     QList<SAKDataStruct::SAKStructAutoResponseItem> selectAutoResponseItem(QString tableName);
 
