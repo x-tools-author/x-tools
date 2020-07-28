@@ -96,6 +96,8 @@ QList<SAKDataStruct::SAKStructAutoResponseItem> SAKDebugPageCommonDatabaseInterf
             item.referenceFormat = sakDatabaseQuery.value(table.columns.referenceFormat).toUInt();
             item.responseFormat = sakDatabaseQuery.value(table.columns.responseFormat).toUInt();
             item.option = sakDatabaseQuery.value(table.columns.option).toUInt();
+            item.delay = sakDatabaseQuery.value(table.columns.delay).toBool();
+            item.interval = sakDatabaseQuery.value(table.columns.interval).toInt();
 
             itemList.append(item);
         }
