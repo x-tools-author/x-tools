@@ -32,14 +32,16 @@ public:
     struct AutoResponseTable {
         QString tableName;
         struct Columns {
-            QString id;
-            QString name;
-            QString referenceData;
-            QString responseData;
-            QString enable;
-            QString referenceFormat;
-            QString responseFormat;
-            QString option;
+            const QString id = QString("ID");
+            const QString description = QString("Description");
+            const QString referenceData = QString("ReferenceData");
+            const QString responseData = QString("ResponseData");
+            const QString enable = QString("Enable");
+            const QString referenceFormat = QString("ReferenceFormat");
+            const QString responseFormat = QString("ResponseFormat");
+            const QString option = QString("Option");
+            const QString delay = QString("Delay");
+           const QString interval = QString("Interval");
         }columns;
     };
 

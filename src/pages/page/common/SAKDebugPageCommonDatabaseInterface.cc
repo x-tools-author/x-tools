@@ -52,16 +52,18 @@ SAKDebugPageCommonDatabaseInterface* SAKDebugPageCommonDatabaseInterface::instan
 void SAKDebugPageCommonDatabaseInterface::insertAutoResponseItem(QString tableName, SAKDataStruct::SAKStructAutoResponseItem item)
 {
     AutoResponseTable table = tableNmaeToAutoResponseTable(tableName);
-    bool ret = sakDatabaseQuery.exec(QString("INSERT INTO %1(%2,%3,%4,%5,%6,%7,%8,%9) VALUES(%10,'%11','%12','%13',%14,%15,%16,%17)")
+    bool ret = sakDatabaseQuery.exec(QString("INSERT INTO %1(%2,%3,%4,%5,%6,%7,%8,%9,%10,%11) VALUES(%12,'%13','%14','%15',%16,%17,%18,%19,%20,'%21')")
                                      .arg(table.tableName)
                                      .arg(table.columns.id)
-                                     .arg(table.columns.name)
+                                     .arg(table.columns.description)
                                      .arg(table.columns.referenceData)
                                      .arg(table.columns.responseData)
                                      .arg(table.columns.enable)
                                      .arg(table.columns.referenceFormat)
                                      .arg(table.columns.responseFormat)
                                      .arg(table.columns.option)
+                                     .arg(table.columns.delay)
+                                     .arg(table.columns.interval)
                                      .arg(item.id)
                                      .arg(item.name)
                                      .arg(item.referenceData)
@@ -69,7 +71,9 @@ void SAKDebugPageCommonDatabaseInterface::insertAutoResponseItem(QString tableNa
                                      .arg(item.enable)
                                      .arg(item.referenceFormat)
                                      .arg(item.responseFormat)
-                                     .arg(item.option));
+                                     .arg(item.option)
+                                     .arg(item.delay)
+                                     .arg(item.interval));
     if (!ret){
         qWarning() << __FUNCTION__ << "Insert record to " << table.tableName << " table failed: " << sakDatabaseQuery.lastError().text();
     }
@@ -85,7 +89,7 @@ QList<SAKDataStruct::SAKStructAutoResponseItem> SAKDebugPageCommonDatabaseInterf
         SAKDataStruct::SAKStructAutoResponseItem item;
         while (sakDatabaseQuery.next()) {
             item.id = sakDatabaseQuery.value(table.columns.id).toULongLong();
-            item.name = sakDatabaseQuery.value(table.columns.name).toString();
+            item.name = sakDatabaseQuery.value(table.columns.description).toString();
             item.referenceData = sakDatabaseQuery.value(table.columns.referenceData).toString();
             item.responseData = sakDatabaseQuery.value(table.columns.responseData).toString();
             item.enable = sakDatabaseQuery.value(table.columns.enable).toBool();
@@ -269,14 +273,6 @@ void SAKDebugPageCommonDatabaseInterface::createAutoResponseTables()
     AutoResponseTable autoResponseTable;
     for (int i = 0; i < metaEnum.keyCount(); i++){
         autoResponseTable.tableName = SAKDataStruct::autoResponseTableName(i);
-        autoResponseTable.columns.id = QString("ID");
-        autoResponseTable.columns.name = QString("Name");
-        autoResponseTable.columns.referenceData = QString("ReferenceData");
-        autoResponseTable.columns.responseData = QString("ResponseData");
-        autoResponseTable.columns.enable = QString("Enable");
-        autoResponseTable.columns.referenceFormat = QString("ReferenceFormat");
-        autoResponseTable.columns.responseFormat = QString("ResponseFormat");
-        autoResponseTable.columns.option = QString("Option");
         autoResponseTableList.append(autoResponseTable);
     }
 
@@ -302,17 +298,21 @@ bool SAKDebugPageCommonDatabaseInterface::createAutoResponseTable(const AutoResp
                                               %6 BOOL NOT NULL, \
                                               %7 INTEGER NOT NULL, \
                                               %8 INTEGER NOT NULL, \
-                                              %9 INTEGER NOT NULL \
+                                              %9 INTEGER NOT NULL, \
+                                              %10 BOOL NOT NULL, \
+                                              %11 INTEGER NOT NULL \
                                               )")
                                              .arg(table.tableName)
                                              .arg(table.columns.id)
-                                             .arg(table.columns.name)
+                                             .arg(table.columns.description)
                                              .arg(table.columns.referenceData)
                                              .arg(table.columns.responseData)
                                              .arg(table.columns.enable)
                                              .arg(table.columns.referenceFormat)
                                              .arg(table.columns.responseFormat)
-                                             .arg(table.columns.option));
+                                             .arg(table.columns.option)
+                                             .arg(table.columns.delay)
+                                             .arg(table.columns.interval));
     return ret;
 }
 
@@ -399,7 +399,7 @@ SAKDebugPageCommonDatabaseInterface::AutoResponseTable SAKDebugPageCommonDatabas
     AutoResponseTable table;
     for (auto var : autoResponseTableList){
         if (tableName.compare(var.tableName) == 0){
-            table = var;
+            table.tableName = var.tableName;
             break;
         }
     }
