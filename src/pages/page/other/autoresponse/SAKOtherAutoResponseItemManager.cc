@@ -239,6 +239,18 @@ SAKOtherAutoResponseItem *SAKOtherAutoResponseItemManager::sender2item(QObject *
     return item;
 }
 
+QList<SAKOtherAutoResponseItem *> SAKOtherAutoResponseItemManager::items()
+{
+    QList<SAKOtherAutoResponseItem *> itemList;
+    for (int i = 0; i < mListWidget->count(); i++){
+        QListWidgetItem *item = mListWidget->item(i);
+        SAKOtherAutoResponseItem *itemWidget = qobject_cast<SAKOtherAutoResponseItem *>(mListWidget->itemWidget(item));
+        itemList.append(itemWidget);
+    }
+
+    return itemList;
+}
+
 void SAKOtherAutoResponseItemManager::on_forbidAllCheckBox_clicked()
 {
     for(int i = 0; i < mListWidget->count(); i++){
@@ -280,6 +292,7 @@ void SAKOtherAutoResponseItemManager::on_addItemPushButton_clicked()
     SAKOtherAutoResponseItem *itemWidget = new SAKOtherAutoResponseItem(mDebugPage, mListWidget);
     item->setSizeHint(QSize(itemWidget->width(), itemWidget->height()));
     mListWidget->setItemWidget(item, itemWidget);
+    initializingItem(itemWidget);
 
     // Add record
     SAKDataStruct::SAKStructAutoResponseItem dataItem;

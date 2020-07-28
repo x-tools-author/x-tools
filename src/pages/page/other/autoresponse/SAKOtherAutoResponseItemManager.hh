@@ -68,6 +68,7 @@ private:
     void changeDelay(bool delay);
     void changeInterval(int interval);
     SAKOtherAutoResponseItem *sender2item(QObject *sender);
+    QList<SAKOtherAutoResponseItem *> items();
 private:
     Ui::SAKOtherAutoResponseItemManager *mUi;
     QListWidget *mListWidget;
