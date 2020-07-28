@@ -125,7 +125,7 @@ INCLUDEPATH += \
     src/pages/page/other/more/generator \
     src/pages/page/other/more/protocol \
     src/pages/page/other/readwrite \
-    src/pages/page/other/timing \
+    src/pages/page/other/timingsent \
     src/pages/page/other/transmission \
     src/pages/page/output \
     src/pages/page/output/save2file \
@@ -152,8 +152,8 @@ FORMS += \
     src/pages/page/other/more/generator/SAKWaveformGeneratorWidget.ui \
     src/pages/page/other/more/protocol/SAKProtocolAnalyzerWidget.ui \
     src/pages/page/other/readwrite/SAKReadWriteSettingsWidget.ui \
-    src/pages/page/other/timing/SAKTimingSendingItemWidget.ui \
-    src/pages/page/other/timing/SAKTimingSendingSettingsWidget.ui \
+    src/pages/page/other/timingsent/SAKOtherTimingSentItem.ui \
+    src/pages/page/other/timingsent/SAKTimingSendingSettingsWidget.ui \
     src/pages/page/other/transmission/SAKSerialPortTransmissionItemWidget.ui \
     src/pages/page/other/transmission/SAKTcpTransmissionItemWidget.ui \
     src/pages/page/other/transmission/SAKTransmissionPage.ui \
@@ -196,8 +196,8 @@ HEADERS += \
     src/pages/page/other/more/protocol/SAKProtocolAnalyzer.hh \
     src/pages/page/other/more/protocol/SAKProtocolAnalyzerWidget.hh \
     src/pages/page/other/readwrite/SAKReadWriteSettingsWidget.hh \
-    src/pages/page/other/timing/SAKTimingSendingItemWidget.hh \
-    src/pages/page/other/timing/SAKTimingSendingSettingsWidget.hh \
+    src/pages/page/other/timingsent/SAKOtherTimingSentItem.hh \
+    src/pages/page/other/timingsent/SAKTimingSendingSettingsWidget.hh \
     src/pages/page/other/transmission/SAKBaseTransmissionItemWidget.hh \
     src/pages/page/other/transmission/SAKSerialPortTransmissionItemWidget.hh \
     src/pages/page/other/transmission/SAKTcpTransmissionItemWidget.hh \
@@ -256,8 +256,8 @@ SOURCES += \
     src/pages/page/other/more/protocol/SAKProtocolAnalyzer.cc \
     src/pages/page/other/more/protocol/SAKProtocolAnalyzerWidget.cc \
     src/pages/page/other/readwrite/SAKReadWriteSettingsWidget.cc \
-    src/pages/page/other/timing/SAKTimingSendingItemWidget.cc \
-    src/pages/page/other/timing/SAKTimingSendingSettingsWidget.cc \
+    src/pages/page/other/timingsent/SAKOtherTimingSentItem.cc \
+    src/pages/page/other/timingsent/SAKTimingSendingSettingsWidget.cc \
     src/pages/page/other/transmission/SAKBaseTransmissionItemWidget.cc \
     src/pages/page/other/transmission/SAKSerialPortTransmissionItemWidget.cc \
     src/pages/page/other/transmission/SAKTcpTransmissionItemWidget.cc \
