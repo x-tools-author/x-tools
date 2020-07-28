@@ -318,18 +318,3 @@ void SAKOtherAutoResponseItem::on_responseDataFormatComboBox_currentTextChanged(
 {
     setLineEditFormat(mResponseLineEdit, mResponseDataFormatComboBox->currentData().toInt());
 }
-
-void SAKOtherAutoResponseItem::on_updatePushButton_clicked()
-{
-    QString tableName = SAKDataStruct::autoResponseTableName(mDebugPage->pageType());
-    SAKDataStruct::SAKStructAutoResponseItem item;
-    item.id = itemID();
-    item.name = itemDescription();
-    item.enable = itemEnable();
-    item.responseData = itemResponseText();
-    item.referenceData = itemRefernceText();
-    item.responseFormat = itemResponseFormat();
-    item.referenceFormat = itemReferenceFormat();
-    item.option = itemOption();
-//    SAKDebugPageDatabaseInterface::instance()->updateAutoResponseItem(tableName, item);
-}

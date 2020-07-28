@@ -91,7 +91,6 @@ private:
 private slots:
     void on_referenceDataFromatComboBox_currentTextChanged();
     void on_responseDataFormatComboBox_currentTextChanged();
-    void on_updatePushButton_clicked();
 };
 
 #endif
