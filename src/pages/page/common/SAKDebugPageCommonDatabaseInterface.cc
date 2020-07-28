@@ -23,7 +23,6 @@ SAKDebugPageCommonDatabaseInterface::SAKDebugPageCommonDatabaseInterface(QObject
 {
     instancePtr = this;
 
-    /// @brief 初始化数据库
     databaseName = SAKSettings::instance()->fileName();
     QStringList strList = databaseName.split('/');
     databaseName = databaseName.remove(strList.last());
@@ -244,15 +243,13 @@ bool SAKDebugPageCommonDatabaseInterface::isTableExist(QString tableName)
 
 void SAKDebugPageCommonDatabaseInterface::initDatabase()
 {
-    /// @brief 连接数据库
     sakDatabase = QSqlDatabase::addDatabase("QSQLITE");
     sakDatabase.setDatabaseName(databaseName);
-    /// @brief 以下是可选设置选项，对sqlite数据库来说,以下选项是无效的
+    // do something useless
     sakDatabase.setHostName("localhost");
     sakDatabase.setUserName("Qter");
     sakDatabase.setPassword("QterPassword");
 
-    /// @brief 关联查询，初始化数据表
     sakDatabaseQuery = QSqlQuery(sakDatabase);
     if (sakDatabase.open()){
         createTables();
@@ -320,7 +317,6 @@ bool SAKDebugPageCommonDatabaseInterface::createAutoResponseTable(const AutoResp
 
 void SAKDebugPageCommonDatabaseInterface::createTimingSendingTables()
 {
-    /// @brief 定时发送数据表名称
     QMetaEnum metaEnum = QMetaEnum::fromType<SAKDataStruct::SAKEnumDebugPageType>();
     TimingSendingTable timingSendingTable;
     for (int i = 0; i < metaEnum.keyCount(); i++){
