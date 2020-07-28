@@ -29,19 +29,19 @@ SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugPage *debugPage
     :QObject (parent)
     ,mDebugPage (debugPage)
 {
-    mInputModelComboBox          = debugPage->mInputModelComboBox;
-    mCycleEnableCheckBox         = debugPage->mCycleEnableCheckBox;
-    mCycleTimeLineEdit           = debugPage->mCycleTimeLineEdit;
-    mSaveInputDataPushButton     = debugPage->mSaveInputDataPushButton;
-    mReadinFilePushButton        = debugPage->mReadinFilePushButton;
-    mAddCRCCheckBox              = debugPage->mAddCRCCheckBox;
-    mClearInputPushButton        = debugPage->mClearInputPushButton;
-    mSendPushButton              = debugPage->mSendPushButton;
-    mInputTextEdit               = debugPage->mInputTextEdit;
-    mCrcParameterModelsComboBox  = debugPage->mCrcParameterModelsComboBox;
-    mCrcLabel                    = debugPage->mCrcLabel;
-    mPresetPushButton            = debugPage->mPresetPushButton;
-    mSendPresetPushButton        = debugPage->mSendPresetPushButton;
+    mInputModelComboBox = debugPage->mInputModelComboBox;
+    mCycleEnableCheckBox = debugPage->mCycleEnableCheckBox;
+    mCycleTimeLineEdit = debugPage->mCycleTimeLineEdit;
+    mSaveInputDataPushButton = debugPage->mSaveInputDataPushButton;
+    mReadinFilePushButton = debugPage->mReadinFilePushButton;
+    mAddCRCCheckBox = debugPage->mAddCRCCheckBox;
+    mClearInputPushButton = debugPage->mClearInputPushButton;
+    mSendPushButton = debugPage->mSendPushButton;
+    mInputTextEdit = debugPage->mInputTextEdit;
+    mCrcParameterModelsComboBox = debugPage->mCrcParameterModelsComboBox;
+    mCrcLabel = debugPage->mCrcLabel;
+    mPresetPushButton = debugPage->mPresetPushButton;
+    mSendPresetPushButton = debugPage->mSendPresetPushButton;
     mSendPresetPushButton->setMenu(new QMenu("", mSendPresetPushButton));
 
     qRegisterMetaType<InputParametersContext>("InputParameters");
@@ -74,17 +74,17 @@ SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugPage *debugPage
     SAKGlobal::initInputTextFormatComboBox(mInputModelComboBox);
     SAKGlobal::initCRCComboBox(mCrcParameterModelsComboBox);
 
-    connect(mInputModelComboBox,         &QComboBox::currentTextChanged, this, &SAKDebugPageInputController::changeInputModel);
-    connect(mCycleEnableCheckBox,        &QCheckBox::clicked,            this, &SAKDebugPageInputController::changeCycleEnableFlag);
-    connect(mCycleTimeLineEdit,          &QLineEdit::textChanged,        this, &SAKDebugPageInputController::changeCycleTime);
-    connect(mSaveInputDataPushButton,    &QPushButton::clicked,          this, &SAKDebugPageInputController::saveInputDataToFile);
-    connect(mReadinFilePushButton,       &QPushButton::clicked,          this, &SAKDebugPageInputController::readinFile);
-    connect(mAddCRCCheckBox,             &QCheckBox::clicked,            this, &SAKDebugPageInputController::changeAddCRCFlag);
-    connect(mClearInputPushButton,       &QPushButton::clicked,          this, &SAKDebugPageInputController::clearInputArea);
-    connect(mSendPushButton,             &QPushButton::clicked,          this, &SAKDebugPageInputController::sendRawData);
-    connect(mInputTextEdit,              &QTextEdit::textChanged,        this, &SAKDebugPageInputController::inputTextEditTextChanged);
+    connect(mInputModelComboBox, &QComboBox::currentTextChanged, this, &SAKDebugPageInputController::changeInputModel);
+    connect(mCycleEnableCheckBox, &QCheckBox::clicked, this, &SAKDebugPageInputController::changeCycleEnableFlag);
+    connect(mCycleTimeLineEdit, &QLineEdit::textChanged, this, &SAKDebugPageInputController::changeCycleTime);
+    connect(mSaveInputDataPushButton, &QPushButton::clicked, this, &SAKDebugPageInputController::saveInputDataToFile);
+    connect(mReadinFilePushButton, &QPushButton::clicked, this, &SAKDebugPageInputController::readinFile);
+    connect(mAddCRCCheckBox, &QCheckBox::clicked, this, &SAKDebugPageInputController::changeAddCRCFlag);
+    connect(mClearInputPushButton, &QPushButton::clicked, this, &SAKDebugPageInputController::clearInputArea);
+    connect(mSendPushButton, &QPushButton::clicked, this, &SAKDebugPageInputController::sendRawData);
+    connect(mInputTextEdit, &QTextEdit::textChanged, this, &SAKDebugPageInputController::inputTextEditTextChanged);
     connect(mCrcParameterModelsComboBox, &QComboBox::currentTextChanged, this, &SAKDebugPageInputController::changeCRCModel);
-    connect(mPresetPushButton,           &QPushButton::clicked,          this, &SAKDebugPageInputController::setPresetData);
+    connect(mPresetPushButton, &QPushButton::clicked, this, &SAKDebugPageInputController::setPresetData);
 
     connect(this, &SAKDebugPageInputController::rawDataChanged, mInputDataFactory, &SAKInputDataFactory::cookData);
     connect(mInputDataFactory, &SAKInputDataFactory::dataCooked, debugPage, &SAKDebugPage::write);
