@@ -56,7 +56,7 @@ private:
     QCheckBox *timingCheckBox;
     QLineEdit *timingTimeLineEdit;
     QComboBox *textFormatComboBox;
-    QLineEdit *remarkLineEdit;
+    QLineEdit *descriptionLineEdit;
     QTextEdit *inputDataTextEdit;
     QPushButton *updatePushButton;
 private slots:

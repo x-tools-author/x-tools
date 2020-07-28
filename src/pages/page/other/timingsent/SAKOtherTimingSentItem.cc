@@ -42,7 +42,7 @@ SAKOtherTimingSentItem::SAKOtherTimingSentItem(SAKDebugPage *debugPage,
 
     timingTimeLineEdit->setText(QString::number(interval));
     textFormatComboBox->setCurrentIndex(format);
-    remarkLineEdit->setText(comment);
+    descriptionLineEdit->setText(comment);
     inputDataTextEdit->setText(data);
 }
 
@@ -68,7 +68,7 @@ quint32 SAKOtherTimingSentItem::parameterFormat()
 
 QString SAKOtherTimingSentItem::parameterComment()
 {
-    return remarkLineEdit->text();
+    return descriptionLineEdit->text();
 }
 
 QString SAKOtherTimingSentItem::parameterData()
@@ -93,7 +93,7 @@ void SAKOtherTimingSentItem::initUi()
     timingCheckBox = ui->timingCheckBox;
     timingTimeLineEdit = ui->timingTimeLineEdit;
     textFormatComboBox = ui->textFormatComboBox;
-    remarkLineEdit = ui->remarkLineEdit;
+    descriptionLineEdit = ui->descriptionLineEdit;
     inputDataTextEdit = ui->inputDataTextEdit;
     updatePushButton = ui->updatePushButton;
 

@@ -32,7 +32,7 @@
     <widget class="QComboBox" name="textFormatComboBox"/>
    </item>
    <item row="0" column="5">
-    <widget class="QLineEdit" name="remarkLineEdit">
+    <widget class="QLineEdit" name="descriptionLineEdit">
      <property name="text">
       <string>定时发送</string>
      </property>
