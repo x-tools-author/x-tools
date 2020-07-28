@@ -33,8 +33,8 @@ SAKOtherTimingSentItem::SAKOtherTimingSentItem(SAKDebugPage *debugPage,
                                                quint64 id,
                                                quint32 interval,
                                                quint32 format,
-                                               QString comment,
-                                               QString data,
+                                               QString description,
+                                               QString text,
                                                QWidget *parent)
     :QWidget(parent)
     ,mDebugPage(debugPage)
@@ -46,8 +46,8 @@ SAKOtherTimingSentItem::SAKOtherTimingSentItem(SAKDebugPage *debugPage,
 
     mIntervalLineEdit->setText(QString::number(interval));
     mTextFormatComboBox->setCurrentIndex(format);
-    mDescriptionLineEdit->setText(comment);
-    mInputDataTextEdit->setText(data);
+    mDescriptionLineEdit->setText(description);
+    mInputDataTextEdit->setText(text);
     isInitializing = false;
 }
 

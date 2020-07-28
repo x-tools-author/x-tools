@@ -34,8 +34,8 @@ public:
                            quint64 mID,
                            quint32 interval,
                            quint32 format,
-                           QString comment,
-                           QString data,
+                           QString description,
+                           QString text,
                            QWidget *parent = Q_NULLPTR);
     ~SAKOtherTimingSentItem();
 
