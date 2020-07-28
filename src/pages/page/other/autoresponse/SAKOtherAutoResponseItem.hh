@@ -24,7 +24,7 @@ namespace Ui {
 }
 
 class SAKDebugPage;
-/// @brief 自动回复条目
+/// @brief Auto response item
 class SAKOtherAutoResponseItem:public QWidget
 {
     Q_OBJECT
