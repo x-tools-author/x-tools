@@ -21,11 +21,11 @@ SAKOtherAutoResponseItem::SAKOtherAutoResponseItem(SAKDebugPage *debugPage, QWid
     :QWidget(parent)
     ,mForbiddenAllAutoResponse(false)
     ,mDebugPage(debugPage)
-    ,ui(new Ui::SAKOtherAutoResponseItem)
+    ,mUi(new Ui::SAKOtherAutoResponseItem)
 {
     initUi();
     mID = QDateTime::currentMSecsSinceEpoch();
-    remarkLineEdit->setText(QString::number(mID));
+    mDescriptionLineEdit->setText(QString::number(mID));
     initDelayWritingTimer();
 }
 
@@ -43,22 +43,22 @@ SAKOtherAutoResponseItem::SAKOtherAutoResponseItem(SAKDebugPage *debugPage,
     ,mForbiddenAllAutoResponse(false)
     ,mDebugPage(debugPage)
     ,mID(id)
-    ,ui(new Ui::SAKOtherAutoResponseItem)
+    ,mUi(new Ui::SAKOtherAutoResponseItem)
 {
     initUi();
-    remarkLineEdit->setText(name);
-    referenceLineEdit->setText(referenceData);
-    responseLineEdit->setText(responseData);
+    mDescriptionLineEdit->setText(name);
+    mReferenceLineEdit->setText(referenceData);
+    mResponseLineEdit->setText(responseData);
     enableCheckBox->setChecked(enabled);
-    referenceDataFromatComboBox->setCurrentIndex(referenceFormat);
-    responseDataFormatComboBox->setCurrentIndex(responseFormat);
-    optionComboBox->setCurrentIndex(option);
+    mReferenceDataFromatComboBox->setCurrentIndex(referenceFormat);
+    mResponseDataFormatComboBox->setCurrentIndex(responseFormat);
+    mOptionComboBox->setCurrentIndex(option);
     initDelayWritingTimer();
 }
 
 SAKOtherAutoResponseItem::~SAKOtherAutoResponseItem()
 {
-    delete ui;
+    delete mUi;
 }
 
 void SAKOtherAutoResponseItem::setAllAutoResponseDisable(bool disable)
@@ -73,17 +73,17 @@ quint64 SAKOtherAutoResponseItem::itemID()
 
 QString SAKOtherAutoResponseItem::itemDescription()
 {
-    return remarkLineEdit->text();
+    return mDescriptionLineEdit->text();
 }
 
 QString SAKOtherAutoResponseItem::itemRefernceText()
 {
-    return referenceLineEdit->text();
+    return mReferenceLineEdit->text();
 }
 
 QString SAKOtherAutoResponseItem::itemResponseText()
 {
-    return responseLineEdit->text();
+    return mResponseLineEdit->text();
 }
 
 bool SAKOtherAutoResponseItem::itemEnable()
@@ -93,17 +93,17 @@ bool SAKOtherAutoResponseItem::itemEnable()
 
 quint32 SAKOtherAutoResponseItem::itemReferenceFormat()
 {
-    return referenceDataFromatComboBox->currentIndex();
+    return mReferenceDataFromatComboBox->currentIndex();
 }
 
 quint32 SAKOtherAutoResponseItem::itemResponseFormat()
 {
-    return responseDataFormatComboBox->currentIndex();
+    return mResponseDataFormatComboBox->currentIndex();
 }
 
 quint32 SAKOtherAutoResponseItem::itemOption()
 {
-    return optionComboBox->currentIndex();
+    return mOptionComboBox->currentIndex();
 }
 
 void SAKOtherAutoResponseItem::setLineEditFormat(QLineEdit *lineEdit, int format)
@@ -157,18 +157,18 @@ void SAKOtherAutoResponseItem::bytesRead(QByteArray bytes)
     }
 
     /// @brief 判断是否回复
-    QString referenceString = referenceLineEdit->text();
-    int referenceFormat = referenceDataFromatComboBox->currentData().toInt();
+    QString referenceString = mReferenceLineEdit->text();
+    int referenceFormat = mReferenceDataFromatComboBox->currentData().toInt();
     QByteArray referenceData = string2array(referenceString, referenceFormat);
-    if (response(bytes, referenceData, optionComboBox->currentData().toInt())){
-         QString responseString = responseLineEdit->text();
-         int responseFromat = responseDataFormatComboBox->currentData().toInt();
+    if (response(bytes, referenceData, mOptionComboBox->currentData().toInt())){
+         QString responseString = mResponseLineEdit->text();
+         int responseFromat = mResponseDataFormatComboBox->currentData().toInt();
          QByteArray responseData = string2array(responseString, responseFromat);
 
          if (!responseData.isEmpty()){
              /// @brief 延时回复
-             if (delayResponseCheckBox->isChecked()){
-                quint32 delayTime = delayResponseLineEdit->text().toUInt();
+             if (mDelayResponseCheckBox->isChecked()){
+                quint32 delayTime = mDelayResponseLineEdit->text().toUInt();
                 if (delayTime < 40){
                     delayTime = 20;
                 }
@@ -252,25 +252,24 @@ bool SAKOtherAutoResponseItem::response(QByteArray receiveData, QByteArray refer
 
 void SAKOtherAutoResponseItem::initUi()
 {
-    ui->setupUi(this);
-    remarkLineEdit = ui->remarkLineEdit;
-    referenceLineEdit = ui->referenceLineEdit;
-    responseLineEdit = ui->responseLineEdit;
-    enableCheckBox = ui->enableCheckBox;
-    optionComboBox = ui->optionComboBox;
-    updatePushButton = ui->updatePushButton;
-    referenceDataFromatComboBox = ui->referenceDataFromatComboBox;
-    responseDataFormatComboBox  = ui->responseDataFormatComboBox;
-    delayResponseCheckBox = ui->delayResponseCheckBox;
-    delayResponseLineEdit = ui->delayResponseLineEdit;
+    mUi->setupUi(this);
+    mDescriptionLineEdit = mUi->descriptionLineEdit;
+    mReferenceLineEdit = mUi->referenceLineEdit;
+    mResponseLineEdit = mUi->responseLineEdit;
+    enableCheckBox = mUi->enableCheckBox;
+    mOptionComboBox = mUi->optionComboBox;
+    mReferenceDataFromatComboBox = mUi->referenceDataFromatComboBox;
+    mResponseDataFormatComboBox  = mUi->responseDataFormatComboBox;
+    mDelayResponseCheckBox = mUi->delayResponseCheckBox;
+    mDelayResponseLineEdit = mUi->delayResponseLineEdit;
 
-    optionComboBox->clear();
-    optionComboBox->addItem(tr("接收数据等于参考数据时自动回复"), QVariant::fromValue<int>(SAKDataStruct::AutoResponseOptionEqual));
-    optionComboBox->addItem(tr("接收数据包含参考数据时自动回复"), QVariant::fromValue<int>(SAKDataStruct::AutoResponseOptionContain));
-    optionComboBox->addItem(tr("接收数据不包含参考数据时自动回复"), QVariant::fromValue<int>(SAKDataStruct::AutoResponseOptionDoNotContain));
+    mOptionComboBox->clear();
+    mOptionComboBox->addItem(tr("接收数据等于参考数据时自动回复"), QVariant::fromValue<int>(SAKDataStruct::AutoResponseOptionEqual));
+    mOptionComboBox->addItem(tr("接收数据包含参考数据时自动回复"), QVariant::fromValue<int>(SAKDataStruct::AutoResponseOptionContain));
+    mOptionComboBox->addItem(tr("接收数据不包含参考数据时自动回复"), QVariant::fromValue<int>(SAKDataStruct::AutoResponseOptionDoNotContain));
 
-    SAKGlobal::initInputTextFormatComboBox(referenceDataFromatComboBox);
-    SAKGlobal::initInputTextFormatComboBox(responseDataFormatComboBox);
+    SAKGlobal::initInputTextFormatComboBox(mReferenceDataFromatComboBox);
+    SAKGlobal::initInputTextFormatComboBox(mResponseDataFormatComboBox);
 
     connect(mDebugPage, &SAKDebugPage::bytesRead, this, &SAKOtherAutoResponseItem::bytesRead);
 }
@@ -312,12 +311,12 @@ void SAKOtherAutoResponseItem::delayToWritBytes()
 
 void SAKOtherAutoResponseItem::on_referenceDataFromatComboBox_currentTextChanged()
 {
-    setLineEditFormat(referenceLineEdit, referenceDataFromatComboBox->currentData().toInt());
+    setLineEditFormat(mReferenceLineEdit, mReferenceDataFromatComboBox->currentData().toInt());
 }
 
 void SAKOtherAutoResponseItem::on_responseDataFormatComboBox_currentTextChanged()
 {
-    setLineEditFormat(responseLineEdit, responseDataFormatComboBox->currentData().toInt());
+    setLineEditFormat(mResponseLineEdit, mResponseDataFormatComboBox->currentData().toInt());
 }
 
 void SAKOtherAutoResponseItem::on_updatePushButton_clicked()

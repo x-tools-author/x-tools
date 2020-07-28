@@ -48,6 +48,7 @@ public:
      */
     void setAllAutoResponseDisable(bool disable);
 
+    // Get parameters
     quint64 itemID();
     QString itemDescription();
     QString itemRefernceText();
@@ -77,17 +78,16 @@ private:
     void initDelayWritingTimer();
     void delayToWritBytes();
 private:
-    Ui::SAKOtherAutoResponseItem *ui;
-    QLineEdit *remarkLineEdit;
-    QLineEdit *referenceLineEdit;
-    QLineEdit *responseLineEdit;
+    Ui::SAKOtherAutoResponseItem *mUi;
+    QLineEdit *mDescriptionLineEdit;
+    QLineEdit *mReferenceLineEdit;
+    QLineEdit *mResponseLineEdit;
     QCheckBox *enableCheckBox;
-    QComboBox *optionComboBox;
-    QComboBox *referenceDataFromatComboBox;
-    QComboBox *responseDataFormatComboBox;
-    QPushButton *updatePushButton;
-    QCheckBox *delayResponseCheckBox;
-    QLineEdit *delayResponseLineEdit;
+    QComboBox *mOptionComboBox;
+    QComboBox *mReferenceDataFromatComboBox;
+    QComboBox *mResponseDataFormatComboBox;
+    QCheckBox *mDelayResponseCheckBox;
+    QLineEdit *mDelayResponseLineEdit;
 private slots:
     void on_referenceDataFromatComboBox_currentTextChanged();
     void on_responseDataFormatComboBox_currentTextChanged();

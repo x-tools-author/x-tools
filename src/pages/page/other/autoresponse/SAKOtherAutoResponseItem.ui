@@ -77,16 +77,6 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="2">
-    <widget class="QCheckBox" name="enableCheckBox">
-     <property name="text">
-      <string>启用</string>
-     </property>
-     <property name="checked">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
    <item row="3" column="1">
     <widget class="QComboBox" name="optionComboBox">
      <property name="sizePolicy">
@@ -124,16 +114,6 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="3">
-    <widget class="QPushButton" name="updatePushButton">
-     <property name="toolTip">
-      <string>更新数据库中相应的数据记录</string>
-     </property>
-     <property name="text">
-      <string>更新记录</string>
-     </property>
-    </widget>
-   </item>
    <item row="2" column="1">
     <widget class="QLineEdit" name="responseLineEdit">
      <property name="text">
@@ -142,7 +122,7 @@
     </widget>
    </item>
    <item row="0" column="1">
-    <widget class="QLineEdit" name="remarkLineEdit">
+    <widget class="QLineEdit" name="descriptionLineEdit">
      <property name="text">
       <string notr="true">示例</string>
      </property>
@@ -152,6 +132,16 @@
     <widget class="Line" name="line">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2" colspan="2">
+    <widget class="QCheckBox" name="enableCheckBox">
+     <property name="text">
+      <string>启用</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
      </property>
     </widget>
    </item>
