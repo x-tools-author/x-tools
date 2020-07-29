@@ -16,13 +16,13 @@
 #include <QLineEdit>
 #include <QUdpSocket>
 
-#include "SAKBaseTransmissionItemWidget.hh"
+#include "SAKOtherTransmissionItem.hh"
 
 namespace Ui {
     class SAKUdpTransmissionItemWidget;
 }
 
-class SAKUdpTransmissionItemWidget:public SAKBaseTransmissionItemWidget
+class SAKUdpTransmissionItemWidget:public SAKOtherTransmissionItem
 {
     Q_OBJECT
 public:

@@ -12,7 +12,7 @@
 #include "SAKTransmissionPage.hh"
 #include "SAKUdpTransmissionItemWidget.hh"
 #include "SAKTcpTransmissionItemWidget.hh"
-#include "SAKBaseTransmissionItemWidget.hh"
+#include "SAKOtherTransmissionItem.hh"
 #include "SAKSerialPortTransmissionItemWidget.hh"
 
 #include "ui_SAKTransmissionPage.h"
@@ -82,8 +82,8 @@ void SAKTransmissionPage::on_addItemPushButton_clicked()
     }
     item->setSizeHint(QSize(itemWidget->width(), itemWidget->height()));
     listWidget->setItemWidget(item, itemWidget);
-    SAKBaseTransmissionItemWidget *baseItemWidget = reinterpret_cast<SAKBaseTransmissionItemWidget*>(itemWidget);
-    connect(baseItemWidget, &SAKBaseTransmissionItemWidget::requestOutputMessage, this, &SAKTransmissionPage::outputMessage);
+    SAKOtherTransmissionItem *baseItemWidget = reinterpret_cast<SAKOtherTransmissionItem*>(itemWidget);
+    connect(baseItemWidget, &SAKOtherTransmissionItem::requestOutputMessage, this, &SAKTransmissionPage::outputMessage);
 }
 
 void SAKTransmissionPage::on_deleteItemPushButton_clicked()

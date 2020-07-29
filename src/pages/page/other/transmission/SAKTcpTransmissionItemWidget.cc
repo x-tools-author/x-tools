@@ -15,7 +15,7 @@
 #include "ui_SAKTcpTransmissionItemWidget.h"
 
 SAKTcpTransmissionItemWidget::SAKTcpTransmissionItemWidget(SAKDebugPage *_debugPage, QWidget *parent)
-    :SAKBaseTransmissionItemWidget (_debugPage, parent)
+    :SAKOtherTransmissionItem (_debugPage, parent)
     ,ui (new Ui::SAKTcpTransmissionItemWidget)
     ,tcpSocket (Q_NULLPTR)
 {

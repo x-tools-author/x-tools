@@ -190,7 +190,7 @@ HEADERS += \
     src/pages/page/other/highlighter/SAKOtherHighlighterManager.hh \
     src/pages/page/other/timingsent/SAKOtherTimingSentItem.hh \
     src/pages/page/other/timingsent/SAKOtherTimingSentItemManager.hh \
-    src/pages/page/other/transmission/SAKBaseTransmissionItemWidget.hh \
+    src/pages/page/other/transmission/SAKOtherTransmissionItem.hh \
     src/pages/page/other/transmission/SAKSerialPortTransmissionItemWidget.hh \
     src/pages/page/other/transmission/SAKTcpTransmissionItemWidget.hh \
     src/pages/page/other/transmission/SAKTransmissionItemDelegate.hh \
@@ -247,7 +247,7 @@ SOURCES += \
     src/pages/page/other/highlighter/SAKOtherHighlighterManager.cc \
     src/pages/page/other/timingsent/SAKOtherTimingSentItem.cc \
     src/pages/page/other/timingsent/SAKOtherTimingSentItemManager.cc \
-    src/pages/page/other/transmission/SAKBaseTransmissionItemWidget.cc \
+    src/pages/page/other/transmission/SAKOtherTransmissionItem.cc \
     src/pages/page/other/transmission/SAKSerialPortTransmissionItemWidget.cc \
     src/pages/page/other/transmission/SAKTcpTransmissionItemWidget.cc \
     src/pages/page/other/transmission/SAKTransmissionItemDelegate.cc \

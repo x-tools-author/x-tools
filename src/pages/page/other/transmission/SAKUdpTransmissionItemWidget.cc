@@ -13,7 +13,7 @@
 #include "ui_SAKUdpTransmissionItemWidget.h"
 
 SAKUdpTransmissionItemWidget::SAKUdpTransmissionItemWidget(SAKDebugPage *_debugPage, QWidget *parent)
-    :SAKBaseTransmissionItemWidget (_debugPage, parent)
+    :SAKOtherTransmissionItem (_debugPage, parent)
     ,ui(new Ui::SAKUdpTransmissionItemWidget)
     ,udpSocket (Q_NULLPTR)
 {

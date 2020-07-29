@@ -7,25 +7,22 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKBASETRANSMISSSIONITEMWIDGET_HH
-#define SAKBASETRANSMISSSIONITEMWIDGET_HH
+#ifndef SAKOTHERTRANSMISSIONITEM_HH
+#define SAKOTHERTRANSMISSIONITEM_HH
 
 #include <QWidget>
 #include <QIODevice>
 
 class SAKDebugPage;
-class SAKBaseTransmissionItemWidget:public QWidget
+/// @brief base transmission item
+class SAKOtherTransmissionItem:public QWidget
 {
     Q_OBJECT
 public:
-    SAKBaseTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent);
-
-    /// 转发函数，子类必须重新实现
+    SAKOtherTransmissionItem(SAKDebugPage *debugPage, QWidget *parent);
     virtual void write(QByteArray data);
 signals:
-    /// 读取数据后，发射该信号
     void bytesRead(QByteArray data);
-    /// 输出消息
     void requestOutputMessage(QString info, bool isInfo = true);
 protected:
     SAKDebugPage *debugPage;

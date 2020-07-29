@@ -8,17 +8,17 @@
  * the file LICENCE in the root of the source code directory.
  */
 #include "SAKDebugPage.hh"
-#include "SAKBaseTransmissionItemWidget.hh"
+#include "SAKOtherTransmissionItem.hh"
 
-SAKBaseTransmissionItemWidget::SAKBaseTransmissionItemWidget(SAKDebugPage *debugPage, QWidget *parent)
+SAKOtherTransmissionItem::SAKOtherTransmissionItem(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget (parent)
     ,debugPage (debugPage)
 {
-    connect(debugPage, &SAKDebugPage::bytesRead, this, &SAKBaseTransmissionItemWidget::write);
-    connect(this, &SAKBaseTransmissionItemWidget::bytesRead, debugPage, &SAKDebugPage::write);
+    connect(debugPage, &SAKDebugPage::bytesRead, this, &SAKOtherTransmissionItem::write);
+    connect(this, &SAKOtherTransmissionItem::bytesRead, debugPage, &SAKDebugPage::write);
 }
 
-void SAKBaseTransmissionItemWidget::write(QByteArray data)
+void SAKOtherTransmissionItem::write(QByteArray data)
 {
     Q_UNUSED(data);
 }

@@ -21,14 +21,14 @@
 #include <QSerialPort>
 #endif
 
-#include "SAKBaseTransmissionItemWidget.hh"
+#include "SAKOtherTransmissionItem.hh"
 
 namespace Ui {
     class SAKSerialPortTransmissionItemWidget;
 }
 
 class SAKDebugPage;
-class SAKSerialPortTransmissionItemWidget:public SAKBaseTransmissionItemWidget
+class SAKSerialPortTransmissionItemWidget:public SAKOtherTransmissionItem
 {
     Q_OBJECT
 public:

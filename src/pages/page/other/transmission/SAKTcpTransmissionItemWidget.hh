@@ -15,13 +15,13 @@
 #include <QComboBox>
 #include <QLineEdit>
 #include <QTcpSocket>
-#include "SAKBaseTransmissionItemWidget.hh"
+#include "SAKOtherTransmissionItem.hh"
 
 namespace Ui {
     class SAKTcpTransmissionItemWidget;
 }
 
-class SAKTcpTransmissionItemWidget:public SAKBaseTransmissionItemWidget
+class SAKTcpTransmissionItemWidget:public SAKOtherTransmissionItem
 {
     Q_OBJECT
 public:

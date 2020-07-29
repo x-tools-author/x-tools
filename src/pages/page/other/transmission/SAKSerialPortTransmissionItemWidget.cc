@@ -17,13 +17,13 @@ Q_DECLARE_METATYPE(QSerialPortInfo)
 
 #include "SAKGlobal.hh"
 #include "SAKDebugPage.hh"
-#include "SAKBaseTransmissionItemWidget.hh"
+#include "SAKOtherTransmissionItem.hh"
 #include "SAKSerialPortTransmissionItemWidget.hh"
 
 #include "ui_SAKSerialPortTransmissionItemWidget.h"
 
 SAKSerialPortTransmissionItemWidget::SAKSerialPortTransmissionItemWidget(SAKDebugPage *_debugPage, QWidget *parent)
-    :SAKBaseTransmissionItemWidget (_debugPage, parent)
+    :SAKOtherTransmissionItem (_debugPage, parent)
 #ifdef SAK_IMPORT_COM_MODULE
     ,ui (new Ui::SAKSerialPortTransmissionItemWidget)
     ,serialPort (Q_NULLPTR)
