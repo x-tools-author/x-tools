@@ -14,40 +14,40 @@
 #include <QThread>
 #include <QWaitCondition>
 
-/// @brief 协议分析器，按照指定的数据格式分析数据
+/// @brief data analyzer
 class SAKOtherAnalyzerThread:public QThread
 {
     Q_OBJECT
 public:
-    /// @brief 参数上下文
+    /// @brief Analyzing parameters
     struct ParametersContext {
-        bool enable; // 协议分析提取功能是否生效（使能），true表示使能
-        bool fixed; // 协议帧长度是否固定，true表示固定
-        qint32 length; // 协议的固定长度，fixed为true时该参数可用
-        QByteArray startArray; // 协议起始标志，fixed为false时该参数可用
-        QByteArray endArray;    // 协议结束标志，fixed为false时该参数可用
+        bool enable; // true-enable analyzing, false-diable analyzing
+        bool fixed; // true-the bytes of frame is fixed
+        qint32 length; // the length of frame
+        QByteArray startArray; // start bytes of frame
+        QByteArray endArray; // end bytes of frame
     };
 
     SAKOtherAnalyzerThread(QObject *parent = Q_NULLPTR);
     ~SAKOtherAnalyzerThread();
 
     /**
-     * @brief clearRawData 清空待处理的数据
+     * @brief clearData: Clear the temp data
      */
     void clearData();
 
     /**
-     * @brief wakeMe 唤醒
+     * @brief wakeMe: Wake the thread to analyze bytes
      */
     void wakeMe();
 
     /**
-     * @brief inputBytes 添加数据
-     * @param array 待分析数据
+     * @brief inputBytes: Input bytes that need to be analyzed
+     * @param array: The bytes that need to be analyzed
      */
     void inputBytes(QByteArray array);
 
-    /// @brief 以下是参数设置接口
+    // Interfaces of setting parameters
     void setEnable(bool enable);
     void setFixed(bool fixed);
     void setLength(int length);
@@ -63,7 +63,7 @@ private:
     ParametersContext mParameters;
     QMutex mParametersMutex;
 signals:
-    /// @brief 分析到一帧数据后，数据帧通过该接口对外发送
+    // Bytes that analyzed will be emited
     void bytesAnalized(QByteArray bytes);
 };
 
