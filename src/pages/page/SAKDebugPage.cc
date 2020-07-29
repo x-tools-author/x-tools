@@ -27,7 +27,7 @@
 #include "SAKCRCInterface.hh"
 #include "SAKDebugPageDevice.hh"
 #include "SAKOtherAnalyzerThread.hh"
-#include "SAKOtherAnalyzerSettingsWidget.hh"
+#include "SAKOtherAnalyzerThreadManager.hh"
 #include "SAKHighlightSettingsWidget.hh"
 #include "SAKDebugPageOtherController.hh"
 #include "SAKDebugPageInputController.hh"

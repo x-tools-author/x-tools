@@ -11,11 +11,11 @@
 #include <QRegExpValidator>
 
 #include "SAKOtherAnalyzerThread.hh"
-#include "SAKOtherAnalyzerSettingsWidget.hh"
+#include "SAKOtherAnalyzerThreadManager.hh"
 
-#include "ui_SAKProtocolAnalyzerWidget.h"
+#include "ui_SAKOtherAnalyzerThreadManager.h"
 
-SAKOtherAnalyzerSettingsWidget::SAKOtherAnalyzerSettingsWidget(QSettings *settings, QWidget *parent)
+SAKOtherAnalyzerThreadManager::SAKOtherAnalyzerThreadManager(QSettings *settings, QWidget *parent)
     :QWidget(parent)
     ,mSettingKeyFixed(QString("DebugPage/protocolAnalyzerFixed"))
     ,mSettingKeyLenth(QString("DebugPage/protocolAnalyzerLength"))
@@ -24,7 +24,7 @@ SAKOtherAnalyzerSettingsWidget::SAKOtherAnalyzerSettingsWidget(QSettings *settin
     ,mSettingKeyEnable(QString("DebugPage/protocolAnalyzerEnable"))
     ,mSettings(settings)
     ,mAnalyzer(new SAKOtherAnalyzerThread)
-    ,mUi(new Ui::SAKProtocolAnalyzerWidget)
+    ,mUi(new Ui::SAKOtherAnalyzerThreadManager)
 {
     mUi->setupUi(this);
     mFixedLengthCheckBox = mUi->fixedLengthCheckBox;
@@ -36,7 +36,7 @@ SAKOtherAnalyzerSettingsWidget::SAKOtherAnalyzerSettingsWidget(QSettings *settin
 
     setLineEditFormat(mStartLineEdit);
     setLineEditFormat(mEndLineEdit);
-    connect(mAnalyzer, &SAKOtherAnalyzerThread::bytesAnalized, this, &SAKOtherAnalyzerSettingsWidget::bytesAnalysed);
+    connect(mAnalyzer, &SAKOtherAnalyzerThread::bytesAnalized, this, &SAKOtherAnalyzerThreadManager::bytesAnalysed);
     mAnalyzer->start();
 
     Q_ASSERT_X(settings, __FUNCTION__, "The parameter can not be nullptr!");
@@ -50,18 +50,18 @@ SAKOtherAnalyzerSettingsWidget::SAKOtherAnalyzerSettingsWidget(QSettings *settin
     }
 }
 
-SAKOtherAnalyzerSettingsWidget::~SAKOtherAnalyzerSettingsWidget()
+SAKOtherAnalyzerThreadManager::~SAKOtherAnalyzerThreadManager()
 {
     delete mUi;
     delete mAnalyzer;
 }
 
-void SAKOtherAnalyzerSettingsWidget::inputBytes(QByteArray bytes)
+void SAKOtherAnalyzerThreadManager::inputBytes(QByteArray bytes)
 {
     mAnalyzer->inputBytes(bytes);
 }
 
-void SAKOtherAnalyzerSettingsWidget::setLineEditFormat(QLineEdit *lineEdit)
+void SAKOtherAnalyzerThreadManager::setLineEditFormat(QLineEdit *lineEdit)
 {
     QRegExp regExpHex("([0-9A-F][0-9A-F][ ])*");
     if (lineEdit){
@@ -70,7 +70,7 @@ void SAKOtherAnalyzerSettingsWidget::setLineEditFormat(QLineEdit *lineEdit)
     }
 }
 
-void SAKOtherAnalyzerSettingsWidget::on_fixedLengthCheckBox_clicked()
+void SAKOtherAnalyzerThreadManager::on_fixedLengthCheckBox_clicked()
 {
     mAnalyzer->setFixed(mFixedLengthCheckBox->isChecked());
     if (mSettings){
@@ -78,7 +78,7 @@ void SAKOtherAnalyzerSettingsWidget::on_fixedLengthCheckBox_clicked()
     }
 }
 
-void SAKOtherAnalyzerSettingsWidget::on_lengthLineEdit_textChanged(const QString &text)
+void SAKOtherAnalyzerThreadManager::on_lengthLineEdit_textChanged(const QString &text)
 {
     mAnalyzer->setLength(text.toInt());
     if (mSettings){
@@ -86,7 +86,7 @@ void SAKOtherAnalyzerSettingsWidget::on_lengthLineEdit_textChanged(const QString
     }
 }
 
-void SAKOtherAnalyzerSettingsWidget::on_startLineEdit_textChanged(const QString &text)
+void SAKOtherAnalyzerThreadManager::on_startLineEdit_textChanged(const QString &text)
 {
     text.trimmed();
     QStringList list = text.split(' ');
@@ -101,7 +101,7 @@ void SAKOtherAnalyzerSettingsWidget::on_startLineEdit_textChanged(const QString 
     }
 }
 
-void SAKOtherAnalyzerSettingsWidget::on_endLineEdit_textChanged(const QString &text)
+void SAKOtherAnalyzerThreadManager::on_endLineEdit_textChanged(const QString &text)
 {
     text.trimmed();
     QStringList list = text.split(' ');
@@ -116,7 +116,7 @@ void SAKOtherAnalyzerSettingsWidget::on_endLineEdit_textChanged(const QString &t
     }
 }
 
-void SAKOtherAnalyzerSettingsWidget::on_disableCheckBox_clicked()
+void SAKOtherAnalyzerThreadManager::on_disableCheckBox_clicked()
 {
     mAnalyzer->setEnable(!mDisableCheckBox->isChecked());
     if (mSettings){
@@ -124,7 +124,7 @@ void SAKOtherAnalyzerSettingsWidget::on_disableCheckBox_clicked()
     }
 }
 
-void SAKOtherAnalyzerSettingsWidget::on_clearPushButton_clicked()
+void SAKOtherAnalyzerThreadManager::on_clearPushButton_clicked()
 {
     mAnalyzer->clearData();
 }

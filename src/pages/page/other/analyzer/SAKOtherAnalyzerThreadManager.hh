@@ -17,17 +17,17 @@
 #include <QPushButton>
 
 namespace Ui {
-    class SAKProtocolAnalyzerWidget;
+    class SAKOtherAnalyzerThreadManager;
 }
 
 class SAKOtherAnalyzerThread;
 /// @brief 协议分析面板
-class SAKOtherAnalyzerSettingsWidget:public QWidget
+class SAKOtherAnalyzerThreadManager:public QWidget
 {
     Q_OBJECT
 public:
-    SAKOtherAnalyzerSettingsWidget(QSettings *settings, QWidget *parent = Q_NULLPTR);
-    ~SAKOtherAnalyzerSettingsWidget();
+    SAKOtherAnalyzerThreadManager(QSettings *settings, QWidget *parent = Q_NULLPTR);
+    ~SAKOtherAnalyzerThreadManager();
 
     /**
      * @brief inputBytes 数据输入接口
@@ -47,7 +47,7 @@ private:
 private:
     void setLineEditFormat(QLineEdit *lineEdit);
 private:
-    Ui::SAKProtocolAnalyzerWidget *mUi;
+    Ui::SAKOtherAnalyzerThreadManager *mUi;
     QCheckBox *mFixedLengthCheckBox;
     QLineEdit *mLengthLineEdit;
     QLineEdit *mStartLineEdit;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SAKOtherAnalyzerSettingsWidget</class>
- <widget class="QWidget" name="SAKOtherAnalyzerSettingsWidget">
+ <class>SAKOtherAnalyzerThreadManager</class>
+ <widget class="QWidget" name="SAKOtherAnalyzerThreadManager">
   <property name="geometry">
    <rect>
     <x>0</x>
