@@ -38,11 +38,8 @@ void SAKOtherAnalyzerThread::run()
     QEventLoop eventLoop;
     int maxTempLength = 2048;
     while (1) {
-        /// @brief 处理外部中断事件
-        if (isInterruptionRequested()){
-            break;
-        }
-
+        // Handle signal and slots
+        eventLoop.processEvents();
         /// @brief 获取参数
         mParametersMutex.lock();
         ParametersContext parameters = mParameters;
@@ -117,12 +114,12 @@ void SAKOtherAnalyzerThread::run()
         mWaitingAnalyzingBytesMutex.unlock();
 
         if (!isInterruptionRequested()){
-            /// @brief 处理事件吹动
-            eventLoop.processEvents();
             /// @brief 每隔20毫秒处理一次数据
             mThreadMutex.lock();
             mThreadCondition.wait(&mThreadMutex, 20);
             mThreadMutex.unlock();
+        }else{
+            break;
         }
     }
 }
