@@ -11,13 +11,13 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string notr="true">协议分析</string>
+   <string notr="true">Data analyzer</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="2" column="0">
     <widget class="QLabel" name="label_2">
      <property name="text">
-      <string>协议结束标志</string>
+      <string>End bytes</string>
      </property>
     </widget>
    </item>
@@ -37,7 +37,7 @@
    <item row="0" column="0">
     <widget class="QCheckBox" name="fixedLengthCheckBox">
      <property name="text">
-      <string>固定长度</string>
+      <string>Fixed length</string>
      </property>
     </widget>
    </item>
@@ -50,7 +50,7 @@
       </sizepolicy>
      </property>
      <property name="text">
-      <string>禁用协议分析功能</string>
+      <string>Disable data analyzer</string>
      </property>
      <property name="checked">
       <bool>true</bool>
@@ -60,14 +60,17 @@
    <item row="1" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>协议起始标志</string>
+      <string>Start bytes</string>
      </property>
     </widget>
    </item>
    <item row="3" column="3">
     <widget class="QPushButton" name="clearPushButton">
+     <property name="toolTip">
+      <string>Empty temp data</string>
+     </property>
      <property name="text">
-      <string>清空数据缓存</string>
+      <string>EmptyData</string>
      </property>
     </widget>
    </item>
@@ -85,10 +88,18 @@
     </spacer>
    </item>
    <item row="2" column="1" colspan="3">
-    <widget class="QLineEdit" name="endLineEdit"/>
+    <widget class="QLineEdit" name="endLineEdit">
+     <property name="text">
+      <string notr="true"/>
+     </property>
+    </widget>
    </item>
    <item row="1" column="1" colspan="3">
-    <widget class="QLineEdit" name="startLineEdit"/>
+    <widget class="QLineEdit" name="startLineEdit">
+     <property name="text">
+      <string notr="true"/>
+     </property>
+    </widget>
    </item>
    <item row="0" column="1" colspan="3">
     <widget class="QLineEdit" name="lengthLineEdit">
@@ -105,7 +116,7 @@
 }</string>
      </property>
      <property name="text">
-      <string>数据超过2048字节后将强制输出</string>
+      <string>Temp data will be empty when it is more than 2048 bytes</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
