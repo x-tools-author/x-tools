@@ -37,11 +37,6 @@ public:
     void clearData();
 
     /**
-     * @brief wakeMe: Wake the thread to analyze bytes
-     */
-    void wakeMe();
-
-    /**
      * @brief inputBytes: Input bytes that need to be analyzed
      * @param array: The bytes that need to be analyzed
      */

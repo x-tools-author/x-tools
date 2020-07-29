@@ -25,7 +25,7 @@ SAKOtherAnalyzerThread::SAKOtherAnalyzerThread(QObject *parent)
 SAKOtherAnalyzerThread::~SAKOtherAnalyzerThread()
 {
     requestInterruption();
-    wakeMe();
+    mThreadCondition.wakeAll();
     exit();
     wait();
 #ifdef QT_DEBUG
@@ -132,11 +132,6 @@ void SAKOtherAnalyzerThread::clearData()
     mWaitingAnalyzingBytesMutex.lock();
     mWaitingAnalyzingBytes.clear();
     mWaitingAnalyzingBytesMutex.unlock();
-}
-
-void SAKOtherAnalyzerThread::wakeMe()
-{
-    mThreadCondition.wakeAll();
 }
 
 void SAKOtherAnalyzerThread::inputBytes(QByteArray array)
