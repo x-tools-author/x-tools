@@ -30,7 +30,6 @@
 #include "SAKMoreSettingsWidget.hh"
 #include "SAKProtocolAnalyzerWidget.hh"
 #include "SAKHighlightSettingsWidget.hh"
-#include "SAKReadWriteSettingsWidget.hh"
 #include "SAKDebugPageOtherController.hh"
 #include "SAKDebugPageInputController.hh"
 #include "SAKDebugPageOutputController.hh"
@@ -64,9 +63,6 @@ SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
     mChartsController= new SAKDebugPageChartsController(this);
 #endif
 
-    mRreadWriteParameters.waitForReadyReadTime = MINI_READ_WRITE_WATINGT_TIME;
-    mRreadWriteParameters.waitForBytesWrittenTime = MINI_READ_WRITE_WATINGT_TIME;
-    mRreadWriteParameters.runIntervalTime = 25;
 #if 0
     resize(800, 600);
 #endif
@@ -129,34 +125,6 @@ void SAKDebugPage::outputMessage(QString msg, bool isInfo)
     msg.prepend(time);
     mInfoLabel->setText(msg);
     mClearInfoTimer.start();
-}
-
-struct SAKDebugPage::ReadWriteParameters SAKDebugPage::readWriteParameters()
-{
-    ReadWriteParameters parameters;
-    mReadWriteParametersMutex.lock();
-    parameters.waitForReadyReadTime = mRreadWriteParameters.waitForReadyReadTime;
-    parameters.waitForBytesWrittenTime = mRreadWriteParameters.waitForBytesWrittenTime;
-    parameters.runIntervalTime = mRreadWriteParameters.runIntervalTime;
-    mReadWriteParametersMutex.unlock();
-
-    return  parameters;
-}
-
-void SAKDebugPage::setReadWriteParameters(struct ReadWriteParameters parameters)
-{
-    if (parameters.waitForReadyReadTime < MINI_READ_WRITE_WATINGT_TIME){
-        parameters.waitForReadyReadTime = MINI_READ_WRITE_WATINGT_TIME;
-    }
-
-    if (parameters.waitForBytesWrittenTime < MINI_READ_WRITE_WATINGT_TIME){
-        parameters.waitForBytesWrittenTime = MINI_READ_WRITE_WATINGT_TIME;
-    }
-
-    mReadWriteParametersMutex.lock();
-    mRreadWriteParameters.waitForReadyReadTime = parameters.waitForReadyReadTime;
-    mRreadWriteParameters.waitForBytesWrittenTime = parameters.waitForBytesWrittenTime;
-    mReadWriteParametersMutex.unlock();
 }
 
 quint32 SAKDebugPage::pageType()

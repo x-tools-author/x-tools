@@ -93,7 +93,7 @@ void SAKTcpServerDevice::run()
 
         /// @brief 线程睡眠
         mThreadMutex.lock();
-        mThreadWaitCondition.wait(&mThreadMutex, debugPage->readWriteParameters().runIntervalTime);
+        mThreadWaitCondition.wait(&mThreadMutex, SAK_DEVICE_THREAD_SLEEP_INTERVAL);
         mThreadMutex.unlock();
     }
 
@@ -104,7 +104,7 @@ void SAKTcpServerDevice::run()
 
 void SAKTcpServerDevice::innerReadBytes(QTcpSocket *socket, SAKTcpServerDeviceController *deviceController)
 {        
-    socket->waitForReadyRead(debugPage->readWriteParameters().waitForReadyReadTime);
+//    socket->waitForReadyRead(debugPage->readWriteParameters().waitForReadyReadTime);
     QByteArray bytes = socket->readAll();
     QString currentClientHost = deviceController->currentClientHost();
     QString peerHost = socket->peerAddress().toString();
@@ -126,7 +126,7 @@ void SAKTcpServerDevice::innerWriteBytes(QTcpSocket *socket, QByteArray bytes, S
     quint16 peerPort = socket->peerPort();
     if ((currentClientHost == peerHost) && (currentClientPort == peerPort)){
         qint64 ret = socket->write(bytes);
-        socket->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
+//        socket->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
         if (ret == -1){
             emit messageChanged(tr("无法写入数据:(%1)%2").arg(socket->peerAddress().toString().arg(socket->error())), false);
         }else{

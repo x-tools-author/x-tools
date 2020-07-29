@@ -56,7 +56,7 @@ void SAKSerialPortDevice::run()
             }
 
             /// @brief 读取数据
-            serialPort->waitForReadyRead(debugPage->readWriteParameters().waitForReadyReadTime);
+//            serialPort->waitForReadyRead(debugPage->readWriteParameters().waitForReadyReadTime);
             QByteArray bytes = serialPort->readAll();
             if (bytes.length()){
                 emit bytesRead(bytes);
@@ -67,7 +67,7 @@ void SAKSerialPortDevice::run()
                 QByteArray var = takeWaitingForWrittingBytes();
                 if (var.length()){
                     qint64 ret = serialPort->write(var);
-                    serialPort->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
+//                    serialPort->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
                     if (ret == -1){
                         emit messageChanged(tr("串口发送数据失败：") + serialPort->errorString(), false);
                     }else{
@@ -83,7 +83,7 @@ void SAKSerialPortDevice::run()
 
             /// @brief 线程睡眠
             mThreadMutex.lock();
-            mThreadWaitCondition.wait(&mThreadMutex, 25);
+            mThreadWaitCondition.wait(&mThreadMutex, SAK_DEVICE_THREAD_SLEEP_INTERVAL);
             mThreadMutex.unlock();
         }
 

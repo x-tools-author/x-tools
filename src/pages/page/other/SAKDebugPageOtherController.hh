@@ -17,7 +17,6 @@ class SAKDebugPage;
 class SAKMoreSettingsWidget;
 class SAKTransmissionSettings;
 class SAKHighlightSettingsWidget;
-class SAKReadWriteSettingsWidget;
 class SAKOtherAutoResponseItemManager;
 class SAKOtherTimingSentItemManager;
 
@@ -47,13 +46,11 @@ private:
     SAKMoreSettingsWidget *mMoreSettingsWidget;
     SAKTransmissionSettings *mTransmissionSettings;
     SAKHighlightSettingsWidget *mHighlightSettingsWidget;
-    SAKReadWriteSettingsWidget *mReadWriteSettingsWidget;
     SAKOtherAutoResponseItemManager *mAutoResponseSettingWidget;
     SAKOtherTimingSentItemManager *mTimingSendingSettingsWidget;
 private slots:
     void onMoreSettingsPushButtonClicked();
     void onTimingSendingPushButtonClicked();
-    void onReadWriteSettingPushButtonClicked();
     void onHighlightSettingPushButtonClicked();
     void onAutoresponseSettingPushbuttonClicked();
     void onTransmissionSettingPushButtonClicked();

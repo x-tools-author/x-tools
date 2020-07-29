@@ -53,13 +53,6 @@ public:
     SAKDebugPage(int type, QWidget *parent = Q_NULLPTR);
     ~SAKDebugPage();
 
-    /// @brief 读写参数，参数单位为ms
-    struct ReadWriteParameters {
-        int waitForBytesWrittenTime;// 写等待时间
-        int waitForReadyReadTime;   // 读就绪等待时间
-        int runIntervalTime;        // while循环执行时间间隔
-    };
-
     friend class SAKDebugPageOtherController;
     friend class SAKDebugPageInputController;
     friend class SAKDebugPageChartsController;
@@ -85,18 +78,6 @@ public:
      * @param isInfo: true-text color is green, false-text color is red
      */
     void outputMessage(QString msg, bool isInfo = true);
-
-    /**
-     * @brief readWriteParameters 获取读写参数
-     * @return 读写参数
-     */
-    ReadWriteParameters readWriteParameters();
-
-    /**
-     * @brief setReadWriteParameters 设置读写参数
-     * @param parameters 读写参数
-     */
-    void setReadWriteParameters(ReadWriteParameters parameters);
 
     /**
      * @brief pageType: The type of debugging page.(SAKDataStruct::SAKEnumDebugPageType)
@@ -170,7 +151,6 @@ private:
     int mDebugPageType = -1;
     QString mSettingKey;
     QTimer mClearInfoTimer;
-    struct ReadWriteParameters mRreadWriteParameters;
     QMutex mReadWriteParametersMutex;
 
     // Debug page modules

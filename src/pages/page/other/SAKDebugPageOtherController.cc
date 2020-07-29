@@ -13,7 +13,6 @@
 #include "SAKMoreSettingsWidget.hh"
 #include "SAKTransmissionSettings.hh"
 #include "SAKHighlightSettingsWidget.hh"
-#include "SAKReadWriteSettingsWidget.hh"
 #include "SAKDebugPageOtherController.hh"
 #include "SAKOtherAutoResponseItemManager.hh"
 #include "SAKOtherTimingSentItemManager.hh"
@@ -25,7 +24,6 @@ SAKDebugPageOtherController::SAKDebugPageOtherController(SAKDebugPage *debugPage
     mMoreSettingsWidget = new SAKMoreSettingsWidget(mDebugPage);
     mTransmissionSettings = new SAKTransmissionSettings(mDebugPage);
     mHighlightSettingsWidget = new SAKHighlightSettingsWidget(mDebugPage->mOutputTextBroswer->document());
-    mReadWriteSettingsWidget = new SAKReadWriteSettingsWidget(mDebugPage);
     mAutoResponseSettingWidget = new SAKOtherAutoResponseItemManager(mDebugPage);
     mTimingSendingSettingsWidget = new SAKOtherTimingSentItemManager(mDebugPage);
 
@@ -39,7 +37,6 @@ SAKDebugPageOtherController::SAKDebugPageOtherController(SAKDebugPage *debugPage
     connect(moreSettingsPushButton,  &QPushButton::clicked, this, &SAKDebugPageOtherController::onMoreSettingsPushButtonClicked);
     connect(timingSendingPushButton, &QPushButton::clicked, this, &SAKDebugPageOtherController::onTimingSendingPushButtonClicked);
     connect(highlightSettingPushButton, &QPushButton::clicked, this, &SAKDebugPageOtherController::onHighlightSettingPushButtonClicked);
-    connect(readWriteSettingPushButton, &QPushButton::clicked, this, &SAKDebugPageOtherController::onReadWriteSettingPushButtonClicked);
     connect(transmissionSettingPushButton, &QPushButton::clicked, this, &SAKDebugPageOtherController::onTransmissionSettingPushButtonClicked);
     connect(autoResponseSettingPushButton, &QPushButton::clicked, this, &SAKDebugPageOtherController::onAutoresponseSettingPushbuttonClicked);
 }
@@ -49,14 +46,12 @@ SAKDebugPageOtherController::~SAKDebugPageOtherController()
     delete mMoreSettingsWidget;
     delete mTransmissionSettings;
     delete mHighlightSettingsWidget;
-    delete mReadWriteSettingsWidget;
     delete mAutoResponseSettingWidget;
     delete mTimingSendingSettingsWidget;
 
     mMoreSettingsWidget = Q_NULLPTR;
     mTransmissionSettings = Q_NULLPTR;
     mHighlightSettingsWidget = Q_NULLPTR;
-    mReadWriteSettingsWidget = Q_NULLPTR;
     mAutoResponseSettingWidget = Q_NULLPTR;
     mTimingSendingSettingsWidget = Q_NULLPTR;
 }
@@ -81,15 +76,6 @@ void SAKDebugPageOtherController::onTimingSendingPushButtonClicked()
         mTimingSendingSettingsWidget->show();
     }else{
         mTimingSendingSettingsWidget->activateWindow();
-    }
-}
-
-void SAKDebugPageOtherController::onReadWriteSettingPushButtonClicked()
-{
-    if (mReadWriteSettingsWidget->isHidden()){
-        mReadWriteSettingsWidget->show();
-    }else {
-        mReadWriteSettingsWidget->activateWindow();
     }
 }
 

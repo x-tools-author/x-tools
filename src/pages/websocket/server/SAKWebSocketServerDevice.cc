@@ -89,7 +89,7 @@ void SAKWebSocketServerDevice::run()
 
         /// @brief 线程睡眠
         mThreadMutex.lock();
-        mThreadWaitCondition.wait(&mThreadMutex, mDebugPage->readWriteParameters().runIntervalTime);
+        mThreadWaitCondition.wait(&mThreadMutex, SAK_DEVICE_THREAD_SLEEP_INTERVAL);
         mThreadMutex.unlock();
     }
 

@@ -70,7 +70,7 @@ void SAKTcpClientDevice::run()
             }
 
             /// @brief 读取数据
-            tcpSocket->waitForReadyRead(debugPage->readWriteParameters().waitForReadyReadTime);
+//            tcpSocket->waitForReadyRead(debugPage->readWriteParameters().waitForReadyReadTime);
             QByteArray bytes = tcpSocket->readAll();
             if (!bytes.isEmpty()){
                 emit bytesRead(bytes);
@@ -81,7 +81,7 @@ void SAKTcpClientDevice::run()
                 QByteArray bytes = takeWaitingForWrittingBytes();
                 if (bytes.length()){
                     qint64 ret = tcpSocket->write(bytes);
-                    tcpSocket->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
+//                    tcpSocket->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
                     if (ret == -1){
                         emit messageChanged(tr("发送数据失败：")+tcpSocket->errorString(), false);
                     }else{
@@ -103,7 +103,7 @@ void SAKTcpClientDevice::run()
 
             /// @brief 线程睡眠
             mThreadMutex.lock();
-            mThreadWaitCondition.wait(&mThreadMutex, debugPage->readWriteParameters().waitForBytesWrittenTime);
+            mThreadWaitCondition.wait(&mThreadMutex, SAK_DEVICE_THREAD_SLEEP_INTERVAL);
             mThreadMutex.unlock();
         }
 

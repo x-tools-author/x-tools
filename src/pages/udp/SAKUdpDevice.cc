@@ -119,7 +119,7 @@ void SAKUdpDevice::run()
             }
 
             /// @brief 读取数据
-            udpSocket->waitForReadyRead(debugPage->readWriteParameters().waitForReadyReadTime);
+//            udpSocket->waitForReadyRead(debugPage->readWriteParameters().waitForReadyReadTime);
             while (udpSocket->hasPendingDatagrams()) {
                 QByteArray data;
                 data.resize(static_cast<int>(udpSocket->pendingDatagramSize()));
@@ -138,7 +138,7 @@ void SAKUdpDevice::run()
                     /// @brief 单播
                     if (parametersContextInstance().enableUnicast){
                         qint64 ret = udpSocket->writeDatagram(bytes, QHostAddress(targetHost), targetPort);
-                        udpSocket->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
+//                        udpSocket->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
                         if (ret == -1){
                             emit messageChanged(tr("发送数据失败：")+udpSocket->errorString(), false);
                         }else{
@@ -170,7 +170,7 @@ void SAKUdpDevice::run()
 
             /// @brief 线程睡眠
             mThreadMutex.lock();
-            mThreadWaitCondition.wait(&mThreadMutex, debugPage->readWriteParameters().runIntervalTime);
+            mThreadWaitCondition.wait(&mThreadMutex, SAK_DEVICE_THREAD_SLEEP_INTERVAL);
             mThreadMutex.unlock();
         }
 
