@@ -1,24 +1,24 @@
 ﻿/*
  * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
  *
- * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
- * project(https://www.qsak.pro). The project is an open source project. You can
- * get the source of the project from: "https://github.com/qsak/QtSwissArmyKnife"
- * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
- * group which number is 952218522 to have a communication.
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  */
 #include <QHBoxLayout>
 
 #include "SAKDebugPage.hh"
-#include "SAKTransmissionPage.hh"
-#include "SAKTransmissionSettings.hh"
+#include "SAKOtherTransmissionPage.hh"
+#include "SAKOtherTransmissionPageViewer.hh"
 
 #include "ui_SAKTransmissionSettings.h"
 
-SAKTransmissionSettings::SAKTransmissionSettings(SAKDebugPage *debugPage, QWidget *parent)
+SAKOtherTransmissionPageViewer::SAKOtherTransmissionPageViewer(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget(parent)
     ,_debugPage (debugPage)
-    ,ui (new Ui::SAKTransmissionSettings)
+    ,ui (new Ui::SAKOtherTransmissionPageViewer)
 {
     ui->setupUi(this);
     setWindowTitle(tr("数据转发设置"));
@@ -33,19 +33,19 @@ SAKTransmissionSettings::SAKTransmissionSettings(SAKDebugPage *debugPage, QWidge
         layout->addWidget(page);
     };
 
-    serialPortTransmission = new SAKTransmissionPage (debugPage, this);
-    serialPortTransmission->setTransmissionType(SAKTransmissionPage::SerialPortTransmission);
-    udpTransmission = new SAKTransmissionPage(debugPage, this);
-    udpTransmission->setTransmissionType(SAKTransmissionPage::UdpTransmission);
-    tcpTransmission = new SAKTransmissionPage(debugPage, this);
-    tcpTransmission->setTransmissionType(SAKTransmissionPage::TcpTransmission);
+    serialPortTransmission = new SAKOtherTransmissionPage (debugPage, this);
+    serialPortTransmission->setTransmissionType(SAKOtherTransmissionPage::SerialPortTransmission);
+    udpTransmission = new SAKOtherTransmissionPage(debugPage, this);
+    udpTransmission->setTransmissionType(SAKOtherTransmissionPage::UdpTransmission);
+    tcpTransmission = new SAKOtherTransmissionPage(debugPage, this);
+    tcpTransmission->setTransmissionType(SAKOtherTransmissionPage::TcpTransmission);
 
     installWidget(serialPortWidget, serialPortTransmission);
     installWidget(udpWidget, udpTransmission);
     installWidget(tcpWidget, tcpTransmission);        
 }
 
-SAKTransmissionSettings::~SAKTransmissionSettings()
+SAKOtherTransmissionPageViewer::~SAKOtherTransmissionPageViewer()
 {
     delete ui;
 

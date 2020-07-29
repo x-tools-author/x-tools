@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKSERIALPORTTRANSMISSIONITEMWIDGET_HH
-#define SAKSERIALPORTTRANSMISSIONITEMWIDGET_HH
+#ifndef SAKOTHERTRANSMISSIONITEMCOM_HH
+#define SAKOTHERTRANSMISSIONITEMCOM_HH
 
 #include <QWidget>
 #include <QLineEdit>
@@ -24,23 +24,23 @@
 #include "SAKOtherTransmissionItem.hh"
 
 namespace Ui {
-    class SAKSerialPortTransmissionItemWidget;
+    class SAKOtherTransmissionItemCom;
 }
 
 class SAKDebugPage;
-class SAKSerialPortTransmissionItemWidget:public SAKOtherTransmissionItem
+class SAKOtherTransmissionItemCom:public SAKOtherTransmissionItem
 {
     Q_OBJECT
 public:
-    SAKSerialPortTransmissionItemWidget(SAKDebugPage *_debugPage, QWidget *parent = Q_NULLPTR);
+    SAKOtherTransmissionItemCom(SAKDebugPage *_debugPage, QWidget *parent = Q_NULLPTR);
 
 #ifdef SAK_IMPORT_COM_MODULE
-     ~SAKSerialPortTransmissionItemWidget();
+     ~SAKOtherTransmissionItemCom();
 protected:
     virtual void write(QByteArray data);
     virtual void read();
 private:
-    Ui::SAKSerialPortTransmissionItemWidget *ui;
+    Ui::SAKOtherTransmissionItemCom *ui;
     QCheckBox   *enableCheckBox;
     QCheckBox   *handleReceiveDataCheckBox;
     QComboBox   *comComboBox;

@@ -8,13 +8,13 @@
  * group which number is 952218522 to have a communication.
  */
 #include "SAKGlobal.hh"
-#include "SAKUdpTransmissionItemWidget.hh"
+#include "SAKOtherTransmissionItemUdp.hh"
 
-#include "ui_SAKUdpTransmissionItemWidget.h"
+#include "ui_SAKOtherTransmissionItemUdp.h"
 
-SAKUdpTransmissionItemWidget::SAKUdpTransmissionItemWidget(SAKDebugPage *_debugPage, QWidget *parent)
+SAKOtherTransmissionItemUdp::SAKOtherTransmissionItemUdp(SAKDebugPage *_debugPage, QWidget *parent)
     :SAKOtherTransmissionItem (_debugPage, parent)
-    ,ui(new Ui::SAKUdpTransmissionItemWidget)
+    ,ui(new Ui::SAKOtherTransmissionItemUdp)
     ,udpSocket (Q_NULLPTR)
 {
     ui->setupUi(this);
@@ -30,7 +30,7 @@ SAKUdpTransmissionItemWidget::SAKUdpTransmissionItemWidget(SAKDebugPage *_debugP
     SAKGlobal::initIpComboBox(addressComboBox);
 }
 
-SAKUdpTransmissionItemWidget::~SAKUdpTransmissionItemWidget()
+SAKOtherTransmissionItemUdp::~SAKOtherTransmissionItemUdp()
 {
     delete ui;
     if (udpSocket){
@@ -38,7 +38,7 @@ SAKUdpTransmissionItemWidget::~SAKUdpTransmissionItemWidget()
     }
 }
 
-void SAKUdpTransmissionItemWidget::write(QByteArray data)
+void SAKOtherTransmissionItemUdp::write(QByteArray data)
 {
     if (udpSocket){
         QHostAddress targetAddress(targetAddressLineEdit->text());
@@ -51,10 +51,10 @@ void SAKUdpTransmissionItemWidget::write(QByteArray data)
     }
 }
 
-void SAKUdpTransmissionItemWidget::on_enableCheckBox_clicked()
+void SAKOtherTransmissionItemUdp::on_enableCheckBox_clicked()
 {
     auto closeDev = [&](){
-        disconnect(udpSocket, &QUdpSocket::readyRead, this, &SAKUdpTransmissionItemWidget::read);
+        disconnect(udpSocket, &QUdpSocket::readyRead, this, &SAKOtherTransmissionItemUdp::read);
         delete udpSocket;
         udpSocket = Q_NULLPTR;
         this->setUiEnable(true);
@@ -70,7 +70,7 @@ void SAKUdpTransmissionItemWidget::on_enableCheckBox_clicked()
 
         if (bindResult){
             if (udpSocket->open(QUdpSocket::ReadWrite)){
-                connect(udpSocket, &QUdpSocket::readyRead, this, &SAKUdpTransmissionItemWidget::read);
+                connect(udpSocket, &QUdpSocket::readyRead, this, &SAKOtherTransmissionItemUdp::read);
                 this->setUiEnable(false);
                 return;
             }
@@ -93,7 +93,7 @@ void SAKUdpTransmissionItemWidget::on_enableCheckBox_clicked()
     }
 }
 
-void SAKUdpTransmissionItemWidget::read()
+void SAKOtherTransmissionItemUdp::read()
 {
     if (!handleReceiveDataCheckBox->isChecked()){
         return;
@@ -109,7 +109,7 @@ void SAKUdpTransmissionItemWidget::read()
     }
 }
 
-void SAKUdpTransmissionItemWidget::setUiEnable(bool enable)
+void SAKOtherTransmissionItemUdp::setUiEnable(bool enable)
 {
     customAddressCheckBox->setEnabled(enable);
     addressComboBox->setEnabled(enable);

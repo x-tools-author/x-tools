@@ -31,7 +31,7 @@
 class SAKDataFactory;
 class SAKCRCInterface;
 class SAKDebugPageDevice;
-class SAKTransmissionSettings;
+class SAKOtherTransmissionPageViewer;
 class SAKOtherHighlighterManager;
 class SAKDebugPageOtherController;
 class SAKDebugPageInputController;

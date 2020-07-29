@@ -11,7 +11,7 @@
 
 #include "SAKSettings.hh"
 #include "SAKDebugPage.hh"
-#include "SAKTransmissionSettings.hh"
+#include "SAKOtherTransmissionPageViewer.hh"
 #include "SAKOtherHighlighterManager.hh"
 #include "SAKDebugPageOtherController.hh"
 #include "SAKOtherAutoResponseItemManager.hh"
@@ -22,7 +22,7 @@ SAKDebugPageOtherController::SAKDebugPageOtherController(SAKDebugPage *debugPage
     :QObject (parent)
     ,mDebugPage (debugPage)
 {
-    mTransmissionSettings = new SAKTransmissionSettings(mDebugPage);
+    mTransmissionSettings = new SAKOtherTransmissionPageViewer(mDebugPage);
     mHighlightSettingsWidget = new SAKOtherHighlighterManager(mDebugPage->mOutputTextBroswer->document());
     mAutoResponseSettingWidget = new SAKOtherAutoResponseItemManager(mDebugPage);
     mTimingSendingSettingsWidget = new SAKOtherTimingSentItemManager(mDebugPage);

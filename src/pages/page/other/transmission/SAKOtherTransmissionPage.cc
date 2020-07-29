@@ -1,26 +1,26 @@
 ﻿/*
  * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
  *
- * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
- * project(https://www.qsak.pro). The project is an open source project. You can
- * get the source of the project from: "https://github.com/qsak/QtSwissArmyKnife"
- * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
- * group which number is 952218522 to have a communication.
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  */
 #include <QDateTime>
 
-#include "SAKTransmissionPage.hh"
-#include "SAKUdpTransmissionItemWidget.hh"
-#include "SAKTcpTransmissionItemWidget.hh"
+#include "SAKOtherTransmissionPage.hh"
+#include "SAKOtherTransmissionItemUdp.hh"
+#include "SAKOtherTransmissionItemTcp.hh"
 #include "SAKOtherTransmissionItem.hh"
-#include "SAKSerialPortTransmissionItemWidget.hh"
+#include "SAKOtherTransmissionItemCom.hh"
 
 #include "ui_SAKTransmissionPage.h"
 
-SAKTransmissionPage::SAKTransmissionPage(SAKDebugPage *debugPage, QWidget *parent)
+SAKOtherTransmissionPage::SAKOtherTransmissionPage(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget (parent)
     ,_debugPage (debugPage)
-    ,ui (new Ui::SAKTransmissionPage)
+    ,ui (new Ui::SAKOtherTransmissionPage)
 {
     ui->setupUi(this);
     addItemPushButton = ui->addItemPushButton;
@@ -29,20 +29,20 @@ SAKTransmissionPage::SAKTransmissionPage(SAKDebugPage *debugPage, QWidget *paren
     infoLabel = ui->infoLabel;
 
     clearMessageInfoTimer.setInterval(5*1000);
-    connect(&clearMessageInfoTimer, &QTimer::timeout, this, &SAKTransmissionPage::clearMessage);
+    connect(&clearMessageInfoTimer, &QTimer::timeout, this, &SAKOtherTransmissionPage::clearMessage);
 }
 
-SAKTransmissionPage::~SAKTransmissionPage()
+SAKOtherTransmissionPage::~SAKOtherTransmissionPage()
 {
     delete ui;
 }
 
-void SAKTransmissionPage::setTransmissionType(TransmissionType type)
+void SAKOtherTransmissionPage::setTransmissionType(TransmissionType type)
 {
     transmissionType = type;
 }
 
-void SAKTransmissionPage::outputMessage(QString msg, bool isInfo)
+void SAKOtherTransmissionPage::outputMessage(QString msg, bool isInfo)
 {
     QString color = "black";
     if (!isInfo){
@@ -55,26 +55,26 @@ void SAKTransmissionPage::outputMessage(QString msg, bool isInfo)
     clearMessageInfoTimer.start();
 }
 
-void SAKTransmissionPage::clearMessage()
+void SAKOtherTransmissionPage::clearMessage()
 {
     clearMessageInfoTimer.stop();
     infoLabel->clear();
 }
 
-void SAKTransmissionPage::on_addItemPushButton_clicked()
+void SAKOtherTransmissionPage::on_addItemPushButton_clicked()
 {    
     QListWidgetItem *item = new QListWidgetItem(listWidget);
     listWidget->insertItem(listWidget->count(), item);
     QWidget *itemWidget = Q_NULLPTR;
     switch (transmissionType){
     case SerialPortTransmission:
-        itemWidget = new SAKSerialPortTransmissionItemWidget(_debugPage, this);
+        itemWidget = new SAKOtherTransmissionItemCom(_debugPage, this);
         break;
     case UdpTransmission:
-        itemWidget = new SAKUdpTransmissionItemWidget(_debugPage, this);
+        itemWidget = new SAKOtherTransmissionItemUdp(_debugPage, this);
         break;
     case TcpTransmission:
-        itemWidget = new SAKTcpTransmissionItemWidget(_debugPage, this);
+        itemWidget = new SAKOtherTransmissionItemTcp(_debugPage, this);
         break;
     default:
         Q_ASSERT_X(false, __FUNCTION__, "Unknow transmissioin type");
@@ -83,10 +83,10 @@ void SAKTransmissionPage::on_addItemPushButton_clicked()
     item->setSizeHint(QSize(itemWidget->width(), itemWidget->height()));
     listWidget->setItemWidget(item, itemWidget);
     SAKOtherTransmissionItem *baseItemWidget = reinterpret_cast<SAKOtherTransmissionItem*>(itemWidget);
-    connect(baseItemWidget, &SAKOtherTransmissionItem::requestOutputMessage, this, &SAKTransmissionPage::outputMessage);
+    connect(baseItemWidget, &SAKOtherTransmissionItem::requestOutputMessage, this, &SAKOtherTransmissionPage::outputMessage);
 }
 
-void SAKTransmissionPage::on_deleteItemPushButton_clicked()
+void SAKOtherTransmissionPage::on_deleteItemPushButton_clicked()
 {
     QListWidgetItem *item = listWidget->currentItem();
     listWidget->removeItemWidget(item);

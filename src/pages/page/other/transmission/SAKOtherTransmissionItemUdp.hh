@@ -7,8 +7,8 @@
  * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
  * group which number is 952218522 to have a communication.
  */
-#ifndef SAKUDPTRANSMISSSIONITEMWIDGET_HH
-#define SAKUDPTRANSMISSSIONITEMWIDGET_HH
+#ifndef SAKOTHERTRANSMISSIONITEMUDP_HH
+#define SAKOTHERTRANSMISSIONITEMUDP_HH
 
 #include <QWidget>
 #include <QCheckBox>
@@ -19,19 +19,19 @@
 #include "SAKOtherTransmissionItem.hh"
 
 namespace Ui {
-    class SAKUdpTransmissionItemWidget;
+    class SAKOtherTransmissionItemUdp;
 }
 
-class SAKUdpTransmissionItemWidget:public SAKOtherTransmissionItem
+class SAKOtherTransmissionItemUdp:public SAKOtherTransmissionItem
 {
     Q_OBJECT
 public:
-    SAKUdpTransmissionItemWidget(SAKDebugPage *_debugPage, QWidget *parent);
-    ~SAKUdpTransmissionItemWidget();
+    SAKOtherTransmissionItemUdp(SAKDebugPage *_debugPage, QWidget *parent);
+    ~SAKOtherTransmissionItemUdp();
 
     virtual void write(QByteArray data);
 private:
-    Ui::SAKUdpTransmissionItemWidget *ui;
+    Ui::SAKOtherTransmissionItemUdp *ui;
     QCheckBox *enableCheckBox;
     QCheckBox *customAddressCheckBox;
     QComboBox *addressComboBox;

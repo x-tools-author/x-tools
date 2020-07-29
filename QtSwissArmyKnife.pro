@@ -149,11 +149,11 @@ FORMS += \
     src/pages/page/other/highlighter/SAKOtherHighlighterManager.ui \
     src/pages/page/other/timingsent/SAKOtherTimingSentItem.ui \
     src/pages/page/other/timingsent/SAKOtherTimingSentItemManager.ui \
-    src/pages/page/other/transmission/SAKSerialPortTransmissionItemWidget.ui \
-    src/pages/page/other/transmission/SAKTcpTransmissionItemWidget.ui \
-    src/pages/page/other/transmission/SAKTransmissionPage.ui \
-    src/pages/page/other/transmission/SAKTransmissionSettings.ui \
-    src/pages/page/other/transmission/SAKUdpTransmissionItemWidget.ui \
+    src/pages/page/other/transmission/SAKOtherTransmissionItemCom.ui \
+    src/pages/page/other/transmission/SAKOtherTransmissionItemTcp.ui \
+    src/pages/page/other/transmission/SAKOtherTransmissionItemUdp.ui \
+    src/pages/page/other/transmission/SAKOtherTransmissionPage.ui \
+    src/pages/page/other/transmission/SAKOtherTransmissionPageViewer.ui \
     src/pages/page/output/save2file/SAKOutputSave2FileDialog.ui \
     src/pages/tcp/client/SAKTcpClientDeviceController.ui \
     src/pages/tcp/server/SAKTcpServerDeviceController.ui \
@@ -191,12 +191,12 @@ HEADERS += \
     src/pages/page/other/timingsent/SAKOtherTimingSentItem.hh \
     src/pages/page/other/timingsent/SAKOtherTimingSentItemManager.hh \
     src/pages/page/other/transmission/SAKOtherTransmissionItem.hh \
-    src/pages/page/other/transmission/SAKSerialPortTransmissionItemWidget.hh \
-    src/pages/page/other/transmission/SAKTcpTransmissionItemWidget.hh \
-    src/pages/page/other/transmission/SAKTransmissionItemDelegate.hh \
-    src/pages/page/other/transmission/SAKTransmissionPage.hh \
-    src/pages/page/other/transmission/SAKTransmissionSettings.hh \
-    src/pages/page/other/transmission/SAKUdpTransmissionItemWidget.hh \
+    src/pages/page/other/transmission/SAKOtherTransmissionItemCom.hh \
+    src/pages/page/other/transmission/SAKOtherTransmissionItemTcp.hh \
+    src/pages/page/other/transmission/SAKOtherTransmissionItemUdp.hh \
+#    src/pages/page/other/transmission/SAKTransmissionItemDelegate.hh \
+    src/pages/page/other/transmission/SAKOtherTransmissionPage.hh \
+    src/pages/page/other/transmission/SAKOtherTransmissionPageViewer.hh \
     src/pages/page/output/SAKDebugPageOutputController.hh \
     src/pages/page/output/save2file/SAKOutputSave2FileDialog.hh \
     src/common/SAKCRCInterface.hh \
@@ -248,12 +248,12 @@ SOURCES += \
     src/pages/page/other/timingsent/SAKOtherTimingSentItem.cc \
     src/pages/page/other/timingsent/SAKOtherTimingSentItemManager.cc \
     src/pages/page/other/transmission/SAKOtherTransmissionItem.cc \
-    src/pages/page/other/transmission/SAKSerialPortTransmissionItemWidget.cc \
-    src/pages/page/other/transmission/SAKTcpTransmissionItemWidget.cc \
-    src/pages/page/other/transmission/SAKTransmissionItemDelegate.cc \
-    src/pages/page/other/transmission/SAKTransmissionPage.cc \
-    src/pages/page/other/transmission/SAKTransmissionSettings.cc \
-    src/pages/page/other/transmission/SAKUdpTransmissionItemWidget.cc \
+    src/pages/page/other/transmission/SAKOtherTransmissionItemCom.cc \
+    src/pages/page/other/transmission/SAKOtherTransmissionItemTcp.cc \
+    src/pages/page/other/transmission/SAKOtherTransmissionItemUdp.cc \
+#    src/pages/page/other/transmission/SAKTransmissionItemDelegate.cc \
+    src/pages/page/other/transmission/SAKOtherTransmissionPage.cc \
+    src/pages/page/other/transmission/SAKOtherTransmissionPageViewer.cc \
     src/pages/page/output/SAKDebugPageOutputController.cc \
     src/pages/page/output/save2file/SAKOutputSave2FileDialog.cc \
     src/common/SAKCRCInterface.cc \
