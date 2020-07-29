@@ -11,11 +11,11 @@
 #include "SAKOtherTransmissionItem.hh"
 
 SAKOtherTransmissionItem::SAKOtherTransmissionItem(SAKDebugPage *debugPage, QWidget *parent)
-    :QWidget (parent)
-    ,debugPage (debugPage)
+    :QWidget(parent)
+    ,mDebugPage(debugPage)
 {
-    connect(debugPage, &SAKDebugPage::bytesRead, this, &SAKOtherTransmissionItem::write);
-    connect(this, &SAKOtherTransmissionItem::bytesRead, debugPage, &SAKDebugPage::write);
+    connect(mDebugPage, &SAKDebugPage::bytesRead, this, &SAKOtherTransmissionItem::write);
+    connect(this, &SAKOtherTransmissionItem::bytesRead, mDebugPage, &SAKDebugPage::write);
 }
 
 void SAKOtherTransmissionItem::write(QByteArray data)

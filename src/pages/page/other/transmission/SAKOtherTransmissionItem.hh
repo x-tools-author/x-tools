@@ -25,7 +25,7 @@ signals:
     void bytesRead(QByteArray data);
     void requestOutputMessage(QString info, bool isInfo = true);
 protected:
-    SAKDebugPage *debugPage;
+    SAKDebugPage *mDebugPage;
     void outputMessage();
 };
 

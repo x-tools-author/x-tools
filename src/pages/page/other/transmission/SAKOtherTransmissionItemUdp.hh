@@ -26,21 +26,21 @@ class SAKOtherTransmissionItemUdp:public SAKOtherTransmissionItem
 {
     Q_OBJECT
 public:
-    SAKOtherTransmissionItemUdp(SAKDebugPage *_debugPage, QWidget *parent);
+    SAKOtherTransmissionItemUdp(SAKDebugPage *debugPage, QWidget *parent);
     ~SAKOtherTransmissionItemUdp();
 
     virtual void write(QByteArray data);
 private:
-    Ui::SAKOtherTransmissionItemUdp *ui;
-    QCheckBox *enableCheckBox;
-    QCheckBox *customAddressCheckBox;
-    QComboBox *addressComboBox;
-    QLineEdit *portLineEdit;
-    QCheckBox *handleReceiveDataCheckBox;
-    QLineEdit *targetAddressLineEdit;
-    QLineEdit *targetPortLineEdit;
+    Ui::SAKOtherTransmissionItemUdp *mUi;
+    QCheckBox *mEnableCheckBox;
+    QCheckBox *mCustomAddressCheckBox;
+    QComboBox *mAddressComboBox;
+    QLineEdit *mPortLineEdit;
+    QCheckBox *mHandleReceiveDataCheckBox;
+    QLineEdit *mTargetAddressLineEdit;
+    QLineEdit *mTargetPortLineEdit;
 
-    QUdpSocket  *udpSocket;
+    QUdpSocket *mUdpSocket;
 private slots:
     void on_enableCheckBox_clicked();
 private:

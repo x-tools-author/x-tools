@@ -27,15 +27,15 @@ public:
     SAKOtherTransmissionPageViewer(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKOtherTransmissionPageViewer();
 private:
-    QWidget                     *serialPortWidget       = Q_NULLPTR;
-    QWidget                     *udpWidget              = Q_NULLPTR;
-    QWidget                     *tcpWidget              = Q_NULLPTR;
-    SAKDebugPage                *_debugPage             = Q_NULLPTR;
-    Ui::SAKOtherTransmissionPageViewer    *ui                     = Q_NULLPTR;
+    QWidget *mSerialPortWidget;
+    QWidget *mUdpWidget;
+    QWidget *mTcpWidget;
+    SAKDebugPage *mDebugPage;
+    Ui::SAKOtherTransmissionPageViewer *mUi;
 
-    SAKOtherTransmissionPage            *udpTransmission        = Q_NULLPTR;
-    SAKOtherTransmissionPage            *tcpTransmission        = Q_NULLPTR;
-    SAKOtherTransmissionPage            *serialPortTransmission = Q_NULLPTR;
+    SAKOtherTransmissionPage *mUdpTransmission;
+    SAKOtherTransmissionPage *mTcpTransmission;
+    SAKOtherTransmissionPage *mSerialPortTransmission;
 };
 
 #endif

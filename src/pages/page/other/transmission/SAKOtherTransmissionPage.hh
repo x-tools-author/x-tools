@@ -36,16 +36,16 @@ public:
 
     void setTransmissionType(TransmissionType type);
 private:
-    QPushButton *addItemPushButton;
-    QPushButton *deleteItemPushButton;
-    QListWidget *listWidget;
-    QLabel      *infoLabel;
+    QPushButton *mAddItemPushButton;
+    QPushButton *mDeleteItemPushButton;
+    QListWidget *mListWidget;
+    QLabel*mInfoLabel;
 
-    SAKDebugPage *_debugPage;
-    Ui::SAKOtherTransmissionPage *ui;
+    SAKDebugPage *mDebugPage;
+    Ui::SAKOtherTransmissionPage *mUi;
 
-    int transmissionType;
-    QTimer clearMessageInfoTimer;
+    int mTransmissionType;
+    QTimer mClearMessageInfoTimer;
 private:
     void outputMessage(QString msg, bool isInfo);
     void clearMessage();

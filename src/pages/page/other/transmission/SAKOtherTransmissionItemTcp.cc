@@ -14,38 +14,38 @@
 
 #include "ui_SAKOtherTransmissionItemTcp.h"
 
-SAKOtherTransmissionItemTcp::SAKOtherTransmissionItemTcp(SAKDebugPage *_debugPage, QWidget *parent)
-    :SAKOtherTransmissionItem (_debugPage, parent)
-    ,ui (new Ui::SAKOtherTransmissionItemTcp)
-    ,tcpSocket (Q_NULLPTR)
+SAKOtherTransmissionItemTcp::SAKOtherTransmissionItemTcp(SAKDebugPage *debugPage, QWidget *parent)
+    :SAKOtherTransmissionItem (debugPage, parent)
+    ,mUi (new Ui::SAKOtherTransmissionItemTcp)
+    ,mTcpSocket (Q_NULLPTR)
 {
-    ui->setupUi(this);
+    mUi->setupUi(this);
 
-    enableCheckBox = ui->enableCheckBox;
-    customAddressCheckBox = ui->customAddressCheckBox;
-    localAddressComboBox = ui->addressComboBox;
-    localPortLineEdit = ui->portLineEdit;
-    handleReceiveDataCheckBox = ui->handleReceiveDataCheckBox;
-    serverAddressLineEdit = ui->targetAddressLineEdit;
-    serverPortLineEdit = ui->targetPortLineEdit;
+    mEnableCheckBox = mUi->enableCheckBox;
+    mCustomAddressCheckBox = mUi->customAddressCheckBox;
+    mLocalAddressComboBox = mUi->addressComboBox;
+    mLocalPortLineEdit = mUi->portLineEdit;
+    mHandleReceiveDataCheckBox = mUi->handleReceiveDataCheckBox;
+    mServerAddressLineEdit = mUi->targetAddressLineEdit;
+    mServerPortLineEdit = mUi->targetPortLineEdit;
 
-    SAKGlobal::initIpComboBox(localAddressComboBox);
+    SAKGlobal::initIpComboBox(mLocalAddressComboBox);
 }
 
 SAKOtherTransmissionItemTcp::~SAKOtherTransmissionItemTcp()
 {
-    if (tcpSocket){
-        delete tcpSocket;
+    if (mTcpSocket){
+        delete mTcpSocket;
     }
-    delete ui;
+    delete mUi;
 }
 
 void SAKOtherTransmissionItemTcp::write(QByteArray data)
 {
-    if (tcpSocket){
-        if (!tcpSocket->write(data)){
+    if (mTcpSocket){
+        if (!mTcpSocket->write(data)){
 #ifdef QT_DEBUG
-        qDebug() << "发送取数据失败" << tcpSocket->errorString();
+        qDebug() << "发送取数据失败" << mTcpSocket->errorString();
 #endif
         }
     }
@@ -54,41 +54,41 @@ void SAKOtherTransmissionItemTcp::write(QByteArray data)
 void SAKOtherTransmissionItemTcp::on_enableCheckBox_clicked()
 {
     auto closeDev = [&](){
-        if (tcpSocket){
-            tcpSocket->disconnectFromHost();
-            if (tcpSocket->state() == QTcpSocket::ConnectedState){
-                tcpSocket->waitForDisconnected();
+        if (mTcpSocket){
+            mTcpSocket->disconnectFromHost();
+            if (mTcpSocket->state() == QTcpSocket::ConnectedState){
+                mTcpSocket->waitForDisconnected();
             }
-            disconnect(tcpSocket, &QTcpSocket::readyRead, this, &SAKOtherTransmissionItemTcp::read);
-            delete tcpSocket;
-            tcpSocket = Q_NULLPTR;
+            disconnect(mTcpSocket, &QTcpSocket::readyRead, this, &SAKOtherTransmissionItemTcp::read);
+            delete mTcpSocket;
+            mTcpSocket = Q_NULLPTR;
             this->setUiEnable(true);
         }
     };
 
-    if (enableCheckBox->isChecked()){
-        tcpSocket = new QTcpSocket;
-        if (customAddressCheckBox->isChecked()){
-             if (!tcpSocket->bind(QHostAddress(localAddressComboBox->currentText()), static_cast<quint16>(localPortLineEdit->text().toInt()))){
-                emit requestOutputMessage(tr("设备绑定失败：") + tcpSocket->errorString(), false);
-                enableCheckBox->setChecked(false);
+    if (mEnableCheckBox->isChecked()){
+        mTcpSocket = new QTcpSocket;
+        if (mCustomAddressCheckBox->isChecked()){
+             if (!mTcpSocket->bind(QHostAddress(mLocalAddressComboBox->currentText()), static_cast<quint16>(mLocalPortLineEdit->text().toInt()))){
+                emit requestOutputMessage(tr("设备绑定失败：") + mTcpSocket->errorString(), false);
+                mEnableCheckBox->setChecked(false);
                 closeDev();
                 return;
              }
         }
 
-        if (!tcpSocket->open(QTcpSocket::ReadWrite)){
-            emit requestOutputMessage(tr("设备无法打开：") + tcpSocket->errorString(), false);
-            enableCheckBox->setChecked(false);
+        if (!mTcpSocket->open(QTcpSocket::ReadWrite)){
+            emit requestOutputMessage(tr("设备无法打开：") + mTcpSocket->errorString(), false);
+            mEnableCheckBox->setChecked(false);
             closeDev();
             return;
         }
 
-        connect(tcpSocket, &QTcpSocket::readyRead, this, &SAKOtherTransmissionItemTcp::read);
-        tcpSocket->connectToHost(serverAddressLineEdit->text(), static_cast<quint16>(serverPortLineEdit->text().toInt()));
-        if (!tcpSocket->waitForConnected()){
-            emit requestOutputMessage(tr("无法连接服务器：") + tcpSocket->errorString(), false);
-            enableCheckBox->setChecked(false);            
+        connect(mTcpSocket, &QTcpSocket::readyRead, this, &SAKOtherTransmissionItemTcp::read);
+        mTcpSocket->connectToHost(mServerAddressLineEdit->text(), static_cast<quint16>(mServerPortLineEdit->text().toInt()));
+        if (!mTcpSocket->waitForConnected()){
+            emit requestOutputMessage(tr("无法连接服务器：") + mTcpSocket->errorString(), false);
+            mEnableCheckBox->setChecked(false);
             closeDev();
         }else{
             this->setUiEnable(false);
@@ -100,9 +100,9 @@ void SAKOtherTransmissionItemTcp::on_enableCheckBox_clicked()
 
 void SAKOtherTransmissionItemTcp::read()
 {    
-    if (tcpSocket){
-        QByteArray data = tcpSocket->readAll();
-        if (handleReceiveDataCheckBox->isChecked()){
+    if (mTcpSocket){
+        QByteArray data = mTcpSocket->readAll();
+        if (mHandleReceiveDataCheckBox->isChecked()){
             emit bytesRead(data);;
         }
     }
@@ -110,9 +110,9 @@ void SAKOtherTransmissionItemTcp::read()
 
 void SAKOtherTransmissionItemTcp::setUiEnable(bool enable)
 {
-    customAddressCheckBox->setEnabled(enable);
-    localAddressComboBox->setEnabled(enable);
-    localPortLineEdit->setEnabled(enable);
-    serverAddressLineEdit->setEnabled(enable);
-    serverPortLineEdit->setEnabled(enable);
+    mCustomAddressCheckBox->setEnabled(enable);
+    mLocalAddressComboBox->setEnabled(enable);
+    mLocalPortLineEdit->setEnabled(enable);
+    mServerAddressLineEdit->setEnabled(enable);
+    mServerPortLineEdit->setEnabled(enable);
 }

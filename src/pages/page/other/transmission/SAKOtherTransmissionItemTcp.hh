@@ -25,21 +25,21 @@ class SAKOtherTransmissionItemTcp:public SAKOtherTransmissionItem
 {
     Q_OBJECT
 public:
-    SAKOtherTransmissionItemTcp(SAKDebugPage *_debugPage, QWidget *parent = Q_NULLPTR);
+    SAKOtherTransmissionItemTcp(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKOtherTransmissionItemTcp();
 
     virtual void write(QByteArray data);
 private:
-    Ui::SAKOtherTransmissionItemTcp *ui;
-    QCheckBox *enableCheckBox;
-    QCheckBox *customAddressCheckBox;
-    QComboBox *localAddressComboBox;
-    QLineEdit *localPortLineEdit;
-    QCheckBox *handleReceiveDataCheckBox;
-    QLineEdit *serverAddressLineEdit;
-    QLineEdit *serverPortLineEdit;
+    Ui::SAKOtherTransmissionItemTcp *mUi;
+    QCheckBox *mEnableCheckBox;
+    QCheckBox *mCustomAddressCheckBox;
+    QComboBox *mLocalAddressComboBox;
+    QLineEdit *mLocalPortLineEdit;
+    QCheckBox *mHandleReceiveDataCheckBox;
+    QLineEdit *mServerAddressLineEdit;
+    QLineEdit *mServerPortLineEdit;
 
-    QTcpSocket  *tcpSocket;
+    QTcpSocket *mTcpSocket;
 private slots:
     void on_enableCheckBox_clicked();
 private:

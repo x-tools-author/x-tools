@@ -40,17 +40,17 @@ protected:
     virtual void write(QByteArray data);
     virtual void read();
 private:
-    Ui::SAKOtherTransmissionItemCom *ui;
-    QCheckBox   *enableCheckBox;
-    QCheckBox   *handleReceiveDataCheckBox;
-    QComboBox   *comComboBox;
-    QCheckBox   *customBaudrateCheckBox;
-    QComboBox   *baudRateComboBox;
-    QComboBox   *dataBitscomboBox;
-    QComboBox   *stopBitscomboBox;
-    QComboBox   *parityComboBox;
+    Ui::SAKOtherTransmissionItemCom *mUi;
+    QCheckBox *mEnableCheckBox;
+    QCheckBox *mHandleReceiveDataCheckBox;
+    QComboBox *mComComboBox;
+    QCheckBox *mCustomBaudrateCheckBox;
+    QComboBox *mBaudRateComboBox;
+    QComboBox *mDataBitscomboBox;
+    QComboBox *mStopBitscomboBox;
+    QComboBox *mParityComboBox;
 
-    QSerialPort *serialPort;
+    QSerialPort *mSerialPort;
 private slots:
     void on_enableCheckBox_clicked();
     void on_customBaudrateCheckBox_clicked();

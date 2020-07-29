@@ -25,28 +25,28 @@ Q_DECLARE_METATYPE(QSerialPortInfo)
 SAKOtherTransmissionItemCom::SAKOtherTransmissionItemCom(SAKDebugPage *_debugPage, QWidget *parent)
     :SAKOtherTransmissionItem (_debugPage, parent)
 #ifdef SAK_IMPORT_COM_MODULE
-    ,ui (new Ui::SAKOtherTransmissionItemCom)
-    ,serialPort (Q_NULLPTR)
+    ,mUi (new Ui::SAKOtherTransmissionItemCom)
+    ,mSerialPort (Q_NULLPTR)
 #endif
 {    
 #ifdef SAK_IMPORT_COM_MODULE
-    ui->setupUi(this);
-    enableCheckBox              = ui->enableCheckBox;
-    handleReceiveDataCheckBox   = ui->handleReceiveDataCheckBox;
-    comComboBox                 = ui->comComboBox;
-    customBaudrateCheckBox      = ui->customBaudrateCheckBox;
-    baudRateComboBox            = ui->baudRateComboBox;
-    dataBitscomboBox            = ui->dataBitscomboBox;
-    stopBitscomboBox            = ui->stopBitscomboBox;
-    parityComboBox              = ui->parityComboBox;
+    mUi->setupUi(this);
+    mEnableCheckBox = mUi->enableCheckBox;
+    mHandleReceiveDataCheckBox = mUi->handleReceiveDataCheckBox;
+    mComComboBox = mUi->comComboBox;
+    mCustomBaudrateCheckBox = mUi->customBaudrateCheckBox;
+    mBaudRateComboBox = mUi->baudRateComboBox;
+    mDataBitscomboBox = mUi->dataBitscomboBox;
+    mStopBitscomboBox = mUi->stopBitscomboBox;
+    mParityComboBox = mUi->parityComboBox;
 
-    SAKGlobal::initComComboBox(comComboBox);
-    SAKGlobal::initBaudRateComboBox(baudRateComboBox);
-    SAKGlobal::initDataBitsComboBox(dataBitscomboBox);
-    SAKGlobal::initStopBitsComboBox(stopBitscomboBox);
-    SAKGlobal::initParityComboBox(parityComboBox);
+    SAKGlobal::initComComboBox(mComComboBox);
+    SAKGlobal::initBaudRateComboBox(mBaudRateComboBox);
+    SAKGlobal::initDataBitsComboBox(mDataBitscomboBox);
+    SAKGlobal::initStopBitsComboBox(mStopBitscomboBox);
+    SAKGlobal::initParityComboBox(mParityComboBox);
 
-    handleReceiveDataCheckBox->setChecked(true);
+    mHandleReceiveDataCheckBox->setChecked(true);
 #else
     QHBoxLayout *layout = new QHBoxLayout(this);
     QLabel *label = new QLabel("该版本软件不支持数据通过串口转发", this);
@@ -61,17 +61,17 @@ SAKOtherTransmissionItemCom::SAKOtherTransmissionItemCom(SAKDebugPage *_debugPag
 #ifdef SAK_IMPORT_COM_MODULE
 SAKOtherTransmissionItemCom::~SAKOtherTransmissionItemCom()
 {
-    delete ui;
+    delete mUi;
 }
 #endif
 
 #ifdef SAK_IMPORT_COM_MODULE
 void SAKOtherTransmissionItemCom::write(QByteArray data)
 {
-    if (serialPort){
-        if (serialPort->write(data)){
+    if (mSerialPort){
+        if (mSerialPort->write(data)){
 #ifdef QT_DEBUG
-            qDebug() << "send data error:" << serialPort->errorString();
+            qDebug() << "send data error:" << mSerialPort->errorString();
 #endif
         }
     }
@@ -83,38 +83,38 @@ void SAKOtherTransmissionItemCom::on_enableCheckBox_clicked()
 {
     // c++11 lambda
     auto closeDev = [&](){
-        if (serialPort){
-            disconnect(serialPort, &QSerialPort::readyRead, this, &SAKOtherTransmissionItemCom::read);
-            serialPort->close();
-            serialPort->deleteLater();
-            serialPort = Q_NULLPTR;
+        if (mSerialPort){
+            disconnect(mSerialPort, &QSerialPort::readyRead, this, &SAKOtherTransmissionItemCom::read);
+            mSerialPort->close();
+            mSerialPort->deleteLater();
+            mSerialPort = Q_NULLPTR;
             this->setUiEnable(true);
         }
     };
 
-    if (enableCheckBox->isChecked()){
-        serialPort = new QSerialPort(comComboBox->currentData().value<QSerialPortInfo>());
-        serialPort->setBaudRate(baudRateComboBox->currentData().value<qint32>());
-        serialPort->setParity(parityComboBox->currentData().value<QSerialPort::Parity>());
-        serialPort->setDataBits(dataBitscomboBox->currentData().value<QSerialPort::DataBits>());
-        serialPort->setStopBits(stopBitscomboBox->currentData().value<QSerialPort::StopBits>());
-        if (serialPort->open(QSerialPort::ReadWrite)){
+    if (mEnableCheckBox->isChecked()){
+        mSerialPort = new QSerialPort(mComComboBox->currentData().value<QSerialPortInfo>());
+        mSerialPort->setBaudRate(mBaudRateComboBox->currentData().value<qint32>());
+        mSerialPort->setParity(mParityComboBox->currentData().value<QSerialPort::Parity>());
+        mSerialPort->setDataBits(mDataBitscomboBox->currentData().value<QSerialPort::DataBits>());
+        mSerialPort->setStopBits(mStopBitscomboBox->currentData().value<QSerialPort::StopBits>());
+        if (mSerialPort->open(QSerialPort::ReadWrite)){
             this->setUiEnable(false);
-            connect(serialPort, &QSerialPort::readyRead, this, &SAKOtherTransmissionItemCom::read, Qt::QueuedConnection);
+            connect(mSerialPort, &QSerialPort::readyRead, this, &SAKOtherTransmissionItemCom::read, Qt::QueuedConnection);
 #ifdef QT_DEBUG
             qInfo() << tr("Open device successfully,")
-                    << tr("name:") << serialPort->portName()
-                    << tr("baudrate:") << serialPort->baudRate()
-                    << tr("data bits:") << serialPort->dataBits()
-                    << tr("parity:") << serialPort->parity();
+                    << tr("name:") << mSerialPort->portName()
+                    << tr("baudrate:") << mSerialPort->baudRate()
+                    << tr("data bits:") << mSerialPort->dataBits()
+                    << tr("parity:") << mSerialPort->parity();
 #endif
         }else{
-            emit requestOutputMessage(serialPort->errorString(), false);
-            enableCheckBox->setChecked(false);
+            emit requestOutputMessage(mSerialPort->errorString(), false);
+            mEnableCheckBox->setChecked(false);
             closeDev();
         }
     }else{
-        if (serialPort){
+        if (mSerialPort){
             closeDev();
         }
     }
@@ -124,17 +124,17 @@ void SAKOtherTransmissionItemCom::on_enableCheckBox_clicked()
 #ifdef SAK_IMPORT_COM_MODULE
 void SAKOtherTransmissionItemCom::on_customBaudrateCheckBox_clicked()
 {
-    baudRateComboBox->setEditable(customBaudrateCheckBox->isChecked());
+    mBaudRateComboBox->setEditable(mCustomBaudrateCheckBox->isChecked());
 }
 #endif
 
 #ifdef SAK_IMPORT_COM_MODULE
 void SAKOtherTransmissionItemCom::read()
 {
-    if (serialPort){
-        QByteArray data = serialPort->readAll();
+    if (mSerialPort){
+        QByteArray data = mSerialPort->readAll();
         if (!data.isEmpty()){
-            if (handleReceiveDataCheckBox->isChecked()){
+            if (mHandleReceiveDataCheckBox->isChecked()){
                 emit bytesRead(data);
             }
         }
@@ -145,11 +145,11 @@ void SAKOtherTransmissionItemCom::read()
 #ifdef SAK_IMPORT_COM_MODULE
 void SAKOtherTransmissionItemCom::setUiEnable(bool enable)
 {
-    comComboBox->setEnabled(enable);
-    customBaudrateCheckBox->setEnabled(enable);
-    baudRateComboBox->setEnabled(enable);
-    dataBitscomboBox->setEnabled(enable);
-    stopBitscomboBox->setEnabled(enable);
-    parityComboBox->setEnabled(enable);
+    mComComboBox->setEnabled(enable);
+    mCustomBaudrateCheckBox->setEnabled(enable);
+    mBaudRateComboBox->setEnabled(enable);
+    mDataBitscomboBox->setEnabled(enable);
+    mStopBitscomboBox->setEnabled(enable);
+    mParityComboBox->setEnabled(enable);
 }
 #endif

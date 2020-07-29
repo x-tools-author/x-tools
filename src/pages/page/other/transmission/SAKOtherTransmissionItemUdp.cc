@@ -12,40 +12,40 @@
 
 #include "ui_SAKOtherTransmissionItemUdp.h"
 
-SAKOtherTransmissionItemUdp::SAKOtherTransmissionItemUdp(SAKDebugPage *_debugPage, QWidget *parent)
-    :SAKOtherTransmissionItem (_debugPage, parent)
-    ,ui(new Ui::SAKOtherTransmissionItemUdp)
-    ,udpSocket (Q_NULLPTR)
+SAKOtherTransmissionItemUdp::SAKOtherTransmissionItemUdp(SAKDebugPage *debugPage, QWidget *parent)
+    :SAKOtherTransmissionItem (debugPage, parent)
+    ,mUi(new Ui::SAKOtherTransmissionItemUdp)
+    ,mUdpSocket (Q_NULLPTR)
 {
-    ui->setupUi(this);
+    mUi->setupUi(this);
 
-    enableCheckBox = ui->enableCheckBox;
-    customAddressCheckBox = ui->customAddressCheckBox;
-    addressComboBox = ui->addressComboBox;
-    portLineEdit = ui->portLineEdit;
-    handleReceiveDataCheckBox = ui->handleReceiveDataCheckBox;
-    targetAddressLineEdit = ui->targetAddressLineEdit;
-    targetPortLineEdit = ui->targetPortLineEdit;
+    mEnableCheckBox = mUi->enableCheckBox;
+    mCustomAddressCheckBox = mUi->customAddressCheckBox;
+    mAddressComboBox = mUi->addressComboBox;
+    mPortLineEdit = mUi->portLineEdit;
+    mHandleReceiveDataCheckBox = mUi->handleReceiveDataCheckBox;
+    mTargetAddressLineEdit = mUi->targetAddressLineEdit;
+    mTargetPortLineEdit = mUi->targetPortLineEdit;
 
-    SAKGlobal::initIpComboBox(addressComboBox);
+    SAKGlobal::initIpComboBox(mAddressComboBox);
 }
 
 SAKOtherTransmissionItemUdp::~SAKOtherTransmissionItemUdp()
 {
-    delete ui;
-    if (udpSocket){
-        delete udpSocket;
+    delete mUi;
+    if (mUdpSocket){
+        delete mUdpSocket;
     }
 }
 
 void SAKOtherTransmissionItemUdp::write(QByteArray data)
 {
-    if (udpSocket){
-        QHostAddress targetAddress(targetAddressLineEdit->text());
-        quint16 targetPort = static_cast<quint16>(targetPortLineEdit->text().toInt());
-        if (!udpSocket->writeDatagram(data, targetAddress, targetPort)){
+    if (mUdpSocket){
+        QHostAddress targetAddress(mTargetAddressLineEdit->text());
+        quint16 targetPort = static_cast<quint16>(mTargetPortLineEdit->text().toInt());
+        if (!mUdpSocket->writeDatagram(data, targetAddress, targetPort)){
 #ifdef QT_DEBUG
-        qDebug() << "发送数据失败" << udpSocket->errorString();
+        qDebug() << "发送数据失败" << mUdpSocket->errorString();
 #endif
         }
     }
@@ -54,39 +54,39 @@ void SAKOtherTransmissionItemUdp::write(QByteArray data)
 void SAKOtherTransmissionItemUdp::on_enableCheckBox_clicked()
 {
     auto closeDev = [&](){
-        disconnect(udpSocket, &QUdpSocket::readyRead, this, &SAKOtherTransmissionItemUdp::read);
-        delete udpSocket;
-        udpSocket = Q_NULLPTR;
+        disconnect(mUdpSocket, &QUdpSocket::readyRead, this, &SAKOtherTransmissionItemUdp::read);
+        delete mUdpSocket;
+        mUdpSocket = Q_NULLPTR;
         this->setUiEnable(true);
     };
 
     auto bindDev = [&](QHostAddress address, quint16 port, bool customAddressAndPort){
         bool bindResult = false;
         if (customAddressAndPort){
-            bindResult = udpSocket->bind(address, port);
+            bindResult = mUdpSocket->bind(address, port);
         }else{
-            bindResult = udpSocket->bind();
+            bindResult = mUdpSocket->bind();
         }
 
         if (bindResult){
-            if (udpSocket->open(QUdpSocket::ReadWrite)){
-                connect(udpSocket, &QUdpSocket::readyRead, this, &SAKOtherTransmissionItemUdp::read);
+            if (mUdpSocket->open(QUdpSocket::ReadWrite)){
+                connect(mUdpSocket, &QUdpSocket::readyRead, this, &SAKOtherTransmissionItemUdp::read);
                 this->setUiEnable(false);
                 return;
             }
         }
 
-        emit requestOutputMessage(udpSocket->errorString(), false);
-        enableCheckBox->setChecked(false);
+        emit requestOutputMessage(mUdpSocket->errorString(), false);
+        mEnableCheckBox->setChecked(false);
         closeDev();
     };
 
-    if (enableCheckBox->isChecked()){
-        udpSocket = new QUdpSocket;
-        if (customAddressCheckBox->isChecked()){
-            bindDev(QHostAddress(addressComboBox->currentText()), static_cast<quint16>(portLineEdit->text().toInt()), true);
+    if (mEnableCheckBox->isChecked()){
+        mUdpSocket = new QUdpSocket;
+        if (mCustomAddressCheckBox->isChecked()){
+            bindDev(QHostAddress(mAddressComboBox->currentText()), static_cast<quint16>(mPortLineEdit->text().toInt()), true);
         }else{
-            bindDev(QHostAddress(addressComboBox->currentText()), static_cast<quint16>(portLineEdit->text().toInt()), false);
+            bindDev(QHostAddress(mAddressComboBox->currentText()), static_cast<quint16>(mPortLineEdit->text().toInt()), false);
         }
     }else{
         closeDev();
@@ -95,15 +95,15 @@ void SAKOtherTransmissionItemUdp::on_enableCheckBox_clicked()
 
 void SAKOtherTransmissionItemUdp::read()
 {
-    if (!handleReceiveDataCheckBox->isChecked()){
+    if (!mHandleReceiveDataCheckBox->isChecked()){
         return;
     }
 
-    if (udpSocket){
-        while (udpSocket->hasPendingDatagrams()) {
+    if (mUdpSocket){
+        while (mUdpSocket->hasPendingDatagrams()) {
             QByteArray data;
-            data.resize(static_cast<int>(udpSocket->pendingDatagramSize()));
-            udpSocket->readDatagram(data.data(), data.length());
+            data.resize(static_cast<int>(mUdpSocket->pendingDatagramSize()));
+            mUdpSocket->readDatagram(data.data(), data.length());
             emit bytesRead(data);
         }
     }
@@ -111,9 +111,9 @@ void SAKOtherTransmissionItemUdp::read()
 
 void SAKOtherTransmissionItemUdp::setUiEnable(bool enable)
 {
-    customAddressCheckBox->setEnabled(enable);
-    addressComboBox->setEnabled(enable);
-    portLineEdit->setEnabled(enable);
-    targetAddressLineEdit->setEnabled(enable);
-    targetPortLineEdit->setEnabled(enable);
+    mCustomAddressCheckBox->setEnabled(enable);
+    mAddressComboBox->setEnabled(enable);
+    mPortLineEdit->setEnabled(enable);
+    mTargetAddressLineEdit->setEnabled(enable);
+    mTargetPortLineEdit->setEnabled(enable);
 }

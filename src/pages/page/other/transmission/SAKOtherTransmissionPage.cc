@@ -19,27 +19,27 @@
 
 SAKOtherTransmissionPage::SAKOtherTransmissionPage(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget (parent)
-    ,_debugPage (debugPage)
-    ,ui (new Ui::SAKOtherTransmissionPage)
+    ,mDebugPage (debugPage)
+    ,mUi (new Ui::SAKOtherTransmissionPage)
 {
-    ui->setupUi(this);
-    addItemPushButton = ui->addItemPushButton;
-    deleteItemPushButton = ui->addItemPushButton;
-    listWidget = ui->listWidget;
-    infoLabel = ui->infoLabel;
+    mUi->setupUi(this);
+    mAddItemPushButton = mUi->addItemPushButton;
+    mDeleteItemPushButton = mUi->addItemPushButton;
+    mListWidget = mUi->listWidget;
+    mInfoLabel = mUi->infoLabel;
 
-    clearMessageInfoTimer.setInterval(5*1000);
-    connect(&clearMessageInfoTimer, &QTimer::timeout, this, &SAKOtherTransmissionPage::clearMessage);
+    mClearMessageInfoTimer.setInterval(5*1000);
+    connect(&mClearMessageInfoTimer, &QTimer::timeout, this, &SAKOtherTransmissionPage::clearMessage);
 }
 
 SAKOtherTransmissionPage::~SAKOtherTransmissionPage()
 {
-    delete ui;
+    delete mUi;
 }
 
 void SAKOtherTransmissionPage::setTransmissionType(TransmissionType type)
 {
-    transmissionType = type;
+    mTransmissionType = type;
 }
 
 void SAKOtherTransmissionPage::outputMessage(QString msg, bool isInfo)
@@ -49,46 +49,46 @@ void SAKOtherTransmissionPage::outputMessage(QString msg, bool isInfo)
         color = "red";
         QApplication::beep();
     }
-    infoLabel->setStyleSheet(QString("QLabel{color:%1}").arg(color));
+    mInfoLabel->setStyleSheet(QString("QLabel{color:%1}").arg(color));
 
-    infoLabel->setText(QTime::currentTime().toString("hh:mm:ss ") + msg);
-    clearMessageInfoTimer.start();
+    mInfoLabel->setText(QTime::currentTime().toString("hh:mm:ss ") + msg);
+    mClearMessageInfoTimer.start();
 }
 
 void SAKOtherTransmissionPage::clearMessage()
 {
-    clearMessageInfoTimer.stop();
-    infoLabel->clear();
+    mClearMessageInfoTimer.stop();
+    mInfoLabel->clear();
 }
 
 void SAKOtherTransmissionPage::on_addItemPushButton_clicked()
 {    
-    QListWidgetItem *item = new QListWidgetItem(listWidget);
-    listWidget->insertItem(listWidget->count(), item);
+    QListWidgetItem *item = new QListWidgetItem(mListWidget);
+    mListWidget->insertItem(mListWidget->count(), item);
     QWidget *itemWidget = Q_NULLPTR;
-    switch (transmissionType){
+    switch (mTransmissionType){
     case SerialPortTransmission:
-        itemWidget = new SAKOtherTransmissionItemCom(_debugPage, this);
+        itemWidget = new SAKOtherTransmissionItemCom(mDebugPage, this);
         break;
     case UdpTransmission:
-        itemWidget = new SAKOtherTransmissionItemUdp(_debugPage, this);
+        itemWidget = new SAKOtherTransmissionItemUdp(mDebugPage, this);
         break;
     case TcpTransmission:
-        itemWidget = new SAKOtherTransmissionItemTcp(_debugPage, this);
+        itemWidget = new SAKOtherTransmissionItemTcp(mDebugPage, this);
         break;
     default:
         Q_ASSERT_X(false, __FUNCTION__, "Unknow transmissioin type");
         break;
     }
     item->setSizeHint(QSize(itemWidget->width(), itemWidget->height()));
-    listWidget->setItemWidget(item, itemWidget);
+    mListWidget->setItemWidget(item, itemWidget);
     SAKOtherTransmissionItem *baseItemWidget = reinterpret_cast<SAKOtherTransmissionItem*>(itemWidget);
     connect(baseItemWidget, &SAKOtherTransmissionItem::requestOutputMessage, this, &SAKOtherTransmissionPage::outputMessage);
 }
 
 void SAKOtherTransmissionPage::on_deleteItemPushButton_clicked()
 {
-    QListWidgetItem *item = listWidget->currentItem();
-    listWidget->removeItemWidget(item);
+    QListWidgetItem *item = mListWidget->currentItem();
+    mListWidget->removeItemWidget(item);
     delete item;
 }
