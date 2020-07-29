@@ -121,9 +121,8 @@ INCLUDEPATH += \
     src/pages/page/other \
     src/pages/page/other/autoresponse \
     src/pages/page/other/highlight \
-    src/pages/page/other/more \
-    src/pages/page/other/more/generator \
-    src/pages/page/other/more/protocol \
+    src/pages/page/other/generator \
+    src/pages/page/other/analyzer \
     src/pages/page/other/timingsent \
     src/pages/page/other/transmission \
     src/pages/page/output \
@@ -147,9 +146,8 @@ FORMS += \
     src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.ui \
     src/pages/page/other/autoresponse/SAKOtherAutoResponseItemManager.ui \
     src/pages/page/other/highlight/SAKHighlightSettingsWidget.ui \
-    src/pages/page/other/more/SAKMoreSettingsWidget.ui \
-    src/pages/page/other/more/generator/SAKWaveformGeneratorWidget.ui \
-    src/pages/page/other/more/protocol/SAKProtocolAnalyzerWidget.ui \
+    src/pages/page/other/generator/SAKWaveformGeneratorWidget.ui \
+    src/pages/page/other/analyzer/SAKProtocolAnalyzerWidget.ui \
     src/pages/page/other/timingsent/SAKOtherTimingSentItem.ui \
     src/pages/page/other/timingsent/SAKOtherTimingSentItemManager.ui \
     src/pages/page/other/transmission/SAKSerialPortTransmissionItemWidget.ui \
@@ -189,10 +187,9 @@ HEADERS += \
     src/pages/page/other/autoresponse/SAKOtherAutoResponseItemManager.hh \
     src/pages/page/other/highlight/SAKHighlightSettings.hh \
     src/pages/page/other/highlight/SAKHighlightSettingsWidget.hh \
-    src/pages/page/other/more/SAKMoreSettingsWidget.hh \
-    src/pages/page/other/more/generator/SAKWaveformGeneratorWidget.hh \
-    src/pages/page/other/more/protocol/SAKProtocolAnalyzer.hh \
-    src/pages/page/other/more/protocol/SAKProtocolAnalyzerWidget.hh \
+    src/pages/page/other/generator/SAKWaveformGeneratorWidget.hh \
+    src/pages/page/other/analyzer/SAKProtocolAnalyzer.hh \
+    src/pages/page/other/analyzer/SAKProtocolAnalyzerWidget.hh \
     src/pages/page/other/timingsent/SAKOtherTimingSentItem.hh \
     src/pages/page/other/timingsent/SAKOtherTimingSentItemManager.hh \
     src/pages/page/other/transmission/SAKBaseTransmissionItemWidget.hh \
@@ -248,10 +245,9 @@ SOURCES += \
     src/pages/page/other/autoresponse/SAKOtherAutoResponseItemManager.cc \
     src/pages/page/other/highlight/SAKHighlightSettings.cc \
     src/pages/page/other/highlight/SAKHighlightSettingsWidget.cc \
-    src/pages/page/other/more/SAKMoreSettingsWidget.cc \
-    src/pages/page/other/more/generator/SAKWaveformGeneratorWidget.cc \
-    src/pages/page/other/more/protocol/SAKProtocolAnalyzer.cc \
-    src/pages/page/other/more/protocol/SAKProtocolAnalyzerWidget.cc \
+    src/pages/page/other/generator/SAKWaveformGeneratorWidget.cc \
+    src/pages/page/other/analyzer/SAKProtocolAnalyzer.cc \
+    src/pages/page/other/analyzer/SAKProtocolAnalyzerWidget.cc \
     src/pages/page/other/timingsent/SAKOtherTimingSentItem.cc \
     src/pages/page/other/timingsent/SAKOtherTimingSentItemManager.cc \
     src/pages/page/other/transmission/SAKBaseTransmissionItemWidget.cc \
