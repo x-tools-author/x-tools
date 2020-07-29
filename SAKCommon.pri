@@ -1,12 +1,12 @@
-# 清空ui信息显示时间间隔（单位为毫秒）
+# Interval of timer which is used to clear ui message
 DEFINES += SAK_CLEAR_MESSAGE_INTERVAL=8000
-# 自动回复数据限制，最多9999条自动回复数据
+# The max count of auto response item
 DEFINES += SAK_MAX_AUTO_RESPONSE_COUNT=9999
-# 所有本机网络地址字符串
+# All address of host
 DEFINES += SAK_HOST_ADDRESS_ANY=\"\\\"HostAddress::Any\\\"\"
-# 软件版本
+# Application version
 DEFINES += SAK_VERSION=\"\\\"3.1.0\\\"\"
-# 软件重启代码
+# Exit code which is used to reboot the application
 DEFINES += SAK_REBOOT_CODE=1314
 # Sleep interval of device thread
-DEFINES += SAK_DEVICE_THREAD_SLEEP_INTERVAL=25
+DEFINES += SAK_DEVICE_THREAD_SLEEP_INTERVAL=10
