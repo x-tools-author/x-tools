@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKTRANSMISSIONSETTINGS_HH
-#define SAKTRANSMISSIONSETTINGS_HH
+#ifndef SAKOTHERTRANSMISSIONPAGEVIEWER_HH
+#define SAKOTHERTRANSMISSIONPAGEVIEWER_HH
 
 #include <QWidget>
 #include <QPushButton>
