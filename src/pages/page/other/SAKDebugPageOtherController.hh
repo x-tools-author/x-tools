@@ -17,6 +17,7 @@ class SAKDebugPage;
 class SAKTransmissionSettings;
 class SAKHighlightSettingsWidget;
 class SAKOtherTimingSentItemManager;
+class SAKOtherAnalyzerThreadManager;
 class SAKOtherAutoResponseItemManager;
 
 /// @brief other setting module
@@ -26,13 +27,19 @@ class SAKDebugPageOtherController:public QObject
 public:
     SAKDebugPageOtherController(SAKDebugPage *debugPage, QObject *parent = Q_NULLPTR);
     ~SAKDebugPageOtherController();
+
+    /**
+     * @brief analyzerThreadManager: Get the SAKOtherAnalyzerThreadManager instance
+     * @return instance
+     */
+    SAKOtherAnalyzerThreadManager *analyzerThreadManager();
 private:
     SAKDebugPage *mDebugPage;
 
     QPushButton *moreSettingsPushButton;
     QPushButton *timingSendingPushButton;
     QPushButton *highlightSettingPushButton;
-    QPushButton *readWriteSettingPushButton;
+    QPushButton *mAnalyzerPushButton;
     QPushButton *autoResponseSettingPushButton;
     QPushButton *transmissionSettingPushButton;
 
@@ -40,6 +47,7 @@ private:
     SAKHighlightSettingsWidget *mHighlightSettingsWidget;
     SAKOtherAutoResponseItemManager *mAutoResponseSettingWidget;
     SAKOtherTimingSentItemManager *mTimingSendingSettingsWidget;
+    SAKOtherAnalyzerThreadManager *mAnalyzerThreadManager;
 private slots:
     void onTimingSendingPushButtonClicked();
     void onHighlightSettingPushButtonClicked();

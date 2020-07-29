@@ -9,12 +9,14 @@
  */
 #include <QDebug>
 
+#include "SAKSettings.hh"
 #include "SAKDebugPage.hh"
 #include "SAKTransmissionSettings.hh"
 #include "SAKHighlightSettingsWidget.hh"
 #include "SAKDebugPageOtherController.hh"
 #include "SAKOtherAutoResponseItemManager.hh"
 #include "SAKOtherTimingSentItemManager.hh"
+#include "SAKOtherAnalyzerThreadManager.hh"
 
 SAKDebugPageOtherController::SAKDebugPageOtherController(SAKDebugPage *debugPage, QObject *parent)
     :QObject (parent)
@@ -24,11 +26,12 @@ SAKDebugPageOtherController::SAKDebugPageOtherController(SAKDebugPage *debugPage
     mHighlightSettingsWidget = new SAKHighlightSettingsWidget(mDebugPage->mOutputTextBroswer->document());
     mAutoResponseSettingWidget = new SAKOtherAutoResponseItemManager(mDebugPage);
     mTimingSendingSettingsWidget = new SAKOtherTimingSentItemManager(mDebugPage);
+    mAnalyzerThreadManager = new SAKOtherAnalyzerThreadManager(SAKSettings::instance());
 
     moreSettingsPushButton = mDebugPage->mMoreSettingsPushButton;
     timingSendingPushButton = mDebugPage->mTimingSendingPushButton;
     highlightSettingPushButton = mDebugPage->mHighlightSettingPushButton;
-    readWriteSettingPushButton = mDebugPage->mAnalyzerPushButton;
+    mAnalyzerPushButton = mDebugPage->mAnalyzerPushButton;
     autoResponseSettingPushButton = mDebugPage->mAutoResponseSettingPushButton;
     transmissionSettingPushButton = mDebugPage->mTransmissionSettingPushButton;
 
@@ -44,11 +47,18 @@ SAKDebugPageOtherController::~SAKDebugPageOtherController()
     delete mHighlightSettingsWidget;
     delete mAutoResponseSettingWidget;
     delete mTimingSendingSettingsWidget;
+    delete mAnalyzerThreadManager;
 
     mTransmissionSettings = Q_NULLPTR;
+    mAnalyzerThreadManager = Q_NULLPTR;
     mHighlightSettingsWidget = Q_NULLPTR;
     mAutoResponseSettingWidget = Q_NULLPTR;
     mTimingSendingSettingsWidget = Q_NULLPTR;
+}
+
+SAKOtherAnalyzerThreadManager *SAKDebugPageOtherController::analyzerThreadManager()
+{
+    return mAnalyzerThreadManager;
 }
 
 void SAKDebugPageOtherController::onTimingSendingPushButtonClicked()
