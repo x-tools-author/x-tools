@@ -64,7 +64,7 @@ private:
     QMutex mParametersMutex;
 signals:
     // Bytes that analyzed will be emited
-    void bytesAnalized(QByteArray bytes);
+    void bytesAnalyzed(QByteArray bytes);
 };
 
 #endif

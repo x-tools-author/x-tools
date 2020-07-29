@@ -55,7 +55,7 @@ void SAKOtherAnalyzerThread::run()
         if (mWaitingAnalyzingBytes.length() >= maxTempLength){
             QByteArray temp = QByteArray(mWaitingAnalyzingBytes.data(), maxTempLength);
             mWaitingAnalyzingBytes.remove(0, temp.length());
-            emit bytesAnalized(temp);
+            emit bytesAnalyzed(temp);
         }
 
         if (mParameters.fixed){ // 根据协议长度提取
@@ -63,11 +63,11 @@ void SAKOtherAnalyzerThread::run()
                 while (mWaitingAnalyzingBytes.length() >= mParameters.length) {
                     QByteArray temp = QByteArray(mWaitingAnalyzingBytes.data(), parameters.length);
                     mWaitingAnalyzingBytes.remove(0, temp.length());
-                    emit bytesAnalized(temp);
+                    emit bytesAnalyzed(temp);
                 }
             }else{  // 长度小于或者等于0，不再提取数据
                 if (mWaitingAnalyzingBytes.length()){
-                    emit bytesAnalized(mWaitingAnalyzingBytes);
+                    emit bytesAnalyzed(mWaitingAnalyzingBytes);
                     mWaitingAnalyzingBytes.clear();
                 }
             }
@@ -75,7 +75,7 @@ void SAKOtherAnalyzerThread::run()
             /// @brief 未指定首尾标志时，将数据全部发出
             if (parameters.startArray.isEmpty() && parameters.endArray.isEmpty()){
                 if (mWaitingAnalyzingBytes.length()){
-                    emit bytesAnalized(mWaitingAnalyzingBytes);
+                    emit bytesAnalyzed(mWaitingAnalyzingBytes);
                     mWaitingAnalyzingBytes.clear();
                 }
             }else{
@@ -108,7 +108,7 @@ void SAKOtherAnalyzerThread::run()
                     /// @brief 起始字节及结束字节都匹配完成后才对外发送数据
                     if (startBytesMatched && endBytesMatched){
                         QByteArray temp(mWaitingAnalyzingBytes.data(), frameLength);
-                        emit bytesAnalized(temp);
+                        emit bytesAnalyzed(temp);
                         mWaitingAnalyzingBytes.remove(0, temp.length());
                     }
                 }
@@ -156,7 +156,7 @@ void SAKOtherAnalyzerThread::inputBytes(QByteArray array)
         mWaitingAnalyzingBytesMutex.unlock();
     }else{
         /// @brief 不使用协议分析提取功能，直接将数据对外发送
-        emit bytesAnalized(array);
+        emit bytesAnalyzed(array);
     }
 }
 

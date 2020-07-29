@@ -36,7 +36,7 @@ SAKOtherAnalyzerThreadManager::SAKOtherAnalyzerThreadManager(QSettings *settings
 
     setLineEditFormat(mStartLineEdit);
     setLineEditFormat(mEndLineEdit);
-    connect(mAnalyzer, &SAKOtherAnalyzerThread::bytesAnalized, this, &SAKOtherAnalyzerThreadManager::bytesAnalysed);
+    connect(mAnalyzer, &SAKOtherAnalyzerThread::bytesAnalyzed, this, &SAKOtherAnalyzerThreadManager::bytesAnalysed);
     mAnalyzer->start();
 
     Q_ASSERT_X(settings, __FUNCTION__, "The parameter can not be nullptr!");
