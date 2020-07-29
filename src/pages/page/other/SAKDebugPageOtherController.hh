@@ -16,8 +16,8 @@
 class SAKDebugPage;
 class SAKTransmissionSettings;
 class SAKHighlightSettingsWidget;
-class SAKOtherAutoResponseItemManager;
 class SAKOtherTimingSentItemManager;
+class SAKOtherAutoResponseItemManager;
 
 /// @brief other setting module
 class SAKDebugPageOtherController:public QObject
