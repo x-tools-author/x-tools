@@ -42,11 +42,20 @@ SAKOtherAnalyzerThreadManager::SAKOtherAnalyzerThreadManager(QSettings *settings
     Q_ASSERT_X(settings, __FUNCTION__, "The parameter can not be nullptr!");
     if (settings){
         // Read in parameters from settings file
-        mFixedLengthCheckBox->setChecked(settings->value(mSettingKeyFixed).toBool());
-        mLengthLineEdit->setText(settings->value(mSettingKeyLenth).toString());
-        mStartLineEdit->setText(settings->value(mSettingKeyStartBytes).toString());
-        mEndLineEdit->setText(settings->value(mSettingKeyEndBytes).toString());
-        mDisableCheckBox->setChecked(!settings->value(mSettingKeyEnable).toBool());
+        bool fixed = settings->value(mSettingKeyFixed).toBool();
+        QString lengthString = settings->value(mSettingKeyLenth).toString();
+        QString startBytesString = settings->value(mSettingKeyStartBytes).toString();
+        QString endBytesString = settings->value(mSettingKeyEndBytes).toString();
+        bool enable = settings->value(mSettingKeyEnable).toBool();
+
+        mFixedLengthCheckBox->setChecked(fixed);
+        mLengthLineEdit->setText(lengthString);
+        mStartLineEdit->setText(startBytesString);
+        mEndLineEdit->setText(endBytesString);
+        mDisableCheckBox->setChecked(!enable);
+
+        mAnalyzer->setFixed(fixed);
+        mAnalyzer->setEnable(enable);
     }
 }
 
@@ -70,6 +79,21 @@ void SAKOtherAnalyzerThreadManager::setLineEditFormat(QLineEdit *lineEdit)
     }
 }
 
+QByteArray SAKOtherAnalyzerThreadManager::string2bytes(QString hex)
+{
+    hex.trimmed();
+    QStringList list = hex.split(' ');
+    QByteArray startBytes;
+    for (auto var : list){
+        if (var.toLatin1().length()){
+            quint8 v = var.toUInt(Q_NULLPTR, 16);
+            startBytes.append(reinterpret_cast<char*>(&v), 1);
+        }
+    }
+
+    return startBytes;
+}
+
 void SAKOtherAnalyzerThreadManager::on_fixedLengthCheckBox_clicked()
 {
     mAnalyzer->setFixed(mFixedLengthCheckBox->isChecked());
@@ -88,13 +112,7 @@ void SAKOtherAnalyzerThreadManager::on_lengthLineEdit_textChanged(const QString 
 
 void SAKOtherAnalyzerThreadManager::on_startLineEdit_textChanged(const QString &text)
 {
-    text.trimmed();
-    QStringList list = text.split(' ');
-    QByteArray startBytes;
-    for (auto var : list){
-        quint8 v = var.toUInt(Q_NULLPTR, 16);
-        startBytes.append(reinterpret_cast<char*>(&v), 1);
-    }
+    QByteArray startBytes = string2bytes(text);
     mAnalyzer->setStartArray(startBytes);
     if (mSettings){
         mSettings->setValue(mSettingKeyStartBytes, mStartLineEdit->text());
@@ -103,13 +121,7 @@ void SAKOtherAnalyzerThreadManager::on_startLineEdit_textChanged(const QString &
 
 void SAKOtherAnalyzerThreadManager::on_endLineEdit_textChanged(const QString &text)
 {
-    text.trimmed();
-    QStringList list = text.split(' ');
-    QByteArray endBytes;
-    for (auto var : list){
-        quint8 v = var.toUInt(Q_NULLPTR, 16);
-        endBytes.append(reinterpret_cast<char*>(&v), 1);
-    }
+    QByteArray endBytes = string2bytes(text);
     mAnalyzer->setEndArray(endBytes);
     if (mSettings){
         mSettings->setValue(mSettingKeyEndBytes, mEndLineEdit->text());
