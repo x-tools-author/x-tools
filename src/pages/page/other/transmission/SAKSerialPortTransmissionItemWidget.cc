@@ -81,7 +81,7 @@ void SAKSerialPortTransmissionItemWidget::write(QByteArray data)
 #ifdef SAK_IMPORT_COM_MODULE
 void SAKSerialPortTransmissionItemWidget::on_enableCheckBox_clicked()
 {
-    // c++11 lambda表达式
+    // c++11 lambda
     auto closeDev = [&](){
         if (serialPort){
             disconnect(serialPort, &QSerialPort::readyRead, this, &SAKSerialPortTransmissionItemWidget::read);
@@ -102,11 +102,11 @@ void SAKSerialPortTransmissionItemWidget::on_enableCheckBox_clicked()
             this->setUiEnable(false);
             connect(serialPort, &QSerialPort::readyRead, this, &SAKSerialPortTransmissionItemWidget::read, Qt::QueuedConnection);
 #ifdef QT_DEBUG
-            qInfo() << tr("串口打开成功")
-                    << tr("串口名称：") << serialPort->portName()
-                    << tr("波特率：") << serialPort->baudRate()
-                    << tr("数据位：") << serialPort->dataBits()
-                    << tr("校验方式：") << serialPort->parity();
+            qInfo() << tr("Open device successfully,")
+                    << tr("name:") << serialPort->portName()
+                    << tr("baudrate:") << serialPort->baudRate()
+                    << tr("data bits:") << serialPort->dataBits()
+                    << tr("parity:") << serialPort->parity();
 #endif
         }else{
             emit requestOutputMessage(serialPort->errorString(), false);
