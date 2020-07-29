@@ -11,27 +11,27 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>数据转发</string>
+   <string>Data transmition</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="serialPortWidget">
       <attribute name="title">
-       <string>串口转发</string>
+       <string>COM</string>
       </attribute>
      </widget>
      <widget class="QWidget" name="udpWidget">
       <attribute name="title">
-       <string>UDP转发</string>
+       <string>UDP</string>
       </attribute>
      </widget>
      <widget class="QWidget" name="tcpWidget">
       <attribute name="title">
-       <string>TCP转发</string>
+       <string>TCP</string>
       </attribute>
      </widget>
     </widget>
