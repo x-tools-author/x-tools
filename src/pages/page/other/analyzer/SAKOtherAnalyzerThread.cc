@@ -36,58 +36,69 @@ SAKOtherAnalyzerThread::~SAKOtherAnalyzerThread()
 void SAKOtherAnalyzerThread::run()
 {
     QEventLoop eventLoop;
-    int maxTempLength = 2048;
+    const int maxTempLength = 2048;
+    ParametersContext parameters;
     while (1) {
         // Handle signal and slots
         eventLoop.processEvents();
-        /// @brief 获取参数
+
+        // Get parameters
         mParametersMutex.lock();
-        ParametersContext parameters = mParameters;
+        parameters = mParameters;
         mParametersMutex.unlock();
 
-        /// @brief 分析数据
+        // Lock data
         mWaitingAnalyzingBytesMutex.lock();
 
-        /// @brief 限制缓存数据大小
+        // If the bytes of temp data is more than maxTempLength(2048) bytes,
+        // a frame which length is maxTempLength will be emit.
         if (mWaitingAnalyzingBytes.length() >= maxTempLength){
             QByteArray temp = QByteArray(mWaitingAnalyzingBytes.data(), maxTempLength);
             mWaitingAnalyzingBytes.remove(0, temp.length());
             emit bytesAnalyzed(temp);
         }
 
-        if (mParameters.fixed){ // 根据协议长度提取
+        // The length of frame is fixed
+        if (mParameters.fixed){
             if (mParameters.length > 0){
                 while (mWaitingAnalyzingBytes.length() >= mParameters.length) {
                     QByteArray temp = QByteArray(mWaitingAnalyzingBytes.data(), parameters.length);
                     mWaitingAnalyzingBytes.remove(0, temp.length());
                     emit bytesAnalyzed(temp);
                 }
-            }else{  // 长度小于或者等于0，不再提取数据
+            }else{ // If parameters is error(the length is less than 0), temp data will be clear!
                 if (mWaitingAnalyzingBytes.length()){
                     emit bytesAnalyzed(mWaitingAnalyzingBytes);
                     mWaitingAnalyzingBytes.clear();
                 }
             }
-        }else{  // 根据首尾标志提取
-            /// @brief 未指定首尾标志时，将数据全部发出
+        }else{ // Extract data according to the flags
+            // If both of start-bytes and end-bytes are empty, temp data will be clear
             if (parameters.startArray.isEmpty() && parameters.endArray.isEmpty()){
                 if (mWaitingAnalyzingBytes.length()){
                     emit bytesAnalyzed(mWaitingAnalyzingBytes);
                     mWaitingAnalyzingBytes.clear();
                 }
             }else{
-                while(mWaitingAnalyzingBytes.length() > (parameters.startArray.length() + parameters.endArray.length())){
-                    /// @brief 匹配起始字节
+                while(mWaitingAnalyzingBytes.length() >= (parameters.startArray.length() + parameters.endArray.length())){
+                    // Match start-bytes
                     bool startBytesMatched = true;
-                    for (int i = 0; i < parameters.startArray.length(); i++){
-                        if (parameters.startArray.at(i) != mWaitingAnalyzingBytes.at(i)){
+                    if (parameters.startArray.isEmpty()){
+                        startBytesMatched = true;
+                    }else{
+                        int ret = mWaitingAnalyzingBytes.indexOf(parameters.startArray, 0);
+                        if (ret > 0){
+                            startBytesMatched = true;
+                            // Remove error data
+                            QByteArray temp = QByteArray(mWaitingAnalyzingBytes.data(), ret);
+                            mWaitingAnalyzingBytes.remove(0, ret);
+                            emit bytesAnalyzed(temp);
+                        }else{
                             startBytesMatched = false;
-                            mWaitingAnalyzingBytes.remove(i, 1);
-                            break;
                         }
                     }
 
-                    /// @brief 匹配结束字节
+                    // Match end-bytes
                     bool endBytesMatched = true;
                     quint32 frameLength = 0;
                     if (parameters.endArray.isEmpty()){
@@ -102,7 +113,7 @@ void SAKOtherAnalyzerThread::run()
                         }
                     }
 
-                    /// @brief 起始字节及结束字节都匹配完成后才对外发送数据
+                    // A completed data-frame has been extracted
                     if (startBytesMatched && endBytesMatched){
                         QByteArray temp(mWaitingAnalyzingBytes.data(), frameLength);
                         emit bytesAnalyzed(temp);
@@ -114,7 +125,7 @@ void SAKOtherAnalyzerThread::run()
         mWaitingAnalyzingBytesMutex.unlock();
 
         if (!isInterruptionRequested()){
-            /// @brief 每隔20毫秒处理一次数据
+            // Do something make cpu happy
             mThreadMutex.lock();
             mThreadCondition.wait(&mThreadMutex, 20);
             mThreadMutex.unlock();
@@ -133,22 +144,22 @@ void SAKOtherAnalyzerThread::clearData()
 
 void SAKOtherAnalyzerThread::inputBytes(QByteArray array)
 {
-    /// @brief 不处理空数据
-    if (array.isEmpty()){
-        return;
-    }
+    // Ignore the empty data
+    if (array.length()){
+        mParametersMutex.lock();
+        ParametersContext parameters = mParameters;
+        mParametersMutex.unlock();
 
-    mParametersMutex.lock();
-    ParametersContext parameters = mParameters;
-    mParametersMutex.unlock();
+        if (parameters.enable){
+            mWaitingAnalyzingBytesMutex.lock();
+            mWaitingAnalyzingBytes.append(array);
+            mWaitingAnalyzingBytesMutex.unlock();
+        }else{
+            emit bytesAnalyzed(array);
+        }
 
-    if (parameters.enable){
-        mWaitingAnalyzingBytesMutex.lock();
-        mWaitingAnalyzingBytes.append(array);
-        mWaitingAnalyzingBytesMutex.unlock();
-    }else{
-        /// @brief 不使用协议分析提取功能，直接将数据对外发送
-        emit bytesAnalyzed(array);
+        // Wake thread to analyze data
+        mThreadCondition.wakeAll();
     }
 }
 
