@@ -66,7 +66,7 @@ void SAKOtherAnalyzerThread::run()
                     mWaitingAnalyzingBytes.remove(0, temp.length());
                     emit bytesAnalyzed(temp);
                 }
-            }else{ // If parameters is error(the length is less than 0), temp data will be clear!
+            }else{ // If parameters is error(the length is less than 0 or equal to 0), temp data will be clear!
                 if (mWaitingAnalyzingBytes.length()){
                     emit bytesAnalyzed(mWaitingAnalyzingBytes);
                     mWaitingAnalyzingBytes.clear();
@@ -122,6 +122,8 @@ void SAKOtherAnalyzerThread::run()
                 }
             }
         }
+
+        // Unlock data
         mWaitingAnalyzingBytesMutex.unlock();
 
         if (!isInterruptionRequested()){
