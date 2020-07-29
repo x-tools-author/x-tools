@@ -21,20 +21,14 @@ namespace Ui {
 }
 
 class SAKOtherHighlighter;
-/// @brief 高亮设置窗口
+/// @brief Syntax highlighter manager
 class SAKOtherHighlighterManager:public QWidget
 {
     Q_OBJECT
 public:
     SAKOtherHighlighterManager(QTextDocument *doc, QWidget* parent = Q_NULLPTR);
     ~SAKOtherHighlighterManager();
-
-    /**
-     * @brief eventFilter 事件过滤器
-     * @param watched 监控对象
-     * @param event 实事件
-     * @return 是否被过滤
-     */
+protected:
     bool eventFilter(QObject *watched, QEvent *event);
 private:
     void clearLabel();

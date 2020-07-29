@@ -18,20 +18,15 @@ class SAKOtherHighlighter : public QSyntaxHighlighter
 {
     Q_OBJECT
 public:
-    /**
-     * @brief SAKHighlighter    -- 构造函数，nothing to say.
-     * @param parent            -- 父控件，用于释放资源
-     */
     SAKOtherHighlighter(QTextDocument* parent = Q_NULLPTR);
 
     /**
-     * @brief setHighlighterKeyWord -- 设置高亮显示关键字
-     * @param keyWords              -- 关键字
+     * @brief setHighlighterKeyWord: Set highligh key word
+     * @param keyWords: Key word
      */
     void setHighlighterKeyWord(QStringList keyWords);
 private:
-    struct HighlightingRule
-    {
+    struct HighlightingRule{
         QRegularExpression pattern;
         QTextCharFormat format;
     };

@@ -12,7 +12,6 @@
 SAKOtherHighlighter::SAKOtherHighlighter(QTextDocument* parent)
     :QSyntaxHighlighter (parent)
 {
-    /// 该功能请参考Qt语法高亮显示示例
     setHighlighterKeyWord(QStringList());
 }
 
