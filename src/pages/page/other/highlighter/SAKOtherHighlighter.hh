@@ -1,20 +1,20 @@
 ﻿/*
  * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
  *
- * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
- * project(https://www.qsak.pro). The project is an open source project. You can
- * get the source of the project from: "https://github.com/qsak/QtSwissArmyKnife"
- * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
- * group which number is 952218522 to have a communication.
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKHIGHLIGHTSETTINGS_HH
-#define SAKHIGHLIGHTSETTINGS_HH
+#ifndef SAKOTHERHIGHLIGHTER_HH
+#define SAKOTHERHIGHLIGHTER_HH
 
 #include <QTextDocument>
 #include <QSyntaxHighlighter>
 #include <QRegularExpression>
 
-class SAKHighlightSettings : public QSyntaxHighlighter
+class SAKOtherHighlighter : public QSyntaxHighlighter
 {
     Q_OBJECT
 public:
@@ -22,7 +22,7 @@ public:
      * @brief SAKHighlighter    -- 构造函数，nothing to say.
      * @param parent            -- 父控件，用于释放资源
      */
-    SAKHighlightSettings(QTextDocument* parent = Q_NULLPTR);
+    SAKOtherHighlighter(QTextDocument* parent = Q_NULLPTR);
 
     /**
      * @brief setHighlighterKeyWord -- 设置高亮显示关键字

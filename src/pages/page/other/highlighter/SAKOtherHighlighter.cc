@@ -1,22 +1,22 @@
 ﻿/*
  * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
  *
- * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
- * project(https://www.qsak.pro). The project is an open source project. You can
- * get the source of the project from: "https://github.com/qsak/QtSwissArmyKnife"
- * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
- * group which number is 952218522 to have a communication.
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  */
-#include "SAKHighlightSettings.hh"
+#include "SAKOtherHighlighter.hh"
 
-SAKHighlightSettings::SAKHighlightSettings(QTextDocument* parent)
+SAKOtherHighlighter::SAKOtherHighlighter(QTextDocument* parent)
     :QSyntaxHighlighter (parent)
 {
     /// 该功能请参考Qt语法高亮显示示例
     setHighlighterKeyWord(QStringList());
 }
 
-void SAKHighlightSettings::setHighlighterKeyWord(QStringList keyWords)
+void SAKOtherHighlighter::setHighlighterKeyWord(QStringList keyWords)
 {
     highlightingRules.clear();
 
@@ -37,7 +37,7 @@ void SAKHighlightSettings::setHighlighterKeyWord(QStringList keyWords)
     commentEndExpression = QRegularExpression("\\*/");
 }
 
-void SAKHighlightSettings::highlightBlock(const QString &text)
+void SAKOtherHighlighter::highlightBlock(const QString &text)
 {
     foreach (const HighlightingRule &rule, highlightingRules) {
         QRegularExpressionMatchIterator matchIterator = rule.pattern.globalMatch(text);
