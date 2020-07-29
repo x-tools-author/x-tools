@@ -15,7 +15,6 @@
 #include <QComboBox>
 #include <QLineEdit>
 #include <QUdpSocket>
-
 #include "SAKOtherTransmissionItem.hh"
 
 namespace Ui {

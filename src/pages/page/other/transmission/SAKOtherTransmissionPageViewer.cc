@@ -21,7 +21,6 @@ SAKOtherTransmissionPageViewer::SAKOtherTransmissionPageViewer(SAKDebugPage *deb
     ,mUi (new Ui::SAKOtherTransmissionPageViewer)
 {
     mUi->setupUi(this);
-    setWindowTitle(tr("数据转发设置"));
 
     mSerialPortWidget    = mUi->serialPortWidget;
     mUdpWidget           = mUi->udpWidget;

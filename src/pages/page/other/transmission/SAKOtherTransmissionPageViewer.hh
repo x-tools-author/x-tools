@@ -13,13 +13,12 @@
 #include <QWidget>
 #include <QPushButton>
 
-class SAKDebugPage;
-class SAKOtherTransmissionPage;
-
 namespace Ui {
 class SAKOtherTransmissionPageViewer;
 }
 
+class SAKDebugPage;
+class SAKOtherTransmissionPage;
 class SAKOtherTransmissionPageViewer:public QWidget
 {
     Q_OBJECT

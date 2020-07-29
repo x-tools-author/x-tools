@@ -15,12 +15,11 @@
 #include <QListWidget>
 #include <QPushButton>
 
-class SAKDebugPage;
-
 namespace Ui {
     class SAKOtherTransmissionPage;
 }
 
+class SAKDebugPage;
 class SAKOtherTransmissionPage:public QWidget
 {
     Q_OBJECT
