@@ -63,7 +63,7 @@ void SAKOtherAnalyzerThreadManager::inputBytes(QByteArray bytes)
 
 void SAKOtherAnalyzerThreadManager::setLineEditFormat(QLineEdit *lineEdit)
 {
-    QRegExp regExpHex("([0-9A-F][0-9A-F][ ])*");
+    QRegExp regExpHex("([0-9A-Fa-f][0-9A-Fa-f][ ])*");
     if (lineEdit){
         lineEdit->setValidator(Q_NULLPTR);
         lineEdit->setValidator(new QRegExpValidator(regExpHex, this));
