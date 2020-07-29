@@ -22,9 +22,9 @@ SAKOtherTransmissionPageViewer::SAKOtherTransmissionPageViewer(SAKDebugPage *deb
 {
     mUi->setupUi(this);
 
-    mSerialPortWidget    = mUi->serialPortWidget;
-    mUdpWidget           = mUi->udpWidget;
-    mTcpWidget           = mUi->tcpWidget;
+    mSerialPortWidget = mUi->serialPortWidget;
+    mUdpWidget = mUi->udpWidget;
+    mTcpWidget = mUi->tcpWidget;
 
     auto installWidget = [](QWidget *tab, QWidget *page){
         QHBoxLayout *layout = new QHBoxLayout(tab);
