@@ -12,7 +12,7 @@
 #include "SAKSettings.hh"
 #include "SAKDebugPage.hh"
 #include "SAKTransmissionSettings.hh"
-#include "SAKHighlightSettingsWidget.hh"
+#include "SAKOtherHighlighterManager.hh"
 #include "SAKDebugPageOtherController.hh"
 #include "SAKOtherAutoResponseItemManager.hh"
 #include "SAKOtherTimingSentItemManager.hh"
@@ -23,7 +23,7 @@ SAKDebugPageOtherController::SAKDebugPageOtherController(SAKDebugPage *debugPage
     ,mDebugPage (debugPage)
 {
     mTransmissionSettings = new SAKTransmissionSettings(mDebugPage);
-    mHighlightSettingsWidget = new SAKHighlightSettingsWidget(mDebugPage->mOutputTextBroswer->document());
+    mHighlightSettingsWidget = new SAKOtherHighlighterManager(mDebugPage->mOutputTextBroswer->document());
     mAutoResponseSettingWidget = new SAKOtherAutoResponseItemManager(mDebugPage);
     mTimingSendingSettingsWidget = new SAKOtherTimingSentItemManager(mDebugPage);
     mAnalyzerThreadManager = new SAKOtherAnalyzerThreadManager(SAKSettings::instance());

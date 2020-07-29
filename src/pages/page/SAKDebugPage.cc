@@ -28,7 +28,7 @@
 #include "SAKDebugPageDevice.hh"
 #include "SAKOtherAnalyzerThread.hh"
 #include "SAKOtherAnalyzerThreadManager.hh"
-#include "SAKHighlightSettingsWidget.hh"
+#include "SAKOtherHighlighterManager.hh"
 #include "SAKDebugPageOtherController.hh"
 #include "SAKDebugPageInputController.hh"
 #include "SAKDebugPageOutputController.hh"

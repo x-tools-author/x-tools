@@ -15,7 +15,7 @@
 
 class SAKDebugPage;
 class SAKTransmissionSettings;
-class SAKHighlightSettingsWidget;
+class SAKOtherHighlighterManager;
 class SAKOtherTimingSentItemManager;
 class SAKOtherAnalyzerThreadManager;
 class SAKOtherAutoResponseItemManager;
@@ -44,7 +44,7 @@ private:
     QPushButton *transmissionSettingPushButton;
 
     SAKTransmissionSettings *mTransmissionSettings;
-    SAKHighlightSettingsWidget *mHighlightSettingsWidget;
+    SAKOtherHighlighterManager *mHighlightSettingsWidget;
     SAKOtherAutoResponseItemManager *mAutoResponseSettingWidget;
     SAKOtherTimingSentItemManager *mTimingSendingSettingsWidget;
     SAKOtherAnalyzerThreadManager *mAnalyzerThreadManager;

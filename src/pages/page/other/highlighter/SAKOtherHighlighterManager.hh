@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKHIGHLIGHTERSETTINGSWIDGET_HH
-#define SAKHIGHLIGHTERSETTINGSWIDGET_HH
+#ifndef SAKOTHERHIGHLIGHTERMANAGER_HH
+#define SAKOTHERHIGHLIGHTERMANAGER_HH
 
 #include <QWidget>
 #include <QLineEdit>
@@ -17,17 +17,17 @@
 #include <QTextDocument>
 
 namespace Ui {
-    class SAKHighlightSettingsWidget;
+    class SAKOtherHighlighterManager;
 }
 
 class SAKOtherHighlighter;
 /// @brief 高亮设置窗口
-class SAKHighlightSettingsWidget:public QWidget
+class SAKOtherHighlighterManager:public QWidget
 {
     Q_OBJECT
 public:
-    SAKHighlightSettingsWidget(QTextDocument *doc, QWidget* parent = Q_NULLPTR);
-    ~SAKHighlightSettingsWidget();
+    SAKOtherHighlighterManager(QTextDocument *doc, QWidget* parent = Q_NULLPTR);
+    ~SAKOtherHighlighterManager();
 
     /**
      * @brief eventFilter 事件过滤器
@@ -47,7 +47,7 @@ private:
     QGridLayout *mLabelLayout;
     QList<QPushButton*> mLabelList;
 private:
-    Ui::SAKHighlightSettingsWidget *mUi;
+    Ui::SAKOtherHighlighterManager *mUi;
     SAKOtherHighlighter *mHighlighter;
     QLineEdit *mInputLineEdit;
     QPushButton *mClearLabelBt;

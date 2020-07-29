@@ -146,8 +146,8 @@ FORMS += \
     src/pages/page/other/analyzer/SAKOtherAnalyzerThreadManager.ui \
     src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.ui \
     src/pages/page/other/autoresponse/SAKOtherAutoResponseItemManager.ui \
-    src/pages/page/other/highlighter/SAKHighlightSettingsWidget.ui \
     src/pages/page/other/generator/SAKWaveformGeneratorWidget.ui \
+    src/pages/page/other/highlighter/SAKOtherHighlighterManager.ui \
     src/pages/page/other/timingsent/SAKOtherTimingSentItem.ui \
     src/pages/page/other/timingsent/SAKOtherTimingSentItemManager.ui \
     src/pages/page/other/transmission/SAKSerialPortTransmissionItemWidget.ui \
@@ -187,9 +187,9 @@ HEADERS += \
     src/pages/page/other/analyzer/SAKOtherAnalyzerThreadManager.hh \
     src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.hh \
     src/pages/page/other/autoresponse/SAKOtherAutoResponseItemManager.hh \
-    src/pages/page/other/highlighter/SAKHighlightSettingsWidget.hh \
     src/pages/page/other/generator/SAKWaveformGeneratorWidget.hh \
     src/pages/page/other/highlighter/SAKOtherHighlighter.hh \
+    src/pages/page/other/highlighter/SAKOtherHighlighterManager.hh \
     src/pages/page/other/timingsent/SAKOtherTimingSentItem.hh \
     src/pages/page/other/timingsent/SAKOtherTimingSentItemManager.hh \
     src/pages/page/other/transmission/SAKBaseTransmissionItemWidget.hh \
@@ -245,9 +245,9 @@ SOURCES += \
     src/pages/page/other/analyzer/SAKOtherAnalyzerThreadManager.cc \
     src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.cc \
     src/pages/page/other/autoresponse/SAKOtherAutoResponseItemManager.cc \
-    src/pages/page/other/highlighter/SAKHighlightSettingsWidget.cc \
     src/pages/page/other/generator/SAKWaveformGeneratorWidget.cc \
     src/pages/page/other/highlighter/SAKOtherHighlighter.cc \
+    src/pages/page/other/highlighter/SAKOtherHighlighterManager.cc \
     src/pages/page/other/timingsent/SAKOtherTimingSentItem.cc \
     src/pages/page/other/timingsent/SAKOtherTimingSentItemManager.cc \
     src/pages/page/other/transmission/SAKBaseTransmissionItemWidget.cc \

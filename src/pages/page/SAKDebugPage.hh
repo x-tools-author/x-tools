@@ -32,7 +32,7 @@ class SAKDataFactory;
 class SAKCRCInterface;
 class SAKDebugPageDevice;
 class SAKTransmissionSettings;
-class SAKHighlightSettingsWidget;
+class SAKOtherHighlighterManager;
 class SAKDebugPageOtherController;
 class SAKDebugPageInputController;
 class SAKDebugPageOutputController;
