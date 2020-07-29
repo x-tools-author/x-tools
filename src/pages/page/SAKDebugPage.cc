@@ -389,11 +389,10 @@ void SAKDebugPage::setupDevice()
 #if 0
         connect(device, &SAKDevice::bytesRead, this, &SAKDebugPage::bytesRead);
 #else
-        /// @brief 设备读取到的数据传输至协议分析器中，分析完成的数据回传至调试页面中
-//        SAKMoreSettingsWidget *moreSettingsWidget = mOtherController->moreSettingsWidget();
-//        SAKProtocolAnalyzerWidget *protocolAnalyzerWidget = moreSettingsWidget->protocolAnalyzerWidget();
-//        connect(mDevice, &SAKDebugPageDevice::bytesRead, protocolAnalyzerWidget, &SAKProtocolAnalyzerWidget::inputBytes);
-//        connect(protocolAnalyzerWidget, &SAKProtocolAnalyzerWidget::bytesAnalysed, this, &SAKDebugPage::bytesRead);
+        // The bytes read will be input to analyzer, after analuzing, the bytes will be input to debug page
+        SAKOtherAnalyzerThreadManager *analyzerManager = mOtherController->analyzerThreadManager();
+        connect(mDevice, &SAKDebugPageDevice::bytesRead, analyzerManager, &SAKOtherAnalyzerThreadManager::inputBytes);
+        connect(analyzerManager, &SAKOtherAnalyzerThreadManager::bytesAnalysed, this, &SAKDebugPage::bytesRead);
 #endif
         connect(mDevice, &SAKDebugPageDevice::messageChanged, this, &SAKDebugPage::outputMessage);
         connect(mDevice, &SAKDebugPageDevice::deviceStateChanged, this, &SAKDebugPage::changedDeviceState);
