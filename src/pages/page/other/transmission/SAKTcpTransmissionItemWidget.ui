@@ -17,14 +17,14 @@
    <item row="0" column="1">
     <widget class="QCheckBox" name="customAddressCheckBox">
      <property name="text">
-      <string>指定本地地址端口</string>
+      <string>Specified local info</string>
      </property>
     </widget>
    </item>
    <item row="0" column="2">
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>本地地址</string>
+      <string>Local host</string>
      </property>
     </widget>
    </item>
@@ -41,14 +41,14 @@
    <item row="0" column="0">
     <widget class="QCheckBox" name="enableCheckBox">
      <property name="text">
-      <string>启用</string>
+      <string>Enable</string>
      </property>
     </widget>
    </item>
    <item row="0" column="4">
     <widget class="QLabel" name="label_2">
      <property name="text">
-      <string>本地端口</string>
+      <string>Local port</string>
      </property>
     </widget>
    </item>
@@ -62,7 +62,7 @@
    <item row="1" column="1">
     <widget class="QCheckBox" name="handleReceiveDataCheckBox">
      <property name="text">
-      <string>处理接收到的数据</string>
+      <string>Handle received data</string>
      </property>
      <property name="checked">
       <bool>true</bool>
@@ -72,7 +72,7 @@
    <item row="1" column="2">
     <widget class="QLabel" name="label_3">
      <property name="text">
-      <string>服务器地址</string>
+      <string>Target host</string>
      </property>
     </widget>
    </item>
@@ -86,7 +86,7 @@
    <item row="1" column="4">
     <widget class="QLabel" name="label_4">
      <property name="text">
-      <string>服务器端口</string>
+      <string>Target port</string>
      </property>
     </widget>
    </item>
