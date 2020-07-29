@@ -80,14 +80,19 @@ void SAKOtherAnalyzerThread::run()
                     mWaitingAnalyzingBytes.clear();
                 }
             }else{
-                while(mWaitingAnalyzingBytes.length() >= (parameters.startArray.length() + parameters.endArray.length())){
+                while(1){
+                    // Ensure that bytes is enough
+                    if (mWaitingAnalyzingBytes.length() < (parameters.startArray.length() + parameters.endArray.length())){
+                        break;
+                    }
+
                     // Match start-bytes
                     bool startBytesMatched = true;
                     if (parameters.startArray.isEmpty()){
                         startBytesMatched = true;
                     }else{
                         int ret = mWaitingAnalyzingBytes.indexOf(parameters.startArray, 0);
-                        if (ret > 0){
+                        if (ret >= 0){
                             startBytesMatched = true;
                             // Remove error data
                             QByteArray temp = QByteArray(mWaitingAnalyzingBytes.data(), ret);
