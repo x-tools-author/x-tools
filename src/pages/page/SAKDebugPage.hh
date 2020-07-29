@@ -306,7 +306,7 @@ protected:
     // Other settings module
 protected:
     QPushButton *mTransmissionSettingPushButton;
-    QPushButton *mReadWriteSettingPushButton;
+    QPushButton *mAnalyzerPushButton;
     QPushButton *mAutoResponseSettingPushButton;
     QPushButton *mTimingSendingPushButton;
     QPushButton *mHighlightSettingPushButton;

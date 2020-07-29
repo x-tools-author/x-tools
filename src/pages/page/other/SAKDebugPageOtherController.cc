@@ -30,7 +30,7 @@ SAKDebugPageOtherController::SAKDebugPageOtherController(SAKDebugPage *debugPage
     moreSettingsPushButton = mDebugPage->mMoreSettingsPushButton;
     timingSendingPushButton = mDebugPage->mTimingSendingPushButton;
     highlightSettingPushButton = mDebugPage->mHighlightSettingPushButton;
-    readWriteSettingPushButton = mDebugPage->mReadWriteSettingPushButton;
+    readWriteSettingPushButton = mDebugPage->mAnalyzerPushButton;
     autoResponseSettingPushButton = mDebugPage->mAutoResponseSettingPushButton;
     transmissionSettingPushButton = mDebugPage->mTransmissionSettingPushButton;
 

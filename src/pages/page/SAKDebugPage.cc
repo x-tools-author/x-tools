@@ -565,7 +565,7 @@ void SAKDebugPage::initUiPointer()
 
     /// @brief 其他设置
     mTransmissionSettingPushButton = mUi->transmissionSettingPushButton;
-    mReadWriteSettingPushButton    = mUi->readWriteSettingPushButton;
+    mAnalyzerPushButton = mUi->analyzerPushButton;
     mAutoResponseSettingPushButton = mUi->autoResponseSettingPushButton;
     mTimingSendingPushButton       = mUi->timingSendingPushButton;
     mHighlightSettingPushButton    = mUi->highlightSettingPushButton;
