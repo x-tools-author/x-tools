@@ -51,6 +51,7 @@ private:
 private slots:
     void onTimingSendingPushButtonClicked();
     void onHighlightSettingPushButtonClicked();
+    void onAnalyzerPushButtonClicked();
     void onAutoresponseSettingPushbuttonClicked();
     void onTransmissionSettingPushButtonClicked();
 };

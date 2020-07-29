@@ -37,6 +37,7 @@ SAKDebugPageOtherController::SAKDebugPageOtherController(SAKDebugPage *debugPage
 
     connect(timingSendingPushButton, &QPushButton::clicked, this, &SAKDebugPageOtherController::onTimingSendingPushButtonClicked);
     connect(highlightSettingPushButton, &QPushButton::clicked, this, &SAKDebugPageOtherController::onHighlightSettingPushButtonClicked);
+    connect(mAnalyzerPushButton, &QPushButton::clicked, this, &SAKDebugPageOtherController::onAnalyzerPushButtonClicked);
     connect(transmissionSettingPushButton, &QPushButton::clicked, this, &SAKDebugPageOtherController::onTransmissionSettingPushButtonClicked);
     connect(autoResponseSettingPushButton, &QPushButton::clicked, this, &SAKDebugPageOtherController::onAutoresponseSettingPushbuttonClicked);
 }
@@ -77,6 +78,15 @@ void SAKDebugPageOtherController::onHighlightSettingPushButtonClicked()
         mHighlightSettingsWidget->show();
     }else {
         mHighlightSettingsWidget->activateWindow();
+    }
+}
+
+void SAKDebugPageOtherController::onAnalyzerPushButtonClicked()
+{
+    if (mAnalyzerThreadManager->isHidden()){
+        mAnalyzerThreadManager->show();
+    }else{
+        mAnalyzerThreadManager->activateWindow();
     }
 }
 
