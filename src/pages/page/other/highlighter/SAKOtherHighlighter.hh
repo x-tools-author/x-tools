@@ -30,17 +30,17 @@ private:
         QRegularExpression pattern;
         QTextCharFormat format;
     };
-    QVector<HighlightingRule> highlightingRules;
+    QVector<HighlightingRule> mHighlightingRules;
 
-    QRegularExpression commentStartExpression;
-    QRegularExpression commentEndExpression;
+    QRegularExpression mCommentStartExpression;
+    QRegularExpression mCommentEndExpression;
 
-    QTextCharFormat keywordFormat;
-    QTextCharFormat classFormat;
-    QTextCharFormat singleLineCommentFormat;
-    QTextCharFormat multiLineCommentFormat;
-    QTextCharFormat quotationFormat;
-    QTextCharFormat functionFormat;
+    QTextCharFormat mKeywordFormat;
+    QTextCharFormat mClassFormat;
+    QTextCharFormat mSingleLineCommentFormat;
+    QTextCharFormat mMultiLineCommentFormat;
+    QTextCharFormat mQuotationFormat;
+    QTextCharFormat mFunctionFormat;
 
     void highlightBlock(const QString &text) override;
 };

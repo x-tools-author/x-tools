@@ -17,28 +17,28 @@ SAKOtherHighlighter::SAKOtherHighlighter(QTextDocument* parent)
 
 void SAKOtherHighlighter::setHighlighterKeyWord(QStringList keyWords)
 {
-    highlightingRules.clear();
+    mHighlightingRules.clear();
 
     HighlightingRule rule;
 
-    keywordFormat.setForeground(Qt::red);
-    keywordFormat.setFontWeight(QFont::Normal);
+    mKeywordFormat.setForeground(Qt::red);
+    mKeywordFormat.setFontWeight(QFont::Normal);
 
     foreach (const QString &pattern, keyWords) {
         rule.pattern = QRegularExpression(pattern);
-        rule.format = keywordFormat;
-        highlightingRules.append(rule);
+        rule.format = mKeywordFormat;
+        mHighlightingRules.append(rule);
     }
 
-    multiLineCommentFormat.setForeground(Qt::red);
+    mMultiLineCommentFormat.setForeground(Qt::red);
 
-    commentStartExpression = QRegularExpression("/\\*");
-    commentEndExpression = QRegularExpression("\\*/");
+    mCommentStartExpression = QRegularExpression("/\\*");
+    mCommentEndExpression = QRegularExpression("\\*/");
 }
 
 void SAKOtherHighlighter::highlightBlock(const QString &text)
 {
-    foreach (const HighlightingRule &rule, highlightingRules) {
+    foreach (const HighlightingRule &rule, mHighlightingRules) {
         QRegularExpressionMatchIterator matchIterator = rule.pattern.globalMatch(text);
         while (matchIterator.hasNext()) {
             QRegularExpressionMatch match = matchIterator.next();
@@ -50,11 +50,11 @@ void SAKOtherHighlighter::highlightBlock(const QString &text)
 
     int startIndex = 0;
     if (previousBlockState() != 1){
-        startIndex = text.indexOf(commentStartExpression);
+        startIndex = text.indexOf(mCommentStartExpression);
     }
 
     while (startIndex >= 0) {
-        QRegularExpressionMatch match = commentEndExpression.match(text, startIndex);
+        QRegularExpressionMatch match = mCommentEndExpression.match(text, startIndex);
         int endIndex = match.capturedStart();
         int commentLength = 0;
         if (endIndex == -1) {
@@ -63,7 +63,7 @@ void SAKOtherHighlighter::highlightBlock(const QString &text)
         } else {
             commentLength = endIndex - startIndex + match.capturedLength();
         }
-        setFormat(startIndex, commentLength, multiLineCommentFormat);
-        startIndex = text.indexOf(commentStartExpression, startIndex + commentLength);
+        setFormat(startIndex, commentLength, mMultiLineCommentFormat);
+        startIndex = text.indexOf(mCommentStartExpression, startIndex + commentLength);
     }
 }
