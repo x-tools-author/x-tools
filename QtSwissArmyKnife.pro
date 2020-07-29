@@ -143,11 +143,11 @@ FORMS += \
     src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui \
     src/pages/page/input/datapreset/SAKInputDataPresetItem.ui \
     src/pages/page/input/datapreset/SAKInputDataPresetItemManager.ui \
+    src/pages/page/other/analyzer/SAKOtherAnalyzerThreadManager.ui \
     src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.ui \
     src/pages/page/other/autoresponse/SAKOtherAutoResponseItemManager.ui \
     src/pages/page/other/highlight/SAKHighlightSettingsWidget.ui \
     src/pages/page/other/generator/SAKWaveformGeneratorWidget.ui \
-    src/pages/page/other/analyzer/SAKProtocolAnalyzerWidget.ui \
     src/pages/page/other/timingsent/SAKOtherTimingSentItem.ui \
     src/pages/page/other/timingsent/SAKOtherTimingSentItemManager.ui \
     src/pages/page/other/transmission/SAKSerialPortTransmissionItemWidget.ui \
@@ -183,8 +183,8 @@ HEADERS += \
     src/pages/page/input/datapreset/SAKInputDataPresetItem.hh \
     src/pages/page/input/datapreset/SAKInputDataPresetItemManager.hh \
     src/pages/page/other/SAKDebugPageOtherController.hh \
-    src/pages/page/other/analyzer/SAKOtherAnalyzerSettingsWidget.hh \
     src/pages/page/other/analyzer/SAKOtherAnalyzerThread.hh \
+    src/pages/page/other/analyzer/SAKOtherAnalyzerThreadManager.hh \
     src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.hh \
     src/pages/page/other/autoresponse/SAKOtherAutoResponseItemManager.hh \
     src/pages/page/other/highlight/SAKHighlightSettings.hh \
@@ -241,8 +241,8 @@ SOURCES += \
     src/pages/page/input/datapreset/SAKInputDataPresetItem.cc \
     src/pages/page/input/datapreset/SAKInputDataPresetItemManager.cc \
     src/pages/page/other/SAKDebugPageOtherController.cc \
-    src/pages/page/other/analyzer/SAKOtherAnalyzerSettingsWidget.cc \
     src/pages/page/other/analyzer/SAKOtherAnalyzerThread.cc \
+    src/pages/page/other/analyzer/SAKOtherAnalyzerThreadManager.cc \
     src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.cc \
     src/pages/page/other/autoresponse/SAKOtherAutoResponseItemManager.cc \
     src/pages/page/other/highlight/SAKHighlightSettings.cc \
