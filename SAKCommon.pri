@@ -8,3 +8,5 @@ DEFINES += SAK_HOST_ADDRESS_ANY=\"\\\"HostAddress::Any\\\"\"
 DEFINES += SAK_VERSION=\"\\\"3.1.0\\\"\"
 # 软件重启代码
 DEFINES += SAK_REBOOT_CODE=1314
+# Sleep interval of device thread
+DEFINES += SAK_DEVICE_THREAD_SLEEP_INTERVAL=25
