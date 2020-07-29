@@ -124,7 +124,6 @@ INCLUDEPATH += \
     src/pages/page/other/more \
     src/pages/page/other/more/generator \
     src/pages/page/other/more/protocol \
-    src/pages/page/other/readwrite \
     src/pages/page/other/timingsent \
     src/pages/page/other/transmission \
     src/pages/page/output \
@@ -151,7 +150,6 @@ FORMS += \
     src/pages/page/other/more/SAKMoreSettingsWidget.ui \
     src/pages/page/other/more/generator/SAKWaveformGeneratorWidget.ui \
     src/pages/page/other/more/protocol/SAKProtocolAnalyzerWidget.ui \
-    src/pages/page/other/readwrite/SAKReadWriteSettingsWidget.ui \
     src/pages/page/other/timingsent/SAKOtherTimingSentItem.ui \
     src/pages/page/other/timingsent/SAKOtherTimingSentItemManager.ui \
     src/pages/page/other/transmission/SAKSerialPortTransmissionItemWidget.ui \
@@ -195,7 +193,6 @@ HEADERS += \
     src/pages/page/other/more/generator/SAKWaveformGeneratorWidget.hh \
     src/pages/page/other/more/protocol/SAKProtocolAnalyzer.hh \
     src/pages/page/other/more/protocol/SAKProtocolAnalyzerWidget.hh \
-    src/pages/page/other/readwrite/SAKReadWriteSettingsWidget.hh \
     src/pages/page/other/timingsent/SAKOtherTimingSentItem.hh \
     src/pages/page/other/timingsent/SAKOtherTimingSentItemManager.hh \
     src/pages/page/other/transmission/SAKBaseTransmissionItemWidget.hh \
@@ -255,7 +252,6 @@ SOURCES += \
     src/pages/page/other/more/generator/SAKWaveformGeneratorWidget.cc \
     src/pages/page/other/more/protocol/SAKProtocolAnalyzer.cc \
     src/pages/page/other/more/protocol/SAKProtocolAnalyzerWidget.cc \
-    src/pages/page/other/readwrite/SAKReadWriteSettingsWidget.cc \
     src/pages/page/other/timingsent/SAKOtherTimingSentItem.cc \
     src/pages/page/other/timingsent/SAKOtherTimingSentItemManager.cc \
     src/pages/page/other/transmission/SAKBaseTransmissionItemWidget.cc \
