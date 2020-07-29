@@ -194,7 +194,6 @@ HEADERS += \
     src/pages/page/other/transmission/SAKOtherTransmissionItemCom.hh \
     src/pages/page/other/transmission/SAKOtherTransmissionItemTcp.hh \
     src/pages/page/other/transmission/SAKOtherTransmissionItemUdp.hh \
-#    src/pages/page/other/transmission/SAKTransmissionItemDelegate.hh \
     src/pages/page/other/transmission/SAKOtherTransmissionPage.hh \
     src/pages/page/other/transmission/SAKOtherTransmissionPageViewer.hh \
     src/pages/page/output/SAKDebugPageOutputController.hh \
@@ -251,7 +250,6 @@ SOURCES += \
     src/pages/page/other/transmission/SAKOtherTransmissionItemCom.cc \
     src/pages/page/other/transmission/SAKOtherTransmissionItemTcp.cc \
     src/pages/page/other/transmission/SAKOtherTransmissionItemUdp.cc \
-#    src/pages/page/other/transmission/SAKTransmissionItemDelegate.cc \
     src/pages/page/other/transmission/SAKOtherTransmissionPage.cc \
     src/pages/page/other/transmission/SAKOtherTransmissionPageViewer.cc \
     src/pages/page/output/SAKDebugPageOutputController.cc \
