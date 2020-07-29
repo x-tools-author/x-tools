@@ -15,7 +15,7 @@
 #include "SAKOtherTransmissionItem.hh"
 #include "SAKOtherTransmissionItemCom.hh"
 
-#include "ui_SAKTransmissionPage.h"
+#include "ui_SAKOtherTransmissionPage.h"
 
 SAKOtherTransmissionPage::SAKOtherTransmissionPage(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget (parent)
@@ -28,7 +28,7 @@ SAKOtherTransmissionPage::SAKOtherTransmissionPage(SAKDebugPage *debugPage, QWid
     mListWidget = mUi->listWidget;
     mInfoLabel = mUi->infoLabel;
 
-    mClearMessageInfoTimer.setInterval(5*1000);
+    mClearMessageInfoTimer.setInterval(SAK_CLEAR_MESSAGE_INTERVAL);
     connect(&mClearMessageInfoTimer, &QTimer::timeout, this, &SAKOtherTransmissionPage::clearMessage);
 }
 

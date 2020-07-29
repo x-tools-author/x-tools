@@ -13,7 +13,7 @@
 #include "SAKOtherTransmissionPage.hh"
 #include "SAKOtherTransmissionPageViewer.hh"
 
-#include "ui_SAKTransmissionSettings.h"
+#include "ui_SAKOtherTransmissionPageViewer.h"
 
 SAKOtherTransmissionPageViewer::SAKOtherTransmissionPageViewer(SAKDebugPage *debugPage, QWidget *parent)
     :QWidget(parent)
