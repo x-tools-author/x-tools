@@ -21,7 +21,7 @@ namespace Ui {
 }
 
 class SAKOtherAnalyzerThread;
-/// @brief 协议分析面板
+/// @brief Parameters editing widget
 class SAKOtherAnalyzerThreadManager:public QWidget
 {
     Q_OBJECT
@@ -30,12 +30,12 @@ public:
     ~SAKOtherAnalyzerThreadManager();
 
     /**
-     * @brief inputBytes 数据输入接口
-     * @param bytes 待分析数据
+     * @brief inputBytes: Input bytes to analyzed
+     * @param bytes: Bytes taht need to be analyzed
      */
     void inputBytes(QByteArray bytes);
 private:
-    /// @brief 配置选项
+    // Settings keys
     const QString mSettingKeyFixed;
     const QString mSettingKeyLenth;
     const QString mSettingKeyStartBytes;

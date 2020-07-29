@@ -41,7 +41,7 @@ SAKOtherAnalyzerThreadManager::SAKOtherAnalyzerThreadManager(QSettings *settings
 
     Q_ASSERT_X(settings, __FUNCTION__, "The parameter can not be nullptr!");
     if (settings){
-        /// @brief 读入配置文件
+        // Read in parameters from settings file
         mFixedLengthCheckBox->setChecked(settings->value(mSettingKeyFixed).toBool());
         mLengthLineEdit->setText(settings->value(mSettingKeyLenth).toString());
         mStartLineEdit->setText(settings->value(mSettingKeyStartBytes).toString());
