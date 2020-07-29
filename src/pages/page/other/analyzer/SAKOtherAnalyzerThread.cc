@@ -1,18 +1,18 @@
 ﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2020 Qter(qsaker@qq.com). All rights reserved.
  *
- * The file is encoding with utf-8 (with BOM). It is a part of QtSwissArmyKnife
- * project(https://www.qsak.pro). The project is an open source project. You can
- * get the source of the project from: "https://github.com/qsak/QtSwissArmyKnife"
- * or "https://gitee.com/qsak/QtSwissArmyKnife". Also, you can join in the QQ
- * group which number is 952218522 to have a communication.
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  */
 #include <QDebug>
 #include <QEventLoop>
 
-#include "SAKProtocolAnalyzer.hh"
+#include "SAKOtherAnalyzerThread.hh"
 
-SAKProtocolAnalyzer::SAKProtocolAnalyzer(QObject *parent)
+SAKOtherAnalyzerThread::SAKOtherAnalyzerThread(QObject *parent)
     :QThread(parent)
 {
     mParameters.enable = false;
@@ -22,7 +22,7 @@ SAKProtocolAnalyzer::SAKProtocolAnalyzer(QObject *parent)
     mParameters.endArray = QByteArray();
 }
 
-SAKProtocolAnalyzer::~SAKProtocolAnalyzer()
+SAKOtherAnalyzerThread::~SAKOtherAnalyzerThread()
 {
     requestInterruption();
     wakeMe();
@@ -33,7 +33,7 @@ SAKProtocolAnalyzer::~SAKProtocolAnalyzer()
 #endif
 }
 
-void SAKProtocolAnalyzer::run()
+void SAKOtherAnalyzerThread::run()
 {
     QEventLoop eventLoop;
     int maxTempLength = 2048;
@@ -127,19 +127,19 @@ void SAKProtocolAnalyzer::run()
     }
 }
 
-void SAKProtocolAnalyzer::clearData()
+void SAKOtherAnalyzerThread::clearData()
 {
     mWaitingAnalyzingBytesMutex.lock();
     mWaitingAnalyzingBytes.clear();
     mWaitingAnalyzingBytesMutex.unlock();
 }
 
-void SAKProtocolAnalyzer::wakeMe()
+void SAKOtherAnalyzerThread::wakeMe()
 {
     mThreadCondition.wakeAll();
 }
 
-void SAKProtocolAnalyzer::inputBytes(QByteArray array)
+void SAKOtherAnalyzerThread::inputBytes(QByteArray array)
 {
     /// @brief 不处理空数据
     if (array.isEmpty()){
@@ -160,35 +160,35 @@ void SAKProtocolAnalyzer::inputBytes(QByteArray array)
     }
 }
 
-void SAKProtocolAnalyzer::setEnable(bool enable)
+void SAKOtherAnalyzerThread::setEnable(bool enable)
 {
     mParametersMutex.lock();
     mParameters.enable = enable;
     mParametersMutex.unlock();
 }
 
-void SAKProtocolAnalyzer::setFixed(bool fixed)
+void SAKOtherAnalyzerThread::setFixed(bool fixed)
 {
     mParametersMutex.lock();
     mParameters.fixed = fixed;
     mParametersMutex.unlock();
 }
 
-void SAKProtocolAnalyzer::setLength(int length)
+void SAKOtherAnalyzerThread::setLength(int length)
 {
     mParametersMutex.lock();
     mParameters.length = length;
     mParametersMutex.unlock();
 }
 
-void SAKProtocolAnalyzer::setStartArray(QByteArray array)
+void SAKOtherAnalyzerThread::setStartArray(QByteArray array)
 {
     mParametersMutex.lock();
     mParameters.startArray = array;
     mParametersMutex.unlock();
 }
 
-void SAKProtocolAnalyzer::setEndArray(QByteArray array)
+void SAKOtherAnalyzerThread::setEndArray(QByteArray array)
 {
     mParametersMutex.lock();
     mParameters.endArray = array;

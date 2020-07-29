@@ -183,13 +183,13 @@ HEADERS += \
     src/pages/page/input/datapreset/SAKInputDataPresetItem.hh \
     src/pages/page/input/datapreset/SAKInputDataPresetItemManager.hh \
     src/pages/page/other/SAKDebugPageOtherController.hh \
+    src/pages/page/other/analyzer/SAKOtherAnalyzerSettingsWidget.hh \
+    src/pages/page/other/analyzer/SAKOtherAnalyzerThread.hh \
     src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.hh \
     src/pages/page/other/autoresponse/SAKOtherAutoResponseItemManager.hh \
     src/pages/page/other/highlight/SAKHighlightSettings.hh \
     src/pages/page/other/highlight/SAKHighlightSettingsWidget.hh \
     src/pages/page/other/generator/SAKWaveformGeneratorWidget.hh \
-    src/pages/page/other/analyzer/SAKProtocolAnalyzer.hh \
-    src/pages/page/other/analyzer/SAKProtocolAnalyzerWidget.hh \
     src/pages/page/other/timingsent/SAKOtherTimingSentItem.hh \
     src/pages/page/other/timingsent/SAKOtherTimingSentItemManager.hh \
     src/pages/page/other/transmission/SAKBaseTransmissionItemWidget.hh \
@@ -241,13 +241,13 @@ SOURCES += \
     src/pages/page/input/datapreset/SAKInputDataPresetItem.cc \
     src/pages/page/input/datapreset/SAKInputDataPresetItemManager.cc \
     src/pages/page/other/SAKDebugPageOtherController.cc \
+    src/pages/page/other/analyzer/SAKOtherAnalyzerSettingsWidget.cc \
+    src/pages/page/other/analyzer/SAKOtherAnalyzerThread.cc \
     src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.cc \
     src/pages/page/other/autoresponse/SAKOtherAutoResponseItemManager.cc \
     src/pages/page/other/highlight/SAKHighlightSettings.cc \
     src/pages/page/other/highlight/SAKHighlightSettingsWidget.cc \
     src/pages/page/other/generator/SAKWaveformGeneratorWidget.cc \
-    src/pages/page/other/analyzer/SAKProtocolAnalyzer.cc \
-    src/pages/page/other/analyzer/SAKProtocolAnalyzerWidget.cc \
     src/pages/page/other/timingsent/SAKOtherTimingSentItem.cc \
     src/pages/page/other/timingsent/SAKOtherTimingSentItemManager.cc \
     src/pages/page/other/transmission/SAKBaseTransmissionItemWidget.cc \
