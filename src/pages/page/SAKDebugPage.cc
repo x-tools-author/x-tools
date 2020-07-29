@@ -26,9 +26,8 @@
 #include "SAKDataStruct.hh"
 #include "SAKCRCInterface.hh"
 #include "SAKDebugPageDevice.hh"
-#include "SAKProtocolAnalyzer.hh"
-#include "SAKMoreSettingsWidget.hh"
-#include "SAKProtocolAnalyzerWidget.hh"
+#include "SAKOtherAnalyzerThread.hh"
+#include "SAKOtherAnalyzerSettingsWidget.hh"
 #include "SAKHighlightSettingsWidget.hh"
 #include "SAKDebugPageOtherController.hh"
 #include "SAKDebugPageInputController.hh"
@@ -391,10 +390,10 @@ void SAKDebugPage::setupDevice()
         connect(device, &SAKDevice::bytesRead, this, &SAKDebugPage::bytesRead);
 #else
         /// @brief 设备读取到的数据传输至协议分析器中，分析完成的数据回传至调试页面中
-        SAKMoreSettingsWidget *moreSettingsWidget = mOtherController->moreSettingsWidget();
-        SAKProtocolAnalyzerWidget *protocolAnalyzerWidget = moreSettingsWidget->protocolAnalyzerWidget();
-        connect(mDevice, &SAKDebugPageDevice::bytesRead, protocolAnalyzerWidget, &SAKProtocolAnalyzerWidget::inputBytes);
-        connect(protocolAnalyzerWidget, &SAKProtocolAnalyzerWidget::bytesAnalysed, this, &SAKDebugPage::bytesRead);
+//        SAKMoreSettingsWidget *moreSettingsWidget = mOtherController->moreSettingsWidget();
+//        SAKProtocolAnalyzerWidget *protocolAnalyzerWidget = moreSettingsWidget->protocolAnalyzerWidget();
+//        connect(mDevice, &SAKDebugPageDevice::bytesRead, protocolAnalyzerWidget, &SAKProtocolAnalyzerWidget::inputBytes);
+//        connect(protocolAnalyzerWidget, &SAKProtocolAnalyzerWidget::bytesAnalysed, this, &SAKDebugPage::bytesRead);
 #endif
         connect(mDevice, &SAKDebugPageDevice::messageChanged, this, &SAKDebugPage::outputMessage);
         connect(mDevice, &SAKDebugPageDevice::deviceStateChanged, this, &SAKDebugPage::changedDeviceState);

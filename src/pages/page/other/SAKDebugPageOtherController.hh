@@ -14,7 +14,6 @@
 #include <QPushButton>
 
 class SAKDebugPage;
-class SAKMoreSettingsWidget;
 class SAKTransmissionSettings;
 class SAKHighlightSettingsWidget;
 class SAKOtherAutoResponseItemManager;
@@ -27,12 +26,6 @@ class SAKDebugPageOtherController:public QObject
 public:
     SAKDebugPageOtherController(SAKDebugPage *debugPage, QObject *parent = Q_NULLPTR);
     ~SAKDebugPageOtherController();
-
-    /**
-     * @brief moreSettingsWidget: get the more settings widget
-     * @return widget: setting widget
-     */
-    SAKMoreSettingsWidget *moreSettingsWidget();
 private:
     SAKDebugPage *mDebugPage;
 
@@ -43,13 +36,11 @@ private:
     QPushButton *autoResponseSettingPushButton;
     QPushButton *transmissionSettingPushButton;
 
-    SAKMoreSettingsWidget *mMoreSettingsWidget;
     SAKTransmissionSettings *mTransmissionSettings;
     SAKHighlightSettingsWidget *mHighlightSettingsWidget;
     SAKOtherAutoResponseItemManager *mAutoResponseSettingWidget;
     SAKOtherTimingSentItemManager *mTimingSendingSettingsWidget;
 private slots:
-    void onMoreSettingsPushButtonClicked();
     void onTimingSendingPushButtonClicked();
     void onHighlightSettingPushButtonClicked();
     void onAutoresponseSettingPushbuttonClicked();

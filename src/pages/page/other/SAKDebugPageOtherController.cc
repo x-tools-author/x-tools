@@ -10,7 +10,6 @@
 #include <QDebug>
 
 #include "SAKDebugPage.hh"
-#include "SAKMoreSettingsWidget.hh"
 #include "SAKTransmissionSettings.hh"
 #include "SAKHighlightSettingsWidget.hh"
 #include "SAKDebugPageOtherController.hh"
@@ -21,7 +20,6 @@ SAKDebugPageOtherController::SAKDebugPageOtherController(SAKDebugPage *debugPage
     :QObject (parent)
     ,mDebugPage (debugPage)
 {
-    mMoreSettingsWidget = new SAKMoreSettingsWidget(mDebugPage);
     mTransmissionSettings = new SAKTransmissionSettings(mDebugPage);
     mHighlightSettingsWidget = new SAKHighlightSettingsWidget(mDebugPage->mOutputTextBroswer->document());
     mAutoResponseSettingWidget = new SAKOtherAutoResponseItemManager(mDebugPage);
@@ -34,7 +32,6 @@ SAKDebugPageOtherController::SAKDebugPageOtherController(SAKDebugPage *debugPage
     autoResponseSettingPushButton = mDebugPage->mAutoResponseSettingPushButton;
     transmissionSettingPushButton = mDebugPage->mTransmissionSettingPushButton;
 
-    connect(moreSettingsPushButton,  &QPushButton::clicked, this, &SAKDebugPageOtherController::onMoreSettingsPushButtonClicked);
     connect(timingSendingPushButton, &QPushButton::clicked, this, &SAKDebugPageOtherController::onTimingSendingPushButtonClicked);
     connect(highlightSettingPushButton, &QPushButton::clicked, this, &SAKDebugPageOtherController::onHighlightSettingPushButtonClicked);
     connect(transmissionSettingPushButton, &QPushButton::clicked, this, &SAKDebugPageOtherController::onTransmissionSettingPushButtonClicked);
@@ -43,31 +40,15 @@ SAKDebugPageOtherController::SAKDebugPageOtherController(SAKDebugPage *debugPage
 
 SAKDebugPageOtherController::~SAKDebugPageOtherController()
 {
-    delete mMoreSettingsWidget;
     delete mTransmissionSettings;
     delete mHighlightSettingsWidget;
     delete mAutoResponseSettingWidget;
     delete mTimingSendingSettingsWidget;
 
-    mMoreSettingsWidget = Q_NULLPTR;
     mTransmissionSettings = Q_NULLPTR;
     mHighlightSettingsWidget = Q_NULLPTR;
     mAutoResponseSettingWidget = Q_NULLPTR;
     mTimingSendingSettingsWidget = Q_NULLPTR;
-}
-
-SAKMoreSettingsWidget *SAKDebugPageOtherController::moreSettingsWidget()
-{
-    return mMoreSettingsWidget;
-}
-
-void SAKDebugPageOtherController::onMoreSettingsPushButtonClicked()
-{
-    if (mMoreSettingsWidget->isHidden()){
-        mMoreSettingsWidget->show();
-    }else {
-        mMoreSettingsWidget->activateWindow();
-    }
 }
 
 void SAKDebugPageOtherController::onTimingSendingPushButtonClicked()

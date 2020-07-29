@@ -20,14 +20,14 @@ namespace Ui {
     class SAKProtocolAnalyzerWidget;
 }
 
-class SAKProtocolAnalyzer;
+class SAKOtherAnalyzerThread;
 /// @brief 协议分析面板
-class SAKProtocolAnalyzerWidget:public QWidget
+class SAKOtherAnalyzerSettingsWidget:public QWidget
 {
     Q_OBJECT
 public:
-    SAKProtocolAnalyzerWidget(QSettings *settings, QWidget *parent = Q_NULLPTR);
-    ~SAKProtocolAnalyzerWidget();
+    SAKOtherAnalyzerSettingsWidget(QSettings *settings, QWidget *parent = Q_NULLPTR);
+    ~SAKOtherAnalyzerSettingsWidget();
 
     /**
      * @brief inputBytes 数据输入接口
@@ -43,7 +43,7 @@ private:
     const QString mSettingKeyEnable;
 
     QSettings *mSettings;
-    SAKProtocolAnalyzer *mAnalyzer;
+    SAKOtherAnalyzerThread *mAnalyzer;
 private:
     void setLineEditFormat(QLineEdit *lineEdit);
 private:
