@@ -38,6 +38,11 @@ public:
      * @return parameters context
      */
     ParameterContext parametersContext();
+
+    // Set value
+    void setBigEndian(bool bigEndian);
+    void setStartByte(int startByte);
+    void setEndByte(int endByte);
 private:
     ParameterContext mParametersContext;
     QMutex mParametersContextMutex;

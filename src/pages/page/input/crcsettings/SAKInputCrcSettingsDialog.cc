@@ -44,6 +44,21 @@ SAKInputCrcSettingsDialog::ParameterContext SAKInputCrcSettingsDialog::parameter
     return ctx;
 }
 
+void SAKInputCrcSettingsDialog::setBigEndian(bool bigEndian)
+{
+    mBigEndianCheckBox->setChecked(bigEndian);
+}
+
+void SAKInputCrcSettingsDialog::setStartByte(int startByte)
+{
+    mStartSpinBox->setValue(startByte > 0 ? startByte : 1);
+}
+
+void SAKInputCrcSettingsDialog::setEndByte(int endByte)
+{
+    mEndSpinBox->setValue(endByte > 0 ? endByte : 1);
+}
+
 void SAKInputCrcSettingsDialog::on_bigEndianCheckBox_clicked()
 {
     mParametersContextMutex.lock();
