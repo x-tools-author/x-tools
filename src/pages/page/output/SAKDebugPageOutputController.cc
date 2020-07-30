@@ -22,10 +22,11 @@
 SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugPage *debugPage, QObject *parent)
     :QThread(parent)
     ,mDebugPage(debugPage)
+    ,mSettings(Q_NULLPTR)
     ,mRxAnimationgCount(5)
     ,mTxAnimationCount(0)
 {
-    // initialize ui component
+    // Initialize ui component
     mRxLabel = debugPage->mRxLabel;
     mTxLabel = debugPage->mTxLabel;
     mOutputTextFormatComboBox = debugPage->mOutputTextFormatComboBox;
@@ -42,43 +43,65 @@ SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugPage *debugPa
     mOutputTextBroswer = debugPage->mOutputTextBroswer;
     SAKGlobal::initOutputTextFormatComboBox(mOutputTextFormatComboBox);
 
+    // Initializing setting keys
+    QString group = mDebugPage->settingsGroup();
+    mSettingStringOutputTextFormat = QString("%1/outputTextFormat").arg(group);
+    mSettingStringShowDate = QString("%1/showDate").arg(group);
+    mSettingStringAutoWrap = QString("%1/autoWrap").arg(group);
+    mSettingStringShowTime = QString("%1/showTime").arg(group);
+    mSettingStringShowMs = QString("%1/showMs").arg(group);
+    mSettingStringShowRx = QString("%1/showRx").arg(group);
+    mSettingStringShowTx = QString("%1/showTx").arg(group);
+
+    // Readin settings before connecting signals and slots
+    mSettings = mDebugPage->settings();
+    readinSettings();
+
+    // Connecting signals and slots
     connect(mSaveOutputToFileCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::saveOutputDataToFile);
     connect(mAutoWrapCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::setLineWrapMode);
     connect(mSaveOutputPushButton, &QCheckBox::clicked, this, &SAKDebugPageOutputController::saveOutputTextToFile);
     connect(mOutputFilePathPushButton, &QCheckBox::clicked, this, &SAKDebugPageOutputController::saveOutputDataSettings);
+    connect(mOutputTextFormatComboBox, &QComboBox::currentTextChanged, this, &SAKDebugPageOutputController::onOutputTextFormatComboBoxCurrentTextChanged);
+    connect(mShowDateCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::onShowDateCheckBoxClicked);
+    connect(mAutoWrapCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::onAutoWrapCheckBoxClicked);
+    connect(mShowTimeCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::onShowTimeCheckBoxClicked);
+    connect(mShowMsCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::onShowMsCheckBoxClicked);
+    connect(mShowRxDataCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::onShowRxDataCheckBoxClicked);
+    connect(mShowTxDataCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::onShowTxDataCheckBoxClicked);
 
-    // input data
+    // Input data
     connect(debugPage, &SAKDebugPage::bytesRead, this, &SAKDebugPageOutputController::bytesRead);
     connect(debugPage, &SAKDebugPage::bytesWritten, this, &SAKDebugPageOutputController::bytesWritten);
 
-    // output data
+    // Output data
     connect(this, &SAKDebugPageOutputController::dataCooked, this, &SAKDebugPageOutputController::outputData);
 
-    // animation
+    // Animation
     mUpdateRxAnimationTimer.setInterval(20);
     mUpdateTxAnimationTimer.setInterval(20);
     connect(&mUpdateRxAnimationTimer, &QTimer::timeout, this, &SAKDebugPageOutputController::updateRxAnimation);
     connect(&mUpdateTxAnimationTimer, &QTimer::timeout, this, &SAKDebugPageOutputController::updateTxAnimation);
 
-    // do something make memory happy
+    // Do something make memory happy
     mOutputTextBroswer->document()->setMaximumBlockCount(1000);
 
-    // the class is used to save data to file
+    // The class is used to save data to file
     mSave2FileDialog = new SAKOutputSave2FileDialog(mDebugPage);
 
-    // the thread will started when the class is initailzed
+    // The thread will started when the class is initailzed
     start();
 }
 
 SAKDebugPageOutputController::~SAKDebugPageOutputController()
 {
-    // exit the thread first
+    // Exit the thread first
     requestInterruption();
     mThreadWaitCondition.wakeAll();
     exit();
     wait();
 
-    // free memory
+    // Free memory
     delete mSave2FileDialog;
 }
 
@@ -86,7 +109,7 @@ void SAKDebugPageOutputController::run()
 {
     QEventLoop eventLoop;
     while (true) {
-        // cook data
+        // Cook data
         while (true) {
             RawDataStruct rawData = takeRawData();
             if (rawData.rawData.length()){
@@ -96,10 +119,10 @@ void SAKDebugPageOutputController::run()
             }
         }
 
-        // do something make thread inner happy
+        // Do something make thread inner happy
         eventLoop.processEvents();
 
-        // if is interruption requested, the thread will exit, or the thread will sleep
+        // If is interruption requested, the thread will exit, or the thread will sleep
         if (isInterruptionRequested()){
             break;
         }else{
@@ -198,7 +221,7 @@ void SAKDebugPageOutputController::bytesRead(QByteArray data)
     mRawDataList.append(rawData);
     mRawDataListMutex.unlock();
 
-    // wake the thead to handle raw data
+    // Wake the thead to handle raw data
     mThreadWaitCondition.wakeAll();
 }
 
@@ -220,7 +243,7 @@ void SAKDebugPageOutputController::bytesWritten(QByteArray data)
     mRawDataList.append(rawData);
     mRawDataListMutex.unlock();
 
-    // wake the thead to handle raw data
+    // Wake the thead to handle raw data
     mThreadWaitCondition.wakeAll();
 }
 
@@ -251,6 +274,48 @@ SAKDebugPageOutputController::RawDataStruct SAKDebugPageOutputController::takeRa
     mRawDataListMutex.unlock();
 
     return rawData;
+}
+
+void SAKDebugPageOutputController::readinSettings()
+{
+    auto setValue = [](QVariant &var){
+        if (var.isNull()){
+            return true;
+        }else{
+            return var.toBool();
+        }
+    };
+
+    QVariant var = mSettings->value(mSettingStringOutputTextFormat);
+    int index = 0;
+    if (var.isNull()){
+        index = 4;
+    }else{
+        index = var.toInt();
+    }
+    mOutputTextFormatComboBox->setCurrentIndex(index);
+
+    var = mSettings->value(mSettingStringShowDate);
+    bool value = mSettings->value(mSettingStringShowDate).toBool();
+    mShowDateCheckBox->setChecked(value);
+
+    var = mSettings->value(mSettingStringAutoWrap);
+    value = setValue(var);
+    mAutoWrapCheckBox->setChecked(value);
+
+    var = mSettings->value(mSettingStringShowTime).toBool();
+    mShowTimeCheckBox->setChecked(value);
+
+    value = mSettings->value(mSettingStringShowMs).toBool();
+    mShowMsCheckBox->setChecked(value);
+
+    var = mSettings->value(mSettingStringShowRx);
+    value = setValue(var);
+    mShowRxDataCheckBox->setChecked(value);
+
+    var = mSettings->value(mSettingStringShowTx);
+    value = setValue(var);
+    mShowTxDataCheckBox->setChecked(value);
 }
 
 void SAKDebugPageOutputController::innerCookData(QByteArray rawData, OutputParameters parameters)
@@ -313,4 +378,40 @@ void SAKDebugPageOutputController::innerCookData(QByteArray rawData, OutputParam
     }
 
     emit dataCooked(str);
+}
+
+void SAKDebugPageOutputController::onOutputTextFormatComboBoxCurrentTextChanged(const QString &text)
+{
+    Q_UNUSED(text);
+    mSettings->setValue(mSettingStringOutputTextFormat, QVariant::fromValue(mOutputTextFormatComboBox->currentData().toInt()));
+}
+
+void SAKDebugPageOutputController::onShowDateCheckBoxClicked()
+{
+    mSettings->setValue(mSettingStringShowDate, QVariant::fromValue(mShowDateCheckBox->isChecked()));
+}
+
+void SAKDebugPageOutputController::onAutoWrapCheckBoxClicked()
+{
+    mSettings->setValue(mSettingStringAutoWrap, QVariant::fromValue(mAutoWrapCheckBox->isChecked()));
+}
+
+void SAKDebugPageOutputController::onShowTimeCheckBoxClicked()
+{
+    mSettings->setValue(mSettingStringShowTime, QVariant::fromValue(mShowTimeCheckBox->isChecked()));
+}
+
+void SAKDebugPageOutputController::onShowMsCheckBoxClicked()
+{
+    mSettings->setValue(mSettingStringShowMs, QVariant::fromValue(mShowMsCheckBox->isChecked()));
+}
+
+void SAKDebugPageOutputController::onShowRxDataCheckBoxClicked()
+{
+    mSettings->setValue(mSettingStringShowRx, QVariant::fromValue(mShowRxDataCheckBox->isChecked()));
+}
+
+void SAKDebugPageOutputController::onShowTxDataCheckBoxClicked()
+{
+    mSettings->setValue(mSettingStringShowTx, QVariant::fromValue(mShowTxDataCheckBox->isChecked()));
 }

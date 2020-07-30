@@ -43,15 +43,16 @@ protected:
     void run() final;
 private:
     SAKDebugPage *mDebugPage;
+    QSettings *mSettings;
     SAKOutputSave2FileDialog *mSave2FileDialog;
 
-    // animation
+    // Animation
     QTimer mUpdateRxAnimationTimer;
     qint8 mRxAnimationgCount;
     QTimer mUpdateTxAnimationTimer;
     qint8 mTxAnimationCount;
 
-    // ui components
+    // Ui components
     QTextBrowser *mMessageTextBrowser;
     QLabel *mRxLabel;
     QLabel *mTxLabel;
@@ -68,11 +69,20 @@ private:
     QPushButton *mSaveOutputPushButton;
     QTextBrowser *mOutputTextBroswer;
 
-    // thread controller
+    // Variables about settings
+    QString mSettingStringOutputTextFormat;
+    QString mSettingStringShowDate;
+    QString mSettingStringAutoWrap;
+    QString mSettingStringShowTime;
+    QString mSettingStringShowMs;
+    QString mSettingStringShowRx;
+    QString mSettingStringShowTx;
+
+    // Thread controller
     QMutex mThreadMutex;
     QWaitCondition mThreadWaitCondition;
 
-    // temp data
+    // Temp data
     struct RawDataStruct {
         QByteArray rawData;
         OutputParameters parameters;
@@ -93,8 +103,18 @@ private:
     void outputData(QString data);
     OutputParameters outputDataParameters(bool isReadData);
     RawDataStruct takeRawData();
-    // the function is called by child thread only!
+    void readinSettings();
+    // The function is called by child thread only!
     void innerCookData(QByteArray rawData, OutputParameters parameters);
+
+    // Update settings
+    void onOutputTextFormatComboBoxCurrentTextChanged(const QString &text);
+    void onShowDateCheckBoxClicked();
+    void onAutoWrapCheckBoxClicked();
+    void onShowTimeCheckBoxClicked();
+    void onShowMsCheckBoxClicked();
+    void onShowRxDataCheckBoxClicked();
+    void onShowTxDataCheckBoxClicked();
 signals:
     void dataCooked(QString data);
 };
