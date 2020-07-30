@@ -49,7 +49,7 @@ SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugPage *debugPage
     QString group = mDebugPage->settingsGroup();
     mSettings = mDebugPage->settings();
     Q_ASSERT_X(mSettings, __FUNCTION__, "Value can not be null!");
-    mSettingStringInputModel = QString("%1/inputModel").arg(group);
+    mSettingStringInputTextFromat = QString("%1/inputTextFormat").arg(group);
     mSettingStringCycleTime = QString("%1/cycleTime").arg(group);
     mSettingStringAddCRC = QString("%1/addCRC").arg(group);
     mSettingStringBigEndian = QString("%1/bigEndian").arg(group);
@@ -223,7 +223,7 @@ void SAKDebugPageInputController::changeInputModel(const QString &text)
     bool ok = false;
     mInputTextEdit->clear();
     mInputParameters.inputModel = mInputModelComboBox->currentData().toInt(&ok);
-    mSettings->setValue(mSettingStringInputModel, QVariant::fromValue(mInputModelComboBox->currentData().toInt()));
+    mSettings->setValue(mSettingStringInputTextFromat, QVariant::fromValue(mInputModelComboBox->currentData().toInt()));
     Q_ASSERT_X(ok, __FUNCTION__, "Input model is error");
 }
 
@@ -436,7 +436,7 @@ void SAKDebugPageInputController::actionTriggered()
 
 void SAKDebugPageInputController::readinSettings()
 {
-    QVariant var = mSettings->value(mSettingStringInputModel);
+    QVariant var = mSettings->value(mSettingStringInputTextFromat);
     int index = 0;
     if (var.isNull()){
         index = 4;

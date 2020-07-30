@@ -83,7 +83,7 @@ private:
 
     // variables about settings
     QSettings *mSettings;
-    QString mSettingStringInputModel;
+    QString mSettingStringInputTextFromat;
     QString mSettingStringCycleTime;
     QString mSettingStringAddCRC;
     QString mSettingStringBigEndian;
