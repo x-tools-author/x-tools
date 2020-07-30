@@ -28,9 +28,6 @@ SAKOtherAnalyzerThread::~SAKOtherAnalyzerThread()
     mThreadCondition.wakeAll();
     exit();
     wait();
-#ifdef QT_DEBUG
-    qDebug() << __FUNCTION__ << "protocol analyzer has been destroyed";
-#endif
 }
 
 void SAKOtherAnalyzerThread::run()
