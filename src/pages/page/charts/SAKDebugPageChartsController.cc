@@ -29,10 +29,10 @@ SAKDebugPageChartsController::SAKDebugPageChartsController(SAKDebugPage *page, Q
 
     mXYSerialWidget = new SAKChartsXYSerialWidget;
     connect(mDebugPage, &SAKDebugPage::bytesRead, mXYSerialWidget, &SAKChartsXYSerialWidget::inputBytes);
-    mTabWidget->addTab(mXYSerialWidget, tr("波形图"));
+    mTabWidget->addTab(mXYSerialWidget, tr("XY serial"));
 
     mThroughputWidget = new SAKChartsThroughputWidget(mDebugPage);
-    mTabWidget->addTab(mThroughputWidget, tr("吞吐量"));
+    mTabWidget->addTab(mThroughputWidget, tr("Throughput"));
 }
 
 SAKDebugPageChartsController::~SAKDebugPageChartsController()
