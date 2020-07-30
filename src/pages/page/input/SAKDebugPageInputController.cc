@@ -223,7 +223,7 @@ void SAKDebugPageInputController::changeInputModel(const QString &text)
     bool ok = false;
     mInputTextEdit->clear();
     mInputParameters.inputModel = mInputModelComboBox->currentData().toInt(&ok);
-    mSettings->setValue(mSettingStringInputModel, QVariant::fromValue(text));
+    mSettings->setValue(mSettingStringInputModel, QVariant::fromValue(mInputModelComboBox->currentData().toInt()));
     Q_ASSERT_X(ok, __FUNCTION__, "Input model is error");
 }
 
