@@ -181,7 +181,7 @@ SAKDebugPageStatisticsController *SAKDebugPage::statisticsController()
 //    Q_UNUSED(ebable);
 //}
 
-void SAKDebugPage::initPage()
+void SAKDebugPage::initializingPage()
 {
     setupController();
     setupDevice();

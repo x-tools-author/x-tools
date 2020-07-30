@@ -21,7 +21,7 @@ SAKUdpDebugPage::SAKUdpDebugPage(QWidget *parent)
     :SAKDebugPage (SAKDataStruct::DebugPageTypeUDP, parent)
     ,udpDeviceController (new SAKUdpDeviceController)
 {
-    initPage();
+    initializingPage();
     setWindowTitle(SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeUDP));
 }
 

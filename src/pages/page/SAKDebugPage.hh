@@ -148,10 +148,10 @@ protected:
     virtual void setUiEnable(bool ebable) = 0;
 
     /**
-     * @brief initPage: Initializing,
+     * @brief initializingPage: Initializing,
      * the function must be called in the constructor of child class
      */
-    void initPage();
+    void initializingPage();
 private:
     SAKDebugPageDevice *mDevice;
     bool mIsInitializing;

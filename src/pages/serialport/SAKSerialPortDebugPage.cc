@@ -21,7 +21,7 @@ SAKSerialPortDebugPage::SAKSerialPortDebugPage(QWidget *parent)
     :SAKDebugPage (SAKDataStruct::DebugPageTypeCOM, parent)
     ,controller (new SAKSerialPortDeviceController)
 {
-    initPage();
+    initializingPage();
     setWindowTitle(SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeCOM));
 }
 
