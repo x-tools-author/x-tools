@@ -161,26 +161,6 @@ SAKDebugPageStatisticsController *SAKDebugPage::statisticsController()
     return mStatisticsController;
 }
 
-//void SAKDebugPage::refreshDevice()
-//{
-//    //
-//}
-
-//QWidget *SAKDebugPage::controllerWidget()
-//{
-//    return Q_NULLPTR;
-//}
-
-//SAKDebugPageDevice *SAKDebugPage::createDevice()
-//{
-//    return Q_NULLPTR;
-//}
-
-//void SAKDebugPage::setUiEnable(bool ebable)
-//{
-//    Q_UNUSED(ebable);
-//}
-
 void SAKDebugPage::initializingPage()
 {
     setupController();
