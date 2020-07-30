@@ -502,15 +502,15 @@ void SAKDebugPage::on_showTxDataCheckBox_clicked()
 
 void SAKDebugPage::initializingVariables()
 {
-    /// @brief 设备管理组
+    // Devce control
     mSwitchPushButton        = mUi->switchPushButton;
     mRefreshPushButton       = mUi->refreshPushButton;
     mDeviceSettingFrame      = mUi->deviceSettingFrame;
 
-    /// @brief 消息输出组
+    // Message output
     mInfoLabel               = mUi->infoLabel;
 
-    /// @brief 输入设置组
+    // Input settings
     mInputModelComboBox      = mUi->inputModelComboBox;
     mCycleEnableCheckBox     = mUi->cycleEnableCheckBox;
     mCycleTimeLineEdit       = mUi->cycleTimeLineEdit;
@@ -526,7 +526,7 @@ void SAKDebugPage::initializingVariables()
     mPresetPushButton        = mUi->presetPushButton;
     mSendPresetPushButton    = mUi->sendPresetPushButton;
 
-    /// @brief 输出设置组
+    // Output settings
     mRxLabel                 = mUi->rxLabel;
     mTxLabel                 = mUi->txLabel;
     mOutputTextFormatComboBox= mUi->outputTextFormatComboBox;
@@ -542,7 +542,7 @@ void SAKDebugPage::initializingVariables()
     mSaveOutputPushButton    = mUi->saveOutputPushButton;
     mOutputTextBroswer       = mUi->outputTextBroswer;
 
-    /// @brief 数据统计
+    // Statistics
     mRxSpeedLabel            = mUi->rxSpeedLabel;
     mTxSpeedLabel            = mUi->txSpeedLabel;
     mRxFramesLabel           = mUi->rxFramesLabel;
@@ -552,7 +552,7 @@ void SAKDebugPage::initializingVariables()
     mResetTxCountPushButton  = mUi->resetTxCountPushButton;
     mResetRxCountPushButton  = mUi->resetRxCountPushButton;
 
-    /// @brief 其他设置
+    // Other settings
     mTransmissionSettingPushButton = mUi->transmissionSettingPushButton;
     mAnalyzerPushButton = mUi->analyzerPushButton;
     mAutoResponseSettingPushButton = mUi->autoResponseSettingPushButton;
@@ -560,7 +560,7 @@ void SAKDebugPage::initializingVariables()
     mHighlightSettingPushButton    = mUi->highlightSettingPushButton;
     mMoreSettingsPushButton        = mUi->moreSettingsPushButton;
 
-    /// @brief 数据可视化
+    // Charts
     mDataVisualizationPushButton = mUi->dataVisualizationPushButton;
 }
 
@@ -581,6 +581,6 @@ void SAKDebugPage::on_dataVisualizationPushButton_clicked()
         });
     }
 #else
-    QMessageBox::warning(this, tr("不支持的功能"), tr("该功能已被开发者禁用，可能原因是该平台不支持该功能"));
+    QMessageBox::warning(this, tr("Unsupport function"), tr("The function has benn disable, beause the platform is not support!"));
 #endif
 }
