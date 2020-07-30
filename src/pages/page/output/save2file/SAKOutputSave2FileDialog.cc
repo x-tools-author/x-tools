@@ -37,10 +37,6 @@ SAKOutputSave2FileDialog::SAKOutputSave2FileDialog(SAKDebugPage *debugPage, QWid
     mOkPushButton = mUi->okPushButton;
     mTruncatePushButton = mUi->truncatePushButton;
 
-    // Initializing ui components
-    mUi->setupUi(this);
-    setModal(true);
-
     // Initializing variables about settings
     QString groupString = mDebugPage->settingsGroup();
     mSettingsOutputPath = QString("%1/outputPath").arg(groupString);
@@ -49,6 +45,10 @@ SAKOutputSave2FileDialog::SAKOutputSave2FileDialog(SAKDebugPage *debugPage, QWid
     mSettingKeyTimestamp = QString("%1/saveTimestamp").arg(groupString);
     mSettingKeyDataType = QString("%1/dataType").arg(groupString);
     mSettings = mDebugPage->settings();
+
+    // Initializing ui components
+    mUi->setupUi(this);
+    setModal(true);
 
     // ParametersContext will be signal parameter, the step must be done, or will be error.
     qRegisterMetaType<ParametersContext>("SaveOutputDataParamters");
