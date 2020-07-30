@@ -17,6 +17,7 @@
 #include <QThread>
 #include <QComboBox>
 #include <QCheckBox>
+#include <QSettings>
 #include <QPushButton>
 #include <QTextBrowser>
 #include <QWaitCondition>
