@@ -73,6 +73,7 @@ SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugPage *debugPage
     }
 
     mCrcSettingsDialog = new SAKInputCrcSettingsDialog;
+    readinSettings();
     SAKInputCrcSettingsDialog::ParameterContext ctx = mCrcSettingsDialog->parametersContext();
     mInputParameters.bigEndian = ctx.bigEndianCRC;
     mInputParameters.startByte = ctx.startByte;
@@ -91,9 +92,11 @@ SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugPage *debugPage
         mInputParameters.endByte = ctx.endByte;
 
         // Write value to setting file
-        mSettings->setValue(mSettingStringAddCRC, QVariant::fromValue(mInputParameters.addCRC));
+        mSettings->setValue(mSettingStringBigEndian, QVariant::fromValue(mInputParameters.bigEndian));
         mSettings->setValue(mSettingStringCrcStartByte, QVariant::fromValue(mInputParameters.startByte));
         mSettings->setValue(mSettingStringCrcEndByte, QVariant::fromValue(mInputParameters.endByte));
+
+        qDebug() << mInputParameters.bigEndian << mInputParameters.startByte << mInputParameters.endByte;
     });
 
     // Disable some components before device is opened
@@ -120,7 +123,6 @@ SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugPage *debugPage
     connect(&mTimingTimer, &QTimer::timeout, this, &SAKDebugPageInputController::cycleTimerTimeout);
     connect(debugPage, &SAKDebugPage::requestWriteRawData, this, &SAKDebugPageInputController::sendOtherRawData);
 
-    readinSettings();
     initParameters();
     updateCRC();
 }
