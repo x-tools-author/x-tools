@@ -27,7 +27,6 @@
 #include "SAKCRCInterface.hh"
 #include "SAKDebugPageDevice.hh"
 #include "SAKOtherAnalyzerThread.hh"
-#include "SAKOtherAnalyzerThreadManager.hh"
 #include "SAKOtherHighlighterManager.hh"
 #include "SAKDebugPageOtherController.hh"
 #include "SAKDebugPageInputController.hh"
@@ -35,6 +34,7 @@
 #ifdef SAK_IMPORT_CHARTS_MODULE
 #include "SAKDebugPageChartsController.hh"
 #endif
+#include "SAKOtherAnalyzerThreadManager.hh"
 #include "SAKOtherAutoResponseItemManager.hh"
 #include "SAKDebugPageStatisticsController.hh"
 
