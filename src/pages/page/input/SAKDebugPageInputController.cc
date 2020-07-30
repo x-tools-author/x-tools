@@ -104,8 +104,6 @@ SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugPage *debugPage
         mSettings->setValue(mSettingStringBigEndian, QVariant::fromValue(mInputParameters.bigEndian));
         mSettings->setValue(mSettingStringCrcStartByte, QVariant::fromValue(mInputParameters.startByte));
         mSettings->setValue(mSettingStringCrcEndByte, QVariant::fromValue(mInputParameters.endByte));
-
-        qDebug() << mInputParameters.bigEndian << mInputParameters.startByte << mInputParameters.endByte;
     });
 
     connect(mInputModelComboBox, &QComboBox::currentTextChanged, this, &SAKDebugPageInputController::changeInputModel);
@@ -242,7 +240,7 @@ void SAKDebugPageInputController::changeCycleTime()
 {
     bool ok = false;
     mInputParameters.cycleTime = mCycleTimeLineEdit->text().toInt(&ok);
-    mSettings->setValue(mSettingStringCycleTime, QVariant::fromValue(mCycleTimeLineEdit->text()));
+    mSettings->setValue(mSettingStringCycleTime, QVariant::fromValue(mInputParameters.cycleTime));
     if ((!ok) || (mInputParameters.cycleTime < 0)){
         mInputParameters.cycleTime = 1000;
         mCycleTimeLineEdit->setText("1000");
@@ -347,13 +345,6 @@ void SAKDebugPageInputController::initParameters()
 {
     mInputParameters.addCRC = mAddCRCCheckBox->isChecked();
     mInputParameters.cycleTime = mCycleTimeLineEdit->text().toInt();
-
-    bool ok = false;
-    if ((!ok) || (mInputParameters.cycleTime == 0)){
-        mInputParameters.cycleTime = 1000;
-        mCycleTimeLineEdit->setText("1000");
-    }
-
     mInputParameters.inputModel = mInputModelComboBox->currentData().toInt();
     mInputParameters.crcModel = mCrcParameterModelsComboBox->currentData().toInt();
 }
@@ -452,7 +443,7 @@ void SAKDebugPageInputController::readinSettings()
     if (var.isNull()){
         cycleTime = QString("1000");
     }else{
-        cycleTime = var.toString();
+        cycleTime = QString::number(var.toInt());
     }
     mCycleTimeLineEdit->setText(cycleTime);
 
