@@ -18,9 +18,10 @@
 #include "SAKOutputSave2FileDialog.hh"
 #include "ui_SAKOutputSave2FileDialog.h"
 
-SAKOutputSave2FileDialog::SAKOutputSave2FileDialog(QSettings *settings, QWidget *parent)
+SAKOutputSave2FileDialog::SAKOutputSave2FileDialog(SAKDebugPage *debugPage, QWidget *parent)
     :QDialog(parent)
-    ,mSettings(settings)
+    ,mSettings(Q_NULLPTR)
+    ,mDebugPage(debugPage)
     ,mSettingsOutputPath(QString("DebugPage/outputPath"))
     ,mSettingKeyReadData(QString("DebugPage/readData"))
     ,mSettingKeyWrittenData(QString("DebugPage/writtenData"))
