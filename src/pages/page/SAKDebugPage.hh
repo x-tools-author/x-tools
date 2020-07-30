@@ -31,7 +31,6 @@
 class SAKDataFactory;
 class SAKCRCInterface;
 class SAKDebugPageDevice;
-class SAKOtherTransmissionPageViewer;
 class SAKOtherHighlighterManager;
 class SAKDebugPageOtherController;
 class SAKDebugPageInputController;
@@ -39,6 +38,7 @@ class SAKDebugPageOutputController;
 #ifdef SAK_IMPORT_CHARTS_MODULE
 class SAKDebugPageChartsController;
 #endif
+class SAKOtherTransmissionPageViewer;
 class SAKDebugPageStatisticsController;
 
 namespace Ui {
