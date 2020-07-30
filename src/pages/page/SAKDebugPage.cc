@@ -552,18 +552,10 @@ void SAKDebugPage::initializingVariables()
 void SAKDebugPage::on_dataVisualizationPushButton_clicked()
 {
 #ifdef SAK_IMPORT_CHARTS_MODULE
-    if (mChartsController){
-        if (mChartsController->isHidden()){
-            mChartsController->show();
-        }else{
-            mChartsController->activateWindow();
-        }
-    }else{
-        mChartsController = new SAKDebugPageChartsController(this);
+    if (mChartsController->isHidden()){
         mChartsController->show();
-        connect(mChartsController, &SAKDebugPageChartsController::destroyed, [&](){
-            mChartsController = Q_NULLPTR;
-        });
+    }else{
+        mChartsController->activateWindow();
     }
 #else
     QMessageBox::warning(this, tr("Unsupport function"), tr("The function has benn disable, beause the platform is not support!"));
