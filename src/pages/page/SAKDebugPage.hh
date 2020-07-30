@@ -163,38 +163,29 @@ private:
     SAKDebugPageStatisticsController *mStatisticsController;
 private:
     void initSettingKey();
-    /// @brief 初始化配置选项名称
     void initSettingString();
     void initInputSettingString();
     void initOutputSettingString();
 
-    /// @brief 从配置文件中读入配置选项
     void readinSettings();
     void readinInputSettings();
     void readinOutputSettings();
 
-    /// @brief 清空ui消息显示
     void cleanInfo();
 
-    /// @brief 打开或者关闭设备
     void openOrColoseDevice();
     void closeDevice();
     void openDevice();
 
-    /// 初始化与设备有关的信号关联
     void setupDevice();
-    /// @brief 安装设备控制面板
     void setupController();
-    /// @brief 更改设备状态
     void changedDeviceState(bool opened);
 signals:
     // Emit the read data
     void bytesRead(QByteArray data);
     // Emit the written data
     void bytesWritten(QByteArray data);
-    /// 子类关联该信号来发送数据即可
     void requestWriteData(QByteArray data);
-    /// 请求处理输出
     void requestWriteRawData(QString data, int textFormat);
 
     // ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
