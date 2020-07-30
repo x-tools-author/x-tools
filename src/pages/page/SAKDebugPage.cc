@@ -40,8 +40,6 @@
 
 #include "ui_SAKDebugPage.h"
 
-#define MINI_READ_WRITE_WATINGT_TIME 5   // 读写等待最小时间(单位为：ms)
-
 SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
     :QWidget(parent)
     ,mDevice(Q_NULLPTR)    
