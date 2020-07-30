@@ -93,6 +93,13 @@ public:
     QSettings *settings();
 
     /**
+     * @brief settingsGroup: Get the settings group
+     * @param pageType: The type of debug page
+     * @return Settings group
+     */
+    QString settingsGroup(int pageType);
+
+    /**
      * @brief otherController: Get SAKDebugPageOtherController instance pointer
      * @return SAKDebugPageOtherController instance pointer
      */

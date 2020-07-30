@@ -42,11 +42,11 @@
 
 SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
     :QWidget(parent)
-    ,mDevice(Q_NULLPTR)    
+    ,mDevice(Q_NULLPTR)
+    ,mIsInitializing(true)
     ,mDebugPageType(type)
     ,mUi(new Ui::SAKDebugPage)
 {
-    mIsInitializing = true;
     initSettingString();
 
     mUi->setupUi(this);
@@ -132,6 +132,20 @@ quint32 SAKDebugPage::pageType()
 QSettings *SAKDebugPage::settings()
 {
     return SAKSettings::instance();
+}
+
+QString SAKDebugPage::settingsGroup(int pageType)
+{
+    QString group;
+
+    QMetaEnum metaEnum = QMetaEnum::fromType<SAKDataStruct::SAKEnumDebugPageType>();
+    for (int i = 0; i < metaEnum.keyCount(); i++){
+        if (metaEnum.value(i) == pageType){
+            group = QString(metaEnum.key(i));
+        }
+    }
+
+    return group;
 }
 
 SAKDebugPageOtherController *SAKDebugPage::otherController()
