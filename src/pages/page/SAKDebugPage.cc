@@ -134,10 +134,10 @@ QSettings *SAKDebugPage::settings()
     return SAKSettings::instance();
 }
 
-QString SAKDebugPage::settingsGroup(int pageType)
+QString SAKDebugPage::settingsGroup()
 {
     QString group;
-
+    int pageType = mDebugPageType;
     QMetaEnum metaEnum = QMetaEnum::fromType<SAKDataStruct::SAKEnumDebugPageType>();
     for (int i = 0; i < metaEnum.keyCount(); i++){
         if (metaEnum.value(i) == pageType){

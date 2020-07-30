@@ -97,7 +97,7 @@ public:
      * @param pageType: The type of debug page
      * @return Settings group
      */
-    QString settingsGroup(int pageType);
+    QString settingsGroup();
 
     /**
      * @brief otherController: Get SAKDebugPageOtherController instance pointer
