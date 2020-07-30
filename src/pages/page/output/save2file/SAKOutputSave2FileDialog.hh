@@ -54,11 +54,11 @@ private:
     SAKOutputSave2FileThread *mSaveOutputDataThread;
     QSettings *mSettings;
     SAKDebugPage *mDebugPage;
-    const QString mSettingsOutputPath;
-    const QString mSettingKeyReadData;
-    const QString mSettingKeyWrittenData;
-    const QString mSettingKeyTimestamp;
-    const QString mSettingKeyDataType;
+    QString mSettingsOutputPath;
+    QString mSettingKeyReadData;
+    QString mSettingKeyWrittenData;
+    QString mSettingKeyTimestamp;
+    QString mSettingKeyDataType;
 private:
     ParametersContext parameters(ParametersContext::DataType type);
 signals:
