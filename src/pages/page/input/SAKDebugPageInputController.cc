@@ -52,7 +52,7 @@ SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugPage *debugPage
     mSettingStringInputModel = QString("%1/inputModel").arg(group);
     mSettingStringCycleTime = QString("%1/cycleTime").arg(group);
     mSettingStringAddCRC = QString("%1/addCRC").arg(group);
-    mSettingStringBigeEndian = QString("%1/bigeEndian").arg(group);
+    mSettingStringBigEndian = QString("%1/bigEndian").arg(group);
     mSettingStringCrcParameterModel = QString("%1/parameterModel").arg(group);
     mSettingStringCrcStartByte = QString("%1/startByte").arg(group);
     mSettingStringCrcEndByte = QString("%1/endByte").arg(group);

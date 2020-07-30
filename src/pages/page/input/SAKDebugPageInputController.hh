@@ -86,7 +86,7 @@ private:
     QString mSettingStringInputModel;
     QString mSettingStringCycleTime;
     QString mSettingStringAddCRC;
-    QString mSettingStringBigeEndian;
+    QString mSettingStringBigEndian;
     QString mSettingStringCrcParameterModel;
     QString mSettingStringCrcStartByte;
     QString mSettingStringCrcEndByte;
