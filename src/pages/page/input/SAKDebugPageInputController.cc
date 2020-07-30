@@ -73,11 +73,19 @@ SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugPage *debugPage
     }
 
     mCrcSettingsDialog = new SAKInputCrcSettingsDialog;
-    readinSettings();
+
     SAKInputCrcSettingsDialog::ParameterContext ctx = mCrcSettingsDialog->parametersContext();
     mInputParameters.bigEndian = ctx.bigEndianCRC;
     mInputParameters.startByte = ctx.startByte;
     mInputParameters.endByte = ctx.endByte;
+
+    // Disable some components before device is opened
+    mSendPushButton->setEnabled(false);
+    mSendPresetPushButton->setEnabled(false);
+    mCycleEnableCheckBox->setEnabled(false);
+    SAKGlobal::initInputTextFormatComboBox(mInputModelComboBox);
+    SAKGlobal::initCRCComboBox(mCrcParameterModelsComboBox);
+    readinSettings();
 
     // Preset items changed
     connect(mInputDataItemManager, &SAKInputDataPresetItemManager::itemAdded, this, &SAKDebugPageInputController::appendAction);
@@ -98,13 +106,6 @@ SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugPage *debugPage
 
         qDebug() << mInputParameters.bigEndian << mInputParameters.startByte << mInputParameters.endByte;
     });
-
-    // Disable some components before device is opened
-    mSendPushButton->setEnabled(false);
-    mSendPresetPushButton->setEnabled(false);
-    mCycleEnableCheckBox->setEnabled(false);
-    SAKGlobal::initInputTextFormatComboBox(mInputModelComboBox);
-    SAKGlobal::initCRCComboBox(mCrcParameterModelsComboBox);
 
     connect(mInputModelComboBox, &QComboBox::currentTextChanged, this, &SAKDebugPageInputController::changeInputModel);
     connect(mCycleEnableCheckBox, &QCheckBox::clicked, this, &SAKDebugPageInputController::changeCycleEnableFlag);
