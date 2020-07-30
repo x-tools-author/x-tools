@@ -90,7 +90,7 @@ public:
      * @brief settingsInstance: Get the settings instance
      * @return Settings instance
      */
-    QSettings *settingsInstance();
+    QSettings *settings();
 
     /**
      * @brief otherController: Get SAKDebugPageOtherController instance pointer

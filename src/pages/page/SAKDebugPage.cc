@@ -129,7 +129,7 @@ quint32 SAKDebugPage::pageType()
     return mDebugPageType;
 }
 
-QSettings *SAKDebugPage::settingsInstance()
+QSettings *SAKDebugPage::settings()
 {
     return SAKSettings::instance();
 }
