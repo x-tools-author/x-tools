@@ -52,10 +52,10 @@ SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
     mUi->setupUi(this);
     initUiPointer();
 
-    mOutputController           = new SAKDebugPageOutputController(this, this);
-    mOtherController           = new SAKDebugPageOtherController(this, this);
-    mStatisticsController       = new SAKDebugPageStatisticsController(this, this);
-    mInputController   = new SAKDebugPageInputController(this, this);
+    mOutputController = new SAKDebugPageOutputController(this, this);
+    mOtherController = new SAKDebugPageOtherController(this, this);
+    mStatisticsController = new SAKDebugPageStatisticsController(this, this);
+    mInputController = new SAKDebugPageInputController(this, this);
 #ifdef SAK_IMPORT_CHARTS_MODULE
     mChartsController= new SAKDebugPageChartsController(this);
 #endif
