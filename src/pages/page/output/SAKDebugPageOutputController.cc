@@ -237,7 +237,6 @@ SAKDebugPageOutputController::OutputParameters SAKDebugPageOutputController::out
     parameters.showTime = mShowTimeCheckBox->isChecked();
     parameters.showMS = mShowMsCheckBox->isChecked();
     parameters.isReadData = isReceivedData;
-
     parameters.format= mOutputTextFormatComboBox->currentData().toInt();
 
     return parameters;
