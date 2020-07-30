@@ -128,7 +128,7 @@ SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugPage *debugPage
 SAKDebugPageInputController::~SAKDebugPageInputController()
 {
     delete mInputDataFactory;
-    delete  mCrcInterface;
+    delete mCrcInterface;
     delete mInputDataItemManager;
     delete mCrcSettingsDialog;
 }
@@ -458,7 +458,7 @@ void SAKDebugPageInputController::readinSettings()
     index = mSettings->value(mSettingStringCrcParameterModel).toInt();
     mCrcParameterModelsComboBox->setCurrentIndex(index);
 
-    bool bigEndian = mSettings->value(mSettingStringCrcStartByte).toBool();
+    bool bigEndian = mSettings->value(mSettingStringBigEndian).toBool();
     mCrcSettingsDialog->setBigEndian(bigEndian);
 
     int startByte = mSettings->value(mSettingStringCrcStartByte).toInt();
