@@ -65,7 +65,7 @@ SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugPage *debugPa
     mOutputTextBroswer->document()->setMaximumBlockCount(1000);
 
     // the class is used to save data to file
-    mSave2FileDialog = new SAKOutputSave2FileDialog(SAKSettings::instance());
+    mSave2FileDialog = new SAKOutputSave2FileDialog(mDebugPage);
 
     // the thread will started when the class is initailzed
     start();
