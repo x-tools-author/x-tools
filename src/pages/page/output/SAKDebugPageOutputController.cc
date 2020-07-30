@@ -23,6 +23,7 @@ SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugPage *debugPa
     :QThread(parent)
     ,mDebugPage(debugPage)
     ,mSettings(Q_NULLPTR)
+    ,mSave2FileDialog(Q_NULLPTR)
     ,mRxAnimationgCount(5)
     ,mTxAnimationCount(0)
 {
