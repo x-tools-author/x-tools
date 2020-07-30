@@ -176,13 +176,6 @@ private:
     SAKDebugPageOutputController *mOutputController;
     SAKDebugPageStatisticsController *mStatisticsController;
 private:
-    void initSettingKey();
-    void initSettingString();
-    void initOutputSettingString();
-
-    void readinSettings();
-    void readinOutputSettings();
-
     void cleanInfo();
 
     void openOrColoseDevice();
@@ -261,22 +254,6 @@ protected:
     QPushButton *mClearOutputPushButton;
     QPushButton *mSaveOutputPushButton;
     QTextBrowser *mOutputTextBroswer;
-
-    QString mSettingStringOutputTextFormat;
-    QString mSettingStringShowDate;
-    QString mSettingStringAutoWrap;
-    QString mSettingStringShowTime;
-    QString mSettingStringShowMs;
-    QString mSettingStringShowRx;
-    QString mSettingStringShowTx;
-private slots:
-    void on_outputTextFormatComboBox_currentIndexChanged(int index);
-    void on_showDateCheckBox_clicked();
-    void on_autoWrapCheckBox_clicked();
-    void on_showTimeCheckBox_clicked();
-    void on_showMsCheckBox_clicked();
-    void on_showRxDataCheckBox_clicked();
-    void on_showTxDataCheckBox_clicked();
 
     /*************************************************************************/
     // Data statistics module

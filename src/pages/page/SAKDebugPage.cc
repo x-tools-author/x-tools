@@ -47,8 +47,6 @@ SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
     ,mDebugPageType(type)
     ,mUi(new Ui::SAKDebugPage)
 {
-    initSettingString();
-
     mUi->setupUi(this);
     initializingVariables();
 
@@ -65,8 +63,6 @@ SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
 #endif
     mClearInfoTimer.setInterval(SAK_CLEAR_MESSAGE_INTERVAL);
     connect(&mClearInfoTimer, &QTimer::timeout, this, &SAKDebugPage::cleanInfo);
-
-    readinSettings();
     mIsInitializing = false;
 }
 
@@ -190,110 +186,6 @@ void SAKDebugPage::changedDeviceState(bool opened)
     setUiEnable(!opened);
 }
 
-void SAKDebugPage::initSettingKey()
-{
-    switch (mDebugPageType) {
-#ifdef SAK_IMPORT_COM_MODULE
-    case SAKDataStruct::DebugPageTypeCOM:
-        mSettingKey = QString("COM");
-        break;
-#endif
-#ifdef SAK_IMPORT_HID_MODULE
-        case SAKDataStruct::DebugPageTypeHID:
-        settingKey = QString("HID");
-        break;
-#endif
-#ifdef SAK_IMPORT_USB_MODULE
-    case SAKDataStruct::DebugPageTypeUSB:
-    settingKey = QString("USB");
-    break;
-#endif
-    case SAKDataStruct::DebugPageTypeUDP:
-        mSettingKey = QString("UDP");
-        break;
-    case SAKDataStruct::DebugPageTypeTCPClient:
-        mSettingKey = QString("TCPC");
-        break;
-    case SAKDataStruct::DebugPageTypeTCPServer:
-        mSettingKey = QString("TCPS");
-        break;
-    case SAKDataStruct::DebugPageTypeWebSocketClient:
-        mSettingKey = QString("WEBSOCKETC");
-        break;
-    case SAKDataStruct::DebugPageTypeWebSocketServer:
-        mSettingKey = QString("WEBSOCKETS");
-        break;
-    default:
-        mSettingKey = QString("UnknowDebugPage");
-        Q_ASSERT_X(false, __FUNCTION__, "Invalid type of debug page");
-        break;
-    }
-}
-
-void SAKDebugPage::initSettingString()
-{
-    initSettingKey();
-    initOutputSettingString();
-}
-
-void SAKDebugPage::initOutputSettingString()
-{
-    mSettingStringOutputTextFormat = QString("%1/outputTextFormat").arg(mSettingKey);
-    mSettingStringShowDate    = QString("%1/showDate").arg(mSettingKey);
-    mSettingStringAutoWrap    = QString("%1/autoWrap").arg(mSettingKey);
-    mSettingStringShowTime    = QString("%1/showTime").arg(mSettingKey);
-    mSettingStringShowMs      = QString("%1/showMs").arg(mSettingKey);
-    mSettingStringShowRx      = QString("%1/showRx").arg(mSettingKey);
-    mSettingStringShowTx      = QString("%1/showTx").arg(mSettingKey);
-}
-
-void SAKDebugPage::readinSettings()
-{
-    readinOutputSettings();
-}
-
-void SAKDebugPage::readinOutputSettings()
-{
-    auto setValue = [](QVariant &var){
-        if (var.isNull()){
-            return true;
-        }else{
-            return var.toBool();
-        }
-    };
-
-    QVariant var = SAKSettings::instance()->value(mSettingStringOutputTextFormat);
-    int index = 0;
-    if (var.isNull()){
-        index = 4;
-    }else{
-        index = var.toInt();
-    }
-    mOutputTextFormatComboBox->setCurrentIndex(index);
-
-    var = SAKSettings::instance()->value(mSettingStringShowDate);
-    bool value = SAKSettings::instance()->value(mSettingStringShowDate).toBool();
-    mShowDateCheckBox->setChecked(value);
-
-    var = SAKSettings::instance()->value(mSettingStringAutoWrap);
-    value = setValue(var);
-    mAutoWrapCheckBox->setChecked(value);
-
-    var = SAKSettings::instance()->value(mSettingStringShowTime).toBool();
-    mShowTimeCheckBox->setChecked(value);
-
-    value = SAKSettings::instance()->value(mSettingStringShowMs).toBool();
-    mShowMsCheckBox->setChecked(value);
-
-    var = SAKSettings::instance()->value(mSettingStringShowRx);
-    value = setValue(var);
-    mShowRxDataCheckBox->setChecked(value);
-
-    var = SAKSettings::instance()->value(mSettingStringShowTx);
-    value = setValue(var);
-    mShowTxDataCheckBox->setChecked(value);
-}
-
 void SAKDebugPage::cleanInfo()
 {
     mClearInfoTimer.stop();
@@ -377,55 +269,6 @@ void SAKDebugPage::on_refreshPushButton_clicked()
 void SAKDebugPage::on_switchPushButton_clicked()
 {
     openOrColoseDevice();
-}
-
-void SAKDebugPage::on_outputTextFormatComboBox_currentIndexChanged(int index)
-{
-    if (!mIsInitializing){
-        SAKSettings::instance()->setValue(mSettingStringOutputTextFormat, QVariant::fromValue(index));
-    }
-}
-
-void SAKDebugPage::on_showDateCheckBox_clicked()
-{
-    if (!mIsInitializing){
-        SAKSettings::instance()->setValue(mSettingStringShowDate, QVariant::fromValue(mShowDateCheckBox->isChecked()));
-    }
-}
-
-void SAKDebugPage::on_autoWrapCheckBox_clicked()
-{
-    if (!mIsInitializing){
-        SAKSettings::instance()->setValue(mSettingStringAutoWrap, QVariant::fromValue(mAutoWrapCheckBox->isChecked()));
-    }
-}
-
-void SAKDebugPage::on_showTimeCheckBox_clicked()
-{
-    if (!mIsInitializing){
-        SAKSettings::instance()->setValue(mSettingStringShowTime, QVariant::fromValue(mShowTimeCheckBox->isChecked()));
-    }
-}
-
-void SAKDebugPage::on_showMsCheckBox_clicked()
-{
-    if (!mIsInitializing){
-        SAKSettings::instance()->setValue(mSettingStringShowMs, QVariant::fromValue(mShowMsCheckBox->isChecked()));
-    }
-}
-
-void SAKDebugPage::on_showRxDataCheckBox_clicked()
-{
-    if (!mIsInitializing){
-        SAKSettings::instance()->setValue(mSettingStringShowRx, QVariant::fromValue(mShowRxDataCheckBox->isChecked()));
-    }
-}
-
-void SAKDebugPage::on_showTxDataCheckBox_clicked()
-{
-    if (!mIsInitializing){
-        SAKSettings::instance()->setValue(mSettingStringShowTx, QVariant::fromValue(mShowTxDataCheckBox->isChecked()));
-    }
 }
 
 void SAKDebugPage::initializingVariables()
