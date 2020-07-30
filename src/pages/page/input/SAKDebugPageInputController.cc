@@ -43,6 +43,7 @@ SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugPage *debugPage
     mPresetPushButton = debugPage->mPresetPushButton;
     mSendPresetPushButton = debugPage->mSendPresetPushButton;
     mSendPresetPushButton->setMenu(new QMenu("", mSendPresetPushButton));
+    mCrcSettingsPushButton = debugPage->mCrcSettingsPushButton;
 
     // Initializing variables about settings
     QString group = mDebugPage->settingsGroup();
@@ -113,7 +114,7 @@ SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugPage *debugPage
     connect(mInputTextEdit, &QTextEdit::textChanged, this, &SAKDebugPageInputController::inputTextEditTextChanged);
     connect(mCrcParameterModelsComboBox, &QComboBox::currentTextChanged, this, &SAKDebugPageInputController::changeCRCModel);
     connect(mPresetPushButton, &QPushButton::clicked, this, &SAKDebugPageInputController::setPresetData);
-
+    connect(mCrcSettingsPushButton, &QPushButton::clicked, this, &SAKDebugPageInputController::showCrcSettingsDialog);
     connect(this, &SAKDebugPageInputController::rawDataChanged, mInputDataFactory, &SAKInputDataFactory::cookData);
     connect(mInputDataFactory, &SAKInputDataFactory::dataCooked, debugPage, &SAKDebugPage::write);
     connect(&mTimingTimer, &QTimer::timeout, this, &SAKDebugPageInputController::cycleTimerTimeout);

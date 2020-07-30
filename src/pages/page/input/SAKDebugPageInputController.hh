@@ -72,6 +72,7 @@ private:
     QLabel *mCrcLabel;
     QPushButton *mPresetPushButton;
     QPushButton *mSendPresetPushButton;
+    QPushButton *mCrcSettingsPushButton;
 
     QTimer mTimingTimer;
     SAKInputDataFactory *mInputDataFactory;
