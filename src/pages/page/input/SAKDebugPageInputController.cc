@@ -90,7 +90,9 @@ SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugPage *debugPage
         mInputParameters.endByte = ctx.endByte;
 
         // Write value to setting file
-
+        mSettings->setValue(mSettingStringAddCRC, QVariant::fromValue(mInputParameters.addCRC));
+        mSettings->setValue(mSettingStringCrcStartByte, QVariant::fromValue(mInputParameters.startByte));
+        mSettings->setValue(mSettingStringCrcEndByte, QVariant::fromValue(mInputParameters.endByte));
     });
 
     mSendPushButton->setEnabled(false);
