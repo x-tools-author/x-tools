@@ -50,7 +50,7 @@ SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
     initSettingString();
 
     mUi->setupUi(this);
-    initUiPointer();
+    initializingVariables();
 
     mOutputController = new SAKDebugPageOutputController(this, this);
     mOtherController = new SAKDebugPageOtherController(this, this);
@@ -500,7 +500,7 @@ void SAKDebugPage::on_showTxDataCheckBox_clicked()
     }
 }
 
-void SAKDebugPage::initUiPointer()
+void SAKDebugPage::initializingVariables()
 {
     /// @brief 设备管理组
     mSwitchPushButton        = mUi->switchPushButton;

@@ -194,7 +194,7 @@ private:
     Ui::SAKDebugPage *mUi;
 private:
     // All variable about ui will be initialize in the function
-    void initUiPointer();
+    void initializingVariables();
 
     /*************************************************************************/
     // Device control module
