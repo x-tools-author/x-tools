@@ -85,6 +85,7 @@ SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugPage *debugPage
     mCycleEnableCheckBox->setEnabled(false);
     SAKGlobal::initInputTextFormatComboBox(mInputModelComboBox);
     SAKGlobal::initCRCComboBox(mCrcParameterModelsComboBox);
+    // The function must be called before connecting signals and slots
     readinSettings();
 
     // Preset items changed
