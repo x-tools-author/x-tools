@@ -46,6 +46,7 @@ public:
 private:
     ParameterContext mParametersContext;
     QMutex mParametersContextMutex;
+    bool mIsInitializing;
 private:
     Ui::SAKInputCrcSettingsDialog *mUi;
     QCheckBox *mBigEndianCheckBox;
