@@ -127,25 +127,25 @@ protected:
     /**
      * @brief refreshDevice: Refresh system device
      */
-    virtual void refreshDevice();
+    virtual void refreshDevice() = 0;
 
     /**
      * @brief controllerWidget: Get device control widget
      * @return Device control widget
      */
-    virtual QWidget *controllerWidget();
+    virtual QWidget *controllerWidget() = 0;
 
     /**
      * @brief createDevice: Create the device instance
      * @return Device instance pointer
      */
-    virtual SAKDebugPageDevice* createDevice();
+    virtual SAKDebugPageDevice* createDevice() = 0;
 
     /**
      * @brief setUiEnable: Set some components enable or disable
      * @param ebable: true-enable ui components, false-disable ui components
      */
-    virtual void setUiEnable(bool ebable);
+    virtual void setUiEnable(bool ebable) = 0;
 
     /**
      * @brief initPage: Initializing,
