@@ -293,7 +293,6 @@ void SAKDebugPage::readinInputSettings()
 
 void SAKDebugPage::readinOutputSettings()
 {
-    // 某些设置默认为勾选
     auto setValue = [](QVariant &var){
         if (var.isNull()){
             return true;
@@ -361,7 +360,7 @@ void SAKDebugPage::openDevice()
 {
     if (mDevice){
         mDevice->start();
-        mSwitchPushButton->setText(tr("关闭设备"));
+        mSwitchPushButton->setText(tr("Close"));
     }
 }
 
@@ -374,7 +373,7 @@ void SAKDebugPage::closeDevice()
         mDevice->wait();
         mDevice->deleteLater();
         mDevice = Q_NULLPTR;
-        mSwitchPushButton->setText(tr("打开设备"));
+        mSwitchPushButton->setText(tr("Open"));
     }
 }
 
@@ -405,13 +404,7 @@ void SAKDebugPage::setupController()
         QHBoxLayout *layout = new QHBoxLayout(mDeviceSettingFrame);
         mDeviceSettingFrame->setLayout(layout);
         layout->addWidget(controller);
-
-        /// @brief qt5.13及以上版本setMargin()接口改为setContentsMargins()
-#if (QT_VERSION >= QT_VERSION_CHECK(5,13,0))
         layout->setContentsMargins(0, 0, 0, 0);
-#else
-        layout->setMargin(0);
-#endif
     }
 }
 
