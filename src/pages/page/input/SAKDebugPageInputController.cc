@@ -26,8 +26,8 @@
 #include "SAKInputDataPresetItemManager.hh"
 
 SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugPage *debugPage, QObject *parent)
-    :QObject (parent)
-    ,mDebugPage (debugPage)
+    :QObject(parent)
+    ,mDebugPage(debugPage)
 {
     mInputModelComboBox = debugPage->mInputModelComboBox;
     mCycleEnableCheckBox = debugPage->mCycleEnableCheckBox;
