@@ -129,6 +129,11 @@ quint32 SAKDebugPage::pageType()
     return mDebugPageType;
 }
 
+QSettings *SAKDebugPage::settingsInstance()
+{
+    return SAKSettings::instance();
+}
+
 SAKDebugPageOtherController *SAKDebugPage::otherController()
 {
     return mOtherController;
@@ -503,62 +508,62 @@ void SAKDebugPage::on_showTxDataCheckBox_clicked()
 void SAKDebugPage::initializingVariables()
 {
     // Devce control
-    mSwitchPushButton        = mUi->switchPushButton;
-    mRefreshPushButton       = mUi->refreshPushButton;
-    mDeviceSettingFrame      = mUi->deviceSettingFrame;
+    mSwitchPushButton = mUi->switchPushButton;
+    mRefreshPushButton = mUi->refreshPushButton;
+    mDeviceSettingFrame = mUi->deviceSettingFrame;
 
     // Message output
-    mInfoLabel               = mUi->infoLabel;
+    mInfoLabel = mUi->infoLabel;
 
     // Input settings
-    mInputModelComboBox      = mUi->inputModelComboBox;
-    mCycleEnableCheckBox     = mUi->cycleEnableCheckBox;
-    mCycleTimeLineEdit       = mUi->cycleTimeLineEdit;
+    mInputModelComboBox = mUi->inputModelComboBox;
+    mCycleEnableCheckBox = mUi->cycleEnableCheckBox;
+    mCycleTimeLineEdit = mUi->cycleTimeLineEdit;
     mSaveInputDataPushButton = mUi->saveInputDataPushButton;
-    mReadinFilePushButton    = mUi->readinFilePushButton;
-    mAddCRCCheckBox          = mUi->addCRCCheckBox;
-    mCrcSettingsPushButton   = mUi->crcSettingsPushButton;
-    mClearInputPushButton    = mUi->clearInputPushButton;
-    mSendPushButton          = mUi->sendPushButton;
-    mInputTextEdit           = mUi->inputTextEdit;
+    mReadinFilePushButton = mUi->readinFilePushButton;
+    mAddCRCCheckBox = mUi->addCRCCheckBox;
+    mCrcSettingsPushButton = mUi->crcSettingsPushButton;
+    mClearInputPushButton = mUi->clearInputPushButton;
+    mSendPushButton = mUi->sendPushButton;
+    mInputTextEdit = mUi->inputTextEdit;
     mCrcParameterModelsComboBox = mUi->crcParameterModelsComboBox;
-    mCrcLabel                = mUi->crcLabel;
-    mPresetPushButton        = mUi->presetPushButton;
-    mSendPresetPushButton    = mUi->sendPresetPushButton;
+    mCrcLabel = mUi->crcLabel;
+    mPresetPushButton = mUi->presetPushButton;
+    mSendPresetPushButton = mUi->sendPresetPushButton;
 
     // Output settings
-    mRxLabel                 = mUi->rxLabel;
-    mTxLabel                 = mUi->txLabel;
+    mRxLabel = mUi->rxLabel;
+    mTxLabel = mUi->txLabel;
     mOutputTextFormatComboBox= mUi->outputTextFormatComboBox;
-    mAutoWrapCheckBox        = mUi->autoWrapCheckBox;
-    mShowDateCheckBox        = mUi->showDateCheckBox;
-    mShowTimeCheckBox        = mUi->showTimeCheckBox;
-    mShowMsCheckBox          = mUi->showMsCheckBox;
-    mShowRxDataCheckBox      = mUi->showRxDataCheckBox;
-    mShowTxDataCheckBox      = mUi->showTxDataCheckBox;
+    mAutoWrapCheckBox = mUi->autoWrapCheckBox;
+    mShowDateCheckBox = mUi->showDateCheckBox;
+    mShowTimeCheckBox = mUi->showTimeCheckBox;
+    mShowMsCheckBox = mUi->showMsCheckBox;
+    mShowRxDataCheckBox = mUi->showRxDataCheckBox;
+    mShowTxDataCheckBox = mUi->showTxDataCheckBox;
     mSaveOutputToFileCheckBox = mUi->saveOutputToFileCheckBox;
-    mOutputFilePathPushButton= mUi->outputFilePathPushButton;
-    mClearOutputPushButton   = mUi->clearOutputPushButton;
-    mSaveOutputPushButton    = mUi->saveOutputPushButton;
-    mOutputTextBroswer       = mUi->outputTextBroswer;
+    mOutputFilePathPushButton = mUi->outputFilePathPushButton;
+    mClearOutputPushButton = mUi->clearOutputPushButton;
+    mSaveOutputPushButton = mUi->saveOutputPushButton;
+    mOutputTextBroswer = mUi->outputTextBroswer;
 
     // Statistics
-    mRxSpeedLabel            = mUi->rxSpeedLabel;
-    mTxSpeedLabel            = mUi->txSpeedLabel;
-    mRxFramesLabel           = mUi->rxFramesLabel;
-    mTxFramesLabel           = mUi->txFramesLabel;
-    mRxBytesLabel            = mUi->rxBytesLabel;
-    mTxBytesLabel            = mUi->txBytesLabel;
-    mResetTxCountPushButton  = mUi->resetTxCountPushButton;
-    mResetRxCountPushButton  = mUi->resetRxCountPushButton;
+    mRxSpeedLabel = mUi->rxSpeedLabel;
+    mTxSpeedLabel = mUi->txSpeedLabel;
+    mRxFramesLabel = mUi->rxFramesLabel;
+    mTxFramesLabel = mUi->txFramesLabel;
+    mRxBytesLabel = mUi->rxBytesLabel;
+    mTxBytesLabel = mUi->txBytesLabel;
+    mResetTxCountPushButton = mUi->resetTxCountPushButton;
+    mResetRxCountPushButton = mUi->resetRxCountPushButton;
 
     // Other settings
     mTransmissionSettingPushButton = mUi->transmissionSettingPushButton;
     mAnalyzerPushButton = mUi->analyzerPushButton;
     mAutoResponseSettingPushButton = mUi->autoResponseSettingPushButton;
-    mTimingSendingPushButton       = mUi->timingSendingPushButton;
-    mHighlightSettingPushButton    = mUi->highlightSettingPushButton;
-    mMoreSettingsPushButton        = mUi->moreSettingsPushButton;
+    mTimingSendingPushButton = mUi->timingSendingPushButton;
+    mHighlightSettingPushButton = mUi->highlightSettingPushButton;
+    mMoreSettingsPushButton = mUi->moreSettingsPushButton;
 
     // Charts
     mDataVisualizationPushButton = mUi->dataVisualizationPushButton;

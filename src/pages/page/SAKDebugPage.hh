@@ -21,6 +21,7 @@
 #include <QDateTime>
 #include <QMetaEnum>
 #include <QTextEdit>
+#include <QSettings>
 #include <QListWidget>
 #include <QGridLayout>
 #include <QPushButton>
@@ -84,6 +85,12 @@ public:
      * @return Type of debugging page
      */
     quint32 pageType();
+
+    /**
+     * @brief settingsInstance: Get the settings instance
+     * @return Settings instance
+     */
+    QSettings *settingsInstance();
 
     /**
      * @brief otherController: Get SAKDebugPageOtherController instance pointer
