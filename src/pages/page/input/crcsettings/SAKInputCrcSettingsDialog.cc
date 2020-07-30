@@ -26,7 +26,7 @@ SAKInputCrcSettingsDialog::SAKInputCrcSettingsDialog(QWidget *parent)
 
     mParametersContext.bigEndianCRC = mBigEndianCheckBox->isChecked();
     mParametersContext.startByte = mStartSpinBox->value();
-    mParametersContext.endByte = mStartSpinBox->value();
+    mParametersContext.endByte = mEndSpinBox->value();
 
     mIsInitializing = false;
 }
@@ -50,6 +50,7 @@ SAKInputCrcSettingsDialog::ParameterContext SAKInputCrcSettingsDialog::parameter
 void SAKInputCrcSettingsDialog::setBigEndian(bool bigEndian)
 {
     mBigEndianCheckBox->setChecked(bigEndian);
+    mParametersContext.bigEndianCRC = bigEndian;
 }
 
 void SAKInputCrcSettingsDialog::setStartByte(int startByte)
