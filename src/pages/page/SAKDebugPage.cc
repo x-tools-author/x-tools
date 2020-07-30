@@ -63,7 +63,7 @@ SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
 #if 0
     resize(800, 600);
 #endif
-    mClearInfoTimer.setInterval(8*1000);
+    mClearInfoTimer.setInterval(SAK_CLEAR_MESSAGE_INTERVAL);
     connect(&mClearInfoTimer, &QTimer::timeout, this, &SAKDebugPage::cleanInfo);
 
     readinSettings();
