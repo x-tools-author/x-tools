@@ -233,17 +233,7 @@ void SAKDebugPage::initSettingKey()
 void SAKDebugPage::initSettingString()
 {
     initSettingKey();
-    initInputSettingString();
     initOutputSettingString();
-}
-
-void SAKDebugPage::initInputSettingString()
-{
-    mSettingStringInputModel        = QString("%1/inputModel").arg(mSettingKey);
-    mSettingStringCycleTime         = QString("%1/cycleTime").arg(mSettingKey);
-    mSettingStringAddCRC            = QString("%1/addCRC").arg(mSettingKey);
-    mSettingStringBigeEndian        = QString("%1/bigeEndian").arg(mSettingKey);
-    mSettingStringcrcParameterModel = QString("%1/parameterModel").arg(mSettingKey);
 }
 
 void SAKDebugPage::initOutputSettingString()
@@ -259,35 +249,7 @@ void SAKDebugPage::initOutputSettingString()
 
 void SAKDebugPage::readinSettings()
 {
-    readinInputSettings();
     readinOutputSettings();
-}
-
-void SAKDebugPage::readinInputSettings()
-{
-    QVariant var = SAKSettings::instance()->value(mSettingStringInputModel);
-    int index = 0;
-    if (var.isNull()){
-        index = 4;
-    }else{
-        index = var.toInt();
-    }
-    mInputModelComboBox->setCurrentIndex(index);
-
-    var = SAKSettings::instance()->value(mSettingStringCycleTime);
-    QString cycleTime;
-    if (var.isNull()){
-        cycleTime = QString("1000");
-    }else{
-        cycleTime = var.toString();
-    }
-    mCycleTimeLineEdit->setText(cycleTime);
-
-    bool value = SAKSettings::instance()->value(mSettingStringAddCRC).toBool();
-    mAddCRCCheckBox->setChecked(value);
-
-    index = SAKSettings::instance()->value(mSettingStringcrcParameterModel).toInt();
-    mCrcParameterModelsComboBox->setCurrentIndex(index);
 }
 
 void SAKDebugPage::readinOutputSettings()
@@ -415,39 +377,6 @@ void SAKDebugPage::on_refreshPushButton_clicked()
 void SAKDebugPage::on_switchPushButton_clicked()
 {
     openOrColoseDevice();
-}
-
-void SAKDebugPage::on_inputModelComboBox_currentIndexChanged(int index)
-{
-    if (!mIsInitializing){
-        SAKSettings::instance()->setValue(mSettingStringInputModel, QVariant::fromValue(index));
-    }
-}
-
-void SAKDebugPage::on_cycleTimeLineEdit_textChanged(const QString &text)
-{
-    if (!mIsInitializing){
-        SAKSettings::instance()->setValue(mSettingStringCycleTime, QVariant::fromValue(text));
-    }
-}
-
-void SAKDebugPage::on_addCRCCheckBox_clicked()
-{
-    if (!mIsInitializing){
-        SAKSettings::instance()->setValue(mSettingStringAddCRC, QVariant::fromValue(mAddCRCCheckBox->isChecked()));
-    }
-}
-
-void SAKDebugPage::on_crcSettingsPushButton_clicked()
-{
-    mInputController->showCrcSettingsDialog();
-}
-
-void SAKDebugPage::on_crcParameterModelsComboBox_currentIndexChanged(int index)
-{
-    if (!mIsInitializing){
-        SAKSettings::instance()->setValue(mSettingStringcrcParameterModel, QVariant::fromValue(index));
-    }
 }
 
 void SAKDebugPage::on_outputTextFormatComboBox_currentIndexChanged(int index)

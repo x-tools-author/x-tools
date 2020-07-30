@@ -178,11 +178,9 @@ private:
 private:
     void initSettingKey();
     void initSettingString();
-    void initInputSettingString();
     void initOutputSettingString();
 
     void readinSettings();
-    void readinInputSettings();
     void readinOutputSettings();
 
     void cleanInfo();
@@ -240,18 +238,6 @@ protected:
     QListWidget *mInputDataItemListWidget;
     QPushButton *mPresetPushButton;
     QPushButton *mSendPresetPushButton;
-
-    QString mSettingStringInputModel;
-    QString mSettingStringCycleTime;
-    QString mSettingStringAddCRC;
-    QString mSettingStringBigeEndian;
-    QString mSettingStringcrcParameterModel;
-private slots:
-    void on_inputModelComboBox_currentIndexChanged(int index);
-    void on_cycleTimeLineEdit_textChanged(const QString &text);
-    void on_addCRCCheckBox_clicked();
-    void on_crcSettingsPushButton_clicked();
-    void on_crcParameterModelsComboBox_currentIndexChanged(int index);
 
     /*************************************************************************/
     // Message output module
