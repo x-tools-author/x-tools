@@ -95,6 +95,7 @@ SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugPage *debugPage
         mSettings->setValue(mSettingStringCrcEndByte, QVariant::fromValue(mInputParameters.endByte));
     });
 
+    // Disable some components before device is opened
     mSendPushButton->setEnabled(false);
     mSendPresetPushButton->setEnabled(false);
     mCycleEnableCheckBox->setEnabled(false);
