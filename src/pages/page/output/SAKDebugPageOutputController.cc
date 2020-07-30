@@ -14,7 +14,6 @@
 #include <QFileDialog>
 
 #include "SAKGlobal.hh"
-#include "SAKSettings.hh"
 #include "SAKDebugPage.hh"
 #include "SAKDataStruct.hh"
 #include "SAKOutputSave2FileDialog.hh"
