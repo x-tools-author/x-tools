@@ -58,9 +58,7 @@ SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
     mChartsController= new SAKDebugPageChartsController(this);
 #endif
 
-#if 0
-    resize(800, 600);
-#endif
+    // Initializing the timer.
     mClearInfoTimer.setInterval(SAK_CLEAR_MESSAGE_INTERVAL);
     connect(&mClearInfoTimer, &QTimer::timeout, this, &SAKDebugPage::cleanInfo);
     mIsInitializing = false;
