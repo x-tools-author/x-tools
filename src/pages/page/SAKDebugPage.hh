@@ -155,7 +155,7 @@ protected:
 private:
     SAKDebugPageDevice *mDevice;
     bool mIsInitializing;
-    int mDebugPageType = -1;
+    int mDebugPageType;
     QString mSettingKey;
     QTimer mClearInfoTimer;
     QMutex mReadWriteParametersMutex;
