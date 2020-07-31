@@ -15,7 +15,7 @@
 
 QT_CHARTS_USE_NAMESPACE
 
-/// @brief 图表视图(对Qt官方示例的重构)
+/// @brief Chart viewe
 class SAKChartsXYSerialChartView : public QChartView
 {
 public:

@@ -27,16 +27,16 @@ SAKChartsXYSerialEditDialog::SAKChartsXYSerialEditDialog(QWidget *parent)
     mChartNameLineEdit = mUi->chartNameLineEdit;
     mChartColorPushButton = mUi->chartColorPushButton;
 
-    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeInt8, tr("有符号8位整数"));
-    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeUint8, tr("无符号8位整数"));
-    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeInt16, tr("有符号16位整数"));
-    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeUint16, tr("无符号16位整数"));
-    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeInt32, tr("有符号32位整数"));
-    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeUint32, tr("无符号32位整数"));
-    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeInt64, tr("有符号64位整数"));
-    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeUint64, tr("无符号64位整数"));
-    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeFloat32, tr("有符号32位浮点数"));
-    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeFloat64, tr("有符号64位浮点数"));
+    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeInt8, tr("int8_t"));
+    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeUint8, tr("uint8_t"));
+    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeInt16, tr("int16_t"));
+    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeUint16, tr("uint16_t"));
+    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeInt32, tr("int32_t"));
+    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeUint32, tr("uint32_t"));
+    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeInt64, tr("int64_t"));
+    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeUint64, tr("uint64_t"));
+    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeFloat32, tr("float"));
+    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeFloat64, tr("double"));
 
     mLengthOfDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeInt8, 1);
     mLengthOfDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeUint8, 1);
@@ -49,21 +49,20 @@ SAKChartsXYSerialEditDialog::SAKChartsXYSerialEditDialog(QWidget *parent)
     mLengthOfDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeFloat32, 4);
     mLengthOfDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeFloat64, 8);
 
-    /// @brief 初始化数据类型选择框
+    // Initializing data tyep combobox
     QMapIterator<quint32, QString> dataTypeMapInterator(mDataTypeMap);
     while (dataTypeMapInterator.hasNext()) {
         dataTypeMapInterator.next();
         mDataTypeComboBox->addItem(dataTypeMapInterator.value(), QVariant::fromValue(dataTypeMapInterator.key()));
     }
 
-    /// @brief 初始化图表类型选择框
-    mChartTypeComboBox->addItem(tr("曲线图"), ParametersContext::ChartParametersContext::ChartTypeLine);
-    mChartTypeComboBox->addItem(tr("散点图"), ParametersContext::ChartParametersContext::ChartTypeScatter);
+    // Two types of chart
+    mChartTypeComboBox->addItem(tr("Line"), ParametersContext::ChartParametersContext::ChartTypeLine);
+    mChartTypeComboBox->addItem(tr("Scatter"), ParametersContext::ChartParametersContext::ChartTypeScatter);
 
-    /// @brief 设置该窗口为模态弹窗
     setModal(true);
 
-    /// @brief 初始化参数
+    // Initializing parameters
     mParametersContext.extractParameters.dataType = ParametersContext::ExtractParametersContext::DataType(mDataTypeComboBox->currentData().toInt());
     mParametersContext.extractParameters.startIndex = mStartByteSpinBox->value();
     mParametersContext.extractParameters.isBigEndian = mBigEndianCheckBox->isChecked();
@@ -87,7 +86,7 @@ SAKChartsXYSerialEditDialog::ParametersContext SAKChartsXYSerialEditDialog::para
 
 void SAKChartsXYSerialEditDialog::setParameters(ParametersContext ctx)
 {
-    /// @brief 更新ui
+    // Update ui
     for (int i = 0; i < mDataTypeComboBox->count(); i++){
         if (mDataTypeComboBox->itemData(i).toInt() == ctx.extractParameters.dataType){
             mDataTypeComboBox->setCurrentIndex(i);
@@ -104,7 +103,7 @@ void SAKChartsXYSerialEditDialog::setParameters(ParametersContext ctx)
     mChartNameLineEdit->setText(ctx.chartParameters.chartName);
     mChartColorPushButton->setStyleSheet(QString("QPushButton{background:%1}").arg(ctx.chartParameters.chartColor.name(QColor::HexRgb)));
 
-    /// @brief 更新参数（更新ui的同时会更新部分参数，但不是全部）
+    // Update parameters(not all)
     mParametersContext = ctx;
 }
 
@@ -143,12 +142,12 @@ void SAKChartsXYSerialEditDialog::on_chartNameLineEdit_textChanged(const QString
 
 void SAKChartsXYSerialEditDialog::on_chartColorPushButton_clicked()
 {
-    QColor color = QColorDialog::getColor(Qt::white, this, tr("颜色设置"));
+    QColor color = QColorDialog::getColor(Qt::white, this, tr("Color settings"));
     if (!color.isValid()){
         return;
     }
 
-    /// @brief "#000000"
+    // "#000000"
     QString hexRgb = color.name(QColor::HexRgb);
     mParametersContext.chartParameters.chartColor = color;
     mChartColorPushButton->setStyleSheet(QString("QPushButton{background:%1}").arg(hexRgb));

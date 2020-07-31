@@ -22,7 +22,7 @@ namespace Ui {
     class SAKChartsXYSerialChartViewSettingsDialog;
 };
 
-/// @brief 图标参数设置类
+/// @brief Charts parameters settings
 class SAKChartsXYSerialChartViewSettingsDialog:public QDialog
 {
     Q_OBJECT
