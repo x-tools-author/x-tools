@@ -16,11 +16,6 @@
 
 int main(int argc, char *argv[])
 {
-#ifdef Q_OS_ANDROID
-    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling, false);
-    QApplication::setAttribute(Qt::AA_Use96Dpi, true);
-#endif
-
     int exitCode = 0;
     /// @brief 当退出代码与SAK_REBOOT_CODE相等时，重新初始化软件（相当于重启）
     do {
