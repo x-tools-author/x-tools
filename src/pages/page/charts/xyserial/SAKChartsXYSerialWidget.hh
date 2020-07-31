@@ -32,7 +32,7 @@ namespace Ui {
 class SAKChartsXYSerialChartView;
 class SAKChartsXYSerialEditDialog;
 class SAKChartsXYSerialChartViewSettingsDialog;
-/// @brief 散点图及曲线图显示类
+// Charts
 class SAKChartsXYSerialWidget:public QWidget
 {
     Q_OBJECT
