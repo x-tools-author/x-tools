@@ -8,6 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  */
 #include <QDir>
+#include <QMap>
 #include <QFile>
 #include <QDebug>
 #include <QMetaEnum>
@@ -16,8 +17,9 @@
 #endif
 #include <QHostAddress>
 #include <QApplication>
-#include <QStandardPaths>
+#include <QMapIterator>
 #include <QStandardItem>
+#include <QStandardPaths>
 #ifdef SAK_IMPORT_COM_MODULE
 #include <QSerialPortInfo>
 #endif
@@ -293,16 +295,30 @@ void SAKGlobal::initInputTextFormatComboBox(QComboBox *comboBox)
 
 void SAKGlobal::initOutputTextFormatComboBox(QComboBox *comboBox)
 {
-    comboBox->addItem(tr("二进制"), SAKDataStruct::OutputFormatBin);
-    comboBox->addItem(tr("八进制"), SAKDataStruct::OutputFormatOct);
-    comboBox->addItem(tr("十进制"), SAKDataStruct::OutputFormatDec);
-    comboBox->addItem(tr("十六进制"), SAKDataStruct::OutputFormatHex);
-    comboBox->addItem(QString("ASCII"), SAKDataStruct::OutputFormatAscii);
-    comboBox->addItem(QString("UTF8"), SAKDataStruct::OutputFormatUtf8);
-    comboBox->addItem(QString("UTF16"), SAKDataStruct::OutputFormatUtf16);
-    comboBox->addItem(QString("UCS4"), SAKDataStruct::OutputFormatUcs4);
-    comboBox->addItem(tr("宽字符"), SAKDataStruct::OutputFormatStdwstring);
-    comboBox->addItem(tr("系统编码"), SAKDataStruct::OutputFormatLocal);
+    if (comboBox){
+        comboBox->clear();
+
+        QMap<int, QString> formatMap;
+        formatMap.insert(SAKDataStruct::OutputFormatBin, tr("Bin"));
+        formatMap.insert(SAKDataStruct::OutputFormatDec, tr("Dec"));
+        formatMap.insert(SAKDataStruct::OutputFormatHex, tr("Hex"));
+        formatMap.insert(SAKDataStruct::OutputFormatAscii, tr("Ascii"));
+        formatMap.insert(SAKDataStruct::OutputFormatUtf8, tr("Utf8"));
+        formatMap.insert(SAKDataStruct::OutputFormatUtf16, tr("Utf16"));
+        formatMap.insert(SAKDataStruct::OutputFormatUcs4, tr("Ucs4"));
+        formatMap.insert(SAKDataStruct::OutputFormatStdwstring, tr("Standard width char"));
+        formatMap.insert(SAKDataStruct::OutputFormatLocal, tr("System encoding"));
+
+        QMapIterator<int, QString> mapIterator(formatMap);
+        QStandardItemModel *itemModel = new QStandardItemModel(comboBox);
+        while (mapIterator.hasNext()) {
+            mapIterator.next();
+            QStandardItem *item = new QStandardItem(mapIterator.value());
+            item->setToolTip(mapIterator.value());
+            itemModel->appendRow(item);
+        }
+        comboBox->setModel(itemModel);
+    }
 }
 
 void SAKGlobal::initCRCComboBox(QComboBox *comboBox)
