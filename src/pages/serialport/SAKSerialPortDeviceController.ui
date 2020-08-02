@@ -38,7 +38,7 @@
       </sizepolicy>
      </property>
      <property name="text">
-      <string>自定义波特率</string>
+      <string>Custom baud rate</string>
      </property>
     </widget>
    </item>
@@ -51,7 +51,7 @@
       </sizepolicy>
      </property>
      <property name="text">
-      <string>停止位</string>
+      <string>Stop bits</string>
      </property>
     </widget>
    </item>
@@ -83,7 +83,7 @@
       </sizepolicy>
      </property>
      <property name="text">
-      <string>波特率</string>
+      <string>Baud rate</string>
      </property>
     </widget>
    </item>
@@ -96,7 +96,7 @@
       </sizepolicy>
      </property>
      <property name="text">
-      <string>数据位</string>
+      <string>Data bits</string>
      </property>
     </widget>
    </item>
@@ -109,14 +109,14 @@
       </sizepolicy>
      </property>
      <property name="text">
-      <string>校验位</string>
+      <string>Parity</string>
      </property>
     </widget>
    </item>
    <item row="0" column="0" colspan="2">
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>串口设备选择</string>
+      <string>Devices list</string>
      </property>
     </widget>
    </item>
@@ -136,7 +136,7 @@
    <item row="7" column="0">
     <widget class="QLabel" name="label_6">
      <property name="text">
-      <string>流控位</string>
+      <string>Flow control</string>
      </property>
     </widget>
    </item>
