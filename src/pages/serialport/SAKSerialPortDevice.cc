@@ -50,13 +50,16 @@ void SAKSerialPortDevice::run()
     if (serialPort->open(QSerialPort::ReadWrite)){
         emit deviceStateChanged(true);
         while (true){
-            /// @brief 读取数据
+            // The operation must be done, if not, data can not be read.
+            eventLoop.processEvents();
+
+            // Read data
             QByteArray bytes = serialPort->readAll();
             if (bytes.length()){
                 emit bytesRead(bytes);
             }
 
-            /// @brief 写入数据
+            // Write data
             while (true){
                 QByteArray var = takeWaitingForWrittingBytes();
                 if (var.length()){
@@ -71,10 +74,7 @@ void SAKSerialPortDevice::run()
                 }
             }
 
-            /// @brief 处理线程事件
-            eventLoop.processEvents();
-
-            /// @brief 线程睡眠
+            // Do something make cpu happy
             if (isInterruptionRequested()){
                 break;
             }else{
