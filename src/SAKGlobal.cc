@@ -85,14 +85,14 @@ QString SAKGlobal::debugPageNameFromType(int type)
 {
     QString name;
     switch (type) {
-    case SAKDataStruct::DebugPageTypeUDP:
-        name = tr("UDP调试");
+    case SAKDataStruct::DebugPageTypeUdpClient:
+        name = tr("Udp client");
         break;
     case SAKDataStruct::DebugPageTypeTCPClient:
-        name = tr("TCP客户端");
+        name = tr("Tcp client");
         break;
     case SAKDataStruct::DebugPageTypeTCPServer:
-        name = tr("TCP服务器");
+        name = tr("Tcp server");
         break;
 #ifdef SAK_IMPORT_SCTP_MODULE
     case SAKDataStruct::DebugPageTypeSCTPClient:
@@ -104,15 +104,15 @@ QString SAKGlobal::debugPageNameFromType(int type)
 #endif
 #ifdef SAK_IMPORT_WEBSOCKET_MODULE
     case SAKDataStruct::DebugPageTypeWebSocketClient:
-        name = tr("WebSocket客户端");
+        name = tr("WebSocket client");
         break;
     case SAKDataStruct::DebugPageTypeWebSocketServer:
-        name = tr("WebSocket服务器");
+        name = tr("WebSocket server");
         break;
 #endif
 #ifdef SAK_IMPORT_COM_MODULE
     case SAKDataStruct::DebugPageTypeCOM:
-        name = tr("串口调试");
+        name = tr("Serial port");
         break;
 #endif
 #ifdef SAK_IMPORT_HID_MODULE
