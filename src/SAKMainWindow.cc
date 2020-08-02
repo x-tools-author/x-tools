@@ -491,7 +491,7 @@ QWidget *SAKMainWindow::debugPageFromType(int type)
 {
     QWidget *widget = Q_NULLPTR;
     switch (type) {
-    case SAKDataStruct::DebugPageTypeUDP:
+    case SAKDataStruct::DebugPageTypeUdpClient:
         widget = new SAKUdpDebugPage;
         break;
     case SAKDataStruct::DebugPageTypeTCPClient:

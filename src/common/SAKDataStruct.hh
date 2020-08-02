@@ -38,7 +38,7 @@ public:
 #ifdef SAK_IMPORT_HID_MODULE
         DebugPageTypeHID,
 #endif
-        DebugPageTypeUDP,
+        DebugPageTypeUdpClient,
 #ifdef SAK_IMPORT_USB_MODULE
         DebugPageTypeUSB,
 #endif
