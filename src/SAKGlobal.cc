@@ -96,10 +96,10 @@ QString SAKGlobal::debugPageNameFromType(int type)
         break;
 #ifdef SAK_IMPORT_SCTP_MODULE
     case SAKDataStruct::DebugPageTypeSCTPClient:
-        name = tr("SCTP客户端");
+        name = tr("Sctp client");
         break;
     case SAKDataStruct::DebugPageTypeSCTPServer:
-        name = tr("SCTP服务器");
+        name = tr("Sctp server");
         break;
 #endif
 #ifdef SAK_IMPORT_WEBSOCKET_MODULE
