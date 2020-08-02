@@ -50,11 +50,6 @@ void SAKSerialPortDevice::run()
     if (serialPort->open(QSerialPort::ReadWrite)){
         emit deviceStateChanged(true);
         while (true){
-            /// @brief 优雅地退出线程
-            if (isInterruptionRequested()){
-                break;
-            }
-
             /// @brief 读取数据
             QByteArray bytes = serialPort->readAll();
             if (bytes.length()){
@@ -80,9 +75,13 @@ void SAKSerialPortDevice::run()
             eventLoop.processEvents();
 
             /// @brief 线程睡眠
-            mThreadMutex.lock();
-            mThreadWaitCondition.wait(&mThreadMutex, SAK_DEVICE_THREAD_SLEEP_INTERVAL);
-            mThreadMutex.unlock();
+            if (isInterruptionRequested()){
+                break;
+            }else{
+                mThreadMutex.lock();
+                mThreadWaitCondition.wait(&mThreadMutex, SAK_DEVICE_THREAD_SLEEP_INTERVAL);
+                mThreadMutex.unlock();
+            }
         }
 
         /// @brief 关闭清理串口

@@ -21,8 +21,8 @@ public:
     ~SAKSerialPortDebugPage();
 
     /**
-     * @brief controllerInstance 获取设备控制面板实例
-     * @return 设备控制面板实例
+     * @brief controllerInstance: Get the controller instance
+     * @return Controller instance
      */
     SAKSerialPortDeviceController *controllerInstance();
 protected:
