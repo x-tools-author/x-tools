@@ -17,10 +17,12 @@
 #include <QHostAddress>
 #include <QApplication>
 #include <QStandardPaths>
+#include <QStandardItem>
 #ifdef SAK_IMPORT_COM_MODULE
 #include <QSerialPortInfo>
 #endif
 #include <QNetworkInterface>
+#include <QStandardItemModel>
 
 #include "SAKGlobal.hh"
 #include "SAKDataStruct.hh"
@@ -308,9 +310,16 @@ void SAKGlobal::initCRCComboBox(QComboBox *comboBox)
     if (comboBox){
         comboBox->clear();
         QMetaEnum enums = QMetaEnum::fromType<SAKCRCInterface::CRCModel>();
+        QStandardItemModel *itemModel = new QStandardItemModel(comboBox);
         for (int i = 0; i < enums.keyCount(); i++){
-            comboBox->addItem(QString(enums.key(i)), QVariant::fromValue(enums.value(i)));
+            const QString key = enums.key(i);
+            // There may be a bug, I do not know whether will the itemModel take ownership of the item
+            // if not, a memory leak will occur after comboBox is destroyed.
+            QStandardItem *item = new QStandardItem(key);
+            item->setToolTip(key);
+            itemModel->appendRow(item);
         }
+        comboBox->setModel(itemModel);
     }
 }
 
