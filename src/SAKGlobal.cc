@@ -281,15 +281,25 @@ void SAKGlobal::initInputTextFormatComboBox(QComboBox *comboBox)
     if (comboBox){
         comboBox->clear();
 
-        comboBox->addItem(tr("二进制"), SAKDataStruct::InputFormatBin);
-        comboBox->addItem(tr("八进制"), SAKDataStruct::InputFormatOct);
-        comboBox->addItem(tr("十进制"), SAKDataStruct::InputFormatDec);
-        comboBox->addItem(tr("十六进制"), SAKDataStruct::InputFormatHex);
-        comboBox->addItem(QString("ASCII"), SAKDataStruct::InputFormatAscii);
-        comboBox->addItem(QString("UTF8"), SAKDataStruct::InputFormatUtf8);
-        comboBox->addItem(tr("系统编码"), SAKDataStruct::InputFormatLocal);
+        QMap<int, QString> formatMap;
+        formatMap.insert(SAKDataStruct::InputFormatBin, tr("Bin"));
+        formatMap.insert(SAKDataStruct::InputFormatOct, tr("Dec"));
+        formatMap.insert(SAKDataStruct::InputFormatDec, tr("Hex"));
+        formatMap.insert(SAKDataStruct::InputFormatHex, tr("Ascii"));
+        formatMap.insert(SAKDataStruct::InputFormatAscii, tr("Utf8"));
+        formatMap.insert(SAKDataStruct::InputFormatUtf8, tr("Utf16"));
+        formatMap.insert(SAKDataStruct::InputFormatLocal, tr("System"));
 
-        comboBox->setCurrentIndex(4);
+        QMapIterator<int, QString> mapIterator(formatMap);
+        QStandardItemModel *itemModel = new QStandardItemModel(comboBox);
+        while (mapIterator.hasNext()) {
+            mapIterator.next();
+            QStandardItem *item = new QStandardItem(mapIterator.value());
+            item->setToolTip(mapIterator.value());
+            itemModel->appendRow(item);
+        }
+        comboBox->setModel(itemModel);
+        comboBox->setCurrentText(formatMap.value(SAKDataStruct::InputFormatLocal));
     }
 }
 
@@ -306,8 +316,8 @@ void SAKGlobal::initOutputTextFormatComboBox(QComboBox *comboBox)
         formatMap.insert(SAKDataStruct::OutputFormatUtf8, tr("Utf8"));
         formatMap.insert(SAKDataStruct::OutputFormatUtf16, tr("Utf16"));
         formatMap.insert(SAKDataStruct::OutputFormatUcs4, tr("Ucs4"));
-        formatMap.insert(SAKDataStruct::OutputFormatStdwstring, tr("Standard width char"));
-        formatMap.insert(SAKDataStruct::OutputFormatLocal, tr("System encoding"));
+        formatMap.insert(SAKDataStruct::OutputFormatStdwstring, tr("Wstring"));
+        formatMap.insert(SAKDataStruct::OutputFormatLocal, tr("System"));
 
         QMapIterator<int, QString> mapIterator(formatMap);
         QStandardItemModel *itemModel = new QStandardItemModel(comboBox);
@@ -318,6 +328,7 @@ void SAKGlobal::initOutputTextFormatComboBox(QComboBox *comboBox)
             itemModel->appendRow(item);
         }
         comboBox->setModel(itemModel);
+        comboBox->setCurrentText(formatMap.value(SAKDataStruct::OutputFormatLocal));
     }
 }
 
