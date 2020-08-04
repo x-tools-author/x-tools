@@ -84,7 +84,7 @@ void SAKSerialPortDevice::run()
             }
         }
 
-        /// @brief 关闭清理串口
+        // Free memery
         serialPort->clear();
         serialPort->close();
         delete serialPort;
