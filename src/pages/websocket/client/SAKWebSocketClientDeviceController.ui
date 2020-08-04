@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>204</width>
-    <height>64</height>
+    <height>68</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -36,21 +36,21 @@
    <item row="1" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>地址</string>
+      <string>Server url</string>
      </property>
     </widget>
    </item>
    <item row="0" column="0" colspan="2">
     <widget class="QLabel" name="label_6">
      <property name="text">
-      <string>服务器主机信息设置</string>
+      <string>Websocket client information</string>
      </property>
     </widget>
    </item>
    <item row="2" column="0">
     <widget class="QLabel" name="label_2">
      <property name="text">
-      <string>流控</string>
+      <string>Flow control</string>
      </property>
     </widget>
    </item>

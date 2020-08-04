@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>121</width>
+    <width>181</width>
     <height>219</height>
    </rect>
   </property>
@@ -29,7 +29,7 @@
    <item row="7" column="0">
     <widget class="QLabel" name="label_2">
      <property name="text">
-      <string>端口</string>
+      <string>Port</string>
      </property>
     </widget>
    </item>
@@ -43,21 +43,21 @@
    <item row="3" column="0" colspan="2">
     <widget class="QCheckBox" name="enableLocalSettingCheckBox">
      <property name="text">
-      <string>指定本地主机信息</string>
+      <string>Specify client information</string>
      </property>
     </widget>
    </item>
    <item row="1" column="0">
     <widget class="QLabel" name="label_3">
      <property name="text">
-      <string>主机</string>
+      <string>Address</string>
      </property>
     </widget>
    </item>
    <item row="9" column="1">
     <widget class="QPushButton" name="advanceUdpPushButton">
      <property name="text">
-      <string>高级设置</string>
+      <string>AdvanceSettings</string>
      </property>
     </widget>
    </item>
@@ -71,7 +71,7 @@
    <item row="0" column="0" colspan="2">
     <widget class="QLabel" name="label_5">
      <property name="text">
-      <string>本地主机信息设置</string>
+      <string>Udp client information</string>
      </property>
     </widget>
    </item>
@@ -81,14 +81,14 @@
    <item row="5" column="0" colspan="2">
     <widget class="QLabel" name="label_6">
      <property name="text">
-      <string>目标主机信息设置</string>
+      <string>Udp server inforamtion</string>
      </property>
     </widget>
    </item>
    <item row="6" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>主机</string>
+      <string>Address</string>
      </property>
     </widget>
    </item>
@@ -109,14 +109,14 @@
    <item row="2" column="0">
     <widget class="QLabel" name="label_4">
      <property name="text">
-      <string>端口</string>
+      <string>Port</string>
      </property>
     </widget>
    </item>
    <item row="8" column="0" colspan="2">
     <widget class="QLabel" name="label_7">
      <property name="text">
-      <string>高级设置</string>
+      <string>Advance settings</string>
      </property>
     </widget>
    </item>
