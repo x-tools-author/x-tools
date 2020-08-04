@@ -7,12 +7,21 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
+#include <QEventLoop>
 #include "SAKDebugPageDevice.hh"
 
 SAKDebugPageDevice::SAKDebugPageDevice(QObject *parent)
     :QThread(parent)
 {
     // nothing to do
+}
+
+SAKDebugPageDevice::~SAKDebugPageDevice()
+{
+    requestInterruption();
+    mThreadWaitCondition.wakeAll();
+    exit();
+    wait();
 }
 
 void SAKDebugPageDevice::wakeMe()

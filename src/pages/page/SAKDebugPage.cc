@@ -67,10 +67,6 @@ SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
 SAKDebugPage::~SAKDebugPage()
 {
     if (mDevice){
-        mDevice->requestInterruption();
-        mDevice->wakeMe();
-        mDevice->exit();
-        mDevice->wait();
         delete mDevice;
         mDevice = Q_NULLPTR;
     }

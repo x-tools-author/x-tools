@@ -19,6 +19,7 @@ class SAKDebugPageDevice:public QThread
     Q_OBJECT
 public:
     SAKDebugPageDevice(QObject *parent = Q_NULLPTR);
+    ~SAKDebugPageDevice();
 
     /**
      * @brief wakeMe: wake the thread
