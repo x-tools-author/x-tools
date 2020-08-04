@@ -113,9 +113,10 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
 
     centralWidget->layout()->setContentsMargins(6, 6, 6, 6);
 #endif
-    QString title = QString(tr("Swiss Army Knife base on Qt") + QString(" "));
+    QString title = QString(tr("Qt Swiss Army Knife") + QString("("));
     title.append(QString("v") = SAK::instance()->version() + QString(" "));
     title.append(tr("QQ group") + " " + SAK::instance()->qqGroupNumber());
+    title.append(")");
     setWindowTitle(title);
 
     mTabWidget->setTabsClosable(true);
