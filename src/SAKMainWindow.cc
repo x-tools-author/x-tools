@@ -113,9 +113,9 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
 
     centralWidget->layout()->setContentsMargins(6, 6, 6, 6);
 #endif
-    QString title = QString(tr("瑞士军刀--开发调试工具集") + QString(" "));
+    QString title = QString(tr("Swiss Army Knife base on Qt") + QString(" "));
     title.append(QString("v") = SAK::instance()->version() + QString(" "));
-    title.append(tr("用户交流QQ群") + " " + SAK::instance()->qqGroupNumber());
+    title.append(tr("QQ group") + " " + SAK::instance()->qqGroupNumber());
     setWindowTitle(title);
 
     mTabWidget->setTabsClosable(true);
@@ -203,10 +203,10 @@ void SAKMainWindow::initMenuBar()
 
 void SAKMainWindow::initFileMenu()
 {
-    QMenu *fileMenu = new QMenu(tr("文件"), this);
+    QMenu *fileMenu = new QMenu(tr("File"), this);
     menuBar()->addMenu(fileMenu);
 
-    QMenu *tabMenu = new QMenu(tr("新建页面"), this);
+    QMenu *tabMenu = new QMenu(tr("New page"), this);
     fileMenu->addMenu(tabMenu);
     QMetaEnum enums = QMetaEnum::fromType<SAKDataStruct::SAKEnumDebugPageType>();
     for (int i = 0; i < enums.keyCount(); i++){
@@ -218,7 +218,7 @@ void SAKMainWindow::initFileMenu()
         tabMenu->addAction(a);
     }
 
-    QMenu *windowMenu = new QMenu(tr("新建窗口"), this);
+    QMenu *windowMenu = new QMenu(tr("New window"), this);
     fileMenu->addMenu(windowMenu);
     for (int i = 0; i < enums.keyCount(); i++){
         QAction *a = new QAction(SAKGlobal::debugPageNameFromType(i), this);
@@ -230,27 +230,27 @@ void SAKMainWindow::initFileMenu()
     }
 
     fileMenu->addSeparator();
-    QAction *exitAction = new QAction(tr("退出"), this);
+    QAction *exitAction = new QAction(tr("Exit"), this);
     fileMenu->addAction(exitAction);
     connect(exitAction, SIGNAL(triggered(bool)), this, SLOT(close()));
 }
 
 void SAKMainWindow::initToolMenu()
 {
-    QMenu *toolMenu = new QMenu(tr("工具"));
+    QMenu *toolMenu = new QMenu(tr("Tool"));
     menuBar()->addMenu(toolMenu);
     mToolsMenu = toolMenu;
 }
 
 void SAKMainWindow::initOptionMenu()
 {
-    QMenu *optionMenu = new QMenu(tr("选项"));
+    QMenu *optionMenu = new QMenu(tr("Option"));
     menuBar()->addMenu(optionMenu);
 
     /// @brief 软件样式，设置默认样式需要重启软件
-    QMenu *stylesheetMenu = new QMenu(tr("皮肤"), this);
+    QMenu *stylesheetMenu = new QMenu(tr("Skin"), this);
     optionMenu->addMenu(stylesheetMenu);
-    mDefaultStyleSheetAction = new QAction(tr("Qt默认样式"), this);
+    mDefaultStyleSheetAction = new QAction(tr("Qt default"), this);
     mDefaultStyleSheetAction->setCheckable(true);
     stylesheetMenu->addAction(mDefaultStyleSheetAction);
     connect(mDefaultStyleSheetAction, &QAction::triggered, [=](){
@@ -260,7 +260,7 @@ void SAKMainWindow::initOptionMenu()
 
         changeStylesheet(QString());
         mDefaultStyleSheetAction->setChecked(true);
-        int ret = QMessageBox::information(this, tr("重启软件生效"), tr("软件样式已更改，是否重启软件使设置生效？"), QMessageBox::Ok | QMessageBox::Cancel);
+        int ret = QMessageBox::information(this, tr("Reboot applicatin to effective"), tr("The style sheet has benn changed, reboot to effective?"), QMessageBox::Ok | QMessageBox::Cancel);
         if (ret == QMessageBox::Ok){
             qApp->setPalette(QPalette());
             qApp->setStyleSheet(QString(""));
@@ -279,7 +279,7 @@ void SAKMainWindow::initOptionMenu()
     }
 
     /// @brief 软件风格，默认使用Qt支持的第一种软件风格
-    QMenu *appStyleMenu = new QMenu(tr("软件风格"), this);
+    QMenu *appStyleMenu = new QMenu(tr("Application style"), this);
     optionMenu->addMenu(appStyleMenu);
     appStyleMenu->addActions(QtAppStyleApi::instance()->actions());
     QString style = SAKSettings::instance()->appStyle();
@@ -288,7 +288,7 @@ void SAKMainWindow::initOptionMenu()
 
 void SAKMainWindow::initLanguageMenu()
 {
-    QMenu *languageMenu = new QMenu(tr("语言"), this);
+    QMenu *languageMenu = new QMenu(tr("Language"), this);
     menuBar()->addMenu(languageMenu);
 
     QString language = SAKSettings::instance()->language();
@@ -341,18 +341,18 @@ void SAKMainWindow::initLanguageMenu()
 
 void SAKMainWindow::initHelpMenu()
 {
-    QMenu *helpMenu = new QMenu(tr("帮助"), this);
+    QMenu *helpMenu = new QMenu(tr("Help"), this);
     menuBar()->addMenu(helpMenu);
 
-    QAction *aboutQtAction = new QAction(tr("关于Qt"), this);
+    QAction *aboutQtAction = new QAction(tr("About Qt"), this);
     helpMenu->addAction(aboutQtAction);
-    connect(aboutQtAction, &QAction::triggered, [=](){QMessageBox::aboutQt(this, tr("关于Qt"));});
+    connect(aboutQtAction, &QAction::triggered, [=](){QMessageBox::aboutQt(this, tr("About Qt"));});
 
-    QAction *aboutAction = new QAction(tr("关于软件"), this);
+    QAction *aboutAction = new QAction(tr("About application"), this);
     helpMenu->addAction(aboutAction);
     connect(aboutAction, &QAction::triggered, this, &SAKMainWindow::about);
 
-    QMenu *srcMenu = new QMenu(tr("获取源码"), this);
+    QMenu *srcMenu = new QMenu(tr("Get source"), this);
     helpMenu->addMenu(srcMenu);
     QAction *visitGitHubAction = new QAction(QIcon(":/resources/images/GitHub.png"), tr("GitHub"), this);
     connect(visitGitHubAction, &QAction::triggered, [](){QDesktopServices::openUrl(QUrl(QLatin1String("https://github.com/qsak/QtSwissArmyKnife")));});
@@ -361,23 +361,23 @@ void SAKMainWindow::initHelpMenu()
     connect(visitGiteeAction, &QAction::triggered, [](){QDesktopServices::openUrl(QUrl(QLatin1String("https://gitee.com/qsak/QtSwissArmyKnife")));});
     srcMenu->addAction(visitGiteeAction);
 
-    QAction *updateAction = new QAction(tr("检查更新"), this);
+    QAction *updateAction = new QAction(tr("Check for update"), this);
     helpMenu->addAction(updateAction);
     connect(updateAction, &QAction::triggered, mUpdateManager, &SAKUpdateManager::show);
 
-    QAction *moreInformationAction = new QAction(tr("更多信息"), this);
+    QAction *moreInformationAction = new QAction(tr("More information"), this);
     helpMenu->addAction(moreInformationAction);
     connect(moreInformationAction, &QAction::triggered, mMoreInformation, &SAKMoreInformation::show);
 
     helpMenu->addSeparator();
-    QAction *qrCodeAction = new QAction(tr("二维码"), this);
+    QAction *qrCodeAction = new QAction(tr("QR code"), this);
     helpMenu->addAction(qrCodeAction);
     connect(qrCodeAction, &QAction::triggered, mQrCodeDialog, &SAKQRCodeDialog::show);
 }
 
 void SAKMainWindow::initLinksMenu()
 {
-    QMenu *linksMenu = new QMenu(tr("链接"), this);
+    QMenu *linksMenu = new QMenu(tr("Links"), this);
     menuBar()->addMenu(linksMenu);
 
     struct Link {
@@ -385,9 +385,9 @@ void SAKMainWindow::initLinksMenu()
         QString url;
     };
     QList<Link> linkList;
-    linkList << Link{tr("Qt官方下载"), QString("http://download.qt.io/official_releases/qt")}
-             << Link{tr("Qt官方博客"), QString("https://www.qt.io/blog")}
-             << Link{tr("Qt发布信息"), QString("https://wiki.qt.io/Qt_5.12_Release")};
+    linkList << Link{tr("Qt official download"), QString("http://download.qt.io/official_releases/qt")}
+             << Link{tr("Qt official blog"), QString("https://www.qt.io/blog")}
+             << Link{tr("Qt official release"), QString("https://wiki.qt.io/Qt_5.12_Release")};
 
     for (auto var:linkList){
         QAction *action = new QAction(QIcon(":/resources/images/Qt.png"), var.name, this);
@@ -415,7 +415,7 @@ void SAKMainWindow::changeAppStyle(QString appStyle)
 
 void SAKMainWindow::about()
 {
-    QMessageBox::information(this, tr("关于"), QString("<font color=green>%1</font><br />%2<br />"
+    QMessageBox::information(this, tr("About"), QString("<font color=green>%1</font><br />%2<br />"
                                                      "<font color=green>%3</font><br />%4<br />"
                                                      "<font color=green>%5</font><br />%6<br />"
                                                      "<font color=green>%7</font><br /><a href=%8>%8</a><br />"
@@ -425,16 +425,16 @@ void SAKMainWindow::about()
                                                      "<font color=green>%15</font><br />%16<br />"
                                                      "<font color=green>%17</font><br />%18<br />"
                                                      "<font color=red>%19</font><br />%20")
-                             .arg(tr("软件版本")).arg(SAK::instance()->version())
-                             .arg(tr("软件作者")).arg(SAK::instance()->authorName())
-                             .arg(tr("作者昵称")).arg(SAK::instance()->authorNickname())
-                             .arg(tr("发布网站")).arg(SAK::instance()->officeUrl())
-                             .arg(tr("联系邮箱")).arg(SAK::instance()->email())
-                             .arg(tr("QQ账号")).arg(SAK::instance()->qqNumber())
-                             .arg(tr("QQ交流群")).arg(SAK::instance()->qqGroupNumber())
-                             .arg(tr("编译时间")).arg(SAK::instance()->buildTime())
-                             .arg(tr("版权信息")).arg(SAK::instance()->copyright())
-                             .arg(tr("业务合作")).arg(SAK::instance()->business()));
+                             .arg(tr("Version")).arg(SAK::instance()->version())
+                             .arg(tr("Author")).arg(SAK::instance()->authorName())
+                             .arg(tr("Nickname")).arg(SAK::instance()->authorNickname())
+                             .arg(tr("Release")).arg(SAK::instance()->officeUrl())
+                             .arg(tr("Email")).arg(SAK::instance()->email())
+                             .arg(tr("QQ")).arg(SAK::instance()->qqNumber())
+                             .arg(tr("QQ group")).arg(SAK::instance()->qqGroupNumber())
+                             .arg(tr("Build time")).arg(SAK::instance()->buildTime())
+                             .arg(tr("Copyright")).arg(SAK::instance()->copyright())
+                             .arg(tr("Cooperation")).arg(SAK::instance()->business()));
 }
 
 void SAKMainWindow::installLanguage()
@@ -450,7 +450,7 @@ void SAKMainWindow::installLanguage()
         QString language = action->objectName();
         QString name = action->data().toString();
         SAKSettings::instance()->setLanguage(language+"-"+name);
-        int ret = QMessageBox::information(this, tr("重启生效"), tr("软件语言包已更改，是否重启软件使设置生效？"), QMessageBox::Ok | QMessageBox::Cancel);
+        int ret = QMessageBox::information(this, tr("Reboot application to effective"), tr("Language pack has been changed, reboot to effective?"), QMessageBox::Ok | QMessageBox::Cancel);
         if (ret == QMessageBox::Ok){
             qApp->closeAllWindows();
             qApp->exit(SAK_REBOOT_CODE);
