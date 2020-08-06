@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2020 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKTCPSERVERDEVICECONTROLLER_HH
-#define SAKTCPSERVERDEVICECONTROLLER_HH
+#ifndef SAKUDPSERVERDEVICECONTROLLER_HH
+#define SAKUDPSERVERDEVICECONTROLLER_HH
 
 #include <QMutex>
 #include <QWidget>
