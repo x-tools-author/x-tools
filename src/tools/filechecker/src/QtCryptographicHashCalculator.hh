@@ -13,7 +13,6 @@
 #include <QThread>
 
 class SAKToolFileChecker;
-
 class QtCryptographicHashCalculator:public QThread
 {
     Q_OBJECT
