@@ -20,6 +20,7 @@ public:
     QtCryptographicHashCalculator(SAKToolFileChecker *controller, QObject *parent = Q_NULLPTR);
 private:
     SAKToolFileChecker *mCryptographicHashController;
+    QList<qint64> consumeTimeList;
 private:
     void run() final;
 signals:

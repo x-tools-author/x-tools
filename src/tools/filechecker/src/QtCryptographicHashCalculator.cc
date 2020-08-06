@@ -87,22 +87,33 @@ void QtCryptographicHashCalculator::run()
             // Calculating remaining time
             endTime = QDateTime::currentDateTime().toMSecsSinceEpoch();
             consumeTime = endTime - startTime;
-            qDebug() << __FUNCTION__ << consumeTime;
+
             if (consumeTime != 0){
-                remainTime = remainBytes/dataBlock*consumeTime;
+                consumeTimeList.append(consumeTime);
+                while (consumeTimeList.length() > 1000) {
+                    consumeTimeList.removeFirst();
+                }
+                qint64 averageConsumeTime = 0;
+                for (auto var : consumeTimeList){
+                    averageConsumeTime += var;
+                }
+                averageConsumeTime = averageConsumeTime/consumeTimeList.count();
+                if (averageConsumeTime > 0){
+                    remainTime = remainBytes/dataBlock*averageConsumeTime;
 
-                hoursTemp = (remainTime%(24*60*60*1000))/(60*60*1000);
-                minutesTemp = ((remainTime%(24*60*60*1000))%(60*60*1000))/(1*60*1000);
-                secondsTemp = (((remainTime%(24*60*60*1000))%(60*60*1000))%(1*60*1000))%60;
+                    hoursTemp = (remainTime%(24*60*60*1000))/(60*60*1000);
+                    minutesTemp = ((remainTime%(24*60*60*1000))%(60*60*1000))/(1*60*1000);
+                    secondsTemp = (((remainTime%(24*60*60*1000))%(60*60*1000))%(1*60*1000))/1000;
 
-                if ((hours != hoursTemp) || (minutes != minutesTemp) || (seconds != secondsTemp)){
-                    hours = hoursTemp;
-                    minutes = minutesTemp;
-                    seconds = secondsTemp;
-                    emit remainTimeChanged(QString("%1:%2:%3")
-                                           .arg(QString::number(hours), 2, '0')
-                                           .arg(QString::number(minutes), 2, '0')
-                                           .arg(QString::number(seconds), 2, '0'));
+                    if ((hours != hoursTemp) || (minutes != minutesTemp) || (seconds != secondsTemp)){
+                        hours = hoursTemp;
+                        minutes = minutesTemp;
+                        seconds = secondsTemp;
+                        emit remainTimeChanged(QString("%1:%2:%3")
+                                               .arg(QString::number(hours), 2, '0')
+                                               .arg(QString::number(minutes), 2, '0')
+                                               .arg(QString::number(seconds), 2, '0'));
+                    }
                 }
             }
 
