@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKTABPAGESERIALPORTASSISTANT_HH
-#define SAKTABPAGESERIALPORTASSISTANT_HH
+#ifndef SAKSERIALPORTDEBUGPAGE_HH
+#define SAKSERIALPORTDEBUGPAGE_HH
 
 #include "SAKDebugPage.hh"
 
