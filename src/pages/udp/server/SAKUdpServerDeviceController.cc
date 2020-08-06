@@ -27,6 +27,8 @@ SAKUdpServerDeviceController::SAKUdpServerDeviceController(QWidget *parent)
     clientHostComboBox = ui->clientHostComboBox;
 
     refresh();
+
+    connect(this, &SAKUdpServerDeviceController::requestAddClient, this, &SAKUdpServerDeviceController::addClientSafelyActually);
 }
 
 SAKUdpServerDeviceController::~SAKUdpServerDeviceController()
@@ -36,36 +38,34 @@ SAKUdpServerDeviceController::~SAKUdpServerDeviceController()
 
 QString SAKUdpServerDeviceController::serverHost()
 {
-    uiMutex.lock();
-    QString host = serverHostComboBox->currentText();
-    uiMutex.unlock();
+    mParametersMutex.lock();
+    QString host = mServerHost;
+    mParametersMutex.unlock();
     return host;
 }
 
 quint16 SAKUdpServerDeviceController::serverPort()
 {
-    uiMutex.lock();
-    quint16 port = static_cast<quint16>(serverPortLineEdit->text().toInt());
-    uiMutex.unlock();
+    mParametersMutex.lock();
+    quint16 port = mServerPort;
+    mParametersMutex.unlock();
     return port;
 }
 
 QString SAKUdpServerDeviceController::currentClientHost()
 {
-    uiMutex.lock();
-    QStringList host = clientHostComboBox->currentText().split(":");
-    QString address = host.first();
-    uiMutex.unlock();
-    return address;
+    mParametersMutex.lock();
+    QString host = mCurrentHost;
+    mParametersMutex.unlock();
+    return host;
 }
 
 quint16 SAKUdpServerDeviceController::currentClientPort()
 {
-    uiMutex.lock();
-    QString port = clientHostComboBox->currentText().split(":").last();
-    quint16 portTemp = static_cast<quint16>(port.toInt());
-    uiMutex.unlock();
-    return portTemp;
+    mParametersMutex.lock();
+    quint16 port = mCurrentPort;
+    mParametersMutex.unlock();
+    return port;
 }
 
 void SAKUdpServerDeviceController::refresh()
@@ -79,31 +79,56 @@ void SAKUdpServerDeviceController::setUiEnable(bool enable)
     serverPortLineEdit->setEnabled(enable);
 }
 
-void SAKUdpServerDeviceController::addClient(QString host, quint16 port, QTcpSocket *socket)
+void SAKUdpServerDeviceController::addClientSafely(QString host, quint16 port)
+{
+    emit requestAddClient(host, port);
+}
+
+void SAKUdpServerDeviceController::addClientSafelyActually(QString host, quint16 port)
 {
     QString item = host.append(":");
     item.append(QString::number(port));
 
-    uiMutex.lock();
+    bool isItemExisted = false;
     for(int i = 0; i < clientHostComboBox->count(); i++){
         if (clientHostComboBox->itemText(i).compare(item) == 0){
-            uiMutex.unlock();
-            return;
-        }
-    }
-
-    clientHostComboBox->addItem(item, QVariant::fromValue(socket));
-    uiMutex.unlock();
-}
-
-void SAKUdpServerDeviceController::removeClient(QTcpSocket *socket)
-{
-    uiMutex.lock();
-    for(int i = 0; i < clientHostComboBox->count(); i++){
-        if (clientHostComboBox->itemData(i).value<QTcpSocket*>() == socket){
-            clientHostComboBox->removeItem(i);
+            isItemExisted = true;
             break;
         }
     }
-    uiMutex.unlock();
+
+    if (!isItemExisted){
+        clientHostComboBox->addItem(item);
+    }
+}
+
+void SAKUdpServerDeviceController::on_clientHostComboBox_currentTextChanged(const QString &arg1)
+{
+    mParametersMutex.lock();
+    mCurrentHost = arg1.split(':').first();
+    mCurrentPort = arg1.split(':').last().toInt();
+    mParametersMutex.unlock();
+}
+
+void SAKUdpServerDeviceController::on_clearPushButton_clicked()
+{
+    clientHostComboBox->clear();
+    mParametersMutex.lock();
+    mCurrentHost.clear();
+    mCurrentPort = 0;
+    mParametersMutex.unlock();
+}
+
+void SAKUdpServerDeviceController::on_serverhostComboBox_currentTextChanged(const QString &arg1)
+{
+    mParametersMutex.lock();
+    mServerHost = arg1;
+    mParametersMutex.unlock();
+}
+
+void SAKUdpServerDeviceController::on_serverPortLineEdit_textChanged(const QString &arg1)
+{
+    mParametersMutex.lock();
+    mServerPort = arg1.toUInt();
+    mParametersMutex.unlock();
 }

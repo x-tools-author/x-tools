@@ -36,15 +36,27 @@ public:
     void refresh();
     void setUiEnable(bool enable);
 
-    void addClient(QString host, quint16 port, QTcpSocket *socket);
-    void removeClient(QTcpSocket *socket);
+    void addClientSafely(QString host, quint16 port);
+private:
+    QString mCurrentHost;
+    quint16 mCurrentPort;
+    QString mServerHost;
+    quint16 mServerPort;
+    QMutex mParametersMutex;
+private:
+    void addClientSafelyActually(QString host, quint16 port);
+signals:
+    void requestAddClient(QString host, quint16 port);
 private:
     Ui::SAKUdpServerDeviceController *ui;
-
     QComboBox *serverHostComboBox;
     QLineEdit *serverPortLineEdit;
     QComboBox *clientHostComboBox;
-    QMutex uiMutex;
+private slots:
+    void on_clientHostComboBox_currentTextChanged(const QString &arg1);
+    void on_clearPushButton_clicked();
+    void on_serverhostComboBox_currentTextChanged(const QString &arg1);
+    void on_serverPortLineEdit_textChanged(const QString &arg1);
 };
 
 #endif
