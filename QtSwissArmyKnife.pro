@@ -130,6 +130,7 @@ INCLUDEPATH += \
     src/pages/page/statistics \
     src/pages/tcp/client \
     src/pages/tcp/server \
+    src/pages/test \
     src/pages/udp/client \
     src/pages/udp/server \
     src/qrcode \
@@ -158,6 +159,7 @@ FORMS += \
     src/pages/page/output/save2file/SAKOutputSave2FileDialog.ui \
     src/pages/tcp/client/SAKTcpClientDeviceController.ui \
     src/pages/tcp/server/SAKTcpServerDeviceController.ui \
+    src/pages/test/SAKTestDeviceController.ui \
     src/pages/udp/client/SAKUdpClientAdvanceSettingWidget.ui \
     src/pages/udp/client/SAKUdpClientDeviceController.ui \
     src/pages/udp/client/SAKUdpClientMulticastEditingDialog.ui \
@@ -210,6 +212,9 @@ HEADERS += \
     src/pages/tcp/server/SAKTcpServerDebugPage.hh \
     src/pages/tcp/server/SAKTcpServerDevice.hh \
     src/pages/tcp/server/SAKTcpServerDeviceController.hh \
+    src/pages/test/SAKTestDebugPage.hh \
+    src/pages/test/SAKTestDevice.hh \
+    src/pages/test/SAKTestDeviceController.hh \
     src/pages/udp/client/SAKUdpClientAdvanceSettingWidget.hh \
     src/pages/udp/client/SAKUdpClientDebugPage.hh \
     src/pages/udp/client/SAKUdpClientDevice.hh \
@@ -270,6 +275,9 @@ SOURCES += \
     src/pages/tcp/server/SAKTcpServerDebugPage.cc \
     src/pages/tcp/server/SAKTcpServerDevice.cc \
     src/pages/tcp/server/SAKTcpServerDeviceController.cc \
+    src/pages/test/SAKTestDebugPage.cc \
+    src/pages/test/SAKTestDevice.cc \
+    src/pages/test/SAKTestDeviceController.cc \
     src/pages/udp/client/SAKUdpClientAdvanceSettingWidget.cc \
     src/pages/udp/client/SAKUdpClientDebugPage.cc \
     src/pages/udp/client/SAKUdpClientDevice.cc \
