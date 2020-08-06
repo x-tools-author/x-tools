@@ -115,14 +115,15 @@ void SAKUdpServerDeviceController::addClientSafelyActually(QString host, quint16
 void SAKUdpServerDeviceController::on_clientHostComboBox_currentTextChanged(const QString &arg1)
 {
     mParametersMutex.lock();
-    QString info = arg1.trimmed();
-    mCurrentHost = info.split(':').first();
-    mCurrentPort = info.split(':').last().toInt();
+    QStringList infoList = arg1.trimmed().split(':');
+    mCurrentHost = infoList.first();
+    mCurrentPort = infoList.last().toInt();
     mParametersMutex.unlock();
 }
 
 void SAKUdpServerDeviceController::on_clearPushButton_clicked()
 {
+    mHasNoClient = true;
     mClientHostComboBox->clear();
     mParametersMutex.lock();
     mCurrentHost.clear();
