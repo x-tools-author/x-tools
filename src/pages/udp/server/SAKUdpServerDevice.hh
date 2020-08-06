@@ -27,7 +27,6 @@ private:
 private:
     QString localHost;
     quint16 localPort;
-    bool enableCustomLocalSetting;
     QString serverHost;
     quint16 serverPort;
     SAKUdpServerDebugPage *debugPage;
