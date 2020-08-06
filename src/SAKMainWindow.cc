@@ -39,9 +39,15 @@
 #include "QtAppStyleApi.hh"
 #include "SAKApplication.hh"
 #include "SAKQRCodeDialog.hh"
-#include "SAKUdpClientDebugPage.hh"
 #include "QtStyleSheetApi.hh"
 #include "SAKToolsManager.hh"
+#include "SAKUpdateManager.hh"
+#include "SAKMoreInformation.hh"
+#include "SAKToolCRCCalculator.hh"
+#include "SAKUdpClientDebugPage.hh"
+#include "SAKTcpClientDebugPage.hh"
+#include "SAKTcpServerDebugPage.hh"
+
 #ifdef SAK_IMPORT_HID_MODULE
 #include "SAKHidDebugPage.hh"
 #endif
@@ -55,11 +61,6 @@
 #include "SAKSctpClientDebugPage.hh"
 #include "SAKSctpServerDebugPage.hh"
 #endif
-#include "SAKToolCRCCalculator.hh"
-#include "SAKUpdateManager.hh"
-#include "SAKMoreInformation.hh"
-#include "SAKTcpClientDebugPage.hh"
-#include "SAKTcpServerDebugPage.hh"
 #ifdef SAK_IMPORT_COM_MODULE
 #include "SAKSerialPortDebugPage.hh"
 #endif
