@@ -62,6 +62,14 @@ SAKToolFileChecker::SAKToolFileChecker(QWidget *parent)
 SAKToolFileChecker::~SAKToolFileChecker()
 {
     delete mUi;
+    if (mCalculator){
+        mCalculator->blockSignals(true);
+        mCalculator->requestInterruption();
+        mCalculator->exit();
+        mCalculator->wait();
+        mCalculator->deleteLater();
+        mCalculator = Q_NULLPTR;
+    }
 }
 
 void SAKToolFileChecker::setUiEnable(bool enable)
