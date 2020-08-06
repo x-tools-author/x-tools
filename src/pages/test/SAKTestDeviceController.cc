@@ -13,11 +13,11 @@
 #include <QSerialPortInfo>
 
 #include "SAKGlobal.hh"
-#include "SAKSerialPortDeviceController.hh"
-#include "ui_SAKSerialPortDeviceController.h"
-SAKSerialPortDeviceController::SAKSerialPortDeviceController(QWidget *parent)
+#include "SAKTestDeviceController.hh"
+#include "ui_SAKTestDeviceController.h"
+SAKTestDeviceController::SAKTestDeviceController(QWidget *parent)
     :QWidget (parent)
-    ,ui (new Ui::SAKSerialPortDeviceController)
+    ,ui (new Ui::SAKTestDeviceController)
     ,serialportsComboBox(Q_NULLPTR)
     ,baudrateComboBox(Q_NULLPTR)
     ,databitsComboBox(Q_NULLPTR)
@@ -39,12 +39,12 @@ SAKSerialPortDeviceController::SAKSerialPortDeviceController(QWidget *parent)
     refresh();
 }
 
-SAKSerialPortDeviceController::~SAKSerialPortDeviceController()
+SAKTestDeviceController::~SAKTestDeviceController()
 {
     delete ui;
 }
 
-void SAKSerialPortDeviceController::refresh()
+void SAKTestDeviceController::refresh()
 {
     uiMutex.lock();
     SAKGlobal::initComComboBox(serialportsComboBox);
@@ -56,7 +56,7 @@ void SAKSerialPortDeviceController::refresh()
     uiMutex.unlock();
 }
 
-void SAKSerialPortDeviceController::setUiEnable(bool enable)
+void SAKTestDeviceController::setUiEnable(bool enable)
 {
     uiMutex.lock();
     serialportsComboBox->setEnabled(enable);
@@ -69,7 +69,7 @@ void SAKSerialPortDeviceController::setUiEnable(bool enable)
     uiMutex.unlock();
 }
 
-enum QSerialPort::DataBits SAKSerialPortDeviceController::dataBits()
+enum QSerialPort::DataBits SAKTestDeviceController::dataBits()
 {
     uiMutex.lock();
     QSerialPort::DataBits ret = static_cast<QSerialPort::DataBits>(databitsComboBox->currentData().toInt());
@@ -77,7 +77,7 @@ enum QSerialPort::DataBits SAKSerialPortDeviceController::dataBits()
     return ret;
 }
 
-enum QSerialPort::StopBits SAKSerialPortDeviceController::stopBits()
+enum QSerialPort::StopBits SAKTestDeviceController::stopBits()
 {
     uiMutex.lock();
     QSerialPort::StopBits ret = static_cast<QSerialPort::StopBits>(stopbitsComboBox->currentData().toInt());
@@ -85,7 +85,7 @@ enum QSerialPort::StopBits SAKSerialPortDeviceController::stopBits()
     return ret;
 }
 
-enum QSerialPort::Parity SAKSerialPortDeviceController::parity()
+enum QSerialPort::Parity SAKTestDeviceController::parity()
 {
     uiMutex.lock();
     QSerialPort::Parity ret = static_cast<QSerialPort::Parity>(parityComboBox->currentData().toInt());
@@ -93,7 +93,7 @@ enum QSerialPort::Parity SAKSerialPortDeviceController::parity()
     return ret;
 }
 
-enum QSerialPort::FlowControl SAKSerialPortDeviceController::flowControl()
+enum QSerialPort::FlowControl SAKTestDeviceController::flowControl()
 {
     uiMutex.lock();
     QSerialPort::FlowControl ret = static_cast<QSerialPort::FlowControl>(flowControlComboBox->currentData().toInt());
@@ -101,7 +101,7 @@ enum QSerialPort::FlowControl SAKSerialPortDeviceController::flowControl()
     return ret;
 }
 
-QString SAKSerialPortDeviceController::name()
+QString SAKTestDeviceController::name()
 {
     uiMutex.lock();
     QString portName = serialportsComboBox->currentText();
@@ -110,7 +110,7 @@ QString SAKSerialPortDeviceController::name()
     return  portName;
 }
 
-qint32 SAKSerialPortDeviceController::baudRate()
+qint32 SAKTestDeviceController::baudRate()
 {
     uiMutex.lock();
     qint32 rate = 9600;
@@ -128,7 +128,7 @@ qint32 SAKSerialPortDeviceController::baudRate()
     return rate;
 }
 
-void SAKSerialPortDeviceController::on_customBaudrateCheckBox_clicked()
+void SAKTestDeviceController::on_customBaudrateCheckBox_clicked()
 {
     uiMutex.lock();
     if (customBaudrateCheckBox->isChecked()){

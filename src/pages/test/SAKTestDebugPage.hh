@@ -7,31 +7,31 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKTABPAGESERIALPORTASSISTANT_HH
-#define SAKTABPAGESERIALPORTASSISTANT_HH
+#ifndef SAKTESTDEBUGPAGE_HH
+#define SAKTESTDEBUGPAGE_HH
 
 #include "SAKDebugPage.hh"
 
-class SAKSerialPortDeviceController;
-class SAKSerialPortDebugPage : public SAKDebugPage
+class SAKTestDeviceController;
+class SAKTestDebugPage : public SAKDebugPage
 {
     Q_OBJECT
 public:
-    SAKSerialPortDebugPage(QWidget *parent = Q_NULLPTR);
-    ~SAKSerialPortDebugPage();
+    SAKTestDebugPage(QWidget *parent = Q_NULLPTR);
+    ~SAKTestDebugPage();
 
     /**
      * @brief controllerInstance: Get the controller instance
      * @return Controller instance
      */
-    SAKSerialPortDeviceController *controllerInstance();
+    SAKTestDeviceController *controllerInstance();
 protected:
     SAKDebugPageDevice *createDevice() final;
     void refreshDevice() final;
     QWidget *controllerWidget() final;
     void setUiEnable(bool enable) final;
 private:
-    SAKSerialPortDeviceController *controller;
+    SAKTestDeviceController *controller;
 };
 
 #endif

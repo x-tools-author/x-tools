@@ -11,11 +11,11 @@
 #include <QEventLoop>
 #include <QApplication>
 
-#include "SAKSerialPortDevice.hh"
-#include "SAKSerialPortDebugPage.hh"
-#include "SAKSerialPortDeviceController.hh"
+#include "SAKTestDevice.hh"
+#include "SAKTestDebugPage.hh"
+#include "SAKTestDeviceController.hh"
 
-SAKSerialPortDevice::SAKSerialPortDevice(SAKSerialPortDebugPage *debugPage, QObject *parent)
+SAKTestDevice::SAKTestDevice(SAKTestDebugPage *debugPage, QObject *parent)
     :SAKDebugPageDevice(parent)
     ,serialPort(Q_NULLPTR)
     ,debugPage(debugPage)
@@ -23,15 +23,15 @@ SAKSerialPortDevice::SAKSerialPortDevice(SAKSerialPortDebugPage *debugPage, QObj
 
 }
 
-SAKSerialPortDevice::~SAKSerialPortDevice()
+SAKTestDevice::~SAKTestDevice()
 {
 
 }
 
-void SAKSerialPortDevice::run()
+void SAKTestDevice::run()
 {
     QEventLoop eventLoop;
-    SAKSerialPortDeviceController *controller = debugPage->controllerInstance();
+    SAKTestDeviceController *controller = debugPage->controllerInstance();
     name = controller->name();
     baudRate = controller->baudRate();
     dataBits = controller->dataBits();

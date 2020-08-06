@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKSERIALPORTDEVICECONTROLLER_HH
-#define SAKSERIALPORTDEVICECONTROLLER_HH
+#ifndef SAKTESTDEVICECONTROLLER_HH
+#define SAKTESTDEVICECONTROLLER_HH
 
 #include <QMutex>
 #include <QWidget>
@@ -17,15 +17,15 @@
 #include <QSerialPort>
 
 namespace Ui {
-    class SAKSerialPortDeviceController;
+    class SAKTestDeviceController;
 }
 
-class SAKSerialPortDeviceController:public QWidget
+class SAKTestDeviceController:public QWidget
 {
     Q_OBJECT
 public:
-    SAKSerialPortDeviceController(QWidget *parent = Q_NULLPTR);
-    ~SAKSerialPortDeviceController();
+    SAKTestDeviceController(QWidget *parent = Q_NULLPTR);
+    ~SAKTestDeviceController();
 
     enum QSerialPort::DataBits dataBits();
     enum QSerialPort::StopBits stopBits();
@@ -39,7 +39,7 @@ public:
 private:
     QMutex uiMutex;
 private:
-    Ui::SAKSerialPortDeviceController *ui;
+    Ui::SAKTestDeviceController *ui;
 
     QComboBox *serialportsComboBox;
     QComboBox *baudrateComboBox;
