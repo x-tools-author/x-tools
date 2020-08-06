@@ -11,27 +11,27 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>CRC计算器</string>
+   <string>CRC Calculator</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="4" column="3">
     <widget class="QLabel" name="label_5">
      <property name="text">
-      <string>多项式 POLY（Hex）</string>
+      <string>Paloy value</string>
      </property>
     </widget>
    </item>
    <item row="5" column="0">
     <widget class="QLabel" name="label_6">
      <property name="text">
-      <string>初始值 INIT（Hex）</string>
+      <string>Initial value</string>
      </property>
     </widget>
    </item>
    <item row="6" column="2">
     <widget class="QPushButton" name="pushButtonCopyHex">
      <property name="text">
-      <string>复制</string>
+      <string>Copy</string>
      </property>
     </widget>
    </item>
@@ -41,7 +41,7 @@
       <string notr="true"/>
      </property>
      <property name="text">
-      <string>获取更多crc相关信息，请访问 http://www.ip33.com/crc.html (双击访问)</string>
+      <string>More information about crc calculation, visit http://www.ip33.com/crc.html(double clicked to visit)</string>
      </property>
     </widget>
    </item>
@@ -57,14 +57,14 @@
       <item>
        <widget class="QCheckBox" name="checkBoxRefIn">
         <property name="text">
-         <string>输入数据反转（REFIN）</string>
+         <string>Input reversal</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QCheckBox" name="checkBoxRefOut">
         <property name="text">
-         <string>输出数据反转（REFOUT）</string>
+         <string>Output reversal</string>
         </property>
        </widget>
       </item>
@@ -84,14 +84,14 @@
       <item>
        <widget class="QPushButton" name="pushButtonClear">
         <property name="text">
-         <string>清空</string>
+         <string>Clear</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="pushButtonCalculate">
         <property name="text">
-         <string>计算</string>
+         <string>Calculate</string>
         </property>
        </widget>
       </item>
@@ -101,7 +101,7 @@
    <item row="2" column="0">
     <widget class="QLabel" name="label_11">
      <property name="text">
-      <string>计算面板</string>
+      <string>Parameters</string>
      </property>
     </widget>
    </item>
@@ -111,7 +111,7 @@
    <item row="5" column="3">
     <widget class="QLabel" name="label_7">
      <property name="text">
-      <string>结果异或值 XOROUT（Hex）</string>
+      <string>XOR value</string>
      </property>
     </widget>
    </item>
@@ -121,7 +121,7 @@
       <string notr="true"/>
      </property>
      <property name="text">
-      <string>高位在左低位在右，使用时请注意高低位顺序！！！</string>
+      <string>Height its is on the left and the low bits is on the right</string>
      </property>
     </widget>
    </item>
@@ -187,14 +187,14 @@
    <item row="6" column="0">
     <widget class="QLabel" name="label_8">
      <property name="text">
-      <string>校验输出（HEX）</string>
+      <string>Result(HEX)</string>
      </property>
     </widget>
    </item>
    <item row="3" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>参数模型 NAME</string>
+      <string>Parameter model</string>
      </property>
     </widget>
    </item>
@@ -211,7 +211,7 @@
    <item row="4" column="0">
     <widget class="QLabel" name="label_2">
      <property name="text">
-      <string>宽度 WIDTH</string>
+      <string>Width</string>
      </property>
     </widget>
    </item>
@@ -229,7 +229,7 @@ p, li { white-space: pre-wrap; }
    <item row="6" column="5">
     <widget class="QPushButton" name="pushButtonCopyBin">
      <property name="text">
-      <string>复制</string>
+      <string>Copy</string>
      </property>
     </widget>
    </item>
@@ -239,7 +239,7 @@ p, li { white-space: pre-wrap; }
    <item row="5" column="1" colspan="2">
     <widget class="QLineEdit" name="lineEditInit">
      <property name="placeholderText">
-      <string>例如：0xFFFF</string>
+      <string notr="true">0xFFFF</string>
      </property>
     </widget>
    </item>
@@ -249,7 +249,7 @@ p, li { white-space: pre-wrap; }
       <string/>
      </property>
      <property name="placeholderText">
-      <string>例如：0x3D65</string>
+      <string notr="true">0x3D65</string>
      </property>
     </widget>
    </item>
@@ -259,28 +259,28 @@ p, li { white-space: pre-wrap; }
    <item row="3" column="3">
     <widget class="QLabel" name="label_4">
      <property name="text">
-      <string>多项式公式</string>
+      <string>Paloy</string>
      </property>
     </widget>
    </item>
    <item row="5" column="4" colspan="2">
     <widget class="QLineEdit" name="lineEditXOROUT">
      <property name="placeholderText">
-      <string>例如：0xFFFF</string>
+      <string notr="true">0xFFFF</string>
      </property>
     </widget>
    </item>
    <item row="1" column="0">
     <widget class="QLabel" name="label_3">
      <property name="text">
-      <string>需要校验的数据</string>
+      <string>Input data</string>
      </property>
     </widget>
    </item>
    <item row="6" column="3">
     <widget class="QLabel" name="label_9">
      <property name="text">
-      <string>校验输出（BIN）</string>
+      <string>Result(BIN)</string>
      </property>
     </widget>
    </item>
