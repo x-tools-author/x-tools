@@ -22,15 +22,12 @@
 #include <QJsonDocument>
 #include <QJsonParseError>
 
-#include "SAKToolBase.hh"
-#include "SAKCRCInterface.hh"
-
 namespace Ui {
     class SAKToolCRCCalculator;
 }
 
-/// @brief crc计算器
-class SAKToolCRCCalculator:public SAKToolBase
+class SAKCRCInterface;
+class SAKToolCRCCalculator:public QWidget
 {
     Q_OBJECT
 public:
@@ -40,7 +37,7 @@ protected:
     bool eventFilter(QObject *watched, QEvent *event);
 private:
     const char *logCategory;
-    SAKCRCInterface crcInterface;
+    SAKCRCInterface *crcInterface;
 private:
     void initParameterModel();
 private slots:

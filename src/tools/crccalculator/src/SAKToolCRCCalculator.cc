@@ -12,11 +12,12 @@
 #include <QDesktopServices>
 #include <QLoggingCategory>
 
+#include "SAKCRCInterface.hh"
 #include "SAKToolCRCCalculator.hh"
 #include "ui_SAKToolCRCCalculator.h"
 
 SAKToolCRCCalculator::SAKToolCRCCalculator(QWidget* parent)
-    :SAKToolBase (parent)
+    :QWidget(parent)
     ,logCategory("CRCCalculator")
     ,ui(new Ui::SAKToolCRCCalculator)
 {
@@ -76,7 +77,7 @@ SAKToolCRCCalculator::~SAKToolCRCCalculator()
 void SAKToolCRCCalculator::initParameterModel()
 {
     parameterComboBox->clear();
-    QStringList list = crcInterface.supportedParameterModels();
+    QStringList list = crcInterface->supportedParameterModels();
     parameterComboBox->addItems(list);
 
     QMetaEnum models = QMetaEnum::fromType<SAKCRCInterface::CRCModel>();
@@ -87,9 +88,9 @@ void SAKToolCRCCalculator::initParameterModel()
         model = static_cast<SAKCRCInterface::CRCModel>(ret);
     }
 
-    int bitsWidth = crcInterface.getBitsWidth(model);
+    int bitsWidth = crcInterface->getBitsWidth(model);
     widthComboBox->setCurrentIndex(widthComboBox->findText(QString::number(bitsWidth)));
-    labelPolyFormula->setText(crcInterface.getPolyFormula(model));
+    labelPolyFormula->setText(crcInterface->getPolyFormula(model));
 }
 
 void SAKToolCRCCalculator::calculate()
@@ -127,15 +128,15 @@ void SAKToolCRCCalculator::calculate()
     QString crcBinString = "error";
 
     if (bitsWidth == 8){
-        uint8_t crc = crcInterface.crcCalculate<uint8_t>(reinterpret_cast<uint8_t*>(inputArray.data()), static_cast<uint64_t>(inputArray.length()), model);
+        uint8_t crc = crcInterface->crcCalculate<uint8_t>(reinterpret_cast<uint8_t*>(inputArray.data()), static_cast<uint64_t>(inputArray.length()), model);
         crcHexString = QString("0x%1").arg(QString::number(crc, 16), 2, '0');
         crcBinString = QString("%1").arg(QString::number(crc, 2), 8, '0');
     }else if (bitsWidth == 16){
-        uint16_t crc = crcInterface.crcCalculate<uint8_t>(reinterpret_cast<uint8_t*>(inputArray.data()), static_cast<uint64_t>(inputArray.length()), model);
+        uint16_t crc = crcInterface->crcCalculate<uint8_t>(reinterpret_cast<uint8_t*>(inputArray.data()), static_cast<uint64_t>(inputArray.length()), model);
         crcHexString = QString("0x%1").arg(QString::number(crc, 16), 4, '0');
         crcBinString = QString("%1").arg(QString::number(crc, 2), 16, '0');
     }else if (bitsWidth == 32){
-        uint32_t crc = crcInterface.crcCalculate<uint8_t>(reinterpret_cast<uint8_t*>(inputArray.data()), static_cast<uint64_t>(inputArray.length()), model);
+        uint32_t crc = crcInterface->crcCalculate<uint8_t>(reinterpret_cast<uint8_t*>(inputArray.data()), static_cast<uint64_t>(inputArray.length()), model);
         crcHexString = QString("0x%1").arg(QString::number(crc, 16), 8, '0');
         crcBinString = QString("%1").arg(QString::number(crc, 2), 32, '0');
     }else {
@@ -185,14 +186,14 @@ void SAKToolCRCCalculator::changedParameterModel(int index)
         return;
     }
 
-    int bitsWidth = crcInterface.getBitsWidth(model);
+    int bitsWidth = crcInterface->getBitsWidth(model);
     widthComboBox->setCurrentIndex(widthComboBox->findText(QString::number(bitsWidth)));
-    polyLineEdit->setText(QString("0x%1").arg(QString::number(static_cast<int>(crcInterface.getPoly(model)), 16), bitsWidth/4, '0'));
-    initLineEdit->setText(QString("0x%1").arg(QString::number(static_cast<int>(crcInterface.getInitValue(model)), 16), bitsWidth/4, '0'));
-    xorLineEdit->setText(QString("0x%1").arg(QString::number(static_cast<int>(crcInterface.getXorValue(model)), 16), bitsWidth/4, '0'));
-    refinCheckBox->setChecked(crcInterface.getInputReversal(model));
-    refoutCheckBox->setChecked(crcInterface.getOutputReversal(model));
-    labelPolyFormula->setText(crcInterface.getPolyFormula(model));
+    polyLineEdit->setText(QString("0x%1").arg(QString::number(static_cast<int>(crcInterface->getPoly(model)), 16), bitsWidth/4, '0'));
+    initLineEdit->setText(QString("0x%1").arg(QString::number(static_cast<int>(crcInterface->getInitValue(model)), 16), bitsWidth/4, '0'));
+    xorLineEdit->setText(QString("0x%1").arg(QString::number(static_cast<int>(crcInterface->getXorValue(model)), 16), bitsWidth/4, '0'));
+    refinCheckBox->setChecked(crcInterface->getInputReversal(model));
+    refoutCheckBox->setChecked(crcInterface->getOutputReversal(model));
+    labelPolyFormula->setText(crcInterface->getPolyFormula(model));
 }
 
 bool SAKToolCRCCalculator::eventFilter(QObject *watched, QEvent *event)
