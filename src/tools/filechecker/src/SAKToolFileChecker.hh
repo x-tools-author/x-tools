@@ -33,22 +33,22 @@ public:
     ~SAKToolFileChecker();
 
     void setUiEnable(bool enable);
-    QString fileName(){return mFileName;}
-    QCryptographicHash::Algorithm algorithm(){return mAlgorithm;}
+    QString fileName();
+    QCryptographicHash::Algorithm algorithm();
     void updateResult(QByteArray result);
     void outputMessage(QString msg, bool isErrMsg = false);
     void updateProgressBar(int currentValue);
     void changeRemainTime(QString remainTime);
 private:
-    Ui::SAKToolFileChecker *mUi;
-    QString mFileName = QString("C:/Windows/explorer.exe");
-    QCryptographicHash::Algorithm mAlgorithm = QCryptographicHash::Md5;
-    QtCryptographicHashCalculator *mCalculator;
-    QTimer mClearMessageTimer;
-    // ------------------------------------------------------------------------
     void finished();
     void clearMessage();
 private:
+    QString mFileName;
+    QCryptographicHash::Algorithm mAlgorithm;
+    QtCryptographicHashCalculator *mCalculator;
+    QTimer mClearMessageTimer;
+private:
+    Ui::SAKToolFileChecker *mUi;
     QLineEdit *mFilePathlineEdit;
     QComboBox *mAlgorithmComboBox;
     QLineEdit *mResultLineEdit;

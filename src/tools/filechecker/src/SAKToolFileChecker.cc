@@ -17,8 +17,10 @@
 
 SAKToolFileChecker::SAKToolFileChecker(QWidget *parent)
     :QWidget(parent)
-    ,mUi (new Ui::SAKToolFileChecker)
+    ,mFileName(QString("C:/Windows/explorer.exe"))
+    ,mAlgorithm(QCryptographicHash::Md5)
     ,mCalculator (Q_NULLPTR)
+    ,mUi (new Ui::SAKToolFileChecker)
 {
     mUi->setupUi(this);
 
@@ -32,6 +34,7 @@ SAKToolFileChecker::SAKToolFileChecker(QWidget *parent)
     mUpperCheckBox = mUi->upperCheckBox;
     mMessageLabel = mUi->messageLabel;
     mRemainTimeLabel = mUi->remainTimeLabel;
+    mFilePathlineEdit->setText(mFileName);
 
     // Appending algorithms to combo box
     QMetaEnum algorithms = QMetaEnum::fromType<QCryptographicHash::Algorithm>();
@@ -65,6 +68,16 @@ void SAKToolFileChecker::setUiEnable(bool enable)
 {
     mAlgorithmComboBox->setEnabled(enable);
     mOpenPushButton->setEnabled(enable);
+}
+
+QString SAKToolFileChecker::fileName()
+{
+    return mFileName;
+}
+
+QCryptographicHash::Algorithm SAKToolFileChecker::algorithm()
+{
+    return mAlgorithm;
 }
 
 void SAKToolFileChecker::updateResult(QByteArray result)

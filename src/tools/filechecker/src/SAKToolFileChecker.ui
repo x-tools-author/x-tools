@@ -60,7 +60,7 @@
    <item row="0" column="1" colspan="4">
     <widget class="QLineEdit" name="filePathlineEdit">
      <property name="text">
-      <string>E:/ISO/Linux/Debian/debian-live-9.9.0-amd64-kde.iso</string>
+      <string notr="true">E:/ISO/Linux/Debian/debian-live-9.9.0-amd64-kde.iso</string>
      </property>
     </widget>
    </item>
