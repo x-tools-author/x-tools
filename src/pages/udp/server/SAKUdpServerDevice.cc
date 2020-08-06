@@ -104,7 +104,6 @@ void SAKUdpServerDevice::run()
 
 void SAKUdpServerDevice::innerReadBytes(QTcpSocket *socket, SAKUdpServerDeviceController *deviceController)
 {        
-//    socket->waitForReadyRead(debugPage->readWriteParameters().waitForReadyReadTime);
     QByteArray bytes = socket->readAll();
     QString currentClientHost = deviceController->currentClientHost();
     QString peerHost = socket->peerAddress().toString();
@@ -126,7 +125,6 @@ void SAKUdpServerDevice::innerWriteBytes(QTcpSocket *socket, QByteArray bytes, S
     quint16 peerPort = socket->peerPort();
     if ((currentClientHost == peerHost) && (currentClientPort == peerPort)){
         qint64 ret = socket->write(bytes);
-//        socket->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
         if (ret == -1){
             emit messageChanged(tr("无法写入数据:(%1)%2").arg(socket->peerAddress().toString().arg(socket->error())), false);
         }else{
