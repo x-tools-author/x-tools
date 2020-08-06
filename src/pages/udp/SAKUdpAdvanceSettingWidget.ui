@@ -14,24 +14,7 @@
    <string>UDP高级设置</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
-   <item row="3" column="2">
-    <widget class="QLineEdit" name="broadcastPortLineEdit">
-     <property name="text">
-      <string notr="true">55555</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="0" colspan="3">
-    <widget class="QListWidget" name="listWidget"/>
-   </item>
-   <item row="3" column="0">
-    <widget class="QCheckBox" name="broadcastCheckBox">
-     <property name="text">
-      <string>允许广播</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0" colspan="3">
+   <item row="4" column="0" colspan="4">
     <widget class="QLabel" name="label_9">
      <property name="styleSheet">
       <string notr="true">QLabel{
@@ -39,30 +22,11 @@
 }</string>
      </property>
      <property name="text">
-      <string>组播设置</string>
+      <string>Multicast settings</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="3">
-    <widget class="QLabel" name="label">
-     <property name="styleSheet">
-      <string notr="true">QLabel{
-    color:green
-}</string>
-     </property>
-     <property name="text">
-      <string>广播设置</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1">
-    <widget class="QLabel" name="label_8">
-     <property name="text">
-      <string>广播端口</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0" colspan="3">
+   <item row="0" column="0" colspan="4">
     <widget class="QLabel" name="label_2">
      <property name="styleSheet">
       <string notr="true">QLabel{
@@ -70,21 +34,11 @@
 }</string>
      </property>
      <property name="text">
-      <string>单播设置</string>
+      <string>Unicast settings</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="0" colspan="3">
-    <widget class="QCheckBox" name="unicastCheckBox">
-     <property name="text">
-      <string>允许单播</string>
-     </property>
-     <property name="checked">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="0" colspan="3">
+   <item row="7" column="0" colspan="4">
     <widget class="QFrame" name="frame">
      <property name="styleSheet">
       <string notr="true">QFrame{
@@ -113,21 +67,21 @@ border:none
       <item row="0" column="3">
        <widget class="QPushButton" name="deletePushButton">
         <property name="text">
-         <string>删除组播</string>
+         <string>DeleteMulticast</string>
         </property>
        </widget>
       </item>
       <item row="0" column="4">
        <widget class="QPushButton" name="addPushButton">
         <property name="text">
-         <string>添加组播</string>
+         <string>AddMulticast</string>
         </property>
        </widget>
       </item>
       <item row="0" column="2">
        <widget class="QPushButton" name="cancelPushButton">
         <property name="text">
-         <string>取消</string>
+         <string>Cancle</string>
         </property>
        </widget>
       </item>
@@ -150,7 +104,60 @@ border:none
    <item row="5" column="0">
     <widget class="QCheckBox" name="multicastCheckBox">
      <property name="text">
-      <string>允许组播</string>
+      <string>Enable multicast</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="4">
+    <widget class="QLabel" name="label">
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+    color:green
+}</string>
+     </property>
+     <property name="text">
+      <string>Broadcast settings</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2">
+    <widget class="QLabel" name="label_8">
+     <property name="text">
+      <string>Broadcast port</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0" colspan="4">
+    <widget class="QListWidget" name="listWidget"/>
+   </item>
+   <item row="3" column="0">
+    <widget class="QCheckBox" name="broadcastCheckBox">
+     <property name="text">
+      <string>Enable broadcast</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="3">
+    <widget class="QLineEdit" name="broadcastPortLineEdit">
+     <property name="text">
+      <string notr="true">55555</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="4">
+    <widget class="QCheckBox" name="unicastCheckBox">
+     <property name="text">
+      <string>Enable unicast</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
      </property>
     </widget>
    </item>
