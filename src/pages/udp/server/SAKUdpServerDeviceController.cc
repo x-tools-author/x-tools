@@ -105,8 +105,9 @@ void SAKUdpServerDeviceController::addClientSafelyActually(QString host, quint16
 void SAKUdpServerDeviceController::on_clientHostComboBox_currentTextChanged(const QString &arg1)
 {
     mParametersMutex.lock();
-    mCurrentHost = arg1.split(':').first();
-    mCurrentPort = arg1.split(':').last().toInt();
+    QString info = arg1.trimmed();
+    mCurrentHost = info.split(':').first();
+    mCurrentPort = info.split(':').last().toInt();
     mParametersMutex.unlock();
 }
 
