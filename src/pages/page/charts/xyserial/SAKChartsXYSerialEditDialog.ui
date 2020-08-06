@@ -23,13 +23,13 @@
       </sizepolicy>
      </property>
      <property name="title">
-      <string>分析参数</string>
+      <string>Analyzer parameters</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="0" column="0">
        <widget class="QLabel" name="label">
         <property name="text">
-         <string>数据类型</string>
+         <string>Data type</string>
         </property>
        </widget>
       </item>
@@ -46,14 +46,14 @@
       <item row="1" column="0">
        <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>起始字节</string>
+         <string>Start byte</string>
         </property>
        </widget>
       </item>
       <item row="2" column="0" colspan="2">
        <widget class="QCheckBox" name="bigEndianCheckBox">
         <property name="text">
-         <string>大端字节序</string>
+         <string>Big endian</string>
         </property>
        </widget>
       </item>
@@ -79,7 +79,7 @@
       </sizepolicy>
      </property>
      <property name="title">
-      <string notr="true">图表参数</string>
+      <string notr="true">Chart parameters</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_3">
       <item row="1" column="1">
@@ -95,7 +95,7 @@
       <item row="0" column="0">
        <widget class="QLabel" name="label_3">
         <property name="text">
-         <string>图表类型</string>
+         <string>Chart type</string>
         </property>
        </widget>
       </item>
@@ -109,14 +109,14 @@
       <item row="1" column="0">
        <widget class="QLabel" name="label_4">
         <property name="text">
-         <string>图表名称</string>
+         <string>Chart name</string>
         </property>
        </widget>
       </item>
       <item row="2" column="0">
        <widget class="QLabel" name="label_5">
         <property name="text">
-         <string>图表颜色</string>
+         <string>Chart color</string>
         </property>
        </widget>
       </item>
@@ -171,14 +171,14 @@
       <item>
        <widget class="QPushButton" name="cancelPushButton">
         <property name="text">
-         <string>取消</string>
+         <string>Cancle</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="okPushButton">
         <property name="text">
-         <string>确定</string>
+         <string>OK</string>
         </property>
        </widget>
       </item>

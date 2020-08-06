@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>数据图表</string>
+   <string>Charts</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
