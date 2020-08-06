@@ -104,6 +104,11 @@ void QtCryptographicHashCalculator::run()
                                            .arg(QString::number(seconds), 2, '0'));
                 }
             }
+
+            // Responsing the interruption requested
+            if (isInterruptionRequested()){
+                return;
+            }
         }
 
         QByteArray result = cryptographicHash.result();

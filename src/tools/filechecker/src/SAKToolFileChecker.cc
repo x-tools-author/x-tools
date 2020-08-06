@@ -151,7 +151,9 @@ void SAKToolFileChecker::on_startStopPushButton_clicked()
 {
     if (mCalculator){
         mCalculator->blockSignals(true);
-        mCalculator->terminate();
+        mCalculator->requestInterruption();
+        mCalculator->exit();
+        mCalculator->wait();
         mCalculator->deleteLater();
         mCalculator = Q_NULLPTR;
         setUiEnable(true);
