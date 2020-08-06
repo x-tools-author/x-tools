@@ -24,7 +24,7 @@
      </property>
      <widget class="QWidget" name="tanks">
       <attribute name="title">
-       <string>第三方开源</string>
+       <string>3rd</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
@@ -47,7 +47,7 @@ p, li { white-space: pre-wrap; }
      </widget>
      <widget class="QWidget" name="history">
       <attribute name="title">
-       <string>发布历史</string>
+       <string>History</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
@@ -65,7 +65,7 @@ p, li { white-space: pre-wrap; }
      </widget>
      <widget class="QWidget" name="author">
       <attribute name="title">
-       <string>开发人员</string>
+       <string>Developer</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_4">
        <item>
