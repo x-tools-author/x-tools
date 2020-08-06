@@ -11,8 +11,7 @@
 #define SAKUDPSERVERDEVICE_HH
 
 #include <QThread>
-#include <QTcpServer>
-#include <QTcpSocket>
+#include <QUdpSocket>
 
 #include "SAKDebugPageDevice.hh"
 
@@ -24,7 +23,7 @@ class SAKUdpServerDevice:public SAKDebugPageDevice
 public:
     SAKUdpServerDevice(SAKUdpServerDebugPage *debugPage, QObject *parent = Q_NULLPTR);
 private:
-    void run();    
+    void run() final;
 private:
     QString localHost;
     quint16 localPort;
@@ -32,10 +31,7 @@ private:
     QString serverHost;
     quint16 serverPort;
     SAKUdpServerDebugPage *debugPage;
-    QTcpServer *tcpServer;
-private:
-    void innerReadBytes(QTcpSocket *socket, SAKUdpServerDeviceController *deviceController);
-    void innerWriteBytes(QTcpSocket *socket, QByteArray bytes, SAKUdpServerDeviceController *deviceController);
+    QUdpSocket *udpServer;
 };
 
 #endif
