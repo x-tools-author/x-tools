@@ -32,31 +32,31 @@ public:
     SAKToolFileChecker(QWidget *parent = Q_NULLPTR);
 
     void setUiEnable(bool enable);
-    QString fileName(){return _fileName;}
-    QCryptographicHash::Algorithm algorithm(){return _algorithm;}
+    QString fileName(){return mFileName;}
+    QCryptographicHash::Algorithm algorithm(){return mAlgorithm;}
     void updateResult(QByteArray result);
     void outputMessage(QString msg, bool isErrMsg = false);
     void updateProgressBar(int currentValue);
     void changeRemainTime(QString remainTime);
 private:
-    Ui::SAKToolFileChecker *ui;
-    QString _fileName = QString("C:/Windows/explorer.exe");
-    QCryptographicHash::Algorithm _algorithm = QCryptographicHash::Md5;
-    QtCryptographicHashCalculator *calculator;
-    QTimer clearMessageTimer;
+    Ui::SAKToolFileChecker *mUi;
+    QString mFileName = QString("C:/Windows/explorer.exe");
+    QCryptographicHash::Algorithm mAlgorithm = QCryptographicHash::Md5;
+    QtCryptographicHashCalculator *mCalculator;
+    QTimer mClearMessageTimer;
     // ------------------------------------------------------------------------
     void finished();
     void clearMessage();
 private:
-    QLineEdit *filePathlineEdit;
-    QComboBox *algorithmComboBox;
-    QLineEdit *resultLineEdit;
-    QProgressBar *calculatorProgressBar;
-    QPushButton *openPushButton;
-    QPushButton *startStopPushButton;
-    QCheckBox *upperCheckBox;
-    QLabel *messageLabel;
-    QLabel *remainTimeLabel;
+    QLineEdit *mFilePathlineEdit;
+    QComboBox *mAlgorithmComboBox;
+    QLineEdit *mResultLineEdit;
+    QProgressBar *mCalculatorProgressBar;
+    QPushButton *mOpenPushButton;
+    QPushButton *mStartStopPushButton;
+    QCheckBox *mUpperCheckBox;
+    QLabel *mMessageLabel;
+    QLabel *mRemainTimeLabel;
 private slots:
     void on_openPushButton_clicked();
     void on_algorithmComboBox_currentIndexChanged(int index);
