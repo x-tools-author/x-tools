@@ -45,6 +45,7 @@
 #include "SAKMoreInformation.hh"
 #include "SAKToolCRCCalculator.hh"
 #include "SAKUdpClientDebugPage.hh"
+#include "SAKUdpServerDebugPage.hh"
 #include "SAKTcpClientDebugPage.hh"
 #include "SAKTcpServerDebugPage.hh"
 
@@ -497,6 +498,9 @@ QWidget *SAKMainWindow::debugPageFromType(int type)
     switch (type) {
     case SAKDataStruct::DebugPageTypeUdpClient:
         widget = new SAKUdpClientDebugPage;
+        break;
+    case SAKDataStruct::DebugPageTypeUdpServer:
+        widget = new SAKUdpServerDebugPage;
         break;
     case SAKDataStruct::DebugPageTypeTCPClient:
         widget = new SAKTcpClientDebugPage;

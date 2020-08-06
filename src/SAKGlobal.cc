@@ -92,6 +92,9 @@ QString SAKGlobal::debugPageNameFromType(int type)
     case SAKDataStruct::DebugPageTypeUdpClient:
         name = tr("UDP client");
         break;
+    case SAKDataStruct::DebugPageTypeUdpServer:
+        name = tr("UDP server");
+        break;
     case SAKDataStruct::DebugPageTypeTCPClient:
         name = tr("TCP client");
         break;
