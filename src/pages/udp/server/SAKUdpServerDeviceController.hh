@@ -19,7 +19,7 @@
 namespace Ui {
     class SAKUdpServerDeviceController;
 }
-
+// Udp server control panel
 class SAKUdpServerDeviceController:public QWidget
 {
     Q_OBJECT
