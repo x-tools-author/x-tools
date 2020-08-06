@@ -22,15 +22,15 @@ public:
     ~SAKUdpServerDebugPage();
 
     /**
-     * @brief controllerInstance 获取控制类实例指针
-     * @return 控制类实例
+     * @brief controllerInstance: Get the instance of device controller
+     * @return: Instance of device controller
      */
     SAKUdpServerDeviceController *controllerInstance();
 protected:
     void refreshDevice() final;
     QWidget *controllerWidget() final;
     SAKDebugPageDevice* createDevice() final;
-    void setUiEnable(bool enable);
+    void setUiEnable(bool enable) final;
 private:
     SAKUdpServerDeviceController *tcpServerDeviceController;
 };
