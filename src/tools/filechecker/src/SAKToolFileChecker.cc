@@ -49,7 +49,7 @@ SAKToolFileChecker::SAKToolFileChecker(QWidget *parent)
     mCalculatorProgressBar->setValue(0);
 
     // It will clean the message which was showed on the info label when the timer is timeout
-    mClearMessageTimer.setInterval(5*1000);
+    mClearMessageTimer.setInterval(SAK_CLEAR_MESSAGE_INTERVAL);
     connect(&mClearMessageTimer, &QTimer::timeout, this, &SAKToolFileChecker::clearMessage);
 
     mUpperCheckBox->setChecked(true);
