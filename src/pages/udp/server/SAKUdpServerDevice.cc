@@ -55,10 +55,17 @@ void SAKUdpServerDevice::run()
                 qint64 ret = udpServer->readDatagram(bytes.data(), size, &peerAddress, &peerPort);
                 if (ret > 0){
                     QString currentHost = deviceController->currentClientHost();
-                    qint16 currentPort = deviceController->currentClientPort();
-                    deviceController->addClientSafely(peerAddress.toString(), peerPort);
-                    if ((currentHost == peerAddress.toString()) && (currentPort == peerPort)){
+                    quint16 currentPort = deviceController->currentClientPort();
+
+                    // Do not ignore the first frame.
+                    if (deviceController->hasNoClient()){
+                        deviceController->addClientSafely(peerAddress.toString(), peerPort);
                         emit bytesRead(bytes);
+                    }else{
+                        deviceController->addClientSafely(peerAddress.toString(), peerPort);
+                        if ((currentHost == peerAddress.toString()) && (currentPort == peerPort)){
+                            emit bytesRead(bytes);
+                        }
                     }
                 }
             }
@@ -68,7 +75,7 @@ void SAKUdpServerDevice::run()
                 QByteArray bytes = takeWaitingForWrittingBytes();
                 if (bytes.length()){
                     QString currentHost = deviceController->currentClientHost();
-                    qint16 currentPort = deviceController->currentClientPort();
+                    quint16 currentPort = deviceController->currentClientPort();
                     qint64 ret = udpServer->writeDatagram(bytes, QHostAddress(currentHost), currentPort);
                     if (ret > 0){
                         emit bytesWritten(bytes);
