@@ -18,14 +18,10 @@ QtCryptographicHashCalculator::QtCryptographicHashCalculator(SAKToolFileChecker 
     :QThread (parent)
     ,mCryptographicHashController (controller)
 {
-    connect(this, &QtCryptographicHashCalculator::updateResult,
-            controller, &SAKToolFileChecker::updateResult);
-    connect(this, &QtCryptographicHashCalculator::outputMessage,
-            controller, &SAKToolFileChecker::outputMessage);
-    connect(this, &QtCryptographicHashCalculator::updateProgressBar,
-            controller, &SAKToolFileChecker::updateProgressBar);
-    connect(this, &QtCryptographicHashCalculator::remainTimeChanged,
-            controller, &SAKToolFileChecker::changeRemainTime);
+    connect(this, &QtCryptographicHashCalculator::updateResult, controller, &SAKToolFileChecker::updateResult);
+    connect(this, &QtCryptographicHashCalculator::outputMessage, controller, &SAKToolFileChecker::outputMessage);
+    connect(this, &QtCryptographicHashCalculator::updateProgressBar, controller, &SAKToolFileChecker::updateProgressBar);
+    connect(this, &QtCryptographicHashCalculator::remainTimeChanged, controller, &SAKToolFileChecker::changeRemainTime);
 }
 
 void QtCryptographicHashCalculator::run()
