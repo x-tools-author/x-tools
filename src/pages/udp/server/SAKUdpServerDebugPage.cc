@@ -18,11 +18,11 @@
 #include "SAKUdpServerDeviceController.hh"
 
 SAKUdpServerDebugPage::SAKUdpServerDebugPage(QWidget *parent)
-    :SAKDebugPage (SAKDataStruct::DebugPageTypeTCPServer, parent)
+    :SAKDebugPage (SAKDataStruct::DebugPageTypeUdpServer, parent)
     ,tcpServerDeviceController (new SAKUdpServerDeviceController)
 {
     initializingPage();
-    setWindowTitle(SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeTCPServer));
+    setWindowTitle(SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeUdpServer));
 }
 
 SAKUdpServerDebugPage::~SAKUdpServerDebugPage()
