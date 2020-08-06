@@ -22,9 +22,7 @@ SAKToolFileChecker::SAKToolFileChecker(QWidget *parent)
 {
     mUi->setupUi(this);
 
-    /*
-     * 初始化ui指针
-     */
+    // Initializing data member about ui
     mFilePathlineEdit = mUi->filePathlineEdit;
     mAlgorithmComboBox = mUi->algorithmComboBox;
     mResultLineEdit = mUi->resultLineEdit;
@@ -35,9 +33,7 @@ SAKToolFileChecker::SAKToolFileChecker(QWidget *parent)
     mMessageLabel = mUi->messageLabel;
     mRemainTimeLabel = mUi->remainTimeLabel;
 
-    /*
-     * 设置加密散列算法
-     */
+    // Appending algorithms to combo box
     QMetaEnum algorithms = QMetaEnum::fromType<QCryptographicHash::Algorithm>();
     QStringList algorithmsStringList;
     for (int i = 0; i < algorithms.keyCount(); i++){
@@ -46,19 +42,13 @@ SAKToolFileChecker::SAKToolFileChecker(QWidget *parent)
     mAlgorithmComboBox->addItems(algorithmsStringList);
     mAlgorithmComboBox->setCurrentText("Md5");
 
-    /*
-     * 初始化ui使能状态
-     */
     mFilePathlineEdit->setReadOnly(true);
     mResultLineEdit->setReadOnly(true);
-//    startStopPushButton->setEnabled(false);
     mCalculatorProgressBar->setMinimum(0);
     mCalculatorProgressBar->setMaximum(100);
     mCalculatorProgressBar->setValue(0);
 
-    /*
-     * 5秒自动清除输出信息
-     */
+    // It will clean the message which was showed on the info label when the timer is timeout
     mClearMessageTimer.setInterval(5*1000);
     connect(&mClearMessageTimer, &QTimer::timeout, this, &SAKToolFileChecker::clearMessage);
 
