@@ -32,7 +32,7 @@ protected:
     SAKDebugPageDevice* createDevice() final;
     void setUiEnable(bool enable) final;
 private:
-    SAKUdpServerDeviceController *tcpServerDeviceController;
+    SAKUdpServerDeviceController *mDeviceController;
 };
 
 #endif

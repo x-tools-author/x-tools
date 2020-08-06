@@ -19,7 +19,7 @@
 
 SAKUdpServerDebugPage::SAKUdpServerDebugPage(QWidget *parent)
     :SAKDebugPage (SAKDataStruct::DebugPageTypeUdpServer, parent)
-    ,tcpServerDeviceController (new SAKUdpServerDeviceController)
+    ,mDeviceController (new SAKUdpServerDeviceController)
 {
     initializingPage();
     setWindowTitle(SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeUdpServer));
@@ -27,27 +27,27 @@ SAKUdpServerDebugPage::SAKUdpServerDebugPage(QWidget *parent)
 
 SAKUdpServerDebugPage::~SAKUdpServerDebugPage()
 {
-    tcpServerDeviceController->deleteLater();
+    mDeviceController->deleteLater();
 }
 
 SAKUdpServerDeviceController *SAKUdpServerDebugPage::controllerInstance()
 {
-    return tcpServerDeviceController;
+    return mDeviceController;
 }
 
 void SAKUdpServerDebugPage::refreshDevice()
 {
-    tcpServerDeviceController->refresh();
+    mDeviceController->refresh();
 }
 
 QWidget *SAKUdpServerDebugPage::controllerWidget()
 {
-    return tcpServerDeviceController;
+    return mDeviceController;
 }
 
 void SAKUdpServerDebugPage::setUiEnable(bool enable)
 {
-    tcpServerDeviceController->setUiEnable(enable);
+    mDeviceController->setUiEnable(enable);
     mRefreshPushButton->setEnabled(enable);
 }
 
