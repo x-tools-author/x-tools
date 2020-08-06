@@ -34,7 +34,7 @@
    <item row="4" column="4">
     <widget class="QCheckBox" name="upperCheckBox">
      <property name="text">
-      <string>结果大写</string>
+      <string>Upper result</string>
      </property>
     </widget>
    </item>
@@ -73,7 +73,7 @@
       </sizepolicy>
      </property>
      <property name="text">
-      <string>校验文件</string>
+      <string>Checked file</string>
      </property>
     </widget>
    </item>
@@ -86,7 +86,7 @@
       </sizepolicy>
      </property>
      <property name="text">
-      <string>检验进度</string>
+      <string>Checked progress</string>
      </property>
     </widget>
    </item>
@@ -99,7 +99,7 @@
       </sizepolicy>
      </property>
      <property name="text">
-      <string>校验算法</string>
+      <string>Checked algorithm</string>
      </property>
     </widget>
    </item>
@@ -112,7 +112,7 @@
       </sizepolicy>
      </property>
      <property name="text">
-      <string>校验结果</string>
+      <string>Checked result</string>
      </property>
     </widget>
    </item>
@@ -122,14 +122,14 @@
    <item row="4" column="2">
     <widget class="QPushButton" name="startStopPushButton">
      <property name="text">
-      <string>开始计算</string>
+      <string>Calculate</string>
      </property>
     </widget>
    </item>
    <item row="4" column="3">
     <widget class="QPushButton" name="openPushButton">
      <property name="text">
-      <string>打开文件</string>
+      <string>Open</string>
      </property>
     </widget>
    </item>
