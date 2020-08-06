@@ -303,6 +303,19 @@ void SAKGlobal::initInputTextFormatComboBox(QComboBox *comboBox)
         }
         comboBox->setModel(itemModel);
         comboBox->setCurrentText(formatMap.value(SAKDataStruct::InputFormatLocal));
+
+        // Reset the iterator...
+        while (mapIterator.hasPrevious()) {
+            mapIterator.previous();
+        }
+
+        // Set item data of combo box
+        int index = 0;
+        while (mapIterator.hasNext()) {
+            mapIterator.next();
+            comboBox->setItemData(index, QVariant::fromValue(mapIterator.key()));
+            index += 1;
+        }
     }
 }
 
@@ -332,6 +345,19 @@ void SAKGlobal::initOutputTextFormatComboBox(QComboBox *comboBox)
         }
         comboBox->setModel(itemModel);
         comboBox->setCurrentText(formatMap.value(SAKDataStruct::OutputFormatHex));
+
+        // Reset the iterator...
+        while (mapIterator.hasPrevious()) {
+            mapIterator.previous();
+        }
+
+        // Set item data of combo box
+        int index = 0;
+        while (mapIterator.hasNext()) {
+            mapIterator.next();
+            comboBox->setItemData(index, QVariant::fromValue(mapIterator.key()));
+            index += 1;
+        }
     }
 }
 
