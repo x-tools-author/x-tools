@@ -40,7 +40,6 @@ private:
     SAKCRCInterface *crcInterface;
 private:
     void initParameterModel();
-private slots:
     void calculate();
     void textFormatControl();
     void changedParameterModel(int index);
