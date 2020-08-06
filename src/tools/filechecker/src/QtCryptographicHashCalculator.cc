@@ -56,7 +56,7 @@ void QtCryptographicHashCalculator::run()
         qint64 minutesTemp = 0;
         qint64 secondsTemp = 0;
 
-        // 每次读入的字节数
+        // The number of bytes read at a time
         int dataBlock = 1024*1024;
 
         while (1) {                       
@@ -66,30 +66,25 @@ void QtCryptographicHashCalculator::run()
             consumeBytes += array.length();
             remainBytes = allBytes - consumeBytes;
 
-            /*
-             * 有效降低信号的发送频率
-             */
+            // Effectively reduce the frequency of signal transmission
             percenTemp = (consumeBytes*100)/allBytes;
             if (percenTemp != percent){
                 percent = percenTemp;
                 emit updateProgressBar(percent);
             }
 
-            /*
-             * 返回数组为空，有两种可能，一是文件读取完毕，另一个是文件读取出现错误。
-             * 这两种情况都认为是校验计算结束
-             */
+            // Returns an empty array. There are two possibilities.
+            // One is that the file has been read, and the other is that the file has been read incorrectly.
+            // Both cases are considered to be the end of the check calculation
             if (array.isEmpty()){
-                outputMessage(tr("计算完成"), false);
+                outputMessage(tr("Calculating finished"), false);
                 QApplication::beep();
                 break;
             }
 
             cryptographicHash.addData(array);
 
-            /*
-             * 计算剩余时间
-             */
+            // Calculating remaining time
             endTime = QDateTime::currentDateTime().toMSecsSinceEpoch();
             consumeTime = endTime - startTime;
             if (consumeTime != 0){

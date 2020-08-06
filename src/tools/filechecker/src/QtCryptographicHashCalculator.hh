@@ -20,7 +20,7 @@ public:
     QtCryptographicHashCalculator(SAKToolFileChecker *controller, QObject *parent = Q_NULLPTR);
 private:
     SAKToolFileChecker *cryptographicHashController;
-    // ------------------------------------------------------------------------
+private:
     void run() final;
 signals:
     void outputMessage(QString msg, bool isErrMsg);
