@@ -384,14 +384,17 @@ void SAKMainWindow::initLinksMenu()
     struct Link {
         QString name;
         QString url;
+        QString iconPath;
     };
     QList<Link> linkList;
-    linkList << Link{tr("Qt official download"), QString("http://download.qt.io/official_releases/qt")}
-             << Link{tr("Qt official blog"), QString("https://www.qt.io/blog")}
-             << Link{tr("Qt official release"), QString("https://wiki.qt.io/Qt_5.12_Release")};
+    linkList << Link{tr("Qt official download"), QString("http://download.qt.io/official_releases/qt"), QString(":/resources/images/Qt.png")}
+             << Link{tr("Qt official blog"), QString("https://www.qt.io/blog"), QString(":/resources/images/Qt.png")}
+             << Link{tr("Qt official release"), QString("https://wiki.qt.io/Qt_5.12_Release"), QString(":/resources/images/Qt.png")}
+             << Link{tr("Download SAK from github"), QString("https://github.com/qsak/QtSwissArmyKnife/releases"), QString(":/resources/images/GitHub.png")}
+             << Link{tr("Download SAK from gitee"), QString("https://gitee.com/qsak/QtSwissArmyKnife/releases"), QString(":/resources/images/Gitee.png")};
 
     for (auto var:linkList){
-        QAction *action = new QAction(QIcon(":/resources/images/Qt.png"), var.name, this);
+        QAction *action = new QAction(QIcon(var.iconPath), var.name, this);
         action->setObjectName(var.url);
         linksMenu->addAction(action);
 
