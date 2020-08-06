@@ -20,14 +20,13 @@
 #include <QMainWindow>
 #include <QTranslator>
 
-class SAKQRCodeDialog;
-class SAKUpdateManager;
-class SAKMoreInformation;
-
 namespace Ui {
     class SAKMainWindow;
 }
-/// @brief 程序主窗口
+
+class SAKQRCodeDialog;
+class SAKUpdateManager;
+class SAKMoreInformation;
 class SAKMainWindow : public QMainWindow
 {
     Q_OBJECT
