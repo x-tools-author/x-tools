@@ -59,9 +59,7 @@ SAKToolCRCCalculator::SAKToolCRCCalculator(QWidget* parent)
     mLabelInfo->installEventFilter(this);
     mLabelInfo->setCursor(QCursor(Qt::PointingHandCursor));
 
-    /// @brief 读入crc校验算法模型
     initParameterModel();
-    /// @brief 旧式信号与槽关联
     connect(mParameterComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(changedParameterModel(int)));
     connect(mCalculatedBt, SIGNAL(clicked()), this, SLOT(calculate()));
     connect(mInputTextEdit, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
@@ -71,7 +69,7 @@ SAKToolCRCCalculator::~SAKToolCRCCalculator()
 {
     QLoggingCategory category(mLogCategory);
     qCInfo(category) << "Goodbye CRCCalculator";
-    delete  mUi;
+    delete mUi;
 }
 
 void SAKToolCRCCalculator::initParameterModel()
