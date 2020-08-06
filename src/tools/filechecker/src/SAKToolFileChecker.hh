@@ -20,14 +20,12 @@
 #include <QProgressBar>
 #include <QCryptographicHash>
 
-#include "SAKToolBase.hh"
-
 namespace Ui {
     class SAKToolFileChecker;
 }
 
 class QtCryptographicHashCalculator;
-class SAKToolFileChecker : public SAKToolBase
+class SAKToolFileChecker : public QWidget
 {
     Q_OBJECT
 public:
@@ -42,7 +40,7 @@ public:
     void changeRemainTime(QString remainTime);
 private:
     Ui::SAKToolFileChecker *ui;
-    QString _fileName = QString("E:/ISO/Linux/Debian/debian-live-9.9.0-amd64-kde.iso");
+    QString _fileName = QString("C:/Windows/explorer.exe");
     QCryptographicHash::Algorithm _algorithm = QCryptographicHash::Md5;
     QtCryptographicHashCalculator *calculator;
     QTimer clearMessageTimer;
