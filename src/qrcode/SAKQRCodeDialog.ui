@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>二维码</string>
+   <string>QR code</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
