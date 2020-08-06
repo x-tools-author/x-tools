@@ -42,6 +42,7 @@
 #include "QtStyleSheetApi.hh"
 #include "SAKToolsManager.hh"
 #include "SAKUpdateManager.hh"
+#include "SAKTestDebugPage.hh"
 #include "SAKMoreInformation.hh"
 #include "SAKToolCRCCalculator.hh"
 #include "SAKUdpClientDebugPage.hh"
@@ -496,6 +497,11 @@ QWidget *SAKMainWindow::debugPageFromType(int type)
 {
     QWidget *widget = Q_NULLPTR;
     switch (type) {
+#ifdef QT_DEBUG
+    case SAKDataStruct::DebugPageTypeTest:
+        widget = new SAKTestDebugPage;
+        break;
+#endif
     case SAKDataStruct::DebugPageTypeUdpClient:
         widget = new SAKUdpClientDebugPage;
         break;
