@@ -157,9 +157,9 @@ FORMS += \
     src/pages/page/output/save2file/SAKOutputSave2FileDialog.ui \
     src/pages/tcp/client/SAKTcpClientDeviceController.ui \
     src/pages/tcp/server/SAKTcpServerDeviceController.ui \
-    src/pages/udp/SAKUdpAdvanceSettingWidget.ui \
-    src/pages/udp/SAKUdpDeviceController.ui \
-    src/pages/udp/SAKUdpMulticastEditingDialog.ui \
+    src/pages/udp/SAKUdpClientAdvanceSettingWidget.ui \
+    src/pages/udp/SAKUdpClientDeviceController.ui \
+    src/pages/udp/SAKUdpClientMulticastEditingDialog.ui \
     src/qrcode/SAKQRCodeDialog.ui \
     src/singleton/SAKSingletonErrorDialog.ui \
     src/update/SAKDownloadItemWidget.ui \
@@ -208,11 +208,11 @@ HEADERS += \
     src/pages/tcp/server/SAKTcpServerDebugPage.hh \
     src/pages/tcp/server/SAKTcpServerDevice.hh \
     src/pages/tcp/server/SAKTcpServerDeviceController.hh \
-    src/pages/udp/SAKUdpAdvanceSettingWidget.hh \
-    src/pages/udp/SAKUdpDebugPage.hh \
-    src/pages/udp/SAKUdpDevice.hh \
-    src/pages/udp/SAKUdpDeviceController.hh \
-    src/pages/udp/SAKUdpMulticastEditingDialog.hh \
+    src/pages/udp/SAKUdpClientAdvanceSettingWidget.hh \
+    src/pages/udp/SAKUdpClientDebugPage.hh \
+    src/pages/udp/SAKUdpClientDevice.hh \
+    src/pages/udp/SAKUdpClientDeviceController.hh \
+    src/pages/udp/SAKUdpClientMulticastEditingDialog.hh \
     src/qrcode/SAKQRCodeDialog.hh \
     src/qrcode/SAKQRCodeWidget.hh \
     src/singleton/SAKSingletonController.hh \
@@ -265,11 +265,11 @@ SOURCES += \
     src/pages/tcp/server/SAKTcpServerDebugPage.cc \
     src/pages/tcp/server/SAKTcpServerDevice.cc \
     src/pages/tcp/server/SAKTcpServerDeviceController.cc \
-    src/pages/udp/SAKUdpAdvanceSettingWidget.cc \
-    src/pages/udp/SAKUdpDebugPage.cc \
-    src/pages/udp/SAKUdpDevice.cc \
-    src/pages/udp/SAKUdpDeviceController.cc \
-    src/pages/udp/SAKUdpMulticastEditingDialog.cc \
+    src/pages/udp/SAKUdpClientAdvanceSettingWidget.cc \
+    src/pages/udp/SAKUdpClientDebugPage.cc \
+    src/pages/udp/SAKUdpClientDevice.cc \
+    src/pages/udp/SAKUdpClientDeviceController.cc \
+    src/pages/udp/SAKUdpClientMulticastEditingDialog.cc \
     src/qrcode/SAKQRCodeDialog.cc \
     src/qrcode/SAKQRCodeWidget.cc \
     src/singleton/SAKSingletonController.cc \
