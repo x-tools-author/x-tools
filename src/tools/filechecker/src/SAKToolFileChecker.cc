@@ -56,6 +56,11 @@ SAKToolFileChecker::SAKToolFileChecker(QWidget *parent)
     setWindowTitle(tr("File checker"));
 }
 
+SAKToolFileChecker::~SAKToolFileChecker()
+{
+    delete mUi;
+}
+
 void SAKToolFileChecker::setUiEnable(bool enable)
 {
     mAlgorithmComboBox->setEnabled(enable);
