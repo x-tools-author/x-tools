@@ -48,9 +48,6 @@ private:
     void finished();
     void clearMessage();
 private:
-    /*
-     * ui控件指针
-     */
     QLineEdit       *filePathlineEdit;
     QComboBox       *algorithmComboBox;
     QLineEdit       *resultLineEdit;
