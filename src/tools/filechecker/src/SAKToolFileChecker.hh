@@ -48,15 +48,15 @@ private:
     void finished();
     void clearMessage();
 private:
-    QLineEdit       *filePathlineEdit;
-    QComboBox       *algorithmComboBox;
-    QLineEdit       *resultLineEdit;
-    QProgressBar    *calculatorProgressBar;
-    QPushButton     *openPushButton;
-    QPushButton     *startStopPushButton;
-    QCheckBox       *upperCheckBox;
-    QLabel          *messageLabel;
-    QLabel          *remainTimeLabel;
+    QLineEdit *filePathlineEdit;
+    QComboBox *algorithmComboBox;
+    QLineEdit *resultLineEdit;
+    QProgressBar *calculatorProgressBar;
+    QPushButton *openPushButton;
+    QPushButton *startStopPushButton;
+    QCheckBox *upperCheckBox;
+    QLabel *messageLabel;
+    QLabel *remainTimeLabel;
 private slots:
     void on_openPushButton_clicked();
     void on_algorithmComboBox_currentIndexChanged(int index);
