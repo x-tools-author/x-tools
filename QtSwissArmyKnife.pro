@@ -130,7 +130,8 @@ INCLUDEPATH += \
     src/pages/page/statistics \
     src/pages/tcp/client \
     src/pages/tcp/server \
-    src/pages/udp \
+    src/pages/udp/client \
+    src/pages/udp/server \
     src/qrcode \
     src/startui \
     src/singleton \
