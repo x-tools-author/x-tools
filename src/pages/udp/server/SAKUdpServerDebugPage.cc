@@ -13,46 +13,46 @@
 
 #include "SAKGlobal.hh"
 #include "SAKDataStruct.hh"
-#include "SAKTcpServerDevice.hh"
-#include "SAKTcpServerDebugPage.hh"
-#include "SAKTcpServerDeviceController.hh"
+#include "SAKUdpServerDevice.hh"
+#include "SAKUdpServerDebugPage.hh"
+#include "SAKUdpServerDeviceController.hh"
 
-SAKTcpServerDebugPage::SAKTcpServerDebugPage(QWidget *parent)
+SAKUdpServerDebugPage::SAKUdpServerDebugPage(QWidget *parent)
     :SAKDebugPage (SAKDataStruct::DebugPageTypeTCPServer, parent)
-    ,tcpServerDeviceController (new SAKTcpServerDeviceController)
+    ,tcpServerDeviceController (new SAKUdpServerDeviceController)
 {
     initializingPage();
     setWindowTitle(SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeTCPServer));
 }
 
-SAKTcpServerDebugPage::~SAKTcpServerDebugPage()
+SAKUdpServerDebugPage::~SAKUdpServerDebugPage()
 {
     tcpServerDeviceController->deleteLater();
 }
 
-SAKTcpServerDeviceController *SAKTcpServerDebugPage::controllerInstance()
+SAKUdpServerDeviceController *SAKUdpServerDebugPage::controllerInstance()
 {
     return tcpServerDeviceController;
 }
 
-void SAKTcpServerDebugPage::refreshDevice()
+void SAKUdpServerDebugPage::refreshDevice()
 {
     tcpServerDeviceController->refresh();
 }
 
-QWidget *SAKTcpServerDebugPage::controllerWidget()
+QWidget *SAKUdpServerDebugPage::controllerWidget()
 {
     return tcpServerDeviceController;
 }
 
-void SAKTcpServerDebugPage::setUiEnable(bool enable)
+void SAKUdpServerDebugPage::setUiEnable(bool enable)
 {
     tcpServerDeviceController->setUiEnable(enable);
     mRefreshPushButton->setEnabled(enable);
 }
 
-SAKDebugPageDevice* SAKTcpServerDebugPage::createDevice()
+SAKDebugPageDevice* SAKUdpServerDebugPage::createDevice()
 {
-    SAKTcpServerDevice *device = new SAKTcpServerDevice(this);
+    SAKUdpServerDevice *device = new SAKUdpServerDevice(this);
     return device;
 }

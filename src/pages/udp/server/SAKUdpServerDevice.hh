@@ -16,13 +16,13 @@
 
 #include "SAKDebugPageDevice.hh"
 
-class SAKTcpServerDebugPage;
-class SAKTcpServerDeviceController;
-class SAKTcpServerDevice:public SAKDebugPageDevice
+class SAKUdpServerDebugPage;
+class SAKUdpServerDeviceController;
+class SAKUdpServerDevice:public SAKDebugPageDevice
 {
     Q_OBJECT
 public:
-    SAKTcpServerDevice(SAKTcpServerDebugPage *debugPage, QObject *parent = Q_NULLPTR);
+    SAKUdpServerDevice(SAKUdpServerDebugPage *debugPage, QObject *parent = Q_NULLPTR);
 private:
     void run();    
 private:
@@ -31,11 +31,11 @@ private:
     bool enableCustomLocalSetting;
     QString serverHost;
     quint16 serverPort;
-    SAKTcpServerDebugPage *debugPage;
+    SAKUdpServerDebugPage *debugPage;
     QTcpServer *tcpServer;
 private:
-    void innerReadBytes(QTcpSocket *socket, SAKTcpServerDeviceController *deviceController);
-    void innerWriteBytes(QTcpSocket *socket, QByteArray bytes, SAKTcpServerDeviceController *deviceController);
+    void innerReadBytes(QTcpSocket *socket, SAKUdpServerDeviceController *deviceController);
+    void innerWriteBytes(QTcpSocket *socket, QByteArray bytes, SAKUdpServerDeviceController *deviceController);
 };
 
 #endif

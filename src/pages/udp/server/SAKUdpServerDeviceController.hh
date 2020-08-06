@@ -17,15 +17,15 @@
 #include <QTcpSocket>
 
 namespace Ui {
-    class SAKTcpServerDeviceController;
+    class SAKUdpServerDeviceController;
 }
 
-class SAKTcpServerDeviceController:public QWidget
+class SAKUdpServerDeviceController:public QWidget
 {
     Q_OBJECT
 public:
-    SAKTcpServerDeviceController(QWidget *parent = Q_NULLPTR);
-    ~SAKTcpServerDeviceController();
+    SAKUdpServerDeviceController(QWidget *parent = Q_NULLPTR);
+    ~SAKUdpServerDeviceController();
 
     QString serverHost();
     quint16 serverPort();
@@ -39,7 +39,7 @@ public:
     void addClient(QString host, quint16 port, QTcpSocket *socket);
     void removeClient(QTcpSocket *socket);
 private:
-    Ui::SAKTcpServerDeviceController *ui;
+    Ui::SAKUdpServerDeviceController *ui;
 
     QComboBox *serverHostComboBox;
     QLineEdit *serverPortLineEdit;

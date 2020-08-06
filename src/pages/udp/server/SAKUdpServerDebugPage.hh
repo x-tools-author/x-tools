@@ -12,27 +12,27 @@
 
 #include "SAKDebugPage.hh"
 
-class SAKTcpServerDevice;
-class SAKTcpServerDeviceController;
-class SAKTcpServerDebugPage : public SAKDebugPage
+class SAKUdpServerDevice;
+class SAKUdpServerDeviceController;
+class SAKUdpServerDebugPage : public SAKDebugPage
 {
     Q_OBJECT
 public:
-    SAKTcpServerDebugPage(QWidget *parent = Q_NULLPTR);
-    ~SAKTcpServerDebugPage();
+    SAKUdpServerDebugPage(QWidget *parent = Q_NULLPTR);
+    ~SAKUdpServerDebugPage();
 
     /**
      * @brief controllerInstance 获取控制类实例指针
      * @return 控制类实例
      */
-    SAKTcpServerDeviceController *controllerInstance();
+    SAKUdpServerDeviceController *controllerInstance();
 protected:
     void refreshDevice() final;
     QWidget *controllerWidget() final;
     SAKDebugPageDevice* createDevice() final;
     void setUiEnable(bool enable);
 private:
-    SAKTcpServerDeviceController *tcpServerDeviceController;
+    SAKUdpServerDeviceController *tcpServerDeviceController;
 };
 
 #endif
