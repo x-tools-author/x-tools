@@ -19,6 +19,7 @@
 SAKToolCRCCalculator::SAKToolCRCCalculator(QWidget* parent)
     :QWidget(parent)
     ,mLogCategory("CRCCalculator")
+    ,mCrcInterface(new SAKCRCInterface)
     ,mUi(new Ui::SAKToolCRCCalculator)
 {
     mUi->setupUi(this);
@@ -69,6 +70,7 @@ SAKToolCRCCalculator::~SAKToolCRCCalculator()
 {
     QLoggingCategory category(mLogCategory);
     qCInfo(category) << "Goodbye CRCCalculator";
+    delete mCrcInterface;
     delete mUi;
 }
 
