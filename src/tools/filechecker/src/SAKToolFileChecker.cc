@@ -63,7 +63,7 @@ SAKToolFileChecker::SAKToolFileChecker(QWidget *parent)
     connect(&mClearMessageTimer, &QTimer::timeout, this, &SAKToolFileChecker::clearMessage);
 
     mUpperCheckBox->setChecked(true);
-    setWindowTitle(tr("文件校验工具"));
+    setWindowTitle(tr("File checker"));
 }
 
 void SAKToolFileChecker::setUiEnable(bool enable)
@@ -102,7 +102,7 @@ void SAKToolFileChecker::updateProgressBar(int currentValue)
 
 void SAKToolFileChecker::changeRemainTime(QString remainTime)
 {
-    QString str = tr("估计剩余时间");
+    QString str = tr("Remaining time");
     mRemainTimeLabel->setText(QString("%1 %2").arg(str).arg(remainTime));
 }
 
