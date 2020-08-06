@@ -147,13 +147,13 @@ void SAKToolFileChecker::on_startStopPushButton_clicked()
         mCalculator->deleteLater();
         mCalculator = Q_NULLPTR;
         setUiEnable(true);
-        mStartStopPushButton->setText(tr("开始计算"));
+        mStartStopPushButton->setText(tr("Calculate"));
         setUiEnable(true);
     }else{
         mCalculator = new QtCryptographicHashCalculator(this);
         connect(mCalculator, &QThread::finished, this, &SAKToolFileChecker::finished);
         mCalculator->start();
-        mStartStopPushButton->setText(tr("停止计算"));
+        mStartStopPushButton->setText(tr("StopCalculating"));
         setUiEnable(false);
     }
 }
