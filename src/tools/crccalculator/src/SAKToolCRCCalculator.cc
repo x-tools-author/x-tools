@@ -172,7 +172,6 @@ void SAKToolCRCCalculator::textFormatControl()
 void SAKToolCRCCalculator::changedParameterModel(int index)
 {
     Q_UNUSED(index)
-
     QMetaEnum models = QMetaEnum::fromType<SAKCRCInterface::CRCModel>();
     bool ok = false;
     SAKCRCInterface::CRCModel model = SAKCRCInterface::CRC_8;
