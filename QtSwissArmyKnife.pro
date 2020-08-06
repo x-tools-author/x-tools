@@ -35,7 +35,7 @@ DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs depr
 
 CONFIG += c++11
 
-# 子项目
+#Sub project
 #include(SAKHID.pri)
 #include(SAKUSB.pri)
 #include(SAKSCTP.pri)
@@ -67,14 +67,14 @@ win32 {
 }
 
 #--------------------------------------------------------------------------------------------
-#编译目录配置
+#Output directory
 UI_DIR      = $$OUT_PWD/ui
 MOC_DIR     = $$OUT_PWD/moc
 RCC_DIR     = $$OUT_PWD/res
 OBJECTS_DIR = $$OUT_PWD/obj
 
 #--------------------------------------------------------------------------------------------
-#Windows配置
+#Configuration of Windows
 win32 {
     RC_ICONS = Windows.ico
     msvc:{
@@ -83,7 +83,7 @@ win32 {
 }
 
 #--------------------------------------------------------------------------------------------
-#国际化文件
+#I18N
 TRANSLATIONS  += \
     translations/sak/SAK_en.ts \
     translations/sak/SAK_zh_CN.ts \
