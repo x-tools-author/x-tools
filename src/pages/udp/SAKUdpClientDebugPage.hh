@@ -7,32 +7,32 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKUDPDEBUGPAGE_HH
-#define SAKUDPDEBUGPAGE_HH
+#ifndef SAKUDPCLIENTDEBUGPAGE_HH
+#define SAKUDPCLIENTDEBUGPAGE_HH
 
 #include "SAKDebugPage.hh"
 
-class SAKUdpDevice;
-class SAKUdpDeviceController;
-class SAKUdpDebugPage : public SAKDebugPage
+class SAKUdpClientDevice;
+class SAKUdpClientDeviceController;
+class SAKUdpClientDebugPage : public SAKDebugPage
 {
     Q_OBJECT
 public:
-    SAKUdpDebugPage(QWidget *parent = Q_NULLPTR);
-    ~SAKUdpDebugPage();
+    SAKUdpClientDebugPage(QWidget *parent = Q_NULLPTR);
+    ~SAKUdpClientDebugPage();
 
     /**
      * @brief controllerInstance 获取
      * @return
      */
-    SAKUdpDeviceController *controllerInstance();
+    SAKUdpClientDeviceController *controllerInstance();
 protected:
     void refreshDevice() final;
     QWidget *controllerWidget() final;
     SAKDebugPageDevice* createDevice() final;
     void setUiEnable(bool enable) final;
 private:
-    SAKUdpDeviceController *udpDeviceController;
+    SAKUdpClientDeviceController *udpDeviceController;
 };
 
 #endif

@@ -11,11 +11,11 @@
 #include <QEventLoop>
 #include <QApplication>
 
-#include "SAKUdpDevice.hh"
-#include "SAKUdpDebugPage.hh"
-#include "SAKUdpDeviceController.hh"
+#include "SAKUdpClientDevice.hh"
+#include "SAKUdpClientDebugPage.hh"
+#include "SAKUdpClientDeviceController.hh"
 
-SAKUdpDevice::SAKUdpDevice(SAKUdpDebugPage *debugPage, QObject *parent)
+SAKUdpClientDevice::SAKUdpClientDevice(SAKUdpClientDebugPage *debugPage, QObject *parent)
     :SAKDebugPageDevice(parent)
     ,enableCustomLocalSetting(false)
     ,debugPage (debugPage)
@@ -25,33 +25,33 @@ SAKUdpDevice::SAKUdpDevice(SAKUdpDebugPage *debugPage, QObject *parent)
     parametersContext.enableBroadcast = false;
 }
 
-SAKUdpDevice::~SAKUdpDevice()
+SAKUdpClientDevice::~SAKUdpClientDevice()
 {
 
 }
 
-void SAKUdpDevice::setUnicastEnable(bool enable)
+void SAKUdpClientDevice::setUnicastEnable(bool enable)
 {
     parametersContextMutex.lock();
     parametersContext.enableUnicast = enable;
     parametersContextMutex.unlock();
 }
 
-void SAKUdpDevice::setBroadcastEnable(bool enable)
+void SAKUdpClientDevice::setBroadcastEnable(bool enable)
 {
     parametersContextMutex.lock();
     parametersContext.enableBroadcast = enable;
     parametersContextMutex.unlock();
 }
 
-void SAKUdpDevice::setBroadcastPort(quint16 port)
+void SAKUdpClientDevice::setBroadcastPort(quint16 port)
 {
     parametersContextMutex.lock();
     parametersContext.broadcastPort = port;
     parametersContextMutex.unlock();
 }
 
-void SAKUdpDevice::addMulticastInfo(QString address, quint16 port)
+void SAKUdpClientDevice::addMulticastInfo(QString address, quint16 port)
 {
     parametersContextMutex.lock();
     ParametersContext::MulticastInfo info{address, port};
@@ -60,7 +60,7 @@ void SAKUdpDevice::addMulticastInfo(QString address, quint16 port)
     parametersContextMutex.unlock();
 }
 
-void SAKUdpDevice::removeMulticastInfo(QString address, quint16 port)
+void SAKUdpClientDevice::removeMulticastInfo(QString address, quint16 port)
 {
     parametersContextMutex.lock();
     for(int i = 0; 0 < parametersContext.multicastInfoList.length(); i++){
@@ -74,17 +74,17 @@ void SAKUdpDevice::removeMulticastInfo(QString address, quint16 port)
     parametersContextMutex.unlock();
 }
 
-void SAKUdpDevice::setMulticastEnable(bool enable)
+void SAKUdpClientDevice::setMulticastEnable(bool enable)
 {
     parametersContextMutex.lock();
     parametersContext.enableMulticast = enable;
     parametersContextMutex.unlock();
 }
 
-void SAKUdpDevice::run()
+void SAKUdpClientDevice::run()
 {
     QEventLoop eventLoop;
-    SAKUdpDeviceController *deviceController = debugPage->controllerInstance();
+    SAKUdpClientDeviceController *deviceController = debugPage->controllerInstance();
     enableCustomLocalSetting = deviceController->enableCustomLocalSetting();
     localHost = deviceController->localHost();
     localPort = deviceController->localPort();
@@ -185,7 +185,7 @@ void SAKUdpDevice::run()
     }
 }
 
-const SAKUdpDevice::ParametersContext SAKUdpDevice::parametersContextInstance()
+const SAKUdpClientDevice::ParametersContext SAKUdpClientDevice::parametersContextInstance()
 {
     parametersContextMutex.lock();
     ParametersContext context = parametersContext;

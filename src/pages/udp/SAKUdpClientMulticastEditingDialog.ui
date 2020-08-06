@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SAKUdpMulticastEditingDialog</class>
- <widget class="QDialog" name="SAKUdpMulticastEditingDialog">
+ <class>SAKUdpClientMulticastEditingDialog</class>
+ <widget class="QDialog" name="SAKUdpClientMulticastEditingDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -79,7 +79,7 @@
   <connection>
    <sender>pushButton</sender>
    <signal>clicked()</signal>
-   <receiver>SAKUdpMulticastEditingDialog</receiver>
+   <receiver>SAKUdpClientMulticastEditingDialog</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -95,7 +95,7 @@
   <connection>
    <sender>pushButton_2</sender>
    <signal>clicked()</signal>
-   <receiver>SAKUdpMulticastEditingDialog</receiver>
+   <receiver>SAKUdpClientMulticastEditingDialog</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">

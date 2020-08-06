@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKUDPDEVICECONTROLLER_HH
-#define SAKUDPDEVICECONTROLLER_HH
+#ifndef SAKUDPCLIENTDEVICECONTROLLER_HH
+#define SAKUDPCLIENTDEVICECONTROLLER_HH
 
 #include <QMutex>
 #include <QWidget>
@@ -17,17 +17,17 @@
 #include <QPushButton>
 
 namespace Ui {
-    class SAKUdpDeviceController;
+    class SAKUdpClientDeviceController;
 }
 
-class SAKUdpDevice;
-class SAKUdpAdvanceSettingWidget;
-class SAKUdpDeviceController:public QWidget
+class SAKUdpClientDevice;
+class SAKUdpClientAdvanceSettingWidget;
+class SAKUdpClientDeviceController:public QWidget
 {
     Q_OBJECT
 public:
-    SAKUdpDeviceController(QWidget *parent = Q_NULLPTR);
-    ~SAKUdpDeviceController();
+    SAKUdpClientDeviceController(QWidget *parent = Q_NULLPTR);
+    ~SAKUdpClientDeviceController();
 
     QString localHost();
     quint16 localPort();
@@ -37,11 +37,11 @@ public:
 
     void refresh();
     void setUiEnable(bool enable);
-    void setUdpDevice(SAKUdpDevice* device);
+    void setUdpDevice(SAKUdpClientDevice* device);
 private:
     QMutex uiMutex;
 private:
-    Ui::SAKUdpDeviceController *ui;
+    Ui::SAKUdpClientDeviceController *ui;
     QComboBox *localhostComboBox;
     QLineEdit *localPortlineEdit;
     QCheckBox *enableLocalSettingCheckBox;
@@ -51,7 +51,7 @@ private:
 private slots:
     void on_advanceUdpPushButton_clicked();
 private:
-    SAKUdpAdvanceSettingWidget* udpAdvanceSettingWidget;
+    SAKUdpClientAdvanceSettingWidget* udpAdvanceSettingWidget;
 };
 
 #endif

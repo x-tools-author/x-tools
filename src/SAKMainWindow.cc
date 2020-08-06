@@ -39,7 +39,7 @@
 #include "QtAppStyleApi.hh"
 #include "SAKApplication.hh"
 #include "SAKQRCodeDialog.hh"
-#include "SAKUdpDebugPage.hh"
+#include "SAKUdpClientDebugPage.hh"
 #include "QtStyleSheetApi.hh"
 #include "SAKToolsManager.hh"
 #ifdef SAK_IMPORT_HID_MODULE
@@ -495,7 +495,7 @@ QWidget *SAKMainWindow::debugPageFromType(int type)
     QWidget *widget = Q_NULLPTR;
     switch (type) {
     case SAKDataStruct::DebugPageTypeUdpClient:
-        widget = new SAKUdpDebugPage;
+        widget = new SAKUdpClientDebugPage;
         break;
     case SAKDataStruct::DebugPageTypeTCPClient:
         widget = new SAKTcpClientDebugPage;

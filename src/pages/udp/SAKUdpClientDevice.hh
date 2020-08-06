@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKUDPDEVICE_HH
-#define SAKUDPDEVICE_HH
+#ifndef SAKUDPCLIENTDEVICE_HH
+#define SAKUDPCLIENTDEVICE_HH
 
 #include <QMutex>
 #include <QThread>
@@ -16,13 +16,13 @@
 
 #include "SAKDebugPageDevice.hh"
 
-class SAKUdpDebugPage;
-class SAKUdpDevice:public SAKDebugPageDevice
+class SAKUdpClientDebugPage;
+class SAKUdpClientDevice:public SAKDebugPageDevice
 {
     Q_OBJECT
 public:
-    SAKUdpDevice(SAKUdpDebugPage *debugPage, QObject *parent = Q_NULLPTR);
-    ~SAKUdpDevice();
+    SAKUdpClientDevice(SAKUdpClientDebugPage *debugPage, QObject *parent = Q_NULLPTR);
+    ~SAKUdpClientDevice();
 
     /**
      * @brief 参数上下文
@@ -87,10 +87,10 @@ private:
     bool enableCustomLocalSetting;
     QString targetHost;
     quint16 targetPort;
-    SAKUdpDebugPage *debugPage;
+    SAKUdpClientDebugPage *debugPage;
     QUdpSocket *udpSocket;
 private:
     const ParametersContext parametersContextInstance();
 };
-Q_DECLARE_METATYPE(SAKUdpDevice::ParametersContext::MulticastInfo)
+Q_DECLARE_METATYPE(SAKUdpClientDevice::ParametersContext::MulticastInfo)
 #endif

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SAKUdpAdvanceSettingsWidget</class>
- <widget class="QWidget" name="SAKUdpAdvanceSettingsWidget">
+ <class>SAKUdpClientAdvanceSettingWidget</class>
+ <widget class="QWidget" name="SAKUdpClientAdvanceSettingWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -168,7 +168,7 @@ border:none
   <connection>
    <sender>cancelPushButton</sender>
    <signal>clicked()</signal>
-   <receiver>SAKUdpAdvanceSettingsWidget</receiver>
+   <receiver>SAKUdpClientAdvanceSettingWidget</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">

@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKUDPADCANCESETTINGS_HH
-#define SAKUDPADCANCESETTINGS_HH
+#ifndef SAKUDPCLIENTADCANCESETTINGWIDGET_HH
+#define SAKUDPCLIENTADCANCESETTINGWIDGET_HH
 
 #include <QWidget>
 #include <QLineEdit>
@@ -17,20 +17,20 @@
 #include <QListWidget>
 
 namespace Ui {
-    class SAKUdpAdvanceSettingsWidget;
+    class SAKUdpClientAdvanceSettingWidget;
 }
 
-class SAKUdpDevice;
-class SAKUdpAdvanceSettingWidget:public QWidget
+class SAKUdpClientDevice;
+class SAKUdpClientAdvanceSettingWidget:public QWidget
 {
     Q_OBJECT
 public:
-    SAKUdpAdvanceSettingWidget(QWidget *parent = Q_NULLPTR);
-    ~SAKUdpAdvanceSettingWidget();
+    SAKUdpClientAdvanceSettingWidget(QWidget *parent = Q_NULLPTR);
+    ~SAKUdpClientAdvanceSettingWidget();
 
-    void setUdpDevice(SAKUdpDevice* device);
+    void setUdpDevice(SAKUdpClientDevice* device);
 private:
-    Ui::SAKUdpAdvanceSettingsWidget *ui;
+    Ui::SAKUdpClientAdvanceSettingWidget *ui;
 
     QCheckBox* unicastCheckBox;
     QCheckBox* broadcastCheckBox;
@@ -46,7 +46,7 @@ private slots:
     void on_deletePushButton_clicked();
     void on_addPushButton_clicked();
 private:
-    SAKUdpDevice* udpDevice;
+    SAKUdpClientDevice* udpDevice;
     bool isInitUi;
 };
 

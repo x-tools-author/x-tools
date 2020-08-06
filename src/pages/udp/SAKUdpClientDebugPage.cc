@@ -12,47 +12,47 @@
 #include <QHBoxLayout>
 
 #include "SAKGlobal.hh"
-#include "SAKUdpDevice.hh"
+#include "SAKUdpClientDevice.hh"
 #include "SAKDataStruct.hh"
-#include "SAKUdpDebugPage.hh"
-#include "SAKUdpDeviceController.hh"
+#include "SAKUdpClientDebugPage.hh"
+#include "SAKUdpClientDeviceController.hh"
 
-SAKUdpDebugPage::SAKUdpDebugPage(QWidget *parent)
+SAKUdpClientDebugPage::SAKUdpClientDebugPage(QWidget *parent)
     :SAKDebugPage (SAKDataStruct::DebugPageTypeUdpClient, parent)
-    ,udpDeviceController (new SAKUdpDeviceController)
+    ,udpDeviceController (new SAKUdpClientDeviceController)
 {
     initializingPage();
     setWindowTitle(SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeUdpClient));
 }
 
-SAKUdpDebugPage::~SAKUdpDebugPage()
+SAKUdpClientDebugPage::~SAKUdpClientDebugPage()
 {
     udpDeviceController->deleteLater();
 }
 
-SAKUdpDeviceController *SAKUdpDebugPage::controllerInstance()
+SAKUdpClientDeviceController *SAKUdpClientDebugPage::controllerInstance()
 {
     return udpDeviceController;
 }
 
-void SAKUdpDebugPage::refreshDevice()
+void SAKUdpClientDebugPage::refreshDevice()
 {
     udpDeviceController->refresh();
 }
 
-QWidget *SAKUdpDebugPage::controllerWidget()
+QWidget *SAKUdpClientDebugPage::controllerWidget()
 {
     return udpDeviceController;
 }
 
-SAKDebugPageDevice *SAKUdpDebugPage::createDevice()
+SAKDebugPageDevice *SAKUdpClientDebugPage::createDevice()
 {
-    SAKUdpDevice *ptr = new SAKUdpDevice(this);
+    SAKUdpClientDevice *ptr = new SAKUdpClientDevice(this);
     udpDeviceController->setUdpDevice(ptr);
     return ptr;
 }
 
-void SAKUdpDebugPage::setUiEnable(bool enable)
+void SAKUdpClientDebugPage::setUiEnable(bool enable)
 {
     udpDeviceController->setUiEnable(enable);
     mRefreshPushButton->setEnabled(enable);

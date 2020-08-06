@@ -7,23 +7,23 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKUDPMUTICASTEDITINGDIALOG_HH
-#define SAKUDPMUTICASTEDITINGDIALOG_HH
+#ifndef SAKUDPCLIENTMUTICASTEDITINGDIALOG_HH
+#define SAKUDPCLIENTMUTICASTEDITINGDIALOG_HH
 
 #include <QDialog>
 #include <QLineEdit>
 
 namespace Ui {
-class SAKUdpMulticastEditingDialog;
+    class SAKUdpClientMulticastEditingDialog;
 }
 
 /// @brief 组播编辑弹窗
-class SAKUdpMulticastEditingDialog : public QDialog
+class SAKUdpClientMulticastEditingDialog : public QDialog
 {
     Q_OBJECT
 public:
-    SAKUdpMulticastEditingDialog(QWidget *parent = Q_NULLPTR);
-    ~SAKUdpMulticastEditingDialog();
+    SAKUdpClientMulticastEditingDialog(QWidget *parent = Q_NULLPTR);
+    ~SAKUdpClientMulticastEditingDialog();
 
     /**
      * @brief address 获取组播地址
@@ -37,7 +37,7 @@ public:
      */
     quint16 port();
 private:
-    Ui::SAKUdpMulticastEditingDialog *ui;
+    Ui::SAKUdpClientMulticastEditingDialog *ui;
 };
 
 #endif

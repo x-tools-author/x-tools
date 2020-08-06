@@ -12,15 +12,16 @@
 #include <QLineEdit>
 
 #include "SAKGlobal.hh"
-#include "SAKUdpDevice.hh"
-#include "SAKUdpDeviceController.hh"
-#include "SAKUdpAdvanceSettingWidget.hh"
+#include "SAKUdpClientDevice.hh"
+#include "SAKUdpClientDeviceController.hh"
+#include "SAKUdpClientAdvanceSettingWidget.hh"
 
-#include "ui_SAKUdpDeviceController.h"
-SAKUdpDeviceController::SAKUdpDeviceController(QWidget *parent)
+#include "ui_SAKUdpClientDeviceController.h"
+
+SAKUdpClientDeviceController::SAKUdpClientDeviceController(QWidget *parent)
     :QWidget (parent)
-    ,ui (new Ui::SAKUdpDeviceController)
-    ,udpAdvanceSettingWidget (new SAKUdpAdvanceSettingWidget)
+    ,ui (new Ui::SAKUdpClientDeviceController)
+    ,udpAdvanceSettingWidget (new SAKUdpClientAdvanceSettingWidget)
 {
     ui->setupUi(this);
 
@@ -35,13 +36,13 @@ SAKUdpDeviceController::SAKUdpDeviceController(QWidget *parent)
     refresh();
 }
 
-SAKUdpDeviceController::~SAKUdpDeviceController()
+SAKUdpClientDeviceController::~SAKUdpClientDeviceController()
 {
     delete udpAdvanceSettingWidget;
     delete ui;
 }
 
-QString SAKUdpDeviceController::localHost()
+QString SAKUdpClientDeviceController::localHost()
 {
     uiMutex.lock();
     QString ret = localhostComboBox->currentText();
@@ -49,7 +50,7 @@ QString SAKUdpDeviceController::localHost()
     return ret;
 }
 
-quint16 SAKUdpDeviceController::localPort()
+quint16 SAKUdpClientDeviceController::localPort()
 {
     uiMutex.lock();
     quint16 ret = static_cast<quint16>(localPortlineEdit->text().toInt());
@@ -57,7 +58,7 @@ quint16 SAKUdpDeviceController::localPort()
     return ret;
 }
 
-QString SAKUdpDeviceController::targetHost()
+QString SAKUdpClientDeviceController::targetHost()
 {
     uiMutex.lock();
     QString ret = targetHostLineEdit->text();
@@ -65,7 +66,7 @@ QString SAKUdpDeviceController::targetHost()
     return ret;
 }
 
-quint16 SAKUdpDeviceController::targetPort()
+quint16 SAKUdpClientDeviceController::targetPort()
 {
     uiMutex.lock();
     quint16 ret = static_cast<quint16>(targetPortLineEdit->text().toInt());
@@ -73,7 +74,7 @@ quint16 SAKUdpDeviceController::targetPort()
     return ret;
 }
 
-bool SAKUdpDeviceController::enableCustomLocalSetting()
+bool SAKUdpClientDeviceController::enableCustomLocalSetting()
 {
     uiMutex.lock();
     bool ret = enableLocalSettingCheckBox->isChecked();
@@ -81,12 +82,12 @@ bool SAKUdpDeviceController::enableCustomLocalSetting()
     return ret;
 }
 
-void SAKUdpDeviceController::refresh()
+void SAKUdpClientDeviceController::refresh()
 {
     SAKGlobal::initIpComboBox(localhostComboBox, true);
 }
 
-void SAKUdpDeviceController::setUiEnable(bool enable)
+void SAKUdpClientDeviceController::setUiEnable(bool enable)
 {
     localhostComboBox->setEnabled(enable);
     localPortlineEdit->setEnabled(enable);
@@ -96,12 +97,12 @@ void SAKUdpDeviceController::setUiEnable(bool enable)
     advanceUdpPushButton->setEnabled(!enable);
 }
 
-void SAKUdpDeviceController::setUdpDevice(SAKUdpDevice *device)
+void SAKUdpClientDeviceController::setUdpDevice(SAKUdpClientDevice *device)
 {
     udpAdvanceSettingWidget->setUdpDevice(device);
 }
 
-void SAKUdpDeviceController::on_advanceUdpPushButton_clicked()
+void SAKUdpClientDeviceController::on_advanceUdpPushButton_clicked()
 {
     if (udpAdvanceSettingWidget){
         udpAdvanceSettingWidget->isHidden() ? udpAdvanceSettingWidget->show() : udpAdvanceSettingWidget->activateWindow();

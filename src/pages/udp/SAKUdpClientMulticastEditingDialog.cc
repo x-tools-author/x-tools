@@ -7,28 +7,28 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#include "SAKUdpMulticastEditingDialog.hh"
-#include "ui_SAKUdpMulticastEditingDialog.h"
+#include "SAKUdpClientMulticastEditingDialog.hh"
+#include "ui_SAKUdpClientMulticastEditingDialog.h"
 
-SAKUdpMulticastEditingDialog::SAKUdpMulticastEditingDialog(QWidget *parent)
+SAKUdpClientMulticastEditingDialog::SAKUdpClientMulticastEditingDialog(QWidget *parent)
     : QDialog(parent)
-    , ui(new Ui::SAKUdpMulticastEditingDialog)
+    , ui(new Ui::SAKUdpClientMulticastEditingDialog)
 {
     ui->setupUi(this);
     setModal(true);
 }
 
-SAKUdpMulticastEditingDialog::~SAKUdpMulticastEditingDialog()
+SAKUdpClientMulticastEditingDialog::~SAKUdpClientMulticastEditingDialog()
 {
     delete ui;
 }
 
-QString SAKUdpMulticastEditingDialog::address()
+QString SAKUdpClientMulticastEditingDialog::address()
 {
     return ui->addressLineEdit->text().trimmed();
 }
 
-quint16 SAKUdpMulticastEditingDialog::port()
+quint16 SAKUdpClientMulticastEditingDialog::port()
 {
     return ui->portLineEdit->text().trimmed().toUShort();
 }

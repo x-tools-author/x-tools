@@ -11,15 +11,15 @@
 #include <QMessageBox>
 #include <QListWidgetItem>
 
-#include "SAKUdpDevice.hh"
-#include "SAKUdpAdvanceSettingWidget.hh"
-#include "SAKUdpMulticastEditingDialog.hh"
+#include "SAKUdpClientDevice.hh"
+#include "SAKUdpClientAdvanceSettingWidget.hh"
+#include "SAKUdpClientMulticastEditingDialog.hh"
 
-#include "ui_SAKUdpAdvanceSettingWidget.h"
+#include "ui_SAKUdpClientAdvanceSettingWidget.h"
 
-SAKUdpAdvanceSettingWidget::SAKUdpAdvanceSettingWidget(QWidget *parent)
+SAKUdpClientAdvanceSettingWidget::SAKUdpClientAdvanceSettingWidget(QWidget *parent)
     :QWidget (parent)
-    ,ui (new Ui::SAKUdpAdvanceSettingsWidget)
+    ,ui (new Ui::SAKUdpClientAdvanceSettingWidget)
     ,udpDevice(Q_NULLPTR)
     ,isInitUi (true)
 
@@ -37,12 +37,12 @@ SAKUdpAdvanceSettingWidget::SAKUdpAdvanceSettingWidget(QWidget *parent)
     isInitUi = false;   
 }
 
-SAKUdpAdvanceSettingWidget::~SAKUdpAdvanceSettingWidget()
+SAKUdpClientAdvanceSettingWidget::~SAKUdpClientAdvanceSettingWidget()
 {
     delete ui;
 }
 
-void SAKUdpAdvanceSettingWidget::setUdpDevice(SAKUdpDevice *device)
+void SAKUdpClientAdvanceSettingWidget::setUdpDevice(SAKUdpClientDevice *device)
 {
     if (device){
         udpDevice = device;
@@ -52,7 +52,7 @@ void SAKUdpAdvanceSettingWidget::setUdpDevice(SAKUdpDevice *device)
     }
 }
 
-void SAKUdpAdvanceSettingWidget::on_unicastCheckBox_clicked()
+void SAKUdpClientAdvanceSettingWidget::on_unicastCheckBox_clicked()
 {
     if (!isInitUi){
         bool enable = unicastCheckBox->isChecked();
@@ -60,7 +60,7 @@ void SAKUdpAdvanceSettingWidget::on_unicastCheckBox_clicked()
     }
 }
 
-void SAKUdpAdvanceSettingWidget::on_broadcastCheckBox_clicked()
+void SAKUdpClientAdvanceSettingWidget::on_broadcastCheckBox_clicked()
 {
     if (!isInitUi){
         bool enable = broadcastCheckBox->isChecked();
@@ -70,7 +70,7 @@ void SAKUdpAdvanceSettingWidget::on_broadcastCheckBox_clicked()
     }
 }
 
-void SAKUdpAdvanceSettingWidget::on_multicastCheckBox_clicked()
+void SAKUdpClientAdvanceSettingWidget::on_multicastCheckBox_clicked()
 {
     if (!isInitUi){
         bool enable = multicastCheckBox->isChecked();
@@ -78,7 +78,7 @@ void SAKUdpAdvanceSettingWidget::on_multicastCheckBox_clicked()
     }
 }
 
-void SAKUdpAdvanceSettingWidget::on_deletePushButton_clicked()
+void SAKUdpClientAdvanceSettingWidget::on_deletePushButton_clicked()
 {
     QListWidgetItem *item = listWidget->currentItem();
     if (!item){
@@ -93,9 +93,9 @@ void SAKUdpAdvanceSettingWidget::on_deletePushButton_clicked()
     delete item;
 }
 
-void SAKUdpAdvanceSettingWidget::on_addPushButton_clicked()
+void SAKUdpClientAdvanceSettingWidget::on_addPushButton_clicked()
 {
-    SAKUdpMulticastEditingDialog dialog;
+    SAKUdpClientMulticastEditingDialog dialog;
     dialog.show();
     int ret = dialog.exec();
     if (ret == QDialog::Accepted){
