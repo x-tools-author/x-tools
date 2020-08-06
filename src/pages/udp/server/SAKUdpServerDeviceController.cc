@@ -17,23 +17,23 @@
 #include "ui_SAKUdpServerDeviceController.h"
 
 SAKUdpServerDeviceController::SAKUdpServerDeviceController(QWidget *parent)
-    :QWidget (parent)
-    ,ui (new Ui::SAKUdpServerDeviceController)
+    :QWidget(parent)
+    ,mHasNoClient(true)
+    ,mUi(new Ui::SAKUdpServerDeviceController)
 {
-    ui->setupUi(this);
-
-    serverHostComboBox = ui->serverhostComboBox;
-    serverPortLineEdit = ui->serverPortLineEdit;
-    clientHostComboBox = ui->clientHostComboBox;
+    mUi->setupUi(this);
+    mServerHostComboBox = mUi->serverhostComboBox;
+    mServerPortLineEdit = mUi->serverPortLineEdit;
+    mClientHostComboBox = mUi->clientHostComboBox;
 
     refresh();
-
     connect(this, &SAKUdpServerDeviceController::requestAddClient, this, &SAKUdpServerDeviceController::addClientSafelyActually);
+    mServerPort = mServerPortLineEdit->text().toUInt();
 }
 
 SAKUdpServerDeviceController::~SAKUdpServerDeviceController()
 {
-    delete ui;
+    delete mUi;
 }
 
 QString SAKUdpServerDeviceController::serverHost()
@@ -70,18 +70,24 @@ quint16 SAKUdpServerDeviceController::currentClientPort()
 
 void SAKUdpServerDeviceController::refresh()
 {
-    SAKGlobal::initIpComboBox(serverHostComboBox);
+    SAKGlobal::initIpComboBox(mServerHostComboBox);
 }
 
 void SAKUdpServerDeviceController::setUiEnable(bool enable)
 {
-    serverHostComboBox->setEnabled(enable);
-    serverPortLineEdit->setEnabled(enable);
+    mServerHostComboBox->setEnabled(enable);
+    mServerPortLineEdit->setEnabled(enable);
 }
 
 void SAKUdpServerDeviceController::addClientSafely(QString host, quint16 port)
 {
+    mHasNoClient = false;
     emit requestAddClient(host, port);
+}
+
+bool SAKUdpServerDeviceController::hasNoClient()
+{
+    return mHasNoClient;
 }
 
 void SAKUdpServerDeviceController::addClientSafelyActually(QString host, quint16 port)
@@ -90,15 +96,19 @@ void SAKUdpServerDeviceController::addClientSafelyActually(QString host, quint16
     item.append(QString::number(port));
 
     bool isItemExisted = false;
-    for(int i = 0; i < clientHostComboBox->count(); i++){
-        if (clientHostComboBox->itemText(i).compare(item) == 0){
+    for(int i = 0; i < mClientHostComboBox->count(); i++){
+        if (mClientHostComboBox->itemText(i).compare(item) == 0){
             isItemExisted = true;
             break;
         }
     }
 
     if (!isItemExisted){
-        clientHostComboBox->addItem(item);
+        mClientHostComboBox->addItem(item);
+    }
+
+    if (mCurrentHost.isEmpty()){
+        on_clientHostComboBox_currentTextChanged(mClientHostComboBox->currentText());
     }
 }
 
@@ -113,7 +123,7 @@ void SAKUdpServerDeviceController::on_clientHostComboBox_currentTextChanged(cons
 
 void SAKUdpServerDeviceController::on_clearPushButton_clicked()
 {
-    clientHostComboBox->clear();
+    mClientHostComboBox->clear();
     mParametersMutex.lock();
     mCurrentHost.clear();
     mCurrentPort = 0;

@@ -37,21 +37,23 @@ public:
     void setUiEnable(bool enable);
 
     void addClientSafely(QString host, quint16 port);
+    bool hasNoClient();
 private:
     QString mCurrentHost;
     quint16 mCurrentPort;
     QString mServerHost;
     quint16 mServerPort;
     QMutex mParametersMutex;
+    bool mHasNoClient;
 private:
     void addClientSafelyActually(QString host, quint16 port);
 signals:
     void requestAddClient(QString host, quint16 port);
 private:
-    Ui::SAKUdpServerDeviceController *ui;
-    QComboBox *serverHostComboBox;
-    QLineEdit *serverPortLineEdit;
-    QComboBox *clientHostComboBox;
+    Ui::SAKUdpServerDeviceController *mUi;
+    QComboBox *mServerHostComboBox;
+    QLineEdit *mServerPortLineEdit;
+    QComboBox *mClientHostComboBox;
 private slots:
     void on_clientHostComboBox_currentTextChanged(const QString &arg1);
     void on_clearPushButton_clicked();
