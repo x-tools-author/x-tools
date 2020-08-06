@@ -19,7 +19,7 @@ class QtCryptographicHashCalculator:public QThread
 public:
     QtCryptographicHashCalculator(SAKToolFileChecker *controller, QObject *parent = Q_NULLPTR);
 private:
-    SAKToolFileChecker *cryptographicHashController;
+    SAKToolFileChecker *mCryptographicHashController;
 private:
     void run() final;
 signals:

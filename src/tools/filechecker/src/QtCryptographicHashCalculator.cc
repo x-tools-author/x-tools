@@ -16,7 +16,7 @@
 #include "SAKToolFileChecker.hh"
 QtCryptographicHashCalculator::QtCryptographicHashCalculator(SAKToolFileChecker *controller, QObject *parent)
     :QThread (parent)
-    ,cryptographicHashController (controller)
+    ,mCryptographicHashController (controller)
 {
     connect(this, &QtCryptographicHashCalculator::updateResult,
             controller, &SAKToolFileChecker::updateResult);
@@ -30,11 +30,11 @@ QtCryptographicHashCalculator::QtCryptographicHashCalculator(SAKToolFileChecker 
 
 void QtCryptographicHashCalculator::run()
 {
-    QCryptographicHash::Algorithm algorithm = cryptographicHashController->algorithm();
+    QCryptographicHash::Algorithm algorithm = mCryptographicHashController->algorithm();
     QCryptographicHash cryptographicHash(algorithm);
     cryptographicHash.reset();
 
-    QString fileName = cryptographicHashController->fileName();
+    QString fileName = mCryptographicHashController->fileName();
     QFile file(fileName);
     if (file.open(QFile::ReadOnly)){
         qint64 allBytes = file.size();
@@ -87,12 +87,13 @@ void QtCryptographicHashCalculator::run()
             // Calculating remaining time
             endTime = QDateTime::currentDateTime().toMSecsSinceEpoch();
             consumeTime = endTime - startTime;
+            qDebug() << __FUNCTION__ << consumeTime;
             if (consumeTime != 0){
                 remainTime = remainBytes/dataBlock*consumeTime;
 
                 hoursTemp = (remainTime%(24*60*60*1000))/(60*60*1000);
                 minutesTemp = ((remainTime%(24*60*60*1000))%(60*60*1000))/(1*60*1000);
-                secondsTemp = (((remainTime%(24*60*60*1000))%(60*60*1000))%(1*60*1000))/60;
+                secondsTemp = (((remainTime%(24*60*60*1000))%(60*60*1000))%(1*60*1000))%60;
 
                 if ((hours != hoursTemp) || (minutes != minutesTemp) || (seconds != secondsTemp)){
                     hours = hoursTemp;
