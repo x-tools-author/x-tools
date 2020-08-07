@@ -44,6 +44,7 @@ private:
     void initFileMenu();
     void initToolMenu();
     void initOptionMenu();
+    void initWindowMenu();
     void initLanguageMenu();
     void initHelpMenu();
     void initLinksMenu();

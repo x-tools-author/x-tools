@@ -199,6 +199,7 @@ void SAKMainWindow::initMenuBar()
     initFileMenu();
     initToolMenu();
     initOptionMenu();
+    initWindowMenu();
     initLanguageMenu();
     initLinksMenu();
     initHelpMenu();
@@ -287,6 +288,12 @@ void SAKMainWindow::initOptionMenu()
     appStyleMenu->addActions(QtAppStyleApi::instance()->actions());
     QString style = SAKSettings::instance()->appStyle();
     QtAppStyleApi::instance()->setStyle(style);
+}
+
+void SAKMainWindow::initWindowMenu()
+{
+    QMenu *windowMenu = new QMenu(tr("Window"), this);
+    menuBar()->addMenu(windowMenu);
 }
 
 void SAKMainWindow::initLanguageMenu()
