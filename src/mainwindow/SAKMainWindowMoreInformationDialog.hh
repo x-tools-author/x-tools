@@ -7,23 +7,23 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKMOREINFORMATION_HH
-#define SAKMOREINFORMATION_HH
+#ifndef SAKMAINWINDOWMOREINFORMATIONDIALOG_HH
+#define SAKMAINWINDOWMOREINFORMATIONDIALOG_HH
 
 #include <QDialog>
 #include <QTextBrowser>
 
 namespace Ui {
-    class SAKMoreInformation;
+    class SAKMainWindowMoreInformationDialog;
 };
-
-class SAKMoreInformation:public QDialog
+/// @brief Display information about the application(QSAK)
+class SAKMainWindowMoreInformationDialog:public QDialog
 {
     Q_OBJECT
 public:
-    SAKMoreInformation(QWidget* parent = Q_NULLPTR);
+    SAKMainWindowMoreInformationDialog(QWidget* parent = Q_NULLPTR);
 private:
-    Ui::SAKMoreInformation* ui = Q_NULLPTR;
+    Ui::SAKMainWindowMoreInformationDialog* ui = Q_NULLPTR;
     QTextBrowser *textBrowserHistory;
 };
 

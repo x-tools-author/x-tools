@@ -7,18 +7,18 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKQRCODEWIDGET_HH
-#define SAKQRCODEWIDGET_HH
+#ifndef SAKMAINWINDOWQRCOD_HH
+#define SAKMAINWINDOWQRCOD_HH
 
 #include <QWidget>
 
 /// @brief 显示一张二维码图片
-class SAKQRCodeWidget : public QWidget
+class SAKMainWindowQrCode : public QWidget
 {
     Q_OBJECT
 public:
-    SAKQRCodeWidget(QSize size, QString image, QWidget *parent = Q_NULLPTR);
-    ~SAKQRCodeWidget();
+    SAKMainWindowQrCode(QSize size, QString image, QWidget *parent = Q_NULLPTR);
+    ~SAKMainWindowQrCode();
 protected:
     void paintEvent(QPaintEvent *event) override;
 private:

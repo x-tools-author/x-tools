@@ -9,14 +9,14 @@
  */
 #include <QImage>
 
-#include "SAKQRCodeWidget.hh"
-#include "SAKQRCodeDialog.hh"
+#include "SAKMainWindowQrCode.hh"
+#include "SAKMainWindowQrCodeView.hh"
 
-#include "ui_SAKQRCodeDialog.h"
+#include "ui_SAKMainWindowQrCodeView.h"
 
-SAKQRCodeDialog::SAKQRCodeDialog(QWidget *parent)
+SAKMainWindowQrCodeView::SAKMainWindowQrCodeView(QWidget *parent)
     : QDialog(parent)
-    , ui(new Ui::SAKQRCodeDialog)
+    , ui(new Ui::SAKMainWindowQrCodeView)
 {
     ui->setupUi(this);
     setModal(true);
@@ -29,12 +29,12 @@ SAKQRCodeDialog::SAKQRCodeDialog(QWidget *parent)
     addQRCode(tr("技术交流"), QString(":/resources/images/QtQQ.jpg"));
 }
 
-SAKQRCodeDialog::~SAKQRCodeDialog()
+SAKMainWindowQrCodeView::~SAKMainWindowQrCodeView()
 {
     delete ui;
 }
 
-void SAKQRCodeDialog::addQRCode(QString name, QString image)
+void SAKMainWindowQrCodeView::addQRCode(QString name, QString image)
 {
-    tabWidget->addTab(new SAKQRCodeWidget(size(), image, this), name);
+    tabWidget->addTab(new SAKMainWindowQrCode(size(), image, this), name);
 }

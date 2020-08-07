@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SAKMoreInformation</class>
- <widget class="QDialog" name="SAKMoreInformation">
+ <class>SAKMainWindowMoreInformationDialog</class>
+ <widget class="QDialog" name="SAKMainWindowMoreInformationDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>关于软件</string>
+   <string>More information about SAK</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>

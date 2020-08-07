@@ -7,14 +7,14 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#include "SAKMoreInformation.hh"
-#include "ui_SAKMoreInformation.h"
+#include "SAKMainWindowMoreInformationDialog.hh"
+#include "ui_SAKMainWindowMoreInformationDialog.h"
 
 #include <QFile>
 
-SAKMoreInformation::SAKMoreInformation(QWidget* parent)
+SAKMainWindowMoreInformationDialog::SAKMainWindowMoreInformationDialog(QWidget* parent)
     :QDialog (parent)
-    ,ui(new Ui::SAKMoreInformation)
+    ,ui(new Ui::SAKMainWindowMoreInformationDialog)
 {
     ui->setupUi(this);
     setModal(true);

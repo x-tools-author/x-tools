@@ -38,17 +38,17 @@
 #include "SAKMainWindow.hh"
 #include "QtAppStyleApi.hh"
 #include "SAKApplication.hh"
-#include "SAKQRCodeDialog.hh"
 #include "QtStyleSheetApi.hh"
 #include "SAKToolsManager.hh"
 #include "SAKUpdateManager.hh"
 #include "SAKTestDebugPage.hh"
-#include "SAKMoreInformation.hh"
 #include "SAKToolCRCCalculator.hh"
 #include "SAKUdpClientDebugPage.hh"
 #include "SAKUdpServerDebugPage.hh"
 #include "SAKTcpClientDebugPage.hh"
 #include "SAKTcpServerDebugPage.hh"
+#include "SAKMainWindowQrCodeView.hh"
+#include "SAKMainWindowMoreInformationDialog.hh"
 #include "SAKMainWindowTabPageNameEditDialog.hh"
 
 #ifdef SAK_IMPORT_HID_MODULE
@@ -86,14 +86,14 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     ,mToolsMenu(Q_NULLPTR)
     ,mDefaultStyleSheetAction(Q_NULLPTR)
     ,mUpdateManager(Q_NULLPTR)
-    ,mMoreInformation(new SAKMoreInformation)
+    ,mMoreInformation(new SAKMainWindowMoreInformationDialog)
     ,mQrCodeDialog(Q_NULLPTR)
     ,mUi(new Ui::SAKMainWindow)
     ,mTabWidget(new QTabWidget)
 {
     mUi->setupUi(this);
     mUpdateManager = new SAKUpdateManager(this);
-    mQrCodeDialog = new SAKQRCodeDialog(this);
+    mQrCodeDialog = new SAKMainWindowQrCodeView(this);
 
     QHBoxLayout *layout = new QHBoxLayout();
     layout->addWidget(mTabWidget);
@@ -378,12 +378,12 @@ void SAKMainWindow::initHelpMenu()
 
     QAction *moreInformationAction = new QAction(tr("More information"), this);
     helpMenu->addAction(moreInformationAction);
-    connect(moreInformationAction, &QAction::triggered, mMoreInformation, &SAKMoreInformation::show);
+    connect(moreInformationAction, &QAction::triggered, mMoreInformation, &SAKMainWindowMoreInformationDialog::show);
 
     helpMenu->addSeparator();
     QAction *qrCodeAction = new QAction(tr("QR code"), this);
     helpMenu->addAction(qrCodeAction);
-    connect(qrCodeAction, &QAction::triggered, mQrCodeDialog, &SAKQRCodeDialog::show);
+    connect(qrCodeAction, &QAction::triggered, mQrCodeDialog, &SAKMainWindowQrCodeView::show);
 }
 
 void SAKMainWindow::initLinksMenu()

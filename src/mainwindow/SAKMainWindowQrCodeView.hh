@@ -7,23 +7,23 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKQRCODEDIALOG_HH
-#define SAKQRCODEDIALOG_HH
+#ifndef SAKMAINWINDOWQRCODVIEW_HH
+#define SAKMAINWINDOWQRCODVIEW_HH
 
 #include <QDialog>
 #include <QTabWidget>
 
 namespace Ui {
-    class SAKQRCodeDialog;
+    class SAKMainWindowQrCodeView;
 }
-class SAKQRCodeDialog : public QDialog
+class SAKMainWindowQrCodeView : public QDialog
 {
     Q_OBJECT
 public:
-    SAKQRCodeDialog(QWidget *parent = Q_NULLPTR);
-    ~SAKQRCodeDialog();
+    SAKMainWindowQrCodeView(QWidget *parent = Q_NULLPTR);
+    ~SAKMainWindowQrCodeView();
 private:
-    Ui::SAKQRCodeDialog *ui;
+    Ui::SAKMainWindowQrCodeView *ui;
     QTabWidget *tabWidget;
 private:
     /// @brief 添加二维码

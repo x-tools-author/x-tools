@@ -9,9 +9,9 @@
  */
 #include <QRectF>
 #include <QPainter>
-#include "SAKQRCodeWidget.hh"
+#include "SAKMainWindowQrCode.hh"
 
-SAKQRCodeWidget::SAKQRCodeWidget(QSize size, QString image, QWidget *parent)
+SAKMainWindowQrCode::SAKMainWindowQrCode(QSize size, QString image, QWidget *parent)
     : QWidget(parent)
     , size(size)
     , image(image)
@@ -19,12 +19,12 @@ SAKQRCodeWidget::SAKQRCodeWidget(QSize size, QString image, QWidget *parent)
     resize(size.width(), size.height());
 }
 
-SAKQRCodeWidget::~SAKQRCodeWidget()
+SAKMainWindowQrCode::~SAKMainWindowQrCode()
 {
 
 }
 
-void SAKQRCodeWidget::paintEvent(QPaintEvent *event)
+void SAKMainWindowQrCode::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event);
 

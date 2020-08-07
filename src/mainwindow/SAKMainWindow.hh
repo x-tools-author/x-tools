@@ -24,9 +24,9 @@ namespace Ui {
     class SAKMainWindow;
 }
 
-class SAKQRCodeDialog;
+class SAKMainWindowQrCodeView;
 class SAKUpdateManager;
-class SAKMoreInformation;
+class SAKMainWindowMoreInformationDialog;
 class SAKMainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -37,8 +37,8 @@ private:
     QMenu *mToolsMenu;
     QAction *mDefaultStyleSheetAction;
     SAKUpdateManager *mUpdateManager;
-    SAKMoreInformation *mMoreInformation;
-    SAKQRCodeDialog *mQrCodeDialog;
+    SAKMainWindowMoreInformationDialog *mMoreInformation;
+    SAKMainWindowQrCodeView *mQrCodeDialog;
 private: 
     void initMenuBar();
     void initFileMenu();
