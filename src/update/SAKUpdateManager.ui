@@ -7,14 +7,112 @@
     <x>0</x>
     <y>0</y>
     <width>845</width>
-    <height>351</height>
+    <height>369</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>检查更新</string>
+   <string>Check for update</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="7" column="0" colspan="6">
+   <item row="2" column="0" rowspan="2">
+    <widget class="QLabel" name="updateProgressLabel">
+     <property name="text">
+      <string>Check for update progress</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0" colspan="6">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="title">
+      <string>Packet list</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="0" column="0">
+       <widget class="QListWidget" name="downloadListListWidget"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="1" rowspan="2" colspan="5">
+    <widget class="QProgressBar" name="updateProgressBar">
+     <property name="maximum">
+      <number>100</number>
+     </property>
+     <property name="value">
+      <number>0</number>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLabel" name="currentVersionLabel">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel#currentVersionLabel{
+	color:blue
+}</string>
+     </property>
+     <property name="text">
+      <string notr="true">0.0.0</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="6">
+    <widget class="QLabel" name="noNewVersionTipLabel">
+     <property name="styleSheet">
+      <string notr="true">QLabel#noNewVersionTipLabel{
+	color:blue
+}</string>
+     </property>
+     <property name="text">
+      <string>Has no version to update</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0" colspan="6">
+    <widget class="QGroupBox" name="newVersionCommentsGroupBox">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="title">
+      <string>Information of new version</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <widget class="QTextBrowser" name="newVersionCommentsTextBrowser"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="4">
+    <widget class="QLabel" name="newVersionLabel">
+     <property name="styleSheet">
+      <string notr="true">QLabel#newVersionLabel{
+	color:red
+}</string>
+     </property>
+     <property name="text">
+      <string notr="true">(0.0.0)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="0" colspan="6">
     <widget class="QLabel" name="infoLabel">
      <property name="text">
       <string/>
@@ -24,11 +122,31 @@
    <item row="0" column="3">
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>更新版本</string>
+      <string>Newer version</string>
      </property>
     </widget>
    </item>
-   <item row="6" column="0" colspan="6">
+   <item row="0" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Current version</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2">
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0" colspan="6">
     <widget class="QWidget" name="widget8888" native="true">
      <property name="styleSheet">
       <string notr="true"/>
@@ -56,146 +174,28 @@
       <item row="0" column="1">
        <widget class="QCheckBox" name="autoCheckForUpdateCheckBox">
         <property name="text">
-         <string>自动检测更新</string>
+         <string>Check for update automatically</string>
         </property>
        </widget>
       </item>
       <item row="0" column="2">
        <widget class="QPushButton" name="visitWebPushButton">
         <property name="text">
-         <string>发布网站</string>
+         <string>ReleaseSite</string>
         </property>
        </widget>
       </item>
       <item row="0" column="3">
        <widget class="QPushButton" name="checkForUpdatePushButton">
         <property name="text">
-         <string>检查更新</string>
+         <string>CheckForUpdate</string>
         </property>
        </widget>
       </item>
      </layout>
     </widget>
    </item>
-   <item row="4" column="0" colspan="6">
-    <widget class="QGroupBox" name="newVersionCommentsGroupBox">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="title">
-      <string>新版本信息</string>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_2">
-      <item row="0" column="0">
-       <widget class="QTextBrowser" name="newVersionCommentsTextBrowser"/>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="1" column="1" rowspan="2" colspan="5">
-    <widget class="QProgressBar" name="updateProgressBar">
-     <property name="maximum">
-      <number>100</number>
-     </property>
-     <property name="value">
-      <number>0</number>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0" rowspan="2">
-    <widget class="QLabel" name="updateProgressLabel">
-     <property name="text">
-      <string>检查更新进度</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="4">
-    <widget class="QLabel" name="newVersionLabel">
-     <property name="styleSheet">
-      <string notr="true">QLabel#newVersionLabel{
-	color:red
-}</string>
-     </property>
-     <property name="text">
-      <string>（未检测）</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="1">
-    <widget class="QLabel" name="currentVersionLabel">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QLabel#currentVersionLabel{
-	color:blue
-}</string>
-     </property>
-     <property name="text">
-      <string notr="true">0.0.0</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0" colspan="6">
-    <widget class="QLabel" name="noNewVersionTipLabel">
-     <property name="styleSheet">
-      <string notr="true">QLabel#noNewVersionTipLabel{
-	color:blue
-}</string>
-     </property>
-     <property name="text">
-      <string>软件已是最新版本，无需更新</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="0" colspan="6">
-    <widget class="QGroupBox" name="groupBox">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="title">
-      <string>下载列表</string>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_3">
-      <item row="0" column="0">
-       <widget class="QListWidget" name="downloadListListWidget"/>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="0" column="0">
-    <widget class="QLabel" name="label_3">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>当前版本</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="2">
-    <widget class="Line" name="line">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="5">
+   <item row="1" column="0" colspan="6">
     <widget class="QLabel" name="label_2">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -203,10 +203,31 @@
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+	color:red
+}</string>
+     </property>
      <property name="text">
-      <string>更新功能不稳定，请加入用户交流群（952218522）获取最新版本</string>
+      <string>Update function is not stable, please visit the release web site to get the latest version from &quot;Links&quot; menu.</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
+   </item>
+   <item row="0" column="5">
+    <spacer name="horizontalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
    </item>
   </layout>
  </widget>
