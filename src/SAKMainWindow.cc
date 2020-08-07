@@ -49,6 +49,7 @@
 #include "SAKUdpServerDebugPage.hh"
 #include "SAKTcpClientDebugPage.hh"
 #include "SAKTcpServerDebugPage.hh"
+#include "SAKMainWindowTabPageNameEditDialog.hh"
 
 #ifdef SAK_IMPORT_HID_MODULE
 #include "SAKHidDebugPage.hh"
@@ -473,10 +474,18 @@ void SAKMainWindow::installLanguage()
 
 void SAKMainWindow::appendRemovablePage()
 {
-    int type = qobject_cast<QAction*>(sender())->data().value<int>();
-    QWidget *widget = debugPageFromType(type);
-    widget->setAttribute(Qt::WA_DeleteOnClose, true);
-    mTabWidget->addTab(widget, sender()->objectName());
+    if (sender()){
+        SAKMainWindowTabPageNameEditDialog dialog;
+        dialog.setName(sender()->objectName());
+        if (QDialog::Accepted == dialog.exec()){
+            if (sender()->inherits("QAction")){
+                int type = qobject_cast<QAction*>(sender())->data().value<int>();
+                QWidget *widget = debugPageFromType(type);
+                widget->setAttribute(Qt::WA_DeleteOnClose, true);
+                mTabWidget->addTab(widget, dialog.name());
+            }
+        }
+    }
 }
 
 void SAKMainWindow::removeRemovableDebugPage(int index)
@@ -488,15 +497,18 @@ void SAKMainWindow::removeRemovableDebugPage(int index)
 
 void SAKMainWindow::openDebugPageWidget()
 {
-    if (!sender()){
-        return;
-    }
-
-    if (sender()->inherits("QAction")){
-        int type = qobject_cast<QAction*>(sender())->data().value<int>();
-        QWidget *widget = debugPageFromType(type);
-        widget->setAttribute(Qt::WA_DeleteOnClose, true);
-        widget->show();
+    if (sender()){
+        SAKMainWindowTabPageNameEditDialog dialog;
+        dialog.setName(sender()->objectName());
+        if (QDialog::Accepted == dialog.exec()){
+            if (sender()->inherits("QAction")){
+                int type = qobject_cast<QAction*>(sender())->data().value<int>();
+                QWidget *widget = debugPageFromType(type);
+                widget->setAttribute(Qt::WA_DeleteOnClose, true);
+                widget->setWindowTitle(dialog.name());
+                widget->show();
+            }
+        }
     }
 }
 
