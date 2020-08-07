@@ -27,39 +27,39 @@ SAKApplication::SAKApplication(int argc, char **argv)
     :QApplication (argc, argv)
     ,mMainWindow(Q_NULLPTR)
 {
+    // Initialize some information about application.
+    setOrganizationName(QString("Qter"));
+    setOrganizationDomain(QString("IT"));
     setApplicationName(QString("QtSwissArmyKnife"));
-    /// @brief 率先显示启动页面
+
+    // Setup language packet at first.
+    installLanguage();
+
+    // Show a splash screen.
     SAKSplashScreen *splashScreen = SAKSplashScreen::instance();
     splashScreen->show();
     processEvents();
 
-    /// @brief 初始化全部变量
+    // Initialize some global variables.
     SAKSettings::instance();
 #if 0
     SAKSqlDatabase::instance();
 #endif
 
-    /// @brief 设置软件版本，SAK_VERSION在SAKCommon中定义
+    // Set application version, if micro SAK_VERSION is not defined, the application version is "0.0.0"
 #ifndef SAK_VERSION
     setApplicationVersion(QString("0.0.0"));
 #else
     setApplicationVersion(SAK_VERSION);
 #endif
 
-    /// @brief 安装语言包，必须在构造界面控件之前调用，否则短语翻译不生效
-    installLanguage();
-
-    /// @brief 注册表选项
-    setOrganizationName(QString("Qter"));
-    setOrganizationDomain(QString("IT"));
-    setApplicationName(QString("QtSwissArmyKnife"));
-
-    /// @brief 实例化主窗口
+    // There is bug: the application will crash if create and show a main window in the main().
+    // the bug is appear on linux platform only.
     mMainWindow = new SAKMainWindow;
     mMainWindow->show();
     splashScreen->finish(mMainWindow);
 
-    /// @brief 窗口居中显示
+    // Move the main window to the central of desktop.
     QDesktopWidget *desktop = QApplication::desktop();
     int currentScreen = desktop->screenNumber(mMainWindow);
     QList<QScreen*> screenList = QGuiApplication::screens();

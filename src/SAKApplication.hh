@@ -19,17 +19,18 @@ class SAKApplication:public QApplication
 {
     Q_OBJECT
 public:
-    SAKApplication(int argc, char **argv);
+    explicit SAKApplication(int argc, char **argv);
     ~SAKApplication();
 
     /**
-     * @brief installLanguage 安装语言包
+     * @brief installLanguage: Setup the language packet of application.
+     * the interface must be called before initalizing any text.
      */
     void installLanguage();
 
     /**
-     * @brief mainWindow 获取主窗口实例指针
-     * @return 主窗口实例指针
+     * @brief mainWindow: Get the instance of main window
+     * @return Instance of main window
      */
     SAKMainWindow *mainWindow();
 private:
