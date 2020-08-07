@@ -110,6 +110,7 @@ INCLUDEPATH += \
     src \
     src/moreinfo \
     src/common \
+    src/mainwindow \
     src/pages \
     src/pages/page \
     src/pages/page/common \
@@ -140,6 +141,7 @@ INCLUDEPATH += \
 
 FORMS += \
     src/SAKMainWindow.ui \
+    src/mainwindow/SAKMainWindowTabPageNameEditDialog.ui \
     src/moreinfo/SAKMoreInformation.ui \
     src/pages/page/SAKDebugPage.ui \
     src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui \
@@ -176,6 +178,7 @@ HEADERS += \
     src/SAKMainWindow.hh \
     src/SAKSettings.hh \
     src/common/SAKInterface.hh \
+    src/mainwindow/SAKMainWindowTabPageNameEditDialog.hh \
     src/moreinfo/SAKMoreInformation.hh \
     src/pages/page/SAKDebugPage.hh \
     src/pages/page/common/SAKDebugPageCommonDatabaseInterface.hh \
@@ -238,6 +241,7 @@ SOURCES += \
     src/SAKMainWindow.cc \
     src/SAKSettings.cc \
     src/common/SAKInterface.cc \
+    src/mainwindow/SAKMainWindowTabPageNameEditDialog.cc \
     src/moreinfo/SAKMoreInformation.cc \
     src/pages/page/SAKDebugPage.cc \
     src/pages/page/common/SAKDebugPageCommonDatabaseInterface.cc \
