@@ -12,7 +12,7 @@
 
 #include <QSplashScreen>
 
-/// @brief 启动界面
+/// @brief A splash screen
 class SAKSplashScreen : public QSplashScreen
 {
     Q_OBJECT
@@ -20,11 +20,15 @@ private:
     SAKSplashScreen();
     ~SAKSplashScreen();
 public:
+    /**
+     * @brief instance: Get the instance of splash screen
+     * @return: Instance of splash screen
+     */
     static SAKSplashScreen *instance();
 
     /**
-     * @brief showMessage 在启动界面上面显示信息
-     * @param msg 待显示信息
+     * @brief setMessage: Show message on the splash screen
+     * @param msg: The message need to be show
      */
     void setMessage(QString msg);
 private:
