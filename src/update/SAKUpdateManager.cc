@@ -225,7 +225,7 @@ void SAKUpdateManager::setupDownloadList(UpdateInfo info)
     SAKDownloadItemWidget *itemWidget = new SAKDownloadItemWidget(info.tarballUrl, mDownloadListListWidget);
     item->setSizeHint(itemWidget->size());
     mDownloadListListWidget->setItemWidget(item, itemWidget);
-    // source - zip
+    // Source - zip
     item = new QListWidgetItem(QIcon(":/resources/images/Zip.png"), QString(""), mDownloadListListWidget);
     itemWidget = new SAKDownloadItemWidget(info.zipballUrl, mDownloadListListWidget);
     item->setSizeHint(itemWidget->size());
