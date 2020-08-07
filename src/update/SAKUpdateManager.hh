@@ -15,6 +15,7 @@
 #include <QDialog>
 #include <QGroupBox>
 #include <QCheckBox>
+#include <QSettings>
 #include <QListWidget>
 #include <QPushButton>
 #include <QProgressBar>
@@ -34,7 +35,15 @@ public:
     SAKUpdateManager(QWidget *parent =  Q_NULLPTR);
     ~SAKUpdateManager();
 
+    /**
+     * @brief checkForUpdate: Check for update
+     */
     void checkForUpdate();
+
+    /**
+     * @brief enableAutoCheckedForUpdate: Get the application update flag
+     * @return update flag
+     */
     bool enableAutoCheckedForUpdate();
 private:
     struct UpdateInfo{
