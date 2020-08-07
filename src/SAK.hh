@@ -12,13 +12,14 @@
 
 #include <QObject>
 
+/// @brief The class provide some interfaces to get informaton about QSAK project.
 class SAK:public QObject
 {
     Q_OBJECT
 public:
     /**
-     * @brief instance 获取app信息示例
-     * @return App信息示例
+     * @brief instance: Get the instance of SAK class
+     * @return Instance of SAK class
      */
     static SAK* instance();
 

@@ -81,5 +81,5 @@ QString SAK::copyright()
 
 QString SAK::business()
 {
-    return tr("上位机定制开发，可联系作者洽谈");
+    return tr("Upper computer custom development, can contact the author to negotiate");
 }
