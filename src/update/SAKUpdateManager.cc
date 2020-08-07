@@ -202,20 +202,20 @@ void SAKUpdateManager::setupDownloadList(UpdateInfo info)
 {
     clearDownloadList();
 
-    // Binary for windows
+    // Binary for Windows
     mDownloadListListWidget->addItem(QString("Windows"));
     appendPacketItem(info, QString(":/resources/images/Windows.png"), QString(".exe"));
 
-    // Binary for linux
+    // Binary for Linux
     mDownloadListListWidget->addItem(QString("Linux"));
     appendPacketItem(info, QString(":/resources/images/Linux.png"), QString(".run"));
     appendPacketItem(info, QString(":/resources/images/Linux.png"), QString(".Appimage"));
 
-    // Binary for mac
+    // Binary for MAC
     mDownloadListListWidget->addItem(QString("Apple"));
     appendPacketItem(info, QString(":/resources/images/Mac.png"), QString(".dmg"));
 
-    // Binary for android
+    // Binary for Android
     mDownloadListListWidget->addItem(QString("Android"));
     appendPacketItem(info, QString(":/resources/images/Android.png"), QString(".pkg"));
 
