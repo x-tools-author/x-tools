@@ -108,7 +108,6 @@ contains(ANDROID_TARGET_ARCH,arm64-v8a) {
 
 INCLUDEPATH += \
     src \
-    src/moreinfo \
     src/common \
     src/mainwindow \
     src/pages \
@@ -134,15 +133,15 @@ INCLUDEPATH += \
     src/pages/test \
     src/pages/udp/client \
     src/pages/udp/server \
-    src/qrcode \
     src/startui \
     src/singleton \
     src/update
 
 FORMS += \
     src/mainwindow/SAKMainWindow.ui \
+    src/mainwindow/SAKMainWindowMoreInformationDialog.ui \
+    src/mainwindow/SAKMainWindowQrCodeView.ui \
     src/mainwindow/SAKMainWindowTabPageNameEditDialog.ui \
-    src/moreinfo/SAKMoreInformation.ui \
     src/pages/page/SAKDebugPage.ui \
     src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui \
     src/pages/page/input/datapreset/SAKInputDataPresetItem.ui \
@@ -166,7 +165,6 @@ FORMS += \
     src/pages/udp/client/SAKUdpClientDeviceController.ui \
     src/pages/udp/client/SAKUdpClientMulticastEditingDialog.ui \
     src/pages/udp/server/SAKUdpServerDeviceController.ui \
-    src/qrcode/SAKQRCodeDialog.ui \
     src/singleton/SAKSingletonErrorDialog.ui \
     src/update/SAKDownloadItemWidget.ui \
     src/update/SAKUpdateManager.ui
@@ -178,8 +176,10 @@ HEADERS += \
     src/mainwindow/SAKMainWindow.hh \
     src/SAKSettings.hh \
     src/common/SAKInterface.hh \
+    src/mainwindow/SAKMainWindowMoreInformationDialog.hh \
+    src/mainwindow/SAKMainWindowQrCode.hh \
+    src/mainwindow/SAKMainWindowQrCodeView.hh \
     src/mainwindow/SAKMainWindowTabPageNameEditDialog.hh \
-    src/moreinfo/SAKMoreInformation.hh \
     src/pages/page/SAKDebugPage.hh \
     src/pages/page/common/SAKDebugPageCommonDatabaseInterface.hh \
     src/pages/page/device/SAKDebugPageDevice.hh \
@@ -226,8 +226,6 @@ HEADERS += \
     src/pages/udp/server/SAKUdpServerDebugPage.hh \
     src/pages/udp/server/SAKUdpServerDevice.hh \
     src/pages/udp/server/SAKUdpServerDeviceController.hh \
-    src/qrcode/SAKQRCodeDialog.hh \
-    src/qrcode/SAKQRCodeWidget.hh \
     src/singleton/SAKSingletonController.hh \
     src/singleton/SAKSingletonErrorDialog.hh \
     src/startui/SAKSplashScreen.hh \
@@ -241,8 +239,10 @@ SOURCES += \
     src/mainwindow/SAKMainWindow.cc \
     src/SAKSettings.cc \
     src/common/SAKInterface.cc \
+    src/mainwindow/SAKMainWindowMoreInformationDialog.cc \
+    src/mainwindow/SAKMainWindowQrCode.cc \
+    src/mainwindow/SAKMainWindowQrCodeView.cc \
     src/mainwindow/SAKMainWindowTabPageNameEditDialog.cc \
-    src/moreinfo/SAKMoreInformation.cc \
     src/pages/page/SAKDebugPage.cc \
     src/pages/page/common/SAKDebugPageCommonDatabaseInterface.cc \
     src/pages/page/device/SAKDebugPageDevice.cc \
@@ -290,8 +290,6 @@ SOURCES += \
     src/pages/udp/server/SAKUdpServerDebugPage.cc \
     src/pages/udp/server/SAKUdpServerDevice.cc \
     src/pages/udp/server/SAKUdpServerDeviceController.cc \
-    src/qrcode/SAKQRCodeDialog.cc \
-    src/qrcode/SAKQRCodeWidget.cc \
     src/singleton/SAKSingletonController.cc \
     src/singleton/SAKSingletonErrorDialog.cc \
     src/startui/SAKSplashScreen.cc \
