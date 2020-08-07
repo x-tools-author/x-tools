@@ -26,6 +26,8 @@
 static const char* checkForUpdateUrl = "https://api.github.com/repos/qsak/QtSwissArmyKnife/releases/latest";
 SAKUpdateManager::SAKUpdateManager(QWidget *parent)
     :QDialog(parent)
+    ,mSettings(Q_NULLPTR)
+    ,mSettingsKeyUpdateAutomaticallyEnable(QString("updateAutomaticallyEnable"))
     ,mUi (new Ui::SAKUpdateManager)
 {
     mUi->setupUi(this);
@@ -48,10 +50,6 @@ SAKUpdateManager::SAKUpdateManager(QWidget *parent)
     mClearInfoTimer.setInterval(SAK_CLEAR_MESSAGE_INTERVAL);
     connect(&mClearInfoTimer, &QTimer::timeout, this, &SAKUpdateManager::clearInfo);
 
-    // Read in setting information form settings file
-    bool checked = SAKSettings::instance()->instance()->enableAutoCheckForUpdate();
-    mAutoCheckForUpdateCheckBox->setChecked(checked);
-
     setModal(true);
 }
 
@@ -67,7 +65,17 @@ void SAKUpdateManager::checkForUpdate()
 
 bool SAKUpdateManager::enableAutoCheckedForUpdate()
 {
-    return SAKSettings::instance()->enableAutoCheckForUpdate();
+    return mAutoCheckForUpdateCheckBox->isChecked();
+}
+
+void SAKUpdateManager::setSettings(QSettings *settings)
+{
+    mSettings = settings;
+    if (mSettings){
+        // Read in setting information form settings file
+        bool checked = mSettings->value(mSettingsKeyUpdateAutomaticallyEnable).toBool();
+        mAutoCheckForUpdateCheckBox->setChecked(checked);
+    }
 }
 
 void SAKUpdateManager::outputInfo(QString info, bool isError)
@@ -256,7 +264,9 @@ void SAKUpdateManager::appendPacketItem(UpdateInfo info, QString icon, QString k
 
 void SAKUpdateManager::on_autoCheckForUpdateCheckBox_clicked()
 {
-    SAKSettings::instance()->setEnableAutoCheckForUpdate(mAutoCheckForUpdateCheckBox->isChecked());
+    if (mSettings){
+        mSettings->setValue(mSettingsKeyUpdateAutomaticallyEnable, mAutoCheckForUpdateCheckBox->isChecked());
+    }
 }
 
 void SAKUpdateManager::on_visitWebPushButton_clicked()

@@ -45,6 +45,13 @@ public:
      * @return update flag
      */
     bool enableAutoCheckedForUpdate();
+
+    /**
+     * @brief setSettings: Set settings instance,
+     * if settings is valid, some operation will save to the settings file
+     * @param settings: settings instance
+     */
+    void setSettings(QSettings *settings);
 private:
     struct UpdateInfo{
         bool isValid; // true: the information is valid, false: the information is invalid
@@ -61,6 +68,8 @@ private:
     QTimer mClearInfoTimer;
     QNetworkAccessManager mNetworkAccessManager;
     QNetworkReply *mNetworkReply;
+    QSettings *mSettings;
+    const QString mSettingsKeyUpdateAutomaticallyEnable;
 private:
     void outputInfo(QString info, bool isError = false);
     void clearInfo();
