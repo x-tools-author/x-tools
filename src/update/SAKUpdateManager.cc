@@ -45,7 +45,7 @@ SAKUpdateManager::SAKUpdateManager(QWidget *parent)
     noNewVersionTipLabel->hide();
     visitWebPushButton->setEnabled(false);
 
-    clearInfoTimer.setInterval(5*1000);
+    clearInfoTimer.setInterval(SAK_CLEAR_MESSAGE_INTERVAL);
     connect(&clearInfoTimer, &QTimer::timeout, this, &SAKUpdateManager::clearInfo);
 
     // Read in setting information form settings file
