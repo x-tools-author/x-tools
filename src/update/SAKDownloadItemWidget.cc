@@ -11,27 +11,27 @@
 #include <QDesktopServices>
 
 #include "SAKDownloadItemWidget.hh"
-
 #include "ui_SAKDownloadItemWidget.h"
 
 SAKDownloadItemWidget::SAKDownloadItemWidget(QString downloadUrl, QWidget *parent)
-    :QWidget (parent)
-    ,ui (new Ui::SAKDownloadItemWidget)
-    ,downloadUrl (downloadUrl)
+    :QWidget(parent)
+    ,mDownloadUrl(downloadUrl)
+    ,mUi(new Ui::SAKDownloadItemWidget)
 {
-    ui->setupUi(this);
+    mUi->setupUi(this);
 
-    fileNameLabel = ui->fileNameLabel;
-    downloadPushButton = ui->downloadPushButton;
-    fileNameLabel->setText(downloadUrl);
+    // Initializing variables
+    mFileNameLabel = mUi->fileNameLabel;
+    mDownloadPushButton = mUi->downloadPushButton;
+    mFileNameLabel->setText(downloadUrl);
 }
 
 SAKDownloadItemWidget::~SAKDownloadItemWidget()
 {
-
+    delete mUi;
 }
 
 void SAKDownloadItemWidget::on_downloadPushButton_clicked()
 {
-    QDesktopServices::openUrl(QUrl(downloadUrl));
+    QDesktopServices::openUrl(QUrl(mDownloadUrl));
 }

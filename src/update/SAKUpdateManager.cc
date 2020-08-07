@@ -48,9 +48,7 @@ SAKUpdateManager::SAKUpdateManager(QWidget *parent)
     clearInfoTimer.setInterval(5*1000);
     connect(&clearInfoTimer, &QTimer::timeout, this, &SAKUpdateManager::clearInfo);
 
-    /*
-     * 从配置文件读入配置
-     */
+    // Read in setting information form settings file
     bool checked = SAKSettings::instance()->instance()->enableAutoCheckForUpdate();
     autoCheckForUpdateCheckBox->setChecked(checked);
 
@@ -124,9 +122,7 @@ void SAKUpdateManager::checkForUpdateFinished()
                 if (isNewVersion(updateInfo.name)){
                     newVersionLabel->setText(updateInfo.name.remove("v"));
                     newVersionCommentsTextBrowser->setText(updateInfo.body.replace(QString("\\r\\n"), QString("\r\n")));
-
                     setupDownloadList(updateInfo);
-
                     visitWebPushButton->setEnabled(true);
                 }else{
                     noNewVersionTipLabel->show();
@@ -158,14 +154,12 @@ SAKUpdateManager::UpdateInfo SAKUpdateManager::extractUpdateInfo(QByteArray json
     updateInfo.isValid = false;
 
     if (jsonObjectData.isEmpty()){
-        updateInfo.errorString = tr("无法获取更新信息或者无可用发布版本");
+        updateInfo.errorString = tr("Pull information from server failed!");
     }else{
         QJsonParseError jsonParseError;
         QJsonDocument jsonDoc = QJsonDocument::fromJson(jsonObjectData, &jsonParseError);
 
-        /*
-         * 数据格式可查看：resources/files/GitHubLatestReleasesDatastruct.json
-         */
+        // Data structure reference: resources/files/GitHubLatestReleasesDatastruct.json
         if (jsonParseError.error == QJsonParseError::NoError){
             updateInfo.isValid = true;
             QJsonObject jsonObj = jsonDoc.toVariant().toJsonObject();
@@ -244,7 +238,7 @@ void SAKUpdateManager::setupDownloadList(UpdateInfo info)
         }
     }
 
-    downloadListListWidget->addItem(tr("源码"));
+    downloadListListWidget->addItem(tr("Source"));
     QListWidgetItem *item = new QListWidgetItem(QIcon(":/resources/images/Gz.png"), QString(""), downloadListListWidget);
     SAKDownloadItemWidget *itemWidget = new SAKDownloadItemWidget(info.tarballUrl, downloadListListWidget);
     item->setSizeHint(itemWidget->size());

@@ -26,6 +26,7 @@ namespace Ui {
     class SAKUpdateManager;
 }
 
+/// @brief Check for update
 class SAKUpdateManager:public QDialog
 {
     Q_OBJECT

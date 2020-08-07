@@ -18,22 +18,21 @@ namespace Ui {
     class SAKDownloadItemWidget;
 }
 
+/// Packet item
 class SAKDownloadItemWidget:public QWidget
 {
     Q_OBJECT
 public:
-    SAKDownloadItemWidget(QString downloadUrl, QWidget *parent);
+    SAKDownloadItemWidget(QString mDownloadUrl, QWidget *parent);
     ~SAKDownloadItemWidget();
 private:
-    Ui::SAKDownloadItemWidget *ui;
-    QLabel *fileNameLabel;
-    QPushButton *downloadPushButton;
-
+    QString mDownloadUrl;
+private:
+    Ui::SAKDownloadItemWidget *mUi;
+    QLabel *mFileNameLabel;
+    QPushButton *mDownloadPushButton;
 private slots:
     void on_downloadPushButton_clicked();
-
-private:
-    QString downloadUrl;
 };
 
 #endif
