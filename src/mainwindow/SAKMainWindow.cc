@@ -125,6 +125,9 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     mTabWidget->setTabsClosable(true);
     connect(mTabWidget, &QTabWidget::tabCloseRequested, this, &SAKMainWindow::removeRemovableDebugPage);
 
+    /// @brief 初始化菜单栏
+    initMenuBar();
+
     /*
      * 以下代码是设置软件风格
      * 对于MACOS来说不设置为Windows（MACOS软件风格有两种，一种是Windows，另外一种好像是MACOS，不太确定）
@@ -158,10 +161,13 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     for (int i = 0; i < metaEnum.keyCount(); i++){
         QString name = SAKGlobal::debugPageNameFromType(metaEnum.value(i));
         QWidget *page = debugPageFromType(metaEnum.value(i));
+        page->setWindowTitle(name);
         if (page){
             mTabWidget->addTab(page, name);
+            appendWindowAction(page);
         }
     }
+    mWindowsMenu->addSeparator();
 
     /// @brief 隐藏tab widget的关闭按钮（必须在调用setTabsClosable()函数后设置，否则不生效）
     for (int i = 0; i < mTabWidget->count(); i++){
@@ -169,8 +175,7 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
         mTabWidget->tabBar()->setTabButton(i, QTabBar::LeftSide, Q_NULLPTR);
     }
 
-    /// @brief 初始化菜单栏
-    initMenuBar();
+
 
     /// @brief 初始化工具，该步骤需要在完成菜单栏初始化后进行
     QMetaEnum toolTypeMetaEnum = QMetaEnum::fromType<SAKDataStruct::SAKEnumToolType>();
@@ -293,8 +298,8 @@ void SAKMainWindow::initOptionMenu()
 
 void SAKMainWindow::initWindowMenu()
 {
-    QMenu *windowMenu = new QMenu(tr("&Windows"), this);
-    menuBar()->addMenu(windowMenu);
+    mWindowsMenu = new QMenu(tr("&Windows"), this);
+    menuBar()->addMenu(mWindowsMenu);
 }
 
 void SAKMainWindow::initLanguageMenu()
@@ -481,8 +486,12 @@ void SAKMainWindow::appendRemovablePage()
             if (sender()->inherits("QAction")){
                 int type = qobject_cast<QAction*>(sender())->data().value<int>();
                 QWidget *widget = debugPageFromType(type);
-                widget->setAttribute(Qt::WA_DeleteOnClose, true);
-                mTabWidget->addTab(widget, dialog.name());
+                if (widget){
+                    widget->setAttribute(Qt::WA_DeleteOnClose, true);
+                    widget->setWindowTitle(dialog.name());
+                    mTabWidget->addTab(widget, dialog.name());
+                    appendWindowAction(widget);
+                }
             }
         }
     }
@@ -504,9 +513,12 @@ void SAKMainWindow::openDebugPageWidget()
             if (sender()->inherits("QAction")){
                 int type = qobject_cast<QAction*>(sender())->data().value<int>();
                 QWidget *widget = debugPageFromType(type);
-                widget->setAttribute(Qt::WA_DeleteOnClose, true);
-                widget->setWindowTitle(dialog.name());
-                widget->show();
+                if (widget){
+                    widget->setAttribute(Qt::WA_DeleteOnClose, true);
+                    widget->setWindowTitle(dialog.name());
+                    widget->show();
+                    appendWindowAction(widget);
+                }
             }
         }
     }
@@ -578,6 +590,30 @@ QWidget *SAKMainWindow::debugPageFromType(int type)
     }
 
     return widget;
+}
+
+void SAKMainWindow::activePage()
+{
+    if (sender()){
+        if (sender()->inherits("QAction")){
+            QAction *action = qobject_cast<QAction*>(sender());
+            QWidget *widget = action->data().value<QWidget*>();
+            if (widget->parent()){
+                mTabWidget->setCurrentWidget(widget);
+            }else{
+                widget->activateWindow();
+            }
+        }
+    }
+}
+
+void SAKMainWindow::appendWindowAction(QWidget *page)
+{
+    QAction *action = new QAction(page->windowTitle(), mWindowsMenu);
+    action->setData(QVariant::fromValue(page));
+    mWindowsMenu->addAction(action);
+    connect(action, &QAction::triggered, this, &SAKMainWindow::activePage);
+    connect(page, &QWidget::destroyed, action, &QAction::deleteLater);
 }
 
 void SAKMainWindow::showToolWidget()

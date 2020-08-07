@@ -35,6 +35,7 @@ public:
     ~SAKMainWindow();
 private:
     QMenu *mToolsMenu;
+    QMenu *mWindowsMenu;
     QAction *mDefaultStyleSheetAction;
     SAKUpdateManager *mUpdateManager;
     SAKMainWindowMoreInformationDialog *mMoreInformation;
@@ -64,6 +65,8 @@ private:
     void openDebugPageWidget();
     /// @brief 生成调试页面
     QWidget *debugPageFromType(int type);
+    void activePage();
+    void appendWindowAction(QWidget *page);
 private slots:
     /// @brief 显示工具窗口，该函数只能通过“工具”菜单的菜单项来调用
     void showToolWidget();
