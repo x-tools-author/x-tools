@@ -116,10 +116,10 @@ QString SAKGlobal::debugPageNameFromType(int type)
 #endif
 #ifdef SAK_IMPORT_WEBSOCKET_MODULE
     case SAKDataStruct::DebugPageTypeWebSocketClient:
-        name = tr("WebSocket client");
+        name = tr("Web socket client");
         break;
     case SAKDataStruct::DebugPageTypeWebSocketServer:
-        name = tr("WebSocket server");
+        name = tr("Web socket server");
         break;
 #endif
 #ifdef SAK_IMPORT_COM_MODULE
