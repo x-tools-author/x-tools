@@ -207,7 +207,7 @@ void SAKMainWindow::initMenuBar()
 
 void SAKMainWindow::initFileMenu()
 {
-    QMenu *fileMenu = new QMenu(tr("File"), this);
+    QMenu *fileMenu = new QMenu(tr("&File"), this);
     menuBar()->addMenu(fileMenu);
 
     QMenu *tabMenu = new QMenu(tr("New page"), this);
@@ -241,14 +241,14 @@ void SAKMainWindow::initFileMenu()
 
 void SAKMainWindow::initToolMenu()
 {
-    QMenu *toolMenu = new QMenu(tr("Tool"));
+    QMenu *toolMenu = new QMenu(tr("&Tools"));
     menuBar()->addMenu(toolMenu);
     mToolsMenu = toolMenu;
 }
 
 void SAKMainWindow::initOptionMenu()
 {
-    QMenu *optionMenu = new QMenu(tr("Option"));
+    QMenu *optionMenu = new QMenu(tr("&Options"));
     menuBar()->addMenu(optionMenu);
 
     /// @brief 软件样式，设置默认样式需要重启软件
@@ -292,13 +292,13 @@ void SAKMainWindow::initOptionMenu()
 
 void SAKMainWindow::initWindowMenu()
 {
-    QMenu *windowMenu = new QMenu(tr("Window"), this);
+    QMenu *windowMenu = new QMenu(tr("&Windows"), this);
     menuBar()->addMenu(windowMenu);
 }
 
 void SAKMainWindow::initLanguageMenu()
 {
-    QMenu *languageMenu = new QMenu(tr("Language"), this);
+    QMenu *languageMenu = new QMenu(tr("&Languages"), this);
     menuBar()->addMenu(languageMenu);
 
     QString language = SAKSettings::instance()->language();
@@ -351,7 +351,7 @@ void SAKMainWindow::initLanguageMenu()
 
 void SAKMainWindow::initHelpMenu()
 {
-    QMenu *helpMenu = new QMenu(tr("Help"), this);
+    QMenu *helpMenu = new QMenu(tr("&Help"), this);
     menuBar()->addMenu(helpMenu);
 
     QAction *aboutQtAction = new QAction(tr("About Qt"), this);
@@ -387,7 +387,7 @@ void SAKMainWindow::initHelpMenu()
 
 void SAKMainWindow::initLinksMenu()
 {
-    QMenu *linksMenu = new QMenu(tr("Links"), this);
+    QMenu *linksMenu = new QMenu(tr("&Links"), this);
     menuBar()->addMenu(linksMenu);
 
     struct Link {
