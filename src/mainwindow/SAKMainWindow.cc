@@ -114,7 +114,6 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     QWidget *centralWidget = new QWidget(this);
     setCentralWidget(centralWidget);
     centralWidget->setLayout(layout);
-
     centralWidget->layout()->setContentsMargins(6, 6, 6, 6);
 #endif
     QString title = QString(tr("Qt Swiss Army Knife"));
@@ -125,16 +124,12 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     mTabWidget->setTabsClosable(true);
     connect(mTabWidget, &QTabWidget::tabCloseRequested, this, &SAKMainWindow::removeRemovableDebugPage);
 
-    /// @brief 初始化菜单栏
+    // Initializing menu bar
     initMenuBar();
 
-    /*
-     * 以下代码是设置软件风格
-     * 对于MACOS来说不设置为Windows（MACOS软件风格有两种，一种是Windows，另外一种好像是MACOS，不太确定）
-     * 对于Windows或者Linux系统来说，设置Funsion为默认软件风格
-     * 安卓系统不设置软件风格
-     * 2020年02月09号 Qt5.12 --by Qter
-     */
+    // The default application style of Windows paltform and Linux platform is "Fusion".
+    // Do not set applicaiton stype for android palrform.
+    // For macOS platform, do not use the application style named "Windows"
 #ifndef Q_OS_ANDROID
     QString settingStyle = SAKSettings::instance()->appStyle();
     if (settingStyle.isEmpty()){
@@ -156,7 +151,7 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     }
 #endif
 
-    /// @brief 创建调试页面
+    // Create debugging page
     QMetaEnum metaEnum = QMetaEnum::fromType<SAKDataStruct::SAKEnumDebugPageType>();
     for (int i = 0; i < metaEnum.keyCount(); i++){
         QString name = SAKGlobal::debugPageNameFromType(metaEnum.value(i));
@@ -169,7 +164,7 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     }
     mWindowsMenu->addSeparator();
 
-    /// @brief 隐藏tab widget的关闭按钮（必须在调用setTabsClosable()函数后设置，否则不生效）
+    // Hide the close button, the step must be do after calling setTabsClosable() function.
     for (int i = 0; i < mTabWidget->count(); i++){
         mTabWidget->tabBar()->setTabButton(i, QTabBar::RightSide, Q_NULLPTR);
         mTabWidget->tabBar()->setTabButton(i, QTabBar::LeftSide, Q_NULLPTR);
@@ -177,18 +172,17 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
 
 
 
-    /// @brief 初始化工具，该步骤需要在完成菜单栏初始化后进行
+    // Initializing the tools menu
     QMetaEnum toolTypeMetaEnum = QMetaEnum::fromType<SAKDataStruct::SAKEnumToolType>();
     for (int i = 0; i < toolTypeMetaEnum.keyCount(); i++){
         QString name = SAKGlobal::toolNameFromType(toolTypeMetaEnum.value(i));
         QAction *action = new QAction(name, this);
         action->setData(QVariant::fromValue(toolTypeMetaEnum.value(i)));
         mToolsMenu->addAction(action);
-
-        /// @brief 关联点击操作
         connect(action, &QAction::triggered, this, &SAKMainWindow::showToolWidget);
     }
 
+    // Do soemthing to make the application look like more beautiful.
     connect(QtStyleSheetApi::instance(), &QtStyleSheetApi::styleSheetChanged, this, &SAKMainWindow::changeStylesheet);
     connect(QtAppStyleApi::instance(), &QtAppStyleApi::appStyleChanged, this, &SAKMainWindow::changeAppStyle);
 }
@@ -257,7 +251,7 @@ void SAKMainWindow::initOptionMenu()
     QMenu *optionMenu = new QMenu(tr("&Options"));
     menuBar()->addMenu(optionMenu);
 
-    /// @brief 软件样式，设置默认样式需要重启软件
+    // Initializing style sheet menu, the application need to be reboot after change the style sheet to Qt default.
     QMenu *stylesheetMenu = new QMenu(tr("Skin"), this);
     optionMenu->addMenu(stylesheetMenu);
     mDefaultStyleSheetAction = new QAction(tr("Qt default"), this);
@@ -288,7 +282,7 @@ void SAKMainWindow::initOptionMenu()
         mDefaultStyleSheetAction->setChecked(true);
     }
 
-    /// @brief 软件风格，默认使用Qt支持的第一种软件风格
+    // Initializing application style menu.
     QMenu *appStyleMenu = new QMenu(tr("Application style"), this);
     optionMenu->addMenu(appStyleMenu);
     appStyleMenu->addActions(QtAppStyleApi::instance()->actions());
@@ -456,72 +450,11 @@ void SAKMainWindow::about()
                              .arg(tr("Cooperation")).arg(SAK::instance()->business()));
 }
 
-void SAKMainWindow::installLanguage()
-{
-    if (!sender()){
-        return;
-    }
-
-    if (sender()->inherits("QAction")){
-        QAction *action = reinterpret_cast<QAction*>(sender());
-        action->setChecked(true);
-
-        QString language = action->objectName();
-        QString name = action->data().toString();
-        SAKSettings::instance()->setLanguage(language+"-"+name);
-        int ret = QMessageBox::information(this, tr("Reboot application to effective"), tr("Language pack has been changed, reboot to effective?"), QMessageBox::Ok | QMessageBox::Cancel);
-        if (ret == QMessageBox::Ok){
-            qApp->closeAllWindows();
-            qApp->exit(SAK_REBOOT_CODE);
-        }
-    }
-}
-
-void SAKMainWindow::appendRemovablePage()
-{
-    if (sender()){
-        SAKMainWindowTabPageNameEditDialog dialog;
-        dialog.setName(sender()->objectName());
-        if (QDialog::Accepted == dialog.exec()){
-            if (sender()->inherits("QAction")){
-                int type = qobject_cast<QAction*>(sender())->data().value<int>();
-                QWidget *widget = debugPageFromType(type);
-                if (widget){
-                    widget->setAttribute(Qt::WA_DeleteOnClose, true);
-                    widget->setWindowTitle(dialog.name());
-                    mTabWidget->addTab(widget, dialog.name());
-                    appendWindowAction(widget);
-                }
-            }
-        }
-    }
-}
-
 void SAKMainWindow::removeRemovableDebugPage(int index)
 {
     QWidget *w = mTabWidget->widget(index);
     mTabWidget->removeTab(index);
     w->close();
-}
-
-void SAKMainWindow::openDebugPageWidget()
-{
-    if (sender()){
-        SAKMainWindowTabPageNameEditDialog dialog;
-        dialog.setName(sender()->objectName());
-        if (QDialog::Accepted == dialog.exec()){
-            if (sender()->inherits("QAction")){
-                int type = qobject_cast<QAction*>(sender())->data().value<int>();
-                QWidget *widget = debugPageFromType(type);
-                if (widget){
-                    widget->setAttribute(Qt::WA_DeleteOnClose, true);
-                    widget->setWindowTitle(dialog.name());
-                    widget->show();
-                    appendWindowAction(widget);
-                }
-            }
-        }
-    }
 }
 
 QWidget *SAKMainWindow::debugPageFromType(int type)
@@ -592,6 +525,29 @@ QWidget *SAKMainWindow::debugPageFromType(int type)
     return widget;
 }
 
+void SAKMainWindow::appendWindowAction(QWidget *page)
+{
+    QAction *action = new QAction(page->windowTitle(), mWindowsMenu);
+    action->setData(QVariant::fromValue(page));
+    mWindowsMenu->addAction(action);
+    connect(action, &QAction::triggered, this, &SAKMainWindow::activePage);
+    connect(page, &QWidget::destroyed, action, &QAction::deleteLater);
+}
+
+void SAKMainWindow::showToolWidget()
+{
+    if (sender()){
+        if (sender()->inherits("QAction")){
+            bool ok = false;
+            QAction *action = qobject_cast<QAction *>(sender());
+            int type = action->data().toInt(&ok);
+            if (ok){
+                SAKToolsManager::instance()->showToolWidget(type);
+            }
+        }
+    }
+}
+
 void SAKMainWindow::activePage()
 {
     if (sender()){
@@ -607,28 +563,61 @@ void SAKMainWindow::activePage()
     }
 }
 
-void SAKMainWindow::appendWindowAction(QWidget *page)
+void SAKMainWindow::installLanguage()
 {
-    QAction *action = new QAction(page->windowTitle(), mWindowsMenu);
-    action->setData(QVariant::fromValue(page));
-    mWindowsMenu->addAction(action);
-    connect(action, &QAction::triggered, this, &SAKMainWindow::activePage);
-    connect(page, &QWidget::destroyed, action, &QAction::deleteLater);
+    if (sender()){
+        if (sender()->inherits("QAction")){
+            QAction *action = reinterpret_cast<QAction*>(sender());
+            action->setChecked(true);
+
+            QString language = action->objectName();
+            QString name = action->data().toString();
+            SAKSettings::instance()->setLanguage(language+"-"+name);
+            int ret = QMessageBox::information(this, tr("Reboot application to effective"), tr("Language pack has been changed, reboot to effective?"), QMessageBox::Ok | QMessageBox::Cancel);
+            if (ret == QMessageBox::Ok){
+                qApp->closeAllWindows();
+                qApp->exit(SAK_REBOOT_CODE);
+            }
+        }
+    }
 }
 
-void SAKMainWindow::showToolWidget()
+void SAKMainWindow::openDebugPageWidget()
 {
-    QObject *obj = sender();
-    if (!obj){
-        return;
+    if (sender()){
+        SAKMainWindowTabPageNameEditDialog dialog;
+        dialog.setName(sender()->objectName());
+        if (QDialog::Accepted == dialog.exec()){
+            if (sender()->inherits("QAction")){
+                int type = qobject_cast<QAction*>(sender())->data().value<int>();
+                QWidget *widget = debugPageFromType(type);
+                if (widget){
+                    widget->setAttribute(Qt::WA_DeleteOnClose, true);
+                    widget->setWindowTitle(dialog.name());
+                    widget->show();
+                    appendWindowAction(widget);
+                }
+            }
+        }
     }
+}
 
-    if (obj->inherits("QAction")){
-        bool ok = false;
-        QAction *action = qobject_cast<QAction *>(obj);
-        int type = action->data().toInt(&ok);
-        if (ok){
-            SAKToolsManager::instance()->showToolWidget(type);
+void SAKMainWindow::appendRemovablePage()
+{
+    if (sender()){
+        SAKMainWindowTabPageNameEditDialog dialog;
+        dialog.setName(sender()->objectName());
+        if (QDialog::Accepted == dialog.exec()){
+            if (sender()->inherits("QAction")){
+                int type = qobject_cast<QAction*>(sender())->data().value<int>();
+                QWidget *widget = debugPageFromType(type);
+                if (widget){
+                    widget->setAttribute(Qt::WA_DeleteOnClose, true);
+                    widget->setWindowTitle(dialog.name());
+                    mTabWidget->addTab(widget, dialog.name());
+                    appendWindowAction(widget);
+                }
+            }
         }
     }
 }
