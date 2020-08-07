@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2020 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -7,36 +7,37 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKAPPLICATION_HH
-#define SAKAPPLICATION_HH
+#ifndef SAKMAINWINDOWTABPAGENAMEEDITDIALOG_HH
+#define SAKMAINWINDOWTABPAGENAMEEDITDIALOG_HH
 
-#include <QTranslator>
-#include <QApplication>
-#include <QStyleFactory>
+#include <QDialog>
+#include <QLineEdit>
 
-class SAKMainWindow;
-class SAKApplication:public QApplication
+namespace Ui {
+    class SAKMainWindowTabPageNameEditDialog;
+}
+
+class SAKMainWindowTabPageNameEditDialog : public QDialog
 {
     Q_OBJECT
 public:
-    SAKApplication(int argc, char **argv);
-    ~SAKApplication();
+    SAKMainWindowTabPageNameEditDialog(QWidget *parent = Q_NULLPTR);
+    ~SAKMainWindowTabPageNameEditDialog();
 
     /**
-     * @brief installLanguage 安装语言包
+     * @brief setName: Set the tab page name
+     * @param name: Tab page name
      */
-    void installLanguage();
+    void setName(const QString &name);
 
     /**
-     * @brief mainWindow 获取主窗口实例指针
-     * @return 主窗口实例指针
+     * @brief name: Get the tab page name
+     * @return The tab page name
      */
-    SAKMainWindow *mainWindow();
+    QString name();
 private:
-    QTranslator mQtTranslator;
-    QTranslator mQtBaseTranslator;
-    QTranslator mSakTranslator;
-    SAKMainWindow *mMainWindow;
+    Ui::SAKMainWindowTabPageNameEditDialog *mUi;
+    QLineEdit *mTabPageNameLineEdit;
 };
 
 #endif

@@ -22,21 +22,21 @@
     </widget>
    </item>
    <item row="2" column="5">
-    <widget class="QPushButton" name="pushButton_3">
+    <widget class="QPushButton" name="canclePushButton">
      <property name="text">
       <string>Cancle</string>
      </property>
     </widget>
    </item>
    <item row="2" column="4">
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="okPushButton">
      <property name="text">
       <string>OK</string>
      </property>
     </widget>
    </item>
    <item row="1" column="1" colspan="5">
-    <widget class="QLineEdit" name="lineEdit"/>
+    <widget class="QLineEdit" name="tabPageNameLineEdit"/>
    </item>
    <item row="2" column="3">
     <spacer name="horizontalSpacer">
@@ -63,7 +63,7 @@
  <resources/>
  <connections>
   <connection>
-   <sender>pushButton</sender>
+   <sender>okPushButton</sender>
    <signal>clicked()</signal>
    <receiver>SAKMainWindowTabPageNameEditDialog</receiver>
    <slot>accept()</slot>
@@ -79,7 +79,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>pushButton_3</sender>
+   <sender>canclePushButton</sender>
    <signal>clicked()</signal>
    <receiver>SAKMainWindowTabPageNameEditDialog</receiver>
    <slot>reject()</slot>
