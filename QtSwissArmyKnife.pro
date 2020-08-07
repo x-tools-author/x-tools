@@ -140,7 +140,7 @@ INCLUDEPATH += \
     src/update
 
 FORMS += \
-    src/SAKMainWindow.ui \
+    src/mainwindow/SAKMainWindow.ui \
     src/mainwindow/SAKMainWindowTabPageNameEditDialog.ui \
     src/moreinfo/SAKMoreInformation.ui \
     src/pages/page/SAKDebugPage.ui \
@@ -175,7 +175,7 @@ HEADERS += \
     src/SAK.hh \
     src/SAKApplication.hh \
     src/SAKGlobal.hh \
-    src/SAKMainWindow.hh \
+    src/mainwindow/SAKMainWindow.hh \
     src/SAKSettings.hh \
     src/common/SAKInterface.hh \
     src/mainwindow/SAKMainWindowTabPageNameEditDialog.hh \
@@ -238,7 +238,7 @@ SOURCES += \
     src/SAK.cc \
     src/SAKApplication.cc \
     src/SAKGlobal.cc \
-    src/SAKMainWindow.cc \
+    src/mainwindow/SAKMainWindow.cc \
     src/SAKSettings.cc \
     src/common/SAKInterface.cc \
     src/mainwindow/SAKMainWindowTabPageNameEditDialog.cc \
