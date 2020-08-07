@@ -16,7 +16,7 @@
 namespace Ui {
     class SAKMainWindowTabPageNameEditDialog;
 }
-
+/// @brief Editing the name of tab page
 class SAKMainWindowTabPageNameEditDialog : public QDialog
 {
     Q_OBJECT
