@@ -70,6 +70,7 @@ private:
     QNetworkReply *mNetworkReply;
     QSettings *mSettings;
     const QString mSettingsKeyUpdateAutomaticallyEnable;
+    bool isInitializing;
 private:
     void outputInfo(QString info, bool isError = false);
     void clearInfo();

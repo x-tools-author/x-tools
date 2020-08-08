@@ -16,7 +16,6 @@
 #include <QNetworkRequest>
 #include <QDesktopServices>
 
-#include "SAKSettings.hh"
 #include "SAKApplication.hh"
 #include "SAKUpdateManager.hh"
 #include "SAKDownloadItemWidget.hh"
@@ -28,6 +27,7 @@ SAKUpdateManager::SAKUpdateManager(QWidget *parent)
     :QDialog(parent)
     ,mSettings(Q_NULLPTR)
     ,mSettingsKeyUpdateAutomaticallyEnable(QString("updateAutomaticallyEnable"))
+    ,isInitializing(false)
     ,mUi (new Ui::SAKUpdateManager)
 {
     mUi->setupUi(this);
@@ -71,10 +71,15 @@ bool SAKUpdateManager::enableAutoCheckedForUpdate()
 void SAKUpdateManager::setSettings(QSettings *settings)
 {
     mSettings = settings;
+    isInitializing = true;
     if (mSettings){
         // Read in setting information form settings file
         bool checked = mSettings->value(mSettingsKeyUpdateAutomaticallyEnable).toBool();
         mAutoCheckForUpdateCheckBox->setChecked(checked);
+
+        if (checked){
+            on_checkForUpdatePushButton_clicked();
+        }
     }
 }
 
@@ -108,6 +113,12 @@ void SAKUpdateManager::checkForUpdateFinished()
                     mNewVersionCommentsTextBrowser->setText(mUpdateInfo.body.replace(QString("\\r\\n"), QString("\r\n")));
                     setupDownloadList(mUpdateInfo);
                 }else{
+                    if (isInitializing){
+                        isInitializing = false;
+                        return;
+                    }
+
+                    // Check for update manually
                     mNoNewVersionTipLabel->show();
                     mNewVersionLabel->setText(mUpdateInfo.name.remove("v"));
                 }
