@@ -115,12 +115,13 @@ void SAKUpdateManager::checkForUpdateFinished()
                 }else{
                     if (isInitializing){
                         isInitializing = false;
-                        return;
+                        goto doSomethingBeforeReturning;
                     }
 
                     // Check for update manually
                     mNoNewVersionTipLabel->show();
                     mNewVersionLabel->setText(mUpdateInfo.name.remove("v"));
+                    show();
                 }
 
                 QApplication::beep();
@@ -131,11 +132,12 @@ void SAKUpdateManager::checkForUpdateFinished()
                 outputInfo(mUpdateInfo.errorString, true);
             }
         }else{
-            QApplication::beep();            
+            QApplication::beep();
             outputInfo(mNetworkReply->errorString(), true);
         }
     }
 
+doSomethingBeforeReturning:
     mCheckForUpdatePushButton->setEnabled(true);
 
     delete mNetworkReply;
@@ -164,8 +166,6 @@ SAKUpdateManager::UpdateInfo SAKUpdateManager::extractUpdateInfo(QByteArray json
             updateInfo.body = jsonObj.value("body").toString();
             updateInfo.tarballUrl = jsonObj.value("tarball_url").toString();
             updateInfo.zipballUrl = jsonObj.value("zipball_url").toString();
-
-            show();
         }else{
             updateInfo.errorString = jsonParseError.errorString();
         }
