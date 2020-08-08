@@ -93,6 +93,7 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
 {
     mUi->setupUi(this);
     mUpdateManager = new SAKUpdateManager(this);
+    mUpdateManager->setSettings(SAKSettings::instance());
     mQrCodeDialog = new SAKMainWindowQrCodeView(this);
 
     QHBoxLayout *layout = new QHBoxLayout();
