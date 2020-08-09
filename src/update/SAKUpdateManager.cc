@@ -132,7 +132,9 @@ void SAKUpdateManager::checkForUpdateFinished()
                 outputInfo(mUpdateInfo.errorString, true);
             }
         }else{
-            QApplication::beep();
+            if (!isInitializing){
+                QApplication::beep();
+            }
             outputInfo(mNetworkReply->errorString(), true);
         }
     }
