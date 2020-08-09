@@ -42,6 +42,7 @@ private:
     SAKMainWindowMoreInformationDialog *mMoreInformation;
     SAKMainWindowQrCodeView *mQrCodeDialog;
     const QString mSettingKeyEnableTestPage;
+    const QString mSettingKeyClearConfiguration;
 private: 
     void initMenuBar();
     void initFileMenu();
@@ -60,6 +61,8 @@ private:
     QWidget *debugPageFromType(int type);
     void appendWindowAction(QWidget *page);
     void testPageActionTriggered();
+    void clearConfiguration();
+    void rebootRequestion();
 private slots:
     /**
      * @brief showToolWidget: Show a tool widget, the interface must be called by signal,

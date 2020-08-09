@@ -89,6 +89,7 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     ,mMoreInformation(new SAKMainWindowMoreInformationDialog)
     ,mQrCodeDialog(Q_NULLPTR)
     ,mSettingKeyEnableTestPage(QString("enableTestPage"))
+    ,mSettingKeyClearConfiguration(QString("clearConfiguration"))
     ,mUi(new Ui::SAKMainWindow)
     ,mTabWidget(new QTabWidget)
 {
@@ -272,13 +273,7 @@ void SAKMainWindow::initOptionMenu()
 
         changeStylesheet(QString());
         mDefaultStyleSheetAction->setChecked(true);
-        int ret = QMessageBox::information(this, tr("Reboot applicatin to effective"), tr("The style sheet has benn changed, reboot to effective?"), QMessageBox::Ok | QMessageBox::Cancel);
-        if (ret == QMessageBox::Ok){
-            qApp->setPalette(QPalette());
-            qApp->setStyleSheet(QString(""));
-            qApp->closeAllWindows();
-            qApp->exit(SAK_REBOOT_CODE);
-        }
+        rebootRequestion();
     });
 
     stylesheetMenu->addSeparator();
@@ -298,6 +293,7 @@ void SAKMainWindow::initOptionMenu()
     QtAppStyleApi::instance()->setStyle(style);
 
     optionMenu->addSeparator();
+
     mTestPageAction = new QAction(tr("Test page"), this);
     optionMenu->addAction(mTestPageAction);
     mTestPageAction->setCheckable(true);
@@ -308,6 +304,10 @@ void SAKMainWindow::initOptionMenu()
     }else{
         mTestPageAction->setChecked(false);
     }
+
+    QAction *action = new QAction(tr("Clear configuration"));
+    optionMenu->addAction(action);
+    connect(action, &QAction::triggered, this, &SAKMainWindow::clearConfiguration);
 }
 
 void SAKMainWindow::initWindowMenu()
@@ -558,13 +558,23 @@ void SAKMainWindow::testPageActionTriggered()
     bool checked = mTestPageAction->isChecked();
     mTestPageAction->setChecked(checked);
     SAKSettings::instance()->setValue(mSettingKeyEnableTestPage, QVariant::fromValue(checked));
+    rebootRequestion();
+};
 
+void SAKMainWindow::clearConfiguration()
+{
+    SAKSettings::instance()->setValue(mSettingKeyClearConfiguration, QVariant::fromValue(true));
+    rebootRequestion();
+}
+
+void SAKMainWindow::rebootRequestion()
+{
     int ret = QMessageBox::information(this, tr("Reboot application to effective"), tr("Need to reboot, reboot to effective now?"), QMessageBox::Ok | QMessageBox::Cancel);
     if (ret == QMessageBox::Ok){
         qApp->closeAllWindows();
         qApp->exit(SAK_REBOOT_CODE);
     }
-};
+}
 
 void SAKMainWindow::showToolWidget()
 {
@@ -605,11 +615,7 @@ void SAKMainWindow::installLanguage()
             QString language = action->objectName();
             QString name = action->data().toString();
             SAKSettings::instance()->setLanguage(language+"-"+name);
-            int ret = QMessageBox::information(this, tr("Reboot application to effective"), tr("Language pack has been changed, reboot to effective?"), QMessageBox::Ok | QMessageBox::Cancel);
-            if (ret == QMessageBox::Ok){
-                qApp->closeAllWindows();
-                qApp->exit(SAK_REBOOT_CODE);
-            }
+            rebootRequestion();
         }
     }
 }
