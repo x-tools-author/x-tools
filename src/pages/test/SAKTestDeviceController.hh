@@ -27,29 +27,9 @@ public:
     SAKTestDeviceController(QWidget *parent = Q_NULLPTR);
     ~SAKTestDeviceController();
 
-    enum QSerialPort::DataBits dataBits();
-    enum QSerialPort::StopBits stopBits();
-    enum QSerialPort::Parity parity();
-    enum QSerialPort::FlowControl flowControl();
-    QString name();
-    qint32 baudRate();
-
-    void refresh();
-    void setUiEnable(bool enable);
+    void refresh(){};
 private:
-    QMutex uiMutex;
-private:
-    Ui::SAKTestDeviceController *ui;
-
-    QComboBox *serialportsComboBox;
-    QComboBox *baudrateComboBox;
-    QComboBox *databitsComboBox;
-    QComboBox *stopbitsComboBox;
-    QComboBox *parityComboBox;
-    QComboBox *flowControlComboBox;
-    QCheckBox *customBaudrateCheckBox;
-private slots:
-    void on_customBaudrateCheckBox_clicked();
+    Ui::SAKTestDeviceController *mUi;
 };
 
 #endif

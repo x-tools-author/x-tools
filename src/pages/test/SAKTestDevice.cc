@@ -17,8 +17,7 @@
 
 SAKTestDevice::SAKTestDevice(SAKTestDebugPage *debugPage, QObject *parent)
     :SAKDebugPageDevice(parent)
-    ,serialPort(Q_NULLPTR)
-    ,debugPage(debugPage)
+    ,mDebugPage(debugPage)
 {
 
 }
@@ -31,68 +30,5 @@ SAKTestDevice::~SAKTestDevice()
 void SAKTestDevice::run()
 {
     QEventLoop eventLoop;
-    SAKTestDeviceController *controller = debugPage->controllerInstance();
-    name = controller->name();
-    baudRate = controller->baudRate();
-    dataBits = controller->dataBits();
-    stopBits = controller->stopBits();
-    parity = controller->parity();
-    flowControl = controller->flowControl();
-
-    serialPort = new QSerialPort;
-    serialPort->setPortName(name);
-    serialPort->setBaudRate(baudRate);
-    serialPort->setDataBits(dataBits);
-    serialPort->setStopBits(stopBits);
-    serialPort->setParity(parity);
-    serialPort->setFlowControl(flowControl);
-
-    if (serialPort->open(QSerialPort::ReadWrite)){
-        emit deviceStateChanged(true);
-        while (true){
-            // The operation must be done, if not, data can not be read.
-            eventLoop.processEvents();
-
-            // Read data
-            QByteArray bytes = serialPort->readAll();
-            if (bytes.length()){
-                emit bytesRead(bytes);
-            }
-
-            // Write data
-            while (true){
-                QByteArray var = takeWaitingForWrittingBytes();
-                if (var.length()){
-                    qint64 ret = serialPort->write(var);
-                    if (ret == -1){
-                        emit messageChanged(tr("Send data error: ") + serialPort->errorString(), false);
-                    }else{
-                        emit bytesWritten(var);
-                    }
-                }else{
-                    break;
-                }
-            }
-
-            // Do something make cpu happy
-            if (isInterruptionRequested()){
-                break;
-            }else{
-                mThreadMutex.lock();
-                mThreadWaitCondition.wait(&mThreadMutex, SAK_DEVICE_THREAD_SLEEP_INTERVAL);
-                mThreadMutex.unlock();
-            }
-        }
-
-        // Free memery
-        serialPort->clear();
-        serialPort->close();
-        delete serialPort;
-        serialPort = Q_NULLPTR;
-        emit deviceStateChanged(false);
-    }else{        
-        emit deviceStateChanged(false);
-        emit messageChanged(tr("Open com error") + serialPort->errorString(), false);
-        return;
-    }
+    exec();
 }
