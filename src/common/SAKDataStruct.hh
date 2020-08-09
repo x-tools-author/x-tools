@@ -39,11 +39,11 @@ public:
 #ifdef SAK_IMPORT_HID_MODULE
         DebugPageTypeHID,
 #endif
-        DebugPageTypeUdpClient,
-        DebugPageTypeUdpServer,
 #ifdef SAK_IMPORT_USB_MODULE
         DebugPageTypeUSB,
 #endif
+        DebugPageTypeUdpClient,
+        DebugPageTypeUdpServer,
         DebugPageTypeTCPClient,
         DebugPageTypeTCPServer,
 #ifdef SAK_IMPORT_SCTP_MODULE
