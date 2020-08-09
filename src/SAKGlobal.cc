@@ -92,6 +92,21 @@ QString SAKGlobal::debugPageNameFromType(int type)
     case SAKDataStruct::DebugPageTypeTest:
         name = tr("Test");
         break;
+#ifdef SAK_IMPORT_COM_MODULE
+    case SAKDataStruct::DebugPageTypeCOM:
+        name = tr("COM");
+        break;
+#endif
+#ifdef SAK_IMPORT_HID_MODULE
+    case SAKDataStruct::DebugPageTypeHID:
+        name = tr("HID");
+        break;
+#endif
+#ifdef SAK_IMPORT_USB_MODULE
+    case SAKDataStruct::DebugPageTypeUSB:
+        name = tr("USB");
+        break;
+#endif
     case SAKDataStruct::DebugPageTypeUdpClient:
         name = tr("UDP-C");
         break;
@@ -112,35 +127,20 @@ QString SAKGlobal::debugPageNameFromType(int type)
         name = tr("SCTP-S");
         break;
 #endif
-#ifdef SAK_IMPORT_WEBSOCKET_MODULE
-    case SAKDataStruct::DebugPageTypeWebSocketClient:
-        name = tr("WS-C");
-        break;
-    case SAKDataStruct::DebugPageTypeWebSocketServer:
-        name = tr("WS-S");
-        break;
-#endif
-#ifdef SAK_IMPORT_COM_MODULE
-    case SAKDataStruct::DebugPageTypeCOM:
-        name = tr("COM");
-        break;
-#endif
-#ifdef SAK_IMPORT_HID_MODULE
-    case SAKDataStruct::DebugPageTypeHID:
-        name = tr("HID");
-        break;
-#endif
-#ifdef SAK_IMPORT_USB_MODULE
-    case SAKDataStruct::DebugPageTypeUSB:
-        name = tr("USB");
-        break;
-#endif
 #ifdef SAK_IMPORT_BLUETOOTH_MODULE
     case SAKDataStruct::DebugPageTypeBluetoothClient:
         name = tr("Bluetooth-C");
         break;
     case SAKDataStruct::DebugPageTypeBluetoothServer:
         name = tr("Bluetooth-S");
+        break;
+#endif
+#ifdef SAK_IMPORT_WEBSOCKET_MODULE
+    case SAKDataStruct::DebugPageTypeWebSocketClient:
+        name = tr("WS-C");
+        break;
+    case SAKDataStruct::DebugPageTypeWebSocketServer:
+        name = tr("WS-S");
         break;
 #endif
     default:
