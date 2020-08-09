@@ -88,6 +88,7 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     ,mUpdateManager(Q_NULLPTR)
     ,mMoreInformation(new SAKMainWindowMoreInformationDialog)
     ,mQrCodeDialog(Q_NULLPTR)
+    ,mSettingKeyEnableTestPage(QString("enableTestPage"))
     ,mUi(new Ui::SAKMainWindow)
     ,mTabWidget(new QTabWidget)
 {
@@ -155,6 +156,12 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     // Create debugging page
     QMetaEnum metaEnum = QMetaEnum::fromType<SAKDataStruct::SAKEnumDebugPageType>();
     for (int i = 0; i < metaEnum.keyCount(); i++){
+        // Test page is selectable
+        bool enableTestPage = SAKSettings::instance()->value(mSettingKeyEnableTestPage).toBool();
+        if (!enableTestPage && (metaEnum.value(i) == SAKDataStruct::DebugPageTypeTest)){
+            continue;
+        }
+
         QString name = SAKGlobal::debugPageNameFromType(metaEnum.value(i));
         QWidget *page = debugPageFromType(metaEnum.value(i));
         page->setWindowTitle(name);
@@ -289,6 +296,18 @@ void SAKMainWindow::initOptionMenu()
     appStyleMenu->addActions(QtAppStyleApi::instance()->actions());
     QString style = SAKSettings::instance()->appStyle();
     QtAppStyleApi::instance()->setStyle(style);
+
+    optionMenu->addSeparator();
+    mTestPageAction = new QAction(tr("Test page"), this);
+    optionMenu->addAction(mTestPageAction);
+    mTestPageAction->setCheckable(true);
+    connect(mTestPageAction, &QAction::triggered, this, &SAKMainWindow::testPageActionTriggered);
+    bool enableTestPage = SAKSettings::instance()->value(mSettingKeyEnableTestPage).toBool();
+    if (enableTestPage){
+        mTestPageAction->setChecked(true);
+    }else{
+        mTestPageAction->setChecked(false);
+    }
 }
 
 void SAKMainWindow::initWindowMenu()
@@ -462,11 +481,9 @@ QWidget *SAKMainWindow::debugPageFromType(int type)
 {
     QWidget *widget = Q_NULLPTR;
     switch (type) {
-#ifdef QT_DEBUG
     case SAKDataStruct::DebugPageTypeTest:
         widget = new SAKTestDebugPage;
         break;
-#endif
     case SAKDataStruct::DebugPageTypeUdpClient:
         widget = new SAKUdpClientDebugPage;
         break;
@@ -534,6 +551,20 @@ void SAKMainWindow::appendWindowAction(QWidget *page)
     connect(action, &QAction::triggered, this, &SAKMainWindow::activePage);
     connect(page, &QWidget::destroyed, action, &QAction::deleteLater);
 }
+
+void SAKMainWindow::testPageActionTriggered()
+{
+    // ??
+    bool checked = mTestPageAction->isChecked();
+    mTestPageAction->setChecked(checked);
+    SAKSettings::instance()->setValue(mSettingKeyEnableTestPage, QVariant::fromValue(checked));
+
+    int ret = QMessageBox::information(this, tr("Reboot application to effective"), tr("Need to reboot, reboot to effective now?"), QMessageBox::Ok | QMessageBox::Cancel);
+    if (ret == QMessageBox::Ok){
+        qApp->closeAllWindows();
+        qApp->exit(SAK_REBOOT_CODE);
+    }
+};
 
 void SAKMainWindow::showToolWidget()
 {

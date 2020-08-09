@@ -36,10 +36,12 @@ public:
 private:
     QMenu *mToolsMenu;
     QMenu *mWindowsMenu;
+    QAction *mTestPageAction;
     QAction *mDefaultStyleSheetAction;
     SAKUpdateManager *mUpdateManager;
     SAKMainWindowMoreInformationDialog *mMoreInformation;
     SAKMainWindowQrCodeView *mQrCodeDialog;
+    const QString mSettingKeyEnableTestPage;
 private: 
     void initMenuBar();
     void initFileMenu();
@@ -57,6 +59,7 @@ private:
     void removeRemovableDebugPage(int index);
     QWidget *debugPageFromType(int type);
     void appendWindowAction(QWidget *page);
+    void testPageActionTriggered();
 private slots:
     /**
      * @brief showToolWidget: Show a tool widget, the interface must be called by signal,
