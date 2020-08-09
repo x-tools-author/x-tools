@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2020 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -10,73 +10,20 @@
 #include <QCoreApplication>
 
 #include "SAKGlobal.hh"
-#include "SAKSettings.hh"
+#include "SAKSqlDatabase.hh"
 
-SAKSettings* SAKSettings::instancePtr = Q_NULLPTR;
-SAKSettings* SAKSettings::instance()
+SAKSqlDatabase* SAKSqlDatabase::instancePtr = Q_NULLPTR;
+SAKSqlDatabase* SAKSqlDatabase::instance()
 {
-    if (!instancePtr){
-        const QString fileName = QString("%1/%2.ini").arg(SAKGlobal::dataPath()).arg(qApp->applicationName());
-        new SAKSettings(fileName, QSettings::IniFormat, qApp);
-    }
-    Q_ASSERT_X(instancePtr, __FUNCTION__, "Initialzing failed!");
-
-    return instancePtr;
+    return Q_NULLPTR;
 }
 
-SAKSettings::SAKSettings(const QString &fileName, Format format, QObject *parent)
-    :QSettings(fileName, format, parent)
+SAKSqlDatabase::SAKSqlDatabase()
 {
     instancePtr = this;
-
-    enableAutoCheckForUpdateKey = QString("Universal/enableAutoCheckForUpdate");
-    appStyleKey = QString("Universal/appStyle");
-    appStylesheetKey = QString("Universal/appStylesheet");
-    languageKey = QString("Universal/language");
 }
 
-SAKSettings::~SAKSettings()
+SAKSqlDatabase::~SAKSqlDatabase()
 {
     instancePtr = Q_NULLPTR;
-}
-
-bool SAKSettings::enableAutoCheckForUpdate()
-{
-    bool enable = value(enableAutoCheckForUpdateKey).toBool();
-    return enable;
-}
-
-void SAKSettings::setEnableAutoCheckForUpdate(bool enable)
-{    
-    setValue(enableAutoCheckForUpdateKey, enable);
-}
-
-QString SAKSettings::appStyle()
-{
-    return value(appStyleKey).toString();
-}
-
-void SAKSettings::setAppStyle(QString style)
-{
-    setValue(appStyleKey, style);
-}
-
-QString SAKSettings::appStylesheet()
-{
-    return value(appStylesheetKey).toString();
-}
-
-void SAKSettings::setAppStylesheet(QString stylesheet)
-{
-    setValue(appStylesheetKey, stylesheet);
-}
-
-QString SAKSettings::language()
-{
-    return value(languageKey).toString();
-}
-
-void SAKSettings::setLanguage(QString language)
-{
-    setValue(languageKey, language);
 }
