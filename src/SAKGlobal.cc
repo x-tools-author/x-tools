@@ -122,7 +122,7 @@ QString SAKGlobal::debugPageNameFromType(int type)
 #endif
 #ifdef SAK_IMPORT_COM_MODULE
     case SAKDataStruct::DebugPageTypeCOM:
-        name = tr("COM debugger");
+        name = tr("Serial port");
         break;
 #endif
 #ifdef SAK_IMPORT_HID_MODULE
