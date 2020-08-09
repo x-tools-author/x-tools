@@ -90,7 +90,7 @@ QString SAKGlobal::debugPageNameFromType(int type)
     QString name;
     switch (type) {
     case SAKDataStruct::DebugPageTypeTest:
-        name = tr("Test device");
+        name = tr("Test");
         break;
     case SAKDataStruct::DebugPageTypeUdpClient:
         name = tr("UDP client");
