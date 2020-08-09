@@ -32,9 +32,7 @@ public:
 
     /// @brief 支持调试的设备类型
     enum SAKEnumDebugPageType {
-#ifdef QT_DEBUG
         DebugPageTypeTest,
-#endif
 #ifdef SAK_IMPORT_COM_MODULE
         DebugPageTypeCOM,
 #endif
