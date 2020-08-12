@@ -19,6 +19,7 @@ SAKSqlDatabase* SAKSqlDatabase::instance()
 }
 
 SAKSqlDatabase::SAKSqlDatabase()
+    :mSqlDatabase(Q_NULLPTR)
 {
     instancePtr = this;
 }
@@ -26,4 +27,10 @@ SAKSqlDatabase::SAKSqlDatabase()
 SAKSqlDatabase::~SAKSqlDatabase()
 {
     instancePtr = Q_NULLPTR;
+    delete mSqlDatabase;
+}
+
+QSqlDatabase *SAKSqlDatabase::sqlDatabase()
+{
+    return mSqlDatabase;
 }
