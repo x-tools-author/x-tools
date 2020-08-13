@@ -27,14 +27,14 @@ public:
 protected:
     void run() final;
 private:
-    QString                   mName;
-    qint32                    mBaudRate;
-    QSerialPort::DataBits     mDataBits;
-    QSerialPort::StopBits     mStopBits;
-    QSerialPort::Parity       mParity;
-    QSerialPort::FlowControl  mFlowControl;
-    QSerialPort               *mSerialPort;
-    SAKSerialPortDebugPage    *mDebugPage;
+    QString mName;
+    qint32 mBaudRate;
+    QSerialPort::DataBits mDataBits;
+    QSerialPort::StopBits mStopBits;
+    QSerialPort::Parity mParity;
+    QSerialPort::FlowControl mFlowControl;
+    QSerialPort *mSerialPort;
+    SAKSerialPortDebugPage *mDebugPage;
 };
 
 #endif
