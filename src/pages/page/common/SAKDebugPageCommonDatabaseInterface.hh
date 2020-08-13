@@ -133,7 +133,6 @@ private:
     QList<AutoResponseTable> mAutoResponseTableList;
     QList<TimingSendingTable> mTimingSendingTableList;
     QList<DataPresetItemTable> mPresettingDataTableList;
-    QString mDatabaseName;
 private:
     bool isTableExist(QString tableName);
     void createTables();
