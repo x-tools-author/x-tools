@@ -28,5 +28,5 @@ contains(DEFINES, SAK_IMPORT_WEBSOCKET_MODULE){
         $$PWD/src/pages/websocket/server/SAKWebSocketServerDevice.cc \
         $$PWD/src/pages/websocket/server/SAKWebSocketServerDeviceController.cc
 }else {
-    message("The Qt edition has no websocket module, the program will not has websocket debuging functioin.")
+    message("The Qt edition has no websocket module, the program will not has websocket debugging function.")
 }
