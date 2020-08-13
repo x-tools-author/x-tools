@@ -24,6 +24,7 @@
 #include "SAKSettings.hh"
 #include "SAKDebugPage.hh"
 #include "SAKDataStruct.hh"
+#include "SAKSqlDatabase.hh"
 #include "SAKCRCInterface.hh"
 #include "SAKDebugPageDevice.hh"
 #include "SAKOtherAnalyzerThread.hh"
@@ -163,6 +164,11 @@ SAKDebugPageOutputController *SAKDebugPage::outputController()
 SAKDebugPageStatisticsController *SAKDebugPage::statisticsController()
 {
     return mStatisticsController;
+}
+
+QSqlDatabase *SAKDebugPage::sqlDatabase()
+{
+    return SAKSqlDatabase::instance()->sqlDatabase();
 }
 
 void SAKDebugPage::initializingPage()

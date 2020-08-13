@@ -28,6 +28,7 @@
 #include <QHBoxLayout>
 #include <QApplication>
 #include <QTextBrowser>
+#include <QSqlDatabase>
 
 class SAKDataFactory;
 class SAKCRCInterface;
@@ -130,6 +131,12 @@ public:
      * @return SAKDebugPageStatisticsController instance pointer
      */
     SAKDebugPageStatisticsController *statisticsController();
+
+    /**
+     * @brief sqlDatabase: Get the database instance
+     * @return Database instance
+     */
+    QSqlDatabase *sqlDatabase();
 protected:
     /**
      * @brief refreshDevice: Refresh system device
