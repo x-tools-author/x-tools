@@ -37,7 +37,6 @@ public:
     static const QString fullPath();
 private:
     static SAKSqlDatabase *instancePtr;
-    QSqlDatabase mSqlDatabase;
 };
 
 #endif

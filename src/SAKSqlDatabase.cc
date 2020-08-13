@@ -30,30 +30,30 @@ SAKSqlDatabase::SAKSqlDatabase()
 {
     instancePtr = this;
 
-    mSqlDatabase = QSqlDatabase::addDatabase("QSQLITE");
-    mSqlDatabase.setDatabaseName(fullPath());
+    addDatabase("QSQLITE");
+    setDatabaseName(fullPath());
     // Do something useless
-    mSqlDatabase.setHostName("localhost");
-    mSqlDatabase.setUserName("Qter");
-    mSqlDatabase.setPassword("QterPassword");
+    setHostName("localhost");
+    setUserName("Qter");
+    setPassword("QterPassword");
 
-    if (!mSqlDatabase.open()){
+    if (!open()){
+        qWarning() << __FUNCTION__ << "QSAKDatabase.sqlite3 open failed: " << lastError().text();
         Q_ASSERT_X(false, __FUNCTION__, "Open database failed!");
-        qWarning() << __FUNCTION__ << "QSAKDatabase.sqlite3 open failed: " << mSqlDatabase.lastError().text();
     }
 }
 
 SAKSqlDatabase::~SAKSqlDatabase()
 {
     instancePtr = Q_NULLPTR;
-    if (mSqlDatabase.isOpen()){
-        mSqlDatabase.close();
+    if (isOpen()){
+        close();
     }
 }
 
 QSqlDatabase *SAKSqlDatabase::sqlDatabase()
 {
-    return &mSqlDatabase;
+    return instancePtr;
 }
 
 const QString SAKSqlDatabase::fullPath()
