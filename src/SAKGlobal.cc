@@ -57,7 +57,7 @@ QString SAKGlobal::logFile()
 QString SAKGlobal::dataPath()
 {
     QString path = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
-    path.insert(path.lastIndexOf("/"),  QString("/Qter"));
+//    path.insert(path.lastIndexOf("/"),  QString("/Qter"));
 
     QDir dir;
     if (!dir.exists(path)){
