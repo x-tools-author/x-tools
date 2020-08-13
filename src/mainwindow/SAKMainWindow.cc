@@ -179,8 +179,6 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
         mTabWidget->tabBar()->setTabButton(i, QTabBar::LeftSide, Q_NULLPTR);
     }
 
-
-
     // Initializing the tools menu
     QMetaEnum toolTypeMetaEnum = QMetaEnum::fromType<SAKDataStruct::SAKEnumToolType>();
     for (int i = 0; i < toolTypeMetaEnum.keyCount(); i++){
