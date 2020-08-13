@@ -16,7 +16,7 @@ SAKSettings* SAKSettings::instancePtr = Q_NULLPTR;
 SAKSettings* SAKSettings::instance()
 {
     if (!instancePtr){
-        const QString fileName = QString("%1/%2.ini").arg(SAKGlobal::dataPath()).arg(qApp->applicationName());
+        const QString fileName = fullPath();
         new SAKSettings(fileName, QSettings::IniFormat, qApp);
     }
     Q_ASSERT_X(instancePtr, __FUNCTION__, "Initialzing failed!");
@@ -79,4 +79,10 @@ QString SAKSettings::language()
 void SAKSettings::setLanguage(QString language)
 {
     setValue(languageKey, language);
+}
+
+const QString SAKSettings::fullPath()
+{
+    const QString fileName = QString("%1/%2.ini").arg(SAKGlobal::dataPath()).arg(qApp->applicationName());
+    return fileName;
 }

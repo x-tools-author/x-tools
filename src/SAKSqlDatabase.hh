@@ -18,11 +18,26 @@ private:
     SAKSqlDatabase();
     ~SAKSqlDatabase();
 public:
+    /**
+     * @brief instance: Get the instance of the calss
+     * @return Instance of the class
+     */
     static SAKSqlDatabase *instance();
+
+    /**
+     * @brief sqlDatabase: Get the instance of sql database
+     * @return The instance of sql database
+     */
     QSqlDatabase *sqlDatabase();
+
+    /**
+     * @brief fullPath: Get the full path of database
+     * @return The full path of database
+     */
+    static const QString fullPath();
 private:
     static SAKSqlDatabase *instancePtr;
-    QSqlDatabase *mSqlDatabase;
+    QSqlDatabase mSqlDatabase;
 };
 
 #endif

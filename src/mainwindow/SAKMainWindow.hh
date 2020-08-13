@@ -33,6 +33,8 @@ class SAKMainWindow : public QMainWindow
 public:
     explicit SAKMainWindow(QWidget *parent = Q_NULLPTR);
     ~SAKMainWindow();
+
+    static const QString settingKeyClearConfiguration();
 private:
     QMenu *mToolsMenu;
     QMenu *mWindowsMenu;

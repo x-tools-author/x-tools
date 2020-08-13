@@ -89,7 +89,7 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     ,mMoreInformation(new SAKMainWindowMoreInformationDialog)
     ,mQrCodeDialog(Q_NULLPTR)
     ,mSettingKeyEnableTestPage(QString("enableTestPage"))
-    ,mSettingKeyClearConfiguration(QString("clearConfiguration"))
+    ,mSettingKeyClearConfiguration(settingKeyClearConfiguration())
     ,mUi(new Ui::SAKMainWindow)
     ,mTabWidget(new QTabWidget)
 {
@@ -199,6 +199,11 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
 SAKMainWindow::~SAKMainWindow()
 {
     delete mUi;
+}
+
+const QString SAKMainWindow::settingKeyClearConfiguration()
+{
+    return QString("clearConfiguration");
 }
 
 void SAKMainWindow::initMenuBar()

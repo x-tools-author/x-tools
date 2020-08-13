@@ -41,6 +41,12 @@ public:
     /// @brief 程序语言配置信息读写
     QString language();
     void setLanguage(QString language);
+
+    /**
+     * @brief fullPath: Get the full path of settings file
+     * @return The full path of settings file
+     */
+    static const QString fullPath();
 private:
     static SAKSettings* instancePtr;
 private:
