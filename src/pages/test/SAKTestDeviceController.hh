@@ -50,17 +50,11 @@ private:
     QMutex mParametersMutex;
 private slots:
     void on_openFailedCheckBox_clicked();
-
     void on_errorStringLineEdit_textChanged(const QString &arg1);
-
     void on_readCyclicCheckBox_clicked();
-
     void on_readIntervalLineEdit_textChanged(const QString &arg1);
-
     void on_writeCyclicCheckBox_clicked();
-
     void on_writtenIntervalLineEdit_textChanged(const QString &arg1);
-
 private:
     Ui::SAKTestDeviceController *mUi;
 };
