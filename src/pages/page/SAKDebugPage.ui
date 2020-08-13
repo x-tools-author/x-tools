@@ -128,7 +128,7 @@
    <item row="6" column="12" colspan="2">
     <widget class="QCheckBox" name="showDateCheckBox">
      <property name="text">
-      <string>ShowDate</string>
+      <string>Show date</string>
      </property>
     </widget>
    </item>
@@ -191,7 +191,7 @@
    <item row="6" column="14" colspan="2">
     <widget class="QCheckBox" name="autoWrapCheckBox">
      <property name="text">
-      <string>Wrap</string>
+      <string>auto wrap</string>
      </property>
      <property name="checked">
       <bool>true</bool>
@@ -388,7 +388,7 @@
    <item row="7" column="12" colspan="2">
     <widget class="QCheckBox" name="showTimeCheckBox">
      <property name="text">
-      <string>ShowTime</string>
+      <string>Show time</string>
      </property>
      <property name="checked">
       <bool>true</bool>
@@ -577,7 +577,7 @@
    <item row="7" column="14" colspan="2">
     <widget class="QCheckBox" name="showMsCheckBox">
      <property name="text">
-      <string>ShowMS</string>
+      <string>Show ms</string>
      </property>
     </widget>
    </item>
@@ -611,7 +611,7 @@
    <item row="8" column="12" colspan="2">
     <widget class="QCheckBox" name="showRxDataCheckBox">
      <property name="text">
-      <string>ShowRx</string>
+      <string>Show rx</string>
      </property>
      <property name="checked">
       <bool>true</bool>
@@ -736,7 +736,7 @@ p, li { white-space: pre-wrap; }
    <item row="8" column="14" colspan="2">
     <widget class="QCheckBox" name="showTxDataCheckBox">
      <property name="text">
-      <string>ShowTx</string>
+      <string>Sho tx</string>
      </property>
      <property name="checked">
       <bool>true</bool>
