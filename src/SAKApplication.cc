@@ -74,9 +74,9 @@ SAKApplication::SAKApplication(int argc, char **argv)
 
     // There is bug: the application will crash if create and show a main window in the main().
     // the bug is appear on linux platform only.
+    splashScreen->setMessage(tr("Initializing main window..."));
     mMainWindow = new SAKMainWindow;
     mMainWindow->show();
-    splashScreen->finish(mMainWindow);
 
     // Move the main window to the central of desktop.
     QDesktopWidget *desktop = QApplication::desktop();
@@ -84,6 +84,8 @@ SAKApplication::SAKApplication(int argc, char **argv)
     QList<QScreen*> screenList = QGuiApplication::screens();
     QScreen *screen = screenList.at(currentScreen);
     mMainWindow->move((screen->geometry().width() - mMainWindow->width())/2, (screen->geometry().height() - mMainWindow->height())/2);
+    splashScreen->setMessage(tr("Finished..."));
+    splashScreen->finish(mMainWindow);
 }
 
 SAKApplication::~SAKApplication()
