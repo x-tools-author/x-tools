@@ -25,8 +25,8 @@ SAKMainWindowQrCodeView::SAKMainWindowQrCodeView(QWidget *parent)
     tabWidget = ui->tabWidget;
     tabWidget->clear();
 
-    addQRCode(tr("用户交流"), QString(":/resources/images/QSAKQQ.jpg"));
-    addQRCode(tr("技术交流"), QString(":/resources/images/QtQQ.jpg"));
+    addQRCode(tr("User"), QString(":/resources/images/QSAKQQ.jpg"));
+    addQRCode(tr("Qt"), QString(":/resources/images/QtQQ.jpg"));
 }
 
 SAKMainWindowQrCodeView::~SAKMainWindowQrCodeView()
