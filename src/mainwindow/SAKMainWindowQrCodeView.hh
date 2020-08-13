@@ -26,7 +26,7 @@ private:
     Ui::SAKMainWindowQrCodeView *ui;
     QTabWidget *tabWidget;
 private:
-    /// @brief 添加二维码
+    /// Setup QR code
     void addQRCode(QString name, QString image);
 };
 
