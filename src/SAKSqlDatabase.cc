@@ -46,6 +46,9 @@ SAKSqlDatabase::SAKSqlDatabase()
 SAKSqlDatabase::~SAKSqlDatabase()
 {
     instancePtr = Q_NULLPTR;
+    if (mSqlDatabase.isOpen()){
+        mSqlDatabase.close();
+    }
 }
 
 QSqlDatabase *SAKSqlDatabase::sqlDatabase()

@@ -35,10 +35,7 @@ SAKDebugPageCommonDatabaseInterface::SAKDebugPageCommonDatabaseInterface(QSqlDat
 
 SAKDebugPageCommonDatabaseInterface::~SAKDebugPageCommonDatabaseInterface()
 {
-    if (mSqlDatabase->isOpen()){
-        mSqlDatabase->close();
-        instancePtr = Q_NULLPTR;
-    }
+    instancePtr = Q_NULLPTR;
 }
 
 SAKDebugPageCommonDatabaseInterface* SAKDebugPageCommonDatabaseInterface::instance()
