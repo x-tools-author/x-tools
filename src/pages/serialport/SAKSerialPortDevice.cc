@@ -17,8 +17,8 @@
 
 SAKSerialPortDevice::SAKSerialPortDevice(SAKSerialPortDebugPage *debugPage, QObject *parent)
     :SAKDebugPageDevice(parent)
-    ,serialPort(Q_NULLPTR)
-    ,debugPage(debugPage)
+    ,mSerialPort(Q_NULLPTR)
+    ,mDebugPage(debugPage)
 {
 
 }
@@ -31,23 +31,23 @@ SAKSerialPortDevice::~SAKSerialPortDevice()
 void SAKSerialPortDevice::run()
 {
     QEventLoop eventLoop;
-    SAKSerialPortDeviceController *controller = debugPage->controllerInstance();
-    name = controller->name();
-    baudRate = controller->baudRate();
-    dataBits = controller->dataBits();
-    stopBits = controller->stopBits();
-    parity = controller->parity();
-    flowControl = controller->flowControl();
+    SAKSerialPortDeviceController *controller = mDebugPage->controllerInstance();
+    mName = controller->name();
+    mBaudRate = controller->baudRate();
+    mDataBits = controller->dataBits();
+    mStopBits = controller->stopBits();
+    mParity = controller->parity();
+    mFlowControl = controller->flowControl();
 
-    serialPort = new QSerialPort;
-    serialPort->setPortName(name);
-    serialPort->setBaudRate(baudRate);
-    serialPort->setDataBits(dataBits);
-    serialPort->setStopBits(stopBits);
-    serialPort->setParity(parity);
-    serialPort->setFlowControl(flowControl);
+    mSerialPort = new QSerialPort;
+    mSerialPort->setPortName(mName);
+    mSerialPort->setBaudRate(mBaudRate);
+    mSerialPort->setDataBits(mDataBits);
+    mSerialPort->setStopBits(mStopBits);
+    mSerialPort->setParity(mParity);
+    mSerialPort->setFlowControl(mFlowControl);
 
-    if (serialPort->open(QSerialPort::ReadWrite)){
+    if (mSerialPort->open(QSerialPort::ReadWrite)){
         emit deviceStateChanged(true);
         while (true){
             if (isInterruptionRequested()){
@@ -58,7 +58,7 @@ void SAKSerialPortDevice::run()
             eventLoop.processEvents();
 
             // Read data
-            QByteArray bytes = serialPort->readAll();
+            QByteArray bytes = mSerialPort->readAll();
             if (bytes.length()){
                 emit bytesRead(bytes);
             }
@@ -67,9 +67,9 @@ void SAKSerialPortDevice::run()
             while (true){
                 QByteArray var = takeWaitingForWrittingBytes();
                 if (var.length()){
-                    qint64 ret = serialPort->write(var);
+                    qint64 ret = mSerialPort->write(var);
                     if (ret == -1){
-                        emit messageChanged(tr("Send data error: ") + serialPort->errorString(), false);
+                        emit messageChanged(tr("Send data error: ") + mSerialPort->errorString(), false);
                     }else{
                         emit bytesWritten(var);
                     }
@@ -89,14 +89,14 @@ void SAKSerialPortDevice::run()
         }
 
         // Free memery
-        serialPort->clear();
-        serialPort->close();
-        delete serialPort;
-        serialPort = Q_NULLPTR;
+        mSerialPort->clear();
+        mSerialPort->close();
+        delete mSerialPort;
+        mSerialPort = Q_NULLPTR;
         emit deviceStateChanged(false);
     }else{        
         emit deviceStateChanged(false);
-        emit messageChanged(tr("Open com error") + serialPort->errorString(), false);
+        emit messageChanged(tr("Open com error") + mSerialPort->errorString(), false);
         return;
     }
 }

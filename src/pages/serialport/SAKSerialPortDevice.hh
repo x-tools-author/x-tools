@@ -22,19 +22,19 @@ class SAKSerialPortDevice:public SAKDebugPageDevice
 {
     Q_OBJECT
 public:
-    SAKSerialPortDevice(SAKSerialPortDebugPage *debugPage, QObject *parent = Q_NULLPTR);
+    SAKSerialPortDevice(SAKSerialPortDebugPage *mDebugPage, QObject *parent = Q_NULLPTR);
     ~SAKSerialPortDevice();
 protected:
     void run() final;
 private:
-    QString                   name;
-    qint32                    baudRate;
-    QSerialPort::DataBits     dataBits;
-    QSerialPort::StopBits     stopBits;
-    QSerialPort::Parity       parity;
-    QSerialPort::FlowControl  flowControl;
-    QSerialPort               *serialPort;
-    SAKSerialPortDebugPage    *debugPage;
+    QString                   mName;
+    qint32                    mBaudRate;
+    QSerialPort::DataBits     mDataBits;
+    QSerialPort::StopBits     mStopBits;
+    QSerialPort::Parity       mParity;
+    QSerialPort::FlowControl  mFlowControl;
+    QSerialPort               *mSerialPort;
+    SAKSerialPortDebugPage    *mDebugPage;
 };
 
 #endif
