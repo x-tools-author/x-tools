@@ -299,7 +299,7 @@ void SAKMainWindow::initOptionMenu()
 
     optionMenu->addSeparator();
 
-    mTestPageAction = new QAction(tr("Test page"), this);
+    mTestPageAction = new QAction(tr("Enable test page"), this);
     optionMenu->addAction(mTestPageAction);
     mTestPageAction->setCheckable(true);
     connect(mTestPageAction, &QAction::triggered, this, &SAKMainWindow::testPageActionTriggered);
