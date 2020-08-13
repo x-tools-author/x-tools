@@ -15,25 +15,28 @@
 
 #include "SAKGlobal.hh"
 #include "SAKSettings.hh"
+#include "SAKSqlDatabase.hh"
 #include "SAKDebugPageCommonDatabaseInterface.hh"
 
 SAKDebugPageCommonDatabaseInterface *SAKDebugPageCommonDatabaseInterface::instancePtr = Q_NULLPTR;
-SAKDebugPageCommonDatabaseInterface::SAKDebugPageCommonDatabaseInterface(QObject *parent)
+SAKDebugPageCommonDatabaseInterface::SAKDebugPageCommonDatabaseInterface(QSqlDatabase *sqlDatabase, QObject *parent)
     :QObject(parent)
+    ,mSqlDatabase(sqlDatabase)
 {
     instancePtr = this;
 
-    databaseName = SAKSettings::instance()->fileName();
-    QStringList strList = databaseName.split('/');
-    databaseName = databaseName.remove(strList.last());
-    databaseName.append(QString("QSAKDatabase.sqlite3"));
-    initDatabase();
+    sakDatabaseQuery = QSqlQuery(*mSqlDatabase);
+    if (mSqlDatabase->open()){
+        createTables();
+    }else{
+        qWarning() << __FUNCTION__ << "QSAKDatabase.sqlite3 open failed: " << mSqlDatabase->lastError().text();
+    }
 }
 
 SAKDebugPageCommonDatabaseInterface::~SAKDebugPageCommonDatabaseInterface()
 {
-    if (sakDatabase.isOpen()){
-        sakDatabase.close();
+    if (mSqlDatabase->isOpen()){
+        mSqlDatabase->close();
         instancePtr = Q_NULLPTR;
     }
 }
@@ -41,7 +44,7 @@ SAKDebugPageCommonDatabaseInterface::~SAKDebugPageCommonDatabaseInterface()
 SAKDebugPageCommonDatabaseInterface* SAKDebugPageCommonDatabaseInterface::instance()
 {
     if (!instancePtr){
-        new SAKDebugPageCommonDatabaseInterface(reinterpret_cast<QObject*>(qApp));
+        new SAKDebugPageCommonDatabaseInterface(SAKSqlDatabase::instance()->sqlDatabase(), reinterpret_cast<QObject*>(qApp));
     }
 
     Q_ASSERT_X(instancePtr, __FUNCTION__, "Oh, a null pointer");
@@ -239,23 +242,6 @@ bool SAKDebugPageCommonDatabaseInterface::isTableExist(QString tableName)
 {
    bool ret = sakDatabaseQuery.exec(QString("SELECT * FROM %1").arg(tableName));
    return ret;
-}
-
-void SAKDebugPageCommonDatabaseInterface::initDatabase()
-{
-    sakDatabase = QSqlDatabase::addDatabase("QSQLITE");
-    sakDatabase.setDatabaseName(databaseName);
-    // do something useless
-    sakDatabase.setHostName("localhost");
-    sakDatabase.setUserName("Qter");
-    sakDatabase.setPassword("QterPassword");
-
-    sakDatabaseQuery = QSqlQuery(sakDatabase);
-    if (sakDatabase.open()){
-        createTables();
-    }else{
-        qWarning() << __FUNCTION__ << "QSAKDatabase.sqlite3 open failed: " << sakDatabase.lastError().text();
-    }
 }
 
 void SAKDebugPageCommonDatabaseInterface::createTables()

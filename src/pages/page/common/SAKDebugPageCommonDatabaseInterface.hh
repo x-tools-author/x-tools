@@ -22,7 +22,7 @@ class SAKDebugPageCommonDatabaseInterface : public QObject
 {
     Q_OBJECT
 private:
-    SAKDebugPageCommonDatabaseInterface(QObject *parent = Q_NULLPTR);
+    SAKDebugPageCommonDatabaseInterface(QSqlDatabase *sqlDatabase, QObject *parent = Q_NULLPTR);
     ~SAKDebugPageCommonDatabaseInterface();
 public:
     friend SAKDebugPage;
@@ -128,7 +128,7 @@ public:
     void deleteRecord(QString tableName, quint64 recordID);
 private:
     static SAKDebugPageCommonDatabaseInterface *instancePtr;
-    QSqlDatabase sakDatabase;
+    QSqlDatabase *mSqlDatabase;
     QSqlQuery sakDatabaseQuery;
     QList<AutoResponseTable> autoResponseTableList;
     QList<TimingSendingTable> timingSendingTableList;
@@ -136,7 +136,6 @@ private:
     QString databaseName;
 private:
     bool isTableExist(QString tableName);
-    void initDatabase();
     void createTables();
     void createAutoResponseTables();
     bool createAutoResponseTable(const AutoResponseTable &table);
