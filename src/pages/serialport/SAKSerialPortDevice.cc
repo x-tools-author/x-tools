@@ -50,6 +50,10 @@ void SAKSerialPortDevice::run()
     if (serialPort->open(QSerialPort::ReadWrite)){
         emit deviceStateChanged(true);
         while (true){
+            if (isInterruptionRequested()){
+                break;
+            }
+
             // The operation must be done, if not, data can not be read.
             eventLoop.processEvents();
 
