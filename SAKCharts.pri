@@ -31,5 +31,5 @@ SOURCES += \
     $$PWD/src/pages/page/charts/xyserial/SAKChartsXYSerialEditDialog.cc \
     $$PWD/src/pages/page/charts/xyserial/SAKChartsXYSerialWidget.cc
 }else {
-    message("The Qt edition has no charts module, the program will not have chart viewer.")
+    message("The Qt edition has no charts module, the program will not has chart debugging function.")
 }
