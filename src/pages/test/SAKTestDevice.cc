@@ -67,7 +67,7 @@ void SAKTestDevice::run()
                 }
             }
 
-            // write data manual
+            // Write data manual
             while (true){
                 QByteArray bytes = takeWaitingForWrittingBytes();
                 if (bytes.length()){
