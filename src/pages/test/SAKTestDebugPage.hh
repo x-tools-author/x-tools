@@ -13,6 +13,7 @@
 #include "SAKDebugPage.hh"
 
 class SAKTestDeviceController;
+// The debugging page is used for developer only.
 class SAKTestDebugPage : public SAKDebugPage
 {
     Q_OBJECT
