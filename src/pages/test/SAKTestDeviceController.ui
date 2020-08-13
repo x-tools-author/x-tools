@@ -107,7 +107,7 @@
            </spacer>
           </item>
           <item row="6" column="1">
-           <widget class="QLineEdit" name="lineEdit">
+           <widget class="QLineEdit" name="readIntervalLineEdit">
             <property name="text">
              <string>500</string>
             </property>
@@ -124,7 +124,7 @@
            </widget>
           </item>
           <item row="9" column="1">
-           <widget class="QLineEdit" name="lineEdit_2">
+           <widget class="QLineEdit" name="writtenIntervalLineEdit">
             <property name="text">
              <string>500</string>
             </property>
@@ -134,7 +134,7 @@
            </widget>
           </item>
           <item row="3" column="0" colspan="2">
-           <widget class="QLineEdit" name="lineEdit_3"/>
+           <widget class="QLineEdit" name="errorStringLineEdit"/>
           </item>
           <item row="0" column="0" colspan="2">
            <widget class="QLabel" name="label">
@@ -149,7 +149,7 @@
            </widget>
           </item>
           <item row="1" column="0" colspan="2">
-           <widget class="QCheckBox" name="checkBox">
+           <widget class="QCheckBox" name="openFailedCheckBox">
             <property name="text">
              <string>Open device failed</string>
             </property>
@@ -175,9 +175,9 @@
            </widget>
           </item>
           <item row="5" column="0" colspan="2">
-           <widget class="QCheckBox" name="checkBox_2">
+           <widget class="QCheckBox" name="readCyclicCheckBox">
             <property name="text">
-             <string>Create read data cyclic</string>
+             <string>Generate read data cyclic</string>
             </property>
            </widget>
           </item>
@@ -194,7 +194,7 @@
            </widget>
           </item>
           <item row="8" column="0" colspan="2">
-           <widget class="QCheckBox" name="checkBox_3">
+           <widget class="QCheckBox" name="writeCyclicCheckBox">
             <property name="text">
              <string>Create written data cyclic</string>
             </property>

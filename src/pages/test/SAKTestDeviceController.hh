@@ -23,10 +23,44 @@ class SAKTestDeviceController:public QWidget
 {
     Q_OBJECT
 public:
+    struct ParametersContext {
+        bool openFailed;
+        bool readCyclic;
+        int readInterval;
+        bool writeCyclic;
+        int writtingInterval;
+        QString errorString;
+    };
+
     SAKTestDeviceController(QWidget *parent = Q_NULLPTR);
     ~SAKTestDeviceController();
 
+    /**
+     * @brief refresh: Nothing to do
+     */
     void refresh(){};
+
+    /**
+     * @brief parameters: Get the context of parameters
+     * @return The context of parameters
+     */
+    ParametersContext parameters();
+private:
+    ParametersContext mParameters;
+    QMutex mParametersMutex;
+private slots:
+    void on_openFailedCheckBox_clicked();
+
+    void on_errorStringLineEdit_textChanged(const QString &arg1);
+
+    void on_readCyclicCheckBox_clicked();
+
+    void on_readIntervalLineEdit_textChanged(const QString &arg1);
+
+    void on_writeCyclicCheckBox_clicked();
+
+    void on_writtenIntervalLineEdit_textChanged(const QString &arg1);
+
 private:
     Ui::SAKTestDeviceController *mUi;
 };
