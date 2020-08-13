@@ -22,17 +22,17 @@ public:
     ~SAKTestDebugPage();
 
     /**
-     * @brief controllerInstance: Get the controller instance
+     * @brief controller: Get the controller instance
      * @return Controller instance
      */
-    SAKTestDeviceController *controllerInstance();
+    SAKTestDeviceController *controller();
 protected:
     SAKDebugPageDevice *createDevice() final;
     void refreshDevice() final;
     QWidget *controllerWidget() final;
     void setUiEnable(bool enable) final;
 private:
-    SAKTestDeviceController *controller;
+    SAKTestDeviceController *mController;
 };
 
 #endif
