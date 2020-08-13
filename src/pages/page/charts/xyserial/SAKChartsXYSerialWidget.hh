@@ -40,10 +40,6 @@ public:
     SAKChartsXYSerialWidget(QWidget *parent = Q_NULLPTR);
     ~SAKChartsXYSerialWidget();
 
-    /**
-     * @brief inputBytes 数据输入接口，参数bytes按照一帧数据来处理
-     * @param bytes 数据
-     */
     void inputBytes(QByteArray bytes);
 private:
     SAKChartsXYSerialEditDialog *mXYSerialEditDialog;
@@ -52,11 +48,10 @@ private:
     QChart *mChart;
     QValueAxis *mYAxis;
     QDateTimeAxis *mXAxis;
-    /// @brief 映射的键为曲线或者散点图的实例地址，值为曲线图或散点图的参数实例指针，数据类型为：SAKXYSerialEditDialog::ParametersContext
+
     QMap<QXYSeries *, void *> mXYSerialParametersMap;
     QMenu *mDeleteMenu;
     QMenu *mEditMenu;
-    /// @brief 将数据类型映射为添加坐标点的接口
     QMap<int, void (SAKChartsXYSerialWidget::*)(QByteArray, QXYSeries *)> mAppendPointInterfaceMap;
 private slots:
     void deleteXYSerial();
