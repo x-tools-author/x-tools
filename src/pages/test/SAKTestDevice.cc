@@ -40,6 +40,7 @@ void SAKTestDevice::run()
             if(isInterruptionRequested()){
                 break;
             }
+
             // Handling the thread events
             eventLoop.processEvents();
 
