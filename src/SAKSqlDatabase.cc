@@ -32,7 +32,7 @@ SAKSqlDatabase::SAKSqlDatabase()
 
     mSqlDatabase = QSqlDatabase::addDatabase("QSQLITE");
     mSqlDatabase.setDatabaseName(fullPath());
-    // do something useless
+    // Do something useless
     mSqlDatabase.setHostName("localhost");
     mSqlDatabase.setUserName("Qter");
     mSqlDatabase.setPassword("QterPassword");
