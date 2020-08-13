@@ -25,7 +25,7 @@ SAKDebugPageCommonDatabaseInterface::SAKDebugPageCommonDatabaseInterface(QSqlDat
 {
     instancePtr = this;
 
-    sakDatabaseQuery = QSqlQuery(*mSqlDatabase);
+    mSqlQuery = QSqlQuery(*mSqlDatabase);
     if (mSqlDatabase->open()){
         createTables();
     }else{
@@ -54,7 +54,7 @@ SAKDebugPageCommonDatabaseInterface* SAKDebugPageCommonDatabaseInterface::instan
 void SAKDebugPageCommonDatabaseInterface::insertAutoResponseItem(QString tableName, SAKDataStruct::SAKStructAutoResponseItem item)
 {
     AutoResponseTable table = tableNmaeToAutoResponseTable(tableName);
-    bool ret = sakDatabaseQuery.exec(QString("INSERT INTO %1(%2,%3,%4,%5,%6,%7,%8,%9,%10,%11) VALUES(%12,'%13','%14','%15',%16,%17,%18,%19,%20,'%21')")
+    bool ret = mSqlQuery.exec(QString("INSERT INTO %1(%2,%3,%4,%5,%6,%7,%8,%9,%10,%11) VALUES(%12,'%13','%14','%15',%16,%17,%18,%19,%20,'%21')")
                                      .arg(table.tableName)
                                      .arg(table.columns.id)
                                      .arg(table.columns.description)
@@ -77,34 +77,34 @@ void SAKDebugPageCommonDatabaseInterface::insertAutoResponseItem(QString tableNa
                                      .arg(item.delay)
                                      .arg(item.interval));
     if (!ret){
-        qWarning() << __FUNCTION__ << "Insert record to " << table.tableName << " table failed: " << sakDatabaseQuery.lastError().text();
+        qWarning() << __FUNCTION__ << "Insert record to " << table.tableName << " table failed: " << mSqlQuery.lastError().text();
     }
 }
 
 QList<SAKDataStruct::SAKStructAutoResponseItem> SAKDebugPageCommonDatabaseInterface::selectAutoResponseItem(QString tableName)
 {
     AutoResponseTable table = tableNmaeToAutoResponseTable(tableName);
-    bool ret = sakDatabaseQuery.exec(QString("SELECT * FROM %1").arg(table.tableName));
+    bool ret = mSqlQuery.exec(QString("SELECT * FROM %1").arg(table.tableName));
 
     QList<SAKDataStruct::SAKStructAutoResponseItem> itemList;
     if (ret){
         SAKDataStruct::SAKStructAutoResponseItem item;
-        while (sakDatabaseQuery.next()) {
-            item.id = sakDatabaseQuery.value(table.columns.id).toULongLong();
-            item.name = sakDatabaseQuery.value(table.columns.description).toString();
-            item.referenceData = sakDatabaseQuery.value(table.columns.referenceText).toString();
-            item.responseData = sakDatabaseQuery.value(table.columns.responseText).toString();
-            item.enable = sakDatabaseQuery.value(table.columns.enable).toBool();
-            item.referenceFormat = sakDatabaseQuery.value(table.columns.referenceFormat).toUInt();
-            item.responseFormat = sakDatabaseQuery.value(table.columns.responseFormat).toUInt();
-            item.option = sakDatabaseQuery.value(table.columns.option).toUInt();
-            item.delay = sakDatabaseQuery.value(table.columns.delay).toBool();
-            item.interval = sakDatabaseQuery.value(table.columns.interval).toInt();
+        while (mSqlQuery.next()) {
+            item.id = mSqlQuery.value(table.columns.id).toULongLong();
+            item.name = mSqlQuery.value(table.columns.description).toString();
+            item.referenceData = mSqlQuery.value(table.columns.referenceText).toString();
+            item.responseData = mSqlQuery.value(table.columns.responseText).toString();
+            item.enable = mSqlQuery.value(table.columns.enable).toBool();
+            item.referenceFormat = mSqlQuery.value(table.columns.referenceFormat).toUInt();
+            item.responseFormat = mSqlQuery.value(table.columns.responseFormat).toUInt();
+            item.option = mSqlQuery.value(table.columns.option).toUInt();
+            item.delay = mSqlQuery.value(table.columns.delay).toBool();
+            item.interval = mSqlQuery.value(table.columns.interval).toInt();
 
             itemList.append(item);
         }
     }else{
-        qWarning() << __FUNCTION__ << "Select record form " << table.tableName << " table failed: " << sakDatabaseQuery.lastError().text();
+        qWarning() << __FUNCTION__ << "Select record form " << table.tableName << " table failed: " << mSqlQuery.lastError().text();
     }
 
     return itemList;
@@ -113,7 +113,7 @@ QList<SAKDataStruct::SAKStructAutoResponseItem> SAKDebugPageCommonDatabaseInterf
 void SAKDebugPageCommonDatabaseInterface::insertTimingSentItem(QString tableName, SAKDataStruct::SAKStructTimingSentItem item)
 {
     TimingSendingTable table = tableNameToTimingSendingTable(tableName);
-    bool ret = sakDatabaseQuery.exec(QString("INSERT INTO %1(%2,%3,%4,%5,%6) VALUES(%7,%8,%9,'%10','%11')")
+    bool ret = mSqlQuery.exec(QString("INSERT INTO %1(%2,%3,%4,%5,%6) VALUES(%7,%8,%9,'%10','%11')")
                                      .arg(table.tableName)
                                      .arg(table.columns.id)
                                      .arg(table.columns.interval)
@@ -126,29 +126,29 @@ void SAKDebugPageCommonDatabaseInterface::insertTimingSentItem(QString tableName
                                      .arg(item.comment)
                                      .arg(item.data));
     if (!ret){
-        qWarning() << __FUNCTION__ << "Insert record to " << table.tableName << " table failed: " << sakDatabaseQuery.lastError().text();
+        qWarning() << __FUNCTION__ << "Insert record to " << table.tableName << " table failed: " << mSqlQuery.lastError().text();
     }
 }
 
 QList<SAKDataStruct::SAKStructTimingSentItem> SAKDebugPageCommonDatabaseInterface::selectTimingSentItem(QString tableName)
 {
     TimingSendingTable table = tableNameToTimingSendingTable(tableName);
-    bool ret = sakDatabaseQuery.exec(QString("SELECT * FROM %1").arg(table.tableName));
+    bool ret = mSqlQuery.exec(QString("SELECT * FROM %1").arg(table.tableName));
 
     QList<SAKDataStruct::SAKStructTimingSentItem> itemList;
     if (ret){
         SAKDataStruct::SAKStructTimingSentItem item;
-        while (sakDatabaseQuery.next()) {
-            item.id = sakDatabaseQuery.value(table.columns.id).toULongLong();
-            item.interval = sakDatabaseQuery.value(table.columns.interval).toUInt();
-            item.format = sakDatabaseQuery.value(table.columns.format).toUInt();
-            item.comment = sakDatabaseQuery.value(table.columns.description).toString();
-            item.data = sakDatabaseQuery.value(table.columns.text).toString();
+        while (mSqlQuery.next()) {
+            item.id = mSqlQuery.value(table.columns.id).toULongLong();
+            item.interval = mSqlQuery.value(table.columns.interval).toUInt();
+            item.format = mSqlQuery.value(table.columns.format).toUInt();
+            item.comment = mSqlQuery.value(table.columns.description).toString();
+            item.data = mSqlQuery.value(table.columns.text).toString();
 
             itemList.append(item);
         }
     }else{
-        qWarning() << __FUNCTION__ << "Select record form " << table.tableName << " table failed: " << sakDatabaseQuery.lastError().text();
+        qWarning() << __FUNCTION__ << "Select record form " << table.tableName << " table failed: " << mSqlQuery.lastError().text();
     }
 
     return itemList;
@@ -157,7 +157,7 @@ QList<SAKDataStruct::SAKStructTimingSentItem> SAKDebugPageCommonDatabaseInterfac
 void SAKDebugPageCommonDatabaseInterface::insertDataPresetItem(QString tableName, SAKDataStruct::SAKStructPresettingDataItem item)
 {
     DataPresetItemTable table = tableNameToPresettingDataTable(tableName);
-    bool ret = sakDatabaseQuery.exec(QString("INSERT INTO %1(%2,%3,%4,%5) VALUES(%6,%7,'%8','%9')")
+    bool ret = mSqlQuery.exec(QString("INSERT INTO %1(%2,%3,%4,%5) VALUES(%6,%7,'%8','%9')")
                                      .arg(table.tableName)
                                      .arg(table.columns.id)
                                      .arg(table.columns.format)
@@ -168,28 +168,28 @@ void SAKDebugPageCommonDatabaseInterface::insertDataPresetItem(QString tableName
                                      .arg(item.description)
                                      .arg(item.text));
     if (!ret){
-        qWarning() << __FUNCTION__ << "Insert record to " << table.tableName << " table failed: " << sakDatabaseQuery.lastError().text();
+        qWarning() << __FUNCTION__ << "Insert record to " << table.tableName << " table failed: " << mSqlQuery.lastError().text();
     }
 }
 
 QList<SAKDataStruct::SAKStructPresettingDataItem> SAKDebugPageCommonDatabaseInterface::selectDataPresetItem(QString tableName)
 {
     DataPresetItemTable table = tableNameToPresettingDataTable(tableName);
-    bool ret = sakDatabaseQuery.exec(QString("SELECT * FROM %1").arg(table.tableName));
+    bool ret = mSqlQuery.exec(QString("SELECT * FROM %1").arg(table.tableName));
 
     QList<SAKDataStruct::SAKStructPresettingDataItem> itemList;
     if (ret){
         SAKDataStruct::SAKStructPresettingDataItem item;
-        while (sakDatabaseQuery.next()) {
-            item.id = sakDatabaseQuery.value(table.columns.id).toULongLong();
-            item.format = sakDatabaseQuery.value(table.columns.format).toUInt();
-            item.description = sakDatabaseQuery.value(table.columns.description).toString();
-            item.text = sakDatabaseQuery.value(table.columns.text).toString();
+        while (mSqlQuery.next()) {
+            item.id = mSqlQuery.value(table.columns.id).toULongLong();
+            item.format = mSqlQuery.value(table.columns.format).toUInt();
+            item.description = mSqlQuery.value(table.columns.description).toString();
+            item.text = mSqlQuery.value(table.columns.text).toString();
 
             itemList.append(item);
         }
     }else{
-        qWarning() << __FUNCTION__ << "Select record form " << table.tableName << " table failed: " << sakDatabaseQuery.lastError().text();
+        qWarning() << __FUNCTION__ << "Select record form " << table.tableName << " table failed: " << mSqlQuery.lastError().text();
     }
 
     return itemList;
@@ -213,8 +213,8 @@ void SAKDebugPageCommonDatabaseInterface::updateRecord(QString tableName, QStrin
                 .arg(recordID);
     }
 
-    if(!sakDatabaseQuery.exec(queryString)){
-        qWarning() << __FUNCTION__ << QString("Can not update record(%1):%2").arg(columnName).arg(sakDatabaseQuery.lastError().text());
+    if(!mSqlQuery.exec(queryString)){
+        qWarning() << __FUNCTION__ << QString("Can not update record(%1):%2").arg(columnName).arg(mSqlQuery.lastError().text());
 #ifdef QT_DEBUG
         qDebug() << __FUNCTION__ << queryString;
 #endif
@@ -230,17 +230,17 @@ void SAKDebugPageCommonDatabaseInterface::updateRecord(QString tableName, QStrin
 
 void SAKDebugPageCommonDatabaseInterface::deleteRecord(QString tableName, quint64 recordID)
 {
-    bool ret = sakDatabaseQuery.exec(QString("DELETE FROM %1 WHERE ID=%2")
+    bool ret = mSqlQuery.exec(QString("DELETE FROM %1 WHERE ID=%2")
                                      .arg(tableName)
                                      .arg(recordID));
     if (!ret){
-        qWarning() << __FUNCTION__ << "delete record form " << tableName << " table failed: " << sakDatabaseQuery.lastError().text();
+        qWarning() << __FUNCTION__ << "delete record form " << tableName << " table failed: " << mSqlQuery.lastError().text();
     }
 }
 
 bool SAKDebugPageCommonDatabaseInterface::isTableExist(QString tableName)
 {
-   bool ret = sakDatabaseQuery.exec(QString("SELECT * FROM %1").arg(tableName));
+   bool ret = mSqlQuery.exec(QString("SELECT * FROM %1").arg(tableName));
    return ret;
 }
 
@@ -258,23 +258,23 @@ void SAKDebugPageCommonDatabaseInterface::createAutoResponseTables()
     AutoResponseTable autoResponseTable;
     for (int i = 0; i < metaEnum.keyCount(); i++){
         autoResponseTable.tableName = SAKDataStruct::autoResponseTableName(i);
-        autoResponseTableList.append(autoResponseTable);
+        mAutoResponseTableList.append(autoResponseTable);
     }
 
-    for (auto var : autoResponseTableList){
+    for (auto var : mAutoResponseTableList){
         if (isTableExist(var.tableName)){
             continue;
         }
 
         if (!createAutoResponseTable(var)){
-            qWarning() << QString("Carete table failed:%1").arg(sakDatabaseQuery.lastError().text());
+            qWarning() << QString("Carete table failed:%1").arg(mSqlQuery.lastError().text());
         }
     }
 }
 
 bool SAKDebugPageCommonDatabaseInterface::createAutoResponseTable(const AutoResponseTable &table)
 {
-    bool ret = sakDatabaseQuery.exec(QString("CREATE TABLE %1 \
+    bool ret = mSqlQuery.exec(QString("CREATE TABLE %1 \
                                               ( \
                                               %2 INTEGER PRIMARY KEY NOT NULL, \
                                               %3 TEXT NOT NULL, \
@@ -307,23 +307,23 @@ void SAKDebugPageCommonDatabaseInterface::createTimingSendingTables()
     TimingSendingTable timingSendingTable;
     for (int i = 0; i < metaEnum.keyCount(); i++){
         timingSendingTable.tableName = SAKDataStruct::timingSendingTableName(i);
-        timingSendingTableList.append(timingSendingTable);
+        mTimingSendingTableList.append(timingSendingTable);
     }
 
-    for (auto var : timingSendingTableList){
+    for (auto var : mTimingSendingTableList){
         if (isTableExist(var.tableName)){
             continue;
         }
 
         if (!createTimingSendingTable(var)){
-            qWarning() << QString("Carete table(%1) failed:%2").arg(var.tableName).arg(sakDatabaseQuery.lastError().text());
+            qWarning() << QString("Carete table(%1) failed:%2").arg(var.tableName).arg(mSqlQuery.lastError().text());
         }
     }
 }
 
 bool SAKDebugPageCommonDatabaseInterface::createTimingSendingTable(const TimingSendingTable &table)
 {
-    bool ret = sakDatabaseQuery.exec(QString("CREATE TABLE %1 \
+    bool ret = mSqlQuery.exec(QString("CREATE TABLE %1 \
                                               ( \
                                               %2 INTEGER PRIMARY KEY NOT NULL, \
                                               %3 INTEGER NOT NULL, \
@@ -347,23 +347,23 @@ void SAKDebugPageCommonDatabaseInterface::createPresettingDataTables()
     DataPresetItemTable presettingDataTable;
     for (int i = 0; i < metaEnum.keyCount(); i++){
         presettingDataTable.tableName = SAKDataStruct::dataPresetTableName(i);
-        presettingDataTableList.append(presettingDataTable);
+        mPresettingDataTableList.append(presettingDataTable);
     }
 
-    for (auto var : presettingDataTableList){
+    for (auto var : mPresettingDataTableList){
         if (isTableExist(var.tableName)){
             continue;
         }
 
         if (!createPresettingDataTable(var)){
-            qWarning() << QString("Carete table(%1) failed:%2").arg(var.tableName).arg(sakDatabaseQuery.lastError().text());
+            qWarning() << QString("Carete table(%1) failed:%2").arg(var.tableName).arg(mSqlQuery.lastError().text());
         }
     }
 }
 
 bool SAKDebugPageCommonDatabaseInterface::createPresettingDataTable(const DataPresetItemTable &table)
 {
-    bool ret = sakDatabaseQuery.exec(QString("CREATE TABLE %1 \
+    bool ret = mSqlQuery.exec(QString("CREATE TABLE %1 \
                                               ( \
                                               %2 INTEGER PRIMARY KEY NOT NULL, \
                                               %3 INTEGER NOT NULL, \
@@ -381,7 +381,7 @@ bool SAKDebugPageCommonDatabaseInterface::createPresettingDataTable(const DataPr
 SAKDebugPageCommonDatabaseInterface::AutoResponseTable SAKDebugPageCommonDatabaseInterface::tableNmaeToAutoResponseTable(QString tableName)
 {
     AutoResponseTable table;
-    for (auto var : autoResponseTableList){
+    for (auto var : mAutoResponseTableList){
         if (tableName.compare(var.tableName) == 0){
             table.tableName = var.tableName;
             break;
@@ -393,7 +393,7 @@ SAKDebugPageCommonDatabaseInterface::AutoResponseTable SAKDebugPageCommonDatabas
 SAKDebugPageCommonDatabaseInterface::TimingSendingTable SAKDebugPageCommonDatabaseInterface::tableNameToTimingSendingTable(QString tableName)
 {
     TimingSendingTable table;
-    for(auto var : timingSendingTableList){
+    for(auto var : mTimingSendingTableList){
         if (tableName.compare(var.tableName) == 0){
             table.tableName = var.tableName;
             break;
@@ -405,7 +405,7 @@ SAKDebugPageCommonDatabaseInterface::TimingSendingTable SAKDebugPageCommonDataba
 SAKDebugPageCommonDatabaseInterface::DataPresetItemTable SAKDebugPageCommonDatabaseInterface::tableNameToPresettingDataTable(QString tableName)
 {
     DataPresetItemTable table;
-    for(auto var : presettingDataTableList){
+    for(auto var : mPresettingDataTableList){
         if (tableName.compare(var.tableName) == 0){
             table.tableName = var.tableName;
             break;

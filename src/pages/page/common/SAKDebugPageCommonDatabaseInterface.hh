@@ -129,11 +129,11 @@ public:
 private:
     static SAKDebugPageCommonDatabaseInterface *instancePtr;
     QSqlDatabase *mSqlDatabase;
-    QSqlQuery sakDatabaseQuery;
-    QList<AutoResponseTable> autoResponseTableList;
-    QList<TimingSendingTable> timingSendingTableList;
-    QList<DataPresetItemTable> presettingDataTableList;
-    QString databaseName;
+    QSqlQuery mSqlQuery;
+    QList<AutoResponseTable> mAutoResponseTableList;
+    QList<TimingSendingTable> mTimingSendingTableList;
+    QList<DataPresetItemTable> mPresettingDataTableList;
+    QString mDatabaseName;
 private:
     bool isTableExist(QString tableName);
     void createTables();
