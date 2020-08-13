@@ -8,7 +8,9 @@
  * the file LICENCE in the root of the source code directory.
  */
 #include <QRect>
+#include <QFile>
 #include <QTimer>
+#include <QDebug>
 #include <QScreen>
 #include <QAction>
 #include <QSettings>
@@ -20,6 +22,7 @@
 #include "SAKSettings.hh"
 #include "SAKSettings.hh"
 #include "SAKMainWindow.hh"
+#include "SAKSqlDatabase.hh"
 #include "SAKApplication.hh"
 #include "SAKSplashScreen.hh"
 
@@ -39,6 +42,21 @@ SAKApplication::SAKApplication(int argc, char **argv)
     SAKSplashScreen *splashScreen = SAKSplashScreen::instance();
     splashScreen->show();
     processEvents();
+
+    // Remove settings files
+    QSettings settings(SAKSettings::fullPath(), QSettings::IniFormat);
+    if (settings.value(SAKMainWindow::settingKeyClearConfiguration()).toBool()){
+        settings.setValue(SAKMainWindow::settingKeyClearConfiguration(), QVariant::fromValue(false));
+
+        if (QFile::remove(SAKSettings::fullPath())){
+            qInfo() << "Remove settings file successfully!";
+        }
+
+        if (QFile::remove(SAKSqlDatabase::fullPath())){
+            qInfo() << "Remove database successfully!";
+        }
+    }
+
 
     // Initialize some global variables.
     SAKSettings::instance();
