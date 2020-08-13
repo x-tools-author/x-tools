@@ -18,7 +18,7 @@
 SAKSqlDatabase* SAKSqlDatabase::instancePtr = Q_NULLPTR;
 SAKSqlDatabase* SAKSqlDatabase::instance()
 {
-    if (instancePtr){
+    if (!instancePtr){
         new SAKSqlDatabase;
     }
     Q_ASSERT_X(instancePtr, __FUNCTION__, "A null pointer!");
