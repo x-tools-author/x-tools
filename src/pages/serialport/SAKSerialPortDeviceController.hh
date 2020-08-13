@@ -24,6 +24,15 @@ class SAKSerialPortDeviceController:public QWidget
 {
     Q_OBJECT
 public:
+    struct SerialParameters {
+        enum QSerialPort::DataBits dataBits;
+        enum QSerialPort::StopBits stopBits;
+        enum QSerialPort::Parity parity;
+        enum QSerialPort::FlowControl flowControl;
+        QString name;
+        quint32 baudRate;
+    };
+
     SAKSerialPortDeviceController(QWidget *parent = Q_NULLPTR);
     ~SAKSerialPortDeviceController();
 
@@ -38,6 +47,7 @@ public:
     void setUiEnable(bool enable);
 private:
     QMutex uiMutex;
+    SerialParameters mSerialParameters;
 private:
     Ui::SAKSerialPortDeviceController *ui;
 
