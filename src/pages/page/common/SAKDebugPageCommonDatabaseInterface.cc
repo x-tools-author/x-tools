@@ -342,7 +342,6 @@ bool SAKDebugPageCommonDatabaseInterface::createTimingSendingTable(const TimingS
 
 void SAKDebugPageCommonDatabaseInterface::createPresettingDataTables()
 {
-    /// @brief 定时发送数据表名称
     QMetaEnum metaEnum = QMetaEnum::fromType<SAKDataStruct::SAKEnumDebugPageType>();
     DataPresetItemTable presettingDataTable;
     for (int i = 0; i < metaEnum.keyCount(); i++){
