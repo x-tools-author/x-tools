@@ -40,6 +40,10 @@ public:
     SAKChartsXYSerialWidget(QWidget *parent = Q_NULLPTR);
     ~SAKChartsXYSerialWidget();
 
+    /**
+     * @brief inputBytes: Input data to the module
+     * @param bytes: Data that input to the module
+     */
     void inputBytes(QByteArray bytes);
 private:
     SAKChartsXYSerialEditDialog *mXYSerialEditDialog;
