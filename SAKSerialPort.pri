@@ -20,5 +20,5 @@ contains(DEFINES, SAK_IMPORT_COM_MODULE){
     INCLUDEPATH += \
         $$PWD/src/pages/serialport
 }else {
-    warning("The Qt edition has no serialport module, the program will not has serialport debuging functioin.")
+    message("The Qt edition has no serialport module, the program will not has serialport debugging function.")
 }
