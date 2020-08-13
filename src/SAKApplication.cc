@@ -52,17 +52,18 @@ SAKApplication::SAKApplication(int argc, char **argv)
             qInfo() << "Remove settings file successfully!";
         }
 
-        if (QFile::remove(SAKSqlDatabase::fullPath())){
+        QFile databaseFile(SAKSqlDatabase::fullPath());
+        if (databaseFile.remove()){
             qInfo() << "Remove database successfully!";
+        }else{
+            qWarning() << "Remove database failed: " << databaseFile.errorString();
         }
     }
 
 
     // Initialize some global variables.
     SAKSettings::instance();
-#if 0
     SAKSqlDatabase::instance();
-#endif
 
     // Set application version, if micro SAK_VERSION is not defined, the application version is "0.0.0"
 #ifndef SAK_VERSION
