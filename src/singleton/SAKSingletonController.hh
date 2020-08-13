@@ -14,7 +14,7 @@
 #include <QLocalServer>
 #include <QSharedMemory>
 
-/// @brief 单实例控制类
+/// @brief Singleton application controller
 class SAKSingletonController:public QObject
 {
     Q_OBJECT
@@ -23,13 +23,13 @@ public:
     ~SAKSingletonController();
 
     /**
-     * @brief isInstanceExist 检测是否存在已运行的程序实例
-     * @return true：已有程序实例在运行，false：不存在程序实例在运行
+     * @brief isInstanceExist: true-SAK is running
+     * @return the state of SAK
      */
     bool isInstanceExist();
 
     /**
-     * @brief setFlag 设置启动标志
+     * @brief setFlag: Write shared memory
      */
     void setFlag();
 private:
