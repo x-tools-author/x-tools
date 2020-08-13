@@ -55,27 +55,27 @@ void SAKDebugPageCommonDatabaseInterface::insertAutoResponseItem(QString tableNa
 {
     AutoResponseTable table = tableNmaeToAutoResponseTable(tableName);
     bool ret = mSqlQuery.exec(QString("INSERT INTO %1(%2,%3,%4,%5,%6,%7,%8,%9,%10,%11) VALUES(%12,'%13','%14','%15',%16,%17,%18,%19,%20,'%21')")
-                                     .arg(table.tableName)
-                                     .arg(table.columns.id)
-                                     .arg(table.columns.description)
-                                     .arg(table.columns.referenceText)
-                                     .arg(table.columns.responseText)
-                                     .arg(table.columns.enable)
-                                     .arg(table.columns.referenceFormat)
-                                     .arg(table.columns.responseFormat)
-                                     .arg(table.columns.option)
-                                     .arg(table.columns.delay)
-                                     .arg(table.columns.interval)
-                                     .arg(item.id)
-                                     .arg(item.name)
-                                     .arg(item.referenceData)
-                                     .arg(item.responseData)
-                                     .arg(item.enable)
-                                     .arg(item.referenceFormat)
-                                     .arg(item.responseFormat)
-                                     .arg(item.option)
-                                     .arg(item.delay)
-                                     .arg(item.interval));
+                              .arg(table.tableName)
+                              .arg(table.columns.id)
+                              .arg(table.columns.description)
+                              .arg(table.columns.referenceText)
+                              .arg(table.columns.responseText)
+                              .arg(table.columns.enable)
+                              .arg(table.columns.referenceFormat)
+                              .arg(table.columns.responseFormat)
+                              .arg(table.columns.option)
+                              .arg(table.columns.delay)
+                              .arg(table.columns.interval)
+                              .arg(item.id)
+                              .arg(item.name)
+                              .arg(item.referenceData)
+                              .arg(item.responseData)
+                              .arg(item.enable)
+                              .arg(item.referenceFormat)
+                              .arg(item.responseFormat)
+                              .arg(item.option)
+                              .arg(item.delay)
+                              .arg(item.interval));
     if (!ret){
         qWarning() << __FUNCTION__ << "Insert record to " << table.tableName << " table failed: " << mSqlQuery.lastError().text();
     }
@@ -114,17 +114,17 @@ void SAKDebugPageCommonDatabaseInterface::insertTimingSentItem(QString tableName
 {
     TimingSendingTable table = tableNameToTimingSendingTable(tableName);
     bool ret = mSqlQuery.exec(QString("INSERT INTO %1(%2,%3,%4,%5,%6) VALUES(%7,%8,%9,'%10','%11')")
-                                     .arg(table.tableName)
-                                     .arg(table.columns.id)
-                                     .arg(table.columns.interval)
-                                     .arg(table.columns.format)
-                                     .arg(table.columns.description)
-                                     .arg(table.columns.text)
-                                     .arg(item.id)
-                                     .arg(item.interval)
-                                     .arg(item.format)
-                                     .arg(item.comment)
-                                     .arg(item.data));
+                              .arg(table.tableName)
+                              .arg(table.columns.id)
+                              .arg(table.columns.interval)
+                              .arg(table.columns.format)
+                              .arg(table.columns.description)
+                              .arg(table.columns.text)
+                              .arg(item.id)
+                              .arg(item.interval)
+                              .arg(item.format)
+                              .arg(item.comment)
+                              .arg(item.data));
     if (!ret){
         qWarning() << __FUNCTION__ << "Insert record to " << table.tableName << " table failed: " << mSqlQuery.lastError().text();
     }
@@ -158,15 +158,15 @@ void SAKDebugPageCommonDatabaseInterface::insertDataPresetItem(QString tableName
 {
     DataPresetItemTable table = tableNameToPresettingDataTable(tableName);
     bool ret = mSqlQuery.exec(QString("INSERT INTO %1(%2,%3,%4,%5) VALUES(%6,%7,'%8','%9')")
-                                     .arg(table.tableName)
-                                     .arg(table.columns.id)
-                                     .arg(table.columns.format)
-                                     .arg(table.columns.description)
-                                     .arg(table.columns.text)
-                                     .arg(item.id)
-                                     .arg(item.format)
-                                     .arg(item.description)
-                                     .arg(item.text));
+                              .arg(table.tableName)
+                              .arg(table.columns.id)
+                              .arg(table.columns.format)
+                              .arg(table.columns.description)
+                              .arg(table.columns.text)
+                              .arg(item.id)
+                              .arg(item.format)
+                              .arg(item.description)
+                              .arg(item.text));
     if (!ret){
         qWarning() << __FUNCTION__ << "Insert record to " << table.tableName << " table failed: " << mSqlQuery.lastError().text();
     }
