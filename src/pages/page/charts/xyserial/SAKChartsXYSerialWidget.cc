@@ -151,7 +151,7 @@ void SAKChartsXYSerialWidget::editXYSerial()
     void *voidPtr = mXYSerialParametersMap.value(xySerial);
     SAKChartsXYSerialEditDialog::ParametersContext *ctx = reinterpret_cast<SAKChartsXYSerialEditDialog::ParametersContext *>(voidPtr);
     mXYSerialEditDialog->setParameters(*ctx);
-    mXYSerialEditDialog->setWindowTitle(tr("编辑曲线图或散点图"));
+    mXYSerialEditDialog->setWindowTitle(tr("Edit line or scatter"));
     mXYSerialEditDialog->show();
     if (mXYSerialEditDialog->exec() == QDialog::Accepted){
         *ctx = mXYSerialEditDialog->parameters();
@@ -273,7 +273,7 @@ void SAKChartsXYSerialWidget::on_clearPushButton_clicked()
 
 void SAKChartsXYSerialWidget::on_addPushButton_clicked()
 {
-    mXYSerialEditDialog->setWindowTitle(tr("添加曲线图或散点图"));
+    mXYSerialEditDialog->setWindowTitle(tr("Add line or scatter"));
     mXYSerialEditDialog->show();
     if (mXYSerialEditDialog->exec() != QDialog::Accepted){
         return;
