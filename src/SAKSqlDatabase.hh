@@ -10,12 +10,14 @@
 #ifndef SAKSQLDATABASE_HH
 #define SAKSQLDATABASE_HH
 
+#include <QObject>
 #include <QSqlDatabase>
 
-class SAKSqlDatabase:public QSqlDatabase
+class SAKSqlDatabase:public QObject
 {
+    Q_OBJECT
 private:
-    SAKSqlDatabase();
+    SAKSqlDatabase(QObject *parent = Q_NULLPTR);
     ~SAKSqlDatabase();
 public:
     /**
@@ -37,6 +39,7 @@ public:
     static const QString fullPath();
 private:
     static SAKSqlDatabase *instancePtr;
+    QSqlDatabase mSqlDatabase;
 };
 
 #endif

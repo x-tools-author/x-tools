@@ -19,26 +19,27 @@ SAKSqlDatabase* SAKSqlDatabase::instancePtr = Q_NULLPTR;
 SAKSqlDatabase* SAKSqlDatabase::instance()
 {
     if (!instancePtr){
-        new SAKSqlDatabase;
+        new SAKSqlDatabase(qApp);
     }
     Q_ASSERT_X(instancePtr, __FUNCTION__, "A null pointer!");
 
     return instancePtr;
 }
 
-SAKSqlDatabase::SAKSqlDatabase()
+SAKSqlDatabase::SAKSqlDatabase(QObject *parent)
+    :QObject(parent)
 {
     instancePtr = this;
 
-    addDatabase("QSQLITE");
-    setDatabaseName(fullPath());
+    mSqlDatabase = QSqlDatabase::addDatabase("QSQLITE");
+    mSqlDatabase.setDatabaseName(fullPath());
     // Do something useless
-    setHostName("localhost");
-    setUserName("Qter");
-    setPassword("QterPassword");
+    mSqlDatabase.setHostName("localhost");
+    mSqlDatabase.setUserName("Qter");
+    mSqlDatabase.setPassword("QterPassword");
 
-    if (!open()){
-        qWarning() << __FUNCTION__ << "QSAKDatabase.sqlite3 open failed: " << lastError().text();
+    if (!mSqlDatabase.open()){
+        qWarning() << __FUNCTION__ << "QSAKDatabase.sqlite3 open failed: " << mSqlDatabase.lastError().text();
         Q_ASSERT_X(false, __FUNCTION__, "Open database failed!");
     }
 }
@@ -46,14 +47,14 @@ SAKSqlDatabase::SAKSqlDatabase()
 SAKSqlDatabase::~SAKSqlDatabase()
 {
     instancePtr = Q_NULLPTR;
-    if (isOpen()){
-        close();
+    if (mSqlDatabase.isOpen()){
+        mSqlDatabase.close();
     }
 }
 
 QSqlDatabase *SAKSqlDatabase::sqlDatabase()
 {
-    return instancePtr;
+    return &mSqlDatabase;
 }
 
 const QString SAKSqlDatabase::fullPath()
