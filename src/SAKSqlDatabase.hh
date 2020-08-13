@@ -18,7 +18,7 @@ private:
     SAKSqlDatabase();
     ~SAKSqlDatabase();
 public:
-    static SAKSqlDatabase* instance();
+    static SAKSqlDatabase *instance();
     QSqlDatabase *sqlDatabase();
 private:
     static SAKSqlDatabase *instancePtr;
