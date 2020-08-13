@@ -63,7 +63,7 @@ private slots:
     void editXYSerial();
 private:
     QAction *senderToAction(QObject *sender);
-    /// @brief 添加坐标点, parametersCtx类型为SAKXYSerialEditDialog::ParametersContext实例指针
+
     void appendPoint(QXYSeries *xySerial, QByteArray frame, void *parametersCtx);
     void appendPointInt8(QByteArray data, QXYSeries *xySerial);
     void appendPointUint8(QByteArray data, QXYSeries *xySerial);
@@ -75,7 +75,7 @@ private:
     void appendPointUint64(QByteArray data, QXYSeries *xySerial);
     void appendPointFloat32(QByteArray data, QXYSeries *xySerial);
     void appendPointFloat64(QByteArray data, QXYSeries *xySerial);
-    /// @brief 添加坐标点函数模板
+
     template<typename T>
     void appendPointActually(QByteArray data, QXYSeries *xySerial){
         if (data.length() < sizeof(T)){
@@ -83,13 +83,11 @@ private:
             return;
         }
 
-        /// @brief 添加坐标点
         T *ptr = reinterpret_cast<T *>(data.data());
         qreal xValue = qreal(QDateTime::currentMSecsSinceEpoch());
         T yValue = *ptr;
         xySerial->append(xValue, qreal(yValue));
 
-        /// @brief 移动图表，使得新显示在可见区域
         if (mXAxis->max().toMSecsSinceEpoch() < xValue){
             mChart->scroll(10, 0);
         }

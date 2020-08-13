@@ -36,7 +36,6 @@ SAKChartsXYSerialWidget::SAKChartsXYSerialWidget(QWidget *parent)
     mEditPushButton = mUi->editPushButton;
     mAddPushButton = mUi->addPushButton;
 
-    /// @brief 初始化表格视图
     mChart = new QChart;
     mChartView = new SAKChartsXYSerialChartView(mChart, mChartViewerWidget);
     mChartView->setChart(mChart);
@@ -56,13 +55,11 @@ SAKChartsXYSerialWidget::SAKChartsXYSerialWidget(QWidget *parent)
     layout->addWidget(mChartView);
     mChartViewerWidget->setLayout(layout);
 
-    /// @brief 菜单初始化
     mDeleteMenu = new QMenu(mDeletePushButton);
     mEditMenu = new QMenu(mEditPushButton);
     mDeletePushButton->setMenu(mDeleteMenu);
     mEditPushButton->setMenu(mEditMenu);
 
-    /// @brief 初始化映射变量，键为数据类型，值为成员函数指针
     mAppendPointInterfaceMap.insert(SAKChartsXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeInt8, &SAKChartsXYSerialWidget::appendPointInt8);
     mAppendPointInterfaceMap.insert(SAKChartsXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeUint8, &SAKChartsXYSerialWidget::appendPointUint8);
     mAppendPointInterfaceMap.insert(SAKChartsXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeInt16, &SAKChartsXYSerialWidget::appendPointInt16);
@@ -96,7 +93,6 @@ SAKChartsXYSerialWidget::~SAKChartsXYSerialWidget()
     delete mChartSettingsDialog;
     delete mXYSerialEditDialog;
 
-    /// @brief 删除参数
     QMapIterator<QXYSeries *, void *> iterator(mXYSerialParametersMap);
     while (iterator.hasNext()) {
         iterator.next();
@@ -109,7 +105,6 @@ SAKChartsXYSerialWidget::~SAKChartsXYSerialWidget()
 
 void SAKChartsXYSerialWidget::inputBytes(QByteArray bytes)
 {
-    /// @brief 不处理数空数组,暂停输入时也不处理数据
     if (bytes.isEmpty() || mPauseCheckBox->isChecked()){
         return;
     }
@@ -119,21 +114,19 @@ void SAKChartsXYSerialWidget::inputBytes(QByteArray bytes)
         iterator.next();
         QXYSeries *xySerial = iterator.key();
         void *ctx = iterator.value();
-        /// @brief 添加坐标点
+
         appendPoint(xySerial, bytes, ctx);
     }
 }
 
 void SAKChartsXYSerialWidget::deleteXYSerial()
 {
-    /// @brief 确保是通过按钮信息号（删除按钮的菜单项触发）调用该函数的
     QAction *action = senderToAction(sender());
     if (!action){
          Q_ASSERT_X(false, __FUNCTION__, "Can not called the function directly");
         return;
     }
 
-    /// @brief 删除相关资源
     QXYSeries *xySerial = action->data().value<QXYSeries *>();
     mChart->removeSeries(xySerial);
     mXYSerialParametersMap.remove(xySerial);
@@ -148,7 +141,6 @@ void SAKChartsXYSerialWidget::deleteXYSerial()
 
 void SAKChartsXYSerialWidget::editXYSerial()
 {
-    /// @brief 确保是通过按钮信息号（删除按钮的菜单项触发）调用该函数的
     QAction *action = senderToAction(sender());
     if (!action){
          Q_ASSERT_X(false, __FUNCTION__, "Can not called the function directly");
@@ -167,7 +159,6 @@ void SAKChartsXYSerialWidget::editXYSerial()
         xySerial->setName(ctx->chartParameters.chartName);
     }
 
-    /// @brief 更改菜单项文本显示
     action->setText(ctx->chartParameters.chartName);
     for (auto var : mDeleteMenu->actions()){
         if (var->data().value<QXYSeries *>() == xySerial){
@@ -199,7 +190,6 @@ void SAKChartsXYSerialWidget::appendPoint(QXYSeries *xySerial, QByteArray frame,
         int minLen = offset + dataLength;
         if (frame.length() >= minLen){
             QByteArray data(frame.data()+offset, dataLength);
-            /// @brief 处理大端序
             if (ctx->extractParameters.isBigEndian){
                 QByteArray temp;
                 for (int i = 0; i < data.length(); i++){
@@ -208,7 +198,6 @@ void SAKChartsXYSerialWidget::appendPoint(QXYSeries *xySerial, QByteArray frame,
                 data = temp;
             }
 
-            /// @brief 通过指针调用成员函数
             if (mAppendPointInterfaceMap.contains(ctx->extractParameters.dataType)){
                 void (SAKChartsXYSerialWidget::*interface)(QByteArray, QXYSeries *) = mAppendPointInterfaceMap.value(dataType);
                 (this->*interface)(data, xySerial);
@@ -274,12 +263,10 @@ void SAKChartsXYSerialWidget::on_chartSettingsPushButton_clicked()
 
 void SAKChartsXYSerialWidget::on_clearPushButton_clicked()
 {
-    /// @brief 清空全部坐标点
     for (auto var : mChart->series()){
         reinterpret_cast<QXYSeries*>(var)->clear();
     }
 
-    /// @brief 重置缩放，更新横坐标
     mChart->zoomReset();
     mXAxis->setRange(QDateTime::currentDateTime(), QDateTime::currentDateTime().addSecs(60));
 }
@@ -308,17 +295,15 @@ void SAKChartsXYSerialWidget::on_addPushButton_clicked()
     xySerial->setColor(ctx.chartParameters.chartColor);
     xySerial->setName(ctx.chartParameters.chartName);
 
-    /// @brief 保存参数
     SAKChartsXYSerialEditDialog::ParametersContext *ctxPtr = new SAKChartsXYSerialEditDialog::ParametersContext;
     *ctxPtr = ctx;
     mXYSerialParametersMap.insert(xySerial, ctxPtr);
 
-    /// @brief 添加删除菜单选项
     QAction *action = new QAction(ctxPtr->chartParameters.chartName, this);
     action->setData(QVariant::fromValue(xySerial));
     mDeleteMenu->addAction(action);
     connect(action, &QAction::triggered, this, &SAKChartsXYSerialWidget::deleteXYSerial);
-    /// @brief 添加编辑菜单选项
+
     action = new QAction(ctxPtr->chartParameters.chartName, this);
     action->setData(QVariant::fromValue(xySerial));
     mEditMenu->addAction(action);
