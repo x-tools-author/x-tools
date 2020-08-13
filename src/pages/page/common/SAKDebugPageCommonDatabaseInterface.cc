@@ -324,19 +324,19 @@ void SAKDebugPageCommonDatabaseInterface::createTimingSendingTables()
 bool SAKDebugPageCommonDatabaseInterface::createTimingSendingTable(const TimingSendingTable &table)
 {
     bool ret = mSqlQuery.exec(QString("CREATE TABLE %1 \
-                                              ( \
-                                              %2 INTEGER PRIMARY KEY NOT NULL, \
-                                              %3 INTEGER NOT NULL, \
-                                              %4 INTEGER NOT NULL, \
-                                              %5 TEXT NOT NULL, \
-                                              %6 TEXT NOT NULL \
-                                              )")
-                                             .arg(table.tableName)
-                                             .arg(table.columns.id)
-                                             .arg(table.columns.interval)
-                                             .arg(table.columns.format)
-                                             .arg(table.columns.description)
-                                             .arg(table.columns.text));
+                                      ( \
+                                      %2 INTEGER PRIMARY KEY NOT NULL, \
+                                      %3 INTEGER NOT NULL, \
+                                      %4 INTEGER NOT NULL, \
+                                      %5 TEXT NOT NULL, \
+                                      %6 TEXT NOT NULL \
+                                      )")
+                                      .arg(table.tableName)
+                                      .arg(table.columns.id)
+                                      .arg(table.columns.interval)
+                                      .arg(table.columns.format)
+                                      .arg(table.columns.description)
+                                      .arg(table.columns.text));
     return ret;
 }
 
