@@ -12,7 +12,6 @@
 
 #include <QMutex>
 #include <QThread>
-#include <QSerialPort>
 #include <QWaitCondition>
 
 #include "SAKDebugPageDevice.hh"

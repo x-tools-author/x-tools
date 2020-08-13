@@ -18,11 +18,11 @@
 #include "SAKTestDeviceController.hh"
 
 SAKTestDebugPage::SAKTestDebugPage(QWidget *parent)
-    :SAKDebugPage (SAKDataStruct::DebugPageTypeCOM, parent)
+    :SAKDebugPage (SAKDataStruct::DebugPageTypeTest, parent)
     ,controller (new SAKTestDeviceController)
 {
     initializingPage();
-    setWindowTitle(SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeCOM));
+    setWindowTitle(SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeTest));
 }
 
 SAKTestDebugPage::~SAKTestDebugPage()

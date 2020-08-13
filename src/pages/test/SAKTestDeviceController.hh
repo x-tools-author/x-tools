@@ -14,7 +14,6 @@
 #include <QWidget>
 #include <QCheckBox>
 #include <QComboBox>
-#include <QSerialPort>
 
 namespace Ui {
     class SAKTestDeviceController;

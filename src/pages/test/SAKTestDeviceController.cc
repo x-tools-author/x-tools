@@ -10,7 +10,6 @@
 #include <QList>
 #include <QMetaEnum>
 #include <QLineEdit>
-#include <QSerialPortInfo>
 
 #include "SAKGlobal.hh"
 #include "SAKTestDeviceController.hh"
