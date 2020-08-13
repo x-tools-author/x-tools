@@ -236,6 +236,9 @@ void SAKDebugPage::setupDevice()
         // The bytes read will be input to analyzer, after analyzing, the bytes will be input to debug page
         SAKOtherAnalyzerThreadManager *analyzerManager = mOtherController->analyzerThreadManager();
         connect(mDevice, &SAKDebugPageDevice::bytesRead, analyzerManager, &SAKOtherAnalyzerThreadManager::inputBytes);
+
+        // The function will be called multiple times, so do something to ensure that the signal named bytesAnalysed
+        // and the slot named bytesRead are connected once.
         connect(analyzerManager, &SAKOtherAnalyzerThreadManager::bytesAnalysed, this, &SAKDebugPage::bytesRead, static_cast<Qt::ConnectionType>(Qt::AutoConnection|Qt::UniqueConnection));
 #endif
         connect(mDevice, &SAKDebugPageDevice::messageChanged, this, &SAKDebugPage::outputMessage);
