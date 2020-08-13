@@ -253,7 +253,6 @@ void SAKDebugPageCommonDatabaseInterface::createTables()
 
 void SAKDebugPageCommonDatabaseInterface::createAutoResponseTables()
 {
-    /// @brief 自动回复数据表名称
     QMetaEnum metaEnum = QMetaEnum::fromType<SAKDataStruct::SAKEnumDebugPageType>();
     AutoResponseTable autoResponseTable;
     for (int i = 0; i < metaEnum.keyCount(); i++){
@@ -275,29 +274,29 @@ void SAKDebugPageCommonDatabaseInterface::createAutoResponseTables()
 bool SAKDebugPageCommonDatabaseInterface::createAutoResponseTable(const AutoResponseTable &table)
 {
     bool ret = mSqlQuery.exec(QString("CREATE TABLE %1 \
-                                              ( \
-                                              %2 INTEGER PRIMARY KEY NOT NULL, \
-                                              %3 TEXT NOT NULL, \
-                                              %4 TEXT NOT NULL, \
-                                              %5 TEXT NOT NULL, \
-                                              %6 BOOL NOT NULL, \
-                                              %7 INTEGER NOT NULL, \
-                                              %8 INTEGER NOT NULL, \
-                                              %9 INTEGER NOT NULL, \
-                                              %10 BOOL NOT NULL, \
-                                              %11 INTEGER NOT NULL \
-                                              )")
-                                             .arg(table.tableName)
-                                             .arg(table.columns.id)
-                                             .arg(table.columns.description)
-                                             .arg(table.columns.referenceText)
-                                             .arg(table.columns.responseText)
-                                             .arg(table.columns.enable)
-                                             .arg(table.columns.referenceFormat)
-                                             .arg(table.columns.responseFormat)
-                                             .arg(table.columns.option)
-                                             .arg(table.columns.delay)
-                                             .arg(table.columns.interval));
+                                       ( \
+                                       %2 INTEGER PRIMARY KEY NOT NULL, \
+                                       %3 TEXT NOT NULL, \
+                                       %4 TEXT NOT NULL, \
+                                       %5 TEXT NOT NULL, \
+                                       %6 BOOL NOT NULL, \
+                                       %7 INTEGER NOT NULL, \
+                                       %8 INTEGER NOT NULL, \
+                                       %9 INTEGER NOT NULL, \
+                                       %10 BOOL NOT NULL, \
+                                       %11 INTEGER NOT NULL \
+                                       )")
+                                      .arg(table.tableName)
+                                      .arg(table.columns.id)
+                                      .arg(table.columns.description)
+                                      .arg(table.columns.referenceText)
+                                      .arg(table.columns.responseText)
+                                      .arg(table.columns.enable)
+                                      .arg(table.columns.referenceFormat)
+                                      .arg(table.columns.responseFormat)
+                                      .arg(table.columns.option)
+                                      .arg(table.columns.delay)
+                                      .arg(table.columns.interval));
     return ret;
 }
 
@@ -324,13 +323,13 @@ void SAKDebugPageCommonDatabaseInterface::createTimingSendingTables()
 bool SAKDebugPageCommonDatabaseInterface::createTimingSendingTable(const TimingSendingTable &table)
 {
     bool ret = mSqlQuery.exec(QString("CREATE TABLE %1 \
-                                      ( \
-                                      %2 INTEGER PRIMARY KEY NOT NULL, \
-                                      %3 INTEGER NOT NULL, \
-                                      %4 INTEGER NOT NULL, \
-                                      %5 TEXT NOT NULL, \
-                                      %6 TEXT NOT NULL \
-                                      )")
+                                       ( \
+                                       %2 INTEGER PRIMARY KEY NOT NULL, \
+                                       %3 INTEGER NOT NULL, \
+                                       %4 INTEGER NOT NULL, \
+                                       %5 TEXT NOT NULL, \
+                                       %6 TEXT NOT NULL \
+                                       )")
                                       .arg(table.tableName)
                                       .arg(table.columns.id)
                                       .arg(table.columns.interval)
@@ -363,17 +362,17 @@ void SAKDebugPageCommonDatabaseInterface::createPresettingDataTables()
 bool SAKDebugPageCommonDatabaseInterface::createPresettingDataTable(const DataPresetItemTable &table)
 {
     bool ret = mSqlQuery.exec(QString("CREATE TABLE %1 \
-                                              ( \
-                                              %2 INTEGER PRIMARY KEY NOT NULL, \
-                                              %3 INTEGER NOT NULL, \
-                                              %4 TEXT NOT NULL, \
-                                              %5 TEXT NOT NULL \
-                                              )")
-                                             .arg(table.tableName)
-                                             .arg(table.columns.id)
-                                             .arg(table.columns.format)
-                                             .arg(table.columns.description)
-                                             .arg(table.columns.text));
+                                       ( \
+                                       %2 INTEGER PRIMARY KEY NOT NULL, \
+                                       %3 INTEGER NOT NULL, \
+                                       %4 TEXT NOT NULL, \
+                                       %5 TEXT NOT NULL \
+                                       )")
+                                      .arg(table.tableName)
+                                      .arg(table.columns.id)
+                                      .arg(table.columns.format)
+                                      .arg(table.columns.description)
+                                      .arg(table.columns.text));
     return ret;
 }
 
