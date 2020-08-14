@@ -29,13 +29,13 @@ SAKSerialPortDeviceController::SAKSerialPortDeviceController(SAKDebugPage *debug
     ,customBaudrateCheckBox(Q_NULLPTR)
 {
     ui->setupUi(this);
-    serialportsComboBox      = ui->serialportsComboBox;
-    baudrateComboBox         = ui->baudrateComboBox;
-    databitsComboBox         = ui->databitsComboBox;
-    stopbitsComboBox         = ui->stopbitsComboBox;
-    parityComboBox           = ui->parityComboBox;
-    flowControlComboBox      = ui->flowControlComboBox;
-    customBaudrateCheckBox   = ui->customBaudrateCheckBox;
+    serialportsComboBox = ui->serialportsComboBox;
+    baudrateComboBox = ui->baudrateComboBox;
+    databitsComboBox = ui->databitsComboBox;
+    stopbitsComboBox = ui->stopbitsComboBox;
+    parityComboBox = ui->parityComboBox;
+    flowControlComboBox = ui->flowControlComboBox;
+    customBaudrateCheckBox = ui->customBaudrateCheckBox;
 
     qRegisterMetaType<SAKSerialPortDeviceController::SerialPortParameters>("SAKSerialPortDeviceController::SerialPortParameters");
     refreshDevice();
