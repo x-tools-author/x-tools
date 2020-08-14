@@ -77,7 +77,7 @@ private:
 
     template<typename T>
     void appendPointActually(QByteArray data, QXYSeries *xySerial){
-        if (data.length() < sizeof(T)){
+        if (data.length() < int(sizeof(T))){
             Q_ASSERT_X(false, __FUNCTION__, "Data error: lack of data!");
             return;
         }
