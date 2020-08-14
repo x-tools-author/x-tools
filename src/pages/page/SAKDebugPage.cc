@@ -69,22 +69,11 @@ SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
 
 SAKDebugPage::~SAKDebugPage()
 {
-    if (mDevice){
-        delete mDevice;
-        mDevice = Q_NULLPTR;
-    }
-
-    if (mUi){
-        delete mUi;
-        mUi = Q_NULLPTR;
-    }
-
+    delete mDevice;
 #ifdef SAK_IMPORT_CHARTS_MODULE
-    if (mChartsController){
-        delete mChartsController;
-        mChartsController = Q_NULLPTR;
-    }
+    delete mChartsController;
 #endif
+    delete mUi;
 }
 
 void SAKDebugPage::write(QByteArray data)
