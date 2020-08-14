@@ -343,6 +343,6 @@ void SAKDebugPage::on_dataVisualizationPushButton_clicked()
         mChartsController->activateWindow();
     }
 #else
-    QMessageBox::warning(this, tr("Unsupport function"), tr("The function has benn disable, beause the platform is not supported!"));
+    QMessageBox::warning(this, tr("Unsupported function"), tr("The function has benn disable, beause of developer's Qt version is not supported!"));
 #endif
 }
