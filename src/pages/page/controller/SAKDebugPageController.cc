@@ -21,3 +21,8 @@ SAKDebugPageController::~SAKDebugPageController()
 {
 
 }
+
+void SAKDebugPageController::setUiEnable(bool opened)
+{
+    setEnabled(!opened);
+}

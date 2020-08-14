@@ -20,6 +20,19 @@ class SAKDebugPageController:public QWidget
 public:
     SAKDebugPageController(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKDebugPageController();
+
+    /**
+     * @brief parameters: Get the parameters of the device controller,
+     * the specific type is determined by the subclass
+     * @return The parameters of the device controller
+     */
+    virtual QVariant parameters() = 0;
+
+    /**
+     * @brief setUiEnable: Set ui state
+     * @param opened: If the device is opened, the value of the parameters is true
+     */
+    virtual void setUiEnable(bool opened);
 private:
     SAKDebugPage *mDebugPage;
 };
