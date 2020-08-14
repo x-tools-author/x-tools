@@ -23,104 +23,88 @@ SAKTcpClientDevice::SAKTcpClientDevice(SAKTcpClientDebugPage *debugPage, QObject
 
 }
 
-void SAKTcpClientDevice::run()
+bool SAKTcpClientDevice::initializing(QString &errorString)
 {
     QEventLoop eventLoop;
-    SAKTcpClientDeviceController *deviceController = debugPage->controllerInstance();
-    localHost = deviceController->localHost();
-    localPort = deviceController->localPort();
-    serverHost = deviceController->serverHost();
-    serverPort = deviceController->serverPort();
-    enableCustomLocalSetting = deviceController->enableCustomLocalSetting();
+    SAKTcpClientDeviceController *deviceController = qobject_cast<SAKTcpClientDeviceController*>(debugPage->deviceController());
+    auto parameters = deviceController->parameters().value<SAKTcpClientDeviceController::TcpClientParameters>();
+    localHost = parameters.localHost;
+    localPort = parameters.localPort;
+    serverHost = parameters.serverHost;
+    serverPort = parameters.serverPort;
+    specifyClientAddressAndPort = parameters.specifyClientAddressAndPort;
 
     tcpSocket = new QTcpSocket;
-
     bool bindResult = false;
-    if (enableCustomLocalSetting){
+    if (specifyClientAddressAndPort){
         bindResult = tcpSocket->bind(QHostAddress(localHost), localPort);
     }else{
         bindResult = tcpSocket->bind();
     }
 
     if (!bindResult){
-        emit deviceStateChanged(false);
-        emit messageChanged(tr("无法绑定设备")+tcpSocket->errorString(), false);
-        delete tcpSocket;
-        return;
+        errorString = tr("Binding failed:") + tcpSocket->errorString();
+        return false;
     }
 
     tcpSocket->connectToHost(serverHost, serverPort);
     if (tcpSocket->state() != QTcpSocket::ConnectedState){
         if (!tcpSocket->waitForConnected()){
-            emit deviceStateChanged(false);
-            emit messageChanged(tr("无法连接到服务器")+tcpSocket->errorString(), false);
-            delete tcpSocket;
-            return;
+            errorString = tr("Connect to server failed:")+tcpSocket->errorString();
+            return false;
         }
     }
 
+    return true;
+}
 
+bool SAKTcpClientDevice::open(QString &errorString)
+{
     if (tcpSocket->open(QTcpSocket::ReadWrite)){
-        emit deviceStateChanged(true);
-
-        while (true) {
-            /// @brief 响应中断
-            if (isInterruptionRequested()){
-                break;
-            }
-
-            /// @brief 读取数据
-//            tcpSocket->waitForReadyRead(debugPage->readWriteParameters().waitForReadyReadTime);
-            QByteArray bytes = tcpSocket->readAll();
-            if (!bytes.isEmpty()){
-                emit bytesRead(bytes);
-            }
-
-            /// @brief 发送数据
-            while (true){
-                QByteArray bytes = takeWaitingForWrittingBytes();
-                if (bytes.length()){
-                    qint64 ret = tcpSocket->write(bytes);
-//                    tcpSocket->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
-                    if (ret == -1){
-                        emit messageChanged(tr("发送数据失败：")+tcpSocket->errorString(), false);
-                    }else{
-                        emit bytesWritten(bytes);
-                    }
-                }else{
-                    break;
-                }
-            }
-
-            /// @brief 检查服务器状态
-            if (tcpSocket->state() == QTcpSocket::UnconnectedState){
-                emit messageChanged(tr("服务器已断开"), true);
-                break;
-            }
-
-            /// @brief 处理线程事件
-            eventLoop.processEvents();
-
-            /// @brief 线程睡眠
-            mThreadMutex.lock();
-            mThreadWaitCondition.wait(&mThreadMutex, SAK_DEVICE_THREAD_SLEEP_INTERVAL);
-            mThreadMutex.unlock();
-        }
-
-        /// @brief 退出前断开与服务器的链接
-        if (tcpSocket->state() == QTcpSocket::ClosingState){
-            tcpSocket->disconnectFromHost();
-            if (tcpSocket->state() == QTcpSocket::ConnectedState){
-                if(!tcpSocket->waitForConnected()){
-                    emit messageChanged(tr("无法断开与服务器的链接：")+tcpSocket->errorString(), true);
-                }
-            }
-        }
-        tcpSocket->close();
-        delete tcpSocket;
-        emit deviceStateChanged(false);
+        errorString = tr("Unknow error.");
+        return true;
     }else{
-        emit deviceStateChanged(false);
-        emit messageChanged(tr("无法打开设备")+tcpSocket->errorString(), false);
+        errorString = tr("Can not open device:") + tcpSocket->errorString();
+        return false;
     }
+}
+
+QByteArray SAKTcpClientDevice::read()
+{
+    return tcpSocket->readAll();
+}
+
+QByteArray SAKTcpClientDevice::write(QByteArray bytes)
+{
+    qint64 ret = tcpSocket->write(bytes);
+    if (ret > 0){
+        return bytes;
+    }else{
+        return QByteArray();
+    }
+}
+
+bool SAKTcpClientDevice::checkSomething(QString &errorString)
+{
+    if(tcpSocket->state() == QTcpSocket::UnconnectedState){
+        errorString = tr("Connection has been disconnected.");
+        return false;
+    }else{
+        errorString = tr("Unknow error.");
+        return true;
+    }
+}
+
+void SAKTcpClientDevice::close()
+{
+    if (tcpSocket->state() == QTcpSocket::ConnectedState){
+        tcpSocket->disconnectFromHost();
+        tcpSocket->waitForDisconnected();
+    }
+    tcpSocket->close();
+}
+
+void SAKTcpClientDevice::free()
+{
+    delete tcpSocket;
 }

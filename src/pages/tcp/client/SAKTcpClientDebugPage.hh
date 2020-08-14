@@ -19,11 +19,12 @@ class SAKTcpClientDebugPage : public SAKDebugPage
     Q_OBJECT
 public:
     SAKTcpClientDebugPage(QWidget *parent = Q_NULLPTR);
-protected:
+
     SAKDebugPageController *deviceController() final;
     SAKDebugPageDevice* device() final;
 private:
-    SAKTcpClientDeviceController *tcpClientDeviceController;
+    SAKTcpClientDeviceController *mTcpClientDeviceController;
+    SAKTcpClientDevice *mTcpClientDevice;
 };
 
 #endif

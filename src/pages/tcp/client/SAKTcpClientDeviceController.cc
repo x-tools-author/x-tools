@@ -16,80 +16,128 @@
 #include "ui_SAKTcpClientDeviceController.h"
 SAKTcpClientDeviceController::SAKTcpClientDeviceController(SAKDebugPage *debugPage, QWidget *parent)
     :SAKDebugPageController(debugPage, parent)
-    ,ui(new Ui::SAKTcpClientDeviceController)
+    ,mUi(new Ui::SAKTcpClientDeviceController)
 {
-    ui->setupUi(this);
+    mUi->setupUi(this);
 
-    localhostComboBox = ui->localhostComboBox;
-    localPortlineEdit = ui->localPortlineEdit;
-    enableLocalSettingCheckBox = ui->enableLocalSettingCheckBox;
-    serverHostLineEdit = ui->serverHostLineEdit;
-    serverPortLineEdit = ui->serverTargetPortLineEdit;
+    mLocalhostComboBox = mUi->localhostComboBox;
+    mLocalPortlineEdit = mUi->localPortlineEdit;
+    mSpecifyClientAddressAndPort = mUi->specifyClientAddressAndPort;
+    mServerHostLineEdit = mUi->serverHostLineEdit;
+    mServerPortLineEdit = mUi->serverPortLineEdit;
 
-    refresh();
+    qRegisterMetaType<SAKTcpClientDeviceController::TcpClientParameters>("SAKTcpClientDeviceController::TcpClientParameters");
+    mParameters.specifyClientAddressAndPort = mSpecifyClientAddressAndPort->isChecked();
+    refreshDevice();
 }
 
 SAKTcpClientDeviceController::~SAKTcpClientDeviceController()
 {
-    delete ui;
+    delete mUi;
 }
 
 QVariant SAKTcpClientDeviceController::parameters()
 {
-    return QVariant::fromValue(true);
+    TcpClientParameters parameters;
+    mParametersMutex.lock();
+    parameters.localHost = mParameters.localHost;
+    parameters.localPort = mParameters.localPort;
+    parameters.serverHost = mParameters.serverHost;
+    parameters.serverPort = mParameters.serverPort;
+    parameters.specifyClientAddressAndPort = mParameters.specifyClientAddressAndPort;
+    mParametersMutex.unlock();
+
+    return QVariant::fromValue(parameters);
+}
+
+void SAKTcpClientDeviceController::setUiEnable(bool enable)
+{
+    mLocalhostComboBox->setEnabled(enable);
+    mLocalPortlineEdit->setEnabled(enable);
+    mSpecifyClientAddressAndPort->setEnabled(enable);
+    mServerHostLineEdit->setEnabled(enable);
+    mServerPortLineEdit->setEnabled(enable);
+}
+
+void SAKTcpClientDeviceController::refreshDevice()
+{
+    SAKGlobal::initIpComboBox(mLocalhostComboBox);
 }
 
 QString SAKTcpClientDeviceController::localHost()
 {
-    uiMutex.lock();
-    QString ret = localhostComboBox->currentText();
-    uiMutex.unlock();
+    mParametersMutex.lock();
+    QString ret = mLocalhostComboBox->currentText();
+    mParametersMutex.unlock();
     return ret;
 }
 
 quint16 SAKTcpClientDeviceController::localPort()
 {
-    uiMutex.lock();
-    quint16 ret = static_cast<quint16>(localPortlineEdit->text().toInt());
-    uiMutex.unlock();
+    mParametersMutex.lock();
+    quint16 ret = static_cast<quint16>(mLocalPortlineEdit->text().toInt());
+    mParametersMutex.unlock();
     return ret;
 }
 
 QString SAKTcpClientDeviceController::serverHost()
 {
-    uiMutex.lock();
-    QString ret = serverHostLineEdit->text();
-    uiMutex.unlock();
+    mParametersMutex.lock();
+    QString ret = mServerHostLineEdit->text();
+    mParametersMutex.unlock();
     return ret;
 }
 
 quint16 SAKTcpClientDeviceController::serverPort()
 {
-    uiMutex.lock();
-    quint16 ret = static_cast<quint16>(serverPortLineEdit->text().toInt());
-    uiMutex.unlock();
+    mParametersMutex.lock();
+    quint16 ret = static_cast<quint16>(mServerPortLineEdit->text().toInt());
+    mParametersMutex.unlock();
 
     return ret;
 }
 
 bool SAKTcpClientDeviceController::enableCustomLocalSetting()
 {
-    uiMutex.lock();
-    bool ret = enableLocalSettingCheckBox->isChecked();
-    uiMutex.unlock();
+    mParametersMutex.lock();
+    bool ret = mSpecifyClientAddressAndPort->isChecked();
+    mParametersMutex.unlock();
     return ret;
 }
 
-void SAKTcpClientDeviceController::refresh()
+void SAKTcpClientDeviceController::on_localhostComboBox_currentIndexChanged(int index)
 {
-    SAKGlobal::initIpComboBox(localhostComboBox);
+    Q_UNUSED(index);
+    mParametersMutex.lock();
+    mParameters.localHost = mLocalhostComboBox->currentText();
+    mParametersMutex.unlock();
 }
 
-void SAKTcpClientDeviceController::setUiEnable(bool enable)
+void SAKTcpClientDeviceController::on_localPortlineEdit_textChanged(const QString &arg1)
 {
-    localhostComboBox->setEnabled(enable);
-    localPortlineEdit->setEnabled(enable);
-    enableLocalSettingCheckBox->setEnabled(enable);
-    serverHostLineEdit->setEnabled(enable);
-    serverPortLineEdit->setEnabled(enable);
+    Q_UNUSED(arg1);
+    mParametersMutex.lock();
+    mParameters.localPort = static_cast<quint16>(mLocalPortlineEdit->text().toInt());
+    mParametersMutex.unlock();
+}
+
+void SAKTcpClientDeviceController::on_specifyClientAddressAndPort_clicked()
+{
+    mParametersMutex.lock();
+    mParameters.specifyClientAddressAndPort = mSpecifyClientAddressAndPort->isChecked();
+    mParametersMutex.unlock();
+}
+
+void SAKTcpClientDeviceController::on_serverHostLineEdit_textChanged(const QString &arg1)
+{
+    mParametersMutex.lock();
+    mParameters.serverHost = static_cast<quint16>(arg1.toInt());
+    mParametersMutex.unlock();
+}
+
+void SAKTcpClientDeviceController::on_serverPortLineEdit_textChanged(const QString &arg1)
+{
+    mParametersMutex.lock();
+    mParameters.serverPort = static_cast<quint16>(arg1.toInt());
+    mParametersMutex.unlock();
 }
