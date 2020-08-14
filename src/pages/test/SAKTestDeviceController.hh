@@ -38,11 +38,8 @@ public:
     SAKTestDeviceController(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKTestDeviceController();
 
-    /**
-     * @brief parameters: Get the context of parameters
-     * @return The context of parameters
-     */
     QVariant parameters() final;
+    void setUiEnable(bool opened) final;
 private:
     ParametersContext mParameters;
     QMutex mParametersMutex;

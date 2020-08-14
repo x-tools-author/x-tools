@@ -48,6 +48,12 @@ QVariant SAKTestDeviceController::parameters()
     return QVariant::fromValue(paras);
 }
 
+void SAKTestDeviceController::setUiEnable(bool opened)
+{
+    mUi->openFailedCheckBox->setEnabled(!opened);
+    mUi->errorStringLineEdit->setEnabled(!opened);
+}
+
 void SAKTestDeviceController::on_openFailedCheckBox_clicked()
 {
     mParametersMutex.lock();
