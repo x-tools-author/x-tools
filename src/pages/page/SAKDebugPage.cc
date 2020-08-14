@@ -175,6 +175,8 @@ void SAKDebugPage::changedDeviceState(bool opened)
     mCycleEnableCheckBox->setEnabled(opened);
     mRefreshPushButton->setEnabled(!opened);
     mDeviceController->setUiEnable(opened);
+
+    mSwitchPushButton->setEnabled(true);
 }
 
 void SAKDebugPage::cleanInfo()
@@ -185,7 +187,6 @@ void SAKDebugPage::cleanInfo()
 
 void SAKDebugPage::openOrColoseDevice()
 {
-    mSwitchPushButton->setEnabled(false);
     if (!mDevice){
         setupDevice();
     }
@@ -197,7 +198,6 @@ void SAKDebugPage::openOrColoseDevice()
             openDevice();
         }
     }
-    mSwitchPushButton->setEnabled(true);
 }
 
 void SAKDebugPage::openDevice()
@@ -267,6 +267,7 @@ void SAKDebugPage::on_refreshPushButton_clicked()
 
 void SAKDebugPage::on_switchPushButton_clicked()
 {
+    mSwitchPushButton->setEnabled(false);
     openOrColoseDevice();
 }
 
