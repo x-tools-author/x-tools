@@ -39,11 +39,6 @@ public:
     ~SAKTestDeviceController();
 
     /**
-     * @brief refresh: Nothing to do
-     */
-    void refresh(){};
-
-    /**
      * @brief parameters: Get the context of parameters
      * @return The context of parameters
      */
