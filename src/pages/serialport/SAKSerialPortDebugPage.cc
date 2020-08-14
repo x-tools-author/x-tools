@@ -21,23 +21,23 @@ SAKSerialPortDebugPage::SAKSerialPortDebugPage(QWidget *parent)
     :SAKDebugPage(SAKDataStruct::DebugPageTypeCOM, parent)
 
 {
-    controller = new SAKSerialPortDeviceController(this);
+    mDeviceController = new SAKSerialPortDeviceController(this);
+    mDevice = new SAKSerialPortDevice(this);
     setWindowTitle(SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeCOM));
     initializingPage();
 }
 
 SAKSerialPortDebugPage::~SAKSerialPortDebugPage()
 {
-    delete controller;
-}
-
-SAKDebugPageDevice *SAKSerialPortDebugPage::device()
-{
-    SAKSerialPortDevice *ret = new SAKSerialPortDevice(this);
-    return ret;
+    delete mDeviceController;
 }
 
 SAKDebugPageController *SAKSerialPortDebugPage::deviceController()
 {
-    return controller;
+    return mDeviceController;
+}
+
+SAKDebugPageDevice *SAKSerialPortDebugPage::device()
+{
+    return mDevice;
 }

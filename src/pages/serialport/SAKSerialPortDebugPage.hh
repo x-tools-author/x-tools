@@ -12,6 +12,8 @@
 
 #include "SAKDebugPage.hh"
 
+class SAKDebugPageDevice;
+class SAKSerialPortDevice;
 class SAKDebugPageController;
 class SAKSerialPortDeviceController;
 class SAKSerialPortDebugPage : public SAKDebugPage
@@ -21,10 +23,11 @@ public:
     SAKSerialPortDebugPage(QWidget *parent = Q_NULLPTR);
     ~SAKSerialPortDebugPage();
 
-    SAKDebugPageDevice *device() final;
     SAKDebugPageController *deviceController() final;
+    SAKDebugPageDevice *device() final;
 private:
-    SAKSerialPortDeviceController *controller;
+    SAKSerialPortDeviceController *mDeviceController;
+    SAKSerialPortDevice *mDevice;
 };
 
 #endif
