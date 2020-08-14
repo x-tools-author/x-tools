@@ -140,13 +140,15 @@ public:
     SAKDebugPageStatisticsController *statisticsController();
 public:
     /**
-     * @brief deviceController: Create a device
+     * @brief deviceController: Get the device controller instance,
+     * SAKDebugPage takes ownership of the pointer and deletes it at the appropriate time.
      * @return Device instance pointer
      */
     virtual SAKDebugPageController *deviceController() = 0;
 
     /**
-     * @brief createDevice: Create the device instance
+     * @brief createDevice: Get the device instance,
+     * SAKDebugPage takes ownership of the pointer and deletes it at the appropriate time.
      * @return Device instance pointer
      */
     virtual SAKDebugPageDevice* device() = 0;
