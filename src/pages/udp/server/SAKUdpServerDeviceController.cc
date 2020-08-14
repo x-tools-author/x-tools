@@ -16,8 +16,8 @@
 #include "SAKUdpServerDeviceController.hh"
 #include "ui_SAKUdpServerDeviceController.h"
 
-SAKUdpServerDeviceController::SAKUdpServerDeviceController(QWidget *parent)
-    :QWidget(parent)
+SAKUdpServerDeviceController::SAKUdpServerDeviceController(SAKDebugPage *debugPage, QWidget *parent)
+    :SAKDebugPageController(debugPage, parent)
     ,mHasNoClient(true)
     ,mUi(new Ui::SAKUdpServerDeviceController)
 {

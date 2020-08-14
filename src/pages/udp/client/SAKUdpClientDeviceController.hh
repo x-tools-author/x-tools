@@ -16,17 +16,20 @@
 #include <QComboBox>
 #include <QPushButton>
 
+#include "SAKDebugPageController.hh"
+
 namespace Ui {
     class SAKUdpClientDeviceController;
 }
 
+class SAKDebugPage;
 class SAKUdpClientDevice;
 class SAKUdpClientAdvanceSettingWidget;
-class SAKUdpClientDeviceController:public QWidget
+class SAKUdpClientDeviceController:public SAKDebugPageController
 {
     Q_OBJECT
 public:
-    SAKUdpClientDeviceController(QWidget *parent = Q_NULLPTR);
+    SAKUdpClientDeviceController(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKUdpClientDeviceController();
 
     QString localHost();

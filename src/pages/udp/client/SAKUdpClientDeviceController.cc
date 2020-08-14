@@ -18,9 +18,9 @@
 
 #include "ui_SAKUdpClientDeviceController.h"
 
-SAKUdpClientDeviceController::SAKUdpClientDeviceController(QWidget *parent)
-    :QWidget (parent)
-    ,ui (new Ui::SAKUdpClientDeviceController)
+SAKUdpClientDeviceController::SAKUdpClientDeviceController(SAKDebugPage *debugPage, QWidget *parent)
+    :SAKDebugPageController(debugPage, parent)
+    ,ui(new Ui::SAKUdpClientDeviceController)
     ,udpAdvanceSettingWidget (new SAKUdpClientAdvanceSettingWidget)
 {
     ui->setupUi(this);

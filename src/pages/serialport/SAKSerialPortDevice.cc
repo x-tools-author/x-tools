@@ -94,7 +94,9 @@ void SAKSerialPortDevice::run()
         delete mSerialPort;
         mSerialPort = Q_NULLPTR;
         emit deviceStateChanged(false);
-    }else{        
+    }else{
+        delete mSerialPort;
+        mSerialPort = Q_NULLPTR;
         emit deviceStateChanged(false);
         emit messageChanged(tr("Open com error") + mSerialPort->errorString(), false);
         return;

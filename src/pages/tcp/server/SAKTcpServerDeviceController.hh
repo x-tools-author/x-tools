@@ -16,15 +16,18 @@
 #include <QComboBox>
 #include <QTcpSocket>
 
+#include "SAKDebugPageController.hh"
+
 namespace Ui {
     class SAKTcpServerDeviceController;
 }
 
-class SAKTcpServerDeviceController:public QWidget
+class SAKDebugPage;
+class SAKTcpServerDeviceController:public SAKDebugPageController
 {
     Q_OBJECT
 public:
-    SAKTcpServerDeviceController(QWidget *parent = Q_NULLPTR);
+    SAKTcpServerDeviceController(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKTcpServerDeviceController();
 
     QString serverHost();

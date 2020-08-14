@@ -27,6 +27,7 @@
 #include "SAKSqlDatabase.hh"
 #include "SAKCRCInterface.hh"
 #include "SAKDebugPageDevice.hh"
+#include "SAKDebugPageController.hh"
 #include "SAKOtherAnalyzerThread.hh"
 #include "SAKOtherHighlighterManager.hh"
 #include "SAKDebugPageOtherController.hh"
@@ -255,7 +256,7 @@ void SAKDebugPage::setupDevice()
 
 void SAKDebugPage::setupController()
 {
-    QWidget *controller = createController();
+    SAKDebugPageController *controller = createController();
     if (controller){
         QHBoxLayout *layout = new QHBoxLayout(mDeviceSettingFrame);
         mDeviceSettingFrame->setLayout(layout);

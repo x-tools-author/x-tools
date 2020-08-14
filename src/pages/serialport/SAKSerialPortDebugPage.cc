@@ -18,9 +18,10 @@
 #include "SAKSerialPortDeviceController.hh"
 
 SAKSerialPortDebugPage::SAKSerialPortDebugPage(QWidget *parent)
-    :SAKDebugPage (SAKDataStruct::DebugPageTypeCOM, parent)
-    ,controller (new SAKSerialPortDeviceController)
+    :SAKDebugPage(SAKDataStruct::DebugPageTypeCOM, parent)
+
 {
+    controller = new SAKSerialPortDeviceController(this);
     initializingPage();
     setWindowTitle(SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeCOM));
 }
@@ -46,7 +47,7 @@ void SAKSerialPortDebugPage::refreshDevice()
     controller->refresh();
 }
 
-QWidget *SAKSerialPortDebugPage::createController()
+SAKDebugPageController *SAKSerialPortDebugPage::createController()
 {
     return controller;
 }

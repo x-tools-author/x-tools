@@ -33,6 +33,7 @@
 class SAKDataFactory;
 class SAKCRCInterface;
 class SAKDebugPageDevice;
+class SAKDebugPageController;
 class SAKOtherHighlighterManager;
 class SAKDebugPageOtherController;
 class SAKDebugPageInputController;
@@ -147,7 +148,7 @@ protected:
      * @brief createController: Create a device
      * @return Device instance pointer
      */
-    virtual QWidget *createController() = 0;
+    virtual SAKDebugPageController *createController() = 0;
 
     /**
      * @brief createDevice: Create the device instance
@@ -168,6 +169,7 @@ protected:
     void initializingPage();
 private:
     SAKDebugPageDevice *mDevice;
+    SAKDebugPageController *mController;
     bool mIsInitializing;
     int mDebugPageType;
     QString mSettingKey;

@@ -26,7 +26,7 @@ public:
      * the specific type is determined by the subclass
      * @return The parameters of the device controller
      */
-    virtual QVariant parameters() = 0;
+    virtual QVariant parameters();
 
     /**
      * @brief setUiEnable: Set ui state

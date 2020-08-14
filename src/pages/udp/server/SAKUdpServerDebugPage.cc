@@ -19,8 +19,8 @@
 
 SAKUdpServerDebugPage::SAKUdpServerDebugPage(QWidget *parent)
     :SAKDebugPage (SAKDataStruct::DebugPageTypeUdpServer, parent)
-    ,mDeviceController (new SAKUdpServerDeviceController)
 {
+    mDeviceController = new SAKUdpServerDeviceController(this);
     initializingPage();
     setWindowTitle(SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeUdpServer));
 }
@@ -40,7 +40,7 @@ void SAKUdpServerDebugPage::refreshDevice()
     mDeviceController->refresh();
 }
 
-QWidget *SAKUdpServerDebugPage::createController()
+SAKDebugPageController *SAKUdpServerDebugPage::createController()
 {
     return mDeviceController;
 }

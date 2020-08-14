@@ -16,17 +16,22 @@
 #include <QComboBox>
 #include <QWebSocket>
 
+#include "SAKDebugPageController.hh"
+
 namespace Ui {
     class SAKWebSocketServerDeviceController;
 }
+
+class SAKDebugPage;
 /// @brief web socket 服务器设备控制类
-class SAKWebSocketServerDeviceController:public QWidget
+class SAKWebSocketServerDeviceController:public SAKDebugPageController
 {
     Q_OBJECT
 public:
-    SAKWebSocketServerDeviceController(QWidget *parent = Q_NULLPTR);
+    SAKWebSocketServerDeviceController(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKWebSocketServerDeviceController();
 
+    QVariant parameters() final;
     QString serverHost();
     quint16 serverPort();
     QString currentClientHost();

@@ -16,15 +16,19 @@
 #include <QComboBox>
 #include <QTcpSocket>
 
+#include "SAKDebugPageController.hh"
+
 namespace Ui {
     class SAKUdpServerDeviceController;
 }
+
+class SAKDebugPage;
 // Udp server control panel
-class SAKUdpServerDeviceController:public QWidget
+class SAKUdpServerDeviceController:public SAKDebugPageController
 {
     Q_OBJECT
 public:
-    SAKUdpServerDeviceController(QWidget *parent = Q_NULLPTR);
+    SAKUdpServerDeviceController(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKUdpServerDeviceController();
 
     QString serverHost();

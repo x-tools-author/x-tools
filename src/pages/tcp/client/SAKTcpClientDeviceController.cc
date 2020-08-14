@@ -14,9 +14,9 @@
 #include "SAKGlobal.hh"
 #include "SAKTcpClientDeviceController.hh"
 #include "ui_SAKTcpClientDeviceController.h"
-SAKTcpClientDeviceController::SAKTcpClientDeviceController(QWidget *parent)
-    :QWidget (parent)
-    ,ui (new Ui::SAKTcpClientDeviceController)
+SAKTcpClientDeviceController::SAKTcpClientDeviceController(SAKDebugPage *debugPage, QWidget *parent)
+    :SAKDebugPageController(debugPage, parent)
+    ,ui(new Ui::SAKTcpClientDeviceController)
 {
     ui->setupUi(this);
 
@@ -32,6 +32,11 @@ SAKTcpClientDeviceController::SAKTcpClientDeviceController(QWidget *parent)
 SAKTcpClientDeviceController::~SAKTcpClientDeviceController()
 {
     delete ui;
+}
+
+QVariant SAKTcpClientDeviceController::parameters()
+{
+    return QVariant::fromValue(true);
 }
 
 QString SAKTcpClientDeviceController::localHost()

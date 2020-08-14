@@ -15,9 +15,9 @@
 #include "SAKGlobal.hh"
 #include "SAKSerialPortDeviceController.hh"
 #include "ui_SAKSerialPortDeviceController.h"
-SAKSerialPortDeviceController::SAKSerialPortDeviceController(QWidget *parent)
-    :QWidget (parent)
-    ,ui (new Ui::SAKSerialPortDeviceController)
+SAKSerialPortDeviceController::SAKSerialPortDeviceController(SAKDebugPage *debugPage, QWidget *parent)
+    :SAKDebugPageController(debugPage, parent)
+    ,ui(new Ui::SAKSerialPortDeviceController)
     ,serialportsComboBox(Q_NULLPTR)
     ,baudrateComboBox(Q_NULLPTR)
     ,databitsComboBox(Q_NULLPTR)
@@ -42,6 +42,11 @@ SAKSerialPortDeviceController::SAKSerialPortDeviceController(QWidget *parent)
 SAKSerialPortDeviceController::~SAKSerialPortDeviceController()
 {
     delete ui;
+}
+
+QVariant SAKSerialPortDeviceController::parameters()
+{
+    return QVariant::fromValue(true);
 }
 
 void SAKSerialPortDeviceController::refresh()

@@ -15,9 +15,9 @@
 #include "SAKGlobal.hh"
 #include "SAKWebSocketServerDeviceController.hh"
 #include "ui_SAKWebSocketServerDeviceController.h"
-SAKWebSocketServerDeviceController::SAKWebSocketServerDeviceController(QWidget *parent)
-    :QWidget (parent)
-    ,mUi (new Ui::SAKWebSocketServerDeviceController)
+SAKWebSocketServerDeviceController::SAKWebSocketServerDeviceController(SAKDebugPage *debugPage, QWidget *parent)
+    :SAKDebugPageController(debugPage, parent)
+    ,mUi(new Ui::SAKWebSocketServerDeviceController)
 {
     mUi->setupUi(this);
 
@@ -33,6 +33,11 @@ SAKWebSocketServerDeviceController::SAKWebSocketServerDeviceController(QWidget *
 SAKWebSocketServerDeviceController::~SAKWebSocketServerDeviceController()
 {
     delete mUi;
+}
+
+QVariant SAKWebSocketServerDeviceController::parameters()
+{
+    return QVariant::fromValue(true);
 }
 
 QString SAKWebSocketServerDeviceController::serverHost()

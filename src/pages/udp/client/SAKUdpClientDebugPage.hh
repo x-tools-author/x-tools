@@ -28,7 +28,7 @@ public:
     SAKUdpClientDeviceController *controllerInstance();
 protected:
     void refreshDevice() final;
-    QWidget *createController() final;
+    SAKDebugPageController *createController() final;
     SAKDebugPageDevice* createDevice() final;
     void setUiEnable(bool enable) final;
 private:

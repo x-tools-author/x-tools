@@ -19,8 +19,8 @@
 
 SAKUdpClientDebugPage::SAKUdpClientDebugPage(QWidget *parent)
     :SAKDebugPage (SAKDataStruct::DebugPageTypeUdpClient, parent)
-    ,udpDeviceController (new SAKUdpClientDeviceController)
 {
+    udpDeviceController = new SAKUdpClientDeviceController(this);
     initializingPage();
     setWindowTitle(SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeUdpClient));
 }
@@ -40,7 +40,7 @@ void SAKUdpClientDebugPage::refreshDevice()
     udpDeviceController->refresh();
 }
 
-QWidget *SAKUdpClientDebugPage::createController()
+SAKDebugPageController *SAKUdpClientDebugPage::createController()
 {
     return udpDeviceController;
 }

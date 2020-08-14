@@ -22,6 +22,11 @@ SAKDebugPageController::~SAKDebugPageController()
 
 }
 
+QVariant SAKDebugPageController::parameters()
+{
+    return QVariant();
+}
+
 void SAKDebugPageController::setUiEnable(bool opened)
 {
     setEnabled(!opened);

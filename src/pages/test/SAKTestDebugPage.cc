@@ -46,7 +46,7 @@ void SAKTestDebugPage::refreshDevice()
     mController->refreshDevice();
 }
 
-QWidget *SAKTestDebugPage::createController()
+SAKDebugPageController *SAKTestDebugPage::createController()
 {
     return mController;
 }

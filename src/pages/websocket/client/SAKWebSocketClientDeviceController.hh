@@ -15,17 +15,22 @@
 #include <QCheckBox>
 #include <QComboBox>
 
+#include "SAKDebugPageController.hh"
+
 namespace Ui {
     class SAKWebSocketClientDeviceController;
 }
+
+class SAKDebugPage;
 /// @brief web socket 客户端控制类
-class SAKWebSocketClientDeviceController:public QWidget
+class SAKWebSocketClientDeviceController:public SAKDebugPageController
 {
     Q_OBJECT
 public:
-    SAKWebSocketClientDeviceController(QWidget *parent = Q_NULLPTR);
+    SAKWebSocketClientDeviceController(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKWebSocketClientDeviceController();
 
+    QVariant parameters() final;
     QString serverAddress();
     void setUiEnable(bool enable);
     quint32 sendingType();

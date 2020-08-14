@@ -12,6 +12,7 @@
 
 #include "SAKDebugPage.hh"
 
+class SAKDebugPageController;
 class SAKSerialPortDeviceController;
 class SAKSerialPortDebugPage : public SAKDebugPage
 {
@@ -28,7 +29,7 @@ public:
 protected:
     SAKDebugPageDevice *createDevice() final;
     void refreshDevice() final;
-    QWidget *createController() final;
+    SAKDebugPageController *createController() final;
     void setUiEnable(bool enable) final;
 private:
     SAKSerialPortDeviceController *controller;

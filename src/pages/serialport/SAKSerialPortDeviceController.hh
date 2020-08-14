@@ -16,11 +16,14 @@
 #include <QComboBox>
 #include <QSerialPort>
 
+#include "SAKDebugPageController.hh"
+
 namespace Ui {
     class SAKSerialPortDeviceController;
 }
 
-class SAKSerialPortDeviceController:public QWidget
+class SAKDebugPage;
+class SAKSerialPortDeviceController:public SAKDebugPageController
 {
     Q_OBJECT
 public:
@@ -33,9 +36,10 @@ public:
         quint32 baudRate;
     };
 
-    SAKSerialPortDeviceController(QWidget *parent = Q_NULLPTR);
+    SAKSerialPortDeviceController(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKSerialPortDeviceController();
 
+    QVariant parameters() final;
     enum QSerialPort::DataBits dataBits();
     enum QSerialPort::StopBits stopBits();
     enum QSerialPort::Parity parity();

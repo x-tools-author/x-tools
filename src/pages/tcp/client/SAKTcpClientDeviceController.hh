@@ -15,17 +15,21 @@
 #include <QCheckBox>
 #include <QComboBox>
 
+#include "SAKDebugPageController.hh"
+
 namespace Ui {
     class SAKTcpClientDeviceController;
 }
 
-class SAKTcpClientDeviceController:public QWidget
+class SAKDebugPage;
+class SAKTcpClientDeviceController:public SAKDebugPageController
 {
     Q_OBJECT
 public:
-    SAKTcpClientDeviceController(QWidget *parent = Q_NULLPTR);
+    SAKTcpClientDeviceController(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKTcpClientDeviceController();
 
+    QVariant parameters() final;
     QString localHost();
     quint16 localPort();
     QString serverHost();

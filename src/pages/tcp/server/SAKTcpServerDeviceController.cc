@@ -15,9 +15,9 @@
 #include "SAKGlobal.hh"
 #include "SAKTcpServerDeviceController.hh"
 #include "ui_SAKTcpServerDeviceController.h"
-SAKTcpServerDeviceController::SAKTcpServerDeviceController(QWidget *parent)
-    :QWidget (parent)
-    ,ui (new Ui::SAKTcpServerDeviceController)
+SAKTcpServerDeviceController::SAKTcpServerDeviceController(SAKDebugPage *debugPage, QWidget *parent)
+    :SAKDebugPageController(debugPage, parent)
+    ,ui(new Ui::SAKTcpServerDeviceController)
 {
     ui->setupUi(this);
 
