@@ -26,11 +26,6 @@ SAKTestDebugPage::SAKTestDebugPage(QWidget *parent)
     initializingPage();
 }
 
-SAKTestDebugPage::~SAKTestDebugPage()
-{
-    delete mDeviceController;
-}
-
 SAKDebugPageDevice *SAKTestDebugPage::device()
 {
     if (!mDevice){
