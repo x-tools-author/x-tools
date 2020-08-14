@@ -115,14 +115,14 @@ QString SAKOutputSave2FileThread::bytes2String(QByteArray bytes, int format)
             QString temp = QString::number(int(bytes.at(i)), 2);
             str.append(temp + QString(" "));
         }
-        str.trimmed();
+        str = str.trimmed();
         break;
     case SAKOutputSave2FileDialog::ParametersContext::Hex:
         for (int i = 0; i < bytes.length(); i++){
             QString temp = QString("%1").arg(QString::number(int(bytes.at(i)), 16), 2, '0');
             str.append(temp + QString(" "));
         }
-        str.trimmed();
+        str = str.trimmed();
         break;
     case SAKOutputSave2FileDialog::ParametersContext::Utf8:
         str = QString::fromUtf8(bytes);
