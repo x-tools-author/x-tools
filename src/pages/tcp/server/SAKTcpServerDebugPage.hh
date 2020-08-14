@@ -22,6 +22,8 @@ public:
 
     SAKDebugPageController *deviceController() final;
     SAKDebugPageDevice* device() final;
+private:
+    SAKTcpServerDeviceController *mDeviceController;
 };
 
 #endif

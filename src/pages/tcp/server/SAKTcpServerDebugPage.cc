@@ -20,14 +20,14 @@
 SAKTcpServerDebugPage::SAKTcpServerDebugPage(QWidget *parent)
     :SAKDebugPage (SAKDataStruct::DebugPageTypeTCPServer, parent)
 {
+    mDeviceController = new SAKTcpServerDeviceController(this);
     setWindowTitle(SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeTCPServer));
     initializingPage();
 }
 
 SAKDebugPageController *SAKTcpServerDebugPage::deviceController()
 {
-    auto ret = new SAKTcpServerDeviceController(this);
-    return ret;
+    return mDeviceController;
 }
 
 SAKDebugPageDevice* SAKTcpServerDebugPage::device()
