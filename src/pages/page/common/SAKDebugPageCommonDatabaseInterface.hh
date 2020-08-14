@@ -41,7 +41,7 @@ public:
             const QString responseFormat = QString("ResponseFormat");
             const QString option = QString("Option");
             const QString delay = QString("Delay");
-           const QString interval = QString("Interval");
+            const QString interval = QString("Interval");
         }columns;
     };
 
