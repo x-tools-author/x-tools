@@ -308,7 +308,7 @@ void SAKMainWindow::initOptionMenu()
         mTestPageAction->setChecked(false);
     }
 
-    QAction *action = new QAction(tr("Clear configuration"));
+    QAction *action = new QAction(tr("Clear configuration"), this);
     optionMenu->addAction(action);
     connect(action, &QAction::triggered, this, &SAKMainWindow::clearConfiguration);
 }
