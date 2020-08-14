@@ -106,7 +106,7 @@ bool SAKTcpServerDevice::checkSomething(QString &errorString)
         }
     }
 
-    // Remove clients that is offline
+    // Remove clients which is offline
     for (auto var : mClientList){
         QList<QTcpSocket*> offLineClientList;
         if (var->state() != QTcpSocket::ConnectedState){
