@@ -149,7 +149,7 @@ private:
      * @brief createDevice: Get the device instance, the device will be destroy when it is closed.
      * @return Device instance pointer
      */
-    virtual SAKDebugPageDevice* device() = 0;
+    virtual SAKDebugPageDevice* createDevice() = 0;
 protected:
     /**
      * @brief initializingPage: Initializing, the function must be called in the constructor of subclass.

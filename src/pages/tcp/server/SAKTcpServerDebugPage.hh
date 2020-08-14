@@ -21,7 +21,7 @@ public:
     SAKTcpServerDebugPage(QWidget *parent = Q_NULLPTR);
 
     SAKDebugPageController *deviceController() final;
-    SAKDebugPageDevice* device() final;
+    SAKDebugPageDevice* create createDevice() final;
 private:
     SAKTcpServerDeviceController *mDeviceController;
 };

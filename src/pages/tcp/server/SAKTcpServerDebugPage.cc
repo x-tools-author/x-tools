@@ -30,7 +30,7 @@ SAKDebugPageController *SAKTcpServerDebugPage::deviceController()
     return mDeviceController;
 }
 
-SAKDebugPageDevice* SAKTcpServerDebugPage::device()
+SAKDebugPageDevice* SAKTcpServerDebugPage::create device()
 {
     SAKTcpServerDevice *device = new SAKTcpServerDevice(this);
     return device;

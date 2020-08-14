@@ -29,7 +29,7 @@ public:
     SAKWebSocketClientDeviceController *controllerInstance();
 protected:
     SAKDebugPageController *deviceController() final;
-    SAKDebugPageDevice* device() final;
+    SAKDebugPageDevice* create createDevice() final;
 private:
     SAKWebSocketClientDeviceController *webSocketClientDeviceController;
 };

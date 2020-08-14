@@ -40,7 +40,7 @@ SAKDebugPageController *SAKUdpClientDebugPage::deviceController()
     return udpDeviceController;
 }
 
-SAKDebugPageDevice *SAKUdpClientDebugPage::device()
+SAKDebugPageDevice *SAKUdpClientDebugPage::create device()
 {
     SAKUdpClientDevice *ptr = new SAKUdpClientDevice(this);
     udpDeviceController->setUdpDevice(ptr);
