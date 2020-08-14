@@ -30,7 +30,7 @@ SAKTestDevice::~SAKTestDevice()
 bool SAKTestDevice::initializing(QString &errorString)
 {
     errorString = QString("Unknow error");
-    mController = mDebugPage->controller();
+    mController = qobject_cast<SAKTestDeviceController*>(mDebugPage->deviceController());
     mOldReadTimestamp = QDateTime::currentDateTime().toMSecsSinceEpoch();
     mOldWrittingTimestamp = QDateTime::currentDateTime().toMSecsSinceEpoch();
     return true;
