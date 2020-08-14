@@ -11,7 +11,6 @@
 #define SAKSERIALPORTDEVICET_HH
 
 #include <QMutex>
-#include <QThread>
 #include <QSerialPort>
 #include <QWaitCondition>
 
