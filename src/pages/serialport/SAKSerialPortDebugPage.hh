@@ -20,9 +20,9 @@ class SAKSerialPortDebugPage : public SAKDebugPage
 public:
     SAKSerialPortDebugPage(QWidget *parent = Q_NULLPTR);
     ~SAKSerialPortDebugPage();
-protected:
-    SAKDebugPageDevice *createDevice() final;
-    SAKDebugPageController *createController() final;
+
+    SAKDebugPageDevice *device() final;
+    SAKDebugPageController *deviceController() final;
 private:
     SAKSerialPortDeviceController *controller;
 };

@@ -35,13 +35,13 @@ SAKTestDeviceController *SAKTestDebugPage::controller()
     return mDeviceController;
 }
 
-SAKDebugPageDevice *SAKTestDebugPage::createDevice()
+SAKDebugPageDevice *SAKTestDebugPage::device()
 {
     SAKTestDevice *ret = new SAKTestDevice(this);
     return ret;
 }
 
-SAKDebugPageController *SAKTestDebugPage::createController()
+SAKDebugPageController *SAKTestDebugPage::deviceController()
 {
     return mDeviceController;
 }

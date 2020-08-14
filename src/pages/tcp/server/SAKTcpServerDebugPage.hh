@@ -27,8 +27,8 @@ public:
      */
     SAKTcpServerDeviceController *controllerInstance();
 protected:
-    SAKDebugPageController *createController() final;
-    SAKDebugPageDevice* createDevice() final;
+    SAKDebugPageController *deviceController() final;
+    SAKDebugPageDevice* device() final;
     void setUiEnable(bool enable);
 private:
     SAKTcpServerDeviceController *tcpServerDeviceController;

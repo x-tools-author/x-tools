@@ -35,12 +35,12 @@ SAKWebSocketClientDeviceController *SAKWebSocketClientDebugPage::controllerInsta
     return webSocketClientDeviceController;
 }
 
-SAKDebugPageController *SAKWebSocketClientDebugPage::createController()
+SAKDebugPageController *SAKWebSocketClientDebugPage::deviceController()
 {
     return webSocketClientDeviceController;
 }
 
-SAKDebugPageDevice *SAKWebSocketClientDebugPage::createDevice()
+SAKDebugPageDevice *SAKWebSocketClientDebugPage::device()
 {
     SAKWebSocketClientDevice *device = new SAKWebSocketClientDevice(this);
     return device;

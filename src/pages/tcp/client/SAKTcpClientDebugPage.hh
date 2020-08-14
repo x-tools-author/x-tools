@@ -27,8 +27,8 @@ public:
      */
     SAKTcpClientDeviceController *controllerInstance();
 protected:
-    SAKDebugPageController *createController() final;
-    SAKDebugPageDevice* createDevice() final;
+    SAKDebugPageController *deviceController() final;
+    SAKDebugPageDevice* device() final;
 private:
     SAKTcpClientDeviceController *tcpClientDeviceController;
 };

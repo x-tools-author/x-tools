@@ -35,7 +35,7 @@ SAKTcpServerDeviceController *SAKTcpServerDebugPage::controllerInstance()
     return tcpServerDeviceController;
 }
 
-SAKDebugPageController *SAKTcpServerDebugPage::createController()
+SAKDebugPageController *SAKTcpServerDebugPage::deviceController()
 {
     return tcpServerDeviceController;
 }
@@ -46,7 +46,7 @@ void SAKTcpServerDebugPage::setUiEnable(bool enable)
     mRefreshPushButton->setEnabled(enable);
 }
 
-SAKDebugPageDevice* SAKTcpServerDebugPage::createDevice()
+SAKDebugPageDevice* SAKTcpServerDebugPage::device()
 {
     SAKTcpServerDevice *device = new SAKTcpServerDevice(this);
     return device;

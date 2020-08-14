@@ -35,7 +35,7 @@ SAKWebSocketServerDeviceController *SAKWebSocketServerDebugPage::controllerInsta
     return tcpServerDeviceController;
 }
 
-SAKDebugPageController *SAKWebSocketServerDebugPage::createController()
+SAKDebugPageController *SAKWebSocketServerDebugPage::deviceController()
 {
     return tcpServerDeviceController;
 }
@@ -46,7 +46,7 @@ void SAKWebSocketServerDebugPage::setUiEnable(bool enable)
     mRefreshPushButton->setEnabled(enable);
 }
 
-SAKDebugPageDevice* SAKWebSocketServerDebugPage::createDevice()
+SAKDebugPageDevice* SAKWebSocketServerDebugPage::device()
 {
     SAKWebSocketServerDevice *device = new SAKWebSocketServerDevice(this);
     return device;

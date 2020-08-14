@@ -146,11 +146,6 @@ QString SAKDebugPage::settingsGroup()
     return group;
 }
 
-SAKDebugPageController *SAKDebugPage::deviceController()
-{
-    return mDeviceController;
-}
-
 SAKDebugPageOtherController *SAKDebugPage::otherController()
 {
     return mOtherController;
@@ -239,7 +234,7 @@ void SAKDebugPage::closeDevice()
 
 void SAKDebugPage::setupDevice()
 {
-    mDevice = createDevice();
+    mDevice = device();
     if (mDevice){
         connect(this, &SAKDebugPage::requestWriteData, mDevice, &SAKDebugPageDevice::writeBytes);
         connect(mDevice, &SAKDebugPageDevice::bytesWritten, this, &SAKDebugPage::bytesWritten);
@@ -262,7 +257,7 @@ void SAKDebugPage::setupDevice()
 
 void SAKDebugPage::setupController()
 {
-    SAKDebugPageController *controller = createController();
+    SAKDebugPageController *controller = deviceController();
     if (controller){
         QHBoxLayout *layout = new QHBoxLayout(mDeviceSettingFrame);
         mDeviceSettingFrame->setLayout(layout);

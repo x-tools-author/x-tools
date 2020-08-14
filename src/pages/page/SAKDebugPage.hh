@@ -108,12 +108,6 @@ public:
     QString settingsGroup();
 
     /**
-     * @brief deviceController: Get device controller
-     * @return Device controller
-     */
-    SAKDebugPageController *deviceController();
-
-    /**
      * @brief otherController: Get SAKDebugPageOtherController instance pointer
      * @return SAKDebugPageOtherController instance pointer
      */
@@ -144,22 +138,21 @@ public:
      * @return SAKDebugPageStatisticsController instance pointer
      */
     SAKDebugPageStatisticsController *statisticsController();
-protected:
+public:
     /**
-     * @brief createController: Create a device
+     * @brief deviceController: Create a device
      * @return Device instance pointer
      */
-    virtual SAKDebugPageController *createController() = 0;
+    virtual SAKDebugPageController *deviceController() = 0;
 
     /**
      * @brief createDevice: Create the device instance
      * @return Device instance pointer
      */
-    virtual SAKDebugPageDevice* createDevice() = 0;
-
+    virtual SAKDebugPageDevice* device() = 0;
+protected:
     /**
-     * @brief initializingPage: Initializing,
-     * the function must be called in the constructor of subclass
+     * @brief initializingPage: Initializing, the function must be called in the constructor of subclass.
      */
     void initializingPage();
 private:

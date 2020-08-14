@@ -27,8 +27,8 @@ public:
      */
     SAKTestDeviceController *controller();
 protected:
-    SAKDebugPageDevice *createDevice() final;
-    SAKDebugPageController *createController() final;
+    SAKDebugPageDevice *device() final;
+    SAKDebugPageController *deviceController() final;
 private:
     SAKTestDeviceController *mDeviceController;
 };

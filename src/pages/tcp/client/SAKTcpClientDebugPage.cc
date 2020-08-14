@@ -35,12 +35,12 @@ SAKTcpClientDeviceController *SAKTcpClientDebugPage::controllerInstance()
     return tcpClientDeviceController;
 }
 
-SAKDebugPageController *SAKTcpClientDebugPage::createController()
+SAKDebugPageController *SAKTcpClientDebugPage::deviceController()
 {
     return tcpClientDeviceController;
 }
 
-SAKDebugPageDevice *SAKTcpClientDebugPage::createDevice()
+SAKDebugPageDevice *SAKTcpClientDebugPage::device()
 {
     SAKTcpClientDevice *device = new SAKTcpClientDevice(this);
     return device;

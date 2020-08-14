@@ -31,13 +31,13 @@ SAKSerialPortDebugPage::~SAKSerialPortDebugPage()
     delete controller;
 }
 
-SAKDebugPageDevice *SAKSerialPortDebugPage::createDevice()
+SAKDebugPageDevice *SAKSerialPortDebugPage::device()
 {
     SAKSerialPortDevice *ret = new SAKSerialPortDevice(this);
     return ret;
 }
 
-SAKDebugPageController *SAKSerialPortDebugPage::createController()
+SAKDebugPageController *SAKSerialPortDebugPage::deviceController()
 {
     return controller;
 }
