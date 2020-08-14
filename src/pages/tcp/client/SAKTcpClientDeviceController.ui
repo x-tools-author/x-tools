@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>167</width>
+    <width>169</width>
     <height>175</height>
    </rect>
   </property>
@@ -27,7 +27,7 @@
     <number>0</number>
    </property>
    <item row="7" column="1">
-    <widget class="QLineEdit" name="serverTargetPortLineEdit">
+    <widget class="QLineEdit" name="serverPortLineEdit">
      <property name="text">
       <string>44444</string>
      </property>
