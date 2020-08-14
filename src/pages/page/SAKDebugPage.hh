@@ -95,6 +95,12 @@ public:
     QSettings *settings();
 
     /**
+     * @brief sqlDatabase: Get the database instance
+     * @return Database instance
+     */
+    QSqlDatabase *sqlDatabase();
+
+    /**
      * @brief settingsGroup: Get the settings group
      * @param pageType: The type of debug page
      * @return Settings group
@@ -138,12 +144,6 @@ public:
      * @return SAKDebugPageStatisticsController instance pointer
      */
     SAKDebugPageStatisticsController *statisticsController();
-
-    /**
-     * @brief sqlDatabase: Get the database instance
-     * @return Database instance
-     */
-    QSqlDatabase *sqlDatabase();
 protected:
     /**
      * @brief createController: Create a device
@@ -156,12 +156,6 @@ protected:
      * @return Device instance pointer
      */
     virtual SAKDebugPageDevice* createDevice() = 0;
-
-    /**
-     * @brief setUiEnable: Set some components enable or disable
-     * @param ebable: true-enable ui components, false-disable ui components
-     */
-    virtual void setUiEnable(bool ebable) = 0;
 
     /**
      * @brief initializingPage: Initializing,

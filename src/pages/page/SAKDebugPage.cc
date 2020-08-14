@@ -127,6 +127,11 @@ QSettings *SAKDebugPage::settings()
     return SAKSettings::instance();
 }
 
+QSqlDatabase *SAKDebugPage::sqlDatabase()
+{
+    return SAKSqlDatabase::instance()->sqlDatabase();
+}
+
 QString SAKDebugPage::settingsGroup()
 {
     QString group;
@@ -173,11 +178,6 @@ SAKDebugPageStatisticsController *SAKDebugPage::statisticsController()
     return mStatisticsController;
 }
 
-QSqlDatabase *SAKDebugPage::sqlDatabase()
-{
-    return SAKSqlDatabase::instance()->sqlDatabase();
-}
-
 void SAKDebugPage::initializingPage()
 {
     setupController();
@@ -189,6 +189,7 @@ void SAKDebugPage::changedDeviceState(bool opened)
     mSendPushButton->setEnabled(opened);
     mSendPresetPushButton->setEnabled(opened);
     mCycleEnableCheckBox->setEnabled(opened);
+    mRefreshPushButton->setEnabled(!opened);
     mDeviceController->setUiEnable(opened);
 }
 
