@@ -144,7 +144,7 @@ public:
      * @return Device controller instance pointer
      */
     virtual SAKDebugPageController *deviceController() = 0;
-
+private:
     /**
      * @brief createDevice: Get the device instance, the device will be destroy when it is closed.
      * @return Device instance pointer
