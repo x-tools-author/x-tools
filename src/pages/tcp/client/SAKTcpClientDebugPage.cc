@@ -21,15 +21,13 @@ SAKTcpClientDebugPage::SAKTcpClientDebugPage(QWidget *parent)
     :SAKDebugPage(SAKDataStruct::DebugPageTypeTCPClient, parent)
     ,mTcpClientDeviceController(Q_NULLPTR)
 {
+    mTcpClientDeviceController = new SAKTcpClientDeviceController(this);
     setWindowTitle(SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeTCPClient));
     initializingPage();
 }
 
 SAKDebugPageController *SAKTcpClientDebugPage::deviceController()
 {
-    if (!mTcpClientDeviceController){
-        mTcpClientDeviceController = new SAKTcpClientDeviceController(this);
-    }
     return mTcpClientDeviceController;
 }
 
