@@ -144,8 +144,8 @@ QByteArray SAKDebugPageDevice::write(QByteArray bytes)
 
 bool SAKDebugPageDevice::checkSomething(QString &errorString)
 {
-    errorString = QString("Need to override");
-    return false;
+    errorString = QString("Unknow error.");
+    return true;
 }
 
 void SAKDebugPageDevice::close()
