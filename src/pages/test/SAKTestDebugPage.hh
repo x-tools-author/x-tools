@@ -27,8 +27,8 @@ public:
      */
     SAKTestDeviceController *controller();
 protected:
-    SAKDebugPageDevice *createDevice() final;
     void refreshDevice() final;
+    SAKDebugPageDevice *createDevice() final;
     SAKDebugPageController *createController() final;
     void setUiEnable(bool enable) final;
 private:
