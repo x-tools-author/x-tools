@@ -28,77 +28,57 @@ SAKSerialPortDevice::~SAKSerialPortDevice()
 
 }
 
-void SAKSerialPortDevice::run()
+bool SAKSerialPortDevice::initializing(QString &errorString)
 {
-    QEventLoop eventLoop;
-    SAKSerialPortDeviceController *controller = mDebugPage->controllerInstance();
-    mName = controller->name();
-    mBaudRate = controller->baudRate();
-    mDataBits = controller->dataBits();
-    mStopBits = controller->stopBits();
-    mParity = controller->parity();
-    mFlowControl = controller->flowControl();
-
+    errorString = tr("Unknow error");
+    mController = mDebugPage->controllerInstance();
+    auto parameters = mController->parameters().value<SAKSerialPortDeviceController::SerialPortParameters>();
     mSerialPort = new QSerialPort;
-    mSerialPort->setPortName(mName);
-    mSerialPort->setBaudRate(mBaudRate);
-    mSerialPort->setDataBits(mDataBits);
-    mSerialPort->setStopBits(mStopBits);
-    mSerialPort->setParity(mParity);
-    mSerialPort->setFlowControl(mFlowControl);
+    mSerialPort->setPortName(parameters.name);
+    mSerialPort->setBaudRate(parameters.baudRate);
+    mSerialPort->setDataBits(parameters.dataBits);
+    mSerialPort->setStopBits(parameters.stopBits);
+    mSerialPort->setParity(parameters.parity);
+    mSerialPort->setFlowControl(parameters.flowControl);
 
-    if (mSerialPort->open(QSerialPort::ReadWrite)){
-        emit deviceStateChanged(true);
-        while (true){
-            if (isInterruptionRequested()){
-                break;
-            }
+    return true;
+}
 
-            // The operation must be done, if not, data can not be read.
-            eventLoop.processEvents();
-
-            // Read data
-            QByteArray bytes = mSerialPort->readAll();
-            if (bytes.length()){
-                emit bytesRead(bytes);
-            }
-
-            // Write data
-            while (true){
-                QByteArray var = takeWaitingForWrittingBytes();
-                if (var.length()){
-                    qint64 ret = mSerialPort->write(var);
-                    if (ret == -1){
-                        emit messageChanged(tr("Send data error: ") + mSerialPort->errorString(), false);
-                    }else{
-                        emit bytesWritten(var);
-                    }
-                }else{
-                    break;
-                }
-            }
-
-            // Do something make cpu happy
-            if (isInterruptionRequested()){
-                break;
-            }else{
-                mThreadMutex.lock();
-                mThreadWaitCondition.wait(&mThreadMutex, SAK_DEVICE_THREAD_SLEEP_INTERVAL);
-                mThreadMutex.unlock();
-            }
-        }
-
-        // Free memery
-        mSerialPort->clear();
-        mSerialPort->close();
-        delete mSerialPort;
-        mSerialPort = Q_NULLPTR;
-        emit deviceStateChanged(false);
+bool SAKSerialPortDevice::open(QString &errorString)
+{
+    if(mSerialPort->open(QSerialPort::ReadWrite)){
+        errorString = tr("Unknow error.");
+        return true;
     }else{
-        delete mSerialPort;
-        mSerialPort = Q_NULLPTR;
-        emit deviceStateChanged(false);
-        emit messageChanged(tr("Open com error") + mSerialPort->errorString(), false);
-        return;
+        errorString = mSerialPort->errorString();
+        return false;
     }
+}
+
+QByteArray SAKSerialPortDevice::read()
+{
+    QByteArray bytes = mSerialPort->readAll();
+    return bytes;
+}
+
+QByteArray SAKSerialPortDevice::write(QByteArray bytes)
+{
+    qint64 ret = mSerialPort->write(bytes);
+    if (ret > 0){
+        return bytes;
+    }else{
+        return QByteArray();
+    }
+}
+
+void SAKSerialPortDevice::close()
+{
+    mSerialPort->clear();
+    mSerialPort->close();
+}
+
+void SAKSerialPortDevice::free()
+{
+    delete mSerialPort;
+    mSerialPort = Q_NULLPTR;
 }
