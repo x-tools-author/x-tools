@@ -20,12 +20,6 @@ class SAKTestDebugPage : public SAKDebugPage
 public:
     SAKTestDebugPage(QWidget *parent = Q_NULLPTR);
     ~SAKTestDebugPage();
-
-    /**
-     * @brief controller: Get the controller instance
-     * @return Controller instance
-     */
-    SAKTestDeviceController *controller();
 protected:
     SAKDebugPageDevice *device() final;
     SAKDebugPageController *deviceController() final;
