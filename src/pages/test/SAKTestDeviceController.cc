@@ -14,9 +14,9 @@
 #include "SAKGlobal.hh"
 #include "SAKTestDeviceController.hh"
 #include "ui_SAKTestDeviceController.h"
-SAKTestDeviceController::SAKTestDeviceController(QWidget *parent)
-    :QWidget (parent)
-    ,mUi (new Ui::SAKTestDeviceController)
+SAKTestDeviceController::SAKTestDeviceController(SAKDebugPage *debugPage, QWidget *parent)
+    :SAKDebugPageController(debugPage, parent)
+    ,mUi(new Ui::SAKTestDeviceController)
 {
     mUi->setupUi(this);
     mParameters.openFailed = false;
@@ -24,6 +24,8 @@ SAKTestDeviceController::SAKTestDeviceController(QWidget *parent)
     mParameters.readInterval = 500;
     mParameters.writeCyclic = false;
     mParameters.writtingInterval = 500;
+
+    qRegisterMetaType<SAKTestDeviceController::ParametersContext>("SAKTestDeviceController::ParametersContext");
 }
 
 SAKTestDeviceController::~SAKTestDeviceController()
@@ -31,7 +33,7 @@ SAKTestDeviceController::~SAKTestDeviceController()
     delete mUi;
 }
 
-SAKTestDeviceController::ParametersContext SAKTestDeviceController::parameters()
+QVariant SAKTestDeviceController::parameters()
 {
     ParametersContext paras;
     mParametersMutex.lock();
@@ -43,7 +45,7 @@ SAKTestDeviceController::ParametersContext SAKTestDeviceController::parameters()
     paras.writtingInterval = mParameters.writtingInterval;
     mParametersMutex.unlock();
 
-    return paras;
+    return QVariant::fromValue(paras);
 }
 
 void SAKTestDeviceController::on_openFailedCheckBox_clicked()
