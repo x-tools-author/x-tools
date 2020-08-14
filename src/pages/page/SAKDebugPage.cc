@@ -45,6 +45,7 @@
 SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
     :QWidget(parent)
     ,mDevice(Q_NULLPTR)
+    ,mDeviceController(Q_NULLPTR)
     ,mIsInitializing(true)
     ,mDebugPageType(type)
     ,mUi(new Ui::SAKDebugPage)
@@ -188,8 +189,7 @@ void SAKDebugPage::changedDeviceState(bool opened)
     mSendPushButton->setEnabled(opened);
     mSendPresetPushButton->setEnabled(opened);
     mCycleEnableCheckBox->setEnabled(opened);
-
-    setUiEnable(!opened);
+    mDeviceController->setUiEnable(opened);
 }
 
 void SAKDebugPage::cleanInfo()
@@ -267,6 +267,7 @@ void SAKDebugPage::setupController()
         mDeviceSettingFrame->setLayout(layout);
         layout->addWidget(controller);
         layout->setContentsMargins(0, 0, 0, 0);
+        mDeviceController = controller;
     }
 }
 
