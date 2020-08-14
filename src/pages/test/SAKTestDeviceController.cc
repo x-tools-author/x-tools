@@ -8,6 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  */
 #include <QList>
+#include <QDebug>
 #include <QMetaEnum>
 #include <QLineEdit>
 
@@ -31,6 +32,9 @@ SAKTestDeviceController::SAKTestDeviceController(SAKDebugPage *debugPage, QWidge
 SAKTestDeviceController::~SAKTestDeviceController()
 {
     delete mUi;
+#ifdef QT_DEBUG
+    qDebug() << __FUNCTION__ << __LINE__;
+#endif
 }
 
 QVariant SAKTestDeviceController::parameters()

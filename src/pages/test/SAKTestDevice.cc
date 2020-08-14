@@ -24,7 +24,9 @@ SAKTestDevice::SAKTestDevice(SAKTestDebugPage *debugPage, QObject *parent)
 
 SAKTestDevice::~SAKTestDevice()
 {
-
+#ifdef QT_DEBUG
+    qDebug() << __FUNCTION__ << __LINE__;
+#endif
 }
 
 bool SAKTestDevice::initializing(QString &errorString)
