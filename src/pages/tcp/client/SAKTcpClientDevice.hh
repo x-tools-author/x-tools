@@ -16,6 +16,7 @@
 #include "SAKDebugPageDevice.hh"
 
 class SAKTcpClientDebugPage;
+class SAKTcpClientDeviceController;
 class SAKTcpClientDevice:public SAKDebugPageDevice
 {
     Q_OBJECT
@@ -37,6 +38,7 @@ private:
     quint16 mServerPort;
     SAKTcpClientDebugPage *mDebugPage;
     QTcpSocket *mTcpSocket;
+    SAKTcpClientDeviceController *mDeviceController;
 };
 
 #endif

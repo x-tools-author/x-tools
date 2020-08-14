@@ -26,8 +26,8 @@ SAKTcpClientDevice::SAKTcpClientDevice(SAKTcpClientDebugPage *debugPage, QObject
 bool SAKTcpClientDevice::initializing(QString &errorString)
 {
     QEventLoop eventLoop;
-    SAKTcpClientDeviceController *deviceController = qobject_cast<SAKTcpClientDeviceController*>(mDebugPage->deviceController());
-    auto parameters = deviceController->parameters().value<SAKTcpClientDeviceController::TcpClientParameters>();
+    mDeviceController = qobject_cast<SAKTcpClientDeviceController*>(mDebugPage->deviceController());
+    auto parameters = mDeviceController->parameters().value<SAKTcpClientDeviceController::TcpClientParameters>();
     mLocalHost = parameters.localHost;
     mLocalPort = parameters.localPort;
     mServerHost = parameters.serverHost;
@@ -50,7 +50,8 @@ bool SAKTcpClientDevice::initializing(QString &errorString)
     mTcpSocket->connectToHost(mServerHost, mServerPort);
     if (mTcpSocket->state() != QTcpSocket::ConnectedState){
         if (!mTcpSocket->waitForConnected()){
-            errorString = tr("Connect to server failed:")+mTcpSocket->errorString();
+            errorString = tr("Connect to server failed:") + mTcpSocket->errorString();
+            qDebug() << __FUNCTION__ << parameters.serverHost << parameters.serverPort;
             return false;
         }
     }
@@ -99,7 +100,6 @@ void SAKTcpClientDevice::close()
 {
     if (mTcpSocket->state() == QTcpSocket::ConnectedState){
         mTcpSocket->disconnectFromHost();
-        mTcpSocket->waitForDisconnected();
     }
     mTcpSocket->close();
 }
@@ -107,4 +107,5 @@ void SAKTcpClientDevice::close()
 void SAKTcpClientDevice::free()
 {
     delete mTcpSocket;
+    mTcpSocket = Q_NULLPTR;
 }
