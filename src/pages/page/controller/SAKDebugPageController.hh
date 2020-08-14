@@ -9,41 +9,19 @@
  */
 #ifndef SAKDEBUGPAGECONTROLLER_HH
 #define SAKDEBUGPAGECONTROLLER_HH
-#include <QMutex>
-#include <QThread>
-#include <QWaitCondition>
 
+#include <QWidget>
+
+class SAKDebugPage;
 /// @brief Device controller
-class SAKDebugPageController:public QThread
+class SAKDebugPageController:public QWidget
 {
     Q_OBJECT
 public:
-    SAKDebugPageController(QObject *parent = Q_NULLPTR);
+    SAKDebugPageController(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKDebugPageController();
-
-    /**
-     * @brief wakeMe: wake the thread
-     */
-    void wakeMe();
-
-    /**
-     * @brief writeBytes: write bytes to device
-     * @param bytes: bytes need to be wirtten
-     */
-    void writeBytes(QByteArray bytes);
-protected:
-    QMutex mThreadMutex;
-    QWaitCondition mThreadWaitCondition;
-protected:
-    QByteArray takeWaitingForWrittingBytes();
 private:
-    QMutex mWaitingForWritingBytesListMutex;
-    QList<QByteArray> mWaitingForWritingBytesList;
-signals:
-    void bytesWritten(QByteArray bytes);
-    void bytesRead(QByteArray bytes);
-    void messageChanged(QString msg, bool isInfo);
-    void deviceStateChanged(bool isOpened);
+    SAKDebugPage *mDebugPage;
 };
 
 #endif

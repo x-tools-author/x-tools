@@ -10,44 +10,14 @@
 #include <QEventLoop>
 #include "SAKDebugPageController.hh"
 
-SAKDebugPageController::SAKDebugPageController(QObject *parent)
-    :QThread(parent)
+SAKDebugPageController::SAKDebugPageController(SAKDebugPage *debugPage, QWidget *parent)
+    :QWidget(parent)
+    ,mDebugPage(debugPage)
 {
     // nothing to do
 }
 
 SAKDebugPageController::~SAKDebugPageController()
 {
-    requestInterruption();
-    mThreadWaitCondition.wakeAll();
-    exit();
-    wait();
-}
 
-void SAKDebugPageController::wakeMe()
-{
-    mThreadWaitCondition.wakeAll();
-}
-
-void SAKDebugPageController::writeBytes(QByteArray bytes)
-{
-    mWaitingForWritingBytesListMutex.lock();
-    if (bytes.length()){
-        mWaitingForWritingBytesList.append(bytes);
-    }else{
-        mWaitingForWritingBytesList.append(QByteArray("empty"));
-    }
-    mWaitingForWritingBytesListMutex.unlock();
-}
-
-QByteArray SAKDebugPageController::takeWaitingForWrittingBytes()
-{
-    QByteArray bytes;
-    mWaitingForWritingBytesListMutex.lock();
-    if (mWaitingForWritingBytesList.length()){
-        bytes = mWaitingForWritingBytesList.takeFirst();
-    }
-    mWaitingForWritingBytesListMutex.unlock();
-
-    return bytes;
 }
