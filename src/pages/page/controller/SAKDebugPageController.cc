@@ -29,7 +29,7 @@ QVariant SAKDebugPageController::parameters()
 
 void SAKDebugPageController::setUiEnable(bool opened)
 {
-//    setEnabled(!opened);
+    setEnabled(!opened);
 }
 
 void SAKDebugPageController::refreshDevice()
