@@ -26,3 +26,8 @@ void SAKDebugPageController::setUiEnable(bool opened)
 {
     setEnabled(!opened);
 }
+
+void SAKDebugPageController::refreshDevice()
+{
+    // Nothing to do
+}

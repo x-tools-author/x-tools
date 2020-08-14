@@ -33,6 +33,11 @@ public:
      * @param opened: If the device is opened, the value of the parameters is true
      */
     virtual void setUiEnable(bool opened);
+
+    /**
+     * @brief refreshDevice: Refresh the device list
+     */
+    virtual void refreshDevice();
 private:
     SAKDebugPage *mDebugPage;
 };
