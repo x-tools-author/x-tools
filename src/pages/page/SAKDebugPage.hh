@@ -140,11 +140,6 @@ public:
     QSqlDatabase *sqlDatabase();
 protected:
     /**
-     * @brief refreshDevice: Refresh system device
-     */
-    virtual void refreshDevice() = 0;
-
-    /**
      * @brief createController: Create a device
      * @return Device instance pointer
      */

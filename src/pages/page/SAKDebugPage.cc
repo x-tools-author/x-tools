@@ -267,7 +267,11 @@ void SAKDebugPage::setupController()
 
 void SAKDebugPage::on_refreshPushButton_clicked()
 {
-    refreshDevice();
+    if (mController){
+        mController->refreshDevice();
+    }else{
+        Q_ASSERT_X(false, __FUNCTION__, "A null pointer!");
+    }
 }
 
 void SAKDebugPage::on_switchPushButton_clicked()
