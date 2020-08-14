@@ -37,6 +37,8 @@ protected:
 protected:
     QByteArray takeWaitingForWrittingBytes();
     void run() override;
+
+    // Realize these functions in the subclass only, do not call them.
     virtual bool initializing(QString &errorString);
     virtual bool open(QString &errorString);
     virtual QByteArray read();
