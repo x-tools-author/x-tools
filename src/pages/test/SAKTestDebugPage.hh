@@ -12,7 +12,6 @@
 
 #include "SAKDebugPage.hh"
 
-class SAKTestDevice;
 class SAKTestDeviceController;
 // The debugging page is used for developer only.
 class SAKTestDebugPage : public SAKDebugPage
@@ -24,7 +23,6 @@ public:
     SAKDebugPageController *deviceController() final;
     SAKDebugPageDevice *createDevice() final;
 private:
-    SAKTestDevice *mDevice;
     SAKTestDeviceController *mDeviceController;
 };
 
