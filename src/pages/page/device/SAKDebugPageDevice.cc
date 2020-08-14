@@ -134,11 +134,6 @@ QByteArray SAKDebugPageDevice:: write(QByteArray bytes)
     return bytes;
 }
 
-QByteArray SAKDebugPageDevice:: writeForTest()
-{
-    return QByteArray();
-}
-
 void SAKDebugPageDevice::close()
 {
     // Nothing to do
@@ -147,4 +142,9 @@ void SAKDebugPageDevice::close()
 void SAKDebugPageDevice::free()
 {
     // Nothing to do
+}
+
+QByteArray SAKDebugPageDevice:: writeForTest()
+{
+    return QByteArray();
 }

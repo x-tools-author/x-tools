@@ -42,9 +42,10 @@ protected:
     virtual bool open(QString &errorString);
     virtual QByteArray read();
     virtual QByteArray write(QByteArray bytes);
-    virtual QByteArray writeForTest();
     virtual void close();
     virtual void free();
+
+    virtual QByteArray writeForTest();
 private:
     QMutex mWaitingForWritingBytesListMutex;
     QList<QByteArray> mWaitingForWritingBytesList;
