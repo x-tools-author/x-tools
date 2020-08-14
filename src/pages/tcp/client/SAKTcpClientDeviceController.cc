@@ -8,6 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  */
 #include <QList>
+#include <QDebug>
 #include <QMetaEnum>
 #include <QLineEdit>
 
@@ -27,7 +28,11 @@ SAKTcpClientDeviceController::SAKTcpClientDeviceController(SAKDebugPage *debugPa
     mServerPortLineEdit = mUi->serverPortLineEdit;
 
     qRegisterMetaType<SAKTcpClientDeviceController::TcpClientParameters>("SAKTcpClientDeviceController::TcpClientParameters");
+    mParameters.localHost = mLocalhostComboBox->currentText();
+    mParameters.localPort = mLocalPortlineEdit->text().toInt();
     mParameters.specifyClientAddressAndPort = mSpecifyClientAddressAndPort->isChecked();
+    mParameters.serverHost = mServerHostLineEdit->text();
+    mParameters.serverPort = mServerPortLineEdit->text().toInt();
     refreshDevice();
 }
 
@@ -50,13 +55,13 @@ QVariant SAKTcpClientDeviceController::parameters()
     return QVariant::fromValue(parameters);
 }
 
-void SAKTcpClientDeviceController::setUiEnable(bool enable)
+void SAKTcpClientDeviceController::setUiEnable(bool opened)
 {
-    mLocalhostComboBox->setEnabled(enable);
-    mLocalPortlineEdit->setEnabled(enable);
-    mSpecifyClientAddressAndPort->setEnabled(enable);
-    mServerHostLineEdit->setEnabled(enable);
-    mServerPortLineEdit->setEnabled(enable);
+    mLocalhostComboBox->setEnabled(!opened);
+    mLocalPortlineEdit->setEnabled(!opened);
+    mSpecifyClientAddressAndPort->setEnabled(!opened);
+    mServerHostLineEdit->setEnabled(!opened);
+    mServerPortLineEdit->setEnabled(!opened);
 }
 
 void SAKTcpClientDeviceController::refreshDevice()
@@ -131,7 +136,7 @@ void SAKTcpClientDeviceController::on_specifyClientAddressAndPort_clicked()
 void SAKTcpClientDeviceController::on_serverHostLineEdit_textChanged(const QString &arg1)
 {
     mParametersMutex.lock();
-    mParameters.serverHost = static_cast<quint16>(arg1.toInt());
+    mParameters.serverHost = arg1;
     mParametersMutex.unlock();
 }
 

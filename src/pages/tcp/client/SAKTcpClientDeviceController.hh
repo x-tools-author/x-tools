@@ -38,7 +38,7 @@ public:
     ~SAKTcpClientDeviceController();
 
     QVariant parameters() final;
-    void setUiEnable(bool enable) final;
+    void setUiEnable(bool opened) final;
     void refreshDevice() final;
 
     QString localHost();
