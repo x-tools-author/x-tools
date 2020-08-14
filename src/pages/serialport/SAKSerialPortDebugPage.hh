@@ -20,12 +20,6 @@ class SAKSerialPortDebugPage : public SAKDebugPage
 public:
     SAKSerialPortDebugPage(QWidget *parent = Q_NULLPTR);
     ~SAKSerialPortDebugPage();
-
-    /**
-     * @brief controllerInstance: Get the controller instance
-     * @return Controller instance
-     */
-    SAKSerialPortDeviceController *controllerInstance();
 protected:
     SAKDebugPageDevice *createDevice() final;
     SAKDebugPageController *createController() final;

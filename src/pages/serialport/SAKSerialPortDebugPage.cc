@@ -22,18 +22,13 @@ SAKSerialPortDebugPage::SAKSerialPortDebugPage(QWidget *parent)
 
 {
     controller = new SAKSerialPortDeviceController(this);
-    initializingPage();
     setWindowTitle(SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeCOM));
+    initializingPage();
 }
 
 SAKSerialPortDebugPage::~SAKSerialPortDebugPage()
 {
     delete controller;
-}
-
-SAKSerialPortDeviceController *SAKSerialPortDebugPage::controllerInstance()
-{
-    return controller;
 }
 
 SAKDebugPageDevice *SAKSerialPortDebugPage::createDevice()
