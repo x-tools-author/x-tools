@@ -140,6 +140,11 @@ QString SAKDebugPage::settingsGroup()
     return group;
 }
 
+SAKDebugPageController *SAKDebugPage::deviceController()
+{
+    return mDeviceController;
+}
+
 SAKDebugPageOtherController *SAKDebugPage::otherController()
 {
     return mOtherController;
@@ -267,8 +272,8 @@ void SAKDebugPage::setupController()
 
 void SAKDebugPage::on_refreshPushButton_clicked()
 {
-    if (mController){
-        mController->refreshDevice();
+    if (mDeviceController){
+        mDeviceController->refreshDevice();
     }else{
         Q_ASSERT_X(false, __FUNCTION__, "A null pointer!");
     }

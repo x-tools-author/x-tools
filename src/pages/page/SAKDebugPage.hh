@@ -102,6 +102,12 @@ public:
     QString settingsGroup();
 
     /**
+     * @brief deviceController: Get device controller
+     * @return Device controller
+     */
+    SAKDebugPageController *deviceController();
+
+    /**
      * @brief otherController: Get SAKDebugPageOtherController instance pointer
      * @return SAKDebugPageOtherController instance pointer
      */
@@ -164,7 +170,7 @@ protected:
     void initializingPage();
 private:
     SAKDebugPageDevice *mDevice;
-    SAKDebugPageController *mController;
+    SAKDebugPageController *mDeviceController;
     bool mIsInitializing;
     int mDebugPageType;
     QString mSettingKey;
