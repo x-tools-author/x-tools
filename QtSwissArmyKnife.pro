@@ -113,6 +113,7 @@ INCLUDEPATH += \
     src/pages \
     src/pages/page \
     src/pages/page/common \
+    src/pages/page/controller \
     src/pages/page/device \
     src/pages/page/input \
     src/pages/page/input/crcsettings \
