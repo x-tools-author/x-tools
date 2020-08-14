@@ -22,7 +22,6 @@ SAKSerialPortDebugPage::SAKSerialPortDebugPage(QWidget *parent)
 
 {
     mDeviceController = new SAKSerialPortDeviceController(this);
-    mDevice = new SAKSerialPortDevice(this);
     setWindowTitle(SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeCOM));
     initializingPage();
 }
@@ -39,5 +38,7 @@ SAKDebugPageController *SAKSerialPortDebugPage::deviceController()
 
 SAKDebugPageDevice *SAKSerialPortDebugPage::device()
 {
-    return mDevice;
+    // The ret will be destroied when closing device
+    auto ret = new SAKSerialPortDevice(this);
+    return ret;
 }
