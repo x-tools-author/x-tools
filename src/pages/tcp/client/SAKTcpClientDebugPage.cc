@@ -33,7 +33,7 @@ SAKDebugPageController *SAKTcpClientDebugPage::deviceController()
     return mTcpClientDeviceController;
 }
 
-SAKDebugPageDevice *SAKTcpClientDebugPage::create device()
+SAKDebugPageDevice *SAKTcpClientDebugPage::createDevice()
 {
     auto ret = new SAKTcpClientDevice(this);
     return ret;

@@ -40,7 +40,7 @@ SAKDebugPageController *SAKWebSocketClientDebugPage::deviceController()
     return webSocketClientDeviceController;
 }
 
-SAKDebugPageDevice *SAKWebSocketClientDebugPage::create device()
+SAKDebugPageDevice *SAKWebSocketClientDebugPage::createDevice()
 {
     SAKWebSocketClientDevice *device = new SAKWebSocketClientDevice(this);
     return device;

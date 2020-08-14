@@ -223,7 +223,7 @@ void SAKDebugPage::closeDevice()
 
 void SAKDebugPage::setupDevice()
 {
-    mDevice = create createDevice();
+    mDevice = createDevice();
     if (mDevice){
         connect(this, &SAKDebugPage::requestWriteData, mDevice, &SAKDebugPageDevice::writeBytes);
         connect(mDevice, &SAKDebugPageDevice::bytesWritten, this, &SAKDebugPage::bytesWritten);

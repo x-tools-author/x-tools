@@ -36,7 +36,7 @@ SAKDebugPageController *SAKSerialPortDebugPage::deviceController()
     return mDeviceController;
 }
 
-SAKDebugPageDevice *SAKSerialPortDebugPage::create device()
+SAKDebugPageDevice *SAKSerialPortDebugPage::createDevice()
 {
     // The ret will be destroied when closing device
     auto ret = new SAKSerialPortDevice(this);

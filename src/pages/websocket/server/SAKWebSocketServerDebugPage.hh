@@ -30,7 +30,7 @@ public:
     SAKWebSocketServerDeviceController *controllerInstance();
 protected:
     SAKDebugPageController *deviceController() final;
-    SAKDebugPageDevice* create createDevice() final;
+    SAKDebugPageDevice* createDevice() final;
     void setUiEnable(bool enable);
 private:
     SAKWebSocketServerDeviceController *tcpServerDeviceController;

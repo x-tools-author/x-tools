@@ -46,7 +46,7 @@ void SAKWebSocketServerDebugPage::setUiEnable(bool enable)
     mRefreshPushButton->setEnabled(enable);
 }
 
-SAKDebugPageDevice* SAKWebSocketServerDebugPage::create device()
+SAKDebugPageDevice* SAKWebSocketServerDebugPage::createDevice()
 {
     SAKWebSocketServerDevice *device = new SAKWebSocketServerDevice(this);
     return device;

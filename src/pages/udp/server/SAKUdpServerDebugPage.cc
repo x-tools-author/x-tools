@@ -40,7 +40,7 @@ SAKDebugPageController *SAKUdpServerDebugPage::deviceController()
     return mDeviceController;
 }
 
-SAKDebugPageDevice* SAKUdpServerDebugPage::create device()
+SAKDebugPageDevice* SAKUdpServerDebugPage::createDevice()
 {
     SAKUdpServerDevice *device = new SAKUdpServerDevice(this);
     return device;

@@ -23,7 +23,7 @@ public:
     ~SAKSerialPortDebugPage();
 
     SAKDebugPageController *deviceController() final;
-    SAKDebugPageDevice *create createDevice() final;
+    SAKDebugPageDevice *createDevice() final;
 private:
     SAKSerialPortDeviceController *mDeviceController;
 };

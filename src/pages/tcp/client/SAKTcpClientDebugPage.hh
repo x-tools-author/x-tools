@@ -20,7 +20,7 @@ public:
     SAKTcpClientDebugPage(QWidget *parent = Q_NULLPTR);
 
     SAKDebugPageController *deviceController() final;
-    SAKDebugPageDevice* create createDevice() final;
+    SAKDebugPageDevice* createDevice() final;
 private:
     SAKTcpClientDeviceController *mTcpClientDeviceController;
 };

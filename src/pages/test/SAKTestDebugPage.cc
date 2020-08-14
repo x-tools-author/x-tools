@@ -26,7 +26,7 @@ SAKTestDebugPage::SAKTestDebugPage(QWidget *parent)
     initializingPage();
 }
 
-SAKDebugPageDevice *SAKTestDebugPage::create device()
+SAKDebugPageDevice *SAKTestDebugPage::createDevice()
 {
     if (!mDevice){
         mDevice = new SAKTestDevice(this);
