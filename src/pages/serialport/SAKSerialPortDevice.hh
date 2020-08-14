@@ -33,7 +33,6 @@ public:
 private:
     QSerialPort *mSerialPort;
     SAKSerialPortDebugPage *mDebugPage;
-    SAKSerialPortDeviceController *mController;
 };
 
 #endif
