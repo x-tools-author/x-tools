@@ -40,7 +40,7 @@ void SAKTcpServerDebugPage::refreshDevice()
     tcpServerDeviceController->refresh();
 }
 
-QWidget *SAKTcpServerDebugPage::controllerWidget()
+QWidget *SAKTcpServerDebugPage::createController()
 {
     return tcpServerDeviceController;
 }

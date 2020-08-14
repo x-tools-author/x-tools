@@ -29,7 +29,7 @@ public:
 protected:
     SAKDebugPageDevice *createDevice() final;
     void refreshDevice() final;
-    QWidget *controllerWidget() final;
+    QWidget *createController() final;
     void setUiEnable(bool enable) final;
 private:
     SAKTestDeviceController *mController;

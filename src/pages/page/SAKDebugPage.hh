@@ -144,10 +144,10 @@ protected:
     virtual void refreshDevice() = 0;
 
     /**
-     * @brief controllerWidget: Get device control widget
-     * @return Device control widget
+     * @brief createController: Create a device
+     * @return Device instance pointer
      */
-    virtual QWidget *controllerWidget() = 0;
+    virtual QWidget *createController() = 0;
 
     /**
      * @brief createDevice: Create the device instance
@@ -163,7 +163,7 @@ protected:
 
     /**
      * @brief initializingPage: Initializing,
-     * the function must be called in the constructor of child class
+     * the function must be called in the constructor of subclass
      */
     void initializingPage();
 private:

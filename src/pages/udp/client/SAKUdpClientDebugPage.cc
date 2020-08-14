@@ -40,7 +40,7 @@ void SAKUdpClientDebugPage::refreshDevice()
     udpDeviceController->refresh();
 }
 
-QWidget *SAKUdpClientDebugPage::controllerWidget()
+QWidget *SAKUdpClientDebugPage::createController()
 {
     return udpDeviceController;
 }

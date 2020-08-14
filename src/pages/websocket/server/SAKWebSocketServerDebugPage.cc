@@ -40,7 +40,7 @@ void SAKWebSocketServerDebugPage::refreshDevice()
     tcpServerDeviceController->refresh();
 }
 
-QWidget *SAKWebSocketServerDebugPage::controllerWidget()
+QWidget *SAKWebSocketServerDebugPage::createController()
 {
     return tcpServerDeviceController;
 }

@@ -255,7 +255,7 @@ void SAKDebugPage::setupDevice()
 
 void SAKDebugPage::setupController()
 {
-    QWidget *controller = controllerWidget();
+    QWidget *controller = createController();
     if (controller){
         QHBoxLayout *layout = new QHBoxLayout(mDeviceSettingFrame);
         mDeviceSettingFrame->setLayout(layout);

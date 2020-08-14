@@ -46,7 +46,7 @@ void SAKSerialPortDebugPage::refreshDevice()
     controller->refresh();
 }
 
-QWidget *SAKSerialPortDebugPage::controllerWidget()
+QWidget *SAKSerialPortDebugPage::createController()
 {
     return controller;
 }

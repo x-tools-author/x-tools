@@ -40,7 +40,7 @@ void SAKUdpServerDebugPage::refreshDevice()
     mDeviceController->refresh();
 }
 
-QWidget *SAKUdpServerDebugPage::controllerWidget()
+QWidget *SAKUdpServerDebugPage::createController()
 {
     return mDeviceController;
 }

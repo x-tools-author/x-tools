@@ -28,7 +28,7 @@ public:
     SAKWebSocketClientDeviceController *controllerInstance();
 protected:
     void refreshDevice() final;
-    QWidget *controllerWidget() final;
+    QWidget *createController() final;
     SAKDebugPageDevice* createDevice() final;
     void setUiEnable(bool enable) final;
 private:

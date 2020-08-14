@@ -40,7 +40,7 @@ void SAKWebSocketClientDebugPage::refreshDevice()
     /// @brief Nothing to do.
 }
 
-QWidget *SAKWebSocketClientDebugPage::controllerWidget()
+QWidget *SAKWebSocketClientDebugPage::createController()
 {
     return webSocketClientDeviceController;
 }
