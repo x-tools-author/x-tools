@@ -21,18 +21,8 @@ SAKTcpClientDebugPage::SAKTcpClientDebugPage(QWidget *parent)
     :SAKDebugPage (SAKDataStruct::DebugPageTypeTCPClient, parent)
 {
     tcpClientDeviceController = new SAKTcpClientDeviceController(this);
-    initializingPage();
     setWindowTitle(SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeTCPClient));
-}
-
-SAKTcpClientDebugPage::~SAKTcpClientDebugPage()
-{
-    tcpClientDeviceController->deleteLater();
-}
-
-SAKTcpClientDeviceController *SAKTcpClientDebugPage::controllerInstance()
-{
-    return tcpClientDeviceController;
+    initializingPage();
 }
 
 SAKDebugPageController *SAKTcpClientDebugPage::deviceController()
