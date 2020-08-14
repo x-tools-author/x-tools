@@ -221,7 +221,7 @@ void SAKDebugPage::closeDevice()
 {
     if (mDevice){
         mDevice->requestInterruption();
-        mDevice->wakeMe();
+        mDevice->requestWakeup();
         mDevice->exit();
         mDevice->wait();
         mDevice->deleteLater();

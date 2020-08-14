@@ -24,7 +24,7 @@ public:
     /**
      * @brief wakeMe: wake the thread
      */
-    void wakeMe();
+    void requestWakeup();
 
     /**
      * @brief writeBytes: write bytes to device

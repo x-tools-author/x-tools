@@ -24,7 +24,7 @@ SAKDebugPageDevice::~SAKDebugPageDevice()
     wait();
 }
 
-void SAKDebugPageDevice::wakeMe()
+void SAKDebugPageDevice::requestWakeup()
 {
     mThreadWaitCondition.wakeAll();
 }
