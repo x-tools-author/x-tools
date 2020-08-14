@@ -17,6 +17,8 @@
 #include "SAKDebugPageDevice.hh"
 
 class SAKTestDebugPage;
+class SAKTestDeviceController;
+/// @brief The class is used by developer to debug
 class SAKTestDevice:public SAKDebugPageDevice
 {
     Q_OBJECT
@@ -24,9 +26,20 @@ public:
     SAKTestDevice(SAKTestDebugPage *debugPage, QObject *parent = Q_NULLPTR);
     ~SAKTestDevice();
 protected:
-    void run() final;
+    bool initializing(QString &errorString) final;
+    bool open(QString &errorString) final;
+    QByteArray read() final;
+    QByteArray write(QByteArray bytes) final;
+    QByteArray writeForTest() final;
+    void close() final;
+    void free() final;
 private:
     SAKTestDebugPage *mDebugPage;
+    SAKTestDeviceController *mController;
+    qint64 mOldReadTimestamp;
+    qint64 mNewReadTimestamp;
+    qint64 mOldWrittingTimestamp;
+    qint64 mNewWrittingTimestamp;
 };
 
 #endif

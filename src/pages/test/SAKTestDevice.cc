@@ -27,68 +27,65 @@ SAKTestDevice::~SAKTestDevice()
 
 }
 
-void SAKTestDevice::run()
+bool SAKTestDevice::initializing(QString &errorString)
 {
-    QEventLoop eventLoop;
-    SAKTestDeviceController *controller = mDebugPage->controller();
-    SAKTestDeviceController::ParametersContext parameters = controller->parameters();
-    qint64 oldReadTimestamp = QDateTime::currentDateTime().toMSecsSinceEpoch();
-    qint64 oldWrittingTimestamp = QDateTime::currentDateTime().toMSecsSinceEpoch();
-    if (!parameters.openFailed){
-        emit deviceStateChanged(true);
-        while (true) {
-            if(isInterruptionRequested()){
-                break;
-            }
+    errorString = QString("Unknow error");
+    mController = mDebugPage->controller();
+    mOldReadTimestamp = QDateTime::currentDateTime().toMSecsSinceEpoch();
+    mOldWrittingTimestamp = QDateTime::currentDateTime().toMSecsSinceEpoch();
+    return true;
+}
 
-            // Handling the thread events
-            eventLoop.processEvents();
+bool SAKTestDevice::open(QString &errorString)
+{
+    SAKTestDeviceController::ParametersContext parameters = mController->parameters().value<SAKTestDeviceController::ParametersContext>();
+    errorString = parameters.errorString.length() ? parameters.errorString : QString("Unknow error");
+    return !parameters.openFailed;
+}
 
-            // Count time
-            qint64 newTimestamp =  QDateTime::currentDateTime().toMSecsSinceEpoch();
-            qint64 deltaRead = newTimestamp - oldReadTimestamp;
-            qint64 deltaWritten = newTimestamp - oldWrittingTimestamp;
-
-            // Read data
-            SAKTestDeviceController::ParametersContext parameters = controller->parameters();
-            if (parameters.readCyclic){
-                if (deltaRead > parameters.readInterval){
-                    oldReadTimestamp = newTimestamp;
-                    QByteArray bytes = QString::number(QDateTime::currentDateTime().toMSecsSinceEpoch()).toLatin1();
-                    emit bytesRead(bytes);
-                }
-            }
-
-            // Write data
-            if (parameters.writeCyclic){
-                if (deltaWritten > parameters.writtingInterval){
-                    oldWrittingTimestamp = newTimestamp;
-                    QByteArray bytes = QString::number(QDateTime::currentDateTime().toMSecsSinceEpoch()).toLatin1();
-                    emit bytesWritten(bytes);
-                }
-            }
-
-            // Write data manual
-            while (true){
-                QByteArray bytes = takeWaitingForWrittingBytes();
-                if (bytes.length()){
-                    emit bytesWritten(bytes);
-                }else{
-                    break;
-                }
-            }
-
-            // Thread sleep
-            if(isInterruptionRequested()){
-                break;
-            }else{
-                mThreadMutex.lock();
-                mThreadWaitCondition.wait(&mThreadMutex, SAK_DEVICE_THREAD_SLEEP_INTERVAL);
-                mThreadMutex.unlock();
-            }
+QByteArray SAKTestDevice::read()
+{
+    QByteArray bytes;
+    mNewReadTimestamp =  QDateTime::currentDateTime().toMSecsSinceEpoch();
+    SAKTestDeviceController::ParametersContext parameters = mController->parameters().value<SAKTestDeviceController::ParametersContext>();
+    if (parameters.readCyclic){
+        qint64 deltaRead = mNewReadTimestamp - mOldReadTimestamp;
+        if (deltaRead > parameters.readInterval){
+            mOldReadTimestamp = mNewReadTimestamp;
+            bytes = QString::number(QDateTime::currentDateTime().toMSecsSinceEpoch()).toLatin1();
         }
     }
 
-    emit deviceStateChanged(false);
-    emit messageChanged(parameters.errorString, false);
+    return bytes;
+}
+
+QByteArray SAKTestDevice::write(QByteArray bytes)
+{
+    return bytes;
+}
+
+QByteArray SAKTestDevice::writeForTest()
+{
+    QByteArray bytesWritten;
+    SAKTestDeviceController::ParametersContext parameters = mController->parameters().value<SAKTestDeviceController::ParametersContext>();
+    mNewWrittingTimestamp =  QDateTime::currentDateTime().toMSecsSinceEpoch();
+    if (parameters.writeCyclic){
+        qint64 delta = mNewWrittingTimestamp - mOldWrittingTimestamp;
+        if (delta > parameters.writtingInterval){
+            mOldWrittingTimestamp = mNewWrittingTimestamp;
+            bytesWritten = QString::number(QDateTime::currentDateTime().toMSecsSinceEpoch()).toLatin1();
+        }
+    }
+
+    return bytesWritten;
+}
+
+void SAKTestDevice::close()
+{
+    // Nothing to do
+}
+
+void SAKTestDevice::free()
+{
+    // Nothing to do
 }
