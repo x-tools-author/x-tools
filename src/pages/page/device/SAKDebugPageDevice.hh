@@ -36,6 +36,15 @@ protected:
     QWaitCondition mThreadWaitCondition;
 protected:
     QByteArray takeWaitingForWrittingBytes();
+    void run() override;
+
+    virtual bool initializing(QString &errorString);
+    virtual bool open(QString &errorString);
+    virtual QByteArray read();
+    virtual QByteArray write(QByteArray bytes);
+    virtual QByteArray writeForTest();
+    virtual void close();
+    virtual void free();
 private:
     QMutex mWaitingForWritingBytesListMutex;
     QList<QByteArray> mWaitingForWritingBytesList;
