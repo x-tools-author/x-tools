@@ -23,11 +23,6 @@ SAKSerialPortDevice::SAKSerialPortDevice(SAKSerialPortDebugPage *debugPage, QObj
 
 }
 
-SAKSerialPortDevice::~SAKSerialPortDevice()
-{
-
-}
-
 bool SAKSerialPortDevice::initializing(QString &errorString)
 {
     errorString = tr("Unknow error");

@@ -24,7 +24,6 @@ class SAKSerialPortDevice:public SAKDebugPageDevice
     Q_OBJECT
 public:
     SAKSerialPortDevice(SAKSerialPortDebugPage *debugPage, QObject *parent = Q_NULLPTR);
-    ~SAKSerialPortDevice();
 
     bool initializing(QString &errorString) final;
     bool open(QString &errorString) final;
