@@ -12,7 +12,6 @@
 
 #include "SAKDebugPage.hh"
 
-class SAKTcpClientDevice;
 class SAKTcpClientDeviceController;
 class SAKTcpClientDebugPage : public SAKDebugPage
 {
@@ -24,7 +23,6 @@ public:
     SAKDebugPageDevice* device() final;
 private:
     SAKTcpClientDeviceController *mTcpClientDeviceController;
-    SAKTcpClientDevice *mTcpClientDevice;
 };
 
 #endif
