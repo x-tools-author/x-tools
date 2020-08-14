@@ -41,9 +41,3 @@ SAKDebugPageController *SAKSerialPortDebugPage::createController()
 {
     return controller;
 }
-
-void SAKSerialPortDebugPage::setUiEnable(bool enable)
-{
-    controller->setEnabled(enable);
-    mRefreshPushButton->setEnabled(enable);
-}

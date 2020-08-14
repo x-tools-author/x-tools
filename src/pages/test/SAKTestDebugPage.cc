@@ -45,9 +45,3 @@ SAKDebugPageController *SAKTestDebugPage::createController()
 {
     return mDeviceController;
 }
-
-void SAKTestDebugPage::setUiEnable(bool enable)
-{
-    mDeviceController->setEnabled(enable);
-    mRefreshPushButton->setEnabled(enable);
-}

@@ -40,12 +40,6 @@ SAKDebugPageController *SAKUdpServerDebugPage::createController()
     return mDeviceController;
 }
 
-void SAKUdpServerDebugPage::setUiEnable(bool enable)
-{
-    mDeviceController->setUiEnable(enable);
-    mRefreshPushButton->setEnabled(enable);
-}
-
 SAKDebugPageDevice* SAKUdpServerDebugPage::createDevice()
 {
     SAKUdpServerDevice *device = new SAKUdpServerDevice(this);
