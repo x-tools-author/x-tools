@@ -20,7 +20,7 @@ class SAKTestDebugPage : public SAKDebugPage
 public:
     SAKTestDebugPage(QWidget *parent = Q_NULLPTR);
     ~SAKTestDebugPage();
-protected:
+
     SAKDebugPageDevice *device() final;
     SAKDebugPageController *deviceController() final;
 private:
