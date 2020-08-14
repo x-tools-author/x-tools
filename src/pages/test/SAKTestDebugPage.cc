@@ -19,8 +19,8 @@
 
 SAKTestDebugPage::SAKTestDebugPage(QWidget *parent)
     :SAKDebugPage (SAKDataStruct::DebugPageTypeTest, parent)
-    ,mController (new SAKTestDeviceController)
 {
+    mController = new SAKTestDeviceController(this);
     initializingPage();
     setWindowTitle(SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeTest));
 }
