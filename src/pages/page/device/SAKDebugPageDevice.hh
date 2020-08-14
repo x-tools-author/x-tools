@@ -43,6 +43,7 @@ protected:
     virtual bool open(QString &errorString);
     virtual QByteArray read();
     virtual QByteArray write(QByteArray bytes);
+    virtual bool checkSomething(QString &errorString);
     virtual void close();
     virtual void free();
 

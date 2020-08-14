@@ -94,7 +94,13 @@ void SAKDebugPageDevice::run()
                 emit bytesWritten(bytes);
             }
 
+            // Chcked device state
             eventLoop.processEvents();
+            if(!checkSomething(errorString)){
+                emit messageChanged(errorString, false);
+                break;
+            }
+
             if(isInterruptionRequested()){
                 break;
             }else{
@@ -131,9 +137,15 @@ QByteArray SAKDebugPageDevice::read()
     return QByteArray();
 }
 
-QByteArray SAKDebugPageDevice:: write(QByteArray bytes)
+QByteArray SAKDebugPageDevice::write(QByteArray bytes)
 {
     return bytes;
+}
+
+bool SAKDebugPageDevice::checkSomething(QString &errorString)
+{
+    errorString = QString("Need to override");
+    return false;
 }
 
 void SAKDebugPageDevice::close()
