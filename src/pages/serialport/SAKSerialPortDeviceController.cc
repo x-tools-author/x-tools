@@ -153,7 +153,6 @@ void SAKSerialPortDeviceController::on_flowControlComboBox_currentIndexChanged(i
 
 void SAKSerialPortDeviceController::on_baudrateComboBox_editTextChanged(const QString &arg1)
 {
-    mParametersMutex.lock();
     qint32 rate = arg1.toInt();
     setBaudRate(rate);
 }
