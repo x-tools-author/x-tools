@@ -37,8 +37,6 @@ private:
     quint16 mServerPort;
     SAKTcpClientDebugPage *mDebugPage;
     QTcpSocket *mTcpSocket;
-private:
-    void afterDisconnected();
 };
 
 #endif
