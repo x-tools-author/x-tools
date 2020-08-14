@@ -40,6 +40,8 @@ public:
     virtual void refreshDevice();
 private:
     SAKDebugPage *mDebugPage;
+signals:
+    void messageChange(QString msg, bool isInfo);
 };
 
 #endif
