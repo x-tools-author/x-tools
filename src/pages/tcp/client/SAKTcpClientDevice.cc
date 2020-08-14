@@ -18,7 +18,7 @@
 
 SAKTcpClientDevice::SAKTcpClientDevice(SAKTcpClientDebugPage *debugPage, QObject *parent)
     :SAKDebugPageDevice(parent)
-    ,debugPage (debugPage)
+    ,mDebugPage (debugPage)
 {
 
 }
@@ -26,31 +26,31 @@ SAKTcpClientDevice::SAKTcpClientDevice(SAKTcpClientDebugPage *debugPage, QObject
 bool SAKTcpClientDevice::initializing(QString &errorString)
 {
     QEventLoop eventLoop;
-    SAKTcpClientDeviceController *deviceController = qobject_cast<SAKTcpClientDeviceController*>(debugPage->deviceController());
+    SAKTcpClientDeviceController *deviceController = qobject_cast<SAKTcpClientDeviceController*>(mDebugPage->deviceController());
     auto parameters = deviceController->parameters().value<SAKTcpClientDeviceController::TcpClientParameters>();
-    localHost = parameters.localHost;
-    localPort = parameters.localPort;
-    serverHost = parameters.serverHost;
-    serverPort = parameters.serverPort;
-    specifyClientAddressAndPort = parameters.specifyClientAddressAndPort;
+    mLocalHost = parameters.localHost;
+    mLocalPort = parameters.localPort;
+    mServerHost = parameters.serverHost;
+    mServerPort = parameters.serverPort;
+    mSpecifyClientAddressAndPort = parameters.specifyClientAddressAndPort;
 
-    tcpSocket = new QTcpSocket;
+    mTcpSocket = new QTcpSocket;
     bool bindResult = false;
-    if (specifyClientAddressAndPort){
-        bindResult = tcpSocket->bind(QHostAddress(localHost), localPort);
+    if (mSpecifyClientAddressAndPort){
+        bindResult = mTcpSocket->bind(QHostAddress(mLocalHost), mLocalPort);
     }else{
-        bindResult = tcpSocket->bind();
+        bindResult = mTcpSocket->bind();
     }
 
     if (!bindResult){
-        errorString = tr("Binding failed:") + tcpSocket->errorString();
+        errorString = tr("Binding failed:") + mTcpSocket->errorString();
         return false;
     }
 
-    tcpSocket->connectToHost(serverHost, serverPort);
-    if (tcpSocket->state() != QTcpSocket::ConnectedState){
-        if (!tcpSocket->waitForConnected()){
-            errorString = tr("Connect to server failed:")+tcpSocket->errorString();
+    mTcpSocket->connectToHost(mServerHost, mServerPort);
+    if (mTcpSocket->state() != QTcpSocket::ConnectedState){
+        if (!mTcpSocket->waitForConnected()){
+            errorString = tr("Connect to server failed:")+mTcpSocket->errorString();
             return false;
         }
     }
@@ -60,23 +60,23 @@ bool SAKTcpClientDevice::initializing(QString &errorString)
 
 bool SAKTcpClientDevice::open(QString &errorString)
 {
-    if (tcpSocket->open(QTcpSocket::ReadWrite)){
+    if (mTcpSocket->open(QTcpSocket::ReadWrite)){
         errorString = tr("Unknow error.");
         return true;
     }else{
-        errorString = tr("Can not open device:") + tcpSocket->errorString();
+        errorString = tr("Can not open device:") + mTcpSocket->errorString();
         return false;
     }
 }
 
 QByteArray SAKTcpClientDevice::read()
 {
-    return tcpSocket->readAll();
+    return mTcpSocket->readAll();
 }
 
 QByteArray SAKTcpClientDevice::write(QByteArray bytes)
 {
-    qint64 ret = tcpSocket->write(bytes);
+    qint64 ret = mTcpSocket->write(bytes);
     if (ret > 0){
         return bytes;
     }else{
@@ -86,7 +86,7 @@ QByteArray SAKTcpClientDevice::write(QByteArray bytes)
 
 bool SAKTcpClientDevice::checkSomething(QString &errorString)
 {
-    if(tcpSocket->state() == QTcpSocket::UnconnectedState){
+    if(mTcpSocket->state() == QTcpSocket::UnconnectedState){
         errorString = tr("Connection has been disconnected.");
         return false;
     }else{
@@ -97,14 +97,14 @@ bool SAKTcpClientDevice::checkSomething(QString &errorString)
 
 void SAKTcpClientDevice::close()
 {
-    if (tcpSocket->state() == QTcpSocket::ConnectedState){
-        tcpSocket->disconnectFromHost();
-        tcpSocket->waitForDisconnected();
+    if (mTcpSocket->state() == QTcpSocket::ConnectedState){
+        mTcpSocket->disconnectFromHost();
+        mTcpSocket->waitForDisconnected();
     }
-    tcpSocket->close();
+    mTcpSocket->close();
 }
 
 void SAKTcpClientDevice::free()
 {
-    delete tcpSocket;
+    delete mTcpSocket;
 }
