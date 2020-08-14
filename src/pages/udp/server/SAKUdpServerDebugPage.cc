@@ -35,11 +35,6 @@ SAKUdpServerDeviceController *SAKUdpServerDebugPage::controllerInstance()
     return mDeviceController;
 }
 
-void SAKUdpServerDebugPage::refreshDevice()
-{
-    mDeviceController->refresh();
-}
-
 SAKDebugPageController *SAKUdpServerDebugPage::createController()
 {
     return mDeviceController;

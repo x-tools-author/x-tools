@@ -42,11 +42,6 @@ SAKDebugPageDevice *SAKSerialPortDebugPage::createDevice()
     return ret;
 }
 
-void SAKSerialPortDebugPage::refreshDevice()
-{
-    controller->refresh();
-}
-
 SAKDebugPageController *SAKSerialPortDebugPage::createController()
 {
     return controller;

@@ -35,11 +35,6 @@ SAKWebSocketClientDeviceController *SAKWebSocketClientDebugPage::controllerInsta
     return webSocketClientDeviceController;
 }
 
-void SAKWebSocketClientDebugPage::refreshDevice()
-{
-    /// @brief Nothing to do.
-}
-
 SAKDebugPageController *SAKWebSocketClientDebugPage::createController()
 {
     return webSocketClientDeviceController;

@@ -30,11 +30,6 @@ SAKTestDebugPage::~SAKTestDebugPage()
     delete mController;
 }
 
-void SAKTestDebugPage::refreshDevice()
-{
-    mController->refreshDevice();
-}
-
 SAKTestDeviceController *SAKTestDebugPage::controller()
 {
     return mController;

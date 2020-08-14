@@ -35,11 +35,6 @@ SAKWebSocketServerDeviceController *SAKWebSocketServerDebugPage::controllerInsta
     return tcpServerDeviceController;
 }
 
-void SAKWebSocketServerDebugPage::refreshDevice()
-{
-    tcpServerDeviceController->refresh();
-}
-
 SAKDebugPageController *SAKWebSocketServerDebugPage::createController()
 {
     return tcpServerDeviceController;

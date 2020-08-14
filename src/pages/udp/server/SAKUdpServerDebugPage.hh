@@ -27,7 +27,6 @@ public:
      */
     SAKUdpServerDeviceController *controllerInstance();
 protected:
-    void refreshDevice() final;
     SAKDebugPageController *createController() final;
     SAKDebugPageDevice* createDevice() final;
     void setUiEnable(bool enable) final;

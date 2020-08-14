@@ -35,11 +35,6 @@ SAKUdpClientDeviceController *SAKUdpClientDebugPage::controllerInstance()
     return udpDeviceController;
 }
 
-void SAKUdpClientDebugPage::refreshDevice()
-{
-    udpDeviceController->refresh();
-}
-
 SAKDebugPageController *SAKUdpClientDebugPage::createController()
 {
     return udpDeviceController;

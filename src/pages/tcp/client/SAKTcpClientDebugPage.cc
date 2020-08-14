@@ -35,11 +35,6 @@ SAKTcpClientDeviceController *SAKTcpClientDebugPage::controllerInstance()
     return tcpClientDeviceController;
 }
 
-void SAKTcpClientDebugPage::refreshDevice()
-{
-    tcpClientDeviceController->refresh();
-}
-
 SAKDebugPageController *SAKTcpClientDebugPage::createController()
 {
     return tcpClientDeviceController;
