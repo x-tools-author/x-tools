@@ -31,17 +31,17 @@ public:
     /// @brief Auto response item record
     struct AutoResponseTable {
         QString tableName;
-        struct Columns {
-            const QString id = QString("ID");
-            const QString description = QString("Description");
-            const QString referenceText = QString("ReferenceText");
-            const QString responseText = QString("ResponseText");
-            const QString enable = QString("Enable");
-            const QString referenceFormat = QString("ReferenceFormat");
-            const QString responseFormat = QString("ResponseFormat");
-            const QString option = QString("Option");
-            const QString delay = QString("Delay");
-            const QString interval = QString("Interval");
+        struct Columns{
+            QString id;
+            QString description;
+            QString referenceText;
+            QString responseText;
+            QString enable;
+            QString referenceFormat;
+            QString responseFormat;
+            QString option;
+            QString delay;
+            QString interval;
         }columns;
     };
 
@@ -49,11 +49,11 @@ public:
     struct TimingSendingTable {
         QString tableName;
         struct Columns {
-            const QString id = QString("ID");
-            const QString interval = QString("Interval");
-            const QString format = QString("Format");
-            const QString description = QString("Description");
-            const QString text = QString("Text");
+            QString id;
+            QString interval;
+            QString format;
+            QString description;
+            QString text;
         }columns;
     };
 
@@ -61,10 +61,10 @@ public:
     struct DataPresetItemTable{
         QString tableName;
         struct Columns {
-            const QString id = QString("ID");
-            const QString format = QString("Format");
-            const QString description = QString("Description");
-            const QString text = QString("Text");
+            QString id;
+            QString format;
+            QString description;
+            QString text;
         }columns;
     };
 
