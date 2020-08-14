@@ -81,7 +81,7 @@ void SAKOtherAnalyzerThreadManager::setLineEditFormat(QLineEdit *lineEdit)
 
 QByteArray SAKOtherAnalyzerThreadManager::string2bytes(QString hex)
 {
-    hex.trimmed();
+    hex = hex.trimmed();
     QStringList list = hex.split(' ');
     QByteArray startBytes;
     for (auto var : list){
