@@ -20,19 +20,19 @@
 SAKTestDebugPage::SAKTestDebugPage(QWidget *parent)
     :SAKDebugPage (SAKDataStruct::DebugPageTypeTest, parent)
 {
-    mController = new SAKTestDeviceController(this);
+    mDeviceController = new SAKTestDeviceController(this);
     initializingPage();
     setWindowTitle(SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeTest));
 }
 
 SAKTestDebugPage::~SAKTestDebugPage()
 {
-    delete mController;
+    delete mDeviceController;
 }
 
 SAKTestDeviceController *SAKTestDebugPage::controller()
 {
-    return mController;
+    return mDeviceController;
 }
 
 SAKDebugPageDevice *SAKTestDebugPage::createDevice()
@@ -43,11 +43,11 @@ SAKDebugPageDevice *SAKTestDebugPage::createDevice()
 
 SAKDebugPageController *SAKTestDebugPage::createController()
 {
-    return mController;
+    return mDeviceController;
 }
 
 void SAKTestDebugPage::setUiEnable(bool enable)
 {
-    mController->setEnabled(enable);
+    mDeviceController->setEnabled(enable);
     mRefreshPushButton->setEnabled(enable);
 }

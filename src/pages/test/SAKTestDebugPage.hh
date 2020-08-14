@@ -31,7 +31,7 @@ protected:
     SAKDebugPageController *createController() final;
     void setUiEnable(bool enable) final;
 private:
-    SAKTestDeviceController *mController;
+    SAKTestDeviceController *mDeviceController;
 };
 
 #endif
