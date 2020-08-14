@@ -22,20 +22,23 @@ class SAKTcpServerDevice:public SAKDebugPageDevice
 {
     Q_OBJECT
 public:
-    SAKTcpServerDevice(SAKTcpServerDebugPage *debugPage, QObject *parent = Q_NULLPTR);
+    SAKTcpServerDevice(SAKTcpServerDebugPage *mDebugPage, QObject *parent = Q_NULLPTR);
 private:
-    void run();    
+    bool initializing(QString &errorString) final;
+    bool open(QString &errorString) final;
+    QByteArray read() final;
+    QByteArray write(QByteArray bytes) final;
+    bool checkSomething(QString &errorString) final;
+    void close() final;
+    void free() final;
+signals:
+    void addClient(QString host, quint16 port, QTcpSocket *socket);
+    void removeClient(QTcpSocket *socket);
 private:
-    QString localHost;
-    quint16 localPort;
-    bool enableCustomLocalSetting;
-    QString serverHost;
-    quint16 serverPort;
-    SAKTcpServerDebugPage *debugPage;
-    QTcpServer *tcpServer;
-private:
-    void innerReadBytes(QTcpSocket *socket, SAKTcpServerDeviceController *deviceController);
-    void innerWriteBytes(QTcpSocket *socket, QByteArray bytes, SAKTcpServerDeviceController *deviceController);
+    SAKTcpServerDebugPage *mDebugPage;
+    QTcpServer *mTcpServer;
+    SAKTcpServerDeviceController *mDeviceController;
+    QList<QTcpSocket*> mClientList;
 };
 
 #endif

@@ -69,47 +69,6 @@ void SAKTcpClientDeviceController::refreshDevice()
     SAKGlobal::initIpComboBox(mLocalhostComboBox);
 }
 
-QString SAKTcpClientDeviceController::localHost()
-{
-    mParametersMutex.lock();
-    QString ret = mLocalhostComboBox->currentText();
-    mParametersMutex.unlock();
-    return ret;
-}
-
-quint16 SAKTcpClientDeviceController::localPort()
-{
-    mParametersMutex.lock();
-    quint16 ret = static_cast<quint16>(mLocalPortlineEdit->text().toInt());
-    mParametersMutex.unlock();
-    return ret;
-}
-
-QString SAKTcpClientDeviceController::serverHost()
-{
-    mParametersMutex.lock();
-    QString ret = mServerHostLineEdit->text();
-    mParametersMutex.unlock();
-    return ret;
-}
-
-quint16 SAKTcpClientDeviceController::serverPort()
-{
-    mParametersMutex.lock();
-    quint16 ret = static_cast<quint16>(mServerPortLineEdit->text().toInt());
-    mParametersMutex.unlock();
-
-    return ret;
-}
-
-bool SAKTcpClientDeviceController::enableCustomLocalSetting()
-{
-    mParametersMutex.lock();
-    bool ret = mSpecifyClientAddressAndPort->isChecked();
-    mParametersMutex.unlock();
-    return ret;
-}
-
 void SAKTcpClientDeviceController::on_localhostComboBox_currentIndexChanged(int index)
 {
     Q_UNUSED(index);

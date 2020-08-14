@@ -40,12 +40,6 @@ public:
     QVariant parameters() final;
     void setUiEnable(bool opened) final;
     void refreshDevice() final;
-
-    QString localHost();
-    quint16 localPort();
-    QString serverHost();
-    quint16 serverPort();
-    bool enableCustomLocalSetting();
 private:
     QMutex mParametersMutex;
     TcpClientParameters mParameters;
