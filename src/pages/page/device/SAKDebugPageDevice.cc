@@ -71,11 +71,13 @@ void SAKDebugPageDevice::run()
                 break;
             }
 
+            // Read bytes from device
             QByteArray bytes = read();
             if (bytes.length() > 0){
                 emit bytesRead(bytes);
             }
 
+            // Write bytes to device
             while (true) {
                 bytes = takeWaitingForWrittingBytes();
                 if (bytes.length() > 0){
@@ -86,7 +88,7 @@ void SAKDebugPageDevice::run()
                 }
             }
 
-            // Just for test device
+            // Just for debugging data stream
             bytes = writeForTest();
             if (bytes.length()){
                 emit bytesWritten(bytes);

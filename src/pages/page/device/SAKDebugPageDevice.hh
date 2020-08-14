@@ -37,7 +37,6 @@ protected:
 protected:
     QByteArray takeWaitingForWrittingBytes();
     void run() override;
-
     virtual bool initializing(QString &errorString);
     virtual bool open(QString &errorString);
     virtual QByteArray read();
@@ -45,6 +44,10 @@ protected:
     virtual void close();
     virtual void free();
 
+    /**
+     * @brief writeForTest: The interface is just for debugging data stream, do not override the interface
+     * @return Test data
+     */
     virtual QByteArray writeForTest();
 private:
     QMutex mWaitingForWritingBytesListMutex;
