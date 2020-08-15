@@ -65,12 +65,16 @@ QByteArray SAKUdpServerDevice::read()
             QString currentHost = parameters.currentClientHost;
             quint16 currentPort = parameters.currentClientPort;
 
-            // Do not ignore the first frame.
-            if (mDeviceController->hasNoClient()){
+            if (currentHost.isEmpty()){
                 emit addClient(peerAddress.toString(), peerPort);
                 emit bytesRead(bytes);
             }else{
-                emit addClient(peerAddress.toString(), peerPort);
+                QStringList clients = parameters.clients;
+                QString client = QString("%1:%2").arg(peerAddress.toString()).arg(QString::number(peerPort));
+                if (!client.contains(client)){
+                    emit addClient(peerAddress.toString(), peerPort);
+                }
+
                 if ((currentHost == peerAddress.toString()) && (currentPort == peerPort)){
                     emit bytesRead(bytes);
                 }

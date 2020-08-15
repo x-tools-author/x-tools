@@ -12,6 +12,7 @@
 
 #include <QMutex>
 #include <QWidget>
+#include <QVector>
 #include <QCheckBox>
 #include <QComboBox>
 #include <QTcpSocket>
@@ -33,6 +34,8 @@ public:
         quint16 serverPort;
         QString currentClientHost;
         quint16 currentClientPort;
+
+        QStringList clients;
     };
 
     SAKUdpServerDeviceController(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
@@ -42,12 +45,10 @@ public:
     void setUiEnable(bool opened) final;
     void refreshDevice() final;
 
-    bool hasNoClient();
     void addClient(QString host, quint16 port);
 private:
     QMutex mParametersMutex;
     UdpServerParameters mParameters;
-    bool mHasNoClient;   
 private:
     Ui::SAKUdpServerDeviceController *mUi;
     QComboBox *mServerHostComboBox;

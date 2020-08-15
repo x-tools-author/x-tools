@@ -18,7 +18,6 @@
 
 SAKUdpServerDeviceController::SAKUdpServerDeviceController(SAKDebugPage *debugPage, QWidget *parent)
     :SAKDebugPageController(debugPage, parent)
-    ,mHasNoClient(true)
     ,mUi(new Ui::SAKUdpServerDeviceController)
 {
     mUi->setupUi(this);
@@ -62,14 +61,8 @@ void SAKUdpServerDeviceController::refreshDevice()
     SAKGlobal::initIpComboBox(mServerHostComboBox);
 }
 
-bool SAKUdpServerDeviceController::hasNoClient()
-{
-    return mHasNoClient;
-}
-
 void SAKUdpServerDeviceController::addClient(QString host, quint16 port)
 {
-    mHasNoClient = false;
     QString item = host.append(":");
     item.append(QString::number(port));
 
@@ -83,6 +76,9 @@ void SAKUdpServerDeviceController::addClient(QString host, quint16 port)
 
     if (!isItemExisted){
         mClientHostComboBox->addItem(item);
+        mParametersMutex.lock();
+        mParameters.clients.append(item);
+        mParametersMutex.unlock();
     }
 
     mParametersMutex.lock();
@@ -104,7 +100,6 @@ void SAKUdpServerDeviceController::on_clientHostComboBox_currentTextChanged(cons
 
 void SAKUdpServerDeviceController::on_clearPushButton_clicked()
 {
-    mHasNoClient = true;
     mClientHostComboBox->clear();
     mParametersMutex.lock();
     mParameters.currentClientHost.clear();
