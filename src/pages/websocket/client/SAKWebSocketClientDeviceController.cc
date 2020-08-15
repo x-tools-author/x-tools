@@ -16,41 +16,48 @@
 #include "ui_SAKWebSocketClientDeviceController.h"
 SAKWebSocketClientDeviceController::SAKWebSocketClientDeviceController(SAKDebugPage *debugPage, QWidget *parent)
     :SAKDebugPageController(debugPage, parent)
-    ,ui(new Ui::SAKWebSocketClientDeviceController)
+    ,mUi(new Ui::SAKWebSocketClientDeviceController)
 {
-    ui->setupUi(this);
-    serverAddressLineEdit = ui->serverHostLineEdit;
-    sendingTypeComboBox = ui->sendingTypeComboBox;
-    SAKGlobal::initWebSocketSendingTypeComboBox(sendingTypeComboBox);
+    mUi->setupUi(this);
+    mServerAddressLineEdit = mUi->serverHostLineEdit;
+    mSendingTypeComboBox = mUi->sendingTypeComboBox;
+
+    SAKGlobal::initWebSocketSendingTypeComboBox(mSendingTypeComboBox);
+    on_serverHostLineEdit_textChanged(mServerAddressLineEdit->text());
+    on_sendingTypeComboBox_currentIndexChanged(0);
+    qRegisterMetaType<SAKWebSocketClientDeviceController::WebSocketClientParameters>("SAKWebSocketClientDeviceController::WebSocketClientParameters");
 }
 
 SAKWebSocketClientDeviceController::~SAKWebSocketClientDeviceController()
 {
-    delete ui;
+    delete mUi;
 }
 
 QVariant SAKWebSocketClientDeviceController::parameters()
 {
-    return QVariant::fromValue(true);
+    mParametersMutex.lock();
+    auto parameters = mParameters;
+    mParametersMutex.unlock();
+
+    return QVariant::fromValue(parameters);
 }
 
-QString SAKWebSocketClientDeviceController::serverAddress()
+void SAKWebSocketClientDeviceController::setUiEnable(bool opend)
 {
-    uiMutex.lock();
-    QString ret = serverAddressLineEdit->text();
-    uiMutex.unlock();
-    return ret;
+    mServerAddressLineEdit->setEnabled(!opend);
 }
 
-void SAKWebSocketClientDeviceController::setUiEnable(bool enable)
+void SAKWebSocketClientDeviceController::on_serverHostLineEdit_textChanged(const QString &arg1)
 {
-    serverAddressLineEdit->setEnabled(enable);
+    mParametersMutex.lock();
+    mParameters.serverAddress = arg1;
+    mParametersMutex.unlock();
 }
 
-quint32 SAKWebSocketClientDeviceController::sendingType()
+void SAKWebSocketClientDeviceController::on_sendingTypeComboBox_currentIndexChanged(int index)
 {
-    uiMutex.lock();
-    quint32 ret = sendingTypeComboBox->currentData().toUInt();
-    uiMutex.unlock();
-    return ret;
+    Q_UNUSED(index);
+    mParametersMutex.lock();
+    mParameters.sendingType = mSendingTypeComboBox->currentData().toUInt();
+    mParametersMutex.unlock();
 }

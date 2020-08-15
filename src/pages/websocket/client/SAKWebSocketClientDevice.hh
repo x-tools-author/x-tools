@@ -10,22 +10,31 @@
 #ifndef SAKWEBSOCKETCLIENTDEVICE_HH
 #define SAKWEBSOCKETCLIENTDEVICE_HH
 
+#include <QWebSocket>
 #include <QAbstractSocket>
+
 #include "SAKDebugPageDevice.hh"
 
 class SAKWebSocketClientDebugPage;
-/// @brief web socket 客户端
+class SAKWebSocketClientDeviceController;
+/// @brief Web socket client.
 class SAKWebSocketClientDevice:public SAKDebugPageDevice
 {
     Q_OBJECT
 public:
-    SAKWebSocketClientDevice(SAKWebSocketClientDebugPage *debugPage, QObject *parent = Q_NULLPTR);
+    SAKWebSocketClientDevice(SAKWebSocketClientDebugPage *mDebugPage, QObject *parent = Q_NULLPTR);
 private:
-    void run() final;
+    bool initializing(QString &errorString) final;
+    bool open(QString &errorString) final;
+    QByteArray read() final;
+    QByteArray write(QByteArray bytes) final;
+    bool checkSomething(QString &errorString) final;
+    void close() final;
+    void free() final;
 private:
-    SAKWebSocketClientDebugPage *debugPage;
-private slots:
-    void errorSlot(QAbstractSocket::SocketError error);
+    QWebSocket *mWebSocket;
+    SAKWebSocketClientDebugPage *mDebugPage;
+    SAKWebSocketClientDeviceController *mDeviceController;
 };
 
 #endif

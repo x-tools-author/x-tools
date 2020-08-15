@@ -20,81 +20,75 @@
 
 SAKWebSocketClientDevice::SAKWebSocketClientDevice(SAKWebSocketClientDebugPage *debugPage, QObject *parent)
     :SAKDebugPageDevice(parent)
-    ,debugPage (debugPage)
+    ,mDebugPage (debugPage)
 {
     qRegisterMetaType<QAbstractSocket::SocketError>("QAbstractSocket::SocketError");
+    moveToThread(this);
 }
 
-void SAKWebSocketClientDevice::run()
+bool SAKWebSocketClientDevice::initializing(QString &errorString)
 {
-    QEventLoop eventLoop;
-    SAKWebSocketClientDeviceController *deviceController = debugPage->controllerInstance();
-    QString serverAddress = deviceController->serverAddress();
+    mDeviceController = qobject_cast<SAKWebSocketClientDeviceController*>(mDebugPage->deviceController());
+    mWebSocket = new QWebSocket;
 
-    QWebSocket *webSocket = new QWebSocket;
-    connect(webSocket, &QWebSocket::connected, [&](){
-        emit deviceStateChanged(true);
-    });
-
-    connect(webSocket, &QWebSocket::textMessageReceived, [&](QString message){
+    connect(mWebSocket, &QWebSocket::textMessageReceived, [&](QString message){
         emit bytesRead(message.toLatin1());
     });
 
-    connect(webSocket, &QWebSocket::disconnected, [&](){
-        requestInterruption();
-    });
+    errorString = tr("Unknow error.");
+    return true;
+}
 
-    /// @brief 错误处理
-    connect(webSocket, SIGNAL(error(QAbstractSocket::SocketError)), this, SLOT(errorSlot(QAbstractSocket::SocketError)));
+bool SAKWebSocketClientDevice::open(QString &errorString)
+{
+    auto parameters = mDeviceController->parameters().value<SAKWebSocketClientDeviceController::WebSocketClientParameters>();
+    mWebSocket->open(parameters.serverAddress);
+    errorString = tr("Unknow error.");
+    return true;
+}
 
-    webSocket->open(serverAddress);
+QByteArray SAKWebSocketClientDevice::read()
+{
+    return QByteArray();
+}
 
-    while (true) {
-        /// @brief 处理外部中断请求
-        if (isInterruptionRequested()){
-            break;
+QByteArray SAKWebSocketClientDevice::write(QByteArray bytes)
+{
+    if (mWebSocket->state() == QAbstractSocket::ConnectedState){
+        qint64 ret = 0;
+        auto parameters = mDeviceController->parameters().value<SAKWebSocketClientDeviceController::WebSocketClientParameters>();
+        if (parameters.sendingType == SAKDataStruct::WebSocketSendingTypeText){
+            ret = mWebSocket->sendTextMessage(QString(bytes));
+        }else{
+            ret = mWebSocket->sendBinaryMessage(bytes);
         }
 
-        /// @brief 发送数据
-        while (true) {
-            QByteArray bytes = takeWaitingForWrittingBytes();
-            if (bytes.length()){
-                if (webSocket->state() == QAbstractSocket::ConnectedState){
-                    qint64 ret = 0;
-                    if (deviceController->sendingType() == SAKDataStruct::WebSocketSendingTypeText){
-                        ret = webSocket->sendTextMessage(QString(bytes));
-                    }else{
-                        ret = webSocket->sendBinaryMessage(bytes);
-                    }
-
-                    if (ret != -1){
-                        emit bytesWritten(bytes);
-                    }
-                }
-            }else{
-                break;
-            }
-        }
-
-        /// @brief 处理事件循环
-        eventLoop.processEvents();
-
-        /// @brief 线程睡眠
-        if (isInterruptionRequested()){
-            mThreadMutex.lock();
-            mThreadWaitCondition.wait(&mThreadMutex, 50);
-            mThreadMutex.unlock();
+        if (ret > 0){
+            return bytes;
         }
     }
 
-    webSocket->close();
-    webSocket->deleteLater();
-    webSocket = Q_NULLPTR;
-    emit deviceStateChanged(false);
+    return QByteArray();
 }
 
-void SAKWebSocketClientDevice::errorSlot(QAbstractSocket::SocketError error)
+bool SAKWebSocketClientDevice::checkSomething(QString &errorString)
 {
-    messageChanged(tr("连接错误：%1").arg(error), false);
-    requestInterruption();
+    if (mWebSocket->state() == QAbstractSocket::UnconnectedState){
+        errorString = tr("Connection has been disconnect.");
+        return false;
+    }
+
+    errorString = tr("Unknow error.");
+    return true;
+}
+
+void SAKWebSocketClientDevice::close()
+{
+    mWebSocket->close();
+}
+
+void SAKWebSocketClientDevice::free()
+{
+    mWebSocket->deleteLater();
+    mWebSocket = Q_NULLPTR;
 }

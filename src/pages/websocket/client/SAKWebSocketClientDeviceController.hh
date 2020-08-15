@@ -22,24 +22,31 @@ namespace Ui {
 }
 
 class SAKDebugPage;
-/// @brief web socket 客户端控制类
+/// @brief web socket client control panel
 class SAKWebSocketClientDeviceController:public SAKDebugPageController
 {
     Q_OBJECT
 public:
+    struct WebSocketClientParameters {
+        QString serverAddress;
+        quint32 sendingType;
+    };
+
     SAKWebSocketClientDeviceController(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKWebSocketClientDeviceController();
 
     QVariant parameters() final;
-    QString serverAddress();
-    void setUiEnable(bool enable);
-    quint32 sendingType();
+    void setUiEnable(bool opend) final;
 private:
-    QMutex uiMutex;
+    QMutex mParametersMutex;
+    WebSocketClientParameters mParameters;
 private:
-    Ui::SAKWebSocketClientDeviceController *ui;
-    QLineEdit *serverAddressLineEdit;
-    QComboBox *sendingTypeComboBox;
+    Ui::SAKWebSocketClientDeviceController *mUi;
+    QLineEdit *mServerAddressLineEdit;
+    QComboBox *mSendingTypeComboBox;
+private slots:
+    void on_serverHostLineEdit_textChanged(const QString &arg1);
+    void on_sendingTypeComboBox_currentIndexChanged(int index);
 };
-
+Q_DECLARE_METATYPE(SAKWebSocketClientDeviceController::WebSocketClientParameters);
 #endif

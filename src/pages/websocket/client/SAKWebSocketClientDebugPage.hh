@@ -22,16 +22,10 @@ public:
     SAKWebSocketClientDebugPage(QWidget *parent = Q_NULLPTR);
     ~SAKWebSocketClientDebugPage();
 
-    /**
-     * @brief controllerInstance 获取控制类实例
-     * @return 控制类实例
-     */
-    SAKWebSocketClientDeviceController *controllerInstance();
-protected:
     SAKDebugPageController *deviceController() final;
     SAKDebugPageDevice* createDevice() final;
 private:
-    SAKWebSocketClientDeviceController *webSocketClientDeviceController;
+    SAKWebSocketClientDeviceController *mWebSocketClientDeviceController;
 };
 
 #endif
