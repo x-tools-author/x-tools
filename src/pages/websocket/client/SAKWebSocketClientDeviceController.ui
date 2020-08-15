@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>204</width>
-    <height>68</height>
+    <width>168</width>
+    <height>90</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -26,12 +26,22 @@
    <property name="bottomMargin">
     <number>0</number>
    </property>
-   <item row="1" column="1">
-    <widget class="QLineEdit" name="serverHostLineEdit">
+   <item row="0" column="0" colspan="2">
+    <widget class="QLabel" name="label_6">
      <property name="text">
-      <string notr="true">ws://localhost:12345</string>
+      <string>Websocket client information</string>
      </property>
     </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Flow control</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QComboBox" name="sendingTypeComboBox"/>
    </item>
    <item row="1" column="0">
     <widget class="QLabel" name="label">
@@ -40,22 +50,29 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="0" colspan="2">
-    <widget class="QLabel" name="label_6">
+   <item row="1" column="1">
+    <widget class="QLineEdit" name="serverHostLineEdit">
      <property name="text">
-      <string>Websocket client information</string>
+      <string notr="true">ws://localhost:12345</string>
      </property>
     </widget>
    </item>
    <item row="2" column="0">
-    <widget class="QLabel" name="label_2">
+    <widget class="QLabel" name="label_3">
      <property name="text">
-      <string>Flow control</string>
+      <string>Client info</string>
      </property>
     </widget>
    </item>
    <item row="2" column="1">
-    <widget class="QComboBox" name="sendingTypeComboBox"/>
+    <widget class="QLineEdit" name="clientInfoLineEdit">
+     <property name="text">
+      <string notr="true"/>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

@@ -37,6 +37,8 @@ public:
 
     QVariant parameters() final;
     void setUiEnable(bool opend) final;
+
+    void setClientInfo(QString info);
 private:
     QMutex mParametersMutex;
     WebSocketClientParameters mParameters;
@@ -44,6 +46,7 @@ private:
     Ui::SAKWebSocketClientDeviceController *mUi;
     QLineEdit *mServerAddressLineEdit;
     QComboBox *mSendingTypeComboBox;
+    QLineEdit *mClientInfoLineEdit;
 private slots:
     void on_serverHostLineEdit_textChanged(const QString &arg1);
     void on_sendingTypeComboBox_currentIndexChanged(int index);

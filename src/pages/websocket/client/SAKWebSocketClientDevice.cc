@@ -30,12 +30,24 @@ bool SAKWebSocketClientDevice::initializing(QString &errorString)
 {
     mDeviceController = qobject_cast<SAKWebSocketClientDeviceController*>(mDebugPage->deviceController());
     mWebSocket = new QWebSocket;
+    connect(this, &SAKWebSocketClientDevice::clientInfoChanged, mDeviceController, &SAKWebSocketClientDeviceController::setClientInfo);
 
-    connect(mWebSocket, &QWebSocket::binaryFrameReceived, [&](QByteArray message){
+    connect(mWebSocket, &QWebSocket::connected, [=](){
+        QString info = mWebSocket->localAddress().toString();
+        info.append(":");
+        info.append(QString::number(mWebSocket->localPort()));
+        emit clientInfoChanged(info);
+    });
+
+    connect(mWebSocket, &QWebSocket::disconnected, [=](){
+        emit clientInfoChanged(QString());
+    });
+
+    connect(mWebSocket, &QWebSocket::binaryFrameReceived, [=](QByteArray message){
         emit bytesRead(message);
     });
 
-    connect(mWebSocket, &QWebSocket::textMessageReceived, [&](QString message){
+    connect(mWebSocket, &QWebSocket::textMessageReceived, [=](QString message){
         emit bytesRead(message.toUtf8());
     });
 

@@ -35,6 +35,8 @@ private:
     QWebSocket *mWebSocket;
     SAKWebSocketClientDebugPage *mDebugPage;
     SAKWebSocketClientDeviceController *mDeviceController;
+signals:
+    void clientInfoChanged(QString info);
 };
 
 #endif

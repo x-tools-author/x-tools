@@ -21,6 +21,7 @@ SAKWebSocketClientDeviceController::SAKWebSocketClientDeviceController(SAKDebugP
     mUi->setupUi(this);
     mServerAddressLineEdit = mUi->serverHostLineEdit;
     mSendingTypeComboBox = mUi->sendingTypeComboBox;
+    mClientInfoLineEdit = mUi->clientInfoLineEdit;
 
     SAKGlobal::initWebSocketSendingTypeComboBox(mSendingTypeComboBox);
     on_serverHostLineEdit_textChanged(mServerAddressLineEdit->text());
@@ -45,6 +46,11 @@ QVariant SAKWebSocketClientDeviceController::parameters()
 void SAKWebSocketClientDeviceController::setUiEnable(bool opend)
 {
     mServerAddressLineEdit->setEnabled(!opend);
+}
+
+void SAKWebSocketClientDeviceController::setClientInfo(QString info)
+{
+    mClientInfoLineEdit->setText(info);
 }
 
 void SAKWebSocketClientDeviceController::on_serverHostLineEdit_textChanged(const QString &arg1)
