@@ -62,7 +62,7 @@ bool SAKTcpClientDevice::initializing(QString &errorString)
 bool SAKTcpClientDevice::open(QString &errorString)
 {
     if (mTcpSocket->open(QTcpSocket::ReadWrite)){
-        errorString = tr("Unknow error.");
+        errorString = tr("Unknow error");
         return true;
     }else{
         errorString = tr("Can not open device:") + mTcpSocket->errorString();
@@ -91,7 +91,7 @@ bool SAKTcpClientDevice::checkSomething(QString &errorString)
         errorString = tr("Connection has been disconnected.");
         return false;
     }else{
-        errorString = tr("Unknow error.");
+        errorString = tr("Unknow error");
         return true;
     }
 }

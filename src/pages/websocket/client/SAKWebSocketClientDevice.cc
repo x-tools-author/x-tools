@@ -51,7 +51,7 @@ bool SAKWebSocketClientDevice::initializing(QString &errorString)
         emit bytesRead(message.toUtf8());
     });
 
-    errorString = tr("Unknow error.");
+    errorString = tr("Unknow error");
     return true;
 }
 
@@ -59,7 +59,7 @@ bool SAKWebSocketClientDevice::open(QString &errorString)
 {
     auto parameters = mDeviceController->parameters().value<SAKWebSocketClientDeviceController::WebSocketClientParameters>();
     mWebSocket->open(parameters.serverAddress);
-    errorString = tr("Unknow error.");
+    errorString = tr("Unknow error");
     return true;
 }
 
@@ -94,7 +94,7 @@ bool SAKWebSocketClientDevice::checkSomething(QString &errorString)
         return false;
     }
 
-    errorString = tr("Unknow error.");
+    errorString = tr("Unknow error");
     return true;
 }
 

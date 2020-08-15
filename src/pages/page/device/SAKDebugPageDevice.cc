@@ -144,7 +144,7 @@ QByteArray SAKDebugPageDevice::write(QByteArray bytes)
 
 bool SAKDebugPageDevice::checkSomething(QString &errorString)
 {
-    errorString = QString("Unknow error.");
+    errorString = QString("Unknow error");
     return true;
 }
 

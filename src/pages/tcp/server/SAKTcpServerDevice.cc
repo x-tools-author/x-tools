@@ -31,7 +31,7 @@ SAKTcpServerDevice::SAKTcpServerDevice(SAKTcpServerDebugPage *debugPage, QObject
 
 bool SAKTcpServerDevice::initializing(QString &errorString)
 {
-    errorString = tr("Unknow error.");
+    errorString = tr("Unknow error");
     mDeviceController = qobject_cast<SAKTcpServerDeviceController*>(mDebugPage->deviceController());
     connect(this, &SAKTcpServerDevice::addClient, mDeviceController, &SAKTcpServerDeviceController::addClient);
     connect(this, &SAKTcpServerDevice::removeClient, mDeviceController, &SAKTcpServerDeviceController::removeClient);
@@ -119,7 +119,7 @@ bool SAKTcpServerDevice::checkSomething(QString &errorString)
         }
     }
 
-    errorString = tr("Unknow error.");
+    errorString = tr("Unknow error");
     return true;
 }
 

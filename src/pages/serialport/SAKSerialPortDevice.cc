@@ -38,7 +38,7 @@ bool SAKSerialPortDevice::initializing(QString &errorString)
 bool SAKSerialPortDevice::open(QString &errorString)
 {
     if(mSerialPort->open(QSerialPort::ReadWrite)){
-        errorString = tr("Unknow error.");
+        errorString = tr("Unknow error");
         return true;
     }else{
         errorString = mSerialPort->errorString();
