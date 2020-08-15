@@ -23,7 +23,7 @@ namespace Ui {
 }
 
 class SAKDebugPage;
-// Udp server control panel
+/// @brief Udp server control panel
 class SAKUdpServerDeviceController:public SAKDebugPageController
 {
     Q_OBJECT
