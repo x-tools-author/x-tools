@@ -31,8 +31,12 @@ bool SAKWebSocketClientDevice::initializing(QString &errorString)
     mDeviceController = qobject_cast<SAKWebSocketClientDeviceController*>(mDebugPage->deviceController());
     mWebSocket = new QWebSocket;
 
+    connect(mWebSocket, &QWebSocket::binaryFrameReceived, [&](QByteArray message){
+        emit bytesRead(message);
+    });
+
     connect(mWebSocket, &QWebSocket::textMessageReceived, [&](QString message){
-        emit bytesRead(message.toLatin1());
+        emit bytesRead(message.toUtf8());
     });
 
     errorString = tr("Unknow error.");

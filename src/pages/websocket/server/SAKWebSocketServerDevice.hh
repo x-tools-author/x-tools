@@ -18,25 +18,31 @@
 
 class SAKWebSocketServerDebugPage;
 class SAKWebSocketServerDeviceController;
-/// @brief web socket服务器设备
+/// @brief Web socket server device
 class SAKWebSocketServerDevice:public SAKDebugPageDevice
 {
     Q_OBJECT
 public:
     SAKWebSocketServerDevice(SAKWebSocketServerDebugPage *debugPage, QObject *parent = Q_NULLPTR);
 private:
-    void run();    
+    bool initializing(QString &errorString) final;
+    bool open(QString &errorString) final;
+    QByteArray read() final;
+    QByteArray write(QByteArray bytes) final;
+    bool checkSomething(QString &errorString) final;
+    void close() final;
+    void free() final;
+signals:
+    void addClient(QString host, quint16 port, QWebSocket *socket);
+    void removeClient(QWebSocket *socket);
+    void clearClient();
 private:
-    QString mLocalHost;
-    quint16 mLocalPort;
-    bool mEnableCustomLocalSetting;
-    QString mServerHost;
-    quint16 mServerPort;
-    SAKWebSocketServerDebugPage *mDebugPage;
     QWebSocketServer *mWebSocketServer;
+    SAKWebSocketServerDebugPage *mDebugPage;
+    SAKWebSocketServerDeviceController *mDeviceController;
+    QList<QWebSocket*> mClientList;
 private:
-    void innerReadBytes(QWebSocket *socket, QByteArray bytes, SAKWebSocketServerDeviceController *deviceController);
-    void innerWriteBytes(QWebSocket *socket, QByteArray bytes, SAKWebSocketServerDeviceController *deviceController);
+    void readBytesActually(QWebSocket *socket, QByteArray bytes);
 };
 
 #endif

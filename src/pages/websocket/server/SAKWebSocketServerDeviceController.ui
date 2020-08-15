@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>168</width>
-    <height>151</height>
+    <width>150</width>
+    <height>143</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -26,29 +26,15 @@
    <property name="bottomMargin">
     <number>0</number>
    </property>
-   <item row="5" column="1">
-    <widget class="QComboBox" name="clientHostComboBox"/>
-   </item>
-   <item row="2" column="1">
-    <widget class="QLineEdit" name="serverPortLineEdit">
-     <property name="text">
-      <string notr="true">12345</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0" colspan="2">
-    <widget class="QLabel" name="label_5">
-     <property name="text">
-      <string>Websocket server information</string>
-     </property>
-    </widget>
-   </item>
    <item row="4" column="0" colspan="2">
     <widget class="QLabel" name="label_6">
      <property name="text">
       <string>Websocket client list</string>
      </property>
     </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QComboBox" name="serverhostComboBox"/>
    </item>
    <item row="3" column="0" colspan="2">
     <widget class="Line" name="line">
@@ -57,15 +43,8 @@
      </property>
     </widget>
    </item>
-   <item row="5" column="0">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>Client url</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="QComboBox" name="serverhostComboBox"/>
+   <item row="5" column="1">
+    <widget class="QComboBox" name="clientHostComboBox"/>
    </item>
    <item row="1" column="0">
     <widget class="QLabel" name="label_3">
@@ -74,10 +53,31 @@
      </property>
     </widget>
    </item>
+   <item row="2" column="1">
+    <widget class="QLineEdit" name="serverPortLineEdit">
+     <property name="text">
+      <string notr="true">12345</string>
+     </property>
+    </widget>
+   </item>
    <item row="2" column="0">
     <widget class="QLabel" name="label_4">
      <property name="text">
       <string>Port</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="2">
+    <widget class="QLabel" name="label_5">
+     <property name="text">
+      <string>Websocket server settings</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Client url</string>
      </property>
     </widget>
    </item>
