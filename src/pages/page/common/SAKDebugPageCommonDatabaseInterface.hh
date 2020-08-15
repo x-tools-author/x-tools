@@ -174,10 +174,6 @@ private:
     AutoResponseTable tableNmaeToAutoResponseTable(QString tableName);
     TimingSendingTable tableNameToTimingSendingTable(QString tableName);
     DataPresetItemTable tableNameToPresettingDataTable(QString tableName);
-
-//    void initialingAutoResponseTable(AutoResponseTable &table);
-//    void initialingTimingSendingTable(TimingSendingTable &table);
-//    void initialingDataPresetItemTable(DataPresetItemTable &table);
 };
 
 #endif

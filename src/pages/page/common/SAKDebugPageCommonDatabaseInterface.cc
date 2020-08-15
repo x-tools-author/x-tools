@@ -408,34 +408,3 @@ SAKDebugPageCommonDatabaseInterface::DataPresetItemTable SAKDebugPageCommonDatab
     }
     return table;
 }
-
-//void SAKDebugPageCommonDatabaseInterface::initialingAutoResponseTable(AutoResponseTable &table)
-//{
-//    table.columns.id = QString("ID");
-//    table.columns.description = QString("Description");
-//    table.columns.referenceText = QString("ReferenceText");
-//    table.columns.responseText = QString("ResponseText");
-//    table.columns.enable = QString("Enable");
-//    table.columns.referenceFormat = QString("ReferenceFormat");
-//    table.columns.responseFormat = QString("ResponseFormat");
-//    table.columns.option = QString("Option");
-//    table.columns.delay = QString("Delay");
-//    table.columns.interval = QString("Interval");
-//}
-
-//void SAKDebugPageCommonDatabaseInterface::initialingTimingSendingTable(TimingSendingTable &table)
-//{
-//    table.columns.id = QString("ID");
-//    table.columns.interval = QString("Interval");
-//    table.columns.format = QString("Format");
-//    table.columns.description = QString("Description");
-//    table.columns.text = QString("Text");
-//}
-
-//void SAKDebugPageCommonDatabaseInterface::initialingDataPresetItemTable(DataPresetItemTable &table)
-//{
-//    table.columns.id = QString("ID");
-//    table.columns.format = QString("Format");
-//    table.columns.description = QString("Description");
-//    table.columns.text = QString("Text");
-//}
