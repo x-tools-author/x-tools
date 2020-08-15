@@ -274,7 +274,6 @@ void SAKGlobal::initIpComboBox(QComboBox *comboBox, bool appendHostAny)
             }
         }
 
-        comboBox->addItem(QString("255.255.255.255"));
         if (appendHostAny){
             comboBox->addItem(QString(SAK_HOST_ADDRESS_ANY));
         }
