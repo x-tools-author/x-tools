@@ -81,7 +81,7 @@ private:
     SAKInputDataPresetItemManager *mInputDataItemManager;
     SAKInputCrcSettingsDialog *mCrcSettingsDialog;
     // The unit is ms.
-    const int defaultCycle = 100;
+    const int defaultCycle = 1000;
 
     // Variables about settings
     QSettings *mSettings;
