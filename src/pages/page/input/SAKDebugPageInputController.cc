@@ -249,10 +249,11 @@ void SAKDebugPageInputController::changeCycleTime()
 
 void SAKDebugPageInputController::saveInputDataToFile()
 {
+    QString defaultName = QDateTime::currentDateTime().toString("yyyyMMdd").append(".txt");
     QString fileName = QFileDialog::getSaveFileName(Q_NULLPTR,
                                                     tr("Save File"),
-                                                    QStandardPaths::writableLocation(QStandardPaths::DesktopLocation)+QString("input.txt"),
-                                                    QString("Text (*.txt)"));
+                                                    QStandardPaths::writableLocation(QStandardPaths::DesktopLocation).append("/").append(defaultName),
+                                                    tr("txt (*.txt);;all (*.txt)"));
 
     if (fileName.isEmpty()){
         return;
