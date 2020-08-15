@@ -80,8 +80,10 @@ private:
     SAKCRCInterface *mCrcInterface;
     SAKInputDataPresetItemManager *mInputDataItemManager;
     SAKInputCrcSettingsDialog *mCrcSettingsDialog;
+    // The unit is ms.
+    const int defaultCycle = 100;
 
-    // variables about settings
+    // Variables about settings
     QSettings *mSettings;
     QString mSettingStringInputTextFromat;
     QString mSettingStringCycleTime;

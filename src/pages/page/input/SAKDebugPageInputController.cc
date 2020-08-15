@@ -353,13 +353,14 @@ void SAKDebugPageInputController::initParameters()
 void SAKDebugPageInputController::setCycleEnable()
 {
     if (mCycleEnableCheckBox->isChecked()){
-        /// @brief 如果输入框输入内容不符合规范，默认循环周期为50ms
+        // If the cycle is error, default value will be used.
         bool ok = false;
         int cycleTime = mCycleTimeLineEdit->text().toInt(&ok);
-        if (ok){
-            mCycleTimeLineEdit->setText("50");
-            cycleTime = 50;
+        if (!ok){
+            mCycleTimeLineEdit->setText(QString::number(defaultCycle));
+            cycleTime = defaultCycle;
         }
+
         mTimingTimer.start(cycleTime);
         mCycleTimeLineEdit->setEnabled(false);
     }else{
@@ -442,7 +443,7 @@ void SAKDebugPageInputController::readinSettings()
     var = mSettings->value(mSettingStringCycleTime);
     QString cycleTime;
     if (var.isNull()){
-        cycleTime = QString("1000");
+        cycleTime = QString::number(defaultCycle);
     }else{
         cycleTime = QString::number(var.toInt());
     }
