@@ -23,17 +23,19 @@ class SAKUdpServerDevice:public SAKDebugPageDevice
 public:
     SAKUdpServerDevice(SAKUdpServerDebugPage *mDebugPage, QObject *parent = Q_NULLPTR);
 private:
-    void run() final;
+    bool initializing(QString &errorString) final;
+    bool open(QString &errorString) final;
+    QByteArray read() final;
+    QByteArray write(QByteArray bytes) final;
+    bool checkSomething(QString &errorString) final;
+    void close() final;
+    void free() final;
 private:
-    QString mLocalHost;
-    quint16 mLocalPort;
-    QString mServerHost;
-    quint16 mServerPort;
     SAKUdpServerDebugPage *mDebugPage;
     QUdpSocket *mUdpServer;
-private:
-    void innerReadBytes(SAKUdpServerDeviceController *deviceController);
-    void innerWriteBytes(SAKUdpServerDeviceController *deviceController);
+    SAKUdpServerDeviceController *mDeviceController;
+signals:
+    void addClient(QString host, quint16 port);
 };
 
 #endif

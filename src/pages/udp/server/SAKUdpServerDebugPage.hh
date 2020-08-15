@@ -21,12 +21,6 @@ public:
     SAKUdpServerDebugPage(QWidget *parent = Q_NULLPTR);
     ~SAKUdpServerDebugPage();
 
-    /**
-     * @brief controllerInstance: Get the instance of device controller
-     * @return: Instance of device controller
-     */
-    SAKUdpServerDeviceController *controllerInstance();
-protected:
     SAKDebugPageController *deviceController() final;
     SAKDebugPageDevice* createDevice() final;
 private:

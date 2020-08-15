@@ -28,31 +28,26 @@ class SAKUdpServerDeviceController:public SAKDebugPageController
 {
     Q_OBJECT
 public:
+    struct UdpServerParameters {
+        QString serverHost;
+        quint16 serverPort;
+        QString currentClientHost;
+        quint16 currentClientPort;
+    };
+
     SAKUdpServerDeviceController(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKUdpServerDeviceController();
 
-    QString serverHost();
-    quint16 serverPort();
+    QVariant parameters() final;
+    void setUiEnable(bool opened) final;
+    void refreshDevice() final;
 
-    QString currentClientHost();
-    quint16 currentClientPort();
-
-    void refresh();
-    void setUiEnable(bool enable);
-
-    void addClientSafely(QString host, quint16 port);
     bool hasNoClient();
+    void addClient(QString host, quint16 port);
 private:
-    QString mCurrentHost;
-    quint16 mCurrentPort;
-    QString mServerHost;
-    quint16 mServerPort;
     QMutex mParametersMutex;
-    bool mHasNoClient;
-private:
-    void addClientSafelyActually(QString host, quint16 port);
-signals:
-    void requestAddClient(QString host, quint16 port);
+    UdpServerParameters mParameters;
+    bool mHasNoClient;   
 private:
     Ui::SAKUdpServerDeviceController *mUi;
     QComboBox *mServerHostComboBox;
@@ -64,5 +59,5 @@ private slots:
     void on_serverhostComboBox_currentTextChanged(const QString &arg1);
     void on_serverPortLineEdit_textChanged(const QString &arg1);
 };
-
+Q_DECLARE_METATYPE(SAKUdpServerDeviceController::UdpServerParameters);
 #endif

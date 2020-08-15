@@ -25,51 +25,33 @@ SAKUdpServerDevice::SAKUdpServerDevice(SAKUdpServerDebugPage *debugPage, QObject
 
 }
 
-void SAKUdpServerDevice::run()
+bool SAKUdpServerDevice::initializing(QString &errorString)
 {
-    QEventLoop eventLoop;
-    SAKUdpServerDeviceController *deviceController = mDebugPage->controllerInstance();
-    mServerHost = deviceController->serverHost();
-    mServerPort = deviceController->serverPort();
+    mDeviceController = qobject_cast<SAKUdpServerDeviceController*>(mDebugPage->deviceController());
+    connect(this, &SAKUdpServerDevice::addClient, mDeviceController, &SAKUdpServerDeviceController::addClient);
+    auto parameters = mDeviceController->parameters().value<SAKUdpServerDeviceController::UdpServerParameters>();
 
-    QList<QTcpSocket*> clientList;
     mUdpServer = new QUdpSocket;
-    if (!mUdpServer->bind(QHostAddress(mServerHost), mServerPort)){
-        emit deviceStateChanged(false);
-        emit messageChanged(tr("Binding failed：")+mUdpServer->errorString(), false);
-        return;
+    if (!mUdpServer->bind(QHostAddress(parameters.serverHost), parameters.serverPort)){
+        errorString = tr("Binding failed：") + mUdpServer->errorString();
+        return false;
     }
 
-    if (mUdpServer->open(QUdpSocket::ReadWrite)){
-        emit deviceStateChanged(true);
-        while (true){
-            // The interface muse be called, or can not to read datagram.
-            eventLoop.processEvents();
-            // Read data
-            innerReadBytes(deviceController);
-            // Write data
-            innerWriteBytes(deviceController);
-
-            // Do something make cpu happy
-            if (isInterruptionRequested()){
-                break;
-            }else{
-                mThreadMutex.lock();
-                mThreadWaitCondition.wait(&mThreadMutex, SAK_DEVICE_THREAD_SLEEP_INTERVAL);
-                mThreadMutex.unlock();
-            }
-        }
-    }else{
-        emit deviceStateChanged(false);
-        emit messageChanged(tr("Open device failed：") + mUdpServer->errorString(), false);
-    }
-
-    mUdpServer->close();
-    delete mUdpServer;
-    emit deviceStateChanged(false);
+    return true;
 }
 
-void SAKUdpServerDevice::innerReadBytes(SAKUdpServerDeviceController *deviceController)
+bool SAKUdpServerDevice::open(QString &errorString)
+{
+    if (mUdpServer->open(QUdpSocket::ReadWrite)){
+        errorString = tr("Unknow error.");
+        return true;
+    }else{
+        errorString = tr("Open device failed:") + mUdpServer->errorString();
+        return false;
+    }
+}
+
+QByteArray SAKUdpServerDevice::read()
 {
     while (mUdpServer->hasPendingDatagrams()) {
         qint64 size = mUdpServer->pendingDatagramSize();
@@ -79,38 +61,52 @@ void SAKUdpServerDevice::innerReadBytes(SAKUdpServerDeviceController *deviceCont
         quint16 peerPort;
         qint64 ret = mUdpServer->readDatagram(bytes.data(), size, &peerAddress, &peerPort);
         if (ret > 0){
-            QString currentHost = deviceController->currentClientHost();
-            quint16 currentPort = deviceController->currentClientPort();
+            auto parameters = mDeviceController->parameters().value<SAKUdpServerDeviceController::UdpServerParameters>();
+            QString currentHost = parameters.currentClientHost;
+            quint16 currentPort = parameters.currentClientPort;
 
             // Do not ignore the first frame.
-            if (deviceController->hasNoClient()){
-                deviceController->addClientSafely(peerAddress.toString(), peerPort);
+            if (mDeviceController->hasNoClient()){
+                emit addClient(peerAddress.toString(), peerPort);
                 emit bytesRead(bytes);
             }else{
-                deviceController->addClientSafely(peerAddress.toString(), peerPort);
+                emit addClient(peerAddress.toString(), peerPort);
                 if ((currentHost == peerAddress.toString()) && (currentPort == peerPort)){
                     emit bytesRead(bytes);
                 }
             }
         }
     }
+
+    return QByteArray();
 }
 
-void SAKUdpServerDevice::innerWriteBytes(SAKUdpServerDeviceController *deviceController)
+QByteArray SAKUdpServerDevice::write(QByteArray bytes)
 {
-    while (true){
-        QByteArray bytes = takeWaitingForWrittingBytes();
-        if (bytes.length()){
-            QString currentHost = deviceController->currentClientHost();
-            quint16 currentPort = deviceController->currentClientPort();
-            qint64 ret = mUdpServer->writeDatagram(bytes, QHostAddress(currentHost), currentPort);
-            if (ret > 0){
-                emit bytesWritten(bytes);
-            }else{
-                emit messageChanged(QString("%1: %2").arg(tr("Write data error")).arg(mUdpServer->errorString()), false);
-            }
-        }else{
-            break;
-        }
+    auto parameters = mDeviceController->parameters().value<SAKUdpServerDeviceController::UdpServerParameters>();
+    QString currentHost = parameters.currentClientHost;
+    quint16 currentPort = parameters.currentClientPort;
+    qint64 ret = mUdpServer->writeDatagram(bytes, QHostAddress(currentHost), currentPort);
+    if (ret > 0){
+        return bytes;
     }
+
+    return QByteArray();
+}
+
+bool SAKUdpServerDevice::checkSomething(QString &errorString)
+{
+    errorString = tr("Unknow error.");
+    return true;
+}
+
+void SAKUdpServerDevice::close()
+{
+    mUdpServer->close();
+}
+
+void SAKUdpServerDevice::free()
+{
+    delete mUdpServer;
+    mUdpServer = Q_NULLPTR;
 }

@@ -26,9 +26,11 @@ SAKUdpServerDeviceController::SAKUdpServerDeviceController(SAKDebugPage *debugPa
     mServerPortLineEdit = mUi->serverPortLineEdit;
     mClientHostComboBox = mUi->clientHostComboBox;
 
-    refresh();
-    connect(this, &SAKUdpServerDeviceController::requestAddClient, this, &SAKUdpServerDeviceController::addClientSafelyActually);
-    mServerPort = mServerPortLineEdit->text().toUInt();
+    on_clientHostComboBox_currentTextChanged(mClientHostComboBox->currentText());
+    on_serverhostComboBox_currentTextChanged(mServerHostComboBox->currentText());
+    on_serverPortLineEdit_textChanged(mServerPortLineEdit->text());
+    qRegisterMetaType<SAKUdpServerDeviceController::UdpServerParameters>("SAKUdpServerDeviceController::UdpServerParameters");
+    refreshDevice();
 }
 
 SAKUdpServerDeviceController::~SAKUdpServerDeviceController()
@@ -36,53 +38,28 @@ SAKUdpServerDeviceController::~SAKUdpServerDeviceController()
     delete mUi;
 }
 
-QString SAKUdpServerDeviceController::serverHost()
+QVariant SAKUdpServerDeviceController::parameters()
 {
+    UdpServerParameters parameters;
     mParametersMutex.lock();
-    QString host = mServerHost;
+    parameters.serverHost = mParameters.serverHost;
+    parameters.serverPort = mParameters.serverPort;
+    parameters.currentClientHost = mParameters.currentClientHost;
+    parameters.currentClientPort = mParameters.currentClientPort;
     mParametersMutex.unlock();
-    return host;
+
+    return QVariant::fromValue(parameters);
 }
 
-quint16 SAKUdpServerDeviceController::serverPort()
+void SAKUdpServerDeviceController::setUiEnable(bool opened)
 {
-    mParametersMutex.lock();
-    quint16 port = mServerPort;
-    mParametersMutex.unlock();
-    return port;
+    mServerHostComboBox->setEnabled(!opened);
+    mServerPortLineEdit->setEnabled(!opened);
 }
 
-QString SAKUdpServerDeviceController::currentClientHost()
-{
-    mParametersMutex.lock();
-    QString host = mCurrentHost;
-    mParametersMutex.unlock();
-    return host;
-}
-
-quint16 SAKUdpServerDeviceController::currentClientPort()
-{
-    mParametersMutex.lock();
-    quint16 port = mCurrentPort;
-    mParametersMutex.unlock();
-    return port;
-}
-
-void SAKUdpServerDeviceController::refresh()
+void SAKUdpServerDeviceController::refreshDevice()
 {
     SAKGlobal::initIpComboBox(mServerHostComboBox);
-}
-
-void SAKUdpServerDeviceController::setUiEnable(bool enable)
-{
-    mServerHostComboBox->setEnabled(enable);
-    mServerPortLineEdit->setEnabled(enable);
-}
-
-void SAKUdpServerDeviceController::addClientSafely(QString host, quint16 port)
-{
-    mHasNoClient = false;
-    emit requestAddClient(host, port);
 }
 
 bool SAKUdpServerDeviceController::hasNoClient()
@@ -90,8 +67,9 @@ bool SAKUdpServerDeviceController::hasNoClient()
     return mHasNoClient;
 }
 
-void SAKUdpServerDeviceController::addClientSafelyActually(QString host, quint16 port)
+void SAKUdpServerDeviceController::addClient(QString host, quint16 port)
 {
+    mHasNoClient = false;
     QString item = host.append(":");
     item.append(QString::number(port));
 
@@ -107,7 +85,10 @@ void SAKUdpServerDeviceController::addClientSafelyActually(QString host, quint16
         mClientHostComboBox->addItem(item);
     }
 
-    if (mCurrentHost.isEmpty()){
+    mParametersMutex.lock();
+    auto parameters = mParameters;
+    mParametersMutex.unlock();
+    if (parameters.currentClientHost.isEmpty()){
         on_clientHostComboBox_currentTextChanged(mClientHostComboBox->currentText());
     }
 }
@@ -116,8 +97,8 @@ void SAKUdpServerDeviceController::on_clientHostComboBox_currentTextChanged(cons
 {
     mParametersMutex.lock();
     QStringList infoList = arg1.trimmed().split(':');
-    mCurrentHost = infoList.first();
-    mCurrentPort = infoList.last().toInt();
+    mParameters.currentClientHost = infoList.first();
+    mParameters.currentClientPort = infoList.last().toInt();
     mParametersMutex.unlock();
 }
 
@@ -126,21 +107,21 @@ void SAKUdpServerDeviceController::on_clearPushButton_clicked()
     mHasNoClient = true;
     mClientHostComboBox->clear();
     mParametersMutex.lock();
-    mCurrentHost.clear();
-    mCurrentPort = 0;
+    mParameters.currentClientHost.clear();
+    mParameters.currentClientPort = 0;
     mParametersMutex.unlock();
 }
 
 void SAKUdpServerDeviceController::on_serverhostComboBox_currentTextChanged(const QString &arg1)
 {
     mParametersMutex.lock();
-    mServerHost = arg1;
+    mParameters.serverHost = arg1;
     mParametersMutex.unlock();
 }
 
 void SAKUdpServerDeviceController::on_serverPortLineEdit_textChanged(const QString &arg1)
 {
     mParametersMutex.lock();
-    mServerPort = arg1.toUInt();
+    mParameters.serverPort = arg1.toUInt();
     mParametersMutex.unlock();
 }
