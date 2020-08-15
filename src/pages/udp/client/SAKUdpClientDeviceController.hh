@@ -25,36 +25,46 @@ namespace Ui {
 class SAKDebugPage;
 class SAKUdpClientDevice;
 class SAKUdpClientAdvanceSettingWidget;
-class SAKUdpClientDeviceController:public SAKDebugPageController
+class SAKUdpClientDeviceController : public SAKDebugPageController
 {
     Q_OBJECT
 public:
+    struct UdpClientParameters{
+        QString localHost;
+        quint16 localPort;
+        QString targetHost;
+        quint16 targetPort;
+        bool specifyClientAddressAndPort;
+    };
+
     SAKUdpClientDeviceController(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKUdpClientDeviceController();
 
-    QString localHost();
-    quint16 localPort();
-    QString targetHost();
-    quint16 targetPort();
-    bool enableCustomLocalSetting();
+    QVariant parameters() final;
+    void setUiEnable(bool opened) final;
+    void refreshDevice() final;
 
-    void refresh();
-    void setUiEnable(bool enable);
-    void setUdpDevice(SAKUdpClientDevice* device);
+    void setUdpDevice(SAKUdpClientDevice *device);
+    void setClientInfo(QString info);
 private:
-    QMutex uiMutex;
+    QMutex mParametersMutex;
+    UdpClientParameters mParameters;
+    SAKUdpClientAdvanceSettingWidget *mUdpAdvanceSettingWidget;
 private:
-    Ui::SAKUdpClientDeviceController *ui;
-    QComboBox *localhostComboBox;
-    QLineEdit *localPortlineEdit;
-    QCheckBox *enableLocalSettingCheckBox;
-    QLineEdit *targetHostLineEdit;
-    QLineEdit *targetPortLineEdit;
-    QPushButton* advanceUdpPushButton;
+    Ui::SAKUdpClientDeviceController *mUi;
+    QComboBox *mLocalhostComboBox;
+    QLineEdit *mLocalPortlineEdit;
+    QCheckBox *mSpecifyClientAddressAndPort;
+    QLineEdit *mBoundInfoLineEdit;
+    QLineEdit *mTargetHostLineEdit;
+    QLineEdit *mTargetPortLineEdit;
+    QPushButton *mAdvanceUdpPushButton;
 private slots:
     void on_advanceUdpPushButton_clicked();
-private:
-    SAKUdpClientAdvanceSettingWidget* udpAdvanceSettingWidget;
+    void on_localhostComboBox_currentTextChanged(const QString &arg1);
+    void on_localPortlineEdit_textChanged(const QString &arg1);
+    void on_targetHostLineEdit_textChanged(const QString &arg1);
+    void on_targetPortLineEdit_textChanged(const QString &arg1);
 };
-
+Q_DECLARE_METATYPE(SAKUdpClientDeviceController::UdpClientParameters);
 #endif

@@ -20,29 +20,24 @@
 SAKUdpClientDebugPage::SAKUdpClientDebugPage(QWidget *parent)
     :SAKDebugPage (SAKDataStruct::DebugPageTypeUdpClient, parent)
 {
-    udpDeviceController = new SAKUdpClientDeviceController(this);
-    initializingPage();
+    mUdpDeviceController = new SAKUdpClientDeviceController(this);
     setWindowTitle(SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeUdpClient));
+    initializingPage();
 }
 
 SAKUdpClientDebugPage::~SAKUdpClientDebugPage()
 {
-    udpDeviceController->deleteLater();
-}
-
-SAKUdpClientDeviceController *SAKUdpClientDebugPage::controllerInstance()
-{
-    return udpDeviceController;
+    mUdpDeviceController->deleteLater();
 }
 
 SAKDebugPageController *SAKUdpClientDebugPage::deviceController()
 {
-    return udpDeviceController;
+    return mUdpDeviceController;
 }
 
 SAKDebugPageDevice *SAKUdpClientDebugPage::createDevice()
 {
     SAKUdpClientDevice *ptr = new SAKUdpClientDevice(this);
-    udpDeviceController->setUdpDevice(ptr);
+    mUdpDeviceController->setUdpDevice(ptr);
     return ptr;
 }

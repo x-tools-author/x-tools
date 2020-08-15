@@ -21,16 +21,10 @@ public:
     SAKUdpClientDebugPage(QWidget *parent = Q_NULLPTR);
     ~SAKUdpClientDebugPage();
 
-    /**
-     * @brief controllerInstance 获取
-     * @return
-     */
-    SAKUdpClientDeviceController *controllerInstance();
-protected:
     SAKDebugPageController *deviceController() final;
     SAKDebugPageDevice* createDevice() final;
 private:
-    SAKUdpClientDeviceController *udpDeviceController;
+    SAKUdpClientDeviceController *mUdpDeviceController;
 };
 
 #endif

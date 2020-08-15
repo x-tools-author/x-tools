@@ -17,12 +17,12 @@
 
 SAKUdpClientDevice::SAKUdpClientDevice(SAKUdpClientDebugPage *debugPage, QObject *parent)
     :SAKDebugPageDevice(parent)
-    ,enableCustomLocalSetting(false)
-    ,debugPage (debugPage)
+    ,mDebugPage (debugPage)
 {
-    parametersContext.enableUnicast = true;
-    parametersContext.enableMulticast = false;
-    parametersContext.enableBroadcast = false;
+    mParametersContext.enableUnicast = true;
+    mParametersContext.enableMulticast = false;
+    mParametersContext.enableBroadcast = false;
+    qRegisterMetaType<SAKUdpClientDevice::UdpSocketParameters::MulticastInfo>("SAKUdpClientDevice::UdpSocketParameters::MulticastInfo");
 }
 
 SAKUdpClientDevice::~SAKUdpClientDevice()
@@ -32,164 +32,179 @@ SAKUdpClientDevice::~SAKUdpClientDevice()
 
 void SAKUdpClientDevice::setUnicastEnable(bool enable)
 {
-    parametersContextMutex.lock();
-    parametersContext.enableUnicast = enable;
-    parametersContextMutex.unlock();
+    mParametersContextMutex.lock();
+    mParametersContext.enableUnicast = enable;
+    mParametersContextMutex.unlock();
 }
 
 void SAKUdpClientDevice::setBroadcastEnable(bool enable)
 {
-    parametersContextMutex.lock();
-    parametersContext.enableBroadcast = enable;
-    parametersContextMutex.unlock();
+    mParametersContextMutex.lock();
+    mParametersContext.enableBroadcast = enable;
+    mParametersContextMutex.unlock();
 }
 
 void SAKUdpClientDevice::setBroadcastPort(quint16 port)
 {
-    parametersContextMutex.lock();
-    parametersContext.broadcastPort = port;
-    parametersContextMutex.unlock();
+    mParametersContextMutex.lock();
+    mParametersContext.broadcastPort = port;
+    mParametersContextMutex.unlock();
 }
 
-void SAKUdpClientDevice::addMulticastInfo(QString address, quint16 port)
+bool SAKUdpClientDevice::joinMulticastGroup(QString address, quint16 port, QString &errorString)
 {
-    parametersContextMutex.lock();
-    ParametersContext::MulticastInfo info{address, port};
-    parametersContext.multicastInfoList.append(info);
-    udpSocket->joinMulticastGroup(QHostAddress(address));
-    parametersContextMutex.unlock();
+    mParametersContextMutex.lock();
+     UdpSocketParameters::MulticastInfo info{address, port};
+    mParametersContext.multicastInfoList.append(info);
+    bool ret = mUdpSocket->joinMulticastGroup(QHostAddress(address));
+    if (ret){
+        errorString = QString("Unknow error");
+    }else{
+        errorString = mUdpSocket->errorString();
+        qDebug() << __FUNCTION__ << address << port << errorString;
+    }
+    mParametersContextMutex.unlock();
+
+    return ret;
 }
 
 void SAKUdpClientDevice::removeMulticastInfo(QString address, quint16 port)
 {
-    parametersContextMutex.lock();
-    for(int i = 0; 0 < parametersContext.multicastInfoList.length(); i++){
-        ParametersContext::MulticastInfo info = parametersContext.multicastInfoList.at(i);
+    mParametersContextMutex.lock();
+    for(int i = 0; 0 < mParametersContext.multicastInfoList.length(); i++){
+         UdpSocketParameters::MulticastInfo info = mParametersContext.multicastInfoList.at(i);
         if ((address == info.address) && (port == info.port)){
-            udpSocket->leaveMulticastGroup(QHostAddress(address));
-            parametersContext.multicastInfoList.removeAt(i);
-            udpSocket->leaveMulticastGroup(QHostAddress(address));
+            mUdpSocket->leaveMulticastGroup(QHostAddress(address));
+            mParametersContext.multicastInfoList.removeAt(i);
+            mUdpSocket->leaveMulticastGroup(QHostAddress(address));
         }
     }
-    parametersContextMutex.unlock();
+    mParametersContextMutex.unlock();
 }
 
 void SAKUdpClientDevice::setMulticastEnable(bool enable)
 {
-    parametersContextMutex.lock();
-    parametersContext.enableMulticast = enable;
-    parametersContextMutex.unlock();
+    mParametersContextMutex.lock();
+    mParametersContext.enableMulticast = enable;
+    mParametersContextMutex.unlock();
 }
 
-void SAKUdpClientDevice::run()
+bool SAKUdpClientDevice::initializing(QString &errorString)
 {
-    QEventLoop eventLoop;
-    SAKUdpClientDeviceController *deviceController = debugPage->controllerInstance();
-    enableCustomLocalSetting = deviceController->enableCustomLocalSetting();
-    localHost = deviceController->localHost();
-    localPort = deviceController->localPort();
-    targetHost = deviceController->targetHost();
-    targetPort = deviceController->targetPort();
+    mDeviceController = qobject_cast<SAKUdpClientDeviceController*>(mDebugPage->deviceController());
+    auto parameters = mDeviceController->parameters().value<SAKUdpClientDeviceController::UdpClientParameters>();
+    connect(this, &SAKUdpClientDevice::clientInfoChanged, mDeviceController, &SAKUdpClientDeviceController::setClientInfo);
+    bool specifyClientAddressAndPort = parameters.specifyClientAddressAndPort;
+    QString localHost = parameters.localHost;
+    quint16 localPort = parameters.localPort;
 
-    udpSocket = new QUdpSocket;
+    mUdpSocket = new QUdpSocket;
     bool bindResult = false;
-    if (enableCustomLocalSetting){
+    if (specifyClientAddressAndPort){
         if (localHost.compare(SAK_HOST_ADDRESS_ANY) == 0){
-            bindResult = udpSocket->bind(QHostAddress::Any, localPort);
+            bindResult = mUdpSocket->bind(QHostAddress::Any, localPort, QUdpSocket::ShareAddress);
         }else{
-            bindResult = udpSocket->bind(QHostAddress(localHost), localPort);
+            bindResult = mUdpSocket->bind(QHostAddress(localHost), localPort, QUdpSocket::ShareAddress);
         }
     }else{
-        bindResult = udpSocket->bind();
+        bindResult = mUdpSocket->bind();
     }
 
-    if (!bindResult){
-        emit deviceStateChanged(false);
-        emit messageChanged(tr("无法绑定设备")+udpSocket->errorString(), false);
-        delete udpSocket;
-        return;
-    }
-
-    if (udpSocket->open(QUdpSocket::ReadWrite)){
-        emit deviceStateChanged(true);
-        while (true){
-            /// @brief 响应外部中断请求
-            if (isInterruptionRequested()){
-                break;
-            }
-
-            /// @brief 读取数据
-//            udpSocket->waitForReadyRead(debugPage->readWriteParameters().waitForReadyReadTime);
-            while (udpSocket->hasPendingDatagrams()) {
-                QByteArray data;
-                data.resize(static_cast<int>(udpSocket->pendingDatagramSize()));
-                qint64 ret = udpSocket->readDatagram(data.data(), data.length());
-                if (ret == -1){
-                    emit messageChanged(tr("读取数据失败：")+udpSocket->errorString(), false);
-                }else{
-                    emit bytesRead(data);
-                }
-            }
-
-            /// @brief 发送数据
-            while (true){
-                QByteArray bytes = takeWaitingForWrittingBytes();
-                if (bytes.length()){
-                    /// @brief 单播
-                    if (parametersContextInstance().enableUnicast){
-                        qint64 ret = udpSocket->writeDatagram(bytes, QHostAddress(targetHost), targetPort);
-//                        udpSocket->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
-                        if (ret == -1){
-                            emit messageChanged(tr("发送数据失败：")+udpSocket->errorString(), false);
-                        }else{
-                            emit bytesWritten(bytes);
-                        }
-                    }
-
-                    /// @brief 组播
-                    if (parametersContextInstance().enableMulticast){
-                        for(auto var:parametersContextInstance().multicastInfoList){
-                            udpSocket->writeDatagram(bytes, QHostAddress(var.address), var.port);
-                            emit bytesWritten(bytes);
-                        }
-                    }
-
-                    /// @brief 广播
-                    if (parametersContextInstance().enableBroadcast){
-                        ParametersContext context = parametersContextInstance();
-                        udpSocket->writeDatagram(bytes, QHostAddress::Broadcast, context.broadcastPort);
-                        emit bytesWritten(bytes);
-                    }
-                }else{
-                    break;
-                }
-            }
-
-            /// @brief 线程事件处理
-            eventLoop.processEvents();
-
-            /// @brief 线程睡眠
-            mThreadMutex.lock();
-            mThreadWaitCondition.wait(&mThreadMutex, SAK_DEVICE_THREAD_SLEEP_INTERVAL);
-            mThreadMutex.unlock();
-        }
-
-        udpSocket->close();
-        delete udpSocket;
-        udpSocket = Q_NULLPTR;
-        emit deviceStateChanged(false);
+    if (bindResult){
+        QString info = mUdpSocket->localAddress().toString();
+        info.append(":");
+        info.append(QString::number(mUdpSocket->localPort()));
+        emit clientInfoChanged(info);
     }else{
-        emit deviceStateChanged(false);
-        emit messageChanged(tr("无法打开设备")+udpSocket->errorString(), false);
-        delete udpSocket;
+        errorString = tr("Binding failed:") + mUdpSocket->errorString();
+        return false;
     }
+
+    return true;
 }
 
-const SAKUdpClientDevice::ParametersContext SAKUdpClientDevice::parametersContextInstance()
+bool SAKUdpClientDevice::open(QString &errorString)
 {
-    parametersContextMutex.lock();
-    ParametersContext context = parametersContext;
-    parametersContextMutex.unlock();
+    if (!mUdpSocket->open(QUdpSocket::ReadWrite)){
+        errorString = tr("Open device failed:") + mUdpSocket->errorString();
+        return false;
+    }
+
+    errorString = tr("Unknow error");
+    return true;
+}
+
+QByteArray SAKUdpClientDevice::read()
+{
+    while (mUdpSocket->hasPendingDatagrams()) {
+        QByteArray data;
+        data.resize(static_cast<int>(mUdpSocket->pendingDatagramSize()));
+        qint64 ret = mUdpSocket->readDatagram(data.data(), data.length());
+        if (ret > 0){
+            emit bytesRead(data);
+        }
+    }
+
+    return QByteArray();
+}
+
+QByteArray SAKUdpClientDevice::write(QByteArray bytes)
+{
+    // Unicast
+    auto parameters = mDeviceController->parameters().value<SAKUdpClientDeviceController::UdpClientParameters>();
+    if (udpSocketParameters().enableUnicast){
+        qint64 ret = mUdpSocket->writeDatagram(bytes, QHostAddress(parameters.targetHost), parameters.targetPort);
+        if (ret > 0){
+            emit bytesWritten(bytes);
+        }
+    }
+
+    // Multicast
+    if (udpSocketParameters().enableMulticast){
+         UdpSocketParameters parameters = udpSocketParameters();
+        for(auto var : parameters.multicastInfoList){
+            qint16 ret = mUdpSocket->writeDatagram(bytes, QHostAddress(var.address), var.port);
+            if (ret > 0){
+                emit bytesWritten(bytes);
+            }
+        }
+    }
+
+    // Broadcast
+    if (udpSocketParameters().enableBroadcast){
+         UdpSocketParameters parameters = udpSocketParameters();
+        qint16 ret = mUdpSocket->writeDatagram(bytes, QHostAddress::Broadcast, parameters.broadcastPort);
+        if (ret > 0){
+            emit bytesWritten(bytes);
+        }
+    }
+
+    return QByteArray();
+}
+
+bool SAKUdpClientDevice::checkSomething(QString &errorString)
+{
+    errorString = tr("Unknow error");
+    return true;
+}
+
+void SAKUdpClientDevice::close()
+{
+    emit clientInfoChanged(QString());
+    mUdpSocket->close();
+}
+
+void SAKUdpClientDevice::free()
+{
+    delete mUdpSocket;
+    mUdpSocket = Q_NULLPTR;
+}
+
+const SAKUdpClientDevice:: UdpSocketParameters SAKUdpClientDevice::udpSocketParameters()
+{
+    mParametersContextMutex.lock();
+     UdpSocketParameters context = mParametersContext;
+    mParametersContextMutex.unlock();
 
     return context;
 }

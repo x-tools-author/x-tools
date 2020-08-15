@@ -30,24 +30,23 @@ public:
 
     void setUdpDevice(SAKUdpClientDevice* device);
 private:
-    Ui::SAKUdpClientAdvanceSettingWidget *ui;
-
-    QCheckBox* unicastCheckBox;
-    QCheckBox* broadcastCheckBox;
-    QLineEdit* broadcastPortLineEdit;
+    SAKUdpClientDevice* mUdpDevice;
+    bool mIsInitUi;
+private:
+    Ui::SAKUdpClientAdvanceSettingWidget *mUi;
+    QCheckBox* mUnicastCheckBox;
+    QCheckBox* mBroadcastCheckBox;
+    QLineEdit* mBroadcastPortLineEdit;
     QCheckBox* multicastCheckBox;
-    QListWidget* listWidget;
-    QPushButton* deletePushButton;
-    QPushButton* addPushButton;
+    QListWidget* mListWidget;
+    QPushButton* mDeletePushButton;
+    QPushButton* mAddPushButton;
 private slots:
     void on_unicastCheckBox_clicked();
     void on_broadcastCheckBox_clicked();
     void on_multicastCheckBox_clicked();
     void on_deletePushButton_clicked();
     void on_addPushButton_clicked();
-private:
-    SAKUdpClientDevice* udpDevice;
-    bool isInitUi;
 };
 
 #endif

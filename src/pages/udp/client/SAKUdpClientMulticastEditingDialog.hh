@@ -17,7 +17,6 @@ namespace Ui {
     class SAKUdpClientMulticastEditingDialog;
 }
 
-/// @brief 组播编辑弹窗
 class SAKUdpClientMulticastEditingDialog : public QDialog
 {
     Q_OBJECT
@@ -25,19 +24,10 @@ public:
     SAKUdpClientMulticastEditingDialog(QWidget *parent = Q_NULLPTR);
     ~SAKUdpClientMulticastEditingDialog();
 
-    /**
-     * @brief address 获取组播地址
-     * @return 组播地址
-     */
     QString address();
-
-    /**
-     * @brief port 获取组播端口
-     * @return 组播端口
-     */
     quint16 port();
 private:
-    Ui::SAKUdpClientMulticastEditingDialog *ui;
+    Ui::SAKUdpClientMulticastEditingDialog *mUi;
 };
 
 #endif

@@ -18,78 +18,77 @@
 #include "ui_SAKUdpClientAdvanceSettingWidget.h"
 
 SAKUdpClientAdvanceSettingWidget::SAKUdpClientAdvanceSettingWidget(QWidget *parent)
-    :QWidget (parent)
-    ,ui (new Ui::SAKUdpClientAdvanceSettingWidget)
-    ,udpDevice(Q_NULLPTR)
-    ,isInitUi (true)
-
+    :QWidget(parent)
+    ,mUdpDevice(Q_NULLPTR)
+    ,mIsInitUi(true)
+    ,mUi(new Ui::SAKUdpClientAdvanceSettingWidget)
 {
-    ui->setupUi(this);
+    mUi->setupUi(this);
+    mUnicastCheckBox = mUi->unicastCheckBox;
+    mBroadcastCheckBox = mUi->broadcastCheckBox;
+    mBroadcastPortLineEdit = mUi->broadcastPortLineEdit;
+    multicastCheckBox = mUi->multicastCheckBox;
+    mListWidget = mUi->listWidget;
+    mDeletePushButton = mUi->deletePushButton;
+    mAddPushButton = mUi->addPushButton;
 
-    unicastCheckBox = ui->unicastCheckBox;
-    broadcastCheckBox = ui->broadcastCheckBox;
-    broadcastPortLineEdit = ui->broadcastPortLineEdit;
-    multicastCheckBox = ui->multicastCheckBox;
-    listWidget = ui->listWidget;
-    deletePushButton = ui->deletePushButton;
-    addPushButton = ui->addPushButton;
-
-    isInitUi = false;   
+    mIsInitUi = false;
 }
 
 SAKUdpClientAdvanceSettingWidget::~SAKUdpClientAdvanceSettingWidget()
 {
-    delete ui;
+    delete mUi;
 }
 
 void SAKUdpClientAdvanceSettingWidget::setUdpDevice(SAKUdpClientDevice *device)
 {
+    mUdpDevice = device;
     if (device){
-        udpDevice = device;
-        udpDevice->setUnicastEnable(unicastCheckBox->isChecked());
-        udpDevice->setMulticastEnable(multicastCheckBox->isChecked());
-        udpDevice->setBroadcastEnable(broadcastCheckBox->isChecked());
+        mUdpDevice->setUnicastEnable(mUnicastCheckBox->isChecked());
+        mUdpDevice->setMulticastEnable(multicastCheckBox->isChecked());
+        mUdpDevice->setBroadcastEnable(mBroadcastCheckBox->isChecked());
+        mUdpDevice->setBroadcastPort(mBroadcastPortLineEdit->text().toInt());
     }
 }
 
 void SAKUdpClientAdvanceSettingWidget::on_unicastCheckBox_clicked()
 {
-    if (!isInitUi){
-        bool enable = unicastCheckBox->isChecked();
-        udpDevice->setUnicastEnable(enable);
+    if (!mIsInitUi){
+        bool enable = mUnicastCheckBox->isChecked();
+        mUdpDevice->setUnicastEnable(enable);
     }
 }
 
 void SAKUdpClientAdvanceSettingWidget::on_broadcastCheckBox_clicked()
 {
-    if (!isInitUi){
-        bool enable = broadcastCheckBox->isChecked();
-        broadcastPortLineEdit->setEnabled(!enable);
-        udpDevice->setBroadcastEnable(enable);
-        udpDevice->setBroadcastPort(quint16(broadcastPortLineEdit->text().toInt()));
+    if (!mIsInitUi){
+        bool enable = mBroadcastCheckBox->isChecked();
+        mBroadcastPortLineEdit->setEnabled(!enable);
+        mUdpDevice->setBroadcastEnable(enable);
+        mUdpDevice->setBroadcastPort(quint16(mBroadcastPortLineEdit->text().toInt()));
     }
 }
 
 void SAKUdpClientAdvanceSettingWidget::on_multicastCheckBox_clicked()
 {
-    if (!isInitUi){
+    if (!mIsInitUi){
         bool enable = multicastCheckBox->isChecked();
-        udpDevice->setBroadcastEnable(enable);
+        mUdpDevice->setBroadcastEnable(enable);
     }
 }
 
 void SAKUdpClientAdvanceSettingWidget::on_deletePushButton_clicked()
 {
-    QListWidgetItem *item = listWidget->currentItem();
+    QListWidgetItem *item = mListWidget->currentItem();
     if (!item){
-        QMessageBox::warning(this, tr("未选择组播条目"), tr("请选择一条组播后重试"));
+        QMessageBox::warning(this, tr("No selected item"), tr("No selected item, please select an item and then try again."));
         return;
     }
 
     QString text = item->text();
     QString address = text.split(':').first();
     quint16 port = text.split(':').last().toUShort();
-    udpDevice->removeMulticastInfo(address, port);
+    mUdpDevice->removeMulticastInfo(address, port);
     delete item;
 }
 
@@ -101,8 +100,15 @@ void SAKUdpClientAdvanceSettingWidget::on_addPushButton_clicked()
     if (ret == QDialog::Accepted){
         QString address = dialog.address();
         quint16 port = dialog.port();
-        udpDevice->addMulticastInfo(address, port);
 
-        listWidget->addItem(QString("%1:%2").arg(address).arg(port));
+        QString errorString;
+        bool success = mUdpDevice->joinMulticastGroup(address, port, errorString);
+        if (success){
+            mListWidget->addItem(QString("%1:%2").arg(address).arg(port));
+        }else{
+            QMessageBox::warning(this,
+                                 tr("Join multicast group failed").arg(errorString),
+                                 tr("Join multicast group failed:%1").arg(errorString));
+        }
     }
 }

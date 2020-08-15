@@ -20,91 +20,99 @@
 
 SAKUdpClientDeviceController::SAKUdpClientDeviceController(SAKDebugPage *debugPage, QWidget *parent)
     :SAKDebugPageController(debugPage, parent)
-    ,ui(new Ui::SAKUdpClientDeviceController)
-    ,udpAdvanceSettingWidget (new SAKUdpClientAdvanceSettingWidget)
+    ,mUdpAdvanceSettingWidget(new SAKUdpClientAdvanceSettingWidget)
+    ,mUi(new Ui::SAKUdpClientDeviceController)
 {
-    ui->setupUi(this);
+    mUi->setupUi(this);
+    mLocalhostComboBox = mUi->localhostComboBox;
+    mLocalPortlineEdit = mUi->localPortlineEdit;
+    mSpecifyClientAddressAndPort = mUi->specifyClientAddressAndPort;
+    mBoundInfoLineEdit = mUi->boundInfoLineEdit;
+    mTargetHostLineEdit = mUi->targetHostLineEdit;
+    mTargetPortLineEdit = mUi->targetPortLineEdit;
+    mAdvanceUdpPushButton = mUi->advanceUdpPushButton;
+    mAdvanceUdpPushButton->setEnabled(false);
 
-    localhostComboBox = ui->localhostComboBox;
-    localPortlineEdit = ui->localPortlineEdit;
-    enableLocalSettingCheckBox = ui->enableLocalSettingCheckBox;
-    targetHostLineEdit = ui->targetHostLineEdit;
-    targetPortLineEdit = ui->targetPortLineEdit;
-    advanceUdpPushButton = ui->advanceUdpPushButton;
-    advanceUdpPushButton->setEnabled(false);
-
-    refresh();
+    mParameters.localHost = mLocalhostComboBox->currentText();
+    mParameters.localPort = mLocalPortlineEdit->text().toInt();
+    mParameters.specifyClientAddressAndPort = mSpecifyClientAddressAndPort->isChecked();
+    mParameters.targetHost = mTargetHostLineEdit->text();
+    mParameters.targetPort = mTargetPortLineEdit->text().toInt();
+    qRegisterMetaType<SAKUdpClientDeviceController::UdpClientParameters>("SAKUdpClientDeviceController::UdpClientParameters");
+    refreshDevice();
 }
 
 SAKUdpClientDeviceController::~SAKUdpClientDeviceController()
 {
-    delete udpAdvanceSettingWidget;
-    delete ui;
+    delete mUdpAdvanceSettingWidget;
+    delete mUi;
 }
 
-QString SAKUdpClientDeviceController::localHost()
+QVariant SAKUdpClientDeviceController::parameters()
 {
-    uiMutex.lock();
-    QString ret = localhostComboBox->currentText();
-    uiMutex.unlock();
-    return ret;
+    mParametersMutex.lock();
+    auto parameter = mParameters;
+    mParametersMutex.unlock();
+
+    return QVariant::fromValue(parameter);
 }
 
-quint16 SAKUdpClientDeviceController::localPort()
+void SAKUdpClientDeviceController::setUiEnable(bool opened)
 {
-    uiMutex.lock();
-    quint16 ret = static_cast<quint16>(localPortlineEdit->text().toInt());
-    uiMutex.unlock();
-    return ret;
+    mLocalhostComboBox->setEnabled(!opened);
+    mLocalPortlineEdit->setEnabled(!opened);
+    mSpecifyClientAddressAndPort->setEnabled(!opened);
+    mTargetHostLineEdit->setEnabled(!opened);
+    mTargetPortLineEdit->setEnabled(!opened);
+    mAdvanceUdpPushButton->setEnabled(opened);
 }
 
-QString SAKUdpClientDeviceController::targetHost()
+void SAKUdpClientDeviceController::refreshDevice()
 {
-    uiMutex.lock();
-    QString ret = targetHostLineEdit->text();
-    uiMutex.unlock();
-    return ret;
-}
-
-quint16 SAKUdpClientDeviceController::targetPort()
-{
-    uiMutex.lock();
-    quint16 ret = static_cast<quint16>(targetPortLineEdit->text().toInt());
-    uiMutex.unlock();
-    return ret;
-}
-
-bool SAKUdpClientDeviceController::enableCustomLocalSetting()
-{
-    uiMutex.lock();
-    bool ret = enableLocalSettingCheckBox->isChecked();
-    uiMutex.unlock();
-    return ret;
-}
-
-void SAKUdpClientDeviceController::refresh()
-{
-    SAKGlobal::initIpComboBox(localhostComboBox, true);
-}
-
-void SAKUdpClientDeviceController::setUiEnable(bool enable)
-{
-    localhostComboBox->setEnabled(enable);
-    localPortlineEdit->setEnabled(enable);
-    enableLocalSettingCheckBox->setEnabled(enable);
-    targetHostLineEdit->setEnabled(enable);
-    targetPortLineEdit->setEnabled(enable);
-    advanceUdpPushButton->setEnabled(!enable);
+    SAKGlobal::initIpComboBox(mLocalhostComboBox, true);
 }
 
 void SAKUdpClientDeviceController::setUdpDevice(SAKUdpClientDevice *device)
 {
-    udpAdvanceSettingWidget->setUdpDevice(device);
+    mUdpAdvanceSettingWidget->setUdpDevice(device);
+}
+
+void SAKUdpClientDeviceController::setClientInfo(QString info)
+{
+    mBoundInfoLineEdit->setText(info);
 }
 
 void SAKUdpClientDeviceController::on_advanceUdpPushButton_clicked()
 {
-    if (udpAdvanceSettingWidget){
-        udpAdvanceSettingWidget->isHidden() ? udpAdvanceSettingWidget->show() : udpAdvanceSettingWidget->activateWindow();
+    if (mUdpAdvanceSettingWidget){
+        mUdpAdvanceSettingWidget->isHidden() ? mUdpAdvanceSettingWidget->show() : mUdpAdvanceSettingWidget->activateWindow();
     }
+}
+
+void SAKUdpClientDeviceController::on_localhostComboBox_currentTextChanged(const QString &arg1)
+{
+    mParametersMutex.lock();
+    mParameters.localHost = arg1;
+    mParametersMutex.unlock();
+}
+
+void SAKUdpClientDeviceController::on_localPortlineEdit_textChanged(const QString &arg1)
+{
+    mParametersMutex.lock();
+    mParameters.localPort = arg1.toInt();
+    mParametersMutex.unlock();
+}
+
+void SAKUdpClientDeviceController::on_targetHostLineEdit_textChanged(const QString &arg1)
+{
+    mParametersMutex.lock();
+    mParameters.targetHost = arg1;
+    mParametersMutex.unlock();
+}
+
+void SAKUdpClientDeviceController::on_targetPortLineEdit_textChanged(const QString &arg1)
+{
+    mParametersMutex.lock();
+    mParameters.targetPort = arg1.toInt();
+    mParametersMutex.unlock();
 }

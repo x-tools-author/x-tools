@@ -12,23 +12,23 @@
 
 SAKUdpClientMulticastEditingDialog::SAKUdpClientMulticastEditingDialog(QWidget *parent)
     : QDialog(parent)
-    , ui(new Ui::SAKUdpClientMulticastEditingDialog)
+    , mUi(new Ui::SAKUdpClientMulticastEditingDialog)
 {
-    ui->setupUi(this);
+    mUi->setupUi(this);
     setModal(true);
 }
 
 SAKUdpClientMulticastEditingDialog::~SAKUdpClientMulticastEditingDialog()
 {
-    delete ui;
+    delete mUi;
 }
 
 QString SAKUdpClientMulticastEditingDialog::address()
 {
-    return ui->addressLineEdit->text().trimmed();
+    return mUi->addressLineEdit->text().trimmed();
 }
 
 quint16 SAKUdpClientMulticastEditingDialog::port()
 {
-    return ui->portLineEdit->text().trimmed().toUShort();
+    return mUi->portLineEdit->text().trimmed().toUShort();
 }

@@ -32,7 +32,7 @@ bool SAKUdpServerDevice::initializing(QString &errorString)
     auto parameters = mDeviceController->parameters().value<SAKUdpServerDeviceController::UdpServerParameters>();
 
     mUdpServer = new QUdpSocket;
-    if (!mUdpServer->bind(QHostAddress(parameters.serverHost), parameters.serverPort)){
+    if (!mUdpServer->bind(QHostAddress(parameters.serverHost), parameters.serverPort, QUdpSocket::ShareAddress)){
         errorString = tr("Binding failed：") + mUdpServer->errorString();
         return false;
     }
@@ -43,7 +43,7 @@ bool SAKUdpServerDevice::initializing(QString &errorString)
 bool SAKUdpServerDevice::open(QString &errorString)
 {
     if (mUdpServer->open(QUdpSocket::ReadWrite)){
-        errorString = tr("Unknow error.");
+        errorString = tr("Unknow error");
         return true;
     }else{
         errorString = tr("Open device failed:") + mUdpServer->errorString();
@@ -100,7 +100,7 @@ QByteArray SAKUdpServerDevice::write(QByteArray bytes)
 
 bool SAKUdpServerDevice::checkSomething(QString &errorString)
 {
-    errorString = tr("Unknow error.");
+    errorString = tr("Unknow error");
     return true;
 }
 

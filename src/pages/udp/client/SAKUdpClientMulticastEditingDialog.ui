@@ -44,7 +44,7 @@
    <item row="3" column="0" colspan="3">
     <widget class="QLineEdit" name="portLineEdit">
      <property name="text">
-      <string notr="true"/>
+      <string notr="true">12345</string>
      </property>
      <property name="maxLength">
       <number>5</number>

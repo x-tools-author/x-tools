@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>181</width>
-    <height>219</height>
+    <width>179</width>
+    <height>238</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -26,24 +26,24 @@
    <property name="bottomMargin">
     <number>0</number>
    </property>
-   <item row="7" column="0">
+   <item row="8" column="0">
     <widget class="QLabel" name="label_2">
      <property name="text">
       <string>Port</string>
      </property>
     </widget>
    </item>
-   <item row="6" column="1">
-    <widget class="QLineEdit" name="targetHostLineEdit">
+   <item row="8" column="1">
+    <widget class="QLineEdit" name="targetPortLineEdit">
      <property name="text">
-      <string>127.0.0.1</string>
+      <string>44444</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="0" colspan="2">
-    <widget class="QCheckBox" name="enableLocalSettingCheckBox">
+   <item row="7" column="1">
+    <widget class="QLineEdit" name="targetHostLineEdit">
      <property name="text">
-      <string>Specify client information</string>
+      <string>127.0.0.1</string>
      </property>
     </widget>
    </item>
@@ -54,38 +54,28 @@
      </property>
     </widget>
    </item>
-   <item row="9" column="1">
+   <item row="3" column="0" colspan="2">
+    <widget class="QCheckBox" name="specifyClientAddressAndPort">
+     <property name="text">
+      <string>Specify client information</string>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="1">
     <widget class="QPushButton" name="advanceUdpPushButton">
      <property name="text">
       <string>AdvanceSettings</string>
      </property>
     </widget>
    </item>
-   <item row="7" column="1">
-    <widget class="QLineEdit" name="targetPortLineEdit">
+   <item row="9" column="0" colspan="2">
+    <widget class="QLabel" name="label_7">
      <property name="text">
-      <string>44444</string>
+      <string>Advance settings</string>
      </property>
     </widget>
    </item>
-   <item row="0" column="0" colspan="2">
-    <widget class="QLabel" name="label_5">
-     <property name="text">
-      <string>Udp client information</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="QComboBox" name="localhostComboBox"/>
-   </item>
-   <item row="5" column="0" colspan="2">
-    <widget class="QLabel" name="label_6">
-     <property name="text">
-      <string>Udp server inforamtion</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="0">
+   <item row="7" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
       <string>Address</string>
@@ -99,10 +89,27 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="0" colspan="2">
+   <item row="5" column="0" colspan="2">
     <widget class="Line" name="line">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="2">
+    <widget class="QLabel" name="label_5">
+     <property name="text">
+      <string>Udp client information</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QComboBox" name="localhostComboBox"/>
+   </item>
+   <item row="6" column="0" colspan="2">
+    <widget class="QLabel" name="label_6">
+     <property name="text">
+      <string>Udp server inforamtion</string>
      </property>
     </widget>
    </item>
@@ -113,10 +120,23 @@
      </property>
     </widget>
    </item>
-   <item row="8" column="0" colspan="2">
-    <widget class="QLabel" name="label_7">
+   <item row="4" column="0">
+    <widget class="QLabel" name="label_8">
      <property name="text">
-      <string>Advance settings</string>
+      <string>Bound info</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <widget class="QLineEdit" name="boundInfoLineEdit">
+     <property name="toolTip">
+      <string>The bound address and port of socket.</string>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+     <property name="placeholderText">
+      <string notr="true"/>
      </property>
     </widget>
    </item>
