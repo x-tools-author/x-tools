@@ -43,6 +43,19 @@ public:
             QString delay;
             QString interval;
         }columns;
+
+        AutoResponseTable(){
+            columns.id = QString("ID");
+            columns.description = QString("Description");
+            columns.referenceText = QString("ReferenceText");
+            columns.responseText = QString("ResponseText");
+            columns.enable = QString("Enable");
+            columns.referenceFormat = QString("ReferenceFormat");
+            columns.responseFormat = QString("ResponseFormat");
+            columns.option = QString("Option");
+            columns.delay = QString("Delay");
+            columns.interval = QString("Interval");
+        }
     };
 
     // timing sent table context
@@ -55,6 +68,14 @@ public:
             QString description;
             QString text;
         }columns;
+
+        TimingSendingTable(){
+            columns.id = QString("ID");
+            columns.interval = QString("Interval");
+            columns.format = QString("Format");
+            columns.description = QString("Description");
+            columns.text = QString("Text");
+        }
     };
 
     // data preset table context
@@ -66,6 +87,13 @@ public:
             QString description;
             QString text;
         }columns;
+
+        DataPresetItemTable(){
+            columns.id = QString("ID");
+            columns.format = QString("Format");
+            columns.description = QString("Description");
+            columns.text = QString("Text");
+        }
     };
 
     /**
@@ -146,6 +174,10 @@ private:
     AutoResponseTable tableNmaeToAutoResponseTable(QString tableName);
     TimingSendingTable tableNameToTimingSendingTable(QString tableName);
     DataPresetItemTable tableNameToPresettingDataTable(QString tableName);
+
+//    void initialingAutoResponseTable(AutoResponseTable &table);
+//    void initialingTimingSendingTable(TimingSendingTable &table);
+//    void initialingDataPresetItemTable(DataPresetItemTable &table);
 };
 
 #endif
