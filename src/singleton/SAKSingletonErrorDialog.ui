@@ -6,32 +6,32 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>522</width>
+    <width>342</width>
     <height>77</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>程序已运行</string>
+   <string>SAK is running</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="2" column="1">
     <widget class="QPushButton" name="pushButton">
      <property name="text">
-      <string>确定</string>
+      <string>OK</string>
      </property>
     </widget>
    </item>
    <item row="1" column="0" colspan="2">
     <widget class="QLabel" name="label_2">
      <property name="text">
-      <string>你可以通过“文件”菜单的“新建调试页面”或“新建调试窗口”来添加设备调试页面或窗口！</string>
+      <string>You can new debugging window or page from &quot;File&quot; menu.</string>
      </property>
     </widget>
    </item>
    <item row="0" column="0" colspan="2">
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>“瑞士军刀”已在运行，点击“确定”按钮后本次启动将终止！</string>
+      <string>SAK is running, the starting will be terminated.</string>
      </property>
     </widget>
    </item>
