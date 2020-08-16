@@ -57,7 +57,6 @@ bool SAKTcpClientDevice::initializing(QString &errorString)
     if (mTcpSocket->state() != QTcpSocket::ConnectedState){
         if (!mTcpSocket->waitForConnected()){
             errorString = tr("Connect to server failed:") + mTcpSocket->errorString();
-            qDebug() << __FUNCTION__ << parameters.serverHost << parameters.serverPort;
             return false;
         }
     }
