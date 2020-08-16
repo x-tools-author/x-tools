@@ -130,7 +130,6 @@ INCLUDEPATH += \
     src/pages/page/output/save2file \
     src/pages/page/statistics \
     src/pages/sslsocket/client \
-    src/pages/sslsocket/common \
     src/pages/sslsocket/server \
     src/pages/tcp/client \
     src/pages/tcp/server \
@@ -147,6 +146,7 @@ FORMS += \
     src/mainwindow/SAKMainWindowQrCodeView.ui \
     src/mainwindow/SAKMainWindowTabPageNameEditDialog.ui \
     src/pages/page/SAKDebugPage.ui \
+    src/pages/page/common/SAKSslSocketCommonConfiguration.ui \
     src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui \
     src/pages/page/input/datapreset/SAKInputDataPresetItem.ui \
     src/pages/page/input/datapreset/SAKInputDataPresetItemManager.ui \
@@ -163,7 +163,6 @@ FORMS += \
     src/pages/page/other/transmission/SAKOtherTransmissionPageViewer.ui \
     src/pages/page/output/save2file/SAKOutputSave2FileDialog.ui \
     src/pages/sslsocket/client/SAKSslSocketClientDeviceController.ui \
-    src/pages/sslsocket/common/SAKSslSocketCommonConfiguration.ui \
     src/pages/sslsocket/server/SAKSslSocketServerDeviceController.ui \
     src/pages/tcp/client/SAKTcpClientDeviceController.ui \
     src/pages/tcp/server/SAKTcpServerDeviceController.ui \
@@ -190,6 +189,7 @@ HEADERS += \
     src/mainwindow/SAKMainWindowTabPageNameEditDialog.hh \
     src/pages/page/SAKDebugPage.hh \
     src/pages/page/common/SAKDebugPageCommonDatabaseInterface.hh \
+    src/pages/page/common/SAKSslSocketCommonConfiguration.hh \
     src/pages/page/controller/SAKDebugPageController.hh \
     src/pages/page/device/SAKDebugPageDevice.hh \
     src/pages/page/input/SAKDebugPageInputController.hh \
@@ -221,7 +221,6 @@ HEADERS += \
     src/pages/sslsocket/client/SAKSslSocketClientDebugPage.hh \
     src/pages/sslsocket/client/SAKSslSocketClientDevice.hh \
     src/pages/sslsocket/client/SAKSslSocketClientDeviceController.hh \
-    src/pages/sslsocket/common/SAKSslSocketCommonConfiguration.hh \
     src/pages/sslsocket/server/SAKSslSocketServerDebugPage.hh \
     src/pages/sslsocket/server/SAKSslSocketServerDevice.hh \
     src/pages/sslsocket/server/SAKSslSocketServerDeviceController.hh \
@@ -262,6 +261,7 @@ SOURCES += \
     src/mainwindow/SAKMainWindowTabPageNameEditDialog.cc \
     src/pages/page/SAKDebugPage.cc \
     src/pages/page/common/SAKDebugPageCommonDatabaseInterface.cc \
+    src/pages/page/common/SAKSslSocketCommonConfiguration.cc \
     src/pages/page/controller/SAKDebugPageController.cc \
     src/pages/page/device/SAKDebugPageDevice.cc \
     src/pages/page/input/SAKDebugPageInputController.cc \
@@ -294,7 +294,6 @@ SOURCES += \
     src/pages/sslsocket/client/SAKSslSocketClientDebugPage.cc \
     src/pages/sslsocket/client/SAKSslSocketClientDevice.cc \
     src/pages/sslsocket/client/SAKSslSocketClientDeviceController.cc \
-    src/pages/sslsocket/common/SAKSslSocketCommonConfiguration.cc \
     src/pages/sslsocket/server/SAKSslSocketServerDebugPage.cc \
     src/pages/sslsocket/server/SAKSslSocketServerDevice.cc \
     src/pages/sslsocket/server/SAKSslSocketServerDeviceController.cc \
