@@ -7,17 +7,17 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#include "SAKSslSocketCommonConfiguration.hh"
+#include "SAKDebugPageCommonSslConfigurationWidget.hh"
 #include "ui_SAKSslSocketCommonConfiguration.h"
 
-SAKSslSocketCommonConfiguration::SAKSslSocketCommonConfiguration(QWidget *parent)
+SAKDebugPageCommonSslConfigurationWidget::SAKDebugPageCommonSslConfigurationWidget(QWidget *parent)
     :QWidget(parent)
-    ,mUi(new Ui::SAKSslSocketCommonConfiguration)
+    ,mUi(new Ui::SAKDebugPageCommonSslConfigurationWidget)
 {
     mUi->setupUi(this);
 }
 
-SAKSslSocketCommonConfiguration::~SAKSslSocketCommonConfiguration()
+SAKDebugPageCommonSslConfigurationWidget::~SAKDebugPageCommonSslConfigurationWidget()
 {
     delete mUi;
 }
