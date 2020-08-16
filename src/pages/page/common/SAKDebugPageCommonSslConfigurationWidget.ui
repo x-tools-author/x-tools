@@ -36,6 +36,98 @@
     </rect>
    </property>
   </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>20</y>
+     <width>91</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Cipher suite</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox_2">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>20</y>
+     <width>69</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>20</y>
+     <width>54</width>
+     <height>12</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>EllipticCurve</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox_3">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>20</y>
+     <width>69</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>70</y>
+     <width>54</width>
+     <height>12</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Verify mode</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox_4">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>70</y>
+     <width>69</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>70</y>
+     <width>91</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>EncodingFormat</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox_5">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>70</y>
+     <width>69</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
