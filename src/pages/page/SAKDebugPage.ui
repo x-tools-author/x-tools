@@ -294,7 +294,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>---------------------------------------------------------------------------</string>
+         <string notr="true">---------------------------------------------------------------------------</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -333,7 +333,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>----------------------------------------------------------------------------------------------------</string>
+         <string notr="true">----------------------------------------------------------------------------------------------------</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
