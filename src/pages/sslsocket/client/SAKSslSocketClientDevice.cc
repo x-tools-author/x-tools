@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2020 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -12,115 +12,107 @@
 #include <QHostAddress>
 #include <QApplication>
 
-#include "SAKTcpClientDevice.hh"
-#include "SAKTcpClientDebugPage.hh"
-#include "SAKTcpClientDeviceController.hh"
+#include "SAKSslSocketClientDevice.hh"
+#include "SAKSslSocketClientDebugPage.hh"
+#include "SAKSslSocketClientDeviceController.hh"
 
-SAKTcpClientDevice::SAKTcpClientDevice(SAKTcpClientDebugPage *debugPage, QObject *parent)
+SAKSslSocketClientDevice::SAKSslSocketClientDevice(SAKSslSocketClientDebugPage *debugPage, QObject *parent)
     :SAKDebugPageDevice(parent)
-    ,debugPage (debugPage)
+    ,mDebugPage (debugPage)
 {
 
 }
 
-void SAKTcpClientDevice::run()
+bool SAKSslSocketClientDevice::initializing(QString &errorString)
 {
     QEventLoop eventLoop;
-    SAKTcpClientDeviceController *deviceController = debugPage->controllerInstance();
-    localHost = deviceController->localHost();
-    localPort = deviceController->localPort();
-    serverHost = deviceController->serverHost();
-    serverPort = deviceController->serverPort();
-    enableCustomLocalSetting = deviceController->enableCustomLocalSetting();
+    mDeviceController = qobject_cast<SAKSslSocketClientDeviceController*>(mDebugPage->deviceController());
+    connect(this, &SAKSslSocketClientDevice::clientInfoChange, mDeviceController, &SAKSslSocketClientDeviceController::setClientInfo);
+    auto parameters = mDeviceController->parameters().value<SAKSslSocketClientDeviceController::SslSocketClientParameters>();
+    mLocalHost = parameters.localHost;
+    mLocalPort = parameters.localPort;
+    mServerHost = parameters.serverHost;
+    mServerPort = parameters.serverPort;
+    mSpecifyClientAddressAndPort = parameters.specifyClientAddressAndPort;
 
-    tcpSocket = new QTcpSocket;
-
+    mSslSocket = new QSslSocket;
     bool bindResult = false;
-    if (enableCustomLocalSetting){
-        bindResult = tcpSocket->bind(QHostAddress(localHost), localPort);
+    if (mSpecifyClientAddressAndPort){
+        bindResult = mSslSocket->bind(QHostAddress(mLocalHost), mLocalPort);
     }else{
-        bindResult = tcpSocket->bind();
+        bindResult = mSslSocket->bind();
     }
 
     if (!bindResult){
-        emit deviceStateChanged(false);
-        emit messageChanged(tr("无法绑定设备")+tcpSocket->errorString(), false);
-        delete tcpSocket;
-        return;
-    }
-
-    tcpSocket->connectToHost(serverHost, serverPort);
-    if (tcpSocket->state() != QTcpSocket::ConnectedState){
-        if (!tcpSocket->waitForConnected()){
-            emit deviceStateChanged(false);
-            emit messageChanged(tr("无法连接到服务器")+tcpSocket->errorString(), false);
-            delete tcpSocket;
-            return;
-        }
-    }
-
-
-    if (tcpSocket->open(QTcpSocket::ReadWrite)){
-        emit deviceStateChanged(true);
-
-        while (true) {
-            /// @brief 响应中断
-            if (isInterruptionRequested()){
-                break;
-            }
-
-            /// @brief 读取数据
-//            tcpSocket->waitForReadyRead(debugPage->readWriteParameters().waitForReadyReadTime);
-            QByteArray bytes = tcpSocket->readAll();
-            if (!bytes.isEmpty()){
-                emit bytesRead(bytes);
-            }
-
-            /// @brief 发送数据
-            while (true){
-                QByteArray bytes = takeWaitingForWrittingBytes();
-                if (bytes.length()){
-                    qint64 ret = tcpSocket->write(bytes);
-//                    tcpSocket->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
-                    if (ret == -1){
-                        emit messageChanged(tr("发送数据失败：")+tcpSocket->errorString(), false);
-                    }else{
-                        emit bytesWritten(bytes);
-                    }
-                }else{
-                    break;
-                }
-            }
-
-            /// @brief 检查服务器状态
-            if (tcpSocket->state() == QTcpSocket::UnconnectedState){
-                emit messageChanged(tr("服务器已断开"), true);
-                break;
-            }
-
-            /// @brief 处理线程事件
-            eventLoop.processEvents();
-
-            /// @brief 线程睡眠
-            mThreadMutex.lock();
-            mThreadWaitCondition.wait(&mThreadMutex, SAK_DEVICE_THREAD_SLEEP_INTERVAL);
-            mThreadMutex.unlock();
-        }
-
-        /// @brief 退出前断开与服务器的链接
-        if (tcpSocket->state() == QTcpSocket::ClosingState){
-            tcpSocket->disconnectFromHost();
-            if (tcpSocket->state() == QTcpSocket::ConnectedState){
-                if(!tcpSocket->waitForConnected()){
-                    emit messageChanged(tr("无法断开与服务器的链接：")+tcpSocket->errorString(), true);
-                }
-            }
-        }
-        tcpSocket->close();
-        delete tcpSocket;
-        emit deviceStateChanged(false);
+        errorString = tr("Binding failed:") + mSslSocket->errorString();
+        return false;
     }else{
-        emit deviceStateChanged(false);
-        emit messageChanged(tr("无法打开设备")+tcpSocket->errorString(), false);
+        QString info = mSslSocket->localAddress().toString();
+        info.append(":");
+        info.append(QString::number(mSslSocket->localPort()));
+        emit clientInfoChange(info);
     }
+
+    mSslSocket->connectToHost(mServerHost, mServerPort);
+    if (mSslSocket->state() != QTcpSocket::ConnectedState){
+        if (!mSslSocket->waitForConnected()){
+            errorString = tr("Connect to server failed:") + mSslSocket->errorString();
+            return false;
+        }
+    }
+
+    return true;
+}
+
+bool SAKSslSocketClientDevice::open(QString &errorString)
+{
+    if (mSslSocket->open(QTcpSocket::ReadWrite)){
+        errorString = tr("Unknow error");
+        return true;
+    }else{
+        errorString = tr("Can not open device:") + mSslSocket->errorString();
+        return false;
+    }
+}
+
+QByteArray SAKSslSocketClientDevice::read()
+{
+    return mSslSocket->readAll();
+}
+
+QByteArray SAKSslSocketClientDevice::write(QByteArray bytes)
+{
+    qint64 ret = mSslSocket->write(bytes);
+    if (ret > 0){
+        return bytes;
+    }else{
+        return QByteArray();
+    }
+}
+
+bool SAKSslSocketClientDevice::checkSomething(QString &errorString)
+{
+    if(mSslSocket->state() == QTcpSocket::UnconnectedState){
+        errorString = tr("Connection has been disconnected.");
+        return false;
+    }else{
+        errorString = tr("Unknow error");
+        return true;
+    }
+}
+
+void SAKSslSocketClientDevice::close()
+{
+    if (mSslSocket->state() == QTcpSocket::ConnectedState){
+        mSslSocket->disconnectFromHost();
+    }
+
+    mSslSocket->close();
+    emit clientInfoChange(QString());
+}
+
+void SAKSslSocketClientDevice::free()
+{
+    delete mSslSocket;
+    mSslSocket = Q_NULLPTR;
 }

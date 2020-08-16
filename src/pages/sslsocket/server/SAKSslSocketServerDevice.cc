@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2020 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -13,124 +13,123 @@
 #include <QApplication>
 
 #include "SAKDebugPage.hh"
-#include "SAKTcpServerDevice.hh"
-#include "SAKTcpServerDebugPage.hh"
-#include "SAKTcpServerDeviceController.hh"
+#include "SAKSslSocketServerDevice.hh"
+#include "SAKSslSocketServerDebugPage.hh"
+#include "SAKSslSocketServerDeviceController.hh"
 
-SAKTcpServerDevice::SAKTcpServerDevice(SAKTcpServerDebugPage *debugPage, QObject *parent)
+SAKSslSocketServerDevice::SAKSslSocketServerDevice(SAKSslSocketServerDebugPage *debugPage, QObject *parent)
     :SAKDebugPageDevice(parent)
-    ,debugPage(debugPage)
-    ,tcpServer(Q_NULLPTR)
+    ,mDebugPage(debugPage)
+    ,mTcpServer(Q_NULLPTR)
 {
-
+#if 0
+    mDeviceController = qobject_cast<SAKSslSocketServerDeviceController*>(mDebugPage->deviceController());
+    connect(this, &SAKSslSocketServerDevice::addClient, mDeviceController, &SAKSslSocketServerDeviceController::addClient);
+    connect(this, &SAKSslSocketServerDevice::removeClient, mDeviceController, &SAKSslSocketServerDeviceController::removeClient);
+#endif
 }
 
-void SAKTcpServerDevice::run()
+bool SAKSslSocketServerDevice::initializing(QString &errorString)
 {
-    QEventLoop eventLoop;
-    SAKTcpServerDeviceController *deviceController = debugPage->controllerInstance();
-    serverHost = deviceController->serverHost();
-    serverPort = deviceController->serverPort();
+    errorString = tr("Unknow error");
+    mDeviceController = qobject_cast<SAKSslSocketServerDeviceController*>(mDebugPage->deviceController());
+    connect(this, &SAKSslSocketServerDevice::addClient, mDeviceController, &SAKSslSocketServerDeviceController::addClient);
+    connect(this, &SAKSslSocketServerDevice::removeClient, mDeviceController, &SAKSslSocketServerDeviceController::removeClient);
 
-    QList<QTcpSocket*> clientList;
-    tcpServer = new QTcpServer;
-    if (!tcpServer->listen(QHostAddress(serverHost), serverPort)){
-        emit deviceStateChanged(false);
-        emit messageChanged(tr("服务器监听地址、端口失败：")+tcpServer->errorString(), false);
-        return;
-    }else{
-        emit deviceStateChanged(true);
-    }
-
-    while (true){
-        /// @brief 响应中断
-        if (isInterruptionRequested()){
-            break;
-        }
-
-        /// @brief 处理接入
-        while (tcpServer->hasPendingConnections()){
-            QTcpSocket *socket = tcpServer->nextPendingConnection();
-            if (socket){
-                clientList.append(socket);
-                deviceController->addClient(socket->peerAddress().toString(), socket->peerPort(), socket);
-            }
-        }
-
-        /// @brief 检查链接状态，移除已断开的链接
-        for (auto var : clientList){
-            QList<QTcpSocket*> offLineClientList;
-            if (var->state() != QTcpSocket::ConnectedState){
-                offLineClientList.append(var);
-            }
-
-            for (auto var : offLineClientList){
-                /// @brief socket（127.0.0.1）断开链接后无法获取：peerAddress及eerPort
-                deviceController->removeClient(var);
-                clientList.removeOne(var);
-            }
-        }
-
-        /// @brief 读取数据
-        for (auto var : clientList){
-            innerReadBytes(var, deviceController);
-        }
-
-        /// @brief 写数据
-        while (true){
-            QByteArray bytes = takeWaitingForWrittingBytes();
-            if (bytes.length()){
-                for (auto var : clientList){
-                    innerWriteBytes(var, bytes, deviceController);
-                }
-            }else{
-                break;
-            }
-        }
-
-        /// @brief 处理线程事件
-        eventLoop.processEvents();
-
-        /// @brief 线程睡眠
-        mThreadMutex.lock();
-        mThreadWaitCondition.wait(&mThreadMutex, SAK_DEVICE_THREAD_SLEEP_INTERVAL);
-        mThreadMutex.unlock();
-    }
-
-    tcpServer->close();
-    delete tcpServer;
-    emit deviceStateChanged(false);
+    return true;
 }
 
-void SAKTcpServerDevice::innerReadBytes(QTcpSocket *socket, SAKTcpServerDeviceController *deviceController)
-{        
-//    socket->waitForReadyRead(debugPage->readWriteParameters().waitForReadyReadTime);
-    QByteArray bytes = socket->readAll();
-    QString currentClientHost = deviceController->currentClientHost();
-    QString peerHost = socket->peerAddress().toString();
-    quint16 currentClientPort = deviceController->currentClientPort();
-    quint16 peerPort = socket->peerPort();
+bool SAKSslSocketServerDevice::open(QString &errorString)
+{
+    auto parameters = mDeviceController->parameters().value<SAKSslSocketServerDeviceController::SslSocketServerParameters>();
+    QString serverHost = parameters.serverHost;
+    quint16 serverPort = parameters.serverPort;
 
-    if (bytes.length()){
+    mTcpServer = new QTcpServer;
+    if (!mTcpServer->listen(QHostAddress(serverHost), serverPort)){
+        errorString = tr("Listen failed:") + mTcpServer->errorString();
+        return false;
+    }
+
+    return true;
+}
+
+QByteArray SAKSslSocketServerDevice::read()
+{
+    for (auto var : mClientList){
+         QByteArray bytes = var->readAll();
+         auto parameters = mDeviceController->parameters().value<SAKSslSocketServerDeviceController::SslSocketServerParameters>();
+         QString currentClientHost = parameters.currentClientHost;
+         QString peerHost = var->peerAddress().toString();
+         quint16 currentClientPort = parameters.currentClientPort;
+         quint16 peerPort = var->peerPort();
+
+         if (bytes.length()){
+             if ((currentClientHost == peerHost) && (currentClientPort == peerPort)){
+                 return bytes;
+             }
+         }
+    }
+
+    return QByteArray();
+}
+
+QByteArray SAKSslSocketServerDevice::write(QByteArray bytes)
+{
+    for (auto var : mClientList){
+        auto parameters = mDeviceController->parameters().value<SAKSslSocketServerDeviceController::SslSocketServerParameters>();
+        QString currentClientHost = parameters.currentClientHost;
+        QString peerHost = var->peerAddress().toString();
+        quint16 currentClientPort = parameters.currentClientPort;
+        quint16 peerPort = var->peerPort();
         if ((currentClientHost == peerHost) && (currentClientPort == peerPort)){
-            emit bytesRead(bytes);
+            qint64 ret = var->write(bytes);
+            if (ret > 0){
+                return bytes;
+            }else{
+                qDebug() << __FUNCTION__ << QString("Can not write data:(%1)%2").arg(var->peerAddress().toString().arg(var->error()));
+            }
         }
     }
+
+    return QByteArray();
 }
 
-void SAKTcpServerDevice::innerWriteBytes(QTcpSocket *socket, QByteArray bytes, SAKTcpServerDeviceController *deviceController)
-{    
-    QString currentClientHost = deviceController->currentClientHost();
-    QString peerHost = socket->peerAddress().toString();
-    quint16 currentClientPort = deviceController->currentClientPort();
-    quint16 peerPort = socket->peerPort();
-    if ((currentClientHost == peerHost) && (currentClientPort == peerPort)){
-        qint64 ret = socket->write(bytes);
-//        socket->waitForBytesWritten(debugPage->readWriteParameters().waitForBytesWrittenTime);
-        if (ret == -1){
-            emit messageChanged(tr("无法写入数据:(%1)%2").arg(socket->peerAddress().toString().arg(socket->error())), false);
-        }else{
-            emit bytesWritten(bytes);
+bool SAKSslSocketServerDevice::checkSomething(QString &errorString)
+{
+    // Handling new connection
+    while (mTcpServer->hasPendingConnections()){
+        QTcpSocket *socket = mTcpServer->nextPendingConnection();
+        if (socket){
+            emit addClient(socket->peerAddress().toString(), socket->peerPort(), socket);
+            mClientList.append(socket);
         }
     }
+
+    // Remove clients which is offline
+    for (auto var : mClientList){
+        QList<QTcpSocket*> offLineClientList;
+        if (var->state() != QTcpSocket::ConnectedState){
+            offLineClientList.append(var);
+        }
+
+        for (auto var : offLineClientList){
+            emit removeClient(var);
+            mClientList.removeOne(var);
+        }
+    }
+
+    errorString = tr("Unknow error");
+    return true;
+}
+
+void SAKSslSocketServerDevice::close()
+{
+    mTcpServer->close();
+}
+
+void SAKSslSocketServerDevice::free()
+{
+    delete mTcpServer;
+    mTcpServer = Q_NULLPTR;
 }

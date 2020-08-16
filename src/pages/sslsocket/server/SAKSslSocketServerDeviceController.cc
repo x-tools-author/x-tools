@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2020 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -13,96 +13,99 @@
 #include <QLineEdit>
 
 #include "SAKGlobal.hh"
-#include "SAKTcpServerDeviceController.hh"
-#include "ui_SAKTcpServerDeviceController.h"
-SAKTcpServerDeviceController::SAKTcpServerDeviceController(QWidget *parent)
-    :QWidget (parent)
-    ,ui (new Ui::SAKTcpServerDeviceController)
+#include "SAKSslSocketServerDeviceController.hh"
+#include "ui_SAKSslSocketServerDeviceController.h"
+
+SAKSslSocketServerDeviceController::SAKSslSocketServerDeviceController(SAKDebugPage *debugPage, QWidget *parent)
+    :SAKDebugPageController(debugPage, parent)
+    ,mUi(new Ui::SAKSslSocketServerDeviceController)
 {
-    ui->setupUi(this);
+    mUi->setupUi(this);
+    mServerHostComboBox = mUi->serverhostComboBox;
+    mServerPortLineEdit = mUi->serverPortLineEdit;
+    mClientHostComboBox = mUi->clientHostComboBox;
 
-    serverHostComboBox = ui->serverhostComboBox;
-    serverPortLineEdit = ui->serverPortLineEdit;
-    clientHostComboBox = ui->clientHostComboBox;
+    on_serverhostComboBox_currentTextChanged(mServerHostComboBox->currentText());
+    on_serverPortLineEdit_textChanged(mServerPortLineEdit->text());
+    qRegisterMetaType<SAKSslSocketServerDeviceController::SslSocketServerParameters>("SAKSslSocketServerDeviceController::SslSocketServerParameters");
+    refreshDevice();
 
-    refresh();
+    mClientHostComboBox->setModel(&mClientStandardItemModel);
 }
 
-SAKTcpServerDeviceController::~SAKTcpServerDeviceController()
+SAKSslSocketServerDeviceController::~SAKSslSocketServerDeviceController()
 {
-    delete ui;
+    delete mUi;
 }
 
-QString SAKTcpServerDeviceController::serverHost()
+QVariant SAKSslSocketServerDeviceController::parameters()
 {
-    uiMutex.lock();
-    QString host = serverHostComboBox->currentText();
-    uiMutex.unlock();
-    return host;
+    SslSocketServerParameters parameters;
+    mParametersMutex.lock();
+    parameters.serverHost = mParameters.serverHost;
+    parameters.serverPort = mParameters.serverPort;
+    parameters.currentClientHost = mParameters.currentClientHost;
+    parameters.currentClientPort = mParameters.currentClientPort;
+    mParametersMutex.unlock();
+
+    return QVariant::fromValue(parameters);
 }
 
-quint16 SAKTcpServerDeviceController::serverPort()
+void SAKSslSocketServerDeviceController::setUiEnable(bool opened)
 {
-    uiMutex.lock();
-    quint16 port = static_cast<quint16>(serverPortLineEdit->text().toInt());
-    uiMutex.unlock();
-    return port;
+    mServerHostComboBox->setEnabled(!opened);
+    mServerPortLineEdit->setEnabled(!opened);
 }
 
-QString SAKTcpServerDeviceController::currentClientHost()
+void SAKSslSocketServerDeviceController::refreshDevice()
 {
-    uiMutex.lock();
-    QStringList host = clientHostComboBox->currentText().split(":");
-    QString address = host.first();
-    uiMutex.unlock();
-    return address;
+    SAKGlobal::initIpComboBox(mServerHostComboBox);
 }
 
-quint16 SAKTcpServerDeviceController::currentClientPort()
+void SAKSslSocketServerDeviceController::addClient(QString host, quint16 port, QTcpSocket *socket)
 {
-    uiMutex.lock();
-    QString port = clientHostComboBox->currentText().split(":").last();
-    quint16 portTemp = static_cast<quint16>(port.toInt());
-    uiMutex.unlock();
-    return portTemp;
-}
+    QString itemString = host.append(":");
+    itemString.append(QString::number(port));
 
-void SAKTcpServerDeviceController::refresh()
-{
-    SAKGlobal::initIpComboBox(serverHostComboBox);
-}
-
-void SAKTcpServerDeviceController::setUiEnable(bool enable)
-{
-    serverHostComboBox->setEnabled(enable);
-    serverPortLineEdit->setEnabled(enable);
-}
-
-void SAKTcpServerDeviceController::addClient(QString host, quint16 port, QTcpSocket *socket)
-{
-    QString item = host.append(":");
-    item.append(QString::number(port));
-
-    uiMutex.lock();
-    for(int i = 0; i < clientHostComboBox->count(); i++){
-        if (clientHostComboBox->itemText(i).compare(item) == 0){
-            uiMutex.unlock();
-            return;
-        }
-    }
-
-    clientHostComboBox->addItem(item, QVariant::fromValue(socket));
-    uiMutex.unlock();
-}
-
-void SAKTcpServerDeviceController::removeClient(QTcpSocket *socket)
-{
-    uiMutex.lock();
-    for(int i = 0; i < clientHostComboBox->count(); i++){
-        if (clientHostComboBox->itemData(i).value<QTcpSocket*>() == socket){
-            clientHostComboBox->removeItem(i);
+    for(int i = 0; i < mClientHostComboBox->count(); i++){
+        if (mClientHostComboBox->itemText(i).compare(itemString) == 0){
+            mClientHostComboBox->removeItem(i);
             break;
         }
     }
-    uiMutex.unlock();
+
+    mClientHostComboBox->addItem(itemString, QVariant::fromValue(socket));
+}
+
+void SAKSslSocketServerDeviceController::removeClient(QTcpSocket *socket)
+{
+    for(int i = 0; i < mClientHostComboBox->count(); i++){
+        if (mClientHostComboBox->itemData(i).value<QTcpSocket*>() == socket){
+            mClientHostComboBox->removeItem(i);
+            break;
+        }
+    }
+}
+
+void SAKSslSocketServerDeviceController::on_serverhostComboBox_currentTextChanged(const QString &arg1)
+{
+    mParametersMutex.lock();
+    mParameters.serverHost = arg1;
+    mParametersMutex.unlock();
+}
+
+void SAKSslSocketServerDeviceController::on_serverPortLineEdit_textChanged(const QString &arg1)
+{
+    mParametersMutex.lock();
+    mParameters.serverPort = arg1.toInt();
+    mParametersMutex.unlock();
+}
+
+void SAKSslSocketServerDeviceController::on_clientHostComboBox_currentTextChanged(const QString &arg1)
+{
+    mParametersMutex.lock();
+    QStringList info = arg1.split(":");
+    mParameters.currentClientHost = info.first();
+    mParameters.currentClientPort = info.last().toInt();
+    mParametersMutex.unlock();
 }

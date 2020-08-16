@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2020 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -8,83 +8,107 @@
  * the file LICENCE in the root of the source code directory.
  */
 #include <QList>
+#include <QDebug>
 #include <QMetaEnum>
 #include <QLineEdit>
 
 #include "SAKGlobal.hh"
-#include "SAKTcpClientDeviceController.hh"
-#include "ui_SAKTcpClientDeviceController.h"
-SAKTcpClientDeviceController::SAKTcpClientDeviceController(QWidget *parent)
-    :QWidget (parent)
-    ,ui (new Ui::SAKTcpClientDeviceController)
+#include "SAKSslSocketClientDeviceController.hh"
+#include "ui_SAKSslSocketClientDeviceController.h"
+
+SAKSslSocketClientDeviceController::SAKSslSocketClientDeviceController(SAKDebugPage *debugPage, QWidget *parent)
+    :SAKDebugPageController(debugPage, parent)
+    ,mUi(new Ui::SAKSslSocketClientDeviceController)
 {
-    ui->setupUi(this);
+    mUi->setupUi(this);
 
-    localhostComboBox = ui->localhostComboBox;
-    localPortlineEdit = ui->localPortlineEdit;
-    enableLocalSettingCheckBox = ui->enableLocalSettingCheckBox;
-    serverHostLineEdit = ui->serverHostLineEdit;
-    serverPortLineEdit = ui->serverTargetPortLineEdit;
+    mLocalhostComboBox = mUi->localhostComboBox;
+    mLocalPortlineEdit = mUi->localPortlineEdit;
+    mSpecifyClientAddressAndPort = mUi->specifyClientAddressAndPort;
+    mClientInfoLineEdit = mUi->clientInfoLineEdit;
+    mServerHostLineEdit = mUi->serverHostLineEdit;
+    mServerPortLineEdit = mUi->serverPortLineEdit;
 
-    refresh();
+    qRegisterMetaType<SAKSslSocketClientDeviceController::SslSocketClientParameters>("SAKSslSocketClientDeviceController::SslSocketClientParameters");
+    mParameters.localHost = mLocalhostComboBox->currentText();
+    mParameters.localPort = mLocalPortlineEdit->text().toInt();
+    mParameters.specifyClientAddressAndPort = mSpecifyClientAddressAndPort->isChecked();
+    mParameters.serverHost = mServerHostLineEdit->text();
+    mParameters.serverPort = mServerPortLineEdit->text().toInt();
+    refreshDevice();
 }
 
-SAKTcpClientDeviceController::~SAKTcpClientDeviceController()
+SAKSslSocketClientDeviceController::~SAKSslSocketClientDeviceController()
 {
-    delete ui;
+    delete mUi;
 }
 
-QString SAKTcpClientDeviceController::localHost()
+QVariant SAKSslSocketClientDeviceController::parameters()
 {
-    uiMutex.lock();
-    QString ret = localhostComboBox->currentText();
-    uiMutex.unlock();
-    return ret;
+    SslSocketClientParameters parameters;
+    mParametersMutex.lock();
+    parameters.localHost = mParameters.localHost;
+    parameters.localPort = mParameters.localPort;
+    parameters.serverHost = mParameters.serverHost;
+    parameters.serverPort = mParameters.serverPort;
+    parameters.specifyClientAddressAndPort = mParameters.specifyClientAddressAndPort;
+    mParametersMutex.unlock();
+
+    return QVariant::fromValue(parameters);
 }
 
-quint16 SAKTcpClientDeviceController::localPort()
+void SAKSslSocketClientDeviceController::setUiEnable(bool opened)
 {
-    uiMutex.lock();
-    quint16 ret = static_cast<quint16>(localPortlineEdit->text().toInt());
-    uiMutex.unlock();
-    return ret;
+    mLocalhostComboBox->setEnabled(!opened);
+    mLocalPortlineEdit->setEnabled(!opened);
+    mSpecifyClientAddressAndPort->setEnabled(!opened);
+    mServerHostLineEdit->setEnabled(!opened);
+    mServerPortLineEdit->setEnabled(!opened);
 }
 
-QString SAKTcpClientDeviceController::serverHost()
+void SAKSslSocketClientDeviceController::refreshDevice()
 {
-    uiMutex.lock();
-    QString ret = serverHostLineEdit->text();
-    uiMutex.unlock();
-    return ret;
+    SAKGlobal::initIpComboBox(mLocalhostComboBox);
 }
 
-quint16 SAKTcpClientDeviceController::serverPort()
+void SAKSslSocketClientDeviceController::setClientInfo(QString info)
 {
-    uiMutex.lock();
-    quint16 ret = static_cast<quint16>(serverPortLineEdit->text().toInt());
-    uiMutex.unlock();
-
-    return ret;
+    mClientInfoLineEdit->setText(info);
 }
 
-bool SAKTcpClientDeviceController::enableCustomLocalSetting()
+void SAKSslSocketClientDeviceController::on_localhostComboBox_currentIndexChanged(int index)
 {
-    uiMutex.lock();
-    bool ret = enableLocalSettingCheckBox->isChecked();
-    uiMutex.unlock();
-    return ret;
+    Q_UNUSED(index);
+    mParametersMutex.lock();
+    mParameters.localHost = mLocalhostComboBox->currentText();
+    mParametersMutex.unlock();
 }
 
-void SAKTcpClientDeviceController::refresh()
+void SAKSslSocketClientDeviceController::on_localPortlineEdit_textChanged(const QString &arg1)
 {
-    SAKGlobal::initIpComboBox(localhostComboBox);
+    Q_UNUSED(arg1);
+    mParametersMutex.lock();
+    mParameters.localPort = static_cast<quint16>(mLocalPortlineEdit->text().toInt());
+    mParametersMutex.unlock();
 }
 
-void SAKTcpClientDeviceController::setUiEnable(bool enable)
+void SAKSslSocketClientDeviceController::on_specifyClientAddressAndPort_clicked()
 {
-    localhostComboBox->setEnabled(enable);
-    localPortlineEdit->setEnabled(enable);
-    enableLocalSettingCheckBox->setEnabled(enable);
-    serverHostLineEdit->setEnabled(enable);
-    serverPortLineEdit->setEnabled(enable);
+    mParametersMutex.lock();
+    mParameters.specifyClientAddressAndPort = mSpecifyClientAddressAndPort->isChecked();
+    mParametersMutex.unlock();
+}
+
+void SAKSslSocketClientDeviceController::on_serverHostLineEdit_textChanged(const QString &arg1)
+{
+    mParametersMutex.lock();
+    mParameters.serverHost = arg1;
+    mParametersMutex.unlock();
+}
+
+void SAKSslSocketClientDeviceController::on_serverPortLineEdit_textChanged(const QString &arg1)
+{
+    mParametersMutex.lock();
+    mParameters.serverPort = static_cast<quint16>(arg1.toInt());
+    mParametersMutex.unlock();
 }

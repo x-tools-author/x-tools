@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2020 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKTCPSERVERDEVICE_HH
-#define SAKTCPSERVERDEVICE_HH
+#ifndef SAKSSLSOCKETSERVERDEVICE_HH
+#define SAKSSLSOCKETSERVERDEVICE_HH
 
 #include <QThread>
 #include <QTcpServer>
@@ -16,26 +16,29 @@
 
 #include "SAKDebugPageDevice.hh"
 
-class SAKTcpServerDebugPage;
-class SAKTcpServerDeviceController;
-class SAKTcpServerDevice:public SAKDebugPageDevice
+class SAKSslSocketServerDebugPage;
+class SAKSslSocketServerDeviceController;
+class SAKSslSocketServerDevice:public SAKDebugPageDevice
 {
     Q_OBJECT
 public:
-    SAKTcpServerDevice(SAKTcpServerDebugPage *debugPage, QObject *parent = Q_NULLPTR);
+    SAKSslSocketServerDevice(SAKSslSocketServerDebugPage *mDebugPage, QObject *parent = Q_NULLPTR);
 private:
-    void run();    
+    bool initializing(QString &errorString) final;
+    bool open(QString &errorString) final;
+    QByteArray read() final;
+    QByteArray write(QByteArray bytes) final;
+    bool checkSomething(QString &errorString) final;
+    void close() final;
+    void free() final;
+signals:
+    void addClient(QString host, quint16 port, QTcpSocket *socket);
+    void removeClient(QTcpSocket *socket);
 private:
-    QString localHost;
-    quint16 localPort;
-    bool enableCustomLocalSetting;
-    QString serverHost;
-    quint16 serverPort;
-    SAKTcpServerDebugPage *debugPage;
-    QTcpServer *tcpServer;
-private:
-    void innerReadBytes(QTcpSocket *socket, SAKTcpServerDeviceController *deviceController);
-    void innerWriteBytes(QTcpSocket *socket, QByteArray bytes, SAKTcpServerDeviceController *deviceController);
+    SAKSslSocketServerDebugPage *mDebugPage;
+    QTcpServer *mTcpServer;
+    SAKSslSocketServerDeviceController *mDeviceController;
+    QList<QTcpSocket*> mClientList;
 };
 
 #endif

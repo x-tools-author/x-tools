@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2020 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -13,46 +13,25 @@
 
 #include "SAKGlobal.hh"
 #include "SAKDataStruct.hh"
-#include "SAKTcpServerDevice.hh"
-#include "SAKTcpServerDebugPage.hh"
-#include "SAKTcpServerDeviceController.hh"
+#include "SAKSslSocketServerDevice.hh"
+#include "SAKSslSocketServerDebugPage.hh"
+#include "SAKSslSocketServerDeviceController.hh"
 
-SAKTcpServerDebugPage::SAKTcpServerDebugPage(QWidget *parent)
+SAKSslSocketServerDebugPage::SAKSslSocketServerDebugPage(QWidget *parent)
     :SAKDebugPage (SAKDataStruct::DebugPageTypeTCPServer, parent)
-    ,tcpServerDeviceController (new SAKTcpServerDeviceController)
 {
-    initializingPage();
+    mDeviceController = new SAKSslSocketServerDeviceController(this);
     setWindowTitle(SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeTCPServer));
+    initializingPage();
 }
 
-SAKTcpServerDebugPage::~SAKTcpServerDebugPage()
+SAKDebugPageController *SAKSslSocketServerDebugPage::deviceController()
 {
-    tcpServerDeviceController->deleteLater();
+    return mDeviceController;
 }
 
-SAKTcpServerDeviceController *SAKTcpServerDebugPage::controllerInstance()
+SAKDebugPageDevice* SAKSslSocketServerDebugPage::createDevice()
 {
-    return tcpServerDeviceController;
-}
-
-void SAKTcpServerDebugPage::refreshDevice()
-{
-    tcpServerDeviceController->refresh();
-}
-
-QWidget *SAKTcpServerDebugPage::controllerWidget()
-{
-    return tcpServerDeviceController;
-}
-
-void SAKTcpServerDebugPage::setUiEnable(bool enable)
-{
-    tcpServerDeviceController->setUiEnable(enable);
-    mRefreshPushButton->setEnabled(enable);
-}
-
-SAKDebugPageDevice* SAKTcpServerDebugPage::createDevice()
-{
-    SAKTcpServerDevice *device = new SAKTcpServerDevice(this);
+    SAKSslSocketServerDevice *device = new SAKSslSocketServerDevice(this);
     return device;
 }
