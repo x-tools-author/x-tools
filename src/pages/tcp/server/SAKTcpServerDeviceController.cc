@@ -75,7 +75,6 @@ void SAKTcpServerDeviceController::addClient(QString host, quint16 port, QTcpSoc
     }
 
     mClientHostComboBox->addItem(itemString, QVariant::fromValue(socket));
-    qDebug() << __FUNCTION__ << host << port << itemString << mClientHostComboBox->currentText();
 }
 
 void SAKTcpServerDeviceController::removeClient(QTcpSocket *socket)
@@ -109,6 +108,4 @@ void SAKTcpServerDeviceController::on_clientHostComboBox_currentTextChanged(cons
     mParameters.currentClientHost = info.first();
     mParameters.currentClientPort = info.last().toInt();
     mParametersMutex.unlock();
-
-    qDebug() << __FUNCTION__ << __LINE__ << arg1;
 }
