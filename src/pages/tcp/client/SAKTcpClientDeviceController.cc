@@ -24,6 +24,7 @@ SAKTcpClientDeviceController::SAKTcpClientDeviceController(SAKDebugPage *debugPa
     mLocalhostComboBox = mUi->localhostComboBox;
     mLocalPortlineEdit = mUi->localPortlineEdit;
     mSpecifyClientAddressAndPort = mUi->specifyClientAddressAndPort;
+    mClientInfoLineEdit = mUi->clientInfoLineEdit;
     mServerHostLineEdit = mUi->serverHostLineEdit;
     mServerPortLineEdit = mUi->serverPortLineEdit;
 
@@ -67,6 +68,11 @@ void SAKTcpClientDeviceController::setUiEnable(bool opened)
 void SAKTcpClientDeviceController::refreshDevice()
 {
     SAKGlobal::initIpComboBox(mLocalhostComboBox);
+}
+
+void SAKTcpClientDeviceController::setClientInfo(QString info)
+{
+    mClientInfoLineEdit->setText(info);
 }
 
 void SAKTcpClientDeviceController::on_localhostComboBox_currentIndexChanged(int index)

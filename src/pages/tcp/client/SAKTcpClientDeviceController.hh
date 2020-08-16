@@ -40,6 +40,8 @@ public:
     QVariant parameters() final;
     void setUiEnable(bool opened) final;
     void refreshDevice() final;
+
+    void setClientInfo(QString info);
 private:
     QMutex mParametersMutex;
     TcpClientParameters mParameters;
@@ -48,6 +50,7 @@ private:
     QComboBox *mLocalhostComboBox;
     QLineEdit *mLocalPortlineEdit;
     QCheckBox *mSpecifyClientAddressAndPort;
+    QLineEdit *mClientInfoLineEdit;
     QLineEdit *mServerHostLineEdit;
     QLineEdit *mServerPortLineEdit;
 private slots:
