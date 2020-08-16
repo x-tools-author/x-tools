@@ -18,6 +18,7 @@
 #include <QStandardItemModel>
 
 #include "SAKDebugPageController.hh"
+#include "SAKSslSocketCommonConfiguration.hh"
 
 namespace Ui {
     class SAKSslSocketServerDeviceController;
@@ -48,6 +49,7 @@ private:
     QMutex mParametersMutex;
     SslSocketServerParameters mParameters;
     QStandardItemModel mClientStandardItemModel;
+    SAKSslSocketCommonConfiguration mSslConfiguration;
 private:
     Ui::SAKSslSocketServerDeviceController *mUi;
     QComboBox *mServerHostComboBox;
@@ -57,6 +59,7 @@ private slots:
     void on_serverhostComboBox_currentTextChanged(const QString &arg1);
     void on_serverPortLineEdit_textChanged(const QString &arg1);
     void on_clientHostComboBox_currentTextChanged(const QString &arg1);
+    void on_sslConfiguration_clicked();
 };
 Q_DECLARE_METATYPE(SAKSslSocketServerDeviceController::SslSocketServerParameters);
 #endif

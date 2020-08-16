@@ -109,3 +109,12 @@ void SAKSslSocketServerDeviceController::on_clientHostComboBox_currentTextChange
     mParameters.currentClientPort = info.last().toInt();
     mParametersMutex.unlock();
 }
+
+void SAKSslSocketServerDeviceController::on_sslConfiguration_clicked()
+{
+    if (mSslConfiguration.isHidden()){
+        mSslConfiguration.show();
+    }else{
+        mSslConfiguration.activateWindow();
+    }
+}
