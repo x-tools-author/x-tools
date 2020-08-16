@@ -48,6 +48,8 @@
 #include "SAKTcpClientDebugPage.hh"
 #include "SAKTcpServerDebugPage.hh"
 #include "SAKMainWindowQrCodeView.hh"
+#include "SAKSslsocketClientDebugPage.hh"
+#include "SAKSslsocketServerDebugPage.hh"
 #include "SAKMainWindowMoreInformationDialog.hh"
 #include "SAKMainWindowTabPageNameEditDialog.hh"
 
@@ -492,6 +494,12 @@ QWidget *SAKMainWindow::debugPageFromType(int type)
         break;
     case SAKDataStruct::DebugPageTypeUdpServer:
         widget = new SAKUdpServerDebugPage;
+        break;
+    case SAKDataStruct::DebugPageTypeSslSocketClient:
+        widget = new SAKSslSocketClientDebugPage;
+        break;
+    case SAKDataStruct::DebugPageTypeSslSocketServer:
+        widget = new SAKSslSocketServerDebugPage;
         break;
     case SAKDataStruct::DebugPageTypeTCPClient:
         widget = new SAKTcpClientDebugPage;
