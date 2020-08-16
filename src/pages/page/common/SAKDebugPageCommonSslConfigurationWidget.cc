@@ -8,7 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  */
 #include "SAKDebugPageCommonSslConfigurationWidget.hh"
-#include "ui_SAKSslSocketCommonConfiguration.h"
+#include "ui_SAKDebugPageCommonSslConfigurationWidget.h"
 
 SAKDebugPageCommonSslConfigurationWidget::SAKDebugPageCommonSslConfigurationWidget(QWidget *parent)
     :QWidget(parent)
