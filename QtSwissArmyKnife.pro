@@ -130,6 +130,7 @@ INCLUDEPATH += \
     src/pages/page/output/save2file \
     src/pages/page/statistics \
     src/pages/sslsocket/client \
+    src/pages/sslsocket/common \
     src/pages/sslsocket/server \
     src/pages/tcp/client \
     src/pages/tcp/server \
@@ -162,6 +163,7 @@ FORMS += \
     src/pages/page/other/transmission/SAKOtherTransmissionPageViewer.ui \
     src/pages/page/output/save2file/SAKOutputSave2FileDialog.ui \
     src/pages/sslsocket/client/SAKSslSocketClientDeviceController.ui \
+    src/pages/sslsocket/common/SAKSslSocketCommonConfiguration.ui \
     src/pages/sslsocket/server/SAKSslSocketServerDeviceController.ui \
     src/pages/tcp/client/SAKTcpClientDeviceController.ui \
     src/pages/tcp/server/SAKTcpServerDeviceController.ui \
