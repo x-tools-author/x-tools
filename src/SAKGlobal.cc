@@ -12,19 +12,19 @@
 #include <QFile>
 #include <QDebug>
 #include <QMetaEnum>
-#ifdef SAK_IMPORT_COM_MODULE
-#include <QSerialPort>
-#endif
+#include <QSslSocket>
 #include <QHostAddress>
 #include <QApplication>
 #include <QMapIterator>
 #include <QStandardItem>
 #include <QStandardPaths>
-#ifdef SAK_IMPORT_COM_MODULE
-#include <QSerialPortInfo>
-#endif
 #include <QNetworkInterface>
 #include <QStandardItemModel>
+
+#ifdef SAK_IMPORT_COM_MODULE
+#include <QSerialPort>
+#include <QSerialPortInfo>
+#endif
 
 #include "SAKGlobal.hh"
 #include "SAKDataStruct.hh"
