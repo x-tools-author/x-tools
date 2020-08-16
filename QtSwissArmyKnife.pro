@@ -219,6 +219,7 @@ HEADERS += \
     src/pages/sslsocket/client/SAKSslSocketClientDebugPage.hh \
     src/pages/sslsocket/client/SAKSslSocketClientDevice.hh \
     src/pages/sslsocket/client/SAKSslSocketClientDeviceController.hh \
+    src/pages/sslsocket/common/SAKSslSocketCommonConfiguration.hh \
     src/pages/sslsocket/server/SAKSslSocketServerDebugPage.hh \
     src/pages/sslsocket/server/SAKSslSocketServerDevice.hh \
     src/pages/sslsocket/server/SAKSslSocketServerDeviceController.hh \
@@ -291,6 +292,7 @@ SOURCES += \
     src/pages/sslsocket/client/SAKSslSocketClientDebugPage.cc \
     src/pages/sslsocket/client/SAKSslSocketClientDevice.cc \
     src/pages/sslsocket/client/SAKSslSocketClientDeviceController.cc \
+    src/pages/sslsocket/common/SAKSslSocketCommonConfiguration.cc \
     src/pages/sslsocket/server/SAKSslSocketServerDebugPage.cc \
     src/pages/sslsocket/server/SAKSslSocketServerDevice.cc \
     src/pages/sslsocket/server/SAKSslSocketServerDeviceController.cc \
