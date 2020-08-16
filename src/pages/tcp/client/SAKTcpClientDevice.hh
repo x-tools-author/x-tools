@@ -39,6 +39,8 @@ private:
     SAKTcpClientDebugPage *mDebugPage;
     QTcpSocket *mTcpSocket;
     SAKTcpClientDeviceController *mDeviceController;
+signals:
+    void clientInfoChange(QString info);
 };
 
 #endif

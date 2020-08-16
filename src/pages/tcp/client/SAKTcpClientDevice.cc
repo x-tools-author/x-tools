@@ -27,6 +27,7 @@ bool SAKTcpClientDevice::initializing(QString &errorString)
 {
     QEventLoop eventLoop;
     mDeviceController = qobject_cast<SAKTcpClientDeviceController*>(mDebugPage->deviceController());
+    connect(this, &SAKTcpClientDevice::clientInfoChange, mDeviceController, &SAKTcpClientDeviceController::setClientInfo);
     auto parameters = mDeviceController->parameters().value<SAKTcpClientDeviceController::TcpClientParameters>();
     mLocalHost = parameters.localHost;
     mLocalPort = parameters.localPort;
@@ -45,6 +46,11 @@ bool SAKTcpClientDevice::initializing(QString &errorString)
     if (!bindResult){
         errorString = tr("Binding failed:") + mTcpSocket->errorString();
         return false;
+    }else{
+        QString info = mTcpSocket->localAddress().toString();
+        info.append(":");
+        info.append(QString::number(mTcpSocket->localPort()));
+        emit clientInfoChange(info);
     }
 
     mTcpSocket->connectToHost(mServerHost, mServerPort);
@@ -101,7 +107,9 @@ void SAKTcpClientDevice::close()
     if (mTcpSocket->state() == QTcpSocket::ConnectedState){
         mTcpSocket->disconnectFromHost();
     }
+
     mTcpSocket->close();
+    emit clientInfoChange(QString());
 }
 
 void SAKTcpClientDevice::free()
