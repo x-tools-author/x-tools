@@ -52,9 +52,9 @@
 
 
 contains(CONFIG, static){
-    # 静态版本不需要部署
+    # Static compilation does not require deployment
 }else{
-    # 使用与Windows系统的软件配置部署
+    # Windows platform(only for x86 architecture)
     win32 {
         DEPLOY_TOOL = $${dirname(QMAKE_QMAKE)}/windeployqt.exe
         DEPLOY_TOOL = $$replace(DEPLOY_TOOL, /, \\)
