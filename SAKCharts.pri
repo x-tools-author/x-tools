@@ -1,6 +1,10 @@
-qtHaveModule(charts){
-    QT  += charts
-    DEFINES+=SAK_IMPORT_CHARTS_MODULE
+isEqual(QT_VERSION, 5){
+    greaterThan(QT_MINOR_VERSION, 9){
+        qtHaveModule(charts){
+            QT  += charts
+            DEFINES+=SAK_IMPORT_CHARTS_MODULE
+        }
+    }
 }
 
 contains(DEFINES, SAK_IMPORT_CHARTS_MODULE){
