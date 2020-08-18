@@ -48,8 +48,8 @@
 #include "SAKTcpClientDebugPage.hh"
 #include "SAKTcpServerDebugPage.hh"
 #include "SAKMainWindowQrCodeView.hh"
-#include "SAKSslsocketClientDebugPage.hh"
-#include "SAKSslsocketServerDebugPage.hh"
+#include "SAKSslSocketClientDebugPage.hh"
+#include "SAKSslSocketServerDebugPage.hh"
 #include "SAKMainWindowMoreInformationDialog.hh"
 #include "SAKMainWindowTabPageNameEditDialog.hh"
 
