@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKDEBUGPAGEDEVICE_HH
-#define SAKDDEBUGPAGEEVICE_HH
+#ifndef SAKDEBUGPAGDEVICE_HH
+#define SAKDEBUGPAGDEVICE_HH
 #include <QMutex>
 #include <QThread>
 #include <QWaitCondition>
