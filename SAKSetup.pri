@@ -56,7 +56,7 @@ contains(CONFIG, static){
 }else{
     # 使用与Windows系统的软件配置部署
     win32 {
-        DEPLOY_TOOL = $${dirname(QMAKE_QMAKE)}/windeployqt
+        DEPLOY_TOOL = $${dirname(QMAKE_QMAKE)}/windeployqt.exe
         DEPLOY_TOOL = $$replace(DEPLOY_TOOL, /, \\)
 
         contains(CONFIG, debug, debug|release){
@@ -67,9 +67,10 @@ contains(CONFIG, static){
 
         DEPLOY_TARGET=$$replace(DEPLOY_TARGET, /, \\)
         msvc {
-            QMAKE_POST_LINK+=$$DEPLOY_TOOL $$DEPLOY_TARGET --force --no-translations $$escape_expand(\\n)
+            QMAKE_POST_LINK+=$${DEPLOY_TOOL} $${DEPLOY_TARGET} --force --no-translations $$escape_expand(\\n)
         }else{
-            QMAKE_POST_LINK+=$$DEPLOY_TOOL $$DEPLOY_TARGET --force --no-translations
+            QMAKE_POST_LINK+='echo deploying...'
+            QMAKE_POST_LINK+='$${DEPLOY_TOOL} $${DEPLOY_TARGET} --force --no-translations'
         }
     }
 }
