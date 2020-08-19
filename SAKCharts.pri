@@ -1,4 +1,4 @@
-isEqual(QT_VERSION, 5){
+isEqual(QT_MAJOR_VERSION, 5){
     greaterThan(QT_MINOR_VERSION, 9){
         qtHaveModule(charts){
             QT  += charts
