@@ -15,7 +15,7 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="2" column="2">
-    <widget class="QPushButton" name="pushButton_4">
+    <widget class="QPushButton" name="okPushButton">
      <property name="text">
       <string>OK</string>
      </property>
@@ -35,7 +35,7 @@
     </spacer>
    </item>
    <item row="2" column="1">
-    <widget class="QPushButton" name="pushButton_5">
+    <widget class="QPushButton" name="outportPushButton">
      <property name="toolTip">
       <string>Outport inner certificate and key</string>
      </property>
@@ -58,10 +58,10 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QComboBox" name="comboBox_7"/>
+       <widget class="QComboBox" name="verifyModeComboBox"/>
       </item>
       <item row="0" column="3">
-       <widget class="QComboBox" name="comboBox"/>
+       <widget class="QComboBox" name="verifyDepthComboBox"/>
       </item>
       <item row="0" column="4">
        <widget class="QLabel" name="label_10">
@@ -91,7 +91,7 @@
        </widget>
       </item>
       <item row="0" column="5">
-       <widget class="QLineEdit" name="lineEdit_3"/>
+       <widget class="QLineEdit" name="nameLineEdit"/>
       </item>
      </layout>
     </widget>
@@ -103,10 +103,10 @@
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="0" column="5">
-       <widget class="QComboBox" name="comboBox_5"/>
+       <widget class="QComboBox" name="algorithmComboBox"/>
       </item>
       <item row="0" column="1">
-       <widget class="QComboBox" name="comboBox_3"/>
+       <widget class="QComboBox" name="sslProtocolComboBox"/>
       </item>
       <item row="1" column="2">
        <widget class="QLabel" name="label_5">
@@ -137,10 +137,10 @@
        </widget>
       </item>
       <item row="0" column="3">
-       <widget class="QComboBox" name="comboBox_2"/>
+       <widget class="QComboBox" name="ellipticCurveComboBox"/>
       </item>
       <item row="2" column="1" colspan="4">
-       <widget class="QLineEdit" name="lineEdit_2">
+       <widget class="QLineEdit" name="certificateLineEdit">
         <property name="readOnly">
          <bool>true</bool>
         </property>
@@ -168,20 +168,20 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QComboBox" name="comboBox_6"/>
+       <widget class="QComboBox" name="cipherSuiteComboBox"/>
       </item>
       <item row="2" column="5">
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="importCertPushButton">
         <property name="text">
          <string>Import</string>
         </property>
        </widget>
       </item>
       <item row="1" column="3">
-       <widget class="QComboBox" name="comboBox_4"/>
+       <widget class="QComboBox" name="encodingFormatComboBox"/>
       </item>
       <item row="3" column="5">
-       <widget class="QPushButton" name="pushButton_3">
+       <widget class="QPushButton" name="importKeyPushButton">
         <property name="text">
          <string>Import</string>
         </property>
@@ -232,14 +232,14 @@
           </spacer>
          </item>
          <item row="0" column="0">
-          <widget class="QCheckBox" name="checkBox">
+          <widget class="QCheckBox" name="usingInnerCertCheckBox">
            <property name="text">
             <string>Using inner certification</string>
            </property>
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QCheckBox" name="checkBox_2">
+          <widget class="QCheckBox" name="usingInnerKeyCheckBox">
            <property name="text">
             <string>Using inner key</string>
            </property>
