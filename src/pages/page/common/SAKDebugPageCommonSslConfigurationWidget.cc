@@ -245,14 +245,14 @@ void SAKDebugPageCommonSslConfigurationWidget::on_importKeyPushButton_clicked()
 void SAKDebugPageCommonSslConfigurationWidget::on_usingInnerCertCheckBox_clicked()
 {
     if (mEnableSetting && mSettings){
-        mSettings->setValue(mSettingKeyKeyPath, mUsingInnnerCertCheckBox->isChecked());
+        mSettings->setValue(mSettingKeyUsingInnnerCert, mUsingInnnerCertCheckBox->isChecked());
     }
 }
 
 void SAKDebugPageCommonSslConfigurationWidget::on_usingInnerKeyCheckBox_clicked()
 {
     if (mEnableSetting && mSettings){
-        mSettings->setValue(mSettingKeyKeyPath, mUsingInnerKeyCheckBox->isChecked());
+        mSettings->setValue(mSettingKeyUsingInnerKey, mUsingInnerKeyCheckBox->isChecked());
     }
 }
 
