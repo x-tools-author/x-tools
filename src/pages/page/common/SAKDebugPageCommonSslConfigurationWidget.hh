@@ -12,6 +12,7 @@
 
 #include <QWidget>
 #include <QComboBox>
+#include <QCheckBox>
 #include <QSslCipher>
 #include <QPushButton>
 #include <QSslEllipticCurve>
@@ -27,6 +28,12 @@ class SAKDebugPageCommonSslConfigurationWidget : public QWidget
 public:
     explicit SAKDebugPageCommonSslConfigurationWidget(QWidget *parent = Q_NULLPTR);
     ~SAKDebugPageCommonSslConfigurationWidget();
+
+    /**
+     * @brief sslConfiguration: Generate a ssl configuration from settings.
+     * @return A QSslConfiguration instance.
+     */
+    QSslConfiguration sslConfiguration();
 
     /**
      * @brief setupSslProtocolToComboBox: Add supported sll version to a combo box.
@@ -58,6 +65,12 @@ public:
      * @param comboBox: Combo box which is used to show the encoding format list.
      */
     void setupEncodingFormatToComboBox(QComboBox *comboBox);
+
+    /**
+     * @brief setupVerifyModeToComboBox: Add supported verify mode to a combo box.
+     * @param comboBox: Combo box which is used to show the verify mode list.
+     */
+    void setupVerifyModeToComboBox(QComboBox *comboBox);
 private:
     Ui::SAKDebugPageCommonSslConfigurationWidget *mUi;
     QComboBox *mSslProtocolComboBox;
@@ -66,9 +79,15 @@ private:
     QComboBox *mCipherSuiteComboBox;
     QComboBox *mEncodingFormatComboBox;
     QLineEdit *mCertificationLineEdit;
-    QLineEdit *keyPathLineEdit;
-    QPushButton *importCertPushButton;
-    QPushButton *importKeyPathPushButton;
+    QLineEdit *mKeyPathLineEdit;
+    QPushButton *mImportCertPushButton;
+    QPushButton *mImportKeyPathPushButton;
+    QCheckBox *mUsingInnnerCertCheckBox;
+    QCheckBox *mUsingInnerKeyCheckBox;
+    QComboBox *mVerifyModeComboBox;
+    QComboBox *mVerifyDepthComboBox;
+    QLineEdit *mNameLineEdit;
+    QPushButton *mOutportPushButton;
 };
 
 #endif // SAKSSLSOCKETCOMMONCONFIGURATION_HH

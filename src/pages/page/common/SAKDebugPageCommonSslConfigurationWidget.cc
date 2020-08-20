@@ -25,18 +25,35 @@ SAKDebugPageCommonSslConfigurationWidget::SAKDebugPageCommonSslConfigurationWidg
     mKeyAlgorithmComboBox = mUi->keyAlgorithmComboBox;
     mCipherSuiteComboBox = mUi->cipherSuiteComboBox;
     mEncodingFormatComboBox = mUi->encodingFormatComboBox;
+    mCertificationLineEdit = mUi->certificateLineEdit;
+    mKeyPathLineEdit = mUi->keyPathLineEdit;
+    mImportCertPushButton = mUi->importCertPushButton;
+    mImportKeyPathPushButton = mUi->importKeyPushButton;
+    mUsingInnnerCertCheckBox = mUi->usingInnerCertCheckBox;
+    mUsingInnerKeyCheckBox = mUi->usingInnerKeyCheckBox;
+    mVerifyModeComboBox = mUi->verifyModeComboBox;
+    mVerifyDepthComboBox = mUi->verifyDepthComboBox;
+    mNameLineEdit = mUi->nameLineEdit;
+    mOutportPushButton = mUi->outportPushButton;
 
     setupSslProtocolToComboBox(mSslProtocolComboBox);
     setupEllipticCurveToComboBox(mEllipticCurveComboBox, true);
     setupKeyAlgorithmToComboBox(mKeyAlgorithmComboBox);
     setupCipherSuiteToComboBox(mCipherSuiteComboBox);
     setupEncodingFormatToComboBox(mEncodingFormatComboBox);
+    setupVerifyModeToComboBox(mVerifyModeComboBox);
 }
 
 SAKDebugPageCommonSslConfigurationWidget::~SAKDebugPageCommonSslConfigurationWidget()
 {
     delete mUi;
 }
+
+QSslConfiguration SAKDebugPageCommonSslConfigurationWidget::sslConfiguration()
+{
+    return QSslConfiguration();
+}
+
 void SAKDebugPageCommonSslConfigurationWidget::setupSslProtocolToComboBox(QComboBox *comboBox)
 {
     if (comboBox){
@@ -112,6 +129,19 @@ void SAKDebugPageCommonSslConfigurationWidget::setupEncodingFormatToComboBox(QCo
         comboBox->clear();
         comboBox->addItem(QString("Pem"), QSsl::Pem);
         comboBox->addItem(QString("Der"), QSsl::Der);
+    }else{
+        Q_ASSERT_X(false, __FUNCTION__, "The parameter can not be a null value.");
+    }
+}
+
+void SAKDebugPageCommonSslConfigurationWidget::setupVerifyModeToComboBox(QComboBox *comboBox)
+{
+    if (comboBox){
+        comboBox->clear();
+        comboBox->addItem(QString("VerifyNone"), QSslSocket::VerifyNone);
+        comboBox->addItem(QString("QueryPeer"), QSslSocket::QueryPeer);
+        comboBox->addItem(QString("VerifyPeer"), QSslSocket::VerifyPeer);
+        comboBox->addItem(QString("AutoVerifyPeer"), QSslSocket::AutoVerifyPeer);
     }else{
         Q_ASSERT_X(false, __FUNCTION__, "The parameter can not be a null value.");
     }
