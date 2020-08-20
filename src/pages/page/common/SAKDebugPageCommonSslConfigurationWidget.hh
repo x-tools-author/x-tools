@@ -74,6 +74,19 @@ public:
     void setupVerifyModeToComboBox(QComboBox *comboBox);
 private:
     QSettings *mSettings;
+    bool mEnableSetting;
+    QString mSettingKeySslProtocol;
+    QString mSettingKeyEllipticCurve;
+    QString mSettingKeyKeyAlgorithm;
+    QString mSettingKeyCipherSuite;
+    QString mSettingKeyEncodingFormat;
+    QString mSettingKeyCertification;
+    QString mSettingKeyKeyPath;
+    QString mSettingKeyUsingInnnerCert;
+    QString mSettingKeyUsingInnerKey;
+    QString mSettingKeyVerifyMode;
+    QString mSettingKeyVerifyDepth;
+    QString mSettingKeyPeerName;
 private:
     Ui::SAKDebugPageCommonSslConfigurationWidget *mUi;
     QComboBox *mSslProtocolComboBox;

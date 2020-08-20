@@ -18,6 +18,19 @@
 SAKDebugPageCommonSslConfigurationWidget::SAKDebugPageCommonSslConfigurationWidget(QSettings *settings, QWidget *parent)
     :QWidget(parent)
     ,mSettings(settings)
+    ,mEnableSetting(false)
+    ,mSettingKeySslProtocol(QString("SSL/protocol"))
+    ,mSettingKeyEllipticCurve(QString("SSL/ellipticCurve"))
+    ,mSettingKeyKeyAlgorithm(QString("SSL/keyAlgorithm"))
+    ,mSettingKeyCipherSuite(QString("SSL/cipherSuite"))
+    ,mSettingKeyEncodingFormat(QString("SSL/encodingFormat"))
+    ,mSettingKeyCertification(QString("SSL/certification"))
+    ,mSettingKeyKeyPath(QString("SSL/keyPath"))
+    ,mSettingKeyUsingInnnerCert(QString("SSL/usingInnnerCert"))
+    ,mSettingKeyUsingInnerKey(QString("SSL/usingInnerKey"))
+    ,mSettingKeyVerifyMode(QString("SSL/peerVerifyMode"))
+    ,mSettingKeyVerifyDepth(QString("SSL/peerVerifyDepth"))
+    ,mSettingKeyPeerName(QString("SSL/peerName"))
     ,mUi(new Ui::SAKDebugPageCommonSslConfigurationWidget)
 {
     mUi->setupUi(this);
@@ -45,6 +58,22 @@ SAKDebugPageCommonSslConfigurationWidget::SAKDebugPageCommonSslConfigurationWidg
     setupVerifyModeToComboBox(mVerifyModeComboBox);
 
     Q_ASSERT_X(mSettings, __FUNCTION__, "The parameter can not be a null value.");
+    if (mSettings){
+        mSslProtocolComboBox->setCurrentText(mSettings->value(mSettingKeySslProtocol).toString());
+        mEllipticCurveComboBox->setCurrentText(mSettings->value(mSettingKeyEllipticCurve).toString());
+        mKeyAlgorithmComboBox->setCurrentText(mSettings->value(mSettingKeyKeyAlgorithm).toString());
+        mCipherSuiteComboBox->setCurrentText(mSettings->value(mSettingKeyCipherSuite).toString());
+        mEncodingFormatComboBox->setCurrentText(mSettings->value(mSettingKeyEncodingFormat).toString());
+        mCertificationLineEdit->setText(mSettings->value(mSettingKeyCertification).toString());
+        mKeyPathLineEdit->setText(mSettings->value(mSettingKeyKeyPath).toString());
+        mUsingInnnerCertCheckBox->setChecked(mSettings->value(mSettingKeyUsingInnnerCert).toBool());
+        mUsingInnerKeyCheckBox->setChecked(mSettings->value(mSettingKeyUsingInnerKey).toBool());
+        mVerifyModeComboBox->setCurrentText(mSettings->value(mSettingKeyVerifyMode).toString());
+        mVerifyDepthComboBox->setCurrentText(mSettings->value(mSettingKeyVerifyDepth).toString());
+        mNameLineEdit->setText(mSettings->value(mSettingKeyPeerName).toString());
+    }
+
+    mEnableSetting = true;
 }
 
 SAKDebugPageCommonSslConfigurationWidget::~SAKDebugPageCommonSslConfigurationWidget()
@@ -152,37 +181,51 @@ void SAKDebugPageCommonSslConfigurationWidget::setupVerifyModeToComboBox(QComboB
 
 void SAKDebugPageCommonSslConfigurationWidget::on_sslProtocolComboBox_currentTextChanged(const QString &arg1)
 {
-
+    if (mEnableSetting && mSettings){
+        mSettings->setValue(mSettingKeySslProtocol, arg1);
+    }
 }
 
 void SAKDebugPageCommonSslConfigurationWidget::on_ellipticCurveComboBox_currentTextChanged(const QString &arg1)
 {
-
+    if (mEnableSetting && mSettings){
+        mSettings->setValue(mSettingKeyEllipticCurve, arg1);
+    }
 }
 
 void SAKDebugPageCommonSslConfigurationWidget::on_keyAlgorithmComboBox_currentTextChanged(const QString &arg1)
 {
-
+    if (mEnableSetting && mSettings){
+        mSettings->setValue(mSettingKeyKeyAlgorithm, arg1);
+    }
 }
 
 void SAKDebugPageCommonSslConfigurationWidget::on_cipherSuiteComboBox_currentTextChanged(const QString &arg1)
 {
-
+    if (mEnableSetting && mSettings){
+        mSettings->setValue(mSettingKeyCipherSuite, arg1);
+    }
 }
 
 void SAKDebugPageCommonSslConfigurationWidget::on_encodingFormatComboBox_currentTextChanged(const QString &arg1)
 {
-
+    if (mEnableSetting && mSettings){
+        mSettings->setValue(mSettingKeyEncodingFormat, arg1);
+    }
 }
 
 void SAKDebugPageCommonSslConfigurationWidget::on_certificateLineEdit_textChanged(const QString &arg1)
 {
-
+    if (mEnableSetting && mSettings){
+        mSettings->setValue(mSettingKeyCertification, arg1);
+    }
 }
 
 void SAKDebugPageCommonSslConfigurationWidget::on_keyPathLineEdit_textChanged(const QString &arg1)
 {
-
+    if (mEnableSetting && mSettings){
+        mSettings->setValue(mSettingKeyKeyPath, arg1);
+    }
 }
 
 void SAKDebugPageCommonSslConfigurationWidget::on_importCertPushButton_clicked()
@@ -197,27 +240,37 @@ void SAKDebugPageCommonSslConfigurationWidget::on_importKeyPushButton_clicked()
 
 void SAKDebugPageCommonSslConfigurationWidget::on_usingInnerCertCheckBox_clicked()
 {
-
+    if (mEnableSetting && mSettings){
+        mSettings->setValue(mSettingKeyKeyPath, mUsingInnnerCertCheckBox->isChecked());
+    }
 }
 
 void SAKDebugPageCommonSslConfigurationWidget::on_usingInnerKeyCheckBox_clicked()
 {
-
+    if (mEnableSetting && mSettings){
+        mSettings->setValue(mSettingKeyKeyPath, mUsingInnerKeyCheckBox->isChecked());
+    }
 }
 
 void SAKDebugPageCommonSslConfigurationWidget::on_verifyModeComboBox_currentTextChanged(const QString &arg1)
 {
-
+    if (mEnableSetting && mSettings){
+        mSettings->setValue(mSettingKeyVerifyMode, arg1);
+    }
 }
 
 void SAKDebugPageCommonSslConfigurationWidget::on_verifyDepthComboBox_editTextChanged(const QString &arg1)
 {
-
+    if (mEnableSetting && mSettings){
+        mSettings->setValue(mSettingKeyVerifyDepth, arg1);
+    }
 }
 
 void SAKDebugPageCommonSslConfigurationWidget::on_nameLineEdit_textChanged(const QString &arg1)
 {
-
+    if (mEnableSetting && mSettings){
+        mSettings->setValue(mSettingKeyPeerName, arg1);
+    }
 }
 
 void SAKDebugPageCommonSslConfigurationWidget::on_outportPushButton_clicked()
