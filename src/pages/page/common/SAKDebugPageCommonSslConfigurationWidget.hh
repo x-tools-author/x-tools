@@ -13,6 +13,7 @@
 #include <QWidget>
 #include <QComboBox>
 #include <QSslCipher>
+#include <QPushButton>
 #include <QSslEllipticCurve>
 #include <QSslConfiguration>
 
@@ -64,6 +65,10 @@ private:
     QComboBox *mKeyAlgorithmComboBox;
     QComboBox *mCipherSuiteComboBox;
     QComboBox *mEncodingFormatComboBox;
+    QLineEdit *mCertificationLineEdit;
+    QLineEdit *keyPathLineEdit;
+    QPushButton *importCertPushButton;
+    QPushButton *importKeyPathPushButton;
 };
 
 #endif // SAKSSLSOCKETCOMMONCONFIGURATION_HH
