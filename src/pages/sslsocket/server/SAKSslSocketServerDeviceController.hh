@@ -18,13 +18,13 @@
 #include <QStandardItemModel>
 
 #include "SAKDebugPageController.hh"
-#include "SAKDebugPageCommonSslConfigurationWidget.hh"
 
 namespace Ui {
     class SAKSslSocketServerDeviceController;
 }
 
 class SAKDebugPage;
+class SAKDebugPageCommonSslConfigurationWidget;
 class SAKSslSocketServerDeviceController:public SAKDebugPageController
 {
     Q_OBJECT
@@ -49,7 +49,7 @@ private:
     QMutex mParametersMutex;
     SslSocketServerParameters mParameters;
     QStandardItemModel mClientStandardItemModel;
-    SAKDebugPageCommonSslConfigurationWidget mSslConfiguration;
+    SAKDebugPageCommonSslConfigurationWidget *mSslConfiguration;
 private:
     Ui::SAKSslSocketServerDeviceController *mUi;
     QComboBox *mServerHostComboBox;

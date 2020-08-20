@@ -13,7 +13,10 @@
 #include <QLineEdit>
 
 #include "SAKGlobal.hh"
+#include "SAKDebugPage.hh"
 #include "SAKSslSocketServerDeviceController.hh"
+#include "SAKDebugPageCommonSslConfigurationWidget.hh"
+
 #include "ui_SAKSslSocketServerDeviceController.h"
 
 SAKSslSocketServerDeviceController::SAKSslSocketServerDeviceController(SAKDebugPage *debugPage, QWidget *parent)
@@ -31,11 +34,13 @@ SAKSslSocketServerDeviceController::SAKSslSocketServerDeviceController(SAKDebugP
     refreshDevice();
 
     mClientHostComboBox->setModel(&mClientStandardItemModel);
+    mSslConfiguration = new SAKDebugPageCommonSslConfigurationWidget(debugPage->settings());
 }
 
 SAKSslSocketServerDeviceController::~SAKSslSocketServerDeviceController()
 {
     delete mUi;
+    mSslConfiguration->deleteLater();
 }
 
 QVariant SAKSslSocketServerDeviceController::parameters()
@@ -112,9 +117,9 @@ void SAKSslSocketServerDeviceController::on_clientHostComboBox_currentTextChange
 
 void SAKSslSocketServerDeviceController::on_sslConfiguration_clicked()
 {
-    if (mSslConfiguration.isHidden()){
-        mSslConfiguration.show();
+    if (mSslConfiguration->isHidden()){
+        mSslConfiguration->show();
     }else{
-        mSslConfiguration.activateWindow();
+        mSslConfiguration->activateWindow();
     }
 }
