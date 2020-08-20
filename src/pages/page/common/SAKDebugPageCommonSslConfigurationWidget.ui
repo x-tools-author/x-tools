@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>521</width>
-    <height>269</height>
+    <height>267</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -61,7 +61,11 @@
        <widget class="QComboBox" name="verifyModeComboBox"/>
       </item>
       <item row="0" column="3">
-       <widget class="QComboBox" name="verifyDepthComboBox"/>
+       <widget class="QComboBox" name="verifyDepthComboBox">
+        <property name="editable">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
       <item row="0" column="4">
        <widget class="QLabel" name="label_10">
@@ -197,7 +201,9 @@
       <item row="4" column="0" colspan="6">
        <widget class="QFrame" name="frame">
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">QFrame {
+	border: none
+}</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
@@ -254,5 +260,22 @@
   </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>okPushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SAKDebugPageCommonSslConfigurationWidget</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>454</x>
+     <y>246</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>517</x>
+     <y>265</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
