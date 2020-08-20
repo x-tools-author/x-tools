@@ -101,7 +101,7 @@ void SAKDebugPageCommonSslConfigurationWidget::setupSslProtocolToComboBox(QCombo
         comboBox->addItem(QString("TlsV1_0OrLater"), (QSsl::TlsV1_0OrLater));
         comboBox->addItem(QString("TlsV1_1OrLater"), (QSsl::TlsV1_1OrLater));
         comboBox->addItem(QString("TlsV1_2OrLater"), (QSsl::TlsV1_2OrLater));
-#if QT_VERSION_CHECK(QT_VERSION_MAJOR, QT_VERSION_MINOR, QT_VERSION_PATCH) >= QT_VERSION_CHECK(5, 12, 0)
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
         comboBox->addItem(QString("DtlsV1_0"), (QSsl::DtlsV1_0));
         comboBox->addItem(QString("DtlsV1_0OrLater"), (QSsl::DtlsV1_0OrLater));
         comboBox->addItem(QString("DtlsV1_2"), (QSsl::DtlsV1_2));
