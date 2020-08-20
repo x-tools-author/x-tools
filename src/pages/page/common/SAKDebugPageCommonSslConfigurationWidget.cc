@@ -15,8 +15,9 @@
 #include "SAKDebugPageCommonSslConfigurationWidget.hh"
 #include "ui_SAKDebugPageCommonSslConfigurationWidget.h"
 
-SAKDebugPageCommonSslConfigurationWidget::SAKDebugPageCommonSslConfigurationWidget(QWidget *parent)
+SAKDebugPageCommonSslConfigurationWidget::SAKDebugPageCommonSslConfigurationWidget(QSettings *settings, QWidget *parent)
     :QWidget(parent)
+    ,mSettings(settings)
     ,mUi(new Ui::SAKDebugPageCommonSslConfigurationWidget)
 {
     mUi->setupUi(this);
@@ -42,6 +43,8 @@ SAKDebugPageCommonSslConfigurationWidget::SAKDebugPageCommonSslConfigurationWidg
     setupCipherSuiteToComboBox(mCipherSuiteComboBox);
     setupEncodingFormatToComboBox(mEncodingFormatComboBox);
     setupVerifyModeToComboBox(mVerifyModeComboBox);
+
+    Q_ASSERT_X(mSettings, __FUNCTION__, "The parameter can not be a null value.");
 }
 
 SAKDebugPageCommonSslConfigurationWidget::~SAKDebugPageCommonSslConfigurationWidget()
@@ -145,4 +148,79 @@ void SAKDebugPageCommonSslConfigurationWidget::setupVerifyModeToComboBox(QComboB
     }else{
         Q_ASSERT_X(false, __FUNCTION__, "The parameter can not be a null value.");
     }
+}
+
+void SAKDebugPageCommonSslConfigurationWidget::on_sslProtocolComboBox_currentTextChanged(const QString &arg1)
+{
+
+}
+
+void SAKDebugPageCommonSslConfigurationWidget::on_ellipticCurveComboBox_currentTextChanged(const QString &arg1)
+{
+
+}
+
+void SAKDebugPageCommonSslConfigurationWidget::on_keyAlgorithmComboBox_currentTextChanged(const QString &arg1)
+{
+
+}
+
+void SAKDebugPageCommonSslConfigurationWidget::on_cipherSuiteComboBox_currentTextChanged(const QString &arg1)
+{
+
+}
+
+void SAKDebugPageCommonSslConfigurationWidget::on_encodingFormatComboBox_currentTextChanged(const QString &arg1)
+{
+
+}
+
+void SAKDebugPageCommonSslConfigurationWidget::on_certificateLineEdit_textChanged(const QString &arg1)
+{
+
+}
+
+void SAKDebugPageCommonSslConfigurationWidget::on_keyPathLineEdit_textChanged(const QString &arg1)
+{
+
+}
+
+void SAKDebugPageCommonSslConfigurationWidget::on_importCertPushButton_clicked()
+{
+
+}
+
+void SAKDebugPageCommonSslConfigurationWidget::on_importKeyPushButton_clicked()
+{
+
+}
+
+void SAKDebugPageCommonSslConfigurationWidget::on_usingInnerCertCheckBox_clicked()
+{
+
+}
+
+void SAKDebugPageCommonSslConfigurationWidget::on_usingInnerKeyCheckBox_clicked()
+{
+
+}
+
+void SAKDebugPageCommonSslConfigurationWidget::on_verifyModeComboBox_currentTextChanged(const QString &arg1)
+{
+
+}
+
+void SAKDebugPageCommonSslConfigurationWidget::on_verifyDepthComboBox_editTextChanged(const QString &arg1)
+{
+
+}
+
+void SAKDebugPageCommonSslConfigurationWidget::on_nameLineEdit_textChanged(const QString &arg1)
+{
+
+}
+
+void SAKDebugPageCommonSslConfigurationWidget::on_outportPushButton_clicked()
+{
+
 }

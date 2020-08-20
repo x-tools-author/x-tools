@@ -13,6 +13,7 @@
 #include <QWidget>
 #include <QComboBox>
 #include <QCheckBox>
+#include <QSettings>
 #include <QSslCipher>
 #include <QPushButton>
 #include <QSslEllipticCurve>
@@ -26,7 +27,7 @@ class SAKDebugPageCommonSslConfigurationWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit SAKDebugPageCommonSslConfigurationWidget(QWidget *parent = Q_NULLPTR);
+    explicit SAKDebugPageCommonSslConfigurationWidget(QSettings *settings, QWidget *parent = Q_NULLPTR);
     ~SAKDebugPageCommonSslConfigurationWidget();
 
     /**
@@ -72,6 +73,8 @@ public:
      */
     void setupVerifyModeToComboBox(QComboBox *comboBox);
 private:
+    QSettings *mSettings;
+private:
     Ui::SAKDebugPageCommonSslConfigurationWidget *mUi;
     QComboBox *mSslProtocolComboBox;
     QComboBox *mEllipticCurveComboBox;
@@ -88,6 +91,22 @@ private:
     QComboBox *mVerifyDepthComboBox;
     QLineEdit *mNameLineEdit;
     QPushButton *mOutportPushButton;
+private slots:
+    void on_sslProtocolComboBox_currentTextChanged(const QString &arg1);
+    void on_ellipticCurveComboBox_currentTextChanged(const QString &arg1);
+    void on_keyAlgorithmComboBox_currentTextChanged(const QString &arg1);
+    void on_cipherSuiteComboBox_currentTextChanged(const QString &arg1);
+    void on_encodingFormatComboBox_currentTextChanged(const QString &arg1);
+    void on_certificateLineEdit_textChanged(const QString &arg1);
+    void on_keyPathLineEdit_textChanged(const QString &arg1);
+    void on_importCertPushButton_clicked();
+    void on_importKeyPushButton_clicked();
+    void on_usingInnerCertCheckBox_clicked();
+    void on_usingInnerKeyCheckBox_clicked();
+    void on_verifyModeComboBox_currentTextChanged(const QString &arg1);
+    void on_verifyDepthComboBox_editTextChanged(const QString &arg1);
+    void on_nameLineEdit_textChanged(const QString &arg1);
+    void on_outportPushButton_clicked();
 };
 
 #endif // SAKSSLSOCKETCOMMONCONFIGURATION_HH
