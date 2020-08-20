@@ -9,6 +9,9 @@
  */
 #include <QSsl>
 #include <QMetaEnum>
+#include <QStandardItem>
+#include <QStandardItemModel>
+
 #include "SAKDebugPageCommonSslConfigurationWidget.hh"
 #include "ui_SAKDebugPageCommonSslConfigurationWidget.h"
 
@@ -19,9 +22,15 @@ SAKDebugPageCommonSslConfigurationWidget::SAKDebugPageCommonSslConfigurationWidg
     mUi->setupUi(this);
     mSslProtocolComboBox = mUi->sslProtocolComboBox;
     mEllipticCurveComboBox = mUi->ellipticCurveComboBox;
+    mKeyAlgorithmComboBox = mUi->keyAlgorithmComboBox;
+    mCipherSuiteComboBox = mUi->cipherSuiteComboBox;
+    mEncodingFormatComboBox = mUi->encodingFormatComboBox;
 
     setupSslProtocolToComboBox(mSslProtocolComboBox);
-    setupEllipticCurveToComboBox(mEllipticCurveComboBox);
+    setupEllipticCurveToComboBox(mEllipticCurveComboBox, true);
+    setupKeyAlgorithmToComboBox(mKeyAlgorithmComboBox);
+    setupCipherSuiteToComboBox(mCipherSuiteComboBox);
+    setupEncodingFormatToComboBox(mEncodingFormatComboBox);
 }
 
 SAKDebugPageCommonSslConfigurationWidget::~SAKDebugPageCommonSslConfigurationWidget()
@@ -31,6 +40,7 @@ SAKDebugPageCommonSslConfigurationWidget::~SAKDebugPageCommonSslConfigurationWid
 void SAKDebugPageCommonSslConfigurationWidget::setupSslProtocolToComboBox(QComboBox *comboBox)
 {
     if (comboBox){
+        comboBox->clear();
         comboBox->addItem(QString("SslV3"), (QSsl::SslV3));
         comboBox->addItem(QString("SslV2"), (QSsl::SslV2));
         comboBox->addItem(QString("TlsV1_0"), (QSsl::TlsV1_0));
@@ -53,12 +63,53 @@ void SAKDebugPageCommonSslConfigurationWidget::setupSslProtocolToComboBox(QCombo
     }
 }
 
-void SAKDebugPageCommonSslConfigurationWidget::setupEllipticCurveToComboBox(QComboBox *comboBox)
+void SAKDebugPageCommonSslConfigurationWidget::setupEllipticCurveToComboBox(QComboBox *comboBox, bool longName)
 {
     if (comboBox){
+        comboBox->clear();
         for (auto var : QSslConfiguration::supportedEllipticCurves()){
-            comboBox->addItem(var.shortName(), var.shortName());
+            comboBox->addItem(var.shortName(), longName ? var.longName() : var.shortName());
         }
+    }else{
+        Q_ASSERT_X(false, __FUNCTION__, "The parameter can not be a null value.");
+    }
+}
+
+void SAKDebugPageCommonSslConfigurationWidget::setupKeyAlgorithmToComboBox(QComboBox *comboBox)
+{
+    if (comboBox){
+        comboBox->clear();
+        comboBox->addItem(QString("Rsa"), QSsl::Rsa);
+        comboBox->addItem(QString("Dsa"), QSsl::Dsa);
+        comboBox->addItem(QString("Ec"), QSsl::Ec);
+        comboBox->addItem(QString("Opaque"), QSsl::Opaque);
+    }else{
+        Q_ASSERT_X(false, __FUNCTION__, "The parameter can not be a null value.");
+    }
+}
+
+void SAKDebugPageCommonSslConfigurationWidget::setupCipherSuiteToComboBox(QComboBox *comboBox)
+{
+    if (comboBox){
+        comboBox->clear();
+        QStandardItemModel *itemModel = new QStandardItemModel(comboBox);
+        for (auto var : QSslConfiguration::supportedCiphers()){
+            QStandardItem *item = new QStandardItem(var.name());
+            item->setToolTip(var.name());
+            itemModel->appendRow(item);
+        }
+        comboBox->setModel(itemModel);
+    }else{
+        Q_ASSERT_X(false, __FUNCTION__, "The parameter can not be a null value.");
+    }
+}
+
+void SAKDebugPageCommonSslConfigurationWidget::setupEncodingFormatToComboBox(QComboBox *comboBox)
+{
+    if (comboBox){
+        comboBox->clear();
+        comboBox->addItem(QString("Pem"), QSsl::Pem);
+        comboBox->addItem(QString("Der"), QSsl::Der);
     }else{
         Q_ASSERT_X(false, __FUNCTION__, "The parameter can not be a null value.");
     }

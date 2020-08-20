@@ -12,6 +12,7 @@
 
 #include <QWidget>
 #include <QComboBox>
+#include <QSslCipher>
 #include <QSslEllipticCurve>
 #include <QSslConfiguration>
 
@@ -34,13 +35,35 @@ public:
 
     /**
      * @brief setupEllipticCurveToComboBox: Add supported elliptic curve to a combo box.
-     * @param comboBox: Combo bo which is used to show the elliptic curve.
+     * @param comboBox: Combo bo which is used to show the elliptic curve list.
+     * @param longName: If the value is true, long name will be append to combo box.
      */
-    void setupEllipticCurveToComboBox(QComboBox *comboBox);
+    void setupEllipticCurveToComboBox(QComboBox *comboBox, bool longName = false);
+
+    /**
+     * @brief setupKeyAlgorithmToComboBox: Add supported key algorithm to a combo box.
+     * @param comboBox: Combo box which is used to show the key algorithm list.
+     */
+    void setupKeyAlgorithmToComboBox(QComboBox *comboBox);
+
+    /**
+     * @brief setupCipherSuiteToComboBox: Add supported cipher suite to a combo box.
+     * @param comboBox: Combo box which is used to show the cipher suite list.
+     */
+    void setupCipherSuiteToComboBox(QComboBox *comboBox);
+
+    /**
+     * @brief setupEncodingFormatToComboBox: Add supported encoding format to a combo box.
+     * @param comboBox: Combo box which is used to show the encoding format list.
+     */
+    void setupEncodingFormatToComboBox(QComboBox *comboBox);
 private:
     Ui::SAKDebugPageCommonSslConfigurationWidget *mUi;
     QComboBox *mSslProtocolComboBox;
     QComboBox *mEllipticCurveComboBox;
+    QComboBox *mKeyAlgorithmComboBox;
+    QComboBox *mCipherSuiteComboBox;
+    QComboBox *mEncodingFormatComboBox;
 };
 
 #endif // SAKSSLSOCKETCOMMONCONFIGURATION_HH
