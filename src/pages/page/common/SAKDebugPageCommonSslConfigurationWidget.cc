@@ -83,7 +83,8 @@ SAKDebugPageCommonSslConfigurationWidget::~SAKDebugPageCommonSslConfigurationWid
 
 QSslConfiguration SAKDebugPageCommonSslConfigurationWidget::sslConfiguration()
 {
-    return QSslConfiguration();
+    QSslConfiguration sslConfiguration;
+    return sslConfiguration;
 }
 
 void SAKDebugPageCommonSslConfigurationWidget::setupSslProtocolToComboBox(QComboBox *comboBox)
@@ -113,6 +114,7 @@ void SAKDebugPageCommonSslConfigurationWidget::setupSslProtocolToComboBox(QCombo
         comboBox->addItem(QString("TlsV1_3"), (QSsl::TlsV1_3));
         comboBox->addItem(QString("TlsV1_3OrLater"), (QSsl::TlsV1_3OrLater));
 #endif
+        comboBox->setCurrentText(QString("SecureProtocols"));
     }else{
         Q_ASSERT_X(false, __FUNCTION__, "The parameter can not be a null value.");
     }
