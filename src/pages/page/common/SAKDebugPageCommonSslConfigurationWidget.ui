@@ -6,22 +6,32 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>521</width>
-    <height>267</height>
+    <width>515</width>
+    <height>325</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Ssl configuration</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="2" column="2">
+   <item row="3" column="1">
+    <widget class="QPushButton" name="outportPushButton">
+     <property name="toolTip">
+      <string>Outport inner certificate and key</string>
+     </property>
+     <property name="text">
+      <string>Outport</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2">
     <widget class="QPushButton" name="okPushButton">
      <property name="text">
       <string>OK</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="0">
+   <item row="3" column="0">
     <spacer name="horizontalSpacer">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -34,98 +44,12 @@
      </property>
     </spacer>
    </item>
-   <item row="2" column="1">
-    <widget class="QPushButton" name="outportPushButton">
-     <property name="toolTip">
-      <string>Outport inner certificate and key</string>
-     </property>
-     <property name="text">
-      <string>Outport</string>
-     </property>
-    </widget>
-   </item>
    <item row="1" column="0" colspan="3">
-    <widget class="QGroupBox" name="groupBox_2">
-     <property name="title">
-      <string>Peer settings</string>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_3">
-      <item row="0" column="0">
-       <widget class="QLabel" name="label_9">
-        <property name="text">
-         <string>Verify Mode</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QComboBox" name="verifyModeComboBox"/>
-      </item>
-      <item row="0" column="3">
-       <widget class="QComboBox" name="verifyDepthComboBox">
-        <property name="editable">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="4">
-       <widget class="QLabel" name="label_10">
-        <property name="text">
-         <string>Name</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="6">
-       <spacer name="horizontalSpacer_2">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="0" column="2">
-       <widget class="QLabel" name="label_4">
-        <property name="text">
-         <string>Verify depth</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="5">
-       <widget class="QLineEdit" name="nameLineEdit"/>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="0" column="0" colspan="3">
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
-      <string>Local settings</string>
+      <string>Local ssl settings</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
-      <item row="0" column="5">
-       <widget class="QComboBox" name="keyAlgorithmComboBox"/>
-      </item>
-      <item row="0" column="1">
-       <widget class="QComboBox" name="sslProtocolComboBox"/>
-      </item>
-      <item row="1" column="2">
-       <widget class="QLabel" name="label_5">
-        <property name="text">
-         <string>Encoding format</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1" colspan="4">
-       <widget class="QLineEdit" name="keyPathLineEdit">
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
       <item row="0" column="0">
        <widget class="QLabel" name="label">
         <property name="text">
@@ -133,36 +57,18 @@
         </property>
        </widget>
       </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="sslProtocolComboBox"/>
+      </item>
       <item row="0" column="2">
-       <widget class="QLabel" name="label_3">
+       <widget class="QLabel" name="label_5">
         <property name="text">
-         <string>Elliptic curve</string>
+         <string>Encoding format</string>
         </property>
        </widget>
       </item>
       <item row="0" column="3">
-       <widget class="QComboBox" name="ellipticCurveComboBox"/>
-      </item>
-      <item row="2" column="1" colspan="4">
-       <widget class="QLineEdit" name="certificateLineEdit">
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label_7">
-        <property name="text">
-         <string>Certificate</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="label_8">
-        <property name="text">
-         <string>Key file</string>
-        </property>
-       </widget>
+       <widget class="QComboBox" name="encodingFormatComboBox"/>
       </item>
       <item row="0" column="4">
        <widget class="QLabel" name="label_6">
@@ -171,34 +77,52 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
-       <widget class="QComboBox" name="cipherSuiteComboBox"/>
+      <item row="0" column="5">
+       <widget class="QComboBox" name="keyAlgorithmComboBox"/>
       </item>
-      <item row="2" column="5">
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_7">
+        <property name="text">
+         <string>Certificate</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="5">
        <widget class="QPushButton" name="importCertPushButton">
         <property name="text">
          <string>Import</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="3">
-       <widget class="QComboBox" name="encodingFormatComboBox"/>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_8">
+        <property name="text">
+         <string>Key file</string>
+        </property>
+       </widget>
       </item>
-      <item row="3" column="5">
+      <item row="2" column="5">
        <widget class="QPushButton" name="importKeyPushButton">
         <property name="text">
          <string>Import</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>Cipher suite</string>
+      <item row="1" column="1" colspan="4">
+       <widget class="QLineEdit" name="certificateLineEdit">
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
-      <item row="4" column="0" colspan="6">
+      <item row="2" column="1" colspan="4">
+       <widget class="QLineEdit" name="keyPathLineEdit">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" colspan="6">
        <widget class="QFrame" name="frame">
         <property name="styleSheet">
          <string notr="true">QFrame {
@@ -252,6 +176,88 @@
           </widget>
          </item>
         </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="3">
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="title">
+      <string>Peer ssl settings</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_9">
+        <property name="text">
+         <string>Verify Mode</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="verifyModeComboBox"/>
+      </item>
+      <item row="0" column="2">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Verify depth</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QLineEdit" name="verifyDepthLineEdit">
+        <property name="text">
+         <string notr="true">0</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="4">
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="3">
+    <widget class="QGroupBox" name="groupBox_3">
+     <property name="title">
+      <string>Ssl information</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_5">
+      <item row="0" column="1">
+       <widget class="QComboBox" name="cipherSuiteComboBox"/>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Supported Cipher suitse</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Supported elliptic curves</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QComboBox" name="ellipticCurveComboBox"/>
+      </item>
+      <item row="0" column="2">
+       <widget class="QCheckBox" name="longNameCheckBox">
+        <property name="text">
+         <string>Long name</string>
+        </property>
        </widget>
       </item>
      </layout>

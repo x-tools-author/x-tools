@@ -101,14 +101,13 @@ private:
     QCheckBox *mUsingInnnerCertCheckBox;
     QCheckBox *mUsingInnerKeyCheckBox;
     QComboBox *mVerifyModeComboBox;
-    QComboBox *mVerifyDepthComboBox;
+    QLineEdit *mVerifyDepthLineEdit;
     QLineEdit *mNameLineEdit;
     QPushButton *mOutportPushButton;
+    QCheckBox *mLongNameCheckBox;
 private slots:
     void on_sslProtocolComboBox_currentTextChanged(const QString &arg1);
-    void on_ellipticCurveComboBox_currentTextChanged(const QString &arg1);
     void on_keyAlgorithmComboBox_currentTextChanged(const QString &arg1);
-    void on_cipherSuiteComboBox_currentTextChanged(const QString &arg1);
     void on_encodingFormatComboBox_currentTextChanged(const QString &arg1);
     void on_certificateLineEdit_textChanged(const QString &arg1);
     void on_keyPathLineEdit_textChanged(const QString &arg1);
@@ -117,9 +116,10 @@ private slots:
     void on_usingInnerCertCheckBox_clicked();
     void on_usingInnerKeyCheckBox_clicked();
     void on_verifyModeComboBox_currentTextChanged(const QString &arg1);
-    void on_verifyDepthComboBox_editTextChanged(const QString &arg1);
+    void on_verifyDepthLineEdit_textChanged(const QString &arg1);
     void on_nameLineEdit_textChanged(const QString &arg1);
     void on_outportPushButton_clicked();
+    void on_longNameCheckBox_clicked();
 };
 
 #endif // SAKSSLSOCKETCOMMONCONFIGURATION_HH
