@@ -556,15 +556,12 @@ QWidget *SAKMainWindow::debugPageFromType(int type)
 
 void SAKMainWindow::appendWindowAction(QWidget *page)
 {
-    static bool hasBeenCalledOnce = false;
-    if (!hasBeenCalledOnce){
-        hasBeenCalledOnce = true;
-        QAction *action = new QAction(page->windowTitle(), mWindowsMenu);
-        action->setData(QVariant::fromValue(page));
-        mWindowsMenu->addAction(action);
-        connect(action, &QAction::triggered, this, &SAKMainWindow::activePage);
-        connect(page, &QWidget::destroyed, action, &QAction::deleteLater);
-    }
+    hasBeenCalledOnce = true;
+    QAction *action = new QAction(page->windowTitle(), mWindowsMenu);
+    action->setData(QVariant::fromValue(page));
+    mWindowsMenu->addAction(action);
+    connect(action, &QAction::triggered, this, &SAKMainWindow::activePage);
+    connect(page, &QWidget::destroyed, action, &QAction::deleteLater);
 }
 
 void SAKMainWindow::testPageActionTriggered()
