@@ -2,11 +2,11 @@
 
 [English](../../README.md)  
 ***************
-QSAK（Qt Swiss Army Knife）是一款基于Qt开源框架打造的多功能、跨平台调试工具。它集串口调试、网口调试、蓝牙调试、USB调试、HID调试、CAN总线调试、MODBUS总线调试等调试功能于一身，具备MAVLink、MODBUS、MQTT等通信协议的解释调试能力，能够运行在Windows、Linux、macOS、ios、Android及Raspberry Pi等设备上。**项目的目标是打造软件版“瑞士军刀”。**
+QSAK（Qt Swiss Army Knife）是一款基于Qt开源框架打造的多功能、跨平台调试工具。目前它支持串口调试、DUP调试、TCP调试及WebSocket调试。QSAK程序能够在Windows、Linux、macOS、ios、Android及arm(Raspberry Pi)等平台上运行。**项目的目标是打造软件版“瑞士军刀”。**
 
 ## 开发环境
 
-Qt 5.15.x，其他版本也可能适用，但项目作者不会对其他版本开发时遇到的问题进行修复。
+工程使用Qt5.15的最新版本进行开发维护，另外，本工程在5.6、5.9及5.12等Qt版本下编译通过。Qt版本低于5.12，部分功能可能会被屏蔽。
 
 ## 主界面预览
 
