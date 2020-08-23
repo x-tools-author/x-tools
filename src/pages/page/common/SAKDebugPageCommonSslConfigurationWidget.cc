@@ -50,7 +50,6 @@ SAKDebugPageCommonSslConfigurationWidget::SAKDebugPageCommonSslConfigurationWidg
     mUsingInnerKeyCheckBox = mUi->usingInnerKeyCheckBox;
     mVerifyModeComboBox = mUi->verifyModeComboBox;
     mVerifyDepthLineEdit = mUi->verifyDepthLineEdit;
-    mNameLineEdit = mUi->nameLineEdit;
     mOutportPushButton = mUi->outportPushButton;
     mLongNameCheckBox = mUi->longNameCheckBox;
 
@@ -74,7 +73,6 @@ SAKDebugPageCommonSslConfigurationWidget::SAKDebugPageCommonSslConfigurationWidg
         mUsingInnerKeyCheckBox->setChecked(mSettings->value(mSettingKeyUsingInnerKey).toBool());
         mVerifyModeComboBox->setCurrentText(mSettings->value(mSettingKeyVerifyMode).toString());
         mVerifyDepthLineEdit->setText(mSettings->value(mSettingKeyVerifyDepth).toString());
-        mNameLineEdit->setText(mSettings->value(mSettingKeyPeerName).toString());
     }
 
     mEnableSetting = true;
@@ -279,13 +277,6 @@ void SAKDebugPageCommonSslConfigurationWidget::on_verifyDepthLineEdit_textChange
 {
     if (mEnableSetting && mSettings){
         mSettings->setValue(mSettingKeyVerifyDepth, arg1);
-    }
-}
-
-void SAKDebugPageCommonSslConfigurationWidget::on_nameLineEdit_textChanged(const QString &arg1)
-{
-    if (mEnableSetting && mSettings){
-        mSettings->setValue(mSettingKeyPeerName, arg1);
     }
 }
 

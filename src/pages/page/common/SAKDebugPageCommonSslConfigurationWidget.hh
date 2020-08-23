@@ -102,7 +102,6 @@ private:
     QCheckBox *mUsingInnerKeyCheckBox;
     QComboBox *mVerifyModeComboBox;
     QLineEdit *mVerifyDepthLineEdit;
-    QLineEdit *mNameLineEdit;
     QPushButton *mOutportPushButton;
     QCheckBox *mLongNameCheckBox;
 private slots:
@@ -117,7 +116,6 @@ private slots:
     void on_usingInnerKeyCheckBox_clicked();
     void on_verifyModeComboBox_currentTextChanged(const QString &arg1);
     void on_verifyDepthLineEdit_textChanged(const QString &arg1);
-    void on_nameLineEdit_textChanged(const QString &arg1);
     void on_outportPushButton_clicked();
     void on_longNameCheckBox_clicked();
 };
