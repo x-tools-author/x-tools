@@ -8,5 +8,5 @@ DEFINES += SAK_HOST_ADDRESS_ANY=\"\\\"HostAddress::Any\\\"\"
 DEFINES += SAK_VERSION=\"\\\"3.2.0\\\"\"
 # Exit code which is used to reboot the application
 DEFINES += SAK_REBOOT_CODE=1314
-# Sleep interval of device thread
+# Sleep interval of device thread, the unit is ms
 DEFINES += SAK_DEVICE_THREAD_SLEEP_INTERVAL=10
