@@ -489,40 +489,6 @@ QWidget *SAKMainWindow::debugPageFromType(int type)
     case SAKDataStruct::DebugPageTypeTest:
         widget = new SAKTestDebugPage;
         break;
-    case SAKDataStruct::DebugPageTypeUdpClient:
-        widget = new SAKUdpClientDebugPage;
-        break;
-    case SAKDataStruct::DebugPageTypeUdpServer:
-        widget = new SAKUdpServerDebugPage;
-        break;
-    case SAKDataStruct::DebugPageTypeSslSocketClient:
-        widget = new SAKSslSocketClientDebugPage;
-        break;
-    case SAKDataStruct::DebugPageTypeSslSocketServer:
-        widget = new SAKSslSocketServerDebugPage;
-        break;
-    case SAKDataStruct::DebugPageTypeTCPClient:
-        widget = new SAKTcpClientDebugPage;
-        break;
-    case SAKDataStruct::DebugPageTypeTCPServer:
-        widget = new SAKTcpServerDebugPage;
-        break;
-#ifdef SAK_IMPORT_SCTP_MODULE
-    case SAKDataStruct::DebugPageTypeSCTPClient:
-        widget = new SAKSctpClientDebugPage;
-        break;
-    case SAKDataStruct::DebugPageTypeSCTPServer:
-        widget = new SAKSctpServerDebugPage;
-        break;
-#endif
-#ifdef SAK_IMPORT_WEBSOCKET_MODULE
-    case SAKDataStruct::DebugPageTypeWebSocketClient:
-        widget = new SAKWebSocketClientDebugPage;
-        break;
-    case SAKDataStruct::DebugPageTypeWebSocketServer:
-        widget = new SAKWebSocketServerDebugPage;
-        break;
-#endif
 #ifdef SAK_IMPORT_COM_MODULE
     case SAKDataStruct::DebugPageTypeCOM:
         widget = new SAKSerialPortDebugPage;
@@ -538,12 +504,46 @@ QWidget *SAKMainWindow::debugPageFromType(int type)
         widget = new SAKUsbDebugPage;
         break;
 #endif
+    case SAKDataStruct::DebugPageTypeUdpClient:
+        widget = new SAKUdpClientDebugPage;
+        break;
+    case SAKDataStruct::DebugPageTypeUdpServer:
+        widget = new SAKUdpServerDebugPage;
+        break;
+    case SAKDataStruct::DebugPageTypeTCPClient:
+        widget = new SAKTcpClientDebugPage;
+        break;
+    case SAKDataStruct::DebugPageTypeTCPServer:
+        widget = new SAKTcpServerDebugPage;
+        break;
+    case SAKDataStruct::DebugPageTypeSslSocketClient:
+        widget = new SAKSslSocketClientDebugPage;
+        break;
+    case SAKDataStruct::DebugPageTypeSslSocketServer:
+        widget = new SAKSslSocketServerDebugPage;
+        break;
+#ifdef SAK_IMPORT_SCTP_MODULE
+    case SAKDataStruct::DebugPageTypeSCTPClient:
+        widget = new SAKSctpClientDebugPage;
+        break;
+    case SAKDataStruct::DebugPageTypeSCTPServer:
+        widget = new SAKSctpServerDebugPage;
+        break;
+#endif
 #ifdef SAK_IMPORT_BLUETOOTH_MODULE
     case SAKDataStruct::DebugPageTypeBluetoothClient:
         widget = new SAKBluetoothClientDebugPage;
         break;
     case SAKDataStruct::DebugPageTypeBluetoothServer:
         widget = new SAKBluetoothServerDebugPage;
+        break;
+#endif
+#ifdef SAK_IMPORT_WEBSOCKET_MODULE
+    case SAKDataStruct::DebugPageTypeWebSocketClient:
+        widget = new SAKWebSocketClientDebugPage;
+        break;
+    case SAKDataStruct::DebugPageTypeWebSocketServer:
+        widget = new SAKWebSocketServerDebugPage;
         break;
 #endif
     default:
