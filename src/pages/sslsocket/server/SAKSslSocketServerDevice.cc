@@ -20,7 +20,7 @@
 SAKSslSocketServerDevice::SAKSslSocketServerDevice(SAKSslSocketServerDebugPage *debugPage, QObject *parent)
     :SAKDebugPageDevice(parent)
     ,mDebugPage(debugPage)
-    ,mTcpServer(Q_NULLPTR)
+    ,mSslSocket(Q_NULLPTR)
 {
 #if 0
     mDeviceController = qobject_cast<SAKSslSocketServerDeviceController*>(mDebugPage->deviceController());
@@ -45,11 +45,11 @@ bool SAKSslSocketServerDevice::open(QString &errorString)
     QString serverHost = parameters.serverHost;
     quint16 serverPort = parameters.serverPort;
 
-    mTcpServer = new QTcpServer;
-    if (!mTcpServer->listen(QHostAddress(serverHost), serverPort)){
-        errorString = tr("Listen failed:") + mTcpServer->errorString();
-        return false;
-    }
+    mSslSocket = new QSslSocket;
+//    if (!mSslSocket->listen(QHostAddress(serverHost), serverPort)){
+//        errorString = tr("Listen failed:") + mSslSocket->errorString();
+//        return false;
+//    }
 
     return true;
 }
@@ -98,13 +98,13 @@ QByteArray SAKSslSocketServerDevice::write(QByteArray bytes)
 bool SAKSslSocketServerDevice::checkSomething(QString &errorString)
 {
     // Handling new connection
-    while (mTcpServer->hasPendingConnections()){
-        QTcpSocket *socket = mTcpServer->nextPendingConnection();
-        if (socket){
-            emit addClient(socket->peerAddress().toString(), socket->peerPort(), socket);
-            mClientList.append(socket);
-        }
-    }
+//    while (mSslSocket->hasPendingConnections()){
+//        QTcpSocket *socket = mSslSocket->nextPendingConnection();
+//        if (socket){
+//            emit addClient(socket->peerAddress().toString(), socket->peerPort(), socket);
+//            mClientList.append(socket);
+//        }
+//    }
 
     // Remove clients which is offline
     for (auto var : mClientList){
@@ -125,11 +125,11 @@ bool SAKSslSocketServerDevice::checkSomething(QString &errorString)
 
 void SAKSslSocketServerDevice::close()
 {
-    mTcpServer->close();
+    mSslSocket->close();
 }
 
 void SAKSslSocketServerDevice::free()
 {
-    delete mTcpServer;
-    mTcpServer = Q_NULLPTR;
+    delete mSslSocket;
+    mSslSocket = Q_NULLPTR;
 }

@@ -11,8 +11,7 @@
 #define SAKSSLSOCKETSERVERDEVICE_HH
 
 #include <QThread>
-#include <QTcpServer>
-#include <QTcpSocket>
+#include <QSslSocket>
 
 #include "SAKDebugPageDevice.hh"
 
@@ -36,7 +35,7 @@ signals:
     void removeClient(QTcpSocket *socket);
 private:
     SAKSslSocketServerDebugPage *mDebugPage;
-    QTcpServer *mTcpServer;
+    QSslSocket *mSslSocket;
     SAKSslSocketServerDeviceController *mDeviceController;
     QList<QTcpSocket*> mClientList;
 };
