@@ -180,9 +180,11 @@ HEADERS += \
     src/SAKApplication.hh \
     src/SAKGlobal.hh \
     src/SAKSqlDatabase.hh \
+    src/common/SAKCommonCrcInterface.hh \
+    src/common/SAKCommonDataStructure.hh \
+    src/common/SAKCommonInterface.hh \
     src/mainwindow/SAKMainWindow.hh \
     src/SAKSettings.hh \
-    src/common/SAKInterface.hh \
     src/mainwindow/SAKMainWindowMoreInformationDialog.hh \
     src/mainwindow/SAKMainWindowQrCode.hh \
     src/mainwindow/SAKMainWindowQrCodeView.hh \
@@ -214,8 +216,6 @@ HEADERS += \
     src/pages/page/other/transmission/SAKOtherTransmissionPageViewer.hh \
     src/pages/page/output/SAKDebugPageOutputController.hh \
     src/pages/page/output/save2file/SAKOutputSave2FileDialog.hh \
-    src/common/SAKCRCInterface.hh \
-    src/common/SAKDataStruct.hh \
     src/pages/page/output/save2file/SAKOutputSave2FileThread.hh \
     src/pages/page/statistics/SAKDebugPageStatisticsController.hh \
     src/pages/sslsocket/client/SAKSslSocketClientDebugPage.hh \
@@ -252,9 +252,11 @@ SOURCES += \
     src/SAKApplication.cc \
     src/SAKGlobal.cc \
     src/SAKSqlDatabase.cc \
+    src/common/SAKCommonCrcInterface.cc \
+    src/common/SAKCommonDataStructure.cc \
+    src/common/SAKCommonInterface.cc \
     src/mainwindow/SAKMainWindow.cc \
     src/SAKSettings.cc \
-    src/common/SAKInterface.cc \
     src/mainwindow/SAKMainWindowMoreInformationDialog.cc \
     src/mainwindow/SAKMainWindowQrCode.cc \
     src/mainwindow/SAKMainWindowQrCodeView.cc \
@@ -286,8 +288,6 @@ SOURCES += \
     src/pages/page/other/transmission/SAKOtherTransmissionPageViewer.cc \
     src/pages/page/output/SAKDebugPageOutputController.cc \
     src/pages/page/output/save2file/SAKOutputSave2FileDialog.cc \
-    src/common/SAKCRCInterface.cc \
-    src/common/SAKDataStruct.cc \
     src/main.cc \
     src/pages/page/output/save2file/SAKOutputSave2FileThread.cc \
     src/pages/page/statistics/SAKDebugPageStatisticsController.cc \
