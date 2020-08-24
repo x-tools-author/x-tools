@@ -12,14 +12,14 @@
 #include <QDesktopServices>
 #include <QLoggingCategory>
 
-#include "SAKCRCInterface.hh"
+#include "SAKCommonCrcInterface.hh"
 #include "SAKToolCRCCalculator.hh"
 #include "ui_SAKToolCRCCalculator.h"
 
 SAKToolCRCCalculator::SAKToolCRCCalculator(QWidget* parent)
     :QWidget(parent)
     ,mLogCategory("CRCCalculator")
-    ,mCrcInterface(new SAKCRCInterface)
+    ,mCrcInterface(new SAKCommonCrcInterface)
     ,mUi(new Ui::SAKToolCRCCalculator)
 {
     mUi->setupUi(this);
@@ -80,12 +80,12 @@ void SAKToolCRCCalculator::initParameterModel()
     QStringList list = mCrcInterface->supportedParameterModels();
     mParameterComboBox->addItems(list);
 
-    QMetaEnum models = QMetaEnum::fromType<SAKCRCInterface::CRCModel>();
+    QMetaEnum models = QMetaEnum::fromType<SAKCommonCrcInterface::CRCModel>();
     bool ok = false;
     int ret = models.keyToValue(mParameterComboBox->currentText().toLatin1().constData(), &ok);
-    SAKCRCInterface::CRCModel model = SAKCRCInterface::CRC_8;
+    SAKCommonCrcInterface::CRCModel model = SAKCommonCrcInterface::CRC_8;
     if (ok){
-        model = static_cast<SAKCRCInterface::CRCModel>(ret);
+        model = static_cast<SAKCommonCrcInterface::CRCModel>(ret);
     }
 
     int bitsWidth = mCrcInterface->getBitsWidth(model);
@@ -116,12 +116,12 @@ void SAKToolCRCCalculator::calculate()
     }
 
     int bitsWidth = mWidthComboBox->currentText().toInt();
-    QMetaEnum models = QMetaEnum::fromType<SAKCRCInterface::CRCModel>();
+    QMetaEnum models = QMetaEnum::fromType<SAKCommonCrcInterface::CRCModel>();
     bool ok = false;
     int ret = models.keyToValue(mParameterComboBox->currentText().toLatin1().constData(), &ok);
-    SAKCRCInterface::CRCModel model = SAKCRCInterface::CRC_8;
+    SAKCommonCrcInterface::CRCModel model = SAKCommonCrcInterface::CRC_8;
     if (ok){
-        model = static_cast<SAKCRCInterface::CRCModel>(ret);
+        model = static_cast<SAKCommonCrcInterface::CRCModel>(ret);
     }
 
     QString crcHexString = "error";
@@ -172,12 +172,12 @@ void SAKToolCRCCalculator::textFormatControl()
 void SAKToolCRCCalculator::changedParameterModel(int index)
 {
     Q_UNUSED(index)
-    QMetaEnum models = QMetaEnum::fromType<SAKCRCInterface::CRCModel>();
+    QMetaEnum models = QMetaEnum::fromType<SAKCommonCrcInterface::CRCModel>();
     bool ok = false;
-    SAKCRCInterface::CRCModel model = SAKCRCInterface::CRC_8;
+    SAKCommonCrcInterface::CRCModel model = SAKCommonCrcInterface::CRC_8;
     int ret = models.keyToValue(mParameterComboBox->currentText().toLatin1().constData(), &ok);
     if (ok){
-        model = static_cast<SAKCRCInterface::CRCModel>(ret);
+        model = static_cast<SAKCommonCrcInterface::CRCModel>(ret);
     }else{
         QLoggingCategory category(mLogCategory);
         qCWarning(category) << "Unknow parameter model!";

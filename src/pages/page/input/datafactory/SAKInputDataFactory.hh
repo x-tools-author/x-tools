@@ -16,7 +16,7 @@
 
 #include "SAKDebugPageInputController.hh"
 
-class SAKCRCInterface;
+class SAKCommonCrcInterface;
 /// @brief handle the input data
 class SAKInputDataFactory:public QThread
 {
@@ -60,7 +60,7 @@ private:
     QMutex mThreadMutex;
     SAKDebugPage *mDebugPage;
     QWaitCondition mThreadCondition;
-    SAKCRCInterface *mCrcInterface;
+    SAKCommonCrcInterface *mCrcInterface;
     QList<RawDataStruct> mRawDataList;
 private:
     RawDataStruct takeRawData();

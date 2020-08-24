@@ -12,7 +12,7 @@
 
 #include "SAKGlobal.hh"
 #include "SAKDebugPage.hh"
-#include "SAKDataStruct.hh"
+#include "SAKCommonDataStructure.hh"
 #include "SAKOtherAutoResponseItem.hh"
 
 #include "ui_SAKOtherAutoResponseItem.h"
@@ -136,22 +136,22 @@ void SAKOtherAutoResponseItem::setLineEditFormat(QLineEdit *lineEdit, int format
         lineEdit->setValidator(Q_NULLPTR);
         lineEdit->clear();
         switch (format) {
-        case SAKDataStruct::InputFormatBin:
+        case SAKCommonDataStructure::InputFormatBin:
             lineEdit->setValidator(new QRegExpValidator(regExpBin, this));
             break;
-        case SAKDataStruct::InputFormatOct:
+        case SAKCommonDataStructure::InputFormatOct:
             lineEdit->setValidator(new QRegExpValidator(regExpOct, this));
             break;
-        case SAKDataStruct::InputFormatDec:
+        case SAKCommonDataStructure::InputFormatDec:
             lineEdit->setValidator(new QRegExpValidator(regExpDec, this));
             break;
-        case SAKDataStruct::InputFormatHex:
+        case SAKCommonDataStructure::InputFormatHex:
             lineEdit->setValidator(new QRegExpValidator(regExpHex, this));
             break;
-        case SAKDataStruct::InputFormatAscii:
+        case SAKCommonDataStructure::InputFormatAscii:
             lineEdit->setValidator(new QRegExpValidator(regExpAscii, this));
             break;
-        case SAKDataStruct::InputFormatLocal:
+        case SAKCommonDataStructure::InputFormatLocal:
             lineEdit->setValidator(Q_NULLPTR);
             break;
         default:
@@ -217,30 +217,30 @@ QByteArray SAKOtherAutoResponseItem::string2array(QString str, int format)
     QStringList strList;
     int base;
     switch (format) {
-    case SAKDataStruct::InputFormatBin:
+    case SAKCommonDataStructure::InputFormatBin:
         base = 2;
         strList = str.split(' ');
         array = stringList2Array(strList, base);
         break;
-    case SAKDataStruct::InputFormatOct:
+    case SAKCommonDataStructure::InputFormatOct:
         base = 8;
         strList = str.split(' ');
         array = stringList2Array(strList, base);
         break;
-    case SAKDataStruct::InputFormatDec:
+    case SAKCommonDataStructure::InputFormatDec:
         base = 10;
         strList = str.split(' ');
         array = stringList2Array(strList, base);
         break;
-    case SAKDataStruct::InputFormatHex:
+    case SAKCommonDataStructure::InputFormatHex:
         base = 16;
         strList = str.split(' ');
         array = stringList2Array(strList, base);
         break;
-    case SAKDataStruct::InputFormatAscii:
+    case SAKCommonDataStructure::InputFormatAscii:
         array = str.toLatin1();
         break;
-    case SAKDataStruct::InputFormatLocal:
+    case SAKCommonDataStructure::InputFormatLocal:
         array = str.toLocal8Bit();
         break;
     default:
@@ -252,15 +252,15 @@ QByteArray SAKOtherAutoResponseItem::string2array(QString str, int format)
 
 bool SAKOtherAutoResponseItem::response(QByteArray receiveData, QByteArray referenceData, int option)
 {
-    if (option == SAKDataStruct::AutoResponseOptionEqual){
+    if (option == SAKCommonDataStructure::AutoResponseOptionEqual){
         return (QString(receiveData.toHex()).compare(QString(referenceData.toHex())) == 0);
     }
 
-    if (option == SAKDataStruct::AutoResponseOptionContain){
+    if (option == SAKCommonDataStructure::AutoResponseOptionContain){
         return (QString(receiveData.toHex()).contains(QString(referenceData.toHex())));
     }
 
-    if (option == SAKDataStruct::AutoResponseOptionDoNotContain){
+    if (option == SAKCommonDataStructure::AutoResponseOptionDoNotContain){
         return !(QString(receiveData.toHex()).contains(QString(referenceData.toHex())));
     }
 
@@ -281,9 +281,9 @@ void SAKOtherAutoResponseItem::commonInitializing()
     mDelayResponseLineEdit = mUi->delayResponseLineEdit;
 
     mOptionComboBox->clear();
-    mOptionComboBox->addItem(tr("Rx data is equal to reference data"), QVariant::fromValue<int>(SAKDataStruct::AutoResponseOptionEqual));
-    mOptionComboBox->addItem(tr("Rx data Contains reference data"), QVariant::fromValue<int>(SAKDataStruct::AutoResponseOptionContain));
-    mOptionComboBox->addItem(tr("Rx data does not Contains reference data"), QVariant::fromValue<int>(SAKDataStruct::AutoResponseOptionDoNotContain));
+    mOptionComboBox->addItem(tr("Rx data is equal to reference data"), QVariant::fromValue<int>(SAKCommonDataStructure::AutoResponseOptionEqual));
+    mOptionComboBox->addItem(tr("Rx data Contains reference data"), QVariant::fromValue<int>(SAKCommonDataStructure::AutoResponseOptionContain));
+    mOptionComboBox->addItem(tr("Rx data does not Contains reference data"), QVariant::fromValue<int>(SAKCommonDataStructure::AutoResponseOptionDoNotContain));
 
     SAKGlobal::initInputTextFormatComboBox(mReferenceDataFromatComboBox);
     SAKGlobal::initInputTextFormatComboBox(mResponseDataFormatComboBox);

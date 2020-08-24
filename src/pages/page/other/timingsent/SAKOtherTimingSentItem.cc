@@ -12,7 +12,7 @@
 
 #include "SAKGlobal.hh"
 #include "SAKDebugPage.hh"
-#include "SAKDataStruct.hh"
+#include "SAKCommonDataStructure.hh"
 #include "SAKOtherTimingSentItem.hh"
 #include "SAKDebugPageInputController.hh"
 

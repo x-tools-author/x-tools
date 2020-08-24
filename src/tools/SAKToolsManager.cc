@@ -11,7 +11,7 @@
 #include <QMetaEnum>
 #include <QMapIterator>
 
-#include "SAKDataStruct.hh"
+#include "SAKCommonDataStructure.hh"
 #include "SAKToolsManager.hh"
 #include "SAKToolCRCCalculator.hh"
 #ifdef SAK_IMPORT_QRCODE_MODULE
@@ -28,7 +28,7 @@ SAKToolsManager::SAKToolsManager(QObject *parent)
     instancePtr = this;
 
     /// @brief 创建工具
-    QMetaEnum metaEnum = QMetaEnum::fromType<SAKDataStruct::SAKEnumToolType>();
+    QMetaEnum metaEnum = QMetaEnum::fromType<SAKCommonDataStructure::SAKEnumToolType>();
     for (int i = 0; i < metaEnum.keyCount(); i++){
         QWidget *toolWidget = toolWidgetFromType(metaEnum.value(i));
         if (toolWidget){
@@ -80,15 +80,15 @@ QWidget *SAKToolsManager::toolWidgetFromType(int type)
     QWidget *toolWidget = Q_NULLPTR;
     switch (type) {
 #ifdef SAK_IMPORT_FILECHECKER_MODULE
-    case SAKDataStruct::ToolTypeFileChecker:
+    case SAKCommonDataStructure::ToolTypeFileChecker:
         toolWidget = new SAKToolFileChecker;
         break;
 #endif
-    case SAKDataStruct::ToolTypeCRCCalculator:
+    case SAKCommonDataStructure::ToolTypeCRCCalculator:
         toolWidget = new SAKToolCRCCalculator;
         break;
 #ifdef SAK_IMPORT_QRCODE_MODULE
-    case SAKDataStruct::ToolTypeQRCodeCreator:
+    case SAKCommonDataStructure::ToolTypeQRCodeCreator:
         toolWidget = new SAKToolQRCodeCreator;
         break;
 #endif

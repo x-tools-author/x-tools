@@ -13,7 +13,7 @@
 #include <QApplication>
 
 #include "SAKDebugPage.hh"
-#include "SAKDataStruct.hh"
+#include "SAKCommonDataStructure.hh"
 #include "SAKWebSocketServerDevice.hh"
 #include "SAKWebSocketServerDebugPage.hh"
 #include "SAKWebSocketServerDeviceController.hh"
@@ -65,7 +65,7 @@ QByteArray SAKWebSocketServerDevice::write(QByteArray bytes)
 
         if ((parameters.currentClientHost == peerHost) && (parameters.currentClientPort == peerPort)){
             qint64 ret = 0;
-            if (parameters.sendingType == SAKDataStruct::WebSocketSendingTypeText){
+            if (parameters.sendingType == SAKCommonDataStructure::WebSocketSendingTypeText){
                 ret = var->sendTextMessage(QString(bytes));
             }else{
                 ret = var->sendBinaryMessage(bytes);

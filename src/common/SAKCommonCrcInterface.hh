@@ -7,17 +7,17 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKCRCINTERFACE_HH
-#define SAKCRCINTERFACE_HH
+#ifndef SAKCOMMONCRCINTERFACE_HH
+#define SAKCOMMONCRCINTERFACE_HH
 
 #include <QObject>
 #include <QStringList>
 
-class SAKCRCInterface:public QObject
+class SAKCommonCrcInterface:public QObject
 {
     Q_OBJECT
 public:
-    SAKCRCInterface(QObject *parent = Q_NULLPTR);
+    SAKCommonCrcInterface(QObject *parent = Q_NULLPTR);
 
 
     /// crc算法模型（crc参数模型）
@@ -50,7 +50,7 @@ public:
      * @param model         -- crc参数模型
      */
     template<typename T>
-    T crcCalculate(uint8_t *input, uint64_t length, SAKCRCInterface::CRCModel model){
+    T crcCalculate(uint8_t *input, uint64_t length, SAKCommonCrcInterface::CRCModel model){
         T crcReg = static_cast<T>(getInitValue(model));
         T poly = static_cast<T>(getPoly(model));
         uint8_t byte = 0;
@@ -102,42 +102,42 @@ public:
      * @param model         -- crc参数模型
      * @return              -- 指定参数模型的crc初始值(根据实际情况进项强制转换)
      */
-    uint32_t getInitValue(SAKCRCInterface::CRCModel model);
+    uint32_t getInitValue(SAKCommonCrcInterface::CRCModel model);
 
     /**
      * @brief getPoly   -- 获取多项式
      * @param model     -- crc参数模型
      * @return          -- 执行的参数模型的多项式(根据实际情况进项强制转换)
      */
-    uint32_t getPoly(SAKCRCInterface::CRCModel model);
+    uint32_t getPoly(SAKCommonCrcInterface::CRCModel model);
 
     /**
      * @brief xorValue  -- 结果异或值
      * @param model     -- crc参数模型
      * @return          -- 结果异或值
      */
-    uint32_t getXorValue(SAKCRCInterface::CRCModel model);
+    uint32_t getXorValue(SAKCommonCrcInterface::CRCModel model);
 
     /**
      * @brief getInputReversal  -- 判断输入是否需要翻转
      * @param model             -- crc参数模型
      * @return                  -- 输入数据需要翻转返回true，否则返回false
      */
-    bool getInputReversal(SAKCRCInterface::CRCModel model);
+    bool getInputReversal(SAKCommonCrcInterface::CRCModel model);
 
     /**
      * @brief getOutputReversal -- 判断输入是否需要翻转
      * @param model             -- crc参数模型
      * @return                  -- 输入数据需要翻转返回true，否则返回false
      */
-    bool getOutputReversal(SAKCRCInterface::CRCModel model);
+    bool getOutputReversal(SAKCommonCrcInterface::CRCModel model);
 
     /**
      * @brief getBitsWidth  -- 获取位宽
      * @param model         -- 参数模型
      * @return              -- 位宽
      */
-    int getBitsWidth(SAKCRCInterface::CRCModel model);
+    int getBitsWidth(SAKCommonCrcInterface::CRCModel model);
 
 
 private:

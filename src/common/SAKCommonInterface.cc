@@ -7,23 +7,20 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#include "SAKInterface.hh"
+#include "SAKCommonInterface.hh"
 
-SAKInterface::SAKInterface(QObject *parent)
+SAKCommonInterface::SAKCommonInterface(QObject *parent)
     :QObject (parent)
 {
 
 }
 
-QByteArray SAKInterface::byteArrayToHex(QByteArray &array, char separator)
+QByteArray SAKCommonInterface::byteArrayToHex(QByteArray &array, char separator)
 {
     if (array.isEmpty()){
         return array;
     }
 
-    /*
-     * 好神奇的数据，参考Qt源码的写法，有点意思
-     */
     auto toHex = [](quint8 value)->char{
         return "0123456789abcdef"[value & 0xF];
     };

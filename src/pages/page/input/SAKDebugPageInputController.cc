@@ -17,8 +17,8 @@
 
 #include "SAKGlobal.hh"
 #include "SAKDebugPage.hh"
-#include "SAKDataStruct.hh"
-#include "SAKCRCInterface.hh"
+#include "SAKCommonDataStructure.hh"
+#include "SAKCommonCrcInterface.hh"
 #include "SAKInputDataFactory.hh"
 #include "SAKInputDataPresetItem.hh"
 #include "SAKInputCrcSettingsDialog.hh"
@@ -63,7 +63,7 @@ SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugPage *debugPage
     mInputDataFactory = new SAKInputDataFactory;
     mInputDataFactory->start();
 
-    mCrcInterface = new SAKCRCInterface;
+    mCrcInterface = new SAKCommonCrcInterface;
 
     // Add actions after new.
     mInputDataItemManager = new SAKInputDataPresetItemManager(debugPage);
@@ -149,7 +149,7 @@ void SAKDebugPageInputController::formattingInputText(QTextEdit *textEdit, int m
     textEdit->blockSignals(true);
     QString plaintext = textEdit->toPlainText();
     if (!plaintext.isEmpty()){
-        if (model == SAKDataStruct::InputFormatBin){
+        if (model == SAKCommonDataStructure::InputFormatBin){
             QString strTemp;
             plaintext.remove(QRegExp("[^0-1]"));
             for (int i = 0; i < plaintext.length(); i++){
@@ -160,7 +160,7 @@ void SAKDebugPageInputController::formattingInputText(QTextEdit *textEdit, int m
             }
             textEdit->setText(strTemp);
             textEdit->moveCursor(QTextCursor::End);
-        }else if(model == SAKDataStruct::InputFormatOct) {
+        }else if(model == SAKCommonDataStructure::InputFormatOct) {
             QString strTemp;
             plaintext.remove(QRegExp("[^0-7]"));
             for (int i = 0; i < plaintext.length(); i++){
@@ -171,7 +171,7 @@ void SAKDebugPageInputController::formattingInputText(QTextEdit *textEdit, int m
             }
             textEdit->setText(strTemp);
             textEdit->moveCursor(QTextCursor::End);
-        }else if(model == SAKDataStruct::InputFormatDec) {
+        }else if(model == SAKCommonDataStructure::InputFormatDec) {
             QString strTemp;
             plaintext.remove(QRegExp("[^0-9]"));
             for (int i = 0; i < plaintext.length(); i++){
@@ -182,7 +182,7 @@ void SAKDebugPageInputController::formattingInputText(QTextEdit *textEdit, int m
             }
             textEdit->setText(strTemp);
             textEdit->moveCursor(QTextCursor::End);
-        }else if(model == SAKDataStruct::InputFormatHex) {
+        }else if(model == SAKCommonDataStructure::InputFormatHex) {
             QString strTemp;
             plaintext.remove(QRegExp("[^0-9a-fA-F]"));
             for (int i = 0; i < plaintext.length(); i++){
@@ -193,7 +193,7 @@ void SAKDebugPageInputController::formattingInputText(QTextEdit *textEdit, int m
             }
             textEdit->setText(strTemp.toUpper());
             textEdit->moveCursor(QTextCursor::End);
-        }else if(model == SAKDataStruct::InputFormatAscii) {
+        }else if(model == SAKCommonDataStructure::InputFormatAscii) {
             QString newString;
             for (int i = 0; i < plaintext.count(); i++){
                 if (plaintext.at(i).unicode() <= 127){
@@ -202,9 +202,9 @@ void SAKDebugPageInputController::formattingInputText(QTextEdit *textEdit, int m
             }
             textEdit->setText(newString);
             textEdit->moveCursor(QTextCursor::End);
-        }else if(model == SAKDataStruct::InputFormatUtf8) {
+        }else if(model == SAKCommonDataStructure::InputFormatUtf8) {
             /// nothing to do
-        }else if(model == SAKDataStruct::InputFormatLocal) {
+        }else if(model == SAKCommonDataStructure::InputFormatLocal) {
             /// nothing to do
         }else {
             Q_ASSERT_X(false, __FUNCTION__, "Unknow input model");
@@ -380,7 +380,7 @@ void SAKDebugPageInputController::updateCRC()
     QByteArray cookedData = mInputDataFactory->rawDataToArray(rawData, mInputParameters);
 
     quint32 crc = mInputDataFactory->crcCalculate(cookedData, mInputParameters.crcModel);
-    int bits =  mCrcInterface->getBitsWidth(static_cast<SAKCRCInterface::CRCModel>(mInputParameters.crcModel));
+    int bits =  mCrcInterface->getBitsWidth(static_cast<SAKCommonCrcInterface::CRCModel>(mInputParameters.crcModel));
     mCrcLabel->setText(QString(QString("%1").arg(QString::number(crc, 16), (bits/8)*2, '0')).toUpper().prepend("0x"));
 }
 

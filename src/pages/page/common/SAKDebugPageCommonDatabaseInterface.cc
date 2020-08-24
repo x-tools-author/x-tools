@@ -48,7 +48,7 @@ SAKDebugPageCommonDatabaseInterface* SAKDebugPageCommonDatabaseInterface::instan
     return instancePtr;
 }
 
-void SAKDebugPageCommonDatabaseInterface::insertAutoResponseItem(QString tableName, SAKDataStruct::SAKStructAutoResponseItem item)
+void SAKDebugPageCommonDatabaseInterface::insertAutoResponseItem(QString tableName, SAKCommonDataStructure::SAKStructAutoResponseItem item)
 {
     AutoResponseTable table = tableNmaeToAutoResponseTable(tableName);
     bool ret = mSqlQuery.exec(QString("INSERT INTO %1(%2,%3,%4,%5,%6,%7,%8,%9,%10,%11) VALUES(%12,'%13','%14','%15',%16,%17,%18,%19,%20,'%21')")
@@ -78,14 +78,14 @@ void SAKDebugPageCommonDatabaseInterface::insertAutoResponseItem(QString tableNa
     }
 }
 
-QList<SAKDataStruct::SAKStructAutoResponseItem> SAKDebugPageCommonDatabaseInterface::selectAutoResponseItem(QString tableName)
+QList<SAKCommonDataStructure::SAKStructAutoResponseItem> SAKDebugPageCommonDatabaseInterface::selectAutoResponseItem(QString tableName)
 {
     AutoResponseTable table = tableNmaeToAutoResponseTable(tableName);
     bool ret = mSqlQuery.exec(QString("SELECT * FROM %1").arg(table.tableName));
 
-    QList<SAKDataStruct::SAKStructAutoResponseItem> itemList;
+    QList<SAKCommonDataStructure::SAKStructAutoResponseItem> itemList;
     if (ret){
-        SAKDataStruct::SAKStructAutoResponseItem item;
+        SAKCommonDataStructure::SAKStructAutoResponseItem item;
         while (mSqlQuery.next()) {
             item.id = mSqlQuery.value(table.columns.id).toULongLong();
             item.name = mSqlQuery.value(table.columns.description).toString();
@@ -107,7 +107,7 @@ QList<SAKDataStruct::SAKStructAutoResponseItem> SAKDebugPageCommonDatabaseInterf
     return itemList;
 }
 
-void SAKDebugPageCommonDatabaseInterface::insertTimingSentItem(QString tableName, SAKDataStruct::SAKStructTimingSentItem item)
+void SAKDebugPageCommonDatabaseInterface::insertTimingSentItem(QString tableName, SAKCommonDataStructure::SAKStructTimingSentItem item)
 {
     TimingSendingTable table = tableNameToTimingSendingTable(tableName);
     bool ret = mSqlQuery.exec(QString("INSERT INTO %1(%2,%3,%4,%5,%6) VALUES(%7,%8,%9,'%10','%11')")
@@ -127,14 +127,14 @@ void SAKDebugPageCommonDatabaseInterface::insertTimingSentItem(QString tableName
     }
 }
 
-QList<SAKDataStruct::SAKStructTimingSentItem> SAKDebugPageCommonDatabaseInterface::selectTimingSentItem(QString tableName)
+QList<SAKCommonDataStructure::SAKStructTimingSentItem> SAKDebugPageCommonDatabaseInterface::selectTimingSentItem(QString tableName)
 {
     TimingSendingTable table = tableNameToTimingSendingTable(tableName);
     bool ret = mSqlQuery.exec(QString("SELECT * FROM %1").arg(table.tableName));
 
-    QList<SAKDataStruct::SAKStructTimingSentItem> itemList;
+    QList<SAKCommonDataStructure::SAKStructTimingSentItem> itemList;
     if (ret){
-        SAKDataStruct::SAKStructTimingSentItem item;
+        SAKCommonDataStructure::SAKStructTimingSentItem item;
         while (mSqlQuery.next()) {
             item.id = mSqlQuery.value(table.columns.id).toULongLong();
             item.interval = mSqlQuery.value(table.columns.interval).toUInt();
@@ -151,7 +151,7 @@ QList<SAKDataStruct::SAKStructTimingSentItem> SAKDebugPageCommonDatabaseInterfac
     return itemList;
 }
 
-void SAKDebugPageCommonDatabaseInterface::insertDataPresetItem(QString tableName, SAKDataStruct::SAKStructPresettingDataItem item)
+void SAKDebugPageCommonDatabaseInterface::insertDataPresetItem(QString tableName, SAKCommonDataStructure::SAKStructPresettingDataItem item)
 {
     DataPresetItemTable table = tableNameToPresettingDataTable(tableName);
     bool ret = mSqlQuery.exec(QString("INSERT INTO %1(%2,%3,%4,%5) VALUES(%6,%7,'%8','%9')")
@@ -169,14 +169,14 @@ void SAKDebugPageCommonDatabaseInterface::insertDataPresetItem(QString tableName
     }
 }
 
-QList<SAKDataStruct::SAKStructPresettingDataItem> SAKDebugPageCommonDatabaseInterface::selectDataPresetItem(QString tableName)
+QList<SAKCommonDataStructure::SAKStructPresettingDataItem> SAKDebugPageCommonDatabaseInterface::selectDataPresetItem(QString tableName)
 {
     DataPresetItemTable table = tableNameToPresettingDataTable(tableName);
     bool ret = mSqlQuery.exec(QString("SELECT * FROM %1").arg(table.tableName));
 
-    QList<SAKDataStruct::SAKStructPresettingDataItem> itemList;
+    QList<SAKCommonDataStructure::SAKStructPresettingDataItem> itemList;
     if (ret){
-        SAKDataStruct::SAKStructPresettingDataItem item;
+        SAKCommonDataStructure::SAKStructPresettingDataItem item;
         while (mSqlQuery.next()) {
             item.id = mSqlQuery.value(table.columns.id).toULongLong();
             item.format = mSqlQuery.value(table.columns.format).toUInt();
@@ -250,10 +250,10 @@ void SAKDebugPageCommonDatabaseInterface::createTables()
 
 void SAKDebugPageCommonDatabaseInterface::createAutoResponseTables()
 {
-    QMetaEnum metaEnum = QMetaEnum::fromType<SAKDataStruct::SAKEnumDebugPageType>();
+    QMetaEnum metaEnum = QMetaEnum::fromType<SAKCommonDataStructure::SAKEnumDebugPageType>();
     AutoResponseTable autoResponseTable;
     for (int i = 0; i < metaEnum.keyCount(); i++){
-        autoResponseTable.tableName = SAKDataStruct::autoResponseTableName(i);
+        autoResponseTable.tableName = SAKCommonDataStructure::autoResponseTableName(i);
         mAutoResponseTableList.append(autoResponseTable);
     }
 
@@ -299,10 +299,10 @@ bool SAKDebugPageCommonDatabaseInterface::createAutoResponseTable(const AutoResp
 
 void SAKDebugPageCommonDatabaseInterface::createTimingSendingTables()
 {
-    QMetaEnum metaEnum = QMetaEnum::fromType<SAKDataStruct::SAKEnumDebugPageType>();
+    QMetaEnum metaEnum = QMetaEnum::fromType<SAKCommonDataStructure::SAKEnumDebugPageType>();
     TimingSendingTable timingSendingTable;
     for (int i = 0; i < metaEnum.keyCount(); i++){
-        timingSendingTable.tableName = SAKDataStruct::timingSendingTableName(i);
+        timingSendingTable.tableName = SAKCommonDataStructure::timingSendingTableName(i);
         mTimingSendingTableList.append(timingSendingTable);
     }
 
@@ -338,10 +338,10 @@ bool SAKDebugPageCommonDatabaseInterface::createTimingSendingTable(const TimingS
 
 void SAKDebugPageCommonDatabaseInterface::createPresettingDataTables()
 {
-    QMetaEnum metaEnum = QMetaEnum::fromType<SAKDataStruct::SAKEnumDebugPageType>();
+    QMetaEnum metaEnum = QMetaEnum::fromType<SAKCommonDataStructure::SAKEnumDebugPageType>();
     DataPresetItemTable presettingDataTable;
     for (int i = 0; i < metaEnum.keyCount(); i++){
-        presettingDataTable.tableName = SAKDataStruct::dataPresetTableName(i);
+        presettingDataTable.tableName = SAKCommonDataStructure::dataPresetTableName(i);
         mPresettingDataTableList.append(presettingDataTable);
     }
 

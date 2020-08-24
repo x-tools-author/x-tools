@@ -26,7 +26,7 @@ namespace Ui {
     class SAKToolCRCCalculator;
 }
 
-class SAKCRCInterface;
+class SAKCommonCrcInterface;
 class SAKToolCRCCalculator:public QWidget
 {
     Q_OBJECT
@@ -37,7 +37,7 @@ protected:
     bool eventFilter(QObject *watched, QEvent *event);
 private:
     const char *mLogCategory;
-    SAKCRCInterface *mCrcInterface;
+    SAKCommonCrcInterface *mCrcInterface;
 private:
     void initParameterModel();
 private slots:

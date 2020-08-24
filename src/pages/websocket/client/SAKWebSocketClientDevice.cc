@@ -13,7 +13,7 @@
 #include <QHostAddress>
 #include <QAbstractSocket>
 
-#include "SAKDataStruct.hh"
+#include "SAKCommonDataStructure.hh"
 #include "SAKWebSocketClientDevice.hh"
 #include "SAKWebSocketClientDebugPage.hh"
 #include "SAKWebSocketClientDeviceController.hh"
@@ -73,7 +73,7 @@ QByteArray SAKWebSocketClientDevice::write(QByteArray bytes)
     if (mWebSocket->state() == QAbstractSocket::ConnectedState){
         qint64 ret = 0;
         auto parameters = mDeviceController->parameters().value<SAKWebSocketClientDeviceController::WebSocketClientParameters>();
-        if (parameters.sendingType == SAKDataStruct::WebSocketSendingTypeText){
+        if (parameters.sendingType == SAKCommonDataStructure::WebSocketSendingTypeText){
             ret = mWebSocket->sendTextMessage(QString(bytes));
         }else{
             ret = mWebSocket->sendBinaryMessage(bytes);

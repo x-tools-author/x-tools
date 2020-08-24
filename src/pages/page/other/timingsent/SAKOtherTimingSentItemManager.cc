@@ -18,7 +18,7 @@
 
 #include "SAKGlobal.hh"
 #include "SAKDebugPage.hh"
-#include "SAKDataStruct.hh"
+#include "SAKCommonDataStructure.hh"
 #include "SAKOtherTimingSentItem.hh"
 #include "SAKOtherTimingSentItemManager.hh"
 #include "SAKDebugPageCommonDatabaseInterface.hh"
@@ -46,7 +46,7 @@ SAKOtherTimingSentItemManager::SAKOtherTimingSentItemManager(SAKDebugPage *debug
     });
 
     mDatabaseInterface = SAKDebugPageCommonDatabaseInterface::instance();
-    mTableName = SAKDataStruct::timingSendingTableName(mDebugPage->pageType());
+    mTableName = SAKCommonDataStructure::timingSendingTableName(mDebugPage->pageType());
     readinRecord();
 }
 
@@ -55,7 +55,7 @@ SAKOtherTimingSentItemManager::~SAKOtherTimingSentItemManager()
     delete mUi;
 }
 
-SAKOtherTimingSentItem *innerCreateItem(SAKDataStruct::SAKStructTimingSentItem &var, SAKDebugPage *debugPage, QListWidget *listWidget)
+SAKOtherTimingSentItem *innerCreateItem(SAKCommonDataStructure::SAKStructTimingSentItem &var, SAKDebugPage *debugPage, QListWidget *listWidget)
 {
     QListWidgetItem *item = new QListWidgetItem(listWidget);
     listWidget->addItem(item);
@@ -73,7 +73,7 @@ SAKOtherTimingSentItem *innerCreateItem(SAKDataStruct::SAKStructTimingSentItem &
 
 void SAKOtherTimingSentItemManager::readinRecord()
 {
-    QList<SAKDataStruct::SAKStructTimingSentItem> itemList = mDatabaseInterface->selectTimingSentItem(mTableName);
+    QList<SAKCommonDataStructure::SAKStructTimingSentItem> itemList = mDatabaseInterface->selectTimingSentItem(mTableName);
     if (itemList.isEmpty()){
         return;
     }
@@ -176,7 +176,7 @@ void SAKOtherTimingSentItemManager::changeInputText(QString text)
 
 void SAKOtherTimingSentItemManager::on_outportPushButton_clicked()
 {
-    QList<SAKDataStruct::SAKStructTimingSentItem> itemList = mDatabaseInterface->selectTimingSentItem(mTableName);
+    QList<SAKCommonDataStructure::SAKStructTimingSentItem> itemList = mDatabaseInterface->selectTimingSentItem(mTableName);
     if (itemList.isEmpty()){
         return;
     }
@@ -233,7 +233,7 @@ void SAKOtherTimingSentItemManager::on_importPushButton_clicked()
             if (jsa.at(i).isObject()){
                 QJsonObject jso = jsa.at(i).toObject();
                 TimingSendingItemKey itemKey;
-                SAKDataStruct::SAKStructTimingSentItem responseItem;
+                SAKCommonDataStructure::SAKStructTimingSentItem responseItem;
                 responseItem.id = jso.value(itemKey.id).toVariant().toULongLong();
                 responseItem.data = jso.value(itemKey.text).toVariant().toString();
                 responseItem.format = jso.value(itemKey.format).toVariant().toUInt();
@@ -258,7 +258,7 @@ void SAKOtherTimingSentItemManager::on_deletePushButton_clicked()
     QListWidgetItem *currentItem = mItemListWidget->currentItem();
     if (currentItem){
         SAKOtherTimingSentItem *w = reinterpret_cast<SAKOtherTimingSentItem*>(mItemListWidget->itemWidget(currentItem));
-        SAKDataStruct::SAKStructTimingSentItem sendingItem;
+        SAKCommonDataStructure::SAKStructTimingSentItem sendingItem;
         sendingItem.id = w->itemID();
         mDatabaseInterface->deleteRecord(mTableName, sendingItem.id);
 
@@ -278,7 +278,7 @@ void SAKOtherTimingSentItemManager::on_addPushButton_clicked()
     initializingItem(itemWidget);
 
     // Insert record to database
-    SAKDataStruct::SAKStructTimingSentItem sendingItem;
+    SAKCommonDataStructure::SAKStructTimingSentItem sendingItem;
     sendingItem.id = itemWidget->itemID();
     sendingItem.data = itemWidget->itemText();
     sendingItem.format = itemWidget->itemFormat();

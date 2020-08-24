@@ -7,16 +7,16 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKDATASTRUCT_HH
-#define SAKDATASTRUCT_HH
+#ifndef SAKCOMMONDATASTRUCTURE_HH
+#define SAKCOMMONDATASTRUCTURE_HH
 
 #include <QObject>
 
-class SAKDataStruct:public QObject
+class SAKCommonDataStructure:public QObject
 {
     Q_OBJECT
 public:
-    SAKDataStruct(QObject* parent = Q_NULLPTR);
+    SAKCommonDataStructure(QObject* parent = Q_NULLPTR);
 
     /// @brief 支持的调试工具类型
     enum SAKEnumToolType {

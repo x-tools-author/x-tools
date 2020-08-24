@@ -7,17 +7,18 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKINTERFACE_HH
-#define SAKINTERFACE_HH
+#ifndef SAKCOMMONINTERFACE_HH
+#define SAKCOMMONINTERFACE_HH
 
 #include <QObject>
 
-/// @brief 该类提供了一些接口，用来替代新版本Qt中引入的函数，目的是使得旧版本Qt也能编译本工程
-class SAKInterface:public QObject
+/// @brief This class provides interfaces to replace the functions introduced in the new version of Qt
+/// so that the old version of Qt can also compile the project
+class SAKCommonInterface:public QObject
 {
     Q_OBJECT
 public:
-    SAKInterface(QObject *parent = Q_NULLPTR);
+    SAKCommonInterface(QObject *parent = Q_NULLPTR);
 
     QByteArray byteArrayToHex(QByteArray &array, char separator);
 };

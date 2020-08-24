@@ -20,7 +20,7 @@
 #include <QStandardPaths>
 
 #include "SAKDebugPage.hh"
-#include "SAKDataStruct.hh"
+#include "SAKCommonDataStructure.hh"
 #include "SAKOtherAutoResponseItem.hh"
 #include "SAKOtherAutoResponseItemManager.hh"
 #include "SAKDebugPageCommonDatabaseInterface.hh"
@@ -40,7 +40,7 @@ SAKOtherAutoResponseItemManager::SAKOtherAutoResponseItemManager(SAKDebugPage *d
     mOutportPushButton = mUi->outportPushButton;
     mImportPushButton = mUi->importPushButton;
     mMsgLabel = mUi->msgLabel;
-    mTableName = SAKDataStruct::autoResponseTableName(mDebugPage->pageType());
+    mTableName = SAKCommonDataStructure::autoResponseTableName(mDebugPage->pageType());
 
 //    setWindowTitle(tr("Auto response settings"));
     mDatabaseInterface = SAKDebugPageCommonDatabaseInterface::instance();
@@ -57,7 +57,7 @@ SAKOtherAutoResponseItemManager::~SAKOtherAutoResponseItemManager()
     delete mUi;
 }
 
-SAKOtherAutoResponseItem *innerCreateItem(SAKDataStruct::SAKStructAutoResponseItem &var, SAKDebugPage *debugPage, QListWidget *listWidget)
+SAKOtherAutoResponseItem *innerCreateItem(SAKCommonDataStructure::SAKStructAutoResponseItem &var, SAKDebugPage *debugPage, QListWidget *listWidget)
 {
     QListWidgetItem *item = new QListWidgetItem(listWidget);
     listWidget->addItem(item);
@@ -99,8 +99,8 @@ void SAKOtherAutoResponseItemManager::clearMessage()
 
 void SAKOtherAutoResponseItemManager::readInRecord()
 {
-    QString tableName = SAKDataStruct::autoResponseTableName(mDebugPage->pageType());
-    QList<SAKDataStruct::SAKStructAutoResponseItem> itemList = mDatabaseInterface->selectAutoResponseItem(tableName);
+    QString tableName = SAKCommonDataStructure::autoResponseTableName(mDebugPage->pageType());
+    QList<SAKCommonDataStructure::SAKStructAutoResponseItem> itemList = mDatabaseInterface->selectAutoResponseItem(tableName);
     for (auto var : itemList){
         SAKOtherAutoResponseItem *item = innerCreateItem(var, mDebugPage, mListWidget);
         initializingItem(item);
@@ -270,7 +270,7 @@ void SAKOtherAutoResponseItemManager::on_deleteItemPushButton_clicked()
     }
 
     // Delete record from database
-    QString tableName = SAKDataStruct::autoResponseTableName(mDebugPage->pageType());
+    QString tableName = SAKCommonDataStructure::autoResponseTableName(mDebugPage->pageType());
     SAKOtherAutoResponseItem *w = reinterpret_cast<SAKOtherAutoResponseItem*>(mListWidget->itemWidget(item));
     quint64 id = w->itemID();
     mDatabaseInterface->deleteRecord(tableName, id);
@@ -295,7 +295,7 @@ void SAKOtherAutoResponseItemManager::on_addItemPushButton_clicked()
     initializingItem(itemWidget);
 
     // Add record
-    SAKDataStruct::SAKStructAutoResponseItem dataItem;
+    SAKCommonDataStructure::SAKStructAutoResponseItem dataItem;
     dataItem.id = itemWidget->itemID();
     dataItem.name = itemWidget->itemDescription();
     dataItem.enable = itemWidget->itemEnable();
@@ -306,15 +306,15 @@ void SAKOtherAutoResponseItemManager::on_addItemPushButton_clicked()
     dataItem.option = itemWidget->itemOption();
     dataItem.delay = itemWidget->delay();
     dataItem.interval = itemWidget->interval();
-    QString tableName = SAKDataStruct::autoResponseTableName(mDebugPage->pageType());
+    QString tableName = SAKCommonDataStructure::autoResponseTableName(mDebugPage->pageType());
     mDatabaseInterface->insertAutoResponseItem(tableName, dataItem);
 }
 
 void SAKOtherAutoResponseItemManager::on_outportPushButton_clicked()
 {
     /// @brief 从数据库中读入记录
-    QString tableName = SAKDataStruct::autoResponseTableName(mDebugPage->pageType());
-    QList<SAKDataStruct::SAKStructAutoResponseItem> itemList;// = databaseInterface->selectAutoResponseItem(tableName);
+    QString tableName = SAKCommonDataStructure::autoResponseTableName(mDebugPage->pageType());
+    QList<SAKCommonDataStructure::SAKStructAutoResponseItem> itemList;// = databaseInterface->selectAutoResponseItem(tableName);
     if (itemList.isEmpty()){
         return;
     }
@@ -376,7 +376,7 @@ void SAKOtherAutoResponseItemManager::on_importPushButton_clicked()
             if (jsa.at(i).isObject()){
                 QJsonObject jso = jsa.at(i).toObject();
                 AutoResponseItemKey itemKey;
-                SAKDataStruct::SAKStructAutoResponseItem responseItem;
+                SAKCommonDataStructure::SAKStructAutoResponseItem responseItem;
                 responseItem.id = jso.value(itemKey.id).toVariant().toULongLong();
                 responseItem.name = jso.value(itemKey.description).toVariant().toString();
                 responseItem.enable = jso.value(itemKey.enable).toVariant().toBool();
@@ -391,7 +391,7 @@ void SAKOtherAutoResponseItemManager::on_importPushButton_clicked()
                     SAKOtherAutoResponseItem *item = innerCreateItem(responseItem, mDebugPage, mListWidget);
                     initializingItem(item);
 
-                    QString tableName = SAKDataStruct::autoResponseTableName(mDebugPage->pageType());
+                    QString tableName = SAKCommonDataStructure::autoResponseTableName(mDebugPage->pageType());
                     mDatabaseInterface->insertAutoResponseItem(tableName, responseItem);
                 }
             }

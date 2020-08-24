@@ -12,16 +12,16 @@
 #include <QHBoxLayout>
 
 #include "SAKGlobal.hh"
-#include "SAKDataStruct.hh"
+#include "SAKCommonDataStructure.hh"
 #include "SAKWebSocketServerDevice.hh"
 #include "SAKWebSocketServerDebugPage.hh"
 #include "SAKWebSocketServerDeviceController.hh"
 
 SAKWebSocketServerDebugPage::SAKWebSocketServerDebugPage(QWidget *parent)
-    :SAKDebugPage (SAKDataStruct::DebugPageTypeTCPServer, parent)
+    :SAKDebugPage (SAKCommonDataStructure::DebugPageTypeTCPServer, parent)
 {
     mTcpServerDeviceController = new SAKWebSocketServerDeviceController(this);
-    setWindowTitle(SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeTCPServer));
+    setWindowTitle(SAKGlobal::debugPageNameFromType(SAKCommonDataStructure::DebugPageTypeTCPServer));
     initializingPage();
 }
 

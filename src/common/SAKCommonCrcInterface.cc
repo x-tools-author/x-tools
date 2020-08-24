@@ -9,16 +9,15 @@
  */
 #include <QMetaEnum>
 
-#include "SAKCRCInterface.hh"
+#include "SAKCommonCrcInterface.hh"
 
-
-SAKCRCInterface::SAKCRCInterface(QObject *parent)
+SAKCommonCrcInterface::SAKCommonCrcInterface(QObject *parent)
     :QObject (parent)
 {
 
 }
 
-QStringList SAKCRCInterface::supportedParameterModels()
+QStringList SAKCommonCrcInterface::supportedParameterModels()
 {
     modelStrings.clear();
     QMetaEnum models = QMetaEnum::fromType<CRCModel>();
@@ -34,7 +33,7 @@ QStringList SAKCRCInterface::supportedParameterModels()
     return modelStrings;
 }
 
-QString SAKCRCInterface::getPolyFormula(SAKCRCInterface::CRCModel model)
+QString SAKCommonCrcInterface::getPolyFormula(SAKCommonCrcInterface::CRCModel model)
 {
     QString formula = QString("Error: Formula not found");
 
@@ -69,7 +68,7 @@ QString SAKCRCInterface::getPolyFormula(SAKCRCInterface::CRCModel model)
     return formula;
 }
 
-uint32_t SAKCRCInterface::getInitValue(SAKCRCInterface::CRCModel model)
+uint32_t SAKCommonCrcInterface::getInitValue(SAKCommonCrcInterface::CRCModel model)
 {
     uint32_t init = 0;
 
@@ -104,7 +103,7 @@ uint32_t SAKCRCInterface::getInitValue(SAKCRCInterface::CRCModel model)
     return init;
 }
 
-uint32_t SAKCRCInterface::getPoly(SAKCRCInterface::CRCModel model)
+uint32_t SAKCommonCrcInterface::getPoly(SAKCommonCrcInterface::CRCModel model)
 {
     uint32_t poly = 0;
 
@@ -141,7 +140,7 @@ uint32_t SAKCRCInterface::getPoly(SAKCRCInterface::CRCModel model)
     return poly;
 }
 
-uint32_t SAKCRCInterface::getXorValue(SAKCRCInterface::CRCModel model)
+uint32_t SAKCommonCrcInterface::getXorValue(SAKCommonCrcInterface::CRCModel model)
 {
     uint32_t value = 0;
 
@@ -179,7 +178,7 @@ uint32_t SAKCRCInterface::getXorValue(SAKCRCInterface::CRCModel model)
     return value;
 }
 
-bool SAKCRCInterface::getInputReversal(SAKCRCInterface::CRCModel model)
+bool SAKCommonCrcInterface::getInputReversal(SAKCommonCrcInterface::CRCModel model)
 {
     bool reversal = true;
 
@@ -209,7 +208,7 @@ bool SAKCRCInterface::getInputReversal(SAKCRCInterface::CRCModel model)
     return reversal;
 }
 
-bool SAKCRCInterface::getOutputReversal(SAKCRCInterface::CRCModel model)
+bool SAKCommonCrcInterface::getOutputReversal(SAKCommonCrcInterface::CRCModel model)
 {
     bool reversal = true;
 
@@ -239,7 +238,7 @@ bool SAKCRCInterface::getOutputReversal(SAKCRCInterface::CRCModel model)
     return reversal;
 }
 
-int SAKCRCInterface::getBitsWidth(SAKCRCInterface::CRCModel model)
+int SAKCommonCrcInterface::getBitsWidth(SAKCommonCrcInterface::CRCModel model)
 {
     int ret = -1;
     switch (model) {

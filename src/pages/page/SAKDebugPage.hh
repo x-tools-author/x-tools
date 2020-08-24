@@ -31,7 +31,7 @@
 #include <QSqlDatabase>
 
 class SAKDataFactory;
-class SAKCRCInterface;
+class SAKCommonCrcInterface;
 class SAKDebugPageDevice;
 class SAKDebugPageController;
 class SAKOtherHighlighterManager;

@@ -13,8 +13,8 @@
 
 #include "SAKGlobal.hh"
 #include "SAKDebugPage.hh"
-#include "SAKDataStruct.hh"
-#include "SAKCRCInterface.hh"
+#include "SAKCommonDataStructure.hh"
+#include "SAKCommonCrcInterface.hh"
 #include "SAKInputDataFactory.hh"
 #include "SAKInputDataPresetItem.hh"
 #include "SAKDebugPageInputController.hh"

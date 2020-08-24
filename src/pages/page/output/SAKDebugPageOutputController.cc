@@ -15,7 +15,7 @@
 
 #include "SAKGlobal.hh"
 #include "SAKDebugPage.hh"
-#include "SAKDataStruct.hh"
+#include "SAKCommonDataStructure.hh"
 #include "SAKOutputSave2FileDialog.hh"
 #include "SAKDebugPageOutputController.hh"
 
@@ -345,33 +345,33 @@ void SAKDebugPageOutputController::innerCookData(QByteArray rawData, OutputParam
     }
     str.append("<font color=silver>] </font>");
 
-    if (parameters.format == SAKDataStruct::OutputFormatBin){
+    if (parameters.format == SAKCommonDataStructure::OutputFormatBin){
         for (int i = 0; i < rawData.length(); i++){
             str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(rawData.at(i)), 2), 8, '0'));
         }
-    }else if (parameters.format == SAKDataStruct::OutputFormatOct){
+    }else if (parameters.format == SAKCommonDataStructure::OutputFormatOct){
         for (int i = 0; i < rawData.length(); i++){
             str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(rawData.at(i)), 8), 3, '0'));
         }
-    }else if (parameters.format == SAKDataStruct::OutputFormatDec){
+    }else if (parameters.format == SAKCommonDataStructure::OutputFormatDec){
         for (int i = 0; i < rawData.length(); i++){
             str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(rawData.at(i)), 10)));
         }
-    }else if (parameters.format == SAKDataStruct::OutputFormatHex){
+    }else if (parameters.format == SAKCommonDataStructure::OutputFormatHex){
         for (int i = 0; i < rawData.length(); i++){
             str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(rawData.at(i)), 16), 2, '0'));
         }
-    }else if (parameters.format == SAKDataStruct::OutputFormatAscii){
+    }else if (parameters.format == SAKCommonDataStructure::OutputFormatAscii){
         str.append(QString::fromLatin1(rawData));
-    }else if (parameters.format == SAKDataStruct::OutputFormatUtf8){
+    }else if (parameters.format == SAKCommonDataStructure::OutputFormatUtf8){
         str.append(QString::fromUtf8(rawData));
-    }else if (parameters.format == SAKDataStruct::OutputFormatUtf16){
+    }else if (parameters.format == SAKCommonDataStructure::OutputFormatUtf16){
         str.append(QString::fromUtf16(reinterpret_cast<const ushort*>(rawData.constData()),rawData.length()));
-    }else if (parameters.format == SAKDataStruct::OutputFormatUcs4){
+    }else if (parameters.format == SAKCommonDataStructure::OutputFormatUcs4){
         str.append(QString::fromUcs4(reinterpret_cast<const char32_t*>(rawData.constData()),rawData.length()));
-    }else if (parameters.format == SAKDataStruct::OutputFormatStdwstring){
+    }else if (parameters.format == SAKCommonDataStructure::OutputFormatStdwstring){
         str.append(QString::fromWCharArray(reinterpret_cast<const wchar_t*>(rawData.constData()),rawData.length()));
-    }else if (parameters.format == SAKDataStruct::OutputFormatLocal){
+    }else if (parameters.format == SAKCommonDataStructure::OutputFormatLocal){
         str.append(QString::fromLocal8Bit(rawData));
     }else {
         str.append(QString::fromUtf8(rawData));

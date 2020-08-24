@@ -13,15 +13,15 @@
 
 #include "SAKGlobal.hh"
 #include "SAKUdpClientDevice.hh"
-#include "SAKDataStruct.hh"
+#include "SAKCommonDataStructure.hh"
 #include "SAKUdpClientDebugPage.hh"
 #include "SAKUdpClientDeviceController.hh"
 
 SAKUdpClientDebugPage::SAKUdpClientDebugPage(QWidget *parent)
-    :SAKDebugPage (SAKDataStruct::DebugPageTypeUdpClient, parent)
+    :SAKDebugPage (SAKCommonDataStructure::DebugPageTypeUdpClient, parent)
 {
     mUdpDeviceController = new SAKUdpClientDeviceController(this);
-    setWindowTitle(SAKGlobal::debugPageNameFromType(SAKDataStruct::DebugPageTypeUdpClient));
+    setWindowTitle(SAKGlobal::debugPageNameFromType(SAKCommonDataStructure::DebugPageTypeUdpClient));
     initializingPage();
 }
 

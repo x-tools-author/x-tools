@@ -27,8 +27,8 @@
 #endif
 
 #include "SAKGlobal.hh"
-#include "SAKDataStruct.hh"
-#include "SAKCRCInterface.hh"
+#include "SAKCommonDataStructure.hh"
+#include "SAKCommonCrcInterface.hh"
 
 #ifdef SAK_IMPORT_COM_MODULE
 Q_DECLARE_METATYPE(QSerialPortInfo)
@@ -89,11 +89,11 @@ QString SAKGlobal::debugPageNameFromType(int type)
 {
     QString name;
     switch (type) {
-    case SAKDataStruct::DebugPageTypeTest:
+    case SAKCommonDataStructure::DebugPageTypeTest:
         name = tr("Test");
         break;
 #ifdef SAK_IMPORT_COM_MODULE
-    case SAKDataStruct::DebugPageTypeCOM:
+    case SAKCommonDataStructure::DebugPageTypeCOM:
         name = tr("COM");
         break;
 #endif
@@ -107,22 +107,22 @@ QString SAKGlobal::debugPageNameFromType(int type)
         name = tr("USB");
         break;
 #endif
-    case SAKDataStruct::DebugPageTypeUdpClient:
+    case SAKCommonDataStructure::DebugPageTypeUdpClient:
         name = tr("UDP-C");
         break;
-    case SAKDataStruct::DebugPageTypeUdpServer:
+    case SAKCommonDataStructure::DebugPageTypeUdpServer:
         name = tr("UDP-S");
         break;
-    case SAKDataStruct::DebugPageTypeTCPClient:
+    case SAKCommonDataStructure::DebugPageTypeTCPClient:
         name = tr("TCP-C");
         break;
-    case SAKDataStruct::DebugPageTypeTCPServer:
+    case SAKCommonDataStructure::DebugPageTypeTCPServer:
         name = tr("TCP-S");
         break;
-    case SAKDataStruct::DebugPageTypeSslSocketClient:
+    case SAKCommonDataStructure::DebugPageTypeSslSocketClient:
         name = tr("SSL-C");
         break;
-    case SAKDataStruct::DebugPageTypeSslSocketServer:
+    case SAKCommonDataStructure::DebugPageTypeSslSocketServer:
         name = tr("SSL-S");
         break;
 #ifdef SAK_IMPORT_SCTP_MODULE
@@ -142,10 +142,10 @@ QString SAKGlobal::debugPageNameFromType(int type)
         break;
 #endif
 #ifdef SAK_IMPORT_WEBSOCKET_MODULE
-    case SAKDataStruct::DebugPageTypeWebSocketClient:
+    case SAKCommonDataStructure::DebugPageTypeWebSocketClient:
         name = tr("WS-C");
         break;
-    case SAKDataStruct::DebugPageTypeWebSocketServer:
+    case SAKCommonDataStructure::DebugPageTypeWebSocketServer:
         name = tr("WS-S");
         break;
 #endif
@@ -163,15 +163,15 @@ QString SAKGlobal::toolNameFromType(int type)
     QString name("Unknow name of tool");
     switch (type) {
 #ifdef SAK_IMPORT_FILECHECKER_MODULE
-    case SAKDataStruct::ToolTypeFileChecker:
+    case SAKCommonDataStructure::ToolTypeFileChecker:
         name = QString("File checker");
         break;
 #endif
-    case SAKDataStruct::ToolTypeCRCCalculator:
+    case SAKCommonDataStructure::ToolTypeCRCCalculator:
         name = QString("CRC calculator");
         break;
 #ifdef SAK_IMPORT_QRCODE_MODULE
-    case SAKDataStruct::ToolTypeQRCodeCreator:
+    case SAKCommonDataStructure::ToolTypeQRCodeCreator:
         name = QString("QR code creator");
         break;
 #endif
@@ -293,13 +293,13 @@ void SAKGlobal::initInputTextFormatComboBox(QComboBox *comboBox)
         comboBox->clear();
 
         QMap<int, QString> formatMap;
-        formatMap.insert(SAKDataStruct::InputFormatBin, tr("BIN"));
-        formatMap.insert(SAKDataStruct::InputFormatOct, tr("DEC"));
-        formatMap.insert(SAKDataStruct::InputFormatDec, tr("HEX"));
-        formatMap.insert(SAKDataStruct::InputFormatHex, tr("ASCII"));
-        formatMap.insert(SAKDataStruct::InputFormatAscii, tr("UTF8"));
-        formatMap.insert(SAKDataStruct::InputFormatUtf8, tr("UTF16"));
-        formatMap.insert(SAKDataStruct::InputFormatLocal, tr("SYSTEM"));
+        formatMap.insert(SAKCommonDataStructure::InputFormatBin, tr("BIN"));
+        formatMap.insert(SAKCommonDataStructure::InputFormatOct, tr("DEC"));
+        formatMap.insert(SAKCommonDataStructure::InputFormatDec, tr("HEX"));
+        formatMap.insert(SAKCommonDataStructure::InputFormatHex, tr("ASCII"));
+        formatMap.insert(SAKCommonDataStructure::InputFormatAscii, tr("UTF8"));
+        formatMap.insert(SAKCommonDataStructure::InputFormatUtf8, tr("UTF16"));
+        formatMap.insert(SAKCommonDataStructure::InputFormatLocal, tr("SYSTEM"));
 
         QMapIterator<int, QString> mapIterator(formatMap);
         QStandardItemModel *itemModel = new QStandardItemModel(comboBox);
@@ -310,7 +310,7 @@ void SAKGlobal::initInputTextFormatComboBox(QComboBox *comboBox)
             itemModel->appendRow(item);
         }
         comboBox->setModel(itemModel);
-        comboBox->setCurrentText(formatMap.value(SAKDataStruct::InputFormatLocal));
+        comboBox->setCurrentText(formatMap.value(SAKCommonDataStructure::InputFormatLocal));
 
         // Reset the iterator...
         while (mapIterator.hasPrevious()) {
@@ -333,15 +333,15 @@ void SAKGlobal::initOutputTextFormatComboBox(QComboBox *comboBox)
         comboBox->clear();
 
         QMap<int, QString> formatMap;
-        formatMap.insert(SAKDataStruct::OutputFormatBin, tr("BIN"));
-        formatMap.insert(SAKDataStruct::OutputFormatDec, tr("DEC"));
-        formatMap.insert(SAKDataStruct::OutputFormatHex, tr("HEX"));
-        formatMap.insert(SAKDataStruct::OutputFormatAscii, tr("ASCII"));
-        formatMap.insert(SAKDataStruct::OutputFormatUtf8, tr("UTF8"));
-        formatMap.insert(SAKDataStruct::OutputFormatUtf16, tr("UTF16"));
-        formatMap.insert(SAKDataStruct::OutputFormatUcs4, tr("UCS4"));
-        formatMap.insert(SAKDataStruct::OutputFormatStdwstring, tr("WChart"));
-        formatMap.insert(SAKDataStruct::OutputFormatLocal, tr("SYSTEM"));
+        formatMap.insert(SAKCommonDataStructure::OutputFormatBin, tr("BIN"));
+        formatMap.insert(SAKCommonDataStructure::OutputFormatDec, tr("DEC"));
+        formatMap.insert(SAKCommonDataStructure::OutputFormatHex, tr("HEX"));
+        formatMap.insert(SAKCommonDataStructure::OutputFormatAscii, tr("ASCII"));
+        formatMap.insert(SAKCommonDataStructure::OutputFormatUtf8, tr("UTF8"));
+        formatMap.insert(SAKCommonDataStructure::OutputFormatUtf16, tr("UTF16"));
+        formatMap.insert(SAKCommonDataStructure::OutputFormatUcs4, tr("UCS4"));
+        formatMap.insert(SAKCommonDataStructure::OutputFormatStdwstring, tr("WChart"));
+        formatMap.insert(SAKCommonDataStructure::OutputFormatLocal, tr("SYSTEM"));
 
         QMapIterator<int, QString> mapIterator(formatMap);
         QStandardItemModel *itemModel = new QStandardItemModel(comboBox);
@@ -352,7 +352,7 @@ void SAKGlobal::initOutputTextFormatComboBox(QComboBox *comboBox)
             itemModel->appendRow(item);
         }
         comboBox->setModel(itemModel);
-        comboBox->setCurrentText(formatMap.value(SAKDataStruct::OutputFormatHex));
+        comboBox->setCurrentText(formatMap.value(SAKCommonDataStructure::OutputFormatHex));
 
         // Reset the iterator...
         while (mapIterator.hasPrevious()) {
@@ -373,7 +373,7 @@ void SAKGlobal::initCRCComboBox(QComboBox *comboBox)
 {
     if (comboBox){
         comboBox->clear();
-        QMetaEnum enums = QMetaEnum::fromType<SAKCRCInterface::CRCModel>();
+        QMetaEnum enums = QMetaEnum::fromType<SAKCommonCrcInterface::CRCModel>();
         QStandardItemModel *itemModel = new QStandardItemModel(comboBox);
         for (int i = 0; i < enums.keyCount(); i++){
             const QString key = enums.key(i);
@@ -390,7 +390,7 @@ void SAKGlobal::initCRCComboBox(QComboBox *comboBox)
 void SAKGlobal::initWebSocketSendingTypeComboBox(QComboBox *comboBox)
 {
     if (comboBox){
-        comboBox->addItem(tr("BIN"), SAKDataStruct::WebSocketSendingTypeBin);
-        comboBox->addItem(tr("TEXT"), SAKDataStruct::WebSocketSendingTypeText);
+        comboBox->addItem(tr("BIN"), SAKCommonDataStructure::WebSocketSendingTypeBin);
+        comboBox->addItem(tr("TEXT"), SAKCommonDataStructure::WebSocketSendingTypeText);
     }
 }

@@ -14,7 +14,7 @@
 #include <QSqlQuery>
 #include <QSqlDatabase>
 
-#include "SAKDataStruct.hh"
+#include "SAKCommonDataStructure.hh"
 
 class SAKDebugPage;
 /// @brief If Qt has sql module, some parameters will be written to database
@@ -101,42 +101,42 @@ public:
      * @param tableName: table name of database
      * @param item: Item that contains record info
      */
-    void insertAutoResponseItem(QString tableName, SAKDataStruct::SAKStructAutoResponseItem item);
+    void insertAutoResponseItem(QString tableName, SAKCommonDataStructure::SAKStructAutoResponseItem item);
 
     /**
      * @brief selectAutoResponseItem: Query records
      * @param tableName: table name
      * @return records
      */
-    QList<SAKDataStruct::SAKStructAutoResponseItem> selectAutoResponseItem(QString tableName);
+    QList<SAKCommonDataStructure::SAKStructAutoResponseItem> selectAutoResponseItem(QString tableName);
 
     /**
      * @brief insertTimingSendingItem: Insert record to database
      * @param tableName: Target table name
      * @param item: Record item
      */
-    void insertTimingSentItem(QString tableName, SAKDataStruct::SAKStructTimingSentItem item);
+    void insertTimingSentItem(QString tableName, SAKCommonDataStructure::SAKStructTimingSentItem item);
 
     /**
      * @brief selectTimingSendingItem: Query records
      * @param tableName: Table name
      * @return records
      */
-    QList<SAKDataStruct::SAKStructTimingSentItem> selectTimingSentItem(QString tableName);
+    QList<SAKCommonDataStructure::SAKStructTimingSentItem> selectTimingSentItem(QString tableName);
 
     /**
      * @brief insertDataPresetItem: Insert record to database
      * @param tableName: table name of database
      * @param item: item that contains information of record
      */
-    void insertDataPresetItem(QString tableName, SAKDataStruct::SAKStructPresettingDataItem item);
+    void insertDataPresetItem(QString tableName, SAKCommonDataStructure::SAKStructPresettingDataItem item);
 
     /**
      * @brief selectDataPresetItem: Select records
      * @param tableName: Table name
      * @return records
      */
-    QList<SAKDataStruct::SAKStructPresettingDataItem> selectDataPresetItem(QString tableName);
+    QList<SAKCommonDataStructure::SAKStructPresettingDataItem> selectDataPresetItem(QString tableName);
 
     /**
      * @brief updateRecord: Update the record of table

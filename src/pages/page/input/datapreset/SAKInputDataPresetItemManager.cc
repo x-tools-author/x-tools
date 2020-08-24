@@ -17,8 +17,8 @@
 
 #include "SAKGlobal.hh"
 #include "SAKDebugPage.hh"
-#include "SAKDataStruct.hh"
-#include "SAKCRCInterface.hh"
+#include "SAKCommonDataStructure.hh"
+#include "SAKCommonCrcInterface.hh"
 #include "SAKInputDataFactory.hh"
 #include "SAKInputDataPresetItem.hh"
 #include "SAKInputDataPresetItemManager.hh"
@@ -45,7 +45,7 @@ SAKInputDataPresetItemManager::SAKInputDataPresetItemManager(SAKDebugPage *debug
         mInfoLabel->clear();
     });
 
-    mTableName = SAKDataStruct::dataPresetTableName(mDebugPage->pageType());
+    mTableName = SAKCommonDataStructure::dataPresetTableName(mDebugPage->pageType());
     mDatabaseInterface = SAKDebugPageCommonDatabaseInterface::instance();
     readinRecord();
 }
@@ -66,7 +66,7 @@ QList<SAKInputDataPresetItem*> SAKInputDataPresetItemManager::itemList()
     return itemWidgetList;
 }
 
-QWidget *innerCreateItem(SAKDataStruct::SAKStructPresettingDataItem &var, QListWidget *listWidget)
+QWidget *innerCreateItem(SAKCommonDataStructure::SAKStructPresettingDataItem &var, QListWidget *listWidget)
 {
     QListWidgetItem *item = new QListWidgetItem(listWidget);
     SAKInputDataPresetItem *itemWidget = new SAKInputDataPresetItem(var.id,
@@ -83,7 +83,7 @@ QWidget *innerCreateItem(SAKDataStruct::SAKStructPresettingDataItem &var, QListW
 
 void SAKInputDataPresetItemManager::readinRecord()
 {
-    QList<SAKDataStruct::SAKStructPresettingDataItem> itemList = mDatabaseInterface->selectDataPresetItem(mTableName);
+    QList<SAKCommonDataStructure::SAKStructPresettingDataItem> itemList = mDatabaseInterface->selectDataPresetItem(mTableName);
     for (auto var : itemList){
         QWidget *iw = innerCreateItem(var, mListWidget);
         appendDataPresetItem(iw);
@@ -195,7 +195,7 @@ void SAKInputDataPresetItemManager::on_addPushButton_clicked()
     appendDataPresetItem(itemWidget);
 
     // Add item to database
-    SAKDataStruct::SAKStructPresettingDataItem dataItem;
+    SAKCommonDataStructure::SAKStructPresettingDataItem dataItem;
     dataItem.id = itemWidget->itemID();
     dataItem.text = itemWidget->itemText();
     dataItem.format = itemWidget->itemTextFromat();
@@ -206,7 +206,7 @@ void SAKInputDataPresetItemManager::on_addPushButton_clicked()
 void SAKInputDataPresetItemManager::on_outportPushButton_clicked()
 {
     // Read in records from database
-    QList<SAKDataStruct::SAKStructPresettingDataItem> itemList = mDatabaseInterface->selectDataPresetItem(mTableName);
+    QList<SAKCommonDataStructure::SAKStructPresettingDataItem> itemList = mDatabaseInterface->selectDataPresetItem(mTableName);
     if (itemList.isEmpty()){
         return;
     }
@@ -264,7 +264,7 @@ void SAKInputDataPresetItemManager::on_importPushButton_clicked()
             if (jsa.at(i).isObject()){
                 QJsonObject jso = jsa.at(i).toObject();
                 DataPresetItemContext itemKey;
-                SAKDataStruct::SAKStructPresettingDataItem responseItem;
+                SAKCommonDataStructure::SAKStructPresettingDataItem responseItem;
                 responseItem.id = jso.value(itemKey.id).toVariant().toULongLong();
                 responseItem.format = jso.value(itemKey.format).toVariant().toUInt();
                 responseItem.description = jso.value(itemKey.description).toVariant().toString();

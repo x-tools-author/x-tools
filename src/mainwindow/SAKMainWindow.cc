@@ -34,7 +34,7 @@
 #include "SAKGlobal.hh"
 #include "SAKSettings.hh"
 #include "SAKSettings.hh"
-#include "SAKDataStruct.hh"
+#include "SAKCommonDataStructure.hh"
 #include "SAKMainWindow.hh"
 #include "QtAppStyleApi.hh"
 #include "SAKApplication.hh"
@@ -157,11 +157,11 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
 #endif
 
     // Create debugging page
-    QMetaEnum metaEnum = QMetaEnum::fromType<SAKDataStruct::SAKEnumDebugPageType>();
+    QMetaEnum metaEnum = QMetaEnum::fromType<SAKCommonDataStructure::SAKEnumDebugPageType>();
     for (int i = 0; i < metaEnum.keyCount(); i++){
         // Test page is selectable
         bool enableTestPage = SAKSettings::instance()->value(mSettingKeyEnableTestPage).toBool();
-        if (!enableTestPage && (metaEnum.value(i) == SAKDataStruct::DebugPageTypeTest)){
+        if (!enableTestPage && (metaEnum.value(i) == SAKCommonDataStructure::DebugPageTypeTest)){
             continue;
         }
 
@@ -182,7 +182,7 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     }
 
     // Initializing the tools menu
-    QMetaEnum toolTypeMetaEnum = QMetaEnum::fromType<SAKDataStruct::SAKEnumToolType>();
+    QMetaEnum toolTypeMetaEnum = QMetaEnum::fromType<SAKCommonDataStructure::SAKEnumToolType>();
     for (int i = 0; i < toolTypeMetaEnum.keyCount(); i++){
         QString name = SAKGlobal::toolNameFromType(toolTypeMetaEnum.value(i));
         QAction *action = new QAction(name, this);
@@ -226,7 +226,7 @@ void SAKMainWindow::initFileMenu()
 
     QMenu *tabMenu = new QMenu(tr("New page"), this);
     fileMenu->addMenu(tabMenu);
-    QMetaEnum enums = QMetaEnum::fromType<SAKDataStruct::SAKEnumDebugPageType>();
+    QMetaEnum enums = QMetaEnum::fromType<SAKCommonDataStructure::SAKEnumDebugPageType>();
     for (int i = 0; i < enums.keyCount(); i++){
         QAction *a = new QAction(SAKGlobal::debugPageNameFromType(i), this);
         a->setObjectName(SAKGlobal::debugPageNameFromType(i));
@@ -486,11 +486,11 @@ QWidget *SAKMainWindow::debugPageFromType(int type)
 {
     QWidget *widget = Q_NULLPTR;
     switch (type) {
-    case SAKDataStruct::DebugPageTypeTest:
+    case SAKCommonDataStructure::DebugPageTypeTest:
         widget = new SAKTestDebugPage;
         break;
 #ifdef SAK_IMPORT_COM_MODULE
-    case SAKDataStruct::DebugPageTypeCOM:
+    case SAKCommonDataStructure::DebugPageTypeCOM:
         widget = new SAKSerialPortDebugPage;
         break;
 #endif
@@ -504,23 +504,23 @@ QWidget *SAKMainWindow::debugPageFromType(int type)
         widget = new SAKUsbDebugPage;
         break;
 #endif
-    case SAKDataStruct::DebugPageTypeUdpClient:
+    case SAKCommonDataStructure::DebugPageTypeUdpClient:
         widget = new SAKUdpClientDebugPage;
         break;
-    case SAKDataStruct::DebugPageTypeUdpServer:
+    case SAKCommonDataStructure::DebugPageTypeUdpServer:
         widget = new SAKUdpServerDebugPage;
         break;
-    case SAKDataStruct::DebugPageTypeTCPClient:
+    case SAKCommonDataStructure::DebugPageTypeTCPClient:
         widget = new SAKTcpClientDebugPage;
         break;
-    case SAKDataStruct::DebugPageTypeTCPServer:
+    case SAKCommonDataStructure::DebugPageTypeTCPServer:
         widget = new SAKTcpServerDebugPage;
         break;
-    case SAKDataStruct::DebugPageTypeSslSocketClient:
+    case SAKCommonDataStructure::DebugPageTypeSslSocketClient:
         widget = new SAKSslSocketClientDebugPage;
         widget->setEnabled(false);
         break;
-    case SAKDataStruct::DebugPageTypeSslSocketServer:
+    case SAKCommonDataStructure::DebugPageTypeSslSocketServer:
         widget = new SAKSslSocketServerDebugPage;
         widget->setEnabled(false);
         break;
@@ -541,10 +541,10 @@ QWidget *SAKMainWindow::debugPageFromType(int type)
         break;
 #endif
 #ifdef SAK_IMPORT_WEBSOCKET_MODULE
-    case SAKDataStruct::DebugPageTypeWebSocketClient:
+    case SAKCommonDataStructure::DebugPageTypeWebSocketClient:
         widget = new SAKWebSocketClientDebugPage;
         break;
-    case SAKDataStruct::DebugPageTypeWebSocketServer:
+    case SAKCommonDataStructure::DebugPageTypeWebSocketServer:
         widget = new SAKWebSocketServerDebugPage;
         break;
 #endif

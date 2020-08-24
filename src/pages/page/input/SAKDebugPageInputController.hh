@@ -23,7 +23,7 @@
 #include <QWaitCondition>
 
 class SAKDebugPage;
-class SAKCRCInterface;
+class SAKCommonCrcInterface;
 class SAKInputDataFactory;
 class SAKInputDataPresetItem;
 class SAKInputCrcSettingsDialog;
@@ -77,7 +77,7 @@ private:
     QTimer mTimingTimer;
     SAKInputDataFactory *mInputDataFactory;
     InputParametersContext mInputParameters;
-    SAKCRCInterface *mCrcInterface;
+    SAKCommonCrcInterface *mCrcInterface;
     SAKInputDataPresetItemManager *mInputDataItemManager;
     SAKInputCrcSettingsDialog *mCrcSettingsDialog;
     // The unit is ms.

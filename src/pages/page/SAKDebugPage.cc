@@ -23,9 +23,9 @@
 #include "SAKGlobal.hh"
 #include "SAKSettings.hh"
 #include "SAKDebugPage.hh"
-#include "SAKDataStruct.hh"
+#include "SAKCommonDataStructure.hh"
 #include "SAKSqlDatabase.hh"
-#include "SAKCRCInterface.hh"
+#include "SAKCommonCrcInterface.hh"
 #include "SAKDebugPageDevice.hh"
 #include "SAKDebugPageController.hh"
 #include "SAKOtherAnalyzerThread.hh"
@@ -125,7 +125,7 @@ QString SAKDebugPage::settingsGroup()
 {
     QString group;
     int pageType = mDebugPageType;
-    QMetaEnum metaEnum = QMetaEnum::fromType<SAKDataStruct::SAKEnumDebugPageType>();
+    QMetaEnum metaEnum = QMetaEnum::fromType<SAKCommonDataStructure::SAKEnumDebugPageType>();
     for (int i = 0; i < metaEnum.keyCount(); i++){
         if (metaEnum.value(i) == pageType){
             group = QString(metaEnum.key(i));
