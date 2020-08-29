@@ -45,7 +45,7 @@ bool SAKSslSocketServerDevice::open(QString &errorString)
     QString serverHost = parameters.serverHost;
     quint16 serverPort = parameters.serverPort;
 
-    mTcpServer = new QSslSocket;
+    mTcpServer = new QTcpServer;
 //    if (!mSslSocket->listen(QHostAddress(serverHost), serverPort)){
 //        errorString = tr("Listen failed:") + mSslSocket->errorString();
 //        return false;

@@ -36,7 +36,7 @@ signals:
     void removeClient(QTcpSocket *socket);
 private:
     SAKSslSocketServerDebugPage *mDebugPage;
-    QSslSocket *mTcpServer;
+    QTcpServer *mTcpServer;
     SAKSslSocketServerDeviceController *mDeviceController;
     QList<QTcpSocket*> mClientList;
 };
