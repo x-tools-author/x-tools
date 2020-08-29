@@ -20,7 +20,7 @@
 SAKSslSocketServerDevice::SAKSslSocketServerDevice(SAKSslSocketServerDebugPage *debugPage, QObject *parent)
     :SAKDebugPageDevice(parent)
     ,mDebugPage(debugPage)
-    ,mSslSocket(Q_NULLPTR)
+    ,mTcpServer(Q_NULLPTR)
 {
 #if 0
     mDeviceController = qobject_cast<SAKSslSocketServerDeviceController*>(mDebugPage->deviceController());
@@ -45,7 +45,7 @@ bool SAKSslSocketServerDevice::open(QString &errorString)
     QString serverHost = parameters.serverHost;
     quint16 serverPort = parameters.serverPort;
 
-    mSslSocket = new QSslSocket;
+    mTcpServer = new QSslSocket;
 //    if (!mSslSocket->listen(QHostAddress(serverHost), serverPort)){
 //        errorString = tr("Listen failed:") + mSslSocket->errorString();
 //        return false;
@@ -125,11 +125,11 @@ bool SAKSslSocketServerDevice::checkSomething(QString &errorString)
 
 void SAKSslSocketServerDevice::close()
 {
-    mSslSocket->close();
+    mTcpServer->close();
 }
 
 void SAKSslSocketServerDevice::free()
 {
-    delete mSslSocket;
-    mSslSocket = Q_NULLPTR;
+    delete mTcpServer;
+    mTcpServer = Q_NULLPTR;
 }
