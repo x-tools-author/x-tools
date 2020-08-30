@@ -518,11 +518,9 @@ QWidget *SAKMainWindow::debugPageFromType(int type)
         break;
     case SAKCommonDataStructure::DebugPageTypeSslSocketClient:
         widget = new SAKSslSocketClientDebugPage;
-        widget->setEnabled(false);
         break;
     case SAKCommonDataStructure::DebugPageTypeSslSocketServer:
         widget = new SAKSslSocketServerDebugPage;
-        widget->setEnabled(false);
         break;
 #ifdef SAK_IMPORT_SCTP_MODULE
     case SAKDataStruct::DebugPageTypeSCTPClient:
