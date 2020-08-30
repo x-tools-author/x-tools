@@ -15,6 +15,7 @@
 #include <QCheckBox>
 #include <QComboBox>
 #include <QTcpSocket>
+#include <QPushButton>
 #include <QStandardItemModel>
 
 #include "SAKDebugPageController.hh"
@@ -55,11 +56,12 @@ private:
     QComboBox *mServerHostComboBox;
     QLineEdit *mServerPortLineEdit;
     QComboBox *mClientHostComboBox;
+    QPushButton *mSslConfigurationPushButton;
 private slots:
     void on_serverhostComboBox_currentTextChanged(const QString &arg1);
     void on_serverPortLineEdit_textChanged(const QString &arg1);
     void on_clientHostComboBox_currentTextChanged(const QString &arg1);
-    void on_sslConfiguration_clicked();
+    void on_sslConfigurationPushButton_clicked();
 };
 Q_DECLARE_METATYPE(SAKSslSocketServerDeviceController::SslSocketServerParameters);
 #endif

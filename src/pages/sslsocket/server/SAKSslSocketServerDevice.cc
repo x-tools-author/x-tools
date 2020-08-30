@@ -13,6 +13,7 @@
 #include <QApplication>
 
 #include "SAKDebugPage.hh"
+#include "SAKSslSocketTcpServer.hh"
 #include "SAKSslSocketServerDevice.hh"
 #include "SAKSslSocketServerDebugPage.hh"
 #include "SAKSslSocketServerDeviceController.hh"
@@ -45,18 +46,18 @@ bool SAKSslSocketServerDevice::open(QString &errorString)
     QString serverHost = parameters.serverHost;
     quint16 serverPort = parameters.serverPort;
 
-    mTcpServer = new QTcpServer;
-//    if (!mSslSocket->listen(QHostAddress(serverHost), serverPort)){
-//        errorString = tr("Listen failed:") + mSslSocket->errorString();
-//        return false;
-//    }
+    mTcpServer = new SAKSslSocketTcpServer;
+    if (!mTcpServer->listen(QHostAddress(serverHost), serverPort)){
+        errorString = tr("Listen failed:") + mTcpServer->errorString();
+        return false;
+    }
 
     return true;
 }
 
 QByteArray SAKSslSocketServerDevice::read()
 {
-    for (auto var : mClientList){
+    for (auto var : mTcpServer->clients()){
          QByteArray bytes = var->readAll();
          auto parameters = mDeviceController->parameters().value<SAKSslSocketServerDeviceController::SslSocketServerParameters>();
          QString currentClientHost = parameters.currentClientHost;
@@ -76,7 +77,7 @@ QByteArray SAKSslSocketServerDevice::read()
 
 QByteArray SAKSslSocketServerDevice::write(QByteArray bytes)
 {
-    for (auto var : mClientList){
+    for (auto var : mTcpServer->clients()){
         auto parameters = mDeviceController->parameters().value<SAKSslSocketServerDeviceController::SslSocketServerParameters>();
         QString currentClientHost = parameters.currentClientHost;
         QString peerHost = var->peerAddress().toString();
@@ -97,25 +98,16 @@ QByteArray SAKSslSocketServerDevice::write(QByteArray bytes)
 
 bool SAKSslSocketServerDevice::checkSomething(QString &errorString)
 {
-    // Handling new connection
-//    while (mSslSocket->hasPendingConnections()){
-//        QTcpSocket *socket = mSslSocket->nextPendingConnection();
-//        if (socket){
-//            emit addClient(socket->peerAddress().toString(), socket->peerPort(), socket);
-//            mClientList.append(socket);
-//        }
-//    }
-
     // Remove clients which is offline
-    for (auto var : mClientList){
-        QList<QTcpSocket*> offLineClientList;
+    for (auto var : mTcpServer->clients()){
+        QList<QSslSocket*> offLineClientList;
         if (var->state() != QTcpSocket::ConnectedState){
             offLineClientList.append(var);
         }
 
         for (auto var : offLineClientList){
             emit removeClient(var);
-            mClientList.removeOne(var);
+            mTcpServer->removeClient(var);
         }
     }
 

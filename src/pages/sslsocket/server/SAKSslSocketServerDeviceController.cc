@@ -27,6 +27,7 @@ SAKSslSocketServerDeviceController::SAKSslSocketServerDeviceController(SAKDebugP
     mServerHostComboBox = mUi->serverhostComboBox;
     mServerPortLineEdit = mUi->serverPortLineEdit;
     mClientHostComboBox = mUi->clientHostComboBox;
+    mSslConfigurationPushButton = mUi->sslConfigurationPushButton;
 
     on_serverhostComboBox_currentTextChanged(mServerHostComboBox->currentText());
     on_serverPortLineEdit_textChanged(mServerPortLineEdit->text());
@@ -60,6 +61,7 @@ void SAKSslSocketServerDeviceController::setUiEnable(bool opened)
 {
     mServerHostComboBox->setEnabled(!opened);
     mServerPortLineEdit->setEnabled(!opened);
+    mSslConfigurationPushButton->setEnabled(!opened);
 }
 
 void SAKSslSocketServerDeviceController::refreshDevice()
@@ -115,7 +117,7 @@ void SAKSslSocketServerDeviceController::on_clientHostComboBox_currentTextChange
     mParametersMutex.unlock();
 }
 
-void SAKSslSocketServerDeviceController::on_sslConfiguration_clicked()
+void SAKSslSocketServerDeviceController::on_sslConfigurationPushButton_clicked()
 {
     if (mSslConfiguration->isHidden()){
         mSslConfiguration->show();
