@@ -15,6 +15,7 @@
 #include "SAKSslSocketClientDevice.hh"
 #include "SAKSslSocketClientDebugPage.hh"
 #include "SAKSslSocketClientDeviceController.hh"
+#include "SAKDebugPageCommonSslConfigurationWidget.hh"
 
 SAKSslSocketClientDevice::SAKSslSocketClientDevice(SAKSslSocketClientDebugPage *debugPage, QObject *parent)
     :SAKDebugPageDevice(parent)
@@ -53,6 +54,7 @@ bool SAKSslSocketClientDevice::initializing(QString &errorString)
         emit clientInfoChange(info);
     }
 
+    mSslSocket->setSslConfiguration(mDeviceController->sslConfigurationWidget()->sslConfiguration());
     mSslSocket->connectToHost(mServerHost, mServerPort);
     if (mSslSocket->state() != QTcpSocket::ConnectedState){
         if (!mSslSocket->waitForConnected()){
