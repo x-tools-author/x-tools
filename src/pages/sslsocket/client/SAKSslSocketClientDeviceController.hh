@@ -14,6 +14,7 @@
 #include <QWidget>
 #include <QCheckBox>
 #include <QComboBox>
+#include <QPushButton>
 
 #include "SAKDebugPageController.hh"
 
@@ -22,6 +23,7 @@ namespace Ui {
 }
 
 class SAKDebugPage;
+class SAKDebugPageCommonSslConfigurationWidget;
 class SAKSslSocketClientDeviceController:public SAKDebugPageController
 {
     Q_OBJECT
@@ -45,6 +47,7 @@ public:
 private:
     QMutex mParametersMutex;
     SslSocketClientParameters mParameters;
+    SAKDebugPageCommonSslConfigurationWidget *mSslConfigurationWidget;
 private:
     Ui::SAKSslSocketClientDeviceController *mUi;
     QComboBox *mLocalhostComboBox;
@@ -53,12 +56,14 @@ private:
     QLineEdit *mClientInfoLineEdit;
     QLineEdit *mServerHostLineEdit;
     QLineEdit *mServerPortLineEdit;
+    QPushButton *mSslConfigurationPushButton;
 private slots:
     void on_localhostComboBox_currentIndexChanged(int index);
     void on_localPortlineEdit_textChanged(const QString &arg1);
     void on_specifyClientAddressAndPort_clicked();
     void on_serverHostLineEdit_textChanged(const QString &arg1);
     void on_serverPortLineEdit_textChanged(const QString &arg1);
+    void on_sslConfigurationPushButton_clicked();
 };
 Q_DECLARE_METATYPE(SAKSslSocketClientDeviceController::SslSocketClientParameters);
 #endif
