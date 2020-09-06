@@ -44,6 +44,7 @@ public:
     void refreshDevice() final;
 
     void setClientInfo(QString info);
+    SAKDebugPageCommonSslConfigurationWidget *sslConfigurationWidget();
 private:
     QMutex mParametersMutex;
     SslSocketClientParameters mParameters;

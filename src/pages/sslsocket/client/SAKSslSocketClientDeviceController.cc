@@ -21,6 +21,7 @@
 
 SAKSslSocketClientDeviceController::SAKSslSocketClientDeviceController(SAKDebugPage *debugPage, QWidget *parent)
     :SAKDebugPageController(debugPage, parent)
+    ,mSslConfigurationWidget(Q_NULLPTR)
     ,mUi(new Ui::SAKSslSocketClientDeviceController)
 {
     mUi->setupUi(this);
@@ -81,6 +82,11 @@ void SAKSslSocketClientDeviceController::refreshDevice()
 void SAKSslSocketClientDeviceController::setClientInfo(QString info)
 {
     mClientInfoLineEdit->setText(info);
+}
+
+SAKDebugPageCommonSslConfigurationWidget *SAKSslSocketClientDeviceController::sslConfigurationWidget()
+{
+    return mSslConfigurationWidget;
 }
 
 void SAKSslSocketClientDeviceController::on_localhostComboBox_currentIndexChanged(int index)
