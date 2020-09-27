@@ -208,7 +208,12 @@ const QString SAKMainWindow::settingKeyClearConfiguration()
 
 void SAKMainWindow::initMenuBar()
 {
-    QMenuBar *menuBar = new QMenuBar(Q_NULLPTR);
+#if 0
+    // The menu bar is not show on ubuntu 16.04
+   QMenuBar *menuBar = new QMenuBar(Q_NULLPTR);
+#else
+    QMenuBar *menuBar = this->menuBar();
+#endif
     setMenuBar(menuBar);
     initFileMenu();
     initToolMenu();
