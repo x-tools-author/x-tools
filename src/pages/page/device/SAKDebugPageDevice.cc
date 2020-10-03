@@ -88,7 +88,7 @@ void SAKDebugPageDevice::run()
                 }
             }
 
-            // Just for debugging data stream
+            // Just for debugging data stream(for test page only)
             bytes = writeForTest();
             if (bytes.length()){
                 emit bytesWritten(bytes);
