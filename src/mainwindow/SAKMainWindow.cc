@@ -119,11 +119,11 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     setCentralWidget(centralWidget);
     centralWidget->setLayout(layout);
     centralWidget->layout()->setContentsMargins(6, 6, 6, 6);
-#endif
     QString title = QString(tr("Qt Swiss Army Knife"));
     title.append(QString(" "));
     title.append(QString("v") + SAK::instance()->version());
     setWindowTitle(title);
+#endif
 
     mTabWidget->setTabsClosable(true);
     connect(mTabWidget, &QTabWidget::tabCloseRequested, this, &SAKMainWindow::removeRemovableDebugPage);
