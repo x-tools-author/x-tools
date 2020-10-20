@@ -8,9 +8,19 @@
          Remove the comment if you do not require these default features. -->
     <!-- %%INSERT_FEATURES -->
 
+    <!--
+        “unspecified”:默认值由系统来判断显示方向.判定的策略是和设备相关的，所以不同的设备会有不同的显示方向.
+        “landscape”:横屏显示（宽比高要长）
+        “portrait”:竖屏显示(高比宽要长)
+        “user”:用户当前首选的方向
+        “behind”:和该Activity下面的那个Activity的方向一致(在Activity堆栈中的)
+        “sensor”:有物理的感应器来决定。如果用户旋转设备这屏幕会横竖屏切换。
+        “nosensor”:忽略物理感应器，这样就不会随着用户旋转设备而更改了（”unspecified”设置除外）
+    -->
+
     <supports-screens android:largeScreens="true" android:normalScreens="true" android:anyDensity="true" android:smallScreens="true"/>
     <application android:hardwareAccelerated="true" android:name="org.qtproject.qt5.android.bindings.QtApplication" android:label="-- %%INSERT_APP_NAME%% --" android:extractNativeLibs="true" android:icon="@drawable/icon">
-        <activity android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|layoutDirection|locale|fontScale|keyboard|keyboardHidden|navigation|mcc|mnc|density" android:name="org.qtproject.qt5.android.bindings.QtActivity" android:label="-- %%INSERT_APP_NAME%% --" android:screenOrientation="unspecified" android:launchMode="singleTop">
+        <activity android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|layoutDirection|locale|fontScale|keyboard|keyboardHidden|navigation|mcc|mnc|density" android:name="org.qtproject.qt5.android.bindings.QtActivity" android:label="-- %%INSERT_APP_NAME%% --" android:screenOrientation="landscape" android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
