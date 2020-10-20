@@ -108,10 +108,9 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     scrollArea->setWidgetResizable(true);
     setCentralWidget(scrollArea);
     scrollArea->setWidget(mTabWidget);
-#if 0
-    QDesktopWidget *desktop = QApplication::desktop();
-    mTabWidget->setFixedWidth(desktop->width() - scrollArea->verticalScrollBar()->width());
-#endif
+
+    //QDesktopWidget *desktop = QApplication::desktop();
+    //mTabWidget->setFixedWidth(desktop->width() - scrollArea->verticalScrollBar()->width());
 #else
     QHBoxLayout *layout = new QHBoxLayout();
     layout->addWidget(mTabWidget);
