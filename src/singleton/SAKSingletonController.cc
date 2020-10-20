@@ -16,7 +16,12 @@ SAKSingletonController::SAKSingletonController(QObject *parent)
     mSharedMemory = new QSharedMemory(QString("QtSwissArmyKnife"));
     bool ret = mSharedMemory->create(1);
     mSharedMemory->attach();
+#ifdef Q_OS_ANDROID
+    Q_UNUSED(ret);
+    mIsInstanceExist = false;
+#else
     mIsInstanceExist = !ret;
+#endif
 
     if (ret){
         QTimer *timer = new QTimer(this);
