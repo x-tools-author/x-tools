@@ -10,6 +10,7 @@
 #include <QDir>
 #include <QFile>
 #include <QRect>
+#include <QDebug>
 #include <QLocale>
 #include <QTabBar>
 #include <QAction>
@@ -27,6 +28,7 @@
 #include <QMessageBox>
 #include <QStyleFactory>
 #include <QJsonDocument>
+#include <QDesktopWidget>
 #include <QJsonParseError>
 #include <QDesktopServices>
 
@@ -34,7 +36,6 @@
 #include "SAKGlobal.hh"
 #include "SAKSettings.hh"
 #include "SAKSettings.hh"
-#include "SAKCommonDataStructure.hh"
 #include "SAKMainWindow.hh"
 #include "QtAppStyleApi.hh"
 #include "SAKApplication.hh"
@@ -47,6 +48,7 @@
 #include "SAKUdpServerDebugPage.hh"
 #include "SAKTcpClientDebugPage.hh"
 #include "SAKTcpServerDebugPage.hh"
+#include "SAKCommonDataStructure.hh"
 #include "SAKMainWindowQrCodeView.hh"
 #include "SAKSslSocketClientDebugPage.hh"
 #include "SAKSslSocketServerDebugPage.hh"
@@ -102,19 +104,16 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
 
     QHBoxLayout *layout = new QHBoxLayout();
     layout->addWidget(mTabWidget);
-#if 0
+#ifdef Q_OS_ANDROID
     setWindowFlags(Qt::FramelessWindowHint);
-    QScrollArea* scrollArea = new QScrollArea(this);
+    QScrollArea* scrollArea = new QScrollArea;
     scrollArea->setWidgetResizable(true);
     setCentralWidget(scrollArea);
-    scrollArea->setLayout(layout);
-    scrollArea->layout()->setContentsMargins(6, 6, 6, 6);
-    scrollArea->setWidget(tabWidget);
-    scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-
+    scrollArea->setWidget(mTabWidget);
+#if 0
     QDesktopWidget *desktop = QApplication::desktop();
-    QRect rect = desktop->screenGeometry(tabWidget);
-    tabWidget->setFixedWidth(rect.width());
+    mTabWidget->setFixedWidth(desktop->width() - scrollArea->verticalScrollBar()->width());
+#endif
 #else
     QWidget *centralWidget = new QWidget(this);
     setCentralWidget(centralWidget);
