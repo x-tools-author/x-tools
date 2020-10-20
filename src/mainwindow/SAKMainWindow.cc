@@ -102,8 +102,6 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     mUpdateManager->setSettings(SAKSettings::instance());
     mQrCodeDialog = new SAKMainWindowQrCodeView(this);
 
-    QHBoxLayout *layout = new QHBoxLayout();
-    layout->addWidget(mTabWidget);
 #ifdef Q_OS_ANDROID
     setWindowFlags(Qt::FramelessWindowHint);
     QScrollArea* scrollArea = new QScrollArea;
@@ -115,6 +113,8 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     mTabWidget->setFixedWidth(desktop->width() - scrollArea->verticalScrollBar()->width());
 #endif
 #else
+    QHBoxLayout *layout = new QHBoxLayout();
+    layout->addWidget(mTabWidget);
     QWidget *centralWidget = new QWidget(this);
     setCentralWidget(centralWidget);
     centralWidget->setLayout(layout);
