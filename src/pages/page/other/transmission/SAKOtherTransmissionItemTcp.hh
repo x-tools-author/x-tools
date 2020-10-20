@@ -8,7 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  */
 #ifndef SAKOTHERTRANSMISSIONITEMTCP_HH
-#define SAKOTHERTRANSMISSIONITEMTcp_HH
+#define SAKOTHERTRANSMISSIONITEMTCP_HH
 
 #include <QWidget>
 #include <QCheckBox>
