@@ -386,6 +386,16 @@ void SAKGlobal::initCRCComboBox(QComboBox *comboBox)
             itemModel->appendRow(item);
         }
         comboBox->setModel(itemModel);
+
+        // add item data
+        for (int i = 0; i < comboBox->count(); i++){
+            for (int j = 0; j < enums.keyCount(); j++){
+                if (comboBox->itemText(i) == QString(enums.key(i))){
+                    comboBox->setItemData(i, enums.value(j));
+                    break;
+                }
+            }
+        }
     }
 }
 
