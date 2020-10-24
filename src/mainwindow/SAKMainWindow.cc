@@ -634,6 +634,7 @@ void SAKMainWindow::installLanguage()
             QString language = action->objectName();
             QString name = action->data().toString();
             SAKSettings::instance()->setLanguage(language+"-"+name);
+            qobject_cast<SAKApplication*>(qApp)->installLanguage();
             rebootRequestion();
         }
     }
