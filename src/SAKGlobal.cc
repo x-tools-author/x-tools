@@ -188,9 +188,14 @@ void SAKGlobal::initComComboBox(QComboBox *comboBox)
     if (comboBox){
         comboBox->clear();
         QList<QSerialPortInfo> coms = QSerialPortInfo::availablePorts();
+        QStandardItemModel *itemModel = new QStandardItemModel(comboBox);
         for(auto var:coms){
-            comboBox->addItem(var.portName());
+            QStandardItem *item = new QStandardItem(var.portName());
+            item->setToolTip(var.description());
+            itemModel->appendRow(item);
         }
+
+        comboBox->setModel(itemModel);
     }
 }
 #endif
