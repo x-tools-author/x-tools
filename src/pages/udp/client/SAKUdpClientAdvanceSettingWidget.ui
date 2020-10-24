@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>UDP高级设置</string>
+   <string>UDP Advance Settings</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
    <item row="4" column="0" colspan="4">
