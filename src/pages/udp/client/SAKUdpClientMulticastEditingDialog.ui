@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>添加组播</string>
+   <string>Add Mlticast</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="4" column="1">
