@@ -253,7 +253,7 @@ void SAKDebugPageInputController::saveInputDataToFile()
     QString fileName = QFileDialog::getSaveFileName(Q_NULLPTR,
                                                     tr("Save File"),
                                                     QStandardPaths::writableLocation(QStandardPaths::DesktopLocation).append("/").append(defaultName),
-                                                    tr("txt (*.txt);;all (*.txt)"));
+                                                    tr("txt (*.txt);;all (*.*)"));
 
     if (fileName.isEmpty()){
         return;
