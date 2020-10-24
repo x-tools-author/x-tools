@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>350</width>
-    <height>186</height>
+    <height>204</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -46,15 +46,34 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="0" colspan="2">
-       <widget class="QLabel" name="label_3">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Start bytes</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" colspan="2">
+       <widget class="QLabel" name="label_4">
         <property name="styleSheet">
          <string notr="true">QLabel {
 	color: &quot;red&quot;
 }</string>
         </property>
         <property name="text">
-         <string>Start byte is start from left, the first byte is one</string>
+         <string>End byte is start from right, the last byte is one</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0" colspan="2">
+       <widget class="QLabel" name="label_5">
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+	color: &quot;red&quot;
+}</string>
+        </property>
+        <property name="text">
+         <string>If parameter(s) is(are) invalid, it will be ignored</string>
         </property>
        </widget>
       </item>
@@ -65,10 +84,15 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="label">
+      <item row="2" column="0" colspan="2">
+       <widget class="QLabel" name="label_3">
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+	color: &quot;red&quot;
+}</string>
+        </property>
         <property name="text">
-         <string>Start bytes</string>
+         <string>Start byte is start from left, the first byte is one</string>
         </property>
        </widget>
       </item>
@@ -85,18 +109,6 @@
         </property>
         <property name="maximum">
          <number>999</number>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0" colspan="2">
-       <widget class="QLabel" name="label_4">
-        <property name="styleSheet">
-         <string notr="true">QLabel {
-	color: &quot;red&quot;
-}</string>
-        </property>
-        <property name="text">
-         <string>End byte is start from right, the last byte is one</string>
         </property>
        </widget>
       </item>
