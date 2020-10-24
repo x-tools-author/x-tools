@@ -341,7 +341,7 @@ void SAKOtherAutoResponseItemManager::on_outportPushButton_clicked()
     defaultName.append(QString("/"));
     defaultName.append(QDateTime::currentDateTime().toString("yyyyMMddhhmmss"));
     defaultName.append(".json");
-    QString fileName = QFileDialog::getSaveFileName(this, tr("导出数据"), defaultName, QString("json (*.json)"));
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Outport data"), defaultName, QString("json (*.json)"));
     if (fileName.isEmpty()){
         return;
     }
