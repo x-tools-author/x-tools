@@ -7,7 +7,9 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
+#include <QDir>
 #include <QFile>
+#include <QFileInfo>
 #include <QDateTime>
 #include <QEventLoop>
 #include <QTextStream>
@@ -76,8 +78,21 @@ void SAKOutputSave2FileThread::run()
     }
 }
 
+#include <QDebug>
 void SAKOutputSave2FileThread::innerWriteDataToFile(QByteArray data, SAKOutputSave2FileDialog::ParametersContext parameters)
 {
+    // If the size of file more than 1M, create a new file to save data
+    if (QFile::exists(parameters.fileName)){
+        QFileInfo fileInfo(parameters.fileName);
+        QString fullPath = parameters.fileName;
+        QString fileName = fullPath.split('/').last();
+        QString path = fullPath.remove(fileName);
+        if (fileInfo.size() > 1024*1024){
+            QFile file(parameters.fileName);
+            file.rename(QString("%1/backup_%2_%3").arg(path).arg(QDateTime::currentDateTime().toString("yyyyMMddhhmmss")).arg(fileName));
+        }
+    }
+
     QFile file(parameters.fileName);
     int format = parameters.format;
     QTextStream textStream(&file);
