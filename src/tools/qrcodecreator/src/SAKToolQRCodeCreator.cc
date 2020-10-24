@@ -102,7 +102,7 @@ void SAKToolQRCodeCreator::on_savePushButton_clicked()
     defaultFileName.append(QString("/"));
     defaultFileName.append(QString::number(QDateTime::currentMSecsSinceEpoch()));
     QString fileName = QFileDialog::getSaveFileName(this,
-                                                   tr("保存二维码"),
+                                                   tr("Save QR Code"),
                                                    defaultFileName,
                                                    QString("JPG(*.jpg);;PNG(*.png)"));
     if (fileName.length()){
