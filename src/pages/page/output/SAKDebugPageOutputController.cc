@@ -384,7 +384,7 @@ void SAKDebugPageOutputController::innerCookData(QByteArray rawData, OutputParam
 void SAKDebugPageOutputController::onOutputTextFormatComboBoxCurrentTextChanged(const QString &text)
 {
     Q_UNUSED(text);
-    mSettings->setValue(mSettingStringOutputTextFormat, QVariant::fromValue(mOutputTextFormatComboBox->currentData().toInt()));
+    mSettings->setValue(mSettingStringOutputTextFormat, QVariant::fromValue(mOutputTextFormatComboBox->currentIndex()));
 }
 
 void SAKDebugPageOutputController::onShowDateCheckBoxClicked()
