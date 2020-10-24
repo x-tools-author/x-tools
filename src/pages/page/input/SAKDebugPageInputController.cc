@@ -104,6 +104,8 @@ SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugPage *debugPage
         mSettings->setValue(mSettingStringBigEndian, QVariant::fromValue(mInputParameters.bigEndian));
         mSettings->setValue(mSettingStringCrcStartByte, QVariant::fromValue(mInputParameters.startByte));
         mSettings->setValue(mSettingStringCrcEndByte, QVariant::fromValue(mInputParameters.endByte));
+
+        updateCRC();
     });
 
     connect(mInputModelComboBox, &QComboBox::currentTextChanged, this, &SAKDebugPageInputController::changeInputModel);
@@ -348,6 +350,11 @@ void SAKDebugPageInputController::initParameters()
     mInputParameters.cycleTime = mCycleTimeLineEdit->text().toInt();
     mInputParameters.inputModel = mInputModelComboBox->currentData().toInt();
     mInputParameters.crcModel = mCrcParameterModelsComboBox->currentData().toInt();
+
+    SAKInputCrcSettingsDialog::ParameterContext ctx = mCrcSettingsDialog->parametersContext();
+    mInputParameters.startByte = ctx.startByte;
+    mInputParameters.endByte = ctx.endByte;
+    mInputParameters.bigEndian = ctx.bigEndianCRC;
 }
 
 void SAKDebugPageInputController::setCycleEnable()
