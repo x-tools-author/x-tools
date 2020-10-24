@@ -58,23 +58,23 @@ QtStyleSheetApi::QtStyleSheetApi(QObject *parent)
 {
     _this = this;
 
-    styleSheetMap.insert(tr("黑色"), ":/qss/black.css");
-    styleSheetMap.insert(tr("蓝黑色"), ":/qss/blackblue.css");
-    styleSheetMap.insert(tr("视频黑色"), ":/qss/blackvideo.css");
-    styleSheetMap.insert(tr("蓝色"), ":/qss/blue.css");
-    styleSheetMap.insert(tr("深黑色"), ":/qss/darkblack.css");
-    styleSheetMap.insert(tr("深蓝色"), ":/qss/darkblue.css");
-    styleSheetMap.insert(tr("深灰色"), ":/qss/darkgray.css");
-    styleSheetMap.insert(tr("扁平黑色"), ":/qss/flatblack.css");
-    styleSheetMap.insert(tr("扁平蓝色"), ":/qss/flatblue.css");
-    styleSheetMap.insert(tr("扁平白色"), ":/qss/flatwhite.css");
-    styleSheetMap.insert(tr("灰色"), ":/qss/gray.css");
-    styleSheetMap.insert(tr("浅黑色"), ":/qss/lightblack.css");
-    styleSheetMap.insert(tr("浅蓝色"), ":/qss/lightblue.css");
-    styleSheetMap.insert(tr("浅灰色"), ":/qss/lightgray.css");
-    styleSheetMap.insert(tr("PS黑色"), ":/qss/psblack.css");
-    styleSheetMap.insert(tr("紫色"), ":/qss/purple.css");
-    styleSheetMap.insert(tr("银色"), ":/qss/silvery.css");
+    styleSheetMap.insert(tr("Black"), ":/qss/black.css");
+    styleSheetMap.insert(tr("Black Blue"), ":/qss/blackblue.css");
+    styleSheetMap.insert(tr("Video Black"), ":/qss/blackvideo.css");
+    styleSheetMap.insert(tr("Blue"), ":/qss/blue.css");
+    styleSheetMap.insert(tr("Aterrimus"), ":/qss/darkblack.css");
+    styleSheetMap.insert(tr("Dark Blue"), ":/qss/darkblue.css");
+    styleSheetMap.insert(tr("Dark Grey"), ":/qss/darkgray.css");
+    styleSheetMap.insert(tr("Flat Black"), ":/qss/flatblack.css");
+    styleSheetMap.insert(tr("Flat Blue"), ":/qss/flatblue.css");
+    styleSheetMap.insert(tr("Flat White"), ":/qss/flatwhite.css");
+    styleSheetMap.insert(tr("Gray"), ":/qss/gray.css");
+    styleSheetMap.insert(tr("Light Black"), ":/qss/lightblack.css");
+    styleSheetMap.insert(tr("Wathet"), ":/qss/lightblue.css");
+    styleSheetMap.insert(tr("French Grey"), ":/qss/lightgray.css");
+    styleSheetMap.insert(tr("Photoshop Black"), ":/qss/psblack.css");
+    styleSheetMap.insert(tr("Purple"), ":/qss/purple.css");
+    styleSheetMap.insert(tr("Silver"), ":/qss/silvery.css");
 
     QMapIterator<QString, QString> iterator(styleSheetMap);
     QActionGroup *actionGroup = new QActionGroup(this);
