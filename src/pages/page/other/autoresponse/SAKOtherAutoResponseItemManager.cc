@@ -359,7 +359,7 @@ void SAKOtherAutoResponseItemManager::on_outportPushButton_clicked()
 void SAKOtherAutoResponseItemManager::on_importPushButton_clicked()
 {
     QString defaultPath = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
-    QString fileName = QFileDialog::getOpenFileName(this, tr("导出数据"), defaultPath, QString("json (*.json)"));
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Import file"), defaultPath, QString("json (*.json)"));
     QFile file(fileName);
     if (file.open(QFile::ReadWrite)){
         QByteArray array = file.readAll();
