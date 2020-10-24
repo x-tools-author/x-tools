@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string notr="true">Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="leftMargin">
@@ -747,7 +747,7 @@ p, li { white-space: pre-wrap; }
    <item row="8" column="14" colspan="2">
     <widget class="QCheckBox" name="showTxDataCheckBox">
      <property name="text">
-      <string>Sho tx</string>
+      <string>Show tx</string>
      </property>
      <property name="checked">
       <bool>true</bool>
