@@ -22,4 +22,8 @@ contains(DEFINES, SAK_IMPORT_MODULE_SSLSOCKET){
         $$PWD/src/pages/sslsocket/server/SAKSslSocketServerDevice.cc \
         $$PWD/src/pages/sslsocket/server/SAKSslSocketServerDeviceController.cc \
         $$PWD/src/pages/sslsocket/server/SAKSslSocketTcpServer.cc
+
+    INCLUDEPATH += \
+        $$PWD/src/pages/sslsocket/client \
+        $$PWD/src/pages/sslsocket/server
 }
