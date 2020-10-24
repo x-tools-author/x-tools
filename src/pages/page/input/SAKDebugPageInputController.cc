@@ -377,9 +377,10 @@ void SAKDebugPageInputController::cycleTimerTimeout()
 void SAKDebugPageInputController::updateCRC()
 {
     QString rawData = mInputTextEdit->toPlainText();
-    QByteArray cookedData = mInputDataFactory->rawDataToArray(rawData, mInputParameters);
+    QByteArray data = mInputDataFactory->rawDataToArray(rawData, mInputParameters);
+    QByteArray crcInputData = mInputDataFactory->extractCrcData(data, mInputParameters);
 
-    quint32 crc = mInputDataFactory->crcCalculate(cookedData, mInputParameters.crcModel);
+    quint32 crc = mInputDataFactory->crcCalculate(crcInputData, mInputParameters.crcModel);
     int bits =  mCrcInterface->getBitsWidth(static_cast<SAKCommonCrcInterface::CRCModel>(mInputParameters.crcModel));
     mCrcLabel->setText(QString(QString("%1").arg(QString::number(crc, 16), (bits/8)*2, '0')).toUpper().prepend("0x"));
 }
