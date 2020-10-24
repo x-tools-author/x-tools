@@ -27,16 +27,16 @@ SAKChartsXYSerialEditDialog::SAKChartsXYSerialEditDialog(QWidget *parent)
     mChartNameLineEdit = mUi->chartNameLineEdit;
     mChartColorPushButton = mUi->chartColorPushButton;
 
-    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeInt8, tr("int8_t"));
-    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeUint8, tr("uint8_t"));
-    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeInt16, tr("int16_t"));
-    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeUint16, tr("uint16_t"));
-    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeInt32, tr("int32_t"));
-    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeUint32, tr("uint32_t"));
-    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeInt64, tr("int64_t"));
-    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeUint64, tr("uint64_t"));
-    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeFloat32, tr("float"));
-    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeFloat64, tr("double"));
+    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeInt8, QString("int8_t"));
+    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeUint8, QString("uint8_t"));
+    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeInt16, QString("int16_t"));
+    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeUint16, QString("uint16_t"));
+    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeInt32, QString("int32_t"));
+    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeUint32, QString("uint32_t"));
+    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeInt64, QString("int64_t"));
+    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeUint64, QString("uint64_t"));
+    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeFloat32, QString("float"));
+    mDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeFloat64, QString("double"));
 
     mLengthOfDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeInt8, 1);
     mLengthOfDataTypeMap.insert(ParametersContext::ExtractParametersContext::DataTypeUint8, 1);
