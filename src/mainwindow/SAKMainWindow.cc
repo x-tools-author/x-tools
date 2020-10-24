@@ -50,8 +50,6 @@
 #include "SAKTcpServerDebugPage.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKMainWindowQrCodeView.hh"
-#include "SAKSslSocketClientDebugPage.hh"
-#include "SAKSslSocketServerDebugPage.hh"
 #include "SAKMainWindowMoreInformationDialog.hh"
 #include "SAKMainWindowTabPageNameEditDialog.hh"
 
@@ -82,6 +80,11 @@
 #ifdef SAK_IMPORT_FILECHECKER_MODULE
 #include "SAKToolFileChecker.hh"
 #endif
+#ifdef SAK_IMPORT_MODULE_SSLSOCKET
+#include "SAKSslSocketClientDebugPage.hh"
+#include "SAKSslSocketServerDebugPage.hh"
+#endif
+
 
 #include "ui_SAKMainWindow.h"
 
@@ -519,12 +522,14 @@ QWidget *SAKMainWindow::debugPageFromType(int type)
     case SAKCommonDataStructure::DebugPageTypeTCPServer:
         widget = new SAKTcpServerDebugPage;
         break;
+#ifdef SAK_IMPORT_MODULE_SSLSOCKET
     case SAKCommonDataStructure::DebugPageTypeSslSocketClient:
         widget = new SAKSslSocketClientDebugPage;
         break;
     case SAKCommonDataStructure::DebugPageTypeSslSocketServer:
         widget = new SAKSslSocketServerDebugPage;
         break;
+#endif
 #ifdef SAK_IMPORT_SCTP_MODULE
     case SAKDataStruct::DebugPageTypeSCTPClient:
         widget = new SAKSctpClientDebugPage;

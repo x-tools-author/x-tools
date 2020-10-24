@@ -46,8 +46,10 @@ public:
         DebugPageTypeUdpServer,
         DebugPageTypeTCPClient,
         DebugPageTypeTCPServer,
+#ifdef SAK_IMPORT_MODULE_SSLSOCKET
         DebugPageTypeSslSocketClient,
         DebugPageTypeSslSocketServer,
+#endif
 #ifdef SAK_IMPORT_SCTP_MODULE
         DebugPageTypeSCTPClient,
         DebugPageTypeSCTPServer,

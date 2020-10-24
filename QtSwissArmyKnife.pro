@@ -46,7 +46,7 @@ include(SAKCharts.pri)
 include(SAKModules.pri)
 #include(SAKBluetooth.pri)
 include(SAKWebSocket.pri)
-include(SAKSslSocket.pri)
+#include(SAKSslSocket.pri)
 include(SAKSerialPort.pri)
 
 exists(private/SAKPrivate.pri){

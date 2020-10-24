@@ -119,12 +119,14 @@ QString SAKGlobal::debugPageNameFromType(int type)
     case SAKCommonDataStructure::DebugPageTypeTCPServer:
         name = tr("TCP-S");
         break;
+#ifdef SAK_IMPORT_MODULE_SSLSOCKET
     case SAKCommonDataStructure::DebugPageTypeSslSocketClient:
         name = tr("SSL-C");
         break;
     case SAKCommonDataStructure::DebugPageTypeSslSocketServer:
         name = tr("SSL-S");
         break;
+#endif
 #ifdef SAK_IMPORT_SCTP_MODULE
     case SAKDataStruct::DebugPageTypeSCTPClient:
         name = tr("SCTP-C");
