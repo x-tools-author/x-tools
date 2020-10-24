@@ -166,15 +166,15 @@ QString SAKGlobal::toolNameFromType(int type)
     switch (type) {
 #ifdef SAK_IMPORT_FILECHECKER_MODULE
     case SAKCommonDataStructure::ToolTypeFileChecker:
-        name = QString("File checker");
+        name = tr("File Checker");
         break;
 #endif
     case SAKCommonDataStructure::ToolTypeCRCCalculator:
-        name = QString("CRC calculator");
+        name = tr("CRC Calculator");
         break;
 #ifdef SAK_IMPORT_QRCODE_MODULE
     case SAKCommonDataStructure::ToolTypeQRCodeCreator:
-        name = QString("QR code creator");
+        name = tr("QR Code Creator");
         break;
 #endif
     }
@@ -296,11 +296,11 @@ void SAKGlobal::initInputTextFormatComboBox(QComboBox *comboBox)
 
         QMap<int, QString> formatMap;
         formatMap.insert(SAKCommonDataStructure::InputFormatBin, tr("BIN"));
-        formatMap.insert(SAKCommonDataStructure::InputFormatOct, tr("DEC"));
-        formatMap.insert(SAKCommonDataStructure::InputFormatDec, tr("HEX"));
-        formatMap.insert(SAKCommonDataStructure::InputFormatHex, tr("ASCII"));
-        formatMap.insert(SAKCommonDataStructure::InputFormatAscii, tr("UTF8"));
-        formatMap.insert(SAKCommonDataStructure::InputFormatUtf8, tr("UTF16"));
+        formatMap.insert(SAKCommonDataStructure::InputFormatOct, tr("OTC"));
+        formatMap.insert(SAKCommonDataStructure::InputFormatDec, tr("DEC"));
+        formatMap.insert(SAKCommonDataStructure::InputFormatHex, tr("HEX"));
+        formatMap.insert(SAKCommonDataStructure::InputFormatAscii, tr("ASCII"));
+        formatMap.insert(SAKCommonDataStructure::InputFormatUtf8, tr("UTF8"));
         formatMap.insert(SAKCommonDataStructure::InputFormatLocal, tr("SYSTEM"));
 
         QMapIterator<int, QString> mapIterator(formatMap);
