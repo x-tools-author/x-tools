@@ -109,6 +109,29 @@ QByteArray SAKInputDataFactory::rawDataToArray(QString rawData, SAKDebugPageInpu
     return data;
 }
 
+QByteArray SAKInputDataFactory::extractCrcData(QByteArray crcData, SAKDebugPageInputController::InputParametersContext parameters)
+{
+    QByteArray crcInputData;
+    int startIndex = parameters.startByte - 1;
+    startIndex = startIndex < 0 ? 0 : startIndex;
+
+    int endIndex = (crcData.length() - 1) - (parameters.endByte - 1);
+    endIndex = endIndex < 0 ? 0 : endIndex;
+
+    if (((crcData.length() - 1) >= startIndex) && ((crcData.length() - 1) >= endIndex)){
+        int length = endIndex - startIndex + 1;
+        length = length < 0 ? 0 : length;
+        crcInputData = QByteArray(crcData.constData()+startIndex, length);
+    }else{
+        crcInputData = crcData;
+    }
+
+#if 0
+    qDebug() << __FUNCTION__ << startIndex << endIndex << QString(crcInputData.toHex(' '));
+#endif
+    return crcInputData;
+}
+
 void SAKInputDataFactory::run()
 {
     QEventLoop eventLoop;
@@ -157,27 +180,11 @@ void SAKInputDataFactory::innnerCookData(QString rawData, SAKDebugPageInputContr
 {
     QByteArray data = rawDataToArray(rawData, parameters);
     if (parameters.addCRC){
-        // Extract crc section
-        QByteArray crcInputData;
-        int startIndex = parameters.startByte - 1;
-        startIndex = startIndex < 0 ? 0 : startIndex;
-
-        int endIndex = (data.length() - 1) - (parameters.endByte - 1);
-        endIndex = endIndex < 0 ? 0 : endIndex;
-
-        if ((data.length() >= startIndex) && (data.length() >= endIndex)){
-            int length = endIndex - startIndex + 1;
-            length = length < 0 ? 0 : length;
-            crcInputData = QByteArray(data.constData(), length);
-        }else{
-#ifdef QT_DEBUG
-            qWarning() << __FUNCTION__ << "The lenght of input data is error, can not extract crc section!";
-#endif
-        }
+        // Extract effective crc section
+        QByteArray crcInputData = extractCrcData(data, parameters);
 
         // Calculate the crc value of input data
         uint32_t crc  = crcCalculate(crcInputData, parameters.crcModel);
-        qDebug() << __FUNCTION__ << startIndex << endIndex << crc;
         uint8_t  crc8  = static_cast<uint8_t>(crc);
         uint16_t crc16 = static_cast<uint16_t>(crc);
         int bitsWidth = mCrcInterface->getBitsWidth(static_cast<SAKCommonCrcInterface::CRCModel>(parameters.crcModel));

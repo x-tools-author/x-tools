@@ -47,6 +47,13 @@ public:
      * @return byte array
      */
     QByteArray rawDataToArray(QString rawData, SAKDebugPageInputController::InputParametersContext parameters);
+
+    /**
+     * @brief extractCrcData extract effective crc value
+     * @param crcData origine crc data
+     * @return cooked crc data
+     */
+    QByteArray extractCrcData(QByteArray crcData, SAKDebugPageInputController::InputParametersContext parameters);
 protected:
     void run() final;
 private:
