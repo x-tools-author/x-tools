@@ -46,6 +46,7 @@ include(SAKCharts.pri)
 include(SAKModules.pri)
 #include(SAKBluetooth.pri)
 include(SAKWebSocket.pri)
+include(SAKSslSocket.pri)
 include(SAKSerialPort.pri)
 
 exists(private/SAKPrivate.pri){
@@ -115,8 +116,6 @@ INCLUDEPATH += \
     src/pages/page/output \
     src/pages/page/output/save2file \
     src/pages/page/statistics \
-    src/pages/sslsocket/client \
-    src/pages/sslsocket/server \
     src/pages/tcp/client \
     src/pages/tcp/server \
     src/pages/test \
@@ -148,8 +147,6 @@ FORMS += \
     src/pages/page/other/transmission/SAKOtherTransmissionPage.ui \
     src/pages/page/other/transmission/SAKOtherTransmissionPageViewer.ui \
     src/pages/page/output/save2file/SAKOutputSave2FileDialog.ui \
-    src/pages/sslsocket/client/SAKSslSocketClientDeviceController.ui \
-    src/pages/sslsocket/server/SAKSslSocketServerDeviceController.ui \
     src/pages/tcp/client/SAKTcpClientDeviceController.ui \
     src/pages/tcp/server/SAKTcpServerDeviceController.ui \
     src/pages/test/SAKTestDeviceController.ui \
@@ -204,13 +201,6 @@ HEADERS += \
     src/pages/page/output/save2file/SAKOutputSave2FileDialog.hh \
     src/pages/page/output/save2file/SAKOutputSave2FileThread.hh \
     src/pages/page/statistics/SAKDebugPageStatisticsController.hh \
-    src/pages/sslsocket/client/SAKSslSocketClientDebugPage.hh \
-    src/pages/sslsocket/client/SAKSslSocketClientDevice.hh \
-    src/pages/sslsocket/client/SAKSslSocketClientDeviceController.hh \
-    src/pages/sslsocket/server/SAKSslSocketServerDebugPage.hh \
-    src/pages/sslsocket/server/SAKSslSocketServerDevice.hh \
-    src/pages/sslsocket/server/SAKSslSocketServerDeviceController.hh \
-    src/pages/sslsocket/server/SAKSslSocketTcpServer.hh \
     src/pages/tcp/client/SAKTcpClientDebugPage.hh \
     src/pages/tcp/client/SAKTcpClientDevice.hh \
     src/pages/tcp/client/SAKTcpClientDeviceController.hh \
@@ -278,13 +268,6 @@ SOURCES += \
     src/main.cc \
     src/pages/page/output/save2file/SAKOutputSave2FileThread.cc \
     src/pages/page/statistics/SAKDebugPageStatisticsController.cc \
-    src/pages/sslsocket/client/SAKSslSocketClientDebugPage.cc \
-    src/pages/sslsocket/client/SAKSslSocketClientDevice.cc \
-    src/pages/sslsocket/client/SAKSslSocketClientDeviceController.cc \
-    src/pages/sslsocket/server/SAKSslSocketServerDebugPage.cc \
-    src/pages/sslsocket/server/SAKSslSocketServerDevice.cc \
-    src/pages/sslsocket/server/SAKSslSocketServerDeviceController.cc \
-    src/pages/sslsocket/server/SAKSslSocketTcpServer.cc \
     src/pages/tcp/client/SAKTcpClientDebugPage.cc \
     src/pages/tcp/client/SAKTcpClientDevice.cc \
     src/pages/tcp/client/SAKTcpClientDeviceController.cc \
