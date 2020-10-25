@@ -66,7 +66,7 @@ QString SAK::buildTime()
 
 QString SAK::officeUrl()
 {
-    return QString("https://qsak.pro");
+    return QString("https://gitee.com/qsaker/QtSwissArmyKnife/releases");
 }
 
 QString SAK::qqNumber()
