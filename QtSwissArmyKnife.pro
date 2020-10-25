@@ -20,6 +20,11 @@ contains(CONFIG, debug, debug|release){
     TARGET = QtSwissArmyKnife
 }
 
+win32:mingw {
+    # It seems to be not effective
+    QMAKE_LFLAGS += -static-libgcc -static-libstdc++
+}
+
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
