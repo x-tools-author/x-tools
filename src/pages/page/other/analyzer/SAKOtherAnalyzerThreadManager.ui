@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string notr="true">Data analyzer</string>
+   <string>Data analyzer</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="2" column="0">
