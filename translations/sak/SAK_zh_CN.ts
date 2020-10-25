@@ -325,7 +325,7 @@
     <message>
         <location filename="../../src/pages/page/SAKDebugPage.ui" line="204"/>
         <source>Tx speed</source>
-        <translation>接收速率</translation>
+        <translation>发送速率</translation>
     </message>
     <message>
         <location filename="../../src/pages/page/SAKDebugPage.ui" line="219"/>
@@ -335,7 +335,7 @@
     <message>
         <location filename="../../src/pages/page/SAKDebugPage.ui" line="241"/>
         <source>ResetTx</source>
-        <translation>重置接收</translation>
+        <translation>重置发送</translation>
     </message>
     <message>
         <location filename="../../src/pages/page/SAKDebugPage.ui" line="284"/>
@@ -407,7 +407,7 @@
         <location filename="../../src/pages/page/SAKDebugPage.ui" line="530"/>
         <location filename="../../src/pages/page/SAKDebugPage.ui" line="775"/>
         <source>Clear</source>
-        <translation>清除输出</translation>
+        <translation>清除输入</translation>
     </message>
     <message>
         <location filename="../../src/pages/page/SAKDebugPage.ui" line="542"/>
