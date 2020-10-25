@@ -1093,7 +1093,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../src/mainwindow/SAKMainWindow.cc" line="275"/>
         <source>Skin</source>
-        <translation>皮肤</translation>
+        <translation>软件样式</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow/SAKMainWindow.cc" line="277"/>
@@ -1103,7 +1103,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../src/mainwindow/SAKMainWindow.cc" line="300"/>
         <source>Application style</source>
-        <translation>软件样式</translation>
+        <translation>软件风格</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow/SAKMainWindow.cc" line="308"/>
