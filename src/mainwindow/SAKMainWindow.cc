@@ -467,8 +467,7 @@ void SAKMainWindow::about()
                                                      "<font color=green>%11</font><br />%12<br />"
                                                      "<font color=green>%13</font><br />%14<br />"
                                                      "<font color=green>%15</font><br />%16<br />"
-                                                     "<font color=green>%17</font><br />%18<br />"
-                                                     "<font color=red>%19</font><br />%20")
+                                                     "<font color=green>%17</font><br />%18<br />")
                              .arg(tr("Version")).arg(SAK::instance()->version())
                              .arg(tr("Author")).arg(SAK::instance()->authorName())
                              .arg(tr("Nickname")).arg(SAK::instance()->authorNickname())
@@ -477,8 +476,7 @@ void SAKMainWindow::about()
                              .arg(tr("QQ")).arg(SAK::instance()->qqNumber())
                              .arg(tr("QQ group")).arg(SAK::instance()->qqGroupNumber())
                              .arg(tr("Build time")).arg(SAK::instance()->buildTime())
-                             .arg(tr("Copyright")).arg(SAK::instance()->copyright())
-                             .arg(tr("Cooperation")).arg(SAK::instance()->business()));
+                             .arg(tr("Copyright")).arg(SAK::instance()->copyright()));
 }
 
 void SAKMainWindow::removeRemovableDebugPage(int index)
