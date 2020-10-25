@@ -407,7 +407,7 @@
         <location filename="../../src/pages/page/SAKDebugPage.ui" line="530"/>
         <location filename="../../src/pages/page/SAKDebugPage.ui" line="775"/>
         <source>Clear</source>
-        <translation>清除输入</translation>
+        <translation>清除输出</translation>
     </message>
     <message>
         <location filename="../../src/pages/page/SAKDebugPage.ui" line="542"/>
@@ -831,100 +831,100 @@ p, li { white-space: pre-wrap; }
         <translation>二维码生成工具</translation>
     </message>
     <message>
-        <location filename="../../src/SAKGlobal.cc" line="245"/>
-        <location filename="../../src/SAKGlobal.cc" line="259"/>
+        <location filename="../../src/SAKGlobal.cc" line="250"/>
+        <location filename="../../src/SAKGlobal.cc" line="264"/>
         <source>No</source>
         <translation>无</translation>
     </message>
     <message>
-        <location filename="../../src/SAKGlobal.cc" line="246"/>
+        <location filename="../../src/SAKGlobal.cc" line="251"/>
         <source>Even</source>
         <translation>偶校验</translation>
     </message>
     <message>
-        <location filename="../../src/SAKGlobal.cc" line="247"/>
+        <location filename="../../src/SAKGlobal.cc" line="252"/>
         <source>Odd</source>
         <translation>奇校验</translation>
     </message>
     <message>
-        <location filename="../../src/SAKGlobal.cc" line="248"/>
+        <location filename="../../src/SAKGlobal.cc" line="253"/>
         <source>Space</source>
         <translation>空格校验</translation>
     </message>
     <message>
-        <location filename="../../src/SAKGlobal.cc" line="249"/>
+        <location filename="../../src/SAKGlobal.cc" line="254"/>
         <source>Mark</source>
         <translation>标记校验</translation>
     </message>
     <message>
-        <location filename="../../src/SAKGlobal.cc" line="260"/>
+        <location filename="../../src/SAKGlobal.cc" line="265"/>
         <source>Hardware</source>
         <translation>硬件流控</translation>
     </message>
     <message>
-        <location filename="../../src/SAKGlobal.cc" line="261"/>
+        <location filename="../../src/SAKGlobal.cc" line="266"/>
         <source>Software</source>
         <translation>软件流控</translation>
     </message>
     <message>
-        <location filename="../../src/SAKGlobal.cc" line="298"/>
-        <location filename="../../src/SAKGlobal.cc" line="338"/>
-        <location filename="../../src/SAKGlobal.cc" line="405"/>
+        <location filename="../../src/SAKGlobal.cc" line="303"/>
+        <location filename="../../src/SAKGlobal.cc" line="343"/>
+        <location filename="../../src/SAKGlobal.cc" line="410"/>
         <source>BIN</source>
         <translation>二进制</translation>
     </message>
     <message>
-        <location filename="../../src/SAKGlobal.cc" line="299"/>
+        <location filename="../../src/SAKGlobal.cc" line="304"/>
         <source>OTC</source>
         <translation>八进制</translation>
     </message>
     <message>
-        <location filename="../../src/SAKGlobal.cc" line="300"/>
-        <location filename="../../src/SAKGlobal.cc" line="339"/>
+        <location filename="../../src/SAKGlobal.cc" line="305"/>
+        <location filename="../../src/SAKGlobal.cc" line="344"/>
         <source>DEC</source>
         <translation>十进制</translation>
     </message>
     <message>
-        <location filename="../../src/SAKGlobal.cc" line="301"/>
-        <location filename="../../src/SAKGlobal.cc" line="340"/>
+        <location filename="../../src/SAKGlobal.cc" line="306"/>
+        <location filename="../../src/SAKGlobal.cc" line="345"/>
         <source>HEX</source>
         <translation>十六进制</translation>
     </message>
     <message>
-        <location filename="../../src/SAKGlobal.cc" line="302"/>
-        <location filename="../../src/SAKGlobal.cc" line="341"/>
+        <location filename="../../src/SAKGlobal.cc" line="307"/>
+        <location filename="../../src/SAKGlobal.cc" line="346"/>
         <source>ASCII</source>
         <translation>ASCII</translation>
     </message>
     <message>
-        <location filename="../../src/SAKGlobal.cc" line="303"/>
-        <location filename="../../src/SAKGlobal.cc" line="342"/>
+        <location filename="../../src/SAKGlobal.cc" line="308"/>
+        <location filename="../../src/SAKGlobal.cc" line="347"/>
         <source>UTF8</source>
         <translation>UTF8</translation>
     </message>
     <message>
-        <location filename="../../src/SAKGlobal.cc" line="343"/>
+        <location filename="../../src/SAKGlobal.cc" line="348"/>
         <source>UTF16</source>
         <translation>UTF16</translation>
     </message>
     <message>
-        <location filename="../../src/SAKGlobal.cc" line="304"/>
-        <location filename="../../src/SAKGlobal.cc" line="346"/>
+        <location filename="../../src/SAKGlobal.cc" line="309"/>
+        <location filename="../../src/SAKGlobal.cc" line="351"/>
         <source>SYSTEM</source>
         <translation>系统编码</translation>
     </message>
     <message>
-        <location filename="../../src/SAKGlobal.cc" line="344"/>
+        <location filename="../../src/SAKGlobal.cc" line="349"/>
         <source>UCS4</source>
         <translation>UCS4</translation>
     </message>
     <message>
-        <location filename="../../src/SAKGlobal.cc" line="345"/>
+        <location filename="../../src/SAKGlobal.cc" line="350"/>
         <source>WChart</source>
         <translation>宽字符</translation>
     </message>
     <message>
-        <location filename="../../src/SAKGlobal.cc" line="406"/>
+        <location filename="../../src/SAKGlobal.cc" line="411"/>
         <source>TEXT</source>
         <translation>文本</translation>
     </message>
@@ -1207,62 +1207,141 @@ p, li { white-space: pre-wrap; }
         <translation>关于软件</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="472"/>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="471"/>
         <source>Version</source>
         <translation>软件版本</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="473"/>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="472"/>
         <source>Author</source>
         <translation>软件作者</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="474"/>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="473"/>
         <source>Nickname</source>
         <translation>网络昵称</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="475"/>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="474"/>
         <source>Release</source>
         <translation>发布地址</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="476"/>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="475"/>
         <source>Email</source>
         <translation>电子邮箱</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="477"/>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="476"/>
         <source>QQ</source>
         <translation>作者QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="478"/>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="477"/>
         <source>QQ group</source>
         <translation>QQ交流群</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="479"/>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="478"/>
         <source>Build time</source>
         <translation>构建时间</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="480"/>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="479"/>
         <source>Copyright</source>
         <translation>版权声明</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="481"/>
-        <source>Cooperation</source>
-        <translation>业务合作</translation>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="568"/>
+        <source>Test</source>
+        <translation>数据测试</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="591"/>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="572"/>
+        <source>COM</source>
+        <translation>串口调试</translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="577"/>
+        <source>HID</source>
+        <translation>HID调试</translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="582"/>
+        <source>USB</source>
+        <translation>USB调试</translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="586"/>
+        <source>UDP-C</source>
+        <translation>UDP客户端</translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="589"/>
+        <source>UDP-S</source>
+        <translation>UDP服务器</translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="592"/>
+        <source>TCP-C</source>
+        <translation>TCP客户端</translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="595"/>
+        <source>TCP-S</source>
+        <translation>TCP服务器</translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="599"/>
+        <source>SSL-C</source>
+        <translation>SslSocket客户端</translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="602"/>
+        <source>SSL-S</source>
+        <translation>SslSocket服务器</translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="607"/>
+        <source>SCTP-C</source>
+        <translation>SCTP客户端</translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="610"/>
+        <source>SCTP-S</source>
+        <translation>SCTP服务器</translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="615"/>
+        <source>Bluetooth-C</source>
+        <translation>蓝牙客户端</translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="618"/>
+        <source>Bluetooth-S</source>
+        <translation>蓝牙服务器</translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="623"/>
+        <source>WS-C</source>
+        <translation>WebSocket客户端</translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="626"/>
+        <source>WS-S</source>
+        <translation>WebSocket服务器</translation>
+    </message>
+    <message>
+        <source>Cooperation</source>
+        <translation type="vanished">业务合作</translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="664"/>
         <source>Reboot application to effective</source>
         <translation>重启生效</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="591"/>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="664"/>
         <source>Need to reboot, reboot to effective now?</source>
         <translation>软件需要重启生效，现在重启？</translation>
     </message>
@@ -1393,6 +1472,11 @@ p, li { white-space: pre-wrap; }
 </context>
 <context>
     <name>SAKOtherAnalyzerThreadManager</name>
+    <message>
+        <location filename="../../src/pages/page/other/analyzer/SAKOtherAnalyzerThreadManager.ui" line="14"/>
+        <source>Data analyzer</source>
+        <translation>帧分析参数设置</translation>
+    </message>
     <message>
         <location filename="../../src/pages/page/other/analyzer/SAKOtherAnalyzerThreadManager.ui" line="20"/>
         <source>End bytes</source>
@@ -1947,7 +2031,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SAKOutputSave2FileThread</name>
     <message>
-        <location filename="../../src/pages/page/output/save2file/SAKOutputSave2FileThread.cc" line="131"/>
+        <location filename="../../src/pages/page/output/save2file/SAKOutputSave2FileThread.cc" line="146"/>
         <source>Unknow text format!</source>
         <translation>未知的文本格式！</translation>
     </message>
