@@ -230,7 +230,7 @@ void SAKMainWindow::initFileMenu()
     QMenu *fileMenu = new QMenu(tr("&File"), this);
     menuBar()->addMenu(fileMenu);
 
-    QMenu *tabMenu = new QMenu(tr("New page"), this);
+    QMenu *tabMenu = new QMenu(tr("New Page"), this);
     fileMenu->addMenu(tabMenu);
     QMetaEnum enums = QMetaEnum::fromType<SAKCommonDataStructure::SAKEnumDebugPageType>();
     for (int i = 0; i < enums.keyCount(); i++){
@@ -242,7 +242,7 @@ void SAKMainWindow::initFileMenu()
         tabMenu->addAction(a);
     }
 
-    QMenu *windowMenu = new QMenu(tr("New window"), this);
+    QMenu *windowMenu = new QMenu(tr("New Window"), this);
     fileMenu->addMenu(windowMenu);
     for (int i = 0; i < enums.keyCount(); i++){
         QAction *a = new QAction(SAKGlobal::debugPageNameFromType(i), this);
@@ -274,7 +274,7 @@ void SAKMainWindow::initOptionMenu()
     // Initializing style sheet menu, the application need to be reboot after change the style sheet to Qt default.
     QMenu *stylesheetMenu = new QMenu(tr("Skin"), this);
     optionMenu->addMenu(stylesheetMenu);
-    mDefaultStyleSheetAction = new QAction(tr("Qt default"), this);
+    mDefaultStyleSheetAction = new QAction(tr("Qt Default"), this);
     mDefaultStyleSheetAction->setCheckable(true);
     stylesheetMenu->addAction(mDefaultStyleSheetAction);
     connect(mDefaultStyleSheetAction, &QAction::triggered, [=](){
@@ -297,7 +297,7 @@ void SAKMainWindow::initOptionMenu()
     }
 
     // Initializing application style menu.
-    QMenu *appStyleMenu = new QMenu(tr("Application style"), this);
+    QMenu *appStyleMenu = new QMenu(tr("Application Style"), this);
     optionMenu->addMenu(appStyleMenu);
     appStyleMenu->addActions(QtAppStyleApi::instance()->actions());
     QString style = SAKSettings::instance()->appStyle();
@@ -305,7 +305,7 @@ void SAKMainWindow::initOptionMenu()
 
     optionMenu->addSeparator();
 
-    mTestPageAction = new QAction(tr("Enable test page"), this);
+    mTestPageAction = new QAction(tr("Enable Testing Page"), this);
     optionMenu->addAction(mTestPageAction);
     mTestPageAction->setCheckable(true);
     connect(mTestPageAction, &QAction::triggered, this, &SAKMainWindow::testPageActionTriggered);
@@ -316,7 +316,7 @@ void SAKMainWindow::initOptionMenu()
         mTestPageAction->setChecked(false);
     }
 
-    QAction *action = new QAction(tr("Clear configuration"), this);
+    QAction *action = new QAction(tr("Clear Configuration"), this);
     optionMenu->addAction(action);
     connect(action, &QAction::triggered, this, &SAKMainWindow::clearConfiguration);
 }
@@ -389,11 +389,11 @@ void SAKMainWindow::initHelpMenu()
     helpMenu->addAction(aboutQtAction);
     connect(aboutQtAction, &QAction::triggered, [=](){QMessageBox::aboutQt(this, tr("About Qt"));});
 
-    QAction *aboutAction = new QAction(tr("About application"), this);
+    QAction *aboutAction = new QAction(tr("About Application"), this);
     helpMenu->addAction(aboutAction);
     connect(aboutAction, &QAction::triggered, this, &SAKMainWindow::about);
 
-    QMenu *srcMenu = new QMenu(tr("Get source"), this);
+    QMenu *srcMenu = new QMenu(tr("Get Source"), this);
     helpMenu->addMenu(srcMenu);
     QAction *visitGitHubAction = new QAction(QIcon(":/resources/images/GitHub.png"), tr("GitHub"), this);
     connect(visitGitHubAction, &QAction::triggered, [](){QDesktopServices::openUrl(QUrl(QLatin1String("https://github.com/qsak/QtSwissArmyKnife")));});
@@ -402,16 +402,16 @@ void SAKMainWindow::initHelpMenu()
     connect(visitGiteeAction, &QAction::triggered, [](){QDesktopServices::openUrl(QUrl(QLatin1String("https://gitee.com/qsak/QtSwissArmyKnife")));});
     srcMenu->addAction(visitGiteeAction);
 
-    QAction *updateAction = new QAction(tr("Check for update"), this);
+    QAction *updateAction = new QAction(tr("Check for Ppdate"), this);
     helpMenu->addAction(updateAction);
     connect(updateAction, &QAction::triggered, mUpdateManager, &SAKUpdateManager::show);
 
-    QAction *moreInformationAction = new QAction(tr("More information"), this);
+    QAction *moreInformationAction = new QAction(tr("More Information"), this);
     helpMenu->addAction(moreInformationAction);
     connect(moreInformationAction, &QAction::triggered, mMoreInformation, &SAKMainWindowMoreInformationDialog::show);
 
     helpMenu->addSeparator();
-    QAction *qrCodeAction = new QAction(tr("QR code"), this);
+    QAction *qrCodeAction = new QAction(tr("QR Code"), this);
     helpMenu->addAction(qrCodeAction);
     connect(qrCodeAction, &QAction::triggered, mQrCodeDialog, &SAKMainWindowQrCodeView::show);
 }
@@ -427,11 +427,11 @@ void SAKMainWindow::initLinksMenu()
         QString iconPath;
     };
     QList<Link> linkList;
-    linkList << Link{tr("Qt official download"), QString("http://download.qt.io/official_releases/qt"), QString(":/resources/images/Qt.png")}
-             << Link{tr("Qt official blog"), QString("https://www.qt.io/blog"), QString(":/resources/images/Qt.png")}
-             << Link{tr("Qt official release"), QString("https://wiki.qt.io/Qt_5.12_Release"), QString(":/resources/images/Qt.png")}
-             << Link{tr("Download SAK from github"), QString("https://github.com/qsak/QtSwissArmyKnife/releases"), QString(":/resources/images/GitHub.png")}
-             << Link{tr("Download SAK from gitee"), QString("https://gitee.com/qsak/QtSwissArmyKnife/releases"), QString(":/resources/images/Gitee.png")};
+    linkList << Link{tr("Qt Official Download"), QString("http://download.qt.io/official_releases/qt"), QString(":/resources/images/Qt.png")}
+             << Link{tr("Qt Official Blog"), QString("https://www.qt.io/blog"), QString(":/resources/images/Qt.png")}
+             << Link{tr("Qt Official Release"), QString("https://wiki.qt.io/Qt_5.12_Release"), QString(":/resources/images/Qt.png")}
+             << Link{tr("Download SAK from Github"), QString("https://github.com/qsak/QtSwissArmyKnife/releases"), QString(":/resources/images/GitHub.png")}
+             << Link{tr("Download SAK from Gitee"), QString("https://gitee.com/qsak/QtSwissArmyKnife/releases"), QString(":/resources/images/Gitee.png")};
 
     for (auto var:linkList){
         QAction *action = new QAction(QIcon(var.iconPath), var.name, this);
@@ -474,8 +474,8 @@ void SAKMainWindow::about()
                              .arg(tr("Release")).arg(SAK::instance()->officeUrl())
                              .arg(tr("Email")).arg(SAK::instance()->email())
                              .arg(tr("QQ")).arg(SAK::instance()->qqNumber())
-                             .arg(tr("QQ group")).arg(SAK::instance()->qqGroupNumber())
-                             .arg(tr("Build time")).arg(SAK::instance()->buildTime())
+                             .arg(tr("QQ Group")).arg(SAK::instance()->qqGroupNumber())
+                             .arg(tr("Build Time")).arg(SAK::instance()->buildTime())
                              .arg(tr("Copyright")).arg(SAK::instance()->copyright()));
 }
 
