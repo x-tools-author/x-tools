@@ -69,6 +69,10 @@ SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
 
 SAKDebugPage::~SAKDebugPage()
 {
+    if (mDevice){
+        mDevice->requestInterruption();
+        mDevice->wait();
+    }
     delete mDevice;
 #ifdef SAK_IMPORT_CHARTS_MODULE
     delete mChartsController;
