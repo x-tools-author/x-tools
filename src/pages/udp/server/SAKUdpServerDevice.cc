@@ -71,7 +71,7 @@ QByteArray SAKUdpServerDevice::read()
             }else{
                 QStringList clients = parameters.clients;
                 QString client = QString("%1:%2").arg(peerAddress.toString()).arg(QString::number(peerPort));
-                if (!client.contains(client)){
+                if (!clients.contains(client)){
                     emit addClient(peerAddress.toString(), peerPort);
                 }
 
