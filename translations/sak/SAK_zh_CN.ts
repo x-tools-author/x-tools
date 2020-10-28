@@ -339,7 +339,7 @@
     </message>
     <message>
         <location filename="../../src/pages/page/SAKDebugPage.ui" line="284"/>
-        <location filename="../../src/pages/page/SAKDebugPage.cc" line="220"/>
+        <location filename="../../src/pages/page/SAKDebugPage.cc" line="224"/>
         <source>Open</source>
         <translation>打开设备</translation>
     </message>
@@ -557,17 +557,17 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.cc" line="207"/>
+        <location filename="../../src/pages/page/SAKDebugPage.cc" line="211"/>
         <source>Close</source>
         <translation>关闭设备</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.cc" line="347"/>
+        <location filename="../../src/pages/page/SAKDebugPage.cc" line="351"/>
         <source>Unsupported function</source>
         <translation>确实功能</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.cc" line="347"/>
+        <location filename="../../src/pages/page/SAKDebugPage.cc" line="351"/>
         <source>The function has been disable, beause of developer&apos;s Qt version is not supported!</source>
         <translation>为保持兼容性，该功能被开发者禁用！</translation>
     </message>
@@ -1066,14 +1066,12 @@ p, li { white-space: pre-wrap; }
         <translation>文件(&amp;F)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="233"/>
         <source>New page</source>
-        <translation>新页面</translation>
+        <translation type="vanished">新页面</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="245"/>
         <source>New window</source>
-        <translation>新窗口</translation>
+        <translation type="vanished">新窗口</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow/SAKMainWindow.cc" line="257"/>
@@ -1096,24 +1094,20 @@ p, li { white-space: pre-wrap; }
         <translation>软件样式</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="277"/>
         <source>Qt default</source>
-        <translation>Qt默认</translation>
+        <translation type="vanished">Qt默认</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="300"/>
         <source>Application style</source>
-        <translation>软件风格</translation>
+        <translation type="vanished">软件风格</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="308"/>
         <source>Enable test page</source>
-        <translation>使能测试页面</translation>
+        <translation type="vanished">使能测试页面</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="319"/>
         <source>Clear configuration</source>
-        <translation>清空配置缓存</translation>
+        <translation type="vanished">清空配置缓存</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow/SAKMainWindow.cc" line="326"/>
@@ -1137,14 +1131,12 @@ p, li { white-space: pre-wrap; }
         <translation>关于Qt</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="392"/>
         <source>About application</source>
-        <translation>关于软件</translation>
+        <translation type="vanished">关于软件</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="396"/>
         <source>Get source</source>
-        <translation>获取源码</translation>
+        <translation type="vanished">获取源码</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow/SAKMainWindow.cc" line="398"/>
@@ -1157,19 +1149,16 @@ p, li { white-space: pre-wrap; }
         <translation>Gitee</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="405"/>
         <source>Check for update</source>
-        <translation>检查更新</translation>
+        <translation type="vanished">检查更新</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="409"/>
         <source>More information</source>
-        <translation>更多信息</translation>
+        <translation type="vanished">更多信息</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="414"/>
         <source>QR code</source>
-        <translation>扫码入群</translation>
+        <translation type="vanished">扫码入群</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow/SAKMainWindow.cc" line="421"/>
@@ -1177,29 +1166,24 @@ p, li { white-space: pre-wrap; }
         <translation>链接(&amp;L)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="430"/>
         <source>Qt official download</source>
-        <translation>Qt官方下载</translation>
+        <translation type="vanished">Qt官方下载</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="431"/>
         <source>Qt official blog</source>
-        <translation>Qt官方博客</translation>
+        <translation type="vanished">Qt官方博客</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="432"/>
         <source>Qt official release</source>
-        <translation>Qt官方发布</translation>
+        <translation type="vanished">Qt官方发布</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="433"/>
         <source>Download SAK from github</source>
-        <translation>从github下载本软件</translation>
+        <translation type="vanished">从github下载本软件</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="434"/>
         <source>Download SAK from gitee</source>
-        <translation>从gitee下载本软件</translation>
+        <translation type="vanished">从gitee下载本软件</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow/SAKMainWindow.cc" line="462"/>
@@ -1237,14 +1221,102 @@ p, li { white-space: pre-wrap; }
         <translation>作者QQ</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="477"/>
         <source>QQ group</source>
+        <translation type="vanished">QQ交流群</translation>
+    </message>
+    <message>
+        <source>Build time</source>
+        <translation type="vanished">构建时间</translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="233"/>
+        <source>New Page</source>
+        <translation>新建页面</translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="245"/>
+        <source>New Window</source>
+        <translation>新建窗口</translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="277"/>
+        <source>Qt Default</source>
+        <translation>Qt默认</translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="300"/>
+        <source>Application Style</source>
+        <translation>软件风格</translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="308"/>
+        <source>Enable Testing Page</source>
+        <translation>使能测试页面</translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="319"/>
+        <source>Clear Configuration</source>
+        <translation>清空配置文件</translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="392"/>
+        <source>About Application</source>
+        <translation>关于软件</translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="396"/>
+        <source>Get Source</source>
+        <translation>获取源码</translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="405"/>
+        <source>Check for Ppdate</source>
+        <translation>检查更新</translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="409"/>
+        <source>More Information</source>
+        <translation>更多信息</translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="414"/>
+        <source>QR Code</source>
+        <translation>二维码</translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="430"/>
+        <source>Qt Official Download</source>
+        <translation>Qt官方下载</translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="431"/>
+        <source>Qt Official Blog</source>
+        <translation>Qt官方博客</translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="432"/>
+        <source>Qt Official Release</source>
+        <translation>Qt官方发布</translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="433"/>
+        <source>Download SAK from Github</source>
+        <translation>从GitHub下载软件</translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="434"/>
+        <source>Download SAK from Gitee</source>
+        <translation>从Gittee下载软件</translation>
+    </message>
+    <message>
+        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="477"/>
+        <source>QQ Group</source>
         <translation>QQ交流群</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow/SAKMainWindow.cc" line="478"/>
-        <source>Build time</source>
-        <translation>构建时间</translation>
+        <source>Build Time</source>
+        <translation>构建信息</translation>
     </message>
     <message>
         <location filename="../../src/mainwindow/SAKMainWindow.cc" line="479"/>
