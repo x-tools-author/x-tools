@@ -173,7 +173,7 @@ HEADERS += \
     src/common/SAKCommonInterface.hh \
     src/mainwindow/SAKMainWindow.hh \
     src/SAKSettings.hh \
-    src/mainwindow/SAKMainWindowDebugPageFactory.hh \
+    src/mainwindow/SAKMainWindowDebugPagesFactory.hh \
     src/mainwindow/SAKMainWindowMoreInformationDialog.hh \
     src/mainwindow/SAKMainWindowQrCode.hh \
     src/mainwindow/SAKMainWindowQrCodeView.hh \
@@ -240,7 +240,7 @@ SOURCES += \
     src/common/SAKCommonInterface.cc \
     src/mainwindow/SAKMainWindow.cc \
     src/SAKSettings.cc \
-    src/mainwindow/SAKMainWindowDebugPageFactory.cc \
+    src/mainwindow/SAKMainWindowDebugPagesFactory.cc \
     src/mainwindow/SAKMainWindowMoreInformationDialog.cc \
     src/mainwindow/SAKMainWindowQrCode.cc \
     src/mainwindow/SAKMainWindowQrCodeView.cc \

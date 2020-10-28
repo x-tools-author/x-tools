@@ -19,11 +19,11 @@
 #include "SAKSerialPortDebugPage.hh"
 #include "SAKWebSocketClientDebugPage.hh"
 #include "SAKWebSocketServerDebugPage.hh"
-#include "SAKMainWindowDebugPageFactory.hh"
+#include "SAKMainWindowDebugPagesFactory.hh"
 
-SAKMainWindowDebugPageFactory *SAKMainWindowDebugPageFactory::instancePtr = Q_NULLPTR;
-QMutex* SAKMainWindowDebugPageFactory::singletonMutex = new QMutex;
-SAKMainWindowDebugPageFactory::SAKMainWindowDebugPageFactory(QObject *parent)
+SAKMainWindowDebugPagesFactory *SAKMainWindowDebugPagesFactory::instancePtr = Q_NULLPTR;
+QMutex* SAKMainWindowDebugPagesFactory::singletonMutex = new QMutex;
+SAKMainWindowDebugPagesFactory::SAKMainWindowDebugPagesFactory(QObject *parent)
     :QObject(parent)
 {
     instancePtr = this;
@@ -60,16 +60,16 @@ SAKMainWindowDebugPageFactory::SAKMainWindowDebugPageFactory(QObject *parent)
 #endif
 }
 
-SAKMainWindowDebugPageFactory::~SAKMainWindowDebugPageFactory()
+SAKMainWindowDebugPagesFactory::~SAKMainWindowDebugPagesFactory()
 {
     instancePtr = Q_NULLPTR;
 }
 
-SAKMainWindowDebugPageFactory *SAKMainWindowDebugPageFactory::instance()
+SAKMainWindowDebugPagesFactory *SAKMainWindowDebugPagesFactory::instance()
 {
     singletonMutex->lock();
     if (!instancePtr){
-        new SAKMainWindowDebugPageFactory(qApp);
+        new SAKMainWindowDebugPagesFactory(qApp);
     }
     singletonMutex->unlock();
 
@@ -78,7 +78,7 @@ SAKMainWindowDebugPageFactory *SAKMainWindowDebugPageFactory::instance()
     return instancePtr;
 }
 
-QWidget *SAKMainWindowDebugPageFactory::debugPageFromDebugPageType(int type)
+QWidget *SAKMainWindowDebugPagesFactory::debugPageFromDebugPageType(int type)
 {
     QWidget *widget = Q_NULLPTR;
     QMetaEnum metaEnum = QMetaEnum::fromType<SAKEnumDebugPageType>();
@@ -98,7 +98,7 @@ QWidget *SAKMainWindowDebugPageFactory::debugPageFromDebugPageType(int type)
     return widget;
 }
 
-QString SAKMainWindowDebugPageFactory::debugPageTitleFromDebugPageType(int type)
+QString SAKMainWindowDebugPagesFactory::debugPageTitleFromDebugPageType(int type)
 {
     QString title;
     QMetaEnum metaEnum = QMetaEnum::fromType<SAKEnumDebugPageType>();
@@ -121,7 +121,7 @@ QString SAKMainWindowDebugPageFactory::debugPageTitleFromDebugPageType(int type)
     return title;
 }
 
-QString SAKMainWindowDebugPageFactory::debugPageTypeNameFromDebugPageType(int type)
+QString SAKMainWindowDebugPagesFactory::debugPageTypeNameFromDebugPageType(int type)
 {
     QMetaEnum metaEnum = QMetaEnum::fromType<SAKEnumDebugPageType>();
     QString name = metaEnum.valueToKey(type);

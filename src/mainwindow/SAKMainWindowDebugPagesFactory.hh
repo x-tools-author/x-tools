@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKMAINWINDOWDEBUGPAGEFACTORY_HH
-#define SAKMAINWINDOWDEBUGPAGEFACTORY_HH
+#ifndef SAKMAINWINDOWDEBUGPAGESFACTORY_HH
+#define SAKMAINWINDOWDEBUGPAGESFACTORY_HH
 
 #include <QMutex>
 #include <QObject>
@@ -16,14 +16,14 @@
 #include <QMetaObject>
 
 /// @brief The class is a singleton instanc. It is thread safe.
-class SAKMainWindowDebugPageFactory : public QObject
+class SAKMainWindowDebugPagesFactory : public QObject
 {
     Q_OBJECT
 private:
-    SAKMainWindowDebugPageFactory(QObject *parent = Q_NULLPTR);
-    ~SAKMainWindowDebugPageFactory();
+    SAKMainWindowDebugPagesFactory(QObject *parent = Q_NULLPTR);
+    ~SAKMainWindowDebugPagesFactory();
 public:
-    static SAKMainWindowDebugPageFactory *instance();
+    static SAKMainWindowDebugPagesFactory *instance();
 
     /**
      * @brief debugPageFromDebugPageType: Create a debuge page from specified type
@@ -87,7 +87,7 @@ private:
         QString defaultTitle;
     };
 
-    static SAKMainWindowDebugPageFactory *instancePtr;
+    static SAKMainWindowDebugPagesFactory *instancePtr;
     static QMutex *singletonMutex;
     QList<SAKDebugPageMetaInfo> mDebugPageMetaInfoList;
 };
