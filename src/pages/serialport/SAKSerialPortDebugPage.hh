@@ -19,7 +19,7 @@ class SAKSerialPortDebugPage : public SAKDebugPage
 {
     Q_OBJECT
 public:
-    SAKSerialPortDebugPage(QWidget *parent = Q_NULLPTR);
+    Q_INVOKABLE SAKSerialPortDebugPage(QWidget *parent = Q_NULLPTR);
     ~SAKSerialPortDebugPage();
 
     SAKDebugPageController *deviceController() final;

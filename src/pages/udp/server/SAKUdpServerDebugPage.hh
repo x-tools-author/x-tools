@@ -18,7 +18,7 @@ class SAKUdpServerDebugPage : public SAKDebugPage
 {
     Q_OBJECT
 public:
-    SAKUdpServerDebugPage(QWidget *parent = Q_NULLPTR);
+    Q_INVOKABLE SAKUdpServerDebugPage(QWidget *parent = Q_NULLPTR);
     ~SAKUdpServerDebugPage();
 
     SAKDebugPageController *deviceController() final;

@@ -20,7 +20,7 @@ class SAKWebSocketServerDebugPage : public SAKDebugPage
 {
     Q_OBJECT
 public:
-    SAKWebSocketServerDebugPage(QWidget *parent = Q_NULLPTR);
+    Q_INVOKABLE SAKWebSocketServerDebugPage(QWidget *parent = Q_NULLPTR);
     ~SAKWebSocketServerDebugPage();
 
     SAKDebugPageController *deviceController() final;
