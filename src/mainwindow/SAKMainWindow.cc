@@ -50,6 +50,7 @@
 #include "SAKTcpServerDebugPage.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKMainWindowQrCodeView.hh"
+#include "SAKMainWindowDebugPageFactory.hh"
 #include "SAKMainWindowMoreInformationDialog.hh"
 #include "SAKMainWindowTabPageNameEditDialog.hh"
 
@@ -158,19 +159,19 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
 #endif
 
     // Create debugging page
-    QMetaEnum metaEnum = QMetaEnum::fromType<SAKCommonDataStructure::SAKEnumDebugPageType>();
+    QMetaEnum metaEnum = QMetaEnum::fromType<SAKMainWindowDebugPageFactory::SAKEnumDebugPageType>();
     for (int i = 0; i < metaEnum.keyCount(); i++){
         // Test page is selectable
         bool enableTestPage = SAKSettings::instance()->value(mSettingKeyEnableTestPage).toBool();
-        if (!enableTestPage && (metaEnum.value(i) == SAKCommonDataStructure::DebugPageTypeTest)){
+        if (!enableTestPage && (metaEnum.value(i) == SAKMainWindowDebugPageFactory::DebugPageTypeTest)){
             continue;
         }
 
-        QString name = SAKGlobal::debugPageNameFromType(metaEnum.value(i));
-        QWidget *page = debugPageFromType(metaEnum.value(i));
-        page->setWindowTitle(name);
+        QString title = SAKMainWindowDebugPageFactory::instance()->debugPageTitleFromDebugPageType(metaEnum.value(i));
+        QWidget *page = SAKMainWindowDebugPageFactory::instance()->debugPageFromDebugPageType(metaEnum.value(i));
+        page->setWindowTitle(title);
         if (page){
-            mTabWidget->addTab(page, name);
+            mTabWidget->addTab(page, title);
             appendWindowAction(page);
         }
     }
@@ -234,8 +235,9 @@ void SAKMainWindow::initFileMenu()
     fileMenu->addMenu(tabMenu);
     QMetaEnum enums = QMetaEnum::fromType<SAKCommonDataStructure::SAKEnumDebugPageType>();
     for (int i = 0; i < enums.keyCount(); i++){
-        QAction *a = new QAction(SAKGlobal::debugPageNameFromType(i), this);
-        a->setObjectName(SAKGlobal::debugPageNameFromType(i));
+        QAction *a = new QAction(SAKMainWindowDebugPageFactory::instance()->debugPageTitleFromDebugPageType(enums.value(i)), this);
+        // The object name is the default title of debug page
+        a->setObjectName(SAKMainWindowDebugPageFactory::instance()->debugPageTitleFromDebugPageType(enums.value(i)));
         QVariant var = QVariant::fromValue<int>(enums.value(i));
         a->setData(var);
         connect(a, &QAction::triggered, this, &SAKMainWindow::appendRemovablePage);
@@ -245,8 +247,9 @@ void SAKMainWindow::initFileMenu()
     QMenu *windowMenu = new QMenu(tr("New Window"), this);
     fileMenu->addMenu(windowMenu);
     for (int i = 0; i < enums.keyCount(); i++){
-        QAction *a = new QAction(SAKGlobal::debugPageNameFromType(i), this);
-        a->setObjectName(SAKGlobal::debugPageNameFromType(i));
+        QAction *a = new QAction(SAKMainWindowDebugPageFactory::instance()->debugPageTitleFromDebugPageType(enums.value(i)), this);
+        // The object name is the default title of debug page
+        a->setObjectName(SAKMainWindowDebugPageFactory::instance()->debugPageTitleFromDebugPageType(enums.value(i)));
         QVariant var = QVariant::fromValue<int>(enums.value(i));
         connect(a, &QAction::triggered, this, &SAKMainWindow::openDebugPageWidget);
         a->setData(var);
@@ -721,7 +724,7 @@ void SAKMainWindow::openDebugPageWidget()
         if (QDialog::Accepted == dialog.exec()){
             if (sender()->inherits("QAction")){
                 int type = qobject_cast<QAction*>(sender())->data().value<int>();
-                QWidget *widget = debugPageFromType(type);
+                QWidget *widget = SAKMainWindowDebugPageFactory::instance()->debugPageFromDebugPageType(type);
                 if (widget){
                     widget->setAttribute(Qt::WA_DeleteOnClose, true);
                     widget->setWindowTitle(dialog.name());
@@ -741,7 +744,7 @@ void SAKMainWindow::appendRemovablePage()
         if (QDialog::Accepted == dialog.exec()){
             if (sender()->inherits("QAction")){
                 int type = qobject_cast<QAction*>(sender())->data().value<int>();
-                QWidget *widget = debugPageFromType(type);
+                QWidget *widget = SAKMainWindowDebugPageFactory::instance()->debugPageFromDebugPageType(type);
                 if (widget){
                     widget->setAttribute(Qt::WA_DeleteOnClose, true);
                     widget->setWindowTitle(dialog.name());
