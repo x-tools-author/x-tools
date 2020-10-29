@@ -43,49 +43,11 @@
 #include "SAKToolsManager.hh"
 #include "SAKUpdateManager.hh"
 #include "SAKTestDebugPage.hh"
-#include "SAKToolCRCCalculator.hh"
-#include "SAKUdpClientDebugPage.hh"
-#include "SAKUdpServerDebugPage.hh"
-#include "SAKTcpClientDebugPage.hh"
-#include "SAKTcpServerDebugPage.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKMainWindowQrCodeView.hh"
 #include "SAKMainWindowDebugPagesFactory.hh"
 #include "SAKMainWindowMoreInformationDialog.hh"
 #include "SAKMainWindowTabPageNameEditDialog.hh"
-
-#ifdef SAK_IMPORT_HID_MODULE
-#include "SAKHidDebugPage.hh"
-#endif
-#ifdef SAK_IMPORT_USB_MODULE
-#include "SAKUsbDebugPage.hh"
-#endif
-#ifdef SAK_IMPORT_QRCODE_MODULE
-#include "SAKToolQRCodeCreator.hh"
-#endif
-#ifdef SAK_IMPORT_SCTP_MODULE
-#include "SAKSctpClientDebugPage.hh"
-#include "SAKSctpServerDebugPage.hh"
-#endif
-#ifdef SAK_IMPORT_COM_MODULE
-#include "SAKSerialPortDebugPage.hh"
-#endif
-#ifdef SAK_IMPORT_BLUETOOTH_MODULE
-#include "SAKBluetoothClientDebugPage.hh"
-#include "SAKBluetoothServerDebugPage.hh"
-#endif
-#ifdef SAK_IMPORT_WEBSOCKET_MODULE
-#include "SAKWebSocketClientDebugPage.hh"
-#include "SAKWebSocketServerDebugPage.hh"
-#endif
-#ifdef SAK_IMPORT_FILECHECKER_MODULE
-#include "SAKToolFileChecker.hh"
-#endif
-#ifdef SAK_IMPORT_MODULE_SSLSOCKET
-#include "SAKSslSocketClientDebugPage.hh"
-#include "SAKSslSocketServerDebugPage.hh"
-#endif
-
 
 #include "ui_SAKMainWindow.h"
 
