@@ -4,6 +4,8 @@
     02. 添加modbus调试功能（not yet）
     03. 更新繁体中文翻译（not yet）
     04. 添加浮点数转换查看工具（not yet）
+    05. 文件检验工具添加自动对比选项（not yet）
+    06. 添加字符串转16进制数据功能（not yet）
     bug修复
     01. websocket断开后，websocket服务器页面没有移客户端信息
     说明：
