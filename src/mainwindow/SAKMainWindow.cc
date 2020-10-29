@@ -129,11 +129,9 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
             continue;
         }
 
-        QString title = SAKMainWindowDebugPagesFactory::instance()->debugPageTitleFromDebugPageType(metaEnum.value(i));
         QWidget *page = SAKMainWindowDebugPagesFactory::instance()->debugPageFromDebugPageType(metaEnum.value(i));
-        page->setWindowTitle(title);
         if (page){
-            mTabWidget->addTab(page, title);
+            mTabWidget->addTab(page, page->windowTitle());
             appendWindowAction(page);
         }
     }
