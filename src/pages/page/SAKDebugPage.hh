@@ -53,7 +53,7 @@ class SAKDebugPage : public QWidget
 {
     Q_OBJECT
 public:
-    SAKDebugPage(int type, QWidget *parent = Q_NULLPTR);
+    SAKDebugPage(int type, QString name, QWidget *parent = Q_NULLPTR);
     ~SAKDebugPage();
 
     friend class SAKDebugPageOtherController;
@@ -160,9 +160,10 @@ private:
     SAKDebugPageController *mDeviceController;
     bool mIsInitializing;
     int mDebugPageType;
-    QString mSettingKey;
+//    QString mSettingKey;
     QTimer mClearInfoTimer;
     QMutex mReadWriteParametersMutex;
+    QString mSettingGroup;
 
     // Debug page modules
     SAKDebugPageOtherController *mOtherController;

@@ -17,8 +17,8 @@
 #include "SAKTestDebugPage.hh"
 #include "SAKTestDeviceController.hh"
 
-SAKTestDebugPage::SAKTestDebugPage(QWidget *parent)
-    :SAKDebugPage (SAKCommonDataStructure::DebugPageTypeTest, parent)
+SAKTestDebugPage::SAKTestDebugPage(int type, QString name, QWidget *parent)
+    :SAKDebugPage(type, name, parent)
     ,mDeviceController(Q_NULLPTR)
 {
     mDeviceController = new SAKTestDeviceController(this);

@@ -17,8 +17,8 @@
 #include "SAKTcpClientDebugPage.hh"
 #include "SAKTcpClientDeviceController.hh"
 
-SAKTcpClientDebugPage::SAKTcpClientDebugPage(QWidget *parent)
-    :SAKDebugPage(SAKCommonDataStructure::DebugPageTypeTCPClient, parent)
+SAKTcpClientDebugPage::SAKTcpClientDebugPage(int type, QString name, QWidget *parent)
+    :SAKDebugPage(type, name, parent)
     ,mTcpClientDeviceController(Q_NULLPTR)
 {
     mTcpClientDeviceController = new SAKTcpClientDeviceController(this);

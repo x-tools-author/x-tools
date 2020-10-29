@@ -42,12 +42,13 @@
 
 #include "ui_SAKDebugPage.h"
 
-SAKDebugPage::SAKDebugPage(int type, QWidget *parent)
+SAKDebugPage::SAKDebugPage(int type, QString name, QWidget *parent)
     :QWidget(parent)
     ,mDevice(Q_NULLPTR)
     ,mDeviceController(Q_NULLPTR)
     ,mIsInitializing(true)
     ,mDebugPageType(type)
+    ,mSettingGroup(name)
     ,mUi(new Ui::SAKDebugPage)
 {
     mUi->setupUi(this);
@@ -127,16 +128,7 @@ QSqlDatabase *SAKDebugPage::sqlDatabase()
 
 QString SAKDebugPage::settingsGroup()
 {
-    QString group;
-    int pageType = mDebugPageType;
-    QMetaEnum metaEnum = QMetaEnum::fromType<SAKCommonDataStructure::SAKEnumDebugPageType>();
-    for (int i = 0; i < metaEnum.keyCount(); i++){
-        if (metaEnum.value(i) == pageType){
-            group = QString(metaEnum.key(i));
-        }
-    }
-
-    return group;
+    return mSettingGroup;
 }
 
 SAKDebugPageOtherController *SAKDebugPage::otherController()

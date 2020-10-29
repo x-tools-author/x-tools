@@ -17,8 +17,8 @@
 #include "SAKWebSocketServerDebugPage.hh"
 #include "SAKWebSocketServerDeviceController.hh"
 
-SAKWebSocketServerDebugPage::SAKWebSocketServerDebugPage(QWidget *parent)
-    :SAKDebugPage (SAKCommonDataStructure::DebugPageTypeTCPServer, parent)
+SAKWebSocketServerDebugPage::SAKWebSocketServerDebugPage(int type, QString name, QWidget *parent)
+    :SAKDebugPage(type, name, parent)
 {
     mTcpServerDeviceController = new SAKWebSocketServerDeviceController(this);
     setWindowTitle(SAKGlobal::debugPageNameFromType(SAKCommonDataStructure::DebugPageTypeTCPServer));

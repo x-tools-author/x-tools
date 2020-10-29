@@ -17,8 +17,8 @@
 #include "SAKUdpServerDebugPage.hh"
 #include "SAKUdpServerDeviceController.hh"
 
-SAKUdpServerDebugPage::SAKUdpServerDebugPage(QWidget *parent)
-    :SAKDebugPage (SAKCommonDataStructure::DebugPageTypeUdpServer, parent)
+SAKUdpServerDebugPage::SAKUdpServerDebugPage(int type, QString name, QWidget *parent)
+    :SAKDebugPage(type, name, parent)
 {
     mDeviceController = new SAKUdpServerDeviceController(this);
     setWindowTitle(SAKGlobal::debugPageNameFromType(SAKCommonDataStructure::DebugPageTypeUdpServer));
