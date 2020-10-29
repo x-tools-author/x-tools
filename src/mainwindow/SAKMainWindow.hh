@@ -60,7 +60,6 @@ private:
 
     void about();
     void removeRemovableDebugPage(int index);
-    QWidget *debugPageFromType(int type);
     QString debugPageNameFromType(int type);
     void appendWindowAction(QWidget *page);
     void testPageActionTriggered();
