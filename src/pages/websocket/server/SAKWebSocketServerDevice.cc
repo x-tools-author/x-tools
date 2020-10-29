@@ -96,7 +96,7 @@ bool SAKWebSocketServerDevice::checkSomething(QString &errorString)
                 readBytesActually(socket, message);
             });
 
-            // Remove the socket which is offline
+            // Remove the socket which is offline(It seems to be not effective)
             connect(socket, &QWebSocket::disconnected, [&](){
                 emit removeClient(socket);
                 mClientList.removeOne(socket);
@@ -104,6 +104,22 @@ bool SAKWebSocketServerDevice::checkSomething(QString &errorString)
         }
     }
 
+    QList<QWebSocket*> needTobeDeleteSocketList;
+    for (auto var : mClientList){
+        if (var->state() == QAbstractSocket::UnconnectedState){
+            needTobeDeleteSocketList.append(var);
+        }
+    }
+
+    for (auto var : needTobeDeleteSocketList){
+        emit removeClient(var);
+    }
+
+    while (needTobeDeleteSocketList.count()) {
+        auto var = needTobeDeleteSocketList.takeFirst();
+        mClientList.removeOne(var);
+        var->deleteLater();
+    }
 
     errorString = tr("Unknow error");
     return true;
