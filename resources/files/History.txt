@@ -1,9 +1,17 @@
 ﻿V3.3.0 2020年
-    性特性
+    新特性
     01. 添加设置掩码功能（not yet）
     02. 添加modbus调试功能（not yet）
+    03. 更新繁体中文翻译（not yet）
+    04. 添加浮点数转换查看工具（not yet）
     bug修复
     01. websocket断开后，websocket服务器页面没有移客户端信息
+    说明：
+    01. CRC计算器移至调试页面中（not yet）
+    02. 主窗口的各种部件整合至MainWindow类中（not yet）
+    03. 软件的全局类整合至SAKApplication类中（not yet）
+    04. udp及tcp模块整合到子工程中（not yet）
+    05. 添加模块配置文件，方便二次开发（not yet）
 
 v3.2.0 2020年10月28日
     新特性
