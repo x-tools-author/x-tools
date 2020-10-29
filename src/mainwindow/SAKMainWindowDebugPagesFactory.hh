@@ -39,13 +39,6 @@ public:
      */
     QString debugPageTitleFromDebugPageType(int type);
 
-    /**
-     * @brief debugPageTypeNameFromDebugPageType: Get the type name of debug page from specified type
-     * @param type: Debug page type, look at the SAKMainWindowDebugPageFactory::SAKEnumToolType for more information
-     * @return The name of debug page type, such as "DebugPageTypeTCPClient"
-     */
-    QString debugPageTypeNameFromDebugPageType(int type);
-
     // Debug page type supported by QtSwissArmyKnife
     enum SAKEnumDebugPageType {
         DebugPageTypeTest,

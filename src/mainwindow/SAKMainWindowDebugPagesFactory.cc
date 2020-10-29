@@ -120,13 +120,3 @@ QString SAKMainWindowDebugPagesFactory::debugPageTitleFromDebugPageType(int type
 
     return title;
 }
-
-QString SAKMainWindowDebugPagesFactory::debugPageTypeNameFromDebugPageType(int type)
-{
-    QMetaEnum metaEnum = QMetaEnum::fromType<SAKEnumDebugPageType>();
-    QString name = metaEnum.valueToKey(type);
-
-    Q_ASSERT_X(name.isEmpty(), __FUNCTION__, "Unknow debug page type!");
-
-    return name;
-}
