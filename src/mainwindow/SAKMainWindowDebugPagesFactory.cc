@@ -87,7 +87,7 @@ QWidget *SAKMainWindowDebugPagesFactory::debugPageFromDebugPageType(int type)
             for (int i = 0; i < metaEnum.keyCount(); i++){
                 if (var.debugPageType == metaEnum.value(i)){
                     widget = qobject_cast<QWidget*>(var.metaObject.newInstance(Q_ARG(int, metaEnum.value(i)), Q_ARG(QString, QString(metaEnum.key(i)))));
-                    widget->setObjectName(QString(metaEnum.key(i)));
+                    widget->setWindowTitle(debugPageTitleFromDebugPageType(type));
                     break;
                 }
             }
