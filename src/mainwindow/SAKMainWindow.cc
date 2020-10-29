@@ -139,7 +139,7 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     }
     mWindowsMenu->addSeparator();
 
-    // Hide the close button, the step must be do after calling setTabsClosable() function.
+    // Hide the close button, the step must be done after calling setTabsClosable() function.
     for (int i = 0; i < mTabWidget->count(); i++){
         mTabWidget->tabBar()->setTabButton(i, QTabBar::RightSide, Q_NULLPTR);
         mTabWidget->tabBar()->setTabButton(i, QTabBar::LeftSide, Q_NULLPTR);
