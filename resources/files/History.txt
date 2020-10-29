@@ -2,6 +2,8 @@
     性特性
     01. 添加设置掩码功能（not yet）
     02. 添加modbus调试功能（not yet）
+    bug修复
+    01. websocket断开后，websocket服务器页面没有移客户端信息
 
 v3.2.0 2020年10月28日
     新特性
