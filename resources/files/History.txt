@@ -8,6 +8,7 @@
     06. 添加字符串转16进制数据功能（not yet）
     bug修复
     01. websocket断开后，websocket服务器页面没有移客户端信息
+    02. 帮助>>下载源码，地址跳转错误
     说明：
     01. CRC计算器移至调试页面中（not yet）
     02. 主窗口的各种部件整合至MainWindow类中（not yet）
