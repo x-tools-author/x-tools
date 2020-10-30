@@ -106,6 +106,8 @@ private:
     void rebootRequestion();
     void initializingMetaObject();
     void showReleaseHistoryActionDialog();
+    QString tabPageName(int type);
+    QWidget *debugPage(QObject *sender);
 private slots:
     /**
      * @brief showToolWidget: Show a tool widget, the interface must be called by signal,
