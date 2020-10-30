@@ -24,7 +24,6 @@ namespace Ui {
     class SAKMainWindow;
 }
 
-class SAKMainWindowQrCodeView;
 class SAKUpdateManager;
 class SAKMainWindow : public QMainWindow
 {
@@ -82,7 +81,6 @@ private:
     QAction *mTestPageAction;
     QAction *mDefaultStyleSheetAction;
     SAKUpdateManager *mUpdateManager;
-    SAKMainWindowQrCodeView *mQrCodeDialog;
     const QString mSettingKeyEnableTestPage;
     const QString mSettingKeyClearConfiguration;
 private: 

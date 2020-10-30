@@ -46,7 +46,6 @@
 #include "SAKUpdateManager.hh"
 #include "SAKTestDebugPage.hh"
 #include "SAKCommonDataStructure.hh"
-#include "SAKMainWindowQrCodeView.hh"
 
 // Debugging page
 #include "SAKTestDebugPage.hh"
@@ -69,7 +68,6 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     ,mToolsMenu(Q_NULLPTR)
     ,mDefaultStyleSheetAction(Q_NULLPTR)
     ,mUpdateManager(Q_NULLPTR)
-    ,mQrCodeDialog(Q_NULLPTR)
     ,mSettingKeyEnableTestPage(QString("enableTestPage"))
     ,mSettingKeyClearConfiguration(settingKeyClearConfiguration())
     ,mUi(new Ui::SAKMainWindow)
@@ -78,7 +76,6 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     mUi->setupUi(this);
     mUpdateManager = new SAKUpdateManager(this);
     mUpdateManager->setSettings(SAKSettings::instance());
-    mQrCodeDialog = new SAKMainWindowQrCodeView(this);
 
     initializingMetaObject();
 

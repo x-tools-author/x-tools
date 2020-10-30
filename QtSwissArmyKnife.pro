@@ -130,6 +130,7 @@ INCLUDEPATH += \
     src/update
 
 FORMS += \
+    src/SAKMainWindow.ui \
     src/pages/page/SAKDebugPage.ui \
     src/pages/page/common/SAKDebugPageCommonSslConfigurationWidget.ui \
     src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui \
@@ -162,6 +163,7 @@ HEADERS += \
     src/SAK.hh \
     src/SAKApplication.hh \
     src/SAKGlobal.hh \
+    src/SAKMainWindow.hh \
     src/SAKSqlDatabase.hh \
     src/common/SAKCommonCrcInterface.hh \
     src/common/SAKCommonDataStructure.hh \
@@ -223,6 +225,7 @@ SOURCES += \
     src/SAK.cc \
     src/SAKApplication.cc \
     src/SAKGlobal.cc \
+    src/SAKMainWindow.cc \
     src/SAKSqlDatabase.cc \
     src/common/SAKCommonCrcInterface.cc \
     src/common/SAKCommonDataStructure.cc \
