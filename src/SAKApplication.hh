@@ -33,6 +33,8 @@ public:
      * @return Instance of main window
      */
     SAKMainWindow *mainWindow();
+
+    QDateTime *buildDateTime();
 private:
     QTranslator mQtTranslator;
     QTranslator mQtBaseTranslator;

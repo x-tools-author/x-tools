@@ -14,6 +14,7 @@
 #include <QLocale>
 #include <QTabBar>
 #include <QAction>
+#include <QLocale>
 #include <QVariant>
 #include <QSysInfo>
 #include <QMetaEnum>
@@ -34,7 +35,6 @@
 #include <QJsonParseError>
 #include <QDesktopServices>
 
-#include "SAK.hh"
 #include "SAKGlobal.hh"
 #include "SAKSettings.hh"
 #include "SAKSettings.hh"
@@ -97,7 +97,7 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     centralWidget->layout()->setContentsMargins(6, 6, 6, 6);
     QString title = QString(tr("Qt Swiss Army Knife"));
     title.append(QString(" "));
-    title.append(QString("v") + SAK::instance()->version());
+    title.append(QString("v") + qobject_cast<SAKApplication*>(qApp)->applicationVersion());
     setWindowTitle(title);
 #endif
 
@@ -433,24 +433,44 @@ void SAKMainWindow::changeAppStyle(QString appStyle)
 
 void SAKMainWindow::about()
 {
-    QMessageBox::information(this, tr("About"), QString("<font color=green>%1</font><br />%2<br />"
-                                                     "<font color=green>%3</font><br />%4<br />"
-                                                     "<font color=green>%5</font><br />%6<br />"
-                                                     "<font color=green>%7</font><br /><a href=%8>%8</a><br />"
-                                                     "<font color=green>%9</font><br />%10<br />"
-                                                     "<font color=green>%11</font><br />%12<br />"
-                                                     "<font color=green>%13</font><br />%14<br />"
-                                                     "<font color=green>%15</font><br />%16<br />"
-                                                     "<font color=green>%17</font><br />%18<br />")
-                             .arg(tr("Version")).arg(SAK::instance()->version())
-                             .arg(tr("Author")).arg(SAK::instance()->authorName())
-                             .arg(tr("Nickname")).arg(SAK::instance()->authorNickname())
-                             .arg(tr("Release")).arg(SAK::instance()->officeUrl())
-                             .arg(tr("Email")).arg(SAK::instance()->email())
-                             .arg(tr("QQ")).arg(SAK::instance()->qqNumber())
-                             .arg(tr("QQ Group")).arg(SAK::instance()->qqGroupNumber())
-                             .arg(tr("Build Time")).arg(SAK::instance()->buildTime())
-                             .arg(tr("Copyright")).arg(SAK::instance()->copyright()));
+    struct Info {
+        QString name;
+        QString value;
+        bool valueIsUrl;
+    };
+
+    auto dateaTime = qobject_cast<SAKApplication*>(qApp)->buildDateTime();
+    QList<Info> infoList;
+    infoList << Info{tr("Version"), QString(qApp->applicationVersion()), false}
+             << Info{tr("Author"), QString("Qsaker(Qter)"), false}
+             << Info{tr("Email"), QString("qsaker@qq.com"), false}
+             << Info{tr("QQ"), QString("2869470394"), false}
+             << Info{tr("QQ Group"), QString("952218522"), false}
+             << Info{tr("Build Time"), dateaTime->toString(QLocale::system().dateTimeFormat()), false}
+             << Info{tr("Gitee Url"), QString("<a href=%1>%1</a>").arg(SAK_GITEE_REPOSITORY_URL), true}
+             << Info{tr("Gitbub Url"), QString("<a href=%1>%1</a>").arg(SAK_GITHUB_REPOSITORY_URL), true}
+             << Info{tr("Copyright"), tr("Copyright 2018-%1 Qter. All rights reserved").arg(dateaTime->toString("yyyy")), false};
+
+    QDialog dialog;
+    dialog.setWindowTitle(tr("About QSAK"));
+
+    QGridLayout *gridLayout = new QGridLayout(&dialog);
+    int i = 0;
+    for (auto var : infoList){
+        QLabel *nameLabel = new QLabel(QString("<font color=green>%1</font>").arg(var.name), &dialog);
+        QLabel *valueLabel = new QLabel(var.value, &dialog);
+        gridLayout->addWidget(nameLabel, i, 0, 1, 1);
+        gridLayout->addWidget(valueLabel, i, 1, 1, 1);
+        i += 1;
+
+        if (var.valueIsUrl){
+            connect(valueLabel, &QLabel::linkActivated, [](QString url){QDesktopServices::openUrl(QUrl(url));});
+        }
+    }
+    dialog.setLayout(gridLayout);
+    dialog.setModal(true);
+    dialog.show();
+    dialog.exec();
 }
 
 void SAKMainWindow::removeRemovableDebugPage(int index)
