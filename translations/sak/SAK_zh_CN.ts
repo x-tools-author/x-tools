@@ -2380,7 +2380,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../src/pages/test/SAKTestDeviceController.ui" line="87"/>
         <source>Open device failed</source>
-        <translation>打开文本失败</translation>
+        <translation>打开设备失败</translation>
     </message>
     <message>
         <location filename="../../src/pages/test/SAKTestDeviceController.ui" line="99"/>
