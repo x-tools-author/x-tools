@@ -45,7 +45,6 @@
 #include "SAKTestDebugPage.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKMainWindowQrCodeView.hh"
-#include "SAKMainWindowMoreInformationDialog.hh"
 #include "SAKMainWindowTabPageNameEditDialog.hh"
 
 // Debugging page
@@ -69,7 +68,6 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     ,mToolsMenu(Q_NULLPTR)
     ,mDefaultStyleSheetAction(Q_NULLPTR)
     ,mUpdateManager(Q_NULLPTR)
-    ,mMoreInformation(new SAKMainWindowMoreInformationDialog)
     ,mQrCodeDialog(Q_NULLPTR)
     ,mSettingKeyEnableTestPage(QString("enableTestPage"))
     ,mSettingKeyClearConfiguration(settingKeyClearConfiguration())
