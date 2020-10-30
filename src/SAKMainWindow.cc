@@ -635,8 +635,8 @@ void SAKMainWindow::showQrCodeDialog()
     };
     QList<QrCodeInfo> qrCodeInfoList;
 
-    qrCodeInfoList << QrCodeInfo{QString("User QQ Group"), QString(":/resources/images/QSAKQQ.jpg")}
-                   << QrCodeInfo{QString("Qt QQ Group"), QString(":/resources/images/QtQQ.jpg")};
+    qrCodeInfoList << QrCodeInfo{tr("User QQ Group"), QString(":/resources/images/QSAKQQ.jpg")}
+                   << QrCodeInfo{tr("Qt QQ Group"), QString(":/resources/images/QtQQ.jpg")};
 
     QTabWidget *tabWidget = new QTabWidget(&dialog);
     for (auto var : qrCodeInfoList){
