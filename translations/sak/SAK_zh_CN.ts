@@ -1281,6 +1281,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../../src/SAKMainWindow.cc" line="388"/>
+        <location filename="../../src/SAKMainWindow.cc" line="630"/>
         <source>QR Code</source>
         <translation>扫码入群</translation>
     </message>
@@ -1452,6 +1453,16 @@ p, li { white-space: pre-wrap; }
         <location filename="../../src/SAKMainWindow.cc" line="582"/>
         <source>Cancel</source>
         <translation>取消</translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="638"/>
+        <source>User QQ Group</source>
+        <translation>用户交流群</translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="639"/>
+        <source>Qt QQ Group</source>
+        <translation>技术交流群</translation>
     </message>
     <message>
         <source>Cooperation</source>

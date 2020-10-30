@@ -2434,6 +2434,16 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../src/SAKMainWindow.cc" line="638"/>
+        <source>User QQ Group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="639"/>
+        <source>Qt QQ Group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../../src/SAKMainWindow.cc" line="509"/>
         <source>Reboot application to effective</source>
         <translation type="unfinished"></translation>
