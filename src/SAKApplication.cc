@@ -13,12 +13,12 @@
 #include <QDebug>
 #include <QScreen>
 #include <QAction>
+#include <QDateTime>
 #include <QSettings>
 #include <QTextCursor>
 #include <QTranslator>
 #include <QDesktopWidget>
 
-#include "SAK.hh"
 #include "SAKSettings.hh"
 #include "SAKSettings.hh"
 #include "SAKMainWindow.hh"
@@ -26,6 +26,7 @@
 #include "SAKApplication.hh"
 #include "SAKSplashScreen.hh"
 
+static const QDate buildDate = QLocale( QLocale::English ).toDate( QString(__DATE__).replace("  ", " 0"), "MMM dd yyyy");
 SAKApplication::SAKApplication(int argc, char **argv)
     :QApplication (argc, argv)
     ,mMainWindow(Q_NULLPTR)
@@ -120,4 +121,10 @@ void SAKApplication::installLanguage()
 SAKMainWindow *SAKApplication::mainWindow()
 {
     return mMainWindow;
+}
+
+QDateTime *SAKApplication::buildDateTime()
+{
+    QDateTime *dateaTime = new QDateTime(QLocale(QLocale::English).toDateTime(QString(__DATE__) + QString(__TIME__), "MMM dd yyyyhh:mm:ss"));
+    return dateaTime;
 }
