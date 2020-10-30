@@ -370,10 +370,10 @@ void SAKMainWindow::initHelpMenu()
     QMenu *srcMenu = new QMenu(tr("Get Source"), this);
     helpMenu->addMenu(srcMenu);
     QAction *visitGitHubAction = new QAction(QIcon(":/resources/images/GitHub.png"), tr("GitHub"), this);
-    connect(visitGitHubAction, &QAction::triggered, [](){QDesktopServices::openUrl(QUrl(QLatin1String("https://github.com/qsaker/QtSwissArmyKnife")));});
+    connect(visitGitHubAction, &QAction::triggered, [](){QDesktopServices::openUrl(QUrl(QLatin1String(SAK_GITHUB_REPOSITORY_URL)));});
     srcMenu->addAction(visitGitHubAction);
     QAction *visitGiteeAction = new QAction(QIcon(":/resources/images/Gitee.png"), tr("Gitee"), this);
-    connect(visitGiteeAction, &QAction::triggered, [](){QDesktopServices::openUrl(QUrl(QLatin1String("https://gitee.com/qsaker/QtSwissArmyKnife")));});
+    connect(visitGiteeAction, &QAction::triggered, [](){QDesktopServices::openUrl(QUrl(QLatin1String(SAK_GITEE_REPOSITORY_URL)));});
     srcMenu->addAction(visitGiteeAction);
 
     QAction *updateAction = new QAction(tr("Check for Update"), this);
@@ -404,8 +404,8 @@ void SAKMainWindow::initLinksMenu()
     linkList << Link{tr("Qt Official Download"), QString("http://download.qt.io/official_releases/qt"), QString(":/resources/images/Qt.png")}
              << Link{tr("Qt Official Blog"), QString("https://www.qt.io/blog"), QString(":/resources/images/Qt.png")}
              << Link{tr("Qt Official Release"), QString("https://wiki.qt.io/Qt_5.15_Release"), QString(":/resources/images/Qt.png")}
-             << Link{tr("Download SAK from Github"), QString("https://github.com/qsaker/QtSwissArmyKnife/releases"), QString(":/resources/images/GitHub.png")}
-             << Link{tr("Download SAK from Gitee"), QString("https://gitee.com/qsaker/QtSwissArmyKnife/releases"), QString(":/resources/images/Gitee.png")};
+             << Link{tr("Download SAK from Github"), QString("%1/releases").arg(SAK_GITHUB_REPOSITORY_URL), QString(":/resources/images/GitHub.png")}
+             << Link{tr("Download SAK from Gitee"), QString("%1/releases").arg(SAK_GITEE_REPOSITORY_URL), QString(":/resources/images/Gitee.png")};
 
     for (auto var:linkList){
         QAction *action = new QAction(QIcon(var.iconPath), var.name, this);
