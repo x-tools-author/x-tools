@@ -1075,7 +1075,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../src/SAKMainWindow.cc" line="231"/>
         <source>Exit</source>
-        <translation>退出</translation>
+        <translation>退出软件</translation>
     </message>
     <message>
         <location filename="../../src/SAKMainWindow.cc" line="238"/>
@@ -1145,7 +1145,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../src/SAKMainWindow.cc" line="375"/>
         <source>Gitee</source>
-        <translation>Gitee</translation>
+        <translation>码云</translation>
     </message>
     <message>
         <source>Check for update</source>
@@ -1154,10 +1154,6 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>More information</source>
         <translation type="vanished">更多信息</translation>
-    </message>
-    <message>
-        <source>QR code</source>
-        <translation type="vanished">扫码入群</translation>
     </message>
     <message>
         <location filename="../../src/SAKMainWindow.cc" line="395"/>
@@ -1285,9 +1281,8 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../../src/SAKMainWindow.cc" line="388"/>
-        <location filename="../../src/SAKMainWindow.cc" line="630"/>
         <source>QR Code</source>
-        <translation>二维码</translation>
+        <translation>扫码入群</translation>
     </message>
     <message>
         <location filename="../../src/SAKMainWindow.cc" line="404"/>
