@@ -104,20 +104,19 @@
 <context>
     <name>SAK</name>
     <message>
-        <location filename="../../src/SAK.cc" line="84"/>
         <source>Upper computer custom development, can contact the author to negotiate</source>
-        <translation>上位机软件定制开发，可联系作者洽谈</translation>
+        <translation type="vanished">上位机软件定制开发，可联系作者洽谈</translation>
     </message>
 </context>
 <context>
     <name>SAKApplication</name>
     <message>
-        <location filename="../../src/SAKApplication.cc" line="77"/>
+        <location filename="../../src/SAKApplication.cc" line="78"/>
         <source>Initializing main window...</source>
         <translation>初始化主窗口...</translation>
     </message>
     <message>
-        <location filename="../../src/SAKApplication.cc" line="87"/>
+        <location filename="../../src/SAKApplication.cc" line="88"/>
         <source>Finished...</source>
         <translation>完成...</translation>
     </message>
@@ -339,7 +338,7 @@
     </message>
     <message>
         <location filename="../../src/pages/page/SAKDebugPage.ui" line="284"/>
-        <location filename="../../src/pages/page/SAKDebugPage.cc" line="224"/>
+        <location filename="../../src/pages/page/SAKDebugPage.cc" line="216"/>
         <source>Open</source>
         <translation>打开设备</translation>
     </message>
@@ -557,17 +556,17 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.cc" line="211"/>
+        <location filename="../../src/pages/page/SAKDebugPage.cc" line="203"/>
         <source>Close</source>
         <translation>关闭设备</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.cc" line="351"/>
+        <location filename="../../src/pages/page/SAKDebugPage.cc" line="343"/>
         <source>Unsupported function</source>
         <translation>确实功能</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.cc" line="351"/>
+        <location filename="../../src/pages/page/SAKDebugPage.cc" line="343"/>
         <source>The function has been disable, beause of developer&apos;s Qt version is not supported!</source>
         <translation>为保持兼容性，该功能被开发者禁用！</translation>
     </message>
@@ -1051,17 +1050,17 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SAKMainWindow</name>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.ui" line="14"/>
+        <location filename="../../src/SAKMainWindow.ui" line="14"/>
         <source>MainWindow</source>
         <translation>MainWindow</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="124"/>
+        <location filename="../../src/SAKMainWindow.cc" line="98"/>
         <source>Qt Swiss Army Knife</source>
         <translation>瑞士军刀·开发调试工具集</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="230"/>
+        <location filename="../../src/SAKMainWindow.cc" line="202"/>
         <source>&amp;File</source>
         <translation>文件(&amp;F)</translation>
     </message>
@@ -1074,22 +1073,22 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">新窗口</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="257"/>
+        <location filename="../../src/SAKMainWindow.cc" line="231"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="264"/>
+        <location filename="../../src/SAKMainWindow.cc" line="238"/>
         <source>&amp;Tools</source>
         <translation>工具(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="271"/>
+        <location filename="../../src/SAKMainWindow.cc" line="245"/>
         <source>&amp;Options</source>
         <translation>选项(&amp;O)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="275"/>
+        <location filename="../../src/SAKMainWindow.cc" line="249"/>
         <source>Skin</source>
         <translation>软件样式</translation>
     </message>
@@ -1110,23 +1109,23 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">清空配置缓存</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="326"/>
+        <location filename="../../src/SAKMainWindow.cc" line="300"/>
         <source>&amp;Windows</source>
         <translation>窗口(&amp;W)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="332"/>
+        <location filename="../../src/SAKMainWindow.cc" line="306"/>
         <source>&amp;Languages</source>
         <translation>语言(&amp;L)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="385"/>
+        <location filename="../../src/SAKMainWindow.cc" line="359"/>
         <source>&amp;Help</source>
         <translation>帮助(&amp;H)</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="388"/>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="390"/>
+        <location filename="../../src/SAKMainWindow.cc" line="362"/>
+        <location filename="../../src/SAKMainWindow.cc" line="364"/>
         <source>About Qt</source>
         <translation>关于Qt</translation>
     </message>
@@ -1139,12 +1138,12 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">获取源码</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="398"/>
+        <location filename="../../src/SAKMainWindow.cc" line="372"/>
         <source>GitHub</source>
         <translation>GitHub</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="401"/>
+        <location filename="../../src/SAKMainWindow.cc" line="375"/>
         <source>Gitee</source>
         <translation>Gitee</translation>
     </message>
@@ -1161,7 +1160,7 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">扫码入群</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="421"/>
+        <location filename="../../src/SAKMainWindow.cc" line="395"/>
         <source>&amp;Links</source>
         <translation>链接(&amp;L)</translation>
     </message>
@@ -1186,39 +1185,36 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">从gitee下载本软件</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="462"/>
         <source>About</source>
-        <translation>关于软件</translation>
+        <translation type="vanished">关于软件</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="471"/>
+        <location filename="../../src/SAKMainWindow.cc" line="444"/>
         <source>Version</source>
         <translation>软件版本</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="472"/>
+        <location filename="../../src/SAKMainWindow.cc" line="445"/>
         <source>Author</source>
         <translation>软件作者</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="473"/>
         <source>Nickname</source>
-        <translation>网络昵称</translation>
+        <translation type="vanished">网络昵称</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="474"/>
         <source>Release</source>
-        <translation>发布地址</translation>
+        <translation type="vanished">发布地址</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="475"/>
+        <location filename="../../src/SAKMainWindow.cc" line="446"/>
         <source>Email</source>
         <translation>电子邮箱</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="476"/>
+        <location filename="../../src/SAKMainWindow.cc" line="447"/>
         <source>QQ</source>
-        <translation>作者QQ</translation>
+        <translation>联系作者</translation>
     </message>
     <message>
         <source>QQ group</source>
@@ -1229,191 +1225,250 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">构建时间</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="233"/>
+        <location filename="../../src/SAKMainWindow.cc" line="205"/>
         <source>New Page</source>
         <translation>新建页面</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="245"/>
+        <location filename="../../src/SAKMainWindow.cc" line="218"/>
         <source>New Window</source>
         <translation>新建窗口</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="277"/>
+        <location filename="../../src/SAKMainWindow.cc" line="251"/>
         <source>Qt Default</source>
         <translation>Qt默认</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="300"/>
+        <location filename="../../src/SAKMainWindow.cc" line="274"/>
         <source>Application Style</source>
         <translation>软件风格</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="308"/>
+        <location filename="../../src/SAKMainWindow.cc" line="282"/>
         <source>Enable Testing Page</source>
         <translation>使能测试页面</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="319"/>
+        <location filename="../../src/SAKMainWindow.cc" line="293"/>
         <source>Clear Configuration</source>
         <translation>清空配置文件</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="392"/>
+        <location filename="../../src/SAKMainWindow.cc" line="366"/>
         <source>About Application</source>
         <translation>关于软件</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="396"/>
+        <location filename="../../src/SAKMainWindow.cc" line="370"/>
         <source>Get Source</source>
         <translation>获取源码</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="405"/>
         <source>Check for Ppdate</source>
+        <translation type="vanished">检查更新</translation>
+    </message>
+    <message>
+        <source>More Information</source>
+        <translation type="vanished">更多信息</translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="379"/>
+        <source>Check for Update</source>
         <translation>检查更新</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="409"/>
-        <source>More Information</source>
-        <translation>更多信息</translation>
+        <location filename="../../src/SAKMainWindow.cc" line="383"/>
+        <location filename="../../src/SAKMainWindow.cc" line="553"/>
+        <source>Release History</source>
+        <translation>发布历史</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="414"/>
+        <location filename="../../src/SAKMainWindow.cc" line="388"/>
+        <location filename="../../src/SAKMainWindow.cc" line="630"/>
         <source>QR Code</source>
         <translation>二维码</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="430"/>
+        <location filename="../../src/SAKMainWindow.cc" line="404"/>
         <source>Qt Official Download</source>
         <translation>Qt官方下载</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="431"/>
+        <location filename="../../src/SAKMainWindow.cc" line="405"/>
         <source>Qt Official Blog</source>
         <translation>Qt官方博客</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="432"/>
+        <location filename="../../src/SAKMainWindow.cc" line="406"/>
         <source>Qt Official Release</source>
         <translation>Qt官方发布</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="433"/>
+        <location filename="../../src/SAKMainWindow.cc" line="407"/>
         <source>Download SAK from Github</source>
         <translation>从GitHub下载软件</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="434"/>
+        <location filename="../../src/SAKMainWindow.cc" line="408"/>
         <source>Download SAK from Gitee</source>
         <translation>从Gittee下载软件</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="477"/>
+        <location filename="../../src/SAKMainWindow.cc" line="448"/>
         <source>QQ Group</source>
-        <translation>QQ交流群</translation>
+        <translation>技术交流</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="478"/>
+        <location filename="../../src/SAKMainWindow.cc" line="449"/>
         <source>Build Time</source>
         <translation>构建信息</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="479"/>
+        <location filename="../../src/SAKMainWindow.cc" line="450"/>
         <source>Copyright</source>
         <translation>版权声明</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="568"/>
+        <source>Copyright 2018-%1 Qter. All rights reserved</source>
+        <translation type="vanished">版权声明 2018-%1 Qter。保留所有版权。</translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="450"/>
+        <source>Copyright 2018-%1 Qter. All rights reserved.</source>
+        <translation>版权声明 2018-%1 Qter。保留所有版权。</translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="451"/>
+        <source>Gitee Url</source>
+        <translation>码云仓库</translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="452"/>
+        <source>Gitbub Url</source>
+        <translation>GitHub仓库</translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="455"/>
+        <source>About QSAK</source>
+        <translation>关于瑞士军刀</translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="518"/>
         <source>Test</source>
         <translation>数据测试</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="572"/>
+        <location filename="../../src/SAKMainWindow.cc" line="520"/>
         <source>COM</source>
         <translation>串口调试</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="577"/>
+        <location filename="../../src/SAKMainWindow.cc" line="523"/>
         <source>HID</source>
         <translation>HID调试</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="582"/>
+        <location filename="../../src/SAKMainWindow.cc" line="526"/>
         <source>USB</source>
         <translation>USB调试</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="586"/>
+        <location filename="../../src/SAKMainWindow.cc" line="528"/>
         <source>UDP-C</source>
         <translation>UDP客户端</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="589"/>
+        <location filename="../../src/SAKMainWindow.cc" line="529"/>
         <source>UDP-S</source>
         <translation>UDP服务器</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="592"/>
+        <location filename="../../src/SAKMainWindow.cc" line="530"/>
         <source>TCP-C</source>
         <translation>TCP客户端</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="595"/>
+        <location filename="../../src/SAKMainWindow.cc" line="531"/>
         <source>TCP-S</source>
         <translation>TCP服务器</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="599"/>
+        <location filename="../../src/SAKMainWindow.cc" line="533"/>
         <source>SSL-C</source>
         <translation>SslSocket客户端</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="602"/>
+        <location filename="../../src/SAKMainWindow.cc" line="534"/>
         <source>SSL-S</source>
         <translation>SslSocket服务器</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="607"/>
+        <location filename="../../src/SAKMainWindow.cc" line="537"/>
         <source>SCTP-C</source>
         <translation>SCTP客户端</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="610"/>
+        <location filename="../../src/SAKMainWindow.cc" line="538"/>
         <source>SCTP-S</source>
         <translation>SCTP服务器</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="615"/>
+        <location filename="../../src/SAKMainWindow.cc" line="541"/>
         <source>Bluetooth-C</source>
         <translation>蓝牙客户端</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="618"/>
+        <location filename="../../src/SAKMainWindow.cc" line="542"/>
         <source>Bluetooth-S</source>
         <translation>蓝牙服务器</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="623"/>
+        <location filename="../../src/SAKMainWindow.cc" line="545"/>
         <source>WS-C</source>
         <translation>WebSocket客户端</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="626"/>
+        <location filename="../../src/SAKMainWindow.cc" line="546"/>
         <source>WS-S</source>
         <translation>WebSocket服务器</translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="575"/>
+        <source>Edit Page Name</source>
+        <translation>编辑页面名称</translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="577"/>
+        <source>Please input the name of tab page</source>
+        <translation>请输入标签或窗口名称</translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="578"/>
+        <source>Tab page name</source>
+        <translation>请输入名称</translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="581"/>
+        <source>OK</source>
+        <translation>确定</translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="582"/>
+        <source>Cancel</source>
+        <translation>取消</translation>
     </message>
     <message>
         <source>Cooperation</source>
         <translation type="vanished">业务合作</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="664"/>
+        <location filename="../../src/SAKMainWindow.cc" line="509"/>
         <source>Reboot application to effective</source>
         <translation>重启生效</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindow.cc" line="664"/>
+        <location filename="../../src/SAKMainWindow.cc" line="509"/>
         <source>Need to reboot, reboot to effective now?</source>
         <translation>软件需要重启生效，现在重启？</translation>
     </message>
@@ -1421,17 +1476,14 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SAKMainWindowMoreInformationDialog</name>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindowMoreInformationDialog.ui" line="14"/>
         <source>More information about SAK</source>
-        <translation>更多信息</translation>
+        <translation type="vanished">更多信息</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindowMoreInformationDialog.ui" line="27"/>
         <source>3rd</source>
-        <translation>第三方库</translation>
+        <translation type="vanished">第三方库</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindowMoreInformationDialog.ui" line="33"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -1442,7 +1494,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;https://github.com/libusb/hidapi &lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;libqrencode&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;https://github.com/fukuchi/libqrencode&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <translation type="vanished">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;SimSun&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
@@ -1454,36 +1506,32 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;https://github.com/fukuchi/libqrencode&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindowMoreInformationDialog.ui" line="50"/>
         <source>History</source>
-        <translation>发布历史</translation>
+        <translation type="vanished">发布历史</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindowMoreInformationDialog.ui" line="56"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;SimSun&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <translation type="vanished">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;SimSun&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindowMoreInformationDialog.ui" line="68"/>
         <source>Developer</source>
-        <translation>开发人员</translation>
+        <translation type="vanished">开发人员</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindowMoreInformationDialog.ui" line="74"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;SimSun&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Qter&amp;lt;qsaker@qq.com&amp;gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <translation type="vanished">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;SimSun&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
@@ -1493,53 +1541,43 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SAKMainWindowQrCodeView</name>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindowQrCodeView.ui" line="14"/>
         <source>QR code</source>
-        <translation>入群交流</translation>
+        <translation type="vanished">入群交流</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindowQrCodeView.ui" line="21"/>
         <source>Tab 1</source>
-        <translation>Tab 1</translation>
+        <translation type="vanished">Tab 1</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindowQrCodeView.ui" line="26"/>
         <source>Tab 2</source>
-        <translation>Tab 2</translation>
+        <translation type="vanished">Tab 2</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindowQrCodeView.cc" line="28"/>
         <source>User</source>
-        <translation>用户交流群</translation>
+        <translation type="vanished">用户交流群</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindowQrCodeView.cc" line="29"/>
         <source>Qt</source>
-        <translation>Qt技术交流群</translation>
+        <translation type="vanished">Qt技术交流群</translation>
     </message>
 </context>
 <context>
     <name>SAKMainWindowTabPageNameEditDialog</name>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindowTabPageNameEditDialog.ui" line="14"/>
-        <location filename="../../src/mainwindow/SAKMainWindowTabPageNameEditDialog.ui" line="20"/>
         <source>Tab page name</source>
-        <translation>请输入名称</translation>
+        <translation type="vanished">请输入名称</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindowTabPageNameEditDialog.ui" line="27"/>
         <source>Cancle</source>
-        <translation>取消</translation>
+        <translation type="vanished">取消</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindowTabPageNameEditDialog.ui" line="34"/>
         <source>OK</source>
-        <translation>确定</translation>
+        <translation type="vanished">确定</translation>
     </message>
     <message>
-        <location filename="../../src/mainwindow/SAKMainWindowTabPageNameEditDialog.ui" line="57"/>
         <source>Please input the name of tab page</source>
-        <translation>请输入标签或串口名称</translation>
+        <translation type="vanished">请输入标签或串口名称</translation>
     </message>
 </context>
 <context>
@@ -3005,7 +3043,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../../src/pages/websocket/server/SAKWebSocketServerDevice.cc" line="50"/>
-        <location filename="../../src/pages/websocket/server/SAKWebSocketServerDevice.cc" line="108"/>
+        <location filename="../../src/pages/websocket/server/SAKWebSocketServerDevice.cc" line="124"/>
         <source>Unknow error</source>
         <translation>未知错误</translation>
     </message>
