@@ -10,3 +10,7 @@ DEFINES += SAK_VERSION=\"\\\"3.2.0\\\"\"
 DEFINES += SAK_REBOOT_CODE=1314
 # Sleep interval of device thread, the unit is ms
 DEFINES += SAK_DEVICE_THREAD_SLEEP_INTERVAL=10
+# Github repositories
+DEFINES += SAK_GITHUB_REPOSITORY_URL=\"\\\"https://github.com/qsaker/QtSwissArmyKnife\\\"\"
+# Gitee repositories
+DEFINES += SAK_GITEE_REPOSITORY_URL=\"\\\"https://gitee.com/qsaker/QtSwissArmyKnife\\\"\"
