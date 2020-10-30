@@ -101,7 +101,6 @@ RESOURCES += \
 INCLUDEPATH += \
     src \
     src/common \
-    src/mainwindow \
     src/pages \
     src/pages/page \
     src/pages/page/common \
@@ -131,8 +130,6 @@ INCLUDEPATH += \
     src/update
 
 FORMS += \
-    src/mainwindow/SAKMainWindow.ui \
-    src/mainwindow/SAKMainWindowQrCodeView.ui \
     src/pages/page/SAKDebugPage.ui \
     src/pages/page/common/SAKDebugPageCommonSslConfigurationWidget.ui \
     src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui \
@@ -169,10 +166,7 @@ HEADERS += \
     src/common/SAKCommonCrcInterface.hh \
     src/common/SAKCommonDataStructure.hh \
     src/common/SAKCommonInterface.hh \
-    src/mainwindow/SAKMainWindow.hh \
     src/SAKSettings.hh \
-    src/mainwindow/SAKMainWindowQrCode.hh \
-    src/mainwindow/SAKMainWindowQrCodeView.hh \
     src/pages/page/SAKDebugPage.hh \
     src/pages/page/common/SAKDebugPageCommonDatabaseInterface.hh \
     src/pages/page/common/SAKDebugPageCommonSslConfigurationWidget.hh \
@@ -233,10 +227,7 @@ SOURCES += \
     src/common/SAKCommonCrcInterface.cc \
     src/common/SAKCommonDataStructure.cc \
     src/common/SAKCommonInterface.cc \
-    src/mainwindow/SAKMainWindow.cc \
     src/SAKSettings.cc \
-    src/mainwindow/SAKMainWindowQrCode.cc \
-    src/mainwindow/SAKMainWindowQrCodeView.cc \
     src/pages/page/SAKDebugPage.cc \
     src/pages/page/common/SAKDebugPageCommonDatabaseInterface.cc \
     src/pages/page/common/SAKDebugPageCommonSslConfigurationWidget.cc \
