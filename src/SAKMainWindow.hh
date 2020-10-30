@@ -96,7 +96,7 @@ private:
     void changeStylesheet(QString styleSheetName);
     void changeAppStyle(QString appStyle);
 
-    void about();
+    void aboutQsak();
     void removeRemovableDebugPage(int index);
     void appendWindowAction(QWidget *page);
     void testPageActionTriggered();

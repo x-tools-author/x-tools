@@ -365,7 +365,7 @@ void SAKMainWindow::initHelpMenu()
 
     QAction *aboutAction = new QAction(tr("About Application"), this);
     helpMenu->addAction(aboutAction);
-    connect(aboutAction, &QAction::triggered, this, &SAKMainWindow::about);
+    connect(aboutAction, &QAction::triggered, this, &SAKMainWindow::aboutQsak);
 
     QMenu *srcMenu = new QMenu(tr("Get Source"), this);
     helpMenu->addMenu(srcMenu);
@@ -431,7 +431,7 @@ void SAKMainWindow::changeAppStyle(QString appStyle)
     SAKSettings::instance()->setAppStyle(appStyle);
 }
 
-void SAKMainWindow::about()
+void SAKMainWindow::aboutQsak()
 {
     struct Info {
         QString name;
@@ -444,12 +444,12 @@ void SAKMainWindow::about()
     infoList << Info{tr("Version"), QString(qApp->applicationVersion()), false}
              << Info{tr("Author"), QString("Qsaker(Qter)"), false}
              << Info{tr("Email"), QString("qsaker@qq.com"), false}
-             << Info{tr("QQ"), QString("2869470394"), false}
-             << Info{tr("QQ Group"), QString("952218522"), false}
+             << Info{tr("QQ"), QString("QQ:2869470394"), false}
+             << Info{tr("QQ Group"), QString("QQ:952218522"), false}
              << Info{tr("Build Time"), dateaTime->toString(QLocale::system().dateTimeFormat()), false}
+             << Info{tr("Copyright"), tr("Copyright 2018-%1 Qter. All rights reserved.").arg(dateaTime->toString("yyyy")), false}
              << Info{tr("Gitee Url"), QString("<a href=%1>%1</a>").arg(SAK_GITEE_REPOSITORY_URL), true}
-             << Info{tr("Gitbub Url"), QString("<a href=%1>%1</a>").arg(SAK_GITHUB_REPOSITORY_URL), true}
-             << Info{tr("Copyright"), tr("Copyright 2018-%1 Qter. All rights reserved").arg(dateaTime->toString("yyyy")), false};
+             << Info{tr("Gitbub Url"), QString("<a href=%1>%1</a>").arg(SAK_GITHUB_REPOSITORY_URL), true};
 
     QDialog dialog;
     dialog.setWindowTitle(tr("About QSAK"));
