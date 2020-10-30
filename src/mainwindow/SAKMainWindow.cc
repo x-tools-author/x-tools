@@ -46,7 +46,6 @@
 #include "SAKTestDebugPage.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKMainWindowQrCodeView.hh"
-#include "SAKMainWindowTabPageNameEditDialog.hh"
 
 // Debugging page
 #include "SAKTestDebugPage.hh"
