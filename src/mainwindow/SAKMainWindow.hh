@@ -35,7 +35,49 @@ public:
     ~SAKMainWindow();
 
     static const QString settingKeyClearConfiguration();
+
+    // Debug page type supported by QtSwissArmyKnife
+    enum SAKEnumDebugPageType {
+        DebugPageTypeTest,
+#ifdef SAK_IMPORT_COM_MODULE
+        DebugPageTypeCOM,
+#endif
+#ifdef SAK_IMPORT_HID_MODULE
+        DebugPageTypeHID,
+#endif
+#ifdef SAK_IMPORT_USB_MODULE
+        DebugPageTypeUSB,
+#endif
+        DebugPageTypeUdpClient,
+        DebugPageTypeUdpServer,
+        DebugPageTypeTCPClient,
+        DebugPageTypeTCPServer,
+#ifdef SAK_IMPORT_MODULE_SSLSOCKET
+        DebugPageTypeSslSocketClient,
+        DebugPageTypeSslSocketServer,
+#endif
+#ifdef SAK_IMPORT_SCTP_MODULE
+        DebugPageTypeSCTPClient,
+        DebugPageTypeSCTPServer,
+#endif
+#ifdef SAK_IMPORT_BLUETOOTH_MODULE
+        DebugPageTypeBluetoothClient,
+        DebugPageTypeBluetoothServer,
+#endif
+#ifdef SAK_IMPORT_WEBSOCKET_MODULE
+        DebugPageTypeWebSocketClient,
+        DebugPageTypeWebSocketServer
+#endif
+    };
+    Q_ENUM(SAKEnumDebugPageType);
 private:
+    struct SAKDebugPageMetaInfo {
+        int debugPageType;
+        QMetaObject metaObject;
+        QString defaultTitle;
+    };
+    QList<SAKDebugPageMetaInfo> mDebugPageMetaInfoList;
+
     QMenu *mToolsMenu;
     QMenu *mWindowsMenu;
     QAction *mTestPageAction;
@@ -64,6 +106,7 @@ private:
     void testPageActionTriggered();
     void clearConfiguration();
     void rebootRequestion();
+    void initializingMetaObject();
 private slots:
     /**
      * @brief showToolWidget: Show a tool widget, the interface must be called by signal,
@@ -94,6 +137,20 @@ private slots:
      * which is emited by actions of new debugging page menu.
      */
     void appendRemovablePage();
+private:
+    /**
+     * @brief debugPageFromDebugPageType: Create a debuge page from specified type
+     * @param type: Debug page type, look at the SAKEnumToolType for more information
+     * @return A pointer of debug page instance
+     */
+    QWidget *debugPageFromDebugPageType(int type);
+
+    /**
+     * @brief debugPageTitleFromDebugPageType: Get the default name of debuge page from specified type
+     * @param type: Debug page type, look at the SAKEnumToolType for more information
+     * @return The default debug page name
+     */
+    QString debugPageTitleFromDebugPageType(int type);
 private:
     Ui::SAKMainWindow *mUi;
     QTabWidget *mTabWidget;

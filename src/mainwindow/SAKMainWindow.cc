@@ -45,9 +45,22 @@
 #include "SAKTestDebugPage.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKMainWindowQrCodeView.hh"
-#include "SAKMainWindowDebugPagesFactory.hh"
 #include "SAKMainWindowMoreInformationDialog.hh"
 #include "SAKMainWindowTabPageNameEditDialog.hh"
+
+// Debugging page
+#include "SAKTestDebugPage.hh"
+#include "SAKUdpClientDebugPage.hh"
+#include "SAKUdpServerDebugPage.hh"
+#include "SAKTcpClientDebugPage.hh"
+#include "SAKTcpServerDebugPage.hh"
+#ifdef SAK_IMPORT_COM_MODULE
+#include "SAKSerialPortDebugPage.hh"
+#endif
+#ifdef SAK_IMPORT_WEBSOCKET_MODULE
+#include "SAKWebSocketClientDebugPage.hh"
+#include "SAKWebSocketServerDebugPage.hh"
+#endif
 
 #include "ui_SAKMainWindow.h"
 
@@ -67,6 +80,8 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     mUpdateManager = new SAKUpdateManager(this);
     mUpdateManager->setSettings(SAKSettings::instance());
     mQrCodeDialog = new SAKMainWindowQrCodeView(this);
+
+    initializingMetaObject();
 
 #ifdef Q_OS_ANDROID
     setWindowFlags(Qt::FramelessWindowHint);
@@ -121,15 +136,15 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
 #endif
 
     // Create debugging page
-    QMetaEnum metaEnum = QMetaEnum::fromType<SAKMainWindowDebugPagesFactory::SAKEnumDebugPageType>();
+    QMetaEnum metaEnum = QMetaEnum::fromType<SAKEnumDebugPageType>();
     for (int i = 0; i < metaEnum.keyCount(); i++){
         // Test page is selectable
         bool enableTestPage = SAKSettings::instance()->value(mSettingKeyEnableTestPage).toBool();
-        if (!enableTestPage && (metaEnum.value(i) == SAKMainWindowDebugPagesFactory::DebugPageTypeTest)){
+        if (!enableTestPage && (metaEnum.value(i) == DebugPageTypeTest)){
             continue;
         }
 
-        QWidget *page = SAKMainWindowDebugPagesFactory::instance()->debugPageFromDebugPageType(metaEnum.value(i));
+        QWidget *page = debugPageFromDebugPageType(metaEnum.value(i));
         if (page){
             mTabWidget->addTab(page, page->windowTitle());
             appendWindowAction(page);
@@ -195,9 +210,9 @@ void SAKMainWindow::initFileMenu()
     fileMenu->addMenu(tabMenu);
     QMetaEnum enums = QMetaEnum::fromType<SAKCommonDataStructure::SAKEnumDebugPageType>();
     for (int i = 0; i < enums.keyCount(); i++){
-        QAction *a = new QAction(SAKMainWindowDebugPagesFactory::instance()->debugPageTitleFromDebugPageType(enums.value(i)), this);
+        QAction *a = new QAction(debugPageTitleFromDebugPageType(enums.value(i)), this);
         // The object name is the default title of debug page
-        a->setObjectName(SAKMainWindowDebugPagesFactory::instance()->debugPageTitleFromDebugPageType(enums.value(i)));
+        a->setObjectName(debugPageTitleFromDebugPageType(enums.value(i)));
         QVariant var = QVariant::fromValue<int>(enums.value(i));
         a->setData(var);
         connect(a, &QAction::triggered, this, &SAKMainWindow::appendRemovablePage);
@@ -207,9 +222,9 @@ void SAKMainWindow::initFileMenu()
     QMenu *windowMenu = new QMenu(tr("New Window"), this);
     fileMenu->addMenu(windowMenu);
     for (int i = 0; i < enums.keyCount(); i++){
-        QAction *a = new QAction(SAKMainWindowDebugPagesFactory::instance()->debugPageTitleFromDebugPageType(enums.value(i)), this);
+        QAction *a = new QAction(debugPageTitleFromDebugPageType(enums.value(i)), this);
         // The object name is the default title of debug page
-        a->setObjectName(SAKMainWindowDebugPagesFactory::instance()->debugPageTitleFromDebugPageType(enums.value(i)));
+        a->setObjectName(debugPageTitleFromDebugPageType(enums.value(i)));
         QVariant var = QVariant::fromValue<int>(enums.value(i));
         connect(a, &QAction::triggered, this, &SAKMainWindow::openDebugPageWidget);
         a->setData(var);
@@ -482,6 +497,40 @@ void SAKMainWindow::rebootRequestion()
     }
 }
 
+void SAKMainWindow::initializingMetaObject()
+{
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeTest, SAKTestDebugPage::staticMetaObject, tr("Test")});
+#ifdef SAK_IMPORT_COM_MODULE
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeCOM, SAKSerialPortDebugPage::staticMetaObject, tr("COM")});
+#endif
+#ifdef SAK_IMPORT_HID_MODULE
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeHID, SAKHIDDebugPage::staticMetaObject, tr("HID")});
+#endif
+#ifdef SAK_IMPORT_USB_MODULE
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeUSB, SAKUSBDebugPage::staticMetaObject, tr("USB")});
+#endif
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeUdpClient, SAKUdpClientDebugPage::staticMetaObject, tr("UDP-C")});
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeUdpServer, SAKUdpServerDebugPage::staticMetaObject, tr("UDP-S")});
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeTCPClient, SAKTcpClientDebugPage::staticMetaObject, tr("TCP-C")});
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeTCPServer, SAKTcpServerDebugPage::staticMetaObject, tr("TCP-S")});
+#ifdef SAK_IMPORT_MODULE_SSLSOCKET
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeSslSocketClient, SAKSslSocketClientDebugPage::staticMetaObject, tr("SSL-C")});
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeSslSocketServer, SAKSslSocketServerDebugPage::staticMetaObject, tr("SSL-S")});
+#endif
+#ifdef SAK_IMPORT_SCTP_MODULE
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeSCTPClient, SAKSCTPClientDebugPage::staticMetaObject, tr("SCTP-C")});
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeSCTPServer, SAKSCTPServerDebugPage::staticMetaObject, tr("SCTP-S")});
+#endif
+#ifdef SAK_IMPORT_BLUETOOTH_MODULE
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeBluetoothClient, SAKBluetoothClientDebugPage::staticMetaObject, tr("Bluetooth-C")});
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeBluetoothServer, SAKBluetoothServerDebugPage::staticMetaObject, tr("Bluetooth-S")});
+#endif
+#ifdef SAK_IMPORT_WEBSOCKET_MODULE
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeWebSocketClient, SAKWebSocketClientDebugPage::staticMetaObject, tr("WS-C")});
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeWebSocketServer, SAKWebSocketServerDebugPage::staticMetaObject, tr("WS-S")});
+#endif
+}
+
 void SAKMainWindow::showToolWidget()
 {
     if (sender()){
@@ -535,7 +584,7 @@ void SAKMainWindow::openDebugPageWidget()
         if (QDialog::Accepted == dialog.exec()){
             if (sender()->inherits("QAction")){
                 int type = qobject_cast<QAction*>(sender())->data().value<int>();
-                QWidget *widget = SAKMainWindowDebugPagesFactory::instance()->debugPageFromDebugPageType(type);
+                QWidget *widget = debugPageFromDebugPageType(type);
                 if (widget){
                     widget->setAttribute(Qt::WA_DeleteOnClose, true);
                     widget->setWindowTitle(dialog.name());
@@ -555,7 +604,7 @@ void SAKMainWindow::appendRemovablePage()
         if (QDialog::Accepted == dialog.exec()){
             if (sender()->inherits("QAction")){
                 int type = qobject_cast<QAction*>(sender())->data().value<int>();
-                QWidget *widget = SAKMainWindowDebugPagesFactory::instance()->debugPageFromDebugPageType(type);
+                QWidget *widget = debugPageFromDebugPageType(type);
                 if (widget){
                     widget->setAttribute(Qt::WA_DeleteOnClose, true);
                     widget->setWindowTitle(dialog.name());
@@ -566,3 +615,47 @@ void SAKMainWindow::appendRemovablePage()
         }
     }
 }
+
+QWidget *SAKMainWindow::debugPageFromDebugPageType(int type)
+{
+    QWidget *widget = Q_NULLPTR;
+    QMetaEnum metaEnum = QMetaEnum::fromType<SAKEnumDebugPageType>();
+    for (auto var : mDebugPageMetaInfoList){
+        if (var.debugPageType == type){
+            for (int i = 0; i < metaEnum.keyCount(); i++){
+                if (var.debugPageType == metaEnum.value(i)){
+                    widget = qobject_cast<QWidget*>(var.metaObject.newInstance(Q_ARG(int, metaEnum.value(i)), Q_ARG(QString, QString(metaEnum.key(i)))));
+                    widget->setWindowTitle(debugPageTitleFromDebugPageType(type));
+                    break;
+                }
+            }
+        }
+    }
+
+    Q_ASSERT_X(widget, __FUNCTION__, "Unknow debug page type!");
+    return widget;
+}
+
+QString SAKMainWindow::debugPageTitleFromDebugPageType(int type)
+{
+    QString title;
+    QMetaEnum metaEnum = QMetaEnum::fromType<SAKEnumDebugPageType>();
+    for (auto var : mDebugPageMetaInfoList){
+        if (var.debugPageType == type){
+            for (int i = 0; i < metaEnum.keyCount(); i++){
+                if (var.debugPageType == metaEnum.value(i)){
+                    title = var.defaultTitle;
+                    break;
+                }
+            }
+        }
+    }
+
+    if (title.isEmpty()){
+        title = QString("UnknowDebugPage");
+        Q_ASSERT_X(false, __FUNCTION__, "Unknow debug page type!");
+    }
+
+    return title;
+}
+
