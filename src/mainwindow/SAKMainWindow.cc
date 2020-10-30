@@ -380,13 +380,13 @@ void SAKMainWindow::initHelpMenu()
     connect(visitGiteeAction, &QAction::triggered, [](){QDesktopServices::openUrl(QUrl(QLatin1String("https://gitee.com/qsaker/QtSwissArmyKnife")));});
     srcMenu->addAction(visitGiteeAction);
 
-    QAction *updateAction = new QAction(tr("Check for Ppdate"), this);
+    QAction *updateAction = new QAction(tr("Check for Update"), this);
     helpMenu->addAction(updateAction);
     connect(updateAction, &QAction::triggered, mUpdateManager, &SAKUpdateManager::show);
 
-    QAction *moreInformationAction = new QAction(tr("More Information"), this);
-    helpMenu->addAction(moreInformationAction);
-    connect(moreInformationAction, &QAction::triggered, mMoreInformation, &SAKMainWindowMoreInformationDialog::show);
+    QAction *releaseHistoryAction = new QAction(tr("Release History"), this);
+    helpMenu->addAction(releaseHistoryAction);
+    connect(releaseHistoryAction, &QAction::triggered, this, &SAKMainWindow::showReleaseHistoryActionDialog);
 
     helpMenu->addSeparator();
     QAction *qrCodeAction = new QAction(tr("QR Code"), this);
@@ -529,6 +529,26 @@ void SAKMainWindow::initializingMetaObject()
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeWebSocketClient, SAKWebSocketClientDebugPage::staticMetaObject, tr("WS-C")});
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeWebSocketServer, SAKWebSocketServerDebugPage::staticMetaObject, tr("WS-S")});
 #endif
+}
+
+void SAKMainWindow::showReleaseHistoryActionDialog()
+{
+    QDialog dialog;
+    dialog.setWindowTitle(tr("Release History"));
+    dialog.resize(600, 400);
+
+    QTextBrowser *textBrowser = new QTextBrowser(&dialog);
+    QFile file(":/resources/files/History.txt");
+    if (file.open(QFile::ReadOnly)){
+        QByteArray data = file.readAll();
+        textBrowser->setText(QString::fromUtf8(data));
+    }
+
+    QHBoxLayout *layout = new QHBoxLayout(&dialog);
+    layout->addWidget(textBrowser);
+    dialog.setLayout(layout);
+    dialog.show();
+    dialog.exec();
 }
 
 void SAKMainWindow::showToolWidget()

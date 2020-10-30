@@ -107,6 +107,7 @@ private:
     void clearConfiguration();
     void rebootRequestion();
     void initializingMetaObject();
+    void showReleaseHistoryActionDialog();
 private slots:
     /**
      * @brief showToolWidget: Show a tool widget, the interface must be called by signal,
