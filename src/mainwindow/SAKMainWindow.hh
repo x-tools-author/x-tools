@@ -108,6 +108,7 @@ private:
     void showReleaseHistoryActionDialog();
     QString tabPageName(int type);
     QWidget *debugPage(QObject *sender);
+    void showQrCodeDialog();
 private slots:
     /**
      * @brief showToolWidget: Show a tool widget, the interface must be called by signal,

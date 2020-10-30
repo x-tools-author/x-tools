@@ -390,7 +390,7 @@ void SAKMainWindow::initHelpMenu()
     helpMenu->addSeparator();
     QAction *qrCodeAction = new QAction(tr("QR Code"), this);
     helpMenu->addAction(qrCodeAction);
-    connect(qrCodeAction, &QAction::triggered, mQrCodeDialog, &SAKMainWindowQrCodeView::show);
+    connect(qrCodeAction, &QAction::triggered, this, &SAKMainWindow::showQrCodeDialog);
 }
 
 void SAKMainWindow::initLinksMenu()
@@ -605,6 +605,35 @@ QWidget *SAKMainWindow::debugPage(QObject *sender)
     }
 
     return Q_NULLPTR;
+}
+
+void SAKMainWindow::showQrCodeDialog()
+{
+    QDialog dialog;
+    dialog.setWindowTitle(tr("QR Code"));
+
+    struct QrCodeInfo {
+        QString title;
+        QString qrCode;
+    };
+    QList<QrCodeInfo> qrCodeInfoList;
+
+    qrCodeInfoList << QrCodeInfo{QString("User QQ Group"), QString(":/resources/images/QSAKQQ.jpg")}
+                   << QrCodeInfo{QString("Qt QQ Group"), QString(":/resources/images/QtQQ.jpg")};
+
+    QTabWidget *tabWidget = new QTabWidget(&dialog);
+    for (auto var : qrCodeInfoList){
+        QLabel *label = new QLabel(tabWidget);
+        label->setPixmap(QPixmap::fromImage(QImage(var.qrCode)));
+        tabWidget->addTab(label, var.title);
+    }
+
+    QHBoxLayout *layout = new QHBoxLayout(&dialog);
+    layout->addWidget(tabWidget);
+    dialog.setLayout(layout);
+    dialog.setModal(true);
+    dialog.show();
+    dialog.exec();
 }
 
 void SAKMainWindow::showToolWidget()
