@@ -160,7 +160,6 @@ private:
     SAKDebugPageController *mDeviceController;
     bool mIsInitializing;
     int mDebugPageType;
-//    QString mSettingKey;
     QTimer mClearInfoTimer;
     QMutex mReadWriteParametersMutex;
     QString mSettingGroup;
