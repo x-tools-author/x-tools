@@ -133,7 +133,6 @@ INCLUDEPATH += \
 FORMS += \
     src/mainwindow/SAKMainWindow.ui \
     src/mainwindow/SAKMainWindowQrCodeView.ui \
-    src/mainwindow/SAKMainWindowTabPageNameEditDialog.ui \
     src/pages/page/SAKDebugPage.ui \
     src/pages/page/common/SAKDebugPageCommonSslConfigurationWidget.ui \
     src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui \
@@ -174,7 +173,6 @@ HEADERS += \
     src/SAKSettings.hh \
     src/mainwindow/SAKMainWindowQrCode.hh \
     src/mainwindow/SAKMainWindowQrCodeView.hh \
-    src/mainwindow/SAKMainWindowTabPageNameEditDialog.hh \
     src/pages/page/SAKDebugPage.hh \
     src/pages/page/common/SAKDebugPageCommonDatabaseInterface.hh \
     src/pages/page/common/SAKDebugPageCommonSslConfigurationWidget.hh \
@@ -239,7 +237,6 @@ SOURCES += \
     src/SAKSettings.cc \
     src/mainwindow/SAKMainWindowQrCode.cc \
     src/mainwindow/SAKMainWindowQrCodeView.cc \
-    src/mainwindow/SAKMainWindowTabPageNameEditDialog.cc \
     src/pages/page/SAKDebugPage.cc \
     src/pages/page/common/SAKDebugPageCommonDatabaseInterface.cc \
     src/pages/page/common/SAKDebugPageCommonSslConfigurationWidget.cc \
