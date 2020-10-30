@@ -18,6 +18,7 @@
 #include <QSysInfo>
 #include <QMetaEnum>
 #include <QSettings>
+#include <QLineEdit>
 #include <QStatusBar>
 #include <QClipboard>
 #include <QJsonArray>
