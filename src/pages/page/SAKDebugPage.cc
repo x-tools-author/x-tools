@@ -23,7 +23,7 @@
 #include "SAKGlobal.hh"
 #include "SAKSettings.hh"
 #include "SAKDebugPage.hh"
-#include "SAKSqlDatabase.hh"
+#include "SAKApplication.hh"
 #include "SAKDebugPageDevice.hh"
 #include "SAKCommonCrcInterface.hh"
 #include "SAKCommonDataStructure.hh"
@@ -123,7 +123,7 @@ QSettings *SAKDebugPage::settings()
 
 QSqlDatabase *SAKDebugPage::sqlDatabase()
 {
-    return SAKSqlDatabase::instance()->sqlDatabase();
+    return qobject_cast<SAKApplication*>(qApp)->sqlDatabase();
 }
 
 QString SAKDebugPage::settingsGroup()

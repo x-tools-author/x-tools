@@ -15,7 +15,7 @@
 
 #include "SAKGlobal.hh"
 #include "SAKSettings.hh"
-#include "SAKSqlDatabase.hh"
+#include "SAKApplication.hh"
 #include "SAKDebugPageCommonDatabaseInterface.hh"
 
 SAKDebugPageCommonDatabaseInterface *SAKDebugPageCommonDatabaseInterface::instancePtr = Q_NULLPTR;
@@ -41,7 +41,7 @@ SAKDebugPageCommonDatabaseInterface::~SAKDebugPageCommonDatabaseInterface()
 SAKDebugPageCommonDatabaseInterface* SAKDebugPageCommonDatabaseInterface::instance()
 {
     if (!instancePtr){
-        new SAKDebugPageCommonDatabaseInterface(SAKSqlDatabase::instance()->sqlDatabase(), reinterpret_cast<QObject*>(qApp));
+        new SAKDebugPageCommonDatabaseInterface(static_cast<SAKApplication*>(qApp)->sqlDatabase(), reinterpret_cast<QObject*>(qApp));
     }
 
     Q_ASSERT_X(instancePtr, __FUNCTION__, "Oh, a null pointer");
