@@ -51,16 +51,8 @@ int main(int argc, char *argv[])
             return -1024;
         }
 
-        // Show a splash screen.
-        QSplashScreen splashScreen(QPixmap(":/resources/images/StartUi.jpg"));
-#ifdef Q_OS_WIN
-        // The application will crash on Ubuntu 16.04 when calling the function.
-        splashScreen.show();
-#endif
-        app.processEvents();
-
         // Setup main window
-        splashScreen.showMessage(QObject::tr("Initializing main window..."), Qt::AlignBottom, QColor(255, 255, 255));
+        app.showSplashScreenMessage(QObject::tr("Initializing main window..."));
         SAKMainWindow mainWindow;
         QObject::connect(&app, &SAKApplication::activeMainWindow, &mainWindow, &SAKMainWindow::activateWindow);
         mainWindow.show();
@@ -71,8 +63,11 @@ int main(int argc, char *argv[])
         QList<QScreen*> screenList = QGuiApplication::screens();
         QScreen *screen = screenList.at(currentScreen);
         mainWindow.move((screen->geometry().width() - mainWindow.width())/2, (screen->geometry().height() - mainWindow.height())/2);
-        splashScreen.showMessage(QObject::tr("Finished..."), Qt::AlignBottom, QColor(255, 255, 255));
-        splashScreen.finish(&mainWindow);
+        app.showSplashScreenMessage(QObject::tr("Finished..."));
+
+        // Close the splash screen.
+        QSplashScreen *splashScreen = app.splashScreen();
+        splashScreen->finish(&mainWindow);
 
         // If exit code is SAK_REBOOT_CODE(1314), The application will reboot.
         exitCode = app.exec();
