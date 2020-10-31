@@ -37,38 +37,14 @@ public:
         QString appStyle;
     };
 
-    /**
-     * @brief installLanguage: Setup the language packet of application.
-     * the interface must be called before initalizing any text.
-     */
     void installLanguage();
-
-    /**
-     * @brief buildDateTime: Get the build date time info
-     * @return The build date time info
-     */
     QDateTime *buildDateTime();
+    QString dataPath();
+    QSettings *settings();
+    SettingsKeyContext *settingsKeyContext();
 #ifdef SAK_IMPORT_SQL_MODULE
-    /**
-     * @brief sqlDatabase: Get the instance of sql database
-     * @return The instance of sql database
-     */
     QSqlDatabase *sqlDatabase();
 #endif
-
-    /**
-     * @brief dataPath: Get the settings file.
-     * @return
-     */
-    QString dataPath();
-
-    /**
-     * @brief settings: Get the pointer of settings instance
-     * @return The pointer of settings instance
-     */
-    QSettings *settings();
-
-    SettingsKeyContext *settingsKeyContext();
 private:
     SettingsKeyContext mSettingsKeyContext;
     QTranslator mQtTranslator;

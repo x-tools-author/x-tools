@@ -125,13 +125,6 @@ QDateTime *SAKApplication::buildDateTime()
     return dateaTime;
 }
 
-#ifdef SAK_IMPORT_SQL_MODULE
-QSqlDatabase *SAKApplication::sqlDatabase()
-{
-    return &mSqlDatabase;
-}
-#endif
-
 QString SAKApplication::dataPath()
 {
     QString path = mSettings->fileName();
@@ -150,3 +143,10 @@ SAKApplication::SettingsKeyContext *SAKApplication::settingsKeyContext()
 {
     return &mSettingsKeyContext;
 }
+
+#ifdef SAK_IMPORT_SQL_MODULE
+QSqlDatabase *SAKApplication::sqlDatabase()
+{
+    return &mSqlDatabase;
+}
+#endif
