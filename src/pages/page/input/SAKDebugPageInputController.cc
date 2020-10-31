@@ -15,7 +15,6 @@
 #include <QStandardPaths>
 #include <QListWidgetItem>
 
-#include "SAKGlobal.hh"
 #include "SAKDebugPage.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKCommonCrcInterface.hh"
@@ -83,8 +82,8 @@ SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugPage *debugPage
     mSendPushButton->setEnabled(false);
     mSendPresetPushButton->setEnabled(false);
     mCycleEnableCheckBox->setEnabled(false);
-    SAKGlobal::initInputTextFormatComboBox(mInputModelComboBox);
-    SAKGlobal::initCRCComboBox(mCrcParameterModelsComboBox);
+    debugPage->initInputTextFormatComboBox(mInputModelComboBox);
+    debugPage->initCRCComboBox(mCrcParameterModelsComboBox);
     // The function must be called before connecting signals and slots
     readinSettings();
 

@@ -9,7 +9,7 @@
  */
 #include <QHostAddress>
 
-#include "SAKGlobal.hh"
+#include "SAKDebugPage.hh"
 #include "SAKOtherTransmissionItemTcp.hh"
 
 #include "ui_SAKOtherTransmissionItemTcp.h"
@@ -29,7 +29,7 @@ SAKOtherTransmissionItemTcp::SAKOtherTransmissionItemTcp(SAKDebugPage *debugPage
     mServerAddressLineEdit = mUi->targetAddressLineEdit;
     mServerPortLineEdit = mUi->targetPortLineEdit;
 
-    SAKGlobal::initIpComboBox(mLocalAddressComboBox);
+    mDebugPage->initIpComboBox(mLocalAddressComboBox);
 }
 
 SAKOtherTransmissionItemTcp::~SAKOtherTransmissionItemTcp()

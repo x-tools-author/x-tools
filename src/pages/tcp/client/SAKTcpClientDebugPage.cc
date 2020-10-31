@@ -11,7 +11,6 @@
 #include <QWidget>
 #include <QHBoxLayout>
 
-#include "SAKGlobal.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKTcpClientDevice.hh"
 #include "SAKTcpClientDebugPage.hh"
@@ -22,7 +21,6 @@ SAKTcpClientDebugPage::SAKTcpClientDebugPage(int type, QString name, QWidget *pa
     ,mTcpClientDeviceController(Q_NULLPTR)
 {
     mTcpClientDeviceController = new SAKTcpClientDeviceController(this);
-    setWindowTitle(SAKGlobal::debugPageNameFromType(SAKCommonDataStructure::DebugPageTypeTCPClient));
     initializingPage();
 }
 

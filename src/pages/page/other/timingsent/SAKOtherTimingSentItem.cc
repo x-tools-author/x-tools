@@ -10,7 +10,6 @@
 #include <QDebug>
 #include <QDateTime>
 
-#include "SAKGlobal.hh"
 #include "SAKDebugPage.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKOtherTimingSentItem.hh"
@@ -106,7 +105,7 @@ void SAKOtherTimingSentItem::commonInitializing()
     mWriteTimer.setInterval(mIntervalLineEdit->text().toInt());
     connect(&mWriteTimer, &QTimer::timeout, this, &SAKOtherTimingSentItem::write);
 
-    SAKGlobal::initInputTextFormatComboBox(mTextFormatComboBox);
+    mDebugPage->initInputTextFormatComboBox(mTextFormatComboBox);
 }
 
 void SAKOtherTimingSentItem::on_enableCheckBox_clicked()

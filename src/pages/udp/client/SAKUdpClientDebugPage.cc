@@ -11,7 +11,6 @@
 #include <QWidget>
 #include <QHBoxLayout>
 
-#include "SAKGlobal.hh"
 #include "SAKUdpClientDevice.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKUdpClientDebugPage.hh"
@@ -21,7 +20,6 @@ SAKUdpClientDebugPage::SAKUdpClientDebugPage(int type, QString name, QWidget *pa
     :SAKDebugPage(type, name, parent)
 {
     mUdpDeviceController = new SAKUdpClientDeviceController(this);
-    setWindowTitle(SAKGlobal::debugPageNameFromType(SAKCommonDataStructure::DebugPageTypeUdpClient));
     initializingPage();
 }
 

@@ -45,6 +45,7 @@ public:
 private:
     QMutex mParametersMutex;
     SerialPortParameters mParameters;
+    SAKDebugPage *mDebugPage;
 private:
     void setBaudRate(quint32 bd);
 private:

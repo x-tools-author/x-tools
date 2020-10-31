@@ -15,7 +15,6 @@
 Q_DECLARE_METATYPE(QSerialPortInfo)
 #endif
 
-#include "SAKGlobal.hh"
 #include "SAKDebugPage.hh"
 #include "SAKOtherTransmissionItem.hh"
 #include "SAKOtherTransmissionItemCom.hh"
@@ -40,11 +39,11 @@ SAKOtherTransmissionItemCom::SAKOtherTransmissionItemCom(SAKDebugPage *_debugPag
     mStopBitscomboBox = mUi->stopBitscomboBox;
     mParityComboBox = mUi->parityComboBox;
 
-    SAKGlobal::initComComboBox(mComComboBox);
-    SAKGlobal::initBaudRateComboBox(mBaudRateComboBox);
-    SAKGlobal::initDataBitsComboBox(mDataBitscomboBox);
-    SAKGlobal::initStopBitsComboBox(mStopBitscomboBox);
-    SAKGlobal::initParityComboBox(mParityComboBox);
+    mDebugPage->initComComboBox(mComComboBox);
+    mDebugPage->initBaudRateComboBox(mBaudRateComboBox);
+    mDebugPage->initDataBitsComboBox(mDataBitscomboBox);
+    mDebugPage->initStopBitsComboBox(mStopBitscomboBox);
+    mDebugPage->initParityComboBox(mParityComboBox);
 
     mHandleReceiveDataCheckBox->setChecked(true);
 #else

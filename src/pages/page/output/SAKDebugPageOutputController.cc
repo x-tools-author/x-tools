@@ -13,7 +13,6 @@
 #include <QTextStream>
 #include <QFileDialog>
 
-#include "SAKGlobal.hh"
 #include "SAKDebugPage.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKOutputSave2FileDialog.hh"
@@ -42,7 +41,7 @@ SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugPage *debugPa
     mClearOutputPushButton = debugPage->mClearOutputPushButton;
     mSaveOutputPushButton = debugPage->mSaveOutputPushButton;
     mOutputTextBroswer = debugPage->mOutputTextBroswer;
-    SAKGlobal::initOutputTextFormatComboBox(mOutputTextFormatComboBox);
+    mDebugPage->initOutputTextFormatComboBox(mOutputTextFormatComboBox);
 
     // Initializing setting keys
     QString group = mDebugPage->settingsGroup();

@@ -11,7 +11,7 @@
 #include <QMetaEnum>
 #include <QLineEdit>
 
-#include "SAKGlobal.hh"
+#include "SAKDebugPage.hh"
 #include "SAKUdpClientDevice.hh"
 #include "SAKUdpClientDeviceController.hh"
 #include "SAKUdpClientAdvanceSettingWidget.hh"
@@ -69,7 +69,7 @@ void SAKUdpClientDeviceController::setUiEnable(bool opened)
 
 void SAKUdpClientDeviceController::refreshDevice()
 {
-    SAKGlobal::initIpComboBox(mLocalhostComboBox, true);
+    mDebugPage->initIpComboBox(mLocalhostComboBox, true);
 }
 
 void SAKUdpClientDeviceController::setUdpDevice(SAKUdpClientDevice *device)

@@ -12,7 +12,7 @@
 #include <QMetaEnum>
 #include <QLineEdit>
 
-#include "SAKGlobal.hh"
+#include "SAKDebugPage.hh"
 #include "SAKUdpServerDeviceController.hh"
 #include "ui_SAKUdpServerDeviceController.h"
 
@@ -58,7 +58,7 @@ void SAKUdpServerDeviceController::setUiEnable(bool opened)
 
 void SAKUdpServerDeviceController::refreshDevice()
 {
-    SAKGlobal::initIpComboBox(mServerHostComboBox);
+    mDebugPage->initIpComboBox(mServerHostComboBox);
 }
 
 void SAKUdpServerDeviceController::addClient(QString host, quint16 port)

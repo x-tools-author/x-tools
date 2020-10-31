@@ -10,7 +10,6 @@
 #include <QDebug>
 #include <QDateTime>
 
-#include "SAKGlobal.hh"
 #include "SAKDebugPage.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKOtherAutoResponseItem.hh"
@@ -285,8 +284,8 @@ void SAKOtherAutoResponseItem::commonInitializing()
     mOptionComboBox->addItem(tr("Rx data Contains reference data"), QVariant::fromValue<int>(SAKCommonDataStructure::AutoResponseOptionContain));
     mOptionComboBox->addItem(tr("Rx data does not Contains reference data"), QVariant::fromValue<int>(SAKCommonDataStructure::AutoResponseOptionDoNotContain));
 
-    SAKGlobal::initInputTextFormatComboBox(mReferenceDataFromatComboBox);
-    SAKGlobal::initInputTextFormatComboBox(mResponseDataFormatComboBox);
+    mDebugPage->initInputTextFormatComboBox(mReferenceDataFromatComboBox);
+    mDebugPage->initInputTextFormatComboBox(mResponseDataFormatComboBox);
 
     connect(mDebugPage, &SAKDebugPage::bytesRead, this, &SAKOtherAutoResponseItem::bytesRead);
 }

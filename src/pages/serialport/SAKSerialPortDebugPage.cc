@@ -11,7 +11,6 @@
 #include <QWidget>
 #include <QHBoxLayout>
 
-#include "SAKGlobal.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKSerialPortDevice.hh"
 #include "SAKSerialPortDebugPage.hh"
@@ -22,7 +21,6 @@ SAKSerialPortDebugPage::SAKSerialPortDebugPage(int type, QString name, QWidget *
 
 {
     mDeviceController = new SAKSerialPortDeviceController(this);
-    setWindowTitle(SAKGlobal::debugPageNameFromType(SAKCommonDataStructure::DebugPageTypeCOM));
     initializingPage();
 }
 

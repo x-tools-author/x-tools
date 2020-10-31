@@ -7,7 +7,7 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#include "SAKGlobal.hh"
+#include "SAKDebugPage.hh"
 #include "SAKOtherTransmissionItemUdp.hh"
 
 #include "ui_SAKOtherTransmissionItemUdp.h"
@@ -27,7 +27,7 @@ SAKOtherTransmissionItemUdp::SAKOtherTransmissionItemUdp(SAKDebugPage *debugPage
     mTargetAddressLineEdit = mUi->targetAddressLineEdit;
     mTargetPortLineEdit = mUi->targetPortLineEdit;
 
-    SAKGlobal::initIpComboBox(mAddressComboBox);
+    mDebugPage->initIpComboBox(mAddressComboBox);
 }
 
 SAKOtherTransmissionItemUdp::~SAKOtherTransmissionItemUdp()

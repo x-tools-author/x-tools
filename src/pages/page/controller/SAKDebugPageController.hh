@@ -38,7 +38,7 @@ public:
      * @brief refreshDevice: Refresh the device list
      */
     virtual void refreshDevice();
-private:
+protected:
     SAKDebugPage *mDebugPage;
 signals:
     void messageChange(QString msg, bool isInfo);
