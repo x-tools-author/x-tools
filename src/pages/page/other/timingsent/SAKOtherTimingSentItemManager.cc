@@ -16,7 +16,6 @@
 #include <QJsonDocument>
 #include <QStandardPaths>
 
-#include "SAKGlobal.hh"
 #include "SAKDebugPage.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKOtherTimingSentItem.hh"

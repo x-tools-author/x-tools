@@ -13,7 +13,6 @@
 #include <QDateTime>
 #include <QCoreApplication>
 
-#include "SAKGlobal.hh"
 #include "SAKApplication.hh"
 #include "SAKDebugPageCommonDatabaseInterface.hh"
 

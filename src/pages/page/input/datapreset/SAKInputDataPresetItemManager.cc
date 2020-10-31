@@ -15,7 +15,6 @@
 #include <QStandardPaths>
 #include <QListWidgetItem>
 
-#include "SAKGlobal.hh"
 #include "SAKDebugPage.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKCommonCrcInterface.hh"

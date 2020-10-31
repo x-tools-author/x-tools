@@ -11,7 +11,6 @@
 #include <QtEndian>
 #include <QEventLoop>
 
-#include "SAKGlobal.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKCommonCrcInterface.hh"
 #include "SAKInputDataFactory.hh"

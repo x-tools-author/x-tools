@@ -20,7 +20,6 @@
 #include <QIntValidator>
 #include <QLoggingCategory>
 
-#include "SAKGlobal.hh"
 #include "SAKDebugPage.hh"
 #include "SAKApplication.hh"
 #include "SAKDebugPageDevice.hh"

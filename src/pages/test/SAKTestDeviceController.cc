@@ -12,9 +12,9 @@
 #include <QMetaEnum>
 #include <QLineEdit>
 
-#include "SAKGlobal.hh"
 #include "SAKTestDeviceController.hh"
 #include "ui_SAKTestDeviceController.h"
+
 SAKTestDeviceController::SAKTestDeviceController(SAKDebugPage *debugPage, QWidget *parent)
     :SAKDebugPageController(debugPage, parent)
     ,mUi(new Ui::SAKTestDeviceController)
