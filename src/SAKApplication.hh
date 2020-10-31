@@ -10,9 +10,15 @@
 #ifndef SAKAPPLICATION_HH
 #define SAKAPPLICATION_HH
 
+#include <QSettings>
 #include <QTranslator>
 #include <QApplication>
 #include <QStyleFactory>
+
+#ifdef SAK_IMPORT_SQL_MODULE
+#include <QSqlError>
+#include <QSqlDatabase>
+#endif
 
 class SAKMainWindow;
 class SAKApplication:public QApplication
@@ -35,11 +41,41 @@ public:
     SAKMainWindow *mainWindow();
 
     QDateTime *buildDateTime();
+
+#ifdef SAK_IMPORT_SQL_MODULE
+    /**
+     * @brief sqlDatabase: Get the instance of sql database
+     * @return The instance of sql database
+     */
+    QSqlDatabase *sqlDatabase();
+#endif
+
+    /**
+     * @brief dataPath: Get the settings file.
+     * @return
+     */
+    QString dataPath();
+
+    /**
+     * @brief settings: Get the pointer of settings instance
+     * @return The pointer of settings instance
+     */
+    QSettings *settings();
 private:
+    struct SettingsKeyContext {
+        QString lastDateTime; // The last time of starting
+    }mSettingsKeyContext;
+
     QTranslator mQtTranslator;
     QTranslator mQtBaseTranslator;
     QTranslator mSakTranslator;
     SAKMainWindow *mMainWindow;
+    QSettings *mSettings;
+    QString mDatabaseName;
+    QString mLastDataTime;
+#ifdef SAK_IMPORT_SQL_MODULE
+    QSqlDatabase mSqlDatabase;
+#endif
 };
 
 #endif

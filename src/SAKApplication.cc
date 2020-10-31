@@ -15,14 +15,15 @@
 #include <QAction>
 #include <QDateTime>
 #include <QSettings>
+#include <QTextCodec>
 #include <QTextCursor>
 #include <QTranslator>
+#include <QStandardPaths>
 #include <QDesktopWidget>
 
 #include "SAKSettings.hh"
 #include "SAKSettings.hh"
 #include "SAKMainWindow.hh"
-#include "SAKSqlDatabase.hh"
 #include "SAKApplication.hh"
 #include "SAKSplashScreen.hh"
 
@@ -31,10 +32,35 @@ SAKApplication::SAKApplication(int argc, char **argv)
     :QApplication (argc, argv)
     ,mMainWindow(Q_NULLPTR)
 {
-    // Initialize some information about application.
+    // Initializing some information about application.
     setOrganizationName(QString("Qter"));
     setOrganizationDomain(QString("IT"));
     setApplicationName(QString("QtSwissArmyKnife"));
+
+    // Initlialzing the setting key
+    mSettingsKeyContext.lastDateTime = QString("%1/lastDateTime").arg(applicationName());
+
+    QString path = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
+    const QString fileName = QString("%1/%2.ini").arg(path).arg(qApp->applicationName());
+    mSettings = new QSettings(fileName, QSettings::IniFormat);
+    mSettings->setIniCodec(QTextCodec::codecForName("UTF-8"));
+    mLastDataTime = mSettings->value(mSettingsKeyContext.lastDateTime).toString();
+    mSettings->setValue(mSettingsKeyContext.lastDateTime, QDateTime::currentDateTime().toString(QLocale::system().dateFormat()));
+
+#ifdef SAK_IMPORT_SQL_MODULE
+    mDatabaseName = QString("%1/%2.sqlite3").arg(path).arg(qApp->applicationName());
+    mSqlDatabase = QSqlDatabase::addDatabase("QSQLITE");
+    mSqlDatabase.setDatabaseName(mDatabaseName);
+    // Do something useless
+    mSqlDatabase.setHostName("localhost");
+    mSqlDatabase.setUserName("Qter");
+    mSqlDatabase.setPassword("QterPassword");
+
+    if (!mSqlDatabase.open()){
+        qWarning() << __FUNCTION__ << "QSAKDatabase.sqlite3 open failed: " << mSqlDatabase.lastError().text();
+        Q_ASSERT_X(false, __FUNCTION__, "Open database failed!");
+    }
+#endif
 
     // Setup language packet at first.
     installLanguage();
@@ -53,7 +79,7 @@ SAKApplication::SAKApplication(int argc, char **argv)
             qInfo() << "Remove settings file successfully!";
         }
 
-        QFile databaseFile(SAKSqlDatabase::fullPath());
+        QFile databaseFile(mDatabaseName);
         if (databaseFile.remove()){
             qInfo() << "Remove database successfully!";
         }else{
@@ -64,7 +90,6 @@ SAKApplication::SAKApplication(int argc, char **argv)
 
     // Initialize some global variables.
     SAKSettings::instance();
-    SAKSqlDatabase::instance();
 
     // Set application version, if micro SAK_VERSION is not defined, the application version is "0.0.0"
 #ifndef SAK_VERSION
@@ -92,6 +117,9 @@ SAKApplication::SAKApplication(int argc, char **argv)
 SAKApplication::~SAKApplication()
 {
     delete mMainWindow;
+    if (mSqlDatabase.isOpen()){
+        mSqlDatabase.close();
+    }
 }
 
 void SAKApplication::installLanguage()
@@ -127,4 +155,25 @@ QDateTime *SAKApplication::buildDateTime()
 {
     QDateTime *dateaTime = new QDateTime(QLocale(QLocale::English).toDateTime(QString(__DATE__) + QString(__TIME__), "MMM dd yyyyhh:mm:ss"));
     return dateaTime;
+}
+
+#ifdef SAK_IMPORT_SQL_MODULE
+QSqlDatabase *SAKApplication::sqlDatabase()
+{
+    return &mSqlDatabase;
+}
+#endif
+
+QString SAKApplication::dataPath()
+{
+    QString path = mSettings->fileName();
+    QStringList temp = path.split('/');
+    path = path.remove(temp.last());
+
+    return path;
+}
+
+QSettings *SAKApplication::settings()
+{
+    return mSettings;
 }
