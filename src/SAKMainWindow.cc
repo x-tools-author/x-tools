@@ -36,8 +36,6 @@
 #include <QDesktopServices>
 
 #include "SAKGlobal.hh"
-#include "SAKSettings.hh"
-#include "SAKSettings.hh"
 #include "SAKMainWindow.hh"
 #include "QtAppStyleApi.hh"
 #include "SAKApplication.hh"
@@ -73,9 +71,12 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     ,mUi(new Ui::SAKMainWindow)
     ,mTabWidget(new QTabWidget)
 {
+    mSettingsKeyContext.enableTestPage = QString("%1/enableTestPage").arg(qApp->applicationName());
+    mSettingsKeyContext.appStylesheet = QString("%1/appStylesheet").arg(qApp->applicationName());
+
     mUi->setupUi(this);
     mUpdateManager = new SAKUpdateManager(this);
-    mUpdateManager->setSettings(SAKSettings::instance());
+    mUpdateManager->setSettings(qobject_cast<SAKApplication*>(qApp)->settings());
 
     initializingMetaObject();
 
@@ -111,7 +112,7 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     // Do not set applicaiton stype for android palrform.
     // For macOS platform, do not use the application style named "Windows"
 #ifndef Q_OS_ANDROID
-    QString settingStyle = SAKSettings::instance()->appStyle();
+    QString settingStyle = sakApp->settings()->value(sakApp->settingsKeyContext()->appStyle).toString();
     if (settingStyle.isEmpty()){
         QStringList styleKeys = QStyleFactory::keys();
 #ifdef Q_OS_MACOS
@@ -135,7 +136,7 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     QMetaEnum metaEnum = QMetaEnum::fromType<SAKEnumDebugPageType>();
     for (int i = 0; i < metaEnum.keyCount(); i++){
         // Test page is selectable
-        bool enableTestPage = SAKSettings::instance()->value(mSettingKeyEnableTestPage).toBool();
+        bool enableTestPage = sakApp->settings()->value(mSettingsKeyContext.enableTestPage).toBool();
         if (!enableTestPage && (metaEnum.value(i) == DebugPageTypeTest)){
             continue;
         }
@@ -263,7 +264,7 @@ void SAKMainWindow::initOptionMenu()
 
     stylesheetMenu->addSeparator();
     stylesheetMenu->addActions(QtStyleSheetApi::instance()->actions());
-    QString styleSheetName = SAKSettings::instance()->appStylesheet();
+    QString styleSheetName = sakApp->settings()->value(mSettingsKeyContext.appStylesheet).toString();
     if (!styleSheetName.isEmpty()){
         QtStyleSheetApi::instance()->setStyleSheet(styleSheetName);
     }else{
@@ -274,7 +275,7 @@ void SAKMainWindow::initOptionMenu()
     QMenu *appStyleMenu = new QMenu(tr("Application Style"), this);
     optionMenu->addMenu(appStyleMenu);
     appStyleMenu->addActions(QtAppStyleApi::instance()->actions());
-    QString style = SAKSettings::instance()->appStyle();
+    QString style = sakApp->settings()->value(sakApp->settingsKeyContext()->appStyle).toString();
     QtAppStyleApi::instance()->setStyle(style);
 
     optionMenu->addSeparator();
@@ -283,7 +284,7 @@ void SAKMainWindow::initOptionMenu()
     optionMenu->addAction(mTestPageAction);
     mTestPageAction->setCheckable(true);
     connect(mTestPageAction, &QAction::triggered, this, &SAKMainWindow::testPageActionTriggered);
-    bool enableTestPage = SAKSettings::instance()->value(mSettingKeyEnableTestPage).toBool();
+    bool enableTestPage = sakApp->settings()->value(mSettingsKeyContext.enableTestPage).toBool();
     if (enableTestPage){
         mTestPageAction->setChecked(true);
     }else{
@@ -306,7 +307,7 @@ void SAKMainWindow::initLanguageMenu()
     QMenu *languageMenu = new QMenu(tr("&Languages"), this);
     menuBar()->addMenu(languageMenu);
 
-    QString language = SAKSettings::instance()->language();
+    QString language = sakApp->settings()->value(sakApp->settingsKeyContext()->language).toString();
 
     QFile file(":/translations/sak/Translations.json");
     file.open(QFile::ReadOnly);
@@ -420,7 +421,7 @@ void SAKMainWindow::initLinksMenu()
 
 void SAKMainWindow::changeStylesheet(QString styleSheetName)
 {
-    SAKSettings::instance()->setAppStylesheet(styleSheetName);
+    sakApp->settings()->setValue(mSettingsKeyContext.appStylesheet, styleSheetName);
     if (!styleSheetName.isEmpty()){
         mDefaultStyleSheetAction->setChecked(false);
     }
@@ -428,7 +429,7 @@ void SAKMainWindow::changeStylesheet(QString styleSheetName)
 
 void SAKMainWindow::changeAppStyle(QString appStyle)
 {
-    SAKSettings::instance()->setAppStyle(appStyle);
+    sakApp->settings()->setValue(sakApp->settingsKeyContext()->appStyle, appStyle);
 }
 
 void SAKMainWindow::aboutQsak()
@@ -494,13 +495,13 @@ void SAKMainWindow::testPageActionTriggered()
     // ??
     bool checked = mTestPageAction->isChecked();
     mTestPageAction->setChecked(checked);
-    SAKSettings::instance()->setValue(mSettingKeyEnableTestPage, QVariant::fromValue(checked));
+    sakApp->settings()->setValue(mSettingsKeyContext.enableTestPage, QVariant::fromValue(checked));
     rebootRequestion();
 };
 
 void SAKMainWindow::clearConfiguration()
 {
-    SAKSettings::instance()->setValue(mSettingKeyClearConfiguration, QVariant::fromValue(true));
+    sakApp->settings()->setValue(sakApp->settingsKeyContext()->removeSettingsFile, QVariant::fromValue(true));
     rebootRequestion();
 }
 
@@ -691,7 +692,7 @@ void SAKMainWindow::installLanguage()
 
             QString language = action->objectName();
             QString name = action->data().toString();
-            SAKSettings::instance()->setLanguage(language+"-"+name);
+            sakApp->settings()->setValue(sakApp->settingsKeyContext()->language, QVariant::fromValue(QString(language + "-" + name)));
             qobject_cast<SAKApplication*>(qApp)->installLanguage();
             rebootRequestion();
         }

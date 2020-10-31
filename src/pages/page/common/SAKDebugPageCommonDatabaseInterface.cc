@@ -14,7 +14,6 @@
 #include <QCoreApplication>
 
 #include "SAKGlobal.hh"
-#include "SAKSettings.hh"
 #include "SAKApplication.hh"
 #include "SAKDebugPageCommonDatabaseInterface.hh"
 

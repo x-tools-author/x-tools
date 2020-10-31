@@ -9,7 +9,6 @@
  */
 #include <QDebug>
 
-#include "SAKSettings.hh"
 #include "SAKDebugPage.hh"
 #include "SAKOtherTransmissionPageViewer.hh"
 #include "SAKOtherHighlighterManager.hh"
@@ -26,7 +25,7 @@ SAKDebugPageOtherController::SAKDebugPageOtherController(SAKDebugPage *debugPage
     mHighlightSettingsWidget = new SAKOtherHighlighterManager(mDebugPage->mOutputTextBroswer->document());
     mAutoResponseSettingWidget = new SAKOtherAutoResponseItemManager(mDebugPage);
     mTimingSendingSettingsWidget = new SAKOtherTimingSentItemManager(mDebugPage);
-    mAnalyzerThreadManager = new SAKOtherAnalyzerThreadManager(SAKSettings::instance());
+    mAnalyzerThreadManager = new SAKOtherAnalyzerThreadManager(debugPage->settings());
 
     moreSettingsPushButton = mDebugPage->mMoreSettingsPushButton;
     timingSendingPushButton = mDebugPage->mTimingSendingPushButton;

@@ -69,6 +69,11 @@ public:
     };
     Q_ENUM(SAKEnumDebugPageType);
 private:
+    struct SettingsKeyContext {
+        QString enableTestPage;
+        QString appStylesheet;
+    }mSettingsKeyContext;
+
     struct SAKDebugPageMetaInfo {
         int debugPageType;
         QMetaObject metaObject;

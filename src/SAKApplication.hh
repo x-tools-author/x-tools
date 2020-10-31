@@ -20,6 +20,8 @@
 #include <QSqlDatabase>
 #endif
 
+#define sakApp (static_cast<SAKApplication *>(QCoreApplication::instance()))
+
 class SAKMainWindow;
 class SAKApplication:public QApplication
 {
@@ -27,6 +29,14 @@ class SAKApplication:public QApplication
 public:
     explicit SAKApplication(int argc, char **argv);
     ~SAKApplication();
+
+    struct SettingsKeyContext {
+        QString lastDateTime; // The last time of starting
+        QString removeSettingsFile;
+        QString removeDatabase;
+        QString language;
+        QString appStyle;
+    };
 
     /**
      * @brief installLanguage: Setup the language packet of application.
@@ -61,11 +71,10 @@ public:
      * @return The pointer of settings instance
      */
     QSettings *settings();
-private:
-    struct SettingsKeyContext {
-        QString lastDateTime; // The last time of starting
-    }mSettingsKeyContext;
 
+    SettingsKeyContext *settingsKeyContext();
+private:
+    SettingsKeyContext mSettingsKeyContext;
     QTranslator mQtTranslator;
     QTranslator mQtBaseTranslator;
     QTranslator mSakTranslator;
@@ -73,6 +82,7 @@ private:
     QSettings *mSettings;
     QString mDatabaseName;
     QString mLastDataTime;
+    QString mSettingsFileName;
 #ifdef SAK_IMPORT_SQL_MODULE
     QSqlDatabase mSqlDatabase;
 #endif

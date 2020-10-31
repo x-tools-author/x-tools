@@ -21,8 +21,6 @@
 #include <QStandardPaths>
 #include <QDesktopWidget>
 
-#include "SAKSettings.hh"
-#include "SAKSettings.hh"
 #include "SAKMainWindow.hh"
 #include "SAKApplication.hh"
 #include "SAKSplashScreen.hh"
@@ -32,22 +30,28 @@ SAKApplication::SAKApplication(int argc, char **argv)
     :QApplication (argc, argv)
     ,mMainWindow(Q_NULLPTR)
 {
-    // Initializing some information about application.
+    // Initialize some information about application.
     setOrganizationName(QString("Qter"));
     setOrganizationDomain(QString("IT"));
     setApplicationName(QString("QtSwissArmyKnife"));
 
-    // Initlialzing the setting key
+    // Initialize the setting key
     mSettingsKeyContext.lastDateTime = QString("%1/lastDateTime").arg(applicationName());
+    mSettingsKeyContext.removeSettingsFile = QString("%1/removeSettingsFile").arg(applicationName());
+    mSettingsKeyContext.removeDatabase = QString("%1/removeDatabase").arg(applicationName());
+    mSettingsKeyContext.language = QString("%1/language").arg(applicationName());
+    mSettingsKeyContext.appStyle = QString("%1/appStyle").arg(applicationName());
 
+    // Initialize the settings file
     QString path = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
-    const QString fileName = QString("%1/%2.ini").arg(path).arg(qApp->applicationName());
-    mSettings = new QSettings(fileName, QSettings::IniFormat);
+    mSettingsFileName = QString("%1/%2.ini").arg(path).arg(qApp->applicationName());
+    mSettings = new QSettings(mSettingsFileName, QSettings::IniFormat);
     mSettings->setIniCodec(QTextCodec::codecForName("UTF-8"));
     mLastDataTime = mSettings->value(mSettingsKeyContext.lastDateTime).toString();
     mSettings->setValue(mSettingsKeyContext.lastDateTime, QDateTime::currentDateTime().toString(QLocale::system().dateFormat()));
 
 #ifdef SAK_IMPORT_SQL_MODULE
+    // Initialize the data base
     mDatabaseName = QString("%1/%2.sqlite3").arg(path).arg(qApp->applicationName());
     mSqlDatabase = QSqlDatabase::addDatabase("QSQLITE");
     mSqlDatabase.setDatabaseName(mDatabaseName);
@@ -70,14 +74,17 @@ SAKApplication::SAKApplication(int argc, char **argv)
     splashScreen->show();
     processEvents();
 
-    // Remove settings files
-    QSettings settings(SAKSettings::fullPath(), QSettings::IniFormat);
-    if (settings.value(SAKMainWindow::settingKeyClearConfiguration()).toBool()){
-        settings.setValue(SAKMainWindow::settingKeyClearConfiguration(), QVariant::fromValue(false));
-
-        if (QFile::remove(SAKSettings::fullPath())){
+    // Remove settings file
+    if (mSettings->value(mSettingsKeyContext.removeSettingsFile).toBool()){
+        mSettings->setValue(mSettingsKeyContext.removeSettingsFile, QVariant::fromValue(false));
+        if (QFile::remove(mSettingsFileName)){
             qInfo() << "Remove settings file successfully!";
         }
+    }
+
+    // Remove database
+    if (mSettings->value(mSettingsKeyContext.removeDatabase).toBool()){
+        mSettings->setValue(mSettingsKeyContext.removeDatabase, QVariant::fromValue(false));
 
         QFile databaseFile(mDatabaseName);
         if (databaseFile.remove()){
@@ -86,10 +93,6 @@ SAKApplication::SAKApplication(int argc, char **argv)
             qWarning() << "Remove database failed: " << databaseFile.errorString();
         }
     }
-
-
-    // Initialize some global variables.
-    SAKSettings::instance();
 
     // Set application version, if micro SAK_VERSION is not defined, the application version is "0.0.0"
 #ifndef SAK_VERSION
@@ -124,7 +127,7 @@ SAKApplication::~SAKApplication()
 
 void SAKApplication::installLanguage()
 {
-    QString language = SAKSettings::instance()->language();
+    QString language = mSettings->value(mSettingsKeyContext.language).toString();
     QString qmName;
     if (language.isEmpty()){
         if (QLocale().country() == QLocale::China){
@@ -176,4 +179,9 @@ QString SAKApplication::dataPath()
 QSettings *SAKApplication::settings()
 {
     return mSettings;
+}
+
+SAKApplication::SettingsKeyContext *SAKApplication::settingsKeyContext()
+{
+    return &mSettingsKeyContext;
 }

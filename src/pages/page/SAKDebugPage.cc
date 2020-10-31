@@ -21,7 +21,6 @@
 #include <QLoggingCategory>
 
 #include "SAKGlobal.hh"
-#include "SAKSettings.hh"
 #include "SAKDebugPage.hh"
 #include "SAKApplication.hh"
 #include "SAKDebugPageDevice.hh"
@@ -118,7 +117,7 @@ quint32 SAKDebugPage::pageType()
 
 QSettings *SAKDebugPage::settings()
 {
-    return SAKSettings::instance();
+    return static_cast<SAKApplication*>(qApp)->settings();
 }
 
 QSqlDatabase *SAKDebugPage::sqlDatabase()
