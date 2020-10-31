@@ -36,6 +36,14 @@ SAKApplication::SAKApplication(int argc, char **argv)
     setOrganizationDomain(QString("IT"));
     setApplicationName(QString("QtSwissArmyKnife"));
 
+    // It can avoid app crash in this way to show a splashScreen.
+    // If you new a QSplashScreen and show it in the main function, app will crash(test on Ubuntu 16.04).
+    // Of course, it is because that I use a wrong way, also, it could be a bug of Qt.
+    mSplashScreen = new QSplashScreen(QPixmap(":/resources/images/StartUi.jpg"));
+    showSplashScreenMessage(tr("Initializing..."));
+    mSplashScreen->show();
+    processEvents();
+
     // Initialize the setting key
     mSettingsKeyContext.lastDateTime = QString("%1/lastDateTime").arg(applicationName());
     mSettingsKeyContext.removeSettingsFile = QString("%1/removeSettingsFile").arg(applicationName());
@@ -212,6 +220,16 @@ void SAKApplication::setSharedMemoryValue(uint8_t value)
         ptr[0] = value;
     }
     mSharedMemory->unlock();
+}
+
+QSplashScreen *SAKApplication::splashScreen()
+{
+    return mSplashScreen;
+}
+
+void SAKApplication::showSplashScreenMessage(QString msg)
+{
+    mSplashScreen->showMessage(msg, Qt::AlignBottom, QColor(255, 255, 255));
 }
 
 #ifdef SAK_IMPORT_SQL_MODULE

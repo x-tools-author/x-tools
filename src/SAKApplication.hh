@@ -15,6 +15,7 @@
 #include <QApplication>
 #include <QSharedMemory>
 #include <QStyleFactory>
+#include <QSplashScreen>
 
 #ifdef SAK_IMPORT_SQL_MODULE
 #include <QSqlError>
@@ -47,6 +48,8 @@ public:
     void checkSharedMemory();
     bool instanceIsExisted();
     void setSharedMemoryValue(uint8_t value);
+    QSplashScreen *splashScreen();
+    void showSplashScreenMessage(QString msg);
 #ifdef SAK_IMPORT_SQL_MODULE
     QSqlDatabase *sqlDatabase();
 #endif
@@ -61,6 +64,7 @@ private:
     QString mSettingsFileName;
     QSharedMemory *mSharedMemory;
     bool mIsExisted;
+    QSplashScreen *mSplashScreen;
 #ifdef SAK_IMPORT_SQL_MODULE
     QSqlDatabase mSqlDatabase;
 #endif
