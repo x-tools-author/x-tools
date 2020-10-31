@@ -74,7 +74,6 @@ private:
     QTranslator mQtTranslator;
     QTranslator mQtBaseTranslator;
     QTranslator mSakTranslator;
-    SAKMainWindow *mMainWindow;
     QSettings *mSettings;
     QString mDatabaseName;
     QString mLastDataTime;
