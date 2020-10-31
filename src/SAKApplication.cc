@@ -62,20 +62,14 @@ SAKApplication::SAKApplication(int argc, char **argv)
     }
 #endif
 
-    // Setup language packet at first.
-    installLanguage();
-
-    // Remove settings file
+    // Remove settings file and database
     if (mSettings->value(mSettingsKeyContext.removeSettingsFile).toBool()){
         mSettings->setValue(mSettingsKeyContext.removeSettingsFile, QVariant::fromValue(false));
         if (QFile::remove(mSettingsFileName)){
             qInfo() << "Remove settings file successfully!";
+        }else{
+            qWarning() << "Remove settings file failed!";
         }
-    }
-
-    // Remove database
-    if (mSettings->value(mSettingsKeyContext.removeDatabase).toBool()){
-        mSettings->setValue(mSettingsKeyContext.removeDatabase, QVariant::fromValue(false));
 
         QFile databaseFile(mDatabaseName);
         if (databaseFile.remove()){
@@ -91,6 +85,7 @@ SAKApplication::SAKApplication(int argc, char **argv)
 #else
     setApplicationVersion(SAK_VERSION);
 #endif
+    installLanguage();
 }
 
 SAKApplication::~SAKApplication()
