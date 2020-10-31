@@ -163,7 +163,6 @@ HEADERS += \
     src/SAKApplication.hh \
     src/SAKGlobal.hh \
     src/SAKMainWindow.hh \
-    src/SAKSqlDatabase.hh \
     src/common/SAKCommonCrcInterface.hh \
     src/common/SAKCommonDataStructure.hh \
     src/common/SAKCommonInterface.hh \
@@ -224,7 +223,6 @@ SOURCES += \
     src/SAKApplication.cc \
     src/SAKGlobal.cc \
     src/SAKMainWindow.cc \
-    src/SAKSqlDatabase.cc \
     src/common/SAKCommonCrcInterface.cc \
     src/common/SAKCommonDataStructure.cc \
     src/common/SAKCommonInterface.cc \
