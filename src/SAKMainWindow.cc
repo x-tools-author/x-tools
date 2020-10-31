@@ -35,7 +35,6 @@
 #include <QJsonParseError>
 #include <QDesktopServices>
 
-#include "SAKGlobal.hh"
 #include "SAKMainWindow.hh"
 #include "QtAppStyleApi.hh"
 #include "SAKApplication.hh"
