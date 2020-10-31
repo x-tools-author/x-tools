@@ -125,7 +125,6 @@ INCLUDEPATH += \
     src/pages/test \
     src/pages/udp/client \
     src/pages/udp/server \
-    src/splashscreen \
     src/update
 
 FORMS += \
@@ -154,7 +153,6 @@ FORMS += \
     src/pages/udp/client/SAKUdpClientDeviceController.ui \
     src/pages/udp/client/SAKUdpClientMulticastEditingDialog.ui \
     src/pages/udp/server/SAKUdpServerDeviceController.ui \
-    src/singleton/SAKSingletonErrorDialog.ui \
     src/update/SAKDownloadItemWidget.ui \
     src/update/SAKUpdateManager.ui
 
@@ -210,8 +208,6 @@ HEADERS += \
     src/pages/udp/server/SAKUdpServerDebugPage.hh \
     src/pages/udp/server/SAKUdpServerDevice.hh \
     src/pages/udp/server/SAKUdpServerDeviceController.hh \
-    src/singleton/SAKSingletonErrorDialog.hh \
-    src/splashscreen/SAKSplashScreen.hh \
     src/update/SAKDownloadItemWidget.hh \
     src/update/SAKUpdateManager.hh
 
@@ -268,8 +264,6 @@ SOURCES += \
     src/pages/udp/server/SAKUdpServerDebugPage.cc \
     src/pages/udp/server/SAKUdpServerDevice.cc \
     src/pages/udp/server/SAKUdpServerDeviceController.cc \
-    src/singleton/SAKSingletonErrorDialog.cc \
-    src/splashscreen/SAKSplashScreen.cc \
     src/update/SAKDownloadItemWidget.cc \
     src/update/SAKUpdateManager.cc
 
