@@ -161,7 +161,6 @@ FORMS += \
 
 HEADERS += \
     src/SAKApplication.hh \
-    src/SAKGlobal.hh \
     src/SAKMainWindow.hh \
     src/common/SAKCommonCrcInterface.hh \
     src/common/SAKCommonDataStructure.hh \
@@ -220,7 +219,6 @@ HEADERS += \
 
 SOURCES += \
     src/SAKApplication.cc \
-    src/SAKGlobal.cc \
     src/SAKMainWindow.cc \
     src/common/SAKCommonCrcInterface.cc \
     src/common/SAKCommonDataStructure.cc \
