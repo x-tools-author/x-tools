@@ -22,7 +22,6 @@
 
 #define sakApp (static_cast<SAKApplication *>(QCoreApplication::instance()))
 
-class SAKMainWindow;
 class SAKApplication:public QApplication
 {
     Q_OBJECT
@@ -45,13 +44,10 @@ public:
     void installLanguage();
 
     /**
-     * @brief mainWindow: Get the instance of main window
-     * @return Instance of main window
+     * @brief buildDateTime: Get the build date time info
+     * @return The build date time info
      */
-    SAKMainWindow *mainWindow();
-
     QDateTime *buildDateTime();
-
 #ifdef SAK_IMPORT_SQL_MODULE
     /**
      * @brief sqlDatabase: Get the instance of sql database
