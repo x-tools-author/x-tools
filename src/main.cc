@@ -53,7 +53,10 @@ int main(int argc, char *argv[])
 
         // Show a splash screen.
         QSplashScreen splashScreen(QPixmap(":/resources/images/StartUi.jpg"));
+#ifdef Q_OS_WIN
+        // The application will crash on Ubuntu 16.04 when calling the function.
         splashScreen.show();
+#endif
         app.processEvents();
 
         // Setup main window
