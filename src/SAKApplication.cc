@@ -54,7 +54,7 @@ SAKApplication::SAKApplication(int argc, char **argv)
 
     // The application is singleton in default
     if (mSettings->value(mSettingsKeyContext.enableSingleton).isNull()){
-        mSettings->setValue(mSettingsKeyContext.enableSingleton, true);
+        mSettings->setValue(mSettingsKeyContext.enableSingleton, false);
     }
 
     // Checked the shared memory, if the value of shared memory is 1(anothor app sets the value), emit a signal to outside.
