@@ -11,12 +11,17 @@
 #include <QFile>
 #include <QTimer>
 #include <QDebug>
+#include <QLabel>
 #include <QAction>
+#include <QDialog>
 #include <QDateTime>
 #include <QSettings>
 #include <QTextCodec>
+#include <QSizePolicy>
+#include <QGridLayout>
 #include <QTextCursor>
 #include <QTranslator>
+#include <QPushButton>
 #include <QStandardPaths>
 #include <QDesktopWidget>
 
@@ -37,6 +42,7 @@ SAKApplication::SAKApplication(int argc, char **argv)
     mSettingsKeyContext.removeDatabase = QString("%1/removeDatabase").arg(applicationName());
     mSettingsKeyContext.language = QString("%1/language").arg(applicationName());
     mSettingsKeyContext.appStyle = QString("%1/appStyle").arg(applicationName());
+    mSettingsKeyContext.enableSingleton = QString("%1/enableSingleton").arg(applicationName());
 
     // Initialize the settings file
     QString path = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
@@ -45,6 +51,34 @@ SAKApplication::SAKApplication(int argc, char **argv)
     mSettings->setIniCodec(QTextCodec::codecForName("UTF-8"));
     mLastDataTime = mSettings->value(mSettingsKeyContext.lastDateTime).toString();
     mSettings->setValue(mSettingsKeyContext.lastDateTime, QDateTime::currentDateTime().toString(QLocale::system().dateFormat()));
+
+    // The application is singleton in default
+    if (mSettings->value(mSettingsKeyContext.enableSingleton).isNull()){
+        mSettings->setValue(mSettingsKeyContext.enableSingleton, true);
+    }
+
+    // Checked the shared memory, if the value of shared memory is 1(anothor app sets the value), emit a signal to outside.
+    bool enableSingleton = mSettings->value(mSettingsKeyContext.enableSingleton).toBool();
+    if (enableSingleton){
+        mSharedMemory = new QSharedMemory(QString("QtSwissArmyKnife"));
+        mSharedMemory->attach();
+        bool result = mSharedMemory->create(1, QSharedMemory::ReadWrite);
+        if (result){
+            setSharedMemoryValue(0);
+            QTimer *timer = new QTimer(this);
+            timer->setInterval(2*1000);
+            connect(timer, &QTimer::timeout, this, &SAKApplication::checkSharedMemory);
+            timer->start();
+        }
+#ifdef Q_OS_ANDROID
+        Q_UNUSED(ret);
+        mIsExisted = false;
+#else
+        mIsExisted = !result;
+#endif
+    }else{
+        mIsExisted = false;
+    }
 
 #ifdef SAK_IMPORT_SQL_MODULE
     // Initialize the data base
@@ -92,6 +126,10 @@ SAKApplication::~SAKApplication()
 {
     if (mSqlDatabase.isOpen()){
         mSqlDatabase.close();
+    }
+
+    if (mSharedMemory->isAttached()){
+        mSharedMemory->detach();
     }
 }
 
@@ -142,6 +180,34 @@ QSettings *SAKApplication::settings()
 SAKApplication::SettingsKeyContext *SAKApplication::settingsKeyContext()
 {
     return &mSettingsKeyContext;
+}
+
+void SAKApplication::checkSharedMemory()
+{
+    mSharedMemory->lock();
+    uint8_t *ptr = reinterpret_cast<uint8_t*>(mSharedMemory->data());
+    if (ptr){
+        if (ptr[0]){
+            emit activeMainWindow();
+            ptr[0] = 0;
+        }
+    }
+    mSharedMemory->unlock();
+}
+
+bool SAKApplication::instanceIsExisted()
+{
+    return mIsExisted;
+}
+
+void SAKApplication::setSharedMemoryValue(uint8_t value)
+{
+    mSharedMemory->lock();
+    uint8_t *ptr = reinterpret_cast<uint8_t*>(mSharedMemory->data());
+    if (ptr){
+        ptr[0] = value;
+    }
+    mSharedMemory->unlock();
 }
 
 #ifdef SAK_IMPORT_SQL_MODULE

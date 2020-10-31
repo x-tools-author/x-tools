@@ -13,6 +13,7 @@
 #include <QSettings>
 #include <QTranslator>
 #include <QApplication>
+#include <QSharedMemory>
 #include <QStyleFactory>
 
 #ifdef SAK_IMPORT_SQL_MODULE
@@ -35,6 +36,7 @@ public:
         QString removeDatabase;
         QString language;
         QString appStyle;
+        QString enableSingleton;
     };
 
     void installLanguage();
@@ -42,6 +44,9 @@ public:
     QString dataPath();
     QSettings *settings();
     SettingsKeyContext *settingsKeyContext();
+    void checkSharedMemory();
+    bool instanceIsExisted();
+    void setSharedMemoryValue(uint8_t value);
 #ifdef SAK_IMPORT_SQL_MODULE
     QSqlDatabase *sqlDatabase();
 #endif
@@ -54,9 +59,13 @@ private:
     QString mDatabaseName;
     QString mLastDataTime;
     QString mSettingsFileName;
+    QSharedMemory *mSharedMemory;
+    bool mIsExisted;
 #ifdef SAK_IMPORT_SQL_MODULE
     QSqlDatabase mSqlDatabase;
 #endif
+signals:
+    void activeMainWindow();
 };
 
 #endif
