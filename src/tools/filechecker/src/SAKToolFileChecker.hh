@@ -29,7 +29,7 @@ class SAKToolFileChecker : public QWidget
 {
     Q_OBJECT
 public:
-    SAKToolFileChecker(QWidget *parent = Q_NULLPTR);
+    Q_INVOKABLE SAKToolFileChecker(QWidget *parent = Q_NULLPTR);
     ~SAKToolFileChecker();
 
     void setUiEnable(bool enable);

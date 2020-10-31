@@ -31,7 +31,7 @@ class SAKToolCRCCalculator:public QWidget
 {
     Q_OBJECT
 public:
-    SAKToolCRCCalculator(QWidget* parent = Q_NULLPTR);
+    Q_INVOKABLE SAKToolCRCCalculator(QWidget* parent = Q_NULLPTR);
     ~SAKToolCRCCalculator();
 protected:
     bool eventFilter(QObject *watched, QEvent *event);

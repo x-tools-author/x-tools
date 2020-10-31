@@ -23,7 +23,7 @@ extern "C" {
 #include "ui_SAKToolQRCodeCreator.h"
 
 SAKToolQRCodeCreator::SAKToolQRCodeCreator(QWidget *parent)
-    :SAKToolBase(parent)
+    :QWidget(parent)
     ,ui(new Ui::SAKToolQRCodeCreator)
 {
     ui->setupUi(this);
