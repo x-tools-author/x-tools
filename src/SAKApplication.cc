@@ -74,7 +74,11 @@ SAKApplication::SAKApplication(int argc, char **argv)
         Q_UNUSED(ret);
         mIsExisted = false;
 #else
+#if 0
         mIsExisted = !result;
+#else
+        mIsExisted = false;
+#endif
 #endif
     }else{
         mIsExisted = false;
