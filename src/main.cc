@@ -13,13 +13,11 @@
 #include <QScreen>
 #include <QPushButton>
 #include <QGridLayout>
+#include <QSplashScreen>
 #include <QDesktopWidget>
 
 #include "SAKMainWindow.hh"
 #include "SAKApplication.hh"
-#include "SAKSplashScreen.hh"
-#include "SAKSingletonController.hh"
-#include "SAKSingletonErrorDialog.hh"
 
 int main(int argc, char *argv[])
 {
@@ -54,12 +52,12 @@ int main(int argc, char *argv[])
         }
 
         // Show a splash screen.
-        SAKSplashScreen *splashScreen = SAKSplashScreen::instance();
-        splashScreen->show();
+        QSplashScreen splashScreen(QPixmap(":/resources/images/StartUi.jpg"));
+        splashScreen.show();
         app.processEvents();
 
         // Setup main window
-        splashScreen->setMessage(QObject::tr("Initializing main window..."));
+        splashScreen.showMessage(QObject::tr("Initializing main window..."), Qt::AlignBottom, QColor(255, 255, 255));
         SAKMainWindow mainWindow;
         QObject::connect(&app, &SAKApplication::activeMainWindow, &mainWindow, &SAKMainWindow::activateWindow);
         mainWindow.show();
@@ -70,8 +68,8 @@ int main(int argc, char *argv[])
         QList<QScreen*> screenList = QGuiApplication::screens();
         QScreen *screen = screenList.at(currentScreen);
         mainWindow.move((screen->geometry().width() - mainWindow.width())/2, (screen->geometry().height() - mainWindow.height())/2);
-        splashScreen->setMessage(QObject::tr("Finished..."));
-        splashScreen->finish(&mainWindow);
+        splashScreen.showMessage(QObject::tr("Finished..."), Qt::AlignBottom, QColor(255, 255, 255));
+        splashScreen.finish(&mainWindow);
 
         // If exit code is SAK_REBOOT_CODE(1314), The application will reboot.
         exitCode = app.exec();
