@@ -40,12 +40,20 @@
 #include "QtAppStyleApi.hh"
 #include "SAKApplication.hh"
 #include "QtStyleSheetApi.hh"
-#include "SAKToolsManager.hh"
 #include "SAKUpdateManager.hh"
 #include "SAKTestDebugPage.hh"
 #include "SAKCommonDataStructure.hh"
 
-// Debugging page
+// Debugging tools
+#ifdef SAK_IMPORT_FILECHECKER_MODULE
+#include "SAKToolFileChecker.hh"
+#endif
+#include "SAKToolCRCCalculator.hh"
+#ifdef SAK_IMPORT_QRCODE_MODULE
+#include "SAKToolQRCodeCreator.hh"
+#endif
+
+// Debugging pages
 #include "SAKTestDebugPage.hh"
 #include "SAKUdpClientDebugPage.hh"
 #include "SAKUdpServerDebugPage.hh"
@@ -63,7 +71,6 @@
 
 SAKMainWindow::SAKMainWindow(QWidget *parent)
     :QMainWindow(parent)
-    ,mToolsMenu(Q_NULLPTR)
     ,mDefaultStyleSheetAction(Q_NULLPTR)
     ,mUpdateManager(Q_NULLPTR)
     ,mSettingKeyEnableTestPage(QString("enableTestPage"))
@@ -78,6 +85,7 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     mUpdateManager = new SAKUpdateManager(this);
     mUpdateManager->setSettings(qobject_cast<SAKApplication*>(qApp)->settings());
 
+    initToosMetaObjectInfoList();
     initializingMetaObject();
 
 #ifdef Q_OS_ANDROID
@@ -155,16 +163,6 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
         mTabWidget->tabBar()->setTabButton(i, QTabBar::LeftSide, Q_NULLPTR);
     }
 
-    // Initializing the tools menu
-    QMetaEnum toolTypeMetaEnum = QMetaEnum::fromType<SAKCommonDataStructure::SAKEnumToolType>();
-    for (int i = 0; i < toolTypeMetaEnum.keyCount(); i++){
-        QString name = SAKGlobal::toolNameFromType(toolTypeMetaEnum.value(i));
-        QAction *action = new QAction(name, this);
-        action->setData(QVariant::fromValue(toolTypeMetaEnum.value(i)));
-        mToolsMenu->addAction(action);
-        connect(action, &QAction::triggered, this, &SAKMainWindow::showToolWidget);
-    }
-
     // Do soemthing to make the application look like more beautiful.
     connect(QtStyleSheetApi::instance(), &QtStyleSheetApi::styleSheetChanged, this, &SAKMainWindow::changeStylesheet);
     connect(QtAppStyleApi::instance(), &QtAppStyleApi::appStyleChanged, this, &SAKMainWindow::changeAppStyle);
@@ -238,7 +236,23 @@ void SAKMainWindow::initToolMenu()
 {
     QMenu *toolMenu = new QMenu(tr("&Tools"));
     menuBar()->addMenu(toolMenu);
-    mToolsMenu = toolMenu;
+
+    for (auto var : mToolMetaObjectInfoList){
+        QWidget *w = qobject_cast<QWidget*>(var.metaObject.newInstance());
+        Q_ASSERT_X(w, __FUNCTION__, "A null pointer!");
+        w->hide();
+        QAction *action = new QAction(var.title, this);
+        action->setData(QVariant::fromValue(w));
+        toolMenu->addAction(action);
+        connect(action, &QAction::triggered, this, [=](){
+            QWidget *w = action->data().value<QWidget*>();
+            if (w->isHidden()){
+                w->show();
+            }else{
+                w->activateWindow();
+            }
+        });
+    }
 }
 
 void SAKMainWindow::initOptionMenu()
@@ -548,6 +562,17 @@ void SAKMainWindow::initializingMetaObject()
 #endif
 }
 
+void SAKMainWindow::initToosMetaObjectInfoList()
+{
+#ifdef SAK_IMPORT_COM_MODULE
+    mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{SAKToolFileChecker::staticMetaObject, tr("File Checker")});
+#endif
+#ifdef SAK_IMPORT_QRCODE_MODULE
+    mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{SAKToolCRCCalculator::staticMetaObject, tr("CRC Calculator")});
+#endif
+    mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{SAKToolCRCCalculator::staticMetaObject, tr("QR Code Creator")});
+}
+
 void SAKMainWindow::showReleaseHistoryActionDialog()
 {
     QDialog dialog;
@@ -652,20 +677,6 @@ void SAKMainWindow::showQrCodeDialog()
     dialog.setModal(true);
     dialog.show();
     dialog.exec();
-}
-
-void SAKMainWindow::showToolWidget()
-{
-    if (sender()){
-        if (sender()->inherits("QAction")){
-            bool ok = false;
-            QAction *action = qobject_cast<QAction *>(sender());
-            int type = action->data().toInt(&ok);
-            if (ok){
-                SAKToolsManager::instance()->showToolWidget(type);
-            }
-        }
-    }
 }
 
 void SAKMainWindow::activePage()

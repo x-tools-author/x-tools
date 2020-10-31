@@ -68,6 +68,17 @@ public:
 #endif
     };
     Q_ENUM(SAKEnumDebugPageType);
+
+    enum SAKEnumToolType {
+#ifdef SAK_IMPORT_FILECHECKER_MODULE
+        ToolTypeFileChecker,
+#endif
+#ifdef SAK_IMPORT_QRCODE_MODULE
+        ToolTypeQRCodeCreator,
+#endif
+        ToolTypeCRCCalculator
+    };
+    Q_ENUM(SAKEnumToolType);
 private:
     struct SettingsKeyContext {
         QString enableTestPage;
@@ -81,7 +92,12 @@ private:
     };
     QList<SAKDebugPageMetaInfo> mDebugPageMetaInfoList;
 
-    QMenu *mToolsMenu;
+    struct SAKToolMetaObjectInfo {
+        QMetaObject metaObject;
+        QString title;
+    };
+    QList<SAKToolMetaObjectInfo> mToolMetaObjectInfoList;
+
     QMenu *mWindowsMenu;
     QAction *mTestPageAction;
     QAction *mDefaultStyleSheetAction;
@@ -108,17 +124,12 @@ private:
     void clearConfiguration();
     void rebootRequestion();
     void initializingMetaObject();
+    void initToosMetaObjectInfoList();
     void showReleaseHistoryActionDialog();
     QString tabPageName(int type);
     QWidget *debugPage(QObject *sender);
     void showQrCodeDialog();
 private slots:
-    /**
-     * @brief showToolWidget: Show a tool widget, the interface must be called by signal,
-     * which is emited by actions of tools menu.
-     */
-    void showToolWidget();
-
     /**
      * @brief activePage: Active the debugging page, the interface must be called by signal,
      * which is emited by actions of windows menu.
