@@ -138,6 +138,21 @@ public:
      * @return SAKDebugPageStatisticsController instance pointer
      */
     SAKDebugPageStatisticsController *statisticsController();
+
+#ifdef SAK_IMPORT_COM_MODULE
+    // Serialport interfaces
+    void initComComboBox(QComboBox *comboBox);
+    void initBaudRateComboBox(QComboBox *comboBox);
+    void initDataBitsComboBox(QComboBox *comboBox);
+    void initStopBitsComboBox(QComboBox *comboBox);
+    void initParityComboBox(QComboBox *comboBox);
+    void initFlowControlComboBox(QComboBox *comboBox);
+#endif
+    void initIpComboBox(QComboBox *comboBox, bool appendHostAny = false);
+    static void initInputTextFormatComboBox(QComboBox *comboBox);
+    void initOutputTextFormatComboBox(QComboBox *comboBox);
+    void initCRCComboBox(QComboBox *comboBox);
+    void initWebSocketSendingTypeComboBox(QComboBox *comboBox);
 public:
     /**
      * @brief deviceController: Get the device controller instance, the controller will be destroy when the page is closed.

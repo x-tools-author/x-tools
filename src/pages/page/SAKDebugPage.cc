@@ -17,8 +17,11 @@
 #include <QHBoxLayout>
 #include <QFileDialog>
 #include <QTextStream>
+#include <QHostAddress>
 #include <QIntValidator>
 #include <QLoggingCategory>
+#include <QNetworkInterface>
+#include <QStandardItemModel>
 
 #include "SAKDebugPage.hh"
 #include "SAKApplication.hh"
@@ -31,12 +34,18 @@
 #include "SAKDebugPageOtherController.hh"
 #include "SAKDebugPageInputController.hh"
 #include "SAKDebugPageOutputController.hh"
-#ifdef SAK_IMPORT_CHARTS_MODULE
-#include "SAKDebugPageChartsController.hh"
-#endif
 #include "SAKOtherAnalyzerThreadManager.hh"
 #include "SAKOtherAutoResponseItemManager.hh"
 #include "SAKDebugPageStatisticsController.hh"
+
+#ifdef SAK_IMPORT_CHARTS_MODULE
+#include "SAKDebugPageChartsController.hh"
+#endif
+
+#ifdef SAK_IMPORT_COM_MODULE
+#include <QSerialPort>
+#include <QSerialPortInfo>
+#endif
 
 #include "ui_SAKDebugPage.h"
 
@@ -154,6 +163,236 @@ SAKDebugPageOutputController *SAKDebugPage::outputController()
 SAKDebugPageStatisticsController *SAKDebugPage::statisticsController()
 {
     return mStatisticsController;
+}
+
+#ifdef SAK_IMPORT_COM_MODULE
+void SAKDebugPage::initComComboBox(QComboBox *comboBox)
+{
+    if (comboBox){
+        comboBox->clear();
+        QList<QSerialPortInfo> coms = QSerialPortInfo::availablePorts();
+        QStandardItemModel *itemModel = new QStandardItemModel(comboBox);
+        for(auto var:coms){
+            QStandardItem *item = new QStandardItem(var.portName());
+            item->setToolTip(var.description());
+            itemModel->appendRow(item);
+        }
+
+        comboBox->setModel(itemModel);
+    }
+}
+#endif
+
+#ifdef SAK_IMPORT_COM_MODULE
+void SAKDebugPage::initBaudRateComboBox(QComboBox *comboBox)
+{
+    if (comboBox){
+        comboBox->clear();
+        QList<qint32> bd = QSerialPortInfo::standardBaudRates();
+        for (auto var:bd) {
+            comboBox->addItem(QString::number(var), QVariant::fromValue(var));
+        }
+
+        comboBox->setCurrentText("9600");
+    }
+}
+#endif
+
+#ifdef SAK_IMPORT_COM_MODULE
+void SAKDebugPage::initDataBitsComboBox(QComboBox *comboBox)
+{
+    if (comboBox){
+        comboBox->clear();
+        comboBox->addItem("8", QVariant::fromValue(QSerialPort::Data8));
+        comboBox->addItem("7", QVariant::fromValue(QSerialPort::Data7));
+        comboBox->addItem("6", QVariant::fromValue(QSerialPort::Data6));
+        comboBox->addItem("5", QVariant::fromValue(QSerialPort::Data5));
+    }
+}
+#endif
+
+#ifdef SAK_IMPORT_COM_MODULE
+void SAKDebugPage::initStopBitsComboBox(QComboBox *comboBox)
+{
+    if (comboBox){
+        comboBox->clear();
+        comboBox->addItem("1", QVariant::fromValue(QSerialPort::OneStop));
+#ifdef Q_OS_WINDOWS
+        comboBox->addItem("1.5", QVariant::fromValue(QSerialPort::OneAndHalfStop));
+#endif
+        comboBox->addItem("2", QVariant::fromValue(QSerialPort::TwoStop));
+    }
+}
+#endif
+
+#ifdef SAK_IMPORT_COM_MODULE
+void SAKDebugPage::initParityComboBox(QComboBox *comboBox)
+{
+    if (comboBox){
+        comboBox->clear();
+        comboBox->addItem(tr("No"), QVariant::fromValue(QSerialPort::NoParity));
+        comboBox->addItem(tr("Even"), QVariant::fromValue(QSerialPort::EvenParity));
+        comboBox->addItem(tr("Odd"), QVariant::fromValue(QSerialPort::OddParity));
+        comboBox->addItem(tr("Space"), QVariant::fromValue(QSerialPort::SpaceParity));
+        comboBox->addItem(tr("Mark"), QVariant::fromValue(QSerialPort::MarkParity));
+    }
+}
+#endif
+
+#ifdef SAK_IMPORT_COM_MODULE
+void SAKDebugPage::initFlowControlComboBox(QComboBox *comboBox)
+{
+    if (comboBox){
+        comboBox->clear();
+        comboBox->addItem(tr("No"), QVariant::fromValue(QSerialPort::NoFlowControl));
+        comboBox->addItem(tr("Hardware"), QVariant::fromValue(QSerialPort::HardwareControl));
+        comboBox->addItem(tr("Software"), QVariant::fromValue(QSerialPort::SoftwareControl));
+    }
+}
+#endif
+
+void SAKDebugPage::initIpComboBox(QComboBox *comboBox, bool appendHostAny)
+{
+    QString localHost("127.0.0.1");
+    if (comboBox){
+        comboBox->clear();
+        comboBox->addItem(QString("::"));
+        comboBox->addItem(QString("::1"));
+        comboBox->addItem(QString("0.0.0.0"));
+        comboBox->addItem(localHost);
+        QList<QHostAddress> addresses = QNetworkInterface::allAddresses();
+        for(auto var:addresses){
+            if (var.protocol() == QAbstractSocket::IPv4Protocol) {
+                if (var.toString().compare(localHost) == 0){
+                    continue;
+                }
+                comboBox->addItem(var.toString());
+            }
+        }
+
+        if (appendHostAny){
+            comboBox->addItem(QString(SAK_HOST_ADDRESS_ANY));
+        }
+        comboBox->setCurrentText(localHost);
+    }
+}
+
+void SAKDebugPage::initInputTextFormatComboBox(QComboBox *comboBox)
+{
+    if (comboBox){
+        comboBox->clear();
+
+        QMap<int, QString> formatMap;
+        formatMap.insert(SAKCommonDataStructure::InputFormatBin, tr("BIN"));
+        formatMap.insert(SAKCommonDataStructure::InputFormatOct, tr("OTC"));
+        formatMap.insert(SAKCommonDataStructure::InputFormatDec, tr("DEC"));
+        formatMap.insert(SAKCommonDataStructure::InputFormatHex, tr("HEX"));
+        formatMap.insert(SAKCommonDataStructure::InputFormatAscii, tr("ASCII"));
+        formatMap.insert(SAKCommonDataStructure::InputFormatUtf8, tr("UTF8"));
+        formatMap.insert(SAKCommonDataStructure::InputFormatLocal, tr("SYSTEM"));
+
+        QMapIterator<int, QString> mapIterator(formatMap);
+        QStandardItemModel *itemModel = new QStandardItemModel(comboBox);
+        while (mapIterator.hasNext()) {
+            mapIterator.next();
+            QStandardItem *item = new QStandardItem(mapIterator.value());
+            item->setToolTip(mapIterator.value());
+            itemModel->appendRow(item);
+        }
+        comboBox->setModel(itemModel);
+        comboBox->setCurrentText(formatMap.value(SAKCommonDataStructure::InputFormatLocal));
+
+        // Reset the iterator...
+        while (mapIterator.hasPrevious()) {
+            mapIterator.previous();
+        }
+
+        // Set item data of combo box
+        int index = 0;
+        while (mapIterator.hasNext()) {
+            mapIterator.next();
+            comboBox->setItemData(index, QVariant::fromValue(mapIterator.key()));
+            index += 1;
+        }
+    }
+}
+
+void SAKDebugPage::initOutputTextFormatComboBox(QComboBox *comboBox)
+{
+    if (comboBox){
+        comboBox->clear();
+
+        QMap<int, QString> formatMap;
+        formatMap.insert(SAKCommonDataStructure::OutputFormatBin, tr("BIN"));
+        formatMap.insert(SAKCommonDataStructure::OutputFormatDec, tr("DEC"));
+        formatMap.insert(SAKCommonDataStructure::OutputFormatHex, tr("HEX"));
+        formatMap.insert(SAKCommonDataStructure::OutputFormatAscii, tr("ASCII"));
+        formatMap.insert(SAKCommonDataStructure::OutputFormatUtf8, tr("UTF8"));
+        formatMap.insert(SAKCommonDataStructure::OutputFormatUtf16, tr("UTF16"));
+        formatMap.insert(SAKCommonDataStructure::OutputFormatUcs4, tr("UCS4"));
+        formatMap.insert(SAKCommonDataStructure::OutputFormatStdwstring, tr("WChart"));
+        formatMap.insert(SAKCommonDataStructure::OutputFormatLocal, tr("SYSTEM"));
+
+        QMapIterator<int, QString> mapIterator(formatMap);
+        QStandardItemModel *itemModel = new QStandardItemModel(comboBox);
+        while (mapIterator.hasNext()) {
+            mapIterator.next();
+            QStandardItem *item = new QStandardItem(mapIterator.value());
+            item->setToolTip(mapIterator.value());
+            itemModel->appendRow(item);
+        }
+        comboBox->setModel(itemModel);
+        comboBox->setCurrentText(formatMap.value(SAKCommonDataStructure::OutputFormatHex));
+
+        // Reset the iterator...
+        while (mapIterator.hasPrevious()) {
+            mapIterator.previous();
+        }
+
+        // Set item data of combo box
+        int index = 0;
+        while (mapIterator.hasNext()) {
+            mapIterator.next();
+            comboBox->setItemData(index, QVariant::fromValue(mapIterator.key()));
+            index += 1;
+        }
+    }
+}
+
+void SAKDebugPage::initCRCComboBox(QComboBox *comboBox)
+{
+    if (comboBox){
+        comboBox->clear();
+        QMetaEnum enums = QMetaEnum::fromType<SAKCommonCrcInterface::CRCModel>();
+        QStandardItemModel *itemModel = new QStandardItemModel(comboBox);
+        for (int i = 0; i < enums.keyCount(); i++){
+            const QString key = enums.key(i);
+            // There may be a bug, I do not know whether will the itemModel take ownership of the item
+            // if not, a memory leak will occur after comboBox is destroyed.
+            QStandardItem *item = new QStandardItem(key);
+            item->setToolTip(key);
+            itemModel->appendRow(item);
+        }
+        comboBox->setModel(itemModel);
+
+        // add item data
+        for (int i = 0; i < comboBox->count(); i++){
+            for (int j = 0; j < enums.keyCount(); j++){
+                if (comboBox->itemText(i) == QString(enums.key(j))){
+                    comboBox->setItemData(i, enums.value(j));
+                    break;
+                }
+            }
+        }
+    }
+}
+
+void SAKDebugPage::initWebSocketSendingTypeComboBox(QComboBox *comboBox)
+{
+    if (comboBox){
+        comboBox->addItem(tr("BIN"), SAKCommonDataStructure::WebSocketSendingTypeBin);
+        comboBox->addItem(tr("TEXT"), SAKCommonDataStructure::WebSocketSendingTypeText);
+    }
 }
 
 void SAKDebugPage::initializingPage()
