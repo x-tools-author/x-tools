@@ -48,19 +48,19 @@
 **
 ****************************************************************************/
 
-#ifndef SAKFLOWLAYOUT_HH
-#define SAKFLOWLAYOUT_HH
+#ifndef SAKMOUBUSCOMMONFLOWLAYOUT_HH
+#define SAKMOUBUSCOMMONFLOWLAYOUT_HH
 
 #include <QLayout>
 #include <QRect>
 #include <QStyle>
 //! [0]
-class SAKModuleFlowLayout : public QLayout
+class SAKModbusCommonFlowLayout : public QLayout
 {
 public:
-    explicit SAKModuleFlowLayout(QWidget *parent, int margin = -1, int hSpacing = -1, int vSpacing = -1);
-    explicit SAKModuleFlowLayout(int margin = -1, int hSpacing = -1, int vSpacing = -1);
-    ~SAKModuleFlowLayout();
+    explicit SAKModbusCommonFlowLayout(QWidget *parent, int margin = -1, int hSpacing = -1, int vSpacing = -1);
+    explicit SAKModbusCommonFlowLayout(int margin = -1, int hSpacing = -1, int vSpacing = -1);
+    ~SAKModbusCommonFlowLayout();
 
     void addItem(QLayoutItem *item) override;
     int horizontalSpacing() const;

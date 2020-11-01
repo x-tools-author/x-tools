@@ -33,9 +33,6 @@ public:
         SerialPortClient,
         SerialPortServer
     };
-private slots:
-    void on_deviceTypeComboBox_currentIndexChanged(int index);
-
 private:
     int mType;
     QString mName;
@@ -43,7 +40,11 @@ private:
     QSplashScreen *mSplashScreen;
     QSqlDatabase *mSqlDatabase;
 private:
+    QWidget *controllerFromType(int type);
+private:
     Ui::SAKModbusDebugPage *ui;
+private slots:
+    void on_deviceTypeComboBox_currentIndexChanged(int index);
 };
 
 #endif // SAKMODBUSDEBUGGING_HH

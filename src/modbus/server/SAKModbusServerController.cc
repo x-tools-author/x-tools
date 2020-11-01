@@ -7,9 +7,9 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#include "SAKModbusClientController.hh"
+#include "SAKModbusServerController.hh"
 
-SAKModbusClientController::SAKModbusClientController(QWidget *parent)
+SAKModbusServerController::SAKModbusServerController(QWidget *parent)
     :SAKModbusCommonController(parent)
 {
 

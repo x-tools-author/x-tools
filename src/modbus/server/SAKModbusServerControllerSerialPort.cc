@@ -7,15 +7,15 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#include "SAKModbusCommonClientSection.hh"
+#include "SAKModbusCommonServerSection.hh"
 #include "SAKModbusCommonSerialPortSection.hh"
-#include "SAKModbusClientControllerSerialPort.hh"
+#include "SAKModbusServerControllerSerialPort.hh"
 
-SAKModbusClientControllerSerialPort::SAKModbusClientControllerSerialPort(QWidget *parent)
-    :SAKModbusClientController(parent)
+SAKModbusServerControllerSerialPort::SAKModbusServerControllerSerialPort(QWidget *parent)
+    :SAKModbusCommonController(parent)
 {
     mSerialPortSection = new SAKModbusCommonSerialPortSection(this);
-    mClientSection = new SAKModbusCommonClientSection(this);
+    mServerSection = new SAKModbusCommonServerSection(this);
     appendSection(mSerialPortSection);
-    appendSection(mClientSection);
+    appendSection(mServerSection);
 }

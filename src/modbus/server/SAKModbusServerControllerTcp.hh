@@ -7,21 +7,21 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKMODBUSCLIENTCONTROLLERTCP_HH
-#define SAKMODBUSCLIENTCONTROLLERTCP_HH
+#ifndef SAKMODBUSSERVERCONTROLLERTCP_HH
+#define SAKMODBUSSERVERCONTROLLERTCP_HH
 
-#include "SAKModbusClientController.hh"
+#include <SAKModbusCommonController.hh>
 
 class SAKModbusCommonHostSection;
-class SAKModbusCommonClientSection;
-class SAKModbusClientControllerTcp : public SAKModbusClientController
+class SAKModbusCommonServerSection;
+class SAKModbusServerControllerTcp : public SAKModbusCommonController
 {
     Q_OBJECT
 public:
-    SAKModbusClientControllerTcp(QWidget *parent = Q_NULLPTR);
+    SAKModbusServerControllerTcp(QWidget *parent = Q_NULLPTR);
 private:
     SAKModbusCommonHostSection *mHostSection;
-    SAKModbusCommonClientSection *mClientSection;
+    SAKModbusCommonServerSection *mServerSection;
 };
 
-#endif // SAKMODBUSCLIENTCONTROLLERTCP_HH
+#endif // SAKMODBUSSERVERCONTROLLERTCP_HH

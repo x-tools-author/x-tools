@@ -50,15 +50,15 @@
 
 #include <QtWidgets>
 
-#include "SAKModuleFlowLayout.hh"
+#include "SAKModbusCommonFlowLayout.hh"
 //! [1]
-SAKModuleFlowLayout::SAKModuleFlowLayout(QWidget *parent, int margin, int hSpacing, int vSpacing)
+SAKModbusCommonFlowLayout::SAKModbusCommonFlowLayout(QWidget *parent, int margin, int hSpacing, int vSpacing)
     : QLayout(parent), m_hSpace(hSpacing), m_vSpace(vSpacing)
 {
     setContentsMargins(margin, margin, margin, margin);
 }
 
-SAKModuleFlowLayout::SAKModuleFlowLayout(int margin, int hSpacing, int vSpacing)
+SAKModbusCommonFlowLayout::SAKModbusCommonFlowLayout(int margin, int hSpacing, int vSpacing)
     : m_hSpace(hSpacing), m_vSpace(vSpacing)
 {
     setContentsMargins(margin, margin, margin, margin);
@@ -66,7 +66,7 @@ SAKModuleFlowLayout::SAKModuleFlowLayout(int margin, int hSpacing, int vSpacing)
 //! [1]
 
 //! [2]
-SAKModuleFlowLayout::~SAKModuleFlowLayout()
+SAKModbusCommonFlowLayout::~SAKModbusCommonFlowLayout()
 {
     QLayoutItem *item;
     while ((item = takeAt(0)))
@@ -75,14 +75,14 @@ SAKModuleFlowLayout::~SAKModuleFlowLayout()
 //! [2]
 
 //! [3]
-void SAKModuleFlowLayout::addItem(QLayoutItem *item)
+void SAKModbusCommonFlowLayout::addItem(QLayoutItem *item)
 {
     itemList.append(item);
 }
 //! [3]
 
 //! [4]
-int SAKModuleFlowLayout::horizontalSpacing() const
+int SAKModbusCommonFlowLayout::horizontalSpacing() const
 {
     if (m_hSpace >= 0) {
         return m_hSpace;
@@ -91,7 +91,7 @@ int SAKModuleFlowLayout::horizontalSpacing() const
     }
 }
 
-int SAKModuleFlowLayout::verticalSpacing() const
+int SAKModbusCommonFlowLayout::verticalSpacing() const
 {
     if (m_vSpace >= 0) {
         return m_vSpace;
@@ -102,17 +102,17 @@ int SAKModuleFlowLayout::verticalSpacing() const
 //! [4]
 
 //! [5]
-int SAKModuleFlowLayout::count() const
+int SAKModbusCommonFlowLayout::count() const
 {
     return itemList.size();
 }
 
-QLayoutItem *SAKModuleFlowLayout::itemAt(int index) const
+QLayoutItem *SAKModbusCommonFlowLayout::itemAt(int index) const
 {
     return itemList.value(index);
 }
 
-QLayoutItem *SAKModuleFlowLayout::takeAt(int index)
+QLayoutItem *SAKModbusCommonFlowLayout::takeAt(int index)
 {
     if (index >= 0 && index < itemList.size())
         return itemList.takeAt(index);
@@ -121,19 +121,19 @@ QLayoutItem *SAKModuleFlowLayout::takeAt(int index)
 //! [5]
 
 //! [6]
-Qt::Orientations SAKModuleFlowLayout::expandingDirections() const
+Qt::Orientations SAKModbusCommonFlowLayout::expandingDirections() const
 {
     return { };
 }
 //! [6]
 
 //! [7]
-bool SAKModuleFlowLayout::hasHeightForWidth() const
+bool SAKModbusCommonFlowLayout::hasHeightForWidth() const
 {
     return true;
 }
 
-int SAKModuleFlowLayout::heightForWidth(int width) const
+int SAKModbusCommonFlowLayout::heightForWidth(int width) const
 {
     int height = doLayout(QRect(0, 0, width, 0), true);
     return height;
@@ -141,18 +141,18 @@ int SAKModuleFlowLayout::heightForWidth(int width) const
 //! [7]
 
 //! [8]
-void SAKModuleFlowLayout::setGeometry(const QRect &rect)
+void SAKModbusCommonFlowLayout::setGeometry(const QRect &rect)
 {
     QLayout::setGeometry(rect);
     doLayout(rect, false);
 }
 
-QSize SAKModuleFlowLayout::sizeHint() const
+QSize SAKModbusCommonFlowLayout::sizeHint() const
 {
     return minimumSize();
 }
 
-QSize SAKModuleFlowLayout::minimumSize() const
+QSize SAKModbusCommonFlowLayout::minimumSize() const
 {
     QSize size;
     for (const QLayoutItem *item : qAsConst(itemList))
@@ -165,7 +165,7 @@ QSize SAKModuleFlowLayout::minimumSize() const
 //! [8]
 
 //! [9]
-int SAKModuleFlowLayout::doLayout(const QRect &rect, bool testOnly) const
+int SAKModbusCommonFlowLayout::doLayout(const QRect &rect, bool testOnly) const
 {
     int left, top, right, bottom;
     getContentsMargins(&left, &top, &right, &bottom);
@@ -206,7 +206,7 @@ int SAKModuleFlowLayout::doLayout(const QRect &rect, bool testOnly) const
 }
 //! [11]
 //! [12]
-int SAKModuleFlowLayout::smartSpacing(QStyle::PixelMetric pm) const
+int SAKModbusCommonFlowLayout::smartSpacing(QStyle::PixelMetric pm) const
 {
     QObject *parent = this->parent();
     if (!parent) {

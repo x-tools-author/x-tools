@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>831</width>
-    <height>596</height>
+    <height>655</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -28,6 +28,9 @@
    </property>
    <item row="0" column="0">
     <widget class="QWidget" name="widget" native="true">
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
      <layout class="QGridLayout" name="gridLayout_2">
       <property name="leftMargin">
        <number>0</number>
@@ -41,38 +44,79 @@
       <property name="bottomMargin">
        <number>0</number>
       </property>
-      <item row="0" column="0">
-       <widget class="QLabel" name="label">
+      <item row="1" column="0" colspan="2">
+       <widget class="QWidget" name="deviceControllerWidget" native="true">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+         <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
-        <property name="text">
-         <string>Device type</string>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
         </property>
        </widget>
       </item>
-      <item row="0" column="1">
-       <widget class="QComboBox" name="deviceTypeComboBox"/>
-      </item>
-      <item row="1" column="0" colspan="2">
-       <widget class="QWidget" name="deviceControllerWidget" native="true"/>
+      <item row="0" column="0" colspan="2">
+       <widget class="QGroupBox" name="groupBox">
+        <property name="title">
+         <string>Device selection</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_3">
+         <item row="0" column="1">
+          <widget class="QComboBox" name="deviceTypeComboBox"/>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Device type</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
       </item>
      </layout>
     </widget>
    </item>
    <item row="0" column="1">
     <widget class="QTabWidget" name="tabWidget">
-     <widget class="QWidget" name="tab">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="coilsWidget">
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
       <attribute name="title">
-       <string>Tab 1</string>
+       <string>Coils</string>
       </attribute>
      </widget>
-     <widget class="QWidget" name="tab_2">
+     <widget class="QWidget" name="discreteInputsWidget">
       <attribute name="title">
-       <string>Tab 2</string>
+       <string>Discrete Inputs</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="holdingRegistersWidget">
+      <attribute name="title">
+       <string> Holding Registers</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="inputRegistersWidget">
+      <attribute name="title">
+       <string>Input Registers</string>
       </attribute>
      </widget>
     </widget>

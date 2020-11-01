@@ -8,14 +8,14 @@
  * the file LICENCE in the root of the source code directory.
  */
 #include "SAKModbusCommonHostSection.hh"
-#include "SAKModbusCommonClientSection.hh"
-#include "SAKModbusClientControllerTcp.hh"
+#include "SAKModbusCommonServerSection.hh"
+#include "SAKModbusServerControllerTcp.hh"
 
-SAKModbusClientControllerTcp::SAKModbusClientControllerTcp(QWidget *parent)
-    :SAKModbusClientController(parent)
+SAKModbusServerControllerTcp::SAKModbusServerControllerTcp(QWidget *parent)
+    :SAKModbusCommonController(parent)
 {
     mHostSection = new SAKModbusCommonHostSection(this);
-    mClientSection = new SAKModbusCommonClientSection(this);
+    mServerSection = new SAKModbusCommonServerSection(this);
     appendSection(mHostSection);
-    appendSection(mClientSection);
+    appendSection(mServerSection);
 }
