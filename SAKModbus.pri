@@ -5,33 +5,51 @@ qtHaveModule(serialbus){
 
 contains(DEFINES, SAK_IMPORT_CHARTS_MODULE){
 INCLUDEPATH += \
-    $$PWD/src/modbus
-
-HEADERS += \
-    $$PWD/src/modbus/SAKModbusDebugPage.hh
-
-SOURCES += \
-    $$PWD/src/modbus/SAKModbusDebugPage.cc
-}
+    $$PWD/src/modbus \
+    $$PWD/src/modbus/client \
+    $$PWD/src/modbus/common \
+    $$PWD/src/modbus/server \
 
 FORMS += \
     $$PWD/src/modbus/SAKModbusDebugPage.ui \
-    $$PWD/src/modbus/common/SAKModbusCommonClientParametersController.ui \
-    $$PWD/src/modbus/common/SAKModbusCommonComController.ui \
-    $$PWD/src/modbus/common/SAKModbusCommonHostController.ui \
-    $$PWD/src/modbus/common/SAKModbusCommonServerParametersController.ui
+    $$PWD/src/modbus/common/SAKModbusCommonClientSection.ui \
+    $$PWD/src/modbus/common/SAKModbusCommonHostSection.ui \
+    $$PWD/src/modbus/common/SAKModbusCommonRegister.ui \
+    $$PWD/src/modbus/common/SAKModbusCommonReigsterView.ui \
+    $$PWD/src/modbus/common/SAKModbusCommonSerialPortSection.ui \
+    $$PWD/src/modbus/common/SAKModbusCommonServerSection.ui
 
 HEADERS += \
+    $$PWD/src/modbus/SAKModbusDebugPage.hh \
     $$PWD/src/modbus/client/SAKModbusClientController.hh \
-    $$PWD/src/modbus/client/SAKModbusControllerSerialportClient.hh \
-    $$PWD/src/modbus/client/SAKModbusControllerTcpClient.hh \
+    $$PWD/src/modbus/client/SAKModbusClientControllerSerialPort.hh \
+    $$PWD/src/modbus/client/SAKModbusClientControllerTcp.hh \
+    $$PWD/src/modbus/common/SAKModbusCommonClientSection.hh \
     $$PWD/src/modbus/common/SAKModbusCommonController.hh \
-    $$PWD/src/modbus/common/SAKModuleFlowLayout.hh
+    $$PWD/src/modbus/common/SAKModbusCommonFlowLayout.hh \
+    $$PWD/src/modbus/common/SAKModbusCommonHostSection.hh \
+    $$PWD/src/modbus/common/SAKModbusCommonRegister.hh \
+    $$PWD/src/modbus/common/SAKModbusCommonReigsterView.hh \
+    $$PWD/src/modbus/common/SAKModbusCommonSerialPortSection.hh \
+    $$PWD/src/modbus/common/SAKModbusCommonServerSection.hh \
+    $$PWD/src/modbus/server/SAKModbusServerController.hh \
+    $$PWD/src/modbus/server/SAKModbusServerControllerSerialPort.hh \
+    $$PWD/src/modbus/server/SAKModbusServerControllerTcp.hh
 
 SOURCES += \
+    $$PWD/src/modbus/SAKModbusDebugPage.cc \
     $$PWD/src/modbus/client/SAKModbusClientController.cc \
-    $$PWD/src/modbus/client/SAKModbusControllerSerialportClient.cc \
-    $$PWD/src/modbus/client/SAKModbusControllerTcpClient.cc \
-    $$PWD/src/modbus/client/sakmodbuscontrollertcpclient.cc \
+    $$PWD/src/modbus/client/SAKModbusClientControllerSerialPort.cc \
+    $$PWD/src/modbus/client/SAKModbusClientControllerTcp.cc \
+    $$PWD/src/modbus/common/SAKModbusCommonClientSection.cc \
     $$PWD/src/modbus/common/SAKModbusCommonController.cc \
-    $$PWD/src/modbus/common/SAKModuleFlowLayout.cc
+    $$PWD/src/modbus/common/SAKModbusCommonFlowLayout.cc \
+    $$PWD/src/modbus/common/SAKModbusCommonHostSection.cc \
+    $$PWD/src/modbus/common/SAKModbusCommonRegister.cc \
+    $$PWD/src/modbus/common/SAKModbusCommonReigsterView.cc \
+    $$PWD/src/modbus/common/SAKModbusCommonSerialPortSection.cc \
+    $$PWD/src/modbus/common/SAKModbusCommonServerSection.cc \
+    $$PWD/src/modbus/server/SAKModbusServerController.cc \
+    $$PWD/src/modbus/server/SAKModbusServerControllerSerialPort.cc \
+    $$PWD/src/modbus/server/SAKModbusServerControllerTcp.cc
+}
