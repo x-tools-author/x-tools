@@ -82,6 +82,7 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
 {
     mSettingsKeyContext.enableTestPage = QString("%1/enableTestPage").arg(qApp->applicationName());
     mSettingsKeyContext.appStylesheet = QString("%1/appStylesheet").arg(qApp->applicationName());
+    mSettingsKeyContext.currentTabPage = QString("%1/currentTabPage").arg(qApp->applicationName());
 
     mUi->setupUi(this);
     mUpdateManager = new SAKUpdateManager(this);
@@ -112,9 +113,6 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     setWindowTitle(title);
 #endif
 
-    mTabWidget->setTabsClosable(true);
-    connect(mTabWidget, &QTabWidget::tabCloseRequested, this, &SAKMainWindow::removeRemovableDebugPage);
-
     // Initializing menu bar
     initMenuBar();
 
@@ -142,22 +140,37 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     }
 #endif
 
-    // Create debugging page
+    // Connecting the signal of tab page to it's slot.
+    mTabWidget->setTabsClosable(true);
+    connect(mTabWidget, &QTabWidget::tabCloseRequested, this, &SAKMainWindow::removeRemovableDebugPage);
+    connect(mTabWidget, &QTabWidget::currentChanged, this, [=](int index){
+        sakApp->settings()->setValue(mSettingsKeyContext.currentTabPage, index);
+    });
+
+    // Create debugging pages, the operation will emit the signal named currentChanged.
+    // So you should block it, or the value of setting opetion(mSettingsKeyContext.currentTabPage) will be aways 0.
     QMetaEnum metaEnum = QMetaEnum::fromType<SAKEnumDebugPageType>();
+    mTabWidget->blockSignals(true);
     for (int i = 0; i < metaEnum.keyCount(); i++){
-        // Test page is selectable
+        // Test page is selectable, it is for developer of the project.
         bool enableTestPage = sakApp->settings()->value(mSettingsKeyContext.enableTestPage).toBool();
         if (!enableTestPage && (metaEnum.value(i) == DebugPageTypeTest)){
             continue;
         }
 
+        // The page can not be closed.
         QWidget *page = debugPageFromDebugPageType(metaEnum.value(i));
         if (page){
             mTabWidget->addTab(page, page->windowTitle());
             appendWindowAction(page);
         }
     }
+    mTabWidget->blockSignals(false);
     mWindowsMenu->addSeparator();
+
+    // Set the current page to last time
+    int currentPage = sakApp->settings()->value(mSettingsKeyContext.currentTabPage).toInt();
+    mTabWidget->setCurrentIndex(currentPage);
 
     // Hide the close button, the step must be done after calling setTabsClosable() function.
     for (int i = 0; i < mTabWidget->count(); i++){

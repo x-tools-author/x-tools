@@ -86,6 +86,7 @@ private:
     struct SettingsKeyContext {
         QString enableTestPage;
         QString appStylesheet;
+        QString currentTabPage;
     }mSettingsKeyContext;
 
     struct SAKDebugPageMetaInfo {
