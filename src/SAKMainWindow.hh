@@ -64,7 +64,10 @@ public:
 #endif
 #ifdef SAK_IMPORT_WEBSOCKET_MODULE
         DebugPageTypeWebSocketClient,
-        DebugPageTypeWebSocketServer
+        DebugPageTypeWebSocketServer,
+#endif
+#ifdef SAK_IMPORT_MODULE_SERIALBUS
+        DebugPageTypeModbus
 #endif
     };
     Q_ENUM(SAKEnumDebugPageType);
