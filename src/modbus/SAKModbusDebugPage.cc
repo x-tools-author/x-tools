@@ -9,6 +9,7 @@
  */
 #include <QDebug>
 #include <QLineEdit>
+#include <QModbusDataUnit>
 
 #include "SAKModbusDebugPage.hh"
 #include "SAKModbusCommonRegister.hh"
@@ -40,32 +41,35 @@ SAKModbusDebugPage::SAKModbusDebugPage(int type, QString name, QSettings *settin
     mMenuPushButton = new QPushButton(QString("..."), this);
     ui->tabWidget->setCornerWidget(mMenuPushButton);
 
-    QList<QWidget*> registerViewList;
-    registerViewList << ui->coilsWidget
-                     << ui->discreteInputsWidget
-                     << ui->holdingRegistersWidget
-                     << ui->inputRegistersWidget;
+    // Tab page information
+    struct PageInfo {QWidget *widget; QModbusDataUnit::RegisterType type;};
+    QList<PageInfo> pageInfoList;
+    pageInfoList << PageInfo{ui->coilsWidget, QModbusDataUnit::Coils}
+                 << PageInfo{ui->discreteInputsWidget, QModbusDataUnit::DiscreteInputs}
+                 << PageInfo{ui->holdingRegistersWidget, QModbusDataUnit::HoldingRegisters}
+                 << PageInfo{ui->inputRegistersWidget, QModbusDataUnit::InputRegisters};
 
-    for (auto var : registerViewList){
-        if (!var->layout()){
-            var->setLayout(new QHBoxLayout);
+    // Add page to tab widget
+    for (auto var : pageInfoList){
+        if (!var.widget->layout()){
+            var.widget->setLayout(new QHBoxLayout);
         }
         auto registerView = new SAKModbusCommonReigsterView;
-        var->layout()->addWidget(registerView);
-        for (int i = 0; i < 20; i++){
-            registerView->addWidget(new SAKModbusCommonRegister);
+        var.widget->layout()->addWidget(registerView);
+        for (quint16 i = 0; i < 100; i++){
+            registerView->addWidget(new SAKModbusCommonRegister(var.type, i, i));
         }
     }
 
-    struct DeviceInfo {
-        int type;
-        QString name;
-    };
+    // Combo box items
+    struct DeviceInfo {int type; QString name;};
     QList<DeviceInfo> deviceInfoList;
     deviceInfoList << DeviceInfo{TcpClient, tr("Tcp Client")}
                    << DeviceInfo{TcpServer, tr("Tcp Server")}
                    << DeviceInfo{SerialPortClient, tr("SerialPort Client")}
                    << DeviceInfo{SerialPortServer, tr("SerialPort Server")};
+
+    // Add items to combo box
     for (auto var : deviceInfoList){
         ui->deviceTypeComboBox->addItem(var.name, QVariant::fromValue(var.type));
     }
