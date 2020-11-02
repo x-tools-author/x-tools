@@ -96,6 +96,16 @@
      <property name="currentIndex">
       <number>0</number>
      </property>
+     <widget class="QWidget" name="console">
+      <attribute name="title">
+       <string>Console</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QTextBrowser" name="textBrowser"/>
+       </item>
+      </layout>
+     </widget>
      <widget class="QWidget" name="coilsWidget">
       <property name="styleSheet">
        <string notr="true"/>
