@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>122</width>
+    <width>158</width>
     <height>364</height>
    </rect>
   </property>
@@ -35,7 +35,7 @@
       </sizepolicy>
      </property>
      <property name="title">
-      <string>读写配置</string>
+      <string>Parameters settings</string>
      </property>
      <layout class="QGridLayout" name="gridLayout">
       <item row="0" column="0">
@@ -47,7 +47,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>超时时间</string>
+         <string>Timeout</string>
         </property>
        </widget>
       </item>
@@ -73,7 +73,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>重试次数</string>
+         <string>Repeat times</string>
         </property>
        </widget>
       </item>
@@ -99,8 +99,14 @@
       </item>
       <item row="3" column="0">
        <widget class="QLabel" name="label_7">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
-         <string>功能选择</string>
+         <string>Function code</string>
         </property>
        </widget>
       </item>
@@ -117,13 +123,13 @@
       <item row="4" column="0">
        <widget class="QLabel" name="label_12">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
         <property name="text">
-         <string>从机地址</string>
+         <string>Server address</string>
         </property>
        </widget>
       </item>
@@ -148,8 +154,14 @@
       </item>
       <item row="5" column="0">
        <widget class="QLabel" name="label_13">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
-         <string>起始地址</string>
+         <string>Start address</string>
         </property>
        </widget>
       </item>
@@ -168,8 +180,14 @@
       </item>
       <item row="6" column="0">
        <widget class="QLabel" name="label_14">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
-         <string>地址个数</string>
+         <string>Address number</string>
         </property>
        </widget>
       </item>
@@ -186,19 +204,18 @@
         </property>
        </widget>
       </item>
-      <item row="7" column="0">
-       <widget class="QLabel" name="label_15">
-        <property name="text">
-         <string> 数据表</string>
-        </property>
-       </widget>
-      </item>
       <item row="8" column="0" colspan="2">
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
          <widget class="QLabel" name="label_18">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="text">
-           <string>地址</string>
+           <string>Address</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -207,8 +224,14 @@
         </item>
         <item>
          <widget class="QLabel" name="label_10">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="text">
-           <string>数值</string>
+           <string>Value</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -230,14 +253,27 @@
       <item row="10" column="0" colspan="2">
        <widget class="QPushButton" name="sendReadRequestPushButton">
         <property name="text">
-         <string>读取</string>
+         <string>Read</string>
         </property>
        </widget>
       </item>
       <item row="11" column="0" colspan="2">
        <widget class="QPushButton" name="sendWriteRequestPushButton">
         <property name="text">
-         <string> 写入</string>
+         <string>Write</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0" colspan="2">
+       <widget class="QLabel" name="label_15">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Register list</string>
         </property>
        </widget>
       </item>

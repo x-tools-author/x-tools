@@ -35,7 +35,7 @@
       </sizepolicy>
      </property>
      <property name="title">
-      <string>网口配置</string>
+      <string>Host settings</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="1" column="1">
@@ -60,7 +60,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>端口</string>
+         <string>Port</string>
         </property>
        </widget>
       </item>
@@ -73,7 +73,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>地址</string>
+         <string>Address</string>
         </property>
        </widget>
       </item>
