@@ -36,6 +36,10 @@ SAKModbusDebugPage::SAKModbusDebugPage(int type, QString name, QSettings *settin
     ui->deviceControllerWidget->setLayout(new QVBoxLayout);
     ui->deviceControllerWidget->layout()->setContentsMargins(0, 0, 0, 0);
 
+    // Add a button to tab bar
+    mMenuPushButton = new QPushButton(QString("..."), this);
+    ui->tabWidget->setCornerWidget(mMenuPushButton);
+
     QList<QWidget*> registerViewList;
     registerViewList << ui->coilsWidget
                      << ui->discreteInputsWidget

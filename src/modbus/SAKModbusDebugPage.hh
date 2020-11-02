@@ -13,6 +13,7 @@
 #include <QObject>
 #include <QWidget>
 #include <QSettings>
+#include <QPushButton>
 #include <QSqlDatabase>
 #include <QSplashScreen>
 
@@ -39,6 +40,7 @@ private:
     QSettings mSettings;
     QSplashScreen *mSplashScreen;
     QSqlDatabase *mSqlDatabase;
+    QPushButton *mMenuPushButton;
 private:
     QWidget *controllerFromType(int type);
 private:
