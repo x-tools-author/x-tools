@@ -218,7 +218,7 @@ void SAKMainWindow::initFileMenu()
 
     QMenu *tabMenu = new QMenu(tr("New Page"), this);
     fileMenu->addMenu(tabMenu);
-    QMetaEnum enums = QMetaEnum::fromType<SAKCommonDataStructure::SAKEnumDebugPageType>();
+    QMetaEnum enums = QMetaEnum::fromType<SAKEnumDebugPageType>();
     for (int i = 0; i < enums.keyCount(); i++){
         QAction *a = new QAction(debugPageTitleFromDebugPageType(enums.value(i)), this);
         // The object name is the default title of debug page
