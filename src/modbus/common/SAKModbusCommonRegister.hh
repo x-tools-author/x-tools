@@ -11,6 +11,7 @@
 #define SAKMODBUSCOMMONREGISTER_HH
 
 #include <QWidget>
+#include <QModbusDataUnit>
 
 namespace Ui {
     class SAKModbusCommonRegister;
@@ -20,8 +21,16 @@ class SAKModbusCommonRegister : public QWidget
 {
     Q_OBJECT
 public:
-    explicit SAKModbusCommonRegister(QWidget *parent = Q_NULLPTR);
+    explicit SAKModbusCommonRegister(QModbusDataUnit::RegisterType type, quint16 address, quint16 value, QWidget *parent = Q_NULLPTR);
     ~SAKModbusCommonRegister();
+
+    QModbusDataUnit::RegisterType type();
+    quint16 address();
+    quint16 value();
+private:
+    QModbusDataUnit::RegisterType mType;
+    quint16 mAddress;
+    quint16 mValue;
 private:
     Ui::SAKModbusCommonRegister *ui;
 };
