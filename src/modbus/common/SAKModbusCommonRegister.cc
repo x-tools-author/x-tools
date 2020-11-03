@@ -7,6 +7,9 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
+#include <QLabel>
+#include <QLineEdit>
+
 #include "SAKModbusCommonRegister.hh"
 #include "ui_SAKModbusCommonRegister.h"
 
@@ -19,8 +22,11 @@ SAKModbusCommonRegister::SAKModbusCommonRegister(QModbusDataUnit::RegisterType t
 {
     ui->setupUi(this);
 
-    ui->label->setText(QString("%1").arg(QString::number(mAddress), 5, '0'));
-    ui->lineEdit->setText(QString::number(mAddress));
+    QLabel *label = ui->label;
+    label->setText(QString("%1").arg(QString::number(mAddress), 5, '0'));
+
+    QLineEdit *lineEdit = ui->lineEdit;
+    lineEdit->setText(QString::number(mAddress));
 }
 
 SAKModbusCommonRegister::~SAKModbusCommonRegister()
@@ -41,4 +47,9 @@ quint16 SAKModbusCommonRegister::address()
 quint16 SAKModbusCommonRegister::value()
 {
     return mValue;
+}
+
+void SAKModbusCommonRegister::on_lineEdit_textChanged(const QString &arg1)
+{
+
 }
