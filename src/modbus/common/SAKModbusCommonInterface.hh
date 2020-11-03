@@ -10,13 +10,9 @@
 #ifndef SAKMODBUSCOMMONINTERFACE_HH
 #define SAKMODBUSCOMMONINTERFACE_HH
 
-#include <QObject>
-
 class SAKModbusCommonInterface
 {
-    Q_OBJECT
-public:
-    SAKModbusCommonInterface();
+
 };
 
 #endif // SAKMODBUSCOMMONINTERFACE_HH

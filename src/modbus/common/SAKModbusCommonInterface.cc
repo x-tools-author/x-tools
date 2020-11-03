@@ -8,8 +8,3 @@
  * the file LICENCE in the root of the source code directory.
  */
 #include "SAKModbusCommonInterface.hh"
-
-SAKModbusCommonInterface::SAKModbusCommonInterface()
-{
-
-}
