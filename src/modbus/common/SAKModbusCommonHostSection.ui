@@ -78,14 +78,7 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QComboBox" name="hostComboBox">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-       </widget>
+       <widget class="QComboBox" name="hostComboBox"/>
       </item>
      </layout>
     </widget>

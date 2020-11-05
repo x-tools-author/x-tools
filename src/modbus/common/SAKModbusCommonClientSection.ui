@@ -194,7 +194,7 @@
       <item row="6" column="1">
        <widget class="QLineEdit" name="registerNumberLineEdit">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
