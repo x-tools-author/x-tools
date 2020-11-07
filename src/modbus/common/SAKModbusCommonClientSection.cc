@@ -194,23 +194,23 @@ void SAKModbusCommonClientSection::on_registerNumberSpinBox_valueChanged(int arg
 
 void SAKModbusCommonClientSection::on_sendReadRequestPushButton_clicked()
 {
-    const auto functionCode = static_cast<QModbusDataUnit::RegisterType>(ui->functionCodeComboBox->currentData().toInt());
+    const auto registerType = static_cast<QModbusDataUnit::RegisterType>(ui->functionCodeComboBox->currentData().toInt());
     int startAddress = ui->startAddressSpinBox->value();
     int number = ui->registerNumberSpinBox->value();
-    auto mdu = QModbusDataUnit(functionCode, startAddress, number);
+    auto mdu = QModbusDataUnit(registerType, startAddress, number);
     emit invokeSendReadRequest(mdu);
 }
 
 void SAKModbusCommonClientSection::on_sendWriteRequestPushButton_clicked()
 {
-    const auto functionCode = static_cast<QModbusDataUnit::RegisterType>(ui->functionCodeComboBox->currentData().toInt());
+    const auto registerType = static_cast<QModbusDataUnit::RegisterType>(ui->functionCodeComboBox->currentData().toInt());
     int startAddress = ui->startAddressSpinBox->value();
     int number = ui->registerNumberSpinBox->value();
 
-    auto mdu = QModbusDataUnit(functionCode, startAddress, number);
+    auto mdu = QModbusDataUnit(registerType, startAddress, number);
     auto tableWidget = ui->readWriteValuesTableWidget;
     for (int i = 0; i < number; i++){
-        if (functionCode == QModbusDataUnit::Coils){
+        if (registerType == QModbusDataUnit::Coils){
             mdu.setValue(i, qint16(qobject_cast<QLineEdit*>(tableWidget->cellWidget(i, 1))->text().toInt(Q_NULLPTR, 10)));
         }else{
             mdu.setValue(i, qint16( qobject_cast<QLineEdit*>(tableWidget->cellWidget(i, 1))->text().toInt(Q_NULLPTR, 16)));
