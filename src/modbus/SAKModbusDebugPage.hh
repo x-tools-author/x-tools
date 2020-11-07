@@ -21,6 +21,7 @@ namespace Ui {
     class SAKModbusDebugPage;
 }
 
+class SAKModbusCommonController;
 class SAKModbusDebugPage : public QWidget
 {
     Q_OBJECT
@@ -41,12 +42,15 @@ private:
     QSplashScreen *mSplashScreen;
     QSqlDatabase *mSqlDatabase;
     QPushButton *mMenuPushButton;
+    SAKModbusCommonController *mController;
 private:
     QWidget *controllerFromType(int type);
 private:
     Ui::SAKModbusDebugPage *ui;
 private slots:
     void on_deviceTypeComboBox_currentIndexChanged(int index);
+    void on_connectionPushButton_clicked();
+    void on_disconnectionPushButton_clicked();
 };
 
 #endif // SAKMODBUSDEBUGGING_HH

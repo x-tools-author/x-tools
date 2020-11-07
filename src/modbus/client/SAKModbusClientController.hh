@@ -10,12 +10,23 @@
 #ifndef SAKMODBUSCLIENTCONTROLLER_HH
 #define SAKMODBUSCLIENTCONTROLLER_HH
 
+#include <QModbusClient>
+
 #include "SAKModbusCommonController.hh"
 
+class SAKModbusCommonClientSection;
 class SAKModbusClientController : public SAKModbusCommonController
 {
 public:
     SAKModbusClientController(QWidget *parent = Q_NULLPTR);
+protected:
+    SAKModbusCommonClientSection *mClientSection;
+protected:
+    virtual QWidget *bottomSection() final;
+    void sendReadRequest(QModbusDataUnit mdu);
+    void sendWriteRequest(QModbusDataUnit mdu);
+private:
+    void readReply();
 };
 
 #endif // SAKMODBUSCLIENTCONTROLLER_HH

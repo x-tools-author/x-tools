@@ -12,6 +12,7 @@
 
 #include <QWidget>
 #include <QHBoxLayout>
+#include <QModbusDevice>
 
 class SAKModbusCommonController : public QWidget
 {
@@ -19,9 +20,24 @@ class SAKModbusCommonController : public QWidget
 public:
     explicit SAKModbusCommonController(QWidget *parent = nullptr);
 
+    virtual void open() = 0;
+
+    void closeDevice();
     void appendSection(QWidget *section);
+    QModbusDevice *device();
+    // You must call the device in the constructor of sublcass.
+    void init();
+protected:
+    virtual QWidget *bottomSection();
+    // You should implement this function and do not calling it in the sub class.
+    // You can use device() to get the device instance.
+    virtual QModbusDevice *initModbusDevice();
 private:
     QVBoxLayout *mSectionLayout;
+    QWidget *mBottomSection;
+    QModbusDevice *mDevice;
+signals:
+    void deviceStateChanged();
 };
 
 #endif // SAKMODBUSCOMMONDEVICECONTROLLER_HH

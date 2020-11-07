@@ -19,6 +19,7 @@ class SAKModbusServerControllerSerialPort : public SAKModbusCommonController
     Q_OBJECT
 public:
     SAKModbusServerControllerSerialPort(QWidget *parent = Q_NULLPTR);
+    virtual void open() final;
 private:
     SAKModbusCommonServerSection *mServerSection;
     SAKModbusCommonSerialPortSection *mSerialPortSection;

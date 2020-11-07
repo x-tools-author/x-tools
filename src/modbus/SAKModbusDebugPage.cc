@@ -14,6 +14,7 @@
 #include "SAKModbusDebugPage.hh"
 #include "SAKModbusCommonRegister.hh"
 #include "SAKModbusCommonFlowLayout.hh"
+#include "SAKModbusCommonController.hh"
 #include "SAKModbusCommonReigsterView.hh"
 #include "SAKModbusClientControllerTcp.hh"
 #include "SAKModbusServerControllerTcp.hh"
@@ -36,6 +37,7 @@ SAKModbusDebugPage::SAKModbusDebugPage(int type, QString name, QSettings *settin
     ui->deviceControllerWidget->setContentsMargins(0, 0, 0, 0);
     ui->deviceControllerWidget->setLayout(new QVBoxLayout);
     ui->deviceControllerWidget->layout()->setContentsMargins(0, 0, 0, 0);
+    ui->disconnectionPushButton->setEnabled(false);
 
     // Add a button to tab bar
     mMenuPushButton = new QPushButton(QString("..."), this);
@@ -73,6 +75,7 @@ SAKModbusDebugPage::SAKModbusDebugPage(int type, QString name, QSettings *settin
     for (auto var : deviceInfoList){
         ui->deviceTypeComboBox->addItem(var.name, QVariant::fromValue(var.type));
     }
+    ui->deviceTypeComboBox->setCurrentIndex(2);
 }
 
 SAKModbusDebugPage::~SAKModbusDebugPage()
@@ -106,10 +109,18 @@ QWidget *SAKModbusDebugPage::controllerFromType(int type)
 
 void SAKModbusDebugPage::on_deviceTypeComboBox_currentIndexChanged(int index)
 {
-    QWidget *w = controllerFromType(index);
-    w->setContentsMargins(0, 0, 0 ,0);
-    QLayout *hLayout = ui->deviceControllerWidget->layout();
+    mController = qobject_cast<SAKModbusCommonController*>(controllerFromType(index));
+    mController->setContentsMargins(0, 0, 0 ,0);
+    auto *dev = mController->device();
+    if (dev){
+        connect(mController->device(), &QModbusDevice::stateChanged, this, [=](){
+            ui->connectionPushButton->setEnabled(dev->state() == QModbusDevice::UnconnectedState);
+            ui->disconnectionPushButton->setEnabled(dev->state() == QModbusDevice::ConnectedState);
+            ui->deviceTypeComboBox->setEnabled(dev->state() == QModbusDevice::UnconnectedState);
+        });
+    }
 
+    QLayout *hLayout = ui->deviceControllerWidget->layout();
     if (hLayout){
         // Remove the old pannel
         QLayoutItem *item = hLayout->takeAt(0);
@@ -119,6 +130,21 @@ void SAKModbusDebugPage::on_deviceTypeComboBox_currentIndexChanged(int index)
         }
 
         // Add a new pannel
-        hLayout->addWidget(w);
+        hLayout->addWidget(mController);
+        ui->connectionPushButton->setEnabled(true);
     }
+}
+
+void SAKModbusDebugPage::on_connectionPushButton_clicked()
+{
+    ui->connectionPushButton->setEnabled(false);
+    ui->disconnectionPushButton->setEnabled(false);
+    mController->open();
+}
+
+void SAKModbusDebugPage::on_disconnectionPushButton_clicked()
+{
+    ui->connectionPushButton->setEnabled(false);
+    ui->disconnectionPushButton->setEnabled(false);
+    mController->closeDevice();
 }

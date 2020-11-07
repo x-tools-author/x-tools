@@ -7,6 +7,7 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
+#include <QDebug>
 #include <QSerialPort>
 #include <QSerialPortInfo>
 #include <QStandardItemModel>
@@ -65,4 +66,22 @@ SAKModbusCommonSerialPortSection::SAKModbusCommonSerialPortSection(QWidget *pare
 SAKModbusCommonSerialPortSection::~SAKModbusCommonSerialPortSection()
 {
     delete ui;
+}
+
+SAKModbusCommonSerialPortSection::ParametersContext SAKModbusCommonSerialPortSection::parametersContext()
+{
+    ParametersContext paras;
+    paras.portName = ui->nameComboBox->currentText();
+    paras.parity = ui->parityComboBox->currentData().toInt();
+    paras.baudRate = ui->baudRateComboBox->currentData().toInt();
+    paras.dataBits = ui->dataBitsComboBox->currentData().toInt();
+    paras.stopBits = ui->stopBitsComboBox->currentData().toInt();
+#ifdef QT_DEBUG
+    qDebug() << "name:" << paras.portName
+             << "parity:" << paras.parity
+             << "baudRate:" << paras.baudRate
+             << "dataBits:" << paras.dataBits
+             << "stopBits" << paras.stopBits;
+#endif
+    return paras;
 }

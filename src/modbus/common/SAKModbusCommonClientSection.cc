@@ -7,6 +7,9 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
+#include <QSpinBox>
+#include <QComboBox>
+#include <QModbusDevice>
 #include <QModbusDataUnit>
 #include <QStandardItemModel>
 
@@ -18,6 +21,17 @@ SAKModbusCommonClientSection::SAKModbusCommonClientSection(QWidget *parent)
     ,ui(new Ui::SAKModbusCommonClientSection)
 {
     ui->setupUi(this);
+    mFunctionCodeSpinBox = ui->functionCodeComboBox;
+    mStartAddressSpinBox = ui->startAddressSpinBox;
+    mRegisterNumberLineEdit = ui->registerNumberSpinBox;
+    mClientAddressSpinBox = ui->clientAddressSpinBox;
+    mReadWriteValuesTableWidget = ui->readWriteValuesTableWidget;
+    ui->readWriteValuesTableWidget->setColumnCount(2);
+    ui->readWriteValuesTableWidget->verticalHeader()->setVisible(false);
+    ui->readWriteValuesTableWidget->horizontalHeader()->setVisible(false);
+    ui->readWriteValuesTableWidget->setContentsMargins(6, 6, 6, 6);
+    ui->readWriteValuesTableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+
 
     struct Info {
         QString name;
@@ -48,4 +62,159 @@ SAKModbusCommonClientSection::SAKModbusCommonClientSection(QWidget *parent)
 SAKModbusCommonClientSection::~SAKModbusCommonClientSection()
 {
     delete ui;
+}
+
+SAKModbusCommonClientSection::ParametersContext SAKModbusCommonClientSection::parametersContext()
+{
+    ParametersContext parasCtx;
+    parasCtx.numberOfRetries = ui->retriesSpinBox->value();
+    parasCtx.timeout = ui->timeoutSpinBox->value();
+    return parasCtx;
+}
+
+void SAKModbusCommonClientSection::setUiEnable(bool isUnconnected)
+{
+    ui->timeoutSpinBox->setEnabled(isUnconnected);
+    ui->retriesSpinBox->setEnabled(isUnconnected);
+}
+
+int SAKModbusCommonClientSection::slaveAddress()
+{
+    return ui->clientAddressSpinBox->value();
+}
+
+void SAKModbusCommonClientSection::updateTableWidget(QModbusDataUnit mdu)
+{
+    QList<int> addressList;
+    for (uint i = 0; i < mdu.valueCount(); i++) {
+        addressList.append(mdu.startAddress() + i);
+    }
+
+    auto tableWidget = ui->readWriteValuesTableWidget;
+    for (int i = 0; i < tableWidget->rowCount(); i++){
+        auto address = qobject_cast<QLineEdit*>(tableWidget->cellWidget(i, 0))->text().toInt();
+        if (addressList.contains(address)){
+            auto value = mdu.value(i);
+            auto valueLineEdit = qobject_cast<QLineEdit*>(tableWidget->cellWidget(i, 1));
+            QString valueString;
+            if (mdu.registerType() <= QModbusDataUnit::Coils){
+                valueString = QString::number(value,  10);
+            }else{
+                valueString = QString("%1").arg(QString::number(value, 16) , 4, '0').toUpper();
+            }
+            valueLineEdit->setText(valueString);
+        }
+    }
+}
+
+void SAKModbusCommonClientSection::updateTableWidget()
+{
+    bool isCoilsRegisterType = true;
+    if (ui->functionCodeComboBox->currentData().toInt() > QModbusDataUnit::Coils){
+        isCoilsRegisterType = false;
+    }
+
+    int startAddress = ui->startAddressSpinBox->value();
+    int number = ui->registerNumberSpinBox->value();
+
+    QTableWidget *tableWidget = ui->readWriteValuesTableWidget;
+    tableWidget->clear();
+    tableWidget->setRowCount(number);
+    for (int i = 0; i < number; i++){
+        QLineEdit *address = new QLineEdit;
+        address->setText(QString("%1").arg(startAddress+i));
+        address->setReadOnly(true);
+        address->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+        tableWidget->setCellWidget(i, 0, address);
+
+        QLineEdit *value = new QLineEdit;
+        value->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+        if (ui->functionCodeComboBox->currentIndex() < 3){
+            value->setReadOnly(true);
+            if (isCoilsRegisterType){
+                value->setText("-");
+            }else{
+                value->setText("----");
+            }
+        }else{
+            if (isCoilsRegisterType){
+                value->setText("0");
+            }else{
+                value->setText("0000");
+            }
+        }
+
+        if (isCoilsRegisterType){
+            value->setMaxLength(1);
+            QRegExp regExp("[01]");
+            value->setValidator(new QRegExpValidator(regExp, this));
+            tableWidget->setCellWidget(i, 1, value);
+        }else{
+            value->setMaxLength(4);
+            QRegExp regExp("[a-fA-F0-9]{4}");
+            value->setValidator(new QRegExpValidator(regExp, this));
+            tableWidget->setCellWidget(i, 1, value);
+        }
+    }
+
+    tableWidget->resizeRowsToContents();
+    tableWidget->resizeColumnsToContents();
+}
+
+void SAKModbusCommonClientSection::on_functionCodeComboBox_currentIndexChanged(int index)
+{
+    Q_UNUSED(index);
+    updateTableWidget();
+    if (ui->functionCodeComboBox->currentIndex() < 3){
+        ui->sendReadRequestPushButton->setEnabled(true);
+        ui->sendWriteRequestPushButton->setEnabled(false);
+    }else{
+        ui->sendReadRequestPushButton->setEnabled(false);
+        ui->sendWriteRequestPushButton->setEnabled(true);
+    }
+}
+
+void SAKModbusCommonClientSection::on_clientAddressSpinBox_valueChanged(int arg1)
+{
+    Q_UNUSED(arg1);
+    updateTableWidget();
+}
+
+void SAKModbusCommonClientSection::on_startAddressSpinBox_valueChanged(int arg1)
+{
+    Q_UNUSED(arg1);
+    updateTableWidget();
+}
+
+void SAKModbusCommonClientSection::on_registerNumberSpinBox_valueChanged(int arg1)
+{
+    Q_UNUSED(arg1);
+    updateTableWidget();
+}
+
+void SAKModbusCommonClientSection::on_sendReadRequestPushButton_clicked()
+{
+    const auto functionCode = static_cast<QModbusDataUnit::RegisterType>(ui->functionCodeComboBox->currentData().toInt());
+    int startAddress = ui->startAddressSpinBox->value();
+    int number = ui->registerNumberSpinBox->value();
+    auto mdu = QModbusDataUnit(functionCode, startAddress, number);
+    emit invokeSendReadRequest(mdu);
+}
+
+void SAKModbusCommonClientSection::on_sendWriteRequestPushButton_clicked()
+{
+    const auto functionCode = static_cast<QModbusDataUnit::RegisterType>(ui->functionCodeComboBox->currentData().toInt());
+    int startAddress = ui->startAddressSpinBox->value();
+    int number = ui->registerNumberSpinBox->value();
+
+    auto mdu = QModbusDataUnit(functionCode, startAddress, number);
+    auto tableWidget = ui->readWriteValuesTableWidget;
+    for (int i = 0; i < number; i++){
+        if (functionCode == QModbusDataUnit::Coils){
+            mdu.setValue(i, qint16(qobject_cast<QLineEdit*>(tableWidget->cellWidget(i, 1))->text().toInt(Q_NULLPTR, 10)));
+        }else{
+            mdu.setValue(i, qint16( qobject_cast<QLineEdit*>(tableWidget->cellWidget(i, 1))->text().toInt(Q_NULLPTR, 16)));
+        }
+    }
+    emit invokrSendWriteRequest(mdu);
 }

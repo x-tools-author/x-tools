@@ -22,6 +22,16 @@ class SAKModbusCommonSerialPortSection : public QWidget
 public:
     explicit SAKModbusCommonSerialPortSection(QWidget *parent = nullptr);
     ~SAKModbusCommonSerialPortSection();
+
+    struct ParametersContext {
+        QString portName;
+        int parity;
+        int baudRate;
+        int dataBits;
+        int stopBits;
+    };
+
+    ParametersContext parametersContext();
 private:
     Ui::SAKModbusCommonSerialPortSection *ui;
 };

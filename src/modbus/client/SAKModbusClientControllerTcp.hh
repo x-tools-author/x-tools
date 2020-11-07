@@ -10,6 +10,7 @@
 #ifndef SAKMODBUSCLIENTCONTROLLERTCP_HH
 #define SAKMODBUSCLIENTCONTROLLERTCP_HH
 
+#include <QModbusTcpClient>
 #include "SAKModbusClientController.hh"
 
 class SAKModbusCommonHostSection;
@@ -19,9 +20,12 @@ class SAKModbusClientControllerTcp : public SAKModbusClientController
     Q_OBJECT
 public:
     SAKModbusClientControllerTcp(QWidget *parent = Q_NULLPTR);
+
+    virtual void open() final;
 private:
     SAKModbusCommonHostSection *mHostSection;
     SAKModbusCommonClientSection *mClientSection;
+    QModbusTcpClient *mClient;
 };
 
 #endif // SAKMODBUSCLIENTCONTROLLERTCP_HH

@@ -19,6 +19,7 @@ class SAKModbusServerControllerTcp : public SAKModbusCommonController
     Q_OBJECT
 public:
     SAKModbusServerControllerTcp(QWidget *parent = Q_NULLPTR);
+    virtual void open() final;
 private:
     SAKModbusCommonHostSection *mHostSection;
     SAKModbusCommonServerSection *mServerSection;

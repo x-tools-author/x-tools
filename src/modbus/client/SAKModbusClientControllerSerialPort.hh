@@ -10,6 +10,7 @@
 #ifndef SAKMODBUSCLIENTCONTROLLERSERIALPORT_HH
 #define SAKMODBUSCLIENTCONTROLLERSERIALPORT_HH
 
+#include <QModbusRtuSerialMaster>
 #include "SAKModbusClientController.hh"
 
 class SAKModbusCommonClientSection;
@@ -18,9 +19,12 @@ class SAKModbusClientControllerSerialPort : public SAKModbusClientController
 {
 public:
     SAKModbusClientControllerSerialPort(QWidget *parent = Q_NULLPTR);
+    virtual void open() final;
+protected:
+    QModbusDevice *initModbusDevice() final;
 private:
     SAKModbusCommonSerialPortSection *mSerialPortSection;
-    SAKModbusCommonClientSection *mClientSection;
+    QModbusRtuSerialMaster *mClient;
 };
 
 #endif // SAKMODBUSCLIENTCONTROLLERSERIALPORT_HH
