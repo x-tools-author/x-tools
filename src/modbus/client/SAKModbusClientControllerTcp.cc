@@ -14,30 +14,31 @@
 SAKModbusClientControllerTcp::SAKModbusClientControllerTcp(QWidget *parent)
     :SAKModbusClientController(parent)
 {
+    init();
     mHostSection = new SAKModbusCommonHostSection(this);
     appendSection(mHostSection);
 
-    mClient = new QModbusTcpClient(this);
+    mClient = qobject_cast<QModbusTcpClient*>(device());
+    connect(mClient, &QModbusTcpClient::stateChanged, this, [=](){
+        bool isUnconnected = mClient->state() == QModbusDevice::UnconnectedState;
+        mHostSection->setEnabled(isUnconnected);
+        mClientSection->setUiEnable(isUnconnected);
+    });
 }
 
 void SAKModbusClientControllerTcp::open()
 {
-//    if (isClient()){
-//        m_client = createClient(m_type);
-//        if (m_client){
-//            if(!initModbusDevice(m_client)){
-//                ui->connectPushButton->setEnabled(true);
-//            }
-//        }
-//    }else{
-//        m_server = createServer(m_type);
-//        if (m_server){
-//            connect(m_server, &QModbusServer::dataWritten, this, [](QModbusDataUnit::RegisterType type, int address, int size){
-//                qDebug() << __FUNCTION__ << type << address << size;
-//            });
-//            if (!initModbusDevice(m_server)){
-//                ui->connectPushButton->setEnabled(true);
-//            }
-//        }
-//    }
+    auto hostParasCtx = mHostSection->parametersContext();
+    mClient->setConnectionParameter(QModbusDevice::NetworkPortParameter, hostParasCtx.port);
+    mClient->setConnectionParameter(QModbusDevice::NetworkAddressParameter, hostParasCtx.host);
+    auto clientParasCtx = mClientSection->parametersContext();
+    mClient->setTimeout(clientParasCtx.timeout);
+    mClient->setNumberOfRetries(clientParasCtx.numberOfRetries);
+    mClient->connectDevice();
+}
+
+QModbusDevice *SAKModbusClientControllerTcp::initModbusDevice()
+{
+    auto dev = new QModbusTcpClient;
+    return dev;
 }
