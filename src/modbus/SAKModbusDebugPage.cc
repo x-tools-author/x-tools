@@ -75,7 +75,6 @@ SAKModbusDebugPage::SAKModbusDebugPage(int type, QString name, QSettings *settin
     for (auto var : deviceInfoList){
         ui->deviceTypeComboBox->addItem(var.name, QVariant::fromValue(var.type));
     }
-    ui->deviceTypeComboBox->setCurrentIndex(2);
 }
 
 SAKModbusDebugPage::~SAKModbusDebugPage()
