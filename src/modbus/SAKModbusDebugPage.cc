@@ -106,12 +106,33 @@ QWidget *SAKModbusDebugPage::controllerFromType(int type)
     return w;
 }
 
+void SAKModbusDebugPage::outputModbusDataUnit(QModbusDataUnit mdu)
+{
+    auto startAddress = mdu.startAddress();
+    auto valueCount = mdu.valueCount();
+    QList<qint16> valueList;
+    for (unsigned int i = startAddress; i < valueCount; i++){
+        auto value = mdu.value(i);
+        valueList.append(value);
+    }
+
+    QByteArray data;
+    for (auto var : valueList){
+        data.append(reinterpret_cast<char*>(&var)[1]);
+        data.append(reinterpret_cast<char*>(&var)[0]);
+    }
+
+    ui->textBrowser->append(QString(data.toHex(' ')));
+}
+
 void SAKModbusDebugPage::on_deviceTypeComboBox_currentIndexChanged(int index)
 {
     mController = qobject_cast<SAKModbusCommonController*>(controllerFromType(index));
     mController->setContentsMargins(0, 0, 0 ,0);
     auto *dev = mController->device();
     if (dev){
+        connect(mController, &SAKModbusCommonController::modbusDataUnitRead, this, &SAKModbusDebugPage::outputModbusDataUnit);
+        connect(mController, &SAKModbusCommonController::modbusDataUnitWritten, this, &SAKModbusDebugPage::outputModbusDataUnit);
         connect(mController->device(), &QModbusDevice::stateChanged, this, [=](){
             ui->connectionPushButton->setEnabled(dev->state() == QModbusDevice::UnconnectedState);
             ui->disconnectionPushButton->setEnabled(dev->state() == QModbusDevice::ConnectedState);

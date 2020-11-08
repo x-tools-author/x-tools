@@ -16,6 +16,7 @@
 #include <QPushButton>
 #include <QSqlDatabase>
 #include <QSplashScreen>
+#include <QModbusDataUnit>
 
 namespace Ui {
     class SAKModbusDebugPage;
@@ -45,6 +46,7 @@ private:
     SAKModbusCommonController *mController;
 private:
     QWidget *controllerFromType(int type);
+    void outputModbusDataUnit(QModbusDataUnit mdu);
 private:
     Ui::SAKModbusDebugPage *ui;
 private slots:

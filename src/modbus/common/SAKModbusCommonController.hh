@@ -13,6 +13,7 @@
 #include <QWidget>
 #include <QHBoxLayout>
 #include <QModbusDevice>
+#include <QModbusDataUnit>
 
 class SAKModbusCommonController : public QWidget
 {
@@ -38,6 +39,8 @@ private:
     QModbusDevice *mDevice;
 signals:
     void deviceStateChanged();
+    void modbusDataUnitRead(QModbusDataUnit mdu);
+    void modbusDataUnitWritten(QModbusDataUnit mdu);
 };
 
 #endif // SAKMODBUSCOMMONDEVICECONTROLLER_HH
