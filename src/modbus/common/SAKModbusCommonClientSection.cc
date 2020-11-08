@@ -39,12 +39,12 @@ SAKModbusCommonClientSection::SAKModbusCommonClientSection(QWidget *parent)
     };
 
     QList<Info> infoList;
-    infoList << Info{tr("0x01-Read Coils"), QModbusDataUnit::Coils}
-             << Info{tr("0x02-Read Discrete Inputs"), QModbusDataUnit::DiscreteInputs}
-             << Info{tr("0x03-Read Holding Registers"), QModbusDataUnit::HoldingRegisters}
-             << Info{tr("0x04-Read Input Registers"), QModbusDataUnit::InputRegisters}
-             << Info{tr("0x0F-Write Coils"), QModbusDataUnit::Coils}
-             << Info{tr("0x10-Write Registers"), QModbusDataUnit::HoldingRegisters};
+    infoList << Info{tr("Read Coils(0x01)"), QModbusDataUnit::Coils}
+             << Info{tr("Read Discrete Inputs(0x02)"), QModbusDataUnit::DiscreteInputs}
+             << Info{tr("Read Holding Registers(0x03)"), QModbusDataUnit::HoldingRegisters}
+             << Info{tr("Read Input Registers(0x04)"), QModbusDataUnit::InputRegisters}
+             << Info{tr("Write Coils(0x0F)"), QModbusDataUnit::Coils}
+             << Info{tr("Write Registers(0x10)"), QModbusDataUnit::HoldingRegisters};
 
     QStandardItemModel *itemModel = new QStandardItemModel(this);
     ui->functionCodeComboBox->clear();
