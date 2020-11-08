@@ -22,9 +22,10 @@ public:
     SAKModbusClientControllerTcp(QWidget *parent = Q_NULLPTR);
 
     virtual void open() final;
+protected:
+    virtual QModbusDevice *initModbusDevice() final;
 private:
     SAKModbusCommonHostSection *mHostSection;
-    SAKModbusCommonClientSection *mClientSection;
     QModbusTcpClient *mClient;
 };
 
