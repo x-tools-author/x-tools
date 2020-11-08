@@ -39,12 +39,12 @@ SAKModbusCommonClientSection::SAKModbusCommonClientSection(QWidget *parent)
     };
 
     QList<Info> infoList;
-    infoList << Info{tr("Read Coils"), QModbusDataUnit::Coils}
-             << Info{tr("Read Discrete Inputs"), QModbusDataUnit::DiscreteInputs}
-             << Info{tr("Read Holding Registers"), QModbusDataUnit::HoldingRegisters}
-             << Info{tr("Write Coils"), QModbusDataUnit::Coils}
-             << Info{tr("Write Input Registers"), QModbusDataUnit::InputRegisters}
-             << Info{tr("Write Holding Registers"), QModbusDataUnit::HoldingRegisters};
+    infoList << Info{tr("0x01-Read Coils"), QModbusDataUnit::Coils}
+             << Info{tr("0x02-Read Discrete Inputs"), QModbusDataUnit::DiscreteInputs}
+             << Info{tr("0x03-Read Holding Registers"), QModbusDataUnit::HoldingRegisters}
+             << Info{tr("0x04-Read Input Registers"), QModbusDataUnit::InputRegisters}
+             << Info{tr("0x0F-Write Coils"), QModbusDataUnit::Coils}
+             << Info{tr("0x10-Write Registers"), QModbusDataUnit::HoldingRegisters};
 
     QStandardItemModel *itemModel = new QStandardItemModel(this);
     ui->functionCodeComboBox->clear();
@@ -129,7 +129,7 @@ void SAKModbusCommonClientSection::updateTableWidget()
 
         QLineEdit *value = new QLineEdit;
         value->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-        if (ui->functionCodeComboBox->currentIndex() < 3){
+        if (ui->functionCodeComboBox->currentIndex() < 4){
             value->setReadOnly(true);
             if (isCoilsRegisterType){
                 value->setText("-");
@@ -165,7 +165,7 @@ void SAKModbusCommonClientSection::on_functionCodeComboBox_currentIndexChanged(i
 {
     Q_UNUSED(index);
     updateTableWidget();
-    if (ui->functionCodeComboBox->currentIndex() < 3){
+    if (ui->functionCodeComboBox->currentIndex() < 4){
         ui->sendReadRequestPushButton->setEnabled(true);
         ui->sendWriteRequestPushButton->setEnabled(false);
     }else{
