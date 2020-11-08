@@ -42,3 +42,11 @@ SAKModbusCommonHostSection::~SAKModbusCommonHostSection()
 {
     delete ui;
 }
+
+SAKModbusCommonHostSection::ParametersContext SAKModbusCommonHostSection::parametersContext()
+{
+    ParametersContext parasCtx;
+    parasCtx.host = ui->hostComboBox->currentText();
+    parasCtx.port = ui->portLineSpinBox->value();
+    return parasCtx;
+}

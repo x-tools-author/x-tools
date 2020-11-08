@@ -21,6 +21,14 @@ class SAKModbusCommonHostSection : public QWidget
 public:
     explicit SAKModbusCommonHostSection(QWidget *parent = nullptr);
     ~SAKModbusCommonHostSection();
+
+    struct ParametersContext{
+        QString host;
+        quint16 port;
+    };
+    ParametersContext parametersContext();
+private:
+    ParametersContext mParametersContext;
 private:
     Ui::SAKModbusCommonHostSection *ui;
 };
