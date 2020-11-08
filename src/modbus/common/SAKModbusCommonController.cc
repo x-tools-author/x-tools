@@ -47,6 +47,7 @@ QModbusDevice *SAKModbusCommonController::device()
 void SAKModbusCommonController::init()
 {
     mDevice = initModbusDevice();
+    mDevice->setParent(this);
     Q_ASSERT_X(mDevice, __FUNCTION__, "The value returned can not be null!");
 
     if (mDevice){
