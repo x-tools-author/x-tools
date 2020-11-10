@@ -51,5 +51,5 @@ quint16 SAKModbusCommonRegister::value()
 
 void SAKModbusCommonRegister::on_lineEdit_textChanged(const QString &arg1)
 {
-
+    Q_UNUSED(arg1);
 }
