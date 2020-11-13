@@ -7,6 +7,7 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
+#include <QDebug>
 #include <QModbusTcpServer>
 #include "SAKModbusCommonHostSection.hh"
 #include "SAKModbusCommonServerSection.hh"
@@ -17,8 +18,8 @@ SAKModbusServerControllerTcp::SAKModbusServerControllerTcp(QWidget *parent)
 {
     init();
     mHostSection = new SAKModbusCommonHostSection(this);
-    mServer = qobject_cast<QModbusRtuSerialSlave*>(device());
     appendSection(mHostSection);
+    mServer = qobject_cast<QModbusTcpServer*>(device());
 }
 
 void SAKModbusServerControllerTcp::open()

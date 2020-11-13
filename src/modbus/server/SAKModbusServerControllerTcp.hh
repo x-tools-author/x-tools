@@ -10,7 +10,7 @@
 #ifndef SAKMODBUSSERVERCONTROLLERTCP_HH
 #define SAKMODBUSSERVERCONTROLLERTCP_HH
 
-#include <QModbusRtuSerialSlave>
+#include <QModbusTcpServer>
 #include "SAKModbusServerController.hh"
 
 class SAKModbusCommonHostSection;
@@ -24,7 +24,7 @@ protected:
     virtual QModbusDevice *initModbusDevice() final;
 private:
     SAKModbusCommonHostSection *mHostSection;
-    QModbusRtuSerialSlave *mServer;
+    QModbusTcpServer *mServer;
 };
 
 #endif // SAKMODBUSSERVERCONTROLLERTCP_HH
