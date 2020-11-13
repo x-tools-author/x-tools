@@ -54,12 +54,17 @@ SAKModbusDebugPage::SAKModbusDebugPage(int type, QString name, QSettings *settin
 
     // Add page to tab widget
     for (auto var : pageInfoList){
+        var.widget->setContentsMargins(0, 0, 0, 0);
         if (!var.widget->layout()){
             QVBoxLayout *vLayout = new QVBoxLayout;
+            vLayout->setMargin(0);
             var.widget->setLayout(vLayout);
         }
-        mRegisterView = new SAKModbusCommonRegisterView;
+        mRegisterView = new SAKModbusCommonRegisterView(var.type);
+        mRegisterView->setContentsMargins(0, 0, 0, 0);
         mRegisterViewController = new SAKModbusCommonRegisterViewController;
+        connect(mRegisterViewController, &SAKModbusCommonRegisterViewController::inVokeUpdateRegister, mRegisterView, &SAKModbusCommonRegisterView::updateRegister);
+
         var.widget->layout()->addWidget(mRegisterView);
         var.widget->layout()->addWidget(mRegisterViewController);
         for (quint16 i = 0; i < 100; i++){
