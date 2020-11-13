@@ -54,12 +54,13 @@ void SAKModbusCommonController::init()
     auto server = qobject_cast<QModbusServer*>(mDevice);
     if (server){
         QModbusDataUnitMap reg;
-        reg.insert(QModbusDataUnit::Coils, {QModbusDataUnit::Coils, 0, 65535});
-        reg.insert(QModbusDataUnit::DiscreteInputs, {QModbusDataUnit::DiscreteInputs, 0, 65535});
-        reg.insert(QModbusDataUnit::InputRegisters, {QModbusDataUnit::InputRegisters, 0, 65535});
-        reg.insert(QModbusDataUnit::HoldingRegisters, {QModbusDataUnit::HoldingRegisters, 0, 65535});
+        quint16 registerNumber = 65535;
+        reg.insert(QModbusDataUnit::Coils, {QModbusDataUnit::Coils, 0, registerNumber});
+        reg.insert(QModbusDataUnit::DiscreteInputs, {QModbusDataUnit::DiscreteInputs, 0, registerNumber});
+        reg.insert(QModbusDataUnit::InputRegisters, {QModbusDataUnit::InputRegisters, 0, registerNumber});
+        reg.insert(QModbusDataUnit::HoldingRegisters, {QModbusDataUnit::HoldingRegisters, 0, registerNumber});
         server->setMap(reg);
-        for (int i = 0; i < 65535; i++){
+        for (int i = 0; i < registerNumber; i++){
             server->setData(QModbusDataUnit::Coils, i, false);
             server->setData(QModbusDataUnit::DiscreteInputs, i, false);
             server->setData(QModbusDataUnit::InputRegisters, i, 0xffff);
