@@ -16,8 +16,12 @@ SAKModbusServerControllerSerialPort::SAKModbusServerControllerSerialPort(QWidget
 {
     init();
     mSerialPortSection = new SAKModbusCommonSerialPortSection(this);
-    mServer = qobject_cast<QModbusRtuSerialSlave*>(device());
     appendSection(mSerialPortSection);
+    mServer = qobject_cast<QModbusRtuSerialSlave*>(device());
+    connect(mServer, &QModbusServer::stateChanged, [=]{
+        bool isunConnecnted = mServer->state() == QModbusDevice::UnconnectedState;
+        mSerialPortSection->setEnabled(isunConnecnted);
+    });
 }
 
 void SAKModbusServerControllerSerialPort::open()

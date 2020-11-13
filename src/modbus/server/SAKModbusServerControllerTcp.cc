@@ -20,6 +20,10 @@ SAKModbusServerControllerTcp::SAKModbusServerControllerTcp(QWidget *parent)
     mHostSection = new SAKModbusCommonHostSection(this);
     appendSection(mHostSection);
     mServer = qobject_cast<QModbusTcpServer*>(device());
+    connect(mServer, &QModbusServer::stateChanged, [=]{
+        bool isunConnecnted = mServer->state() == QModbusDevice::UnconnectedState;
+        mHostSection->setEnabled(isunConnecnted);
+    });
 }
 
 void SAKModbusServerControllerTcp::open()
