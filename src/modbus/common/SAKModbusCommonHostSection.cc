@@ -50,3 +50,14 @@ SAKModbusCommonHostSection::ParametersContext SAKModbusCommonHostSection::parame
     parasCtx.port = ui->portLineSpinBox->value();
     return parasCtx;
 }
+
+void SAKModbusCommonHostSection::initModbusDeviceParamerers(QModbusDevice *dev)
+{
+    if (dev){
+        auto deviceParasCtx = parametersContext();
+        dev->setConnectionParameter(QModbusDevice::NetworkPortParameter, deviceParasCtx.port);
+        dev->setConnectionParameter(QModbusDevice::NetworkAddressParameter, deviceParasCtx.host);
+    }else{
+        Q_ASSERT_X(false, __FUNCTION__, "Parameter can not be null!");
+    }
+}

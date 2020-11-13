@@ -11,6 +11,7 @@
 #define SAKMODBUSCOMMONHOSTSECTION_HH
 
 #include <QWidget>
+#include <QModbusDevice>
 
 namespace Ui {
     class SAKModbusCommonHostSection;
@@ -27,6 +28,8 @@ public:
         quint16 port;
     };
     ParametersContext parametersContext();
+
+    void initModbusDeviceParamerers(QModbusDevice *dev);
 private:
     ParametersContext mParametersContext;
 private:

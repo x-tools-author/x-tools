@@ -107,6 +107,17 @@ void SAKModbusCommonClientSection::updateTableWidget(QModbusDataUnit mdu)
     }
 }
 
+void SAKModbusCommonClientSection::initModbusClientParameters(QModbusClient *client)
+{
+    if (client){
+        auto clientParacCtx = parametersContext();
+        client->setNumberOfRetries(clientParacCtx.numberOfRetries);
+        client->setTimeout(clientParacCtx.timeout);
+    }else{
+        Q_ASSERT_X(false, __FUNCTION__, "Parameter can not be null!");
+    }
+}
+
 void SAKModbusCommonClientSection::updateTableWidget()
 {
     bool isCoilsRegisterType = true;

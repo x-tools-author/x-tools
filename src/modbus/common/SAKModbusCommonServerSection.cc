@@ -21,3 +21,17 @@ SAKModbusCommonServerSection::~SAKModbusCommonServerSection()
 {
 
 }
+
+void SAKModbusCommonServerSection::initModbusServerParameters(QModbusServer *server)
+{
+    if (server){
+        auto serverAddress = ui->serverAddressSpinBox->value();
+        auto listenOnly = ui->listenLonlyCheckBox->isChecked();
+        auto isBusy = ui->busyCheckBox->isChecked();
+        server->setServerAddress(serverAddress);
+        server->setValue(QModbusServer::ListenOnlyMode, listenOnly);
+        server->setValue(QModbusServer::DeviceBusy, isBusy ? 0xffff : 0x0000);
+    }else{
+        Q_ASSERT_X(false, __FUNCTION__, "Parameter can not be null!");
+    }
+}

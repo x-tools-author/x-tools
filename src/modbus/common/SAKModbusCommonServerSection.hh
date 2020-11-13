@@ -11,6 +11,7 @@
 #define SAKMODBUSCOMMONSERVERSECTION_HH
 
 #include <QWidget>
+#include <QModbusServer>
 
 namespace Ui {
     class SAKModbusCommonServerSection;
@@ -22,6 +23,8 @@ class SAKModbusCommonServerSection : public QWidget
 public:
     SAKModbusCommonServerSection(QWidget *parent = Q_NULLPTR);
     ~SAKModbusCommonServerSection();
+
+    void initModbusServerParameters(QModbusServer *server);
 private:
     Ui::SAKModbusCommonServerSection *ui;
 };

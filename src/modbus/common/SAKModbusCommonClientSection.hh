@@ -16,6 +16,7 @@
 #include <QLineEdit>
 #include <QComboBox>
 #include <QTableWidget>
+#include <QModbusClient>
 #include <QModbusDataUnit>
 
 namespace Ui {
@@ -42,6 +43,7 @@ public:
     void setUiEnable(bool isUnconnected);
     int slaveAddress();
     void updateTableWidget(QModbusDataUnit mdu);
+    void initModbusClientParameters(QModbusClient *client);
 private:
     ParametersContext mParametersContext;
 private:
