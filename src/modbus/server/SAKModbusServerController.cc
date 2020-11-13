@@ -8,9 +8,15 @@
  * the file LICENCE in the root of the source code directory.
  */
 #include "SAKModbusServerController.hh"
+#include "SAKModbusCommonServerSection.hh"
 
 SAKModbusServerController::SAKModbusServerController(QWidget *parent)
     :SAKModbusCommonController(parent)
 {
+    mServerSection = new SAKModbusCommonServerSection(this);
+}
 
+QWidget *SAKModbusServerController::bottomSection()
+{
+    return mServerSection;
 }

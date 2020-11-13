@@ -12,11 +12,16 @@
 
 #include <SAKModbusCommonController.hh>
 
+class SAKModbusCommonServerSection;
 class SAKModbusServerController : public SAKModbusCommonController
 {
     Q_OBJECT
 public:
     SAKModbusServerController(QWidget *parent = Q_NULLPTR);
+protected:
+    SAKModbusCommonServerSection *mServerSection;
+protected:
+    virtual QWidget *bottomSection() final;
 };
 
 #endif // SAKMODBUSSERVERCONTROLLERSERVER_HH

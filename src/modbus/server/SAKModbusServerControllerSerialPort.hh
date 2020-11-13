@@ -10,19 +10,21 @@
 #ifndef SAKMODBUSCONTROLLERSERVERSERIALPORT_HH
 #define SAKMODBUSCONTROLLERSERVERSERIALPORT_HH
 
-#include "SAKModbusCommonController.hh"
+#include <QModbusRtuSerialSlave>
+#include "SAKModbusServerController.hh"
 
-class SAKModbusCommonServerSection;
 class SAKModbusCommonSerialPortSection;
-class SAKModbusServerControllerSerialPort : public SAKModbusCommonController
+class SAKModbusServerControllerSerialPort : public SAKModbusServerController
 {
     Q_OBJECT
 public:
     SAKModbusServerControllerSerialPort(QWidget *parent = Q_NULLPTR);
     virtual void open() final;
+protected:
+    virtual QModbusDevice *initModbusDevice() final;
 private:
-    SAKModbusCommonServerSection *mServerSection;
     SAKModbusCommonSerialPortSection *mSerialPortSection;
+    QModbusRtuSerialSlave *mServer;
 };
 
 #endif // SAKMODBUSCONTROLLERSERVERSERIALPORT_HH

@@ -12,16 +12,19 @@
 #include "SAKModbusServerControllerSerialPort.hh"
 
 SAKModbusServerControllerSerialPort::SAKModbusServerControllerSerialPort(QWidget *parent)
-    :SAKModbusCommonController(parent)
+    :SAKModbusServerController(parent)
 {
+    init();
     mSerialPortSection = new SAKModbusCommonSerialPortSection(this);
-    mServerSection = new SAKModbusCommonServerSection(this);
+    mServer = qobject_cast<QModbusRtuSerialSlave*>(device());
     appendSection(mSerialPortSection);
-    appendSection(mServerSection);
 }
 
 void SAKModbusServerControllerSerialPort::open()
 {
+    mSerialPortSection->initModbusDeviceParamerers(mServer);
+    mServerSection->initModbusServerParameters(mServer);
+    mServer->connectDevice();
 //    if (isClient()){
 //        m_client = createClient(m_type);
 //        if (m_client){
@@ -40,4 +43,10 @@ void SAKModbusServerControllerSerialPort::open()
 //            }
 //        }
 //    }
+}
+
+QModbusDevice *SAKModbusServerControllerSerialPort::initModbusDevice()
+{
+    auto dev = new QModbusRtuSerialSlave;
+    return dev;
 }

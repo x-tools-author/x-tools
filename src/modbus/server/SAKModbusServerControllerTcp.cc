@@ -7,37 +7,29 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
+#include <QModbusTcpServer>
 #include "SAKModbusCommonHostSection.hh"
 #include "SAKModbusCommonServerSection.hh"
 #include "SAKModbusServerControllerTcp.hh"
 
 SAKModbusServerControllerTcp::SAKModbusServerControllerTcp(QWidget *parent)
-    :SAKModbusCommonController(parent)
+    :SAKModbusServerController(parent)
 {
+    init();
     mHostSection = new SAKModbusCommonHostSection(this);
-    mServerSection = new SAKModbusCommonServerSection(this);
+    mServer = qobject_cast<QModbusRtuSerialSlave*>(device());
     appendSection(mHostSection);
-    appendSection(mServerSection);
 }
 
 void SAKModbusServerControllerTcp::open()
 {
-//    if (isClient()){
-//        m_client = createClient(m_type);
-//        if (m_client){
-//            if(!initModbusDevice(m_client)){
-//                ui->connectPushButton->setEnabled(true);
-//            }
-//        }
-//    }else{
-//        m_server = createServer(m_type);
-//        if (m_server){
-//            connect(m_server, &QModbusServer::dataWritten, this, [](QModbusDataUnit::RegisterType type, int address, int size){
-//                qDebug() << __FUNCTION__ << type << address << size;
-//            });
-//            if (!initModbusDevice(m_server)){
-//                ui->connectPushButton->setEnabled(true);
-//            }
-//        }
-//    }
+    mHostSection->initModbusDeviceParamerers(mServer);
+    mServerSection->initModbusServerParameters(mServer);
+    mServer->connectDevice();
+}
+
+QModbusDevice *SAKModbusServerControllerTcp::initModbusDevice()
+{
+    auto dev = new QModbusTcpServer;
+    return dev;
 }

@@ -85,3 +85,17 @@ SAKModbusCommonSerialPortSection::ParametersContext SAKModbusCommonSerialPortSec
 #endif
     return paras;
 }
+
+void SAKModbusCommonSerialPortSection::initModbusDeviceParamerers(QModbusDevice *dev)
+{
+    if (dev){
+        auto seruialPortParasCtx = parametersContext();
+        dev->setConnectionParameter(QModbusDevice::SerialPortNameParameter, seruialPortParasCtx.portName);
+        dev->setConnectionParameter(QModbusDevice::SerialParityParameter, seruialPortParasCtx.parity);
+        dev->setConnectionParameter(QModbusDevice::SerialBaudRateParameter, seruialPortParasCtx.baudRate);
+        dev->setConnectionParameter(QModbusDevice::SerialDataBitsParameter, seruialPortParasCtx.dataBits);
+        dev->setConnectionParameter(QModbusDevice::SerialStopBitsParameter, seruialPortParasCtx.stopBits);
+    }else{
+        Q_ASSERT_X(false, __FUNCTION__, "Parameters can not be null!");
+    }
+}

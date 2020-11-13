@@ -11,6 +11,7 @@
 #define SAKMODBUSCOMMONSERIALPORTSECTION_HH
 
 #include <QWidget>
+#include <QModbusDevice>
 
 namespace Ui {
     class SAKModbusCommonSerialPortSection;
@@ -32,6 +33,8 @@ public:
     };
 
     ParametersContext parametersContext();
+
+    void initModbusDeviceParamerers(QModbusDevice *dev);
 private:
     Ui::SAKModbusCommonSerialPortSection *ui;
 };
