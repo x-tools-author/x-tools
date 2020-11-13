@@ -15,8 +15,8 @@ FORMS += \
     $$PWD/src/modbus/common/SAKModbusCommonClientSection.ui \
     $$PWD/src/modbus/common/SAKModbusCommonHostSection.ui \
     $$PWD/src/modbus/common/SAKModbusCommonRegister.ui \
+    $$PWD/src/modbus/common/SAKModbusCommonRegisterViewController.ui \
     $$PWD/src/modbus/common/SAKModbusCommonReigsterView.ui \
-    $$PWD/src/modbus/common/SAKModbusCommonReigsterViewController.ui \
     $$PWD/src/modbus/common/SAKModbusCommonSerialPortSection.ui \
     $$PWD/src/modbus/common/SAKModbusCommonServerSection.ui
 
