@@ -29,15 +29,8 @@ SAKModbusClientControllerSerialPort::SAKModbusClientControllerSerialPort(QWidget
 
 void SAKModbusClientControllerSerialPort::open()
 {
-    SAKModbusCommonSerialPortSection::ParametersContext seruialPortParasCtx = mSerialPortSection->parametersContext();
-    mClient->setConnectionParameter(QModbusDevice::SerialPortNameParameter, seruialPortParasCtx.portName);
-    mClient->setConnectionParameter(QModbusDevice::SerialParityParameter, seruialPortParasCtx.parity);
-    mClient->setConnectionParameter(QModbusDevice::SerialBaudRateParameter, seruialPortParasCtx.baudRate);
-    mClient->setConnectionParameter(QModbusDevice::SerialDataBitsParameter, seruialPortParasCtx.dataBits);
-    mClient->setConnectionParameter(QModbusDevice::SerialStopBitsParameter, seruialPortParasCtx.stopBits);
-    SAKModbusCommonClientSection::ParametersContext clientParacCtx = mClientSection->parametersContext();
-    mClient->setNumberOfRetries(clientParacCtx.numberOfRetries);
-    mClient->setTimeout(clientParacCtx.timeout);
+    mSerialPortSection->initModbusDeviceParamerers(mClient);
+    mClientSection->initModbusClientParameters(mClient);
     // The function is asynchronous
     mClient->connectDevice();
 }

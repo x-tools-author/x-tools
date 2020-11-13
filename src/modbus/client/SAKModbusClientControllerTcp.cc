@@ -28,12 +28,8 @@ SAKModbusClientControllerTcp::SAKModbusClientControllerTcp(QWidget *parent)
 
 void SAKModbusClientControllerTcp::open()
 {
-    auto hostParasCtx = mHostSection->parametersContext();
-    mClient->setConnectionParameter(QModbusDevice::NetworkPortParameter, hostParasCtx.port);
-    mClient->setConnectionParameter(QModbusDevice::NetworkAddressParameter, hostParasCtx.host);
-    auto clientParasCtx = mClientSection->parametersContext();
-    mClient->setTimeout(clientParasCtx.timeout);
-    mClient->setNumberOfRetries(clientParasCtx.numberOfRetries);
+    mHostSection->initModbusDeviceParamerers(mClient);
+    mClientSection->initModbusClientParameters(mClient);
     mClient->connectDevice();
 }
 
