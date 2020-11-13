@@ -26,6 +26,13 @@ SAKModbusCommonController::SAKModbusCommonController(QWidget *parent)
     setLayout(mSectionLayout);
 }
 
+SAKModbusCommonController::~SAKModbusCommonController()
+{
+    if (mDevice){
+        mDevice->disconnectDevice();
+    }
+}
+
 void SAKModbusCommonController::closeDevice()
 {
     device()->disconnectDevice();
