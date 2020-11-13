@@ -12,14 +12,18 @@
 
 #include <QWidget>
 
+namespace Ui {
+    class SAKModbusCommonReigsterViewController;
+}
+
 class SAKModbusCommonReigsterViewController : public QWidget
 {
     Q_OBJECT
 public:
-    explicit SAKModbusCommonReigsterViewController(QWidget *parent = nullptr);
-
-signals:
-
+    explicit SAKModbusCommonReigsterViewController(QWidget *parent = Q_NULLPTR);
+    ~SAKModbusCommonReigsterViewController();
+private:
+    Ui::SAKModbusCommonReigsterViewController *ui;
 };
 
 #endif // SAKMODBUSCOMMONREIGSTERVIEWCONTROLLER_HH

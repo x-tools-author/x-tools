@@ -8,8 +8,16 @@
  * the file LICENCE in the root of the source code directory.
  */
 #include "SAKModbusCommonReigsterViewController.hh"
+#include "ui_SAKModbusCommonReigsterViewController.h"
 
-SAKModbusCommonReigsterViewController::SAKModbusCommonReigsterViewController(QWidget *parent) : QWidget(parent)
+SAKModbusCommonReigsterViewController::SAKModbusCommonReigsterViewController(QWidget *parent)
+    :QWidget(parent)
+    ,ui(new Ui::SAKModbusCommonReigsterViewController)
 {
+    ui->setupUi(this);
+}
 
+SAKModbusCommonReigsterViewController::~SAKModbusCommonReigsterViewController()
+{
+    delete ui;
 }
