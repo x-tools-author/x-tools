@@ -11,16 +11,18 @@
 #define SAKMODBUSCOMMONREIGSTERVIEW_HH
 
 #include <QWidget>
+#include <QModbusDataUnit>
 
 namespace Ui {
     class SAKModbusCommonReigsterView;
 }
 
+class SAKModbusCommonFlowLayout;
 class SAKModbusCommonRegisterView : public QWidget
 {
     Q_OBJECT
 public:
-    explicit SAKModbusCommonRegisterView(QWidget *parent = Q_NULLPTR);
+    explicit SAKModbusCommonRegisterView(QModbusDataUnit::RegisterType registerType, QWidget *parent = Q_NULLPTR);
     ~SAKModbusCommonRegisterView();
 
     /**
@@ -28,6 +30,16 @@ public:
      * @param registerWisget: Register widget
      */
     void addWidget(QWidget *registerWisget);
+
+    /**
+     * @brief updateRegister: Update the register widgets
+     * @param startAddress: --
+     * @param registerNumber: --
+     */
+    void updateRegister(int startAddress, int registerNumber);
+private:
+    SAKModbusCommonFlowLayout *mFlowLayout;
+    QModbusDataUnit::RegisterType mRegisterType;
 private:
     Ui::SAKModbusCommonReigsterView *ui;
 };
