@@ -13,17 +13,17 @@
 #include <QWidget>
 
 namespace Ui {
-    class SAKModbusCommonReigsterViewController;
+    class SAKModbusCommonRegisterViewController;
 }
 
-class SAKModbusCommonReigsterViewController : public QWidget
+class SAKModbusCommonRegisterViewController : public QWidget
 {
     Q_OBJECT
 public:
-    explicit SAKModbusCommonReigsterViewController(QWidget *parent = Q_NULLPTR);
-    ~SAKModbusCommonReigsterViewController();
+    explicit SAKModbusCommonRegisterViewController(QWidget *parent = Q_NULLPTR);
+    ~SAKModbusCommonRegisterViewController();
 private:
-    Ui::SAKModbusCommonReigsterViewController *ui;
+    Ui::SAKModbusCommonRegisterViewController *ui;
 };
 
 #endif // SAKMODBUSCOMMONREIGSTERVIEWCONTROLLER_HH

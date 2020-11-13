@@ -8,10 +8,10 @@
  * the file LICENCE in the root of the source code directory.
  */
 #include "SAKModbusCommonFlowLayout.hh"
-#include "SAKModbusCommonReigsterView.hh"
+#include "SAKModbusCommonRegisterView.hh"
 #include "ui_SAKModbusCommonReigsterView.h"
 
-SAKModbusCommonReigsterView::SAKModbusCommonReigsterView(QWidget *parent)
+SAKModbusCommonRegisterView::SAKModbusCommonRegisterView(QWidget *parent)
     :QWidget(parent)
     ,ui(new Ui::SAKModbusCommonReigsterView)
 {
@@ -19,12 +19,12 @@ SAKModbusCommonReigsterView::SAKModbusCommonReigsterView(QWidget *parent)
     ui->scrollAreaWidgetContents->setLayout(new SAKModbusCommonFlowLayout);
 }
 
-SAKModbusCommonReigsterView::~SAKModbusCommonReigsterView()
+SAKModbusCommonRegisterView::~SAKModbusCommonRegisterView()
 {
     delete ui;
 }
 
-void SAKModbusCommonReigsterView::addWidget(QWidget *registerWisget)
+void SAKModbusCommonRegisterView::addWidget(QWidget *registerWisget)
 {
     ui->scrollAreaWidgetContents->layout()->addWidget(registerWisget);
 }

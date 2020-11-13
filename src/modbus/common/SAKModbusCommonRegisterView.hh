@@ -16,12 +16,12 @@ namespace Ui {
     class SAKModbusCommonReigsterView;
 }
 
-class SAKModbusCommonReigsterView : public QWidget
+class SAKModbusCommonRegisterView : public QWidget
 {
     Q_OBJECT
 public:
-    explicit SAKModbusCommonReigsterView(QWidget *parent = Q_NULLPTR);
-    ~SAKModbusCommonReigsterView();
+    explicit SAKModbusCommonRegisterView(QWidget *parent = Q_NULLPTR);
+    ~SAKModbusCommonRegisterView();
 
     /**
      * @brief addWidget: Add a register widgt to the layout

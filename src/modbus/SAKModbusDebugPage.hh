@@ -23,6 +23,8 @@ namespace Ui {
 }
 
 class SAKModbusCommonController;
+class SAKModbusCommonRegisterView;
+class SAKModbusCommonRegisterViewController;
 class SAKModbusDebugPage : public QWidget
 {
     Q_OBJECT
@@ -44,6 +46,8 @@ private:
     QSqlDatabase *mSqlDatabase;
     QPushButton *mMenuPushButton;
     SAKModbusCommonController *mController;
+    SAKModbusCommonRegisterView *mRegisterView;
+    SAKModbusCommonRegisterViewController *mRegisterViewController;
 private:
     QWidget *controllerFromType(int type);
     void outputModbusDataUnit(QModbusDataUnit mdu);

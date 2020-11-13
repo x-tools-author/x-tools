@@ -1,19 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SAKModbusCommonReigsterViewController</class>
- <widget class="QWidget" name="SAKModbusCommonReigsterViewController">
+ <class>SAKModbusCommonRegisterViewController</class>
+ <widget class="QWidget" name="SAKModbusCommonRegisterViewController">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>822</width>
-    <height>41</height>
+    <width>531</width>
+    <height>23</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string notr="true">Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
    <item row="0" column="3">
     <widget class="QSpinBox" name="registerNumberSpinBox">
      <property name="maximum">
@@ -31,17 +43,34 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="1">
-    <widget class="QSpinBox" name="startAddressSpinBox"/>
-   </item>
    <item row="0" column="5">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="1">
+    <widget class="QSpinBox" name="startAddressSpinBox">
+     <property name="maximum">
+      <number>2000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="6">
     <widget class="QPushButton" name="importPushButton">
      <property name="text">
       <string>Import</string>
      </property>
     </widget>
    </item>
-   <item row="0" column="6">
+   <item row="0" column="7">
     <widget class="QPushButton" name="exportPushButton">
      <property name="text">
       <string>Export</string>
@@ -56,17 +85,11 @@
     </widget>
    </item>
    <item row="0" column="4">
-    <spacer name="horizontalSpacer">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+    <widget class="QPushButton" name="updatePushButton">
+     <property name="text">
+      <string>Update</string>
      </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>40</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
+    </widget>
    </item>
   </layout>
  </widget>

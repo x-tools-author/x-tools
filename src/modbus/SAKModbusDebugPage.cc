@@ -15,12 +15,13 @@
 #include "SAKModbusCommonRegister.hh"
 #include "SAKModbusCommonFlowLayout.hh"
 #include "SAKModbusCommonController.hh"
-#include "SAKModbusCommonReigsterView.hh"
+#include "SAKModbusCommonRegisterView.hh"
 #include "SAKModbusClientControllerTcp.hh"
 #include "SAKModbusServerControllerTcp.hh"
 #include "SAKModbusCommonSerialPortSection.hh"
 #include "SAKModbusClientControllerSerialPort.hh"
 #include "SAKModbusServerControllerSerialPort.hh"
+#include "SAKModbusCommonRegisterViewController.hh"
 
 #include "ui_SAKModbusDebugPage.h"
 
@@ -54,12 +55,15 @@ SAKModbusDebugPage::SAKModbusDebugPage(int type, QString name, QSettings *settin
     // Add page to tab widget
     for (auto var : pageInfoList){
         if (!var.widget->layout()){
-            var.widget->setLayout(new QHBoxLayout);
+            QVBoxLayout *vLayout = new QVBoxLayout;
+            var.widget->setLayout(vLayout);
         }
-        auto registerView = new SAKModbusCommonReigsterView;
-        var.widget->layout()->addWidget(registerView);
+        mRegisterView = new SAKModbusCommonRegisterView;
+        mRegisterViewController = new SAKModbusCommonRegisterViewController;
+        var.widget->layout()->addWidget(mRegisterView);
+        var.widget->layout()->addWidget(mRegisterViewController);
         for (quint16 i = 0; i < 100; i++){
-            registerView->addWidget(new SAKModbusCommonRegister(var.type, i, i));
+            mRegisterView->addWidget(new SAKModbusCommonRegister(var.type, i, i));
         }
     }
 

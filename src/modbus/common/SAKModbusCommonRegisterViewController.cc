@@ -7,17 +7,17 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#include "SAKModbusCommonReigsterViewController.hh"
+#include "SAKModbusCommonRegisterViewController.hh"
 #include "ui_SAKModbusCommonReigsterViewController.h"
 
-SAKModbusCommonReigsterViewController::SAKModbusCommonReigsterViewController(QWidget *parent)
+SAKModbusCommonRegisterViewController::SAKModbusCommonRegisterViewController(QWidget *parent)
     :QWidget(parent)
-    ,ui(new Ui::SAKModbusCommonReigsterViewController)
+    ,ui(new Ui::SAKModbusCommonRegisterViewController)
 {
     ui->setupUi(this);
 }
 
-SAKModbusCommonReigsterViewController::~SAKModbusCommonReigsterViewController()
+SAKModbusCommonRegisterViewController::~SAKModbusCommonRegisterViewController()
 {
     delete ui;
 }
