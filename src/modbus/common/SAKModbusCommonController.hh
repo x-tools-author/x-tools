@@ -19,7 +19,7 @@ class SAKModbusCommonController : public QWidget
 {
     Q_OBJECT
 public:
-    explicit SAKModbusCommonController(QWidget *parent = nullptr);
+    explicit SAKModbusCommonController(QWidget *parent = Q_NULLPTR);
     ~SAKModbusCommonController();
 
     virtual void open() = 0;

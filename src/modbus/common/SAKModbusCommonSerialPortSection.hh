@@ -21,7 +21,7 @@ class SAKModbusCommonSerialPortSection : public QWidget
 {
     Q_OBJECT
 public:
-    explicit SAKModbusCommonSerialPortSection(QWidget *parent = nullptr);
+    explicit SAKModbusCommonSerialPortSection(QWidget *parent = Q_NULLPTR);
     ~SAKModbusCommonSerialPortSection();
 
     struct ParametersContext {

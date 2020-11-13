@@ -52,12 +52,12 @@ QPixmap SAKToolQRCodeCreator::encodeString(const QString &text, int width)
     }
 
     QRcode *qrcode = QRcode_encodeString(text.toLatin1().constData(), 0, QR_ECLEVEL_L, QR_MODE_8, 0);
-    if (qrcode == nullptr) {
+    if (qrcode == Q_NULLPTR) {
         return QPixmap();
     }
 
-    unsigned char *p = nullptr;
-    unsigned char *q = nullptr;
+    unsigned char *p = Q_NULLPTR;
+    unsigned char *q = Q_NULLPTR;
     int realwidth = qrcode->width;
     int x, y, bit;
 

@@ -39,7 +39,7 @@ SAKOtherAnalyzerThreadManager::SAKOtherAnalyzerThreadManager(QSettings *settings
     connect(mAnalyzer, &SAKOtherAnalyzerThread::bytesAnalyzed, this, &SAKOtherAnalyzerThreadManager::bytesAnalysed);
     mAnalyzer->start();
 
-    Q_ASSERT_X(settings, __FUNCTION__, "The parameter can not be nullptr!");
+    Q_ASSERT_X(settings, __FUNCTION__, "The parameter can not be Q_NULLPTR!");
     if (settings){
         // Read in parameters from settings file
         bool fixed = settings->value(mSettingKeyFixed).toBool();

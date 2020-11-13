@@ -20,7 +20,7 @@ class SAKModbusCommonHostSection : public QWidget
 {
     Q_OBJECT
 public:
-    explicit SAKModbusCommonHostSection(QWidget *parent = nullptr);
+    explicit SAKModbusCommonHostSection(QWidget *parent = Q_NULLPTR);
     ~SAKModbusCommonHostSection();
 
     struct ParametersContext{

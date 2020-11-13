@@ -26,7 +26,7 @@ class SAKModbusCommonClientSection : public QWidget
 {
     Q_OBJECT
 public:
-    explicit SAKModbusCommonClientSection(QWidget *parent = nullptr);
+    explicit SAKModbusCommonClientSection(QWidget *parent = Q_NULLPTR);
     ~SAKModbusCommonClientSection();
 
     struct ParametersContext{
