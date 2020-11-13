@@ -163,7 +163,6 @@ HEADERS += \
     src/common/SAKCommonCrcInterface.hh \
     src/common/SAKCommonDataStructure.hh \
     src/common/SAKCommonInterface.hh \
-    src/modbus/common/SAKModbusCommonInterface.hh \
     src/pages/page/SAKDebugPage.hh \
     src/pages/page/common/SAKDebugPageCommonDatabaseInterface.hh \
     src/pages/page/common/SAKDebugPageCommonSslConfigurationWidget.hh \
@@ -219,7 +218,6 @@ SOURCES += \
     src/common/SAKCommonCrcInterface.cc \
     src/common/SAKCommonDataStructure.cc \
     src/common/SAKCommonInterface.cc \
-    src/modbus/common/SAKModbusCommonInterface.cc \
     src/pages/page/SAKDebugPage.cc \
     src/pages/page/common/SAKDebugPageCommonDatabaseInterface.cc \
     src/pages/page/common/SAKDebugPageCommonSslConfigurationWidget.cc \
