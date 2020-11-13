@@ -11,6 +11,7 @@
 #include <QDebug>
 #include <QSizePolicy>
 #include <QMessageBox>
+#include <QModbusServer>
 
 #include "SAKModbusCommonController.hh"
 
@@ -49,6 +50,22 @@ void SAKModbusCommonController::init()
     mDevice = initModbusDevice();
     mDevice->setParent(this);
     Q_ASSERT_X(mDevice, __FUNCTION__, "The value returned can not be null!");
+
+    auto server = qobject_cast<QModbusServer*>(mDevice);
+    if (server){
+        QModbusDataUnitMap reg;
+        reg.insert(QModbusDataUnit::Coils, {QModbusDataUnit::Coils, 0, 65535});
+        reg.insert(QModbusDataUnit::DiscreteInputs, {QModbusDataUnit::DiscreteInputs, 0, 65535});
+        reg.insert(QModbusDataUnit::InputRegisters, {QModbusDataUnit::InputRegisters, 0, 65535});
+        reg.insert(QModbusDataUnit::HoldingRegisters, {QModbusDataUnit::HoldingRegisters, 0, 65535});
+        server->setMap(reg);
+        for (int i = 0; i < 65535; i++){
+            server->setData(QModbusDataUnit::Coils, i, false);
+            server->setData(QModbusDataUnit::DiscreteInputs, i, false);
+            server->setData(QModbusDataUnit::InputRegisters, i, 0xffff);
+            server->setData(QModbusDataUnit::HoldingRegisters, i, 0xffff);
+        }
+    }
 
     if (mDevice){
         connect(mDevice, &QModbusDevice::errorOccurred, this, [=](){
