@@ -31,8 +31,8 @@ HEADERS += \
     $$PWD/src/modbus/common/SAKModbusCommonHostSection.hh \
     $$PWD/src/modbus/common/SAKModbusCommonInterface.hh \
     $$PWD/src/modbus/common/SAKModbusCommonRegister.hh \
-    $$PWD/src/modbus/common/SAKModbusCommonReigsterView.hh \
-    $$PWD/src/modbus/common/SAKModbusCommonReigsterViewController.hh \
+    $$PWD/src/modbus/common/SAKModbusCommonRegisterView.hh \
+    $$PWD/src/modbus/common/SAKModbusCommonRegisterViewController.hh \
     $$PWD/src/modbus/common/SAKModbusCommonSerialPortSection.hh \
     $$PWD/src/modbus/common/SAKModbusCommonServerSection.hh \
     $$PWD/src/modbus/server/SAKModbusServerController.hh \
@@ -50,8 +50,8 @@ SOURCES += \
     $$PWD/src/modbus/common/SAKModbusCommonHostSection.cc \
     $$PWD/src/modbus/common/SAKModbusCommonInterface.cc \
     $$PWD/src/modbus/common/SAKModbusCommonRegister.cc \
-    $$PWD/src/modbus/common/SAKModbusCommonReigsterView.cc \
-    $$PWD/src/modbus/common/SAKModbusCommonReigsterViewController.cc \
+    $$PWD/src/modbus/common/SAKModbusCommonRegisterView.cc \
+    $$PWD/src/modbus/common/SAKModbusCommonRegisterViewController.cc \
     $$PWD/src/modbus/common/SAKModbusCommonSerialPortSection.cc \
     $$PWD/src/modbus/common/SAKModbusCommonServerSection.cc \
     $$PWD/src/modbus/server/SAKModbusServerController.cc \
