@@ -8,7 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  */
 #include "SAKModbusCommonRegisterViewController.hh"
-#include "ui_SAKModbusCommonReigsterViewController.h"
+#include "ui_SAKModbusCommonRegisterViewController.h"
 
 SAKModbusCommonRegisterViewController::SAKModbusCommonRegisterViewController(QWidget *parent)
     :QWidget(parent)
@@ -20,4 +20,11 @@ SAKModbusCommonRegisterViewController::SAKModbusCommonRegisterViewController(QWi
 SAKModbusCommonRegisterViewController::~SAKModbusCommonRegisterViewController()
 {
     delete ui;
+}
+
+void SAKModbusCommonRegisterViewController::on_updatePushButton_clicked()
+{
+    int startAddress = ui->startAddressSpinBox->value();
+    int registerNumber = ui->registerNumberSpinBox->value();
+    emit inVokeUpdateRegister(startAddress, registerNumber);
 }

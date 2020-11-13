@@ -22,8 +22,12 @@ class SAKModbusCommonRegisterViewController : public QWidget
 public:
     explicit SAKModbusCommonRegisterViewController(QWidget *parent = Q_NULLPTR);
     ~SAKModbusCommonRegisterViewController();
+signals:
+    void inVokeUpdateRegister(int startAddress, int registerNumber);
 private:
     Ui::SAKModbusCommonRegisterViewController *ui;
+private slots:
+    void on_updatePushButton_clicked();
 };
 
 #endif // SAKMODBUSCOMMONREIGSTERVIEWCONTROLLER_HH
