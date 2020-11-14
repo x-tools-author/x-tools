@@ -163,7 +163,9 @@ void SAKModbusCommonController::saveServerRegisterData(QModbusServer *server, QS
 
         pb->close();
         delete pb->parent();
+#if 0
         QMessageBox::information(this, tr("Export Data Successfully"), tr("The data was exported successfully!"));
+#endif
     }else{
         qWarning() << "Can not open the file(" << fileName << ")" << file.errorString();
         QMessageBox::warning(this, tr("Export Data Failed"), tr("The data was exported failed:%s").arg(file.errorString()));
@@ -206,7 +208,9 @@ void SAKModbusCommonController::setServerRegisterData(QModbusServer *server, QSt
             }
             pb->close();
             delete pb->parent();
+#if 0
             QMessageBox::information(this, tr("Import Data Successfully"), tr("The data was imported successfully!"));
+#endif
         }
     }else{
         QMessageBox::warning(this, tr("Import Data Failed"), tr("The data was imported failed:%s").arg(file.errorString()));
