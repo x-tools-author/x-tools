@@ -31,11 +31,15 @@ public:
      * @param registerNumber: --
      */
     void updateRegister(int startAddress, int registerNumber);
+    void updateRegisterValue(quint16 address, quint16 value);
+    QModbusDataUnit::RegisterType registerType();
 private:
     SAKModbusCommonFlowLayout *mFlowLayout;
     QModbusDataUnit::RegisterType mRegisterType;
+    int mReigsterCount;
 signals:
     void registerValueChanged(QModbusDataUnit::RegisterType registerType, quint16 address, quint16 value);
+    void invokeUpdateRegisterValue(QModbusDataUnit::RegisterType registerTyp, quint16 startAddress, quint16 addressNumber);
 private:
     Ui::SAKModbusCommonReigsterView *ui;
 };

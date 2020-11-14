@@ -17,6 +17,7 @@
 SAKModbusCommonRegisterView::SAKModbusCommonRegisterView(QModbusDataUnit::RegisterType registerType, QWidget *parent)
     :QWidget(parent)
     ,mRegisterType(registerType)
+    ,mReigsterCount(0)
     ,ui(new Ui::SAKModbusCommonReigsterView)
 {
     ui->setupUi(this);
@@ -43,9 +44,34 @@ void SAKModbusCommonRegisterView::updateRegister(int startAddress, int registerN
         }
     }
 
+    mReigsterCount = registerNumber;
+    SAKModbusCommonRegister *registerWidget = Q_NULLPTR;
     for (quint16 i = 0; i < registerNumber; i++){
-        auto registerWidget = new SAKModbusCommonRegister(mRegisterType, startAddress + i, startAddress + i);
+        registerWidget = new SAKModbusCommonRegister(mRegisterType, startAddress + i, startAddress + i, this);
         ui->scrollAreaWidgetContents->layout()->addWidget(registerWidget);
         connect(registerWidget, &SAKModbusCommonRegister::registerValueChanged, this, &SAKModbusCommonRegisterView::registerValueChanged);
     }
+
+    if (registerWidget){
+        emit invokeUpdateRegisterValue(registerWidget->type(), startAddress, registerNumber);
+    }
+}
+
+void SAKModbusCommonRegisterView::updateRegisterValue(quint16 address, quint16 value)
+{
+    for (int i = 0; i < mReigsterCount; i++ ){
+        QLayoutItem *item = mFlowLayout->itemAt(i);
+        auto itemWidget = qobject_cast<SAKModbusCommonRegister*>(item->widget());
+        if (itemWidget && (address == itemWidget->address())){
+            itemWidget->blockSignals(true);
+            itemWidget->setValue(value);
+            itemWidget->blockSignals(false);
+            break;
+        }
+    }
+}
+
+QModbusDataUnit::RegisterType SAKModbusCommonRegisterView::registerType()
+{
+    return mRegisterType;
 }

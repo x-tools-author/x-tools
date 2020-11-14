@@ -29,6 +29,11 @@ void SAKModbusClientController::setData(QModbusDataUnit::RegisterType type, quin
 
 }
 
+quint16 SAKModbusClientController::registerValue(QModbusDataUnit::RegisterType type, quint16 address)
+{
+    return address;
+}
+
 QWidget *SAKModbusClientController::bottomSection()
 {
     return mClientSection;

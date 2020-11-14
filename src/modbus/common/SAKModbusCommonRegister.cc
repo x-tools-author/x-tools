@@ -51,6 +51,11 @@ quint16 SAKModbusCommonRegister::value()
     return mValue;
 }
 
+void SAKModbusCommonRegister::setValue(quint16 value)
+{
+    ui->lineEdit->setText(QString::number(value));
+}
+
 void SAKModbusCommonRegister::on_lineEdit_textChanged(const QString &arg1)
 {
     Q_UNUSED(arg1);

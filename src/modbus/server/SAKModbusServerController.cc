@@ -32,7 +32,20 @@ void SAKModbusServerController::setData(QModbusDataUnit::RegisterType type, quin
         }else {
             server->setData(type, address, value);
         }
+
+        qDebug() << __FUNCTION__ << type << address << value;
+    }
+}
+
+quint16 SAKModbusServerController::registerValue(QModbusDataUnit::RegisterType type, quint16 address)
+{
+    quint16 value = 0;
+    auto server = qobject_cast<QModbusServer*>(device());
+    if (server){
+        if (!server->data(type, address, &value)){
+            qWarning() << "Can not get the value of register which type is:" << type;
+        }
     }
 
-    qDebug() << __FUNCTION__ << type << address << value;
+    return value;
 }

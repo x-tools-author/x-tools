@@ -60,15 +60,17 @@ SAKModbusDebugPage::SAKModbusDebugPage(int type, QString name, QSettings *settin
             vLayout->setMargin(0);
             var.widget->setLayout(vLayout);
         }
-        mRegisterView = new SAKModbusCommonRegisterView(var.type);
-        mRegisterView->setContentsMargins(0, 0, 0, 0);
+        auto registerView = new SAKModbusCommonRegisterView(var.type);
+        mRegisterViewList.append(registerView);
+        registerView->setContentsMargins(0, 0, 0, 0);
         mRegisterViewController = new SAKModbusCommonRegisterViewController;
-        connect(mRegisterViewController, &SAKModbusCommonRegisterViewController::inVokeUpdateRegister, mRegisterView, &SAKModbusCommonRegisterView::updateRegister);
-        connect(mRegisterView, &SAKModbusCommonRegisterView::registerValueChanged, this, &SAKModbusDebugPage::setData);
+        connect(mRegisterViewController, &SAKModbusCommonRegisterViewController::inVokeUpdateRegister, registerView, &SAKModbusCommonRegisterView::updateRegister);
+        connect(registerView, &SAKModbusCommonRegisterView::registerValueChanged, this, &SAKModbusDebugPage::setData);
+        connect(registerView, &SAKModbusCommonRegisterView::invokeUpdateRegisterValue, this, &SAKModbusDebugPage::updateRegisterValue);
 
-        var.widget->layout()->addWidget(mRegisterView);
+        var.widget->layout()->addWidget(registerView);
         var.widget->layout()->addWidget(mRegisterViewController);
-        mRegisterView->updateRegister(0, 100);
+//        mRegisterView->updateRegister(0, 100);
     }
 
     // Combo box items
@@ -137,6 +139,20 @@ void SAKModbusDebugPage::setData(QModbusDataUnit::RegisterType type, quint16 add
 {
     if (mController){
         mController->setData(type, address, value);
+    }
+}
+
+void SAKModbusDebugPage::updateRegisterValue(QModbusDataUnit::RegisterType registerTyp, quint16 startAddress, quint16 addressNumber)
+{
+    if (mController){
+        for (auto view : mRegisterViewList){
+            if (view->registerType() == registerTyp){
+                for (quint16 i = startAddress; i < addressNumber; i++){
+                    auto value = mController->registerValue(registerTyp, startAddress + i);
+                    view->updateRegisterValue(startAddress + i, value);
+                }
+            }
+        }
     }
 }
 

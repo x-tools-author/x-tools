@@ -46,12 +46,13 @@ private:
     QSqlDatabase *mSqlDatabase;
     QPushButton *mMenuPushButton;
     SAKModbusCommonController *mController;
-    SAKModbusCommonRegisterView *mRegisterView;
+    QList<SAKModbusCommonRegisterView *> mRegisterViewList;
     SAKModbusCommonRegisterViewController *mRegisterViewController;
 private:
     QWidget *controllerFromType(int type);
     void outputModbusDataUnit(QModbusDataUnit mdu);
     void setData(QModbusDataUnit::RegisterType type, quint16 address, quint16 value);
+    void updateRegisterValue(QModbusDataUnit::RegisterType registerTyp, quint16 startAddress, quint16 addressNumber);
 private:
     Ui::SAKModbusDebugPage *ui;
 private slots:

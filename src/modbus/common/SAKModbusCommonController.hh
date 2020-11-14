@@ -24,6 +24,7 @@ public:
 
     virtual void open() = 0;
     virtual void setData(QModbusDataUnit::RegisterType type, quint16 address, quint16 value) = 0;
+    virtual quint16 registerValue(QModbusDataUnit::RegisterType type, quint16 address) = 0;
 
     void closeDevice();
     void appendSection(QWidget *section);

@@ -27,6 +27,7 @@ public:
     QModbusDataUnit::RegisterType type();
     quint16 address();
     quint16 value();
+    void  setValue(quint16 value);
 private:
     QModbusDataUnit::RegisterType mType;
     quint16 mAddress;
