@@ -50,6 +50,8 @@ private:
     QVBoxLayout *mSectionLayout;
     QWidget *mBottomSection;
     QModbusDevice *mDevice;
+    quint16 mRegisterNumber;
+    QMap<QModbusDataUnit::RegisterType, QString> mInfoMap;
 signals:
     void deviceStateChanged();
     void modbusDataUnitRead(QModbusDataUnit mdu);
