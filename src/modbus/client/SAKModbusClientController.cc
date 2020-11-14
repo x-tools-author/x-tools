@@ -46,6 +46,16 @@ quint16 SAKModbusClientController::registerValue(QModbusDataUnit::RegisterType t
     return value;
 }
 
+bool SAKModbusClientController::tempData(QModbusDataUnit::RegisterType table, quint16 address, quint16 *data)
+{
+    if (data){
+        mModbusServer->data(table, address, data);
+        return true;
+    }else{
+        return false;
+    }
+}
+
 QWidget *SAKModbusClientController::bottomSection()
 {
     return mClientSection;
@@ -102,12 +112,20 @@ void SAKModbusClientController::readReply()
         const QModbusDataUnit mdu = reply->result();
         mClientSection->updateTableWidget(mdu);
         emit modbusDataUnitRead(mdu);
-#ifdef QT_DEBUG
+
+        auto registerType = reply->result().registerType();
+        auto startAddress = reply->result().startAddress();
+        auto registerNumber = reply->result().valueCount();
         for (uint i = 0; i < mdu.valueCount(); i++) {
+            auto value = reply->result().value(startAddress + i);
+            setData(registerType, startAddress + i, value);
+#ifdef QT_DEBUG
             const QString entry = tr("Address: %1, Value: %2").arg(mdu.startAddress() + i).arg(QString::number(mdu.value(i), mdu.registerType() <= QModbusDataUnit::Coils ? 10 : 16));
             qDebug() << entry;
-        }
 #endif
+        }
+        // The signal is using to update ui value.
+        emit dataWritten(registerType, startAddress, registerNumber);
     } else if (reply->error() == QModbusDevice::ProtocolError) {
         qDebug() << tr("Read response error: %1 (Mobus exception: 0x%2)").
                                     arg(reply->errorString()).

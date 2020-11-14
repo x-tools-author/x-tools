@@ -18,10 +18,13 @@
 class SAKModbusCommonClientSection;
 class SAKModbusClientController : public SAKModbusCommonController
 {
+    Q_OBJECT
 public:
     SAKModbusClientController(QWidget *parent = Q_NULLPTR);
     virtual void setData(QModbusDataUnit::RegisterType type, quint16 address, quint16 value) final;
     virtual quint16 registerValue(QModbusDataUnit::RegisterType type, quint16 address) final;
+
+    bool tempData(QModbusDataUnit::RegisterType table, quint16 address, quint16 *data);
 protected:
     SAKModbusCommonClientSection *mClientSection;
     // The value is for saving data only.
