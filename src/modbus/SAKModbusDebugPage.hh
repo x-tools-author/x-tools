@@ -47,7 +47,7 @@ private:
     QPushButton *mMenuPushButton;
     SAKModbusCommonController *mController;
     QList<SAKModbusCommonRegisterView *> mRegisterViewList;
-    SAKModbusCommonRegisterViewController *mRegisterViewController;
+    QList<SAKModbusCommonRegisterViewController *> mRegisterViewControllerList;
 private:
     QWidget *controllerFromType(int type);
     void outputModbusDataUnit(QModbusDataUnit mdu);

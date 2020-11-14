@@ -63,12 +63,13 @@ SAKModbusDebugPage::SAKModbusDebugPage(int type, QString name, QSettings *settin
         auto registerView = new SAKModbusCommonRegisterView(var.type);
         mRegisterViewList.append(registerView);
         registerView->setContentsMargins(0, 0, 0, 0);
-        mRegisterViewController = new SAKModbusCommonRegisterViewController;
-        connect(mRegisterViewController, &SAKModbusCommonRegisterViewController::invokeUpdateRegister, registerView, &SAKModbusCommonRegisterView::updateRegister);
+        auto registerViewController = new SAKModbusCommonRegisterViewController(var.type);
+        mRegisterViewControllerList.append(registerViewController);
+        connect(registerViewController, &SAKModbusCommonRegisterViewController::invokeUpdateRegister, registerView, &SAKModbusCommonRegisterView::updateRegister);
         connect(registerView, &SAKModbusCommonRegisterView::registerValueChanged, this, &SAKModbusDebugPage::setData);
         connect(registerView, &SAKModbusCommonRegisterView::invokeUpdateRegisterValue, this, &SAKModbusDebugPage::updateRegisterValue);
         var.widget->layout()->addWidget(registerView);
-        var.widget->layout()->addWidget(mRegisterViewController);
+        var.widget->layout()->addWidget(registerViewController);
     }
 
     // Combo box items
@@ -196,14 +197,10 @@ void SAKModbusDebugPage::on_deviceTypeComboBox_currentIndexChanged(int index)
     connect(mController, &SAKModbusCommonController::modbusDataUnitRead, this, &SAKModbusDebugPage::outputModbusDataUnit);
     connect(mController, &SAKModbusCommonController::modbusDataUnitWritten, this, &SAKModbusDebugPage::outputModbusDataUnit);
     connect(mController, &SAKModbusCommonController::dataWritten, this, &SAKModbusDebugPage::dataWritten);
-#if 0
-    // The wrong way to call a vitual function.
-    connect(mRegisterViewController, &SAKModbusCommonRegisterViewController::invokeExport, mController, &SAKModbusCommonController::exportRegisterData);
-    connect(mRegisterViewController, &SAKModbusCommonRegisterViewController::invokeImport, mController, &SAKModbusCommonController::importRegisterData);
-#else
-    connect(mRegisterViewController, &SAKModbusCommonRegisterViewController::invokeExport, this, [=](){mController->exportRegisterData();});
-    connect(mRegisterViewController, &SAKModbusCommonRegisterViewController::invokeImport, this, [=](){mController->importRegisterData();});
-#endif
+    for (auto var : mRegisterViewControllerList){
+        connect(var, &SAKModbusCommonRegisterViewController::invokeImport, mController, &SAKModbusCommonController::importRegisterData);
+        connect(var, &SAKModbusCommonRegisterViewController::invokeExport, mController, &SAKModbusCommonController::exportRegisterData);
+    }
     connect(dev, &QModbusDevice::stateChanged, this, [=](){
         ui->connectionPushButton->setEnabled(dev->state() == QModbusDevice::UnconnectedState);
         ui->disconnectionPushButton->setEnabled(dev->state() == QModbusDevice::ConnectedState);
