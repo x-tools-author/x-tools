@@ -11,6 +11,7 @@
 #define SAKMODBUSCOMMONREIGSTERVIEWCONTROLLER_HH
 
 #include <QWidget>
+#include <QModbusDataUnit>
 
 namespace Ui {
     class SAKModbusCommonRegisterViewController;
@@ -20,8 +21,11 @@ class SAKModbusCommonRegisterViewController : public QWidget
 {
     Q_OBJECT
 public:
-    explicit SAKModbusCommonRegisterViewController(QWidget *parent = Q_NULLPTR);
+    explicit SAKModbusCommonRegisterViewController(QModbusDataUnit::RegisterType type, QWidget *parent = Q_NULLPTR);
     ~SAKModbusCommonRegisterViewController();
+    QModbusDataUnit::RegisterType registerType();
+private:
+    QModbusDataUnit::RegisterType mRegisterType;
 signals:
     void invokeUpdateRegister(int startAddress, int registerNumber);
     void invokeExport();
