@@ -66,11 +66,12 @@ SAKModbusDebugPage::SAKModbusDebugPage(int type, QString name, QSettings *settin
         mRegisterViewController = new SAKModbusCommonRegisterViewController;
         connect(mRegisterViewController, &SAKModbusCommonRegisterViewController::inVokeUpdateRegister, registerView, &SAKModbusCommonRegisterView::updateRegister);
         connect(registerView, &SAKModbusCommonRegisterView::registerValueChanged, this, &SAKModbusDebugPage::setData);
-        connect(registerView, &SAKModbusCommonRegisterView::invokeUpdateRegisterValue, this, &SAKModbusDebugPage::updateRegisterValue);
+        // Specifiy the fifth parameter, or the app will crash when calling registerView->updateRegister(0, 100).
+        connect(registerView, &SAKModbusCommonRegisterView::invokeUpdateRegisterValue, this, &SAKModbusDebugPage::updateRegisterValue, Qt::QueuedConnection);
+        registerView->updateRegister(0, 100);
 
         var.widget->layout()->addWidget(registerView);
         var.widget->layout()->addWidget(mRegisterViewController);
-//        mRegisterView->updateRegister(0, 100);
     }
 
     // Combo box items
