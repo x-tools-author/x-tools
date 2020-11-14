@@ -8,7 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  */
 #include <QDebug>
-#include <QRegExpValidator>
+#include <QRegularExpressionValidator>
 
 #include "SAKOtherAnalyzerThread.hh"
 #include "SAKOtherAnalyzerThreadManager.hh"
@@ -72,10 +72,10 @@ void SAKOtherAnalyzerThreadManager::inputBytes(QByteArray bytes)
 
 void SAKOtherAnalyzerThreadManager::setLineEditFormat(QLineEdit *lineEdit)
 {
-    QRegExp regExpHex("([0-9A-Fa-f][0-9A-Fa-f][ ])*");
+    QRegularExpression regExpHex("([0-9A-Fa-f][0-9A-Fa-f][ ])*");
     if (lineEdit){
         lineEdit->setValidator(Q_NULLPTR);
-        lineEdit->setValidator(new QRegExpValidator(regExpHex, this));
+        lineEdit->setValidator(new QRegularExpressionValidator(regExpHex, this));
     }
 }
 
