@@ -32,8 +32,6 @@ void SAKModbusServerController::setData(QModbusDataUnit::RegisterType type, quin
         }else {
             server->setData(type, address, value);
         }
-
-        qDebug() << __FUNCTION__ << type << address << value;
     }
 }
 
