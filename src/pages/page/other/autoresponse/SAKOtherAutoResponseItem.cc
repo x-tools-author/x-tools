@@ -9,6 +9,8 @@
  */
 #include <QDebug>
 #include <QDateTime>
+#include <QRegularExpression>
+#include <QRegularExpressionValidator>
 
 #include "SAKDebugPage.hh"
 #include "SAKCommonDataStructure.hh"
@@ -125,30 +127,30 @@ quint32 SAKOtherAutoResponseItem::interval()
 
 void SAKOtherAutoResponseItem::setLineEditFormat(QLineEdit *lineEdit, int format)
 {
-    QRegExp regExpBin("([01][01][01][01][01][01][01][01][ ])*");
-    QRegExp regExpOct("([0-7][0-7][ ])*");
-    QRegExp regExpDec("([0-9][0-9][ ])*");
-    QRegExp regExpHex("([0-9A-F][0-9A-F][ ])*");
-    QRegExp regExpAscii("([a-zA-Z0-9`~!@#$%^&*()-_=+\\|;:'\",<.>/? ])*");
+    QRegularExpression regExpBin("([01][01][01][01][01][01][01][01][ ])*");
+    QRegularExpression regExpOct("([0-7][0-7][ ])*");
+    QRegularExpression regExpDec("([0-9][0-9][ ])*");
+    QRegularExpression regExpHex("([0-9A-F][0-9A-F][ ])*");
+    QRegularExpression regExpAscii("([a-zA-Z0-9`~!@#$%^&*()-_=+\\|;:'\",<.>/? ])*");
 
     if (lineEdit){
         lineEdit->setValidator(Q_NULLPTR);
         lineEdit->clear();
         switch (format) {
         case SAKCommonDataStructure::InputFormatBin:
-            lineEdit->setValidator(new QRegExpValidator(regExpBin, this));
+            lineEdit->setValidator(new QRegularExpressionValidator(regExpBin, this));
             break;
         case SAKCommonDataStructure::InputFormatOct:
-            lineEdit->setValidator(new QRegExpValidator(regExpOct, this));
+            lineEdit->setValidator(new QRegularExpressionValidator(regExpOct, this));
             break;
         case SAKCommonDataStructure::InputFormatDec:
-            lineEdit->setValidator(new QRegExpValidator(regExpDec, this));
+            lineEdit->setValidator(new QRegularExpressionValidator(regExpDec, this));
             break;
         case SAKCommonDataStructure::InputFormatHex:
-            lineEdit->setValidator(new QRegExpValidator(regExpHex, this));
+            lineEdit->setValidator(new QRegularExpressionValidator(regExpHex, this));
             break;
         case SAKCommonDataStructure::InputFormatAscii:
-            lineEdit->setValidator(new QRegExpValidator(regExpAscii, this));
+            lineEdit->setValidator(new QRegularExpressionValidator(regExpAscii, this));
             break;
         case SAKCommonDataStructure::InputFormatLocal:
             lineEdit->setValidator(Q_NULLPTR);
