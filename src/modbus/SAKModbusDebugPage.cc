@@ -164,11 +164,23 @@ SAKModbusCommonRegisterView *SAKModbusDebugPage::registerView(QModbusDataUnit::R
 
 void SAKModbusDebugPage::dataWritten(QModbusDataUnit::RegisterType table, int address, int size)
 {
+    // The operation is for client only.
     auto server = qobject_cast<QModbusServer*>(mController->device());
     if (server){
         for (int i = address; i < size; i++){
             quint16 value = 0;
             server->data(table, address + i, &value);
+            auto view = registerView(table);
+            view->updateRegisterValue(address+i, value);
+        }
+    }
+
+    // The operation is for client only.
+    auto clientController = qobject_cast<SAKModbusClientController*>(mController);
+    if (clientController){
+        for (int i = address; i < size; i++){
+            quint16 value = 0;
+            clientController->tempData(table, address + i, &value);
             auto view = registerView(table);
             view->updateRegisterValue(address+i, value);
         }
