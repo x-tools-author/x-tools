@@ -11,6 +11,7 @@
 #define SAKMODBUSCLIENTCONTROLLER_HH
 
 #include <QModbusClient>
+#include <QModbusServer>
 
 #include "SAKModbusCommonController.hh"
 
@@ -23,6 +24,8 @@ public:
     virtual quint16 registerValue(QModbusDataUnit::RegisterType type, quint16 address) final;
 protected:
     SAKModbusCommonClientSection *mClientSection;
+    // The value is for saving data only.
+    QModbusServer *mModbusServer;
 protected:
     virtual QWidget *bottomSection() final;
     void sendReadRequest(QModbusDataUnit mdu);

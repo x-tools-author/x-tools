@@ -13,6 +13,7 @@
 #include <QWidget>
 #include <QHBoxLayout>
 #include <QModbusDevice>
+#include <QModbusServer>
 #include <QModbusDataUnit>
 
 class SAKModbusCommonController : public QWidget
@@ -36,6 +37,7 @@ protected:
     // You should implement this function and do not calling it in the sub class.
     // You can use device() to get the device instance.
     virtual QModbusDevice *initModbusDevice();
+    void setModbusServerMap(QModbusServer *server);
 private:
     QVBoxLayout *mSectionLayout;
     QWidget *mBottomSection;

@@ -10,6 +10,7 @@
 #include <QDebug>
 #include <QTabWidget>
 #include <QTableWidget>
+#include <QModbusTcpServer>
 #include <QModbusRtuSerialMaster>
 
 #include "SAKModbusClientController.hh"
@@ -19,6 +20,8 @@ SAKModbusClientController::SAKModbusClientController(QWidget *parent)
     :SAKModbusCommonController(parent)
     ,mClientSection(Q_NULLPTR)
 {
+    mModbusServer = new QModbusTcpServer(this);
+    setModbusServerMap(mModbusServer);
     mClientSection = new SAKModbusCommonClientSection(this);
     connect(mClientSection, &SAKModbusCommonClientSection::invokeSendReadRequest, this, &SAKModbusClientController::sendReadRequest);
     connect(mClientSection, &SAKModbusCommonClientSection::invokrSendWriteRequest, this, &SAKModbusClientController::sendWriteRequest);
@@ -26,12 +29,21 @@ SAKModbusClientController::SAKModbusClientController(QWidget *parent)
 
 void SAKModbusClientController::setData(QModbusDataUnit::RegisterType type, quint16 address, quint16 value)
 {
-
+    if ((type == QModbusDataUnit::Coils) || (type == QModbusDataUnit::DiscreteInputs)){
+        mModbusServer->setData(type, address, value ? true : false);
+    }else {
+        mModbusServer->setData(type, address, value);
+    }
 }
 
 quint16 SAKModbusClientController::registerValue(QModbusDataUnit::RegisterType type, quint16 address)
 {
-    return address;
+    quint16 value = 0;
+    if (!mModbusServer->data(type, address, &value)){
+        qWarning() << "Can not get the value of register which type is:" << type;
+    }
+
+    return value;
 }
 
 QWidget *SAKModbusClientController::bottomSection()

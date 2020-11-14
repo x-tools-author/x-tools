@@ -64,19 +64,7 @@ void SAKModbusCommonController::init()
     auto server = qobject_cast<QModbusServer*>(mDevice);
     if (server){
         connect(server, &QModbusServer::dataWritten, this, &SAKModbusCommonController::dataWritten);
-        QModbusDataUnitMap reg;
-        quint16 registerNumber = 65535;
-        reg.insert(QModbusDataUnit::Coils, {QModbusDataUnit::Coils, 0, registerNumber});
-        reg.insert(QModbusDataUnit::DiscreteInputs, {QModbusDataUnit::DiscreteInputs, 0, registerNumber});
-        reg.insert(QModbusDataUnit::InputRegisters, {QModbusDataUnit::InputRegisters, 0, registerNumber});
-        reg.insert(QModbusDataUnit::HoldingRegisters, {QModbusDataUnit::HoldingRegisters, 0, registerNumber});
-        server->setMap(reg);
-        for (int i = 0; i < registerNumber; i++){
-            server->setData(QModbusDataUnit::Coils, i, false);
-            server->setData(QModbusDataUnit::DiscreteInputs, i, false);
-            server->setData(QModbusDataUnit::InputRegisters, i, 0xffff);
-            server->setData(QModbusDataUnit::HoldingRegisters, i, 0xffff);
-        }
+        setModbusServerMap(server);
     }
 
     if (mDevice){
@@ -94,4 +82,21 @@ QWidget *SAKModbusCommonController::bottomSection()
 QModbusDevice *SAKModbusCommonController::initModbusDevice()
 {
     return Q_NULLPTR;
+}
+
+void SAKModbusCommonController::setModbusServerMap(QModbusServer *server)
+{
+    QModbusDataUnitMap reg;
+    quint16 registerNumber = 65535;
+    reg.insert(QModbusDataUnit::Coils, {QModbusDataUnit::Coils, 0, registerNumber});
+    reg.insert(QModbusDataUnit::DiscreteInputs, {QModbusDataUnit::DiscreteInputs, 0, registerNumber});
+    reg.insert(QModbusDataUnit::InputRegisters, {QModbusDataUnit::InputRegisters, 0, registerNumber});
+    reg.insert(QModbusDataUnit::HoldingRegisters, {QModbusDataUnit::HoldingRegisters, 0, registerNumber});
+    server->setMap(reg);
+    for (int i = 0; i < registerNumber; i++){
+        server->setData(QModbusDataUnit::Coils, i, false);
+        server->setData(QModbusDataUnit::DiscreteInputs, i, false);
+        server->setData(QModbusDataUnit::InputRegisters, i, 0xffff);
+        server->setData(QModbusDataUnit::HoldingRegisters, i, 0xffff);
+    }
 }
