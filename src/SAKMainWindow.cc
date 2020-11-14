@@ -29,6 +29,7 @@
 #include <QJsonObject>
 #include <QSpacerItem>
 #include <QMessageBox>
+#include <QActionGroup>
 #include <QStyleFactory>
 #include <QJsonDocument>
 #include <QDesktopWidget>
