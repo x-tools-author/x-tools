@@ -582,7 +582,7 @@ void SAKMainWindow::initializingMetaObject()
 
 void SAKMainWindow::initToosMetaObjectInfoList()
 {
-#ifdef SAK_IMPORT_COM_MODULE
+#ifdef SAK_IMPORT_FILECHECKER_MODULE
     mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{SAKToolFileChecker::staticMetaObject, tr("File Checker")});
 #endif
 #ifdef SAK_IMPORT_QRCODE_MODULE
