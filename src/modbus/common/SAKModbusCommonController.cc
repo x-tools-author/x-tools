@@ -33,7 +33,9 @@ SAKModbusCommonController::~SAKModbusCommonController()
 
 void SAKModbusCommonController::closeDevice()
 {
-    device()->disconnectDevice();
+    if (device()){
+        device()->disconnectDevice();
+    }
 }
 
 void SAKModbusCommonController::appendSection(QWidget *section)
