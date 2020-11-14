@@ -37,7 +37,11 @@ SAKToolFileChecker::SAKToolFileChecker(QWidget *parent)
     mFilePathlineEdit->setText(mFileName);
 
     // Appending algorithms to combo box
+#if QT_VERSION < QT_VERSION_CHECK(5, 9, 0)
+    QMetaEnum algorithms = QMetaEnum::fromType<SAKToolFileChecker::Algorithm>();
+#else
     QMetaEnum algorithms = QMetaEnum::fromType<QCryptographicHash::Algorithm>();
+#endif
     QStringList algorithmsStringList;
     for (int i = 0; i < algorithms.keyCount(); i++){
         algorithmsStringList.append(QString(algorithms.key(i)));
@@ -149,7 +153,11 @@ void SAKToolFileChecker::on_openPushButton_clicked()
 
 void SAKToolFileChecker::on_algorithmComboBox_currentIndexChanged(int index)
 {
+#if QT_VERSION < QT_VERSION_CHECK(5, 9, 0)
+    QMetaEnum algorithms = QMetaEnum::fromType<SAKToolFileChecker::Algorithm>();
+#else
     QMetaEnum algorithms = QMetaEnum::fromType<QCryptographicHash::Algorithm>();
+#endif
     mAlgorithm = static_cast<QCryptographicHash::Algorithm>(algorithms.value(index));
     mResultLineEdit->clear();
     mCalculatorProgressBar->setValue(0);
