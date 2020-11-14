@@ -57,7 +57,6 @@ SAKModbusDebugPage::SAKModbusDebugPage(int type, QString name, QSettings *settin
         var.widget->setContentsMargins(0, 0, 0, 0);
         if (!var.widget->layout()){
             QVBoxLayout *vLayout = new QVBoxLayout;
-            vLayout->setMargin(0);
             var.widget->setLayout(vLayout);
         }
         auto registerView = new SAKModbusCommonRegisterView(var.type);
