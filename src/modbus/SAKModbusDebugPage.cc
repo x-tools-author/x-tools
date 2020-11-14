@@ -169,7 +169,7 @@ void SAKModbusDebugPage::on_deviceTypeComboBox_currentIndexChanged(int index)
             ui->connectionPushButton->setEnabled(dev->state() == QModbusDevice::UnconnectedState);
             ui->disconnectionPushButton->setEnabled(dev->state() == QModbusDevice::ConnectedState);
             ui->deviceTypeComboBox->setEnabled(dev->state() == QModbusDevice::UnconnectedState);
-        });
+        }, Qt::QueuedConnection);
     }
 
     QLayout *hLayout = ui->deviceControllerWidget->layout();
