@@ -156,7 +156,7 @@ void SAKToolCRCCalculator::textFormatControl()
 
     QString strTemp;
     QString plaintext = mInputTextEdit->toPlainText();
-    plaintext.remove(QRegExp("[^0-9a-fA-F]"));
+    plaintext.remove(QRegularExpression("[^0-9a-fA-F]"));
     for (int i = 0; i < plaintext.length(); i++){
         if ((i != 0) && (i % 2 == 0)){
             strTemp.append(QChar(' '));
