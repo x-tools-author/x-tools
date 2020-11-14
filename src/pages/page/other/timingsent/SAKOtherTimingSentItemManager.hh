@@ -12,14 +12,12 @@
 
 #include <QTimer>
 #include <QLabel>
-#include <QRegExp>
 #include <QWidget>
 #include <QLineEdit>
 #include <QComboBox>
 #include <QCheckBox>
 #include <QListWidget>
 #include <QPushButton>
-#include <QRegExpValidator>
 
 namespace Ui {
     class SAKOtherTimingSentItemManager;
