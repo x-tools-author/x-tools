@@ -53,6 +53,9 @@ private:
     void outputModbusDataUnit(QModbusDataUnit mdu);
     void setData(QModbusDataUnit::RegisterType type, quint16 address, quint16 value);
     void updateRegisterValue(QModbusDataUnit::RegisterType registerTyp, quint16 startAddress, quint16 addressNumber);
+    SAKModbusCommonRegisterView *registerView(QModbusDataUnit::RegisterType registerTyp);
+    // Just for modbus server
+    void dataWritten(QModbusDataUnit::RegisterType table, int address, int size);
 private:
     Ui::SAKModbusDebugPage *ui;
 private slots:

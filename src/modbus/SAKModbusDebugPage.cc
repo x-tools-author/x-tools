@@ -66,10 +66,7 @@ SAKModbusDebugPage::SAKModbusDebugPage(int type, QString name, QSettings *settin
         mRegisterViewController = new SAKModbusCommonRegisterViewController;
         connect(mRegisterViewController, &SAKModbusCommonRegisterViewController::inVokeUpdateRegister, registerView, &SAKModbusCommonRegisterView::updateRegister);
         connect(registerView, &SAKModbusCommonRegisterView::registerValueChanged, this, &SAKModbusDebugPage::setData);
-        // Specifiy the fifth parameter, or the app will crash when calling registerView->updateRegister(0, 100).
-        connect(registerView, &SAKModbusCommonRegisterView::invokeUpdateRegisterValue, this, &SAKModbusDebugPage::updateRegisterValue, Qt::QueuedConnection);
-        registerView->updateRegister(0, 100);
-
+        connect(registerView, &SAKModbusCommonRegisterView::invokeUpdateRegisterValue, this, &SAKModbusDebugPage::updateRegisterValue);
         var.widget->layout()->addWidget(registerView);
         var.widget->layout()->addWidget(mRegisterViewController);
     }
@@ -145,14 +142,35 @@ void SAKModbusDebugPage::setData(QModbusDataUnit::RegisterType type, quint16 add
 
 void SAKModbusDebugPage::updateRegisterValue(QModbusDataUnit::RegisterType registerTyp, quint16 startAddress, quint16 addressNumber)
 {
-    if (mController){
-        for (auto view : mRegisterViewList){
-            if (view->registerType() == registerTyp){
-                for (quint16 i = startAddress; i < addressNumber; i++){
-                    auto value = mController->registerValue(registerTyp, startAddress + i);
-                    view->updateRegisterValue(startAddress + i, value);
-                }
-            }
+    auto view = registerView(registerTyp);
+    if (view){
+        for (quint16 i = startAddress; i < addressNumber; i++){
+            auto value = mController->registerValue(registerTyp, startAddress + i);
+            view->updateRegisterValue(startAddress + i, value);
+        }
+    }
+}
+
+SAKModbusCommonRegisterView *SAKModbusDebugPage::registerView(QModbusDataUnit::RegisterType registerTyp)
+{
+    for (auto view : mRegisterViewList){
+        if (view->registerType() == registerTyp){
+            return view;
+        }
+    }
+
+    return Q_NULLPTR;
+}
+
+void SAKModbusDebugPage::dataWritten(QModbusDataUnit::RegisterType table, int address, int size)
+{
+    auto server = qobject_cast<QModbusServer*>(mController->device());
+    if (server){
+        for (int i = address; i < size; i++){
+            quint16 value = 0;
+            server->data(table, address + i, &value);
+            auto view = registerView(table);
+            view->updateRegisterValue(address+i, value);
         }
     }
 }
@@ -161,16 +179,16 @@ void SAKModbusDebugPage::on_deviceTypeComboBox_currentIndexChanged(int index)
 {
     mController = qobject_cast<SAKModbusCommonController*>(controllerFromType(index));
     mController->setContentsMargins(0, 0, 0 ,0);
+
     auto *dev = mController->device();
-    if (dev){
-        connect(mController, &SAKModbusCommonController::modbusDataUnitRead, this, &SAKModbusDebugPage::outputModbusDataUnit);
-        connect(mController, &SAKModbusCommonController::modbusDataUnitWritten, this, &SAKModbusDebugPage::outputModbusDataUnit);
-        connect(mController->device(), &QModbusDevice::stateChanged, this, [=](){
-            ui->connectionPushButton->setEnabled(dev->state() == QModbusDevice::UnconnectedState);
-            ui->disconnectionPushButton->setEnabled(dev->state() == QModbusDevice::ConnectedState);
-            ui->deviceTypeComboBox->setEnabled(dev->state() == QModbusDevice::UnconnectedState);
-        }, Qt::QueuedConnection);
-    }
+    connect(mController, &SAKModbusCommonController::modbusDataUnitRead, this, &SAKModbusDebugPage::outputModbusDataUnit);
+    connect(mController, &SAKModbusCommonController::modbusDataUnitWritten, this, &SAKModbusDebugPage::outputModbusDataUnit);
+    connect(mController, &SAKModbusCommonController::dataWritten, this, &SAKModbusDebugPage::dataWritten);
+    connect(dev, &QModbusDevice::stateChanged, this, [=](){
+        ui->connectionPushButton->setEnabled(dev->state() == QModbusDevice::UnconnectedState);
+        ui->disconnectionPushButton->setEnabled(dev->state() == QModbusDevice::ConnectedState);
+        ui->deviceTypeComboBox->setEnabled(dev->state() == QModbusDevice::UnconnectedState);
+    }, Qt::QueuedConnection);
 
     QLayout *hLayout = ui->deviceControllerWidget->layout();
     if (hLayout){
@@ -184,6 +202,16 @@ void SAKModbusDebugPage::on_deviceTypeComboBox_currentIndexChanged(int index)
         // Add a new pannel
         hLayout->addWidget(mController);
         ui->connectionPushButton->setEnabled(true);
+    }
+
+    // Update the value of registers.
+    quint16 startAddress = 0;
+    quint16 registerNumber = 16;
+    for (auto var : mRegisterViewList){
+        var->updateRegister(startAddress, registerNumber);
+        for (int i = startAddress; i < registerNumber; i++){
+            var->updateRegisterValue(startAddress + i, mController->registerValue(var->registerType(), startAddress + i));
+        }
     }
 }
 
