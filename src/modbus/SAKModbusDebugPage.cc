@@ -130,8 +130,19 @@ void SAKModbusDebugPage::outputModbusDataUnit(QModbusDataUnit mdu)
         data.append(reinterpret_cast<char*>(&var)[1]);
         data.append(reinterpret_cast<char*>(&var)[0]);
     }
-
+#if QT_VERSION >= QT_VERSION_CHECK(5, 9, 0)
     ui->textBrowser->append(QString(data.toHex(' ')));
+#else
+    auto str = QString(data.toHex());
+    QString newStr;
+    while (str.length() >= 2) {
+        newStr.append(str.left(2));
+        newStr.append(' ');
+        str = str.remove(0, 2);
+    }
+    newStr = newStr.trimmed();
+    ui->textBrowser->append(newStr);
+#endif
 }
 
 void SAKModbusDebugPage::setData(QModbusDataUnit::RegisterType type, quint16 address, quint16 value)
