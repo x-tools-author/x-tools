@@ -53,6 +53,7 @@ SAKModbusCommonSerialPortSection::SAKModbusCommonSerialPortSection(QWidget *pare
     comboBox->addItem(tr("Odd"), QVariant::fromValue(QSerialPort::OddParity));
     comboBox->addItem(tr("Space"), QVariant::fromValue(QSerialPort::SpaceParity));
     comboBox->addItem(tr("Mark"), QVariant::fromValue(QSerialPort::MarkParity));
+    comboBox->setCurrentIndex(1);
 
     // ------------------------------------------------------------------------
     comboBox = ui->baudRateComboBox;
