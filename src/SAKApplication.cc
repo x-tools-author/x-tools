@@ -16,14 +16,18 @@
 #include <QDialog>
 #include <QDateTime>
 #include <QSettings>
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <QTextCodec>
+#endif
 #include <QSizePolicy>
 #include <QGridLayout>
 #include <QTextCursor>
 #include <QTranslator>
 #include <QPushButton>
 #include <QStandardPaths>
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <QDesktopWidget>
+#endif
 
 #include "SAKApplication.hh"
 
@@ -56,7 +60,9 @@ SAKApplication::SAKApplication(int argc, char **argv)
     QString path = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
     mSettingsFileName = QString("%1/%2.ini").arg(path).arg(qApp->applicationName());
     mSettings = new QSettings(mSettingsFileName, QSettings::IniFormat);
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     mSettings->setIniCodec(QTextCodec::codecForName("UTF-8"));
+#endif
     mLastDataTime = mSettings->value(mSettingsKeyContext.lastDateTime).toString();
     mSettings->setValue(mSettingsKeyContext.lastDateTime, QDateTime::currentDateTime().toString(QLocale::system().dateFormat()));
 

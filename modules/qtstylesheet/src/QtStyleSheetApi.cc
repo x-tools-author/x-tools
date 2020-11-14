@@ -102,7 +102,9 @@ void QtStyleSheetApi::changeStyleSheet()
     if (file.open(QFile::ReadOnly)) {
         QString qss = QLatin1String(file.readAll());
         QString paletteColor = qss.mid(20, 7);
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
         qApp->setPalette(QPalette(QColor(paletteColor)));
+#endif
         qApp->setStyleSheet(qss);
         file.close();
 

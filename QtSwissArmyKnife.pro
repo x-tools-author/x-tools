@@ -85,7 +85,9 @@ OBJECTS_DIR = $$OUT_PWD/obj
 win32 {
     RC_ICONS = Windows.ico
     msvc:{
-        QMAKE_CXXFLAGS += -execution-charset:utf-8
+        lessThan(QT_MAJOR_VERSION, 5){
+                QMAKE_CXXFLAGS += -execution-charset:utf-8
+        }
     }
 }
 
