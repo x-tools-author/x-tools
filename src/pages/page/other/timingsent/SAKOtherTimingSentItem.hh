@@ -11,14 +11,12 @@
 #define SAKOTHERTIMINGSENTITEM_HH
 
 #include <QTimer>
-#include <QRegExp>
 #include <QWidget>
 #include <QTextEdit>
 #include <QLineEdit>
 #include <QComboBox>
 #include <QCheckBox>
 #include <QPushButton>
-#include <QRegExpValidator>
 
 namespace Ui {
     class SAKOtherTimingSentItem;
