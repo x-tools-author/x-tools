@@ -152,7 +152,7 @@ void SAKDebugPageInputController::formattingInputText(QTextEdit *textEdit, int m
     if (!plaintext.isEmpty()){
         if (model == SAKCommonDataStructure::InputFormatBin){
             QString strTemp;
-            plaintext.remove(QRegExp("[^0-1]"));
+            plaintext.remove(QRegularExpression("[^0-1]"));
             for (int i = 0; i < plaintext.length(); i++){
                 if ((i != 0) && (i % 8 == 0)){
                     strTemp.append(QChar(' '));
@@ -163,7 +163,7 @@ void SAKDebugPageInputController::formattingInputText(QTextEdit *textEdit, int m
             textEdit->moveCursor(QTextCursor::End);
         }else if(model == SAKCommonDataStructure::InputFormatOct) {
             QString strTemp;
-            plaintext.remove(QRegExp("[^0-7]"));
+            plaintext.remove(QRegularExpression("[^0-7]"));
             for (int i = 0; i < plaintext.length(); i++){
                 if ((i != 0) && (i % 2 == 0)){
                     strTemp.append(QChar(' '));
@@ -174,7 +174,7 @@ void SAKDebugPageInputController::formattingInputText(QTextEdit *textEdit, int m
             textEdit->moveCursor(QTextCursor::End);
         }else if(model == SAKCommonDataStructure::InputFormatDec) {
             QString strTemp;
-            plaintext.remove(QRegExp("[^0-9]"));
+            plaintext.remove(QRegularExpression("[^0-9]"));
             for (int i = 0; i < plaintext.length(); i++){
                 if ((i != 0) && (i % 2 == 0)){
                     strTemp.append(QChar(' '));
@@ -185,7 +185,7 @@ void SAKDebugPageInputController::formattingInputText(QTextEdit *textEdit, int m
             textEdit->moveCursor(QTextCursor::End);
         }else if(model == SAKCommonDataStructure::InputFormatHex) {
             QString strTemp;
-            plaintext.remove(QRegExp("[^0-9a-fA-F]"));
+            plaintext.remove(QRegularExpression("[^0-9a-fA-F]"));
             for (int i = 0; i < plaintext.length(); i++){
                 if ((i != 0) && (i % 2 == 0)){
                     strTemp.append(QChar(' '));
