@@ -166,6 +166,7 @@ void SAKApplication::installLanguage()
     }
 
     auto ret = mQtBaseTranslator.load(QString(":/translations/qt/qtbase_%1.qm").arg(qmName));
+    Q_UNUSED(ret);
     qApp->installTranslator(&mQtBaseTranslator);
 
     ret = mQtTranslator.load(QString(":/translations/qt/qt_%1.qm").arg(qmName));
