@@ -11,6 +11,7 @@
 #define SAKMODBUSCOMMONDEVICECONTROLLER_HH
 
 #include <QWidget>
+#include <QJsonArray>
 #include <QHBoxLayout>
 #include <QModbusDevice>
 #include <QModbusServer>
@@ -26,6 +27,8 @@ public:
     virtual void open() = 0;
     virtual void setData(QModbusDataUnit::RegisterType type, quint16 address, quint16 value) = 0;
     virtual quint16 registerValue(QModbusDataUnit::RegisterType type, quint16 address) = 0;
+    virtual void exportRegisterData() = 0;
+    virtual void importRegisterData() = 0;
 
     void closeDevice();
     void appendSection(QWidget *section);
@@ -38,6 +41,11 @@ protected:
     // You can use device() to get the device instance.
     virtual QModbusDevice *initModbusDevice();
     void setModbusServerMap(QModbusServer *server);
+    QString getSaveFileName();
+    QString getOpenFileName();
+    void saveServerRegisterData(QModbusServer *server, QString fileName);
+    // The file is the json file.
+    void setServerRegisterData(QModbusServer *server, QString fileName);
 private:
     QVBoxLayout *mSectionLayout;
     QWidget *mBottomSection;

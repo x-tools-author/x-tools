@@ -26,5 +26,15 @@ void SAKModbusCommonRegisterViewController::on_updatePushButton_clicked()
 {
     int startAddress = ui->startAddressSpinBox->value();
     int registerNumber = ui->registerNumberSpinBox->value();
-    emit inVokeUpdateRegister(startAddress, registerNumber);
+    emit invokeUpdateRegister(startAddress, registerNumber);
+}
+
+void SAKModbusCommonRegisterViewController::on_exportPushButton_clicked()
+{
+    emit invokeExport();
+}
+
+void SAKModbusCommonRegisterViewController::on_importPushButton_clicked()
+{
+    emit invokeImport();
 }

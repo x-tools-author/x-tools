@@ -64,7 +64,7 @@ SAKModbusDebugPage::SAKModbusDebugPage(int type, QString name, QSettings *settin
         mRegisterViewList.append(registerView);
         registerView->setContentsMargins(0, 0, 0, 0);
         mRegisterViewController = new SAKModbusCommonRegisterViewController;
-        connect(mRegisterViewController, &SAKModbusCommonRegisterViewController::inVokeUpdateRegister, registerView, &SAKModbusCommonRegisterView::updateRegister);
+        connect(mRegisterViewController, &SAKModbusCommonRegisterViewController::invokeUpdateRegister, registerView, &SAKModbusCommonRegisterView::updateRegister);
         connect(registerView, &SAKModbusCommonRegisterView::registerValueChanged, this, &SAKModbusDebugPage::setData);
         connect(registerView, &SAKModbusCommonRegisterView::invokeUpdateRegisterValue, this, &SAKModbusDebugPage::updateRegisterValue);
         var.widget->layout()->addWidget(registerView);
@@ -196,6 +196,14 @@ void SAKModbusDebugPage::on_deviceTypeComboBox_currentIndexChanged(int index)
     connect(mController, &SAKModbusCommonController::modbusDataUnitRead, this, &SAKModbusDebugPage::outputModbusDataUnit);
     connect(mController, &SAKModbusCommonController::modbusDataUnitWritten, this, &SAKModbusDebugPage::outputModbusDataUnit);
     connect(mController, &SAKModbusCommonController::dataWritten, this, &SAKModbusDebugPage::dataWritten);
+#if 0
+    // The wrong way to call a vitual function.
+    connect(mRegisterViewController, &SAKModbusCommonRegisterViewController::invokeExport, mController, &SAKModbusCommonController::exportRegisterData);
+    connect(mRegisterViewController, &SAKModbusCommonRegisterViewController::invokeImport, mController, &SAKModbusCommonController::importRegisterData);
+#else
+    connect(mRegisterViewController, &SAKModbusCommonRegisterViewController::invokeExport, this, [=](){mController->exportRegisterData();});
+    connect(mRegisterViewController, &SAKModbusCommonRegisterViewController::invokeImport, this, [=](){mController->importRegisterData();});
+#endif
     connect(dev, &QModbusDevice::stateChanged, this, [=](){
         ui->connectionPushButton->setEnabled(dev->state() == QModbusDevice::UnconnectedState);
         ui->disconnectionPushButton->setEnabled(dev->state() == QModbusDevice::ConnectedState);

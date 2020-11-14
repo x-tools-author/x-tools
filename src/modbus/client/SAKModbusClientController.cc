@@ -8,7 +8,9 @@
  * the file LICENCE in the root of the source code directory.
  */
 #include <QDebug>
+#include <QDateTime>
 #include <QTabWidget>
+#include <QFileDialog>
 #include <QTableWidget>
 #include <QModbusTcpServer>
 #include <QModbusRtuSerialMaster>
@@ -44,6 +46,22 @@ quint16 SAKModbusClientController::registerValue(QModbusDataUnit::RegisterType t
     }
 
     return value;
+}
+
+void SAKModbusClientController::exportRegisterData()
+{
+    auto fileName = getSaveFileName();
+    if (fileName.length()){
+        saveServerRegisterData(mModbusServer, fileName);
+    }
+}
+
+void SAKModbusClientController::importRegisterData()
+{
+    auto fileName = getOpenFileName();
+    if (fileName.length()){
+        setServerRegisterData(mModbusServer, fileName);
+    }
 }
 
 bool SAKModbusClientController::tempData(QModbusDataUnit::RegisterType table, quint16 address, quint16 *data)

@@ -9,6 +9,8 @@
  */
 #include <QLabel>
 #include <QDebug>
+#include <QDateTime>
+#include <QFileDialog>
 #include <QSizePolicy>
 #include <QMessageBox>
 #include <QModbusServer>
@@ -99,4 +101,28 @@ void SAKModbusCommonController::setModbusServerMap(QModbusServer *server)
         server->setData(QModbusDataUnit::InputRegisters, i, 0xffff);
         server->setData(QModbusDataUnit::HoldingRegisters, i, 0xffff);
     }
+}
+
+QString SAKModbusCommonController::getSaveFileName()
+{
+    QString defaultFileName = QDateTime::currentDateTime().toString("yyyyMMddhhmmss").append(".json").prepend("./");
+    auto fileName = QFileDialog::getSaveFileName(this, tr("Export Register Data"), defaultFileName, QString("Json (*.json *.txt)"));
+    return fileName;
+}
+
+QString SAKModbusCommonController::getOpenFileName()
+{
+    QString defaultFileName = QDateTime::currentDateTime().toString("yyyyMMddhhmmss").append(".json").prepend("./");
+    auto fileName = QFileDialog::getOpenFileName(this, tr("Export Register Data"), defaultFileName, QString("Json (*.json *.txt)"));
+    return fileName;
+}
+
+void SAKModbusCommonController::saveServerRegisterData(QModbusServer *server, QString fileName)
+{
+
+}
+
+void SAKModbusCommonController::setServerRegisterData(QModbusServer *server, QString fileName)
+{
+
 }

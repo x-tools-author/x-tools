@@ -20,6 +20,8 @@ public:
     SAKModbusServerController(QWidget *parent = Q_NULLPTR);
     virtual void setData(QModbusDataUnit::RegisterType type, quint16 address, quint16 value) final;
     virtual quint16 registerValue(QModbusDataUnit::RegisterType type, quint16 address) final;
+    virtual void exportRegisterData() final;
+    virtual void importRegisterData() final;
 protected:
     SAKModbusCommonServerSection *mServerSection;
 protected:

@@ -47,3 +47,19 @@ quint16 SAKModbusServerController::registerValue(QModbusDataUnit::RegisterType t
 
     return value;
 }
+
+void SAKModbusServerController::exportRegisterData()
+{
+    auto fileName = getSaveFileName();
+    if (fileName.length()){
+        saveServerRegisterData(qobject_cast<QModbusServer*>(device()), fileName);
+    }
+}
+
+void SAKModbusServerController::importRegisterData()
+{
+    auto fileName = getOpenFileName();
+    if (fileName.length()){
+        setServerRegisterData(qobject_cast<QModbusServer*>(device()), fileName);
+    }
+}
