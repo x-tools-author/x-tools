@@ -13,6 +13,7 @@
 #include <QWidget>
 #include <QJsonArray>
 #include <QHBoxLayout>
+#include <QProgressBar>
 #include <QModbusDevice>
 #include <QModbusServer>
 #include <QModbusDataUnit>
@@ -52,6 +53,9 @@ private:
     QModbusDevice *mDevice;
     quint16 mRegisterNumber;
     QMap<QModbusDataUnit::RegisterType, QString> mInfoMap;
+    int mAllRegisterCount;
+private:
+    QProgressBar *progressBar();
 signals:
     void deviceStateChanged();
     void modbusDataUnitRead(QModbusDataUnit mdu);
