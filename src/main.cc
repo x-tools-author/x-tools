@@ -14,7 +14,9 @@
 #include <QPushButton>
 #include <QGridLayout>
 #include <QSplashScreen>
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <QDesktopWidget>
+#endif
 
 #include "SAKMainWindow.hh"
 #include "SAKApplication.hh"
@@ -58,12 +60,14 @@ int main(int argc, char *argv[])
         mainWindow.show();
 
         // Move the main window to the central of desktop.
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
         QDesktopWidget *desktop = QApplication::desktop();
         int currentScreen = desktop->screenNumber(&mainWindow);
         QList<QScreen*> screenList = QGuiApplication::screens();
         QScreen *screen = screenList.at(currentScreen);
         mainWindow.move((screen->geometry().width() - mainWindow.width())/2, (screen->geometry().height() - mainWindow.height())/2);
         app.showSplashScreenMessage(QObject::tr("Finished..."));
+#endif
 
         // Close the splash screen.
         QSplashScreen *splashScreen = app.splashScreen();
@@ -71,7 +75,6 @@ int main(int argc, char *argv[])
 
         // If exit code is SAK_REBOOT_CODE(1314), The application will reboot.
         exitCode = app.exec();
-        delete screen;
     }while (exitCode == SAK_REBOOT_CODE);
 
     return exitCode;
