@@ -28,7 +28,10 @@ SAKModbusCommonController::SAKModbusCommonController(QWidget *parent)
 
 SAKModbusCommonController::~SAKModbusCommonController()
 {
-
+    closeDevice();
+    if (device()){
+        delete device();
+    }
 }
 
 void SAKModbusCommonController::closeDevice()
