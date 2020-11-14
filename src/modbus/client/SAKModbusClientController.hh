@@ -19,6 +19,7 @@ class SAKModbusClientController : public SAKModbusCommonController
 {
 public:
     SAKModbusClientController(QWidget *parent = Q_NULLPTR);
+    virtual void setData(QModbusDataUnit::RegisterType type, quint16 address, quint16 value) final;
 protected:
     SAKModbusCommonClientSection *mClientSection;
 protected:

@@ -64,12 +64,11 @@ SAKModbusDebugPage::SAKModbusDebugPage(int type, QString name, QSettings *settin
         mRegisterView->setContentsMargins(0, 0, 0, 0);
         mRegisterViewController = new SAKModbusCommonRegisterViewController;
         connect(mRegisterViewController, &SAKModbusCommonRegisterViewController::inVokeUpdateRegister, mRegisterView, &SAKModbusCommonRegisterView::updateRegister);
+        connect(mRegisterView, &SAKModbusCommonRegisterView::registerValueChanged, this, &SAKModbusDebugPage::setData);
 
         var.widget->layout()->addWidget(mRegisterView);
         var.widget->layout()->addWidget(mRegisterViewController);
-        for (quint16 i = 0; i < 100; i++){
-            mRegisterView->addWidget(new SAKModbusCommonRegister(var.type, i, i));
-        }
+        mRegisterView->updateRegister(0, 100);
     }
 
     // Combo box items
@@ -132,6 +131,13 @@ void SAKModbusDebugPage::outputModbusDataUnit(QModbusDataUnit mdu)
     }
 
     ui->textBrowser->append(QString(data.toHex(' ')));
+}
+
+void SAKModbusDebugPage::setData(QModbusDataUnit::RegisterType type, quint16 address, quint16 value)
+{
+    if (mController){
+        mController->setData(type, address, value);
+    }
 }
 
 void SAKModbusDebugPage::on_deviceTypeComboBox_currentIndexChanged(int index)

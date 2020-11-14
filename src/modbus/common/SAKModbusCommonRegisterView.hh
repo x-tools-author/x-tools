@@ -26,12 +26,6 @@ public:
     ~SAKModbusCommonRegisterView();
 
     /**
-     * @brief addWidget: Add a register widgt to the layout
-     * @param registerWisget: Register widget
-     */
-    void addWidget(QWidget *registerWisget);
-
-    /**
      * @brief updateRegister: Update the register widgets
      * @param startAddress: --
      * @param registerNumber: --
@@ -40,6 +34,8 @@ public:
 private:
     SAKModbusCommonFlowLayout *mFlowLayout;
     QModbusDataUnit::RegisterType mRegisterType;
+signals:
+    void registerValueChanged(QModbusDataUnit::RegisterType registerType, quint16 address, quint16 value);
 private:
     Ui::SAKModbusCommonReigsterView *ui;
 };

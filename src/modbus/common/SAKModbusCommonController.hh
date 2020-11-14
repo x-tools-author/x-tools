@@ -23,6 +23,7 @@ public:
     ~SAKModbusCommonController();
 
     virtual void open() = 0;
+    virtual void setData(QModbusDataUnit::RegisterType type, quint16 address, quint16 value) = 0;
 
     void closeDevice();
     void appendSection(QWidget *section);

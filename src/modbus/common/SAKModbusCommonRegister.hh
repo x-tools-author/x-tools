@@ -27,15 +27,16 @@ public:
     QModbusDataUnit::RegisterType type();
     quint16 address();
     quint16 value();
-private slots:
-    void on_lineEdit_textChanged(const QString &arg1);
-
 private:
     QModbusDataUnit::RegisterType mType;
     quint16 mAddress;
     quint16 mValue;
+signals:
+    void registerValueChanged(QModbusDataUnit::RegisterType registerType, quint16 address, quint16 value);
 private:
     Ui::SAKModbusCommonRegister *ui;
+private slots:
+    void on_lineEdit_textChanged(const QString &arg1);
 };
 
 #endif // SAKMODBUSCOMMONREGISTER_HH

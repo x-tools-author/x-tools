@@ -24,6 +24,11 @@ SAKModbusClientController::SAKModbusClientController(QWidget *parent)
     connect(mClientSection, &SAKModbusCommonClientSection::invokrSendWriteRequest, this, &SAKModbusClientController::sendWriteRequest);
 }
 
+void SAKModbusClientController::setData(QModbusDataUnit::RegisterType type, quint16 address, quint16 value)
+{
+
+}
+
 QWidget *SAKModbusClientController::bottomSection()
 {
     return mClientSection;

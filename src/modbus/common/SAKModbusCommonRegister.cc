@@ -8,6 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  */
 #include <QLabel>
+#include <QDebug>
 #include <QLineEdit>
 
 #include "SAKModbusCommonRegister.hh"
@@ -24,9 +25,10 @@ SAKModbusCommonRegister::SAKModbusCommonRegister(QModbusDataUnit::RegisterType t
 
     QLabel *label = ui->label;
     label->setText(QString("%1").arg(QString::number(mAddress), 5, '0'));
-
+#if 0
     QLineEdit *lineEdit = ui->lineEdit;
     lineEdit->setText(QString::number(mAddress));
+#endif
 }
 
 SAKModbusCommonRegister::~SAKModbusCommonRegister()
@@ -52,4 +54,6 @@ quint16 SAKModbusCommonRegister::value()
 void SAKModbusCommonRegister::on_lineEdit_textChanged(const QString &arg1)
 {
     Q_UNUSED(arg1);
+    mValue = ui->lineEdit->text().toInt();
+    emit registerValueChanged(type(), address(), value());
 }

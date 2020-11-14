@@ -30,11 +30,6 @@ SAKModbusCommonRegisterView::~SAKModbusCommonRegisterView()
     delete ui;
 }
 
-void SAKModbusCommonRegisterView::addWidget(QWidget *registerWisget)
-{
-    ui->scrollAreaWidgetContents->layout()->addWidget(registerWisget);
-}
-
 void SAKModbusCommonRegisterView::updateRegister(int startAddress, int registerNumber)
 {
     // Remove the old widgets
@@ -49,6 +44,8 @@ void SAKModbusCommonRegisterView::updateRegister(int startAddress, int registerN
     }
 
     for (quint16 i = 0; i < registerNumber; i++){
-        addWidget(new SAKModbusCommonRegister(mRegisterType, startAddress + i, startAddress + i));
+        auto registerWidget = new SAKModbusCommonRegister(mRegisterType, startAddress + i, startAddress + i);
+        ui->scrollAreaWidgetContents->layout()->addWidget(registerWidget);
+        connect(registerWidget, &SAKModbusCommonRegister::registerValueChanged, this, &SAKModbusCommonRegisterView::registerValueChanged);
     }
 }

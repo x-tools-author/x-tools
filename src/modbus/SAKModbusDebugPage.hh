@@ -51,6 +51,7 @@ private:
 private:
     QWidget *controllerFromType(int type);
     void outputModbusDataUnit(QModbusDataUnit mdu);
+    void setData(QModbusDataUnit::RegisterType type, quint16 address, quint16 value);
 private:
     Ui::SAKModbusDebugPage *ui;
 private slots:
