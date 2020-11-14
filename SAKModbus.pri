@@ -3,7 +3,7 @@ qtHaveModule(serialbus){
     DEFINES+=SAK_IMPORT_MODULE_SERIALBUS
 }
 
-contains(DEFINES, SAK_IMPORT_CHARTS_MODULE){
+contains(DEFINES, SAK_IMPORT_MODULE_SERIALBUS){
 INCLUDEPATH += \
     $$PWD/src/modbus \
     $$PWD/src/modbus/client \
