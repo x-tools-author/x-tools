@@ -44,6 +44,8 @@ signals:
     void deviceStateChanged();
     void modbusDataUnitRead(QModbusDataUnit mdu);
     void modbusDataUnitWritten(QModbusDataUnit mdu);
+    // The signal is for QModbusServer device only
+    void dataWritten(QModbusDataUnit::RegisterType table, int address, int size);
 };
 
 #endif // SAKMODBUSCOMMONDEVICECONTROLLER_HH

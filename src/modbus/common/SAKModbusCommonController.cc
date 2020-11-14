@@ -76,6 +76,10 @@ void SAKModbusCommonController::init()
     }
 
     if (mDevice){
+        auto server = qobject_cast<QModbusServer*>(mDevice);
+        if (server){
+            connect(server, &QModbusServer::dataWritten, this, &SAKModbusCommonController::dataWritten);
+        }
         connect(mDevice, &QModbusDevice::errorOccurred, this, [=](){
             QMessageBox::warning(this, tr("Error Occurred"), tr("Error Occured:%1 Please check the parameters and try again!").arg(mDevice->errorString()));
         });
