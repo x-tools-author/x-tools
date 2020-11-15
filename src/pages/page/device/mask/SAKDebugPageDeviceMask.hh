@@ -10,7 +10,9 @@
 #ifndef SAKDEBUGPAGEDEVICEMASK_HH
 #define SAKDEBUGPAGEDEVICEMASK_HH
 
+#include <QMutex>
 #include <QWidget>
+#include <QSettings>
 
 namespace  Ui{
     class SAKDebugPageDeviceMask;
@@ -23,10 +25,26 @@ class SAKDebugPageDeviceMask : public QWidget
 public:
     explicit SAKDebugPageDeviceMask(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKDebugPageDeviceMask();
+
+    struct ParametersContext{
+        quint8 rxMask;
+        quint8 txMask;
+        bool enableMask;
+    };
+    ParametersContext parametersContext();
 private:
     SAKDebugPage *mDebugPage;
+    ParametersContext mParametersContext;
+    QMutex mParametersContextMutex;
+    QSettings *mSettings;
+    QString mSettingsKeyRxMask;
+    QString mSettingsKeyTxMask;
 private:
     Ui::SAKDebugPageDeviceMask *ui;
+private slots:
+    void on_rxMaskSpinBox_valueChanged(int arg1);
+    void on_txMaskSpinBox_valueChanged(int arg1);
+    void on_enableMaskCheckBox_clicked();
 };
 
 #endif // SAKDEBUGPAGEDEVICEMASK_HH
