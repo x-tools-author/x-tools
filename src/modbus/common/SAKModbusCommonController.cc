@@ -97,7 +97,7 @@ void SAKModbusCommonController::init()
             }else{
                 emit invokeOutputMessage(tr("Unknown state(%1) of modbus device!").arg(mDevice->state()));
             }
-        });
+        }, Qt::QueuedConnection);
     }
 }
 
