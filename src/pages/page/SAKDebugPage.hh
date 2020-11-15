@@ -139,6 +139,12 @@ public:
      */
     SAKDebugPageStatisticsController *statisticsController();
 
+    /**
+     * @brief deviceController: Get the device controller instance, the controller will be destroy when the page is closed.
+     * @return Device controller instance pointer
+     */
+    SAKDebugPageController *deviceController();
+
 #ifdef SAK_IMPORT_COM_MODULE
     // Serialport interfaces
     void initComComboBox(QComboBox *comboBox);
@@ -153,14 +159,9 @@ public:
     void initOutputTextFormatComboBox(QComboBox *comboBox);
     void initCRCComboBox(QComboBox *comboBox);
     void initWebSocketSendingTypeComboBox(QComboBox *comboBox);
-public:
-    /**
-     * @brief deviceController: Get the device controller instance, the controller will be destroy when the page is closed.
-     * @return Device controller instance pointer
-     */
-    virtual SAKDebugPageController *deviceController() = 0;
 protected:
     SAKDebugPageDevice *mDevice;
+    SAKDebugPageController *mDeviceController;
 protected:
     /**
      * @brief createDevice: Get the device instance, the device will be destroy when it is closed.
@@ -173,7 +174,6 @@ protected:
      */
     void initializingPage();
 private:
-    SAKDebugPageController *mDeviceController;
     bool mIsInitializing;
     int mDebugPageType;
     QTimer mClearInfoTimer;

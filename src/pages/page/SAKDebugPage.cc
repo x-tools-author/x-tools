@@ -167,6 +167,11 @@ SAKDebugPageStatisticsController *SAKDebugPage::statisticsController()
     return mStatisticsController;
 }
 
+SAKDebugPageController *SAKDebugPage::deviceController()
+{
+    return mDeviceController;
+}
+
 #ifdef SAK_IMPORT_COM_MODULE
 void SAKDebugPage::initComComboBox(QComboBox *comboBox)
 {
