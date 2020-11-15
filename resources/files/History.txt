@@ -12,8 +12,8 @@
     02. 帮助>>下载源码，地址跳转错误
     说明：
     01. CRC计算器移至调试页面中（not yet）
-    02. 主窗口的各种部件整合至MainWindow类中（not yet）
-    03. 软件的全局类整合至SAKApplication类中（not yet）
+    02. 主窗口的各种部件整合至MainWindow类中
+    03. 软件的全局类整合至SAKApplication类中
     04. udp及tcp模块整合到子工程中（not yet）
     05. 添加模块配置文件，方便二次开发（not yet）
 
