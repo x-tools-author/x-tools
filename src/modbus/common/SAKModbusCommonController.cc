@@ -84,6 +84,20 @@ void SAKModbusCommonController::init()
             QMessageBox::warning(this, tr("Error Occurred"), tr("Error Occured:%1 Please check the parameters and try again!").arg(mDevice->errorString()));
             emit invokeOutputMessage(tr("Error occurred:%1").arg(mDevice->errorString()), true);
         });
+
+        connect(mDevice, &QModbusDevice::stateChanged, this, [=](QModbusDevice::State state){
+            if (state == QModbusDevice::ConnectedState){
+                emit invokeOutputMessage(tr("Modbus device is connected!"));
+            }else if (state == QModbusDevice::ConnectingState){
+                emit invokeOutputMessage(tr("Modbus device is connecting!"));
+            }else if (state == QModbusDevice::ClosingState){
+                emit invokeOutputMessage(tr("Modbus device is closing!"));
+            }else if (state == QModbusDevice::UnconnectedState){
+                emit invokeOutputMessage(tr("Modbus device is unconnected!"));
+            }else{
+                emit invokeOutputMessage(tr("Unknown state(%1) of modbus device!").arg(mDevice->state()));
+            }
+        });
     }
 }
 

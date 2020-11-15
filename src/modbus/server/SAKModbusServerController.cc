@@ -41,7 +41,8 @@ quint16 SAKModbusServerController::registerValue(QModbusDataUnit::RegisterType t
     auto server = qobject_cast<QModbusServer*>(device());
     if (server){
         if (!server->data(type, address, &value)){
-            qWarning() << "Can not get the value of register which type is:" << type;
+            QString err = tr("Can not get the value of register which type is:%1").arg(type);
+            emit invokeOutputMessage(err);
         }
     }
 
