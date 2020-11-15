@@ -10,6 +10,7 @@
 #include <QLabel>
 #include <QDebug>
 #include <QLineEdit>
+#include <QRegularExpressionValidator>
 
 #include "SAKModbusCommonRegister.hh"
 #include "ui_SAKModbusCommonRegister.h"
@@ -25,10 +26,19 @@ SAKModbusCommonRegister::SAKModbusCommonRegister(QModbusDataUnit::RegisterType t
 
     QLabel *label = ui->label;
     label->setText(QString("%1").arg(QString::number(mAddress), 5, '0'));
-#if 0
+
     QLineEdit *lineEdit = ui->lineEdit;
+#if 0
     lineEdit->setText(QString::number(mAddress));
 #endif
+
+    if (mType == QModbusDataUnit::Coils || mType == QModbusDataUnit::DiscreteInputs){
+        QRegularExpression regExp("[01]");
+        lineEdit->setValidator(new QRegularExpressionValidator(regExp, this));
+    }else{
+        QRegularExpression regExp("[a-fA-F0-9]{4}");
+        lineEdit->setValidator(new QRegularExpressionValidator(regExp, this));
+    }
 }
 
 SAKModbusCommonRegister::~SAKModbusCommonRegister()
@@ -53,12 +63,16 @@ quint16 SAKModbusCommonRegister::value()
 
 void SAKModbusCommonRegister::setValue(quint16 value)
 {
-    ui->lineEdit->setText(QString::number(value));
+    if (mType == QModbusDataUnit::Coils || mType == QModbusDataUnit::DiscreteInputs){
+        ui->lineEdit->setText(value ? "1" : "0");
+    }else{
+        ui->lineEdit->setText(QString("%1").arg(QString::number(value, 16), 4, '0'));
+    }
 }
 
 void SAKModbusCommonRegister::on_lineEdit_textChanged(const QString &arg1)
 {
     Q_UNUSED(arg1);
-    mValue = ui->lineEdit->text().toInt();
+    mValue = ui->lineEdit->text().toInt(Q_NULLPTR, 16);
     emit registerValueChanged(type(), address(), value());
 }
