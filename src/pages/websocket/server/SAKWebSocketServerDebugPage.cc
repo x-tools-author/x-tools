@@ -21,5 +21,5 @@ SAKWebSocketServerDebugPage::SAKWebSocketServerDebugPage(int type, QString name,
 {
     mDeviceController = new SAKWebSocketServerDeviceController(this);
     mDevice = new SAKWebSocketServerDevice(this, this);
-    initializingPage();
+    initializePage();
 }

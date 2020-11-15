@@ -21,5 +21,5 @@ SAKSerialPortDebugPage::SAKSerialPortDebugPage(int type, QString name, QWidget *
 {
     mDeviceController = new SAKSerialPortDeviceController(this);
     mDevice = new SAKSerialPortDevice(this, this);
-    initializingPage();
+    initializePage();
 }

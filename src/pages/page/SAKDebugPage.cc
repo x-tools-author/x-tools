@@ -408,7 +408,7 @@ SAKDebugPageDevice *SAKDebugPage::device()
     return mDevice;
 }
 
-void SAKDebugPage::initializingPage()
+void SAKDebugPage::initializePage()
 {
     SAKDebugPageController *controller = deviceController();
     if (controller){

@@ -21,5 +21,5 @@ SAKTcpServerDebugPage::SAKTcpServerDebugPage(int type, QString name, QWidget *pa
 {
     mDeviceController = new SAKTcpServerDeviceController(this);
     mDevice = new SAKTcpServerDevice(this, this);
-    initializingPage();
+    initializePage();
 }

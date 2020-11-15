@@ -170,9 +170,9 @@ protected:
     SAKDebugPageDevice* device();
 
     /**
-     * @brief initializingPage: Initializing, the function must be called in the constructor of subclass.
+     * @brief initializePage: Initializing, the function must be called in the constructor of subclass.
      */
-    void initializingPage();
+    void initializePage();
 private:
     bool mIsInitializing;
     int mDebugPageType;
