@@ -170,6 +170,7 @@ HEADERS += \
     src/pages/page/common/SAKDebugPageCommonSslConfigurationWidget.hh \
     src/pages/page/controller/SAKDebugPageController.hh \
     src/pages/page/device/SAKDebugPageDevice.hh \
+    src/pages/page/device/mask/SAKDebugPageDeviceMask.hh \
     src/pages/page/input/SAKDebugPageInputController.hh \
     src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.hh \
     src/pages/page/input/datafactory/SAKInputDataFactory.hh \
@@ -225,6 +226,7 @@ SOURCES += \
     src/pages/page/common/SAKDebugPageCommonSslConfigurationWidget.cc \
     src/pages/page/controller/SAKDebugPageController.cc \
     src/pages/page/device/SAKDebugPageDevice.cc \
+    src/pages/page/device/mask/SAKDebugPageDeviceMask.cc \
     src/pages/page/input/SAKDebugPageInputController.cc \
     src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.cc \
     src/pages/page/input/datafactory/SAKInputDataFactory.cc \
