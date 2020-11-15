@@ -130,7 +130,7 @@ void SAKModbusDebugPage::outputModbusDataUnit(QModbusDataUnit mdu)
         data.append(reinterpret_cast<char*>(&var)[0]);
     }
 #if QT_VERSION >= QT_VERSION_CHECK(5, 9, 0)
-    ui->textBrowser->append(QString(data.toHex(' ')));
+    QString dataStr = QString(data.toHex(' '));
 #else
     auto str = QString(data.toHex());
     QString newStr;
@@ -140,8 +140,13 @@ void SAKModbusDebugPage::outputModbusDataUnit(QModbusDataUnit mdu)
         str = str.remove(0, 2);
     }
     newStr = newStr.trimmed();
-    ui->textBrowser->append(newStr);
+    QString dataStr = newStr;
 #endif
+
+    QString datetime = QDateTime::currentDateTime().toString("hh:mm:ss ");
+    datetime = QString("<font color=silver>MDU:%1<%font>").arg(datetime);
+    dataStr.prepend(datetime);
+    ui->textBrowser->append(dataStr);
 }
 
 void SAKModbusDebugPage::setData(QModbusDataUnit::RegisterType type, quint16 address, quint16 value)
@@ -198,6 +203,15 @@ void SAKModbusDebugPage::dataWritten(QModbusDataUnit::RegisterType table, int ad
     }
 }
 
+void SAKModbusDebugPage::outputMessage(QString msg, bool isErrorMsg)
+{
+    QString datetime = QDateTime::currentDateTime().toString("hh:mm:ss ");
+    datetime = QString("<font color=silver>%1<%font>").arg(datetime);
+    msg = QString("<font color=%1>%2<%font>").arg(isErrorMsg ? "red" : "black").arg(msg);
+    msg.prepend(datetime);
+    ui->textBrowser->append(msg);
+}
+
 void SAKModbusDebugPage::on_deviceTypeComboBox_currentIndexChanged(int index)
 {
     mController = qobject_cast<SAKModbusCommonController*>(controllerFromType(index));
@@ -207,6 +221,7 @@ void SAKModbusDebugPage::on_deviceTypeComboBox_currentIndexChanged(int index)
     connect(mController, &SAKModbusCommonController::modbusDataUnitRead, this, &SAKModbusDebugPage::outputModbusDataUnit);
     connect(mController, &SAKModbusCommonController::modbusDataUnitWritten, this, &SAKModbusDebugPage::outputModbusDataUnit);
     connect(mController, &SAKModbusCommonController::dataWritten, this, &SAKModbusDebugPage::dataWritten);
+    connect(mController, &SAKModbusCommonController::invokeOutputMessage, this, &SAKModbusDebugPage::outputMessage);
     for (auto var : mRegisterViewControllerList){
         connect(var, &SAKModbusCommonRegisterViewController::invokeImport, mController, &SAKModbusCommonController::importRegisterData);
         connect(var, &SAKModbusCommonRegisterViewController::invokeExport, mController, &SAKModbusCommonController::exportRegisterData);

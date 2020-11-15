@@ -56,6 +56,7 @@ private:
     SAKModbusCommonRegisterView *registerView(QModbusDataUnit::RegisterType registerTyp);
     // Just for modbus server
     void dataWritten(QModbusDataUnit::RegisterType table, int address, int size);
+    void outputMessage(QString msg, bool isErrorMsg = false);
 private:
     Ui::SAKModbusDebugPage *ui;
 private slots:
