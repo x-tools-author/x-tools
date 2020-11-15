@@ -39,11 +39,11 @@ SAKModbusDebugPage::SAKModbusDebugPage(int type, QString name, QSettings *settin
     ui->deviceControllerWidget->setLayout(new QVBoxLayout);
     ui->deviceControllerWidget->layout()->setContentsMargins(0, 0, 0, 0);
     ui->disconnectionPushButton->setEnabled(false);
-
+#if 0
     // Add a button to tab bar
     mMenuPushButton = new QPushButton(QString("..."), this);
     ui->tabWidget->setCornerWidget(mMenuPushButton);
-
+#endif
     // Tab page information
     struct PageInfo {QWidget *widget; QModbusDataUnit::RegisterType type;};
     QList<PageInfo> pageInfoList;
