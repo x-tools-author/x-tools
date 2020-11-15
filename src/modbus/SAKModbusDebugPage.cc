@@ -219,7 +219,9 @@ void SAKModbusDebugPage::on_deviceTypeComboBox_currentIndexChanged(int index)
 
     auto *dev = mController->device();
     connect(mController, &SAKModbusCommonController::modbusDataUnitRead, this, &SAKModbusDebugPage::outputModbusDataUnit);
+#if 0
     connect(mController, &SAKModbusCommonController::modbusDataUnitWritten, this, &SAKModbusDebugPage::outputModbusDataUnit);
+#endif
     connect(mController, &SAKModbusCommonController::dataWritten, this, &SAKModbusDebugPage::dataWritten);
     connect(mController, &SAKModbusCommonController::invokeOutputMessage, this, &SAKModbusDebugPage::outputMessage);
     for (auto var : mRegisterViewControllerList){
