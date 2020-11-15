@@ -201,7 +201,6 @@ signals:
     void bytesWritten(QByteArray data);
     void requestWriteData(QByteArray data);
     void requestWriteRawData(QString data, int textFormat);
-
     // ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
     // ui component
 private:
@@ -209,7 +208,6 @@ private:
 private:
     // All variable about ui will be initialize in the function
     void initializingVariables();
-
     /*************************************************************************/
     // Device control module
 protected:
@@ -220,7 +218,6 @@ protected:
 private slots:
     void on_refreshPushButton_clicked();
     void on_switchPushButton_clicked();
-
     /*************************************************************************/
     // Data input settings module
 protected:
@@ -241,12 +238,10 @@ protected:
     QListWidget *mInputDataItemListWidget;
     QPushButton *mPresetPushButton;
     QPushButton *mSendPresetPushButton;
-
     /*************************************************************************/
     // Message output module
 protected:
     QLabel *mInfoLabel;
-
     /*************************************************************************/
     // Data output module
 protected:
@@ -264,7 +259,6 @@ protected:
     QPushButton *mClearOutputPushButton;
     QPushButton *mSaveOutputPushButton;
     QTextBrowser *mOutputTextBroswer;
-
     /*************************************************************************/
     // Data statistics module
 protected:
@@ -279,7 +273,6 @@ protected:
     QLabel *mTxBytesLabel;
     QPushButton *mResetTxCountPushButton;
     QPushButton *mResetRxCountPushButton;
-
     /*************************************************************************/
     // Other settings module
 protected:
@@ -289,7 +282,6 @@ protected:
     QPushButton *mTimingSendingPushButton;
     QPushButton *mHighlightSettingPushButton;
     QPushButton *mMoreSettingsPushButton;
-
     /*************************************************************************/
     // Charts module
 protected:
