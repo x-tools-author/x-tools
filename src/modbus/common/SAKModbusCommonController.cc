@@ -82,6 +82,7 @@ void SAKModbusCommonController::init()
     if (mDevice){
         connect(mDevice, &QModbusDevice::errorOccurred, this, [=](){
             QMessageBox::warning(this, tr("Error Occurred"), tr("Error Occured:%1 Please check the parameters and try again!").arg(mDevice->errorString()));
+            emit invokeOutputMessage(tr("Error occurred:%1").arg(mDevice->errorString()), true);
         });
     }
 }

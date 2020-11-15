@@ -62,6 +62,7 @@ signals:
     void modbusDataUnitWritten(QModbusDataUnit mdu);
     // The signal is for QModbusServer device only
     void dataWritten(QModbusDataUnit::RegisterType table, int address, int size);
+    void invokeOutputMessage(QString msg, bool isErrorMsg = false);
 };
 
 #endif // SAKMODBUSCOMMONDEVICECONTROLLER_HH
