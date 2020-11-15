@@ -61,7 +61,7 @@
 #include "SAKUdpServerDebugPage.hh"
 #include "SAKTcpClientDebugPage.hh"
 #include "SAKTcpServerDebugPage.hh"
-#ifdef SAK_IMPORT_COM_MODULE
+#ifdef SAK_IMPORT_MODULE_SERIALPORT
 #include "SAKSerialPortDebugPage.hh"
 #endif
 #ifdef SAK_IMPORT_WEBSOCKET_MODULE
@@ -546,7 +546,7 @@ void SAKMainWindow::rebootRequestion()
 void SAKMainWindow::initializingMetaObject()
 {
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeTest, SAKTestDebugPage::staticMetaObject, tr("Test")});
-#ifdef SAK_IMPORT_COM_MODULE
+#ifdef SAK_IMPORT_MODULE_SERIALPORT
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeCOM, SAKSerialPortDebugPage::staticMetaObject, tr("COM")});
 #endif
 #ifdef SAK_IMPORT_HID_MODULE

@@ -10,7 +10,7 @@
 #include <QDebug>
 #include <QMetaType>
 
-#ifdef SAK_IMPORT_COM_MODULE
+#ifdef SAK_IMPORT_MODULE_SERIALPORT
 #include <QSerialPortInfo>
 Q_DECLARE_METATYPE(QSerialPortInfo)
 #endif
@@ -23,12 +23,12 @@ Q_DECLARE_METATYPE(QSerialPortInfo)
 
 SAKOtherTransmissionItemCom::SAKOtherTransmissionItemCom(SAKDebugPage *_debugPage, QWidget *parent)
     :SAKOtherTransmissionItem (_debugPage, parent)
-#ifdef SAK_IMPORT_COM_MODULE
+#ifdef SAK_IMPORT_MODULE_SERIALPORT
     ,mUi (new Ui::SAKOtherTransmissionItemCom)
     ,mSerialPort (Q_NULLPTR)
 #endif
 {    
-#ifdef SAK_IMPORT_COM_MODULE
+#ifdef SAK_IMPORT_MODULE_SERIALPORT
     mUi->setupUi(this);
     mEnableCheckBox = mUi->enableCheckBox;
     mHandleReceiveDataCheckBox = mUi->handleReceiveDataCheckBox;
@@ -57,14 +57,14 @@ SAKOtherTransmissionItemCom::SAKOtherTransmissionItemCom(SAKDebugPage *_debugPag
 #endif
 }
 
-#ifdef SAK_IMPORT_COM_MODULE
+#ifdef SAK_IMPORT_MODULE_SERIALPORT
 SAKOtherTransmissionItemCom::~SAKOtherTransmissionItemCom()
 {
     delete mUi;
 }
 #endif
 
-#ifdef SAK_IMPORT_COM_MODULE
+#ifdef SAK_IMPORT_MODULE_SERIALPORT
 void SAKOtherTransmissionItemCom::write(QByteArray data)
 {
     if (mSerialPort){
@@ -77,7 +77,7 @@ void SAKOtherTransmissionItemCom::write(QByteArray data)
 }
 #endif
 
-#ifdef SAK_IMPORT_COM_MODULE
+#ifdef SAK_IMPORT_MODULE_SERIALPORT
 void SAKOtherTransmissionItemCom::on_enableCheckBox_clicked()
 {
     // c++11 lambda
@@ -120,14 +120,14 @@ void SAKOtherTransmissionItemCom::on_enableCheckBox_clicked()
 }
 #endif
 
-#ifdef SAK_IMPORT_COM_MODULE
+#ifdef SAK_IMPORT_MODULE_SERIALPORT
 void SAKOtherTransmissionItemCom::on_customBaudrateCheckBox_clicked()
 {
     mBaudRateComboBox->setEditable(mCustomBaudrateCheckBox->isChecked());
 }
 #endif
 
-#ifdef SAK_IMPORT_COM_MODULE
+#ifdef SAK_IMPORT_MODULE_SERIALPORT
 void SAKOtherTransmissionItemCom::read()
 {
     if (mSerialPort){
@@ -141,7 +141,7 @@ void SAKOtherTransmissionItemCom::read()
 }
 #endif
 
-#ifdef SAK_IMPORT_COM_MODULE
+#ifdef SAK_IMPORT_MODULE_SERIALPORT
 void SAKOtherTransmissionItemCom::setUiEnable(bool enable)
 {
     mComComboBox->setEnabled(enable);

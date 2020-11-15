@@ -1,9 +1,9 @@
 qtHaveModule(serialport){
     QT  += serialport
-    DEFINES+=SAK_IMPORT_COM_MODULE
+    DEFINES+=SAK_IMPORT_MODULE_SERIALPORT
 }
 
-contains(DEFINES, SAK_IMPORT_COM_MODULE){    
+contains(DEFINES, SAK_IMPORT_MODULE_SERIALPORT){
     FORMS += \
         $$PWD/src/pages/serialport/SAKSerialPortDeviceController.ui
 

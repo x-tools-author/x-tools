@@ -17,7 +17,7 @@
 #include <QIODevice>
 #include <QPushButton>
 
-#ifdef SAK_IMPORT_COM_MODULE
+#ifdef SAK_IMPORT_MODULE_SERIALPORT
 #include <QSerialPort>
 #endif
 
@@ -34,7 +34,7 @@ class SAKOtherTransmissionItemCom:public SAKOtherTransmissionItem
 public:
     SAKOtherTransmissionItemCom(SAKDebugPage *_debugPage, QWidget *parent = Q_NULLPTR);
 
-#ifdef SAK_IMPORT_COM_MODULE
+#ifdef SAK_IMPORT_MODULE_SERIALPORT
      ~SAKOtherTransmissionItemCom();
 protected:
     virtual void write(QByteArray data);

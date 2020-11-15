@@ -44,7 +44,7 @@
 #include "SAKDebugPageChartsController.hh"
 #endif
 
-#ifdef SAK_IMPORT_COM_MODULE
+#ifdef SAK_IMPORT_MODULE_SERIALPORT
 #include <QSerialPort>
 #include <QSerialPortInfo>
 #endif
@@ -173,7 +173,7 @@ SAKDebugPageController *SAKDebugPage::deviceController()
     return mDeviceController;
 }
 
-#ifdef SAK_IMPORT_COM_MODULE
+#ifdef SAK_IMPORT_MODULE_SERIALPORT
 void SAKDebugPage::initComComboBox(QComboBox *comboBox)
 {
     if (comboBox){
@@ -191,7 +191,7 @@ void SAKDebugPage::initComComboBox(QComboBox *comboBox)
 }
 #endif
 
-#ifdef SAK_IMPORT_COM_MODULE
+#ifdef SAK_IMPORT_MODULE_SERIALPORT
 void SAKDebugPage::initBaudRateComboBox(QComboBox *comboBox)
 {
     if (comboBox){
@@ -206,7 +206,7 @@ void SAKDebugPage::initBaudRateComboBox(QComboBox *comboBox)
 }
 #endif
 
-#ifdef SAK_IMPORT_COM_MODULE
+#ifdef SAK_IMPORT_MODULE_SERIALPORT
 void SAKDebugPage::initDataBitsComboBox(QComboBox *comboBox)
 {
     if (comboBox){
@@ -219,7 +219,7 @@ void SAKDebugPage::initDataBitsComboBox(QComboBox *comboBox)
 }
 #endif
 
-#ifdef SAK_IMPORT_COM_MODULE
+#ifdef SAK_IMPORT_MODULE_SERIALPORT
 void SAKDebugPage::initStopBitsComboBox(QComboBox *comboBox)
 {
     if (comboBox){
@@ -233,7 +233,7 @@ void SAKDebugPage::initStopBitsComboBox(QComboBox *comboBox)
 }
 #endif
 
-#ifdef SAK_IMPORT_COM_MODULE
+#ifdef SAK_IMPORT_MODULE_SERIALPORT
 void SAKDebugPage::initParityComboBox(QComboBox *comboBox)
 {
     if (comboBox){
@@ -247,7 +247,7 @@ void SAKDebugPage::initParityComboBox(QComboBox *comboBox)
 }
 #endif
 
-#ifdef SAK_IMPORT_COM_MODULE
+#ifdef SAK_IMPORT_MODULE_SERIALPORT
 void SAKDebugPage::initFlowControlComboBox(QComboBox *comboBox)
 {
     if (comboBox){

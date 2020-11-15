@@ -145,7 +145,7 @@ public:
      */
     SAKDebugPageController *deviceController();
 
-#ifdef SAK_IMPORT_COM_MODULE
+#ifdef SAK_IMPORT_MODULE_SERIALPORT
     // Serialport interfaces
     void initComComboBox(QComboBox *comboBox);
     void initBaudRateComboBox(QComboBox *comboBox);
