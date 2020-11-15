@@ -218,8 +218,8 @@ void SAKModbusDebugPage::on_deviceTypeComboBox_currentIndexChanged(int index)
     mController->setContentsMargins(0, 0, 0 ,0);
 
     auto *dev = mController->device();
-    connect(mController, &SAKModbusCommonController::modbusDataUnitRead, this, &SAKModbusDebugPage::outputModbusDataUnit);
 #if 0
+    connect(mController, &SAKModbusCommonController::modbusDataUnitRead, this, &SAKModbusDebugPage::outputModbusDataUnit);
     connect(mController, &SAKModbusCommonController::modbusDataUnitWritten, this, &SAKModbusDebugPage::outputModbusDataUnit);
 #endif
     connect(mController, &SAKModbusCommonController::dataWritten, this, &SAKModbusDebugPage::dataWritten);
