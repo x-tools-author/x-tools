@@ -109,6 +109,7 @@ INCLUDEPATH += \
     src/pages/page/common \
     src/pages/page/controller \
     src/pages/page/device \
+    src/pages/page/device/mask \
     src/pages/page/input \
     src/pages/page/input/crcsettings \
     src/pages/page/input/datafactory \
@@ -134,6 +135,7 @@ FORMS += \
     src/SAKMainWindow.ui \
     src/pages/page/SAKDebugPage.ui \
     src/pages/page/common/SAKDebugPageCommonSslConfigurationWidget.ui \
+    src/pages/page/device/mask/SAKDebugPageDeviceMask.ui \
     src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui \
     src/pages/page/input/datapreset/SAKInputDataPresetItem.ui \
     src/pages/page/input/datapreset/SAKInputDataPresetItemManager.ui \
