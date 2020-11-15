@@ -44,7 +44,7 @@
 #include "SAKCommonDataStructure.hh"
 
 // Debugging tools
-#ifdef SAK_IMPORT_FILECHECKER_MODULE
+#ifdef SAK_IMPORT_MODULE_FILECHECKER
 #include "SAKToolFileChecker.hh"
 #endif
 #include "SAKToolCRCCalculator.hh"
@@ -582,7 +582,7 @@ void SAKMainWindow::initializingMetaObject()
 
 void SAKMainWindow::initToosMetaObjectInfoList()
 {
-#ifdef SAK_IMPORT_FILECHECKER_MODULE
+#ifdef SAK_IMPORT_MODULE_FILECHECKER
     mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{SAKToolFileChecker::staticMetaObject, tr("File Checker")});
 #endif
 #ifdef SAK_IMPORT_QRCODE_MODULE

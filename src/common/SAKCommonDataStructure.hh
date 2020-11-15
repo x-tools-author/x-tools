@@ -20,7 +20,7 @@ public:
 
     // QSAK tools
     enum SAKEnumToolType {
-#ifdef SAK_IMPORT_FILECHECKER_MODULE
+#ifdef SAK_IMPORT_MODULE_FILECHECKER
         ToolTypeFileChecker,
 #endif
 #ifdef SAK_IMPORT_QRCODE_MODULE
