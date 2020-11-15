@@ -40,7 +40,7 @@
 #include "SAKOtherAutoResponseItemManager.hh"
 #include "SAKDebugPageStatisticsController.hh"
 
-#ifdef SAK_IMPORT_CHARTS_MODULE
+#ifdef SAK_IMPORT_MODULE_CHARTS
 #include "SAKDebugPageChartsController.hh"
 #endif
 
@@ -67,7 +67,7 @@ SAKDebugPage::SAKDebugPage(int type, QString name, QWidget *parent)
     mOtherController = new SAKDebugPageOtherController(this, this);
     mStatisticsController = new SAKDebugPageStatisticsController(this, this);
     mInputController = new SAKDebugPageInputController(this, this);
-#ifdef SAK_IMPORT_CHARTS_MODULE
+#ifdef SAK_IMPORT_MODULE_CHARTS
     mChartsController= new SAKDebugPageChartsController(this);
 #endif
 
@@ -84,7 +84,7 @@ SAKDebugPage::~SAKDebugPage()
         device()->wait();
     }
     delete device();
-#ifdef SAK_IMPORT_CHARTS_MODULE
+#ifdef SAK_IMPORT_MODULE_CHARTS
     delete mChartsController;
 #endif
     delete mUi;
@@ -150,7 +150,7 @@ SAKDebugPageInputController *SAKDebugPage::inputController()
     return mInputController;
 }
 
-#ifdef SAK_IMPORT_CHARTS_MODULE
+#ifdef SAK_IMPORT_MODULE_CHARTS
 SAKDebugPageChartsController *SAKDebugPage::chartsController()
 {
    return mChartsController;
@@ -586,7 +586,7 @@ void SAKDebugPage::initializingVariables()
 
 void SAKDebugPage::on_dataVisualizationPushButton_clicked()
 {
-#ifdef SAK_IMPORT_CHARTS_MODULE
+#ifdef SAK_IMPORT_MODULE_CHARTS
     if (mChartsController->isHidden()){
         mChartsController->show();
     }else{

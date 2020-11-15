@@ -38,7 +38,7 @@ class SAKOtherHighlighterManager;
 class SAKDebugPageOtherController;
 class SAKDebugPageInputController;
 class SAKDebugPageOutputController;
-#ifdef SAK_IMPORT_CHARTS_MODULE
+#ifdef SAK_IMPORT_MODULE_CHARTS
 class SAKDebugPageChartsController;
 #endif
 class SAKOtherTransmissionPageViewer;
@@ -119,7 +119,7 @@ public:
      */
     SAKDebugPageInputController *inputController();
 
-#ifdef SAK_IMPORT_CHARTS_MODULE
+#ifdef SAK_IMPORT_MODULE_CHARTS
     /**
      * @brief chartsController: Get SAKDebugPageChartsController instance pointer
      * @return SAKDebugPageChartsController instance pointer
@@ -183,7 +183,7 @@ private:
     // Debug page modules
     SAKDebugPageOtherController *mOtherController;
     SAKDebugPageInputController *mInputController;
-#ifdef SAK_IMPORT_CHARTS_MODULE
+#ifdef SAK_IMPORT_MODULE_CHARTS
     SAKDebugPageChartsController *mChartsController;
 #endif
     SAKDebugPageOutputController *mOutputController;
