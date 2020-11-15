@@ -23,7 +23,7 @@ public:
 #ifdef SAK_IMPORT_MODULE_FILECHECKER
         ToolTypeFileChecker,
 #endif
-#ifdef SAK_IMPORT_QRCODE_MODULE
+#ifdef SAK_IMPORT_MODULE_QRCODE
         ToolTypeQRCodeCreator,
 #endif
         ToolTypeCRCCalculator

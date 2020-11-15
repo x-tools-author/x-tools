@@ -1,12 +1,12 @@
 win32|unix {
     exists($${PWD}/../../../3rd/libqrencode/qrencode.h){
-        DEFINES += SAK_IMPORT_QRCODE_MODULE
+        DEFINES += SAK_IMPORT_MODULE_QRCODE
         DEFINES += HAVE_CONFIG_H
     }
 }
 
 # libqrencode 源文件
-contains(DEFINES, SAK_IMPORT_QRCODE_MODULE){
+contains(DEFINES, SAK_IMPORT_MODULE_QRCODE){
     INCLUDEPATH += \
         3rd/libqrencode
 
@@ -34,7 +34,7 @@ contains(DEFINES, SAK_IMPORT_QRCODE_MODULE){
         3rd/libqrencode/split.c
 }
 
-contains(DEFINES, SAK_IMPORT_QRCODE_MODULE){
+contains(DEFINES, SAK_IMPORT_MODULE_QRCODE){
     FORMS += \
     $$PWD/src/SAKToolQRCodeCreator.ui
 

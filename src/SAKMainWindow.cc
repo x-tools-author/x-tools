@@ -48,7 +48,7 @@
 #include "SAKToolFileChecker.hh"
 #endif
 #include "SAKToolCRCCalculator.hh"
-#ifdef SAK_IMPORT_QRCODE_MODULE
+#ifdef SAK_IMPORT_MODULE_QRCODE
 #include "SAKToolQRCodeCreator.hh"
 #endif
 
@@ -585,7 +585,7 @@ void SAKMainWindow::initToosMetaObjectInfoList()
 #ifdef SAK_IMPORT_MODULE_FILECHECKER
     mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{SAKToolFileChecker::staticMetaObject, tr("File Checker")});
 #endif
-#ifdef SAK_IMPORT_QRCODE_MODULE
+#ifdef SAK_IMPORT_MODULE_QRCODE
     mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{SAKToolCRCCalculator::staticMetaObject, tr("CRC Calculator")});
 #endif
     mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{SAKToolCRCCalculator::staticMetaObject, tr("QR Code Creator")});
