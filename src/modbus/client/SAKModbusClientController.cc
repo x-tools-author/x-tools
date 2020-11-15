@@ -42,7 +42,8 @@ quint16 SAKModbusClientController::registerValue(QModbusDataUnit::RegisterType t
 {
     quint16 value = 0;
     if (!mModbusServer->data(type, address, &value)){
-        qWarning() << "Can not get the value of register which type is:" << type;
+        QString err = tr("Can not get the value of register which type is:%1").arg(type);
+        emit invokeOutputMessage(err);
     }
 
     return value;
@@ -90,7 +91,8 @@ void SAKModbusClientController::sendReadRequest(QModbusDataUnit mdu)
             delete reply; // broadcast replies return immediately
         }
     }else{
-        qWarning() << "Read error:" << qobject_cast<QModbusClient*>(device())->errorString();
+        QString err = tr("Send reading request error:%1").arg(qobject_cast<QModbusClient*>(device())->errorString());
+        emit invokeOutputMessage(err);
     }
 }
 
@@ -101,9 +103,11 @@ void SAKModbusClientController::sendWriteRequest(QModbusDataUnit mdu)
         if (!reply->isFinished()) {
             connect(reply, &QModbusReply::finished, this, [=]() {
                 if (reply->error() == QModbusDevice::ProtocolError) {
-                    qWarning() << tr("Write response error: %1 (Mobus exception: 0x%2)").arg(reply->errorString()).arg(reply->rawResult().exceptionCode(), -1, 16);
+                    QString err = tr("Writing reply error: %1 (Mobus exception: 0x%2)").arg(reply->errorString()).arg(reply->rawResult().exceptionCode(), -1, 16);
+                    emit invokeOutputMessage(err);
                 } else if (reply->error() != QModbusDevice::NoError) {
-                    qWarning() << tr("Write response error: %1 (code: 0x%2)").arg(reply->errorString()).arg(reply->error(), -1, 16);
+                    QString err = tr("Writing reply error: %1 (code: 0x%2)").arg(reply->errorString()).arg(reply->error(), -1, 16);
+                    emit invokeOutputMessage(err);
                 }else{
                     emit modbusDataUnitWritten(mdu);
                 }
@@ -115,7 +119,8 @@ void SAKModbusClientController::sendWriteRequest(QModbusDataUnit mdu)
             reply->deleteLater();
         }
     } else {
-        qWarning() << tr("Write error: ") + qobject_cast<QModbusClient*>(device())->errorString();
+        QString err = tr("Write error: %1").arg(qobject_cast<QModbusClient*>(device())->errorString());
+        emit invokeOutputMessage(err);
     }
 }
 
@@ -134,24 +139,21 @@ void SAKModbusClientController::readReply()
         auto registerType = reply->result().registerType();
         auto startAddress = reply->result().startAddress();
         auto registerNumber = reply->result().valueCount();
+        emit invokeOutputMessage(tr("Received a reply:"));
         for (uint i = 0; i < mdu.valueCount(); i++) {
             auto value = reply->result().value(startAddress + i);
             setData(registerType, startAddress + i, value);
-#ifdef QT_DEBUG
-            const QString entry = tr("Address: %1, Value: %2").arg(mdu.startAddress() + i).arg(QString::number(mdu.value(i), mdu.registerType() <= QModbusDataUnit::Coils ? 10 : 16));
-            qDebug() << entry;
-#endif
+            const QString entry = tr("[Address: %1, Value: %2]").arg(mdu.startAddress() + i).arg(QString::number(mdu.value(i), mdu.registerType() <= QModbusDataUnit::Coils ? 10 : 16));
+            emit invokeOutputMessage(entry);
         }
         // The signal is using to update ui value.
         emit dataWritten(registerType, startAddress, registerNumber);
     } else if (reply->error() == QModbusDevice::ProtocolError) {
-        qDebug() << tr("Read response error: %1 (Mobus exception: 0x%2)").
-                                    arg(reply->errorString()).
-                                    arg(reply->rawResult().exceptionCode(), -1, 16);
+        QString error = tr("Read response error: %1 (Mobus exception: 0x%2)").arg(reply->errorString()).arg(reply->rawResult().exceptionCode(), -1, 16);
+        emit invokeOutputMessage(error);
     } else {
-        qDebug() << tr("Read response error: %1 (code: 0x%2)").
-                                    arg(reply->errorString()).
-                                    arg(reply->error(), -1, 16);
+        QString error = tr("Read response error: %1 (code: 0x%2)").arg(reply->errorString()).arg(reply->error(), -1, 16);
+        emit invokeOutputMessage(error);
     }
 
     reply->deleteLater();
