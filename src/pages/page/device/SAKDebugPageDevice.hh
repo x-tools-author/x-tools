@@ -15,6 +15,7 @@
 
 /// @brief device abstract class
 class SAKDebugPage;
+class SAKDebugPageDeviceMask;
 class SAKDebugPageDevice:public QThread
 {
     Q_OBJECT
@@ -42,6 +43,7 @@ protected:
     QMutex mThreadMutex;
     QWaitCondition mThreadWaitCondition;
     SAKDebugPage *mDebugPage;
+    SAKDebugPageDeviceMask *mDeviceMask;
 protected:
     QByteArray takeWaitingForWrittingBytes();
     void run() override;
