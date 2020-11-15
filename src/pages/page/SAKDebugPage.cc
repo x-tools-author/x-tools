@@ -169,6 +169,7 @@ SAKDebugPageStatisticsController *SAKDebugPage::statisticsController()
 
 SAKDebugPageController *SAKDebugPage::deviceController()
 {
+    Q_ASSERT_X(mDeviceController, __FUNCTION__, "You must initialize mDeviceController in the subclass!");
     return mDeviceController;
 }
 
