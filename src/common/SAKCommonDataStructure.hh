@@ -58,7 +58,7 @@ public:
         DebugPageTypeBluetoothClient,
         DebugPageTypeBluetoothServer,
 #endif
-#ifdef SAK_IMPORT_WEBSOCKET_MODULE
+#ifdef SAK_IMPORT_MODULE_WEBSOCKET
         DebugPageTypeWebSocketClient,
         DebugPageTypeWebSocketServer
 #endif

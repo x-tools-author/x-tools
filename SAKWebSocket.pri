@@ -1,9 +1,9 @@
 qtHaveModule(websockets){
     QT  += websockets
-    DEFINES+=SAK_IMPORT_WEBSOCKET_MODULE
+    DEFINES+=SAK_IMPORT_MODULE_WEBSOCKET
 }
 
-contains(DEFINES, SAK_IMPORT_WEBSOCKET_MODULE){
+contains(DEFINES, SAK_IMPORT_MODULE_WEBSOCKET){
     INCLUDEPATH += \
         $$PWD/src/pages/websocket/client \
         $$PWD/src/pages/websocket/server

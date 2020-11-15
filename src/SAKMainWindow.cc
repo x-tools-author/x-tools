@@ -64,7 +64,7 @@
 #ifdef SAK_IMPORT_MODULE_SERIALPORT
 #include "SAKSerialPortDebugPage.hh"
 #endif
-#ifdef SAK_IMPORT_WEBSOCKET_MODULE
+#ifdef SAK_IMPORT_MODULE_WEBSOCKET
 #include "SAKWebSocketClientDebugPage.hh"
 #include "SAKWebSocketServerDebugPage.hh"
 #endif
@@ -571,7 +571,7 @@ void SAKMainWindow::initializingMetaObject()
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeBluetoothClient, SAKBluetoothClientDebugPage::staticMetaObject, tr("Bluetooth-C")});
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeBluetoothServer, SAKBluetoothServerDebugPage::staticMetaObject, tr("Bluetooth-S")});
 #endif
-#ifdef SAK_IMPORT_WEBSOCKET_MODULE
+#ifdef SAK_IMPORT_MODULE_WEBSOCKET
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeWebSocketClient, SAKWebSocketClientDebugPage::staticMetaObject, tr("WS-C")});
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeWebSocketServer, SAKWebSocketServerDebugPage::staticMetaObject, tr("WS-S")});
 #endif
