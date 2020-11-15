@@ -190,13 +190,10 @@ private:
     SAKDebugPageStatisticsController *mStatisticsController;
 private:
     void cleanInfo();
-
-    void openOrColoseDevice();
-    void closeDevice();
-    void openDevice();
-
     void setupController();
     void changedDeviceState(bool opened);
+    void openDevice();
+    void closeDevice();
 signals:
     // Emit the read data
     void bytesRead(QByteArray data);

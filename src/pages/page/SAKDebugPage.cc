@@ -79,11 +79,11 @@ SAKDebugPage::SAKDebugPage(int type, QString name, QWidget *parent)
 
 SAKDebugPage::~SAKDebugPage()
 {
-    if (mDevice){
-        mDevice->requestInterruption();
-        mDevice->wait();
+    if (device()->isRunning()){
+        device()->requestInterruption();
+        device()->wait();
     }
-    delete mDevice;
+    delete device();
 #ifdef SAK_IMPORT_CHARTS_MODULE
     delete mChartsController;
 #endif
@@ -405,25 +405,31 @@ SAKDebugPageDevice *SAKDebugPage::device()
 
 void SAKDebugPage::initializingPage()
 {
-    setupController();
+    SAKDebugPageController *controller = deviceController();
+    if (controller){
+        QHBoxLayout *layout = new QHBoxLayout(mDeviceSettingFrame);
+        mDeviceSettingFrame->setLayout(layout);
+        layout->addWidget(controller);
+        layout->setContentsMargins(0, 0, 0, 0);
+        mDeviceController = controller;
+    }
 
-    mDevice = device();
-    connect(this, &SAKDebugPage::requestWriteData, mDevice, &SAKDebugPageDevice::writeBytes);
-    connect(mDevice, &SAKDebugPageDevice::bytesWritten, this, &SAKDebugPage::bytesWritten);
+    connect(this, &SAKDebugPage::requestWriteData, device(), &SAKDebugPageDevice::writeBytes);
+    connect(device(), &SAKDebugPageDevice::bytesWritten, this, &SAKDebugPage::bytesWritten);
 #if 0
     connect(device, &SAKDevice::bytesRead, this, &SAKDebugPage::bytesRead);
 #else
     // The bytes read will be input to analyzer, after analyzing, the bytes will be input to debug page
     SAKOtherAnalyzerThreadManager *analyzerManager = mOtherController->analyzerThreadManager();
-    connect(mDevice, &SAKDebugPageDevice::bytesRead, analyzerManager, &SAKOtherAnalyzerThreadManager::inputBytes);
+    connect(device(), &SAKDebugPageDevice::bytesRead, analyzerManager, &SAKOtherAnalyzerThreadManager::inputBytes);
 
     // The function may be called multiple times, so do something to ensure that the signal named bytesAnalysed
     // and the slot named bytesRead are connected once.
     connect(analyzerManager, &SAKOtherAnalyzerThreadManager::bytesAnalysed, this, &SAKDebugPage::bytesRead, static_cast<Qt::ConnectionType>(Qt::AutoConnection|Qt::UniqueConnection));
 #endif
-    connect(mDevice, &SAKDebugPageDevice::messageChanged, this, &SAKDebugPage::outputMessage);
-    connect(mDevice, &SAKDebugPageDevice::deviceStateChanged, this, &SAKDebugPage::changedDeviceState);
-    connect(mDevice, &SAKDebugPageDevice::finished, this, &SAKDebugPage::closeDevice);
+    connect(device(), &SAKDebugPageDevice::messageChanged, this, &SAKDebugPage::outputMessage);
+    connect(device(), &SAKDebugPageDevice::deviceStateChanged, this, &SAKDebugPage::changedDeviceState);
+    connect(device(), &SAKDebugPageDevice::finished, this, &SAKDebugPage::closeDevice, Qt::QueuedConnection);
 
 
     // Initialize the more button, the firs thing to do is clear the old actions and delete the old menu.
@@ -433,7 +439,7 @@ void SAKDebugPage::initializingPage()
         deviceMorePushButtonMenu->deleteLater();
     }
     // Create new menu and add actions to the menu.
-    auto infos = mDevice->settingsPanelList();
+    auto infos = device()->settingsPanelList();
     deviceMorePushButtonMenu = new QMenu;
     mDeviceMorePushButton->setMenu(deviceMorePushButtonMenu);
     for (auto var : infos){
@@ -460,52 +466,30 @@ void SAKDebugPage::changedDeviceState(bool opened)
     mSwitchPushButton->setEnabled(true);
 }
 
+void SAKDebugPage::openDevice()
+{
+    device()->start();
+    mSwitchPushButton->setText(tr("Close"));
+}
+
+void SAKDebugPage::closeDevice()
+{
+    device()->requestInterruption();
+    device()->requestWakeup();
+    device()->exit();
+    device()->wait();
+    mSwitchPushButton->setText(tr("Open"));
+}
+
 void SAKDebugPage::cleanInfo()
 {
     mClearInfoTimer.stop();
     mInfoLabel->clear();
 }
 
-void SAKDebugPage::openOrColoseDevice()
-{
-    if (device()){
-        if (device()->isRunning()){
-            closeDevice();
-        }else{
-            openDevice();
-        }
-    }
-}
-
-void SAKDebugPage::openDevice()
-{
-    if (mDevice){
-        mDevice->start();
-        mSwitchPushButton->setText(tr("Close"));
-    }
-}
-
-void SAKDebugPage::closeDevice()
-{
-    if (mDevice){
-        mDevice->requestInterruption();
-        mDevice->requestWakeup();
-        mDevice->exit();
-        mDevice->wait();
-        mSwitchPushButton->setText(tr("Open"));
-    }
-}
-
 void SAKDebugPage::setupController()
 {
-    SAKDebugPageController *controller = deviceController();
-    if (controller){
-        QHBoxLayout *layout = new QHBoxLayout(mDeviceSettingFrame);
-        mDeviceSettingFrame->setLayout(layout);
-        layout->addWidget(controller);
-        layout->setContentsMargins(0, 0, 0, 0);
-        mDeviceController = controller;
-    }
+
 }
 
 void SAKDebugPage::on_refreshPushButton_clicked()
@@ -520,7 +504,13 @@ void SAKDebugPage::on_refreshPushButton_clicked()
 void SAKDebugPage::on_switchPushButton_clicked()
 {
     mSwitchPushButton->setEnabled(false);
-    openOrColoseDevice();
+    if (device()){
+        if (!device()->isRunning()){
+            openDevice();
+        }else{
+            closeDevice();
+        }
+    }
 }
 
 void SAKDebugPage::initializingVariables()
