@@ -18,14 +18,8 @@
 
 SAKTestDebugPage::SAKTestDebugPage(int type, QString name, QWidget *parent)
     :SAKDebugPage(type, name, parent)
-    ,mDeviceController(Q_NULLPTR)
 {
     mDeviceController = new SAKTestDeviceController(this);
     mDevice = new SAKTestDevice(this, this);
     initializingPage();
-}
-
-SAKDebugPageController *SAKTestDebugPage::deviceController()
-{
-    return mDeviceController;
 }

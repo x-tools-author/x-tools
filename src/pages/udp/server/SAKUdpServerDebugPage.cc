@@ -23,13 +23,3 @@ SAKUdpServerDebugPage::SAKUdpServerDebugPage(int type, QString name, QWidget *pa
     mDevice = new SAKUdpServerDevice(this, this);
     initializingPage();
 }
-
-SAKUdpServerDebugPage::~SAKUdpServerDebugPage()
-{
-    mDeviceController->deleteLater();
-}
-
-SAKDebugPageController *SAKUdpServerDebugPage::deviceController()
-{
-    return mDeviceController;
-}

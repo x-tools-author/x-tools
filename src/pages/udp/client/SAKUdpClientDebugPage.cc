@@ -19,17 +19,7 @@
 SAKUdpClientDebugPage::SAKUdpClientDebugPage(int type, QString name, QWidget *parent)
     :SAKDebugPage(type, name, parent)
 {
-    mUdpDeviceController = new SAKUdpClientDeviceController(this);
+    mDeviceController = new SAKUdpClientDeviceController(this);
     mDevice = new SAKUdpClientDevice(this, this);
     initializingPage();
-}
-
-SAKUdpClientDebugPage::~SAKUdpClientDebugPage()
-{
-    mUdpDeviceController->deleteLater();
-}
-
-SAKDebugPageController *SAKUdpClientDebugPage::deviceController()
-{
-    return mUdpDeviceController;
 }

@@ -18,10 +18,6 @@ class SAKTcpClientDebugPage : public SAKDebugPage
     Q_OBJECT
 public:
     Q_INVOKABLE SAKTcpClientDebugPage(int type, QString name, QWidget *parent = Q_NULLPTR);
-
-    SAKDebugPageController *deviceController() final;
-private:
-    SAKTcpClientDeviceController *mTcpClientDeviceController;
 };
 
 #endif

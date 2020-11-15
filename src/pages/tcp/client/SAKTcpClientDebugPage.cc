@@ -18,14 +18,8 @@
 
 SAKTcpClientDebugPage::SAKTcpClientDebugPage(int type, QString name, QWidget *parent)
     :SAKDebugPage(type, name, parent)
-    ,mTcpClientDeviceController(Q_NULLPTR)
 {
-    mTcpClientDeviceController = new SAKTcpClientDeviceController(this);
+    mDeviceController = new SAKTcpClientDeviceController(this);
     mDevice = new  SAKTcpClientDevice(this, this);
     initializingPage();
-}
-
-SAKDebugPageController *SAKTcpClientDebugPage::deviceController()
-{
-    return mTcpClientDeviceController;
 }

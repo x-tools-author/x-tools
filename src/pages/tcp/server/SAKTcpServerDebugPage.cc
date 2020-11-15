@@ -23,8 +23,3 @@ SAKTcpServerDebugPage::SAKTcpServerDebugPage(int type, QString name, QWidget *pa
     mDevice = new SAKTcpServerDevice(this, this);
     initializingPage();
 }
-
-SAKDebugPageController *SAKTcpServerDebugPage::deviceController()
-{
-    return mDeviceController;
-}
