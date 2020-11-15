@@ -12,6 +12,7 @@
 #include <QModbusDevice>
 #include <QModbusDataUnit>
 #include <QStandardItemModel>
+#include <QRegularExpressionValidator>
 
 #include "SAKModbusCommonClientSection.hh"
 #include "ui_SAKModbusCommonClientSection.h"
@@ -157,13 +158,13 @@ void SAKModbusCommonClientSection::updateTableWidget()
 
         if (isCoilsRegisterType){
             value->setMaxLength(1);
-            QRegExp regExp("[01]");
-            value->setValidator(new QRegExpValidator(regExp, this));
+            QRegularExpression regExp("[01]");
+            value->setValidator(new QRegularExpressionValidator(regExp, this));
             tableWidget->setCellWidget(i, 1, value);
         }else{
             value->setMaxLength(4);
-            QRegExp regExp("[a-fA-F0-9]{4}");
-            value->setValidator(new QRegExpValidator(regExp, this));
+            QRegularExpression regExp("[a-fA-F0-9]{4}");
+            value->setValidator(new QRegularExpressionValidator(regExp, this));
             tableWidget->setCellWidget(i, 1, value);
         }
     }
