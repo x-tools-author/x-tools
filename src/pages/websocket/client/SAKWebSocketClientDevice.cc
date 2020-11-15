@@ -19,11 +19,10 @@
 #include "SAKWebSocketClientDeviceController.hh"
 
 SAKWebSocketClientDevice::SAKWebSocketClientDevice(SAKWebSocketClientDebugPage *debugPage, QObject *parent)
-    :SAKDebugPageDevice(parent)
+    :SAKDebugPageDevice(debugPage, parent)
     ,mDebugPage (debugPage)
 {
     qRegisterMetaType<QAbstractSocket::SocketError>("QAbstractSocket::SocketError");
-    moveToThread(this);
 }
 
 bool SAKWebSocketClientDevice::initializing(QString &errorString)

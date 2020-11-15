@@ -21,7 +21,6 @@ public:
     Q_INVOKABLE SAKTcpServerDebugPage(int type, QString name, QWidget *parent = Q_NULLPTR);
 
     SAKDebugPageController *deviceController() final;
-    SAKDebugPageDevice* createDevice() final;
 private:
     SAKTcpServerDeviceController *mDeviceController;
 };

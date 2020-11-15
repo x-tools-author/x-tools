@@ -7,6 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
+#include <QMenu>
+#include <QAction>
 #include <QPixmap>
 #include <QDateTime>
 #include <QSettings>
@@ -395,10 +397,56 @@ void SAKDebugPage::initWebSocketSendingTypeComboBox(QComboBox *comboBox)
     }
 }
 
+SAKDebugPageDevice *SAKDebugPage::device()
+{
+    Q_ASSERT_X(mDevice, __FUNCTION__, "You must initialize the mDevice in the subcalss!");
+    return mDevice;
+}
+
 void SAKDebugPage::initializingPage()
 {
     setupController();
-    setupDevice();
+
+    mDevice = device();
+    connect(this, &SAKDebugPage::requestWriteData, mDevice, &SAKDebugPageDevice::writeBytes);
+    connect(mDevice, &SAKDebugPageDevice::bytesWritten, this, &SAKDebugPage::bytesWritten);
+#if 0
+    connect(device, &SAKDevice::bytesRead, this, &SAKDebugPage::bytesRead);
+#else
+    // The bytes read will be input to analyzer, after analyzing, the bytes will be input to debug page
+    SAKOtherAnalyzerThreadManager *analyzerManager = mOtherController->analyzerThreadManager();
+    connect(mDevice, &SAKDebugPageDevice::bytesRead, analyzerManager, &SAKOtherAnalyzerThreadManager::inputBytes);
+
+    // The function may be called multiple times, so do something to ensure that the signal named bytesAnalysed
+    // and the slot named bytesRead are connected once.
+    connect(analyzerManager, &SAKOtherAnalyzerThreadManager::bytesAnalysed, this, &SAKDebugPage::bytesRead, static_cast<Qt::ConnectionType>(Qt::AutoConnection|Qt::UniqueConnection));
+#endif
+    connect(mDevice, &SAKDebugPageDevice::messageChanged, this, &SAKDebugPage::outputMessage);
+    connect(mDevice, &SAKDebugPageDevice::deviceStateChanged, this, &SAKDebugPage::changedDeviceState);
+    connect(mDevice, &SAKDebugPageDevice::finished, this, &SAKDebugPage::closeDevice);
+
+
+    // Initialize the more button, the firs thing to do is clear the old actions and delete the old menu.
+    auto deviceMorePushButtonMenu = mDeviceMorePushButton->menu();
+    if (deviceMorePushButtonMenu){
+        deviceMorePushButtonMenu->clear();
+        deviceMorePushButtonMenu->deleteLater();
+    }
+    // Create new menu and add actions to the menu.
+    auto infos = mDevice->settingsPanelList();
+    deviceMorePushButtonMenu = new QMenu;
+    mDeviceMorePushButton->setMenu(deviceMorePushButtonMenu);
+    for (auto var : infos){
+        QAction *action = new QAction(var.name, deviceMorePushButtonMenu);
+        deviceMorePushButtonMenu->addAction(action);
+        connect(action, &QAction::triggered, [=](){
+            if (var.panel->isHidden()){
+                var.panel->show();
+            }else{
+                var.panel->show();
+            }
+        });
+    }
 }
 
 void SAKDebugPage::changedDeviceState(bool opened)
@@ -420,12 +468,8 @@ void SAKDebugPage::cleanInfo()
 
 void SAKDebugPage::openOrColoseDevice()
 {
-    if (!mDevice){
-        setupDevice();
-    }
-
-    if (mDevice){
-        if (mDevice->isRunning()){
+    if (device()){
+        if (device()->isRunning()){
             closeDevice();
         }else{
             openDevice();
@@ -448,32 +492,7 @@ void SAKDebugPage::closeDevice()
         mDevice->requestWakeup();
         mDevice->exit();
         mDevice->wait();
-        mDevice->deleteLater();
-        mDevice = Q_NULLPTR;
         mSwitchPushButton->setText(tr("Open"));
-    }
-}
-
-void SAKDebugPage::setupDevice()
-{
-    mDevice = createDevice();
-    if (mDevice){
-        connect(this, &SAKDebugPage::requestWriteData, mDevice, &SAKDebugPageDevice::writeBytes);
-        connect(mDevice, &SAKDebugPageDevice::bytesWritten, this, &SAKDebugPage::bytesWritten);
-#if 0
-        connect(device, &SAKDevice::bytesRead, this, &SAKDebugPage::bytesRead);
-#else
-        // The bytes read will be input to analyzer, after analyzing, the bytes will be input to debug page
-        SAKOtherAnalyzerThreadManager *analyzerManager = mOtherController->analyzerThreadManager();
-        connect(mDevice, &SAKDebugPageDevice::bytesRead, analyzerManager, &SAKOtherAnalyzerThreadManager::inputBytes);
-
-        // The function may be called multiple times, so do something to ensure that the signal named bytesAnalysed
-        // and the slot named bytesRead are connected once.
-        connect(analyzerManager, &SAKOtherAnalyzerThreadManager::bytesAnalysed, this, &SAKDebugPage::bytesRead, static_cast<Qt::ConnectionType>(Qt::AutoConnection|Qt::UniqueConnection));
-#endif
-        connect(mDevice, &SAKDebugPageDevice::messageChanged, this, &SAKDebugPage::outputMessage);
-        connect(mDevice, &SAKDebugPageDevice::deviceStateChanged, this, &SAKDebugPage::changedDeviceState);
-        connect(mDevice, &SAKDebugPageDevice::finished, this, &SAKDebugPage::closeDevice);
     }
 }
 
@@ -509,6 +528,7 @@ void SAKDebugPage::initializingVariables()
     // Devce control
     mSwitchPushButton = mUi->switchPushButton;
     mRefreshPushButton = mUi->refreshPushButton;
+    mDeviceMorePushButton = mUi->deviceMorePushButton;
     mDeviceSettingFrame = mUi->deviceSettingFrame;
 
     // Message output

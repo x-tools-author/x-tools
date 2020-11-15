@@ -12,14 +12,21 @@
 
 #include <QWidget>
 
+namespace  Ui{
+    class SAKDebugPageDeviceMask;
+}
+
+class SAKDebugPage;
 class SAKDebugPageDeviceMask : public QWidget
 {
     Q_OBJECT
 public:
-    explicit SAKDebugPageDeviceMask(QWidget *parent = nullptr);
-
-signals:
-
+    explicit SAKDebugPageDeviceMask(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
+    ~SAKDebugPageDeviceMask();
+private:
+    SAKDebugPage *mDebugPage;
+private:
+    Ui::SAKDebugPageDeviceMask *ui;
 };
 
 #endif // SAKDEBUGPAGEDEVICEMASK_HH

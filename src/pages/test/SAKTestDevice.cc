@@ -16,7 +16,7 @@
 #include "SAKTestDeviceController.hh"
 
 SAKTestDevice::SAKTestDevice(SAKTestDebugPage *debugPage, QObject *parent)
-    :SAKDebugPageDevice(parent)
+    :SAKDebugPageDevice(debugPage, parent)
     ,mDebugPage(debugPage)
 {
 

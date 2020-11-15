@@ -18,9 +18,9 @@
 
 SAKSerialPortDebugPage::SAKSerialPortDebugPage(int type, QString name, QWidget *parent)
     :SAKDebugPage(type, name, parent)
-
 {
     mDeviceController = new SAKSerialPortDeviceController(this);
+    mDevice = new SAKSerialPortDevice(this, this);
     initializingPage();
 }
 
@@ -32,11 +32,4 @@ SAKSerialPortDebugPage::~SAKSerialPortDebugPage()
 SAKDebugPageController *SAKSerialPortDebugPage::deviceController()
 {
     return mDeviceController;
-}
-
-SAKDebugPageDevice *SAKSerialPortDebugPage::createDevice()
-{
-    // The ret will be destroied when closing device
-    auto ret = new SAKSerialPortDevice(this);
-    return ret;
 }

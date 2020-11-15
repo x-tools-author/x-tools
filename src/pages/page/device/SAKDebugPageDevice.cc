@@ -7,13 +7,21 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
+#include <QWidget>
+#include <QDialog>
 #include <QEventLoop>
-#include "SAKDebugPageDevice.hh"
+#include <QApplication>
 
-SAKDebugPageDevice::SAKDebugPageDevice(QObject *parent)
+#include "SAKDebugPageDevice.hh"
+#include "SAKDebugPageDeviceMask.hh"
+
+SAKDebugPageDevice::SAKDebugPageDevice(SAKDebugPage *debugPage, QObject *parent)
     :QThread(parent)
+    ,mDebugPage(debugPage)
 {
-    // nothing to do
+    auto w =  qobject_cast<QWidget*>(new SAKDebugPageDeviceMask(mDebugPage, Q_NULLPTR));
+    w->setWindowModality(Qt::ApplicationModal);
+    mSettingsPanelList << SettingsPanel{tr("Mask settings"), w};
 }
 
 SAKDebugPageDevice::~SAKDebugPageDevice()
@@ -22,6 +30,11 @@ SAKDebugPageDevice::~SAKDebugPageDevice()
     mThreadWaitCondition.wakeAll();
     exit();
     wait();
+
+    for (auto var : mSettingsPanelList){
+        var.panel->close();
+        var.panel->deleteLater();
+    }
 }
 
 void SAKDebugPageDevice::requestWakeup()
@@ -38,6 +51,11 @@ void SAKDebugPageDevice::writeBytes(QByteArray bytes)
         mWaitingForWritingBytesList.append(QByteArray("empty"));
     }
     mWaitingForWritingBytesListMutex.unlock();
+}
+
+QList<SAKDebugPageDevice::SettingsPanel> SAKDebugPageDevice::settingsPanelList()
+{
+    return mSettingsPanelList;
 }
 
 QByteArray SAKDebugPageDevice::takeWaitingForWrittingBytes()

@@ -20,6 +20,7 @@ SAKWebSocketServerDebugPage::SAKWebSocketServerDebugPage(int type, QString name,
     :SAKDebugPage(type, name, parent)
 {
     mTcpServerDeviceController = new SAKWebSocketServerDeviceController(this);
+    mDevice = new SAKWebSocketServerDevice(this, this);
     initializingPage();
 }
 
@@ -31,10 +32,4 @@ SAKWebSocketServerDebugPage::~SAKWebSocketServerDebugPage()
 SAKDebugPageController *SAKWebSocketServerDebugPage::deviceController()
 {
     return mTcpServerDeviceController;
-}
-
-SAKDebugPageDevice* SAKWebSocketServerDebugPage::createDevice()
-{
-    SAKWebSocketServerDevice *device = new SAKWebSocketServerDevice(this);
-    return device;
 }

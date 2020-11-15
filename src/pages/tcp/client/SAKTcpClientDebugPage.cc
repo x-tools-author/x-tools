@@ -21,16 +21,11 @@ SAKTcpClientDebugPage::SAKTcpClientDebugPage(int type, QString name, QWidget *pa
     ,mTcpClientDeviceController(Q_NULLPTR)
 {
     mTcpClientDeviceController = new SAKTcpClientDeviceController(this);
+    mDevice = new  SAKTcpClientDevice(this, this);
     initializingPage();
 }
 
 SAKDebugPageController *SAKTcpClientDebugPage::deviceController()
 {
     return mTcpClientDeviceController;
-}
-
-SAKDebugPageDevice *SAKTcpClientDebugPage::createDevice()
-{
-    auto ret = new SAKTcpClientDevice(this);
-    return ret;
 }

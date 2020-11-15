@@ -18,7 +18,7 @@
 #include "SAKTcpServerDeviceController.hh"
 
 SAKTcpServerDevice::SAKTcpServerDevice(SAKTcpServerDebugPage *debugPage, QObject *parent)
-    :SAKDebugPageDevice(parent)
+    :SAKDebugPageDevice(debugPage, parent)
     ,mDebugPage(debugPage)
     ,mTcpServer(Q_NULLPTR)
 {

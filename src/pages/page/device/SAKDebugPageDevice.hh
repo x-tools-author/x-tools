@@ -14,11 +14,12 @@
 #include <QWaitCondition>
 
 /// @brief device abstract class
+class SAKDebugPage;
 class SAKDebugPageDevice:public QThread
 {
     Q_OBJECT
 public:
-    SAKDebugPageDevice(QObject *parent = Q_NULLPTR);
+    SAKDebugPageDevice(SAKDebugPage *debugPage, QObject *parent = Q_NULLPTR);
     ~SAKDebugPageDevice();
 
     /**
@@ -31,9 +32,16 @@ public:
      * @param bytes: bytes need to be wirtten
      */
     void writeBytes(QByteArray bytes);
+
+    struct SettingsPanel{
+        QString name;
+        QWidget *panel;
+    };
+    QList<SettingsPanel> settingsPanelList();
 protected:
     QMutex mThreadMutex;
     QWaitCondition mThreadWaitCondition;
+    SAKDebugPage *mDebugPage;
 protected:
     QByteArray takeWaitingForWrittingBytes();
     void run() override;
@@ -55,6 +63,7 @@ protected:
 private:
     QMutex mWaitingForWritingBytesListMutex;
     QList<QByteArray> mWaitingForWritingBytesList;
+    QList<SettingsPanel> mSettingsPanelList;
 signals:
     void bytesWritten(QByteArray bytes);
     void bytesRead(QByteArray bytes);

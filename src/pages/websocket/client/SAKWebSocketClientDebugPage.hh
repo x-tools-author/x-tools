@@ -23,7 +23,6 @@ public:
     ~SAKWebSocketClientDebugPage();
 
     SAKDebugPageController *deviceController() final;
-    SAKDebugPageDevice* createDevice() final;
 private:
     SAKWebSocketClientDeviceController *mWebSocketClientDeviceController;
 };

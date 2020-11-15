@@ -8,8 +8,18 @@
  * the file LICENCE in the root of the source code directory.
  */
 #include "SAKDebugPageDeviceMask.hh"
+#include "ui_SAKDebugPageDeviceMask.h"
 
-SAKDebugPageDeviceMask::SAKDebugPageDeviceMask(QWidget *parent) : QWidget(parent)
+class SAKDebugPage;
+SAKDebugPageDeviceMask::SAKDebugPageDeviceMask(SAKDebugPage *debugPage, QWidget *parent)
+    :QWidget(parent)
+    ,mDebugPage(debugPage)
+    ,ui(new Ui::SAKDebugPageDeviceMask)
 {
+    ui->setupUi(this);
+}
 
+SAKDebugPageDeviceMask::~SAKDebugPageDeviceMask()
+{
+    delete ui;
 }

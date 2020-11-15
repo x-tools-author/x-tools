@@ -20,16 +20,11 @@ SAKTcpServerDebugPage::SAKTcpServerDebugPage(int type, QString name, QWidget *pa
     :SAKDebugPage (type, name, parent)
 {
     mDeviceController = new SAKTcpServerDeviceController(this);
+    mDevice = new SAKTcpServerDevice(this, this);
     initializingPage();
 }
 
 SAKDebugPageController *SAKTcpServerDebugPage::deviceController()
 {
     return mDeviceController;
-}
-
-SAKDebugPageDevice* SAKTcpServerDebugPage::createDevice()
-{
-    SAKTcpServerDevice *device = new SAKTcpServerDevice(this);
-    return device;
 }

@@ -159,19 +159,20 @@ public:
      * @return Device controller instance pointer
      */
     virtual SAKDebugPageController *deviceController() = 0;
-private:
+protected:
+    SAKDebugPageDevice *mDevice;
+protected:
     /**
      * @brief createDevice: Get the device instance, the device will be destroy when it is closed.
      * @return Device instance pointer
      */
-    virtual SAKDebugPageDevice* createDevice() = 0;
-protected:
+    SAKDebugPageDevice* device();
+
     /**
      * @brief initializingPage: Initializing, the function must be called in the constructor of subclass.
      */
     void initializingPage();
 private:
-    SAKDebugPageDevice *mDevice;
     SAKDebugPageController *mDeviceController;
     bool mIsInitializing;
     int mDebugPageType;
@@ -194,7 +195,6 @@ private:
     void closeDevice();
     void openDevice();
 
-    void setupDevice();
     void setupController();
     void changedDeviceState(bool opened);
 signals:
@@ -218,6 +218,7 @@ private:
 protected:
     QPushButton *mRefreshPushButton;
     QPushButton *mSwitchPushButton;
+    QPushButton *mDeviceMorePushButton;
     QFrame *mDeviceSettingFrame;
 private slots:
     void on_refreshPushButton_clicked();

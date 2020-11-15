@@ -20,6 +20,7 @@ SAKUdpClientDebugPage::SAKUdpClientDebugPage(int type, QString name, QWidget *pa
     :SAKDebugPage(type, name, parent)
 {
     mUdpDeviceController = new SAKUdpClientDeviceController(this);
+    mDevice = new SAKUdpClientDevice(this, this);
     initializingPage();
 }
 
@@ -31,11 +32,4 @@ SAKUdpClientDebugPage::~SAKUdpClientDebugPage()
 SAKDebugPageController *SAKUdpClientDebugPage::deviceController()
 {
     return mUdpDeviceController;
-}
-
-SAKDebugPageDevice *SAKUdpClientDebugPage::createDevice()
-{
-    SAKUdpClientDevice *ptr = new SAKUdpClientDevice(this);
-    mUdpDeviceController->setUdpDevice(ptr);
-    return ptr;
 }

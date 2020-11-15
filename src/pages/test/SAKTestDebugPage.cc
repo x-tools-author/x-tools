@@ -21,16 +21,11 @@ SAKTestDebugPage::SAKTestDebugPage(int type, QString name, QWidget *parent)
     ,mDeviceController(Q_NULLPTR)
 {
     mDeviceController = new SAKTestDeviceController(this);
+    mDevice = new SAKTestDevice(this, this);
     initializingPage();
 }
 
 SAKDebugPageController *SAKTestDebugPage::deviceController()
 {
     return mDeviceController;
-}
-
-SAKDebugPageDevice *SAKTestDebugPage::createDevice()
-{
-    auto ret = new SAKTestDevice(this);
-    return ret;
 }

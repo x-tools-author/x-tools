@@ -22,7 +22,6 @@ public:
     ~SAKUdpClientDebugPage();
 
     SAKDebugPageController *deviceController() final;
-    SAKDebugPageDevice* createDevice() final;
 private:
     SAKUdpClientDeviceController *mUdpDeviceController;
 };

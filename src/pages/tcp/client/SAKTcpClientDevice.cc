@@ -17,8 +17,8 @@
 #include "SAKTcpClientDeviceController.hh"
 
 SAKTcpClientDevice::SAKTcpClientDevice(SAKTcpClientDebugPage *debugPage, QObject *parent)
-    :SAKDebugPageDevice(parent)
-    ,mDebugPage (debugPage)
+    :SAKDebugPageDevice(debugPage, parent)
+    ,mDebugPage(debugPage)
 {
 
 }
