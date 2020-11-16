@@ -51,6 +51,8 @@
 #ifdef SAK_IMPORT_MODULE_QRCODE
 #include "SAKToolQRCodeCreator.hh"
 #endif
+#include "SAKToolFloatAssistant.hh"
+#include "SAKToolStringAssistant.hh"
 
 // Debugging pages
 #include "SAKTestDebugPage.hh"
@@ -589,6 +591,8 @@ void SAKMainWindow::initToosMetaObjectInfoList()
     mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{SAKToolCRCCalculator::staticMetaObject, tr("CRC Calculator")});
 #endif
     mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{SAKToolCRCCalculator::staticMetaObject, tr("QR Code Creator")});
+    mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{SAKToolFloatAssistant::staticMetaObject, tr("Float Assistant")});
+    mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{SAKToolStringAssistant::staticMetaObject, tr("String Assistant")});
 }
 
 void SAKMainWindow::showReleaseHistoryActionDialog()
