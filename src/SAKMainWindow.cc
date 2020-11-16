@@ -585,14 +585,14 @@ void SAKMainWindow::initializingMetaObject()
 void SAKMainWindow::initToosMetaObjectInfoList()
 {
 #ifdef SAK_IMPORT_MODULE_FILECHECKER
-    mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{SAKToolFileChecker::staticMetaObject, tr("File Checker")});
+    mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{SAKToolFileChecker::staticMetaObject, tr("File Assistant")});
 #endif
 #ifdef SAK_IMPORT_MODULE_QRCODE
-    mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{SAKToolCRCCalculator::staticMetaObject, tr("CRC Calculator")});
+    mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{SAKToolCRCCalculator::staticMetaObject, tr("CRC Assistant")});
 #endif
-    mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{SAKToolCRCCalculator::staticMetaObject, tr("QR Code Creator")});
     mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{SAKToolFloatAssistant::staticMetaObject, tr("Float Assistant")});
     mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{SAKToolStringAssistant::staticMetaObject, tr("String Assistant")});
+    mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{SAKToolQRCodeCreator::staticMetaObject, tr("QR Code Assistant")});
 }
 
 void SAKMainWindow::showReleaseHistoryActionDialog()
