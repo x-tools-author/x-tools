@@ -14,22 +14,8 @@
    <string>String Assistant</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="0" colspan="2">
+   <item row="1" column="0" colspan="3">
     <widget class="QTextEdit" name="textEdit"/>
-   </item>
-   <item row="4" column="1">
-    <widget class="QPushButton" name="createPushButton">
-     <property name="text">
-      <string>Create</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0" colspan="2">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>Raw data</string>
-     </property>
-    </widget>
    </item>
    <item row="4" column="0">
     <spacer name="horizontalSpacer">
@@ -51,8 +37,29 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="0" colspan="2">
+   <item row="0" column="0" colspan="3">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Raw data</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="3">
     <widget class="QTextBrowser" name="textBrowser"/>
+   </item>
+   <item row="4" column="2">
+    <widget class="QPushButton" name="createPushButton">
+     <property name="text">
+      <string>Create</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <widget class="QCheckBox" name="hexRawDataCheckBox">
+     <property name="text">
+      <string>HexRawData</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

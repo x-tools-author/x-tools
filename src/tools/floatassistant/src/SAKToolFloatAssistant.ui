@@ -23,7 +23,7 @@
       </sizepolicy>
      </property>
      <property name="text">
-      <string>Float data(int or hex)</string>
+      <string>Raw data(friendly or hex)</string>
      </property>
     </widget>
    </item>
@@ -104,7 +104,14 @@
        </spacer>
       </item>
       <item>
-       <widget class="QCheckBox" name="checkBox">
+       <widget class="QCheckBox" name="hexRawDataCheckBox">
+        <property name="text">
+         <string>HexRawData</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="bigEndianCheckBox">
         <property name="text">
          <string>Big endian</string>
         </property>
