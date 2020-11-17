@@ -7,6 +7,9 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
+#include <QMap>
+#include <QRegularExpression>
+#include <QRegularExpressionValidator>
 #include "SAKCommonInterface.hh"
 
 SAKCommonInterface::SAKCommonInterface(QObject *parent)
@@ -37,4 +40,27 @@ QByteArray SAKCommonInterface::byteArrayToHex(QByteArray &array, char separator)
             hexData[o++] = separator;
     }
     return hex;
+}
+
+void SAKCommonInterface::setLineEditValidator(QLineEdit *lineEdit, ValidatorType type, int maxLength)
+{
+    QMap<int, QRegularExpression> regExpMap;
+    regExpMap.insert(ValidatorBin, QRegularExpression("([0-9a-f][0-9A-F][]){0,8}*"));
+    regExpMap.insert(ValidatorOtc, QRegularExpression("([0-7][0-7][ ])*"));
+    regExpMap.insert(ValidatorDec, QRegularExpression("([0-9][0-9][ ])*"));
+    regExpMap.insert(ValidatorHex, QRegularExpression("([0-9a-fA-F][0-9a-fA-F][ ])*"));
+    regExpMap.insert(ValidatorAscii, QRegularExpression("([ -~])*"));
+    regExpMap.insert(ValidatorFloat, QRegularExpression("^[-+]?[0-9]*\\.?[0-9]+$"));
+
+    if (lineEdit){
+        if (regExpMap.contains(type)){
+            if (lineEdit->validator()){
+                delete lineEdit->validator();
+            }
+
+            auto regExpValidator = new QRegularExpressionValidator(regExpMap.value(type), lineEdit);
+            lineEdit->setValidator(regExpValidator);
+            lineEdit->setMaxLength(maxLength);
+        }
+    }
 }
