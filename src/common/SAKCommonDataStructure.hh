@@ -11,6 +11,7 @@
 #define SAKCOMMONDATASTRUCTURE_HH
 
 #include <QObject>
+#include <QTextEdit>
 #include <QComboBox>
 
 /// @brief The class define some data structure of the project.
@@ -74,8 +75,8 @@ public:
         InputFormatOct,
         InputFormatDec,
         InputFormatHex,
-        InputFormatAscii,
         InputFormatUtf8,
+        InputFormatAscii,
         InputFormatLocal
     };
     Q_ENUM(SAKEnumTextInputFormat);
@@ -162,9 +163,16 @@ public:
     /**
      * @brief setComboBoxTextOutputFormat: Add output text format items to combo box.
      * @param comboBox: Targat combo box.
-     * @param format: Text format, See SAKCommonDataStructure::SAKEnumTextOutputFormat fot more information.
      */
     static void setComboBoxTextOutputFormat(QComboBox *comboBox);
+
+    /**
+     * @brief setComboBoxTextInputFormat: Add input text format items to combo Box.
+     * @param comboBox: Target combo box.
+     */
+    static void setComboBoxTextInputFormat(QComboBox *comboBox);
+private:
+    static void setComboBoxItems(QComboBox *comboBox, QMap<int, QString> &formatMap, int index = 0);
 };
 
 #endif

@@ -53,8 +53,6 @@ QString SAKCommonDataStructure::dataPresetTableName(int type)
 void SAKCommonDataStructure::setComboBoxTextOutputFormat(QComboBox *comboBox)
 {
     if (comboBox){
-        comboBox->clear();
-
         QMap<int, QString> formatMap;
         formatMap.insert(SAKCommonDataStructure::OutputFormatBin,   QString("BIN"));
         formatMap.insert(SAKCommonDataStructure::OutputFormatDec,   QString("DEC"));
@@ -64,7 +62,31 @@ void SAKCommonDataStructure::setComboBoxTextOutputFormat(QComboBox *comboBox)
         formatMap.insert(SAKCommonDataStructure::OutputFormatAscii, QString("ASCII"));
         formatMap.insert(SAKCommonDataStructure::OutputFormatUtf16, QString("UTF16"));
         formatMap.insert(SAKCommonDataStructure::OutputFormatLocal, QString("SYSTEM"));
+        setComboBoxItems(comboBox, formatMap, 3);
+    }
+}
 
+void SAKCommonDataStructure::setComboBoxTextInputFormat(QComboBox *comboBox)
+{
+    if (comboBox){
+        if (comboBox){
+            QMap<int, QString> formatMap;
+            formatMap.insert(SAKCommonDataStructure::InputFormatBin,   tr("BIN"));
+            formatMap.insert(SAKCommonDataStructure::InputFormatOct,   tr("OTC"));
+            formatMap.insert(SAKCommonDataStructure::InputFormatDec,   tr("DEC"));
+            formatMap.insert(SAKCommonDataStructure::InputFormatHex,   tr("HEX"));
+            formatMap.insert(SAKCommonDataStructure::InputFormatAscii, tr("ASCII"));
+            formatMap.insert(SAKCommonDataStructure::InputFormatUtf8,  tr("UTF8"));
+            formatMap.insert(SAKCommonDataStructure::InputFormatLocal, tr("SYSTEM"));
+            setComboBoxItems(comboBox, formatMap, 3);
+        }
+    }
+}
+
+void SAKCommonDataStructure::setComboBoxItems(QComboBox *comboBox, QMap<int, QString> &formatMap, int index)
+{
+    if (comboBox){
+        comboBox->clear();
         QMapIterator<int, QString> mapIterator(formatMap);
         QStandardItemModel *itemModel = new QStandardItemModel(comboBox);
         while (mapIterator.hasNext()) {
@@ -74,7 +96,7 @@ void SAKCommonDataStructure::setComboBoxTextOutputFormat(QComboBox *comboBox)
             itemModel->appendRow(item);
         }
         comboBox->setModel(itemModel);
-        comboBox->setCurrentText(formatMap.value(SAKCommonDataStructure::OutputFormatHex));
+        comboBox->setCurrentIndex(index);
 
         // Reset the iterator...
         while (mapIterator.hasPrevious()) {
