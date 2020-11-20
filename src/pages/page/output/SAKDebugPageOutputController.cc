@@ -372,7 +372,7 @@ void SAKDebugPageOutputController::innerCookData(QByteArray rawData, OutputParam
         str.append(QString::fromLocal8Bit(rawData));
     }else {
         str.append(QString::fromUtf8(rawData));
-        Q_ASSERT_X(false, __FUNCTION__, "Unknown output mode");
+        Q_ASSERT_X(false, __FUNCTION__, "Unknown output mode!");
     }
 
     emit dataCooked(str);
