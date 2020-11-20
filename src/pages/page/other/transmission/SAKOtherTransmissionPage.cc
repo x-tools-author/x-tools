@@ -77,7 +77,7 @@ void SAKOtherTransmissionPage::on_addItemPushButton_clicked()
         itemWidget = new SAKOtherTransmissionItemTcp(mDebugPage, this);
         break;
     default:
-        Q_ASSERT_X(false, __FUNCTION__, "Unknow transmissioin type");
+        Q_ASSERT_X(false, __FUNCTION__, "Unknown transmissioin type");
         break;
     }
     item->setSizeHint(QSize(itemWidget->width(), itemWidget->height()));

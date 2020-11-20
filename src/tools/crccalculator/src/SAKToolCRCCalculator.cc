@@ -180,8 +180,8 @@ void SAKToolCRCCalculator::changedParameterModel(int index)
         model = static_cast<SAKCommonCrcInterface::CRCModel>(ret);
     }else{
         QLoggingCategory category(mLogCategory);
-        qCWarning(category) << "Unknow parameter model!";
-        Q_ASSERT_X(false, __FUNCTION__, "Unknow parameter model!");
+        qCWarning(category) << "Unknown parameter model!";
+        Q_ASSERT_X(false, __FUNCTION__, "Unknown parameter model!");
         return;
     }
 

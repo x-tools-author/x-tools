@@ -768,7 +768,7 @@ QWidget *SAKMainWindow::debugPageFromDebugPageType(int type)
         }
     }
 
-    Q_ASSERT_X(widget, __FUNCTION__, "Unknow debug page type!");
+    Q_ASSERT_X(widget, __FUNCTION__, "Unknown debug page type!");
     return widget;
 }
 
@@ -788,8 +788,8 @@ QString SAKMainWindow::debugPageTitleFromDebugPageType(int type)
     }
 
     if (title.isEmpty()){
-        title = QString("UnknowDebugPage");
-        Q_ASSERT_X(false, __FUNCTION__, "Unknow debug page type!");
+        title = QString("UnknownDebugPage");
+        Q_ASSERT_X(false, __FUNCTION__, "Unknown debug page type!");
     }
 
     return title;

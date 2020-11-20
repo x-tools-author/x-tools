@@ -31,7 +31,7 @@ SAKTestDevice::~SAKTestDevice()
 
 bool SAKTestDevice::initializing(QString &errorString)
 {
-    errorString = QString("Unknow error");
+    errorString = QString("Unknown error");
     mController = qobject_cast<SAKTestDeviceController*>(mDebugPage->deviceController());
     mOldReadTimestamp = QDateTime::currentDateTime().toMSecsSinceEpoch();
     mOldWrittingTimestamp = QDateTime::currentDateTime().toMSecsSinceEpoch();
@@ -41,7 +41,7 @@ bool SAKTestDevice::initializing(QString &errorString)
 bool SAKTestDevice::open(QString &errorString)
 {
     SAKTestDeviceController::ParametersContext parameters = mController->parameters().value<SAKTestDeviceController::ParametersContext>();
-    errorString = parameters.errorString.length() ? parameters.errorString : QString("Unknow error");
+    errorString = parameters.errorString.length() ? parameters.errorString : QString("Unknown error");
     return !parameters.openFailed;
 }
 

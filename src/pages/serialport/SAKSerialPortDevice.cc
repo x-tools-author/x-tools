@@ -21,7 +21,7 @@ SAKSerialPortDevice::SAKSerialPortDevice(SAKSerialPortDebugPage *debugPage, QObj
 
 bool SAKSerialPortDevice::initializing(QString &errorString)
 {
-    errorString = tr("Unknow error");
+    errorString = tr("Unknown error");
     auto controller = qobject_cast<SAKSerialPortDeviceController*>(mDebugPage->deviceController());
     auto parameters = controller->parameters().value<SAKSerialPortDeviceController::SerialPortParameters>();
     mSerialPort = new QSerialPort;
@@ -38,7 +38,7 @@ bool SAKSerialPortDevice::initializing(QString &errorString)
 bool SAKSerialPortDevice::open(QString &errorString)
 {
     if(mSerialPort->open(QSerialPort::ReadWrite)){
-        errorString = tr("Unknow error");
+        errorString = tr("Unknown error");
         return true;
     }else{
         errorString = mSerialPort->errorString();

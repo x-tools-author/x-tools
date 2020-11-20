@@ -102,7 +102,7 @@ QByteArray SAKInputDataFactory::rawDataToArray(QString rawData, SAKDebugPageInpu
         data = rawData.toLocal8Bit();
     }else {
         data = rawData.toLocal8Bit();
-        Q_ASSERT_X(false, __FUNCTION__, "Unknow input mode");
+        Q_ASSERT_X(false, __FUNCTION__, "Unknown input mode");
     }
 
     return data;

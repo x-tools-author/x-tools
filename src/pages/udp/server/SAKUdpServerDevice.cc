@@ -43,7 +43,7 @@ bool SAKUdpServerDevice::initializing(QString &errorString)
 bool SAKUdpServerDevice::open(QString &errorString)
 {
     if (mUdpServer->open(QUdpSocket::ReadWrite)){
-        errorString = tr("Unknow error");
+        errorString = tr("Unknown error");
         return true;
     }else{
         errorString = tr("Open device failed:") + mUdpServer->errorString();
@@ -100,7 +100,7 @@ QByteArray SAKUdpServerDevice::write(QByteArray bytes)
 
 bool SAKUdpServerDevice::checkSomething(QString &errorString)
 {
-    errorString = tr("Unknow error");
+    errorString = tr("Unknown error");
     return true;
 }
 

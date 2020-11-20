@@ -208,7 +208,7 @@ void SAKDebugPageInputController::formattingInputText(QTextEdit *textEdit, int m
         }else if(model == SAKCommonDataStructure::InputFormatLocal) {
             /// nothing to do
         }else {
-            Q_ASSERT_X(false, __FUNCTION__, "Unknow input model");
+            Q_ASSERT_X(false, __FUNCTION__, "Unknown input model");
         }
     }
     textEdit->blockSignals(false);

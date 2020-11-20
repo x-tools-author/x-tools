@@ -108,7 +108,7 @@ QWidget *SAKModbusDebugPage::controllerFromType(int type)
         w = new SAKModbusServerControllerSerialPort(this);
         break;
     default:
-        Q_ASSERT_X(false, __FUNCTION__, "Unknow device type!");
+        Q_ASSERT_X(false, __FUNCTION__, "Unknown device type!");
         break;
     }
 

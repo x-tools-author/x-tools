@@ -47,7 +47,7 @@ bool SAKWebSocketServerDevice::initializing(QString &errorString)
 
 bool SAKWebSocketServerDevice::open(QString &errorString)
 {
-    errorString = tr("Unknow error");
+    errorString = tr("Unknown error");
     return true;
 }
 
@@ -121,7 +121,7 @@ bool SAKWebSocketServerDevice::checkSomething(QString &errorString)
         var->deleteLater();
     }
 
-    errorString = tr("Unknow error");
+    errorString = tr("Unknown error");
     return true;
 }
 

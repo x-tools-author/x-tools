@@ -95,7 +95,7 @@ void SAKModbusCommonController::init()
             }else if (state == QModbusDevice::UnconnectedState){
                 emit invokeOutputMessage(tr("Modbus device is unconnected!"));
             }else{
-                emit invokeOutputMessage(tr("Unknown state(%1) of modbus device!").arg(mDevice->state()));
+                emit invokeOutputMessage(tr("Unknownn state(%1) of modbus device!").arg(mDevice->state()));
             }
         }, Qt::QueuedConnection);
     }

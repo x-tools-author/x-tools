@@ -143,7 +143,7 @@ QString SAKOutputSave2FileThread::bytes2String(QByteArray bytes, int format)
         str = QString::fromUtf8(bytes);
         break;
     default:
-        str = tr("Unknow text format!");
+        str = tr("Unknown text format!");
         break;
     }
 

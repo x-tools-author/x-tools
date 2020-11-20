@@ -58,7 +58,7 @@ bool SAKUdpClientDevice::joinMulticastGroup(QString address, quint16 port, QStri
     mParametersContext.multicastInfoList.append(info);
     bool ret = mUdpSocket->joinMulticastGroup(QHostAddress(address));
     if (ret){
-        errorString = QString("Unknow error");
+        errorString = QString("Unknown error");
     }else{
         errorString = mUdpSocket->errorString();
         qDebug() << __FUNCTION__ << address << port << errorString;
@@ -130,7 +130,7 @@ bool SAKUdpClientDevice::open(QString &errorString)
         return false;
     }
 
-    errorString = tr("Unknow error");
+    errorString = tr("Unknown error");
     return true;
 }
 
@@ -184,7 +184,7 @@ QByteArray SAKUdpClientDevice::write(QByteArray bytes)
 
 bool SAKUdpClientDevice::checkSomething(QString &errorString)
 {
-    errorString = tr("Unknow error");
+    errorString = tr("Unknown error");
     return true;
 }
 
