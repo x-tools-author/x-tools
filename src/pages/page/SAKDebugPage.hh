@@ -155,7 +155,6 @@ public:
     void initFlowControlComboBox(QComboBox *comboBox);
 #endif
     void initIpComboBox(QComboBox *comboBox, bool appendHostAny = false);
-    static void initInputTextFormatComboBox(QComboBox *comboBox);
     void initCRCComboBox(QComboBox *comboBox);
     void initWebSocketSendingTypeComboBox(QComboBox *comboBox);
 protected:

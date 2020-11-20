@@ -15,6 +15,8 @@ SAKToolStringAssistant::SAKToolStringAssistant(QWidget *parent)
     ,ui(new Ui::SAKToolStringAssistant)
 {
     ui->setupUi(this);
+    SAKCommonDataStructure::setComboBoxTextInputFormat(ui->outputFormatComboBox);
+    SAKCommonDataStructure::setComboBoxTextOutputFormat(ui->inputFormatComboBox);
 }
 
 SAKToolStringAssistant::~SAKToolStringAssistant()

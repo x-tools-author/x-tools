@@ -104,8 +104,7 @@ void SAKOtherTimingSentItem::commonInitializing()
 
     mWriteTimer.setInterval(mIntervalLineEdit->text().toInt());
     connect(&mWriteTimer, &QTimer::timeout, this, &SAKOtherTimingSentItem::write);
-
-    mDebugPage->initInputTextFormatComboBox(mTextFormatComboBox);
+    SAKCommonDataStructure::setComboBoxTextInputFormat(mTextFormatComboBox);
 }
 
 void SAKOtherTimingSentItem::on_enableCheckBox_clicked()

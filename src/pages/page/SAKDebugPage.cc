@@ -285,46 +285,6 @@ void SAKDebugPage::initIpComboBox(QComboBox *comboBox, bool appendHostAny)
     }
 }
 
-void SAKDebugPage::initInputTextFormatComboBox(QComboBox *comboBox)
-{
-    if (comboBox){
-        comboBox->clear();
-
-        QMap<int, QString> formatMap;
-        formatMap.insert(SAKCommonDataStructure::InputFormatBin, tr("BIN"));
-        formatMap.insert(SAKCommonDataStructure::InputFormatOct, tr("OTC"));
-        formatMap.insert(SAKCommonDataStructure::InputFormatDec, tr("DEC"));
-        formatMap.insert(SAKCommonDataStructure::InputFormatHex, tr("HEX"));
-        formatMap.insert(SAKCommonDataStructure::InputFormatAscii, tr("ASCII"));
-        formatMap.insert(SAKCommonDataStructure::InputFormatUtf8, tr("UTF8"));
-        formatMap.insert(SAKCommonDataStructure::InputFormatLocal, tr("SYSTEM"));
-
-        QMapIterator<int, QString> mapIterator(formatMap);
-        QStandardItemModel *itemModel = new QStandardItemModel(comboBox);
-        while (mapIterator.hasNext()) {
-            mapIterator.next();
-            QStandardItem *item = new QStandardItem(mapIterator.value());
-            item->setToolTip(mapIterator.value());
-            itemModel->appendRow(item);
-        }
-        comboBox->setModel(itemModel);
-        comboBox->setCurrentText(formatMap.value(SAKCommonDataStructure::InputFormatLocal));
-
-        // Reset the iterator...
-        while (mapIterator.hasPrevious()) {
-            mapIterator.previous();
-        }
-
-        // Set item data of combo box
-        int index = 0;
-        while (mapIterator.hasNext()) {
-            mapIterator.next();
-            comboBox->setItemData(index, QVariant::fromValue(mapIterator.key()));
-            index += 1;
-        }
-    }
-}
-
 void SAKDebugPage::initCRCComboBox(QComboBox *comboBox)
 {
     if (comboBox){

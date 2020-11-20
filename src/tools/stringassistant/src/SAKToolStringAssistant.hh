@@ -11,6 +11,7 @@
 #define SAKTOOLSTRINGASSISTANT_HH
 
 #include <QDialog>
+#include "SAKCommonDataStructure.hh"
 
 namespace Ui {
     class SAKToolStringAssistant;
