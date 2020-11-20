@@ -171,6 +171,13 @@ public:
      * @param comboBox: Target combo box.
      */
     static void setComboBoxTextInputFormat(QComboBox *comboBox);
+
+    /**
+     * @brief formattingString: Formatting input text of text edit.
+     * @param textEdit: Target text edit.
+     * @param format: See SAKEnumTextInputFormat for more information.
+     */
+    static QString formattingString(QString origingString, SAKEnumTextInputFormat format);
 private:
     static void setComboBoxItems(QComboBox *comboBox, QMap<int, QString> &formatMap, int index = 0);
 };

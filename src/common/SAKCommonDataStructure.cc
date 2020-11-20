@@ -83,6 +83,58 @@ void SAKCommonDataStructure::setComboBoxTextInputFormat(QComboBox *comboBox)
     }
 }
 
+QString SAKCommonDataStructure::formattingString(QString origingString, SAKEnumTextInputFormat format)
+{
+    QString cookedString;
+    if (format == SAKCommonDataStructure::InputFormatBin){
+        origingString.remove(QRegularExpression("[^0-1]"));
+        for (int i = 0; i < origingString.length(); i++){
+            if ((i != 0) && (i % 8 == 0)){
+                cookedString.append(QChar(' '));
+            }
+            cookedString.append(origingString.at(i));
+        }
+    }else if(format == SAKCommonDataStructure::InputFormatOct) {
+        origingString.remove(QRegularExpression("[^0-7]"));
+        for (int i = 0; i < origingString.length(); i++){
+            if ((i != 0) && (i % 2 == 0)){
+                cookedString.append(QChar(' '));
+            }
+            cookedString.append(origingString.at(i));
+        }
+    }else if(format == SAKCommonDataStructure::InputFormatDec) {
+        origingString.remove(QRegularExpression("[^0-9]"));
+        for (int i = 0; i < origingString.length(); i++){
+            if ((i != 0) && (i % 2 == 0)){
+                cookedString.append(QChar(' '));
+            }
+            cookedString.append(origingString.at(i));
+        }
+    }else if(format == SAKCommonDataStructure::InputFormatHex) {
+        origingString.remove(QRegularExpression("[^0-9a-fA-F]"));
+        for (int i = 0; i < origingString.length(); i++){
+            if ((i != 0) && (i % 2 == 0)){
+                cookedString.append(QChar(' '));
+            }
+            cookedString.append(origingString.at(i));
+        }
+    }else if(format == SAKCommonDataStructure::InputFormatAscii) {
+        for (int i = 0; i < origingString.count(); i++){
+            if (origingString.at(i).unicode() <= 127){
+                cookedString.append(origingString.at(i));
+            }
+        }
+    }else if(format == SAKCommonDataStructure::InputFormatUtf8) {
+        cookedString = origingString;
+    }else if(format == SAKCommonDataStructure::InputFormatLocal) {
+        cookedString = origingString;
+    }else {
+        Q_ASSERT_X(false, __FUNCTION__, "Unknown input model");
+    }
+
+    return cookedString;
+}
+
 void SAKCommonDataStructure::setComboBoxItems(QComboBox *comboBox, QMap<int, QString> &formatMap, int index)
 {
     if (comboBox){
