@@ -87,8 +87,7 @@ public:
         OutputFormatUtf8,
         OutputFormatLocal,
         OutputFormatUtf16,
-        OutputFormatUcs4,
-        OutputFormatStdWidthString
+        OutputFormatUcs4
     };
     Q_ENUM(SAKEnumTextOutputFormat);
 
