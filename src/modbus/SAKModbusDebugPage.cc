@@ -8,6 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  */
 #include <QDebug>
+#include <QDateTime>
 #include <QLineEdit>
 #include <QModbusDataUnit>
 
