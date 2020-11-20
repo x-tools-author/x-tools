@@ -151,66 +151,9 @@ void SAKDebugPageInputController::formattingInputText(QTextEdit *textEdit, int m
     textEdit->blockSignals(true);
     QString plaintext = textEdit->toPlainText();
     if (!plaintext.isEmpty()){
-        if (model == SAKCommonDataStructure::InputFormatBin){
-            QString strTemp;
-            plaintext.remove(QRegularExpression("[^0-1]"));
-            for (int i = 0; i < plaintext.length(); i++){
-                if ((i != 0) && (i % 8 == 0)){
-                    strTemp.append(QChar(' '));
-                }
-                strTemp.append(plaintext.at(i));
-            }
-            textEdit->setText(strTemp);
-            textEdit->moveCursor(QTextCursor::End);
-        }else if(model == SAKCommonDataStructure::InputFormatOct) {
-            QString strTemp;
-            plaintext.remove(QRegularExpression("[^0-7]"));
-            for (int i = 0; i < plaintext.length(); i++){
-                if ((i != 0) && (i % 2 == 0)){
-                    strTemp.append(QChar(' '));
-                }
-                strTemp.append(plaintext.at(i));
-            }
-            textEdit->setText(strTemp);
-            textEdit->moveCursor(QTextCursor::End);
-        }else if(model == SAKCommonDataStructure::InputFormatDec) {
-            QString strTemp;
-            plaintext.remove(QRegularExpression("[^0-9]"));
-            for (int i = 0; i < plaintext.length(); i++){
-                if ((i != 0) && (i % 2 == 0)){
-                    strTemp.append(QChar(' '));
-                }
-                strTemp.append(plaintext.at(i));
-            }
-            textEdit->setText(strTemp);
-            textEdit->moveCursor(QTextCursor::End);
-        }else if(model == SAKCommonDataStructure::InputFormatHex) {
-            QString strTemp;
-            plaintext.remove(QRegularExpression("[^0-9a-fA-F]"));
-            for (int i = 0; i < plaintext.length(); i++){
-                if ((i != 0) && (i % 2 == 0)){
-                    strTemp.append(QChar(' '));
-                }
-                strTemp.append(plaintext.at(i));
-            }
-            textEdit->setText(strTemp.toUpper());
-            textEdit->moveCursor(QTextCursor::End);
-        }else if(model == SAKCommonDataStructure::InputFormatAscii) {
-            QString newString;
-            for (int i = 0; i < plaintext.count(); i++){
-                if (plaintext.at(i).unicode() <= 127){
-                    newString.append(plaintext.at(i));
-                }
-            }
-            textEdit->setText(newString);
-            textEdit->moveCursor(QTextCursor::End);
-        }else if(model == SAKCommonDataStructure::InputFormatUtf8) {
-            /// nothing to do
-        }else if(model == SAKCommonDataStructure::InputFormatLocal) {
-            /// nothing to do
-        }else {
-            Q_ASSERT_X(false, __FUNCTION__, "Unknown input model");
-        }
+        QString cookedString = SAKCommonDataStructure::formattingString(plaintext, static_cast<SAKCommonDataStructure::SAKEnumTextInputFormat>(model));
+        textEdit->setText(cookedString);
+        textEdit->moveCursor(QTextCursor::End);
     }
     textEdit->blockSignals(false);
 }
