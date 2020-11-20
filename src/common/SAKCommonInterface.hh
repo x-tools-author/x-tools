@@ -34,14 +34,14 @@ public:
     /**
      * @brief byteArrayToHex: Just like QByteArray::toHex(char) which introduced in Qt 5.9.
      * @param array:
-     * @param separator: Can not be '\0' or it will be same as QByteArray::toHex()
+     * @param separator: Can not be '\0' or it will be same as QByteArray::toHex().
      * @return ...
      */
     QByteArray byteArrayToHex(QByteArray &array, char separator);
 
     /**
      * @brief setLineEditValidator: Set validator to a line edit, it will delete the old validator.
-     * @param lineEdit: Target
+     * @param lineEdit: Target line edit.
      * @param type: See ValidatorType for more information.
      */
     void setLineEditValidator(QLineEdit *lineEdit, SAKEnumValidatorType type, int maxLength = INT_MAX);
