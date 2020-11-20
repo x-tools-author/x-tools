@@ -41,7 +41,7 @@ SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugPage *debugPa
     mClearOutputPushButton = debugPage->mClearOutputPushButton;
     mSaveOutputPushButton = debugPage->mSaveOutputPushButton;
     mOutputTextBroswer = debugPage->mOutputTextBroswer;
-    mDebugPage->initOutputTextFormatComboBox(mOutputTextFormatComboBox);
+    SAKCommonDataStructure::setComboBoxTextOutputFormat(mOutputTextFormatComboBox);
 
     // Initializing setting keys
     QString group = mDebugPage->settingsGroup();
