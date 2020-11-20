@@ -8,7 +8,6 @@
  * the file LICENCE in the root of the source code directory.
  */
 #include <QDebug>
-#include <QtEndian>
 #include "SAKCommonInterface.hh"
 #include "SAKToolFloatAssistant.hh"
 #include "ui_SAKToolFloatAssistant.h"
@@ -105,13 +104,23 @@ void SAKToolFloatAssistant::on_createPushButton_clicked()
         if (ui->floatRadioButton->isChecked()){
             float value = ui->rawDataLineEdit->text().trimmed().toFloat();
             if (ui->bigEndianCheckBox->isChecked()){
-                value = qToBigEndian<float>(value);
+                // To big endian
+                float temp = value;
+                quint8 *ptr = reinterpret_cast<quint8*>(&value);
+                for (int i = 0;i < int(sizeof(value)); i++){
+                    ptr[i] = reinterpret_cast<quint8*>(&temp)[int(sizeof(value)) - 1 - i];
+                }
             }
             data.append(reinterpret_cast<char*>(&value), sizeof(value));
         }else{
             double value = ui->rawDataLineEdit->text().trimmed().toFloat();
             if (ui->bigEndianCheckBox->isChecked()){
-                value = qToBigEndian<double>(value);
+                // To big endian
+                double temp = value;
+                quint8 *ptr = reinterpret_cast<quint8*>(&value);
+                for (int i = 0;i < int(sizeof(value)); i++){
+                    ptr[i] = reinterpret_cast<quint8*>(&temp)[int(sizeof(value)) - 1 - i];
+                }
             }
             data.append(reinterpret_cast<char*>(&value), sizeof(value));
         }
