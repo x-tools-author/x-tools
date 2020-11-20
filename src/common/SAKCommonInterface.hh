@@ -22,7 +22,7 @@ class SAKCommonInterface:public QObject
 public:
     SAKCommonInterface(QObject *parent = Q_NULLPTR);
 
-    enum ValidatorType {
+    enum SAKEnumValidatorType {
         ValidatorBin,
         ValidatorOtc,
         ValidatorDec,
@@ -44,7 +44,7 @@ public:
      * @param lineEdit: Target
      * @param type: See ValidatorType for more information.
      */
-    void setLineEditValidator(QLineEdit *lineEdit, ValidatorType type, int maxLength = INT_MAX);
+    void setLineEditValidator(QLineEdit *lineEdit, SAKEnumValidatorType type, int maxLength = INT_MAX);
 };
 
 #endif

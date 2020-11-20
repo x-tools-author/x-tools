@@ -42,7 +42,7 @@ QByteArray SAKCommonInterface::byteArrayToHex(QByteArray &array, char separator)
     return hex;
 }
 
-void SAKCommonInterface::setLineEditValidator(QLineEdit *lineEdit, ValidatorType type, int maxLength)
+void SAKCommonInterface::setLineEditValidator(QLineEdit *lineEdit, SAKEnumValidatorType type, int maxLength)
 {
     QMap<int, QRegularExpression> regExpMap;
     regExpMap.insert(ValidatorBin, QRegularExpression("([0-9a-f][0-9A-F][]){0,8}*"));
