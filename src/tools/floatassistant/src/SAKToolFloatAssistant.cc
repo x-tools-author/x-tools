@@ -92,11 +92,13 @@ void SAKToolFloatAssistant::on_createPushButton_clicked()
         if (ui->floatRadioButton->isChecked()){
             float *f = reinterpret_cast<float*>(data.data());
             ui->friendlyCookedDataLineEdit->setText(QString("%1").arg(*f));
-            ui->hexCookedDataLineEdit->setText(QString(data.toHex(' ')));
+            data = mCommonInterface->byteArrayToHex(data, ' ');
+            ui->hexCookedDataLineEdit->setText(QString(data));
         }else{
             double *d = reinterpret_cast<double*>(data.data());
             ui->friendlyCookedDataLineEdit->setText(QString("%1").arg(*d));
-            ui->hexCookedDataLineEdit->setText(QString(data.toHex(' ')));
+            data = mCommonInterface->byteArrayToHex(data, ' ');
+            ui->hexCookedDataLineEdit->setText(QString(data));
         }
     }else{
         QByteArray data;
@@ -125,7 +127,8 @@ void SAKToolFloatAssistant::on_createPushButton_clicked()
             data.append(reinterpret_cast<char*>(&value), sizeof(value));
         }
         ui->friendlyCookedDataLineEdit->setText(ui->rawDataLineEdit->text());
-        ui->hexCookedDataLineEdit->setText(QString(data.toHex(' ')));
+        data = mCommonInterface->byteArrayToHex(data, ' ');
+        ui->hexCookedDataLineEdit->setText(QString(data));
     }
 }
 
