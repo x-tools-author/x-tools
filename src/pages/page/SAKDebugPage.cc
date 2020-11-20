@@ -338,7 +338,7 @@ void SAKDebugPage::initOutputTextFormatComboBox(QComboBox *comboBox)
         formatMap.insert(SAKCommonDataStructure::OutputFormatUtf8, tr("UTF8"));
         formatMap.insert(SAKCommonDataStructure::OutputFormatUtf16, tr("UTF16"));
         formatMap.insert(SAKCommonDataStructure::OutputFormatUcs4, tr("UCS4"));
-        formatMap.insert(SAKCommonDataStructure::OutputFormatStdwstring, tr("WChart"));
+        formatMap.insert(SAKCommonDataStructure::OutputFormatStdWidthString, tr("WChart"));
         formatMap.insert(SAKCommonDataStructure::OutputFormatLocal, tr("SYSTEM"));
 
         QMapIterator<int, QString> mapIterator(formatMap);

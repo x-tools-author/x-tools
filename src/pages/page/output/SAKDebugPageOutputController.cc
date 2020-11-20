@@ -365,9 +365,9 @@ void SAKDebugPageOutputController::innerCookData(QByteArray rawData, OutputParam
     }else if (parameters.format == SAKCommonDataStructure::OutputFormatUtf8){
         str.append(QString::fromUtf8(rawData));
     }else if (parameters.format == SAKCommonDataStructure::OutputFormatUtf16){
-        str.append(QString::fromUtf16(reinterpret_cast<const char16_t*>(rawData.constData()),rawData.length()));
+        str.append(QString::fromUtf16(reinterpret_cast<const char16_t*>(rawData.constData()),rawData.length()/sizeof(char16_t)));
     }else if (parameters.format == SAKCommonDataStructure::OutputFormatUcs4){
-        str.append(QString::fromUcs4(reinterpret_cast<const char32_t*>(rawData.constData()),rawData.length()));
+        str.append(QString::fromUcs4(reinterpret_cast<const char32_t*>(rawData.constData()),rawData.length()/sizeof(char32_t)));
     }else if (parameters.format == SAKCommonDataStructure::OutputFormatLocal){
         str.append(QString::fromLocal8Bit(rawData));
     }else {
