@@ -23,3 +23,28 @@ SAKToolStringAssistant::~SAKToolStringAssistant()
 {
     delete ui;
 }
+
+void SAKToolStringAssistant::on_textEdit_textChanged()
+{
+
+}
+
+void SAKToolStringAssistant::on_inputFormatComboBox_currentIndexChanged(int index)
+{
+
+}
+
+void SAKToolStringAssistant::on_hexRawDataCheckBox_clicked()
+{
+
+}
+
+void SAKToolStringAssistant::on_outputFormatComboBox_activated(const QString &arg1)
+{
+
+}
+
+void SAKToolStringAssistant::on_createPushButton_clicked()
+{
+
+}
