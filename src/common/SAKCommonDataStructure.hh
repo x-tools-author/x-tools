@@ -11,7 +11,10 @@
 #define SAKCOMMONDATASTRUCTURE_HH
 
 #include <QObject>
+#include <QComboBox>
 
+/// @brief The class define some data structure of the project.
+/// Also, It provides some interface about these data structure.
 class SAKCommonDataStructure:public QObject
 {
     Q_OBJECT
@@ -83,11 +86,11 @@ public:
         OutputFormatOct,
         OutputFormatDec,
         OutputFormatHex,
-        OutputFormatAscii,
+        OutputFormatUcs4,
         OutputFormatUtf8,
-        OutputFormatLocal,
         OutputFormatUtf16,
-        OutputFormatUcs4
+        OutputFormatAscii,
+        OutputFormatLocal,
     };
     Q_ENUM(SAKEnumTextOutputFormat);
 
@@ -155,6 +158,13 @@ public:
      * @return The table name of database
      */
     static QString dataPresetTableName(int type);
+
+    /**
+     * @brief setComboBoxTextOutputFormat: Add output text format items to combo box.
+     * @param comboBox: Targat combo box.
+     * @param format: Text format, See SAKCommonDataStructure::SAKEnumTextOutputFormat fot more information.
+     */
+    static void setComboBoxTextOutputFormat(QComboBox *comboBox);
 };
 
 #endif
