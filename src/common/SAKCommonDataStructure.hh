@@ -173,6 +173,12 @@ public:
     static void setComboBoxTextInputFormat(QComboBox *comboBox);
 
     /**
+     * @brief setComboBoxTextWebSocketSendingType: Add supported types to combo box.
+     * @param comboBox: Target combo box.
+     */
+    static void setComboBoxTextWebSocketSendingType(QComboBox *comboBox);
+
+    /**
      * @brief formattingString: Formatting input text of text edit.
      * @param textEdit: Target text edit.
      * @param format: See SAKEnumTextInputFormat for more information.

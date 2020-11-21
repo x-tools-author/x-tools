@@ -83,6 +83,14 @@ void SAKCommonDataStructure::setComboBoxTextInputFormat(QComboBox *comboBox)
     }
 }
 
+void SAKCommonDataStructure::setComboBoxTextWebSocketSendingType(QComboBox *comboBox)
+{
+    if (comboBox){
+        comboBox->addItem(tr("BIN"), SAKCommonDataStructure::WebSocketSendingTypeBin);
+        comboBox->addItem(tr("TEXT"), SAKCommonDataStructure::WebSocketSendingTypeText);
+    }
+}
+
 QString SAKCommonDataStructure::formattingString(QString &origingString, SAKEnumTextInputFormat format)
 {
     QString cookedString;

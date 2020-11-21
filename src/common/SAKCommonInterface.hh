@@ -37,14 +37,26 @@ public:
      * @param separator: Can not be '\0' or it will be same as QByteArray::toHex().
      * @return ...
      */
-    QByteArray byteArrayToHex(QByteArray &array, char separator);
+    static QByteArray byteArrayToHex(QByteArray &array, char separator);
 
     /**
      * @brief setLineEditValidator: Set validator to a line edit, it will delete the old validator.
      * @param lineEdit: Target line edit.
      * @param type: See ValidatorType for more information.
      */
-    void setLineEditValidator(QLineEdit *lineEdit, SAKEnumValidatorType type, int maxLength = INT_MAX);
+    static void setLineEditValidator(QLineEdit *lineEdit, SAKEnumValidatorType type, int maxLength = INT_MAX);
+
+#ifdef SAK_IMPORT_MODULE_SERIALPORT
+    // Serialport interfaces
+    static void addSerialPortNametItemsToComboBox(QComboBox *comboBox);
+    static void addSerialPortBaudRateItemsToComboBox(QComboBox *comboBox);
+    static void addSerialPortDataBitItemsToComboBox(QComboBox *comboBox);
+    static void addSerialPortStopBitItemsToComboBox(QComboBox *comboBox);
+    static void addSerialPortParityItemsToComboBox(QComboBox *comboBox);
+    static void addSerialPortFlowControlItemsToComboBox(QComboBox *comboBox);
+#endif
+    static void addIpItemsToComboBox(QComboBox *comboBox, bool appendHostAny = false);
+    static void addCrcItemsToComboBox(QComboBox *comboBox);
 };
 
 #endif
