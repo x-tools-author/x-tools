@@ -29,7 +29,7 @@
    <item row="0" column="1">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="console">
       <attribute name="title">
@@ -94,7 +94,7 @@
      </widget>
      <widget class="QWidget" name="holdingRegistersWidget">
       <attribute name="title">
-       <string> Holding Registers</string>
+       <string>Holding Registers</string>
       </attribute>
      </widget>
      <widget class="QWidget" name="inputRegistersWidget">
