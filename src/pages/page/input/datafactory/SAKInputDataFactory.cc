@@ -73,39 +73,7 @@ quint32 SAKInputDataFactory::crcCalculate(QByteArray data, int model)
 
 QByteArray SAKInputDataFactory::rawDataToArray(QString rawData, SAKDebugPageInputController::InputParametersContext parameters)
 {
-    QByteArray data;
-    if (parameters.inputModel == SAKCommonDataStructure::InputFormatBin){
-        QStringList strList = rawData.split(' ');
-        for (QString str:strList){
-            data.append(static_cast<int8_t>(QString(str).toInt(Q_NULLPTR, 2)));
-        }
-    }else if (parameters.inputModel == SAKCommonDataStructure::InputFormatOct){
-        QStringList strList = rawData.split(' ');
-        for (QString str:strList){
-            data.append(static_cast<int8_t>(QString(str).toInt(Q_NULLPTR, 8)));
-        }
-    }else if (parameters.inputModel == SAKCommonDataStructure::InputFormatDec){
-        QStringList strList = rawData.split(' ');
-        for (QString str:strList){
-            data.append(static_cast<int8_t>(QString(str).toInt(Q_NULLPTR, 10)));
-        }
-    }else if (parameters.inputModel == SAKCommonDataStructure::InputFormatHex){
-        QStringList strList = rawData.split(' ');
-        for (QString str:strList){
-            data.append(static_cast<int8_t>(QString(str).toInt(Q_NULLPTR, 16)));
-        }
-    }else if (parameters.inputModel == SAKCommonDataStructure::InputFormatAscii){
-        data = rawData.toLatin1();
-    }else if (parameters.inputModel == SAKCommonDataStructure::InputFormatUtf8){
-        data = rawData.toUtf8();
-    }else if (parameters.inputModel == SAKCommonDataStructure::InputFormatLocal){
-        data = rawData.toLocal8Bit();
-    }else {
-        data = rawData.toLocal8Bit();
-        Q_ASSERT_X(false, __FUNCTION__, "Unknown input mode");
-    }
-
-    return data;
+    return SAKCommonDataStructure::stringToByteArray(rawData, static_cast<SAKCommonDataStructure::SAKEnumTextInputFormat>(parameters.inputModel));
 }
 
 QByteArray SAKInputDataFactory::extractCrcData(QByteArray crcData, SAKDebugPageInputController::InputParametersContext parameters)
