@@ -21,19 +21,6 @@ class SAKCommonDataStructure:public QObject
     Q_OBJECT
 public:
     SAKCommonDataStructure(QObject* parent = Q_NULLPTR);
-
-    // QSAK tools
-    enum SAKEnumToolType {
-#ifdef SAK_IMPORT_MODULE_FILECHECKER
-        ToolTypeFileChecker,
-#endif
-#ifdef SAK_IMPORT_MODULE_QRCODE
-        ToolTypeQRCodeCreator,
-#endif
-        ToolTypeCRCCalculator
-    };
-    Q_ENUM(SAKEnumToolType);
-
     // QSAK debugging page
     enum SAKEnumDebugPageType {
         DebugPageTypeTest,
