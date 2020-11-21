@@ -8,8 +8,8 @@
  * the file LICENCE in the root of the source code directory.
  */
 #include "SAKDebugPage.hh"
+#include "SAKCommonInterface.hh"
 #include "SAKOtherTransmissionItemUdp.hh"
-
 #include "ui_SAKOtherTransmissionItemUdp.h"
 
 SAKOtherTransmissionItemUdp::SAKOtherTransmissionItemUdp(SAKDebugPage *debugPage, QWidget *parent)
@@ -27,7 +27,7 @@ SAKOtherTransmissionItemUdp::SAKOtherTransmissionItemUdp(SAKDebugPage *debugPage
     mTargetAddressLineEdit = mUi->targetAddressLineEdit;
     mTargetPortLineEdit = mUi->targetPortLineEdit;
 
-    mDebugPage->initIpComboBox(mAddressComboBox);
+    SAKCommonInterface::addIpItemsToComboBox(mAddressComboBox);
 }
 
 SAKOtherTransmissionItemUdp::~SAKOtherTransmissionItemUdp()
@@ -45,7 +45,7 @@ void SAKOtherTransmissionItemUdp::write(QByteArray data)
         quint16 targetPort = static_cast<quint16>(mTargetPortLineEdit->text().toInt());
         if (!mUdpSocket->writeDatagram(data, targetAddress, targetPort)){
 #ifdef QT_DEBUG
-        qDebug() << "发送数据失败" << mUdpSocket->errorString();
+        qWarning() << "Send data error:" << mUdpSocket->errorString();
 #endif
         }
     }

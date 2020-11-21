@@ -12,6 +12,7 @@
 #include <QLineEdit>
 
 #include "SAKDebugPage.hh"
+#include "SAKCommonInterface.hh"
 #include "SAKUdpClientDevice.hh"
 #include "SAKUdpClientDeviceController.hh"
 #include "SAKUdpClientAdvanceSettingWidget.hh"
@@ -69,7 +70,7 @@ void SAKUdpClientDeviceController::setUiEnable(bool opened)
 
 void SAKUdpClientDeviceController::refreshDevice()
 {
-    mDebugPage->initIpComboBox(mLocalhostComboBox, true);
+    SAKCommonInterface::addIpItemsToComboBox(mLocalhostComboBox, true);
 }
 
 void SAKUdpClientDeviceController::setUdpDevice(SAKUdpClientDevice *device)

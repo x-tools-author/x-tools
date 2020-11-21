@@ -14,6 +14,7 @@
 #include <QSerialPortInfo>
 
 #include "SAKDebugPage.hh"
+#include "SAKCommonInterface.hh"
 #include "SAKSerialPortDeviceController.hh"
 #include "ui_SAKSerialPortDeviceController.h"
 
@@ -75,12 +76,12 @@ void SAKSerialPortDeviceController::setUiEnable(bool opened)
 
 void SAKSerialPortDeviceController::refreshDevice()
 {
-    mDebugPage->initComComboBox(serialportsComboBox);
-    mDebugPage->initBaudRateComboBox(baudrateComboBox);
-    mDebugPage->initDataBitsComboBox(databitsComboBox);
-    mDebugPage->initStopBitsComboBox(stopbitsComboBox);
-    mDebugPage->initParityComboBox(parityComboBox);
-    mDebugPage->initFlowControlComboBox(flowControlComboBox);
+    SAKCommonInterface::addSerialPortNametItemsToComboBox(serialportsComboBox);
+    SAKCommonInterface::addSerialPortBaudRateItemsToComboBox(baudrateComboBox);
+    SAKCommonInterface::addSerialPortDataBitItemsToComboBox(databitsComboBox);
+    SAKCommonInterface::addSerialPortStopBitItemsToComboBox(stopbitsComboBox);
+    SAKCommonInterface::addSerialPortParityItemsToComboBox(parityComboBox);
+    SAKCommonInterface::addSerialPortFlowControlItemsToComboBox(flowControlComboBox);
 }
 
 void SAKSerialPortDeviceController::setBaudRate(quint32 bd)

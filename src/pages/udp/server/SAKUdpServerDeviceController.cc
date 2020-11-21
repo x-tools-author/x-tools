@@ -13,6 +13,7 @@
 #include <QLineEdit>
 
 #include "SAKDebugPage.hh"
+#include "SAKCommonInterface.hh"
 #include "SAKUdpServerDeviceController.hh"
 #include "ui_SAKUdpServerDeviceController.h"
 
@@ -58,7 +59,7 @@ void SAKUdpServerDeviceController::setUiEnable(bool opened)
 
 void SAKUdpServerDeviceController::refreshDevice()
 {
-    mDebugPage->initIpComboBox(mServerHostComboBox);
+    SAKCommonInterface::addIpItemsToComboBox(mServerHostComboBox);
 }
 
 void SAKUdpServerDeviceController::addClient(QString host, quint16 port)

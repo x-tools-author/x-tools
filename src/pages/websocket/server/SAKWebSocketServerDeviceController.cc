@@ -13,6 +13,8 @@
 #include <QLineEdit>
 
 #include "SAKDebugPage.hh"
+#include "SAKCommonInterface.hh"
+#include "SAKCommonDataStructure.hh"
 #include "SAKWebSocketServerDeviceController.hh"
 #include "ui_SAKWebSocketServerDeviceController.h"
 
@@ -26,7 +28,7 @@ SAKWebSocketServerDeviceController::SAKWebSocketServerDeviceController(SAKDebugP
     mClientHostComboBox = mUi->clientHostComboBox;
     mSendingTypeComboBox = mUi->sendingTypeComboBox;
 
-    mDebugPage->initWebSocketSendingTypeComboBox(mSendingTypeComboBox);
+    SAKCommonDataStructure::setComboBoxTextWebSocketSendingType(mSendingTypeComboBox);
     qRegisterMetaType<SAKWebSocketServerDeviceController::WebSocketServerParameters>("SAKWebSocketServerDeviceController::WebSocketServerParameters");
     mParameters.serverHost = mServerHostComboBox->currentText();
     mParameters.serverPort = mServerPortLineEdit->text().toInt();
@@ -55,7 +57,7 @@ void SAKWebSocketServerDeviceController::setUiEnable(bool opened)
 
 void SAKWebSocketServerDeviceController::refreshDevice()
 {
-    mDebugPage->initIpComboBox(mServerHostComboBox);
+    SAKCommonInterface::addIpItemsToComboBox(mServerHostComboBox);
 }
 
 void SAKWebSocketServerDeviceController::addClient(QString host, quint16 port, QWebSocket *socket)

@@ -144,19 +144,6 @@ public:
      * @return Device controller instance pointer
      */
     SAKDebugPageController *deviceController();
-
-#ifdef SAK_IMPORT_MODULE_SERIALPORT
-    // Serialport interfaces
-    void initComComboBox(QComboBox *comboBox);
-    void initBaudRateComboBox(QComboBox *comboBox);
-    void initDataBitsComboBox(QComboBox *comboBox);
-    void initStopBitsComboBox(QComboBox *comboBox);
-    void initParityComboBox(QComboBox *comboBox);
-    void initFlowControlComboBox(QComboBox *comboBox);
-#endif
-    void initIpComboBox(QComboBox *comboBox, bool appendHostAny = false);
-    void initCRCComboBox(QComboBox *comboBox);
-    void initWebSocketSendingTypeComboBox(QComboBox *comboBox);
 protected:
     SAKDebugPageDevice *mDevice;
     SAKDebugPageController *mDeviceController;
