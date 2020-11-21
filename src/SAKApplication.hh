@@ -13,7 +13,6 @@
 #include <QSettings>
 #include <QTranslator>
 #include <QApplication>
-#include <QSharedMemory>
 #include <QStyleFactory>
 #include <QSplashScreen>
 
@@ -37,7 +36,7 @@ public:
         QString removeDatabase;
         QString language;
         QString appStyle;
-        QString enableSingleton;
+        QString clearConfiguration;
     };
 
     void installLanguage();
@@ -45,9 +44,6 @@ public:
     QString dataPath();
     QSettings *settings();
     SettingsKeyContext *settingsKeyContext();
-    void checkSharedMemory();
-    bool instanceIsExisted();
-    void setSharedMemoryValue(uint8_t value);
     QSplashScreen *splashScreen();
     void showSplashScreenMessage(QString msg);
 #ifdef SAK_IMPORT_SQL_MODULE
@@ -62,8 +58,6 @@ private:
     QString mDatabaseName;
     QString mLastDataTime;
     QString mSettingsFileName;
-    QSharedMemory *mSharedMemory;
-    bool mIsExisted;
     QSplashScreen *mSplashScreen;
 #ifdef SAK_IMPORT_SQL_MODULE
     QSqlDatabase mSqlDatabase;

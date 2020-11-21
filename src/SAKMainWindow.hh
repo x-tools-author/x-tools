@@ -32,8 +32,6 @@ public:
     explicit SAKMainWindow(QWidget *parent = Q_NULLPTR);
     ~SAKMainWindow();
 
-    static const QString settingKeyClearConfiguration();
-
     // Debug page type supported by QtSwissArmyKnife
     enum SAKEnumDebugPageType {
         DebugPageTypeTest,
@@ -107,7 +105,6 @@ private:
     QAction *mDefaultStyleSheetAction;
     SAKUpdateManager *mUpdateManager;
     const QString mSettingKeyEnableTestPage;
-    const QString mSettingKeyClearConfiguration;
 private: 
     void initMenuBar();
     void initFileMenu();

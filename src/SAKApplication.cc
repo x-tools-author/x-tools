@@ -54,7 +54,7 @@ SAKApplication::SAKApplication(int argc, char **argv)
     mSettingsKeyContext.removeDatabase = QString("%1/removeDatabase").arg(applicationName());
     mSettingsKeyContext.language = QString("%1/language").arg(applicationName());
     mSettingsKeyContext.appStyle = QString("%1/appStyle").arg(applicationName());
-    mSettingsKeyContext.enableSingleton = QString("%1/enableSingleton").arg(applicationName());
+    mSettingsKeyContext.clearConfiguration = QString("%1/clearConfiguration").arg(applicationName());
 
     // Initialize the settings file
     QString path = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
@@ -66,53 +66,9 @@ SAKApplication::SAKApplication(int argc, char **argv)
     mLastDataTime = mSettings->value(mSettingsKeyContext.lastDateTime).toString();
     mSettings->setValue(mSettingsKeyContext.lastDateTime, QDateTime::currentDateTime().toString(QLocale::system().dateFormat()));
 
-    // The application is singleton in default
-    if (mSettings->value(mSettingsKeyContext.enableSingleton).isNull()){
-        mSettings->setValue(mSettingsKeyContext.enableSingleton, false);
-    }
-
-    // Checked the shared memory, if the value of shared memory is 1(anothor app sets the value), emit a signal to outside.
-    bool enableSingleton = mSettings->value(mSettingsKeyContext.enableSingleton).toBool();
-    if (enableSingleton){
-        mSharedMemory = new QSharedMemory(QString("QtSwissArmyKnife"));
-        mSharedMemory->attach();
-        bool result = mSharedMemory->create(1, QSharedMemory::ReadWrite);
-        if (result){
-            setSharedMemoryValue(0);
-            QTimer *timer = new QTimer(this);
-            timer->setInterval(2*1000);
-            connect(timer, &QTimer::timeout, this, &SAKApplication::checkSharedMemory);
-            timer->start();
-        }
-#ifdef Q_OS_ANDROID
-        Q_UNUSED(ret);
-        mIsExisted = false;
-#else
-#if 0
-        mIsExisted = !result;
-#else
-        mIsExisted = false;
-#endif
-#endif
-    }else{
-        mIsExisted = false;
-    }
-
 #ifdef SAK_IMPORT_SQL_MODULE
     // Initialize the data base
     mDatabaseName = QString("%1/%2.sqlite3").arg(path).arg(qApp->applicationName());
-    mSqlDatabase = QSqlDatabase::addDatabase("QSQLITE");
-    mSqlDatabase.setDatabaseName(mDatabaseName);
-    // Do something useless
-    mSqlDatabase.setHostName("localhost");
-    mSqlDatabase.setUserName("Qter");
-    mSqlDatabase.setPassword("QterPassword");
-
-    if (!mSqlDatabase.open()){
-        qWarning() << __FUNCTION__ << "QSAKDatabase.sqlite3 open failed: " << mSqlDatabase.lastError().text();
-        Q_ASSERT_X(false, __FUNCTION__, "Open database failed!");
-    }
-#endif
 
     // Remove settings file and database
     if (mSettings->value(mSettingsKeyContext.removeSettingsFile).toBool()){
@@ -131,6 +87,19 @@ SAKApplication::SAKApplication(int argc, char **argv)
         }
     }
 
+    mSqlDatabase = QSqlDatabase::addDatabase("QSQLITE");
+    mSqlDatabase.setDatabaseName(mDatabaseName);
+    // Do something useless
+    mSqlDatabase.setHostName("localhost");
+    mSqlDatabase.setUserName("Qter");
+    mSqlDatabase.setPassword("QterPassword");
+
+    if (!mSqlDatabase.open()){
+        qWarning() << __FUNCTION__ << "QSAKDatabase.sqlite3 open failed: " << mSqlDatabase.lastError().text();
+        Q_ASSERT_X(false, __FUNCTION__, "Open database failed!");
+    }
+#endif
+
     // Set application version, if micro SAK_VERSION is not defined, the application version is "0.0.0"
 #ifndef SAK_VERSION
     setApplicationVersion(QString("0.0.0"));
@@ -144,10 +113,6 @@ SAKApplication::~SAKApplication()
 {
     if (mSqlDatabase.isOpen()){
         mSqlDatabase.close();
-    }
-
-    if (mSharedMemory->isAttached()){
-        mSharedMemory->detach();
     }
 }
 
@@ -199,34 +164,6 @@ QSettings *SAKApplication::settings()
 SAKApplication::SettingsKeyContext *SAKApplication::settingsKeyContext()
 {
     return &mSettingsKeyContext;
-}
-
-void SAKApplication::checkSharedMemory()
-{
-    mSharedMemory->lock();
-    uint8_t *ptr = reinterpret_cast<uint8_t*>(mSharedMemory->data());
-    if (ptr){
-        if (ptr[0]){
-            emit activeMainWindow();
-            ptr[0] = 0;
-        }
-    }
-    mSharedMemory->unlock();
-}
-
-bool SAKApplication::instanceIsExisted()
-{
-    return mIsExisted;
-}
-
-void SAKApplication::setSharedMemoryValue(uint8_t value)
-{
-    mSharedMemory->lock();
-    uint8_t *ptr = reinterpret_cast<uint8_t*>(mSharedMemory->data());
-    if (ptr){
-        ptr[0] = value;
-    }
-    mSharedMemory->unlock();
 }
 
 QSplashScreen *SAKApplication::splashScreen()
