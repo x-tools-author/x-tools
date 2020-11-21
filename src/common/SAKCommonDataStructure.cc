@@ -83,7 +83,7 @@ void SAKCommonDataStructure::setComboBoxTextInputFormat(QComboBox *comboBox)
     }
 }
 
-QString SAKCommonDataStructure::formattingString(QString origingString, SAKEnumTextInputFormat format)
+QString SAKCommonDataStructure::formattingString(QString &origingString, SAKEnumTextInputFormat format)
 {
     QString cookedString;
     if (format == SAKCommonDataStructure::InputFormatBin){
@@ -129,10 +129,47 @@ QString SAKCommonDataStructure::formattingString(QString origingString, SAKEnumT
     }else if(format == SAKCommonDataStructure::InputFormatLocal) {
         cookedString = origingString;
     }else {
-        Q_ASSERT_X(false, __FUNCTION__, "Unknown input model");
+        Q_ASSERT_X(false, __FUNCTION__, "Unknown input model!");
     }
 
     return cookedString;
+}
+
+QByteArray SAKCommonDataStructure::stringToByteArray(QString &origingString, SAKEnumTextInputFormat format)
+{
+    QByteArray data;
+    if (format == SAKCommonDataStructure::InputFormatBin){
+        QStringList strList = origingString.split(' ');
+        for (QString str:strList){
+            data.append(static_cast<int8_t>(QString(str).toInt(Q_NULLPTR, 2)));
+        }
+    }else if (format == SAKCommonDataStructure::InputFormatOct){
+        QStringList strList = origingString.split(' ');
+        for (QString str:strList){
+            data.append(static_cast<int8_t>(QString(str).toInt(Q_NULLPTR, 8)));
+        }
+    }else if (format == SAKCommonDataStructure::InputFormatDec){
+        QStringList strList = origingString.split(' ');
+        for (QString str:strList){
+            data.append(static_cast<int8_t>(QString(str).toInt(Q_NULLPTR, 10)));
+        }
+    }else if (format == SAKCommonDataStructure::InputFormatHex){
+        QStringList strList = origingString.split(' ');
+        for (QString str:strList){
+            data.append(static_cast<int8_t>(QString(str).toInt(Q_NULLPTR, 16)));
+        }
+    }else if (format == SAKCommonDataStructure::InputFormatAscii){
+        data = origingString.toLatin1();
+    }else if (format == SAKCommonDataStructure::InputFormatUtf8){
+        data = origingString.toUtf8();
+    }else if (format == SAKCommonDataStructure::InputFormatLocal){
+        data = origingString.toLocal8Bit();
+    }else {
+        data = origingString.toLocal8Bit();
+        Q_ASSERT_X(false, __FUNCTION__, "Unknown input mode!");
+    }
+
+    return data;
 }
 
 void SAKCommonDataStructure::setComboBoxItems(QComboBox *comboBox, QMap<int, QString> &formatMap, int index)

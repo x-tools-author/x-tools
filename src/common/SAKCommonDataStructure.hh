@@ -177,7 +177,15 @@ public:
      * @param textEdit: Target text edit.
      * @param format: See SAKEnumTextInputFormat for more information.
      */
-    static QString formattingString(QString origingString, SAKEnumTextInputFormat format);
+    static QString formattingString(QString &origingString, SAKEnumTextInputFormat format);
+
+    /**
+     * @brief stringToByteArray: Transmit a QString to a QByteArray.
+     * @param origingString: Origin string.
+     * @param format: See SAKEnumTextOutputFormat for more information.
+     * @return A QByteArray.
+     */
+    static QByteArray stringToByteArray(QString &origingString, SAKEnumTextInputFormat format);
 private:
     static void setComboBoxItems(QComboBox *comboBox, QMap<int, QString> &formatMap, int index = 0);
 };
