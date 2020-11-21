@@ -11,6 +11,7 @@
 #define SAKCOMMONCRCINTERFACE_HH
 
 #include <QObject>
+#include <QComboBox>
 #include <QStringList>
 
 class SAKCommonCrcInterface:public QObject
@@ -18,7 +19,6 @@ class SAKCommonCrcInterface:public QObject
     Q_OBJECT
 public:
     SAKCommonCrcInterface(QObject *parent = Q_NULLPTR);
-
 
     /// crc算法模型（crc参数模型）
     enum CRCModel{
@@ -81,7 +81,11 @@ public:
         return crc;
     }
 
-
+    /**
+     * @brief addCrcModelItemsToComboBox: Add supported crc parameters model to a combo box.
+     * @param comboBox: Target combo box.
+     */
+    static void addCrcModelItemsToComboBox(QComboBox *comboBox);
 public:
     /**
      * @brief supportedParameterModels  -- 支持的crc参数模型
@@ -95,7 +99,6 @@ public:
      * @return                  -- 多项式公式
      */
     QString getPolyFormula(CRCModel model);          
-
 public:
     /**
      * @brief getInitValue  -- 获取crc初始值
@@ -138,8 +141,6 @@ public:
      * @return              -- 位宽
      */
     int getBitsWidth(SAKCommonCrcInterface::CRCModel model);
-
-
 private:
     QStringList modelStrings;
 
