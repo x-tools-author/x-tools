@@ -54,15 +54,15 @@ void SAKCommonDataStructure::setComboBoxTextOutputFormat(QComboBox *comboBox)
 {
     if (comboBox){
         QMap<int, QString> formatMap;
-        formatMap.insert(SAKCommonDataStructure::OutputFormatBin,   QString("BIN"));
-        formatMap.insert(SAKCommonDataStructure::OutputFormatDec,   QString("DEC"));
-        formatMap.insert(SAKCommonDataStructure::OutputFormatHex,   QString("HEX"));
-        formatMap.insert(SAKCommonDataStructure::OutputFormatUtf8,  QString("UTF8"));
-        formatMap.insert(SAKCommonDataStructure::OutputFormatUcs4,  QString("UCS4"));
-        formatMap.insert(SAKCommonDataStructure::OutputFormatAscii, QString("ASCII"));
-        formatMap.insert(SAKCommonDataStructure::OutputFormatUtf16, QString("UTF16"));
-        formatMap.insert(SAKCommonDataStructure::OutputFormatLocal, QString("SYSTEM"));
-        setComboBoxItems(comboBox, formatMap, 3);
+        formatMap.insert(OutputFormatBin,   QString("BIN"));
+        formatMap.insert(OutputFormatDec,   QString("DEC"));
+        formatMap.insert(OutputFormatHex,   QString("HEX"));
+        formatMap.insert(OutputFormatUtf8,  QString("UTF8"));
+        formatMap.insert(OutputFormatUcs4,  QString("UCS4"));
+        formatMap.insert(OutputFormatAscii, QString("ASCII"));
+        formatMap.insert(OutputFormatUtf16, QString("UTF16"));
+        formatMap.insert(OutputFormatLocal, QString("SYSTEM"));
+        setComboBoxItems(comboBox, formatMap, OutputFormatHex);
     }
 }
 
@@ -71,14 +71,14 @@ void SAKCommonDataStructure::setComboBoxTextInputFormat(QComboBox *comboBox)
     if (comboBox){
         if (comboBox){
             QMap<int, QString> formatMap;
-            formatMap.insert(SAKCommonDataStructure::InputFormatBin,   tr("BIN"));
-            formatMap.insert(SAKCommonDataStructure::InputFormatOct,   tr("OTC"));
-            formatMap.insert(SAKCommonDataStructure::InputFormatDec,   tr("DEC"));
-            formatMap.insert(SAKCommonDataStructure::InputFormatHex,   tr("HEX"));
-            formatMap.insert(SAKCommonDataStructure::InputFormatAscii, tr("ASCII"));
-            formatMap.insert(SAKCommonDataStructure::InputFormatUtf8,  tr("UTF8"));
-            formatMap.insert(SAKCommonDataStructure::InputFormatLocal, tr("SYSTEM"));
-            setComboBoxItems(comboBox, formatMap, 3);
+            formatMap.insert(InputFormatBin,   tr("BIN"));
+            formatMap.insert(InputFormatOct,   tr("OTC"));
+            formatMap.insert(InputFormatDec,   tr("DEC"));
+            formatMap.insert(InputFormatHex,   tr("HEX"));
+            formatMap.insert(InputFormatAscii, tr("ASCII"));
+            formatMap.insert(InputFormatUtf8,  tr("UTF8"));
+            formatMap.insert(InputFormatLocal, tr("SYSTEM"));
+            setComboBoxItems(comboBox, formatMap, InputFormatUtf8);
         }
     }
 }
@@ -209,7 +209,7 @@ QString SAKCommonDataStructure::byteArrayToString(QByteArray &origingData, SAKEn
     return str;
 }
 
-void SAKCommonDataStructure::setComboBoxItems(QComboBox *comboBox, QMap<int, QString> &formatMap, int index)
+void SAKCommonDataStructure::setComboBoxItems(QComboBox *comboBox, QMap<int, QString> &formatMap, int currentData)
 {
     if (comboBox){
         comboBox->clear();
@@ -222,7 +222,7 @@ void SAKCommonDataStructure::setComboBoxItems(QComboBox *comboBox, QMap<int, QSt
             itemModel->appendRow(item);
         }
         comboBox->setModel(itemModel);
-        comboBox->setCurrentIndex(index);
+        comboBox->setCurrentIndex(currentData);
 
         // Reset the iterator...
         while (mapIterator.hasPrevious()) {
@@ -235,6 +235,13 @@ void SAKCommonDataStructure::setComboBoxItems(QComboBox *comboBox, QMap<int, QSt
             mapIterator.next();
             comboBox->setItemData(index, QVariant::fromValue(mapIterator.key()));
             index += 1;
+        }
+
+        // Try to set the current index.
+        for (int i = 0; i < comboBox->count(); i++){
+            if (comboBox->itemData(i).toInt() == currentData){
+                comboBox->setCurrentIndex(i);
+            }
         }
     }
 }

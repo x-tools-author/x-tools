@@ -195,7 +195,7 @@ public:
      */
     static QString byteArrayToString(QByteArray &origingData, SAKEnumTextOutputFormat format);
 private:
-    static void setComboBoxItems(QComboBox *comboBox, QMap<int, QString> &formatMap, int index = 0);
+    static void setComboBoxItems(QComboBox *comboBox, QMap<int, QString> &formatMap, int currentData);
 };
 
 #endif
