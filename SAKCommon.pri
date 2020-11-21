@@ -5,7 +5,7 @@ DEFINES += SAK_MAX_AUTO_RESPONSE_COUNT=9999
 # All address of host
 DEFINES += SAK_HOST_ADDRESS_ANY=\"\\\"HostAddress::Any\\\"\"
 # Application version
-DEFINES += SAK_VERSION=\"\\\"3.2.0\\\"\"
+DEFINES += SAK_VERSION=\"\\\"3.3.0\\\"\"
 # Exit code which is used to reboot the application
 DEFINES += SAK_REBOOT_CODE=1314
 # Sleep interval of device thread, the unit is ms
