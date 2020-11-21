@@ -98,13 +98,6 @@
       <item>
        <widget class="QComboBox" name="inputFormatComboBox"/>
       </item>
-      <item>
-       <widget class="QCheckBox" name="hexRawDataCheckBox">
-        <property name="text">
-         <string>HexRawData</string>
-        </property>
-       </widget>
-      </item>
      </layout>
     </widget>
    </item>
