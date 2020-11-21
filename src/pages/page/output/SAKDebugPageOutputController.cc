@@ -344,37 +344,8 @@ void SAKDebugPageOutputController::innerCookData(QByteArray rawData, OutputParam
     }
     str.append("<font color=silver>] </font>");
 
-    if (parameters.format == SAKCommonDataStructure::OutputFormatBin){
-        for (int i = 0; i < rawData.length(); i++){
-            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(rawData.at(i)), 2), 8, '0'));
-        }
-    }else if (parameters.format == SAKCommonDataStructure::OutputFormatOct){
-        for (int i = 0; i < rawData.length(); i++){
-            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(rawData.at(i)), 8), 3, '0'));
-        }
-    }else if (parameters.format == SAKCommonDataStructure::OutputFormatDec){
-        for (int i = 0; i < rawData.length(); i++){
-            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(rawData.at(i)), 10)));
-        }
-    }else if (parameters.format == SAKCommonDataStructure::OutputFormatHex){
-        for (int i = 0; i < rawData.length(); i++){
-            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(rawData.at(i)), 16), 2, '0'));
-        }
-    }else if (parameters.format == SAKCommonDataStructure::OutputFormatAscii){
-        str.append(QString::fromLatin1(rawData));
-    }else if (parameters.format == SAKCommonDataStructure::OutputFormatUtf8){
-        str.append(QString::fromUtf8(rawData));
-    }else if (parameters.format == SAKCommonDataStructure::OutputFormatUtf16){
-        str.append(QString::fromUtf16(reinterpret_cast<const char16_t*>(rawData.constData()),rawData.length()/sizeof(char16_t)));
-    }else if (parameters.format == SAKCommonDataStructure::OutputFormatUcs4){
-        str.append(QString::fromUcs4(reinterpret_cast<const char32_t*>(rawData.constData()),rawData.length()/sizeof(char32_t)));
-    }else if (parameters.format == SAKCommonDataStructure::OutputFormatLocal){
-        str.append(QString::fromLocal8Bit(rawData));
-    }else {
-        str.append(QString::fromUtf8(rawData));
-        Q_ASSERT_X(false, __FUNCTION__, "Unknown output mode!");
-    }
-
+    auto dataString = SAKCommonDataStructure::byteArrayToString(rawData, static_cast<SAKCommonDataStructure::SAKEnumTextOutputFormat>(parameters.format));
+    str.append(dataString);
     emit dataCooked(str);
 }
 
