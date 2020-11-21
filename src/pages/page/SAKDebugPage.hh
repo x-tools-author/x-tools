@@ -43,6 +43,7 @@ class SAKDebugPageChartsController;
 #endif
 class SAKOtherTransmissionPageViewer;
 class SAKDebugPageStatisticsController;
+class SAKDebugPageCommonDatabaseInterface;
 
 namespace Ui {
     class SAKDebugPage;
@@ -144,6 +145,17 @@ public:
      * @return Device controller instance pointer
      */
     SAKDebugPageController *deviceController();
+
+    /**
+     * @brief databaseInterface: Get the data base read-write interface.
+     * @return The interface.
+     */
+    SAKDebugPageCommonDatabaseInterface *databaseInterface();
+
+    // Table name
+    QString tableNameAutoResponseTable();
+    QString tableNamePresettingDataTable();
+    QString tableNameTimingSendingTable();
 protected:
     SAKDebugPageDevice *mDevice;
     SAKDebugPageController *mDeviceController;
@@ -165,6 +177,7 @@ private:
     QMutex mReadWriteParametersMutex;
     QString mSettingGroup;
     QAction *mRefreshAction;
+    SAKDebugPageCommonDatabaseInterface *mDatabaseInterface;
 
     // Debug page modules
     SAKDebugPageOtherController *mOtherController;

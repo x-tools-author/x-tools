@@ -21,40 +21,6 @@ class SAKCommonDataStructure:public QObject
     Q_OBJECT
 public:
     SAKCommonDataStructure(QObject* parent = Q_NULLPTR);
-    // QSAK debugging page
-    enum SAKEnumDebugPageType {
-        DebugPageTypeTest,
-#ifdef SAK_IMPORT_MODULE_SERIALPORT
-        DebugPageTypeCOM,
-#endif
-#ifdef SAK_IMPORT_HID_MODULE
-        DebugPageTypeHID,
-#endif
-#ifdef SAK_IMPORT_USB_MODULE
-        DebugPageTypeUSB,
-#endif
-        DebugPageTypeUdpClient,
-        DebugPageTypeUdpServer,
-        DebugPageTypeTCPClient,
-        DebugPageTypeTCPServer,
-#ifdef SAK_IMPORT_MODULE_SSLSOCKET
-        DebugPageTypeSslSocketClient,
-        DebugPageTypeSslSocketServer,
-#endif
-#ifdef SAK_IMPORT_SCTP_MODULE
-        DebugPageTypeSCTPClient,
-        DebugPageTypeSCTPServer,
-#endif
-#ifdef SAK_IMPORT_BLUETOOTH_MODULE
-        DebugPageTypeBluetoothClient,
-        DebugPageTypeBluetoothServer,
-#endif
-#ifdef SAK_IMPORT_MODULE_WEBSOCKET
-        DebugPageTypeWebSocketClient,
-        DebugPageTypeWebSocketServer
-#endif
-    };
-    Q_ENUM(SAKEnumDebugPageType);
 
     // Input text format
     enum SAKEnumTextInputFormat {
@@ -96,57 +62,7 @@ public:
         WebSocketSendingTypeBin,
     };
     Q_ENUM(SAKEnumWebSocketSendingType);
-
-    struct SAKStructAutoResponseItem {
-        quint64 id; // The id of response item
-        QString name; //  Response item name
-        QString referenceData;
-        QString responseData;
-        bool enable; // true-enable the response item
-        quint32 referenceFormat; // see the SAKEnumTextInputFormat enum
-        quint32 responseFormat; // See the SAKEnumTextInputFormat enum
-        quint32 option; // response option, see the SAKEnumAutoResponseOption enum
-        bool delay; // true-response delayly
-        quint32 interval; // delay interval
-    };
-
-    struct SAKStructTimingSentItem {
-        quint64 id; // The id of timing sent item
-        quint32 interval; // Timing interval
-        quint32 format; // The format of data that will be sent later
-        QString comment; // The item comment
-        QString data; // The data that will be sent later
-    };
-
-    struct SAKStructPresettingDataItem{
-        quint64 id; // The id of the item
-        quint32 format; // Data format, see the SAKEnumTextInputFormat enum
-        QString description; // The description of item
-        quint32 classify; // (The parameter is reserved)
-        QString text; // Raw data that will be sent later
-    };
 public:
-    /**
-     * @brief autoResponseTableName: Get the table name of database
-     * @param type: See the SAKEnumDebugPageType enum
-     * @return The table name of database
-     */
-    static QString autoResponseTableName(int type);
-
-    /**
-     * @brief timingSendingTableName: Get the table name of database
-     * @param type: See the SAKEnumDebugPageType enum
-     * @return The table name of database
-     */
-    static QString timingSendingTableName(int type);
-
-    /**
-     * @brief presettingDataTableName: Get the table name of database
-     * @param type: See the SAKEnumDebugPageType enum
-     * @return The table name of database
-     */
-    static QString dataPresetTableName(int type);
-
     /**
      * @brief setComboBoxTextOutputFormat: Add output text format items to combo box.
      * @param comboBox: Targat combo box.

@@ -17,39 +17,6 @@ SAKCommonDataStructure::SAKCommonDataStructure(QObject* parent)
 
 }
 
-QString SAKCommonDataStructure::autoResponseTableName(int type)
-{
-    QMetaEnum metaEnum = QMetaEnum::fromType<SAKCommonDataStructure::SAKEnumDebugPageType>();
-    QString name = QString(metaEnum.valueToKey(type));
-    if (name.length()){
-        name.prepend(QString("AutoResponseTable_"));
-    }
-
-    return name;
-}
-
-QString SAKCommonDataStructure::timingSendingTableName(int type)
-{
-    QMetaEnum metaEnum = QMetaEnum::fromType<SAKCommonDataStructure::SAKEnumDebugPageType>();
-    QString name = QString(metaEnum.valueToKey(type));
-    if (name.length()){
-        name.prepend(QString("TimingSendingTable_"));
-    }
-
-    return name;
-}
-
-QString SAKCommonDataStructure::dataPresetTableName(int type)
-{
-    QMetaEnum metaEnum = QMetaEnum::fromType<SAKCommonDataStructure::SAKEnumDebugPageType>();
-    QString name = QString(metaEnum.valueToKey(type));
-    if (name.length()){
-        name.prepend(QString("DataPresetTable_"));
-    }
-
-    return name;
-}
-
 void SAKCommonDataStructure::setComboBoxTextOutputFormat(QComboBox *comboBox)
 {
     if (comboBox){

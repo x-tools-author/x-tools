@@ -39,6 +39,7 @@
 #include "SAKOtherAnalyzerThreadManager.hh"
 #include "SAKOtherAutoResponseItemManager.hh"
 #include "SAKDebugPageStatisticsController.hh"
+#include "SAKDebugPageCommonDatabaseInterface.hh"
 
 #ifdef SAK_IMPORT_MODULE_CHARTS
 #include "SAKDebugPageChartsController.hh"
@@ -57,6 +58,8 @@ SAKDebugPage::SAKDebugPage(int type, QString name, QWidget *parent)
 {
     mUi->setupUi(this);
     initializingVariables();
+
+    mDatabaseInterface = new SAKDebugPageCommonDatabaseInterface(this, sakApp->sqlDatabase(), this);
 
     mOutputController = new SAKDebugPageOutputController(this, this);
     mOtherController = new SAKDebugPageOtherController(this, this);
@@ -166,6 +169,26 @@ SAKDebugPageController *SAKDebugPage::deviceController()
 {
     Q_ASSERT_X(mDeviceController, __FUNCTION__, "You must initialize mDeviceController in the subclass!");
     return mDeviceController;
+}
+
+SAKDebugPageCommonDatabaseInterface *SAKDebugPage::databaseInterface()
+{
+    return mDatabaseInterface;
+}
+
+QString SAKDebugPage::tableNameAutoResponseTable()
+{
+    return settingsGroup().append(QString("AutoResponse"));
+}
+
+QString SAKDebugPage::tableNamePresettingDataTable()
+{
+    return settingsGroup().append(QString("PresettingData"));
+}
+
+QString SAKDebugPage::tableNameTimingSendingTable()
+{
+    return settingsGroup().append(QString("TimingSending"));
 }
 
 SAKDebugPageDevice *SAKDebugPage::device()

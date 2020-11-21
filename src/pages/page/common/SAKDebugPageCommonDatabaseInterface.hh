@@ -21,10 +21,10 @@ class SAKDebugPage;
 class SAKDebugPageCommonDatabaseInterface : public QObject
 {
     Q_OBJECT
-private:
-    SAKDebugPageCommonDatabaseInterface(QSqlDatabase *sqlDatabase, QObject *parent = Q_NULLPTR);
-    ~SAKDebugPageCommonDatabaseInterface();
 public:
+    SAKDebugPageCommonDatabaseInterface(SAKDebugPage *debugPage, QSqlDatabase *sqlDatabase, QObject *parent = Q_NULLPTR);
+    ~SAKDebugPageCommonDatabaseInterface();
+
     friend SAKDebugPage;
     static SAKDebugPageCommonDatabaseInterface *instance();
 
@@ -96,47 +96,70 @@ public:
         }
     };
 
+    struct SAKStructAutoResponseItem {
+        quint64 id; // The id of response item
+        QString name; //  Response item name
+        QString referenceData;
+        QString responseData;
+        bool enable; // true-enable the response item
+        quint32 referenceFormat; // see the SAKEnumTextInputFormat enum
+        quint32 responseFormat; // See the SAKEnumTextInputFormat enum
+        quint32 option; // response option, see the SAKEnumAutoResponseOption enum
+        bool delay; // true-response delayly
+        quint32 interval; // delay interval
+    };
+
+    struct SAKStructTimingSentItem {
+        quint64 id; // The id of timing sent item
+        quint32 interval; // Timing interval
+        quint32 format; // The format of data that will be sent later
+        QString comment; // The item comment
+        QString data; // The data that will be sent later
+    };
+
+    struct SAKStructPresettingDataItem{
+        quint64 id; // The id of the item
+        quint32 format; // Data format, see the SAKEnumTextInputFormat enum
+        QString description; // The description of item
+        quint32 classify; // (The parameter is reserved)
+        QString text; // Raw data that will be sent later
+    };
+
     /**
      * @brief insertAutoResponseItem: Insert record
-     * @param tableName: table name of database
      * @param item: Item that contains record info
      */
-    void insertAutoResponseItem(QString tableName, SAKCommonDataStructure::SAKStructAutoResponseItem item);
+    void insertAutoResponseItem(SAKStructAutoResponseItem item);
 
     /**
      * @brief selectAutoResponseItem: Query records
-     * @param tableName: table name
      * @return records
      */
-    QList<SAKCommonDataStructure::SAKStructAutoResponseItem> selectAutoResponseItem(QString tableName);
+    QList<SAKStructAutoResponseItem> selectAutoResponseItem();
 
     /**
      * @brief insertTimingSendingItem: Insert record to database
-     * @param tableName: Target table name
      * @param item: Record item
      */
-    void insertTimingSentItem(QString tableName, SAKCommonDataStructure::SAKStructTimingSentItem item);
+    void insertTimingSentItem(SAKStructTimingSentItem item);
 
     /**
      * @brief selectTimingSendingItem: Query records
-     * @param tableName: Table name
      * @return records
      */
-    QList<SAKCommonDataStructure::SAKStructTimingSentItem> selectTimingSentItem(QString tableName);
+    QList<SAKStructTimingSentItem> selectTimingSentItem();
 
     /**
      * @brief insertDataPresetItem: Insert record to database
-     * @param tableName: table name of database
      * @param item: item that contains information of record
      */
-    void insertDataPresetItem(QString tableName, SAKCommonDataStructure::SAKStructPresettingDataItem item);
+    void insertDataPresetItem(SAKStructPresettingDataItem item);
 
     /**
      * @brief selectDataPresetItem: Select records
-     * @param tableName: Table name
      * @return records
      */
-    QList<SAKCommonDataStructure::SAKStructPresettingDataItem> selectDataPresetItem(QString tableName);
+    QList<SAKStructPresettingDataItem> selectDataPresetItem();
 
     /**
      * @brief updateRecord: Update the record of table
@@ -155,25 +178,20 @@ public:
      */
     void deleteRecord(QString tableName, quint64 recordID);
 private:
-    static SAKDebugPageCommonDatabaseInterface *instancePtr;
     QSqlDatabase *mSqlDatabase;
     QSqlQuery mSqlQuery;
-    QList<AutoResponseTable> mAutoResponseTableList;
-    QList<TimingSendingTable> mTimingSendingTableList;
-    QList<DataPresetItemTable> mPresettingDataTableList;
+    SAKDebugPage *mDebugPage;
+    QString mTableNameAutoResponseTable;
+    QString mTableNameTimingSendingTable;
+    QString mTableNamePresettingDataTable;
 private:
     bool isTableExist(QString tableName);
-    void createTables();
-    void createAutoResponseTables();
+    void createAutoResponseTable(QString &tableName);
     bool createAutoResponseTable(const AutoResponseTable &table);
-    void createTimingSendingTables();
+    void createTimingSendingTable(QString &tableName);
     bool createTimingSendingTable(const TimingSendingTable &table);
-    void createPresettingDataTables();
+    void createPresettingDataTable(QString &tableName);
     bool createPresettingDataTable(const DataPresetItemTable &table);
-
-    AutoResponseTable tableNmaeToAutoResponseTable(QString tableName);
-    TimingSendingTable tableNameToTimingSendingTable(QString tableName);
-    DataPresetItemTable tableNameToPresettingDataTable(QString tableName);
 };
 
 #endif
