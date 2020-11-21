@@ -182,10 +182,18 @@ public:
     /**
      * @brief stringToByteArray: Transmit a QString to a QByteArray.
      * @param origingString: Origin string.
-     * @param format: See SAKEnumTextOutputFormat for more information.
+     * @param format: See SAKEnumTextInputFormat for more information.
      * @return A QByteArray.
      */
     static QByteArray stringToByteArray(QString &origingString, SAKEnumTextInputFormat format);
+
+    /**
+     * @brief byteArrayToString: Transmit a QByteArray to a QString.
+     * @param origingString: Origin byte array.
+     * @param format: See SAKEnumTextOutputFormat for more information.
+     * @return A QString.
+     */
+    static QString byteArrayToString(QByteArray &origingData, SAKEnumTextOutputFormat format);
 private:
     static void setComboBoxItems(QComboBox *comboBox, QMap<int, QString> &formatMap, int index = 0);
 };

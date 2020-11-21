@@ -172,6 +172,43 @@ QByteArray SAKCommonDataStructure::stringToByteArray(QString &origingString, SAK
     return data;
 }
 
+QString SAKCommonDataStructure::byteArrayToString(QByteArray &origingData, SAKEnumTextOutputFormat format)
+{
+    QString str;
+    if (format == SAKCommonDataStructure::OutputFormatBin){
+        for (int i = 0; i < origingData.length(); i++){
+            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(origingData.at(i)), 2), 8, '0'));
+        }
+    }else if (format == SAKCommonDataStructure::OutputFormatOct){
+        for (int i = 0; i < origingData.length(); i++){
+            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(origingData.at(i)), 8), 3, '0'));
+        }
+    }else if (format == SAKCommonDataStructure::OutputFormatDec){
+        for (int i = 0; i < origingData.length(); i++){
+            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(origingData.at(i)), 10)));
+        }
+    }else if (format == SAKCommonDataStructure::OutputFormatHex){
+        for (int i = 0; i < origingData.length(); i++){
+            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(origingData.at(i)), 16), 2, '0'));
+        }
+    }else if (format == SAKCommonDataStructure::OutputFormatAscii){
+        str.append(QString::fromLatin1(origingData));
+    }else if (format == SAKCommonDataStructure::OutputFormatUtf8){
+        str.append(QString::fromUtf8(origingData));
+    }else if (format == SAKCommonDataStructure::OutputFormatUtf16){
+        str.append(QString::fromUtf16(reinterpret_cast<const char16_t*>(origingData.constData()),origingData.length()/sizeof(char16_t)));
+    }else if (format == SAKCommonDataStructure::OutputFormatUcs4){
+        str.append(QString::fromUcs4(reinterpret_cast<const char32_t*>(origingData.constData()),origingData.length()/sizeof(char32_t)));
+    }else if (format == SAKCommonDataStructure::OutputFormatLocal){
+        str.append(QString::fromLocal8Bit(origingData));
+    }else {
+        str.append(QString::fromUtf8(origingData));
+        Q_ASSERT_X(false, __FUNCTION__, "Unknown output mode!");
+    }
+
+    return str;
+}
+
 void SAKCommonDataStructure::setComboBoxItems(QComboBox *comboBox, QMap<int, QString> &formatMap, int index)
 {
     if (comboBox){
