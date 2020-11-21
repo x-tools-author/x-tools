@@ -362,10 +362,16 @@ void SAKDebugPage::initializePage()
         deviceMorePushButtonMenu->clear();
         deviceMorePushButtonMenu->deleteLater();
     }
-    // Create new menu and add actions to the menu.
-    auto infos = device()->settingsPanelList();
+
+    // Create "Refresh" action.
     deviceMorePushButtonMenu = new QMenu;
     mDeviceMorePushButton->setMenu(deviceMorePushButtonMenu);
+    mRefreshAction = new QAction(tr("Refresh"), deviceMorePushButtonMenu);
+    deviceMorePushButtonMenu->addAction(mRefreshAction);
+    connect(mRefreshAction, &QAction::triggered, this, &SAKDebugPage::refreshDevice);
+
+    // Create new menu and add actions to the menu.
+    auto infos = device()->settingsPanelList();
     for (auto var : infos){
         QAction *action = new QAction(var.name, deviceMorePushButtonMenu);
         deviceMorePushButtonMenu->addAction(action);
@@ -384,7 +390,7 @@ void SAKDebugPage::changedDeviceState(bool opened)
     mSendPushButton->setEnabled(opened);
     mSendPresetPushButton->setEnabled(opened);
     mCycleEnableCheckBox->setEnabled(opened);
-    mRefreshPushButton->setEnabled(!opened);
+    mRefreshAction->setEnabled(!opened);
     mDeviceController->setUiEnable(opened);
 
     mSwitchPushButton->setEnabled(true);
@@ -405,6 +411,15 @@ void SAKDebugPage::closeDevice()
     mSwitchPushButton->setText(tr("Open"));
 }
 
+void SAKDebugPage::refreshDevice()
+{
+    if (mDeviceController){
+        mDeviceController->refreshDevice();
+    }else{
+        Q_ASSERT_X(false, __FUNCTION__, "A null pointer!");
+    }
+}
+
 void SAKDebugPage::cleanInfo()
 {
     mClearInfoTimer.stop();
@@ -414,15 +429,6 @@ void SAKDebugPage::cleanInfo()
 void SAKDebugPage::setupController()
 {
 
-}
-
-void SAKDebugPage::on_refreshPushButton_clicked()
-{
-    if (mDeviceController){
-        mDeviceController->refreshDevice();
-    }else{
-        Q_ASSERT_X(false, __FUNCTION__, "A null pointer!");
-    }
 }
 
 void SAKDebugPage::on_switchPushButton_clicked()
@@ -441,7 +447,6 @@ void SAKDebugPage::initializingVariables()
 {
     // Devce control
     mSwitchPushButton = mUi->switchPushButton;
-    mRefreshPushButton = mUi->refreshPushButton;
     mDeviceMorePushButton = mUi->deviceMorePushButton;
     mDeviceSettingFrame = mUi->deviceSettingFrame;
 

@@ -177,6 +177,7 @@ private:
     QTimer mClearInfoTimer;
     QMutex mReadWriteParametersMutex;
     QString mSettingGroup;
+    QAction *mRefreshAction;
 
     // Debug page modules
     SAKDebugPageOtherController *mOtherController;
@@ -192,6 +193,7 @@ private:
     void changedDeviceState(bool opened);
     void openDevice();
     void closeDevice();
+    void refreshDevice();
 signals:
     // Emit the read data
     void bytesRead(QByteArray data);
@@ -209,12 +211,10 @@ private:
     /*************************************************************************/
     // Device control module
 protected:
-    QPushButton *mRefreshPushButton;
     QPushButton *mSwitchPushButton;
     QPushButton *mDeviceMorePushButton;
     QFrame *mDeviceSettingFrame;
 private slots:
-    void on_refreshPushButton_clicked();
     void on_switchPushButton_clicked();
     /*************************************************************************/
     // Data input settings module
