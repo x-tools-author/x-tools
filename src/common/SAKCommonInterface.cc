@@ -188,31 +188,3 @@ void SAKCommonInterface::addIpItemsToComboBox(QComboBox *comboBox, bool appendHo
         comboBox->setCurrentText(localHost);
     }
 }
-
-void SAKCommonInterface::addCrcItemsToComboBox(QComboBox *comboBox)
-{
-    if (comboBox){
-        comboBox->clear();
-        QMetaEnum enums = QMetaEnum::fromType<SAKCommonCrcInterface::CRCModel>();
-        QStandardItemModel *itemModel = new QStandardItemModel(comboBox);
-        for (int i = 0; i < enums.keyCount(); i++){
-            const QString key = enums.key(i);
-            // There may be a bug, I do not know whether will the itemModel take ownership of the item
-            // if not, a memory leak will occur after comboBox is destroyed.
-            QStandardItem *item = new QStandardItem(key);
-            item->setToolTip(key);
-            itemModel->appendRow(item);
-        }
-        comboBox->setModel(itemModel);
-
-        // add item data
-        for (int i = 0; i < comboBox->count(); i++){
-            for (int j = 0; j < enums.keyCount(); j++){
-                if (comboBox->itemText(i) == QString(enums.key(j))){
-                    comboBox->setItemData(i, enums.value(j));
-                    break;
-                }
-            }
-        }
-    }
-}

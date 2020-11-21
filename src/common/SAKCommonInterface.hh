@@ -56,7 +56,6 @@ public:
     static void addSerialPortFlowControlItemsToComboBox(QComboBox *comboBox);
 #endif
     static void addIpItemsToComboBox(QComboBox *comboBox, bool appendHostAny = false);
-    static void addCrcItemsToComboBox(QComboBox *comboBox);
 };
 
 #endif
