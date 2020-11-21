@@ -562,12 +562,12 @@ void SAKMainWindow::initializingMetaObject()
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeTCPClient, SAKTcpClientDebugPage::staticMetaObject, tr("TCP-C")});
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeTCPServer, SAKTcpServerDebugPage::staticMetaObject, tr("TCP-S")});
 #ifdef SAK_IMPORT_MODULE_SSLSOCKET
-    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeSslSocketClient, SAKSslSocketClientDebugPage::staticMetaObject, tr("SSL-C")});
-    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeSslSocketServer, SAKSslSocketServerDebugPage::staticMetaObject, tr("SSL-S")});
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{SAKSslSocketClientDebugPage::staticMetaObject, tr("SSL-C")});
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{SAKSslSocketServerDebugPage::staticMetaObject, tr("SSL-S")});
 #endif
 #ifdef SAK_IMPORT_SCTP_MODULE
-    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeSCTPClient, SAKSCTPClientDebugPage::staticMetaObject, tr("SCTP-C")});
-    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeSCTPServer, SAKSCTPServerDebugPage::staticMetaObject, tr("SCTP-S")});
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{SAKSCTPClientDebugPage::staticMetaObject, tr("SCTP-C")});
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{SAKSCTPServerDebugPage::staticMetaObject, tr("SCTP-S")});
 #endif
 #ifdef SAK_IMPORT_BLUETOOTH_MODULE
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeBluetoothClient, SAKBluetoothClientDebugPage::staticMetaObject, tr("Bluetooth-C")});
