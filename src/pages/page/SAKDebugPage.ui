@@ -6,33 +6,122 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>842</width>
-    <height>484</height>
+    <width>872</width>
+    <height>539</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string notr="true">Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <property name="leftMargin">
-    <number>6</number>
-   </property>
-   <property name="topMargin">
-    <number>6</number>
-   </property>
-   <property name="rightMargin">
-    <number>6</number>
-   </property>
-   <property name="bottomMargin">
-    <number>6</number>
-   </property>
-   <property name="verticalSpacing">
-    <number>4</number>
-   </property>
-   <item row="31" column="5">
-    <widget class="Line" name="line_5">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
+   <item row="17" column="12" colspan="2">
+    <widget class="QLabel" name="label_18">
+     <property name="text">
+      <string>Rx bytes</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="25" column="2" rowspan="3">
+    <widget class="QPushButton" name="clearInputPushButton">
+     <property name="text">
+      <string>Clear</string>
+     </property>
+    </widget>
+   </item>
+   <item row="22" column="1">
+    <widget class="QLineEdit" name="cycleTimeLineEdit">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="12" colspan="3">
+    <widget class="QCheckBox" name="saveOutputToFileCheckBox">
+     <property name="toolTip">
+      <string>Enable to write data to file</string>
+     </property>
+     <property name="text">
+      <string>Write2File</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="12" colspan="3">
+    <widget class="QLabel" name="label_12">
+     <property name="text">
+      <string>Text format</string>
+     </property>
+    </widget>
+   </item>
+   <item row="21" column="12">
+    <widget class="QLabel" name="label_9">
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+    color:green
+}</string>
+     </property>
+     <property name="text">
+      <string>Other settings</string>
+     </property>
+    </widget>
+   </item>
+   <item row="14" column="15">
+    <widget class="QLabel" name="txBytesLabel">
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+    color:blue
+}</string>
+     </property>
+     <property name="text">
+      <string notr="true">0</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="25" column="15" rowspan="3">
+    <widget class="QPushButton" name="dataVisualizationPushButton">
+     <property name="text">
+      <string>Charts</string>
+     </property>
+    </widget>
+   </item>
+   <item row="13" column="12" colspan="2">
+    <widget class="QLabel" name="label_14">
+     <property name="text">
+      <string>Tx frames</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="15">
+    <widget class="QLabel" name="label">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Ignored" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Rx status</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="19" column="12" colspan="3">
+    <widget class="QPushButton" name="resetTxCountPushButton">
+     <property name="text">
+      <string>ResetTx</string>
      </property>
     </widget>
    </item>
@@ -46,38 +135,190 @@
      </property>
     </widget>
    </item>
-   <item row="30" column="12" colspan="2">
-    <widget class="QPushButton" name="timingSendingPushButton">
+   <item row="21" column="10">
+    <widget class="QLabel" name="label_17">
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
      <property name="text">
-      <string>Timing</string>
+      <string>CRC value</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
      </property>
     </widget>
    </item>
-   <item row="31" column="10">
-    <widget class="QPushButton" name="sendPresetPushButton">
-     <property name="text">
-      <string>Preset</string>
+   <item row="23" column="1">
+    <widget class="QComboBox" name="crcParameterModelsComboBox">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
     </widget>
    </item>
-   <item row="30" column="0">
-    <widget class="QLabel" name="label_23">
+   <item row="13" column="15">
+    <widget class="QLabel" name="txFramesLabel">
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+    color:blue
+}</string>
+     </property>
      <property name="text">
-      <string>Text format</string>
+      <string notr="true">0</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
      </property>
     </widget>
    </item>
-   <item row="31" column="0">
-    <widget class="QPushButton" name="readinFilePushButton">
+   <item row="22" column="12" colspan="3">
+    <widget class="QPushButton" name="transmissionSettingPushButton">
      <property name="text">
-      <string>Import</string>
+      <string>Emit</string>
      </property>
     </widget>
    </item>
-   <item row="27" column="0" colspan="2">
+   <item row="7" column="15">
+    <widget class="QCheckBox" name="showTxDataCheckBox">
+     <property name="text">
+      <string>Show tx</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="21" column="2">
+    <widget class="QLabel" name="label_26">
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+    color:green
+}</string>
+     </property>
+     <property name="text">
+      <string>Data input</string>
+     </property>
+    </widget>
+   </item>
+   <item row="24" column="1">
+    <widget class="QComboBox" name="inputModelComboBox">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="25" column="10" rowspan="3">
+    <widget class="QPushButton" name="sendPresetPushButton">
+     <property name="text">
+      <string>Preset</string>
+     </property>
+    </widget>
+   </item>
+   <item row="25" column="4" rowspan="3" colspan="2">
+    <widget class="Line" name="line_5">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="25" column="7" rowspan="3">
+    <widget class="QPushButton" name="crcSettingsPushButton">
+     <property name="text">
+      <string>CRCSettings</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2">
+    <widget class="QLabel" name="label_3">
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+    color:green
+}</string>
+     </property>
+     <property name="text">
+      <string>Data output</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="15">
+    <widget class="QCheckBox" name="autoWrapCheckBox">
+     <property name="text">
+      <string>auto wrap</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="22" column="15">
+    <widget class="QPushButton" name="analyzerPushButton">
+     <property name="text">
+      <string>Analyzer</string>
+     </property>
+    </widget>
+   </item>
+   <item row="11" column="12" colspan="4">
+    <widget class="Line" name="line_4">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="23" column="15">
+    <widget class="QPushButton" name="highlightSettingPushButton">
+     <property name="text">
+      <string>Highlight</string>
+     </property>
+    </widget>
+   </item>
+   <item row="12" column="15">
+    <widget class="QLabel" name="txSpeedLabel">
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+    color:blue
+}</string>
+     </property>
+     <property name="text">
+      <string notr="true">0B/s</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="21" column="3" colspan="2">
+    <widget class="QLabel" name="infoLabel">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="25" column="11" rowspan="3">
+    <widget class="QPushButton" name="sendPushButton">
+     <property name="text">
+      <string>Send</string>
+     </property>
+    </widget>
+   </item>
+   <item row="22" column="0">
+    <widget class="QCheckBox" name="cycleEnableCheckBox">
+     <property name="toolTip">
+      <string/>
+     </property>
+     <property name="statusTip">
+      <string/>
+     </property>
+     <property name="text">
+      <string>Timing</string>
+     </property>
+    </widget>
+   </item>
+   <item row="21" column="0" colspan="2">
     <widget class="QLabel" name="label_28">
      <property name="styleSheet">
       <string notr="true">QLabel{
@@ -89,50 +330,169 @@
      </property>
     </widget>
    </item>
-   <item row="12" column="12" colspan="4">
-    <widget class="Line" name="line_4">
+   <item row="26" column="5" colspan="2">
+    <widget class="QCheckBox" name="addCRCCheckBox">
+     <property name="text">
+      <string>AddCRC</string>
+     </property>
+    </widget>
+   </item>
+   <item row="25" column="3" rowspan="3">
+    <spacer name="horizontalSpacer">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
-    </widget>
-   </item>
-   <item row="29" column="12" colspan="2">
-    <widget class="QPushButton" name="autoResponseSettingPushButton">
-     <property name="text">
-      <string>Response</string>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
      </property>
-    </widget>
+    </spacer>
    </item>
-   <item row="3" column="12" colspan="2">
-    <widget class="QLabel" name="txLabel">
-     <property name="styleSheet">
-      <string notr="true">QLabel{
-    color:blue
-}</string>
-     </property>
+   <item row="24" column="0">
+    <widget class="QLabel" name="label_23">
      <property name="text">
-      <string notr="true">Tx&gt;&gt;&gt;&gt;&gt;</string>
+      <string>Text format</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
      </property>
     </widget>
    </item>
-   <item row="28" column="14" colspan="2">
-    <widget class="QPushButton" name="analyzerPushButton">
-     <property name="text">
-      <string>Analyzer</string>
+   <item row="4" column="15">
+    <widget class="QComboBox" name="outputTextFormatComboBox"/>
+   </item>
+   <item row="18" column="12" colspan="4">
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
      </property>
     </widget>
    </item>
-   <item row="6" column="12" colspan="2">
-    <widget class="QCheckBox" name="showDateCheckBox">
+   <item row="25" column="0" rowspan="3">
+    <widget class="QPushButton" name="readinFilePushButton">
      <property name="text">
-      <string>Show date</string>
+      <string>Import</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="14" colspan="2">
+   <item row="10" column="12" colspan="3">
+    <widget class="QLabel" name="label_10">
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+    color:green
+}</string>
+     </property>
+     <property name="text">
+      <string>Data statistics</string>
+     </property>
+    </widget>
+   </item>
+   <item row="25" column="1" rowspan="3">
+    <widget class="QPushButton" name="saveInputDataPushButton">
+     <property name="text">
+      <string>Save2File</string>
+     </property>
+    </widget>
+   </item>
+   <item row="17" column="15">
+    <widget class="QLabel" name="rxBytesLabel">
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+    color:red
+}</string>
+     </property>
+     <property name="text">
+      <string notr="true">0</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="12" colspan="3">
+    <widget class="QCheckBox" name="showTimeCheckBox">
+     <property name="text">
+      <string>Show time</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="24" column="12" colspan="3">
+    <widget class="QPushButton" name="timingSendingPushButton">
+     <property name="text">
+      <string>Timing</string>
+     </property>
+    </widget>
+   </item>
+   <item row="15" column="12" colspan="2">
+    <widget class="QLabel" name="label_11">
+     <property name="text">
+      <string>Rx speed</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="23" column="12" colspan="3">
+    <widget class="QPushButton" name="autoResponseSettingPushButton">
+     <property name="text">
+      <string>Response</string>
+     </property>
+    </widget>
+   </item>
+   <item row="15" column="15">
+    <widget class="QLabel" name="rxSpeedLabel">
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+    color:red
+}</string>
+     </property>
+     <property name="text">
+      <string notr="true">0B/s</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="12" colspan="3">
+    <widget class="QPushButton" name="clearOutputPushButton">
+     <property name="text">
+      <string>Clear</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="12" colspan="3">
+    <widget class="QLabel" name="label_5">
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+    color:green
+}</string>
+     </property>
+     <property name="text">
+      <string>Output settings</string>
+     </property>
+    </widget>
+   </item>
+   <item row="12" column="12" colspan="2">
+    <widget class="QLabel" name="label_13">
+     <property name="text">
+      <string>Tx speed</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="15">
     <widget class="QLabel" name="rxLabel">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -153,74 +513,156 @@
      </property>
     </widget>
    </item>
-   <item row="9" column="14" colspan="2">
-    <widget class="QPushButton" name="outputFilePathPushButton">
+   <item row="16" column="12" colspan="2">
+    <widget class="QLabel" name="label_16">
      <property name="text">
-      <string>Parameters</string>
-     </property>
-    </widget>
-   </item>
-   <item row="28" column="0">
-    <widget class="QCheckBox" name="cycleEnableCheckBox">
-     <property name="toolTip">
-      <string/>
-     </property>
-     <property name="statusTip">
-      <string/>
-     </property>
-     <property name="text">
-      <string>Timing</string>
-     </property>
-    </widget>
-   </item>
-   <item row="13" column="14" colspan="2">
-    <widget class="QLabel" name="txSpeedLabel">
-     <property name="styleSheet">
-      <string notr="true">QLabel{
-    color:blue
-}</string>
-     </property>
-     <property name="text">
-      <string notr="true">0B/s</string>
+      <string>Rx frames</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
      </property>
     </widget>
    </item>
-   <item row="6" column="14" colspan="2">
-    <widget class="QCheckBox" name="autoWrapCheckBox">
+   <item row="25" column="8" rowspan="3">
+    <widget class="Line" name="line_6">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="12" colspan="3">
+    <widget class="QCheckBox" name="showDateCheckBox">
      <property name="text">
-      <string>auto wrap</string>
+      <string>Show date</string>
+     </property>
+    </widget>
+   </item>
+   <item row="19" column="15">
+    <widget class="QPushButton" name="resetRxCountPushButton">
+     <property name="text">
+      <string>ResetRx</string>
+     </property>
+    </widget>
+   </item>
+   <item row="23" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>CRC model</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="15">
+    <widget class="QCheckBox" name="showMsCheckBox">
+     <property name="text">
+      <string>Show ms</string>
+     </property>
+    </widget>
+   </item>
+   <item row="14" column="12" colspan="2">
+    <widget class="QLabel" name="label_15">
+     <property name="text">
+      <string>Tx bytes</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="12" colspan="2">
+    <widget class="QCheckBox" name="showRxDataCheckBox">
+     <property name="text">
+      <string>Show rx</string>
      </property>
      <property name="checked">
       <bool>true</bool>
      </property>
     </widget>
    </item>
-   <item row="13" column="12" colspan="2">
-    <widget class="QLabel" name="label_13">
+   <item row="24" column="15">
+    <widget class="QPushButton" name="moreSettingsPushButton">
      <property name="text">
-      <string>Tx speed</string>
+      <string>More&gt;&gt;&gt;</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="12">
+    <widget class="QLabel" name="txLabel">
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+    color:blue
+}</string>
+     </property>
+     <property name="text">
+      <string notr="true">Tx&gt;&gt;&gt;&gt;&gt;</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
      </property>
     </widget>
    </item>
-   <item row="11" column="12" colspan="4">
-    <widget class="QLabel" name="label_10">
+   <item row="22" column="2" rowspan="3" colspan="10">
+    <widget class="QTextEdit" name="inputTextEdit">
+     <property name="html">
+      <string notr="true">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="placeholderText">
+      <string notr="true">免责声明与责任限制：本软件（本软件指的是包括但不限于可执行程序包、源码及相关说明文档的集合）不带任何明示或默示的担保。在任何情况下，开发者或版权所有者不对任何人因使用本软件而引发的任何直接或间接损失承担责任，不论因何种原因导致或者基于何种法律理论,即使其曾被建议有此种损失的可能性。</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="12" colspan="4">
+    <widget class="Line" name="line_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="2">
+    <widget class="Line" name="line_3">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="2">
+    <widget class="QLabel" name="label_4">
      <property name="styleSheet">
       <string notr="true">QLabel{
     color:green
 }</string>
      </property>
      <property name="text">
-      <string>Data statistics</string>
+      <string>Device control</string>
      </property>
     </widget>
    </item>
-   <item row="27" column="11">
+   <item row="16" column="15">
+    <widget class="QLabel" name="rxFramesLabel">
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+    color:red
+}</string>
+     </property>
+     <property name="text">
+      <string notr="true">0</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="15">
+    <widget class="QPushButton" name="outputFilePathPushButton">
+     <property name="text">
+      <string>Parameters</string>
+     </property>
+    </widget>
+   </item>
+   <item row="21" column="11">
     <widget class="QLabel" name="crcLabel">
      <property name="styleSheet">
       <string notr="true">QLabel{
@@ -235,19 +677,56 @@
      </property>
     </widget>
    </item>
-   <item row="20" column="12" colspan="2">
-    <widget class="QPushButton" name="resetTxCountPushButton">
+   <item row="25" column="9" rowspan="3">
+    <widget class="QPushButton" name="presetPushButton">
      <property name="text">
-      <string>ResetTx</string>
+      <string>SetPreset</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="12" colspan="4">
-    <widget class="Line" name="line_2">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+   <item row="9" column="15">
+    <widget class="QPushButton" name="saveOutputPushButton">
+     <property name="text">
+      <string>Save</string>
      </property>
     </widget>
+   </item>
+   <item row="1" column="2" rowspan="20" colspan="10">
+    <widget class="QTextBrowser" name="outputTextBroswer">
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#aaaa7f;&quot;&gt;Get source from gitee:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#aaaa7f;&quot;&gt;https://gitee.com/qsaker/QtSwissArmyKnife&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; color:#aaaa7f;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#aaaa7f;&quot;&gt;Get source from github:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#aaaa7f;&quot;&gt;https://github.com/qsaker/QtSwissArmyKnife&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; color:#aaaa7f;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#aaaa7f;&quot;&gt;Download from gitee:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#aaaa7f;&quot;&gt;https://gitee.com/qsaker/QtSwissArmyKnife/releases&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; color:#aaaa7f;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#aaaa7f;&quot;&gt;Download from github:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#aaaa7f;&quot;&gt;https://github.com/qsaker/QtSwissArmyKnife/releases&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; color:#aaaa7f;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#0000ff;&quot;&gt;Users exchange QQ groups:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#0000ff;&quot;&gt;952218522&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </item>
+   <item row="20" column="12">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
    </item>
    <item row="2" column="0" rowspan="19" colspan="2">
     <widget class="QFrame" name="frame">
@@ -323,13 +802,6 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="0">
-       <widget class="QPushButton" name="refreshPushButton">
-        <property name="text">
-         <string>Refresh</string>
-        </property>
-       </widget>
-      </item>
       <item row="2" column="1">
        <widget class="QPushButton" name="switchPushButton">
         <property name="text">
@@ -347,7 +819,7 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="1">
+      <item row="2" column="0">
        <widget class="QPushButton" name="deviceMorePushButton">
         <property name="text">
          <string>More</string>
@@ -355,500 +827,6 @@
        </widget>
       </item>
      </layout>
-    </widget>
-   </item>
-   <item row="21" column="13">
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="29" column="14" colspan="2">
-    <widget class="QPushButton" name="highlightSettingPushButton">
-     <property name="text">
-      <string>Highlight</string>
-     </property>
-    </widget>
-   </item>
-   <item row="16" column="14" colspan="2">
-    <widget class="QLabel" name="rxSpeedLabel">
-     <property name="styleSheet">
-      <string notr="true">QLabel{
-    color:red
-}</string>
-     </property>
-     <property name="text">
-      <string notr="true">0B/s</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="12" colspan="2">
-    <widget class="QCheckBox" name="showTimeCheckBox">
-     <property name="text">
-      <string>Show time</string>
-     </property>
-     <property name="checked">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="14" colspan="2">
-    <widget class="QComboBox" name="outputTextFormatComboBox"/>
-   </item>
-   <item row="31" column="8">
-    <widget class="Line" name="line_6">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0" colspan="2">
-    <widget class="Line" name="line_3">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="29" column="0">
-    <widget class="QLabel" name="label_2">
-     <property name="text">
-      <string>CRC model</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="12" colspan="2">
-    <widget class="QLabel" name="label_12">
-     <property name="text">
-      <string>Text format</string>
-     </property>
-    </widget>
-   </item>
-   <item row="28" column="12" colspan="2">
-    <widget class="QPushButton" name="transmissionSettingPushButton">
-     <property name="text">
-      <string>Emit</string>
-     </property>
-    </widget>
-   </item>
-   <item row="16" column="12" colspan="2">
-    <widget class="QLabel" name="label_11">
-     <property name="text">
-      <string>Rx speed</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="31" column="6">
-    <widget class="QCheckBox" name="addCRCCheckBox">
-     <property name="text">
-      <string>AddCRC</string>
-     </property>
-    </widget>
-   </item>
-   <item row="28" column="1">
-    <widget class="QLineEdit" name="cycleTimeLineEdit">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-    </widget>
-   </item>
-   <item row="30" column="14" colspan="2">
-    <widget class="QPushButton" name="moreSettingsPushButton">
-     <property name="text">
-      <string>More&gt;&gt;&gt;</string>
-     </property>
-    </widget>
-   </item>
-   <item row="9" column="12" colspan="2">
-    <widget class="QCheckBox" name="saveOutputToFileCheckBox">
-     <property name="toolTip">
-      <string>Enable to write data to file</string>
-     </property>
-     <property name="text">
-      <string>Write2File</string>
-     </property>
-    </widget>
-   </item>
-   <item row="31" column="1">
-    <widget class="QPushButton" name="saveInputDataPushButton">
-     <property name="text">
-      <string>Save2File</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="12" colspan="4">
-    <widget class="QLabel" name="label_5">
-     <property name="styleSheet">
-      <string notr="true">QLabel{
-    color:green
-}</string>
-     </property>
-     <property name="text">
-      <string>Output settings</string>
-     </property>
-    </widget>
-   </item>
-   <item row="14" column="14" colspan="2">
-    <widget class="QLabel" name="txFramesLabel">
-     <property name="styleSheet">
-      <string notr="true">QLabel{
-    color:blue
-}</string>
-     </property>
-     <property name="text">
-      <string notr="true">0</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="31" column="3">
-    <spacer name="horizontalSpacer">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>40</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="31" column="2">
-    <widget class="QPushButton" name="clearInputPushButton">
-     <property name="text">
-      <string>Clear</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="2" colspan="10">
-    <widget class="QLabel" name="label_3">
-     <property name="styleSheet">
-      <string notr="true">QLabel{
-    color:green
-}</string>
-     </property>
-     <property name="text">
-      <string>Data output</string>
-     </property>
-    </widget>
-   </item>
-   <item row="27" column="12" colspan="4">
-    <widget class="QLabel" name="label_9">
-     <property name="styleSheet">
-      <string notr="true">QLabel{
-    color:green
-}</string>
-     </property>
-     <property name="text">
-      <string>Other settings</string>
-     </property>
-    </widget>
-   </item>
-   <item row="27" column="2">
-    <widget class="QLabel" name="label_26">
-     <property name="styleSheet">
-      <string notr="true">QLabel{
-    color:green
-}</string>
-     </property>
-     <property name="text">
-      <string>Data input</string>
-     </property>
-    </widget>
-   </item>
-   <item row="31" column="9">
-    <widget class="QPushButton" name="presetPushButton">
-     <property name="text">
-      <string>SetPreset</string>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="14" colspan="2">
-    <widget class="QCheckBox" name="showMsCheckBox">
-     <property name="text">
-      <string>Show ms</string>
-     </property>
-    </widget>
-   </item>
-   <item row="30" column="1">
-    <widget class="QComboBox" name="inputModelComboBox">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-    </widget>
-   </item>
-   <item row="31" column="11">
-    <widget class="QPushButton" name="sendPushButton">
-     <property name="text">
-      <string>Send</string>
-     </property>
-    </widget>
-   </item>
-   <item row="29" column="1">
-    <widget class="QComboBox" name="crcParameterModelsComboBox">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-    </widget>
-   </item>
-   <item row="8" column="12" colspan="2">
-    <widget class="QCheckBox" name="showRxDataCheckBox">
-     <property name="text">
-      <string>Show rx</string>
-     </property>
-     <property name="checked">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="15" column="12" colspan="2">
-    <widget class="QLabel" name="label_15">
-     <property name="text">
-      <string>Tx bytes</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="19" column="12" colspan="4">
-    <widget class="Line" name="line">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="18" column="12" colspan="2">
-    <widget class="QLabel" name="label_18">
-     <property name="text">
-      <string>Rx bytes</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="18" column="14" colspan="2">
-    <widget class="QLabel" name="rxBytesLabel">
-     <property name="layoutDirection">
-      <enum>Qt::LeftToRight</enum>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QLabel{
-    color:red
-}</string>
-     </property>
-     <property name="text">
-      <string notr="true">0</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="17" column="12" colspan="2">
-    <widget class="QLabel" name="label_16">
-     <property name="text">
-      <string>Rx frames</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="27" column="10">
-    <widget class="QLabel" name="label_17">
-     <property name="layoutDirection">
-      <enum>Qt::LeftToRight</enum>
-     </property>
-     <property name="text">
-      <string>CRC value</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="28" column="2" rowspan="3" colspan="10">
-    <widget class="QTextEdit" name="inputTextEdit">
-     <property name="html">
-      <string notr="true">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-     <property name="placeholderText">
-      <string notr="true">免责声明与责任限制：本软件（本软件指的是包括但不限于可执行程序包、源码及相关说明文档的集合）不带任何明示或默示的担保。在任何情况下，开发者或版权所有者不对任何人因使用本软件而引发的任何直接或间接损失承担责任，不论因何种原因导致或者基于何种法律理论,即使其曾被建议有此种损失的可能性。</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="2" rowspan="21" colspan="10">
-    <widget class="QTextBrowser" name="outputTextBroswer">
-     <property name="html">
-      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#aaaa7f;&quot;&gt;Get source from gitee:&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#aaaa7f;&quot;&gt;https://gitee.com/qsaker/QtSwissArmyKnife&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; color:#aaaa7f;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#aaaa7f;&quot;&gt;Get source from github:&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#aaaa7f;&quot;&gt;https://github.com/qsaker/QtSwissArmyKnife&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; color:#aaaa7f;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#aaaa7f;&quot;&gt;Download from gitee:&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#aaaa7f;&quot;&gt;https://gitee.com/qsaker/QtSwissArmyKnife/releases&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; color:#aaaa7f;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#aaaa7f;&quot;&gt;Download from github:&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#aaaa7f;&quot;&gt;https://github.com/qsaker/QtSwissArmyKnife/releases&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; color:#aaaa7f;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#0000ff;&quot;&gt;Users exchange QQ groups:&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#0000ff;&quot;&gt;952218522&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-   </item>
-   <item row="27" column="3" colspan="7">
-    <widget class="QLabel" name="infoLabel">
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="14" colspan="2">
-    <widget class="QLabel" name="label">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Ignored" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>Rx status</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="8" column="14" colspan="2">
-    <widget class="QCheckBox" name="showTxDataCheckBox">
-     <property name="text">
-      <string>Show tx</string>
-     </property>
-     <property name="checked">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="15" column="14" colspan="2">
-    <widget class="QLabel" name="txBytesLabel">
-     <property name="styleSheet">
-      <string notr="true">QLabel{
-    color:blue
-}</string>
-     </property>
-     <property name="text">
-      <string notr="true">0</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="10" column="12" colspan="2">
-    <widget class="QPushButton" name="clearOutputPushButton">
-     <property name="text">
-      <string>Clear</string>
-     </property>
-    </widget>
-   </item>
-   <item row="10" column="14" colspan="2">
-    <widget class="QPushButton" name="saveOutputPushButton">
-     <property name="text">
-      <string>Save</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0" colspan="2">
-    <widget class="QLabel" name="label_4">
-     <property name="styleSheet">
-      <string notr="true">QLabel{
-    color:green
-}</string>
-     </property>
-     <property name="text">
-      <string>Device control</string>
-     </property>
-    </widget>
-   </item>
-   <item row="20" column="14" colspan="2">
-    <widget class="QPushButton" name="resetRxCountPushButton">
-     <property name="text">
-      <string>ResetRx</string>
-     </property>
-    </widget>
-   </item>
-   <item row="17" column="14" colspan="2">
-    <widget class="QLabel" name="rxFramesLabel">
-     <property name="styleSheet">
-      <string notr="true">QLabel{
-    color:red
-}</string>
-     </property>
-     <property name="text">
-      <string notr="true">0</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="31" column="14" colspan="2">
-    <widget class="QPushButton" name="dataVisualizationPushButton">
-     <property name="text">
-      <string>Charts</string>
-     </property>
-    </widget>
-   </item>
-   <item row="14" column="12" colspan="2">
-    <widget class="QLabel" name="label_14">
-     <property name="text">
-      <string>Tx frames</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="31" column="7">
-    <widget class="QPushButton" name="crcSettingsPushButton">
-     <property name="text">
-      <string>CRCSettings</string>
-     </property>
     </widget>
    </item>
   </layout>
