@@ -54,7 +54,6 @@ SAKApplication::SAKApplication(int argc, char **argv)
     mSettingsKeyContext.removeDatabase = QString("%1/removeDatabase").arg(applicationName());
     mSettingsKeyContext.language = QString("%1/language").arg(applicationName());
     mSettingsKeyContext.appStyle = QString("%1/appStyle").arg(applicationName());
-    mSettingsKeyContext.clearConfiguration = QString("%1/clearConfiguration").arg(applicationName());
 
     // Initialize the settings file
     QString path = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);

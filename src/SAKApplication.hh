@@ -36,7 +36,6 @@ public:
         QString removeDatabase;
         QString language;
         QString appStyle;
-        QString clearConfiguration;
     };
 
     void installLanguage();
