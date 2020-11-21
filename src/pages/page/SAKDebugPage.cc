@@ -364,7 +364,7 @@ void SAKDebugPage::initializePage()
     }
 
     // Create "Refresh" action.
-    deviceMorePushButtonMenu = new QMenu;
+    deviceMorePushButtonMenu = new QMenu(mDeviceMorePushButton);
     mDeviceMorePushButton->setMenu(deviceMorePushButtonMenu);
     mRefreshAction = new QAction(tr("Refresh"), deviceMorePushButtonMenu);
     deviceMorePushButtonMenu->addAction(mRefreshAction);
