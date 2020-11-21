@@ -11,7 +11,6 @@
 #define SAKTOOLSTRINGASSISTANT_HH
 
 #include <QDialog>
-#include "SAKCommonDataStructure.hh"
 
 namespace Ui {
     class SAKToolStringAssistant;
@@ -27,7 +26,6 @@ private:
 private slots:
     void on_textEdit_textChanged();
     void on_inputFormatComboBox_currentIndexChanged(int index);
-    void on_hexRawDataCheckBox_clicked();
     void on_outputFormatComboBox_activated(const QString &arg1);
     void on_createPushButton_clicked();
 };
