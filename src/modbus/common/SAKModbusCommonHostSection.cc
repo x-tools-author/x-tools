@@ -10,6 +10,7 @@
 #include <QHostAddress>
 #include <QNetworkInterface>
 
+#include "SAKCommonInterface.hh"
 #include "SAKModbusCommonHostSection.hh"
 #include "ui_SAKModbusCommonHostSection.h"
 
@@ -18,24 +19,7 @@ SAKModbusCommonHostSection::SAKModbusCommonHostSection(QWidget *parent)
     ,ui(new Ui::SAKModbusCommonHostSection)
 {
     ui->setupUi(this);
-
-    QString localHost("127.0.0.1");
-    auto comboBox = ui->hostComboBox;
-    comboBox->clear();
-    comboBox->addItem(QString("::"));
-    comboBox->addItem(QString("::1"));
-    comboBox->addItem(QString("0.0.0.0"));
-    comboBox->addItem(localHost);
-    QList<QHostAddress> addresses = QNetworkInterface::allAddresses();
-    for(auto var:addresses){
-        if (var.protocol() == QAbstractSocket::IPv4Protocol) {
-            if (var.toString().compare(localHost) == 0){
-                continue;
-            }
-            comboBox->addItem(var.toString());
-        }
-    }
-    comboBox->setCurrentText(localHost);
+    SAKCommonInterface::addIpItemsToComboBox(ui->hostComboBox);
 }
 
 SAKModbusCommonHostSection::~SAKModbusCommonHostSection()
