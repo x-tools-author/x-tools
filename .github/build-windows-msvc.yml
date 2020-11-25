@@ -1,0 +1,50 @@
+name: build-windows-msvc
+on:
+  push
+  
+jobs:
+  build-test:
+    name: Build the project on windows platform with Qt5
+    runs-on: windows-2019
+    strategy:
+      matrix:
+        qt_ver: [5.15.2]
+        qt_target: [desktop]
+        qt_arch: [win32_msvc2019, win64_msvc2019_64]
+        include:
+          - qt_arch: win32_msvc2019
+            msvc_arch: x86
+            qt_arch_install: msvc2019
+          - qt_arch: win64_msvc2019_64
+            msvc_arch: x64
+            qt_arch_install: msvc2019_64
+    steps:
+      # Cache Qt
+      - name: cacheQt
+        id: WindowsCacheQt
+        uses: actions/cache@v1
+        with:
+          path: ../Qt/${{matrix.qt_ver}}/${{matrix.qt_arch_install}}
+          key: ${{ runner.os }}-Qt/${{matrix.qt_ver}}/${{matrix.qt_arch}}
+      # Install Qt
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v2.10.0
+        with:
+          version: ${{ matrix.qt_ver }}
+          target: ${{ matrix.qt_target }}
+          arch: ${{ matrix.qt_arch }}
+          cached: ${{steps.WindowsCacheQt.outputs.cache-hit }}
+      # Pull code and checkout.
+      - name: Pull code
+        uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+      # Build the project
+      - name: build-msvc
+        shell: cmd
+        env:
+          vc_arch: ${{ matrix.msvc_arch }}
+        run: |
+          call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" %vc_arch%
+          qmake
+          nmake
