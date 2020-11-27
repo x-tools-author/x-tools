@@ -12,6 +12,7 @@
 
 #include <QObject>
 #include <QLineEdit>
+#include <QComboBox>
 
 /// @brief This class provides interfaces to replace the functions introduced in the new version of Qt
 /// so that the old version of Qt can also compile the project.
