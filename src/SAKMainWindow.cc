@@ -572,7 +572,7 @@ void SAKMainWindow::initializingMetaObject()
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeWebSocketServer, SAKWebSocketServerDebugPage::staticMetaObject, tr("WS-S")});
 #endif
 #ifdef SAK_IMPORT_MODULE_SERIALBUS
-    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeModbus, SAKModbusDebugPage::staticMetaObject, tr("Modbus Rtu")});
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeModbus, SAKModbusDebugPage::staticMetaObject, tr("Modbus")});
 #endif
 }
 
