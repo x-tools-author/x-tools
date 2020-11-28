@@ -1,8 +1,6 @@
 name: build-windows-msvc
 on:
-  push
-   branches:    
-      - master
+  push: master
   
 jobs:
   build-test:
