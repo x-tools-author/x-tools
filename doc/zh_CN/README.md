@@ -41,7 +41,7 @@ sudo apt-get install libqt5serialport5 libqt5serialport5-dev -y
 sudo apt-get install libqt5charts5 libqt5charts5-dev -y
 ```
 
-Note: QCharts module can not be identified when building from command line.
+注意: 命令行构建无法识别QCharts模块。
 
 #### 拉取并构建工程
 
