@@ -75,7 +75,7 @@ make
 
 Qt 5.15.x，other versions may be available, you can have a try.
 
-## The Funcstion of QtSwissArmyKnife
+## Have a Look
 
 ![MainWindow.png](MainWindow.png)
 
