@@ -41,18 +41,13 @@ DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs depr
 CONFIG += c++11
 
 #Sub project
-#include(SAKHID.pri)
-#include(SAKUSB.pri)
-#include(SAKSCTP.pri)
 include(SAKSetup.pri)
 include(SAKTools.pri)
 include(SAKCommon.pri)
 include(SAKCharts.pri)
 include(SAKModbus.pri)
 include(SAKModules.pri)
-#include(SAKBluetooth.pri)
 include(SAKWebSocket.pri)
-#include(SAKSslSocket.pri)
 include(SAKSerialPort.pri)
 
 exists(private/SAKPrivate.pri){
