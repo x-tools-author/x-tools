@@ -13,25 +13,25 @@ jobs:
     strategy:
       matrix:
         qt_target: [desktop]
-        qt_arch: [win32_msvc2017, win64_msvc2017_64, win32_msvc2019, win64_msvc2019_64]
+        #qt_arch: [win32_msvc2017, win64_msvc2017_64, win32_msvc2019, win64_msvc2019_64]
         include:
-          - qt_arch: win64_msvc2017_64
+          - qt_arch: qt5.9_win64_msvc2017_64
             qt_ver: 5.9.9
             msvc_arch: x64
-            qt_arch_install: msvc2017
-          - qt_arch: win32_msvc2017
+            qt_arch_install: msvc2017_64
+          - qt_arch: qt5.12_win32_msvc2017
             qt_ver: 5.12.10
             msvc_arch: x86
             qt_arch_install: msvc2017
-          - qt_arch: win64_msvc2017_64
+          - qt_arch: qt5.12_win64_msvc2017_64
             qt_ver: 5.12.10
             msvc_arch: x64
             qt_arch_install: msvc2017_64
-          - qt_arch: win32_msvc2019
+          - qt_arch: qt5.15_win32_msvc2019
             qt_ver: 5.15.2
             msvc_arch: x86
             qt_arch_install: msvc2019
-          - qt_arch: win64_msvc2019_64
+          - qt_arch: qt5.15_win64_msvc2019_64
             qt_ver: 5.15.2
             msvc_arch: x64
             qt_arch_install: msvc2019_64
