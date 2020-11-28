@@ -115,10 +115,10 @@ void SAKCommonInterface::addSerialPortDataBitItemsToComboBox(QComboBox *comboBox
 {
     if (comboBox){
         comboBox->clear();
-        comboBox->addItem("8", QVariant::fromValue(QSerialPort::Data8));
-        comboBox->addItem("7", QVariant::fromValue(QSerialPort::Data7));
-        comboBox->addItem("6", QVariant::fromValue(QSerialPort::Data6));
-        comboBox->addItem("5", QVariant::fromValue(QSerialPort::Data5));
+        comboBox->addItem("8", QVariant::fromValue(int(QSerialPort::Data8)));
+        comboBox->addItem("7", QVariant::fromValue(int(QSerialPort::Data7)));
+        comboBox->addItem("6", QVariant::fromValue(int(QSerialPort::Data6)));
+        comboBox->addItem("5", QVariant::fromValue(int(QSerialPort::Data5)));
     }
 }
 #endif
@@ -128,11 +128,11 @@ void SAKCommonInterface::addSerialPortStopBitItemsToComboBox(QComboBox *comboBox
 {
     if (comboBox){
         comboBox->clear();
-        comboBox->addItem("1", QVariant::fromValue(QSerialPort::OneStop));
+        comboBox->addItem("1", QVariant::fromValue(int(QSerialPort::OneStop)));
 #ifdef Q_OS_WINDOWS
-        comboBox->addItem("1.5", QVariant::fromValue(QSerialPort::OneAndHalfStop));
+        comboBox->addItem("1.5", QVariant::fromValue(int(QSerialPort::OneAndHalfStop)));
 #endif
-        comboBox->addItem("2", QVariant::fromValue(QSerialPort::TwoStop));
+        comboBox->addItem("2", QVariant::fromValue(int(QSerialPort::TwoStop)));
     }
 }
 #endif
@@ -142,11 +142,11 @@ void SAKCommonInterface::addSerialPortParityItemsToComboBox(QComboBox *comboBox)
 {
     if (comboBox){
         comboBox->clear();
-        comboBox->addItem(tr("No"), QVariant::fromValue(QSerialPort::NoParity));
-        comboBox->addItem(tr("Even"), QVariant::fromValue(QSerialPort::EvenParity));
-        comboBox->addItem(tr("Odd"), QVariant::fromValue(QSerialPort::OddParity));
-        comboBox->addItem(tr("Space"), QVariant::fromValue(QSerialPort::SpaceParity));
-        comboBox->addItem(tr("Mark"), QVariant::fromValue(QSerialPort::MarkParity));
+        comboBox->addItem(tr("No"), QVariant::fromValue(int(QSerialPort::NoParity)));
+        comboBox->addItem(tr("Even"), QVariant::fromValue(int(QSerialPort::EvenParity)));
+        comboBox->addItem(tr("Odd"), QVariant::fromValue(int(QSerialPort::OddParity)));
+        comboBox->addItem(tr("Space"), QVariant::fromValue(int(QSerialPort::SpaceParity)));
+        comboBox->addItem(tr("Mark"), QVariant::fromValue(int(QSerialPort::MarkParity)));
     }
 }
 #endif
@@ -156,9 +156,9 @@ void SAKCommonInterface::addSerialPortFlowControlItemsToComboBox(QComboBox *comb
 {
     if (comboBox){
         comboBox->clear();
-        comboBox->addItem(tr("No"), QVariant::fromValue(QSerialPort::NoFlowControl));
-        comboBox->addItem(tr("Hardware"), QVariant::fromValue(QSerialPort::HardwareControl));
-        comboBox->addItem(tr("Software"), QVariant::fromValue(QSerialPort::SoftwareControl));
+        comboBox->addItem(tr("No"), QVariant::fromValue(int(QSerialPort::NoFlowControl)));
+        comboBox->addItem(tr("Hardware"), QVariant::fromValue(int(QSerialPort::HardwareControl)));
+        comboBox->addItem(tr("Software"), QVariant::fromValue(int(QSerialPort::SoftwareControl)));
     }
 }
 #endif
