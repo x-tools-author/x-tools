@@ -18,7 +18,7 @@ jobs:
         exclude:
           - qt_arch: win32_msvc2017
             qt_ver: 5.9.9, 5.15.2
-          - qt_arch: win32_msvc2017_64
+          - qt_arch: win64_msvc2017_64
             qt_ver: 5.15.2
           - qt_arch: win32_msvc2019
             qt_ver: 5.9.9, 5.12.10
