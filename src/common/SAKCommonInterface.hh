@@ -59,4 +59,13 @@ public:
     static void addIpItemsToComboBox(QComboBox *comboBox, bool appendHostAny = false);
 };
 
+#ifdef SAK_IMPORT_MODULE_SERIALPORT
+#if QT_VERSION < QT_VERSION_CHECK(5, 6, 0)
+Q_DECLARE_METATYPE(QSerialPort::DataBits)
+Q_DECLARE_METATYPE(QSerialPort::StopBits)
+Q_DECLARE_METATYPE(QSerialPort::Parity)
+Q_DECLARE_METATYPE(QSerialPort::FlowControl)
+#endif
+#endif
+
 #endif
