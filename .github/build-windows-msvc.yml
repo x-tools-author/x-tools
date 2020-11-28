@@ -1,7 +1,9 @@
 name: build-windows-msvc
 on:
-  push
-   branches:    
+  # Trigger the workflow on push or pull request,
+  # but only for the main branch
+  push:
+    branches:
       - master
   
 jobs:
