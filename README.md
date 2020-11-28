@@ -73,7 +73,7 @@ make
 
 ## Recommended Development Environment
 
-Qt 5.15.x，other versions may be available, you can have a try.
+Qt 5.15.x, other versions may be available, you can have a try.
 
 ## Have a Look
 
