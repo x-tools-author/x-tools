@@ -2066,355 +2066,365 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="212"/>
+        <location filename="../../src/SAKMainWindow.cc" line="213"/>
         <source>&amp;File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="241"/>
+        <location filename="../../src/SAKMainWindow.cc" line="242"/>
         <source>Exit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="248"/>
+        <location filename="../../src/SAKMainWindow.cc" line="249"/>
         <source>&amp;Tools</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="271"/>
+        <location filename="../../src/SAKMainWindow.cc" line="272"/>
         <source>&amp;Options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="275"/>
+        <location filename="../../src/SAKMainWindow.cc" line="276"/>
         <source>Skin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="326"/>
+        <location filename="../../src/SAKMainWindow.cc" line="327"/>
         <source>&amp;Windows</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="332"/>
+        <location filename="../../src/SAKMainWindow.cc" line="333"/>
         <source>&amp;Languages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="385"/>
+        <location filename="../../src/SAKMainWindow.cc" line="386"/>
         <source>&amp;Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="388"/>
-        <location filename="../../src/SAKMainWindow.cc" line="390"/>
+        <location filename="../../src/SAKMainWindow.cc" line="389"/>
+        <location filename="../../src/SAKMainWindow.cc" line="391"/>
         <source>About Qt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="398"/>
+        <location filename="../../src/SAKMainWindow.cc" line="399"/>
         <source>GitHub</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="401"/>
+        <location filename="../../src/SAKMainWindow.cc" line="402"/>
         <source>Gitee</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="405"/>
+        <location filename="../../src/SAKMainWindow.cc" line="406"/>
         <source>Check for Update</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="409"/>
-        <location filename="../../src/SAKMainWindow.cc" line="595"/>
+        <location filename="../../src/SAKMainWindow.cc" line="410"/>
+        <location filename="../../src/SAKMainWindow.cc" line="620"/>
         <source>Release History</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="421"/>
+        <location filename="../../src/SAKMainWindow.cc" line="422"/>
         <source>&amp;Links</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="470"/>
+        <location filename="../../src/SAKMainWindow.cc" line="495"/>
         <source>Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="471"/>
+        <location filename="../../src/SAKMainWindow.cc" line="496"/>
         <source>Author</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="472"/>
+        <location filename="../../src/SAKMainWindow.cc" line="497"/>
         <source>Email</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="473"/>
+        <location filename="../../src/SAKMainWindow.cc" line="498"/>
         <source>QQ</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="215"/>
+        <location filename="../../src/SAKMainWindow.cc" line="216"/>
         <source>New Page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="228"/>
+        <location filename="../../src/SAKMainWindow.cc" line="229"/>
         <source>New Window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="277"/>
+        <location filename="../../src/SAKMainWindow.cc" line="278"/>
         <source>Qt Default</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="300"/>
+        <location filename="../../src/SAKMainWindow.cc" line="301"/>
         <source>Application Style</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="308"/>
+        <location filename="../../src/SAKMainWindow.cc" line="309"/>
         <source>Enable Testing Page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="319"/>
+        <location filename="../../src/SAKMainWindow.cc" line="320"/>
         <source>Clear Configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="392"/>
+        <location filename="../../src/SAKMainWindow.cc" line="393"/>
         <source>About Application</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="396"/>
+        <location filename="../../src/SAKMainWindow.cc" line="397"/>
         <source>Get Source</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="414"/>
-        <location filename="../../src/SAKMainWindow.cc" line="672"/>
+        <location filename="../../src/SAKMainWindow.cc" line="415"/>
+        <location filename="../../src/SAKMainWindow.cc" line="697"/>
         <source>QR Code</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="430"/>
+        <location filename="../../src/SAKMainWindow.cc" line="431"/>
         <source>Qt Official Download</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="431"/>
+        <location filename="../../src/SAKMainWindow.cc" line="432"/>
         <source>Qt Official Blog</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="432"/>
+        <location filename="../../src/SAKMainWindow.cc" line="433"/>
         <source>Qt Official Release</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="433"/>
+        <location filename="../../src/SAKMainWindow.cc" line="434"/>
         <source>Download SAK from Github</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="434"/>
+        <location filename="../../src/SAKMainWindow.cc" line="435"/>
         <source>Download SAK from Gitee</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="474"/>
+        <location filename="../../src/SAKMainWindow.cc" line="450"/>
+        <source>&amp;Demo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="459"/>
+        <source>Qt SerialPort Demo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="499"/>
         <source>QQ Group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="475"/>
+        <location filename="../../src/SAKMainWindow.cc" line="500"/>
         <source>Build Time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="476"/>
+        <location filename="../../src/SAKMainWindow.cc" line="501"/>
         <source>Copyright</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="477"/>
+        <location filename="../../src/SAKMainWindow.cc" line="502"/>
         <source>Gitee Url</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="478"/>
+        <location filename="../../src/SAKMainWindow.cc" line="503"/>
         <source>Gitbub Url</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="481"/>
+        <location filename="../../src/SAKMainWindow.cc" line="506"/>
         <source>About QSAK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="544"/>
+        <location filename="../../src/SAKMainWindow.cc" line="569"/>
         <source>Test</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="546"/>
+        <location filename="../../src/SAKMainWindow.cc" line="571"/>
         <source>COM</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="549"/>
+        <location filename="../../src/SAKMainWindow.cc" line="574"/>
         <source>HID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="552"/>
+        <location filename="../../src/SAKMainWindow.cc" line="577"/>
         <source>USB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="554"/>
+        <location filename="../../src/SAKMainWindow.cc" line="579"/>
         <source>UDP-C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="555"/>
+        <location filename="../../src/SAKMainWindow.cc" line="580"/>
         <source>UDP-S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="556"/>
+        <location filename="../../src/SAKMainWindow.cc" line="581"/>
         <source>TCP-C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="557"/>
+        <location filename="../../src/SAKMainWindow.cc" line="582"/>
         <source>TCP-S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="559"/>
+        <location filename="../../src/SAKMainWindow.cc" line="584"/>
         <source>SSL-C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="560"/>
+        <location filename="../../src/SAKMainWindow.cc" line="585"/>
         <source>SSL-S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="563"/>
+        <location filename="../../src/SAKMainWindow.cc" line="588"/>
         <source>SCTP-C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="564"/>
+        <location filename="../../src/SAKMainWindow.cc" line="589"/>
         <source>SCTP-S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="567"/>
+        <location filename="../../src/SAKMainWindow.cc" line="592"/>
         <source>Bluetooth-C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="568"/>
+        <location filename="../../src/SAKMainWindow.cc" line="593"/>
         <source>Bluetooth-S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="571"/>
+        <location filename="../../src/SAKMainWindow.cc" line="596"/>
         <source>WS-C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="572"/>
+        <location filename="../../src/SAKMainWindow.cc" line="597"/>
         <source>WS-S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="575"/>
-        <source>Modbus Rtu</source>
+        <location filename="../../src/SAKMainWindow.cc" line="600"/>
+        <source>Modbus</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="582"/>
+        <location filename="../../src/SAKMainWindow.cc" line="607"/>
         <source>File Assistant</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="584"/>
+        <location filename="../../src/SAKMainWindow.cc" line="609"/>
         <source>CRC Assistant</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="585"/>
+        <location filename="../../src/SAKMainWindow.cc" line="610"/>
         <source>Float Assistant</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="586"/>
+        <location filename="../../src/SAKMainWindow.cc" line="611"/>
         <source>String Assistant</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="588"/>
+        <location filename="../../src/SAKMainWindow.cc" line="613"/>
         <source>QR Code Assistant</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="617"/>
+        <location filename="../../src/SAKMainWindow.cc" line="642"/>
         <source>Edit Page Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="619"/>
+        <location filename="../../src/SAKMainWindow.cc" line="644"/>
         <source>Please input the name of tab page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="620"/>
+        <location filename="../../src/SAKMainWindow.cc" line="645"/>
         <source>Tab page name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="623"/>
+        <location filename="../../src/SAKMainWindow.cc" line="648"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="624"/>
+        <location filename="../../src/SAKMainWindow.cc" line="649"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="680"/>
+        <location filename="../../src/SAKMainWindow.cc" line="705"/>
         <source>User QQ Group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="681"/>
+        <location filename="../../src/SAKMainWindow.cc" line="706"/>
         <source>Qt QQ Group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="535"/>
+        <location filename="../../src/SAKMainWindow.cc" line="560"/>
         <source>Reboot application to effective</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="476"/>
+        <location filename="../../src/SAKMainWindow.cc" line="501"/>
         <source>Copyright 2018-%1 Qter. All rights reserved.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="535"/>
+        <location filename="../../src/SAKMainWindow.cc" line="560"/>
         <source>Need to reboot, reboot to effective now?</source>
         <translation type="unfinished"></translation>
     </message>
