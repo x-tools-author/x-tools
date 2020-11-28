@@ -1,10 +1,15 @@
 name: build-ubuntu
-on: 
+on:
   push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
   build-test:
-    name: Build the project on ubuntu platform with Qt5
+    name: Build
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:

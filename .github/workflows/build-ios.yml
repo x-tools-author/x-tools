@@ -1,6 +1,11 @@
 name: build-ios
-on: 
+on:
   push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
   build:

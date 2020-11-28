@@ -1,14 +1,15 @@
 name: build-windows-msvc
 on:
-  # Trigger the workflow on push or pull request,
-  # but only for the main branch
   push:
+    branches:
+      - master
+  pull_request:
     branches:
       - master
   
 jobs:
   build-test:
-    name: Build the project on windows platform with Qt5
+    name: Build
     runs-on: windows-2019
     strategy:
       matrix:
