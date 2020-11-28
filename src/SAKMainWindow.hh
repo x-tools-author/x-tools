@@ -114,6 +114,7 @@ private:
     void initLanguageMenu();
     void initHelpMenu();
     void initLinksMenu();
+    void initDemoMenu();
 
     void changeStylesheet(QString styleSheetName);
     void changeAppStyle(QString appStyle);
