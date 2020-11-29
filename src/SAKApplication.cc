@@ -39,6 +39,11 @@ SAKApplication::SAKApplication(int argc, char **argv)
     setOrganizationName(QString("Qter"));
     setOrganizationDomain(QString("IT"));
     setApplicationName(QString("QtSwissArmyKnife"));
+#ifdef SAK_VERSION
+    setApplicationVersion(SAK_VERSION);
+#else
+    Q_ASSERT_X(false, __FUNCTION__, "You must define the SAK_VERSION micro!");
+#endif
 
     // It can avoid app crash in this way to show a splashScreen.
     // If you new a QSplashScreen and show it in the main function, app will crash(test on Ubuntu 16.04).
