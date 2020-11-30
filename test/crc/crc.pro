@@ -10,8 +10,8 @@ INCLUDEPATH += \
     ../../src/common \
 
 SOURCES += \
-    ../../src/common/SAKCRCInterface.cc \
+    ../../src/common/SAKCommonCrcInterface.cc \
     SAKCRCInterfaceTest.cc
 
 HEADERS += \
-    ../../src/common/SAKCRCInterface.hh
+    ../../src/common/SAKCommonCrcInterface.hh
