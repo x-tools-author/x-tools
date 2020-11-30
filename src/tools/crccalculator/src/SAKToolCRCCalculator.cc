@@ -122,6 +122,8 @@ void SAKToolCRCCalculator::calculate()
     SAKCommonCrcInterface::CRCModel model = SAKCommonCrcInterface::CRC_8;
     if (ok){
         model = static_cast<SAKCommonCrcInterface::CRCModel>(ret);
+    }else{
+        Q_ASSERT_X(false, __FUNCTION__, "Unknown crc parameters model!");
     }
 
     QString crcHexString = "error";
@@ -132,11 +134,11 @@ void SAKToolCRCCalculator::calculate()
         crcHexString = QString("0x%1").arg(QString::number(crc, 16), 2, '0');
         crcBinString = QString("%1").arg(QString::number(crc, 2), 8, '0');
     }else if (bitsWidth == 16){
-        uint16_t crc = mCrcInterface->crcCalculate<uint8_t>(reinterpret_cast<uint8_t*>(inputArray.data()), static_cast<uint64_t>(inputArray.length()), model);
+        uint16_t crc = mCrcInterface->crcCalculate<uint16_t>(reinterpret_cast<uint8_t*>(inputArray.data()), static_cast<uint64_t>(inputArray.length()), model);
         crcHexString = QString("0x%1").arg(QString::number(crc, 16), 4, '0');
         crcBinString = QString("%1").arg(QString::number(crc, 2), 16, '0');
     }else if (bitsWidth == 32){
-        uint32_t crc = mCrcInterface->crcCalculate<uint8_t>(reinterpret_cast<uint8_t*>(inputArray.data()), static_cast<uint64_t>(inputArray.length()), model);
+        uint32_t crc = mCrcInterface->crcCalculate<uint32_t>(reinterpret_cast<uint8_t*>(inputArray.data()), static_cast<uint64_t>(inputArray.length()), model);
         crcHexString = QString("0x%1").arg(QString::number(crc, 16), 8, '0');
         crcBinString = QString("%1").arg(QString::number(crc, 2), 32, '0');
     }else {
