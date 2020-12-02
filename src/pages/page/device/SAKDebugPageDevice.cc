@@ -7,6 +7,7 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
+#include <QDebug>
 #include <QWidget>
 #include <QDialog>
 #include <QEventLoop>
@@ -97,8 +98,8 @@ void SAKDebugPageDevice::run()
                 if (parasCtx.enableMask){
                     for (int i = 0; i < bytes.length(); i++){
                         quint8 value =  quint8(bytes.at(i));
-                        value ^= parasCtx.rxMask;
-                        temp.append(reinterpret_cast<char*>(&value));
+                        value = bytes.at(i) ^ parasCtx.rxMask;
+                        temp.append(reinterpret_cast<char*>(&value), 1);
                     }
                     bytes = temp;
                 }
@@ -116,7 +117,7 @@ void SAKDebugPageDevice::run()
                         for (int i = 0; i < bytes.length(); i++){
                             quint8 value =  quint8(bytes.at(i));
                             value ^= parasCtx.txMask;
-                            temp.append(reinterpret_cast<char*>(&value));
+                            temp.append(reinterpret_cast<char*>(&value), 1);
                         }
                         bytes = temp;
                     }
