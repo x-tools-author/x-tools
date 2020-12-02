@@ -7,6 +7,7 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
+#include <QDebug>
 #include "SAKDebugPage.hh"
 #include "SAKDebugPageDeviceMask.hh"
 #include "ui_SAKDebugPageDeviceMask.h"
@@ -50,7 +51,7 @@ void SAKDebugPageDeviceMask::on_rxMaskSpinBox_valueChanged(int arg1)
     mParametersContextMutex.lock();
     mParametersContext.rxMask = arg1;
     mParametersContextMutex.unlock();
-    mSettings->value(mSettingsKeyRxMask, arg1);
+    mSettings->setValue(mSettingsKeyRxMask, arg1);
 }
 
 void SAKDebugPageDeviceMask::on_txMaskSpinBox_valueChanged(int arg1)
@@ -58,7 +59,7 @@ void SAKDebugPageDeviceMask::on_txMaskSpinBox_valueChanged(int arg1)
     mParametersContextMutex.lock();
     mParametersContext.txMask = arg1;
     mParametersContextMutex.unlock();
-    mSettings->value(mSettingsKeyTxMask, arg1);
+    mSettings->setValue(mSettingsKeyTxMask, arg1);
 }
 
 void SAKDebugPageDeviceMask::on_enableMaskCheckBox_clicked()
