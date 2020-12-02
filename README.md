@@ -19,7 +19,7 @@
 [中文](./doc/zh_CN/README.md)
 ***************
 
-## How to build the project
+## How to Build the Project
 
 ### Method 1 (for Windows, Linux and macOS)
 
@@ -28,7 +28,7 @@
 
 ### Method 2 (just for ubuntu)
 
-#### Install the environment
+#### Install the Environment
 
 ```(shell)
 sudo apt-get update --fix-missing -y
@@ -43,12 +43,12 @@ sudo apt-get install libqt5charts5 libqt5charts5-dev -y
 
 Note: QCharts module can not be identified when building from command line.
 
-#### Build the project
+#### Build the Project
 
 From github:
 
 ```(shell)
-git clone https://gitee.com/qsaker/QtSwissArmyKnife.git
+git clone https://github.com/qsaker/QtSwissArmyKnife.git
 ```
 
 or from git gitee:
