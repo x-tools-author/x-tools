@@ -48,7 +48,7 @@ Note: QCharts module can not be identified when building from command line.
 From github:
 
 ```(shell)
-git clone https://gitee.com/qsaker/QtSwissArmyKnife.git
+git clone https://github.com/qsaker/QtSwissArmyKnife.git
 ```
 
 or from git gitee:
