@@ -6,19 +6,15 @@
         <file>resources/images/SAKLogo.png</file>
         <file>translations/qt/qt_en.qm</file>
         <file>translations/qt/qt_zh_CN.qm</file>
-        <file>translations/qt/qt_zh_TW.qm</file>
         <file>translations/qt/qtbase_en.qm</file>
         <file>translations/qt/qtbase_zh_CN.qm</file>
-        <file>translations/qt/qtbase_zh_TW.qm</file>
         <file>translations/sak/America.png</file>
         <file>translations/sak/China.png</file>
         <file>translations/sak/SAK_en.ts</file>
         <file>translations/sak/SAK_zh_CN.ts</file>
-        <file>translations/sak/SAK_zh_TW.ts</file>
         <file>translations/sak/Translations.json</file>
         <file>translations/sak/SAK_en.qm</file>
         <file>translations/sak/SAK_zh_CN.qm</file>
-        <file>translations/sak/SAK_zh_TW.qm</file>
         <file>resources/images/Android.png</file>
         <file>resources/images/Gz.png</file>
         <file>resources/images/Linux.png</file>
