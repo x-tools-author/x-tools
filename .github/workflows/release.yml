@@ -312,7 +312,7 @@ jobs:
         run: |
           cp Logo.png appDir/usr/share/icons/hicolor/256x256/apps/
           cp ${{ env.OUTPUT_FILE }} appDir/usr/bin/
-          cp resources/files/${{ OUTPUT_FILE }}.desktop appDir/usr/share/applications/
+          cp resources/files/${{ env.OUTPUT_FILE }}.desktop appDir/usr/share/applications/
 
       - name: Deploy
         continue-on-error: true
