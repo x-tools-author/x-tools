@@ -12,7 +12,9 @@
 #include <QAction>
 #include <QHBoxLayout>
 #include <QMapIterator>
+#if QT_VERSION >= QT_VERSION_CHECK(5, 10, 0)
 #include <QRandomGenerator>
+#endif
 
 #include "SAKChartsXYSerialWidget.hh"
 #include "SAKChartsXYSerialChartView.hh"
