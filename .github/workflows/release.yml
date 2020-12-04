@@ -5,7 +5,7 @@ on:
       - v*
 env:
   OUTPUT_FILE: QtSwissArmyKnife
-  RELEASE_NAME: qtwwissarmyknife
+  RELEASE_NAME: qtswissarmyknife
   GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
 
 jobs:
