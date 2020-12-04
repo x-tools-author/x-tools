@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>486</width>
-    <height>154</height>
+    <height>159</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -79,7 +79,7 @@
       </sizepolicy>
      </property>
      <property name="title">
-      <string notr="true">Chart parameters</string>
+      <string>Chart parameters</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_3">
       <item row="1" column="1">
