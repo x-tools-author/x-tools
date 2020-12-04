@@ -283,8 +283,8 @@ void SAKOtherAutoResponseItem::commonInitializing()
 
     mOptionComboBox->clear();
     mOptionComboBox->addItem(tr("Rx data is equal to reference data"), QVariant::fromValue<int>(SAKCommonDataStructure::AutoResponseOptionEqual));
-    mOptionComboBox->addItem(tr("Rx data Contains reference data"), QVariant::fromValue<int>(SAKCommonDataStructure::AutoResponseOptionContain));
-    mOptionComboBox->addItem(tr("Rx data does not Contains reference data"), QVariant::fromValue<int>(SAKCommonDataStructure::AutoResponseOptionDoNotContain));
+    mOptionComboBox->addItem(tr("Rx data contains reference data"), QVariant::fromValue<int>(SAKCommonDataStructure::AutoResponseOptionContain));
+    mOptionComboBox->addItem(tr("Rx data does not contains reference data"), QVariant::fromValue<int>(SAKCommonDataStructure::AutoResponseOptionDoNotContain));
 
     SAKCommonDataStructure::setComboBoxTextInputFormat(mReferenceDataFromatComboBox);
     SAKCommonDataStructure::setComboBoxTextInputFormat(mResponseDataFormatComboBox);
