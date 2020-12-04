@@ -4,8 +4,8 @@ on:
     tags:
       - v*
 env:
-  OUTPUT_FILE: QtGitHubActionDemo
-  RELEASE_NAME: qtgithubactiondemo
+  OUTPUT_FILE: QtSwissArmyKnife
+  RELEASE_NAME: qtwwissarmyknife
   GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
 
 jobs:
