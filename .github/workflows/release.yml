@@ -43,9 +43,11 @@ jobs:
           - qt_arch: win32_msvc2019
             msvc_arch: x86
             qt_arch_install: msvc2019
+            target_arch: x86
           - qt_arch: win64_msvc2019_64
             msvc_arch: x64
             qt_arch_install: msvc2019_64
+            target_arch: x86_64
     steps:
       # Cache Qt
       - name: cacheQt
@@ -86,14 +88,14 @@ jobs:
       - name: Rename directory
         id: rename_operation
         env:
-          zip_derectory: ${{ env.RELEASE_NAME }}-${{ steps.latest_release_info.outputs.tag_name }}-for-windows-${{ matrix.msvc_arch }}
+          zip_derectory: ${{ env.RELEASE_NAME }}-${{ steps.latest_release_info.outputs.tag_name }}-for-windows-${{ matrix.target_arch }}
         run: |
           mkdir ${{ env.zip_derectory }}
           xcopy /e release ${{ env.zip_derectory }}
           
       - name: To zip
         env:
-          zip_derectory: ${{ env.RELEASE_NAME }}-${{ steps.latest_release_info.outputs.tag_name }}-for-windows-${{ matrix.msvc_arch }}
+          zip_derectory: ${{ env.RELEASE_NAME }}-${{ steps.latest_release_info.outputs.tag_name }}-for-windows-${{ matrix.target_arch }}
         run: |
           7z.exe a ${{ env.zip_derectory }}.zip ${{ env.zip_derectory }}/*
           dir
@@ -102,7 +104,7 @@ jobs:
         id: upload-release-asset 
         uses: actions/upload-release-asset@v1
         env:
-          zip_derectory: ${{ env.RELEASE_NAME }}-${{ steps.latest_release_info.outputs.tag_name }}-for-windows-${{ matrix.msvc_arch }}
+          zip_derectory: ${{ env.RELEASE_NAME }}-${{ steps.latest_release_info.outputs.tag_name }}-for-windows-${{ matrix.target_arch }}
         with:
           upload_url: ${{ steps.latest_release_info.outputs.upload_url }}
           asset_path: ${{ env.zip_derectory }}.zip
