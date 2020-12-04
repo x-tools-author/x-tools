@@ -25,7 +25,7 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
-          body: The version is ready.
+          body: 'The version is ready. You can see the changed log: https://github.com/qsaker/QtSwissArmyKnife/blob/master/resources/files/History.txt'
           draft: false
           prerelease: false
     
