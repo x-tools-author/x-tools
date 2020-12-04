@@ -297,37 +297,51 @@ jobs:
         id: latest_release_info
         uses: jossef/action-latest-release-info@v1.1.0
       
+      - name: Make directory
+        run: |
+          mkdir appDir
+          mkdir appDir/usr
+          mkdir appDir/usr/bin
+          mkdir appDir/usr/lib
+          mkdir appDir/usr/share
+          mkdir appDir/usr/share/applications
+          mkdir appDir/usr/share/icons
+          mkdir appDir/usr/share/icons/hicolor/256x256/apps
+
+      - name: Copy file
+        run: |
+          cp Logo.png appDir/usr/share/icons/hicolor/256x256/apps/
+          cp ${{ env.OUTPUT_FILE }} appDir/usr/bin/
+          cp resources/files/${{ OUTPUT_FILE }}.desktop appDir/usr/share/applications/
+
       - name: Deploy
         continue-on-error: true
         env:
           outputdir: ${{ env.RELEASE_NAME }}-${{ steps.latest_release_info.outputs.tag_name }}-for-linux-x64
-          #linuxdeployqt_url: https://github.com/probonopd/linuxdeployqt/releases/download/6/linuxdeployqt-6-x86_64.AppImage
           linuxdeployqt_url: https://github.com/probonopd/linuxdeployqt/releases/download/7/linuxdeployqt-7-x86_64.AppImage
           linuxdeployqt: linuxdeployqt-7-x86_64.AppImage
+          applimagetool_url: https://github.com/AppImage/AppImageKit/releases/download/12/appimagetool-x86_64.AppImage
+          applimagetool: appimagetool-x86_64.AppImage
         run: |
-          export PATH=$PATH:$PWD
-          echo $PATH
-          pwd
-          mkdir ${{ env.outputdir }}
-          cp ${{ env.OUTPUT_FILE }} ${{ env.outputdir }}
           wget ${{ env.linuxdeployqt_url }}
-          ls -l
           chmod a+x ${{ env.linuxdeployqt }}
-          ./${{ env.linuxdeployqt }} -version
-          ./${{ env.linuxdeployqt }} ${{ env.outputdir }}/${{ env.OUTPUT_FILE }} -appimage
+          ./${{ env.linuxdeployqt }} appDir/usr/share/applications/${{ env.OUTPUT_FILE }}.desktop -verbose=2
+          wget ${{ env.applimagetool_url }}
+          chmod a+x ${{ env.applimagetool }}
+          ./${{ env.applimagetool }} appDir
           
-      - name: Packet with tar
-        env:
-          outputdir: ${{ env.RELEASE_NAME }}-${{ steps.latest_release_info.outputs.tag_name }}-for-linux-x64
-        run: |
-            tar -zcvf ${{ env.RELEASE_NAME }}.tar.gz ${{ env.outputdir }}
-            ls -l
+      #- name: Packet with tar
+      #  env:
+      #    outputdir: ${{ env.RELEASE_NAME }}-${{ steps.latest_release_info.outputs.tag_name }}-for-linux-x64
+      #  run: |
+      #      tar -zcvf ${{ env.RELEASE_NAME }}.tar.gz ${{ env.outputdir }}
+      #      ls -l
       
       - name: Upload Release Asset
         id: upload-release-asset 
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.latest_release_info.outputs.upload_url }}
-          asset_path: ${{ env.RELEASE_NAME }}.tar.gz
-          asset_name: ${{ env.RELEASE_NAME }}-${{ steps.latest_release_info.outputs.tag_name }}-for-linux.tar.gz
+          asset_path: ${{ env.OUTPUT_FILE }}-x86_64.AppImage
+          asset_name: ${{ env.RELEASE_NAME }}-${{ steps.latest_release_info.outputs.tag_name }}-for-linux-x86_64.AppImage
           asset_content_type: application/zip
