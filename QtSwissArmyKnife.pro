@@ -93,8 +93,7 @@ win32 {
 #I18N
 TRANSLATIONS  += \
     translations/sak/SAK_en.ts \
-    translations/sak/SAK_zh_CN.ts \
-    translations/sak/SAK_zh_TW.ts
+    translations/sak/SAK_zh_CN.ts
 
 RESOURCES += \
     SAKResources.qrc
