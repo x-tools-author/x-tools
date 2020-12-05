@@ -13,6 +13,7 @@
 #include <QRegularExpressionValidator>
 
 #include "SAKDebugPage.hh"
+#include "SAKCommonInterface.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKOtherAutoResponseItem.hh"
 
@@ -22,14 +23,13 @@ SAKOtherAutoResponseItem::SAKOtherAutoResponseItem(SAKDebugPage *debugPage, QWid
     :QWidget(parent)
     ,mForbiddenAllAutoResponse(false)
     ,mDebugPage(debugPage)
-    ,mIsInitializing(true)
     ,mUi(new Ui::SAKOtherAutoResponseItem)
 {
     commonInitializing();
+    blockUiSignals(false);
     mID = QDateTime::currentMSecsSinceEpoch();
     mDescriptionLineEdit->setText(QString::number(mID));
     initDelayWritingTimer();
-    mIsInitializing = false;
 }
 
 SAKOtherAutoResponseItem::SAKOtherAutoResponseItem(SAKDebugPage *debugPage,
@@ -48,10 +48,10 @@ SAKOtherAutoResponseItem::SAKOtherAutoResponseItem(SAKDebugPage *debugPage,
     ,mForbiddenAllAutoResponse(false)
     ,mDebugPage(debugPage)
     ,mID(id)
-    ,mIsInitializing(true)
     ,mUi(new Ui::SAKOtherAutoResponseItem)
 {
     commonInitializing();
+    blockUiSignals(false);
     mDescriptionLineEdit->setText(name);
     mEnableCheckBox->setChecked(enabled);
     mReferenceDataFromatComboBox->setCurrentIndex(referenceFormat);
@@ -62,7 +62,6 @@ SAKOtherAutoResponseItem::SAKOtherAutoResponseItem(SAKDebugPage *debugPage,
     mDelayResponseCheckBox->setChecked(delay);
     mDelayResponseLineEdit->setText(QString::number(interval));
     initDelayWritingTimer();
-    mIsInitializing = false;
 }
 
 SAKOtherAutoResponseItem::~SAKOtherAutoResponseItem()
@@ -127,35 +126,30 @@ quint32 SAKOtherAutoResponseItem::interval()
 
 void SAKOtherAutoResponseItem::setLineEditFormat(QLineEdit *lineEdit, int format)
 {
-    QRegularExpression regExpBin("([01][01][01][01][01][01][01][01][ ])*");
-    QRegularExpression regExpOct("([0-7][0-7][ ])*");
-    QRegularExpression regExpDec("([0-9][0-9][ ])*");
-    QRegularExpression regExpHex("([0-9A-F][0-9A-F][ ])*");
-    QRegularExpression regExpAscii("([a-zA-Z0-9`~!@#$%^&*()-_=+\\|;:'\",<.>/? ])*");
-
     if (lineEdit){
         lineEdit->setValidator(Q_NULLPTR);
         lineEdit->clear();
         switch (format) {
         case SAKCommonDataStructure::InputFormatBin:
-            lineEdit->setValidator(new QRegularExpressionValidator(regExpBin, this));
+            SAKCommonInterface::setLineEditValidator(lineEdit, SAKCommonInterface::ValidatorBin);
             break;
         case SAKCommonDataStructure::InputFormatOct:
-            lineEdit->setValidator(new QRegularExpressionValidator(regExpOct, this));
+            SAKCommonInterface::setLineEditValidator(lineEdit, SAKCommonInterface::ValidatorOtc);
             break;
         case SAKCommonDataStructure::InputFormatDec:
-            lineEdit->setValidator(new QRegularExpressionValidator(regExpDec, this));
+            SAKCommonInterface::setLineEditValidator(lineEdit, SAKCommonInterface::ValidatorDec);
             break;
         case SAKCommonDataStructure::InputFormatHex:
-            lineEdit->setValidator(new QRegularExpressionValidator(regExpHex, this));
+            SAKCommonInterface::setLineEditValidator(lineEdit, SAKCommonInterface::ValidatorHex);
             break;
         case SAKCommonDataStructure::InputFormatAscii:
-            lineEdit->setValidator(new QRegularExpressionValidator(regExpAscii, this));
+            SAKCommonInterface::setLineEditValidator(lineEdit, SAKCommonInterface::ValidatorAscii);
             break;
         case SAKCommonDataStructure::InputFormatLocal:
             lineEdit->setValidator(Q_NULLPTR);
             break;
         default:
+            lineEdit->setValidator(Q_NULLPTR);
             break;
         }
     }
@@ -238,6 +232,9 @@ QByteArray SAKOtherAutoResponseItem::string2array(QString str, int format)
         strList = str.split(' ');
         array = stringList2Array(strList, base);
         break;
+    case SAKCommonDataStructure::InputFormatUtf8:
+        array = str.toUtf8();
+        break;
     case SAKCommonDataStructure::InputFormatAscii:
         array = str.toLatin1();
         break;
@@ -245,7 +242,7 @@ QByteArray SAKOtherAutoResponseItem::string2array(QString str, int format)
         array = str.toLocal8Bit();
         break;
     default:
-        array = str.toLatin1();
+        array = str.toUtf8();
     }
 
     return array;
@@ -280,6 +277,8 @@ void SAKOtherAutoResponseItem::commonInitializing()
     mResponseDataFormatComboBox  = mUi->responseDataFormatComboBox;
     mDelayResponseCheckBox = mUi->delayResponseCheckBox;
     mDelayResponseLineEdit = mUi->delayResponseLineEdit;
+
+    blockUiSignals(true);
 
     mOptionComboBox->clear();
     mOptionComboBox->addItem(tr("Rx data is equal to reference data"), QVariant::fromValue<int>(SAKCommonDataStructure::AutoResponseOptionEqual));
@@ -327,41 +326,44 @@ void SAKOtherAutoResponseItem::delayToWritBytes()
     mTimestampChecker.start();
 }
 
+void SAKOtherAutoResponseItem::blockUiSignals(bool block)
+{
+    mDescriptionLineEdit->blockSignals(block);
+    mReferenceLineEdit->blockSignals(block);
+    mResponseLineEdit->blockSignals(block);
+    mEnableCheckBox->blockSignals(block);
+    mOptionComboBox->blockSignals(block);
+    mReferenceDataFromatComboBox->blockSignals(block);
+    mResponseDataFormatComboBox->blockSignals(block);
+    mDelayResponseCheckBox->blockSignals(block);
+    mDelayResponseLineEdit->blockSignals(block);
+}
+
 void SAKOtherAutoResponseItem::on_descriptionLineEdit_textChanged(const QString &text)
 {
-    if (!mIsInitializing){
-        emit descriptionChanged(text);
-    }
+    emit descriptionChanged(text);
 }
 
 void SAKOtherAutoResponseItem::on_referenceLineEdit_textChanged(const QString &text)
 {
-    if (!mIsInitializing){
-        emit referenceTextChanged(text);
-    }
+    emit referenceTextChanged(text);
 }
 
 void SAKOtherAutoResponseItem::on_responseLineEdit_textChanged(const QString &text)
 {
-    if (!mIsInitializing){
-        emit responseTextChanged(text);
-    }
+    emit responseTextChanged(text);
 }
 
 void SAKOtherAutoResponseItem::on_enableCheckBox_clicked()
 {
-    if (!mIsInitializing){
-        emit enableChanged(mEnableCheckBox->isChecked());
-    }
+    emit enableChanged(mEnableCheckBox->isChecked());
 }
 
 void SAKOtherAutoResponseItem::on_optionComboBox_currentIndexChanged(const QString &text)
 {
-    if (!mIsInitializing){
-        Q_UNUSED(text);
-        int option = mOptionComboBox->currentData().toInt();
-        emit optionChanged(option);
-    }
+    Q_UNUSED(text);
+    int option = mOptionComboBox->currentData().toInt();
+    emit optionChanged(option);
 }
 
 void SAKOtherAutoResponseItem::on_referenceDataFromatComboBox_currentIndexChanged(const QString &text)
@@ -369,10 +371,8 @@ void SAKOtherAutoResponseItem::on_referenceDataFromatComboBox_currentIndexChange
     Q_UNUSED(text);
     setLineEditFormat(mReferenceLineEdit, mReferenceDataFromatComboBox->currentData().toInt());
 
-    if (!mIsInitializing){
-        int format = mReferenceDataFromatComboBox->currentData().toInt();
-        emit referenceFormatChanged(format);
-    }
+    int format = mReferenceDataFromatComboBox->currentData().toInt();
+    emit referenceFormatChanged(format);
 }
 
 void SAKOtherAutoResponseItem::on_responseDataFormatComboBox_currentIndexChanged(const QString &text)
@@ -380,23 +380,17 @@ void SAKOtherAutoResponseItem::on_responseDataFormatComboBox_currentIndexChanged
     Q_UNUSED(text);
     setLineEditFormat(mResponseLineEdit, mResponseDataFormatComboBox->currentData().toInt());
 
-    if (!mIsInitializing){
-        int format = mResponseDataFormatComboBox->currentData().toInt();
-        emit responseFromatChanged(format);
-    }
+    int format = mResponseDataFormatComboBox->currentData().toInt();
+    emit responseFromatChanged(format);
 }
 
 void SAKOtherAutoResponseItem::on_delayResponseCheckBox_clicked()
 {
-    if (!mIsInitializing){
-        emit delayChanged(mDelayResponseCheckBox->isChecked());
-    }
+    emit delayChanged(mDelayResponseCheckBox->isChecked());
 }
 
 void SAKOtherAutoResponseItem::on_delayResponseLineEdit_textChanged(const QString &text)
 {
-    if (!mIsInitializing){
-        int interval = text.toInt();
-        emit intervalChanged(interval);
-    }
+    int interval = text.toInt();
+    emit intervalChanged(interval);
 }

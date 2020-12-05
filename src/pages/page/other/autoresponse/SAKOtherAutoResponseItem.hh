@@ -63,7 +63,6 @@ private:
     bool mForbiddenAllAutoResponse;
     SAKDebugPage *mDebugPage;
     quint64 mID;
-    bool mIsInitializing;
     // delay response
     struct DelayWritingInfo{
         quint64 expectedTimestamp;
@@ -79,6 +78,7 @@ private:
     void commonInitializing();
     void initDelayWritingTimer();
     void delayToWritBytes();
+    void blockUiSignals(bool block);
 private:
     Ui::SAKOtherAutoResponseItem *mUi;
     QLineEdit *mDescriptionLineEdit;
