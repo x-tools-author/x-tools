@@ -201,61 +201,61 @@ void SAKChartsXYSerialWidget::appendPoint(QXYSeries *xySerial, QByteArray frame,
             }
 
             if (mAppendPointInterfaceMap.contains(ctx->extractParameters.dataType)){
-                void (SAKChartsXYSerialWidget::*interface)(QByteArray, QXYSeries *) = mAppendPointInterfaceMap.value(dataType);
-                (this->*interface)(data, xySerial);
+                void (SAKChartsXYSerialWidget::*interface)(QByteArray, QXYSeries *, bool) = mAppendPointInterfaceMap.value(dataType);
+                (this->*interface)(data, xySerial, ctx->extractParameters.isBigEndian);
             }
         }
     }
 }
 
-void SAKChartsXYSerialWidget::appendPointInt8(QByteArray data, QXYSeries *xySerial)
+void SAKChartsXYSerialWidget::appendPointInt8(QByteArray data, QXYSeries *xySerial, bool isBigEndian)
 {
-    appendPointActually<qint8>(data, xySerial);
+    appendPointActually<qint8>(data, xySerial, isBigEndian);
 }
 
-void SAKChartsXYSerialWidget::appendPointUint8(QByteArray data, QXYSeries *xySerial)
+void SAKChartsXYSerialWidget::appendPointUint8(QByteArray data, QXYSeries *xySerial, bool isBigEndian)
 {
-    appendPointActually<quint8>(data, xySerial);
+    appendPointActually<quint8>(data, xySerial, isBigEndian);
 }
 
-void SAKChartsXYSerialWidget::appendPointInt16(QByteArray data, QXYSeries *xySerial)
+void SAKChartsXYSerialWidget::appendPointInt16(QByteArray data, QXYSeries *xySerial, bool isBigEndian)
 {
-    appendPointActually<qint16>(data, xySerial);
+    appendPointActually<qint16>(data, xySerial, isBigEndian);
 }
 
-void SAKChartsXYSerialWidget::appendPointUint16(QByteArray data, QXYSeries *xySerial)
+void SAKChartsXYSerialWidget::appendPointUint16(QByteArray data, QXYSeries *xySerial, bool isBigEndian)
 {
-    appendPointActually<quint16>(data, xySerial);
+    appendPointActually<quint16>(data, xySerial, isBigEndian);
 }
 
-void SAKChartsXYSerialWidget::appendPointInt32(QByteArray data, QXYSeries *xySerial)
+void SAKChartsXYSerialWidget::appendPointInt32(QByteArray data, QXYSeries *xySerial, bool isBigEndian)
 {
-    appendPointActually<qint32>(data, xySerial);
+    appendPointActually<qint32>(data, xySerial, isBigEndian);
 }
 
-void SAKChartsXYSerialWidget::appendPointUint32(QByteArray data, QXYSeries *xySerial)
+void SAKChartsXYSerialWidget::appendPointUint32(QByteArray data, QXYSeries *xySerial, bool isBigEndian)
 {
-    appendPointActually<quint32>(data, xySerial);
+    appendPointActually<quint32>(data, xySerial, isBigEndian);
 }
 
-void SAKChartsXYSerialWidget::appendPointInt64(QByteArray data, QXYSeries *xySerial)
+void SAKChartsXYSerialWidget::appendPointInt64(QByteArray data, QXYSeries *xySerial, bool isBigEndian)
 {
-    appendPointActually<qint64>(data, xySerial);
+    appendPointActually<qint64>(data, xySerial, isBigEndian);
 }
 
-void SAKChartsXYSerialWidget::appendPointUint64(QByteArray data, QXYSeries *xySerial)
+void SAKChartsXYSerialWidget::appendPointUint64(QByteArray data, QXYSeries *xySerial, bool isBigEndian)
 {
-    appendPointActually<quint64>(data, xySerial);
+    appendPointActually<quint64>(data, xySerial, isBigEndian);
 }
 
-void SAKChartsXYSerialWidget::appendPointFloat32(QByteArray data, QXYSeries *xySerial)
+void SAKChartsXYSerialWidget::appendPointFloat32(QByteArray data, QXYSeries *xySerial, bool isBigEndian)
 {
-    appendPointActually<float>(data, xySerial);
+    appendPointActually<float>(data, xySerial, isBigEndian);
 }
 
-void SAKChartsXYSerialWidget::appendPointFloat64(QByteArray data, QXYSeries *xySerial)
+void SAKChartsXYSerialWidget::appendPointFloat64(QByteArray data, QXYSeries *xySerial, bool isBigEndian)
 {
-    appendPointActually<double>(data, xySerial);
+    appendPointActually<double>(data, xySerial, isBigEndian);
 }
 
 void SAKChartsXYSerialWidget::on_chartSettingsPushButton_clicked()
