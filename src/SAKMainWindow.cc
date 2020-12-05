@@ -432,7 +432,8 @@ void SAKMainWindow::initLinksMenu()
              << Link{tr("Qt Official Blog"), QString("https://www.qt.io/blog"), QString(":/resources/images/Qt.png")}
              << Link{tr("Qt Official Release"), QString("https://wiki.qt.io/Qt_5.15_Release"), QString(":/resources/images/Qt.png")}
              << Link{tr("Download SAK from Github"), QString("%1/releases").arg(SAK_GITHUB_REPOSITORY_URL), QString(":/resources/images/GitHub.png")}
-             << Link{tr("Download SAK from Gitee"), QString("%1/releases").arg(SAK_GITEE_REPOSITORY_URL), QString(":/resources/images/Gitee.png")};
+             << Link{tr("Download SAK from Gitee"), QString("%1/releases").arg(SAK_GITEE_REPOSITORY_URL), QString(":/resources/images/Gitee.png")}
+             << Link{tr("Office Web Site"), QString("https://qsaker.gitee.io/qsak/"), QString(":/resources/images/Gitee.png")};
 
     for (auto var:linkList){
         QAction *action = new QAction(QIcon(var.iconPath), var.name, this);
