@@ -55,9 +55,9 @@ QByteArray SAKCommonInterface::byteArrayToHex(QByteArray &array, char separator)
 }
 
 void SAKCommonInterface::setLineEditValidator(QLineEdit *lineEdit, SAKEnumValidatorType type, int maxLength)
-{
+{   
     QMap<int, QRegularExpression> regExpMap;
-    regExpMap.insert(ValidatorBin, QRegularExpression("([0-9a-f][0-9A-F][]){0,8}*"));
+    regExpMap.insert(ValidatorBin, QRegularExpression("([01][01][01][01][01][01][01][01][ ])*"));
     regExpMap.insert(ValidatorOtc, QRegularExpression("([0-7][0-7][ ])*"));
     regExpMap.insert(ValidatorDec, QRegularExpression("([0-9][0-9][ ])*"));
     regExpMap.insert(ValidatorHex, QRegularExpression("([0-9a-fA-F][0-9a-fA-F][ ])*"));
@@ -65,14 +65,16 @@ void SAKCommonInterface::setLineEditValidator(QLineEdit *lineEdit, SAKEnumValida
     regExpMap.insert(ValidatorFloat, QRegularExpression("^[-+]?[0-9]*\\.?[0-9]+$"));
 
     if (lineEdit){
-        if (regExpMap.contains(type)){
-            if (lineEdit->validator()){
-                delete lineEdit->validator();
-            }
+        if (lineEdit->validator()){
+            delete lineEdit->validator();
+        }
 
-            auto regExpValidator = new QRegularExpressionValidator(regExpMap.value(type), lineEdit);
-            lineEdit->setValidator(regExpValidator);
-            lineEdit->setMaxLength(maxLength);
+        if (regExpMap.contains(type)){
+            if (type != ValidatorNone){
+                auto regExpValidator = new QRegularExpressionValidator(regExpMap.value(type), lineEdit);
+                lineEdit->setValidator(regExpValidator);
+                lineEdit->setMaxLength(maxLength);
+            }
         }
     }
 }

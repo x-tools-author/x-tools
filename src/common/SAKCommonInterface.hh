@@ -29,7 +29,8 @@ public:
         ValidatorDec,
         ValidatorHex,
         ValidatorAscii,
-        ValidatorFloat
+        ValidatorFloat,
+        ValidatorNone
     };
 
     /**
