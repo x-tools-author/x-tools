@@ -12,7 +12,7 @@
 |build-windows-msvc|windows2019-windows-qt5.9.9_msvc2017_64</br>windows2019-windows-qt5.12.10_msvc2017</br>windows2019-windows-qt5.12.10_msvc2017_64</br>windows2019-windows-qt5.15.2_msvc2019</br>windows2019-windows-qt5.15.2_msvc2019_64|
 |build-windows-mingw|windows2019-windows-qt5.12.10_mingw73_64</br> windows2019-windows-qt5.15.2_mingw81_64|
 |build-ubuntu|ubuntu18.04-linux-qt5.9.5</br>ubuntu20.04-linux-qt5.12.8|
-|build-macos|macos10.15-macos-qt5.12.10</br>macos10.15-macos-qt5.15.2|
+|build-macos|macos10.15-macos-qt5.9.9</br>macos10.15-macos-qt5.12.10</br>macos10.15-macos-qt5.15.2|
 |build-ios|macos10.15-ios-qt5.12.10</br>macos10.15-ios-qt5.15.2|
 |build-android|ubuntu18.04-android_x86-qt5.12.10</br>ubuntu18.04-android_armv7-qt5.12.10|
 
