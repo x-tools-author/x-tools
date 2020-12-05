@@ -182,6 +182,9 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     // Do soemthing to make the application look like more beautiful.
     connect(QtStyleSheetApi::instance(), &QtStyleSheetApi::styleSheetChanged, this, &SAKMainWindow::changeStylesheet);
     connect(QtAppStyleApi::instance(), &QtAppStyleApi::appStyleChanged, this, &SAKMainWindow::changeAppStyle);
+
+    // Golden ratio
+    resize(971, 600);
 }
 
 SAKMainWindow::~SAKMainWindow()
