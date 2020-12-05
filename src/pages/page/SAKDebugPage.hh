@@ -219,23 +219,15 @@ private slots:
     /*************************************************************************/
     // Data input settings module
 protected:
-    QComboBox *mInputModelComboBox;
-    QCheckBox *mCycleEnableCheckBox;
-    QLineEdit *mCycleTimeLineEdit;
-    QPushButton *mReadinFilePushButton;
-    QPushButton *mSaveInputDataPushButton;
-    QCheckBox *mAddCRCCheckBox;
-    QPushButton *mCrcSettingsPushButton;
-    QPushButton *mClearInputPushButton;
+    QComboBox *mCyclingTimeComboBox;
+    QComboBox *mInputFormatComboBox;
+    QPushButton *mMoreInputSettingsPushButton;
     QPushButton *mSendPushButton;
     QTextEdit *mInputTextEdit;
-    QComboBox *mCrcParameterModelsComboBox;
     QLabel *mCrcLabel;
     QPushButton *mAddInputItemPushButton;
     QPushButton *mDeleteInputItemPushButton;
     QListWidget *mInputDataItemListWidget;
-    QPushButton *mPresetPushButton;
-    QPushButton *mSendPresetPushButton;
     /*************************************************************************/
     // Message output module
 protected:
@@ -275,10 +267,10 @@ protected:
     // Other settings module
 protected:
     QPushButton *mTransmissionSettingPushButton;
-    QPushButton *mAnalyzerPushButton;
+    //QPushButton *mAnalyzerPushButton;
     QPushButton *mAutoResponseSettingPushButton;
     QPushButton *mTimingSendingPushButton;
-    QPushButton *mHighlightSettingPushButton;
+    //QPushButton *mHighlightSettingPushButton;
     QPushButton *mMoreSettingsPushButton;
     /*************************************************************************/
     // Charts module

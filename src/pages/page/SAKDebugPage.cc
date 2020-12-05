@@ -257,9 +257,10 @@ void SAKDebugPage::initializePage()
 
 void SAKDebugPage::changedDeviceState(bool opened)
 {
+    mCyclingTimeComboBox->setEnabled(opened);
     mSendPushButton->setEnabled(opened);
-    mSendPresetPushButton->setEnabled(opened);
-    mCycleEnableCheckBox->setEnabled(opened);
+    //mSendPresetPushButton->setEnabled(opened);
+    //mCycleEnableCheckBox->setEnabled(opened);
     mRefreshAction->setEnabled(!opened);
     mDeviceController->setUiEnable(opened);
 
@@ -324,20 +325,12 @@ void SAKDebugPage::initializingVariables()
     mInfoLabel = mUi->infoLabel;
 
     // Input settings
-    mInputModelComboBox = mUi->inputModelComboBox;
-    mCycleEnableCheckBox = mUi->cycleEnableCheckBox;
-    mCycleTimeLineEdit = mUi->cycleTimeLineEdit;
-    mSaveInputDataPushButton = mUi->saveInputDataPushButton;
-    mReadinFilePushButton = mUi->readinFilePushButton;
-    mAddCRCCheckBox = mUi->addCRCCheckBox;
-    mCrcSettingsPushButton = mUi->crcSettingsPushButton;
-    mClearInputPushButton = mUi->clearInputPushButton;
+    mCyclingTimeComboBox = mUi->cyclingTimeComboBox;
+    mInputFormatComboBox = mUi->inputFormatComboBox;
+    mMoreInputSettingsPushButton = mUi->moreInputSettingsPushButton;
     mSendPushButton = mUi->sendPushButton;
     mInputTextEdit = mUi->inputTextEdit;
-    mCrcParameterModelsComboBox = mUi->crcParameterModelsComboBox;
     mCrcLabel = mUi->crcLabel;
-    mPresetPushButton = mUi->presetPushButton;
-    mSendPresetPushButton = mUi->sendPresetPushButton;
 
     // Output settings
     mRxLabel = mUi->rxLabel;
@@ -367,10 +360,10 @@ void SAKDebugPage::initializingVariables()
 
     // Other settings
     mTransmissionSettingPushButton = mUi->transmissionSettingPushButton;
-    mAnalyzerPushButton = mUi->analyzerPushButton;
+    //mAnalyzerPushButton = mUi->analyzerPushButton;
     mAutoResponseSettingPushButton = mUi->autoResponseSettingPushButton;
     mTimingSendingPushButton = mUi->timingSendingPushButton;
-    mHighlightSettingPushButton = mUi->highlightSettingPushButton;
+    //mHighlightSettingPushButton = mUi->highlightSettingPushButton;
     mMoreSettingsPushButton = mUi->moreSettingsPushButton;
 
     // Charts
