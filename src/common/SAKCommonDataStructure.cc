@@ -133,14 +133,14 @@ QByteArray SAKCommonDataStructure::stringToByteArray(QString &origingString, SAK
         for (QString str:strList){
             data.append(static_cast<int8_t>(QString(str).toInt(Q_NULLPTR, 16)));
         }
-    }else if (format == SAKCommonDataStructure::InputFormatAscii){
-        data = origingString.toLatin1();
     }else if (format == SAKCommonDataStructure::InputFormatUtf8){
         data = origingString.toUtf8();
+    }else if (format == SAKCommonDataStructure::InputFormatAscii){
+        data = origingString.toLatin1();
     }else if (format == SAKCommonDataStructure::InputFormatLocal){
         data = origingString.toLocal8Bit();
     }else {
-        data = origingString.toLocal8Bit();
+        data = origingString.toUtf8();
         Q_ASSERT_X(false, __FUNCTION__, "Unknown input mode!");
     }
 
