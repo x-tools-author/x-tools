@@ -196,52 +196,7 @@ void SAKOtherAutoResponseItem::bytesRead(QByteArray bytes)
 
 QByteArray SAKOtherAutoResponseItem::string2array(QString str, int format)
 {
-    auto stringList2Array = [](QStringList strList, int base) -> QByteArray{
-        QByteArray array;
-        for (auto var:strList){
-            array.append(static_cast<char>(var.toInt(Q_NULLPTR, base)));
-        }
-        return array;
-    };
-
-    QByteArray array;
-    QStringList strList;
-    int base;
-    switch (format) {
-    case SAKCommonDataStructure::InputFormatBin:
-        base = 2;
-        strList = str.split(' ');
-        array = stringList2Array(strList, base);
-        break;
-    case SAKCommonDataStructure::InputFormatOct:
-        base = 8;
-        strList = str.split(' ');
-        array = stringList2Array(strList, base);
-        break;
-    case SAKCommonDataStructure::InputFormatDec:
-        base = 10;
-        strList = str.split(' ');
-        array = stringList2Array(strList, base);
-        break;
-    case SAKCommonDataStructure::InputFormatHex:
-        base = 16;
-        strList = str.split(' ');
-        array = stringList2Array(strList, base);
-        break;
-    case SAKCommonDataStructure::InputFormatUtf8:
-        array = str.toUtf8();
-        break;
-    case SAKCommonDataStructure::InputFormatAscii:
-        array = str.toLatin1();
-        break;
-    case SAKCommonDataStructure::InputFormatLocal:
-        array = str.toLocal8Bit();
-        break;
-    default:
-        array = str.toUtf8();
-    }
-
-    return array;
+    return SAKCommonDataStructure::stringToByteArray(str, static_cast<SAKCommonDataStructure::SAKEnumTextInputFormat>(format));
 };
 
 bool SAKOtherAutoResponseItem::response(QByteArray receiveData, QByteArray referenceData, int option)
