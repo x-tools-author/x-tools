@@ -127,7 +127,6 @@ quint32 SAKOtherAutoResponseItem::interval()
 void SAKOtherAutoResponseItem::setLineEditFormat(QLineEdit *lineEdit, int format)
 {
     if (lineEdit){
-        lineEdit->setValidator(Q_NULLPTR);
         lineEdit->clear();
         switch (format) {
         case SAKCommonDataStructure::InputFormatBin:
@@ -145,11 +144,8 @@ void SAKOtherAutoResponseItem::setLineEditFormat(QLineEdit *lineEdit, int format
         case SAKCommonDataStructure::InputFormatAscii:
             SAKCommonInterface::setLineEditValidator(lineEdit, SAKCommonInterface::ValidatorAscii);
             break;
-        case SAKCommonDataStructure::InputFormatLocal:
-            lineEdit->setValidator(Q_NULLPTR);
-            break;
         default:
-            lineEdit->setValidator(Q_NULLPTR);
+            SAKCommonInterface::setLineEditValidator(lineEdit, SAKCommonInterface::ValidatorNone);
             break;
         }
     }
