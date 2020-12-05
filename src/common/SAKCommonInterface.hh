@@ -47,7 +47,6 @@ public:
      * @param type: See ValidatorType for more information.
      */
     static void setLineEditValidator(QLineEdit *lineEdit, SAKEnumValidatorType type, int maxLength = INT_MAX);
-
 #ifdef SAK_IMPORT_MODULE_SERIALPORT
     // Serialport interfaces
     static void addSerialPortNametItemsToComboBox(QComboBox *comboBox);
