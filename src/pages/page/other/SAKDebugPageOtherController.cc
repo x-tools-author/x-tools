@@ -29,14 +29,14 @@ SAKDebugPageOtherController::SAKDebugPageOtherController(SAKDebugPage *debugPage
 
     moreSettingsPushButton = mDebugPage->mMoreSettingsPushButton;
     timingSendingPushButton = mDebugPage->mTimingSendingPushButton;
-    highlightSettingPushButton = mDebugPage->mHighlightSettingPushButton;
-    mAnalyzerPushButton = mDebugPage->mAnalyzerPushButton;
+    //highlightSettingPushButton = mDebugPage->mHighlightSettingPushButton;
+    //mAnalyzerPushButton = mDebugPage->mAnalyzerPushButton;
     autoResponseSettingPushButton = mDebugPage->mAutoResponseSettingPushButton;
     transmissionSettingPushButton = mDebugPage->mTransmissionSettingPushButton;
 
     connect(timingSendingPushButton, &QPushButton::clicked, this, &SAKDebugPageOtherController::onTimingSendingPushButtonClicked);
-    connect(highlightSettingPushButton, &QPushButton::clicked, this, &SAKDebugPageOtherController::onHighlightSettingPushButtonClicked);
-    connect(mAnalyzerPushButton, &QPushButton::clicked, this, &SAKDebugPageOtherController::onAnalyzerPushButtonClicked);
+    //connect(highlightSettingPushButton, &QPushButton::clicked, this, &SAKDebugPageOtherController::onHighlightSettingPushButtonClicked);
+    //connect(mAnalyzerPushButton, &QPushButton::clicked, this, &SAKDebugPageOtherController::onAnalyzerPushButtonClicked);
     connect(transmissionSettingPushButton, &QPushButton::clicked, this, &SAKDebugPageOtherController::onTransmissionSettingPushButtonClicked);
     connect(autoResponseSettingPushButton, &QPushButton::clicked, this, &SAKDebugPageOtherController::onAutoresponseSettingPushbuttonClicked);
 }

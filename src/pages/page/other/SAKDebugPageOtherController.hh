@@ -38,8 +38,8 @@ private:
 
     QPushButton *moreSettingsPushButton;
     QPushButton *timingSendingPushButton;
-    QPushButton *highlightSettingPushButton;
-    QPushButton *mAnalyzerPushButton;
+    //QPushButton *highlightSettingPushButton;
+    //QPushButton *mAnalyzerPushButton;
     QPushButton *autoResponseSettingPushButton;
     QPushButton *transmissionSettingPushButton;
 
