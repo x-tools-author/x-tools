@@ -7,7 +7,9 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
+#include <QMenu>
 #include <QDebug>
+#include <QAction>
 
 #include "SAKDebugPage.hh"
 #include "SAKOtherTransmissionPageViewer.hh"
@@ -29,16 +31,56 @@ SAKDebugPageOtherController::SAKDebugPageOtherController(SAKDebugPage *debugPage
 
     moreSettingsPushButton = mDebugPage->mMoreSettingsPushButton;
     timingSendingPushButton = mDebugPage->mTimingSendingPushButton;
-    //highlightSettingPushButton = mDebugPage->mHighlightSettingPushButton;
-    //mAnalyzerPushButton = mDebugPage->mAnalyzerPushButton;
     autoResponseSettingPushButton = mDebugPage->mAutoResponseSettingPushButton;
     transmissionSettingPushButton = mDebugPage->mTransmissionSettingPushButton;
 
-    connect(timingSendingPushButton, &QPushButton::clicked, this, &SAKDebugPageOtherController::onTimingSendingPushButtonClicked);
-    //connect(highlightSettingPushButton, &QPushButton::clicked, this, &SAKDebugPageOtherController::onHighlightSettingPushButtonClicked);
-    //connect(mAnalyzerPushButton, &QPushButton::clicked, this, &SAKDebugPageOtherController::onAnalyzerPushButtonClicked);
-    connect(transmissionSettingPushButton, &QPushButton::clicked, this, &SAKDebugPageOtherController::onTransmissionSettingPushButtonClicked);
-    connect(autoResponseSettingPushButton, &QPushButton::clicked, this, &SAKDebugPageOtherController::onAutoresponseSettingPushbuttonClicked);
+    auto moreSettingsPushButtonMenu = new QMenu;
+    connect(this, &SAKDebugPageOtherController::destroyed, moreSettingsPushButtonMenu, &QMenu::deleteLater);
+    moreSettingsPushButton->setMenu(moreSettingsPushButtonMenu);
+
+    auto analyzerAction = new QAction(tr("Data Analyzer"), this);
+    moreSettingsPushButtonMenu->addAction(analyzerAction);
+    connect(analyzerAction, &QAction::triggered, this, [=](){
+        if (mAnalyzerThreadManager->isHidden()){
+            mAnalyzerThreadManager->show();
+        }else{
+            mAnalyzerThreadManager->activateWindow();
+        }
+    });
+
+    auto highlightSettingsAction = new QAction(tr("Highlight Settings"), this);
+    moreSettingsPushButtonMenu->addAction(highlightSettingsAction);
+    connect(highlightSettingsAction, &QAction::triggered, this, [=](){
+        if (mHighlightSettingsWidget->isHidden()){
+            mHighlightSettingsWidget->show();
+        }else {
+            mHighlightSettingsWidget->activateWindow();
+        }
+    });
+
+    connect(timingSendingPushButton, &QPushButton::clicked, this, [=](){
+        if (mTimingSendingSettingsWidget->isHidden()){
+            mTimingSendingSettingsWidget->show();
+        }else{
+            mTimingSendingSettingsWidget->activateWindow();
+        }
+    });
+
+    connect(transmissionSettingPushButton, &QPushButton::clicked, this, [=](){
+        if (mTransmissionSettings->isHidden()){
+            mTransmissionSettings->show();
+        }else {
+            mTransmissionSettings->activateWindow();
+        }
+    });
+
+    connect(autoResponseSettingPushButton, &QPushButton::clicked, this, [=](){
+        if (mAutoResponseSettingWidget->isHidden()){
+            mAutoResponseSettingWidget->show();
+        }else {
+            mAutoResponseSettingWidget->activateWindow();
+        }
+    });
 }
 
 SAKDebugPageOtherController::~SAKDebugPageOtherController()
@@ -59,50 +101,4 @@ SAKDebugPageOtherController::~SAKDebugPageOtherController()
 SAKOtherAnalyzerThreadManager *SAKDebugPageOtherController::analyzerThreadManager()
 {
     return mAnalyzerThreadManager;
-}
-
-void SAKDebugPageOtherController::onTimingSendingPushButtonClicked()
-{
-    if (mTimingSendingSettingsWidget->isHidden()){
-        mTimingSendingSettingsWidget->show();
-    }else{
-        mTimingSendingSettingsWidget->activateWindow();
-    }
-}
-
-void SAKDebugPageOtherController::onHighlightSettingPushButtonClicked()
-{
-
-    if (mHighlightSettingsWidget->isHidden()){
-        mHighlightSettingsWidget->show();
-    }else {
-        mHighlightSettingsWidget->activateWindow();
-    }
-}
-
-void SAKDebugPageOtherController::onAnalyzerPushButtonClicked()
-{
-    if (mAnalyzerThreadManager->isHidden()){
-        mAnalyzerThreadManager->show();
-    }else{
-        mAnalyzerThreadManager->activateWindow();
-    }
-}
-
-void SAKDebugPageOtherController::onTransmissionSettingPushButtonClicked()
-{
-    if (mTransmissionSettings->isHidden()){
-        mTransmissionSettings->show();
-    }else {
-        mTransmissionSettings->activateWindow();
-    }
-}
-
-void SAKDebugPageOtherController::onAutoresponseSettingPushbuttonClicked()
-{
-    if (mAutoResponseSettingWidget->isHidden()){
-        mAutoResponseSettingWidget->show();
-    }else {
-        mAutoResponseSettingWidget->activateWindow();
-    }
 }
