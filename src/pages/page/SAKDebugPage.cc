@@ -360,11 +360,10 @@ void SAKDebugPage::initializingVariables()
 
     // Other settings
     mTransmissionSettingPushButton = mUi->transmissionSettingPushButton;
-    //mAnalyzerPushButton = mUi->analyzerPushButton;
     mAutoResponseSettingPushButton = mUi->autoResponseSettingPushButton;
     mTimingSendingPushButton = mUi->timingSendingPushButton;
-    //mHighlightSettingPushButton = mUi->highlightSettingPushButton;
     mMoreSettingsPushButton = mUi->moreSettingsPushButton;
+    mAnalyzerPushButton = mUi->analyzerPushButton;
 
     // Charts
     mDataVisualizationPushButton = mUi->dataVisualizationPushButton;
