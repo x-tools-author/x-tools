@@ -847,7 +847,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="40"/>
         <source>Forbidden</source>
-        <translation>禁止循环发送</translation>
+        <translation>禁止循环</translation>
     </message>
     <message>
         <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="41"/>
