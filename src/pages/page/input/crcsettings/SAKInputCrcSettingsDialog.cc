@@ -75,6 +75,7 @@ SAKInputCrcSettingsDialog::CrcParameterContext SAKInputCrcSettingsDialog::parame
     SAKInputCrcSettingsDialog::CrcParameterContext ctx;
     mParametersContextMutex.lock();
     ctx.crcPrameterMoldel = mParametersContext.crcPrameterMoldel;
+    ctx.appendCrc = mParametersContext.appendCrc;
     ctx.bigEndianCrc = mParametersContext.bigEndianCrc;
     ctx.endByte = mParametersContext.endByte;
     ctx.startByte = mParametersContext.startByte;
