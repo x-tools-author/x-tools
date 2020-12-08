@@ -33,20 +33,11 @@ SAKDebugPageOtherController::SAKDebugPageOtherController(SAKDebugPage *debugPage
     timingSendingPushButton = mDebugPage->mTimingSendingPushButton;
     autoResponseSettingPushButton = mDebugPage->mAutoResponseSettingPushButton;
     transmissionSettingPushButton = mDebugPage->mTransmissionSettingPushButton;
+    mAnalyzerPushButton = mDebugPage->mAnalyzerPushButton;
 
     auto moreSettingsPushButtonMenu = new QMenu;
     connect(this, &SAKDebugPageOtherController::destroyed, moreSettingsPushButtonMenu, &QMenu::deleteLater);
     moreSettingsPushButton->setMenu(moreSettingsPushButtonMenu);
-
-    auto analyzerAction = new QAction(tr("Data Analyzer"), this);
-    moreSettingsPushButtonMenu->addAction(analyzerAction);
-    connect(analyzerAction, &QAction::triggered, this, [=](){
-        if (mAnalyzerThreadManager->isHidden()){
-            mAnalyzerThreadManager->show();
-        }else{
-            mAnalyzerThreadManager->activateWindow();
-        }
-    });
 
     auto highlightSettingsAction = new QAction(tr("Highlight Settings"), this);
     moreSettingsPushButtonMenu->addAction(highlightSettingsAction);
@@ -80,6 +71,10 @@ SAKDebugPageOtherController::SAKDebugPageOtherController(SAKDebugPage *debugPage
         }else {
             mAutoResponseSettingWidget->activateWindow();
         }
+    });
+
+    connect(mAnalyzerPushButton, &QPushButton::clicked, this, [=](){
+        mAnalyzerThreadManager->show();
     });
 }
 

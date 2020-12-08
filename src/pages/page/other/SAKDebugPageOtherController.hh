@@ -39,6 +39,7 @@ private:
     QPushButton *timingSendingPushButton;
     QPushButton *autoResponseSettingPushButton;
     QPushButton *transmissionSettingPushButton;
+    QPushButton *mAnalyzerPushButton;
 
     SAKOtherTransmissionPageViewer *mTransmissionSettings;
     SAKOtherHighlighterManager *mHighlightSettingsWidget;
