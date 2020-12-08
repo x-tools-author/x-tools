@@ -847,7 +847,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="40"/>
         <source>Forbidden</source>
-        <translation>禁止</translation>
+        <translation>禁止循环发送</translation>
     </message>
     <message>
         <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="41"/>
@@ -862,12 +862,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="59"/>
         <source>Writing Data Items</source>
-        <translation>设置发送数据</translation>
+        <translation>发送预设数据</translation>
     </message>
     <message>
         <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="64"/>
         <source>Writing Data Item Settings</source>
-        <translation>发送预设数据</translation>
+        <translation>设置发送数据</translation>
     </message>
     <message>
         <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="68"/>
