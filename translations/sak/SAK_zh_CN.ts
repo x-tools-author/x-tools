@@ -304,38 +304,38 @@
 <context>
     <name>SAKCommonInterface</name>
     <message>
-        <location filename="../../src/common/SAKCommonInterface.cc" line="145"/>
-        <location filename="../../src/common/SAKCommonInterface.cc" line="159"/>
+        <location filename="../../src/common/SAKCommonInterface.cc" line="147"/>
+        <location filename="../../src/common/SAKCommonInterface.cc" line="161"/>
         <source>No</source>
         <translation>无</translation>
     </message>
     <message>
-        <location filename="../../src/common/SAKCommonInterface.cc" line="146"/>
+        <location filename="../../src/common/SAKCommonInterface.cc" line="148"/>
         <source>Even</source>
         <translation>偶校验</translation>
     </message>
     <message>
-        <location filename="../../src/common/SAKCommonInterface.cc" line="147"/>
+        <location filename="../../src/common/SAKCommonInterface.cc" line="149"/>
         <source>Odd</source>
         <translation>奇校验</translation>
     </message>
     <message>
-        <location filename="../../src/common/SAKCommonInterface.cc" line="148"/>
+        <location filename="../../src/common/SAKCommonInterface.cc" line="150"/>
         <source>Space</source>
         <translation>空格校验</translation>
     </message>
     <message>
-        <location filename="../../src/common/SAKCommonInterface.cc" line="149"/>
+        <location filename="../../src/common/SAKCommonInterface.cc" line="151"/>
         <source>Mark</source>
         <translation>标记校验</translation>
     </message>
     <message>
-        <location filename="../../src/common/SAKCommonInterface.cc" line="160"/>
+        <location filename="../../src/common/SAKCommonInterface.cc" line="162"/>
         <source>Hardware</source>
         <translation>硬件流控</translation>
     </message>
     <message>
-        <location filename="../../src/common/SAKCommonInterface.cc" line="161"/>
+        <location filename="../../src/common/SAKCommonInterface.cc" line="163"/>
         <source>Software</source>
         <translation>软件流控</translation>
     </message>
@@ -343,80 +343,81 @@
 <context>
     <name>SAKDebugPage</name>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="131"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="441"/>
         <source>Tx status</source>
         <translation>接收状态</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="317"/>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="430"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="587"/>
         <source>Timing</source>
         <translation>定时发送</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="218"/>
         <source>Preset</source>
-        <translation>预设数据</translation>
+        <translation type="vanished">预设数据</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="57"/>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="356"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="280"/>
         <source>Text format</source>
         <translation>文本数据格式</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="376"/>
         <source>Import</source>
-        <translation>导入文件</translation>
+        <translation type="vanished">导入文件</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="329"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="459"/>
         <source>Input settings</source>
         <translation>输入设置</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="447"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="246"/>
         <source>Response</source>
         <translation>自动应答</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="261"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="660"/>
         <source>Analyzer</source>
         <translation>数据分析</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="536"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="263"/>
         <source>Show date</source>
         <translation>显示日期</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="661"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="683"/>
         <source>Parameters</source>
         <translation>保存参数</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="251"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="353"/>
         <source>auto wrap</source>
         <translation>自动换行</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="488"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="236"/>
         <source>Tx speed</source>
         <translation>发送速率</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="388"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="346"/>
         <source>Data statistics</source>
         <translation>数据统计</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="124"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="412"/>
         <source>ResetTx</source>
         <translation>重置发送</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="808"/>
-        <location filename="../../src/pages/page/SAKDebugPage.cc" line="281"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="737"/>
+        <source>Cycling time</source>
+        <translation>循环发送</translation>
+    </message>
+    <message>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="197"/>
+        <location filename="../../src/pages/page/SAKDebugPage.cc" line="282"/>
         <source>Open</source>
         <translation>打开设备</translation>
     </message>
@@ -426,128 +427,123 @@
         <translation>刷新设备</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="275"/>
         <source>Highlight</source>
-        <translation>高亮设置</translation>
+        <translation type="vanished">高亮设置</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="420"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="39"/>
         <source>Show time</source>
         <translation>显示时间</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="550"/>
         <source>CRC model</source>
-        <translation>CRC参数模型</translation>
+        <translation type="vanished">CRC参数模型</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="179"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="370"/>
         <source>Emit</source>
         <translation>数据转发</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="437"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="287"/>
         <source>Rx speed</source>
         <translation>接收速率</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="336"/>
         <source>AddCRC</source>
-        <translation>添加CRC</translation>
+        <translation type="vanished">添加CRC</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="584"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="561"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="646"/>
         <source>More&gt;&gt;&gt;</source>
         <translation>更多&gt;&gt;&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="47"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="253"/>
         <source>Enable to write data to file</source>
         <translation>允许将数据保存至文件</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="50"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="256"/>
         <source>Write2File</source>
         <translation>写入文件</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="395"/>
         <source>Save2File</source>
-        <translation>保存输入</translation>
+        <translation type="vanished">保存输入</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="481"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="434"/>
         <source>Output settings</source>
         <translation>输出设置</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="825"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="214"/>
         <source>More</source>
         <translation>更多设置</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="30"/>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="469"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="377"/>
         <source>Clear</source>
         <translation>清除输出</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="244"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="229"/>
         <source>Data output</source>
         <translation>数据输出</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="69"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="493"/>
         <source>Other settings</source>
         <translation>其他设置</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="201"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="580"/>
         <source>Data input</source>
         <translation>数据输入</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="683"/>
         <source>SetPreset</source>
-        <translation>数据预设</translation>
+        <translation type="vanished">数据预设</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="557"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="539"/>
         <source>Show ms</source>
         <translation>显示毫秒</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="304"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="639"/>
         <source>Send</source>
         <translation>发送数据</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="574"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="93"/>
         <source>Show rx</source>
         <translation>显示接收</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="564"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="270"/>
         <source>Tx bytes</source>
         <translation>发送字节</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="20"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="297"/>
         <source>Rx bytes</source>
         <translation>接收字节</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="519"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="419"/>
         <source>Rx frames</source>
         <translation>接收帧数</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="144"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="387"/>
         <source>CRC value</source>
         <translation>CRC数值</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="697"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="515"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -586,44 +582,48 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#0000ff;&quot;&gt;952218522&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="114"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="619"/>
+        <source>Input format</source>
+        <translation>输入格式</translation>
+    </message>
+    <message>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="673"/>
         <source>Rx status</source>
         <translation>接收状态</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="186"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="629"/>
         <source>Show tx</source>
         <translation>显示发送</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="690"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="612"/>
         <source>Save</source>
         <translation>保存输出</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="639"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="730"/>
         <source>Device control</source>
         <translation>设备控制</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="543"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="568"/>
         <source>ResetRx</source>
         <translation>重置接收</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="91"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="32"/>
         <source>Charts</source>
         <translation>图表显示</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="98"/>
+        <location filename="../../src/pages/page/SAKDebugPage.ui" line="715"/>
         <source>Tx frames</source>
         <translation>发送帧数</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="232"/>
         <source>CRCSettings</source>
-        <translation>CRC设置</translation>
+        <translation type="vanished">CRC设置</translation>
     </message>
     <message>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -674,17 +674,17 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">文本</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.cc" line="272"/>
+        <location filename="../../src/pages/page/SAKDebugPage.cc" line="273"/>
         <source>Close</source>
         <translation>关闭设备</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.cc" line="389"/>
+        <location filename="../../src/pages/page/SAKDebugPage.cc" line="381"/>
         <source>Unsupported function</source>
         <translation>确实功能</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.cc" line="389"/>
+        <location filename="../../src/pages/page/SAKDebugPage.cc" line="381"/>
         <source>The function has been disable, beause of developer&apos;s Qt version is not supported!</source>
         <translation>为保持兼容性，该功能被开发者禁用！</translation>
     </message>
@@ -845,24 +845,77 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SAKDebugPageInputController</name>
     <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="199"/>
+        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="40"/>
+        <source>Forbidden</source>
+        <translation>禁止</translation>
+    </message>
+    <message>
+        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="41"/>
+        <source>ms</source>
+        <translation>毫秒</translation>
+    </message>
+    <message>
+        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="54"/>
+        <source>More input settings</source>
+        <translation>更多输入设置</translation>
+    </message>
+    <message>
+        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="59"/>
+        <source>Writing Data Items</source>
+        <translation>设置发送数据</translation>
+    </message>
+    <message>
+        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="64"/>
+        <source>Writing Data Item Settings</source>
+        <translation>发送预设数据</translation>
+    </message>
+    <message>
+        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="68"/>
+        <source>Clear Input</source>
+        <translation>清空输入</translation>
+    </message>
+    <message>
+        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="72"/>
+        <source>Readin File</source>
+        <translation>读入文件</translation>
+    </message>
+    <message>
+        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="76"/>
+        <source>Save Input Data</source>
+        <translation>保存输入</translation>
+    </message>
+    <message>
+        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="80"/>
+        <source>CRC Settings</source>
+        <translation>CRC设置</translation>
+    </message>
+    <message>
+        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="194"/>
         <source>Save File</source>
         <translation>保存文件</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="201"/>
+        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="196"/>
         <source>txt (*.txt);;all (*.*)</source>
         <translation>文本类型 (*.txt);;所有类型 (*.*)</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="222"/>
+        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="217"/>
         <source>Open File</source>
         <translation>打开文件</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="230"/>
+        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="225"/>
         <source>Can not open file</source>
         <translation>无法打开文件</translation>
+    </message>
+</context>
+<context>
+    <name>SAKDebugPageOtherController</name>
+    <message>
+        <location filename="../../src/pages/page/other/SAKDebugPageOtherController.cc" line="42"/>
+        <source>Highlight Settings</source>
+        <translation>高亮设置</translation>
     </message>
 </context>
 <context>
@@ -884,47 +937,61 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SAKInputCrcSettingsDialog</name>
     <message>
-        <location filename="../../src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui" line="20"/>
         <source>Endian</source>
-        <translation>字节序设置</translation>
+        <translation type="vanished">字节序设置</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui" line="26"/>
+        <location filename="../../src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui" line="43"/>
         <source>Big endian</source>
         <translation>按照大端字节序解释</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui" line="36"/>
+        <location filename="../../src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui" line="66"/>
         <source>Section settings</source>
         <translation>字段设置</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui" line="76"/>
+        <location filename="../../src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui" line="106"/>
         <source>If parameter(s) is(are) invalid, it will be ignored</source>
         <translation>如果参数设置有误，将计算全部数据的冗余校验值</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui" line="95"/>
+        <location filename="../../src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui" line="125"/>
         <source>Start byte is start from left, the first byte is one</source>
         <translation>起始字节从左边开始，第一个字节为1</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui" line="83"/>
+        <location filename="../../src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui" line="113"/>
         <source>End bytes</source>
         <translation>结束字节</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui" line="52"/>
+        <location filename="../../src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui" line="20"/>
+        <source>Parameter settings</source>
+        <translation>参数设置</translation>
+    </message>
+    <message>
+        <location filename="../../src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui" line="26"/>
+        <source>CRC parameters model</source>
+        <translation>CRC参数模型</translation>
+    </message>
+    <message>
+        <location filename="../../src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui" line="36"/>
+        <source>Append CRC</source>
+        <translation>追加CRC</translation>
+    </message>
+    <message>
+        <location filename="../../src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui" line="82"/>
         <source>Start bytes</source>
         <translation>起始字节</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui" line="64"/>
+        <location filename="../../src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui" line="94"/>
         <source>End byte is start from right, the last byte is one</source>
         <translation>结束字节从右边开始，第一个字节为1</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.cc" line="25"/>
+        <location filename="../../src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.cc" line="64"/>
         <source>CRC Parameters Settings</source>
         <translation>CRC参数设置</translation>
     </message>
@@ -1013,7 +1080,7 @@ p, li { white-space: pre-wrap; }
         <translation>瑞士军刀·开发调试工具集</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="213"/>
+        <location filename="../../src/SAKMainWindow.cc" line="216"/>
         <source>&amp;File</source>
         <translation>文件(&amp;F)</translation>
     </message>
@@ -1026,22 +1093,22 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">新窗口</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="242"/>
+        <location filename="../../src/SAKMainWindow.cc" line="245"/>
         <source>Exit</source>
         <translation>退出软件</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="249"/>
+        <location filename="../../src/SAKMainWindow.cc" line="252"/>
         <source>&amp;Tools</source>
         <translation>工具(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="272"/>
+        <location filename="../../src/SAKMainWindow.cc" line="275"/>
         <source>&amp;Options</source>
         <translation>选项(&amp;O)</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="276"/>
+        <location filename="../../src/SAKMainWindow.cc" line="279"/>
         <source>Skin</source>
         <translation>软件样式</translation>
     </message>
@@ -1062,23 +1129,23 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">清空配置缓存</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="327"/>
+        <location filename="../../src/SAKMainWindow.cc" line="330"/>
         <source>&amp;Windows</source>
         <translation>窗口(&amp;W)</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="333"/>
+        <location filename="../../src/SAKMainWindow.cc" line="336"/>
         <source>&amp;Languages</source>
         <translation>语言(&amp;L)</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="386"/>
+        <location filename="../../src/SAKMainWindow.cc" line="389"/>
         <source>&amp;Help</source>
         <translation>帮助(&amp;H)</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="389"/>
-        <location filename="../../src/SAKMainWindow.cc" line="391"/>
+        <location filename="../../src/SAKMainWindow.cc" line="392"/>
+        <location filename="../../src/SAKMainWindow.cc" line="394"/>
         <source>About Qt</source>
         <translation>关于Qt</translation>
     </message>
@@ -1091,12 +1158,12 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">获取源码</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="399"/>
+        <location filename="../../src/SAKMainWindow.cc" line="402"/>
         <source>GitHub</source>
         <translation>GitHub</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="402"/>
+        <location filename="../../src/SAKMainWindow.cc" line="405"/>
         <source>Gitee</source>
         <translation>码云</translation>
     </message>
@@ -1109,7 +1176,7 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">更多信息</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="422"/>
+        <location filename="../../src/SAKMainWindow.cc" line="425"/>
         <source>&amp;Links</source>
         <translation>链接(&amp;L)</translation>
     </message>
@@ -1138,12 +1205,12 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">关于软件</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="496"/>
+        <location filename="../../src/SAKMainWindow.cc" line="499"/>
         <source>Version</source>
         <translation>软件版本</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="497"/>
+        <location filename="../../src/SAKMainWindow.cc" line="500"/>
         <source>Author</source>
         <translation>软件作者</translation>
     </message>
@@ -1156,12 +1223,12 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">发布地址</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="498"/>
+        <location filename="../../src/SAKMainWindow.cc" line="501"/>
         <source>Email</source>
         <translation>电子邮箱</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="499"/>
+        <location filename="../../src/SAKMainWindow.cc" line="502"/>
         <source>QQ</source>
         <translation>联系作者</translation>
     </message>
@@ -1174,42 +1241,42 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">构建时间</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="216"/>
+        <location filename="../../src/SAKMainWindow.cc" line="219"/>
         <source>New Page</source>
         <translation>新建页面</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="229"/>
+        <location filename="../../src/SAKMainWindow.cc" line="232"/>
         <source>New Window</source>
         <translation>新建窗口</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="278"/>
+        <location filename="../../src/SAKMainWindow.cc" line="281"/>
         <source>Qt Default</source>
         <translation>Qt默认</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="301"/>
+        <location filename="../../src/SAKMainWindow.cc" line="304"/>
         <source>Application Style</source>
         <translation>软件风格</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="309"/>
+        <location filename="../../src/SAKMainWindow.cc" line="312"/>
         <source>Enable Testing Page</source>
         <translation>使能测试页面</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="320"/>
+        <location filename="../../src/SAKMainWindow.cc" line="323"/>
         <source>Clear Configuration</source>
         <translation>清空配置文件</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="393"/>
+        <location filename="../../src/SAKMainWindow.cc" line="396"/>
         <source>About Application</source>
         <translation>关于软件</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="397"/>
+        <location filename="../../src/SAKMainWindow.cc" line="400"/>
         <source>Get Source</source>
         <translation>获取源码</translation>
     </message>
@@ -1222,74 +1289,74 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">更多信息</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="406"/>
+        <location filename="../../src/SAKMainWindow.cc" line="409"/>
         <source>Check for Update</source>
         <translation>检查更新</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="410"/>
+        <location filename="../../src/SAKMainWindow.cc" line="413"/>
         <location filename="../../src/SAKMainWindow.cc" line="621"/>
         <source>Release History</source>
         <translation>发布历史</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="415"/>
+        <location filename="../../src/SAKMainWindow.cc" line="418"/>
         <location filename="../../src/SAKMainWindow.cc" line="698"/>
         <source>QR Code</source>
         <translation>扫码入群</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="431"/>
+        <location filename="../../src/SAKMainWindow.cc" line="434"/>
         <source>Qt Official Download</source>
         <translation>Qt官方下载</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="432"/>
+        <location filename="../../src/SAKMainWindow.cc" line="435"/>
         <source>Qt Official Blog</source>
         <translation>Qt官方博客</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="433"/>
+        <location filename="../../src/SAKMainWindow.cc" line="436"/>
         <source>Qt Official Release</source>
         <translation>Qt官方发布</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="434"/>
+        <location filename="../../src/SAKMainWindow.cc" line="437"/>
         <source>Download SAK from Github</source>
         <translation>从GitHub下载软件</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="435"/>
+        <location filename="../../src/SAKMainWindow.cc" line="438"/>
         <source>Download SAK from Gitee</source>
         <translation>从Gittee下载软件</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="436"/>
+        <location filename="../../src/SAKMainWindow.cc" line="439"/>
         <source>Office Web Site</source>
         <translation>“官方”网站</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="451"/>
+        <location filename="../../src/SAKMainWindow.cc" line="454"/>
         <source>&amp;Demo</source>
         <translation>示例(&amp;F)</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="460"/>
+        <location filename="../../src/SAKMainWindow.cc" line="463"/>
         <source>Qt SerialPort Demo</source>
         <translation>Qt串口小助手</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="500"/>
+        <location filename="../../src/SAKMainWindow.cc" line="503"/>
         <source>QQ Group</source>
         <translation>技术交流</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="501"/>
+        <location filename="../../src/SAKMainWindow.cc" line="504"/>
         <source>Build Time</source>
         <translation>构建信息</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="502"/>
+        <location filename="../../src/SAKMainWindow.cc" line="505"/>
         <source>Copyright</source>
         <translation>版权声明</translation>
     </message>
@@ -1298,107 +1365,107 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">版权声明 2018-%1 Qter。保留所有版权。</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="502"/>
+        <location filename="../../src/SAKMainWindow.cc" line="505"/>
         <source>Copyright 2018-%1 Qter. All rights reserved.</source>
         <translation>版权声明 2018-%1 Qter。保留所有版权。</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="503"/>
+        <location filename="../../src/SAKMainWindow.cc" line="506"/>
         <source>Gitee Url</source>
         <translation>码云仓库</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="504"/>
+        <location filename="../../src/SAKMainWindow.cc" line="507"/>
         <source>Gitbub Url</source>
         <translation>GitHub仓库</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="507"/>
+        <location filename="../../src/SAKMainWindow.cc" line="510"/>
         <source>About QSAK</source>
         <translation>关于瑞士军刀</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="570"/>
+        <location filename="../../src/SAKMainWindow.cc" line="573"/>
         <source>Test</source>
         <translation>数据测试</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="572"/>
+        <location filename="../../src/SAKMainWindow.cc" line="575"/>
         <source>COM</source>
         <translation>串口调试</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="575"/>
+        <location filename="../../src/SAKMainWindow.cc" line="578"/>
         <source>HID</source>
         <translation>HID调试</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="578"/>
+        <location filename="../../src/SAKMainWindow.cc" line="581"/>
         <source>USB</source>
         <translation>USB调试</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="580"/>
+        <location filename="../../src/SAKMainWindow.cc" line="583"/>
         <source>UDP-C</source>
         <translation>UDP客户端</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="581"/>
+        <location filename="../../src/SAKMainWindow.cc" line="584"/>
         <source>UDP-S</source>
         <translation>UDP服务器</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="582"/>
+        <location filename="../../src/SAKMainWindow.cc" line="585"/>
         <source>TCP-C</source>
         <translation>TCP客户端</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="583"/>
+        <location filename="../../src/SAKMainWindow.cc" line="586"/>
         <source>TCP-S</source>
         <translation>TCP服务器</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="585"/>
+        <location filename="../../src/SAKMainWindow.cc" line="588"/>
         <source>SSL-C</source>
         <translation>SslSocket客户端</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="586"/>
+        <location filename="../../src/SAKMainWindow.cc" line="589"/>
         <source>SSL-S</source>
         <translation>SslSocket服务器</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="589"/>
+        <location filename="../../src/SAKMainWindow.cc" line="592"/>
         <source>SCTP-C</source>
         <translation>SCTP客户端</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="590"/>
+        <location filename="../../src/SAKMainWindow.cc" line="593"/>
         <source>SCTP-S</source>
         <translation>SCTP服务器</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="593"/>
+        <location filename="../../src/SAKMainWindow.cc" line="596"/>
         <source>Bluetooth-C</source>
         <translation>蓝牙客户端</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="594"/>
+        <location filename="../../src/SAKMainWindow.cc" line="597"/>
         <source>Bluetooth-S</source>
         <translation>蓝牙服务器</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="597"/>
+        <location filename="../../src/SAKMainWindow.cc" line="600"/>
         <source>WS-C</source>
         <translation>WebSocket客户端</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="598"/>
+        <location filename="../../src/SAKMainWindow.cc" line="601"/>
         <source>WS-S</source>
         <translation>WebSocket服务器</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="601"/>
+        <location filename="../../src/SAKMainWindow.cc" line="604"/>
         <source>Modbus</source>
         <translation>Modbus</translation>
     </message>
@@ -1407,29 +1474,28 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">Modbus Rtu</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="608"/>
+        <location filename="../../src/SAKMainWindow.cc" line="611"/>
         <source>File Assistant</source>
         <translation>文件助手</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="610"/>
+        <location filename="../../src/SAKMainWindow.cc" line="613"/>
         <source>CRC Assistant</source>
         <translation>CRC助手</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="611"/>
+        <location filename="../../src/SAKMainWindow.cc" line="614"/>
         <source>Float Assistant</source>
         <translation>浮点数助手</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="612"/>
+        <location filename="../../src/SAKMainWindow.cc" line="615"/>
         <source>String Assistant</source>
         <translation>字符串助手</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="614"/>
         <source>QR Code Assistant</source>
-        <translation>二维码助手</translation>
+        <translation type="vanished">二维码助手</translation>
     </message>
     <message>
         <location filename="../../src/SAKMainWindow.cc" line="643"/>
@@ -1471,12 +1537,12 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">业务合作</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="561"/>
+        <location filename="../../src/SAKMainWindow.cc" line="564"/>
         <source>Reboot application to effective</source>
         <translation>重启生效</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="561"/>
+        <location filename="../../src/SAKMainWindow.cc" line="564"/>
         <source>Need to reboot, reboot to effective now?</source>
         <translation>软件需要重启生效，现在重启？</translation>
     </message>
@@ -2031,17 +2097,17 @@ p, li { white-space: pre-wrap; }
         <translation>允许该设置</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.cc" line="285"/>
+        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.cc" line="235"/>
         <source>Rx data is equal to reference data</source>
         <translation>接收数据等于参考数据</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.cc" line="286"/>
+        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.cc" line="236"/>
         <source>Rx data contains reference data</source>
         <translation>接收数据包含参考数据</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.cc" line="287"/>
+        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.cc" line="237"/>
         <source>Rx data does not contains reference data</source>
         <translation>接收数据不包含参考数据</translation>
     </message>
@@ -3012,34 +3078,28 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SAKToolQRCodeCreator</name>
     <message>
-        <location filename="../../src/tools/qrcodecreator/src/SAKToolQRCodeCreator.ui" line="14"/>
         <source>QR code creator</source>
-        <translation>二维码生成器</translation>
+        <translation type="vanished">二维码生成器</translation>
     </message>
     <message>
-        <location filename="../../src/tools/qrcodecreator/src/SAKToolQRCodeCreator.ui" line="20"/>
         <source>Save</source>
-        <translation>保存二维码</translation>
+        <translation type="vanished">保存二维码</translation>
     </message>
     <message>
-        <location filename="../../src/tools/qrcodecreator/src/SAKToolQRCodeCreator.ui" line="27"/>
         <source>Create</source>
-        <translation>生成二维码</translation>
+        <translation type="vanished">生成二维码</translation>
     </message>
     <message>
-        <location filename="../../src/tools/qrcodecreator/src/SAKToolQRCodeCreator.ui" line="47"/>
         <source>QR code view</source>
-        <translation>二维码预览</translation>
+        <translation type="vanished">二维码预览</translation>
     </message>
     <message>
-        <location filename="../../src/tools/qrcodecreator/src/SAKToolQRCodeCreator.ui" line="66"/>
         <source>Input Text</source>
-        <translation>输入文本</translation>
+        <translation type="vanished">输入文本</translation>
     </message>
     <message>
-        <location filename="../../src/tools/qrcodecreator/src/SAKToolQRCodeCreator.cc" line="105"/>
         <source>Save QR Code</source>
-        <translation>保存二维码</translation>
+        <translation type="vanished">保存二维码</translation>
     </message>
 </context>
 <context>
