@@ -146,7 +146,7 @@ SAKInputDataFactory::RawDataStruct SAKInputDataFactory::takeRawData()
 void SAKInputDataFactory::innnerCookData(QString rawData, SAKDebugPageInputController::InputParametersContext parameters)
 {
     QByteArray data = rawDataToArray(rawData, parameters);
-    if (parameters.addCRC){
+    if (parameters.appendCrc){
         // Extract effective crc section
         QByteArray crcInputData = extractCrcData(data, parameters);
 

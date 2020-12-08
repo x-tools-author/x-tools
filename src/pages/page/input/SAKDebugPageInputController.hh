@@ -37,7 +37,7 @@ public:
     ~SAKDebugPageInputController();
 
     struct InputParametersContext {
-        bool addCRC; // true: append crc value to the tail of data frame
+        bool appendCrc; // true: append crc value to the tail of data frame
         bool bigEndian; // true: crc value is big endian
         int cycleTime; // Auto send data interval
         int inputModel; // Input text format, such as bin, otc, dec, hex and so on

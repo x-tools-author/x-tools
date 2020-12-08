@@ -103,7 +103,7 @@ SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugPage *debugPage
     mCrcSettingsDialog = new SAKInputCrcSettingsDialog(mDebugPage->settingsGroup(), mDebugPage->settings());
     SAKInputCrcSettingsDialog::CrcParameterContext ctx = mCrcSettingsDialog->parametersContext();
     mInputParameters.crcParametersModel = ctx.crcPrameterMoldel;
-    mInputParameters.addCRC = ctx.appendCrc;
+    mInputParameters.appendCrc = ctx.appendCrc;
     mInputParameters.bigEndian = ctx.bigEndianCrc;
     mInputParameters.startByte = ctx.startByte;
     mInputParameters.endByte = ctx.endByte;
@@ -124,7 +124,7 @@ SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugPage *debugPage
     connect(mCrcSettingsDialog, &SAKInputCrcSettingsDialog::crcParametersChanged, this, [&](){
         SAKInputCrcSettingsDialog::CrcParameterContext ctx = mCrcSettingsDialog->parametersContext();
         mInputParameters.crcParametersModel = ctx.crcPrameterMoldel;
-        mInputParameters.addCRC = ctx.appendCrc;
+        mInputParameters.appendCrc = ctx.appendCrc;
         mInputParameters.bigEndian = ctx.bigEndianCrc;
         mInputParameters.startByte = ctx.startByte;
         mInputParameters.endByte = ctx.endByte;
