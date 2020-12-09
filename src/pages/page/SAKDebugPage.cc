@@ -259,8 +259,6 @@ void SAKDebugPage::changedDeviceState(bool opened)
 {
     mCyclingTimeComboBox->setEnabled(opened);
     mSendPushButton->setEnabled(opened);
-    //mSendPresetPushButton->setEnabled(opened);
-    //mCycleEnableCheckBox->setEnabled(opened);
     mRefreshAction->setEnabled(!opened);
     mDeviceController->setUiEnable(opened);
 
