@@ -60,7 +60,6 @@ SAKDebugPage::SAKDebugPage(int type, QString name, QWidget *parent)
     initializingVariables();
 
     mDatabaseInterface = new SAKDebugPageCommonDatabaseInterface(this, sakApp->sqlDatabase(), this);
-
     mOutputController = new SAKDebugPageOutputController(this, this);
     mOtherController = new SAKDebugPageOtherController(this, this);
     mStatisticsController = new SAKDebugPageStatisticsController(this, this);
