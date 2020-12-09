@@ -45,7 +45,6 @@ private:
     QSettings *mSettings;
     SAKOtherAnalyzerThread *mAnalyzer;
 private:
-    void setLineEditFormat(QLineEdit *lineEdit);
     QByteArray string2bytes(QString hex);
 private:
     Ui::SAKOtherAnalyzerThreadManager *mUi;

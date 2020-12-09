@@ -10,6 +10,7 @@
 #include <QDebug>
 #include <QRegularExpressionValidator>
 
+#include "SAKCommonInterface.hh"
 #include "SAKOtherAnalyzerThread.hh"
 #include "SAKOtherAnalyzerThreadManager.hh"
 
@@ -34,8 +35,8 @@ SAKOtherAnalyzerThreadManager::SAKOtherAnalyzerThreadManager(QSettings *settings
     mDisableCheckBox = mUi->disableCheckBox;
     mClearPushButton = mUi->clearPushButton;
 
-    setLineEditFormat(mStartLineEdit);
-    setLineEditFormat(mEndLineEdit);
+    SAKCommonInterface::setLineEditValidator(mStartLineEdit, SAKCommonInterface::ValidatorHex);
+    SAKCommonInterface::setLineEditValidator(mEndLineEdit, SAKCommonInterface::ValidatorHex);
     connect(mAnalyzer, &SAKOtherAnalyzerThread::bytesAnalyzed, this, &SAKOtherAnalyzerThreadManager::bytesAnalysed);
     mAnalyzer->start();
 
@@ -68,15 +69,7 @@ SAKOtherAnalyzerThreadManager::~SAKOtherAnalyzerThreadManager()
 void SAKOtherAnalyzerThreadManager::inputBytes(QByteArray bytes)
 {
     mAnalyzer->inputBytes(bytes);
-}
-
-void SAKOtherAnalyzerThreadManager::setLineEditFormat(QLineEdit *lineEdit)
-{
-    QRegularExpression regExpHex("([0-9A-Fa-f][0-9A-Fa-f][ ])*");
-    if (lineEdit){
-        lineEdit->setValidator(Q_NULLPTR);
-        lineEdit->setValidator(new QRegularExpressionValidator(regExpHex, this));
-    }
+    qDebug() << __FUNCTION__;
 }
 
 QByteArray SAKOtherAnalyzerThreadManager::string2bytes(QString hex)
