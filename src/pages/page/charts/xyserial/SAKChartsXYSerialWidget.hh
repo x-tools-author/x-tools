@@ -82,7 +82,7 @@ private:
             return;
         }
 
-        if (data.length() < sizeof(T)){
+        if (data.length() < int(sizeof(T))){
             return;
         }
 
@@ -94,7 +94,7 @@ private:
             if (isBigEndian){
                 T temp = *ptr;
                 quint8 *tempTtr = reinterpret_cast<quint8*>(&temp);
-                for (int i = 0; i < sizeof(T); i++){
+                for (int i = 0; i < int(sizeof(T)); i++){
                     tempTtr[sizeof(T) - i] = ptr[i];
                 }
                 *ptr = temp;
