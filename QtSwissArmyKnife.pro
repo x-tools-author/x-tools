@@ -66,9 +66,9 @@ win32 {
     QMAKE_TARGET_COPYRIGHT      = "$${QSAK_APP_COPYRIGHT}"
     QMAKE_TARGET_PRODUCT        = "$${QSAK_APP_NAME}"
     QMAKE_TARGET_VERSION        = "$${SAK_VERSION}"
-    VERSION                     = 3.3.0.0
+    VERSION                     = 3.4.0.0
 }else {
-    VERSION = 3.3.0
+    VERSION = 3.4.0
 }
 
 #--------------------------------------------------------------------------------------------
