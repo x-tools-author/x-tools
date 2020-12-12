@@ -69,7 +69,6 @@ SAKOtherAnalyzerThreadManager::~SAKOtherAnalyzerThreadManager()
 void SAKOtherAnalyzerThreadManager::inputBytes(QByteArray bytes)
 {
     mAnalyzer->inputBytes(bytes);
-    qDebug() << __FUNCTION__;
 }
 
 QByteArray SAKOtherAnalyzerThreadManager::string2bytes(QString hex)
