@@ -20,8 +20,8 @@
 #include "SAKOtherAnalyzerThreadManager.hh"
 
 SAKDebugPageOtherController::SAKDebugPageOtherController(SAKDebugPage *debugPage, QObject *parent)
-    :QObject (parent)
-    ,mDebugPage (debugPage)
+    :QObject(parent)
+    ,mDebugPage(debugPage)
 {
     mTransmissionSettings = new SAKOtherTransmissionPageViewer(mDebugPage);
     mHighlightSettingsWidget = new SAKOtherHighlighterManager(mDebugPage->mOutputTextBroswer->document());
