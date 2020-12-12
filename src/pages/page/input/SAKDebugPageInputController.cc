@@ -45,8 +45,9 @@ SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugPage *debugPage
     for (int i = 1000; i <= 5000; i += 1000){
         mCyclingTimeComboBox->addItem(QString::number(i) + QString(" ") + unit, i);
     }
-    connect(mCyclingTimeComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [=](int index){
-        Q_UNUSED(index);
+
+    connect(mCyclingTimeComboBox, &QComboBox::currentTextChanged, this, [=](const QString &text){
+        Q_UNUSED(text);
         mCyclingWritingTimer.setInterval(mCyclingTimeComboBox->currentData().toInt());
         mCyclingWritingTimer.start();
     });
