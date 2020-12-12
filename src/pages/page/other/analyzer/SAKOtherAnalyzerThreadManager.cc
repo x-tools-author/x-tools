@@ -11,6 +11,7 @@
 #include <QRegularExpressionValidator>
 
 #include "SAKCommonInterface.hh"
+#include "SAKCommonDataStructure.hh"
 #include "SAKOtherAnalyzerThread.hh"
 #include "SAKOtherAnalyzerThreadManager.hh"
 
@@ -87,17 +88,7 @@ void SAKOtherAnalyzerThreadManager::inputBytes(QByteArray bytes)
 
 QByteArray SAKOtherAnalyzerThreadManager::string2bytes(QString hex)
 {
-    hex = hex.trimmed();
-    QStringList list = hex.split(' ');
-    QByteArray startBytes;
-    for (auto var : list){
-        if (var.toLatin1().length()){
-            quint8 v = var.toUInt(Q_NULLPTR, 16);
-            startBytes.append(reinterpret_cast<char*>(&v), 1);
-        }
-    }
-
-    return startBytes;
+    return SAKCommonDataStructure::stringToByteArray(hex, SAKCommonDataStructure::InputFormatHex);
 }
 
 void SAKOtherAnalyzerThreadManager::on_fixedLengthCheckBox_clicked()
