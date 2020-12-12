@@ -35,6 +35,14 @@ SAKOtherAnalyzerThreadManager::SAKOtherAnalyzerThreadManager(QSettings *settings
     mDisableCheckBox = mUi->disableCheckBox;
     mClearPushButton = mUi->clearPushButton;
 
+    auto blockUiSignals = [=](bool block){
+        mFixedLengthCheckBox->blockSignals(block);
+        mLengthLineEdit->blockSignals(block);
+        mStartLineEdit->blockSignals(block);
+        mEndLineEdit->blockSignals(block);
+    };
+
+    blockUiSignals(true);
     SAKCommonInterface::setLineEditValidator(mStartLineEdit, SAKCommonInterface::ValidatorHex);
     SAKCommonInterface::setLineEditValidator(mEndLineEdit, SAKCommonInterface::ValidatorHex);
     connect(mAnalyzer, &SAKOtherAnalyzerThread::bytesAnalyzed, this, &SAKOtherAnalyzerThreadManager::bytesAnalysed);
@@ -55,9 +63,15 @@ SAKOtherAnalyzerThreadManager::SAKOtherAnalyzerThreadManager(QSettings *settings
         mEndLineEdit->setText(endBytesString);
         mDisableCheckBox->setChecked(!enable);
 
+        // Set parameters
         mAnalyzer->setFixed(fixed);
+        mAnalyzer->setLength(lengthString.toInt());
+        mAnalyzer->setStartArray(string2bytes(startBytesString));
+        mAnalyzer->setEndArray(string2bytes(endBytesString));
         mAnalyzer->setEnable(enable);
     }
+
+    blockUiSignals(false);
 }
 
 SAKOtherAnalyzerThreadManager::~SAKOtherAnalyzerThreadManager()
