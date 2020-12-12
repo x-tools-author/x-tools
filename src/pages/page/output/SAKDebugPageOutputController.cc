@@ -303,7 +303,7 @@ void SAKDebugPageOutputController::readinSettings()
     value = setValue(var);
     mAutoWrapCheckBox->setChecked(value);
 
-    var = mSettings->value(mSettingStringShowTime).toBool();
+    value = mSettings->value(mSettingStringShowTime).toBool();
     mShowTimeCheckBox->setChecked(value);
 
     value = mSettings->value(mSettingStringShowMs).toBool();
