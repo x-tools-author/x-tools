@@ -481,7 +481,7 @@
     <message>
         <location filename="../../src/pages/page/SAKDebugPage.ui" line="214"/>
         <source>More</source>
-        <translation>更多设置</translation>
+        <translation>更多&gt;&gt;&gt;</translation>
     </message>
     <message>
         <location filename="../../src/pages/page/SAKDebugPage.ui" line="377"/>
@@ -847,7 +847,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="40"/>
         <source>Forbidden</source>
-        <translation>禁止循环</translation>
+        <translation>不允许</translation>
     </message>
     <message>
         <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="41"/>
