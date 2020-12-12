@@ -116,22 +116,26 @@ QByteArray SAKCommonDataStructure::stringToByteArray(QString &origingString, SAK
     if (format == SAKCommonDataStructure::InputFormatBin){
         QStringList strList = origingString.split(' ');
         for (QString str:strList){
-            data.append(static_cast<int8_t>(QString(str).toInt(Q_NULLPTR, 2)));
+            qint8 value = QString(str).toInt(Q_NULLPTR, 2);
+            data.append(reinterpret_cast<char*>(&value), 1);
         }
     }else if (format == SAKCommonDataStructure::InputFormatOct){
         QStringList strList = origingString.split(' ');
         for (QString str:strList){
-            data.append(static_cast<int8_t>(QString(str).toInt(Q_NULLPTR, 8)));
+            qint8 value = QString(str).toInt(Q_NULLPTR, 8);
+            data.append(reinterpret_cast<char*>(&value), 1);
         }
     }else if (format == SAKCommonDataStructure::InputFormatDec){
         QStringList strList = origingString.split(' ');
         for (QString str:strList){
-            data.append(static_cast<int8_t>(QString(str).toInt(Q_NULLPTR, 10)));
+            qint8 value = QString(str).toInt(Q_NULLPTR, 10);
+            data.append(reinterpret_cast<char*>(&value), 1);
         }
     }else if (format == SAKCommonDataStructure::InputFormatHex){
         QStringList strList = origingString.split(' ');
         for (QString str:strList){
-            data.append(static_cast<int8_t>(QString(str).toInt(Q_NULLPTR, 16)));
+            qint8 value = QString(str).toInt(Q_NULLPTR, 16);
+            data.append(reinterpret_cast<char*>(&value), 1);
         }
     }else if (format == SAKCommonDataStructure::InputFormatUtf8){
         data = origingString.toUtf8();
