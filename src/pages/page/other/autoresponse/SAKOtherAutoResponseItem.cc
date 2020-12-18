@@ -166,8 +166,16 @@ void SAKOtherAutoResponseItem::bytesRead(QByteArray bytes)
     }
 
     // Judge whether to reply or not
-    QString referenceString = mReferenceLineEdit->text();
+    QString referenceString;
     int referenceFormat = mReferenceDataFromatComboBox->currentData().toInt();
+    if ((referenceFormat == SAKCommonDataStructure::InputFormatBin)
+            || (referenceFormat == SAKCommonDataStructure::InputFormatOct)
+            || (referenceFormat == SAKCommonDataStructure::InputFormatDec)
+            || (referenceFormat == SAKCommonDataStructure::InputFormatHex)){
+        referenceString = mReferenceLineEdit->text().trimmed();
+    }else{
+        referenceString = mReferenceLineEdit->text();
+    }
     QByteArray referenceData = string2array(referenceString, referenceFormat);
     if (response(bytes, referenceData, mOptionComboBox->currentData().toInt())){
          QString responseString = mResponseLineEdit->text();
