@@ -318,14 +318,14 @@ void SAKOtherAutoResponseItem::on_enableCheckBox_clicked()
     emit enableChanged(mEnableCheckBox->isChecked());
 }
 
-void SAKOtherAutoResponseItem::on_optionComboBox_currentIndexChanged(const QString &text)
+void SAKOtherAutoResponseItem::on_optionComboBox_currentTextChanged(const QString &text)
 {
     Q_UNUSED(text);
     int option = mOptionComboBox->currentData().toInt();
     emit optionChanged(option);
 }
 
-void SAKOtherAutoResponseItem::on_referenceDataFromatComboBox_currentIndexChanged(const QString &text)
+void SAKOtherAutoResponseItem::on_referenceDataFromatComboBox_currentTextChanged(const QString &text)
 {
     Q_UNUSED(text);
     setLineEditFormat(mReferenceLineEdit, mReferenceDataFromatComboBox->currentData().toInt());
@@ -334,7 +334,7 @@ void SAKOtherAutoResponseItem::on_referenceDataFromatComboBox_currentIndexChange
     emit referenceFormatChanged(format);
 }
 
-void SAKOtherAutoResponseItem::on_responseDataFormatComboBox_currentIndexChanged(const QString &text)
+void SAKOtherAutoResponseItem::on_responseDataFormatComboBox_currentTextChanged(const QString &text)
 {
     Q_UNUSED(text);
     setLineEditFormat(mResponseLineEdit, mResponseDataFormatComboBox->currentData().toInt());

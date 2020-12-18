@@ -27,7 +27,7 @@ private slots:
     void on_textEdit_textChanged();
     void on_inputFormatComboBox_currentIndexChanged(int index);
     void on_createPushButton_clicked();
-    void on_outputFormatComboBox_currentIndexChanged(const QString &arg1);
+    void on_outputFormatComboBox_currentTextChanged(const QString &arg1);
 };
 
 #endif // SAKTOOLSTRINGASSISTANT_HH

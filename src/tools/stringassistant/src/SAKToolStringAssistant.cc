@@ -57,7 +57,7 @@ void SAKToolStringAssistant::on_createPushButton_clicked()
     ui->textBrowser->setText(outputString);
 }
 
-void SAKToolStringAssistant::on_outputFormatComboBox_currentIndexChanged(const QString &arg1)
+void SAKToolStringAssistant::on_outputFormatComboBox_currentTextChanged(const QString &arg1)
 {
     Q_UNUSED(arg1);
     on_createPushButton_clicked();
