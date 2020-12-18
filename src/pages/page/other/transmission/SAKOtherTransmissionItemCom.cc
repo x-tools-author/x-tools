@@ -93,7 +93,7 @@ void SAKOtherTransmissionItemCom::on_enableCheckBox_clicked()
     };
 
     if (mEnableCheckBox->isChecked()){
-        mSerialPort = new QSerialPort(mComComboBox->currentData().value<QSerialPortInfo>());
+        mSerialPort = new QSerialPort(mComComboBox->currentText().trimmed());
         mSerialPort->setBaudRate(mBaudRateComboBox->currentData().value<qint32>());
         mSerialPort->setParity(mParityComboBox->currentData().value<QSerialPort::Parity>());
         mSerialPort->setDataBits(mDataBitscomboBox->currentData().value<QSerialPort::DataBits>());
