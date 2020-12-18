@@ -22,6 +22,7 @@ void SAKCommonDataStructure::setComboBoxTextOutputFormat(QComboBox *comboBox)
     if (comboBox){
         QMap<int, QString> formatMap;
         formatMap.insert(OutputFormatBin,   QString("BIN"));
+        formatMap.insert(OutputFormatOct,   QString("OCT"));
         formatMap.insert(OutputFormatDec,   QString("DEC"));
         formatMap.insert(OutputFormatHex,   QString("HEX"));
         formatMap.insert(OutputFormatUtf8,  QString("UTF8"));
