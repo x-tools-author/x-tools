@@ -2782,7 +2782,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../src/pages/tcp/server/SAKTcpServerDeviceController.ui" line="46"/>
         <source>Port</source>
-        <translation>主机端口</translation>
+        <translation>服务器端口</translation>
     </message>
     <message>
         <location filename="../../src/pages/tcp/server/SAKTcpServerDeviceController.ui" line="53"/>
