@@ -47,12 +47,6 @@ void SAKToolStringAssistant::on_inputFormatComboBox_currentIndexChanged(int inde
     on_createPushButton_clicked();
 }
 
-void SAKToolStringAssistant::on_outputFormatComboBox_activated(const QString &arg1)
-{
-    Q_UNUSED(arg1);
-    on_createPushButton_clicked();
-}
-
 void SAKToolStringAssistant::on_createPushButton_clicked()
 {
     QString inputString = ui->textEdit->toPlainText();
@@ -61,4 +55,10 @@ void SAKToolStringAssistant::on_createPushButton_clicked()
     auto outputFormat = static_cast<SAKCommonDataStructure::SAKEnumTextOutputFormat>(ui->outputFormatComboBox->currentData().toInt());
     auto outputString = SAKCommonDataStructure::byteArrayToString(inputArray, outputFormat);
     ui->textBrowser->setText(outputString);
+}
+
+void SAKToolStringAssistant::on_outputFormatComboBox_currentIndexChanged(const QString &arg1)
+{
+    Q_UNUSED(arg1);
+    on_createPushButton_clicked();
 }
