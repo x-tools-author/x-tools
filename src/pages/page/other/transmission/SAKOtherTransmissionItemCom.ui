@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>742</width>
-    <height>64</height>
+    <width>746</width>
+    <height>68</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -77,7 +77,7 @@
    <item row="0" column="1">
     <widget class="QCheckBox" name="handleReceiveDataCheckBox">
      <property name="text">
-      <string>Specified local info</string>
+      <string>Handle received data</string>
      </property>
      <property name="checked">
       <bool>true</bool>
