@@ -862,12 +862,12 @@
     </message>
     <message>
         <location filename="../../src/pages/page/SAKDebugPage.ui" line="197"/>
-        <location filename="../../src/pages/page/SAKDebugPage.cc" line="282"/>
+        <location filename="../../src/pages/page/SAKDebugPage.cc" line="279"/>
         <source>Open</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.cc" line="239"/>
+        <location filename="../../src/pages/page/SAKDebugPage.cc" line="238"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1254,17 +1254,17 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">Function is forbidden</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.cc" line="273"/>
+        <location filename="../../src/pages/page/SAKDebugPage.cc" line="270"/>
         <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.cc" line="381"/>
+        <location filename="../../src/pages/page/SAKDebugPage.cc" line="378"/>
         <source>Unsupported function</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.cc" line="381"/>
+        <location filename="../../src/pages/page/SAKDebugPage.cc" line="378"/>
         <source>The function has been disable, beause of developer&apos;s Qt version is not supported!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1435,57 +1435,57 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="54"/>
+        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="56"/>
         <source>More input settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="59"/>
+        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="61"/>
         <source>Writing Data Items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="64"/>
+        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="66"/>
         <source>Writing Data Item Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="68"/>
+        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="70"/>
         <source>Clear Input</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="72"/>
+        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="74"/>
         <source>Readin File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="76"/>
+        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="78"/>
         <source>Save Input Data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="80"/>
+        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="82"/>
         <source>CRC Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="194"/>
+        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="196"/>
         <source>Save File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="196"/>
+        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="198"/>
         <source>txt (*.txt);;all (*.*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="217"/>
+        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="219"/>
         <source>Open File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="225"/>
+        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="227"/>
         <source>Can not open file</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3053,17 +3053,17 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.cc" line="235"/>
+        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.cc" line="243"/>
         <source>Rx data is equal to reference data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.cc" line="236"/>
+        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.cc" line="244"/>
         <source>Rx data contains reference data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.cc" line="237"/>
+        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.cc" line="245"/>
         <source>Rx data does not contains reference data</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3259,7 +3259,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionItemCom.ui" line="80"/>
-        <source>Specified local info</source>
+        <source>Handle received data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

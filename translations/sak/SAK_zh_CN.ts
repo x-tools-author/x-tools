@@ -417,12 +417,12 @@
     </message>
     <message>
         <location filename="../../src/pages/page/SAKDebugPage.ui" line="197"/>
-        <location filename="../../src/pages/page/SAKDebugPage.cc" line="282"/>
+        <location filename="../../src/pages/page/SAKDebugPage.cc" line="279"/>
         <source>Open</source>
         <translation>打开设备</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.cc" line="239"/>
+        <location filename="../../src/pages/page/SAKDebugPage.cc" line="238"/>
         <source>Refresh</source>
         <translation>刷新设备</translation>
     </message>
@@ -674,17 +674,17 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">文本</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.cc" line="273"/>
+        <location filename="../../src/pages/page/SAKDebugPage.cc" line="270"/>
         <source>Close</source>
         <translation>关闭设备</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.cc" line="381"/>
+        <location filename="../../src/pages/page/SAKDebugPage.cc" line="378"/>
         <source>Unsupported function</source>
         <translation>确实功能</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/SAKDebugPage.cc" line="381"/>
+        <location filename="../../src/pages/page/SAKDebugPage.cc" line="378"/>
         <source>The function has been disable, beause of developer&apos;s Qt version is not supported!</source>
         <translation>为保持兼容性，该功能被开发者禁用！</translation>
     </message>
@@ -855,57 +855,57 @@ p, li { white-space: pre-wrap; }
         <translation>毫秒</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="54"/>
+        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="56"/>
         <source>More input settings</source>
         <translation>更多输入设置</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="59"/>
+        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="61"/>
         <source>Writing Data Items</source>
         <translation>发送预设数据</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="64"/>
+        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="66"/>
         <source>Writing Data Item Settings</source>
         <translation>设置发送数据</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="68"/>
+        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="70"/>
         <source>Clear Input</source>
         <translation>清空输入</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="72"/>
+        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="74"/>
         <source>Readin File</source>
         <translation>读入文件</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="76"/>
+        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="78"/>
         <source>Save Input Data</source>
         <translation>保存输入</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="80"/>
+        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="82"/>
         <source>CRC Settings</source>
         <translation>CRC设置</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="194"/>
+        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="196"/>
         <source>Save File</source>
         <translation>保存文件</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="196"/>
+        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="198"/>
         <source>txt (*.txt);;all (*.*)</source>
         <translation>文本类型 (*.txt);;所有类型 (*.*)</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="217"/>
+        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="219"/>
         <source>Open File</source>
         <translation>打开文件</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="225"/>
+        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="227"/>
         <source>Can not open file</source>
         <translation>无法打开文件</translation>
     </message>
@@ -2097,17 +2097,17 @@ p, li { white-space: pre-wrap; }
         <translation>允许该设置</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.cc" line="235"/>
+        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.cc" line="243"/>
         <source>Rx data is equal to reference data</source>
         <translation>接收数据等于参考数据</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.cc" line="236"/>
+        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.cc" line="244"/>
         <source>Rx data contains reference data</source>
         <translation>接收数据包含参考数据</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.cc" line="237"/>
+        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.cc" line="245"/>
         <source>Rx data does not contains reference data</source>
         <translation>接收数据不包含参考数据</translation>
     </message>
@@ -2303,8 +2303,12 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionItemCom.ui" line="80"/>
+        <source>Handle received data</source>
+        <translation>处理回传数据</translation>
+    </message>
+    <message>
         <source>Specified local info</source>
-        <translation>指定本机信息</translation>
+        <translation type="vanished">指定本机信息</translation>
     </message>
     <message>
         <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionItemCom.ui" line="93"/>
