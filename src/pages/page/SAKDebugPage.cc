@@ -294,11 +294,6 @@ void SAKDebugPage::cleanInfo()
     mInfoLabel->clear();
 }
 
-void SAKDebugPage::setupController()
-{
-
-}
-
 void SAKDebugPage::on_switchPushButton_clicked()
 {
     mSwitchPushButton->setEnabled(false);

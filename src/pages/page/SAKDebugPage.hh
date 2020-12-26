@@ -189,7 +189,6 @@ private:
     SAKDebugPageStatisticsController *mStatisticsController;
 private:
     void cleanInfo();
-    void setupController();
     void changedDeviceState(bool opened);
     void openDevice();
     void closeDevice();
