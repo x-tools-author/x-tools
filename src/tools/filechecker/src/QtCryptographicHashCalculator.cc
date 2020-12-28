@@ -90,7 +90,7 @@ void QtCryptographicHashCalculator::run()
                     consumeTimeList.removeFirst();
                 }
                 qint64 averageConsumeTime = 0;
-                for (auto var : consumeTimeList){
+                for (auto &var : consumeTimeList){
                     averageConsumeTime += var;
                 }
                 averageConsumeTime = averageConsumeTime/consumeTimeList.count();

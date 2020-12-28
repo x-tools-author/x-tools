@@ -133,7 +133,7 @@ void SAKChartsXYSerialWidget::deleteXYSerial()
     mChart->removeSeries(xySerial);
     mXYSerialParametersMap.remove(xySerial);
     action->deleteLater();
-    for (auto var : mEditMenu->actions()){
+    for (auto &var : mEditMenu->actions()){
         if (var->data().value<QXYSeries *>() == xySerial){
             var->deleteLater();
             break;
@@ -162,7 +162,7 @@ void SAKChartsXYSerialWidget::editXYSerial()
     }
 
     action->setText(ctx->chartParameters.chartName);
-    for (auto var : mDeleteMenu->actions()){
+    for (auto &var : mDeleteMenu->actions()){
         if (var->data().value<QXYSeries *>() == xySerial){
             var->setText(ctx->chartParameters.chartName);
             break;
@@ -265,7 +265,7 @@ void SAKChartsXYSerialWidget::on_chartSettingsPushButton_clicked()
 
 void SAKChartsXYSerialWidget::on_clearPushButton_clicked()
 {
-    for (auto var : mChart->series()){
+    for (auto &var : mChart->series()){
         reinterpret_cast<QXYSeries*>(var)->clear();
     }
 

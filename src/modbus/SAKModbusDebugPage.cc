@@ -54,7 +54,7 @@ SAKModbusDebugPage::SAKModbusDebugPage(int type, QString name, QSettings *settin
                  << PageInfo{ui->inputRegistersWidget, QModbusDataUnit::InputRegisters};
 
     // Add page to tab widget
-    for (auto var : pageInfoList){
+    for (auto &var : pageInfoList){
         var.widget->setContentsMargins(0, 0, 0, 0);
         if (!var.widget->layout()){
             QVBoxLayout *vLayout = new QVBoxLayout;
@@ -81,7 +81,7 @@ SAKModbusDebugPage::SAKModbusDebugPage(int type, QString name, QSettings *settin
                    << DeviceInfo{SerialPortServer, tr("SerialPort Server")};
 
     // Add items to combo box
-    for (auto var : deviceInfoList){
+    for (auto &var : deviceInfoList){
         ui->deviceTypeComboBox->addItem(var.name, QVariant::fromValue(var.type));
     }
 }
@@ -126,7 +126,7 @@ void SAKModbusDebugPage::outputModbusDataUnit(QModbusDataUnit mdu)
     }
 
     QByteArray data;
-    for (auto var : valueList){
+    for (auto &var : valueList){
         data.append(reinterpret_cast<char*>(&var)[1]);
         data.append(reinterpret_cast<char*>(&var)[0]);
     }
@@ -225,7 +225,7 @@ void SAKModbusDebugPage::on_deviceTypeComboBox_currentIndexChanged(int index)
 #endif
     connect(mController, &SAKModbusCommonController::dataWritten, this, &SAKModbusDebugPage::dataWritten);
     connect(mController, &SAKModbusCommonController::invokeOutputMessage, this, &SAKModbusDebugPage::outputMessage);
-    for (auto var : mRegisterViewControllerList){
+    for (auto &var : mRegisterViewControllerList){
         connect(var, &SAKModbusCommonRegisterViewController::invokeImport, mController, &SAKModbusCommonController::importRegisterData);
         connect(var, &SAKModbusCommonRegisterViewController::invokeExport, mController, &SAKModbusCommonController::exportRegisterData);
     }
@@ -252,7 +252,7 @@ void SAKModbusDebugPage::on_deviceTypeComboBox_currentIndexChanged(int index)
     // Update the value of registers.
     quint16 startAddress = 0;
     quint16 registerNumber = 16;
-    for (auto var : mRegisterViewList){
+    for (auto &var : mRegisterViewList){
         var->updateRegister(startAddress, registerNumber);
         for (int i = startAddress; i < registerNumber; i++){
             var->updateRegisterValue(startAddress + i, mController->registerValue(var->registerType(), startAddress + i));

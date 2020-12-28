@@ -84,7 +84,7 @@ QWidget *innerCreateItem(SAKDebugPageCommonDatabaseInterface::SAKStructPresettin
 void SAKInputDataPresetItemManager::readinRecord()
 {
     QList<SAKDebugPageCommonDatabaseInterface::SAKStructPresettingDataItem> itemList = mDatabaseInterface->selectDataPresetItem();
-    for (auto var : itemList){
+    for (auto &var : itemList){
         QWidget *iw = innerCreateItem(var, mListWidget);
         appendDataPresetItem(iw);
     }
@@ -213,7 +213,7 @@ void SAKInputDataPresetItemManager::on_outportPushButton_clicked()
 
     QJsonArray jsonArray;
     DataPresetItemContext itemKey;
-    for (auto var : itemList){
+    for (auto &var : itemList){
         QJsonObject obj;
         obj.insert(itemKey.id, QVariant::fromValue(var.id).toJsonValue());
         obj.insert(itemKey.format, QVariant::fromValue(var.format).toJsonValue());

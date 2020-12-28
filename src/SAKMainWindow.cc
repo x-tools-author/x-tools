@@ -126,7 +126,7 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
         QStringList styleKeys = QStyleFactory::keys();
 #ifdef Q_OS_MACOS
         QString uglyStyle("Windows");
-        for(auto var:styleKeys){
+        for(auto &var:styleKeys){
             if (var != uglyStyle){
                 changeAppStyle(var);
                 break;
@@ -252,7 +252,7 @@ void SAKMainWindow::initToolMenu()
     QMenu *toolMenu = new QMenu(tr("&Tools"));
     menuBar()->addMenu(toolMenu);
 
-    for (auto var : mToolMetaObjectInfoList){
+    for (auto &var : mToolMetaObjectInfoList){
         QWidget *w = qobject_cast<QWidget*>(var.metaObject.newInstance());
         Q_ASSERT_X(w, __FUNCTION__, "A null pointer!");
         w->hide();
@@ -282,7 +282,7 @@ void SAKMainWindow::initOptionMenu()
     mDefaultStyleSheetAction->setCheckable(true);
     stylesheetMenu->addAction(mDefaultStyleSheetAction);
     connect(mDefaultStyleSheetAction, &QAction::triggered, [=](){
-        for(auto var:QtStyleSheetApi::instance()->actions()){
+        for(auto &var:QtStyleSheetApi::instance()->actions()){
             var->setChecked(false);
         }
 
@@ -364,7 +364,7 @@ void SAKMainWindow::initLanguageMenu()
             }
 
             QActionGroup *actionGroup = new QActionGroup(this);
-            for(auto var:infoList){
+            for(auto &var:infoList){
                 QAction *action = new QAction(var.name, languageMenu);
                 languageMenu->addAction(action);
                 action->setCheckable(true);
@@ -438,7 +438,7 @@ void SAKMainWindow::initLinksMenu()
              << Link{tr("Download SAK from Gitee"), QString("%1/releases").arg(SAK_GITEE_REPOSITORY_URL), QString(":/resources/images/Gitee.png")}
              << Link{tr("Office Web Site"), QString("https://qsaker.gitee.io/qsak/"), QString(":/resources/images/Gitee.png")};
 
-    for (auto var:linkList){
+    for (auto &var:linkList){
         QAction *action = new QAction(QIcon(var.iconPath), var.name, this);
         action->setObjectName(var.url);
         linksMenu->addAction(action);
@@ -462,7 +462,7 @@ void SAKMainWindow::initDemoMenu()
     QList<Link> linkList;
     linkList << Link{tr("Qt SerialPort Demo"), QString("https://gitee.com/qsaker/qt-demo-serial-port-widget.git"), QString(":/resources/images/Qt.png")};
 
-    for (auto var:linkList){
+    for (auto &var:linkList){
         QAction *action = new QAction(QIcon(var.iconPath), var.name, this);
         action->setObjectName(var.url);
         demoMenu->addAction(action);
@@ -511,7 +511,7 @@ void SAKMainWindow::aboutQsak()
 
     QGridLayout *gridLayout = new QGridLayout(&dialog);
     int i = 0;
-    for (auto var : infoList){
+    for (auto &var : infoList){
         QLabel *nameLabel = new QLabel(QString("<font color=green>%1</font>").arg(var.name), &dialog);
         QLabel *valueLabel = new QLabel(var.value, &dialog);
         gridLayout->addWidget(nameLabel, i, 0, 1, 1);
@@ -707,7 +707,7 @@ void SAKMainWindow::showQrCodeDialog()
                    << QrCodeInfo{tr("Qt QQ Group"), QString(":/resources/images/QtQQ.jpg")};
 
     QTabWidget *tabWidget = new QTabWidget(&dialog);
-    for (auto var : qrCodeInfoList){
+    for (auto &var : qrCodeInfoList){
         QLabel *label = new QLabel(tabWidget);
         label->setPixmap(QPixmap::fromImage(QImage(var.qrCode)));
         tabWidget->addTab(label, var.title);
@@ -776,7 +776,7 @@ QWidget *SAKMainWindow::debugPageFromDebugPageType(int type)
 {
     QWidget *widget = Q_NULLPTR;
     QMetaEnum metaEnum = QMetaEnum::fromType<SAKEnumDebugPageType>();
-    for (auto var : mDebugPageMetaInfoList){
+    for (auto &var : mDebugPageMetaInfoList){
         if (var.debugPageType == type){
             for (int i = 0; i < metaEnum.keyCount(); i++){
                 if (var.debugPageType == metaEnum.value(i)){
@@ -796,7 +796,7 @@ QString SAKMainWindow::debugPageTitleFromDebugPageType(int type)
 {
     QString title;
     QMetaEnum metaEnum = QMetaEnum::fromType<SAKEnumDebugPageType>();
-    for (auto var : mDebugPageMetaInfoList){
+    for (auto &var : mDebugPageMetaInfoList){
         if (var.debugPageType == type){
             for (int i = 0; i < metaEnum.keyCount(); i++){
                 if (var.debugPageType == metaEnum.value(i)){

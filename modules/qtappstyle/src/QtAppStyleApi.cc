@@ -54,7 +54,7 @@ void QtAppStyleApi::setStyle(QString style)
         style = QStyleFactory::keys().first();
     }
 
-    for(auto var:_this->appStyleActions){
+    for(auto &var:_this->appStyleActions){
         if (var->objectName() == style){
             var->setChecked(true);
             emit var->triggered();

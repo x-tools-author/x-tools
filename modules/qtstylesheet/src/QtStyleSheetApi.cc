@@ -42,7 +42,7 @@ void QtStyleSheetApi::setStyleSheet(QString styleSheetName)
         iterator.next();
 
         if(iterator.key() == styleSheetName){
-            for(auto var:_this->styleSheetActions){
+            for(auto &var:_this->styleSheetActions){
                 if (var->objectName() == iterator.value()){
                     var->setChecked(true);
                     emit var->triggered();

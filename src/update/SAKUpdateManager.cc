@@ -264,7 +264,7 @@ void SAKUpdateManager::clearDownloadList()
 
 void SAKUpdateManager::appendPacketItem(UpdateInfo info, QString icon, QString key)
 {
-    for(auto var:info.browserDownloadUrl){
+    for(auto &var:info.browserDownloadUrl){
         if (var.contains(key)){
             QListWidgetItem *item = new QListWidgetItem(QIcon(icon), QString(""), mDownloadListListWidget);
             SAKDownloadItemWidget *itemWidget = new SAKDownloadItemWidget(var, mDownloadListListWidget);

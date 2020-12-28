@@ -274,12 +274,12 @@ void SAKOtherAutoResponseItem::delayToWritBytes()
     }
 
     // Write data
-    for (auto var : temp){
+    for (auto &var : temp){
         mDebugPage->write(var.data);
     }
 
     // Delte the data that has been written
-    for (auto var : need2removeList){
+    for (auto &var : need2removeList){
         mWaitForWrittenInfoList.removeOne(var);
     }
     mTimestampChecker.start();

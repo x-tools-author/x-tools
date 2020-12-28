@@ -59,7 +59,7 @@ QByteArray SAKWebSocketServerDevice::read()
 QByteArray SAKWebSocketServerDevice::write(QByteArray bytes)
 {
     auto parameters = mDeviceController->parameters().value<SAKWebSocketServerDeviceController::WebSocketServerParameters>();
-    for (auto var : mClientList){
+    for (auto &var : mClientList){
         QString peerHost = var->peerAddress().toString();
         quint16 peerPort = var->peerPort();
 
@@ -105,13 +105,13 @@ bool SAKWebSocketServerDevice::checkSomething(QString &errorString)
     }
 
     QList<QWebSocket*> needTobeDeleteSocketList;
-    for (auto var : mClientList){
+    for (auto &var : mClientList){
         if (var->state() == QAbstractSocket::UnconnectedState){
             needTobeDeleteSocketList.append(var);
         }
     }
 
-    for (auto var : needTobeDeleteSocketList){
+    for (auto &var : needTobeDeleteSocketList){
         emit removeClient(var);
     }
 

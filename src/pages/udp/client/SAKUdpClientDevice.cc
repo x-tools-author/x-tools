@@ -162,7 +162,7 @@ QByteArray SAKUdpClientDevice::write(QByteArray bytes)
     // Multicast
     if (udpSocketParameters().enableMulticast){
          UdpSocketParameters parameters = udpSocketParameters();
-        for(auto var : parameters.multicastInfoList){
+        for(auto &var : parameters.multicastInfoList){
             qint16 ret = mUdpSocket->writeDatagram(bytes, QHostAddress(var.address), var.port);
             if (ret > 0){
                 emit bytesWritten(bytes);

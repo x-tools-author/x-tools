@@ -86,7 +86,7 @@ void SAKCommonInterface::addSerialPortNametItemsToComboBox(QComboBox *comboBox)
         comboBox->clear();
         QList<QSerialPortInfo> coms = QSerialPortInfo::availablePorts();
         QStandardItemModel *itemModel = new QStandardItemModel(comboBox);
-        for(auto var:coms){
+        for(auto &var:coms){
             QStandardItem *item = new QStandardItem(var.portName());
             item->setToolTip(var.description());
             itemModel->appendRow(item);
@@ -103,7 +103,7 @@ void SAKCommonInterface::addSerialPortBaudRateItemsToComboBox(QComboBox *comboBo
     if (comboBox){
         comboBox->clear();
         QList<qint32> bd = QSerialPortInfo::standardBaudRates();
-        for (auto var:bd) {
+        for (auto &var:bd) {
             comboBox->addItem(QString::number(var), QVariant::fromValue(var));
         }
 
@@ -175,7 +175,7 @@ void SAKCommonInterface::addIpItemsToComboBox(QComboBox *comboBox, bool appendHo
         comboBox->addItem(QString("0.0.0.0"));
         comboBox->addItem(localHost);
         QList<QHostAddress> addresses = QNetworkInterface::allAddresses();
-        for(auto var:addresses){
+        for(auto &var:addresses){
             if (var.protocol() == QAbstractSocket::IPv4Protocol) {
                 if (var.toString().compare(localHost) == 0){
                     continue;

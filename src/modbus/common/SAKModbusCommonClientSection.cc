@@ -49,7 +49,7 @@ SAKModbusCommonClientSection::SAKModbusCommonClientSection(QWidget *parent)
 
     QStandardItemModel *itemModel = new QStandardItemModel(this);
     ui->functionCodeComboBox->clear();
-    for (auto var : infoList){
+    for (auto &var : infoList){
         auto item = new QStandardItem(var.name);
         item->setToolTip(var.name);
         itemModel->appendRow(item);

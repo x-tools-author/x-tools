@@ -78,7 +78,7 @@ void SAKOtherTimingSentItemManager::readinRecord()
         return;
     }
 
-    for (auto var : itemList){
+    for (auto &var : itemList){
         SAKOtherTimingSentItem *item = innerCreateItem(var, mDebugPage, mItemListWidget);
         initializingItem(item);
     }
@@ -183,7 +183,7 @@ void SAKOtherTimingSentItemManager::on_outportPushButton_clicked()
 
     QJsonArray jsonArray;
     TimingSendingItemKey itemKey;
-    for (auto var : itemList){
+    for (auto &var : itemList){
         QJsonObject obj;
         obj.insert(itemKey.id, QVariant::fromValue(var.id).toJsonValue());
         obj.insert(itemKey.text, QVariant::fromValue(var.data).toJsonValue());

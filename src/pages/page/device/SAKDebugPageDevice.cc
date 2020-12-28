@@ -32,7 +32,7 @@ SAKDebugPageDevice::~SAKDebugPageDevice()
     exit();
     wait();
 
-    for (auto var : mSettingsPanelList){
+    for (auto &var : mSettingsPanelList){
         var.panel->close();
         var.panel->deleteLater();
     }

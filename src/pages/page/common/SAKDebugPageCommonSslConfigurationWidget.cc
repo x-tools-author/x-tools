@@ -145,7 +145,7 @@ void SAKDebugPageCommonSslConfigurationWidget::setupEllipticCurveToComboBox(QCom
 {
     if (comboBox){
         comboBox->clear();
-        for (auto var : QSslConfiguration::supportedEllipticCurves()){
+        for (auto &var : QSslConfiguration::supportedEllipticCurves()){
             comboBox->addItem(longName ? var.longName() : var.shortName());
         }
     }else{
@@ -172,7 +172,7 @@ void SAKDebugPageCommonSslConfigurationWidget::setupCipherSuiteToComboBox(QCombo
         comboBox->clear();
         QStandardItemModel *itemModel = new QStandardItemModel(comboBox);
         QList<QSslCipher> sslCipher = QSslConfiguration::supportedCiphers();
-        for (auto var : sslCipher){
+        for (auto &var : sslCipher){
             QStandardItem *item = new QStandardItem(var.name());
             item->setToolTip(var.name());
             itemModel->appendRow(item);

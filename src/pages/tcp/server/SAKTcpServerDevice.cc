@@ -56,7 +56,7 @@ bool SAKTcpServerDevice::open(QString &errorString)
 
 QByteArray SAKTcpServerDevice::read()
 {
-    for (auto var : mClientList){
+    for (auto &var : mClientList){
          QByteArray bytes = var->readAll();
          auto parameters = mDeviceController->parameters().value<SAKTcpServerDeviceController::TcpServerParameters>();
          QString currentClientHost = parameters.currentClientHost;
@@ -76,7 +76,7 @@ QByteArray SAKTcpServerDevice::read()
 
 QByteArray SAKTcpServerDevice::write(QByteArray bytes)
 {
-    for (auto var : mClientList){
+    for (auto &var : mClientList){
         auto parameters = mDeviceController->parameters().value<SAKTcpServerDeviceController::TcpServerParameters>();
         QString currentClientHost = parameters.currentClientHost;
         QString peerHost = var->peerAddress().toString();
@@ -107,13 +107,13 @@ bool SAKTcpServerDevice::checkSomething(QString &errorString)
     }
 
     // Remove clients which is offline
-    for (auto var : mClientList){
+    for (auto &var : mClientList){
         QList<QTcpSocket*> offLineClientList;
         if (var->state() != QTcpSocket::ConnectedState){
             offLineClientList.append(var);
         }
 
-        for (auto var : offLineClientList){
+        for (auto &var : offLineClientList){
             emit removeClient(var);
             mClientList.removeOne(var);
         }

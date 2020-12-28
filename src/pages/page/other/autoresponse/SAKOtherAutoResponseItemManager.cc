@@ -99,7 +99,7 @@ void SAKOtherAutoResponseItemManager::clearMessage()
 void SAKOtherAutoResponseItemManager::readInRecord()
 {
     QList<SAKDebugPageCommonDatabaseInterface::SAKStructAutoResponseItem> itemList = mDatabaseInterface->selectAutoResponseItem();
-    for (auto var : itemList){
+    for (auto &var : itemList){
         SAKOtherAutoResponseItem *item = innerCreateItem(var, mDebugPage, mListWidget);
         initializingItem(item);
     }
@@ -316,7 +316,7 @@ void SAKOtherAutoResponseItemManager::on_outportPushButton_clicked()
 
     QJsonArray jsonArray;
     AutoResponseItemKey itemKey;
-    for (auto var : itemList){
+    for (auto &var : itemList){
         QJsonObject obj;
         obj.insert(itemKey.id, QVariant::fromValue(var.id).toJsonValue());
         obj.insert(itemKey.description, QVariant::fromValue(var.name).toJsonValue());

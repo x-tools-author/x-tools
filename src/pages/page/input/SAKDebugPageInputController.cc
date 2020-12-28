@@ -98,7 +98,7 @@ SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugPage *debugPage
     // Add actions after new.
     mInputDataItemManager = new SAKInputDataPresetItemManager(debugPage);
     QList<SAKInputDataPresetItem*> list = mInputDataItemManager->itemList();
-    for (auto var : list){
+    for (auto &var : list){
         appendAction(var);
     }
 
@@ -318,7 +318,7 @@ void SAKDebugPageInputController::appendAction(SAKInputDataPresetItem *item)
 void SAKDebugPageInputController::removeAction(SAKInputDataPresetItem *item)
 {
     QList<QAction*> actionList = mWriteDataItemMenu->actions();
-    for (auto var : actionList){
+    for (auto &var : actionList){
         if (var->data().value<SAKInputDataPresetItem*>() == item){
             var->deleteLater();
             break;
@@ -329,7 +329,7 @@ void SAKDebugPageInputController::removeAction(SAKInputDataPresetItem *item)
 void SAKDebugPageInputController::changeDescription(SAKInputDataPresetItem *item)
 {
     QList<QAction*> actionList = mWriteDataItemMenu->actions();
-    for (auto var : actionList){
+    for (auto &var : actionList){
         if (var->data().value<SAKInputDataPresetItem*>() == item){
             var->setText(item->itemDescription());
             break;
