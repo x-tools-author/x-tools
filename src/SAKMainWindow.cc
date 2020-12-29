@@ -814,4 +814,3 @@ QString SAKMainWindow::debugPageTitleFromDebugPageType(int type)
 
     return title;
 }
-
