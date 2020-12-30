@@ -139,9 +139,11 @@ void SAKApplication::installLanguage()
     qApp->installTranslator(&mQtBaseTranslator);
 
     ret = mQtTranslator.load(QString(":/translations/qt/qt_%1.qm").arg(qmName));
+    Q_UNUSED(ret);
     qApp->installTranslator(&mQtTranslator);
 
     ret = mSakTranslator.load(QString(":/translations/sak/SAK_%1.qm").arg(qmName));
+    Q_UNUSED(ret);
     qApp->installTranslator(&mSakTranslator);
 }
 
