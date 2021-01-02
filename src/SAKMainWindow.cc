@@ -282,7 +282,7 @@ void SAKMainWindow::initOptionMenu()
     mDefaultStyleSheetAction->setCheckable(true);
     stylesheetMenu->addAction(mDefaultStyleSheetAction);
     connect(mDefaultStyleSheetAction, &QAction::triggered, [=](){
-        for(auto &var:QtStyleSheetApi::instance()->actions()){
+        for(auto &var : QtStyleSheetApi::instance()->actions()){
             var->setChecked(false);
         }
 
