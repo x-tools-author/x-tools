@@ -22,7 +22,9 @@
 
 #include "ui_SAKUpdateManager.h"
 
-static const char* checkForUpdateUrl = "https://api.github.com/repos/qsak/QtSwissArmyKnife/releases/latest";
+// It was gone.
+//static const char* checkForUpdateUrl = "https://api.github.com/repos/qsak/QtSwissArmyKnife/releases/latest";
+static const char* checkForUpdateUrl = "https://api.github.com/repositories/162440100/releases/latest";
 SAKUpdateManager::SAKUpdateManager(QWidget *parent)
     :QDialog(parent)
     ,mSettings(Q_NULLPTR)
@@ -106,6 +108,7 @@ void SAKUpdateManager::checkForUpdateFinished()
     if (mNetworkReply){
         if (mNetworkReply->error() == QNetworkReply::NoError){
             QByteArray data = mNetworkReply->readAll();
+            qDebug() << __FUNCTION__ << qPrintable(QString::fromUtf8(data));
             mUpdateInfo = extractUpdateInfo(data);
             if (mUpdateInfo.isValid){
                 if (isNewVersion(mUpdateInfo.name)){
