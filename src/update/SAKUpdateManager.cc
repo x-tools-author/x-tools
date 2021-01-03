@@ -22,9 +22,12 @@
 
 #include "ui_SAKUpdateManager.h"
 
+#if 0
 // It was gone.
-//static const char* checkForUpdateUrl = "https://api.github.com/repos/qsak/QtSwissArmyKnife/releases/latest";
+static const char* checkForUpdateUrl = "https://api.github.com/repos/qsak/QtSwissArmyKnife/releases/latest";
+#else
 static const char* checkForUpdateUrl = "https://api.github.com/repositories/162440100/releases/latest";
+#endif
 SAKUpdateManager::SAKUpdateManager(QWidget *parent)
     :QDialog(parent)
     ,mSettings(Q_NULLPTR)
