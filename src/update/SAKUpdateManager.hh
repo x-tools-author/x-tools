@@ -34,24 +34,6 @@ class SAKUpdateManager:public QDialog
 public:
     SAKUpdateManager(QWidget *parent =  Q_NULLPTR);
     ~SAKUpdateManager();
-
-    /**
-     * @brief checkForUpdate: Check for update
-     */
-    void checkForUpdate();
-
-    /**
-     * @brief enableAutoCheckedForUpdate: Get the application update flag
-     * @return update flag
-     */
-    bool enableAutoCheckedForUpdate();
-
-    /**
-     * @brief setSettings: Set settings instance,
-     * if settings is valid, some operation will save to the settings file
-     * @param settings: settings instance
-     */
-    void setSettings(QSettings *settings);
 private:
     struct UpdateInfo{
         bool isValid; // true: the information is valid, false: the information is invalid
@@ -70,7 +52,6 @@ private:
     QNetworkReply *mNetworkReply;
     QSettings *mSettings;
     const QString mSettingsKeyUpdateAutomaticallyEnable;
-    bool isInitializing;
 private:
     void outputInfo(QString info, bool isError = false);
     void clearInfo();
@@ -92,12 +73,10 @@ private:
     QGroupBox *mNewVersionCommentsGroupBox;
     QTextBrowser *mNewVersionCommentsTextBrowser;
     QListWidget *mDownloadListListWidget;
-    QCheckBox *mAutoCheckForUpdateCheckBox;
     QPushButton *mVisitWebPushButton;
     QPushButton *mCheckForUpdatePushButton;
     QLabel *mInfoLabel;
 private slots:
-    void on_autoCheckForUpdateCheckBox_clicked();
     void on_visitWebPushButton_clicked();
     void on_checkForUpdatePushButton_clicked();
 };

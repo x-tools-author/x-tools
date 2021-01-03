@@ -87,7 +87,6 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
 
     mUi->setupUi(this);
     mUpdateManager = new SAKUpdateManager(this);
-    mUpdateManager->setSettings(qobject_cast<SAKApplication*>(qApp)->settings());
 
     initToosMetaObjectInfoList();
     initializingMetaObject();

@@ -32,7 +32,6 @@ SAKUpdateManager::SAKUpdateManager(QWidget *parent)
     :QDialog(parent)
     ,mSettings(Q_NULLPTR)
     ,mSettingsKeyUpdateAutomaticallyEnable(QString("updateAutomaticallyEnable"))
-    ,isInitializing(false)
     ,mUi (new Ui::SAKUpdateManager)
 {
     mUi->setupUi(this);
@@ -44,10 +43,9 @@ SAKUpdateManager::SAKUpdateManager(QWidget *parent)
     mNewVersionCommentsGroupBox = mUi->newVersionCommentsGroupBox;
     mNewVersionCommentsTextBrowser = mUi->newVersionCommentsTextBrowser;
     mDownloadListListWidget = mUi->downloadListListWidget;
-    mAutoCheckForUpdateCheckBox = mUi->autoCheckForUpdateCheckBox;
     mVisitWebPushButton = mUi->visitWebPushButton;
-    mCheckForUpdatePushButton = mUi->checkForUpdatePushButton;
     mInfoLabel = mUi->infoLabel;
+    mCheckForUpdatePushButton = mUi->checkForUpdatePushButton;
 
     mCurrentVersionLabel->setText(QApplication::applicationVersion());
     mNoNewVersionTipLabel->hide();
@@ -61,31 +59,6 @@ SAKUpdateManager::SAKUpdateManager(QWidget *parent)
 SAKUpdateManager::~SAKUpdateManager()
 {
     delete mUi;
-}
-
-void SAKUpdateManager::checkForUpdate()
-{
-    on_checkForUpdatePushButton_clicked();
-}
-
-bool SAKUpdateManager::enableAutoCheckedForUpdate()
-{
-    return mAutoCheckForUpdateCheckBox->isChecked();
-}
-
-void SAKUpdateManager::setSettings(QSettings *settings)
-{
-    mSettings = settings;
-    isInitializing = true;
-    if (mSettings){
-        // Read in setting information form settings file
-        bool checked = mSettings->value(mSettingsKeyUpdateAutomaticallyEnable).toBool();
-        mAutoCheckForUpdateCheckBox->setChecked(checked);
-
-        if (checked){
-            on_checkForUpdatePushButton_clicked();
-        }
-    }
 }
 
 void SAKUpdateManager::outputInfo(QString info, bool isError)
@@ -118,11 +91,6 @@ void SAKUpdateManager::checkForUpdateFinished()
                     mNewVersionCommentsTextBrowser->setText(mUpdateInfo.body.replace(QString("\\r\\n"), QString("\r\n")));
                     setupDownloadList(mUpdateInfo);
                 }else{
-                    if (isInitializing){
-                        isInitializing = false;
-                        goto doSomethingBeforeReturning;
-                    }
-
                     // Check for update manually
                     mNoNewVersionTipLabel->show();
                     mNewVersionLabel->setText(mUpdateInfo.name.remove("v"));
@@ -137,16 +105,12 @@ void SAKUpdateManager::checkForUpdateFinished()
                 outputInfo(mUpdateInfo.errorString, true);
             }
         }else{
-            if (!isInitializing){
-                QApplication::beep();
-            }
+            QApplication::beep();
             outputInfo(mNetworkReply->errorString(), true);
         }
     }
 
-doSomethingBeforeReturning:
     mCheckForUpdatePushButton->setEnabled(true);
-
     delete mNetworkReply;
     mNetworkReply = Q_NULLPTR;
 }
@@ -239,8 +203,12 @@ void SAKUpdateManager::setupDownloadList(UpdateInfo info)
     appendPacketItem(info, QString(":/resources/images/Linux.png"), QString(".AppImage"));
 
     // Binary for MAC
-    mDownloadListListWidget->addItem(QString("Apple"));
+    mDownloadListListWidget->addItem(QString("macOS"));
     appendPacketItem(info, QString(":/resources/images/Mac.png"), QString(".dmg"));
+
+    // Binary for iOS
+    mDownloadListListWidget->addItem(QString("iOS"));
+    appendPacketItem(info, QString(":/resources/images/iOS.png"), QString(".ipa"));
 
     // Binary for Android
     mDownloadListListWidget->addItem(QString("Android"));
@@ -278,13 +246,6 @@ void SAKUpdateManager::appendPacketItem(UpdateInfo info, QString icon, QString k
             item->setSizeHint(itemWidget->size());
             mDownloadListListWidget->setItemWidget(item, itemWidget);
         }
-    }
-}
-
-void SAKUpdateManager::on_autoCheckForUpdateCheckBox_clicked()
-{
-    if (mSettings){
-        mSettings->setValue(mSettingsKeyUpdateAutomaticallyEnable, mAutoCheckForUpdateCheckBox->isChecked());
     }
 }
 
