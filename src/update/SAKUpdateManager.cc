@@ -108,7 +108,6 @@ void SAKUpdateManager::checkForUpdateFinished()
     if (mNetworkReply){
         if (mNetworkReply->error() == QNetworkReply::NoError){
             QByteArray data = mNetworkReply->readAll();
-            qDebug() << __FUNCTION__ << qPrintable(QString::fromUtf8(data));
             mUpdateInfo = extractUpdateInfo(data);
             if (mUpdateInfo.isValid){
                 if (isNewVersion(mUpdateInfo.name)){
@@ -166,7 +165,7 @@ SAKUpdateManager::UpdateInfo SAKUpdateManager::extractUpdateInfo(QByteArray json
             QJsonObject jsonObj = jsonDoc.toVariant().toJsonObject();
 
             updateInfo.htmlUrl = jsonObj.value("html_url").toString();
-            updateInfo.name = jsonObj.value("name").toString();
+            updateInfo.name = jsonObj.value("tag_name").toString();
             updateInfo.browserDownloadUrl  = extractBrowserDownloadUrl(jsonObj.value("assets").toVariant().toJsonArray());
             updateInfo.body = jsonObj.value("body").toString();
             updateInfo.tarballUrl = jsonObj.value("tarball_url").toString();
@@ -229,11 +228,12 @@ void SAKUpdateManager::setupDownloadList(UpdateInfo info)
     // Binary for Windows
     mDownloadListListWidget->addItem(QString("Windows"));
     appendPacketItem(info, QString(":/resources/images/Windows.png"), QString(".exe"));
+    appendPacketItem(info, QString(":/resources/images/Windows.png"), QString(".zip"));
 
     // Binary for Linux
     mDownloadListListWidget->addItem(QString("Linux"));
     appendPacketItem(info, QString(":/resources/images/Linux.png"), QString(".run"));
-    appendPacketItem(info, QString(":/resources/images/Linux.png"), QString(".Appimage"));
+    appendPacketItem(info, QString(":/resources/images/Linux.png"), QString(".AppImage"));
 
     // Binary for MAC
     mDownloadListListWidget->addItem(QString("Apple"));
@@ -241,7 +241,7 @@ void SAKUpdateManager::setupDownloadList(UpdateInfo info)
 
     // Binary for Android
     mDownloadListListWidget->addItem(QString("Android"));
-    appendPacketItem(info, QString(":/resources/images/Android.png"), QString(".pkg"));
+    appendPacketItem(info, QString(":/resources/images/Android.png"), QString(".apk"));
 
     // Source - gz
     mDownloadListListWidget->addItem(tr("Source"));
