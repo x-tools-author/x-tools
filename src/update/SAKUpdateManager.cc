@@ -40,8 +40,6 @@ SAKUpdateManager::SAKUpdateManager(QWidget *parent)
     mUpdateProgressLabel = mUi->updateProgressLabel;
     mUpdateProgressBar = mUi->updateProgressBar;
     mNoNewVersionTipLabel = mUi->noNewVersionTipLabel;
-    mNewVersionCommentsGroupBox = mUi->newVersionCommentsGroupBox;
-    mNewVersionCommentsTextBrowser = mUi->newVersionCommentsTextBrowser;
     mDownloadListListWidget = mUi->downloadListListWidget;
     mVisitWebPushButton = mUi->visitWebPushButton;
     mInfoLabel = mUi->infoLabel;
@@ -88,7 +86,6 @@ void SAKUpdateManager::checkForUpdateFinished()
             if (mUpdateInfo.isValid){
                 if (isNewVersion(mUpdateInfo.name)){
                     mNewVersionLabel->setText(mUpdateInfo.name.remove("v"));
-                    mNewVersionCommentsTextBrowser->setText(mUpdateInfo.body.replace(QString("\\r\\n"), QString("\r\n")));
                     setupDownloadList(mUpdateInfo);
                 }else{
                     // Check for update manually
@@ -252,9 +249,9 @@ void SAKUpdateManager::appendPacketItem(UpdateInfo info, QString icon, QString k
 void SAKUpdateManager::on_visitWebPushButton_clicked()
 {
     if (QLocale().country() == QLocale::China){
-        QDesktopServices::openUrl(QUrl("https://gitee.com/qsak/QtSwissArmyKnife/releases"));
+        QDesktopServices::openUrl(QUrl(QString(SAK_GITEE_REPOSITORY_URL).append("/release")));
     }else{
-        QDesktopServices::openUrl(QUrl("https://github.com/qsak/QtSwissArmyKnife/releases"));
+        QDesktopServices::openUrl(QUrl(QString(SAK_GITHUB_REPOSITORY_URL).append("/release")));
     }
 }
 
@@ -264,10 +261,7 @@ void SAKUpdateManager::on_checkForUpdatePushButton_clicked()
     mUpdateProgressBar->setMaximum(0);
     mNoNewVersionTipLabel->hide();
     mCheckForUpdatePushButton->setEnabled(false);
-
-    mNewVersionCommentsTextBrowser->clear();
     clearDownloadList();
-
     mNetworkReply = mNetworkAccessManager.get(QNetworkRequest(QUrl(checkForUpdateUrl)));
     connect(mNetworkReply, &QNetworkReply::finished, this, &SAKUpdateManager::checkForUpdateFinished);
 }

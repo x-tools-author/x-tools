@@ -19,7 +19,6 @@
 #include <QListWidget>
 #include <QPushButton>
 #include <QProgressBar>
-#include <QTextBrowser>
 #include <QNetworkReply>
 #include <QNetworkAccessManager>
 
@@ -71,7 +70,6 @@ private:
     QProgressBar *mUpdateProgressBar;
     QLabel *mNoNewVersionTipLabel;
     QGroupBox *mNewVersionCommentsGroupBox;
-    QTextBrowser *mNewVersionCommentsTextBrowser;
     QListWidget *mDownloadListListWidget;
     QPushButton *mVisitWebPushButton;
     QPushButton *mCheckForUpdatePushButton;
