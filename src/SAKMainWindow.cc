@@ -308,6 +308,7 @@ void SAKMainWindow::initOptionMenu()
 
     optionMenu->addSeparator();
 
+#ifdef QT_DEBUG
     mTestPageAction = new QAction(tr("Enable Testing Page"), this);
     optionMenu->addAction(mTestPageAction);
     mTestPageAction->setCheckable(true);
@@ -318,7 +319,7 @@ void SAKMainWindow::initOptionMenu()
     }else{
         mTestPageAction->setChecked(false);
     }
-
+#endif
     QAction *action = new QAction(tr("Clear Configuration"), this);
     optionMenu->addAction(action);
     connect(action, &QAction::triggered, this, &SAKMainWindow::clearConfiguration);
