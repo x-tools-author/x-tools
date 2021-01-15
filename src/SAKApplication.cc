@@ -62,7 +62,7 @@ SAKApplication::SAKApplication(int argc, char **argv)
 
     // Initialize the settings file
     QString path = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
-    mSettingsFileName = QString("%1/%2.ini").arg(path).arg(qApp->applicationName());
+    mSettingsFileName = QString("%1/%2.ini").arg(path, qApp->applicationName());
     mSettings = new QSettings(mSettingsFileName, QSettings::IniFormat);
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     mSettings->setIniCodec(QTextCodec::codecForName("UTF-8"));
@@ -72,7 +72,7 @@ SAKApplication::SAKApplication(int argc, char **argv)
 
 #ifdef SAK_IMPORT_SQL_MODULE
     // Initialize the data base
-    mDatabaseName = QString("%1/%2.sqlite3").arg(path).arg(qApp->applicationName());
+    mDatabaseName = QString("%1/%2.sqlite3").arg(path, qApp->applicationName());
 
     // Remove settings file and database
     if (mSettings->value(mSettingsKeyContext.removeSettingsFile).toBool()){
