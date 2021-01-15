@@ -11,7 +11,9 @@
 #define SAKCOMMONCRCINTERFACE_HH
 
 #include <QObject>
+#ifndef SAK_IMPORT_MODULE_TESTLIB
 #include <QComboBox>
+#endif
 #include <QStringList>
 
 class SAKCommonCrcInterface:public QObject
@@ -80,12 +82,13 @@ public:
         T crc = (crcReg ^ static_cast<T>(getXorValue(model))) ;
         return crc;
     }
-
+#ifndef SAK_IMPORT_MODULE_TESTLIB
     /**
      * @brief addCrcModelItemsToComboBox: Add supported crc parameters model to a combo box.
      * @param comboBox: Target combo box.
      */
     static void addCrcModelItemsToComboBox(QComboBox *comboBox);
+#endif
 public:
     /**
      * @brief supportedParameterModels  -- 支持的crc参数模型

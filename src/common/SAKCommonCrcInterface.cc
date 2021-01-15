@@ -8,7 +8,9 @@
  * the file LICENCE in the root of the source code directory.
  */
 #include <QMetaEnum>
+#ifndef SAK_IMPORT_MODULE_TESTLIB
 #include <QStandardItemModel>
+#endif
 #include "SAKCommonCrcInterface.hh"
 
 SAKCommonCrcInterface::SAKCommonCrcInterface(QObject *parent)
@@ -17,6 +19,7 @@ SAKCommonCrcInterface::SAKCommonCrcInterface(QObject *parent)
 
 }
 
+#ifndef SAK_IMPORT_MODULE_TESTLIB
 void SAKCommonCrcInterface::addCrcModelItemsToComboBox(QComboBox *comboBox)
 {
     if (comboBox){
@@ -44,6 +47,7 @@ void SAKCommonCrcInterface::addCrcModelItemsToComboBox(QComboBox *comboBox)
         }
     }
 }
+#endif
 
 QStringList SAKCommonCrcInterface::supportedParameterModels()
 {
