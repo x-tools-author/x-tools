@@ -15,6 +15,7 @@
     数据转发模块tab页面索引添加记忆功能
     添加ECMAScript数据处理功能
     将modbus调试模块移动至工具类
+    Windows，Linux平台默认使用fusion软件风格
 V3.4.1 2020年12月19日
     bug修复：
     01. 某些输入格式无法正确计算CRC值
