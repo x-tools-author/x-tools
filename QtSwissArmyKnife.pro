@@ -34,6 +34,15 @@ DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs depr
 
 CONFIG += c++11
 
+# The file(SAKDefaultConfigure.pri) is use to control which module will be compiled.
+# It is not suggested to modify the file directly.
+# You should copy the file and rename it to SAKCustomConfigure.pri, then modify it.
+exists($$PWD/SAKCustomConfigure.pri){
+    include(SAKCustomConfigure.pri)
+}else{
+    include(SAKDefaultConfigure.pri)
+}
+
 #Sub project
 include(SAKTcp.pri)
 include(SAKUdp.pri)
