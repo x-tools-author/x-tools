@@ -34,7 +34,9 @@ public:
 
     // Debug page type supported by QtSwissArmyKnife
     enum SAKEnumDebugPageType {
+#ifdef QT_DEBUG
         DebugPageTypeTest,
+#endif
 #ifdef SAK_IMPORT_MODULE_SERIALPORT
         DebugPageTypeCOM,
 #endif
@@ -44,10 +46,14 @@ public:
 #ifdef SAK_IMPORT_USB_MODULE
         DebugPageTypeUSB,
 #endif
+#ifdef SAK_IMPORT_MODULE_UDP
         DebugPageTypeUdpClient,
         DebugPageTypeUdpServer,
+#endif
+#ifdef SAK_IMPORT_MODULE_TCP
         DebugPageTypeTCPClient,
         DebugPageTypeTCPServer,
+#endif
 #ifdef SAK_IMPORT_MODULE_SSLSOCKET
         DebugPageTypeSslSocketClient,
         DebugPageTypeSslSocketServer,

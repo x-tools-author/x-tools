@@ -57,10 +57,14 @@
 #ifdef SAK_IMPORT_MODULE_SERIALBUS
 #include "SAKModbusDebugPage.hh"
 #endif
+#ifdef SAK_IMPORT_MODULE_UDP
 #include "SAKUdpClientDebugPage.hh"
 #include "SAKUdpServerDebugPage.hh"
+#endif
+#ifdef SAK_IMPORT_MODULE_TCP
 #include "SAKTcpClientDebugPage.hh"
 #include "SAKTcpServerDebugPage.hh"
+#endif
 #ifdef SAK_IMPORT_MODULE_SERIALPORT
 #include "SAKSerialPortDebugPage.hh"
 #endif
@@ -521,7 +525,9 @@ void SAKMainWindow::rebootRequestion()
 
 void SAKMainWindow::initializingMetaObject()
 {
+#ifdef QT_DEBUG
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeTest, SAKTestDebugPage::staticMetaObject, tr("Test")});
+#endif
 #ifdef SAK_IMPORT_MODULE_SERIALPORT
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeCOM, SAKSerialPortDebugPage::staticMetaObject, tr("COM")});
 #endif
@@ -531,10 +537,14 @@ void SAKMainWindow::initializingMetaObject()
 #ifdef SAK_IMPORT_USB_MODULE
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeUSB, SAKUSBDebugPage::staticMetaObject, tr("USB")});
 #endif
+#ifdef SAK_IMPORT_MODULE_UDP
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeUdpClient, SAKUdpClientDebugPage::staticMetaObject, tr("UDP-C")});
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeUdpServer, SAKUdpServerDebugPage::staticMetaObject, tr("UDP-S")});
+#endif
+#ifdef SAK_IMPORT_MODULE_TCP
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeTCPClient, SAKTcpClientDebugPage::staticMetaObject, tr("TCP-C")});
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeTCPServer, SAKTcpServerDebugPage::staticMetaObject, tr("TCP-S")});
+#endif
 #ifdef SAK_IMPORT_MODULE_SSLSOCKET
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{SAKSslSocketClientDebugPage::staticMetaObject, tr("SSL-C")});
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{SAKSslSocketServerDebugPage::staticMetaObject, tr("SSL-S")});
