@@ -20,7 +20,20 @@ SAKTcpClientDevice::SAKTcpClientDevice(SAKTcpClientDebugPage *debugPage, QObject
     :SAKDebugPageDevice(debugPage, parent)
     ,mDebugPage(debugPage)
 {
-
+    connect(this, &SAKTcpClientDevice::finished, this, [&](){
+        auto parameters = mDeviceController->parameters().value<SAKTcpClientDeviceController::TcpClientParameters>();
+        if (parameters.allowAutomaticConnection){
+            QTimer *timer = new QTimer(this);
+            timer->setInterval(2000);
+            timer->setSingleShot(true);
+            connect(timer, &QTimer::timeout, this, [=](){
+                auto ret = qobject_cast<QTimer*>(sender());
+                delete ret;
+                start();
+            });
+            timer->start();
+        }
+    });
 }
 
 bool SAKTcpClientDevice::initializing(QString &errorString)
