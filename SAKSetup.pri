@@ -69,7 +69,7 @@ contains(CONFIG, static){
         msvc {
             QMAKE_POST_LINK+=$${DEPLOY_TOOL} $${DEPLOY_TARGET} --force --no-translations $$escape_expand(\\n)
         }else{
-            QMAKE_POST_LINK+='$${DEPLOY_TOOL} $${DEPLOY_TARGET} --force --no-translations'
+            QMAKE_POST_LINK+='$$escape_expand("\\n\\t") $${DEPLOY_TOOL} $${DEPLOY_TARGET} --force --no-translations $$escape_expand("\\n\\t")'
         }
     }
 }
