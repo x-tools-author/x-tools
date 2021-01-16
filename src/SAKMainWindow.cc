@@ -129,11 +129,13 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     QMetaEnum metaEnum = QMetaEnum::fromType<SAKEnumDebugPageType>();
     mTabWidget->blockSignals(true);
     for (int i = 0; i < metaEnum.keyCount(); i++){
+#ifdef QT_DEBUG
         // Test page is selectable, it is for developer of the project.
         bool enableTestPage = sakApp->settings()->value(mSettingsKeyContext.enableTestPage).toBool();
         if (!enableTestPage && (metaEnum.value(i) == DebugPageTypeTest)){
             continue;
         }
+#endif
 
         // The page can not be closed.
         QWidget *page = debugPageFromDebugPageType(metaEnum.value(i));
