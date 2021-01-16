@@ -27,5 +27,6 @@
         <file>resources/images/QtQQ.jpg</file>
         <file>resources/images/StartUi.jpg</file>
         <file>resources/images/iOS.png</file>
+        <file>resources/images/I18n.png</file>
     </qresource>
 </RCC>
