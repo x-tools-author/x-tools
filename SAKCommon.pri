@@ -14,3 +14,5 @@ DEFINES += SAK_DEVICE_THREAD_SLEEP_INTERVAL=10
 DEFINES += SAK_GITHUB_REPOSITORY_URL=\"\\\"https://github.com/qsaker/QtSwissArmyKnife\\\"\"
 # Gitee repositories
 DEFINES += SAK_GITEE_REPOSITORY_URL=\"\\\"https://gitee.com/qsaker/QtSwissArmyKnife\\\"\"
+# The default application style of Windows and Unix
+DEFINES += SAK_STYLE_FUSION = \"\\\"Fusion\\\"\"
