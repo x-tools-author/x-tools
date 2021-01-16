@@ -79,7 +79,7 @@ win32 {
     RC_ICONS = Windows.ico
     msvc:{
         lessThan(QT_MAJOR_VERSION, 6){
-                QMAKE_CXXFLAGS += -execution-charset:utf-8
+            QMAKE_CXXFLAGS += -execution-charset:utf-8
         }
     }
 }
