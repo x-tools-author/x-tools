@@ -16,7 +16,7 @@ DEFINES += SAK_GITHUB_REPOSITORY_URL=\"\\\"https://github.com/qsaker/QtSwissArmy
 DEFINES += SAK_GITEE_REPOSITORY_URL=\"\\\"https://gitee.com/qsaker/QtSwissArmyKnife\\\"\"
 # The default application style of Windows and Unix
 win32|unix {
-    DEFINES += SAK_STYLE_DEFAULT = \"\\\"Fusion\\\"\"
+    DEFINES += SAK_STYLE_DEFAULT=\"\\\"Fusion\\\"\"
 } else {
-    DEFINES += SAK_STYLE_DEFAULT = \"\\\"macOS\\\"\"
+    DEFINES += SAK_STYLE_DEFAULT=\"\\\"macOS\\\"\"
 }
