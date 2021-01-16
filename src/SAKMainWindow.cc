@@ -770,6 +770,7 @@ QString SAKMainWindow::debugPageTitleFromDebugPageType(int type)
 
     if (title.isEmpty()){
         title = QString("UnknownDebugPage");
+        qWarning() << "Unknown debug page type:" << type;
         Q_ASSERT_X(false, __FUNCTION__, "Unknown debug page type!");
     }
 
