@@ -287,11 +287,9 @@ void SAKDebugPageOutputController::readinSettings()
     };
 
     QVariant var = mSettings->value(mSettingStringOutputTextFormat);
-    int index = 0;
-    if (var.isNull()){
-        index = 4;
-    }else{
-        index = var.toInt();
+    int index = SAKCommonDataStructure::OutputFormatHex;
+    if (!var.isNull()){
+        index = var.toInt();;
     }
     mOutputTextFormatComboBox->setCurrentIndex(index);
 
