@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT += core gui network sql
+QT += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -35,6 +35,8 @@ DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs depr
 CONFIG += c++11
 
 #Sub project
+include(SAKTcp.pri)
+include(SAKUdp.pri)
 include(SAKSetup.pri)
 include(SAKTools.pri)
 include(SAKCommon.pri)
@@ -114,11 +116,7 @@ INCLUDEPATH += \
     src/pages/page/output \
     src/pages/page/output/save2file \
     src/pages/page/statistics \
-    src/pages/tcp/client \
-    src/pages/tcp/server \
     src/pages/test \
-    src/pages/udp/client \
-    src/pages/udp/server \
     src/update
 
 FORMS += \
@@ -141,13 +139,7 @@ FORMS += \
     src/pages/page/other/transmission/SAKOtherTransmissionPage.ui \
     src/pages/page/other/transmission/SAKOtherTransmissionPageViewer.ui \
     src/pages/page/output/save2file/SAKOutputSave2FileDialog.ui \
-    src/pages/tcp/client/SAKTcpClientDeviceController.ui \
-    src/pages/tcp/server/SAKTcpServerDeviceController.ui \
     src/pages/test/SAKTestDeviceController.ui \
-    src/pages/udp/client/SAKUdpClientAdvanceSettingWidget.ui \
-    src/pages/udp/client/SAKUdpClientDeviceController.ui \
-    src/pages/udp/client/SAKUdpClientMulticastEditingDialog.ui \
-    src/pages/udp/server/SAKUdpServerDeviceController.ui \
     src/update/SAKDownloadItemWidget.ui \
     src/update/SAKUpdateManager.ui
 
@@ -187,23 +179,9 @@ HEADERS += \
     src/pages/page/output/save2file/SAKOutputSave2FileDialog.hh \
     src/pages/page/output/save2file/SAKOutputSave2FileThread.hh \
     src/pages/page/statistics/SAKDebugPageStatisticsController.hh \
-    src/pages/tcp/client/SAKTcpClientDebugPage.hh \
-    src/pages/tcp/client/SAKTcpClientDevice.hh \
-    src/pages/tcp/client/SAKTcpClientDeviceController.hh \
-    src/pages/tcp/server/SAKTcpServerDebugPage.hh \
-    src/pages/tcp/server/SAKTcpServerDevice.hh \
-    src/pages/tcp/server/SAKTcpServerDeviceController.hh \
     src/pages/test/SAKTestDebugPage.hh \
     src/pages/test/SAKTestDevice.hh \
     src/pages/test/SAKTestDeviceController.hh \
-    src/pages/udp/client/SAKUdpClientAdvanceSettingWidget.hh \
-    src/pages/udp/client/SAKUdpClientDebugPage.hh \
-    src/pages/udp/client/SAKUdpClientDevice.hh \
-    src/pages/udp/client/SAKUdpClientDeviceController.hh \
-    src/pages/udp/client/SAKUdpClientMulticastEditingDialog.hh \
-    src/pages/udp/server/SAKUdpServerDebugPage.hh \
-    src/pages/udp/server/SAKUdpServerDevice.hh \
-    src/pages/udp/server/SAKUdpServerDeviceController.hh \
     src/update/SAKDownloadItemWidget.hh \
     src/update/SAKUpdateManager.hh
 
@@ -244,23 +222,9 @@ SOURCES += \
     src/main.cc \
     src/pages/page/output/save2file/SAKOutputSave2FileThread.cc \
     src/pages/page/statistics/SAKDebugPageStatisticsController.cc \
-    src/pages/tcp/client/SAKTcpClientDebugPage.cc \
-    src/pages/tcp/client/SAKTcpClientDevice.cc \
-    src/pages/tcp/client/SAKTcpClientDeviceController.cc \
-    src/pages/tcp/server/SAKTcpServerDebugPage.cc \
-    src/pages/tcp/server/SAKTcpServerDevice.cc \
-    src/pages/tcp/server/SAKTcpServerDeviceController.cc \
     src/pages/test/SAKTestDebugPage.cc \
     src/pages/test/SAKTestDevice.cc \
     src/pages/test/SAKTestDeviceController.cc \
-    src/pages/udp/client/SAKUdpClientAdvanceSettingWidget.cc \
-    src/pages/udp/client/SAKUdpClientDebugPage.cc \
-    src/pages/udp/client/SAKUdpClientDevice.cc \
-    src/pages/udp/client/SAKUdpClientDeviceController.cc \
-    src/pages/udp/client/SAKUdpClientMulticastEditingDialog.cc \
-    src/pages/udp/server/SAKUdpServerDebugPage.cc \
-    src/pages/udp/server/SAKUdpServerDevice.cc \
-    src/pages/udp/server/SAKUdpServerDeviceController.cc \
     src/update/SAKDownloadItemWidget.cc \
     src/update/SAKUpdateManager.cc
 
