@@ -11,6 +11,7 @@
 #include <QFile>
 #include <QDebug>
 #include <QAction>
+#include <QMessageBox>
 #include <QFileDialog>
 #include <QStandardPaths>
 #include <QListWidgetItem>
@@ -239,7 +240,8 @@ void SAKDebugPageInputController::sendRawData()
 {
     QString data = mInputTextEdit->toPlainText();
     if (data.isEmpty()){
-        data = QString("(empty)");
+        auto ret = QMessageBox::warning(Q_NULLPTR, tr("Data is empty"), tr("Please input data then try again!"));
+        Q_UNUSED(ret);
     }
 
     emit rawDataChanged(data, mInputParameters);
