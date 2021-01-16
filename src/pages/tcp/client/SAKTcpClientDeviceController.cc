@@ -26,6 +26,7 @@ SAKTcpClientDeviceController::SAKTcpClientDeviceController(SAKDebugPage *debugPa
     mLocalhostComboBox = mUi->localhostComboBox;
     mLocalPortlineEdit = mUi->localPortlineEdit;
     mSpecifyClientAddressAndPort = mUi->specifyClientAddressAndPort;
+    mAutomaticConnectionCheckBox = mUi->automaticConnectionCheckBox;
     mClientInfoLineEdit = mUi->clientInfoLineEdit;
     mServerHostLineEdit = mUi->serverHostLineEdit;
     mServerPortLineEdit = mUi->serverPortLineEdit;
@@ -53,6 +54,7 @@ QVariant SAKTcpClientDeviceController::parameters()
     parameters.serverHost = mParameters.serverHost;
     parameters.serverPort = mParameters.serverPort;
     parameters.specifyClientAddressAndPort = mParameters.specifyClientAddressAndPort;
+    parameters.allowAutomaticConnection = mParameters.allowAutomaticConnection;
     mParametersMutex.unlock();
 
     return QVariant::fromValue(parameters);
@@ -111,5 +113,12 @@ void SAKTcpClientDeviceController::on_serverPortLineEdit_textChanged(const QStri
 {
     mParametersMutex.lock();
     mParameters.serverPort = static_cast<quint16>(arg1.toInt());
+    mParametersMutex.unlock();
+}
+
+void SAKTcpClientDeviceController::on_automaticConnectionCheckBox_clicked()
+{
+    mParametersMutex.lock();
+    mParameters.allowAutomaticConnection = mUi->automaticConnectionCheckBox->isChecked();
     mParametersMutex.unlock();
 }

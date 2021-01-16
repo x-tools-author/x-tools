@@ -32,6 +32,7 @@ public:
         QString serverHost;
         quint16 serverPort;
         bool specifyClientAddressAndPort;
+        bool allowAutomaticConnection;
     };
 
     SAKTcpClientDeviceController(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
@@ -40,7 +41,6 @@ public:
     QVariant parameters() final;
     void setUiEnable(bool opened) final;
     void refreshDevice() final;
-
     void setClientInfo(QString info);
 private:
     QMutex mParametersMutex;
@@ -50,6 +50,7 @@ private:
     QComboBox *mLocalhostComboBox;
     QLineEdit *mLocalPortlineEdit;
     QCheckBox *mSpecifyClientAddressAndPort;
+    QCheckBox *mAutomaticConnectionCheckBox;
     QLineEdit *mClientInfoLineEdit;
     QLineEdit *mServerHostLineEdit;
     QLineEdit *mServerPortLineEdit;
@@ -59,6 +60,7 @@ private slots:
     void on_specifyClientAddressAndPort_clicked();
     void on_serverHostLineEdit_textChanged(const QString &arg1);
     void on_serverPortLineEdit_textChanged(const QString &arg1);
+    void on_automaticConnectionCheckBox_clicked();
 };
 Q_DECLARE_METATYPE(SAKTcpClientDeviceController::TcpClientParameters);
 #endif
