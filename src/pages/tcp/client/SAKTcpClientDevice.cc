@@ -20,6 +20,7 @@ SAKTcpClientDevice::SAKTcpClientDevice(SAKTcpClientDebugPage *debugPage, QObject
     :SAKDebugPageDevice(debugPage, parent)
     ,mDebugPage(debugPage)
 {
+    // Reconnection
     connect(this, &SAKTcpClientDevice::finished, this, [&](){
         auto parameters = mDeviceController->parameters().value<SAKTcpClientDeviceController::TcpClientParameters>();
         if (parameters.allowAutomaticConnection){
