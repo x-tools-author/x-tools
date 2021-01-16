@@ -150,9 +150,6 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
         mTabWidget->tabBar()->setTabButton(i, QTabBar::RightSide, Q_NULLPTR);
         mTabWidget->tabBar()->setTabButton(i, QTabBar::LeftSide, Q_NULLPTR);
     }
-
-    // Golden ratio
-    resize(971, 600);
 }
 
 SAKMainWindow::~SAKMainWindow()
