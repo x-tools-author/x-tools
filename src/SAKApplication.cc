@@ -93,11 +93,7 @@ SAKApplication::SAKApplication(int argc, char **argv)
 
     // Readin setting info, set the most beautiful style for the paltform.
     if (mSettings->value(mSettingsKeyContext.appStyle).toString().isEmpty()){
-#ifdef Q_OS_MACOS
-        // Nothing to do tye
-#else
         const QString defauleStyle = QString(SAK_STYLE_DEFAULT);
-#endif
         auto styleKeys = QStyleFactory::keys();
         if (styleKeys.contains(defauleStyle)){
             setStyle(defauleStyle);
