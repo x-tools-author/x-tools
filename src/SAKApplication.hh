@@ -16,10 +16,8 @@
 #include <QStyleFactory>
 #include <QSplashScreen>
 
-#ifdef SAK_IMPORT_SQL_MODULE
 #include <QSqlError>
 #include <QSqlDatabase>
-#endif
 
 #define sakApp (static_cast<SAKApplication *>(QCoreApplication::instance()))
 
@@ -45,9 +43,7 @@ public:
     SettingsKeyContext *settingsKeyContext();
     QSplashScreen *splashScreen();
     void showSplashScreenMessage(QString msg);
-#ifdef SAK_IMPORT_SQL_MODULE
     QSqlDatabase *sqlDatabase();
-#endif
 private:
     SettingsKeyContext mSettingsKeyContext;
     QTranslator mQtTranslator;
@@ -58,9 +54,7 @@ private:
     QString mLastDataTime;
     QString mSettingsFileName;
     QSplashScreen *mSplashScreen;
-#ifdef SAK_IMPORT_SQL_MODULE
     QSqlDatabase mSqlDatabase;
-#endif
 signals:
     void activeMainWindow();
 };

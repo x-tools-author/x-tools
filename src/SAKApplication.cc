@@ -70,7 +70,6 @@ SAKApplication::SAKApplication(int argc, char **argv)
     mLastDataTime = mSettings->value(mSettingsKeyContext.lastDateTime).toString();
     mSettings->setValue(mSettingsKeyContext.lastDateTime, QDateTime::currentDateTime().toString(QLocale::system().dateFormat()));
 
-#ifdef SAK_IMPORT_SQL_MODULE
     // Initialize the data base
     mDatabaseName = QString("%1/%2.sqlite3").arg(path, qApp->applicationName());
 
@@ -102,7 +101,6 @@ SAKApplication::SAKApplication(int argc, char **argv)
         qWarning() << __FUNCTION__ << "QSAKDatabase.sqlite3 open failed: " << mSqlDatabase.lastError().text();
         Q_ASSERT_X(false, __FUNCTION__, "Open database failed!");
     }
-#endif
 
     // Set application version, if micro SAK_VERSION is not defined, the application version is "0.0.0"
 #ifndef SAK_VERSION
@@ -182,9 +180,7 @@ void SAKApplication::showSplashScreenMessage(QString msg)
     mSplashScreen->showMessage(msg, Qt::AlignBottom, QColor(255, 255, 255));
 }
 
-#ifdef SAK_IMPORT_SQL_MODULE
 QSqlDatabase *SAKApplication::sqlDatabase()
 {
     return &mSqlDatabase;
 }
-#endif

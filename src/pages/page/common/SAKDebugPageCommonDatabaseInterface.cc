@@ -191,7 +191,6 @@ QList<SAKDebugPageCommonDatabaseInterface::SAKStructPresettingDataItem> SAKDebug
 
 void SAKDebugPageCommonDatabaseInterface::updateRecord(QString tableName, QString columnName, QVariant value, quint64 recordID, bool valueIsString)
 {
-#ifdef SAK_IMPORT_SQL_MODULE
     QString queryString;
     if (valueIsString){
         queryString = QString("UPDATE %1 SET %2='%3' WHERE ID=%4")
@@ -213,13 +212,6 @@ void SAKDebugPageCommonDatabaseInterface::updateRecord(QString tableName, QStrin
         qDebug() << queryString;
 #endif
     }
-#else
-    Q_UNUSED(tableName);
-    Q_UNUSED(columnName);
-    Q_UNUSED(value);
-    Q_UNUSED(recordID);
-    Q_UNUSED(valueIsString);
-#endif
 }
 
 void SAKDebugPageCommonDatabaseInterface::deleteRecord(QString tableName, quint64 recordID)
