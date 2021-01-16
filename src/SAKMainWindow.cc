@@ -36,9 +36,7 @@
 #include <QDesktopServices>
 
 #include "SAKMainWindow.hh"
-#include "QtAppStyleApi.hh"
 #include "SAKApplication.hh"
-#include "QtStyleSheetApi.hh"
 #include "SAKUpdateManager.hh"
 #include "SAKTestDebugPage.hh"
 #include "SAKCommonDataStructure.hh"
@@ -82,7 +80,6 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     ,mTabWidget(new QTabWidget)
 {
     mSettingsKeyContext.enableTestPage = QString("%1/enableTestPage").arg(qApp->applicationName());
-    mSettingsKeyContext.appStylesheet = QString("%1/appStylesheet").arg(qApp->applicationName());
     mSettingsKeyContext.currentTabPage = QString("%1/currentTabPage").arg(qApp->applicationName());
 
     mUi->setupUi(this);
@@ -115,30 +112,6 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
 
     // Initializing menu bar
     initMenuBar();
-
-    // The default application style of Windows paltform and Linux platform is "Fusion".
-    // Do not set applicaiton stype for android palrform.
-    // For macOS platform, do not use the application style named "Windows"
-#ifndef Q_OS_ANDROID
-    QString settingStyle = sakApp->settings()->value(sakApp->settingsKeyContext()->appStyle).toString();
-    if (settingStyle.isEmpty()){
-        QStringList styleKeys = QStyleFactory::keys();
-#ifdef Q_OS_MACOS
-        QString uglyStyle("Windows");
-        for(auto &var:styleKeys){
-            if (var != uglyStyle){
-                changeAppStyle(var);
-                break;
-            }
-    }
-#else
-        QString defaultStyle("Fusion");
-        if (styleKeys.contains(defaultStyle)){
-            changeAppStyle(defaultStyle);
-        }
-#endif
-    }
-#endif
 
     // Connecting the signal of tab page to it's slot.
     mTabWidget->setTabsClosable(true);
@@ -177,10 +150,6 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
         mTabWidget->tabBar()->setTabButton(i, QTabBar::RightSide, Q_NULLPTR);
         mTabWidget->tabBar()->setTabButton(i, QTabBar::LeftSide, Q_NULLPTR);
     }
-
-    // Do soemthing to make the application look like more beautiful.
-    connect(QtStyleSheetApi::instance(), &QtStyleSheetApi::styleSheetChanged, this, &SAKMainWindow::changeStylesheet);
-    connect(QtAppStyleApi::instance(), &QtAppStyleApi::appStyleChanged, this, &SAKMainWindow::changeAppStyle);
 
     // Golden ratio
     resize(971, 600);
@@ -274,41 +243,38 @@ void SAKMainWindow::initOptionMenu()
     QMenu *optionMenu = new QMenu(tr("&Options"));
     menuBar()->addMenu(optionMenu);
 
-    // Initializing style sheet menu, the application need to be reboot after change the style sheet to Qt default.
-    QMenu *stylesheetMenu = new QMenu(tr("Skin"), this);
-    optionMenu->addMenu(stylesheetMenu);
-    mDefaultStyleSheetAction = new QAction(tr("Qt Default"), this);
-    mDefaultStyleSheetAction->setCheckable(true);
-    stylesheetMenu->addAction(mDefaultStyleSheetAction);
-    connect(mDefaultStyleSheetAction, &QAction::triggered, [=](){
-        for(auto &var : QtStyleSheetApi::instance()->actions()){
-            var->setChecked(false);
-        }
-
-        changeStylesheet(QString());
-        mDefaultStyleSheetAction->setChecked(true);
-        rebootRequestion();
-    });
-
-    stylesheetMenu->addSeparator();
-    stylesheetMenu->addActions(QtStyleSheetApi::instance()->actions());
-    QString styleSheetName = sakApp->settings()->value(mSettingsKeyContext.appStylesheet).toString();
-    if (!styleSheetName.isEmpty()){
-        QtStyleSheetApi::instance()->setStyleSheet(styleSheetName);
-    }else{
-        mDefaultStyleSheetAction->setChecked(true);
-    }
-
     // Initializing application style menu.
     QMenu *appStyleMenu = new QMenu(tr("Application Style"), this);
     optionMenu->addMenu(appStyleMenu);
-    appStyleMenu->addActions(QtAppStyleApi::instance()->actions());
+    auto styleKeys = QStyleFactory::keys();
+    QList<QAction*> actionsList;
+    QActionGroup *actionGroup = new QActionGroup(this);
+    for (auto &var : styleKeys){
+        QAction *action = new QAction(var, this);
+        action->setObjectName(var);
+        action->setCheckable(true);
+        actionsList.append(action);
+        actionGroup->addAction(action);
+        connect(action, &QAction::triggered, this, [=](){
+            QString style = qobject_cast<QAction*>(sender())->objectName();
+            sakApp->setStyle(style);
+            sakApp->settings()->setValue(sakApp->settingsKeyContext()->appStyle, style);
+        });
+    }
+    // Readin the specified style.
     QString style = sakApp->settings()->value(sakApp->settingsKeyContext()->appStyle).toString();
-    QtAppStyleApi::instance()->setStyle(style);
-
-    optionMenu->addSeparator();
+    if (style.length()){
+        for (auto &var : actionsList){
+            if (var->objectName().compare(style) == 0){
+                var->setChecked(true);
+                sakApp->settings()->setValue(sakApp->settingsKeyContext()->appStyle, style);
+            }
+        }
+    }
+    appStyleMenu->addActions(actionsList);
 
 #ifdef QT_DEBUG
+    optionMenu->addSeparator();
     mTestPageAction = new QAction(tr("Enable Testing Page"), this);
     optionMenu->addAction(mTestPageAction);
     mTestPageAction->setCheckable(true);
@@ -473,19 +439,6 @@ void SAKMainWindow::initDemoMenu()
     }
 }
 
-void SAKMainWindow::changeStylesheet(QString styleSheetName)
-{
-    sakApp->settings()->setValue(mSettingsKeyContext.appStylesheet, styleSheetName);
-    if (!styleSheetName.isEmpty()){
-        mDefaultStyleSheetAction->setChecked(false);
-    }
-}
-
-void SAKMainWindow::changeAppStyle(QString appStyle)
-{
-    sakApp->settings()->setValue(sakApp->settingsKeyContext()->appStyle, appStyle);
-}
-
 void SAKMainWindow::aboutQsak()
 {
     struct Info {
@@ -555,6 +508,7 @@ void SAKMainWindow::testPageActionTriggered()
 
 void SAKMainWindow::clearConfiguration()
 {
+    sakApp->settings()->setValue(sakApp->settingsKeyContext()->appStyle, QString(""));
     sakApp->settings()->setValue(sakApp->settingsKeyContext()->removeSettingsFile, QVariant::fromValue(true));
     rebootRequestion();
 }

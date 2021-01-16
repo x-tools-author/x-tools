@@ -83,7 +83,6 @@ public:
 private:
     struct SettingsKeyContext {
         QString enableTestPage;
-        QString appStylesheet;
         QString currentTabPage;
     }mSettingsKeyContext;
 
@@ -115,9 +114,6 @@ private:
     void initHelpMenu();
     void initLinksMenu();
     void initDemoMenu();
-
-    void changeStylesheet(QString styleSheetName);
-    void changeAppStyle(QString appStyle);
 
     void aboutQsak();
     void removeRemovableDebugPage(int index);
