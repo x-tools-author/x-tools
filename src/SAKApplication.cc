@@ -24,6 +24,7 @@
 #include <QTextCursor>
 #include <QTranslator>
 #include <QPushButton>
+#include <QStyleFactory>
 #include <QStandardPaths>
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <QDesktopWidget>
@@ -87,6 +88,20 @@ SAKApplication::SAKApplication(int argc, char **argv)
             qInfo() << "Remove database successfully!";
         }else{
             qWarning() << "Remove database failed: " << databaseFile.errorString();
+        }
+    }
+
+    // Readin setting info, set the most beautiful style for the paltform.
+    if (mSettings->value(mSettingsKeyContext.appStyle).toString().isEmpty()){
+#ifdef Q_OS_MACOS
+        // Nothing to do tye
+#else
+        const QString defauleStyle = QString(SAK_STYLE_DEFAULT);
+#endif
+        auto styleKeys = QStyleFactory::keys();
+        if (styleKeys.contains(defauleStyle)){
+            setStyle(defauleStyle);
+            mSettings->setValue(mSettingsKeyContext.appStyle, defauleStyle);
         }
     }
 
