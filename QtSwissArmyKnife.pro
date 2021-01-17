@@ -238,6 +238,12 @@ SOURCES += \
 # Android settings
 # The package is qter.QtSwissArmyKnife
 android {
+    exists(libs/android_openssl/openssl.pri) {
+        include(libs/android_openssl/openssl.pri)
+    } else {
+        message("You should execute the command line: git submodule update --init")
+    }
+
     ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
     DISTFILES += \
         android/AndroidManifest.xml
