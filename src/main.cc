@@ -33,8 +33,13 @@ int main(int argc, char *argv[])
         SAKMainWindow mainWindow;
         QObject::connect(&app, &SAKApplication::activeMainWindow, &mainWindow, &SAKMainWindow::activateWindow);
         mainWindow.show();
+#ifdef Q_OS_ANDROID
+        mainWindow.showMaximized();
+#endif
+#ifndef Q_OS_ANDROID
         // Golden ratio
         mainWindow.resize(mainWindow.height() * 1.618, mainWindow.height());
+#endif
 
         // Move the main window to the central of desktop.
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
