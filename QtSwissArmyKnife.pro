@@ -234,11 +234,11 @@ SOURCES += \
     src/update/SAKDownloadItemWidget.cc \
     src/update/SAKUpdateManager.cc
 
+#------------------------------------------------------------------------------
+# Android settings
+# The package is qter.QtSwissArmyKnife
 android {
-     ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
-     ANDROID_ABIS = armeabi-v7a
-     DISTFILES += \
-         android/AndroidManifest.xml \
-         android/build.gradle \
-         android/res/values/libs.xml
- }
+    ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
+    DISTFILES += \
+        android/AndroidManifest.xml
+}
