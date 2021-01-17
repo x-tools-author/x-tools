@@ -137,6 +137,7 @@ jobs:
           fetch-depth: 1
       - name: build android
         # https://doc.qt.io/qt-5/deployment-android.html
+        #  deploy command line: androiddeployqt --verbose --output release/ --input $(ls *.json) --android-platform android-29 --jdk $JAVA_HOME --gradle
         run: |
           export JAVA_HOME=$JAVA_HOME_8_X64
           export ANDROID_SDK_ROOT=$ANDROID_HOME
@@ -148,7 +149,7 @@ jobs:
           echo $JAVA_HOME_11_X64
           #export PATH=$PATH:$JAVA_HOME_8_X64
           echo $PATH
-          androiddeployqt --verbose --output release/ --input $(ls *.json) --android-platform android-29 --jdk $JAVA_HOME --gradle
+          androiddeployqt --verbose --output release/ --input $(ls *.json) --jdk $JAVA_HOME --gradle
       
       - name: Gets latest created release info
         id: latest_release_info
