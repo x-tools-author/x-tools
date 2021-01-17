@@ -290,7 +290,9 @@ void SAKDebugPageInputController::cyclingWritingTimerTimeout()
     // If the mCyclingTimeComboBox is not enable, it means that the device is not ready.
     // So, do not write data to device.
     if (mCyclingTimeComboBox->isEnabled()){
-        sendRawData();
+        if (mInputTextEdit->toPlainText().length()){
+            sendRawData();
+        }
     }else{
         mCyclingTimeComboBox->setCurrentIndex(0);
         mCyclingWritingTimer.stop();
