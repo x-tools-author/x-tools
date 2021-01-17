@@ -16,7 +16,11 @@ DEFINES += SAK_GITEE_REPOSITORY_URL=\"\\\"https://gitee.com/qsaker/QtSwissArmyKn
 win32|unix {
     DEFINES += SAK_STYLE_DEFAULT=\"\\\"Fusion\\\"\"
 } else {
-    DEFINES += SAK_STYLE_DEFAULT=\"\\\"macOS\\\"\"
+    android {
+        DEFINES += SAK_STYLE_DEFAULT=\"\\\"Windows\\\"\"
+    } else {
+        DEFINES += SAK_STYLE_DEFAULT=\"\\\"macOS\\\"\"
+    }
 }
 
 #↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
@@ -25,7 +29,7 @@ DEFINES += SAK_VERSION=\"\\\"3.4.1\\\"\"
 # File information
 win32 {
     VERSION = 3.4.1.0
-}else {
+} else {
     VERSION = 3.4.1
 }
 #↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
