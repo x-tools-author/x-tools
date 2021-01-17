@@ -91,6 +91,7 @@ SAKApplication::SAKApplication(int argc, char **argv)
         }
     }
 
+#ifndef Q_OS_ANDROID
     // Readin setting info, set the most beautiful style for the paltform.
     if (mSettings->value(mSettingsKeyContext.appStyle).toString().isEmpty()){
         const QString defauleStyle = QString(SAK_STYLE_DEFAULT);
@@ -100,6 +101,7 @@ SAKApplication::SAKApplication(int argc, char **argv)
             mSettings->setValue(mSettingsKeyContext.appStyle, defauleStyle);
         }
     }
+#endif
 
     mSqlDatabase = QSqlDatabase::addDatabase("QSQLITE");
     mSqlDatabase.setDatabaseName(mDatabaseName);
