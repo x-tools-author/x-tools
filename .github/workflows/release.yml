@@ -147,7 +147,6 @@ jobs:
           make install INSTALL_ROOT="./release"
           echo $JAVA_HOME_8_X64
           echo $JAVA_HOME_11_X64
-          #export PATH=$PATH:$JAVA_HOME_8_X64
           echo $PATH
           androiddeployqt --verbose --output release/ --input $(ls *.json) --jdk $JAVA_HOME --gradle
       
