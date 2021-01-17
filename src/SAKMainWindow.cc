@@ -99,9 +99,6 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     setCentralWidget(scrollArea);
     scrollArea->setWidget(mTabWidget);
     menuBar()->hide();
-
-    //QDesktopWidget *desktop = QApplication::desktop();
-    //mTabWidget->setFixedWidth(desktop->width() - scrollArea->verticalScrollBar()->width());
 #else
     QHBoxLayout *layout = new QHBoxLayout();
     layout->addWidget(mTabWidget);
