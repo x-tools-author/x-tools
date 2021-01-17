@@ -77,7 +77,7 @@
 
 SAKMainWindow::SAKMainWindow(QWidget *parent)
     :QMainWindow(parent)
-    ,mDefaultStyleSheetAction(Q_NULLPTR)
+    ,mWindowsMenu(Q_NULLPTR)
     ,mUpdateManager(Q_NULLPTR)
     ,mSettingKeyEnableTestPage(QString("enableTestPage"))
     ,mUi(new Ui::SAKMainWindow)
@@ -98,6 +98,7 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     scrollArea->setWidgetResizable(true);
     setCentralWidget(scrollArea);
     scrollArea->setWidget(mTabWidget);
+    menuBar()->hide();
 
     //QDesktopWidget *desktop = QApplication::desktop();
     //mTabWidget->setFixedWidth(desktop->width() - scrollArea->verticalScrollBar()->width());
@@ -113,9 +114,10 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     title.append(QString("v") + qobject_cast<SAKApplication*>(qApp)->applicationVersion());
     setWindowTitle(title);
 #endif
-
+#ifndef Q_OS_ANDROID
     // Initializing menu bar
     initMenuBar();
+#endif
 
     // Connecting the signal of tab page to it's slot.
     mTabWidget->setTabsClosable(true);
@@ -145,7 +147,9 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
         }
     }
     mTabWidget->blockSignals(false);
-    mWindowsMenu->addSeparator();
+    if (mWindowsMenu){
+        mWindowsMenu->addSeparator();
+    }
 
     // Set the current page to last time
     int currentPage = sakApp->settings()->value(mSettingsKeyContext.currentTabPage).toInt();
@@ -493,11 +497,13 @@ void SAKMainWindow::removeRemovableDebugPage(int index)
 
 void SAKMainWindow::appendWindowAction(QWidget *page)
 {
-    QAction *action = new QAction(page->windowTitle(), mWindowsMenu);
-    action->setData(QVariant::fromValue(page));
-    mWindowsMenu->addAction(action);
-    connect(action, &QAction::triggered, this, &SAKMainWindow::activePage);
-    connect(page, &QWidget::destroyed, action, &QAction::deleteLater);
+    if (mWindowsMenu){
+        QAction *action = new QAction(page->windowTitle(), mWindowsMenu);
+        action->setData(QVariant::fromValue(page));
+        mWindowsMenu->addAction(action);
+        connect(action, &QAction::triggered, this, &SAKMainWindow::activePage);
+        connect(page, &QWidget::destroyed, action, &QAction::deleteLater);
+    }
 }
 
 void SAKMainWindow::testPageActionTriggered()

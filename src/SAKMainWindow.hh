@@ -107,7 +107,6 @@ private:
 
     QMenu *mWindowsMenu;
     QAction *mTestPageAction;
-    QAction *mDefaultStyleSheetAction;
     SAKUpdateManager *mUpdateManager;
     const QString mSettingKeyEnableTestPage;
 private: 
