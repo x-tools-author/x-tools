@@ -94,11 +94,10 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
 
 #ifdef Q_OS_ANDROID
     setWindowFlags(Qt::FramelessWindowHint);
-    QScrollArea* scrollArea = new QScrollArea;
+    QScrollArea* scrollArea = new QScrollArea(this);
     scrollArea->setWidgetResizable(true);
     setCentralWidget(scrollArea);
     scrollArea->setWidget(mTabWidget);
-    menuBar()->hide();
 #else
     QHBoxLayout *layout = new QHBoxLayout();
     layout->addWidget(mTabWidget);
@@ -111,10 +110,9 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     title.append(QString("v") + qobject_cast<SAKApplication*>(qApp)->applicationVersion());
     setWindowTitle(title);
 #endif
-#ifndef Q_OS_ANDROID
+
     // Initializing menu bar
     initMenuBar();
-#endif
 
     // Connecting the signal of tab page to it's slot.
     mTabWidget->setTabsClosable(true);
@@ -270,8 +268,12 @@ void SAKMainWindow::initOptionMenu()
     if (style.length()){
         for (auto &var : actionsList){
             if (var->objectName().compare(style) == 0){
+                var->blockSignals(true);
                 var->setChecked(true);
+                var->blockSignals(false);
+                sakApp->setStyle(style);
                 sakApp->settings()->setValue(sakApp->settingsKeyContext()->appStyle, style);
+                break;
             }
         }
     }
