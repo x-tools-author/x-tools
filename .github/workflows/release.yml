@@ -148,7 +148,7 @@ jobs:
           echo $JAVA_HOME_8_X64
           echo $JAVA_HOME_11_X64
           echo $PATH
-          androiddeployqt --verbose --output release/ --input $(ls *.json) --jdk $JAVA_HOME --gradle
+          androiddeployqt --verbose --output release/ --input $(ls *.json) --android-platform android-29 --jdk $JAVA_HOME --gradle
       
       - name: Gets latest created release info
         id: latest_release_info
