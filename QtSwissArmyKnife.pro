@@ -238,13 +238,10 @@ SOURCES += \
 # Android settings
 # The package is qter.QtSwissArmyKnife
 android {
-    exists(libs/android_openssl/openssl.pri) {
-        include(libs/android_openssl/openssl.pri)
-    } else {
-        message("You should execute the command line: git submodule update --init")
-    }
+    include(android/SAKAndroid.pri)
+}
 
-    ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
-    DISTFILES += \
-        android/AndroidManifest.xml
+contains(ANDROID_TARGET_ARCH,armeabi-v7a) {
+    ANDROID_PACKAGE_SOURCE_DIR = \
+        $$PWD/android/qt5.12/armeabi-v7a
 }
