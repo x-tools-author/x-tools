@@ -33,8 +33,6 @@ equals(QT_MAJOR_VERSION, 5)|equals(QT_MINOR_VERSION, 12) {
             $$PWD/5.12/x86/res/values/libs.xml
     }
 
-
-
     contains(ANDROID_TARGET_ARCH,arm64-v8a) {
         ANDROID_PACKAGE_SOURCE_DIR = \
             $$PWD/5.12/arm64-v8a
