@@ -23,6 +23,7 @@ SAKTcpClientDeviceController::SAKTcpClientDeviceController(SAKDebugPage *debugPa
 {
     mUi->setupUi(this);
 
+    mParameters.allowAutomaticConnection = false;
     mLocalhostComboBox = mUi->localhostComboBox;
     mLocalPortlineEdit = mUi->localPortlineEdit;
     mSpecifyClientAddressAndPort = mUi->specifyClientAddressAndPort;
