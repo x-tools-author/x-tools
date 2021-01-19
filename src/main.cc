@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
         mainWindow.show();
 #ifndef Q_OS_ANDROID
         // Golden ratio
-        mainWindow.resize(mainWindow.height() * 1.618, mainWindow.height());
+        mainWindow.resize(mainWindow.height() * 1.732, mainWindow.height());
 #endif
 
         // Move the main window to the central of desktop.
