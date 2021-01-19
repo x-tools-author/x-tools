@@ -453,15 +453,17 @@ void SAKMainWindow::aboutQsak()
         bool valueIsUrl;
     };
 
-    auto dateaTime = qobject_cast<SAKApplication*>(qApp)->buildDateTime();
+    auto dateTimeString = sakApp->buildDate()->toString(QLocale::system().dateFormat());
+    dateTimeString = dateTimeString.append(" ");
+    dateTimeString = dateTimeString.append(sakApp->buildTime()->toString("hh:mm:ss"));
     QList<Info> infoList;
     infoList << Info{tr("Version"), QString(qApp->applicationVersion()), false}
-             << Info{tr("Author"), QString("Qsaker(Qter)"), false}
-             << Info{tr("Email"), QString("qsaker@qq.com"), false}
+             << Info{tr("Author"), QString(SAK_AUTHOR), false}
+             << Info{tr("Email"), QString(SAK_AUTHOR_EMAIL), false}
              << Info{tr("QQ"), QString("QQ:2869470394"), false}
              << Info{tr("QQ Group"), QString("QQ:952218522"), false}
-             << Info{tr("Build Time"), dateaTime->toString(QLocale::system().dateTimeFormat()), false}
-             << Info{tr("Copyright"), tr("Copyright 2018-%1 Qter. All rights reserved.").arg(dateaTime->toString("yyyy")), false}
+             << Info{tr("Build Time"), dateTimeString, false}
+             << Info{tr("Copyright"), tr("Copyright 2018-%1 Qter. All rights reserved.").arg(sakApp->buildDate()->toString("yyyy")), false}
              << Info{tr("Gitee Url"), QString("<a href=%1>%1</a>").arg(SAK_GITEE_REPOSITORY_URL), true}
              << Info{tr("Gitbub Url"), QString("<a href=%1>%1</a>").arg(SAK_GITHUB_REPOSITORY_URL), true};
 
