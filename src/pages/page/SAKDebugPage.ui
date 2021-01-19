@@ -815,12 +815,28 @@ p, li { white-space: pre-wrap; }
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>699</x>
-     <y>368</y>
+     <x>263</x>
+     <y>50</y>
     </hint>
     <hint type="destinationlabel">
-     <x>699</x>
-     <y>337</y>
+     <x>263</x>
+     <y>38</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>clearOutputPushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>outputTextBroswer</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>794</x>
+     <y>197</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>727</x>
+     <y>200</y>
     </hint>
    </hints>
   </connection>
