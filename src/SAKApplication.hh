@@ -37,7 +37,8 @@ public:
     };
 
     void installLanguage();
-    QDateTime *buildDateTime();
+    const QDate *buildDate();
+    const QTime *buildTime();
     QString dataPath();
     QSettings *settings();
     SettingsKeyContext *settingsKeyContext();
