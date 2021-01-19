@@ -119,6 +119,7 @@ void SAKDebugPage::outputMessage(QString msg, bool isInfo)
 
     msg.prepend(time);
     mInfoLabel->setText(msg);
+    mUi->logOutputTextBrowser->append(QString("<font color=%1>%2</font>").arg(isInfo ? "black" : "red", msg));
     mClearInfoTimer.start();
 }
 
@@ -377,4 +378,17 @@ void SAKDebugPage::on_dataVisualizationPushButton_clicked()
 #else
     QMessageBox::warning(this, tr("Unsupported function"), tr("The function has been disable, beause of developer's Qt version is not supported!"));
 #endif
+}
+
+void SAKDebugPage::on_saveLogPushButton_clicked()
+{
+    auto fileName = QFileDialog::getSaveFileName(this, tr("Save Log to File"), QString(QDateTime::currentDateTime().toString("yyyyMMddhhmmss") + ".txt"), QString("*.txt"));
+    if (fileName.length()){
+        QFile file(fileName);
+        if (file.open(QFile::ReadWrite|QFile::Text)){
+            QTextStream out(&file);
+            out << mUi->logOutputTextBrowser->toPlainText();
+            file.close();
+        }
+    }
 }
