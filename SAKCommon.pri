@@ -19,7 +19,8 @@ win32|unix {
     android {
         DEFINES += SAK_STYLE_DEFAULT=\"\\\"Windows\\\"\"
     } else {
-        DEFINES += SAK_STYLE_DEFAULT=\"\\\"macOS\\\"\"
+        #DEFINES += SAK_STYLE_DEFAULT=\"\\\"macintosh\\\"\"
+        DEFINES += SAK_STYLE_DEFAULT=\"\\\"Fusion\\\"\"
     }
 }
 
