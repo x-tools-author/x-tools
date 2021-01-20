@@ -42,6 +42,22 @@ SAKOtherTransmissionPageViewer::SAKOtherTransmissionPageViewer(SAKDebugPage *deb
     installWidget(mSerialPortWidget, mSerialPortTransmission);
     installWidget(mUdpWidget, mUdpTransmission);
     installWidget(mTcpWidget, mTcpTransmission);
+
+    // Readin settings
+    const QString settingsKeyCurrentPageIndex = QString("%1/CurrentTransmissionPageIndex").arg(mDebugPage->settingsGroup());
+    auto settings = mDebugPage->settings();
+    auto indexString = settings->value(settingsKeyCurrentPageIndex).toString();
+    if (indexString.length()){
+        auto index = indexString.toInt();
+        if (index < mUi->tabWidget->count()){
+            mUi->tabWidget->setCurrentIndex(index);
+        }
+    }
+
+    // Update current page index when index changed
+    connect(mUi->tabWidget, &QTabWidget::currentChanged, this, [=](const int index){
+        settings->setValue(settingsKeyCurrentPageIndex, index);
+    });
 }
 
 SAKOtherTransmissionPageViewer::~SAKOtherTransmissionPageViewer()
