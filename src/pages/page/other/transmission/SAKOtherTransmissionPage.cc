@@ -80,10 +80,13 @@ void SAKOtherTransmissionPage::on_addItemPushButton_clicked()
         Q_ASSERT_X(false, __FUNCTION__, "Unknown transmissioin type");
         break;
     }
-    item->setSizeHint(QSize(itemWidget->width(), itemWidget->height()));
-    mListWidget->setItemWidget(item, itemWidget);
-    SAKOtherTransmissionItem *baseItemWidget = reinterpret_cast<SAKOtherTransmissionItem*>(itemWidget);
-    connect(baseItemWidget, &SAKOtherTransmissionItem::requestOutputMessage, this, &SAKOtherTransmissionPage::outputMessage);
+
+    if (itemWidget){
+        item->setSizeHint(QSize(itemWidget->width(), itemWidget->height()));
+        mListWidget->setItemWidget(item, itemWidget);
+        SAKOtherTransmissionItem *baseItemWidget = reinterpret_cast<SAKOtherTransmissionItem*>(itemWidget);
+        connect(baseItemWidget, &SAKOtherTransmissionItem::requestOutputMessage, this, &SAKOtherTransmissionPage::outputMessage);
+    }
 }
 
 void SAKOtherTransmissionPage::on_deleteItemPushButton_clicked()
