@@ -23,6 +23,7 @@
 #include <QWaitCondition>
 
 class SAKDebugPage;
+class SAKOutputLogDialog;
 class SAKOutputSave2FileDialog;
 /// @brief output data controller
 class SAKDebugPageOutputController:public QThread
@@ -45,6 +46,7 @@ private:
     SAKDebugPage *mDebugPage;
     QSettings *mSettings;
     SAKOutputSave2FileDialog *mSave2FileDialog;
+    SAKOutputLogDialog *mSAKOutputLogDialog;
 
     // Animation
     QTimer mUpdateRxAnimationTimer;
@@ -64,8 +66,7 @@ private:
     QCheckBox *mShowRxDataCheckBox;
     QCheckBox *mShowTxDataCheckBox;
     QCheckBox *mSaveOutputToFileCheckBox;
-    QPushButton *mOutputFilePathPushButton;
-    QPushButton *mClearOutputPushButton;
+    QPushButton *mMoreOutputSettingsPushButton;
     QPushButton *mSaveOutputPushButton;
     QTextBrowser *mOutputTextBroswer;
 

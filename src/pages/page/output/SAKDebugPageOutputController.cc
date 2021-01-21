@@ -7,6 +7,7 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
+#include <QMenu>
 #include <QFile>
 #include <QDebug>
 #include <QDateTime>
@@ -14,6 +15,7 @@
 #include <QFileDialog>
 
 #include "SAKDebugPage.hh"
+#include "SAKOutputLogDialog.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKOutputSave2FileDialog.hh"
 #include "SAKDebugPageOutputController.hh"
@@ -37,8 +39,7 @@ SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugPage *debugPa
     mShowRxDataCheckBox = debugPage->mShowRxDataCheckBox;
     mShowTxDataCheckBox = debugPage->mShowTxDataCheckBox;
     mSaveOutputToFileCheckBox = debugPage->mSaveOutputToFileCheckBox;
-    mOutputFilePathPushButton = debugPage->mOutputFilePathPushButton;
-    mClearOutputPushButton = debugPage->mClearOutputPushButton;
+    mMoreOutputSettingsPushButton = debugPage->mMoreOutputSettingsPushButton;
     mSaveOutputPushButton = debugPage->mSaveOutputPushButton;
     mOutputTextBroswer = debugPage->mOutputTextBroswer;
     SAKCommonDataStructure::setComboBoxTextOutputFormat(mOutputTextFormatComboBox);
@@ -61,7 +62,6 @@ SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugPage *debugPa
     connect(mSaveOutputToFileCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::saveOutputDataToFile);
     connect(mAutoWrapCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::setLineWrapMode);
     connect(mSaveOutputPushButton, &QCheckBox::clicked, this, &SAKDebugPageOutputController::saveOutputTextToFile);
-    connect(mOutputFilePathPushButton, &QCheckBox::clicked, this, &SAKDebugPageOutputController::saveOutputDataSettings);
     connect(mOutputTextFormatComboBox, &QComboBox::currentTextChanged, this, &SAKDebugPageOutputController::onOutputTextFormatComboBoxCurrentTextChanged);
     connect(mShowDateCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::onShowDateCheckBoxClicked);
     connect(mAutoWrapCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::onAutoWrapCheckBoxClicked);
@@ -88,6 +88,20 @@ SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugPage *debugPa
 
     // The class is used to save data to file
     mSave2FileDialog = new SAKOutputSave2FileDialog(mDebugPage);
+    mSAKOutputLogDialog = new SAKOutputLogDialog(mDebugPage);
+
+    // More output settings menu
+    auto moreOutputSettingsPushButtonMenu = new QMenu;
+    mMoreOutputSettingsPushButton->setMenu(moreOutputSettingsPushButtonMenu);
+    QAction *clearAction = new QAction(tr("ClearOutput"), this);
+    moreOutputSettingsPushButtonMenu->addAction(clearAction);
+    connect(clearAction, &QAction::triggered, mOutputTextBroswer, &QTextBrowser::clear);
+    QAction *logAction = new QAction(tr("LogView"), this);
+    moreOutputSettingsPushButtonMenu->addAction(logAction);
+    connect(logAction, &QAction::triggered, mSAKOutputLogDialog, &SAKOutputLogDialog::show);
+    QAction *saveToFileAction = new QAction(tr("SaveToFile"), this);
+    moreOutputSettingsPushButtonMenu->addAction(saveToFileAction);
+    connect(saveToFileAction, &QAction::triggered, mSave2FileDialog, &SAKOutputSave2FileDialog::show);
 
     // The thread will started when the class is initailzed
     start();
