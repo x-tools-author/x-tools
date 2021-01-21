@@ -341,8 +341,7 @@ void SAKDebugPage::initializingVariables()
     mShowRxDataCheckBox = mUi->showRxDataCheckBox;
     mShowTxDataCheckBox = mUi->showTxDataCheckBox;
     mSaveOutputToFileCheckBox = mUi->saveOutputToFileCheckBox;
-    mOutputFilePathPushButton = mUi->outputFilePathPushButton;
-    mClearOutputPushButton = mUi->clearOutputPushButton;
+    mMoreOutputSettingsPushButton = mUi->moreOutputSettingsPushButton;
     mSaveOutputPushButton = mUi->saveOutputPushButton;
     mOutputTextBroswer = mUi->outputTextBroswer;
 
