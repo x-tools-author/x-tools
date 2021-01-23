@@ -1,4 +1,13 @@
-﻿#include <QFile>
+﻿/*
+ * Copyright 2021 Qter(qsaker@foxmial.com). All rights reserved.
+ *
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
+ */
+#include <QFile>
 #include <QDateTime>
 #include <QFileDialog>
 #include <QTextStream>
