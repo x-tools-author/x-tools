@@ -25,6 +25,7 @@
 class SAKDebugPage;
 class SAKOutputLogDialog;
 class SAKOutputSave2FileDialog;
+class SAKOtherHighlighterManager;
 /// @brief output data controller
 class SAKDebugPageOutputController:public QThread
 {
@@ -48,6 +49,7 @@ private:
     QSettings *mSettings;
     SAKOutputSave2FileDialog *mSave2FileDialog;
     SAKOutputLogDialog *mSAKOutputLogDialog;
+    SAKOtherHighlighterManager *mSAKOtherHighlighterManager;
 
     // Animation
     QTimer mUpdateRxAnimationTimer;

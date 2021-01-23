@@ -18,6 +18,7 @@
 #include "SAKOutputLogDialog.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKOutputSave2FileDialog.hh"
+#include "SAKOtherHighlighterManager.hh"
 #include "SAKDebugPageOutputController.hh"
 
 SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugPage *debugPage, QObject *parent)
@@ -89,6 +90,7 @@ SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugPage *debugPa
     // The class is used to save data to file
     mSave2FileDialog = new SAKOutputSave2FileDialog(mDebugPage);
     mSAKOutputLogDialog = new SAKOutputLogDialog(mDebugPage);
+    mSAKOtherHighlighterManager = new SAKOtherHighlighterManager(mOutputTextBroswer->document());
 
     // More output settings menu
     auto moreOutputSettingsPushButtonMenu = new QMenu;
@@ -102,6 +104,9 @@ SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugPage *debugPa
     QAction *saveToFileAction = new QAction(tr("Save to File"), this);
     moreOutputSettingsPushButtonMenu->addAction(saveToFileAction);
     connect(saveToFileAction, &QAction::triggered, mSave2FileDialog, &SAKOutputSave2FileDialog::show);
+    QAction *highlightSettingsAction = new QAction(tr("Highlight Settings"), this);
+    moreOutputSettingsPushButtonMenu->addAction(highlightSettingsAction);
+    connect(highlightSettingsAction, &QAction::triggered, mSAKOtherHighlighterManager, &SAKOtherHighlighterManager::show);
 
     // The thread will started when the class is initailzed
     start();
