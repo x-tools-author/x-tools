@@ -695,9 +695,9 @@ p, li { white-space: pre-wrap; }
     </widget>
    </item>
    <item row="9" column="6">
-    <widget class="QPushButton" name="saveOutputPushButton">
+    <widget class="QPushButton" name="clearOutputPushButton">
      <property name="text">
-      <string>Save</string>
+      <string>ClearOutput</string>
      </property>
     </widget>
    </item>

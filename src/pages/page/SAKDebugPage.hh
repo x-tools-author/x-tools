@@ -245,7 +245,7 @@ protected:
     QCheckBox *mShowTxDataCheckBox;
     QCheckBox *mSaveOutputToFileCheckBox;
     QPushButton *mMoreOutputSettingsPushButton;
-    QPushButton *mSaveOutputPushButton;
+    QPushButton *mClearOutputPushButton;
     QTextBrowser *mOutputTextBroswer;
     /*************************************************************************/
     // Data statistics module
