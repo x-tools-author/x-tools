@@ -244,6 +244,7 @@ protected:
     QCheckBox *mShowRxDataCheckBox;
     QCheckBox *mShowTxDataCheckBox;
     QCheckBox *mSaveOutputToFileCheckBox;
+    QCheckBox *mRawDataCheckBox;
     QPushButton *mMoreOutputSettingsPushButton;
     QPushButton *mClearOutputPushButton;
     QTextBrowser *mOutputTextBroswer;
