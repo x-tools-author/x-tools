@@ -119,6 +119,11 @@ SAKDebugPageOutputController::~SAKDebugPageOutputController()
     delete mSave2FileDialog;
 }
 
+void SAKDebugPageOutputController::outputLog(QString log, bool isInfo)
+{
+    mSAKOutputLogDialog->outputMessage(log, isInfo);
+}
+
 void SAKDebugPageOutputController::run()
 {
     QEventLoop eventLoop;

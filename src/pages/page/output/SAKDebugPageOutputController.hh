@@ -32,6 +32,7 @@ class SAKDebugPageOutputController:public QThread
 public:
     SAKDebugPageOutputController(SAKDebugPage *mDebugPage, QObject *parent = Q_NULLPTR);
     ~SAKDebugPageOutputController();
+    void outputLog(QString log, bool isInfo = true);
 
     struct OutputParameters {
         bool showDate; // true: show date shen output data
