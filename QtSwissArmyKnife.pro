@@ -95,6 +95,8 @@ win32 {
             QMAKE_CXXFLAGS += -execution-charset:utf-8
         }
     }
+
+    include(libs/windows_openssl/SAKWindowsOpenSSL.pri)
 }
 
 #--------------------------------------------------------------------------------------------
