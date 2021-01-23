@@ -275,7 +275,6 @@ protected:
     QPushButton *mDataVisualizationPushButton;
 private slots:
     void on_dataVisualizationPushButton_clicked();
-    void on_saveLogPushButton_clicked();
 };
 
 #endif  // SAKTABPAGE_HH
