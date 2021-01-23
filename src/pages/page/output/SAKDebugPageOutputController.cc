@@ -41,7 +41,7 @@ SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugPage *debugPa
     mShowTxDataCheckBox = debugPage->mShowTxDataCheckBox;
     mSaveOutputToFileCheckBox = debugPage->mSaveOutputToFileCheckBox;
     mMoreOutputSettingsPushButton = debugPage->mMoreOutputSettingsPushButton;
-    mSaveOutputPushButton = debugPage->mSaveOutputPushButton;
+    mClearOutputPushButton = debugPage->mClearOutputPushButton;
     mOutputTextBroswer = debugPage->mOutputTextBroswer;
     SAKCommonDataStructure::setComboBoxTextOutputFormat(mOutputTextFormatComboBox);
 
@@ -62,7 +62,7 @@ SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugPage *debugPa
     // Connecting signals and slots
     connect(mSaveOutputToFileCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::saveOutputDataToFile);
     connect(mAutoWrapCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::setLineWrapMode);
-    connect(mSaveOutputPushButton, &QCheckBox::clicked, this, &SAKDebugPageOutputController::saveOutputTextToFile);
+    connect(mClearOutputPushButton, &QCheckBox::clicked, mOutputTextBroswer, &QTextBrowser::clear);
     connect(mOutputTextFormatComboBox, &QComboBox::currentTextChanged, this, &SAKDebugPageOutputController::onOutputTextFormatComboBoxCurrentTextChanged);
     connect(mShowDateCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::onShowDateCheckBoxClicked);
     connect(mAutoWrapCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::onAutoWrapCheckBoxClicked);
@@ -95,15 +95,15 @@ SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugPage *debugPa
     // More output settings menu
     auto moreOutputSettingsPushButtonMenu = new QMenu;
     mMoreOutputSettingsPushButton->setMenu(moreOutputSettingsPushButtonMenu);
-    QAction *clearAction = new QAction(tr("Clear Output"), this);
-    moreOutputSettingsPushButtonMenu->addAction(clearAction);
-    connect(clearAction, &QAction::triggered, mOutputTextBroswer, &QTextBrowser::clear);
+    QAction *saveAction = new QAction(tr("Save to File"), this);
+    moreOutputSettingsPushButtonMenu->addAction(saveAction);
+    connect(saveAction, &QAction::triggered, this, &SAKDebugPageOutputController::saveOutputTextToFile);
+    QAction *saveToFileAction = new QAction(tr("Write to File"), this);
+    moreOutputSettingsPushButtonMenu->addAction(saveToFileAction);
+    connect(saveToFileAction, &QAction::triggered, mSave2FileDialog, &SAKOutputSave2FileDialog::show);
     QAction *logAction = new QAction(tr("Log Output View"), this);
     moreOutputSettingsPushButtonMenu->addAction(logAction);
     connect(logAction, &QAction::triggered, mSAKOutputLogDialog, &SAKOutputLogDialog::show);
-    QAction *saveToFileAction = new QAction(tr("Save to File"), this);
-    moreOutputSettingsPushButtonMenu->addAction(saveToFileAction);
-    connect(saveToFileAction, &QAction::triggered, mSave2FileDialog, &SAKOutputSave2FileDialog::show);
     QAction *highlightSettingsAction = new QAction(tr("Highlight Settings"), this);
     moreOutputSettingsPushButtonMenu->addAction(highlightSettingsAction);
     connect(highlightSettingsAction, &QAction::triggered, mSAKOtherHighlighterManager, &SAKOtherHighlighterManager::show);

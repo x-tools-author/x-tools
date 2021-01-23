@@ -70,7 +70,7 @@ private:
     QCheckBox *mShowTxDataCheckBox;
     QCheckBox *mSaveOutputToFileCheckBox;
     QPushButton *mMoreOutputSettingsPushButton;
-    QPushButton *mSaveOutputPushButton;
+    QPushButton *mClearOutputPushButton;
     QTextBrowser *mOutputTextBroswer;
 
     // Variables about settings
