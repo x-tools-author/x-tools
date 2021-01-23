@@ -93,13 +93,13 @@ SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugPage *debugPa
     // More output settings menu
     auto moreOutputSettingsPushButtonMenu = new QMenu;
     mMoreOutputSettingsPushButton->setMenu(moreOutputSettingsPushButtonMenu);
-    QAction *clearAction = new QAction(tr("ClearOutput"), this);
+    QAction *clearAction = new QAction(tr("Clear Output"), this);
     moreOutputSettingsPushButtonMenu->addAction(clearAction);
     connect(clearAction, &QAction::triggered, mOutputTextBroswer, &QTextBrowser::clear);
-    QAction *logAction = new QAction(tr("LogOutput"), this);
+    QAction *logAction = new QAction(tr("Log Output View"), this);
     moreOutputSettingsPushButtonMenu->addAction(logAction);
     connect(logAction, &QAction::triggered, mSAKOutputLogDialog, &SAKOutputLogDialog::show);
-    QAction *saveToFileAction = new QAction(tr("SaveToFile"), this);
+    QAction *saveToFileAction = new QAction(tr("Save to File"), this);
     moreOutputSettingsPushButtonMenu->addAction(saveToFileAction);
     connect(saveToFileAction, &QAction::triggered, mSave2FileDialog, &SAKOutputSave2FileDialog::show);
 
