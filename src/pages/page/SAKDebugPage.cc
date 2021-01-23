@@ -104,6 +104,7 @@ void SAKDebugPage::writeRawData(QString rawData, int textFormat)
 
 void SAKDebugPage::outputMessage(QString msg, bool isInfo)
 {
+    mOutputController->outputLog(msg, isInfo);
     QString time = QDateTime::currentDateTime().toString("hh:mm:ss ");
     QString temp;
     temp.append(time);
