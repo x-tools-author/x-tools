@@ -96,7 +96,7 @@ SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugPage *debugPa
     QAction *clearAction = new QAction(tr("ClearOutput"), this);
     moreOutputSettingsPushButtonMenu->addAction(clearAction);
     connect(clearAction, &QAction::triggered, mOutputTextBroswer, &QTextBrowser::clear);
-    QAction *logAction = new QAction(tr("LogView"), this);
+    QAction *logAction = new QAction(tr("LogOutput"), this);
     moreOutputSettingsPushButtonMenu->addAction(logAction);
     connect(logAction, &QAction::triggered, mSAKOutputLogDialog, &SAKOutputLogDialog::show);
     QAction *saveToFileAction = new QAction(tr("SaveToFile"), this);
