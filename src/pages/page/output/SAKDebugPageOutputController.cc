@@ -26,6 +26,7 @@ SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugPage *debugPa
     ,mDebugPage(debugPage)
     ,mSettings(Q_NULLPTR)
     ,mSave2FileDialog(Q_NULLPTR)
+    ,mHasBeenClear(false)
     ,mRxAnimationgCount(5)
     ,mTxAnimationCount(0)
 {
@@ -40,6 +41,7 @@ SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugPage *debugPa
     mShowRxDataCheckBox = debugPage->mShowRxDataCheckBox;
     mShowTxDataCheckBox = debugPage->mShowTxDataCheckBox;
     mSaveOutputToFileCheckBox = debugPage->mSaveOutputToFileCheckBox;
+    mRawDataCheckBox = debugPage->mRawDataCheckBox;
     mMoreOutputSettingsPushButton = debugPage->mMoreOutputSettingsPushButton;
     mClearOutputPushButton = debugPage->mClearOutputPushButton;
     mOutputTextBroswer = debugPage->mOutputTextBroswer;
@@ -54,6 +56,7 @@ SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugPage *debugPa
     mSettingStringShowMs = QString("%1/showMs").arg(group);
     mSettingStringShowRx = QString("%1/showRx").arg(group);
     mSettingStringShowTx = QString("%1/showTx").arg(group);
+    mSettingStringRawData = QString("%1/rawData").arg(group);
 
     // Readin settings before connecting signals and slots
     mSettings = mDebugPage->settings();
@@ -70,6 +73,7 @@ SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugPage *debugPa
     connect(mShowMsCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::onShowMsCheckBoxClicked);
     connect(mShowRxDataCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::onShowRxDataCheckBoxClicked);
     connect(mShowTxDataCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::onShowTxDataCheckBoxClicked);
+    connect(mRawDataCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::onRawDataCheckBoxClicked);
 
     // Input data
     connect(debugPage, &SAKDebugPage::bytesRead, this, &SAKDebugPageOutputController::bytesRead);
@@ -271,9 +275,18 @@ void SAKDebugPageOutputController::bytesWritten(QByteArray data)
     mThreadWaitCondition.wakeAll();
 }
 
-void SAKDebugPageOutputController::outputData(QString data)
+void SAKDebugPageOutputController::outputData(QString data, bool rawData)
 {
-    mOutputTextBroswer->append(data);
+    if (!mHasBeenClear){
+        mHasBeenClear = true;
+        mOutputTextBroswer->clear();
+    }
+
+    if (rawData){
+        mOutputTextBroswer->textCursor().insertText(data);
+    }else{
+        mOutputTextBroswer->append(data);
+    }
 }
 
 SAKDebugPageOutputController::OutputParameters SAKDebugPageOutputController::outputDataParameters(bool isReceivedData)
@@ -283,6 +296,7 @@ SAKDebugPageOutputController::OutputParameters SAKDebugPageOutputController::out
     parameters.showTime = mShowTimeCheckBox->isChecked();
     parameters.showMS = mShowMsCheckBox->isChecked();
     parameters.isReadData = isReceivedData;
+    parameters.isRawData = mRawDataCheckBox->isChecked();
     parameters.format= mOutputTextFormatComboBox->currentData().toInt();
 
     return parameters;
@@ -338,6 +352,10 @@ void SAKDebugPageOutputController::readinSettings()
     var = mSettings->value(mSettingStringShowTx);
     value = setValue(var);
     mShowTxDataCheckBox->setChecked(value);
+
+    var = mSettings->value(mSettingStringRawData);
+    value = var.isNull() ? false : var.toBool();
+    mRawDataCheckBox->setChecked(value);
 }
 
 void SAKDebugPageOutputController::innerCookData(QByteArray rawData, OutputParameters parameters)
@@ -367,8 +385,12 @@ void SAKDebugPageOutputController::innerCookData(QByteArray rawData, OutputParam
     str.append("<font color=silver>] </font>");
 
     auto dataString = SAKCommonDataStructure::byteArrayToString(rawData, static_cast<SAKCommonDataStructure::SAKEnumTextOutputFormat>(parameters.format));
-    str.append(dataString);
-    emit dataCooked(str);
+    if (parameters.isRawData){
+        str = dataString;
+    }else{
+        str.append(dataString);
+    }
+    emit dataCooked(str, parameters.isRawData);
 }
 
 void SAKDebugPageOutputController::onOutputTextFormatComboBoxCurrentTextChanged(const QString &text)
@@ -405,4 +427,9 @@ void SAKDebugPageOutputController::onShowRxDataCheckBoxClicked()
 void SAKDebugPageOutputController::onShowTxDataCheckBoxClicked()
 {
     mSettings->setValue(mSettingStringShowTx, QVariant::fromValue(mShowTxDataCheckBox->isChecked()));
+}
+
+void SAKDebugPageOutputController::onRawDataCheckBoxClicked()
+{
+    mSettings->setValue(mSettingStringRawData, QVariant::fromValue(mRawDataCheckBox->isChecked()));
 }

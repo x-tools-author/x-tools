@@ -40,6 +40,7 @@ public:
         bool showTime; // true: show time when output data
         bool showMS; // true: show ms shen output data
         bool isReadData; // true: data is read data, false: data is written data
+        bool isRawData;
         int  format; // output data format, such as bin, otc and so on
     };
 protected:
@@ -50,6 +51,7 @@ private:
     SAKOutputSave2FileDialog *mSave2FileDialog;
     SAKOutputLogDialog *mSAKOutputLogDialog;
     SAKOtherHighlighterManager *mSAKOtherHighlighterManager;
+    bool mHasBeenClear;
 
     // Animation
     QTimer mUpdateRxAnimationTimer;
@@ -69,6 +71,7 @@ private:
     QCheckBox *mShowRxDataCheckBox;
     QCheckBox *mShowTxDataCheckBox;
     QCheckBox *mSaveOutputToFileCheckBox;
+    QCheckBox *mRawDataCheckBox;
     QPushButton *mMoreOutputSettingsPushButton;
     QPushButton *mClearOutputPushButton;
     QTextBrowser *mOutputTextBroswer;
@@ -81,6 +84,7 @@ private:
     QString mSettingStringShowMs;
     QString mSettingStringShowRx;
     QString mSettingStringShowTx;
+    QString mSettingStringRawData;
 
     // Thread controller
     QMutex mThreadMutex;
@@ -104,7 +108,7 @@ private:
     void saveOutputDataToFile();
     void bytesRead(QByteArray data);
     void bytesWritten(QByteArray data);
-    void outputData(QString data);
+    void outputData(QString data, bool rawData);
     OutputParameters outputDataParameters(bool isReadData);
     RawDataStruct takeRawData();
     void readinSettings();
@@ -119,8 +123,9 @@ private:
     void onShowMsCheckBoxClicked();
     void onShowRxDataCheckBoxClicked();
     void onShowTxDataCheckBoxClicked();
+    void onRawDataCheckBoxClicked();
 signals:
-    void dataCooked(QString data);
+    void dataCooked(QString data, bool isRawData);
 };
 
 #endif
