@@ -38,7 +38,8 @@ SAKDebugPageOtherController::SAKDebugPageOtherController(SAKDebugPage *debugPage
     auto moreSettingsPushButtonMenu = new QMenu;
     connect(this, &SAKDebugPageOtherController::destroyed, moreSettingsPushButtonMenu, &QMenu::deleteLater);
     moreSettingsPushButton->setMenu(moreSettingsPushButtonMenu);
-
+    moreSettingsPushButton->setEnabled(false);
+#if 0
     auto highlightSettingsAction = new QAction(tr("Highlight Settings"), this);
     moreSettingsPushButtonMenu->addAction(highlightSettingsAction);
     connect(highlightSettingsAction, &QAction::triggered, this, [=](){
@@ -48,6 +49,7 @@ SAKDebugPageOtherController::SAKDebugPageOtherController(SAKDebugPage *debugPage
             mHighlightSettingsWidget->activateWindow();
         }
     });
+#endif
 
     connect(timingSendingPushButton, &QPushButton::clicked, this, [=](){
         if (mTimingSendingSettingsWidget->isHidden()){
