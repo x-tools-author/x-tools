@@ -38,6 +38,10 @@ public:
         SerialPortClient,
         SerialPortServer
     };
+
+    struct SettingsKeyContext {
+        QString pageIndex;
+    };
 private:
     int mType;
     QString mName;
@@ -48,6 +52,7 @@ private:
     SAKModbusCommonController *mController;
     QList<SAKModbusCommonRegisterView *> mRegisterViewList;
     QList<SAKModbusCommonRegisterViewController *> mRegisterViewControllerList;
+    SettingsKeyContext mSettingsKeyContext;
 private:
     QWidget *controllerFromType(int type);
     void outputModbusDataUnit(QModbusDataUnit mdu);

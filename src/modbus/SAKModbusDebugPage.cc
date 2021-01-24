@@ -10,6 +10,7 @@
 #include <QDebug>
 #include <QDateTime>
 #include <QLineEdit>
+#include <QTabWidget>
 #include <QModbusDataUnit>
 
 #include "SAKModbusDebugPage.hh"
@@ -40,6 +41,15 @@ SAKModbusDebugPage::SAKModbusDebugPage(int type, QString name, QSettings *settin
     ui->deviceControllerWidget->setLayout(new QVBoxLayout);
     ui->deviceControllerWidget->layout()->setContentsMargins(0, 0, 0, 0);
     ui->disconnectionPushButton->setEnabled(false);
+
+    // Initialize the settings keys
+    const QString group = QString("ModBus");
+    mSettingsKeyContext.pageIndex = QString("%1/pageIndex").arg(group);
+
+    connect(ui->tabWidget, &QTabWidget::currentChanged, this, [=](int index){
+       mSettings.setValue(mSettingsKeyContext.pageIndex, index) ;
+    });
+
 #if 0
     // Add a button to tab bar
     mMenuPushButton = new QPushButton(QString("..."), this);
@@ -84,6 +94,10 @@ SAKModbusDebugPage::SAKModbusDebugPage(int type, QString name, QSettings *settin
     for (auto &var : deviceInfoList){
         ui->deviceTypeComboBox->addItem(var.name, QVariant::fromValue(var.type));
     }
+
+    // Readin settings
+    auto currentPageIndex = mSettings.value(mSettingsKeyContext.pageIndex).toInt();
+    ui->tabWidget->setCurrentIndex(currentPageIndex > ui->tabWidget->count() - 1 ? 0 : currentPageIndex);
 }
 
 SAKModbusDebugPage::~SAKModbusDebugPage()
