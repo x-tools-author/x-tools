@@ -115,7 +115,7 @@ jobs:
   build-for-android:
     needs: [create-release]
     name: Build for Android
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-18.04
     strategy:
       matrix:
         qt_arch: [android_x86, android_armv7, android_arm64_v8a]
