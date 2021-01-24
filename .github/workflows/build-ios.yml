@@ -23,24 +23,16 @@ jobs:
         qt_target: [ios]
     steps:
       - name: Install Qt
-        uses: jurplel/install-qt-action@v2
+        # if: steps.cacheqt.outputs.cache-hit != 'true'
+        uses: jurplel/install-qt-action@v2.10.0
         with:
-          version: '5.15.2'
-          host: 'windows'
-          target: 'desktop'
-          arch: 'win64_msvc2017_64'
-          dir: '${{ github.workspace }}/example/'
-          install-deps: 'true'
-          modules: 'qtcharts qtwebengine'
-          mirror: 'http://mirrors.ocf.berkeley.edu/qt/'
-          cached: 'false'
-          setup-python: 'true'
-          tools: 'tools_ifw,4.0,qt.tools.ifw.40 tools_qtcreator,4.13.2-0,qt.tools.qtcreator'
-          set-env: 'false'
-          tools-only: 'false'
-          aqtversion: '==0.10.1'
-          py7zrversion: '==0.11.1'
-          extra: '--external 7z'
+          # Version of Qt to install
+          version: ${{ matrix.qt_ver }}
+          # Target platform for build
+          target: ${{ matrix.qt_target }}
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
       - name: build ios
         run: |
           qmake -r -spec macx-ios-clang CONFIG+=release CONFIG+=iphoneos
