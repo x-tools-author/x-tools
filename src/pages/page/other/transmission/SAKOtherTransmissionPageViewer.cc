@@ -39,6 +39,10 @@ SAKOtherTransmissionPageViewer::SAKOtherTransmissionPageViewer(SAKDebugPage *deb
     mTcpTransmission = new SAKOtherTransmissionPage(debugPage, this);
     mTcpTransmission->setTransmissionType(SAKOtherTransmissionPage::TcpTransmission);
 
+    connect(mSerialPortTransmission, &SAKOtherTransmissionPage::invokeClose, this, &SAKOtherTransmissionPageViewer::close);
+    connect(mUdpTransmission, &SAKOtherTransmissionPage::invokeClose, this, &SAKOtherTransmissionPageViewer::close);
+    connect(mTcpTransmission, &SAKOtherTransmissionPage::invokeClose, this, &SAKOtherTransmissionPageViewer::close);
+
     installWidget(mSerialPortWidget, mSerialPortTransmission);
     installWidget(mUdpWidget, mUdpTransmission);
     installWidget(mTcpWidget, mTcpTransmission);
