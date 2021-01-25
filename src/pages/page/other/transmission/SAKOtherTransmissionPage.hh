@@ -51,6 +51,11 @@ private:
 private slots:
     void on_addItemPushButton_clicked();
     void on_deleteItemPushButton_clicked();
+    void on_closePushButton_clicked();
+    void on_importPushButton_clicked();
+    void on_outportPushButton_clicked();
+signals:
+    void invokeClose();
 };
 
 #endif

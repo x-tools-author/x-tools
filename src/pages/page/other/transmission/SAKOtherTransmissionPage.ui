@@ -26,7 +26,14 @@
    <property name="bottomMargin">
     <number>0</number>
    </property>
-   <item row="1" column="2">
+   <item row="1" column="4">
+    <widget class="QPushButton" name="deleteItemPushButton">
+     <property name="text">
+      <string>Delete</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="5">
     <widget class="QPushButton" name="addItemPushButton">
      <property name="text">
       <string>Add</string>
@@ -34,16 +41,6 @@
     </widget>
    </item>
    <item row="1" column="1">
-    <widget class="QPushButton" name="deleteItemPushButton">
-     <property name="text">
-      <string>Delete</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0" colspan="3">
-    <widget class="QListWidget" name="listWidget"/>
-   </item>
-   <item row="1" column="0">
     <widget class="QLabel" name="infoLabel">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -55,6 +52,30 @@
       <string/>
      </property>
     </widget>
+   </item>
+   <item row="1" column="2">
+    <widget class="QPushButton" name="importPushButton">
+     <property name="text">
+      <string>Import</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="3">
+    <widget class="QPushButton" name="outportPushButton">
+     <property name="text">
+      <string>Outport</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QPushButton" name="closePushButton">
+     <property name="text">
+      <string>Close</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="6">
+    <widget class="QListWidget" name="listWidget"/>
    </item>
   </layout>
  </widget>

@@ -95,3 +95,18 @@ void SAKOtherTransmissionPage::on_deleteItemPushButton_clicked()
     mListWidget->removeItemWidget(item);
     delete item;
 }
+
+void SAKOtherTransmissionPage::on_closePushButton_clicked()
+{
+    emit invokeClose();
+}
+
+void SAKOtherTransmissionPage::on_importPushButton_clicked()
+{
+
+}
+
+void SAKOtherTransmissionPage::on_outportPushButton_clicked()
+{
+
+}
