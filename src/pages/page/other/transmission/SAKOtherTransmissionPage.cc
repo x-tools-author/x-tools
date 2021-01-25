@@ -8,6 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  */
 #include <QDateTime>
+#include <QFileDialog>
 
 #include "SAKOtherTransmissionPage.hh"
 #include "SAKOtherTransmissionItemUdp.hh"
@@ -40,6 +41,16 @@ SAKOtherTransmissionPage::~SAKOtherTransmissionPage()
 void SAKOtherTransmissionPage::setTransmissionType(TransmissionType type)
 {
     mTransmissionType = type;
+}
+
+void SAKOtherTransmissionPage::import(const QString fileName)
+{
+    Q_UNUSED(fileName);
+}
+
+void SAKOtherTransmissionPage::outport(const QString fileName)
+{
+    Q_UNUSED(fileName);
 }
 
 void SAKOtherTransmissionPage::outputMessage(QString msg, bool isInfo)
@@ -103,10 +114,16 @@ void SAKOtherTransmissionPage::on_closePushButton_clicked()
 
 void SAKOtherTransmissionPage::on_importPushButton_clicked()
 {
-
+    auto fileName = QFileDialog::getSaveFileName(this, tr("Import file"), "./", QString("Json (*.json)"));
+    if (fileName.length()) {
+        import(fileName);
+    }
 }
 
 void SAKOtherTransmissionPage::on_outportPushButton_clicked()
 {
-
+    auto fileName = QFileDialog::getOpenFileName(this, tr("Import file"), "./", QString("Json (*.json)"));
+    if (fileName.length()) {
+        outport(fileName);
+    }
 }

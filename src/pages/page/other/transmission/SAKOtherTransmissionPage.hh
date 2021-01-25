@@ -34,6 +34,8 @@ public:
     };
 
     void setTransmissionType(TransmissionType type);
+    void import(const QString fileName);
+    void outport(const QString fileName);
 private:
     QPushButton *mAddItemPushButton;
     QPushButton *mDeleteItemPushButton;
