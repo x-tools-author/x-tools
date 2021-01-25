@@ -68,6 +68,10 @@
 #ifdef SAK_IMPORT_MODULE_SERIALPORT
 #include "SAKSerialPortDebugPage.hh"
 #endif
+#ifdef SAK_IMPORT_MODULE_BLUETOOTH
+#include "SAKBluetoothClientDebugPage.hh"
+#include "SAKBluetoothServerDebugPage.hh"
+#endif
 #ifdef SAK_IMPORT_MODULE_WEBSOCKET
 #include "SAKWebSocketClientDebugPage.hh"
 #include "SAKWebSocketServerDebugPage.hh"
@@ -562,9 +566,9 @@ void SAKMainWindow::initializingMetaObject()
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{SAKSCTPClientDebugPage::staticMetaObject, tr("SCTP-C")});
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{SAKSCTPServerDebugPage::staticMetaObject, tr("SCTP-S")});
 #endif
-#ifdef SAK_IMPORT_BLUETOOTH_MODULE
-    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeBluetoothClient, SAKBluetoothClientDebugPage::staticMetaObject, tr("Bluetooth-C")});
-    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeBluetoothServer, SAKBluetoothServerDebugPage::staticMetaObject, tr("Bluetooth-S")});
+#ifdef SAK_IMPORT_MODULE_BLUETOOTH
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeBluetoothClient, SAKBluetoothClientDebugPage::staticMetaObject, tr("BT-C")});
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeBluetoothServer, SAKBluetoothServerDebugPage::staticMetaObject, tr("BT-S")});
 #endif
 #ifdef SAK_IMPORT_MODULE_WEBSOCKET
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeWebSocketClient, SAKWebSocketClientDebugPage::staticMetaObject, tr("WS-C")});

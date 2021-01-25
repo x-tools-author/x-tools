@@ -62,7 +62,7 @@ public:
         DebugPageTypeSCTPClient,
         DebugPageTypeSCTPServer,
 #endif
-#ifdef SAK_IMPORT_BLUETOOTH_MODULE
+#ifdef SAK_IMPORT_MODULE_BLUETOOTH
         DebugPageTypeBluetoothClient,
         DebugPageTypeBluetoothServer,
 #endif
