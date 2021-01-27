@@ -1,3 +1,6 @@
 [submodule "libs/android_openssl"]
 	path = libs/android_openssl
 	url = https://gitee.com/mavlink/android_openssl.git
+[submodule "3rd/QtUsb"]
+	path = 3rd/QtUsb
+	url = https://gitee.com/qsak/QtUsb.git
