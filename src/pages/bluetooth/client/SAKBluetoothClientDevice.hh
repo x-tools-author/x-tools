@@ -11,7 +11,9 @@
 #define SAKBLUETOOTHCLIENTDEVICE_HH
 
 #include <QThread>
-#include <QTcpSocket>
+#include <QEventLoop>
+#include <QBluetoothSocket>
+#include <QLowEnergyController>
 
 #include "SAKDebugPageDevice.hh"
 
@@ -36,9 +38,10 @@ private:
     bool mSpecifyClientAddressAndPort;
     QString mServerHost;
     quint16 mServerPort;
+    QLowEnergyController *mLowEnergyController;
     SAKBluetoothClientDebugPage *mDebugPage;
-    QTcpSocket *mTcpSocket;
     SAKBluetoothClientDeviceController *mDeviceController;
+    QBluetoothSocket *mBluetoothSocket;
 signals:
     void clientInfoChange(QString info);
 };

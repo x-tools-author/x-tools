@@ -11,6 +11,7 @@
 #include <QEventLoop>
 #include <QHostAddress>
 #include <QApplication>
+#include <QBluetoothAddress>
 
 #include "SAKBluetoothClientDevice.hh"
 #include "SAKBluetoothClientDebugPage.hh"
@@ -20,113 +21,105 @@ SAKBluetoothClientDevice::SAKBluetoothClientDevice(SAKBluetoothClientDebugPage *
     :SAKDebugPageDevice(debugPage, parent)
     ,mDebugPage(debugPage)
 {
-    // Reconnection
-    connect(this, &SAKBluetoothClientDevice::finished, this, [&](){
-        auto parameters = mDeviceController->parameters().value<SAKBluetoothClientDeviceController::BluetoothClientParameters>();
-        if (parameters.allowAutomaticConnection){
-            QTimer *timer = new QTimer(this);
-            timer->setInterval(2000);
-            timer->setSingleShot(true);
-            connect(timer, &QTimer::timeout, this, [=](){
-                auto ret = qobject_cast<QTimer*>(sender());
-                delete ret;
-                start();
-            });
-            timer->start();
-        }
-    });
+
 }
 
 bool SAKBluetoothClientDevice::initializing(QString &errorString)
 {
     QEventLoop eventLoop;
     mDeviceController = qobject_cast<SAKBluetoothClientDeviceController*>(mDebugPage->deviceController());
-    connect(this, &SAKBluetoothClientDevice::clientInfoChange, mDeviceController, &SAKBluetoothClientDeviceController::setClientInfo);
     auto parameters = mDeviceController->parameters().value<SAKBluetoothClientDeviceController::BluetoothClientParameters>();
-    mLocalHost = parameters.localHost;
-    mLocalPort = parameters.localPort;
-    mServerHost = parameters.serverHost;
-    mServerPort = parameters.serverPort;
-    mSpecifyClientAddressAndPort = parameters.specifyClientAddressAndPort;
+    auto info = parameters.deviceInfo;
 
-    mTcpSocket = new QTcpSocket;
-    bool bindResult = false;
-    if (mSpecifyClientAddressAndPort){
-        bindResult = mTcpSocket->bind(QHostAddress(mLocalHost), mLocalPort);
-    }else{
-        bindResult = mTcpSocket->bind();
-    }
+    mLowEnergyController = new QLowEnergyController(info);
+    connect(mLowEnergyController, &QLowEnergyController::serviceDiscovered, this, [this](QBluetoothUuid serviceUuid){
+        qDebug() << serviceUuid;
+    });
 
-    if (!bindResult){
-        errorString = tr("Binding failed:") + mTcpSocket->errorString();
-        return false;
-    }else{
-        QString info = mTcpSocket->localAddress().toString();
-        info.append(":");
-        info.append(QString::number(mTcpSocket->localPort()));
-        emit clientInfoChange(info);
-    }
-
-    mTcpSocket->connectToHost(mServerHost, mServerPort);
-    if (mTcpSocket->state() != QTcpSocket::ConnectedState){
-        if (!mTcpSocket->waitForConnected()){
-            errorString = tr("Connect to server failed:") + mTcpSocket->errorString();
-            return false;
-        }
-    }
-
+    Q_UNUSED(errorString);
     return true;
 }
 
 bool SAKBluetoothClientDevice::open(QString &errorString)
 {
-    if (mTcpSocket->open(QTcpSocket::ReadWrite)){
-        errorString = tr("Unknown error");
-        return true;
-    }else{
-        errorString = tr("Can not open device:") + mTcpSocket->errorString();
+    mLowEnergyController->connectToDevice();
+    sleep(3);
+    if (!(mLowEnergyController->state() == QLowEnergyController::ConnectedState)){
         return false;
+    } else {
+        emit messageChanged("Have been connected to device.", true);
     }
+
+//    mLowEnergyController->discoverServices();
+//    connect(mLowEnergyController, &QLowEnergyController::serviceDiscovered, this, [this](QBluetoothUuid serviceUuid){
+//        qDebug() << serviceUuid;
+//        auto service = mLowEnergyController->createServiceObject(serviceUuid);
+//        connect(service, &QLowEnergyService::stateChanged, this, [=](){
+//            qDebug() << "service state change" << mLowEnergyController->state() << ",||||||";
+//            //发现服务, 建立characteristic对象实例
+//            if(service->state() == QLowEnergyService::ServiceDiscovered) {
+//                QLowEnergyCharacteristic hrChar = service->characteristic(QBluetoothUuid(quint16(0xfff6)));
+//                if(!hrChar.isValid()) {
+//                    qDebug() << "characteristic fff6 error:::";
+//                }
+//                // 设置特征对象可用
+//                //enable the chracteristic notification by write 0x01 to client characteristic configuration
+//                QLowEnergyDescriptor m_notificationDesc = hrChar.descriptor(QBluetoothUuid::ClientCharacteristicConfiguration);
+//                if (m_notificationDesc.isValid()) {
+//                    if(hrChar.properties() & QLowEnergyCharacteristic::Notify) {
+//                        qDebug() << "123";
+//                    }
+//                    service->writeDescriptor(m_notificationDesc, QByteArray::fromHex("0100"));
+//                }
+//            }
+
+//            connect(service, &QLowEnergyService::characteristicChanged, this, [](QLowEnergyCharacteristic characteristic, QByteArray value){
+//                Q_UNUSED(characteristic);
+//                qDebug() << value;
+//            });
+//        });
+//    });
+    Q_UNUSED(errorString);
+    return mLowEnergyController->state() == QLowEnergyController::ConnectedState;
 }
 
 QByteArray SAKBluetoothClientDevice::read()
 {
-    return mTcpSocket->readAll();
+//    return mTcpSocket->readAll();
+    return QByteArray();
 }
 
 QByteArray SAKBluetoothClientDevice::write(QByteArray bytes)
 {
-    qint64 ret = mTcpSocket->write(bytes);
-    if (ret > 0){
-        return bytes;
-    }else{
-        return QByteArray();
-    }
+//    qint64 ret = mTcpSocket->write(bytes);
+//    if (ret > 0){
+//        return bytes;
+//    }else{
+//        return QByteArray();
+//    }
+    return QByteArray();
 }
 
 bool SAKBluetoothClientDevice::checkSomething(QString &errorString)
 {
-    if(mTcpSocket->state() == QTcpSocket::UnconnectedState){
-        errorString = tr("Connection has been disconnected.");
-        return false;
-    }else{
-        errorString = tr("Unknown error");
-        return true;
-    }
+//    if(mTcpSocket->state() == QTcpSocket::UnconnectedState){
+//        errorString = tr("Connection has been disconnected.");
+//        return false;
+//    }else{
+//        errorString = tr("Unknown error");
+//        return true;
+//    }
+    return true;
 }
 
 void SAKBluetoothClientDevice::close()
 {
-    if (mTcpSocket->state() == QTcpSocket::ConnectedState){
-        mTcpSocket->disconnectFromHost();
-    }
-
-    mTcpSocket->close();
-    emit clientInfoChange(QString());
+    emit messageChanged("Have been disconnected to device.", true);
+    mLowEnergyController->disconnectFromDevice();
 }
 
 void SAKBluetoothClientDevice::free()
 {
-    delete mTcpSocket;
-    mTcpSocket = Q_NULLPTR;
+    delete mLowEnergyController;
+    mLowEnergyController = Q_NULLPTR;
 }
