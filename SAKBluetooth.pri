@@ -45,6 +45,8 @@ contains(DEFINES, SAK_IMPORT_MODULE_BLUETOOTH) {
     INCLUDEPATH += \
         $$PWD/src/pages/bluetooth/client \
         $$PWD/src/pages/bluetooth/server
+} else {
+    message("Can not find bluetooth module, The bluetooth debugging will be ignore!")
 }
 
 
