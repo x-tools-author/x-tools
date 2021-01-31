@@ -22,22 +22,21 @@ SAKBluetoothClientDeviceController::SAKBluetoothClientDeviceController(SAKDebugP
     ,mUi(new Ui::SAKBluetoothClientDeviceController)
 {
     mUi->setupUi(this);
+    mRemoteDeviceComboBox = mUi->remoteDeviceComboBox;
+    connect(mRemoteDeviceComboBox, &QComboBox::currentTextChanged, this, [&](const QString &text){
+        Q_UNUSED(text);
+        mParameters.deviceInfo = mRemoteDeviceComboBox->currentData().value<QBluetoothDeviceInfo>();
+    });
 
-    mParameters.allowAutomaticConnection = false;
-    mLocalhostComboBox = mUi->localhostComboBox;
-    mLocalPortlineEdit = mUi->localPortlineEdit;
-    mSpecifyClientAddressAndPort = mUi->specifyClientAddressAndPort;
-    mAutomaticConnectionCheckBox = mUi->automaticConnectionCheckBox;
-    mClientInfoLineEdit = mUi->clientInfoLineEdit;
-    mServerHostLineEdit = mUi->serverHostLineEdit;
-    mServerPortLineEdit = mUi->serverPortLineEdit;
+    mBluetoothDeviceDiscoveryAgent = new QBluetoothDeviceDiscoveryAgent;
+    connect(mBluetoothDeviceDiscoveryAgent, &QBluetoothDeviceDiscoveryAgent::deviceDiscovered, this, [=](QBluetoothDeviceInfo info){
+        mRemoteDeviceComboBox->addItem(info.name(), QVariant::fromValue(info));
+    });
+    connect(mBluetoothDeviceDiscoveryAgent, &QBluetoothDeviceDiscoveryAgent::finished, this, [=](){
+        emit messageChange(tr("Scan bluetooth device finished."), true);
+    });
 
     qRegisterMetaType<SAKBluetoothClientDeviceController::BluetoothClientParameters>("SAKBluetoothClientDeviceController::BluetoothClientParameters");
-    mParameters.localHost = mLocalhostComboBox->currentText();
-    mParameters.localPort = mLocalPortlineEdit->text().toInt();
-    mParameters.specifyClientAddressAndPort = mSpecifyClientAddressAndPort->isChecked();
-    mParameters.serverHost = mServerHostLineEdit->text();
-    mParameters.serverPort = mServerPortLineEdit->text().toInt();
     refreshDevice();
 }
 
@@ -50,12 +49,7 @@ QVariant SAKBluetoothClientDeviceController::parameters()
 {
     BluetoothClientParameters parameters;
     mParametersMutex.lock();
-    parameters.localHost = mParameters.localHost;
-    parameters.localPort = mParameters.localPort;
-    parameters.serverHost = mParameters.serverHost;
-    parameters.serverPort = mParameters.serverPort;
-    parameters.specifyClientAddressAndPort = mParameters.specifyClientAddressAndPort;
-    parameters.allowAutomaticConnection = mParameters.allowAutomaticConnection;
+    parameters.deviceInfo = mParameters.deviceInfo;
     mParametersMutex.unlock();
 
     return QVariant::fromValue(parameters);
@@ -63,63 +57,14 @@ QVariant SAKBluetoothClientDeviceController::parameters()
 
 void SAKBluetoothClientDeviceController::setUiEnable(bool opened)
 {
-    mLocalhostComboBox->setEnabled(!opened);
-    mLocalPortlineEdit->setEnabled(!opened);
-    mSpecifyClientAddressAndPort->setEnabled(!opened);
-    mServerHostLineEdit->setEnabled(!opened);
-    mServerPortLineEdit->setEnabled(!opened);
+    mRemoteDeviceComboBox->setEnabled(!opened);
 }
 
 void SAKBluetoothClientDeviceController::refreshDevice()
 {
-    SAKCommonInterface::addIpItemsToComboBox(mLocalhostComboBox);
-}
-
-void SAKBluetoothClientDeviceController::setClientInfo(QString info)
-{
-    mClientInfoLineEdit->setText(info);
-}
-
-void SAKBluetoothClientDeviceController::on_localhostComboBox_currentIndexChanged(int index)
-{
-    Q_UNUSED(index);
-    mParametersMutex.lock();
-    mParameters.localHost = mLocalhostComboBox->currentText();
-    mParametersMutex.unlock();
-}
-
-void SAKBluetoothClientDeviceController::on_localPortlineEdit_textChanged(const QString &arg1)
-{
-    Q_UNUSED(arg1);
-    mParametersMutex.lock();
-    mParameters.localPort = static_cast<quint16>(mLocalPortlineEdit->text().toInt());
-    mParametersMutex.unlock();
-}
-
-void SAKBluetoothClientDeviceController::on_specifyClientAddressAndPort_clicked()
-{
-    mParametersMutex.lock();
-    mParameters.specifyClientAddressAndPort = mSpecifyClientAddressAndPort->isChecked();
-    mParametersMutex.unlock();
-}
-
-void SAKBluetoothClientDeviceController::on_serverHostLineEdit_textChanged(const QString &arg1)
-{
-    mParametersMutex.lock();
-    mParameters.serverHost = arg1;
-    mParametersMutex.unlock();
-}
-
-void SAKBluetoothClientDeviceController::on_serverPortLineEdit_textChanged(const QString &arg1)
-{
-    mParametersMutex.lock();
-    mParameters.serverPort = static_cast<quint16>(arg1.toInt());
-    mParametersMutex.unlock();
-}
-
-void SAKBluetoothClientDeviceController::on_automaticConnectionCheckBox_clicked()
-{
-    mParametersMutex.lock();
-    mParameters.allowAutomaticConnection = mUi->automaticConnectionCheckBox->isChecked();
-    mParametersMutex.unlock();
+    if (!mBluetoothDeviceDiscoveryAgent->isActive()) {
+        mRemoteDeviceComboBox->clear();
+        emit messageChange(tr("Scaning bluetooth device."), true);
+        mBluetoothDeviceDiscoveryAgent->start(QBluetoothDeviceDiscoveryAgent::LowEnergyMethod);
+    }
 }

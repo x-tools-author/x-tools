@@ -14,6 +14,8 @@
 #include <QWidget>
 #include <QCheckBox>
 #include <QComboBox>
+#include <QBluetoothDeviceInfo>
+#include <QBluetoothDeviceDiscoveryAgent>
 
 #include "SAKDebugPageController.hh"
 
@@ -27,12 +29,7 @@ class SAKBluetoothClientDeviceController:public SAKDebugPageController
     Q_OBJECT
 public:
     struct BluetoothClientParameters {
-        QString localHost;
-        quint16 localPort;
-        QString serverHost;
-        quint16 serverPort;
-        bool specifyClientAddressAndPort;
-        bool allowAutomaticConnection;
+        QBluetoothDeviceInfo deviceInfo;
     };
 
     SAKBluetoothClientDeviceController(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
@@ -41,26 +38,13 @@ public:
     QVariant parameters() final;
     void setUiEnable(bool opened) final;
     void refreshDevice() final;
-    void setClientInfo(QString info);
 private:
     QMutex mParametersMutex;
     BluetoothClientParameters mParameters;
+    QBluetoothDeviceDiscoveryAgent *mBluetoothDeviceDiscoveryAgent;
 private:
     Ui::SAKBluetoothClientDeviceController *mUi;
-    QComboBox *mLocalhostComboBox;
-    QLineEdit *mLocalPortlineEdit;
-    QCheckBox *mSpecifyClientAddressAndPort;
-    QCheckBox *mAutomaticConnectionCheckBox;
-    QLineEdit *mClientInfoLineEdit;
-    QLineEdit *mServerHostLineEdit;
-    QLineEdit *mServerPortLineEdit;
-private slots:
-    void on_localhostComboBox_currentIndexChanged(int index);
-    void on_localPortlineEdit_textChanged(const QString &arg1);
-    void on_specifyClientAddressAndPort_clicked();
-    void on_serverHostLineEdit_textChanged(const QString &arg1);
-    void on_serverPortLineEdit_textChanged(const QString &arg1);
-    void on_automaticConnectionCheckBox_clicked();
+    QComboBox *mRemoteDeviceComboBox;
 };
 Q_DECLARE_METATYPE(SAKBluetoothClientDeviceController::BluetoothClientParameters);
 #endif
