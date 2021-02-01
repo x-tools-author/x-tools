@@ -32,9 +32,9 @@ bool SAKBluetoothClientDevice::initializing(QString &errorString)
     auto info = parameters.deviceInfo;
 
     mLowEnergyController = new QLowEnergyController(info);
-    connect(mLowEnergyController, &QLowEnergyController::serviceDiscovered, this, [this](QBluetoothUuid serviceUuid){
+    connect(mLowEnergyController, &QLowEnergyController::serviceDiscovered, this, [](QBluetoothUuid serviceUuid){
         qDebug() << serviceUuid;
-    });
+    }, Qt::DirectConnection);
 
     Q_UNUSED(errorString);
     return true;
