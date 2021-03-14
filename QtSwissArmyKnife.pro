@@ -54,6 +54,7 @@ include(SAKModbus.pri)
 include(SAKBluetooth.pri)
 include(SAKWebSocket.pri)
 include(SAKSerialPort.pri)
+include(SAKBluetoothLowEnergy.pri)
 
 exists(private/SAKPrivate.pri){
     include(private/SAKPrivate.pri)
