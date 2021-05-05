@@ -36,7 +36,7 @@ contains(DEFINES, SAK_IMPORT_MODULE_BLUETOOTHLOWENERGY) {
         $$PWD/src/pages/bluetoothlowenergy/SAKBluetoothLowEnergyDeviceController.cc
 
     INCLUDEPATH += \
-        $$PWD/src/bluetoothlowenergy
+        $$PWD/src/pages/bluetoothlowenergy
 } else {
     message("Can not find bluetooth module, The bluetooth debugging will be ignore!")
 }
