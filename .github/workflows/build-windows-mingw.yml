@@ -30,7 +30,7 @@ jobs:
             qt_arch_install: mingw81_64
     steps:
       # Cache Qt
-      - name: cacheQt
+      - name: Cache Qt
         id: WindowsCacheQt
         uses: actions/cache@v1
         with:

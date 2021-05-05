@@ -22,7 +22,7 @@ jobs:
         qt_ver: [5.9.9, 5.12.10, 5.15.2]
         qt_arch: [clang_64]
     steps:
-      - name: cacheQt
+      - name: Cache Qt
         id: MacosCacheQt
         uses: actions/cache@v1
         with:

@@ -23,6 +23,12 @@ jobs:
         qt_ver: [5.12.10]
         qt_target: [android]
     steps:
+      - name: Cache Qt
+        id: UbuntuCacheQt
+        uses: actions/cache@v1
+        with:
+          path: ../Qt/${{matrix.qt_ver}}/${{matrix.qt_arch}}
+          key: ${{ runner.os }}-Qt/${{matrix.qt_ver}}/${{matrix.qt_arch}}   
       - name: Install Qt
         uses: jurplel/install-qt-action@v2
         with:

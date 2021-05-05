@@ -59,7 +59,7 @@ jobs:
             qt_ver: 5.12.10
     steps:
       # Cache Qt
-      - name: cacheQt
+      - name: Cache Qt
         id: WindowsCacheQt
         uses: actions/cache@v1
         with:
