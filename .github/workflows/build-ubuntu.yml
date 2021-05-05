@@ -35,12 +35,12 @@ jobs:
         run: sudo apt-get install make -y
       - name: Install Qt
         id: InstallQt
-        run: sudo apt-get install qt5-default libqt5websockets5 libqt5websockets5-dev libqt5serialport5 libqt5serialport5-dev -y
-      - name: Install QtCharts
-        id: InstallQtCharts
+        run: sudo apt-get install qt5-* libqt5websockets5* libqt5serialport5* libqt5bluetooth5* libqt5charts5* -y
+      # - name: Install QtCharts
+        # id: InstallQtCharts
         # Qt 5.5 has no charts module.
-        if: ${{ matrix.os != 'ubuntu-16.04' }}
-        run: sudo apt-get install libqt5charts5 libqt5charts5-dev -y
+        # if: ${{ matrix.os != 'ubuntu-16.04' }}
+        # run: sudo apt-get install libqt5charts5 libqt5charts5-dev -y
       - uses: actions/checkout@v1
         with:
           fetch-depth: 1
