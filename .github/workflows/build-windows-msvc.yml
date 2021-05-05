@@ -67,7 +67,7 @@ jobs:
           key: ${{ runner.os }}-Qt/${{matrix.qt_ver}}/${{matrix.qt_arch}}
       # Install Qt
       - name: Install Qt
-        uses: jurplel/install-qt-action@v2.10.0
+        uses: jurplel/install-qt-action@v2
         with:
           version: ${{ matrix.qt_ver }}
           target: ${{ matrix.qt_target }}
