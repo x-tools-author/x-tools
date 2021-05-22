@@ -22,12 +22,12 @@ jobs:
         qt_ver: [5.12.10, 5.15.2]
         qt_target: [ios]
     steps:
-      - name: Cache Qt
-        id: MacosCacheQt
-        uses: actions/cache@v1
-        with:
-          path: ../Qt/${{matrix.qt_ver}}/${{matrix.qt_arch}}
-          key: ${{ runner.os }}-Qt/${{matrix.qt_ver}}/${{matrix.qt_arch}}   
+      #- name: Cache Qt
+      #  id: MacosCacheQt
+      #  uses: actions/cache@v1
+      #  with:
+      #    path: ../Qt/${{matrix.qt_ver}}/${{matrix.qt_arch}}
+      #    key: ${{ runner.os }}-Qt/${{matrix.qt_ver}}/${{matrix.qt_arch}}   
       - name: Install Qt
         # if: steps.cacheqt.outputs.cache-hit != 'true'
         uses: jurplel/install-qt-action@v2
