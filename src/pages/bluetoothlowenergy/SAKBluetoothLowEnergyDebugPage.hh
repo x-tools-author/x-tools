@@ -8,7 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  */
 #ifndef SAKBLUETOOTHLOWENERGYTDEBUGPAGE_HH
-#define SAKBLUETOOTHLOWENERGYDEBUGPAGE_HH
+#define SAKBLUETOOTHLOWENERGYTDEBUGPAGE_HH
 
 #include "SAKDebugPage.hh"
 
