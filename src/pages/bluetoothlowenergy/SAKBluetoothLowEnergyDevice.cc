@@ -97,6 +97,7 @@ QByteArray SAKBluetoothLowEnergyDevice::write(QByteArray bytes)
 //    }else{
 //        return QByteArray();
 //    }
+    Q_UNUSED(bytes);
     return QByteArray();
 }
 
@@ -109,6 +110,7 @@ bool SAKBluetoothLowEnergyDevice::checkSomething(QString &errorString)
 //        errorString = tr("Unknown error");
 //        return true;
 //    }
+    Q_UNUSED(errorString);
     return true;
 }
 
