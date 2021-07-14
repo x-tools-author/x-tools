@@ -13,7 +13,7 @@
 #include "SAKDebugger.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKOtherTimingSentItem.hh"
-#include "SAKDebugPageInputController.hh"
+#include "SAKDebuggerInput.hh"
 
 #include "ui_SAKOtherTimingSentItem.h"
 
@@ -145,7 +145,7 @@ void SAKOtherTimingSentItem::on_inputDataTextEdit_textChanged()
     if (!isInitializing){
         QString text = mInputDataTextEdit->toPlainText();
         int format = mTextFormatComboBox->currentData().toInt();
-        SAKDebugPageInputController::formattingInputText(mInputDataTextEdit, format);
+        SAKDebuggerInput::formattingInputText(mInputDataTextEdit, format);
 
         emit inputTextChanged(text);
     }

@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2020 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2020-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -23,10 +23,10 @@
 #include "SAKInputDataPresetItem.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKInputCrcSettingsDialog.hh"
-#include "SAKDebugPageInputController.hh"
+#include "SAKDebuggerInput.hh"
 #include "SAKInputDataPresetItemManager.hh"
 
-SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugger *debugPage, QObject *parent)
+SAKDebuggerInput::SAKDebuggerInput(SAKDebugger *debugPage, QObject *parent)
     :QObject(parent)
     ,mDebugPage(debugPage)
     ,mCrcInterface(new SAKCommonCrcInterface)
@@ -119,9 +119,9 @@ SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugger *debugPage,
     // The function must be called before connecting signals and slots
     readinSettings();
     // Preset items changed
-    connect(mInputDataItemManager, &SAKInputDataPresetItemManager::itemAdded, this, &SAKDebugPageInputController::appendAction);
-    connect(mInputDataItemManager, &SAKInputDataPresetItemManager::itemDeleted, this, &SAKDebugPageInputController::removeAction);
-    connect(mInputDataItemManager, &SAKInputDataPresetItemManager::descriptionChanged, this, &SAKDebugPageInputController::changeDescription);
+    connect(mInputDataItemManager, &SAKInputDataPresetItemManager::itemAdded, this, &SAKDebuggerInput::appendAction);
+    connect(mInputDataItemManager, &SAKInputDataPresetItemManager::itemDeleted, this, &SAKDebuggerInput::removeAction);
+    connect(mInputDataItemManager, &SAKInputDataPresetItemManager::descriptionChanged, this, &SAKDebuggerInput::changeDescription);
 
     // Update parameters
     connect(mCrcSettingsDialog, &SAKInputCrcSettingsDialog::crcParametersChanged, this, [&](){
@@ -135,19 +135,19 @@ SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugger *debugPage,
         updateCrc();
     });
 
-    connect(mInputModelComboBox, &QComboBox::currentTextChanged, this, &SAKDebugPageInputController::changeInputModel);
-    connect(mSendPushButton, &QPushButton::clicked, this, &SAKDebugPageInputController::sendRawData);
-    connect(mInputTextEdit, &QTextEdit::textChanged, this, &SAKDebugPageInputController::inputTextEditTextChanged);
-    connect(this, &SAKDebugPageInputController::rawDataChanged, mInputDataFactory, &SAKInputDataFactory::cookData);
+    connect(mInputModelComboBox, &QComboBox::currentTextChanged, this, &SAKDebuggerInput::changeInputModel);
+    connect(mSendPushButton, &QPushButton::clicked, this, &SAKDebuggerInput::sendRawData);
+    connect(mInputTextEdit, &QTextEdit::textChanged, this, &SAKDebuggerInput::inputTextEditTextChanged);
+    connect(this, &SAKDebuggerInput::rawDataChanged, mInputDataFactory, &SAKInputDataFactory::cookData);
     connect(mInputDataFactory, &SAKInputDataFactory::dataCooked, debugPage, &SAKDebugger::write);
-    connect(&mCyclingWritingTimer, &QTimer::timeout, this, &SAKDebugPageInputController::cyclingWritingTimerTimeout);
-    connect(debugPage, &SAKDebugger::requestWriteRawData, this, &SAKDebugPageInputController::sendOtherRawData);
+    connect(&mCyclingWritingTimer, &QTimer::timeout, this, &SAKDebuggerInput::cyclingWritingTimerTimeout);
+    connect(debugPage, &SAKDebugger::requestWriteRawData, this, &SAKDebuggerInput::sendOtherRawData);
 
     initParameters();
     updateCrc();
 }
 
-SAKDebugPageInputController::~SAKDebugPageInputController()
+SAKDebuggerInput::~SAKDebuggerInput()
 {
     delete mInputDataFactory;
     delete mCrcInterface;
@@ -155,12 +155,12 @@ SAKDebugPageInputController::~SAKDebugPageInputController()
     delete mCrcSettingsDialog;
 }
 
-void SAKDebugPageInputController::showCrcSettingsDialog()
+void SAKDebuggerInput::showCrcSettingsDialog()
 {
     mCrcSettingsDialog->show();
 }
 
-void SAKDebugPageInputController::formattingInputText(QTextEdit *textEdit, int model)
+void SAKDebuggerInput::formattingInputText(QTextEdit *textEdit, int model)
 {
     if (!textEdit){
         return;
@@ -176,7 +176,7 @@ void SAKDebugPageInputController::formattingInputText(QTextEdit *textEdit, int m
     textEdit->blockSignals(false);
 }
 
-void SAKDebugPageInputController::changeInputModel(const QString &text)
+void SAKDebuggerInput::changeInputModel(const QString &text)
 {
     // Ignore empty text
     if (text.isEmpty()){
@@ -190,7 +190,7 @@ void SAKDebugPageInputController::changeInputModel(const QString &text)
     Q_ASSERT_X(ok, __FUNCTION__, "Input model is error");
 }
 
-void SAKDebugPageInputController::saveInputDataToFile()
+void SAKDebuggerInput::saveInputDataToFile()
 {
     QString defaultName = QDateTime::currentDateTime().toString("yyyyMMdd").append(".txt");
     QString fileName = QFileDialog::getSaveFileName(Q_NULLPTR,
@@ -215,7 +215,7 @@ void SAKDebugPageInputController::saveInputDataToFile()
     }
 }
 
-void SAKDebugPageInputController::readinFile()
+void SAKDebuggerInput::readinFile()
 {
     QString fileName = QFileDialog::getOpenFileName(Q_NULLPTR, tr("Open File"));
     if (!fileName.isEmpty()){
@@ -230,13 +230,13 @@ void SAKDebugPageInputController::readinFile()
     }
 }
 
-void SAKDebugPageInputController::inputTextEditTextChanged()
+void SAKDebuggerInput::inputTextEditTextChanged()
 {
     formattingInputText(mInputTextEdit, mInputParameters.inputModel);
     updateCrc();
 }
 
-void SAKDebugPageInputController::sendRawData()
+void SAKDebuggerInput::sendRawData()
 {
     QString data = mInputTextEdit->toPlainText();
     if (data.isEmpty()){
@@ -247,7 +247,7 @@ void SAKDebugPageInputController::sendRawData()
     emit rawDataChanged(data, mInputParameters);
 }
 
-void SAKDebugPageInputController::sendOtherRawData(QString data, int textFormat)
+void SAKDebuggerInput::sendOtherRawData(QString data, int textFormat)
 {
     InputParametersContext temp = mInputParameters;
     temp.inputModel = textFormat;
@@ -255,7 +255,7 @@ void SAKDebugPageInputController::sendOtherRawData(QString data, int textFormat)
     emit rawDataChanged(data, temp);
 }
 
-void SAKDebugPageInputController::changeCrcModel()
+void SAKDebuggerInput::changeCrcModel()
 {
     bool ok = false;
     mInputParameters.crcParametersModel = mCrcSettingsDialog->parametersContext().crcPrameterMoldel;
@@ -264,7 +264,7 @@ void SAKDebugPageInputController::changeCrcModel()
     updateCrc();
 }
 
-void SAKDebugPageInputController::setPresetData()
+void SAKDebuggerInput::setPresetData()
 {
     if (mInputDataItemManager->isHidden()){
         mInputDataItemManager->show();
@@ -273,7 +273,7 @@ void SAKDebugPageInputController::setPresetData()
     }
 }
 
-void SAKDebugPageInputController::initParameters()
+void SAKDebuggerInput::initParameters()
 {
     mInputParameters.inputModel = mInputModelComboBox->currentData().toInt();
 
@@ -285,7 +285,7 @@ void SAKDebugPageInputController::initParameters()
     mInputParameters.bigEndian = ctx.bigEndianCrc;
 }
 
-void SAKDebugPageInputController::cyclingWritingTimerTimeout()
+void SAKDebuggerInput::cyclingWritingTimerTimeout()
 {
     // If the mCyclingTimeComboBox is not enable, it means that the device is not ready.
     // So, do not write data to device.
@@ -299,7 +299,7 @@ void SAKDebugPageInputController::cyclingWritingTimerTimeout()
     }
 }
 
-void SAKDebugPageInputController::updateCrc()
+void SAKDebuggerInput::updateCrc()
 {
     QString rawData = mInputTextEdit->toPlainText();
     QByteArray data = mInputDataFactory->rawDataToArray(rawData, mInputParameters);
@@ -310,16 +310,16 @@ void SAKDebugPageInputController::updateCrc()
     mCrcLabel->setText(QString(QString("%1").arg(QString::number(crc, 16), (bits/8)*2, '0')).toUpper().prepend("0x"));
 }
 
-void SAKDebugPageInputController::appendAction(SAKInputDataPresetItem *item)
+void SAKDebuggerInput::appendAction(SAKInputDataPresetItem *item)
 {
     QString description = item->itemDescription();
     QAction *action = new QAction(description, mWriteDataItemMenu);
     action->setData(QVariant::fromValue(item));
     mWriteDataItemMenu->addAction(action);
-    connect(action, &QAction::triggered, this, &SAKDebugPageInputController::actionTriggered);
+    connect(action, &QAction::triggered, this, &SAKDebuggerInput::actionTriggered);
 }
 
-void SAKDebugPageInputController::removeAction(SAKInputDataPresetItem *item)
+void SAKDebuggerInput::removeAction(SAKInputDataPresetItem *item)
 {
     QList<QAction*> actionList = mWriteDataItemMenu->actions();
     for (auto &var : actionList){
@@ -330,7 +330,7 @@ void SAKDebugPageInputController::removeAction(SAKInputDataPresetItem *item)
     }
 }
 
-void SAKDebugPageInputController::changeDescription(SAKInputDataPresetItem *item)
+void SAKDebuggerInput::changeDescription(SAKInputDataPresetItem *item)
 {
     QList<QAction*> actionList = mWriteDataItemMenu->actions();
     for (auto &var : actionList){
@@ -341,7 +341,7 @@ void SAKDebugPageInputController::changeDescription(SAKInputDataPresetItem *item
     }
 }
 
-void SAKDebugPageInputController::actionTriggered()
+void SAKDebuggerInput::actionTriggered()
 {
     if (sender()){
         if (sender()->inherits("QAction")){
@@ -357,7 +357,7 @@ void SAKDebugPageInputController::actionTriggered()
     }
 }
 
-void SAKDebugPageInputController::readinSettings()
+void SAKDebuggerInput::readinSettings()
 {
     QVariant var = mSettings->value(mSettingStringInputTextFromat);
     int index = 0;

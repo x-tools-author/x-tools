@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2020 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2020-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKDEBUGPAGEINPUTCONTROLLER_HH
-#define SAKDEBUGPAGEINPUTCONTROLLER_HH
+#ifndef SAKDEBUGGERINPUTCONTROLLER_HH
+#define SAKDEBUGGERINPUTCONTROLLER_HH
 
 #include <QLabel>
 #include <QTimer>
@@ -28,13 +28,14 @@ class SAKInputDataFactory;
 class SAKInputDataPresetItem;
 class SAKInputCrcSettingsDialog;
 class SAKInputDataPresetItemManager;
+
 /// @brief input module controller
-class SAKDebugPageInputController:public QObject
+class SAKDebuggerInput:public QObject
 {
     Q_OBJECT
 public:
-    SAKDebugPageInputController(SAKDebugger *mDebugPage, QObject *parent = Q_NULLPTR);
-    ~SAKDebugPageInputController();
+    SAKDebuggerInput(SAKDebugger *mDebugPage, QObject *parent = Q_NULLPTR);
+    ~SAKDebuggerInput();
 
     struct InputParametersContext {
         bool appendCrc; // true: append crc value to the tail of data frame
@@ -100,6 +101,6 @@ private:
 signals:
     void rawDataChanged(QString rawData, InputParametersContext parameters);
 };
-Q_DECLARE_METATYPE(SAKDebugPageInputController::InputParametersContext);
+Q_DECLARE_METATYPE(SAKDebuggerInput::InputParametersContext);
 
 #endif

@@ -17,7 +17,7 @@
 #include "SAKCommonDataStructure.hh"
 #include "SAKInputDataPresetItem.hh"
 #include "SAKCommonDataStructure.hh"
-#include "SAKDebugPageInputController.hh"
+#include "SAKDebuggerInput.hh"
 
 #include "ui_SAKInputDataPresetItem.h"
 
@@ -105,7 +105,7 @@ void SAKInputDataPresetItem::on_inputTextEdit_textChanged()
     if (!mInitializing){
         QString text = mInputTextEdit->toPlainText();
         int format = mTextFormatComboBox->currentData().toInt();
-        SAKDebugPageInputController::formattingInputText(mInputTextEdit, format);
+        SAKDebuggerInput::formattingInputText(mInputTextEdit, format);
 
         emit textChanged(text);
     }

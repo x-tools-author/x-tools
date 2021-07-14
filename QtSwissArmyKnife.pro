@@ -173,7 +173,7 @@ HEADERS += \
     src/debuggers/debugger/controller/SAKDebugPageController.hh \
     src/debuggers/debugger/device/SAKDebugPageDevice.hh \
     src/debuggers/debugger/device/mask/SAKDebugPageDeviceMask.hh \
-    src/debuggers/debugger/input/SAKDebugPageInputController.hh \
+    src/debuggers/debugger/input/SAKDebuggerInput.hh \
     src/debuggers/debugger/input/crcsettings/SAKInputCrcSettingsDialog.hh \
     src/debuggers/debugger/input/datafactory/SAKInputDataFactory.hh \
     src/debuggers/debugger/input/datapreset/SAKInputDataPresetItem.hh \
@@ -216,7 +216,7 @@ SOURCES += \
     src/debuggers/debugger/controller/SAKDebugPageController.cc \
     src/debuggers/debugger/device/SAKDebugPageDevice.cc \
     src/debuggers/debugger/device/mask/SAKDebugPageDeviceMask.cc \
-    src/debuggers/debugger/input/SAKDebugPageInputController.cc \
+    src/debuggers/debugger/input/SAKDebuggerInput.cc \
     src/debuggers/debugger/input/crcsettings/SAKInputCrcSettingsDialog.cc \
     src/debuggers/debugger/input/datafactory/SAKInputDataFactory.cc \
     src/debuggers/debugger/input/datapreset/SAKInputDataPresetItem.cc \

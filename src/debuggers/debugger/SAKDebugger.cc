@@ -34,7 +34,7 @@
 #include "SAKOtherAnalyzerThread.hh"
 #include "SAKOtherHighlighterManager.hh"
 #include "SAKDebugPageOtherController.hh"
-#include "SAKDebugPageInputController.hh"
+#include "SAKDebuggerInput.hh"
 #include "SAKDebugPageOutputController.hh"
 #include "SAKOtherAnalyzerThreadManager.hh"
 #include "SAKOtherAutoResponseItemManager.hh"
@@ -68,7 +68,7 @@ SAKDebugger::SAKDebugger(int type, QString name, QWidget *parent)
     mOutputController = new SAKDebugPageOutputController(this, this);
     mOtherController = new SAKDebugPageOtherController(this, this);
     mStatisticsController = new SAKDebugPageStatisticsController(this, this);
-    mInputController = new SAKDebugPageInputController(this, this);
+    mInputController = new SAKDebuggerInput(this, this);
 #ifdef SAK_IMPORT_MODULE_CHARTS
     mChartsController= new SAKDebugPageChartsController(this);
 #endif
@@ -148,7 +148,7 @@ SAKDebugPageOtherController *SAKDebugger::otherController()
     return mOtherController;
 }
 
-SAKDebugPageInputController *SAKDebugger::inputController()
+SAKDebuggerInput *SAKDebugger::inputController()
 {
     return mInputController;
 }
