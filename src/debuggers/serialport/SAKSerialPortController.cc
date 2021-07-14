@@ -21,7 +21,7 @@
 SAKSerialPortController::SAKSerialPortController(SAKDebugPage *debugPage, QWidget *parent)
     :SAKDebugPageController(debugPage, parent)
     ,mDebugPage(debugPage)
-    ,ui(new Ui::SAKSerialPortDeviceController)
+    ,ui(new Ui::SAKSerialPortController)
     ,serialportsComboBox(Q_NULLPTR)
     ,baudrateComboBox(Q_NULLPTR)
     ,databitsComboBox(Q_NULLPTR)
@@ -39,7 +39,7 @@ SAKSerialPortController::SAKSerialPortController(SAKDebugPage *debugPage, QWidge
     flowControlComboBox = ui->flowControlComboBox;
     customBaudrateCheckBox = ui->customBaudrateCheckBox;
 
-    qRegisterMetaType<SAKSerialPortController::SerialPortParameters>("SAKSerialPortDeviceController::SerialPortParameters");
+    qRegisterMetaType<SAKSerialPortController::SerialPortParameters>("SAKSerialPortController::SerialPortParameters");
     refreshDevice();
 }
 
