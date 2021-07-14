@@ -64,9 +64,10 @@ SAKDebugger::SAKDebugger(int type, QString name, QWidget *parent)
     html = html.replace(QString("Email"), QString(SAK_AUTHOR_EMAIL));
     mUi->outputTextBroswer->setHtml(html);
     initializingVariables();
-#if 0
+
     mDatabaseInterface = new SAKDebugPageCommonDatabaseInterface(this, sakApp->sqlDatabase(), this);
     mOutputController = new SAKDebugPageOutputController(this, this);
+
     mOtherController = new SAKDebugPageOtherController(this, this);
     mStatisticsController = new SAKDebugPageStatisticsController(this, this);
     mInputController = new SAKDebuggerInput(this, this);
@@ -78,7 +79,6 @@ SAKDebugger::SAKDebugger(int type, QString name, QWidget *parent)
     mClearInfoTimer.setInterval(SAK_CLEAR_MESSAGE_INTERVAL);
     connect(&mClearInfoTimer, &QTimer::timeout, this, &SAKDebugger::cleanInfo);
     mIsInitializing = false;
-#endif
 }
 
 SAKDebugger::~SAKDebugger()
@@ -217,17 +217,17 @@ void SAKDebugger::initializePage()
 
     connect(this, &SAKDebugger::requestWriteData, mDevice, &SAKDebuggerDevice::writeBytes);
     connect(mDevice, &SAKDebuggerDevice::bytesWritten, this, &SAKDebugger::bytesWritten);
-#if 0
+
     // The bytes read will be input to analyzer, after analyzing, the bytes will be input to debug page
     SAKOtherAnalyzerThreadManager *analyzerManager = mOtherController->analyzerThreadManager();
-    connect(mDevice, &SAKDebugPageDevice::bytesRead, analyzerManager, &SAKOtherAnalyzerThreadManager::inputBytes);
+    connect(mDevice, &SAKDebuggerDevice::bytesRead, analyzerManager, &SAKOtherAnalyzerThreadManager::inputBytes);
 
     // The function may be called multiple times, so do something to ensure that the signal named bytesAnalysed
     // and the slot named bytesRead are connected once.
     connect(analyzerManager, &SAKOtherAnalyzerThreadManager::bytesAnalysed, this, &SAKDebugger::bytesRead, static_cast<Qt::ConnectionType>(Qt::AutoConnection|Qt::UniqueConnection));
-    connect(mDevice, &SAKDebugPageDevice::messageChanged, this, &SAKDebugger::outputMessage);
-    connect(mDevice, &SAKDebugPageDevice::deviceStateChanged, this, &SAKDebugger::changedDeviceState);
-    connect(mDevice, &SAKDebugPageDevice::finished, this, &SAKDebugger::closeDevice, Qt::QueuedConnection);
+    connect(mDevice, &SAKDebuggerDevice::messageChanged, this, &SAKDebugger::outputMessage);
+    connect(mDevice, &SAKDebuggerDevice::deviceStateChanged, this, &SAKDebugger::changedDeviceState);
+    connect(mDevice, &SAKDebuggerDevice::finished, this, &SAKDebugger::closeDevice, Qt::QueuedConnection);
 
 
     // Initialize the more button, the firs thing to do is clear the old actions and delete the old menu.
@@ -257,7 +257,6 @@ void SAKDebugger::initializePage()
             }
         });
     }
-#endif
 }
 
 void SAKDebugger::changedDeviceState(bool opened)

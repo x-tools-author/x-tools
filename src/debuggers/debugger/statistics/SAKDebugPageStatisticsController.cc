@@ -38,8 +38,10 @@ SAKDebugPageStatisticsController::SAKDebugPageStatisticsController(SAKDebugger *
         // emmm...
         connect(debugPage, &SAKDebugger::bytesRead, this, &SAKDebugPageStatisticsController::bytesRead);
         connect(debugPage, &SAKDebugger::bytesWritten, this, &SAKDebugPageStatisticsController::bytesWritten);
+#if 0
         connect(mResetRxCountPushButton, &QPushButton::clicked, this, &SAKDebugPageStatisticsController::clearRxStatistics);
         connect(mResetTxCountPushButton, &QPushButton::clicked, this, &SAKDebugPageStatisticsController::clearTxStatistics);
+#endif
 
         // update speed
         QTimer *speedTimer = new QTimer(this);
