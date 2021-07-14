@@ -5,7 +5,7 @@ qtHaveModule(serialport){
 
 contains(DEFINES, SAK_IMPORT_MODULE_SERIALPORT){
     FORMS += \
-        $$PWD/SAKSerialPortDeviceController.ui
+    $$PWD/SAKSerialPortController.ui
 
     HEADERS += \
     $$PWD/SAKSerialPortController.hh \

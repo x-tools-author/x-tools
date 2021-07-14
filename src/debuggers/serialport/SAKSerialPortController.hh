@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -19,7 +19,7 @@
 #include "SAKDebugPageController.hh"
 
 namespace Ui {
-    class SAKSerialPortDeviceController;
+    class SAKSerialPortController;
 }
 
 class SAKDebugPage;
@@ -49,7 +49,7 @@ private:
 private:
     void setBaudRate(quint32 bd);
 private:
-    Ui::SAKSerialPortDeviceController *ui;
+    Ui::SAKSerialPortController *ui;
     QComboBox *serialportsComboBox;
     QComboBox *baudrateComboBox;
     QComboBox *databitsComboBox;

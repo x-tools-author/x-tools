@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SAKSerialPortDeviceController</class>
- <widget class="QWidget" name="SAKSerialPortDeviceController">
+ <class>SAKSerialPortController</class>
+ <widget class="QWidget" name="SAKSerialPortController">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>147</width>
-    <height>190</height>
+    <width>150</width>
+    <height>204</height>
    </rect>
   </property>
   <property name="windowTitle">
