@@ -16,13 +16,13 @@
 
 #include "SAKDebugPageDevice.hh"
 
-class SAKUdpClientDebugPage;
-class SAKUdpClientDeviceController;
+class SAKUdpClientDebugger;
+class SAKUdpClientController;
 class SAKUdpClientDevice : public SAKDebugPageDevice
 {
     Q_OBJECT
 public:
-    SAKUdpClientDevice(SAKUdpClientDebugPage *mDebugPage, QObject *parent = Q_NULLPTR);
+    SAKUdpClientDevice(SAKUdpClientDebugger *mDebugPage, QObject *parent = Q_NULLPTR);
     ~SAKUdpClientDevice();
 
     struct UdpSocketParameters{
@@ -55,9 +55,9 @@ protected:
 private:
     QMutex mParametersContextMutex;
      UdpSocketParameters mParametersContext;
-    SAKUdpClientDebugPage *mDebugPage;
+    SAKUdpClientDebugger *mDebugPage;
     QUdpSocket *mUdpSocket;
-    SAKUdpClientDeviceController *mDeviceController;
+    SAKUdpClientController *mDeviceController;
 private:
     const UdpSocketParameters udpSocketParameters();
 signals:

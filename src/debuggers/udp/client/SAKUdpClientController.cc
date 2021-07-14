@@ -14,15 +14,15 @@
 #include "SAKDebugPage.hh"
 #include "SAKCommonInterface.hh"
 #include "SAKUdpClientDevice.hh"
-#include "SAKUdpClientDeviceController.hh"
+#include "SAKUdpClientController.hh"
 #include "SAKUdpClientAdvanceSettingWidget.hh"
 
-#include "ui_SAKUdpClientDeviceController.h"
+#include "ui_SAKUdpClientController.h"
 
-SAKUdpClientDeviceController::SAKUdpClientDeviceController(SAKDebugPage *debugPage, QWidget *parent)
+SAKUdpClientController::SAKUdpClientController(SAKDebugPage *debugPage, QWidget *parent)
     :SAKDebugPageController(debugPage, parent)
     ,mUdpAdvanceSettingWidget(new SAKUdpClientAdvanceSettingWidget)
-    ,mUi(new Ui::SAKUdpClientDeviceController)
+    ,mUi(new Ui::SAKUdpClientController)
 {
     mUi->setupUi(this);
     mLocalhostComboBox = mUi->localhostComboBox;
@@ -39,17 +39,17 @@ SAKUdpClientDeviceController::SAKUdpClientDeviceController(SAKDebugPage *debugPa
     mParameters.specifyClientAddressAndPort = mSpecifyClientAddressAndPort->isChecked();
     mParameters.targetHost = mTargetHostLineEdit->text();
     mParameters.targetPort = mTargetPortLineEdit->text().toInt();
-    qRegisterMetaType<SAKUdpClientDeviceController::UdpClientParameters>("SAKUdpClientDeviceController::UdpClientParameters");
+    qRegisterMetaType<SAKUdpClientController::UdpClientParameters>("SAKUdpClientController::UdpClientParameters");
     refreshDevice();
 }
 
-SAKUdpClientDeviceController::~SAKUdpClientDeviceController()
+SAKUdpClientController::~SAKUdpClientController()
 {
     delete mUdpAdvanceSettingWidget;
     delete mUi;
 }
 
-QVariant SAKUdpClientDeviceController::parameters()
+QVariant SAKUdpClientController::parameters()
 {
     mParametersMutex.lock();
     auto parameter = mParameters;
@@ -58,7 +58,7 @@ QVariant SAKUdpClientDeviceController::parameters()
     return QVariant::fromValue(parameter);
 }
 
-void SAKUdpClientDeviceController::setUiEnable(bool opened)
+void SAKUdpClientController::setUiEnable(bool opened)
 {
     mLocalhostComboBox->setEnabled(!opened);
     mLocalPortlineEdit->setEnabled(!opened);
@@ -68,50 +68,50 @@ void SAKUdpClientDeviceController::setUiEnable(bool opened)
     mAdvanceUdpPushButton->setEnabled(opened);
 }
 
-void SAKUdpClientDeviceController::refreshDevice()
+void SAKUdpClientController::refreshDevice()
 {
     SAKCommonInterface::addIpItemsToComboBox(mLocalhostComboBox, true);
 }
 
-void SAKUdpClientDeviceController::setUdpDevice(SAKUdpClientDevice *device)
+void SAKUdpClientController::setUdpDevice(SAKUdpClientDevice *device)
 {
     mUdpAdvanceSettingWidget->setUdpDevice(device);
 }
 
-void SAKUdpClientDeviceController::setClientInfo(QString info)
+void SAKUdpClientController::setClientInfo(QString info)
 {
     mBoundInfoLineEdit->setText(info);
 }
 
-void SAKUdpClientDeviceController::on_advanceUdpPushButton_clicked()
+void SAKUdpClientController::on_advanceUdpPushButton_clicked()
 {
     if (mUdpAdvanceSettingWidget){
         mUdpAdvanceSettingWidget->isHidden() ? mUdpAdvanceSettingWidget->show() : mUdpAdvanceSettingWidget->activateWindow();
     }
 }
 
-void SAKUdpClientDeviceController::on_localhostComboBox_currentTextChanged(const QString &arg1)
+void SAKUdpClientController::on_localhostComboBox_currentTextChanged(const QString &arg1)
 {
     mParametersMutex.lock();
     mParameters.localHost = arg1;
     mParametersMutex.unlock();
 }
 
-void SAKUdpClientDeviceController::on_localPortlineEdit_textChanged(const QString &arg1)
+void SAKUdpClientController::on_localPortlineEdit_textChanged(const QString &arg1)
 {
     mParametersMutex.lock();
     mParameters.localPort = arg1.toInt();
     mParametersMutex.unlock();
 }
 
-void SAKUdpClientDeviceController::on_targetHostLineEdit_textChanged(const QString &arg1)
+void SAKUdpClientController::on_targetHostLineEdit_textChanged(const QString &arg1)
 {
     mParametersMutex.lock();
     mParameters.targetHost = arg1;
     mParametersMutex.unlock();
 }
 
-void SAKUdpClientDeviceController::on_targetPortLineEdit_textChanged(const QString &arg1)
+void SAKUdpClientController::on_targetPortLineEdit_textChanged(const QString &arg1)
 {
     mParametersMutex.lock();
     mParameters.targetPort = arg1.toInt();

@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKUDPCLIENTDEVICECONTROLLER_HH
-#define SAKUDPCLIENTDEVICECONTROLLER_HH
+#ifndef SAKUDPCLIENTCONTROLLER_HH
+#define SAKUDPCLIENTCONTROLLER_HH
 
 #include <QMutex>
 #include <QWidget>
@@ -19,13 +19,13 @@
 #include "SAKDebugPageController.hh"
 
 namespace Ui {
-    class SAKUdpClientDeviceController;
+    class SAKUdpClientController;
 }
 
 class SAKDebugPage;
 class SAKUdpClientDevice;
 class SAKUdpClientAdvanceSettingWidget;
-class SAKUdpClientDeviceController : public SAKDebugPageController
+class SAKUdpClientController : public SAKDebugPageController
 {
     Q_OBJECT
 public:
@@ -37,8 +37,8 @@ public:
         bool specifyClientAddressAndPort;
     };
 
-    SAKUdpClientDeviceController(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
-    ~SAKUdpClientDeviceController();
+    SAKUdpClientController(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
+    ~SAKUdpClientController();
 
     QVariant parameters() final;
     void setUiEnable(bool opened) final;
@@ -51,7 +51,7 @@ private:
     UdpClientParameters mParameters;
     SAKUdpClientAdvanceSettingWidget *mUdpAdvanceSettingWidget;
 private:
-    Ui::SAKUdpClientDeviceController *mUi;
+    Ui::SAKUdpClientController *mUi;
     QComboBox *mLocalhostComboBox;
     QLineEdit *mLocalPortlineEdit;
     QCheckBox *mSpecifyClientAddressAndPort;
@@ -66,5 +66,5 @@ private slots:
     void on_targetHostLineEdit_textChanged(const QString &arg1);
     void on_targetPortLineEdit_textChanged(const QString &arg1);
 };
-Q_DECLARE_METATYPE(SAKUdpClientDeviceController::UdpClientParameters);
+Q_DECLARE_METATYPE(SAKUdpClientController::UdpClientParameters);
 #endif

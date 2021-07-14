@@ -12,10 +12,10 @@
 #include <QApplication>
 
 #include "SAKUdpClientDevice.hh"
-#include "SAKUdpClientDebugPage.hh"
-#include "SAKUdpClientDeviceController.hh"
+#include "SAKUdpClientDebugger.hh"
+#include "SAKUdpClientController.hh"
 
-SAKUdpClientDevice::SAKUdpClientDevice(SAKUdpClientDebugPage *debugPage, QObject *parent)
+SAKUdpClientDevice::SAKUdpClientDevice(SAKUdpClientDebugger *debugPage, QObject *parent)
     :SAKDebugPageDevice(debugPage, parent)
     ,mDebugPage(debugPage)
 {
@@ -91,9 +91,9 @@ void SAKUdpClientDevice::setMulticastEnable(bool enable)
 
 bool SAKUdpClientDevice::initializing(QString &errorString)
 {
-    mDeviceController = qobject_cast<SAKUdpClientDeviceController*>(mDebugPage->deviceController());
-    auto parameters = mDeviceController->parameters().value<SAKUdpClientDeviceController::UdpClientParameters>();
-    connect(this, &SAKUdpClientDevice::clientInfoChanged, mDeviceController, &SAKUdpClientDeviceController::setClientInfo);
+    mDeviceController = qobject_cast<SAKUdpClientController*>(mDebugPage->deviceController());
+    auto parameters = mDeviceController->parameters().value<SAKUdpClientController::UdpClientParameters>();
+    connect(this, &SAKUdpClientDevice::clientInfoChanged, mDeviceController, &SAKUdpClientController::setClientInfo);
     bool specifyClientAddressAndPort = parameters.specifyClientAddressAndPort;
     QString localHost = parameters.localHost;
     quint16 localPort = parameters.localPort;
@@ -151,7 +151,7 @@ QByteArray SAKUdpClientDevice::read()
 QByteArray SAKUdpClientDevice::write(QByteArray bytes)
 {
     // Unicast
-    auto parameters = mDeviceController->parameters().value<SAKUdpClientDeviceController::UdpClientParameters>();
+    auto parameters = mDeviceController->parameters().value<SAKUdpClientController::UdpClientParameters>();
     if (udpSocketParameters().enableUnicast){
         qint64 ret = mUdpSocket->writeDatagram(bytes, QHostAddress(parameters.targetHost), parameters.targetPort);
         if (ret > 0){
