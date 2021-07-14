@@ -44,16 +44,13 @@ exists($$PWD/SAKCustomConfigure.pri){
 }
 
 #Sub project
-include(src/debuggers/tcp/SAKTcp.pri)
-include(src/debuggers/udp/SAKUdp.pri)
+
 include(SAKSetup.pri)
 include(src/tools/SAKTools.pri)
 include(SAKCommon.pri)
 include(SAKCharts.pri)
 include(src/modbus/SAKModbus.pri)
-include(src/debuggers/websocket/SAKWebSocket.pri)
-include(src/debuggers/serialport/SAKSerialPort.pri)
-include(src/debuggers/ble/SAKBluetoothLowEnergy.pri)
+include(src/debuggers/SAKDebuggers.pri)
 
 exists(private/SAKPrivate.pri){
     include(private/SAKPrivate.pri)
@@ -112,52 +109,10 @@ RESOURCES += \
 INCLUDEPATH += \
     src \
     src/common \
-    src/debuggers \
-    src/debuggers/debugger \
-    src/debuggers/debugger/common \
-    src/debuggers/debugger/controller \
-    src/debuggers/debugger/device \
-    src/debuggers/debugger/device/mask \
-    src/debuggers/debugger/input \
-    src/debuggers/debugger/input/crcsettings \
-    src/debuggers/debugger/input/datafactory \
-    src/debuggers/debugger/input/datapreset \
-    src/debuggers/debugger/other \
-    src/debuggers/debugger/other/autoresponse \
-    src/debuggers/debugger/other/highlighter \
-    src/debuggers/debugger/other/generator \
-    src/debuggers/debugger/other/analyzer \
-    src/debuggers/debugger/other/timingsent \
-    src/debuggers/debugger/other/transmission \
-    src/debuggers/debugger/output \
-    src/debuggers/debugger/output/save2file \
-    src/debuggers/debugger/output/log \
-    src/debuggers/debugger/statistics \
-    src/debuggers/test \
     src/update
 
 FORMS += \
     src/SAKMainWindow.ui \
-    src/debuggers/debugger/SAKDebugger.ui \
-    src/debuggers/debugger/common/SAKDebugPageCommonSslConfigurationWidget.ui \
-    src/debuggers/debugger/device/mask/SAKDebugPageDeviceMask.ui \
-    src/debuggers/debugger/input/crcsettings/SAKInputCrcSettingsDialog.ui \
-    src/debuggers/debugger/input/datapreset/SAKInputDataPresetItem.ui \
-    src/debuggers/debugger/input/datapreset/SAKInputDataPresetItemManager.ui \
-    src/debuggers/debugger/other/analyzer/SAKOtherAnalyzerThreadManager.ui \
-    src/debuggers/debugger/other/autoresponse/SAKOtherAutoResponseItem.ui \
-    src/debuggers/debugger/other/autoresponse/SAKOtherAutoResponseItemManager.ui \
-    src/debuggers/debugger/other/highlighter/SAKOtherHighlighterManager.ui \
-    src/debuggers/debugger/other/timingsent/SAKOtherTimingSentItem.ui \
-    src/debuggers/debugger/other/timingsent/SAKOtherTimingSentItemManager.ui \
-    src/debuggers/debugger/other/transmission/SAKOtherTransmissionItemCom.ui \
-    src/debuggers/debugger/other/transmission/SAKOtherTransmissionItemTcp.ui \
-    src/debuggers/debugger/other/transmission/SAKOtherTransmissionItemUdp.ui \
-    src/debuggers/debugger/other/transmission/SAKOtherTransmissionPage.ui \
-    src/debuggers/debugger/other/transmission/SAKOtherTransmissionPageViewer.ui \
-    src/debuggers/debugger/output/log/SAKOutputLogDialog.ui \
-    src/debuggers/debugger/output/save2file/SAKOutputSave2FileDialog.ui \
-    src/debuggers/test/SAKTestDeviceController.ui \
     src/update/SAKDownloadItemWidget.ui \
     src/update/SAKUpdateManager.ui
 
@@ -167,40 +122,6 @@ HEADERS += \
     src/common/SAKCommonCrcInterface.hh \
     src/common/SAKCommonDataStructure.hh \
     src/common/SAKCommonInterface.hh \
-    src/debuggers/debugger/SAKDebugger.hh \
-    src/debuggers/debugger/common/SAKDebugPageCommonDatabaseInterface.hh \
-    src/debuggers/debugger/common/SAKDebugPageCommonSslConfigurationWidget.hh \
-    src/debuggers/debugger/controller/SAKDebugPageController.hh \
-    src/debuggers/debugger/device/SAKDebugPageDevice.hh \
-    src/debuggers/debugger/device/mask/SAKDebugPageDeviceMask.hh \
-    src/debuggers/debugger/input/SAKDebuggerInput.hh \
-    src/debuggers/debugger/input/crcsettings/SAKInputCrcSettingsDialog.hh \
-    src/debuggers/debugger/input/datafactory/SAKInputDataFactory.hh \
-    src/debuggers/debugger/input/datapreset/SAKInputDataPresetItem.hh \
-    src/debuggers/debugger/input/datapreset/SAKInputDataPresetItemManager.hh \
-    src/debuggers/debugger/other/SAKDebugPageOtherController.hh \
-    src/debuggers/debugger/other/analyzer/SAKOtherAnalyzerThread.hh \
-    src/debuggers/debugger/other/analyzer/SAKOtherAnalyzerThreadManager.hh \
-    src/debuggers/debugger/other/autoresponse/SAKOtherAutoResponseItem.hh \
-    src/debuggers/debugger/other/autoresponse/SAKOtherAutoResponseItemManager.hh \
-    src/debuggers/debugger/other/highlighter/SAKOtherHighlighter.hh \
-    src/debuggers/debugger/other/highlighter/SAKOtherHighlighterManager.hh \
-    src/debuggers/debugger/other/timingsent/SAKOtherTimingSentItem.hh \
-    src/debuggers/debugger/other/timingsent/SAKOtherTimingSentItemManager.hh \
-    src/debuggers/debugger/other/transmission/SAKOtherTransmissionItem.hh \
-    src/debuggers/debugger/other/transmission/SAKOtherTransmissionItemCom.hh \
-    src/debuggers/debugger/other/transmission/SAKOtherTransmissionItemTcp.hh \
-    src/debuggers/debugger/other/transmission/SAKOtherTransmissionItemUdp.hh \
-    src/debuggers/debugger/other/transmission/SAKOtherTransmissionPage.hh \
-    src/debuggers/debugger/other/transmission/SAKOtherTransmissionPageViewer.hh \
-    src/debuggers/debugger/output/SAKDebugPageOutputController.hh \
-    src/debuggers/debugger/output/log/SAKOutputLogDialog.hh \
-    src/debuggers/debugger/output/save2file/SAKOutputSave2FileDialog.hh \
-    src/debuggers/debugger/output/save2file/SAKOutputSave2FileThread.hh \
-    src/debuggers/debugger/statistics/SAKDebugPageStatisticsController.hh \
-    src/debuggers/test/SAKTestDebugPage.hh \
-    src/debuggers/test/SAKTestDevice.hh \
-    src/debuggers/test/SAKTestDeviceController.hh \
     src/update/SAKDownloadItemWidget.hh \
     src/update/SAKUpdateManager.hh
 
@@ -210,40 +131,6 @@ SOURCES += \
     src/common/SAKCommonCrcInterface.cc \
     src/common/SAKCommonDataStructure.cc \
     src/common/SAKCommonInterface.cc \
-    src/debuggers/debugger/SAKDebugger.cc \
-    src/debuggers/debugger/common/SAKDebugPageCommonDatabaseInterface.cc \
-    src/debuggers/debugger/common/SAKDebugPageCommonSslConfigurationWidget.cc \
-    src/debuggers/debugger/controller/SAKDebugPageController.cc \
-    src/debuggers/debugger/device/SAKDebugPageDevice.cc \
-    src/debuggers/debugger/device/mask/SAKDebugPageDeviceMask.cc \
-    src/debuggers/debugger/input/SAKDebuggerInput.cc \
-    src/debuggers/debugger/input/crcsettings/SAKInputCrcSettingsDialog.cc \
-    src/debuggers/debugger/input/datafactory/SAKInputDataFactory.cc \
-    src/debuggers/debugger/input/datapreset/SAKInputDataPresetItem.cc \
-    src/debuggers/debugger/input/datapreset/SAKInputDataPresetItemManager.cc \
-    src/debuggers/debugger/other/SAKDebugPageOtherController.cc \
-    src/debuggers/debugger/other/analyzer/SAKOtherAnalyzerThread.cc \
-    src/debuggers/debugger/other/analyzer/SAKOtherAnalyzerThreadManager.cc \
-    src/debuggers/debugger/other/autoresponse/SAKOtherAutoResponseItem.cc \
-    src/debuggers/debugger/other/autoresponse/SAKOtherAutoResponseItemManager.cc \
-    src/debuggers/debugger/other/highlighter/SAKOtherHighlighter.cc \
-    src/debuggers/debugger/other/highlighter/SAKOtherHighlighterManager.cc \
-    src/debuggers/debugger/other/timingsent/SAKOtherTimingSentItem.cc \
-    src/debuggers/debugger/other/timingsent/SAKOtherTimingSentItemManager.cc \
-    src/debuggers/debugger/other/transmission/SAKOtherTransmissionItem.cc \
-    src/debuggers/debugger/other/transmission/SAKOtherTransmissionItemCom.cc \
-    src/debuggers/debugger/other/transmission/SAKOtherTransmissionItemTcp.cc \
-    src/debuggers/debugger/other/transmission/SAKOtherTransmissionItemUdp.cc \
-    src/debuggers/debugger/other/transmission/SAKOtherTransmissionPage.cc \
-    src/debuggers/debugger/other/transmission/SAKOtherTransmissionPageViewer.cc \
-    src/debuggers/debugger/output/SAKDebugPageOutputController.cc \
-    src/debuggers/debugger/output/log/SAKOutputLogDialog.cc \
-    src/debuggers/debugger/output/save2file/SAKOutputSave2FileDialog.cc \
     src/main.cc \
-    src/debuggers/debugger/output/save2file/SAKOutputSave2FileThread.cc \
-    src/debuggers/debugger/statistics/SAKDebugPageStatisticsController.cc \
-    src/debuggers/test/SAKTestDebugPage.cc \
-    src/debuggers/test/SAKTestDevice.cc \
-    src/debuggers/test/SAKTestDeviceController.cc \
     src/update/SAKDownloadItemWidget.cc \
     src/update/SAKUpdateManager.cc
