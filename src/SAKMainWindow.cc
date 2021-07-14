@@ -63,7 +63,7 @@
 #endif
 #ifdef SAK_IMPORT_MODULE_TCP
 #include "SAKTcpClientDebugger.hh"
-#include "SAKTcpServerDebugPage.hh"
+#include "SAKTcpServerDebugger.hh"
 #endif
 #ifdef SAK_IMPORT_MODULE_SERIALPORT
 #include "SAKSerialPortDebugger.hh"
@@ -559,7 +559,7 @@ void SAKMainWindow::initializingMetaObject()
 #endif
 #ifdef SAK_IMPORT_MODULE_TCP
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeTCPClient, SAKTcpClientDebugger::staticMetaObject, tr("TCP-C")});
-    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeTCPServer, SAKTcpServerDebugPage::staticMetaObject, tr("TCP-S")});
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeTCPServer, SAKTcpServerDebugger::staticMetaObject, tr("TCP-S")});
 #endif
 #ifdef SAK_IMPORT_MODULE_SSLSOCKET
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{SAKSslSocketClientDebugPage::staticMetaObject, tr("SSL-C")});

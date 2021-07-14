@@ -13,13 +13,13 @@
 
 #include "SAKCommonDataStructure.hh"
 #include "SAKTcpServerDevice.hh"
-#include "SAKTcpServerDebugPage.hh"
-#include "SAKTcpServerDeviceController.hh"
+#include "SAKTcpServerDebugger.hh"
+#include "SAKTcpServerController.hh"
 
-SAKTcpServerDebugPage::SAKTcpServerDebugPage(int type, QString name, QWidget *parent)
+SAKTcpServerDebugger::SAKTcpServerDebugger(int type, QString name, QWidget *parent)
     :SAKDebugPage (type, name, parent)
 {
-    mDeviceController = new SAKTcpServerDeviceController(this);
+    mDeviceController = new SAKTcpServerController(this);
     mDevice = new SAKTcpServerDevice(this, this);
     initializePage();
 }

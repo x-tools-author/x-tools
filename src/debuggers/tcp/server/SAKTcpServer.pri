@@ -1,15 +1,15 @@
 FORMS += \
-    $$PWD/SAKTcpServerDeviceController.ui
+    $$PWD/SAKTcpServerController.ui
 
 HEADERS += \
-    $$PWD/SAKTcpServerDebugPage.hh \
-    $$PWD/SAKTcpServerDevice.hh \
-    $$PWD/SAKTcpServerDeviceController.hh
+    $$PWD/SAKTcpServerController.hh \
+    $$PWD/SAKTcpServerDebugger.hh \
+    $$PWD/SAKTcpServerDevice.hh
 
 SOURCES += \
-    $$PWD/SAKTcpServerDebugPage.cc \
-    $$PWD/SAKTcpServerDevice.cc \
-    $$PWD/SAKTcpServerDeviceController.cc
+    $$PWD/SAKTcpServerController.cc \
+    $$PWD/SAKTcpServerDebugger.cc \
+    $$PWD/SAKTcpServerDevice.cc
 
 INCLUDEPATH += \
     $$PWD

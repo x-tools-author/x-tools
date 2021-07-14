@@ -16,13 +16,13 @@
 
 #include "SAKDebugPageDevice.hh"
 
-class SAKTcpServerDebugPage;
-class SAKTcpServerDeviceController;
+class SAKTcpServerDebugger;
+class SAKTcpServerController;
 class SAKTcpServerDevice:public SAKDebugPageDevice
 {
     Q_OBJECT
 public:
-    SAKTcpServerDevice(SAKTcpServerDebugPage *mDebugPage, QObject *parent = Q_NULLPTR);
+    SAKTcpServerDevice(SAKTcpServerDebugger *mDebugPage, QObject *parent = Q_NULLPTR);
 private:
     bool initializing(QString &errorString) final;
     bool open(QString &errorString) final;
@@ -35,9 +35,9 @@ signals:
     void addClient(QString host, quint16 port, QTcpSocket *socket);
     void removeClient(QTcpSocket *socket);
 private:
-    SAKTcpServerDebugPage *mDebugPage;
+    SAKTcpServerDebugger *mDebugPage;
     QTcpServer *mTcpServer;
-    SAKTcpServerDeviceController *mDeviceController;
+    SAKTcpServerController *mDeviceController;
     QList<QTcpSocket*> mClientList;
 };
 

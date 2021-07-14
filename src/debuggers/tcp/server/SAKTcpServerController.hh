@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKTCPSERVERDEVICECONTROLLER_HH
-#define SAKTCPSERVERDEVICECONTROLLER_HH
+#ifndef SAKTCPSERVERCONTROLLER_HH
+#define SAKTCPSERVERCONTROLLER_HH
 
 #include <QMutex>
 #include <QWidget>
@@ -20,11 +20,11 @@
 #include "SAKDebugPageController.hh"
 
 namespace Ui {
-    class SAKTcpServerDeviceController;
+    class SAKTcpServerController;
 }
 
 class SAKDebugPage;
-class SAKTcpServerDeviceController:public SAKDebugPageController
+class SAKTcpServerController:public SAKDebugPageController
 {
     Q_OBJECT
 public:
@@ -35,8 +35,8 @@ public:
         quint16 currentClientPort;
     };
 
-    SAKTcpServerDeviceController(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
-    ~SAKTcpServerDeviceController();
+    SAKTcpServerController(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
+    ~SAKTcpServerController();
 
     QVariant parameters() final;
     void setUiEnable(bool opened) final;
@@ -49,7 +49,7 @@ private:
     TcpServerParameters mParameters;
     QStandardItemModel mClientStandardItemModel;
 private:
-    Ui::SAKTcpServerDeviceController *mUi;
+    Ui::SAKTcpServerController *mUi;
     QComboBox *mServerHostComboBox;
     QLineEdit *mServerPortLineEdit;
     QComboBox *mClientHostComboBox;
@@ -58,5 +58,5 @@ private slots:
     void on_serverPortLineEdit_textChanged(const QString &arg1);
     void on_clientHostComboBox_currentTextChanged(const QString &arg1);
 };
-Q_DECLARE_METATYPE(SAKTcpServerDeviceController::TcpServerParameters);
+Q_DECLARE_METATYPE(SAKTcpServerController::TcpServerParameters);
 #endif

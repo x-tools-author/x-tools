@@ -14,12 +14,12 @@
 
 #include "SAKDebugPage.hh"
 #include "SAKCommonInterface.hh"
-#include "SAKTcpServerDeviceController.hh"
-#include "ui_SAKTcpServerDeviceController.h"
+#include "SAKTcpServerController.hh"
+#include "ui_SAKTcpServerController.h"
 
-SAKTcpServerDeviceController::SAKTcpServerDeviceController(SAKDebugPage *debugPage, QWidget *parent)
+SAKTcpServerController::SAKTcpServerController(SAKDebugPage *debugPage, QWidget *parent)
     :SAKDebugPageController(debugPage, parent)
-    ,mUi(new Ui::SAKTcpServerDeviceController)
+    ,mUi(new Ui::SAKTcpServerController)
 {
     mUi->setupUi(this);
     mServerHostComboBox = mUi->serverhostComboBox;
@@ -28,18 +28,18 @@ SAKTcpServerDeviceController::SAKTcpServerDeviceController(SAKDebugPage *debugPa
 
     on_serverhostComboBox_currentTextChanged(mServerHostComboBox->currentText());
     on_serverPortLineEdit_textChanged(mServerPortLineEdit->text());
-    qRegisterMetaType<SAKTcpServerDeviceController::TcpServerParameters>("SAKTcpServerDeviceController::TcpServerParameters");
+    qRegisterMetaType<SAKTcpServerController::TcpServerParameters>("SAKTcpServerController::TcpServerParameters");
     refreshDevice();
 
     mClientHostComboBox->setModel(&mClientStandardItemModel);
 }
 
-SAKTcpServerDeviceController::~SAKTcpServerDeviceController()
+SAKTcpServerController::~SAKTcpServerController()
 {
     delete mUi;
 }
 
-QVariant SAKTcpServerDeviceController::parameters()
+QVariant SAKTcpServerController::parameters()
 {
     TcpServerParameters parameters;
     mParametersMutex.lock();
@@ -52,18 +52,18 @@ QVariant SAKTcpServerDeviceController::parameters()
     return QVariant::fromValue(parameters);
 }
 
-void SAKTcpServerDeviceController::setUiEnable(bool opened)
+void SAKTcpServerController::setUiEnable(bool opened)
 {
     mServerHostComboBox->setEnabled(!opened);
     mServerPortLineEdit->setEnabled(!opened);
 }
 
-void SAKTcpServerDeviceController::refreshDevice()
+void SAKTcpServerController::refreshDevice()
 {
     SAKCommonInterface::addIpItemsToComboBox(mServerHostComboBox);
 }
 
-void SAKTcpServerDeviceController::addClient(QString host, quint16 port, QTcpSocket *socket)
+void SAKTcpServerController::addClient(QString host, quint16 port, QTcpSocket *socket)
 {
     QString itemString = host.append(":");
     itemString.append(QString::number(port));
@@ -78,7 +78,7 @@ void SAKTcpServerDeviceController::addClient(QString host, quint16 port, QTcpSoc
     mClientHostComboBox->addItem(itemString, QVariant::fromValue(socket));
 }
 
-void SAKTcpServerDeviceController::removeClient(QTcpSocket *socket)
+void SAKTcpServerController::removeClient(QTcpSocket *socket)
 {
     for(int i = 0; i < mClientHostComboBox->count(); i++){
         if (mClientHostComboBox->itemData(i).value<QTcpSocket*>() == socket){
@@ -88,21 +88,21 @@ void SAKTcpServerDeviceController::removeClient(QTcpSocket *socket)
     }
 }
 
-void SAKTcpServerDeviceController::on_serverhostComboBox_currentTextChanged(const QString &arg1)
+void SAKTcpServerController::on_serverhostComboBox_currentTextChanged(const QString &arg1)
 {
     mParametersMutex.lock();
     mParameters.serverHost = arg1;
     mParametersMutex.unlock();
 }
 
-void SAKTcpServerDeviceController::on_serverPortLineEdit_textChanged(const QString &arg1)
+void SAKTcpServerController::on_serverPortLineEdit_textChanged(const QString &arg1)
 {
     mParametersMutex.lock();
     mParameters.serverPort = arg1.toInt();
     mParametersMutex.unlock();
 }
 
-void SAKTcpServerDeviceController::on_clientHostComboBox_currentTextChanged(const QString &arg1)
+void SAKTcpServerController::on_clientHostComboBox_currentTextChanged(const QString &arg1)
 {
     mParametersMutex.lock();
     QStringList info = arg1.split(":");

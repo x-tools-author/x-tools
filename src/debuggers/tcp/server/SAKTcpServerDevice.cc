@@ -14,10 +14,10 @@
 
 #include "SAKDebugPage.hh"
 #include "SAKTcpServerDevice.hh"
-#include "SAKTcpServerDebugPage.hh"
-#include "SAKTcpServerDeviceController.hh"
+#include "SAKTcpServerDebugger.hh"
+#include "SAKTcpServerController.hh"
 
-SAKTcpServerDevice::SAKTcpServerDevice(SAKTcpServerDebugPage *debugPage, QObject *parent)
+SAKTcpServerDevice::SAKTcpServerDevice(SAKTcpServerDebugger *debugPage, QObject *parent)
     :SAKDebugPageDevice(debugPage, parent)
     ,mDebugPage(debugPage)
     ,mTcpServer(Q_NULLPTR)
@@ -32,16 +32,16 @@ SAKTcpServerDevice::SAKTcpServerDevice(SAKTcpServerDebugPage *debugPage, QObject
 bool SAKTcpServerDevice::initializing(QString &errorString)
 {
     errorString = tr("Unknown error");
-    mDeviceController = qobject_cast<SAKTcpServerDeviceController*>(mDebugPage->deviceController());
-    connect(this, &SAKTcpServerDevice::addClient, mDeviceController, &SAKTcpServerDeviceController::addClient);
-    connect(this, &SAKTcpServerDevice::removeClient, mDeviceController, &SAKTcpServerDeviceController::removeClient);
+    mDeviceController = qobject_cast<SAKTcpServerController*>(mDebugPage->deviceController());
+    connect(this, &SAKTcpServerDevice::addClient, mDeviceController, &SAKTcpServerController::addClient);
+    connect(this, &SAKTcpServerDevice::removeClient, mDeviceController, &SAKTcpServerController::removeClient);
 
     return true;
 }
 
 bool SAKTcpServerDevice::open(QString &errorString)
 {
-    auto parameters = mDeviceController->parameters().value<SAKTcpServerDeviceController::TcpServerParameters>();
+    auto parameters = mDeviceController->parameters().value<SAKTcpServerController::TcpServerParameters>();
     QString serverHost = parameters.serverHost;
     quint16 serverPort = parameters.serverPort;
 
@@ -58,7 +58,7 @@ QByteArray SAKTcpServerDevice::read()
 {
     for (auto &var : mClientList){
          QByteArray bytes = var->readAll();
-         auto parameters = mDeviceController->parameters().value<SAKTcpServerDeviceController::TcpServerParameters>();
+         auto parameters = mDeviceController->parameters().value<SAKTcpServerController::TcpServerParameters>();
          QString currentClientHost = parameters.currentClientHost;
          QString peerHost = var->peerAddress().toString();
          quint16 currentClientPort = parameters.currentClientPort;
@@ -77,7 +77,7 @@ QByteArray SAKTcpServerDevice::read()
 QByteArray SAKTcpServerDevice::write(QByteArray bytes)
 {
     for (auto &var : mClientList){
-        auto parameters = mDeviceController->parameters().value<SAKTcpServerDeviceController::TcpServerParameters>();
+        auto parameters = mDeviceController->parameters().value<SAKTcpServerController::TcpServerParameters>();
         QString currentClientHost = parameters.currentClientHost;
         QString peerHost = var->peerAddress().toString();
         quint16 currentClientPort = parameters.currentClientPort;
