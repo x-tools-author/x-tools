@@ -14,15 +14,15 @@
 #include <QObject>
 #include <QPushButton>
 
-class SAKDebugPage;
+class SAKDebugger;
 /// @brief statistics received bytes, frames and sent bytes, frames
 class SAKDebugPageStatisticsController:public QObject
 {
     Q_OBJECT
 public:
-    SAKDebugPageStatisticsController(SAKDebugPage *mDebugPage, QObject *parent = Q_NULLPTR);
+    SAKDebugPageStatisticsController(SAKDebugger *mDebugPage, QObject *parent = Q_NULLPTR);
 private:
-    SAKDebugPage *mDebugPage;
+    SAKDebugger *mDebugPage;
     QLabel *mRxSpeedLabel;
     QLabel *mTxSpeedLabel;
     QLabel *mTxFramesLabel;

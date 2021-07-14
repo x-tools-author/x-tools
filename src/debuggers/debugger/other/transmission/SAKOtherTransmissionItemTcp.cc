@@ -9,13 +9,13 @@
  */
 #include <QHostAddress>
 
-#include "SAKDebugPage.hh"
+#include "SAKDebugger.hh"
 #include "SAKCommonInterface.hh"
 #include "SAKOtherTransmissionItemTcp.hh"
 
 #include "ui_SAKOtherTransmissionItemTcp.h"
 
-SAKOtherTransmissionItemTcp::SAKOtherTransmissionItemTcp(SAKDebugPage *debugPage, QWidget *parent)
+SAKOtherTransmissionItemTcp::SAKOtherTransmissionItemTcp(SAKDebugger *debugPage, QWidget *parent)
     :SAKOtherTransmissionItem (debugPage, parent)
     ,mUi (new Ui::SAKOtherTransmissionItemTcp)
     ,mTcpSocket (Q_NULLPTR)

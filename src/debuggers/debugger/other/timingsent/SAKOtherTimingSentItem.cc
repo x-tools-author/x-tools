@@ -10,14 +10,14 @@
 #include <QDebug>
 #include <QDateTime>
 
-#include "SAKDebugPage.hh"
+#include "SAKDebugger.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKOtherTimingSentItem.hh"
 #include "SAKDebugPageInputController.hh"
 
 #include "ui_SAKOtherTimingSentItem.h"
 
-SAKOtherTimingSentItem::SAKOtherTimingSentItem(SAKDebugPage *debugPage, QWidget *parent)
+SAKOtherTimingSentItem::SAKOtherTimingSentItem(SAKDebugger *debugPage, QWidget *parent)
     :QWidget(parent)
     ,mDebugPage(debugPage)
     ,isInitializing(true)
@@ -28,7 +28,7 @@ SAKOtherTimingSentItem::SAKOtherTimingSentItem(SAKDebugPage *debugPage, QWidget 
     isInitializing = false;
 }
 
-SAKOtherTimingSentItem::SAKOtherTimingSentItem(SAKDebugPage *debugPage,
+SAKOtherTimingSentItem::SAKOtherTimingSentItem(SAKDebugger *debugPage,
                                                quint64 id,
                                                quint32 interval,
                                                quint32 format,

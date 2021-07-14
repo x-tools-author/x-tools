@@ -16,7 +16,7 @@
 #include <QJsonDocument>
 #include <QStandardPaths>
 
-#include "SAKDebugPage.hh"
+#include "SAKDebugger.hh"
 #include "SAKApplication.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKOtherTimingSentItem.hh"
@@ -25,7 +25,7 @@
 
 #include "ui_SAKOtherTimingSentItemManager.h"
 
-SAKOtherTimingSentItemManager::SAKOtherTimingSentItemManager(SAKDebugPage *debugPage, QWidget *parent)
+SAKOtherTimingSentItemManager::SAKOtherTimingSentItemManager(SAKDebugger *debugPage, QWidget *parent)
     :QWidget(parent)
     ,mDebugPage(debugPage)
     ,mUi(new Ui::SAKOtherTimingSentItemManager)
@@ -55,7 +55,7 @@ SAKOtherTimingSentItemManager::~SAKOtherTimingSentItemManager()
     delete mUi;
 }
 
-SAKOtherTimingSentItem *innerCreateItem(SAKDebugPageCommonDatabaseInterface::SAKStructTimingSentItem &var, SAKDebugPage *debugPage, QListWidget *listWidget)
+SAKOtherTimingSentItem *innerCreateItem(SAKDebugPageCommonDatabaseInterface::SAKStructTimingSentItem &var, SAKDebugger *debugPage, QListWidget *listWidget)
 {
     QListWidgetItem *item = new QListWidgetItem(listWidget);
     listWidget->addItem(item);

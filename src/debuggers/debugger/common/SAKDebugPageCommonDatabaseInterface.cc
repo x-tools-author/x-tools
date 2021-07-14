@@ -13,10 +13,10 @@
 #include <QDateTime>
 #include <QCoreApplication>
 
-#include "SAKDebugPage.hh"
+#include "SAKDebugger.hh"
 #include "SAKDebugPageCommonDatabaseInterface.hh"
 
-SAKDebugPageCommonDatabaseInterface::SAKDebugPageCommonDatabaseInterface(SAKDebugPage *debugPage, QSqlDatabase *sqlDatabase, QObject *parent)
+SAKDebugPageCommonDatabaseInterface::SAKDebugPageCommonDatabaseInterface(SAKDebugger *debugPage, QSqlDatabase *sqlDatabase, QObject *parent)
     :QObject(parent)
     ,mSqlDatabase(sqlDatabase)
     ,mDebugPage(debugPage)

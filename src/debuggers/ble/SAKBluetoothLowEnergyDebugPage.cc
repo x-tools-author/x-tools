@@ -17,7 +17,7 @@
 #include "SAKBluetoothLowEnergyDeviceController.hh"
 
 SAKBluetoothLowEnergyDebugPage::SAKBluetoothLowEnergyDebugPage(int type, QString name, QWidget *parent)
-    :SAKDebugPage(type, name, parent)
+    :SAKDebugger(type, name, parent)
 {
     mDeviceController = new SAKBluetoothLowEnergyDeviceController(this);
     mDevice = new  SAKBluetoothLowEnergyDevice(this, this);

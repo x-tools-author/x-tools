@@ -21,14 +21,14 @@ namespace Ui {
     class SAKOtherAutoResponseItem;
 }
 
-class SAKDebugPage;
+class SAKDebugger;
 /// @brief Auto response item
 class SAKOtherAutoResponseItem:public QWidget
 {
     Q_OBJECT
 public:
-    SAKOtherAutoResponseItem(SAKDebugPage *mDebugPage, QWidget *parent = Q_NULLPTR);
-    SAKOtherAutoResponseItem(SAKDebugPage *mDebugPage,
+    SAKOtherAutoResponseItem(SAKDebugger *mDebugPage, QWidget *parent = Q_NULLPTR);
+    SAKOtherAutoResponseItem(SAKDebugger *mDebugPage,
                              quint64 mID,
                              QString name,
                              QString referenceData,
@@ -61,7 +61,7 @@ public:
     quint32 interval();
 private:
     bool mForbiddenAllAutoResponse;
-    SAKDebugPage *mDebugPage;
+    SAKDebugger *mDebugPage;
     quint64 mID;
     // delay response
     struct DelayWritingInfo{

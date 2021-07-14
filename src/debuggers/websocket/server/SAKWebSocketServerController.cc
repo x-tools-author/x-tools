@@ -12,13 +12,13 @@
 #include <QMetaEnum>
 #include <QLineEdit>
 
-#include "SAKDebugPage.hh"
+#include "SAKDebugger.hh"
 #include "SAKCommonInterface.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKWebSocketServerController.hh"
 #include "ui_SAKWebSocketServerController.h"
 
-SAKWebSocketServerController::SAKWebSocketServerController(SAKDebugPage *debugPage, QWidget *parent)
+SAKWebSocketServerController::SAKWebSocketServerController(SAKDebugger *debugPage, QWidget *parent)
     :SAKDebugPageController(debugPage, parent)
     ,mUi(new Ui::SAKWebSocketServerController)
 {

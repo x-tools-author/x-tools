@@ -22,7 +22,7 @@ namespace Ui {
     class SAKUdpClientController;
 }
 
-class SAKDebugPage;
+class SAKDebugger;
 class SAKUdpClientDevice;
 class SAKUdpClientAdvanceSettingWidget;
 class SAKUdpClientController : public SAKDebugPageController
@@ -37,7 +37,7 @@ public:
         bool specifyClientAddressAndPort;
     };
 
-    SAKUdpClientController(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
+    SAKUdpClientController(SAKDebugger *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKUdpClientController();
 
     QVariant parameters() final;

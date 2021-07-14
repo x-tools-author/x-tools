@@ -16,7 +16,7 @@
 #include <QStandardPaths>
 #include <QListWidgetItem>
 
-#include "SAKDebugPage.hh"
+#include "SAKDebugger.hh"
 #include "SAKInputDataFactory.hh"
 #include "SAKCommonCrcInterface.hh"
 #include "SAKCommonDataStructure.hh"
@@ -26,7 +26,7 @@
 #include "SAKDebugPageInputController.hh"
 #include "SAKInputDataPresetItemManager.hh"
 
-SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugPage *debugPage, QObject *parent)
+SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugger *debugPage, QObject *parent)
     :QObject(parent)
     ,mDebugPage(debugPage)
     ,mCrcInterface(new SAKCommonCrcInterface)
@@ -139,9 +139,9 @@ SAKDebugPageInputController::SAKDebugPageInputController(SAKDebugPage *debugPage
     connect(mSendPushButton, &QPushButton::clicked, this, &SAKDebugPageInputController::sendRawData);
     connect(mInputTextEdit, &QTextEdit::textChanged, this, &SAKDebugPageInputController::inputTextEditTextChanged);
     connect(this, &SAKDebugPageInputController::rawDataChanged, mInputDataFactory, &SAKInputDataFactory::cookData);
-    connect(mInputDataFactory, &SAKInputDataFactory::dataCooked, debugPage, &SAKDebugPage::write);
+    connect(mInputDataFactory, &SAKInputDataFactory::dataCooked, debugPage, &SAKDebugger::write);
     connect(&mCyclingWritingTimer, &QTimer::timeout, this, &SAKDebugPageInputController::cyclingWritingTimerTimeout);
-    connect(debugPage, &SAKDebugPage::requestWriteRawData, this, &SAKDebugPageInputController::sendOtherRawData);
+    connect(debugPage, &SAKDebugger::requestWriteRawData, this, &SAKDebugPageInputController::sendOtherRawData);
 
     initParameters();
     updateCrc();

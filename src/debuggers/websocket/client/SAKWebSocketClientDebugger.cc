@@ -17,7 +17,7 @@
 #include "SAKWebSocketClientController.hh"
 
 SAKWebSocketClientDebugger::SAKWebSocketClientDebugger(int type, QString name, QWidget *parent)
-    :SAKDebugPage(type, name, parent)
+    :SAKDebugger(type, name, parent)
 {
     mDeviceController = new SAKWebSocketClientController(this, this);
     mDevice = new SAKWebSocketClientDevice(this, this);

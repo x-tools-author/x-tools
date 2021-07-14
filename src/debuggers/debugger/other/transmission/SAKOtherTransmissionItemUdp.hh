@@ -25,7 +25,7 @@ class SAKOtherTransmissionItemUdp:public SAKOtherTransmissionItem
 {
     Q_OBJECT
 public:
-    SAKOtherTransmissionItemUdp(SAKDebugPage *debugPage, QWidget *parent);
+    SAKOtherTransmissionItemUdp(SAKDebugger *debugPage, QWidget *parent);
     ~SAKOtherTransmissionItemUdp();
 
     virtual void write(QByteArray data);

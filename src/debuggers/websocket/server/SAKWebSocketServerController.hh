@@ -22,7 +22,7 @@ namespace Ui {
     class SAKWebSocketServerController;
 }
 
-class SAKDebugPage;
+class SAKDebugger;
 /// @brief Web socket server panel
 class SAKWebSocketServerController:public SAKDebugPageController
 {
@@ -36,7 +36,7 @@ public:
         quint32 sendingType;
     };
 
-    SAKWebSocketServerController(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
+    SAKWebSocketServerController(SAKDebugger *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKWebSocketServerController();
 
     QVariant parameters() final;

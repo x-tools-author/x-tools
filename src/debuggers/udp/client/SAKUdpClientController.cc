@@ -11,7 +11,7 @@
 #include <QMetaEnum>
 #include <QLineEdit>
 
-#include "SAKDebugPage.hh"
+#include "SAKDebugger.hh"
 #include "SAKCommonInterface.hh"
 #include "SAKUdpClientDevice.hh"
 #include "SAKUdpClientController.hh"
@@ -19,7 +19,7 @@
 
 #include "ui_SAKUdpClientController.h"
 
-SAKUdpClientController::SAKUdpClientController(SAKDebugPage *debugPage, QWidget *parent)
+SAKUdpClientController::SAKUdpClientController(SAKDebugger *debugPage, QWidget *parent)
     :SAKDebugPageController(debugPage, parent)
     ,mUdpAdvanceSettingWidget(new SAKUdpClientAdvanceSettingWidget)
     ,mUi(new Ui::SAKUdpClientController)

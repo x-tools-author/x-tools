@@ -11,7 +11,7 @@
 #include <QDebug>
 #include <QSqlError>
 
-#include "SAKDebugPage.hh"
+#include "SAKDebugger.hh"
 #include "SAKInputDataFactory.hh"
 #include "SAKCommonCrcInterface.hh"
 #include "SAKCommonDataStructure.hh"

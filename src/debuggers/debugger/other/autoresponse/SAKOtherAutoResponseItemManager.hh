@@ -23,7 +23,7 @@ namespace Ui {
     class SAKOtherAutoResponseItemManager;
 }
 
-class SAKDebugPage;
+class SAKDebugger;
 class SAKOtherAutoResponseItem;
 class SAKDebugPageCommonDatabaseInterface;
 /// @brief Auto response item manager
@@ -31,7 +31,7 @@ class SAKOtherAutoResponseItemManager:public QWidget
 {
    Q_OBJECT
 public:
-    SAKOtherAutoResponseItemManager(SAKDebugPage *mDebugPage, QWidget *parent = Q_NULLPTR);
+    SAKOtherAutoResponseItemManager(SAKDebugger *mDebugPage, QWidget *parent = Q_NULLPTR);
     ~SAKOtherAutoResponseItemManager();
 
     struct AutoResponseItemKey {
@@ -48,7 +48,7 @@ public:
     };
 private:
     QTimer mClearMessageInfoTimer;
-    SAKDebugPage *mDebugPage;
+    SAKDebugger *mDebugPage;
     SAKDebugPageCommonDatabaseInterface *mDatabaseInterface;
     QString mTableName;
 private:

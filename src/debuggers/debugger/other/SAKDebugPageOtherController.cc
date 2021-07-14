@@ -11,7 +11,7 @@
 #include <QDebug>
 #include <QAction>
 
-#include "SAKDebugPage.hh"
+#include "SAKDebugger.hh"
 #include "SAKOtherTransmissionPageViewer.hh"
 #include "SAKOtherHighlighterManager.hh"
 #include "SAKDebugPageOtherController.hh"
@@ -19,7 +19,7 @@
 #include "SAKOtherTimingSentItemManager.hh"
 #include "SAKOtherAnalyzerThreadManager.hh"
 
-SAKDebugPageOtherController::SAKDebugPageOtherController(SAKDebugPage *debugPage, QObject *parent)
+SAKDebugPageOtherController::SAKDebugPageOtherController(SAKDebugger *debugPage, QObject *parent)
     :QObject(parent)
     ,mDebugPage(debugPage)
 {

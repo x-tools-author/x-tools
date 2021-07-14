@@ -25,7 +25,7 @@ class SAKOtherTransmissionItemTcp:public SAKOtherTransmissionItem
 {
     Q_OBJECT
 public:
-    SAKOtherTransmissionItemTcp(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
+    SAKOtherTransmissionItemTcp(SAKDebugger *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKOtherTransmissionItemTcp();
 
     virtual void write(QByteArray data);

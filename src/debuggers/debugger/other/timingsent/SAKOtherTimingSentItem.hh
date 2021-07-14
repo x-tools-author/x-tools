@@ -21,14 +21,14 @@
 namespace Ui {
     class SAKOtherTimingSentItem;
 }
-class SAKDebugPage;
+class SAKDebugger;
 /// @brief Timing sent item
 class SAKOtherTimingSentItem:public QWidget
 {
     Q_OBJECT
 public:
-    SAKOtherTimingSentItem(SAKDebugPage *mDebugPage, QWidget *parent = Q_NULLPTR);
-    SAKOtherTimingSentItem(SAKDebugPage *mDebugPage,
+    SAKOtherTimingSentItem(SAKDebugger *mDebugPage, QWidget *parent = Q_NULLPTR);
+    SAKOtherTimingSentItem(SAKDebugger *mDebugPage,
                            quint64 mID,
                            quint32 interval,
                            quint32 format,
@@ -43,7 +43,7 @@ public:
     QString itemDescription();
     QString itemText();
 private:
-    SAKDebugPage *mDebugPage;
+    SAKDebugger *mDebugPage;
     quint64 mID;
     QTimer mWriteTimer;
     bool isInitializing;

@@ -23,7 +23,7 @@ namespace Ui {
     class SAKInputDataPresetItemManager;
 }
 
-class SAKDebugPage;
+class SAKDebugger;
 class SAKInputDataPresetItem;
 class SAKDebugPageCommonDatabaseInterface;
 /// @brief Data preset item manager widget
@@ -31,7 +31,7 @@ class SAKInputDataPresetItemManager:public QWidget
 {
     Q_OBJECT
 public:
-    SAKInputDataPresetItemManager(SAKDebugPage *mDebugPage, QWidget *parent = Q_NULLPTR);
+    SAKInputDataPresetItemManager(SAKDebugger *mDebugPage, QWidget *parent = Q_NULLPTR);
     ~SAKInputDataPresetItemManager();
 
     struct DataPresetItemContext {
@@ -47,7 +47,7 @@ public:
      */
     QList<SAKInputDataPresetItem*> itemList();
 private:
-    SAKDebugPage *mDebugPage;
+    SAKDebugger *mDebugPage;
     QListWidget *mListWidget;
     QString mTableName;
     QTimer mClearMessageInfoTimer;

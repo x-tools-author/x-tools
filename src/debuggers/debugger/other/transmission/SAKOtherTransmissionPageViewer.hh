@@ -17,19 +17,19 @@ namespace Ui {
 class SAKOtherTransmissionPageViewer;
 }
 
-class SAKDebugPage;
+class SAKDebugger;
 class SAKOtherTransmissionPage;
 class SAKOtherTransmissionPageViewer:public QWidget
 {
     Q_OBJECT
 public:
-    SAKOtherTransmissionPageViewer(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
+    SAKOtherTransmissionPageViewer(SAKDebugger *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKOtherTransmissionPageViewer();
 private:
     QWidget *mSerialPortWidget;
     QWidget *mUdpWidget;
     QWidget *mTcpWidget;
-    SAKDebugPage *mDebugPage;
+    SAKDebugger *mDebugPage;
     Ui::SAKOtherTransmissionPageViewer *mUi;
 
     SAKOtherTransmissionPage *mUdpTransmission;

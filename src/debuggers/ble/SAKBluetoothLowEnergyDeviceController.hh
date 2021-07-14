@@ -23,7 +23,7 @@ namespace Ui {
     class SAKBluetoothLowEnergyDeviceController;
 }
 
-class SAKDebugPage;
+class SAKDebugger;
 class SAKBluetoothLowEnergyDeviceController:public SAKDebugPageController
 {
     Q_OBJECT
@@ -32,7 +32,7 @@ public:
         QBluetoothDeviceInfo deviceInfo;
     };
 
-    SAKBluetoothLowEnergyDeviceController(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
+    SAKBluetoothLowEnergyDeviceController(SAKDebugger *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKBluetoothLowEnergyDeviceController();
 
     QVariant parameters() final;

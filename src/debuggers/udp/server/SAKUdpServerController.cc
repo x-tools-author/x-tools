@@ -12,12 +12,12 @@
 #include <QMetaEnum>
 #include <QLineEdit>
 
-#include "SAKDebugPage.hh"
+#include "SAKDebugger.hh"
 #include "SAKCommonInterface.hh"
 #include "SAKUdpServerController.hh"
 #include "ui_SAKUdpServerController.h"
 
-SAKUdpServerController::SAKUdpServerController(SAKDebugPage *debugPage, QWidget *parent)
+SAKUdpServerController::SAKUdpServerController(SAKDebugger *debugPage, QWidget *parent)
     :SAKDebugPageController(debugPage, parent)
     ,mUi(new Ui::SAKUdpServerController)
 {

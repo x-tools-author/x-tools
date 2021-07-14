@@ -12,12 +12,12 @@
 #include <QMetaEnum>
 #include <QLineEdit>
 
-#include "SAKDebugPage.hh"
+#include "SAKDebugger.hh"
 #include "SAKCommonInterface.hh"
 #include "SAKBluetoothLowEnergyDeviceController.hh"
 #include "ui_SAKBluetoothLowEnergyDeviceController.h"
 
-SAKBluetoothLowEnergyDeviceController::SAKBluetoothLowEnergyDeviceController(SAKDebugPage *debugPage, QWidget *parent)
+SAKBluetoothLowEnergyDeviceController::SAKBluetoothLowEnergyDeviceController(SAKDebugger *debugPage, QWidget *parent)
     :SAKDebugPageController(debugPage, parent)
     ,mUi(new Ui::SAKBluetoothLowEnergyDeviceController)
 {

@@ -10,11 +10,11 @@
 #ifndef SAKTESTDEBUGPAGE_HH
 #define SAKTESTDEBUGPAGE_HH
 
-#include "SAKDebugPage.hh"
+#include "SAKDebugger.hh"
 
 class SAKTestDeviceController;
 // The debugging page is used by developer only.
-class SAKTestDebugPage : public SAKDebugPage
+class SAKTestDebugPage : public SAKDebugger
 {
     Q_OBJECT
 public:

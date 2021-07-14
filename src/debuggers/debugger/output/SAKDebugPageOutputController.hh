@@ -22,7 +22,7 @@
 #include <QTextBrowser>
 #include <QWaitCondition>
 
-class SAKDebugPage;
+class SAKDebugger;
 class SAKOutputLogDialog;
 class SAKOutputSave2FileDialog;
 class SAKOtherHighlighterManager;
@@ -31,7 +31,7 @@ class SAKDebugPageOutputController:public QThread
 {
     Q_OBJECT
 public:
-    SAKDebugPageOutputController(SAKDebugPage *mDebugPage, QObject *parent = Q_NULLPTR);
+    SAKDebugPageOutputController(SAKDebugger *mDebugPage, QObject *parent = Q_NULLPTR);
     ~SAKDebugPageOutputController();
     void outputLog(QString log, bool isInfo = true);
 
@@ -46,7 +46,7 @@ public:
 protected:
     void run() final;
 private:
-    SAKDebugPage *mDebugPage;
+    SAKDebugger *mDebugPage;
     QSettings *mSettings;
     SAKOutputSave2FileDialog *mSave2FileDialog;
     SAKOutputLogDialog *mSAKOutputLogDialog;

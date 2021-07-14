@@ -10,11 +10,11 @@
 #ifndef SAKUDPCLIENTDEBUGGER_HH
 #define SAKUDPCLIENTDEBUGGER_HH
 
-#include "SAKDebugPage.hh"
+#include "SAKDebugger.hh"
 
 class SAKUdpClientDevice;
 class SAKUdpClientController;
-class SAKUdpClientDebugger : public SAKDebugPage
+class SAKUdpClientDebugger : public SAKDebugger
 {
     Q_OBJECT
 public:

@@ -19,7 +19,7 @@
 #include <QJsonDocument>
 #include <QStandardPaths>
 
-#include "SAKDebugPage.hh"
+#include "SAKDebugger.hh"
 #include "SAKApplication.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKOtherAutoResponseItem.hh"
@@ -28,7 +28,7 @@
 
 #include "ui_SAKOtherAutoResponseItemManager.h"
 
-SAKOtherAutoResponseItemManager::SAKOtherAutoResponseItemManager(SAKDebugPage *debugPage, QWidget *parent)
+SAKOtherAutoResponseItemManager::SAKOtherAutoResponseItemManager(SAKDebugger *debugPage, QWidget *parent)
     :QWidget (parent)
     ,mDebugPage (debugPage)
     ,mUi (new Ui::SAKOtherAutoResponseItemManager)
@@ -56,7 +56,7 @@ SAKOtherAutoResponseItemManager::~SAKOtherAutoResponseItemManager()
     delete mUi;
 }
 
-SAKOtherAutoResponseItem *innerCreateItem(SAKDebugPageCommonDatabaseInterface::SAKStructAutoResponseItem &var, SAKDebugPage *debugPage, QListWidget *listWidget)
+SAKOtherAutoResponseItem *innerCreateItem(SAKDebugPageCommonDatabaseInterface::SAKStructAutoResponseItem &var, SAKDebugger *debugPage, QListWidget *listWidget)
 {
     QListWidgetItem *item = new QListWidgetItem(listWidget);
     listWidget->addItem(item);

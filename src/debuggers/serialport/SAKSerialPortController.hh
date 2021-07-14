@@ -22,7 +22,7 @@ namespace Ui {
     class SAKSerialPortController;
 }
 
-class SAKDebugPage;
+class SAKDebugger;
 class SAKSerialPortController : public SAKDebugPageController
 {
     Q_OBJECT
@@ -36,7 +36,7 @@ public:
         quint32 baudRate;
     };
 
-    SAKSerialPortController(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
+    SAKSerialPortController(SAKDebugger *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKSerialPortController();
 
     QVariant parameters() final;
@@ -45,7 +45,7 @@ public:
 private:
     QMutex mParametersMutex;
     SerialPortParameters mParameters;
-    SAKDebugPage *mDebugPage;
+    SAKDebugger *mDebugPage;
 private:
     void setBaudRate(quint32 bd);
 private:

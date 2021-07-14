@@ -12,7 +12,7 @@
 #include <QHostAddress>
 #include <QApplication>
 
-#include "SAKDebugPage.hh"
+#include "SAKDebugger.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKWebSocketServerDevice.hh"
 #include "SAKWebSocketServerDebugger.hh"

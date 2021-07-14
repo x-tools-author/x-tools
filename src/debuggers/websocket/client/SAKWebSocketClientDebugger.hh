@@ -10,12 +10,12 @@
 #ifndef SAKWEBSOCKETCLIENTDEBUGGER_HH
 #define SAKWEBSOCKETCLIENTDEBUGGER_HH
 
-#include "SAKDebugPage.hh"
+#include "SAKDebugger.hh"
 
 class SAKDebugPageController;
 class SAKWebSocketClientDevice;
 class SAKWebSocketClientController;
-class SAKWebSocketClientDebugger : public SAKDebugPage
+class SAKWebSocketClientDebugger : public SAKDebugger
 {
     Q_OBJECT
 public:

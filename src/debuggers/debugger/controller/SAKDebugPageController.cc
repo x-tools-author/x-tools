@@ -7,14 +7,14 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#include "SAKDebugPage.hh"
+#include "SAKDebugger.hh"
 #include "SAKDebugPageController.hh"
 
-SAKDebugPageController::SAKDebugPageController(SAKDebugPage *debugPage, QWidget *parent)
+SAKDebugPageController::SAKDebugPageController(SAKDebugger *debugPage, QWidget *parent)
     :QWidget(parent)
     ,mDebugPage(debugPage)
 {
-    connect(this, &SAKDebugPageController::messageChange, mDebugPage, &SAKDebugPage::outputMessage);
+    connect(this, &SAKDebugPageController::messageChange, mDebugPage, &SAKDebugger::outputMessage);
 }
 
 SAKDebugPageController::~SAKDebugPageController()

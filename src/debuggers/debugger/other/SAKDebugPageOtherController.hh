@@ -13,7 +13,7 @@
 #include <QObject>
 #include <QPushButton>
 
-class SAKDebugPage;
+class SAKDebugger;
 class SAKOtherTransmissionPageViewer;
 class SAKOtherHighlighterManager;
 class SAKOtherTimingSentItemManager;
@@ -25,7 +25,7 @@ class SAKDebugPageOtherController:public QObject
 {
     Q_OBJECT
 public:
-    SAKDebugPageOtherController(SAKDebugPage *debugPage, QObject *parent = Q_NULLPTR);
+    SAKDebugPageOtherController(SAKDebugger *debugPage, QObject *parent = Q_NULLPTR);
     ~SAKDebugPageOtherController();
 
     /**
@@ -34,7 +34,7 @@ public:
      */
     SAKOtherAnalyzerThreadManager *analyzerThreadManager();
 private:
-    SAKDebugPage *mDebugPage;
+    SAKDebugger *mDebugPage;
     QPushButton *moreSettingsPushButton;
     QPushButton *timingSendingPushButton;
     QPushButton *autoResponseSettingPushButton;

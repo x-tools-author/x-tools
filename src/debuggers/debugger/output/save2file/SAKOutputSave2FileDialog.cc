@@ -14,12 +14,12 @@
 #include <QFileDialog>
 #include <QStandardPaths>
 
-#include "SAKDebugPage.hh"
+#include "SAKDebugger.hh"
 #include "SAKOutputSave2FileThread.hh"
 #include "SAKOutputSave2FileDialog.hh"
 #include "ui_SAKOutputSave2FileDialog.h"
 
-SAKOutputSave2FileDialog::SAKOutputSave2FileDialog(SAKDebugPage *debugPage, QWidget *parent)
+SAKOutputSave2FileDialog::SAKOutputSave2FileDialog(SAKDebugger *debugPage, QWidget *parent)
     :QDialog(parent)
     ,mSettings(Q_NULLPTR)
     ,mDebugPage(debugPage)

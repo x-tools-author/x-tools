@@ -21,7 +21,7 @@ namespace Ui {
     class SAKTestDeviceController;
 }
 
-class SAKDebugPage;
+class SAKDebugger;
 class SAKTestDeviceController:public SAKDebugPageController
 {
     Q_OBJECT
@@ -35,7 +35,7 @@ public:
         QString errorString;
     };
 
-    SAKTestDeviceController(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
+    SAKTestDeviceController(SAKDebugger *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKTestDeviceController();
 
     QVariant parameters() final;

@@ -16,7 +16,7 @@
 #include "SAKDebugPageDevice.hh"
 #include "SAKDebugPageDeviceMask.hh"
 
-SAKDebugPageDevice::SAKDebugPageDevice(SAKDebugPage *debugPage, QObject *parent)
+SAKDebugPageDevice::SAKDebugPageDevice(SAKDebugger *debugPage, QObject *parent)
     :QThread(parent)
     ,mDebugPage(debugPage)
 {

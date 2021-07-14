@@ -15,14 +15,14 @@
 Q_DECLARE_METATYPE(QSerialPortInfo)
 #endif
 
-#include "SAKDebugPage.hh"
+#include "SAKDebugger.hh"
 #include "SAKCommonInterface.hh"
 #include "SAKOtherTransmissionItem.hh"
 #include "SAKOtherTransmissionItemCom.hh"
 
 #include "ui_SAKOtherTransmissionItemCom.h"
 
-SAKOtherTransmissionItemCom::SAKOtherTransmissionItemCom(SAKDebugPage *_debugPage, QWidget *parent)
+SAKOtherTransmissionItemCom::SAKOtherTransmissionItemCom(SAKDebugger *_debugPage, QWidget *parent)
     :SAKOtherTransmissionItem (_debugPage, parent)
 #ifdef SAK_IMPORT_MODULE_SERIALPORT
     ,mUi (new Ui::SAKOtherTransmissionItemCom)

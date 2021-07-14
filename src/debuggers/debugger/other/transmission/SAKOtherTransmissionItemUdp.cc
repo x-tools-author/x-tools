@@ -7,12 +7,12 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#include "SAKDebugPage.hh"
+#include "SAKDebugger.hh"
 #include "SAKCommonInterface.hh"
 #include "SAKOtherTransmissionItemUdp.hh"
 #include "ui_SAKOtherTransmissionItemUdp.h"
 
-SAKOtherTransmissionItemUdp::SAKOtherTransmissionItemUdp(SAKDebugPage *debugPage, QWidget *parent)
+SAKOtherTransmissionItemUdp::SAKOtherTransmissionItemUdp(SAKDebugger *debugPage, QWidget *parent)
     :SAKOtherTransmissionItem (debugPage, parent)
     ,mUi(new Ui::SAKOtherTransmissionItemUdp)
     ,mUdpSocket (Q_NULLPTR)

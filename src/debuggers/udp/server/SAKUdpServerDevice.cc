@@ -12,7 +12,7 @@
 #include <QHostAddress>
 #include <QApplication>
 
-#include "SAKDebugPage.hh"
+#include "SAKDebugger.hh"
 #include "SAKUdpServerDevice.hh"
 #include "SAKUdpServerDebugger.hh"
 #include "SAKUdpServerController.hh"

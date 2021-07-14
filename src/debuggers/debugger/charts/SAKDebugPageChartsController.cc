@@ -7,14 +7,14 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#include "SAKDebugPage.hh"
+#include "SAKDebugger.hh"
 #include "SAKDebugPageChartsController.hh"
 #include "SAKChartsXYSerialWidget.hh"
 #include "SAKChartsThroughputWidget.hh"
 
 #include "ui_SAKDebugPageChartsController.h"
 
-SAKDebugPageChartsController::SAKDebugPageChartsController(SAKDebugPage *page, QWidget *parent)
+SAKDebugPageChartsController::SAKDebugPageChartsController(SAKDebugger *page, QWidget *parent)
     :QWidget (parent)
     ,mDebugPage (page)
     ,mUi (new Ui::SAKDebugPageChartsController)
@@ -28,7 +28,7 @@ SAKDebugPageChartsController::SAKDebugPageChartsController(SAKDebugPage *page, Q
 #endif
 
     mXYSerialWidget = new SAKChartsXYSerialWidget;
-    connect(mDebugPage, &SAKDebugPage::bytesRead, mXYSerialWidget, &SAKChartsXYSerialWidget::inputBytes);
+    connect(mDebugPage, &SAKDebugger::bytesRead, mXYSerialWidget, &SAKChartsXYSerialWidget::inputBytes);
     mTabWidget->addTab(mXYSerialWidget, tr("XY serial"));
 
     mThroughputWidget = new SAKChartsThroughputWidget(mDebugPage);

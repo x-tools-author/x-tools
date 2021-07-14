@@ -13,19 +13,19 @@
 #include <QWidget>
 #include <QIODevice>
 
-class SAKDebugPage;
+class SAKDebugger;
 /// @brief base transmission item
 class SAKOtherTransmissionItem:public QWidget
 {
     Q_OBJECT
 public:
-    SAKOtherTransmissionItem(SAKDebugPage *debugPage, QWidget *parent);
+    SAKOtherTransmissionItem(SAKDebugger *debugPage, QWidget *parent);
     virtual void write(QByteArray data);
 signals:
     void bytesRead(QByteArray data);
     void requestOutputMessage(QString info, bool isInfo = true);
 protected:
-    SAKDebugPage *mDebugPage;
+    SAKDebugger *mDebugPage;
     void outputMessage();
 };
 

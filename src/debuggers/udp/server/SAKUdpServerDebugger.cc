@@ -17,7 +17,7 @@
 #include "SAKUdpServerController.hh"
 
 SAKUdpServerDebugger::SAKUdpServerDebugger(int type, QString name, QWidget *parent)
-    :SAKDebugPage(type, name, parent)
+    :SAKDebugger(type, name, parent)
 {
     mDeviceController = new SAKUdpServerController(this);
     mDevice = new SAKUdpServerDevice(this, this);

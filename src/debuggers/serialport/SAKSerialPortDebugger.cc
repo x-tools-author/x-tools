@@ -17,7 +17,7 @@
 #include "SAKSerialPortController.hh"
 
 SAKSerialPortDebugger::SAKSerialPortDebugger(int type, QString name, QWidget *parent)
-    :SAKDebugPage(type, name, parent)
+    :SAKDebugger(type, name, parent)
 {
     mDeviceController = new SAKSerialPortController(this);
     mDevice = new SAKSerialPortDevice(this, this);

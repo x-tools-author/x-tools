@@ -7,15 +7,15 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#include "SAKDebugPage.hh"
+#include "SAKDebugger.hh"
 #include "SAKOtherTransmissionItem.hh"
 
-SAKOtherTransmissionItem::SAKOtherTransmissionItem(SAKDebugPage *debugPage, QWidget *parent)
+SAKOtherTransmissionItem::SAKOtherTransmissionItem(SAKDebugger *debugPage, QWidget *parent)
     :QWidget(parent)
     ,mDebugPage(debugPage)
 {
-    connect(mDebugPage, &SAKDebugPage::bytesRead, this, &SAKOtherTransmissionItem::write);
-    connect(this, &SAKOtherTransmissionItem::bytesRead, mDebugPage, &SAKDebugPage::write);
+    connect(mDebugPage, &SAKDebugger::bytesRead, this, &SAKOtherTransmissionItem::write);
+    connect(this, &SAKOtherTransmissionItem::bytesRead, mDebugPage, &SAKDebugger::write);
 }
 
 void SAKOtherTransmissionItem::write(QByteArray data)

@@ -23,7 +23,7 @@ namespace Ui {
     class SAKUdpServerController;
 }
 
-class SAKDebugPage;
+class SAKDebugger;
 /// @brief Udp server control panel
 class SAKUdpServerController:public SAKDebugPageController
 {
@@ -38,7 +38,7 @@ public:
         QStringList clients;
     };
 
-    SAKUdpServerController(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
+    SAKUdpServerController(SAKDebugger *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKUdpServerController();
 
     QVariant parameters() final;

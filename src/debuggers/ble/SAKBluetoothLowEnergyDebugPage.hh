@@ -10,10 +10,10 @@
 #ifndef SAKBLUETOOTHLOWENERGYTDEBUGPAGE_HH
 #define SAKBLUETOOTHLOWENERGYTDEBUGPAGE_HH
 
-#include "SAKDebugPage.hh"
+#include "SAKDebugger.hh"
 
 class SAKBluetoothLowEnergyDeviceController;
-class SAKBluetoothLowEnergyDebugPage : public SAKDebugPage
+class SAKBluetoothLowEnergyDebugPage : public SAKDebugger
 {
     Q_OBJECT
 public:

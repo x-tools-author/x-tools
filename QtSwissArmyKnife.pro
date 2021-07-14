@@ -167,7 +167,7 @@ HEADERS += \
     src/common/SAKCommonCrcInterface.hh \
     src/common/SAKCommonDataStructure.hh \
     src/common/SAKCommonInterface.hh \
-    src/debuggers/debugger/SAKDebugPage.hh \
+    src/debuggers/debugger/SAKDebugger.hh \
     src/debuggers/debugger/common/SAKDebugPageCommonDatabaseInterface.hh \
     src/debuggers/debugger/common/SAKDebugPageCommonSslConfigurationWidget.hh \
     src/debuggers/debugger/controller/SAKDebugPageController.hh \
@@ -210,7 +210,7 @@ SOURCES += \
     src/common/SAKCommonCrcInterface.cc \
     src/common/SAKCommonDataStructure.cc \
     src/common/SAKCommonInterface.cc \
-    src/debuggers/debugger/SAKDebugPage.cc \
+    src/debuggers/debugger/SAKDebugger.cc \
     src/debuggers/debugger/common/SAKDebugPageCommonDatabaseInterface.cc \
     src/debuggers/debugger/common/SAKDebugPageCommonSslConfigurationWidget.cc \
     src/debuggers/debugger/controller/SAKDebugPageController.cc \

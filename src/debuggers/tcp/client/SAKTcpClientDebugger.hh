@@ -10,10 +10,10 @@
 #ifndef SAKTCPCLIENTDEBUGGER_HH
 #define SAKTCPCLIENTDEBUGGER_HH
 
-#include "SAKDebugPage.hh"
+#include "SAKDebugger.hh"
 
 class SAKTcpClientController;
-class SAKTcpClientDebugger : public SAKDebugPage
+class SAKTcpClientDebugger : public SAKDebugger
 {
     Q_OBJECT
 public:

@@ -18,12 +18,12 @@ namespace  Ui{
     class SAKDebugPageDeviceMask;
 }
 
-class SAKDebugPage;
+class SAKDebugger;
 class SAKDebugPageDeviceMask : public QWidget
 {
     Q_OBJECT
 public:
-    explicit SAKDebugPageDeviceMask(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
+    explicit SAKDebugPageDeviceMask(SAKDebugger *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKDebugPageDeviceMask();
 
     struct ParametersContext{
@@ -33,7 +33,7 @@ public:
     };
     ParametersContext parametersContext();
 private:
-    SAKDebugPage *mDebugPage;
+    SAKDebugger *mDebugPage;
     ParametersContext mParametersContext;
     QMutex mParametersContextMutex;
     QSettings *mSettings;

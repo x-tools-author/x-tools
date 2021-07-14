@@ -15,7 +15,7 @@
 #include "SAKTestDeviceController.hh"
 #include "ui_SAKTestDeviceController.h"
 
-SAKTestDeviceController::SAKTestDeviceController(SAKDebugPage *debugPage, QWidget *parent)
+SAKTestDeviceController::SAKTestDeviceController(SAKDebugger *debugPage, QWidget *parent)
     :SAKDebugPageController(debugPage, parent)
     ,mUi(new Ui::SAKTestDeviceController)
 {

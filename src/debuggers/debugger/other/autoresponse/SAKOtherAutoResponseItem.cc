@@ -12,14 +12,14 @@
 #include <QRegularExpression>
 #include <QRegularExpressionValidator>
 
-#include "SAKDebugPage.hh"
+#include "SAKDebugger.hh"
 #include "SAKCommonInterface.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKOtherAutoResponseItem.hh"
 
 #include "ui_SAKOtherAutoResponseItem.h"
 
-SAKOtherAutoResponseItem::SAKOtherAutoResponseItem(SAKDebugPage *debugPage, QWidget *parent)
+SAKOtherAutoResponseItem::SAKOtherAutoResponseItem(SAKDebugger *debugPage, QWidget *parent)
     :QWidget(parent)
     ,mForbiddenAllAutoResponse(false)
     ,mDebugPage(debugPage)
@@ -32,7 +32,7 @@ SAKOtherAutoResponseItem::SAKOtherAutoResponseItem(SAKDebugPage *debugPage, QWid
     initDelayWritingTimer();
 }
 
-SAKOtherAutoResponseItem::SAKOtherAutoResponseItem(SAKDebugPage *debugPage,
+SAKOtherAutoResponseItem::SAKOtherAutoResponseItem(SAKDebugger *debugPage,
                                                    quint64 id,
                                                    QString name,
                                                    QString referenceData,
@@ -247,7 +247,7 @@ void SAKOtherAutoResponseItem::commonInitializing()
     SAKCommonDataStructure::setComboBoxTextInputFormat(mReferenceDataFromatComboBox);
     SAKCommonDataStructure::setComboBoxTextInputFormat(mResponseDataFormatComboBox);
 
-    connect(mDebugPage, &SAKDebugPage::bytesRead, this, &SAKOtherAutoResponseItem::bytesRead);
+    connect(mDebugPage, &SAKDebugger::bytesRead, this, &SAKOtherAutoResponseItem::bytesRead);
 }
 
 void SAKOtherAutoResponseItem::initDelayWritingTimer()

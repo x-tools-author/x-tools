@@ -9,13 +9,13 @@
  */
 #include <QHBoxLayout>
 
-#include "SAKDebugPage.hh"
+#include "SAKDebugger.hh"
 #include "SAKOtherTransmissionPage.hh"
 #include "SAKOtherTransmissionPageViewer.hh"
 
 #include "ui_SAKOtherTransmissionPageViewer.h"
 
-SAKOtherTransmissionPageViewer::SAKOtherTransmissionPageViewer(SAKDebugPage *debugPage, QWidget *parent)
+SAKOtherTransmissionPageViewer::SAKOtherTransmissionPageViewer(SAKDebugger *debugPage, QWidget *parent)
     :QWidget(parent)
     ,mDebugPage (debugPage)
     ,mUi (new Ui::SAKOtherTransmissionPageViewer)

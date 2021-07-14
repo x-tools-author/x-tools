@@ -21,7 +21,7 @@ namespace Ui {
     class SAKTcpClientController;
 }
 
-class SAKDebugPage;
+class SAKDebugger;
 class SAKTcpClientController:public SAKDebugPageController
 {
     Q_OBJECT
@@ -35,7 +35,7 @@ public:
         bool allowAutomaticConnection;
     };
 
-    SAKTcpClientController(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
+    SAKTcpClientController(SAKDebugger *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKTcpClientController();
 
     QVariant parameters() final;

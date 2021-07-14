@@ -18,7 +18,7 @@
 
 #include "ui_SAKOtherTransmissionPage.h"
 
-SAKOtherTransmissionPage::SAKOtherTransmissionPage(SAKDebugPage *debugPage, QWidget *parent)
+SAKOtherTransmissionPage::SAKOtherTransmissionPage(SAKDebugger *debugPage, QWidget *parent)
     :QWidget (parent)
     ,mDebugPage (debugPage)
     ,mUi (new Ui::SAKOtherTransmissionPage)

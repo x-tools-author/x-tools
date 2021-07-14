@@ -23,7 +23,7 @@ namespace Ui {
     class SAKTcpServerController;
 }
 
-class SAKDebugPage;
+class SAKDebugger;
 class SAKTcpServerController:public SAKDebugPageController
 {
     Q_OBJECT
@@ -35,7 +35,7 @@ public:
         quint16 currentClientPort;
     };
 
-    SAKTcpServerController(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
+    SAKTcpServerController(SAKDebugger *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKTcpServerController();
 
     QVariant parameters() final;

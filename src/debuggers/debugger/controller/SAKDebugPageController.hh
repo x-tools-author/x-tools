@@ -12,13 +12,13 @@
 
 #include <QWidget>
 
-class SAKDebugPage;
+class SAKDebugger;
 /// @brief Device controller
 class SAKDebugPageController:public QWidget
 {
     Q_OBJECT
 public:
-    SAKDebugPageController(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
+    SAKDebugPageController(SAKDebugger *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKDebugPageController();
 
     /**
@@ -39,7 +39,7 @@ public:
      */
     virtual void refreshDevice();
 protected:
-    SAKDebugPage *mDebugPage;
+    SAKDebugger *mDebugPage;
 signals:
     void messageChange(QString msg, bool isInfo);
 };

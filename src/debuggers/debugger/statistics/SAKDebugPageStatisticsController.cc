@@ -9,10 +9,10 @@
  */
 #include <QTimer>
 
-#include "SAKDebugPage.hh"
+#include "SAKDebugger.hh"
 #include "SAKDebugPageStatisticsController.hh"
 
-SAKDebugPageStatisticsController::SAKDebugPageStatisticsController(SAKDebugPage *debugPage, QObject *parent)
+SAKDebugPageStatisticsController::SAKDebugPageStatisticsController(SAKDebugger *debugPage, QObject *parent)
     :QObject(parent)
     ,mDebugPage(debugPage)
 {
@@ -36,8 +36,8 @@ SAKDebugPageStatisticsController::SAKDebugPageStatisticsController(SAKDebugPage 
         mResetRxCountPushButton = mDebugPage->mResetRxCountPushButton;
 
         // emmm...
-        connect(debugPage, &SAKDebugPage::bytesRead, this, &SAKDebugPageStatisticsController::bytesRead);
-        connect(debugPage, &SAKDebugPage::bytesWritten, this, &SAKDebugPageStatisticsController::bytesWritten);
+        connect(debugPage, &SAKDebugger::bytesRead, this, &SAKDebugPageStatisticsController::bytesRead);
+        connect(debugPage, &SAKDebugger::bytesWritten, this, &SAKDebugPageStatisticsController::bytesWritten);
         connect(mResetRxCountPushButton, &QPushButton::clicked, this, &SAKDebugPageStatisticsController::clearRxStatistics);
         connect(mResetTxCountPushButton, &QPushButton::clicked, this, &SAKDebugPageStatisticsController::clearTxStatistics);
 

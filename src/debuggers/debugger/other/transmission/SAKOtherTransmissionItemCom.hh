@@ -27,12 +27,12 @@ namespace Ui {
     class SAKOtherTransmissionItemCom;
 }
 
-class SAKDebugPage;
+class SAKDebugger;
 class SAKOtherTransmissionItemCom:public SAKOtherTransmissionItem
 {
     Q_OBJECT
 public:
-    SAKOtherTransmissionItemCom(SAKDebugPage *_debugPage, QWidget *parent = Q_NULLPTR);
+    SAKOtherTransmissionItemCom(SAKDebugger *_debugPage, QWidget *parent = Q_NULLPTR);
 
 #ifdef SAK_IMPORT_MODULE_SERIALPORT
      ~SAKOtherTransmissionItemCom();

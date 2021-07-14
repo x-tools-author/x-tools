@@ -20,12 +20,12 @@
 QT_CHARTS_USE_NAMESPACE
 #endif
 
-class SAKDebugPage;
+class SAKDebugger;
 class SAKChartsThroughputWidget:public QWidget
 {
     Q_OBJECT
 public:
-    SAKChartsThroughputWidget(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
+    SAKChartsThroughputWidget(SAKDebugger *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKChartsThroughputWidget();
 private:
     struct DataContext {
@@ -35,7 +35,7 @@ private:
         qreal txMax;
     }dataContext;
 
-    SAKDebugPage *debugPage;
+    SAKDebugger *debugPage;
 
     QLineSeries *rxLineSeries;
     QLineSeries *txLineSeries;

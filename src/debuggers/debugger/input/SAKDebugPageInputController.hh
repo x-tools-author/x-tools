@@ -22,7 +22,7 @@
 #include <QListWidget>
 #include <QWaitCondition>
 
-class SAKDebugPage;
+class SAKDebugger;
 class SAKCommonCrcInterface;
 class SAKInputDataFactory;
 class SAKInputDataPresetItem;
@@ -33,7 +33,7 @@ class SAKDebugPageInputController:public QObject
 {
     Q_OBJECT
 public:
-    SAKDebugPageInputController(SAKDebugPage *mDebugPage, QObject *parent = Q_NULLPTR);
+    SAKDebugPageInputController(SAKDebugger *mDebugPage, QObject *parent = Q_NULLPTR);
     ~SAKDebugPageInputController();
 
     struct InputParametersContext {
@@ -60,7 +60,7 @@ public:
 private:
     QMenu *mWriteDataItemMenu;
 private:
-    SAKDebugPage *mDebugPage;
+    SAKDebugger *mDebugPage;
     QComboBox *mCyclingTimeComboBox;
     QComboBox *mInputModelComboBox;
     QPushButton *mMoreInputSettingsPushButton;

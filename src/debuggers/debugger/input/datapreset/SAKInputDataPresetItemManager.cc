@@ -15,7 +15,7 @@
 #include <QStandardPaths>
 #include <QListWidgetItem>
 
-#include "SAKDebugPage.hh"
+#include "SAKDebugger.hh"
 #include "SAKApplication.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKCommonCrcInterface.hh"
@@ -26,7 +26,7 @@
 
 #include "ui_SAKInputDataPresetItemManager.h"
 
-SAKInputDataPresetItemManager::SAKInputDataPresetItemManager(SAKDebugPage *debugPage, QWidget *parent)
+SAKInputDataPresetItemManager::SAKInputDataPresetItemManager(SAKDebugger *debugPage, QWidget *parent)
     :QWidget(parent)
     ,mDebugPage(debugPage)
     ,mUi(new Ui::SAKInputDataPresetItemManager)

@@ -13,12 +13,12 @@
 #include <QLineEdit>
 #include <QSerialPortInfo>
 
-#include "SAKDebugPage.hh"
+#include "SAKDebugger.hh"
 #include "SAKCommonInterface.hh"
 #include "SAKSerialPortController.hh"
 #include "ui_SAKSerialPortController.h"
 
-SAKSerialPortController::SAKSerialPortController(SAKDebugPage *debugPage, QWidget *parent)
+SAKSerialPortController::SAKSerialPortController(SAKDebugger *debugPage, QWidget *parent)
     :SAKDebugPageController(debugPage, parent)
     ,mDebugPage(debugPage)
     ,ui(new Ui::SAKSerialPortController)

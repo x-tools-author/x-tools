@@ -19,12 +19,12 @@ namespace Ui {
     class SAKOtherTransmissionPage;
 }
 
-class SAKDebugPage;
+class SAKDebugger;
 class SAKOtherTransmissionPage:public QWidget
 {
     Q_OBJECT
 public:
-    SAKOtherTransmissionPage(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
+    SAKOtherTransmissionPage(SAKDebugger *debugPage, QWidget *parent = Q_NULLPTR);
     ~SAKOtherTransmissionPage();
 
     enum TransmissionType {
@@ -42,7 +42,7 @@ private:
     QListWidget *mListWidget;
     QLabel*mInfoLabel;
 
-    SAKDebugPage *mDebugPage;
+    SAKDebugger *mDebugPage;
     Ui::SAKOtherTransmissionPage *mUi;
 
     int mTransmissionType;

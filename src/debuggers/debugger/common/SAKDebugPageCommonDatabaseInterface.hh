@@ -16,16 +16,16 @@
 
 #include "SAKCommonDataStructure.hh"
 
-class SAKDebugPage;
+class SAKDebugger;
 /// @brief If Qt has sql module, some parameters will be written to database
 class SAKDebugPageCommonDatabaseInterface : public QObject
 {
     Q_OBJECT
 public:
-    SAKDebugPageCommonDatabaseInterface(SAKDebugPage *debugPage, QSqlDatabase *sqlDatabase, QObject *parent = Q_NULLPTR);
+    SAKDebugPageCommonDatabaseInterface(SAKDebugger *debugPage, QSqlDatabase *sqlDatabase, QObject *parent = Q_NULLPTR);
     ~SAKDebugPageCommonDatabaseInterface();
 
-    friend SAKDebugPage;
+    friend SAKDebugger;
     static SAKDebugPageCommonDatabaseInterface *instance();
 
     /// @brief Auto response item record
@@ -180,7 +180,7 @@ public:
 private:
     QSqlDatabase *mSqlDatabase;
     QSqlQuery mSqlQuery;
-    SAKDebugPage *mDebugPage;
+    SAKDebugger *mDebugPage;
     QString mTableNameAutoResponseTable;
     QString mTableNameTimingSendingTable;
     QString mTableNamePresettingDataTable;

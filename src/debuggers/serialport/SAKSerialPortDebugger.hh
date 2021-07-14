@@ -10,12 +10,12 @@
 #ifndef SAKSERIALPORTDEFBUGGER_HH
 #define SAKSERIALPORTDEFBUGGER_HH
 
-#include "SAKDebugPage.hh"
+#include "SAKDebugger.hh"
 
 class SAKDebugPageDevice;
 class SAKDebugPageController;
 class SAKSerialPortController;
-class SAKSerialPortDebugger : public SAKDebugPage
+class SAKSerialPortDebugger : public SAKDebugger
 {
     Q_OBJECT
 public:

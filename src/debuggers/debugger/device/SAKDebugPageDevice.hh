@@ -14,13 +14,13 @@
 #include <QWaitCondition>
 
 /// @brief device abstract class
-class SAKDebugPage;
+class SAKDebugger;
 class SAKDebugPageDeviceMask;
 class SAKDebugPageDevice:public QThread
 {
     Q_OBJECT
 public:
-    SAKDebugPageDevice(SAKDebugPage *debugPage, QObject *parent = Q_NULLPTR);
+    SAKDebugPageDevice(SAKDebugger *debugPage, QObject *parent = Q_NULLPTR);
     ~SAKDebugPageDevice();
 
     /**
@@ -42,7 +42,7 @@ public:
 protected:
     QMutex mThreadMutex;
     QWaitCondition mThreadWaitCondition;
-    SAKDebugPage *mDebugPage;
+    SAKDebugger *mDebugPage;
     SAKDebugPageDeviceMask *mDeviceMask;
 protected:
     QByteArray takeWaitingForWrittingBytes();

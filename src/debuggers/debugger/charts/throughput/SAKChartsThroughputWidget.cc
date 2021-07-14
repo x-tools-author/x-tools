@@ -10,10 +10,10 @@
 #include <QValueAxis>
 #include <QHBoxLayout>
 
-#include "SAKDebugPage.hh"
+#include "SAKDebugger.hh"
 #include "SAKChartsThroughputWidget.hh"
 
-SAKChartsThroughputWidget::SAKChartsThroughputWidget(SAKDebugPage *debugPage, QWidget *parent)
+SAKChartsThroughputWidget::SAKChartsThroughputWidget(SAKDebugger *debugPage, QWidget *parent)
     :QWidget (parent)
     ,debugPage (debugPage)
 {
@@ -55,8 +55,8 @@ SAKChartsThroughputWidget::SAKChartsThroughputWidget(SAKDebugPage *debugPage, QW
     connect(&updateTimer, &QTimer::timeout, this, &SAKChartsThroughputWidget::updateTimerTimeout);
     updateTimer.start();
 
-    connect(debugPage, &SAKDebugPage::bytesRead, this, &SAKChartsThroughputWidget::dataRead);
-    connect(debugPage, &SAKDebugPage::bytesWritten, this, &SAKChartsThroughputWidget::dataWite);
+    connect(debugPage, &SAKDebugger::bytesRead, this, &SAKChartsThroughputWidget::dataRead);
+    connect(debugPage, &SAKDebugger::bytesWritten, this, &SAKChartsThroughputWidget::dataWite);
 }
 
 SAKChartsThroughputWidget::~SAKChartsThroughputWidget()

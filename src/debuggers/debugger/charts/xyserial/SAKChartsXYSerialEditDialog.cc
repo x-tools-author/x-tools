@@ -10,7 +10,7 @@
 #include <QColorDialog>
 #include <QMapIterator>
 
-#include "SAKDebugPage.hh"
+#include "SAKDebugger.hh"
 #include "SAKChartsXYSerialEditDialog.hh"
 
 #include "ui_SAKChartsXYSerialEditDialog.h"

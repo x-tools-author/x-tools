@@ -14,14 +14,14 @@
 #include <QTextStream>
 #include <QFileDialog>
 
-#include "SAKDebugPage.hh"
+#include "SAKDebugger.hh"
 #include "SAKOutputLogDialog.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKOutputSave2FileDialog.hh"
 #include "SAKOtherHighlighterManager.hh"
 #include "SAKDebugPageOutputController.hh"
 
-SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugPage *debugPage, QObject *parent)
+SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugger *debugPage, QObject *parent)
     :QThread(parent)
     ,mDebugPage(debugPage)
     ,mSettings(Q_NULLPTR)
@@ -76,8 +76,8 @@ SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugPage *debugPa
     connect(mRawDataCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::onRawDataCheckBoxClicked);
 
     // Input data
-    connect(debugPage, &SAKDebugPage::bytesRead, this, &SAKDebugPageOutputController::bytesRead);
-    connect(debugPage, &SAKDebugPage::bytesWritten, this, &SAKDebugPageOutputController::bytesWritten);
+    connect(debugPage, &SAKDebugger::bytesRead, this, &SAKDebugPageOutputController::bytesRead);
+    connect(debugPage, &SAKDebugger::bytesWritten, this, &SAKDebugPageOutputController::bytesWritten);
 
     // Output data
     connect(this, &SAKDebugPageOutputController::dataCooked, this, &SAKDebugPageOutputController::outputData);
@@ -223,11 +223,11 @@ void SAKDebugPageOutputController::saveOutputDataSettings()
 void SAKDebugPageOutputController::saveOutputDataToFile()
 {
     if (mSaveOutputToFileCheckBox->isChecked()){
-        connect(mDebugPage, &SAKDebugPage::bytesRead, mSave2FileDialog, &SAKOutputSave2FileDialog::bytesRead);
-        connect(mDebugPage, &SAKDebugPage::bytesWritten, mSave2FileDialog, &SAKOutputSave2FileDialog::bytesWritten);
+        connect(mDebugPage, &SAKDebugger::bytesRead, mSave2FileDialog, &SAKOutputSave2FileDialog::bytesRead);
+        connect(mDebugPage, &SAKDebugger::bytesWritten, mSave2FileDialog, &SAKOutputSave2FileDialog::bytesWritten);
     }else{
-        disconnect(mDebugPage, &SAKDebugPage::bytesRead, mSave2FileDialog, &SAKOutputSave2FileDialog::bytesRead);
-        disconnect(mDebugPage, &SAKDebugPage::bytesWritten, mSave2FileDialog, &SAKOutputSave2FileDialog::bytesWritten);
+        disconnect(mDebugPage, &SAKDebugger::bytesRead, mSave2FileDialog, &SAKOutputSave2FileDialog::bytesRead);
+        disconnect(mDebugPage, &SAKDebugger::bytesWritten, mSave2FileDialog, &SAKOutputSave2FileDialog::bytesWritten);
     }
 }
 

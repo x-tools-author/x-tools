@@ -17,17 +17,17 @@ namespace Ui {
     class SAKDebugPageChartsController;
 };
 
-class SAKDebugPage;
+class SAKDebugger;
 class SAKChartsXYSerialWidget;
 class SAKChartsThroughputWidget;
 class SAKDebugPageChartsController:public QWidget
 {
     Q_OBJECT
 public:
-    SAKDebugPageChartsController(SAKDebugPage *page, QWidget *parent = Q_NULLPTR);
+    SAKDebugPageChartsController(SAKDebugger *page, QWidget *parent = Q_NULLPTR);
     ~SAKDebugPageChartsController();
 private:
-    SAKDebugPage *mDebugPage;
+    SAKDebugger *mDebugPage;
     SAKChartsXYSerialWidget *mXYSerialWidget;
     SAKChartsThroughputWidget *mThroughputWidget;
 private:

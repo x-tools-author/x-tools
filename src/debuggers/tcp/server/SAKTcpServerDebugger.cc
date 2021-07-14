@@ -17,7 +17,7 @@
 #include "SAKTcpServerController.hh"
 
 SAKTcpServerDebugger::SAKTcpServerDebugger(int type, QString name, QWidget *parent)
-    :SAKDebugPage (type, name, parent)
+    :SAKDebugger (type, name, parent)
 {
     mDeviceController = new SAKTcpServerController(this);
     mDevice = new SAKTcpServerDevice(this, this);

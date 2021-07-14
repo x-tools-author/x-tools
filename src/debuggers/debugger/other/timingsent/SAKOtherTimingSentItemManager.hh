@@ -23,7 +23,7 @@ namespace Ui {
     class SAKOtherTimingSentItemManager;
 }
 
-class SAKDebugPage;
+class SAKDebugger;
 class SAKOtherTimingSentItem;
 class SAKDebugPageCommonDatabaseInterface;
 /// @brief Timing sent item manager
@@ -31,7 +31,7 @@ class SAKOtherTimingSentItemManager:public QWidget
 {
     Q_OBJECT
 public:
-    SAKOtherTimingSentItemManager(SAKDebugPage *mDebugPage, QWidget *parent = Q_NULLPTR);
+    SAKOtherTimingSentItemManager(SAKDebugger *mDebugPage, QWidget *parent = Q_NULLPTR);
     ~SAKOtherTimingSentItemManager();
 
     struct TimingSendingItemKey {
@@ -42,7 +42,7 @@ public:
         const QString text = QString("text");
     };
 private:
-    SAKDebugPage *mDebugPage;
+    SAKDebugger *mDebugPage;
     QString mTableName;
     QTimer mClearMessageTimer;
     SAKDebugPageCommonDatabaseInterface *mDatabaseInterface;
