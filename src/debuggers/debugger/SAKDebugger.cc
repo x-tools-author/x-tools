@@ -54,7 +54,7 @@ SAKDebugger::SAKDebugger(int type, QString name, QWidget *parent)
     ,mIsInitializing(true)
     ,mDebugPageType(type)
     ,mSettingGroup(name)
-    ,mUi(new Ui::SAKDebugPage)
+    ,mUi(new Ui::SAKDebugger)
 {
     mUi->setupUi(this);
     auto html = mUi->outputTextBroswer->toHtml();

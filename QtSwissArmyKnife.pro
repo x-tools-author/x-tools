@@ -48,7 +48,6 @@ exists($$PWD/SAKCustomConfigure.pri){
 include(SAKSetup.pri)
 include(src/tools/SAKTools.pri)
 include(SAKCommon.pri)
-include(SAKCharts.pri)
 include(src/modbus/SAKModbus.pri)
 include(src/debuggers/SAKDebuggers.pri)
 

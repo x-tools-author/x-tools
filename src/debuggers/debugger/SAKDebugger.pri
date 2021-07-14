@@ -1,3 +1,5 @@
+include($$PWD/charts/SAKCharts.pri)
+
 INCLUDEPATH += \
     $$PWD \
     $$PWD/common \
