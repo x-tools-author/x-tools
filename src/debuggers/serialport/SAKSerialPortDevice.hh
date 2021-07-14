@@ -16,13 +16,13 @@
 
 #include "SAKDebugPageDevice.hh"
 
-class SAKSerialPortDebugPage;
-class SAKSerialPortDeviceController;
+class SAKSerialPortDebugger;
+class SAKSerialPortController;
 class SAKSerialPortDevice:public SAKDebugPageDevice
 {
     Q_OBJECT
 public:
-    SAKSerialPortDevice(SAKSerialPortDebugPage *debugPage, QObject *parent = Q_NULLPTR);
+    SAKSerialPortDevice(SAKSerialPortDebugger *debugPage, QObject *parent = Q_NULLPTR);
 
     bool initializing(QString &errorString) final;
     bool open(QString &errorString) final;
@@ -32,7 +32,7 @@ public:
     void free() final;
 private:
     QSerialPort *mSerialPort;
-    SAKSerialPortDebugPage *mDebugPage;
+    SAKSerialPortDebugger *mDebugPage;
 };
 
 #endif

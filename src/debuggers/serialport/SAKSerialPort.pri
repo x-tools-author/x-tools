@@ -8,14 +8,14 @@ contains(DEFINES, SAK_IMPORT_MODULE_SERIALPORT){
         $$PWD/SAKSerialPortDeviceController.ui
 
     HEADERS += \
-        $$PWD/SAKSerialPortDebugPage.hh \
-        $$PWD/SAKSerialPortDevice.hh \
-        $$PWD/SAKSerialPortDeviceController.hh
+    $$PWD/SAKSerialPortController.hh \
+    $$PWD/SAKSerialPortDebugger.hh \
+        $$PWD/SAKSerialPortDevice.hh
 
     SOURCES += \
-        $$PWD/SAKSerialPortDebugPage.cc \
-        $$PWD/SAKSerialPortDevice.cc \
-        $$PWD/SAKSerialPortDeviceController.cc
+    $$PWD/SAKSerialPortController.cc \
+    $$PWD/SAKSerialPortDebugger.cc \
+        $$PWD/SAKSerialPortDevice.cc
 
     INCLUDEPATH += \
         $$PWD

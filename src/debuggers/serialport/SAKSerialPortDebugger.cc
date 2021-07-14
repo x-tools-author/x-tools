@@ -13,13 +13,13 @@
 
 #include "SAKCommonDataStructure.hh"
 #include "SAKSerialPortDevice.hh"
-#include "SAKSerialPortDebugPage.hh"
-#include "SAKSerialPortDeviceController.hh"
+#include "SAKSerialPortDebugger.hh"
+#include "SAKSerialPortController.hh"
 
-SAKSerialPortDebugPage::SAKSerialPortDebugPage(int type, QString name, QWidget *parent)
+SAKSerialPortDebugger::SAKSerialPortDebugger(int type, QString name, QWidget *parent)
     :SAKDebugPage(type, name, parent)
 {
-    mDeviceController = new SAKSerialPortDeviceController(this);
+    mDeviceController = new SAKSerialPortController(this);
     mDevice = new SAKSerialPortDevice(this, this);
     initializePage();
 }

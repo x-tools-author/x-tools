@@ -8,10 +8,10 @@
  * the file LICENCE in the root of the source code directory.
  */
 #include "SAKSerialPortDevice.hh"
-#include "SAKSerialPortDebugPage.hh"
-#include "SAKSerialPortDeviceController.hh"
+#include "SAKSerialPortDebugger.hh"
+#include "SAKSerialPortController.hh"
 
-SAKSerialPortDevice::SAKSerialPortDevice(SAKSerialPortDebugPage *debugPage, QObject *parent)
+SAKSerialPortDevice::SAKSerialPortDevice(SAKSerialPortDebugger *debugPage, QObject *parent)
     :SAKDebugPageDevice(debugPage, parent)
     ,mSerialPort(Q_NULLPTR)
     ,mDebugPage(debugPage)
@@ -22,8 +22,8 @@ SAKSerialPortDevice::SAKSerialPortDevice(SAKSerialPortDebugPage *debugPage, QObj
 bool SAKSerialPortDevice::initializing(QString &errorString)
 {
     errorString = tr("Unknown error");
-    auto controller = qobject_cast<SAKSerialPortDeviceController*>(mDebugPage->deviceController());
-    auto parameters = controller->parameters().value<SAKSerialPortDeviceController::SerialPortParameters>();
+    auto controller = qobject_cast<SAKSerialPortController*>(mDebugPage->deviceController());
+    auto parameters = controller->parameters().value<SAKSerialPortController::SerialPortParameters>();
     mSerialPort = new QSerialPort;
     mSerialPort->setPortName(parameters.name);
     mSerialPort->setBaudRate(parameters.baudRate);

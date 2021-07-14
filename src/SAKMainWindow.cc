@@ -66,7 +66,7 @@
 #include "SAKTcpServerDebugPage.hh"
 #endif
 #ifdef SAK_IMPORT_MODULE_SERIALPORT
-#include "SAKSerialPortDebugPage.hh"
+#include "SAKSerialPortDebugger.hh"
 #endif
 #ifdef SAK_IMPORT_MODULE_BLUETOOTH
 #include "SAKBluetoothClientDebugPage.hh"
@@ -545,7 +545,7 @@ void SAKMainWindow::initializingMetaObject()
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeTest, SAKTestDebugPage::staticMetaObject, tr("Test")});
 #endif
 #ifdef SAK_IMPORT_MODULE_SERIALPORT
-    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeCOM, SAKSerialPortDebugPage::staticMetaObject, tr("COM")});
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeCOM, SAKSerialPortDebugger::staticMetaObject, tr("COM")});
 #endif
 #ifdef SAK_IMPORT_HID_MODULE
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeHID, SAKHIDDebugPage::staticMetaObject, tr("HID")});

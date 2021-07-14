@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKSERIALPORTDEVICECONTROLLER_HH
-#define SAKSERIALPORTDEVICECONTROLLER_HH
+#ifndef SAKSERIALPORTCONTROLLER_HH
+#define SAKSERIALPORTCONTROLLER_HH
 
 #include <QMutex>
 #include <QWidget>
@@ -23,7 +23,7 @@ namespace Ui {
 }
 
 class SAKDebugPage;
-class SAKSerialPortDeviceController:public SAKDebugPageController
+class SAKSerialPortController : public SAKDebugPageController
 {
     Q_OBJECT
 public:
@@ -36,8 +36,8 @@ public:
         quint32 baudRate;
     };
 
-    SAKSerialPortDeviceController(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
-    ~SAKSerialPortDeviceController();
+    SAKSerialPortController(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
+    ~SAKSerialPortController();
 
     QVariant parameters() final;
     void setUiEnable(bool opened) final;
@@ -68,5 +68,5 @@ private slots:
     void on_baudrateComboBox_editTextChanged(const QString &arg1);
 };
 
-Q_DECLARE_METATYPE(SAKSerialPortDeviceController::SerialPortParameters);
+Q_DECLARE_METATYPE(SAKSerialPortController::SerialPortParameters);
 #endif
