@@ -10,3 +10,6 @@ SOURCES += \
     $$PWD/SAKTcpClientController.cc \
     $$PWD/SAKTcpClientDebugger.cc \
     $$PWD/SAKTcpClientDevice.cc
+
+INCLUDEPATH += \
+    $$PWD
