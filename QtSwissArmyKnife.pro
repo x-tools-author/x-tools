@@ -51,9 +51,9 @@ include(SAKTools.pri)
 include(SAKCommon.pri)
 include(SAKCharts.pri)
 include(SAKModbus.pri)
-include(SAKWebSocket.pri)
+include(src/debuggers/websocket/SAKWebSocket.pri)
 include(src/debuggers/serialport/SAKSerialPort.pri)
-include(SAKBluetoothLowEnergy.pri)
+include(src/debuggers/ble/SAKBluetoothLowEnergy.pri)
 
 exists(private/SAKPrivate.pri){
     include(private/SAKPrivate.pri)
