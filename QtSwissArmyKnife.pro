@@ -47,7 +47,7 @@ exists($$PWD/SAKCustomConfigure.pri){
 include(src/debuggers/tcp/SAKTcp.pri)
 include(src/debuggers/udp/SAKUdp.pri)
 include(SAKSetup.pri)
-include(SAKTools.pri)
+include(src/tools/SAKTools.pri)
 include(SAKCommon.pri)
 include(SAKCharts.pri)
 include(src/modbus/SAKModbus.pri)
