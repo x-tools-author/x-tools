@@ -15,10 +15,10 @@
 
 #include "SAKCommonDataStructure.hh"
 #include "SAKWebSocketClientDevice.hh"
-#include "SAKWebSocketClientDebugPage.hh"
-#include "SAKWebSocketClientDeviceController.hh"
+#include "SAKWebSocketClientDebugger.hh"
+#include "SAKWebSocketClientController.hh"
 
-SAKWebSocketClientDevice::SAKWebSocketClientDevice(SAKWebSocketClientDebugPage *debugPage, QObject *parent)
+SAKWebSocketClientDevice::SAKWebSocketClientDevice(SAKWebSocketClientDebugger *debugPage, QObject *parent)
     :SAKDebugPageDevice(debugPage, parent)
     ,mDebugPage (debugPage)
 {
@@ -27,9 +27,9 @@ SAKWebSocketClientDevice::SAKWebSocketClientDevice(SAKWebSocketClientDebugPage *
 
 bool SAKWebSocketClientDevice::initializing(QString &errorString)
 {
-    mController = qobject_cast<SAKWebSocketClientDeviceController*>(mDebugPage->deviceController());
+    mController = qobject_cast<SAKWebSocketClientController*>(mDebugPage->deviceController());
     mWebSocket = new QWebSocket;
-    connect(this, &SAKWebSocketClientDevice::clientInfoChanged, mController, &SAKWebSocketClientDeviceController::setClientInfo);
+    connect(this, &SAKWebSocketClientDevice::clientInfoChanged, mController, &SAKWebSocketClientController::setClientInfo);
 
     connect(mWebSocket, &QWebSocket::connected, [=](){
         QString info = mWebSocket->localAddress().toString();
@@ -56,7 +56,7 @@ bool SAKWebSocketClientDevice::initializing(QString &errorString)
 
 bool SAKWebSocketClientDevice::open(QString &errorString)
 {
-    auto parameters = mController->parameters().value<SAKWebSocketClientDeviceController::WebSocketClientParameters>();
+    auto parameters = mController->parameters().value<SAKWebSocketClientController::WebSocketClientParameters>();
     mWebSocket->open(parameters.serverAddress);
     errorString = tr("Unknown error");
     return true;
@@ -71,7 +71,7 @@ QByteArray SAKWebSocketClientDevice::write(QByteArray bytes)
 {
     if (mWebSocket->state() == QAbstractSocket::ConnectedState){
         qint64 ret = 0;
-        auto parameters = mController->parameters().value<SAKWebSocketClientDeviceController::WebSocketClientParameters>();
+        auto parameters = mController->parameters().value<SAKWebSocketClientController::WebSocketClientParameters>();
         if (parameters.sendingType == SAKCommonDataStructure::WebSocketSendingTypeText){
             ret = mWebSocket->sendTextMessage(QString(bytes));
         }else{

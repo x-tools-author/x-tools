@@ -13,11 +13,11 @@
 
 #include "SAKDebugPage.hh"
 #include "SAKCommonDataStructure.hh"
-#include "SAKWebSocketClientDeviceController.hh"
-#include "ui_SAKWebSocketClientDeviceController.h"
-SAKWebSocketClientDeviceController::SAKWebSocketClientDeviceController(SAKDebugPage *debugPage, QWidget *parent)
+#include "SAKWebSocketClientController.hh"
+#include "ui_SAKWebSocketClientController.h"
+SAKWebSocketClientController::SAKWebSocketClientController(SAKDebugPage *debugPage, QWidget *parent)
     :SAKDebugPageController(debugPage, parent)
-    ,mUi(new Ui::SAKWebSocketClientDeviceController)
+    ,mUi(new Ui::SAKWebSocketClientController)
 {
     mUi->setupUi(this);
     mServerAddressLineEdit = mUi->serverHostLineEdit;
@@ -27,15 +27,15 @@ SAKWebSocketClientDeviceController::SAKWebSocketClientDeviceController(SAKDebugP
     SAKCommonDataStructure::setComboBoxTextWebSocketSendingType(mSendingTypeComboBox);
     on_serverHostLineEdit_textChanged(mServerAddressLineEdit->text());
     on_sendingTypeComboBox_currentIndexChanged(0);
-    qRegisterMetaType<SAKWebSocketClientDeviceController::WebSocketClientParameters>("SAKWebSocketClientDeviceController::WebSocketClientParameters");
+    qRegisterMetaType<SAKWebSocketClientController::WebSocketClientParameters>("SAKWebSocketClientController::WebSocketClientParameters");
 }
 
-SAKWebSocketClientDeviceController::~SAKWebSocketClientDeviceController()
+SAKWebSocketClientController::~SAKWebSocketClientController()
 {
     delete mUi;
 }
 
-QVariant SAKWebSocketClientDeviceController::parameters()
+QVariant SAKWebSocketClientController::parameters()
 {
     mParametersMutex.lock();
     auto parameters = mParameters;
@@ -44,24 +44,24 @@ QVariant SAKWebSocketClientDeviceController::parameters()
     return QVariant::fromValue(parameters);
 }
 
-void SAKWebSocketClientDeviceController::setUiEnable(bool opend)
+void SAKWebSocketClientController::setUiEnable(bool opend)
 {
     mServerAddressLineEdit->setEnabled(!opend);
 }
 
-void SAKWebSocketClientDeviceController::setClientInfo(QString info)
+void SAKWebSocketClientController::setClientInfo(QString info)
 {
     mClientInfoLineEdit->setText(info);
 }
 
-void SAKWebSocketClientDeviceController::on_serverHostLineEdit_textChanged(const QString &arg1)
+void SAKWebSocketClientController::on_serverHostLineEdit_textChanged(const QString &arg1)
 {
     mParametersMutex.lock();
     mParameters.serverAddress = arg1;
     mParametersMutex.unlock();
 }
 
-void SAKWebSocketClientDeviceController::on_sendingTypeComboBox_currentIndexChanged(int index)
+void SAKWebSocketClientController::on_sendingTypeComboBox_currentIndexChanged(int index)
 {
     Q_UNUSED(index);
     mParametersMutex.lock();

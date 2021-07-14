@@ -15,14 +15,14 @@
 
 #include "SAKDebugPageDevice.hh"
 
-class SAKWebSocketClientDebugPage;
-class SAKWebSocketClientDeviceController;
+class SAKWebSocketClientDebugger;
+class SAKWebSocketClientController;
 /// @brief Web socket client.
 class SAKWebSocketClientDevice:public SAKDebugPageDevice
 {
     Q_OBJECT
 public:
-    SAKWebSocketClientDevice(SAKWebSocketClientDebugPage *mDebugPage, QObject *parent = Q_NULLPTR);
+    SAKWebSocketClientDevice(SAKWebSocketClientDebugger *mDebugPage, QObject *parent = Q_NULLPTR);
 private:
     bool initializing(QString &errorString) final;
     bool open(QString &errorString) final;
@@ -33,8 +33,8 @@ private:
     void free() final;
 private:
     QWebSocket *mWebSocket;
-    SAKWebSocketClientDebugPage *mDebugPage;
-    SAKWebSocketClientDeviceController *mController;
+    SAKWebSocketClientDebugger *mDebugPage;
+    SAKWebSocketClientController *mController;
 signals:
     void clientInfoChanged(QString info);
 };

@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKWebSocketClientDeviceController_HH
-#define SAKWebSocketClientDeviceController_HH
+#ifndef SAKWEBSOCKETCLIENTCONTROLLER_HH
+#define SAKWEBSOCKETCLIENTCONTROLLER_HH
 
 #include <QMutex>
 #include <QWidget>
@@ -18,12 +18,12 @@
 #include "SAKDebugPageController.hh"
 
 namespace Ui {
-    class SAKWebSocketClientDeviceController;
+    class SAKWebSocketClientController;
 }
 
 class SAKDebugPage;
 /// @brief web socket client control panel
-class SAKWebSocketClientDeviceController:public SAKDebugPageController
+class SAKWebSocketClientController:public SAKDebugPageController
 {
     Q_OBJECT
 public:
@@ -32,8 +32,8 @@ public:
         quint32 sendingType;
     };
 
-    SAKWebSocketClientDeviceController(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
-    ~SAKWebSocketClientDeviceController();
+    SAKWebSocketClientController(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
+    ~SAKWebSocketClientController();
 
     QVariant parameters() final;
     void setUiEnable(bool opend) final;
@@ -43,7 +43,7 @@ private:
     QMutex mParametersMutex;
     WebSocketClientParameters mParameters;
 private:
-    Ui::SAKWebSocketClientDeviceController *mUi;
+    Ui::SAKWebSocketClientController *mUi;
     QLineEdit *mServerAddressLineEdit;
     QComboBox *mSendingTypeComboBox;
     QLineEdit *mClientInfoLineEdit;
@@ -51,5 +51,5 @@ private slots:
     void on_serverHostLineEdit_textChanged(const QString &arg1);
     void on_sendingTypeComboBox_currentIndexChanged(int index);
 };
-Q_DECLARE_METATYPE(SAKWebSocketClientDeviceController::WebSocketClientParameters);
+Q_DECLARE_METATYPE(SAKWebSocketClientController::WebSocketClientParameters);
 #endif

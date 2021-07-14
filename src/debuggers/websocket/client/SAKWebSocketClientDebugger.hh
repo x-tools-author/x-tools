@@ -14,12 +14,12 @@
 
 class SAKDebugPageController;
 class SAKWebSocketClientDevice;
-class SAKWebSocketClientDeviceController;
-class SAKWebSocketClientDebugPage : public SAKDebugPage
+class SAKWebSocketClientController;
+class SAKWebSocketClientDebugger : public SAKDebugPage
 {
     Q_OBJECT
 public:
-    Q_INVOKABLE SAKWebSocketClientDebugPage(int type, QString name, QWidget *parent = Q_NULLPTR);
+    Q_INVOKABLE SAKWebSocketClientDebugger(int type, QString name, QWidget *parent = Q_NULLPTR);
 };
 
 #endif
