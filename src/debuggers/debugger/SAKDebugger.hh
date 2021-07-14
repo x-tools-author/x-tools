@@ -212,7 +212,7 @@ private:
 protected:
     QPushButton *mSwitchPushButton;
     QPushButton *mDeviceMorePushButton;
-    QFrame *mDeviceSettingFrame;
+    QWidget *mControllerWidget;
 private slots:
     void on_switchPushButton_clicked();
     /*************************************************************************/
@@ -270,12 +270,6 @@ protected:
     QPushButton *mTimingSendingPushButton;
     QPushButton *mMoreSettingsPushButton;
     QPushButton *mAnalyzerPushButton;
-    /*************************************************************************/
-    // Charts module
-protected:
-    QPushButton *mDataVisualizationPushButton;
-private slots:
-    void on_dataVisualizationPushButton_clicked();
 };
 
 #endif  // SAKTABPAGE_HH

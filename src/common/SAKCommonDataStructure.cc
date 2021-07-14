@@ -30,7 +30,7 @@ void SAKCommonDataStructure::setComboBoxTextOutputFormat(QComboBox *comboBox)
         formatMap.insert(OutputFormatAscii, QString("ASCII"));
         formatMap.insert(OutputFormatUtf16, QString("UTF16"));
         formatMap.insert(OutputFormatLocal, QString("SYSTEM"));
-        setComboBoxItems(comboBox, formatMap, OutputFormatHex);
+        //setComboBoxItems(comboBox, formatMap, OutputFormatHex);
     }
 }
 
@@ -46,7 +46,7 @@ void SAKCommonDataStructure::setComboBoxTextInputFormat(QComboBox *comboBox)
             formatMap.insert(InputFormatUtf8,  QString("UTF8"));
             formatMap.insert(InputFormatAscii, QString("ASCII"));
             formatMap.insert(InputFormatLocal, QString("SYSTEM"));
-            setComboBoxItems(comboBox, formatMap, InputFormatUtf8);
+            //setComboBoxItems(comboBox, formatMap, InputFormatUtf8);
         }
     }
 }

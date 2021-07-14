@@ -27,6 +27,7 @@
 
 #include "SAKDebugger.hh"
 #include "SAKApplication.hh"
+#include "SAKDebuggerInput.hh"
 #include "SAKDebugPageDevice.hh"
 #include "SAKCommonCrcInterface.hh"
 #include "SAKCommonDataStructure.hh"
@@ -34,7 +35,6 @@
 #include "SAKOtherAnalyzerThread.hh"
 #include "SAKOtherHighlighterManager.hh"
 #include "SAKDebugPageOtherController.hh"
-#include "SAKDebuggerInput.hh"
 #include "SAKDebugPageOutputController.hh"
 #include "SAKOtherAnalyzerThreadManager.hh"
 #include "SAKOtherAutoResponseItemManager.hh"
@@ -54,6 +54,7 @@ SAKDebugger::SAKDebugger(int type, QString name, QWidget *parent)
     ,mIsInitializing(true)
     ,mDebugPageType(type)
     ,mSettingGroup(name)
+    ,mChartsController(Q_NULLPTR)
     ,mUi(new Ui::SAKDebugger)
 {
     mUi->setupUi(this);
@@ -63,7 +64,7 @@ SAKDebugger::SAKDebugger(int type, QString name, QWidget *parent)
     html = html.replace(QString("Email"), QString(SAK_AUTHOR_EMAIL));
     mUi->outputTextBroswer->setHtml(html);
     initializingVariables();
-
+#if 0
     mDatabaseInterface = new SAKDebugPageCommonDatabaseInterface(this, sakApp->sqlDatabase(), this);
     mOutputController = new SAKDebugPageOutputController(this, this);
     mOtherController = new SAKDebugPageOtherController(this, this);
@@ -77,6 +78,7 @@ SAKDebugger::SAKDebugger(int type, QString name, QWidget *parent)
     mClearInfoTimer.setInterval(SAK_CLEAR_MESSAGE_INTERVAL);
     connect(&mClearInfoTimer, &QTimer::timeout, this, &SAKDebugger::cleanInfo);
     mIsInitializing = false;
+#endif
 }
 
 SAKDebugger::~SAKDebugger()
@@ -206,8 +208,8 @@ void SAKDebugger::initializePage()
 {
     SAKDebugPageController *controller = deviceController();
     if (controller){
-        QHBoxLayout *layout = new QHBoxLayout(mDeviceSettingFrame);
-        mDeviceSettingFrame->setLayout(layout);
+        QHBoxLayout *layout = new QHBoxLayout(mControllerWidget);
+        mControllerWidget->setLayout(layout);
         layout->addWidget(controller);
         layout->setContentsMargins(0, 0, 0, 0);
         mDeviceController = controller;
@@ -215,6 +217,7 @@ void SAKDebugger::initializePage()
 
     connect(this, &SAKDebugger::requestWriteData, device(), &SAKDebugPageDevice::writeBytes);
     connect(device(), &SAKDebugPageDevice::bytesWritten, this, &SAKDebugger::bytesWritten);
+    return;
 #if 0
     connect(device, &SAKDevice::bytesRead, this, &SAKDebugPage::bytesRead);
 #else
@@ -317,7 +320,7 @@ void SAKDebugger::initializingVariables()
     // Devce control
     mSwitchPushButton = mUi->switchPushButton;
     mDeviceMorePushButton = mUi->deviceMorePushButton;
-    mDeviceSettingFrame = mUi->deviceSettingFrame;
+    mControllerWidget = mUi->controllerWidget;
 
     // Message output
     mInfoLabel = mUi->infoLabel;
@@ -331,6 +334,7 @@ void SAKDebugger::initializingVariables()
     mCrcLabel = mUi->crcLabel;
 
     // Output settings
+#if 0
     mRxLabel = mUi->rxLabel;
     mTxLabel = mUi->txLabel;
     mOutputTextFormatComboBox= mUi->outputTextFormatComboBox;
@@ -342,6 +346,7 @@ void SAKDebugger::initializingVariables()
     mShowTxDataCheckBox = mUi->showTxDataCheckBox;
     mSaveOutputToFileCheckBox = mUi->saveOutputToFileCheckBox;
     mRawDataCheckBox = mUi->rawDataCheckBox;
+#endif
     mMoreOutputSettingsPushButton = mUi->moreOutputSettingsPushButton;
     mClearOutputPushButton = mUi->clearOutputPushButton;
     mOutputTextBroswer = mUi->outputTextBroswer;
@@ -353,29 +358,16 @@ void SAKDebugger::initializingVariables()
     mTxFramesLabel = mUi->txFramesLabel;
     mRxBytesLabel = mUi->rxBytesLabel;
     mTxBytesLabel = mUi->txBytesLabel;
+#if 0
     mResetTxCountPushButton = mUi->resetTxCountPushButton;
     mResetRxCountPushButton = mUi->resetRxCountPushButton;
-
+#endif
+#if 0
     // Other settings
     mTransmissionSettingPushButton = mUi->transmissionSettingPushButton;
     mAutoResponseSettingPushButton = mUi->autoResponseSettingPushButton;
     mTimingSendingPushButton = mUi->timingSendingPushButton;
     mMoreSettingsPushButton = mUi->moreSettingsPushButton;
     mAnalyzerPushButton = mUi->analyzerPushButton;
-
-    // Charts
-    mDataVisualizationPushButton = mUi->dataVisualizationPushButton;
-}
-
-void SAKDebugger::on_dataVisualizationPushButton_clicked()
-{
-#ifdef SAK_IMPORT_MODULE_CHARTS
-    if (mChartsController->isHidden()){
-        mChartsController->show();
-    }else{
-        mChartsController->activateWindow();
-    }
-#else
-    QMessageBox::warning(this, tr("Unsupported function"), tr("The function has been disable, beause of developer's Qt version is not supported!"));
 #endif
 }

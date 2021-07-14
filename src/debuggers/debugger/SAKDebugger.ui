@@ -83,9 +83,9 @@ p, li { white-space: pre-wrap; }
     <widget class="QWidget" name="controllerWidget" native="true"/>
    </item>
    <item row="9" column="1">
-    <widget class="QPushButton" name="pushButton_2">
+    <widget class="QPushButton" name="pluginsPushButton">
      <property name="text">
-      <string>PushButton</string>
+      <string>Plugins</string>
      </property>
     </widget>
    </item>
@@ -381,9 +381,9 @@ p, li { white-space: pre-wrap; }
     </widget>
    </item>
    <item row="9" column="0">
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="readmePushButton">
      <property name="text">
-      <string>PushButton</string>
+      <string>Readme</string>
      </property>
     </widget>
    </item>
@@ -397,7 +397,7 @@ p, li { white-space: pre-wrap; }
    <item row="6" column="0">
     <widget class="QLabel" name="label_12">
      <property name="text">
-      <string>Text format</string>
+      <string>Output format</string>
      </property>
     </widget>
    </item>
@@ -438,14 +438,14 @@ p, li { white-space: pre-wrap; }
    <item row="14" column="0">
     <widget class="QPushButton" name="moreInputSettingsPushButton">
      <property name="text">
-      <string>More&gt;&gt;&gt;</string>
+      <string>More</string>
      </property>
     </widget>
    </item>
    <item row="7" column="0">
     <widget class="QPushButton" name="moreOutputSettingsPushButton">
      <property name="text">
-      <string>More&gt;&gt;&gt;</string>
+      <string>More</string>
      </property>
     </widget>
    </item>

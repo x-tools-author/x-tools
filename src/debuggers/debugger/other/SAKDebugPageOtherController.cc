@@ -28,7 +28,7 @@ SAKDebugPageOtherController::SAKDebugPageOtherController(SAKDebugger *debugPage,
     mAutoResponseSettingWidget = new SAKOtherAutoResponseItemManager(mDebugPage);
     mTimingSendingSettingsWidget = new SAKOtherTimingSentItemManager(mDebugPage);
     mAnalyzerThreadManager = new SAKOtherAnalyzerThreadManager(debugPage->settings());
-
+#if 0
     moreSettingsPushButton = mDebugPage->mMoreSettingsPushButton;
     timingSendingPushButton = mDebugPage->mTimingSendingPushButton;
     autoResponseSettingPushButton = mDebugPage->mAutoResponseSettingPushButton;
@@ -39,6 +39,7 @@ SAKDebugPageOtherController::SAKDebugPageOtherController(SAKDebugger *debugPage,
     connect(this, &SAKDebugPageOtherController::destroyed, moreSettingsPushButtonMenu, &QMenu::deleteLater);
     moreSettingsPushButton->setMenu(moreSettingsPushButtonMenu);
     moreSettingsPushButton->setEnabled(false);
+#endif
 #if 0
     auto highlightSettingsAction = new QAction(tr("Highlight Settings"), this);
     moreSettingsPushButtonMenu->addAction(highlightSettingsAction);
@@ -50,7 +51,7 @@ SAKDebugPageOtherController::SAKDebugPageOtherController(SAKDebugger *debugPage,
         }
     });
 #endif
-
+#if 0
     connect(timingSendingPushButton, &QPushButton::clicked, this, [=](){
         if (mTimingSendingSettingsWidget->isHidden()){
             mTimingSendingSettingsWidget->show();
@@ -78,6 +79,7 @@ SAKDebugPageOtherController::SAKDebugPageOtherController(SAKDebugger *debugPage,
     connect(mAnalyzerPushButton, &QPushButton::clicked, this, [=](){
         mAnalyzerThreadManager->show();
     });
+#endif
 }
 
 SAKDebugPageOtherController::~SAKDebugPageOtherController()

@@ -60,9 +60,10 @@ SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugger *debugPag
 
     // Readin settings before connecting signals and slots
     mSettings = mDebugPage->settings();
-    readinSettings();
+    //readinSettings();
 
     // Connecting signals and slots
+#if 0
     connect(mSaveOutputToFileCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::saveOutputDataToFile);
     connect(mAutoWrapCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::setLineWrapMode);
     connect(mClearOutputPushButton, &QCheckBox::clicked, mOutputTextBroswer, &QTextBrowser::clear);
@@ -74,6 +75,7 @@ SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugger *debugPag
     connect(mShowRxDataCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::onShowRxDataCheckBoxClicked);
     connect(mShowTxDataCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::onShowTxDataCheckBoxClicked);
     connect(mRawDataCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::onRawDataCheckBoxClicked);
+#endif
 
     // Input data
     connect(debugPage, &SAKDebugger::bytesRead, this, &SAKDebugPageOutputController::bytesRead);
