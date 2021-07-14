@@ -138,7 +138,7 @@ INCLUDEPATH += \
 
 FORMS += \
     src/SAKMainWindow.ui \
-    src/debuggers/debugger/SAKDebugPage.ui \
+    src/debuggers/debugger/SAKDebugger.ui \
     src/debuggers/debugger/common/SAKDebugPageCommonSslConfigurationWidget.ui \
     src/debuggers/debugger/device/mask/SAKDebugPageDeviceMask.ui \
     src/debuggers/debugger/input/crcsettings/SAKInputCrcSettingsDialog.ui \

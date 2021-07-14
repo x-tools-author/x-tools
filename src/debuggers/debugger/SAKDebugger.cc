@@ -45,7 +45,7 @@
 #include "SAKDebugPageChartsController.hh"
 #endif
 
-#include "ui_SAKDebugPage.h"
+#include "ui_SAKDebugger.h"
 
 SAKDebugger::SAKDebugger(int type, QString name, QWidget *parent)
     :QWidget(parent)

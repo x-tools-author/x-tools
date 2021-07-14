@@ -46,7 +46,7 @@ class SAKDebugPageStatisticsController;
 class SAKDebugPageCommonDatabaseInterface;
 
 namespace Ui {
-    class SAKDebugPage;
+    class SAKDebugger;
 }
 
 /// @brief Debugging page
@@ -203,7 +203,7 @@ signals:
     // ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
     // ui component
 private:
-    Ui::SAKDebugPage *mUi;
+    Ui::SAKDebugger *mUi;
 private:
     // All variable about ui will be initialize in the function
     void initializingVariables();
