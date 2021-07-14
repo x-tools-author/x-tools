@@ -23,20 +23,20 @@ win32 {
 
 contains(DEFINES, SAK_IMPORT_MODULE_BLUETOOTHLOWENERGY) {
     FORMS += \
-        $$PWD/src/pages/bluetoothlowenergy/SAKBluetoothLowEnergyDeviceController.ui
+        $$PWD/src/debuggers/bluetoothlowenergy/SAKBluetoothLowEnergyDeviceController.ui
 
     HEADERS += \
-        $$PWD/src/pages/bluetoothlowenergy/SAKBluetoothLowEnergyDebugPage.hh \
-        $$PWD/src/pages/bluetoothlowenergy/SAKBluetoothLowEnergyDevice.hh \
-        $$PWD/src/pages/bluetoothlowenergy/SAKBluetoothLowEnergyDeviceController.hh
+        $$PWD/src/debuggers/bluetoothlowenergy/SAKBluetoothLowEnergyDebugPage.hh \
+        $$PWD/src/debuggers/bluetoothlowenergy/SAKBluetoothLowEnergyDevice.hh \
+        $$PWD/src/debuggers/bluetoothlowenergy/SAKBluetoothLowEnergyDeviceController.hh
 
     SOURCES += \
-        $$PWD/src/pages/bluetoothlowenergy/SAKBluetoothLowEnergyDebugPage.cc \
-        $$PWD/src/pages/bluetoothlowenergy/SAKBluetoothLowEnergyDevice.cc \
-        $$PWD/src/pages/bluetoothlowenergy/SAKBluetoothLowEnergyDeviceController.cc
+        $$PWD/src/debuggers/bluetoothlowenergy/SAKBluetoothLowEnergyDebugPage.cc \
+        $$PWD/src/debuggers/bluetoothlowenergy/SAKBluetoothLowEnergyDevice.cc \
+        $$PWD/src/debuggers/bluetoothlowenergy/SAKBluetoothLowEnergyDeviceController.cc
 
     INCLUDEPATH += \
-        $$PWD/src/pages/bluetoothlowenergy
+        $$PWD/src/debuggers/bluetoothlowenergy
 } else {
     message("Can not find bluetooth module, The bluetooth debugging will be ignore!")
 }

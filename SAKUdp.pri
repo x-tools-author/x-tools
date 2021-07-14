@@ -5,32 +5,32 @@ qtHaveModule(network){
 
 contains(DEFINES, SAK_IMPORT_MODULE_UDP){
     INCLUDEPATH += \
-        src/pages/udp/client \
-        src/pages/udp/server
+        src/debuggers/udp/client \
+        src/debuggers/udp/server
 
     FORMS += \
-        src/pages/udp/client/SAKUdpClientAdvanceSettingWidget.ui \
-        src/pages/udp/client/SAKUdpClientDeviceController.ui \
-        src/pages/udp/client/SAKUdpClientMulticastEditingDialog.ui \
-        src/pages/udp/server/SAKUdpServerDeviceController.ui
+        src/debuggers/udp/client/SAKUdpClientAdvanceSettingWidget.ui \
+        src/debuggers/udp/client/SAKUdpClientDeviceController.ui \
+        src/debuggers/udp/client/SAKUdpClientMulticastEditingDialog.ui \
+        src/debuggers/udp/server/SAKUdpServerDeviceController.ui
 
     HEADERS += \
-        src/pages/udp/client/SAKUdpClientAdvanceSettingWidget.hh \
-        src/pages/udp/client/SAKUdpClientDebugPage.hh \
-        src/pages/udp/client/SAKUdpClientDevice.hh \
-        src/pages/udp/client/SAKUdpClientDeviceController.hh \
-        src/pages/udp/client/SAKUdpClientMulticastEditingDialog.hh \
-        src/pages/udp/server/SAKUdpServerDebugPage.hh \
-        src/pages/udp/server/SAKUdpServerDevice.hh \
-        src/pages/udp/server/SAKUdpServerDeviceController.hh
+        src/debuggers/udp/client/SAKUdpClientAdvanceSettingWidget.hh \
+        src/debuggers/udp/client/SAKUdpClientDebugPage.hh \
+        src/debuggers/udp/client/SAKUdpClientDevice.hh \
+        src/debuggers/udp/client/SAKUdpClientDeviceController.hh \
+        src/debuggers/udp/client/SAKUdpClientMulticastEditingDialog.hh \
+        src/debuggers/udp/server/SAKUdpServerDebugPage.hh \
+        src/debuggers/udp/server/SAKUdpServerDevice.hh \
+        src/debuggers/udp/server/SAKUdpServerDeviceController.hh
 
     SOURCES += \
-        src/pages/udp/client/SAKUdpClientAdvanceSettingWidget.cc \
-        src/pages/udp/client/SAKUdpClientDebugPage.cc \
-        src/pages/udp/client/SAKUdpClientDevice.cc \
-        src/pages/udp/client/SAKUdpClientDeviceController.cc \
-        src/pages/udp/client/SAKUdpClientMulticastEditingDialog.cc \
-        src/pages/udp/server/SAKUdpServerDebugPage.cc \
-        src/pages/udp/server/SAKUdpServerDevice.cc \
-        src/pages/udp/server/SAKUdpServerDeviceController.cc
+        src/debuggers/udp/client/SAKUdpClientAdvanceSettingWidget.cc \
+        src/debuggers/udp/client/SAKUdpClientDebugPage.cc \
+        src/debuggers/udp/client/SAKUdpClientDevice.cc \
+        src/debuggers/udp/client/SAKUdpClientDeviceController.cc \
+        src/debuggers/udp/client/SAKUdpClientMulticastEditingDialog.cc \
+        src/debuggers/udp/server/SAKUdpServerDebugPage.cc \
+        src/debuggers/udp/server/SAKUdpServerDevice.cc \
+        src/debuggers/udp/server/SAKUdpServerDeviceController.cc
 }

@@ -5,26 +5,26 @@ qtHaveModule(network){
 
 contains(DEFINES, SAK_IMPORT_MODULE_TCP){
     INCLUDEPATH += \
-        src/pages/tcp/client \
-        src/pages/tcp/server
+        src/debuggers/tcp/client \
+        src/debuggers/tcp/server
 
     FORMS += \
-        src/pages/tcp/client/SAKTcpClientDeviceController.ui \
-        src/pages/tcp/server/SAKTcpServerDeviceController.ui
+        src/debuggers/tcp/client/SAKTcpClientDeviceController.ui \
+        src/debuggers/tcp/server/SAKTcpServerDeviceController.ui
 
     HEADERS += \
-        src/pages/tcp/client/SAKTcpClientDebugPage.hh \
-        src/pages/tcp/client/SAKTcpClientDevice.hh \
-        src/pages/tcp/client/SAKTcpClientDeviceController.hh \
-        src/pages/tcp/server/SAKTcpServerDebugPage.hh \
-        src/pages/tcp/server/SAKTcpServerDevice.hh \
-        src/pages/tcp/server/SAKTcpServerDeviceController.hh
+        src/debuggers/tcp/client/SAKTcpClientDebugPage.hh \
+        src/debuggers/tcp/client/SAKTcpClientDevice.hh \
+        src/debuggers/tcp/client/SAKTcpClientDeviceController.hh \
+        src/debuggers/tcp/server/SAKTcpServerDebugPage.hh \
+        src/debuggers/tcp/server/SAKTcpServerDevice.hh \
+        src/debuggers/tcp/server/SAKTcpServerDeviceController.hh
 
     SOURCES += \
-        src/pages/tcp/client/SAKTcpClientDebugPage.cc \
-        src/pages/tcp/client/SAKTcpClientDevice.cc \
-        src/pages/tcp/client/SAKTcpClientDeviceController.cc \
-        src/pages/tcp/server/SAKTcpServerDebugPage.cc \
-        src/pages/tcp/server/SAKTcpServerDevice.cc \
-        src/pages/tcp/server/SAKTcpServerDeviceController.cc
+        src/debuggers/tcp/client/SAKTcpClientDebugPage.cc \
+        src/debuggers/tcp/client/SAKTcpClientDevice.cc \
+        src/debuggers/tcp/client/SAKTcpClientDeviceController.cc \
+        src/debuggers/tcp/server/SAKTcpServerDebugPage.cc \
+        src/debuggers/tcp/server/SAKTcpServerDevice.cc \
+        src/debuggers/tcp/server/SAKTcpServerDeviceController.cc
 }
