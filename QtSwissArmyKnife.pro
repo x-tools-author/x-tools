@@ -44,7 +44,7 @@ exists($$PWD/SAKCustomConfigure.pri){
 }
 
 #Sub project
-include(SAKTcp.pri)
+include(src/debuggers/tcp/SAKTcp.pri)
 include(SAKUdp.pri)
 include(SAKSetup.pri)
 include(SAKTools.pri)
