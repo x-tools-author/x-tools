@@ -23,3 +23,13 @@ SAKSerialPortDebugger::SAKSerialPortDebugger(int type, QString name, QWidget *pa
     mDevice = new SAKSerialPortDevice(this, this);
     initializePage();
 }
+
+SAKDebugPageDevice* SAKSerialPortDebugger::device()
+{
+    return mDevice;
+}
+
+SAKDebugPageController *SAKSerialPortDebugger::controller()
+{
+    return mDeviceController;
+}

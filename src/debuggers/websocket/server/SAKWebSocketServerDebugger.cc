@@ -23,3 +23,13 @@ SAKWebSocketServerDebugger::SAKWebSocketServerDebugger(int type, QString name, Q
     mDevice = new SAKWebSocketServerDevice(this, this);
     initializePage();
 }
+
+SAKDebugPageDevice* SAKWebSocketServerDebugger::device()
+{
+    return mDevice;
+}
+
+SAKDebugPageController *SAKWebSocketServerDebugger::controller()
+{
+    return mDeviceController;
+}

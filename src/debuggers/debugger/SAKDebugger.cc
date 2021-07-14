@@ -49,12 +49,12 @@
 
 SAKDebugger::SAKDebugger(int type, QString name, QWidget *parent)
     :QWidget(parent)
-    ,mDevice(Q_NULLPTR)
-    ,mDeviceController(Q_NULLPTR)
     ,mIsInitializing(true)
     ,mDebugPageType(type)
     ,mSettingGroup(name)
     ,mChartsController(Q_NULLPTR)
+    ,mDevice(Q_NULLPTR)
+    ,mDeviceController(Q_NULLPTR)
     ,mUi(new Ui::SAKDebugger)
 {
     mUi->setupUi(this);
@@ -83,11 +83,15 @@ SAKDebugger::SAKDebugger(int type, QString name, QWidget *parent)
 
 SAKDebugger::~SAKDebugger()
 {
-    if (device()->isRunning()){
-        device()->requestInterruption();
-        device()->wait();
+#if 1
+    if (mDevice) {
+        if (mDevice->isRunning()){
+            mDevice->requestInterruption();
+            mDevice->wait();
+        }
+        mDevice->deleteLater();
     }
-    delete device();
+#endif
 #ifdef SAK_IMPORT_MODULE_CHARTS
     delete mChartsController;
 #endif
@@ -198,40 +202,32 @@ QString SAKDebugger::tableNameTimingSendingTable()
     return settingsGroup().append(QString("TimingSending"));
 }
 
-SAKDebugPageDevice *SAKDebugger::device()
-{
-    Q_ASSERT_X(mDevice, __FUNCTION__, "You must initialize the mDevice in the subcalss!");
-    return mDevice;
-}
-
 void SAKDebugger::initializePage()
 {
-    SAKDebugPageController *controller = deviceController();
-    if (controller){
+    mDeviceController = controller();
+    if (mDeviceController){
         QHBoxLayout *layout = new QHBoxLayout(mControllerWidget);
         mControllerWidget->setLayout(layout);
-        layout->addWidget(controller);
+        layout->addWidget(mDeviceController);
         layout->setContentsMargins(0, 0, 0, 0);
-        mDeviceController = controller;
     }
 
-    connect(this, &SAKDebugger::requestWriteData, device(), &SAKDebugPageDevice::writeBytes);
-    connect(device(), &SAKDebugPageDevice::bytesWritten, this, &SAKDebugger::bytesWritten);
-    return;
+    mDevice = device();
+    Q_ASSERT_X(mDevice, __FUNCTION__, "You must initialize the mDevice in the subcalss!");
+
+    connect(this, &SAKDebugger::requestWriteData, mDevice, &SAKDebugPageDevice::writeBytes);
+    connect(mDevice, &SAKDebugPageDevice::bytesWritten, this, &SAKDebugger::bytesWritten);
 #if 0
-    connect(device, &SAKDevice::bytesRead, this, &SAKDebugPage::bytesRead);
-#else
     // The bytes read will be input to analyzer, after analyzing, the bytes will be input to debug page
     SAKOtherAnalyzerThreadManager *analyzerManager = mOtherController->analyzerThreadManager();
-    connect(device(), &SAKDebugPageDevice::bytesRead, analyzerManager, &SAKOtherAnalyzerThreadManager::inputBytes);
+    connect(mDevice, &SAKDebugPageDevice::bytesRead, analyzerManager, &SAKOtherAnalyzerThreadManager::inputBytes);
 
     // The function may be called multiple times, so do something to ensure that the signal named bytesAnalysed
     // and the slot named bytesRead are connected once.
     connect(analyzerManager, &SAKOtherAnalyzerThreadManager::bytesAnalysed, this, &SAKDebugger::bytesRead, static_cast<Qt::ConnectionType>(Qt::AutoConnection|Qt::UniqueConnection));
-#endif
-    connect(device(), &SAKDebugPageDevice::messageChanged, this, &SAKDebugger::outputMessage);
-    connect(device(), &SAKDebugPageDevice::deviceStateChanged, this, &SAKDebugger::changedDeviceState);
-    connect(device(), &SAKDebugPageDevice::finished, this, &SAKDebugger::closeDevice, Qt::QueuedConnection);
+    connect(mDevice, &SAKDebugPageDevice::messageChanged, this, &SAKDebugger::outputMessage);
+    connect(mDevice, &SAKDebugPageDevice::deviceStateChanged, this, &SAKDebugger::changedDeviceState);
+    connect(mDevice, &SAKDebugPageDevice::finished, this, &SAKDebugger::closeDevice, Qt::QueuedConnection);
 
 
     // Initialize the more button, the firs thing to do is clear the old actions and delete the old menu.
@@ -249,7 +245,7 @@ void SAKDebugger::initializePage()
     connect(mRefreshAction, &QAction::triggered, this, &SAKDebugger::refreshDevice);
 
     // Create new menu and add actions to the menu.
-    auto infos = device()->settingsPanelList();
+    auto infos = mDevice->settingsPanelList();
     for (auto &var : infos){
         QAction *action = new QAction(var.name, deviceMorePushButtonMenu);
         deviceMorePushButtonMenu->addAction(action);
@@ -261,6 +257,7 @@ void SAKDebugger::initializePage()
             }
         });
     }
+#endif
 }
 
 void SAKDebugger::changedDeviceState(bool opened)
@@ -275,16 +272,16 @@ void SAKDebugger::changedDeviceState(bool opened)
 
 void SAKDebugger::openDevice()
 {
-    device()->start();
+    mDevice->start();
     mSwitchPushButton->setText(tr("Close"));
 }
 
 void SAKDebugger::closeDevice()
 {
-    device()->requestInterruption();
-    device()->requestWakeup();
-    device()->exit();
-    device()->wait();
+    mDevice->requestInterruption();
+    mDevice->requestWakeup();
+    mDevice->exit();
+    mDevice->wait();
     mSwitchPushButton->setText(tr("Open"));
 }
 
@@ -306,8 +303,8 @@ void SAKDebugger::cleanInfo()
 void SAKDebugger::on_switchPushButton_clicked()
 {
     mSwitchPushButton->setEnabled(false);
-    if (device()){
-        if (!device()->isRunning()){
+    if (mDevice){
+        if (!mDevice->isRunning()){
             openDevice();
         }else{
             closeDevice();
@@ -337,7 +334,9 @@ void SAKDebugger::initializingVariables()
 #if 0
     mRxLabel = mUi->rxLabel;
     mTxLabel = mUi->txLabel;
-    mOutputTextFormatComboBox= mUi->outputTextFormatComboBox;
+#endif
+    mOutputTextFormatComboBox = mUi->outputTextFormatComboBox;
+#if 0
     mAutoWrapCheckBox = mUi->autoWrapCheckBox;
     mShowDateCheckBox = mUi->showDateCheckBox;
     mShowTimeCheckBox = mUi->showTimeCheckBox;

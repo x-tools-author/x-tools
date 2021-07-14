@@ -19,6 +19,12 @@ class SAKUdpClientDebugger : public SAKDebugger
     Q_OBJECT
 public:
     Q_INVOKABLE SAKUdpClientDebugger(int type, QString name, QWidget *parent = Q_NULLPTR);
+protected:
+    SAKDebugPageDevice* device() override;
+    SAKDebugPageController *controller() override;
+private:
+    SAKDebugPageDevice *mDevice;
+    SAKDebugPageController *mDeviceController;
 };
 
 #endif

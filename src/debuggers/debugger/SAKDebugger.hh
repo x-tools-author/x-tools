@@ -157,14 +157,17 @@ public:
     QString tableNamePresettingDataTable();
     QString tableNameTimingSendingTable();
 protected:
-    SAKDebugPageDevice *mDevice;
-    SAKDebugPageController *mDeviceController;
-protected:
     /**
      * @brief createDevice: Get the device instance, the device will be destroy when it is closed.
      * @return Device instance pointer
      */
-    SAKDebugPageDevice* device();
+    virtual SAKDebugPageDevice* device() = 0;
+
+    /**
+     * @brief controller: Get the device controller of the debugger
+     * @return Device controller
+     */
+    virtual SAKDebugPageController *controller() = 0;
 
     /**
      * @brief initializePage: Initializing, the function must be called in the constructor of subclass.
@@ -187,6 +190,8 @@ private:
 #endif
     SAKDebugPageOutputController *mOutputController;
     SAKDebugPageStatisticsController *mStatisticsController;
+    SAKDebugPageDevice *mDevice;
+    SAKDebugPageController *mDeviceController;
 private:
     void cleanInfo();
     void changedDeviceState(bool opened);

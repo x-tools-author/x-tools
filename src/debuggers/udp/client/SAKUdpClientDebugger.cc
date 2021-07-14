@@ -23,3 +23,13 @@ SAKUdpClientDebugger::SAKUdpClientDebugger(int type, QString name, QWidget *pare
     mDevice = new SAKUdpClientDevice(this, this);
     initializePage();
 }
+
+SAKDebugPageDevice* SAKUdpClientDebugger::device()
+{
+    return mDevice;
+}
+
+SAKDebugPageController *SAKUdpClientDebugger::controller()
+{
+    return mDeviceController;
+}

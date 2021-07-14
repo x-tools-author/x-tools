@@ -23,3 +23,13 @@ SAKTcpClientDebugger::SAKTcpClientDebugger(int type, QString name, QWidget *pare
     mDevice = new  SAKTcpClientDevice(this, this);
     initializePage();
 }
+
+SAKDebugPageDevice* SAKTcpClientDebugger::device()
+{
+    return mDevice;
+}
+
+SAKDebugPageController *SAKTcpClientDebugger::controller()
+{
+    return mDeviceController;
+}
