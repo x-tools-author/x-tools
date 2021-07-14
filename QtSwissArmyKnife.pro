@@ -52,7 +52,7 @@ include(SAKCommon.pri)
 include(SAKCharts.pri)
 include(SAKModbus.pri)
 include(SAKWebSocket.pri)
-include(SAKSerialPort.pri)
+include(src/debuggers/serialport/SAKSerialPort.pri)
 include(SAKBluetoothLowEnergy.pri)
 
 exists(private/SAKPrivate.pri){
