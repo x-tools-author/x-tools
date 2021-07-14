@@ -1,15 +1,15 @@
 FORMS += \
-    $$PWD/SAKUdpServerDeviceController.ui
+    $$PWD/SAKUdpServerController.ui
 
 HEADERS += \
-    $$PWD/SAKUdpServerDebugPage.hh \
-    $$PWD/SAKUdpServerDevice.hh \
-    $$PWD/SAKUdpServerDeviceController.hh
+    $$PWD/SAKUdpServerController.hh \
+    $$PWD/SAKUdpServerDebugger.hh \
+    $$PWD/SAKUdpServerDevice.hh
 
 SOURCES += \
-    $$PWD/SAKUdpServerDebugPage.cc \
-    $$PWD/SAKUdpServerDevice.cc \
-    $$PWD/SAKUdpServerDeviceController.cc
+    $$PWD/SAKUdpServerController.cc \
+    $$PWD/SAKUdpServerDebugger.cc \
+    $$PWD/SAKUdpServerDevice.cc
 
 INCLUDEPATH += \
     $$PWD

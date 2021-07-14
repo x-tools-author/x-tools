@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKUDPSERVERDEVICECONTROLLER_HH
-#define SAKUDPSERVERDEVICECONTROLLER_HH
+#ifndef SAKUDPSERVERCONTROLLER_HH
+#define SAKUDPSERVERCONTROLLER_HH
 
 #include <QMutex>
 #include <QWidget>
@@ -20,12 +20,12 @@
 #include "SAKDebugPageController.hh"
 
 namespace Ui {
-    class SAKUdpServerDeviceController;
+    class SAKUdpServerController;
 }
 
 class SAKDebugPage;
 /// @brief Udp server control panel
-class SAKUdpServerDeviceController:public SAKDebugPageController
+class SAKUdpServerController:public SAKDebugPageController
 {
     Q_OBJECT
 public:
@@ -38,8 +38,8 @@ public:
         QStringList clients;
     };
 
-    SAKUdpServerDeviceController(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
-    ~SAKUdpServerDeviceController();
+    SAKUdpServerController(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
+    ~SAKUdpServerController();
 
     QVariant parameters() final;
     void setUiEnable(bool opened) final;
@@ -50,7 +50,7 @@ private:
     QMutex mParametersMutex;
     UdpServerParameters mParameters;
 private:
-    Ui::SAKUdpServerDeviceController *mUi;
+    Ui::SAKUdpServerController *mUi;
     QComboBox *mServerHostComboBox;
     QLineEdit *mServerPortLineEdit;
     QComboBox *mClientHostComboBox;
@@ -60,5 +60,5 @@ private slots:
     void on_serverhostComboBox_currentTextChanged(const QString &arg1);
     void on_serverPortLineEdit_textChanged(const QString &arg1);
 };
-Q_DECLARE_METATYPE(SAKUdpServerDeviceController::UdpServerParameters);
+Q_DECLARE_METATYPE(SAKUdpServerController::UdpServerParameters);
 #endif

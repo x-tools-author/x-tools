@@ -13,13 +13,13 @@
 
 #include "SAKCommonDataStructure.hh"
 #include "SAKUdpServerDevice.hh"
-#include "SAKUdpServerDebugPage.hh"
-#include "SAKUdpServerDeviceController.hh"
+#include "SAKUdpServerDebugger.hh"
+#include "SAKUdpServerController.hh"
 
-SAKUdpServerDebugPage::SAKUdpServerDebugPage(int type, QString name, QWidget *parent)
+SAKUdpServerDebugger::SAKUdpServerDebugger(int type, QString name, QWidget *parent)
     :SAKDebugPage(type, name, parent)
 {
-    mDeviceController = new SAKUdpServerDeviceController(this);
+    mDeviceController = new SAKUdpServerController(this);
     mDevice = new SAKUdpServerDevice(this, this);
     initializePage();
 }

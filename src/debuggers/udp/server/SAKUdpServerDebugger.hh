@@ -13,11 +13,11 @@
 #include "SAKDebugPage.hh"
 
 class SAKUdpServerDevice;
-class SAKUdpServerDeviceController;
-class SAKUdpServerDebugPage : public SAKDebugPage
+class SAKUdpServerController;
+class SAKUdpServerDebugger : public SAKDebugPage
 {
     Q_OBJECT
 public:
-    Q_INVOKABLE SAKUdpServerDebugPage(int type, QString name, QWidget *parent = Q_NULLPTR);
+    Q_INVOKABLE SAKUdpServerDebugger(int type, QString name, QWidget *parent = Q_NULLPTR);
 };
 #endif

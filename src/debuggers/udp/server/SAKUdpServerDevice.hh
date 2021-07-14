@@ -15,13 +15,13 @@
 
 #include "SAKDebugPageDevice.hh"
 
-class SAKUdpServerDebugPage;
-class SAKUdpServerDeviceController;
+class SAKUdpServerDebugger;
+class SAKUdpServerController;
 class SAKUdpServerDevice:public SAKDebugPageDevice
 {
     Q_OBJECT
 public:
-    SAKUdpServerDevice(SAKUdpServerDebugPage *mDebugPage, QObject *parent = Q_NULLPTR);
+    SAKUdpServerDevice(SAKUdpServerDebugger *mDebugPage, QObject *parent = Q_NULLPTR);
 private:
     bool initializing(QString &errorString) final;
     bool open(QString &errorString) final;
@@ -31,9 +31,9 @@ private:
     void close() final;
     void free() final;
 private:
-    SAKUdpServerDebugPage *mDebugPage;
+    SAKUdpServerDebugger *mDebugPage;
     QUdpSocket *mUdpServer;
-    SAKUdpServerDeviceController *mDeviceController;
+    SAKUdpServerController *mDeviceController;
 signals:
     void addClient(QString host, quint16 port);
 };

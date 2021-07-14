@@ -14,10 +14,10 @@
 
 #include "SAKDebugPage.hh"
 #include "SAKUdpServerDevice.hh"
-#include "SAKUdpServerDebugPage.hh"
-#include "SAKUdpServerDeviceController.hh"
+#include "SAKUdpServerDebugger.hh"
+#include "SAKUdpServerController.hh"
 
-SAKUdpServerDevice::SAKUdpServerDevice(SAKUdpServerDebugPage *debugPage, QObject *parent)
+SAKUdpServerDevice::SAKUdpServerDevice(SAKUdpServerDebugger *debugPage, QObject *parent)
     :SAKDebugPageDevice(debugPage, parent)
     ,mDebugPage(debugPage)
     ,mUdpServer(Q_NULLPTR)
@@ -27,9 +27,9 @@ SAKUdpServerDevice::SAKUdpServerDevice(SAKUdpServerDebugPage *debugPage, QObject
 
 bool SAKUdpServerDevice::initializing(QString &errorString)
 {
-    mDeviceController = qobject_cast<SAKUdpServerDeviceController*>(mDebugPage->deviceController());
-    connect(this, &SAKUdpServerDevice::addClient, mDeviceController, &SAKUdpServerDeviceController::addClient);
-    auto parameters = mDeviceController->parameters().value<SAKUdpServerDeviceController::UdpServerParameters>();
+    mDeviceController = qobject_cast<SAKUdpServerController*>(mDebugPage->deviceController());
+    connect(this, &SAKUdpServerDevice::addClient, mDeviceController, &SAKUdpServerController::addClient);
+    auto parameters = mDeviceController->parameters().value<SAKUdpServerController::UdpServerParameters>();
 
     mUdpServer = new QUdpSocket;
     if (!mUdpServer->bind(QHostAddress(parameters.serverHost), parameters.serverPort, QUdpSocket::ShareAddress)){
@@ -61,7 +61,7 @@ QByteArray SAKUdpServerDevice::read()
         quint16 peerPort;
         qint64 ret = mUdpServer->readDatagram(bytes.data(), size, &peerAddress, &peerPort);
         if (ret > 0){
-            auto parameters = mDeviceController->parameters().value<SAKUdpServerDeviceController::UdpServerParameters>();
+            auto parameters = mDeviceController->parameters().value<SAKUdpServerController::UdpServerParameters>();
             QString currentHost = parameters.currentClientHost;
             quint16 currentPort = parameters.currentClientPort;
 
@@ -87,7 +87,7 @@ QByteArray SAKUdpServerDevice::read()
 
 QByteArray SAKUdpServerDevice::write(QByteArray bytes)
 {
-    auto parameters = mDeviceController->parameters().value<SAKUdpServerDeviceController::UdpServerParameters>();
+    auto parameters = mDeviceController->parameters().value<SAKUdpServerController::UdpServerParameters>();
     QString currentHost = parameters.currentClientHost;
     quint16 currentPort = parameters.currentClientPort;
     qint64 ret = mUdpServer->writeDatagram(bytes, QHostAddress(currentHost), currentPort);

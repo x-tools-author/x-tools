@@ -59,7 +59,7 @@
 #endif
 #ifdef SAK_IMPORT_MODULE_UDP
 #include "SAKUdpClientDebugger.hh"
-#include "SAKUdpServerDebugPage.hh"
+#include "SAKUdpServerDebugger.hh"
 #endif
 #ifdef SAK_IMPORT_MODULE_TCP
 #include "SAKTcpClientDebugger.hh"
@@ -555,7 +555,7 @@ void SAKMainWindow::initializingMetaObject()
 #endif
 #ifdef SAK_IMPORT_MODULE_UDP
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeUdpClient, SAKUdpClientDebugger::staticMetaObject, tr("UDP-C")});
-    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeUdpServer, SAKUdpServerDebugPage::staticMetaObject, tr("UDP-S")});
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeUdpServer, SAKUdpServerDebugger::staticMetaObject, tr("UDP-S")});
 #endif
 #ifdef SAK_IMPORT_MODULE_TCP
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeTCPClient, SAKTcpClientDebugger::staticMetaObject, tr("TCP-C")});

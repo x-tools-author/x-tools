@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SAKUdpServerDeviceController</class>
- <widget class="QWidget" name="SAKUdpServerDeviceController">
+ <class>SAKUdpServerController</class>
+ <widget class="QWidget" name="SAKUdpServerController">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>219</width>
-    <height>146</height>
+    <height>149</height>
    </rect>
   </property>
   <property name="windowTitle">
