@@ -1,4 +1,6 @@
-NO_OPENSSL_PRI_MESSAGE = "You should execute the command line: git submodule update --init"
+# The package is qter.QtSwissArmyKnife
+
+NO_OPENSSL_PRI_MESSAGE = "You should execute the command line: git submodule update --init libs/android_openssl"
 #------------------------------------------------------------------------------
 # The configuration is for Qt5.12-Qt5.14(MINI API is 16(Android 4.1))
 # Know more about the tools and version, you can see:https://wiki.qt.io/Qt_5.12_Tools_and_Versions
