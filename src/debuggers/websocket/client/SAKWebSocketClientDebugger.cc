@@ -24,7 +24,7 @@ SAKWebSocketClientDebugger::SAKWebSocketClientDebugger(int type, QString name, Q
     initializePage();
 }
 
-SAKDebugPageDevice* SAKWebSocketClientDebugger::device()
+SAKDebuggerDevice* SAKWebSocketClientDebugger::device()
 {
     return mDevice;
 }

@@ -31,7 +31,7 @@
 #include <QSqlDatabase>
 
 class SAKDataFactory;
-class SAKDebugPageDevice;
+class SAKDebuggerDevice;
 class SAKCommonCrcInterface;
 class SAKDebugPageController;
 class SAKOtherHighlighterManager;
@@ -161,7 +161,7 @@ protected:
      * @brief createDevice: Get the device instance, the device will be destroy when it is closed.
      * @return Device instance pointer
      */
-    virtual SAKDebugPageDevice* device() = 0;
+    virtual SAKDebuggerDevice* device() = 0;
 
     /**
      * @brief controller: Get the device controller of the debugger
@@ -190,7 +190,7 @@ private:
 #endif
     SAKDebugPageOutputController *mOutputController;
     SAKDebugPageStatisticsController *mStatisticsController;
-    SAKDebugPageDevice *mDevice;
+    SAKDebuggerDevice *mDevice;
     SAKDebugPageController *mDeviceController;
 private:
     void cleanInfo();

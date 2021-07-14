@@ -13,12 +13,12 @@
 #include <QWebSocket>
 #include <QAbstractSocket>
 
-#include "SAKDebugPageDevice.hh"
+#include "SAKDebuggerDevice.hh"
 
 class SAKWebSocketClientDebugger;
 class SAKWebSocketClientController;
 /// @brief Web socket client.
-class SAKWebSocketClientDevice:public SAKDebugPageDevice
+class SAKWebSocketClientDevice:public SAKDebuggerDevice
 {
     Q_OBJECT
 public:

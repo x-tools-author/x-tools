@@ -24,7 +24,7 @@ SAKUdpServerDebugger::SAKUdpServerDebugger(int type, QString name, QWidget *pare
     initializePage();
 }
 
-SAKDebugPageDevice* SAKUdpServerDebugger::device()
+SAKDebuggerDevice* SAKUdpServerDebugger::device()
 {
     return mDevice;
 }

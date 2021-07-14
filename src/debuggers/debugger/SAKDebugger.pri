@@ -51,7 +51,7 @@ HEADERS += \
     $$PWD/common/SAKDebugPageCommonDatabaseInterface.hh \
     $$PWD/common/SAKDebugPageCommonSslConfigurationWidget.hh \
     $$PWD/controller/SAKDebugPageController.hh \
-    $$PWD/device/SAKDebugPageDevice.hh \
+    $$PWD/device/SAKDebuggerDevice.hh \
     $$PWD/device/mask/SAKDebugPageDeviceMask.hh \
     $$PWD/input/SAKDebuggerInput.hh \
     $$PWD/input/crcsettings/SAKInputCrcSettingsDialog.hh \
@@ -84,7 +84,7 @@ SOURCES += \
     $$PWD/common/SAKDebugPageCommonDatabaseInterface.cc \
     $$PWD/common/SAKDebugPageCommonSslConfigurationWidget.cc \
     $$PWD/controller/SAKDebugPageController.cc \
-    $$PWD/device/SAKDebugPageDevice.cc \
+    $$PWD/device/SAKDebuggerDevice.cc \
     $$PWD/device/mask/SAKDebugPageDeviceMask.cc \
     $$PWD/input/SAKDebuggerInput.cc \
     $$PWD/input/crcsettings/SAKInputCrcSettingsDialog.cc \

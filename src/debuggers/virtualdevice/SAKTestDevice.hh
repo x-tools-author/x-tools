@@ -14,12 +14,12 @@
 #include <QThread>
 #include <QWaitCondition>
 
-#include "SAKDebugPageDevice.hh"
+#include "SAKDebuggerDevice.hh"
 
 class SAKTestDebugPage;
 class SAKTestDeviceController;
 /// @brief The class is used by developer to debug
-class SAKTestDevice:public SAKDebugPageDevice
+class SAKTestDevice:public SAKDebuggerDevice
 {
     Q_OBJECT
 public:

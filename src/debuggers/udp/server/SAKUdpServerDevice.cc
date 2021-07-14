@@ -18,7 +18,7 @@
 #include "SAKUdpServerController.hh"
 
 SAKUdpServerDevice::SAKUdpServerDevice(SAKUdpServerDebugger *debugPage, QObject *parent)
-    :SAKDebugPageDevice(debugPage, parent)
+    :SAKDebuggerDevice(debugPage, parent)
     ,mDebugPage(debugPage)
     ,mUdpServer(Q_NULLPTR)
 {

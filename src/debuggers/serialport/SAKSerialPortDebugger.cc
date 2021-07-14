@@ -24,7 +24,7 @@ SAKSerialPortDebugger::SAKSerialPortDebugger(int type, QString name, QWidget *pa
     initializePage();
 }
 
-SAKDebugPageDevice* SAKSerialPortDebugger::device()
+SAKDebuggerDevice* SAKSerialPortDebugger::device()
 {
     return mDevice;
 }

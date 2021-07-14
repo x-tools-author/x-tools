@@ -20,10 +20,10 @@ class SAKTestDebugPage : public SAKDebugger
 public:
     Q_INVOKABLE SAKTestDebugPage(int type, QString name, QWidget *parent = Q_NULLPTR);
 protected:
-    SAKDebugPageDevice* device() override;
+    SAKDebuggerDevice* device() override;
     SAKDebugPageController *controller() override;
 private:
-    SAKDebugPageDevice *mDevice;
+    SAKDebuggerDevice *mDevice;
     SAKDebugPageController *mDeviceController;
 };
 

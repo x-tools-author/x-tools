@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKDEBUGPAGDEVICE_HH
-#define SAKDEBUGPAGDEVICE_HH
+#ifndef SAKDEBUGGERDEVICE_HH
+#define SAKDEBUGGERDEVICE_HH
 #include <QMutex>
 #include <QThread>
 #include <QWaitCondition>
@@ -16,12 +16,12 @@
 /// @brief device abstract class
 class SAKDebugger;
 class SAKDebugPageDeviceMask;
-class SAKDebugPageDevice:public QThread
+class SAKDebuggerDevice:public QThread
 {
     Q_OBJECT
 public:
-    SAKDebugPageDevice(SAKDebugger *debugPage, QObject *parent = Q_NULLPTR);
-    ~SAKDebugPageDevice();
+    SAKDebuggerDevice(SAKDebugger *debugPage, QObject *parent = Q_NULLPTR);
+    ~SAKDebuggerDevice();
 
     /**
      * @brief wakeMe: wake the thread

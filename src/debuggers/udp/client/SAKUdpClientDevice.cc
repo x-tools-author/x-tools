@@ -16,7 +16,7 @@
 #include "SAKUdpClientController.hh"
 
 SAKUdpClientDevice::SAKUdpClientDevice(SAKUdpClientDebugger *debugPage, QObject *parent)
-    :SAKDebugPageDevice(debugPage, parent)
+    :SAKDebuggerDevice(debugPage, parent)
     ,mDebugPage(debugPage)
 {
     mParametersContext.enableUnicast = true;

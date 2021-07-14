@@ -15,11 +15,11 @@
 #include <QBluetoothSocket>
 #include <QLowEnergyController>
 
-#include "SAKDebugPageDevice.hh"
+#include "SAKDebuggerDevice.hh"
 
 class SAKBluetoothLowEnergyDebugPage;
 class SAKBluetoothLowEnergyDeviceController;
-class SAKBluetoothLowEnergyDevice:public SAKDebugPageDevice
+class SAKBluetoothLowEnergyDevice:public SAKDebuggerDevice
 {
     Q_OBJECT
 public:

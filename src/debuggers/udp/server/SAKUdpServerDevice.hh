@@ -13,11 +13,11 @@
 #include <QThread>
 #include <QUdpSocket>
 
-#include "SAKDebugPageDevice.hh"
+#include "SAKDebuggerDevice.hh"
 
 class SAKUdpServerDebugger;
 class SAKUdpServerController;
-class SAKUdpServerDevice:public SAKDebugPageDevice
+class SAKUdpServerDevice:public SAKDebuggerDevice
 {
     Q_OBJECT
 public:

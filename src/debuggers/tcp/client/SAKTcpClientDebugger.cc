@@ -24,7 +24,7 @@ SAKTcpClientDebugger::SAKTcpClientDebugger(int type, QString name, QWidget *pare
     initializePage();
 }
 
-SAKDebugPageDevice* SAKTcpClientDebugger::device()
+SAKDebuggerDevice* SAKTcpClientDebugger::device()
 {
     return mDevice;
 }

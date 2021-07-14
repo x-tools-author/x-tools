@@ -12,7 +12,7 @@
 
 #include "SAKDebugger.hh"
 
-class SAKDebugPageDevice;
+class SAKDebuggerDevice;
 class SAKDebugPageController;
 class SAKSerialPortController;
 class SAKSerialPortDebugger : public SAKDebugger
@@ -21,10 +21,10 @@ class SAKSerialPortDebugger : public SAKDebugger
 public:
     Q_INVOKABLE SAKSerialPortDebugger(int type, QString name, QWidget *parent = Q_NULLPTR);
 protected:
-    SAKDebugPageDevice* device() override;
+    SAKDebuggerDevice* device() override;
     SAKDebugPageController *controller() override;
 private:
-    SAKDebugPageDevice *mDevice;
+    SAKDebuggerDevice *mDevice;
     SAKDebugPageController *mDeviceController;
 };
 

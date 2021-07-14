@@ -24,7 +24,7 @@ SAKTestDebugPage::SAKTestDebugPage(int type, QString name, QWidget *parent)
     initializePage();
 }
 
-SAKDebugPageDevice* SAKTestDebugPage::device()
+SAKDebuggerDevice* SAKTestDebugPage::device()
 {
     return mDevice;
 }

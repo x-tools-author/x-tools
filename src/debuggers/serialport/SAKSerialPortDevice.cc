@@ -12,7 +12,7 @@
 #include "SAKSerialPortController.hh"
 
 SAKSerialPortDevice::SAKSerialPortDevice(SAKSerialPortDebugger *debugPage, QObject *parent)
-    :SAKDebugPageDevice(debugPage, parent)
+    :SAKDebuggerDevice(debugPage, parent)
     ,mSerialPort(Q_NULLPTR)
     ,mDebugPage(debugPage)
 {

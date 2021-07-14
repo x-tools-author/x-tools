@@ -28,7 +28,7 @@
 #include "SAKDebugger.hh"
 #include "SAKApplication.hh"
 #include "SAKDebuggerInput.hh"
-#include "SAKDebugPageDevice.hh"
+#include "SAKDebuggerDevice.hh"
 #include "SAKCommonCrcInterface.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKDebugPageController.hh"
@@ -215,8 +215,8 @@ void SAKDebugger::initializePage()
     mDevice = device();
     Q_ASSERT_X(mDevice, __FUNCTION__, "You must initialize the mDevice in the subcalss!");
 
-    connect(this, &SAKDebugger::requestWriteData, mDevice, &SAKDebugPageDevice::writeBytes);
-    connect(mDevice, &SAKDebugPageDevice::bytesWritten, this, &SAKDebugger::bytesWritten);
+    connect(this, &SAKDebugger::requestWriteData, mDevice, &SAKDebuggerDevice::writeBytes);
+    connect(mDevice, &SAKDebuggerDevice::bytesWritten, this, &SAKDebugger::bytesWritten);
 #if 0
     // The bytes read will be input to analyzer, after analyzing, the bytes will be input to debug page
     SAKOtherAnalyzerThreadManager *analyzerManager = mOtherController->analyzerThreadManager();

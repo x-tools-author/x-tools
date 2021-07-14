@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -13,10 +13,10 @@
 #include <QEventLoop>
 #include <QApplication>
 
-#include "SAKDebugPageDevice.hh"
+#include "SAKDebuggerDevice.hh"
 #include "SAKDebugPageDeviceMask.hh"
 
-SAKDebugPageDevice::SAKDebugPageDevice(SAKDebugger *debugPage, QObject *parent)
+SAKDebuggerDevice::SAKDebuggerDevice(SAKDebugger *debugPage, QObject *parent)
     :QThread(parent)
     ,mDebugPage(debugPage)
 {
@@ -25,7 +25,7 @@ SAKDebugPageDevice::SAKDebugPageDevice(SAKDebugger *debugPage, QObject *parent)
     mSettingsPanelList << SettingsPanel{tr("Mask settings"), qobject_cast<QWidget*>(mDeviceMask)};
 }
 
-SAKDebugPageDevice::~SAKDebugPageDevice()
+SAKDebuggerDevice::~SAKDebuggerDevice()
 {
     requestInterruption();
     mThreadWaitCondition.wakeAll();
@@ -38,12 +38,12 @@ SAKDebugPageDevice::~SAKDebugPageDevice()
     }
 }
 
-void SAKDebugPageDevice::requestWakeup()
+void SAKDebuggerDevice::requestWakeup()
 {
     mThreadWaitCondition.wakeAll();
 }
 
-void SAKDebugPageDevice::writeBytes(QByteArray bytes)
+void SAKDebuggerDevice::writeBytes(QByteArray bytes)
 {
     mWaitingForWritingBytesListMutex.lock();
     if (bytes.length()){
@@ -54,12 +54,12 @@ void SAKDebugPageDevice::writeBytes(QByteArray bytes)
     mWaitingForWritingBytesListMutex.unlock();
 }
 
-QList<SAKDebugPageDevice::SettingsPanel> SAKDebugPageDevice::settingsPanelList()
+QList<SAKDebuggerDevice::SettingsPanel> SAKDebuggerDevice::settingsPanelList()
 {
     return mSettingsPanelList;
 }
 
-QByteArray SAKDebugPageDevice::takeWaitingForWrittingBytes()
+QByteArray SAKDebuggerDevice::takeWaitingForWrittingBytes()
 {
     QByteArray bytes;
     mWaitingForWritingBytesListMutex.lock();
@@ -71,7 +71,7 @@ QByteArray SAKDebugPageDevice::takeWaitingForWrittingBytes()
     return bytes;
 }
 
-void SAKDebugPageDevice::run()
+void SAKDebuggerDevice::run()
 {
     QEventLoop eventLoop;
     QString errorString;
@@ -169,45 +169,45 @@ void SAKDebugPageDevice::run()
     free();
 }
 
-bool SAKDebugPageDevice::initializing(QString &errorString)
+bool SAKDebuggerDevice::initializing(QString &errorString)
 {
     errorString = QString("Need to override");
     return false;
 }
 
-bool SAKDebugPageDevice::open(QString &errorString)
+bool SAKDebuggerDevice::open(QString &errorString)
 {
     errorString = QString("Need to override");
     return false;
 }
 
-QByteArray SAKDebugPageDevice::read()
+QByteArray SAKDebuggerDevice::read()
 {
     return QByteArray();
 }
 
-QByteArray SAKDebugPageDevice::write(QByteArray bytes)
+QByteArray SAKDebuggerDevice::write(QByteArray bytes)
 {
     return bytes;
 }
 
-bool SAKDebugPageDevice::checkSomething(QString &errorString)
+bool SAKDebuggerDevice::checkSomething(QString &errorString)
 {
     errorString = QString("Unknown error");
     return true;
 }
 
-void SAKDebugPageDevice::close()
+void SAKDebuggerDevice::close()
 {
     // Nothing to do
 }
 
-void SAKDebugPageDevice::free()
+void SAKDebuggerDevice::free()
 {
     // Nothing to do
 }
 
-QByteArray SAKDebugPageDevice:: writeForTest()
+QByteArray SAKDebuggerDevice:: writeForTest()
 {
     return QByteArray();
 }

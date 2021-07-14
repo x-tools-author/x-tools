@@ -17,7 +17,7 @@
 #include "SAKTcpClientController.hh"
 
 SAKTcpClientDevice::SAKTcpClientDevice(SAKTcpClientDebugger *debugPage, QObject *parent)
-    :SAKDebugPageDevice(debugPage, parent)
+    :SAKDebuggerDevice(debugPage, parent)
     ,mDebugPage(debugPage)
 {
     // Reconnection
