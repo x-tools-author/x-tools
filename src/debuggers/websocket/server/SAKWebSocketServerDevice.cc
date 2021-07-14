@@ -15,10 +15,10 @@
 #include "SAKDebugPage.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKWebSocketServerDevice.hh"
-#include "SAKWebSocketServerDebugPage.hh"
-#include "SAKWebSocketServerDeviceController.hh"
+#include "SAKWebSocketServerDebugger.hh"
+#include "SAKWebSocketServerController.hh"
 
-SAKWebSocketServerDevice::SAKWebSocketServerDevice(SAKWebSocketServerDebugPage *debugPage, QObject *parent)
+SAKWebSocketServerDevice::SAKWebSocketServerDevice(SAKWebSocketServerDebugger *debugPage, QObject *parent)
     :SAKDebugPageDevice(debugPage, parent)
     ,mWebSocketServer(Q_NULLPTR)
     ,mDebugPage(debugPage)
@@ -28,12 +28,12 @@ SAKWebSocketServerDevice::SAKWebSocketServerDevice(SAKWebSocketServerDebugPage *
 
 bool SAKWebSocketServerDevice::initializing(QString &errorString)
 {
-    mDeviceController = qobject_cast<SAKWebSocketServerDeviceController*>(mDebugPage->deviceController());
-    auto parameters = mDeviceController->parameters().value<SAKWebSocketServerDeviceController::WebSocketServerParameters>();
+    mDeviceController = qobject_cast<SAKWebSocketServerController*>(mDebugPage->deviceController());
+    auto parameters = mDeviceController->parameters().value<SAKWebSocketServerController::WebSocketServerParameters>();
 
-    connect(this, &SAKWebSocketServerDevice::addClient, mDeviceController, &SAKWebSocketServerDeviceController::addClient);
-    connect(this, &SAKWebSocketServerDevice::removeClient, mDeviceController, &SAKWebSocketServerDeviceController::removeClient);
-    connect(this, &SAKWebSocketServerDevice::clearClient, mDeviceController, &SAKWebSocketServerDeviceController::clearClient);
+    connect(this, &SAKWebSocketServerDevice::addClient, mDeviceController, &SAKWebSocketServerController::addClient);
+    connect(this, &SAKWebSocketServerDevice::removeClient, mDeviceController, &SAKWebSocketServerController::removeClient);
+    connect(this, &SAKWebSocketServerDevice::clearClient, mDeviceController, &SAKWebSocketServerController::clearClient);
 
     QString serverName = QString("%1:%2").arg(parameters.serverHost).arg(parameters.serverPort);
     mWebSocketServer = new QWebSocketServer(serverName, QWebSocketServer::NonSecureMode);
@@ -58,7 +58,7 @@ QByteArray SAKWebSocketServerDevice::read()
 
 QByteArray SAKWebSocketServerDevice::write(QByteArray bytes)
 {
-    auto parameters = mDeviceController->parameters().value<SAKWebSocketServerDeviceController::WebSocketServerParameters>();
+    auto parameters = mDeviceController->parameters().value<SAKWebSocketServerController::WebSocketServerParameters>();
     for (auto &var : mClientList){
         QString peerHost = var->peerAddress().toString();
         quint16 peerPort = var->peerPort();
@@ -139,7 +139,7 @@ void SAKWebSocketServerDevice::free()
 
 void SAKWebSocketServerDevice::readBytesActually(QWebSocket *socket, QByteArray bytes)
 {
-    auto parameters = mDeviceController->parameters().value<SAKWebSocketServerDeviceController::WebSocketServerParameters>();
+    auto parameters = mDeviceController->parameters().value<SAKWebSocketServerController::WebSocketServerParameters>();
     QString currentClientHost = parameters.currentClientHost;
     QString peerHost = socket->peerAddress().toString();
     quint16 currentClientPort = parameters.currentClientPort;

@@ -13,13 +13,13 @@
 
 #include "SAKCommonDataStructure.hh"
 #include "SAKWebSocketServerDevice.hh"
-#include "SAKWebSocketServerDebugPage.hh"
-#include "SAKWebSocketServerDeviceController.hh"
+#include "SAKWebSocketServerDebugger.hh"
+#include "SAKWebSocketServerController.hh"
 
-SAKWebSocketServerDebugPage::SAKWebSocketServerDebugPage(int type, QString name, QWidget *parent)
+SAKWebSocketServerDebugger::SAKWebSocketServerDebugger(int type, QString name, QWidget *parent)
     :SAKDebugPage(type, name, parent)
 {
-    mDeviceController = new SAKWebSocketServerDeviceController(this);
+    mDeviceController = new SAKWebSocketServerController(this);
     mDevice = new SAKWebSocketServerDevice(this, this);
     initializePage();
 }

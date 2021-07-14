@@ -15,12 +15,12 @@
 #include "SAKDebugPage.hh"
 #include "SAKCommonInterface.hh"
 #include "SAKCommonDataStructure.hh"
-#include "SAKWebSocketServerDeviceController.hh"
-#include "ui_SAKWebSocketServerDeviceController.h"
+#include "SAKWebSocketServerController.hh"
+#include "ui_SAKWebSocketServerController.h"
 
-SAKWebSocketServerDeviceController::SAKWebSocketServerDeviceController(SAKDebugPage *debugPage, QWidget *parent)
+SAKWebSocketServerController::SAKWebSocketServerController(SAKDebugPage *debugPage, QWidget *parent)
     :SAKDebugPageController(debugPage, parent)
-    ,mUi(new Ui::SAKWebSocketServerDeviceController)
+    ,mUi(new Ui::SAKWebSocketServerController)
 {
     mUi->setupUi(this);
     mServerHostComboBox = mUi->serverhostComboBox;
@@ -29,18 +29,18 @@ SAKWebSocketServerDeviceController::SAKWebSocketServerDeviceController(SAKDebugP
     mSendingTypeComboBox = mUi->sendingTypeComboBox;
 
     SAKCommonDataStructure::setComboBoxTextWebSocketSendingType(mSendingTypeComboBox);
-    qRegisterMetaType<SAKWebSocketServerDeviceController::WebSocketServerParameters>("SAKWebSocketServerDeviceController::WebSocketServerParameters");
+    qRegisterMetaType<SAKWebSocketServerController::WebSocketServerParameters>("SAKWebSocketServerController::WebSocketServerParameters");
     mParameters.serverHost = mServerHostComboBox->currentText();
     mParameters.serverPort = mServerPortLineEdit->text().toInt();
     refreshDevice();
 }
 
-SAKWebSocketServerDeviceController::~SAKWebSocketServerDeviceController()
+SAKWebSocketServerController::~SAKWebSocketServerController()
 {
     delete mUi;
 }
 
-QVariant SAKWebSocketServerDeviceController::parameters()
+QVariant SAKWebSocketServerController::parameters()
 {
     mParametersMutex.lock();
     auto parameters = mParameters;
@@ -49,18 +49,18 @@ QVariant SAKWebSocketServerDeviceController::parameters()
     return QVariant::fromValue(parameters);
 }
 
-void SAKWebSocketServerDeviceController::setUiEnable(bool opened)
+void SAKWebSocketServerController::setUiEnable(bool opened)
 {
     mServerHostComboBox->setEnabled(!opened);
     mServerPortLineEdit->setEnabled(!opened);
 }
 
-void SAKWebSocketServerDeviceController::refreshDevice()
+void SAKWebSocketServerController::refreshDevice()
 {
     SAKCommonInterface::addIpItemsToComboBox(mServerHostComboBox);
 }
 
-void SAKWebSocketServerDeviceController::addClient(QString host, quint16 port, QWebSocket *socket)
+void SAKWebSocketServerController::addClient(QString host, quint16 port, QWebSocket *socket)
 {
     QString item = host.append(":");
     item.append(QString::number(port));
@@ -74,7 +74,7 @@ void SAKWebSocketServerDeviceController::addClient(QString host, quint16 port, Q
     mClientHostComboBox->addItem(item, QVariant::fromValue(socket));
 }
 
-void SAKWebSocketServerDeviceController::removeClient(QWebSocket *socket)
+void SAKWebSocketServerController::removeClient(QWebSocket *socket)
 {
     for(int i = 0; i < mClientHostComboBox->count(); i++){
         if (mClientHostComboBox->itemData(i).value<QWebSocket*>() == socket){
@@ -84,26 +84,26 @@ void SAKWebSocketServerDeviceController::removeClient(QWebSocket *socket)
     }
 }
 
-void SAKWebSocketServerDeviceController::clearClient()
+void SAKWebSocketServerController::clearClient()
 {
     mClientHostComboBox->clear();
 }
 
-void SAKWebSocketServerDeviceController::on_serverhostComboBox_currentTextChanged(const QString &arg1)
+void SAKWebSocketServerController::on_serverhostComboBox_currentTextChanged(const QString &arg1)
 {
     mParametersMutex.lock();
     mParameters.serverHost = arg1;
     mParametersMutex.unlock();
 }
 
-void SAKWebSocketServerDeviceController::on_serverPortLineEdit_textChanged(const QString &arg1)
+void SAKWebSocketServerController::on_serverPortLineEdit_textChanged(const QString &arg1)
 {
     mParametersMutex.lock();
     mParameters.serverPort = arg1.toInt();
     mParametersMutex.unlock();
 }
 
-void SAKWebSocketServerDeviceController::on_clientHostComboBox_currentTextChanged(const QString &arg1)
+void SAKWebSocketServerController::on_clientHostComboBox_currentTextChanged(const QString &arg1)
 {
     mParametersMutex.lock();
     mParameters.currentClientHost = arg1.split(':').first();
@@ -111,7 +111,7 @@ void SAKWebSocketServerDeviceController::on_clientHostComboBox_currentTextChange
     mParametersMutex.unlock();
 }
 
-void SAKWebSocketServerDeviceController::on_sendingTypeComboBox_currentIndexChanged(int index)
+void SAKWebSocketServerController::on_sendingTypeComboBox_currentIndexChanged(int index)
 {
     Q_UNUSED(index);
     mParametersMutex.lock();

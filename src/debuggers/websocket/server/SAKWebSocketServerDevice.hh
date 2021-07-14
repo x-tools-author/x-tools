@@ -16,14 +16,14 @@
 
 #include "SAKDebugPageDevice.hh"
 
-class SAKWebSocketServerDebugPage;
-class SAKWebSocketServerDeviceController;
+class SAKWebSocketServerDebugger;
+class SAKWebSocketServerController;
 /// @brief Web socket server device
 class SAKWebSocketServerDevice:public SAKDebugPageDevice
 {
     Q_OBJECT
 public:
-    SAKWebSocketServerDevice(SAKWebSocketServerDebugPage *debugPage, QObject *parent = Q_NULLPTR);
+    SAKWebSocketServerDevice(SAKWebSocketServerDebugger *debugPage, QObject *parent = Q_NULLPTR);
 private:
     bool initializing(QString &errorString) final;
     bool open(QString &errorString) final;
@@ -38,8 +38,8 @@ signals:
     void clearClient();
 private:
     QWebSocketServer *mWebSocketServer;
-    SAKWebSocketServerDebugPage *mDebugPage;
-    SAKWebSocketServerDeviceController *mDeviceController;
+    SAKWebSocketServerDebugger *mDebugPage;
+    SAKWebSocketServerController *mDeviceController;
     QList<QWebSocket*> mClientList;
 private:
     void readBytesActually(QWebSocket *socket, QByteArray bytes);

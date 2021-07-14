@@ -7,20 +7,20 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKWEBSOCKETSERVERDEBUGPAGE_HH
-#define SAKWEBSOCKETSERVERDEBUGPAGE_HH
+#ifndef SAKWEBSOCKETSERVERDEBUGGER_HH
+#define SAKWEBSOCKETSERVERDEBUGGER_HH
 
 #include "SAKDebugPage.hh"
 
 class SAKDebugPageController;
 class SAKWebSocketServerDevice;
-class SAKWebSocketServerDeviceController;
+class SAKWebSocketServerController;
 /// @brief Web socket server debugging page
-class SAKWebSocketServerDebugPage : public SAKDebugPage
+class SAKWebSocketServerDebugger : public SAKDebugPage
 {
     Q_OBJECT
 public:
-    Q_INVOKABLE SAKWebSocketServerDebugPage(int type, QString name, QWidget *parent = Q_NULLPTR);
+    Q_INVOKABLE SAKWebSocketServerDebugger(int type, QString name, QWidget *parent = Q_NULLPTR);
 };
 
 #endif

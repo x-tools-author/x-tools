@@ -1,15 +1,15 @@
 FORMS += \
-    $$PWD/SAKWebSocketServerDeviceController.ui
+    $$PWD/SAKWebSocketServerController.ui
 
 HEADERS += \
-    $$PWD/SAKWebSocketServerDebugPage.hh \
-    $$PWD/SAKWebSocketServerDevice.hh \
-    $$PWD/SAKWebSocketServerDeviceController.hh
+    $$PWD/SAKWebSocketServerController.hh \
+    $$PWD/SAKWebSocketServerDebugger.hh \
+    $$PWD/SAKWebSocketServerDevice.hh
 
 SOURCES += \
-    $$PWD/SAKWebSocketServerDebugPage.cc \
-    $$PWD/SAKWebSocketServerDevice.cc \
-    $$PWD/SAKWebSocketServerDeviceController.cc
+    $$PWD/SAKWebSocketServerController.cc \
+    $$PWD/SAKWebSocketServerDebugger.cc \
+    $$PWD/SAKWebSocketServerDevice.cc
 
 INCLUDEPATH += \
     $$PWD
