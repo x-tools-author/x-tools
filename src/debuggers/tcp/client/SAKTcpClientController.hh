@@ -18,11 +18,11 @@
 #include "SAKDebugPageController.hh"
 
 namespace Ui {
-    class SAKTcpClientDeviceController;
+    class SAKTcpClientController;
 }
 
 class SAKDebugPage;
-class SAKTcpClientDeviceController:public SAKDebugPageController
+class SAKTcpClientController:public SAKDebugPageController
 {
     Q_OBJECT
 public:
@@ -35,8 +35,8 @@ public:
         bool allowAutomaticConnection;
     };
 
-    SAKTcpClientDeviceController(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
-    ~SAKTcpClientDeviceController();
+    SAKTcpClientController(SAKDebugPage *debugPage, QWidget *parent = Q_NULLPTR);
+    ~SAKTcpClientController();
 
     QVariant parameters() final;
     void setUiEnable(bool opened) final;
@@ -46,7 +46,7 @@ private:
     QMutex mParametersMutex;
     TcpClientParameters mParameters;
 private:
-    Ui::SAKTcpClientDeviceController *mUi;
+    Ui::SAKTcpClientController *mUi;
     QComboBox *mLocalhostComboBox;
     QLineEdit *mLocalPortlineEdit;
     QCheckBox *mSpecifyClientAddressAndPort;
@@ -62,5 +62,5 @@ private slots:
     void on_serverPortLineEdit_textChanged(const QString &arg1);
     void on_automaticConnectionCheckBox_clicked();
 };
-Q_DECLARE_METATYPE(SAKTcpClientDeviceController::TcpClientParameters);
+Q_DECLARE_METATYPE(SAKTcpClientController::TcpClientParameters);
 #endif

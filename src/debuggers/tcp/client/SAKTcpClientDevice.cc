@@ -13,16 +13,16 @@
 #include <QApplication>
 
 #include "SAKTcpClientDevice.hh"
-#include "SAKTcpClientDebugPage.hh"
-#include "SAKTcpClientDeviceController.hh"
+#include "SAKTcpClientDebugger.hh"
+#include "SAKTcpClientController.hh"
 
-SAKTcpClientDevice::SAKTcpClientDevice(SAKTcpClientDebugPage *debugPage, QObject *parent)
+SAKTcpClientDevice::SAKTcpClientDevice(SAKTcpClientDebugger *debugPage, QObject *parent)
     :SAKDebugPageDevice(debugPage, parent)
     ,mDebugPage(debugPage)
 {
     // Reconnection
     connect(this, &SAKTcpClientDevice::finished, this, [&](){
-        auto parameters = mDeviceController->parameters().value<SAKTcpClientDeviceController::TcpClientParameters>();
+        auto parameters = mDeviceController->parameters().value<SAKTcpClientController::TcpClientParameters>();
         if (parameters.allowAutomaticConnection){
             QTimer *timer = new QTimer(this);
             timer->setInterval(2000);
@@ -40,9 +40,9 @@ SAKTcpClientDevice::SAKTcpClientDevice(SAKTcpClientDebugPage *debugPage, QObject
 bool SAKTcpClientDevice::initializing(QString &errorString)
 {
     QEventLoop eventLoop;
-    mDeviceController = qobject_cast<SAKTcpClientDeviceController*>(mDebugPage->deviceController());
-    connect(this, &SAKTcpClientDevice::clientInfoChange, mDeviceController, &SAKTcpClientDeviceController::setClientInfo);
-    auto parameters = mDeviceController->parameters().value<SAKTcpClientDeviceController::TcpClientParameters>();
+    mDeviceController = qobject_cast<SAKTcpClientController*>(mDebugPage->deviceController());
+    connect(this, &SAKTcpClientDevice::clientInfoChange, mDeviceController, &SAKTcpClientController::setClientInfo);
+    auto parameters = mDeviceController->parameters().value<SAKTcpClientController::TcpClientParameters>();
     mLocalHost = parameters.localHost;
     mLocalPort = parameters.localPort;
     mServerHost = parameters.serverHost;

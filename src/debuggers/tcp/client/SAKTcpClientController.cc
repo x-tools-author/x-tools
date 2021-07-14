@@ -14,12 +14,12 @@
 
 #include "SAKDebugPage.hh"
 #include "SAKCommonInterface.hh"
-#include "SAKTcpClientDeviceController.hh"
-#include "ui_SAKTcpClientDeviceController.h"
+#include "SAKTcpClientController.hh"
+#include "ui_SAKTcpClientController.h"
 
-SAKTcpClientDeviceController::SAKTcpClientDeviceController(SAKDebugPage *debugPage, QWidget *parent)
+SAKTcpClientController::SAKTcpClientController(SAKDebugPage *debugPage, QWidget *parent)
     :SAKDebugPageController(debugPage, parent)
-    ,mUi(new Ui::SAKTcpClientDeviceController)
+    ,mUi(new Ui::SAKTcpClientController)
 {
     mUi->setupUi(this);
 
@@ -32,7 +32,7 @@ SAKTcpClientDeviceController::SAKTcpClientDeviceController(SAKDebugPage *debugPa
     mServerHostLineEdit = mUi->serverHostLineEdit;
     mServerPortLineEdit = mUi->serverPortLineEdit;
 
-    qRegisterMetaType<SAKTcpClientDeviceController::TcpClientParameters>("SAKTcpClientDeviceController::TcpClientParameters");
+    qRegisterMetaType<SAKTcpClientController::TcpClientParameters>("SAKTcpClientController::TcpClientParameters");
     mParameters.localHost = mLocalhostComboBox->currentText();
     mParameters.localPort = mLocalPortlineEdit->text().toInt();
     mParameters.specifyClientAddressAndPort = mSpecifyClientAddressAndPort->isChecked();
@@ -41,12 +41,12 @@ SAKTcpClientDeviceController::SAKTcpClientDeviceController(SAKDebugPage *debugPa
     refreshDevice();
 }
 
-SAKTcpClientDeviceController::~SAKTcpClientDeviceController()
+SAKTcpClientController::~SAKTcpClientController()
 {
     delete mUi;
 }
 
-QVariant SAKTcpClientDeviceController::parameters()
+QVariant SAKTcpClientController::parameters()
 {
     TcpClientParameters parameters;
     mParametersMutex.lock();
@@ -61,7 +61,7 @@ QVariant SAKTcpClientDeviceController::parameters()
     return QVariant::fromValue(parameters);
 }
 
-void SAKTcpClientDeviceController::setUiEnable(bool opened)
+void SAKTcpClientController::setUiEnable(bool opened)
 {
     mLocalhostComboBox->setEnabled(!opened);
     mLocalPortlineEdit->setEnabled(!opened);
@@ -70,17 +70,17 @@ void SAKTcpClientDeviceController::setUiEnable(bool opened)
     mServerPortLineEdit->setEnabled(!opened);
 }
 
-void SAKTcpClientDeviceController::refreshDevice()
+void SAKTcpClientController::refreshDevice()
 {
     SAKCommonInterface::addIpItemsToComboBox(mLocalhostComboBox);
 }
 
-void SAKTcpClientDeviceController::setClientInfo(QString info)
+void SAKTcpClientController::setClientInfo(QString info)
 {
     mClientInfoLineEdit->setText(info);
 }
 
-void SAKTcpClientDeviceController::on_localhostComboBox_currentIndexChanged(int index)
+void SAKTcpClientController::on_localhostComboBox_currentIndexChanged(int index)
 {
     Q_UNUSED(index);
     mParametersMutex.lock();
@@ -88,7 +88,7 @@ void SAKTcpClientDeviceController::on_localhostComboBox_currentIndexChanged(int 
     mParametersMutex.unlock();
 }
 
-void SAKTcpClientDeviceController::on_localPortlineEdit_textChanged(const QString &arg1)
+void SAKTcpClientController::on_localPortlineEdit_textChanged(const QString &arg1)
 {
     Q_UNUSED(arg1);
     mParametersMutex.lock();
@@ -96,28 +96,28 @@ void SAKTcpClientDeviceController::on_localPortlineEdit_textChanged(const QStrin
     mParametersMutex.unlock();
 }
 
-void SAKTcpClientDeviceController::on_specifyClientAddressAndPort_clicked()
+void SAKTcpClientController::on_specifyClientAddressAndPort_clicked()
 {
     mParametersMutex.lock();
     mParameters.specifyClientAddressAndPort = mSpecifyClientAddressAndPort->isChecked();
     mParametersMutex.unlock();
 }
 
-void SAKTcpClientDeviceController::on_serverHostLineEdit_textChanged(const QString &arg1)
+void SAKTcpClientController::on_serverHostLineEdit_textChanged(const QString &arg1)
 {
     mParametersMutex.lock();
     mParameters.serverHost = arg1;
     mParametersMutex.unlock();
 }
 
-void SAKTcpClientDeviceController::on_serverPortLineEdit_textChanged(const QString &arg1)
+void SAKTcpClientController::on_serverPortLineEdit_textChanged(const QString &arg1)
 {
     mParametersMutex.lock();
     mParameters.serverPort = static_cast<quint16>(arg1.toInt());
     mParametersMutex.unlock();
 }
 
-void SAKTcpClientDeviceController::on_automaticConnectionCheckBox_clicked()
+void SAKTcpClientController::on_automaticConnectionCheckBox_clicked()
 {
     mParametersMutex.lock();
     mParameters.allowAutomaticConnection = mUi->automaticConnectionCheckBox->isChecked();

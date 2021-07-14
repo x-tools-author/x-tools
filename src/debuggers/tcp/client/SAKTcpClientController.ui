@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SAKTcpClientDeviceController</class>
- <widget class="QWidget" name="SAKTcpClientDeviceController">
+ <class>SAKTcpClientController</class>
+ <widget class="QWidget" name="SAKTcpClientController">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>179</width>
-    <height>213</height>
+    <width>181</width>
+    <height>227</height>
    </rect>
   </property>
   <property name="windowTitle">
