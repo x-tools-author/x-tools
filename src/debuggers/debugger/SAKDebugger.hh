@@ -37,7 +37,7 @@ class SAKDebugPageController;
 class SAKOtherHighlighterManager;
 class SAKDebugPageOtherController;
 class SAKDebuggerInput;
-class SAKDebugPageOutputController;
+class SAKDebuggerOutput;
 #ifdef SAK_IMPORT_MODULE_CHARTS
 class SAKDebugPageChartsController;
 #endif
@@ -60,7 +60,7 @@ public:
     friend class SAKDebugPageOtherController;
     friend class SAKDebuggerInput;
     friend class SAKDebugPageChartsController;
-    friend class SAKDebugPageOutputController;
+    friend class SAKDebuggerOutput;
     friend class SAKDebugPageStatisticsController;
 
     /**
@@ -132,7 +132,7 @@ public:
      * @brief outputController: Get SAKDebugPageOutputController instance pointer
      * @return SAKDebugPageOutputController instance pointer
      */
-    SAKDebugPageOutputController *outputController();
+    SAKDebuggerOutput *outputController();
 
     /**
      * @brief statisticsController: Get SAKDebugPageStatisticsController instance pointer
@@ -188,7 +188,7 @@ private:
 #ifdef SAK_IMPORT_MODULE_CHARTS
     SAKDebugPageChartsController *mChartsController;
 #endif
-    SAKDebugPageOutputController *mOutputController;
+    SAKDebuggerOutput *mOutputController;
     SAKDebugPageStatisticsController *mStatisticsController;
     SAKDebuggerDevice *mDevice;
     SAKDebugPageController *mDeviceController;

@@ -27,12 +27,12 @@ class SAKOutputLogDialog;
 class SAKOutputSave2FileDialog;
 class SAKOtherHighlighterManager;
 /// @brief output data controller
-class SAKDebugPageOutputController:public QThread
+class SAKDebuggerOutput:public QThread
 {
     Q_OBJECT
 public:
-    SAKDebugPageOutputController(SAKDebugger *mDebugPage, QObject *parent = Q_NULLPTR);
-    ~SAKDebugPageOutputController();
+    SAKDebuggerOutput(SAKDebugger *mDebugPage, QObject *parent = Q_NULLPTR);
+    ~SAKDebuggerOutput();
     void outputLog(QString log, bool isInfo = true);
 
     struct OutputParameters {

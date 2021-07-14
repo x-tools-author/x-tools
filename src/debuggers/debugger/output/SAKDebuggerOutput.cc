@@ -19,9 +19,9 @@
 #include "SAKCommonDataStructure.hh"
 #include "SAKOutputSave2FileDialog.hh"
 #include "SAKOtherHighlighterManager.hh"
-#include "SAKDebugPageOutputController.hh"
+#include "SAKDebuggerOutput.hh"
 
-SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugger *debugPage, QObject *parent)
+SAKDebuggerOutput::SAKDebuggerOutput(SAKDebugger *debugPage, QObject *parent)
     :QThread(parent)
     ,mDebugPage(debugPage)
     ,mSettings(Q_NULLPTR)
@@ -78,17 +78,17 @@ SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugger *debugPag
 #endif
 
     // Input data
-    connect(debugPage, &SAKDebugger::bytesRead, this, &SAKDebugPageOutputController::bytesRead);
-    connect(debugPage, &SAKDebugger::bytesWritten, this, &SAKDebugPageOutputController::bytesWritten);
+    connect(debugPage, &SAKDebugger::bytesRead, this, &SAKDebuggerOutput::bytesRead);
+    connect(debugPage, &SAKDebugger::bytesWritten, this, &SAKDebuggerOutput::bytesWritten);
 
     // Output data
-    connect(this, &SAKDebugPageOutputController::dataCooked, this, &SAKDebugPageOutputController::outputData);
+    connect(this, &SAKDebuggerOutput::dataCooked, this, &SAKDebuggerOutput::outputData);
 
     // Animation
     mUpdateRxAnimationTimer.setInterval(20);
     mUpdateTxAnimationTimer.setInterval(20);
-    connect(&mUpdateRxAnimationTimer, &QTimer::timeout, this, &SAKDebugPageOutputController::updateRxAnimation);
-    connect(&mUpdateTxAnimationTimer, &QTimer::timeout, this, &SAKDebugPageOutputController::updateTxAnimation);
+    connect(&mUpdateRxAnimationTimer, &QTimer::timeout, this, &SAKDebuggerOutput::updateRxAnimation);
+    connect(&mUpdateTxAnimationTimer, &QTimer::timeout, this, &SAKDebuggerOutput::updateTxAnimation);
 
     // Do something make memory happy
     mOutputTextBroswer->document()->setMaximumBlockCount(1000);
@@ -103,7 +103,7 @@ SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugger *debugPag
     mMoreOutputSettingsPushButton->setMenu(moreOutputSettingsPushButtonMenu);
     QAction *saveAction = new QAction(tr("Save to File"), this);
     moreOutputSettingsPushButtonMenu->addAction(saveAction);
-    connect(saveAction, &QAction::triggered, this, &SAKDebugPageOutputController::saveOutputTextToFile);
+    connect(saveAction, &QAction::triggered, this, &SAKDebuggerOutput::saveOutputTextToFile);
     QAction *saveToFileAction = new QAction(tr("Write to File"), this);
     moreOutputSettingsPushButtonMenu->addAction(saveToFileAction);
     connect(saveToFileAction, &QAction::triggered, mSave2FileDialog, &SAKOutputSave2FileDialog::show);
@@ -118,7 +118,7 @@ SAKDebugPageOutputController::SAKDebugPageOutputController(SAKDebugger *debugPag
     start();
 }
 
-SAKDebugPageOutputController::~SAKDebugPageOutputController()
+SAKDebuggerOutput::~SAKDebuggerOutput()
 {
     // Exit the thread first
     requestInterruption();
@@ -130,12 +130,12 @@ SAKDebugPageOutputController::~SAKDebugPageOutputController()
     delete mSave2FileDialog;
 }
 
-void SAKDebugPageOutputController::outputLog(QString log, bool isInfo)
+void SAKDebuggerOutput::outputLog(QString log, bool isInfo)
 {
     mSAKOutputLogDialog->outputMessage(log, isInfo);
 }
 
-void SAKDebugPageOutputController::run()
+void SAKDebuggerOutput::run()
 {
     QEventLoop eventLoop;
     while (true) {
@@ -163,7 +163,7 @@ void SAKDebugPageOutputController::run()
     }
 }
 
-void SAKDebugPageOutputController::updateRxAnimation()
+void SAKDebuggerOutput::updateRxAnimation()
 {
     mUpdateRxAnimationTimer.stop();
     mRxLabel->setText(QString("C%1").arg(QString(""), mRxAnimationgCount, '<'));
@@ -174,7 +174,7 @@ void SAKDebugPageOutputController::updateRxAnimation()
     }
 }
 
-void SAKDebugPageOutputController::updateTxAnimation()
+void SAKDebuggerOutput::updateTxAnimation()
 {
     mUpdateTxAnimationTimer.stop();
     mTxLabel->setText(QString("C%1").arg(QString(""), mTxAnimationCount, '>'));
@@ -185,7 +185,7 @@ void SAKDebugPageOutputController::updateTxAnimation()
     }
 }
 
-void SAKDebugPageOutputController::setLineWrapMode()
+void SAKDebuggerOutput::setLineWrapMode()
 {
     if (mAutoWrapCheckBox->isChecked()){
         mOutputTextBroswer->setLineWrapMode(QTextEdit::WidgetWidth);
@@ -194,7 +194,7 @@ void SAKDebugPageOutputController::setLineWrapMode()
     }
 }
 
-void SAKDebugPageOutputController::saveOutputTextToFile()
+void SAKDebuggerOutput::saveOutputTextToFile()
 {
     QString outFileName = QFileDialog::getSaveFileName(Q_NULLPTR,
                                                        tr("Save to file"),
@@ -217,12 +217,12 @@ void SAKDebugPageOutputController::saveOutputTextToFile()
     }
 }
 
-void SAKDebugPageOutputController::saveOutputDataSettings()
+void SAKDebuggerOutput::saveOutputDataSettings()
 {
     mSave2FileDialog->show();
 }
 
-void SAKDebugPageOutputController::saveOutputDataToFile()
+void SAKDebuggerOutput::saveOutputDataToFile()
 {
     if (mSaveOutputToFileCheckBox->isChecked()){
         connect(mDebugPage, &SAKDebugger::bytesRead, mSave2FileDialog, &SAKOutputSave2FileDialog::bytesRead);
@@ -233,7 +233,7 @@ void SAKDebugPageOutputController::saveOutputDataToFile()
     }
 }
 
-void SAKDebugPageOutputController::bytesRead(QByteArray data)
+void SAKDebuggerOutput::bytesRead(QByteArray data)
 {
     if (!mUpdateRxAnimationTimer.isActive()){
         mUpdateRxAnimationTimer.start();
@@ -255,7 +255,7 @@ void SAKDebugPageOutputController::bytesRead(QByteArray data)
     mThreadWaitCondition.wakeAll();
 }
 
-void SAKDebugPageOutputController::bytesWritten(QByteArray data)
+void SAKDebuggerOutput::bytesWritten(QByteArray data)
 {
     if (!mUpdateTxAnimationTimer.isActive()){
         mUpdateTxAnimationTimer.start();
@@ -277,7 +277,7 @@ void SAKDebugPageOutputController::bytesWritten(QByteArray data)
     mThreadWaitCondition.wakeAll();
 }
 
-void SAKDebugPageOutputController::outputData(QString data, bool rawData)
+void SAKDebuggerOutput::outputData(QString data, bool rawData)
 {
     if (!mHasBeenClear){
         mHasBeenClear = true;
@@ -291,7 +291,7 @@ void SAKDebugPageOutputController::outputData(QString data, bool rawData)
     }
 }
 
-SAKDebugPageOutputController::OutputParameters SAKDebugPageOutputController::outputDataParameters(bool isReceivedData)
+SAKDebuggerOutput::OutputParameters SAKDebuggerOutput::outputDataParameters(bool isReceivedData)
 {
     OutputParameters parameters;
     parameters.showDate = mShowDateCheckBox->isChecked();
@@ -304,7 +304,7 @@ SAKDebugPageOutputController::OutputParameters SAKDebugPageOutputController::out
     return parameters;
 }
 
-SAKDebugPageOutputController::RawDataStruct SAKDebugPageOutputController::takeRawData()
+SAKDebuggerOutput::RawDataStruct SAKDebuggerOutput::takeRawData()
 {
     RawDataStruct rawData;
     mRawDataListMutex.lock();
@@ -316,7 +316,7 @@ SAKDebugPageOutputController::RawDataStruct SAKDebugPageOutputController::takeRa
     return rawData;
 }
 
-void SAKDebugPageOutputController::readinSettings()
+void SAKDebuggerOutput::readinSettings()
 {
     auto setValue = [](QVariant &var){
         if (var.isNull()){
@@ -360,7 +360,7 @@ void SAKDebugPageOutputController::readinSettings()
     mRawDataCheckBox->setChecked(value);
 }
 
-void SAKDebugPageOutputController::innerCookData(QByteArray rawData, OutputParameters parameters)
+void SAKDebuggerOutput::innerCookData(QByteArray rawData, OutputParameters parameters)
 {
     QString str;
     str.append("<font color=silver>[</font>");
@@ -395,43 +395,43 @@ void SAKDebugPageOutputController::innerCookData(QByteArray rawData, OutputParam
     emit dataCooked(str, parameters.isRawData);
 }
 
-void SAKDebugPageOutputController::onOutputTextFormatComboBoxCurrentTextChanged(const QString &text)
+void SAKDebuggerOutput::onOutputTextFormatComboBoxCurrentTextChanged(const QString &text)
 {
     Q_UNUSED(text);
     mSettings->setValue(mSettingStringOutputTextFormat, QVariant::fromValue(mOutputTextFormatComboBox->currentIndex()));
 }
 
-void SAKDebugPageOutputController::onShowDateCheckBoxClicked()
+void SAKDebuggerOutput::onShowDateCheckBoxClicked()
 {
     mSettings->setValue(mSettingStringShowDate, QVariant::fromValue(mShowDateCheckBox->isChecked()));
 }
 
-void SAKDebugPageOutputController::onAutoWrapCheckBoxClicked()
+void SAKDebuggerOutput::onAutoWrapCheckBoxClicked()
 {
     mSettings->setValue(mSettingStringAutoWrap, QVariant::fromValue(mAutoWrapCheckBox->isChecked()));
 }
 
-void SAKDebugPageOutputController::onShowTimeCheckBoxClicked()
+void SAKDebuggerOutput::onShowTimeCheckBoxClicked()
 {
     mSettings->setValue(mSettingStringShowTime, QVariant::fromValue(mShowTimeCheckBox->isChecked()));
 }
 
-void SAKDebugPageOutputController::onShowMsCheckBoxClicked()
+void SAKDebuggerOutput::onShowMsCheckBoxClicked()
 {
     mSettings->setValue(mSettingStringShowMs, QVariant::fromValue(mShowMsCheckBox->isChecked()));
 }
 
-void SAKDebugPageOutputController::onShowRxDataCheckBoxClicked()
+void SAKDebuggerOutput::onShowRxDataCheckBoxClicked()
 {
     mSettings->setValue(mSettingStringShowRx, QVariant::fromValue(mShowRxDataCheckBox->isChecked()));
 }
 
-void SAKDebugPageOutputController::onShowTxDataCheckBoxClicked()
+void SAKDebuggerOutput::onShowTxDataCheckBoxClicked()
 {
     mSettings->setValue(mSettingStringShowTx, QVariant::fromValue(mShowTxDataCheckBox->isChecked()));
 }
 
-void SAKDebugPageOutputController::onRawDataCheckBoxClicked()
+void SAKDebuggerOutput::onRawDataCheckBoxClicked()
 {
     mSettings->setValue(mSettingStringRawData, QVariant::fromValue(mRawDataCheckBox->isChecked()));
 }

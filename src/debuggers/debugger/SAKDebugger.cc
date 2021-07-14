@@ -35,7 +35,7 @@
 #include "SAKOtherAnalyzerThread.hh"
 #include "SAKOtherHighlighterManager.hh"
 #include "SAKDebugPageOtherController.hh"
-#include "SAKDebugPageOutputController.hh"
+#include "SAKDebuggerOutput.hh"
 #include "SAKOtherAnalyzerThreadManager.hh"
 #include "SAKOtherAutoResponseItemManager.hh"
 #include "SAKDebugPageStatisticsController.hh"
@@ -66,8 +66,7 @@ SAKDebugger::SAKDebugger(int type, QString name, QWidget *parent)
     initializingVariables();
 
     mDatabaseInterface = new SAKDebugPageCommonDatabaseInterface(this, sakApp->sqlDatabase(), this);
-    mOutputController = new SAKDebugPageOutputController(this, this);
-
+    mOutputController = new SAKDebuggerOutput(this, this);
     mOtherController = new SAKDebugPageOtherController(this, this);
     mStatisticsController = new SAKDebugPageStatisticsController(this, this);
     mInputController = new SAKDebuggerInput(this, this);
@@ -166,7 +165,7 @@ SAKDebugPageChartsController *SAKDebugger::chartsController()
 }
 #endif
 
-SAKDebugPageOutputController *SAKDebugger::outputController()
+SAKDebuggerOutput *SAKDebugger::outputController()
 {
     return mOutputController;
 }

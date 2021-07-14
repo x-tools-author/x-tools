@@ -73,7 +73,7 @@ HEADERS += \
     $$PWD/other/transmission/SAKOtherTransmissionItemUdp.hh \
     $$PWD/other/transmission/SAKOtherTransmissionPage.hh \
     $$PWD/other/transmission/SAKOtherTransmissionPageViewer.hh \
-    $$PWD/output/SAKDebugPageOutputController.hh \
+    $$PWD/output/SAKDebuggerOutput.hh \
     $$PWD/output/log/SAKOutputLogDialog.hh \
     $$PWD/output/save2file/SAKOutputSave2FileDialog.hh \
     $$PWD/output/save2file/SAKOutputSave2FileThread.hh \
@@ -106,7 +106,7 @@ SOURCES += \
     $$PWD/other/transmission/SAKOtherTransmissionItemUdp.cc \
     $$PWD/other/transmission/SAKOtherTransmissionPage.cc \
     $$PWD/other/transmission/SAKOtherTransmissionPageViewer.cc \
-    $$PWD/output/SAKDebugPageOutputController.cc \
+    $$PWD/output/SAKDebuggerOutput.cc \
     $$PWD/output/log/SAKOutputLogDialog.cc \
     $$PWD/output/save2file/SAKOutputSave2FileDialog.cc \
     $$PWD/output/save2file/SAKOutputSave2FileThread.cc \
