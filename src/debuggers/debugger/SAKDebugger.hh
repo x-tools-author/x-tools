@@ -43,7 +43,7 @@ class SAKDebuggerPlugins;
 class SAKDebugPageChartsController;
 #endif
 class SAKOtherTransmissionPageViewer;
-class SAKDebugPageStatisticsController;
+class SAKDebuggerStatistics;
 class SAKDebugPageCommonDatabaseInterface;
 
 namespace Ui {
@@ -61,8 +61,6 @@ public:
     friend class SAKDebugPageOtherController;
     friend class SAKDebuggerInput;
     friend class SAKDebugPageChartsController;
-    friend class SAKDebuggerOutput;
-    friend class SAKDebugPageStatisticsController;
 
     /**
      * @brief write: Write data to device
@@ -139,7 +137,7 @@ public:
      * @brief statisticsController: Get SAKDebugPageStatisticsController instance pointer
      * @return SAKDebugPageStatisticsController instance pointer
      */
-    SAKDebugPageStatisticsController *statisticsController();
+    SAKDebuggerStatistics *statisticsController();
 
     /**
      * @brief deviceController: Get the device controller instance, the controller will be destroy when the page is closed.
@@ -190,7 +188,7 @@ private:
     SAKDebugPageChartsController *mChartsController;
 #endif
     SAKDebuggerOutput *mOutputController;
-    SAKDebugPageStatisticsController *mStatisticsController;
+    SAKDebuggerStatistics *mStatistics;
     SAKDebuggerDevice *mDevice;
     SAKDebugPageController *mDeviceController;
     SAKDebuggerPlugins *mPlugins;

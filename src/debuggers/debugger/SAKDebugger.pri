@@ -1,4 +1,4 @@
-include($$PWD/charts/SAKCharts.pri)
+include($$PWD/plugins/charts/SAKCharts.pri)
 
 INCLUDEPATH += \
     $$PWD \
@@ -10,13 +10,12 @@ INCLUDEPATH += \
     $$PWD/input/crcsettings \
     $$PWD/input/datafactory \
     $$PWD/input/datapreset \
-    $$PWD/other \
-    $$PWD/other/autoresponse \
-    $$PWD/other/highlighter \
-    $$PWD/other/generator \
-    $$PWD/other/analyzer \
-    $$PWD/other/timingsent \
-    $$PWD/other/transmission \
+    $$PWD/plugins/autoresponse \
+    $$PWD/plugins/highlighter \
+    $$PWD/plugins/generator \
+    $$PWD/device/analyzer \
+    $$PWD/plugins/timingsent \
+    $$PWD/plugins/transmission \
     $$PWD/output \
     $$PWD/statistics \
     $$PWD/plugins
@@ -28,17 +27,17 @@ FORMS += \
     $$PWD/input/crcsettings/SAKInputCrcSettingsDialog.ui \
     $$PWD/input/datapreset/SAKInputDataPresetItem.ui \
     $$PWD/input/datapreset/SAKInputDataPresetItemManager.ui \
-    $$PWD/other/analyzer/SAKOtherAnalyzerThreadManager.ui \
-    $$PWD/other/autoresponse/SAKOtherAutoResponseItem.ui \
-    $$PWD/other/autoresponse/SAKOtherAutoResponseItemManager.ui \
-    $$PWD/other/highlighter/SAKOtherHighlighterManager.ui \
-    $$PWD/other/timingsent/SAKOtherTimingSentItem.ui \
-    $$PWD/other/timingsent/SAKOtherTimingSentItemManager.ui \
-    $$PWD/other/transmission/SAKOtherTransmissionItemCom.ui \
-    $$PWD/other/transmission/SAKOtherTransmissionItemTcp.ui \
-    $$PWD/other/transmission/SAKOtherTransmissionItemUdp.ui \
-    $$PWD/other/transmission/SAKOtherTransmissionPage.ui \
-    $$PWD/other/transmission/SAKOtherTransmissionPageViewer.ui \
+    $$PWD/device/analyzer/SAKOtherAnalyzerThreadManager.ui \
+    $$PWD/plugins/autoresponse/SAKOtherAutoResponseItem.ui \
+    $$PWD/plugins/autoresponse/SAKOtherAutoResponseItemManager.ui \
+    $$PWD/plugins/highlighter/SAKOtherHighlighterManager.ui \
+    $$PWD/plugins/timingsent/SAKOtherTimingSentItem.ui \
+    $$PWD/plugins/timingsent/SAKOtherTimingSentItemManager.ui \
+    $$PWD/plugins/transmission/SAKOtherTransmissionItemCom.ui \
+    $$PWD/plugins/transmission/SAKOtherTransmissionItemTcp.ui \
+    $$PWD/plugins/transmission/SAKOtherTransmissionItemUdp.ui \
+    $$PWD/plugins/transmission/SAKOtherTransmissionPage.ui \
+    $$PWD/plugins/transmission/SAKOtherTransmissionPageViewer.ui \
     $$PWD/output/SAKDebuggerOutputHighlighter.ui \
     $$PWD/output/SAKDebuggerOutputLog.ui \
     $$PWD/output/SAKDebuggerOutputSave2File.ui
@@ -58,27 +57,27 @@ HEADERS += \
     $$PWD/input/datafactory/SAKInputDataFactory.hh \
     $$PWD/input/datapreset/SAKInputDataPresetItem.hh \
     $$PWD/input/datapreset/SAKInputDataPresetItemManager.hh \
-    $$PWD/other/SAKDebugPageOtherController.hh \
-    $$PWD/other/analyzer/SAKOtherAnalyzerThread.hh \
-    $$PWD/other/analyzer/SAKOtherAnalyzerThreadManager.hh \
-    $$PWD/other/autoresponse/SAKOtherAutoResponseItem.hh \
-    $$PWD/other/autoresponse/SAKOtherAutoResponseItemManager.hh \
-    $$PWD/other/highlighter/SAKOtherHighlighter.hh \
-    $$PWD/other/highlighter/SAKOtherHighlighterManager.hh \
-    $$PWD/other/timingsent/SAKOtherTimingSentItem.hh \
-    $$PWD/other/timingsent/SAKOtherTimingSentItemManager.hh \
-    $$PWD/other/transmission/SAKOtherTransmissionItem.hh \
-    $$PWD/other/transmission/SAKOtherTransmissionItemCom.hh \
-    $$PWD/other/transmission/SAKOtherTransmissionItemTcp.hh \
-    $$PWD/other/transmission/SAKOtherTransmissionItemUdp.hh \
-    $$PWD/other/transmission/SAKOtherTransmissionPage.hh \
-    $$PWD/other/transmission/SAKOtherTransmissionPageViewer.hh \
+    $$PWD/plugins/SAKDebugPageOtherController.hh \
+    $$PWD/device/analyzer/SAKOtherAnalyzerThread.hh \
+    $$PWD/device/analyzer/SAKOtherAnalyzerThreadManager.hh \
+    $$PWD/plugins/autoresponse/SAKOtherAutoResponseItem.hh \
+    $$PWD/plugins/autoresponse/SAKOtherAutoResponseItemManager.hh \
+    $$PWD/plugins/highlighter/SAKOtherHighlighter.hh \
+    $$PWD/plugins/highlighter/SAKOtherHighlighterManager.hh \
+    $$PWD/plugins/timingsent/SAKOtherTimingSentItem.hh \
+    $$PWD/plugins/timingsent/SAKOtherTimingSentItemManager.hh \
+    $$PWD/plugins/transmission/SAKOtherTransmissionItem.hh \
+    $$PWD/plugins/transmission/SAKOtherTransmissionItemCom.hh \
+    $$PWD/plugins/transmission/SAKOtherTransmissionItemTcp.hh \
+    $$PWD/plugins/transmission/SAKOtherTransmissionItemUdp.hh \
+    $$PWD/plugins/transmission/SAKOtherTransmissionPage.hh \
+    $$PWD/plugins/transmission/SAKOtherTransmissionPageViewer.hh \
     $$PWD/output/SAKDebuggerOutput.hh \
     $$PWD/output/SAKDebuggerOutputHighlighter.hh \
     $$PWD/output/SAKDebuggerOutputLog.hh \
     $$PWD/output/SAKDebuggerOutputSave2File.hh \
     $$PWD/plugins/SAKDebuggerPlugins.hh \
-    $$PWD/statistics/SAKDebugPageStatisticsController.hh
+    $$PWD/statistics/SAKDebuggerStatistics.hh
 
 SOURCES += \
     $$PWD/SAKDebugger.cc \
@@ -92,24 +91,24 @@ SOURCES += \
     $$PWD/input/datafactory/SAKInputDataFactory.cc \
     $$PWD/input/datapreset/SAKInputDataPresetItem.cc \
     $$PWD/input/datapreset/SAKInputDataPresetItemManager.cc \
-    $$PWD/other/SAKDebugPageOtherController.cc \
-    $$PWD/other/analyzer/SAKOtherAnalyzerThread.cc \
-    $$PWD/other/analyzer/SAKOtherAnalyzerThreadManager.cc \
-    $$PWD/other/autoresponse/SAKOtherAutoResponseItem.cc \
-    $$PWD/other/autoresponse/SAKOtherAutoResponseItemManager.cc \
-    $$PWD/other/highlighter/SAKOtherHighlighter.cc \
-    $$PWD/other/highlighter/SAKOtherHighlighterManager.cc \
-    $$PWD/other/timingsent/SAKOtherTimingSentItem.cc \
-    $$PWD/other/timingsent/SAKOtherTimingSentItemManager.cc \
-    $$PWD/other/transmission/SAKOtherTransmissionItem.cc \
-    $$PWD/other/transmission/SAKOtherTransmissionItemCom.cc \
-    $$PWD/other/transmission/SAKOtherTransmissionItemTcp.cc \
-    $$PWD/other/transmission/SAKOtherTransmissionItemUdp.cc \
-    $$PWD/other/transmission/SAKOtherTransmissionPage.cc \
-    $$PWD/other/transmission/SAKOtherTransmissionPageViewer.cc \
+    $$PWD/plugins/SAKDebugPageOtherController.cc \
+    $$PWD/device/analyzer/SAKOtherAnalyzerThread.cc \
+    $$PWD/device/analyzer/SAKOtherAnalyzerThreadManager.cc \
+    $$PWD/plugins/autoresponse/SAKOtherAutoResponseItem.cc \
+    $$PWD/plugins/autoresponse/SAKOtherAutoResponseItemManager.cc \
+    $$PWD/plugins/highlighter/SAKOtherHighlighter.cc \
+    $$PWD/plugins/highlighter/SAKOtherHighlighterManager.cc \
+    $$PWD/plugins/timingsent/SAKOtherTimingSentItem.cc \
+    $$PWD/plugins/timingsent/SAKOtherTimingSentItemManager.cc \
+    $$PWD/plugins/transmission/SAKOtherTransmissionItem.cc \
+    $$PWD/plugins/transmission/SAKOtherTransmissionItemCom.cc \
+    $$PWD/plugins/transmission/SAKOtherTransmissionItemTcp.cc \
+    $$PWD/plugins/transmission/SAKOtherTransmissionItemUdp.cc \
+    $$PWD/plugins/transmission/SAKOtherTransmissionPage.cc \
+    $$PWD/plugins/transmission/SAKOtherTransmissionPageViewer.cc \
     $$PWD/output/SAKDebuggerOutput.cc \
     $$PWD/output/SAKDebuggerOutputHighlighter.cc \
     $$PWD/output/SAKDebuggerOutputLog.cc \
     $$PWD/output/SAKDebuggerOutputSave2File.cc \
     $$PWD/plugins/SAKDebuggerPlugins.cc \
-    $$PWD/statistics/SAKDebugPageStatisticsController.cc
+    $$PWD/statistics/SAKDebuggerStatistics.cc

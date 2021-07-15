@@ -39,7 +39,7 @@
 #include "SAKDebugPageOtherController.hh"
 #include "SAKOtherAnalyzerThreadManager.hh"
 #include "SAKOtherAutoResponseItemManager.hh"
-#include "SAKDebugPageStatisticsController.hh"
+#include "SAKDebuggerStatistics.hh"
 #include "SAKDebugPageCommonDatabaseInterface.hh"
 
 #ifdef SAK_IMPORT_MODULE_CHARTS
@@ -79,7 +79,13 @@ SAKDebugger::SAKDebugger(int type, QString name, QWidget *parent)
                                               mOutputTextBroswer,
                                               this);
     mOtherController = new SAKDebugPageOtherController(this, this);
-    mStatisticsController = new SAKDebugPageStatisticsController(this, this);
+    mStatistics = new SAKDebuggerStatistics(mTxSpeedLabel,
+                                                      mRxSpeedLabel,
+                                                      mTxFramesLabel,
+                                                      mRxFramesLabel,
+                                                      mTxBytesLabel,
+                                                      mRxBytesLabel,
+                                                      this);
     mInputController = new SAKDebuggerInput(this, this);
 #ifdef SAK_IMPORT_MODULE_CHARTS
     mChartsController= new SAKDebugPageChartsController(this);
@@ -181,9 +187,9 @@ SAKDebuggerOutput *SAKDebugger::outputController()
     return mOutputController;
 }
 
-SAKDebugPageStatisticsController *SAKDebugger::statisticsController()
+SAKDebuggerStatistics *SAKDebugger::statisticsController()
 {
-    return mStatisticsController;
+    return mStatistics;
 }
 
 SAKDebugPageController *SAKDebugger::deviceController()
@@ -225,6 +231,10 @@ void SAKDebugger::initializePage()
     mDevice = device();
     Q_ASSERT_X(mDevice, __FUNCTION__, "You must initialize the mDevice in the subcalss!");
 
+    // Statistics
+    connect(mDevice, &SAKDebuggerDevice::bytesRead, mStatistics, &SAKDebuggerStatistics::bytesRead);
+    connect(mDevice, &SAKDebuggerDevice::bytesWritten, mStatistics, &SAKDebuggerStatistics::bytesWritten);
+
     connect(this, &SAKDebugger::requestWriteData, mDevice, &SAKDebuggerDevice::writeBytes);
     connect(mDevice, &SAKDebuggerDevice::bytesWritten, this, &SAKDebugger::bytesWritten);
 
@@ -240,7 +250,7 @@ void SAKDebugger::initializePage()
     connect(mDevice, &SAKDebuggerDevice::finished, this, &SAKDebugger::closeDevice, Qt::QueuedConnection);
 
 
-    // Initialize the more button, the firs thing to do is clear the old actions and delete the old menu.
+    // Initialize the more button, the first thing to do is clear the old actions and delete the old menu.
     auto deviceMorePushButtonMenu = mDeviceMorePushButton->menu();
     if (deviceMorePushButtonMenu){
         deviceMorePushButtonMenu->clear();
