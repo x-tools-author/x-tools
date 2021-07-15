@@ -63,6 +63,7 @@ public:
         QByteArray data;
         QMDStructOutputParametersContext ctx;
     };
+
     void onBytesRead(QByteArray bytes);
     void onBytesWritten(QByteArray bytes);
     void outputMessage(QString msg, bool isInfo = true);
