@@ -163,7 +163,10 @@ void SAKDebuggerOutputSave2File::on_selectPushButton_clicked()
     QString datetime = QDateTime::currentDateTime().toString("yyyyMMddhhmmss");
     QString fileName;
     datetime.append(".txt");
-    fileName = QFileDialog::getSaveFileName(this, tr("保存文件"), QString("%1/%2").arg(m_defaultPath).arg(datetime), QString("txt (*.txt)"));
+    fileName = QFileDialog::getSaveFileName(this,
+                                            tr("保存文件"),
+                                            QString("%1/%2").arg(m_defaultPath, datetime),
+                                            QString("txt (*.txt)"));
 
     if (!fileName.isEmpty()){
         m_pathLineEdit->setText(fileName);
@@ -296,7 +299,7 @@ void SAKDebuggerOutputSave2File::Save2FileThread::innerWriteDataToFile(QByteArra
         QString path = fullPath.remove(fileName);
         if (fileInfo.size() > 1024*1024){
             QFile file(parameters.fileName);
-            file.rename(QString("%1/backup_%2_%3").arg(path).arg(QDateTime::currentDateTime().toString("yyyyMMddhhmmss")).arg(fileName));
+            file.rename(QString("%1/backup_%2_%3").arg(path, QDateTime::currentDateTime().toString("yyyyMMddhhmmss"), fileName));
         }
     }
 
@@ -308,9 +311,9 @@ void SAKDebuggerOutputSave2File::Save2FileThread::innerWriteDataToFile(QByteArra
     if (file.open(QFile::WriteOnly | QFile::Text | QFile::Append)){
         dataString = bytes2String(data, format);
         QString outString = QString("[%1%2]%3")
-                .arg(parameters.saveTimestamp ? QString(QDateTime::currentDateTime().toString("hh:mm:ss ")) : QString(""))
-                .arg(parameters.type == SAKDebuggerOutputSave2File::ParametersContext::Read ? QString("Rx") : QString("Tx"))
-                .arg(dataString);
+                .arg(parameters.saveTimestamp ? QString(QDateTime::currentDateTime().toString("hh:mm:ss ")) : QString(""),
+                     parameters.type == SAKDebuggerOutputSave2File::ParametersContext::Read ? QString("Rx") : QString("Tx"),
+                     dataString);
         textStream << outString << "\n";
         file.close();
     }
