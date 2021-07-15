@@ -232,8 +232,12 @@ void SAKDebugger::initializePage()
     Q_ASSERT_X(mDevice, __FUNCTION__, "You must initialize the mDevice in the subcalss!");
 
     // Statistics
-    connect(mDevice, &SAKDebuggerDevice::bytesRead, mStatistics, &SAKDebuggerStatistics::bytesRead);
-    connect(mDevice, &SAKDebuggerDevice::bytesWritten, mStatistics, &SAKDebuggerStatistics::bytesWritten);
+    connect(mDevice, &SAKDebuggerDevice::bytesRead, mStatistics, &SAKDebuggerStatistics::onBytesRead);
+    connect(mDevice, &SAKDebuggerDevice::bytesWritten, mStatistics, &SAKDebuggerStatistics::onBytesWritten);
+
+    // Outout
+    connect(mDevice, &SAKDebuggerDevice::bytesRead, mOutputController, &SAKDebuggerOutput::onBytesRead);
+    connect(mDevice, &SAKDebuggerDevice::bytesWritten, mOutputController, &SAKDebuggerOutput::onBytesWritten);
 
     connect(this, &SAKDebugger::requestWriteData, mDevice, &SAKDebuggerDevice::writeBytes);
     connect(mDevice, &SAKDebuggerDevice::bytesWritten, this, &SAKDebugger::bytesWritten);
