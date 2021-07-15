@@ -13,425 +13,359 @@
 #include <QDateTime>
 #include <QTextStream>
 #include <QFileDialog>
+#include <QStandardPaths>
 
-#include "SAKDebugger.hh"
-#include "SAKOutputLogDialog.hh"
-#include "SAKCommonDataStructure.hh"
-#include "SAKOutputSave2FileDialog.hh"
-#include "SAKOtherHighlighterManager.hh"
 #include "SAKDebuggerOutput.hh"
+#include "SAKDebuggerOutputLog.hh"
+#include "SAKCommonDataStructure.hh"
+#include "SAKDebuggerOutputSave2File.hh"
+#include "SAKDebuggerOutputHighlighter.hh"
 
-SAKDebuggerOutput::SAKDebuggerOutput(SAKDebugger *debugPage, QObject *parent)
+SAKDebuggerOutput::SAKDebuggerOutput(QPushButton *menuBt, QComboBox *formatCB,
+                                       QSettings *settings, QString settingGroup,
+                                       QTextBrowser *textBrower, QObject *parent)
     :QThread(parent)
-    ,mDebugPage(debugPage)
-    ,mSettings(Q_NULLPTR)
-    ,mSave2FileDialog(Q_NULLPTR)
-    ,mHasBeenClear(false)
-    ,mRxAnimationgCount(5)
-    ,mTxAnimationCount(0)
+    ,mMenuPushButton(menuBt)
+    ,mFormatComboBox(formatCB)
+    ,mSettings(settings)
+    ,mSettingsGroup(settingGroup)
+    ,mTextBrower(textBrower)
 {
-    // Initialize ui component
-    mRxLabel = debugPage->mRxLabel;
-    mTxLabel = debugPage->mTxLabel;
-    mOutputTextFormatComboBox = debugPage->mOutputTextFormatComboBox;
-    mShowDateCheckBox = debugPage->mShowDateCheckBox;
-    mAutoWrapCheckBox = debugPage->mAutoWrapCheckBox;
-    mShowTimeCheckBox = debugPage->mShowTimeCheckBox;
-    mShowMsCheckBox = debugPage->mShowMsCheckBox;
-    mShowRxDataCheckBox = debugPage->mShowRxDataCheckBox;
-    mShowTxDataCheckBox = debugPage->mShowTxDataCheckBox;
-    mSaveOutputToFileCheckBox = debugPage->mSaveOutputToFileCheckBox;
-    mRawDataCheckBox = debugPage->mRawDataCheckBox;
-    mMoreOutputSettingsPushButton = debugPage->mMoreOutputSettingsPushButton;
-    mClearOutputPushButton = debugPage->mClearOutputPushButton;
-    mOutputTextBroswer = debugPage->mOutputTextBroswer;
-    SAKCommonDataStructure::setComboBoxTextOutputFormat(mOutputTextFormatComboBox);
+    mSettingsKeyCtx.showDate = mSettingsGroup + "/" + "showDate";
+    mSettingsKeyCtx.showTime = mSettingsGroup + "/" + "showTime";
+    mSettingsKeyCtx.showRx = mSettingsGroup + "/" + "showRx";
+    mSettingsKeyCtx.showTx = mSettingsGroup + "/" + "showTx";
+    mSettingsKeyCtx.showMs = mSettingsGroup + "/" + "showMs";
+    mSettingsKeyCtx.wrapAnywhere = mSettingsGroup + "/" + "wrapAnywhere";
+    mSettingsKeyCtx.textFormat = mSettingsGroup + "/" + "textFormat";
+    mSettingsKeyCtx.faceWithoutMakeup = mSettingsGroup + "/" + "faceWithoutMakeup";
 
-    // Initializing setting keys
-    QString group = mDebugPage->settingsGroup();
-    mSettingStringOutputTextFormat = QString("%1/outputTextFormat").arg(group);
-    mSettingStringShowDate = QString("%1/showDate").arg(group);
-    mSettingStringAutoWrap = QString("%1/autoWrap").arg(group);
-    mSettingStringShowTime = QString("%1/showTime").arg(group);
-    mSettingStringShowMs = QString("%1/showMs").arg(group);
-    mSettingStringShowRx = QString("%1/showRx").arg(group);
-    mSettingStringShowTx = QString("%1/showTx").arg(group);
-    mSettingStringRawData = QString("%1/rawData").arg(group);
 
-    // Readin settings before connecting signals and slots
-    mSettings = mDebugPage->settings();
-    //readinSettings();
+    mFormatComboBox->blockSignals(true);
+    mFormatComboBox->addItem("Bin", SAKCommonDataStructure::OutputFormatBin);
+    mFormatComboBox->addItem("Otc", SAKCommonDataStructure::OutputFormatOct);
+    mFormatComboBox->addItem("Dec", SAKCommonDataStructure::OutputFormatDec);
+    mFormatComboBox->addItem("Hex", SAKCommonDataStructure::OutputFormatHex);
+    mFormatComboBox->addItem("Ucs4", SAKCommonDataStructure::OutputFormatUcs4);
+    mFormatComboBox->addItem("Utf8", SAKCommonDataStructure::OutputFormatUtf8);
+    mFormatComboBox->addItem("Utf16", SAKCommonDataStructure::OutputFormatUtf16);
+    mFormatComboBox->addItem("Ascii", SAKCommonDataStructure::OutputFormatAscii);
+    mFormatComboBox->addItem(tr("System"), SAKCommonDataStructure::OutputFormatLocal);
 
-    // Connecting signals and slots
-#if 0
-    connect(mSaveOutputToFileCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::saveOutputDataToFile);
-    connect(mAutoWrapCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::setLineWrapMode);
-    connect(mClearOutputPushButton, &QCheckBox::clicked, mOutputTextBroswer, &QTextBrowser::clear);
-    connect(mOutputTextFormatComboBox, &QComboBox::currentTextChanged, this, &SAKDebugPageOutputController::onOutputTextFormatComboBoxCurrentTextChanged);
-    connect(mShowDateCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::onShowDateCheckBoxClicked);
-    connect(mAutoWrapCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::onAutoWrapCheckBoxClicked);
-    connect(mShowTimeCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::onShowTimeCheckBoxClicked);
-    connect(mShowMsCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::onShowMsCheckBoxClicked);
-    connect(mShowRxDataCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::onShowRxDataCheckBoxClicked);
-    connect(mShowTxDataCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::onShowTxDataCheckBoxClicked);
-    connect(mRawDataCheckBox, &QCheckBox::clicked, this, &SAKDebugPageOutputController::onRawDataCheckBoxClicked);
-#endif
 
-    // Input data
-    connect(debugPage, &SAKDebugger::bytesRead, this, &SAKDebuggerOutput::bytesRead);
-    connect(debugPage, &SAKDebugger::bytesWritten, this, &SAKDebuggerOutput::bytesWritten);
+    // Readin settings
+    auto textFromatOutput = mSettings->value(mSettingsKeyCtx.textFormat).toString();
+    int index = mFormatComboBox->findText(textFromatOutput);
+    if (index != -1) {
+        mFormatComboBox->setCurrentIndex(index);
+    }
+    mOutputParametersCtx.textFormat = mFormatComboBox->currentData().toInt();
+    mFormatComboBox->blockSignals(false);
 
-    // Output data
-    connect(this, &SAKDebuggerOutput::dataCooked, this, &SAKDebuggerOutput::outputData);
 
-    // Animation
-    mUpdateRxAnimationTimer.setInterval(20);
-    mUpdateTxAnimationTimer.setInterval(20);
-    connect(&mUpdateRxAnimationTimer, &QTimer::timeout, this, &SAKDebuggerOutput::updateRxAnimation);
-    connect(&mUpdateTxAnimationTimer, &QTimer::timeout, this, &SAKDebuggerOutput::updateTxAnimation);
+    connect(mFormatComboBox, &QComboBox::currentTextChanged, this, [&](const QString &text){
+        mSettings->setValue(mSettingsKeyCtx.textFormat, text);
+        mOutputParametersCtxMutex.lock();
+        mOutputParametersCtx.textFormat = mFormatComboBox->currentData().toInt();
+        mOutputParametersCtxMutex.unlock();
+    });
 
-    // Do something make memory happy
-    mOutputTextBroswer->document()->setMaximumBlockCount(1000);
 
-    // The class is used to save data to file
-    mSave2FileDialog = new SAKOutputSave2FileDialog(mDebugPage);
-    mSAKOutputLogDialog = new SAKOutputLogDialog(mDebugPage);
-    mSAKOtherHighlighterManager = new SAKOtherHighlighterManager(mOutputTextBroswer->document());
+    QMenu *btMenu = new QMenu(mMenuPushButton);
+    auto menu = new QMenu(tr("Output Parameters"), btMenu);
+    btMenu->addMenu(menu);
+    QAction *action = menu->addAction(tr("Auto Wrap"));
+    action->setCheckable(true);
+    bool wrapAnywhere = mSettings->value(mSettingsKeyCtx.wrapAnywhere).isNull()
+            ? true
+            : mSettings->value(mSettingsKeyCtx.wrapAnywhere).toBool();
+    action->setChecked(wrapAnywhere);
+    connect(action, &QAction::triggered, this, [=](){
+        mTextBrower->setWordWrapMode(action->isChecked() ? QTextOption::WrapAnywhere : QTextOption::NoWrap);
+        mSettings->setValue(mSettingsKeyCtx.wrapAnywhere, action->isChecked());
+    });
+    menu->addAction(action);
+    menu->addSeparator();
 
-    // More output settings menu
-    auto moreOutputSettingsPushButtonMenu = new QMenu;
-    mMoreOutputSettingsPushButton->setMenu(moreOutputSettingsPushButtonMenu);
-    QAction *saveAction = new QAction(tr("Save to File"), this);
-    moreOutputSettingsPushButtonMenu->addAction(saveAction);
-    connect(saveAction, &QAction::triggered, this, &SAKDebuggerOutput::saveOutputTextToFile);
-    QAction *saveToFileAction = new QAction(tr("Write to File"), this);
-    moreOutputSettingsPushButtonMenu->addAction(saveToFileAction);
-    connect(saveToFileAction, &QAction::triggered, mSave2FileDialog, &SAKOutputSave2FileDialog::show);
-    QAction *logAction = new QAction(tr("Log Output View"), this);
-    moreOutputSettingsPushButtonMenu->addAction(logAction);
-    connect(logAction, &QAction::triggered, mSAKOutputLogDialog, &SAKOutputLogDialog::show);
-    QAction *highlightSettingsAction = new QAction(tr("Highlight Settings"), this);
-    moreOutputSettingsPushButtonMenu->addAction(highlightSettingsAction);
-    connect(highlightSettingsAction, &QAction::triggered, mSAKOtherHighlighterManager, &SAKOtherHighlighterManager::show);
+    QStringList paras;
+    QVector<QAction*> actionVector;
+    paras << tr("Show Date") << tr("Show Time") << tr("Show MS") << tr("Show Rx Data") << tr("Show Tx Data");
+    for (int i = 0; i < paras.length(); i++) {
+        auto name = paras.at(i);
+        action = menu->addAction(name);
+        action->setCheckable(true);
 
-    // The thread will started when the class is initailzed
-    start();
+        if (i < 3) {
+            actionVector.append(action);
+        }
+
+        QString key = QString("");
+        switch (i) {
+        case 0: key = mSettingsKeyCtx.showDate; break;
+        case 1: key = mSettingsKeyCtx.showTime; break;
+        case 2: key = mSettingsKeyCtx.showMs; break;
+        case 3: key = mSettingsKeyCtx.showRx; break;
+        case 4: key = mSettingsKeyCtx.showTx; break;
+        default: Q_ASSERT_X(false, __FUNCTION__, "Unknow index"); break;
+        }
+
+        bool checked = mSettings->value(key).isNull()
+                ? true
+                : mSettings->value(key).toBool();
+        action->setChecked(checked);
+        switch (i) {
+        case 0: mOutputParametersCtx.showDate = checked; break;
+        case 1: mOutputParametersCtx.showTime = checked; break;
+        case 2: mOutputParametersCtx.showMs = checked; break;
+        case 3: mOutputParametersCtx.showRx = checked; break;
+        case 4: mOutputParametersCtx.showTx = checked; break;
+        default: Q_ASSERT_X(false, __FUNCTION__, "Unknow index"); break;
+        }
+
+        connect(action, &QAction::triggered, this, [=](bool checked){
+            mSettings->setValue(key, action->isChecked());
+            mOutputParametersCtxMutex.lock();
+            switch (i) {
+            case 0: mOutputParametersCtx.showDate = checked; break;
+            case 1: mOutputParametersCtx.showTime = checked; break;
+            case 2: mOutputParametersCtx.showMs = checked; break;
+            case 3: mOutputParametersCtx.showRx = checked; break;
+            case 4: mOutputParametersCtx.showTx = checked; break;
+            default: Q_ASSERT_X(false, __FUNCTION__, "Unknow index"); break;
+            }
+            mOutputParametersCtxMutex.unlock();
+        });
+    }
+    menu->addSeparator();
+    action = menu->addAction(tr("Face Without Makeup "));
+    action->setToolTip(tr("Just output data which is read or written!"));
+    action->setCheckable(true);
+    bool enable = mSettings->value(mSettingsKeyCtx.faceWithoutMakeup).toBool();
+    action->setChecked(enable);
+    mOutputParametersCtx.faceWithoutMakeup = enable;
+    auto setFaceWithoutMakeup = [=](bool enable){
+        for (int i = 0; i < actionVector.length(); i++) {
+            QAction *a = actionVector.at(i);
+            a->setEnabled(!enable);
+        }
+
+        this->mOutputParametersCtxMutex.lock();
+        this->mOutputParametersCtx.faceWithoutMakeup = enable;
+        this->mOutputParametersCtxMutex.unlock();
+        mSettings->setValue(mSettingsKeyCtx.faceWithoutMakeup, enable);
+    };
+
+    setFaceWithoutMakeup(enable);
+    connect(action, &QAction::triggered, this, [=](){
+        bool enable = action->isChecked();
+        setFaceWithoutMakeup(enable);
+    });
+
+    mHhighlighter = new SAKDebuggerOutputHighlighter(mTextBrower->document());
+    m_log = new SAKDebuggerOutputLog();
+    m_save2File = new SAKDebuggerOutputSave2File(mSettings, settingGroup);
+
+    action = btMenu->addAction(tr("Save Output"));
+    connect(action, &QAction::triggered, this, &SAKDebuggerOutput::save);
+    btMenu->addSeparator();
+    action = btMenu->addAction(tr("Highlighter"));
+    connect(action, &QAction::triggered, mHhighlighter, &SAKDebuggerOutputHighlighter::show);
+    action = btMenu->addAction(tr("Log"));
+    connect(action, &QAction::triggered, m_log, &SAKDebuggerOutputLog::show);
+    action = btMenu->addAction(tr("Write to Disk"));
+    connect(action, &QAction::triggered, m_save2File, &SAKDebuggerOutputSave2File::show);
+    mMenuPushButton->setMenu(btMenu);
+
+
+    connect(this, &SAKDebuggerOutput::bytesCooked, this, [=](QString dataString, bool faceWithoutMakeup) {
+        if (faceWithoutMakeup) {
+            mTextBrower->textCursor().movePosition(QTextCursor::End);
+            mTextBrower->insertHtml(dataString);
+        } else {
+            mTextBrower->append(dataString);
+        }
+    }, Qt::QueuedConnection);
+
+
+    connect(this, &SAKDebuggerOutput::finished, this, [&](){
+        mDataVaectorMutex.lock();
+        if (mDataVaector.length()) {
+            start();
+        }
+        mDataVaectorMutex.unlock();
+    });
+
+    textBrower->document()->setMaximumBlockCount(2000);
 }
 
 SAKDebuggerOutput::~SAKDebuggerOutput()
 {
-    // Exit the thread first
-    requestInterruption();
-    mThreadWaitCondition.wakeAll();
+#if 0
+    delete m_save2File;
+    delete m_log;
+#endif
+    mHhighlighter->deleteLater();
     exit();
     wait();
-
-    // Free memory
-    delete mSave2FileDialog;
 }
 
-void SAKDebuggerOutput::outputLog(QString log, bool isInfo)
+void SAKDebuggerOutput::onBytesRead(QByteArray bytes)
 {
-    mSAKOutputLogDialog->outputMessage(log, isInfo);
+    appendData(true, bytes);
+    m_save2File->bytesRead(bytes);
+}
+
+void SAKDebuggerOutput::onBytesWritten(QByteArray bytes)
+{
+    appendData(false, bytes);
+    m_save2File->bytesWritten(bytes);
+}
+
+void SAKDebuggerOutput::outputMessage(QString msg, bool isInfo)
+{
+    m_log->outputMessage(msg, isInfo);
 }
 
 void SAKDebuggerOutput::run()
 {
-    QEventLoop eventLoop;
-    while (true) {
-        // Cook data
-        while (true) {
-            RawDataStruct rawData = takeRawData();
-            if (rawData.rawData.length()){
-                innerCookData(rawData.rawData, rawData.parameters);
-            }else{
-                break;
+    while (1) {
+        mDataVaectorMutex.lock();
+        if (mDataVaector.length()) {
+            auto dataCtx = mDataVaector.takeFirst();
+            mDataVaectorMutex.unlock();
+
+            bool faceWithoutMakeup = dataCtx.ctx.faceWithoutMakeup;
+            if (dataCtx.isRxData && (!dataCtx.ctx.showRx)) {
+                continue;
+            } else if ((!dataCtx.isRxData) && (!dataCtx.ctx.showTx)) {
+                continue;
             }
-        }
 
-        // Do something make thread inner happy
-        eventLoop.processEvents();
+            QString dateTimeStr = faceWithoutMakeup ? "" : dateTimeString(dataCtx);
+            QString dataString = formattingData(dataCtx);
+            QString rxColor = "green";
+            QString txColor = "purple";
+            QString color = dataCtx.isRxData ? rxColor : txColor;
+            QString rxTx = dataCtx.isRxData
+                    ? QString("<font color=%1>Rx</font>").arg(rxColor)
+                    : QString("<font color=%2>Rx</font>").arg(txColor);
 
-        // If is interruption requested, the thread will exit, or the thread will sleep
-        if (isInterruptionRequested()){
+            QString frameString;
+            if (faceWithoutMakeup) {
+                frameString = QString("<font color=%1>%2</font>")
+                        .arg(color, dataString);
+            } else {
+                QString space = dateTimeStr.isEmpty() ? "" : " ";
+                frameString = QString("<font color=silver>[%1%2%3] </font><font color=%4>%5</font>")
+                        .arg(dateTimeStr, space, rxTx, color, dataString);
+            }
+
+            emit bytesCooked(frameString, dataCtx.ctx.faceWithoutMakeup);
+        } else {
+            mDataVaectorMutex.unlock();
             break;
-        }else{
-            mThreadMutex.lock();
-            mThreadWaitCondition.wait(&mThreadMutex, 50);
-            mThreadMutex.unlock();
         }
     }
 }
 
-void SAKDebuggerOutput::updateRxAnimation()
+void SAKDebuggerOutput::appendData(bool isRxData, QByteArray data)
 {
-    mUpdateRxAnimationTimer.stop();
-    mRxLabel->setText(QString("C%1").arg(QString(""), mRxAnimationgCount, '<'));
+    QMDStructDataContext ctx;
+    ctx.data = data;
+    ctx.isRxData = isRxData;
+    ctx.ctx = outputParametersContext();
 
-    mRxAnimationgCount -= 1;
-    if (mRxAnimationgCount == -1){
-        mRxAnimationgCount = 5;
+    mDataVaectorMutex.lock();
+    mDataVaector.append(ctx);
+    mDataVaectorMutex.unlock();
+
+    if (!isRunning()) {
+        start();
     }
 }
 
-void SAKDebuggerOutput::updateTxAnimation()
+SAKDebuggerOutput::QMDStructOutputParametersContext SAKDebuggerOutput::outputParametersContext()
 {
-    mUpdateTxAnimationTimer.stop();
-    mTxLabel->setText(QString("C%1").arg(QString(""), mTxAnimationCount, '>'));
-
-    mTxAnimationCount += 1;
-    if (mTxAnimationCount == 6){
-        mTxAnimationCount = 0;
-    }
+    mOutputParametersCtxMutex.lock();
+    auto ctx = mOutputParametersCtx;
+    mOutputParametersCtxMutex.unlock();
+    return ctx;
 }
 
-void SAKDebuggerOutput::setLineWrapMode()
+QString SAKDebuggerOutput::dateTimeString(QMDStructDataContext ctx)
 {
-    if (mAutoWrapCheckBox->isChecked()){
-        mOutputTextBroswer->setLineWrapMode(QTextEdit::WidgetWidth);
-    }else{
-        mOutputTextBroswer->setLineWrapMode(QTextEdit::NoWrap);
-    }
-}
-
-void SAKDebuggerOutput::saveOutputTextToFile()
-{
-    QString outFileName = QFileDialog::getSaveFileName(Q_NULLPTR,
-                                                       tr("Save to file"),
-                                                       QString("./%1.txt")
-                                                       .arg(QDateTime::currentDateTime().toString("yyyyMMddhhmmss")),
-                                                       QString("txt (*.txt)"));
-    if (outFileName.isEmpty()){
-        return;
+    QString dateTimeString;
+    if (ctx.ctx.showDate) {
+        dateTimeString += QDate::currentDate().toString("yyyy-MM-dd");
     }
 
-    QFile outFile(outFileName);
-    if(outFile.open(QIODevice::WriteOnly|QIODevice::Text)){
-        QTextStream outStream(&outFile);
-        outStream << mOutputTextBroswer->toPlainText();
-        outFile.flush();
-        outFile.close();
-    }else{
-        mDebugPage->outputMessage(QString("Can not open file (%1) to save output data:")
-                                 .arg(outFile.fileName()) + outFile.errorString(), false);
-    }
-}
-
-void SAKDebuggerOutput::saveOutputDataSettings()
-{
-    mSave2FileDialog->show();
-}
-
-void SAKDebuggerOutput::saveOutputDataToFile()
-{
-    if (mSaveOutputToFileCheckBox->isChecked()){
-        connect(mDebugPage, &SAKDebugger::bytesRead, mSave2FileDialog, &SAKOutputSave2FileDialog::bytesRead);
-        connect(mDebugPage, &SAKDebugger::bytesWritten, mSave2FileDialog, &SAKOutputSave2FileDialog::bytesWritten);
-    }else{
-        disconnect(mDebugPage, &SAKDebugger::bytesRead, mSave2FileDialog, &SAKOutputSave2FileDialog::bytesRead);
-        disconnect(mDebugPage, &SAKDebugger::bytesWritten, mSave2FileDialog, &SAKOutputSave2FileDialog::bytesWritten);
-    }
-}
-
-void SAKDebuggerOutput::bytesRead(QByteArray data)
-{
-    if (!mUpdateRxAnimationTimer.isActive()){
-        mUpdateRxAnimationTimer.start();
-    }
-
-    if (!mShowRxDataCheckBox->isChecked()){
-        return;
-    }
-
-    RawDataStruct rawData;
-    OutputParameters parameters = outputDataParameters(true);
-    rawData.rawData = data;
-    rawData.parameters = parameters;
-    mRawDataListMutex.lock();
-    mRawDataList.append(rawData);
-    mRawDataListMutex.unlock();
-
-    // Wake the thead to handle raw data
-    mThreadWaitCondition.wakeAll();
-}
-
-void SAKDebuggerOutput::bytesWritten(QByteArray data)
-{
-    if (!mUpdateTxAnimationTimer.isActive()){
-        mUpdateTxAnimationTimer.start();
-    }
-
-    if (!mShowTxDataCheckBox->isChecked()){
-        return;
-    }
-
-    RawDataStruct rawData;
-    OutputParameters parameters = outputDataParameters(false);
-    rawData.rawData = data;
-    rawData.parameters = parameters;
-    mRawDataListMutex.lock();
-    mRawDataList.append(rawData);
-    mRawDataListMutex.unlock();
-
-    // Wake the thead to handle raw data
-    mThreadWaitCondition.wakeAll();
-}
-
-void SAKDebuggerOutput::outputData(QString data, bool rawData)
-{
-    if (!mHasBeenClear){
-        mHasBeenClear = true;
-        mOutputTextBroswer->clear();
-    }
-
-    if (rawData){
-        mOutputTextBroswer->textCursor().insertText(data);
-    }else{
-        mOutputTextBroswer->append(data);
-    }
-}
-
-SAKDebuggerOutput::OutputParameters SAKDebuggerOutput::outputDataParameters(bool isReceivedData)
-{
-    OutputParameters parameters;
-    parameters.showDate = mShowDateCheckBox->isChecked();
-    parameters.showTime = mShowTimeCheckBox->isChecked();
-    parameters.showMS = mShowMsCheckBox->isChecked();
-    parameters.isReadData = isReceivedData;
-    parameters.isRawData = mRawDataCheckBox->isChecked();
-    parameters.format= mOutputTextFormatComboBox->currentData().toInt();
-
-    return parameters;
-}
-
-SAKDebuggerOutput::RawDataStruct SAKDebuggerOutput::takeRawData()
-{
-    RawDataStruct rawData;
-    mRawDataListMutex.lock();
-    if (mRawDataList.length()){
-        rawData = mRawDataList.takeFirst();
-    }
-    mRawDataListMutex.unlock();
-
-    return rawData;
-}
-
-void SAKDebuggerOutput::readinSettings()
-{
-    auto setValue = [](QVariant &var){
-        if (var.isNull()){
-            return true;
-        }else{
-            return var.toBool();
+    if (ctx.ctx.showTime) {
+        QString format = ctx.ctx.showMs ? "hh:mm:ss.zzz" : "hh:mm:ss";
+        if (dateTimeString.length()) {
+            format.prepend(" ");
         }
-    };
-
-    QVariant var = mSettings->value(mSettingStringOutputTextFormat);
-    int index = SAKCommonDataStructure::OutputFormatHex;
-    if (!var.isNull()){
-        index = var.toInt();;
+        dateTimeString += QTime::currentTime().toString(format);
     }
-    mOutputTextFormatComboBox->setCurrentIndex(index);
 
-    var = mSettings->value(mSettingStringShowDate);
-    bool value = mSettings->value(mSettingStringShowDate).toBool();
-    mShowDateCheckBox->setChecked(value);
-
-    var = mSettings->value(mSettingStringAutoWrap);
-    value = setValue(var);
-    mAutoWrapCheckBox->setChecked(value);
-
-    value = mSettings->value(mSettingStringShowTime).toBool();
-    mShowTimeCheckBox->setChecked(value);
-
-    value = mSettings->value(mSettingStringShowMs).toBool();
-    mShowMsCheckBox->setChecked(value);
-
-    var = mSettings->value(mSettingStringShowRx);
-    value = setValue(var);
-    mShowRxDataCheckBox->setChecked(value);
-
-    var = mSettings->value(mSettingStringShowTx);
-    value = setValue(var);
-    mShowTxDataCheckBox->setChecked(value);
-
-    var = mSettings->value(mSettingStringRawData);
-    value = var.isNull() ? false : var.toBool();
-    mRawDataCheckBox->setChecked(value);
+    return dateTimeString;
 }
 
-void SAKDebuggerOutput::innerCookData(QByteArray rawData, OutputParameters parameters)
+QString SAKDebuggerOutput::formattingData(QMDStructDataContext ctx)
 {
     QString str;
-    str.append("<font color=silver>[</font>");
-
-    if (parameters.showDate){
-        str.append(QDate::currentDate().toString("yyyy-MM-dd "));
-        str = QString("<font color=silver>%1</font>").arg(str);
-    }
-
-    if (parameters.showTime){
-        if (parameters.showMS){
-            str.append(QTime::currentTime().toString("hh:mm:ss.zzz "));
-        }else {
-            str.append(QTime::currentTime().toString("hh:mm:ss "));
+    QByteArray origingData = ctx.data;
+    int format = ctx.ctx.textFormat;
+    if (format == SAKCommonDataStructure::OutputFormatBin) {
+        for (int i = 0; i < origingData.length(); i++) {
+            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(origingData.at(i)), 2), 8, '0'));
         }
-        str = QString("<font color=silver>%1</font>").arg(str);
+    } else if (format == SAKCommonDataStructure::OutputFormatOct) {
+        for (int i = 0; i < origingData.length(); i++) {
+            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(origingData.at(i)), 8), 3, '0'));
+        }
+    } else if (format == SAKCommonDataStructure::OutputFormatDec) {
+        for (int i = 0; i < origingData.length(); i++) {
+            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(origingData.at(i)), 10)));
+        }
+    } else if (format == SAKCommonDataStructure::OutputFormatHex) {
+        for (int i = 0; i < origingData.length(); i++) {
+            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(origingData.at(i)), 16), 2, '0'));
+        }
+    } else if (format == SAKCommonDataStructure::OutputFormatAscii) {
+        str.append(QString::fromLatin1(origingData));
+    } else if (format == SAKCommonDataStructure::OutputFormatUtf8) {
+        str.append(QString::fromUtf8(origingData));
+    } else if (format == SAKCommonDataStructure::OutputFormatUtf16) {
+        const char *data = origingData.constData();
+        int len = origingData.length()/sizeof(char16_t);
+        str.append(QString::fromUtf16(reinterpret_cast<const char16_t*>(data), len));
+    } else if (format == SAKCommonDataStructure::OutputFormatUcs4) {
+        const char *data = origingData.constData();
+        int len = origingData.length()/sizeof(char32_t);
+        str.append(QString::fromUcs4(reinterpret_cast<const char32_t*>(data), len));
+    } else if (format == SAKCommonDataStructure::OutputFormatLocal) {
+        str.append(QString::fromLocal8Bit(origingData));
+    } else {
+        str.append(QString::fromUtf8(origingData));
+        Q_ASSERT_X(false, __FUNCTION__, "Unknown output mode!");
     }
 
-    if (parameters.isReadData){
-        str.append("<font color=red>Rx</font>");
-    }else {
-        str.append("<font color=blue>Tx</font>");
+    return str;
+}
+
+void SAKDebuggerOutput::save()
+{
+    QString dtstr = QDateTime::currentDateTime().toString("yyyyMMddhhmmss");
+    QString fileName = QFileDialog::getSaveFileName(Q_NULLPTR,
+                                                    tr("Save Output Data to File"),
+                                                    QStandardPaths::writableLocation(QStandardPaths::DesktopLocation) + "/" + dtstr,
+                                                    tr("text (*.txt)"));
+    if (fileName.length()) {
+        QFile file(fileName);
+        if (file.open(QFile::WriteOnly)) {
+            QTextStream out(&file);
+            out << mTextBrower->toPlainText();
+            file.close();
+        }
     }
-    str.append("<font color=silver>] </font>");
-
-    auto dataString = SAKCommonDataStructure::byteArrayToString(rawData, static_cast<SAKCommonDataStructure::SAKEnumTextOutputFormat>(parameters.format));
-    if (parameters.isRawData){
-        str = dataString;
-    }else{
-        str.append(dataString);
-    }
-    emit dataCooked(str, parameters.isRawData);
-}
-
-void SAKDebuggerOutput::onOutputTextFormatComboBoxCurrentTextChanged(const QString &text)
-{
-    Q_UNUSED(text);
-    mSettings->setValue(mSettingStringOutputTextFormat, QVariant::fromValue(mOutputTextFormatComboBox->currentIndex()));
-}
-
-void SAKDebuggerOutput::onShowDateCheckBoxClicked()
-{
-    mSettings->setValue(mSettingStringShowDate, QVariant::fromValue(mShowDateCheckBox->isChecked()));
-}
-
-void SAKDebuggerOutput::onAutoWrapCheckBoxClicked()
-{
-    mSettings->setValue(mSettingStringAutoWrap, QVariant::fromValue(mAutoWrapCheckBox->isChecked()));
-}
-
-void SAKDebuggerOutput::onShowTimeCheckBoxClicked()
-{
-    mSettings->setValue(mSettingStringShowTime, QVariant::fromValue(mShowTimeCheckBox->isChecked()));
-}
-
-void SAKDebuggerOutput::onShowMsCheckBoxClicked()
-{
-    mSettings->setValue(mSettingStringShowMs, QVariant::fromValue(mShowMsCheckBox->isChecked()));
-}
-
-void SAKDebuggerOutput::onShowRxDataCheckBoxClicked()
-{
-    mSettings->setValue(mSettingStringShowRx, QVariant::fromValue(mShowRxDataCheckBox->isChecked()));
-}
-
-void SAKDebuggerOutput::onShowTxDataCheckBoxClicked()
-{
-    mSettings->setValue(mSettingStringShowTx, QVariant::fromValue(mShowTxDataCheckBox->isChecked()));
-}
-
-void SAKDebuggerOutput::onRawDataCheckBoxClicked()
-{
-    mSettings->setValue(mSettingStringRawData, QVariant::fromValue(mRawDataCheckBox->isChecked()));
 }

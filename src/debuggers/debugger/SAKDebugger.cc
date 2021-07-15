@@ -66,7 +66,12 @@ SAKDebugger::SAKDebugger(int type, QString name, QWidget *parent)
     initializingVariables();
 
     mDatabaseInterface = new SAKDebugPageCommonDatabaseInterface(this, sakApp->sqlDatabase(), this);
-    mOutputController = new SAKDebuggerOutput(this, this);
+    mOutputController = new SAKDebuggerOutput(mMoreOutputSettingsPushButton,
+                                              mOutputTextFormatComboBox,
+                                              settings(),
+                                              settingsGroup(),
+                                              mOutputTextBroswer,
+                                              this);
     mOtherController = new SAKDebugPageOtherController(this, this);
     mStatisticsController = new SAKDebugPageStatisticsController(this, this);
     mInputController = new SAKDebuggerInput(this, this);
@@ -109,7 +114,7 @@ void SAKDebugger::writeRawData(QString rawData, int textFormat)
 
 void SAKDebugger::outputMessage(QString msg, bool isInfo)
 {
-    mOutputController->outputLog(msg, isInfo);
+    //mOutputController->outputLog(msg, isInfo);
     QString time = QDateTime::currentDateTime().toString("hh:mm:ss ");
     QString temp;
     temp.append(time);

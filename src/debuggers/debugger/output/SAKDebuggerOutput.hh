@@ -22,110 +22,75 @@
 #include <QTextBrowser>
 #include <QWaitCondition>
 
-class SAKDebugger;
-class SAKOutputLogDialog;
-class SAKOutputSave2FileDialog;
-class SAKOtherHighlighterManager;
+class SAKDebuggerOutputLog;
+class SAKDebuggerOutputSave2File;
+class SAKDebuggerOutputHighlighter;
 /// @brief output data controller
 class SAKDebuggerOutput:public QThread
 {
     Q_OBJECT
 public:
-    SAKDebuggerOutput(SAKDebugger *mDebugPage, QObject *parent = Q_NULLPTR);
+    SAKDebuggerOutput(QPushButton *menuBt, QComboBox *formatCB,
+                      QSettings *settings, QString settingGroup,
+                      QTextBrowser *textBrower,
+                      QObject *parent = Q_NULLPTR);
     ~SAKDebuggerOutput();
-    void outputLog(QString log, bool isInfo = true);
+    struct QMDStructSettingsKeyContext {
+            QString showDate;
+            QString showTime;
+            QString showMs;
+            QString showRx;
+            QString showTx;
+            QString wrapAnywhere;
+            QString textFormat;
+            QString faceWithoutMakeup;
+        };
 
-    struct OutputParameters {
-        bool showDate; // true: show date shen output data
-        bool showTime; // true: show time when output data
-        bool showMS; // true: show ms shen output data
-        bool isReadData; // true: data is read data, false: data is written data
-        bool isRawData;
-        int  format; // output data format, such as bin, otc and so on
+    struct QMDStructOutputParametersContext {
+        bool showDate;
+        bool showTime;
+        bool showRx;
+        bool showTx;
+        bool showMs;
+        bool wrapAnywhere;
+
+        int textFormat;
+        bool faceWithoutMakeup;
     };
+
+    struct QMDStructDataContext {
+        bool isRxData;
+        QByteArray data;
+        QMDStructOutputParametersContext ctx;
+    };
+    void onBytesRead(QByteArray bytes);
+    void onBytesWritten(QByteArray bytes);
+    void outputMessage(QString msg, bool isInfo = true);
 protected:
-    void run() final;
+    void run() override;
 private:
-    SAKDebugger *mDebugPage;
+    QPushButton *mMenuPushButton;
+    QComboBox *mFormatComboBox;
     QSettings *mSettings;
-    SAKOutputSave2FileDialog *mSave2FileDialog;
-    SAKOutputLogDialog *mSAKOutputLogDialog;
-    SAKOtherHighlighterManager *mSAKOtherHighlighterManager;
-    bool mHasBeenClear;
+    QString mSettingsGroup;
+    QTextBrowser *mTextBrower;
+    QMDStructSettingsKeyContext mSettingsKeyCtx;
+    QMDStructOutputParametersContext mOutputParametersCtx;
+    QMutex mOutputParametersCtxMutex;
+    QVector<QMDStructDataContext> mDataVaector;
+    QMutex mDataVaectorMutex;
 
-    // Animation
-    QTimer mUpdateRxAnimationTimer;
-    qint8 mRxAnimationgCount;
-    QTimer mUpdateTxAnimationTimer;
-    qint8 mTxAnimationCount;
-
-    // Ui components
-    QTextBrowser *mMessageTextBrowser;
-    QLabel *mRxLabel;
-    QLabel *mTxLabel;
-    QComboBox *mOutputTextFormatComboBox;
-    QCheckBox *mShowDateCheckBox;
-    QCheckBox *mAutoWrapCheckBox;
-    QCheckBox *mShowTimeCheckBox;
-    QCheckBox *mShowMsCheckBox;
-    QCheckBox *mShowRxDataCheckBox;
-    QCheckBox *mShowTxDataCheckBox;
-    QCheckBox *mSaveOutputToFileCheckBox;
-    QCheckBox *mRawDataCheckBox;
-    QPushButton *mMoreOutputSettingsPushButton;
-    QPushButton *mClearOutputPushButton;
-    QTextBrowser *mOutputTextBroswer;
-
-    // Variables about settings
-    QString mSettingStringOutputTextFormat;
-    QString mSettingStringShowDate;
-    QString mSettingStringAutoWrap;
-    QString mSettingStringShowTime;
-    QString mSettingStringShowMs;
-    QString mSettingStringShowRx;
-    QString mSettingStringShowTx;
-    QString mSettingStringRawData;
-
-    // Thread controller
-    QMutex mThreadMutex;
-    QWaitCondition mThreadWaitCondition;
-
-    // Temp data
-    struct RawDataStruct {
-        QByteArray rawData;
-        OutputParameters parameters;
-    };
-    QList<RawDataStruct> mRawDataList;
-    QMutex mRawDataListMutex;
+    SAKDebuggerOutputSave2File *m_save2File;
+    SAKDebuggerOutputLog *m_log;
+    SAKDebuggerOutputHighlighter *mHhighlighter;
 private:
-    // C<<<<<
-    void updateRxAnimation();
-    // C>>>>>
-    void updateTxAnimation();
-    void setLineWrapMode();
-    void saveOutputTextToFile();
-    void saveOutputDataSettings();
-    void saveOutputDataToFile();
-    void bytesRead(QByteArray data);
-    void bytesWritten(QByteArray data);
-    void outputData(QString data, bool rawData);
-    OutputParameters outputDataParameters(bool isReadData);
-    RawDataStruct takeRawData();
-    void readinSettings();
-    // The function is called by child thread only!
-    void innerCookData(QByteArray rawData, OutputParameters parameters);
-
-    // Update settings
-    void onOutputTextFormatComboBoxCurrentTextChanged(const QString &text);
-    void onShowDateCheckBoxClicked();
-    void onAutoWrapCheckBoxClicked();
-    void onShowTimeCheckBoxClicked();
-    void onShowMsCheckBoxClicked();
-    void onShowRxDataCheckBoxClicked();
-    void onShowTxDataCheckBoxClicked();
-    void onRawDataCheckBoxClicked();
+    void appendData(bool isRxData, QByteArray data);
+    QMDStructOutputParametersContext outputParametersContext();
+    QString dateTimeString(QMDStructDataContext ctx);
+    QString formattingData(QMDStructDataContext ctx);
+    void save();
 signals:
-    void dataCooked(QString data, bool isRawData);
+    void bytesCooked(QString dataString, bool faceWithoutMakeup);
 };
 
 #endif
