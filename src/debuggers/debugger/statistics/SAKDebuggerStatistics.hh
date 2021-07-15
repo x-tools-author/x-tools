@@ -24,8 +24,8 @@ public:
                           QLabel *txBytes,
                           QLabel *rxBytes,
                           QObject *parent = Q_NULLPTR);
-    void bytesRead(QByteArray data);
-    void bytesWritten(QByteArray data);
+    void onBytesRead(QByteArray data);
+    void onBytesWritten(QByteArray data);
 private:
     QLabel *mTxSpeedLabel;
     QLabel *mRxSpeedLabel;

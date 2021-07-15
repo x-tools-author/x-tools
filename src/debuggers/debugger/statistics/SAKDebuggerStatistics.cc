@@ -42,7 +42,7 @@ SAKDebuggerStatistics::SAKDebuggerStatistics(QLabel *txSpeed,
     speedTimer->start();
 }
 
-void SAKDebuggerStatistics::bytesRead(QByteArray data)
+void SAKDebuggerStatistics::onBytesRead(QByteArray data)
 {
     mParametersContext.rxFrames += 1;
     mParametersContext.rxBytes += static_cast<quint64>(data.length());
@@ -52,7 +52,7 @@ void SAKDebuggerStatistics::bytesRead(QByteArray data)
     mParametersContext.rxSpeed += static_cast<quint64>(data.length());
 }
 
-void SAKDebuggerStatistics::bytesWritten(QByteArray data)
+void SAKDebuggerStatistics::onBytesWritten(QByteArray data)
 {
     mParametersContext.txFrames += 1;
     mParametersContext.txBytes += static_cast<quint64>(data.length());

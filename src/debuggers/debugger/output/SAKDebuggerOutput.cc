@@ -243,8 +243,8 @@ void SAKDebuggerOutput::run()
 
             QString dateTimeStr = faceWithoutMakeup ? "" : dateTimeString(dataCtx);
             QString dataString = formattingData(dataCtx);
-            QString rxColor = "green";
-            QString txColor = "purple";
+            QString rxColor = "red";
+            QString txColor = "blue";
             QString color = dataCtx.isRxData ? rxColor : txColor;
             QString rxTx = dataCtx.isRxData
                     ? QString("<font color=%1>Rx</font>").arg(rxColor)
