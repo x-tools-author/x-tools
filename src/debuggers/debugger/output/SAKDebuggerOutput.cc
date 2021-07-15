@@ -22,8 +22,8 @@
 #include "SAKDebuggerOutputHighlighter.hh"
 
 SAKDebuggerOutput::SAKDebuggerOutput(QPushButton *menuBt, QComboBox *formatCB,
-                                       QSettings *settings, QString settingGroup,
-                                       QTextBrowser *textBrower, QObject *parent)
+                                     QSettings *settings, QString settingGroup,
+                                     QTextBrowser *textBrower, QObject *parent)
     :QThread(parent)
     ,mSettingsGroup(settingGroup)
     ,mFormatComboBox(formatCB)
