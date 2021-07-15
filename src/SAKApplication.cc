@@ -32,8 +32,8 @@
 
 #include "SAKApplication.hh"
 
-static const QDate buildDate = QLocale( QLocale::English ).toDate( QString(__DATE__).replace("  ", " 0"), "MMM dd yyyy");
-static const QTime buildTime = QTime::fromString(__TIME__, "hh:mm:ss");
+QDate buildDate = QLocale(QLocale::English).toDate(QString(__DATE__).replace("  ", " 0"), "MMM dd yyyy");
+QTime buildTime = QTime::fromString(__TIME__, "hh:mm:ss");
 SAKApplication::SAKApplication(int argc, char **argv)
     :QApplication (argc, argv)
 {
