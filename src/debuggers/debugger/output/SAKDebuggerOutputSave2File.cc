@@ -164,7 +164,7 @@ void SAKDebuggerOutputSave2File::on_selectPushButton_clicked()
     QString fileName;
     datetime.append(".txt");
     fileName = QFileDialog::getSaveFileName(this,
-                                            tr("保存文件"),
+                                            tr("Save to File"),
                                             QString("%1/%2").arg(m_defaultPath, datetime),
                                             QString("txt (*.txt)"));
 
