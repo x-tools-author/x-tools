@@ -76,7 +76,8 @@ SAKDebuggerOutputSave2File::SAKDebuggerOutputSave2File(QSettings *settings, QStr
              << TempInfo{m_writtenDataCheckBox, m_settingKeyWrittenData}
              << TempInfo{m_timestampCheckBox, m_settingKeyTimestamp};
 
-        for (auto info : list){
+        for (int i = 0; i < list.length(); i++){
+            TempInfo info = list.at(i);
             QVariant var = m_settings->value(info.key);
             if (var.isNull()){
                 info.checkBox->setChecked(true);
