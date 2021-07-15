@@ -211,3 +211,38 @@ QByteArray SAKDebuggerDevice:: writeForTest()
 {
     return QByteArray();
 }
+
+QByteArray SAKDebuggerDevice::mask(const QByteArray &plaintext, bool isRxData)
+{
+    auto doMask = [](const QByteArray &plaintext, quint8 mask)->QByteArray{
+        QByteArray ciphertext;
+        for (int i = 0; i < plaintext.length(); i++) {
+            quint8 value = quint8(plaintext.at(i));
+            value ^= mask;
+            ciphertext.append(reinterpret_cast<char*>(&value), 1);
+        }
+
+        return ciphertext;
+    };
+
+    QByteArray ciphertext;
+    auto ctx = parametersContext();
+    quint8 mask = isRxData ? ctx.maskCtx.rx : ctx.maskCtx.tx;
+    bool enable = isRxData ? ctx.maskCtx.enableRx : ctx.maskCtx.enableTx;
+    if (enable) {
+        ciphertext = doMask(plaintext, mask);
+    } else {
+        ciphertext = plaintext;
+    }
+
+    return ciphertext;
+}
+
+SAKDebuggerDevice::SAKStructDevicePatametersContext SAKDebuggerDevice::parametersContext()
+{
+    m_parametersCtxMutex.lock();
+    auto parasCtx = m_parametersCtx;
+    m_parametersCtxMutex.unlock();
+
+    return parasCtx;
+}

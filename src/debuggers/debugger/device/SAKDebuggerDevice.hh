@@ -77,11 +77,15 @@ private:
             QByteArray startFlags;
             QByteArray endFlags;
         } analyzerCtx;
-    } m_parmetersCtx;
+    } m_parametersCtx;
 
+    QMutex m_parametersCtxMutex;
     QMutex mWaitingForWritingBytesListMutex;
     QList<QByteArray> mWaitingForWritingBytesList;
     QList<SettingsPanel> mSettingsPanelList;
+private:
+    QByteArray mask(const QByteArray &plaintext, bool isRxData);
+    SAKStructDevicePatametersContext parametersContext();
 signals:
     void bytesWritten(QByteArray bytes);
     void bytesRead(QByteArray bytes);
