@@ -63,6 +63,22 @@ protected:
      */
     virtual QByteArray writeForTest();
 private:
+    struct SAKStructDevicePatametersContext {
+        struct MaskContext {
+            quint8 rx;
+            quint8 tx;
+            bool enableRx;
+            bool enableTx;
+        } maskCtx;
+        struct AnalyzerContext {
+            bool enable;
+            bool fixedLength;
+            int length;
+            QByteArray startFlags;
+            QByteArray endFlags;
+        } analyzerCtx;
+    } m_parmetersCtx;
+
     QMutex mWaitingForWritingBytesListMutex;
     QList<QByteArray> mWaitingForWritingBytesList;
     QList<SettingsPanel> mSettingsPanelList;
