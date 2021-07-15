@@ -18,9 +18,7 @@ INCLUDEPATH += \
     $$PWD/other/timingsent \
     $$PWD/other/transmission \
     $$PWD/output \
-    $$PWD/output/save2file \
-    $$PWD/output/log \
-    $$PWD/statistics \
+    $$PWD/statistics
 
 FORMS += \
     $$PWD/SAKDebugger.ui \
@@ -42,9 +40,7 @@ FORMS += \
     $$PWD/other/transmission/SAKOtherTransmissionPageViewer.ui \
     $$PWD/output/SAKDebuggerOutputHighlighter.ui \
     $$PWD/output/SAKDebuggerOutputLog.ui \
-    $$PWD/output/SAKDebuggerOutputSave2File.ui \
-    $$PWD/output/log/SAKOutputLogDialog.ui \
-    $$PWD/output/save2file/SAKOutputSave2FileDialog.ui
+    $$PWD/output/SAKDebuggerOutputSave2File.ui
 
 DISTFILES += \
     $$PWD/README.md
@@ -80,9 +76,6 @@ HEADERS += \
     $$PWD/output/SAKDebuggerOutputHighlighter.hh \
     $$PWD/output/SAKDebuggerOutputLog.hh \
     $$PWD/output/SAKDebuggerOutputSave2File.hh \
-    $$PWD/output/log/SAKOutputLogDialog.hh \
-    $$PWD/output/save2file/SAKOutputSave2FileDialog.hh \
-    $$PWD/output/save2file/SAKOutputSave2FileThread.hh \
     $$PWD/statistics/SAKDebugPageStatisticsController.hh
 
 SOURCES += \
@@ -116,7 +109,4 @@ SOURCES += \
     $$PWD/output/SAKDebuggerOutputHighlighter.cc \
     $$PWD/output/SAKDebuggerOutputLog.cc \
     $$PWD/output/SAKDebuggerOutputSave2File.cc \
-    $$PWD/output/log/SAKOutputLogDialog.cc \
-    $$PWD/output/save2file/SAKOutputSave2FileDialog.cc \
-    $$PWD/output/save2file/SAKOutputSave2FileThread.cc \
     $$PWD/statistics/SAKDebugPageStatisticsController.cc
