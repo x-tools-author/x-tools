@@ -29,13 +29,14 @@
 #include "SAKApplication.hh"
 #include "SAKDebuggerInput.hh"
 #include "SAKDebuggerDevice.hh"
+#include "SAKDebuggerOutput.hh"
+#include "SAKDebuggerPlugins.hh"
 #include "SAKCommonCrcInterface.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKDebugPageController.hh"
 #include "SAKOtherAnalyzerThread.hh"
 #include "SAKOtherHighlighterManager.hh"
 #include "SAKDebugPageOtherController.hh"
-#include "SAKDebuggerOutput.hh"
 #include "SAKOtherAnalyzerThreadManager.hh"
 #include "SAKOtherAutoResponseItemManager.hh"
 #include "SAKDebugPageStatisticsController.hh"
@@ -66,6 +67,11 @@ SAKDebugger::SAKDebugger(int type, QString name, QWidget *parent)
     initializingVariables();
 
     mDatabaseInterface = new SAKDebugPageCommonDatabaseInterface(this, sakApp->sqlDatabase(), this);
+    mPlugins = new SAKDebuggerPlugins(mUi->readmePushButton,
+                                      mUi->pluginsPushButton,
+                                      settings(),
+                                      settingsGroup(),
+                                      this);
     mOutputController = new SAKDebuggerOutput(mMoreOutputSettingsPushButton,
                                               mOutputTextFormatComboBox,
                                               settings(),

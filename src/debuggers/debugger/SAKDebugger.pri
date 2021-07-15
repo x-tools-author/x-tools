@@ -18,7 +18,8 @@ INCLUDEPATH += \
     $$PWD/other/timingsent \
     $$PWD/other/transmission \
     $$PWD/output \
-    $$PWD/statistics
+    $$PWD/statistics \
+    $$PWD/plugins
 
 FORMS += \
     $$PWD/SAKDebugger.ui \
@@ -76,6 +77,7 @@ HEADERS += \
     $$PWD/output/SAKDebuggerOutputHighlighter.hh \
     $$PWD/output/SAKDebuggerOutputLog.hh \
     $$PWD/output/SAKDebuggerOutputSave2File.hh \
+    $$PWD/plugins/SAKDebuggerPlugins.hh \
     $$PWD/statistics/SAKDebugPageStatisticsController.hh
 
 SOURCES += \
@@ -109,4 +111,5 @@ SOURCES += \
     $$PWD/output/SAKDebuggerOutputHighlighter.cc \
     $$PWD/output/SAKDebuggerOutputLog.cc \
     $$PWD/output/SAKDebuggerOutputSave2File.cc \
+    $$PWD/plugins/SAKDebuggerPlugins.cc \
     $$PWD/statistics/SAKDebugPageStatisticsController.cc

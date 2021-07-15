@@ -38,6 +38,7 @@ class SAKOtherHighlighterManager;
 class SAKDebugPageOtherController;
 class SAKDebuggerInput;
 class SAKDebuggerOutput;
+class SAKDebuggerPlugins;
 #ifdef SAK_IMPORT_MODULE_CHARTS
 class SAKDebugPageChartsController;
 #endif
@@ -192,6 +193,7 @@ private:
     SAKDebugPageStatisticsController *mStatisticsController;
     SAKDebuggerDevice *mDevice;
     SAKDebugPageController *mDeviceController;
+    SAKDebuggerPlugins *mPlugins;
 private:
     void cleanInfo();
     void changedDeviceState(bool opened);
