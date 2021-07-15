@@ -35,7 +35,7 @@ public:
                       QTextBrowser *textBrower,
                       QObject *parent = Q_NULLPTR);
     ~SAKDebuggerOutput();
-    struct QMDStructSettingsKeyContext {
+    struct SAKStructSettingsKeyContext {
             QString showDate;
             QString showTime;
             QString showMs;
@@ -46,7 +46,7 @@ public:
             QString faceWithoutMakeup;
         };
 
-    struct QMDStructOutputParametersContext {
+    struct SAKStructOutputParametersContext {
         bool showDate;
         bool showTime;
         bool showRx;
@@ -58,10 +58,10 @@ public:
         bool faceWithoutMakeup;
     };
 
-    struct QMDStructDataContext {
+    struct SAKStructDataContext {
         bool isRxData;
         QByteArray data;
-        QMDStructOutputParametersContext ctx;
+        SAKStructOutputParametersContext ctx;
     };
 
     void onBytesRead(QByteArray bytes);
@@ -70,26 +70,26 @@ public:
 protected:
     void run() override;
 private:
-    QPushButton *mMenuPushButton;
+    QMutex mDataVectorMutex;
+    QMutex mOutputParametersCtxMutex;
+    QString mSettingsGroup;
     QComboBox *mFormatComboBox;
     QSettings *mSettings;
-    QString mSettingsGroup;
+    QPushButton *mMenuPushButton;
     QTextBrowser *mTextBrower;
-    QMDStructSettingsKeyContext mSettingsKeyCtx;
-    QMDStructOutputParametersContext mOutputParametersCtx;
-    QMutex mOutputParametersCtxMutex;
-    QVector<QMDStructDataContext> mDataVaector;
-    QMutex mDataVaectorMutex;
+    QVector<SAKStructDataContext> mDataVector;
+    SAKStructSettingsKeyContext mSettingsKeyCtx;
+    SAKStructOutputParametersContext mOutputParametersCtx;
 
-    SAKDebuggerOutputSave2File *m_save2File;
-    SAKDebuggerOutputLog *m_log;
+    SAKDebuggerOutputLog *mLog;
+    SAKDebuggerOutputSave2File *mSave2File;
     SAKDebuggerOutputHighlighter *mHhighlighter;
 private:
-    void appendData(bool isRxData, QByteArray data);
-    QMDStructOutputParametersContext outputParametersContext();
-    QString dateTimeString(QMDStructDataContext ctx);
-    QString formattingData(QMDStructDataContext ctx);
     void save();
+    void appendData(bool isRxData, QByteArray data);
+    QString dateTimeString(SAKStructDataContext ctx);
+    QString formattingData(SAKStructDataContext ctx);
+    SAKStructOutputParametersContext outputParametersContext();
 signals:
     void bytesCooked(QString dataString, bool faceWithoutMakeup);
 };

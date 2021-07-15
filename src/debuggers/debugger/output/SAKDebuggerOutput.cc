@@ -25,10 +25,10 @@ SAKDebuggerOutput::SAKDebuggerOutput(QPushButton *menuBt, QComboBox *formatCB,
                                        QSettings *settings, QString settingGroup,
                                        QTextBrowser *textBrower, QObject *parent)
     :QThread(parent)
-    ,mMenuPushButton(menuBt)
+    ,mSettingsGroup(settingGroup)
     ,mFormatComboBox(formatCB)
     ,mSettings(settings)
-    ,mSettingsGroup(settingGroup)
+    ,mMenuPushButton(menuBt)
     ,mTextBrower(textBrower)
 {
     mSettingsKeyCtx.showDate = mSettingsGroup + "/" + "showDate";
@@ -162,8 +162,8 @@ SAKDebuggerOutput::SAKDebuggerOutput(QPushButton *menuBt, QComboBox *formatCB,
     });
 
     mHhighlighter = new SAKDebuggerOutputHighlighter(mTextBrower->document());
-    m_log = new SAKDebuggerOutputLog();
-    m_save2File = new SAKDebuggerOutputSave2File(mSettings, settingGroup);
+    mLog = new SAKDebuggerOutputLog();
+    mSave2File = new SAKDebuggerOutputSave2File(mSettings, settingGroup);
 
     action = btMenu->addAction(tr("Save Output"));
     connect(action, &QAction::triggered, this, &SAKDebuggerOutput::save);
@@ -171,9 +171,9 @@ SAKDebuggerOutput::SAKDebuggerOutput(QPushButton *menuBt, QComboBox *formatCB,
     action = btMenu->addAction(tr("Highlighter"));
     connect(action, &QAction::triggered, mHhighlighter, &SAKDebuggerOutputHighlighter::show);
     action = btMenu->addAction(tr("Log"));
-    connect(action, &QAction::triggered, m_log, &SAKDebuggerOutputLog::show);
+    connect(action, &QAction::triggered, mLog, &SAKDebuggerOutputLog::show);
     action = btMenu->addAction(tr("Write to Disk"));
-    connect(action, &QAction::triggered, m_save2File, &SAKDebuggerOutputSave2File::show);
+    connect(action, &QAction::triggered, mSave2File, &SAKDebuggerOutputSave2File::show);
     mMenuPushButton->setMenu(btMenu);
 
 
@@ -188,11 +188,11 @@ SAKDebuggerOutput::SAKDebuggerOutput(QPushButton *menuBt, QComboBox *formatCB,
 
 
     connect(this, &SAKDebuggerOutput::finished, this, [&](){
-        mDataVaectorMutex.lock();
-        if (mDataVaector.length()) {
+        mDataVectorMutex.lock();
+        if (mDataVector.length()) {
             start();
         }
-        mDataVaectorMutex.unlock();
+        mDataVectorMutex.unlock();
     });
 
     textBrower->document()->setMaximumBlockCount(2000);
@@ -212,27 +212,27 @@ SAKDebuggerOutput::~SAKDebuggerOutput()
 void SAKDebuggerOutput::onBytesRead(QByteArray bytes)
 {
     appendData(true, bytes);
-    m_save2File->bytesRead(bytes);
+    mSave2File->bytesRead(bytes);
 }
 
 void SAKDebuggerOutput::onBytesWritten(QByteArray bytes)
 {
     appendData(false, bytes);
-    m_save2File->bytesWritten(bytes);
+    mSave2File->bytesWritten(bytes);
 }
 
 void SAKDebuggerOutput::outputMessage(QString msg, bool isInfo)
 {
-    m_log->outputMessage(msg, isInfo);
+    mLog->outputMessage(msg, isInfo);
 }
 
 void SAKDebuggerOutput::run()
 {
     while (1) {
-        mDataVaectorMutex.lock();
-        if (mDataVaector.length()) {
-            auto dataCtx = mDataVaector.takeFirst();
-            mDataVaectorMutex.unlock();
+        mDataVectorMutex.lock();
+        if (mDataVector.length()) {
+            auto dataCtx = mDataVector.takeFirst();
+            mDataVectorMutex.unlock();
 
             bool faceWithoutMakeup = dataCtx.ctx.faceWithoutMakeup;
             if (dataCtx.isRxData && (!dataCtx.ctx.showRx)) {
@@ -262,37 +262,46 @@ void SAKDebuggerOutput::run()
 
             emit bytesCooked(frameString, dataCtx.ctx.faceWithoutMakeup);
         } else {
-            mDataVaectorMutex.unlock();
+            mDataVectorMutex.unlock();
             break;
+        }
+    }
+}
+
+void SAKDebuggerOutput::save()
+{
+    QString dtstr = QDateTime::currentDateTime().toString("yyyyMMddhhmmss");
+    QString fileName = QFileDialog::getSaveFileName(Q_NULLPTR,
+                                                    tr("Save Output Data to File"),
+                                                    QStandardPaths::writableLocation(QStandardPaths::DesktopLocation) + "/" + dtstr,
+                                                    tr("text (*.txt)"));
+    if (fileName.length()) {
+        QFile file(fileName);
+        if (file.open(QFile::WriteOnly)) {
+            QTextStream out(&file);
+            out << mTextBrower->toPlainText();
+            file.close();
         }
     }
 }
 
 void SAKDebuggerOutput::appendData(bool isRxData, QByteArray data)
 {
-    QMDStructDataContext ctx;
+    SAKStructDataContext ctx;
     ctx.data = data;
     ctx.isRxData = isRxData;
     ctx.ctx = outputParametersContext();
 
-    mDataVaectorMutex.lock();
-    mDataVaector.append(ctx);
-    mDataVaectorMutex.unlock();
+    mDataVectorMutex.lock();
+    mDataVector.append(ctx);
+    mDataVectorMutex.unlock();
 
     if (!isRunning()) {
         start();
     }
 }
 
-SAKDebuggerOutput::QMDStructOutputParametersContext SAKDebuggerOutput::outputParametersContext()
-{
-    mOutputParametersCtxMutex.lock();
-    auto ctx = mOutputParametersCtx;
-    mOutputParametersCtxMutex.unlock();
-    return ctx;
-}
-
-QString SAKDebuggerOutput::dateTimeString(QMDStructDataContext ctx)
+QString SAKDebuggerOutput::dateTimeString(SAKStructDataContext ctx)
 {
     QString dateTimeString;
     if (ctx.ctx.showDate) {
@@ -310,7 +319,7 @@ QString SAKDebuggerOutput::dateTimeString(QMDStructDataContext ctx)
     return dateTimeString;
 }
 
-QString SAKDebuggerOutput::formattingData(QMDStructDataContext ctx)
+QString SAKDebuggerOutput::formattingData(SAKStructDataContext ctx)
 {
     QString str;
     QByteArray origingData = ctx.data;
@@ -353,19 +362,10 @@ QString SAKDebuggerOutput::formattingData(QMDStructDataContext ctx)
     return str;
 }
 
-void SAKDebuggerOutput::save()
+SAKDebuggerOutput::SAKStructOutputParametersContext SAKDebuggerOutput::outputParametersContext()
 {
-    QString dtstr = QDateTime::currentDateTime().toString("yyyyMMddhhmmss");
-    QString fileName = QFileDialog::getSaveFileName(Q_NULLPTR,
-                                                    tr("Save Output Data to File"),
-                                                    QStandardPaths::writableLocation(QStandardPaths::DesktopLocation) + "/" + dtstr,
-                                                    tr("text (*.txt)"));
-    if (fileName.length()) {
-        QFile file(fileName);
-        if (file.open(QFile::WriteOnly)) {
-            QTextStream out(&file);
-            out << mTextBrower->toPlainText();
-            file.close();
-        }
-    }
+    mOutputParametersCtxMutex.lock();
+    auto ctx = mOutputParametersCtx;
+    mOutputParametersCtxMutex.unlock();
+    return ctx;
 }
