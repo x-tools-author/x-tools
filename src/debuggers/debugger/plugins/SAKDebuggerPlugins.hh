@@ -23,9 +23,6 @@ public:
                                 QSettings *settings,
                                 const QString &settingsGroup,
                                 QObject *parent = Q_NULLPTR);
-
-signals:
-
 };
 
 #endif // SAKDEBUGGERPLUGINS_HH
