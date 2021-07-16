@@ -34,8 +34,6 @@ class SAKDataFactory;
 class SAKDebuggerDevice;
 class SAKCommonCrcInterface;
 class SAKDebugPageController;
-class SAKOtherHighlighterManager;
-class SAKDebugPageOtherController;
 class SAKDebuggerInput;
 class SAKDebuggerOutput;
 class SAKDebuggerPlugins;

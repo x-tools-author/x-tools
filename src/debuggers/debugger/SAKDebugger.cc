@@ -35,8 +35,6 @@
 #include "SAKCommonDataStructure.hh"
 #include "SAKDebugPageController.hh"
 #include "SAKOtherAnalyzerThread.hh"
-#include "SAKOtherHighlighterManager.hh"
-#include "SAKDebugPageOtherController.hh"
 #include "SAKOtherAnalyzerThreadManager.hh"
 #include "SAKOtherAutoResponseItemManager.hh"
 #include "SAKDebuggerStatistics.hh"
@@ -78,7 +76,6 @@ SAKDebugger::SAKDebugger(int type, QString name, QWidget *parent)
                                               settingsGroup(),
                                               mOutputTextBroswer,
                                               this);
-    mOtherController = new SAKDebugPageOtherController(this, this);
     mStatistics = new SAKDebuggerStatistics(mTxSpeedLabel,
                                                       mRxSpeedLabel,
                                                       mTxFramesLabel,
@@ -242,13 +239,9 @@ void SAKDebugger::initializePage()
     connect(this, &SAKDebugger::requestWriteData, mDevice, &SAKDebuggerDevice::writeBytes);
     connect(mDevice, &SAKDebuggerDevice::bytesWritten, this, &SAKDebugger::bytesWritten);
 
-    // The bytes read will be input to analyzer, after analyzing, the bytes will be input to debug page
-    SAKOtherAnalyzerThreadManager *analyzerManager = mOtherController->analyzerThreadManager();
-    connect(mDevice, &SAKDebuggerDevice::bytesRead, analyzerManager, &SAKOtherAnalyzerThreadManager::inputBytes);
-
     // The function may be called multiple times, so do something to ensure that the signal named bytesAnalysed
     // and the slot named bytesRead are connected once.
-    connect(analyzerManager, &SAKOtherAnalyzerThreadManager::bytesAnalysed, this, &SAKDebugger::bytesRead, static_cast<Qt::ConnectionType>(Qt::AutoConnection|Qt::UniqueConnection));
+    //connect(analyzerManager, &SAKOtherAnalyzerThreadManager::bytesAnalysed, this, &SAKDebugger::bytesRead, static_cast<Qt::ConnectionType>(Qt::AutoConnection|Qt::UniqueConnection));
     connect(mDevice, &SAKDebuggerDevice::messageChanged, this, &SAKDebugger::outputMessage);
     connect(mDevice, &SAKDebuggerDevice::deviceStateChanged, this, &SAKDebugger::changedDeviceState);
     connect(mDevice, &SAKDebuggerDevice::finished, this, &SAKDebugger::closeDevice, Qt::QueuedConnection);
