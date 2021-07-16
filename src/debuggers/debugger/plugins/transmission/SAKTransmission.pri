@@ -20,3 +20,6 @@ SOURCES += \
     $$PWD/SAKOtherTransmissionItemUdp.cc \
     $$PWD/SAKOtherTransmissionPage.cc \
     $$PWD/SAKOtherTransmissionPageViewer.cc
+
+INCLUDEPATH += \
+    $$PWD

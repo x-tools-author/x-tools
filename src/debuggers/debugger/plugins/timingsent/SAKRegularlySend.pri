@@ -9,3 +9,6 @@ HEADERS += \
 SOURCES += \
     $$PWD/SAKOtherTimingSentItem.cc \
     $$PWD/SAKOtherTimingSentItemManager.cc
+
+INCLUDEPATH += \
+    $$PWD

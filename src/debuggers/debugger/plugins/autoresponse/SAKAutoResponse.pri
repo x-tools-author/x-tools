@@ -9,3 +9,6 @@ HEADERS += \
 SOURCES += \
     $$PWD/SAKOtherAutoResponseItem.cc \
     $$PWD/SAKOtherAutoResponseItemManager.cc
+
+INCLUDEPATH += \
+    $$PWD
