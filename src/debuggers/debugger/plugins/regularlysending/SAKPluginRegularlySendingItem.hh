@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKOTHERTIMINGSENTITEM_HH
-#define SAKOTHERTIMINGSENTITEM_HH
+#ifndef SAKPLUGINREGULARLYSENDINGITEM_HH
+#define SAKPLUGINREGULARLYSENDINGITEM_HH
 
 #include <QTimer>
 #include <QWidget>
@@ -19,23 +19,23 @@
 #include <QPushButton>
 
 namespace Ui {
-    class SAKOtherTimingSentItem;
+    class SAKPluginRegularlySendingItem;
 }
 class SAKDebugger;
 /// @brief Timing sent item
-class SAKOtherTimingSentItem:public QWidget
+class SAKPluginRegularlySendingItem:public QWidget
 {
     Q_OBJECT
 public:
-    SAKOtherTimingSentItem(SAKDebugger *mDebugPage, QWidget *parent = Q_NULLPTR);
-    SAKOtherTimingSentItem(SAKDebugger *mDebugPage,
+    SAKPluginRegularlySendingItem(SAKDebugger *mDebugPage, QWidget *parent = Q_NULLPTR);
+    SAKPluginRegularlySendingItem(SAKDebugger *mDebugPage,
                            quint64 mID,
                            quint32 interval,
                            quint32 format,
                            QString description,
                            QString text,
                            QWidget *parent = Q_NULLPTR);
-    ~SAKOtherTimingSentItem();
+    ~SAKPluginRegularlySendingItem();
 
     quint64 itemID();
     quint32 itemInterval();
@@ -51,7 +51,7 @@ private:
     void write();
     void commonInitializing();
 private:
-    Ui::SAKOtherTimingSentItem *mUi;
+    Ui::SAKPluginRegularlySendingItem *mUi;
     QCheckBox *mEnableCheckBox;
     QLineEdit *mIntervalLineEdit;
     QComboBox *mTextFormatComboBox;

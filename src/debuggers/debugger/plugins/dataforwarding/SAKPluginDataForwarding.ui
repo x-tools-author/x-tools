@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SAKOtherTransmissionPageViewer</class>
- <widget class="QWidget" name="SAKOtherTransmissionPageViewer">
+ <class>SAKPluginDataForwarding</class>
+ <widget class="QWidget" name="SAKPluginDataForwarding">
   <property name="geometry">
    <rect>
     <x>0</x>

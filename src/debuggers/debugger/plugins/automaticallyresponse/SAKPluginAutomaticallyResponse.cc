@@ -22,13 +22,13 @@
 #include "SAKDebugger.hh"
 #include "SAKApplication.hh"
 #include "SAKCommonDataStructure.hh"
-#include "SAKPluginAutoResponseItem.hh"
-#include "SAKPluginAutoResponse.hh"
+#include "SAKPluginAutomaticallyResponseItem.hh"
+#include "SAKPluginAutomaticallyResponse.hh"
 #include "SAKDebugPageCommonDatabaseInterface.hh"
 
 #include "ui_SAKPluginAutoResponse.h"
 
-SAKPluginAutoResponse::SAKPluginAutoResponse(QWidget *parent)
+SAKPluginAutomaticallyResponse::SAKPluginAutomaticallyResponse(QWidget *parent)
     :QWidget (parent)
     ,mUi (new Ui::SAKPluginAutoResponse)
 {
@@ -42,7 +42,7 @@ SAKPluginAutoResponse::SAKPluginAutoResponse(QWidget *parent)
     mMsgLabel = mUi->msgLabel;
 
     mClearMessageInfoTimer.setInterval(SAK_CLEAR_MESSAGE_INTERVAL);
-    connect(&mClearMessageInfoTimer, &QTimer::timeout, this, &SAKPluginAutoResponse::clearMessage);
+    connect(&mClearMessageInfoTimer, &QTimer::timeout, this, &SAKPluginAutomaticallyResponse::clearMessage);
 #if 0
     // Read in record from database
     mDatabaseInterface = mDebugPage->databaseInterface();
@@ -51,16 +51,16 @@ SAKPluginAutoResponse::SAKPluginAutoResponse(QWidget *parent)
 #endif
 }
 
-SAKPluginAutoResponse::~SAKPluginAutoResponse()
+SAKPluginAutomaticallyResponse::~SAKPluginAutomaticallyResponse()
 {
     delete mUi;
 }
 
-SAKPluginAutoResponseItem *innerCreateItem(SAKDebugPageCommonDatabaseInterface::SAKStructAutoResponseItem &var, SAKDebugger *debugPage, QListWidget *listWidget)
+SAKPluginAutomaticallyResponseItem *innerCreateItem(SAKDebugPageCommonDatabaseInterface::SAKStructAutoResponseItem &var, SAKDebugger *debugPage, QListWidget *listWidget)
 {
     QListWidgetItem *item = new QListWidgetItem(listWidget);
     listWidget->addItem(item);
-    SAKPluginAutoResponseItem *itemWidget = new SAKPluginAutoResponseItem(debugPage,
+    SAKPluginAutomaticallyResponseItem *itemWidget = new SAKPluginAutomaticallyResponseItem(debugPage,
                                                                         var.id,
                                                                         var.name,
                                                                         var.referenceData,
@@ -77,7 +77,7 @@ SAKPluginAutoResponseItem *innerCreateItem(SAKDebugPageCommonDatabaseInterface::
     return itemWidget;
 }
 
-void SAKPluginAutoResponse::outputMessage(QString msg, bool isInfo)
+void SAKPluginAutomaticallyResponse::outputMessage(QString msg, bool isInfo)
 {
     QString color = "black";
     if (!isInfo){
@@ -90,13 +90,13 @@ void SAKPluginAutoResponse::outputMessage(QString msg, bool isInfo)
     mClearMessageInfoTimer.start();
 }
 
-void SAKPluginAutoResponse::clearMessage()
+void SAKPluginAutomaticallyResponse::clearMessage()
 {
     mClearMessageInfoTimer.stop();
     mMsgLabel->clear();
 }
 
-void SAKPluginAutoResponse::readInRecord()
+void SAKPluginAutomaticallyResponse::readInRecord()
 {
 #if 0
     QList<SAKDebugPageCommonDatabaseInterface::SAKStructAutoResponseItem> itemList = mDatabaseInterface->selectAutoResponseItem();
@@ -107,13 +107,13 @@ void SAKPluginAutoResponse::readInRecord()
 #endif
 }
 
-bool SAKPluginAutoResponse::contains(quint64 paraID)
+bool SAKPluginAutomaticallyResponse::contains(quint64 paraID)
 {
     bool contain = false;
     for (int i = 0; i < mListWidget->count(); i++){
         QListWidgetItem *item = mListWidget->item(i);
         QWidget *w = mListWidget->itemWidget(item);
-        SAKPluginAutoResponseItem *itemWidget = reinterpret_cast<SAKPluginAutoResponseItem*>(w);
+        SAKPluginAutomaticallyResponseItem *itemWidget = reinterpret_cast<SAKPluginAutomaticallyResponseItem*>(w);
         if (itemWidget->itemID() == paraID){
             contain = true;
             break;
@@ -123,24 +123,24 @@ bool SAKPluginAutoResponse::contains(quint64 paraID)
     return contain;
 }
 
-void SAKPluginAutoResponse::initializingItem(SAKPluginAutoResponseItem *item)
+void SAKPluginAutomaticallyResponse::initializingItem(SAKPluginAutomaticallyResponseItem *item)
 {
     if (item){
-        connect(item, &SAKPluginAutoResponseItem::descriptionChanged, this, &SAKPluginAutoResponse::changeDescription);
-        connect(item, &SAKPluginAutoResponseItem::referenceTextChanged, this, &SAKPluginAutoResponse::changeReferenceText);
-        connect(item, &SAKPluginAutoResponseItem::responseTextChanged, this, &SAKPluginAutoResponse::changeResponseText);
-        connect(item, &SAKPluginAutoResponseItem::enableChanged, this, &SAKPluginAutoResponse::changeDelay);
-        connect(item, &SAKPluginAutoResponseItem::optionChanged, this, &SAKPluginAutoResponse::changeOption);
-        connect(item, &SAKPluginAutoResponseItem::referenceFormatChanged, this, &SAKPluginAutoResponse::changeReferenceFormat);
-        connect(item, &SAKPluginAutoResponseItem::responseFromatChanged, this, &SAKPluginAutoResponse::changeResponseFromat);
-        connect(item, &SAKPluginAutoResponseItem::delayChanged, this, &SAKPluginAutoResponse::changeDelay);
-        connect(item, &SAKPluginAutoResponseItem::intervalChanged, this, &SAKPluginAutoResponse::changeInterval);
+        connect(item, &SAKPluginAutomaticallyResponseItem::descriptionChanged, this, &SAKPluginAutomaticallyResponse::changeDescription);
+        connect(item, &SAKPluginAutomaticallyResponseItem::referenceTextChanged, this, &SAKPluginAutomaticallyResponse::changeReferenceText);
+        connect(item, &SAKPluginAutomaticallyResponseItem::responseTextChanged, this, &SAKPluginAutomaticallyResponse::changeResponseText);
+        connect(item, &SAKPluginAutomaticallyResponseItem::enableChanged, this, &SAKPluginAutomaticallyResponse::changeDelay);
+        connect(item, &SAKPluginAutomaticallyResponseItem::optionChanged, this, &SAKPluginAutomaticallyResponse::changeOption);
+        connect(item, &SAKPluginAutomaticallyResponseItem::referenceFormatChanged, this, &SAKPluginAutomaticallyResponse::changeReferenceFormat);
+        connect(item, &SAKPluginAutomaticallyResponseItem::responseFromatChanged, this, &SAKPluginAutomaticallyResponse::changeResponseFromat);
+        connect(item, &SAKPluginAutomaticallyResponseItem::delayChanged, this, &SAKPluginAutomaticallyResponse::changeDelay);
+        connect(item, &SAKPluginAutomaticallyResponseItem::intervalChanged, this, &SAKPluginAutomaticallyResponse::changeInterval);
     }
 }
 
-void SAKPluginAutoResponse::changeDescription(const QString &description)
+void SAKPluginAutomaticallyResponse::changeDescription(const QString &description)
 {
-    SAKPluginAutoResponseItem *item = sender2item(sender());
+    SAKPluginAutomaticallyResponseItem *item = sender2item(sender());
     if (item){
         SAKDebugPageCommonDatabaseInterface::AutoResponseTable table;
         quint64 id = item->itemID();
@@ -148,9 +148,9 @@ void SAKPluginAutoResponse::changeDescription(const QString &description)
     }
 }
 
-void SAKPluginAutoResponse::changeReferenceText(const QString &text)
+void SAKPluginAutomaticallyResponse::changeReferenceText(const QString &text)
 {
-    SAKPluginAutoResponseItem *item = sender2item(sender());
+    SAKPluginAutomaticallyResponseItem *item = sender2item(sender());
     if (item){
         SAKDebugPageCommonDatabaseInterface::AutoResponseTable table;
         quint64 id = item->itemID();
@@ -158,9 +158,9 @@ void SAKPluginAutoResponse::changeReferenceText(const QString &text)
     }
 }
 
-void SAKPluginAutoResponse::changeResponseText(const QString &text)
+void SAKPluginAutomaticallyResponse::changeResponseText(const QString &text)
 {
-    SAKPluginAutoResponseItem *item = sender2item(sender());
+    SAKPluginAutomaticallyResponseItem *item = sender2item(sender());
     if (item){
         SAKDebugPageCommonDatabaseInterface::AutoResponseTable table;
         quint64 id = item->itemID();
@@ -168,9 +168,9 @@ void SAKPluginAutoResponse::changeResponseText(const QString &text)
     }
 }
 
-void SAKPluginAutoResponse::changeEnable(bool enable)
+void SAKPluginAutomaticallyResponse::changeEnable(bool enable)
 {
-    SAKPluginAutoResponseItem *item = sender2item(sender());
+    SAKPluginAutomaticallyResponseItem *item = sender2item(sender());
     if (item){
         SAKDebugPageCommonDatabaseInterface::AutoResponseTable table;
         quint64 id = item->itemID();
@@ -178,9 +178,9 @@ void SAKPluginAutoResponse::changeEnable(bool enable)
     }
 }
 
-void SAKPluginAutoResponse::changeOption(int option)
+void SAKPluginAutomaticallyResponse::changeOption(int option)
 {
-    SAKPluginAutoResponseItem *item = sender2item(sender());
+    SAKPluginAutomaticallyResponseItem *item = sender2item(sender());
     if (item){
         SAKDebugPageCommonDatabaseInterface::AutoResponseTable table;
         quint64 id = item->itemID();
@@ -188,9 +188,9 @@ void SAKPluginAutoResponse::changeOption(int option)
     }
 }
 
-void SAKPluginAutoResponse::changeReferenceFormat(int format)
+void SAKPluginAutomaticallyResponse::changeReferenceFormat(int format)
 {
-    SAKPluginAutoResponseItem *item = sender2item(sender());
+    SAKPluginAutomaticallyResponseItem *item = sender2item(sender());
     if (item){
         SAKDebugPageCommonDatabaseInterface::AutoResponseTable table;
         quint64 id = item->itemID();
@@ -198,9 +198,9 @@ void SAKPluginAutoResponse::changeReferenceFormat(int format)
     }
 }
 
-void SAKPluginAutoResponse::changeResponseFromat(int format)
+void SAKPluginAutomaticallyResponse::changeResponseFromat(int format)
 {
-    SAKPluginAutoResponseItem *item = sender2item(sender());
+    SAKPluginAutomaticallyResponseItem *item = sender2item(sender());
     if (item){
         SAKDebugPageCommonDatabaseInterface::AutoResponseTable table;
         quint64 id = item->itemID();
@@ -208,9 +208,9 @@ void SAKPluginAutoResponse::changeResponseFromat(int format)
     }
 }
 
-void SAKPluginAutoResponse::changeDelay(bool delay)
+void SAKPluginAutomaticallyResponse::changeDelay(bool delay)
 {
-    SAKPluginAutoResponseItem *item = sender2item(sender());
+    SAKPluginAutomaticallyResponseItem *item = sender2item(sender());
     if (item){
         SAKDebugPageCommonDatabaseInterface::AutoResponseTable table;
         quint64 id = item->itemID();
@@ -218,9 +218,9 @@ void SAKPluginAutoResponse::changeDelay(bool delay)
     }
 }
 
-void SAKPluginAutoResponse::changeInterval(int interval)
+void SAKPluginAutomaticallyResponse::changeInterval(int interval)
 {
-    SAKPluginAutoResponseItem *item = sender2item(sender());
+    SAKPluginAutomaticallyResponseItem *item = sender2item(sender());
     if (item){
         SAKDebugPageCommonDatabaseInterface::AutoResponseTable table;
         quint64 id = item->itemID();
@@ -228,40 +228,40 @@ void SAKPluginAutoResponse::changeInterval(int interval)
     }
 }
 
-SAKPluginAutoResponseItem *SAKPluginAutoResponse::sender2item(QObject *sender)
+SAKPluginAutomaticallyResponseItem *SAKPluginAutomaticallyResponse::sender2item(QObject *sender)
 {
-    SAKPluginAutoResponseItem *item = Q_NULLPTR;
+    SAKPluginAutomaticallyResponseItem *item = Q_NULLPTR;
     if (sender){
         if (sender->inherits("SAKOtherAutoResponseItem")){
-            item = qobject_cast<SAKPluginAutoResponseItem*>(sender);
+            item = qobject_cast<SAKPluginAutomaticallyResponseItem*>(sender);
         }
     }
     return item;
 }
 
-QList<SAKPluginAutoResponseItem *> SAKPluginAutoResponse::items()
+QList<SAKPluginAutomaticallyResponseItem *> SAKPluginAutomaticallyResponse::items()
 {
-    QList<SAKPluginAutoResponseItem *> itemList;
+    QList<SAKPluginAutomaticallyResponseItem *> itemList;
     for (int i = 0; i < mListWidget->count(); i++){
         QListWidgetItem *item = mListWidget->item(i);
-        SAKPluginAutoResponseItem *itemWidget = qobject_cast<SAKPluginAutoResponseItem *>(mListWidget->itemWidget(item));
+        SAKPluginAutomaticallyResponseItem *itemWidget = qobject_cast<SAKPluginAutomaticallyResponseItem *>(mListWidget->itemWidget(item));
         itemList.append(itemWidget);
     }
 
     return itemList;
 }
 
-void SAKPluginAutoResponse::on_forbidAllCheckBox_clicked()
+void SAKPluginAutomaticallyResponse::on_forbidAllCheckBox_clicked()
 {
     for(int i = 0; i < mListWidget->count(); i++){
         QListWidgetItem *item = mListWidget->item(i);
         QWidget *widget = mListWidget->itemWidget(item);
         bool disAble = mForbidAllCheckBox->isChecked();
-        reinterpret_cast<SAKPluginAutoResponseItem*>(widget)->setAllAutoResponseDisable(disAble);
+        reinterpret_cast<SAKPluginAutomaticallyResponseItem*>(widget)->setAllAutoResponseDisable(disAble);
     }
 }
 
-void SAKPluginAutoResponse::on_deleteItemPushButton_clicked()
+void SAKPluginAutomaticallyResponse::on_deleteItemPushButton_clicked()
 {
     QListWidgetItem *item = mListWidget->currentItem();
     if (!item){
@@ -270,7 +270,7 @@ void SAKPluginAutoResponse::on_deleteItemPushButton_clicked()
     }
 
     // Delete record from database
-    SAKPluginAutoResponseItem *w = reinterpret_cast<SAKPluginAutoResponseItem*>(mListWidget->itemWidget(item));
+    SAKPluginAutomaticallyResponseItem *w = reinterpret_cast<SAKPluginAutomaticallyResponseItem*>(mListWidget->itemWidget(item));
     quint64 id = w->itemID();
     mDatabaseInterface->deleteRecord(mTableName, id);
 
@@ -278,7 +278,7 @@ void SAKPluginAutoResponse::on_deleteItemPushButton_clicked()
     delete item;
 }
 
-void SAKPluginAutoResponse::on_addItemPushButton_clicked()
+void SAKPluginAutomaticallyResponse::on_addItemPushButton_clicked()
 {
     // Check length fo item
     if (mListWidget->count() >= SAK_MAX_AUTO_RESPONSE_COUNT){
@@ -309,7 +309,7 @@ void SAKPluginAutoResponse::on_addItemPushButton_clicked()
 #endif
 }
 
-void SAKPluginAutoResponse::on_outportPushButton_clicked()
+void SAKPluginAutomaticallyResponse::on_outportPushButton_clicked()
 {
     /// @brief Read record.
     QList<SAKDebugPageCommonDatabaseInterface::SAKStructAutoResponseItem> itemList;
@@ -354,7 +354,7 @@ void SAKPluginAutoResponse::on_outportPushButton_clicked()
     }
 }
 
-void SAKPluginAutoResponse::on_importPushButton_clicked()
+void SAKPluginAutomaticallyResponse::on_importPushButton_clicked()
 {
     QString defaultPath = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
     QString fileName = QFileDialog::getOpenFileName(this, tr("Import file"), defaultPath, QString("json (*.json)"));

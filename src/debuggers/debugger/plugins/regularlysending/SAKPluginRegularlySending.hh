@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKOTHERTIMINGSENTITEMMANAGER_HH
-#define SAKOTHERTIMINGSENTITEMMANAGER_HH
+#ifndef SAKPLUGINREGULARLYSENDING_HH
+#define SAKPLUGINREGULARLYSENDING_HH
 
 #include <QTimer>
 #include <QLabel>
@@ -20,19 +20,17 @@
 #include <QPushButton>
 
 namespace Ui {
-    class SAKOtherTimingSentItemManager;
+    class SAKPluginRegularlySending;
 }
 
-class SAKDebugger;
-class SAKOtherTimingSentItem;
-class SAKDebugPageCommonDatabaseInterface;
+
 /// @brief Timing sent item manager
-class SAKOtherTimingSentItemManager:public QWidget
+class SAKPluginRegularlySending:public QWidget
 {
     Q_OBJECT
 public:
-    SAKOtherTimingSentItemManager(SAKDebugger *mDebugPage, QWidget *parent = Q_NULLPTR);
-    ~SAKOtherTimingSentItemManager();
+    SAKPluginRegularlySending(QWidget *parent = Q_NULLPTR);
+    ~SAKPluginRegularlySending();
 
     struct TimingSendingItemKey {
         const QString id = QString("id");
@@ -42,23 +40,19 @@ public:
         const QString text = QString("text");
     };
 private:
-    SAKDebugger *mDebugPage;
     QString mTableName;
     QTimer mClearMessageTimer;
-    SAKDebugPageCommonDatabaseInterface *mDatabaseInterface;
 private:
     void readinRecord();
     bool contains(quint64 paraID);
     void outputMessage(QString msg, bool isError = false);
-    void initializingItem(SAKOtherTimingSentItem *item);
-    SAKOtherTimingSentItem *sender2item(QObject *sender);
     // update record
     void changeInterval(int interval);
     void changeFormat(int format);
     void changeDescription(QString description);
     void changeInputText(QString text);
 private:
-    Ui::SAKOtherTimingSentItemManager *mUi;
+    Ui::SAKPluginRegularlySending *mUi;
     QListWidget *mItemListWidget;
     QPushButton *mOutportPushButton;
     QPushButton *mImportPushButton;

@@ -23,12 +23,12 @@ namespace Ui {
 
 class SAKDebugger;
 /// @brief Auto response item
-class SAKPluginAutoResponseItem:public QWidget
+class SAKPluginAutomaticallyResponseItem:public QWidget
 {
     Q_OBJECT
 public:
-    SAKPluginAutoResponseItem(SAKDebugger *mDebugPage, QWidget *parent = Q_NULLPTR);
-    SAKPluginAutoResponseItem(SAKDebugger *mDebugPage,
+    SAKPluginAutomaticallyResponseItem(SAKDebugger *mDebugPage, QWidget *parent = Q_NULLPTR);
+    SAKPluginAutomaticallyResponseItem(SAKDebugger *mDebugPage,
                              quint64 mID,
                              QString name,
                              QString referenceData,
@@ -40,7 +40,7 @@ public:
                              bool delay,
                              int interval,
                              QWidget *parent = Q_NULLPTR);
-    ~SAKPluginAutoResponseItem();
+    ~SAKPluginAutomaticallyResponseItem();
 
     /**
      * @brief setAllAutoResponseDisable: Set enable flag

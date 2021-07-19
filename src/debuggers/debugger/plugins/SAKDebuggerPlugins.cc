@@ -18,42 +18,89 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
                                        const QString &settingsGroup,
                                        QObject *parent)
     :QObject(parent)
-    ,mAutoResponse(Q_NULLPTR)
+    ,mDataForwarding(Q_NULLPTR)
+    ,mRegularlySending(Q_NULLPTR)
+    ,mAutomaticallyResponse(Q_NULLPTR)
 {
     QMenu *menu = new QMenu(menuBt);
     menuBt->setMenu(menu);
 
+
     // Instance plugins
-    mAutoResponse = new SAKPluginAutoResponse();
+    mDataForwarding = new SAKPluginDataForwarding();
+    mRegularlySending = new SAKPluginRegularlySending();
+    mAutomaticallyResponse = new SAKPluginAutomaticallyResponse();
+
 
     QMenu *embedMenu = new QMenu(tr("Inset to Center"), menu);
     menu->addMenu(embedMenu);
     embedMenu->addAction(tr("Cancel Inset"), this, [](){});
     embedMenu->addSeparator();
-    embedMenu->addAction(tr("Data Transmission"), this, [](){});
-    embedMenu->addAction(tr("Auto Response"), this, &SAKDebuggerPlugins::showAutoResponsePlugin);
-    embedMenu->addAction(tr("Charts"), this, [](){});
-    embedMenu->addAction(tr("3D"), this, [](){});
+
+    struct SAKActionsContext {
+        QString title;
+        void (SAKDebuggerPlugins::*memberFunction)();
+    };
+    QVector<SAKActionsContext> actionsCtx;
+    actionsCtx.append({tr("3D"), &SAKDebuggerPlugins::showPluin3D});
+    actionsCtx.append({tr("Charts"), &SAKDebuggerPlugins::showPluinCharts});
+    actionsCtx.append({tr("Data Forwarding"), &SAKDebuggerPlugins::showPluinDataForwarding});
+    actionsCtx.append({tr("Regularly Sending"), &SAKDebuggerPlugins::showPluginRegularlySending});
+    actionsCtx.append({tr("Automatically Response"), &SAKDebuggerPlugins::showPluginAutomaticallyResponse});
+    auto addActionsToMenu = [=](QMenu *m, const QVector<SAKActionsContext> &ctxs){
+        for (int i = 0; i < ctxs.count(); i++) {
+            SAKActionsContext ctx = ctxs.at(i);
+            m->addAction(ctx.title, this, ctx.memberFunction);
+        }
+    };
+    addActionsToMenu(embedMenu, actionsCtx);
     menu->addSeparator();
-    menu->addAction(tr("Data Transmission"), this, [](){});
-    menu->addAction(tr("Auto Response"), this, &SAKDebuggerPlugins::showAutoResponsePlugin);
-    menu->addAction(tr("Charts"), this, [](){});
-    menu->addAction(tr("3D"), this, [](){});
+    addActionsToMenu(menu, actionsCtx);
     menu->addSeparator();
-    menu->addAction(tr("Auto Reload"), this, [](){});
+    menu->addAction(tr("Automatically Reload"), this, [](){});
     menu->addAction(tr("Reload All"), this, [](){});
 }
 
 SAKDebuggerPlugins::~SAKDebuggerPlugins()
 {
-    mAutoResponse->deleteLater();
+    mDataForwarding->deleteLater();
+    mRegularlySending->deleteLater();
+    mAutomaticallyResponse->deleteLater();
 }
 
-void SAKDebuggerPlugins::showAutoResponsePlugin()
+void SAKDebuggerPlugins::showPluin3D()
 {
-    if (mAutoResponse->isHidden()) {
-        mAutoResponse->show();
+
+}
+
+void SAKDebuggerPlugins::showPluinCharts()
+{
+
+}
+
+void SAKDebuggerPlugins::showPluinDataForwarding()
+{
+    if (mDataForwarding->isHidden()) {
+        mDataForwarding->show();
     } else {
-        mAutoResponse->activateWindow();
+        mDataForwarding->activateWindow();
+    }
+}
+
+void SAKDebuggerPlugins::showPluginAutomaticallyResponse()
+{
+    if (mAutomaticallyResponse->isHidden()) {
+        mAutomaticallyResponse->show();
+    } else {
+        mAutomaticallyResponse->activateWindow();
+    }
+}
+
+void SAKDebuggerPlugins::showPluginRegularlySending()
+{
+    if (mRegularlySending->isHidden()) {
+        mRegularlySending->show();
+    } else {
+        mRegularlySending->show();
     }
 }

@@ -14,9 +14,9 @@
 #include <QSettings>
 #include <QPushButton>
 
-#include "SAKOtherTransmissionPage.hh"
-#include "SAKOtherTimingSentItemManager.hh"
-#include "SAKPluginAutoResponse.hh"
+#include "SAKPluginDataForwarding.hh"
+#include "SAKPluginRegularlySending.hh"
+#include "SAKPluginAutomaticallyResponse.hh"
 
 class SAKDebuggerPlugins : public QObject
 {
@@ -29,9 +29,15 @@ public:
                                 QObject *parent = Q_NULLPTR);
     ~SAKDebuggerPlugins();
 private:
-    SAKPluginAutoResponse *mAutoResponse;
+    SAKPluginDataForwarding *mDataForwarding;
+    SAKPluginRegularlySending *mRegularlySending;
+    SAKPluginAutomaticallyResponse *mAutomaticallyResponse;
 private:
-    void showAutoResponsePlugin();
+    void showPluin3D();
+    void showPluinCharts();
+    void showPluinDataForwarding();
+    void showPluginRegularlySending();
+    void showPluginAutomaticallyResponse();
 };
 
 #endif // SAKDEBUGGERPLUGINS_HH

@@ -23,15 +23,15 @@ namespace Ui {
     class SAKPluginAutoResponse;
 }
 
-class SAKPluginAutoResponseItem;
+class SAKPluginAutomaticallyResponseItem;
 class SAKDebugPageCommonDatabaseInterface;
 /// @brief Auto response item manager
-class SAKPluginAutoResponse:public QWidget
+class SAKPluginAutomaticallyResponse:public QWidget
 {
    Q_OBJECT
 public:
-    SAKPluginAutoResponse(QWidget *parent = Q_NULLPTR);
-    ~SAKPluginAutoResponse();
+    SAKPluginAutomaticallyResponse(QWidget *parent = Q_NULLPTR);
+    ~SAKPluginAutomaticallyResponse();
 
     struct AutoResponseItemKey {
         const QString id = QString("id");
@@ -54,7 +54,7 @@ private:
     void clearMessage();
     void readInRecord();
     bool contains(quint64 paraID);
-    void initializingItem(SAKPluginAutoResponseItem *item);
+    void initializingItem(SAKPluginAutomaticallyResponseItem *item);
     // update record
     void changeDescription(const QString &description);
     void changeReferenceText(const QString &text);
@@ -65,8 +65,8 @@ private:
     void changeResponseFromat(int format);
     void changeDelay(bool delay);
     void changeInterval(int interval);
-    SAKPluginAutoResponseItem *sender2item(QObject *sender);
-    QList<SAKPluginAutoResponseItem *> items();
+    SAKPluginAutomaticallyResponseItem *sender2item(QObject *sender);
+    QList<SAKPluginAutomaticallyResponseItem *> items();
 private:
     Ui::SAKPluginAutoResponse *mUi;
     QListWidget *mListWidget;

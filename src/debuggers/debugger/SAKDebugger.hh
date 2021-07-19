@@ -40,7 +40,7 @@ class SAKDebuggerPlugins;
 #ifdef SAK_IMPORT_MODULE_CHARTS
 class SAKDebugPageChartsController;
 #endif
-class SAKOtherTransmissionPageViewer;
+class SAKPluginDataForwarding;
 class SAKDebuggerStatistics;
 class SAKDebugPageCommonDatabaseInterface;
 

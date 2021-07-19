@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -12,23 +12,23 @@
 
 #include "SAKDebugger.hh"
 #include "SAKCommonDataStructure.hh"
-#include "SAKOtherTimingSentItem.hh"
+#include "SAKPluginRegularlySendingItem.hh"
 #include "SAKDebuggerInput.hh"
 
-#include "ui_SAKOtherTimingSentItem.h"
+#include "ui_SAKPluginRegularlySendingItem.h"
 
-SAKOtherTimingSentItem::SAKOtherTimingSentItem(SAKDebugger *debugPage, QWidget *parent)
+SAKPluginRegularlySendingItem::SAKPluginRegularlySendingItem(SAKDebugger *debugPage, QWidget *parent)
     :QWidget(parent)
     ,mDebugPage(debugPage)
     ,isInitializing(true)
-    ,mUi(new Ui::SAKOtherTimingSentItem)
+    ,mUi(new Ui::SAKPluginRegularlySendingItem)
 {
     commonInitializing();
     mID = QDateTime::currentMSecsSinceEpoch();
     isInitializing = false;
 }
 
-SAKOtherTimingSentItem::SAKOtherTimingSentItem(SAKDebugger *debugPage,
+SAKPluginRegularlySendingItem::SAKPluginRegularlySendingItem(SAKDebugger *debugPage,
                                                quint64 id,
                                                quint32 interval,
                                                quint32 format,
@@ -39,7 +39,7 @@ SAKOtherTimingSentItem::SAKOtherTimingSentItem(SAKDebugger *debugPage,
     ,mDebugPage(debugPage)
     ,mID(id)
     ,isInitializing(true)
-    ,mUi(new Ui::SAKOtherTimingSentItem)
+    ,mUi(new Ui::SAKPluginRegularlySendingItem)
 {
     commonInitializing();
 
@@ -50,37 +50,37 @@ SAKOtherTimingSentItem::SAKOtherTimingSentItem(SAKDebugger *debugPage,
     isInitializing = false;
 }
 
-SAKOtherTimingSentItem::~SAKOtherTimingSentItem()
+SAKPluginRegularlySendingItem::~SAKPluginRegularlySendingItem()
 {
     delete mUi;
 }
 
-quint64 SAKOtherTimingSentItem::itemID()
+quint64 SAKPluginRegularlySendingItem::itemID()
 {
     return mID;
 }
 
-quint32 SAKOtherTimingSentItem::itemInterval()
+quint32 SAKPluginRegularlySendingItem::itemInterval()
 {
     return mIntervalLineEdit->text().toUInt();
 }
 
-quint32 SAKOtherTimingSentItem::itemFormat()
+quint32 SAKPluginRegularlySendingItem::itemFormat()
 {
     return mTextFormatComboBox->currentIndex();
 }
 
-QString SAKOtherTimingSentItem::itemDescription()
+QString SAKPluginRegularlySendingItem::itemDescription()
 {
     return mDescriptionLineEdit->text();
 }
 
-QString SAKOtherTimingSentItem::itemText()
+QString SAKPluginRegularlySendingItem::itemText()
 {
     return mInputDataTextEdit->toPlainText();
 }
 
-void SAKOtherTimingSentItem::write()
+void SAKPluginRegularlySendingItem::write()
 {
     mWriteTimer.stop();
     QString data = mInputDataTextEdit->toPlainText();
@@ -92,7 +92,7 @@ void SAKOtherTimingSentItem::write()
     mWriteTimer.start();
 }
 
-void SAKOtherTimingSentItem::commonInitializing()
+void SAKPluginRegularlySendingItem::commonInitializing()
 {
     mUi->setupUi(this);
 
@@ -103,18 +103,18 @@ void SAKOtherTimingSentItem::commonInitializing()
     mInputDataTextEdit = mUi->inputDataTextEdit;
 
     mWriteTimer.setInterval(mIntervalLineEdit->text().toInt());
-    connect(&mWriteTimer, &QTimer::timeout, this, &SAKOtherTimingSentItem::write);
+    connect(&mWriteTimer, &QTimer::timeout, this, &SAKPluginRegularlySendingItem::write);
     SAKCommonDataStructure::setComboBoxTextInputFormat(mTextFormatComboBox);
 }
 
-void SAKOtherTimingSentItem::on_enableCheckBox_clicked()
+void SAKPluginRegularlySendingItem::on_enableCheckBox_clicked()
 {
     if (mEnableCheckBox){
         mEnableCheckBox->isChecked() ? mWriteTimer.start() : mWriteTimer.stop();
     }
 }
 
-void SAKOtherTimingSentItem::on_intervalLineEdit_textChanged(const QString &text)
+void SAKPluginRegularlySendingItem::on_intervalLineEdit_textChanged(const QString &text)
 {
     if (!isInitializing){
         int interval = text.toInt();
@@ -123,7 +123,7 @@ void SAKOtherTimingSentItem::on_intervalLineEdit_textChanged(const QString &text
     }
 }
 
-void SAKOtherTimingSentItem::on_textFormatComboBox_currentTextChanged(const QString &text)
+void SAKPluginRegularlySendingItem::on_textFormatComboBox_currentTextChanged(const QString &text)
 {
     Q_UNUSED(text);
     if (!isInitializing){
@@ -133,14 +133,14 @@ void SAKOtherTimingSentItem::on_textFormatComboBox_currentTextChanged(const QStr
     }
 }
 
-void SAKOtherTimingSentItem::on_descriptionLineEdit_textChanged(const QString &text)
+void SAKPluginRegularlySendingItem::on_descriptionLineEdit_textChanged(const QString &text)
 {
     if (!isInitializing){
         emit descriptionChanged(text);
     }
 }
 
-void SAKOtherTimingSentItem::on_inputDataTextEdit_textChanged()
+void SAKPluginRegularlySendingItem::on_inputDataTextEdit_textChanged()
 {
     if (!isInitializing){
         QString text = mInputDataTextEdit->toPlainText();

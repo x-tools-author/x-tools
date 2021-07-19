@@ -1,7 +1,7 @@
-include($$PWD/charts/SAKCharts.pri)
-include($$PWD/timingsent/SAKRegularlySend.pri)
-include($$PWD/transmission/SAKTransmission.pri)
-include($$PWD/autoresponse/SAKPluginAutoResponse.pri)
+include($$PWD/charts/SAKPluginCharts.pri)
+include($$PWD/automaticallyresponse/SAKPluginAutomaticallyResponse.pri)
+include($$PWD/dataforwarding/SAKPluginDataForwarding.pri)
+include($$PWD/regularlysending/SAKPluginRegularlySending.pri)
 
 HEADERS += \
     $$PWD/SAKDebuggerPlugins.hh

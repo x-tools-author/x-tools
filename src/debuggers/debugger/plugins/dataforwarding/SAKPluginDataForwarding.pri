@@ -3,7 +3,7 @@ FORMS += \
     $$PWD/SAKOtherTransmissionItemTcp.ui \
     $$PWD/SAKOtherTransmissionItemUdp.ui \
     $$PWD/SAKOtherTransmissionPage.ui \
-    $$PWD/SAKOtherTransmissionPageViewer.ui
+    $$PWD/SAKPluginDataForwarding.ui
 
 HEADERS += \
     $$PWD/SAKOtherTransmissionItem.hh \
@@ -11,7 +11,7 @@ HEADERS += \
     $$PWD/SAKOtherTransmissionItemTcp.hh \
     $$PWD/SAKOtherTransmissionItemUdp.hh \
     $$PWD/SAKOtherTransmissionPage.hh \
-    $$PWD/SAKOtherTransmissionPageViewer.hh
+    $$PWD/SAKPluginDataForwarding.hh
 
 SOURCES += \
     $$PWD/SAKOtherTransmissionItem.cc \
@@ -19,7 +19,7 @@ SOURCES += \
     $$PWD/SAKOtherTransmissionItemTcp.cc \
     $$PWD/SAKOtherTransmissionItemUdp.cc \
     $$PWD/SAKOtherTransmissionPage.cc \
-    $$PWD/SAKOtherTransmissionPageViewer.cc
+    $$PWD/SAKPluginDataForwarding.cc
 
 INCLUDEPATH += \
     $$PWD

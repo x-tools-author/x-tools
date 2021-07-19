@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -10,18 +10,17 @@
 #include <QHBoxLayout>
 
 #include "SAKDebugger.hh"
+#include "SAKPluginDataForwarding.hh"
 #include "SAKOtherTransmissionPage.hh"
-#include "SAKOtherTransmissionPageViewer.hh"
 
-#include "ui_SAKOtherTransmissionPageViewer.h"
+#include "ui_SAKPluginDataForwarding.h"
 
-SAKOtherTransmissionPageViewer::SAKOtherTransmissionPageViewer(SAKDebugger *debugPage, QWidget *parent)
+SAKPluginDataForwarding::SAKPluginDataForwarding(QWidget *parent)
     :QWidget(parent)
-    ,mDebugPage (debugPage)
-    ,mUi (new Ui::SAKOtherTransmissionPageViewer)
+    ,mUi (new Ui::SAKPluginDataForwarding)
 {
     mUi->setupUi(this);
-
+#if 0
     mSerialPortWidget = mUi->serialPortWidget;
     mUdpWidget = mUi->udpWidget;
     mTcpWidget = mUi->tcpWidget;
@@ -39,9 +38,9 @@ SAKOtherTransmissionPageViewer::SAKOtherTransmissionPageViewer(SAKDebugger *debu
     mTcpTransmission = new SAKOtherTransmissionPage(debugPage, this);
     mTcpTransmission->setTransmissionType(SAKOtherTransmissionPage::TcpTransmission);
 
-    connect(mSerialPortTransmission, &SAKOtherTransmissionPage::invokeClose, this, &SAKOtherTransmissionPageViewer::close);
-    connect(mUdpTransmission, &SAKOtherTransmissionPage::invokeClose, this, &SAKOtherTransmissionPageViewer::close);
-    connect(mTcpTransmission, &SAKOtherTransmissionPage::invokeClose, this, &SAKOtherTransmissionPageViewer::close);
+    connect(mSerialPortTransmission, &SAKOtherTransmissionPage::invokeClose, this, &SAKPluginDataForwarding::close);
+    connect(mUdpTransmission, &SAKOtherTransmissionPage::invokeClose, this, &SAKPluginDataForwarding::close);
+    connect(mTcpTransmission, &SAKOtherTransmissionPage::invokeClose, this, &SAKPluginDataForwarding::close);
 
     installWidget(mSerialPortWidget, mSerialPortTransmission);
     installWidget(mUdpWidget, mUdpTransmission);
@@ -62,13 +61,10 @@ SAKOtherTransmissionPageViewer::SAKOtherTransmissionPageViewer(SAKDebugger *debu
     connect(mUi->tabWidget, &QTabWidget::currentChanged, this, [=](const int index){
         settings->setValue(settingsKeyCurrentPageIndex, index);
     });
+#endif
 }
 
-SAKOtherTransmissionPageViewer::~SAKOtherTransmissionPageViewer()
+SAKPluginDataForwarding::~SAKPluginDataForwarding()
 {
     delete mUi;
-
-    delete mUdpTransmission;
-    delete mTcpTransmission;
-    delete mSerialPortTransmission;
 }
