@@ -76,7 +76,7 @@
 #include "SAKWebSocketClientDebugger.hh"
 #include "SAKWebSocketServerDebugger.hh"
 #endif
-#ifdef SAK_IMPORT_MODULE_BLUETOOTHLOWENERGY
+#ifdef SAK_IMPORT_MODULE_BLE
 #include "SAKBluetoothLowEnergyDebugPage.hh"
 #endif
 
@@ -573,7 +573,7 @@ void SAKMainWindow::initializingMetaObject()
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeBluetoothClient, SAKBluetoothClientDebugPage::staticMetaObject, tr("BT-C")});
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeBluetoothServer, SAKBluetoothServerDebugPage::staticMetaObject, tr("BT-S")});
 #endif
-#ifdef SAK_IMPORT_MODULE_BLUETOOTHLOWENERGY
+#ifdef SAK_IMPORT_MODULE_BLE
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeBluetoothLowEnergy, SAKBluetoothLowEnergyDebugPage::staticMetaObject, tr("BLE")});
 #endif
 #ifdef SAK_IMPORT_MODULE_WEBSOCKET
