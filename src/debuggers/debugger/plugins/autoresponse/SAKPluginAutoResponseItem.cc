@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -15,15 +15,15 @@
 #include "SAKDebugger.hh"
 #include "SAKCommonInterface.hh"
 #include "SAKCommonDataStructure.hh"
-#include "SAKOtherAutoResponseItem.hh"
+#include "SAKPluginAutoResponseItem.hh"
 
-#include "ui_SAKOtherAutoResponseItem.h"
+#include "ui_SAKPluginAutoResponseItem.h"
 
-SAKOtherAutoResponseItem::SAKOtherAutoResponseItem(SAKDebugger *debugPage, QWidget *parent)
+SAKPluginAutoResponseItem::SAKPluginAutoResponseItem(SAKDebugger *debugPage, QWidget *parent)
     :QWidget(parent)
     ,mForbiddenAllAutoResponse(false)
     ,mDebugPage(debugPage)
-    ,mUi(new Ui::SAKOtherAutoResponseItem)
+    ,mUi(new Ui::SAKPluginAutoResponseItem)
 {
     commonInitializing();
     blockUiSignals(false);
@@ -32,7 +32,7 @@ SAKOtherAutoResponseItem::SAKOtherAutoResponseItem(SAKDebugger *debugPage, QWidg
     initDelayWritingTimer();
 }
 
-SAKOtherAutoResponseItem::SAKOtherAutoResponseItem(SAKDebugger *debugPage,
+SAKPluginAutoResponseItem::SAKPluginAutoResponseItem(SAKDebugger *debugPage,
                                                    quint64 id,
                                                    QString name,
                                                    QString referenceData,
@@ -48,7 +48,7 @@ SAKOtherAutoResponseItem::SAKOtherAutoResponseItem(SAKDebugger *debugPage,
     ,mForbiddenAllAutoResponse(false)
     ,mDebugPage(debugPage)
     ,mID(id)
-    ,mUi(new Ui::SAKOtherAutoResponseItem)
+    ,mUi(new Ui::SAKPluginAutoResponseItem)
 {
     commonInitializing();
     blockUiSignals(false);
@@ -64,67 +64,67 @@ SAKOtherAutoResponseItem::SAKOtherAutoResponseItem(SAKDebugger *debugPage,
     initDelayWritingTimer();
 }
 
-SAKOtherAutoResponseItem::~SAKOtherAutoResponseItem()
+SAKPluginAutoResponseItem::~SAKPluginAutoResponseItem()
 {
     delete mUi;
 }
 
-void SAKOtherAutoResponseItem::setAllAutoResponseDisable(bool disable)
+void SAKPluginAutoResponseItem::setAllAutoResponseDisable(bool disable)
 {
     mForbiddenAllAutoResponse = disable;
 }
 
-quint64 SAKOtherAutoResponseItem::itemID()
+quint64 SAKPluginAutoResponseItem::itemID()
 {
     return mID;
 }
 
-QString SAKOtherAutoResponseItem::itemDescription()
+QString SAKPluginAutoResponseItem::itemDescription()
 {
     return mDescriptionLineEdit->text();
 }
 
-QString SAKOtherAutoResponseItem::itemRefernceText()
+QString SAKPluginAutoResponseItem::itemRefernceText()
 {
     return mReferenceLineEdit->text();
 }
 
-QString SAKOtherAutoResponseItem::itemResponseText()
+QString SAKPluginAutoResponseItem::itemResponseText()
 {
     return mResponseLineEdit->text();
 }
 
-bool SAKOtherAutoResponseItem::itemEnable()
+bool SAKPluginAutoResponseItem::itemEnable()
 {
     return mEnableCheckBox->isChecked();
 }
 
-quint32 SAKOtherAutoResponseItem::itemReferenceFormat()
+quint32 SAKPluginAutoResponseItem::itemReferenceFormat()
 {
     return mReferenceDataFromatComboBox->currentIndex();
 }
 
-quint32 SAKOtherAutoResponseItem::itemResponseFormat()
+quint32 SAKPluginAutoResponseItem::itemResponseFormat()
 {
     return mResponseDataFormatComboBox->currentIndex();
 }
 
-quint32 SAKOtherAutoResponseItem::itemOption()
+quint32 SAKPluginAutoResponseItem::itemOption()
 {
     return mOptionComboBox->currentIndex();
 }
 
-bool SAKOtherAutoResponseItem::delay()
+bool SAKPluginAutoResponseItem::delay()
 {
     return mDelayResponseCheckBox->isChecked();
 }
 
-quint32 SAKOtherAutoResponseItem::interval()
+quint32 SAKPluginAutoResponseItem::interval()
 {
     return mDescriptionLineEdit->text().toInt();
 }
 
-void SAKOtherAutoResponseItem::setLineEditFormat(QLineEdit *lineEdit, int format)
+void SAKPluginAutoResponseItem::setLineEditFormat(QLineEdit *lineEdit, int format)
 {
     if (lineEdit){
         lineEdit->clear();
@@ -151,7 +151,7 @@ void SAKOtherAutoResponseItem::setLineEditFormat(QLineEdit *lineEdit, int format
     }
 }
 
-void SAKOtherAutoResponseItem::bytesRead(QByteArray bytes)
+void SAKPluginAutoResponseItem::bytesRead(QByteArray bytes)
 {
     if (mForbiddenAllAutoResponse){
         return;
@@ -202,12 +202,12 @@ void SAKOtherAutoResponseItem::bytesRead(QByteArray bytes)
     }
 }
 
-QByteArray SAKOtherAutoResponseItem::string2array(QString str, int format)
+QByteArray SAKPluginAutoResponseItem::string2array(QString str, int format)
 {
     return SAKCommonDataStructure::stringToByteArray(str, static_cast<SAKCommonDataStructure::SAKEnumTextInputFormat>(format));
 };
 
-bool SAKOtherAutoResponseItem::response(QByteArray receiveData, QByteArray referenceData, int option)
+bool SAKPluginAutoResponseItem::response(QByteArray receiveData, QByteArray referenceData, int option)
 {
     if (option == SAKCommonDataStructure::AutoResponseOptionEqual){
         return (QString(receiveData.toHex()).compare(QString(referenceData.toHex())) == 0);
@@ -224,7 +224,7 @@ bool SAKOtherAutoResponseItem::response(QByteArray receiveData, QByteArray refer
     return false;
 };
 
-void SAKOtherAutoResponseItem::commonInitializing()
+void SAKPluginAutoResponseItem::commonInitializing()
 {
     mUi->setupUi(this);
     mDescriptionLineEdit = mUi->descriptionLineEdit;
@@ -247,17 +247,17 @@ void SAKOtherAutoResponseItem::commonInitializing()
     SAKCommonDataStructure::setComboBoxTextInputFormat(mReferenceDataFromatComboBox);
     SAKCommonDataStructure::setComboBoxTextInputFormat(mResponseDataFormatComboBox);
 
-    connect(mDebugPage, &SAKDebugger::bytesRead, this, &SAKOtherAutoResponseItem::bytesRead);
+    connect(mDebugPage, &SAKDebugger::bytesRead, this, &SAKPluginAutoResponseItem::bytesRead);
 }
 
-void SAKOtherAutoResponseItem::initDelayWritingTimer()
+void SAKPluginAutoResponseItem::initDelayWritingTimer()
 {
     mTimestampChecker.setInterval(20);
-    connect(&mTimestampChecker, &QTimer::timeout, this, &SAKOtherAutoResponseItem::delayToWritBytes);
+    connect(&mTimestampChecker, &QTimer::timeout, this, &SAKPluginAutoResponseItem::delayToWritBytes);
     mTimestampChecker.start();
 }
 
-void SAKOtherAutoResponseItem::delayToWritBytes()
+void SAKPluginAutoResponseItem::delayToWritBytes()
 {
     mTimestampChecker.stop();
     QList<DelayWritingInfo> temp;
@@ -285,7 +285,7 @@ void SAKOtherAutoResponseItem::delayToWritBytes()
     mTimestampChecker.start();
 }
 
-void SAKOtherAutoResponseItem::blockUiSignals(bool block)
+void SAKPluginAutoResponseItem::blockUiSignals(bool block)
 {
     mDescriptionLineEdit->blockSignals(block);
     mReferenceLineEdit->blockSignals(block);
@@ -298,34 +298,34 @@ void SAKOtherAutoResponseItem::blockUiSignals(bool block)
     mDelayResponseLineEdit->blockSignals(block);
 }
 
-void SAKOtherAutoResponseItem::on_descriptionLineEdit_textChanged(const QString &text)
+void SAKPluginAutoResponseItem::on_descriptionLineEdit_textChanged(const QString &text)
 {
     emit descriptionChanged(text);
 }
 
-void SAKOtherAutoResponseItem::on_referenceLineEdit_textChanged(const QString &text)
+void SAKPluginAutoResponseItem::on_referenceLineEdit_textChanged(const QString &text)
 {
     emit referenceTextChanged(text);
 }
 
-void SAKOtherAutoResponseItem::on_responseLineEdit_textChanged(const QString &text)
+void SAKPluginAutoResponseItem::on_responseLineEdit_textChanged(const QString &text)
 {
     emit responseTextChanged(text);
 }
 
-void SAKOtherAutoResponseItem::on_enableCheckBox_clicked()
+void SAKPluginAutoResponseItem::on_enableCheckBox_clicked()
 {
     emit enableChanged(mEnableCheckBox->isChecked());
 }
 
-void SAKOtherAutoResponseItem::on_optionComboBox_currentTextChanged(const QString &text)
+void SAKPluginAutoResponseItem::on_optionComboBox_currentTextChanged(const QString &text)
 {
     Q_UNUSED(text);
     int option = mOptionComboBox->currentData().toInt();
     emit optionChanged(option);
 }
 
-void SAKOtherAutoResponseItem::on_referenceDataFromatComboBox_currentTextChanged(const QString &text)
+void SAKPluginAutoResponseItem::on_referenceDataFromatComboBox_currentTextChanged(const QString &text)
 {
     Q_UNUSED(text);
     setLineEditFormat(mReferenceLineEdit, mReferenceDataFromatComboBox->currentData().toInt());
@@ -334,7 +334,7 @@ void SAKOtherAutoResponseItem::on_referenceDataFromatComboBox_currentTextChanged
     emit referenceFormatChanged(format);
 }
 
-void SAKOtherAutoResponseItem::on_responseDataFormatComboBox_currentTextChanged(const QString &text)
+void SAKPluginAutoResponseItem::on_responseDataFormatComboBox_currentTextChanged(const QString &text)
 {
     Q_UNUSED(text);
     setLineEditFormat(mResponseLineEdit, mResponseDataFormatComboBox->currentData().toInt());
@@ -343,12 +343,12 @@ void SAKOtherAutoResponseItem::on_responseDataFormatComboBox_currentTextChanged(
     emit responseFromatChanged(format);
 }
 
-void SAKOtherAutoResponseItem::on_delayResponseCheckBox_clicked()
+void SAKPluginAutoResponseItem::on_delayResponseCheckBox_clicked()
 {
     emit delayChanged(mDelayResponseCheckBox->isChecked());
 }
 
-void SAKOtherAutoResponseItem::on_delayResponseLineEdit_textChanged(const QString &text)
+void SAKPluginAutoResponseItem::on_delayResponseLineEdit_textChanged(const QString &text)
 {
     int interval = text.toInt();
     emit intervalChanged(interval);

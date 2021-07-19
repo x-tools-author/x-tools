@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -18,17 +18,17 @@
 #include <QPushButton>
 
 namespace Ui {
-    class SAKOtherAutoResponseItem;
+    class SAKPluginAutoResponseItem;
 }
 
 class SAKDebugger;
 /// @brief Auto response item
-class SAKOtherAutoResponseItem:public QWidget
+class SAKPluginAutoResponseItem:public QWidget
 {
     Q_OBJECT
 public:
-    SAKOtherAutoResponseItem(SAKDebugger *mDebugPage, QWidget *parent = Q_NULLPTR);
-    SAKOtherAutoResponseItem(SAKDebugger *mDebugPage,
+    SAKPluginAutoResponseItem(SAKDebugger *mDebugPage, QWidget *parent = Q_NULLPTR);
+    SAKPluginAutoResponseItem(SAKDebugger *mDebugPage,
                              quint64 mID,
                              QString name,
                              QString referenceData,
@@ -40,7 +40,7 @@ public:
                              bool delay,
                              int interval,
                              QWidget *parent = Q_NULLPTR);
-    ~SAKOtherAutoResponseItem();
+    ~SAKPluginAutoResponseItem();
 
     /**
      * @brief setAllAutoResponseDisable: Set enable flag
@@ -80,7 +80,7 @@ private:
     void delayToWritBytes();
     void blockUiSignals(bool block);
 private:
-    Ui::SAKOtherAutoResponseItem *mUi;
+    Ui::SAKPluginAutoResponseItem *mUi;
     QLineEdit *mDescriptionLineEdit;
     QLineEdit *mReferenceLineEdit;
     QLineEdit *mResponseLineEdit;

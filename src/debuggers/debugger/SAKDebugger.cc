@@ -36,7 +36,7 @@
 #include "SAKDebugPageController.hh"
 #include "SAKOtherAnalyzerThread.hh"
 #include "SAKOtherAnalyzerThreadManager.hh"
-#include "SAKOtherAutoResponseItemManager.hh"
+#include "SAKPluginAutoResponse.hh"
 #include "SAKDebuggerStatistics.hh"
 #include "SAKDebugPageCommonDatabaseInterface.hh"
 

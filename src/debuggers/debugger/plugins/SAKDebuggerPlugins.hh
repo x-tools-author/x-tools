@@ -14,6 +14,10 @@
 #include <QSettings>
 #include <QPushButton>
 
+#include "SAKOtherTransmissionPage.hh"
+#include "SAKOtherTimingSentItemManager.hh"
+#include "SAKPluginAutoResponse.hh"
+
 class SAKDebuggerPlugins : public QObject
 {
     Q_OBJECT
@@ -23,6 +27,11 @@ public:
                                 QSettings *settings,
                                 const QString &settingsGroup,
                                 QObject *parent = Q_NULLPTR);
+    ~SAKDebuggerPlugins();
+private:
+    SAKPluginAutoResponse *mAutoResponse;
+private:
+    void showAutoResponsePlugin();
 };
 
 #endif // SAKDEBUGGERPLUGINS_HH

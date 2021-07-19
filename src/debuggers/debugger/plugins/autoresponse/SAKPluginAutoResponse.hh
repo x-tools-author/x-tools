@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKOTHERAUTORESPONSEITEMMANAGER_HH
-#define SAKOTHERAUTORESPONSEITEMMANAGER_HH
+#ifndef SAKPLUGINAUTORESPONSE_HH
+#define SAKPLUGINAUTORESPONSE_HH
 
 #include <QTimer>
 #include <QLabel>
@@ -20,19 +20,18 @@
 #include <QListWidgetItem>
 
 namespace Ui {
-    class SAKOtherAutoResponseItemManager;
+    class SAKPluginAutoResponse;
 }
 
-class SAKDebugger;
-class SAKOtherAutoResponseItem;
+class SAKPluginAutoResponseItem;
 class SAKDebugPageCommonDatabaseInterface;
 /// @brief Auto response item manager
-class SAKOtherAutoResponseItemManager:public QWidget
+class SAKPluginAutoResponse:public QWidget
 {
    Q_OBJECT
 public:
-    SAKOtherAutoResponseItemManager(SAKDebugger *mDebugPage, QWidget *parent = Q_NULLPTR);
-    ~SAKOtherAutoResponseItemManager();
+    SAKPluginAutoResponse(QWidget *parent = Q_NULLPTR);
+    ~SAKPluginAutoResponse();
 
     struct AutoResponseItemKey {
         const QString id = QString("id");
@@ -48,7 +47,6 @@ public:
     };
 private:
     QTimer mClearMessageInfoTimer;
-    SAKDebugger *mDebugPage;
     SAKDebugPageCommonDatabaseInterface *mDatabaseInterface;
     QString mTableName;
 private:
@@ -56,7 +54,7 @@ private:
     void clearMessage();
     void readInRecord();
     bool contains(quint64 paraID);
-    void initializingItem(SAKOtherAutoResponseItem *item);
+    void initializingItem(SAKPluginAutoResponseItem *item);
     // update record
     void changeDescription(const QString &description);
     void changeReferenceText(const QString &text);
@@ -67,10 +65,10 @@ private:
     void changeResponseFromat(int format);
     void changeDelay(bool delay);
     void changeInterval(int interval);
-    SAKOtherAutoResponseItem *sender2item(QObject *sender);
-    QList<SAKOtherAutoResponseItem *> items();
+    SAKPluginAutoResponseItem *sender2item(QObject *sender);
+    QList<SAKPluginAutoResponseItem *> items();
 private:
-    Ui::SAKOtherAutoResponseItemManager *mUi;
+    Ui::SAKPluginAutoResponse *mUi;
     QListWidget *mListWidget;
     QCheckBox *mForbidAllCheckBox;
     QPushButton *mDeleteItemPushButton;
