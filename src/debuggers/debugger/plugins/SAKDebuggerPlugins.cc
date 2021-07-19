@@ -26,17 +26,28 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
     menuBt->setMenu(menu);
 
 
-    // Instance plugins
+    // Go to a web page.
+    if (readmeBt) {
+        connect(readmeBt, &QPushButton::click, this, [](){
+            // Nothing to do yet.
+        });
+    }
+    Q_UNUSED(settings);
+    Q_UNUSED(settingsGroup);
+
+
+    // Instance plugins.
+    mCharts = new SAKPluginCharts();
     mDataForwarding = new SAKPluginDataForwarding();
     mRegularlySending = new SAKPluginRegularlySending();
     mAutomaticallyResponse = new SAKPluginAutomaticallyResponse();
 
 
+    // Initialize menu psuh button
     QMenu *embedMenu = new QMenu(tr("Inset to Center"), menu);
     menu->addMenu(embedMenu);
     embedMenu->addAction(tr("Cancel Inset"), this, [](){});
     embedMenu->addSeparator();
-
     struct SAKActionsContext {
         QString title;
         void (SAKDebuggerPlugins::*memberFunction)();
@@ -63,6 +74,7 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
 
 SAKDebuggerPlugins::~SAKDebuggerPlugins()
 {
+    mCharts->deleteLater();
     mDataForwarding->deleteLater();
     mRegularlySending->deleteLater();
     mAutomaticallyResponse->deleteLater();
@@ -75,7 +87,11 @@ void SAKDebuggerPlugins::showPluin3D()
 
 void SAKDebuggerPlugins::showPluinCharts()
 {
-
+    if (mCharts->isHidden()) {
+        mCharts->show();
+    } else {
+        mCharts->activateWindow();
+    }
 }
 
 void SAKDebuggerPlugins::showPluinDataForwarding()

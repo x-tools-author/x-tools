@@ -14,6 +14,7 @@
 #include <QSettings>
 #include <QPushButton>
 
+#include "SAKPluginCharts.hh"
 #include "SAKPluginDataForwarding.hh"
 #include "SAKPluginRegularlySending.hh"
 #include "SAKPluginAutomaticallyResponse.hh"
@@ -29,6 +30,7 @@ public:
                                 QObject *parent = Q_NULLPTR);
     ~SAKDebuggerPlugins();
 private:
+    SAKPluginCharts *mCharts;
     SAKPluginDataForwarding *mDataForwarding;
     SAKPluginRegularlySending *mRegularlySending;
     SAKPluginAutomaticallyResponse *mAutomaticallyResponse;

@@ -10,13 +10,13 @@ INCLUDEPATH += \
     $$PWD/xyserial
 
 FORMS += \
-    $$PWD/SAKDebugPageChartsController.ui \
+    $$PWD/SAKPluginCharts.ui \
     $$PWD/xyserial/SAKChartsXYSerialChartViewSettingsDialog.ui \
     $$PWD/xyserial/SAKChartsXYSerialEditDialog.ui \
     $$PWD/xyserial/SAKChartsXYSerialWidget.ui
 
 HEADERS += \
-    $$PWD/SAKDebugPageChartsController.hh \
+    $$PWD/SAKPluginCharts.hh \
     $$PWD/throughput/SAKChartsThroughputWidget.hh \
     $$PWD/xyserial/SAKChartsXYSerialChartView.hh \
     $$PWD/xyserial/SAKChartsXYSerialChartViewSettingsDialog.hh \
@@ -24,7 +24,7 @@ HEADERS += \
     $$PWD/xyserial/SAKChartsXYSerialWidget.hh
 
 SOURCES += \
-    $$PWD/SAKDebugPageChartsController.cc \
+    $$PWD/SAKPluginCharts.cc \
     $$PWD/throughput/SAKChartsThroughputWidget.cc \
     $$PWD/xyserial/SAKChartsXYSerialChartView.cc \
     $$PWD/xyserial/SAKChartsXYSerialChartViewSettingsDialog.cc \

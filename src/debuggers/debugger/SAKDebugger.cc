@@ -41,7 +41,7 @@
 #include "SAKDebugPageCommonDatabaseInterface.hh"
 
 #ifdef SAK_IMPORT_MODULE_CHARTS
-#include "SAKDebugPageChartsController.hh"
+#include "SAKPluginCharts.hh"
 #endif
 
 #include "ui_SAKDebugger.h"
@@ -85,7 +85,7 @@ SAKDebugger::SAKDebugger(int type, QString name, QWidget *parent)
                                                       this);
     mInputController = new SAKDebuggerInput(this, this);
 #ifdef SAK_IMPORT_MODULE_CHARTS
-    mChartsController= new SAKDebugPageChartsController(this);
+    mChartsController= new SAKPluginCharts(this);
 #endif
 
     // Initializing the timer.
@@ -173,7 +173,7 @@ SAKDebuggerInput *SAKDebugger::inputController()
 }
 
 #ifdef SAK_IMPORT_MODULE_CHARTS
-SAKDebugPageChartsController *SAKDebugger::chartsController()
+SAKPluginCharts *SAKDebugger::chartsController()
 {
    return mChartsController;
 }

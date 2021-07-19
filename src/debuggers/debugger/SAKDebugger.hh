@@ -38,7 +38,7 @@ class SAKDebuggerInput;
 class SAKDebuggerOutput;
 class SAKDebuggerPlugins;
 #ifdef SAK_IMPORT_MODULE_CHARTS
-class SAKDebugPageChartsController;
+class SAKPluginCharts;
 #endif
 class SAKPluginDataForwarding;
 class SAKDebuggerStatistics;
@@ -58,7 +58,7 @@ public:
 
     friend class SAKDebugPageOtherController;
     friend class SAKDebuggerInput;
-    friend class SAKDebugPageChartsController;
+    friend class SAKPluginCharts;
 
     /**
      * @brief write: Write data to device
@@ -122,7 +122,7 @@ public:
      * @brief chartsController: Get SAKDebugPageChartsController instance pointer
      * @return SAKDebugPageChartsController instance pointer
      */
-    SAKDebugPageChartsController *chartsController();
+    SAKPluginCharts *chartsController();
 #endif
 
     /**
@@ -183,7 +183,7 @@ private:
     SAKDebugPageOtherController *mOtherController;
     SAKDebuggerInput *mInputController;
 #ifdef SAK_IMPORT_MODULE_CHARTS
-    SAKDebugPageChartsController *mChartsController;
+    SAKPluginCharts *mChartsController;
 #endif
     SAKDebuggerOutput *mOutputController;
     SAKDebuggerStatistics *mStatistics;

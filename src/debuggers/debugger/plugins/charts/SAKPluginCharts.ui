@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SAKDebugPageChartsController</class>
- <widget class="QWidget" name="SAKDebugPageChartsController">
+ <class>SAKPluginCharts</class>
+ <widget class="QWidget" name="SAKPluginCharts">
   <property name="geometry">
    <rect>
     <x>0</x>
