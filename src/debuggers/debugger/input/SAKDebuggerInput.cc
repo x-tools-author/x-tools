@@ -17,27 +17,30 @@
 #include <QListWidgetItem>
 
 #include "SAKDebugger.hh"
+#include "SAKDebuggerInput.hh"
 #include "SAKInputDataFactory.hh"
 #include "SAKCommonCrcInterface.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKInputDataPresetItem.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKInputCrcSettingsDialog.hh"
-#include "SAKDebuggerInput.hh"
 #include "SAKInputDataPresetItemManager.hh"
 
-SAKDebuggerInput::SAKDebuggerInput(SAKDebugger *debugPage, QObject *parent)
+SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
+                                   QComboBox *inputFormat,
+                                   QPushButton *more,
+                                   QPushButton *send,
+                                   QLabel *crc,
+                                   QTextEdit *input, QSettings *settings, const QString &settingsGroup,
+                                   QObject *parent)
     :QObject(parent)
-    ,mDebugPage(debugPage)
-    ,mCrcInterface(new SAKCommonCrcInterface)
+    ,mCyclingTimeComboBox(regularlySending)
+    ,mInputModelComboBox(inputFormat)
+    ,mMoreInputSettingsPushButton(more)
+    ,mSendPushButton(send)
+    ,mInputTextEdit(input)
+    ,mCrcLabel(crc)
 {
-    mCyclingTimeComboBox = debugPage->mCyclingTimeComboBox;
-    mInputModelComboBox = debugPage->mInputFormatComboBox;
-    mMoreInputSettingsPushButton = debugPage->mMoreInputSettingsPushButton;
-    mSendPushButton = debugPage->mSendPushButton;
-    mInputTextEdit = debugPage->mInputTextEdit;
-    mCrcLabel = debugPage->mCrcLabel;
-
     mCyclingTimeComboBox->addItem(tr("Forbidden"), INT_MAX);
     QString unit = tr("ms");
     for (int i = 50; i < 500; i += 50){
@@ -85,8 +88,8 @@ SAKDebuggerInput::SAKDebuggerInput(SAKDebugger *debugPage, QObject *parent)
     moreInputSettingsPushButtonMenu->addAction(crcSettingsAction);
 
     // Initializing variables about settings
-    QString group = mDebugPage->settingsGroup();
-    mSettings = mDebugPage->settings();
+    QString group = settingsGroup;
+    mSettings = settings;
     Q_ASSERT_X(mSettings, __FUNCTION__, "Value can not be null!");
     mSettingStringInputTextFromat = QString("%1/inputTextFormat").arg(group);
 
@@ -97,13 +100,15 @@ SAKDebuggerInput::SAKDebuggerInput(SAKDebugger *debugPage, QObject *parent)
     mInputDataFactory->start();
 
     // Add actions after new.
+#if 0
     mInputDataItemManager = new SAKInputDataPresetItemManager(debugPage);
     QList<SAKInputDataPresetItem*> list = mInputDataItemManager->itemList();
     for (auto &var : list){
         appendAction(var);
     }
+#endif
 
-    mCrcSettingsDialog = new SAKInputCrcSettingsDialog(mDebugPage->settingsGroup(), mDebugPage->settings());
+    mCrcSettingsDialog = new SAKInputCrcSettingsDialog(settingsGroup, settings);
     SAKInputCrcSettingsDialog::CrcParameterContext ctx = mCrcSettingsDialog->parametersContext();
     mInputParameters.crcParametersModel = ctx.crcPrameterMoldel;
     mInputParameters.appendCrc = ctx.appendCrc;
@@ -118,10 +123,12 @@ SAKDebuggerInput::SAKDebuggerInput(SAKDebugger *debugPage, QObject *parent)
 
     // The function must be called before connecting signals and slots
     readinSettings();
+#if 0
     // Preset items changed
     connect(mInputDataItemManager, &SAKInputDataPresetItemManager::itemAdded, this, &SAKDebuggerInput::appendAction);
     connect(mInputDataItemManager, &SAKInputDataPresetItemManager::itemDeleted, this, &SAKDebuggerInput::removeAction);
     connect(mInputDataItemManager, &SAKInputDataPresetItemManager::descriptionChanged, this, &SAKDebuggerInput::changeDescription);
+#endif
 
     // Update parameters
     connect(mCrcSettingsDialog, &SAKInputCrcSettingsDialog::crcParametersChanged, this, [&](){
@@ -139,9 +146,9 @@ SAKDebuggerInput::SAKDebuggerInput(SAKDebugger *debugPage, QObject *parent)
     connect(mSendPushButton, &QPushButton::clicked, this, &SAKDebuggerInput::sendRawData);
     connect(mInputTextEdit, &QTextEdit::textChanged, this, &SAKDebuggerInput::inputTextEditTextChanged);
     connect(this, &SAKDebuggerInput::rawDataChanged, mInputDataFactory, &SAKInputDataFactory::cookData);
-    connect(mInputDataFactory, &SAKInputDataFactory::dataCooked, debugPage, &SAKDebugger::write);
+    //connect(mInputDataFactory, &SAKInputDataFactory::dataCooked, debugPage, &SAKDebugger::write);
     connect(&mCyclingWritingTimer, &QTimer::timeout, this, &SAKDebuggerInput::cyclingWritingTimerTimeout);
-    connect(debugPage, &SAKDebugger::requestWriteRawData, this, &SAKDebuggerInput::sendOtherRawData);
+    //connect(debugPage, &SAKDebugger::requestWriteRawData, this, &SAKDebuggerInput::sendOtherRawData);
 
     initParameters();
     updateCrc();
@@ -151,7 +158,7 @@ SAKDebuggerInput::~SAKDebuggerInput()
 {
     delete mInputDataFactory;
     delete mCrcInterface;
-    delete mInputDataItemManager;
+    //delete mInputDataItemManager;
     delete mCrcSettingsDialog;
 }
 
@@ -207,11 +214,11 @@ void SAKDebuggerInput::saveInputDataToFile()
         QByteArray data = mInputTextEdit->toPlainText().toUtf8();
         qint64 ret = file.write(data);
         if (ret == -1){
-            mDebugPage->outputMessage(file.errorString(), false);
+            //mDebugPage->outputMessage(file.errorString(), false);
         }
         file.close();
     }else {
-        mDebugPage->outputMessage(file.errorString(), false);
+        //mDebugPage->outputMessage(file.errorString(), false);
     }
 }
 
@@ -225,7 +232,7 @@ void SAKDebuggerInput::readinFile()
             mInputTextEdit->setText(QString(data).toUtf8());
             file.close();
         }else{
-            mDebugPage->outputMessage(QString("%1:%2").arg(tr("Can not open file")).arg(fileName));
+            //mDebugPage->outputMessage(QString("%1:%2").arg(tr("Can not open file")).arg(fileName));
         }
     }
 }
@@ -266,11 +273,11 @@ void SAKDebuggerInput::changeCrcModel()
 
 void SAKDebuggerInput::setPresetData()
 {
-    if (mInputDataItemManager->isHidden()){
-        mInputDataItemManager->show();
-    }else{
-        mInputDataItemManager->activateWindow();
-    }
+//    if (mInputDataItemManager->isHidden()){
+//        mInputDataItemManager->show();
+//    }else{
+//        mInputDataItemManager->activateWindow();
+//    }
 }
 
 void SAKDebuggerInput::initParameters()

@@ -82,7 +82,15 @@ SAKDebugger::SAKDebugger(int type, QString name, QWidget *parent)
                                                       mTxBytesLabel,
                                                       mRxBytesLabel,
                                                       this);
-    mInputController = new SAKDebuggerInput(this, this);
+    mInputController = new SAKDebuggerInput(mCyclingTimeComboBox,
+                                            mInputFormatComboBox,
+                                            mMoreInputSettingsPushButton,
+                                            mSendPushButton,
+                                            mCrcLabel,
+                                            mInputTextEdit,
+                                            settings(),
+                                            mSettingGroup,
+                                            this);
 
     // Initializing the timer.
     mClearInfoTimer.setInterval(SAK_CLEAR_MESSAGE_INTERVAL);

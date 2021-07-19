@@ -65,7 +65,6 @@ private:
 
     QMutex mRawDataListMutex;
     QMutex mThreadMutex;
-    SAKDebugger *mDebugPage;
     QWaitCondition mThreadCondition;
     SAKCommonCrcInterface *mCrcInterface;
     QList<RawDataStruct> mRawDataList;

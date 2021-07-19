@@ -22,7 +22,6 @@
 #include <QListWidget>
 #include <QWaitCondition>
 
-class SAKDebugger;
 class SAKInputDataFactory;
 class SAKCommonCrcInterface;
 class SAKInputDataPresetItem;
@@ -34,7 +33,15 @@ class SAKDebuggerInput:public QObject
 {
     Q_OBJECT
 public:
-    SAKDebuggerInput(SAKDebugger *mDebugPage, QObject *parent = Q_NULLPTR);
+    SAKDebuggerInput(QComboBox *regularlySending,
+                     QComboBox *inputFormat,
+                     QPushButton *more,
+                     QPushButton *send,
+                     QLabel *crc,
+                     QTextEdit *input,
+                     QSettings *settings,
+                     const QString &settingsGroup,
+                     QObject *parent = Q_NULLPTR);
     ~SAKDebuggerInput();
 
     struct InputParametersContext {
@@ -61,7 +68,6 @@ public:
 private:
     QMenu *mWriteDataItemMenu;
 private:
-    SAKDebugger *mDebugPage;
     QComboBox *mCyclingTimeComboBox;
     QComboBox *mInputModelComboBox;
     QPushButton *mMoreInputSettingsPushButton;
