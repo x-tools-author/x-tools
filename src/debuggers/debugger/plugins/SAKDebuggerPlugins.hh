@@ -14,6 +14,7 @@
 #include <QSettings>
 #include <QPushButton>
 
+#include "SAKPlugin3d.hh"
 #include "SAKPluginCharts.hh"
 #include "SAKPluginDataForwarding.hh"
 #include "SAKPluginRegularlySending.hh"
@@ -30,6 +31,7 @@ public:
                                 QObject *parent = Q_NULLPTR);
     ~SAKDebuggerPlugins();
 private:
+    SAKPlugin3d *m3d;
     SAKPluginCharts *mCharts;
     SAKPluginDataForwarding *mDataForwarding;
     SAKPluginRegularlySending *mRegularlySending;

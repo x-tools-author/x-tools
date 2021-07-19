@@ -18,6 +18,7 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
                                        const QString &settingsGroup,
                                        QObject *parent)
     :QObject(parent)
+    ,mCharts(Q_NULLPTR)
     ,mDataForwarding(Q_NULLPTR)
     ,mRegularlySending(Q_NULLPTR)
     ,mAutomaticallyResponse(Q_NULLPTR)
@@ -37,6 +38,7 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
 
 
     // Instance plugins.
+    m3d = new SAKPlugin3d();
     mCharts = new SAKPluginCharts();
     mDataForwarding = new SAKPluginDataForwarding();
     mRegularlySending = new SAKPluginRegularlySending();
@@ -74,6 +76,7 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
 
 SAKDebuggerPlugins::~SAKDebuggerPlugins()
 {
+    m3d->deleteLater();
     mCharts->deleteLater();
     mDataForwarding->deleteLater();
     mRegularlySending->deleteLater();
@@ -82,7 +85,11 @@ SAKDebuggerPlugins::~SAKDebuggerPlugins()
 
 void SAKDebuggerPlugins::showPluin3D()
 {
-
+    if (m3d->isHidden()) {
+        m3d->show();
+    } else {
+        m3d->activateWindow();
+    }
 }
 
 void SAKDebuggerPlugins::showPluinCharts()
