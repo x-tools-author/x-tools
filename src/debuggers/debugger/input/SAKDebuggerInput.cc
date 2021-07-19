@@ -155,6 +155,7 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
 
     initParameters();
     updateCrc();
+    start();
 }
 
 SAKDebuggerInput::~SAKDebuggerInput()
