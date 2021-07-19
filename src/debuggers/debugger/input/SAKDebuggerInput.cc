@@ -155,7 +155,14 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
 
     initParameters();
     updateCrc();
-    start();
+
+    connect(this, &QThread::finished, this, [&](){
+        mBytesInfoVectorMutex.lock();
+        if (!mBytesInfoVector.isEmpty()) {
+            start();
+        }
+        mBytesInfoVectorMutex.unlock();
+    });
 }
 
 SAKDebuggerInput::~SAKDebuggerInput()
@@ -193,6 +200,9 @@ void SAKDebuggerInput::inputBytes(QString rawBytes, SAKStructInputParametersCont
         mBytesInfoVectorMutex.lock();
         QPair<QString, SAKStructInputParametersContext> pair(rawBytes, parametersContext);
         mBytesInfoVector.append(pair);
+        if (!isRunning()) {
+            start();
+        }
         mBytesInfoVectorMutex.unlock();
     }
 }
@@ -232,44 +242,45 @@ void SAKDebuggerInput::run()
         return crcInputData;
     };
 
+    auto takeBytesInfo = [&]()->auto {
+        QPair<QString, SAKDebuggerInput::SAKStructInputParametersContext> pair;
+        mBytesInfoVectorMutex.lock();
+        if (!mBytesInfoVector.isEmpty()) {
+            pair = mBytesInfoVector.takeFirst();
+        }
+        mBytesInfoVectorMutex.unlock();
+        return pair;
+    };
 
-    QTimer loopTimer;
-    loopTimer.setInterval(5);
-    loopTimer.setSingleShot(true);
-    connect(&loopTimer, &QTimer::timeout, this, [&](){
-        QPair<QString, SAKStructInputParametersContext> pair = takeBytesInfo();
-        QString rawData = pair.first;
-        SAKStructInputParametersContext ctx = pair.second;
-        auto textFormat = static_cast<SAKCommonDataStructure::SAKEnumTextInputFormat>(ctx.textFormat);
-        QByteArray cookedData = SAKCommonDataStructure::stringToByteArray(rawData, textFormat);
+    QPair<QString, SAKStructInputParametersContext> pair = takeBytesInfo();
+    QString rawData = pair.first;
+    SAKStructInputParametersContext ctx = pair.second;
+    auto textFormat = static_cast<SAKCommonDataStructure::SAKEnumTextInputFormat>(ctx.textFormat);
+    QByteArray cookedData = SAKCommonDataStructure::stringToByteArray(rawData, textFormat);
 
 
-        if (ctx.crc.appending){
-            QByteArray crcInputData = extractCrcData(cookedData, ctx);
-            // Calculate the crc value of input data
-            uint32_t crc  = crcCalculate(crcInputData, ctx.crc.parametersModel);
-            uint8_t crc8  = static_cast<uint8_t>(crc);
-            uint16_t crc16 = static_cast<uint16_t>(crc);
-            int bitsWidth = mCrcInterface->getBitsWidth(static_cast<SAKCommonCrcInterface::CRCModel>(ctx.crc.parametersModel));
-            if (ctx.crc.bigEndian){
-                crc16 = qToBigEndian(crc16);
-                crc = qToBigEndian(crc);
-            }
-
-            // Append crc byte to data
-            switch (bitsWidth) {
-                case 8: cookedData.append(reinterpret_cast<char*>(&crc8), 1); break;
-                case 16: cookedData.append(reinterpret_cast<char*>(&crc16), 2); break;
-                case 32: cookedData.append(reinterpret_cast<char*>(&crc), 4); break;
-                default: break;
-            }
+    if (ctx.crc.appending){
+        QByteArray crcInputData = extractCrcData(cookedData, ctx);
+        // Calculate the crc value of input data
+        uint32_t crc  = crcCalculate(crcInputData, ctx.crc.parametersModel);
+        uint8_t crc8  = static_cast<uint8_t>(crc);
+        uint16_t crc16 = static_cast<uint16_t>(crc);
+        int bitsWidth = mCrcInterface->getBitsWidth(static_cast<SAKCommonCrcInterface::CRCModel>(ctx.crc.parametersModel));
+        if (ctx.crc.bigEndian){
+            crc16 = qToBigEndian(crc16);
+            crc = qToBigEndian(crc);
         }
 
-        emit invokeWriteBytes(cookedData);
-        loopTimer.start();
-    });
+        // Append crc byte to data
+        switch (bitsWidth) {
+            case 8: cookedData.append(reinterpret_cast<char*>(&crc8), 1); break;
+            case 16: cookedData.append(reinterpret_cast<char*>(&crc16), 2); break;
+            case 32: cookedData.append(reinterpret_cast<char*>(&crc), 4); break;
+            default: break;
+        }
+    }
 
-    exec();
+    emit invokeWriteBytes(cookedData);
 }
 
 void SAKDebuggerInput::changeInputModel(const QString &text)
@@ -463,15 +474,4 @@ void SAKDebuggerInput::readinSettings()
         index = var.toInt();
     }
     mInputModelComboBox->setCurrentIndex(index);
-}
-
-QPair<QString, SAKDebuggerInput::SAKStructInputParametersContext> SAKDebuggerInput::takeBytesInfo()
-{
-    QPair<QString, SAKDebuggerInput::SAKStructInputParametersContext> pair;
-    mBytesInfoVectorMutex.lock();
-    if (!mBytesInfoVector.isEmpty()) {
-        pair = mBytesInfoVector.takeFirst();
-    }
-    mBytesInfoVectorMutex.unlock();
-    return pair;
 }

@@ -113,7 +113,6 @@ private:
     void changeDescription(SAKInputDataPresetItem *item);
     void actionTriggered();
     void readinSettings();
-    QPair<QString, SAKStructInputParametersContext> takeBytesInfo();
 signals:
     void invokeWriteBytes(QByteArray bytes);
 };
