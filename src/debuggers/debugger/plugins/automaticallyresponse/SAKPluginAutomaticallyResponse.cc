@@ -26,11 +26,11 @@
 #include "SAKPluginAutomaticallyResponse.hh"
 #include "SAKDebugPageCommonDatabaseInterface.hh"
 
-#include "ui_SAKPluginAutoResponse.h"
+#include "ui_SAKPluginAutomaticallyResponse.h"
 
 SAKPluginAutomaticallyResponse::SAKPluginAutomaticallyResponse(QWidget *parent)
     :QWidget (parent)
-    ,mUi (new Ui::SAKPluginAutoResponse)
+    ,mUi (new Ui::SAKPluginAutomaticallyResponse)
 {
     mUi->setupUi(this);
     mListWidget = mUi->listWidget;

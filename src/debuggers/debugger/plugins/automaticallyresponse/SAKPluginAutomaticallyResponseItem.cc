@@ -17,13 +17,13 @@
 #include "SAKCommonDataStructure.hh"
 #include "SAKPluginAutomaticallyResponseItem.hh"
 
-#include "ui_SAKPluginAutoResponseItem.h"
+#include "ui_SAKPluginAutomaticallyResponseItem.h"
 
 SAKPluginAutomaticallyResponseItem::SAKPluginAutomaticallyResponseItem(SAKDebugger *debugPage, QWidget *parent)
     :QWidget(parent)
     ,mForbiddenAllAutoResponse(false)
     ,mDebugPage(debugPage)
-    ,mUi(new Ui::SAKPluginAutoResponseItem)
+    ,mUi(new Ui::SAKPluginAutomaticallyResponseItem)
 {
     commonInitializing();
     blockUiSignals(false);
@@ -48,7 +48,7 @@ SAKPluginAutomaticallyResponseItem::SAKPluginAutomaticallyResponseItem(SAKDebugg
     ,mForbiddenAllAutoResponse(false)
     ,mDebugPage(debugPage)
     ,mID(id)
-    ,mUi(new Ui::SAKPluginAutoResponseItem)
+    ,mUi(new Ui::SAKPluginAutomaticallyResponseItem)
 {
     commonInitializing();
     blockUiSignals(false);

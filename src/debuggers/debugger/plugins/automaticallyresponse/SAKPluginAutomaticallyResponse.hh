@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKPLUGINAUTORESPONSE_HH
-#define SAKPLUGINAUTORESPONSE_HH
+#ifndef SAKPLUGINAUTOMATICALLYRESPONSE_HH
+#define SAKPLUGINAUTOMATICALLYRESPONSE_HH
 
 #include <QTimer>
 #include <QLabel>
@@ -20,7 +20,7 @@
 #include <QListWidgetItem>
 
 namespace Ui {
-    class SAKPluginAutoResponse;
+    class SAKPluginAutomaticallyResponse;
 }
 
 class SAKPluginAutomaticallyResponseItem;
@@ -68,7 +68,7 @@ private:
     SAKPluginAutomaticallyResponseItem *sender2item(QObject *sender);
     QList<SAKPluginAutomaticallyResponseItem *> items();
 private:
-    Ui::SAKPluginAutoResponse *mUi;
+    Ui::SAKPluginAutomaticallyResponse *mUi;
     QListWidget *mListWidget;
     QCheckBox *mForbidAllCheckBox;
     QPushButton *mDeleteItemPushButton;

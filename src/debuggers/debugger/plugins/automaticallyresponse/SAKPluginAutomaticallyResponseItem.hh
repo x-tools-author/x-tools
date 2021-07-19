@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKOTHERAUTORESPONSEITEM_HH
-#define SAKOTHERAUTORESPONSEITEM_HH
+#ifndef SAKOTHERAUTOMATICALLYRESPONSEITEM_HH
+#define SAKOTHERAUTOMATICALLYRESPONSEITEM_HH
 
 #include <QTimer>
 #include <QWidget>
@@ -18,7 +18,7 @@
 #include <QPushButton>
 
 namespace Ui {
-    class SAKPluginAutoResponseItem;
+    class SAKPluginAutomaticallyResponseItem;
 }
 
 class SAKDebugger;
@@ -80,7 +80,7 @@ private:
     void delayToWritBytes();
     void blockUiSignals(bool block);
 private:
-    Ui::SAKPluginAutoResponseItem *mUi;
+    Ui::SAKPluginAutomaticallyResponseItem *mUi;
     QLineEdit *mDescriptionLineEdit;
     QLineEdit *mReferenceLineEdit;
     QLineEdit *mResponseLineEdit;
