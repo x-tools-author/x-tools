@@ -23,8 +23,8 @@
 #include <QWaitCondition>
 
 class SAKDebugger;
-class SAKCommonCrcInterface;
 class SAKInputDataFactory;
+class SAKCommonCrcInterface;
 class SAKInputDataPresetItem;
 class SAKInputCrcSettingsDialog;
 class SAKInputDataPresetItemManager;

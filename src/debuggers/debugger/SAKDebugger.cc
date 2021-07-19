@@ -51,7 +51,6 @@ SAKDebugger::SAKDebugger(int type, QString name, QWidget *parent)
     ,mIsInitializing(true)
     ,mDebugPageType(type)
     ,mSettingGroup(name)
-    ,mChartsController(Q_NULLPTR)
     ,mDevice(Q_NULLPTR)
     ,mDeviceController(Q_NULLPTR)
     ,mUi(new Ui::SAKDebugger)
@@ -84,9 +83,6 @@ SAKDebugger::SAKDebugger(int type, QString name, QWidget *parent)
                                                       mRxBytesLabel,
                                                       this);
     mInputController = new SAKDebuggerInput(this, this);
-#ifdef SAK_IMPORT_MODULE_CHARTS
-    mChartsController= new SAKPluginCharts(this);
-#endif
 
     // Initializing the timer.
     mClearInfoTimer.setInterval(SAK_CLEAR_MESSAGE_INTERVAL);
@@ -104,9 +100,6 @@ SAKDebugger::~SAKDebugger()
         }
         mDevice->deleteLater();
     }
-#endif
-#ifdef SAK_IMPORT_MODULE_CHARTS
-    delete mChartsController;
 #endif
     delete mUi;
 }
@@ -162,22 +155,10 @@ QString SAKDebugger::settingsGroup()
     return mSettingGroup;
 }
 
-SAKDebugPageOtherController *SAKDebugger::otherController()
-{
-    return mOtherController;
-}
-
 SAKDebuggerInput *SAKDebugger::inputController()
 {
     return mInputController;
 }
-
-#ifdef SAK_IMPORT_MODULE_CHARTS
-SAKPluginCharts *SAKDebugger::chartsController()
-{
-   return mChartsController;
-}
-#endif
 
 SAKDebuggerOutput *SAKDebugger::outputController()
 {

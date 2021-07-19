@@ -30,18 +30,14 @@
 #include <QTextBrowser>
 #include <QSqlDatabase>
 
-class SAKDataFactory;
 class SAKDebuggerDevice;
-class SAKCommonCrcInterface;
-class SAKDebugPageController;
 class SAKDebuggerInput;
 class SAKDebuggerOutput;
 class SAKDebuggerPlugins;
-#ifdef SAK_IMPORT_MODULE_CHARTS
-class SAKPluginCharts;
-#endif
-class SAKPluginDataForwarding;
 class SAKDebuggerStatistics;
+class SAKCommonCrcInterface;
+class SAKDebugPageController;
+class SAKPluginDataForwarding;
 class SAKDebugPageCommonDatabaseInterface;
 
 namespace Ui {
@@ -52,13 +48,11 @@ namespace Ui {
 class SAKDebugger : public QWidget
 {
     Q_OBJECT
+
+    friend class SAKDebuggerInput;
 public:
     SAKDebugger(int type, QString name, QWidget *parent = Q_NULLPTR);
     ~SAKDebugger();
-
-    friend class SAKDebugPageOtherController;
-    friend class SAKDebuggerInput;
-    friend class SAKPluginCharts;
 
     /**
      * @brief write: Write data to device
@@ -106,24 +100,10 @@ public:
     QString settingsGroup();
 
     /**
-     * @brief otherController: Get SAKDebugPageOtherController instance pointer
-     * @return SAKDebugPageOtherController instance pointer
-     */
-    SAKDebugPageOtherController *otherController();
-
-    /**
      * @brief inputController: Get SAKDebugPageInputController instance pointer
      * @return SAKDebugPageInputController instance pointer
      */
     SAKDebuggerInput *inputController();
-
-#ifdef SAK_IMPORT_MODULE_CHARTS
-    /**
-     * @brief chartsController: Get SAKDebugPageChartsController instance pointer
-     * @return SAKDebugPageChartsController instance pointer
-     */
-    SAKPluginCharts *chartsController();
-#endif
 
     /**
      * @brief outputController: Get SAKDebugPageOutputController instance pointer
@@ -180,11 +160,7 @@ private:
     SAKDebugPageCommonDatabaseInterface *mDatabaseInterface;
 
     // Debug page modules
-    SAKDebugPageOtherController *mOtherController;
     SAKDebuggerInput *mInputController;
-#ifdef SAK_IMPORT_MODULE_CHARTS
-    SAKPluginCharts *mChartsController;
-#endif
     SAKDebuggerOutput *mOutputController;
     SAKDebuggerStatistics *mStatistics;
     SAKDebuggerDevice *mDevice;
