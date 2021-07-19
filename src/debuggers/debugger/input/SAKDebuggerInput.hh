@@ -10,6 +10,7 @@
 #ifndef SAKDEBUGGERINPUTCONTROLLER_HH
 #define SAKDEBUGGERINPUTCONTROLLER_HH
 
+#include <QPair>
 #include <QLabel>
 #include <QTimer>
 #include <QMutex>
@@ -67,8 +68,14 @@ public:
      * @param model: text model
      */
     static void formattingInputText(QTextEdit *textEdit, int model);
+
+    void inputBytes(QString rawBytes, SAKStructInputParametersContext parametersContext);
+protected:
+    void run() override;
 private:
     QMenu *mWriteDataItemMenu;
+    QVector<QPair<QString, SAKStructInputParametersContext>> mBytesInfoVector;
+    QMutex mBytesInfoVectorMutex;
 private:
     QComboBox *mCyclingTimeComboBox;
     QComboBox *mInputModelComboBox;
@@ -106,8 +113,9 @@ private:
     void changeDescription(SAKInputDataPresetItem *item);
     void actionTriggered();
     void readinSettings();
+    QPair<QString, SAKStructInputParametersContext> takeBytesInfo();
 signals:
-    void rawDataChanged(QString rawData, SAKStructInputParametersContext parameters);
+    void invokeWriteBytes(QByteArray bytes);
 };
 Q_DECLARE_METATYPE(SAKDebuggerInput::SAKStructInputParametersContext);
 
