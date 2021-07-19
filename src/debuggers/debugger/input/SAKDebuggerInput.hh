@@ -44,14 +44,16 @@ public:
                      QObject *parent = Q_NULLPTR);
     ~SAKDebuggerInput();
 
-    struct InputParametersContext {
-        bool appendCrc; // true: append crc value to the tail of data frame
-        bool bigEndian; // true: crc value is big endian
-        int cycleTime; // Auto send data interval
-        int inputModel; // Input text format, such as bin, otc, dec, hex and so on
-        int crcParametersModel; // The parameter model of crc value
-        int startByte; // The start byte of crc section, the first byte is one
-        int endByte; // The end byte of crc section, the last byte is one
+    struct SAKStructInputParametersContext {
+        struct {
+            bool appending; // true: append crc value to the tail of data frame
+            bool bigEndian; // true: crc value is big endian
+            int parametersModel; // The parameter model of crc value
+            int startByte; // The start byte of crc section, the first byte is one
+            int endByte; // The end byte of crc section, the last byte is one
+        } crc;
+
+        int textFormat; // Input text format, such as bin, otc, dec, hex and so on
     };
 
     /**
@@ -77,7 +79,7 @@ private:
 
     QTimer mCyclingWritingTimer;
     SAKInputDataFactory *mInputDataFactory;
-    InputParametersContext mInputParameters;
+    SAKStructInputParametersContext mInputParameters;
     SAKCommonCrcInterface *mCrcInterface;
     SAKInputDataPresetItemManager *mInputDataItemManager;
     SAKInputCrcSettingsDialog *mCrcSettingsDialog;
@@ -105,8 +107,8 @@ private:
     void actionTriggered();
     void readinSettings();
 signals:
-    void rawDataChanged(QString rawData, InputParametersContext parameters);
+    void rawDataChanged(QString rawData, SAKStructInputParametersContext parameters);
 };
-Q_DECLARE_METATYPE(SAKDebuggerInput::InputParametersContext);
+Q_DECLARE_METATYPE(SAKDebuggerInput::SAKStructInputParametersContext);
 
 #endif

@@ -30,7 +30,7 @@ public:
      * @param rawData: input data
      * @param parameters: input parameters
      */
-    void cookData(QString rawData, SAKDebuggerInput::InputParametersContext parameters);
+    void cookData(QString rawData, SAKDebuggerInput::SAKStructInputParametersContext parameters);
 
     /**
      * @brief crcCalculate: calculate crc for input data
@@ -46,21 +46,21 @@ public:
      * @param parameters: input parameters
      * @return byte array
      */
-    QByteArray rawDataToArray(QString rawData, SAKDebuggerInput::InputParametersContext parameters);
+    QByteArray rawDataToArray(QString rawData, SAKDebuggerInput::SAKStructInputParametersContext parameters);
 
     /**
      * @brief extractCrcData extract effective crc value
      * @param crcData origine crc data
      * @return cooked crc data
      */
-    QByteArray extractCrcData(QByteArray crcData, SAKDebuggerInput::InputParametersContext parameters);
+    QByteArray extractCrcData(QByteArray crcData, SAKDebuggerInput::SAKStructInputParametersContext parameters);
 protected:
     void run() final;
 private:
     // Just using for inner
     struct RawDataStruct {
         QString rawData;
-        SAKDebuggerInput::InputParametersContext parameters;
+        SAKDebuggerInput::SAKStructInputParametersContext parameters;
     };
 
     QMutex mRawDataListMutex;
@@ -70,7 +70,7 @@ private:
     QList<RawDataStruct> mRawDataList;
 private:
     RawDataStruct takeRawData();
-    void innnerCookData(QString rawData, SAKDebuggerInput::InputParametersContext parameters);
+    void innnerCookData(QString rawData, SAKDebuggerInput::SAKStructInputParametersContext parameters);
 signals:
     // The data can be send directly
     void dataCooked(QByteArray data);
