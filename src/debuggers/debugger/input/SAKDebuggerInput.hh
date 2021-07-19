@@ -13,7 +13,7 @@
 #include <QLabel>
 #include <QTimer>
 #include <QMutex>
-#include <QObject>
+#include <QThread>
 #include <QTextEdit>
 #include <QComboBox>
 #include <QCheckBox>
@@ -29,7 +29,7 @@ class SAKInputCrcSettingsDialog;
 class SAKInputDataPresetItemManager;
 
 /// @brief input module controller
-class SAKDebuggerInput:public QObject
+class SAKDebuggerInput : public QThread
 {
     Q_OBJECT
 public:

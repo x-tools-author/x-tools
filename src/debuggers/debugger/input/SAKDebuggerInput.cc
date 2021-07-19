@@ -31,9 +31,11 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
                                    QPushButton *more,
                                    QPushButton *send,
                                    QLabel *crc,
-                                   QTextEdit *input, QSettings *settings, const QString &settingsGroup,
+                                   QTextEdit *input,
+                                   QSettings *settings,
+                                   const QString &settingsGroup,
                                    QObject *parent)
-    :QObject(parent)
+    :QThread(parent)
     ,mCyclingTimeComboBox(regularlySending)
     ,mInputModelComboBox(inputFormat)
     ,mMoreInputSettingsPushButton(more)
