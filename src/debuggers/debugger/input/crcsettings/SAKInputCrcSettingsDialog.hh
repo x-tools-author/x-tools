@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2020 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2020-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -29,10 +29,10 @@ public:
     SAKInputCrcSettingsDialog(QString settingsGroup, QSettings *settings, QWidget *parent = Q_NULLPTR);
     ~SAKInputCrcSettingsDialog();
 
-    struct CrcParameterContext {
-        bool appendCrc;
-        bool bigEndianCrc;
-        int crcPrameterMoldel;
+    struct SAKStructCrcParametersContext {
+        bool append;
+        bool bigEndian;
+        int parameterMoldel;
         int startByte;  // The first byte is one
         int endByte;    // The last byte is one
     };
@@ -41,18 +41,19 @@ public:
      * @brief parametersContext: get the parameters context
      * @return parameters context
      */
-    CrcParameterContext parametersContext();
+    SAKStructCrcParametersContext parametersContext();
 private:
-    CrcParameterContext mParametersContext;
+    SAKStructCrcParametersContext mParametersContext;
     QMutex mParametersContextMutex;
     QSettings *mSettings;
 
-    // Settings key.
-    QString mSettingStringAppendCrc;
-    QString mSettingStringBigEndian;
-    QString mSettingStringCrcParametersModel;
-    QString mSettingStringStartByte;
-    QString mSettingStringEndByte;
+    struct {
+        QString append;
+        QString bigEndian;
+        QString parameterMoldel;
+        QString startByte;
+        QString endByte;
+    } mSettingsKeyContext;
 private:
     Ui::SAKInputCrcSettingsDialog *mUi;
     QComboBox *mCrcParametersModelComboBox;

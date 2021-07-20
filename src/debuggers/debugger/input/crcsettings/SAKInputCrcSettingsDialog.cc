@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2020 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2020-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -26,11 +26,14 @@ SAKInputCrcSettingsDialog::SAKInputCrcSettingsDialog(QString settingsGroup, QSet
     mStartSpinBox = mUi->startSpinBox;
     mEndSpinBox = mUi->endSpinBox;
 
-    mSettingStringAppendCrc = QString("%1/addCRC").arg(settingsGroup);
-    mSettingStringBigEndian = QString("%1/bigEndian").arg(settingsGroup);
-    mSettingStringCrcParametersModel = QString("%1/parameterModel").arg(settingsGroup);
-    mSettingStringStartByte = QString("%1/startByte").arg(settingsGroup);
-    mSettingStringEndByte = QString("%1/endByte").arg(settingsGroup);
+
+    QString group = settingsGroup + "/crc/";
+    mSettingsKeyContext.append = group + "append";
+    mSettingsKeyContext.bigEndian = group + "bigEndian";
+    mSettingsKeyContext.parameterMoldel = group + "prameterMoldel";
+    mSettingsKeyContext.startByte = group + "startByte";
+    mSettingsKeyContext.endByte = group + "endByte";
+
 
     auto blockUiSignals = [=](bool block){
         mCrcParametersModelComboBox->blockSignals(block);
@@ -41,27 +44,31 @@ SAKInputCrcSettingsDialog::SAKInputCrcSettingsDialog(QString settingsGroup, QSet
         blockSignals(block);
     };
 
+
     blockUiSignals(true);
     SAKCommonCrcInterface::addCrcModelItemsToComboBox(mCrcParametersModelComboBox);
 
+
     // Readin settings parameters.
-    mCrcParametersModelComboBox->setCurrentIndex(mSettings->value(mSettingStringCrcParametersModel).toInt());
-    mAppendCrcCheckBox->setChecked(mSettings->value(mSettingStringAppendCrc).toBool());
-    mBigEndianCheckBox->setChecked(mSettings->value(mSettingStringBigEndian).toBool());
-    auto startByte = mSettings->value(mSettingStringStartByte).toInt();
+    mCrcParametersModelComboBox->setCurrentIndex(mSettings->value(mSettingsKeyContext.parameterMoldel).toInt());
+    mAppendCrcCheckBox->setChecked(mSettings->value(mSettingsKeyContext.append).toBool());
+    mBigEndianCheckBox->setChecked(mSettings->value(mSettingsKeyContext.bigEndian).toBool());
+    auto startByte = mSettings->value(mSettingsKeyContext.startByte).toInt();
     mStartSpinBox->setValue(startByte < 1 ? 1 : startByte);
-    auto endByte = mSettings->value(mSettingStringEndByte).toInt();
+    auto endByte = mSettings->value(mSettingsKeyContext.endByte).toInt();
     mEndSpinBox->setValue(endByte < 1 ? 1 : endByte);
 
+
     // Initialize parameters.
-    mParametersContext.crcPrameterMoldel = mCrcParametersModelComboBox->currentData().toInt();
-    mParametersContext.appendCrc = mAppendCrcCheckBox->isChecked();
-    mParametersContext.bigEndianCrc = mBigEndianCheckBox->isChecked();
+    mParametersContext.parameterMoldel = mCrcParametersModelComboBox->currentData().toInt();
+    mParametersContext.append = mAppendCrcCheckBox->isChecked();
+    mParametersContext.bigEndian = mBigEndianCheckBox->isChecked();
     mParametersContext.startByte = mStartSpinBox->value();
     mParametersContext.endByte = mEndSpinBox->value();
 
+
     setModal(true);
-    setWindowTitle(tr("CRC Parameters Settings"));
+    setWindowTitle(tr("CRC Parameters Configuration"));
     blockUiSignals(false);
 }
 
@@ -70,16 +77,16 @@ SAKInputCrcSettingsDialog::~SAKInputCrcSettingsDialog()
     delete mUi;
 }
 
-SAKInputCrcSettingsDialog::CrcParameterContext SAKInputCrcSettingsDialog::parametersContext()
+SAKInputCrcSettingsDialog::SAKStructCrcParametersContext SAKInputCrcSettingsDialog::parametersContext()
 {
-    SAKInputCrcSettingsDialog::CrcParameterContext ctx;
+    SAKInputCrcSettingsDialog::SAKStructCrcParametersContext ctx;
     mParametersContextMutex.lock();
-    ctx.crcPrameterMoldel = mParametersContext.crcPrameterMoldel;
-    ctx.appendCrc = mParametersContext.appendCrc;
-    ctx.bigEndianCrc = mParametersContext.bigEndianCrc;
+    ctx.parameterMoldel = mParametersContext.parameterMoldel;
+    ctx.append = mParametersContext.append;
+    ctx.bigEndian = mParametersContext.bigEndian;
     ctx.endByte = mParametersContext.endByte;
     ctx.startByte = mParametersContext.startByte;
-    ctx.bigEndianCrc = mParametersContext.bigEndianCrc;
+    ctx.bigEndian = mParametersContext.bigEndian;
     mParametersContextMutex.unlock();
     return ctx;
 }
@@ -87,10 +94,10 @@ SAKInputCrcSettingsDialog::CrcParameterContext SAKInputCrcSettingsDialog::parame
 void SAKInputCrcSettingsDialog::on_bigEndianCheckBox_clicked()
 {
     mParametersContextMutex.lock();
-    mParametersContext.bigEndianCrc = mBigEndianCheckBox->isChecked();
+    mParametersContext.bigEndian = mBigEndianCheckBox->isChecked();
     mParametersContextMutex.unlock();
 
-    mSettings->setValue(mSettingStringBigEndian, mBigEndianCheckBox->isChecked());
+    mSettings->setValue(mSettingsKeyContext.bigEndian, mBigEndianCheckBox->isChecked());
     emit crcParametersChanged();
 }
 
@@ -100,7 +107,7 @@ void SAKInputCrcSettingsDialog::on_startSpinBox_valueChanged(int value)
     mParametersContext.startByte = value;
     mParametersContextMutex.unlock();
 
-    mSettings->setValue(mSettingStringStartByte, mStartSpinBox->value());
+    mSettings->setValue(mSettingsKeyContext.startByte, mStartSpinBox->value());
     emit crcParametersChanged();
 }
 
@@ -110,7 +117,7 @@ void SAKInputCrcSettingsDialog::on_endSpinBox_valueChanged(int value)
     mParametersContext.endByte = value;
     mParametersContextMutex.unlock();
 
-    mSettings->setValue(mSettingStringEndByte, mEndSpinBox->value());
+    mSettings->setValue(mSettingsKeyContext.endByte, mEndSpinBox->value());
     emit crcParametersChanged();
 }
 
@@ -118,19 +125,19 @@ void SAKInputCrcSettingsDialog::on_crcParametersModelComboBox_currentIndexChange
 {
     Q_UNUSED(index);
     mParametersContextMutex.lock();
-    mParametersContext.crcPrameterMoldel = mCrcParametersModelComboBox->currentData().toInt();
+    mParametersContext.parameterMoldel = mCrcParametersModelComboBox->currentData().toInt();
     mParametersContextMutex.unlock();
 
-    mSettings->setValue(mSettingStringCrcParametersModel, mCrcParametersModelComboBox->currentIndex());
+    mSettings->setValue(mSettingsKeyContext.parameterMoldel, mCrcParametersModelComboBox->currentIndex());
     emit crcParametersChanged();
 }
 
 void SAKInputCrcSettingsDialog::on_appendCrcCheckBox_clicked()
 {
     mParametersContextMutex.lock();
-    mParametersContext.appendCrc = mAppendCrcCheckBox->isChecked();
+    mParametersContext.append = mAppendCrcCheckBox->isChecked();
     mParametersContextMutex.unlock();
 
-    mSettings->setValue(mSettingStringAppendCrc, mAppendCrcCheckBox->isChecked());
+    mSettings->setValue(mSettingsKeyContext.append, mAppendCrcCheckBox->isChecked());
     emit crcParametersChanged();
 }

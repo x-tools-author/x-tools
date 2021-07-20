@@ -113,10 +113,10 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
 #endif
 
     mCrcSettingsDialog = new SAKInputCrcSettingsDialog(settingsGroup, settings);
-    SAKInputCrcSettingsDialog::CrcParameterContext ctx = mCrcSettingsDialog->parametersContext();
-    mInputParameters.crc.parametersModel = ctx.crcPrameterMoldel;
-    mInputParameters.crc.appending = ctx.appendCrc;
-    mInputParameters.crc.bigEndian = ctx.bigEndianCrc;
+    SAKInputCrcSettingsDialog::SAKStructCrcParametersContext ctx = mCrcSettingsDialog->parametersContext();
+    mInputParameters.crc.parametersModel = ctx.parameterMoldel;
+    mInputParameters.crc.appending = ctx.append;
+    mInputParameters.crc.bigEndian = ctx.bigEndian;
     mInputParameters.crc.startByte = ctx.startByte;
     mInputParameters.crc.endByte = ctx.endByte;
 
@@ -136,10 +136,10 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
 
     // Update parameters
     connect(mCrcSettingsDialog, &SAKInputCrcSettingsDialog::crcParametersChanged, this, [&](){
-        SAKInputCrcSettingsDialog::CrcParameterContext ctx = mCrcSettingsDialog->parametersContext();
-        mInputParameters.crc.parametersModel = ctx.crcPrameterMoldel;
-        mInputParameters.crc.appending = ctx.appendCrc;
-        mInputParameters.crc.bigEndian = ctx.bigEndianCrc;
+        SAKInputCrcSettingsDialog::SAKStructCrcParametersContext ctx = mCrcSettingsDialog->parametersContext();
+        mInputParameters.crc.parametersModel = ctx.parameterMoldel;
+        mInputParameters.crc.appending = ctx.append;
+        mInputParameters.crc.bigEndian = ctx.bigEndian;
         mInputParameters.crc.startByte = ctx.startByte;
         mInputParameters.crc.endByte = ctx.endByte;
 
@@ -365,7 +365,7 @@ void SAKDebuggerInput::sendOtherRawData(QString data, int textFormat)
 void SAKDebuggerInput::changeCrcModel()
 {
     bool ok = false;
-    mInputParameters.crc.parametersModel = mCrcSettingsDialog->parametersContext().crcPrameterMoldel;
+    mInputParameters.crc.parametersModel = mCrcSettingsDialog->parametersContext().parameterMoldel;
     Q_ASSERT_X(ok, __FUNCTION__, "Please check the crc parameters model");
 
     updateCrc();
@@ -384,12 +384,12 @@ void SAKDebuggerInput::initParameters()
 {
     mInputParameters.textFormat = mInputModelComboBox->currentData().toInt();
 
-    SAKInputCrcSettingsDialog::CrcParameterContext ctx = mCrcSettingsDialog->parametersContext();
-    mInputParameters.crc.parametersModel = ctx.crcPrameterMoldel;
-    mInputParameters.crc.bigEndian = ctx.bigEndianCrc;
+    SAKInputCrcSettingsDialog::SAKStructCrcParametersContext ctx = mCrcSettingsDialog->parametersContext();
+    mInputParameters.crc.parametersModel = ctx.parameterMoldel;
+    mInputParameters.crc.bigEndian = ctx.bigEndian;
     mInputParameters.crc.startByte = ctx.startByte;
     mInputParameters.crc.endByte = ctx.endByte;
-    mInputParameters.crc.bigEndian = ctx.bigEndianCrc;
+    mInputParameters.crc.bigEndian = ctx.bigEndian;
 }
 
 void SAKDebuggerInput::cyclingWritingTimerTimeout()
