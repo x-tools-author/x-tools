@@ -102,7 +102,6 @@ private:
     void readinFile();
     void inputTextEditTextChanged();
     void sendRawData();
-    void sendOtherRawData(QString data, int textFormat);
     void changeCrcModel();
     void setPresetData();
     void initParameters();

@@ -8,7 +8,6 @@ INCLUDEPATH += \
     $$PWD/device/mask \
     $$PWD/input \
     $$PWD/input/crcsettings \
-    $$PWD/input/datafactory \
     $$PWD/input/datapreset \
     $$PWD/device/analyzer \
     $$PWD/output \
@@ -38,7 +37,6 @@ HEADERS += \
     $$PWD/device/mask/SAKDebugPageDeviceMask.hh \
     $$PWD/input/SAKDebuggerInput.hh \
     $$PWD/input/crcsettings/SAKInputCrcSettingsDialog.hh \
-    $$PWD/input/datafactory/SAKInputDataFactory.hh \
     $$PWD/input/datapreset/SAKInputDataPresetItem.hh \
     $$PWD/input/datapreset/SAKInputDataPresetItemManager.hh \
     $$PWD/device/analyzer/SAKOtherAnalyzerThread.hh \
@@ -58,7 +56,6 @@ SOURCES += \
     $$PWD/device/mask/SAKDebugPageDeviceMask.cc \
     $$PWD/input/SAKDebuggerInput.cc \
     $$PWD/input/crcsettings/SAKInputCrcSettingsDialog.cc \
-    $$PWD/input/datafactory/SAKInputDataFactory.cc \
     $$PWD/input/datapreset/SAKInputDataPresetItem.cc \
     $$PWD/input/datapreset/SAKInputDataPresetItemManager.cc \
     $$PWD/device/analyzer/SAKOtherAnalyzerThread.cc \

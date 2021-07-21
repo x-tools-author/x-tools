@@ -19,7 +19,6 @@
 
 #include "SAKDebugger.hh"
 #include "SAKDebuggerInput.hh"
-#include "SAKInputDataFactory.hh"
 #include "SAKCommonCrcInterface.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKInputDataPresetItem.hh"
@@ -100,8 +99,6 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
     // InputParametersContext will be a parameter of signal,
     // so, do something make compiling happy
     qRegisterMetaType<SAKStructInputParametersContext>("InputParameters");
-    mInputDataFactory = new SAKInputDataFactory;
-    mInputDataFactory->start();
 
     // Add actions after new.
 #if 0
@@ -167,7 +164,6 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
 
 SAKDebuggerInput::~SAKDebuggerInput()
 {
-    delete mInputDataFactory;
     delete mCrcInterface;
     //delete mInputDataItemManager;
     delete mCrcSettingsDialog;
@@ -354,14 +350,6 @@ void SAKDebuggerInput::sendRawData()
     //emit rawDataChanged(data, mInputParameters);
 }
 
-void SAKDebuggerInput::sendOtherRawData(QString data, int textFormat)
-{
-    SAKStructInputParametersContext temp = mInputParameters;
-    temp.textFormat = textFormat;
-
-    //emit rawDataChanged(data, temp);
-}
-
 void SAKDebuggerInput::changeCrcModel()
 {
     bool ok = false;
@@ -409,12 +397,12 @@ void SAKDebuggerInput::cyclingWritingTimerTimeout()
 void SAKDebuggerInput::updateCrc()
 {
     QString rawData = mInputTextEdit->toPlainText();
-    QByteArray data = mInputDataFactory->rawDataToArray(rawData, mInputParameters);
-    QByteArray crcInputData = mInputDataFactory->extractCrcData(data, mInputParameters);
+    //QByteArray data = mInputDataFactory->rawDataToArray(rawData, mInputParameters);
+    //QByteArray crcInputData = mInputDataFactory->extractCrcData(data, mInputParameters);
 
-    quint32 crc = mInputDataFactory->crcCalculate(crcInputData, mInputParameters.crc.parametersModel);
-    int bits =  mCrcInterface->getBitsWidth(static_cast<SAKCommonCrcInterface::CRCModel>(mInputParameters.crc.parametersModel));
-    mCrcLabel->setText(QString(QString("%1").arg(QString::number(crc, 16), (bits/8)*2, '0')).toUpper().prepend("0x"));
+    //quint32 crc = mInputDataFactory->crcCalculate(crcInputData, mInputParameters.crc.parametersModel);
+    //int bits =  mCrcInterface->getBitsWidth(static_cast<SAKCommonCrcInterface::CRCModel>(mInputParameters.crc.parametersModel));
+    //mCrcLabel->setText(QString(QString("%1").arg(QString::number(crc, 16), (bits/8)*2, '0')).toUpper().prepend("0x"));
 }
 
 void SAKDebuggerInput::appendAction(SAKInputDataPresetItem *item)
@@ -454,11 +442,11 @@ void SAKDebuggerInput::actionTriggered()
         if (sender()->inherits("QAction")){
             QAction *action = qobject_cast<QAction*>(sender());
             SAKInputDataPresetItem *item = action->data().value<SAKInputDataPresetItem *>();
-            int format = item->itemTextFromat();
+            //int format = item->itemTextFromat();
             QString text = item->itemText();
 
             if (mCyclingTimeComboBox->isEnabled()){
-                sendOtherRawData(text, format);
+                //sendOtherRawData(text, format);
             }
         }
     }
