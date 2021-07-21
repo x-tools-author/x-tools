@@ -27,7 +27,7 @@ class SAKInputDataFactory;
 class SAKCommonCrcInterface;
 class SAKInputDataPresetItem;
 class SAKInputCrcSettingsDialog;
-class SAKInputDataPresetItemManager;
+class SAKInputDataPreset;
 
 /// @brief input module controller
 class SAKDebuggerInput : public QThread
@@ -88,7 +88,7 @@ private:
     SAKInputDataFactory *mInputDataFactory;
     SAKStructInputParametersContext mInputParameters;
     SAKCommonCrcInterface *mCrcInterface;
-    SAKInputDataPresetItemManager *mInputDataItemManager;
+    SAKInputDataPreset *mInputDataItemManager;
     SAKInputCrcSettingsDialog *mCrcSettingsDialog;
     // The unit is ms.
     const int defaultCycle = 1000;

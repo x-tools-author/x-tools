@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKINPUTDATAITEMMANAGER_HH
-#define SAKINPUTDATAITEMMANAGER_HH
+#ifndef SAKINPUTDATAPRESET_HH
+#define SAKINPUTDATAPRESET_HH
 
 #include <QLabel>
 #include <QTimer>
@@ -20,19 +20,19 @@
 #include <QPushButton>
 
 namespace Ui {
-    class SAKInputDataPresetItemManager;
+    class SAKInputDataPreset;
 }
 
 class SAKDebugger;
 class SAKInputDataPresetItem;
 class SAKDebugPageCommonDatabaseInterface;
 /// @brief Data preset item manager widget
-class SAKInputDataPresetItemManager:public QWidget
+class SAKInputDataPreset:public QWidget
 {
     Q_OBJECT
 public:
-    SAKInputDataPresetItemManager(SAKDebugger *mDebugPage, QWidget *parent = Q_NULLPTR);
-    ~SAKInputDataPresetItemManager();
+    SAKInputDataPreset(SAKDebugger *mDebugPage, QWidget *parent = Q_NULLPTR);
+    ~SAKInputDataPreset();
 
     struct DataPresetItemContext {
         const QString id = QString("id");
@@ -62,7 +62,7 @@ private:
     void updateDescription(const QString &text);
     void updateText(QString text);
 private:
-    Ui::SAKInputDataPresetItemManager *mUi;
+    Ui::SAKInputDataPreset *mUi;
     QPushButton *mDeletePushButton;
     QPushButton *mAddPushButton;
     QPushButton *mOutportPushButton;

@@ -24,7 +24,7 @@
 #include "SAKInputDataPresetItem.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKInputCrcSettingsDialog.hh"
-#include "SAKInputDataPresetItemManager.hh"
+#include "SAKInputDataPreset.hh"
 
 SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
                                    QComboBox *inputFormat,
