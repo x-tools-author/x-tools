@@ -37,8 +37,8 @@ SAKInputDataPresetItem::SAKInputDataPresetItem(
 {
     initializingItem();
     mTextFormatComboBox->setCurrentIndex(context.format);
-    mDescriptionLineEdit->setText(context.description);
-    mDataLineEdit->setText(context.text);
+    mDescriptionLineEdit->setText(context.text);
+    mDataLineEdit->setText(context.description);
 }
 
 SAKInputDataPresetItem::~SAKInputDataPresetItem()
