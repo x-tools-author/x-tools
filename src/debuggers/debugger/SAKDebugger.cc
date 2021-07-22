@@ -302,6 +302,47 @@ void SAKDebugger::refreshDevice()
     }
 }
 
+void SAKDebugger::commonSqlApiUpdateRecord(QSqlQuery *sqlQuery,
+                                           QString tableName,
+                                           QString columnName,
+                                           QVariant value,
+                                           quint64 recordID,
+                                           bool valueIsString)
+{
+    QString queryString;
+    if (valueIsString){
+        queryString = QString("UPDATE %1 SET %2='%3' WHERE ID=%4")
+                .arg(tableName)
+                .arg(columnName)
+                .arg(value.toString())
+                .arg(recordID);
+    }else{
+        queryString = QString("UPDATE %1 SET %2=%3 WHERE ID=%4")
+                .arg(tableName)
+                .arg(columnName)
+                .arg(value.toInt())
+                .arg(recordID);
+    }
+
+    if(!sqlQuery->exec(queryString)){
+        qWarning() << QString("Can not update record(%1):%2")
+                      .arg(columnName, sqlQuery->lastError().text());
+    }
+}
+
+void SAKDebugger::commonSqlApiDeleteRecord(QSqlQuery *sqlQuery,
+                                           QString tableName,
+                                           quint64 recordID)
+{
+    QString queryString = QString("DELETE FROM %1 WHERE ID=%2")
+            .arg(tableName)
+            .arg(recordID);
+    if (!sqlQuery->exec(queryString)) {
+        qWarning() << "Can not delete recored form(" << tableName << ")"
+                   << sqlQuery->lastError().text();
+    }
+}
+
 void SAKDebugger::cleanInfo()
 {
     mClearInfoTimer.stop();

@@ -1,12 +1,12 @@
-﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+﻿/******************************************************************************
+ * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- */
+ *****************************************************************************/
 #ifndef SAKINPUTDATAPRESETITEM_HH
 #define SAKINPUTDATAPRESETITEM_HH
 
@@ -28,11 +28,15 @@ class SAKInputDataPresetItem:public QWidget
 {
     Q_OBJECT
 public:
+    struct SAKStructDataPresetItemContext {
+        quint64 id;
+        quint32 format;
+        QString description;
+        QString text;
+    };
+public:
     SAKInputDataPresetItem(QWidget *parent = Q_NULLPTR);
-    SAKInputDataPresetItem(quint64 id,
-                           quint32 format,
-                           QString description,
-                           QString text,
+    SAKInputDataPresetItem(SAKStructDataPresetItemContext context,
                            QWidget *parent = Q_NULLPTR);
     ~SAKInputDataPresetItem();
 
@@ -74,9 +78,9 @@ private slots:
     void on_descriptionLineEdit_textChanged(const QString &text);
     void on_inputTextEdit_textChanged();
 signals:
-    void formatChanged(int format);
-    void descriptionChanged(const QString &text);
-    void textChanged(QString text);
+    void formatChanged(quint64 id, quint32 format);
+    void descriptionChanged(quint64 id, const QString &text);
+    void textChanged(quint64 id, const QString &text);
 };
 
 #endif

@@ -103,11 +103,14 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
 
     // Add actions after new.
 #if 1
-    mInputDataItemManager = new SAKInputDataPreset(sqlDatabase, settings, settingsGroup);
-    QList<SAKInputDataPresetItem*> list = mInputDataItemManager->itemList();
-    for (auto &var : list){
-        appendAction(var);
-    }
+    mInputDataItemManager = new SAKInputDataPreset(sqlDatabase,
+                                                   settings,
+                                                   settingsGroup,
+                                                   mWriteDataItemMenu);
+//    QList<SAKInputDataPresetItem*> list = mInputDataItemManager->itemList();
+//    for (auto &var : list){
+//        appendAction(var);
+//    }
 #endif
 
     mCrcSettingsDialog = new SAKInputCrcSettingsDialog(settingsGroup, settings);

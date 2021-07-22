@@ -1,4 +1,4 @@
-﻿/*
+﻿/******************************************************************************
  * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -6,8 +6,11 @@
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- */
+ *****************************************************************************/
 #include <QFile>
+#include <QTime>
+#include <QDebug>
+#include <QSqlError>
 #include <QJsonArray>
 #include <QJsonObject>
 #include <QFileDialog>
@@ -15,22 +18,22 @@
 #include <QStandardPaths>
 #include <QListWidgetItem>
 
-#include "SAKApplication.hh"
+#include "SAKDebugger.hh"
 #include "SAKInputDataPreset.hh"
-#include "SAKCommonCrcInterface.hh"
-#include "SAKCommonDataStructure.hh"
 #include "SAKInputDataPresetItem.hh"
 
 #include "ui_SAKInputDataPreset.h"
 
-SAKInputDataPreset::SAKInputDataPreset(QSqlDatabase *sqlDataBase,
+SAKInputDataPreset::SAKInputDataPreset(QSqlDatabase *sqlDatabase,
                                        QSettings *settings,
                                        QString settingsGroup,
+                                       QMenu *itemsMenu,
                                        QWidget *parent)
     :QWidget(parent)
-    ,mSqlDataBase(sqlDataBase)
+    ,mSqlDatabase(sqlDatabase)
     ,mSettings(settings)
     ,mSettingsGroup(settingsGroup)
+    ,mItemsMenu(itemsMenu)
     ,mUi(new Ui::SAKInputDataPreset)
 {
     mUi->setupUi(this);
@@ -46,10 +49,33 @@ SAKInputDataPreset::SAKInputDataPreset(QSqlDatabase *sqlDataBase,
         mClearMessageInfoTimer.stop();
         mInfoLabel->clear();
     });
-#if 0
-    mDatabaseInterface = mDebugPage->databaseInterface();
-    mTableName = mDebugPage->tableNamePresettingDataTable();
-#endif
+
+
+
+    mTableContext.tableName = settingsGroup + QString("PresetItems");
+    QString queryString = QString("CREATE TABLE '%1' (")
+            .arg(mTableContext.tableName);
+    queryString.append(QString("%1 INTEGER PRIMARY KEY NOT NULL, ")
+                       .arg(mTableContext.columns.id));
+    queryString.append(QString("%1 INTEGER NOT NULL, ")
+                       .arg(mTableContext.columns.format));
+    queryString.append(QString("%1 TEXT NOT NULL, ")
+                       .arg(mTableContext.columns.description));
+    queryString.append(QString("%1 TEXT NOT NULL)")
+                       .arg(mTableContext.columns.text));
+    // Try to create table
+    mSqlQuery = QSqlQuery(*sqlDatabase);
+    if (!sqlDatabase->tables().contains(mTableContext.tableName)) {
+        if (!mSqlQuery.exec(queryString)) {
+            QString errorString = mSqlQuery.lastError().text();
+            outputMessage(errorString, true);
+            qWarning() << "Create table("
+                       << mTableContext.tableName
+                       << ")failed:"
+                       << errorString;
+            qInfo() << queryString;
+        }
+    }
     readinRecord();
 }
 
@@ -58,50 +84,37 @@ SAKInputDataPreset::~SAKInputDataPreset()
     delete mUi;
 }
 
-QList<SAKInputDataPresetItem*> SAKInputDataPreset::itemList()
-{
-    QList<SAKInputDataPresetItem*> itemWidgetList;
-    for (int i = 0; i < mListWidget->count(); i++){
-        QListWidgetItem *item = mListWidget->item(i);
-        QWidget *itemWidget = mListWidget->itemWidget(item);
-        itemWidgetList.append(qobject_cast<SAKInputDataPresetItem*>(itemWidget));
-    }
-    return itemWidgetList;
-}
-
-#if 0
-QWidget *innerCreateItem(SAKDebugPageCommonDatabaseInterface::SAKStructPresettingDataItem &var, QListWidget *listWidget)
-{
-    QListWidgetItem *item = new QListWidgetItem(listWidget);
-    SAKInputDataPresetItem *itemWidget = new SAKInputDataPresetItem(var.id,
-                                                                    var.format,
-                                                                    var.description,
-                                                                    var.text,
-                                                                    Q_NULLPTR);
-    item->setSizeHint(itemWidget->sizeHint());
-    listWidget->addItem(item);
-    listWidget->setItemWidget(item, itemWidget);
-
-    return itemWidget;
-}
-#endif
-
 void SAKInputDataPreset::readinRecord()
 {
-#if 0
-    QList<SAKDebugPageCommonDatabaseInterface::SAKStructPresettingDataItem> itemList = mDatabaseInterface->selectDataPresetItem();
-    for (auto &var : itemList){
-        QWidget *iw = innerCreateItem(var, mListWidget);
-        appendDataPresetItem(iw);
+    const QString queryString = QString("SELECT * FROM %1")
+            .arg(mTableContext.tableName);
+    if (mSqlQuery.exec(queryString)) {
+        while (mSqlQuery.next()) {
+            SAKInputDataPresetItem::SAKStructDataPresetItemContext itemContext;
+            QVariant tempVariant = mSqlQuery.value(mTableContext.columns.id);
+            itemContext.id = tempVariant.toULongLong();
+
+            tempVariant = mSqlQuery.value(mTableContext.columns.format);
+            itemContext.format = tempVariant.toUInt();
+
+            tempVariant = mSqlQuery.value(mTableContext.columns.description);
+            itemContext.description = tempVariant.toString();
+
+            tempVariant = mSqlQuery.value(mTableContext.columns.text);
+            itemContext.text = tempVariant.toString();
+
+            QListWidgetItem *item = new QListWidgetItem();
+            auto *itemWidget = new SAKInputDataPresetItem(itemContext);
+            setItemWidget(item, itemWidget);
+        }
+    } else {
+        qWarning() << "Can not exec query command:"
+                   << qPrintable(queryString);
     }
-#endif
 }
 
 void SAKInputDataPreset::outputMessage(QString msg, bool isError)
 {
-    Q_UNUSED(msg);
-    Q_UNUSED(isError);
-#if 0
     QString color = "black";
     if (isError){
         color = "red";
@@ -111,203 +124,243 @@ void SAKInputDataPreset::outputMessage(QString msg, bool isError)
 
     mInfoLabel->setText(QTime::currentTime().toString("hh:mm:ss ") + msg);
     mClearMessageInfoTimer.start();
-#endif
 }
 
-bool SAKInputDataPreset::contains(quint64 paraID)
+void SAKInputDataPreset::updateFormat(quint64 id, int format)
+{
+    SAKDebugger::commonSqlApiUpdateRecord(&mSqlQuery,
+                                          mTableContext.tableName,
+                                          mTableContext.columns.format,
+                                          QVariant::fromValue(format),
+                                          id,
+                                          true);
+}
+
+void SAKInputDataPreset::updateDescription(quint64 id,
+                                           const QString &description)
+{
+    SAKDebugger::commonSqlApiUpdateRecord(&mSqlQuery,
+                                          mTableContext.tableName,
+                                          mTableContext.columns.description,
+                                          QVariant::fromValue(description),
+                                          id,
+                                          true);
+}
+
+void SAKInputDataPreset::updateText(quint64 id, const QString &text)
+{
+    SAKDebugger::commonSqlApiUpdateRecord(&mSqlQuery,
+                                          mTableContext.tableName,
+                                          mTableContext.columns.text,
+                                          QVariant::fromValue(text),
+                                          id,
+                                          true);
+}
+
+void SAKInputDataPreset::insertRecord(const QString &tableName,
+                                      SAKInputDataPresetItem *itemWidget)
+{
+    SAKStructDataPresetItemTableContext tableCtx;
+    QString queryString = QString("INSERT INTO %1(%2,%3,%4,%5)"
+                                  " VALUES(%6,%7,'%8','%9')")
+            .arg(tableName)
+            .arg(tableCtx.columns.id)
+            .arg(tableCtx.columns.format)
+            .arg(tableCtx.columns.description)
+            .arg(tableCtx.columns.text)
+            .arg(itemWidget->itemID())
+            .arg(itemWidget->itemTextFromat())
+            .arg(itemWidget->itemDescription())
+            .arg(itemWidget->itemText());
+    if (!mSqlQuery.exec(queryString)) {
+#if 0
+        qWarning() << "Insert record to("
+                   << tableName
+                   << ") table failed: "
+                   << mSqlQuery.lastError().text();
+        qInfo() << queryString;
+#endif
+    }
+}
+
+void SAKInputDataPreset::setItemWidget(QListWidgetItem *item,
+                                       SAKInputDataPresetItem *itemWidget)
 {
     bool contain = false;
-    for (int i = 0; i < mListWidget->count(); i++){
+    for (int i = 0; i < mListWidget->count(); i++) {
         QListWidgetItem *item = mListWidget->item(i);
         QWidget *w = mListWidget->itemWidget(item);
-        SAKInputDataPresetItem *itemWidget = reinterpret_cast<SAKInputDataPresetItem*>(w);
-        if (itemWidget->itemID() == paraID){
+        auto *iw = qobject_cast<SAKInputDataPresetItem*>(w);
+        if (iw->itemID() == itemWidget->itemID()) {
             contain = true;
             break;
         }
     }
 
-    return contain;
-}
+    if (!contain) {
+        item->setSizeHint(itemWidget->sizeHint());
+        mListWidget->addItem(item);
+        mListWidget->setItemWidget(item, itemWidget);
 
-void SAKInputDataPreset::appendDataPresetItem(QWidget *iw)
-{
-    SAKInputDataPresetItem *item = reinterpret_cast<SAKInputDataPresetItem*>(iw);
-    connect(item, &SAKInputDataPresetItem::formatChanged, this, &SAKInputDataPreset::updateFormat);
-    connect(item, &SAKInputDataPresetItem::textChanged, this, &SAKInputDataPreset::updateText);
-    connect(item, &SAKInputDataPresetItem::descriptionChanged, this, &SAKInputDataPreset::updateDescription);
-    emit itemAdded(item);
-}
+        connect(itemWidget, &SAKInputDataPresetItem::formatChanged,
+                this, &SAKInputDataPreset::updateFormat);
+        connect(itemWidget, &SAKInputDataPresetItem::textChanged,
+                this, &SAKInputDataPreset::updateText);
+        connect(itemWidget, &SAKInputDataPresetItem::descriptionChanged,
+                this, &SAKInputDataPreset::updateDescription);
 
-void SAKInputDataPreset::updateFormat(int format)
-{
-    Q_UNUSED(format);
-#if 0
-    if (sender()){
-        if (sender()->inherits("SAKInputDataPresetItem")){
-            SAKInputDataPresetItem *item = qobject_cast<SAKInputDataPresetItem*>(sender());
-            quint64 id = item->itemID();
-
-            SAKDebugPageCommonDatabaseInterface::DataPresetItemTable table;
-            mDatabaseInterface->updateRecord(mTableName, table.columns.format, QVariant::fromValue(format), id, false);
-        }
+        QAction *action = mItemsMenu->addAction(itemWidget->itemText(),
+                                                this,
+                                                [=](){
+            QString rawData = itemWidget->itemText();
+            int format = itemWidget->itemTextFromat();
+            emit this->invokeWriteBytes(rawData, format);
+        });
+        // The action will be deleted after item widget is destroyed.
+        connect(itemWidget, &SAKInputDataPresetItem::destroyed,
+                action, &QAction::deleteLater);
+        connect(itemWidget, &SAKInputDataPresetItem::descriptionChanged,
+                this, [=](quint64 id, const QString text){
+            Q_UNUSED(id);
+            action->setText(text);
+        });
     }
-#endif
-}
-
-void SAKInputDataPreset::updateDescription(const QString &text)
-{
-    Q_UNUSED(text);
-#if 0
-    if (sender()){
-        if (sender()->inherits("SAKInputDataPresetItem")){
-            SAKInputDataPresetItem *item = qobject_cast<SAKInputDataPresetItem*>(sender());
-            quint64 id = item->itemID();
-
-            SAKDebugPageCommonDatabaseInterface::DataPresetItemTable table;
-            mDatabaseInterface->updateRecord(mTableName, table.columns.description, QVariant::fromValue(text), id, true);
-            emit descriptionChanged(item);
-        }
-    }
-#endif
-}
-
-void SAKInputDataPreset::updateText(QString text)
-{
-    Q_UNUSED(text);
-#if 0
-    if (sender()){
-        if (sender()->inherits("SAKInputDataPresetItem")){
-            SAKInputDataPresetItem *item = qobject_cast<SAKInputDataPresetItem*>(sender());
-            quint64 id = item->itemID();
-
-            SAKDebugPageCommonDatabaseInterface::DataPresetItemTable table;
-            mDatabaseInterface->updateRecord(mTableName, table.columns.text, QVariant::fromValue(text), id, true);
-        }
-    }
-#endif
 }
 
 void SAKInputDataPreset::on_deletePushButton_clicked()
 {
-#if 0
     QListWidgetItem *item = mListWidget->currentItem();
-    if (item){
-        SAKInputDataPresetItem *itemWidget = reinterpret_cast<SAKInputDataPresetItem*>(mListWidget->itemWidget(item));
-        quint64 id = itemWidget->itemID();
-        // delete record from database
-        mDatabaseInterface->deleteRecord(mTableName, id);
+    if (item) {
+        QWidget *itemWidget = mListWidget->itemWidget(item);
+        auto *iw = reinterpret_cast<SAKInputDataPresetItem*>(itemWidget);
+        quint64 id = iw->itemID();
+        QString tableName = mTableContext.tableName;
 
+        // Delete record from database.
         mListWidget->removeItemWidget(item);
-        emit itemDeleted(itemWidget);
         delete item;
-    }else{
+        SAKDebugger::commonSqlApiDeleteRecord(&mSqlQuery,
+                                              mTableContext.tableName,
+                                              id);
+    } else {
         outputMessage(tr("Plese select an item first."));
     }
-#endif
 }
 
 void SAKInputDataPreset::on_addPushButton_clicked()
 {
-#if 0
-    QListWidgetItem *item = new QListWidgetItem(mListWidget);
-    SAKInputDataPresetItem *itemWidget = new SAKInputDataPresetItem(this);
-    item->setSizeHint(itemWidget->sizeHint());
-    mListWidget->addItem(item);
-    mListWidget->setItemWidget(item, itemWidget);
-    appendDataPresetItem(itemWidget);
-
-    // Add item to database
-    SAKDebugPageCommonDatabaseInterface::SAKStructPresettingDataItem dataItem;
-    dataItem.id = itemWidget->itemID();
-    dataItem.text = itemWidget->itemText();
-    dataItem.format = itemWidget->itemTextFromat();
-    dataItem.description = itemWidget->itemDescription();
-    mDatabaseInterface->insertDataPresetItem(dataItem);
-#endif
+    QListWidgetItem *item = new QListWidgetItem();
+    SAKInputDataPresetItem *itemWidget = new SAKInputDataPresetItem();
+    setItemWidget(item, itemWidget);
+    insertRecord(mTableContext.tableName, itemWidget);
 }
 
 void SAKInputDataPreset::on_outportPushButton_clicked()
 {
-#if 0
-    // Read in records from database
-    QList<SAKDebugPageCommonDatabaseInterface::SAKStructPresettingDataItem> itemList = mDatabaseInterface->selectDataPresetItem();
-    if (itemList.isEmpty()){
-        return;
-    }
-
     QJsonArray jsonArray;
-    DataPresetItemContext itemKey;
-    for (auto &var : itemList){
-        QJsonObject obj;
-        obj.insert(itemKey.id, QVariant::fromValue(var.id).toJsonValue());
-        obj.insert(itemKey.format, QVariant::fromValue(var.format).toJsonValue());
-        obj.insert(itemKey.description, QVariant::fromValue(var.description).toJsonValue());
-        obj.insert(itemKey.text, QVariant::fromValue(var.text).toJsonValue());
-        jsonArray.append(QJsonValue(obj));
+    for (int i = 0; i < mListWidget->count(); i++) {
+        auto *itemWidget = mListWidget->itemWidget(mListWidget->item(i));
+        auto *iw = qobject_cast<SAKInputDataPresetItem*>(itemWidget);
+        if (iw) {
+            QJsonObject obj;
+            QString key;
+            QJsonValue value;
+
+
+            key = mTableContext.columns.id;
+            value = QVariant::fromValue(iw->itemID()).toJsonValue();
+            obj.insert(key, value);
+
+            key = mTableContext.columns.format;
+            value = QVariant::fromValue(iw->itemTextFromat()).toJsonValue();
+            obj.insert(key, value);
+
+            key = mTableContext.columns.description;
+            value = QVariant::fromValue(iw->itemDescription()).toJsonValue();
+            obj.insert(key, value);
+
+            key = mTableContext.columns.text;
+            value = QVariant::fromValue(iw->itemText()).toJsonValue();
+            obj.insert(key, value);
+
+
+            jsonArray.append(QJsonValue(obj));
+        }
     }
     QJsonDocument jsonDoc;
     jsonDoc.setArray(jsonArray);
 
-    // Open file
-    QString defaultName = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
-    defaultName.append(QString("/"));
-    defaultName.append(QDateTime::currentDateTime().toString("yyyyMMddhhmmss"));
-    defaultName.append(".json");
-    QString fileName = QFileDialog::getSaveFileName(this, tr("Outport data"), defaultName, QString("json (*.json)"));
-    if (fileName.isEmpty()){
-        return;
-    }
 
-    // Write data to file
-    QFile file(fileName);
-    if (file.open(QFile::ReadWrite)){
-        file.write(jsonDoc.toJson());
-        file.close();
-    }else{
-        outputMessage(file.errorString(), false);
+    // Open file
+    auto desktopLocation = QStandardPaths::DesktopLocation;
+    QString defaultName = QStandardPaths::writableLocation(desktopLocation);
+    defaultName.append(QString("/"));
+    defaultName.append(QDateTime::currentDateTime()
+                       .toString("yyyyMMddhhmmss"));
+    defaultName.append(".json");
+    QString fileName = QFileDialog::getSaveFileName(this,
+                                                    tr("Outport data"),
+                                                    defaultName,
+                                                    QString("json (*.json)"));
+    if (!fileName.isEmpty()){
+        QFile file(fileName);
+        if (file.open(QFile::ReadWrite)){
+            file.write(jsonDoc.toJson());
+            file.close();
+        }else{
+            outputMessage(file.errorString(), false);
+        }
     }
-#endif
 }
 
 void SAKInputDataPreset::on_importPushButton_clicked()
 {
-#if 0
-    QString defaultPath = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
-    QString fileName = QFileDialog::getOpenFileName(this, tr("Import data"), defaultPath, QString("json (*.json)"));
+    auto writableLocation = QStandardPaths::DesktopLocation;
+    QString defaultPath = QStandardPaths::writableLocation(writableLocation);
+    QString fileName = QFileDialog::getOpenFileName(this,
+                                                    tr("Import data"),
+                                                    defaultPath,
+                                                    QString("json (*.json)"));
     QFile file(fileName);
-    if (file.open(QFile::ReadWrite)){
-        QByteArray array = file.readAll();
+    QByteArray jsonArray;
+    if (file.open(QFile::ReadWrite)) {
+        jsonArray = file.readAll();
         file.close();
-
-        QJsonDocument jsc = QJsonDocument::fromJson(array);
-        if (!jsc.isArray()){
-            outputMessage(QString("QJsonDocument is not json array"), false);
-            return;
-        }
-
-        QJsonArray jsa = jsc.array();
-        for (int i = 0; i < jsa.count(); i++){
-            if (jsa.at(i).isObject()){
-                QJsonObject jso = jsa.at(i).toObject();
-                DataPresetItemContext itemKey;
-                SAKDebugPageCommonDatabaseInterface::SAKStructPresettingDataItem responseItem;
-                responseItem.id = jso.value(itemKey.id).toVariant().toULongLong();
-                responseItem.format = jso.value(itemKey.format).toVariant().toUInt();
-                responseItem.description = jso.value(itemKey.description).toVariant().toString();
-                responseItem.text = jso.value(itemKey.text).toVariant().toString();
-
-                // If item is not exist, creating an item
-                if (!contains(responseItem.id)){
-                    QWidget *iw = innerCreateItem(responseItem, mListWidget);
-                    appendDataPresetItem(iw);
-                    // Insert record to database
-                    mDatabaseInterface->insertDataPresetItem(responseItem);
-                }
-            }
-        }
-    }else{
+    } else {
         outputMessage(file.errorString(), false);
+        return;
     }
-#endif
+
+    QJsonDocument jsc = QJsonDocument::fromJson(jsonArray);
+    if (!jsc.isArray()){
+        outputMessage(QString("QJsonDocument is not json array"), false);
+        return;
+    }
+
+    QJsonArray jsa = jsc.array();
+    for (int i = 0; i < jsa.count(); i++) {
+        if (!jsa.at(i).isObject()) {
+            continue;
+        }
+
+        QJsonObject jso = jsa.at(i).toObject();
+        SAKInputDataPresetItem::SAKStructDataPresetItemContext itemCtx;
+        QVariant idVariant = jso.value(mTableContext.columns.id);
+        itemCtx.id = idVariant.toULongLong();
+
+        QVariant formatVariant = jso.value(mTableContext.columns.format);
+        itemCtx.format = formatVariant.toUInt();
+
+        QVariant desVariant = jso.value(mTableContext.columns.description);
+        itemCtx.description = desVariant.toString();
+
+        QVariant textVariant = jso.value(mTableContext.columns.text);
+        itemCtx.text = textVariant.toString();
+
+        QListWidgetItem *item = new QListWidgetItem();
+        auto itemWidget = new SAKInputDataPresetItem(itemCtx);
+        setItemWidget(item, itemWidget);
+        insertRecord(mTableContext.tableName,
+                     qobject_cast<SAKInputDataPresetItem*>(itemWidget));
+    }
 }

@@ -172,6 +172,16 @@ private:
     void openDevice();
     void closeDevice();
     void refreshDevice();
+public:
+    static void commonSqlApiUpdateRecord(QSqlQuery *sqlQuery,
+                                         QString tableName,
+                                         QString columnName,
+                                         QVariant value,
+                                         quint64 recordID,
+                                         bool valueIsString);
+    static void commonSqlApiDeleteRecord(QSqlQuery *sqlQuery,
+                                         QString tableName,
+                                         quint64 recordID);
 signals:
     // Emit the read data
     void bytesRead(QByteArray data);

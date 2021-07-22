@@ -1,4 +1,4 @@
-﻿/*
+﻿/******************************************************************************
  * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -6,10 +6,11 @@
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- */
+ *****************************************************************************/
 #ifndef SAKINPUTDATAPRESET_HH
 #define SAKINPUTDATAPRESET_HH
 
+#include <QMenu>
 #include <QLabel>
 #include <QTimer>
 #include <QSettings>
@@ -17,6 +18,7 @@
 #include <QComboBox>
 #include <QLineEdit>
 #include <QTextEdit>
+#include <QSqlQuery>
 #include <QListWidget>
 #include <QPushButton>
 #include <QSqlDatabase>
@@ -26,45 +28,53 @@ namespace Ui {
 }
 
 class SAKInputDataPresetItem;
-/// @brief Data preset item manager widget
-class SAKInputDataPreset:public QWidget
+class SAKInputDataPreset : public QWidget
 {
     Q_OBJECT
 public:
-    SAKInputDataPreset(QSqlDatabase *sqlDataBase,
+    SAKInputDataPreset(QSqlDatabase *sqlDatabase,
                        QSettings *settings,
                        QString settingsGroup,
+                       QMenu *itemsMenu,
                        QWidget *parent = Q_NULLPTR);
     ~SAKInputDataPreset();
+public:
+    struct SAKStructDataPresetItemTableContext {
+        QString tableName;
+        struct Columns {
+            QString id;
+            QString format;
+            QString description;
+            QString text;
+        } columns;
 
-    struct DataPresetItemContext {
-        const QString id = QString("id");
-        const QString format = QString("format");
-        const QString description = QString("comment");
-        const QString text = QString("data");
+        SAKStructDataPresetItemTableContext() {
+            columns.id = QString("ID");
+            columns.format = QString("Format");
+            columns.description = QString("Description");
+            columns.text = QString("Text");
+        }
     };
-
-    /**
-     * @brief itemList: Get the item list
-     * @return Item list
-     */
-    QList<SAKInputDataPresetItem*> itemList();
 private:
     QListWidget *mListWidget;
     QString mTableName;
     QTimer mClearMessageInfoTimer;
-    QSqlDatabase *mSqlDataBase;
+    QSqlDatabase *mSqlDatabase;
     QSettings *mSettings;
     QString mSettingsGroup;
+    QMenu *mItemsMenu;
+    QSqlQuery mSqlQuery;
+    SAKStructDataPresetItemTableContext mTableContext;
 private:
     void readinRecord();
     void outputMessage(QString msg, bool isError = false);
-    bool contains(quint64 paraID);
-    void appendDataPresetItem(QWidget *iw);
-    // update record
-    void updateFormat(int format);
-    void updateDescription(const QString &text);
-    void updateText(QString text);
+    void updateFormat(quint64 id, int format);
+    void updateDescription(quint64 id, const QString &description);
+    void updateText(quint64 id, const QString &text);
+    void insertRecord(const QString &tableName,
+                      SAKInputDataPresetItem *itemWidget);
+    void setItemWidget(QListWidgetItem *item,
+                       SAKInputDataPresetItem *itemWidget);
 private:
     Ui::SAKInputDataPreset *mUi;
     QPushButton *mDeletePushButton;
@@ -78,9 +88,7 @@ private slots:
     void on_outportPushButton_clicked();
     void on_importPushButton_clicked();
 signals:
-    void itemDeleted(SAKInputDataPresetItem *item);
-    void itemAdded(SAKInputDataPresetItem *item);
-    void descriptionChanged(SAKInputDataPresetItem *item);
+    void invokeWriteBytes(QString rawData, int format);
 };
 
 #endif

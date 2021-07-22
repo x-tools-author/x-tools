@@ -1,12 +1,12 @@
-﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+﻿/******************************************************************************
+ * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- */
+ *****************************************************************************/
 #include <QMenu>
 #include <QDebug>
 #include <QSqlError>
@@ -30,20 +30,19 @@ SAKInputDataPresetItem::SAKInputDataPresetItem(QWidget *parent)
     mInitializing = false;
 }
 
-SAKInputDataPresetItem::SAKInputDataPresetItem(quint64 id,
-                                               quint32 format,
-                                               QString description,
-                                               QString text,
-                                               QWidget *parent)
+SAKInputDataPresetItem::SAKInputDataPresetItem(
+        SAKStructDataPresetItemContext context,
+        QWidget *parent
+        )
     :QWidget(parent)
-    ,mItemID(id)
+    ,mItemID(context.id)
     ,mInitializing(true)
     ,mUi(new Ui::SAKInputDataPresetItem)
 {
     initializingItem();
-    mTextFormatComboBox->setCurrentIndex(format);
-    mDescriptionLineEdit->setText(description);
-    mInputTextEdit->setText(text);
+    mTextFormatComboBox->setCurrentIndex(context.format);
+    mDescriptionLineEdit->setText(context.description);
+    mInputTextEdit->setText(context.text);
     mInitializing = false;
 }
 
@@ -81,21 +80,25 @@ void SAKInputDataPresetItem::initializingItem()
     SAKCommonDataStructure::setComboBoxTextInputFormat(mTextFormatComboBox);
 }
 
-void SAKInputDataPresetItem::on_textFormatComboBox_currentTextChanged(const QString &text)
+void SAKInputDataPresetItem::on_textFormatComboBox_currentTextChanged(
+        const QString &text
+        )
 {
     if (!mInitializing){
         mInputTextEdit->clear();
 
         Q_UNUSED(text);
         int format = mTextFormatComboBox->currentData().toInt();
-        emit formatChanged(format);
+        emit formatChanged(mItemID, format);
     }
 }
 
-void SAKInputDataPresetItem::on_descriptionLineEdit_textChanged(const QString &text)
+void SAKInputDataPresetItem::on_descriptionLineEdit_textChanged(
+        const QString &text
+        )
 {
     if (!mInitializing){
-        emit descriptionChanged(text);
+        emit descriptionChanged(mItemID, text);
     }
 }
 
@@ -106,6 +109,6 @@ void SAKInputDataPresetItem::on_inputTextEdit_textChanged()
         int format = mTextFormatComboBox->currentData().toInt();
         SAKDebuggerInput::formattingInputText(mInputTextEdit, format);
 
-        emit textChanged(text);
+        emit textChanged(mItemID, text);
     }
 }
