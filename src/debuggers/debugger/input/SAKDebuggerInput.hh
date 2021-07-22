@@ -89,6 +89,7 @@ private:
     QTimer mCyclingWritingTimer;
     SAKInputDataFactory *mInputDataFactory;
     SAKStructInputParametersContext mInputParameters;
+    QMutex mInputParametersMutex;
     SAKCommonCrcInterface *mCrcInterface;
     SAKInputDataPreset *mInputDataItemManager;
     SAKInputCrcSettingsDialog *mCrcSettingsDialog;

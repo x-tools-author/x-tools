@@ -113,10 +113,14 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
                                                    settings,
                                                    settingsGroup,
                                                    mWriteDataItemMenu);
-//    QList<SAKInputDataPresetItem*> list = mInputDataItemManager->itemList();
-//    for (auto &var : list){
-//        appendAction(var);
-//    }
+    connect(mInputDataItemManager, &SAKInputDataPreset::invokeWriteBytes,
+            this, [&](QString rawData, int format){
+        mInputParametersMutex.lock();
+        auto parasCtx = mInputParameters;
+        mInputParametersMutex.unlock();
+        parasCtx.textFormat = format;
+        inputBytes(rawData, parasCtx);
+    });
 #endif
 
     mCrcSettingsDialog = new SAKInputCrcSettingsDialog(settingsGroup, settings);

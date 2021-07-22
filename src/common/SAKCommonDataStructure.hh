@@ -1,15 +1,16 @@
-﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+﻿/******************************************************************************
+ * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- */
+ *****************************************************************************/
 #ifndef SAKCOMMONDATASTRUCTURE_HH
 #define SAKCOMMONDATASTRUCTURE_HH
 
+#include <QMap>
 #include <QObject>
 #include <QTextEdit>
 #include <QComboBox>
@@ -21,6 +22,7 @@ class SAKCommonDataStructure:public QObject
     Q_OBJECT
 public:
     SAKCommonDataStructure(QObject* parent = Q_NULLPTR);
+    ~SAKCommonDataStructure();
 
     // Input text format
     enum SAKEnumTextInputFormat {
@@ -28,7 +30,6 @@ public:
         InputFormatOct,
         InputFormatDec,
         InputFormatHex,
-        InputFormatUtf8,
         InputFormatAscii,
         InputFormatLocal
     };
@@ -103,8 +104,18 @@ public:
      * @return A QString.
      */
     static QString byteArrayToString(QByteArray &origingData, SAKEnumTextOutputFormat format);
+
+    /**
+     * @brief setLineEditTextFormat: Formating input
+     * @param lineEdit: Target component
+     * @param format: (SAKEnumTextInputFormat)
+     */
+    static void setLineEditTextFormat(QLineEdit *lineEdit,
+                                      SAKEnumTextInputFormat format);
 private:
     static void setComboBoxItems(QComboBox *comboBox, QMap<int, QString> &formatMap, int currentData);
+private:
+    static QMap<int, QRegExpValidator*> mRegExpMap;
 };
 
 #endif

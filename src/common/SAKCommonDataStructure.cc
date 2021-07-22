@@ -1,4 +1,4 @@
-﻿/*
+﻿/******************************************************************************
  * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -6,13 +6,20 @@
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- */
+ *****************************************************************************/
 #include <QMetaEnum>
+#include <QLineEdit>
 #include <QStandardItemModel>
 #include "SAKCommonDataStructure.hh"
 
+QMap<int, QRegExpValidator*> SAKCommonDataStructure::mRegExpMap;
 SAKCommonDataStructure::SAKCommonDataStructure(QObject* parent)
     :QObject (parent)
+{
+
+}
+
+SAKCommonDataStructure::~SAKCommonDataStructure()
 {
 
 }
@@ -43,10 +50,9 @@ void SAKCommonDataStructure::setComboBoxTextInputFormat(QComboBox *comboBox)
             formatMap.insert(InputFormatOct,   QString("OTC"));
             formatMap.insert(InputFormatDec,   QString("DEC"));
             formatMap.insert(InputFormatHex,   QString("HEX"));
-            formatMap.insert(InputFormatUtf8,  QString("UTF8"));
             formatMap.insert(InputFormatAscii, QString("ASCII"));
             formatMap.insert(InputFormatLocal, QString("SYSTEM"));
-            setComboBoxItems(comboBox, formatMap, InputFormatUtf8);
+            setComboBoxItems(comboBox, formatMap, InputFormatLocal);
         }
     }
 }
@@ -100,8 +106,6 @@ QString SAKCommonDataStructure::formattingString(QString &origingString, SAKEnum
                 cookedString.append(origingString.at(i));
             }
         }
-    }else if(format == SAKCommonDataStructure::InputFormatUtf8) {
-        cookedString = origingString;
     }else if(format == SAKCommonDataStructure::InputFormatLocal) {
         cookedString = origingString;
     }else {
@@ -142,8 +146,6 @@ QByteArray SAKCommonDataStructure::stringToByteArray(QString &origingString, SAK
             qint8 value = QString(str).toInt(Q_NULLPTR, 16);
             data.append(reinterpret_cast<char*>(&value), 1);
         }
-    }else if (format == SAKCommonDataStructure::InputFormatUtf8){
-        data = origingString.toUtf8();
     }else if (format == SAKCommonDataStructure::InputFormatAscii){
         data = origingString.toLatin1();
     }else if (format == SAKCommonDataStructure::InputFormatLocal){
@@ -191,6 +193,46 @@ QString SAKCommonDataStructure::byteArrayToString(QByteArray &origingData, SAKEn
     }
 
     return str;
+}
+
+void SAKCommonDataStructure::setLineEditTextFormat(
+        QLineEdit *lineEdit,
+        SAKEnumTextInputFormat format
+        )
+{
+    if (mRegExpMap.isEmpty()) {
+        QRegExp binRegExp = QRegExp("([01][01][01][01][01][01][01][01][ ])*");
+        QRegExp otcRegExp = QRegExp("([0-7][0-7][ ])*");
+        QRegExp decRegExp = QRegExp("([0-9][0-9][ ])*");
+        QRegExp hexRegExp = QRegExp("([0-9a-fA-F][0-9a-fA-F][ ])*");
+        QRegExp asciiRegExp = QRegExp("([ -~])*");
+        mRegExpMap.insert(SAKCommonDataStructure::InputFormatBin,
+                          new QRegExpValidator(binRegExp));
+        mRegExpMap.insert(SAKCommonDataStructure::InputFormatOct,
+                          new QRegExpValidator(otcRegExp));
+        mRegExpMap.insert(SAKCommonDataStructure::InputFormatDec,
+                          new QRegExpValidator(decRegExp));
+        mRegExpMap.insert(SAKCommonDataStructure::InputFormatHex,
+                          new QRegExpValidator(hexRegExp));
+        mRegExpMap.insert(SAKCommonDataStructure::InputFormatAscii,
+                          new QRegExpValidator(asciiRegExp));
+        mRegExpMap.insert(SAKCommonDataStructure::InputFormatLocal,
+                          Q_NULLPTR);
+    }
+
+    if (lineEdit) {
+        if (lineEdit->validator()) {
+            delete lineEdit->validator();
+            lineEdit->setValidator(Q_NULLPTR);
+        }
+
+        if (mRegExpMap.contains(format)) {
+            QRegExpValidator *validator = mRegExpMap.value(format);
+            lineEdit->setValidator(validator);
+        } else {
+            lineEdit->setValidator(Q_NULLPTR);
+        }
+    }
 }
 
 void SAKCommonDataStructure::setComboBoxItems(QComboBox *comboBox, QMap<int, QString> &formatMap, int currentData)

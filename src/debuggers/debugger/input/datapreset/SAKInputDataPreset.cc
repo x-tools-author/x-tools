@@ -242,7 +242,7 @@ void SAKInputDataPreset::setItemWidget(QListWidgetItem *item,
         connect(itemWidget, &SAKInputDataPresetItem::descriptionChanged,
                 this, &SAKInputDataPreset::updateDescription);
 
-        QAction *action = mItemsMenu->addAction(itemWidget->itemText(),
+        QAction *action = mItemsMenu->addAction(itemWidget->itemDescription(),
                                                 this,
                                                 [=](){
             QString rawData = itemWidget->itemText();
