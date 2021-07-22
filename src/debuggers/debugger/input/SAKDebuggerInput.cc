@@ -66,12 +66,12 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
     connect(this, &QObject::destroyed, moreInputSettingsPushButtonMenu, &QMenu::deleteLater);
     mMoreInputSettingsPushButton->setMenu(moreInputSettingsPushButtonMenu);
 
-    mWriteDataItemMenu = new QMenu(tr("Writing Data Items"));
+    mWriteDataItemMenu = new QMenu(tr("Quick Sending"));
     moreInputSettingsPushButtonMenu->addMenu(mWriteDataItemMenu);
     auto ret = moreInputSettingsPushButtonMenu->addSeparator();
     Q_UNUSED(ret);
 
-    auto writeDataItemSettingsAction = new QAction(tr("Writing Data Item Settings"), this);
+    auto writeDataItemSettingsAction = new QAction(tr("Set Data Items"), this);
     connect(writeDataItemSettingsAction, &QAction::triggered, this, [=](){mInputDataItemManager->show();});
     moreInputSettingsPushButtonMenu->addAction(writeDataItemSettingsAction);
 
