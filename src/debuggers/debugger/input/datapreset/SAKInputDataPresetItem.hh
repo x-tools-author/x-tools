@@ -64,8 +64,7 @@ public:
      */
     int itemTextFromat();
 private:
-    quint64 mItemID;
-    bool mInitializing;
+    quint16 mItemId;
 private:
     void initializingItem();
 private:
@@ -73,10 +72,6 @@ private:
     QComboBox *mTextFormatComboBox;
     QLineEdit *mDescriptionLineEdit;
     QTextEdit *mInputTextEdit;
-private slots:
-    void on_textFormatComboBox_currentTextChanged(const QString &text);
-    void on_descriptionLineEdit_textChanged(const QString &text);
-    void on_inputTextEdit_textChanged();
 signals:
     void formatChanged(quint64 id, quint32 format);
     void descriptionChanged(quint64 id, const QString &text);

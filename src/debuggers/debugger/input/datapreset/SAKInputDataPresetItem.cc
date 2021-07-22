@@ -22,28 +22,23 @@
 
 SAKInputDataPresetItem::SAKInputDataPresetItem(QWidget *parent)
     :QWidget(parent)
-    ,mInitializing(true)
     ,mUi(new Ui::SAKInputDataPresetItem)
 {
     initializingItem();
-    mItemID = QDateTime::currentMSecsSinceEpoch();
-    mInitializing = false;
+    mItemId = QDateTime::currentMSecsSinceEpoch();
 }
 
 SAKInputDataPresetItem::SAKInputDataPresetItem(
         SAKStructDataPresetItemContext context,
-        QWidget *parent
-        )
+        QWidget *parent)
     :QWidget(parent)
-    ,mItemID(context.id)
-    ,mInitializing(true)
+    ,mItemId(context.id)
     ,mUi(new Ui::SAKInputDataPresetItem)
 {
     initializingItem();
     mTextFormatComboBox->setCurrentIndex(context.format);
     mDescriptionLineEdit->setText(context.description);
     mInputTextEdit->setText(context.text);
-    mInitializing = false;
 }
 
 SAKInputDataPresetItem::~SAKInputDataPresetItem()
@@ -53,7 +48,7 @@ SAKInputDataPresetItem::~SAKInputDataPresetItem()
 
 quint64 SAKInputDataPresetItem::itemID()
 {
-    return mItemID;
+    return mItemId;
 }
 
 QString SAKInputDataPresetItem::itemDescription()
@@ -78,37 +73,28 @@ void SAKInputDataPresetItem::initializingItem()
     mDescriptionLineEdit = mUi->descriptionLineEdit;
     mInputTextEdit = mUi->inputTextEdit;
     SAKCommonDataStructure::setComboBoxTextInputFormat(mTextFormatComboBox);
-}
 
-void SAKInputDataPresetItem::on_textFormatComboBox_currentTextChanged(
-        const QString &text
-        )
-{
-    if (!mInitializing){
-        mInputTextEdit->clear();
 
+    connect(mTextFormatComboBox, &QComboBox::currentTextChanged,
+            this, [=](const QString &text){
         Q_UNUSED(text);
+        mInputTextEdit->clear();
         int format = mTextFormatComboBox->currentData().toInt();
-        emit formatChanged(mItemID, format);
-    }
-}
+        emit formatChanged(mItemId, format);
+    });
 
-void SAKInputDataPresetItem::on_descriptionLineEdit_textChanged(
-        const QString &text
-        )
-{
-    if (!mInitializing){
-        emit descriptionChanged(mItemID, text);
-    }
-}
 
-void SAKInputDataPresetItem::on_inputTextEdit_textChanged()
-{
-    if (!mInitializing){
+    connect(mDescriptionLineEdit, &QLineEdit::textChanged,
+            this, [=](const QString &text){
+        emit descriptionChanged(mItemId, text);
+    });
+
+
+    connect(mInputTextEdit, &QTextEdit::textChanged,
+            this, [=](){
         QString text = mInputTextEdit->toPlainText();
         int format = mTextFormatComboBox->currentData().toInt();
         SAKDebuggerInput::formattingInputText(mInputTextEdit, format);
-
-        emit textChanged(mItemID, text);
-    }
+        emit textChanged(mItemId, text);
+    });
 }
