@@ -115,7 +115,8 @@ QString SAKCommonDataStructure::formattingString(QString &origingString, SAKEnum
     return cookedString;
 }
 
-QByteArray SAKCommonDataStructure::stringToByteArray(QString &origingString, SAKEnumTextInputFormat format)
+QByteArray SAKCommonDataStructure::stringToByteArray(QString &origingString,
+                                                     SAKEnumTextInputFormat format)
 {
     QByteArray data;
     if (format == SAKCommonDataStructure::InputFormatBin){

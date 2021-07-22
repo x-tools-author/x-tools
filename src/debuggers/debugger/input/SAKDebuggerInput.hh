@@ -6,7 +6,7 @@
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- ****************************************************************************************/
+ ***************************************************************************************/
 #ifndef SAKDEBUGGERINPUT_HH
 #define SAKDEBUGGERINPUT_HH
 
@@ -69,6 +69,11 @@ public:
      */
     static void formattingInputText(QTextEdit *textEdit, int model);
 
+    /**
+     * @brief inputBytes: Data input entry
+     * @param rawBytes: Data String
+     * @param parametersContext: Input parameters
+     */
     void inputBytes(QString rawBytes, SAKStructInputParametersContext parametersContext);
 protected:
     void run() override;
@@ -89,7 +94,7 @@ private:
     QMutex mInputParametersMutex;
     SAKCommonCrcInterface *mCrcInterface;
     SAKDebuggerInputDataPreset *mInputDataItemManager;
-    SAKDebuggerInputCrcSettings *mCrcSettingsDialog;
+    SAKDebuggerInputCrcSettings *mCrcSettings;
 
     // Variables about settings
     QSettings *mSettings;
@@ -101,13 +106,16 @@ private:
     void inputTextEditTextChanged();
     void sendRawData();
     void changeCrcModel();
-    void setPresetData();
     void initParameters();
     void cyclingWritingTimerTimeout();
     void updateCrc();
     void readinSettings();
+    quint32 crcCalculate(QByteArray data, int model);
+    QByteArray extractCrcData(QByteArray crcData,
+                              SAKStructInputParametersContext parameters);
 signals:
     void invokeWriteBytes(QByteArray bytes);
+    void messageChanged(QString msg, bool isError);
 };
 Q_DECLARE_METATYPE(SAKDebuggerInput::SAKStructInputParametersContext);
 

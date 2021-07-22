@@ -46,23 +46,31 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
 {
     mCyclingTimeComboBox->addItem(tr("Forbidden"), INT_MAX);
     QString unit = tr("ms");
-    for (int i = 50; i < 500; i += 50){
+    for (int i = 50; i < 500; i += 50) {
         mCyclingTimeComboBox->addItem(QString::number(i) + QString(" ") + unit, i);
     }
-    for (int i = 1000; i <= 5000; i += 1000){
+    for (int i = 1000; i <= 5000; i += 1000) {
         mCyclingTimeComboBox->addItem(QString::number(i) + QString(" ") + unit, i);
     }
-
-    connect(mCyclingTimeComboBox, &QComboBox::currentTextChanged, this, [=](const QString &text){
+    connect(mCyclingTimeComboBox,
+            &QComboBox::currentTextChanged,
+            this, [=](const QString &text){
         Q_UNUSED(text);
-        mCyclingWritingTimer.setInterval(mCyclingTimeComboBox->currentData().toInt());
-        mCyclingWritingTimer.start();
+        if (mCyclingTimeComboBox->currentIndex() != 0) {
+            int interval = mCyclingTimeComboBox->currentData().toInt();
+            mCyclingWritingTimer.setInterval(interval);
+            mCyclingWritingTimer.start();
+        } else {
+            mCyclingWritingTimer.stop();
+        }
     });
+
 
     // Initialize more input settings button menu
     mMoreInputSettingsPushButton->setToolTip(tr("More input settings"));
     auto moreInputSettingsPushButtonMenu = new QMenu;
-    connect(this, &QObject::destroyed, moreInputSettingsPushButtonMenu, &QMenu::deleteLater);
+    connect(this, &QObject::destroyed,
+            moreInputSettingsPushButtonMenu, &QMenu::deleteLater);
     mMoreInputSettingsPushButton->setMenu(moreInputSettingsPushButtonMenu);
 
     mWriteDataItemMenu = new QMenu(tr("Quick Sending"));
@@ -81,19 +89,23 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
     moreInputSettingsPushButtonMenu->addAction(writeDataItemSettingsAction);
 
     auto clearInputAction = new QAction(tr("Clear Input"), this);
-    connect(clearInputAction, &QAction::triggered, this, [=](){mInputTextEdit->clear();});
+    connect(clearInputAction, &QAction::triggered,
+            this, [=](){mInputTextEdit->clear();});
     moreInputSettingsPushButtonMenu->addAction(clearInputAction);
 
     auto readinFileAction = new QAction(tr("Readin File"), this);
-    connect(readinFileAction, &QAction::triggered, this, [=](){readinFile();});
+    connect(readinFileAction, &QAction::triggered,
+            this, [=](){readinFile();});
     moreInputSettingsPushButtonMenu->addAction(readinFileAction);
 
     auto saveInputDataAction = new QAction(tr("Save Input Data"), this);
-    connect(saveInputDataAction, &QAction::triggered, this, [=](){saveInputDataToFile();});
+    connect(saveInputDataAction, &QAction::triggered,
+            this, [=](){saveInputDataToFile();});
     moreInputSettingsPushButtonMenu->addAction(saveInputDataAction);
 
     auto crcSettingsAction = new QAction(tr("CRC Settings"), this);
-    connect(crcSettingsAction, &QAction::triggered, this, [=](){mCrcSettingsDialog->show();});
+    connect(crcSettingsAction, &QAction::triggered,
+            this, [=](){mCrcSettings->show();});
     moreInputSettingsPushButtonMenu->addAction(crcSettingsAction);
 
     // Initializing variables about settings
@@ -107,11 +119,10 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
     qRegisterMetaType<SAKStructInputParametersContext>("InputParameters");
 
     // Add actions after new.
-#if 1
     mInputDataItemManager = new SAKDebuggerInputDataPreset(sqlDatabase,
-                                                   settings,
-                                                   settingsGroup,
-                                                   mWriteDataItemMenu);
+                                                           settings,
+                                                           settingsGroup,
+                                                           mWriteDataItemMenu);
     connect(mInputDataItemManager, &SAKDebuggerInputDataPreset::invokeWriteBytes,
             this, [&](QString rawData, int format){
         mInputParametersMutex.lock();
@@ -120,33 +131,31 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
         parasCtx.textFormat = format;
         inputBytes(rawData, parasCtx);
     });
-#endif
 
-    mCrcSettingsDialog = new SAKDebuggerInputCrcSettings(settingsGroup, settings);
-    SAKDebuggerInputCrcSettings::SAKStructCrcParametersContext ctx = mCrcSettingsDialog->parametersContext();
+
+    mCrcSettings = new SAKDebuggerInputCrcSettings(settingsGroup, settings);
+    auto ctx = mCrcSettings->parametersContext();
     mInputParameters.crc.parametersModel = ctx.parameterMoldel;
     mInputParameters.crc.appending = ctx.append;
     mInputParameters.crc.bigEndian = ctx.bigEndian;
     mInputParameters.crc.startByte = ctx.startByte;
     mInputParameters.crc.endByte = ctx.endByte;
 
+
     // Disable some components before device is opened
     mSendPushButton->setEnabled(false);
     mCyclingTimeComboBox->setEnabled(false);
     SAKCommonDataStructure::setComboBoxTextInputFormat(mInputModelComboBox);
 
+
     // The function must be called before connecting signals and slots
     readinSettings();
-#if 0
-    // Preset items changed
-    connect(mInputDataItemManager, &SAKInputDataPresetItemManager::itemAdded, this, &SAKDebuggerInput::appendAction);
-    connect(mInputDataItemManager, &SAKInputDataPresetItemManager::itemDeleted, this, &SAKDebuggerInput::removeAction);
-    connect(mInputDataItemManager, &SAKInputDataPresetItemManager::descriptionChanged, this, &SAKDebuggerInput::changeDescription);
-#endif
+
 
     // Update parameters
-    connect(mCrcSettingsDialog, &SAKDebuggerInputCrcSettings::crcParametersChanged, this, [&](){
-        SAKDebuggerInputCrcSettings::SAKStructCrcParametersContext ctx = mCrcSettingsDialog->parametersContext();
+    connect(mCrcSettings, &SAKDebuggerInputCrcSettings::crcParametersChanged,
+            this, [&](){
+        auto ctx = mCrcSettings->parametersContext();
         mInputParameters.crc.parametersModel = ctx.parameterMoldel;
         mInputParameters.crc.appending = ctx.append;
         mInputParameters.crc.bigEndian = ctx.bigEndian;
@@ -156,12 +165,16 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
         updateCrc();
     });
 
-    connect(mInputModelComboBox, &QComboBox::currentTextChanged, this, &SAKDebuggerInput::changeInputModel);
-    connect(mSendPushButton, &QPushButton::clicked, this, &SAKDebuggerInput::sendRawData);
-    connect(mInputTextEdit, &QTextEdit::textChanged, this, &SAKDebuggerInput::inputTextEditTextChanged);
-    //connect(mInputDataFactory, &SAKInputDataFactory::dataCooked, debugPage, &SAKDebugger::write);
-    connect(&mCyclingWritingTimer, &QTimer::timeout, this, &SAKDebuggerInput::cyclingWritingTimerTimeout);
-    //connect(debugPage, &SAKDebugger::requestWriteRawData, this, &SAKDebuggerInput::sendOtherRawData);
+
+    connect(mInputModelComboBox, &QComboBox::currentTextChanged,
+            this, &SAKDebuggerInput::changeInputModel);
+    connect(mSendPushButton, &QPushButton::clicked,
+            this, &SAKDebuggerInput::sendRawData);
+    connect(mInputTextEdit, &QTextEdit::textChanged,
+            this, &SAKDebuggerInput::inputTextEditTextChanged);
+    connect(&mCyclingWritingTimer, &QTimer::timeout,
+            this, &SAKDebuggerInput::cyclingWritingTimerTimeout);
+
 
     initParameters();
     updateCrc();
@@ -179,12 +192,16 @@ SAKDebuggerInput::~SAKDebuggerInput()
 {
     mCrcInterface->deleteLater();
     mInputDataItemManager->deleteLater();
-    mCrcSettingsDialog->deleteLater();
+    mCrcSettings->deleteLater();
 }
 
 void SAKDebuggerInput::showCrcSettingsDialog()
 {
-    mCrcSettingsDialog->show();
+    if (mCrcSettings->isHidden()) {
+        mCrcSettings->show();
+    } else {
+        mCrcSettings->activateWindow();
+    }
 }
 
 void SAKDebuggerInput::formattingInputText(QTextEdit *textEdit, int model)
@@ -196,18 +213,23 @@ void SAKDebuggerInput::formattingInputText(QTextEdit *textEdit, int model)
     textEdit->blockSignals(true);
     QString plaintext = textEdit->toPlainText();
     if (!plaintext.isEmpty()){
-        QString cookedString = SAKCommonDataStructure::formattingString(plaintext, static_cast<SAKCommonDataStructure::SAKEnumTextInputFormat>(model));
+        QString cookedString = SAKCommonDataStructure::formattingString(
+                    plaintext,
+                    static_cast<SAKCommonDataStructure::SAKEnumTextInputFormat>(model)
+                    );
         textEdit->setText(cookedString);
         textEdit->moveCursor(QTextCursor::End);
     }
     textEdit->blockSignals(false);
 }
 
-void SAKDebuggerInput::inputBytes(QString rawBytes, SAKStructInputParametersContext parametersContext)
+void SAKDebuggerInput::inputBytes(QString rawBytes,
+                                  SAKStructInputParametersContext parametersContext)
 {
     if (!rawBytes.isEmpty()) {
         mBytesInfoVectorMutex.lock();
-        QPair<QString, SAKStructInputParametersContext> pair(rawBytes, parametersContext);
+        QPair<QString, SAKStructInputParametersContext> pair(rawBytes,
+                                                             parametersContext);
         mBytesInfoVector.append(pair);
         if (!isRunning()) {
             start();
@@ -218,39 +240,6 @@ void SAKDebuggerInput::inputBytes(QString rawBytes, SAKStructInputParametersCont
 
 void SAKDebuggerInput::run()
 {
-    auto crcCalculate = [=](QByteArray data, int model)->quint32 {
-        int bitsWidth = mCrcInterface->getBitsWidth(static_cast<SAKCommonCrcInterface::CRCModel>(model));
-        switch (bitsWidth) {
-        case 8:
-            return mCrcInterface->crcCalculate<uint8_t>(reinterpret_cast<uint8_t*>(data.data()), static_cast<quint64>(data.length()), static_cast<SAKCommonCrcInterface::CRCModel>(model));
-        case 16:
-            return mCrcInterface->crcCalculate<uint16_t>(reinterpret_cast<uint8_t*>(data.data()), static_cast<quint64>(data.length()), static_cast<SAKCommonCrcInterface::CRCModel>(model));
-        case 32:
-            return mCrcInterface->crcCalculate<uint32_t>(reinterpret_cast<uint8_t*>(data.data()), static_cast<quint64>(data.length()), static_cast<SAKCommonCrcInterface::CRCModel>(model));
-        default:
-            return 0;
-        }
-    };
-
-
-    auto extractCrcData = [](QByteArray crcData, SAKStructInputParametersContext parameters)->QByteArray {
-        QByteArray crcInputData;
-        int startIndex = parameters.crc.startByte - 1;
-        startIndex = startIndex < 0 ? 0 : startIndex;
-
-        int endIndex = (crcData.length() - 1) - (parameters.crc.endByte - 1);
-        endIndex = endIndex < 0 ? 0 : endIndex;
-
-        if (((crcData.length() - 1) >= startIndex) && ((crcData.length() - 1) >= endIndex)){
-            int length = endIndex - startIndex + 1;
-            length = length < 0 ? 0 : length;
-            crcInputData = QByteArray(crcData.constData()+startIndex, length);
-        }else{
-            crcInputData = crcData;
-        }
-        return crcInputData;
-    };
-
     auto takeBytesInfo = [&]()->auto {
         QPair<QString, SAKDebuggerInput::SAKStructInputParametersContext> pair;
         mBytesInfoVectorMutex.lock();
@@ -264,8 +253,10 @@ void SAKDebuggerInput::run()
     QPair<QString, SAKStructInputParametersContext> pair = takeBytesInfo();
     QString rawData = pair.first;
     SAKStructInputParametersContext ctx = pair.second;
-    auto textFormat = static_cast<SAKCommonDataStructure::SAKEnumTextInputFormat>(ctx.textFormat);
-    QByteArray cookedData = SAKCommonDataStructure::stringToByteArray(rawData, textFormat);
+    auto textFormat =
+            static_cast<SAKCommonDataStructure::SAKEnumTextInputFormat>(ctx.textFormat);
+    QByteArray cookedData =
+            SAKCommonDataStructure::stringToByteArray(rawData, textFormat);
 
 
     if (ctx.crc.appending){
@@ -274,7 +265,9 @@ void SAKDebuggerInput::run()
         uint32_t crc  = crcCalculate(crcInputData, ctx.crc.parametersModel);
         uint8_t crc8  = static_cast<uint8_t>(crc);
         uint16_t crc16 = static_cast<uint16_t>(crc);
-        int bitsWidth = mCrcInterface->getBitsWidth(static_cast<SAKCommonCrcInterface::CRCModel>(ctx.crc.parametersModel));
+        int model = ctx.crc.parametersModel;
+        auto cookedModel = static_cast<SAKCommonCrcInterface::CRCModel>(model);
+        int bitsWidth = mCrcInterface->getBitsWidth(cookedModel);
         if (ctx.crc.bigEndian){
             crc16 = qToBigEndian(crc16);
             crc = qToBigEndian(crc);
@@ -302,18 +295,22 @@ void SAKDebuggerInput::changeInputModel(const QString &text)
     bool ok = false;
     mInputTextEdit->clear();
     mInputParameters.textFormat = mInputModelComboBox->currentData().toInt(&ok);
-    mSettings->setValue(mSettingStringInputTextFromat, QVariant::fromValue(mInputModelComboBox->currentData().toInt()));
+    mSettings->setValue(mSettingStringInputTextFromat,
+                        QVariant::fromValue(mInputModelComboBox->currentData().toInt()));
     Q_ASSERT_X(ok, __FUNCTION__, "Input model is error");
 }
 
 void SAKDebuggerInput::saveInputDataToFile()
 {
-    QString defaultName = QDateTime::currentDateTime().toString("yyyyMMdd").append(".txt");
+    QDateTime dateTime = QDateTime::currentDateTime();
+    QString defaultName = dateTime.toString("yyyyMMdd").append(".txt");
+    auto location = QStandardPaths::DesktopLocation;
+    QString defaulePath = QStandardPaths::writableLocation(location);
+    defaulePath.append("/").append(defaultName);
     QString fileName = QFileDialog::getSaveFileName(Q_NULLPTR,
                                                     tr("Save File"),
-                                                    QStandardPaths::writableLocation(QStandardPaths::DesktopLocation).append("/").append(defaultName),
+                                                    defaulePath,
                                                     tr("txt (*.txt);;all (*.*)"));
-
     if (fileName.isEmpty()){
         return;
     }
@@ -322,12 +319,12 @@ void SAKDebuggerInput::saveInputDataToFile()
     if (file.open(QFile::WriteOnly)){
         QByteArray data = mInputTextEdit->toPlainText().toUtf8();
         qint64 ret = file.write(data);
-        if (ret == -1){
-            //mDebugPage->outputMessage(file.errorString(), false);
+        if (ret == -1) {
+            emit messageChanged(file.errorString(), true);
         }
         file.close();
     }else {
-        //mDebugPage->outputMessage(file.errorString(), false);
+        emit messageChanged(file.errorString(), true);
     }
 }
 
@@ -341,7 +338,8 @@ void SAKDebuggerInput::readinFile()
             mInputTextEdit->setText(QString(data).toUtf8());
             file.close();
         }else{
-            //mDebugPage->outputMessage(QString("%1:%2").arg(tr("Can not open file")).arg(fileName));
+            QString msg = QString("%1:%2").arg(tr("Can not open file"), fileName);
+            emit messageChanged(msg, false);
         }
     }
 }
@@ -356,7 +354,9 @@ void SAKDebuggerInput::sendRawData()
 {
     QString data = mInputTextEdit->toPlainText();
     if (data.isEmpty()){
-        auto ret = QMessageBox::warning(Q_NULLPTR, tr("Data is empty"), tr("Please input data then try again!"));
+        auto ret = QMessageBox::warning(Q_NULLPTR,
+                                        tr("Data is empty"),
+                                        tr("Please input data then try again!"));
         Q_UNUSED(ret);
     }
 
@@ -366,26 +366,18 @@ void SAKDebuggerInput::sendRawData()
 void SAKDebuggerInput::changeCrcModel()
 {
     bool ok = false;
-    mInputParameters.crc.parametersModel = mCrcSettingsDialog->parametersContext().parameterMoldel;
+    auto parametersCtx = mCrcSettings->parametersContext();
+    mInputParameters.crc.parametersModel = parametersCtx.parameterMoldel;
     Q_ASSERT_X(ok, __FUNCTION__, "Please check the crc parameters model");
 
     updateCrc();
-}
-
-void SAKDebuggerInput::setPresetData()
-{
-//    if (mInputDataItemManager->isHidden()){
-//        mInputDataItemManager->show();
-//    }else{
-//        mInputDataItemManager->activateWindow();
-//    }
 }
 
 void SAKDebuggerInput::initParameters()
 {
     mInputParameters.textFormat = mInputModelComboBox->currentData().toInt();
 
-    SAKDebuggerInputCrcSettings::SAKStructCrcParametersContext ctx = mCrcSettingsDialog->parametersContext();
+    auto ctx = mCrcSettings->parametersContext();
     mInputParameters.crc.parametersModel = ctx.parameterMoldel;
     mInputParameters.crc.bigEndian = ctx.bigEndian;
     mInputParameters.crc.startByte = ctx.startByte;
@@ -410,12 +402,28 @@ void SAKDebuggerInput::cyclingWritingTimerTimeout()
 void SAKDebuggerInput::updateCrc()
 {
     QString rawData = mInputTextEdit->toPlainText();
-    //QByteArray data = mInputDataFactory->rawDataToArray(rawData, mInputParameters);
-    //QByteArray crcInputData = mInputDataFactory->extractCrcData(data, mInputParameters);
-
-    //quint32 crc = mInputDataFactory->crcCalculate(crcInputData, mInputParameters.crc.parametersModel);
-    //int bits =  mCrcInterface->getBitsWidth(static_cast<SAKCommonCrcInterface::CRCModel>(mInputParameters.crc.parametersModel));
-    //mCrcLabel->setText(QString(QString("%1").arg(QString::number(crc, 16), (bits/8)*2, '0')).toUpper().prepend("0x"));
+    mInputParametersMutex.lock();
+    int format = mInputParameters.textFormat;
+    auto parametersTemp = mInputParameters;
+    mInputParametersMutex.unlock();
+    auto cookedFormat = static_cast<SAKCommonDataStructure::SAKEnumTextInputFormat>(
+                format
+                );
+    QByteArray cookedData =
+            SAKCommonDataStructure::stringToByteArray(rawData, cookedFormat);
+    QByteArray crcInputData = extractCrcData(cookedData, parametersTemp);
+    quint32 crc = crcCalculate(crcInputData, parametersTemp.crc.parametersModel);
+    int bits =  mCrcInterface->getBitsWidth(
+                static_cast<SAKCommonCrcInterface::CRCModel>(
+                    mInputParameters.crc.parametersModel
+                    )
+                );
+    int fillWidth = bits/8*2;
+    QString crcString = QString::number(crc, 16);
+    crcString = QString("%1").arg(crcString, fillWidth, '0');
+    crcString = crcString.toUpper();
+    crcString.prepend("0x");
+    mCrcLabel->setText(crcString);
 }
 
 void SAKDebuggerInput::readinSettings()
@@ -428,4 +436,50 @@ void SAKDebuggerInput::readinSettings()
         index = var.toInt();
     }
     mInputModelComboBox->setCurrentIndex(index);
+}
+
+quint32 SAKDebuggerInput::crcCalculate(QByteArray data, int model)
+{
+    auto cookedModel = static_cast<SAKCommonCrcInterface::CRCModel>(model);
+    int bitsWidth = mCrcInterface->getBitsWidth(cookedModel);
+    switch (bitsWidth) {
+    case 8:
+        return mCrcInterface->crcCalculate<uint8_t>(
+                    reinterpret_cast<uint8_t*>(data.data()),
+                    static_cast<quint64>(data.length()),
+                    static_cast<SAKCommonCrcInterface::CRCModel>(model));
+    case 16:
+        return mCrcInterface->crcCalculate<uint16_t>(
+                    reinterpret_cast<uint8_t*>(data.data()),
+                    static_cast<quint64>(data.length()),
+                    static_cast<SAKCommonCrcInterface::CRCModel>(model));
+    case 32:
+        return mCrcInterface->crcCalculate<uint32_t>(
+                    reinterpret_cast<uint8_t*>(data.data()),
+                    static_cast<quint64>(data.length()),
+                    static_cast<SAKCommonCrcInterface::CRCModel>(model));
+    default:
+        return 0;
+    }
+}
+
+QByteArray SAKDebuggerInput::extractCrcData(QByteArray crcData,
+                          SAKStructInputParametersContext parameters)
+{
+    QByteArray crcInputData;
+    int startIndex = parameters.crc.startByte - 1;
+    startIndex = startIndex < 0 ? 0 : startIndex;
+
+    int endIndex = (crcData.length() - 1) - (parameters.crc.endByte - 1);
+    endIndex = endIndex < 0 ? 0 : endIndex;
+
+    if (((crcData.length() - 1) >= startIndex)
+            && ((crcData.length() - 1) >= endIndex)){
+        int length = endIndex - startIndex + 1;
+        length = length < 0 ? 0 : length;
+        crcInputData = QByteArray(crcData.constData()+startIndex, length);
+    }else{
+        crcInputData = crcData;
+    }
+    return crcInputData;
 }

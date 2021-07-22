@@ -50,9 +50,9 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
 
 
     // Initialize menu psuh button
-    QMenu *embedMenu = new QMenu(tr("Inset to Center"), menu);
+    QMenu *embedMenu = new QMenu(tr("Embed to Center"), menu);
     menu->addMenu(embedMenu);
-    embedMenu->addAction(tr("Cancel Inset"), this, [](){});
+    embedMenu->addAction(tr("Cancel Embedding"), this, [](){});
     embedMenu->addSeparator();
     struct SAKActionsContext {
         QString title;
