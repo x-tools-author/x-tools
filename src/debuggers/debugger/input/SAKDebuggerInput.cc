@@ -21,10 +21,9 @@
 #include "SAKDebuggerInput.hh"
 #include "SAKCommonCrcInterface.hh"
 #include "SAKCommonDataStructure.hh"
-#include "SAKInputDataPresetItem.hh"
 #include "SAKCommonDataStructure.hh"
-#include "SAKInputCrcSettingsDialog.hh"
-#include "SAKInputDataPreset.hh"
+#include "SAKDebuggerInputDataPreset.hh"
+#include "SAKDebuggerInputCrcSettings.hh"
 
 SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
                                    QComboBox *inputFormat,
@@ -109,11 +108,11 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
 
     // Add actions after new.
 #if 1
-    mInputDataItemManager = new SAKInputDataPreset(sqlDatabase,
+    mInputDataItemManager = new SAKDebuggerInputDataPreset(sqlDatabase,
                                                    settings,
                                                    settingsGroup,
                                                    mWriteDataItemMenu);
-    connect(mInputDataItemManager, &SAKInputDataPreset::invokeWriteBytes,
+    connect(mInputDataItemManager, &SAKDebuggerInputDataPreset::invokeWriteBytes,
             this, [&](QString rawData, int format){
         mInputParametersMutex.lock();
         auto parasCtx = mInputParameters;
@@ -123,8 +122,8 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
     });
 #endif
 
-    mCrcSettingsDialog = new SAKInputCrcSettingsDialog(settingsGroup, settings);
-    SAKInputCrcSettingsDialog::SAKStructCrcParametersContext ctx = mCrcSettingsDialog->parametersContext();
+    mCrcSettingsDialog = new SAKDebuggerInputCrcSettings(settingsGroup, settings);
+    SAKDebuggerInputCrcSettings::SAKStructCrcParametersContext ctx = mCrcSettingsDialog->parametersContext();
     mInputParameters.crc.parametersModel = ctx.parameterMoldel;
     mInputParameters.crc.appending = ctx.append;
     mInputParameters.crc.bigEndian = ctx.bigEndian;
@@ -146,8 +145,8 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
 #endif
 
     // Update parameters
-    connect(mCrcSettingsDialog, &SAKInputCrcSettingsDialog::crcParametersChanged, this, [&](){
-        SAKInputCrcSettingsDialog::SAKStructCrcParametersContext ctx = mCrcSettingsDialog->parametersContext();
+    connect(mCrcSettingsDialog, &SAKDebuggerInputCrcSettings::crcParametersChanged, this, [&](){
+        SAKDebuggerInputCrcSettings::SAKStructCrcParametersContext ctx = mCrcSettingsDialog->parametersContext();
         mInputParameters.crc.parametersModel = ctx.parameterMoldel;
         mInputParameters.crc.appending = ctx.append;
         mInputParameters.crc.bigEndian = ctx.bigEndian;
@@ -386,7 +385,7 @@ void SAKDebuggerInput::initParameters()
 {
     mInputParameters.textFormat = mInputModelComboBox->currentData().toInt();
 
-    SAKInputCrcSettingsDialog::SAKStructCrcParametersContext ctx = mCrcSettingsDialog->parametersContext();
+    SAKDebuggerInputCrcSettings::SAKStructCrcParametersContext ctx = mCrcSettingsDialog->parametersContext();
     mInputParameters.crc.parametersModel = ctx.parameterMoldel;
     mInputParameters.crc.bigEndian = ctx.bigEndian;
     mInputParameters.crc.startByte = ctx.startByte;
@@ -417,53 +416,6 @@ void SAKDebuggerInput::updateCrc()
     //quint32 crc = mInputDataFactory->crcCalculate(crcInputData, mInputParameters.crc.parametersModel);
     //int bits =  mCrcInterface->getBitsWidth(static_cast<SAKCommonCrcInterface::CRCModel>(mInputParameters.crc.parametersModel));
     //mCrcLabel->setText(QString(QString("%1").arg(QString::number(crc, 16), (bits/8)*2, '0')).toUpper().prepend("0x"));
-}
-
-void SAKDebuggerInput::appendAction(SAKInputDataPresetItem *item)
-{
-    QString description = item->itemDescription();
-    QAction *action = new QAction(description, mWriteDataItemMenu);
-    action->setData(QVariant::fromValue(item));
-    mWriteDataItemMenu->addAction(action);
-    connect(action, &QAction::triggered, this, &SAKDebuggerInput::actionTriggered);
-}
-
-void SAKDebuggerInput::removeAction(SAKInputDataPresetItem *item)
-{
-    QList<QAction*> actionList = mWriteDataItemMenu->actions();
-    for (auto &var : actionList){
-        if (var->data().value<SAKInputDataPresetItem*>() == item){
-            var->deleteLater();
-            break;
-        }
-    }
-}
-
-void SAKDebuggerInput::changeDescription(SAKInputDataPresetItem *item)
-{
-    QList<QAction*> actionList = mWriteDataItemMenu->actions();
-    for (auto &var : actionList){
-        if (var->data().value<SAKInputDataPresetItem*>() == item){
-            var->setText(item->itemDescription());
-            break;
-        }
-    }
-}
-
-void SAKDebuggerInput::actionTriggered()
-{
-    if (sender()){
-        if (sender()->inherits("QAction")){
-            QAction *action = qobject_cast<QAction*>(sender());
-            SAKInputDataPresetItem *item = action->data().value<SAKInputDataPresetItem *>();
-            //int format = item->itemTextFromat();
-            QString text = item->itemText();
-
-            if (mCyclingTimeComboBox->isEnabled()){
-                //sendOtherRawData(text, format);
-            }
-        }
-    }
 }
 
 void SAKDebuggerInput::readinSettings()

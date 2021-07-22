@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#ifndef SAKINPUTCRCSETTINGDIALOG_HH
-#define SAKINPUTCRCSETTINGDIALOG_HH
+#ifndef SAKDEBUGGERINPUTCRCSETTINGDIALOG_HH
+#define SAKDEBUGGERINPUTCRCSETTINGDIALOG_HH
 
 #include <QMutex>
 #include <QDialog>
@@ -18,18 +18,18 @@
 #include <QSettings>
 
 namespace Ui {
-    class SAKInputCrcSettingsDialog;
+    class SAKDebuggerInputCrcSettings;
 }
 
 /// @brief crc settings dialog
-class SAKInputCrcSettingsDialog : public QDialog
+class SAKDebuggerInputCrcSettings : public QDialog
 {
     Q_OBJECT
 public:
-    SAKInputCrcSettingsDialog(QString settingsGroup,
+    SAKDebuggerInputCrcSettings(QString settingsGroup,
                               QSettings *settings,
                               QWidget *parent = Q_NULLPTR);
-    ~SAKInputCrcSettingsDialog();
+    ~SAKDebuggerInputCrcSettings();
 
     struct SAKStructCrcParametersContext {
         bool append;
@@ -57,7 +57,7 @@ private:
         QString endByte;
     } mSettingsKeyContext;
 private:
-    Ui::SAKInputCrcSettingsDialog *mUi;
+    Ui::SAKDebuggerInputCrcSettings *mUi;
 signals:
     void crcParametersChanged();
 };

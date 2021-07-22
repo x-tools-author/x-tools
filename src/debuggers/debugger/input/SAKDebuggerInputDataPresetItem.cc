@@ -15,25 +15,25 @@
 #include "SAKDebuggerInput.hh"
 #include "SAKCommonCrcInterface.hh"
 #include "SAKCommonDataStructure.hh"
-#include "SAKInputDataPresetItem.hh"
+#include "SAKDebuggerInputDataPresetItem.hh"
 #include "SAKCommonDataStructure.hh"
 
-#include "ui_SAKInputDataPresetItem.h"
+#include "ui_SAKDebuggerInputDataPresetItem.h"
 
-SAKInputDataPresetItem::SAKInputDataPresetItem(QWidget *parent)
+SAKDebuggerInputDataPresetItem::SAKDebuggerInputDataPresetItem(QWidget *parent)
     :QWidget(parent)
     ,mItemId(QDateTime::currentMSecsSinceEpoch())
-    ,mUi(new Ui::SAKInputDataPresetItem)
+    ,mUi(new Ui::SAKDebuggerInputDataPresetItem)
 {
     initializingItem();
 }
 
-SAKInputDataPresetItem::SAKInputDataPresetItem(
+SAKDebuggerInputDataPresetItem::SAKDebuggerInputDataPresetItem(
         SAKStructDataPresetItemContext context,
         QWidget *parent)
     :QWidget(parent)
     ,mItemId(context.id)
-    ,mUi(new Ui::SAKInputDataPresetItem)
+    ,mUi(new Ui::SAKDebuggerInputDataPresetItem)
 {
     initializingItem();
     mUi->textFormatComboBox->setCurrentIndex(context.format);
@@ -41,32 +41,32 @@ SAKInputDataPresetItem::SAKInputDataPresetItem(
     mUi->dataLineEdit->setText(context.text);
 }
 
-SAKInputDataPresetItem::~SAKInputDataPresetItem()
+SAKDebuggerInputDataPresetItem::~SAKDebuggerInputDataPresetItem()
 {
     delete mUi;
 }
 
-quint64 SAKInputDataPresetItem::itemID()
+quint64 SAKDebuggerInputDataPresetItem::itemID()
 {
     return mItemId;
 }
 
-QString SAKInputDataPresetItem::itemDescription()
+QString SAKDebuggerInputDataPresetItem::itemDescription()
 {
     return mUi->descriptionLineEdit->text();
 }
 
-QString SAKInputDataPresetItem::itemText()
+QString SAKDebuggerInputDataPresetItem::itemText()
 {
     return mUi->dataLineEdit->text();
 }
 
-int SAKInputDataPresetItem::itemTextFromat()
+int SAKDebuggerInputDataPresetItem::itemTextFromat()
 {
     return mUi->textFormatComboBox->currentData().toInt();
 }
 
-void SAKInputDataPresetItem::initializingItem()
+void SAKDebuggerInputDataPresetItem::initializingItem()
 {
     mUi->setupUi(this);
     SAKCommonDataStructure::setComboBoxTextInputFormat(
@@ -101,7 +101,7 @@ void SAKInputDataPresetItem::initializingItem()
     });
 }
 
-void SAKInputDataPresetItem::setLineEditTextFormat(QLineEdit *lineEdit,
+void SAKDebuggerInputDataPresetItem::setLineEditTextFormat(QLineEdit *lineEdit,
                                                    int format)
 {
     auto cookedFormat =

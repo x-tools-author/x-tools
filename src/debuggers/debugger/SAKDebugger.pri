@@ -7,8 +7,6 @@ INCLUDEPATH += \
     $$PWD/device \
     $$PWD/device/mask \
     $$PWD/input \
-    $$PWD/input/crcsettings \
-    $$PWD/input/datapreset \
     $$PWD/device/analyzer \
     $$PWD/output \
     $$PWD/statistics
@@ -17,16 +15,13 @@ FORMS += \
     $$PWD/SAKDebugger.ui \
     $$PWD/common/SAKDebugPageCommonSslConfigurationWidget.ui \
     $$PWD/device/mask/SAKDebugPageDeviceMask.ui \
-    $$PWD/input/crcsettings/SAKInputCrcSettingsDialog.ui \
-    $$PWD/input/datapreset/SAKInputDataPreset.ui \
-    $$PWD/input/datapreset/SAKInputDataPresetItem.ui \
+    $$PWD/input/SAKDebuggerInputCrcSettings.ui \
+    $$PWD/input/SAKDebuggerInputDataPreset.ui \
     $$PWD/device/analyzer/SAKOtherAnalyzerThreadManager.ui \
+    $$PWD/input/SAKDebuggerInputDataPresetItem.ui \
     $$PWD/output/SAKDebuggerOutputHighlighter.ui \
     $$PWD/output/SAKDebuggerOutputLog.ui \
     $$PWD/output/SAKDebuggerOutputSave2File.ui
-
-DISTFILES += \
-    $$PWD/README.md
 
 HEADERS += \
     $$PWD/SAKDebugger.hh \
@@ -36,11 +31,11 @@ HEADERS += \
     $$PWD/device/SAKDebuggerDevice.hh \
     $$PWD/device/mask/SAKDebugPageDeviceMask.hh \
     $$PWD/input/SAKDebuggerInput.hh \
-    $$PWD/input/crcsettings/SAKInputCrcSettingsDialog.hh \
-    $$PWD/input/datapreset/SAKInputDataPreset.hh \
-    $$PWD/input/datapreset/SAKInputDataPresetItem.hh \
+    $$PWD/input/SAKDebuggerInputCrcSettings.hh \
     $$PWD/device/analyzer/SAKOtherAnalyzerThread.hh \
     $$PWD/device/analyzer/SAKOtherAnalyzerThreadManager.hh \
+    $$PWD/input/SAKDebuggerInputDataPreset.hh \
+    $$PWD/input/SAKDebuggerInputDataPresetItem.hh \
     $$PWD/output/SAKDebuggerOutput.hh \
     $$PWD/output/SAKDebuggerOutputHighlighter.hh \
     $$PWD/output/SAKDebuggerOutputLog.hh \
@@ -55,11 +50,11 @@ SOURCES += \
     $$PWD/device/SAKDebuggerDevice.cc \
     $$PWD/device/mask/SAKDebugPageDeviceMask.cc \
     $$PWD/input/SAKDebuggerInput.cc \
-    $$PWD/input/crcsettings/SAKInputCrcSettingsDialog.cc \
-    $$PWD/input/datapreset/SAKInputDataPreset.cc \
-    $$PWD/input/datapreset/SAKInputDataPresetItem.cc \
+    $$PWD/input/SAKDebuggerInputCrcSettings.cc \
     $$PWD/device/analyzer/SAKOtherAnalyzerThread.cc \
     $$PWD/device/analyzer/SAKOtherAnalyzerThreadManager.cc \
+    $$PWD/input/SAKDebuggerInputDataPreset.cc \
+    $$PWD/input/SAKDebuggerInputDataPresetItem.cc \
     $$PWD/output/SAKDebuggerOutput.cc \
     $$PWD/output/SAKDebuggerOutputHighlighter.cc \
     $$PWD/output/SAKDebuggerOutputLog.cc \

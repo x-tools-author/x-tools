@@ -26,9 +26,8 @@
 
 class SAKInputDataFactory;
 class SAKCommonCrcInterface;
-class SAKInputDataPresetItem;
-class SAKInputCrcSettingsDialog;
-class SAKInputDataPreset;
+class SAKDebuggerInputDataPreset;
+class SAKDebuggerInputCrcSettings;
 
 /// @brief input module controller
 class SAKDebuggerInput : public QThread
@@ -91,8 +90,8 @@ private:
     SAKStructInputParametersContext mInputParameters;
     QMutex mInputParametersMutex;
     SAKCommonCrcInterface *mCrcInterface;
-    SAKInputDataPreset *mInputDataItemManager;
-    SAKInputCrcSettingsDialog *mCrcSettingsDialog;
+    SAKDebuggerInputDataPreset *mInputDataItemManager;
+    SAKDebuggerInputCrcSettings *mCrcSettingsDialog;
     // The unit is ms.
     const int defaultCycle = 1000;
 
@@ -110,10 +109,6 @@ private:
     void initParameters();
     void cyclingWritingTimerTimeout();
     void updateCrc();
-    void appendAction(SAKInputDataPresetItem *item);
-    void removeAction(SAKInputDataPresetItem *item);
-    void changeDescription(SAKInputDataPresetItem *item);
-    void actionTriggered();
     void readinSettings();
 signals:
     void invokeWriteBytes(QByteArray bytes);

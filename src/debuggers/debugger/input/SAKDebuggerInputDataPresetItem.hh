@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#ifndef SAKINPUTDATAPRESETITEM_HH
-#define SAKINPUTDATAPRESETITEM_HH
+#ifndef SAKDEBUGGERINPUTDATAPRESETITEM_HH
+#define SAKDEBUGGERINPUTDATAPRESETITEM_HH
 
 #include <QTimer>
 #include <QWidget>
@@ -20,25 +20,25 @@
 #include <QPushButton>
 
 namespace Ui {
-    class SAKInputDataPresetItem;
+    class SAKDebuggerInputDataPresetItem;
 }
 
 // Preset data parameters editting widget
-class SAKInputDataPresetItem:public QWidget
+class SAKDebuggerInputDataPresetItem : public QWidget
 {
     Q_OBJECT
 public:
-    struct SAKStructDataPresetItemContext {
+    typedef struct SAKStructDataPresetItemContext {
         quint64 id;
         quint32 format;
         QString description;
         QString text;
-    };
+    }ITEM_CTX;
 public:
-    SAKInputDataPresetItem(QWidget *parent = Q_NULLPTR);
-    SAKInputDataPresetItem(SAKStructDataPresetItemContext context,
+    SAKDebuggerInputDataPresetItem(QWidget *parent = Q_NULLPTR);
+    SAKDebuggerInputDataPresetItem(SAKStructDataPresetItemContext context,
                            QWidget *parent = Q_NULLPTR);
-    ~SAKInputDataPresetItem();
+    ~SAKDebuggerInputDataPresetItem();
 
     /**
      * @brief itemID: Get the id of the item
@@ -69,7 +69,7 @@ private:
     void initializingItem();
     void setLineEditTextFormat(QLineEdit *lineEdit, int format);
 private:
-    Ui::SAKInputDataPresetItem *mUi;
+    Ui::SAKDebuggerInputDataPresetItem *mUi;
 signals:
     void formatChanged(quint64 id, quint32 format);
     void descriptionChanged(quint64 id, const QString &text);

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SAKInputDataPreset</class>
- <widget class="QWidget" name="SAKInputDataPreset">
+ <class>SAKDebuggerInputDataPreset</class>
+ <widget class="QWidget" name="SAKDebuggerInputDataPreset">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -93,7 +93,7 @@
   <connection>
    <sender>pushButton</sender>
    <signal>clicked()</signal>
-   <receiver>SAKInputDataPreset</receiver>
+   <receiver>SAKDebuggerInputDataPreset</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">

@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#ifndef SAKINPUTDATAPRESET_HH
-#define SAKINPUTDATAPRESET_HH
+#ifndef SAKDEBUGGERINPUTDATAPRESET_H
+#define SAKDEBUGGERINPUTDATAPRESET_H
 
 #include <QMenu>
 #include <QLabel>
@@ -19,20 +19,20 @@
 #include <QListWidgetItem>
 
 namespace Ui {
-    class SAKInputDataPreset;
+    class SAKDebuggerInputDataPreset;
 }
 
-class SAKInputDataPresetItem;
-class SAKInputDataPreset : public QWidget
+class SAKDebuggerInputDataPresetItem;
+class SAKDebuggerInputDataPreset : public QWidget
 {
     Q_OBJECT
 public:
-    SAKInputDataPreset(QSqlDatabase *sqlDatabase,
+    SAKDebuggerInputDataPreset(QSqlDatabase *sqlDatabase,
                        QSettings *settings,
                        QString settingsGroup,
                        QMenu *itemsMenu,
                        QWidget *parent = Q_NULLPTR);
-    ~SAKInputDataPreset();
+    ~SAKDebuggerInputDataPreset();
 public:
     struct SAKStructDataPresetItemTableContext {
         QString tableName;
@@ -66,14 +66,14 @@ private:
     void updateDescription(quint64 id, const QString &description);
     void updateText(quint64 id, const QString &text);
     void insertRecord(const QString &tableName,
-                      SAKInputDataPresetItem *itemWidget);
+                      SAKDebuggerInputDataPresetItem *itemWidget);
     void setItemWidget(QListWidgetItem *item,
-                       SAKInputDataPresetItem *itemWidget);
+                       SAKDebuggerInputDataPresetItem *itemWidget);
     void deleteItem(QListWidgetItem *item);
     void exportItems();
     void importItems();
 private:
-    Ui::SAKInputDataPreset *mUi;
+    Ui::SAKDebuggerInputDataPreset *mUi;
 signals:
     void invokeWriteBytes(QString rawData, int format);
 };

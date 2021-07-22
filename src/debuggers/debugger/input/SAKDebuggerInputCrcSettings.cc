@@ -10,15 +10,16 @@
 #include <QTimer>
 
 #include "SAKCommonCrcInterface.hh"
-#include "SAKInputCrcSettingsDialog.hh"
-#include "ui_SAKInputCrcSettingsDialog.h"
+#include "SAKDebuggerInputCrcSettings.hh"
+#include "ui_SAKDebuggerInputCrcSettings.h"
 
-SAKInputCrcSettingsDialog::SAKInputCrcSettingsDialog(QString settingsGroup,
-                                                     QSettings *settings,
-                                                     QWidget *parent)
+SAKDebuggerInputCrcSettings::SAKDebuggerInputCrcSettings(
+        QString settingsGroup,
+        QSettings *settings,
+        QWidget *parent)
     :QDialog(parent)
     ,mSettings(settings)
-    ,mUi(new Ui::SAKInputCrcSettingsDialog)
+    ,mUi(new Ui::SAKDebuggerInputCrcSettings)
 {
     // Initialize variable.
     mUi->setupUi(this);
@@ -128,15 +129,15 @@ SAKInputCrcSettingsDialog::SAKInputCrcSettingsDialog(QString settingsGroup,
     blockUiSignals(false);
 }
 
-SAKInputCrcSettingsDialog::~SAKInputCrcSettingsDialog()
+SAKDebuggerInputCrcSettings::~SAKDebuggerInputCrcSettings()
 {
     delete mUi;
 }
 
-SAKInputCrcSettingsDialog::SAKStructCrcParametersContext
-SAKInputCrcSettingsDialog::parametersContext()
+SAKDebuggerInputCrcSettings::SAKStructCrcParametersContext
+SAKDebuggerInputCrcSettings::parametersContext()
 {
-    SAKInputCrcSettingsDialog::SAKStructCrcParametersContext ctx;
+    SAKDebuggerInputCrcSettings::SAKStructCrcParametersContext ctx;
     mParametersContextMutex.lock();
     ctx.parameterMoldel = mParametersContext.parameterMoldel;
     ctx.append = mParametersContext.append;
