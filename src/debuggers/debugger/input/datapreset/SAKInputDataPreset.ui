@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Preset data editing</string>
+   <string>Set Data Items</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="1" column="2">
