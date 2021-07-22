@@ -88,37 +88,7 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
     Q_UNUSED(ret);
 
 
-    moreInputSettingsPushButtonMenu->addAction(tr("Clear Input"), this, [=](){
-        mInputComboBox->lineEdit()->clear();
-    });
-
-
-    moreInputSettingsPushButtonMenu->addAction(tr("Readin File"), this, [=](){
-        QString fileName = QFileDialog::getOpenFileName(Q_NULLPTR, tr("Open File"));
-        if (!fileName.isEmpty()){
-            QFile file(fileName);
-            if(file.open(QFile::ReadOnly)){
-                QByteArray data = file.readAll();
-                mInputComboBox->setCurrentText(QString(data).toUtf8());
-                file.close();
-            }else{
-                QString msg = QString("%1:%2").arg(tr("Can not open file"), fileName);
-                emit messageChanged(msg, false);
-            }
-        }
-    });
-
-
-    moreInputSettingsPushButtonMenu->addAction(tr("CRC Settings"), this, [=](){
-        if (mCrcSettings->isHidden()) {
-            mCrcSettings->show();
-        } else {
-            mCrcSettings->activateWindow();
-        }
-    });
-
-
-    moreInputSettingsPushButtonMenu->addAction(tr("Save Input Data"), this, [=](){
+    moreInputSettingsPushButtonMenu->addAction(tr("Save Input"), this, [=](){
         QDateTime dateTime = QDateTime::currentDateTime();
         QString defaultName = dateTime.toString("yyyyMMdd").append(".txt");
         auto location = QStandardPaths::DesktopLocation;
@@ -144,6 +114,38 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
             emit messageChanged(file.errorString(), true);
         }
     });
+
+
+    moreInputSettingsPushButtonMenu->addAction(tr("Clear Input"), this, [=](){
+        mInputComboBox->lineEdit()->clear();
+    });
+
+
+#if 0
+    moreInputSettingsPushButtonMenu->addAction(tr("Readin File"), this, [=](){
+        QString fileName = QFileDialog::getOpenFileName(Q_NULLPTR, tr("Open File"));
+        if (!fileName.isEmpty()){
+            QFile file(fileName);
+            if(file.open(QFile::ReadOnly)){
+                QByteArray data = file.readAll();
+                mInputComboBox->setCurrentText(QString(data).toUtf8());
+                file.close();
+            }else{
+                QString msg = QString("%1:%2").arg(tr("Can not open file"), fileName);
+                emit messageChanged(msg, false);
+            }
+        }
+    });
+#endif
+
+    moreInputSettingsPushButtonMenu->addAction(tr("CRC Settings"), this, [=](){
+        if (mCrcSettings->isHidden()) {
+            mCrcSettings->show();
+        } else {
+            mCrcSettings->activateWindow();
+        }
+    });
+
 
     // Initializing variables about settings
     QString group = settingsGroup;
