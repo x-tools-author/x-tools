@@ -1,4 +1,4 @@
-﻿/*
+﻿/******************************************************************************
  * Copyright 2020-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -6,7 +6,7 @@
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- */
+ *****************************************************************************/
 #ifndef SAKINPUTCRCSETTINGDIALOG_HH
 #define SAKINPUTCRCSETTINGDIALOG_HH
 
@@ -26,7 +26,9 @@ class SAKInputCrcSettingsDialog : public QDialog
 {
     Q_OBJECT
 public:
-    SAKInputCrcSettingsDialog(QString settingsGroup, QSettings *settings, QWidget *parent = Q_NULLPTR);
+    SAKInputCrcSettingsDialog(QString settingsGroup,
+                              QSettings *settings,
+                              QWidget *parent = Q_NULLPTR);
     ~SAKInputCrcSettingsDialog();
 
     struct SAKStructCrcParametersContext {
@@ -56,17 +58,6 @@ private:
     } mSettingsKeyContext;
 private:
     Ui::SAKInputCrcSettingsDialog *mUi;
-    QComboBox *mCrcParametersModelComboBox;
-    QCheckBox *mAppendCrcCheckBox;
-    QCheckBox *mBigEndianCheckBox;
-    QSpinBox *mStartSpinBox;
-    QSpinBox *mEndSpinBox;
-private slots:
-    void on_bigEndianCheckBox_clicked();
-    void on_startSpinBox_valueChanged(int value);
-    void on_endSpinBox_valueChanged(int value);
-    void on_crcParametersModelComboBox_currentIndexChanged(int index);
-    void on_appendCrcCheckBox_clicked();
 signals:
     void crcParametersChanged();
 };
