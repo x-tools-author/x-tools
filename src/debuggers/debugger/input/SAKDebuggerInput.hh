@@ -1,4 +1,4 @@
-﻿/*
+﻿/****************************************************************************************
  * Copyright 2020-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -6,9 +6,9 @@
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- */
-#ifndef SAKDEBUGGERINPUTCONTROLLER_HH
-#define SAKDEBUGGERINPUTCONTROLLER_HH
+ ****************************************************************************************/
+#ifndef SAKDEBUGGERINPUT_HH
+#define SAKDEBUGGERINPUT_HH
 
 #include <QPair>
 #include <QLabel>
@@ -24,7 +24,6 @@
 #include <QSqlDatabase>
 #include <QWaitCondition>
 
-class SAKInputDataFactory;
 class SAKCommonCrcInterface;
 class SAKDebuggerInputDataPreset;
 class SAKDebuggerInputCrcSettings;
@@ -86,7 +85,6 @@ private:
     QLabel *mCrcLabel;
 
     QTimer mCyclingWritingTimer;
-    SAKInputDataFactory *mInputDataFactory;
     SAKStructInputParametersContext mInputParameters;
     QMutex mInputParametersMutex;
     SAKCommonCrcInterface *mCrcInterface;

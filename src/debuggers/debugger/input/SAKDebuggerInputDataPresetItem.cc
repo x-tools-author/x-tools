@@ -1,4 +1,4 @@
-﻿/******************************************************************************
+﻿/****************************************************************************************
  * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -6,7 +6,7 @@
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- *****************************************************************************/
+ ***************************************************************************************/
 #include <QMenu>
 #include <QDebug>
 #include <QSqlError>
@@ -75,7 +75,6 @@ void SAKDebuggerInputDataPresetItem::initializingItem()
                           mUi->textFormatComboBox->currentData().toInt());
 
 
-
     connect(mUi->textFormatComboBox, &QComboBox::currentTextChanged,
             this, [=](const QString &text){
         Q_UNUSED(text);
@@ -102,10 +101,9 @@ void SAKDebuggerInputDataPresetItem::initializingItem()
 }
 
 void SAKDebuggerInputDataPresetItem::setLineEditTextFormat(QLineEdit *lineEdit,
-                                                   int format)
+                                                           int format)
 {
-    auto cookedFormat =
-            static_cast<SAKCommonDataStructure::SAKEnumTextInputFormat>(
+    auto cookedFormat = static_cast<SAKCommonDataStructure::SAKEnumTextInputFormat>(
                 format
                 );
     SAKCommonDataStructure::setLineEditTextFormat(lineEdit,

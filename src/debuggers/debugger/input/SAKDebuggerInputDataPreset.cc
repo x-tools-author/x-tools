@@ -1,4 +1,4 @@
-﻿/******************************************************************************
+﻿/****************************************************************************************
  * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -6,7 +6,7 @@
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- *****************************************************************************/
+ ***************************************************************************************/
 #include <QFile>
 #include <QTime>
 #include <QDebug>
@@ -139,8 +139,7 @@ void SAKDebuggerInputDataPreset::readinRecord()
             itemContext.text = tempVariant.toString();
 
             QListWidgetItem *item = new QListWidgetItem();
-            auto *itemWidget =
-                    new SAKDebuggerInputDataPresetItem(itemContext);
+            auto *itemWidget = new SAKDebuggerInputDataPresetItem(itemContext);
             setItemWidget(item, itemWidget);
         }
     } else {
@@ -295,9 +294,7 @@ void SAKDebuggerInputDataPreset::exportItems()
 {
     QJsonArray jsonArray;
     for (int i = 0; i < mUi->itemListWidget->count(); i++) {
-        auto *itemWidget = mUi->itemListWidget->itemWidget(
-                    mUi->itemListWidget->item(i)
-                    );
+        auto *itemWidget = mUi->itemListWidget->itemWidget(mUi->itemListWidget->item(i));
         auto *iw = qobject_cast<SAKDebuggerInputDataPresetItem*>(itemWidget);
         if (iw) {
             QJsonObject obj;
@@ -333,8 +330,7 @@ void SAKDebuggerInputDataPreset::exportItems()
     auto desktopLocation = QStandardPaths::DesktopLocation;
     QString defaultName = QStandardPaths::writableLocation(desktopLocation);
     defaultName.append(QString("/"));
-    defaultName.append(QDateTime::currentDateTime()
-                       .toString("yyyyMMddhhmmss"));
+    defaultName.append(QDateTime::currentDateTime().toString("yyyyMMddhhmmss"));
     defaultName.append(".json");
     QString fileName = QFileDialog::getSaveFileName(this,
                                                     tr("Outport data"),
@@ -393,9 +389,7 @@ void SAKDebuggerInputDataPreset::importItems()
         QListWidgetItem *item = new QListWidgetItem();
         auto itemWidget = new SAKDebuggerInputDataPresetItem(itemCtx);
         setItemWidget(item, itemWidget);
-        insertRecord(
-                    mTableContext.tableName,
-                    qobject_cast<SAKDebuggerInputDataPresetItem*>(itemWidget)
-                    );
+        insertRecord(mTableContext.tableName,
+                     qobject_cast<SAKDebuggerInputDataPresetItem*>(itemWidget));
     }
 }
