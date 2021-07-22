@@ -22,10 +22,10 @@
 
 SAKInputDataPresetItem::SAKInputDataPresetItem(QWidget *parent)
     :QWidget(parent)
+    ,mItemId(QDateTime::currentMSecsSinceEpoch())
     ,mUi(new Ui::SAKInputDataPresetItem)
 {
     initializingItem();
-    mItemId = QDateTime::currentMSecsSinceEpoch();
 }
 
 SAKInputDataPresetItem::SAKInputDataPresetItem(
@@ -38,7 +38,7 @@ SAKInputDataPresetItem::SAKInputDataPresetItem(
     initializingItem();
     mTextFormatComboBox->setCurrentIndex(context.format);
     mDescriptionLineEdit->setText(context.description);
-    mInputTextEdit->setText(context.text);
+    mDataLineEdit->setText(context.text);
 }
 
 SAKInputDataPresetItem::~SAKInputDataPresetItem()
@@ -58,7 +58,7 @@ QString SAKInputDataPresetItem::itemDescription()
 
 QString SAKInputDataPresetItem::itemText()
 {
-    return mInputTextEdit->toPlainText();
+    return mDataLineEdit->text();
 }
 
 int SAKInputDataPresetItem::itemTextFromat()
@@ -71,14 +71,14 @@ void SAKInputDataPresetItem::initializingItem()
     mUi->setupUi(this);
     mTextFormatComboBox = mUi->textFormatComboBox;
     mDescriptionLineEdit = mUi->descriptionLineEdit;
-    mInputTextEdit = mUi->inputTextEdit;
+    mDataLineEdit = mUi->dataLineEdit;
     SAKCommonDataStructure::setComboBoxTextInputFormat(mTextFormatComboBox);
 
 
     connect(mTextFormatComboBox, &QComboBox::currentTextChanged,
             this, [=](const QString &text){
         Q_UNUSED(text);
-        mInputTextEdit->clear();
+        mDataLineEdit->clear();
         int format = mTextFormatComboBox->currentData().toInt();
         emit formatChanged(mItemId, format);
     });
@@ -90,11 +90,9 @@ void SAKInputDataPresetItem::initializingItem()
     });
 
 
-    connect(mInputTextEdit, &QTextEdit::textChanged,
+    connect(mDataLineEdit, &QLineEdit::textChanged,
             this, [=](){
-        QString text = mInputTextEdit->toPlainText();
-        int format = mTextFormatComboBox->currentData().toInt();
-        SAKDebuggerInput::formattingInputText(mInputTextEdit, format);
+        QString text = mDataLineEdit->text();
         emit textChanged(mItemId, text);
     });
 }

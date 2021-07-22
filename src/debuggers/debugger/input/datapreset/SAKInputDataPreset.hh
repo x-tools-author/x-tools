@@ -14,14 +14,9 @@
 #include <QLabel>
 #include <QTimer>
 #include <QSettings>
-#include <QCheckBox>
-#include <QComboBox>
-#include <QLineEdit>
-#include <QTextEdit>
 #include <QSqlQuery>
-#include <QListWidget>
-#include <QPushButton>
 #include <QSqlDatabase>
+#include <QListWidgetItem>
 
 namespace Ui {
     class SAKInputDataPreset;
@@ -56,7 +51,6 @@ public:
         }
     };
 private:
-    QListWidget *mListWidget;
     QString mTableName;
     QTimer mClearMessageInfoTimer;
     QSqlDatabase *mSqlDatabase;
@@ -75,18 +69,11 @@ private:
                       SAKInputDataPresetItem *itemWidget);
     void setItemWidget(QListWidgetItem *item,
                        SAKInputDataPresetItem *itemWidget);
+    void deleteItem(QListWidgetItem *item);
+    void exportItems();
+    void importItems();
 private:
     Ui::SAKInputDataPreset *mUi;
-    QPushButton *mDeletePushButton;
-    QPushButton *mAddPushButton;
-    QPushButton *mOutportPushButton;
-    QPushButton *mImportPushButton;
-    QLabel *mInfoLabel;
-private slots:
-    void on_deletePushButton_clicked();
-    void on_addPushButton_clicked();
-    void on_outportPushButton_clicked();
-    void on_importPushButton_clicked();
 signals:
     void invokeWriteBytes(QString rawData, int format);
 };

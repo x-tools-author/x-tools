@@ -10,13 +10,19 @@
 #include <QFile>
 #include <QTime>
 #include <QDebug>
+#include <QCheckBox>
+#include <QComboBox>
+#include <QLineEdit>
+#include <QTextEdit>
 #include <QSqlError>
 #include <QJsonArray>
+#include <QListWidget>
+#include <QPushButton>
 #include <QJsonObject>
 #include <QFileDialog>
+#include <QMessageBox>
 #include <QJsonDocument>
 #include <QStandardPaths>
-#include <QListWidgetItem>
 
 #include "SAKDebugger.hh"
 #include "SAKInputDataPreset.hh"
@@ -37,19 +43,46 @@ SAKInputDataPreset::SAKInputDataPreset(QSqlDatabase *sqlDatabase,
     ,mUi(new Ui::SAKInputDataPreset)
 {
     mUi->setupUi(this);
-    mDeletePushButton = mUi->deletePushButton;
-    mAddPushButton = mUi->addPushButton;
-    mListWidget = mUi->itemListWidget;
-    mInfoLabel = mUi->infoLabel;
-    mOutportPushButton = mUi->outportPushButton;
-    mImportPushButton = mUi->importPushButton;
-
     mClearMessageInfoTimer.setInterval(SAK_CLEAR_MESSAGE_INTERVAL);
     connect(&mClearMessageInfoTimer, &QTimer::timeout, this, [&](){
         mClearMessageInfoTimer.stop();
-        mInfoLabel->clear();
+        mUi->infoLabel->clear();
     });
 
+
+    connect(mUi->clearPushButton, &QPushButton::clicked,
+            this, [=](){
+        QString title = tr("Clear Data");
+        QString text = tr("All Data Items Will Be Deleted!")
+                + " "
+                + tr("Are you sure you want to do this?");
+        auto ret = QMessageBox::warning(this,
+                                        title,
+                                        text,
+                                        QMessageBox::Ok|QMessageBox::Cancel);
+        if (ret == QMessageBox::Ok) {
+            while (mUi->itemListWidget->count()) {
+                QListWidgetItem *item = mUi->itemListWidget->item(0);
+                deleteItem(item);
+            }
+        }
+    });
+    connect(mUi->outportPushButton, &QPushButton::clicked,
+            this, &SAKInputDataPreset::importItems);
+    connect(mUi->importPushButton, &QPushButton::clicked,
+            this, &SAKInputDataPreset::importItems);
+    connect(mUi->deletePushButton, &QPushButton::clicked,
+            this, [=](){
+        QListWidgetItem *item = mUi->itemListWidget->currentItem();
+        deleteItem(item);
+    });
+    connect(mUi->addPushButton, &QPushButton::clicked,
+            this, [=](){
+        QListWidgetItem *item = new QListWidgetItem();
+        SAKInputDataPresetItem *itemWidget = new SAKInputDataPresetItem();
+        setItemWidget(item, itemWidget);
+        insertRecord(mTableContext.tableName, itemWidget);
+    });
 
 
     mTableContext.tableName = settingsGroup + QString("PresetData");
@@ -120,9 +153,9 @@ void SAKInputDataPreset::outputMessage(QString msg, bool isError)
         color = "red";
         QApplication::beep();
     }
-    mInfoLabel->setStyleSheet(QString("QLabel{color:%1}").arg(color));
+    mUi->infoLabel->setStyleSheet(QString("QLabel{color:%1}").arg(color));
 
-    mInfoLabel->setText(QTime::currentTime().toString("hh:mm:ss ") + msg);
+    mUi->infoLabel->setText(QTime::currentTime().toString("hh:mm:ss ") + msg);
     mClearMessageInfoTimer.start();
 }
 
@@ -187,9 +220,9 @@ void SAKInputDataPreset::setItemWidget(QListWidgetItem *item,
                                        SAKInputDataPresetItem *itemWidget)
 {
     bool contain = false;
-    for (int i = 0; i < mListWidget->count(); i++) {
-        QListWidgetItem *item = mListWidget->item(i);
-        QWidget *w = mListWidget->itemWidget(item);
+    for (int i = 0; i < mUi->itemListWidget->count(); i++) {
+        QListWidgetItem *item = mUi->itemListWidget->item(i);
+        QWidget *w = mUi->itemListWidget->itemWidget(item);
         auto *iw = qobject_cast<SAKInputDataPresetItem*>(w);
         if (iw->itemID() == itemWidget->itemID()) {
             contain = true;
@@ -199,8 +232,8 @@ void SAKInputDataPreset::setItemWidget(QListWidgetItem *item,
 
     if (!contain) {
         item->setSizeHint(itemWidget->sizeHint());
-        mListWidget->addItem(item);
-        mListWidget->setItemWidget(item, itemWidget);
+        mUi->itemListWidget->addItem(item);
+        mUi->itemListWidget->setItemWidget(item, itemWidget);
 
         connect(itemWidget, &SAKInputDataPresetItem::formatChanged,
                 this, &SAKInputDataPreset::updateFormat);
@@ -227,17 +260,16 @@ void SAKInputDataPreset::setItemWidget(QListWidgetItem *item,
     }
 }
 
-void SAKInputDataPreset::on_deletePushButton_clicked()
+void SAKInputDataPreset::deleteItem(QListWidgetItem *item)
 {
-    QListWidgetItem *item = mListWidget->currentItem();
     if (item) {
-        QWidget *itemWidget = mListWidget->itemWidget(item);
+        QWidget *itemWidget = mUi->itemListWidget->itemWidget(item);
         auto *iw = reinterpret_cast<SAKInputDataPresetItem*>(itemWidget);
         quint64 id = iw->itemID();
         QString tableName = mTableContext.tableName;
 
         // Delete record from database.
-        mListWidget->removeItemWidget(item);
+        mUi->itemListWidget->removeItemWidget(item);
         delete item;
         SAKDebugger::commonSqlApiDeleteRecord(&mSqlQuery,
                                               mTableContext.tableName,
@@ -247,19 +279,13 @@ void SAKInputDataPreset::on_deletePushButton_clicked()
     }
 }
 
-void SAKInputDataPreset::on_addPushButton_clicked()
-{
-    QListWidgetItem *item = new QListWidgetItem();
-    SAKInputDataPresetItem *itemWidget = new SAKInputDataPresetItem();
-    setItemWidget(item, itemWidget);
-    insertRecord(mTableContext.tableName, itemWidget);
-}
-
-void SAKInputDataPreset::on_outportPushButton_clicked()
+void SAKInputDataPreset::exportItems()
 {
     QJsonArray jsonArray;
-    for (int i = 0; i < mListWidget->count(); i++) {
-        auto *itemWidget = mListWidget->itemWidget(mListWidget->item(i));
+    for (int i = 0; i < mUi->itemListWidget->count(); i++) {
+        auto *itemWidget = mUi->itemListWidget->itemWidget(
+                    mUi->itemListWidget->item(i)
+                    );
         auto *iw = qobject_cast<SAKInputDataPresetItem*>(itemWidget);
         if (iw) {
             QJsonObject obj;
@@ -313,7 +339,7 @@ void SAKInputDataPreset::on_outportPushButton_clicked()
     }
 }
 
-void SAKInputDataPreset::on_importPushButton_clicked()
+void SAKInputDataPreset::importItems()
 {
     auto writableLocation = QStandardPaths::DesktopLocation;
     QString defaultPath = QStandardPaths::writableLocation(writableLocation);

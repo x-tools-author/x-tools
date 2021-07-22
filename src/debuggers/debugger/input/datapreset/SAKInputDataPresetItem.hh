@@ -64,14 +64,14 @@ public:
      */
     int itemTextFromat();
 private:
-    quint16 mItemId;
+    quint64 mItemId;
 private:
     void initializingItem();
 private:
     Ui::SAKInputDataPresetItem *mUi;
     QComboBox *mTextFormatComboBox;
     QLineEdit *mDescriptionLineEdit;
-    QTextEdit *mInputTextEdit;
+    QLineEdit *mDataLineEdit;
 signals:
     void formatChanged(quint64 id, quint32 format);
     void descriptionChanged(quint64 id, const QString &text);
