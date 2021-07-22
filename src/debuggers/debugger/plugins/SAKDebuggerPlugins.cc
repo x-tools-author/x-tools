@@ -16,12 +16,16 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
                                        QPushButton *menuBt,
                                        QSettings *settings,
                                        const QString &settingsGroup,
+                                       QLabel *titleLabel,
+                                       QWidget *panelWidget,
                                        QObject *parent)
     :QObject(parent)
     ,mCharts(Q_NULLPTR)
     ,mDataForwarding(Q_NULLPTR)
     ,mRegularlySending(Q_NULLPTR)
     ,mAutomaticallyResponse(Q_NULLPTR)
+    ,mTitleLabel(titleLabel)
+    ,mPanelWidget(panelWidget)
 {
     QMenu *menu = new QMenu(menuBt);
     menuBt->setMenu(menu);

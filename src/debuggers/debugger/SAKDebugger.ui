@@ -14,7 +14,26 @@
    <string notr="true">Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="12" column="2" rowspan="3" colspan="3">
+   <item row="16" column="1">
+    <widget class="QPushButton" name="sendPushButton">
+     <property name="text">
+      <string>Send</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="2">
+    <widget class="QLabel" name="label_4">
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+    color:green
+}</string>
+     </property>
+     <property name="text">
+      <string>Device control</string>
+     </property>
+    </widget>
+   </item>
+   <item row="14" column="2" rowspan="3" colspan="3">
     <widget class="QTextEdit" name="inputTextEdit">
      <property name="html">
       <string notr="true">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -28,7 +47,29 @@ p, li { white-space: pre-wrap; }
      </property>
     </widget>
    </item>
-   <item row="11" column="2">
+   <item row="0" column="2">
+    <widget class="QLabel" name="label_3">
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+    color:green
+}</string>
+     </property>
+     <property name="text">
+      <string>Data output</string>
+     </property>
+    </widget>
+   </item>
+   <item row="15" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Input format</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="13" column="2">
     <widget class="QLabel" name="label_26">
      <property name="styleSheet">
       <string notr="true">QLabel{
@@ -40,14 +81,10 @@ p, li { white-space: pre-wrap; }
      </property>
     </widget>
    </item>
-   <item row="7" column="1">
-    <widget class="QPushButton" name="clearOutputPushButton">
-     <property name="text">
-      <string>ClearOutput</string>
-     </property>
-    </widget>
+   <item row="2" column="0" colspan="2">
+    <widget class="QWidget" name="controllerWidget" native="true"/>
    </item>
-   <item row="11" column="3">
+   <item row="13" column="3">
     <widget class="QLabel" name="infoLabel">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -60,25 +97,12 @@ p, li { white-space: pre-wrap; }
      </property>
     </widget>
    </item>
-   <item row="5" column="0">
-    <widget class="Line" name="line_5">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0" colspan="2">
-    <widget class="QWidget" name="controllerWidget" native="true"/>
-   </item>
-   <item row="9" column="1">
-    <widget class="QPushButton" name="pluginsPushButton">
+   <item row="6" column="0">
+    <widget class="QLabel" name="label_12">
      <property name="text">
-      <string>Plugins</string>
+      <string>Output format</string>
      </property>
     </widget>
-   </item>
-   <item row="6" column="1">
-    <widget class="QComboBox" name="outputTextFormatComboBox"/>
    </item>
    <item row="0" column="3" colspan="2">
     <widget class="QWidget" name="widget" native="true">
@@ -264,17 +288,7 @@ p, li { white-space: pre-wrap; }
      </layout>
     </widget>
    </item>
-   <item row="13" column="0">
-    <widget class="QLabel" name="label_2">
-     <property name="text">
-      <string>Input format</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="11" column="4">
+   <item row="13" column="4">
     <widget class="QWidget" name="widget_2" native="true">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -326,6 +340,76 @@ p, li { white-space: pre-wrap; }
      </layout>
     </widget>
    </item>
+   <item row="16" column="0">
+    <widget class="QPushButton" name="moreInputSettingsPushButton">
+     <property name="text">
+      <string>More</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="2">
+    <widget class="QLabel" name="label_5">
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+    color:green
+}</string>
+     </property>
+     <property name="text">
+      <string>Output settings</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0">
+    <widget class="QPushButton" name="moreOutputSettingsPushButton">
+     <property name="text">
+      <string>More</string>
+     </property>
+    </widget>
+   </item>
+   <item row="14" column="0">
+    <widget class="QLabel" name="label_19">
+     <property name="text">
+      <string>Cycling time</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="2">
+    <widget class="Line" name="line_3">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="1">
+    <widget class="QComboBox" name="outputTextFormatComboBox"/>
+   </item>
+   <item row="15" column="1">
+    <widget class="QComboBox" name="inputFormatComboBox">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="1">
+    <widget class="QPushButton" name="clearOutputPushButton">
+     <property name="text">
+      <string>ClearOutput</string>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="1">
+    <widget class="QPushButton" name="pluginsPushButton">
+     <property name="text">
+      <string>Plugins</string>
+     </property>
+    </widget>
+   </item>
    <item row="3" column="0">
     <widget class="QPushButton" name="deviceMorePushButton">
      <property name="text">
@@ -333,27 +417,13 @@ p, li { white-space: pre-wrap; }
      </property>
     </widget>
    </item>
-   <item row="3" column="1">
-    <widget class="QPushButton" name="switchPushButton">
-     <property name="text">
-      <string>Open</string>
-     </property>
-    </widget>
-   </item>
    <item row="14" column="1">
-    <widget class="QPushButton" name="sendPushButton">
-     <property name="text">
-      <string>Send</string>
-     </property>
-    </widget>
+    <widget class="QComboBox" name="cyclingTimeComboBox"/>
    </item>
-   <item row="12" column="0">
-    <widget class="QLabel" name="label_19">
-     <property name="text">
-      <string>Cycling time</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   <item row="5" column="0">
+    <widget class="Line" name="line_5">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
      </property>
     </widget>
    </item>
@@ -375,93 +445,22 @@ p, li { white-space: pre-wrap; }
      </property>
     </widget>
    </item>
-   <item row="1" column="0" colspan="2">
-    <widget class="Line" name="line_3">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="0">
-    <widget class="QLabel" name="label_12">
-     <property name="text">
-      <string>Output format</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="2">
-    <widget class="QLabel" name="label_3">
+   <item row="13" column="0" colspan="2">
+    <widget class="QLabel" name="label_28">
      <property name="styleSheet">
       <string notr="true">QLabel{
     color:green
 }</string>
      </property>
      <property name="text">
-      <string>Data output</string>
+      <string>Input settings</string>
      </property>
     </widget>
    </item>
-   <item row="13" column="1">
-    <widget class="QComboBox" name="inputFormatComboBox">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-    </widget>
-   </item>
-   <item row="14" column="0">
-    <widget class="QPushButton" name="moreInputSettingsPushButton">
+   <item row="3" column="1">
+    <widget class="QPushButton" name="switchPushButton">
      <property name="text">
-      <string>More</string>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="0">
-    <widget class="QPushButton" name="moreOutputSettingsPushButton">
-     <property name="text">
-      <string>More</string>
-     </property>
-    </widget>
-   </item>
-   <item row="12" column="1">
-    <widget class="QComboBox" name="cyclingTimeComboBox"/>
-   </item>
-   <item row="10" column="1">
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="0" column="0" colspan="2">
-    <widget class="QLabel" name="label_4">
-     <property name="styleSheet">
-      <string notr="true">QLabel{
-    color:green
-}</string>
-     </property>
-     <property name="text">
-      <string>Device control</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0" colspan="2">
-    <widget class="QLabel" name="label_5">
-     <property name="styleSheet">
-      <string notr="true">QLabel{
-    color:green
-}</string>
-     </property>
-     <property name="text">
-      <string>Output settings</string>
+      <string>Open</string>
      </property>
     </widget>
    </item>
@@ -477,15 +476,33 @@ p, li { white-space: pre-wrap; }
      </property>
     </widget>
    </item>
-   <item row="11" column="0" colspan="2">
-    <widget class="QLabel" name="label_28">
-     <property name="styleSheet">
-      <string notr="true">QLabel{
-    color:green
-}</string>
+   <item row="12" column="2" colspan="3">
+    <widget class="QWidget" name="pluginPanelWidget" native="true">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
      </property>
+    </widget>
+   </item>
+   <item row="10" column="1">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="11" column="2" colspan="3">
+    <widget class="QLabel" name="pluginPanelLabel">
      <property name="text">
-      <string>Input settings</string>
+      <string>Plugin panel</string>
      </property>
     </widget>
    </item>

@@ -10,6 +10,8 @@
 #ifndef SAKDEBUGGERPLUGINS_HH
 #define SAKDEBUGGERPLUGINS_HH
 
+#include <QLabel>
+#include <QWidget>
 #include <QObject>
 #include <QSettings>
 #include <QPushButton>
@@ -28,6 +30,8 @@ public:
                                 QPushButton *menuBt,
                                 QSettings *settings,
                                 const QString &settingsGroup,
+                                QLabel *titleLabel,
+                                QWidget *panelWidget,
                                 QObject *parent = Q_NULLPTR);
     ~SAKDebuggerPlugins();
 private:
@@ -36,6 +40,9 @@ private:
     SAKPluginDataForwarding *mDataForwarding;
     SAKPluginRegularlySending *mRegularlySending;
     SAKPluginAutomaticallyResponse *mAutomaticallyResponse;
+private:
+    QLabel *mTitleLabel;
+    QWidget *mPanelWidget;
 private:
     void showPluin3D();
     void showPluinCharts();

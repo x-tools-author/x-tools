@@ -68,6 +68,8 @@ SAKDebugger::SAKDebugger(int type, QString name, QWidget *parent)
                                       mUi->pluginsPushButton,
                                       settings(),
                                       settingsGroup(),
+                                      mUi->pluginPanelLabel,
+                                      mUi->pluginPanelWidget,
                                       this);
     mOutputController = new SAKDebuggerOutput(mMoreOutputSettingsPushButton,
                                               mOutputTextFormatComboBox,
