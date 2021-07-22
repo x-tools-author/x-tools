@@ -72,7 +72,13 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
     Q_UNUSED(ret);
 
     auto writeDataItemSettingsAction = new QAction(tr("Set Data Items"), this);
-    connect(writeDataItemSettingsAction, &QAction::triggered, this, [=](){mInputDataItemManager->show();});
+    connect(writeDataItemSettingsAction, &QAction::triggered, this, [=](){
+        if (mInputDataItemManager->isHidden()) {
+            mInputDataItemManager->show();
+        } else {
+            mInputDataItemManager->activateWindow();
+        }
+    });
     moreInputSettingsPushButtonMenu->addAction(writeDataItemSettingsAction);
 
     auto clearInputAction = new QAction(tr("Clear Input"), this);
