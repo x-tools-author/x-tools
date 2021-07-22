@@ -33,7 +33,7 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
 
     // Go to a web page.
     if (readmeBt) {
-        connect(readmeBt, &QPushButton::click, this, [](){
+        connect(readmeBt, &QPushButton::clicked, this, [](){
             // Nothing to do yet.
         });
     }
