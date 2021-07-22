@@ -63,6 +63,15 @@ public:
         WebSocketSendingTypeBin,
     };
     Q_ENUM(SAKEnumWebSocketSendingType);
+
+    enum SAKEmnuSuffixsType {
+        SuffixsTypeNone,
+        SuffixsTypeR,
+        SuffixsTypeN,
+        SuffixsTypeRN,
+        SuffixsTypeNR
+    };
+    Q_ENUM(SAKEmnuSuffixsType);
 public:
     /**
      * @brief setComboBoxTextOutputFormat: Add output text format items to combo box.
@@ -112,6 +121,9 @@ public:
      */
     static void setLineEditTextFormat(QLineEdit *lineEdit,
                                       SAKEnumTextInputFormat format);
+
+    static QString suffix(SAKEmnuSuffixsType type);
+    static QString friendlySuffix(SAKEmnuSuffixsType type);
 private:
     static void setComboBoxItems(QComboBox *comboBox, QMap<int, QString> &formatMap, int currentData);
 private:

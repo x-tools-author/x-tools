@@ -78,7 +78,7 @@ public:
 protected:
     void run() override;
 private:
-    QMenu *mWriteDataItemMenu;
+    QMenu *mQuickSendingMenu;
     QVector<QPair<QString, SAKStructInputParametersContext>> mBytesInfoVector;
     QMutex mBytesInfoVectorMutex;
 private:
@@ -101,8 +101,6 @@ private:
     QString mSettingStringInputTextFromat;
 private:
     void changeInputModel(const QString &text);
-    void saveInputDataToFile();
-    void readinFile();
     void inputTextEditTextChanged();
     void sendRawData();
     void changeCrcModel();

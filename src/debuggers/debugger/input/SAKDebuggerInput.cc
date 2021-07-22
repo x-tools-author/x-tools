@@ -12,6 +12,7 @@
 #include <QDebug>
 #include <QAction>
 #include <QtEndian>
+#include <QLineEdit>
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QStandardPaths>
@@ -73,40 +74,76 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
             moreInputSettingsPushButtonMenu, &QMenu::deleteLater);
     mMoreInputSettingsPushButton->setMenu(moreInputSettingsPushButtonMenu);
 
-    mWriteDataItemMenu = new QMenu(tr("Quick Sending"));
-    moreInputSettingsPushButtonMenu->addMenu(mWriteDataItemMenu);
-    auto ret = moreInputSettingsPushButtonMenu->addSeparator();
-    Q_UNUSED(ret);
 
-    auto writeDataItemSettingsAction = new QAction(tr("Set Data Items"), this);
-    connect(writeDataItemSettingsAction, &QAction::triggered, this, [=](){
+    mQuickSendingMenu = new QMenu(tr("Quick Sending"));
+    moreInputSettingsPushButtonMenu->addMenu(mQuickSendingMenu);
+    moreInputSettingsPushButtonMenu->addAction(tr("Set Data Items"), this, [=](){
         if (mInputDataItemManager->isHidden()) {
             mInputDataItemManager->show();
         } else {
             mInputDataItemManager->activateWindow();
         }
     });
-    moreInputSettingsPushButtonMenu->addAction(writeDataItemSettingsAction);
+    auto ret = moreInputSettingsPushButtonMenu->addSeparator();
+    Q_UNUSED(ret);
 
-    auto clearInputAction = new QAction(tr("Clear Input"), this);
-    connect(clearInputAction, &QAction::triggered,
-            this, [=](){mInputComboBox->clear();});
-    moreInputSettingsPushButtonMenu->addAction(clearInputAction);
 
-    auto readinFileAction = new QAction(tr("Readin File"), this);
-    connect(readinFileAction, &QAction::triggered,
-            this, [=](){readinFile();});
-    moreInputSettingsPushButtonMenu->addAction(readinFileAction);
+    moreInputSettingsPushButtonMenu->addAction(tr("Clear Input"), this, [=](){
+        mInputComboBox->lineEdit()->clear();
+    });
 
-    auto saveInputDataAction = new QAction(tr("Save Input Data"), this);
-    connect(saveInputDataAction, &QAction::triggered,
-            this, [=](){saveInputDataToFile();});
-    moreInputSettingsPushButtonMenu->addAction(saveInputDataAction);
 
-    auto crcSettingsAction = new QAction(tr("CRC Settings"), this);
-    connect(crcSettingsAction, &QAction::triggered,
-            this, [=](){mCrcSettings->show();});
-    moreInputSettingsPushButtonMenu->addAction(crcSettingsAction);
+    moreInputSettingsPushButtonMenu->addAction(tr("Readin File"), this, [=](){
+        QString fileName = QFileDialog::getOpenFileName(Q_NULLPTR, tr("Open File"));
+        if (!fileName.isEmpty()){
+            QFile file(fileName);
+            if(file.open(QFile::ReadOnly)){
+                QByteArray data = file.readAll();
+                mInputComboBox->setCurrentText(QString(data).toUtf8());
+                file.close();
+            }else{
+                QString msg = QString("%1:%2").arg(tr("Can not open file"), fileName);
+                emit messageChanged(msg, false);
+            }
+        }
+    });
+
+
+    moreInputSettingsPushButtonMenu->addAction(tr("CRC Settings"), this, [=](){
+        if (mCrcSettings->isHidden()) {
+            mCrcSettings->show();
+        } else {
+            mCrcSettings->activateWindow();
+        }
+    });
+
+
+    moreInputSettingsPushButtonMenu->addAction(tr("Save Input Data"), this, [=](){
+        QDateTime dateTime = QDateTime::currentDateTime();
+        QString defaultName = dateTime.toString("yyyyMMdd").append(".txt");
+        auto location = QStandardPaths::DesktopLocation;
+        QString defaulePath = QStandardPaths::writableLocation(location);
+        defaulePath.append("/").append(defaultName);
+        QString fileName = QFileDialog::getSaveFileName(Q_NULLPTR,
+                                                        tr("Save File"),
+                                                        defaulePath,
+                                                        tr("txt (*.txt);;all (*.*)"));
+        if (fileName.isEmpty()){
+            return;
+        }
+
+        QFile file(fileName);
+        if (file.open(QFile::WriteOnly)){
+            QByteArray data = mInputComboBox->currentText().toUtf8();
+            qint64 ret = file.write(data);
+            if (ret == -1) {
+                emit messageChanged(file.errorString(), true);
+            }
+            file.close();
+        }else {
+            emit messageChanged(file.errorString(), true);
+        }
+    });
 
     // Initializing variables about settings
     QString group = settingsGroup;
@@ -122,7 +159,7 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
     mInputDataItemManager = new SAKDebuggerInputDataPreset(sqlDatabase,
                                                            settings,
                                                            settingsGroup,
-                                                           mWriteDataItemMenu);
+                                                           mQuickSendingMenu);
     connect(mInputDataItemManager, &SAKDebuggerInputDataPreset::invokeWriteBytes,
             this, [&](QString rawData, int format){
         mInputParametersMutex.lock();
@@ -293,7 +330,7 @@ void SAKDebuggerInput::changeInputModel(const QString &text)
     }
 
     bool ok = false;
-    mInputComboBox->clear();
+    mInputComboBox->lineEdit()->clear();
     mInputParameters.textFormat = mInputModelComboBox->currentData().toInt(&ok);
     mSettings->setValue(mSettingStringInputTextFromat,
                         QVariant::fromValue(mInputModelComboBox->currentData().toInt()));
@@ -302,50 +339,6 @@ void SAKDebuggerInput::changeInputModel(const QString &text)
     int format = mInputParameters.textFormat;
     auto cookedFormat = static_cast<SAKCommonDataStructure::SAKEnumTextInputFormat>(format);
     SAKCommonDataStructure::setLineEditTextFormat(mInputComboBox->lineEdit(), cookedFormat);
-}
-
-void SAKDebuggerInput::saveInputDataToFile()
-{
-    QDateTime dateTime = QDateTime::currentDateTime();
-    QString defaultName = dateTime.toString("yyyyMMdd").append(".txt");
-    auto location = QStandardPaths::DesktopLocation;
-    QString defaulePath = QStandardPaths::writableLocation(location);
-    defaulePath.append("/").append(defaultName);
-    QString fileName = QFileDialog::getSaveFileName(Q_NULLPTR,
-                                                    tr("Save File"),
-                                                    defaulePath,
-                                                    tr("txt (*.txt);;all (*.*)"));
-    if (fileName.isEmpty()){
-        return;
-    }
-
-    QFile file(fileName);
-    if (file.open(QFile::WriteOnly)){
-        QByteArray data = mInputComboBox->currentText().toUtf8();
-        qint64 ret = file.write(data);
-        if (ret == -1) {
-            emit messageChanged(file.errorString(), true);
-        }
-        file.close();
-    }else {
-        emit messageChanged(file.errorString(), true);
-    }
-}
-
-void SAKDebuggerInput::readinFile()
-{
-    QString fileName = QFileDialog::getOpenFileName(Q_NULLPTR, tr("Open File"));
-    if (!fileName.isEmpty()){
-        QFile file(fileName);
-        if(file.open(QFile::ReadOnly)){
-            QByteArray data = file.readAll();
-            mInputComboBox->setCurrentText(QString(data).toUtf8());
-            file.close();
-        }else{
-            QString msg = QString("%1:%2").arg(tr("Can not open file"), fileName);
-            emit messageChanged(msg, false);
-        }
-    }
 }
 
 void SAKDebuggerInput::inputTextEditTextChanged()

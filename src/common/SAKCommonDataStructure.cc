@@ -236,6 +236,30 @@ void SAKCommonDataStructure::setLineEditTextFormat(
     }
 }
 
+QString SAKCommonDataStructure::suffix(SAKEmnuSuffixsType type)
+{
+    switch (type) {
+    case SuffixsTypeNone: return "";
+    case SuffixsTypeR: return "\r";
+    case SuffixsTypeN: return "\n";
+    case SuffixsTypeRN: return "\r\n";
+    case SuffixsTypeNR: return "\n\r";
+    default: return "";
+    }
+}
+
+QString SAKCommonDataStructure::friendlySuffix(SAKEmnuSuffixsType type)
+{
+    switch (type) {
+    case SuffixsTypeNone: return "";
+    case SuffixsTypeR: return "\\r";
+    case SuffixsTypeN: return "\\n";
+    case SuffixsTypeRN: return "\\r\\n";
+    case SuffixsTypeNR: return "\\n\\r";
+    default: return "";
+    }
+}
+
 void SAKCommonDataStructure::setComboBoxItems(QComboBox *comboBox, QMap<int, QString> &formatMap, int currentData)
 {
     if (comboBox){
