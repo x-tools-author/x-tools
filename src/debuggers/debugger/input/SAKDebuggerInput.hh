@@ -90,8 +90,6 @@ private:
     SAKCommonCrcInterface *mCrcInterface;
     SAKDebuggerInputDataPreset *mInputDataItemManager;
     SAKDebuggerInputCrcSettings *mCrcSettingsDialog;
-    // The unit is ms.
-    const int defaultCycle = 1000;
 
     // Variables about settings
     QSettings *mSettings;
