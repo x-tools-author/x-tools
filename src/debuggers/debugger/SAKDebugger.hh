@@ -211,7 +211,7 @@ protected:
     QComboBox *mInputFormatComboBox;
     QPushButton *mMoreInputSettingsPushButton;
     QPushButton *mSendPushButton;
-    QTextEdit *mInputTextEdit;
+    QComboBox *mInputTextEdit;
     QLabel *mCrcLabel;
     QPushButton *mAddInputItemPushButton;
     QPushButton *mDeleteInputItemPushButton;

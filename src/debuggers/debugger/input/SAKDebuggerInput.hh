@@ -38,7 +38,7 @@ public:
                      QPushButton *more,
                      QPushButton *send,
                      QLabel *crc,
-                     QTextEdit *input,
+                     QComboBox *input,
                      QSettings *settings,
                      const QString &settingsGroup,
                      QSqlDatabase *sqlDatabase,
@@ -86,7 +86,7 @@ private:
     QComboBox *mInputModelComboBox;
     QPushButton *mMoreInputSettingsPushButton;
     QPushButton *mSendPushButton;
-    QTextEdit *mInputTextEdit;
+    QComboBox *mInputComboBox;
     QLabel *mCrcLabel;
 
     QTimer mCyclingWritingTimer;

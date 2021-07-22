@@ -24,7 +24,9 @@
 int main(int argc, char *argv[])
 {
     int exitCode = 0;
-
+#if 0
+    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
+#endif
     // The application can be reboot.
     do {
         SAKApplication app(argc, argv);

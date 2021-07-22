@@ -30,7 +30,7 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
                                    QPushButton *more,
                                    QPushButton *send,
                                    QLabel *crc,
-                                   QTextEdit *input,
+                                   QComboBox *input,
                                    QSettings *settings,
                                    const QString &settingsGroup,
                                    QSqlDatabase *sqlDatabase,
@@ -40,7 +40,7 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
     ,mInputModelComboBox(inputFormat)
     ,mMoreInputSettingsPushButton(more)
     ,mSendPushButton(send)
-    ,mInputTextEdit(input)
+    ,mInputComboBox(input)
     ,mCrcLabel(crc)
     ,mCrcInterface(new SAKCommonCrcInterface)
 {
@@ -90,7 +90,7 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
 
     auto clearInputAction = new QAction(tr("Clear Input"), this);
     connect(clearInputAction, &QAction::triggered,
-            this, [=](){mInputTextEdit->clear();});
+            this, [=](){mInputComboBox->clear();});
     moreInputSettingsPushButtonMenu->addAction(clearInputAction);
 
     auto readinFileAction = new QAction(tr("Readin File"), this);
@@ -170,7 +170,7 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
             this, &SAKDebuggerInput::changeInputModel);
     connect(mSendPushButton, &QPushButton::clicked,
             this, &SAKDebuggerInput::sendRawData);
-    connect(mInputTextEdit, &QTextEdit::textChanged,
+    connect(mInputComboBox, &QComboBox::currentTextChanged,
             this, &SAKDebuggerInput::inputTextEditTextChanged);
     connect(&mCyclingWritingTimer, &QTimer::timeout,
             this, &SAKDebuggerInput::cyclingWritingTimerTimeout);
@@ -293,11 +293,15 @@ void SAKDebuggerInput::changeInputModel(const QString &text)
     }
 
     bool ok = false;
-    mInputTextEdit->clear();
+    mInputComboBox->clear();
     mInputParameters.textFormat = mInputModelComboBox->currentData().toInt(&ok);
     mSettings->setValue(mSettingStringInputTextFromat,
                         QVariant::fromValue(mInputModelComboBox->currentData().toInt()));
     Q_ASSERT_X(ok, __FUNCTION__, "Input model is error");
+
+    int format = mInputParameters.textFormat;
+    auto cookedFormat = static_cast<SAKCommonDataStructure::SAKEnumTextInputFormat>(format);
+    SAKCommonDataStructure::setLineEditTextFormat(mInputComboBox->lineEdit(), cookedFormat);
 }
 
 void SAKDebuggerInput::saveInputDataToFile()
@@ -317,7 +321,7 @@ void SAKDebuggerInput::saveInputDataToFile()
 
     QFile file(fileName);
     if (file.open(QFile::WriteOnly)){
-        QByteArray data = mInputTextEdit->toPlainText().toUtf8();
+        QByteArray data = mInputComboBox->currentText().toUtf8();
         qint64 ret = file.write(data);
         if (ret == -1) {
             emit messageChanged(file.errorString(), true);
@@ -335,7 +339,7 @@ void SAKDebuggerInput::readinFile()
         QFile file(fileName);
         if(file.open(QFile::ReadOnly)){
             QByteArray data = file.readAll();
-            mInputTextEdit->setText(QString(data).toUtf8());
+            mInputComboBox->setCurrentText(QString(data).toUtf8());
             file.close();
         }else{
             QString msg = QString("%1:%2").arg(tr("Can not open file"), fileName);
@@ -346,13 +350,13 @@ void SAKDebuggerInput::readinFile()
 
 void SAKDebuggerInput::inputTextEditTextChanged()
 {
-    formattingInputText(mInputTextEdit, mInputParameters.textFormat);
+    //formattingInputText(mInputTextEdit, mInputParameters.textFormat);
     updateCrc();
 }
 
 void SAKDebuggerInput::sendRawData()
 {
-    QString data = mInputTextEdit->toPlainText();
+    QString data = mInputComboBox->currentText();
     if (data.isEmpty()){
         auto ret = QMessageBox::warning(Q_NULLPTR,
                                         tr("Data is empty"),
@@ -390,7 +394,7 @@ void SAKDebuggerInput::cyclingWritingTimerTimeout()
     // If the mCyclingTimeComboBox is not enable, it means that the device is not ready.
     // So, do not write data to device.
     if (mCyclingTimeComboBox->isEnabled()){
-        if (mInputTextEdit->toPlainText().length()){
+        if (mInputComboBox->currentText().length()){
             sendRawData();
         }
     }else{
@@ -401,7 +405,7 @@ void SAKDebuggerInput::cyclingWritingTimerTimeout()
 
 void SAKDebuggerInput::updateCrc()
 {
-    QString rawData = mInputTextEdit->toPlainText();
+    QString rawData = mInputComboBox->currentText();
     mInputParametersMutex.lock();
     int format = mInputParameters.textFormat;
     auto parametersTemp = mInputParameters;

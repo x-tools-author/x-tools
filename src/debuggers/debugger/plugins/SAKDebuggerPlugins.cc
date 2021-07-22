@@ -30,6 +30,8 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
     QMenu *menu = new QMenu(menuBt);
     menuBt->setMenu(menu);
 
+    mTitleLabel->setHidden(true);
+    mPanelWidget->setHidden(true);
 
     // Go to a web page.
     if (readmeBt) {

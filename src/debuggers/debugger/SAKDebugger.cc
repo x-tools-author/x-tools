@@ -383,7 +383,7 @@ void SAKDebugger::initializingVariables()
     mInputFormatComboBox = mUi->inputFormatComboBox;
     mMoreInputSettingsPushButton = mUi->moreInputSettingsPushButton;
     mSendPushButton = mUi->sendPushButton;
-    mInputTextEdit = mUi->inputTextEdit;
+    mInputTextEdit = mUi->inputComboBox;
     mCrcLabel = mUi->crcLabel;
 
     // Output settings
