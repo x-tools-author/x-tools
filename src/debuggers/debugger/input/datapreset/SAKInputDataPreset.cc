@@ -67,8 +67,8 @@ SAKInputDataPreset::SAKInputDataPreset(QSqlDatabase *sqlDatabase,
             }
         }
     });
-    connect(mUi->outportPushButton, &QPushButton::clicked,
-            this, &SAKInputDataPreset::importItems);
+    connect(mUi->exportPushButton, &QPushButton::clicked,
+            this, &SAKInputDataPreset::exportItems);
     connect(mUi->importPushButton, &QPushButton::clicked,
             this, &SAKInputDataPreset::importItems);
     connect(mUi->deletePushButton, &QPushButton::clicked,
