@@ -52,7 +52,7 @@ SAKInputDataPreset::SAKInputDataPreset(QSqlDatabase *sqlDatabase,
 
 
 
-    mTableContext.tableName = settingsGroup + QString("PresetItems");
+    mTableContext.tableName = settingsGroup + QString("PresetData");
     QString queryString = QString("CREATE TABLE '%1' (")
             .arg(mTableContext.tableName);
     queryString.append(QString("%1 INTEGER PRIMARY KEY NOT NULL, ")
