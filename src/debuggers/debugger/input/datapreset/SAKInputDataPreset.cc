@@ -332,11 +332,6 @@ void SAKInputDataPreset::on_importPushButton_clicked()
     }
 
     QJsonDocument jsc = QJsonDocument::fromJson(jsonArray);
-    if (!jsc.isArray()){
-        outputMessage(QString("QJsonDocument is not json array"), false);
-        return;
-    }
-
     QJsonArray jsa = jsc.array();
     for (int i = 0; i < jsa.count(); i++) {
         if (!jsa.at(i).isObject()) {
