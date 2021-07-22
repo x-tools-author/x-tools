@@ -34,6 +34,7 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
                                    QTextEdit *input,
                                    QSettings *settings,
                                    const QString &settingsGroup,
+                                   QSqlDatabase *sqlDatabase,
                                    QObject *parent)
     :QThread(parent)
     ,mCyclingTimeComboBox(regularlySending)
@@ -101,8 +102,8 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
     qRegisterMetaType<SAKStructInputParametersContext>("InputParameters");
 
     // Add actions after new.
-#if 0
-    mInputDataItemManager = new SAKInputDataPresetItemManager(debugPage);
+#if 1
+    mInputDataItemManager = new SAKInputDataPreset(sqlDatabase, settings, settingsGroup);
     QList<SAKInputDataPresetItem*> list = mInputDataItemManager->itemList();
     for (auto &var : list){
         appendAction(var);
@@ -164,9 +165,9 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
 
 SAKDebuggerInput::~SAKDebuggerInput()
 {
-    delete mCrcInterface;
-    //delete mInputDataItemManager;
-    delete mCrcSettingsDialog;
+    mCrcInterface->deleteLater();
+    mInputDataItemManager->deleteLater();
+    mCrcSettingsDialog->deleteLater();
 }
 
 void SAKDebuggerInput::showCrcSettingsDialog()

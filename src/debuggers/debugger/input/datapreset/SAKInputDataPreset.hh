@@ -12,26 +12,29 @@
 
 #include <QLabel>
 #include <QTimer>
+#include <QSettings>
 #include <QCheckBox>
 #include <QComboBox>
 #include <QLineEdit>
 #include <QTextEdit>
 #include <QListWidget>
 #include <QPushButton>
+#include <QSqlDatabase>
 
 namespace Ui {
     class SAKInputDataPreset;
 }
 
-class SAKDebugger;
 class SAKInputDataPresetItem;
-class SAKDebugPageCommonDatabaseInterface;
 /// @brief Data preset item manager widget
 class SAKInputDataPreset:public QWidget
 {
     Q_OBJECT
 public:
-    SAKInputDataPreset(SAKDebugger *mDebugPage, QWidget *parent = Q_NULLPTR);
+    SAKInputDataPreset(QSqlDatabase *sqlDataBase,
+                       QSettings *settings,
+                       QString settingsGroup,
+                       QWidget *parent = Q_NULLPTR);
     ~SAKInputDataPreset();
 
     struct DataPresetItemContext {
@@ -47,11 +50,12 @@ public:
      */
     QList<SAKInputDataPresetItem*> itemList();
 private:
-    SAKDebugger *mDebugPage;
     QListWidget *mListWidget;
     QString mTableName;
     QTimer mClearMessageInfoTimer;
-    SAKDebugPageCommonDatabaseInterface *mDatabaseInterface;
+    QSqlDatabase *mSqlDataBase;
+    QSettings *mSettings;
+    QString mSettingsGroup;
 private:
     void readinRecord();
     void outputMessage(QString msg, bool isError = false);

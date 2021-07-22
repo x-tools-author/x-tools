@@ -15,19 +15,22 @@
 #include <QStandardPaths>
 #include <QListWidgetItem>
 
-#include "SAKDebugger.hh"
 #include "SAKApplication.hh"
 #include "SAKInputDataPreset.hh"
 #include "SAKCommonCrcInterface.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKInputDataPresetItem.hh"
-#include "SAKDebugPageCommonDatabaseInterface.hh"
 
 #include "ui_SAKInputDataPreset.h"
 
-SAKInputDataPreset::SAKInputDataPreset(SAKDebugger *debugPage, QWidget *parent)
+SAKInputDataPreset::SAKInputDataPreset(QSqlDatabase *sqlDataBase,
+                                       QSettings *settings,
+                                       QString settingsGroup,
+                                       QWidget *parent)
     :QWidget(parent)
-    ,mDebugPage(debugPage)
+    ,mSqlDataBase(sqlDataBase)
+    ,mSettings(settings)
+    ,mSettingsGroup(settingsGroup)
     ,mUi(new Ui::SAKInputDataPreset)
 {
     mUi->setupUi(this);
@@ -43,9 +46,10 @@ SAKInputDataPreset::SAKInputDataPreset(SAKDebugger *debugPage, QWidget *parent)
         mClearMessageInfoTimer.stop();
         mInfoLabel->clear();
     });
-
+#if 0
     mDatabaseInterface = mDebugPage->databaseInterface();
     mTableName = mDebugPage->tableNamePresettingDataTable();
+#endif
     readinRecord();
 }
 
@@ -65,6 +69,7 @@ QList<SAKInputDataPresetItem*> SAKInputDataPreset::itemList()
     return itemWidgetList;
 }
 
+#if 0
 QWidget *innerCreateItem(SAKDebugPageCommonDatabaseInterface::SAKStructPresettingDataItem &var, QListWidget *listWidget)
 {
     QListWidgetItem *item = new QListWidgetItem(listWidget);
@@ -79,18 +84,24 @@ QWidget *innerCreateItem(SAKDebugPageCommonDatabaseInterface::SAKStructPresettin
 
     return itemWidget;
 }
+#endif
 
 void SAKInputDataPreset::readinRecord()
 {
+#if 0
     QList<SAKDebugPageCommonDatabaseInterface::SAKStructPresettingDataItem> itemList = mDatabaseInterface->selectDataPresetItem();
     for (auto &var : itemList){
         QWidget *iw = innerCreateItem(var, mListWidget);
         appendDataPresetItem(iw);
     }
+#endif
 }
 
 void SAKInputDataPreset::outputMessage(QString msg, bool isError)
 {
+    Q_UNUSED(msg);
+    Q_UNUSED(isError);
+#if 0
     QString color = "black";
     if (isError){
         color = "red";
@@ -100,6 +111,7 @@ void SAKInputDataPreset::outputMessage(QString msg, bool isError)
 
     mInfoLabel->setText(QTime::currentTime().toString("hh:mm:ss ") + msg);
     mClearMessageInfoTimer.start();
+#endif
 }
 
 bool SAKInputDataPreset::contains(quint64 paraID)
@@ -129,6 +141,8 @@ void SAKInputDataPreset::appendDataPresetItem(QWidget *iw)
 
 void SAKInputDataPreset::updateFormat(int format)
 {
+    Q_UNUSED(format);
+#if 0
     if (sender()){
         if (sender()->inherits("SAKInputDataPresetItem")){
             SAKInputDataPresetItem *item = qobject_cast<SAKInputDataPresetItem*>(sender());
@@ -138,10 +152,13 @@ void SAKInputDataPreset::updateFormat(int format)
             mDatabaseInterface->updateRecord(mTableName, table.columns.format, QVariant::fromValue(format), id, false);
         }
     }
+#endif
 }
 
 void SAKInputDataPreset::updateDescription(const QString &text)
 {
+    Q_UNUSED(text);
+#if 0
     if (sender()){
         if (sender()->inherits("SAKInputDataPresetItem")){
             SAKInputDataPresetItem *item = qobject_cast<SAKInputDataPresetItem*>(sender());
@@ -152,10 +169,13 @@ void SAKInputDataPreset::updateDescription(const QString &text)
             emit descriptionChanged(item);
         }
     }
+#endif
 }
 
 void SAKInputDataPreset::updateText(QString text)
 {
+    Q_UNUSED(text);
+#if 0
     if (sender()){
         if (sender()->inherits("SAKInputDataPresetItem")){
             SAKInputDataPresetItem *item = qobject_cast<SAKInputDataPresetItem*>(sender());
@@ -165,10 +185,12 @@ void SAKInputDataPreset::updateText(QString text)
             mDatabaseInterface->updateRecord(mTableName, table.columns.text, QVariant::fromValue(text), id, true);
         }
     }
+#endif
 }
 
 void SAKInputDataPreset::on_deletePushButton_clicked()
 {
+#if 0
     QListWidgetItem *item = mListWidget->currentItem();
     if (item){
         SAKInputDataPresetItem *itemWidget = reinterpret_cast<SAKInputDataPresetItem*>(mListWidget->itemWidget(item));
@@ -182,10 +204,12 @@ void SAKInputDataPreset::on_deletePushButton_clicked()
     }else{
         outputMessage(tr("Plese select an item first."));
     }
+#endif
 }
 
 void SAKInputDataPreset::on_addPushButton_clicked()
 {
+#if 0
     QListWidgetItem *item = new QListWidgetItem(mListWidget);
     SAKInputDataPresetItem *itemWidget = new SAKInputDataPresetItem(this);
     item->setSizeHint(itemWidget->sizeHint());
@@ -200,10 +224,12 @@ void SAKInputDataPreset::on_addPushButton_clicked()
     dataItem.format = itemWidget->itemTextFromat();
     dataItem.description = itemWidget->itemDescription();
     mDatabaseInterface->insertDataPresetItem(dataItem);
+#endif
 }
 
 void SAKInputDataPreset::on_outportPushButton_clicked()
 {
+#if 0
     // Read in records from database
     QList<SAKDebugPageCommonDatabaseInterface::SAKStructPresettingDataItem> itemList = mDatabaseInterface->selectDataPresetItem();
     if (itemList.isEmpty()){
@@ -241,10 +267,12 @@ void SAKInputDataPreset::on_outportPushButton_clicked()
     }else{
         outputMessage(file.errorString(), false);
     }
+#endif
 }
 
 void SAKInputDataPreset::on_importPushButton_clicked()
 {
+#if 0
     QString defaultPath = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
     QString fileName = QFileDialog::getOpenFileName(this, tr("Import data"), defaultPath, QString("json (*.json)"));
     QFile file(fileName);
@@ -281,4 +309,5 @@ void SAKInputDataPreset::on_importPushButton_clicked()
     }else{
         outputMessage(file.errorString(), false);
     }
+#endif
 }

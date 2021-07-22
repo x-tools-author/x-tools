@@ -21,6 +21,7 @@
 #include <QSettings>
 #include <QPushButton>
 #include <QListWidget>
+#include <QSqlDatabase>
 #include <QWaitCondition>
 
 class SAKInputDataFactory;
@@ -42,6 +43,7 @@ public:
                      QTextEdit *input,
                      QSettings *settings,
                      const QString &settingsGroup,
+                     QSqlDatabase *sqlDatabase,
                      QObject *parent = Q_NULLPTR);
     ~SAKDebuggerInput();
 

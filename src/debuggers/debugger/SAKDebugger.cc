@@ -78,12 +78,12 @@ SAKDebugger::SAKDebugger(int type, QString name, QWidget *parent)
                                               mOutputTextBroswer,
                                               this);
     mStatistics = new SAKDebuggerStatistics(mTxSpeedLabel,
-                                                      mRxSpeedLabel,
-                                                      mTxFramesLabel,
-                                                      mRxFramesLabel,
-                                                      mTxBytesLabel,
-                                                      mRxBytesLabel,
-                                                      this);
+                                            mRxSpeedLabel,
+                                            mTxFramesLabel,
+                                            mRxFramesLabel,
+                                            mTxBytesLabel,
+                                            mRxBytesLabel,
+                                            this);
     mInputController = new SAKDebuggerInput(mCyclingTimeComboBox,
                                             mInputFormatComboBox,
                                             mMoreInputSettingsPushButton,
@@ -92,6 +92,7 @@ SAKDebugger::SAKDebugger(int type, QString name, QWidget *parent)
                                             mInputTextEdit,
                                             settings(),
                                             mSettingGroup,
+                                            sqlDatabase(),
                                             this);
 
     // Initializing the timer.
