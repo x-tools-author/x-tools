@@ -196,15 +196,15 @@ void SAKInputDataPreset::insertRecord(const QString &tableName,
     SAKStructDataPresetItemTableContext tableCtx;
     QString queryString = QString("INSERT INTO %1(%2,%3,%4,%5)"
                                   " VALUES(%6,%7,'%8','%9')")
-            .arg(tableName)
-            .arg(tableCtx.columns.id)
-            .arg(tableCtx.columns.format)
-            .arg(tableCtx.columns.description)
-            .arg(tableCtx.columns.text)
-            .arg(itemWidget->itemID())
-            .arg(itemWidget->itemTextFromat())
-            .arg(itemWidget->itemDescription())
-            .arg(itemWidget->itemText());
+            .arg(tableName,
+                 tableCtx.columns.id,
+                 tableCtx.columns.format,
+                 tableCtx.columns.description,
+                 tableCtx.columns.text,
+                 QString::number(itemWidget->itemID()),
+                 QString::number(itemWidget->itemTextFromat()),
+                 itemWidget->itemDescription(),
+                 itemWidget->itemText());
     if (!mSqlQuery.exec(queryString)) {
 #if 0
         qWarning() << "Insert record to("
@@ -271,9 +271,7 @@ void SAKInputDataPreset::deleteItem(QListWidgetItem *item)
         // Delete record from database.
         mUi->itemListWidget->removeItemWidget(item);
         delete item;
-        SAKDebugger::commonSqlApiDeleteRecord(&mSqlQuery,
-                                              mTableContext.tableName,
-                                              id);
+        SAKDebugger::commonSqlApiDeleteRecord(&mSqlQuery, tableName, id);
     } else {
         outputMessage(tr("Plese select an item first."));
     }
