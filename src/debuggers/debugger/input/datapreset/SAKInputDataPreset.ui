@@ -80,7 +80,7 @@
     </widget>
    </item>
    <item row="1" column="4">
-    <widget class="QPushButton" name="outportPushButton">
+    <widget class="QPushButton" name="exportPushButton">
      <property name="text">
       <string>Export</string>
      </property>
