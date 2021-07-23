@@ -55,6 +55,7 @@ public:
         } crc;
 
         int textFormat; // Input text format, such as bin, otc, dec, hex and so on
+        int suffixsType;
     };
 
     /**
@@ -78,9 +79,16 @@ public:
 protected:
     void run() override;
 private:
+    struct SAKStructSettingKeyContext {
+        QString suffixsType;
+        QString inputTextFormat;
+        QString enableSendingRecord;
+    } mSettingKeyCtx;
+private:
     QMenu *mQuickSendingMenu;
     QVector<QPair<QString, SAKStructInputParametersContext>> mBytesInfoVector;
     QMutex mBytesInfoVectorMutex;
+    bool mEnableSendingRecord;
 private:
     QComboBox *mCyclingTimeComboBox;
     QComboBox *mInputModelComboBox;

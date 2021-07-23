@@ -44,7 +44,14 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
     ,mInputComboBox(input)
     ,mCrcLabel(crc)
     ,mCrcInterface(new SAKCommonCrcInterface)
+    ,mSettings(settings)
 {
+    // Initialize setting key
+    mSettingKeyCtx.suffixsType = settingsGroup + "suffixsType";
+    mSettingKeyCtx.inputTextFormat = settingsGroup + "inputTextFormat";
+    mSettingKeyCtx.enableSendingRecord = settingsGroup + "enableSendingRecord";
+
+
     mCyclingTimeComboBox->addItem(tr("Forbidden"), INT_MAX);
     QString unit = tr("ms");
     for (int i = 50; i < 500; i += 50) {
@@ -86,6 +93,31 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
     });
     auto ret = moreInputSettingsPushButtonMenu->addSeparator();
     Q_UNUSED(ret);
+
+
+    QMenu *suffixsMenu = moreInputSettingsPushButtonMenu->addMenu(tr("Suffixs"));
+    QMetaEnum suffixsMetaEnum =
+            QMetaEnum::fromType<SAKCommonDataStructure::SAKEmnuSuffixsType>();
+    QVariant suffixsTypeVariant = mSettings->value(mSettingKeyCtx.suffixsType);
+    int suffixsType = suffixsTypeVariant.toInt();
+    QActionGroup *suffixsActionGroup = new QActionGroup(this);
+    for (int i = 0; i < suffixsMetaEnum.keyCount(); i++) {
+        int type = suffixsMetaEnum.keyToValue(suffixsMetaEnum.key(i));
+        auto cookedType = static_cast<SAKCommonDataStructure::SAKEmnuSuffixsType>(type);
+        QString friendlySuffix = SAKCommonDataStructure::friendlySuffix(cookedType);
+        if (friendlySuffix.isEmpty()) {
+            friendlySuffix = tr("(None)");
+        }
+        QAction *suffixAction = suffixsMenu->addAction(friendlySuffix, this, [=](){
+            mSettings->setValue(mSettingKeyCtx.suffixsType, cookedType);
+            mInputParameters.suffixsType = cookedType;
+        });
+        suffixAction->setCheckable(true);
+        suffixsActionGroup->addAction(suffixAction);
+        if (suffixsType == cookedType) {
+            suffixAction->setChecked(true);
+        }
+    }
 
 
     moreInputSettingsPushButtonMenu->addAction(tr("Save Input"), this, [=](){
@@ -138,11 +170,34 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
     });
 #endif
 
+
     moreInputSettingsPushButtonMenu->addAction(tr("CRC Settings"), this, [=](){
         if (mCrcSettings->isHidden()) {
             mCrcSettings->show();
         } else {
             mCrcSettings->activateWindow();
+        }
+    });
+
+
+    auto *action = moreInputSettingsPushButtonMenu->addAction(
+                tr("Enable Sending Record")
+                );
+    action->setCheckable(true);
+    auto valueVariant = mSettings->value(mSettingKeyCtx.enableSendingRecord);
+    if (valueVariant.isNull()) {
+        mEnableSendingRecord = true;
+        action->setChecked(mEnableSendingRecord);
+    } else {
+        auto checked = valueVariant.toBool();
+        mEnableSendingRecord = checked;
+        action->setChecked(checked);
+    }
+    connect(action, &QAction::triggered, this, [=](){
+        mSettings->setValue(mSettingKeyCtx.enableSendingRecord, action->isChecked());
+        this->mEnableSendingRecord = action->isChecked();
+        if (!this->mEnableSendingRecord) {
+            input->clear();
         }
     });
 
