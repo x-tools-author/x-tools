@@ -108,15 +108,15 @@ private:
     QPushButton *m_okPushButton;
     QPushButton *m_truncatePushButton;
 private slots:
-    void on_pathLineEdit_textChanged(const QString &text);
-    void on_selectPushButton_clicked();
-    void on_truncatePushButton_clicked();
-    void on_readDataCheckBox_clicked();
-    void on_writtenDataCheckBox_clicked();
-    void on_timestampCheckBox_clicked();
-    void on_binRadioButton_clicked();
-    void on_hexRadioButton_clicked();
-    void on_utf8RadioButton_clicked();
+    void onPathLineEditTextChanged(const QString &text);
+    void onSelectPushButtonClicked();
+    void onTruncatePushButtonClicked();
+    void onReadDataCheckBoxClicked();
+    void onWrittenDataCheckBoxClicked();
+    void onTimestampCheckBoxClicked();
+    void onBinRadioButtonClicked();
+    void onHexRadioButtonClicked();
+    void onUtf8RadioButtonClicked();
 };
 Q_DECLARE_METATYPE(SAKDebuggerOutputSave2File::ParametersContext);
 #endif

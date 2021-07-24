@@ -41,6 +41,25 @@ SAKDebuggerOutputSave2File::SAKDebuggerOutputSave2File(QSettings
     m_okPushButton = ui->okPushButton;
     m_truncatePushButton = ui->truncatePushButton;
 
+    connect(m_pathLineEdit, &QLineEdit::textChanged,
+            this, &SAKDebuggerOutputSave2File::onPathLineEditTextChanged);
+    connect(m_selectPushButton, &QPushButton::clicked,
+            this, &SAKDebuggerOutputSave2File::onSelectPushButtonClicked);
+    connect(m_readDataCheckBox, &QCheckBox::clicked,
+            this, &SAKDebuggerOutputSave2File::onReadDataCheckBoxClicked);
+    connect(m_writtenDataCheckBox, &QCheckBox::clicked,
+            this, &SAKDebuggerOutputSave2File::onWrittenDataCheckBoxClicked);
+    connect(m_timestampCheckBox, &QCheckBox::clicked,
+            this, &SAKDebuggerOutputSave2File::onTimestampCheckBoxClicked);
+    connect(m_binRadioButton, &QRadioButton::clicked,
+            this, &SAKDebuggerOutputSave2File::onBinRadioButtonClicked);
+    connect(m_hexRadioButton, &QRadioButton::clicked,
+            this, &SAKDebuggerOutputSave2File::onHexRadioButtonClicked);
+    connect(m_utf8RadioButton, &QPushButton::clicked,
+            this, &SAKDebuggerOutputSave2File::onUtf8RadioButtonClicked);
+    connect(m_truncatePushButton, &QPushButton::clicked,
+            this, &SAKDebuggerOutputSave2File::onTruncatePushButtonClicked);
+
     // Initializing variables about settings
     QString groupString = settingGroup;
     m_settingsOutputPath = QString("%1/outputPath").arg(groupString);
@@ -157,14 +176,14 @@ SAKDebuggerOutputSave2File::parameters(ParametersContext::DataType type)
     return parametersCtx;
 }
 
-void SAKDebuggerOutputSave2File::on_pathLineEdit_textChanged(const QString &text)
+void SAKDebuggerOutputSave2File::onPathLineEditTextChanged(const QString &text)
 {
     if (m_settings){
         m_settings->setValue(m_settingsOutputPath, text);
     }
 }
 
-void SAKDebuggerOutputSave2File::on_selectPushButton_clicked()
+void SAKDebuggerOutputSave2File::onSelectPushButtonClicked()
 {
     QString datetime = QDateTime::currentDateTime().toString("yyyyMMddhhmmss");
     QString fileName;
@@ -180,7 +199,7 @@ void SAKDebuggerOutputSave2File::on_selectPushButton_clicked()
     }
 }
 
-void SAKDebuggerOutputSave2File::on_truncatePushButton_clicked()
+void SAKDebuggerOutputSave2File::onTruncatePushButtonClicked()
 {
     QString fileName = m_pathLineEdit->text();
     if (fileName.isEmpty()){
@@ -193,14 +212,14 @@ void SAKDebuggerOutputSave2File::on_truncatePushButton_clicked()
     }
 }
 
-void SAKDebuggerOutputSave2File::on_readDataCheckBox_clicked()
+void SAKDebuggerOutputSave2File::onReadDataCheckBoxClicked()
 {
     if (m_settings){
         m_settings->setValue(m_settingKeyReadData, m_readDataCheckBox->isChecked());
     }
 }
 
-void SAKDebuggerOutputSave2File::on_writtenDataCheckBox_clicked()
+void SAKDebuggerOutputSave2File::onWrittenDataCheckBoxClicked()
 {
     if (m_settings){
         m_settings->setValue(m_settingKeyWrittenData,
@@ -208,7 +227,7 @@ void SAKDebuggerOutputSave2File::on_writtenDataCheckBox_clicked()
     }
 }
 
-void SAKDebuggerOutputSave2File::on_timestampCheckBox_clicked()
+void SAKDebuggerOutputSave2File::onTimestampCheckBoxClicked()
 {
     if (m_settings){
         m_settings->setValue(m_settingKeyTimestamp,
@@ -216,21 +235,21 @@ void SAKDebuggerOutputSave2File::on_timestampCheckBox_clicked()
     }
 }
 
-void SAKDebuggerOutputSave2File::on_binRadioButton_clicked()
+void SAKDebuggerOutputSave2File::onBinRadioButtonClicked()
 {
     if (m_settings){
         m_settings->setValue(m_settingKeyDataType, ParametersContext::Bin);
     }
 }
 
-void SAKDebuggerOutputSave2File::on_hexRadioButton_clicked()
+void SAKDebuggerOutputSave2File::onHexRadioButtonClicked()
 {
     if (m_settings){
         m_settings->setValue(m_settingKeyDataType, ParametersContext::Hex);
     }
 }
 
-void SAKDebuggerOutputSave2File::on_utf8RadioButton_clicked()
+void SAKDebuggerOutputSave2File::onUtf8RadioButtonClicked()
 {
     if (m_settings){
         m_settings->setValue(m_settingKeyDataType, ParametersContext::Utf8);
