@@ -1,4 +1,4 @@
-﻿/*
+﻿/****************************************************************************************
  * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -6,70 +6,112 @@
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- */
+ ***************************************************************************************/
+#include <QDebug>
+#include <QElapsedTimer>
+
 #include "SAKSerialPortDevice.hh"
 #include "SAKSerialPortDebugger.hh"
 #include "SAKSerialPortController.hh"
 
-SAKSerialPortDevice::SAKSerialPortDevice(SAKSerialPortDebugger *debugPage, QObject *parent)
-    :SAKDebuggerDevice(debugPage, parent)
+SAKSerialPortDevice::SAKSerialPortDevice(QObject *parent)
+    :SAKDebuggerDevice(parent)
     ,mSerialPort(Q_NULLPTR)
-    ,mDebugPage(debugPage)
 {
 
 }
 
-bool SAKSerialPortDevice::initializing(QString &errorString)
+void SAKSerialPortDevice::setParametersCtx(
+        SAKCommonDataStructure::SAKStructSerialPortParametersContext ctx
+        )
 {
-    errorString = tr("Unknown error");
-    auto controller = qobject_cast<SAKSerialPortController*>(mDebugPage->deviceController());
-    auto parameters = controller->parameters().value<SAKSerialPortController::SerialPortParameters>();
+    mParametersCtxMutex.lock();
+    mParametersCtx = ctx;
+    mParametersCtxMutex.unlock();
+}
+
+bool SAKSerialPortDevice::initialize()
+{
+    auto parasCtx = parametersCtx();
     mSerialPort = new QSerialPort;
-    mSerialPort->setPortName(parameters.name);
-    mSerialPort->setBaudRate(parameters.baudRate);
-    mSerialPort->setDataBits(parameters.dataBits);
-    mSerialPort->setStopBits(parameters.stopBits);
-    mSerialPort->setParity(parameters.parity);
-    mSerialPort->setFlowControl(parameters.flowControl);
+    mSerialPort->setBaudRate(parasCtx.baudRate);
+    mSerialPort->setDataBits(parasCtx.dataBits);
+    mSerialPort->setFlowControl(parasCtx.flowControl);
+    mSerialPort->setParity(parasCtx.parity);
+    mSerialPort->setPortName(parasCtx.portName);
+    mSerialPort->setStopBits(parasCtx.stopBits);
+#ifdef QT_DEBUG
+    qDebug() << "baudRate" << parasCtx.baudRate
+             << "dataBits" << parasCtx.dataBits
+             << "flowControl" << parasCtx.flowControl
+             << "parity" << parasCtx.parity
+             << "portName" << parasCtx.portName
+             << "stopBits" << parasCtx.stopBits
+             << "intervalNs" << parasCtx.intervalNs;
+#endif
 
-    return true;
-}
-
-bool SAKSerialPortDevice::open(QString &errorString)
-{
-    if(mSerialPort->open(QSerialPort::ReadWrite)){
-        errorString = tr("Unknown error");
-        return true;
-    }else{
-        errorString = mSerialPort->errorString();
-        return false;
+    if (mSerialPort->open(QSerialPort::ReadWrite)) {
+         connect(mSerialPort, &QSerialPort::readyRead,
+                 this, [=](){
+             emit readyRead(SAKDeviceProtectedSignal());
+         });
+         return true;
+    } else {
+         emit errorOccurred(mSerialPort->errorString());
+         qWarning() << "Can not open device: " << mSerialPort->errorString();
+         mSerialPort->deleteLater();
+         return false;
     }
 }
 
 QByteArray SAKSerialPortDevice::read()
 {
-    QByteArray bytes = mSerialPort->readAll();
-    return bytes;
-}
+    auto parasCtx = this->parametersCtx();
+    QElapsedTimer elapsedTimer;
+    QByteArray bytes;
+    while (true) {
+        auto ret = mSerialPort->readAll();
+        if (ret.length()) {
+            bytes.append(ret);
+            elapsedTimer.restart();
+        } else {
+            auto ret = elapsedTimer.nsecsElapsed();
+            if (parasCtx.intervalNs <= ret) {
+                break;
+            }
+        }
+    }
 
-QByteArray SAKSerialPortDevice::write(QByteArray bytes)
-{
-    qint64 ret = mSerialPort->write(bytes);
-    if (ret > 0){
+    if (bytes.length()) {
         return bytes;
-    }else{
+    } else {
         return QByteArray();
     }
 }
 
-void SAKSerialPortDevice::close()
+QByteArray SAKSerialPortDevice::write(const QByteArray &bytes)
 {
-    mSerialPort->clear();
-    mSerialPort->close();
+    if (mSerialPort->write(bytes) > 0) {
+        return bytes;
+    } else {
+        emit errorOccurred(mSerialPort->errorString());
+        qWarning() << "Write bytes failed:" << mSerialPort->errorString();
+        return QByteArray();
+    }
 }
 
-void SAKSerialPortDevice::free()
+void SAKSerialPortDevice::uninitialize()
 {
+    mSerialPort->close();
     delete mSerialPort;
     mSerialPort = Q_NULLPTR;
+}
+
+SAKCommonDataStructure::SAKStructSerialPortParametersContext
+        SAKSerialPortDevice::parametersCtx()
+{
+    mParametersCtxMutex.lock();
+    auto parasCtx = mParametersCtx;
+    mParametersCtxMutex.unlock();
+    return parasCtx;
 }

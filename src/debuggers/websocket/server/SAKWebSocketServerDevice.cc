@@ -26,7 +26,7 @@ SAKWebSocketServerDevice::SAKWebSocketServerDevice(SAKWebSocketServerDebugger *d
 
 }
 
-bool SAKWebSocketServerDevice::initializing(QString &errorString)
+bool SAKWebSocketServerDevice::initialize(QString &errorString)
 {
     mDeviceController = qobject_cast<SAKWebSocketServerController*>(mDebugPage->deviceController());
     auto parameters = mDeviceController->parameters().value<SAKWebSocketServerController::WebSocketServerParameters>();

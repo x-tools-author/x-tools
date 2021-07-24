@@ -25,7 +25,7 @@ class SAKWebSocketServerDevice:public SAKDebuggerDevice
 public:
     SAKWebSocketServerDevice(SAKWebSocketServerDebugger *debugPage, QObject *parent = Q_NULLPTR);
 private:
-    bool initializing(QString &errorString) final;
+    bool initialize(QString &errorString) final;
     bool open(QString &errorString) final;
     QByteArray read() final;
     QByteArray write(QByteArray bytes) final;

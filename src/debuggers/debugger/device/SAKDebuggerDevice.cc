@@ -7,6 +7,7 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ***************************************************************************************/
+#include <QTimer>
 #include <QDebug>
 #include <QWidget>
 #include <QDialog>
@@ -16,200 +17,82 @@
 #include "SAKDebuggerDevice.hh"
 #include "SAKDebugPageDeviceMask.hh"
 
-SAKDebuggerDevice::SAKDebuggerDevice(SAKDebugger *debugPage, QObject *parent)
+SAKDebuggerDevice::SAKDebuggerDevice(QObject *parent)
     :QThread(parent)
-    ,mDebugPage(debugPage)
 {
-    mDeviceMask = new SAKDebugPageDeviceMask(mDebugPage, Q_NULLPTR);
-    mDeviceMask->setWindowModality(Qt::ApplicationModal);
-    mSettingsPanelList << SettingsPanel{tr("Mask settings"),
-                          qobject_cast<QWidget*>(mDeviceMask)};
+
 }
 
 SAKDebuggerDevice::~SAKDebuggerDevice()
 {
-    requestInterruption();
-    mThreadWaitCondition.wakeAll();
-    exit();
-    wait();
 
-    for (auto &var : mSettingsPanelList){
-        var.panel->close();
-        var.panel->deleteLater();
-    }
-}
-
-void SAKDebuggerDevice::requestWakeup()
-{
-    mThreadWaitCondition.wakeAll();
 }
 
 void SAKDebuggerDevice::writeBytes(QByteArray bytes)
 {
-    mWaitingForWritingBytesListMutex.lock();
+    mBytesVectorMutex.lock();
     if (bytes.length()){
-        mWaitingForWritingBytesList.append(bytes);
+        mBytesVector.append(bytes);
     }else{
-        mWaitingForWritingBytesList.append(QByteArray("empty"));
+        mBytesVector.append(QByteArray("empty"));
     }
-    mWaitingForWritingBytesListMutex.unlock();
+    mBytesVectorMutex.unlock();
 }
 
-QList<SAKDebuggerDevice::SettingsPanel> SAKDebuggerDevice::settingsPanelList()
+void SAKDebuggerDevice::setupMenu(QMenu *menu)
 {
-    return mSettingsPanelList;
+    Q_UNUSED(menu);
 }
 
-QByteArray SAKDebuggerDevice::takeWaitingForWrittingBytes()
+QByteArray SAKDebuggerDevice::takeBytes()
 {
     QByteArray bytes;
-    mWaitingForWritingBytesListMutex.lock();
-    if (mWaitingForWritingBytesList.length()){
-        bytes = mWaitingForWritingBytesList.takeFirst();
+    mBytesVectorMutex.lock();
+    if (mBytesVector.count()){
+        bytes = mBytesVector.takeFirst();
     }
-    mWaitingForWritingBytesListMutex.unlock();
+    mBytesVectorMutex.unlock();
 
     return bytes;
 }
 
 void SAKDebuggerDevice::run()
 {
-    QEventLoop eventLoop;
-    QString errorString;
-    if (!initializing(errorString)){
-        emit deviceStateChanged(false);
-        emit messageChanged(errorString, false);
-        free();
-        return;
+    QTimer *writeTimer = new QTimer;
+    writeTimer->setInterval(5);
+    writeTimer->setSingleShot(true);
+    if (initialize()) {
+        connect(this, &SAKDebuggerDevice::readyRead,
+                this, [=](SAKDeviceProtectedSignal){
+            QByteArray ret = read();
+            if (ret.length()) {
+                ret = mask(ret, true);
+                emit bytesRead(ret);
+            }
+        }, Qt::DirectConnection);
+
+        connect(writeTimer, &QTimer::timeout, this, [=](){
+            QByteArray bytes = takeBytes();
+            if (bytes.length()) {
+                bytes = mask(bytes, false);
+                QByteArray ret = write(bytes);
+                if (ret.length()) {
+                    emit bytesWritten(ret);
+                }
+            }
+            writeTimer->start();
+        }, Qt::DirectConnection);
+
+        writeTimer->start();
+        exec();
     }
 
-    // Open the device
-    if (open(errorString)){
-        emit deviceStateChanged(true);
-        while (true){
-            if (isInterruptionRequested()){
-                break;
-            }
-
-            // Read bytes from device
-            QByteArray bytes = read();
-            if (bytes.length() > 0){
-                auto parasCtx = mDeviceMask->parametersContext();
-                QByteArray temp;
-                if (parasCtx.enableMask){
-                    for (int i = 0; i < bytes.length(); i++){
-                        quint8 value =  quint8(bytes.at(i));
-                        value = bytes.at(i) ^ parasCtx.rxMask;
-                        temp.append(reinterpret_cast<char*>(&value), 1);
-                    }
-                    bytes = temp;
-                }
-                emit bytesRead(bytes);
-            }
-
-            // Write bytes to device
-            while (true) {
-                bytes = takeWaitingForWrittingBytes();
-                if (bytes.length() > 0){
-                    bytes = write(bytes);
-                    auto parasCtx = mDeviceMask->parametersContext();
-                    QByteArray temp;
-                    if (parasCtx.enableMask){
-                        for (int i = 0; i < bytes.length(); i++){
-                            quint8 value =  quint8(bytes.at(i));
-                            value ^= parasCtx.txMask;
-                            temp.append(reinterpret_cast<char*>(&value), 1);
-                        }
-                        bytes = temp;
-                    }
-                    emit bytesWritten(bytes);
-                }else{
-                    break;
-                }
-            }
-
-            // Just for debugging data stream(for test page only)
-            bytes = writeForTest();
-            if (bytes.length()){
-                auto parasCtx = mDeviceMask->parametersContext();
-                QByteArray temp;
-                if (parasCtx.enableMask){
-                    for (int i = 0; i < bytes.length(); i++){
-                        quint8 value =  quint8(bytes.at(i));
-                        value ^= parasCtx.txMask;
-                        temp.append(reinterpret_cast<char*>(&value));
-                    }
-                    bytes = temp;
-                }
-                emit bytesWritten(bytes);
-            }
-
-            // Chcked device state
-            eventLoop.processEvents();
-            if(!checkSomething(errorString)){
-                emit messageChanged(errorString, false);
-                break;
-            }
-
-            if(isInterruptionRequested()){
-                break;
-            }else{
-                // Do something to make cpu happy
-                mThreadMutex.lock();
-                mThreadWaitCondition.wait(&mThreadMutex,
-                                          SAK_DEVICE_THREAD_SLEEP_INTERVAL);
-                mThreadMutex.unlock();
-            }
-        }
-
-        close();
-    }else{
-        emit messageChanged(errorString, false);
-    }
-
-    emit deviceStateChanged(false);
-    free();
-}
-
-bool SAKDebuggerDevice::initializing(QString &errorString)
-{
-    errorString = QString("Need to override");
-    return false;
-}
-
-bool SAKDebuggerDevice::open(QString &errorString)
-{
-    errorString = QString("Need to override");
-    return false;
+    writeTimer->stop();
+    writeTimer->deleteLater();
+    uninitialize();
 }
 
 QByteArray SAKDebuggerDevice::read()
-{
-    return QByteArray();
-}
-
-QByteArray SAKDebuggerDevice::write(QByteArray bytes)
-{
-    return bytes;
-}
-
-bool SAKDebuggerDevice::checkSomething(QString &errorString)
-{
-    errorString = QString("Unknown error");
-    return true;
-}
-
-void SAKDebuggerDevice::close()
-{
-    // Nothing to do
-}
-
-void SAKDebuggerDevice::free()
-{
-    // Nothing to do
-}
-
-QByteArray SAKDebuggerDevice:: writeForTest()
 {
     return QByteArray();
 }
@@ -243,9 +126,9 @@ QByteArray SAKDebuggerDevice::mask(const QByteArray &plaintext, bool isRxData)
 SAKDebuggerDevice::SAKStructDevicePatametersContext
 SAKDebuggerDevice::parametersContext()
 {
-    m_parametersCtxMutex.lock();
-    auto parasCtx = m_parametersCtx;
-    m_parametersCtxMutex.unlock();
+    mParametersCtxMutex.lock();
+    auto parasCtx = mParametersCtx;
+    mParametersCtxMutex.unlock();
 
     return parasCtx;
 }

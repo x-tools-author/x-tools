@@ -5,16 +5,16 @@ qtHaveModule(serialport){
 
 contains(DEFINES, SAK_IMPORT_MODULE_SERIALPORT){
     FORMS += \
-    $$PWD/SAKSerialPortController.ui
+        $$PWD/SAKSerialPortController.ui
 
     HEADERS += \
-    $$PWD/SAKSerialPortController.hh \
-    $$PWD/SAKSerialPortDebugger.hh \
+        $$PWD/SAKSerialPortController.hh \
+        $$PWD/SAKSerialPortDebugger.hh \
         $$PWD/SAKSerialPortDevice.hh
 
     SOURCES += \
-    $$PWD/SAKSerialPortController.cc \
-    $$PWD/SAKSerialPortDebugger.cc \
+        $$PWD/SAKSerialPortController.cc \
+        $$PWD/SAKSerialPortDebugger.cc \
         $$PWD/SAKSerialPortDevice.cc
 
     INCLUDEPATH += \

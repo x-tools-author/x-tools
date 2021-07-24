@@ -19,10 +19,8 @@
 #include <QHBoxLayout>
 #include <QFileDialog>
 #include <QTextStream>
-#include <QHostAddress>
 #include <QIntValidator>
 #include <QLoggingCategory>
-#include <QNetworkInterface>
 #include <QStandardItemModel>
 
 #include "SAKDebugger.hh"
@@ -34,7 +32,7 @@
 #include "SAKDebuggerStatistics.hh"
 #include "SAKCommonCrcInterface.hh"
 #include "SAKCommonDataStructure.hh"
-#include "SAKDebugPageController.hh"
+#include "SAKDebuggerController.hh"
 #include "SAKOtherAnalyzerThread.hh"
 #include "SAKOtherAnalyzerThreadManager.hh"
 #include "SAKPluginAutomaticallyResponse.hh"
@@ -48,11 +46,10 @@
 
 SAKDebugger::SAKDebugger(int type, QString name, QWidget *parent)
     :QWidget(parent)
-    ,mIsInitializing(true)
     ,mDebugPageType(type)
     ,mSettingGroup(name)
-    ,mDevice(Q_NULLPTR)
-    ,mDeviceController(Q_NULLPTR)
+    ,mModuleDevice(Q_NULLPTR)
+    ,mModuleController(Q_NULLPTR)
     ,mUi(new Ui::SAKDebugger)
 {
     mUi->setupUi(this);
@@ -65,27 +62,27 @@ SAKDebugger::SAKDebugger(int type, QString name, QWidget *parent)
     mDatabaseInterface = new SAKDebugPageCommonDatabaseInterface(this,
                                                                  sakApp->sqlDatabase(),
                                                                  this);
-    mPlugins = new SAKDebuggerPlugins(mUi->readmePushButton,
+    mModulePlugins = new SAKDebuggerPlugins(mUi->readmePushButton,
                                       mUi->pluginsPushButton,
                                       settings(),
                                       settingsGroup(),
                                       mUi->pluginPanelLabel,
                                       mUi->pluginPanelWidget,
                                       this);
-    mOutputController = new SAKDebuggerOutput(mUi->moreOutputSettingsPushButton,
+    mModuleOutput = new SAKDebuggerOutput(mUi->moreOutputSettingsPushButton,
                                               mUi->outputTextFormatComboBox,
                                               settings(),
                                               settingsGroup(),
                                               mUi->outputTextBroswer,
                                               this);
-    mStatistics = new SAKDebuggerStatistics(mUi->txSpeedLabel,
+    mModuleStatistics = new SAKDebuggerStatistics(mUi->txSpeedLabel,
                                             mUi->rxSpeedLabel,
                                             mUi->txFramesLabel,
                                             mUi->rxFramesLabel,
                                             mUi->txBytesLabel,
                                             mUi->rxBytesLabel,
                                             this);
-    mInputController = new SAKDebuggerInput(mUi->cyclingTimeComboBox,
+    mModuleInput = new SAKDebuggerInput(mUi->cyclingTimeComboBox,
                                             mUi->inputFormatComboBox,
                                             mUi->moreInputSettingsPushButton,
                                             mUi->sendPushButton,
@@ -95,21 +92,37 @@ SAKDebugger::SAKDebugger(int type, QString name, QWidget *parent)
                                             mSettingGroup,
                                             sqlDatabase(),
                                             this);
-    mInputController->updateUiState(false);
+    mModuleInput->updateUiState(false);
 
-    // Initializing the timer.
+    // Initialize timer.
     mClearInfoTimer.setInterval(SAK_CLEAR_MESSAGE_INTERVAL);
-    connect(&mClearInfoTimer, &QTimer::timeout, this, &SAKDebugger::cleanInfo);
-    mIsInitializing = false;
+    mClearInfoTimer.setSingleShot(true);
+    connect(&mClearInfoTimer, &QTimer::timeout,
+            mUi->infoLabel, &QLabel::clear);
 
+
+    // Initialize menu
+    mDeviceMenu = new QMenu(mUi->deviceMorePushButton);
+    mUi->deviceMorePushButton->setMenu(mDeviceMenu);
+    mRefreshAction = mDeviceMenu->addAction(tr("Refresh"), this, [=](){
+        if (mModuleController){
+            mModuleController->refreshDevice();
+        }else{
+            Q_ASSERT_X(false, __FUNCTION__, "A null pointer!");
+        }
+    });
+
+
+    // Open or close device.
     connect(mUi->switchPushButton, &QPushButton::clicked,
             this, [=](){
         mUi->switchPushButton->setEnabled(false);
         if (this->device()){
             if (!this->device()->isRunning()){
-                openDevice();
+                mModuleDevice->start();
             }else{
-                closeDevice();
+                mModuleDevice->exit();
+                mModuleDevice->wait();
             }
         }
     });
@@ -118,12 +131,12 @@ SAKDebugger::SAKDebugger(int type, QString name, QWidget *parent)
 SAKDebugger::~SAKDebugger()
 {
 #if 1
-    if (mDevice) {
-        if (mDevice->isRunning()){
-            mDevice->requestInterruption();
-            mDevice->wait();
+    if (mModuleDevice) {
+        if (mModuleDevice->isRunning()){
+            mModuleDevice->requestInterruption();
+            mModuleDevice->wait();
         }
-        mDevice->deleteLater();
+        mModuleDevice->deleteLater();
     }
 #endif
     delete mUi;
@@ -132,22 +145,7 @@ SAKDebugger::~SAKDebugger()
 void SAKDebugger::outputMessage(QString msg, bool isInfo)
 {
     //mOutputController->outputLog(msg, isInfo);
-    QString time = QDateTime::currentDateTime().toString("hh:mm:ss ");
-    QString temp;
-    temp.append(time);
-    temp.append(msg);
-    time = QString("<font color=silver>%1</font>").arg(time);
 
-    if (isInfo){
-        mUi->infoLabel->setStyleSheet(QString("QLabel{color:black}"));
-    }else{
-        mUi->infoLabel->setStyleSheet(QString("QLabel{color:red}"));
-        QApplication::beep();
-    }
-
-    msg.prepend(time);
-    mUi->infoLabel->setText(msg);
-    mClearInfoTimer.start();
 }
 
 quint32 SAKDebugger::pageType()
@@ -172,25 +170,25 @@ QString SAKDebugger::settingsGroup()
 
 SAKDebuggerInput *SAKDebugger::inputController()
 {
-    return mInputController;
+    return mModuleInput;
 }
 
 SAKDebuggerOutput *SAKDebugger::outputController()
 {
-    return mOutputController;
+    return mModuleOutput;
 }
 
 SAKDebuggerStatistics *SAKDebugger::statisticsController()
 {
-    return mStatistics;
+    return mModuleStatistics;
 }
 
-SAKDebugPageController *SAKDebugger::deviceController()
+SAKDebuggerController *SAKDebugger::deviceController()
 {
-    Q_ASSERT_X(mDeviceController,
+    Q_ASSERT_X(mModuleController,
                __FUNCTION__,
                "You must initialize mDeviceController in the subclass!");
-    return mDeviceController;
+    return mModuleController;
 }
 
 SAKDebugPageCommonDatabaseInterface *SAKDebugger::databaseInterface()
@@ -213,113 +211,85 @@ QString SAKDebugger::tableNameTimingSendingTable()
     return settingsGroup().append(QString("TimingSending"));
 }
 
-void SAKDebugger::initializePage()
+void SAKDebugger::initDebugger()
 {
-    mDeviceController = controller();
-    if (mDeviceController){
+    initDebuggerController();
+    initDebuggerDevice();
+    initDebuggerStatistics();
+    initDebuggerOutout();
+    initDebuggerInput();
+}
+
+void SAKDebugger::initDebuggerController()
+{
+    mModuleController = controller();
+    if (mModuleController){
         QHBoxLayout *layout = new QHBoxLayout(mUi->controllerWidget);
         mUi->controllerWidget->setLayout(layout);
-        layout->addWidget(mDeviceController);
+        layout->addWidget(mModuleController);
         layout->setContentsMargins(0, 0, 0, 0);
     }
+}
 
-    mDevice = device();
-    Q_ASSERT_X(mDevice,
+void SAKDebugger::initDebuggerDevice()
+{
+    mModuleDevice = device();
+    Q_ASSERT_X(mModuleDevice,
                __FUNCTION__,
                "You must initialize the mDevice in the subcalss!");
+    auto updateUiState = [=](bool opened){
+        mModuleInput->updateUiState(opened);
+        mRefreshAction->setEnabled(!opened);
+        mModuleController->updateUiState(opened);
+        mUi->switchPushButton->setEnabled(true);
+    };
+    connect(mModuleDevice, &SAKDebuggerDevice::errorOccurred,
+            this, [=](QString error){
+        QString time = QDateTime::currentDateTime().toString("hh:mm:ss ");
+        QString temp;
+        temp.append(time);
+        temp.append(error);
+        time = QString("<font color=silver>%1</font>").arg(time);
+        QApplication::beep();
 
-
-    // Statistics
-    connect(mDevice, &SAKDebuggerDevice::bytesRead,
-            mStatistics, &SAKDebuggerStatistics::onBytesRead);
-    connect(mDevice, &SAKDebuggerDevice::bytesWritten,
-            mStatistics, &SAKDebuggerStatistics::onBytesWritten);
-
-
-    // Outout
-    connect(mDevice, &SAKDebuggerDevice::bytesRead,
-            mOutputController, &SAKDebuggerOutput::onBytesRead);
-    connect(mDevice, &SAKDebuggerDevice::bytesWritten,
-            mOutputController, &SAKDebuggerOutput::onBytesWritten);
-
-
-    // Input
-    connect(mInputController, &SAKDebuggerInput::invokeWriteBytes,
-            mDevice, &SAKDebuggerDevice::writeBytes, Qt::QueuedConnection);
-
-
-    // The function may be called multiple times,
-    // so do something to ensure that the signal named bytesAnalysed
-    // and the slot named bytesRead are connected once.
-    connect(mDevice, &SAKDebuggerDevice::messageChanged,
-            this, &SAKDebugger::outputMessage);
-    connect(mDevice, &SAKDebuggerDevice::deviceStateChanged,
-            this, &SAKDebugger::changedDeviceState);
-    connect(mDevice, &SAKDebuggerDevice::finished,
-            this, &SAKDebugger::closeDevice, Qt::QueuedConnection);
-
-
-    // Initialize the more button,
-    // the first thing to do is clear the old actions and delete the old menu.
-    auto deviceMorePushButtonMenu = mUi->deviceMorePushButton->menu();
-    if (deviceMorePushButtonMenu){
-        deviceMorePushButtonMenu->clear();
-        deviceMorePushButtonMenu->deleteLater();
-    }
-
-    // Create "Refresh" action.
-    deviceMorePushButtonMenu = new QMenu(mUi->deviceMorePushButton);
-    mUi->deviceMorePushButton->setMenu(deviceMorePushButtonMenu);
-    mRefreshAction = new QAction(tr("Refresh"), deviceMorePushButtonMenu);
-    deviceMorePushButtonMenu->addAction(mRefreshAction);
-    connect(mRefreshAction, &QAction::triggered, this, &SAKDebugger::refreshDevice);
-
-    // Create new menu and add actions to the menu.
-    auto infos = mDevice->settingsPanelList();
-    for (auto &var : infos){
-        QAction *action = new QAction(var.name, deviceMorePushButtonMenu);
-        deviceMorePushButtonMenu->addAction(action);
-        connect(action, &QAction::triggered, [=](){
-            if (var.panel->isHidden()){
-                var.panel->show();
-            }else{
-                var.panel->show();
-            }
-        });
-    }
+        error.prepend(time);
+        mUi->infoLabel->setText(error);
+        mClearInfoTimer.start();
+        mUi->switchPushButton->setEnabled(true);
+        updateUiState(false);
+    });
+    connect(mModuleDevice, &SAKDebuggerDevice::started,
+            this, [=](){
+        mUi->switchPushButton->setText(tr("Close"));
+        updateUiState(true);
+    });
+    connect(mModuleDevice, &SAKDebuggerDevice::finished,
+            this, [=](){
+        mUi->switchPushButton->setText(tr("Open"));
+        updateUiState(false);
+    });
 }
 
-void SAKDebugger::changedDeviceState(bool opened)
+void SAKDebugger::initDebuggerStatistics()
 {
-    mInputController->updateUiState(opened);
-    mRefreshAction->setEnabled(!opened);
-    mDeviceController->setUiEnable(opened);
-
-    mUi->switchPushButton->setEnabled(true);
+    connect(mModuleDevice, &SAKDebuggerDevice::bytesRead,
+            mModuleStatistics, &SAKDebuggerStatistics::onBytesRead);
+    connect(mModuleDevice, &SAKDebuggerDevice::bytesWritten,
+            mModuleStatistics, &SAKDebuggerStatistics::onBytesWritten);
 }
 
-void SAKDebugger::openDevice()
+void SAKDebugger::initDebuggerOutout()
 {
-    mDevice->start();
-    mUi->switchPushButton->setText(tr("Close"));
+    connect(mModuleDevice, &SAKDebuggerDevice::bytesRead,
+            mModuleOutput, &SAKDebuggerOutput::onBytesRead);
+    connect(mModuleDevice, &SAKDebuggerDevice::bytesWritten,
+            mModuleOutput, &SAKDebuggerOutput::onBytesWritten);
 }
 
-void SAKDebugger::closeDevice()
+void SAKDebugger::initDebuggerInput()
 {
-    mDevice->requestInterruption();
-    mDevice->requestWakeup();
-    mDevice->exit();
-    mDevice->wait();
-    mUi->switchPushButton->setText(tr("Open"));
-}
-
-void SAKDebugger::refreshDevice()
-{
-    if (mDeviceController){
-        mDeviceController->refreshDevice();
-    }else{
-        Q_ASSERT_X(false, __FUNCTION__, "A null pointer!");
-    }
+    connect(mModuleInput, &SAKDebuggerInput::invokeWriteBytes,
+            mModuleDevice, &SAKDebuggerDevice::writeBytes, Qt::QueuedConnection);
 }
 
 void SAKDebugger::commonSqlApiUpdateRecord(QSqlQuery *sqlQuery,
@@ -361,10 +331,4 @@ void SAKDebugger::commonSqlApiDeleteRecord(QSqlQuery *sqlQuery,
         qWarning() << "Can not delete recored form(" << tableName << ")"
                    << sqlQuery->lastError().text();
     }
-}
-
-void SAKDebugger::cleanInfo()
-{
-    mClearInfoTimer.stop();
-    mUi->infoLabel->clear();
 }

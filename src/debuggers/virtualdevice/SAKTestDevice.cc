@@ -29,7 +29,7 @@ SAKTestDevice::~SAKTestDevice()
 #endif
 }
 
-bool SAKTestDevice::initializing(QString &errorString)
+bool SAKTestDevice::initialize(QString &errorString)
 {
     errorString = QString("Unknown error");
     mController = qobject_cast<SAKTestDeviceController*>(mDebugPage->deviceController());

@@ -25,7 +25,7 @@ SAKWebSocketClientDevice::SAKWebSocketClientDevice(SAKWebSocketClientDebugger *d
     qRegisterMetaType<QAbstractSocket::SocketError>("QAbstractSocket::SocketError");
 }
 
-bool SAKWebSocketClientDevice::initializing(QString &errorString)
+bool SAKWebSocketClientDevice::initialize(QString &errorString)
 {
     mController = qobject_cast<SAKWebSocketClientController*>(mDebugPage->deviceController());
     mWebSocket = new QWebSocket;

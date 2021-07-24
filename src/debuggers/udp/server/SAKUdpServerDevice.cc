@@ -25,7 +25,7 @@ SAKUdpServerDevice::SAKUdpServerDevice(SAKUdpServerDebugger *debugPage, QObject 
 
 }
 
-bool SAKUdpServerDevice::initializing(QString &errorString)
+bool SAKUdpServerDevice::initialize(QString &errorString)
 {
     mDeviceController = qobject_cast<SAKUdpServerController*>(mDebugPage->deviceController());
     connect(this, &SAKUdpServerDevice::addClient, mDeviceController, &SAKUdpServerController::addClient);

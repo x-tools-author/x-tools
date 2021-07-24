@@ -1,4 +1,4 @@
-﻿/*
+﻿/****************************************************************************************
  * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -6,7 +6,7 @@
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- */
+ ***************************************************************************************/
 #include <QDebug>
 #include <QWidget>
 #include <QHBoxLayout>
@@ -19,9 +19,15 @@
 SAKSerialPortDebugger::SAKSerialPortDebugger(int type, QString name, QWidget *parent)
     :SAKDebugger(type, name, parent)
 {
-    mDeviceController = new SAKSerialPortController(this);
-    mDevice = new SAKSerialPortDevice(this, this);
-    initializePage();
+    mController = new SAKSerialPortController(this);
+    mDevice = new SAKSerialPortDevice(this);
+    initDebugger();
+
+    mDevice->setParametersCtx(mController->parametersContext());
+    connect(mController, &SAKDebuggerController::parametersChanged,
+            this, [=](){
+        mDevice->setParametersCtx(mController->parametersContext());
+    });
 }
 
 SAKDebuggerDevice* SAKSerialPortDebugger::device()
@@ -29,7 +35,7 @@ SAKDebuggerDevice* SAKSerialPortDebugger::device()
     return mDevice;
 }
 
-SAKDebugPageController *SAKSerialPortDebugger::controller()
+SAKDebuggerController *SAKSerialPortDebugger::controller()
 {
-    return mDeviceController;
+    return mController;
 }

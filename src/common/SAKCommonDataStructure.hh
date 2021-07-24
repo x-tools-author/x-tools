@@ -15,6 +15,10 @@
 #include <QTextEdit>
 #include <QComboBox>
 
+#ifdef SAK_IMPORT_MODULE_SERIALPORT
+#include <QSerialPort>
+#endif
+
 /// @brief The class define some data structure of the project.
 /// Also, It provides some interface about these data structure.
 class SAKCommonDataStructure:public QObject
@@ -72,6 +76,19 @@ public:
         SuffixsTypeNR
     };
     Q_ENUM(SAKEmnuSuffixsType);
+
+#ifdef SAK_IMPORT_MODULE_SERIALPORT
+    struct SAKStructSerialPortParametersContext {
+        QString portName;
+        qint32 baudRate;
+        QSerialPort::DataBits dataBits;
+        QSerialPort::Parity parity;
+        QSerialPort::StopBits stopBits;
+        QSerialPort::FlowControl flowControl;
+
+        qint64 intervalNs;
+    };
+#endif
 public:
     /**
      * @brief setComboBoxTextOutputFormat: Add output text format items to combo box.

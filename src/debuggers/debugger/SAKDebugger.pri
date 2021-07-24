@@ -13,7 +13,7 @@ INCLUDEPATH += \
 
 FORMS += \
     $$PWD/SAKDebugger.ui \
-    $$PWD/common/SAKDebugPageCommonSslConfigurationWidget.ui \
+    #$$PWD/common/SAKDebugPageCommonSslConfigurationWidget.ui \
     $$PWD/device/mask/SAKDebugPageDeviceMask.ui \
     $$PWD/input/SAKDebuggerInputCrcSettings.ui \
     $$PWD/input/SAKDebuggerInputDataPreset.ui \
@@ -26,8 +26,8 @@ FORMS += \
 HEADERS += \
     $$PWD/SAKDebugger.hh \
     $$PWD/common/SAKDebugPageCommonDatabaseInterface.hh \
-    $$PWD/common/SAKDebugPageCommonSslConfigurationWidget.hh \
-    $$PWD/controller/SAKDebugPageController.hh \
+    #$$PWD/common/SAKDebugPageCommonSslConfigurationWidget.hh \
+    $$PWD/controller/SAKDebuggerController.hh \
     $$PWD/device/SAKDebuggerDevice.hh \
     $$PWD/device/mask/SAKDebugPageDeviceMask.hh \
     $$PWD/input/SAKDebuggerInput.hh \
@@ -45,8 +45,8 @@ HEADERS += \
 SOURCES += \
     $$PWD/SAKDebugger.cc \
     $$PWD/common/SAKDebugPageCommonDatabaseInterface.cc \
-    $$PWD/common/SAKDebugPageCommonSslConfigurationWidget.cc \
-    $$PWD/controller/SAKDebugPageController.cc \
+    #$$PWD/common/SAKDebugPageCommonSslConfigurationWidget.cc \
+    $$PWD/controller/SAKDebuggerController.cc \
     $$PWD/device/SAKDebuggerDevice.cc \
     $$PWD/device/mask/SAKDebugPageDeviceMask.cc \
     $$PWD/input/SAKDebuggerInput.cc \

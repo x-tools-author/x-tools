@@ -9,60 +9,38 @@
  ***************************************************************************************/
 #ifndef SAKDEBUGGERDEVICE_HH
 #define SAKDEBUGGERDEVICE_HH
+#include <QMenu>
 #include <QMutex>
 #include <QThread>
 #include <QWaitCondition>
 
 /// @brief device abstract class
-class SAKDebugger;
 class SAKDebugPageDeviceMask;
 class SAKDebuggerDevice:public QThread
 {
     Q_OBJECT
 public:
-    SAKDebuggerDevice(SAKDebugger *debugPage, QObject *parent = Q_NULLPTR);
+    SAKDebuggerDevice(QObject *parent = Q_NULLPTR);
     ~SAKDebuggerDevice();
 
-    /**
-     * @brief wakeMe: wake the thread
-     */
-    void requestWakeup();
-
-    /**
-     * @brief writeBytes: write bytes to device
-     * @param bytes: bytes need to be wirtten
-     */
     void writeBytes(QByteArray bytes);
+    void setupMenu(QMenu *menu);
 
-    struct SettingsPanel{
-        QString name;
-        QWidget *panel;
-    };
-    QList<SettingsPanel> settingsPanelList();
+
 protected:
-    QMutex mThreadMutex;
-    QWaitCondition mThreadWaitCondition;
-    SAKDebugger *mDebugPage;
-    SAKDebugPageDeviceMask *mDeviceMask;
+    struct SAKDeviceProtectedSignal {};
 protected:
-    QByteArray takeWaitingForWrittingBytes();
+    QByteArray takeBytes();
     void run() override;
 
-    // Realize these functions in the subclass only, do not call them.
-    virtual bool initializing(QString &errorString);
-    virtual bool open(QString &errorString);
-    virtual QByteArray read();
-    virtual QByteArray write(QByteArray bytes);
-    virtual bool checkSomething(QString &errorString);
-    virtual void close();
-    virtual void free();
+    virtual bool initialize() = 0;
+    virtual QByteArray read() = 0;
+    virtual QByteArray write(const QByteArray &bytes) = 0;
+    virtual void uninitialize() = 0;
+signals:
+    void readyRead(SAKDebuggerDevice::SAKDeviceProtectedSignal);
 
-    /**
-     * @brief writeForTest: The interface is just for debugging data stream,
-     * do not override the interface
-     * @return Test data
-     */
-    virtual QByteArray writeForTest();
+
 private:
     struct SAKStructDevicePatametersContext {
         struct MaskContext {
@@ -78,20 +56,27 @@ private:
             QByteArray startFlags;
             QByteArray endFlags;
         } analyzerCtx;
-    } m_parametersCtx;
+    };
 
-    QMutex m_parametersCtxMutex;
-    QMutex mWaitingForWritingBytesListMutex;
-    QList<QByteArray> mWaitingForWritingBytesList;
-    QList<SettingsPanel> mSettingsPanelList;
+
+private:
+    SAKStructDevicePatametersContext mParametersCtx;
+    QMutex mParametersCtxMutex;
+    QVector<QByteArray> mBytesVector;
+    QMutex mBytesVectorMutex;
+    // Parameters editors
+    SAKDebugPageDeviceMask *mDeviceMask;
+
+
 private:
     QByteArray mask(const QByteArray &plaintext, bool isRxData);
     SAKStructDevicePatametersContext parametersContext();
+
+
 signals:
     void bytesWritten(QByteArray bytes);
     void bytesRead(QByteArray bytes);
-    void messageChanged(QString msg, bool isInfo);
-    void deviceStateChanged(bool isOpened);
+    void errorOccurred(QString error);
 };
 
 #endif

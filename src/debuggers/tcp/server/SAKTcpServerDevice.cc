@@ -29,7 +29,7 @@ SAKTcpServerDevice::SAKTcpServerDevice(SAKTcpServerDebugger *debugPage, QObject 
 #endif
 }
 
-bool SAKTcpServerDevice::initializing(QString &errorString)
+bool SAKTcpServerDevice::initialize(QString &errorString)
 {
     errorString = tr("Unknown error");
     mDeviceController = qobject_cast<SAKTcpServerController*>(mDebugPage->deviceController());

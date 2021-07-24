@@ -38,7 +38,6 @@
 #include "SAKMainWindow.hh"
 #include "SAKApplication.hh"
 #include "SAKUpdateManager.hh"
-#include "SAKTestDebugPage.hh"
 #include "SAKCommonDataStructure.hh"
 
 // Debugging tools
@@ -53,7 +52,11 @@
 #include "SAKToolStringAssistant.hh"
 
 // Debugging pages
+#ifdef QT_DEBUG
+#ifdef SAK_IMPORT_MODULE_VIRTUALDEVICE
 #include "SAKTestDebugPage.hh"
+#endif
+#endif
 #ifdef SAK_IMPORT_MODULE_SERIALBUS
 #include "SAKModbusDebugPage.hh"
 #endif
@@ -134,11 +137,13 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     mTabWidget->blockSignals(true);
     for (int i = 0; i < metaEnum.keyCount(); i++){
 #ifdef QT_DEBUG
+#ifdef SAK_IMPORT_MODULE_VIRTUALDEVICE
         // Test page is selectable, it is for developer of the project.
         bool enableTestPage = sakApp->settings()->value(mSettingsKeyContext.enableTestPage).toBool();
         if (!enableTestPage && (metaEnum.value(i) == DebugPageTypeTest)){
             continue;
         }
+#endif
 #endif
 
         // The page can not be closed.
@@ -542,7 +547,7 @@ void SAKMainWindow::rebootRequestion()
 void SAKMainWindow::initializingMetaObject()
 {
 #ifdef QT_DEBUG
-    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeTest, SAKTestDebugPage::staticMetaObject, tr("Test")});
+    //mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeTest, SAKTestDebugPage::staticMetaObject, tr("Test")});
 #endif
 #ifdef SAK_IMPORT_MODULE_SERIALPORT
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeCOM, SAKSerialPortDebugger::staticMetaObject, tr("COM")});

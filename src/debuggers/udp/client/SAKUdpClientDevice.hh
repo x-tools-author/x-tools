@@ -45,7 +45,7 @@ public:
     void removeMulticastInfo(QString address, quint16 port);
     void setMulticastEnable(bool enable);
 protected:
-    bool initializing(QString &errorString) final;
+    bool initialize(QString &errorString) final;
     bool open(QString &errorString) final;
     QByteArray read() final;
     QByteArray write(QByteArray bytes) final;

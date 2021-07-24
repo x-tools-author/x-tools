@@ -89,7 +89,7 @@ void SAKUdpClientDevice::setMulticastEnable(bool enable)
     mParametersContextMutex.unlock();
 }
 
-bool SAKUdpClientDevice::initializing(QString &errorString)
+bool SAKUdpClientDevice::initialize(QString &errorString)
 {
     mDeviceController = qobject_cast<SAKUdpClientController*>(mDebugPage->deviceController());
     auto parameters = mDeviceController->parameters().value<SAKUdpClientController::UdpClientParameters>();

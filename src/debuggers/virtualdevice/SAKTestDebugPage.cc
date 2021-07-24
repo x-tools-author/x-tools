@@ -21,7 +21,7 @@ SAKTestDebugPage::SAKTestDebugPage(int type, QString name, QWidget *parent)
 {
     mDeviceController = new SAKTestDeviceController(this);
     mDevice = new SAKTestDevice(this, this);
-    initializePage();
+    initDebugger();
 }
 
 SAKDebuggerDevice* SAKTestDebugPage::device()

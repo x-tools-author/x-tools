@@ -30,13 +30,13 @@
 #include <QTextBrowser>
 #include <QSqlDatabase>
 
-class SAKDebuggerDevice;
 class SAKDebuggerInput;
+class SAKDebuggerDevice;
 class SAKDebuggerOutput;
 class SAKDebuggerPlugins;
 class SAKDebuggerStatistics;
 class SAKCommonCrcInterface;
-class SAKDebugPageController;
+class SAKDebuggerController;
 class SAKPluginDataForwarding;
 class SAKDebugPageCommonDatabaseInterface;
 
@@ -48,8 +48,6 @@ namespace Ui {
 class SAKDebugger : public QWidget
 {
     Q_OBJECT
-
-    friend class SAKDebuggerInput;
 public:
     SAKDebugger(int type, QString name, QWidget *parent = Q_NULLPTR);
     ~SAKDebugger();
@@ -110,7 +108,7 @@ public:
      * the controller will be destroy when the page is closed.
      * @return Device controller instance pointer
      */
-    SAKDebugPageController *deviceController();
+    SAKDebuggerController *deviceController();
 
     /**
      * @brief databaseInterface: Get the data base read-write interface.
@@ -125,7 +123,7 @@ public:
 protected:
     /**
      * @brief createDevice: Get the device instance, the device will be destroy when
-     * it is closed.
+     * it is closed. You can not specify the parent of device(the return value).
      * @return Device instance pointer
      */
     virtual SAKDebuggerDevice* device() = 0;
@@ -134,35 +132,34 @@ protected:
      * @brief controller: Get the device controller of the debugger
      * @return Device controller
      */
-    virtual SAKDebugPageController *controller() = 0;
+    virtual SAKDebuggerController *controller() = 0;
 
     /**
-     * @brief initializePage: Initializing, the function must be called in the
+     * @brief initDebugger: Initializing, the function must be called in the
      * constructor of subclass.
      */
-    void initializePage();
+    void initDebugger();
 private:
-    bool mIsInitializing;
+    void initDebuggerController();
+    void initDebuggerDevice();
+    void initDebuggerStatistics();
+    void initDebuggerOutout();
+    void initDebuggerInput();
+private:
     int mDebugPageType;
+    QMenu *mDeviceMenu;
     QTimer mClearInfoTimer;
-    QMutex mReadWriteParametersMutex;
     QString mSettingGroup;
     QAction *mRefreshAction;
     SAKDebugPageCommonDatabaseInterface *mDatabaseInterface;
 
     // Debug page modules
-    SAKDebuggerInput *mInputController;
-    SAKDebuggerOutput *mOutputController;
-    SAKDebuggerStatistics *mStatistics;
-    SAKDebuggerDevice *mDevice;
-    SAKDebugPageController *mDeviceController;
-    SAKDebuggerPlugins *mPlugins;
-private:
-    void cleanInfo();
-    void changedDeviceState(bool opened);
-    void openDevice();
-    void closeDevice();
-    void refreshDevice();
+    SAKDebuggerInput *mModuleInput;
+    SAKDebuggerOutput *mModuleOutput;
+    SAKDebuggerStatistics *mModuleStatistics;
+    SAKDebuggerDevice *mModuleDevice;
+    SAKDebuggerController *mModuleController;
+    SAKDebuggerPlugins *mModulePlugins;
 public:
     static void commonSqlApiUpdateRecord(QSqlQuery *sqlQuery,
                                          QString tableName,

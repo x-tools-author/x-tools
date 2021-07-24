@@ -1,4 +1,4 @@
-﻿/*
+﻿/****************************************************************************************
  * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -6,155 +6,95 @@
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- */
+ ***************************************************************************************/
 #include <QList>
 #include <QDebug>
 #include <QMetaEnum>
 #include <QLineEdit>
 #include <QSerialPortInfo>
 
-#include "SAKDebugger.hh"
 #include "SAKCommonInterface.hh"
 #include "SAKSerialPortController.hh"
 #include "ui_SAKSerialPortController.h"
 
-SAKSerialPortController::SAKSerialPortController(SAKDebugger *debugPage, QWidget *parent)
-    :SAKDebugPageController(debugPage, parent)
-    ,mDebugPage(debugPage)
-    ,ui(new Ui::SAKSerialPortController)
-    ,serialportsComboBox(Q_NULLPTR)
-    ,baudrateComboBox(Q_NULLPTR)
-    ,databitsComboBox(Q_NULLPTR)
-    ,stopbitsComboBox(Q_NULLPTR)
-    ,parityComboBox(Q_NULLPTR)
-    ,flowControlComboBox(Q_NULLPTR)
-    ,customBaudrateCheckBox(Q_NULLPTR)
+SAKSerialPortController::SAKSerialPortController(QWidget *parent)
+    :SAKDebuggerController( parent)
+    ,mUi(new Ui::SAKSerialPortController)
 {
-    ui->setupUi(this);
-    serialportsComboBox = ui->serialportsComboBox;
-    baudrateComboBox = ui->baudrateComboBox;
-    databitsComboBox = ui->databitsComboBox;
-    stopbitsComboBox = ui->stopbitsComboBox;
-    parityComboBox = ui->parityComboBox;
-    flowControlComboBox = ui->flowControlComboBox;
-    customBaudrateCheckBox = ui->customBaudrateCheckBox;
+    mUi->setupUi(this);
+    connect(mUi->serialportsComboBox, &QComboBox::currentIndexChanged,
+            this, &SAKSerialPortController::parametersChanged);
+    connect(mUi->baudrateComboBox, &QComboBox::currentTextChanged,
+            this, &SAKSerialPortController::parametersChanged);
+    connect(mUi->databitsComboBox, &QComboBox::currentIndexChanged,
+            this, &SAKSerialPortController::parametersChanged);
+    connect(mUi->stopbitsComboBox, &QComboBox::currentIndexChanged,
+            this, &SAKSerialPortController::parametersChanged);
+    connect(mUi->parityComboBox, &QComboBox::currentIndexChanged,
+            this, &SAKSerialPortController::parametersChanged);
+    connect(mUi->flowControlComboBox, &QComboBox::currentIndexChanged,
+            this, &SAKSerialPortController::parametersChanged);
+    connect(mUi->customBaudrateCheckBox, &QCheckBox::clicked,
+            this, [=](){
+        mUi->baudrateComboBox->setEditable(mUi->customBaudrateCheckBox->isChecked());
+    });
 
-    qRegisterMetaType<SAKSerialPortController::SerialPortParameters>("SAKSerialPortController::SerialPortParameters");
     refreshDevice();
 }
 
 SAKSerialPortController::~SAKSerialPortController()
 {
-    delete ui;
+    delete mUi;
 }
 
-QVariant SAKSerialPortController::parameters()
+void SAKSerialPortController::updateUiState(bool opened)
 {
-    SerialPortParameters parameters;
-    mParametersMutex.lock();
-    parameters.name = mParameters.name;
-    parameters.parity = mParameters.parity;
-    parameters.baudRate = mParameters.baudRate;
-    parameters.dataBits = mParameters.dataBits;
-    parameters.stopBits = mParameters.stopBits;
-    parameters.flowControl = mParameters.flowControl;
-    mParametersMutex.unlock();
-
-    return QVariant::fromValue(parameters);
-}
-
-void SAKSerialPortController::setUiEnable(bool opened)
-{
-    serialportsComboBox->setEnabled(!opened);
-    baudrateComboBox->setEnabled(!opened);
-    databitsComboBox->setEnabled(!opened);
-    stopbitsComboBox->setEnabled(!opened);
-    parityComboBox->setEnabled(!opened);
-    customBaudrateCheckBox->setEnabled(!opened);
-    flowControlComboBox->setEnabled(!opened);
+    mUi->serialportsComboBox->setEnabled(!opened);
+    mUi->baudrateComboBox->setEnabled(!opened);
+    mUi->databitsComboBox->setEnabled(!opened);
+    mUi->stopbitsComboBox->setEnabled(!opened);
+    mUi->parityComboBox->setEnabled(!opened);
+    mUi->customBaudrateCheckBox->setEnabled(!opened);
+    mUi->flowControlComboBox->setEnabled(!opened);
 }
 
 void SAKSerialPortController::refreshDevice()
 {
-    SAKCommonInterface::addSerialPortNametItemsToComboBox(serialportsComboBox);
-    SAKCommonInterface::addSerialPortBaudRateItemsToComboBox(baudrateComboBox);
-    SAKCommonInterface::addSerialPortDataBitItemsToComboBox(databitsComboBox);
-    SAKCommonInterface::addSerialPortStopBitItemsToComboBox(stopbitsComboBox);
-    SAKCommonInterface::addSerialPortParityItemsToComboBox(parityComboBox);
-    SAKCommonInterface::addSerialPortFlowControlItemsToComboBox(flowControlComboBox);
+    SAKCommonInterface::addSerialPortNametItemsToComboBox(mUi->serialportsComboBox);
+    SAKCommonInterface::addSerialPortBaudRateItemsToComboBox(mUi->baudrateComboBox);
+    SAKCommonInterface::addSerialPortDataBitItemsToComboBox(mUi->databitsComboBox);
+    SAKCommonInterface::addSerialPortStopBitItemsToComboBox(mUi->stopbitsComboBox);
+    SAKCommonInterface::addSerialPortParityItemsToComboBox(mUi->parityComboBox);
+    SAKCommonInterface::addSerialPortFlowControlItemsToComboBox(
+                mUi->flowControlComboBox
+                );
 }
 
-void SAKSerialPortController::setBaudRate(quint32 bd)
+SAKCommonDataStructure::SAKStructSerialPortParametersContext
+SAKSerialPortController::parametersContext()
 {
-    mParametersMutex.lock();
-    // rate can not be zero
-    if (!bd){
-        bd = 9600;
-    }
-    mParameters.baudRate = bd;
-    mParametersMutex.unlock();
-}
+    SAKCommonDataStructure::SAKStructSerialPortParametersContext ctx;
+    ctx.baudRate = mUi->baudrateComboBox->currentText().toInt();
 
-void SAKSerialPortController::on_customBaudrateCheckBox_clicked()
-{
-    if (customBaudrateCheckBox->isChecked()){
-        baudrateComboBox->setEditable(true);
-        baudrateComboBox->lineEdit()->selectAll();
-        baudrateComboBox->lineEdit()->setFocus();
-    }else{
-        baudrateComboBox->setEditable(false);
-    }
-}
+    int databits = mUi->databitsComboBox->currentData().toInt();
+    auto cookedDataBits = static_cast<QSerialPort::DataBits>(databits);
+    ctx.dataBits = cookedDataBits;
 
-void SAKSerialPortController::on_serialportsComboBox_currentTextChanged(const QString &arg1)
-{
-    Q_UNUSED(arg1);
-    mParametersMutex.lock();
-    mParameters.name = serialportsComboBox->currentText().split(' ').first();
-    mParametersMutex.unlock();
-}
+    int flowControl = mUi->flowControlComboBox->currentData().toInt();
+    auto cookedFlowControl = static_cast<QSerialPort::FlowControl>(flowControl);
+    ctx.flowControl = cookedFlowControl;
 
-void SAKSerialPortController::on_baudrateComboBox_currentIndexChanged(int index)
-{
-    Q_UNUSED(index);
-    qint32 rate = baudrateComboBox->currentText().toInt();
-    setBaudRate(rate);
-}
+    //ctx.intervalNs =
 
-void SAKSerialPortController::on_databitsComboBox_currentIndexChanged(int index)
-{
-    Q_UNUSED(index);
-    mParametersMutex.lock();
-    mParameters.dataBits = static_cast<QSerialPort::DataBits>(databitsComboBox->currentData().toInt());
-    mParametersMutex.unlock();
-}
+    int parity = mUi->parityComboBox->currentData().toInt();
+    auto cookedParity = static_cast<QSerialPort::Parity>(parity);
+    ctx.parity = cookedParity;
 
-void SAKSerialPortController::on_stopbitsComboBox_currentIndexChanged(int index)
-{
-    Q_UNUSED(index);
-    mParametersMutex.lock();
-    mParameters.stopBits = static_cast<QSerialPort::StopBits>(stopbitsComboBox->currentData().toInt());
-    mParametersMutex.unlock();
-}
+    ctx.portName = mUi->serialportsComboBox->currentText();
 
-void SAKSerialPortController::on_parityComboBox_currentIndexChanged(int index)
-{
-    Q_UNUSED(index);
-    mParametersMutex.lock();
-    mParameters.parity = static_cast<QSerialPort::Parity>(parityComboBox->currentData().toInt());
-    mParametersMutex.unlock();
-}
+    int stopBits = mUi->stopbitsComboBox->currentData().toInt();
+    auto cookedStopBits = static_cast<QSerialPort::StopBits>(stopBits);
+    ctx.stopBits = cookedStopBits;
 
-void SAKSerialPortController::on_flowControlComboBox_currentIndexChanged(int index)
-{
-    Q_UNUSED(index);
-    mParametersMutex.lock();
-    mParameters.flowControl = static_cast<QSerialPort::FlowControl>(flowControlComboBox->currentData().toInt());
-    mParametersMutex.unlock();
-}
-
-void SAKSerialPortController::on_baudrateComboBox_editTextChanged(const QString &arg1)
-{
-    qint32 rate = arg1.toInt();
-    setBaudRate(rate);
+    return ctx;
 }

@@ -37,7 +37,7 @@ SAKTcpClientDevice::SAKTcpClientDevice(SAKTcpClientDebugger *debugPage, QObject 
     });
 }
 
-bool SAKTcpClientDevice::initializing(QString &errorString)
+bool SAKTcpClientDevice::initialize(QString &errorString)
 {
     QEventLoop eventLoop;
     mDeviceController = qobject_cast<SAKTcpClientController*>(mDebugPage->deviceController());
