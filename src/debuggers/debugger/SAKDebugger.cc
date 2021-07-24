@@ -1,4 +1,4 @@
-﻿/*
+﻿/****************************************************************************************
  * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -6,7 +6,7 @@
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- */
+ ***************************************************************************************/
 #include <QMenu>
 #include <QAction>
 #include <QPixmap>
@@ -63,7 +63,9 @@ SAKDebugger::SAKDebugger(int type, QString name, QWidget *parent)
     mUi->outputTextBroswer->setHtml(html);
     initializingVariables();
 
-    mDatabaseInterface = new SAKDebugPageCommonDatabaseInterface(this, sakApp->sqlDatabase(), this);
+    mDatabaseInterface = new SAKDebugPageCommonDatabaseInterface(this,
+                                                                 sakApp->sqlDatabase(),
+                                                                 this);
     mPlugins = new SAKDebuggerPlugins(mUi->readmePushButton,
                                       mUi->pluginsPushButton,
                                       settings(),
@@ -77,12 +79,12 @@ SAKDebugger::SAKDebugger(int type, QString name, QWidget *parent)
                                               settingsGroup(),
                                               mOutputTextBroswer,
                                               this);
-    mStatistics = new SAKDebuggerStatistics(mTxSpeedLabel,
-                                            mRxSpeedLabel,
-                                            mTxFramesLabel,
-                                            mRxFramesLabel,
-                                            mTxBytesLabel,
-                                            mRxBytesLabel,
+    mStatistics = new SAKDebuggerStatistics(mUi->txSpeedLabel,
+                                            mUi->rxSpeedLabel,
+                                            mUi->txFramesLabel,
+                                            mUi->rxFramesLabel,
+                                            mUi->txBytesLabel,
+                                            mUi->rxBytesLabel,
                                             this);
     mInputController = new SAKDebuggerInput(mCyclingTimeComboBox,
                                             mInputFormatComboBox,
@@ -100,6 +102,18 @@ SAKDebugger::SAKDebugger(int type, QString name, QWidget *parent)
     mClearInfoTimer.setInterval(SAK_CLEAR_MESSAGE_INTERVAL);
     connect(&mClearInfoTimer, &QTimer::timeout, this, &SAKDebugger::cleanInfo);
     mIsInitializing = false;
+
+    connect(mUi->switchPushButton, &QPushButton::clicked,
+            this, [=](){
+        mSwitchPushButton->setEnabled(false);
+        if (this->device()){
+            if (!this->device()->isRunning()){
+                openDevice();
+            }else{
+                closeDevice();
+            }
+        }
+    });
 }
 
 SAKDebugger::~SAKDebugger()
@@ -184,7 +198,9 @@ SAKDebuggerStatistics *SAKDebugger::statisticsController()
 
 SAKDebugPageController *SAKDebugger::deviceController()
 {
-    Q_ASSERT_X(mDeviceController, __FUNCTION__, "You must initialize mDeviceController in the subclass!");
+    Q_ASSERT_X(mDeviceController,
+               __FUNCTION__,
+               "You must initialize mDeviceController in the subclass!");
     return mDeviceController;
 }
 
@@ -219,17 +235,23 @@ void SAKDebugger::initializePage()
     }
 
     mDevice = device();
-    Q_ASSERT_X(mDevice, __FUNCTION__, "You must initialize the mDevice in the subcalss!");
+    Q_ASSERT_X(mDevice,
+               __FUNCTION__,
+               "You must initialize the mDevice in the subcalss!");
 
 
     // Statistics
-    connect(mDevice, &SAKDebuggerDevice::bytesRead, mStatistics, &SAKDebuggerStatistics::onBytesRead);
-    connect(mDevice, &SAKDebuggerDevice::bytesWritten, mStatistics, &SAKDebuggerStatistics::onBytesWritten);
+    connect(mDevice, &SAKDebuggerDevice::bytesRead,
+            mStatistics, &SAKDebuggerStatistics::onBytesRead);
+    connect(mDevice, &SAKDebuggerDevice::bytesWritten,
+            mStatistics, &SAKDebuggerStatistics::onBytesWritten);
 
 
     // Outout
-    connect(mDevice, &SAKDebuggerDevice::bytesRead, mOutputController, &SAKDebuggerOutput::onBytesRead);
-    connect(mDevice, &SAKDebuggerDevice::bytesWritten, mOutputController, &SAKDebuggerOutput::onBytesWritten);
+    connect(mDevice, &SAKDebuggerDevice::bytesRead,
+            mOutputController, &SAKDebuggerOutput::onBytesRead);
+    connect(mDevice, &SAKDebuggerDevice::bytesWritten,
+            mOutputController, &SAKDebuggerOutput::onBytesWritten);
 
 
     // Input
@@ -237,18 +259,24 @@ void SAKDebugger::initializePage()
             mDevice, &SAKDebuggerDevice::writeBytes, Qt::QueuedConnection);
 
 
-    connect(this, &SAKDebugger::requestWriteData, mDevice, &SAKDebuggerDevice::writeBytes);
-    connect(mDevice, &SAKDebuggerDevice::bytesWritten, this, &SAKDebugger::bytesWritten);
+    connect(this, &SAKDebugger::requestWriteData,
+            mDevice, &SAKDebuggerDevice::writeBytes);
+    connect(mDevice, &SAKDebuggerDevice::bytesWritten,
+            this, &SAKDebugger::bytesWritten);
 
-    // The function may be called multiple times, so do something to ensure that the signal named bytesAnalysed
+    // The function may be called multiple times,
+    // so do something to ensure that the signal named bytesAnalysed
     // and the slot named bytesRead are connected once.
-    //connect(analyzerManager, &SAKOtherAnalyzerThreadManager::bytesAnalysed, this, &SAKDebugger::bytesRead, static_cast<Qt::ConnectionType>(Qt::AutoConnection|Qt::UniqueConnection));
-    connect(mDevice, &SAKDebuggerDevice::messageChanged, this, &SAKDebugger::outputMessage);
-    connect(mDevice, &SAKDebuggerDevice::deviceStateChanged, this, &SAKDebugger::changedDeviceState);
-    connect(mDevice, &SAKDebuggerDevice::finished, this, &SAKDebugger::closeDevice, Qt::QueuedConnection);
+    connect(mDevice, &SAKDebuggerDevice::messageChanged,
+            this, &SAKDebugger::outputMessage);
+    connect(mDevice, &SAKDebuggerDevice::deviceStateChanged,
+            this, &SAKDebugger::changedDeviceState);
+    connect(mDevice, &SAKDebuggerDevice::finished,
+            this, &SAKDebugger::closeDevice, Qt::QueuedConnection);
 
 
-    // Initialize the more button, the first thing to do is clear the old actions and delete the old menu.
+    // Initialize the more button,
+    // the first thing to do is clear the old actions and delete the old menu.
     auto deviceMorePushButtonMenu = mDeviceMorePushButton->menu();
     if (deviceMorePushButtonMenu){
         deviceMorePushButtonMenu->clear();
@@ -357,18 +385,6 @@ void SAKDebugger::cleanInfo()
     mInfoLabel->clear();
 }
 
-void SAKDebugger::on_switchPushButton_clicked()
-{
-    mSwitchPushButton->setEnabled(false);
-    if (mDevice){
-        if (!mDevice->isRunning()){
-            openDevice();
-        }else{
-            closeDevice();
-        }
-    }
-}
-
 void SAKDebugger::initializingVariables()
 {
     // Devce control
@@ -406,24 +422,4 @@ void SAKDebugger::initializingVariables()
     mMoreOutputSettingsPushButton = mUi->moreOutputSettingsPushButton;
     mClearOutputPushButton = mUi->clearOutputPushButton;
     mOutputTextBroswer = mUi->outputTextBroswer;
-
-    // Statistics
-    mRxSpeedLabel = mUi->rxSpeedLabel;
-    mTxSpeedLabel = mUi->txSpeedLabel;
-    mRxFramesLabel = mUi->rxFramesLabel;
-    mTxFramesLabel = mUi->txFramesLabel;
-    mRxBytesLabel = mUi->rxBytesLabel;
-    mTxBytesLabel = mUi->txBytesLabel;
-#if 0
-    mResetTxCountPushButton = mUi->resetTxCountPushButton;
-    mResetRxCountPushButton = mUi->resetRxCountPushButton;
-#endif
-#if 0
-    // Other settings
-    mTransmissionSettingPushButton = mUi->transmissionSettingPushButton;
-    mAutoResponseSettingPushButton = mUi->autoResponseSettingPushButton;
-    mTimingSendingPushButton = mUi->timingSendingPushButton;
-    mMoreSettingsPushButton = mUi->moreSettingsPushButton;
-    mAnalyzerPushButton = mUi->analyzerPushButton;
-#endif
 }

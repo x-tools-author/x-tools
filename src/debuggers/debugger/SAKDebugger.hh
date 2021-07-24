@@ -1,4 +1,4 @@
-﻿/*
+﻿/****************************************************************************************
  * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -6,7 +6,7 @@
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- */
+ ***************************************************************************************/
 #ifndef SAKDEBUGGER_HH
 #define SAKDEBUGGER_HH
 
@@ -112,13 +112,15 @@ public:
     SAKDebuggerOutput *outputController();
 
     /**
-     * @brief statisticsController: Get SAKDebugPageStatisticsController instance pointer
+     * @brief statisticsController: Get SAKDebugPageStatisticsController instance
+     * pointer
      * @return SAKDebugPageStatisticsController instance pointer
      */
     SAKDebuggerStatistics *statisticsController();
 
     /**
-     * @brief deviceController: Get the device controller instance, the controller will be destroy when the page is closed.
+     * @brief deviceController: Get the device controller instance,
+     * the controller will be destroy when the page is closed.
      * @return Device controller instance pointer
      */
     SAKDebugPageController *deviceController();
@@ -135,7 +137,8 @@ public:
     QString tableNameTimingSendingTable();
 protected:
     /**
-     * @brief createDevice: Get the device instance, the device will be destroy when it is closed.
+     * @brief createDevice: Get the device instance, the device will be destroy when
+     * it is closed.
      * @return Device instance pointer
      */
     virtual SAKDebuggerDevice* device() = 0;
@@ -147,7 +150,8 @@ protected:
     virtual SAKDebugPageController *controller() = 0;
 
     /**
-     * @brief initializePage: Initializing, the function must be called in the constructor of subclass.
+     * @brief initializePage: Initializing, the function must be called in the
+     * constructor of subclass.
      */
     void initializePage();
 private:
@@ -202,8 +206,6 @@ protected:
     QPushButton *mSwitchPushButton;
     QPushButton *mDeviceMorePushButton;
     QWidget *mControllerWidget;
-private slots:
-    void on_switchPushButton_clicked();
     /*************************************************************************/
     // Data input settings module
 protected:
@@ -238,27 +240,6 @@ protected:
     QPushButton *mClearOutputPushButton;
     QTextBrowser *mOutputTextBroswer;
     /*************************************************************************/
-    // Data statistics module
-protected:
-    bool mReceivedFlag;
-    bool mSendFlag;
-
-    QLabel *mRxSpeedLabel;
-    QLabel *mTxSpeedLabel;
-    QLabel *mRxFramesLabel;
-    QLabel *mTxFramesLabel;
-    QLabel *mRxBytesLabel;
-    QLabel *mTxBytesLabel;
-    QPushButton *mResetTxCountPushButton;
-    QPushButton *mResetRxCountPushButton;
-    /*************************************************************************/
-    // Other settings module
-protected:
-    QPushButton *mTransmissionSettingPushButton;
-    QPushButton *mAutoResponseSettingPushButton;
-    QPushButton *mTimingSendingPushButton;
-    QPushButton *mMoreSettingsPushButton;
-    QPushButton *mAnalyzerPushButton;
 };
 
 #endif  // SAKTABPAGE_HH
