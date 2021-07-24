@@ -162,10 +162,10 @@ void SAKDebuggerInput::run()
 
         // Append crc byte to data
         switch (bitsWidth) {
-            case 8: cookedData.append(reinterpret_cast<char*>(&crc8), 1); break;
-            case 16: cookedData.append(reinterpret_cast<char*>(&crc16), 2); break;
-            case 32: cookedData.append(reinterpret_cast<char*>(&crc), 4); break;
-            default: break;
+        case 8: cookedData.append(reinterpret_cast<char*>(&crc8), 1); break;
+        case 16: cookedData.append(reinterpret_cast<char*>(&crc16), 2); break;
+        case 32: cookedData.append(reinterpret_cast<char*>(&crc), 4); break;
+        default: break;
         }
     }
 
