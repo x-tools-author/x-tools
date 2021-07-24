@@ -1,4 +1,4 @@
-﻿/*
+﻿/****************************************************************************************
  * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -6,7 +6,7 @@
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- */
+ ***************************************************************************************/
 #include <QDebug>
 #include <QFile>
 #include <QDialog>
@@ -17,7 +17,10 @@
 #include "SAKDebuggerOutputSave2File.hh"
 #include "ui_SAKDebuggerOutputSave2File.h"
 
-SAKDebuggerOutputSave2File::SAKDebuggerOutputSave2File(QSettings *settings, QString settingGroup, QWidget *parent)
+SAKDebuggerOutputSave2File::SAKDebuggerOutputSave2File(QSettings
+                                                       *settings,
+                                                       QString settingGroup,
+                                                       QWidget *parent)
     :QDialog(parent)
     ,m_settings(settings)
     ,ui(new Ui::SAKDebuggerOutputSave2File)
@@ -47,7 +50,8 @@ SAKDebuggerOutputSave2File::SAKDebuggerOutputSave2File(QSettings *settings, QStr
     m_settingKeyDataType = QString("%1/dataType").arg(groupString);
     m_settings = settings;
 
-    // ParametersContext will be signal parameter, the step must be done, or will be error.
+    // ParametersContext will be signal parameter,
+    // the step must be done, or will be error.
     qRegisterMetaType<ParametersContext>("SaveOutputDataParamters");
 
     // The task of thread is that writting data to file.
@@ -63,7 +67,8 @@ SAKDebuggerOutputSave2File::SAKDebuggerOutputSave2File(QSettings *settings, QStr
             m_pathLineEdit->setText(var.toString());
         }else{
             // Set default path for output file
-            m_defaultPath = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
+            auto location = QStandardPaths::DesktopLocation;
+            m_defaultPath = QStandardPaths::writableLocation(location);
             m_pathLineEdit->setText(m_defaultPath.append("/default.txt"));
         }
 
@@ -118,7 +123,7 @@ SAKDebuggerOutputSave2File::~SAKDebuggerOutputSave2File()
 void SAKDebuggerOutputSave2File::bytesRead(QByteArray bytes)
 {
     if (ui->checkBoxEnable->isChecked()) {
-        SAKDebuggerOutputSave2File::ParametersContext parametersCtx = parameters(ParametersContext::Read);
+        auto parametersCtx = parameters(ParametersContext::Read);
         if (m_readDataCheckBox->isChecked()){
             emit writeDataToFile(bytes, parametersCtx);
         }
@@ -128,14 +133,15 @@ void SAKDebuggerOutputSave2File::bytesRead(QByteArray bytes)
 void SAKDebuggerOutputSave2File::bytesWritten(QByteArray bytes)
 {
     if (ui->checkBoxEnable->isChecked()) {
-        SAKDebuggerOutputSave2File::ParametersContext parametersCtx = parameters(ParametersContext::Written);
+        auto parametersCtx = parameters(ParametersContext::Written);
         if (m_writtenDataCheckBox->isChecked()){
             emit writeDataToFile(bytes, parametersCtx);
         }
     }
 }
 
-SAKDebuggerOutputSave2File::ParametersContext SAKDebuggerOutputSave2File::parameters(ParametersContext::DataType type)
+SAKDebuggerOutputSave2File::ParametersContext
+SAKDebuggerOutputSave2File::parameters(ParametersContext::DataType type)
 {
     SAKDebuggerOutputSave2File::ParametersContext parametersCtx;
     parametersCtx.fileName = m_pathLineEdit->text().trimmed();
@@ -165,7 +171,8 @@ void SAKDebuggerOutputSave2File::on_selectPushButton_clicked()
     datetime.append(".txt");
     fileName = QFileDialog::getSaveFileName(this,
                                             tr("Save to File"),
-                                            QString("%1/%2").arg(m_defaultPath, datetime),
+                                            QString("%1/%2").arg(m_defaultPath,
+                                                                 datetime),
                                             QString("txt (*.txt)"));
 
     if (!fileName.isEmpty()){
@@ -196,14 +203,16 @@ void SAKDebuggerOutputSave2File::on_readDataCheckBox_clicked()
 void SAKDebuggerOutputSave2File::on_writtenDataCheckBox_clicked()
 {
     if (m_settings){
-        m_settings->setValue(m_settingKeyWrittenData, m_writtenDataCheckBox->isChecked());
+        m_settings->setValue(m_settingKeyWrittenData,
+                             m_writtenDataCheckBox->isChecked());
     }
 }
 
 void SAKDebuggerOutputSave2File::on_timestampCheckBox_clicked()
 {
     if (m_settings){
-        m_settings->setValue(m_settingKeyTimestamp, m_timestampCheckBox->isChecked());
+        m_settings->setValue(m_settingKeyTimestamp,
+                             m_timestampCheckBox->isChecked());
     }
 }
 
@@ -244,7 +253,10 @@ SAKDebuggerOutputSave2File::Save2FileThread::~Save2FileThread()
     wait();
 }
 
-void SAKDebuggerOutputSave2File::Save2FileThread::writeDataToFile(QByteArray data, SAKDebuggerOutputSave2File::ParametersContext parameters)
+void SAKDebuggerOutputSave2File::Save2FileThread::writeDataToFile(
+        QByteArray data,
+        SAKDebuggerOutputSave2File::ParametersContext parameters
+        )
 {
     if(parameters.fileName.isEmpty()){
         return;
@@ -289,7 +301,9 @@ void SAKDebuggerOutputSave2File::Save2FileThread::run()
     }
 }
 
-void SAKDebuggerOutputSave2File::Save2FileThread::innerWriteDataToFile(QByteArray data, SAKDebuggerOutputSave2File::ParametersContext parameters)
+void SAKDebuggerOutputSave2File::Save2FileThread::innerWriteDataToFile(
+        QByteArray data,
+        SAKDebuggerOutputSave2File::ParametersContext parameters)
 {
     // If the size of file more than 1M, create a new file to save data
     if (QFile::exists(parameters.fileName)){
@@ -299,7 +313,8 @@ void SAKDebuggerOutputSave2File::Save2FileThread::innerWriteDataToFile(QByteArra
         QString path = fullPath.remove(fileName);
         if (fileInfo.size() > 1024*1024){
             QFile file(parameters.fileName);
-            file.rename(QString("%1/backup_%2_%3").arg(path, QDateTime::currentDateTime().toString("yyyyMMddhhmmss"), fileName));
+            QString suffix = QDateTime::currentDateTime().toString("yyyyMMddhhmmss");
+            file.rename(QString("%1/backup_%2_%3").arg(path, suffix, fileName));
         }
     }
 
@@ -310,16 +325,20 @@ void SAKDebuggerOutputSave2File::Save2FileThread::innerWriteDataToFile(QByteArra
     QString dataString;
     if (file.open(QFile::WriteOnly | QFile::Text | QFile::Append)){
         dataString = bytes2String(data, format);
+        QString dtStr = QDateTime::currentDateTime().toString("hh:mm:ss ");
+                bool isRx = parameters.type == ParametersContext::Read;
+        QString rxtx = isRx ? QString("Rx") : QString("Tx");
         QString outString = QString("[%1%2]%3")
-                .arg(parameters.saveTimestamp ? QString(QDateTime::currentDateTime().toString("hh:mm:ss ")) : QString(""),
-                     parameters.type == SAKDebuggerOutputSave2File::ParametersContext::Read ? QString("Rx") : QString("Tx"),
+                .arg(parameters.saveTimestamp ? dtStr : QString(""),
+                     rxtx,
                      dataString);
         textStream << outString << "\n";
         file.close();
     }
 }
 
-SAKDebuggerOutputSave2File::Save2FileThread::DataInfoStruct SAKDebuggerOutputSave2File::Save2FileThread::takeDataInfo()
+SAKDebuggerOutputSave2File::Save2FileThread::DataInfoStruct
+SAKDebuggerOutputSave2File::Save2FileThread::takeDataInfo()
 {
     DataInfoStruct info;
     m_dataListMutex.lock();
@@ -331,7 +350,8 @@ SAKDebuggerOutputSave2File::Save2FileThread::DataInfoStruct SAKDebuggerOutputSav
     return info;
 }
 
-QString SAKDebuggerOutputSave2File::Save2FileThread::bytes2String(QByteArray bytes, int format)
+QString SAKDebuggerOutputSave2File::Save2FileThread::bytes2String(QByteArray bytes,
+                                                                  int format)
 {
     QString str;
     switch (format) {
@@ -344,7 +364,8 @@ QString SAKDebuggerOutputSave2File::Save2FileThread::bytes2String(QByteArray byt
         break;
     case SAKDebuggerOutputSave2File::ParametersContext::Hex:
         for (int i = 0; i < bytes.length(); i++){
-            QString temp = QString("%1").arg(QString::number(int(bytes.at(i)), 16), 2, '0');
+            QString temp = QString("%1")
+                    .arg(QString::number(int(bytes.at(i)), 16), 2, '0');
             str.append(temp + QString(" "));
         }
         str = str.trimmed();

@@ -1,4 +1,4 @@
-﻿/*
+﻿/****************************************************************************************
  * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -6,7 +6,7 @@
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- */
+ ***************************************************************************************/
 #ifndef QMDASSISTANTOUTPUTSAVE2FILE_HH
 #define QMDASSISTANTOUTPUTSAVE2FILE_HH
 
@@ -36,7 +36,9 @@ public:
         bool saveTimestamp;
     };
 
-    SAKDebuggerOutputSave2File(QSettings *settings, QString settingGroup, QWidget *parent = Q_NULLPTR);
+    SAKDebuggerOutputSave2File(QSettings *settings,
+                               QString settingGroup,
+                               QWidget *parent = Q_NULLPTR);
     ~SAKDebuggerOutputSave2File();
 
     class Save2FileThread : public QThread
@@ -45,7 +47,8 @@ public:
         Save2FileThread(QObject *parent = Q_NULLPTR);
         ~Save2FileThread();
 
-        void writeDataToFile(QByteArray data, SAKDebuggerOutputSave2File::ParametersContext parameters);
+        void writeDataToFile(QByteArray data,
+                             SAKDebuggerOutputSave2File::ParametersContext parameters);
     protected:
         void run() final;
     private:
@@ -59,7 +62,9 @@ public:
         QMutex m_treadMutex;
         QWaitCondition m_threadWaitCondition;
     private:
-        void innerWriteDataToFile(QByteArray data, SAKDebuggerOutputSave2File::ParametersContext parameters);
+        void innerWriteDataToFile(
+                QByteArray data,
+                SAKDebuggerOutputSave2File::ParametersContext parameters);
         DataInfoStruct takeDataInfo();
         QString bytes2String(QByteArray bytes, int format);
     };
@@ -87,7 +92,9 @@ private:
 private:
     ParametersContext parameters(ParametersContext::DataType type);
 signals:
-    void writeDataToFile(QByteArray data, ParametersContext mParametersContext);
+    void writeDataToFile(
+            QByteArray data,
+            SAKDebuggerOutputSave2File::ParametersContext mParametersContext);
 private:
     Ui::SAKDebuggerOutputSave2File *ui;
     QLineEdit *m_pathLineEdit;

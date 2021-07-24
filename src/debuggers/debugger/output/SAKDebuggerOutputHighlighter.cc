@@ -10,7 +10,8 @@
 #include "SAKDebuggerOutputHighlighter.hh"
 #include "ui_SAKDebuggerOutputHighlighter.h"
 
-SAKDebuggerOutputHighlighter:: SAKDebuggerOutputHighlighter(QTextDocument *doc, QWidget* parent)
+SAKDebuggerOutputHighlighter:: SAKDebuggerOutputHighlighter(QTextDocument *doc,
+                                                            QWidget* parent)
     :QWidget (parent)
     ,ui (new Ui::SAKDebuggerOutputHighlighter)
 {
@@ -25,8 +26,10 @@ SAKDebuggerOutputHighlighter:: SAKDebuggerOutputHighlighter(QTextDocument *doc, 
 
     m_inputLineEdit->installEventFilter(this);
 
-    connect(m_clearLabelBt, &QPushButton::clicked, this, & SAKDebuggerOutputHighlighter::clearLabel);
-    connect(m_addLabelBt, &QPushButton::clicked, this, & SAKDebuggerOutputHighlighter::addLabelFromInput);
+    connect(m_clearLabelBt, &QPushButton::clicked,
+            this, & SAKDebuggerOutputHighlighter::clearLabel);
+    connect(m_addLabelBt, &QPushButton::clicked,
+            this, & SAKDebuggerOutputHighlighter::addLabelFromInput);
 }
 
 SAKDebuggerOutputHighlighter::~SAKDebuggerOutputHighlighter()
@@ -40,7 +43,9 @@ SAKDebuggerOutputHighlighter::Highlighter::Highlighter(QTextDocument* parent)
     setHighlighterKeyWord(QStringList());
 }
 
-void SAKDebuggerOutputHighlighter::Highlighter::setHighlighterKeyWord(QStringList keyWords)
+void SAKDebuggerOutputHighlighter::Highlighter::setHighlighterKeyWord(
+        QStringList keyWords
+        )
 {
     mHighlightingRules.clear();
 
