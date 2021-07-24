@@ -260,7 +260,26 @@ QString SAKCommonDataStructure::friendlySuffix(SAKEmnuSuffixsType type)
     }
 }
 
-void SAKCommonDataStructure::setComboBoxItems(QComboBox *comboBox, QMap<int, QString> &formatMap, int currentData)
+void SAKCommonDataStructure::formattingInputText(QTextEdit *textEdit, int model)
+{
+    if (textEdit){
+        textEdit->blockSignals(true);
+        QString plaintext = textEdit->toPlainText();
+        if (!plaintext.isEmpty()){
+            auto cookedModel =
+                    static_cast<SAKCommonDataStructure::SAKEnumTextInputFormat>(model);
+            QString cookedString = SAKCommonDataStructure::formattingString(plaintext,
+                                                                            cookedModel);
+            textEdit->setText(cookedString);
+            textEdit->moveCursor(QTextCursor::End);
+        }
+        textEdit->blockSignals(false);
+    }
+}
+
+void SAKCommonDataStructure::setComboBoxItems(QComboBox *comboBox,
+                                              QMap<int, QString> &formatMap,
+                                              int currentData)
 {
     if (comboBox){
         comboBox->clear();

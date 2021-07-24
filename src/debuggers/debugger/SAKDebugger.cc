@@ -31,13 +31,13 @@
 #include "SAKDebuggerDevice.hh"
 #include "SAKDebuggerOutput.hh"
 #include "SAKDebuggerPlugins.hh"
+#include "SAKDebuggerStatistics.hh"
 #include "SAKCommonCrcInterface.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKDebugPageController.hh"
 #include "SAKOtherAnalyzerThread.hh"
 #include "SAKOtherAnalyzerThreadManager.hh"
 #include "SAKPluginAutomaticallyResponse.hh"
-#include "SAKDebuggerStatistics.hh"
 #include "SAKDebugPageCommonDatabaseInterface.hh"
 
 #ifdef SAK_IMPORT_MODULE_CHARTS
@@ -94,6 +94,7 @@ SAKDebugger::SAKDebugger(int type, QString name, QWidget *parent)
                                             mSettingGroup,
                                             sqlDatabase(),
                                             this);
+    mInputController->updateUiState(false);
 
     // Initializing the timer.
     mClearInfoTimer.setInterval(SAK_CLEAR_MESSAGE_INTERVAL);
@@ -232,7 +233,8 @@ void SAKDebugger::initializePage()
 
 
     // Input
-    connect(mInputController, &SAKDebuggerInput::invokeWriteBytes, mDevice, &SAKDebuggerDevice::writeBytes);
+    connect(mInputController, &SAKDebuggerInput::invokeWriteBytes,
+            mDevice, &SAKDebuggerDevice::writeBytes, Qt::QueuedConnection);
 
 
     connect(this, &SAKDebugger::requestWriteData, mDevice, &SAKDebuggerDevice::writeBytes);
@@ -277,8 +279,7 @@ void SAKDebugger::initializePage()
 
 void SAKDebugger::changedDeviceState(bool opened)
 {
-    mCyclingTimeComboBox->setEnabled(opened);
-    mSendPushButton->setEnabled(opened);
+    mInputController->updateUiState(opened);
     mRefreshAction->setEnabled(!opened);
     mDeviceController->setUiEnable(opened);
 
@@ -319,16 +320,16 @@ void SAKDebugger::commonSqlApiUpdateRecord(QSqlQuery *sqlQuery,
     QString queryString;
     if (valueIsString){
         queryString = QString("UPDATE %1 SET %2='%3' WHERE ID=%4")
-                .arg(tableName)
-                .arg(columnName)
-                .arg(value.toString())
-                .arg(recordID);
+                .arg(tableName,
+                     columnName,
+                     value.toString(),
+                     QString::number(recordID));
     }else{
         queryString = QString("UPDATE %1 SET %2=%3 WHERE ID=%4")
-                .arg(tableName)
-                .arg(columnName)
-                .arg(value.toInt())
-                .arg(recordID);
+                .arg(tableName,
+                     columnName,
+                     value.toString(),
+                     QString::number(recordID));
     }
 
     if(!sqlQuery->exec(queryString)){

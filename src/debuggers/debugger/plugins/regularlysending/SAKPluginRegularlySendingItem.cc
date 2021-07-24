@@ -145,7 +145,7 @@ void SAKPluginRegularlySendingItem::on_inputDataTextEdit_textChanged()
     if (!isInitializing){
         QString text = mInputDataTextEdit->toPlainText();
         int format = mTextFormatComboBox->currentData().toInt();
-        SAKDebuggerInput::formattingInputText(mInputDataTextEdit, format);
+        SAKCommonDataStructure::formattingInputText(mInputDataTextEdit, format);
 
         emit inputTextChanged(text);
     }

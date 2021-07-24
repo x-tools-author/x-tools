@@ -37,242 +37,32 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
                                    QSqlDatabase *sqlDatabase,
                                    QObject *parent)
     :QThread(parent)
-    ,mCyclingTimeComboBox(regularlySending)
-    ,mInputModelComboBox(inputFormat)
+    ,mRegularSendingComboBox(regularlySending)
+    ,mTextFormatComboBox(inputFormat)
     ,mMoreInputSettingsPushButton(more)
     ,mSendPushButton(send)
     ,mInputComboBox(input)
     ,mCrcLabel(crc)
-    ,mCrcInterface(new SAKCommonCrcInterface)
     ,mSettings(settings)
+    ,mSettingsGroup(settingsGroup)
+    ,mSqlDatabase(sqlDatabase)
+    ,mRregularSendingTimer(new QTimer)
+    ,mSuffixsActionGroup(Q_NULLPTR)
+    ,mCrcInterface(new SAKCommonCrcInterface)
 {
-    // Initialize setting key
+    // Initialize setting key.
     mSettingKeyCtx.suffixsType = settingsGroup + "suffixsType";
     mSettingKeyCtx.inputTextFormat = settingsGroup + "inputTextFormat";
     mSettingKeyCtx.enableSendingRecord = settingsGroup + "enableSendingRecord";
 
 
-    mCyclingTimeComboBox->addItem(tr("Forbidden"), INT_MAX);
-    QString unit = tr("ms");
-    for (int i = 50; i < 500; i += 50) {
-        mCyclingTimeComboBox->addItem(QString::number(i) + QString(" ") + unit, i);
-    }
-    for (int i = 1000; i <= 5000; i += 1000) {
-        mCyclingTimeComboBox->addItem(QString::number(i) + QString(" ") + unit, i);
-    }
-    connect(mCyclingTimeComboBox,
-            &QComboBox::currentTextChanged,
-            this, [=](const QString &text){
-        Q_UNUSED(text);
-        if (mCyclingTimeComboBox->currentIndex() != 0) {
-            int interval = mCyclingTimeComboBox->currentData().toInt();
-            mCyclingWritingTimer.setInterval(interval);
-            mCyclingWritingTimer.start();
-        } else {
-            mCyclingWritingTimer.stop();
-        }
-    });
+    // Initialization
+    initUi();
+    initSubModule();
 
 
-    // Initialize more input settings button menu
-    mMoreInputSettingsPushButton->setToolTip(tr("More input settings"));
-    auto moreInputSettingsPushButtonMenu = new QMenu;
-    connect(this, &QObject::destroyed,
-            moreInputSettingsPushButtonMenu, &QMenu::deleteLater);
-    mMoreInputSettingsPushButton->setMenu(moreInputSettingsPushButtonMenu);
-
-
-    mQuickSendingMenu = new QMenu(tr("Quick Sending"));
-    moreInputSettingsPushButtonMenu->addMenu(mQuickSendingMenu);
-    moreInputSettingsPushButtonMenu->addAction(tr("Set Data Items"), this, [=](){
-        if (mInputDataItemManager->isHidden()) {
-            mInputDataItemManager->show();
-        } else {
-            mInputDataItemManager->activateWindow();
-        }
-    });
-    auto ret = moreInputSettingsPushButtonMenu->addSeparator();
-    Q_UNUSED(ret);
-
-
-    QMenu *suffixsMenu = moreInputSettingsPushButtonMenu->addMenu(tr("Suffixs"));
-    QMetaEnum suffixsMetaEnum =
-            QMetaEnum::fromType<SAKCommonDataStructure::SAKEmnuSuffixsType>();
-    QVariant suffixsTypeVariant = mSettings->value(mSettingKeyCtx.suffixsType);
-    int suffixsType = suffixsTypeVariant.toInt();
-    QActionGroup *suffixsActionGroup = new QActionGroup(this);
-    for (int i = 0; i < suffixsMetaEnum.keyCount(); i++) {
-        int type = suffixsMetaEnum.keyToValue(suffixsMetaEnum.key(i));
-        auto cookedType = static_cast<SAKCommonDataStructure::SAKEmnuSuffixsType>(type);
-        QString friendlySuffix = SAKCommonDataStructure::friendlySuffix(cookedType);
-        if (friendlySuffix.isEmpty()) {
-            friendlySuffix = tr("(None)");
-        }
-        QAction *suffixAction = suffixsMenu->addAction(friendlySuffix, this, [=](){
-            mSettings->setValue(mSettingKeyCtx.suffixsType, cookedType);
-            mInputParameters.suffixsType = cookedType;
-        });
-        suffixAction->setCheckable(true);
-        suffixsActionGroup->addAction(suffixAction);
-        if (suffixsType == cookedType) {
-            suffixAction->setChecked(true);
-        }
-    }
-
-
-    moreInputSettingsPushButtonMenu->addAction(tr("Save Input"), this, [=](){
-        QDateTime dateTime = QDateTime::currentDateTime();
-        QString defaultName = dateTime.toString("yyyyMMdd").append(".txt");
-        auto location = QStandardPaths::DesktopLocation;
-        QString defaulePath = QStandardPaths::writableLocation(location);
-        defaulePath.append("/").append(defaultName);
-        QString fileName = QFileDialog::getSaveFileName(Q_NULLPTR,
-                                                        tr("Save File"),
-                                                        defaulePath,
-                                                        tr("txt (*.txt);;all (*.*)"));
-        if (fileName.isEmpty()){
-            return;
-        }
-
-        QFile file(fileName);
-        if (file.open(QFile::WriteOnly)){
-            QByteArray data = mInputComboBox->currentText().toUtf8();
-            qint64 ret = file.write(data);
-            if (ret == -1) {
-                emit messageChanged(file.errorString(), true);
-            }
-            file.close();
-        }else {
-            emit messageChanged(file.errorString(), true);
-        }
-    });
-
-
-    moreInputSettingsPushButtonMenu->addAction(tr("Clear Input"), this, [=](){
-        mInputComboBox->lineEdit()->clear();
-    });
-
-
-#if 0
-    moreInputSettingsPushButtonMenu->addAction(tr("Readin File"), this, [=](){
-        QString fileName = QFileDialog::getOpenFileName(Q_NULLPTR, tr("Open File"));
-        if (!fileName.isEmpty()){
-            QFile file(fileName);
-            if(file.open(QFile::ReadOnly)){
-                QByteArray data = file.readAll();
-                mInputComboBox->setCurrentText(QString(data).toUtf8());
-                file.close();
-            }else{
-                QString msg = QString("%1:%2").arg(tr("Can not open file"), fileName);
-                emit messageChanged(msg, false);
-            }
-        }
-    });
-#endif
-
-
-    moreInputSettingsPushButtonMenu->addAction(tr("CRC Settings"), this, [=](){
-        if (mCrcSettings->isHidden()) {
-            mCrcSettings->show();
-        } else {
-            mCrcSettings->activateWindow();
-        }
-    });
-
-
-    auto *action = moreInputSettingsPushButtonMenu->addAction(
-                tr("Enable Sending Record")
-                );
-    action->setCheckable(true);
-    auto valueVariant = mSettings->value(mSettingKeyCtx.enableSendingRecord);
-    if (valueVariant.isNull()) {
-        mEnableSendingRecord = true;
-        action->setChecked(mEnableSendingRecord);
-    } else {
-        auto checked = valueVariant.toBool();
-        mEnableSendingRecord = checked;
-        action->setChecked(checked);
-    }
-    connect(action, &QAction::triggered, this, [=](){
-        mSettings->setValue(mSettingKeyCtx.enableSendingRecord, action->isChecked());
-        this->mEnableSendingRecord = action->isChecked();
-        if (!this->mEnableSendingRecord) {
-            input->clear();
-        }
-    });
-
-
-    // Initializing variables about settings
-    QString group = settingsGroup;
-    mSettings = settings;
-    Q_ASSERT_X(mSettings, __FUNCTION__, "Value can not be null!");
-    mSettingStringInputTextFromat = QString("%1/inputTextFormat").arg(group);
-
-    // InputParametersContext will be a parameter of signal,
-    // so, do something make compiling happy
-    qRegisterMetaType<SAKStructInputParametersContext>("InputParameters");
-
-    // Add actions after new.
-    mInputDataItemManager = new SAKDebuggerInputDataPreset(sqlDatabase,
-                                                           settings,
-                                                           settingsGroup,
-                                                           mQuickSendingMenu);
-    connect(mInputDataItemManager, &SAKDebuggerInputDataPreset::invokeWriteBytes,
-            this, [&](QString rawData, int format){
-        mInputParametersMutex.lock();
-        auto parasCtx = mInputParameters;
-        mInputParametersMutex.unlock();
-        parasCtx.textFormat = format;
-        inputBytes(rawData, parasCtx);
-    });
-
-
-    mCrcSettings = new SAKDebuggerInputCrcSettings(settingsGroup, settings);
-    auto ctx = mCrcSettings->parametersContext();
-    mInputParameters.crc.parametersModel = ctx.parameterMoldel;
-    mInputParameters.crc.appending = ctx.append;
-    mInputParameters.crc.bigEndian = ctx.bigEndian;
-    mInputParameters.crc.startByte = ctx.startByte;
-    mInputParameters.crc.endByte = ctx.endByte;
-
-
-    // Disable some components before device is opened
-    mSendPushButton->setEnabled(false);
-    mCyclingTimeComboBox->setEnabled(false);
-    SAKCommonDataStructure::setComboBoxTextInputFormat(mInputModelComboBox);
-
-
-    // The function must be called before connecting signals and slots
-    readinSettings();
-
-
-    // Update parameters
-    connect(mCrcSettings, &SAKDebuggerInputCrcSettings::crcParametersChanged,
-            this, [&](){
-        auto ctx = mCrcSettings->parametersContext();
-        mInputParameters.crc.parametersModel = ctx.parameterMoldel;
-        mInputParameters.crc.appending = ctx.append;
-        mInputParameters.crc.bigEndian = ctx.bigEndian;
-        mInputParameters.crc.startByte = ctx.startByte;
-        mInputParameters.crc.endByte = ctx.endByte;
-
-        updateCrc();
-    });
-
-
-    connect(mInputModelComboBox, &QComboBox::currentTextChanged,
-            this, &SAKDebuggerInput::changeInputModel);
-    connect(mSendPushButton, &QPushButton::clicked,
-            this, &SAKDebuggerInput::sendRawData);
-    connect(mInputComboBox, &QComboBox::currentTextChanged,
-            this, &SAKDebuggerInput::inputTextEditTextChanged);
-    connect(&mCyclingWritingTimer, &QTimer::timeout,
-            this, &SAKDebuggerInput::cyclingWritingTimerTimeout);
-
-
-    initParameters();
-    updateCrc();
-
+    // The thread will restart automatically after finishing,
+    // if the data is not empty.
     connect(this, &QThread::finished, this, [&](){
         mBytesInfoVectorMutex.lock();
         if (!mBytesInfoVector.isEmpty()) {
@@ -284,51 +74,42 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
 
 SAKDebuggerInput::~SAKDebuggerInput()
 {
+    if (isRunning()) {
+        exit();
+        wait();
+    }
     mCrcInterface->deleteLater();
-    mInputDataItemManager->deleteLater();
+    mDataPreset->deleteLater();
     mCrcSettings->deleteLater();
-}
 
-void SAKDebuggerInput::showCrcSettingsDialog()
-{
-    if (mCrcSettings->isHidden()) {
-        mCrcSettings->show();
-    } else {
-        mCrcSettings->activateWindow();
-    }
-}
-
-void SAKDebuggerInput::formattingInputText(QTextEdit *textEdit, int model)
-{
-    if (!textEdit){
-        return;
-    }
-
-    textEdit->blockSignals(true);
-    QString plaintext = textEdit->toPlainText();
-    if (!plaintext.isEmpty()){
-        QString cookedString = SAKCommonDataStructure::formattingString(
-                    plaintext,
-                    static_cast<SAKCommonDataStructure::SAKEnumTextInputFormat>(model)
-                    );
-        textEdit->setText(cookedString);
-        textEdit->moveCursor(QTextCursor::End);
-    }
-    textEdit->blockSignals(false);
+    mRregularSendingTimer->stop();
+    mRregularSendingTimer->deleteLater();
 }
 
 void SAKDebuggerInput::inputBytes(QString rawBytes,
-                                  SAKStructInputParametersContext parametersContext)
+                                  SAKStructInputParametersContext parasCtx)
 {
     if (!rawBytes.isEmpty()) {
         mBytesInfoVectorMutex.lock();
         QPair<QString, SAKStructInputParametersContext> pair(rawBytes,
-                                                             parametersContext);
+                                                             parasCtx);
         mBytesInfoVector.append(pair);
         if (!isRunning()) {
             start();
         }
         mBytesInfoVectorMutex.unlock();
+    }
+}
+
+void SAKDebuggerInput::updateUiState(bool deviceIsOpened)
+{
+    mRegularSendingComboBox->setEnabled(deviceIsOpened);
+    mSendPushButton->setEnabled(deviceIsOpened);
+    mQuickSendingMenu->setEnabled(deviceIsOpened);
+
+    if (!deviceIsOpened) {
+        mRregularSendingTimer->stop();
+        mRegularSendingComboBox->setCurrentIndex(0);
     }
 }
 
@@ -346,11 +127,23 @@ void SAKDebuggerInput::run()
 
     QPair<QString, SAKStructInputParametersContext> pair = takeBytesInfo();
     QString rawData = pair.first;
+    if (rawData.isEmpty()) {
+        return;
+    }
+
     SAKStructInputParametersContext ctx = pair.second;
     auto textFormat =
-            static_cast<SAKCommonDataStructure::SAKEnumTextInputFormat>(ctx.textFormat);
+            static_cast<SAKCommonDataStructure::INPUT_FORMAT>(ctx.textFormat);
     QByteArray cookedData =
             SAKCommonDataStructure::stringToByteArray(rawData, textFormat);
+
+
+    if (ctx.suffixType != SAKCommonDataStructure::SuffixsTypeNone) {
+        auto cookedSuffixType =
+                static_cast<SAKCommonDataStructure::SUFFIXS_TYPE>(ctx.suffixType);
+        QString suffix = SAKCommonDataStructure::suffix(cookedSuffixType);
+        cookedData.append(suffix.toLatin1());
+    }
 
 
     if (ctx.crc.appending){
@@ -379,87 +172,22 @@ void SAKDebuggerInput::run()
     emit invokeWriteBytes(cookedData);
 }
 
-void SAKDebuggerInput::changeInputModel(const QString &text)
+void SAKDebuggerInput::writeBytes()
 {
-    // Ignore empty text
-    if (text.isEmpty()){
-        return;
+    auto inputParametersTemp = mInputParameters;
+    QString rawData = mInputComboBox->currentText();
+    if (rawData.isEmpty()) {
+        inputParametersTemp.textFormat = SAKCommonDataStructure::InputFormatAscii;
+        rawData = QString("(empty)");
     }
-
-    bool ok = false;
-    mInputComboBox->lineEdit()->clear();
-    mInputParameters.textFormat = mInputModelComboBox->currentData().toInt(&ok);
-    mSettings->setValue(mSettingStringInputTextFromat,
-                        QVariant::fromValue(mInputModelComboBox->currentData().toInt()));
-    Q_ASSERT_X(ok, __FUNCTION__, "Input model is error");
-
-    int format = mInputParameters.textFormat;
-    auto cookedFormat = static_cast<SAKCommonDataStructure::SAKEnumTextInputFormat>(format);
-    SAKCommonDataStructure::setLineEditTextFormat(mInputComboBox->lineEdit(), cookedFormat);
-}
-
-void SAKDebuggerInput::inputTextEditTextChanged()
-{
-    //formattingInputText(mInputTextEdit, mInputParameters.textFormat);
-    updateCrc();
-}
-
-void SAKDebuggerInput::sendRawData()
-{
-    QString data = mInputComboBox->currentText();
-    if (data.isEmpty()){
-        auto ret = QMessageBox::warning(Q_NULLPTR,
-                                        tr("Data is empty"),
-                                        tr("Please input data then try again!"));
-        Q_UNUSED(ret);
-    }
-
-    //emit rawDataChanged(data, mInputParameters);
-}
-
-void SAKDebuggerInput::changeCrcModel()
-{
-    bool ok = false;
-    auto parametersCtx = mCrcSettings->parametersContext();
-    mInputParameters.crc.parametersModel = parametersCtx.parameterMoldel;
-    Q_ASSERT_X(ok, __FUNCTION__, "Please check the crc parameters model");
-
-    updateCrc();
-}
-
-void SAKDebuggerInput::initParameters()
-{
-    mInputParameters.textFormat = mInputModelComboBox->currentData().toInt();
-
-    auto ctx = mCrcSettings->parametersContext();
-    mInputParameters.crc.parametersModel = ctx.parameterMoldel;
-    mInputParameters.crc.bigEndian = ctx.bigEndian;
-    mInputParameters.crc.startByte = ctx.startByte;
-    mInputParameters.crc.endByte = ctx.endByte;
-    mInputParameters.crc.bigEndian = ctx.bigEndian;
-}
-
-void SAKDebuggerInput::cyclingWritingTimerTimeout()
-{
-    // If the mCyclingTimeComboBox is not enable, it means that the device is not ready.
-    // So, do not write data to device.
-    if (mCyclingTimeComboBox->isEnabled()){
-        if (mInputComboBox->currentText().length()){
-            sendRawData();
-        }
-    }else{
-        mCyclingTimeComboBox->setCurrentIndex(0);
-        mCyclingWritingTimer.stop();
-    }
+    inputBytes(rawData, inputParametersTemp);
 }
 
 void SAKDebuggerInput::updateCrc()
 {
     QString rawData = mInputComboBox->currentText();
-    mInputParametersMutex.lock();
     int format = mInputParameters.textFormat;
     auto parametersTemp = mInputParameters;
-    mInputParametersMutex.unlock();
     auto cookedFormat = static_cast<SAKCommonDataStructure::SAKEnumTextInputFormat>(
                 format
                 );
@@ -478,18 +206,6 @@ void SAKDebuggerInput::updateCrc()
     crcString = crcString.toUpper();
     crcString.prepend("0x");
     mCrcLabel->setText(crcString);
-}
-
-void SAKDebuggerInput::readinSettings()
-{
-    QVariant var = mSettings->value(mSettingStringInputTextFromat);
-    int index = 0;
-    if (var.isNull()){
-        index = 4;
-    }else{
-        index = var.toInt();
-    }
-    mInputModelComboBox->setCurrentIndex(index);
 }
 
 quint32 SAKDebuggerInput::crcCalculate(QByteArray data, int model)
@@ -536,4 +252,293 @@ QByteArray SAKDebuggerInput::extractCrcData(QByteArray crcData,
         crcInputData = crcData;
     }
     return crcInputData;
+}
+
+void SAKDebuggerInput::initUi()
+{
+    initUiRegularSendingComboBox();
+    initUiTextFormatComboBox();
+    initUiMoreInputSettingsPushButton();
+    initUiSendPushButton();
+    initUiInputComboBox();
+}
+
+void SAKDebuggerInput::initUiRegularSendingComboBox()
+{
+    mRegularSendingComboBox->addItem(tr("Forbidden"), INT_MAX);
+    QString unit = tr("ms");
+    for (int i = 50; i < 500; i += 50) {
+        mRegularSendingComboBox->addItem(QString::number(i) + QString(" ") + unit, i);
+    }
+    for (int i = 1000; i <= 5000; i += 1000) {
+        mRegularSendingComboBox->addItem(QString::number(i) + QString(" ") + unit, i);
+    }
+    connect(mRegularSendingComboBox,
+            &QComboBox::currentIndexChanged,
+            this, [=](int index){
+        mRregularSendingTimer->stop();
+        if (index != 0) {
+            int interval = mRegularSendingComboBox->currentData().toInt();
+            mRregularSendingTimer->stop();
+            mRregularSendingTimer->setInterval(interval);
+            mRregularSendingTimer->start();
+        }
+    });
+    connect(mRregularSendingTimer, &QTimer::timeout,
+            this, &SAKDebuggerInput::writeBytes);
+}
+
+void SAKDebuggerInput::initUiTextFormatComboBox()
+{
+    // Input text format
+    mTextFormatComboBox->blockSignals(true);
+    SAKCommonDataStructure::setComboBoxTextInputFormat(mTextFormatComboBox);
+    QVariant textFormatVarant = mSettings->value(mSettingKeyCtx.inputTextFormat);
+    int textFormat = textFormatVarant.toInt();
+    auto cookedTextFormat =
+            static_cast<SAKCommonDataStructure::SAKEnumTextInputFormat>(textFormat);
+    SAKCommonDataStructure::setLineEditTextFormat(mInputComboBox->lineEdit(),
+                                                  cookedTextFormat);
+    mInputParameters.textFormat = textFormat;
+    for (int i = 0; i < mTextFormatComboBox->count(); i++){
+        if (mTextFormatComboBox->itemData(i).toInt() == textFormat) {
+            mTextFormatComboBox->setCurrentIndex(i);
+            break;
+        }
+    }
+    connect(mTextFormatComboBox, &QComboBox::currentTextChanged,
+            this, [=](const QString &text){
+        // Ignore empty text
+        if (text.isEmpty()){
+            return;
+        }
+
+        bool ok = false;
+        mInputComboBox->lineEdit()->clear();
+        mInputParameters.textFormat = mTextFormatComboBox->currentData().toInt(&ok);
+        int model = mTextFormatComboBox->currentData().toInt();
+        mSettings->setValue(this->mSettingKeyCtx.inputTextFormat, model);
+        Q_ASSERT_X(ok, __FUNCTION__, "Input model is error");
+
+        int format = mInputParameters.textFormat;
+        auto cookedFormat =
+                static_cast<SAKCommonDataStructure::SAKEnumTextInputFormat>(format);
+        SAKCommonDataStructure::setLineEditTextFormat(mInputComboBox->lineEdit(),
+                                                      cookedFormat);
+        updateCrc();
+        mInputComboBox->clear();
+    });
+    mTextFormatComboBox->blockSignals(false);
+}
+
+void SAKDebuggerInput::initUiMoreInputSettingsPushButton()
+{
+    // Initialize more input settings button menu.
+    mMoreInputSettingsPushButton->setToolTip(tr("More input settings"));
+    auto moreInputSettingsPushButtonMenu = new QMenu(mMoreInputSettingsPushButton);
+    mMoreInputSettingsPushButton->setMenu(moreInputSettingsPushButtonMenu);
+
+
+    addActionToMenuQuickSending(moreInputSettingsPushButtonMenu);
+    addActionToMenuDataPreset(moreInputSettingsPushButtonMenu);
+    auto ret = moreInputSettingsPushButtonMenu->addSeparator();
+    Q_UNUSED(ret);
+    addActionToMenuSuffixs(moreInputSettingsPushButtonMenu);
+    addActionToMenuSaveInput(moreInputSettingsPushButtonMenu);
+    addActionToMenuClearInput(moreInputSettingsPushButtonMenu);
+    addActionToMenuCRCSettings(moreInputSettingsPushButtonMenu);
+    addActionToMenuEnableSendingRecord(moreInputSettingsPushButtonMenu);
+}
+
+void SAKDebuggerInput::initUiSendPushButton()
+{
+    connect(mSendPushButton, &QPushButton::clicked,
+            this, [=](){
+        writeBytes();
+
+        QString data = mInputComboBox->currentText();
+        if (data.isEmpty()) {
+            return;
+        }
+
+        if (data.toUtf8().size() > 256) {
+            return;
+        }
+
+        bool isExit = false;
+        for (int i = 0; i < mInputComboBox->count(); i++) {
+            if (mInputComboBox->currentText() == mInputComboBox->itemText(i)) {
+                isExit = true;
+                break;
+            }
+        }
+
+        if (!isExit) {
+            mInputComboBox->addItem(mInputComboBox->currentText());
+        }
+
+        if (mInputComboBox->count() > 10) {
+            mInputComboBox->removeItem(0);
+        };
+    });
+}
+
+void SAKDebuggerInput::initUiInputComboBox()
+{
+    connect(mInputComboBox, &QComboBox::currentIndexChanged,
+            this, &SAKDebuggerInput::updateCrc);
+}
+
+void SAKDebuggerInput::addActionToMenuQuickSending(QMenu *menu)
+{
+    mQuickSendingMenu = new QMenu(tr("Quick Sending"));
+    menu->addMenu(mQuickSendingMenu);
+}
+
+void SAKDebuggerInput::addActionToMenuDataPreset(QMenu *menu)
+{
+    menu->addAction(tr("Data Preset"), this, [=](){
+        if (mDataPreset->isHidden()) {
+            mDataPreset->show();
+        } else {
+            mDataPreset->activateWindow();
+        }
+    });
+}
+
+void SAKDebuggerInput::addActionToMenuSuffixs(QMenu *menu)
+{
+    QMenu *suffixsMenu = menu->addMenu(tr("Suffixs"));
+    QMetaEnum suffixsMetaEnum =
+            QMetaEnum::fromType<SAKCommonDataStructure::SAKEmnuSuffixsType>();
+    QVariant suffixsTypeVariant = mSettings->value(mSettingKeyCtx.suffixsType);
+    int suffixsType = suffixsTypeVariant.toInt();
+    mInputParameters.suffixType = suffixsType;
+    mSuffixsActionGroup = new QActionGroup(this);
+    for (int i = 0; i < suffixsMetaEnum.keyCount(); i++) {
+        int type = suffixsMetaEnum.keyToValue(suffixsMetaEnum.key(i));
+        auto cookedType = static_cast<SAKCommonDataStructure::SAKEmnuSuffixsType>(type);
+        QString friendlySuffix = SAKCommonDataStructure::friendlySuffix(cookedType);
+        if (friendlySuffix.isEmpty()) {
+            friendlySuffix = tr("(None)");
+        }
+        QAction *suffixAction = suffixsMenu->addAction(friendlySuffix, this, [=](){
+            mSettings->setValue(mSettingKeyCtx.suffixsType, cookedType);
+            mInputParameters.suffixType = cookedType;
+        });
+        suffixAction->setCheckable(true);
+        mSuffixsActionGroup->addAction(suffixAction);
+        if (suffixsType == cookedType) {
+            suffixAction->setChecked(true);
+        }
+    }
+}
+
+void SAKDebuggerInput::addActionToMenuSaveInput(QMenu *menu)
+{
+    menu->addAction(tr("Save Input"), this, [=](){
+        QDateTime dateTime = QDateTime::currentDateTime();
+        QString defaultName = dateTime.toString("yyyyMMdd").append(".txt");
+        auto location = QStandardPaths::DesktopLocation;
+        QString defaulePath = QStandardPaths::writableLocation(location);
+        defaulePath.append("/").append(defaultName);
+        QString fileName = QFileDialog::getSaveFileName(Q_NULLPTR,
+                                                        tr("Save File"),
+                                                        defaulePath,
+                                                        tr("txt (*.txt);;all (*.*)"));
+        if (fileName.isEmpty()){
+            return;
+        }
+
+        QFile file(fileName);
+        if (file.open(QFile::WriteOnly)){
+            QByteArray data = mInputComboBox->currentText().toUtf8();
+            qint64 ret = file.write(data);
+            if (ret == -1) {
+                emit messageChanged(file.errorString(), true);
+            }
+            file.close();
+        }else {
+            emit messageChanged(file.errorString(), true);
+        }
+    });
+}
+
+void SAKDebuggerInput::addActionToMenuClearInput(QMenu *menu)
+{
+    menu->addAction(tr("Clear Input"), this, [=](){
+        mInputComboBox->lineEdit()->clear();
+    });
+}
+
+void SAKDebuggerInput::addActionToMenuCRCSettings(QMenu *menu)
+{
+    menu->addAction(tr("CRC Settings"), this, [=](){
+        if (mCrcSettings->isHidden()) {
+            mCrcSettings->show();
+        } else {
+            mCrcSettings->activateWindow();
+        }
+    });
+}
+
+void SAKDebuggerInput::addActionToMenuEnableSendingRecord(QMenu *menu)
+{
+    auto *action = menu->addAction(
+                tr("Enable Sending Record")
+                );
+    action->setCheckable(true);
+    auto valueVariant = mSettings->value(mSettingKeyCtx.enableSendingRecord);
+    if (valueVariant.isNull()) {
+        mEnableSendingRecord = true;
+        action->setChecked(mEnableSendingRecord);
+    } else {
+        auto checked = valueVariant.toBool();
+        mEnableSendingRecord = checked;
+        action->setChecked(checked);
+    }
+    connect(action, &QAction::triggered, this, [=](){
+        mSettings->setValue(mSettingKeyCtx.enableSendingRecord, action->isChecked());
+        this->mEnableSendingRecord = action->isChecked();
+        if (!this->mEnableSendingRecord) {
+            mInputComboBox->clear();
+        }
+    });
+}
+
+void SAKDebuggerInput::initSubModule()
+{
+    initSubModuleDataPreset();
+    initSubModuleCrcSettings();
+}
+
+void SAKDebuggerInput::initSubModuleDataPreset()
+{
+    mDataPreset = new SAKDebuggerInputDataPreset(mSqlDatabase,
+                                                 mSettings,
+                                                 mSettingsGroup,
+                                                 mQuickSendingMenu);
+    connect(mDataPreset, &SAKDebuggerInputDataPreset::invokeWriteBytes,
+            this, [&](QString rawData, int format){
+        auto parasCtx = mInputParameters;
+        parasCtx.textFormat = format;
+        inputBytes(rawData, parasCtx);
+    });
+}
+
+void SAKDebuggerInput::initSubModuleCrcSettings()
+{
+    auto updateCrcParameters = [&](){
+        auto ctx = mCrcSettings->parametersContext();
+        mInputParameters.crc.parametersModel = ctx.parameterMoldel;
+        mInputParameters.crc.appending = ctx.append;
+        mInputParameters.crc.bigEndian = ctx.bigEndian;
+        mInputParameters.crc.startByte = ctx.startByte;
+        mInputParameters.crc.endByte = ctx.endByte;
+        updateCrc();
+    };
+    mCrcSettings = new SAKDebuggerInputCrcSettings(mSettingsGroup, mSettings);
+    updateCrcParameters();
+    connect(mCrcSettings, &SAKDebuggerInputCrcSettings::crcParametersChanged,
+            this, updateCrcParameters);
 }

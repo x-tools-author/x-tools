@@ -34,6 +34,7 @@ public:
         InputFormatLocal
     };
     Q_ENUM(SAKEnumTextInputFormat);
+    typedef SAKEnumTextInputFormat INPUT_FORMAT;
 
     // Output text format
     enum SAKEnumTextOutputFormat {
@@ -72,6 +73,7 @@ public:
         SuffixsTypeNR
     };
     Q_ENUM(SAKEmnuSuffixsType);
+    typedef SAKEmnuSuffixsType SUFFIXS_TYPE;
 public:
     /**
      * @brief setComboBoxTextOutputFormat: Add output text format items to combo box.
@@ -124,6 +126,7 @@ public:
 
     static QString suffix(SAKEmnuSuffixsType type);
     static QString friendlySuffix(SAKEmnuSuffixsType type);
+    static void formattingInputText(QTextEdit *textEdit, int model);
 private:
     static void setComboBoxItems(QComboBox *comboBox, QMap<int, QString> &formatMap, int currentData);
 private:

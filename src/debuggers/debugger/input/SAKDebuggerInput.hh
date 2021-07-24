@@ -21,6 +21,7 @@
 #include <QSettings>
 #include <QPushButton>
 #include <QListWidget>
+#include <QActionGroup>
 #include <QSqlDatabase>
 #include <QWaitCondition>
 
@@ -55,27 +56,11 @@ public:
         } crc;
 
         int textFormat; // Input text format, such as bin, otc, dec, hex and so on
-        int suffixsType;
+        int suffixType;
     };
 
-    /**
-     * @brief showCrcSettingsDialog: popup crc setting dialog
-     */
-    void showCrcSettingsDialog();
-
-    /**
-     * @brief formattingInputText: formattting input text According to model
-     * @param textEdit: Text source
-     * @param model: text model
-     */
-    static void formattingInputText(QTextEdit *textEdit, int model);
-
-    /**
-     * @brief inputBytes: Data input entry
-     * @param rawBytes: Data String
-     * @param parametersContext: Input parameters
-     */
-    void inputBytes(QString rawBytes, SAKStructInputParametersContext parametersContext);
+    void inputBytes(QString rawBytes, SAKStructInputParametersContext parasCtx);
+    void updateUiState(bool deviceIsOpened);
 protected:
     void run() override;
 private:
@@ -90,35 +75,53 @@ private:
     QMutex mBytesInfoVectorMutex;
     bool mEnableSendingRecord;
 private:
-    QComboBox *mCyclingTimeComboBox;
-    QComboBox *mInputModelComboBox;
+    // The constructor parameters
+    QComboBox *mRegularSendingComboBox;
+    QComboBox *mTextFormatComboBox;
     QPushButton *mMoreInputSettingsPushButton;
     QPushButton *mSendPushButton;
     QComboBox *mInputComboBox;
     QLabel *mCrcLabel;
 
-    QTimer mCyclingWritingTimer;
-    SAKStructInputParametersContext mInputParameters;
-    QMutex mInputParametersMutex;
-    SAKCommonCrcInterface *mCrcInterface;
-    SAKDebuggerInputDataPreset *mInputDataItemManager;
+    QSettings *mSettings;
+    QString mSettingsGroup;
+    QSqlDatabase *mSqlDatabase;
+
+
+    // Sub modules
+    SAKDebuggerInputDataPreset *mDataPreset;
     SAKDebuggerInputCrcSettings *mCrcSettings;
 
-    // Variables about settings
-    QSettings *mSettings;
-    QString mSettingStringInputTextFromat;
+
+    // Inner parameters
+    QTimer *mRregularSendingTimer;
+    QActionGroup *mSuffixsActionGroup;
+    SAKCommonCrcInterface *mCrcInterface;
+    SAKStructInputParametersContext mInputParameters;
 private:
-    void changeInputModel(const QString &text);
-    void inputTextEditTextChanged();
-    void sendRawData();
-    void changeCrcModel();
-    void initParameters();
-    void cyclingWritingTimerTimeout();
+    void writeBytes();
     void updateCrc();
-    void readinSettings();
     quint32 crcCalculate(QByteArray data, int model);
     QByteArray extractCrcData(QByteArray crcData,
                               SAKStructInputParametersContext parameters);
+    void initUi();
+    void initUiRegularSendingComboBox();
+    void initUiTextFormatComboBox();
+    void initUiMoreInputSettingsPushButton();
+    void initUiSendPushButton();
+    void initUiInputComboBox();
+
+    void addActionToMenuQuickSending(QMenu *menu);
+    void addActionToMenuDataPreset(QMenu *menu);
+    void addActionToMenuSuffixs(QMenu *menu);
+    void addActionToMenuSaveInput(QMenu *menu);
+    void addActionToMenuClearInput(QMenu *menu);
+    void addActionToMenuCRCSettings(QMenu *menu);
+    void addActionToMenuEnableSendingRecord(QMenu *menu);
+
+    void initSubModule();
+    void initSubModuleDataPreset();
+    void initSubModuleCrcSettings();
 signals:
     void invokeWriteBytes(QByteArray bytes);
     void messageChanged(QString msg, bool isError);
