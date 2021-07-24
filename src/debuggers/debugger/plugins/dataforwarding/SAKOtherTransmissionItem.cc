@@ -14,8 +14,7 @@ SAKOtherTransmissionItem::SAKOtherTransmissionItem(SAKDebugger *debugPage, QWidg
     :QWidget(parent)
     ,mDebugPage(debugPage)
 {
-    connect(mDebugPage, &SAKDebugger::bytesRead, this, &SAKOtherTransmissionItem::write);
-    connect(this, &SAKOtherTransmissionItem::bytesRead, mDebugPage, &SAKDebugger::write);
+
 }
 
 void SAKOtherTransmissionItem::write(QByteArray data)

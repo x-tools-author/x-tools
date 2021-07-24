@@ -61,7 +61,6 @@ SAKDebugger::SAKDebugger(int type, QString name, QWidget *parent)
     html = html.replace(QString("Author"), QString(SAK_AUTHOR));
     html = html.replace(QString("Email"), QString(SAK_AUTHOR_EMAIL));
     mUi->outputTextBroswer->setHtml(html);
-    initializingVariables();
 
     mDatabaseInterface = new SAKDebugPageCommonDatabaseInterface(this,
                                                                  sakApp->sqlDatabase(),
@@ -73,11 +72,11 @@ SAKDebugger::SAKDebugger(int type, QString name, QWidget *parent)
                                       mUi->pluginPanelLabel,
                                       mUi->pluginPanelWidget,
                                       this);
-    mOutputController = new SAKDebuggerOutput(mMoreOutputSettingsPushButton,
-                                              mOutputTextFormatComboBox,
+    mOutputController = new SAKDebuggerOutput(mUi->moreOutputSettingsPushButton,
+                                              mUi->outputTextFormatComboBox,
                                               settings(),
                                               settingsGroup(),
-                                              mOutputTextBroswer,
+                                              mUi->outputTextBroswer,
                                               this);
     mStatistics = new SAKDebuggerStatistics(mUi->txSpeedLabel,
                                             mUi->rxSpeedLabel,
@@ -86,12 +85,12 @@ SAKDebugger::SAKDebugger(int type, QString name, QWidget *parent)
                                             mUi->txBytesLabel,
                                             mUi->rxBytesLabel,
                                             this);
-    mInputController = new SAKDebuggerInput(mCyclingTimeComboBox,
-                                            mInputFormatComboBox,
-                                            mMoreInputSettingsPushButton,
-                                            mSendPushButton,
-                                            mCrcLabel,
-                                            mInputTextEdit,
+    mInputController = new SAKDebuggerInput(mUi->cyclingTimeComboBox,
+                                            mUi->inputFormatComboBox,
+                                            mUi->moreInputSettingsPushButton,
+                                            mUi->sendPushButton,
+                                            mUi->crcLabel,
+                                            mUi->inputComboBox,
                                             settings(),
                                             mSettingGroup,
                                             sqlDatabase(),
@@ -105,7 +104,7 @@ SAKDebugger::SAKDebugger(int type, QString name, QWidget *parent)
 
     connect(mUi->switchPushButton, &QPushButton::clicked,
             this, [=](){
-        mSwitchPushButton->setEnabled(false);
+        mUi->switchPushButton->setEnabled(false);
         if (this->device()){
             if (!this->device()->isRunning()){
                 openDevice();
@@ -130,16 +129,6 @@ SAKDebugger::~SAKDebugger()
     delete mUi;
 }
 
-void SAKDebugger::write(QByteArray data)
-{
-    emit requestWriteData(data);
-}
-
-void SAKDebugger::writeRawData(QString rawData, int textFormat)
-{
-    emit requestWriteRawData(rawData, textFormat);
-}
-
 void SAKDebugger::outputMessage(QString msg, bool isInfo)
 {
     //mOutputController->outputLog(msg, isInfo);
@@ -150,14 +139,14 @@ void SAKDebugger::outputMessage(QString msg, bool isInfo)
     time = QString("<font color=silver>%1</font>").arg(time);
 
     if (isInfo){
-        mInfoLabel->setStyleSheet(QString("QLabel{color:black}"));
+        mUi->infoLabel->setStyleSheet(QString("QLabel{color:black}"));
     }else{
-        mInfoLabel->setStyleSheet(QString("QLabel{color:red}"));
+        mUi->infoLabel->setStyleSheet(QString("QLabel{color:red}"));
         QApplication::beep();
     }
 
     msg.prepend(time);
-    mInfoLabel->setText(msg);
+    mUi->infoLabel->setText(msg);
     mClearInfoTimer.start();
 }
 
@@ -228,8 +217,8 @@ void SAKDebugger::initializePage()
 {
     mDeviceController = controller();
     if (mDeviceController){
-        QHBoxLayout *layout = new QHBoxLayout(mControllerWidget);
-        mControllerWidget->setLayout(layout);
+        QHBoxLayout *layout = new QHBoxLayout(mUi->controllerWidget);
+        mUi->controllerWidget->setLayout(layout);
         layout->addWidget(mDeviceController);
         layout->setContentsMargins(0, 0, 0, 0);
     }
@@ -259,11 +248,6 @@ void SAKDebugger::initializePage()
             mDevice, &SAKDebuggerDevice::writeBytes, Qt::QueuedConnection);
 
 
-    connect(this, &SAKDebugger::requestWriteData,
-            mDevice, &SAKDebuggerDevice::writeBytes);
-    connect(mDevice, &SAKDebuggerDevice::bytesWritten,
-            this, &SAKDebugger::bytesWritten);
-
     // The function may be called multiple times,
     // so do something to ensure that the signal named bytesAnalysed
     // and the slot named bytesRead are connected once.
@@ -277,15 +261,15 @@ void SAKDebugger::initializePage()
 
     // Initialize the more button,
     // the first thing to do is clear the old actions and delete the old menu.
-    auto deviceMorePushButtonMenu = mDeviceMorePushButton->menu();
+    auto deviceMorePushButtonMenu = mUi->deviceMorePushButton->menu();
     if (deviceMorePushButtonMenu){
         deviceMorePushButtonMenu->clear();
         deviceMorePushButtonMenu->deleteLater();
     }
 
     // Create "Refresh" action.
-    deviceMorePushButtonMenu = new QMenu(mDeviceMorePushButton);
-    mDeviceMorePushButton->setMenu(deviceMorePushButtonMenu);
+    deviceMorePushButtonMenu = new QMenu(mUi->deviceMorePushButton);
+    mUi->deviceMorePushButton->setMenu(deviceMorePushButtonMenu);
     mRefreshAction = new QAction(tr("Refresh"), deviceMorePushButtonMenu);
     deviceMorePushButtonMenu->addAction(mRefreshAction);
     connect(mRefreshAction, &QAction::triggered, this, &SAKDebugger::refreshDevice);
@@ -311,13 +295,13 @@ void SAKDebugger::changedDeviceState(bool opened)
     mRefreshAction->setEnabled(!opened);
     mDeviceController->setUiEnable(opened);
 
-    mSwitchPushButton->setEnabled(true);
+    mUi->switchPushButton->setEnabled(true);
 }
 
 void SAKDebugger::openDevice()
 {
     mDevice->start();
-    mSwitchPushButton->setText(tr("Close"));
+    mUi->switchPushButton->setText(tr("Close"));
 }
 
 void SAKDebugger::closeDevice()
@@ -326,7 +310,7 @@ void SAKDebugger::closeDevice()
     mDevice->requestWakeup();
     mDevice->exit();
     mDevice->wait();
-    mSwitchPushButton->setText(tr("Open"));
+    mUi->switchPushButton->setText(tr("Open"));
 }
 
 void SAKDebugger::refreshDevice()
@@ -382,44 +366,5 @@ void SAKDebugger::commonSqlApiDeleteRecord(QSqlQuery *sqlQuery,
 void SAKDebugger::cleanInfo()
 {
     mClearInfoTimer.stop();
-    mInfoLabel->clear();
-}
-
-void SAKDebugger::initializingVariables()
-{
-    // Devce control
-    mSwitchPushButton = mUi->switchPushButton;
-    mDeviceMorePushButton = mUi->deviceMorePushButton;
-    mControllerWidget = mUi->controllerWidget;
-
-    // Message output
-    mInfoLabel = mUi->infoLabel;
-
-    // Input settings
-    mCyclingTimeComboBox = mUi->cyclingTimeComboBox;
-    mInputFormatComboBox = mUi->inputFormatComboBox;
-    mMoreInputSettingsPushButton = mUi->moreInputSettingsPushButton;
-    mSendPushButton = mUi->sendPushButton;
-    mInputTextEdit = mUi->inputComboBox;
-    mCrcLabel = mUi->crcLabel;
-
-    // Output settings
-#if 0
-    mRxLabel = mUi->rxLabel;
-    mTxLabel = mUi->txLabel;
-#endif
-    mOutputTextFormatComboBox = mUi->outputTextFormatComboBox;
-#if 0
-    mAutoWrapCheckBox = mUi->autoWrapCheckBox;
-    mShowDateCheckBox = mUi->showDateCheckBox;
-    mShowTimeCheckBox = mUi->showTimeCheckBox;
-    mShowMsCheckBox = mUi->showMsCheckBox;
-    mShowRxDataCheckBox = mUi->showRxDataCheckBox;
-    mShowTxDataCheckBox = mUi->showTxDataCheckBox;
-    mSaveOutputToFileCheckBox = mUi->saveOutputToFileCheckBox;
-    mRawDataCheckBox = mUi->rawDataCheckBox;
-#endif
-    mMoreOutputSettingsPushButton = mUi->moreOutputSettingsPushButton;
-    mClearOutputPushButton = mUi->clearOutputPushButton;
-    mOutputTextBroswer = mUi->outputTextBroswer;
+    mUi->infoLabel->clear();
 }

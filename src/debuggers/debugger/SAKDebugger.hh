@@ -55,19 +55,6 @@ public:
     ~SAKDebugger();
 
     /**
-     * @brief write: Write data to device
-     * @param data: Data need to be written
-     */
-    void write(QByteArray data);
-
-    /**
-     * @brief writeRawData: Write raw data
-     * @param rawData: Input text
-     * @param textFormat: input text fromat
-     */
-    void writeRawData(QString rawData, int textFormat);
-
-    /**
      * @brief outputMessage: Output message to ui
      * @param msg: The message that need to be show
      * @param isInfo: true-text color is green, false-text color is red
@@ -186,60 +173,10 @@ public:
     static void commonSqlApiDeleteRecord(QSqlQuery *sqlQuery,
                                          QString tableName,
                                          quint64 recordID);
-signals:
-    // Emit the read data
-    void bytesRead(QByteArray data);
-    // Emit the written data
-    void bytesWritten(QByteArray data);
-    void requestWriteData(QByteArray data);
-    void requestWriteRawData(QString data, int textFormat);
-    // ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-    // ui component
+
+
 private:
     Ui::SAKDebugger *mUi;
-private:
-    // All variable about ui will be initialize in the function
-    void initializingVariables();
-    /*************************************************************************/
-    // Device control module
-protected:
-    QPushButton *mSwitchPushButton;
-    QPushButton *mDeviceMorePushButton;
-    QWidget *mControllerWidget;
-    /*************************************************************************/
-    // Data input settings module
-protected:
-    QComboBox *mCyclingTimeComboBox;
-    QComboBox *mInputFormatComboBox;
-    QPushButton *mMoreInputSettingsPushButton;
-    QPushButton *mSendPushButton;
-    QComboBox *mInputTextEdit;
-    QLabel *mCrcLabel;
-    QPushButton *mAddInputItemPushButton;
-    QPushButton *mDeleteInputItemPushButton;
-    QListWidget *mInputDataItemListWidget;
-    /*************************************************************************/
-    // Message output module
-protected:
-    QLabel *mInfoLabel;
-    /*************************************************************************/
-    // Data output module
-protected:
-    QLabel *mRxLabel;
-    QLabel *mTxLabel;
-    QComboBox *mOutputTextFormatComboBox;
-    QCheckBox *mShowDateCheckBox;
-    QCheckBox *mAutoWrapCheckBox;
-    QCheckBox *mShowTimeCheckBox;
-    QCheckBox *mShowMsCheckBox;
-    QCheckBox *mShowRxDataCheckBox;
-    QCheckBox *mShowTxDataCheckBox;
-    QCheckBox *mSaveOutputToFileCheckBox;
-    QCheckBox *mRawDataCheckBox;
-    QPushButton *mMoreOutputSettingsPushButton;
-    QPushButton *mClearOutputPushButton;
-    QTextBrowser *mOutputTextBroswer;
-    /*************************************************************************/
 };
 
 #endif  // SAKTABPAGE_HH

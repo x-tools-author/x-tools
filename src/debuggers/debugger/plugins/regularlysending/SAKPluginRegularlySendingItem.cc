@@ -87,7 +87,7 @@ void SAKPluginRegularlySendingItem::write()
 
     if (!data.isEmpty()){
         int textFormat = this->mTextFormatComboBox->currentData().toInt();
-        mDebugPage->writeRawData(data, textFormat);
+        //mDebugPage->writeRawData(data, textFormat);
     }
     mWriteTimer.start();
 }

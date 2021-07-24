@@ -54,9 +54,6 @@ SAKChartsThroughputWidget::SAKChartsThroughputWidget(SAKDebugger *debugPage, QWi
     updateTimer.setInterval(1*1000);
     connect(&updateTimer, &QTimer::timeout, this, &SAKChartsThroughputWidget::updateTimerTimeout);
     updateTimer.start();
-
-    connect(debugPage, &SAKDebugger::bytesRead, this, &SAKChartsThroughputWidget::dataRead);
-    connect(debugPage, &SAKDebugger::bytesWritten, this, &SAKChartsThroughputWidget::dataWite);
 }
 
 SAKChartsThroughputWidget::~SAKChartsThroughputWidget()

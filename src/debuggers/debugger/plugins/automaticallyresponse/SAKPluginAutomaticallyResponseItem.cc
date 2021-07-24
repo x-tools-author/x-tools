@@ -196,7 +196,7 @@ void SAKPluginAutomaticallyResponseItem::bytesRead(QByteArray bytes)
                 info->data = responseData;
                 mWaitForWrittenInfoList.append(info);
              }else{
-                 mDebugPage->write(responseData);
+                 //mDebugPage->write(responseData);
              }
          }
     }
@@ -246,8 +246,6 @@ void SAKPluginAutomaticallyResponseItem::commonInitializing()
 
     SAKCommonDataStructure::setComboBoxTextInputFormat(mReferenceDataFromatComboBox);
     SAKCommonDataStructure::setComboBoxTextInputFormat(mResponseDataFormatComboBox);
-
-    connect(mDebugPage, &SAKDebugger::bytesRead, this, &SAKPluginAutomaticallyResponseItem::bytesRead);
 }
 
 void SAKPluginAutomaticallyResponseItem::initDelayWritingTimer()
@@ -275,7 +273,7 @@ void SAKPluginAutomaticallyResponseItem::delayToWritBytes()
 
     // Write data
     for (auto &var : temp){
-        mDebugPage->write(var.data);
+
     }
 
     // Delte the data that has been written
