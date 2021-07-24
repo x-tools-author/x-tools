@@ -65,7 +65,7 @@ void SAKCommonDataStructure::setComboBoxTextWebSocketSendingType(QComboBox *comb
     }
 }
 
-QString SAKCommonDataStructure::formattingString(QString &origingString, SAKEnumTextInputFormat format)
+QString SAKCommonDataStructure::formattingString(QString &origingString, SAKEnumTextFormatInput format)
 {
     QString cookedString;
     if (format == SAKCommonDataStructure::InputFormatBin){
@@ -116,7 +116,7 @@ QString SAKCommonDataStructure::formattingString(QString &origingString, SAKEnum
 }
 
 QByteArray SAKCommonDataStructure::stringToByteArray(QString &origingString,
-                                                     SAKEnumTextInputFormat format)
+                                                     SAKEnumTextFormatInput format)
 {
     QByteArray data;
     if (format == SAKCommonDataStructure::InputFormatBin){
@@ -159,7 +159,7 @@ QByteArray SAKCommonDataStructure::stringToByteArray(QString &origingString,
     return data;
 }
 
-QString SAKCommonDataStructure::byteArrayToString(QByteArray &origingData, SAKEnumTextOutputFormat format)
+QString SAKCommonDataStructure::byteArrayToString(QByteArray &origingData, SAKEnumTextFormatOutput format)
 {
     QString str;
     if (format == SAKCommonDataStructure::OutputFormatBin){
@@ -198,7 +198,7 @@ QString SAKCommonDataStructure::byteArrayToString(QByteArray &origingData, SAKEn
 
 void SAKCommonDataStructure::setLineEditTextFormat(
         QLineEdit *lineEdit,
-        SAKEnumTextInputFormat format
+        SAKEnumTextFormatInput format
         )
 {
     if (mRegExpMap.isEmpty()) {
@@ -267,7 +267,7 @@ void SAKCommonDataStructure::formattingInputText(QTextEdit *textEdit, int model)
         QString plaintext = textEdit->toPlainText();
         if (!plaintext.isEmpty()){
             auto cookedModel =
-                    static_cast<SAKCommonDataStructure::SAKEnumTextInputFormat>(model);
+                    static_cast<SAKCommonDataStructure::SAKEnumTextFormatInput>(model);
             QString cookedString = SAKCommonDataStructure::formattingString(plaintext,
                                                                             cookedModel);
             textEdit->setText(cookedString);

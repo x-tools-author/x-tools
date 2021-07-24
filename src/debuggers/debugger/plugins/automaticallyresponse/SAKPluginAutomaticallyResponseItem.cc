@@ -204,7 +204,7 @@ void SAKPluginAutomaticallyResponseItem::bytesRead(QByteArray bytes)
 
 QByteArray SAKPluginAutomaticallyResponseItem::string2array(QString str, int format)
 {
-    return SAKCommonDataStructure::stringToByteArray(str, static_cast<SAKCommonDataStructure::SAKEnumTextInputFormat>(format));
+    return SAKCommonDataStructure::stringToByteArray(str, static_cast<SAKCommonDataStructure::SAKEnumTextFormatInput>(format));
 };
 
 bool SAKPluginAutomaticallyResponseItem::response(QByteArray receiveData, QByteArray referenceData, int option)

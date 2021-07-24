@@ -25,7 +25,7 @@ public:
     ~SAKCommonDataStructure();
 
     // Input text format
-    enum SAKEnumTextInputFormat {
+    enum SAKEnumTextFormatInput {
         InputFormatBin,
         InputFormatOct,
         InputFormatDec,
@@ -33,11 +33,10 @@ public:
         InputFormatAscii,
         InputFormatLocal
     };
-    Q_ENUM(SAKEnumTextInputFormat);
-    typedef SAKEnumTextInputFormat INPUT_FORMAT;
+    Q_ENUM(SAKEnumTextFormatInput);
 
     // Output text format
-    enum SAKEnumTextOutputFormat {
+    enum SAKEnumTextFormatOutput {
         OutputFormatBin,
         OutputFormatOct,
         OutputFormatDec,
@@ -48,7 +47,7 @@ public:
         OutputFormatAscii,
         OutputFormatLocal,
     };
-    Q_ENUM(SAKEnumTextOutputFormat);
+    Q_ENUM(SAKEnumTextFormatOutput);
 
     // Auto response options
     enum SAKEnumAutoResponseOption {
@@ -73,7 +72,6 @@ public:
         SuffixsTypeNR
     };
     Q_ENUM(SAKEmnuSuffixsType);
-    typedef SAKEmnuSuffixsType SUFFIXS_TYPE;
 public:
     /**
      * @brief setComboBoxTextOutputFormat: Add output text format items to combo box.
@@ -98,7 +96,7 @@ public:
      * @param textEdit: Target text edit.
      * @param format: See SAKEnumTextInputFormat for more information.
      */
-    static QString formattingString(QString &origingString, SAKEnumTextInputFormat format);
+    static QString formattingString(QString &origingString, SAKEnumTextFormatInput format);
 
     /**
      * @brief stringToByteArray: Transmit a QString to a QByteArray.
@@ -106,7 +104,7 @@ public:
      * @param format: See SAKEnumTextInputFormat for more information.
      * @return A QByteArray.
      */
-    static QByteArray stringToByteArray(QString &origingString, SAKEnumTextInputFormat format);
+    static QByteArray stringToByteArray(QString &origingString, SAKEnumTextFormatInput format);
 
     /**
      * @brief byteArrayToString: Transmit a QByteArray to a QString.
@@ -114,7 +112,7 @@ public:
      * @param format: See SAKEnumTextOutputFormat for more information.
      * @return A QString.
      */
-    static QString byteArrayToString(QByteArray &origingData, SAKEnumTextOutputFormat format);
+    static QString byteArrayToString(QByteArray &origingData, SAKEnumTextFormatOutput format);
 
     /**
      * @brief setLineEditTextFormat: Formating input
@@ -122,7 +120,7 @@ public:
      * @param format: (SAKEnumTextInputFormat)
      */
     static void setLineEditTextFormat(QLineEdit *lineEdit,
-                                      SAKEnumTextInputFormat format);
+                                      SAKEnumTextFormatInput format);
 
     static QString suffix(SAKEmnuSuffixsType type);
     static QString friendlySuffix(SAKEmnuSuffixsType type);

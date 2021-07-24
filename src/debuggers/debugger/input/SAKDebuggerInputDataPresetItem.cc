@@ -103,7 +103,7 @@ void SAKDebuggerInputDataPresetItem::initializingItem()
 void SAKDebuggerInputDataPresetItem::setLineEditTextFormat(QLineEdit *lineEdit,
                                                            int format)
 {
-    auto cookedFormat = static_cast<SAKCommonDataStructure::SAKEnumTextInputFormat>(
+    auto cookedFormat = static_cast<SAKCommonDataStructure::SAKEnumTextFormatInput>(
                 format
                 );
     SAKCommonDataStructure::setLineEditTextFormat(lineEdit,

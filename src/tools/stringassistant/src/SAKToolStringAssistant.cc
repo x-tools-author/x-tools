@@ -29,7 +29,7 @@ void SAKToolStringAssistant::on_textEdit_textChanged()
 {
     if (!ui->textEdit->blockSignals(true)){
         QString inputString = ui->textEdit->toPlainText();
-        auto inputFormat = static_cast<SAKCommonDataStructure::SAKEnumTextInputFormat>(ui->inputFormatComboBox->currentData().toInt());
+        auto inputFormat = static_cast<SAKCommonDataStructure::SAKEnumTextFormatInput>(ui->inputFormatComboBox->currentData().toInt());
         QString cookedString = SAKCommonDataStructure::formattingString(inputString, inputFormat);
         ui->textEdit->setText(cookedString);
         ui->textEdit->moveCursor(QTextCursor::End);
@@ -50,9 +50,9 @@ void SAKToolStringAssistant::on_inputFormatComboBox_currentIndexChanged(int inde
 void SAKToolStringAssistant::on_createPushButton_clicked()
 {
     QString inputString = ui->textEdit->toPlainText();
-    auto inputFormat = static_cast<SAKCommonDataStructure::SAKEnumTextInputFormat>(ui->inputFormatComboBox->currentData().toInt());
+    auto inputFormat = static_cast<SAKCommonDataStructure::SAKEnumTextFormatInput>(ui->inputFormatComboBox->currentData().toInt());
     QByteArray inputArray = SAKCommonDataStructure::stringToByteArray(inputString, inputFormat);
-    auto outputFormat = static_cast<SAKCommonDataStructure::SAKEnumTextOutputFormat>(ui->outputFormatComboBox->currentData().toInt());
+    auto outputFormat = static_cast<SAKCommonDataStructure::SAKEnumTextFormatOutput>(ui->outputFormatComboBox->currentData().toInt());
     auto outputString = SAKCommonDataStructure::byteArrayToString(inputArray, outputFormat);
     ui->textBrowser->setText(outputString);
 }

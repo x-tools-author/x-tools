@@ -133,14 +133,14 @@ void SAKDebuggerInput::run()
 
     SAKStructInputParametersContext ctx = pair.second;
     auto textFormat =
-            static_cast<SAKCommonDataStructure::INPUT_FORMAT>(ctx.textFormat);
+            static_cast<SAKCommonDataStructure::SAKEnumTextFormatInput>(ctx.textFormat);
     QByteArray cookedData =
             SAKCommonDataStructure::stringToByteArray(rawData, textFormat);
 
 
     if (ctx.suffixType != SAKCommonDataStructure::SuffixsTypeNone) {
         auto cookedSuffixType =
-                static_cast<SAKCommonDataStructure::SUFFIXS_TYPE>(ctx.suffixType);
+                static_cast<SAKCommonDataStructure::SAKEmnuSuffixsType>(ctx.suffixType);
         QString suffix = SAKCommonDataStructure::suffix(cookedSuffixType);
         cookedData.append(suffix.toLatin1());
     }
@@ -188,7 +188,7 @@ void SAKDebuggerInput::updateCrc()
     QString rawData = mInputComboBox->currentText();
     int format = mInputParameters.textFormat;
     auto parametersTemp = mInputParameters;
-    auto cookedFormat = static_cast<SAKCommonDataStructure::SAKEnumTextInputFormat>(
+    auto cookedFormat = static_cast<SAKCommonDataStructure::SAKEnumTextFormatInput>(
                 format
                 );
     QByteArray cookedData =
@@ -296,7 +296,7 @@ void SAKDebuggerInput::initUiTextFormatComboBox()
     QVariant textFormatVarant = mSettings->value(mSettingKeyCtx.inputTextFormat);
     int textFormat = textFormatVarant.toInt();
     auto cookedTextFormat =
-            static_cast<SAKCommonDataStructure::SAKEnumTextInputFormat>(textFormat);
+            static_cast<SAKCommonDataStructure::SAKEnumTextFormatInput>(textFormat);
     SAKCommonDataStructure::setLineEditTextFormat(mInputComboBox->lineEdit(),
                                                   cookedTextFormat);
     mInputParameters.textFormat = textFormat;
@@ -322,7 +322,7 @@ void SAKDebuggerInput::initUiTextFormatComboBox()
 
         int format = mInputParameters.textFormat;
         auto cookedFormat =
-                static_cast<SAKCommonDataStructure::SAKEnumTextInputFormat>(format);
+                static_cast<SAKCommonDataStructure::SAKEnumTextFormatInput>(format);
         SAKCommonDataStructure::setLineEditTextFormat(mInputComboBox->lineEdit(),
                                                       cookedFormat);
         updateCrc();
