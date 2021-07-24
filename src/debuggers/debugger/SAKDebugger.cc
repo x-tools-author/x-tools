@@ -237,6 +237,7 @@ void SAKDebugger::initDebuggerDevice()
     Q_ASSERT_X(mModuleDevice,
                __FUNCTION__,
                "You must initialize the mDevice in the subcalss!");
+    mModuleDevice->setupMenu(mDeviceMenu);
     auto updateUiState = [=](bool opened){
         mModuleInput->updateUiState(opened);
         mRefreshAction->setEnabled(!opened);

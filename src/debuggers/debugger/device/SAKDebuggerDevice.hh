@@ -12,15 +12,19 @@
 #include <QMenu>
 #include <QMutex>
 #include <QThread>
+#include <QSettings>
 #include <QWaitCondition>
 
+#include "SAKDebuggerDeviceMask.hh"
+
 /// @brief device abstract class
-class SAKDebugPageDeviceMask;
 class SAKDebuggerDevice:public QThread
 {
     Q_OBJECT
 public:
-    SAKDebuggerDevice(QObject *parent = Q_NULLPTR);
+    SAKDebuggerDevice(QSettings *settings,
+                      const QString &settingsGroup,
+                      QObject *parent = Q_NULLPTR);
     ~SAKDebuggerDevice();
 
     void writeBytes(QByteArray bytes);
@@ -43,12 +47,7 @@ signals:
 
 private:
     struct SAKStructDevicePatametersContext {
-        struct MaskContext {
-            quint8 rx;
-            quint8 tx;
-            bool enableRx;
-            bool enableTx;
-        } maskCtx;
+        SAKDebuggerDeviceMask::SAKStructMaskContext maskCtx ;
         struct AnalyzerContext {
             bool enable;
             bool fixedLength;
@@ -60,12 +59,14 @@ private:
 
 
 private:
+    QSettings *settings;
+    const QString settingsGroup;
     SAKStructDevicePatametersContext mParametersCtx;
     QMutex mParametersCtxMutex;
     QVector<QByteArray> mBytesVector;
     QMutex mBytesVectorMutex;
     // Parameters editors
-    SAKDebugPageDeviceMask *mDeviceMask;
+    SAKDebuggerDeviceMask *mMask;
 
 
 private:

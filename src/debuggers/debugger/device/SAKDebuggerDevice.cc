@@ -15,12 +15,22 @@
 #include <QApplication>
 
 #include "SAKDebuggerDevice.hh"
-#include "SAKDebugPageDeviceMask.hh"
+#include "SAKDebuggerDeviceMask.hh"
 
-SAKDebuggerDevice::SAKDebuggerDevice(QObject *parent)
+SAKDebuggerDevice::SAKDebuggerDevice(QSettings *settings,
+                                     const QString &settingsGroup,
+                                     QObject *parent)
     :QThread(parent)
+    ,mMask(Q_NULLPTR)
 {
-
+    mMask = new SAKDebuggerDeviceMask(settings, settingsGroup);
+    mParametersCtx.maskCtx = mMask->parametersContext();
+    connect(mMask, &SAKDebuggerDeviceMask::parametersChanged,
+            this, [&](){
+        mParametersCtxMutex.lock();
+        mParametersCtx.maskCtx = mMask->parametersContext();
+        mParametersCtxMutex.unlock();
+    });
 }
 
 SAKDebuggerDevice::~SAKDebuggerDevice()
@@ -41,7 +51,13 @@ void SAKDebuggerDevice::writeBytes(QByteArray bytes)
 
 void SAKDebuggerDevice::setupMenu(QMenu *menu)
 {
-    Q_UNUSED(menu);
+    menu->addAction(tr("Mask"), this, [=](){
+        if (mMask->isHidden()) {
+            mMask->show();
+        } else {
+            mMask->activateWindow();
+        }
+    });
 }
 
 QByteArray SAKDebuggerDevice::takeBytes()

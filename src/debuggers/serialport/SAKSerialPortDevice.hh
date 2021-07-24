@@ -23,7 +23,9 @@ class SAKSerialPortDevice : public SAKDebuggerDevice
 {
     Q_OBJECT
 public:
-    SAKSerialPortDevice(QObject *parent = Q_NULLPTR);
+    SAKSerialPortDevice(QSettings *settings,
+                        const QString &settingsGroup,
+                        QObject *parent = Q_NULLPTR);
     void setParametersCtx(
             SAKCommonDataStructure::SAKStructSerialPortParametersContext ctx
             );

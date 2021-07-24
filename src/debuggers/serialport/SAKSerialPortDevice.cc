@@ -14,8 +14,8 @@
 #include "SAKSerialPortDebugger.hh"
 #include "SAKSerialPortController.hh"
 
-SAKSerialPortDevice::SAKSerialPortDevice(QObject *parent)
-    :SAKDebuggerDevice(parent)
+SAKSerialPortDevice::SAKSerialPortDevice(QSettings *settings, const QString &settingsGroup, QObject *parent)
+    :SAKDebuggerDevice(settings, settingsGroup, parent)
     ,mSerialPort(Q_NULLPTR)
 {
 
