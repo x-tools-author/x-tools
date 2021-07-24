@@ -1,4 +1,4 @@
-﻿/*
+﻿/****************************************************************************************
  * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -6,7 +6,7 @@
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- */
+ ***************************************************************************************/
 #include <QMenu>
 #include <QFile>
 #include <QDebug>
@@ -63,7 +63,8 @@ SAKDebuggerOutput::SAKDebuggerOutput(QPushButton *menuBt, QComboBox *formatCB,
     mFormatComboBox->blockSignals(false);
 
 
-    connect(mFormatComboBox, &QComboBox::currentTextChanged, this, [&](const QString &text){
+    connect(mFormatComboBox, &QComboBox::currentTextChanged,
+            this, [&](const QString &text){
         mSettings->setValue(mSettingsKeyCtx.textFormat, text);
         mOutputParametersCtxMutex.lock();
         mOutputParametersCtx.textFormat = mFormatComboBox->currentData().toInt();
@@ -81,7 +82,9 @@ SAKDebuggerOutput::SAKDebuggerOutput(QPushButton *menuBt, QComboBox *formatCB,
             : mSettings->value(mSettingsKeyCtx.wrapAnywhere).toBool();
     action->setChecked(wrapAnywhere);
     connect(action, &QAction::triggered, this, [=](){
-        mTextBrower->setWordWrapMode(action->isChecked() ? QTextOption::WrapAnywhere : QTextOption::NoWrap);
+        mTextBrower->setWordWrapMode(action->isChecked()
+                                     ? QTextOption::WrapAnywhere
+                                     : QTextOption::NoWrap);
         mSettings->setValue(mSettingsKeyCtx.wrapAnywhere, action->isChecked());
     });
     menu->addAction(action);
@@ -89,7 +92,11 @@ SAKDebuggerOutput::SAKDebuggerOutput(QPushButton *menuBt, QComboBox *formatCB,
 
     QStringList paras;
     QVector<QAction*> actionVector;
-    paras << tr("Show Date") << tr("Show Time") << tr("Show MS") << tr("Show Rx Data") << tr("Show Tx Data");
+    paras << tr("Show Date")
+          << tr("Show Time")
+          << tr("Show MS")
+          << tr("Show Rx Data")
+          << tr("Show Tx Data");
     for (int i = 0; i < paras.length(); i++) {
         auto name = paras.at(i);
         action = menu->addAction(name);
@@ -166,18 +173,23 @@ SAKDebuggerOutput::SAKDebuggerOutput(QPushButton *menuBt, QComboBox *formatCB,
     mSave2File = new SAKDebuggerOutputSave2File(mSettings, settingGroup);
 
     action = btMenu->addAction(tr("Save Output"));
-    connect(action, &QAction::triggered, this, &SAKDebuggerOutput::save);
+    connect(action, &QAction::triggered,
+            this, &SAKDebuggerOutput::save);
     btMenu->addSeparator();
-    action = btMenu->addAction(tr("Highlighter"));
-    connect(action, &QAction::triggered, mHhighlighter, &SAKDebuggerOutputHighlighter::show);
     action = btMenu->addAction(tr("Log"));
-    connect(action, &QAction::triggered, mLog, &SAKDebuggerOutputLog::show);
+    connect(action, &QAction::triggered,
+            mLog, &SAKDebuggerOutputLog::show);
+    action = btMenu->addAction(tr("Highlighter"));
+    connect(action, &QAction::triggered,
+            mHhighlighter, &SAKDebuggerOutputHighlighter::show);
     action = btMenu->addAction(tr("Write to Disk"));
-    connect(action, &QAction::triggered, mSave2File, &SAKDebuggerOutputSave2File::show);
+    connect(action, &QAction::triggered,
+            mSave2File, &SAKDebuggerOutputSave2File::show);
     mMenuPushButton->setMenu(btMenu);
 
 
-    connect(this, &SAKDebuggerOutput::bytesCooked, this, [=](QString dataString, bool faceWithoutMakeup) {
+    connect(this, &SAKDebuggerOutput::bytesCooked,
+            this, [=](QString dataString, bool faceWithoutMakeup) {
         if (faceWithoutMakeup) {
             mTextBrower->textCursor().movePosition(QTextCursor::End);
             mTextBrower->insertHtml(dataString);
@@ -256,7 +268,9 @@ void SAKDebuggerOutput::run()
                         .arg(color, dataString);
             } else {
                 QString space = dateTimeStr.isEmpty() ? "" : " ";
-                frameString = QString("<font color=silver>[%1%2%3] </font><font color=%4>%5</font>")
+                frameString =
+                        QString("<font color=silver>[%1%2%3] \
+                                 </font><font color=%4>%5</font>")
                         .arg(dateTimeStr, space, rxTx, color, dataString);
             }
 
@@ -271,9 +285,11 @@ void SAKDebuggerOutput::run()
 void SAKDebuggerOutput::save()
 {
     QString dtstr = QDateTime::currentDateTime().toString("yyyyMMddhhmmss");
+    auto location = QStandardPaths::DesktopLocation;
+    QString defaultPath = QStandardPaths::writableLocation(location) + "/" + dtstr;
     QString fileName = QFileDialog::getSaveFileName(Q_NULLPTR,
                                                     tr("Save Output Data to File"),
-                                                    QStandardPaths::writableLocation(QStandardPaths::DesktopLocation) + "/" + dtstr,
+                                                    defaultPath,
                                                     tr("text (*.txt)"));
     if (fileName.length()) {
         QFile file(fileName);
@@ -326,19 +342,33 @@ QString SAKDebuggerOutput::formattingData(SAKStructDataContext ctx)
     int format = ctx.ctx.textFormat;
     if (format == SAKCommonDataStructure::OutputFormatBin) {
         for (int i = 0; i < origingData.length(); i++) {
-            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(origingData.at(i)), 2), 8, '0'));
+            str.append(QString("%1 ")
+                       .arg(QString::number(static_cast<uint8_t>(origingData.at(i)),
+                                            2),
+                            8,
+                            '0'));
         }
     } else if (format == SAKCommonDataStructure::OutputFormatOct) {
         for (int i = 0; i < origingData.length(); i++) {
-            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(origingData.at(i)), 8), 3, '0'));
+            str.append(QString("%1 ")
+                       .arg(QString::number(static_cast<uint8_t>(origingData.at(i)),
+                                            8),
+                            3,
+                            '0'));
         }
     } else if (format == SAKCommonDataStructure::OutputFormatDec) {
         for (int i = 0; i < origingData.length(); i++) {
-            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(origingData.at(i)), 10)));
+            str.append(QString("%1 ")
+                       .arg(QString::number(static_cast<uint8_t>(origingData.at(i)),
+                                            10)));
         }
     } else if (format == SAKCommonDataStructure::OutputFormatHex) {
         for (int i = 0; i < origingData.length(); i++) {
-            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(origingData.at(i)), 16), 2, '0'));
+            str.append(QString("%1 ")
+                       .arg(QString::number(static_cast<uint8_t>(origingData.at(i)),
+                                            16),
+                            2,
+                            '0'));
         }
     } else if (format == SAKCommonDataStructure::OutputFormatAscii) {
         str.append(QString::fromLatin1(origingData));
@@ -362,7 +392,8 @@ QString SAKDebuggerOutput::formattingData(SAKStructDataContext ctx)
     return str;
 }
 
-SAKDebuggerOutput::SAKStructOutputParametersContext SAKDebuggerOutput::outputParametersContext()
+SAKDebuggerOutput::SAKStructOutputParametersContext
+SAKDebuggerOutput::outputParametersContext()
 {
     mOutputParametersCtxMutex.lock();
     auto ctx = mOutputParametersCtx;
