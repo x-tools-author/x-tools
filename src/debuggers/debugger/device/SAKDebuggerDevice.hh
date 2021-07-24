@@ -1,4 +1,4 @@
-﻿/*
+﻿/****************************************************************************************
  * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -6,7 +6,7 @@
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- */
+ ***************************************************************************************/
 #ifndef SAKDEBUGGERDEVICE_HH
 #define SAKDEBUGGERDEVICE_HH
 #include <QMutex>
@@ -58,7 +58,8 @@ protected:
     virtual void free();
 
     /**
-     * @brief writeForTest: The interface is just for debugging data stream, do not override the interface
+     * @brief writeForTest: The interface is just for debugging data stream,
+     * do not override the interface
      * @return Test data
      */
     virtual QByteArray writeForTest();

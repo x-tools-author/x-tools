@@ -1,4 +1,4 @@
-﻿/*
+﻿/****************************************************************************************
  * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -6,7 +6,7 @@
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- */
+ ***************************************************************************************/
 #include <QDebug>
 #include <QWidget>
 #include <QDialog>
@@ -22,7 +22,8 @@ SAKDebuggerDevice::SAKDebuggerDevice(SAKDebugger *debugPage, QObject *parent)
 {
     mDeviceMask = new SAKDebugPageDeviceMask(mDebugPage, Q_NULLPTR);
     mDeviceMask->setWindowModality(Qt::ApplicationModal);
-    mSettingsPanelList << SettingsPanel{tr("Mask settings"), qobject_cast<QWidget*>(mDeviceMask)};
+    mSettingsPanelList << SettingsPanel{tr("Mask settings"),
+                          qobject_cast<QWidget*>(mDeviceMask)};
 }
 
 SAKDebuggerDevice::~SAKDebuggerDevice()
@@ -155,7 +156,8 @@ void SAKDebuggerDevice::run()
             }else{
                 // Do something to make cpu happy
                 mThreadMutex.lock();
-                mThreadWaitCondition.wait(&mThreadMutex, SAK_DEVICE_THREAD_SLEEP_INTERVAL);
+                mThreadWaitCondition.wait(&mThreadMutex,
+                                          SAK_DEVICE_THREAD_SLEEP_INTERVAL);
                 mThreadMutex.unlock();
             }
         }
@@ -238,7 +240,8 @@ QByteArray SAKDebuggerDevice::mask(const QByteArray &plaintext, bool isRxData)
     return ciphertext;
 }
 
-SAKDebuggerDevice::SAKStructDevicePatametersContext SAKDebuggerDevice::parametersContext()
+SAKDebuggerDevice::SAKStructDevicePatametersContext
+SAKDebuggerDevice::parametersContext()
 {
     m_parametersCtxMutex.lock();
     auto parasCtx = m_parametersCtx;
