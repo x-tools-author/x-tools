@@ -1,12 +1,12 @@
-﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+﻿/****************************************************************************************
+ * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- */
+ ***************************************************************************************/
 #include <QDebug>
 #include <QLabel>
 #include <QTimer>
@@ -33,12 +33,14 @@ int main(int argc, char *argv[])
         // Setup main window
         app.showSplashScreenMessage(QObject::tr("Initializing main window..."));
         SAKMainWindow mainWindow(app.settings(), app.sqlDatabase());
-        QObject::connect(&app, &SAKApplication::activeMainWindow, &mainWindow, &SAKMainWindow::activateWindow);
+        QObject::connect(&app, &SAKApplication::activeMainWindow,
+                         &mainWindow, &SAKMainWindow::activateWindow);
         mainWindow.show();
 #ifndef Q_OS_ANDROID
         // Golden ratio
         mainWindow.resize(mainWindow.height() * 1.732, mainWindow.height());
 #endif
+
 
         // Move the main window to the central of desktop.
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
@@ -46,17 +48,23 @@ int main(int argc, char *argv[])
         int currentScreen = desktop->screenNumber(&mainWindow);
         QList<QScreen*> screenList = QGuiApplication::screens();
         QScreen *screen = screenList.at(currentScreen);
-        mainWindow.move((screen->geometry().width() - mainWindow.width())/2, (screen->geometry().height() - mainWindow.height())/2);
+        mainWindow.move((screen->geometry().width() - mainWindow.width())/2,
+                        (screen->geometry().height() - mainWindow.height())/2);
         app.showSplashScreenMessage(QObject::tr("Finished..."));
 #endif
+
 
         // Close the splash screen.
         QSplashScreen *splashScreen = app.splashScreen();
         splashScreen->finish(&mainWindow);
 
+
         // If exit code is SAK_REBOOT_CODE(1314), The application will reboot.
         exitCode = app.exec();
+#ifdef SAK_REBOOT_CODE
     }while (exitCode == SAK_REBOOT_CODE);
-
+#else
+    }while (exitCode == 1314);
+#endif
     return exitCode;
 }
