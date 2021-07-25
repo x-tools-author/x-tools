@@ -210,8 +210,9 @@ void SAKDebuggerDevice::analyzer(QByteArray data)
     // If both of start-bytes and end-bytes are empty, temp data will be clear
     if (ctx.analyzerCtx.startFlags.isEmpty() && ctx.analyzerCtx.endFlags.isEmpty()){
         if (mAnalyzerCtx.bytesTemp.length()){
+            QByteArray temp = mAnalyzerCtx.bytesTemp;
             mAnalyzerCtx.bytesTemp.clear();
-            emit bytesRead(mAnalyzerCtx.bytesTemp);
+            emit bytesRead(temp);
         }
 
         mAnalyzerCtxMutex.unlock();
@@ -237,7 +238,9 @@ void SAKDebuggerDevice::analyzer(QByteArray data)
                 // Remove error data
                 QByteArray temp = QByteArray(mAnalyzerCtx.bytesTemp.data(), ret);
                 mAnalyzerCtx.bytesTemp.remove(0, ret);
-                emit bytesRead(temp);
+                if (!temp.isEmpty()) {
+                    emit bytesRead(temp);
+                }
             } else {
                 startBytesMatched = false;
             }
@@ -262,13 +265,9 @@ void SAKDebuggerDevice::analyzer(QByteArray data)
 
         // A completed data-frame has been extracted
         if (startBytesMatched && endBytesMatched) {
-            if (frameLength) {
-                QByteArray temp(mAnalyzerCtx.bytesTemp.data(), frameLength);
-                mAnalyzerCtx.bytesTemp.remove(0, frameLength);
-                emit bytesRead(temp);
-            } else {
-                QByteArray temp = mAnalyzerCtx.bytesTemp.data();
-                mAnalyzerCtx.bytesTemp.clear();
+            QByteArray temp(mAnalyzerCtx.bytesTemp.data(), frameLength);
+            mAnalyzerCtx.bytesTemp.remove(0, frameLength);
+            if (!temp.isEmpty()) {
                 emit bytesRead(temp);
             }
         }
