@@ -10,7 +10,7 @@
 #ifndef SAKDEBUGGERDEVICEANALYZER_HH
 #define SAKDEBUGGERDEVICEANALYZER_HH
 
-#include <QWidget>
+#include <QDialog>
 #include <QSettings>
 #include <QCheckBox>
 #include <QLineEdit>
@@ -21,7 +21,7 @@ namespace Ui {
 }
 
 /// @brief Parameters editing widget
-class SAKDebuggerDeviceAnalyzer:public QWidget
+class SAKDebuggerDeviceAnalyzer:public QDialog
 {
     Q_OBJECT
 public:

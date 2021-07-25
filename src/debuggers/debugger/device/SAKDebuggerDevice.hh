@@ -25,6 +25,7 @@ class SAKDebuggerDevice:public QThread
 public:
     SAKDebuggerDevice(QSettings *settings,
                       const QString &settingsGroup,
+                      QWidget *uiParent = Q_NULLPTR,
                       QObject *parent = Q_NULLPTR);
     ~SAKDebuggerDevice();
 

@@ -19,7 +19,7 @@
 SAKDebuggerDeviceAnalyzer::SAKDebuggerDeviceAnalyzer(QSettings *settings,
                                                      const QString &settingsGroup,
                                                      QWidget *parent)
-    :QWidget(parent)
+    :QDialog(parent)
     ,mUi(new Ui::SAKDebuggerDeviceAnalyzer)
 {
     mUi->setupUi(this);
@@ -94,6 +94,7 @@ SAKDebuggerDeviceAnalyzer::SAKDebuggerDeviceAnalyzer(QSettings *settings,
 
     connect(mUi->clearPushButton, &QPushButton::clicked,
             this, &SAKDebuggerDeviceAnalyzer::clearTemp);
+    setModal(true);
 }
 
 SAKDebuggerDeviceAnalyzer::~SAKDebuggerDeviceAnalyzer()

@@ -19,11 +19,12 @@
 
 SAKDebuggerDevice::SAKDebuggerDevice(QSettings *settings,
                                      const QString &settingsGroup,
+                                     QWidget *uiParent,
                                      QObject *parent)
     :QThread(parent)
     ,mMask(Q_NULLPTR)
 {
-    mMask = new SAKDebuggerDeviceMask(settings, settingsGroup);
+    mMask = new SAKDebuggerDeviceMask(settings, settingsGroup, uiParent);
     mParametersCtx.maskCtx = mMask->parametersContext();
     connect(mMask, &SAKDebuggerDeviceMask::parametersChanged,
             this, [&](){
@@ -32,7 +33,7 @@ SAKDebuggerDevice::SAKDebuggerDevice(QSettings *settings,
         mParametersCtxMutex.unlock();
     });
 
-    mAnalyzer = new SAKDebuggerDeviceAnalyzer(settings, settingsGroup);
+    mAnalyzer = new SAKDebuggerDeviceAnalyzer(settings, settingsGroup, uiParent);
     mParametersCtx.analyzerCtx = mAnalyzer->parametersContext();
     connect(mAnalyzer, &SAKDebuggerDeviceAnalyzer::parametersChanged,
             this, [&](){
