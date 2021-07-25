@@ -43,6 +43,7 @@ public:
                      QSettings *settings,
                      const QString &settingsGroup,
                      QSqlDatabase *sqlDatabase,
+                     QWidget *uiParent = Q_NULLPTR,
                      QObject *parent = Q_NULLPTR);
     ~SAKDebuggerInput();
 
@@ -82,6 +83,7 @@ private:
     QPushButton *mSendPushButton;
     QComboBox *mInputComboBox;
     QLabel *mCrcLabel;
+    QWidget *mUiParent;
 
     QSettings *mSettings;
     QString mSettingsGroup;

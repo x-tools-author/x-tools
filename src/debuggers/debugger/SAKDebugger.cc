@@ -94,6 +94,7 @@ SAKDebugger::SAKDebugger(QSettings *settings,
                 settings,
                 settingsGroup,
                 sqlDatabase,
+                this,
                 this
                 );
     mModuleInput->updateUiState(false);

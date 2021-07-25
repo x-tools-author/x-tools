@@ -850,7 +850,8 @@ QWidget *SAKMainWindow::debugPageFromDebugPageType(int type)
                     QObject *obj = var.metaObject.newInstance(
                                 Q_ARG(QSettings*, mSettings),
                                 Q_ARG(QString, QString(metaEnum.key(i))),
-                                Q_ARG(QSqlDatabase*, mSqlDatabase)
+                                Q_ARG(QSqlDatabase*, mSqlDatabase),
+                                Q_ARG(QWidget*, this)
                                 );
                     widget = qobject_cast<QWidget*>(obj);
                     if (widget) {

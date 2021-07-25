@@ -35,6 +35,7 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
                                    QSettings *settings,
                                    const QString &settingsGroup,
                                    QSqlDatabase *sqlDatabase,
+                                   QWidget *uiParent,
                                    QObject *parent)
     :QThread(parent)
     ,mRegularSendingComboBox(regularlySending)
@@ -43,6 +44,7 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
     ,mSendPushButton(send)
     ,mInputComboBox(input)
     ,mCrcLabel(crc)
+    ,mUiParent(uiParent)
     ,mSettings(settings)
     ,mSettingsGroup(settingsGroup)
     ,mSqlDatabase(sqlDatabase)
@@ -524,7 +526,8 @@ void SAKDebuggerInput::initSubModuleDataPreset()
     mDataPreset = new SAKDebuggerInputDataPreset(mSqlDatabase,
                                                  mSettings,
                                                  mSettingsGroup,
-                                                 mQuickSendingMenu);
+                                                 mQuickSendingMenu,
+                                                 mUiParent);
     connect(mDataPreset, &SAKDebuggerInputDataPreset::invokeWriteBytes,
             this, [&](QString rawData, int format){
         auto parasCtx = mInputParameters;

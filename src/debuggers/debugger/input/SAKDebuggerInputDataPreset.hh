@@ -13,6 +13,7 @@
 #include <QMenu>
 #include <QLabel>
 #include <QTimer>
+#include <QDialog>
 #include <QSettings>
 #include <QSqlQuery>
 #include <QSqlDatabase>
@@ -23,7 +24,7 @@ namespace Ui {
 }
 
 class SAKDebuggerInputDataPresetItem;
-class SAKDebuggerInputDataPreset : public QWidget
+class SAKDebuggerInputDataPreset : public QDialog
 {
     Q_OBJECT
 public:

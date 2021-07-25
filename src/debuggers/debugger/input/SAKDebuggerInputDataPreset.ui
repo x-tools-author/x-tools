@@ -1,25 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>SAKDebuggerInputDataPreset</class>
- <widget class="QWidget" name="SAKDebuggerInputDataPreset">
+ <widget class="QDialog" name="SAKDebuggerInputDataPreset">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1017</width>
-    <height>419</height>
+    <width>967</width>
+    <height>499</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Set Data Items</string>
+   <string>Preset Data</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="5">
-    <widget class="QPushButton" name="importPushButton">
-     <property name="text">
-      <string>Import</string>
-     </property>
-    </widget>
+   <item row="0" column="0" colspan="9">
+    <widget class="QListWidget" name="itemListWidget"/>
    </item>
    <item row="1" column="0">
     <widget class="QPushButton" name="pushButton">
@@ -27,30 +23,6 @@
       <string>Close</string>
      </property>
     </widget>
-   </item>
-   <item row="1" column="6">
-    <widget class="Line" name="line_2">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="7">
-    <widget class="QPushButton" name="deletePushButton">
-     <property name="text">
-      <string>Delete</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="8">
-    <widget class="QPushButton" name="addPushButton">
-     <property name="text">
-      <string>Add</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0" colspan="9">
-    <widget class="QListWidget" name="itemListWidget"/>
    </item>
    <item row="1" column="1">
     <widget class="QLabel" name="infoLabel">
@@ -86,6 +58,34 @@
      </property>
     </widget>
    </item>
+   <item row="1" column="5">
+    <widget class="QPushButton" name="importPushButton">
+     <property name="text">
+      <string>Import</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="6">
+    <widget class="Line" name="line_2">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="7">
+    <widget class="QPushButton" name="deletePushButton">
+     <property name="text">
+      <string>Delete</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="8">
+    <widget class="QPushButton" name="addPushButton">
+     <property name="text">
+      <string>Add</string>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <resources/>
@@ -94,15 +94,15 @@
    <sender>pushButton</sender>
    <signal>clicked()</signal>
    <receiver>SAKDebuggerInputDataPreset</receiver>
-   <slot>close()</slot>
+   <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>73</x>
-     <y>393</y>
+     <x>42</x>
+     <y>482</y>
     </hint>
     <hint type="destinationlabel">
-     <x>5</x>
-     <y>394</y>
+     <x>4</x>
+     <y>459</y>
     </hint>
    </hints>
   </connection>

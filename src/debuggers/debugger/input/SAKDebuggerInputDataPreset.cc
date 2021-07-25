@@ -36,7 +36,7 @@ SAKDebuggerInputDataPreset::SAKDebuggerInputDataPreset(
         QString settingsGroup,
         QMenu *itemsMenu,
         QWidget *parent)
-    :QWidget(parent)
+    :QDialog(parent)
     ,mSqlDatabase(sqlDatabase)
     ,mSettings(settings)
     ,mSettingsGroup(settingsGroup)
@@ -112,6 +112,7 @@ SAKDebuggerInputDataPreset::SAKDebuggerInputDataPreset(
         }
     }
     readinRecord();
+    setModal(true);
 }
 
 SAKDebuggerInputDataPreset::~SAKDebuggerInputDataPreset()
