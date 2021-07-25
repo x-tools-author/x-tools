@@ -547,7 +547,7 @@ void SAKDebuggerInput::initSubModuleCrcSettings()
         mInputParameters.crc.endByte = ctx.endByte;
         updateCrc();
     };
-    mCrcSettings = new SAKDebuggerInputCrcSettings(mSettingsGroup, mSettings);
+    mCrcSettings = new SAKDebuggerInputCrcSettings(mSettingsGroup, mSettings, mUiParent);
     updateCrcParameters();
     connect(mCrcSettings, &SAKDebuggerInputCrcSettings::crcParametersChanged,
             this, updateCrcParameters);
