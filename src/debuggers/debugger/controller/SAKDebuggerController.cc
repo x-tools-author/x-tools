@@ -10,8 +10,12 @@
 #include "SAKDebugger.hh"
 #include "SAKDebuggerController.hh"
 
-SAKDebuggerController::SAKDebuggerController(QWidget *parent)
+SAKDebuggerController::SAKDebuggerController(QSettings *settings,
+                                             const QString &settingsGroup,
+                                             QWidget *parent)
     :QWidget(parent)
+    ,mSettings(settings)
+    ,mSettingsGroup(settingsGroup)
 {
 
 }

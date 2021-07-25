@@ -11,6 +11,7 @@
 #define SAKDEBUGGERCONTROLLER_H
 
 #include <QWidget>
+#include <QSettings>
 
 class SAKDebugger;
 /// @brief Device controller
@@ -18,7 +19,9 @@ class SAKDebuggerController:public QWidget
 {
     Q_OBJECT
 public:
-    SAKDebuggerController(QWidget *parent = Q_NULLPTR);
+    SAKDebuggerController(QSettings *settings,
+                          const QString &settingsGroup,
+                          QWidget *parent = Q_NULLPTR);
     ~SAKDebuggerController();
 
     /**
@@ -31,6 +34,9 @@ public:
      * @brief refreshDevice: Refresh the device list
      */
     virtual void refreshDevice() = 0;
+protected:
+    QSettings *mSettings;
+    const QString mSettingsGroup;
 signals:
     void messageChanged(QString msg, bool isError = true);
     void parametersChanged();
