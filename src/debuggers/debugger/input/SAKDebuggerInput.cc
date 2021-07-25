@@ -51,9 +51,9 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
     ,mCrcInterface(new SAKCommonCrcInterface)
 {
     // Initialize setting key.
-    mSettingKeyCtx.suffixsType = settingsGroup + "suffixsType";
-    mSettingKeyCtx.inputTextFormat = settingsGroup + "inputTextFormat";
-    mSettingKeyCtx.enableSendingRecord = settingsGroup + "enableSendingRecord";
+    mSettingKeyCtx.suffixsType = settingsGroup + "/suffixsType";
+    mSettingKeyCtx.inputTextFormat = settingsGroup + "/inputTextFormat";
+    mSettingKeyCtx.enableSendingRecord = settingsGroup + "/enableSendingRecord";
 
 
     // Initialization
