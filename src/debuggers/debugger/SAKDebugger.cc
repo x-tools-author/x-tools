@@ -34,7 +34,6 @@
 #include "SAKCommonCrcInterface.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKDebuggerController.hh"
-#include "SAKPluginAutomaticallyResponse.hh"
 
 #ifdef SAK_IMPORT_MODULE_CHARTS
 #include "SAKPluginCharts.hh"
