@@ -269,9 +269,8 @@ void SAKDebuggerOutput::run()
             } else {
                 QString space = dateTimeStr.isEmpty() ? "" : " ";
                 frameString =
-                        QString("<font color=silver>[%1%2%3] \
-                                 </font><font color=%4>%5</font>")
-                        .arg(dateTimeStr, space, rxTx, color, dataString);
+                        QString("<font color=silver>[%1%2%3]</font>%4")
+                        .arg(dateTimeStr, space, rxTx, dataString);
             }
 
             emit bytesCooked(frameString, dataCtx.ctx.faceWithoutMakeup);
