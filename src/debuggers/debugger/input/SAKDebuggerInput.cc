@@ -153,8 +153,8 @@ void SAKDebuggerInput::run()
         uint8_t crc8  = static_cast<uint8_t>(crc);
         uint16_t crc16 = static_cast<uint16_t>(crc);
         int model = ctx.crc.parametersModel;
-        auto cookedModel = static_cast<SAKCommonCrcInterface::CRCModel>(model);
-        int bitsWidth = mCrcInterface->getBitsWidth(cookedModel);
+        auto cookedModel = static_cast<SAKCommonCrcInterface::SAKEnumCrcModel>(model);
+        int bitsWidth = mCrcInterface->bitsWidth(cookedModel);
         if (ctx.crc.bigEndian){
             crc16 = qToBigEndian(crc16);
             crc = qToBigEndian(crc);
@@ -195,8 +195,8 @@ void SAKDebuggerInput::updateCrc()
             SAKCommonDataStructure::stringToByteArray(rawData, cookedFormat);
     QByteArray crcInputData = extractCrcData(cookedData, parametersTemp);
     quint32 crc = crcCalculate(crcInputData, parametersTemp.crc.parametersModel);
-    int bits =  mCrcInterface->getBitsWidth(
-                static_cast<SAKCommonCrcInterface::CRCModel>(
+    int bits =  mCrcInterface->bitsWidth(
+                static_cast<SAKCommonCrcInterface::SAKEnumCrcModel>(
                     mInputParameters.crc.parametersModel
                     )
                 );
@@ -210,24 +210,24 @@ void SAKDebuggerInput::updateCrc()
 
 quint32 SAKDebuggerInput::crcCalculate(QByteArray data, int model)
 {
-    auto cookedModel = static_cast<SAKCommonCrcInterface::CRCModel>(model);
-    int bitsWidth = mCrcInterface->getBitsWidth(cookedModel);
+    auto cookedModel = static_cast<SAKCommonCrcInterface::SAKEnumCrcModel>(model);
+    int bitsWidth = mCrcInterface->bitsWidth(cookedModel);
     switch (bitsWidth) {
     case 8:
         return mCrcInterface->crcCalculate<uint8_t>(
                     reinterpret_cast<uint8_t*>(data.data()),
                     static_cast<quint64>(data.length()),
-                    static_cast<SAKCommonCrcInterface::CRCModel>(model));
+                    static_cast<SAKCommonCrcInterface::SAKEnumCrcModel>(model));
     case 16:
         return mCrcInterface->crcCalculate<uint16_t>(
                     reinterpret_cast<uint8_t*>(data.data()),
                     static_cast<quint64>(data.length()),
-                    static_cast<SAKCommonCrcInterface::CRCModel>(model));
+                    static_cast<SAKCommonCrcInterface::SAKEnumCrcModel>(model));
     case 32:
         return mCrcInterface->crcCalculate<uint32_t>(
                     reinterpret_cast<uint8_t*>(data.data()),
                     static_cast<quint64>(data.length()),
-                    static_cast<SAKCommonCrcInterface::CRCModel>(model));
+                    static_cast<SAKCommonCrcInterface::SAKEnumCrcModel>(model));
     default:
         return 0;
     }
