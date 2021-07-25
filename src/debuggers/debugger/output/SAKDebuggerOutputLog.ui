@@ -11,20 +11,20 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>日志输出</string>
+   <string>Log View</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="1" column="3">
     <widget class="QPushButton" name="clearLogPushButton">
      <property name="text">
-      <string>清空日志</string>
+      <string>ClearLog</string>
      </property>
     </widget>
    </item>
    <item row="1" column="2">
     <widget class="QPushButton" name="saveLogPushButton">
      <property name="text">
-      <string>保存日志</string>
+      <string>SaveLog</string>
      </property>
     </widget>
    </item>
@@ -44,14 +44,14 @@
    <item row="1" column="0">
     <widget class="QPushButton" name="closePushButton">
      <property name="text">
-      <string>关闭</string>
+      <string>Close</string>
      </property>
     </widget>
    </item>
    <item row="0" column="0" colspan="4">
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
-      <string>日志查看</string>
+      <string>Log view</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="0" column="0">

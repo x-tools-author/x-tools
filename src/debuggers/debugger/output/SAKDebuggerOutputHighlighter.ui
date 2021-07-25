@@ -1,34 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>SAKDebuggerOutputHighlighter</class>
- <widget class="QWidget" name="SAKDebuggerOutputHighlighter">
+ <widget class="QDialog" name="SAKDebuggerOutputHighlighter">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>595</width>
-    <height>342</height>
+    <width>793</width>
+    <height>453</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>高亮显示设置</string>
+   <string>Highlighter Settings</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="0" colspan="4">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>按“回车”键添加关键词,双击标签删除关键字</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="3">
-    <widget class="QPushButton" name="pushButtonClear">
-     <property name="text">
-      <string>清除</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0" colspan="4">
+   <item row="0" column="0" colspan="3">
     <widget class="QScrollArea" name="scrollArea">
      <property name="widgetResizable">
       <bool>true</bool>
@@ -38,8 +24,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>575</width>
-        <height>275</height>
+        <width>779</width>
+        <height>403</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
@@ -75,20 +61,34 @@
      </widget>
     </widget>
    </item>
-   <item row="2" column="2">
-    <widget class="QPushButton" name="pushButtonAdd">
+   <item row="1" column="0" colspan="3">
+    <widget class="QLabel" name="label">
      <property name="text">
-      <string>添加</string>
+      <string>Press &quot;Enter&quot; to add a key word and double click to delete a key word.</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="2">
+   <item row="2" column="0">
     <widget class="QLineEdit" name="lineEdit">
      <property name="text">
-      <string/>
+      <string>Press &quot;Enter&quot; to add a key word.</string>
      </property>
      <property name="placeholderText">
       <string>按“回车”键添加关键词</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QPushButton" name="pushButtonAdd">
+     <property name="text">
+      <string>Add</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2">
+    <widget class="QPushButton" name="pushButtonClear">
+     <property name="text">
+      <string>Clear</string>
      </property>
     </widget>
    </item>

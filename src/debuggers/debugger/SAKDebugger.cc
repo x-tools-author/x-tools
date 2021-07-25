@@ -73,6 +73,7 @@ SAKDebugger::SAKDebugger(QSettings *settings,
                 settings,
                 settingsGroup,
                 mUi->outputTextBroswer,
+                this,
                 this
                 );
     mModuleStatistics = new SAKDebuggerStatistics(

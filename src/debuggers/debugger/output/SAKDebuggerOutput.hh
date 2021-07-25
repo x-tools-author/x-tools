@@ -33,6 +33,7 @@ public:
     SAKDebuggerOutput(QPushButton *menuBt, QComboBox *formatCB,
                       QSettings *settings, QString settingGroup,
                       QTextBrowser *textBrower,
+                      QWidget *uiParent = Q_NULLPTR,
                       QObject *parent = Q_NULLPTR);
     ~SAKDebuggerOutput();
     struct SAKStructSettingsKeyContext {

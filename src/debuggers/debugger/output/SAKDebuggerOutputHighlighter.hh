@@ -10,7 +10,7 @@
 #ifndef SAKDEBUGGEROUTPUTHIGHLIGHTER_HH
 #define SAKDEBUGGEROUTPUTHIGHLIGHTER_HH
 
-#include <QWidget>
+#include <QDialog>
 #include <QLineEdit>
 #include <QGridLayout>
 #include <QPushButton>
@@ -24,7 +24,7 @@ namespace Ui {
 }
 
 /// @brief Syntax highlighter manager
-class  SAKDebuggerOutputHighlighter:public QWidget
+class  SAKDebuggerOutputHighlighter:public QDialog
 {
     Q_OBJECT
 public:
@@ -70,14 +70,14 @@ private:
     void deleteLabel(QPushButton *bt);
     void resetHighlightKeyword(QStringList keyWords);
 private:
-    QGridLayout *m_labelLayout;
-    QList<QPushButton*> m_labelList;
+    QGridLayout *mLabelLayout;
+    QList<QPushButton*> mLabelList;
 private:
-    Ui::SAKDebuggerOutputHighlighter *ui;
-    Highlighter *m_highlighter;
-    QLineEdit *m_inputLineEdit;
-    QPushButton *m_clearLabelBt;
-    QPushButton *m_addLabelBt;
+    Ui::SAKDebuggerOutputHighlighter *mUi;
+    Highlighter *mHighlighter;
+    QLineEdit *mInputLineEdit;
+    QPushButton *mClearLabelBt;
+    QPushButton *mAddLabelBt;
 };
 
 #endif

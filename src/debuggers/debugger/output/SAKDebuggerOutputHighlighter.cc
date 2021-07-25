@@ -12,29 +12,30 @@
 
 SAKDebuggerOutputHighlighter:: SAKDebuggerOutputHighlighter(QTextDocument *doc,
                                                             QWidget* parent)
-    :QWidget (parent)
-    ,ui (new Ui::SAKDebuggerOutputHighlighter)
+    :QDialog(parent)
+    ,mUi(new Ui::SAKDebuggerOutputHighlighter)
 {
-    ui->setupUi(this);
-    m_labelLayout = new QGridLayout(ui->frame);
-    ui->frame->setLayout(m_labelLayout);
+    mUi->setupUi(this);
+    mLabelLayout = new QGridLayout(mUi->frame);
+    mUi->frame->setLayout(mLabelLayout);
 
-    m_highlighter = new Highlighter(doc);
-    m_inputLineEdit = ui->lineEdit;
-    m_clearLabelBt = ui->pushButtonClear;
-    m_addLabelBt = ui->pushButtonAdd;
+    mHighlighter = new Highlighter(doc);
+    mInputLineEdit = mUi->lineEdit;
+    mClearLabelBt = mUi->pushButtonClear;
+    mAddLabelBt = mUi->pushButtonAdd;
 
-    m_inputLineEdit->installEventFilter(this);
+    mInputLineEdit->installEventFilter(this);
 
-    connect(m_clearLabelBt, &QPushButton::clicked,
+    connect(mClearLabelBt, &QPushButton::clicked,
             this, & SAKDebuggerOutputHighlighter::clearLabel);
-    connect(m_addLabelBt, &QPushButton::clicked,
+    connect(mAddLabelBt, &QPushButton::clicked,
             this, & SAKDebuggerOutputHighlighter::addLabelFromInput);
+    setModal(true);
 }
 
 SAKDebuggerOutputHighlighter::~SAKDebuggerOutputHighlighter()
 {
-    delete ui;
+    delete mUi;
 }
 
 SAKDebuggerOutputHighlighter::Highlighter::Highlighter(QTextDocument* parent)
@@ -105,8 +106,8 @@ void SAKDebuggerOutputHighlighter::addLabel(QString str)
     }
 
     QStringList keyWords;
-    for (int i = 0; i < m_labelList.length(); i++){
-        QString temp = m_labelList.at(i)->text();
+    for (int i = 0; i < mLabelList.length(); i++){
+        QString temp = mLabelList.at(i)->text();
         /// 标签重复不处理
         if (temp.compare(str) == 0){
             return;
@@ -117,7 +118,7 @@ void SAKDebuggerOutputHighlighter::addLabel(QString str)
 
     QPushButton* tempLabel = new QPushButton(str);
     tempLabel->installEventFilter(this);
-    m_labelList.append(tempLabel);
+    mLabelList.append(tempLabel);
 
     resetLabelViewer();
 
@@ -127,15 +128,15 @@ void SAKDebuggerOutputHighlighter::addLabel(QString str)
 
 void SAKDebuggerOutputHighlighter::addLabelFromInput()
 {
-    QString str = m_inputLineEdit->text();
+    QString str = mInputLineEdit->text();
     addLabel(str);
 }
 
 void SAKDebuggerOutputHighlighter::deleteLabel(QPushButton *bt)
 {
-    for (int i= 0; i < m_labelList.length(); i++){
-        if (m_labelList.at(i) == bt){
-            QPushButton *BtTemp = m_labelList.takeAt(i);
+    for (int i= 0; i < mLabelList.length(); i++){
+        if (mLabelList.at(i) == bt){
+            QPushButton *BtTemp = mLabelList.takeAt(i);
             BtTemp->deleteLater();
             break;
         }
@@ -144,8 +145,8 @@ void SAKDebuggerOutputHighlighter::deleteLabel(QPushButton *bt)
     resetLabelViewer();
 
     QStringList keyWords;
-    for (int i = 0; i < m_labelList.length(); i++){
-        keyWords.append(m_labelList.at(i)->text());
+    for (int i = 0; i < mLabelList.length(); i++){
+        keyWords.append(mLabelList.at(i)->text());
     }    
 
     resetHighlightKeyword(keyWords);
@@ -154,9 +155,9 @@ void SAKDebuggerOutputHighlighter::deleteLabel(QPushButton *bt)
 bool SAKDebuggerOutputHighlighter::eventFilter(QObject *watched, QEvent *event)
 {
     if (event->type() == QEvent::MouseButtonDblClick){
-        for (int i = 0; i < m_labelList.length(); i++){
-            if (m_labelList.at(i) == watched){
-                deleteLabel(m_labelList.at(i));
+        for (int i = 0; i < mLabelList.length(); i++){
+            if (mLabelList.at(i) == watched){
+                deleteLabel(mLabelList.at(i));
                 return true;
             }
         }
@@ -165,8 +166,8 @@ bool SAKDebuggerOutputHighlighter::eventFilter(QObject *watched, QEvent *event)
     if (event->type() == QEvent::KeyPress){
         QKeyEvent* e = dynamic_cast<QKeyEvent*>(event);
         if ((e->key() == Qt::Key_Enter) || e->key() == Qt::Key_Return){
-            addLabel(m_inputLineEdit->text());
-            m_inputLineEdit->clear();
+            addLabel(mInputLineEdit->text());
+            mInputLineEdit->clear();
             return true;
         }
     }
@@ -177,8 +178,8 @@ bool SAKDebuggerOutputHighlighter::eventFilter(QObject *watched, QEvent *event)
 void SAKDebuggerOutputHighlighter::clearLabel()
 {
     QPushButton *bt = Q_NULLPTR;
-    while (!m_labelList.isEmpty()) {
-        bt = m_labelList.takeFirst();
+    while (!mLabelList.isEmpty()) {
+        bt = mLabelList.takeFirst();
         bt->deleteLater();
     }
 
@@ -187,13 +188,13 @@ void SAKDebuggerOutputHighlighter::clearLabel()
 
 void SAKDebuggerOutputHighlighter::resetLabelViewer()
 {
-    for (int index = 0; index < m_labelList.count(); index++){
-        m_labelLayout->addWidget(m_labelList.at(index), index/5, index%5);
+    for (int index = 0; index < mLabelList.count(); index++){
+        mLabelLayout->addWidget(mLabelList.at(index), index/5, index%5);
     }
 }
 
 void SAKDebuggerOutputHighlighter::resetHighlightKeyword(QStringList keyWords)
 {
-    m_highlighter->setHighlighterKeyWord(keyWords);
-    m_highlighter->rehighlight();
+    mHighlighter->setHighlighterKeyWord(keyWords);
+    mHighlighter->rehighlight();
 }

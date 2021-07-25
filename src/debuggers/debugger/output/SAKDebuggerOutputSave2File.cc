@@ -131,6 +131,7 @@ SAKDebuggerOutputSave2File::SAKDebuggerOutputSave2File(QSettings
             }
         }
     }
+    setModal(true);
 }
 
 SAKDebuggerOutputSave2File::~SAKDebuggerOutputSave2File()

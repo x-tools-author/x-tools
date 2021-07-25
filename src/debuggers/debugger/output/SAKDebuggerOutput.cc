@@ -23,7 +23,8 @@
 
 SAKDebuggerOutput::SAKDebuggerOutput(QPushButton *menuBt, QComboBox *formatCB,
                                      QSettings *settings, QString settingGroup,
-                                     QTextBrowser *textBrower, QObject *parent)
+                                     QTextBrowser *textBrower,
+                                     QWidget *uiParent, QObject *parent)
     :QThread(parent)
     ,mSettingsGroup(settingGroup)
     ,mFormatComboBox(formatCB)
@@ -89,6 +90,7 @@ SAKDebuggerOutput::SAKDebuggerOutput(QPushButton *menuBt, QComboBox *formatCB,
     });
     menu->addAction(action);
     menu->addSeparator();
+
 
     QStringList paras;
     QVector<QAction*> actionVector;
@@ -168,9 +170,9 @@ SAKDebuggerOutput::SAKDebuggerOutput(QPushButton *menuBt, QComboBox *formatCB,
         setFaceWithoutMakeup(enable);
     });
 
-    mHhighlighter = new SAKDebuggerOutputHighlighter(mTextBrower->document());
-    mLog = new SAKDebuggerOutputLog();
-    mSave2File = new SAKDebuggerOutputSave2File(mSettings, settingGroup);
+    mLog = new SAKDebuggerOutputLog(uiParent);
+    mSave2File = new SAKDebuggerOutputSave2File(mSettings, settingGroup, uiParent);
+    mHhighlighter = new SAKDebuggerOutputHighlighter(mTextBrower->document(), uiParent);
 
     action = btMenu->addAction(tr("Save Output"));
     connect(action, &QAction::triggered,
@@ -212,11 +214,10 @@ SAKDebuggerOutput::SAKDebuggerOutput(QPushButton *menuBt, QComboBox *formatCB,
 
 SAKDebuggerOutput::~SAKDebuggerOutput()
 {
-#if 0
-    delete m_save2File;
-    delete m_log;
-#endif
+    mLog->deleteLater();
+    mSave2File->deleteLater();
     mHhighlighter->deleteLater();
+
     exit();
     wait();
 }
