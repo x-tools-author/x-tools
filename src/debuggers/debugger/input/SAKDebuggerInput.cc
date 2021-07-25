@@ -295,6 +295,13 @@ void SAKDebuggerInput::initUiTextFormatComboBox()
     SAKCommonDataStructure::setComboBoxTextInputFormat(mTextFormatComboBox);
     QVariant textFormatVarant = mSettings->value(mSettingKeyCtx.inputTextFormat);
     int textFormat = textFormatVarant.toInt();
+    QMetaEnum textFormatMetaEnum =
+            QMetaEnum::fromType<SAKCommonDataStructure::SAKEnumTextFormatInput>();
+    // If text format is unvalid, use the last value
+    // of SAKCommonDataStructure::SAKEnumTextFormatInput
+    if (!textFormatMetaEnum.valueToKey(textFormat)) {
+        textFormat = textFormatMetaEnum.value(textFormatMetaEnum.keyCount() - 1);
+    }
     auto cookedTextFormat =
             static_cast<SAKCommonDataStructure::SAKEnumTextFormatInput>(textFormat);
     SAKCommonDataStructure::setLineEditTextFormat(mInputComboBox->lineEdit(),
