@@ -18,7 +18,10 @@ class SAKSerialPortDebugger : public SAKDebugger
 {
     Q_OBJECT
 public:
-    Q_INVOKABLE SAKSerialPortDebugger(int type, QString name, QWidget *parent = Q_NULLPTR);
+    Q_INVOKABLE SAKSerialPortDebugger(QSettings *settings,
+                                      const QString settingsGroup,
+                                      QSqlDatabase *sqlDatabase,
+                                      QWidget *parent = Q_NULLPTR);
 protected:
     SAKDebuggerDevice* device() override;
     SAKDebuggerController *controller() override;

@@ -21,17 +21,17 @@ SAKDebugPageCommonDatabaseInterface::SAKDebugPageCommonDatabaseInterface(SAKDebu
     ,mSqlDatabase(sqlDatabase)
     ,mDebugPage(debugPage)
 {
-    mSqlQuery = QSqlQuery(*mSqlDatabase);
-    if (mSqlDatabase->isOpen()){
-        mTableNameAutoResponseTable = mDebugPage->tableNameAutoResponseTable();
-        mTableNamePresettingDataTable = mDebugPage->tableNamePresettingDataTable();
-        mTableNameTimingSendingTable = mDebugPage->tableNameTimingSendingTable();
-        createAutoResponseTable(mTableNameAutoResponseTable);
-        createPresettingDataTable(mTableNamePresettingDataTable);
-        createTimingSendingTable(mTableNameTimingSendingTable);
-    }else{
-        qWarning() << "You should open the data base at first, or data base read-write function is no effective!";
-    }
+//    mSqlQuery = QSqlQuery(*mSqlDatabase);
+//    if (mSqlDatabase->isOpen()){
+//        mTableNameAutoResponseTable = mDebugPage->tableNameAutoResponseTable();
+//        mTableNamePresettingDataTable = mDebugPage->tableNamePresettingDataTable();
+//        mTableNameTimingSendingTable = mDebugPage->tableNameTimingSendingTable();
+//        createAutoResponseTable(mTableNameAutoResponseTable);
+//        createPresettingDataTable(mTableNamePresettingDataTable);
+//        createTimingSendingTable(mTableNameTimingSendingTable);
+//    }else{
+//        qWarning() << "You should open the data base at first, or data base read-write function is no effective!";
+//    }
 }
 
 SAKDebugPageCommonDatabaseInterface::~SAKDebugPageCommonDatabaseInterface()

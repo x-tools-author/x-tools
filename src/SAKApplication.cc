@@ -1,12 +1,12 @@
-﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+﻿/****************************************************************************************
+ * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- */
+ ***************************************************************************************/
 #include <QRect>
 #include <QFile>
 #include <QTimer>
@@ -32,7 +32,9 @@
 
 #include "SAKApplication.hh"
 
-QDate buildDate = QLocale(QLocale::English).toDate(QString(__DATE__).replace("  ", " 0"), "MMM dd yyyy");
+QDate buildDate = QLocale(QLocale::English).toDate(
+            QString(__DATE__).replace("  ", " 0"),
+            "MMM dd yyyy");
 QTime buildTime = QTime::fromString(__TIME__, "hh:mm:ss");
 SAKApplication::SAKApplication(int argc, char **argv)
     :QApplication (argc, argv)
@@ -44,23 +46,28 @@ SAKApplication::SAKApplication(int argc, char **argv)
 #ifdef SAK_VERSION
     setApplicationVersion(SAK_VERSION);
 #else
-    Q_ASSERT_X(false, __FUNCTION__, "You must define the SAK_VERSION micro!");
+    setApplicationVersion("0.0.0");
 #endif
 
+
     // It can avoid app crash in this way to show a splashScreen.
-    // If you new a QSplashScreen and show it in the main function, app will crash(test on Ubuntu 16.04).
-    // Of course, it is because that I use a wrong way, also, it could be a bug of Qt.
+    // If you new a QSplashScreen and show it in the main function,
+    // app will crash(test on Ubuntu 16.04).
+    // Of course, it is because that I use a wrong way,
+    // also, it could be a bug of Qt.
     mSplashScreen = new QSplashScreen(QPixmap(":/resources/images/StartUi.jpg"));
     showSplashScreenMessage(tr("Initializing..."));
     mSplashScreen->show();
     processEvents();
 
+
     // Initialize the setting key
-    mSettingsKeyContext.lastDateTime = QString("%1/lastDateTime").arg(applicationName());
-    mSettingsKeyContext.removeSettingsFile = QString("%1/removeSettingsFile").arg(applicationName());
-    mSettingsKeyContext.removeDatabase = QString("%1/removeDatabase").arg(applicationName());
-    mSettingsKeyContext.language = QString("%1/language").arg(applicationName());
-    mSettingsKeyContext.appStyle = QString("%1/appStyle").arg(applicationName());
+    mSettingsKeyContext.lastDateTime = QString("lastDateTime");
+    mSettingsKeyContext.removeSettingsFile = QString("removeSettingsFile");
+    mSettingsKeyContext.removeDatabase = QString("removeDatabase");
+    mSettingsKeyContext.language = QString("language");
+    mSettingsKeyContext.appStyle = QString("appStyle");
+
 
     // Initialize the settings file
     QString path = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
@@ -70,14 +77,17 @@ SAKApplication::SAKApplication(int argc, char **argv)
     mSettings->setIniCodec(QTextCodec::codecForName("UTF-8"));
 #endif
     mLastDataTime = mSettings->value(mSettingsKeyContext.lastDateTime).toString();
-    mSettings->setValue(mSettingsKeyContext.lastDateTime, QDateTime::currentDateTime().toString(QLocale::system().dateFormat()));
+    mSettings->setValue(
+                mSettingsKeyContext.lastDateTime,
+                QDateTime::currentDateTime().toString(QLocale::system().dateFormat()));
 
     // Initialize the data base
     mDatabaseName = QString("%1/%2.sqlite3").arg(path, qApp->applicationName());
 
     // Remove settings file and database
     if (mSettings->value(mSettingsKeyContext.removeSettingsFile).toBool()){
-        mSettings->setValue(mSettingsKeyContext.removeSettingsFile, QVariant::fromValue(false));
+        mSettings->setValue(mSettingsKeyContext.removeSettingsFile,
+                            QVariant::fromValue(false));
         if (QFile::remove(mSettingsFileName)){
             qInfo() << "Remove settings file successfully!";
         }else{
@@ -102,24 +112,22 @@ SAKApplication::SAKApplication(int argc, char **argv)
         }
     }
 
+
+    // Initialize database.
     mSqlDatabase = QSqlDatabase::addDatabase("QSQLITE");
     mSqlDatabase.setDatabaseName(mDatabaseName);
-    // Do something useless
+    // Do something useless.
     mSqlDatabase.setHostName("localhost");
     mSqlDatabase.setUserName("Qter");
     mSqlDatabase.setPassword("QterPassword");
-
     if (!mSqlDatabase.open()){
-        qWarning() << __FUNCTION__ << "QSAKDatabase.sqlite3 open failed: " << mSqlDatabase.lastError().text();
+        qWarning() << "QSAKDatabase.sqlite3 open failed:"
+                   << mSqlDatabase.lastError().text();
         Q_ASSERT_X(false, __FUNCTION__, "Open database failed!");
     }
 
-    // Set application version, if micro SAK_VERSION is not defined, the application version is "0.0.0"
-#ifndef SAK_VERSION
-    setApplicationVersion(QString("0.0.0"));
-#else
-    setApplicationVersion(SAK_VERSION);
-#endif
+
+    // Setup ui language.
     installLanguage();
 }
 
@@ -144,7 +152,8 @@ void SAKApplication::installLanguage()
         qmName = language.split('-').first();
     }
 
-    auto ret = mQtBaseTranslator.load(QString(":/translations/qt/qtbase_%1.qm").arg(qmName));
+    auto ret = mQtBaseTranslator.load(QString(":/translations/qt/qtbase_%1.qm")
+                                      .arg(qmName));
     Q_UNUSED(ret);
     qApp->installTranslator(&mQtBaseTranslator);
 

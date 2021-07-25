@@ -42,10 +42,11 @@
 
 #include "ui_SAKDebugger.h"
 
-SAKDebugger::SAKDebugger(int type, QString name, QWidget *parent)
+SAKDebugger::SAKDebugger(QSettings *settings,
+                         const QString settingsGroup,
+                         QSqlDatabase *sqlDatabase,
+                         QWidget *parent)
     :QWidget(parent)
-    ,mDebugPageType(type)
-    ,mSettingGroup(name)
     ,mModuleDevice(Q_NULLPTR)
     ,mModuleController(Q_NULLPTR)
     ,mUi(new Ui::SAKDebugger)
@@ -57,39 +58,45 @@ SAKDebugger::SAKDebugger(int type, QString name, QWidget *parent)
     html = html.replace(QString("Email"), QString(SAK_AUTHOR_EMAIL));
     mUi->outputTextBroswer->setHtml(html);
 
-    mDatabaseInterface = new SAKDebugPageCommonDatabaseInterface(this,
-                                                                 sakApp->sqlDatabase(),
-                                                                 this);
-    mModulePlugins = new SAKDebuggerPlugins(mUi->readmePushButton,
-                                      mUi->pluginsPushButton,
-                                      settings(),
-                                      settingsGroup(),
-                                      mUi->pluginPanelLabel,
-                                      mUi->pluginPanelWidget,
-                                      this);
-    mModuleOutput = new SAKDebuggerOutput(mUi->moreOutputSettingsPushButton,
-                                              mUi->outputTextFormatComboBox,
-                                              settings(),
-                                              settingsGroup(),
-                                              mUi->outputTextBroswer,
-                                              this);
-    mModuleStatistics = new SAKDebuggerStatistics(mUi->txSpeedLabel,
-                                            mUi->rxSpeedLabel,
-                                            mUi->txFramesLabel,
-                                            mUi->rxFramesLabel,
-                                            mUi->txBytesLabel,
-                                            mUi->rxBytesLabel,
-                                            this);
-    mModuleInput = new SAKDebuggerInput(mUi->cyclingTimeComboBox,
-                                            mUi->inputFormatComboBox,
-                                            mUi->moreInputSettingsPushButton,
-                                            mUi->sendPushButton,
-                                            mUi->crcLabel,
-                                            mUi->inputComboBox,
-                                            settings(),
-                                            mSettingGroup,
-                                            sqlDatabase(),
-                                            this);
+
+    mModulePlugins = new SAKDebuggerPlugins(
+                mUi->readmePushButton,
+                mUi->pluginsPushButton,
+                settings,
+                settingsGroup,
+                mUi->pluginPanelLabel,
+                mUi->pluginPanelWidget,
+                this
+                );
+    mModuleOutput = new SAKDebuggerOutput(
+                mUi->moreOutputSettingsPushButton,
+                mUi->outputTextFormatComboBox,
+                settings,
+                settingsGroup,
+                mUi->outputTextBroswer,
+                this
+                );
+    mModuleStatistics = new SAKDebuggerStatistics(
+                mUi->txSpeedLabel,
+                mUi->rxSpeedLabel,
+                mUi->txFramesLabel,
+                mUi->rxFramesLabel,
+                mUi->txBytesLabel,
+                mUi->rxBytesLabel,
+                this
+                );
+    mModuleInput = new SAKDebuggerInput(
+                mUi->cyclingTimeComboBox,
+                mUi->inputFormatComboBox,
+                mUi->moreInputSettingsPushButton,
+                mUi->sendPushButton,
+                mUi->crcLabel,
+                mUi->inputComboBox,
+                settings,
+                settingsGroup,
+                sqlDatabase,
+                this
+                );
     mModuleInput->updateUiState(false);
 
     // Initialize timer.
@@ -128,7 +135,7 @@ SAKDebugger::SAKDebugger(int type, QString name, QWidget *parent)
 
 SAKDebugger::~SAKDebugger()
 {
-#if 1
+    delete mUi;
     if (mModuleDevice) {
         if (mModuleDevice->isRunning()){
             mModuleDevice->exit();
@@ -136,77 +143,6 @@ SAKDebugger::~SAKDebugger()
         }
         mModuleDevice->deleteLater();
     }
-#endif
-    delete mUi;
-}
-
-void SAKDebugger::outputMessage(QString msg, bool isInfo)
-{
-    Q_UNUSED(msg);
-    Q_UNUSED(isInfo);
-}
-
-quint32 SAKDebugger::pageType()
-{
-    return mDebugPageType;
-}
-
-QSettings *SAKDebugger::settings()
-{
-    return static_cast<SAKApplication*>(qApp)->settings();
-}
-
-QSqlDatabase *SAKDebugger::sqlDatabase()
-{
-    return qobject_cast<SAKApplication*>(qApp)->sqlDatabase();
-}
-
-QString SAKDebugger::settingsGroup()
-{
-    return mSettingGroup;
-}
-
-SAKDebuggerInput *SAKDebugger::inputController()
-{
-    return mModuleInput;
-}
-
-SAKDebuggerOutput *SAKDebugger::outputController()
-{
-    return mModuleOutput;
-}
-
-SAKDebuggerStatistics *SAKDebugger::statisticsController()
-{
-    return mModuleStatistics;
-}
-
-SAKDebuggerController *SAKDebugger::deviceController()
-{
-    Q_ASSERT_X(mModuleController,
-               __FUNCTION__,
-               "You must initialize mDeviceController in the subclass!");
-    return mModuleController;
-}
-
-SAKDebugPageCommonDatabaseInterface *SAKDebugger::databaseInterface()
-{
-    return mDatabaseInterface;
-}
-
-QString SAKDebugger::tableNameAutoResponseTable()
-{
-    return settingsGroup().append(QString("AutoResponse"));
-}
-
-QString SAKDebugger::tableNamePresettingDataTable()
-{
-    return settingsGroup().append(QString("PresettingData"));
-}
-
-QString SAKDebugger::tableNameTimingSendingTable()
-{
-    return settingsGroup().append(QString("TimingSending"));
 }
 
 void SAKDebugger::initDebugger()

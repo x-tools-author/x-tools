@@ -16,11 +16,14 @@
 #include "SAKSerialPortDebugger.hh"
 #include "SAKSerialPortController.hh"
 
-SAKSerialPortDebugger::SAKSerialPortDebugger(int type, QString name, QWidget *parent)
-    :SAKDebugger(type, name, parent)
+SAKSerialPortDebugger::SAKSerialPortDebugger(QSettings *settings,
+                                             const QString settingsGroup,
+                                             QSqlDatabase *sqlDatabase,
+                                             QWidget *parent)
+    :SAKDebugger(settings, settingsGroup, sqlDatabase, parent)
 {
-    mController = new SAKSerialPortController(settings(), settingsGroup(), this);
-    mDevice = new SAKSerialPortDevice(settings(), settingsGroup(), this);
+    mController = new SAKSerialPortController(settings, settingsGroup, this);
+    mDevice = new SAKSerialPortDevice(settings, settingsGroup, this);
     initDebugger();
 
     mDevice->setParametersCtx(mController->parametersContext());

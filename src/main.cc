@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
         SAKApplication app(argc, argv);
         // Setup main window
         app.showSplashScreenMessage(QObject::tr("Initializing main window..."));
-        SAKMainWindow mainWindow;
+        SAKMainWindow mainWindow(app.settings(), app.sqlDatabase());
         QObject::connect(&app, &SAKApplication::activeMainWindow, &mainWindow, &SAKMainWindow::activateWindow);
         mainWindow.show();
 #ifndef Q_OS_ANDROID
