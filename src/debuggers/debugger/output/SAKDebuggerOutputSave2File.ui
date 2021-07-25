@@ -186,6 +186,19 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>pathLineEdit</tabstop>
+  <tabstop>selectPushButton</tabstop>
+  <tabstop>readDataCheckBox</tabstop>
+  <tabstop>writtenDataCheckBox</tabstop>
+  <tabstop>timestampCheckBox</tabstop>
+  <tabstop>binRadioButton</tabstop>
+  <tabstop>hexRadioButton</tabstop>
+  <tabstop>utf8RadioButton</tabstop>
+  <tabstop>checkBoxEnable</tabstop>
+  <tabstop>truncatePushButton</tabstop>
+  <tabstop>okPushButton</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
@@ -195,12 +208,12 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>478</x>
-     <y>177</y>
+     <x>520</x>
+     <y>156</y>
     </hint>
     <hint type="destinationlabel">
      <x>177</x>
-     <y>178</y>
+     <y>164</y>
     </hint>
    </hints>
   </connection>
