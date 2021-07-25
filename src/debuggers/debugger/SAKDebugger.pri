@@ -2,7 +2,6 @@ include($$PWD/plugins/SAKPlugins.pri)
 
 INCLUDEPATH += \
     $$PWD \
-    $$PWD/common \
     $$PWD/controller \
     $$PWD/device \
     $$PWD/input \
@@ -22,7 +21,6 @@ FORMS += \
 
 HEADERS += \
     $$PWD/SAKDebugger.hh \
-    $$PWD/common/SAKDebugPageCommonDatabaseInterface.hh \
     $$PWD/controller/SAKDebuggerController.hh \
     $$PWD/device/SAKDebuggerDevice.hh \
     $$PWD/device/SAKDebuggerDeviceAnalyzer.hh \
@@ -39,7 +37,6 @@ HEADERS += \
 
 SOURCES += \
     $$PWD/SAKDebugger.cc \
-    $$PWD/common/SAKDebugPageCommonDatabaseInterface.cc \
     $$PWD/controller/SAKDebuggerController.cc \
     $$PWD/device/SAKDebuggerDevice.cc \
     $$PWD/device/SAKDebuggerDeviceAnalyzer.cc \

@@ -10,6 +10,7 @@
 #include <QMenu>
 #include <QAction>
 #include <QPixmap>
+#include <QSqlQuery>
 #include <QDateTime>
 #include <QSettings>
 #include <QKeyEvent>
@@ -34,7 +35,6 @@
 #include "SAKCommonDataStructure.hh"
 #include "SAKDebuggerController.hh"
 #include "SAKPluginAutomaticallyResponse.hh"
-#include "SAKDebugPageCommonDatabaseInterface.hh"
 
 #ifdef SAK_IMPORT_MODULE_CHARTS
 #include "SAKPluginCharts.hh"

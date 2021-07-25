@@ -19,30 +19,29 @@
 #include "SAKDebugger.hh"
 #include "SAKApplication.hh"
 #include "SAKCommonDataStructure.hh"
-#include "SAKPluginRegularlySendingItem.hh"
 #include "SAKPluginRegularlySending.hh"
-#include "SAKDebugPageCommonDatabaseInterface.hh"
+#include "SAKPluginRegularlySendingItem.hh"
 
 #include "ui_SAKPluginRegularlySending.h"
 
 SAKPluginRegularlySending::SAKPluginRegularlySending(QWidget *parent)
     :QWidget(parent)
-    ,mUi(new Ui::SAKPluginRegularlySending)
+    //,mUi(new Ui::SAKPluginRegularlySending)
 {
-    mUi->setupUi(this);
+//    mUi->setupUi(this);
 
-    mItemListWidget = mUi->itemListWidget;
-    mOutportPushButton = mUi->outportPushButton;
-    mImportPushButton = mUi->importPushButton;
-    mDeletePushButton = mUi->deletePushButton;
-    mAddPushButton = mUi->addPushButton;
-    mMessageLabel = mUi->messageLabel;
+//    mItemListWidget = mUi->itemListWidget;
+//    mOutportPushButton = mUi->outportPushButton;
+//    mImportPushButton = mUi->importPushButton;
+//    mDeletePushButton = mUi->deletePushButton;
+//    mAddPushButton = mUi->addPushButton;
+//    mMessageLabel = mUi->messageLabel;
 
-    mClearMessageTimer.setInterval(SAK_CLEAR_MESSAGE_INTERVAL);
-    connect(&mClearMessageTimer, &QTimer::timeout, this, [&](){
-        mClearMessageTimer.stop();
-        mMessageLabel->clear();
-    });
+//    mClearMessageTimer.setInterval(SAK_CLEAR_MESSAGE_INTERVAL);
+//    connect(&mClearMessageTimer, &QTimer::timeout, this, [&](){
+//        mClearMessageTimer.stop();
+//        mMessageLabel->clear();
+//    });
 #if 0
     mDatabaseInterface = mDebugPage->databaseInterface();
     mTableName = mDebugPage->tableNameTimingSendingTable();
@@ -52,9 +51,9 @@ SAKPluginRegularlySending::SAKPluginRegularlySending(QWidget *parent)
 
 SAKPluginRegularlySending::~SAKPluginRegularlySending()
 {
-    delete mUi;
+    //delete mUi;
 }
-
+#if 0
 SAKPluginRegularlySendingItem *innerCreateItem(SAKDebugPageCommonDatabaseInterface::SAKStructTimingSentItem &var, SAKDebugger *debugPage, QListWidget *listWidget)
 {
     QListWidgetItem *item = new QListWidgetItem(listWidget);
@@ -286,3 +285,4 @@ void SAKPluginRegularlySending::on_addPushButton_clicked()
 //    sendingItem.interval = itemWidget->itemInterval();
 //    mDatabaseInterface->insertTimingSentItem(sendingItem);
 }
+#endif

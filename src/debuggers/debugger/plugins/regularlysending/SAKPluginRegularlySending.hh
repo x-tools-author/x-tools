@@ -32,38 +32,38 @@ public:
     SAKPluginRegularlySending(QWidget *parent = Q_NULLPTR);
     ~SAKPluginRegularlySending();
 
-    struct TimingSendingItemKey {
-        const QString id = QString("id");
-        const QString interval = QString("interval");
-        const QString format = QString("format");
-        const QString description = QString("description");
-        const QString text = QString("text");
-    };
-private:
-    QString mTableName;
-    QTimer mClearMessageTimer;
-private:
-    void readinRecord();
-    bool contains(quint64 paraID);
-    void outputMessage(QString msg, bool isError = false);
-    // update record
-    void changeInterval(int interval);
-    void changeFormat(int format);
-    void changeDescription(QString description);
-    void changeInputText(QString text);
-private:
-    Ui::SAKPluginRegularlySending *mUi;
-    QListWidget *mItemListWidget;
-    QPushButton *mOutportPushButton;
-    QPushButton *mImportPushButton;
-    QPushButton *mDeletePushButton;
-    QPushButton *mAddPushButton;
-    QLabel *mMessageLabel;
-private slots:
-    void on_outportPushButton_clicked();
-    void on_importPushButton_clicked();
-    void on_deletePushButton_clicked();
-    void on_addPushButton_clicked();
+//    struct TimingSendingItemKey {
+//        const QString id = QString("id");
+//        const QString interval = QString("interval");
+//        const QString format = QString("format");
+//        const QString description = QString("description");
+//        const QString text = QString("text");
+//    };
+//private:
+//    QString mTableName;
+//    QTimer mClearMessageTimer;
+//private:
+//    void readinRecord();
+//    bool contains(quint64 paraID);
+//    void outputMessage(QString msg, bool isError = false);
+//    // update record
+//    void changeInterval(int interval);
+//    void changeFormat(int format);
+//    void changeDescription(QString description);
+//    void changeInputText(QString text);
+//private:
+//    Ui::SAKPluginRegularlySending *mUi;
+//    QListWidget *mItemListWidget;
+//    QPushButton *mOutportPushButton;
+//    QPushButton *mImportPushButton;
+//    QPushButton *mDeletePushButton;
+//    QPushButton *mAddPushButton;
+//    QLabel *mMessageLabel;
+//private slots:
+//    void on_outportPushButton_clicked();
+//    void on_importPushButton_clicked();
+//    void on_deletePushButton_clicked();
+//    void on_addPushButton_clicked();
 };
 
 #endif
