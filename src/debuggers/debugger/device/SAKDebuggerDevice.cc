@@ -31,11 +31,27 @@ SAKDebuggerDevice::SAKDebuggerDevice(QSettings *settings,
         mParametersCtx.maskCtx = mMask->parametersContext();
         mParametersCtxMutex.unlock();
     });
+
+    mAnalyzer = new SAKDebuggerDeviceAnalyzer(settings, settingsGroup);
+    mParametersCtx.analyzerCtx = mAnalyzer->parametersContext();
+    connect(mAnalyzer, &SAKDebuggerDeviceAnalyzer::parametersChanged,
+            this, [&](){
+        mParametersCtxMutex.lock();
+        mParametersCtx.analyzerCtx = mAnalyzer->parametersContext();
+        mParametersCtxMutex.unlock();
+    });
+    connect(mAnalyzer, &SAKDebuggerDeviceAnalyzer::clearTemp,
+            this, [&](){
+        mAnalyzerCtxMutex.lock();
+        mAnalyzerCtx.bytesTemp.clear();
+        mAnalyzerCtxMutex.unlock();
+    });
 }
 
 SAKDebuggerDevice::~SAKDebuggerDevice()
 {
-
+    mMask->deleteLater();
+    mAnalyzer->deleteLater();
 }
 
 void SAKDebuggerDevice::writeBytes(QByteArray bytes)
@@ -56,6 +72,14 @@ void SAKDebuggerDevice::setupMenu(QMenu *menu)
             mMask->show();
         } else {
             mMask->activateWindow();
+        }
+    });
+
+    menu->addAction(tr("Analyzer"), this, [=](){
+        if (mAnalyzer->isHidden()) {
+            mAnalyzer->show();
+        } else {
+            mAnalyzer->activateWindow();
         }
     });
 }
@@ -83,7 +107,12 @@ void SAKDebuggerDevice::run()
             QByteArray ret = read();
             if (ret.length()) {
                 ret = mask(ret, true);
-                emit bytesRead(ret);
+                auto ctx = parametersContext();
+                if (ctx.analyzerCtx.enable) {
+                    analyzer(ret);
+                } else {
+                    emit bytesRead(ret);
+                }
             }
         }, Qt::DirectConnection);
 
@@ -137,6 +166,114 @@ QByteArray SAKDebuggerDevice::mask(const QByteArray &plaintext, bool isRxData)
     }
 
     return ciphertext;
+}
+
+void SAKDebuggerDevice::analyzer(QByteArray data)
+{
+    // If the bytes of temp data is more than maxTempLength(2048) bytes,
+    // a frame which length is maxTempLength will be emit.
+    auto ctx = parametersContext();
+    mAnalyzerCtxMutex.lock();
+    mAnalyzerCtx.bytesTemp.append(data);
+    if (mAnalyzerCtx.bytesTemp.length() >= mAnalyzerCtx.maxTempLangth) {
+        QByteArray temp = mAnalyzerCtx.bytesTemp;
+        mAnalyzerCtx.bytesTemp.clear();
+        emit bytesRead(temp);
+        mAnalyzerCtxMutex.unlock();
+        return;
+    }
+
+    // The length of frame is fixed
+    if (ctx.analyzerCtx.fixedLength) {
+        if (ctx.analyzerCtx.length > 0) {
+            while (mAnalyzerCtx.bytesTemp.length() >= ctx.analyzerCtx.length) {
+                QByteArray temp = QByteArray(mAnalyzerCtx.bytesTemp.data(),
+                                             ctx.analyzerCtx.length);
+                mAnalyzerCtx.bytesTemp =
+                        mAnalyzerCtx.bytesTemp.remove(0, ctx.analyzerCtx.length);
+                emit bytesRead(temp);
+            }
+        } else {
+            // If parameters is error(the length is less than 0 or equal to 0),
+            // temp data will be clear!
+            if (mAnalyzerCtx.bytesTemp.length()) {
+                emit bytesRead(mAnalyzerCtx.bytesTemp);
+                mAnalyzerCtx.bytesTemp.clear();
+            }
+        }
+
+        mAnalyzerCtxMutex.unlock();
+        return;
+    }
+
+    // Extract data according to the flags
+    // If both of start-bytes and end-bytes are empty, temp data will be clear
+    if (ctx.analyzerCtx.startFlags.isEmpty() && ctx.analyzerCtx.endFlags.isEmpty()){
+        if (mAnalyzerCtx.bytesTemp.length()){
+            mAnalyzerCtx.bytesTemp.clear();
+            emit bytesRead(mAnalyzerCtx.bytesTemp);
+        }
+
+        mAnalyzerCtxMutex.unlock();
+        return;
+    }
+
+
+    while(1){
+        // Ensure that bytes is enough
+        if (mAnalyzerCtx.bytesTemp.length() < (ctx.analyzerCtx.startFlags.length() +
+                                               ctx.analyzerCtx.endFlags.length())) {
+            break;
+        }
+
+        // Match start-bytes
+        bool startBytesMatched = true;
+        if (ctx.analyzerCtx.startFlags.isEmpty()) {
+            startBytesMatched = true;
+        } else {
+            int ret = mAnalyzerCtx.bytesTemp.indexOf(ctx.analyzerCtx.startFlags, 0);
+            if (ret >= 0) {
+                startBytesMatched = true;
+                // Remove error data
+                QByteArray temp = QByteArray(mAnalyzerCtx.bytesTemp.data(), ret);
+                mAnalyzerCtx.bytesTemp.remove(0, ret);
+                emit bytesRead(temp);
+            } else {
+                startBytesMatched = false;
+            }
+        }
+
+        // Match end-bytes
+        bool endBytesMatched = true;
+        quint32 frameLength = 0;
+        if (ctx.analyzerCtx.endFlags.isEmpty()) {
+            endBytesMatched = true;
+        } else {
+            int ret = mAnalyzerCtx.bytesTemp.indexOf(
+                        ctx.analyzerCtx.endFlags,
+                        ctx.analyzerCtx.startFlags.length());
+            if (ret >= 0) {
+                endBytesMatched = true;
+                frameLength = ret + ctx.analyzerCtx.endFlags.length();
+            } else {
+                endBytesMatched = false;
+            }
+        }
+
+        // A completed data-frame has been extracted
+        if (startBytesMatched && endBytesMatched) {
+            if (frameLength) {
+                QByteArray temp(mAnalyzerCtx.bytesTemp.data(), frameLength);
+                mAnalyzerCtx.bytesTemp.remove(0, frameLength);
+                emit bytesRead(temp);
+            } else {
+                QByteArray temp = mAnalyzerCtx.bytesTemp.data();
+                mAnalyzerCtx.bytesTemp.clear();
+                emit bytesRead(temp);
+            }
+        }
+    }
+    mAnalyzerCtxMutex.unlock();
 }
 
 SAKDebuggerDevice::SAKStructDevicePatametersContext

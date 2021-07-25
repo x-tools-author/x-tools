@@ -150,7 +150,6 @@ SAKSerialPortController::parametersContext()
     } else {
         ctx.intervalNs = interval*consumeNsPerBit;
     }
-    ctx.intervalNs = mUi->frameIntervalSpinBox->value();
 
     int parity = mUi->parityComboBox->currentData().toInt();
     auto cookedParity = static_cast<QSerialPort::Parity>(parity);

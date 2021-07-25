@@ -16,6 +16,7 @@
 #include <QWaitCondition>
 
 #include "SAKDebuggerDeviceMask.hh"
+#include "SAKDebuggerDeviceAnalyzer.hh"
 
 /// @brief device abstract class
 class SAKDebuggerDevice:public QThread
@@ -48,29 +49,29 @@ signals:
 private:
     struct SAKStructDevicePatametersContext {
         SAKDebuggerDeviceMask::SAKStructMaskContext maskCtx ;
-        struct AnalyzerContext {
-            bool enable;
-            bool fixedLength;
-            int length;
-            QByteArray startFlags;
-            QByteArray endFlags;
-        } analyzerCtx;
-    };
+        SAKDebuggerDeviceAnalyzer::SAKStructAnalyzerContext analyzerCtx;
+    }mParametersCtx;
 
 
+    struct SAKStructDeviceAnalyzerContext {
+        QByteArray bytesTemp;
+        const int maxTempLangth = 2048;
+    }mAnalyzerCtx;
 private:
     QSettings *settings;
     const QString settingsGroup;
-    SAKStructDevicePatametersContext mParametersCtx;
     QMutex mParametersCtxMutex;
     QVector<QByteArray> mBytesVector;
     QMutex mBytesVectorMutex;
+    QMutex mAnalyzerCtxMutex;
     // Parameters editors
     SAKDebuggerDeviceMask *mMask;
+    SAKDebuggerDeviceAnalyzer *mAnalyzer;
 
 
 private:
     QByteArray mask(const QByteArray &plaintext, bool isRxData);
+    void analyzer(QByteArray data);
     SAKStructDevicePatametersContext parametersContext();
 
 

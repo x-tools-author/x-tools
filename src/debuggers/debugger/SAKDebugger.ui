@@ -547,5 +547,22 @@ p, li { white-space: pre-wrap; }
   </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>clearOutputPushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>outputTextBroswer</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>123</x>
+     <y>123</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>162</x>
+     <y>123</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

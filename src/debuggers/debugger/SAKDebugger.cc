@@ -33,8 +33,6 @@
 #include "SAKCommonCrcInterface.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKDebuggerController.hh"
-#include "SAKOtherAnalyzerThread.hh"
-#include "SAKOtherAnalyzerThreadManager.hh"
 #include "SAKPluginAutomaticallyResponse.hh"
 #include "SAKDebugPageCommonDatabaseInterface.hh"
 
@@ -144,8 +142,8 @@ SAKDebugger::~SAKDebugger()
 
 void SAKDebugger::outputMessage(QString msg, bool isInfo)
 {
-    //mOutputController->outputLog(msg, isInfo);
-
+    Q_UNUSED(msg);
+    Q_UNUSED(isInfo);
 }
 
 quint32 SAKDebugger::pageType()

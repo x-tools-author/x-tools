@@ -6,16 +6,15 @@ INCLUDEPATH += \
     $$PWD/controller \
     $$PWD/device \
     $$PWD/input \
-    $$PWD/device/analyzer \
     $$PWD/output \
     $$PWD/statistics
 
 FORMS += \
     $$PWD/SAKDebugger.ui \
+    $$PWD/device/SAKDebuggerDeviceAnalyzer.ui \
     $$PWD/device/SAKDebuggerDeviceMask.ui \
     $$PWD/input/SAKDebuggerInputCrcSettings.ui \
     $$PWD/input/SAKDebuggerInputDataPreset.ui \
-    $$PWD/device/analyzer/SAKOtherAnalyzerThreadManager.ui \
     $$PWD/input/SAKDebuggerInputDataPresetItem.ui \
     $$PWD/output/SAKDebuggerOutputHighlighter.ui \
     $$PWD/output/SAKDebuggerOutputLog.ui \
@@ -26,11 +25,10 @@ HEADERS += \
     $$PWD/common/SAKDebugPageCommonDatabaseInterface.hh \
     $$PWD/controller/SAKDebuggerController.hh \
     $$PWD/device/SAKDebuggerDevice.hh \
+    $$PWD/device/SAKDebuggerDeviceAnalyzer.hh \
     $$PWD/device/SAKDebuggerDeviceMask.hh \
     $$PWD/input/SAKDebuggerInput.hh \
     $$PWD/input/SAKDebuggerInputCrcSettings.hh \
-    $$PWD/device/analyzer/SAKOtherAnalyzerThread.hh \
-    $$PWD/device/analyzer/SAKOtherAnalyzerThreadManager.hh \
     $$PWD/input/SAKDebuggerInputDataPreset.hh \
     $$PWD/input/SAKDebuggerInputDataPresetItem.hh \
     $$PWD/output/SAKDebuggerOutput.hh \
@@ -44,11 +42,10 @@ SOURCES += \
     $$PWD/common/SAKDebugPageCommonDatabaseInterface.cc \
     $$PWD/controller/SAKDebuggerController.cc \
     $$PWD/device/SAKDebuggerDevice.cc \
+    $$PWD/device/SAKDebuggerDeviceAnalyzer.cc \
     $$PWD/device/SAKDebuggerDeviceMask.cc \
     $$PWD/input/SAKDebuggerInput.cc \
     $$PWD/input/SAKDebuggerInputCrcSettings.cc \
-    $$PWD/device/analyzer/SAKOtherAnalyzerThread.cc \
-    $$PWD/device/analyzer/SAKOtherAnalyzerThreadManager.cc \
     $$PWD/input/SAKDebuggerInputDataPreset.cc \
     $$PWD/input/SAKDebuggerInputDataPresetItem.cc \
     $$PWD/output/SAKDebuggerOutput.cc \
