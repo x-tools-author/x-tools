@@ -1,4 +1,4 @@
-﻿/******************************************************************************
+﻿/****************************************************************************************
  * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -6,7 +6,7 @@
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- *****************************************************************************/
+ ***************************************************************************************/
 #include <QMetaEnum>
 #include <QLineEdit>
 #include <QStandardItemModel>
@@ -65,7 +65,8 @@ void SAKCommonDataStructure::setComboBoxTextWebSocketSendingType(QComboBox *comb
     }
 }
 
-QString SAKCommonDataStructure::formattingString(QString &origingString, SAKEnumTextFormatInput format)
+QString SAKCommonDataStructure::formattingString(QString &origingString,
+                                                 SAKEnumTextFormatInput format)
 {
     QString cookedString;
     if (format == SAKCommonDataStructure::InputFormatBin){
@@ -159,33 +160,53 @@ QByteArray SAKCommonDataStructure::stringToByteArray(QString &origingString,
     return data;
 }
 
-QString SAKCommonDataStructure::byteArrayToString(QByteArray &origingData, SAKEnumTextFormatOutput format)
+QString SAKCommonDataStructure::byteArrayToString(QByteArray &origingData,
+                                                  SAKEnumTextFormatOutput format)
 {
     QString str;
     if (format == SAKCommonDataStructure::OutputFormatBin){
         for (int i = 0; i < origingData.length(); i++){
-            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(origingData.at(i)), 2), 8, '0'));
+            str.append(QString("%1 ").arg(
+                           QString::number(static_cast<uint8_t>(origingData.at(i)), 2),
+                           8,
+                           '0'
+                           ));
         }
     }else if (format == SAKCommonDataStructure::OutputFormatOct){
         for (int i = 0; i < origingData.length(); i++){
-            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(origingData.at(i)), 8), 3, '0'));
+            str.append(QString("%1 ").arg(
+                           QString::number(static_cast<uint8_t>(origingData.at(i)), 8),
+                           3,
+                           '0')
+                       );
         }
     }else if (format == SAKCommonDataStructure::OutputFormatDec){
         for (int i = 0; i < origingData.length(); i++){
-            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(origingData.at(i)), 10)));
+            str.append(QString("%1 ").arg(
+                           QString::number(static_cast<uint8_t>(origingData.at(i)), 10)
+                           ));
         }
     }else if (format == SAKCommonDataStructure::OutputFormatHex){
         for (int i = 0; i < origingData.length(); i++){
-            str.append(QString("%1 ").arg(QString::number(static_cast<uint8_t>(origingData.at(i)), 16), 2, '0'));
+            str.append(QString("%1 ").arg(
+                           QString::number(static_cast<uint8_t>(origingData.at(i)), 16),
+                           2,
+                           '0'));
         }
     }else if (format == SAKCommonDataStructure::OutputFormatAscii){
         str.append(QString::fromLatin1(origingData));
     }else if (format == SAKCommonDataStructure::OutputFormatUtf8){
         str.append(QString::fromUtf8(origingData));
     }else if (format == SAKCommonDataStructure::OutputFormatUtf16){
-        str.append(QString::fromUtf16(reinterpret_cast<const char16_t*>(origingData.constData()),origingData.length()/sizeof(char16_t)));
+        str.append(QString::fromUtf16(
+                       reinterpret_cast<const char16_t*>(origingData.constData()),
+                       origingData.length()/sizeof(char16_t)
+                       ));
     }else if (format == SAKCommonDataStructure::OutputFormatUcs4){
-        str.append(QString::fromUcs4(reinterpret_cast<const char32_t*>(origingData.constData()),origingData.length()/sizeof(char32_t)));
+        str.append(QString::fromUcs4(
+                       reinterpret_cast<const char32_t*>(origingData.constData()),
+                       origingData.length()/sizeof(char32_t)
+                       ));
     }else if (format == SAKCommonDataStructure::OutputFormatLocal){
         str.append(QString::fromLocal8Bit(origingData));
     }else {
@@ -268,8 +289,9 @@ void SAKCommonDataStructure::formattingInputText(QTextEdit *textEdit, int model)
         if (!plaintext.isEmpty()){
             auto cookedModel =
                     static_cast<SAKCommonDataStructure::SAKEnumTextFormatInput>(model);
-            QString cookedString = SAKCommonDataStructure::formattingString(plaintext,
-                                                                            cookedModel);
+            QString cookedString =
+                    SAKCommonDataStructure::formattingString(plaintext,
+                                                             cookedModel);
             textEdit->setText(cookedString);
             textEdit->moveCursor(QTextCursor::End);
         }
