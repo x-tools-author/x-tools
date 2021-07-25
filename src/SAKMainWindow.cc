@@ -123,7 +123,8 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
     centralWidget->layout()->setContentsMargins(6, 6, 6, 6);
     QString title = QString(tr("Qt Swiss Army Knife"));
     title.append(QString(" "));
-    title.append(QString("v") + qobject_cast<SAKApplication*>(qApp)->applicationVersion());
+    title.append(QString("v"));
+    title.append(qobject_cast<SAKApplication*>(qApp)->applicationVersion());
     setWindowTitle(title);
 #endif
 
@@ -132,13 +133,16 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
 
     // Connecting the signal of tab page to it's slot.
     mTabWidget->setTabsClosable(true);
-    connect(mTabWidget, &QTabWidget::tabCloseRequested, this, &SAKMainWindow::removeRemovableDebugPage);
+    connect(mTabWidget, &QTabWidget::tabCloseRequested,
+            this, &SAKMainWindow::removeRemovableDebugPage);
     connect(mTabWidget, &QTabWidget::currentChanged, this, [=](int index){
         sakApp->settings()->setValue(mSettingsKeyContext.currentTabPage, index);
     });
 
-    // Create debugging pages, the operation will emit the signal named currentChanged.
-    // So you should block it, or the value of setting opetion(mSettingsKeyContext.currentTabPage) will be aways 0.
+    // Create debugger, the operation will emit the signal named currentChanged.
+    // So you should block it,
+    // or the value of setting option(mSettingsKeyContext.currentTabPage)
+    // will be 0 aways.
     QMetaEnum metaEnum = QMetaEnum::fromType<SAKEnumDebugPageType>();
     mTabWidget->blockSignals(true);
     for (int i = 0; i < metaEnum.keyCount(); i++){
@@ -151,10 +155,8 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
         }
 #endif
 #endif
-
         // The page can not be closed.
-        QWidget *page =
-                debugPageFromDebugPageType(metaEnum.value(i));
+        QWidget *page = debugPageFromDebugPageType(metaEnum.value(i));
         if (page){
             mTabWidget->addTab(page, page->windowTitle());
             appendWindowAction(page);
@@ -166,10 +168,12 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
     }
 
     // Set the current page to last time
-    int currentPage = sakApp->settings()->value(mSettingsKeyContext.currentTabPage).toInt();
+    int currentPage =
+            sakApp->settings()->value(mSettingsKeyContext.currentTabPage).toInt();
     mTabWidget->setCurrentIndex(currentPage);
 
-    // Hide the close button, the step must be done after calling setTabsClosable() function.
+    // Hide the close button,
+    // the step must be done after calling setTabsClosable() function.
     for (int i = 0; i < mTabWidget->count(); i++){
         mTabWidget->tabBar()->setTabButton(i, QTabBar::RightSide, Q_NULLPTR);
         mTabWidget->tabBar()->setTabButton(i, QTabBar::LeftSide, Q_NULLPTR);
@@ -648,18 +652,29 @@ void SAKMainWindow::initializingMetaObject()
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeWebSocketServer, SAKWebSocketServerDebugger::staticMetaObject, tr("WS-S")});
 #endif
 #ifdef SAK_IMPORT_MODULE_SERIALBUS
-    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeModbus, SAKModbusDebugPage::staticMetaObject, tr("Modbus")});
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{
+                                      DebugPageTypeModbus,
+                                      SAKModbusDebugPage::staticMetaObject,
+                                      tr("Modbus")});
 #endif
 }
 
 void SAKMainWindow::initToosMetaObjectInfoList()
 {
 #ifdef SAK_IMPORT_MODULE_FILECHECKER
-    mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{SAKToolFileChecker::staticMetaObject, tr("File Assistant")});
+    mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{
+                                       SAKToolFileChecker::staticMetaObject,
+                                       tr("File Assistant")});
 #endif
-    mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{SAKToolCRCCalculator::staticMetaObject, tr("CRC Assistant")});
-    mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{SAKToolFloatAssistant::staticMetaObject, tr("Float Assistant")});
-    mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{SAKToolStringAssistant::staticMetaObject, tr("String Assistant")});
+    mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{
+                                       SAKToolCRCCalculator::staticMetaObject,
+                                       tr("CRC Assistant")});
+    mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{
+                                       SAKToolFloatAssistant::staticMetaObject,
+                                       tr("Float Assistant")});
+    mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{
+                                       SAKToolStringAssistant::staticMetaObject,
+                                       tr("String Assistant")});
 }
 
 void SAKMainWindow::showReleaseHistoryActionDialog()
