@@ -131,7 +131,7 @@ SAKDebugger::~SAKDebugger()
 #if 1
     if (mModuleDevice) {
         if (mModuleDevice->isRunning()){
-            mModuleDevice->requestInterruption();
+            mModuleDevice->exit();
             mModuleDevice->wait();
         }
         mModuleDevice->deleteLater();
