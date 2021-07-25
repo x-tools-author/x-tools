@@ -27,7 +27,9 @@ class SAKSerialPortController : public SAKDebuggerController
 {
     Q_OBJECT
 public:
-    SAKSerialPortController(QWidget *parent = Q_NULLPTR);
+    SAKSerialPortController(QSettings *settings,
+                            const QString &settingsGroup,
+                            QWidget *parent = Q_NULLPTR);
     ~SAKSerialPortController();
 
     void updateUiState(bool opened) final;
@@ -35,6 +37,14 @@ public:
 
     SAKCommonDataStructure::SAKStructSerialPortParametersContext parametersContext();
 private:
+    struct SAKStructSettingsKeyContext {
+        QString portName;
+        QString frameInterval;
+        QString usingCustomBaudRate;
+        QString baudRate;
+    }mSettingsKeyContext;
+private:
     Ui::SAKSerialPortController *mUi;
+    const int defauleFrameInterval;
 };
 #endif

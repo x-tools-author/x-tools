@@ -19,7 +19,7 @@
 SAKSerialPortDebugger::SAKSerialPortDebugger(int type, QString name, QWidget *parent)
     :SAKDebugger(type, name, parent)
 {
-    mController = new SAKSerialPortController(this);
+    mController = new SAKSerialPortController(settings(), settingsGroup(), this);
     mDevice = new SAKSerialPortDevice(settings(), settingsGroup(), this);
     initDebugger();
 
