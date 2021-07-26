@@ -39,6 +39,8 @@ public:
                                    QWidget *parent = Q_NULLPTR);
     ~SAKPluginAutomaticallyResponse();
     void onBytesRead(const QByteArray &bytes);
+
+
 private:
     QSettings *mSettiings;
     QSqlDatabase *mSqlDatabase;
@@ -46,6 +48,8 @@ private:
 
     QTimer mClearMessageInfoTimer;
     bool mForbidAll;
+
+
 private:
     struct SAKStructAutomaticallyResponseJsonKeyContext {
         const QString id = QString("id");
@@ -69,6 +73,8 @@ private:
         QString tableName;
         SAKStructAutomaticallyResponseJsonKeyContext columns;
     }mSqlDatabaseTableCtx;
+
+
 private:
     void outputMessage(QString msg, bool isInfo);
     void readInRecord();
@@ -84,6 +90,7 @@ private:
     void setItemWidget(QListWidgetItem *item,
                        SAKPluginAutomaticallyResponseItem *itemWidget,
                        QListWidget *listWidget);
+
 
 private:
     Ui::SAKPluginAutomaticallyResponse *mUi;
