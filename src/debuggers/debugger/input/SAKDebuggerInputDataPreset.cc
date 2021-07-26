@@ -53,14 +53,7 @@ SAKDebuggerInputDataPreset::SAKDebuggerInputDataPreset(
 
     connect(mUi->clearPushButton, &QPushButton::clicked,
             this, [=](){
-        QString title = tr("Clear Data");
-        QString text = tr("All Data Items Will Be Deleted!")
-                + " "
-                + tr("Are you sure you want to do this?");
-        auto ret = QMessageBox::warning(this,
-                                        title,
-                                        text,
-                                        QMessageBox::Ok|QMessageBox::Cancel);
+        int ret = SAKDebugger::clearDataMessageBox();
         if (ret == QMessageBox::Ok) {
             while (mUi->itemListWidget->count()) {
                 QListWidgetItem *item = mUi->itemListWidget->item(0);

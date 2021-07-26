@@ -22,7 +22,6 @@
 #include "SAKDebugger.hh"
 #include "SAKApplication.hh"
 #include "SAKCommonDataStructure.hh"
-#include "SAKPluginAutomaticallyResponseItem.hh"
 #include "SAKPluginAutomaticallyResponse.hh"
 
 #include "ui_SAKPluginAutomaticallyResponse.h"
@@ -70,6 +69,8 @@ SAKPluginAutomaticallyResponse::SAKPluginAutomaticallyResponse(
             this, &SAKPluginAutomaticallyResponse::deleteItem);
     connect(mUi->addItemPushButton, &QPushButton::clicked,
             this, &SAKPluginAutomaticallyResponse::addItemWidthoutParameters);
+    connect(mUi->clearItemsPushButton, &QPushButton::clicked,
+            this, &SAKPluginAutomaticallyResponse::clearItems);
 
 
     createSqlDatabaseTable();
@@ -81,7 +82,7 @@ SAKPluginAutomaticallyResponse::~SAKPluginAutomaticallyResponse()
     delete mUi;
 }
 
-void SAKPluginAutomaticallyResponse::onBytesRead(QByteArray bytes)
+void SAKPluginAutomaticallyResponse::onBytesRead(const QByteArray &bytes)
 {
     if (!mForbidAll) {
         emit bytesRead(bytes);
@@ -163,34 +164,32 @@ void SAKPluginAutomaticallyResponse::readInRecord()
 void SAKPluginAutomaticallyResponse::
 insertRecord(SAKPluginAutomaticallyResponseItem::ITEM_CTX itemCtx)
 {
-    auto table = mSqlDatabaseTableCtx;
-    const QString queryString = QString("INSERT INTO %1\
-                                         (%2,%3,%4,%5,%6,%7,%8,%9,%10,%11)\
-                                         VALUES(%12,'%13','%14','%15',%16,%17,%18,%19,\
-                                         %20,'%21')")
-            .arg(table.tableName)
-            .arg(table.columns.id)
-            .arg(table.columns.name)
-            .arg(table.columns.referenceData)
-            .arg(table.columns.responseData)
-            .arg(table.columns.enable)
-            .arg(table.columns.referenceFormat)
-            .arg(table.columns.responseFormat)
-            .arg(table.columns.option)
-            .arg(table.columns.delay)
-            .arg(table.columns.interval)
-            .arg(itemCtx.id)
-            .arg(itemCtx.name)
-            .arg(itemCtx.referenceData)
-            .arg(itemCtx.responseData)
-            .arg(itemCtx.enable)
-            .arg(itemCtx.referenceFormat)
-            .arg(itemCtx.responseFormat)
-            .arg(itemCtx.option)
-            .arg(itemCtx.delay)
-            .arg(itemCtx.interval);
-    if (mSqlQuery.exec(queryString)){
-        qWarning() << "Insert record to " << table.tableName
+    auto tableCtx = mSqlDatabaseTableCtx;
+    QString queryString = QString("INSERT INTO %1(").arg(tableCtx.tableName);
+    queryString.append(tableCtx.columns.id).append(",");
+    queryString.append(tableCtx.columns.name).append(",");
+    queryString.append(tableCtx.columns.referenceData).append(",");
+    queryString.append(tableCtx.columns.responseData).append(",");
+    queryString.append(tableCtx.columns.enable).append(",");
+    queryString.append(tableCtx.columns.referenceFormat).append(",");
+    queryString.append(tableCtx.columns.responseFormat).append(",");
+    queryString.append(tableCtx.columns.option).append(",");
+    queryString.append(tableCtx.columns.delay).append(",");
+    queryString.append(tableCtx.columns.interval).append(")");
+    queryString.append("VALUES(");
+    queryString.append(QString("%1,").arg(itemCtx.id));
+    queryString.append(QString("'%1',").arg(itemCtx.name));
+    queryString.append(QString("'%1',").arg(itemCtx.referenceData));
+    queryString.append(QString("'%1',").arg(itemCtx.responseData));
+    queryString.append(QString("%1,").arg(itemCtx.enable));
+    queryString.append(QString("%1,").arg(itemCtx.referenceFormat));
+    queryString.append(QString("%1,").arg(itemCtx.responseFormat));
+    queryString.append(QString("%1,").arg(itemCtx.option));
+    queryString.append(QString("%1,").arg(itemCtx.delay));
+    queryString.append(QString("%1)").arg(itemCtx.interval));
+    if (!mSqlQuery.exec(queryString)) {
+        qInfo() << queryString;
+        qWarning() << "Insert record to " << tableCtx.tableName
                    << " table failed: " << mSqlQuery.lastError().text();
     }
 }
@@ -214,10 +213,7 @@ addItem(SAKPluginAutomaticallyResponseItem::ITEM_CTX itemCtx)
                 itemCtx.interval,
                 listWidget
                 );
-    setupResponseItem(itemWidget);
-    item->setSizeHint(QSize(itemWidget->width(), itemWidget->height()));
-    listWidget->setItemWidget(item, itemWidget);
-    insertRecord(itemCtx);
+    setItemWidget(item, itemWidget, listWidget);
 }
 
 void SAKPluginAutomaticallyResponse::exportItems()
@@ -263,7 +259,7 @@ void SAKPluginAutomaticallyResponse::exportItems()
                                                     tr("Outport data"),
                                                     defaultName,
                                                     QString("json (*.json)"));
-    if (fileName.isEmpty()) {
+    if (!fileName.isEmpty()) {
         QFile file(fileName);
         if (file.open(QFile::ReadWrite)) {
             file.write(jsonDoc.toJson());
@@ -329,7 +325,6 @@ void SAKPluginAutomaticallyResponse::importItems()
 bool SAKPluginAutomaticallyResponse::itemIsExisted(quint64 id)
 {
     QListWidget *listWidget = mUi->listWidget;
-    QJsonArray jsonArray;
     for (int i = 0; i < listWidget->count(); i++){
         QListWidgetItem *item = listWidget->item(i);
         QWidget *itemWidget = listWidget->itemWidget(item);
@@ -349,7 +344,7 @@ void SAKPluginAutomaticallyResponse::deleteItem()
 {
     QListWidget *listWidget = mUi->listWidget;
     QListWidgetItem *item = listWidget->currentItem();
-    if (item) {
+    if (!item) {
         outputMessage(tr("Please select an item first!"), false);
         return;
     }
@@ -371,23 +366,10 @@ void SAKPluginAutomaticallyResponse::addItemWidthoutParameters()
     QListWidgetItem *item = new QListWidgetItem(listWidget);
     listWidget->addItem(item);
     auto *itemWidget = new SAKPluginAutomaticallyResponseItem(listWidget);
-    setupResponseItem(itemWidget);
-    item->setSizeHint(QSize(itemWidget->width(), itemWidget->height()));
-    listWidget->setItemWidget(item, itemWidget);
+    setItemWidget(item, itemWidget, listWidget);
 
     auto itemCtx = itemWidget->context();
     insertRecord(itemCtx);
-}
-
-void SAKPluginAutomaticallyResponse::setupResponseItem(
-        SAKPluginAutomaticallyResponseItem* item
-        )
-{
-    connect(this, &SAKPluginAutomaticallyResponse::bytesRead,
-            item, &SAKPluginAutomaticallyResponseItem::onBytesRead);
-
-    connect(item, &SAKPluginAutomaticallyResponseItem::responseBytes,
-            this, &SAKPluginAutomaticallyResponse::writeBytes);
 }
 
 void SAKPluginAutomaticallyResponse::createSqlDatabaseTable()
@@ -431,4 +413,39 @@ void SAKPluginAutomaticallyResponse::createSqlDatabaseTable()
             qWarning() << mSqlQuery.lastError().text();
         }
     }
+}
+
+void SAKPluginAutomaticallyResponse::clearItems()
+{
+    int ret = SAKDebugger::clearDataMessageBox();
+    if (ret == QMessageBox::Ok) {
+        QListWidget *listWidget = mUi->listWidget;
+        while (listWidget->count()) {
+            auto item = listWidget->item(0);
+            auto itemWidget =
+                    qobject_cast<SAKPluginAutomaticallyResponseItem*>(
+                        listWidget->itemWidget(item)
+                        );
+            auto id = itemWidget->context().id;
+            delete item;
+            delete itemWidget;
+            SAKDebugger::commonSqlApiDeleteRecord(&mSqlQuery,
+                                                  mSqlDatabaseTableCtx.tableName,
+                                                  id);
+        }
+    }
+}
+
+void SAKPluginAutomaticallyResponse::setItemWidget(QListWidgetItem *item,
+                        SAKPluginAutomaticallyResponseItem *itemWidget,
+                        QListWidget *listWidget)
+{
+    item->setSizeHint(itemWidget->sizeHint());
+    listWidget->setItemWidget(item, itemWidget);
+
+    connect(this, &SAKPluginAutomaticallyResponse::bytesRead,
+            itemWidget, &SAKPluginAutomaticallyResponseItem::onBytesRead);
+
+    connect(itemWidget, &SAKPluginAutomaticallyResponseItem::responseBytes,
+            this, &SAKPluginAutomaticallyResponse::writeBytes);
 }

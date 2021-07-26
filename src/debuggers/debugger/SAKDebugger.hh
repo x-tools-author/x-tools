@@ -78,6 +78,7 @@ private:
     void initDebuggerStatistics();
     void initDebuggerOutout();
     void initDebuggerInput();
+    void initDebuggerPlugin();
 private:
     QMenu *mDeviceMenu;
     QTimer mClearInfoTimer;
@@ -100,6 +101,7 @@ public:
     static void commonSqlApiDeleteRecord(QSqlQuery *sqlQuery,
                                          QString tableName,
                                          quint64 recordID);
+    static int clearDataMessageBox();
 
 
 private:

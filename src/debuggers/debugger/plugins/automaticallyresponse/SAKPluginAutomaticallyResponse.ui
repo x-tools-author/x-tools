@@ -6,18 +6,18 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>655</width>
+    <width>979</width>
     <height>378</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Auto response settings</string>
+   <string>Automatically Response Settings</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="5">
-    <widget class="QPushButton" name="addItemPushButton">
+   <item row="1" column="4">
+    <widget class="QPushButton" name="importPushButton">
      <property name="text">
-      <string>Add</string>
+      <string>Import</string>
      </property>
     </widget>
    </item>
@@ -28,15 +28,15 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="0" colspan="6">
-    <widget class="QListWidget" name="listWidget"/>
-   </item>
-   <item row="1" column="4">
-    <widget class="QPushButton" name="deleteItemPushButton">
+   <item row="1" column="6">
+    <widget class="QPushButton" name="addItemPushButton">
      <property name="text">
-      <string>Delete</string>
+      <string>Add</string>
      </property>
     </widget>
+   </item>
+   <item row="0" column="0" colspan="7">
+    <widget class="QListWidget" name="listWidget"/>
    </item>
    <item row="1" column="1">
     <widget class="QLabel" name="msgLabel">
@@ -51,17 +51,24 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="2">
-    <widget class="QPushButton" name="outportPushButton">
+   <item row="1" column="5">
+    <widget class="QPushButton" name="deleteItemPushButton">
      <property name="text">
-      <string>outport</string>
+      <string>Delete</string>
      </property>
     </widget>
    </item>
    <item row="1" column="3">
-    <widget class="QPushButton" name="importPushButton">
+    <widget class="QPushButton" name="outportPushButton">
      <property name="text">
-      <string>Import</string>
+      <string>Export</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2">
+    <widget class="QPushButton" name="clearItemsPushButton">
+     <property name="text">
+      <string>ClearItems</string>
      </property>
     </widget>
    </item>

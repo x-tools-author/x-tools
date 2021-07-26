@@ -1,4 +1,4 @@
-include($$PWD/plugins/SAKPlugins.pri)
+include($$PWD/plugins/SAKDebuggerPlugins.pri)
 
 INCLUDEPATH += \
     $$PWD \

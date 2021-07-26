@@ -36,21 +36,32 @@ public:
                                 QWidget *panelWidget,
                                 QObject *parent = Q_NULLPTR);
     ~SAKDebuggerPlugins();
+
+
 private:
     SAKPlugin3d *m3d;
     SAKPluginCharts *mCharts;
     SAKPluginDataForwarding *mDataForwarding;
     SAKPluginRegularlySending *mRegularlySending;
     SAKPluginAutomaticallyResponse *mAutomaticallyResponse;
+
+
 private:
     QLabel *mTitleLabel;
     QWidget *mPanelWidget;
+
+
 private:
     void showPluin3D();
     void showPluinCharts();
     void showPluinDataForwarding();
     void showPluginRegularlySending();
     void showPluginAutomaticallyResponse();
+
+
+signals:
+    void bytesRead(QByteArray bytes);
+    void bytesWritten(QByteArray bytes);
 };
 
 #endif // SAKDEBUGGERPLUGINS_HH

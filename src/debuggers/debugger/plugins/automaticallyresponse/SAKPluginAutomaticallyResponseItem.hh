@@ -22,7 +22,6 @@ namespace Ui {
     class SAKPluginAutomaticallyResponseItem;
 }
 
-class SAKDebugger;
 /// @brief Auto response item
 class SAKPluginAutomaticallyResponseItem : public QWidget
 {
@@ -41,6 +40,14 @@ public:
         int interval;
     };
     typedef struct SAKStructAutomaticallyResponseItemContext ITEM_CTX;
+
+    enum SAKEnumAutomaticallyResponseOption {
+        ReadDataIsEqualToReference,
+        ReadDataContainsReferenceData,
+        ReadDataDoesNotContainReferenceData
+    };
+    Q_ENUM(SAKEnumAutomaticallyResponseOption);
+
 public:
     SAKPluginAutomaticallyResponseItem(QWidget *parent = Q_NULLPTR);
     SAKPluginAutomaticallyResponseItem(quint64 mID,
@@ -59,30 +66,18 @@ public:
 
     SAKStructAutomaticallyResponseItemContext context();
     void onBytesRead(const QByteArray &bytes);
+
+
 private:
-    bool mForbiddenAllAutoResponse;
-    SAKDebugger *mDebugPage;
     quint64 mID;
-    // delay response
-    struct DelayWritingInfo{
-        quint64 expectedTimestamp;
-        QByteArray data;
-    };
-    QTimer mTimestampChecker;
-    QList<DelayWritingInfo*> mWaitForWrittenInfoList;
-
-
-private:
-    void setLineEditFormat(QLineEdit *lineEdit, int format);
-    void bytesRead(QByteArray bytes);
-    QByteArray string2array(QString str, int format);
-    bool response(QByteArray receiveData, QByteArray referenceData, int option);
-    void commonInitializing();
-    void initDelayWritingTimer();
-    void delayToWritBytes();
-    void blockUiSignals(bool block);
-private:
     Ui::SAKPluginAutomaticallyResponseItem *mUi;
+
+
+private:
+    void setupItem();
+    bool response(QByteArray receiveData,
+                  QByteArray referenceData,
+                  int option);
 
 
 signals:

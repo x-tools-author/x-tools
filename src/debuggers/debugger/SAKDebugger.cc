@@ -149,11 +149,12 @@ SAKDebugger::~SAKDebugger()
 
 void SAKDebugger::initDebugger()
 {
-    initDebuggerController();
     initDebuggerDevice();
+    initDebuggerController();
     initDebuggerStatistics();
     initDebuggerOutout();
     initDebuggerInput();
+    initDebuggerPlugin();
 }
 
 void SAKDebugger::initDebuggerController()
@@ -229,6 +230,14 @@ void SAKDebugger::initDebuggerInput()
             mModuleDevice, &SAKDebuggerDevice::writeBytes, Qt::QueuedConnection);
 }
 
+void SAKDebugger::initDebuggerPlugin()
+{
+    connect(mModuleDevice, &SAKDebuggerDevice::bytesRead,
+            mModulePlugins, &SAKDebuggerPlugins::bytesRead);
+    connect(mModuleDevice, &SAKDebuggerDevice::bytesWritten,
+            mModulePlugins, &SAKDebuggerPlugins::bytesWritten);
+}
+
 void SAKDebugger::commonSqlApiUpdateRecord(QSqlQuery *sqlQuery,
                                            QString tableName,
                                            QString columnName,
@@ -268,4 +277,17 @@ void SAKDebugger::commonSqlApiDeleteRecord(QSqlQuery *sqlQuery,
         qWarning() << "Can not delete recored form(" << tableName << ")"
                    << sqlQuery->lastError().text();
     }
+}
+
+int SAKDebugger::clearDataMessageBox()
+{
+    QString title = tr("Clear Data");
+    QString text = tr("All Data Items Will Be Deleted!")
+            + " "
+            + tr("Are you sure you want to do this?");
+    auto ret = QMessageBox::warning(Q_NULLPTR,
+                                    title,
+                                    text,
+                                    QMessageBox::Ok|QMessageBox::Cancel);
+    return ret;
 }
