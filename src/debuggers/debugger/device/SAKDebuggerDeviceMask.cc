@@ -24,14 +24,14 @@ SAKDebuggerDeviceMask::SAKDebuggerDeviceMask(QSettings *settings,
 
     int rxMask = settings->value(mSettingsKeyCtx.rxMask).toInt();
     mUi->rxMaskSpinBox->setValue(rxMask);
-    connect(mUi->rxMaskSpinBox, &QSpinBox::valueChanged, this, [=](){
+    connect(mUi->rxMaskSpinBox, QOverload<int>::of(&QSpinBox::valueChanged), this, [=](){
         settings->setValue(mSettingsKeyCtx.rxMask, mUi->rxMaskSpinBox->value());
         emit parametersChanged();
     });
 
     int txMask = settings->value(mSettingsKeyCtx.txMask).toInt();
     mUi->txMaskSpinBox->setValue(txMask);
-    connect(mUi->txMaskSpinBox, &QSpinBox::valueChanged, this, [=](){
+    connect(mUi->txMaskSpinBox, QOverload<int>::of(&QSpinBox::valueChanged), this, [=](){
         settings->setValue(mSettingsKeyCtx.txMask, mUi->txMaskSpinBox->value());
         emit parametersChanged();
     });

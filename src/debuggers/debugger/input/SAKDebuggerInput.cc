@@ -276,7 +276,7 @@ void SAKDebuggerInput::initUiRegularSendingComboBox()
         mRegularSendingComboBox->addItem(QString::number(i) + QString(" ") + unit, i);
     }
     connect(mRegularSendingComboBox,
-            &QComboBox::currentIndexChanged,
+            QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, [=](int index){
         mRregularSendingTimer->stop();
         if (index != 0) {
@@ -394,7 +394,7 @@ void SAKDebuggerInput::initUiSendPushButton()
 
 void SAKDebuggerInput::initUiInputComboBox()
 {
-    connect(mInputComboBox, &QComboBox::currentIndexChanged,
+    connect(mInputComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &SAKDebuggerInput::updateCrc);
 }
 

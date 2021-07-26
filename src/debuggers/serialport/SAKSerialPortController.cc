@@ -36,8 +36,10 @@ SAKSerialPortController::SAKSerialPortController(QSettings *settings,
     mSettingsKeyContext.baudRate = controlGroup + "baudRate";
 
 
-    connect(mUi->serialportsComboBox, &QComboBox::currentIndexChanged,
-            this, [=](int index){
+    connect(mUi->serialportsComboBox,
+            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this,
+            [=](int index){
         Q_UNUSED(index);
         QString portName = mUi->serialportsComboBox->currentText();
         mSettings->setValue(mSettingsKeyContext.portName, portName);
@@ -48,21 +50,23 @@ SAKSerialPortController::SAKSerialPortController(QSettings *settings,
         mSettings->setValue(mSettingsKeyContext.baudRate, baudRate);
         emit parametersChanged();
     });
-    connect(mUi->databitsComboBox, &QComboBox::currentIndexChanged,
+    connect(mUi->databitsComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &SAKSerialPortController::parametersChanged);
-    connect(mUi->stopbitsComboBox, &QComboBox::currentIndexChanged,
+    connect(mUi->stopbitsComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &SAKSerialPortController::parametersChanged);
-    connect(mUi->parityComboBox, &QComboBox::currentIndexChanged,
+    connect(mUi->parityComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &SAKSerialPortController::parametersChanged);
-    connect(mUi->flowControlComboBox, &QComboBox::currentIndexChanged,
-            this, &SAKSerialPortController::parametersChanged);
+    connect(mUi->flowControlComboBox,
+            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this,
+            &SAKSerialPortController::parametersChanged);
     connect(mUi->customBaudrateCheckBox, &QCheckBox::clicked,
             this, [=](){
         bool checked = mUi->customBaudrateCheckBox->isChecked();
         mSettings->setValue(mSettingsKeyContext.usingCustomBaudRate, checked);
         mUi->baudrateComboBox->setEditable(mUi->customBaudrateCheckBox->isChecked());
     });
-    connect(mUi->frameIntervalSpinBox, &QSpinBox::valueChanged,
+    connect(mUi->frameIntervalSpinBox, QOverload<int>::of(&QSpinBox::valueChanged),
             this, [=](int frameInterval){
         mSettings->setValue(mSettingsKeyContext.frameInterval, frameInterval);
         emit parametersChanged();
