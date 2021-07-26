@@ -1,4 +1,4 @@
-﻿/*
+﻿/****************************************************************************************
  * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -6,12 +6,13 @@
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- */
+ ***************************************************************************************/
 #ifndef SAKOTHERAUTOMATICALLYRESPONSEITEM_HH
 #define SAKOTHERAUTOMATICALLYRESPONSEITEM_HH
 
 #include <QTimer>
 #include <QWidget>
+#include <QSpinBox>
 #include <QLineEdit>
 #include <QComboBox>
 #include <QCheckBox>
@@ -23,23 +24,36 @@ namespace Ui {
 
 class SAKDebugger;
 /// @brief Auto response item
-class SAKPluginAutomaticallyResponseItem:public QWidget
+class SAKPluginAutomaticallyResponseItem : public QWidget
 {
     Q_OBJECT
 public:
-    SAKPluginAutomaticallyResponseItem(SAKDebugger *mDebugPage, QWidget *parent = Q_NULLPTR);
-    SAKPluginAutomaticallyResponseItem(SAKDebugger *mDebugPage,
-                             quint64 mID,
-                             QString name,
-                             QString referenceData,
-                             QString responseData,
-                             bool enabled,
-                             quint32 referenceFormat,
-                             quint32 responseFormat,
-                             quint32 option,
-                             bool delay,
-                             int interval,
-                             QWidget *parent = Q_NULLPTR);
+    struct SAKStructAutomaticallyResponseItemContext {
+        quint64 id;
+        QString name;
+        QString referenceData;
+        QString responseData;
+        bool enable;
+        int referenceFormat;
+        int responseFormat;
+        int option;
+        bool delay;
+        int interval;
+    };
+    typedef struct SAKStructAutomaticallyResponseItemContext ITEM_CTX;
+public:
+    SAKPluginAutomaticallyResponseItem(QWidget *parent = Q_NULLPTR);
+    SAKPluginAutomaticallyResponseItem(quint64 mID,
+                                       QString name,
+                                       QString referenceData,
+                                       QString responseData,
+                                       bool enabled,
+                                       quint32 referenceFormat,
+                                       quint32 responseFormat,
+                                       quint32 option,
+                                       bool delay,
+                                       int interval,
+                                       QWidget *parent = Q_NULLPTR);
     ~SAKPluginAutomaticallyResponseItem();
 
     /**
@@ -59,6 +73,7 @@ public:
     quint32 itemOption();
     bool delay();
     quint32 interval();
+    SAKStructAutomaticallyResponseItemContext context();
 private:
     bool mForbiddenAllAutoResponse;
     SAKDebugger *mDebugPage;
@@ -89,7 +104,7 @@ private:
     QComboBox *mReferenceDataFromatComboBox;
     QComboBox *mResponseDataFormatComboBox;
     QCheckBox *mDelayResponseCheckBox;
-    QLineEdit *mDelayResponseLineEdit;
+    QSpinBox *mDelayResponseSpinBox;
 private slots:
     void on_descriptionLineEdit_textChanged(const QString &text);
     void on_referenceLineEdit_textChanged(const QString &text);

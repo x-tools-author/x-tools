@@ -36,19 +36,6 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="3">
-    <widget class="QLineEdit" name="delayResponseLineEdit">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string notr="true">1000</string>
-     </property>
-    </widget>
-   </item>
    <item row="0" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
@@ -90,7 +77,7 @@
    <item row="3" column="2">
     <widget class="QCheckBox" name="delayResponseCheckBox">
      <property name="text">
-      <string>Delay</string>
+      <string>Delay(ms)</string>
      </property>
     </widget>
    </item>
@@ -142,6 +129,13 @@
      </property>
      <property name="checked">
       <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="3">
+    <widget class="QSpinBox" name="delayResponseSpinBox">
+     <property name="minimum">
+      <number>5</number>
      </property>
     </widget>
    </item>

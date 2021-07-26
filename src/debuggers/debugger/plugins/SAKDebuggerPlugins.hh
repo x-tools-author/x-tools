@@ -15,6 +15,7 @@
 #include <QObject>
 #include <QSettings>
 #include <QPushButton>
+#include <QSqlDatabase>
 
 #include "SAKPlugin3d.hh"
 #include "SAKPluginCharts.hh"
@@ -31,6 +32,7 @@ public:
                                 QSettings *settings,
                                 const QString &settingsGroup,
                                 QLabel *titleLabel,
+                                QSqlDatabase *sqlDatabase,
                                 QWidget *panelWidget,
                                 QObject *parent = Q_NULLPTR);
     ~SAKDebuggerPlugins();

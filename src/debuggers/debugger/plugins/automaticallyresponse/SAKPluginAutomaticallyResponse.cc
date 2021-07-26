@@ -1,4 +1,4 @@
-﻿/*
+﻿/****************************************************************************************
  * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -6,7 +6,7 @@
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- */
+ ***************************************************************************************/
 #include <QFile>
 #include <QDebug>
 #include <QDateTime>
@@ -27,84 +27,332 @@
 
 #include "ui_SAKPluginAutomaticallyResponse.h"
 
-SAKPluginAutomaticallyResponse::SAKPluginAutomaticallyResponse(QWidget *parent)
+SAKPluginAutomaticallyResponse::SAKPluginAutomaticallyResponse(
+        QSettings *settings,
+        QString settingsGroup,
+        QSqlDatabase *sqlDatabase,
+        QWidget *parent
+        )
     :QWidget (parent)
-//    ,mUi (new Ui::SAKPluginAutomaticallyResponse)
+    ,mSettiings(settings)
+    ,mSqlDatabase(sqlDatabase)
+    ,mSqlQuery(*sqlDatabase)
+    ,mForbidAll(false)
+    ,mUi (new Ui::SAKPluginAutomaticallyResponse)
 {
-//    mUi->setupUi(this);
-//    mListWidget = mUi->listWidget;
-//    mForbidAllCheckBox = mUi->forbidAllCheckBox;
-//    mDeleteItemPushButton = mUi->deleteItemPushButton;
-//    mAddItemPushButton = mUi->addItemPushButton;
-//    mOutportPushButton = mUi->outportPushButton;
-//    mImportPushButton = mUi->importPushButton;
-//    mMsgLabel = mUi->msgLabel;
+    mUi->setupUi(this);
+    mSettingsKeyCtx.disableAutomaticallyResponse =
+            settingsGroup + "/disableAllAutoResponse";
+    mSqlDatabaseTableCtx.tableName = settingsGroup + "AutomaticallyResponse";
 
-//    mClearMessageInfoTimer.setInterval(SAK_CLEAR_MESSAGE_INTERVAL);
-//    connect(&mClearMessageInfoTimer, &QTimer::timeout, this, &SAKPluginAutomaticallyResponse::clearMessage);
-#if 0
-    // Read in record from database
-    mDatabaseInterface = mDebugPage->databaseInterface();
-    mTableName = mDebugPage->tableNameAutoResponseTable();
+
+    mClearMessageInfoTimer.setInterval(SAK_CLEAR_MESSAGE_INTERVAL);
+    mClearMessageInfoTimer.setSingleShot(true);
+    connect(&mClearMessageInfoTimer, &QTimer::timeout,
+            mUi->msgLabel, &QLabel::clear);
+
+
+    bool forbidAll =
+            settings->value(mSettingsKeyCtx.disableAutomaticallyResponse).toBool();
+    mForbidAll = forbidAll;
+    mUi->forbidAllCheckBox->setChecked(mForbidAll);
+    connect(mUi->forbidAllCheckBox, &QCheckBox::clicked, this, [&](){
+        mForbidAll = mUi->forbidAllCheckBox->isChecked();
+        mSettiings->setValue(mSettingsKeyCtx.disableAutomaticallyResponse, mForbidAll);
+    });
+
+
+    connect(mUi->outportPushButton, &QPushButton::clicked,
+            this, &SAKPluginAutomaticallyResponse::exportItems);
+    connect(mUi->importPushButton, &QPushButton::clicked,
+            this, &SAKPluginAutomaticallyResponse::importItems);
+    connect(mUi->deleteItemPushButton, &QPushButton::clicked,
+            this, &SAKPluginAutomaticallyResponse::deleteItem);
+    connect(mUi->addItemPushButton, &QPushButton::clicked,
+            this, &SAKPluginAutomaticallyResponse::addItemWidthoutParameters);
+
+
     readInRecord();
-#endif
 }
 
 SAKPluginAutomaticallyResponse::~SAKPluginAutomaticallyResponse()
 {
-    //delete mUi;
+    delete mUi;
 }
 
-//SAKPluginAutomaticallyResponseItem *innerCreateItem(SAKDebugPageCommonDatabaseInterface::SAKStructAutoResponseItem &var, SAKDebugger *debugPage, QListWidget *listWidget)
-//{
-//    QListWidgetItem *item = new QListWidgetItem(listWidget);
-//    listWidget->addItem(item);
-//    SAKPluginAutomaticallyResponseItem *itemWidget = new SAKPluginAutomaticallyResponseItem(debugPage,
-//                                                                        var.id,
-//                                                                        var.name,
-//                                                                        var.referenceData,
-//                                                                        var.responseData,
-//                                                                        var.enable,
-//                                                                        var.referenceFormat,
-//                                                                        var.responseFormat,
-//                                                                        var.option,
-//                                                                        var.delay,
-//                                                                        var.interval,
-//                                                                        listWidget);
-//    item->setSizeHint(QSize(itemWidget->width(), itemWidget->height()));
-//    listWidget->setItemWidget(item, itemWidget);
-//    return itemWidget;
-//}
+void SAKPluginAutomaticallyResponse::outputMessage(QString msg, bool isInfo)
+{
+    QString color = isInfo ? "black" : "red";
+    mUi->msgLabel->setStyleSheet(QString("QLabel{color:%1}").arg(color));
+    mUi->msgLabel->setText(QTime::currentTime().toString("hh:mm:ss ") + msg);
 
-//void SAKPluginAutomaticallyResponse::outputMessage(QString msg, bool isInfo)
-//{
-//    QString color = "black";
-//    if (!isInfo){
-//        color = "red";
-//        QApplication::beep();
-//    }
-//    mMsgLabel->setStyleSheet(QString("QLabel{color:%1}").arg(color));
+    mClearMessageInfoTimer.start();
+    if (!isInfo){
+        QApplication::beep();
+    }
+}
 
-//    mMsgLabel->setText(QTime::currentTime().toString("hh:mm:ss ") + msg);
-//    mClearMessageInfoTimer.start();
-//}
+void SAKPluginAutomaticallyResponse::readInRecord()
+{
+    const QString queryString = QString("SELECT * FROM %1")
+            .arg(mSqlDatabaseTableCtx.tableName);
+    if (mSqlQuery.exec(queryString)) {
+        SAKPluginAutomaticallyResponseItem::ITEM_CTX item;
+        while (mSqlQuery.next()) {
+            QString column;
+            QVariant valueVariant;
 
-//void SAKPluginAutomaticallyResponse::clearMessage()
-//{
-//    mClearMessageInfoTimer.stop();
-//    mMsgLabel->clear();
-//}
+            column = mSqlDatabaseTableCtx.columns.id;
+            valueVariant = mSqlQuery.value(column);
+            item.id = valueVariant.toULongLong();
 
-//void SAKPluginAutomaticallyResponse::readInRecord()
-//{
-//#if 0
-//    QList<SAKDebugPageCommonDatabaseInterface::SAKStructAutoResponseItem> itemList = mDatabaseInterface->selectAutoResponseItem();
-//    for (auto &var : itemList){
-//        SAKOtherAutoResponseItem *item = innerCreateItem(var, mDebugPage, mListWidget);
-//        initializingItem(item);
-//    }
-//#endif
-//}
+            column = mSqlDatabaseTableCtx.columns.name;
+            valueVariant = mSqlQuery.value(column);
+            item.name = valueVariant.toString();
+
+            column = mSqlDatabaseTableCtx.columns.referenceData;
+            valueVariant = mSqlQuery.value(column);
+            item.referenceData = valueVariant.toString();
+
+            column = mSqlDatabaseTableCtx.columns.responseData;
+            valueVariant = mSqlQuery.value(column);
+            item.responseData =valueVariant.toString();
+
+            column = mSqlDatabaseTableCtx.columns.enable;
+            valueVariant = mSqlQuery.value(column);
+            item.enable = valueVariant.toBool();
+
+            column = mSqlDatabaseTableCtx.columns.referenceFormat;
+            valueVariant = mSqlQuery.value(column);
+            item.referenceFormat = valueVariant.toUInt();
+
+            column = mSqlDatabaseTableCtx.columns.responseFormat;
+            valueVariant = mSqlQuery.value(column);
+            item.responseFormat = valueVariant.toUInt();
+
+            column = mSqlDatabaseTableCtx.columns.option;
+            valueVariant = mSqlQuery.value(column);
+            item.option = valueVariant.toUInt();
+
+            column = mSqlDatabaseTableCtx.columns.delay;
+            valueVariant = mSqlQuery.value(column);
+            item.delay = valueVariant.toBool();
+
+            column = mSqlDatabaseTableCtx.columns.interval;
+            valueVariant = mSqlQuery.value(column);
+            item.interval = valueVariant.toInt();
+
+            addItem(item);
+        }
+    } else {
+        qWarning() << "Select record form "
+                   << mSqlDatabaseTableCtx.tableName
+                   << " table failed: "
+                   << mSqlQuery.lastError().text();
+    }
+}
+
+void SAKPluginAutomaticallyResponse::
+insertRecord(SAKPluginAutomaticallyResponseItem::ITEM_CTX itemCtx)
+{
+    auto table = mSqlDatabaseTableCtx;
+    const QString queryString = QString("INSERT INTO %1\
+                                         (%2,%3,%4,%5,%6,%7,%8,%9,%10,%11)\
+                                         VALUES(%12,'%13','%14','%15',%16,%17,%18,%19,\
+                                         %20,'%21')")
+            .arg(table.tableName)
+            .arg(table.columns.id)
+            .arg(table.columns.name)
+            .arg(table.columns.referenceData)
+            .arg(table.columns.responseData)
+            .arg(table.columns.enable)
+            .arg(table.columns.referenceFormat)
+            .arg(table.columns.responseFormat)
+            .arg(table.columns.option)
+            .arg(table.columns.delay)
+            .arg(table.columns.interval)
+            .arg(itemCtx.id)
+            .arg(itemCtx.name)
+            .arg(itemCtx.referenceData)
+            .arg(itemCtx.responseData)
+            .arg(itemCtx.enable)
+            .arg(itemCtx.referenceFormat)
+            .arg(itemCtx.responseFormat)
+            .arg(itemCtx.option)
+            .arg(itemCtx.delay)
+            .arg(itemCtx.interval);
+    if (mSqlQuery.exec(queryString)){
+        qWarning() << "Insert record to " << table.tableName
+                   << " table failed: " << mSqlQuery.lastError().text();
+    }
+}
+
+void SAKPluginAutomaticallyResponse::
+addItem(SAKPluginAutomaticallyResponseItem::ITEM_CTX itemCtx)
+{
+    QListWidget *listWidget = mUi->listWidget;
+    QListWidgetItem *item = new QListWidgetItem(listWidget);
+    listWidget->addItem(item);
+    auto *itemWidget = new SAKPluginAutomaticallyResponseItem(
+                itemCtx.id,
+                itemCtx.name,
+                itemCtx.referenceData,
+                itemCtx.responseData,
+                itemCtx.enable,
+                itemCtx.referenceFormat,
+                itemCtx.responseFormat,
+                itemCtx.option,
+                itemCtx.delay,
+                itemCtx.interval,
+                listWidget
+                );
+    item->setSizeHint(QSize(itemWidget->width(), itemWidget->height()));
+    listWidget->setItemWidget(item, itemWidget);
+    insertRecord(itemCtx);
+}
+
+void SAKPluginAutomaticallyResponse::exportItems()
+{
+    SAKStructAutomaticallyResponseJsonKeyContext itemKey;
+    QListWidget *listWidget = mUi->listWidget;
+    QJsonArray jsonArray;
+    for (int i = 0; i < listWidget->count(); i++){
+        QListWidgetItem *item = listWidget->item(i);
+        QWidget *itemWidget = listWidget->itemWidget(item);
+        auto cookedItemWidget
+                = qobject_cast<SAKPluginAutomaticallyResponseItem*>(itemWidget);
+        auto itemCtx = cookedItemWidget->context();
+        QJsonObject obj;
+        obj.insert(itemKey.id,
+                   QVariant::fromValue(itemCtx.id).toJsonValue());
+        obj.insert(itemKey.name,
+                   QVariant::fromValue(itemCtx.name).toJsonValue());
+        obj.insert(itemKey.enable,
+                   QVariant::fromValue(itemCtx.enable).toJsonValue());
+        obj.insert(itemKey.option,
+                   QVariant::fromValue(itemCtx.option).toJsonValue());
+        obj.insert(itemKey.responseData,
+                   QVariant::fromValue(itemCtx.responseData).toJsonValue());
+        obj.insert(itemKey.referenceData,
+                   QVariant::fromValue(itemCtx.referenceData).toJsonValue());
+        obj.insert(itemKey.responseFormat,
+                   QVariant::fromValue(itemCtx.responseFormat).toJsonValue());
+        obj.insert(itemKey.referenceFormat,
+                   QVariant::fromValue(itemCtx.referenceFormat).toJsonValue());
+        jsonArray.append(QJsonValue(obj));
+    }
+    QJsonDocument jsonDoc;
+    jsonDoc.setArray(jsonArray);
+
+
+    auto location = QStandardPaths::DesktopLocation;
+    QString defaultName = QStandardPaths::writableLocation(location);
+    defaultName.append(QString("/"));
+    defaultName.append(QDateTime::currentDateTime().toString("yyyyMMddhhmmss"));
+    defaultName.append(".json");
+    QString fileName = QFileDialog::getSaveFileName(this,
+                                                    tr("Outport data"),
+                                                    defaultName,
+                                                    QString("json (*.json)"));
+    if (fileName.isEmpty()) {
+        QFile file(fileName);
+        if (file.open(QFile::ReadWrite)) {
+            file.write(jsonDoc.toJson());
+            file.close();
+        } else {
+            outputMessage(file.errorString(), false);
+        }
+    }
+}
+
+void SAKPluginAutomaticallyResponse::importItems()
+{
+    auto location = QStandardPaths::DesktopLocation;
+    QString defaultPath = QStandardPaths::writableLocation(location);
+    QString fileName = QFileDialog::getOpenFileName(this,
+                                                    tr("Import file"),
+                                                    defaultPath,
+                                                    QString("json (*.json)"));
+    QFile file(fileName);
+    if (file.open(QFile::ReadWrite)){
+        QByteArray array = file.readAll();
+        file.close();
+
+        QJsonDocument jsc = QJsonDocument::fromJson(array);
+        if (!jsc.isArray()){
+            outputMessage(QString("QJsonDocument is not json array"), false);
+            return;
+        }
+
+        QJsonArray jsa = jsc.array();
+        SAKStructAutomaticallyResponseJsonKeyContext itemKey;
+        SAKPluginAutomaticallyResponseItem::ITEM_CTX itemCtx;
+        for (int i = 0; i < jsa.count(); i++){
+            QJsonObject jso = jsa.at(i).toObject();
+            if (!jso.isEmpty()) {
+                continue;
+            }
+
+            itemCtx.id = jso.value(itemKey.id).toVariant().toULongLong();
+            itemCtx.name = jso.value(itemKey.name).toVariant().toString();
+            itemCtx.enable = jso.value(itemKey.enable).toVariant().toBool();
+            itemCtx.option = jso.value(itemKey.option).toVariant().toUInt();
+            itemCtx.responseData =
+                    jso.value(itemKey.responseData).toVariant().toString();
+            itemCtx.referenceData =
+                    jso.value(itemKey.referenceData).toVariant().toString();
+            itemCtx.responseFormat =
+                    jso.value(itemKey.responseFormat).toVariant().toUInt();
+            itemCtx.referenceFormat =
+                    jso.value(itemKey.referenceFormat).toVariant().toUInt();
+
+
+            /// @brief If the item is not exist, new a new item.
+            if (!itemIsExisted(itemCtx.id)){
+                addItem(itemCtx);
+            }
+        }
+    }else{
+        outputMessage(file.errorString(), false);
+    }
+}
+
+bool SAKPluginAutomaticallyResponse::itemIsExisted(quint64 id)
+{
+    QListWidget *listWidget = mUi->listWidget;
+    QJsonArray jsonArray;
+    for (int i = 0; i < listWidget->count(); i++){
+        QListWidgetItem *item = listWidget->item(i);
+        QWidget *itemWidget = listWidget->itemWidget(item);
+        auto cookedItemWidget
+                = qobject_cast<SAKPluginAutomaticallyResponseItem*>(itemWidget);
+        auto itemCtx = cookedItemWidget->context();
+
+        if (itemCtx.id == id) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+void SAKPluginAutomaticallyResponse::deleteItem()
+{
+
+}
+
+void SAKPluginAutomaticallyResponse::addItemWidthoutParameters()
+{
+    QListWidget *listWidget = mUi->listWidget;
+    QListWidgetItem *item = new QListWidgetItem(listWidget);
+    listWidget->addItem(item);
+    auto *itemWidget = new SAKPluginAutomaticallyResponseItem(listWidget);
+    item->setSizeHint(QSize(itemWidget->width(), itemWidget->height()));
+    listWidget->setItemWidget(item, itemWidget);
+
+    auto itemCtx = itemWidget->context();
+    insertRecord(itemCtx);
+}
 
 //bool SAKPluginAutomaticallyResponse::contains(quint64 paraID)
 //{
@@ -279,120 +527,5 @@ SAKPluginAutomaticallyResponse::~SAKPluginAutomaticallyResponse()
 
 //void SAKPluginAutomaticallyResponse::on_addItemPushButton_clicked()
 //{
-//    // Check length fo item
-//    if (mListWidget->count() >= SAK_MAX_AUTO_RESPONSE_COUNT){
-//        outputMessage(tr("Items are too many, operation will be ignored!"), false);
-//        return;
-//    }
-//#if 0
-//    QListWidgetItem *item = new QListWidgetItem(mListWidget);
-//    mListWidget->addItem(item);
-//    SAKOtherAutoResponseItem *itemWidget = new SAKOtherAutoResponseItem(mDebugPage, mListWidget);
-//    item->setSizeHint(QSize(itemWidget->width(), itemWidget->height()));
-//    mListWidget->setItemWidget(item, itemWidget);
-//    initializingItem(itemWidget);
 
-//    // Add record
-//    SAKDebugPageCommonDatabaseInterface::SAKStructAutoResponseItem dataItem;
-//    dataItem.id = itemWidget->itemID();
-//    dataItem.name = itemWidget->itemDescription();
-//    dataItem.enable = itemWidget->itemEnable();
-//    dataItem.responseData = itemWidget->itemResponseText();
-//    dataItem.referenceData = itemWidget->itemRefernceText();
-//    dataItem.responseFormat = itemWidget->itemResponseFormat();
-//    dataItem.referenceFormat = itemWidget->itemReferenceFormat();
-//    dataItem.option = itemWidget->itemOption();
-//    dataItem.delay = itemWidget->delay();
-//    dataItem.interval = itemWidget->interval();
-//    mDatabaseInterface->insertAutoResponseItem(dataItem);
-//#endif
-//}
-
-//void SAKPluginAutomaticallyResponse::on_outportPushButton_clicked()
-//{
-//    /// @brief Read record.
-//    QList<SAKDebugPageCommonDatabaseInterface::SAKStructAutoResponseItem> itemList;
-//    if (itemList.isEmpty()){
-//        return;
-//    }
-
-//    QJsonArray jsonArray;
-//    AutoResponseItemKey itemKey;
-//    for (auto &var : itemList){
-//        QJsonObject obj;
-//        obj.insert(itemKey.id, QVariant::fromValue(var.id).toJsonValue());
-//        obj.insert(itemKey.description, QVariant::fromValue(var.name).toJsonValue());
-//        obj.insert(itemKey.enable, QVariant::fromValue(var.enable).toJsonValue());
-//        obj.insert(itemKey.option, QVariant::fromValue(var.option).toJsonValue());
-//        obj.insert(itemKey.responseText, QVariant::fromValue(var.responseData).toJsonValue());
-//        obj.insert(itemKey.referenceText, QVariant::fromValue(var.referenceData).toJsonValue());
-//        obj.insert(itemKey.responseFormat, QVariant::fromValue(var.responseFormat).toJsonValue());
-//        obj.insert(itemKey.referenceFormat, QVariant::fromValue(var.referenceFormat).toJsonValue());
-//        jsonArray.append(QJsonValue(obj));
-//    }
-//    QJsonDocument jsonDoc;
-//    jsonDoc.setArray(jsonArray);
-
-//    /// @brief 打开文件，导出的数据将保存至该文件
-//    QString defaultName = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
-//    defaultName.append(QString("/"));
-//    defaultName.append(QDateTime::currentDateTime().toString("yyyyMMddhhmmss"));
-//    defaultName.append(".json");
-//    QString fileName = QFileDialog::getSaveFileName(this, tr("Outport data"), defaultName, QString("json (*.json)"));
-//    if (fileName.isEmpty()){
-//        return;
-//    }
-
-//    /// @brief 保存至文件
-//    QFile file(fileName);
-//    if (file.open(QFile::ReadWrite)){
-//        file.write(jsonDoc.toJson());
-//        file.close();
-//    }else{
-//        outputMessage(file.errorString(), false);
-//    }
-//}
-
-//void SAKPluginAutomaticallyResponse::on_importPushButton_clicked()
-//{
-//    QString defaultPath = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
-//    QString fileName = QFileDialog::getOpenFileName(this, tr("Import file"), defaultPath, QString("json (*.json)"));
-//    QFile file(fileName);
-//    if (file.open(QFile::ReadWrite)){
-//        QByteArray array = file.readAll();
-//        file.close();
-
-//        QJsonDocument jsc = QJsonDocument::fromJson(array);
-//        if (!jsc.isArray()){
-//            outputMessage(QString("QJsonDocument is not json array"), false);
-//            return;
-//        }
-
-//        QJsonArray jsa = jsc.array();
-//        for (int i = 0; i < jsa.count(); i++){
-//            if (jsa.at(i).isObject()){
-//                QJsonObject jso = jsa.at(i).toObject();
-//                AutoResponseItemKey itemKey;
-//                SAKDebugPageCommonDatabaseInterface::SAKStructAutoResponseItem responseItem;
-//                responseItem.id = jso.value(itemKey.id).toVariant().toULongLong();
-//                responseItem.name = jso.value(itemKey.description).toVariant().toString();
-//                responseItem.enable = jso.value(itemKey.enable).toVariant().toBool();
-//                responseItem.option = jso.value(itemKey.option).toVariant().toUInt();
-//                responseItem.responseData = jso.value(itemKey.responseText).toVariant().toString();
-//                responseItem.referenceData = jso.value(itemKey.referenceText).toVariant().toString();
-//                responseItem.responseFormat = jso.value(itemKey.responseFormat).toVariant().toUInt();
-//                responseItem.referenceFormat = jso.value(itemKey.referenceFormat).toVariant().toUInt();
-//#if 0
-//                /// @brief If the item is not exist, new a new item.
-//                if (!contains(responseItem.id)){
-//                    SAKOtherAutoResponseItem *item = innerCreateItem(responseItem, mDebugPage, mListWidget);
-//                    initializingItem(item);
-//                    mDatabaseInterface->insertAutoResponseItem(responseItem);
-//                }
-//#endif
-//            }
-//        }
-//    }else{
-//        outputMessage(file.errorString(), false);
-//    }
 //}

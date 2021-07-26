@@ -1,4 +1,4 @@
-﻿/*
+﻿/****************************************************************************************
  * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -6,7 +6,7 @@
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- */
+ ***************************************************************************************/
 #include <QDebug>
 #include <QDateTime>
 #include <QRegularExpression>
@@ -19,10 +19,9 @@
 
 #include "ui_SAKPluginAutomaticallyResponseItem.h"
 
-SAKPluginAutomaticallyResponseItem::SAKPluginAutomaticallyResponseItem(SAKDebugger *debugPage, QWidget *parent)
+SAKPluginAutomaticallyResponseItem::SAKPluginAutomaticallyResponseItem(QWidget *parent)
     :QWidget(parent)
     ,mForbiddenAllAutoResponse(false)
-    ,mDebugPage(debugPage)
     ,mUi(new Ui::SAKPluginAutomaticallyResponseItem)
 {
     commonInitializing();
@@ -32,8 +31,7 @@ SAKPluginAutomaticallyResponseItem::SAKPluginAutomaticallyResponseItem(SAKDebugg
     initDelayWritingTimer();
 }
 
-SAKPluginAutomaticallyResponseItem::SAKPluginAutomaticallyResponseItem(SAKDebugger *debugPage,
-                                                   quint64 id,
+SAKPluginAutomaticallyResponseItem::SAKPluginAutomaticallyResponseItem(quint64 id,
                                                    QString name,
                                                    QString referenceData,
                                                    QString responseData,
@@ -46,7 +44,6 @@ SAKPluginAutomaticallyResponseItem::SAKPluginAutomaticallyResponseItem(SAKDebugg
                                                    QWidget *parent)
     :QWidget(parent)
     ,mForbiddenAllAutoResponse(false)
-    ,mDebugPage(debugPage)
     ,mID(id)
     ,mUi(new Ui::SAKPluginAutomaticallyResponseItem)
 {
@@ -60,7 +57,7 @@ SAKPluginAutomaticallyResponseItem::SAKPluginAutomaticallyResponseItem(SAKDebugg
     mResponseLineEdit->setText(responseData);
     mOptionComboBox->setCurrentIndex(option);
     mDelayResponseCheckBox->setChecked(delay);
-    mDelayResponseLineEdit->setText(QString::number(interval));
+    mDelayResponseSpinBox->setValue(interval);
     initDelayWritingTimer();
 }
 
@@ -124,6 +121,24 @@ quint32 SAKPluginAutomaticallyResponseItem::interval()
     return mDescriptionLineEdit->text().toInt();
 }
 
+SAKPluginAutomaticallyResponseItem::SAKStructAutomaticallyResponseItemContext
+SAKPluginAutomaticallyResponseItem::context()
+{
+    SAKStructAutomaticallyResponseItemContext ctx;
+    ctx.id = mID;
+    ctx.name = mUi->descriptionLineEdit->text();
+    ctx.delay = mUi->delayResponseCheckBox->isChecked();
+    ctx.enable = mUi->enableCheckBox->isChecked();
+    ctx.option = mUi->optionComboBox->currentIndex();
+    ctx.interval = mUi->delayResponseSpinBox->value();
+    ctx.referenceData = mUi->referenceLineEdit->text();
+    ctx.responseData = mUi->responseLineEdit->text();
+    ctx.responseFormat = mUi->responseDataFormatComboBox->currentData().toInt();
+    ctx.referenceFormat = mUi->referenceDataFromatComboBox->currentData().toInt();
+
+    return ctx;
+}
+
 void SAKPluginAutomaticallyResponseItem::setLineEditFormat(QLineEdit *lineEdit, int format)
 {
     if (lineEdit){
@@ -185,7 +200,7 @@ void SAKPluginAutomaticallyResponseItem::bytesRead(QByteArray bytes)
          if (!responseData.isEmpty()){
              // Response delayly
              if (mDelayResponseCheckBox->isChecked()){
-                quint32 delayTime = mDelayResponseLineEdit->text().toUInt();
+                quint32 delayTime = mDelayResponseSpinBox->text().toUInt();
                 if (delayTime < 40){
                     delayTime = 20;
                 }
@@ -235,7 +250,7 @@ void SAKPluginAutomaticallyResponseItem::commonInitializing()
     mReferenceDataFromatComboBox = mUi->referenceDataFromatComboBox;
     mResponseDataFormatComboBox  = mUi->responseDataFormatComboBox;
     mDelayResponseCheckBox = mUi->delayResponseCheckBox;
-    mDelayResponseLineEdit = mUi->delayResponseLineEdit;
+    mDelayResponseSpinBox = mUi->delayResponseSpinBox;
 
     blockUiSignals(true);
 
@@ -271,11 +286,6 @@ void SAKPluginAutomaticallyResponseItem::delayToWritBytes()
         }
     }
 
-    // Write data
-    for (auto &var : temp){
-
-    }
-
     // Delte the data that has been written
     for (auto &var : need2removeList){
         mWaitForWrittenInfoList.removeOne(var);
@@ -293,7 +303,7 @@ void SAKPluginAutomaticallyResponseItem::blockUiSignals(bool block)
     mReferenceDataFromatComboBox->blockSignals(block);
     mResponseDataFormatComboBox->blockSignals(block);
     mDelayResponseCheckBox->blockSignals(block);
-    mDelayResponseLineEdit->blockSignals(block);
+    mDelayResponseSpinBox->blockSignals(block);
 }
 
 void SAKPluginAutomaticallyResponseItem::on_descriptionLineEdit_textChanged(const QString &text)

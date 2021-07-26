@@ -64,6 +64,7 @@ SAKDebugger::SAKDebugger(QSettings *settings,
                 settings,
                 settingsGroup,
                 mUi->pluginPanelLabel,
+                sqlDatabase,
                 mUi->pluginPanelWidget,
                 this
                 );

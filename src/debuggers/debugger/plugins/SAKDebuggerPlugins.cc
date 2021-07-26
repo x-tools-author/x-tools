@@ -1,4 +1,4 @@
-﻿/*
+﻿/****************************************************************************************
  * Copyright 2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -6,7 +6,7 @@
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- */
+ ***************************************************************************************/
 #include <QMenu>
 #include <QDebug>
 
@@ -17,6 +17,7 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
                                        QSettings *settings,
                                        const QString &settingsGroup,
                                        QLabel *titleLabel,
+                                       QSqlDatabase *sqlDatabase,
                                        QWidget *panelWidget,
                                        QObject *parent)
     :QObject(parent)
@@ -48,7 +49,9 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
     mCharts = new SAKPluginCharts();
     mDataForwarding = new SAKPluginDataForwarding();
     mRegularlySending = new SAKPluginRegularlySending();
-    mAutomaticallyResponse = new SAKPluginAutomaticallyResponse();
+    mAutomaticallyResponse = new SAKPluginAutomaticallyResponse(settings,
+                                                                settingsGroup,
+                                                                sqlDatabase);
 
 
     // Initialize menu psuh button
