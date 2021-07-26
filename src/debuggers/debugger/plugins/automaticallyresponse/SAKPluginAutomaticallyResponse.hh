@@ -38,6 +38,7 @@ public:
                                    QSqlDatabase *sqlDatabase,
                                    QWidget *parent = Q_NULLPTR);
     ~SAKPluginAutomaticallyResponse();
+    void onBytesRead(QByteArray bytes);
 private:
     QSettings *mSettiings;
     QSqlDatabase *mSqlDatabase;
@@ -78,10 +79,16 @@ private:
     bool itemIsExisted(quint64 id);
     void deleteItem();
     void addItemWidthoutParameters();
-
+    void setupResponseItem(SAKPluginAutomaticallyResponseItem* item);
+    void createSqlDatabaseTable();
 
 private:
     Ui::SAKPluginAutomaticallyResponse *mUi;
+
+
+signals:
+    void bytesRead(const QByteArray &);
+    void writeBytes(const QByteArray &);
 };
 
 #endif

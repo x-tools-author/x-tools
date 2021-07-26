@@ -72,12 +72,20 @@ SAKPluginAutomaticallyResponse::SAKPluginAutomaticallyResponse(
             this, &SAKPluginAutomaticallyResponse::addItemWidthoutParameters);
 
 
+    createSqlDatabaseTable();
     readInRecord();
 }
 
 SAKPluginAutomaticallyResponse::~SAKPluginAutomaticallyResponse()
 {
     delete mUi;
+}
+
+void SAKPluginAutomaticallyResponse::onBytesRead(QByteArray bytes)
+{
+    if (!mForbidAll) {
+        emit bytesRead(bytes);
+    }
 }
 
 void SAKPluginAutomaticallyResponse::outputMessage(QString msg, bool isInfo)
@@ -206,6 +214,7 @@ addItem(SAKPluginAutomaticallyResponseItem::ITEM_CTX itemCtx)
                 itemCtx.interval,
                 listWidget
                 );
+    setupResponseItem(itemWidget);
     item->setSizeHint(QSize(itemWidget->width(), itemWidget->height()));
     listWidget->setItemWidget(item, itemWidget);
     insertRecord(itemCtx);
@@ -338,7 +347,22 @@ bool SAKPluginAutomaticallyResponse::itemIsExisted(quint64 id)
 
 void SAKPluginAutomaticallyResponse::deleteItem()
 {
+    QListWidget *listWidget = mUi->listWidget;
+    QListWidgetItem *item = listWidget->currentItem();
+    if (item) {
+        outputMessage(tr("Please select an item first!"), false);
+        return;
+    }
 
+    QWidget *itemWidget = listWidget->itemWidget(item);
+    auto cookedItemWidget =
+            qobject_cast<SAKPluginAutomaticallyResponseItem*>(itemWidget);
+    quint64 id = cookedItemWidget->context().id;
+    SAKDebugger::commonSqlApiDeleteRecord(&mSqlQuery,
+                                          mSqlDatabaseTableCtx.tableName,
+                                          id);
+    cookedItemWidget->deleteLater();
+    delete item;
 }
 
 void SAKPluginAutomaticallyResponse::addItemWidthoutParameters()
@@ -347,6 +371,7 @@ void SAKPluginAutomaticallyResponse::addItemWidthoutParameters()
     QListWidgetItem *item = new QListWidgetItem(listWidget);
     listWidget->addItem(item);
     auto *itemWidget = new SAKPluginAutomaticallyResponseItem(listWidget);
+    setupResponseItem(itemWidget);
     item->setSizeHint(QSize(itemWidget->width(), itemWidget->height()));
     listWidget->setItemWidget(item, itemWidget);
 
@@ -354,178 +379,56 @@ void SAKPluginAutomaticallyResponse::addItemWidthoutParameters()
     insertRecord(itemCtx);
 }
 
-//bool SAKPluginAutomaticallyResponse::contains(quint64 paraID)
-//{
-//    bool contain = false;
-//    for (int i = 0; i < mListWidget->count(); i++){
-//        QListWidgetItem *item = mListWidget->item(i);
-//        QWidget *w = mListWidget->itemWidget(item);
-//        SAKPluginAutomaticallyResponseItem *itemWidget = reinterpret_cast<SAKPluginAutomaticallyResponseItem*>(w);
-//        if (itemWidget->itemID() == paraID){
-//            contain = true;
-//            break;
-//        }
-//    }
+void SAKPluginAutomaticallyResponse::setupResponseItem(
+        SAKPluginAutomaticallyResponseItem* item
+        )
+{
+    connect(this, &SAKPluginAutomaticallyResponse::bytesRead,
+            item, &SAKPluginAutomaticallyResponseItem::onBytesRead);
 
-//    return contain;
-//}
+    connect(item, &SAKPluginAutomaticallyResponseItem::responseBytes,
+            this, &SAKPluginAutomaticallyResponse::writeBytes);
+}
 
-//void SAKPluginAutomaticallyResponse::initializingItem(SAKPluginAutomaticallyResponseItem *item)
-//{
-//    if (item){
-//        connect(item, &SAKPluginAutomaticallyResponseItem::descriptionChanged, this, &SAKPluginAutomaticallyResponse::changeDescription);
-//        connect(item, &SAKPluginAutomaticallyResponseItem::referenceTextChanged, this, &SAKPluginAutomaticallyResponse::changeReferenceText);
-//        connect(item, &SAKPluginAutomaticallyResponseItem::responseTextChanged, this, &SAKPluginAutomaticallyResponse::changeResponseText);
-//        connect(item, &SAKPluginAutomaticallyResponseItem::enableChanged, this, &SAKPluginAutomaticallyResponse::changeDelay);
-//        connect(item, &SAKPluginAutomaticallyResponseItem::optionChanged, this, &SAKPluginAutomaticallyResponse::changeOption);
-//        connect(item, &SAKPluginAutomaticallyResponseItem::referenceFormatChanged, this, &SAKPluginAutomaticallyResponse::changeReferenceFormat);
-//        connect(item, &SAKPluginAutomaticallyResponseItem::responseFromatChanged, this, &SAKPluginAutomaticallyResponse::changeResponseFromat);
-//        connect(item, &SAKPluginAutomaticallyResponseItem::delayChanged, this, &SAKPluginAutomaticallyResponse::changeDelay);
-//        connect(item, &SAKPluginAutomaticallyResponseItem::intervalChanged, this, &SAKPluginAutomaticallyResponse::changeInterval);
-//    }
-//}
+void SAKPluginAutomaticallyResponse::createSqlDatabaseTable()
+{
+    if (!mSqlDatabase->tables().contains(mSqlDatabaseTableCtx.tableName)) {
+        QString queryString;
+        queryString.append(QString("CREATE TABLE %1(")
+                           .arg(mSqlDatabaseTableCtx.tableName));
+        queryString.append(QString("%1 INTEGER PRIMARY KEY NOT NULL,")
+                           .arg(mSqlDatabaseTableCtx.columns.id));
 
-//void SAKPluginAutomaticallyResponse::changeDescription(const QString &description)
-//{
-//    SAKPluginAutomaticallyResponseItem *item = sender2item(sender());
-//    if (item){
-//        SAKDebugPageCommonDatabaseInterface::AutoResponseTable table;
-//        quint64 id = item->itemID();
-//        mDatabaseInterface->updateRecord(mTableName, table.columns.description, QVariant::fromValue(description), id, true);
-//    }
-//}
+        queryString.append(QString("%1 TEXT NOT NULL,")
+                           .arg(mSqlDatabaseTableCtx.columns.name));
 
-//void SAKPluginAutomaticallyResponse::changeReferenceText(const QString &text)
-//{
-//    SAKPluginAutomaticallyResponseItem *item = sender2item(sender());
-//    if (item){
-//        SAKDebugPageCommonDatabaseInterface::AutoResponseTable table;
-//        quint64 id = item->itemID();
-//        mDatabaseInterface->updateRecord(mTableName, table.columns.referenceText, QVariant::fromValue(text), id, true);
-//    }
-//}
+        queryString.append(QString("%1 TEXT NOT NULL,")
+                           .arg(mSqlDatabaseTableCtx.columns.referenceData));
 
-//void SAKPluginAutomaticallyResponse::changeResponseText(const QString &text)
-//{
-//    SAKPluginAutomaticallyResponseItem *item = sender2item(sender());
-//    if (item){
-//        SAKDebugPageCommonDatabaseInterface::AutoResponseTable table;
-//        quint64 id = item->itemID();
-//        mDatabaseInterface->updateRecord(mTableName, table.columns.responseText, QVariant::fromValue(text), id, true);
-//    }
-//}
+        queryString.append(QString("%1 TEXT NOT NULL,")
+                           .arg(mSqlDatabaseTableCtx.columns.responseData));
 
-//void SAKPluginAutomaticallyResponse::changeEnable(bool enable)
-//{
-//    SAKPluginAutomaticallyResponseItem *item = sender2item(sender());
-//    if (item){
-//        SAKDebugPageCommonDatabaseInterface::AutoResponseTable table;
-//        quint64 id = item->itemID();
-//        mDatabaseInterface->updateRecord(mTableName, table.columns.enable, QVariant::fromValue(enable), id, false);
-//    }
-//}
+        queryString.append(QString("%1 INTEGER NOT NULL,")
+                           .arg(mSqlDatabaseTableCtx.columns.enable));
 
-//void SAKPluginAutomaticallyResponse::changeOption(int option)
-//{
-//    SAKPluginAutomaticallyResponseItem *item = sender2item(sender());
-//    if (item){
-//        SAKDebugPageCommonDatabaseInterface::AutoResponseTable table;
-//        quint64 id = item->itemID();
-//        mDatabaseInterface->updateRecord(mTableName, table.columns.option, QVariant::fromValue(option), id, false);
-//    }
-//}
+        queryString.append(QString("%1 INTEGER NOT NULL,")
+                           .arg(mSqlDatabaseTableCtx.columns.referenceFormat));
 
-//void SAKPluginAutomaticallyResponse::changeReferenceFormat(int format)
-//{
-//    SAKPluginAutomaticallyResponseItem *item = sender2item(sender());
-//    if (item){
-//        SAKDebugPageCommonDatabaseInterface::AutoResponseTable table;
-//        quint64 id = item->itemID();
-//        mDatabaseInterface->updateRecord(mTableName, table.columns.referenceFormat, QVariant::fromValue(format), id, false);
-//    }
-//}
+        queryString.append(QString("%1 INTEGER NOT NULL,")
+                           .arg(mSqlDatabaseTableCtx.columns.responseFormat));
 
-//void SAKPluginAutomaticallyResponse::changeResponseFromat(int format)
-//{
-//    SAKPluginAutomaticallyResponseItem *item = sender2item(sender());
-//    if (item){
-//        SAKDebugPageCommonDatabaseInterface::AutoResponseTable table;
-//        quint64 id = item->itemID();
-//        mDatabaseInterface->updateRecord(mTableName, table.columns.responseFormat, QVariant::fromValue(format), id, false);
-//    }
-//}
+        queryString.append(QString("%1 INTEGER NOT NULL,")
+                           .arg(mSqlDatabaseTableCtx.columns.option));
 
-//void SAKPluginAutomaticallyResponse::changeDelay(bool delay)
-//{
-//    SAKPluginAutomaticallyResponseItem *item = sender2item(sender());
-//    if (item){
-//        SAKDebugPageCommonDatabaseInterface::AutoResponseTable table;
-//        quint64 id = item->itemID();
-//        mDatabaseInterface->updateRecord(mTableName, table.columns.delay, QVariant::fromValue(delay), id, false);
-//    }
-//}
+        queryString.append(QString("%1 INTEGER NOT NULL,")
+                           .arg(mSqlDatabaseTableCtx.columns.delay));
 
-//void SAKPluginAutomaticallyResponse::changeInterval(int interval)
-//{
-//    SAKPluginAutomaticallyResponseItem *item = sender2item(sender());
-//    if (item){
-//        SAKDebugPageCommonDatabaseInterface::AutoResponseTable table;
-//        quint64 id = item->itemID();
-//        mDatabaseInterface->updateRecord(mTableName, table.columns.interval, QVariant::fromValue(interval), id, false);
-//    }
-//}
+        queryString.append(QString("%1 INTEGER NOT NULL)")
+                           .arg(mSqlDatabaseTableCtx.columns.interval));
 
-//SAKPluginAutomaticallyResponseItem *SAKPluginAutomaticallyResponse::sender2item(QObject *sender)
-//{
-//    SAKPluginAutomaticallyResponseItem *item = Q_NULLPTR;
-//    if (sender){
-//        if (sender->inherits("SAKOtherAutoResponseItem")){
-//            item = qobject_cast<SAKPluginAutomaticallyResponseItem*>(sender);
-//        }
-//    }
-//    return item;
-//}
-
-//QList<SAKPluginAutomaticallyResponseItem *> SAKPluginAutomaticallyResponse::items()
-//{
-//    QList<SAKPluginAutomaticallyResponseItem *> itemList;
-//    for (int i = 0; i < mListWidget->count(); i++){
-//        QListWidgetItem *item = mListWidget->item(i);
-//        SAKPluginAutomaticallyResponseItem *itemWidget = qobject_cast<SAKPluginAutomaticallyResponseItem *>(mListWidget->itemWidget(item));
-//        itemList.append(itemWidget);
-//    }
-
-//    return itemList;
-//}
-
-//void SAKPluginAutomaticallyResponse::on_forbidAllCheckBox_clicked()
-//{
-//    for(int i = 0; i < mListWidget->count(); i++){
-//        QListWidgetItem *item = mListWidget->item(i);
-//        QWidget *widget = mListWidget->itemWidget(item);
-//        bool disAble = mForbidAllCheckBox->isChecked();
-//        reinterpret_cast<SAKPluginAutomaticallyResponseItem*>(widget)->setAllAutoResponseDisable(disAble);
-//    }
-//}
-
-//void SAKPluginAutomaticallyResponse::on_deleteItemPushButton_clicked()
-//{
-//    QListWidgetItem *item = mListWidget->currentItem();
-//    if (!item){
-//        outputMessage(tr("Please select an item first!"), false);
-//        return;
-//    }
-
-//    // Delete record from database
-//    SAKPluginAutomaticallyResponseItem *w = reinterpret_cast<SAKPluginAutomaticallyResponseItem*>(mListWidget->itemWidget(item));
-//    quint64 id = w->itemID();
-//    mDatabaseInterface->deleteRecord(mTableName, id);
-
-//    mListWidget->removeItemWidget(item);
-//    delete item;
-//}
-
-//void SAKPluginAutomaticallyResponse::on_addItemPushButton_clicked()
-//{
-
-//}
+        if (!mSqlQuery.exec(queryString)) {
+            qInfo() << queryString;
+            qWarning() << mSqlQuery.lastError().text();
+        }
+    }
+}

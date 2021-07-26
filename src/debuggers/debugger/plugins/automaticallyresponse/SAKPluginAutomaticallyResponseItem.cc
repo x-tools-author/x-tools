@@ -139,6 +139,11 @@ SAKPluginAutomaticallyResponseItem::context()
     return ctx;
 }
 
+void SAKPluginAutomaticallyResponseItem::onBytesRead(const QByteArray &bytes)
+{
+
+}
+
 void SAKPluginAutomaticallyResponseItem::setLineEditFormat(QLineEdit *lineEdit, int format)
 {
     if (lineEdit){
@@ -291,73 +296,4 @@ void SAKPluginAutomaticallyResponseItem::delayToWritBytes()
         mWaitForWrittenInfoList.removeOne(var);
     }
     mTimestampChecker.start();
-}
-
-void SAKPluginAutomaticallyResponseItem::blockUiSignals(bool block)
-{
-    mDescriptionLineEdit->blockSignals(block);
-    mReferenceLineEdit->blockSignals(block);
-    mResponseLineEdit->blockSignals(block);
-    mEnableCheckBox->blockSignals(block);
-    mOptionComboBox->blockSignals(block);
-    mReferenceDataFromatComboBox->blockSignals(block);
-    mResponseDataFormatComboBox->blockSignals(block);
-    mDelayResponseCheckBox->blockSignals(block);
-    mDelayResponseSpinBox->blockSignals(block);
-}
-
-void SAKPluginAutomaticallyResponseItem::on_descriptionLineEdit_textChanged(const QString &text)
-{
-    emit descriptionChanged(text);
-}
-
-void SAKPluginAutomaticallyResponseItem::on_referenceLineEdit_textChanged(const QString &text)
-{
-    emit referenceTextChanged(text);
-}
-
-void SAKPluginAutomaticallyResponseItem::on_responseLineEdit_textChanged(const QString &text)
-{
-    emit responseTextChanged(text);
-}
-
-void SAKPluginAutomaticallyResponseItem::on_enableCheckBox_clicked()
-{
-    emit enableChanged(mEnableCheckBox->isChecked());
-}
-
-void SAKPluginAutomaticallyResponseItem::on_optionComboBox_currentTextChanged(const QString &text)
-{
-    Q_UNUSED(text);
-    int option = mOptionComboBox->currentData().toInt();
-    emit optionChanged(option);
-}
-
-void SAKPluginAutomaticallyResponseItem::on_referenceDataFromatComboBox_currentTextChanged(const QString &text)
-{
-    Q_UNUSED(text);
-    setLineEditFormat(mReferenceLineEdit, mReferenceDataFromatComboBox->currentData().toInt());
-
-    int format = mReferenceDataFromatComboBox->currentData().toInt();
-    emit referenceFormatChanged(format);
-}
-
-void SAKPluginAutomaticallyResponseItem::on_responseDataFormatComboBox_currentTextChanged(const QString &text)
-{
-    Q_UNUSED(text);
-    setLineEditFormat(mResponseLineEdit, mResponseDataFormatComboBox->currentData().toInt());
-
-    int format = mResponseDataFormatComboBox->currentData().toInt();
-    emit responseFromatChanged(format);
-}
-
-void SAKPluginAutomaticallyResponseItem::on_delayResponseCheckBox_clicked()
-{
-    emit delayChanged(mDelayResponseCheckBox->isChecked());
-}
-
-void SAKPluginAutomaticallyResponseItem::on_delayResponseLineEdit_textChanged(const QString &text)
-{
-    int interval = text.toInt();
-    emit intervalChanged(interval);
 }
