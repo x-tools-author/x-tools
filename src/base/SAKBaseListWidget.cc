@@ -34,6 +34,7 @@ SAKBaseListWidget::SAKBaseListWidget(QSqlDatabase *sqlDatabase,
     ,mTableName(settingsGroup + tableNameSuffix)
     ,mUi(new Ui::SAKBaseListWidget)
 {
+    mSqlQuery = QSqlQuery(*sqlDatabase);
     mUi->setupUi(this);
     mListWidget = mUi->itemListWidget;
 
