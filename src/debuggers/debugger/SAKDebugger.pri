@@ -13,7 +13,6 @@ FORMS += \
     $$PWD/device/SAKDebuggerDeviceAnalyzer.ui \
     $$PWD/device/SAKDebuggerDeviceMask.ui \
     $$PWD/input/SAKDebuggerInputCrcSettings.ui \
-    $$PWD/input/SAKDebuggerInputDataPreset.ui \
     $$PWD/input/SAKDebuggerInputDataPresetItem.ui \
     $$PWD/output/SAKDebuggerOutputHighlighter.ui \
     $$PWD/output/SAKDebuggerOutputLog.ui \
