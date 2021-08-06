@@ -44,6 +44,7 @@ protected:
     QTimer mClearMessageInfoTimer;
     QListWidget *mListWidget;
 
+
 protected:
     virtual void insertRecord(const QString &tableName, QWidget *itemWidget) = 0;
     virtual void setItemWidget(QListWidgetItem *item, QWidget *itemWidget) = 0;
