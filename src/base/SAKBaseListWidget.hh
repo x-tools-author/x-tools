@@ -51,6 +51,7 @@ protected:
     virtual QWidget *createItemFromParameters(const QJsonObject &jsonObj) = 0;
     virtual QJsonObject toJsonObject(QWidget *itemWidget) = 0;
     virtual quint64 itemId(QWidget *itemWidget) = 0;
+
     void updateRecord(quint64 id, QString columnName, QVariant value);
     void outputMessage(QString msg, bool isError);
 
