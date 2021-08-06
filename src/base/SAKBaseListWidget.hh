@@ -9,21 +9,61 @@
  ***************************************************************************************/
 #ifndef SAKBASELISTWIDGET_HH
 #define SAKBASELISTWIDGET_HH
+#include <QTimer>
+#include <QWidget>
+#include <QSettings>
+#include <QSqlQuery>
+#include <QJsonObject>
+#include <QSqlDatabase>
+#include <QListWidgetItem>
 
-#include <QListWidget>
+namespace Ui {
+    class SAKBaseListWidget;
+}
 
-template <typename T>
-class SAKBaseListWidget : public QListWidget
+class SAKBaseListWidget : public QWidget
 {
     Q_OBJECT
 public:
-    SAKBaseListWidget();
+    SAKBaseListWidget(QSqlDatabase *sqlDatabase,
+                      QSettings *settings,
+                      QString settingsGroup,
+                      QString tableNameSuffix,
+                      QWidget *parent = Q_NULLPTR);
+    ~SAKBaseListWidget();
 
+
+protected:
+    QSqlDatabase *mSqlDatabase;
+    QSettings *mSettings;
+    QString mSettingsGroup;
+    QString mTableNameSuffix;
+
+    QString mTableName;
+    QSqlQuery mSqlQuery;
+    QTimer mClearMessageInfoTimer;
+    QListWidget *mListWidget;
+
+protected:
+    virtual void insertRecord(const QString &tableName, QWidget *itemWidget) = 0;
+    virtual void setItemWidget(QListWidgetItem *item, QWidget *itemWidget) = 0;
+    virtual QWidget *createItemFromParameters(const QJsonObject &jsonObj) = 0;
+    virtual QJsonObject toJsonObject(QWidget *itemWidget) = 0;
+    virtual quint64 itemId(QWidget *itemWidget) = 0;
+    void updateRecord(quint64 id, QString columnName, QVariant value);
+    void outputMessage(QString msg, bool isError);
+
+
+private:
     void clearItems();
     void importItems();
     void exportItems();
-    void deleteItem();
+    void deleteItem(QListWidgetItem *item);
     void addItem();
+
+
+private:
+    Ui::SAKBaseListWidget *mUi;
 };
 
 #endif // SAKBASELISTWIDGET_HH
