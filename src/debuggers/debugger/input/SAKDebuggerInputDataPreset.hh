@@ -19,21 +19,20 @@
 #include <QSqlDatabase>
 #include <QListWidgetItem>
 
-namespace Ui {
-    class SAKDebuggerInputDataPreset;
-}
+#include "SAKBaseListWidget.hh"
+#include "SAKDebuggerInputDataPresetItem.hh"
 
-class SAKDebuggerInputDataPresetItem;
-class SAKDebuggerInputDataPreset : public QDialog
+class SAKDebuggerInputDataPreset : public SAKBaseListWidget
 {
     Q_OBJECT
 public:
     SAKDebuggerInputDataPreset(QSqlDatabase *sqlDatabase,
-                       QSettings *settings,
-                       QString settingsGroup,
-                       QMenu *itemsMenu,
-                       QWidget *parent = Q_NULLPTR);
-    ~SAKDebuggerInputDataPreset();
+                               QSettings *settings,
+                               QString settingsGroup,
+                               QMenu *itemsMenu,
+                               QWidget *parent = Q_NULLPTR);
+
+
 public:
     struct SAKStructDataPresetItemTableContext {
         QString tableName;
@@ -51,30 +50,26 @@ public:
             columns.text = QString("Text");
         }
     };
+
+
+protected:
+    void insertRecord(const QString &tableName, QWidget *itemWidget) final;
+    void setItemWidget(QListWidgetItem *item, QWidget *itemWidget) final;
+    QWidget *createItemFromParameters(const QJsonObject &jsonObj) final;
+    QJsonObject toJsonObject(QWidget *itemWidget) final;
+    quint64 itemId(QWidget *itemWidget) final;
+
+
 private:
-    QString mTableName;
-    QTimer mClearMessageInfoTimer;
-    QSqlDatabase *mSqlDatabase;
-    QSettings *mSettings;
-    QString mSettingsGroup;
     QMenu *mItemsMenu;
-    QSqlQuery mSqlQuery;
     SAKStructDataPresetItemTableContext mTableContext;
+
+
 private:
     void readinRecord();
-    void outputMessage(QString msg, bool isError = false);
     void updateFormat(quint64 id, int format);
     void updateDescription(quint64 id, const QString &description);
     void updateText(quint64 id, const QString &text);
-    void insertRecord(const QString &tableName,
-                      SAKDebuggerInputDataPresetItem *itemWidget);
-    void setItemWidget(QListWidgetItem *item,
-                       SAKDebuggerInputDataPresetItem *itemWidget);
-    void deleteItem(QListWidgetItem *item);
-    void exportItems();
-    void importItems();
-private:
-    Ui::SAKDebuggerInputDataPreset *mUi;
 signals:
     void invokeWriteBytes(QString rawData, int format);
 };
