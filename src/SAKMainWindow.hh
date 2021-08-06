@@ -193,4 +193,6 @@ private:
     QTabWidget *mTabWidget;
 };
 
+extern SAKMainWindow *sakMainWindow;
+
 #endif // MAINWINDOW_H

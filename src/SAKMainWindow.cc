@@ -85,6 +85,7 @@
 
 #include "ui_SAKMainWindow.h"
 
+SAKMainWindow *sakMainWindow = Q_NULLPTR;
 SAKMainWindow::SAKMainWindow(QSettings *settings,
                              QSqlDatabase *sqlDatabase,
                              QWidget *parent)
@@ -97,6 +98,7 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
     ,mUi(new Ui::SAKMainWindow)
     ,mTabWidget(new QTabWidget)
 {
+    sakMainWindow = this;
     mSettingsKeyContext.enableTestPage = QString("%1/enableTestPage")
             .arg(qApp->applicationName());
     mSettingsKeyContext.currentTabPage = QString("%1/currentTabPage")
@@ -182,6 +184,7 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
 
 SAKMainWindow::~SAKMainWindow()
 {
+    sakMainWindow = Q_NULLPTR;
     delete mUi;
 }
 
