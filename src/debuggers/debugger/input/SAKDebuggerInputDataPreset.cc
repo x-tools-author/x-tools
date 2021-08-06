@@ -105,7 +105,7 @@ void SAKDebuggerInputDataPreset::updateFormat(quint64 id, int format)
 }
 
 void SAKDebuggerInputDataPreset::updateDescription(quint64 id,
-                                           const QString &description)
+                                                   const QString &description)
 {
     updateRecord(id,
                  mTableContext.columns.description,
@@ -118,7 +118,7 @@ void SAKDebuggerInputDataPreset::updateText(quint64 id, const QString &text)
 }
 
 void SAKDebuggerInputDataPreset::insertRecord(const QString &tableName,
-        QWidget *itemWidget)
+                                              QWidget *itemWidget)
 {
     auto cookedItemWidget = qobject_cast<SAKDebuggerInputDataPresetItem*>(itemWidget);
     if (itemWidget) {
