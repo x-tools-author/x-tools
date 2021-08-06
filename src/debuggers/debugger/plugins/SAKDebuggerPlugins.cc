@@ -48,7 +48,11 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
     m3d = new SAKPlugin3d();
     mCharts = new SAKPluginCharts();
     mDataForwarding = new SAKPluginDataForwarding();
-    mRegularlySending = new SAKPluginRegularlySending();
+    mRegularlySending = new SAKDebuggerPluginRegularlySending(sqlDatabase,
+                                                              settings,
+                                                              settingsGroup,
+                                                              "RegularlySending",
+                                                              panelWidget);
     mAutomaticallyResponse = new SAKPluginAutomaticallyResponse(settings,
                                                                 settingsGroup,
                                                                 sqlDatabase);

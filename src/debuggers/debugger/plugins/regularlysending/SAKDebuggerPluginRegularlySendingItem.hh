@@ -1,4 +1,4 @@
-﻿/*
+﻿/****************************************************************************************
  * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -6,9 +6,9 @@
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- */
-#ifndef SAKPLUGINREGULARLYSENDINGITEM_HH
-#define SAKPLUGINREGULARLYSENDINGITEM_HH
+ ***************************************************************************************/
+#ifndef SAKDEBUGGERPLUGINREGULARLYSENDINGITEM_HH
+#define SAKDEBUGGERPLUGINREGULARLYSENDINGITEM_HH
 
 #include <QTimer>
 #include <QWidget>
@@ -19,39 +19,42 @@
 #include <QPushButton>
 
 namespace Ui {
-    class SAKPluginRegularlySendingItem;
+    class SAKDebuggerPluginRegularlySendingItem;
 }
-class SAKDebugger;
-/// @brief Timing sent item
-class SAKPluginRegularlySendingItem:public QWidget
+
+class SAKDebuggerPluginRegularlySendingItem:public QWidget
 {
     Q_OBJECT
 public:
-    SAKPluginRegularlySendingItem(SAKDebugger *mDebugPage, QWidget *parent = Q_NULLPTR);
-    SAKPluginRegularlySendingItem(SAKDebugger *mDebugPage,
-                           quint64 mID,
-                           quint32 interval,
-                           quint32 format,
-                           QString description,
-                           QString text,
-                           QWidget *parent = Q_NULLPTR);
-    ~SAKPluginRegularlySendingItem();
+    struct SAKStructItemContext {
+        quint64 id;
+        int interval;
+        int format;
+        QString description;
+        QString data;
+    };
+public:
+    SAKDebuggerPluginRegularlySendingItem(QWidget *parent = Q_NULLPTR);
+    SAKDebuggerPluginRegularlySendingItem(SAKStructItemContext ctx,
+                                          QWidget *parent = Q_NULLPTR);
+    ~SAKDebuggerPluginRegularlySendingItem();
 
     quint64 itemID();
     quint32 itemInterval();
     quint32 itemFormat();
     QString itemDescription();
     QString itemText();
+    SAKStructItemContext context();
 private:
-    SAKDebugger *mDebugPage;
     quint64 mID;
     QTimer mWriteTimer;
     bool isInitializing;
+    SAKStructItemContext mContext;
 private:
     void write();
     void commonInitializing();
 private:
-    Ui::SAKPluginRegularlySendingItem *mUi;
+    Ui::SAKDebuggerPluginRegularlySendingItem *mUi;
     QCheckBox *mEnableCheckBox;
     QLineEdit *mIntervalLineEdit;
     QComboBox *mTextFormatComboBox;
@@ -68,6 +71,7 @@ signals:
     void formatChanged(int format);
     void descriptionChanged(QString description);
     void inputTextChanged(QString text);
+    void invokeWriteBytes(QByteArray bytes);
 };
 
 #endif

@@ -19,13 +19,18 @@
 #include "SAKDebugger.hh"
 #include "SAKApplication.hh"
 #include "SAKCommonDataStructure.hh"
-#include "SAKPluginRegularlySending.hh"
-#include "SAKPluginRegularlySendingItem.hh"
+#include "SAKDebuggerPluginRegularlySending.hh"
+#include "SAKDebuggerPluginRegularlySendingItem.hh"
 
 #include "ui_SAKPluginRegularlySending.h"
 
-SAKPluginRegularlySending::SAKPluginRegularlySending(QWidget *parent)
-    :QWidget(parent)
+SAKDebuggerPluginRegularlySending::SAKDebuggerPluginRegularlySending(
+        QSqlDatabase *sqlDatabase,
+        QSettings *settings,
+        QString settingsGroup,
+        QString tableNameSuffix,
+        QWidget *parent)
+    :SAKBaseListWidget(sqlDatabase, settings, settingsGroup, tableNameSuffix, parent)
     //,mUi(new Ui::SAKPluginRegularlySending)
 {
 //    mUi->setupUi(this);
@@ -49,10 +54,53 @@ SAKPluginRegularlySending::SAKPluginRegularlySending(QWidget *parent)
 #endif
 }
 
-SAKPluginRegularlySending::~SAKPluginRegularlySending()
+SAKDebuggerPluginRegularlySending::~SAKDebuggerPluginRegularlySending()
 {
     //delete mUi;
 }
+
+void SAKDebuggerPluginRegularlySending::insertRecord(const QString &tableName,
+                                                     QWidget *itemWidget)
+{
+//    TimingSendingTable table;
+//    table.tableName = mTableNameTimingSendingTable;
+//    bool ret = mSqlQuery.exec(QString("INSERT INTO %1(%2,%3,%4,%5,%6) VALUES(%7,%8,%9,'%10','%11')")
+//                              .arg(table.tableName)
+//                              .arg(table.columns.id)
+//                              .arg(table.columns.interval)
+//                              .arg(table.columns.format)
+//                              .arg(table.columns.description)
+//                              .arg(table.columns.text)
+//                              .arg(item.id)
+//                              .arg(item.interval)
+//                              .arg(item.format)
+//                              .arg(item.comment)
+//                              .arg(item.data));
+//    if (!ret){
+//        qWarning() << "Insert record to " << table.tableName << " table failed: " << mSqlQuery.lastError().text();
+//    }
+}
+
+void SAKDebuggerPluginRegularlySending::setItemWidget(QListWidgetItem *item, QWidget *itemWidget)
+{
+
+}
+
+QWidget *SAKDebuggerPluginRegularlySending::createItemFromParameters(const QJsonObject &jsonObj)
+{
+
+}
+
+QJsonObject SAKDebuggerPluginRegularlySending::toJsonObject(QWidget *itemWidget)
+{
+
+}
+
+quint64 SAKDebuggerPluginRegularlySending::itemId(QWidget *itemWidget)
+{
+
+}
+
 #if 0
 SAKPluginRegularlySendingItem *innerCreateItem(SAKDebugPageCommonDatabaseInterface::SAKStructTimingSentItem &var, SAKDebugger *debugPage, QListWidget *listWidget)
 {

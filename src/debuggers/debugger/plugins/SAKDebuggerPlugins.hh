@@ -20,7 +20,7 @@
 #include "SAKPlugin3d.hh"
 #include "SAKPluginCharts.hh"
 #include "SAKPluginDataForwarding.hh"
-#include "SAKPluginRegularlySending.hh"
+#include "SAKDebuggerPluginRegularlySending.hh"
 #include "SAKPluginAutomaticallyResponse.hh"
 
 class SAKDebuggerPlugins : public QObject
@@ -42,7 +42,7 @@ private:
     SAKPlugin3d *m3d;
     SAKPluginCharts *mCharts;
     SAKPluginDataForwarding *mDataForwarding;
-    SAKPluginRegularlySending *mRegularlySending;
+    SAKDebuggerPluginRegularlySending *mRegularlySending;
     SAKPluginAutomaticallyResponse *mAutomaticallyResponse;
 
 

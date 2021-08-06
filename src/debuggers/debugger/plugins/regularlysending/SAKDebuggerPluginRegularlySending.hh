@@ -1,4 +1,4 @@
-﻿/*
+﻿/****************************************************************************************
  * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -6,9 +6,9 @@
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- */
-#ifndef SAKPLUGINREGULARLYSENDING_HH
-#define SAKPLUGINREGULARLYSENDING_HH
+ ***************************************************************************************/
+#ifndef SAKDEBUGGERPLUGINREGULARLYSENDING_HH
+#define SAKDEBUGGERPLUGINREGULARLYSENDING_HH
 
 #include <QTimer>
 #include <QLabel>
@@ -19,26 +19,37 @@
 #include <QListWidget>
 #include <QPushButton>
 
-namespace Ui {
-    class SAKPluginRegularlySending;
-}
+#include "SAKBaseListWidget.hh"
 
 
-/// @brief Timing sent item manager
-class SAKPluginRegularlySending:public QWidget
+class SAKDebuggerPluginRegularlySending : public SAKBaseListWidget
 {
     Q_OBJECT
 public:
-    SAKPluginRegularlySending(QWidget *parent = Q_NULLPTR);
-    ~SAKPluginRegularlySending();
+    SAKDebuggerPluginRegularlySending(QSqlDatabase *sqlDatabase,
+                                      QSettings *settings,
+                                      QString settingsGroup,
+                                      QString tableNameSuffix,
+                                      QWidget *parent = Q_NULLPTR);
+    ~SAKDebuggerPluginRegularlySending();
 
-//    struct TimingSendingItemKey {
-//        const QString id = QString("id");
-//        const QString interval = QString("interval");
-//        const QString format = QString("format");
-//        const QString description = QString("description");
-//        const QString text = QString("text");
-//    };
+
+    struct SAKStructTableContext {
+        QString tableName;
+        struct {
+            const QString id = QString("id");
+            const QString interval = QString("interval");
+            const QString format = QString("format");
+            const QString description = QString("description");
+            const QString data = QString("text");
+        } columns;
+    };
+protected:
+    void insertRecord(const QString &tableName, QWidget *itemWidget) final;
+    void setItemWidget(QListWidgetItem *item, QWidget *itemWidget) final;
+    QWidget *createItemFromParameters(const QJsonObject &jsonObj) final;
+    QJsonObject toJsonObject(QWidget *itemWidget) final;
+    quint64 itemId(QWidget *itemWidget) final;
 //private:
 //    QString mTableName;
 //    QTimer mClearMessageTimer;

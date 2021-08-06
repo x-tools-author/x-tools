@@ -1,4 +1,4 @@
-﻿/*
+﻿/****************************************************************************************
  * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -6,81 +6,88 @@
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- */
+ ***************************************************************************************/
 #include <QDebug>
 #include <QDateTime>
 
-#include "SAKDebugger.hh"
-#include "SAKCommonDataStructure.hh"
-#include "SAKPluginRegularlySendingItem.hh"
 #include "SAKDebuggerInput.hh"
+#include "SAKCommonDataStructure.hh"
+#include "SAKDebuggerPluginRegularlySendingItem.hh"
 
 #include "ui_SAKPluginRegularlySendingItem.h"
 
-SAKPluginRegularlySendingItem::SAKPluginRegularlySendingItem(SAKDebugger *debugPage, QWidget *parent)
+SAKDebuggerPluginRegularlySendingItem::SAKDebuggerPluginRegularlySendingItem(
+        QWidget *parent
+        )
     :QWidget(parent)
-    ,mDebugPage(debugPage)
     ,isInitializing(true)
-    ,mUi(new Ui::SAKPluginRegularlySendingItem)
+    ,mUi(new Ui::SAKDebuggerPluginRegularlySendingItem)
 {
     commonInitializing();
     mID = QDateTime::currentMSecsSinceEpoch();
     isInitializing = false;
 }
 
-SAKPluginRegularlySendingItem::SAKPluginRegularlySendingItem(SAKDebugger *debugPage,
-                                               quint64 id,
-                                               quint32 interval,
-                                               quint32 format,
-                                               QString description,
-                                               QString text,
-                                               QWidget *parent)
+SAKDebuggerPluginRegularlySendingItem::SAKDebuggerPluginRegularlySendingItem(
+        SAKStructItemContext ctx,
+        QWidget *parent
+        )
     :QWidget(parent)
-    ,mDebugPage(debugPage)
-    ,mID(id)
+    ,mID(ctx.id)
     ,isInitializing(true)
-    ,mUi(new Ui::SAKPluginRegularlySendingItem)
+    ,mUi(new Ui::SAKDebuggerPluginRegularlySendingItem)
 {
     commonInitializing();
 
-    mIntervalLineEdit->setText(QString::number(interval));
-    mTextFormatComboBox->setCurrentIndex(format);
-    mDescriptionLineEdit->setText(description);
-    mInputDataTextEdit->setText(text);
+    mIntervalLineEdit->setText(QString::number(ctx.interval));
+    mTextFormatComboBox->setCurrentIndex(ctx.format);
+    mDescriptionLineEdit->setText(ctx.description);
+    mInputDataTextEdit->setText(ctx.data);
     isInitializing = false;
 }
 
-SAKPluginRegularlySendingItem::~SAKPluginRegularlySendingItem()
+SAKDebuggerPluginRegularlySendingItem::~SAKDebuggerPluginRegularlySendingItem()
 {
     delete mUi;
 }
 
-quint64 SAKPluginRegularlySendingItem::itemID()
+quint64 SAKDebuggerPluginRegularlySendingItem::itemID()
 {
     return mID;
 }
 
-quint32 SAKPluginRegularlySendingItem::itemInterval()
+quint32 SAKDebuggerPluginRegularlySendingItem::itemInterval()
 {
     return mIntervalLineEdit->text().toUInt();
 }
 
-quint32 SAKPluginRegularlySendingItem::itemFormat()
+quint32 SAKDebuggerPluginRegularlySendingItem::itemFormat()
 {
     return mTextFormatComboBox->currentIndex();
 }
 
-QString SAKPluginRegularlySendingItem::itemDescription()
+QString SAKDebuggerPluginRegularlySendingItem::itemDescription()
 {
     return mDescriptionLineEdit->text();
 }
 
-QString SAKPluginRegularlySendingItem::itemText()
+QString SAKDebuggerPluginRegularlySendingItem::itemText()
 {
     return mInputDataTextEdit->toPlainText();
 }
 
-void SAKPluginRegularlySendingItem::write()
+SAKDebuggerPluginRegularlySendingItem::SAKStructItemContext
+SAKDebuggerPluginRegularlySendingItem::context()
+{
+    mContext.id = mID;
+    mContext.data = mUi->inputDataTextEdit->toPlainText();
+    mContext.format = mUi->textFormatComboBox->currentData().toInt();
+    mContext.interval = mUi->intervalLineEdit->text().toInt();
+    mContext.description = mUi->descriptionLineEdit->text();
+    return mContext;
+}
+
+void SAKDebuggerPluginRegularlySendingItem::write()
 {
     mWriteTimer.stop();
     QString data = mInputDataTextEdit->toPlainText();
@@ -92,7 +99,7 @@ void SAKPluginRegularlySendingItem::write()
     mWriteTimer.start();
 }
 
-void SAKPluginRegularlySendingItem::commonInitializing()
+void SAKDebuggerPluginRegularlySendingItem::commonInitializing()
 {
     mUi->setupUi(this);
 
@@ -103,18 +110,18 @@ void SAKPluginRegularlySendingItem::commonInitializing()
     mInputDataTextEdit = mUi->inputDataTextEdit;
 
     mWriteTimer.setInterval(mIntervalLineEdit->text().toInt());
-    connect(&mWriteTimer, &QTimer::timeout, this, &SAKPluginRegularlySendingItem::write);
+    connect(&mWriteTimer, &QTimer::timeout, this, &SAKDebuggerPluginRegularlySendingItem::write);
     SAKCommonDataStructure::setComboBoxTextInputFormat(mTextFormatComboBox);
 }
 
-void SAKPluginRegularlySendingItem::on_enableCheckBox_clicked()
+void SAKDebuggerPluginRegularlySendingItem::on_enableCheckBox_clicked()
 {
     if (mEnableCheckBox){
         mEnableCheckBox->isChecked() ? mWriteTimer.start() : mWriteTimer.stop();
     }
 }
 
-void SAKPluginRegularlySendingItem::on_intervalLineEdit_textChanged(const QString &text)
+void SAKDebuggerPluginRegularlySendingItem::on_intervalLineEdit_textChanged(const QString &text)
 {
     if (!isInitializing){
         int interval = text.toInt();
@@ -123,7 +130,7 @@ void SAKPluginRegularlySendingItem::on_intervalLineEdit_textChanged(const QStrin
     }
 }
 
-void SAKPluginRegularlySendingItem::on_textFormatComboBox_currentTextChanged(const QString &text)
+void SAKDebuggerPluginRegularlySendingItem::on_textFormatComboBox_currentTextChanged(const QString &text)
 {
     Q_UNUSED(text);
     if (!isInitializing){
@@ -133,14 +140,14 @@ void SAKPluginRegularlySendingItem::on_textFormatComboBox_currentTextChanged(con
     }
 }
 
-void SAKPluginRegularlySendingItem::on_descriptionLineEdit_textChanged(const QString &text)
+void SAKDebuggerPluginRegularlySendingItem::on_descriptionLineEdit_textChanged(const QString &text)
 {
     if (!isInitializing){
         emit descriptionChanged(text);
     }
 }
 
-void SAKPluginRegularlySendingItem::on_inputDataTextEdit_textChanged()
+void SAKDebuggerPluginRegularlySendingItem::on_inputDataTextEdit_textChanged()
 {
     if (!isInitializing){
         QString text = mInputDataTextEdit->toPlainText();
