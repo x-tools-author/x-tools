@@ -91,11 +91,13 @@ RESOURCES += \
 
 INCLUDEPATH += \
     src \
+    src/base \
     src/common \
     src/update
 
 FORMS += \
     src/SAKMainWindow.ui \
+    src/base/SAKBaseListWidget.ui \
     src/update/SAKDownloadItemWidget.ui \
     src/update/SAKUpdateManager.ui
 
