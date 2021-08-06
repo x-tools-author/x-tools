@@ -1,0 +1,99 @@
+@startuml SAKDebuggerDataDriven
+group Read bytes
+    PhysicalDevice -> SAKDebuggerDevice: readyRead()
+    activate SAKDebuggerDevice
+        SAKDebuggerDevice -> SAKDebuggerDevice: readBytes()
+        activate SAKDebuggerDevice
+            SAKDebuggerDevice -> SAKDebuggerDevice: mask()
+            SAKDebuggerDevice -> SAKDebuggerDevice: analyze()
+            SAKDebuggerDevice -> SAKDebuggerOutput: bytesRead(QByteArray bytes)
+            activate SAKDebuggerOutput
+            SAKDebuggerOutput -> SAKDebuggerOutput: onBytesRead()
+            deactivate SAKDebuggerOutput
+            SAKDebuggerDevice -> SAKDebuggerStatistics: bytesRead(QByteArray bytes)
+            activate SAKDebuggerStatistics
+            SAKDebuggerStatistics -> SAKDebuggerStatistics: onBytesRead()
+            deactivate SAKDebuggerStatistics
+            SAKDebuggerDevice -> SAKDebuggerPlugins: bytesRead(QByteArray bytes)
+            activate SAKDebuggerPlugins
+            SAKDebuggerPlugins -> SAKDebuggerPlugins: onBytesRead()
+            deactivate SAKDebuggerPlugins
+        deactivate SAKDebuggerDevice
+    deactivate SAKDebuggerDevice
+end
+
+group Write Bytes
+    SAKDebuggerInput -> SAKDebuggerDevice: invokeWriteBytes(QByteArray bytes)
+    activate SAKDebuggerDevice
+        SAKDebuggerDevice -> SAKDebuggerDevice: writeBytes()
+        activate SAKDebuggerDevice
+            SAKDebuggerDevice -> SAKDebuggerDevice: mask()
+            SAKDebuggerDevice -> SAKDebuggerDevice: writeBytes()
+            SAKDebuggerDevice -> PhysicalDevice: writeBytes()
+            SAKDebuggerDevice -> SAKDebuggerOutput: onBytesWritten(QByteArray bytes)
+            activate SAKDebuggerOutput
+            SAKDebuggerOutput -> SAKDebuggerOutput: onBytesWritten()
+            deactivate SAKDebuggerOutput
+            SAKDebuggerDevice -> SAKDebuggerStatistics: bytesRead(QByteArray bytes)
+            activate SAKDebuggerStatistics
+            SAKDebuggerStatistics -> SAKDebuggerStatistics: onBytesWritten()
+            deactivate SAKDebuggerStatistics
+            SAKDebuggerDevice -> SAKDebuggerPlugins: bytesWritten(QByteArray bytes)
+            activate SAKDebuggerPlugins
+            SAKDebuggerPlugins -> SAKDebuggerPlugins: onBytesWritten(QByteArray bytes)
+            deactivate SAKDebuggerPlugins
+        deactivate SAKDebuggerDevice
+    deactivate SAKDebuggerDevice
+end
+
+group Write Bytes [cooked bytes]
+SAKDebuggerPlugins -> SAKDebuggerDevice: invokeWriteCookedBytes(QByteArray bytes)
+activate SAKDebuggerDevice
+    activate SAKDebuggerDevice
+            SAKDebuggerDevice -> SAKDebuggerDevice: mask()
+            SAKDebuggerDevice -> SAKDebuggerDevice: writeBytes()
+            SAKDebuggerDevice -> PhysicalDevice: writeBytes()
+            SAKDebuggerDevice -> SAKDebuggerOutput: onBytesWritten(QByteArray bytes)
+            activate SAKDebuggerOutput
+            SAKDebuggerOutput -> SAKDebuggerOutput: onBytesWritten()
+            deactivate SAKDebuggerOutput
+            SAKDebuggerDevice -> SAKDebuggerStatistics: bytesRead(QByteArray bytes)
+            activate SAKDebuggerStatistics
+            SAKDebuggerStatistics -> SAKDebuggerStatistics: onBytesWritten()
+            deactivate SAKDebuggerStatistics
+            SAKDebuggerDevice -> SAKDebuggerPlugins: bytesWritten(QByteArray bytes)
+            activate SAKDebuggerPlugins
+            SAKDebuggerPlugins -> SAKDebuggerPlugins: onBytesWritten(QByteArray bytes)
+            deactivate SAKDebuggerPlugins
+        deactivate SAKDebuggerDevice
+deactivate SAKDebuggerDevice
+end
+
+group Write Bytes [raw bytes]
+    SAKDebuggerPlugins -> SAKDebuggerInput: invokeWriteRawBytes(QByteArray bytes)
+    activate SAKDebuggerInput
+    SAKDebuggerInput -> SAKDebuggerInput: cookRawBytes()
+    SAKDebuggerInput -> SAKDebuggerDevice: invokeWriteBytes(QByteArray bytes)
+    deactivate SAKDebuggerInput
+    activate SAKDebuggerDevice
+        SAKDebuggerDevice -> SAKDebuggerDevice: writeBytes()
+        activate SAKDebuggerDevice
+            SAKDebuggerDevice -> SAKDebuggerDevice: mask()
+            SAKDebuggerDevice -> SAKDebuggerDevice: writeBytes()
+            SAKDebuggerDevice -> PhysicalDevice: writeBytes()
+            SAKDebuggerDevice -> SAKDebuggerOutput: onBytesWritten(QByteArray bytes)
+            activate SAKDebuggerOutput
+            SAKDebuggerOutput -> SAKDebuggerOutput: onBytesWritten()
+            deactivate SAKDebuggerOutput
+            SAKDebuggerDevice -> SAKDebuggerStatistics: bytesRead(QByteArray bytes)
+            activate SAKDebuggerStatistics
+            SAKDebuggerStatistics -> SAKDebuggerStatistics: onBytesWritten()
+            deactivate SAKDebuggerStatistics
+            SAKDebuggerDevice -> SAKDebuggerPlugins: bytesWritten(QByteArray bytes)
+            activate SAKDebuggerPlugins
+            SAKDebuggerPlugins -> SAKDebuggerPlugins: onBytesWritten(QByteArray bytes)
+            deactivate SAKDebuggerPlugins
+        deactivate SAKDebuggerDevice
+    deactivate SAKDebuggerDevice
+end
+@enduml
