@@ -25,6 +25,7 @@
 #include <QStandardItemModel>
 
 #include "SAKDebugger.hh"
+#include "SAKMainWindow.hh"
 #include "SAKApplication.hh"
 #include "SAKDebuggerInput.hh"
 #include "SAKDebuggerDevice.hh"
@@ -285,7 +286,7 @@ int SAKDebugger::clearDataMessageBox()
     QString text = tr("All Data Items Will Be Deleted!")
             + " "
             + tr("Are you sure you want to do this?");
-    auto ret = QMessageBox::warning(Q_NULLPTR,
+    auto ret = QMessageBox::warning(sakMainWindow,
                                     title,
                                     text,
                                     QMessageBox::Ok|QMessageBox::Cancel);
