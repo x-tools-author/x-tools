@@ -84,6 +84,7 @@ private:
     QComboBox *mInputComboBox;
     QLabel *mCrcLabel;
     QWidget *mUiParent;
+    QDialog *mDataPresetDialog;
 
     QSettings *mSettings;
     QString mSettingsGroup;

@@ -19,6 +19,7 @@
 #include <QListWidgetItem>
 
 #include "SAKDebugger.hh"
+#include "SAKMainWindow.hh"
 #include "SAKDebuggerInput.hh"
 #include "SAKCommonCrcInterface.hh"
 #include "SAKCommonDataStructure.hh"
@@ -45,6 +46,7 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
     ,mInputComboBox(input)
     ,mCrcLabel(crc)
     ,mUiParent(uiParent)
+    ,mDataPresetDialog(Q_NULLPTR)
     ,mSettings(settings)
     ,mSettingsGroup(settingsGroup)
     ,mSqlDatabase(sqlDatabase)
@@ -86,6 +88,9 @@ SAKDebuggerInput::~SAKDebuggerInput()
 
     mRregularSendingTimer->stop();
     mRregularSendingTimer->deleteLater();
+
+    mDataPresetDialog->close();
+    mDataPresetDialog->deleteLater();
 }
 
 void SAKDebuggerInput::inputBytes(QString rawBytes,
@@ -407,10 +412,10 @@ void SAKDebuggerInput::addActionToMenuQuickSending(QMenu *menu)
 void SAKDebuggerInput::addActionToMenuDataPreset(QMenu *menu)
 {
     menu->addAction(tr("Data Preset"), this, [=](){
-        if (mDataPreset->isHidden()) {
-            mDataPreset->show();
+        if (mDataPresetDialog->isHidden()) {
+            mDataPresetDialog->show();
         } else {
-            mDataPreset->activateWindow();
+            mDataPresetDialog->activateWindow();
         }
     });
 }
@@ -523,11 +528,22 @@ void SAKDebuggerInput::initSubModule()
 
 void SAKDebuggerInput::initSubModuleDataPreset()
 {
+    mDataPresetDialog = new QDialog(sakMainWindow);
+    QHBoxLayout *layout = new QHBoxLayout();
+    layout->setContentsMargins(0, 0, 0, 0);
+    mDataPresetDialog->setLayout(layout);
+    mDataPresetDialog->setModal(true);
+    mDataPresetDialog->setContentsMargins(2, 2, 2, 2);
+    mDataPresetDialog->resize(800, 350);
+    mDataPresetDialog->setWindowTitle(tr("Preset Data"));
+
+
     mDataPreset = new SAKDebuggerInputDataPreset(mSqlDatabase,
                                                  mSettings,
                                                  mSettingsGroup,
                                                  mQuickSendingMenu,
-                                                 mUiParent);
+                                                 mDataPresetDialog);
+    mDataPresetDialog->layout()->addWidget(mDataPreset);
     connect(mDataPreset, &SAKDebuggerInputDataPreset::invokeWriteBytes,
             this, [&](QString rawData, int format){
         auto parasCtx = mInputParameters;
