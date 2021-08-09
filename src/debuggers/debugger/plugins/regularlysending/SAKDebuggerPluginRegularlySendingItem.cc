@@ -94,7 +94,7 @@ void SAKDebuggerPluginRegularlySendingItem::write()
 
     if (!data.isEmpty()){
         int textFormat = this->mTextFormatComboBox->currentData().toInt();
-        //mDebugPage->writeRawData(data, textFormat);
+        emit invokeWriteBytes(data, textFormat);
     }
     mWriteTimer.start();
 }
@@ -126,7 +126,7 @@ void SAKDebuggerPluginRegularlySendingItem::on_intervalLineEdit_textChanged(cons
     if (!isInitializing){
         int interval = text.toInt();
         mWriteTimer.setInterval(interval < 20 ? 20 : interval);
-        emit intervalChanged(interval);
+        emit intervalChanged(mID, interval);
     }
 }
 
@@ -136,14 +136,14 @@ void SAKDebuggerPluginRegularlySendingItem::on_textFormatComboBox_currentTextCha
     if (!isInitializing){
         mInputDataTextEdit->clear();
         int format = mTextFormatComboBox->currentData().toInt();
-        emit formatChanged(format);
+        emit formatChanged(mID, format);
     }
 }
 
 void SAKDebuggerPluginRegularlySendingItem::on_descriptionLineEdit_textChanged(const QString &text)
 {
     if (!isInitializing){
-        emit descriptionChanged(text);
+        emit descriptionChanged(mID, text);
     }
 }
 
@@ -154,6 +154,6 @@ void SAKDebuggerPluginRegularlySendingItem::on_inputDataTextEdit_textChanged()
         int format = mTextFormatComboBox->currentData().toInt();
         SAKCommonDataStructure::formattingInputText(mInputDataTextEdit, format);
 
-        emit inputTextChanged(text);
+        emit inputTextChanged(mID, text);
     }
 }

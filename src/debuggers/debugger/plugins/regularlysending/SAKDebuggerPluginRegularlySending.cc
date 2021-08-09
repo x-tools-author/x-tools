@@ -1,4 +1,4 @@
-﻿/*
+﻿/****************************************************************************************
  * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -6,7 +6,7 @@
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- */
+ ***************************************************************************************/
 #include <QDebug>
 #include <QDateTime>
 #include <QJsonArray>
@@ -31,306 +31,197 @@ SAKDebuggerPluginRegularlySending::SAKDebuggerPluginRegularlySending(
         QString tableNameSuffix,
         QWidget *parent)
     :SAKBaseListWidget(sqlDatabase, settings, settingsGroup, tableNameSuffix, parent)
-    //,mUi(new Ui::SAKPluginRegularlySending)
 {
-//    mUi->setupUi(this);
+    mTableCtx.tableName = mTableName;
 
-//    mItemListWidget = mUi->itemListWidget;
-//    mOutportPushButton = mUi->outportPushButton;
-//    mImportPushButton = mUi->importPushButton;
-//    mDeletePushButton = mUi->deletePushButton;
-//    mAddPushButton = mUi->addPushButton;
-//    mMessageLabel = mUi->messageLabel;
 
-//    mClearMessageTimer.setInterval(SAK_CLEAR_MESSAGE_INTERVAL);
-//    connect(&mClearMessageTimer, &QTimer::timeout, this, [&](){
-//        mClearMessageTimer.stop();
-//        mMessageLabel->clear();
-//    });
-#if 0
-    mDatabaseInterface = mDebugPage->databaseInterface();
-    mTableName = mDebugPage->tableNameTimingSendingTable();
+    if (!mSqlDatabase->tables().contains(mTableName)) {
+        createSqlDatabaseTable();
+    }
     readinRecord();
-#endif
 }
 
 SAKDebuggerPluginRegularlySending::~SAKDebuggerPluginRegularlySending()
 {
-    //delete mUi;
+
 }
 
 void SAKDebuggerPluginRegularlySending::insertRecord(const QString &tableName,
                                                      QWidget *itemWidget)
 {
-//    TimingSendingTable table;
-//    table.tableName = mTableNameTimingSendingTable;
-//    bool ret = mSqlQuery.exec(QString("INSERT INTO %1(%2,%3,%4,%5,%6) VALUES(%7,%8,%9,'%10','%11')")
-//                              .arg(table.tableName)
-//                              .arg(table.columns.id)
-//                              .arg(table.columns.interval)
-//                              .arg(table.columns.format)
-//                              .arg(table.columns.description)
-//                              .arg(table.columns.text)
-//                              .arg(item.id)
-//                              .arg(item.interval)
-//                              .arg(item.format)
-//                              .arg(item.comment)
-//                              .arg(item.data));
-//    if (!ret){
-//        qWarning() << "Insert record to " << table.tableName << " table failed: " << mSqlQuery.lastError().text();
-//    }
+    auto cookedItemWidget = qobject_cast<SendingItem*>(itemWidget);
+    QString queryString = QString("INSERT INTO %1").arg(tableName);
+    queryString.append(QString("(%1,%2,%3,%4,%5) VALUES(")
+                       .arg(mTableCtx.columns.id,
+                            mTableCtx.columns.interval,
+                            mTableCtx.columns.format,
+                            mTableCtx.columns.description,
+                            mTableCtx.columns.data));
+    queryString.append(QString("%1,").arg(cookedItemWidget->itemID()));
+    queryString.append(QString("%1,").arg(cookedItemWidget->itemInterval()));
+    queryString.append(QString("%1,").arg(cookedItemWidget->itemFormat()));
+    queryString.append(QString("'%1',").arg(cookedItemWidget->itemDescription()));
+    queryString.append(QString("'%1')").arg(cookedItemWidget->itemText()));
+    if (!mSqlQuery.exec(queryString)) {
+        qInfo() << queryString;
+        qWarning() << "Insert record to " << mTableCtx.tableName
+                   << " table failed: " << mSqlQuery.lastError().text();
+    }
 }
 
-void SAKDebuggerPluginRegularlySending::setItemWidget(QListWidgetItem *item, QWidget *itemWidget)
+void SAKDebuggerPluginRegularlySending::setItemWidget(QListWidgetItem *item,
+                                                      QWidget *itemWidget)
 {
+    if (item && itemWidget) {
+        auto cookedItemWidget = qobject_cast<SendingItem*>(itemWidget);
+        if (cookedItemWidget) {
+            item->setSizeHint(itemWidget->sizeHint());
+            mListWidget->addItem(item);
+            mListWidget->setItemWidget(item, itemWidget);
 
+            connect(cookedItemWidget,
+                    &SAKDebuggerPluginRegularlySendingItem::intervalChanged,
+                    this,
+                    &SAKDebuggerPluginRegularlySending::changeInterval);
+            connect(cookedItemWidget,
+                    &SAKDebuggerPluginRegularlySendingItem::formatChanged,
+                    this,
+                    &SAKDebuggerPluginRegularlySending::changeFormat);
+
+            connect(cookedItemWidget,
+                    &SAKDebuggerPluginRegularlySendingItem::descriptionChanged,
+                    this,
+                    &SAKDebuggerPluginRegularlySending::changeDescription);
+
+            connect(cookedItemWidget,
+                    &SAKDebuggerPluginRegularlySendingItem::inputTextChanged,
+                    this,
+                    &SAKDebuggerPluginRegularlySending::changeInputText);
+        }
+    }
 }
 
-QWidget *SAKDebuggerPluginRegularlySending::createItemFromParameters(const QJsonObject &jsonObj)
+QWidget *SAKDebuggerPluginRegularlySending::createItemFromParameters(
+        const QJsonObject &jsonObj
+        )
 {
+    if (jsonObj.isEmpty()) {
+        return (new SAKDebuggerPluginRegularlySendingItem());
+    } else {
+        SAKDebuggerPluginRegularlySendingItem::SAKStructItemContext ctx;
+        ctx.id = jsonObj.value(mTableCtx.columns.id).toVariant().toULongLong();
+        ctx.data = jsonObj.value(mTableCtx.columns.data).toString();
+        ctx.format = jsonObj.value(mTableCtx.columns.data).toInt();
+        ctx.interval = jsonObj.value(mTableCtx.columns.data).toInt();
+        ctx.description = jsonObj.value(mTableCtx.columns.data).toString();
 
+        auto itemWidget = new SAKDebuggerPluginRegularlySendingItem(ctx);
+        return itemWidget;
+    }
 }
 
 QJsonObject SAKDebuggerPluginRegularlySending::toJsonObject(QWidget *itemWidget)
 {
+    QJsonObject jsonObj;
+    auto cookedItemWidget = qobject_cast<SendingItem*>(itemWidget);
+    if (cookedItemWidget) {
+        QString key;
+        QJsonValue value;
 
+        key = mTableCtx.columns.id;
+        value = QJsonValue(qint64(cookedItemWidget->itemID()));
+        jsonObj.insert(key, value);
+
+        key = mTableCtx.columns.data;
+        value = QJsonValue(cookedItemWidget->itemText());
+        jsonObj.insert(key, value);
+
+        key = mTableCtx.columns.format;
+        value = QJsonValue(int(cookedItemWidget->itemFormat()));
+        jsonObj.insert(key, value);
+
+        key = mTableCtx.columns.interval;
+        value = QJsonValue(int(cookedItemWidget->itemInterval()));
+        jsonObj.insert(key, value);
+
+        key = mTableCtx.columns.description;
+        value = QJsonValue(cookedItemWidget->itemDescription());
+        jsonObj.insert(key, value);
+    }
+
+    return jsonObj;
 }
 
 quint64 SAKDebuggerPluginRegularlySending::itemId(QWidget *itemWidget)
 {
-
+    auto cookedItemWidget = qobject_cast<SendingItem*>(itemWidget);
+    if (cookedItemWidget) {
+        return cookedItemWidget->itemID();
+    } else {
+        return 0;
+    }
 }
 
-#if 0
-SAKPluginRegularlySendingItem *innerCreateItem(SAKDebugPageCommonDatabaseInterface::SAKStructTimingSentItem &var, SAKDebugger *debugPage, QListWidget *listWidget)
+void SAKDebuggerPluginRegularlySending::readinRecord()
 {
-    QListWidgetItem *item = new QListWidgetItem(listWidget);
-    listWidget->addItem(item);
-    SAKPluginRegularlySendingItem *itemWidget = new SAKPluginRegularlySendingItem(debugPage,
-                                                                    var.id,
-                                                                    var.interval,
-                                                                    var.format,
-                                                                    var.comment,
-                                                                    var.data,
-                                                                    Q_NULLPTR);
-    item->setSizeHint(itemWidget->size());
-    listWidget->setItemWidget(item, itemWidget);
-    return itemWidget;
-}
+    if (mSqlQuery.exec(QString("SELECT * FROM %1").arg(mTableName))) {
+        SendingItem::SAKStructItemContext itemCtx;
+        while (mSqlQuery.next()) {
+            itemCtx.id = mSqlQuery.value(mTableCtx.columns.id).toULongLong();
+            itemCtx.interval = mSqlQuery.value(mTableCtx.columns.interval).toUInt();
+            itemCtx.format = mSqlQuery.value(mTableCtx.columns.format).toUInt();
+            itemCtx.description =
+                    mSqlQuery.value(mTableCtx.columns.description).toString();
+            itemCtx.data = mSqlQuery.value(mTableCtx.columns.data).toString();
 
-void SAKPluginRegularlySending::readinRecord()
-{
-//    QList<SAKDebugPageCommonDatabaseInterface::SAKStructTimingSentItem> itemList = mDatabaseInterface->selectTimingSentItem();
-//    if (itemList.isEmpty()){
-//        return;
-//    }
-
-//    for (auto &var : itemList){
-//        SAKPluginRegularlySendingItem *item = innerCreateItem(var, mDebugPage, mItemListWidget);
-//        initializingItem(item);
-//    }
-}
-
-bool SAKPluginRegularlySending::contains(quint64 paraID)
-{
-    bool contain = false;
-    for (int i = 0; i < mItemListWidget->count(); i++){
-        QListWidgetItem *item = mItemListWidget->item(i);
-        QWidget *w = mItemListWidget->itemWidget(item);
-        SAKPluginRegularlySendingItem *itemWidget = reinterpret_cast<SAKPluginRegularlySendingItem*>(w);
-        if (itemWidget->itemID() == paraID){
-            contain = true;
-            break;
+            auto item = new QListWidgetItem(mListWidget);
+            auto itemWidget = new SAKDebuggerPluginRegularlySendingItem(itemCtx);
+            setItemWidget(item, itemWidget);
         }
+    }else{
+        qWarning() << "Select record form " << mTableName
+                   << " table failed: " << mSqlQuery.lastError().text();
     }
-
-    return contain;
 }
 
-void SAKPluginRegularlySending::outputMessage(QString msg, bool isError)
+void SAKDebuggerPluginRegularlySending::createSqlDatabaseTable()
 {
-    QString color = "black";
-    if (isError){
-        color = "red";
-        QApplication::beep();
+    QString queryString = QString("CREATE TABLE %1(")
+            .arg(mTableName);
+    queryString.append(QString("%1 INTEGER PRIMARY KEY NOT NULL,")
+                       .arg(mTableCtx.columns.id));
+    queryString.append(QString("%1 INTEGER NOT NULL,")
+                       .arg(mTableCtx.columns.interval));
+    queryString.append(QString("%1 INTEGER NOT NULL,")
+                       .arg(mTableCtx.columns.format));
+    queryString.append(QString("%1 INTEGER NOT NULL,")
+                       .arg(mTableCtx.columns.description));
+    queryString.append(QString("%1 INTEGER NOT NULL)")
+                       .arg(mTableCtx.columns.data));
+
+    if (!mSqlQuery.exec(queryString)) {
+        qInfo() << queryString;
+        qWarning() << QString("Carete table(%1) failed:%2")
+                      .arg(mTableName, mSqlQuery.lastError().text());
     }
-    mMessageLabel->setStyleSheet(QString("QLabel{color:%1}").arg(color));
-    mMessageLabel->setText(QTime::currentTime().toString("hh:mm:ss ") + msg);
-    mClearMessageTimer.start();
 }
 
-//void SAKPluginRegularlySending::initializingItem(SAKPluginRegularlySendingItem *item)
-//{
-//    if (item){
-//        connect(item, &SAKPluginRegularlySendingItem::intervalChanged, this, &SAKPluginRegularlySending::changeInterval);
-//        connect(item, &SAKPluginRegularlySendingItem::formatChanged, this, &SAKPluginRegularlySending::changeFormat);
-//        connect(item, &SAKPluginRegularlySendingItem::descriptionChanged, this, &SAKPluginRegularlySending::changeDescription);
-//        connect(item, &SAKPluginRegularlySendingItem::inputTextChanged, this, &SAKPluginRegularlySending::changeInputText);
-//    }
-//}
-
-//SAKPluginRegularlySendingItem *SAKPluginRegularlySending::sender2item(QObject *sender)
-//{
-//    SAKPluginRegularlySendingItem *item = Q_NULLPTR;
-//    if (sender){
-//        if (sender->inherits("SAKOtherTimingSentItem")){
-//            item = qobject_cast<SAKPluginRegularlySendingItem*>(sender);
-//        }
-//    }
-
-//    return item;
-//}
-
-void SAKPluginRegularlySending::changeInterval(int interval)
+void SAKDebuggerPluginRegularlySending::changeInterval(quint64 id, int interval)
 {
-//    SAKPluginRegularlySendingItem *item = sender2item(sender());
-//    if (item){
-//        SAKDebugPageCommonDatabaseInterface::TimingSendingTable table;
-//        quint64 id = item->itemID();
-//        mDatabaseInterface->updateRecord(mTableName, table.columns.interval, QVariant::fromValue(interval), id, false);
-//    }
+    updateRecord(id, mTableCtx.columns.interval, interval);
 }
 
-void SAKPluginRegularlySending::changeFormat(int format)
+void SAKDebuggerPluginRegularlySending::changeFormat(quint64 id, int format)
 {
-//    SAKPluginRegularlySendingItem *item = sender2item(sender());
-//    if (item){
-//        SAKDebugPageCommonDatabaseInterface::TimingSendingTable table;
-//        quint64 id = item->itemID();
-//        mDatabaseInterface->updateRecord(mTableName, table.columns.format, QVariant::fromValue(format), id, false);
-//    }
+    updateRecord(id, mTableCtx.columns.format, format);
 }
 
-void SAKPluginRegularlySending::changeDescription(QString description)
+void SAKDebuggerPluginRegularlySending::changeDescription(quint64 id, QString description)
 {
-//    SAKPluginRegularlySendingItem *item = sender2item(sender());
-//    if (item){
-//        SAKDebugPageCommonDatabaseInterface::TimingSendingTable table;
-//        quint64 id = item->itemID();
-//        mDatabaseInterface->updateRecord(mTableName, table.columns.description, QVariant::fromValue(description), id, true);
-//    }
+    updateRecord(id, mTableCtx.columns.description, description);
 }
 
-void SAKPluginRegularlySending::changeInputText(QString text)
+void SAKDebuggerPluginRegularlySending::changeInputText(quint64 id, QString text)
 {
-//    SAKPluginRegularlySendingItem *item = sender2item(sender());
-//    if (item){
-//        SAKDebugPageCommonDatabaseInterface::TimingSendingTable table;
-//        quint64 id = item->itemID();
-//        mDatabaseInterface->updateRecord(mTableName, table.columns.text, QVariant::fromValue(text), id, true);
-//    }
+    updateRecord(id, mTableCtx.columns.data, text);
 }
-
-void SAKPluginRegularlySending::on_outportPushButton_clicked()
-{
-//    QList<SAKDebugPageCommonDatabaseInterface::SAKStructTimingSentItem> itemList = mDatabaseInterface->selectTimingSentItem();
-//    if (itemList.isEmpty()){
-//        return;
-//    }
-
-//    QJsonArray jsonArray;
-//    TimingSendingItemKey itemKey;
-//    for (auto &var : itemList){
-//        QJsonObject obj;
-//        obj.insert(itemKey.id, QVariant::fromValue(var.id).toJsonValue());
-//        obj.insert(itemKey.text, QVariant::fromValue(var.data).toJsonValue());
-//        obj.insert(itemKey.format, QVariant::fromValue(var.format).toJsonValue());
-//        obj.insert(itemKey.description, QVariant::fromValue(var.comment).toJsonValue());
-//        obj.insert(itemKey.interval, QVariant::fromValue(var.interval).toJsonValue());
-//        jsonArray.append(QJsonValue(obj));
-//    }
-//    QJsonDocument jsonDoc;
-//    jsonDoc.setArray(jsonArray);
-
-//    // Open file
-//    QString defaultName = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
-//    defaultName.append(QString("/"));
-//    defaultName.append(QDateTime::currentDateTime().toString("yyyyMMddhhmmss"));
-//    defaultName.append(".json");
-//    QString fileName = QFileDialog::getSaveFileName(this, tr("Outport data"), defaultName, QString("json (*.json)"));
-//    if (fileName.isEmpty()){
-//        return;
-//    }
-
-//    // Write data to file
-//    QFile file(fileName);
-//    if (file.open(QFile::ReadWrite)){
-//        file.write(jsonDoc.toJson());
-//        file.close();
-//    }
-}
-
-void SAKPluginRegularlySending::on_importPushButton_clicked()
-{
-//    QString defaultPath = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
-//    QString fileName = QFileDialog::getOpenFileName(this, tr("Import data"), defaultPath, QString("json (*.json)"));
-//    QFile file(fileName);
-//    if (file.open(QFile::ReadWrite)){
-//        QByteArray array = file.readAll();
-//        file.close();
-
-//        QJsonDocument jsc = QJsonDocument::fromJson(array);
-//        if (!jsc.isArray()){
-//            outputMessage(tr("Format error!"), true);
-//            return;
-//        }
-
-//        QJsonArray jsa = jsc.array();
-//        for (int i = 0; i < jsa.count(); i++){
-//            if (jsa.at(i).isObject()){
-//                QJsonObject jso = jsa.at(i).toObject();
-//                TimingSendingItemKey itemKey;
-//                SAKDebugPageCommonDatabaseInterface::SAKStructTimingSentItem responseItem;
-//                responseItem.id = jso.value(itemKey.id).toVariant().toULongLong();
-//                responseItem.data = jso.value(itemKey.text).toVariant().toString();
-//                responseItem.format = jso.value(itemKey.format).toVariant().toUInt();
-//                responseItem.comment = jso.value(itemKey.description).toVariant().toString();
-//                responseItem.interval = jso.value(itemKey.interval).toVariant().toUInt();
-
-//                // If item is not exist, creating an item
-//                if (!contains(responseItem.id)){
-//                    SAKPluginRegularlySendingItem *item = innerCreateItem(responseItem, mDebugPage, mItemListWidget);
-//                    initializingItem(item);
-//                    mDatabaseInterface->insertTimingSentItem(responseItem);
-//                }
-//            }
-//        }
-//    }else{
-//        outputMessage(file.errorString(), true);
-//    }
-}
-
-void SAKPluginRegularlySending::on_deletePushButton_clicked()
-{
-//    QListWidgetItem *currentItem = mItemListWidget->currentItem();
-//    if (currentItem){
-//        SAKPluginRegularlySendingItem *w = reinterpret_cast<SAKPluginRegularlySendingItem*>(mItemListWidget->itemWidget(currentItem));
-//        SAKDebugPageCommonDatabaseInterface::SAKStructTimingSentItem sendingItem;
-//        sendingItem.id = w->itemID();
-//        mDatabaseInterface->deleteRecord(mTableName, sendingItem.id);
-
-//        mItemListWidget->removeItemWidget(currentItem);
-//        delete currentItem;
-//    }
-}
-
-void SAKPluginRegularlySending::on_addPushButton_clicked()
-{
-//    QListWidgetItem *item = new QListWidgetItem(mItemListWidget);
-//    mItemListWidget->addItem(item);
-
-//    SAKPluginRegularlySendingItem *itemWidget = new SAKPluginRegularlySendingItem(mDebugPage);
-//    item->setSizeHint(itemWidget->size());
-//    mItemListWidget->setItemWidget(item, itemWidget);
-//    initializingItem(itemWidget);
-
-//    // Insert record to database
-//    SAKDebugPageCommonDatabaseInterface::SAKStructTimingSentItem sendingItem;
-//    sendingItem.id = itemWidget->itemID();
-//    sendingItem.data = itemWidget->itemText();
-//    sendingItem.format = itemWidget->itemFormat();
-//    sendingItem.comment = itemWidget->itemDescription();
-//    sendingItem.interval = itemWidget->itemInterval();
-//    mDatabaseInterface->insertTimingSentItem(sendingItem);
-}
-#endif

@@ -13,6 +13,7 @@
 #include <QLabel>
 #include <QWidget>
 #include <QObject>
+#include <QDialog>
 #include <QSettings>
 #include <QPushButton>
 #include <QSqlDatabase>
@@ -49,6 +50,7 @@ private:
 private:
     QLabel *mTitleLabel;
     QWidget *mPanelWidget;
+    QDialog *mPluginDialog;
 
 
 private:
@@ -57,6 +59,7 @@ private:
     void showPluinDataForwarding();
     void showPluginRegularlySending();
     void showPluginAutomaticallyResponse();
+    void showPluginDialog(QWidget *contentWidget);
 
 
 signals:

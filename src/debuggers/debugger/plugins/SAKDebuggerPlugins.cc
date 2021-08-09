@@ -10,6 +10,7 @@
 #include <QMenu>
 #include <QDebug>
 
+#include "SAKMainWindow.hh"
 #include "SAKDebuggerPlugins.hh"
 
 SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
@@ -27,6 +28,7 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
     ,mAutomaticallyResponse(Q_NULLPTR)
     ,mTitleLabel(titleLabel)
     ,mPanelWidget(panelWidget)
+    ,mPluginDialog(Q_NULLPTR)
 {
     QMenu *menu = new QMenu(menuBt);
     menuBt->setMenu(menu);
@@ -87,6 +89,11 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
     menu->addSeparator();
     menu->addAction(tr("Automatically Reload"), this, [](){});
     menu->addAction(tr("Reload All"), this, [](){});
+
+    mPluginDialog = new QDialog(sakMainWindow);
+    mPluginDialog->setLayout(new QHBoxLayout(mPluginDialog));
+    mPluginDialog->resize(700, 350);
+    mPluginDialog->setModal(true);
 }
 
 SAKDebuggerPlugins::~SAKDebuggerPlugins()
@@ -125,6 +132,11 @@ void SAKDebuggerPlugins::showPluinDataForwarding()
     }
 }
 
+void SAKDebuggerPlugins::showPluginRegularlySending()
+{
+    showPluginDialog(mRegularlySending);
+}
+
 void SAKDebuggerPlugins::showPluginAutomaticallyResponse()
 {
     if (mAutomaticallyResponse->isHidden()) {
@@ -134,11 +146,10 @@ void SAKDebuggerPlugins::showPluginAutomaticallyResponse()
     }
 }
 
-void SAKDebuggerPlugins::showPluginRegularlySending()
+void SAKDebuggerPlugins::showPluginDialog(QWidget *contentWidget)
 {
-    if (mRegularlySending->isHidden()) {
-        mRegularlySending->show();
-    } else {
-        mRegularlySending->show();
-    }
+    auto ret = mPluginDialog->layout()->takeAt(0);
+    Q_UNUSED(ret);
+    mPluginDialog->layout()->addWidget(contentWidget);
+    mPluginDialog->show();
 }

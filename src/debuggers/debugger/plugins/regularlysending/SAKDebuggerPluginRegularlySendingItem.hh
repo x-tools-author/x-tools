@@ -67,11 +67,11 @@ private slots:
     void on_descriptionLineEdit_textChanged(const QString &text);
     void on_inputDataTextEdit_textChanged();
 signals:
-    void intervalChanged(int interval);
-    void formatChanged(int format);
-    void descriptionChanged(QString description);
-    void inputTextChanged(QString text);
-    void invokeWriteBytes(QByteArray bytes);
+    void intervalChanged(quint64 id, int interval);
+    void formatChanged(quint64 id, int format);
+    void descriptionChanged(quint64 id, QString description);
+    void inputTextChanged(quint64 id, QString text);
+    void invokeWriteBytes(QString bytes, int format);
 };
 
 #endif

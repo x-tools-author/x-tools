@@ -20,6 +20,7 @@
 #include <QPushButton>
 
 #include "SAKBaseListWidget.hh"
+#include "SAKDebuggerPluginRegularlySendingItem.hh"
 
 
 class SAKDebuggerPluginRegularlySending : public SAKBaseListWidget
@@ -33,7 +34,6 @@ public:
                                       QWidget *parent = Q_NULLPTR);
     ~SAKDebuggerPluginRegularlySending();
 
-
     struct SAKStructTableContext {
         QString tableName;
         struct {
@@ -44,37 +44,29 @@ public:
             const QString data = QString("text");
         } columns;
     };
+
+
 protected:
     void insertRecord(const QString &tableName, QWidget *itemWidget) final;
     void setItemWidget(QListWidgetItem *item, QWidget *itemWidget) final;
     QWidget *createItemFromParameters(const QJsonObject &jsonObj) final;
     QJsonObject toJsonObject(QWidget *itemWidget) final;
     quint64 itemId(QWidget *itemWidget) final;
-//private:
-//    QString mTableName;
-//    QTimer mClearMessageTimer;
-//private:
-//    void readinRecord();
-//    bool contains(quint64 paraID);
-//    void outputMessage(QString msg, bool isError = false);
-//    // update record
-//    void changeInterval(int interval);
-//    void changeFormat(int format);
-//    void changeDescription(QString description);
-//    void changeInputText(QString text);
-//private:
-//    Ui::SAKPluginRegularlySending *mUi;
-//    QListWidget *mItemListWidget;
-//    QPushButton *mOutportPushButton;
-//    QPushButton *mImportPushButton;
-//    QPushButton *mDeletePushButton;
-//    QPushButton *mAddPushButton;
-//    QLabel *mMessageLabel;
-//private slots:
-//    void on_outportPushButton_clicked();
-//    void on_importPushButton_clicked();
-//    void on_deletePushButton_clicked();
-//    void on_addPushButton_clicked();
+
+
+private:
+    typedef SAKDebuggerPluginRegularlySendingItem SendingItem;
+    SAKStructTableContext mTableCtx;
+
+
+private:
+    void readinRecord();
+    void createSqlDatabaseTable();
+
+    void changeInterval(quint64 id, int interval);
+    void changeFormat(quint64 id, int format);
+    void changeDescription(quint64 id, QString description);
+    void changeInputText(quint64 id, QString text);
 };
 
 #endif
