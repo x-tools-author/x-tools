@@ -33,6 +33,8 @@ public:
         QString description;
         QString data;
     };
+
+
 public:
     SAKDebuggerPluginRegularlySendingItem(QWidget *parent = Q_NULLPTR);
     SAKDebuggerPluginRegularlySendingItem(SAKStructItemContext ctx,
@@ -45,14 +47,20 @@ public:
     QString itemDescription();
     QString itemText();
     SAKStructItemContext context();
+
+
 private:
     quint64 mID;
     QTimer mWriteTimer;
     bool isInitializing;
     SAKStructItemContext mContext;
+
+
 private:
     void write();
     void commonInitializing();
+
+
 private:
     Ui::SAKDebuggerPluginRegularlySendingItem *mUi;
     QCheckBox *mEnableCheckBox;
@@ -60,12 +68,8 @@ private:
     QComboBox *mTextFormatComboBox;
     QLineEdit *mDescriptionLineEdit;
     QTextEdit *mInputDataTextEdit;
-private slots:
-    void on_enableCheckBox_clicked();
-    void on_intervalLineEdit_textChanged(const QString &text);
-    void on_textFormatComboBox_currentTextChanged(const QString &text);
-    void on_descriptionLineEdit_textChanged(const QString &text);
-    void on_inputDataTextEdit_textChanged();
+
+
 signals:
     void intervalChanged(quint64 id, int interval);
     void formatChanged(quint64 id, int format);

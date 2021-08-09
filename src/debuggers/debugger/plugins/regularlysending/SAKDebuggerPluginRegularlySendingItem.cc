@@ -110,50 +110,50 @@ void SAKDebuggerPluginRegularlySendingItem::commonInitializing()
     mInputDataTextEdit = mUi->inputDataTextEdit;
 
     mWriteTimer.setInterval(mIntervalLineEdit->text().toInt());
-    connect(&mWriteTimer, &QTimer::timeout, this, &SAKDebuggerPluginRegularlySendingItem::write);
+    connect(&mWriteTimer, &QTimer::timeout,
+            this, &SAKDebuggerPluginRegularlySendingItem::write);
     SAKCommonDataStructure::setComboBoxTextInputFormat(mTextFormatComboBox);
-}
 
-void SAKDebuggerPluginRegularlySendingItem::on_enableCheckBox_clicked()
-{
-    if (mEnableCheckBox){
+    connect(mUi->enableCheckBox, &QCheckBox::click,
+            this, [&](){
         mEnableCheckBox->isChecked() ? mWriteTimer.start() : mWriteTimer.stop();
-    }
-}
+    });
 
-void SAKDebuggerPluginRegularlySendingItem::on_intervalLineEdit_textChanged(const QString &text)
-{
-    if (!isInitializing){
-        int interval = text.toInt();
-        mWriteTimer.setInterval(interval < 20 ? 20 : interval);
-        emit intervalChanged(mID, interval);
-    }
-}
+    connect(mUi->intervalLineEdit, &QLineEdit::textEdited,
+            this, [&](const QString &text){
+        if (!isInitializing){
+            int interval = text.toInt();
+            mWriteTimer.setInterval(interval < 20 ? 20 : interval);
+            emit intervalChanged(mID, interval);
+        }
+    });
 
-void SAKDebuggerPluginRegularlySendingItem::on_textFormatComboBox_currentTextChanged(const QString &text)
-{
-    Q_UNUSED(text);
-    if (!isInitializing){
-        mInputDataTextEdit->clear();
-        int format = mTextFormatComboBox->currentData().toInt();
-        emit formatChanged(mID, format);
-    }
-}
+    connect(mUi->textFormatComboBox,
+            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this,
+            [&](int index){
+        Q_UNUSED(index);
+        if (!isInitializing){
+            mInputDataTextEdit->clear();
+            int format = mTextFormatComboBox->currentData().toInt();
+            emit formatChanged(mID, format);
+        }
+    });
 
-void SAKDebuggerPluginRegularlySendingItem::on_descriptionLineEdit_textChanged(const QString &text)
-{
-    if (!isInitializing){
-        emit descriptionChanged(mID, text);
-    }
-}
+    connect(mUi->descriptionLineEdit, &QLineEdit::textChanged,
+            this, [&](const QString &text){
+        if (!isInitializing){
+            emit descriptionChanged(mID, text);
+        }
+    });
 
-void SAKDebuggerPluginRegularlySendingItem::on_inputDataTextEdit_textChanged()
-{
-    if (!isInitializing){
-        QString text = mInputDataTextEdit->toPlainText();
-        int format = mTextFormatComboBox->currentData().toInt();
-        SAKCommonDataStructure::formattingInputText(mInputDataTextEdit, format);
+    connect(mUi->inputDataTextEdit, &QTextEdit::textChanged,
+            this, [&](const QString &text){
+        if (!isInitializing){
+            int format = mTextFormatComboBox->currentData().toInt();
+            SAKCommonDataStructure::formattingInputText(mInputDataTextEdit, format);
 
-        emit inputTextChanged(mID, text);
-    }
+            emit inputTextChanged(mID, text);
+        }
+    });
 }
