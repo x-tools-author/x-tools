@@ -54,7 +54,7 @@ public:
 
 protected:
     void insertRecord(const QString &tableName, QWidget *itemWidget) final;
-    void setItemWidget(QListWidgetItem *item, QWidget *itemWidget) final;
+    void setupItemWidget(QListWidgetItem *item, QWidget *itemWidget) final;
     QWidget *createItemFromParameters(const QJsonObject &jsonObj) final;
     QJsonObject toJsonObject(QWidget *itemWidget) final;
     quint64 itemId(QWidget *itemWidget) final;

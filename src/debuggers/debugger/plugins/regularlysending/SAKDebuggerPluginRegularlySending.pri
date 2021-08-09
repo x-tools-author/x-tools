@@ -1,6 +1,5 @@
 FORMS += \
-    $$PWD/SAKDebuggerPluginRegularlySending.ui \
-    $$PWD/SAKPluginRegularlySending.ui
+    $$PWD/SAKDebuggerPluginRegularlySendingItem.ui
 
 HEADERS += \
     $$PWD/SAKDebuggerPluginRegularlySending.hh \

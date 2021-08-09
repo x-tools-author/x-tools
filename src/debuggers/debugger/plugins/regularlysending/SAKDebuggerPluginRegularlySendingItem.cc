@@ -14,7 +14,7 @@
 #include "SAKCommonDataStructure.hh"
 #include "SAKDebuggerPluginRegularlySendingItem.hh"
 
-#include "ui_SAKPluginRegularlySendingItem.h"
+#include "ui_SAKDebuggerPluginRegularlySendingItem.h"
 
 SAKDebuggerPluginRegularlySendingItem::SAKDebuggerPluginRegularlySendingItem(
         QWidget *parent
@@ -114,7 +114,7 @@ void SAKDebuggerPluginRegularlySendingItem::commonInitializing()
             this, &SAKDebuggerPluginRegularlySendingItem::write);
     SAKCommonDataStructure::setComboBoxTextInputFormat(mTextFormatComboBox);
 
-    connect(mUi->enableCheckBox, &QCheckBox::click,
+    connect(mUi->enableCheckBox, &QCheckBox::clicked,
             this, [&](){
         mEnableCheckBox->isChecked() ? mWriteTimer.start() : mWriteTimer.stop();
     });
@@ -148,8 +148,9 @@ void SAKDebuggerPluginRegularlySendingItem::commonInitializing()
     });
 
     connect(mUi->inputDataTextEdit, &QTextEdit::textChanged,
-            this, [&](const QString &text){
+            this, [&](){
         if (!isInitializing){
+            QString text = mUi->inputDataTextEdit->toPlainText();
             int format = mTextFormatComboBox->currentData().toInt();
             SAKCommonDataStructure::formattingInputText(mInputDataTextEdit, format);
 

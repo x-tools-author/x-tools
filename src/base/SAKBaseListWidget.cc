@@ -1,4 +1,4 @@
-/****************************************************************************************
+﻿/****************************************************************************************
  * Copyright 2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -102,6 +102,19 @@ void SAKBaseListWidget::outputMessage(QString msg, bool isError)
     mClearMessageInfoTimer.start();
 }
 
+bool SAKBaseListWidget::itemIsExist(QWidget *itemWidget)
+{
+    for (int i = 0; i < mListWidget->count(); i++) {
+        QListWidgetItem *item = mListWidget->item(i);
+        QWidget *w = mListWidget->itemWidget(item);
+        if (itemId(w) == itemId(itemWidget)) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 void SAKBaseListWidget::clearItems()
 {
     QString title = tr("Clear Data");
@@ -144,7 +157,7 @@ void SAKBaseListWidget::importItems()
         QJsonObject parameters = jsa.at(i).toObject();
         auto *itemWidget = createItemFromParameters(parameters);
         QListWidgetItem *item = new QListWidgetItem();
-        setItemWidget(item, itemWidget);
+        setupItemWidgetInner(item, itemWidget);
         insertRecord(mTableName, itemWidget);
     }
 }
@@ -209,6 +222,24 @@ void SAKBaseListWidget::addItem()
 {
     QListWidgetItem *item = new QListWidgetItem();
     QWidget *itemWidget = createItemFromParameters(QJsonObject());
-    setItemWidget(item, itemWidget);
+    setupItemWidgetInner(item, itemWidget);
     insertRecord(mTableName, itemWidget);
+}
+
+void SAKBaseListWidget::setupItemWidgetInner(QListWidgetItem *item,
+                                             QWidget *itemWidget)
+{
+    for (int i = 0; i < mListWidget->count(); i++) {
+        QListWidgetItem *item = mListWidget->item(i);
+        QWidget *w = mListWidget->itemWidget(item);
+        if (itemId(w) == itemId(itemWidget)) {
+            return;
+        }
+    }
+
+    item->setSizeHint(itemWidget->sizeHint());
+    mListWidget->addItem(item);
+    mListWidget->setItemWidget(item, itemWidget);
+
+    setupItemWidget(itemWidget);
 }

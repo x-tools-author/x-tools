@@ -28,8 +28,6 @@
 #include "SAKDebuggerInputDataPreset.hh"
 #include "SAKDebuggerInputDataPresetItem.hh"
 
-#include "ui_SAKDebuggerInputDataPreset.h"
-
 SAKDebuggerInputDataPreset::SAKDebuggerInputDataPreset(
         QSqlDatabase *sqlDatabase,
         QSettings *settings,
@@ -91,7 +89,7 @@ void SAKDebuggerInputDataPreset::readinRecord()
 
             QListWidgetItem *item = new QListWidgetItem();
             auto *itemWidget = new SAKDebuggerInputDataPresetItem(itemContext);
-            setItemWidget(item, itemWidget);
+            setupItemWidget(item, itemWidget);
         }
     } else {
         qWarning() << "Can not exec query command:"
@@ -146,23 +144,12 @@ void SAKDebuggerInputDataPreset::insertRecord(const QString &tableName,
     }
 }
 
-void SAKDebuggerInputDataPreset::setItemWidget(
+void SAKDebuggerInputDataPreset::setupItemWidget(
         QListWidgetItem *item,
         QWidget *itemWidget)
 {
-    bool contain = false;
-    auto cookedItemWidget = qobject_cast<SAKDebuggerInputDataPresetItem*>(itemWidget);
-    for (int i = 0; i < mListWidget->count(); i++) {
-        QListWidgetItem *item = mListWidget->item(i);
-        QWidget *w = mListWidget->itemWidget(item);
-        auto *iw = qobject_cast<SAKDebuggerInputDataPresetItem*>(w);
-        if (iw->itemID() == cookedItemWidget->itemID()) {
-            contain = true;
-            break;
-        }
-    }
-
-    if (!contain) {
+    if (!itemIsExist(itemWidget)) {
+        auto cookedItemWidget = qobject_cast<SAKDebuggerInputDataPresetItem*>(itemWidget);
         item->setSizeHint(itemWidget->sizeHint());
         mListWidget->addItem(item);
         mListWidget->setItemWidget(item, itemWidget);
@@ -223,7 +210,6 @@ QWidget *SAKDebuggerInputDataPreset::createItemFromParameters(
 
         auto itemWidget = new SAKDebuggerInputDataPresetItem(itemCtx);
         return itemWidget;
-
     }
 }
 

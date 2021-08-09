@@ -22,7 +22,7 @@ namespace Ui {
     class SAKDebuggerPluginRegularlySendingItem;
 }
 
-class SAKDebuggerPluginRegularlySendingItem:public QWidget
+class SAKDebuggerPluginRegularlySendingItem : public QWidget
 {
     Q_OBJECT
 public:

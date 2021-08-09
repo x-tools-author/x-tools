@@ -92,8 +92,8 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
 
     mPluginDialog = new QDialog(sakMainWindow);
     mPluginDialog->setLayout(new QHBoxLayout(mPluginDialog));
-    mPluginDialog->resize(700, 350);
     mPluginDialog->setModal(true);
+    mPluginDialog->resize(800, 350);
 }
 
 SAKDebuggerPlugins::~SAKDebuggerPlugins()
