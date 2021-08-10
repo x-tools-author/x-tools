@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ***************************************************************************************/
-#ifndef SAKPLUGINAUTOMATICALLYRESPONSE_HH
-#define SAKPLUGINAUTOMATICALLYRESPONSE_HH
+#ifndef SAKDEBUGGERPLUGINAUTORESPONSE_HH
+#define SAKDEBUGGERPLUGINAUTORESPONSE_HH
 
 #include <QTimer>
 #include <QLabel>
@@ -22,22 +22,22 @@
 #include <QSqlDatabase>
 #include <QListWidgetItem>
 
-#include "SAKPluginAutomaticallyResponseItem.hh"
+#include "SAKDebuggerPluginAutoResponseItem.hh"
 
 namespace Ui {
     class SAKPluginAutomaticallyResponse;
 }
 
 /// @brief Auto response item manager
-class SAKPluginAutomaticallyResponse:public QWidget
+class SAKDebuggerPluginAutoResponse:public QWidget
 {
    Q_OBJECT
 public:
-    SAKPluginAutomaticallyResponse(QSettings *settings,
+    SAKDebuggerPluginAutoResponse(QSettings *settings,
                                    QString settingsGroup,
                                    QSqlDatabase *sqlDatabase,
                                    QWidget *parent = Q_NULLPTR);
-    ~SAKPluginAutomaticallyResponse();
+    ~SAKDebuggerPluginAutoResponse();
     void onBytesRead(const QByteArray &bytes);
 
 
@@ -78,8 +78,8 @@ private:
 private:
     void outputMessage(QString msg, bool isInfo);
     void readInRecord();
-    void insertRecord(SAKPluginAutomaticallyResponseItem::ITEM_CTX itemCtx);
-    void addItem(SAKPluginAutomaticallyResponseItem::ITEM_CTX itemCtx);
+    void insertRecord(SAKDebuggerPluginAutoResponseItem::ITEM_CTX itemCtx);
+    void addItem(SAKDebuggerPluginAutoResponseItem::ITEM_CTX itemCtx);
     void exportItems();
     void importItems();
     bool itemIsExisted(quint64 id);
@@ -88,7 +88,7 @@ private:
     void createSqlDatabaseTable();
     void clearItems();
     void setItemWidget(QListWidgetItem *item,
-                       SAKPluginAutomaticallyResponseItem *itemWidget,
+                       SAKDebuggerPluginAutoResponseItem *itemWidget,
                        QListWidget *listWidget);
 
 

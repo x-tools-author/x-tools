@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ***************************************************************************************/
-#ifndef SAKOTHERAUTOMATICALLYRESPONSEITEM_HH
-#define SAKOTHERAUTOMATICALLYRESPONSEITEM_HH
+#ifndef SAKDEBUGGERPLUGINAUTORESPONSEITEM_HH
+#define SAKDEBUGGERPLUGINAUTORESPONSEITEM_HH
 
 #include <QTimer>
 #include <QWidget>
@@ -19,11 +19,11 @@
 #include <QPushButton>
 
 namespace Ui {
-    class SAKPluginAutomaticallyResponseItem;
+    class SAKDebuggerPluginAutoResponseItem;
 }
 
 /// @brief Auto response item
-class SAKPluginAutomaticallyResponseItem : public QWidget
+class SAKDebuggerPluginAutoResponseItem : public QWidget
 {
     Q_OBJECT
 public:
@@ -49,8 +49,8 @@ public:
     Q_ENUM(SAKEnumAutomaticallyResponseOption);
 
 public:
-    SAKPluginAutomaticallyResponseItem(QWidget *parent = Q_NULLPTR);
-    SAKPluginAutomaticallyResponseItem(quint64 mID,
+    SAKDebuggerPluginAutoResponseItem(QWidget *parent = Q_NULLPTR);
+    SAKDebuggerPluginAutoResponseItem(quint64 mID,
                                        QString name,
                                        QString referenceData,
                                        QString responseData,
@@ -61,7 +61,7 @@ public:
                                        bool delay,
                                        int interval,
                                        QWidget *parent = Q_NULLPTR);
-    ~SAKPluginAutomaticallyResponseItem();
+    ~SAKDebuggerPluginAutoResponseItem();
 
 
     SAKStructAutomaticallyResponseItemContext context();
@@ -70,7 +70,7 @@ public:
 
 private:
     quint64 mID;
-    Ui::SAKPluginAutomaticallyResponseItem *mUi;
+    Ui::SAKDebuggerPluginAutoResponseItem *mUi;
 
 
 private:

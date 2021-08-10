@@ -15,20 +15,20 @@
 #include "SAKDebugger.hh"
 #include "SAKCommonInterface.hh"
 #include "SAKCommonDataStructure.hh"
-#include "SAKPluginAutomaticallyResponseItem.hh"
+#include "SAKDebuggerPluginAutoResponseItem.hh"
 
 #include "ui_SAKPluginAutomaticallyResponseItem.h"
 
-SAKPluginAutomaticallyResponseItem::SAKPluginAutomaticallyResponseItem(QWidget *parent)
+SAKDebuggerPluginAutoResponseItem::SAKDebuggerPluginAutoResponseItem(QWidget *parent)
     :QWidget(parent)
-    ,mUi(new Ui::SAKPluginAutomaticallyResponseItem)
+    ,mUi(new Ui::SAKDebuggerPluginAutoResponseItem)
 {
     mUi->setupUi(this);
     mID = QDateTime::currentMSecsSinceEpoch();
     setupItem();
 }
 
-SAKPluginAutomaticallyResponseItem::SAKPluginAutomaticallyResponseItem(
+SAKDebuggerPluginAutoResponseItem::SAKDebuggerPluginAutoResponseItem(
         quint64 id,
         QString name,
         QString referenceData,
@@ -42,7 +42,7 @@ SAKPluginAutomaticallyResponseItem::SAKPluginAutomaticallyResponseItem(
         QWidget *parent)
     :QWidget(parent)
     ,mID(id)
-    ,mUi(new Ui::SAKPluginAutomaticallyResponseItem)
+    ,mUi(new Ui::SAKDebuggerPluginAutoResponseItem)
 {
     mUi->setupUi(this);
     mUi->descriptionLineEdit->setText(name);
@@ -58,13 +58,13 @@ SAKPluginAutomaticallyResponseItem::SAKPluginAutomaticallyResponseItem(
     setupItem();
 }
 
-SAKPluginAutomaticallyResponseItem::~SAKPluginAutomaticallyResponseItem()
+SAKDebuggerPluginAutoResponseItem::~SAKDebuggerPluginAutoResponseItem()
 {
     delete mUi;
 }
 
-SAKPluginAutomaticallyResponseItem::SAKStructAutomaticallyResponseItemContext
-SAKPluginAutomaticallyResponseItem::context()
+SAKDebuggerPluginAutoResponseItem::SAKStructAutomaticallyResponseItemContext
+SAKDebuggerPluginAutoResponseItem::context()
 {
     SAKStructAutomaticallyResponseItemContext ctx;
     ctx.id = mID;
@@ -81,7 +81,7 @@ SAKPluginAutomaticallyResponseItem::context()
     return ctx;
 }
 
-void SAKPluginAutomaticallyResponseItem::onBytesRead(const QByteArray &bytes)
+void SAKDebuggerPluginAutoResponseItem::onBytesRead(const QByteArray &bytes)
 {
     if (bytes.isEmpty() || (!mUi->enableCheckBox->isChecked())) {
         return;
@@ -131,7 +131,7 @@ void SAKPluginAutomaticallyResponseItem::onBytesRead(const QByteArray &bytes)
     }
 }
 
-void SAKPluginAutomaticallyResponseItem::setupItem()
+void SAKDebuggerPluginAutoResponseItem::setupItem()
 {
     mUi->optionComboBox->clear();
     int dataValue = ReadDataIsEqualToReference;
@@ -153,7 +153,7 @@ void SAKPluginAutomaticallyResponseItem::setupItem()
 
 }
 
-bool SAKPluginAutomaticallyResponseItem::response(QByteArray receiveData,
+bool SAKDebuggerPluginAutoResponseItem::response(QByteArray receiveData,
                                                   QByteArray referenceData,
                                                   int option)
 {

@@ -4,7 +4,7 @@ include($$PWD/3d/SAKPlugin3d.pri)
 include($$PWD/charts/SAKPluginCharts.pri)
 include($$PWD/dataforwarding/SAKPluginDataForwarding.pri)
 include($$PWD/regularlysending/SAKDebuggerPluginRegularlySending.pri)
-include($$PWD/automaticallyresponse/SAKPluginAutomaticallyResponse.pri)
+include($$PWD/autoresponse/SAKDebuggerPluginAutoResponse.pri)
 
 HEADERS += \
     $$PWD/SAKDebuggerPlugins.hh

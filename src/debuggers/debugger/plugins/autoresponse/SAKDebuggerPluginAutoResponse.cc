@@ -22,11 +22,11 @@
 #include "SAKDebugger.hh"
 #include "SAKApplication.hh"
 #include "SAKCommonDataStructure.hh"
-#include "SAKPluginAutomaticallyResponse.hh"
+#include "SAKDebuggerPluginAutoResponse.hh"
 
 #include "ui_SAKPluginAutomaticallyResponse.h"
 
-SAKPluginAutomaticallyResponse::SAKPluginAutomaticallyResponse(
+SAKDebuggerPluginAutoResponse::SAKDebuggerPluginAutoResponse(
         QSettings *settings,
         QString settingsGroup,
         QSqlDatabase *sqlDatabase,
@@ -62,34 +62,34 @@ SAKPluginAutomaticallyResponse::SAKPluginAutomaticallyResponse(
 
 
     connect(mUi->outportPushButton, &QPushButton::clicked,
-            this, &SAKPluginAutomaticallyResponse::exportItems);
+            this, &SAKDebuggerPluginAutoResponse::exportItems);
     connect(mUi->importPushButton, &QPushButton::clicked,
-            this, &SAKPluginAutomaticallyResponse::importItems);
+            this, &SAKDebuggerPluginAutoResponse::importItems);
     connect(mUi->deleteItemPushButton, &QPushButton::clicked,
-            this, &SAKPluginAutomaticallyResponse::deleteItem);
+            this, &SAKDebuggerPluginAutoResponse::deleteItem);
     connect(mUi->addItemPushButton, &QPushButton::clicked,
-            this, &SAKPluginAutomaticallyResponse::addItemWidthoutParameters);
+            this, &SAKDebuggerPluginAutoResponse::addItemWidthoutParameters);
     connect(mUi->clearItemsPushButton, &QPushButton::clicked,
-            this, &SAKPluginAutomaticallyResponse::clearItems);
+            this, &SAKDebuggerPluginAutoResponse::clearItems);
 
 
     createSqlDatabaseTable();
     readInRecord();
 }
 
-SAKPluginAutomaticallyResponse::~SAKPluginAutomaticallyResponse()
+SAKDebuggerPluginAutoResponse::~SAKDebuggerPluginAutoResponse()
 {
     delete mUi;
 }
 
-void SAKPluginAutomaticallyResponse::onBytesRead(const QByteArray &bytes)
+void SAKDebuggerPluginAutoResponse::onBytesRead(const QByteArray &bytes)
 {
     if (!mForbidAll) {
         emit bytesRead(bytes);
     }
 }
 
-void SAKPluginAutomaticallyResponse::outputMessage(QString msg, bool isInfo)
+void SAKDebuggerPluginAutoResponse::outputMessage(QString msg, bool isInfo)
 {
     QString color = isInfo ? "black" : "red";
     mUi->msgLabel->setStyleSheet(QString("QLabel{color:%1}").arg(color));
@@ -101,12 +101,12 @@ void SAKPluginAutomaticallyResponse::outputMessage(QString msg, bool isInfo)
     }
 }
 
-void SAKPluginAutomaticallyResponse::readInRecord()
+void SAKDebuggerPluginAutoResponse::readInRecord()
 {
     const QString queryString = QString("SELECT * FROM %1")
             .arg(mSqlDatabaseTableCtx.tableName);
     if (mSqlQuery.exec(queryString)) {
-        SAKPluginAutomaticallyResponseItem::ITEM_CTX item;
+        SAKDebuggerPluginAutoResponseItem::ITEM_CTX item;
         while (mSqlQuery.next()) {
             QString column;
             QVariant valueVariant;
@@ -161,8 +161,8 @@ void SAKPluginAutomaticallyResponse::readInRecord()
     }
 }
 
-void SAKPluginAutomaticallyResponse::
-insertRecord(SAKPluginAutomaticallyResponseItem::ITEM_CTX itemCtx)
+void SAKDebuggerPluginAutoResponse::
+insertRecord(SAKDebuggerPluginAutoResponseItem::ITEM_CTX itemCtx)
 {
     auto tableCtx = mSqlDatabaseTableCtx;
     QString queryString = QString("INSERT INTO %1(").arg(tableCtx.tableName);
@@ -194,13 +194,13 @@ insertRecord(SAKPluginAutomaticallyResponseItem::ITEM_CTX itemCtx)
     }
 }
 
-void SAKPluginAutomaticallyResponse::
-addItem(SAKPluginAutomaticallyResponseItem::ITEM_CTX itemCtx)
+void SAKDebuggerPluginAutoResponse::
+addItem(SAKDebuggerPluginAutoResponseItem::ITEM_CTX itemCtx)
 {
     QListWidget *listWidget = mUi->listWidget;
     QListWidgetItem *item = new QListWidgetItem(listWidget);
     listWidget->addItem(item);
-    auto *itemWidget = new SAKPluginAutomaticallyResponseItem(
+    auto *itemWidget = new SAKDebuggerPluginAutoResponseItem(
                 itemCtx.id,
                 itemCtx.name,
                 itemCtx.referenceData,
@@ -216,7 +216,7 @@ addItem(SAKPluginAutomaticallyResponseItem::ITEM_CTX itemCtx)
     setItemWidget(item, itemWidget, listWidget);
 }
 
-void SAKPluginAutomaticallyResponse::exportItems()
+void SAKDebuggerPluginAutoResponse::exportItems()
 {
     SAKStructAutomaticallyResponseJsonKeyContext itemKey;
     QListWidget *listWidget = mUi->listWidget;
@@ -225,7 +225,7 @@ void SAKPluginAutomaticallyResponse::exportItems()
         QListWidgetItem *item = listWidget->item(i);
         QWidget *itemWidget = listWidget->itemWidget(item);
         auto cookedItemWidget
-                = qobject_cast<SAKPluginAutomaticallyResponseItem*>(itemWidget);
+                = qobject_cast<SAKDebuggerPluginAutoResponseItem*>(itemWidget);
         auto itemCtx = cookedItemWidget->context();
         QJsonObject obj;
         obj.insert(itemKey.id,
@@ -270,7 +270,7 @@ void SAKPluginAutomaticallyResponse::exportItems()
     }
 }
 
-void SAKPluginAutomaticallyResponse::importItems()
+void SAKDebuggerPluginAutoResponse::importItems()
 {
     auto location = QStandardPaths::DesktopLocation;
     QString defaultPath = QStandardPaths::writableLocation(location);
@@ -291,7 +291,7 @@ void SAKPluginAutomaticallyResponse::importItems()
 
         QJsonArray jsa = jsc.array();
         SAKStructAutomaticallyResponseJsonKeyContext itemKey;
-        SAKPluginAutomaticallyResponseItem::ITEM_CTX itemCtx;
+        SAKDebuggerPluginAutoResponseItem::ITEM_CTX itemCtx;
         for (int i = 0; i < jsa.count(); i++){
             QJsonObject jso = jsa.at(i).toObject();
             if (!jso.isEmpty()) {
@@ -322,14 +322,14 @@ void SAKPluginAutomaticallyResponse::importItems()
     }
 }
 
-bool SAKPluginAutomaticallyResponse::itemIsExisted(quint64 id)
+bool SAKDebuggerPluginAutoResponse::itemIsExisted(quint64 id)
 {
     QListWidget *listWidget = mUi->listWidget;
     for (int i = 0; i < listWidget->count(); i++){
         QListWidgetItem *item = listWidget->item(i);
         QWidget *itemWidget = listWidget->itemWidget(item);
         auto cookedItemWidget
-                = qobject_cast<SAKPluginAutomaticallyResponseItem*>(itemWidget);
+                = qobject_cast<SAKDebuggerPluginAutoResponseItem*>(itemWidget);
         auto itemCtx = cookedItemWidget->context();
 
         if (itemCtx.id == id) {
@@ -340,7 +340,7 @@ bool SAKPluginAutomaticallyResponse::itemIsExisted(quint64 id)
     return false;
 }
 
-void SAKPluginAutomaticallyResponse::deleteItem()
+void SAKDebuggerPluginAutoResponse::deleteItem()
 {
     QListWidget *listWidget = mUi->listWidget;
     QListWidgetItem *item = listWidget->currentItem();
@@ -351,7 +351,7 @@ void SAKPluginAutomaticallyResponse::deleteItem()
 
     QWidget *itemWidget = listWidget->itemWidget(item);
     auto cookedItemWidget =
-            qobject_cast<SAKPluginAutomaticallyResponseItem*>(itemWidget);
+            qobject_cast<SAKDebuggerPluginAutoResponseItem*>(itemWidget);
     quint64 id = cookedItemWidget->context().id;
     SAKDebugger::commonSqlApiDeleteRecord(&mSqlQuery,
                                           mSqlDatabaseTableCtx.tableName,
@@ -360,19 +360,19 @@ void SAKPluginAutomaticallyResponse::deleteItem()
     delete item;
 }
 
-void SAKPluginAutomaticallyResponse::addItemWidthoutParameters()
+void SAKDebuggerPluginAutoResponse::addItemWidthoutParameters()
 {
     QListWidget *listWidget = mUi->listWidget;
     QListWidgetItem *item = new QListWidgetItem(listWidget);
     listWidget->addItem(item);
-    auto *itemWidget = new SAKPluginAutomaticallyResponseItem(listWidget);
+    auto *itemWidget = new SAKDebuggerPluginAutoResponseItem(listWidget);
     setItemWidget(item, itemWidget, listWidget);
 
     auto itemCtx = itemWidget->context();
     insertRecord(itemCtx);
 }
 
-void SAKPluginAutomaticallyResponse::createSqlDatabaseTable()
+void SAKDebuggerPluginAutoResponse::createSqlDatabaseTable()
 {
     if (!mSqlDatabase->tables().contains(mSqlDatabaseTableCtx.tableName)) {
         QString queryString;
@@ -415,7 +415,7 @@ void SAKPluginAutomaticallyResponse::createSqlDatabaseTable()
     }
 }
 
-void SAKPluginAutomaticallyResponse::clearItems()
+void SAKDebuggerPluginAutoResponse::clearItems()
 {
     int ret = SAKDebugger::clearDataMessageBox();
     if (ret == QMessageBox::Ok) {
@@ -423,7 +423,7 @@ void SAKPluginAutomaticallyResponse::clearItems()
         while (listWidget->count()) {
             auto item = listWidget->item(0);
             auto itemWidget =
-                    qobject_cast<SAKPluginAutomaticallyResponseItem*>(
+                    qobject_cast<SAKDebuggerPluginAutoResponseItem*>(
                         listWidget->itemWidget(item)
                         );
             auto id = itemWidget->context().id;
@@ -436,16 +436,16 @@ void SAKPluginAutomaticallyResponse::clearItems()
     }
 }
 
-void SAKPluginAutomaticallyResponse::setItemWidget(QListWidgetItem *item,
-                        SAKPluginAutomaticallyResponseItem *itemWidget,
+void SAKDebuggerPluginAutoResponse::setItemWidget(QListWidgetItem *item,
+                        SAKDebuggerPluginAutoResponseItem *itemWidget,
                         QListWidget *listWidget)
 {
     item->setSizeHint(itemWidget->sizeHint());
     listWidget->setItemWidget(item, itemWidget);
 
-    connect(this, &SAKPluginAutomaticallyResponse::bytesRead,
-            itemWidget, &SAKPluginAutomaticallyResponseItem::onBytesRead);
+    connect(this, &SAKDebuggerPluginAutoResponse::bytesRead,
+            itemWidget, &SAKDebuggerPluginAutoResponseItem::onBytesRead);
 
-    connect(itemWidget, &SAKPluginAutomaticallyResponseItem::responseBytes,
-            this, &SAKPluginAutomaticallyResponse::writeBytes);
+    connect(itemWidget, &SAKDebuggerPluginAutoResponseItem::responseBytes,
+            this, &SAKDebuggerPluginAutoResponse::writeBytes);
 }

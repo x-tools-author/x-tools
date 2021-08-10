@@ -1,14 +1,14 @@
 FORMS += \
-    $$PWD/SAKPluginAutomaticallyResponse.ui \
-    $$PWD/SAKPluginAutomaticallyResponseItem.ui
+    $$PWD/SAKDebuggerPluginAutoResponseItem.ui \
+    $$PWD/SAKPluginAutomaticallyResponse.ui
 
 HEADERS += \
-    $$PWD/SAKPluginAutomaticallyResponse.hh \
-    $$PWD/SAKPluginAutomaticallyResponseItem.hh
+    $$PWD/SAKDebuggerPluginAutoResponse.hh \
+    $$PWD/SAKDebuggerPluginAutoResponseItem.hh
 
 SOURCES += \
-    $$PWD/SAKPluginAutomaticallyResponse.cc \
-    $$PWD/SAKPluginAutomaticallyResponseItem.cc
+    $$PWD/SAKDebuggerPluginAutoResponse.cc \
+    $$PWD/SAKDebuggerPluginAutoResponseItem.cc
 
 INCLUDEPATH += \
     $$PWD

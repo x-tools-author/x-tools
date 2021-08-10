@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SAKPluginAutomaticallyResponseItem</class>
- <widget class="QWidget" name="SAKPluginAutomaticallyResponseItem">
+ <class>SAKDebuggerPluginAutoResponseItem</class>
+ <widget class="QWidget" name="SAKDebuggerPluginAutoResponseItem">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>506</width>
-    <height>103</height>
+    <height>107</height>
    </rect>
   </property>
   <property name="windowTitle">
