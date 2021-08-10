@@ -78,6 +78,9 @@ private:
 signals:
     void bytesRead(QByteArray bytes);
     void bytesWritten(QByteArray bytes);
+
+    void invokeWriteRawBytes(QString rawBytes, int format);
+    void invokeWriteCookedBytes(QByteArray bytes);
 };
 
 #endif // SAKDEBUGGERPLUGINS_HH
