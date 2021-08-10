@@ -146,7 +146,7 @@ void SAKBaseListWidget::importItems()
         auto *itemWidget = createItemFromParameters(parameters);
         QListWidgetItem *item = new QListWidgetItem();
         if (setupItemWidget(item, itemWidget)) {
-            insertRecord(mTableName, itemWidget);
+            insertRecord(sqlInsert(mTableName, itemWidget));
         } else {
             itemWidget->deleteLater();
             delete item;
@@ -215,7 +215,7 @@ void SAKBaseListWidget::addItem()
     QListWidgetItem *item = new QListWidgetItem();
     QWidget *itemWidget = createItemFromParameters(QJsonObject());
     if (setupItemWidget(item, itemWidget)) {
-        insertRecord(mTableName, itemWidget);
+        insertRecord(sqlInsert(mTableName, itemWidget));
     } else {
         itemWidget->deleteLater();
         delete item;
@@ -230,7 +230,7 @@ void SAKBaseListWidget::readinRecords()
             QJsonObject parameters = toJsonObject(mSqlQuery);
             auto *itemWidget = createItemFromParameters(parameters);
             QListWidgetItem *item = new QListWidgetItem();
-            if (setupItemWidget(item, itemWidget)) {
+            if (!setupItemWidget(item, itemWidget)) {
                 itemWidget->deleteLater();
                 delete item;
             }
@@ -246,7 +246,8 @@ void SAKBaseListWidget::readinRecords()
 bool SAKBaseListWidget::setupItemWidget(QListWidgetItem *item,
                                         QWidget *itemWidget)
 {
-    for (int i = 0; i < mListWidget->count(); i++) {
+    int count = mListWidget->count();
+    for (int i = 0; i < count; i++) {
         QListWidgetItem *item = mListWidget->item(i);
         QWidget *w = mListWidget->itemWidget(item);
         if (itemId(w) == itemId(itemWidget)) {
@@ -261,10 +262,26 @@ bool SAKBaseListWidget::setupItemWidget(QListWidgetItem *item,
     return true;
 }
 
-void SAKBaseListWidget::initialize()
+void SAKBaseListWidget::insertRecord(const QString &sql)
+{
+    if (!mSqlQuery.exec(sql)) {
+        qInfo() << sql;
+        qWarning() << "Insert record failed:" << mSqlQuery.lastError().text();
+    }
+}
+
+void SAKBaseListWidget::createTable(const QString &sql)
 {
     if (!mSqlDatabase->tables().contains(mTableName)) {
-        createDatabaseTable(mTableName);
+        if (!mSqlQuery.exec(sql)) {
+            qInfo() << sql;
+            qWarning() << "Create table failed:" << mSqlQuery.lastError().text();
+        }
     }
+}
+
+void SAKBaseListWidget::initialize()
+{
+    createTable(sqlCreate(mTableName));
     readinRecords();
 }

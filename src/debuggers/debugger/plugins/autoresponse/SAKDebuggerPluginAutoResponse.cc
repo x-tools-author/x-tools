@@ -53,13 +53,13 @@ void SAKDebuggerPluginAutoResponse::onBytesRead(const QByteArray &bytes)
     }
 }
 
-void SAKDebuggerPluginAutoResponse::insertRecord(const QString &tableName,
+QString SAKDebuggerPluginAutoResponse::sqlInsert(const QString &tableName,
                                                  QWidget *itemWidget)
 {
     auto cookedItemWidget
             = qobject_cast<SAKDebuggerPluginAutoResponseItem*>(itemWidget);
     if (!cookedItemWidget) {
-        return;
+        return QString();
     }
 
     auto itemCtx = cookedItemWidget->context();
@@ -86,11 +86,8 @@ void SAKDebuggerPluginAutoResponse::insertRecord(const QString &tableName,
     queryString.append(QString("%1,").arg(itemCtx.option));
     queryString.append(QString("%1,").arg(itemCtx.delay));
     queryString.append(QString("%1)").arg(itemCtx.interval));
-    if (!mSqlQuery.exec(queryString)) {
-        qInfo() << queryString;
-        qWarning() << "Insert record to " << tableCtx.tableName
-                   << " table failed: " << mSqlQuery.lastError().text();
-    }
+
+    return queryString;
 }
 
 QWidget *SAKDebuggerPluginAutoResponse::createItemFromParameters(
@@ -204,45 +201,39 @@ void SAKDebuggerPluginAutoResponse::connectSignalsToSlots(QWidget *itemWidget)
             this, &SAKDebuggerPluginAutoResponse::writeBytes);
 }
 
-void SAKDebuggerPluginAutoResponse::createDatabaseTable(QString tableName)
+QString SAKDebuggerPluginAutoResponse::sqlCreate(const QString &tableName)
 {
-    if (!mSqlDatabase->tables().contains(tableName)) {
-        QString queryString;
-        queryString.append(QString("CREATE TABLE %1(")
-                           .arg(tableName));
-        queryString.append(QString("%1 INTEGER PRIMARY KEY NOT NULL,")
-                           .arg(mTableCtx.columns.id));
+    QString queryString;
+    queryString.append(QString("CREATE TABLE %1(")
+                       .arg(tableName));
+    queryString.append(QString("%1 INTEGER PRIMARY KEY NOT NULL,")
+                       .arg(mTableCtx.columns.id));
 
-        queryString.append(QString("%1 TEXT NOT NULL,")
-                           .arg(mTableCtx.columns.name));
+    queryString.append(QString("%1 TEXT NOT NULL,")
+                       .arg(mTableCtx.columns.name));
 
-        queryString.append(QString("%1 TEXT NOT NULL,")
-                           .arg(mTableCtx.columns.referenceData));
+    queryString.append(QString("%1 TEXT NOT NULL,")
+                       .arg(mTableCtx.columns.referenceData));
 
-        queryString.append(QString("%1 TEXT NOT NULL,")
-                           .arg(mTableCtx.columns.responseData));
+    queryString.append(QString("%1 TEXT NOT NULL,")
+                       .arg(mTableCtx.columns.responseData));
 
-        queryString.append(QString("%1 INTEGER NOT NULL,")
-                           .arg(mTableCtx.columns.enable));
+    queryString.append(QString("%1 INTEGER NOT NULL,")
+                       .arg(mTableCtx.columns.enable));
 
-        queryString.append(QString("%1 INTEGER NOT NULL,")
-                           .arg(mTableCtx.columns.referenceFormat));
+    queryString.append(QString("%1 INTEGER NOT NULL,")
+                       .arg(mTableCtx.columns.referenceFormat));
 
-        queryString.append(QString("%1 INTEGER NOT NULL,")
-                           .arg(mTableCtx.columns.responseFormat));
+    queryString.append(QString("%1 INTEGER NOT NULL,")
+                       .arg(mTableCtx.columns.responseFormat));
 
-        queryString.append(QString("%1 INTEGER NOT NULL,")
-                           .arg(mTableCtx.columns.option));
+    queryString.append(QString("%1 INTEGER NOT NULL,")
+                       .arg(mTableCtx.columns.option));
 
-        queryString.append(QString("%1 INTEGER NOT NULL,")
-                           .arg(mTableCtx.columns.delay));
+    queryString.append(QString("%1 INTEGER NOT NULL,")
+                       .arg(mTableCtx.columns.delay));
 
-        queryString.append(QString("%1 INTEGER NOT NULL)")
-                           .arg(mTableCtx.columns.interval));
-
-        if (!mSqlQuery.exec(queryString)) {
-            qInfo() << queryString;
-            qWarning() << mSqlQuery.lastError().text();
-        }
-    }
+    queryString.append(QString("%1 INTEGER NOT NULL)")
+                       .arg(mTableCtx.columns.interval));
+    return queryString;
 }

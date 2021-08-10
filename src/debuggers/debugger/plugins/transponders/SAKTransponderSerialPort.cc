@@ -19,11 +19,41 @@ SAKTransponderSerialPort::SAKTransponderSerialPort(QSqlDatabase *sqlDatabase,
     mTableCtx.tableName = mTableName;
 }
 
-void SAKTransponderSerialPort::insertRecord(const QString &tableName,
+QString SAKTransponderSerialPort::sqlCreate(const QString &tableName)
+{
+    Q_UNUSED(tableName);
+    return QString();
+}
+
+QString SAKTransponderSerialPort::sqlInsert(const QString &tableName,
                                             QWidget *itemWidget)
 {
     Q_UNUSED(tableName);
     Q_UNUSED(itemWidget);
+    return QString();
+}
+
+QJsonObject SAKTransponderSerialPort::toJsonObject(QWidget *itemWidget)
+{
+    QJsonObject jsonObj;
+    auto cookedItemWidget = qobject_cast<SAKTransponderSerialPortItem*>(itemWidget);
+    if (cookedItemWidget) {
+        auto parasCtx = cookedItemWidget->parametersContext();
+        jsonObj.insert(mTableCtx.columns.id, qint64(cookedItemWidget->id()));
+        jsonObj.insert(mTableCtx.columns.portName, parasCtx.portName);
+        jsonObj.insert(mTableCtx.columns.baudRate, parasCtx.baudRate);
+        jsonObj.insert(mTableCtx.columns.dataBits, parasCtx.dataBits);
+        jsonObj.insert(mTableCtx.columns.parity, parasCtx.parity);
+        jsonObj.insert(mTableCtx.columns.stopBits, parasCtx.stopBits);
+        jsonObj.insert(mTableCtx.columns.flowControl, parasCtx.flowControl);
+        jsonObj.insert(mTableCtx.columns.frameIntervel, parasCtx.frameIntervel);
+    }
+    return jsonObj;
+}
+
+QJsonObject SAKTransponderSerialPort::toJsonObject(const QSqlQuery &sqlQuery)
+{
+    return QJsonObject();
 }
 
 QWidget *SAKTransponderSerialPort::createItemFromParameters(const QJsonObject &jsonObj)
@@ -55,30 +85,6 @@ QWidget *SAKTransponderSerialPort::createItemFromParameters(const QJsonObject &j
         return itemWidget;
     }
 }
-
-QJsonObject SAKTransponderSerialPort::toJsonObject(QWidget *itemWidget)
-{
-    QJsonObject jsonObj;
-    auto cookedItemWidget = qobject_cast<SAKTransponderSerialPortItem*>(itemWidget);
-    if (cookedItemWidget) {
-        auto parasCtx = cookedItemWidget->parametersContext();
-        jsonObj.insert(mTableCtx.columns.id, qint64(cookedItemWidget->id()));
-        jsonObj.insert(mTableCtx.columns.portName, parasCtx.portName);
-        jsonObj.insert(mTableCtx.columns.baudRate, parasCtx.baudRate);
-        jsonObj.insert(mTableCtx.columns.dataBits, parasCtx.dataBits);
-        jsonObj.insert(mTableCtx.columns.parity, parasCtx.parity);
-        jsonObj.insert(mTableCtx.columns.stopBits, parasCtx.stopBits);
-        jsonObj.insert(mTableCtx.columns.flowControl, parasCtx.flowControl);
-        jsonObj.insert(mTableCtx.columns.frameIntervel, parasCtx.frameIntervel);
-    }
-    return jsonObj;
-}
-
-QJsonObject SAKTransponderSerialPort::toJsonObject(const QSqlQuery &sqlQuery)
-{
-    return QJsonObject();
-}
-
 
 quint64 SAKTransponderSerialPort::itemId(QWidget *itemWidget)
 {
@@ -123,9 +129,4 @@ void SAKTransponderSerialPort::connectSignalsToSlots(QWidget *itemWidget)
             updateRecord(id, mTableCtx.columns.frameIntervel, value);
         });
     }
-}
-
-void SAKTransponderSerialPort::createDatabaseTable(QString tableName)
-{
-    Q_UNUSED(tableName);
 }

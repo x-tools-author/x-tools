@@ -63,7 +63,7 @@ void SAKDebuggerInputDataPreset::updateText(quint64 id, const QString &text)
     updateRecord(id, mTableContext.columns.text, QVariant::fromValue(text));
 }
 
-void SAKDebuggerInputDataPreset::insertRecord(const QString &tableName,
+QString SAKDebuggerInputDataPreset::sqlInsert(const QString &tableName,
                                               QWidget *itemWidget)
 {
     auto cookedItemWidget = qobject_cast<SAKDebuggerInputDataPresetItem*>(itemWidget);
@@ -80,16 +80,10 @@ void SAKDebuggerInputDataPreset::insertRecord(const QString &tableName,
                      QString::number(cookedItemWidget->itemTextFromat()),
                      cookedItemWidget->itemDescription(),
                      cookedItemWidget->itemText());
-        if (!mSqlQuery.exec(queryString)) {
-#if 0
-            qWarning() << "Insert record to("
-                       << tableName
-                       << ") table failed: "
-                       << mSqlQuery.lastError().text();
-            qInfo() << queryString;
-#endif
-        }
+        return queryString;
     }
+
+    return QString();
 }
 
 QWidget *SAKDebuggerInputDataPreset::createItemFromParameters(
@@ -205,7 +199,7 @@ void SAKDebuggerInputDataPreset::connectSignalsToSlots(QWidget *itemWidget)
     });
 }
 
-void SAKDebuggerInputDataPreset::createDatabaseTable(QString tableName)
+QString SAKDebuggerInputDataPreset::sqlCreate(const QString &tableName)
 {
     QString queryString = QString("CREATE TABLE '%1' (").arg(tableName);
     queryString.append(QString("%1 INTEGER PRIMARY KEY NOT NULL, ")
@@ -216,14 +210,5 @@ void SAKDebuggerInputDataPreset::createDatabaseTable(QString tableName)
                        .arg(mTableContext.columns.description));
     queryString.append(QString("%1 TEXT NOT NULL)")
                        .arg(mTableContext.columns.text));
-    // Try to create table
-    if (!mSqlQuery.exec(queryString)) {
-        QString errorString = mSqlQuery.lastError().text();
-        //outputMessage(errorString, true);
-        qWarning() << "Create table("
-                   << tableName
-                   << ")failed:"
-                   << errorString;
-        qInfo() << queryString;
-    }
+    return queryString;
 }

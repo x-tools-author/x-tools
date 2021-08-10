@@ -27,13 +27,13 @@ public:
 
 
 protected:
-    void insertRecord(const QString &tableName, QWidget *itemWidget) final;
-    QWidget *createItemFromParameters(const QJsonObject &jsonObj) final;
+    QString sqlCreate(const QString &tableName) final;
+    QString sqlInsert(const QString &tableName, QWidget *itemWidget) final;
     QJsonObject toJsonObject(QWidget *itemWidget) final;
     QJsonObject toJsonObject(const QSqlQuery &sqlQuery) final;
+    QWidget *createItemFromParameters(const QJsonObject &jsonObj) final;
     quint64 itemId(QWidget *itemWidget) final;
     void connectSignalsToSlots(QWidget *itemWidget) final;
-    void createDatabaseTable(QString tableName) final;
 
 
 private:

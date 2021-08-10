@@ -39,27 +39,27 @@ SAKDebuggerPluginRegularlySending::~SAKDebuggerPluginRegularlySending()
 
 }
 
-void SAKDebuggerPluginRegularlySending::insertRecord(const QString &tableName,
+QString SAKDebuggerPluginRegularlySending::sqlInsert(const QString &tableName,
                                                      QWidget *itemWidget)
 {
     auto cookedItemWidget = qobject_cast<SendingItem*>(itemWidget);
-    QString queryString = QString("INSERT INTO %1").arg(tableName);
-    queryString.append(QString("(%1,%2,%3,%4,%5) VALUES(")
-                       .arg(mTableCtx.columns.id,
-                            mTableCtx.columns.interval,
-                            mTableCtx.columns.format,
-                            mTableCtx.columns.description,
-                            mTableCtx.columns.data));
-    queryString.append(QString("%1,").arg(cookedItemWidget->itemID()));
-    queryString.append(QString("%1,").arg(cookedItemWidget->itemInterval()));
-    queryString.append(QString("%1,").arg(cookedItemWidget->itemFormat()));
-    queryString.append(QString("'%1',").arg(cookedItemWidget->itemDescription()));
-    queryString.append(QString("'%1')").arg(cookedItemWidget->itemText()));
-    if (!mSqlQuery.exec(queryString)) {
-        qInfo() << queryString;
-        qWarning() << "Insert record to " << mTableCtx.tableName
-                   << " table failed: " << mSqlQuery.lastError().text();
+    if (cookedItemWidget) {
+        QString queryString = QString("INSERT INTO %1").arg(tableName);
+        queryString.append(QString("(%1,%2,%3,%4,%5) VALUES(")
+                           .arg(mTableCtx.columns.id,
+                                mTableCtx.columns.interval,
+                                mTableCtx.columns.format,
+                                mTableCtx.columns.description,
+                                mTableCtx.columns.data));
+        queryString.append(QString("%1,").arg(cookedItemWidget->itemID()));
+        queryString.append(QString("%1,").arg(cookedItemWidget->itemInterval()));
+        queryString.append(QString("%1,").arg(cookedItemWidget->itemFormat()));
+        queryString.append(QString("'%1',").arg(cookedItemWidget->itemDescription()));
+        queryString.append(QString("'%1')").arg(cookedItemWidget->itemText()));
+        return queryString;
     }
+
+    return QString();
 }
 
 QWidget *SAKDebuggerPluginRegularlySending::createItemFromParameters(
@@ -169,7 +169,7 @@ void SAKDebuggerPluginRegularlySending::connectSignalsToSlots(QWidget *itemWidge
 #endif
 }
 
-void SAKDebuggerPluginRegularlySending::createDatabaseTable(QString tableName)
+QString SAKDebuggerPluginRegularlySending::sqlCreate(const QString &tableName)
 {
     QString queryString = QString("CREATE TABLE %1(")
             .arg(tableName);
@@ -184,11 +184,7 @@ void SAKDebuggerPluginRegularlySending::createDatabaseTable(QString tableName)
     queryString.append(QString("%1 INTEGER NOT NULL)")
                        .arg(mTableCtx.columns.data));
 
-    if (!mSqlQuery.exec(queryString)) {
-        qInfo() << queryString;
-        qWarning() << QString("Carete table(%1) failed:%2")
-                      .arg(tableName, mSqlQuery.lastError().text());
-    }
+    return queryString;
 }
 
 void SAKDebuggerPluginRegularlySending::changeInterval(quint64 id, int interval)
