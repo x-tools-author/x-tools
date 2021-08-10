@@ -16,7 +16,7 @@
 #include "ui_SAKOtherTransmissionItemTcp.h"
 
 SAKOtherTransmissionItemTcp::SAKOtherTransmissionItemTcp(SAKDebugger *debugPage, QWidget *parent)
-    :SAKOtherTransmissionItem (debugPage, parent)
+    :SAKDebuggerPluginTransponderBase (debugPage, parent)
     ,mUi (new Ui::SAKOtherTransmissionItemTcp)
     ,mTcpSocket (Q_NULLPTR)
 {

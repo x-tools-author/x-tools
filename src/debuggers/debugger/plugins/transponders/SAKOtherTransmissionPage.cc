@@ -13,7 +13,7 @@
 #include "SAKOtherTransmissionPage.hh"
 #include "SAKOtherTransmissionItemUdp.hh"
 #include "SAKOtherTransmissionItemTcp.hh"
-#include "SAKOtherTransmissionItem.hh"
+#include "SAKDebuggerPluginTransponderBase.hh"
 #include "SAKOtherTransmissionItemCom.hh"
 
 #include "ui_SAKOtherTransmissionPage.h"
@@ -95,8 +95,8 @@ void SAKOtherTransmissionPage::on_addItemPushButton_clicked()
     if (itemWidget){
         item->setSizeHint(QSize(itemWidget->width(), itemWidget->height()));
         mListWidget->setItemWidget(item, itemWidget);
-        SAKOtherTransmissionItem *baseItemWidget = reinterpret_cast<SAKOtherTransmissionItem*>(itemWidget);
-        connect(baseItemWidget, &SAKOtherTransmissionItem::requestOutputMessage, this, &SAKOtherTransmissionPage::outputMessage);
+        SAKDebuggerPluginTransponderBase *baseItemWidget = reinterpret_cast<SAKDebuggerPluginTransponderBase*>(itemWidget);
+        connect(baseItemWidget, &SAKDebuggerPluginTransponderBase::requestOutputMessage, this, &SAKOtherTransmissionPage::outputMessage);
     }
 }
 

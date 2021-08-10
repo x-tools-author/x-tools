@@ -15,13 +15,13 @@
 #include <QComboBox>
 #include <QLineEdit>
 #include <QTcpSocket>
-#include "SAKOtherTransmissionItem.hh"
+#include "SAKDebuggerPluginTransponderBase.hh"
 
 namespace Ui {
     class SAKOtherTransmissionItemTcp;
 }
 
-class SAKOtherTransmissionItemTcp:public SAKOtherTransmissionItem
+class SAKOtherTransmissionItemTcp:public SAKDebuggerPluginTransponderBase
 {
     Q_OBJECT
 public:

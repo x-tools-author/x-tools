@@ -1,25 +1,13 @@
 FORMS += \
-    $$PWD/SAKDebuggerPluginTransponders.ui \
-    $$PWD/SAKOtherTransmissionItemCom.ui \
-    $$PWD/SAKOtherTransmissionItemTcp.ui \
-    $$PWD/SAKOtherTransmissionItemUdp.ui \
-    $$PWD/SAKOtherTransmissionPage.ui
+    $$PWD/SAKDebuggerPluginTransponders.ui
 
 HEADERS += \
-    $$PWD/SAKDebuggerPluginTransponders.hh \
-    $$PWD/SAKOtherTransmissionItem.hh \
-    $$PWD/SAKOtherTransmissionItemCom.hh \
-    $$PWD/SAKOtherTransmissionItemTcp.hh \
-    $$PWD/SAKOtherTransmissionItemUdp.hh \
-    $$PWD/SAKOtherTransmissionPage.hh
+    $$PWD/SAKDebuggerPluginTransponderBase.hh \
+    $$PWD/SAKDebuggerPluginTransponders.hh
 
 SOURCES += \
-    $$PWD/SAKDebuggerPluginTransponders.cc \
-    $$PWD/SAKOtherTransmissionItem.cc \
-    $$PWD/SAKOtherTransmissionItemCom.cc \
-    $$PWD/SAKOtherTransmissionItemTcp.cc \
-    $$PWD/SAKOtherTransmissionItemUdp.cc \
-    $$PWD/SAKOtherTransmissionPage.cc
+    $$PWD/SAKDebuggerPluginTransponderBase.cc \
+    $$PWD/SAKDebuggerPluginTransponders.cc
 
 INCLUDEPATH += \
     $$PWD

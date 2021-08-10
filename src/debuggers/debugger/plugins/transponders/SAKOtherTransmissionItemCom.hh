@@ -21,14 +21,14 @@
 #include <QSerialPort>
 #endif
 
-#include "SAKOtherTransmissionItem.hh"
+#include "SAKDebuggerPluginTransponderBase.hh"
 
 namespace Ui {
     class SAKOtherTransmissionItemCom;
 }
 
 class SAKDebugger;
-class SAKOtherTransmissionItemCom:public SAKOtherTransmissionItem
+class SAKOtherTransmissionItemCom:public SAKDebuggerPluginTransponderBase
 {
     Q_OBJECT
 public:
