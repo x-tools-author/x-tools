@@ -227,6 +227,24 @@ void SAKBaseListWidget::addItem()
     insertRecord(mTableName, itemWidget);
 }
 
+void SAKBaseListWidget::readinRecords()
+{
+    const QString queryString = QString("SELECT * FROM %1").arg(mTableName);
+    if (mSqlQuery.exec(queryString)) {
+        while (mSqlQuery.next()) {
+            QJsonObject parameters = toJsonObject(mSqlQuery);
+            auto *itemWidget = createItemFromParameters(parameters);
+            QListWidgetItem *item = new QListWidgetItem();
+            setupItemWidget(item, itemWidget);
+        }
+    } else {
+        qWarning() << "Select record form "
+                   << mTableName
+                   << " table failed: "
+                   << mSqlQuery.lastError().text();
+    }
+}
+
 void SAKBaseListWidget::setupItemWidget(QListWidgetItem *item,
                                         QWidget *itemWidget)
 {

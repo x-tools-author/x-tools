@@ -56,10 +56,10 @@ protected:
     void insertRecord(const QString &tableName, QWidget *itemWidget) final;
     QWidget *createItemFromParameters(const QJsonObject &jsonObj) final;
     QJsonObject toJsonObject(QWidget *itemWidget) final;
+    QJsonObject toJsonObject(const QSqlQuery &sqlQuery) final;
     quint64 itemId(QWidget *itemWidget) final;
     void connectSignalsToSlots(QWidget *itemWidget) final;
     void createDatabaseTable(QString tableName) final;
-    void readinRecords() final;
 
 
 private:

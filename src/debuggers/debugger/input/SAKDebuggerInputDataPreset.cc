@@ -145,6 +145,20 @@ QJsonObject SAKDebuggerInputDataPreset::toJsonObject(QWidget *itemWidget)
     return obj;
 }
 
+QJsonObject SAKDebuggerInputDataPreset::toJsonObject(const QSqlQuery &sqlQuery)
+{
+    QJsonObject jsonObj;
+    jsonObj.insert(mTableContext.columns.id,
+                   mSqlQuery.value(mTableContext.columns.id).toLongLong());
+    jsonObj.insert(mTableContext.columns.format,
+                   mSqlQuery.value(mTableContext.columns.format).toInt());
+    jsonObj.insert(mTableContext.columns.description,
+                   mSqlQuery.value(mTableContext.columns.description).toString());
+    jsonObj.insert(mTableContext.columns.text,
+                   mSqlQuery.value(mTableContext.columns.text).toString());
+    return jsonObj;
+}
+
 quint64 SAKDebuggerInputDataPreset::itemId(QWidget *itemWidget)
 {
     auto cookedItemWidget = qobject_cast<SAKDebuggerInputDataPresetItem*>(itemWidget);
@@ -211,34 +225,5 @@ void SAKDebuggerInputDataPreset::createDatabaseTable(QString tableName)
                    << ")failed:"
                    << errorString;
         qInfo() << queryString;
-    }
-}
-
-void SAKDebuggerInputDataPreset::readinRecords()
-{
-    const QString queryString = QString("SELECT * FROM %1")
-            .arg(mTableContext.tableName);
-    if (mSqlQuery.exec(queryString)) {
-        while (mSqlQuery.next()) {
-            SAKDebuggerInputDataPresetItem::ITEM_CTX itemContext;
-            QVariant tempVariant = mSqlQuery.value(mTableContext.columns.id);
-            itemContext.id = tempVariant.toULongLong();
-
-            tempVariant = mSqlQuery.value(mTableContext.columns.format);
-            itemContext.format = tempVariant.toUInt();
-
-            tempVariant = mSqlQuery.value(mTableContext.columns.description);
-            itemContext.description = tempVariant.toString();
-
-            tempVariant = mSqlQuery.value(mTableContext.columns.text);
-            itemContext.text = tempVariant.toString();
-
-            QListWidgetItem *item = new QListWidgetItem();
-            auto *itemWidget = new SAKDebuggerInputDataPresetItem(itemContext);
-            setupItemWidget(item, itemWidget);
-        }
-    } else {
-        qWarning() << "Can not exec query command:"
-                   << qPrintable(queryString);
     }
 }

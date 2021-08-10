@@ -137,6 +137,55 @@ QJsonObject SAKDebuggerPluginAutoResponse::toJsonObject(QWidget *itemWidget)
     return jsonObj;
 }
 
+QJsonObject SAKDebuggerPluginAutoResponse::toJsonObject(const QSqlQuery &sqlQuery)
+{
+    QJsonObject jsonObj;
+    QString column;
+    QVariant valueVariant;
+
+    column = mTableCtx.columns.id;
+    valueVariant = sqlQuery.value(column);
+    jsonObj.insert(column, valueVariant.toLongLong());
+
+    column = mTableCtx.columns.name;
+    valueVariant = sqlQuery.value(column);
+    jsonObj.insert(column, valueVariant.toString());
+
+    column = mTableCtx.columns.referenceData;
+    valueVariant = sqlQuery.value(column);
+    jsonObj.insert(column, valueVariant.toString());
+
+    column = mTableCtx.columns.responseData;
+    valueVariant = sqlQuery.value(column);
+    jsonObj.insert(column, valueVariant.toString());
+
+    column = mTableCtx.columns.enable;
+    valueVariant = sqlQuery.value(column);
+    jsonObj.insert(column, valueVariant.toBool());
+
+    column = mTableCtx.columns.referenceFormat;
+    valueVariant = sqlQuery.value(column);
+    jsonObj.insert(column, valueVariant.toInt());
+
+    column = mTableCtx.columns.responseFormat;
+    valueVariant = sqlQuery.value(column);
+    jsonObj.insert(column, valueVariant.toInt());
+
+    column = mTableCtx.columns.option;
+    valueVariant = sqlQuery.value(column);
+    jsonObj.insert(column, valueVariant.toInt());
+
+    column = mTableCtx.columns.delay;
+    valueVariant = sqlQuery.value(column);
+    jsonObj.insert(column, valueVariant.toBool());
+
+    column = mTableCtx.columns.interval;
+    valueVariant = sqlQuery.value(column);
+    jsonObj.insert(column, valueVariant.toInt());
+
+    return jsonObj;
+}
+
 quint64 SAKDebuggerPluginAutoResponse::itemId(QWidget *itemWidget)
 {
     auto cookedItemWidget =
@@ -195,67 +244,5 @@ void SAKDebuggerPluginAutoResponse::createDatabaseTable(QString tableName)
             qInfo() << queryString;
             qWarning() << mSqlQuery.lastError().text();
         }
-    }
-}
-
-void SAKDebuggerPluginAutoResponse::readinRecords()
-{
-    const QString queryString = QString("SELECT * FROM %1")
-            .arg(mTableCtx.tableName);
-    if (mSqlQuery.exec(queryString)) {
-        SAKDebuggerPluginAutoResponseItem::SAKStructItemContext itemCtx;
-        while (mSqlQuery.next()) {
-            QString column;
-            QVariant valueVariant;
-
-            column = mTableCtx.columns.id;
-            valueVariant = mSqlQuery.value(column);
-            itemCtx.id = valueVariant.toULongLong();
-
-            column = mTableCtx.columns.name;
-            valueVariant = mSqlQuery.value(column);
-            itemCtx.name = valueVariant.toString();
-
-            column = mTableCtx.columns.referenceData;
-            valueVariant = mSqlQuery.value(column);
-            itemCtx.referenceData = valueVariant.toString();
-
-            column = mTableCtx.columns.responseData;
-            valueVariant = mSqlQuery.value(column);
-            itemCtx.responseData =valueVariant.toString();
-
-            column = mTableCtx.columns.enable;
-            valueVariant = mSqlQuery.value(column);
-            itemCtx.enable = valueVariant.toBool();
-
-            column = mTableCtx.columns.referenceFormat;
-            valueVariant = mSqlQuery.value(column);
-            itemCtx.referenceFormat = valueVariant.toUInt();
-
-            column = mTableCtx.columns.responseFormat;
-            valueVariant = mSqlQuery.value(column);
-            itemCtx.responseFormat = valueVariant.toUInt();
-
-            column = mTableCtx.columns.option;
-            valueVariant = mSqlQuery.value(column);
-            itemCtx.option = valueVariant.toUInt();
-
-            column = mTableCtx.columns.delay;
-            valueVariant = mSqlQuery.value(column);
-            itemCtx.delay = valueVariant.toBool();
-
-            column = mTableCtx.columns.interval;
-            valueVariant = mSqlQuery.value(column);
-            itemCtx.interval = valueVariant.toInt();
-
-            auto *item = new QListWidgetItem();
-            auto *itemWidget = new SAKDebuggerPluginAutoResponseItem(itemCtx);
-            setupItemWidget(item, itemWidget);
-        }
-    } else {
-        qWarning() << "Select record form "
-                   << mTableCtx.tableName
-                   << " table failed: "
-                   << mSqlQuery.lastError().text();
     }
 }

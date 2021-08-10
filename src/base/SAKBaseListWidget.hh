@@ -49,10 +49,10 @@ protected:
     virtual void insertRecord(const QString &tableName, QWidget *itemWidget) = 0;
     virtual QWidget *createItemFromParameters(const QJsonObject &jsonObj) = 0;
     virtual QJsonObject toJsonObject(QWidget *itemWidget) = 0;
+    virtual QJsonObject toJsonObject(const QSqlQuery &sqlQuery) = 0;
     virtual quint64 itemId(QWidget *itemWidget) = 0;
     virtual void connectSignalsToSlots(QWidget *itemWidget) = 0;
     virtual void createDatabaseTable(QString tableName) = 0;
-    virtual void readinRecords() = 0;
 
     void updateRecord(quint64 id, QString columnName, QVariant value);
     void outputMessage(QString msg, bool isError);
@@ -69,6 +69,7 @@ private:
     void exportItems();
     void deleteItem(QListWidgetItem *item);
     void addItem();
+    void readinRecords();
 
 
 private:

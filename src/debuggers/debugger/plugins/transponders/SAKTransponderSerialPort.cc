@@ -74,6 +74,12 @@ QJsonObject SAKTransponderSerialPort::toJsonObject(QWidget *itemWidget)
     return jsonObj;
 }
 
+QJsonObject SAKTransponderSerialPort::toJsonObject(const QSqlQuery &sqlQuery)
+{
+    return QJsonObject();
+}
+
+
 quint64 SAKTransponderSerialPort::itemId(QWidget *itemWidget)
 {
     auto cookedItemWidget = qobject_cast<SAKTransponderSerialPortItem*>(itemWidget);
@@ -122,9 +128,4 @@ void SAKTransponderSerialPort::connectSignalsToSlots(QWidget *itemWidget)
 void SAKTransponderSerialPort::createDatabaseTable(QString tableName)
 {
     Q_UNUSED(tableName);
-}
-
-void SAKTransponderSerialPort::readinRecords()
-{
-
 }

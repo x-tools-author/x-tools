@@ -113,6 +113,23 @@ QJsonObject SAKDebuggerPluginRegularlySending::toJsonObject(QWidget *itemWidget)
     return jsonObj;
 }
 
+QJsonObject SAKDebuggerPluginRegularlySending::toJsonObject(const QSqlQuery &sqlQuery)
+{
+    QJsonObject parameters;
+    parameters.insert(mTableCtx.columns.id,
+                      mSqlQuery.value(mTableCtx.columns.id).toLongLong());
+    parameters.insert(mTableCtx.columns.interval,
+                      mSqlQuery.value(mTableCtx.columns.interval).toInt());
+    parameters.insert(mTableCtx.columns.format,
+                      mSqlQuery.value(mTableCtx.columns.format).toInt());
+    parameters.insert(mTableCtx.columns.description,
+                      mSqlQuery.value(mTableCtx.columns.description).toString());
+    parameters.insert(mTableCtx.columns.data,
+                      mSqlQuery.value(mTableCtx.columns.data).toString());
+
+    return parameters;
+}
+
 quint64 SAKDebuggerPluginRegularlySending::itemId(QWidget *itemWidget)
 {
     auto cookedItemWidget = qobject_cast<SendingItem*>(itemWidget);
@@ -171,28 +188,6 @@ void SAKDebuggerPluginRegularlySending::createDatabaseTable(QString tableName)
         qInfo() << queryString;
         qWarning() << QString("Carete table(%1) failed:%2")
                       .arg(tableName, mSqlQuery.lastError().text());
-    }
-}
-
-void SAKDebuggerPluginRegularlySending::readinRecords()
-{
-    if (mSqlQuery.exec(QString("SELECT * FROM %1").arg(mTableName))) {
-        SendingItem::SAKStructItemContext itemCtx;
-        while (mSqlQuery.next()) {
-            itemCtx.id = mSqlQuery.value(mTableCtx.columns.id).toULongLong();
-            itemCtx.interval = mSqlQuery.value(mTableCtx.columns.interval).toUInt();
-            itemCtx.format = mSqlQuery.value(mTableCtx.columns.format).toUInt();
-            itemCtx.description =
-                    mSqlQuery.value(mTableCtx.columns.description).toString();
-            itemCtx.data = mSqlQuery.value(mTableCtx.columns.data).toString();
-
-            auto item = new QListWidgetItem(mListWidget);
-            auto itemWidget = new SAKDebuggerPluginRegularlySendingItem(itemCtx);
-            setupItemWidget(item, itemWidget);
-        }
-    }else{
-        qWarning() << "Select record form " << mTableName
-                   << " table failed: " << mSqlQuery.lastError().text();
     }
 }
 
