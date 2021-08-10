@@ -44,7 +44,7 @@ private:
     SAKPluginCharts *mCharts;
     SAKPluginDataForwarding *mDataForwarding;
     SAKDebuggerPluginRegularlySending *mRegularlySending;
-    SAKDebuggerPluginAutoResponse *mAutomaticallyResponse;
+    SAKDebuggerPluginAutoResponse *mAutoResponse;
 
 
 private:

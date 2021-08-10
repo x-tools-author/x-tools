@@ -32,6 +32,7 @@ public:
     SAKDebuggerPluginAutoResponse(QSettings *settings,
                                   QString settingsGroup,
                                   QSqlDatabase *sqlDatabase,
+                                  QString tableNameSuffix,
                                   QWidget *parent = Q_NULLPTR);
     ~SAKDebuggerPluginAutoResponse();
     void onBytesRead(const QByteArray &bytes);

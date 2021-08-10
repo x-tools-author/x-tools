@@ -25,7 +25,7 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
     ,mCharts(Q_NULLPTR)
     ,mDataForwarding(Q_NULLPTR)
     ,mRegularlySending(Q_NULLPTR)
-    ,mAutomaticallyResponse(Q_NULLPTR)
+    ,mAutoResponse(Q_NULLPTR)
     ,mTitleLabel(titleLabel)
     ,mPanelWidget(panelWidget)
     ,mPluginDialog(Q_NULLPTR)
@@ -53,13 +53,13 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
     mRegularlySending = new SAKDebuggerPluginRegularlySending(sqlDatabase,
                                                               settings,
                                                               settingsGroup,
-                                                              "RegularlySending",
-                                                              panelWidget);
-    mAutomaticallyResponse = new SAKDebuggerPluginAutoResponse(settings,
-                                                                settingsGroup,
-                                                                sqlDatabase);
+                                                              "RegularlySending");
+    mAutoResponse = new SAKDebuggerPluginAutoResponse(settings,
+                                                      settingsGroup,
+                                                      sqlDatabase,
+                                                      "AutoResponse");
     connect(this, &SAKDebuggerPlugins::bytesRead,
-            mAutomaticallyResponse, &SAKDebuggerPluginAutoResponse::onBytesRead);
+            mAutoResponse, &SAKDebuggerPluginAutoResponse::onBytesRead);
 
 
     // Initialize menu psuh button
@@ -72,11 +72,16 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
         void (SAKDebuggerPlugins::*memberFunction)();
     };
     QVector<SAKActionsContext> actionsCtx;
-    actionsCtx.append({tr("3D"), &SAKDebuggerPlugins::showPluin3D});
-    actionsCtx.append({tr("Charts"), &SAKDebuggerPlugins::showPluinCharts});
-    actionsCtx.append({tr("Data Forwarding"), &SAKDebuggerPlugins::showPluinDataForwarding});
-    actionsCtx.append({tr("Regularly Sending"), &SAKDebuggerPlugins::showPluginRegularlySending});
-    actionsCtx.append({tr("Automatically Response"), &SAKDebuggerPlugins::showPluginAutomaticallyResponse});
+    actionsCtx.append({tr("3D"),
+                       &SAKDebuggerPlugins::showPluin3D});
+    actionsCtx.append({tr("Charts"),
+                       &SAKDebuggerPlugins::showPluinCharts});
+    actionsCtx.append({tr("Data Forwarding"),
+                       &SAKDebuggerPlugins::showPluinDataForwarding});
+    actionsCtx.append({tr("Regularly Sending"),
+                       &SAKDebuggerPlugins::showPluginRegularlySending});
+    actionsCtx.append({tr("Automatically Response"),
+                       &SAKDebuggerPlugins::showPluginAutomaticallyResponse});
     auto addActionsToMenu = [=](QMenu *m, const QVector<SAKActionsContext> &ctxs){
         for (int i = 0; i < ctxs.count(); i++) {
             SAKActionsContext ctx = ctxs.at(i);
@@ -91,7 +96,7 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
     menu->addAction(tr("Reload All"), this, [](){});
 
     mPluginDialog = new QDialog(sakMainWindow);
-    mPluginDialog->setLayout(new QHBoxLayout(mPluginDialog));
+    mPluginDialog->setLayout(new QVBoxLayout(mPluginDialog));
     mPluginDialog->setModal(true);
     mPluginDialog->resize(800, 350);
 }
@@ -102,7 +107,7 @@ SAKDebuggerPlugins::~SAKDebuggerPlugins()
     mCharts->deleteLater();
     mDataForwarding->deleteLater();
     mRegularlySending->deleteLater();
-    mAutomaticallyResponse->deleteLater();
+    mAutoResponse->deleteLater();
 }
 
 void SAKDebuggerPlugins::showPluin3D()
@@ -139,17 +144,16 @@ void SAKDebuggerPlugins::showPluginRegularlySending()
 
 void SAKDebuggerPlugins::showPluginAutomaticallyResponse()
 {
-    if (mAutomaticallyResponse->isHidden()) {
-        mAutomaticallyResponse->show();
-    } else {
-        mAutomaticallyResponse->activateWindow();
-    }
+    showPluginDialog(mAutoResponse);
 }
 
 void SAKDebuggerPlugins::showPluginDialog(QWidget *contentWidget)
 {
-    auto ret = mPluginDialog->layout()->takeAt(0);
-    Q_UNUSED(ret);
+    for (int i = 0; i < mPluginDialog->layout()->count(); i++) {
+        auto ret = mPluginDialog->layout()->takeAt(i);
+        ret->widget()->setParent(Q_NULLPTR);
+    }
+
     mPluginDialog->layout()->addWidget(contentWidget);
     mPluginDialog->show();
 }

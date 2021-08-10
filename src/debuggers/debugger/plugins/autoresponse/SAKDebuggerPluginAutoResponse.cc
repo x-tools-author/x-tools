@@ -28,9 +28,10 @@ SAKDebuggerPluginAutoResponse::SAKDebuggerPluginAutoResponse(
         QSettings *settings,
         QString settingsGroup,
         QSqlDatabase *sqlDatabase,
+        QString tableNameSuffix,
         QWidget *parent
         )
-    :SAKBaseListWidget(sqlDatabase, settings, settingsGroup, "AutoResponse", parent)
+    :SAKBaseListWidget(sqlDatabase, settings, settingsGroup, tableNameSuffix, parent)
     ,mSettiings(settings)
     ,mSqlDatabase(sqlDatabase)
     ,mSqlQuery(*sqlDatabase)
