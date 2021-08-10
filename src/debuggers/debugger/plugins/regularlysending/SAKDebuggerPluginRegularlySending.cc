@@ -149,6 +149,11 @@ void SAKDebuggerPluginRegularlySending::connectSignalsToSlots(QWidget *itemWidge
             &SAKDebuggerPluginRegularlySendingItem::inputTextChanged,
             this,
             &SAKDebuggerPluginRegularlySending::changeInputText);
+
+    connect(cookedItemWidget,
+            &SAKDebuggerPluginRegularlySendingItem::invokeWriteBytes,
+            this,
+            &SAKDebuggerPluginRegularlySending::invokeWriteBytes);
 }
 
 void SAKDebuggerPluginRegularlySending::readinRecord()
