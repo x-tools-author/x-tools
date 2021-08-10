@@ -59,6 +59,7 @@ SAKBaseListWidget::SAKBaseListWidget(QSqlDatabase *sqlDatabase,
     });
     connect(mUi->addPushButton, &QPushButton::clicked,
             this, &SAKBaseListWidget::addItem);
+    setContentsMargins(0, 0, 0, 0);
 }
 
 SAKBaseListWidget::~SAKBaseListWidget()

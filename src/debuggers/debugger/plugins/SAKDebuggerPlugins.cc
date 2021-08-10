@@ -65,32 +65,46 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
     // Initialize menu psuh button
     QMenu *embedMenu = new QMenu(tr("Embed to Center"), menu);
     menu->addMenu(embedMenu);
-    embedMenu->addAction(tr("Cancel Embedding"), this, [](){});
+    embedMenu->addAction(tr("Cancel Embedding"),
+                         this,
+                         &SAKDebuggerPlugins::cancelEmbedPlugin);
     embedMenu->addSeparator();
     struct SAKActionsContext {
         QString title;
-        void (SAKDebuggerPlugins::*memberFunction)();
+        void (SAKDebuggerPlugins::*show)();
+        void (SAKDebuggerPlugins::*embed)();
     };
     QVector<SAKActionsContext> actionsCtx;
     actionsCtx.append({tr("3D"),
-                       &SAKDebuggerPlugins::showPluin3D});
+                       &SAKDebuggerPlugins::showPluin3D,
+                       &SAKDebuggerPlugins::embedPluin3D});
     actionsCtx.append({tr("Charts"),
-                       &SAKDebuggerPlugins::showPluinCharts});
+                       &SAKDebuggerPlugins::showPluinCharts,
+                       &SAKDebuggerPlugins::embedPluinCharts});
     actionsCtx.append({tr("Data Forwarding"),
-                       &SAKDebuggerPlugins::showPluinDataForwarding});
+                       &SAKDebuggerPlugins::showPluinDataForwarding,
+                       &SAKDebuggerPlugins::embedPluinDataForwarding});
     actionsCtx.append({tr("Regularly Sending"),
-                       &SAKDebuggerPlugins::showPluginRegularlySending});
+                       &SAKDebuggerPlugins::showPluginRegularlySending,
+                       &SAKDebuggerPlugins::embedPluginRegularlySending});
     actionsCtx.append({tr("Automatically Response"),
-                       &SAKDebuggerPlugins::showPluginAutomaticallyResponse});
-    auto addActionsToMenu = [=](QMenu *m, const QVector<SAKActionsContext> &ctxs){
+                       &SAKDebuggerPlugins::showPluginAutoResponse,
+                       &SAKDebuggerPlugins::embedPluginAutoResponse});
+    auto addActionsToMenu = [=](QMenu *m,
+            const QVector<SAKActionsContext> &ctxs,
+            bool isShow){
         for (int i = 0; i < ctxs.count(); i++) {
             SAKActionsContext ctx = ctxs.at(i);
-            m->addAction(ctx.title, this, ctx.memberFunction);
+            if (isShow) {
+                m->addAction(ctx.title, this, ctx.show);
+            } else {
+                m->addAction(ctx.title, this, ctx.embed);
+            }
         }
     };
-    addActionsToMenu(embedMenu, actionsCtx);
+    addActionsToMenu(embedMenu, actionsCtx, false);
     menu->addSeparator();
-    addActionsToMenu(menu, actionsCtx);
+    addActionsToMenu(menu, actionsCtx, true);
     menu->addSeparator();
     menu->addAction(tr("Automatically Reload"), this, [](){});
     menu->addAction(tr("Reload All"), this, [](){});
@@ -98,7 +112,22 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
     mPluginDialog = new QDialog(sakMainWindow);
     mPluginDialog->setLayout(new QVBoxLayout(mPluginDialog));
     mPluginDialog->setModal(true);
+    mPluginDialog->layout()->setContentsMargins(0, 0, 0, 0);
+    mPluginDialog->setContentsMargins(6, 6, 6, 6);
     mPluginDialog->resize(800, 350);
+
+
+    if (mPanelWidget) {
+        if (!mPanelWidget->layout()) {
+            mPanelWidget->setLayout(new QVBoxLayout(mPanelWidget));
+            mPanelWidget->layout()->setContentsMargins(0, 0, 0, 0);
+            mPanelWidget->setContentsMargins(0, 0, 0, 0);
+        }
+    } else {
+        Q_ASSERT_X(mPanelWidget, __FUNCTION__, "Can not be null(mPanelWidget)!");
+        mPanelWidget = new QWidget(sakMainWindow);
+        mPanelWidget->hide();
+    }
 }
 
 SAKDebuggerPlugins::~SAKDebuggerPlugins()
@@ -128,6 +157,11 @@ void SAKDebuggerPlugins::showPluinCharts()
     }
 }
 
+void SAKDebuggerPlugins::showPluginAutoResponse()
+{
+    showPluginDialog(mAutoResponse);
+}
+
 void SAKDebuggerPlugins::showPluinDataForwarding()
 {
     if (mDataForwarding->isHidden()) {
@@ -142,11 +176,6 @@ void SAKDebuggerPlugins::showPluginRegularlySending()
     showPluginDialog(mRegularlySending);
 }
 
-void SAKDebuggerPlugins::showPluginAutomaticallyResponse()
-{
-    showPluginDialog(mAutoResponse);
-}
-
 void SAKDebuggerPlugins::showPluginDialog(QWidget *contentWidget)
 {
     for (int i = 0; i < mPluginDialog->layout()->count(); i++) {
@@ -156,4 +185,53 @@ void SAKDebuggerPlugins::showPluginDialog(QWidget *contentWidget)
 
     mPluginDialog->layout()->addWidget(contentWidget);
     mPluginDialog->show();
+    cancelEmbedPlugin();
+}
+
+void SAKDebuggerPlugins::embedPluin3D()
+{
+    embedPlugin(m3d);
+}
+
+void SAKDebuggerPlugins::embedPluinCharts()
+{
+    embedPlugin(mCharts);
+}
+
+void SAKDebuggerPlugins::embedPluginAutoResponse()
+{
+    embedPlugin(mAutoResponse);
+}
+
+void SAKDebuggerPlugins::embedPluinDataForwarding()
+{
+    embedPlugin(mDataForwarding);
+}
+
+void SAKDebuggerPlugins::embedPluginRegularlySending()
+{
+    embedPlugin(mRegularlySending);
+}
+
+void SAKDebuggerPlugins::embedPlugin(QWidget *contentWidget)
+{
+    for (int i = 0; i < mPanelWidget->layout()->count(); i++) {
+        auto ret = mPanelWidget->layout()->takeAt(i);
+        ret->widget()->setParent(Q_NULLPTR);
+    }
+
+    mPanelWidget->layout()->addWidget(contentWidget);
+    mTitleLabel->show();
+    mPanelWidget->show();
+}
+
+void SAKDebuggerPlugins::cancelEmbedPlugin()
+{
+    for (int i = 0; i < mPanelWidget->layout()->count(); i++) {
+        auto ret = mPanelWidget->layout()->takeAt(i);
+        ret->widget()->setParent(Q_NULLPTR);
+    }
+
+    mTitleLabel->hide();
+    mPanelWidget->hide();
 }

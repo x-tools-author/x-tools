@@ -56,10 +56,18 @@ private:
 private:
     void showPluin3D();
     void showPluinCharts();
+    void showPluginAutoResponse();
     void showPluinDataForwarding();
     void showPluginRegularlySending();
-    void showPluginAutomaticallyResponse();
     void showPluginDialog(QWidget *contentWidget);
+
+    void embedPluin3D();
+    void embedPluinCharts();
+    void embedPluginAutoResponse();
+    void embedPluinDataForwarding();
+    void embedPluginRegularlySending();
+    void embedPlugin(QWidget *contentWidget);
+    void cancelEmbedPlugin();
 
 
 signals:
