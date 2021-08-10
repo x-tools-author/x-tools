@@ -22,11 +22,19 @@ class SAKDebuggerPluginTransponders : public QWidget
 {
     Q_OBJECT
 public:
+    enum SAKEnumTransponderType {
+        TransponderTypeSerialPort,
+        TransponderTypeUdp,
+        TransponderTypeTcp,
+        TransponderTypeWebSocket,
+    };
+public:
     SAKDebuggerPluginTransponders(QSqlDatabase *sqlDatabase,
                                   QSettings *settings,
                                   QString settingsGroup,
                                   QWidget *parent = Q_NULLPTR);
     ~SAKDebuggerPluginTransponders();
+    void onBytesRead(QByteArray bytes);
 
 
 private:

@@ -69,3 +69,8 @@ SAKDebuggerPluginTransponders::~SAKDebuggerPluginTransponders()
 {
     delete mUi;
 }
+
+void SAKDebuggerPluginTransponders::onBytesRead(QByteArray bytes)
+{
+    Q_UNUSED(bytes);
+}
