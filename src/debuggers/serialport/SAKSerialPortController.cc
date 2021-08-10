@@ -145,15 +145,19 @@ SAKSerialPortController::parametersContext()
     int flowControl = mUi->flowControlComboBox->currentData().toInt();
     auto cookedFlowControl = static_cast<QSerialPort::FlowControl>(flowControl);
     ctx.flowControl = cookedFlowControl;
-
+#if 0
     // Calculate the max frame interval.
     qint64 consumeNsPerBit = (1000*1000*1000)/ctx.baudRate;
     auto interval = mUi->frameIntervalSpinBox->value();
     if (interval < defauleFrameInterval) {
-        ctx.intervalNs = defauleFrameInterval*consumeNsPerBit;
+        ctx.frameIntervel = defauleFrameInterval*consumeNsPerBit;
     } else {
-        ctx.intervalNs = interval*consumeNsPerBit;
+        ctx.frameIntervel = interval*consumeNsPerBit;
     }
+#else
+    auto interval = mUi->frameIntervalSpinBox->value();
+    ctx.frameIntervel = interval;
+#endif
 
     int parity = mUi->parityComboBox->currentData().toInt();
     auto cookedParity = static_cast<QSerialPort::Parity>(parity);

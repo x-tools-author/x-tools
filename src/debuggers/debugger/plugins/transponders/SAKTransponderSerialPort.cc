@@ -1,4 +1,4 @@
-/****************************************************************************************
+﻿/****************************************************************************************
  * Copyright 2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -7,6 +7,7 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
 ****************************************************************************************/
+#include "SAKCommonDataStructure.hh"
 #include "SAKTransponderSerialPort.hh"
 
 SAKTransponderSerialPort::SAKTransponderSerialPort(QSqlDatabase *sqlDatabase,
@@ -15,7 +16,7 @@ SAKTransponderSerialPort::SAKTransponderSerialPort(QSqlDatabase *sqlDatabase,
                                                    QString tableNameSuffix)
     :SAKBaseListWidget(sqlDatabase, settings, settingsGroup, tableNameSuffix)
 {
-
+    mTableCtx.tableName = mTableName;
 }
 
 void SAKTransponderSerialPort::insertRecord(const QString &tableName,
@@ -30,26 +31,92 @@ QWidget *SAKTransponderSerialPort::createItemFromParameters(const QJsonObject &j
     if (jsonObj.isEmpty()) {
         return new SAKTransponderSerialPortItem();
     } else {
-        return Q_NULLPTR;
+        SAKCommonDataStructure::SAKStructSerialPortParametersContext parasCtx;
+        parasCtx.portName = jsonObj.value(mTableCtx.columns.portName).toString();
+        parasCtx.baudRate = jsonObj.value(mTableCtx.columns.baudRate).toInt();
+        parasCtx.dataBits = static_cast<QSerialPort::DataBits>(
+                    jsonObj.value(mTableCtx.columns.dataBits).toInt()
+                    );
+        parasCtx.parity = static_cast<QSerialPort::Parity>(
+                    jsonObj.value(mTableCtx.columns.parity).toInt()
+                    );
+        parasCtx.stopBits = static_cast<QSerialPort::StopBits>(
+                    jsonObj.value(mTableCtx.columns.stopBits).toInt()
+                    );
+        parasCtx.flowControl = static_cast<QSerialPort::FlowControl>(
+                    jsonObj.value(mTableCtx.columns.dataBits).toInt()
+                    );
+        parasCtx.frameIntervel = jsonObj.value(mTableCtx.columns.frameIntervel).toInt();
+
+
+        auto itemWidget = new SAKTransponderSerialPortItem(parasCtx);
+        quint64 id = jsonObj.value(mTableCtx.columns.id).toVariant().toULongLong();
+        itemWidget->setId(id);
+        return itemWidget;
     }
 }
 
 QJsonObject SAKTransponderSerialPort::toJsonObject(QWidget *itemWidget)
 {
-    Q_UNUSED(itemWidget);
     QJsonObject jsonObj;
+    auto cookedItemWidget = qobject_cast<SAKTransponderSerialPortItem*>(itemWidget);
+    if (cookedItemWidget) {
+        auto parasCtx = cookedItemWidget->parametersContext();
+        jsonObj.insert(mTableCtx.columns.id, qint64(cookedItemWidget->id()));
+        jsonObj.insert(mTableCtx.columns.portName, parasCtx.portName);
+        jsonObj.insert(mTableCtx.columns.baudRate, parasCtx.baudRate);
+        jsonObj.insert(mTableCtx.columns.dataBits, parasCtx.dataBits);
+        jsonObj.insert(mTableCtx.columns.parity, parasCtx.parity);
+        jsonObj.insert(mTableCtx.columns.stopBits, parasCtx.stopBits);
+        jsonObj.insert(mTableCtx.columns.flowControl, parasCtx.flowControl);
+        jsonObj.insert(mTableCtx.columns.frameIntervel, parasCtx.frameIntervel);
+    }
     return jsonObj;
 }
 
 quint64 SAKTransponderSerialPort::itemId(QWidget *itemWidget)
 {
-    Q_UNUSED(itemWidget);
+    auto cookedItemWidget = qobject_cast<SAKTransponderSerialPortItem*>(itemWidget);
+    if (cookedItemWidget) {
+        return cookedItemWidget->id();
+    }
     return 0;
 }
 
 void SAKTransponderSerialPort::connectSignalsToSlots(QWidget *itemWidget)
 {
-    Q_UNUSED(itemWidget);
+    auto cookedItemWidget = qobject_cast<SAKTransponderSerialPortItem*>(itemWidget);
+    quint64 id = cookedItemWidget->id();
+    if (cookedItemWidget) {
+        connect(cookedItemWidget, &SAKTransponderSerialPortItem::portNameChanged,
+                this, [=](QString portName){
+            updateRecord(id, mTableCtx.columns.portName, portName);
+        });
+        connect(cookedItemWidget, &SAKTransponderSerialPortItem::baudRateChanged,
+                this, [=](int value){
+            updateRecord(id, mTableCtx.columns.baudRate, value);
+        });
+        connect(cookedItemWidget, &SAKTransponderSerialPortItem::dataBitsChanged,
+                this, [=](int value){
+            updateRecord(id, mTableCtx.columns.dataBits, value);
+        });
+        connect(cookedItemWidget, &SAKTransponderSerialPortItem::parityChanged,
+                this, [=](int value){
+            updateRecord(id, mTableCtx.columns.parity, value);
+        });
+        connect(cookedItemWidget, &SAKTransponderSerialPortItem::stopBitsChanged,
+                this, [=](int value){
+            updateRecord(id, mTableCtx.columns.stopBits, value);
+        });
+        connect(cookedItemWidget, &SAKTransponderSerialPortItem::flowControlChanged,
+                this, [=](int value){
+            updateRecord(id, mTableCtx.columns.flowControl, value);
+        });
+        connect(cookedItemWidget, &SAKTransponderSerialPortItem::frameIntervalChanged,
+                this, [=](int value){
+            updateRecord(id, mTableCtx.columns.frameIntervel, value);
+        });
+    }
 }
 
 void SAKTransponderSerialPort::createDatabaseTable(QString tableName)

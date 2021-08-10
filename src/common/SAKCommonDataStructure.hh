@@ -86,7 +86,7 @@ public:
         QSerialPort::StopBits stopBits;
         QSerialPort::FlowControl flowControl;
 
-        qint64 intervalNs;
+        int frameIntervel;
     };
 #endif
 public:

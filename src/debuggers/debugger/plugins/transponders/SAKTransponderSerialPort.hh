@@ -1,4 +1,4 @@
-/****************************************************************************************
+﻿/****************************************************************************************
  * Copyright 2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -18,6 +18,7 @@
 
 class SAKTransponderSerialPort : public SAKBaseListWidget
 {
+    Q_OBJECT
 public:
     SAKTransponderSerialPort(QSqlDatabase *sqlDatabase,
                              QSettings *settings,
@@ -33,6 +34,23 @@ protected:
     void connectSignalsToSlots(QWidget *itemWidget) final;
     void createDatabaseTable(QString tableName) final;
     void readinRecords() final;
+
+
+private:
+    struct SAKStructSAKTransponderSerialPortTableContext {
+        QString tableName;
+        struct {
+            const QString id = QString("id");
+
+            const QString portName = QString("portName");
+            const QString baudRate = QString("baudRate");
+            const QString dataBits = QString("dataBits");
+            const QString parity = QString("parity");
+            const QString stopBits = QString("stopBits");
+            const QString flowControl = QString("flowControl");
+            const QString frameIntervel = QString("frameIntervel");
+        }columns;
+    }mTableCtx;
 };
 
 #endif // SAKTRANSPONDERSERIALPORT_HH

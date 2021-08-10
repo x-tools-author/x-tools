@@ -8,12 +8,13 @@
  * the file LICENCE in the root of the source code directory.
  ***************************************************************************************/
 #include <QTimer>
+#include <QDateTime>
 #include "SAKDebuggerPluginTransponderBase.hh"
 
 SAKDebuggerPluginTransponderBase::SAKDebuggerPluginTransponderBase(QWidget *parent)
     :QWidget(parent)
 {
-
+    mId = QDateTime::currentDateTime().toMSecsSinceEpoch();
 }
 
 SAKDebuggerPluginTransponderBase::~SAKDebuggerPluginTransponderBase()

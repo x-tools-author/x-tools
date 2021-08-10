@@ -18,6 +18,13 @@ class SAKDebuggerPluginTransponderBase : public QWidget
 public:
     SAKDebuggerPluginTransponderBase(QWidget *parent);
     ~SAKDebuggerPluginTransponderBase();
+
+    void setId(quint64 id){mId = id;}
+    quint64 id(){return mId;}
+
+
+private:
+    quint64 mId;
 };
 
 #endif

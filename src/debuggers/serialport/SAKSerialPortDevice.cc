@@ -47,7 +47,7 @@ bool SAKSerialPortDevice::initialize()
              << "parity" << parasCtx.parity
              << "portName" << parasCtx.portName
              << "stopBits" << parasCtx.stopBits
-             << "intervalNs" << parasCtx.intervalNs;
+             << "intervalNs" << parasCtx.frameIntervel;
 #endif
 
     if (mSerialPort->open(QSerialPort::ReadWrite)) {
@@ -66,7 +66,18 @@ bool SAKSerialPortDevice::initialize()
 
 QByteArray SAKSerialPortDevice::read()
 {
+    // Calculate the max frame interval.
     auto parasCtx = this->parametersCtx();
+    const int defauleFrameInterval = 4;
+    int frameIntervel = parasCtx.frameIntervel;
+    qint64 frameIntervelNs = 0;
+    qint64 consumeNsPerBit = (1000*1000*1000)/parasCtx.baudRate;
+    if (frameIntervel < defauleFrameInterval) {
+        frameIntervelNs = defauleFrameInterval*consumeNsPerBit;
+    } else {
+        frameIntervelNs = frameIntervel*consumeNsPerBit;
+    }
+
     QElapsedTimer elapsedTimer;
     QByteArray bytes;
     while (true) {
@@ -76,7 +87,7 @@ QByteArray SAKSerialPortDevice::read()
             elapsedTimer.restart();
         } else {
             auto ret = elapsedTimer.nsecsElapsed();
-            if (parasCtx.intervalNs <= ret) {
+            if (frameIntervelNs <= ret) {
                 break;
             }
         }

@@ -17,7 +17,9 @@
 #include <QIODevice>
 #include <QPushButton>
 #include <QSerialPort>
+#include <QJsonObject>
 
+#include "SAKSerialPortDevice.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKDebuggerPluginTransponderBase.hh"
 
@@ -30,11 +32,32 @@ class SAKTransponderSerialPortItem : public SAKDebuggerPluginTransponderBase
     Q_OBJECT
 public:
     SAKTransponderSerialPortItem(QWidget *parent = Q_NULLPTR);
+    SAKTransponderSerialPortItem(
+            SAKCommonDataStructure::SAKStructSerialPortParametersContext parasCtx,
+            QWidget *parent = Q_NULLPTR
+            );
      ~SAKTransponderSerialPortItem();
+    SAKCommonDataStructure::SAKStructSerialPortParametersContext parametersContext();
 
 
 private:
     Ui::SAKTransponderSerialPortItem *mUi;
+    SAKSerialPortDevice *mDevice;
+
+
+private:
+    void initUiComponents();
+    void initSignals();
+
+
+signals:
+    void portNameChanged(QString portName);
+    void baudRateChanged(int baudRate);
+    void dataBitsChanged(int baduRate);
+    void parityChanged(int parity);
+    void stopBitsChanged(int stopBits);
+    void flowControlChanged(int flowControl);
+    void frameIntervalChanged(int frameInterval);
 };
 
 #endif
