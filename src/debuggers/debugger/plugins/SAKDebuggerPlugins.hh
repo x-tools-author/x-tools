@@ -21,8 +21,8 @@
 #include "SAKPlugin3d.hh"
 #include "SAKPluginCharts.hh"
 #include "SAKPluginDataForwarding.hh"
-#include "SAKDebuggerPluginRegularlySending.hh"
 #include "SAKDebuggerPluginAutoResponse.hh"
+#include "SAKDebuggerPluginRegularlySending.hh"
 
 class SAKDebuggerPlugins : public QObject
 {
