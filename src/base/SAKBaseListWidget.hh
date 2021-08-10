@@ -56,9 +56,6 @@ protected:
 
     void updateRecord(quint64 id, QString columnName, QVariant value);
     void outputMessage(QString msg, bool isError);
-    bool itemIsExist(QWidget *itemWidget);
-    void setupItemWidget(QListWidgetItem *item, QWidget *itemWidget);
-
     // It must be called in the subcalss.
     void initialize();
 
@@ -70,6 +67,7 @@ private:
     void deleteItem(QListWidgetItem *item);
     void addItem();
     void readinRecords();
+    bool setupItemWidget(QListWidgetItem *item, QWidget *itemWidget);
 
 
 private:

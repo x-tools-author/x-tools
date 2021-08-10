@@ -103,19 +103,6 @@ void SAKBaseListWidget::outputMessage(QString msg, bool isError)
     mClearMessageInfoTimer.start();
 }
 
-bool SAKBaseListWidget::itemIsExist(QWidget *itemWidget)
-{
-    for (int i = 0; i < mListWidget->count(); i++) {
-        QListWidgetItem *item = mListWidget->item(i);
-        QWidget *w = mListWidget->itemWidget(item);
-        if (itemId(w) == itemId(itemWidget)) {
-            return true;
-        }
-    }
-
-    return false;
-}
-
 void SAKBaseListWidget::clearItems()
 {
     QString title = tr("Clear Data");
@@ -158,8 +145,12 @@ void SAKBaseListWidget::importItems()
         QJsonObject parameters = jsa.at(i).toObject();
         auto *itemWidget = createItemFromParameters(parameters);
         QListWidgetItem *item = new QListWidgetItem();
-        setupItemWidget(item, itemWidget);
-        insertRecord(mTableName, itemWidget);
+        if (setupItemWidget(item, itemWidget)) {
+            insertRecord(mTableName, itemWidget);
+        } else {
+            itemWidget->deleteLater();
+            delete item;
+        }
     }
 }
 
@@ -223,8 +214,12 @@ void SAKBaseListWidget::addItem()
 {
     QListWidgetItem *item = new QListWidgetItem();
     QWidget *itemWidget = createItemFromParameters(QJsonObject());
-    setupItemWidget(item, itemWidget);
-    insertRecord(mTableName, itemWidget);
+    if (setupItemWidget(item, itemWidget)) {
+        insertRecord(mTableName, itemWidget);
+    } else {
+        itemWidget->deleteLater();
+        delete item;
+    }
 }
 
 void SAKBaseListWidget::readinRecords()
@@ -235,7 +230,10 @@ void SAKBaseListWidget::readinRecords()
             QJsonObject parameters = toJsonObject(mSqlQuery);
             auto *itemWidget = createItemFromParameters(parameters);
             QListWidgetItem *item = new QListWidgetItem();
-            setupItemWidget(item, itemWidget);
+            if (setupItemWidget(item, itemWidget)) {
+                itemWidget->deleteLater();
+                delete item;
+            }
         }
     } else {
         qWarning() << "Select record form "
@@ -245,14 +243,14 @@ void SAKBaseListWidget::readinRecords()
     }
 }
 
-void SAKBaseListWidget::setupItemWidget(QListWidgetItem *item,
+bool SAKBaseListWidget::setupItemWidget(QListWidgetItem *item,
                                         QWidget *itemWidget)
 {
     for (int i = 0; i < mListWidget->count(); i++) {
         QListWidgetItem *item = mListWidget->item(i);
         QWidget *w = mListWidget->itemWidget(item);
         if (itemId(w) == itemId(itemWidget)) {
-            return;
+            return false;
         }
     }
 
@@ -260,6 +258,7 @@ void SAKBaseListWidget::setupItemWidget(QListWidgetItem *item,
     mListWidget->addItem(item);
     mListWidget->setItemWidget(item, itemWidget);
     connectSignalsToSlots(itemWidget);
+    return true;
 }
 
 void SAKBaseListWidget::initialize()
