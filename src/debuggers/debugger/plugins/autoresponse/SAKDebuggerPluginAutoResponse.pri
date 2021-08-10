@@ -1,6 +1,5 @@
 FORMS += \
-    $$PWD/SAKDebuggerPluginAutoResponseItem.ui \
-    $$PWD/SAKPluginAutomaticallyResponse.ui
+    $$PWD/SAKDebuggerPluginAutoResponseItem.ui
 
 HEADERS += \
     $$PWD/SAKDebuggerPluginAutoResponse.hh \
