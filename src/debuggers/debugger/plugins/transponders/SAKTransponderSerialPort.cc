@@ -51,3 +51,13 @@ void SAKTransponderSerialPort::connectSignalsToSlots(QWidget *itemWidget)
 {
     Q_UNUSED(itemWidget);
 }
+
+void SAKTransponderSerialPort::createDatabaseTable(QString tableName)
+{
+    Q_UNUSED(tableName);
+}
+
+void SAKTransponderSerialPort::readinRecords()
+{
+
+}

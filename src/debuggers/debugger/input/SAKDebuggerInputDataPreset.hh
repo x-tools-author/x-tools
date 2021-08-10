@@ -58,6 +58,8 @@ protected:
     QJsonObject toJsonObject(QWidget *itemWidget) final;
     quint64 itemId(QWidget *itemWidget) final;
     void connectSignalsToSlots(QWidget *itemWidget) final;
+    void createDatabaseTable(QString tableName) final;
+    void readinRecords() final;
 
 
 private:
@@ -66,7 +68,6 @@ private:
 
 
 private:
-    void readinRecord();
     void updateFormat(quint64 id, int format);
     void updateDescription(quint64 id, const QString &description);
     void updateText(quint64 id, const QString &text);

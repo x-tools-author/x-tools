@@ -31,12 +31,7 @@ SAKDebuggerPluginRegularlySending::SAKDebuggerPluginRegularlySending(
     :SAKBaseListWidget(sqlDatabase, settings, settingsGroup, tableNameSuffix, parent)
 {
     mTableCtx.tableName = mTableName;
-
-
-    if (!mSqlDatabase->tables().contains(mTableName)) {
-        createSqlDatabaseTable();
-    }
-    readinRecord();
+    initialize();
 }
 
 SAKDebuggerPluginRegularlySending::~SAKDebuggerPluginRegularlySending()
@@ -157,7 +152,29 @@ void SAKDebuggerPluginRegularlySending::connectSignalsToSlots(QWidget *itemWidge
 #endif
 }
 
-void SAKDebuggerPluginRegularlySending::readinRecord()
+void SAKDebuggerPluginRegularlySending::createDatabaseTable(QString tableName)
+{
+    QString queryString = QString("CREATE TABLE %1(")
+            .arg(tableName);
+    queryString.append(QString("%1 INTEGER PRIMARY KEY NOT NULL,")
+                       .arg(mTableCtx.columns.id));
+    queryString.append(QString("%1 INTEGER NOT NULL,")
+                       .arg(mTableCtx.columns.interval));
+    queryString.append(QString("%1 INTEGER NOT NULL,")
+                       .arg(mTableCtx.columns.format));
+    queryString.append(QString("%1 INTEGER NOT NULL,")
+                       .arg(mTableCtx.columns.description));
+    queryString.append(QString("%1 INTEGER NOT NULL)")
+                       .arg(mTableCtx.columns.data));
+
+    if (!mSqlQuery.exec(queryString)) {
+        qInfo() << queryString;
+        qWarning() << QString("Carete table(%1) failed:%2")
+                      .arg(tableName, mSqlQuery.lastError().text());
+    }
+}
+
+void SAKDebuggerPluginRegularlySending::readinRecords()
 {
     if (mSqlQuery.exec(QString("SELECT * FROM %1").arg(mTableName))) {
         SendingItem::SAKStructItemContext itemCtx;
@@ -176,28 +193,6 @@ void SAKDebuggerPluginRegularlySending::readinRecord()
     }else{
         qWarning() << "Select record form " << mTableName
                    << " table failed: " << mSqlQuery.lastError().text();
-    }
-}
-
-void SAKDebuggerPluginRegularlySending::createSqlDatabaseTable()
-{
-    QString queryString = QString("CREATE TABLE %1(")
-            .arg(mTableName);
-    queryString.append(QString("%1 INTEGER PRIMARY KEY NOT NULL,")
-                       .arg(mTableCtx.columns.id));
-    queryString.append(QString("%1 INTEGER NOT NULL,")
-                       .arg(mTableCtx.columns.interval));
-    queryString.append(QString("%1 INTEGER NOT NULL,")
-                       .arg(mTableCtx.columns.format));
-    queryString.append(QString("%1 INTEGER NOT NULL,")
-                       .arg(mTableCtx.columns.description));
-    queryString.append(QString("%1 INTEGER NOT NULL)")
-                       .arg(mTableCtx.columns.data));
-
-    if (!mSqlQuery.exec(queryString)) {
-        qInfo() << queryString;
-        qWarning() << QString("Carete table(%1) failed:%2")
-                      .arg(mTableName, mSqlQuery.lastError().text());
     }
 }
 

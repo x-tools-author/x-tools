@@ -243,3 +243,11 @@ void SAKBaseListWidget::setupItemWidget(QListWidgetItem *item,
     mListWidget->setItemWidget(item, itemWidget);
     connectSignalsToSlots(itemWidget);
 }
+
+void SAKBaseListWidget::initialize()
+{
+    if (!mSqlDatabase->tables().contains(mTableName)) {
+        createDatabaseTable(mTableName);
+    }
+    readinRecords();
+}

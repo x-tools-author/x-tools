@@ -42,59 +42,7 @@ SAKDebuggerInputDataPreset::SAKDebuggerInputDataPreset(
     ,mItemsMenu(itemsMenu)
 {
     mTableContext.tableName = settingsGroup + QString("PresetData");
-    QString queryString = QString("CREATE TABLE '%1' (")
-            .arg(mTableContext.tableName);
-    queryString.append(QString("%1 INTEGER PRIMARY KEY NOT NULL, ")
-                       .arg(mTableContext.columns.id));
-    queryString.append(QString("%1 INTEGER NOT NULL, ")
-                       .arg(mTableContext.columns.format));
-    queryString.append(QString("%1 TEXT NOT NULL, ")
-                       .arg(mTableContext.columns.description));
-    queryString.append(QString("%1 TEXT NOT NULL)")
-                       .arg(mTableContext.columns.text));
-    // Try to create table
-    mSqlQuery = QSqlQuery(*sqlDatabase);
-    if (!sqlDatabase->tables().contains(mTableContext.tableName)) {
-        if (!mSqlQuery.exec(queryString)) {
-            QString errorString = mSqlQuery.lastError().text();
-            //outputMessage(errorString, true);
-            qWarning() << "Create table("
-                       << mTableContext.tableName
-                       << ")failed:"
-                       << errorString;
-            qInfo() << queryString;
-        }
-    }
-    readinRecord();
-}
-
-void SAKDebuggerInputDataPreset::readinRecord()
-{
-    const QString queryString = QString("SELECT * FROM %1")
-            .arg(mTableContext.tableName);
-    if (mSqlQuery.exec(queryString)) {
-        while (mSqlQuery.next()) {
-            SAKDebuggerInputDataPresetItem::ITEM_CTX itemContext;
-            QVariant tempVariant = mSqlQuery.value(mTableContext.columns.id);
-            itemContext.id = tempVariant.toULongLong();
-
-            tempVariant = mSqlQuery.value(mTableContext.columns.format);
-            itemContext.format = tempVariant.toUInt();
-
-            tempVariant = mSqlQuery.value(mTableContext.columns.description);
-            itemContext.description = tempVariant.toString();
-
-            tempVariant = mSqlQuery.value(mTableContext.columns.text);
-            itemContext.text = tempVariant.toString();
-
-            QListWidgetItem *item = new QListWidgetItem();
-            auto *itemWidget = new SAKDebuggerInputDataPresetItem(itemContext);
-            setupItemWidget(item, itemWidget);
-        }
-    } else {
-        qWarning() << "Can not exec query command:"
-                   << qPrintable(queryString);
-    }
+    initialize();
 }
 
 void SAKDebuggerInputDataPreset::updateFormat(quint64 id, int format)
@@ -241,4 +189,56 @@ void SAKDebuggerInputDataPreset::connectSignalsToSlots(QWidget *itemWidget)
         Q_UNUSED(id);
         action->setText(text);
     });
+}
+
+void SAKDebuggerInputDataPreset::createDatabaseTable(QString tableName)
+{
+    QString queryString = QString("CREATE TABLE '%1' (").arg(tableName);
+    queryString.append(QString("%1 INTEGER PRIMARY KEY NOT NULL, ")
+                       .arg(mTableContext.columns.id));
+    queryString.append(QString("%1 INTEGER NOT NULL, ")
+                       .arg(mTableContext.columns.format));
+    queryString.append(QString("%1 TEXT NOT NULL, ")
+                       .arg(mTableContext.columns.description));
+    queryString.append(QString("%1 TEXT NOT NULL)")
+                       .arg(mTableContext.columns.text));
+    // Try to create table
+    if (!mSqlQuery.exec(queryString)) {
+        QString errorString = mSqlQuery.lastError().text();
+        //outputMessage(errorString, true);
+        qWarning() << "Create table("
+                   << tableName
+                   << ")failed:"
+                   << errorString;
+        qInfo() << queryString;
+    }
+}
+
+void SAKDebuggerInputDataPreset::readinRecords()
+{
+    const QString queryString = QString("SELECT * FROM %1")
+            .arg(mTableContext.tableName);
+    if (mSqlQuery.exec(queryString)) {
+        while (mSqlQuery.next()) {
+            SAKDebuggerInputDataPresetItem::ITEM_CTX itemContext;
+            QVariant tempVariant = mSqlQuery.value(mTableContext.columns.id);
+            itemContext.id = tempVariant.toULongLong();
+
+            tempVariant = mSqlQuery.value(mTableContext.columns.format);
+            itemContext.format = tempVariant.toUInt();
+
+            tempVariant = mSqlQuery.value(mTableContext.columns.description);
+            itemContext.description = tempVariant.toString();
+
+            tempVariant = mSqlQuery.value(mTableContext.columns.text);
+            itemContext.text = tempVariant.toString();
+
+            QListWidgetItem *item = new QListWidgetItem();
+            auto *itemWidget = new SAKDebuggerInputDataPresetItem(itemContext);
+            setupItemWidget(item, itemWidget);
+        }
+    } else {
+        qWarning() << "Can not exec query command:"
+                   << qPrintable(queryString);
+    }
 }

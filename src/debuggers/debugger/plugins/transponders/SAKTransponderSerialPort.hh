@@ -31,6 +31,8 @@ protected:
     QJsonObject toJsonObject(QWidget *itemWidget) final;
     quint64 itemId(QWidget *itemWidget) final;
     void connectSignalsToSlots(QWidget *itemWidget) final;
+    void createDatabaseTable(QString tableName) final;
+    void readinRecords() final;
 };
 
 #endif // SAKTRANSPONDERSERIALPORT_HH

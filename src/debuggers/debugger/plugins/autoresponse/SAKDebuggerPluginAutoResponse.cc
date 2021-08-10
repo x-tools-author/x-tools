@@ -38,8 +38,7 @@ SAKDebuggerPluginAutoResponse::SAKDebuggerPluginAutoResponse(
     ,mForbidAll(false)
 {
     mTableCtx.tableName = mTableName;
-    createSqlDatabaseTable();
-    readInRecord();
+    initialize();
 }
 
 SAKDebuggerPluginAutoResponse::~SAKDebuggerPluginAutoResponse()
@@ -156,7 +155,50 @@ void SAKDebuggerPluginAutoResponse::connectSignalsToSlots(QWidget *itemWidget)
             this, &SAKDebuggerPluginAutoResponse::writeBytes);
 }
 
-void SAKDebuggerPluginAutoResponse::readInRecord()
+void SAKDebuggerPluginAutoResponse::createDatabaseTable(QString tableName)
+{
+    if (!mSqlDatabase->tables().contains(tableName)) {
+        QString queryString;
+        queryString.append(QString("CREATE TABLE %1(")
+                           .arg(tableName));
+        queryString.append(QString("%1 INTEGER PRIMARY KEY NOT NULL,")
+                           .arg(mTableCtx.columns.id));
+
+        queryString.append(QString("%1 TEXT NOT NULL,")
+                           .arg(mTableCtx.columns.name));
+
+        queryString.append(QString("%1 TEXT NOT NULL,")
+                           .arg(mTableCtx.columns.referenceData));
+
+        queryString.append(QString("%1 TEXT NOT NULL,")
+                           .arg(mTableCtx.columns.responseData));
+
+        queryString.append(QString("%1 INTEGER NOT NULL,")
+                           .arg(mTableCtx.columns.enable));
+
+        queryString.append(QString("%1 INTEGER NOT NULL,")
+                           .arg(mTableCtx.columns.referenceFormat));
+
+        queryString.append(QString("%1 INTEGER NOT NULL,")
+                           .arg(mTableCtx.columns.responseFormat));
+
+        queryString.append(QString("%1 INTEGER NOT NULL,")
+                           .arg(mTableCtx.columns.option));
+
+        queryString.append(QString("%1 INTEGER NOT NULL,")
+                           .arg(mTableCtx.columns.delay));
+
+        queryString.append(QString("%1 INTEGER NOT NULL)")
+                           .arg(mTableCtx.columns.interval));
+
+        if (!mSqlQuery.exec(queryString)) {
+            qInfo() << queryString;
+            qWarning() << mSqlQuery.lastError().text();
+        }
+    }
+}
+
+void SAKDebuggerPluginAutoResponse::readinRecords()
 {
     const QString queryString = QString("SELECT * FROM %1")
             .arg(mTableCtx.tableName);
@@ -215,48 +257,5 @@ void SAKDebuggerPluginAutoResponse::readInRecord()
                    << mTableCtx.tableName
                    << " table failed: "
                    << mSqlQuery.lastError().text();
-    }
-}
-
-void SAKDebuggerPluginAutoResponse::createSqlDatabaseTable()
-{
-    if (!mSqlDatabase->tables().contains(mTableName)) {
-        QString queryString;
-        queryString.append(QString("CREATE TABLE %1(")
-                           .arg(mTableName));
-        queryString.append(QString("%1 INTEGER PRIMARY KEY NOT NULL,")
-                           .arg(mTableCtx.columns.id));
-
-        queryString.append(QString("%1 TEXT NOT NULL,")
-                           .arg(mTableCtx.columns.name));
-
-        queryString.append(QString("%1 TEXT NOT NULL,")
-                           .arg(mTableCtx.columns.referenceData));
-
-        queryString.append(QString("%1 TEXT NOT NULL,")
-                           .arg(mTableCtx.columns.responseData));
-
-        queryString.append(QString("%1 INTEGER NOT NULL,")
-                           .arg(mTableCtx.columns.enable));
-
-        queryString.append(QString("%1 INTEGER NOT NULL,")
-                           .arg(mTableCtx.columns.referenceFormat));
-
-        queryString.append(QString("%1 INTEGER NOT NULL,")
-                           .arg(mTableCtx.columns.responseFormat));
-
-        queryString.append(QString("%1 INTEGER NOT NULL,")
-                           .arg(mTableCtx.columns.option));
-
-        queryString.append(QString("%1 INTEGER NOT NULL,")
-                           .arg(mTableCtx.columns.delay));
-
-        queryString.append(QString("%1 INTEGER NOT NULL)")
-                           .arg(mTableCtx.columns.interval));
-
-        if (!mSqlQuery.exec(queryString)) {
-            qInfo() << queryString;
-            qWarning() << mSqlQuery.lastError().text();
-        }
     }
 }

@@ -51,11 +51,16 @@ protected:
     virtual QJsonObject toJsonObject(QWidget *itemWidget) = 0;
     virtual quint64 itemId(QWidget *itemWidget) = 0;
     virtual void connectSignalsToSlots(QWidget *itemWidget) = 0;
+    virtual void createDatabaseTable(QString tableName) = 0;
+    virtual void readinRecords() = 0;
 
     void updateRecord(quint64 id, QString columnName, QVariant value);
     void outputMessage(QString msg, bool isError);
     bool itemIsExist(QWidget *itemWidget);
     void setupItemWidget(QListWidgetItem *item, QWidget *itemWidget);
+
+    // It must be called in the subcalss.
+    void initialize();
 
 
 private:
