@@ -53,8 +53,9 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
     m3d = new SAKPlugin3d();
     mCharts = new SAKPluginCharts();
     mTransponders = new SAKDebuggerPluginTransponders(sqlDatabase,
-                                                        settings,
-                                                        settingsGroup);
+                                                      settings,
+                                                      settingsGroup,
+                                                      "Transponders");
     mRegularlySending = new SAKDebuggerPluginRegularlySending(sqlDatabase,
                                                               settings,
                                                               settingsGroup,
@@ -234,8 +235,8 @@ void SAKDebuggerPlugins::cancelEmbedPlugin()
 
 void SAKDebuggerPlugins::clearPluginDialog()
 {
-    for (int i = 0; i < mPanelWidget->layout()->count(); i++) {
-        auto ret = mPanelWidget->layout()->takeAt(i);
+    for (int i = 0; i < mPluginDialog->layout()->count(); i++) {
+        auto ret = mPluginDialog->layout()->takeAt(i);
         ret->widget()->setParent(Q_NULLPTR);
     }
 
