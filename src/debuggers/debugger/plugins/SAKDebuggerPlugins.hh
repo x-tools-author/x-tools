@@ -20,7 +20,7 @@
 
 #include "SAKPlugin3d.hh"
 #include "SAKPluginCharts.hh"
-#include "SAKPluginDataForwarding.hh"
+#include "SAKDebuggerPluginTransponders.hh"
 #include "SAKDebuggerPluginAutoResponse.hh"
 #include "SAKDebuggerPluginRegularlySending.hh"
 
@@ -42,7 +42,7 @@ public:
 private:
     SAKPlugin3d *m3d;
     SAKPluginCharts *mCharts;
-    SAKPluginDataForwarding *mDataForwarding;
+    SAKDebuggerPluginTransponders *mTransponders;
     SAKDebuggerPluginAutoResponse *mAutoResponse;
     SAKDebuggerPluginRegularlySending *mRegularlySending;
 
@@ -58,15 +58,15 @@ private:
 private:
     void showPluin3D();
     void showPluinCharts();
+    void showPluinTransponders();
     void showPluginAutoResponse();
-    void showPluinDataForwarding();
     void showPluginRegularlySending();
     void showPluginDialog(QWidget *contentWidget);
 
     void embedPluin3D();
     void embedPluinCharts();
+    void embedPluinTransponders();
     void embedPluginAutoResponse();
-    void embedPluinDataForwarding();
     void embedPluginRegularlySending();
     void embedPlugin(QWidget *contentWidget);
     void cancelEmbedPlugin();

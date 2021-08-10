@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SAKPluginDataForwarding</class>
- <widget class="QWidget" name="SAKPluginDataForwarding">
+ <class>SAKDebuggerPluginTransponders</class>
+ <widget class="QWidget" name="SAKDebuggerPluginTransponders">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -14,24 +14,31 @@
    <string>Data transmition</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>2</number>
+      <number>0</number>
      </property>
-     <widget class="QWidget" name="serialPortWidget">
+     <widget class="QWidget" name="tab">
       <attribute name="title">
-       <string>COM</string>
+       <string notr="true">Tab 1</string>
       </attribute>
      </widget>
-     <widget class="QWidget" name="udpWidget">
+     <widget class="QWidget" name="tab_2">
       <attribute name="title">
-       <string>UDP</string>
-      </attribute>
-     </widget>
-     <widget class="QWidget" name="tcpWidget">
-      <attribute name="title">
-       <string>TCP</string>
+       <string notr="true">Tab 2</string>
       </attribute>
      </widget>
     </widget>

@@ -37,7 +37,7 @@ class SAKDebuggerPlugins;
 class SAKDebuggerStatistics;
 class SAKCommonCrcInterface;
 class SAKDebuggerController;
-class SAKPluginDataForwarding;
+class SAKDebuggerPluginTransponders;
 
 namespace Ui {
     class SAKDebugger;

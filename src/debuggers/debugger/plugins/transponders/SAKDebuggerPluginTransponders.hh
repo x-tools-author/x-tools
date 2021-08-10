@@ -1,4 +1,4 @@
-﻿/*
+﻿/****************************************************************************************
  * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -6,24 +6,37 @@
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- */
-#ifndef SAKPLUGINDATAFORWARDING_HH
-#define SAKPLUGINDATAFORWARDING_HH
+ ***************************************************************************************/
+#ifndef SAKDEBUGGERPLUGINTRANSPONDERS_HH
+#define SAKDEBUGGERPLUGINTRANSPONDERS_HH
 
 #include <QWidget>
+#include <QSettings>
+#include <QSqlDatabase>
 
 namespace Ui {
-    class SAKPluginDataForwarding;
+    class SAKDebuggerPluginTransponders;
 }
 
-class SAKPluginDataForwarding:public QWidget
+class SAKDebuggerPluginTransponders : public QWidget
 {
     Q_OBJECT
 public:
-    SAKPluginDataForwarding(QWidget *parent = Q_NULLPTR);
-    ~SAKPluginDataForwarding();
+    SAKDebuggerPluginTransponders(QSqlDatabase *sqlDatabase,
+                                  QSettings *settings,
+                                  QString settingsGroup,
+                                  QWidget *parent = Q_NULLPTR);
+    ~SAKDebuggerPluginTransponders();
+
+
 private:
-    Ui::SAKPluginDataForwarding *mUi;
+    QSqlDatabase *mSqlDatabase;
+    QSettings *mSettings;
+    QString mSettingsGroup;
+
+
+private:
+    Ui::SAKDebuggerPluginTransponders *mUi;
 };
 
 #endif

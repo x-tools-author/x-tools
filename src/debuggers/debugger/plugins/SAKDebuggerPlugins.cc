@@ -22,10 +22,11 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
                                        QWidget *panelWidget,
                                        QObject *parent)
     :QObject(parent)
+    ,m3d(Q_NULLPTR)
     ,mCharts(Q_NULLPTR)
-    ,mDataForwarding(Q_NULLPTR)
-    ,mRegularlySending(Q_NULLPTR)
+    ,mTransponders(Q_NULLPTR)
     ,mAutoResponse(Q_NULLPTR)
+    ,mRegularlySending(Q_NULLPTR)
     ,mTitleLabel(titleLabel)
     ,mPanelWidget(panelWidget)
     ,mPluginDialog(Q_NULLPTR)
@@ -51,7 +52,9 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
     // Instance plugins.
     m3d = new SAKPlugin3d();
     mCharts = new SAKPluginCharts();
-    mDataForwarding = new SAKPluginDataForwarding();
+    mTransponders = new SAKDebuggerPluginTransponders(sqlDatabase,
+                                                        settings,
+                                                        settingsGroup);
     mRegularlySending = new SAKDebuggerPluginRegularlySending(sqlDatabase,
                                                               settings,
                                                               settingsGroup,
@@ -83,9 +86,9 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
     actionsCtx.append({tr("Charts"),
                        &SAKDebuggerPlugins::showPluinCharts,
                        &SAKDebuggerPlugins::embedPluinCharts});
-    actionsCtx.append({tr("Data Forwarding"),
-                       &SAKDebuggerPlugins::showPluinDataForwarding,
-                       &SAKDebuggerPlugins::embedPluinDataForwarding});
+    actionsCtx.append({tr("Transponders"),
+                       &SAKDebuggerPlugins::showPluinTransponders,
+                       &SAKDebuggerPlugins::embedPluinTransponders});
     actionsCtx.append({tr("Regularly Sending"),
                        &SAKDebuggerPlugins::showPluginRegularlySending,
                        &SAKDebuggerPlugins::embedPluginRegularlySending});
@@ -137,7 +140,7 @@ SAKDebuggerPlugins::~SAKDebuggerPlugins()
     QVector<QWidget*> pluginVector;
     pluginVector << m3d
                  << mCharts
-                 << mDataForwarding
+                 << mTransponders
                  << mRegularlySending
                  << mAutoResponse;
     for (int i = 0; i < pluginVector.count(); i++) {
@@ -158,14 +161,14 @@ void SAKDebuggerPlugins::showPluinCharts()
     showPluginDialog(mCharts);
 }
 
+void SAKDebuggerPlugins::showPluinTransponders()
+{
+    showPluginDialog(mTransponders);
+}
+
 void SAKDebuggerPlugins::showPluginAutoResponse()
 {
     showPluginDialog(mAutoResponse);
-}
-
-void SAKDebuggerPlugins::showPluinDataForwarding()
-{
-    showPluginDialog(mDataForwarding);
 }
 
 void SAKDebuggerPlugins::showPluginRegularlySending()
@@ -194,14 +197,14 @@ void SAKDebuggerPlugins::embedPluinCharts()
     embedPlugin(mCharts);
 }
 
+void SAKDebuggerPlugins::embedPluinTransponders()
+{
+    embedPlugin(mTransponders);
+}
+
 void SAKDebuggerPlugins::embedPluginAutoResponse()
 {
     embedPlugin(mAutoResponse);
-}
-
-void SAKDebuggerPlugins::embedPluinDataForwarding()
-{
-    embedPlugin(mDataForwarding);
 }
 
 void SAKDebuggerPlugins::embedPluginRegularlySending()
