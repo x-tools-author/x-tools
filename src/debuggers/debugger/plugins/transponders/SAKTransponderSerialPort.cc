@@ -17,20 +17,68 @@ SAKTransponderSerialPort::SAKTransponderSerialPort(QSqlDatabase *sqlDatabase,
     :SAKBaseListWidget(sqlDatabase, settings, settingsGroup, tableNameSuffix)
 {
     mTableCtx.tableName = mTableName;
+    initialize();
 }
 
 QString SAKTransponderSerialPort::sqlCreate(const QString &tableName)
 {
-    Q_UNUSED(tableName);
-    return QString();
+    QString sqlString = QString("CREATE TABLE %1(").arg(tableName);
+    sqlString.append(QString("%1 INTEGER PRIMARY KEY NOT NULL,")
+                     .arg(mTableCtx.columns.id));
+    sqlString.append(QString("%1 TEXT NOT NULL,")
+                       .arg(mTableCtx.columns.portName));
+
+    sqlString.append(QString("%1 INTEGER NOT NULL,")
+                       .arg(mTableCtx.columns.baudRate));
+
+    sqlString.append(QString("%1 INTEGER NOT NULL,")
+                       .arg(mTableCtx.columns.dataBits));
+
+    sqlString.append(QString("%1 INTEGER NOT NULL,")
+                       .arg(mTableCtx.columns.parity));
+
+    sqlString.append(QString("%1 INTEGER NOT NULL,")
+                       .arg(mTableCtx.columns.stopBits));
+
+    sqlString.append(QString("%1 INTEGER NOT NULL,")
+                       .arg(mTableCtx.columns.flowControl));
+
+    sqlString.append(QString("%1 INTEGER NOT NULL)")
+                       .arg(mTableCtx.columns.frameIntervel));
+    return sqlString;
 }
 
 QString SAKTransponderSerialPort::sqlInsert(const QString &tableName,
                                             QWidget *itemWidget)
 {
-    Q_UNUSED(tableName);
-    Q_UNUSED(itemWidget);
-    return QString();
+    auto cookedItemWidget
+            = qobject_cast<SAKTransponderSerialPortItem*>(itemWidget);
+    if (!cookedItemWidget) {
+        return QString();
+    }
+
+    auto itemCtx = cookedItemWidget->parametersContext();
+    auto tableCtx = mTableCtx;
+    QString queryString = QString("INSERT INTO %1(").arg(tableName);
+    queryString.append(tableCtx.columns.id).append(",");
+    queryString.append(tableCtx.columns.portName).append(",");
+    queryString.append(tableCtx.columns.baudRate).append(",");
+    queryString.append(tableCtx.columns.dataBits).append(",");
+    queryString.append(tableCtx.columns.parity).append(",");
+    queryString.append(tableCtx.columns.stopBits).append(",");
+    queryString.append(tableCtx.columns.flowControl).append(",");
+    queryString.append(tableCtx.columns.frameIntervel).append(")");
+    queryString.append(" VALUES(");
+    queryString.append(QString("%1,").arg(cookedItemWidget->id()));
+    queryString.append(QString("'%1',").arg(itemCtx.portName));
+    queryString.append(QString("%1,").arg(itemCtx.baudRate));
+    queryString.append(QString("%1,").arg(itemCtx.dataBits));
+    queryString.append(QString("%1,").arg(itemCtx.parity));
+    queryString.append(QString("%1,").arg(itemCtx.stopBits));
+    queryString.append(QString("%1,").arg(itemCtx.flowControl));
+    queryString.append(QString("%1)").arg(itemCtx.frameIntervel));
+
+    return queryString;
 }
 
 QJsonObject SAKTransponderSerialPort::toJsonObject(QWidget *itemWidget)
@@ -53,7 +101,43 @@ QJsonObject SAKTransponderSerialPort::toJsonObject(QWidget *itemWidget)
 
 QJsonObject SAKTransponderSerialPort::toJsonObject(const QSqlQuery &sqlQuery)
 {
-    return QJsonObject();
+    QJsonObject jsonObj;
+    QString column;
+    QVariant valueVariant;
+
+    column = mTableCtx.columns.id;
+    valueVariant = sqlQuery.value(column);
+    jsonObj.insert(column, valueVariant.toLongLong());
+
+    column = mTableCtx.columns.portName;
+    valueVariant = sqlQuery.value(column);
+    jsonObj.insert(column, valueVariant.toString());
+
+    column = mTableCtx.columns.baudRate;
+    valueVariant = sqlQuery.value(column);
+    jsonObj.insert(column, valueVariant.toInt());
+
+    column = mTableCtx.columns.dataBits;
+    valueVariant = sqlQuery.value(column);
+    jsonObj.insert(column, valueVariant.toInt());
+
+    column = mTableCtx.columns.parity;
+    valueVariant = sqlQuery.value(column);
+    jsonObj.insert(column, valueVariant.toInt());
+
+    column = mTableCtx.columns.stopBits;
+    valueVariant = sqlQuery.value(column);
+    jsonObj.insert(column, valueVariant.toInt());
+
+    column = mTableCtx.columns.flowControl;
+    valueVariant = sqlQuery.value(column);
+    jsonObj.insert(column, valueVariant.toInt());
+
+    column = mTableCtx.columns.frameIntervel;
+    valueVariant = sqlQuery.value(column);
+    jsonObj.insert(column, valueVariant.toInt());
+
+    return jsonObj;
 }
 
 QWidget *SAKTransponderSerialPort::createItemFromParameters(const QJsonObject &jsonObj)
