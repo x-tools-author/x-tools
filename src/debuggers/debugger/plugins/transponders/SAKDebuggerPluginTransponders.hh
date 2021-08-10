@@ -32,6 +32,7 @@ public:
     SAKDebuggerPluginTransponders(QSqlDatabase *sqlDatabase,
                                   QSettings *settings,
                                   QString settingsGroup,
+                                  QString tableNameSuffix,
                                   QWidget *parent = Q_NULLPTR);
     ~SAKDebuggerPluginTransponders();
     void onBytesRead(QByteArray bytes);
@@ -41,6 +42,7 @@ private:
     QSqlDatabase *mSqlDatabase;
     QSettings *mSettings;
     QString mSettingsGroup;
+    QString mTableNameSuffix;
 
 
 private:

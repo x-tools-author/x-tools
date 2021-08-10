@@ -14,21 +14,24 @@
 SAKDebuggerPluginTransponders::SAKDebuggerPluginTransponders(QSqlDatabase *sqlDatabase,
                                                              QSettings *settings,
                                                              QString settingsGroup,
+                                                             QString tableNameSuffix,
                                                              QWidget *parent)
     :QWidget(parent)
     ,mSqlDatabase(sqlDatabase)
     ,mSettings(settings)
     ,mSettingsGroup(settingsGroup)
+    ,mTableNameSuffix(tableNameSuffix)
     ,mUi (new Ui::SAKDebuggerPluginTransponders)
 {
     mUi->setupUi(this);
     mUi->tabWidget->clear();
 
-    auto transponderSerialPort = new SAKTransponderSerialPort(sqlDatabase,
-                                                              settings,
-                                                              settingsGroup,
-                                                              "TransponderSerialPort");
-    mUi->tabWidget->addTab(transponderSerialPort, tr("SerialPort"));
+    auto *serialPort = new SAKTransponderSerialPort(sqlDatabase,
+                                                    settings,
+                                                    settingsGroup,
+                                                    tableNameSuffix + "SerialPort");
+    serialPort->setContentsMargins(6, 6, 6, 6);
+    mUi->tabWidget->addTab(serialPort, tr("SerialPort"));
 }
 
 SAKDebuggerPluginTransponders::~SAKDebuggerPluginTransponders()
