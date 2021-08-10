@@ -24,8 +24,6 @@
 #include "SAKCommonDataStructure.hh"
 #include "SAKDebuggerPluginAutoResponse.hh"
 
-#include "ui_SAKPluginAutomaticallyResponse.h"
-
 SAKDebuggerPluginAutoResponse::SAKDebuggerPluginAutoResponse(
         QSettings *settings,
         QString settingsGroup,
@@ -38,6 +36,7 @@ SAKDebuggerPluginAutoResponse::SAKDebuggerPluginAutoResponse(
     ,mSqlQuery(*sqlDatabase)
     ,mForbidAll(false)
 {
+    mTableCtx.tableName = mTableName;
     createSqlDatabaseTable();
     readInRecord();
 }
@@ -220,10 +219,10 @@ void SAKDebuggerPluginAutoResponse::readInRecord()
 
 void SAKDebuggerPluginAutoResponse::createSqlDatabaseTable()
 {
-    if (!mSqlDatabase->tables().contains(mTableCtx.tableName)) {
+    if (!mSqlDatabase->tables().contains(mTableName)) {
         QString queryString;
         queryString.append(QString("CREATE TABLE %1(")
-                           .arg(mTableCtx.tableName));
+                           .arg(mTableName));
         queryString.append(QString("%1 INTEGER PRIMARY KEY NOT NULL,")
                            .arg(mTableCtx.columns.id));
 

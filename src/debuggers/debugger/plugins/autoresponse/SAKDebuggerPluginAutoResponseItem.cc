@@ -16,8 +16,7 @@
 #include "SAKCommonInterface.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKDebuggerPluginAutoResponseItem.hh"
-
-#include "ui_SAKPluginAutomaticallyResponseItem.h"
+#include "ui_SAKDebuggerPluginAutoResponseItem.h"
 
 SAKDebuggerPluginAutoResponseItem::SAKDebuggerPluginAutoResponseItem(QWidget *parent)
     :QWidget(parent)
@@ -29,31 +28,22 @@ SAKDebuggerPluginAutoResponseItem::SAKDebuggerPluginAutoResponseItem(QWidget *pa
 }
 
 SAKDebuggerPluginAutoResponseItem::SAKDebuggerPluginAutoResponseItem(
-        quint64 id,
-        QString name,
-        QString referenceData,
-        QString responseData,
-        bool enabled,
-        quint32 referenceFormat,
-        quint32 responseFormat,
-        quint32 option,
-        bool delay,
-        int interval,
+        SAKStructItemContext ctx,
         QWidget *parent)
     :QWidget(parent)
-    ,mID(id)
+    ,mID(ctx.id)
     ,mUi(new Ui::SAKDebuggerPluginAutoResponseItem)
 {
     mUi->setupUi(this);
-    mUi->descriptionLineEdit->setText(name);
-    mUi->referenceLineEdit->setText(referenceData);
-    mUi->responseLineEdit->setText(responseData);
-    mUi->enableCheckBox->setChecked(enabled);
-    mUi->referenceDataFromatComboBox->setCurrentIndex(referenceFormat);
-    mUi->responseDataFormatComboBox->setCurrentIndex(responseFormat);
-    mUi->optionComboBox->setCurrentIndex(option);
-    mUi->delayResponseCheckBox->setCheckable(delay);
-    mUi->delayResponseSpinBox->setValue(interval);
+    mUi->descriptionLineEdit->setText(ctx.name);
+    mUi->referenceLineEdit->setText(ctx.referenceData);
+    mUi->responseLineEdit->setText(ctx.responseData);
+    mUi->enableCheckBox->setChecked(ctx.enable);
+    mUi->referenceDataFromatComboBox->setCurrentIndex(ctx.referenceFormat);
+    mUi->responseDataFormatComboBox->setCurrentIndex(ctx.responseFormat);
+    mUi->optionComboBox->setCurrentIndex(ctx.option);
+    mUi->delayResponseCheckBox->setCheckable(ctx.delay);
+    mUi->delayResponseSpinBox->setValue(ctx.interval);
 
     setupItem();
 }
