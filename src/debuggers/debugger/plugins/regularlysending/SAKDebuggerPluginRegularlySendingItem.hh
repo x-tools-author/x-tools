@@ -63,11 +63,6 @@ private:
 
 private:
     Ui::SAKDebuggerPluginRegularlySendingItem *mUi;
-    QCheckBox *mEnableCheckBox;
-    QLineEdit *mIntervalLineEdit;
-    QComboBox *mTextFormatComboBox;
-    QLineEdit *mDescriptionLineEdit;
-    QTextEdit *mInputDataTextEdit;
 
 
 signals:

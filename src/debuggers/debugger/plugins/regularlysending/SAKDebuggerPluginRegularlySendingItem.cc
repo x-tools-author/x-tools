@@ -13,7 +13,6 @@
 #include "SAKDebuggerInput.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKDebuggerPluginRegularlySendingItem.hh"
-
 #include "ui_SAKDebuggerPluginRegularlySendingItem.h"
 
 SAKDebuggerPluginRegularlySendingItem::SAKDebuggerPluginRegularlySendingItem(
@@ -39,10 +38,10 @@ SAKDebuggerPluginRegularlySendingItem::SAKDebuggerPluginRegularlySendingItem(
 {
     commonInitializing();
 
-    mIntervalLineEdit->setText(QString::number(ctx.interval));
-    mTextFormatComboBox->setCurrentIndex(ctx.format);
-    mDescriptionLineEdit->setText(ctx.description);
-    mInputDataTextEdit->setText(ctx.data);
+    mUi->intervalLineEdit->setText(QString::number(ctx.interval));
+    mUi->textFormatComboBox->setCurrentIndex(ctx.format);
+    mUi->descriptionLineEdit->setText(ctx.description);
+    mUi->inputDataTextEdit->setText(ctx.data);
     isInitializing = false;
 }
 
@@ -58,22 +57,22 @@ quint64 SAKDebuggerPluginRegularlySendingItem::itemID()
 
 quint32 SAKDebuggerPluginRegularlySendingItem::itemInterval()
 {
-    return mIntervalLineEdit->text().toUInt();
+    return mUi->intervalLineEdit->text().toUInt();
 }
 
 quint32 SAKDebuggerPluginRegularlySendingItem::itemFormat()
 {
-    return mTextFormatComboBox->currentIndex();
+    return mUi->textFormatComboBox->currentIndex();
 }
 
 QString SAKDebuggerPluginRegularlySendingItem::itemDescription()
 {
-    return mDescriptionLineEdit->text();
+    return mUi->descriptionLineEdit->text();
 }
 
 QString SAKDebuggerPluginRegularlySendingItem::itemText()
 {
-    return mInputDataTextEdit->toPlainText();
+    return mUi->inputDataTextEdit->toPlainText();
 }
 
 SAKDebuggerPluginRegularlySendingItem::SAKStructItemContext
@@ -90,10 +89,10 @@ SAKDebuggerPluginRegularlySendingItem::context()
 void SAKDebuggerPluginRegularlySendingItem::write()
 {
     mWriteTimer.stop();
-    QString data = mInputDataTextEdit->toPlainText();
+    QString data = mUi->inputDataTextEdit->toPlainText();
 
     if (!data.isEmpty()){
-        int textFormat = this->mTextFormatComboBox->currentData().toInt();
+        int textFormat = mUi->textFormatComboBox->currentData().toInt();
         emit invokeWriteBytes(data, textFormat);
     }
     mWriteTimer.start();
@@ -102,21 +101,14 @@ void SAKDebuggerPluginRegularlySendingItem::write()
 void SAKDebuggerPluginRegularlySendingItem::commonInitializing()
 {
     mUi->setupUi(this);
-
-    mEnableCheckBox = mUi->enableCheckBox;
-    mIntervalLineEdit = mUi->intervalLineEdit;
-    mTextFormatComboBox = mUi->textFormatComboBox;
-    mDescriptionLineEdit = mUi->descriptionLineEdit;
-    mInputDataTextEdit = mUi->inputDataTextEdit;
-
-    mWriteTimer.setInterval(mIntervalLineEdit->text().toInt());
+    mWriteTimer.setInterval(mUi->intervalLineEdit->text().toInt());
     connect(&mWriteTimer, &QTimer::timeout,
             this, &SAKDebuggerPluginRegularlySendingItem::write);
-    SAKCommonDataStructure::setComboBoxTextInputFormat(mTextFormatComboBox);
+    SAKCommonDataStructure::setComboBoxTextInputFormat(mUi->textFormatComboBox);
 
     connect(mUi->enableCheckBox, &QCheckBox::clicked,
             this, [&](){
-        mEnableCheckBox->isChecked() ? mWriteTimer.start() : mWriteTimer.stop();
+        mUi->enableCheckBox->isChecked() ? mWriteTimer.start() : mWriteTimer.stop();
     });
 
     connect(mUi->intervalLineEdit, &QLineEdit::textEdited,
@@ -134,8 +126,8 @@ void SAKDebuggerPluginRegularlySendingItem::commonInitializing()
             [&](int index){
         Q_UNUSED(index);
         if (!isInitializing){
-            mInputDataTextEdit->clear();
-            int format = mTextFormatComboBox->currentData().toInt();
+            mUi->inputDataTextEdit->clear();
+            int format = mUi->textFormatComboBox->currentData().toInt();
             emit formatChanged(mID, format);
         }
     });
@@ -151,8 +143,9 @@ void SAKDebuggerPluginRegularlySendingItem::commonInitializing()
             this, [&](){
         if (!isInitializing){
             QString text = mUi->inputDataTextEdit->toPlainText();
-            int format = mTextFormatComboBox->currentData().toInt();
-            SAKCommonDataStructure::formattingInputText(mInputDataTextEdit, format);
+            int format = mUi->textFormatComboBox->currentData().toInt();
+            SAKCommonDataStructure::formattingInputText(mUi->inputDataTextEdit,
+                                                        format);
 
             emit inputTextChanged(mID, text);
         }
