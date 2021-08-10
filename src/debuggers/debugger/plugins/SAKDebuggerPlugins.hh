@@ -43,8 +43,8 @@ private:
     SAKPlugin3d *m3d;
     SAKPluginCharts *mCharts;
     SAKPluginDataForwarding *mDataForwarding;
-    SAKDebuggerPluginRegularlySending *mRegularlySending;
     SAKDebuggerPluginAutoResponse *mAutoResponse;
+    SAKDebuggerPluginRegularlySending *mRegularlySending;
 
 
 private:
