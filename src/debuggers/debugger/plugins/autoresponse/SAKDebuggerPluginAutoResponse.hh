@@ -22,23 +22,27 @@
 #include <QSqlDatabase>
 #include <QListWidgetItem>
 
+#include "SAKBaseListWidget.hh"
 #include "SAKDebuggerPluginAutoResponseItem.hh"
 
-namespace Ui {
-    class SAKPluginAutomaticallyResponse;
-}
-
-/// @brief Auto response item manager
-class SAKDebuggerPluginAutoResponse:public QWidget
+class SAKDebuggerPluginAutoResponse : public SAKBaseListWidget
 {
    Q_OBJECT
 public:
     SAKDebuggerPluginAutoResponse(QSettings *settings,
-                                   QString settingsGroup,
-                                   QSqlDatabase *sqlDatabase,
-                                   QWidget *parent = Q_NULLPTR);
+                                  QString settingsGroup,
+                                  QSqlDatabase *sqlDatabase,
+                                  QWidget *parent = Q_NULLPTR);
     ~SAKDebuggerPluginAutoResponse();
     void onBytesRead(const QByteArray &bytes);
+
+
+protected:
+    void insertRecord(const QString &tableName, QWidget *itemWidget) final;
+    QWidget *createItemFromParameters(const QJsonObject &jsonObj) final;
+    QJsonObject toJsonObject(QWidget *itemWidget) final;
+    quint64 itemId(QWidget *itemWidget) final;
+    void connectSignalsToSlots(QWidget *itemWidget) final;
 
 
 private:
@@ -72,28 +76,12 @@ private:
     struct SAKStructAutomaticallyResponseSqlDatabaseTableContext {
         QString tableName;
         SAKStructAutomaticallyResponseJsonKeyContext columns;
-    }mSqlDatabaseTableCtx;
+    }mTableCtx;
 
 
 private:
-    void outputMessage(QString msg, bool isInfo);
     void readInRecord();
-    void insertRecord(SAKDebuggerPluginAutoResponseItem::ITEM_CTX itemCtx);
-    void addItem(SAKDebuggerPluginAutoResponseItem::ITEM_CTX itemCtx);
-    void exportItems();
-    void importItems();
-    bool itemIsExisted(quint64 id);
-    void deleteItem();
-    void addItemWidthoutParameters();
     void createSqlDatabaseTable();
-    void clearItems();
-    void setItemWidget(QListWidgetItem *item,
-                       SAKDebuggerPluginAutoResponseItem *itemWidget,
-                       QListWidget *listWidget);
-
-
-private:
-    Ui::SAKPluginAutomaticallyResponse *mUi;
 
 
 signals:
