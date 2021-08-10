@@ -47,14 +47,15 @@ protected:
 
 protected:
     virtual void insertRecord(const QString &tableName, QWidget *itemWidget) = 0;
-    virtual void setupItemWidget(QWidget *itemWidget) = 0;
     virtual QWidget *createItemFromParameters(const QJsonObject &jsonObj) = 0;
     virtual QJsonObject toJsonObject(QWidget *itemWidget) = 0;
     virtual quint64 itemId(QWidget *itemWidget) = 0;
+    virtual void connectSignalsToSlots(QWidget *itemWidget) = 0;
 
     void updateRecord(quint64 id, QString columnName, QVariant value);
     void outputMessage(QString msg, bool isError);
     bool itemIsExist(QWidget *itemWidget);
+    void setupItemWidget(QListWidgetItem *item, QWidget *itemWidget);
 
 
 private:
@@ -63,7 +64,6 @@ private:
     void exportItems();
     void deleteItem(QListWidgetItem *item);
     void addItem();
-    void setupItemWidgetInner(QListWidgetItem *item, QWidget *itemWidget);
 
 
 private:

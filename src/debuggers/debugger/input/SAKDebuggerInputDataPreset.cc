@@ -144,50 +144,6 @@ void SAKDebuggerInputDataPreset::insertRecord(const QString &tableName,
     }
 }
 
-void SAKDebuggerInputDataPreset::setupItemWidget(
-        QListWidgetItem *item,
-        QWidget *itemWidget)
-{
-    if (!itemIsExist(itemWidget)) {
-        auto cookedItemWidget = qobject_cast<SAKDebuggerInputDataPresetItem*>(itemWidget);
-        item->setSizeHint(itemWidget->sizeHint());
-        mListWidget->addItem(item);
-        mListWidget->setItemWidget(item, itemWidget);
-
-        connect(cookedItemWidget,
-                &SAKDebuggerInputDataPresetItem::formatChanged,
-                this,
-                &SAKDebuggerInputDataPreset::updateFormat);
-        connect(cookedItemWidget,
-                &SAKDebuggerInputDataPresetItem::textChanged,
-                this,
-                &SAKDebuggerInputDataPreset::updateText);
-        connect(cookedItemWidget,
-                &SAKDebuggerInputDataPresetItem::descriptionChanged,
-                this,
-                &SAKDebuggerInputDataPreset::updateDescription);
-
-        QAction *action = mItemsMenu->addAction(cookedItemWidget->itemDescription(),
-                                                this,
-                                                [=](){
-            QString rawData = cookedItemWidget->itemText();
-            int format = cookedItemWidget->itemTextFromat();
-            emit this->invokeWriteBytes(rawData, format);
-        });
-
-        // The action will be deleted after item widget is destroyed.
-        connect(cookedItemWidget, &SAKDebuggerInputDataPresetItem::destroyed,
-                action, &QAction::deleteLater);
-        connect(cookedItemWidget,
-                &SAKDebuggerInputDataPresetItem::descriptionChanged,
-                this,
-                [=](quint64 id, const QString text){
-            Q_UNUSED(id);
-            action->setText(text);
-        });
-    }
-}
-
 QWidget *SAKDebuggerInputDataPreset::createItemFromParameters(
         const QJsonObject &jsonObj
         )
@@ -249,4 +205,40 @@ quint64 SAKDebuggerInputDataPreset::itemId(QWidget *itemWidget)
     }
 
     return 0;
+}
+
+void SAKDebuggerInputDataPreset::connectSignalsToSlots(QWidget *itemWidget)
+{
+    auto cookedItemWidget = qobject_cast<SAKDebuggerInputDataPresetItem*>(itemWidget);
+    connect(cookedItemWidget,
+            &SAKDebuggerInputDataPresetItem::formatChanged,
+            this,
+            &SAKDebuggerInputDataPreset::updateFormat);
+    connect(cookedItemWidget,
+            &SAKDebuggerInputDataPresetItem::textChanged,
+            this,
+            &SAKDebuggerInputDataPreset::updateText);
+    connect(cookedItemWidget,
+            &SAKDebuggerInputDataPresetItem::descriptionChanged,
+            this,
+            &SAKDebuggerInputDataPreset::updateDescription);
+
+    QAction *action = mItemsMenu->addAction(cookedItemWidget->itemDescription(),
+                                            this,
+                                            [=](){
+        QString rawData = cookedItemWidget->itemText();
+        int format = cookedItemWidget->itemTextFromat();
+        emit this->invokeWriteBytes(rawData, format);
+    });
+
+    // The action will be deleted after item widget is destroyed.
+    connect(cookedItemWidget, &SAKDebuggerInputDataPresetItem::destroyed,
+            action, &QAction::deleteLater);
+    connect(cookedItemWidget,
+            &SAKDebuggerInputDataPresetItem::descriptionChanged,
+            this,
+            [=](quint64 id, const QString text){
+        Q_UNUSED(id);
+        action->setText(text);
+    });
 }

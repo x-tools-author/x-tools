@@ -67,31 +67,6 @@ void SAKDebuggerPluginRegularlySending::insertRecord(const QString &tableName,
     }
 }
 
-void SAKDebuggerPluginRegularlySending::setupItemWidget(QWidget *itemWidget)
-{
-    if (!itemIsExist(itemWidget)) {
-        auto cookedItemWidget = qobject_cast<SendingItem*>(itemWidget);
-        connect(cookedItemWidget,
-                &SAKDebuggerPluginRegularlySendingItem::intervalChanged,
-                this,
-                &SAKDebuggerPluginRegularlySending::changeInterval);
-        connect(cookedItemWidget,
-                &SAKDebuggerPluginRegularlySendingItem::formatChanged,
-                this,
-                &SAKDebuggerPluginRegularlySending::changeFormat);
-
-        connect(cookedItemWidget,
-                &SAKDebuggerPluginRegularlySendingItem::descriptionChanged,
-                this,
-                &SAKDebuggerPluginRegularlySending::changeDescription);
-
-        connect(cookedItemWidget,
-                &SAKDebuggerPluginRegularlySendingItem::inputTextChanged,
-                this,
-                &SAKDebuggerPluginRegularlySending::changeInputText);
-    }
-}
-
 QWidget *SAKDebuggerPluginRegularlySending::createItemFromParameters(
         const QJsonObject &jsonObj
         )
@@ -153,6 +128,29 @@ quint64 SAKDebuggerPluginRegularlySending::itemId(QWidget *itemWidget)
     }
 }
 
+void SAKDebuggerPluginRegularlySending::connectSignalsToSlots(QWidget *itemWidget)
+{
+    auto cookedItemWidget = qobject_cast<SendingItem*>(itemWidget);
+    connect(cookedItemWidget,
+            &SAKDebuggerPluginRegularlySendingItem::intervalChanged,
+            this,
+            &SAKDebuggerPluginRegularlySending::changeInterval);
+    connect(cookedItemWidget,
+            &SAKDebuggerPluginRegularlySendingItem::formatChanged,
+            this,
+            &SAKDebuggerPluginRegularlySending::changeFormat);
+
+    connect(cookedItemWidget,
+            &SAKDebuggerPluginRegularlySendingItem::descriptionChanged,
+            this,
+            &SAKDebuggerPluginRegularlySending::changeDescription);
+
+    connect(cookedItemWidget,
+            &SAKDebuggerPluginRegularlySendingItem::inputTextChanged,
+            this,
+            &SAKDebuggerPluginRegularlySending::changeInputText);
+}
+
 void SAKDebuggerPluginRegularlySending::readinRecord()
 {
     if (mSqlQuery.exec(QString("SELECT * FROM %1").arg(mTableName))) {
@@ -167,7 +165,7 @@ void SAKDebuggerPluginRegularlySending::readinRecord()
 
             auto item = new QListWidgetItem(mListWidget);
             auto itemWidget = new SAKDebuggerPluginRegularlySendingItem(itemCtx);
-            setupItemWidget(itemWidget);
+            setupItemWidget(item, itemWidget);
         }
     }else{
         qWarning() << "Select record form " << mTableName

@@ -157,7 +157,7 @@ void SAKBaseListWidget::importItems()
         QJsonObject parameters = jsa.at(i).toObject();
         auto *itemWidget = createItemFromParameters(parameters);
         QListWidgetItem *item = new QListWidgetItem();
-        setupItemWidgetInner(item, itemWidget);
+        setupItemWidget(item, itemWidget);
         insertRecord(mTableName, itemWidget);
     }
 }
@@ -222,12 +222,12 @@ void SAKBaseListWidget::addItem()
 {
     QListWidgetItem *item = new QListWidgetItem();
     QWidget *itemWidget = createItemFromParameters(QJsonObject());
-    setupItemWidgetInner(item, itemWidget);
+    setupItemWidget(item, itemWidget);
     insertRecord(mTableName, itemWidget);
 }
 
-void SAKBaseListWidget::setupItemWidgetInner(QListWidgetItem *item,
-                                             QWidget *itemWidget)
+void SAKBaseListWidget::setupItemWidget(QListWidgetItem *item,
+                                        QWidget *itemWidget)
 {
     for (int i = 0; i < mListWidget->count(); i++) {
         QListWidgetItem *item = mListWidget->item(i);
@@ -240,6 +240,5 @@ void SAKBaseListWidget::setupItemWidgetInner(QListWidgetItem *item,
     item->setSizeHint(itemWidget->sizeHint());
     mListWidget->addItem(item);
     mListWidget->setItemWidget(item, itemWidget);
-
-    setupItemWidget(itemWidget);
+    connectSignalsToSlots(itemWidget);
 }
