@@ -11,17 +11,15 @@
 #include <QMetaType>
 #include <QSerialPortInfo>
 
-#include "SAKDebugger.hh"
 #include "SAKCommonInterface.hh"
-#include "SAKDebuggerPluginTransponderBase.hh"
 #include "SAKTransponderSerialPortItem.hh"
-#include "ui_SAKDebuggerPluginTransponderSerialPort.h"
+#include "ui_SAKTransponderSerialPortItem.h"
 
 SAKTransponderSerialPortItem::SAKTransponderSerialPortItem(
         QWidget *parent
         )
     :SAKDebuggerPluginTransponderBase (parent)
-    ,mUi(new Ui::SAKDebuggerPluginTransponderSerialPort)
+    ,mUi(new Ui::SAKTransponderSerialPortItem)
 {    
     mUi->setupUi(this);
 }

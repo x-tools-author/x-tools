@@ -22,7 +22,7 @@
 #include "SAKDebuggerPluginTransponderBase.hh"
 
 namespace Ui {
-    class SAKDebuggerPluginTransponderSerialPort;
+    class SAKTransponderSerialPortItem;
 }
 
 class SAKTransponderSerialPortItem : public SAKDebuggerPluginTransponderBase
@@ -34,7 +34,7 @@ public:
 
 
 private:
-    Ui::SAKDebuggerPluginTransponderSerialPort *mUi;
+    Ui::SAKTransponderSerialPortItem *mUi;
 };
 
 #endif
