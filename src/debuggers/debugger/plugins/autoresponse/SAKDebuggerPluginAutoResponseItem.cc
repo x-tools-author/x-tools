@@ -63,10 +63,10 @@ SAKDebuggerPluginAutoResponseItem::~SAKDebuggerPluginAutoResponseItem()
     delete mUi;
 }
 
-SAKDebuggerPluginAutoResponseItem::SAKStructAutomaticallyResponseItemContext
+SAKDebuggerPluginAutoResponseItem::SAKStructItemContext
 SAKDebuggerPluginAutoResponseItem::context()
 {
-    SAKStructAutomaticallyResponseItemContext ctx;
+    SAKStructItemContext ctx;
     ctx.id = mID;
     ctx.name = mUi->descriptionLineEdit->text();
     ctx.delay = mUi->delayResponseCheckBox->isChecked();

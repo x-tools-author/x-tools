@@ -27,7 +27,7 @@ class SAKDebuggerPluginAutoResponseItem : public QWidget
 {
     Q_OBJECT
 public:
-    struct SAKStructAutomaticallyResponseItemContext {
+    struct SAKStructItemContext {
         quint64 id;
         QString name;
         QString referenceData;
@@ -39,7 +39,6 @@ public:
         bool delay;
         int interval;
     };
-    typedef struct SAKStructAutomaticallyResponseItemContext ITEM_CTX;
 
     enum SAKEnumAutomaticallyResponseOption {
         ReadDataIsEqualToReference,
@@ -48,23 +47,15 @@ public:
     };
     Q_ENUM(SAKEnumAutomaticallyResponseOption);
 
+
 public:
     SAKDebuggerPluginAutoResponseItem(QWidget *parent = Q_NULLPTR);
-    SAKDebuggerPluginAutoResponseItem(quint64 mID,
-                                       QString name,
-                                       QString referenceData,
-                                       QString responseData,
-                                       bool enabled,
-                                       quint32 referenceFormat,
-                                       quint32 responseFormat,
-                                       quint32 option,
-                                       bool delay,
-                                       int interval,
-                                       QWidget *parent = Q_NULLPTR);
+    SAKDebuggerPluginAutoResponseItem(SAKStructItemContext ctx,
+                                      QWidget *parent = Q_NULLPTR);
     ~SAKDebuggerPluginAutoResponseItem();
 
 
-    SAKStructAutomaticallyResponseItemContext context();
+    SAKStructItemContext context();
     void onBytesRead(const QByteArray &bytes);
 
 
