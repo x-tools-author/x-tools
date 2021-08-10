@@ -51,6 +51,8 @@ private:
     QLabel *mTitleLabel;
     QWidget *mPanelWidget;
     QDialog *mPluginDialog;
+    QWidget *mActiveWidgetInPanel;
+    QWidget *mActiveWidgetInDialog;
 
 
 private:
@@ -68,6 +70,9 @@ private:
     void embedPluginRegularlySending();
     void embedPlugin(QWidget *contentWidget);
     void cancelEmbedPlugin();
+
+    void clearPluginDialog();
+    void clearPluginPanel();
 
 
 signals:

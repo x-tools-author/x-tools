@@ -29,6 +29,8 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
     ,mTitleLabel(titleLabel)
     ,mPanelWidget(panelWidget)
     ,mPluginDialog(Q_NULLPTR)
+    ,mActiveWidgetInPanel(Q_NULLPTR)
+    ,mActiveWidgetInDialog(Q_NULLPTR)
 {
     QMenu *menu = new QMenu(menuBt);
     menuBt->setMenu(menu);
@@ -132,29 +134,28 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
 
 SAKDebuggerPlugins::~SAKDebuggerPlugins()
 {
-    m3d->deleteLater();
-    mCharts->deleteLater();
-    mDataForwarding->deleteLater();
-    mRegularlySending->deleteLater();
-    mAutoResponse->deleteLater();
+    QVector<QWidget*> pluginVector;
+    pluginVector << m3d
+                 << mCharts
+                 << mDataForwarding
+                 << mRegularlySending
+                 << mAutoResponse;
+    for (int i = 0; i < pluginVector.count(); i++) {
+        auto w = pluginVector.at(i);
+        if ((w != mActiveWidgetInPanel) && (w != mActiveWidgetInDialog)) {
+            w->deleteLater();
+        }
+    }
 }
 
 void SAKDebuggerPlugins::showPluin3D()
 {
-    if (m3d->isHidden()) {
-        m3d->show();
-    } else {
-        m3d->activateWindow();
-    }
+    showPluginDialog(m3d);
 }
 
 void SAKDebuggerPlugins::showPluinCharts()
 {
-    if (mCharts->isHidden()) {
-        mCharts->show();
-    } else {
-        mCharts->activateWindow();
-    }
+    showPluginDialog(mCharts);
 }
 
 void SAKDebuggerPlugins::showPluginAutoResponse()
@@ -164,11 +165,7 @@ void SAKDebuggerPlugins::showPluginAutoResponse()
 
 void SAKDebuggerPlugins::showPluinDataForwarding()
 {
-    if (mDataForwarding->isHidden()) {
-        mDataForwarding->show();
-    } else {
-        mDataForwarding->activateWindow();
-    }
+    showPluginDialog(mDataForwarding);
 }
 
 void SAKDebuggerPlugins::showPluginRegularlySending()
@@ -178,14 +175,13 @@ void SAKDebuggerPlugins::showPluginRegularlySending()
 
 void SAKDebuggerPlugins::showPluginDialog(QWidget *contentWidget)
 {
-    for (int i = 0; i < mPluginDialog->layout()->count(); i++) {
-        auto ret = mPluginDialog->layout()->takeAt(i);
-        ret->widget()->setParent(Q_NULLPTR);
-    }
-
+    clearPluginDialog();
+    mActiveWidgetInDialog = contentWidget;
     mPluginDialog->layout()->addWidget(contentWidget);
     mPluginDialog->show();
-    cancelEmbedPlugin();
+    if (mActiveWidgetInPanel == mActiveWidgetInDialog) {
+        cancelEmbedPlugin();
+    }
 }
 
 void SAKDebuggerPlugins::embedPluin3D()
@@ -215,23 +211,40 @@ void SAKDebuggerPlugins::embedPluginRegularlySending()
 
 void SAKDebuggerPlugins::embedPlugin(QWidget *contentWidget)
 {
-    for (int i = 0; i < mPanelWidget->layout()->count(); i++) {
-        auto ret = mPanelWidget->layout()->takeAt(i);
-        ret->widget()->setParent(Q_NULLPTR);
-    }
-
+    clearPluginPanel();
+    mActiveWidgetInPanel = contentWidget;
     mPanelWidget->layout()->addWidget(contentWidget);
     mTitleLabel->show();
     mPanelWidget->show();
+
+    if (mActiveWidgetInPanel == mActiveWidgetInDialog) {
+        clearPluginDialog();
+    }
 }
 
 void SAKDebuggerPlugins::cancelEmbedPlugin()
+{
+    clearPluginPanel();
+    mTitleLabel->hide();
+    mPanelWidget->hide();
+}
+
+void SAKDebuggerPlugins::clearPluginDialog()
 {
     for (int i = 0; i < mPanelWidget->layout()->count(); i++) {
         auto ret = mPanelWidget->layout()->takeAt(i);
         ret->widget()->setParent(Q_NULLPTR);
     }
 
-    mTitleLabel->hide();
-    mPanelWidget->hide();
+    mActiveWidgetInDialog = Q_NULLPTR;
+}
+
+void SAKDebuggerPlugins::clearPluginPanel()
+{
+    for (int i = 0; i < mPanelWidget->layout()->count(); i++) {
+        auto ret = mPanelWidget->layout()->takeAt(i);
+        ret->widget()->setParent(Q_NULLPTR);
+    }
+
+    mActiveWidgetInPanel = Q_NULLPTR;
 }
