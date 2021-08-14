@@ -141,6 +141,52 @@ void SAKDebuggerPluginAutoResponseItem::setupItem()
                 mUi->responseDataFormatComboBox
                 );
 
+
+    connect(mUi->descriptionLineEdit, &QLineEdit::textChanged,
+            this, [&](const QString description){
+        emit descriptionChanged(description);
+    });
+
+    connect(mUi->referenceLineEdit, &QLineEdit::textChanged,
+            this, [&](const QString description){
+        emit referenceTextChanged(description);
+    });
+
+    connect(mUi->responseLineEdit, &QLineEdit::textChanged,
+            this, [&](const QString description){
+        emit responseTextChanged(description);
+    });
+
+
+    connect(mUi->optionComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this, [&](int option){
+        emit optionChanged(option);
+    });
+
+
+    connect(mUi->referenceDataFromatComboBox,
+            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this, [&](int format){
+        emit referenceFormatChanged(format);
+    });
+
+    connect(mUi->responseDataFormatComboBox,
+            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this, [&](int format){
+        emit responseFromatChanged(format);
+    });
+
+
+    connect(mUi->delayResponseCheckBox, &QCheckBox::clicked,
+            this, [&](){
+        emit delayChanged(mUi->delayResponseCheckBox->isChecked());
+    });
+
+
+    connect(mUi->delayResponseSpinBox, QOverload<int>::of(&QSpinBox::valueChanged),
+            this, [&](int interval){
+        emit intervalChanged(interval);
+    });
 }
 
 bool SAKDebuggerPluginAutoResponseItem::response(QByteArray receiveData,
