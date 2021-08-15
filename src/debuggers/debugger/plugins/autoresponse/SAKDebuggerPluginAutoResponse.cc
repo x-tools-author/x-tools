@@ -99,15 +99,15 @@ QWidget *SAKDebuggerPluginAutoResponse::createItemFromParameters(
     } else {
         SAKDebuggerPluginAutoResponseItem::SAKStructItemContext itemCtx;
         itemCtx.id = jsonObj.value(mTableCtx.columns.id).toVariant().toULongLong();
-        itemCtx.name = jsonObj.value(mTableCtx.columns.id).toString();
-        itemCtx.referenceData = jsonObj.value(mTableCtx.columns.id).toString();
-        itemCtx.responseData = jsonObj.value(mTableCtx.columns.id).toString();
-        itemCtx.enable = jsonObj.value(mTableCtx.columns.id).toBool();
-        itemCtx.referenceFormat = jsonObj.value(mTableCtx.columns.id).toInt();
-        itemCtx.responseFormat = jsonObj.value(mTableCtx.columns.id).toInt();
-        itemCtx.option = jsonObj.value(mTableCtx.columns.id).toInt();
-        itemCtx.delay = jsonObj.value(mTableCtx.columns.id).toBool();
-        itemCtx.interval = jsonObj.value(mTableCtx.columns.id).toInt();
+        itemCtx.name = jsonObj.value(mTableCtx.columns.name).toString();
+        itemCtx.referenceData = jsonObj.value(mTableCtx.columns.referenceData).toString();
+        itemCtx.responseData = jsonObj.value(mTableCtx.columns.responseData).toString();
+        itemCtx.enable = jsonObj.value(mTableCtx.columns.enable).toBool();
+        itemCtx.referenceFormat = jsonObj.value(mTableCtx.columns.referenceFormat).toInt();
+        itemCtx.responseFormat = jsonObj.value(mTableCtx.columns.responseFormat).toInt();
+        itemCtx.option = jsonObj.value(mTableCtx.columns.option).toInt();
+        itemCtx.delay = jsonObj.value(mTableCtx.columns.delay).toBool();
+        itemCtx.interval = jsonObj.value(mTableCtx.columns.interval).toInt();
 
         return new SAKDebuggerPluginAutoResponseItem(itemCtx);
     }
@@ -194,52 +194,49 @@ void SAKDebuggerPluginAutoResponse::connectSignalsToSlots(QWidget *itemWidget)
 {
     auto cookedItemWidget =
             qobject_cast<SAKDebuggerPluginAutoResponseItem*>(itemWidget);
-    quint64 id = cookedItemWidget->context().id;
-
     connect(this, &SAKDebuggerPluginAutoResponse::bytesRead,
             cookedItemWidget, &SAKDebuggerPluginAutoResponseItem::onBytesRead);
-
     connect(cookedItemWidget, &SAKDebuggerPluginAutoResponseItem::responseBytes,
             this, &SAKDebuggerPluginAutoResponse::writeBytes);
 
 
     connect(cookedItemWidget, &SAKDebuggerPluginAutoResponseItem::descriptionChanged,
-            this, [&](const QString &description){
+            this, [&](quint64 id, const QString &description){
         updateRecord(id, mTableCtx.columns.name, QVariant::fromValue(description));
     });
 
     connect(cookedItemWidget, &SAKDebuggerPluginAutoResponseItem::referenceTextChanged,
-            this, [&](const QString &text){
+            this, [&](quint64 id, const QString &text){
         updateRecord(id, mTableCtx.columns.referenceData, QVariant::fromValue(text));
     });
 
     connect(cookedItemWidget, &SAKDebuggerPluginAutoResponseItem::responseTextChanged,
-            this, [&](const QString &text){
+            this, [&](quint64 id, const QString &text){
         updateRecord(id, mTableCtx.columns.responseData, QVariant::fromValue(text));
     });
 
     connect(cookedItemWidget, &SAKDebuggerPluginAutoResponseItem::optionChanged,
-            this, [&](int option){
+            this, [&](quint64 id, int option){
         updateRecord(id, mTableCtx.columns.option, QVariant::fromValue(option));
     });
 
     connect(cookedItemWidget, &SAKDebuggerPluginAutoResponseItem::referenceFormatChanged,
-            this, [&](int format){
+            this, [&](quint64 id, int format){
         updateRecord(id, mTableCtx.columns.referenceFormat, QVariant::fromValue(format));
     });
 
     connect(cookedItemWidget, &SAKDebuggerPluginAutoResponseItem::responseFromatChanged,
-            this, [&](int format){
+            this, [&](quint64 id, int format){
         updateRecord(id, mTableCtx.columns.responseFormat, QVariant::fromValue(format));
     });
 
     connect(cookedItemWidget, &SAKDebuggerPluginAutoResponseItem::delayChanged,
-            this, [&](bool delay){
+            this, [&](quint64 id, bool delay){
         updateRecord(id, mTableCtx.columns.delay, QVariant::fromValue(delay));
     });
 
     connect(cookedItemWidget, &SAKDebuggerPluginAutoResponseItem::intervalChanged,
-            this, [&](int interval){
+            this, [&](quint64 id, int interval){
         updateRecord(id, mTableCtx.columns.interval,
                      QVariant::fromValue(interval));
     });

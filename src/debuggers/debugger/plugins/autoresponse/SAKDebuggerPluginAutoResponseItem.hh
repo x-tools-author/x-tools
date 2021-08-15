@@ -72,15 +72,15 @@ private:
 
 
 signals:
-    void descriptionChanged(const QString &description);
-    void referenceTextChanged(const QString &text);
-    void responseTextChanged(const QString &text);
-    void enableChanged(bool enable);
-    void optionChanged(int option);
-    void referenceFormatChanged(int format);
-    void responseFromatChanged(int format);
-    void delayChanged(bool delay);
-    void intervalChanged(int interval);
+    void descriptionChanged(quint64 id, const QString &description);
+    void referenceTextChanged(quint64 id, const QString &text);
+    void responseTextChanged(quint64 id, const QString &text);
+    void enableChanged(quint64 id, bool enable);
+    void optionChanged(quint64 id, int option);
+    void referenceFormatChanged(quint64 id, int format);
+    void responseFromatChanged(quint64 id, int format);
+    void delayChanged(quint64 id, bool delay);
+    void intervalChanged(quint64 id, int interval);
 
     void responseBytes(const QByteArray &bytes);
 };
