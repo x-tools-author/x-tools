@@ -105,6 +105,7 @@ HEADERS += \
     src/SAKApplication.hh \
     src/SAKMainWindow.hh \
     src/base/SAKBaseListWidget.hh \
+    src/base/SAKBaseListWidgetItemWidget.hh \
     src/common/SAKCommonCrcInterface.hh \
     src/common/SAKCommonDataStructure.hh \
     src/common/SAKCommonInterface.hh \
@@ -115,6 +116,7 @@ SOURCES += \
     src/SAKApplication.cc \
     src/SAKMainWindow.cc \
     src/base/SAKBaseListWidget.cc \
+    src/base/SAKBaseListWidgetItemWidget.cc \
     src/common/SAKCommonCrcInterface.cc \
     src/common/SAKCommonDataStructure.cc \
     src/common/SAKCommonInterface.cc \
