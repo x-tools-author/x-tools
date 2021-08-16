@@ -38,15 +38,15 @@ SAKDebuggerPluginAutoResponseItem::SAKDebuggerPluginAutoResponseItem(
     setupItem();
 
     mID = ctx.id;
-    mUi->descriptionLineEdit->setText(ctx.name);
+    mUi->descriptionLineEdit->setText(ctx.description);
     mUi->referenceLineEdit->setText(ctx.referenceData);
     mUi->responseLineEdit->setText(ctx.responseData);
     mUi->enableCheckBox->setChecked(ctx.enable);
     mUi->referenceDataFromatComboBox->setCurrentIndex(ctx.referenceFormat);
     mUi->responseDataFormatComboBox->setCurrentIndex(ctx.responseFormat);
     mUi->optionComboBox->setCurrentIndex(ctx.option);
-    mUi->delayResponseCheckBox->setChecked(ctx.delay);
-    mUi->delayResponseSpinBox->setValue(ctx.interval);
+    mUi->delayResponseCheckBox->setChecked(ctx.enableDelay);
+    mUi->delayResponseSpinBox->setValue(ctx.delayTime);
 }
 
 SAKDebuggerPluginAutoResponseItem::~SAKDebuggerPluginAutoResponseItem()
@@ -59,11 +59,11 @@ SAKDebuggerPluginAutoResponseItem::context()
 {
     SAKStructItemContext ctx;
     ctx.id = mID;
-    ctx.name = mUi->descriptionLineEdit->text();
-    ctx.delay = mUi->delayResponseCheckBox->isChecked();
+    ctx.description = mUi->descriptionLineEdit->text();
+    ctx.enableDelay = mUi->delayResponseCheckBox->isChecked();
     ctx.enable = mUi->enableCheckBox->isChecked();
     ctx.option = mUi->optionComboBox->currentIndex();
-    ctx.interval = mUi->delayResponseSpinBox->value();
+    ctx.delayTime = mUi->delayResponseSpinBox->value();
     ctx.referenceData = mUi->referenceLineEdit->text();
     ctx.responseData = mUi->responseLineEdit->text();
     ctx.responseFormat = mUi->responseDataFormatComboBox->currentData().toInt();

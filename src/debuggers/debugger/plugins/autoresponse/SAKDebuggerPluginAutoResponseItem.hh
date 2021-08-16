@@ -29,15 +29,15 @@ class SAKDebuggerPluginAutoResponseItem : public QWidget
 public:
     struct SAKStructItemContext {
         quint64 id;
-        QString name;
+        QString description;
         QString referenceData;
         QString responseData;
         bool enable;
         int referenceFormat;
         int responseFormat;
         int option;
-        bool delay;
-        int interval;
+        bool enableDelay;
+        int delayTime;
     };
 
     enum SAKEnumAutomaticallyResponseOption {

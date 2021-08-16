@@ -66,26 +66,26 @@ QString SAKDebuggerPluginAutoResponse::sqlInsert(const QString &tableName,
     auto tableCtx = mTableCtx;
     QString queryString = QString("INSERT INTO %1(").arg(tableName);
     queryString.append(tableCtx.columns.id).append(",");
-    queryString.append(tableCtx.columns.name).append(",");
+    queryString.append(tableCtx.columns.description).append(",");
     queryString.append(tableCtx.columns.referenceData).append(",");
     queryString.append(tableCtx.columns.responseData).append(",");
     queryString.append(tableCtx.columns.enable).append(",");
     queryString.append(tableCtx.columns.referenceFormat).append(",");
     queryString.append(tableCtx.columns.responseFormat).append(",");
     queryString.append(tableCtx.columns.option).append(",");
-    queryString.append(tableCtx.columns.delay).append(",");
-    queryString.append(tableCtx.columns.interval).append(")");
+    queryString.append(tableCtx.columns.enableDelay).append(",");
+    queryString.append(tableCtx.columns.delayTime).append(")");
     queryString.append("VALUES(");
     queryString.append(QString("%1,").arg(itemCtx.id));
-    queryString.append(QString("'%1',").arg(itemCtx.name));
+    queryString.append(QString("'%1',").arg(itemCtx.description));
     queryString.append(QString("'%1',").arg(itemCtx.referenceData));
     queryString.append(QString("'%1',").arg(itemCtx.responseData));
     queryString.append(QString("%1,").arg(itemCtx.enable));
     queryString.append(QString("%1,").arg(itemCtx.referenceFormat));
     queryString.append(QString("%1,").arg(itemCtx.responseFormat));
     queryString.append(QString("%1,").arg(itemCtx.option));
-    queryString.append(QString("%1,").arg(itemCtx.delay));
-    queryString.append(QString("%1)").arg(itemCtx.interval));
+    queryString.append(QString("%1,").arg(itemCtx.enableDelay));
+    queryString.append(QString("%1)").arg(itemCtx.delayTime));
 
     return queryString;
 }
@@ -99,15 +99,15 @@ QWidget *SAKDebuggerPluginAutoResponse::createItemFromParameters(
     } else {
         SAKDebuggerPluginAutoResponseItem::SAKStructItemContext itemCtx;
         itemCtx.id = jsonObj.value(mTableCtx.columns.id).toVariant().toULongLong();
-        itemCtx.name = jsonObj.value(mTableCtx.columns.name).toString();
+        itemCtx.description = jsonObj.value(mTableCtx.columns.description).toString();
         itemCtx.referenceData = jsonObj.value(mTableCtx.columns.referenceData).toString();
         itemCtx.responseData = jsonObj.value(mTableCtx.columns.responseData).toString();
         itemCtx.enable = jsonObj.value(mTableCtx.columns.enable).toBool();
         itemCtx.referenceFormat = jsonObj.value(mTableCtx.columns.referenceFormat).toInt();
         itemCtx.responseFormat = jsonObj.value(mTableCtx.columns.responseFormat).toInt();
         itemCtx.option = jsonObj.value(mTableCtx.columns.option).toInt();
-        itemCtx.delay = jsonObj.value(mTableCtx.columns.delay).toBool();
-        itemCtx.interval = jsonObj.value(mTableCtx.columns.interval).toInt();
+        itemCtx.enableDelay = jsonObj.value(mTableCtx.columns.enableDelay).toBool();
+        itemCtx.delayTime = jsonObj.value(mTableCtx.columns.delayTime).toInt();
 
         return new SAKDebuggerPluginAutoResponseItem(itemCtx);
     }
@@ -120,15 +120,15 @@ QJsonObject SAKDebuggerPluginAutoResponse::toJsonObject(QWidget *itemWidget)
     auto itemCtx = cookedItemWidget->context();
     QJsonObject jsonObj;
     jsonObj.insert(mTableCtx.columns.id, qint64(itemCtx.id));
-    jsonObj.insert(mTableCtx.columns.name, itemCtx.name);
+    jsonObj.insert(mTableCtx.columns.description, itemCtx.description);
     jsonObj.insert(mTableCtx.columns.referenceData, itemCtx.referenceData);
     jsonObj.insert(mTableCtx.columns.responseData, itemCtx.responseData);
     jsonObj.insert(mTableCtx.columns.enable, itemCtx.enable);
     jsonObj.insert(mTableCtx.columns.referenceFormat, itemCtx.referenceFormat);
     jsonObj.insert(mTableCtx.columns.responseFormat, itemCtx.responseFormat);
     jsonObj.insert(mTableCtx.columns.option, itemCtx.option);
-    jsonObj.insert(mTableCtx.columns.delay, itemCtx.delay);
-    jsonObj.insert(mTableCtx.columns.interval, qint64(itemCtx.interval));
+    jsonObj.insert(mTableCtx.columns.enableDelay, itemCtx.enableDelay);
+    jsonObj.insert(mTableCtx.columns.delayTime, qint64(itemCtx.delayTime));
     jsonObj.insert(mTableCtx.columns.id, qint64(itemCtx.id));
 
     return jsonObj;
@@ -144,7 +144,7 @@ QJsonObject SAKDebuggerPluginAutoResponse::toJsonObject(const QSqlQuery &sqlQuer
     valueVariant = sqlQuery.value(column);
     jsonObj.insert(column, valueVariant.toLongLong());
 
-    column = mTableCtx.columns.name;
+    column = mTableCtx.columns.description;
     valueVariant = sqlQuery.value(column);
     jsonObj.insert(column, valueVariant.toString());
 
@@ -172,11 +172,11 @@ QJsonObject SAKDebuggerPluginAutoResponse::toJsonObject(const QSqlQuery &sqlQuer
     valueVariant = sqlQuery.value(column);
     jsonObj.insert(column, valueVariant.toInt());
 
-    column = mTableCtx.columns.delay;
+    column = mTableCtx.columns.enableDelay;
     valueVariant = sqlQuery.value(column);
     jsonObj.insert(column, valueVariant.toBool());
 
-    column = mTableCtx.columns.interval;
+    column = mTableCtx.columns.delayTime;
     valueVariant = sqlQuery.value(column);
     jsonObj.insert(column, valueVariant.toInt());
 
@@ -202,7 +202,7 @@ void SAKDebuggerPluginAutoResponse::connectSignalsToSlots(QWidget *itemWidget)
 
     connect(cookedItemWidget, &SAKDebuggerPluginAutoResponseItem::descriptionChanged,
             this, [&](quint64 id, const QString &description){
-        updateRecord(id, mTableCtx.columns.name, QVariant::fromValue(description));
+        updateRecord(id, mTableCtx.columns.description, QVariant::fromValue(description));
     });
 
     connect(cookedItemWidget, &SAKDebuggerPluginAutoResponseItem::referenceTextChanged,
@@ -232,12 +232,12 @@ void SAKDebuggerPluginAutoResponse::connectSignalsToSlots(QWidget *itemWidget)
 
     connect(cookedItemWidget, &SAKDebuggerPluginAutoResponseItem::delayChanged,
             this, [&](quint64 id, bool delay){
-        updateRecord(id, mTableCtx.columns.delay, QVariant::fromValue(delay));
+        updateRecord(id, mTableCtx.columns.enableDelay, QVariant::fromValue(delay));
     });
 
     connect(cookedItemWidget, &SAKDebuggerPluginAutoResponseItem::intervalChanged,
             this, [&](quint64 id, int interval){
-        updateRecord(id, mTableCtx.columns.interval,
+        updateRecord(id, mTableCtx.columns.delayTime,
                      QVariant::fromValue(interval));
     });
 }
@@ -251,7 +251,7 @@ QString SAKDebuggerPluginAutoResponse::sqlCreate(const QString &tableName)
                        .arg(mTableCtx.columns.id));
 
     queryString.append(QString("%1 TEXT NOT NULL,")
-                       .arg(mTableCtx.columns.name));
+                       .arg(mTableCtx.columns.description));
 
     queryString.append(QString("%1 TEXT NOT NULL,")
                        .arg(mTableCtx.columns.referenceData));
@@ -272,9 +272,9 @@ QString SAKDebuggerPluginAutoResponse::sqlCreate(const QString &tableName)
                        .arg(mTableCtx.columns.option));
 
     queryString.append(QString("%1 INTEGER NOT NULL,")
-                       .arg(mTableCtx.columns.delay));
+                       .arg(mTableCtx.columns.enableDelay));
 
     queryString.append(QString("%1 INTEGER NOT NULL)")
-                       .arg(mTableCtx.columns.interval));
+                       .arg(mTableCtx.columns.delayTime));
     return queryString;
 }

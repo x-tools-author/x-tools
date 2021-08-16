@@ -60,15 +60,15 @@ private:
 private:
     struct SAKStructAutomaticallyResponseJsonKeyContext {
         const QString id = QString("id");
-        const QString name = QString("name");
-        const QString referenceData = QString("referenceData");
-        const QString responseData = QString("responseData");
+        const QString description = QString("description");
+        const QString referenceData = QString("reference_data");
+        const QString responseData = QString("response_data");
         const QString enable = QString("enable");
-        const QString referenceFormat = QString("referenceFormat");
-        const QString responseFormat = QString("responseFormat");
+        const QString referenceFormat = QString("reference_format");
+        const QString responseFormat = QString("response_format");
         const QString option = QString("option");
-        const QString delay = QString("delay");
-        const QString interval = QString("interval");
+        const QString enableDelay = QString("enable_delay");
+        const QString delayTime = QString("delay_time");
     };
 
 
