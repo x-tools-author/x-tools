@@ -35,7 +35,6 @@ SAKDebuggerPluginAutoResponse::SAKDebuggerPluginAutoResponse(
     ,mSettiings(settings)
     ,mSqlDatabase(sqlDatabase)
     ,mSqlQuery(*sqlDatabase)
-    ,mForbidAll(false)
 {
     mTableCtx.tableName = mTableName;
     initialize();
@@ -44,13 +43,6 @@ SAKDebuggerPluginAutoResponse::SAKDebuggerPluginAutoResponse(
 SAKDebuggerPluginAutoResponse::~SAKDebuggerPluginAutoResponse()
 {
 
-}
-
-void SAKDebuggerPluginAutoResponse::onBytesRead(const QByteArray &bytes)
-{
-    if (!mForbidAll) {
-        emit bytesRead(bytes);
-    }
 }
 
 QString SAKDebuggerPluginAutoResponse::sqlInsert(const QString &tableName,
@@ -196,8 +188,8 @@ void SAKDebuggerPluginAutoResponse::connectSignalsToSlots(QWidget *itemWidget)
             qobject_cast<SAKDebuggerPluginAutoResponseItem*>(itemWidget);
     connect(this, &SAKDebuggerPluginAutoResponse::bytesRead,
             cookedItemWidget, &SAKDebuggerPluginAutoResponseItem::onBytesRead);
-    connect(cookedItemWidget, &SAKDebuggerPluginAutoResponseItem::responseBytes,
-            this, &SAKDebuggerPluginAutoResponse::writeBytes);
+    connect(cookedItemWidget, &SAKDebuggerPluginAutoResponseItem::invokeWriteBytes,
+            this, &SAKDebuggerPluginAutoResponse::invokeWriteBytes);
 
 
     connect(cookedItemWidget, &SAKDebuggerPluginAutoResponseItem::descriptionChanged,
@@ -230,12 +222,12 @@ void SAKDebuggerPluginAutoResponse::connectSignalsToSlots(QWidget *itemWidget)
         updateRecord(id, mTableCtx.columns.responseFormat, QVariant::fromValue(format));
     });
 
-    connect(cookedItemWidget, &SAKDebuggerPluginAutoResponseItem::delayChanged,
+    connect(cookedItemWidget, &SAKDebuggerPluginAutoResponseItem::enableDelayChanged,
             this, [&](quint64 id, bool delay){
         updateRecord(id, mTableCtx.columns.enableDelay, QVariant::fromValue(delay));
     });
 
-    connect(cookedItemWidget, &SAKDebuggerPluginAutoResponseItem::intervalChanged,
+    connect(cookedItemWidget, &SAKDebuggerPluginAutoResponseItem::delayTimeChanged,
             this, [&](quint64 id, int interval){
         updateRecord(id, mTableCtx.columns.delayTime,
                      QVariant::fromValue(interval));

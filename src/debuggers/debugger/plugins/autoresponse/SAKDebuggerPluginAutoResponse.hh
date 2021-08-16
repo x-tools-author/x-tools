@@ -35,7 +35,6 @@ public:
                                   QString tableNameSuffix,
                                   QWidget *parent = Q_NULLPTR);
     ~SAKDebuggerPluginAutoResponse();
-    void onBytesRead(const QByteArray &bytes);
 
 
 protected:
@@ -54,7 +53,6 @@ private:
     QSqlQuery mSqlQuery;
 
     QTimer mClearMessageInfoTimer;
-    bool mForbidAll;
 
 
 private:
@@ -80,11 +78,6 @@ private:
         QString tableName;
         SAKStructAutomaticallyResponseJsonKeyContext columns;
     }mTableCtx;
-
-
-signals:
-    void bytesRead(const QByteArray &);
-    void writeBytes(const QByteArray &);
 };
 
 #endif

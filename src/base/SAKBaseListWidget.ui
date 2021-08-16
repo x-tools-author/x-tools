@@ -26,14 +26,24 @@
    <property name="bottomMargin">
     <number>0</number>
    </property>
-   <item row="1" column="0">
-    <widget class="QPushButton" name="clearPushButton">
+   <item row="1" column="4">
+    <widget class="QPushButton" name="importPushButton">
      <property name="text">
-      <string>Clear</string>
+      <string>Import</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="1">
+   <item row="0" column="0" colspan="8">
+    <widget class="QListWidget" name="itemListWidget"/>
+   </item>
+   <item row="1" column="5">
+    <widget class="Line" name="line_2">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2">
     <widget class="QLabel" name="infoLabel">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -46,43 +56,43 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="2">
-    <widget class="QPushButton" name="exportPushButton">
-     <property name="text">
-      <string>Export</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="3">
-    <widget class="QPushButton" name="importPushButton">
-     <property name="text">
-      <string>Import</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="4">
-    <widget class="Line" name="line_2">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="5">
-    <widget class="QPushButton" name="deletePushButton">
-     <property name="text">
-      <string>Delete</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="6">
+   <item row="1" column="7">
     <widget class="QPushButton" name="addPushButton">
      <property name="text">
       <string>Add</string>
      </property>
     </widget>
    </item>
-   <item row="0" column="0" colspan="7">
-    <widget class="QListWidget" name="itemListWidget"/>
+   <item row="1" column="0">
+    <widget class="QPushButton" name="clearPushButton">
+     <property name="text">
+      <string>Clear</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="3">
+    <widget class="QPushButton" name="exportPushButton">
+     <property name="text">
+      <string>Export</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="6">
+    <widget class="QPushButton" name="deletePushButton">
+     <property name="text">
+      <string>Delete</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QCheckBox" name="forbidAllItemsCheckBox">
+     <property name="text">
+      <string>Forbid all items</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

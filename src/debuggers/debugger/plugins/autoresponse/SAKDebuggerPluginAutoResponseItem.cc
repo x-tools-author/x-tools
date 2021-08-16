@@ -19,25 +19,22 @@
 #include "ui_SAKDebuggerPluginAutoResponseItem.h"
 
 SAKDebuggerPluginAutoResponseItem::SAKDebuggerPluginAutoResponseItem(QWidget *parent)
-    :QWidget(parent)
+    :SAKBaseListWidgetItemWidget(parent)
     ,mUi(new Ui::SAKDebuggerPluginAutoResponseItem)
 {
     mUi->setupUi(this);
-    mID = QDateTime::currentMSecsSinceEpoch();
     setupItem();
 }
 
 SAKDebuggerPluginAutoResponseItem::SAKDebuggerPluginAutoResponseItem(
         SAKStructItemContext ctx,
         QWidget *parent)
-    :QWidget(parent)
-    ,mID(ctx.id)
+    :SAKBaseListWidgetItemWidget(ctx.id, parent)
     ,mUi(new Ui::SAKDebuggerPluginAutoResponseItem)
 {
     mUi->setupUi(this);
     setupItem();
 
-    mID = ctx.id;
     mUi->descriptionLineEdit->setText(ctx.description);
     mUi->referenceLineEdit->setText(ctx.referenceData);
     mUi->responseLineEdit->setText(ctx.responseData);
@@ -58,7 +55,7 @@ SAKDebuggerPluginAutoResponseItem::SAKStructItemContext
 SAKDebuggerPluginAutoResponseItem::context()
 {
     SAKStructItemContext ctx;
-    ctx.id = mID;
+    ctx.id = id();
     ctx.description = mUi->descriptionLineEdit->text();
     ctx.enableDelay = mUi->delayResponseCheckBox->isChecked();
     ctx.enable = mUi->enableCheckBox->isChecked();
@@ -72,7 +69,7 @@ SAKDebuggerPluginAutoResponseItem::context()
     return ctx;
 }
 
-void SAKDebuggerPluginAutoResponseItem::onBytesRead(const QByteArray &bytes)
+void SAKDebuggerPluginAutoResponseItem::onBytesRead(QByteArray bytes)
 {
     if (bytes.isEmpty() || (!mUi->enableCheckBox->isChecked())) {
         return;
@@ -96,7 +93,7 @@ void SAKDebuggerPluginAutoResponseItem::onBytesRead(const QByteArray &bytes)
     QByteArray referenceData =
             SAKCommonDataStructure::stringToByteArray(referenceString,
                                                       cookedReferenceFormat);
-    if (response(bytes, referenceData, mUi->optionComboBox->currentData().toInt())) {
+    if (needToResponse(bytes, referenceData, mUi->optionComboBox->currentData().toInt())) {
          QString responseString = mUi->responseLineEdit->text();
          int responseFromat = mUi->referenceDataFromatComboBox->currentData().toInt();
          auto cookedResponseFromat =
@@ -113,10 +110,10 @@ void SAKDebuggerPluginAutoResponseItem::onBytesRead(const QByteArray &bytes)
              if (mUi->delayResponseCheckBox->isChecked()) {
                  int delay = mUi->delayResponseSpinBox->value();
                  QTimer::singleShot(delay, this, [=](){
-                     emit responseBytes(responseData);
+                     emit invokeWriteBytes(responseData);
                  });
              } else {
-                 emit responseBytes(responseData);
+                 emit invokeWriteBytes(responseData);
              }
          }
     }
@@ -157,55 +154,55 @@ void SAKDebuggerPluginAutoResponseItem::setupItem()
     blockUiComponentsSignals(true);
     connect(mUi->descriptionLineEdit, &QLineEdit::textChanged,
             this, [&](const QString description){
-        emit descriptionChanged(mID, description);
+        emit descriptionChanged(id(), description);
     });
 
     connect(mUi->referenceLineEdit, &QLineEdit::textChanged,
             this, [&](const QString description){
-        emit referenceTextChanged(mID, description);
+        emit referenceTextChanged(id(), description);
     });
 
     connect(mUi->responseLineEdit, &QLineEdit::textChanged,
             this, [&](const QString description){
-        emit responseTextChanged(mID, description);
+        emit responseTextChanged(id(), description);
     });
 
 
     connect(mUi->optionComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, [&](int option){
-        emit optionChanged(mID, option);
+        emit optionChanged(id(), option);
     });
 
 
     connect(mUi->referenceDataFromatComboBox,
             QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, [&](int format){
-        emit referenceFormatChanged(mID, format);
+        emit referenceFormatChanged(id(), format);
     });
 
     connect(mUi->responseDataFormatComboBox,
             QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, [&](int format){
-        emit responseFromatChanged(mID, format);
+        emit responseFromatChanged(id(), format);
     });
 
 
     connect(mUi->delayResponseCheckBox, &QCheckBox::clicked,
             this, [&](){
-        emit delayChanged(mID, mUi->delayResponseCheckBox->isChecked());
+        emit enableDelayChanged(id(), mUi->delayResponseCheckBox->isChecked());
     });
 
 
     connect(mUi->delayResponseSpinBox, QOverload<int>::of(&QSpinBox::valueChanged),
             this, [&](int interval){
-        emit intervalChanged(mID, interval);
+        emit delayTimeChanged(id(), interval);
     });
     blockUiComponentsSignals(false);
 }
 
-bool SAKDebuggerPluginAutoResponseItem::response(QByteArray receiveData,
-                                                  QByteArray referenceData,
-                                                  int option)
+bool SAKDebuggerPluginAutoResponseItem::needToResponse(QByteArray receiveData,
+                                                       QByteArray referenceData,
+                                                       int option)
 {
     if (option == ReadDataIsEqualToReference){
         return (QString(receiveData.toHex()) == QString(referenceData.toHex()));

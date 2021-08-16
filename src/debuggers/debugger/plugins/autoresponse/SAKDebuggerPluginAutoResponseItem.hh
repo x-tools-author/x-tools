@@ -18,12 +18,14 @@
 #include <QCheckBox>
 #include <QPushButton>
 
+#include "SAKBaseListWidgetItemWidget.hh"
+
 namespace Ui {
     class SAKDebuggerPluginAutoResponseItem;
 }
 
 /// @brief Auto response item
-class SAKDebuggerPluginAutoResponseItem : public QWidget
+class SAKDebuggerPluginAutoResponseItem : public SAKBaseListWidgetItemWidget
 {
     Q_OBJECT
 public:
@@ -56,19 +58,16 @@ public:
 
 
     SAKStructItemContext context();
-    void onBytesRead(const QByteArray &bytes);
+    void onBytesRead(QByteArray bytes) final;
 
 
 private:
-    quint64 mID;
     Ui::SAKDebuggerPluginAutoResponseItem *mUi;
 
 
 private:
     void setupItem();
-    bool response(QByteArray receiveData,
-                  QByteArray referenceData,
-                  int option);
+    bool needToResponse(QByteArray receiveData, QByteArray referenceData, int option);
 
 
 signals:
@@ -76,13 +75,11 @@ signals:
     void referenceTextChanged(quint64 id, const QString &text);
     void responseTextChanged(quint64 id, const QString &text);
     void enableChanged(quint64 id, bool enable);
-    void optionChanged(quint64 id, int option);
     void referenceFormatChanged(quint64 id, int format);
     void responseFromatChanged(quint64 id, int format);
-    void delayChanged(quint64 id, bool delay);
-    void intervalChanged(quint64 id, int interval);
-
-    void responseBytes(const QByteArray &bytes);
+    void optionChanged(quint64 id, int option);
+    void enableDelayChanged(quint64 id, bool delay);
+    void delayTimeChanged(quint64 id, int interval);
 };
 
 #endif

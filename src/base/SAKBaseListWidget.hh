@@ -31,6 +31,7 @@ public:
                       QString tableNameSuffix,
                       QWidget *parent = Q_NULLPTR);
     ~SAKBaseListWidget();
+    void onBytesRead(QByteArray bytes);
 
 
 protected:
@@ -74,6 +75,11 @@ private:
 
 private:
     Ui::SAKBaseListWidget *mUi;
+
+
+signals:
+    void bytesRead(QByteArray bytes);
+    void invokeWriteBytes(const QByteArray &bytes);
 };
 
 #endif // SAKBASELISTWIDGET_HH

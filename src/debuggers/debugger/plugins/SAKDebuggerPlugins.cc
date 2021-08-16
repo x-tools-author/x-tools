@@ -66,6 +66,8 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
                                                       "AutoResponse");
     connect(this, &SAKDebuggerPlugins::bytesRead,
             mAutoResponse, &SAKDebuggerPluginAutoResponse::onBytesRead);
+    connect(mAutoResponse, &SAKDebuggerPluginAutoResponse::invokeWriteBytes,
+            this, &SAKDebuggerPlugins::invokeWriteCookedBytes);
 
 
     // Initialize menu psuh button

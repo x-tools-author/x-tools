@@ -20,6 +20,7 @@
 
 #include "SAKBaseListWidget.hh"
 #include "ui_SAKBaseListWidget.h"
+#include "SAKBaseListWidgetItemWidget.hh"
 
 SAKBaseListWidget::SAKBaseListWidget(QSqlDatabase *sqlDatabase,
                                      QSettings *settings,
@@ -65,6 +66,15 @@ SAKBaseListWidget::SAKBaseListWidget(QSqlDatabase *sqlDatabase,
 SAKBaseListWidget::~SAKBaseListWidget()
 {
     delete mUi;
+}
+
+void SAKBaseListWidget::onBytesRead(QByteArray bytes)
+{
+    if (mUi->forbidAllItemsCheckBox->isChecked()) {
+        return;
+    } else {
+        emit bytesRead(bytes);
+    }
 }
 
 void SAKBaseListWidget::updateRecord(quint64 id, QString columnName, QVariant value)
@@ -259,6 +269,15 @@ bool SAKBaseListWidget::setupItemWidget(QListWidgetItem *item,
     mListWidget->addItem(item);
     mListWidget->setItemWidget(item, itemWidget);
     connectSignalsToSlots(itemWidget);
+
+    auto cookedItemWidget = qobject_cast<SAKBaseListWidgetItemWidget*>(itemWidget);
+    if (cookedItemWidget) {
+        connect(this, &SAKBaseListWidget::bytesRead,
+                cookedItemWidget, &SAKBaseListWidgetItemWidget::onBytesReadPrivate);
+        connect(cookedItemWidget, &SAKBaseListWidgetItemWidget::invokeWriteBytes,
+                this, &SAKBaseListWidget::invokeWriteBytes);
+    }
+
     return true;
 }
 
