@@ -117,15 +117,15 @@ QJsonObject SAKDebuggerPluginRegularlySending::toJsonObject(const QSqlQuery &sql
 {
     QJsonObject parameters;
     parameters.insert(mTableCtx.columns.id,
-                      mSqlQuery.value(mTableCtx.columns.id).toLongLong());
+                      sqlQuery.value(mTableCtx.columns.id).toLongLong());
     parameters.insert(mTableCtx.columns.interval,
-                      mSqlQuery.value(mTableCtx.columns.interval).toInt());
+                      sqlQuery.value(mTableCtx.columns.interval).toInt());
     parameters.insert(mTableCtx.columns.format,
-                      mSqlQuery.value(mTableCtx.columns.format).toInt());
+                      sqlQuery.value(mTableCtx.columns.format).toInt());
     parameters.insert(mTableCtx.columns.description,
-                      mSqlQuery.value(mTableCtx.columns.description).toString());
+                      sqlQuery.value(mTableCtx.columns.description).toString());
     parameters.insert(mTableCtx.columns.data,
-                      mSqlQuery.value(mTableCtx.columns.data).toString());
+                      sqlQuery.value(mTableCtx.columns.data).toString());
 
     return parameters;
 }
