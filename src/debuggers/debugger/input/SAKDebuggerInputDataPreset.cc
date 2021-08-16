@@ -143,13 +143,13 @@ QJsonObject SAKDebuggerInputDataPreset::toJsonObject(const QSqlQuery &sqlQuery)
 {
     QJsonObject jsonObj;
     jsonObj.insert(mTableContext.columns.id,
-                   mSqlQuery.value(mTableContext.columns.id).toLongLong());
+                   sqlQuery.value(mTableContext.columns.id).toLongLong());
     jsonObj.insert(mTableContext.columns.format,
-                   mSqlQuery.value(mTableContext.columns.format).toInt());
+                   sqlQuery.value(mTableContext.columns.format).toInt());
     jsonObj.insert(mTableContext.columns.description,
-                   mSqlQuery.value(mTableContext.columns.description).toString());
+                   sqlQuery.value(mTableContext.columns.description).toString());
     jsonObj.insert(mTableContext.columns.text,
-                   mSqlQuery.value(mTableContext.columns.text).toString());
+                   sqlQuery.value(mTableContext.columns.text).toString());
     return jsonObj;
 }
 
