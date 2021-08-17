@@ -63,7 +63,8 @@ SAKBaseListWidget::SAKBaseListWidget(QSqlDatabase *sqlDatabase,
     setContentsMargins(0, 0, 0, 0);
 
 
-    mForbidAllItemsSettingsKey = settingsGroup + "/" + tableNameSuffix + "/forbidAllItems";
+    mForbidAllItemsSettingsKey =
+            settingsGroup + "/" + tableNameSuffix + "/forbidAllItems";
     if (mSettings->value(mForbidAllItemsSettingsKey).isNull()) {
         mUi->forbidAllItemsCheckBox->setChecked(true);
     } else {
