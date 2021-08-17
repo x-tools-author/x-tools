@@ -1,45 +1,49 @@
-﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+﻿/****************************************************************************************
+ * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- */
-#ifndef SAKTESTDEVICE_HH
-#define SAKTESTDEVICE_HH
-
+ ***************************************************************************************/
+#ifndef SAKTESTDEBUGGERDEVICE_HH
+#define SAKTESTDEBUGGERDEVICE_HH
 #include <QMutex>
-#include <QThread>
-#include <QWaitCondition>
-
 #include "SAKDebuggerDevice.hh"
+#include "SAKTestDebuggerController.hh"
 
-class SAKTestDebugPage;
-class SAKTestDeviceController;
-/// @brief The class is used by developer to debug
-class SAKTestDevice:public SAKDebuggerDevice
+
+class SAKTestDebuggerDevice : public SAKDebuggerDevice
 {
     Q_OBJECT
 public:
-    SAKTestDevice(SAKTestDebugPage *debugPage, QObject *parent = Q_NULLPTR);
-    ~SAKTestDevice();
+    SAKTestDebuggerDevice(QSettings *settings,
+                          const QString &settingsGroup,
+                          QWidget *uiParent = Q_NULLPTR,
+                          QObject *parent = Q_NULLPTR);
+    ~SAKTestDebuggerDevice();
+
+    void onOpenFailedChanged(bool failed);
+    void onErrorStringChanged(const QString &errorString);
+
+    void generateReadData(bool start, int interval);
+    void generateWriteData(bool start, int interval);
+
+
 protected:
-    bool initialize(QString &errorString) final;
-    bool open(QString &errorString) final;
+    bool initialize() final;
     QByteArray read() final;
-    QByteArray write(QByteArray bytes) final;
-    QByteArray writeForTest() final;
-    void close() final;
-    void free() final;
+    QByteArray write(const QByteArray &bytes) final;
+    void uninitialize() final;
+
+    void timerEvent(QTimerEvent *event) final;
+
 private:
-    SAKTestDebugPage *mDebugPage;
-    SAKTestDeviceController *mController;
-    qint64 mOldReadTimestamp;
-    qint64 mNewReadTimestamp;
-    qint64 mOldWrittingTimestamp;
-    qint64 mNewWrittingTimestamp;
+    SAKTestDebuggerController::SAKStructParametersContext mParasCtx;
+    QMutex mParasCtxMutex;
+    int mReadDataTimerId;
+    int mWriteDateTimerId;
 };
 
 #endif

@@ -58,6 +58,11 @@ SAKDebuggerDevice::~SAKDebuggerDevice()
 void SAKDebuggerDevice::writeBytes(QByteArray bytes)
 {
     mBytesVectorMutex.lock();
+    if (!isRunning()) {
+        mBytesVectorMutex.unlock();
+        return;
+    }
+
     if (bytes.length()){
         mBytesVector.append(bytes);
     }else{

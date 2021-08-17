@@ -1,93 +1,111 @@
-﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+﻿/****************************************************************************************
+ * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- */
+ ***************************************************************************************/
 #include <QDebug>
 #include <QEventLoop>
 #include <QApplication>
 
-#include "SAKTestDevice.hh"
-#include "SAKTestDebugPage.hh"
-#include "SAKTestDeviceController.hh"
+#include "SAKTestDebugger.hh"
+#include "SAKTestDebuggerDevice.hh"
+#include "SAKTestDebuggerController.hh"
 
-SAKTestDevice::SAKTestDevice(SAKTestDebugPage *debugPage, QObject *parent)
-    :SAKDebuggerDevice(debugPage, parent)
-    ,mDebugPage(debugPage)
+SAKTestDebuggerDevice::SAKTestDebuggerDevice(QSettings *settings,
+                                             const QString &settingsGroup,
+                                             QWidget *uiParent,
+                                             QObject *parent)
+    :SAKDebuggerDevice(settings, settingsGroup, uiParent, parent)
+    ,mReadDataTimerId(-1)
+    ,mWriteDateTimerId(-1)
 {
 
 }
 
-SAKTestDevice::~SAKTestDevice()
+SAKTestDebuggerDevice::~SAKTestDebuggerDevice()
 {
-#ifdef QT_DEBUG
+
+}
+
+void SAKTestDebuggerDevice::onOpenFailedChanged(bool failed)
+{
+    mParasCtxMutex.lock();
+    mParasCtx.openFailed = failed;
+    mParasCtxMutex.unlock();
+}
+
+void SAKTestDebuggerDevice::onErrorStringChanged(const QString &errorString)
+{
+    mParasCtxMutex.lock();
+    mParasCtx.errorString = errorString;
+    mParasCtxMutex.unlock();
+}
+
+void SAKTestDebuggerDevice::generateReadData(bool start, int interval)
+{
+    if (mReadDataTimerId != -1) {
+        killTimer(mReadDataTimerId);
+        mReadDataTimerId = -1;
+    }
+
+    if (start) {
+        mReadDataTimerId = startTimer(interval > 50 ? interval : 50);
+    }
+}
+
+void SAKTestDebuggerDevice::generateWriteData(bool start, int interval)
+{
+    if (mWriteDateTimerId != -1) {
+        killTimer(mWriteDateTimerId);
+        mWriteDateTimerId = -1;
+    }
+
+    if (start) {
+        mWriteDateTimerId = startTimer(interval > 50 ? interval : 50);
+    }
+}
+
+bool SAKTestDebuggerDevice::initialize()
+{
+    mParasCtxMutex.lock();
+    bool openFailed = mParasCtx.openFailed;
+    QString msg = mParasCtx.errorString;
+    mParasCtxMutex.unlock();
+
+    if (openFailed) {
+        emit errorOccurred(msg);
+    }
+
+    return !openFailed;
+}
+
+QByteArray SAKTestDebuggerDevice::read()
+{
+    return QByteArray("Just fot debuging");
+}
+
+QByteArray SAKTestDebuggerDevice::write(const QByteArray &bytes)
+{
+    return bytes;
+}
+
+void SAKTestDebuggerDevice::uninitialize()
+{
     qDebug() << __FUNCTION__ << __LINE__;
-#endif
 }
 
-bool SAKTestDevice::initialize(QString &errorString)
+void SAKTestDebuggerDevice::timerEvent(QTimerEvent *event)
 {
-    errorString = QString("Unknown error");
-    mController = qobject_cast<SAKTestDeviceController*>(mDebugPage->deviceController());
-    mOldReadTimestamp = QDateTime::currentDateTime().toMSecsSinceEpoch();
-    mOldWrittingTimestamp = QDateTime::currentDateTime().toMSecsSinceEpoch();
-    return true;
-}
-
-bool SAKTestDevice::open(QString &errorString)
-{
-    SAKTestDeviceController::ParametersContext parameters = mController->parameters().value<SAKTestDeviceController::ParametersContext>();
-    errorString = parameters.errorString.length() ? parameters.errorString : QString("Unknown error");
-    return !parameters.openFailed;
-}
-
-QByteArray SAKTestDevice::read()
-{
-    QByteArray bytes;
-    mNewReadTimestamp =  QDateTime::currentDateTime().toMSecsSinceEpoch();
-    SAKTestDeviceController::ParametersContext parameters = mController->parameters().value<SAKTestDeviceController::ParametersContext>();
-    if (parameters.readCyclic){
-        qint64 deltaRead = mNewReadTimestamp - mOldReadTimestamp;
-        if (deltaRead > parameters.readInterval){
-            mOldReadTimestamp = mNewReadTimestamp;
-            bytes = QString::number(QDateTime::currentDateTime().toMSecsSinceEpoch()).toLatin1();
-        }
+    if (event->timerId() == mReadDataTimerId) {
+        emit readyRead(SAKDebuggerDevice::SAKDeviceProtectedSignal());
+    } else if (event->timerId() == mWriteDateTimerId) {
+        writeBytes(QByteArray("Bytes written!"));
     }
 
-    return bytes;
-}
-
-QByteArray SAKTestDevice::write(QByteArray bytes)
-{
-    return bytes;
-}
-
-QByteArray SAKTestDevice::writeForTest()
-{
-    QByteArray bytesWritten;
-    SAKTestDeviceController::ParametersContext parameters = mController->parameters().value<SAKTestDeviceController::ParametersContext>();
-    mNewWrittingTimestamp =  QDateTime::currentDateTime().toMSecsSinceEpoch();
-    if (parameters.writeCyclic){
-        qint64 delta = mNewWrittingTimestamp - mOldWrittingTimestamp;
-        if (delta > parameters.writtingInterval){
-            mOldWrittingTimestamp = mNewWrittingTimestamp;
-            bytesWritten = QString::number(QDateTime::currentDateTime().toMSecsSinceEpoch()).toLatin1();
-        }
-    }
-
-    return bytesWritten;
-}
-
-void SAKTestDevice::close()
-{
-    // Nothing to do
-}
-
-void SAKTestDevice::free()
-{
-    // Nothing to do
+    SAKDebuggerDevice::timerEvent(event);
+    return;
 }

@@ -1,58 +1,61 @@
-﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+﻿/****************************************************************************************
+ * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- */
-#ifndef SAKTESTDEVICECONTROLLER_HH
-#define SAKTESTDEVICECONTROLLER_HH
+ ***************************************************************************************/
+#ifndef SAKTESTDEBUGGERCONTROLLER_HH
+#define SAKTESTDEBUGGERCONTROLLER_HH
 
 #include <QMutex>
 #include <QWidget>
 #include <QCheckBox>
 #include <QComboBox>
 
-#include "SAKDebugPageController.hh"
+#include "SAKDebuggerController.hh"
 
 namespace Ui {
-    class SAKTestDeviceController;
+    class SAKTestDebuggerController;
 }
 
-class SAKDebugger;
-class SAKTestDeviceController:public SAKDebugPageController
+class SAKTestDebuggerController : public SAKDebuggerController
 {
     Q_OBJECT
 public:
-    struct ParametersContext {
+    struct SAKStructParametersContext {
         bool openFailed;
-        bool readCyclic;
+        bool readCircularly;
         int readInterval;
-        bool writeCyclic;
+        bool writeCircularly;
         int writtingInterval;
         QString errorString;
     };
 
-    SAKTestDeviceController(SAKDebugger *debugPage, QWidget *parent = Q_NULLPTR);
-    ~SAKTestDeviceController();
+    SAKTestDebuggerController(QSettings *settings,
+                              const QString &settingsGroup,
+                              QWidget *parent = Q_NULLPTR);
+    ~SAKTestDebuggerController();
 
-    QVariant parameters() final;
-    void setUiEnable(bool opened) final;
+    void updateUiState(bool opened) final;
+    void refreshDevice() final;
+    SAKTestDebuggerController::SAKStructParametersContext parametersContext();
+
+
 private:
-    ParametersContext mParameters;
-    QMutex mParametersMutex;
-private slots:
-    void on_openFailedCheckBox_clicked();
-    void on_errorStringLineEdit_textChanged(const QString &arg1);
-    void on_readCyclicCheckBox_clicked();
-    void on_readIntervalLineEdit_textChanged(const QString &arg1);
-    void on_writeCyclicCheckBox_clicked();
-    void on_writtenIntervalLineEdit_textChanged(const QString &arg1);
-private:
-    Ui::SAKTestDeviceController *mUi;
+    Ui::SAKTestDebuggerController *mUi;
+
+
+signals:
+    void openFailedChanged(bool openFailed);
+    void readCircularlyChanged(bool readCircularly);
+    void readIntervalChanged(int interval);
+    void writeCircularlyChanged(bool writeCircularly);
+    void writtingIntervalChanged(int writtingInterval);
+    void errorStringChanged(const QString &errorString);
 };
 
-Q_DECLARE_METATYPE(SAKTestDeviceController::ParametersContext);
+Q_DECLARE_METATYPE(SAKTestDebuggerController::SAKStructParametersContext);
 #endif

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SAKTestDeviceController</class>
- <widget class="QWidget" name="SAKTestDeviceController">
+ <class>SAKTestDebuggerController</class>
+ <widget class="QWidget" name="SAKTestDebuggerController">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>230</width>
+    <width>179</width>
     <height>210</height>
    </rect>
   </property>
@@ -88,18 +88,6 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="label_2">
-     <property name="styleSheet">
-      <string notr="true">QLabel {
-	color: blue
-}</string>
-     </property>
-     <property name="text">
-      <string>Reading settings</string>
-     </property>
-    </widget>
-   </item>
    <item row="6" column="1">
     <widget class="QLineEdit" name="readIntervalLineEdit">
      <property name="text">
@@ -110,20 +98,12 @@
      </property>
     </widget>
    </item>
-   <item row="7" column="0">
-    <widget class="QLabel" name="label_3">
-     <property name="styleSheet">
-      <string notr="true">QLabel {
-	color: blue
-}</string>
-     </property>
+   <item row="3" column="0" colspan="2">
+    <widget class="QLineEdit" name="errorStringLineEdit">
      <property name="text">
-      <string>Writing settings</string>
+      <string>Just for debugging</string>
      </property>
     </widget>
-   </item>
-   <item row="3" column="0" colspan="2">
-    <widget class="QLineEdit" name="errorStringLineEdit"/>
    </item>
    <item row="5" column="0" colspan="2">
     <widget class="QCheckBox" name="readCyclicCheckBox">
@@ -136,6 +116,30 @@
     <widget class="QCheckBox" name="writeCyclicCheckBox">
      <property name="text">
       <string>Create written data cyclic</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="2">
+    <widget class="QLabel" name="label_2">
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+	color: blue
+}</string>
+     </property>
+     <property name="text">
+      <string>Reading settings</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0" colspan="2">
+    <widget class="QLabel" name="label_3">
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+	color: blue
+}</string>
+     </property>
+     <property name="text">
+      <string>Writing settings</string>
      </property>
     </widget>
    </item>

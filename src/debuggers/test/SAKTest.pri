@@ -1,18 +1,18 @@
-DEFINES+=SAK_IMPORT_MODULE_VIRTUALDEVICE
+DEFINES+=SAK_IMPORT_MODULE_TEST
 
-contains(DEFINES, SAK_IMPORT_MODULE_VIRTUALDEVICE){
+contains(DEFINES, SAK_IMPORT_MODULE_TEST){
     FORMS += \
-        $$PWD/SAKTestDeviceController.ui
+    $$PWD/SAKTestDebuggerController.ui
 
     HEADERS += \
-        $$PWD/SAKTestDebugPage.hh \
-        $$PWD/SAKTestDevice.hh \
-        $$PWD/SAKTestDeviceController.hh
+    $$PWD/SAKTestDebugger.hh \
+    $$PWD/SAKTestDebuggerController.hh \
+    $$PWD/SAKTestDebuggerDevice.hh
 
     SOURCES += \
-        $$PWD/SAKTestDebugPage.cc \
-        $$PWD/SAKTestDevice.cc \
-        $$PWD/SAKTestDeviceController.cc
+    $$PWD/SAKTestDebugger.cc \
+    $$PWD/SAKTestDebuggerController.cc \
+    $$PWD/SAKTestDebuggerDevice.cc
 
     INCLUDEPATH += \
         $$PWD

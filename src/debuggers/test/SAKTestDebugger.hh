@@ -1,30 +1,41 @@
-﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+﻿/****************************************************************************************
+ * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- */
-#ifndef SAKTESTDEBUGPAGE_HH
-#define SAKTESTDEBUGPAGE_HH
+ ***************************************************************************************/
+#ifndef SAKTESTDEBUGGER_HH
+#define SAKTESTDEBUGGER_HH
 
 #include "SAKDebugger.hh"
+#include "SAKTestDebuggerDevice.hh"
+#include "SAKTestDebuggerController.hh"
 
-class SAKTestDeviceController;
-// The debugging page is used by developer only.
-class SAKTestDebugPage : public SAKDebugger
+class SAKTestDebuggerDevice;
+class SAKTestDebuggerController;
+class SAKTestDebugger : public SAKDebugger
 {
     Q_OBJECT
 public:
-    Q_INVOKABLE SAKTestDebugPage(int type, QString name, QWidget *parent = Q_NULLPTR);
-protected:
-    SAKDebuggerDevice* device() override;
-    SAKDebugPageController *controller() override;
+    Q_INVOKABLE SAKTestDebugger(QSettings *settings,
+                                const QString settingsGroup,
+                                QSqlDatabase *sqlDatabase,
+                                QWidget *parent = Q_NULLPTR);
+    SAKDebuggerDevice* device() final;
+    SAKDebuggerController *controller() final;
+
+
 private:
-    SAKDebuggerDevice *mDevice;
-    SAKDebugPageController *mDeviceController;
+    SAKTestDebuggerDevice *mDevice;
+    SAKTestDebuggerController *mController;
+
+
+private:
+    void generateReadData();
+    void generateWriteData();
 };
 
 #endif
