@@ -68,6 +68,7 @@ private:
 private:
     void setupItem();
     bool needToResponse(QByteArray receiveData, QByteArray referenceData, int option);
+    void blockUiComponentsSignals(bool block);
 
 
 signals:

@@ -23,7 +23,9 @@ SAKDebuggerPluginAutoResponseItem::SAKDebuggerPluginAutoResponseItem(QWidget *pa
     ,mUi(new Ui::SAKDebuggerPluginAutoResponseItem)
 {
     mUi->setupUi(this);
+    blockUiComponentsSignals(true);
     setupItem();
+    blockUiComponentsSignals(false);
 }
 
 SAKDebuggerPluginAutoResponseItem::SAKDebuggerPluginAutoResponseItem(
@@ -33,8 +35,10 @@ SAKDebuggerPluginAutoResponseItem::SAKDebuggerPluginAutoResponseItem(
     ,mUi(new Ui::SAKDebuggerPluginAutoResponseItem)
 {
     mUi->setupUi(this);
-    setupItem();
+    blockUiComponentsSignals(true);
 
+
+    setupItem();
     mUi->descriptionLineEdit->setText(ctx.description);
     mUi->referenceLineEdit->setText(ctx.referenceData);
     mUi->responseLineEdit->setText(ctx.responseData);
@@ -44,6 +48,13 @@ SAKDebuggerPluginAutoResponseItem::SAKDebuggerPluginAutoResponseItem(
     mUi->optionComboBox->setCurrentIndex(ctx.option);
     mUi->delayResponseCheckBox->setChecked(ctx.enableDelay);
     mUi->delayResponseSpinBox->setValue(ctx.delayTime);
+
+    SAKCommonDataStructure::setLineEditTextFormat(mUi->referenceLineEdit,
+                                                  ctx.referenceFormat);
+    SAKCommonDataStructure::setLineEditTextFormat(mUi->responseLineEdit,
+                                                  ctx.responseFormat);
+
+    blockUiComponentsSignals(false);
 }
 
 SAKDebuggerPluginAutoResponseItem::~SAKDebuggerPluginAutoResponseItem()
@@ -92,7 +103,8 @@ void SAKDebuggerPluginAutoResponseItem::onBytesRead(QByteArray bytes)
     QByteArray referenceData =
             SAKCommonDataStructure::stringToByteArray(referenceString,
                                                       cookedReferenceFormat);
-    if (needToResponse(bytes, referenceData, mUi->optionComboBox->currentData().toInt())) {
+    if (needToResponse(bytes, referenceData,
+                       mUi->optionComboBox->currentData().toInt())) {
          QString responseString = mUi->responseLineEdit->text();
          int responseFromat = mUi->referenceDataFromatComboBox->currentData().toInt();
          auto cookedResponseFromat =
@@ -138,19 +150,6 @@ void SAKDebuggerPluginAutoResponseItem::setupItem()
                 mUi->responseDataFormatComboBox
                 );
 
-
-    auto blockUiComponentsSignals = [&](bool block){
-        mUi->descriptionLineEdit->blockSignals(block);
-        mUi->referenceLineEdit->blockSignals(block);
-        mUi->responseLineEdit->blockSignals(block);
-        mUi->optionComboBox->blockSignals(block);
-        mUi->referenceDataFromatComboBox->blockSignals(block);
-        mUi->responseDataFormatComboBox->blockSignals(block);
-        mUi->delayResponseCheckBox->blockSignals(block);
-        mUi->delayResponseSpinBox->blockSignals(block);
-    };
-
-    blockUiComponentsSignals(true);
     connect(mUi->descriptionLineEdit, &QLineEdit::textChanged,
             this, [&](const QString description){
         emit descriptionChanged(id(), description);
@@ -177,12 +176,18 @@ void SAKDebuggerPluginAutoResponseItem::setupItem()
             QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, [&](int format){
         emit referenceFormatChanged(id(), format);
+
+        mUi->referenceLineEdit->clear();
+        SAKCommonDataStructure::setLineEditTextFormat(mUi->referenceLineEdit, format);
     });
 
     connect(mUi->responseDataFormatComboBox,
             QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, [&](int format){
         emit responseFromatChanged(id(), format);
+
+        mUi->responseLineEdit->clear();
+        SAKCommonDataStructure::setLineEditTextFormat(mUi->responseLineEdit, format);
     });
 
 
@@ -196,7 +201,6 @@ void SAKDebuggerPluginAutoResponseItem::setupItem()
             this, [&](int interval){
         emit delayTimeChanged(id(), interval);
     });
-    blockUiComponentsSignals(false);
 }
 
 bool SAKDebuggerPluginAutoResponseItem::needToResponse(QByteArray receiveData,
@@ -216,4 +220,16 @@ bool SAKDebuggerPluginAutoResponseItem::needToResponse(QByteArray receiveData,
     }
 
     return false;
-};
+}
+
+void SAKDebuggerPluginAutoResponseItem::blockUiComponentsSignals(bool block)
+{
+    mUi->descriptionLineEdit->blockSignals(block);
+    mUi->referenceLineEdit->blockSignals(block);
+    mUi->responseLineEdit->blockSignals(block);
+    mUi->optionComboBox->blockSignals(block);
+    mUi->referenceDataFromatComboBox->blockSignals(block);
+    mUi->responseDataFormatComboBox->blockSignals(block);
+    mUi->delayResponseCheckBox->blockSignals(block);
+    mUi->delayResponseSpinBox->blockSignals(block);
+}
