@@ -17,4 +17,3 @@ contains(DEFINES, SAK_IMPORT_MODULE_TEST){
     INCLUDEPATH += \
         $$PWD
 }
-
