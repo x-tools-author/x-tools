@@ -95,7 +95,7 @@ QByteArray SAKTestDebuggerDevice::write(const QByteArray &bytes)
 
 void SAKTestDebuggerDevice::uninitialize()
 {
-    qDebug() << __FUNCTION__ << __LINE__;
+
 }
 
 void SAKTestDebuggerDevice::timerEvent(QTimerEvent *event)
