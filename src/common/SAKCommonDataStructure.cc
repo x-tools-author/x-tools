@@ -12,7 +12,6 @@
 #include <QStandardItemModel>
 #include "SAKCommonDataStructure.hh"
 
-QMap<int, QRegExpValidator*> SAKCommonDataStructure::mRegExpMap;
 SAKCommonDataStructure::SAKCommonDataStructure(QObject* parent)
     :QObject (parent)
 {
@@ -222,25 +221,24 @@ void SAKCommonDataStructure::setLineEditTextFormat(
         SAKEnumTextFormatInput format
         )
 {
-    if (mRegExpMap.isEmpty()) {
-        QRegExp binRegExp = QRegExp("([01][01][01][01][01][01][01][01][ ])*");
-        QRegExp otcRegExp = QRegExp("([0-7][0-7][ ])*");
-        QRegExp decRegExp = QRegExp("([0-9][0-9][ ])*");
-        QRegExp hexRegExp = QRegExp("([0-9a-fA-F][0-9a-fA-F][ ])*");
-        QRegExp asciiRegExp = QRegExp("([ -~])*");
-        mRegExpMap.insert(SAKCommonDataStructure::InputFormatBin,
-                          new QRegExpValidator(binRegExp));
-        mRegExpMap.insert(SAKCommonDataStructure::InputFormatOct,
-                          new QRegExpValidator(otcRegExp));
-        mRegExpMap.insert(SAKCommonDataStructure::InputFormatDec,
-                          new QRegExpValidator(decRegExp));
-        mRegExpMap.insert(SAKCommonDataStructure::InputFormatHex,
-                          new QRegExpValidator(hexRegExp));
-        mRegExpMap.insert(SAKCommonDataStructure::InputFormatAscii,
-                          new QRegExpValidator(asciiRegExp));
-        mRegExpMap.insert(SAKCommonDataStructure::InputFormatLocal,
-                          Q_NULLPTR);
-    }
+    QMap<int, QRegExpValidator*> regExpMap;
+    QRegExp binRegExp = QRegExp("([01][01][01][01][01][01][01][01][ ])*");
+    QRegExp otcRegExp = QRegExp("([0-7][0-7][ ])*");
+    QRegExp decRegExp = QRegExp("([0-9][0-9][ ])*");
+    QRegExp hexRegExp = QRegExp("([0-9a-fA-F][0-9a-fA-F][ ])*");
+    QRegExp asciiRegExp = QRegExp("([ -~])*");
+    regExpMap.insert(SAKCommonDataStructure::InputFormatBin,
+                     new QRegExpValidator(binRegExp));
+    regExpMap.insert(SAKCommonDataStructure::InputFormatOct,
+                     new QRegExpValidator(otcRegExp));
+    regExpMap.insert(SAKCommonDataStructure::InputFormatDec,
+                     new QRegExpValidator(decRegExp));
+    regExpMap.insert(SAKCommonDataStructure::InputFormatHex,
+                     new QRegExpValidator(hexRegExp));
+    regExpMap.insert(SAKCommonDataStructure::InputFormatAscii,
+                     new QRegExpValidator(asciiRegExp));
+    regExpMap.insert(SAKCommonDataStructure::InputFormatLocal,
+                     Q_NULLPTR);
 
     if (lineEdit) {
         if (lineEdit->validator()) {
@@ -248,13 +246,18 @@ void SAKCommonDataStructure::setLineEditTextFormat(
             lineEdit->setValidator(Q_NULLPTR);
         }
 
-        if (mRegExpMap.contains(format)) {
-            QRegExpValidator *validator = mRegExpMap.value(format);
+        if (regExpMap.contains(format)) {
+            QRegExpValidator *validator = regExpMap.value(format);
             lineEdit->setValidator(validator);
         } else {
             lineEdit->setValidator(Q_NULLPTR);
         }
     }
+}
+void SAKCommonDataStructure::setLineEditTextFormat(QLineEdit *lineEdit, int format)
+{
+    auto cookedFormat = static_cast<SAKEnumTextFormatInput>(format);
+    SAKCommonDataStructure::setLineEditTextFormat(lineEdit, cookedFormat);
 }
 
 QString SAKCommonDataStructure::suffix(SAKEmnuSuffixsType type)

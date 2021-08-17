@@ -113,7 +113,8 @@ public:
      * @param textEdit: Target text edit.
      * @param format: See SAKEnumTextInputFormat for more information.
      */
-    static QString formattingString(QString &origingString, SAKEnumTextFormatInput format);
+    static QString formattingString(QString &origingString,
+                                    SAKEnumTextFormatInput format);
 
     /**
      * @brief stringToByteArray: Transmit a QString to a QByteArray.
@@ -121,7 +122,8 @@ public:
      * @param format: See SAKEnumTextInputFormat for more information.
      * @return A QByteArray.
      */
-    static QByteArray stringToByteArray(QString &origingString, SAKEnumTextFormatInput format);
+    static QByteArray stringToByteArray(QString &origingString,
+                                        SAKEnumTextFormatInput format);
 
     /**
      * @brief byteArrayToString: Transmit a QByteArray to a QString.
@@ -129,7 +131,8 @@ public:
      * @param format: See SAKEnumTextOutputFormat for more information.
      * @return A QString.
      */
-    static QString byteArrayToString(QByteArray &origingData, SAKEnumTextFormatOutput format);
+    static QString byteArrayToString(QByteArray &origingData,
+                                     SAKEnumTextFormatOutput format);
 
     /**
      * @brief setLineEditTextFormat: Formating input
@@ -138,14 +141,15 @@ public:
      */
     static void setLineEditTextFormat(QLineEdit *lineEdit,
                                       SAKEnumTextFormatInput format);
+    static void setLineEditTextFormat(QLineEdit *lineEdit, int format);
 
     static QString suffix(SAKEmnuSuffixsType type);
     static QString friendlySuffix(SAKEmnuSuffixsType type);
     static void formattingInputText(QTextEdit *textEdit, int model);
 private:
-    static void setComboBoxItems(QComboBox *comboBox, QMap<int, QString> &formatMap, int currentData);
-private:
-    static QMap<int, QRegExpValidator*> mRegExpMap;
+    static void setComboBoxItems(QComboBox *comboBox,
+                                 QMap<int, QString> &formatMap,
+                                 int currentData);
 };
 
 #endif
