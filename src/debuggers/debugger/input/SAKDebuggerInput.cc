@@ -122,7 +122,8 @@ void SAKDebuggerInput::updateUiState(bool deviceIsOpened)
 
 void SAKDebuggerInput::run()
 {
-    auto takeBytesInfo = [&]()->auto {
+    auto takeBytesInfo =
+            [&]()->QPair<QString, SAKDebuggerInput::SAKStructInputParametersContext> {
         QPair<QString, SAKDebuggerInput::SAKStructInputParametersContext> pair;
         mBytesInfoVectorMutex.lock();
         if (!mBytesInfoVector.isEmpty()) {
