@@ -1,12 +1,12 @@
-﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+﻿/****************************************************************************************
+ * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- */
+ ***************************************************************************************/
 #include <QDebug>
 #include <QMetaType>
 #include <QSerialPortInfo>
@@ -16,7 +16,7 @@
 #include "ui_SAKTransponderSerialPortItem.h"
 
 SAKTransponderSerialPortItem::SAKTransponderSerialPortItem(QWidget *parent)
-    :SAKDebuggerPluginTransponderBase(parent)
+    :SAKBaseListWidgetItemWidget(parent)
     ,mUi(new Ui::SAKTransponderSerialPortItem)
 {    
     mUi->setupUi(this);
@@ -25,10 +25,11 @@ SAKTransponderSerialPortItem::SAKTransponderSerialPortItem(QWidget *parent)
 }
 
 SAKTransponderSerialPortItem::SAKTransponderSerialPortItem(
+        quint64 id,
         SAKCommonDataStructure::SAKStructSerialPortParametersContext parasCtx,
         QWidget *parent
         )
-    :SAKDebuggerPluginTransponderBase(parent)
+    :SAKBaseListWidgetItemWidget(id, parent)
     ,mUi(new Ui::SAKTransponderSerialPortItem)
 {
     mUi->setupUi(this);

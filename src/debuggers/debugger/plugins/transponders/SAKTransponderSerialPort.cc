@@ -163,9 +163,8 @@ QWidget *SAKTransponderSerialPort::createItemFromParameters(const QJsonObject &j
         parasCtx.frameIntervel = jsonObj.value(mTableCtx.columns.frameIntervel).toInt();
 
 
-        auto itemWidget = new SAKTransponderSerialPortItem(parasCtx);
         quint64 id = jsonObj.value(mTableCtx.columns.id).toVariant().toULongLong();
-        itemWidget->setId(id);
+        auto itemWidget = new SAKTransponderSerialPortItem(id, parasCtx);
         return itemWidget;
     }
 }

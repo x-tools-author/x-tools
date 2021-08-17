@@ -21,18 +21,19 @@
 
 #include "SAKSerialPortDevice.hh"
 #include "SAKCommonDataStructure.hh"
-#include "SAKDebuggerPluginTransponderBase.hh"
+#include "SAKBaseListWidgetItemWidget.hh"
 
 namespace Ui {
     class SAKTransponderSerialPortItem;
 }
 
-class SAKTransponderSerialPortItem : public SAKDebuggerPluginTransponderBase
+class SAKTransponderSerialPortItem : public SAKBaseListWidgetItemWidget
 {
     Q_OBJECT
 public:
     SAKTransponderSerialPortItem(QWidget *parent = Q_NULLPTR);
     SAKTransponderSerialPortItem(
+            quint64 id,
             SAKCommonDataStructure::SAKStructSerialPortParametersContext parasCtx,
             QWidget *parent = Q_NULLPTR
             );
