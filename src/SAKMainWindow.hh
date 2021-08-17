@@ -39,7 +39,7 @@ public:
     // Debug page type supported by QtSwissArmyKnife
     enum SAKEnumDebugPageType {
 #ifdef QT_DEBUG
-#ifdef fSAK_IMPORT_MODULE_VIRTUALDEVICE
+#ifdef SAK_IMPORT_MODULE_TEST
         DebugPageTypeTest,
 #endif
 #endif

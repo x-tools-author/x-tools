@@ -53,8 +53,8 @@
 
 // Debugging pages
 #ifdef QT_DEBUG
-#ifdef SAK_IMPORT_MODULE_VIRTUALDEVICE
-#include "SAKTestDebugPage.hh"
+#ifdef SAK_IMPORT_MODULE_TEST
+#include "SAKTestDebugger.hh"
 #endif
 #endif
 #ifdef SAK_IMPORT_MODULE_SERIALBUS
@@ -149,7 +149,7 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
     mTabWidget->blockSignals(true);
     for (int i = 0; i < metaEnum.keyCount(); i++){
 #ifdef QT_DEBUG
-#ifdef SAK_IMPORT_MODULE_VIRTUALDEVICE
+#ifdef SAK_IMPORT_MODULE_TEST
         // Test page is selectable, it is for developer of the project.
         bool enableTestPage = sakApp->settings()->value(mSettingsKeyContext.enableTestPage).toBool();
         if (!enableTestPage && (metaEnum.value(i) == DebugPageTypeTest)){
@@ -612,7 +612,10 @@ void SAKMainWindow::rebootRequestion()
 void SAKMainWindow::initializingMetaObject()
 {
 #ifdef QT_DEBUG
-    //mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeTest, SAKTestDebugPage::staticMetaObject, tr("Test")});
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{
+                                      DebugPageTypeTest,
+                                      SAKTestDebugger::staticMetaObject,
+                                      tr("Test")});
 #endif
 #ifdef SAK_IMPORT_MODULE_SERIALPORT
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{
