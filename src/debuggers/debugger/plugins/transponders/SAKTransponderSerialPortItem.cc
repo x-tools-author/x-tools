@@ -122,24 +122,28 @@ void SAKTransponderSerialPortItem::initSignals()
     connect(mUi->dataBitscomboBox,
             QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, [&](int index){
+        Q_UNUSED(index);
         emit this->dataBitsChanged(mUi->dataBitscomboBox->currentData().toInt());
     });
 
     connect(mUi->parityComboBox,
             QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, [&](int index){
+        Q_UNUSED(index);
         emit this->parityChanged(mUi->parityComboBox->currentData().toInt());
     });
 
     connect(mUi->stopBitscomboBox,
             QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, [&](int index){
+        Q_UNUSED(index);
         emit this->stopBitsChanged(mUi->stopBitscomboBox->currentData().toInt());
     });
 
     connect(mUi->flowControlComboBox,
             QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, [&](int index){
+        Q_UNUSED(index);
         emit this->flowControlChanged(mUi->dataBitscomboBox->currentData().toInt());
     });
 
