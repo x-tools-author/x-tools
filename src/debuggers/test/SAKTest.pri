@@ -16,8 +16,5 @@ contains(DEFINES, SAK_IMPORT_MODULE_TEST){
 
     INCLUDEPATH += \
         $$PWD
-}else {
-    message("The Qt edition has no serialport module, the program will not has serialport debugging function.")
 }
-
 
