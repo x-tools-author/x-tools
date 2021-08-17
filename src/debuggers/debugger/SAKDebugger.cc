@@ -237,6 +237,8 @@ void SAKDebugger::initDebuggerPlugin()
             mModulePlugins, &SAKDebuggerPlugins::bytesRead);
     connect(mModuleDevice, &SAKDebuggerDevice::bytesWritten,
             mModulePlugins, &SAKDebuggerPlugins::bytesWritten);
+    connect(mModulePlugins, &SAKDebuggerPlugins::invokeWriteCookedBytes,
+            mModuleDevice, &SAKDebuggerDevice::writeBytes);
 }
 
 void SAKDebugger::commonSqlApiUpdateRecord(QSqlQuery *sqlQuery,

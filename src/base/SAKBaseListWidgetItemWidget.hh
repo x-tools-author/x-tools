@@ -40,7 +40,7 @@ private:
 
 
 signals:
-    void invokeWriteBytes(QByteArray bytes);
+    void invokeWriteCookedBytes(QByteArray bytes);
 };
 
 #endif // SAKBASELISTWIDGETITEMWIDGET_HH

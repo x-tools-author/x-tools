@@ -66,7 +66,7 @@ private:
     void changeFormat(quint64 id, int format);
     void changeDescription(quint64 id, QString description);
     void changeInputText(quint64 id, QString text);
-    void invokeWriteBytes(const QByteArray &bytes);
+    void invokeWriteCookedBytes(const QByteArray &bytes);
 };
 
 #endif

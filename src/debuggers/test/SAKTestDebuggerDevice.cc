@@ -85,7 +85,7 @@ bool SAKTestDebuggerDevice::initialize()
 
 QByteArray SAKTestDebuggerDevice::read()
 {
-    return QByteArray("Just fot debuging");
+    return QByteArray("Just for debuging");
 }
 
 QByteArray SAKTestDebuggerDevice::write(const QByteArray &bytes)

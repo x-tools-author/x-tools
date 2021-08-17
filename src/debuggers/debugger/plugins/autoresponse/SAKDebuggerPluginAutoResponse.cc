@@ -31,7 +31,11 @@ SAKDebuggerPluginAutoResponse::SAKDebuggerPluginAutoResponse(
         QString tableNameSuffix,
         QWidget *parent
         )
-    :SAKBaseListWidget(sqlDatabase, settings, settingsGroup, tableNameSuffix, parent)
+    :SAKBaseListWidget(sqlDatabase,
+                       settings,
+                       settingsGroup,
+                       tableNameSuffix,
+                       parent)
     ,mSettiings(settings)
     ,mSqlDatabase(sqlDatabase)
     ,mSqlQuery(*sqlDatabase)
@@ -186,12 +190,6 @@ void SAKDebuggerPluginAutoResponse::connectSignalsToSlots(QWidget *itemWidget)
 {
     auto cookedItemWidget =
             qobject_cast<SAKDebuggerPluginAutoResponseItem*>(itemWidget);
-    connect(this, &SAKDebuggerPluginAutoResponse::bytesRead,
-            cookedItemWidget, &SAKDebuggerPluginAutoResponseItem::onBytesRead);
-    connect(cookedItemWidget, &SAKDebuggerPluginAutoResponseItem::invokeWriteBytes,
-            this, &SAKDebuggerPluginAutoResponse::invokeWriteBytes);
-
-
     connect(cookedItemWidget, &SAKDebuggerPluginAutoResponseItem::descriptionChanged,
             this, [&](quint64 id, const QString &description){
         updateRecord(id, mTableCtx.columns.description, QVariant::fromValue(description));

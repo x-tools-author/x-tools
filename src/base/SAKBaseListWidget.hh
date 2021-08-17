@@ -46,6 +46,10 @@ protected:
     QListWidget *mListWidget;
 
 
+private:
+    QString mForbidAllItemsSettingsKey;
+
+
 protected:
     virtual QString sqlCreate(const QString &tableName) = 0;
     virtual QString sqlInsert(const QString &tableName, QWidget *itemWidget) = 0;
@@ -79,7 +83,7 @@ private:
 
 signals:
     void bytesRead(QByteArray bytes);
-    void invokeWriteBytes(const QByteArray &bytes);
+    void invokeWriteCookedBytes(const QByteArray &bytes);
 };
 
 #endif // SAKBASELISTWIDGET_HH

@@ -261,7 +261,7 @@ void SAKDebuggerOutput::run()
             QString color = dataCtx.isRxData ? rxColor : txColor;
             QString rxTx = dataCtx.isRxData
                     ? QString("<font color=%1>Rx</font>").arg(rxColor)
-                    : QString("<font color=%2>Rx</font>").arg(txColor);
+                    : QString("<font color=%2>Tx</font>").arg(txColor);
 
             QString frameString;
             if (faceWithoutMakeup) {

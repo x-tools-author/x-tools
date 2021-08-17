@@ -66,7 +66,7 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
                                                       "AutoResponse");
     connect(this, &SAKDebuggerPlugins::bytesRead,
             mAutoResponse, &SAKDebuggerPluginAutoResponse::onBytesRead);
-    connect(mAutoResponse, &SAKDebuggerPluginAutoResponse::invokeWriteBytes,
+    connect(mAutoResponse, &SAKDebuggerPluginAutoResponse::invokeWriteCookedBytes,
             this, &SAKDebuggerPlugins::invokeWriteCookedBytes);
 
 

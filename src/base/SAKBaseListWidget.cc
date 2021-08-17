@@ -61,6 +61,20 @@ SAKBaseListWidget::SAKBaseListWidget(QSqlDatabase *sqlDatabase,
     connect(mUi->addPushButton, &QPushButton::clicked,
             this, &SAKBaseListWidget::addItem);
     setContentsMargins(0, 0, 0, 0);
+
+
+    mForbidAllItemsSettingsKey = settingsGroup + "/" + tableNameSuffix + "/forbidAllItems";
+    if (mSettings->value(mForbidAllItemsSettingsKey).isNull()) {
+        mUi->forbidAllItemsCheckBox->setChecked(true);
+    } else {
+        bool ret = mSettings->value(mForbidAllItemsSettingsKey).toBool();
+        mUi->forbidAllItemsCheckBox->setChecked(ret);
+    }
+    connect(mUi->forbidAllItemsCheckBox, &QCheckBox::clicked,
+            this, [&](){
+        mSettings->setValue(mForbidAllItemsSettingsKey,
+                            mUi->forbidAllItemsCheckBox->isChecked());
+    });
 }
 
 SAKBaseListWidget::~SAKBaseListWidget()
@@ -274,8 +288,8 @@ bool SAKBaseListWidget::setupItemWidget(QListWidgetItem *item,
     if (cookedItemWidget) {
         connect(this, &SAKBaseListWidget::bytesRead,
                 cookedItemWidget, &SAKBaseListWidgetItemWidget::onBytesReadPrivate);
-        connect(cookedItemWidget, &SAKBaseListWidgetItemWidget::invokeWriteBytes,
-                this, &SAKBaseListWidget::invokeWriteBytes);
+        connect(cookedItemWidget, &SAKBaseListWidgetItemWidget::invokeWriteCookedBytes,
+                this, &SAKBaseListWidget::invokeWriteCookedBytes);
     }
 
     return true;

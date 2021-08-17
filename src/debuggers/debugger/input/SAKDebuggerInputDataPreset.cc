@@ -184,7 +184,7 @@ void SAKDebuggerInputDataPreset::connectSignalsToSlots(QWidget *itemWidget)
                                             [=](){
         QString rawData = cookedItemWidget->itemText();
         int format = cookedItemWidget->itemTextFromat();
-        emit this->invokeWriteBytes(rawData, format);
+        emit this->invokeWriteCookedBytes(rawData, format);
     });
 
     // The action will be deleted after item widget is destroyed.

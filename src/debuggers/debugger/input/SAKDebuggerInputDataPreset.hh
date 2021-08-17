@@ -72,7 +72,7 @@ private:
     void updateDescription(quint64 id, const QString &description);
     void updateText(quint64 id, const QString &text);
 signals:
-    void invokeWriteBytes(QString rawData, int format);
+    void invokeWriteCookedBytes(QString rawData, int format);
 };
 
 #endif

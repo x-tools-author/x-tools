@@ -75,7 +75,6 @@ void SAKDebuggerPluginAutoResponseItem::onBytesRead(QByteArray bytes)
         return;
     }
 
-
     QString referenceString;
     int referenceFormat = mUi->referenceDataFromatComboBox->currentData().toInt();
     if ((referenceFormat == SAKCommonDataStructure::InputFormatBin) ||
@@ -110,10 +109,10 @@ void SAKDebuggerPluginAutoResponseItem::onBytesRead(QByteArray bytes)
              if (mUi->delayResponseCheckBox->isChecked()) {
                  int delay = mUi->delayResponseSpinBox->value();
                  QTimer::singleShot(delay, this, [=](){
-                     emit invokeWriteBytes(responseData);
+                     emit invokeWriteCookedBytes(responseData);
                  });
              } else {
-                 emit invokeWriteBytes(responseData);
+                 emit invokeWriteCookedBytes(responseData);
              }
          }
     }
