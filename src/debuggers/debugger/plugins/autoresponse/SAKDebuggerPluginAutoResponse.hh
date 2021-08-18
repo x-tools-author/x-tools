@@ -48,36 +48,25 @@ protected:
 
 
 private:
-    QSettings *mSettiings;
-    QSqlDatabase *mSqlDatabase;
-    QSqlQuery mSqlQuery;
-
-    QTimer mClearMessageInfoTimer;
-
-
-private:
-    struct SAKStructAutomaticallyResponseJsonKeyContext {
-        const QString id = QString("id");
-        const QString description = QString("description");
-        const QString referenceData = QString("reference_data");
-        const QString responseData = QString("response_data");
-        const QString enable = QString("enable");
-        const QString referenceFormat = QString("reference_format");
-        const QString responseFormat = QString("response_format");
-        const QString option = QString("option");
-        const QString enableDelay = QString("enable_delay");
-        const QString delayTime = QString("delay_time");
-    };
-
+    struct SAKStructTableContext {
+        QString tableName;
+        struct {
+            const QString id = QString("id");
+            const QString description = QString("description");
+            const QString referenceData = QString("reference_data");
+            const QString responseData = QString("response_data");
+            const QString enable = QString("enable");
+            const QString referenceFormat = QString("reference_format");
+            const QString responseFormat = QString("response_format");
+            const QString option = QString("option");
+            const QString enableDelay = QString("enable_delay");
+            const QString delayTime = QString("delay_time");
+        } columns;
+    } mTableCtx;
 
     struct SAKStructSettingsKeyContext {
         QString disableAutomaticallyResponse;
-    }mSettingsKeyCtx;
-
-    struct SAKStructAutomaticallyResponseSqlDatabaseTableContext {
-        QString tableName;
-        SAKStructAutomaticallyResponseJsonKeyContext columns;
-    }mTableCtx;
+    } mSettingsKeyCtx;
 };
 
 #endif

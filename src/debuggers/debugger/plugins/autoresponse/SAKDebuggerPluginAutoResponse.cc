@@ -36,9 +36,6 @@ SAKDebuggerPluginAutoResponse::SAKDebuggerPluginAutoResponse(
                        settingsGroup,
                        tableNameSuffix,
                        parent)
-    ,mSettiings(settings)
-    ,mSqlDatabase(sqlDatabase)
-    ,mSqlQuery(*sqlDatabase)
 {
     mTableCtx.tableName = mTableName;
     initialize();
