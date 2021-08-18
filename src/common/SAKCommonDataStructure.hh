@@ -53,14 +53,6 @@ public:
     };
     Q_ENUM(SAKEnumTextFormatOutput);
 
-//    // Auto response options
-//    enum SAKEnumAutoResponseOption {
-//        AutoResponseOptionEqual, // Rx data is equal to reference data
-//        AutoResponseOptionContain, // Rx data contains reference data
-//        AutoResponseOptionDoNotContain  // Rx data does not contain reference data
-//    };
-//    Q_ENUM(SAKEnumAutoResponseOption);
-
     // Web socket sending type
     enum SAKEnumWebSocketSendingType {
         WebSocketSendingTypeText,
