@@ -212,16 +212,6 @@ void SAKDebuggerPluginTimedSending::connectSignalsToSlots(QWidget *itemWidget)
             &SAKDebuggerPluginTimedSendingItem::dataChanged,
             this,
             &SAKDebuggerPluginTimedSending::onDataChanged);
-
-
-    connect(cookedItemWidget,
-            &SAKDebuggerPluginTimedSendingItem::invokeWriteCookedBytes,
-            this,
-            [&](QByteArray bytes){
-        if (!forbidAllItems()) {
-            emit invokeWriteCookedBytes(bytes);
-        }
-    });
 }
 
 void SAKDebuggerPluginTimedSending::onEnableChanged(quint64 id, bool enable)
