@@ -26,7 +26,7 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
     ,mCharts(Q_NULLPTR)
     ,mTransponders(Q_NULLPTR)
     ,mAutoResponse(Q_NULLPTR)
-    ,mRegularlySending(Q_NULLPTR)
+    ,mTimedSending(Q_NULLPTR)
     ,mTitleLabel(titleLabel)
     ,mPanelWidget(panelWidget)
     ,mPluginDialog(Q_NULLPTR)
@@ -56,10 +56,13 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
                                                       settings,
                                                       settingsGroup,
                                                       "Transponders");
-    mRegularlySending = new SAKDebuggerPluginRegularlySending(sqlDatabase,
-                                                              settings,
-                                                              settingsGroup,
-                                                              "RegularlySending");
+    mTimedSending = new SAKDebuggerPluginTimedSending(sqlDatabase,
+                                                      settings,
+                                                      settingsGroup,
+                                                      "TimedSending");
+    connect(mTimedSending, &SAKDebuggerPluginTimedSending::invokeWriteCookedBytes,
+            this, &SAKDebuggerPlugins::invokeWriteCookedBytes);
+
     mAutoResponse = new SAKDebuggerPluginAutoResponse(settings,
                                                       settingsGroup,
                                                       sqlDatabase,
@@ -92,7 +95,7 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
     actionsCtx.append({tr("Transponders"),
                        &SAKDebuggerPlugins::showPluinTransponders,
                        &SAKDebuggerPlugins::embedPluinTransponders});
-    actionsCtx.append({tr("Regularly Sending"),
+    actionsCtx.append({tr("Timed Sending"),
                        &SAKDebuggerPlugins::showPluginRegularlySending,
                        &SAKDebuggerPlugins::embedPluginRegularlySending});
     actionsCtx.append({tr("Automatically Response"),
@@ -144,7 +147,7 @@ SAKDebuggerPlugins::~SAKDebuggerPlugins()
     pluginVector << m3d
                  << mCharts
                  << mTransponders
-                 << mRegularlySending
+                 << mTimedSending
                  << mAutoResponse;
     for (int i = 0; i < pluginVector.count(); i++) {
         auto w = pluginVector.at(i);
@@ -176,7 +179,7 @@ void SAKDebuggerPlugins::showPluginAutoResponse()
 
 void SAKDebuggerPlugins::showPluginRegularlySending()
 {
-    showPluginDialog(mRegularlySending);
+    showPluginDialog(mTimedSending);
 }
 
 void SAKDebuggerPlugins::showPluginDialog(QWidget *contentWidget)
@@ -212,7 +215,7 @@ void SAKDebuggerPlugins::embedPluginAutoResponse()
 
 void SAKDebuggerPlugins::embedPluginRegularlySending()
 {
-    embedPlugin(mRegularlySending);
+    embedPlugin(mTimedSending);
 }
 
 void SAKDebuggerPlugins::embedPlugin(QWidget *contentWidget)

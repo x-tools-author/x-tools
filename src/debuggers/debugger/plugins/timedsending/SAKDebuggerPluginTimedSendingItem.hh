@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ***************************************************************************************/
-#ifndef SAKDEBUGGERPLUGINREGULARLYSENDINGITEM_HH
-#define SAKDEBUGGERPLUGINREGULARLYSENDINGITEM_HH
+#ifndef SAKDEBUGGERPLUGINTIMEDSENDINGITEM_HH
+#define SAKDEBUGGERPLUGINTIMEDSENDINGITEM_HH
 
 #include <QTimer>
 #include <QWidget>
@@ -18,59 +18,57 @@
 #include <QCheckBox>
 #include <QPushButton>
 
+#include "SAKBaseListWidgetItemWidget.hh"
+
 namespace Ui {
-    class SAKDebuggerPluginRegularlySendingItem;
+    class SAKDebuggerPluginTimedSendingItem;
 }
 
-class SAKDebuggerPluginRegularlySendingItem : public QWidget
+class SAKDebuggerPluginTimedSendingItem : public SAKBaseListWidgetItemWidget
 {
     Q_OBJECT
 public:
     struct SAKStructItemContext {
         quint64 id;
+        bool enable;
+        QString description;
         int interval;
         int format;
-        QString description;
+        int suffix;
         QString data;
     };
 
 
 public:
-    SAKDebuggerPluginRegularlySendingItem(QWidget *parent = Q_NULLPTR);
-    SAKDebuggerPluginRegularlySendingItem(SAKStructItemContext ctx,
-                                          QWidget *parent = Q_NULLPTR);
-    ~SAKDebuggerPluginRegularlySendingItem();
-
-    quint64 itemID();
-    quint32 itemInterval();
-    quint32 itemFormat();
-    QString itemDescription();
-    QString itemText();
-    SAKStructItemContext context();
+    SAKDebuggerPluginTimedSendingItem(QWidget *parent = Q_NULLPTR);
+    SAKDebuggerPluginTimedSendingItem(SAKStructItemContext ctx,
+                                      QWidget *parent = Q_NULLPTR);
+    ~SAKDebuggerPluginTimedSendingItem();
+    const SAKStructItemContext context();
 
 
 private:
-    quint64 mID;
     QTimer mWriteTimer;
-    bool isInitializing;
     SAKStructItemContext mContext;
 
 
 private:
     void write();
     void commonInitializing();
+    void blockUiCommpentsSignals(bool block);
 
 
 private:
-    Ui::SAKDebuggerPluginRegularlySendingItem *mUi;
+    Ui::SAKDebuggerPluginTimedSendingItem *mUi;
 
 
 signals:
+    void enableChanged(quint64 id, bool enable);
+    void descriptionChanged(quint64 id, QString description);
     void intervalChanged(quint64 id, int interval);
     void formatChanged(quint64 id, int format);
-    void descriptionChanged(quint64 id, QString description);
-    void inputTextChanged(quint64 id, QString text);
-    void invokeWriteBytes(QString bytes, int format);
+    void suffixChanged(quint64 id, int suffix);
+    void dataChanged(quint64 id, QString text);
 };
 
 #endif

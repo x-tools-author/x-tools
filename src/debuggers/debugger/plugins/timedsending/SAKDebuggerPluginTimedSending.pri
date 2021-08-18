@@ -1,13 +1,13 @@
 FORMS += \
-    $$PWD/SAKDebuggerPluginRegularlySendingItem.ui
+    $$PWD/SAKDebuggerPluginTimedSendingItem.ui
 
 HEADERS += \
-    $$PWD/SAKDebuggerPluginRegularlySending.hh \
-    $$PWD/SAKDebuggerPluginRegularlySendingItem.hh
+    $$PWD/SAKDebuggerPluginTimedSending.hh \
+    $$PWD/SAKDebuggerPluginTimedSendingItem.hh
 
 SOURCES += \
-    $$PWD/SAKDebuggerPluginRegularlySending.cc \
-    $$PWD/SAKDebuggerPluginRegularlySendingItem.cc
+    $$PWD/SAKDebuggerPluginTimedSending.cc \
+    $$PWD/SAKDebuggerPluginTimedSendingItem.cc
 
 INCLUDEPATH += \
     $$PWD

@@ -12,112 +12,102 @@
 
 #include "SAKDebuggerInput.hh"
 #include "SAKCommonDataStructure.hh"
-#include "SAKDebuggerPluginRegularlySendingItem.hh"
-#include "ui_SAKDebuggerPluginRegularlySendingItem.h"
+#include "SAKDebuggerPluginTimedSendingItem.hh"
+#include "ui_SAKDebuggerPluginTimedSendingItem.h"
 
-SAKDebuggerPluginRegularlySendingItem::SAKDebuggerPluginRegularlySendingItem(
+SAKDebuggerPluginTimedSendingItem::SAKDebuggerPluginTimedSendingItem(
         QWidget *parent
         )
-    :QWidget(parent)
-    ,isInitializing(true)
-    ,mUi(new Ui::SAKDebuggerPluginRegularlySendingItem)
+    :SAKBaseListWidgetItemWidget(parent)
+    ,mUi(new Ui::SAKDebuggerPluginTimedSendingItem)
 {
+    mUi->setupUi(this);
+    blockUiCommpentsSignals(true);
     commonInitializing();
-    mID = QDateTime::currentMSecsSinceEpoch();
-    isInitializing = false;
+    blockUiCommpentsSignals(false);
 }
 
-SAKDebuggerPluginRegularlySendingItem::SAKDebuggerPluginRegularlySendingItem(
+SAKDebuggerPluginTimedSendingItem::SAKDebuggerPluginTimedSendingItem(
         SAKStructItemContext ctx,
         QWidget *parent
         )
-    :QWidget(parent)
-    ,mID(ctx.id)
-    ,isInitializing(true)
-    ,mUi(new Ui::SAKDebuggerPluginRegularlySendingItem)
+    :SAKBaseListWidgetItemWidget(parent)
+    ,mUi(new Ui::SAKDebuggerPluginTimedSendingItem)
 {
+    mUi->setupUi(this);
+    blockUiCommpentsSignals(true);
     commonInitializing();
-
-    mUi->intervalLineEdit->setText(QString::number(ctx.interval));
-    mUi->textFormatComboBox->setCurrentIndex(ctx.format);
+    mUi->enableCheckBox->setChecked(ctx.enable);
     mUi->descriptionLineEdit->setText(ctx.description);
-    mUi->inputDataTextEdit->setText(ctx.data);
-    isInitializing = false;
+    mUi->intervalSpinBox->setValue(ctx.interval);
+    mUi->textFormatComboBox->setCurrentIndex(ctx.format);
+    mUi->suffixComboBox->setCurrentIndex(ctx.suffix);
+    mUi->dataLineEdit->setText(ctx.data);
+
+    mUi->suffixComboBox->setCurrentIndex(ctx.suffix);
+    SAKCommonDataStructure::setLineEditTextFormat(mUi->dataLineEdit, ctx.format);
+    blockUiCommpentsSignals(false);
 }
 
-SAKDebuggerPluginRegularlySendingItem::~SAKDebuggerPluginRegularlySendingItem()
+SAKDebuggerPluginTimedSendingItem::~SAKDebuggerPluginTimedSendingItem()
 {
     delete mUi;
 }
 
-quint64 SAKDebuggerPluginRegularlySendingItem::itemID()
+const SAKDebuggerPluginTimedSendingItem::SAKStructItemContext
+SAKDebuggerPluginTimedSendingItem::context()
 {
-    return mID;
-}
-
-quint32 SAKDebuggerPluginRegularlySendingItem::itemInterval()
-{
-    return mUi->intervalLineEdit->text().toUInt();
-}
-
-quint32 SAKDebuggerPluginRegularlySendingItem::itemFormat()
-{
-    return mUi->textFormatComboBox->currentIndex();
-}
-
-QString SAKDebuggerPluginRegularlySendingItem::itemDescription()
-{
-    return mUi->descriptionLineEdit->text();
-}
-
-QString SAKDebuggerPluginRegularlySendingItem::itemText()
-{
-    return mUi->inputDataTextEdit->toPlainText();
-}
-
-SAKDebuggerPluginRegularlySendingItem::SAKStructItemContext
-SAKDebuggerPluginRegularlySendingItem::context()
-{
-    mContext.id = mID;
-    mContext.data = mUi->inputDataTextEdit->toPlainText();
-    mContext.format = mUi->textFormatComboBox->currentData().toInt();
-    mContext.interval = mUi->intervalLineEdit->text().toInt();
+    mContext.id = id();
+    mContext.enable = mUi->enableCheckBox->isChecked();
     mContext.description = mUi->descriptionLineEdit->text();
+    mContext.interval = mUi->intervalSpinBox->text().toInt();
+    mContext.format = mUi->textFormatComboBox->currentData().toInt();
+    mContext.suffix = mUi->suffixComboBox->currentData().toInt();
+    mContext.data = mUi->dataLineEdit->text();
+
     return mContext;
 }
 
-void SAKDebuggerPluginRegularlySendingItem::write()
+void SAKDebuggerPluginTimedSendingItem::write()
 {
     mWriteTimer.stop();
-    QString data = mUi->inputDataTextEdit->toPlainText();
 
+    QString data = mUi->dataLineEdit->text();
     if (!data.isEmpty()){
+        QString text = mUi->dataLineEdit->text();
         int textFormat = mUi->textFormatComboBox->currentData().toInt();
-        emit invokeWriteBytes(data, textFormat);
+        int suffix = mUi->suffixComboBox->currentData().toInt();
+
+        QByteArray data = SAKCommonDataStructure::stringToByteArray(text, textFormat);
+        QByteArray suffixArray = SAKCommonDataStructure::suffix(suffix).toLatin1();
+        data.append(suffixArray);
+
+        emit invokeWriteCookedBytes(data);
     }
+
     mWriteTimer.start();
 }
 
-void SAKDebuggerPluginRegularlySendingItem::commonInitializing()
+void SAKDebuggerPluginTimedSendingItem::commonInitializing()
 {
-    mUi->setupUi(this);
-    mWriteTimer.setInterval(mUi->intervalLineEdit->text().toInt());
     connect(&mWriteTimer, &QTimer::timeout,
-            this, &SAKDebuggerPluginRegularlySendingItem::write);
-    SAKCommonDataStructure::setComboBoxTextInputFormat(mUi->textFormatComboBox);
+            this, &SAKDebuggerPluginTimedSendingItem::write);
 
     connect(mUi->enableCheckBox, &QCheckBox::clicked,
             this, [&](){
         mUi->enableCheckBox->isChecked() ? mWriteTimer.start() : mWriteTimer.stop();
+        emit enableChanged(id(), mUi->enableCheckBox->isChecked());
     });
 
-    connect(mUi->intervalLineEdit, &QLineEdit::textEdited,
+    connect(mUi->descriptionLineEdit, &QLineEdit::textChanged,
             this, [&](const QString &text){
-        if (!isInitializing){
-            int interval = text.toInt();
-            mWriteTimer.setInterval(interval < 20 ? 20 : interval);
-            emit intervalChanged(mID, interval);
-        }
+        emit descriptionChanged(id(), text);
+    });
+
+    connect(mUi->intervalSpinBox, QOverload<int>::of(&QSpinBox::valueChanged),
+            this, [&](int value){
+        mWriteTimer.setInterval(value < 50 ? 50 : value);
+        emit intervalChanged(id(), value);
     });
 
     connect(mUi->textFormatComboBox,
@@ -125,29 +115,43 @@ void SAKDebuggerPluginRegularlySendingItem::commonInitializing()
             this,
             [&](int index){
         Q_UNUSED(index);
-        if (!isInitializing){
-            mUi->inputDataTextEdit->clear();
-            int format = mUi->textFormatComboBox->currentData().toInt();
-            emit formatChanged(mID, format);
-        }
+        mUi->dataLineEdit->clear();
+        int format = mUi->textFormatComboBox->currentData().toInt();
+        SAKCommonDataStructure::setLineEditTextFormat(mUi->dataLineEdit, format);
+        emit formatChanged(id(), format);
     });
 
-    connect(mUi->descriptionLineEdit, &QLineEdit::textChanged,
-            this, [&](const QString &text){
-        if (!isInitializing){
-            emit descriptionChanged(mID, text);
-        }
+    connect(mUi->suffixComboBox,
+            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this,
+            [&](int index){
+        emit suffixChanged(id(), index);
     });
 
-    connect(mUi->inputDataTextEdit, &QTextEdit::textChanged,
+    connect(mUi->dataLineEdit, &QLineEdit::textChanged,
             this, [&](){
-        if (!isInitializing){
-            QString text = mUi->inputDataTextEdit->toPlainText();
-            int format = mUi->textFormatComboBox->currentData().toInt();
-            SAKCommonDataStructure::formattingInputText(mUi->inputDataTextEdit,
-                                                        format);
-
-            emit inputTextChanged(mID, text);
-        }
+        emit dataChanged(id(), mUi->dataLineEdit->text());
     });
+
+    SAKCommonDataStructure::setComboBoxTextInputFormat(mUi->textFormatComboBox);
+    SAKCommonDataStructure::setupSuffix(mUi->suffixComboBox);
+    SAKCommonDataStructure::setLineEditTextFormat(
+                mUi->dataLineEdit,
+                mUi->textFormatComboBox->currentIndex()
+                );
+
+    mUi->enableCheckBox->setChecked(true);
+    mWriteTimer.setInterval(mUi->intervalSpinBox->value());
+    mWriteTimer.setSingleShot(true);
+    mWriteTimer.start();
+}
+
+void SAKDebuggerPluginTimedSendingItem::blockUiCommpentsSignals(bool block)
+{
+    mUi->enableCheckBox->blockSignals(block);
+    mUi->intervalSpinBox->blockSignals(block);
+    mUi->descriptionLineEdit->blockSignals(block);
+    mUi->textFormatComboBox->blockSignals(block);
+    mUi->suffixComboBox->blockSignals(block);
+    mUi->dataLineEdit->blockSignals(block);
 }
