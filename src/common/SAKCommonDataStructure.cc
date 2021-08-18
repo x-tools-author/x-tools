@@ -261,6 +261,7 @@ void SAKCommonDataStructure::setLineEditTextFormat(
         }
     }
 }
+
 void SAKCommonDataStructure::setLineEditTextFormat(QLineEdit *lineEdit, int format)
 {
     auto cookedFormat = static_cast<SAKEnumTextFormatInput>(format);
