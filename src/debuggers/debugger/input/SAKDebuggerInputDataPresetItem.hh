@@ -19,61 +19,44 @@
 #include <QTextEdit>
 #include <QPushButton>
 
+#include "SAKBaseListWidgetItemWidget.hh"
+
 namespace Ui {
     class SAKDebuggerInputDataPresetItem;
 }
 
 // Preset data parameters editting widget
-class SAKDebuggerInputDataPresetItem : public QWidget
+class SAKDebuggerInputDataPresetItem : public SAKBaseListWidgetItemWidget
 {
     Q_OBJECT
 public:
-    typedef struct SAKStructDataPresetItemContext {
+    struct SAKStructItemContext {
         quint64 id;
-        quint32 format;
         QString description;
-        QString text;
-    }ITEM_CTX;
+        int format;
+        QString data;
+    };
 public:
     SAKDebuggerInputDataPresetItem(QWidget *parent = Q_NULLPTR);
-    SAKDebuggerInputDataPresetItem(SAKStructDataPresetItemContext context,
+    SAKDebuggerInputDataPresetItem(SAKStructItemContext context,
                            QWidget *parent = Q_NULLPTR);
     ~SAKDebuggerInputDataPresetItem();
+    SAKStructItemContext context();
 
-    /**
-     * @brief itemID: Get the id of the item
-     * @return The id of the item
-     */
-    quint64 itemID();
 
-    /**
-     * @brief itemDescription: Get the description of the item
-     * @return The description of the item
-     */
-    QString itemDescription();
-
-    /**
-     * @brief itemText: Get the text of the item
-     * @return The text of the item
-     */
-    QString itemText();
-
-    /**
-     * @brief itemTextFromat: Get the text format of the item
-     * @return The text format of the item
-     */
-    int itemTextFromat();
-private:
-    quint64 mItemId;
-private:
-    void initializingItem();
-    void setLineEditTextFormat(QLineEdit *lineEdit, int format);
 private:
     Ui::SAKDebuggerInputDataPresetItem *mUi;
+
+
+private:
+    void initializingItem();
+    void blockUiComponentsSignals(bool block);
+
+
 signals:
-    void formatChanged(quint64 id, quint32 format);
     void descriptionChanged(quint64 id, const QString &text);
-    void textChanged(quint64 id, const QString &text);
+    void formatChanged(quint64 id, quint32 format);
+    void dataChanged(quint64 id, const QString &text);
 };
 
 #endif

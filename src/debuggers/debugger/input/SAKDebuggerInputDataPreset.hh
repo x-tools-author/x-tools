@@ -33,25 +33,6 @@ public:
                                QWidget *parent = Q_NULLPTR);
 
 
-public:
-    struct SAKStructDataPresetItemTableContext {
-        QString tableName;
-        struct Columns {
-            QString id;
-            QString format;
-            QString description;
-            QString text;
-        } columns;
-
-        SAKStructDataPresetItemTableContext() {
-            columns.id = QString("ID");
-            columns.format = QString("Format");
-            columns.description = QString("Description");
-            columns.text = QString("Text");
-        }
-    };
-
-
 protected:
     QString sqlCreate(const QString &tableName) final;
     QString sqlInsert(const QString &tableName, QWidget *itemWidget) final;
@@ -63,16 +44,30 @@ protected:
 
 
 private:
-    QMenu *mItemsMenu;
-    SAKStructDataPresetItemTableContext mTableContext;
+    struct SAKStructTableContext {
+        QString tableName;
+        struct {
+            const QString id = QString("id");
+            QString format = QString("format");
+            QString description = QString("description");
+            QString data = QString("data");
+        } columns;
+    };
 
 
 private:
-    void updateFormat(quint64 id, int format);
-    void updateDescription(quint64 id, const QString &description);
-    void updateText(quint64 id, const QString &text);
+    QMenu *mItemsMenu;
+    SAKStructTableContext mTableContext;
+
+
+private:
+    void onDescriptionChanged(quint64 id, const QString &description);
+    void onFormatChanged(quint64 id, int format);
+    void onDataChanged(quint64 id, const QString &text);
+
+
 signals:
-    void invokeWriteCookedBytes(QString rawData, int format);
+    void invokeWriteString(QString rawData, int format);
 };
 
 #endif

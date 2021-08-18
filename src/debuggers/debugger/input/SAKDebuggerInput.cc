@@ -545,7 +545,7 @@ void SAKDebuggerInput::initSubModuleDataPreset()
                                                  mQuickSendingMenu,
                                                  mDataPresetDialog);
     mDataPresetDialog->layout()->addWidget(mDataPreset);
-    connect(mDataPreset, &SAKDebuggerInputDataPreset::invokeWriteCookedBytes,
+    connect(mDataPreset, &SAKDebuggerInputDataPreset::invokeWriteString,
             this, [&](QString rawData, int format){
         auto parasCtx = mInputParameters;
         parasCtx.textFormat = format;

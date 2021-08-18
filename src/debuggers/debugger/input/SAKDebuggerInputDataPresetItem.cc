@@ -21,24 +21,29 @@
 #include "ui_SAKDebuggerInputDataPresetItem.h"
 
 SAKDebuggerInputDataPresetItem::SAKDebuggerInputDataPresetItem(QWidget *parent)
-    :QWidget(parent)
-    ,mItemId(QDateTime::currentMSecsSinceEpoch())
+    :SAKBaseListWidgetItemWidget(parent)
     ,mUi(new Ui::SAKDebuggerInputDataPresetItem)
 {
+    mUi->setupUi(this);
+    blockUiComponentsSignals(true);
     initializingItem();
+    blockUiComponentsSignals(false);
 }
 
 SAKDebuggerInputDataPresetItem::SAKDebuggerInputDataPresetItem(
-        SAKStructDataPresetItemContext context,
+        SAKStructItemContext context,
         QWidget *parent)
-    :QWidget(parent)
-    ,mItemId(context.id)
+    :SAKBaseListWidgetItemWidget(context.id, parent)
     ,mUi(new Ui::SAKDebuggerInputDataPresetItem)
 {
+    mUi->setupUi(this);
+    blockUiComponentsSignals(true);
     initializingItem();
-    mUi->textFormatComboBox->setCurrentIndex(context.format);
+
+    mUi->formatComboBox->setCurrentIndex(context.format);
     mUi->descriptionLineEdit->setText(context.description);
-    mUi->dataLineEdit->setText(context.text);
+    mUi->dataLineEdit->setText(context.data);
+    blockUiComponentsSignals(false);
 }
 
 SAKDebuggerInputDataPresetItem::~SAKDebuggerInputDataPresetItem()
@@ -46,66 +51,59 @@ SAKDebuggerInputDataPresetItem::~SAKDebuggerInputDataPresetItem()
     delete mUi;
 }
 
-quint64 SAKDebuggerInputDataPresetItem::itemID()
+SAKDebuggerInputDataPresetItem::SAKStructItemContext
+SAKDebuggerInputDataPresetItem::context()
 {
-    return mItemId;
-}
+    SAKStructItemContext ctx;
+    ctx.id = id();
+    ctx.description = mUi->descriptionLineEdit->text();
+    ctx.format = mUi->formatComboBox->currentData().toInt();
+    ctx.data = mUi->dataLineEdit->text();
 
-QString SAKDebuggerInputDataPresetItem::itemDescription()
-{
-    return mUi->descriptionLineEdit->text();
-}
-
-QString SAKDebuggerInputDataPresetItem::itemText()
-{
-    return mUi->dataLineEdit->text();
-}
-
-int SAKDebuggerInputDataPresetItem::itemTextFromat()
-{
-    return mUi->textFormatComboBox->currentData().toInt();
+    return ctx;
 }
 
 void SAKDebuggerInputDataPresetItem::initializingItem()
 {
-    mUi->setupUi(this);
     SAKCommonDataStructure::setComboBoxTextInputFormat(
-                mUi->textFormatComboBox);
-    setLineEditTextFormat(mUi->dataLineEdit,
-                          mUi->textFormatComboBox->currentData().toInt());
+                mUi->formatComboBox
+                );
+    SAKCommonDataStructure::setLineEditTextFormat(
+                mUi->dataLineEdit,
+                mUi->formatComboBox->currentData().toInt()
+                );
 
 
-    connect(mUi->textFormatComboBox, &QComboBox::currentTextChanged,
+    connect(mUi->formatComboBox, &QComboBox::currentTextChanged,
             this, [=](const QString &text){
         Q_UNUSED(text);
         mUi->dataLineEdit->clear();
-        int format = mUi->textFormatComboBox->currentData().toInt();
-        emit formatChanged(mItemId, format);
+        int format = mUi->formatComboBox->currentData().toInt();
+        emit formatChanged(id(), format);
 
-        setLineEditTextFormat(mUi->dataLineEdit,
-                              mUi->textFormatComboBox->currentData().toInt());
+        SAKCommonDataStructure::setLineEditTextFormat(
+                    mUi->dataLineEdit,
+                    mUi->formatComboBox->currentData().toInt()
+                    );
     });
 
 
     connect(mUi->descriptionLineEdit, &QLineEdit::textChanged,
             this, [=](const QString &text){
-        emit descriptionChanged(mItemId, text);
+        emit descriptionChanged(id(), text);
     });
 
 
     connect(mUi->dataLineEdit, &QLineEdit::textChanged,
             this, [=](){
         QString text = mUi->dataLineEdit->text();
-        emit textChanged(mItemId, text);
+        emit dataChanged(id(), text);
     });
 }
 
-void SAKDebuggerInputDataPresetItem::setLineEditTextFormat(QLineEdit *lineEdit,
-                                                           int format)
+void SAKDebuggerInputDataPresetItem::blockUiComponentsSignals(bool block)
 {
-    auto cookedFormat = static_cast<SAKCommonDataStructure::SAKEnumTextFormatInput>(
-                format
-                );
-    SAKCommonDataStructure::setLineEditTextFormat(lineEdit,
-                                                  cookedFormat);
+    mUi->descriptionLineEdit->blockSignals(block);
+    mUi->formatComboBox->blockSignals(block);
+    mUi->dataLineEdit->blockSignals(block);
 }
