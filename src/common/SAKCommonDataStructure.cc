@@ -159,6 +159,13 @@ QByteArray SAKCommonDataStructure::stringToByteArray(QString &origingString,
     return data;
 }
 
+QByteArray SAKCommonDataStructure::stringToByteArray(QString &origingString, int format)
+{
+    auto cookedFormat =
+            static_cast<SAKCommonDataStructure::SAKEnumTextFormatInput>(format);
+    return stringToByteArray(origingString, cookedFormat);
+}
+
 QString SAKCommonDataStructure::byteArrayToString(QByteArray &origingData,
                                                   SAKEnumTextFormatOutput format)
 {
@@ -262,6 +269,11 @@ void SAKCommonDataStructure::setLineEditTextFormat(QLineEdit *lineEdit, int form
 
 QString SAKCommonDataStructure::suffix(SAKEmnuSuffixsType type)
 {
+    return suffix(int(type));
+}
+
+QString SAKCommonDataStructure::suffix(int type)
+{
     switch (type) {
     case SuffixsTypeNone: return "";
     case SuffixsTypeR: return "\r";
@@ -275,12 +287,25 @@ QString SAKCommonDataStructure::suffix(SAKEmnuSuffixsType type)
 QString SAKCommonDataStructure::friendlySuffix(SAKEmnuSuffixsType type)
 {
     switch (type) {
-    case SuffixsTypeNone: return "";
+    case SuffixsTypeNone: return tr("None");
     case SuffixsTypeR: return "\\r";
     case SuffixsTypeN: return "\\n";
     case SuffixsTypeRN: return "\\r\\n";
     case SuffixsTypeNR: return "\\n\\r";
-    default: return "";
+    default: return tr("None");
+    }
+}
+
+void SAKCommonDataStructure::setupSuffix(QComboBox *comboBox)
+{
+    if (comboBox){
+        QMap<int, QString> formatMap;
+        formatMap.insert(SuffixsTypeNone, friendlySuffix(SuffixsTypeNone));
+        formatMap.insert(SuffixsTypeR, friendlySuffix(SuffixsTypeR));
+        formatMap.insert(SuffixsTypeN, friendlySuffix(SuffixsTypeN));
+        formatMap.insert(SuffixsTypeRN, friendlySuffix(SuffixsTypeRN));
+        formatMap.insert(SuffixsTypeNR, friendlySuffix(SuffixsTypeNR));
+        setComboBoxItems(comboBox, formatMap, SuffixsTypeNone);
     }
 }
 

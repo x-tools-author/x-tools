@@ -32,7 +32,7 @@ public:
                       QWidget *parent = Q_NULLPTR);
     ~SAKBaseListWidget();
     void onBytesRead(QByteArray bytes);
-
+    bool forbidAllItems();
 
 protected:
     QSqlDatabase *mSqlDatabase;

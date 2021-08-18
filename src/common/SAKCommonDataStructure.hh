@@ -116,6 +116,7 @@ public:
      */
     static QByteArray stringToByteArray(QString &origingString,
                                         SAKEnumTextFormatInput format);
+    static QByteArray stringToByteArray(QString &origingString, int format);
 
     /**
      * @brief byteArrayToString: Transmit a QByteArray to a QString.
@@ -136,7 +137,10 @@ public:
     static void setLineEditTextFormat(QLineEdit *lineEdit, int format);
 
     static QString suffix(SAKEmnuSuffixsType type);
+    static QString suffix(int type);
     static QString friendlySuffix(SAKEmnuSuffixsType type);
+    static void setupSuffix(QComboBox *comboBox);
+
     static void formattingInputText(QTextEdit *textEdit, int model);
 private:
     static void setComboBoxItems(QComboBox *comboBox,

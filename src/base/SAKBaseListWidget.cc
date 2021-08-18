@@ -92,6 +92,11 @@ void SAKBaseListWidget::onBytesRead(QByteArray bytes)
     }
 }
 
+bool SAKBaseListWidget::forbidAllItems()
+{
+    return mUi->forbidAllItemsCheckBox->isChecked();
+}
+
 void SAKBaseListWidget::updateRecord(quint64 id, QString columnName, QVariant value)
 {
     QString queryString;
