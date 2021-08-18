@@ -86,9 +86,11 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
         void (SAKDebuggerPlugins::*embed)();
     };
     QVector<SAKActionsContext> actionsCtx;
+#if 0
     actionsCtx.append({tr("3D"),
                        &SAKDebuggerPlugins::showPluin3D,
                        &SAKDebuggerPlugins::embedPluin3D});
+#endif
     actionsCtx.append({tr("Charts"),
                        &SAKDebuggerPlugins::showPluinCharts,
                        &SAKDebuggerPlugins::embedPluinCharts});
