@@ -47,6 +47,10 @@ SAKDebuggerPluginTimedSendingItem::SAKDebuggerPluginTimedSendingItem(
     mUi->suffixComboBox->setCurrentIndex(ctx.suffix);
     SAKCommonDataStructure::setLineEditTextFormat(mUi->dataLineEdit, ctx.format);
     blockUiCommpentsSignals(false);
+
+    if (ctx.enable) {
+        mWriteTimer.start();
+    }
 }
 
 SAKDebuggerPluginTimedSendingItem::~SAKDebuggerPluginTimedSendingItem()
@@ -85,7 +89,9 @@ void SAKDebuggerPluginTimedSendingItem::write()
         emit invokeWriteCookedBytes(data);
     }
 
-    mWriteTimer.start();
+    if (mUi->enableCheckBox->isChecked()) {
+        mWriteTimer.start();
+    }
 }
 
 void SAKDebuggerPluginTimedSendingItem::commonInitializing()
@@ -140,10 +146,9 @@ void SAKDebuggerPluginTimedSendingItem::commonInitializing()
                 mUi->textFormatComboBox->currentIndex()
                 );
 
-    mUi->enableCheckBox->setChecked(true);
+    mUi->enableCheckBox->setChecked(false);
     mWriteTimer.setInterval(mUi->intervalSpinBox->value());
     mWriteTimer.setSingleShot(true);
-    mWriteTimer.start();
 }
 
 void SAKDebuggerPluginTimedSendingItem::blockUiCommpentsSignals(bool block)
