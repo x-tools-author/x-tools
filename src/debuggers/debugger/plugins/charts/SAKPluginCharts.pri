@@ -1,3 +1,5 @@
+QT  += printsupport
+
 qtHaveModule(charts){
     QT  += charts
     DEFINES+=SAK_IMPORT_MODULE_CHARTS
@@ -33,3 +35,9 @@ SOURCES += \
 }else {
     message("The Qt edition has no charts module, the program will not have chart debugging function.")
 }
+
+HEADERS += \
+    $$PWD/qcustomplot/qcustomplot.h
+
+SOURCES += \
+    $$PWD/qcustomplot/qcustomplot.cpp
