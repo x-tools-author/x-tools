@@ -294,8 +294,13 @@ bool SAKBaseListWidget::setupItemWidget(QListWidgetItem *item,
     if (cookedItemWidget) {
         connect(this, &SAKBaseListWidget::bytesRead,
                 cookedItemWidget, &SAKBaseListWidgetItemWidget::onBytesReadPrivate);
+
         connect(cookedItemWidget, &SAKBaseListWidgetItemWidget::invokeWriteCookedBytes,
-                this, &SAKBaseListWidget::invokeWriteCookedBytes);
+                this, [&](QByteArray bytes){
+            if (!forbidAllItems()) {
+                emit invokeWriteCookedBytes(bytes);
+            }
+        });
     }
 
     return true;

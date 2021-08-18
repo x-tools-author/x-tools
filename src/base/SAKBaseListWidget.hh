@@ -83,6 +83,8 @@ private:
 
 signals:
     void bytesRead(QByteArray bytes);
+
+    // Do not emit the signal in subclass.
     void invokeWriteCookedBytes(const QByteArray &bytes);
 };
 
