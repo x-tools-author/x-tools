@@ -19,6 +19,8 @@ SAKPluginCharts::SAKPluginCharts(QWidget *parent)
     ,mUi (new Ui::SAKPluginCharts)
 {
     mUi->setupUi(this);
+
+    mUi->tabWidget->addTab(new SAKChartsXYSerialWidget(), tr("XYSerial"));
 }
 
 SAKPluginCharts::~SAKPluginCharts()

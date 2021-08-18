@@ -23,6 +23,8 @@ class SAKPluginCharts : public QWidget
 public:
     SAKPluginCharts(QWidget *parent = Q_NULLPTR);
     ~SAKPluginCharts();
+
+
 private:
     Ui::SAKPluginCharts *mUi;
 };
