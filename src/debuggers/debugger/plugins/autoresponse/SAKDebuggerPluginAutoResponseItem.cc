@@ -46,8 +46,8 @@ SAKDebuggerPluginAutoResponseItem::SAKDebuggerPluginAutoResponseItem(
     mUi->referenceDataFromatComboBox->setCurrentIndex(ctx.referenceFormat);
     mUi->responseDataFormatComboBox->setCurrentIndex(ctx.responseFormat);
     mUi->optionComboBox->setCurrentIndex(ctx.option);
-    mUi->delayResponseCheckBox->setChecked(ctx.enableDelay);
-    mUi->delayResponseSpinBox->setValue(ctx.delayTime);
+    mUi->enableDelayCheckBox->setChecked(ctx.enableDelay);
+    mUi->delayTimeSpinBox->setValue(ctx.delayTime);
 
     SAKCommonDataStructure::setLineEditTextFormat(mUi->referenceLineEdit,
                                                   ctx.referenceFormat);
@@ -68,10 +68,10 @@ SAKDebuggerPluginAutoResponseItem::context()
     SAKStructItemContext ctx;
     ctx.id = id();
     ctx.description = mUi->descriptionLineEdit->text();
-    ctx.enableDelay = mUi->delayResponseCheckBox->isChecked();
+    ctx.enableDelay = mUi->enableDelayCheckBox->isChecked();
     ctx.enable = mUi->enableCheckBox->isChecked();
     ctx.option = mUi->optionComboBox->currentIndex();
-    ctx.delayTime = mUi->delayResponseSpinBox->value();
+    ctx.delayTime = mUi->delayTimeSpinBox->value();
     ctx.referenceData = mUi->referenceLineEdit->text();
     ctx.responseData = mUi->responseLineEdit->text();
     ctx.responseFormat = mUi->responseDataFormatComboBox->currentData().toInt();
@@ -118,8 +118,8 @@ void SAKDebuggerPluginAutoResponseItem::onBytesRead(QByteArray bytes)
 
 
          if (!responseData.isEmpty()) {
-             if (mUi->delayResponseCheckBox->isChecked()) {
-                 int delay = mUi->delayResponseSpinBox->value();
+             if (mUi->enableDelayCheckBox->isChecked()) {
+                 int delay = mUi->delayTimeSpinBox->value();
                  QTimer::singleShot(delay, this, [=](){
                      emit invokeWriteCookedBytes(responseData);
                  });
@@ -191,13 +191,13 @@ void SAKDebuggerPluginAutoResponseItem::setupItem()
     });
 
 
-    connect(mUi->delayResponseCheckBox, &QCheckBox::clicked,
+    connect(mUi->enableDelayCheckBox, &QCheckBox::clicked,
             this, [&](){
-        emit enableDelayChanged(id(), mUi->delayResponseCheckBox->isChecked());
+        emit enableDelayChanged(id(), mUi->enableDelayCheckBox->isChecked());
     });
 
 
-    connect(mUi->delayResponseSpinBox, QOverload<int>::of(&QSpinBox::valueChanged),
+    connect(mUi->delayTimeSpinBox, QOverload<int>::of(&QSpinBox::valueChanged),
             this, [&](int interval){
         emit delayTimeChanged(id(), interval);
     });
@@ -230,6 +230,6 @@ void SAKDebuggerPluginAutoResponseItem::blockUiComponentsSignals(bool block)
     mUi->optionComboBox->blockSignals(block);
     mUi->referenceDataFromatComboBox->blockSignals(block);
     mUi->responseDataFormatComboBox->blockSignals(block);
-    mUi->delayResponseCheckBox->blockSignals(block);
-    mUi->delayResponseSpinBox->blockSignals(block);
+    mUi->enableDelayCheckBox->blockSignals(block);
+    mUi->delayTimeSpinBox->blockSignals(block);
 }

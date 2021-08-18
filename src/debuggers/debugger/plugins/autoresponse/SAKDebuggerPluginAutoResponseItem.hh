@@ -24,7 +24,6 @@ namespace Ui {
     class SAKDebuggerPluginAutoResponseItem;
 }
 
-/// @brief Auto response item
 class SAKDebuggerPluginAutoResponseItem : public SAKBaseListWidgetItemWidget
 {
     Q_OBJECT

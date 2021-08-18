@@ -75,7 +75,7 @@
     </widget>
    </item>
    <item row="3" column="2">
-    <widget class="QCheckBox" name="delayResponseCheckBox">
+    <widget class="QCheckBox" name="enableDelayCheckBox">
      <property name="text">
       <string>Delay(ms)</string>
      </property>
@@ -139,7 +139,7 @@
     </widget>
    </item>
    <item row="3" column="3">
-    <widget class="QSpinBox" name="delayResponseSpinBox">
+    <widget class="QSpinBox" name="delayTimeSpinBox">
      <property name="minimum">
       <number>30</number>
      </property>
