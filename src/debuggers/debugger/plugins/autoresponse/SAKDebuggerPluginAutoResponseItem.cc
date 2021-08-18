@@ -40,8 +40,8 @@ SAKDebuggerPluginAutoResponseItem::SAKDebuggerPluginAutoResponseItem(
 
     setupItem();
     mUi->descriptionLineEdit->setText(ctx.description);
-    mUi->referenceLineEdit->setText(ctx.referenceData);
-    mUi->responseLineEdit->setText(ctx.responseData);
+    mUi->referenceDataLineEdit->setText(ctx.referenceData);
+    mUi->responseDataLineEdit->setText(ctx.responseData);
     mUi->enableCheckBox->setChecked(ctx.enable);
     mUi->referenceDataFromatComboBox->setCurrentIndex(ctx.referenceFormat);
     mUi->responseDataFormatComboBox->setCurrentIndex(ctx.responseFormat);
@@ -49,9 +49,9 @@ SAKDebuggerPluginAutoResponseItem::SAKDebuggerPluginAutoResponseItem(
     mUi->enableDelayCheckBox->setChecked(ctx.enableDelay);
     mUi->delayTimeSpinBox->setValue(ctx.delayTime);
 
-    SAKCommonDataStructure::setLineEditTextFormat(mUi->referenceLineEdit,
+    SAKCommonDataStructure::setLineEditTextFormat(mUi->referenceDataLineEdit,
                                                   ctx.referenceFormat);
-    SAKCommonDataStructure::setLineEditTextFormat(mUi->responseLineEdit,
+    SAKCommonDataStructure::setLineEditTextFormat(mUi->responseDataLineEdit,
                                                   ctx.responseFormat);
 
     blockUiComponentsSignals(false);
@@ -72,8 +72,8 @@ SAKDebuggerPluginAutoResponseItem::context()
     ctx.enable = mUi->enableCheckBox->isChecked();
     ctx.option = mUi->optionComboBox->currentIndex();
     ctx.delayTime = mUi->delayTimeSpinBox->value();
-    ctx.referenceData = mUi->referenceLineEdit->text();
-    ctx.responseData = mUi->responseLineEdit->text();
+    ctx.referenceData = mUi->referenceDataLineEdit->text();
+    ctx.responseData = mUi->responseDataLineEdit->text();
     ctx.responseFormat = mUi->responseDataFormatComboBox->currentData().toInt();
     ctx.referenceFormat = mUi->referenceDataFromatComboBox->currentData().toInt();
 
@@ -92,9 +92,9 @@ void SAKDebuggerPluginAutoResponseItem::onBytesRead(QByteArray bytes)
             (referenceFormat == SAKCommonDataStructure::InputFormatOct) ||
             (referenceFormat == SAKCommonDataStructure::InputFormatDec) ||
             (referenceFormat == SAKCommonDataStructure::InputFormatHex)) {
-        referenceString = mUi->referenceLineEdit->text().trimmed();
+        referenceString = mUi->referenceDataLineEdit->text().trimmed();
     } else {
-        referenceString = mUi->referenceLineEdit->text();
+        referenceString = mUi->referenceDataLineEdit->text();
     }
 
 
@@ -105,7 +105,7 @@ void SAKDebuggerPluginAutoResponseItem::onBytesRead(QByteArray bytes)
                                                       cookedReferenceFormat);
     if (needToResponse(bytes, referenceData,
                        mUi->optionComboBox->currentData().toInt())) {
-         QString responseString = mUi->responseLineEdit->text();
+         QString responseString = mUi->responseDataLineEdit->text();
          int responseFromat = mUi->referenceDataFromatComboBox->currentData().toInt();
          auto cookedResponseFromat =
                  static_cast<SAKCommonDataStructure::SAKEnumTextFormatInput>(
@@ -155,12 +155,12 @@ void SAKDebuggerPluginAutoResponseItem::setupItem()
         emit descriptionChanged(id(), description);
     });
 
-    connect(mUi->referenceLineEdit, &QLineEdit::textChanged,
+    connect(mUi->referenceDataLineEdit, &QLineEdit::textChanged,
             this, [&](const QString description){
         emit referenceTextChanged(id(), description);
     });
 
-    connect(mUi->responseLineEdit, &QLineEdit::textChanged,
+    connect(mUi->responseDataLineEdit, &QLineEdit::textChanged,
             this, [&](const QString description){
         emit responseTextChanged(id(), description);
     });
@@ -177,8 +177,8 @@ void SAKDebuggerPluginAutoResponseItem::setupItem()
             this, [&](int format){
         emit referenceFormatChanged(id(), format);
 
-        mUi->referenceLineEdit->clear();
-        SAKCommonDataStructure::setLineEditTextFormat(mUi->referenceLineEdit, format);
+        mUi->referenceDataLineEdit->clear();
+        SAKCommonDataStructure::setLineEditTextFormat(mUi->referenceDataLineEdit, format);
     });
 
     connect(mUi->responseDataFormatComboBox,
@@ -186,8 +186,8 @@ void SAKDebuggerPluginAutoResponseItem::setupItem()
             this, [&](int format){
         emit responseFromatChanged(id(), format);
 
-        mUi->responseLineEdit->clear();
-        SAKCommonDataStructure::setLineEditTextFormat(mUi->responseLineEdit, format);
+        mUi->responseDataLineEdit->clear();
+        SAKCommonDataStructure::setLineEditTextFormat(mUi->responseDataLineEdit, format);
     });
 
 
@@ -225,8 +225,8 @@ bool SAKDebuggerPluginAutoResponseItem::needToResponse(QByteArray receiveData,
 void SAKDebuggerPluginAutoResponseItem::blockUiComponentsSignals(bool block)
 {
     mUi->descriptionLineEdit->blockSignals(block);
-    mUi->referenceLineEdit->blockSignals(block);
-    mUi->responseLineEdit->blockSignals(block);
+    mUi->referenceDataLineEdit->blockSignals(block);
+    mUi->responseDataLineEdit->blockSignals(block);
     mUi->optionComboBox->blockSignals(block);
     mUi->referenceDataFromatComboBox->blockSignals(block);
     mUi->responseDataFormatComboBox->blockSignals(block);
