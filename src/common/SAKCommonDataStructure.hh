@@ -152,4 +152,13 @@ private:
                                  int currentData);
 };
 
+typedef SAKCommonDataStructure::SAKEnumTextFormatInput SAKTextFormatInput;
+typedef SAKCommonDataStructure::SAKEnumTextFormatOutput SAKTextFormatOutput;
+typedef SAKCommonDataStructure::SAKEnumWebSocketSendingType SAKWSSendingType;
+typedef SAKCommonDataStructure::SAKEmnuSuffixsType SAKSuffixsType;
+#ifdef SAK_IMPORT_MODULE_SERIALPORT
+typedef SAKCommonDataStructure::SAKStructSerialPortParametersContext
+SAKSerialPortParametersContext;
+#endif
+
 #endif
