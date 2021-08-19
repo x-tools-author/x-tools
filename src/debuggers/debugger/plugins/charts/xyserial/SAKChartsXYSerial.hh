@@ -29,19 +29,19 @@ QT_CHARTS_USE_NAMESPACE
 #endif
 
 namespace Ui {
-    class SAKChartsXYSerialWidget;
+    class SAKChartsXYSerial;
 };
 
 class SAKChartsXYSerialChartView;
 class SAKChartsXYSerialEditDialog;
 class SAKChartsXYSerialChartViewSettingsDialog;
 // Charts
-class SAKChartsXYSerialWidget:public QWidget
+class SAKChartsXYSerial:public QWidget
 {
     Q_OBJECT
 public:
-    SAKChartsXYSerialWidget(QWidget *parent = Q_NULLPTR);
-    ~SAKChartsXYSerialWidget();
+    SAKChartsXYSerial(QWidget *parent = Q_NULLPTR);
+    ~SAKChartsXYSerial();
 
     /**
      * @brief inputBytes: Input data to the module
@@ -59,7 +59,7 @@ private:
     QMap<QXYSeries *, void *> mXYSerialParametersMap;
     QMenu *mDeleteMenu;
     QMenu *mEditMenu;
-    QMap<int, void (SAKChartsXYSerialWidget::*)(QByteArray, QXYSeries *, bool)> mAppendPointInterfaceMap;
+    QMap<int, void (SAKChartsXYSerial::*)(QByteArray, QXYSeries *, bool)> mAppendPointInterfaceMap;
 private slots:
     void deleteXYSerial();
     void editXYSerial();
@@ -110,7 +110,7 @@ private:
         }
     }
 private:
-    Ui::SAKChartsXYSerialWidget *mUi;
+    Ui::SAKChartsXYSerial *mUi;
     QWidget *mChartViewerWidget;
     QPushButton *mChartSettingsPushButton;
     QCheckBox *mPauseCheckBox;

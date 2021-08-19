@@ -16,18 +16,18 @@
 #include <QRandomGenerator>
 #endif
 
-#include "SAKChartsXYSerialWidget.hh"
+#include "SAKChartsXYSerial.hh"
 #include "SAKChartsXYSerialChartView.hh"
 #include "SAKChartsXYSerialEditDialog.hh"
 #include "SAKChartsXYSerialChartViewSettingsDialog.hh"
 
 #include "ui_SAKChartsXYSerialWidget.h"
 
-SAKChartsXYSerialWidget::SAKChartsXYSerialWidget(QWidget *parent)
+SAKChartsXYSerial::SAKChartsXYSerial(QWidget *parent)
     :QWidget (parent)
     ,mXYSerialEditDialog(new SAKChartsXYSerialEditDialog)
     ,mChartSettingsDialog (new SAKChartsXYSerialChartViewSettingsDialog)
-    ,mUi (new Ui::SAKChartsXYSerialWidget)
+    ,mUi (new Ui::SAKChartsXYSerial)
 {
     mUi->setupUi(this);
     mChartViewerWidget = mUi->chartViewerWidget;
@@ -62,16 +62,16 @@ SAKChartsXYSerialWidget::SAKChartsXYSerialWidget(QWidget *parent)
     mDeletePushButton->setMenu(mDeleteMenu);
     mEditPushButton->setMenu(mEditMenu);
 
-    mAppendPointInterfaceMap.insert(SAKChartsXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeInt8, &SAKChartsXYSerialWidget::appendPointInt8);
-    mAppendPointInterfaceMap.insert(SAKChartsXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeUint8, &SAKChartsXYSerialWidget::appendPointUint8);
-    mAppendPointInterfaceMap.insert(SAKChartsXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeInt16, &SAKChartsXYSerialWidget::appendPointInt16);
-    mAppendPointInterfaceMap.insert(SAKChartsXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeUint16, &SAKChartsXYSerialWidget::appendPointUint16);
-    mAppendPointInterfaceMap.insert(SAKChartsXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeInt32, &SAKChartsXYSerialWidget::appendPointInt32);
-    mAppendPointInterfaceMap.insert(SAKChartsXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeUint32, &SAKChartsXYSerialWidget::appendPointUint32);
-    mAppendPointInterfaceMap.insert(SAKChartsXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeInt64, &SAKChartsXYSerialWidget::appendPointInt64);
-    mAppendPointInterfaceMap.insert(SAKChartsXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeUint64, &SAKChartsXYSerialWidget::appendPointUint64);
-    mAppendPointInterfaceMap.insert(SAKChartsXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeFloat32, &SAKChartsXYSerialWidget::appendPointFloat32);
-    mAppendPointInterfaceMap.insert(SAKChartsXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeFloat64, &SAKChartsXYSerialWidget::appendPointFloat64);
+    mAppendPointInterfaceMap.insert(SAKChartsXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeInt8, &SAKChartsXYSerial::appendPointInt8);
+    mAppendPointInterfaceMap.insert(SAKChartsXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeUint8, &SAKChartsXYSerial::appendPointUint8);
+    mAppendPointInterfaceMap.insert(SAKChartsXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeInt16, &SAKChartsXYSerial::appendPointInt16);
+    mAppendPointInterfaceMap.insert(SAKChartsXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeUint16, &SAKChartsXYSerial::appendPointUint16);
+    mAppendPointInterfaceMap.insert(SAKChartsXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeInt32, &SAKChartsXYSerial::appendPointInt32);
+    mAppendPointInterfaceMap.insert(SAKChartsXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeUint32, &SAKChartsXYSerial::appendPointUint32);
+    mAppendPointInterfaceMap.insert(SAKChartsXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeInt64, &SAKChartsXYSerial::appendPointInt64);
+    mAppendPointInterfaceMap.insert(SAKChartsXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeUint64, &SAKChartsXYSerial::appendPointUint64);
+    mAppendPointInterfaceMap.insert(SAKChartsXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeFloat32, &SAKChartsXYSerial::appendPointFloat32);
+    mAppendPointInterfaceMap.insert(SAKChartsXYSerialEditDialog::ParametersContext::ExtractParametersContext::DataTypeFloat64, &SAKChartsXYSerial::appendPointFloat64);
 
 #ifdef QT_DEBUG
     QTimer *testTimer = new QTimer(this);
@@ -89,7 +89,7 @@ SAKChartsXYSerialWidget::SAKChartsXYSerialWidget(QWidget *parent)
 #endif
 }
 
-SAKChartsXYSerialWidget::~SAKChartsXYSerialWidget()
+SAKChartsXYSerial::~SAKChartsXYSerial()
 {
     delete mUi;
     delete mChartSettingsDialog;
@@ -105,7 +105,7 @@ SAKChartsXYSerialWidget::~SAKChartsXYSerialWidget()
     mXYSerialParametersMap.clear();
 }
 
-void SAKChartsXYSerialWidget::inputBytes(QByteArray bytes)
+void SAKChartsXYSerial::inputBytes(QByteArray bytes)
 {
     if (bytes.isEmpty() || mPauseCheckBox->isChecked()){
         return;
@@ -121,7 +121,7 @@ void SAKChartsXYSerialWidget::inputBytes(QByteArray bytes)
     }
 }
 
-void SAKChartsXYSerialWidget::deleteXYSerial()
+void SAKChartsXYSerial::deleteXYSerial()
 {
     QAction *action = senderToAction(sender());
     if (!action){
@@ -141,7 +141,7 @@ void SAKChartsXYSerialWidget::deleteXYSerial()
     }
 }
 
-void SAKChartsXYSerialWidget::editXYSerial()
+void SAKChartsXYSerial::editXYSerial()
 {
     QAction *action = senderToAction(sender());
     if (!action){
@@ -170,7 +170,7 @@ void SAKChartsXYSerialWidget::editXYSerial()
     }
 }
 
-QAction *SAKChartsXYSerialWidget::senderToAction(QObject *sender)
+QAction *SAKChartsXYSerial::senderToAction(QObject *sender)
 {
     QAction *action = Q_NULLPTR;
     if (sender){
@@ -182,7 +182,7 @@ QAction *SAKChartsXYSerialWidget::senderToAction(QObject *sender)
     return action;
 }
 
-void SAKChartsXYSerialWidget::appendPoint(QXYSeries *xySerial, QByteArray frame, void *parametersCtx)
+void SAKChartsXYSerial::appendPoint(QXYSeries *xySerial, QByteArray frame, void *parametersCtx)
 {
     SAKChartsXYSerialEditDialog::ParametersContext *ctx = reinterpret_cast<SAKChartsXYSerialEditDialog::ParametersContext *>(parametersCtx);
     int offset = ctx->extractParameters.startIndex-1;
@@ -201,69 +201,69 @@ void SAKChartsXYSerialWidget::appendPoint(QXYSeries *xySerial, QByteArray frame,
             }
 
             if (mAppendPointInterfaceMap.contains(ctx->extractParameters.dataType)){
-                void (SAKChartsXYSerialWidget::*interface)(QByteArray, QXYSeries *, bool) = mAppendPointInterfaceMap.value(dataType);
+                void (SAKChartsXYSerial::*interface)(QByteArray, QXYSeries *, bool) = mAppendPointInterfaceMap.value(dataType);
                 (this->*interface)(data, xySerial, ctx->extractParameters.isBigEndian);
             }
         }
     }
 }
 
-void SAKChartsXYSerialWidget::appendPointInt8(QByteArray data, QXYSeries *xySerial, bool isBigEndian)
+void SAKChartsXYSerial::appendPointInt8(QByteArray data, QXYSeries *xySerial, bool isBigEndian)
 {
     appendPointActually<qint8>(data, xySerial, isBigEndian);
 }
 
-void SAKChartsXYSerialWidget::appendPointUint8(QByteArray data, QXYSeries *xySerial, bool isBigEndian)
+void SAKChartsXYSerial::appendPointUint8(QByteArray data, QXYSeries *xySerial, bool isBigEndian)
 {
     appendPointActually<quint8>(data, xySerial, isBigEndian);
 }
 
-void SAKChartsXYSerialWidget::appendPointInt16(QByteArray data, QXYSeries *xySerial, bool isBigEndian)
+void SAKChartsXYSerial::appendPointInt16(QByteArray data, QXYSeries *xySerial, bool isBigEndian)
 {
     appendPointActually<qint16>(data, xySerial, isBigEndian);
 }
 
-void SAKChartsXYSerialWidget::appendPointUint16(QByteArray data, QXYSeries *xySerial, bool isBigEndian)
+void SAKChartsXYSerial::appendPointUint16(QByteArray data, QXYSeries *xySerial, bool isBigEndian)
 {
     appendPointActually<quint16>(data, xySerial, isBigEndian);
 }
 
-void SAKChartsXYSerialWidget::appendPointInt32(QByteArray data, QXYSeries *xySerial, bool isBigEndian)
+void SAKChartsXYSerial::appendPointInt32(QByteArray data, QXYSeries *xySerial, bool isBigEndian)
 {
     appendPointActually<qint32>(data, xySerial, isBigEndian);
 }
 
-void SAKChartsXYSerialWidget::appendPointUint32(QByteArray data, QXYSeries *xySerial, bool isBigEndian)
+void SAKChartsXYSerial::appendPointUint32(QByteArray data, QXYSeries *xySerial, bool isBigEndian)
 {
     appendPointActually<quint32>(data, xySerial, isBigEndian);
 }
 
-void SAKChartsXYSerialWidget::appendPointInt64(QByteArray data, QXYSeries *xySerial, bool isBigEndian)
+void SAKChartsXYSerial::appendPointInt64(QByteArray data, QXYSeries *xySerial, bool isBigEndian)
 {
     appendPointActually<qint64>(data, xySerial, isBigEndian);
 }
 
-void SAKChartsXYSerialWidget::appendPointUint64(QByteArray data, QXYSeries *xySerial, bool isBigEndian)
+void SAKChartsXYSerial::appendPointUint64(QByteArray data, QXYSeries *xySerial, bool isBigEndian)
 {
     appendPointActually<quint64>(data, xySerial, isBigEndian);
 }
 
-void SAKChartsXYSerialWidget::appendPointFloat32(QByteArray data, QXYSeries *xySerial, bool isBigEndian)
+void SAKChartsXYSerial::appendPointFloat32(QByteArray data, QXYSeries *xySerial, bool isBigEndian)
 {
     appendPointActually<float>(data, xySerial, isBigEndian);
 }
 
-void SAKChartsXYSerialWidget::appendPointFloat64(QByteArray data, QXYSeries *xySerial, bool isBigEndian)
+void SAKChartsXYSerial::appendPointFloat64(QByteArray data, QXYSeries *xySerial, bool isBigEndian)
 {
     appendPointActually<double>(data, xySerial, isBigEndian);
 }
 
-void SAKChartsXYSerialWidget::on_chartSettingsPushButton_clicked()
+void SAKChartsXYSerial::on_chartSettingsPushButton_clicked()
 {
     mChartSettingsDialog->show();
 }
 
-void SAKChartsXYSerialWidget::on_clearPushButton_clicked()
+void SAKChartsXYSerial::on_clearPushButton_clicked()
 {
     for (auto &var : mChart->series()){
         reinterpret_cast<QXYSeries*>(var)->clear();
@@ -273,7 +273,7 @@ void SAKChartsXYSerialWidget::on_clearPushButton_clicked()
     mXAxis->setRange(QDateTime::currentDateTime(), QDateTime::currentDateTime().addSecs(60));
 }
 
-void SAKChartsXYSerialWidget::on_addPushButton_clicked()
+void SAKChartsXYSerial::on_addPushButton_clicked()
 {
     mXYSerialEditDialog->setWindowTitle(tr("Add line or scatter"));
     mXYSerialEditDialog->show();
@@ -304,10 +304,10 @@ void SAKChartsXYSerialWidget::on_addPushButton_clicked()
     QAction *action = new QAction(ctxPtr->chartParameters.chartName, this);
     action->setData(QVariant::fromValue(xySerial));
     mDeleteMenu->addAction(action);
-    connect(action, &QAction::triggered, this, &SAKChartsXYSerialWidget::deleteXYSerial);
+    connect(action, &QAction::triggered, this, &SAKChartsXYSerial::deleteXYSerial);
 
     action = new QAction(ctxPtr->chartParameters.chartName, this);
     action->setData(QVariant::fromValue(xySerial));
     mEditMenu->addAction(action);
-    connect(action, &QAction::triggered, this, &SAKChartsXYSerialWidget::editXYSerial);
+    connect(action, &QAction::triggered, this, &SAKChartsXYSerial::editXYSerial);
 }

@@ -9,7 +9,7 @@
  */
 #include "SAKDebugger.hh"
 #include "SAKPluginCharts.hh"
-#include "SAKChartsXYSerialWidget.hh"
+#include "SAKChartsXYSerial.hh"
 #include "SAKChartsThroughputWidget.hh"
 
 #include "ui_SAKPluginCharts.h"
@@ -20,7 +20,7 @@ SAKPluginCharts::SAKPluginCharts(QWidget *parent)
 {
     mUi->setupUi(this);
 
-    mUi->tabWidget->addTab(new SAKChartsXYSerialWidget(), tr("XYSerial"));
+    mUi->tabWidget->addTab(new SAKChartsXYSerial(), tr("XYSerial"));
 }
 
 SAKPluginCharts::~SAKPluginCharts()
