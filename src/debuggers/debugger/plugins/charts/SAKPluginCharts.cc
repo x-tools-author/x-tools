@@ -14,7 +14,11 @@
 
 #include "ui_SAKPluginCharts.h"
 
-SAKPluginCharts::SAKPluginCharts(QWidget *parent)
+SAKPluginCharts::SAKPluginCharts(QSqlDatabase *sqlDatabase,
+                                 QSettings *settings,
+                                 QString settingsGroup,
+                                 QString tableNameSuffix,
+                                 QWidget *parent)
     :QWidget (parent)
     ,mUi (new Ui::SAKPluginCharts)
 {

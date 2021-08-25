@@ -11,7 +11,9 @@
 #define SAKPLUGINCHARTS_HH
 
 #include <QWidget>
+#include <QSettings>
 #include <QTabWidget>
+#include <QSqlDatabase>
 
 namespace Ui {
     class SAKPluginCharts;
@@ -21,7 +23,11 @@ class SAKPluginCharts : public QWidget
 {
     Q_OBJECT
 public:
-    SAKPluginCharts(QWidget *parent = Q_NULLPTR);
+    SAKPluginCharts(QSqlDatabase *sqlDatabase,
+                    QSettings *settings,
+                    QString settingsGroup,
+                    QString tableNameSuffix,
+                    QWidget *parent = Q_NULLPTR);
     ~SAKPluginCharts();
 
 

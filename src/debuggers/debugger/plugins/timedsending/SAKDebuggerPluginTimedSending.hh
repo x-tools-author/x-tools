@@ -28,10 +28,10 @@ class SAKDebuggerPluginTimedSending : public SAKBaseListWidget
     Q_OBJECT
 public:
     SAKDebuggerPluginTimedSending(QSqlDatabase *sqlDatabase,
-                                      QSettings *settings,
-                                      QString settingsGroup,
-                                      QString tableNameSuffix,
-                                      QWidget *parent = Q_NULLPTR);
+                                  QSettings *settings,
+                                  QString settingsGroup,
+                                  QString tableNameSuffix,
+                                  QWidget *parent = Q_NULLPTR);
     ~SAKDebuggerPluginTimedSending();
 
     struct SAKStructTableContext {

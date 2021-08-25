@@ -16,6 +16,7 @@
 #include <QCheckBox>
 #include <QTabWidget>
 #include <QPushButton>
+#include <QSqlDatabase>
 
 #include "qcustomplot/qcustomplot.h"
 
@@ -28,7 +29,11 @@ class SAKChartsXYSerial : public QCustomPlot
 {
     Q_OBJECT
 public:
-    SAKChartsXYSerial(QWidget *parent = Q_NULLPTR);
+    SAKChartsXYSerial(QSqlDatabase *sqlDatabase,
+                      QSettings *settings,
+                      QString settingsGroup,
+                      QString tableNameSuffix,
+                      QWidget *parent = Q_NULLPTR);
     ~SAKChartsXYSerial();
     void inputAFrame(QString frame);
 
@@ -46,6 +51,11 @@ private:
 
 
 private:
+    QSqlDatabase *sqlDatabase,
+    QSettings *settings,
+    QString settingsGroup,
+    QString tableNameSuffix,
+
     const int mMaxChannelsNumber = 16;
     QMap<QString, int> mXYGraphTypeMap;
     QMap<QPair<QString, int>, QCPGraph*> mGraphsMap;

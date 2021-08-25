@@ -16,7 +16,11 @@
 #include "SAKChartsXYSerial.hh"
 #include "ui_SAKChartsXYSerial.h"
 
-SAKChartsXYSerial::SAKChartsXYSerial(QWidget *parent)
+SAKChartsXYSerial::SAKChartsXYSerial(QSqlDatabase *sqlDatabase,
+                                     QSettings *settings,
+                                     QString settingsGroup,
+                                     QString tableNameSuffix,
+                                     QWidget *parent)
     :QCustomPlot(parent)
 {
     mXYGraphTypeMap.insert("Line", XYGraphTypeLine);
