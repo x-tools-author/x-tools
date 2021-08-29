@@ -22,6 +22,10 @@ SAKChartsXYSerial::SAKChartsXYSerial(QSqlDatabase *sqlDatabase,
                                      QString tableNameSuffix,
                                      QWidget *parent)
     :QCustomPlot(parent)
+    ,mSqlDatabase(sqlDatabase)
+    ,mSettings(settings)
+    ,mSettingsGroup(settingsGroup)
+    ,mTableNameSuffix(tableNameSuffix)
 {
     mXYGraphTypeMap.insert("Line", XYGraphTypeLine);
     mXYGraphTypeMap.insert("Spline", XYGraphTypeSpline);
@@ -42,6 +46,19 @@ SAKChartsXYSerial::SAKChartsXYSerial(QSqlDatabase *sqlDatabase,
     // zoom with mouse wheel and select graphs by clicking.
     setInteractions(QCP::iRangeDrag | QCP::iRangeZoom
                     | QCP::iSelectPlottables | QCP::iSelectPlottablesBeyondAxisRect);
+
+#if 0
+    QVector<double> keys;
+    QVector<double> values;
+    for (int i = 0; i < 1000; i++) {
+        keys << i;
+        values << i*i;
+    }
+    auto graph = mGraphsMap.value(
+                QPair<QString, int>(mXYGraphTypeMap.key(XYGraphTypeSpline).toUpper(),
+                                   XYGraphTypeSpline));
+    graph->addData(keys, values);
+#endif
 }
 
 SAKChartsXYSerial::~SAKChartsXYSerial()
@@ -51,6 +68,7 @@ SAKChartsXYSerial::~SAKChartsXYSerial()
 
 void SAKChartsXYSerial::inputAFrame(QString frame)
 {
+    qDebug() << frame;
     frame = frame.remove(QRegularExpression("[\r\n]."));
     QStringList frameSections = frame.split(":", QString::SkipEmptyParts);
     QString dataFlag = frameSections.takeFirst().toUpper();
@@ -73,10 +91,11 @@ void SAKChartsXYSerial::inputAFrame(QString frame)
             if (mGraphsMap.contains(nameIndex)) {
                 QCPGraph *graph = mGraphsMap.value(nameIndex);
                 QVector<double> keys;
-                keys << QDateTime::currentMSecsSinceEpoch();
+                keys << i; // QDateTime::currentMSecsSinceEpoch();
                 QVector<double> values;
                 values << dataList.at(i).toDouble();
                 graph->addData(keys, values);
+                qDebug() << values;
             }
         }
     }
