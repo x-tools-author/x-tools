@@ -90,12 +90,9 @@ void SAKChartsXYSerial::inputAFrame(QString frame)
             QPair<QString, int> nameIndex(dataFlag.toUpper(), i);
             if (mGraphsMap.contains(nameIndex)) {
                 QCPGraph *graph = mGraphsMap.value(nameIndex);
-                QVector<double> keys;
-                keys << i; // QDateTime::currentMSecsSinceEpoch();
-                QVector<double> values;
-                values << dataList.at(i).toDouble();
-                graph->addData(keys, values);
-                qDebug() << values;
+                double key = i; // QDateTime::currentMSecsSinceEpoch();
+                double value = dataList.at(i).toDouble();
+                graph->addData(key, value);
             }
         }
     }
