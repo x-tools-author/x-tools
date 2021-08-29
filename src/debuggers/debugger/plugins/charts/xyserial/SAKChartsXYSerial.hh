@@ -35,21 +35,20 @@ public:
                       QString tableNameSuffix,
                       QWidget *parent = Q_NULLPTR);
     ~SAKChartsXYSerial();
+
+    /**
+     * @brief inputAFrame: Input a frame.
+     * @param frame: A frame data.(It must contain a frame data!)
+     */
     void inputAFrame(QString frame);
-
-
 protected:
     void contextMenuEvent(QContextMenuEvent* e) final;
-
-
 private:
     enum SAKEnumXYGraphType {
         XYGraphTypeLine,
         XYGraphTypeSpline,
         XYGraphTypeScator
     };
-
-
 private:
     QSqlDatabase *mSqlDatabase;
     QSettings *mSettings;

@@ -85,12 +85,12 @@ void SAKChartsXYSerial::inputAFrame(QString frame)
 void SAKChartsXYSerial::contextMenuEvent(QContextMenuEvent* e)
 {
     QMenu *menu = new QMenu();
-    menu->addAction(tr("Reset Graph"));
-    menu->addAction(tr("Import Graph Data"));
-    menu->addAction(tr("Export Graph Data"));
+    menu->addAction(tr("Reset graph"));
+    menu->addAction(tr("Import graph data"));
+    menu->addAction(tr("Export graph data"));
     menu->addSeparator();
 
-    QMenu *visibleMenu = new QMenu(tr("Graph Visible"), menu);
+    QMenu *visibleMenu = new QMenu(tr("Graph visible"), menu);
     menu->addMenu(visibleMenu);
     QMapIterator<QString, int> iter(mXYGraphTypeMap);
     while (iter.hasNext()) {
