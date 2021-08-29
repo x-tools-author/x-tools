@@ -51,10 +51,10 @@ private:
 
 
 private:
-    QSqlDatabase *sqlDatabase,
-    QSettings *settings,
-    QString settingsGroup,
-    QString tableNameSuffix,
+    QSqlDatabase *mSqlDatabase;
+    QSettings *mSettings;
+    QString mSettingsGroup;
+    QString mTableNameSuffix;
 
     const int mMaxChannelsNumber = 16;
     QMap<QString, int> mXYGraphTypeMap;

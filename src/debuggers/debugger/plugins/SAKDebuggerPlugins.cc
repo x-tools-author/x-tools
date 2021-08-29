@@ -51,7 +51,10 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
 
     // Instance plugins.
     m3d = new SAKPlugin3d();
-    mCharts = new SAKPluginCharts();
+    mCharts = new SAKPluginCharts(sqlDatabase,
+                                  settings,
+                                  settingsGroup,
+                                  "Charts");
     mTransponders = new SAKDebuggerPluginTransponders(sqlDatabase,
                                                       settings,
                                                       settingsGroup,
