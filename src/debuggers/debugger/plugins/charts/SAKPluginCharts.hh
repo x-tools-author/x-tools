@@ -29,10 +29,10 @@ public:
                     QString tableNameSuffix,
                     QWidget *parent = Q_NULLPTR);
     ~SAKPluginCharts();
-
-
 private:
     Ui::SAKPluginCharts *mUi;
+signals:
+    void bytesRead(QByteArray bytes);
 };
 
 #endif

@@ -36,11 +36,7 @@ public:
                       QWidget *parent = Q_NULLPTR);
     ~SAKChartsXYSerial();
 
-    /**
-     * @brief inputAFrame: Input a frame.
-     * @param frame: A frame data.(It must contain a frame data!)
-     */
-    void inputAFrame(QString frame);
+    void onBytesRead(QByteArray bytes);
 protected:
     void contextMenuEvent(QContextMenuEvent* e) final;
 private:

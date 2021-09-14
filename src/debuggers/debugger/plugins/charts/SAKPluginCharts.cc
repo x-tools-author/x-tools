@@ -24,12 +24,14 @@ SAKPluginCharts::SAKPluginCharts(QSqlDatabase *sqlDatabase,
 {
     mUi->setupUi(this);
 
-    mUi->tabWidget->addTab(new SAKChartsXYSerial(sqlDatabase,
-                                                 settings,
-                                                 settingsGroup,
-                                                 tableNameSuffix,
-                                                 parent),
-                           tr("XYSerial"));
+    SAKChartsXYSerial *xySerialView = new SAKChartsXYSerial(sqlDatabase,
+                                                            settings,
+                                                            settingsGroup,
+                                                            tableNameSuffix,
+                                                            parent);
+    mUi->tabWidget->addTab(xySerialView, tr("XYSerial"));
+    connect(this, &SAKPluginCharts::bytesRead,
+            xySerialView, &SAKChartsXYSerial::onBytesRead);
 }
 
 SAKPluginCharts::~SAKPluginCharts()

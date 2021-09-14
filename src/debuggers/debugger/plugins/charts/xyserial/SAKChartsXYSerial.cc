@@ -66,11 +66,12 @@ SAKChartsXYSerial::~SAKChartsXYSerial()
 
 }
 
-void SAKChartsXYSerial::inputAFrame(QString frame)
+void SAKChartsXYSerial::onBytesRead(QByteArray bytes)
 {
-    qDebug() << frame;
-    frame = frame.remove(QRegularExpression("[\r\n]."));
-    QStringList frameSections = frame.split(":", QString::SkipEmptyParts);
+    QString frames = QString::fromLatin1(bytes);
+
+    frames = frames.remove(QRegularExpression("[\r\n]."));
+    QStringList frameSections = frames.split(":", QString::SkipEmptyParts);
     QString dataFlag = frameSections.takeFirst().toUpper();
     QStringList dataList = frameSections.last().split(",", QString::SkipEmptyParts);
 
