@@ -1,3 +1,9 @@
+qtHaveModule(network){
+    QT  += network
+    DEFINES+=SAK_IMPORT_MODULE_TCP_CLIENT
+}
+
+contains(DEFINES, SAK_IMPORT_MODULE_TCP_CLIENT){
 FORMS += \
     $$PWD/SAKTcpClientController.ui
 
@@ -13,3 +19,4 @@ SOURCES += \
 
 INCLUDEPATH += \
     $$PWD
+}

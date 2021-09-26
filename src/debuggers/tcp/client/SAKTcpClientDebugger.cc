@@ -16,12 +16,18 @@
 #include "SAKTcpClientDebugger.hh"
 #include "SAKTcpClientController.hh"
 
-SAKTcpClientDebugger::SAKTcpClientDebugger(int type, QString name, QWidget *parent)
-    :SAKDebugger(type, name, parent)
+SAKTcpClientDebugger::SAKTcpClientDebugger(QSettings *settings,
+                                           const QString settingsGroup,
+                                           QSqlDatabase *sqlDatabase,
+                                           QWidget *parent)
+    :SAKDebugger(settings, settingsGroup, sqlDatabase, parent)
 {
-    mDeviceController = new SAKTcpClientController(this);
-    mDevice = new  SAKTcpClientDevice(this, this);
+    mController = new SAKTcpClientController(settings, settingsGroup, parent);
+    mDevice = new  SAKTcpClientDevice(settings, settingsGroup, this, this);
     initDebugger();
+
+    connect(mDevice, &SAKTcpClientDevice::serverInfoChanged,
+            mController, &SAKTcpClientController::onServerInfoChanged);
 }
 
 SAKDebuggerDevice* SAKTcpClientDebugger::device()
@@ -29,7 +35,7 @@ SAKDebuggerDevice* SAKTcpClientDebugger::device()
     return mDevice;
 }
 
-SAKDebugPageController *SAKTcpClientDebugger::controller()
+SAKDebuggerController *SAKTcpClientDebugger::controller()
 {
-    return mDeviceController;
+    return mController;
 }

@@ -112,6 +112,27 @@ public:
     };
 #endif
 #endif
+
+#ifdef SAK_IMPORT_MODULE_TCP
+#ifdef SAK_IMPORT_MODULE_TCP_CLIENT
+    struct SAKStructTcpClientParametersContext {
+        QString localHost;
+        quint16 localPort;
+        QString serverHost;
+        quint16 serverPort;
+        bool specifyClientAddressAndPort;
+        bool allowAutomaticConnection;
+    };
+#endif
+#ifdef SAK_IMPORT_MODULE_TCP_SERVER
+    struct SAKStructTcpServerParametersContext {
+        QString serverHost;
+        quint16 serverPort;
+        QString currentClientHost;
+        quint16 currentClientPort;
+    };
+#endif
+#endif
 public:
     /**
      * @brief setComboBoxTextOutputFormat: Add output text format items to combo box.
@@ -188,15 +209,21 @@ typedef SAKCommonDataStructure::SAKEmnuSuffixsType SAKSuffixsType;
 typedef SAKCommonDataStructure::SAKStructSerialPortParametersContext
 SAKSerialPortParametersContext;
 #endif
-typedef SAKCommonDataStructure::SAKStructUdpServerParametersContext
-SAKUdpServerParametersContext;
 typedef SAKCommonDataStructure::SAKStructUdpClientParametersContext
 SAKUdpClientParametersContext;
+typedef SAKCommonDataStructure::SAKStructUdpServerParametersContext
+SAKUdpServerParametersContext;
+typedef SAKCommonDataStructure::SAKStructTcpClientParametersContext
+SAKStructTcpClientParametersContext;
+typedef SAKCommonDataStructure::SAKStructTcpServerParametersContext
+SAKStructTcpServerParametersContext;
 
 
 Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructTestParametersContext);
 Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructSerialPortParametersContext);
 Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructUdpClientParametersContext);
 Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructUdpServerParametersContext);
+Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructTcpClientParametersContext);
+Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructTcpServerParametersContext);
 
 #endif

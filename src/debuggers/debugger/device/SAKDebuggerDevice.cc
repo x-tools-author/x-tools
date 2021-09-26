@@ -51,8 +51,10 @@ SAKDebuggerDevice::SAKDebuggerDevice(QSettings *settings,
 
 SAKDebuggerDevice::~SAKDebuggerDevice()
 {
+#if 0
     mMask->deleteLater();
     mAnalyzer->deleteLater();
+#endif
 }
 
 void SAKDebuggerDevice::writeBytes(QByteArray bytes)

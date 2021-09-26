@@ -18,13 +18,16 @@ class SAKTcpServerDebugger : public SAKDebugger
 {
     Q_OBJECT
 public:
-    Q_INVOKABLE SAKTcpServerDebugger(int type, QString name, QWidget *parent = Q_NULLPTR);
+    Q_INVOKABLE SAKTcpServerDebugger(QSettings *settings,
+                                     const QString settingsGroup,
+                                     QSqlDatabase *sqlDatabase,
+                                     QWidget *parent = Q_NULLPTR);
 protected:
     SAKDebuggerDevice* device() override;
-    SAKDebugPageController *controller() override;
+    SAKDebuggerController *controller() override;
 private:
-    SAKDebuggerDevice *mDevice;
-    SAKDebugPageController *mDeviceController;
+    SAKTcpServerDevice *mDevice;
+    SAKTcpServerController *mController;
 };
 
 #endif

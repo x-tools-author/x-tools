@@ -17,46 +17,31 @@
 #include <QTcpSocket>
 #include <QStandardItemModel>
 
-#include "SAKDebugPageController.hh"
+#include "SAKDebuggerController.hh"
 
 namespace Ui {
     class SAKTcpServerController;
 }
 
-class SAKDebugger;
-class SAKTcpServerController:public SAKDebugPageController
+class SAKTcpServerController:public SAKDebuggerController
 {
     Q_OBJECT
 public:
-    struct TcpServerParameters {
-        QString serverHost;
-        quint16 serverPort;
-        QString currentClientHost;
-        quint16 currentClientPort;
-    };
-
-    SAKTcpServerController(SAKDebugger *debugPage, QWidget *parent = Q_NULLPTR);
+    SAKTcpServerController(QSettings *settings,
+                           const QString &settingsGroup,
+                           QWidget *parent = Q_NULLPTR);
     ~SAKTcpServerController();
 
-    QVariant parameters() final;
-    void setUiEnable(bool opened) final;
+    void updateUiState(bool opened) final;
     void refreshDevice() final;
+    QVariant parametersContext() final;
 
-    void addClient(QString host, quint16 port, QTcpSocket *socket);
-    void removeClient(QTcpSocket *socket);
-private:
-    QMutex mParametersMutex;
-    TcpServerParameters mParameters;
-    QStandardItemModel mClientStandardItemModel;
+    void onAddClient(QString host, quint16 port, QTcpSocket *socket);
+    void onRemoveClient(QTcpSocket *socket);
 private:
     Ui::SAKTcpServerController *mUi;
     QComboBox *mServerHostComboBox;
     QLineEdit *mServerPortLineEdit;
     QComboBox *mClientHostComboBox;
-private slots:
-    void on_serverhostComboBox_currentTextChanged(const QString &arg1);
-    void on_serverPortLineEdit_textChanged(const QString &arg1);
-    void on_clientHostComboBox_currentTextChanged(const QString &arg1);
 };
-Q_DECLARE_METATYPE(SAKTcpServerController::TcpServerParameters);
 #endif

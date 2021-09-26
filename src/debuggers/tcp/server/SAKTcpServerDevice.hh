@@ -16,29 +16,26 @@
 
 #include "SAKDebuggerDevice.hh"
 
-class SAKTcpServerDebugger;
-class SAKTcpServerController;
+
 class SAKTcpServerDevice:public SAKDebuggerDevice
 {
     Q_OBJECT
 public:
-    SAKTcpServerDevice(SAKTcpServerDebugger *mDebugPage, QObject *parent = Q_NULLPTR);
-private:
-    bool initialize(QString &errorString) final;
-    bool open(QString &errorString) final;
+    SAKTcpServerDevice(QSettings *settings,
+                       const QString &settingsGroup,
+                       QWidget *uiParent = Q_NULLPTR,
+                       QObject *parent = Q_NULLPTR);
+protected:
+    bool initialize() final;
     QByteArray read() final;
-    QByteArray write(QByteArray bytes) final;
-    bool checkSomething(QString &errorString) final;
-    void close() final;
-    void free() final;
+    QByteArray write(const QByteArray &bytes) final;
+    void uninitialize() final;
+private:
+    QTcpServer *mTcpServer;
+    QList<QTcpSocket*> mClientList;
 signals:
     void addClient(QString host, quint16 port, QTcpSocket *socket);
     void removeClient(QTcpSocket *socket);
-private:
-    SAKTcpServerDebugger *mDebugPage;
-    QTcpServer *mTcpServer;
-    SAKTcpServerController *mDeviceController;
-    QList<QTcpSocket*> mClientList;
 };
 
 #endif

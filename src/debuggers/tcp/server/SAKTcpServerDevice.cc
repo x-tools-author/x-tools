@@ -16,38 +16,45 @@
 #include "SAKTcpServerDevice.hh"
 #include "SAKTcpServerDebugger.hh"
 #include "SAKTcpServerController.hh"
+#include "SAKCommonDataStructure.hh"
 
-SAKTcpServerDevice::SAKTcpServerDevice(SAKTcpServerDebugger *debugPage, QObject *parent)
-    :SAKDebuggerDevice(debugPage, parent)
-    ,mDebugPage(debugPage)
+SAKTcpServerDevice::SAKTcpServerDevice(QSettings *settings,
+                                       const QString &settingsGroup,
+                                       QWidget *uiParent,
+                                       QObject *parent)
+    :SAKDebuggerDevice(settings, settingsGroup, uiParent, parent)
     ,mTcpServer(Q_NULLPTR)
 {
-#if 0
-    mDeviceController = qobject_cast<SAKTcpServerDeviceController*>(mDebugPage->deviceController());
-    connect(this, &SAKTcpServerDevice::addClient, mDeviceController, &SAKTcpServerDeviceController::addClient);
-    connect(this, &SAKTcpServerDevice::removeClient, mDeviceController, &SAKTcpServerDeviceController::removeClient);
-#endif
+
 }
 
-bool SAKTcpServerDevice::initialize(QString &errorString)
+bool SAKTcpServerDevice::initialize()
 {
-    errorString = tr("Unknown error");
-    mDeviceController = qobject_cast<SAKTcpServerController*>(mDebugPage->deviceController());
-    connect(this, &SAKTcpServerDevice::addClient, mDeviceController, &SAKTcpServerController::addClient);
-    connect(this, &SAKTcpServerDevice::removeClient, mDeviceController, &SAKTcpServerController::removeClient);
-
-    return true;
-}
-
-bool SAKTcpServerDevice::open(QString &errorString)
-{
-    auto parameters = mDeviceController->parameters().value<SAKTcpServerController::TcpServerParameters>();
+    auto parameters = parametersContext().value<SAKStructTcpServerParametersContext>();
     QString serverHost = parameters.serverHost;
     quint16 serverPort = parameters.serverPort;
 
     mTcpServer = new QTcpServer;
-    if (!mTcpServer->listen(QHostAddress(serverHost), serverPort)){
-        errorString = tr("Listen failed:") + mTcpServer->errorString();
+    if (mTcpServer->listen(QHostAddress(serverHost), serverPort)){
+        connect(mTcpServer, &QTcpServer::newConnection, this, [=](){
+            QTcpSocket *socket = mTcpServer->nextPendingConnection();
+            if (socket){
+                emit addClient(socket->peerAddress().toString(), socket->peerPort(), socket);
+                mClientList.append(socket);
+            }
+
+            connect(socket, &QTcpSocket::disconnected, this, [=](){
+                emit removeClient(socket);
+                mClientList.removeOne(socket);
+            });
+
+            connect(socket, &QTcpSocket::readyRead, this, [=](){
+                emit readyRead(SAKDeviceProtectedSignal());
+            });
+        });
+    } else {
+        QString errorString = tr("Listen failed:") + mTcpServer->errorString();
+        emit errorOccurred(errorString);
         return false;
     }
 
@@ -56,13 +63,14 @@ bool SAKTcpServerDevice::open(QString &errorString)
 
 QByteArray SAKTcpServerDevice::read()
 {
-    for (auto &var : mClientList){
-         QByteArray bytes = var->readAll();
-         auto parameters = mDeviceController->parameters().value<SAKTcpServerController::TcpServerParameters>();
+    for (int i = 0; i < mClientList.length(); i++) {
+        auto client = mClientList.at(i);
+         QByteArray bytes = client->readAll();
+         auto parameters = parametersContext().value<SAKStructTcpServerParametersContext>();
          QString currentClientHost = parameters.currentClientHost;
-         QString peerHost = var->peerAddress().toString();
+         QString peerHost = client->peerAddress().toString();
          quint16 currentClientPort = parameters.currentClientPort;
-         quint16 peerPort = var->peerPort();
+         quint16 peerPort = client->peerPort();
 
          if (bytes.length()){
              if ((currentClientHost == peerHost) && (currentClientPort == peerPort)){
@@ -74,20 +82,22 @@ QByteArray SAKTcpServerDevice::read()
     return QByteArray();
 }
 
-QByteArray SAKTcpServerDevice::write(QByteArray bytes)
+QByteArray SAKTcpServerDevice::write(const QByteArray &bytes)
 {
-    for (auto &var : mClientList){
-        auto parameters = mDeviceController->parameters().value<SAKTcpServerController::TcpServerParameters>();
+    for (int i = 0; i < mClientList.length(); i++) {
+        auto client = mClientList.at(i);
+        auto parameters = parametersContext().value<SAKStructTcpServerParametersContext>();
         QString currentClientHost = parameters.currentClientHost;
-        QString peerHost = var->peerAddress().toString();
+        QString peerHost = client->peerAddress().toString();
         quint16 currentClientPort = parameters.currentClientPort;
-        quint16 peerPort = var->peerPort();
+        quint16 peerPort = client->peerPort();
         if ((currentClientHost == peerHost) && (currentClientPort == peerPort)){
-            qint64 ret = var->write(bytes);
-            if (ret > 0){
+            qint64 ret = client->write(bytes);
+            if (ret > 0) {
                 return bytes;
-            }else{
-                qDebug() << __FUNCTION__ << QString("Can not write data:(%1)%2").arg(var->peerAddress().toString().arg(var->error()));
+            } else {
+                qWarning() << QString("Can not write data:(%1)%2")
+                              .arg(client->peerAddress().toString(), client->errorString());
             }
         }
     }
@@ -95,41 +105,9 @@ QByteArray SAKTcpServerDevice::write(QByteArray bytes)
     return QByteArray();
 }
 
-bool SAKTcpServerDevice::checkSomething(QString &errorString)
-{
-    // Handling new connection
-    while (mTcpServer->hasPendingConnections()){
-        QTcpSocket *socket = mTcpServer->nextPendingConnection();
-        if (socket){
-            emit addClient(socket->peerAddress().toString(), socket->peerPort(), socket);
-            mClientList.append(socket);
-        }
-    }
-
-    // Remove clients which is offline
-    for (auto &var : mClientList){
-        QList<QTcpSocket*> offLineClientList;
-        if (var->state() != QTcpSocket::ConnectedState){
-            offLineClientList.append(var);
-        }
-
-        for (auto &var : offLineClientList){
-            emit removeClient(var);
-            mClientList.removeOne(var);
-        }
-    }
-
-    errorString = tr("Unknown error");
-    return true;
-}
-
-void SAKTcpServerDevice::close()
+void SAKTcpServerDevice::uninitialize()
 {
     mTcpServer->close();
-}
-
-void SAKTcpServerDevice::free()
-{
     delete mTcpServer;
     mTcpServer = Q_NULLPTR;
 }

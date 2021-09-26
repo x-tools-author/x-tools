@@ -1,4 +1,4 @@
-#include($$PWD/tcp/SAKTcp.pri)
+include($$PWD/tcp/SAKTcp.pri)
 include($$PWD/udp/SAKUdp.pri)
 #include($$PWD/ble/SAKBle.pri)
 include($$PWD/test/SAKTest.pri)

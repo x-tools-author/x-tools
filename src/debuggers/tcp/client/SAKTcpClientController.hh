@@ -15,36 +15,28 @@
 #include <QCheckBox>
 #include <QComboBox>
 
-#include "SAKDebugPageController.hh"
+#include "SAKDebuggerController.hh"
 
 namespace Ui {
     class SAKTcpClientController;
 }
 
 class SAKDebugger;
-class SAKTcpClientController:public SAKDebugPageController
+class SAKTcpClientController:public SAKDebuggerController
 {
     Q_OBJECT
 public:
-    struct TcpClientParameters {
-        QString localHost;
-        quint16 localPort;
-        QString serverHost;
-        quint16 serverPort;
-        bool specifyClientAddressAndPort;
-        bool allowAutomaticConnection;
-    };
-
-    SAKTcpClientController(SAKDebugger *debugPage, QWidget *parent = Q_NULLPTR);
+    SAKTcpClientController(QSettings *settings,
+                           const QString &settingsGroup,
+                           QWidget *parent = Q_NULLPTR);
     ~SAKTcpClientController();
 
-    QVariant parameters() final;
-    void setUiEnable(bool opened) final;
+    void updateUiState(bool opened) final;
     void refreshDevice() final;
-    void setClientInfo(QString info);
+    QVariant parametersContext() final;
+    void onServerInfoChanged(QString info);
 private:
     QMutex mParametersMutex;
-    TcpClientParameters mParameters;
 private:
     Ui::SAKTcpClientController *mUi;
     QComboBox *mLocalhostComboBox;
@@ -54,13 +46,5 @@ private:
     QLineEdit *mClientInfoLineEdit;
     QLineEdit *mServerHostLineEdit;
     QLineEdit *mServerPortLineEdit;
-private slots:
-    void on_localhostComboBox_currentIndexChanged(int index);
-    void on_localPortlineEdit_textChanged(const QString &arg1);
-    void on_specifyClientAddressAndPort_clicked();
-    void on_serverHostLineEdit_textChanged(const QString &arg1);
-    void on_serverPortLineEdit_textChanged(const QString &arg1);
-    void on_automaticConnectionCheckBox_clicked();
 };
-Q_DECLARE_METATYPE(SAKTcpClientController::TcpClientParameters);
 #endif

@@ -61,8 +61,12 @@ public:
 #endif
 #endif
 #ifdef SAK_IMPORT_MODULE_TCP
+#ifdef SAK_IMPORT_MODULE_TCP_CLIENT
         DebugPageTypeTCPClient,
+#endif
+#ifdef SAK_IMPORT_MODULE_TCP_SERVER
         DebugPageTypeTCPServer,
+#endif
 #endif
 #ifdef SAK_IMPORT_MODULE_SSLSOCKET
         DebugPageTypeSslSocketClient,
@@ -191,7 +195,7 @@ private:
      * @param type: Debug page type, look at the SAKEnumToolType for more information
      * @return The default debug page name
      */
-    QString debugPageTitleFromDebugPageType(int type);
+    QString debuggerNameFromDebugPageType(int type);
 private:
     Ui::SAKMainWindow *mUi;
     QTabWidget *mTabWidget;
