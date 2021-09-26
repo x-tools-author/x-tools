@@ -34,11 +34,22 @@ SAKTcpClientController::SAKTcpClientController(QSettings *settings,
     mServerHostLineEdit = mUi->serverHostLineEdit;
     mServerPortLineEdit = mUi->serverPortLineEdit;
     refreshDevice();
+
+    SAKUdpClientParametersContext ctx;
+    microSetComboBoxIndexFromSettings(settings,
+                                      settingsGroup,
+                                      ctx.localHost, mLocalhostComboBox);
     connect(mLocalhostComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, [=](int index){
         Q_UNUSED(index);
         emit parametersContextChanged();
+        microSetSettingsFromComboBoxIndex(settings,
+                                          settingsGroup,
+                                          ctx.localHost,
+                                          mLocalhostComboBox);
     });
+
+
     connect(mLocalPortlineEdit, &QLineEdit::textChanged,
             this, [=](const QString &text){
         Q_UNUSED(text);
