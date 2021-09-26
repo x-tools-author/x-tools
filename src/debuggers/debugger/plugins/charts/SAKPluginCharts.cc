@@ -10,7 +10,6 @@
 #include "SAKDebugger.hh"
 #include "SAKPluginCharts.hh"
 #include "SAKChartsXYSerial.hh"
-#include "SAKChartsThroughputWidget.hh"
 
 #include "ui_SAKPluginCharts.h"
 
