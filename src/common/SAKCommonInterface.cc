@@ -211,3 +211,21 @@ void SAKCommonInterface::addIpItemsToComboBox(QComboBox *comboBox, bool appendHo
         comboBox->setCurrentText(localHost);
     }
 }
+
+void SAKCommonInterface::setComboBoxIndexFromSettings(QSettings *settings,
+                                                      QString key,
+                                                      QComboBox *comboBox)
+{
+    int index = settings->value(key).toInt();
+    if (index >= 0 && index < comboBox->count()){
+        comboBox->setCurrentIndex(index);
+    }
+}
+
+void SAKCommonInterface::setSettingsFromComboBoxIndex(QSettings *setting,
+                                                      QString key,
+                                                      QComboBox *comboBox)
+{
+    int currentIndex = comboBox->currentIndex();
+    setting->setValue(key, currentIndex);
+}

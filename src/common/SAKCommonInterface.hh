@@ -11,12 +11,19 @@
 #define SAKCOMMONINTERFACE_HH
 
 #include <QObject>
+#include <QSettings>
 #include <QLineEdit>
 #include <QComboBox>
 
-/// @brief This class provides interfaces to replace the functions introduced in the
-/// new version of Qt, so that the old version of Qt can also compile the project.
-/// Also, it will provide some common interfaces used by the project.
+#define microSetComboBoxIndexFromSettings(settings, settingsGroup, structMember, comboBox) \
+    SAKCommonInterface::setComboBoxIndexFromSettings(settings,\
+    settingsGroup + QString("/") + QString(#structMember).split('.').last(),\
+    comboBox)
+#define microSetSettingsFromComboBoxIndex(settings, settingsGroup, structMember, comboBox) \
+    SAKCommonInterface::setSettingsFromComboBoxIndex(settings,\
+    settingsGroup + QString("/") + QString(#structMember).split('.').last(),\
+    comboBox)
+
 class SAKCommonInterface:public QObject
 {
     Q_OBJECT
@@ -61,5 +68,7 @@ public:
     static void addSerialPortFlowControlItemsToComboBox(QComboBox *comboBox);
 #endif
     static void addIpItemsToComboBox(QComboBox *comboBox, bool appendHostAny = false);
+    static void setComboBoxIndexFromSettings(QSettings *setting, QString key, QComboBox *comboBox);
+    static void setSettingsFromComboBoxIndex(QSettings *setting, QString key, QComboBox *comboBox);
 };
 #endif
