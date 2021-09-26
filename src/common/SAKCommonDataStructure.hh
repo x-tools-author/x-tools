@@ -190,11 +190,11 @@ SAKSerialPortParametersContext;
 #endif
 typedef SAKCommonDataStructure::SAKStructUdpServerParametersContext
 SAKUdpServerParametersContext;
+typedef SAKCommonDataStructure::SAKStructUdpClientParametersContext
+SAKUdpClientParametersContext;
 
 
-#ifdef SAK_IMPORT_MODULE_TEST
 Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructTestParametersContext);
-#endif
 Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructSerialPortParametersContext);
 Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructUdpClientParametersContext);
 Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructUdpServerParametersContext);

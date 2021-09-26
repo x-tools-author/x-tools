@@ -31,8 +31,7 @@ SAKUdpClientDevice::~SAKUdpClientDevice()
 
 bool SAKUdpClientDevice::initialize()
 {
-    auto parameters = parametersContext()
-            .value<SAKCommonDataStructure::SAKStructUdpClientParametersContext>();
+    auto parameters = parametersContext().value<SAKUdpClientParametersContext>();
     bool specifyLocalInfo = parameters.specifyLocalInfo;
     QString localHost = parameters.localHost;
     quint16 localPort = parameters.localPort;
@@ -100,8 +99,7 @@ QByteArray SAKUdpClientDevice::read()
 
 QByteArray SAKUdpClientDevice::write(const QByteArray &bytes)
 {
-    auto parameters = parametersContext()
-            .value<SAKCommonDataStructure::SAKStructUdpClientParametersContext>();
+    auto parameters = parametersContext().value<SAKUdpClientParametersContext>();
     qint64 ret = mUdpSocket->writeDatagram(bytes,
                                            QHostAddress(parameters.peerHost),
                                            parameters.peerPort);
