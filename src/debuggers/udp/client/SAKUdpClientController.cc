@@ -26,6 +26,30 @@ SAKUdpClientController::SAKUdpClientController(QSettings *settings,
 {
     mUi->setupUi(this);
     refreshDevice();
+    connect(mUi->localhostComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this, [=](int index){
+        Q_UNUSED(index);
+        emit parametersContextChanged();
+    });
+    connect(mUi->localPortlineEdit, &QLineEdit::textChanged,
+            this, [=](const QString &text){
+        Q_UNUSED(text);
+        emit parametersContextChanged();
+    });
+    connect(mUi->specifyClientAddressAndPort, &QCheckBox::clicked,
+            this, [=](){
+        emit parametersContextChanged();
+    });
+    connect(mUi->targetHostLineEdit, &QLineEdit::textChanged,
+            this, [=](const QString &text){
+        Q_UNUSED(text);
+        emit parametersContextChanged();
+    });
+    connect(mUi->targetPortLineEdit, &QLineEdit::textChanged,
+            this, [=](const QString &text){
+        Q_UNUSED(text);
+        emit parametersContextChanged();
+    });
 }
 
 SAKUdpClientController::~SAKUdpClientController()

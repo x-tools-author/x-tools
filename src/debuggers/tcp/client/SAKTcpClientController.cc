@@ -33,11 +33,33 @@ SAKTcpClientController::SAKTcpClientController(QSettings *settings,
     mClientInfoLineEdit = mUi->clientInfoLineEdit;
     mServerHostLineEdit = mUi->serverHostLineEdit;
     mServerPortLineEdit = mUi->serverPortLineEdit;
-
     refreshDevice();
-
+    connect(mLocalhostComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this, [=](int index){
+        Q_UNUSED(index);
+        emit parametersContextChanged();
+    });
+    connect(mLocalPortlineEdit, &QLineEdit::textChanged,
+            this, [=](const QString &text){
+        Q_UNUSED(text);
+        emit parametersContextChanged();
+    });
+    connect(mSpecifyClientAddressAndPort, &QCheckBox::clicked,
+            this, [=](){
+        emit parametersContextChanged();
+    });
     connect(mAutomaticConnectionCheckBox, &QCheckBox::clicked,
             this, [=](){
+        emit parametersContextChanged();
+    });
+    connect(mServerHostLineEdit, &QLineEdit::textChanged,
+            this, [=](const QString &text){
+        Q_UNUSED(text);
+        emit parametersContextChanged();
+    });
+    connect(mServerPortLineEdit, &QLineEdit::textChanged,
+            this, [=](const QString &text){
+        Q_UNUSED(text);
         emit parametersContextChanged();
     });
 }

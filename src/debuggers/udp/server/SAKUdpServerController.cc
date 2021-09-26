@@ -32,6 +32,11 @@ SAKUdpServerController::SAKUdpServerController(QSettings *settings,
         Q_UNUSED(index);
         emit parametersContextChanged();
     });
+    connect(mUi->serverPortLineEdit, &QLineEdit::textChanged,
+            this, [=](const QString &text){
+        Q_UNUSED(text);
+        emit parametersContextChanged();
+    });
 }
 
 SAKUdpServerController::~SAKUdpServerController()
