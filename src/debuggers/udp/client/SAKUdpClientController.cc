@@ -15,7 +15,6 @@
 #include "SAKCommonInterface.hh"
 #include "SAKUdpClientDevice.hh"
 #include "SAKUdpClientController.hh"
-#include "SAKUdpClientAdvanceSettingWidget.hh"
 
 #include "ui_SAKUdpClientController.h"
 
