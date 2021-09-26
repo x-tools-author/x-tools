@@ -172,6 +172,7 @@ void SAKDebugger::initDebuggerController()
             this, [=](){
         mModuleDevice->setParametersContext(mModuleController->parametersContext());
     });
+    mModuleDevice->setParametersContext(mModuleController->parametersContext());
 }
 
 void SAKDebugger::initDebuggerDevice()
