@@ -31,8 +31,8 @@ public:
 
     void writeBytes(QByteArray bytes);
     void setupMenu(QMenu *menu);
-
-
+    QVariant parametersContext();
+    void setParametersContext(QVariant parametersContext);
 protected:
     struct SAKDeviceProtectedSignal {};
 protected:
@@ -45,15 +45,11 @@ protected:
     virtual void uninitialize() = 0;
 signals:
     void readyRead(SAKDebuggerDevice::SAKDeviceProtectedSignal);
-
-
 private:
     struct SAKStructDevicePatametersContext {
         SAKDebuggerDeviceMask::SAKStructMaskContext maskCtx ;
         SAKDebuggerDeviceAnalyzer::SAKStructAnalyzerContext analyzerCtx;
-    }mParametersCtx;
-
-
+    }mInnerParametersContext;
     struct SAKStructDeviceAnalyzerContext {
         QByteArray bytesTemp;
         const int maxTempLangth = 2048;
@@ -61,21 +57,19 @@ private:
 private:
     QSettings *settings;
     const QString settingsGroup;
-    QMutex mParametersCtxMutex;
+    QMutex mInnerParametersContextMutex;
+    QMutex mParametersContextMutex;
+    QVariant mParametersContext;
     QVector<QByteArray> mBytesVector;
     QMutex mBytesVectorMutex;
     QMutex mAnalyzerCtxMutex;
     // Parameters editors
     SAKDebuggerDeviceMask *mMask;
     SAKDebuggerDeviceAnalyzer *mAnalyzer;
-
-
 private:
     QByteArray mask(const QByteArray &plaintext, bool isRxData);
     void analyzer(QByteArray data);
-    SAKStructDevicePatametersContext parametersContext();
-
-
+    SAKStructDevicePatametersContext innerParametersContext();
 signals:
     void bytesWritten(QByteArray bytes);
     void bytesRead(QByteArray bytes);

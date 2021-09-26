@@ -15,6 +15,7 @@
 #include <QUdpSocket>
 
 #include "SAKDebuggerDevice.hh"
+#include "SAKCommonDataStructure.hh"
 
 class SAKUdpClientDebugger;
 class SAKUdpClientController;
@@ -22,7 +23,10 @@ class SAKUdpClientDevice : public SAKDebuggerDevice
 {
     Q_OBJECT
 public:
-    SAKUdpClientDevice(SAKUdpClientDebugger *mDebugPage, QObject *parent = Q_NULLPTR);
+    SAKUdpClientDevice(QSettings *settings,
+                       const QString &settingsGroup,
+                       QWidget *uiParent = Q_NULLPTR,
+                       QObject *parent = Q_NULLPTR);
     ~SAKUdpClientDevice();
 
     struct UdpSocketParameters{
@@ -38,23 +42,24 @@ public:
         QList<MulticastInfo> multicastInfoList;
     };
 
+    bool initialize() final;
+    QByteArray read() final;
+    QByteArray write(const QByteArray &bytes) final;
+    void uninitialize() final;
+
+    void setParametersCtx(
+            SAKCommonDataStructure::SAKStructUdpClientParametersContext ctx
+            );
+
     void setUnicastEnable(bool enable);
     void setBroadcastEnable(bool enable);
     void setBroadcastPort(quint16 port);
     bool joinMulticastGroup(QString address, quint16 port, QString &errorString);
     void removeMulticastInfo(QString address, quint16 port);
     void setMulticastEnable(bool enable);
-protected:
-    bool initialize(QString &errorString) final;
-    bool open(QString &errorString) final;
-    QByteArray read() final;
-    QByteArray write(QByteArray bytes) final;
-    bool checkSomething(QString &errorString) final;
-    void close() final;
-    void free() final;
 private:
     QMutex mParametersContextMutex;
-     UdpSocketParameters mParametersContext;
+    UdpSocketParameters mParametersContext;
     SAKUdpClientDebugger *mDebugPage;
     QUdpSocket *mUdpSocket;
     SAKUdpClientController *mDeviceController;

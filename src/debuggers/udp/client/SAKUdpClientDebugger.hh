@@ -11,6 +11,7 @@
 #define SAKUDPCLIENTDEBUGGER_HH
 
 #include "SAKDebugger.hh"
+#include "SAKCommonDataStructure.hh"
 
 class SAKUdpClientDevice;
 class SAKUdpClientController;
@@ -18,13 +19,16 @@ class SAKUdpClientDebugger : public SAKDebugger
 {
     Q_OBJECT
 public:
-    Q_INVOKABLE SAKUdpClientDebugger(int type, QString name, QWidget *parent = Q_NULLPTR);
+    Q_INVOKABLE SAKUdpClientDebugger(QSettings *settings,
+                                     const QString settingsGroup,
+                                     QSqlDatabase *sqlDatabase,
+                                     QWidget *parent = Q_NULLPTR);
 protected:
-    SAKDebuggerDevice* device() override;
-    SAKDebugPageController *controller() override;
+    SAKDebuggerDevice* device() final;
+    SAKDebuggerController *controller() final;
 private:
-    SAKDebuggerDevice *mDevice;
-    SAKDebugPageController *mDeviceController;
+    SAKUdpClientDevice *mDevice;
+    SAKUdpClientController *mController;
 };
 
 #endif

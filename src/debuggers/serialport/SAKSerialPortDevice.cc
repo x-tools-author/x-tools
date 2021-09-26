@@ -25,9 +25,9 @@ void SAKSerialPortDevice::setParametersCtx(
         SAKCommonDataStructure::SAKStructSerialPortParametersContext ctx
         )
 {
-    mParametersCtxMutex.lock();
-    mParametersCtx = ctx;
-    mParametersCtxMutex.unlock();
+    mInnerParametersContextMutex.lock();
+    mInnerParametersContext = ctx;
+    mInnerParametersContextMutex.unlock();
 }
 
 bool SAKSerialPortDevice::initialize()
@@ -121,8 +121,8 @@ void SAKSerialPortDevice::uninitialize()
 SAKCommonDataStructure::SAKStructSerialPortParametersContext
         SAKSerialPortDevice::parametersCtx()
 {
-    mParametersCtxMutex.lock();
-    auto parasCtx = mParametersCtx;
-    mParametersCtxMutex.unlock();
+    mInnerParametersContextMutex.lock();
+    auto parasCtx = mInnerParametersContext;
+    mInnerParametersContextMutex.unlock();
     return parasCtx;
 }

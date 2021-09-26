@@ -24,24 +24,16 @@ public:
                           QObject *parent = Q_NULLPTR);
     ~SAKTestDebuggerDevice();
 
-    void onOpenFailedChanged(bool failed);
-    void onErrorStringChanged(const QString &errorString);
-
     void generateReadData(bool start, int interval);
     void generateWriteData(bool start, int interval);
-
-
 protected:
     bool initialize() final;
     QByteArray read() final;
     QByteArray write(const QByteArray &bytes) final;
     void uninitialize() final;
-
+protected:
     void timerEvent(QTimerEvent *event) final;
-
-private:
-    SAKTestDebuggerController::SAKStructParametersContext mParasCtx;
-    QMutex mParasCtxMutex;
+private:    
     int mReadDataTimerId;
     int mWriteDateTimerId;
 };

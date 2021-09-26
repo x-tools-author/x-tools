@@ -25,15 +25,6 @@ class SAKTestDebuggerController : public SAKDebuggerController
 {
     Q_OBJECT
 public:
-    struct SAKStructParametersContext {
-        bool openFailed;
-        bool readCircularly;
-        int readInterval;
-        bool writeCircularly;
-        int writtingInterval;
-        QString errorString;
-    };
-
     SAKTestDebuggerController(QSettings *settings,
                               const QString &settingsGroup,
                               QWidget *parent = Q_NULLPTR);
@@ -41,13 +32,9 @@ public:
 
     void updateUiState(bool opened) final;
     void refreshDevice() final;
-    SAKTestDebuggerController::SAKStructParametersContext parametersContext();
-
-
+    QVariant parametersContext() final;
 private:
     Ui::SAKTestDebuggerController *mUi;
-
-
 signals:
     void openFailedChanged(bool openFailed);
     void readCircularlyChanged(bool readCircularly);
@@ -56,6 +43,4 @@ signals:
     void writtingIntervalChanged(int writtingInterval);
     void errorStringChanged(const QString &errorString);
 };
-
-Q_DECLARE_METATYPE(SAKTestDebuggerController::SAKStructParametersContext);
 #endif

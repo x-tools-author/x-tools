@@ -26,13 +26,9 @@ public:
                                 QWidget *parent = Q_NULLPTR);
     SAKDebuggerDevice* device() final;
     SAKDebuggerController *controller() final;
-
-
 private:
     SAKTestDebuggerDevice *mDevice;
     SAKTestDebuggerController *mController;
-
-
 private:
     void generateReadData();
     void generateWriteData();

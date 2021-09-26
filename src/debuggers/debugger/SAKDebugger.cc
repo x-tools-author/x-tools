@@ -167,6 +167,11 @@ void SAKDebugger::initDebuggerController()
         layout->addWidget(mModuleController);
         layout->setContentsMargins(0, 0, 0, 0);
     }
+
+    connect(mModuleController, &SAKDebuggerController::parametersContextChanged,
+            this, [=](){
+        mModuleDevice->setParametersContext(mModuleController->parametersContext());
+    });
 }
 
 void SAKDebugger::initDebuggerDevice()

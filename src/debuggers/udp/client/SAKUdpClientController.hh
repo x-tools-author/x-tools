@@ -16,16 +16,14 @@
 #include <QComboBox>
 #include <QPushButton>
 
-#include "SAKDebugPageController.hh"
+#include "SAKDebuggerController.hh"
+#include "SAKCommonDataStructure.hh"
 
 namespace Ui {
     class SAKUdpClientController;
 }
 
-class SAKDebugger;
-class SAKUdpClientDevice;
-class SAKUdpClientAdvanceSettingWidget;
-class SAKUdpClientController : public SAKDebugPageController
+class SAKUdpClientController : public SAKDebuggerController
 {
     Q_OBJECT
 public:
@@ -37,34 +35,16 @@ public:
         bool specifyClientAddressAndPort;
     };
 
-    SAKUdpClientController(SAKDebugger *debugPage, QWidget *parent = Q_NULLPTR);
+    SAKUdpClientController(QSettings *settings,
+                           const QString &settingsGroup,
+                           QWidget *parent = Q_NULLPTR);
     ~SAKUdpClientController();
 
-    QVariant parameters() final;
-    void setUiEnable(bool opened) final;
+    void updateUiState(bool opened) final;
     void refreshDevice() final;
-
-    void setUdpDevice(SAKUdpClientDevice *device);
-    void setClientInfo(QString info);
-private:
-    QMutex mParametersMutex;
-    UdpClientParameters mParameters;
-    SAKUdpClientAdvanceSettingWidget *mUdpAdvanceSettingWidget;
+    QVariant parametersContext() final;
 private:
     Ui::SAKUdpClientController *mUi;
-    QComboBox *mLocalhostComboBox;
-    QLineEdit *mLocalPortlineEdit;
-    QCheckBox *mSpecifyClientAddressAndPort;
-    QLineEdit *mBoundInfoLineEdit;
-    QLineEdit *mTargetHostLineEdit;
-    QLineEdit *mTargetPortLineEdit;
-    QPushButton *mAdvanceUdpPushButton;
-private slots:
-    void on_advanceUdpPushButton_clicked();
-    void on_localhostComboBox_currentTextChanged(const QString &arg1);
-    void on_localPortlineEdit_textChanged(const QString &arg1);
-    void on_targetHostLineEdit_textChanged(const QString &arg1);
-    void on_targetPortLineEdit_textChanged(const QString &arg1);
 };
 Q_DECLARE_METATYPE(SAKUdpClientController::UdpClientParameters);
 #endif

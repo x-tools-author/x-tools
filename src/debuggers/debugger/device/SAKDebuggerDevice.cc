@@ -25,21 +25,21 @@ SAKDebuggerDevice::SAKDebuggerDevice(QSettings *settings,
     ,mMask(Q_NULLPTR)
 {
     mMask = new SAKDebuggerDeviceMask(settings, settingsGroup, uiParent);
-    mParametersCtx.maskCtx = mMask->parametersContext();
+    mInnerParametersContext.maskCtx = mMask->parametersContext();
     connect(mMask, &SAKDebuggerDeviceMask::parametersChanged,
             this, [&](){
-        mParametersCtxMutex.lock();
-        mParametersCtx.maskCtx = mMask->parametersContext();
-        mParametersCtxMutex.unlock();
+        mInnerParametersContextMutex.lock();
+        mInnerParametersContext.maskCtx = mMask->parametersContext();
+        mInnerParametersContextMutex.unlock();
     });
 
     mAnalyzer = new SAKDebuggerDeviceAnalyzer(settings, settingsGroup, uiParent);
-    mParametersCtx.analyzerCtx = mAnalyzer->parametersContext();
+    mInnerParametersContext.analyzerCtx = mAnalyzer->parametersContext();
     connect(mAnalyzer, &SAKDebuggerDeviceAnalyzer::parametersChanged,
             this, [&](){
-        mParametersCtxMutex.lock();
-        mParametersCtx.analyzerCtx = mAnalyzer->parametersContext();
-        mParametersCtxMutex.unlock();
+        mInnerParametersContextMutex.lock();
+        mInnerParametersContext.analyzerCtx = mAnalyzer->parametersContext();
+        mInnerParametersContextMutex.unlock();
     });
     connect(mAnalyzer, &SAKDebuggerDeviceAnalyzer::clearTemp,
             this, [&](){
@@ -90,6 +90,21 @@ void SAKDebuggerDevice::setupMenu(QMenu *menu)
     });
 }
 
+QVariant SAKDebuggerDevice::parametersContext()
+{
+    mParametersContextMutex.lock();
+    QVariant ctx = mParametersContext;
+    mParametersContextMutex.unlock();
+    return ctx;
+}
+
+void SAKDebuggerDevice::setParametersContext(QVariant parametersContext)
+{
+    mParametersContextMutex.lock();
+    mParametersContext = parametersContext;
+    mParametersContextMutex.unlock();
+}
+
 QByteArray SAKDebuggerDevice::takeBytes()
 {
     QByteArray bytes;
@@ -113,7 +128,7 @@ void SAKDebuggerDevice::run()
             QByteArray ret = read();
             if (ret.length()) {
                 ret = mask(ret, true);
-                auto ctx = parametersContext();
+                auto ctx = innerParametersContext();
                 if (ctx.analyzerCtx.enable) {
                     analyzer(ret);
                 } else {
@@ -162,7 +177,7 @@ QByteArray SAKDebuggerDevice::mask(const QByteArray &plaintext, bool isRxData)
     };
 
     QByteArray ciphertext;
-    auto ctx = parametersContext();
+    auto ctx = innerParametersContext();
     quint8 mask = isRxData ? ctx.maskCtx.rx : ctx.maskCtx.tx;
     bool enable = isRxData ? ctx.maskCtx.enableRx : ctx.maskCtx.enableTx;
     if (enable) {
@@ -178,7 +193,7 @@ void SAKDebuggerDevice::analyzer(QByteArray data)
 {
     // If the bytes of temp data is more than maxTempLength(2048) bytes,
     // a frame which length is maxTempLength will be emit.
-    auto ctx = parametersContext();
+    auto ctx = innerParametersContext();
     mAnalyzerCtxMutex.lock();
     mAnalyzerCtx.bytesTemp.append(data);
     if (mAnalyzerCtx.bytesTemp.length() >= mAnalyzerCtx.maxTempLangth) {
@@ -282,11 +297,11 @@ void SAKDebuggerDevice::analyzer(QByteArray data)
 }
 
 SAKDebuggerDevice::SAKStructDevicePatametersContext
-SAKDebuggerDevice::parametersContext()
+SAKDebuggerDevice::innerParametersContext()
 {
-    mParametersCtxMutex.lock();
-    auto parasCtx = mParametersCtx;
-    mParametersCtxMutex.unlock();
+    mInnerParametersContextMutex.lock();
+    auto parasCtx = mInnerParametersContext;
+    mInnerParametersContextMutex.unlock();
 
     return parasCtx;
 }

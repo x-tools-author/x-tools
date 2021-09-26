@@ -25,15 +25,9 @@ SAKSerialPortDebugger::SAKSerialPortDebugger(QSettings *settings,
     mController = new SAKSerialPortController(settings, settingsGroup, this);
     mDevice = new SAKSerialPortDevice(settings, settingsGroup, parent, this);
     initDebugger();
-
-    mDevice->setParametersCtx(mController->parametersContext());
-    connect(mController, &SAKDebuggerController::parametersChanged,
-            this, [=](){
-        mDevice->setParametersCtx(mController->parametersContext());
-    });
 }
 
-SAKDebuggerDevice* SAKSerialPortDebugger::device()
+SAKDebuggerDevice *SAKSerialPortDebugger::device()
 {
     return mDevice;
 }

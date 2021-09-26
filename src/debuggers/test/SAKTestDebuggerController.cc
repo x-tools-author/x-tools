@@ -12,6 +12,7 @@
 #include <QMetaEnum>
 #include <QLineEdit>
 
+#include "SAKCommonDataStructure.hh"
 #include "SAKTestDebuggerController.hh"
 #include "ui_SAKTestDebuggerController.h"
 
@@ -68,15 +69,14 @@ void SAKTestDebuggerController::refreshDevice()
     qDebug() << __FUNCTION__ << __LINE__;
 }
 
-SAKTestDebuggerController::SAKStructParametersContext
-SAKTestDebuggerController::parametersContext()
+QVariant SAKTestDebuggerController::parametersContext()
 {
-    SAKStructParametersContext ctx;
+    SAKCommonDataStructure::SAKStructTestParametersContext ctx;
     ctx.openFailed = mUi->openFailedCheckBox->isChecked();
     ctx.errorString = mUi->errorStringLineEdit->text();
     ctx.readCircularly = mUi->readCyclicCheckBox->isChecked();
     ctx.readInterval = mUi->readIntervalLineEdit->text().toInt();
     ctx.writeCircularly = mUi->writeCyclicCheckBox->isChecked();
     ctx.writtingInterval = mUi->writtenIntervalLineEdit->text().toInt();
-    return ctx;
+    return QVariant::fromValue(ctx);
 }

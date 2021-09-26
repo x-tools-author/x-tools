@@ -53,8 +53,12 @@ public:
         DebugPageTypeUSB,
 #endif
 #ifdef SAK_IMPORT_MODULE_UDP
+#ifdef SAK_IMPORT_MODULE_UDP_CLIENT
         DebugPageTypeUdpClient,
+#endif
+#ifdef SAK_IMPORT_MODULE_UDP_SERVER
         DebugPageTypeUdpServer,
+#endif
 #endif
 #ifdef SAK_IMPORT_MODULE_TCP
         DebugPageTypeTCPClient,

@@ -1,21 +1,22 @@
+qtHaveModule(network){
+    QT  += network
+    DEFINES+=SAK_IMPORT_MODULE_UDP_CLIENT
+}
+
+contains(DEFINES, SAK_IMPORT_MODULE_UDP_CLIENT){
 FORMS += \
-    $$PWD/SAKUdpClientAdvanceSettingWidget.ui \
-    $$PWD/SAKUdpClientController.ui \
-    $$PWD/SAKUdpClientMulticastEditingDialog.ui
+    $$PWD/SAKUdpClientController.ui
 
 HEADERS += \
-    $$PWD/SAKUdpClientAdvanceSettingWidget.hh \
     $$PWD/SAKUdpClientController.hh \
     $$PWD/SAKUdpClientDebugger.hh \
-    $$PWD/SAKUdpClientDevice.hh \
-    $$PWD/SAKUdpClientMulticastEditingDialog.hh
+    $$PWD/SAKUdpClientDevice.hh
 
 SOURCES += \
-    $$PWD/SAKUdpClientAdvanceSettingWidget.cc \
     $$PWD/SAKUdpClientController.cc \
     $$PWD/SAKUdpClientDebugger.cc \
     $$PWD/SAKUdpClientDevice.cc \
-    $$PWD/SAKUdpClientMulticastEditingDialog.cc
 
 INCLUDEPATH += \
     $$PWD
+}

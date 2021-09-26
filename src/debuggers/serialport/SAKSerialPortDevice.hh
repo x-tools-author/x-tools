@@ -39,8 +39,8 @@ public:
 
 private:
     QSerialPort *mSerialPort;
-    SAKCommonDataStructure::SAKStructSerialPortParametersContext mParametersCtx;
-    QMutex mParametersCtxMutex;
+    SAKCommonDataStructure::SAKStructSerialPortParametersContext mInnerParametersContext;
+    QMutex mInnerParametersContextMutex;
 
 
 private:

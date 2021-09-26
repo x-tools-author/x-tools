@@ -61,8 +61,12 @@
 #include "SAKModbusDebugPage.hh"
 #endif
 #ifdef SAK_IMPORT_MODULE_UDP
+#ifdef SAK_IMPORT_MODULE_UDP_CLIENT
 #include "SAKUdpClientDebugger.hh"
+#endif
+#ifdef SAK_IMPORT_MODULE_UDP_SERVER
 #include "SAKUdpServerDebugger.hh"
+#endif
 #endif
 #ifdef SAK_IMPORT_MODULE_TCP
 #include "SAKTcpClientDebugger.hh"
@@ -631,8 +635,15 @@ void SAKMainWindow::initializingMetaObject()
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeUSB, SAKUSBDebugPage::staticMetaObject, tr("USB")});
 #endif
 #ifdef SAK_IMPORT_MODULE_UDP
-    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeUdpClient, SAKUdpClientDebugger::staticMetaObject, tr("UDP-C")});
+#ifdef SAK_IMPORT_MODULE_UDP_CLIENT
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{
+                                      DebugPageTypeUdpClient,
+                                      SAKUdpClientDebugger::staticMetaObject,
+                                      tr("UDP-C")});
+#endif
+#ifdef SAK_IMPORT_MODULE_UDP_SERVER
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeUdpServer, SAKUdpServerDebugger::staticMetaObject, tr("UDP-S")});
+#endif
 #endif
 #ifdef SAK_IMPORT_MODULE_TCP
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeTCPClient, SAKTcpClientDebugger::staticMetaObject, tr("TCP-C")});

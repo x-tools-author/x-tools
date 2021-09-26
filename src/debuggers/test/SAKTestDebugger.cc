@@ -12,6 +12,7 @@
 #include <QHBoxLayout>
 
 #include "SAKTestDebugger.hh"
+#include "SAKCommonDataStructure.hh"
 
 SAKTestDebugger::SAKTestDebugger(QSettings *settings,
                                  const QString settingsGroup,
@@ -24,11 +25,6 @@ SAKTestDebugger::SAKTestDebugger(QSettings *settings,
     mController = new SAKTestDebuggerController(settings, settingsGroup);
     mDevice = new SAKTestDebuggerDevice(settings, settingsGroup, this, this);
     initDebugger();
-
-    connect(mController, &SAKTestDebuggerController::openFailedChanged,
-            mDevice, &SAKTestDebuggerDevice::onOpenFailedChanged);
-    connect(mController, &SAKTestDebuggerController::errorStringChanged,
-            mDevice, &SAKTestDebuggerDevice::onErrorStringChanged);
 
     connect(mController, &SAKTestDebuggerController::readCircularlyChanged,
             mDevice, [&](){
@@ -48,7 +44,8 @@ SAKTestDebugger::SAKTestDebugger(QSettings *settings,
         generateWriteData();
     });
 
-    auto ctx = mController->parametersContext();
+    auto ctx = mController->parametersContext()
+            .value<SAKCommonDataStructure::SAKStructTestParametersContext>();
     emit mController->openFailedChanged(ctx.openFailed);
     emit mController->errorStringChanged(ctx.errorString);
 }
@@ -65,7 +62,8 @@ SAKDebuggerController *SAKTestDebugger::controller()
 
 void SAKTestDebugger::generateReadData()
 {
-    auto ctx = mController->parametersContext();
+    auto ctx = mController->parametersContext()
+            .value<SAKCommonDataStructure::SAKStructTestParametersContext>();;
     bool start = ctx.readCircularly;
     int interval = ctx.readInterval;
     mDevice->generateReadData(start, interval);
@@ -73,7 +71,8 @@ void SAKTestDebugger::generateReadData()
 
 void SAKTestDebugger::generateWriteData()
 {
-    auto ctx = mController->parametersContext();
+    auto ctx = mController->parametersContext()
+            .value<SAKCommonDataStructure::SAKStructTestParametersContext>();;
     bool start = ctx.writeCircularly;
     int interval = ctx.writtingInterval;
     mDevice->generateWriteData(start, interval);

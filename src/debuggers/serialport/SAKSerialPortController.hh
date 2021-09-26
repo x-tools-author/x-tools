@@ -34,8 +34,7 @@ public:
 
     void updateUiState(bool opened) final;
     void refreshDevice() final;
-
-    SAKCommonDataStructure::SAKStructSerialPortParametersContext parametersContext();
+    QVariant parametersContext() final;
 private:
     struct SAKStructSettingsKeyContext {
         QString portName;

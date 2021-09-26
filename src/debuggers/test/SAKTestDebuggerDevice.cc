@@ -13,6 +13,7 @@
 
 #include "SAKTestDebugger.hh"
 #include "SAKTestDebuggerDevice.hh"
+#include "SAKCommonDataStructure.hh"
 #include "SAKTestDebuggerController.hh"
 
 SAKTestDebuggerDevice::SAKTestDebuggerDevice(QSettings *settings,
@@ -29,20 +30,6 @@ SAKTestDebuggerDevice::SAKTestDebuggerDevice(QSettings *settings,
 SAKTestDebuggerDevice::~SAKTestDebuggerDevice()
 {
 
-}
-
-void SAKTestDebuggerDevice::onOpenFailedChanged(bool failed)
-{
-    mParasCtxMutex.lock();
-    mParasCtx.openFailed = failed;
-    mParasCtxMutex.unlock();
-}
-
-void SAKTestDebuggerDevice::onErrorStringChanged(const QString &errorString)
-{
-    mParasCtxMutex.lock();
-    mParasCtx.errorString = errorString;
-    mParasCtxMutex.unlock();
 }
 
 void SAKTestDebuggerDevice::generateReadData(bool start, int interval)
@@ -71,10 +58,10 @@ void SAKTestDebuggerDevice::generateWriteData(bool start, int interval)
 
 bool SAKTestDebuggerDevice::initialize()
 {
-    mParasCtxMutex.lock();
-    bool openFailed = mParasCtx.openFailed;
-    QString msg = mParasCtx.errorString;
-    mParasCtxMutex.unlock();
+    auto ctx = mParametersContext
+            .value<SAKCommonDataStructure::SAKStructTestParametersContext>();
+    bool openFailed = ctx.openFailed;
+    QString msg = ctx.errorString;
 
     if (openFailed) {
         emit errorOccurred(msg);
@@ -95,7 +82,7 @@ QByteArray SAKTestDebuggerDevice::write(const QByteArray &bytes)
 
 void SAKTestDebuggerDevice::uninitialize()
 {
-
+    // Nothing to do.
 }
 
 void SAKTestDebuggerDevice::timerEvent(QTimerEvent *event)

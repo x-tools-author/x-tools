@@ -43,23 +43,23 @@ SAKSerialPortController::SAKSerialPortController(QSettings *settings,
         Q_UNUSED(index);
         QString portName = mUi->serialportsComboBox->currentText();
         mSettings->setValue(mSettingsKeyContext.portName, portName);
-        emit parametersChanged();
+        emit parametersContextChanged();
     });
     connect(mUi->baudrateComboBox, &QComboBox::currentTextChanged,
             this, [=](const QString &baudRate){
         mSettings->setValue(mSettingsKeyContext.baudRate, baudRate);
-        emit parametersChanged();
+        emit parametersContextChanged();
     });
     connect(mUi->databitsComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
-            this, &SAKSerialPortController::parametersChanged);
+            this, &SAKSerialPortController::parametersContextChanged);
     connect(mUi->stopbitsComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
-            this, &SAKSerialPortController::parametersChanged);
+            this, &SAKSerialPortController::parametersContextChanged);
     connect(mUi->parityComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
-            this, &SAKSerialPortController::parametersChanged);
+            this, &SAKSerialPortController::parametersContextChanged);
     connect(mUi->flowControlComboBox,
             QOverload<int>::of(&QComboBox::currentIndexChanged),
             this,
-            &SAKSerialPortController::parametersChanged);
+            &SAKSerialPortController::parametersContextChanged);
     connect(mUi->customBaudrateCheckBox, &QCheckBox::clicked,
             this, [=](){
         bool checked = mUi->customBaudrateCheckBox->isChecked();
@@ -69,7 +69,7 @@ SAKSerialPortController::SAKSerialPortController(QSettings *settings,
     connect(mUi->frameIntervalSpinBox, QOverload<int>::of(&QSpinBox::valueChanged),
             this, [=](int frameInterval){
         mSettings->setValue(mSettingsKeyContext.frameInterval, frameInterval);
-        emit parametersChanged();
+        emit parametersContextChanged();
     });
 
 
@@ -132,8 +132,7 @@ void SAKSerialPortController::refreshDevice()
     mUi->baudrateComboBox->blockSignals(false);
 }
 
-SAKCommonDataStructure::SAKStructSerialPortParametersContext
-SAKSerialPortController::parametersContext()
+QVariant SAKSerialPortController::parametersContext()
 {
     SAKCommonDataStructure::SAKStructSerialPortParametersContext ctx;
     ctx.baudRate = mUi->baudrateComboBox->currentText().toInt();
@@ -169,5 +168,5 @@ SAKSerialPortController::parametersContext()
     auto cookedStopBits = static_cast<QSerialPort::StopBits>(stopBits);
     ctx.stopBits = cookedStopBits;
 
-    return ctx;
+    return QVariant::fromValue(ctx);
 }

@@ -16,11 +16,14 @@
 #include "SAKUdpClientDebugger.hh"
 #include "SAKUdpClientController.hh"
 
-SAKUdpClientDebugger::SAKUdpClientDebugger(int type, QString name, QWidget *parent)
-    :SAKDebugger(type, name, parent)
+SAKUdpClientDebugger::SAKUdpClientDebugger(QSettings *settings,
+                                           const QString settingsGroup,
+                                           QSqlDatabase *sqlDatabase,
+                                           QWidget *parent)
+    :SAKDebugger(settings, settingsGroup, sqlDatabase, parent)
 {
-    mDeviceController = new SAKUdpClientController(this);
-    mDevice = new SAKUdpClientDevice(this, this);
+    mController = new SAKUdpClientController(settings, settingsGroup, this);
+    mDevice = new SAKUdpClientDevice(settings, settingsGroup, parent, this);
     initDebugger();
 }
 
@@ -29,7 +32,7 @@ SAKDebuggerDevice* SAKUdpClientDebugger::device()
     return mDevice;
 }
 
-SAKDebugPageController *SAKUdpClientDebugger::controller()
+SAKDebuggerController *SAKUdpClientDebugger::controller()
 {
-    return mDeviceController;
+    return mController;
 }
