@@ -18,12 +18,15 @@ class SAKUdpServerDebugger : public SAKDebugger
 {
     Q_OBJECT
 public:
-    Q_INVOKABLE SAKUdpServerDebugger(int type, QString name, QWidget *parent = Q_NULLPTR);
+    Q_INVOKABLE SAKUdpServerDebugger(QSettings *settings,
+                                     const QString settingsGroup,
+                                     QSqlDatabase *sqlDatabase,
+                                     QWidget *parent = Q_NULLPTR);
 protected:
-    SAKDebuggerDevice* device() override;
-    SAKDebugPageController *controller() override;
+    SAKDebuggerDevice* device() final;
+    SAKDebuggerController *controller() final;
 private:
-    SAKDebuggerDevice *mDevice;
-    SAKDebugPageController *mDeviceController;
+    SAKUdpServerDevice *mDevice;
+    SAKUdpServerController *mController;
 };
 #endif

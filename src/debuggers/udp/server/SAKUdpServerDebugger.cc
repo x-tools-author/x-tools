@@ -11,17 +11,23 @@
 #include <QWidget>
 #include <QHBoxLayout>
 
-#include "SAKCommonDataStructure.hh"
 #include "SAKUdpServerDevice.hh"
 #include "SAKUdpServerDebugger.hh"
+#include "SAKCommonDataStructure.hh"
 #include "SAKUdpServerController.hh"
 
-SAKUdpServerDebugger::SAKUdpServerDebugger(int type, QString name, QWidget *parent)
-    :SAKDebugger(type, name, parent)
+SAKUdpServerDebugger::SAKUdpServerDebugger(QSettings *settings,
+                                           const QString settingsGroup,
+                                           QSqlDatabase *sqlDatabase,
+                                           QWidget *parent)
+    :SAKDebugger(settings, settingsGroup, sqlDatabase, parent)
 {
-    mDeviceController = new SAKUdpServerController(this);
-    mDevice = new SAKUdpServerDevice(this, this);
+    mController = new SAKUdpServerController(settings, settingsGroup, parent);
+    mDevice = new SAKUdpServerDevice(settings, settingsGroup, this, parent);
     initDebugger();
+
+    connect(mDevice, &SAKUdpServerDevice::addClient,
+            mController, &SAKUdpServerController::onAddClient);
 }
 
 SAKDebuggerDevice* SAKUdpServerDebugger::device()
@@ -29,7 +35,7 @@ SAKDebuggerDevice* SAKUdpServerDebugger::device()
     return mDevice;
 }
 
-SAKDebugPageController *SAKUdpServerDebugger::controller()
+SAKDebuggerController *SAKUdpServerDebugger::controller()
 {
-    return mDeviceController;
+    return mController;
 }

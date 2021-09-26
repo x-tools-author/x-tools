@@ -102,6 +102,14 @@ public:
         quint16 localPort;
         bool specifyLocalInfo;
     };
+    struct SAKStructUdpServerParametersContext {
+        QString serverHost;
+        quint16 serverPort;
+
+        QString currentClientHost;
+        quint16 currentClientPort;
+        QStringList clients;
+    };
 #endif
 #endif
 public:
@@ -171,6 +179,7 @@ private:
                                  int currentData);
 };
 
+
 typedef SAKCommonDataStructure::SAKEnumTextFormatInput SAKTextFormatInput;
 typedef SAKCommonDataStructure::SAKEnumTextFormatOutput SAKTextFormatOutput;
 typedef SAKCommonDataStructure::SAKEnumWebSocketSendingType SAKWSSendingType;
@@ -179,9 +188,15 @@ typedef SAKCommonDataStructure::SAKEmnuSuffixsType SAKSuffixsType;
 typedef SAKCommonDataStructure::SAKStructSerialPortParametersContext
 SAKSerialPortParametersContext;
 #endif
+typedef SAKCommonDataStructure::SAKStructUdpServerParametersContext
+SAKUdpServerParametersContext;
 
+
+#ifdef SAK_IMPORT_MODULE_TEST
 Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructTestParametersContext);
+#endif
 Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructSerialPortParametersContext);
 Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructUdpClientParametersContext);
+Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructUdpServerParametersContext);
 
 #endif

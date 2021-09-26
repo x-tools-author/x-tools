@@ -1,3 +1,9 @@
+qtHaveModule(network){
+    QT  += network
+    DEFINES+=SAK_IMPORT_MODULE_UDP_SERVER
+}
+
+contains(DEFINES, SAK_IMPORT_MODULE_UDP_SERVER){
 FORMS += \
     $$PWD/SAKUdpServerController.ui
 
@@ -13,3 +19,4 @@ SOURCES += \
 
 INCLUDEPATH += \
     $$PWD
+}

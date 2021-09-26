@@ -17,48 +17,28 @@
 #include <QComboBox>
 #include <QTcpSocket>
 
-#include "SAKDebugPageController.hh"
+#include "SAKDebuggerController.hh"
 
 namespace Ui {
     class SAKUdpServerController;
 }
 
-class SAKDebugger;
 /// @brief Udp server control panel
-class SAKUdpServerController:public SAKDebugPageController
+class SAKUdpServerController:public SAKDebuggerController
 {
     Q_OBJECT
 public:
-    struct UdpServerParameters {
-        QString serverHost;
-        quint16 serverPort;
-        QString currentClientHost;
-        quint16 currentClientPort;
-
-        QStringList clients;
-    };
-
-    SAKUdpServerController(SAKDebugger *debugPage, QWidget *parent = Q_NULLPTR);
+    SAKUdpServerController(QSettings *settings,
+                           const QString &settingsGroup,
+                           QWidget *parent = Q_NULLPTR);
     ~SAKUdpServerController();
 
-    QVariant parameters() final;
-    void setUiEnable(bool opened) final;
+    void updateUiState(bool opened) final;
     void refreshDevice() final;
+    QVariant parametersContext() final;
 
-    void addClient(QString host, quint16 port);
-private:
-    QMutex mParametersMutex;
-    UdpServerParameters mParameters;
+    void onAddClient(QString host, quint16 port);
 private:
     Ui::SAKUdpServerController *mUi;
-    QComboBox *mServerHostComboBox;
-    QLineEdit *mServerPortLineEdit;
-    QComboBox *mClientHostComboBox;
-private slots:
-    void on_clientHostComboBox_currentTextChanged(const QString &arg1);
-    void on_clearPushButton_clicked();
-    void on_serverhostComboBox_currentTextChanged(const QString &arg1);
-    void on_serverPortLineEdit_textChanged(const QString &arg1);
 };
-Q_DECLARE_METATYPE(SAKUdpServerController::UdpServerParameters);
 #endif

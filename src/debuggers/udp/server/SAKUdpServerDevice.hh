@@ -21,19 +21,17 @@ class SAKUdpServerDevice:public SAKDebuggerDevice
 {
     Q_OBJECT
 public:
-    SAKUdpServerDevice(SAKUdpServerDebugger *mDebugPage, QObject *parent = Q_NULLPTR);
+    SAKUdpServerDevice(QSettings *settings,
+                       const QString &settingsGroup,
+                       QWidget *uiParent = Q_NULLPTR,
+                       QObject *parent = Q_NULLPTR);
 private:
-    bool initialize(QString &errorString) final;
-    bool open(QString &errorString) final;
+    bool initialize() final;
     QByteArray read() final;
-    QByteArray write(QByteArray bytes) final;
-    bool checkSomething(QString &errorString) final;
-    void close() final;
-    void free() final;
+    QByteArray write(const QByteArray &bytes) final;
+    void uninitialize() final;
 private:
-    SAKUdpServerDebugger *mDebugPage;
     QUdpSocket *mUdpServer;
-    SAKUdpServerController *mDeviceController;
 signals:
     void addClient(QString host, quint16 port);
 };

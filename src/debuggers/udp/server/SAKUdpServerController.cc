@@ -14,23 +14,24 @@
 
 #include "SAKDebugger.hh"
 #include "SAKCommonInterface.hh"
+#include "SAKCommonDataStructure.hh"
 #include "SAKUdpServerController.hh"
 #include "ui_SAKUdpServerController.h"
 
-SAKUdpServerController::SAKUdpServerController(SAKDebugger *debugPage, QWidget *parent)
-    :SAKDebugPageController(debugPage, parent)
+SAKUdpServerController::SAKUdpServerController(QSettings *settings,
+                                               const QString &settingsGroup,
+                                               QWidget *parent)
+    :SAKDebuggerController(settings, settingsGroup, parent)
     ,mUi(new Ui::SAKUdpServerController)
 {
     mUi->setupUi(this);
-    mServerHostComboBox = mUi->serverhostComboBox;
-    mServerPortLineEdit = mUi->serverPortLineEdit;
-    mClientHostComboBox = mUi->clientHostComboBox;
-
-    on_clientHostComboBox_currentTextChanged(mClientHostComboBox->currentText());
-    on_serverhostComboBox_currentTextChanged(mServerHostComboBox->currentText());
-    on_serverPortLineEdit_textChanged(mServerPortLineEdit->text());
-    qRegisterMetaType<SAKUdpServerController::UdpServerParameters>("SAKUdpServerController::UdpServerParameters");
     refreshDevice();
+
+    connect(mUi->serverhostComboBox, QOverload<int>::of(&QComboBox::activated),
+            this, [=](int index){
+        Q_UNUSED(index);
+        emit parametersContextChanged();
+    });
 }
 
 SAKUdpServerController::~SAKUdpServerController()
@@ -38,86 +39,54 @@ SAKUdpServerController::~SAKUdpServerController()
     delete mUi;
 }
 
-QVariant SAKUdpServerController::parameters()
+void SAKUdpServerController::updateUiState(bool opened)
 {
-    UdpServerParameters parameters;
-    mParametersMutex.lock();
-    parameters.serverHost = mParameters.serverHost;
-    parameters.serverPort = mParameters.serverPort;
-    parameters.currentClientHost = mParameters.currentClientHost;
-    parameters.currentClientPort = mParameters.currentClientPort;
-    mParametersMutex.unlock();
-
-    return QVariant::fromValue(parameters);
-}
-
-void SAKUdpServerController::setUiEnable(bool opened)
-{
-    mServerHostComboBox->setEnabled(!opened);
-    mServerPortLineEdit->setEnabled(!opened);
+    mUi->serverhostComboBox->setEnabled(!opened);
+    mUi->serverPortLineEdit->setEnabled(!opened);
 }
 
 void SAKUdpServerController::refreshDevice()
 {
-    SAKCommonInterface::addIpItemsToComboBox(mServerHostComboBox);
+    SAKCommonInterface::addIpItemsToComboBox(mUi->serverhostComboBox);
 }
 
-void SAKUdpServerController::addClient(QString host, quint16 port)
+QVariant SAKUdpServerController::parametersContext()
+{
+    SAKCommonDataStructure::SAKStructUdpServerParametersContext ctx;
+
+    ctx.serverHost = mUi->serverhostComboBox->currentText().trimmed();
+    ctx.serverPort = mUi->serverPortLineEdit->text().trimmed().toInt();
+
+    QString currentText = mUi->clientHostComboBox->currentText();
+    QStringList infoList = currentText.trimmed().split(':');
+    if (infoList.length() == 2) {
+        ctx.currentClientHost = infoList.first();
+        ctx.currentClientPort = infoList.last().toInt();
+    }
+
+    for (int i = 0; i < mUi->clientHostComboBox->count(); i++) {
+        QString text = mUi->clientHostComboBox->itemText(i);
+        ctx.clients.append(text);
+    }
+
+    return QVariant::fromValue(ctx);
+}
+
+void SAKUdpServerController::onAddClient(QString host, quint16 port)
 {
     QString item = host.append(":");
     item.append(QString::number(port));
 
     bool isItemExisted = false;
-    for(int i = 0; i < mClientHostComboBox->count(); i++){
-        if (mClientHostComboBox->itemText(i).compare(item) == 0){
+    for(int i = 0; i < mUi->clientHostComboBox->count(); i++){
+        if (mUi->clientHostComboBox->itemText(i).compare(item) == 0){
             isItemExisted = true;
             break;
         }
     }
 
     if (!isItemExisted){
-        mClientHostComboBox->addItem(item);
-        mParametersMutex.lock();
-        mParameters.clients.append(item);
-        mParametersMutex.unlock();
+        mUi->clientHostComboBox->addItem(item);
+        emit parametersContextChanged();
     }
-
-    mParametersMutex.lock();
-    auto parameters = mParameters;
-    mParametersMutex.unlock();
-    if (parameters.currentClientHost.isEmpty()){
-        on_clientHostComboBox_currentTextChanged(mClientHostComboBox->currentText());
-    }
-}
-
-void SAKUdpServerController::on_clientHostComboBox_currentTextChanged(const QString &arg1)
-{
-    mParametersMutex.lock();
-    QStringList infoList = arg1.trimmed().split(':');
-    mParameters.currentClientHost = infoList.first();
-    mParameters.currentClientPort = infoList.last().toInt();
-    mParametersMutex.unlock();
-}
-
-void SAKUdpServerController::on_clearPushButton_clicked()
-{
-    mClientHostComboBox->clear();
-    mParametersMutex.lock();
-    mParameters.currentClientHost.clear();
-    mParameters.currentClientPort = 0;
-    mParametersMutex.unlock();
-}
-
-void SAKUdpServerController::on_serverhostComboBox_currentTextChanged(const QString &arg1)
-{
-    mParametersMutex.lock();
-    mParameters.serverHost = arg1;
-    mParametersMutex.unlock();
-}
-
-void SAKUdpServerController::on_serverPortLineEdit_textChanged(const QString &arg1)
-{
-    mParametersMutex.lock();
-    mParameters.serverPort = arg1.toUInt();
-    mParametersMutex.unlock();
 }

@@ -642,7 +642,10 @@ void SAKMainWindow::initializingMetaObject()
                                       tr("UDP-C")});
 #endif
 #ifdef SAK_IMPORT_MODULE_UDP_SERVER
-    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeUdpServer, SAKUdpServerDebugger::staticMetaObject, tr("UDP-S")});
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{
+                                      DebugPageTypeUdpServer,
+                                      SAKUdpServerDebugger::staticMetaObject,
+                                      tr("UDP-S")});
 #endif
 #endif
 #ifdef SAK_IMPORT_MODULE_TCP

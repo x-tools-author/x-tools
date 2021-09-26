@@ -73,7 +73,7 @@ bool SAKUdpClientDevice::initialize()
     if (mUdpSocket->open(QUdpSocket::ReadWrite)){
         connect(mUdpSocket, &QUdpSocket::readyRead, this, [=](){
             emit readyRead(SAKDeviceProtectedSignal());
-        });
+        }, Qt::DirectConnection);
     } else {
         QString errorString = tr("Open device failed:") + mUdpSocket->errorString();
         emit errorOccurred(errorString);
