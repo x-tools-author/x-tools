@@ -5,5 +5,5 @@ qtHaveModule(network){
 
 contains(DEFINES, SAK_IMPORT_MODULE_UDP){
     include($$PWD/client/SAKUdpClient.pri)
-    include($$PWD/server/SAKUdpServer.pri)
+    #include($$PWD/server/SAKUdpServer.pri)
 }
