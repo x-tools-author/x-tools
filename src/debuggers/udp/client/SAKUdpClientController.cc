@@ -55,6 +55,12 @@ QVariant SAKUdpClientController::parametersContext()
     parasCtx.peerPort = mUi->targetPortLineEdit->text().trimmed().toInt();
     parasCtx.localHost = mUi->localhostComboBox->currentText();
     parasCtx.localPort = mUi->localPortlineEdit->text().trimmed().toInt();
+    parasCtx.specifyLocalInfo = mUi->specifyClientAddressAndPort->isChecked();
 
     return QVariant::fromValue(parasCtx);
+}
+
+void SAKUdpClientController::onClientInfoChanged(QString info)
+{
+    mUi->boundInfoLineEdit->setText(info);
 }

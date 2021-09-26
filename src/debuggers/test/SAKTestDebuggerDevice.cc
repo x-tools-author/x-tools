@@ -58,7 +58,7 @@ void SAKTestDebuggerDevice::generateWriteData(bool start, int interval)
 
 bool SAKTestDebuggerDevice::initialize()
 {
-    auto ctx = mParametersContext
+    auto ctx = parametersContext()
             .value<SAKCommonDataStructure::SAKStructTestParametersContext>();
     bool openFailed = ctx.openFailed;
     QString msg = ctx.errorString;

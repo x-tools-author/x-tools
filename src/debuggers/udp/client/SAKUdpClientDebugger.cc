@@ -25,6 +25,9 @@ SAKUdpClientDebugger::SAKUdpClientDebugger(QSettings *settings,
     mController = new SAKUdpClientController(settings, settingsGroup, this);
     mDevice = new SAKUdpClientDevice(settings, settingsGroup, parent, this);
     initDebugger();
+
+    connect(mDevice, &SAKUdpClientDevice::clientInfoChanged,
+            mController, &SAKUdpClientController::onClientInfoChanged);
 }
 
 SAKDebuggerDevice* SAKUdpClientDebugger::device()

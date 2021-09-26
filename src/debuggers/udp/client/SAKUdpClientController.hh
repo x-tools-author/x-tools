@@ -27,14 +27,6 @@ class SAKUdpClientController : public SAKDebuggerController
 {
     Q_OBJECT
 public:
-    struct UdpClientParameters{
-        QString localHost;
-        quint16 localPort;
-        QString targetHost;
-        quint16 targetPort;
-        bool specifyClientAddressAndPort;
-    };
-
     SAKUdpClientController(QSettings *settings,
                            const QString &settingsGroup,
                            QWidget *parent = Q_NULLPTR);
@@ -43,8 +35,8 @@ public:
     void updateUiState(bool opened) final;
     void refreshDevice() final;
     QVariant parametersContext() final;
+    void onClientInfoChanged(QString info);
 private:
     Ui::SAKUdpClientController *mUi;
 };
-Q_DECLARE_METATYPE(SAKUdpClientController::UdpClientParameters);
 #endif

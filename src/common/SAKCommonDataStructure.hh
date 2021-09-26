@@ -100,7 +100,7 @@ public:
         quint16 peerPort;
         QString localHost;
         quint16 localPort;
-        bool specifyLocalhost;
+        bool specifyLocalInfo;
     };
 #endif
 #endif
