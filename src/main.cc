@@ -24,7 +24,7 @@
 int main(int argc, char *argv[])
 {
     int exitCode = 0;
-#if 0
+#if QT_VERSION > QT_VERSION_CHECK(5, 13, 0)
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
 #endif
     // The application can be reboot.
