@@ -21,18 +21,9 @@ SAKSerialPortDevice::SAKSerialPortDevice(QSettings *settings, const QString &set
 
 }
 
-void SAKSerialPortDevice::setParametersCtx(
-        SAKCommonDataStructure::SAKStructSerialPortParametersContext ctx
-        )
-{
-    mInnerParametersContextMutex.lock();
-    mInnerParametersContext = ctx;
-    mInnerParametersContextMutex.unlock();
-}
-
 bool SAKSerialPortDevice::initialize()
 {
-    auto parasCtx = parametersCtx();
+    auto parasCtx = parametersContext().value<SAKSerialPortParametersContext>();
     mSerialPort = new QSerialPort;
     mSerialPort->setBaudRate(parasCtx.baudRate);
     mSerialPort->setDataBits(parasCtx.dataBits);
@@ -67,7 +58,7 @@ bool SAKSerialPortDevice::initialize()
 QByteArray SAKSerialPortDevice::read()
 {
     // Calculate the max frame interval.
-    auto parasCtx = this->parametersCtx();
+    auto parasCtx = parametersContext().value<SAKSerialPortParametersContext>();
     const int defauleFrameInterval = 4;
     int frameIntervel = parasCtx.frameIntervel;
     qint64 frameIntervelNs = 0;
@@ -116,13 +107,4 @@ void SAKSerialPortDevice::uninitialize()
     mSerialPort->close();
     delete mSerialPort;
     mSerialPort = Q_NULLPTR;
-}
-
-SAKCommonDataStructure::SAKStructSerialPortParametersContext
-        SAKSerialPortDevice::parametersCtx()
-{
-    mInnerParametersContextMutex.lock();
-    auto parasCtx = mInnerParametersContext;
-    mInnerParametersContextMutex.unlock();
-    return parasCtx;
 }
