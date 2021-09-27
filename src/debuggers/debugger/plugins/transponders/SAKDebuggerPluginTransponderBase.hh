@@ -21,8 +21,6 @@ public:
 
     void setId(quint64 id){mId = id;}
     quint64 id(){return mId;}
-
-
 private:
     quint64 mId;
 };
