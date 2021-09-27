@@ -214,9 +214,9 @@ SAKUdpClientParametersContext;
 typedef SAKCommonDataStructure::SAKStructUdpServerParametersContext
 SAKUdpServerParametersContext;
 typedef SAKCommonDataStructure::SAKStructTcpClientParametersContext
-SAKStructTcpClientParametersContext;
+SAKSTcpClientParametersContext;
 typedef SAKCommonDataStructure::SAKStructTcpServerParametersContext
-SAKStructTcpServerParametersContext;
+SAKTcpServerParametersContext;
 
 
 Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructTestParametersContext);

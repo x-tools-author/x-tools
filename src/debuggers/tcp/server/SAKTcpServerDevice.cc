@@ -30,7 +30,7 @@ SAKTcpServerDevice::SAKTcpServerDevice(QSettings *settings,
 
 bool SAKTcpServerDevice::initialize()
 {
-    auto parameters = parametersContext().value<SAKStructTcpServerParametersContext>();
+    auto parameters = parametersContext().value<SAKTcpServerParametersContext>();
     QString serverHost = parameters.serverHost;
     quint16 serverPort = parameters.serverPort;
 
@@ -66,7 +66,7 @@ QByteArray SAKTcpServerDevice::read()
     for (int i = 0; i < mClientList.length(); i++) {
         auto client = mClientList.at(i);
          QByteArray bytes = client->readAll();
-         auto parameters = parametersContext().value<SAKStructTcpServerParametersContext>();
+         auto parameters = parametersContext().value<SAKTcpServerParametersContext>();
          QString currentClientHost = parameters.currentClientHost;
          QString peerHost = client->peerAddress().toString();
          quint16 currentClientPort = parameters.currentClientPort;
@@ -86,7 +86,7 @@ QByteArray SAKTcpServerDevice::write(const QByteArray &bytes)
 {
     for (int i = 0; i < mClientList.length(); i++) {
         auto client = mClientList.at(i);
-        auto parameters = parametersContext().value<SAKStructTcpServerParametersContext>();
+        auto parameters = parametersContext().value<SAKTcpServerParametersContext>();
         QString currentClientHost = parameters.currentClientHost;
         QString peerHost = client->peerAddress().toString();
         quint16 currentClientPort = parameters.currentClientPort;
