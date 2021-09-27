@@ -39,18 +39,12 @@ public:
             );
      ~SAKTransponderSerialPortItem();
     SAKCommonDataStructure::SAKStructSerialPortParametersContext parametersContext();
-
-
 private:
     Ui::SAKTransponderSerialPortItem *mUi;
     SAKSerialPortDevice *mDevice;
-
-
 private:
     void initUiComponents();
     void initSignals();
-
-
 signals:
     void portNameChanged(QString portName);
     void baudRateChanged(int baudRate);
