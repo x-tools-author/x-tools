@@ -1,3 +1,8 @@
+qtHaveModule(websockets){
+    DEFINES+=SAK_IMPORT_MODULE_WEBSOCKET_CLIENT
+}
+
+contains(DEFINES, SAK_IMPORT_MODULE_WEBSOCKET_CLIENT){
 FORMS += \
     $$PWD/SAKWebSocketClientController.ui
 
@@ -13,3 +18,4 @@ SOURCES += \
 
 INCLUDEPATH += \
     $$PWD
+}

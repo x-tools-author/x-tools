@@ -18,67 +18,76 @@
 #include "SAKWebSocketClientDebugger.hh"
 #include "SAKWebSocketClientController.hh"
 
-SAKWebSocketClientDevice::SAKWebSocketClientDevice(SAKWebSocketClientDebugger *debugPage, QObject *parent)
-    :SAKDebuggerDevice(debugPage, parent)
-    ,mDebugPage (debugPage)
+SAKWebSocketClientDevice::SAKWebSocketClientDevice(QSettings *settings,
+                                                   const QString &settingsGroup,
+                                                   QWidget *uiParent,
+                                                   QObject *parent)
+    :SAKDebuggerDevice(settings, settingsGroup, uiParent, parent)
 {
     qRegisterMetaType<QAbstractSocket::SocketError>("QAbstractSocket::SocketError");
 }
 
-bool SAKWebSocketClientDevice::initialize(QString &errorString)
+bool SAKWebSocketClientDevice::initialize()
 {
-    mController = qobject_cast<SAKWebSocketClientController*>(mDebugPage->deviceController());
+    QEventLoop *eventLoop = new QEventLoop;
     mWebSocket = new QWebSocket;
-    connect(this, &SAKWebSocketClientDevice::clientInfoChanged, mController, &SAKWebSocketClientController::setClientInfo);
-
     connect(mWebSocket, &QWebSocket::connected, [=](){
         QString info = mWebSocket->localAddress().toString();
         info.append(":");
         info.append(QString::number(mWebSocket->localPort()));
         emit clientInfoChanged(info);
+        eventLoop->exit();
     });
 
     connect(mWebSocket, &QWebSocket::disconnected, [=](){
         emit clientInfoChanged(QString());
     });
 
-    connect(mWebSocket, &QWebSocket::binaryFrameReceived, [=](QByteArray message){
-        emit bytesRead(message);
+    connect(mWebSocket, &QWebSocket::binaryFrameReceived,
+            this, [=](const QByteArray &message){
+        appendMessage(message);
+        emit readyRead(SAKDeviceProtectedSignal());
     });
 
     connect(mWebSocket, &QWebSocket::textMessageReceived, [=](QString message){
-        emit bytesRead(message.toUtf8());
+        appendMessage(message.toUtf8());
+        emit readyRead(SAKDeviceProtectedSignal());
     });
 
-    errorString = tr("Unknown error");
-    return true;
-}
+    connect(mWebSocket, QOverload<QAbstractSocket::SocketError>::of(&QWebSocket::error),
+            this, [=](QAbstractSocket::SocketError error){
+        emit errorOccurred(tr("error code:") + error);
+        eventLoop->exit(-1);
+    });
 
-bool SAKWebSocketClientDevice::open(QString &errorString)
-{
-    auto parameters = mController->parameters().value<SAKWebSocketClientController::WebSocketClientParameters>();
+    auto parameters = parametersContext().value<SAKWSClientParametersContext>();
     mWebSocket->open(parameters.serverAddress);
-    errorString = tr("Unknown error");
+
+    int ret = eventLoop->exec();
+    if (ret == -1) {
+        return false;
+    }
+
     return true;
 }
 
 QByteArray SAKWebSocketClientDevice::read()
 {
-    return QByteArray();
+    return takeMessage();
 }
 
-QByteArray SAKWebSocketClientDevice::write(QByteArray bytes)
+QByteArray SAKWebSocketClientDevice::write(const QByteArray &bytes)
 {
     if (mWebSocket->state() == QAbstractSocket::ConnectedState){
         qint64 ret = 0;
-        auto parameters = mController->parameters().value<SAKWebSocketClientController::WebSocketClientParameters>();
-        if (parameters.sendingType == SAKCommonDataStructure::WebSocketSendingTypeText){
+        auto parameters = parametersContext().value<SAKWSClientParametersContext>();
+        if (parameters.sendingType == SAKCommonDataStructure::WebSocketSendingTypeText) {
             ret = mWebSocket->sendTextMessage(QString(bytes));
-        }else{
+        } else {
             ret = mWebSocket->sendBinaryMessage(bytes);
         }
 
-        if (ret > 0){
+        if (ret > 0) {
             return bytes;
         }
     }
@@ -86,24 +95,28 @@ QByteArray SAKWebSocketClientDevice::write(QByteArray bytes)
     return QByteArray();
 }
 
-bool SAKWebSocketClientDevice::checkSomething(QString &errorString)
-{
-    if (mWebSocket->state() == QAbstractSocket::UnconnectedState){
-        errorString = tr("Connection has been disconnect.");
-        return false;
-    }
-
-    errorString = tr("Unknown error");
-    return true;
-}
-
-void SAKWebSocketClientDevice::close()
+void SAKWebSocketClientDevice::uninitialize()
 {
     mWebSocket->close();
-}
-
-void SAKWebSocketClientDevice::free()
-{
     mWebSocket->deleteLater();
     mWebSocket = Q_NULLPTR;
+}
+
+void SAKWebSocketClientDevice::appendMessage(const QByteArray &byteArray)
+{
+    mByteArrayVectorMutex.lock();
+    mByteArrayVector.append(byteArray);
+    mByteArrayVectorMutex.unlock();
+}
+
+QByteArray SAKWebSocketClientDevice::takeMessage()
+{
+    QByteArray byteArray;
+    mByteArrayVectorMutex.lock();
+    if (mByteArrayVector.length()) {
+        byteArray = mByteArrayVector.takeFirst();
+    }
+    mByteArrayVectorMutex.unlock();
+
+    return byteArray;
 }

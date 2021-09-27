@@ -16,12 +16,17 @@
 #include "SAKWebSocketClientDebugger.hh"
 #include "SAKWebSocketClientController.hh"
 
-SAKWebSocketClientDebugger::SAKWebSocketClientDebugger(int type, QString name, QWidget *parent)
-    :SAKDebugger(type, name, parent)
+SAKWebSocketClientDebugger::SAKWebSocketClientDebugger(QSettings *settings,
+                                                       const QString settingsGroup,
+                                                       QSqlDatabase *sqlDatabase,
+                                                       QWidget *parent)
+    :SAKDebugger(settings, settingsGroup, sqlDatabase, parent)
 {
-    mDeviceController = new SAKWebSocketClientController(this, this);
-    mDevice = new SAKWebSocketClientDevice(this, this);
+    mController = new SAKWebSocketClientController(settings, settingsGroup, parent);
+    mDevice = new SAKWebSocketClientDevice(settings, settingsGroup, this, parent);
     initDebugger();
+    connect(mDevice, &SAKWebSocketClientDevice::clientInfoChanged,
+            mController, &SAKWebSocketClientController::onClientInfoChanged);
 }
 
 SAKDebuggerDevice* SAKWebSocketClientDebugger::device()
@@ -29,7 +34,7 @@ SAKDebuggerDevice* SAKWebSocketClientDebugger::device()
     return mDevice;
 }
 
-SAKDebugPageController *SAKWebSocketClientDebugger::controller()
+SAKDebuggerController *SAKWebSocketClientDebugger::controller()
 {
-    return mDeviceController;
+    return mController;
 }

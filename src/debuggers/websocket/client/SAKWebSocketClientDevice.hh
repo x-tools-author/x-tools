@@ -10,31 +10,32 @@
 #ifndef SAKWEBSOCKETCLIENTDEVICE_HH
 #define SAKWEBSOCKETCLIENTDEVICE_HH
 
+#include <QMutex>
 #include <QWebSocket>
 #include <QAbstractSocket>
 
 #include "SAKDebuggerDevice.hh"
 
-class SAKWebSocketClientDebugger;
-class SAKWebSocketClientController;
-/// @brief Web socket client.
-class SAKWebSocketClientDevice:public SAKDebuggerDevice
+class SAKWebSocketClientDevice : public SAKDebuggerDevice
 {
     Q_OBJECT
 public:
-    SAKWebSocketClientDevice(SAKWebSocketClientDebugger *mDebugPage, QObject *parent = Q_NULLPTR);
-private:
-    bool initialize(QString &errorString) final;
-    bool open(QString &errorString) final;
+    SAKWebSocketClientDevice(QSettings *settings,
+                             const QString &settingsGroup,
+                             QWidget *uiParent = Q_NULLPTR,
+                             QObject *parent = Q_NULLPTR);
+protected:
+    bool initialize() final;
     QByteArray read() final;
-    QByteArray write(QByteArray bytes) final;
-    bool checkSomething(QString &errorString) final;
-    void close() final;
-    void free() final;
+    QByteArray write(const QByteArray &bytes) final;
+    void uninitialize() final;
 private:
     QWebSocket *mWebSocket;
-    SAKWebSocketClientDebugger *mDebugPage;
-    SAKWebSocketClientController *mController;
+    QVector<QByteArray> mByteArrayVector;
+    QMutex mByteArrayVectorMutex;
+private:
+    void appendMessage(const QByteArray &byteArray);
+    QByteArray takeMessage();
 signals:
     void clientInfoChanged(QString info);
 };

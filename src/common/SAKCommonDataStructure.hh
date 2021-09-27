@@ -133,6 +133,14 @@ public:
     };
 #endif
 #endif
+#ifdef SAK_IMPORT_MODULE_WEBSOCKET
+#ifdef SAK_IMPORT_MODULE_WEBSOCKET_CLIENT
+    struct SAKStructWSClientParametersContext {
+        QString serverAddress;
+        quint32 sendingType;
+    };
+#endif
+#endif
 public:
     /**
      * @brief setComboBoxTextOutputFormat: Add output text format items to combo box.
@@ -217,6 +225,8 @@ typedef SAKCommonDataStructure::SAKStructTcpClientParametersContext
 SAKSTcpClientParametersContext;
 typedef SAKCommonDataStructure::SAKStructTcpServerParametersContext
 SAKTcpServerParametersContext;
+typedef SAKCommonDataStructure::SAKStructWSClientParametersContext
+SAKWSClientParametersContext;
 
 
 Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructTestParametersContext);
@@ -225,5 +235,6 @@ Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructUdpClientParametersContext);
 Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructUdpServerParametersContext);
 Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructTcpClientParametersContext);
 Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructTcpServerParametersContext);
+Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructWSClientParametersContext);
 
 #endif

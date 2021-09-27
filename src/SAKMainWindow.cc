@@ -84,8 +84,12 @@
 #include "SAKBluetoothServerDebugPage.hh"
 #endif
 #ifdef SAK_IMPORT_MODULE_WEBSOCKET
+#ifdef SAK_IMPORT_MODULE_WEBSOCKET_CLIENT
 #include "SAKWebSocketClientDebugger.hh"
+#endif
+#ifdef SAK_IMPORT_MODULE_WEBSOCKET_SERVER
 #include "SAKWebSocketServerDebugger.hh"
+#endif
 #endif
 #ifdef SAK_IMPORT_MODULE_BLE
 #include "SAKBluetoothLowEnergyDebugPage.hh"
@@ -682,8 +686,15 @@ void SAKMainWindow::initializingMetaObject()
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeBluetoothLowEnergy, SAKBluetoothLowEnergyDebugPage::staticMetaObject, tr("BLE")});
 #endif
 #ifdef SAK_IMPORT_MODULE_WEBSOCKET
-    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeWebSocketClient, SAKWebSocketClientDebugger::staticMetaObject, tr("WS-C")});
+#ifdef SAK_IMPORT_MODULE_WEBSOCKET_CLIENT
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{
+                                      DebugPageTypeWebSocketClient,
+                                      SAKWebSocketClientDebugger::staticMetaObject,
+                                      tr("WsClient")});
+#endif
+#ifdef SAK_IMPORT_MODULE_WEBSOCKET_SERVER
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeWebSocketServer, SAKWebSocketServerDebugger::staticMetaObject, tr("WS-S")});
+#endif
 #endif
 #ifdef SAK_IMPORT_MODULE_SERIALBUS
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{

@@ -23,21 +23,8 @@ public:
                           QWidget *parent = Q_NULLPTR);
     ~SAKDebuggerController();
 
-    /**
-     * @brief setUiEnable: Set ui state.
-     * @param opened: If the device is opened, the value of the parameters is true.
-     */
     virtual void updateUiState(bool opened) = 0;
-
-    /**
-     * @brief refreshDevice: Refresh the device list.
-     */
     virtual void refreshDevice() = 0;
-
-    /**
-     * @brief parametersContext: Get parameters context of device.
-     * @return Parameters context of device.
-     */
     virtual QVariant parametersContext() = 0;
 protected:
     QSettings *mSettings;

@@ -84,8 +84,12 @@ public:
         DebugPageTypeBluetoothLowEnergy,
 #endif
 #ifdef SAK_IMPORT_MODULE_WEBSOCKET
+#ifdef SAK_IMPORT_MODULE_WEBSOCKET_CLIENT
         DebugPageTypeWebSocketClient,
+#endif
+#ifdef SAK_IMPORT_MODULE_WEBSOCKET_SERVER
         DebugPageTypeWebSocketServer,
+#endif
 #endif
 #ifdef SAK_IMPORT_MODULE_SERIALBUS
         DebugPageTypeModbus

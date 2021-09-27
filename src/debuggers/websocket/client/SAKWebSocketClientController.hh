@@ -15,41 +15,31 @@
 #include <QCheckBox>
 #include <QComboBox>
 
-#include "SAKDebugPageController.hh"
+#include "SAKDebuggerController.hh"
 
 namespace Ui {
     class SAKWebSocketClientController;
 }
 
-class SAKDebugger;
 /// @brief web socket client control panel
-class SAKWebSocketClientController:public SAKDebugPageController
+class SAKWebSocketClientController : public SAKDebuggerController
 {
     Q_OBJECT
 public:
-    struct WebSocketClientParameters {
-        QString serverAddress;
-        quint32 sendingType;
-    };
-
-    SAKWebSocketClientController(SAKDebugger *debugPage, QWidget *parent = Q_NULLPTR);
+    SAKWebSocketClientController(QSettings *settings,
+                                 const QString &settingsGroup,
+                                 QWidget *parent = Q_NULLPTR);
     ~SAKWebSocketClientController();
 
-    QVariant parameters() final;
-    void setUiEnable(bool opend) final;
+    void updateUiState(bool opened) final;
+    void refreshDevice() final;
+    QVariant parametersContext() final;
 
-    void setClientInfo(QString info);
-private:
-    QMutex mParametersMutex;
-    WebSocketClientParameters mParameters;
+    void onClientInfoChanged(QString info);
 private:
     Ui::SAKWebSocketClientController *mUi;
     QLineEdit *mServerAddressLineEdit;
     QComboBox *mSendingTypeComboBox;
     QLineEdit *mClientInfoLineEdit;
-private slots:
-    void on_serverHostLineEdit_textChanged(const QString &arg1);
-    void on_sendingTypeComboBox_currentIndexChanged(int index);
 };
-Q_DECLARE_METATYPE(SAKWebSocketClientController::WebSocketClientParameters);
 #endif
