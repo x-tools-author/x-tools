@@ -37,60 +37,62 @@ SAKDebuggerDeviceAnalyzer::SAKDebuggerDeviceAnalyzer(QSettings *settings,
                                                 SAKCommonDataStructure::InputFormatHex);
 
 
+    if (settings) {
 #if 0
-    bool enable = settings->value(mSettingsKeyContext.enable).toBool();
-    mUi->disableCheckBox->setChecked(!enable);
+        bool enable = settings->value(mSettingsKeyContext.enable).toBool();
+        mUi->disableCheckBox->setChecked(!enable);
 #endif
+        bool fixedLenght = settings->value(mSettingsKeyContext.fixedLength).toBool();
+        mUi->fixedLengthCheckBox->setChecked(fixedLenght);
 
-    bool fixedLenght = settings->value(mSettingsKeyContext.fixedLength).toBool();
-    mUi->fixedLengthCheckBox->setChecked(fixedLenght);
+        int frameLength = settings->value(mSettingsKeyContext.frameLength).toInt();
+        mUi->frameLengthSpinBox->setValue(frameLength);
 
-    int frameLength = settings->value(mSettingsKeyContext.frameLength).toInt();
-    mUi->frameLengthSpinBox->setValue(frameLength);
+        QString startBytes = settings->value(mSettingsKeyContext.startFlags).toString();
+        mUi->startLineEdit->setText(startBytes);
 
-    QString startBytes = settings->value(mSettingsKeyContext.startFlags).toString();
-    mUi->startLineEdit->setText(startBytes);
-
-    QString endBytes = settings->value(mSettingsKeyContext.endFlags).toString();
-    mUi->endLineEdit->setText(endBytes);
+        QString endBytes = settings->value(mSettingsKeyContext.endFlags).toString();
+        mUi->endLineEdit->setText(endBytes);
 
 
-    connect(mUi->disableCheckBox, &QCheckBox::clicked,
-            this,
-            [=](){
-        bool checked = mUi->disableCheckBox->isChecked();
-        settings->setValue(mSettingsKeyContext.enable, !checked);
-        emit parametersChanged();
-    });
+        connect(mUi->disableCheckBox, &QCheckBox::clicked,
+                this,
+                [=](){
+            bool checked = mUi->disableCheckBox->isChecked();
+            settings->setValue(mSettingsKeyContext.enable, !checked);
+            emit parametersChanged();
+        });
 
-    connect(mUi->fixedLengthCheckBox, &QCheckBox::clicked,
-            this,
-            [=](){
-        bool checked = mUi->fixedLengthCheckBox->isChecked();
-        settings->setValue(mSettingsKeyContext.fixedLength, checked);
-        emit parametersChanged();
-    });
+        connect(mUi->fixedLengthCheckBox, &QCheckBox::clicked,
+                this,
+                [=](){
+            bool checked = mUi->fixedLengthCheckBox->isChecked();
+            settings->setValue(mSettingsKeyContext.fixedLength, checked);
+            emit parametersChanged();
+        });
 
-    connect(mUi->frameLengthSpinBox, QOverload<int>::of(&QSpinBox::valueChanged),
-            this,
-            [=](int frameLength){
-        settings->setValue(mSettingsKeyContext.frameLength, frameLength);
-        emit parametersChanged();
-    });
+        connect(mUi->frameLengthSpinBox, QOverload<int>::of(&QSpinBox::valueChanged),
+                this,
+                [=](int frameLength){
+            settings->setValue(mSettingsKeyContext.frameLength, frameLength);
+            emit parametersChanged();
+        });
 
-    connect(mUi->startLineEdit, &QLineEdit::textChanged,
-            this,
-            [=](const QString &text){
-        settings->setValue(mSettingsKeyContext.startFlags, text);
-        emit parametersChanged();
-    });
+        connect(mUi->startLineEdit, &QLineEdit::textChanged,
+                this,
+                [=](const QString &text){
+            settings->setValue(mSettingsKeyContext.startFlags, text);
+            emit parametersChanged();
+        });
 
-    connect(mUi->endLineEdit, &QLineEdit::textChanged,
-            this,
-            [=](const QString &text){
-        settings->setValue(mSettingsKeyContext.endFlags, text);
-        emit parametersChanged();
-    });
+        connect(mUi->endLineEdit, &QLineEdit::textChanged,
+                this,
+                [=](const QString &text){
+            settings->setValue(mSettingsKeyContext.endFlags, text);
+            emit parametersChanged();
+        });
+    }
+
 
     connect(mUi->clearPushButton, &QPushButton::clicked,
             this, &SAKDebuggerDeviceAnalyzer::clearTemp);

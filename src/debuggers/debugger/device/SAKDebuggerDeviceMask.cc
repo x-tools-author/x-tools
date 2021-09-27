@@ -19,28 +19,31 @@ SAKDebuggerDeviceMask::SAKDebuggerDeviceMask(QSettings *settings,
 {
     mUi->setupUi(this);
 
-    mSettingsKeyCtx.rxMask = settingGroup + "/" + "rxMask";
-    mSettingsKeyCtx.txMask = settingGroup + "/" + "txMask";
 
-    int rxMask = settings->value(mSettingsKeyCtx.rxMask).toInt();
-    mUi->rxMaskSpinBox->setValue(rxMask);
-    connect(mUi->rxMaskSpinBox, QOverload<int>::of(&QSpinBox::valueChanged), this, [=](){
-        settings->setValue(mSettingsKeyCtx.rxMask, mUi->rxMaskSpinBox->value());
-        emit parametersChanged();
-    });
+    if (settings) {
+        mSettingsKeyCtx.rxMask = settingGroup + "/" + "rxMask";
+        mSettingsKeyCtx.txMask = settingGroup + "/" + "txMask";
 
-    int txMask = settings->value(mSettingsKeyCtx.txMask).toInt();
-    mUi->txMaskSpinBox->setValue(txMask);
-    connect(mUi->txMaskSpinBox, QOverload<int>::of(&QSpinBox::valueChanged), this, [=](){
-        settings->setValue(mSettingsKeyCtx.txMask, mUi->txMaskSpinBox->value());
-        emit parametersChanged();
-    });
+        int rxMask = settings->value(mSettingsKeyCtx.rxMask).toInt();
+        mUi->rxMaskSpinBox->setValue(rxMask);
+        connect(mUi->rxMaskSpinBox, QOverload<int>::of(&QSpinBox::valueChanged), this, [=](){
+            settings->setValue(mSettingsKeyCtx.rxMask, mUi->rxMaskSpinBox->value());
+            emit parametersChanged();
+        });
+
+        int txMask = settings->value(mSettingsKeyCtx.txMask).toInt();
+        mUi->txMaskSpinBox->setValue(txMask);
+        connect(mUi->txMaskSpinBox, QOverload<int>::of(&QSpinBox::valueChanged), this, [=](){
+            settings->setValue(mSettingsKeyCtx.txMask, mUi->txMaskSpinBox->value());
+            emit parametersChanged();
+        });
+    }
+
 
     connect(mUi->rxMaskCheckBox, &QCheckBox::clicked,
             this, [=](){emit parametersChanged();});
     connect(mUi->txMaskCheckBox, &QCheckBox::clicked,
             this, [=](){emit parametersChanged();});
-
     setModal(true);
 }
 
