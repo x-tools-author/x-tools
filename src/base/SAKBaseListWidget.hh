@@ -33,7 +33,6 @@ public:
     ~SAKBaseListWidget();
     void onBytesRead(QByteArray bytes);
     bool forbidAllItems();
-
 protected:
     QSqlDatabase *mSqlDatabase;
     QSettings *mSettings;
@@ -44,12 +43,8 @@ protected:
     QSqlQuery mSqlQuery;
     QTimer mClearMessageInfoTimer;
     QListWidget *mListWidget;
-
-
 private:
     QString mForbidAllItemsSettingsKey;
-
-
 protected:
     virtual QString sqlCreate(const QString &tableName) = 0;
     virtual QString sqlInsert(const QString &tableName, QWidget *itemWidget) = 0;
@@ -63,8 +58,6 @@ protected:
     void outputMessage(QString msg, bool isError);
     // It must be called in the subcalss.
     void initialize();
-
-
 private:
     void clearItems();
     void importItems();
@@ -75,12 +68,8 @@ private:
     bool setupItemWidget(QListWidgetItem *item, QWidget *itemWidget);
     void insertRecord(const QString &sql);
     void createTable(const QString &sql);
-
-
 private:
     Ui::SAKBaseListWidget *mUi;
-
-
 signals:
     void bytesRead(QByteArray bytes);
 
