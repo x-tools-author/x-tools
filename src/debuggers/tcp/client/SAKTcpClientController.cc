@@ -35,29 +35,32 @@ SAKTcpClientController::SAKTcpClientController(QSettings *settings,
     mServerPortLineEdit = mUi->serverPortLineEdit;
     refreshDevice();
 
+    // Read in settings data.
     SAKUdpClientParametersContext ctx;
-    microSetComboBoxIndexFromSettings(settings,
-                                      settingsGroup,
-                                      ctx.localHost, mLocalhostComboBox);
+    microIni2CoB(settings, settingsGroup, ctx.localHost, mLocalhostComboBox);
+    microIni2LE(settings, settingsGroup, ctx.locarPort, mLocalPortlineEdit);
+    microIni2LE(settings, settingsGroup, ctx.peerHost, mServerHostLineEdit);
+    microIni2LE(settings, settingsGroup, ctx.peerPort, mServerPortLineEdit);
+    microIni2ChB(settings, settingsGroup,
+                 ctx.specifyLocalInfo, mSpecifyClientAddressAndPort);
+
     connect(mLocalhostComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, [=](int index){
         Q_UNUSED(index);
         emit parametersContextChanged();
-        microSetSettingsFromComboBoxIndex(settings,
-                                          settingsGroup,
-                                          ctx.localHost,
-                                          mLocalhostComboBox);
+        microCoB2Ini(settings, settingsGroup, ctx.localHost, mLocalhostComboBox);
     });
-
-
     connect(mLocalPortlineEdit, &QLineEdit::textChanged,
             this, [=](const QString &text){
         Q_UNUSED(text);
         emit parametersContextChanged();
+        microLE2Ini(settings, settingsGroup, ctx.locarPort, mLocalPortlineEdit);
     });
     connect(mSpecifyClientAddressAndPort, &QCheckBox::clicked,
             this, [=](){
         emit parametersContextChanged();
+        microChB2Ini(settings, settingsGroup,
+                     ctx.specifyLocalInfo, mSpecifyClientAddressAndPort);
     });
     connect(mAutomaticConnectionCheckBox, &QCheckBox::clicked,
             this, [=](){
@@ -67,11 +70,13 @@ SAKTcpClientController::SAKTcpClientController(QSettings *settings,
             this, [=](const QString &text){
         Q_UNUSED(text);
         emit parametersContextChanged();
+        microLE2Ini(settings, settingsGroup, ctx.peerHost, mServerHostLineEdit);
     });
     connect(mServerPortLineEdit, &QLineEdit::textChanged,
             this, [=](const QString &text){
         Q_UNUSED(text);
         emit parametersContextChanged();
+        microLE2Ini(settings, settingsGroup, ctx.peerPort, mServerPortLineEdit);
     });
 }
 
