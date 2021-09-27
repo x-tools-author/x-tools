@@ -24,21 +24,13 @@ public:
     quint64 id(){return mId;}
     bool enable(){return mEnable;}
     void setEnable(bool enable){mEnable = enable;}
-
-
 protected:
     virtual void onBytesRead(QByteArray bytes){Q_UNUSED(bytes);}
-
-
 private:
     quint64 mId;
     bool mEnable;
-
-
 private:
     void onBytesReadPrivate(QByteArray bytes);
-
-
 signals:
     void invokeWriteCookedBytes(QByteArray bytes);
 };
