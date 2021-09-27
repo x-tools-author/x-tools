@@ -16,27 +16,27 @@
 #include <QLineEdit>
 #include <QComboBox>
 
-#define microIni2CoB(settings, settingsGroup, structMember, comboBox) \
+#define microIni2CoB(settings, settingsGroup, structMember, comboBox)\
     SAKCommonInterface::setComboBoxIndexFromSettings(settings,\
     settingsGroup + QString("/") + QString(#structMember).split('.').last(),\
     comboBox)
-#define microCoB2Ini(settings, settingsGroup, structMember, comboBox) \
+#define microCoB2Ini(settings, settingsGroup, structMember, comboBox)\
     SAKCommonInterface::setSettingsValueFromComboBoxIndex(settings,\
     settingsGroup + QString("/") + QString(#structMember).split('.').last(),\
     comboBox)
-#define microIni2LE(settings, settingsGroup, structMember, lineEdit) \
+#define microIni2LE(settings, settingsGroup, structMember, lineEdit)\
     SAKCommonInterface::setLineEditTextFromSettings(settings,\
     settingsGroup + QString("/") + QString(#structMember).split('.').last(),\
     lineEdit)
-#define microLE2Ini(settings, settingsGroup, structMember, lineEdit) \
+#define microLE2Ini(settings, settingsGroup, structMember, lineEdit)\
     SAKCommonInterface::setSettingsValueFromLineEditText(settings,\
     settingsGroup + QString("/") + QString(#structMember).split('.').last(),\
     lineEdit)
-#define microIni2ChB(settings, settingsGroup, structMember, checkBox) \
+#define microIni2ChB(settings, settingsGroup, structMember, checkBox)\
     SAKCommonInterface::setCheckBoxValueFromSettings(settings,\
     settingsGroup + QString("/") + QString(#structMember).split('.').last(),\
     checkBox)
-#define microChB2Ini(settings, settingsGroup, structMember, checkBox) \
+#define microChB2Ini(settings, settingsGroup, structMember, checkBox)\
     SAKCommonInterface::setSettingsValueFromCheckBox(settings,\
     settingsGroup + QString("/") + QString(#structMember).split('.').last(),\
     checkBox)
