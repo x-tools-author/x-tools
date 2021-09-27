@@ -26,29 +26,45 @@ SAKUdpClientController::SAKUdpClientController(QSettings *settings,
 {
     mUi->setupUi(this);
     refreshDevice();
+
+    // Read in settings date.
+    SAKUdpClientParametersContext ctx;
+    microIni2CoB(settings, settingsGroup, ctx.localHost, mUi->localhostComboBox);
+    microIni2LE(settings, settingsGroup, ctx.localPort, mUi->localPortlineEdit);
+    microIni2LE(settings, settingsGroup, ctx.peerHost, mUi->targetHostLineEdit);
+    microIni2LE(settings, settingsGroup, ctx.peerPort, mUi->targetPortLineEdit);
+    microIni2ChB(settings, settingsGroup,
+                 ctx.specifyLocalInfo, mUi->specifyClientAddressAndPort);
+
     connect(mUi->localhostComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, [=](int index){
         Q_UNUSED(index);
         emit parametersContextChanged();
+        microCoB2Ini(settings, settingsGroup, ctx.localHost, mUi->localhostComboBox);
     });
     connect(mUi->localPortlineEdit, &QLineEdit::textChanged,
             this, [=](const QString &text){
         Q_UNUSED(text);
         emit parametersContextChanged();
+        microLE2Ini(settings, settingsGroup, ctx.localPort, mUi->localPortlineEdit);
     });
     connect(mUi->specifyClientAddressAndPort, &QCheckBox::clicked,
             this, [=](){
         emit parametersContextChanged();
+        microChB2Ini(settings, settingsGroup,
+                     ctx.specifyLocalInfo, mUi->specifyClientAddressAndPort);
     });
     connect(mUi->targetHostLineEdit, &QLineEdit::textChanged,
             this, [=](const QString &text){
         Q_UNUSED(text);
         emit parametersContextChanged();
+        microLE2Ini(settings, settingsGroup, ctx.peerHost, mUi->targetHostLineEdit);
     });
     connect(mUi->targetPortLineEdit, &QLineEdit::textChanged,
             this, [=](const QString &text){
         Q_UNUSED(text);
         emit parametersContextChanged();
+        microLE2Ini(settings, settingsGroup, ctx.peerPort, mUi->targetPortLineEdit);
     });
 }
 

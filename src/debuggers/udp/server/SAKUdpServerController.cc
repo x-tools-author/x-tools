@@ -27,15 +27,22 @@ SAKUdpServerController::SAKUdpServerController(QSettings *settings,
     mUi->setupUi(this);
     refreshDevice();
 
+    // Read in settings date.
+    SAKUdpServerParametersContext ctx;
+    microIni2CoB(settings, settingsGroup, ctx.serverHost, mUi->serverhostComboBox);
+    microIni2LE(settings, settingsGroup, ctx.serverPort, mUi->serverPortLineEdit);
+
     connect(mUi->serverhostComboBox, QOverload<int>::of(&QComboBox::activated),
             this, [=](int index){
         Q_UNUSED(index);
         emit parametersContextChanged();
+        microCoB2Ini(settings, settingsGroup, ctx.serverHost, mUi->serverhostComboBox);
     });
     connect(mUi->serverPortLineEdit, &QLineEdit::textChanged,
             this, [=](const QString &text){
         Q_UNUSED(text);
         emit parametersContextChanged();
+        microLE2Ini(settings, settingsGroup, ctx.serverPort, mUi->serverPortLineEdit);
     });
 }
 
