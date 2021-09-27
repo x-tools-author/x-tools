@@ -43,7 +43,7 @@ private:
     Ui::SAKTransponderSerialPortItem *mUi;
     SAKSerialPortDevice *mDevice;
 private:
-    void initUiComponents();
+    void initComponents();
     void initSignals();
 signals:
     void portNameChanged(QString portName);

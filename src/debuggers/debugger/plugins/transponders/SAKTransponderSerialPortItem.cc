@@ -18,9 +18,10 @@
 SAKTransponderSerialPortItem::SAKTransponderSerialPortItem(QWidget *parent)
     :SAKBaseListWidgetItemWidget(parent)
     ,mUi(new Ui::SAKTransponderSerialPortItem)
+    ,mDevice(new SAKSerialPortDevice(Q_NULLPTR, QString(), Q_NULLPTR, Q_NULLPTR))
 {    
     mUi->setupUi(this);
-    initUiComponents();
+    initComponents();
     initSignals();
 }
 
@@ -31,9 +32,10 @@ SAKTransponderSerialPortItem::SAKTransponderSerialPortItem(
         )
     :SAKBaseListWidgetItemWidget(id, parent)
     ,mUi(new Ui::SAKTransponderSerialPortItem)
+    ,mDevice(new SAKSerialPortDevice(Q_NULLPTR, QString(), Q_NULLPTR, Q_NULLPTR))
 {
     mUi->setupUi(this);
-    initUiComponents();
+    initComponents();
 
     auto setIndexFromText = [](const QString &text, QComboBox *comboBox){
         int index = comboBox->findText(text);
@@ -64,9 +66,13 @@ SAKTransponderSerialPortItem::SAKTransponderSerialPortItem(
 SAKTransponderSerialPortItem::~SAKTransponderSerialPortItem()
 {
     delete mUi;
+    if (mDevice->isRunning()) {
+        mDevice->exit();
+        mDevice->wait();
+    }
 }
 
-void SAKTransponderSerialPortItem::initUiComponents()
+void SAKTransponderSerialPortItem::initComponents()
 {
     SAKCommonInterface::addSerialPortNametItemsToComboBox(mUi->portNameComboBox);
     SAKCommonInterface::addSerialPortBaudRateItemsToComboBox(mUi->baudRateComboBox);
@@ -76,6 +82,7 @@ void SAKTransponderSerialPortItem::initUiComponents()
     SAKCommonInterface::addSerialPortFlowControlItemsToComboBox(
                 mUi->flowControlComboBox
                 );
+    mDevice->setParametersContext(QVariant::fromValue(parametersContext()));
 }
 
 SAKCommonDataStructure::SAKStructSerialPortParametersContext
@@ -110,6 +117,19 @@ SAKTransponderSerialPortItem::parametersContext()
 
 void SAKTransponderSerialPortItem::initSignals()
 {
+    connect(mUi->enableCheckBox, &QCheckBox::clicked, this, [=](){
+        setEnable(mUi->enableCheckBox->isChecked());
+        if (mUi->enableCheckBox->isChecked()) {
+            mDevice->start();
+        } else {
+            mDevice->exit();
+            mDevice->wait();
+        }
+    });
+    connect(mUi->customBaudrateCheckBox, &QCheckBox::clicked, this, [=](){
+        mUi->baudRateComboBox->setEditable(mUi->customBaudrateCheckBox->isChecked());
+    });
+
     connect(mUi->portNameComboBox, &QComboBox::currentTextChanged,
             this, [&](const QString &text){
         emit this->portNameChanged(text);
@@ -152,4 +172,7 @@ void SAKTransponderSerialPortItem::initSignals()
             this, [&](int value){
         emit this->frameIntervalChanged(value);
     });
+
+    connect(mDevice, &SAKSerialPortDevice::bytesRead,
+            this, &SAKTransponderSerialPortItem::invokeWriteCookedBytes);
 }
