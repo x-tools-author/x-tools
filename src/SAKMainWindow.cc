@@ -693,7 +693,10 @@ void SAKMainWindow::initializingMetaObject()
                                       tr("WsClient")});
 #endif
 #ifdef SAK_IMPORT_MODULE_WEBSOCKET_SERVER
-    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeWebSocketServer, SAKWebSocketServerDebugger::staticMetaObject, tr("WS-S")});
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{
+                                      DebugPageTypeWebSocketServer,
+                                      SAKWebSocketServerDebugger::staticMetaObject,
+                                      tr("WsServer")});
 #endif
 #endif
 #ifdef SAK_IMPORT_MODULE_SERIALBUS

@@ -140,6 +140,15 @@ public:
         quint32 sendingType;
     };
 #endif
+#ifdef SAK_IMPORT_MODULE_WEBSOCKET_SERVER
+    struct SAKStructWSServerParametersContext {
+        QString serverHost;
+        quint16 serverPort;
+        QString currentClientHost;
+        quint16 currentClientPort;
+        quint32 sendingType;
+    };
+#endif
 #endif
 public:
     /**
@@ -227,6 +236,8 @@ typedef SAKCommonDataStructure::SAKStructTcpServerParametersContext
 SAKTcpServerParametersContext;
 typedef SAKCommonDataStructure::SAKStructWSClientParametersContext
 SAKWSClientParametersContext;
+typedef SAKCommonDataStructure::SAKStructWSServerParametersContext
+SAKWSServerParametersContext;
 
 
 Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructTestParametersContext);
@@ -236,5 +247,6 @@ Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructUdpServerParametersContext);
 Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructTcpClientParametersContext);
 Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructTcpServerParametersContext);
 Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructWSClientParametersContext);
+Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructWSServerParametersContext);
 
 #endif

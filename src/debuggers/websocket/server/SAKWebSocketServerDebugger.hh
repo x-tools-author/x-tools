@@ -12,21 +12,22 @@
 
 #include "SAKDebugger.hh"
 
-class SAKDebugPageController;
 class SAKWebSocketServerDevice;
 class SAKWebSocketServerController;
-/// @brief Web socket server debugging page
 class SAKWebSocketServerDebugger : public SAKDebugger
 {
     Q_OBJECT
 public:
-    Q_INVOKABLE SAKWebSocketServerDebugger(int type, QString name, QWidget *parent = Q_NULLPTR);
+    Q_INVOKABLE SAKWebSocketServerDebugger(QSettings *settings,
+                                           const QString settingsGroup,
+                                           QSqlDatabase *sqlDatabase,
+                                           QWidget *parent = Q_NULLPTR);
 protected:
-    SAKDebuggerDevice* device() override;
-    SAKDebugPageController *controller() override;
+    SAKDebuggerDevice* device() final;
+    SAKDebuggerController *controller() final;
 private:
-    SAKDebuggerDevice *mDevice;
-    SAKDebugPageController *mDeviceController;
+    SAKWebSocketServerDevice *mDevice;
+    SAKWebSocketServerController *mController;
 };
 
 #endif

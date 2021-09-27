@@ -18,8 +18,10 @@
 #include "SAKWebSocketServerController.hh"
 #include "ui_SAKWebSocketServerController.h"
 
-SAKWebSocketServerController::SAKWebSocketServerController(SAKDebugger *debugPage, QWidget *parent)
-    :SAKDebugPageController(debugPage, parent)
+SAKWebSocketServerController::SAKWebSocketServerController(QSettings *settings,
+                                                           const QString &settingsGroup,
+                                                           QWidget *parent)
+    :SAKDebuggerController(settings, settingsGroup, parent)
     ,mUi(new Ui::SAKWebSocketServerController)
 {
     mUi->setupUi(this);
@@ -27,12 +29,32 @@ SAKWebSocketServerController::SAKWebSocketServerController(SAKDebugger *debugPag
     mServerPortLineEdit = mUi->serverPortLineEdit;
     mClientHostComboBox = mUi->clientHostComboBox;
     mSendingTypeComboBox = mUi->sendingTypeComboBox;
-
-    SAKCommonDataStructure::setComboBoxTextWebSocketSendingType(mSendingTypeComboBox);
-    qRegisterMetaType<SAKWebSocketServerController::WebSocketServerParameters>("SAKWebSocketServerController::WebSocketServerParameters");
-    mParameters.serverHost = mServerHostComboBox->currentText();
-    mParameters.serverPort = mServerPortLineEdit->text().toInt();
     refreshDevice();
+    SAKCommonDataStructure::setComboBoxTextWebSocketSendingType(mSendingTypeComboBox);
+
+    SAKWSServerParametersContext ctx;
+    microIni2CoB(settings, settingsGroup, ctx.serverHost, mServerHostComboBox);
+    microIni2LE(settings, settingsGroup, ctx.serverPort, mServerPortLineEdit);
+    microIni2CoB(settings, settingsGroup, ctx.sendingType, mSendingTypeComboBox);
+
+    connect(mServerHostComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this, [=](){
+        emit parametersContextChanged();
+        microCoB2Ini(settings, settingsGroup, ctx.serverHost, mServerHostComboBox);
+    });
+    connect(mServerPortLineEdit, &QLineEdit::textChanged, this, [=](){
+        emit parametersContextChanged();
+        microLE2Ini(settings, settingsGroup, ctx.serverPort, mServerPortLineEdit);
+    });
+    connect(mSendingTypeComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this, [=](){
+        emit parametersContextChanged();
+        microCoB2Ini(settings, settingsGroup, ctx.sendingType, mSendingTypeComboBox);
+    });
+    connect(mClientHostComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+           this, [=](){
+        emit parametersContextChanged();
+    });
 }
 
 SAKWebSocketServerController::~SAKWebSocketServerController()
@@ -40,16 +62,7 @@ SAKWebSocketServerController::~SAKWebSocketServerController()
     delete mUi;
 }
 
-QVariant SAKWebSocketServerController::parameters()
-{
-    mParametersMutex.lock();
-    auto parameters = mParameters;
-    mParametersMutex.unlock();
-
-    return QVariant::fromValue(parameters);
-}
-
-void SAKWebSocketServerController::setUiEnable(bool opened)
+void SAKWebSocketServerController::updateUiState(bool opened)
 {
     mServerHostComboBox->setEnabled(!opened);
     mServerPortLineEdit->setEnabled(!opened);
@@ -58,6 +71,25 @@ void SAKWebSocketServerController::setUiEnable(bool opened)
 void SAKWebSocketServerController::refreshDevice()
 {
     SAKCommonInterface::addIpItemsToComboBox(mServerHostComboBox);
+}
+
+QVariant SAKWebSocketServerController::parametersContext()
+{
+    SAKWSServerParametersContext ctx;
+    ctx.serverHost = mServerHostComboBox->currentText();
+    ctx.serverPort = mServerPortLineEdit->text().toInt();
+    QString currentText = mClientHostComboBox->currentText();
+    QStringList info = currentText.split(':');
+    if (info.length() == 2) {
+        ctx.currentClientHost = info.first();
+        ctx.currentClientPort = info.last().toInt();
+    } else {
+        ctx.currentClientHost.clear();
+        ctx.currentClientPort = 0;
+    }
+    ctx.sendingType = mSendingTypeComboBox->currentData().toInt();
+
+    return QVariant::fromValue(ctx);
 }
 
 void SAKWebSocketServerController::addClient(QString host, quint16 port, QWebSocket *socket)
@@ -87,34 +119,4 @@ void SAKWebSocketServerController::removeClient(QWebSocket *socket)
 void SAKWebSocketServerController::clearClient()
 {
     mClientHostComboBox->clear();
-}
-
-void SAKWebSocketServerController::on_serverhostComboBox_currentTextChanged(const QString &arg1)
-{
-    mParametersMutex.lock();
-    mParameters.serverHost = arg1;
-    mParametersMutex.unlock();
-}
-
-void SAKWebSocketServerController::on_serverPortLineEdit_textChanged(const QString &arg1)
-{
-    mParametersMutex.lock();
-    mParameters.serverPort = arg1.toInt();
-    mParametersMutex.unlock();
-}
-
-void SAKWebSocketServerController::on_clientHostComboBox_currentTextChanged(const QString &arg1)
-{
-    mParametersMutex.lock();
-    mParameters.currentClientHost = arg1.split(':').first();
-    mParameters.currentClientPort = arg1.split(':').last().toInt();
-    mParametersMutex.unlock();
-}
-
-void SAKWebSocketServerController::on_sendingTypeComboBox_currentIndexChanged(int index)
-{
-    Q_UNUSED(index);
-    mParametersMutex.lock();
-    mParameters.sendingType = mSendingTypeComboBox->currentData().toInt();
-    mParametersMutex.unlock();
 }

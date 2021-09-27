@@ -16,33 +16,28 @@
 
 #include "SAKDebuggerDevice.hh"
 
-class SAKWebSocketServerDebugger;
-class SAKWebSocketServerController;
-/// @brief Web socket server device
-class SAKWebSocketServerDevice:public SAKDebuggerDevice
+class SAKWebSocketServerDevice : public SAKDebuggerDevice
 {
     Q_OBJECT
 public:
-    SAKWebSocketServerDevice(SAKWebSocketServerDebugger *debugPage, QObject *parent = Q_NULLPTR);
-private:
-    bool initialize(QString &errorString) final;
-    bool open(QString &errorString) final;
+    SAKWebSocketServerDevice(QSettings *settings,
+                             const QString &settingsGroup,
+                             QWidget *uiParent,
+                             QObject *parent = Q_NULLPTR);
+protected:
+    bool initialize() final;
     QByteArray read() final;
-    QByteArray write(QByteArray bytes) final;
-    bool checkSomething(QString &errorString) final;
-    void close() final;
-    void free() final;
+    QByteArray write(const QByteArray &bytes) final;
+    void uninitialize() final;
+private:
+    QWebSocketServer *mWebSocketServer;
+    QList<QWebSocket*> mClientList;
+private:
+    void readBytesActually(QWebSocket *socket, QByteArray bytes);
 signals:
     void addClient(QString host, quint16 port, QWebSocket *socket);
     void removeClient(QWebSocket *socket);
     void clearClient();
-private:
-    QWebSocketServer *mWebSocketServer;
-    SAKWebSocketServerDebugger *mDebugPage;
-    SAKWebSocketServerController *mDeviceController;
-    QList<QWebSocket*> mClientList;
-private:
-    void readBytesActually(QWebSocket *socket, QByteArray bytes);
 };
 
 #endif
