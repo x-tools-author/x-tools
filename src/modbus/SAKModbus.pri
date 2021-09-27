@@ -26,7 +26,7 @@ FORMS += \
     $$PWD/common/SAKModbusCommonServerSection.ui
 
 HEADERS += \
-    $$PWD/SAKModbusDebugPage.hh \
+    $$PWD/SAKModbusDebugger.hh \
     $$PWD/client/SAKModbusClientController.hh \
     $$PWD/client/SAKModbusClientControllerSerialPort.hh \
     $$PWD/client/SAKModbusClientControllerTcp.hh \
@@ -45,7 +45,7 @@ HEADERS += \
     $$PWD/server/SAKModbusServerControllerTcp.hh
 
 SOURCES += \
-    $$PWD/SAKModbusDebugPage.cc \
+    $$PWD/SAKModbusDebugger.cc \
     $$PWD/client/SAKModbusClientController.cc \
     $$PWD/client/SAKModbusClientControllerSerialPort.cc \
     $$PWD/client/SAKModbusClientControllerTcp.cc \

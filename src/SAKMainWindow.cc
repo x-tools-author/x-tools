@@ -58,7 +58,7 @@
 #endif
 #endif
 #ifdef SAK_IMPORT_MODULE_SERIALBUS
-#include "SAKModbusDebugPage.hh"
+#include "SAKModbusDebugger.hh"
 #endif
 #ifdef SAK_IMPORT_MODULE_UDP
 #ifdef SAK_IMPORT_MODULE_UDP_CLIENT
@@ -702,7 +702,7 @@ void SAKMainWindow::initializingMetaObject()
 #ifdef SAK_IMPORT_MODULE_SERIALBUS
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{
                                       DebugPageTypeModbus,
-                                      SAKModbusDebugPage::staticMetaObject,
+                                      SAKModbusDebugger::staticMetaObject,
                                       tr("Modbus")});
 #endif
 }
