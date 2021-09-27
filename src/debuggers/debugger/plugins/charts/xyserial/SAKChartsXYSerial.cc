@@ -71,9 +71,17 @@ void SAKChartsXYSerial::onBytesRead(QByteArray bytes)
     QString frames = QString::fromLatin1(bytes);
 
     frames = frames.remove(QRegularExpression("[\r\n]."));
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
     QStringList frameSections = frames.split(":", QString::SkipEmptyParts);
+#else
+    QStringList frameSections = frames.split(":", Qt::SkipEmptyParts);
+#endif
     QString dataFlag = frameSections.takeFirst().toUpper();
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
     QStringList dataList = frameSections.last().split(",", QString::SkipEmptyParts);
+#else
+    QStringList dataList = frameSections.last().split(",", Qt::SkipEmptyParts);
+#endif
 
     QMapIterator<QString, int> iter(mXYGraphTypeMap);
     bool hasDataFlag = false;
