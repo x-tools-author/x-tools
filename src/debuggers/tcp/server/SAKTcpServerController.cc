@@ -29,6 +29,12 @@ SAKTcpServerController::SAKTcpServerController(QSettings *settings,
     mServerPortLineEdit = mUi->serverPortLineEdit;
     mClientHostComboBox = mUi->clientHostComboBox;
     refreshDevice();
+
+    // Read in settings data.
+    SAKTcpServerParametersContext ctx;
+    microIni2CoB(settings, settingsGroup, ctx.serverHost, mServerHostComboBox);
+    microIni2LE(settings, settingsGroup, ctx.serverPort, mServerPortLineEdit);
+
     connect(mClientHostComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, [=](int index){
         Q_UNUSED(index);
@@ -38,10 +44,12 @@ SAKTcpServerController::SAKTcpServerController(QSettings *settings,
             this, [=](int index){
         Q_UNUSED(index);
         emit parametersContextChanged();
+        microCoB2Ini(settings, settingsGroup, ctx.serverHost, mServerHostComboBox);
     });
     connect(mServerPortLineEdit, &QLineEdit::textChanged, this, [=](const QString &text){
         Q_UNUSED(text);
         emit parametersContextChanged();
+        microLE2Ini(settings, settingsGroup, ctx.serverPort, mServerPortLineEdit);
     });
 }
 
