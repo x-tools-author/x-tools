@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2020 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2020-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -13,7 +13,7 @@
 #include <QTabWidget>
 #include <QModbusDataUnit>
 
-#include "SAKModbusDebugPage.hh"
+#include "SAKModbusDebugger.hh"
 #include "SAKModbusCommonRegister.hh"
 #include "SAKModbusCommonFlowLayout.hh"
 #include "SAKModbusCommonController.hh"
@@ -27,15 +27,19 @@
 
 #include "ui_SAKModbusDebugPage.h"
 
-SAKModbusDebugPage::SAKModbusDebugPage(int type, QString name, QSettings *settings, QSplashScreen *splashScreen, QSqlDatabase *sqlDatabase, QWidget *parent)
+SAKModbusDebugger::SAKModbusDebugger(QSettings *settings,
+                                     const QString settingsGroup,
+                                     QSqlDatabase *sqlDatabase,
+                                     QWidget *parent)
     :QWidget(parent)
-    ,mType(type)
-    ,mName(name)
+    ,mType(0)
+    ,mName("")
     ,mSettings(settings)
-    ,mSplashScreen(splashScreen)
+    ,mSplashScreen(Q_NULLPTR)
     ,mSqlDatabase(sqlDatabase)
     ,ui(new Ui::SAKModbusDebugPage)
 {
+    Q_UNUSED(settingsGroup)
     ui->setupUi(this);
     ui->deviceControllerWidget->setContentsMargins(0, 0, 0, 0);
     ui->deviceControllerWidget->setLayout(new QVBoxLayout);
@@ -76,8 +80,8 @@ SAKModbusDebugPage::SAKModbusDebugPage(int type, QString name, QSettings *settin
         auto registerViewController = new SAKModbusCommonRegisterViewController(var.type);
         mRegisterViewControllerList.append(registerViewController);
         connect(registerViewController, &SAKModbusCommonRegisterViewController::invokeUpdateRegister, registerView, &SAKModbusCommonRegisterView::updateRegister);
-        connect(registerView, &SAKModbusCommonRegisterView::registerValueChanged, this, &SAKModbusDebugPage::setData);
-        connect(registerView, &SAKModbusCommonRegisterView::invokeUpdateRegisterValue, this, &SAKModbusDebugPage::updateRegisterValue);
+        connect(registerView, &SAKModbusCommonRegisterView::registerValueChanged, this, &SAKModbusDebugger::setData);
+        connect(registerView, &SAKModbusCommonRegisterView::invokeUpdateRegisterValue, this, &SAKModbusDebugger::updateRegisterValue);
         var.widget->layout()->addWidget(registerView);
         var.widget->layout()->addWidget(registerViewController);
     }
@@ -100,12 +104,12 @@ SAKModbusDebugPage::SAKModbusDebugPage(int type, QString name, QSettings *settin
     ui->tabWidget->setCurrentIndex(currentPageIndex > ui->tabWidget->count() - 1 ? 0 : currentPageIndex);
 }
 
-SAKModbusDebugPage::~SAKModbusDebugPage()
+SAKModbusDebugger::~SAKModbusDebugger()
 {
     delete ui;
 }
 
-QWidget *SAKModbusDebugPage::controllerFromType(int type)
+QWidget *SAKModbusDebugger::controllerFromType(int type)
 {
     QWidget *w = Q_NULLPTR;
     switch (type) {
@@ -129,7 +133,7 @@ QWidget *SAKModbusDebugPage::controllerFromType(int type)
     return w;
 }
 
-void SAKModbusDebugPage::outputModbusDataUnit(QModbusDataUnit mdu)
+void SAKModbusDebugger::outputModbusDataUnit(QModbusDataUnit mdu)
 {
     auto startAddress = mdu.startAddress();
     auto valueCount = mdu.valueCount();
@@ -164,14 +168,14 @@ void SAKModbusDebugPage::outputModbusDataUnit(QModbusDataUnit mdu)
     ui->textBrowser->append(dataStr);
 }
 
-void SAKModbusDebugPage::setData(QModbusDataUnit::RegisterType type, quint16 address, quint16 value)
+void SAKModbusDebugger::setData(QModbusDataUnit::RegisterType type, quint16 address, quint16 value)
 {
     if (mController){
         mController->setData(type, address, value);
     }
 }
 
-void SAKModbusDebugPage::updateRegisterValue(QModbusDataUnit::RegisterType registerTyp, quint16 startAddress, quint16 addressNumber)
+void SAKModbusDebugger::updateRegisterValue(QModbusDataUnit::RegisterType registerTyp, quint16 startAddress, quint16 addressNumber)
 {
     auto view = registerView(registerTyp);
     if (view){
@@ -182,7 +186,7 @@ void SAKModbusDebugPage::updateRegisterValue(QModbusDataUnit::RegisterType regis
     }
 }
 
-SAKModbusCommonRegisterView *SAKModbusDebugPage::registerView(QModbusDataUnit::RegisterType registerTyp)
+SAKModbusCommonRegisterView *SAKModbusDebugger::registerView(QModbusDataUnit::RegisterType registerTyp)
 {
     for (auto view : mRegisterViewList){
         if (view->registerType() == registerTyp){
@@ -193,7 +197,7 @@ SAKModbusCommonRegisterView *SAKModbusDebugPage::registerView(QModbusDataUnit::R
     return Q_NULLPTR;
 }
 
-void SAKModbusDebugPage::dataWritten(QModbusDataUnit::RegisterType table, int address, int size)
+void SAKModbusDebugger::dataWritten(QModbusDataUnit::RegisterType table, int address, int size)
 {
     // The operation is for client only.
     auto server = qobject_cast<QModbusServer*>(mController->device());
@@ -218,7 +222,7 @@ void SAKModbusDebugPage::dataWritten(QModbusDataUnit::RegisterType table, int ad
     }
 }
 
-void SAKModbusDebugPage::outputMessage(QString msg, bool isErrorMsg)
+void SAKModbusDebugger::outputMessage(QString msg, bool isErrorMsg)
 {
     QString datetime = QDateTime::currentDateTime().toString("hh:mm:ss ");
     datetime = QString("<font color=silver>%1<%font>").arg(datetime);
@@ -227,7 +231,7 @@ void SAKModbusDebugPage::outputMessage(QString msg, bool isErrorMsg)
     ui->textBrowser->append(msg);
 }
 
-void SAKModbusDebugPage::on_deviceTypeComboBox_currentIndexChanged(int index)
+void SAKModbusDebugger::on_deviceTypeComboBox_currentIndexChanged(int index)
 {
     mController = qobject_cast<SAKModbusCommonController*>(controllerFromType(index));
     mController->setContentsMargins(0, 0, 0 ,0);
@@ -237,8 +241,8 @@ void SAKModbusDebugPage::on_deviceTypeComboBox_currentIndexChanged(int index)
     connect(mController, &SAKModbusCommonController::modbusDataUnitRead, this, &SAKModbusDebugPage::outputModbusDataUnit);
     connect(mController, &SAKModbusCommonController::modbusDataUnitWritten, this, &SAKModbusDebugPage::outputModbusDataUnit);
 #endif
-    connect(mController, &SAKModbusCommonController::dataWritten, this, &SAKModbusDebugPage::dataWritten);
-    connect(mController, &SAKModbusCommonController::invokeOutputMessage, this, &SAKModbusDebugPage::outputMessage);
+    connect(mController, &SAKModbusCommonController::dataWritten, this, &SAKModbusDebugger::dataWritten);
+    connect(mController, &SAKModbusCommonController::invokeOutputMessage, this, &SAKModbusDebugger::outputMessage);
     for (auto &var : mRegisterViewControllerList){
         connect(var, &SAKModbusCommonRegisterViewController::invokeImport, mController, &SAKModbusCommonController::importRegisterData);
         connect(var, &SAKModbusCommonRegisterViewController::invokeExport, mController, &SAKModbusCommonController::exportRegisterData);
@@ -274,14 +278,14 @@ void SAKModbusDebugPage::on_deviceTypeComboBox_currentIndexChanged(int index)
     }
 }
 
-void SAKModbusDebugPage::on_connectionPushButton_clicked()
+void SAKModbusDebugger::on_connectionPushButton_clicked()
 {
     ui->connectionPushButton->setEnabled(false);
     ui->disconnectionPushButton->setEnabled(false);
     mController->open();
 }
 
-void SAKModbusDebugPage::on_disconnectionPushButton_clicked()
+void SAKModbusDebugger::on_disconnectionPushButton_clicked()
 {
     ui->connectionPushButton->setEnabled(false);
     ui->disconnectionPushButton->setEnabled(false);

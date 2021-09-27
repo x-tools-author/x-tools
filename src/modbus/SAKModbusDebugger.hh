@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2020 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2020-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKMODBUSDEBUGGING_HH
-#define SAKMODBUSDEBUGGING_HH
+#ifndef SAKMODBUSDEBUGGER_HH
+#define SAKMODBUSDEBUGGER_HH
 
 #include <QObject>
 #include <QWidget>
@@ -25,12 +25,15 @@ namespace Ui {
 class SAKModbusCommonController;
 class SAKModbusCommonRegisterView;
 class SAKModbusCommonRegisterViewController;
-class SAKModbusDebugPage : public QWidget
+class SAKModbusDebugger : public QWidget
 {
     Q_OBJECT
 public:
-    Q_INVOKABLE SAKModbusDebugPage(int type, QString name, QSettings *settings = Q_NULLPTR, QSplashScreen *splashScreen = Q_NULLPTR, QSqlDatabase *sqlDatabase = Q_NULLPTR, QWidget *parent = Q_NULLPTR);
-    ~SAKModbusDebugPage();
+    Q_INVOKABLE SAKModbusDebugger(QSettings *settings,
+                                  const QString settingsGroup,
+                                  QSqlDatabase *sqlDatabase = Q_NULLPTR,
+                                  QWidget *parent = Q_NULLPTR);
+    ~SAKModbusDebugger();
 
     enum DeviceType {
         TcpClient,
