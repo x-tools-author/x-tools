@@ -222,10 +222,42 @@ void SAKCommonInterface::setComboBoxIndexFromSettings(QSettings *settings,
     }
 }
 
-void SAKCommonInterface::setSettingsFromComboBoxIndex(QSettings *setting,
+void SAKCommonInterface::setSettingsValueFromComboBoxIndex(QSettings *settings,
                                                       QString key,
                                                       QComboBox *comboBox)
 {
     int currentIndex = comboBox->currentIndex();
-    setting->setValue(key, currentIndex);
+    settings->setValue(key, currentIndex);
+}
+
+void SAKCommonInterface::setLineEditTextFromSettings(QSettings *settings,
+                                                     QString key,
+                                                     QLineEdit *lineEdit)
+{
+    QString text = settings->value(key).toString();
+    if (!text.isEmpty()) {
+        lineEdit->setText(text);
+    }
+}
+
+void SAKCommonInterface::setSettingsValueFromLineEditText(QSettings *settings,
+                                                          QString key,
+                                                          QLineEdit *lineEdit)
+{
+    QString value = lineEdit->text();
+    settings->setValue(key, value);
+}
+
+void SAKCommonInterface::setCheckBoxValueFromSettings(QSettings *settings,
+                                                      QString key,
+                                                      QCheckBox *checkBox)
+{
+    checkBox->setChecked(settings->value(key).toBool());
+}
+
+void SAKCommonInterface::setSettingsValueFromCheckBox(QSettings *settings,
+                                                      QString key,
+                                                      QCheckBox *checkBox)
+{
+    settings->setValue(key, checkBox->isChecked());
 }
