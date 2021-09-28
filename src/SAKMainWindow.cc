@@ -872,6 +872,7 @@ void SAKMainWindow::openDebugPageWidget()
     // The function must be called by signal of QAction
     QWidget *widget = debugPage(sender());
     if (widget){
+        widget->setParent(Q_NULLPTR);
         widget->show();
         appendWindowAction(widget);
     }
