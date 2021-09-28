@@ -1,9 +1,11 @@
 FORMS += \
     $$PWD/SAKDebuggerPluginTransponders.ui
 HEADERS += \
-    $$PWD/SAKDebuggerPluginTransponders.hh
+    $$PWD/SAKDebuggerPluginTransponders.hh \
+    $$PWD/SAKTranspondeItem.hh
 SOURCES += \
-    $$PWD/SAKDebuggerPluginTransponders.cc
+    $$PWD/SAKDebuggerPluginTransponders.cc \
+    $$PWD/SAKTranspondeItem.cc
 INCLUDEPATH += \
     $$PWD
 
