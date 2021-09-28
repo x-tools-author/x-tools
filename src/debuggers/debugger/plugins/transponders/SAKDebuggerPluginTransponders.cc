@@ -30,6 +30,10 @@ SAKDebuggerPluginTransponders::SAKDebuggerPluginTransponders(QSqlDatabase *sqlDa
                                                     settings,
                                                     settingsGroup,
                                                     tableNameSuffix + "SerialPort");
+    connect(this, &SAKDebuggerPluginTransponders::bytesRead,
+            serialPort, &SAKTransponderSerialPort::onBytesRead);
+    connect(serialPort, &SAKTransponderSerialPort::invokeWriteCookedBytes,
+            this, &SAKDebuggerPluginTransponders::invokeWriteCookedBytes);
     serialPort->setContentsMargins(6, 6, 6, 6);
     mUi->tabWidget->addTab(serialPort, tr("SerialPort"));
 }
@@ -37,9 +41,4 @@ SAKDebuggerPluginTransponders::SAKDebuggerPluginTransponders(QSqlDatabase *sqlDa
 SAKDebuggerPluginTransponders::~SAKDebuggerPluginTransponders()
 {
     delete mUi;
-}
-
-void SAKDebuggerPluginTransponders::onBytesRead(QByteArray bytes)
-{
-    Q_UNUSED(bytes);
 }

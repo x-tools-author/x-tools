@@ -55,7 +55,6 @@ signals:
     void stopBitsChanged(int stopBits);
     void flowControlChanged(int flowControl);
     void frameIntervalChanged(int frameInterval);
-
 };
 
 #endif

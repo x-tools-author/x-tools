@@ -59,13 +59,16 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
                                                       settings,
                                                       settingsGroup,
                                                       "Transponders");
+    connect(this, &SAKDebuggerPlugins::bytesRead,
+            mTransponders, &SAKDebuggerPluginTransponders::bytesRead);
+    connect(mTransponders, &SAKDebuggerPluginTransponders::invokeWriteCookedBytes,
+            this, &SAKDebuggerPlugins::invokeWriteCookedBytes);
     mTimedSending = new SAKDebuggerPluginTimedSending(sqlDatabase,
                                                       settings,
                                                       settingsGroup,
                                                       "TimedSending");
     connect(mTimedSending, &SAKDebuggerPluginTimedSending::invokeWriteCookedBytes,
             this, &SAKDebuggerPlugins::invokeWriteCookedBytes);
-
     mAutoResponse = new SAKDebuggerPluginAutoResponse(settings,
                                                       settingsGroup,
                                                       sqlDatabase,

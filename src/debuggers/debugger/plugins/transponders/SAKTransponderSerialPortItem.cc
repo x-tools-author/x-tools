@@ -116,7 +116,9 @@ SAKTransponderSerialPortItem::parametersContext()
 
 void SAKTransponderSerialPortItem::onBytesRead(QByteArray bytes)
 {
-    mDevice->write(bytes);
+    if (enable()) {
+        mDevice->writeBytes(bytes);
+    }
 }
 
 void SAKTransponderSerialPortItem::initSignals()

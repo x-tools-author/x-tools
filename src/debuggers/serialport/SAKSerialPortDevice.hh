@@ -27,6 +27,7 @@ public:
                         const QString &settingsGroup,
                         QWidget *uiParent,
                         QObject *parent = Q_NULLPTR);
+protected:
     bool initialize() final;
     QByteArray read() final;
     QByteArray write(const QByteArray &bytes) final;
