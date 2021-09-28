@@ -39,6 +39,8 @@ public:
             );
      ~SAKTransponderSerialPortItem();
     SAKCommonDataStructure::SAKStructSerialPortParametersContext parametersContext();
+protected:
+    void onBytesRead(QByteArray bytes) final;
 private:
     Ui::SAKTransponderSerialPortItem *mUi;
     SAKSerialPortDevice *mDevice;

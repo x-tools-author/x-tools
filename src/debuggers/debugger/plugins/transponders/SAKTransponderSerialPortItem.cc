@@ -53,7 +53,6 @@ SAKTransponderSerialPortItem::SAKTransponderSerialPortItem(
 
     setIndexFromText(parasCtx.portName, mUi->portNameComboBox);
     setIndexFromText(QString::number(parasCtx.baudRate), mUi->baudRateComboBox);
-
     setIndexFromData(parasCtx.dataBits, mUi->dataBitscomboBox);
     setIndexFromData(parasCtx.parity, mUi->parityComboBox);
     setIndexFromData(parasCtx.stopBits, mUi->stopBitscomboBox);
@@ -115,6 +114,11 @@ SAKTransponderSerialPortItem::parametersContext()
     return ctx;
 }
 
+void SAKTransponderSerialPortItem::onBytesRead(QByteArray bytes)
+{
+    mDevice->write(bytes);
+}
+
 void SAKTransponderSerialPortItem::initSignals()
 {
     connect(mUi->enableCheckBox, &QCheckBox::clicked, this, [=](){
@@ -132,11 +136,13 @@ void SAKTransponderSerialPortItem::initSignals()
 
     connect(mUi->portNameComboBox, &QComboBox::currentTextChanged,
             this, [&](const QString &text){
+        mDevice->setParametersContext(QVariant::fromValue(parametersContext()));
         emit this->portNameChanged(text);
     });
 
     connect(mUi->baudRateComboBox, &QComboBox::currentTextChanged,
             this, [&](const QString &text){
+        mDevice->setParametersContext(QVariant::fromValue(parametersContext()));
         emit this->baudRateChanged(text.toInt());
     });
 
@@ -144,6 +150,7 @@ void SAKTransponderSerialPortItem::initSignals()
             QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, [&](int index){
         Q_UNUSED(index);
+        mDevice->setParametersContext(QVariant::fromValue(parametersContext()));
         emit this->dataBitsChanged(mUi->dataBitscomboBox->currentData().toInt());
     });
 
@@ -151,6 +158,7 @@ void SAKTransponderSerialPortItem::initSignals()
             QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, [&](int index){
         Q_UNUSED(index);
+        mDevice->setParametersContext(QVariant::fromValue(parametersContext()));
         emit this->parityChanged(mUi->parityComboBox->currentData().toInt());
     });
 
@@ -158,6 +166,7 @@ void SAKTransponderSerialPortItem::initSignals()
             QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, [&](int index){
         Q_UNUSED(index);
+        mDevice->setParametersContext(QVariant::fromValue(parametersContext()));
         emit this->stopBitsChanged(mUi->stopBitscomboBox->currentData().toInt());
     });
 
@@ -165,11 +174,13 @@ void SAKTransponderSerialPortItem::initSignals()
             QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, [&](int index){
         Q_UNUSED(index);
+        mDevice->setParametersContext(QVariant::fromValue(parametersContext()));
         emit this->flowControlChanged(mUi->dataBitscomboBox->currentData().toInt());
     });
 
     connect(mUi->frameIntervalSpinBox, QOverload<int>::of(&QSpinBox::valueChanged),
             this, [&](int value){
+        mDevice->setParametersContext(QVariant::fromValue(parametersContext()));
         emit this->frameIntervalChanged(value);
     });
 
