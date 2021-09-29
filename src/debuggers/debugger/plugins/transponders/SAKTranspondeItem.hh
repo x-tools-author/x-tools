@@ -19,8 +19,15 @@ class SAKTranspondeItem : public SAKBaseListWidgetItemWidget
 public:
     SAKTranspondeItem(QWidget *parent = Q_NULLPTR);
     SAKTranspondeItem(quint64 id, QWidget *parent = Q_NULLPTR);
+    void setupDevice();
 protected:
     void onBytesRead(QByteArray bytes) final;
+private:
+    virtual QVariant parametersContext() = 0;
+    virtual SAKDebuggerDevice *device() = 0;
+    virtual void onDeviceStateChanged(bool opened) = 0;
+signals:
+    void parametersContextChanged();
 };
 
 #endif // SAKTRANSPONDEITEM_HH

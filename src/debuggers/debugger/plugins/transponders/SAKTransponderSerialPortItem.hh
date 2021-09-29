@@ -19,15 +19,15 @@
 #include <QSerialPort>
 #include <QJsonObject>
 
+#include "SAKTranspondeItem.hh"
 #include "SAKSerialPortDevice.hh"
 #include "SAKCommonDataStructure.hh"
-#include "SAKBaseListWidgetItemWidget.hh"
 
 namespace Ui {
     class SAKTransponderSerialPortItem;
 }
 
-class SAKTransponderSerialPortItem : public SAKBaseListWidgetItemWidget
+class SAKTransponderSerialPortItem : public SAKTranspondeItem
 {
     Q_OBJECT
 public:
@@ -38,9 +38,10 @@ public:
             QWidget *parent = Q_NULLPTR
             );
      ~SAKTransponderSerialPortItem();
-    SAKCommonDataStructure::SAKStructSerialPortParametersContext parametersContext();
 protected:
-    void onBytesRead(QByteArray bytes) final;
+    QVariant parametersContext() final;
+    SAKDebuggerDevice *device() final;
+    void onDeviceStateChanged(bool opened) final;
 private:
     Ui::SAKTransponderSerialPortItem *mUi;
     SAKSerialPortDevice *mDevice;
