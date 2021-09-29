@@ -10,6 +10,7 @@
 #ifndef SAKTRANSPONDER_HH
 #define SAKTRANSPONDER_HH
 
+#include <QVariant>
 #include "SAKBaseListWidgetItemWidget.hh"
 
 class SAKDebuggerDevice;

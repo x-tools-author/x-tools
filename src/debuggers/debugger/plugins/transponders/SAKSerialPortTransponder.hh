@@ -24,7 +24,7 @@
 #include "SAKCommonDataStructure.hh"
 
 namespace Ui {
-    class SAKTransponderSerialPortItem;
+    class SAKSerialPortTransponder;
 }
 
 class SAKSerialPortTransponder : public SAKTransponder
@@ -43,7 +43,7 @@ protected:
     SAKDebuggerDevice *device() final;
     void onDeviceStateChanged(bool opened) final;
 private:
-    Ui::SAKTransponderSerialPortItem *mUi;
+    Ui::SAKSerialPortTransponder *mUi;
     SAKSerialPortDevice *mDevice;
 private:
     void initComponents();

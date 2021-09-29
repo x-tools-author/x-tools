@@ -13,11 +13,11 @@
 
 #include "SAKCommonInterface.hh"
 #include "SAKSerialPortTransponder.hh"
-#include "ui_SAKTransponderSerialPortItem.h"
+#include "ui_SAKSerialPortTransponder.h"
 
 SAKSerialPortTransponder::SAKSerialPortTransponder(QWidget *parent)
     :SAKTransponder(parent)
-    ,mUi(new Ui::SAKTransponderSerialPortItem)
+    ,mUi(new Ui::SAKSerialPortTransponder)
     ,mDevice(new SAKSerialPortDevice(Q_NULLPTR, QString(), Q_NULLPTR, Q_NULLPTR))
 {    
     mUi->setupUi(this);
@@ -32,7 +32,7 @@ SAKSerialPortTransponder::SAKSerialPortTransponder(
         QWidget *parent
         )
     :SAKTransponder(id, parent)
-    ,mUi(new Ui::SAKTransponderSerialPortItem)
+    ,mUi(new Ui::SAKSerialPortTransponder)
     ,mDevice(new SAKSerialPortDevice(Q_NULLPTR, QString(), Q_NULLPTR, Q_NULLPTR))
 {
     mUi->setupUi(this);

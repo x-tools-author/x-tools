@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SAKTransponderSerialPortItem</class>
- <widget class="QWidget" name="SAKTransponderSerialPortItem">
+ <class>SAKSerialPortTransponder</class>
+ <widget class="QWidget" name="SAKSerialPortTransponder">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>482</width>
-    <height>61</height>
+    <width>613</width>
+    <height>73</height>
    </rect>
   </property>
   <property name="windowTitle">

@@ -7,6 +7,7 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ***************************************************************************************/
+#include "SAKUdpTransponders.hh"
 #include "SAKSerialPortTransponders.hh"
 #include "SAKDebuggerPluginTransponders.hh"
 #include "ui_SAKDebuggerPluginTransponders.h"
@@ -27,15 +28,27 @@ SAKDebuggerPluginTransponders::SAKDebuggerPluginTransponders(QSqlDatabase *sqlDa
     mUi->tabWidget->clear();
 
     auto *serialPort = new SAKSerialPortTransponders(sqlDatabase,
-                                                    settings,
-                                                    settingsGroup,
-                                                    tableNameSuffix + "SerialPort");
+                                                     settings,
+                                                     settingsGroup,
+                                                     tableNameSuffix + "SerialPort");
     connect(this, &SAKDebuggerPluginTransponders::bytesRead,
             serialPort, &SAKSerialPortTransponders::onBytesRead);
     connect(serialPort, &SAKSerialPortTransponders::invokeWriteCookedBytes,
             this, &SAKDebuggerPluginTransponders::invokeWriteCookedBytes);
     serialPort->setContentsMargins(6, 6, 6, 6);
     mUi->tabWidget->addTab(serialPort, tr("SerialPort"));
+
+
+    auto udpTransponder = new SAKUdpTransponders(sqlDatabase,
+                                                 settings,
+                                                 settingsGroup,
+                                                 tableNameSuffix + "UdpClient");
+    connect(this, &SAKDebuggerPluginTransponders::bytesRead,
+            udpTransponder, &SAKUdpTransponders::onBytesRead);
+    connect(udpTransponder, &SAKUdpTransponders::invokeWriteCookedBytes,
+            this, &SAKDebuggerPluginTransponders::invokeWriteCookedBytes);
+    serialPort->setContentsMargins(6, 6, 6, 6);
+    mUi->tabWidget->addTab(udpTransponder, tr("UdpClient"));
 }
 
 SAKDebuggerPluginTransponders::~SAKDebuggerPluginTransponders()
