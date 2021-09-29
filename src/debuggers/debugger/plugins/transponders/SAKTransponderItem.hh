@@ -7,18 +7,18 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
 ****************************************************************************************/
-#ifndef SAKTRANSPONDEITEM_HH
-#define SAKTRANSPONDEITEM_HH
+#ifndef SAKTRANSPONDERITEM_HH
+#define SAKTRANSPONDERITEM_HH
 
 #include "SAKBaseListWidgetItemWidget.hh"
 
 class SAKDebuggerDevice;
-class SAKTranspondeItem : public SAKBaseListWidgetItemWidget
+class SAKTransponderItem : public SAKBaseListWidgetItemWidget
 {
     Q_OBJECT
 public:
-    SAKTranspondeItem(QWidget *parent = Q_NULLPTR);
-    SAKTranspondeItem(quint64 id, QWidget *parent = Q_NULLPTR);
+    SAKTransponderItem(QWidget *parent = Q_NULLPTR);
+    SAKTransponderItem(quint64 id, QWidget *parent = Q_NULLPTR);
     void setupDevice();
     virtual QVariant parametersContext() = 0;
 protected:
