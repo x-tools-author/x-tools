@@ -12,11 +12,11 @@
 #include <QSerialPortInfo>
 
 #include "SAKCommonInterface.hh"
-#include "SAKTransponderSerialPortItem.hh"
+#include "SAKSerialPortTransponder.hh"
 #include "ui_SAKTransponderSerialPortItem.h"
 
-SAKTransponderSerialPortItem::SAKTransponderSerialPortItem(QWidget *parent)
-    :SAKTransponderItem(parent)
+SAKSerialPortTransponder::SAKSerialPortTransponder(QWidget *parent)
+    :SAKTransponder(parent)
     ,mUi(new Ui::SAKTransponderSerialPortItem)
     ,mDevice(new SAKSerialPortDevice(Q_NULLPTR, QString(), Q_NULLPTR, Q_NULLPTR))
 {    
@@ -26,12 +26,12 @@ SAKTransponderSerialPortItem::SAKTransponderSerialPortItem(QWidget *parent)
     setupDevice();
 }
 
-SAKTransponderSerialPortItem::SAKTransponderSerialPortItem(
+SAKSerialPortTransponder::SAKSerialPortTransponder(
         quint64 id,
         SAKCommonDataStructure::SAKStructSerialPortParametersContext parasCtx,
         QWidget *parent
         )
-    :SAKTransponderItem(id, parent)
+    :SAKTransponder(id, parent)
     ,mUi(new Ui::SAKTransponderSerialPortItem)
     ,mDevice(new SAKSerialPortDevice(Q_NULLPTR, QString(), Q_NULLPTR, Q_NULLPTR))
 {
@@ -64,7 +64,7 @@ SAKTransponderSerialPortItem::SAKTransponderSerialPortItem(
     setupDevice();
 }
 
-SAKTransponderSerialPortItem::~SAKTransponderSerialPortItem()
+SAKSerialPortTransponder::~SAKSerialPortTransponder()
 {
     delete mUi;
     if (mDevice->isRunning()) {
@@ -73,7 +73,7 @@ SAKTransponderSerialPortItem::~SAKTransponderSerialPortItem()
     }
 }
 
-QVariant SAKTransponderSerialPortItem::parametersContext()
+QVariant SAKSerialPortTransponder::parametersContext()
 {
     SAKCommonDataStructure::SAKStructSerialPortParametersContext ctx;
     ctx.baudRate = mUi->baudRateComboBox->currentText().toInt();
@@ -102,12 +102,12 @@ QVariant SAKTransponderSerialPortItem::parametersContext()
     return QVariant::fromValue(ctx);
 }
 
-SAKDebuggerDevice *SAKTransponderSerialPortItem::device()
+SAKDebuggerDevice *SAKSerialPortTransponder::device()
 {
     return mDevice;
 }
 
-void SAKTransponderSerialPortItem::onDeviceStateChanged(bool opened)
+void SAKSerialPortTransponder::onDeviceStateChanged(bool opened)
 {
     mUi->customBaudrateCheckBox->setEnabled(!opened);
     mUi->portNameComboBox->setEnabled(!opened);
@@ -119,7 +119,7 @@ void SAKTransponderSerialPortItem::onDeviceStateChanged(bool opened)
     mUi->frameIntervalSpinBox->setEnabled(!opened);
 }
 
-void SAKTransponderSerialPortItem::initComponents()
+void SAKSerialPortTransponder::initComponents()
 {
     SAKCommonInterface::addSerialPortNametItemsToComboBox(mUi->portNameComboBox);
     SAKCommonInterface::addSerialPortBaudRateItemsToComboBox(mUi->baudRateComboBox);
@@ -131,7 +131,7 @@ void SAKTransponderSerialPortItem::initComponents()
                 );
 }
 
-void SAKTransponderSerialPortItem::initSignals()
+void SAKSerialPortTransponder::initSignals()
 {
     connect(mUi->enableCheckBox, &QCheckBox::clicked, this, [=](){
         setEnable(mUi->enableCheckBox->isChecked());

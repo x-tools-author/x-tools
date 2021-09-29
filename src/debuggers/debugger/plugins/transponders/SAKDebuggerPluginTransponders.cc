@@ -7,7 +7,7 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ***************************************************************************************/
-#include "SAKTransponderSerialPort.hh"
+#include "SAKSerialPortTransponders.hh"
 #include "SAKDebuggerPluginTransponders.hh"
 #include "ui_SAKDebuggerPluginTransponders.h"
 
@@ -26,13 +26,13 @@ SAKDebuggerPluginTransponders::SAKDebuggerPluginTransponders(QSqlDatabase *sqlDa
     mUi->setupUi(this);
     mUi->tabWidget->clear();
 
-    auto *serialPort = new SAKTransponderSerialPort(sqlDatabase,
+    auto *serialPort = new SAKSerialPortTransponders(sqlDatabase,
                                                     settings,
                                                     settingsGroup,
                                                     tableNameSuffix + "SerialPort");
     connect(this, &SAKDebuggerPluginTransponders::bytesRead,
-            serialPort, &SAKTransponderSerialPort::onBytesRead);
-    connect(serialPort, &SAKTransponderSerialPort::invokeWriteCookedBytes,
+            serialPort, &SAKSerialPortTransponders::onBytesRead);
+    connect(serialPort, &SAKSerialPortTransponders::invokeWriteCookedBytes,
             this, &SAKDebuggerPluginTransponders::invokeWriteCookedBytes);
     serialPort->setContentsMargins(6, 6, 6, 6);
     mUi->tabWidget->addTab(serialPort, tr("SerialPort"));

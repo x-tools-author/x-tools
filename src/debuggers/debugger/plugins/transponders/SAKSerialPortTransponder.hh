@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
 ****************************************************************************************/
-#ifndef SAKDEBUGGERPLUGINTRANSPONDERSERIALPORT_HH
-#define SAKDEBUGGERPLUGINTRANSPONDERSERIALPORT_HH
+#ifndef SAKSERIALPORTTRANSPONDER_HH
+#define SAKSERIALPORTTRANSPONDER_HH
 
 #include <QWidget>
 #include <QLineEdit>
@@ -19,7 +19,7 @@
 #include <QSerialPort>
 #include <QJsonObject>
 
-#include "SAKTransponderItem.hh"
+#include "SAKTransponder.hh"
 #include "SAKSerialPortDevice.hh"
 #include "SAKCommonDataStructure.hh"
 
@@ -27,17 +27,17 @@ namespace Ui {
     class SAKTransponderSerialPortItem;
 }
 
-class SAKTransponderSerialPortItem : public SAKTransponderItem
+class SAKSerialPortTransponder : public SAKTransponder
 {
     Q_OBJECT
 public:
-    SAKTransponderSerialPortItem(QWidget *parent = Q_NULLPTR);
-    SAKTransponderSerialPortItem(
+    SAKSerialPortTransponder(QWidget *parent = Q_NULLPTR);
+    SAKSerialPortTransponder(
             quint64 id,
             SAKCommonDataStructure::SAKStructSerialPortParametersContext parasCtx,
             QWidget *parent = Q_NULLPTR
             );
-     ~SAKTransponderSerialPortItem();
+     ~SAKSerialPortTransponder();
     QVariant parametersContext() final;
 protected:
     SAKDebuggerDevice *device() final;

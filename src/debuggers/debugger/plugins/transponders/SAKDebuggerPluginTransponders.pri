@@ -2,10 +2,10 @@ FORMS += \
     $$PWD/SAKDebuggerPluginTransponders.ui
 HEADERS += \
     $$PWD/SAKDebuggerPluginTransponders.hh \
-    $$PWD/SAKTransponderItem.hh
+    $$PWD/SAKTransponder.hh
 SOURCES += \
     $$PWD/SAKDebuggerPluginTransponders.cc \
-    $$PWD/SAKTransponderItem.cc
+    $$PWD/SAKTransponder.cc
 INCLUDEPATH += \
     $$PWD
 
@@ -13,9 +13,9 @@ contains(DEFINES, SAK_IMPORT_MODULE_SERIALPORT){
 FORMS += \
     $$PWD/SAKTransponderSerialPortItem.ui
 HEADERS += \
-    $$PWD/SAKTransponderSerialPort.hh \
-    $$PWD/SAKTransponderSerialPortItem.hh
+    $$PWD/SAKSerialPortTransponder.hh \
+    $$PWD/SAKSerialPortTransponders.hh
 SOURCES += \
-    $$PWD/SAKTransponderSerialPort.cc \
-    $$PWD/SAKTransponderSerialPortItem.cc
+    $$PWD/SAKSerialPortTransponder.cc \
+    $$PWD/SAKSerialPortTransponders.cc
 }

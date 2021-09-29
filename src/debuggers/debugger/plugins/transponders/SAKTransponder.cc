@@ -8,31 +8,31 @@
  * the file LICENCE in the root of the source code directory.
 ****************************************************************************************/
 #include "SAKDebuggerDevice.hh"
-#include "SAKTransponderItem.hh"
+#include "SAKTransponder.hh"
 
-SAKTransponderItem::SAKTransponderItem(QWidget *parent)
+SAKTransponder::SAKTransponder(QWidget *parent)
     :SAKBaseListWidgetItemWidget(parent)
 {
 
 }
 
-SAKTransponderItem::SAKTransponderItem(quint64 id, QWidget *parent)
+SAKTransponder::SAKTransponder(quint64 id, QWidget *parent)
     :SAKBaseListWidgetItemWidget(id, parent)
 {
 
 }
 
-void SAKTransponderItem::setupDevice()
+void SAKTransponder::setupDevice()
 {
     SAKDebuggerDevice *dev = device();
     if (dev) {
         dev->setParametersContext(parametersContext());
-        connect(this, &SAKTransponderItem::parametersContextChanged,
+        connect(this, &SAKTransponder::parametersContextChanged,
                 this, [=](){
             dev->setParametersContext(parametersContext());
         });
         connect(dev, &SAKDebuggerDevice::bytesRead,
-                this, &SAKTransponderItem::invokeWriteCookedBytes);
+                this, &SAKTransponder::invokeWriteCookedBytes);
         connect(dev, &SAKDebuggerDevice::errorOccurred,
                 this, [=](){
             onDeviceStateChanged(false);
@@ -48,7 +48,7 @@ void SAKTransponderItem::setupDevice()
     }
 }
 
-void SAKTransponderItem::onBytesRead(QByteArray bytes)
+void SAKTransponder::onBytesRead(QByteArray bytes)
 {
     if (enable()) {
         SAKDebuggerDevice *dev = device();

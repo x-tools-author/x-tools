@@ -8,19 +8,19 @@
  * the file LICENCE in the root of the source code directory.
 ****************************************************************************************/
 #include "SAKCommonDataStructure.hh"
-#include "SAKTransponderSerialPort.hh"
+#include "SAKSerialPortTransponders.hh"
 
-SAKTransponderSerialPort::SAKTransponderSerialPort(QSqlDatabase *sqlDatabase,
-                                                   QSettings *settings,
-                                                   QString settingsGroup,
-                                                   QString tableNameSuffix)
+SAKSerialPortTransponders::SAKSerialPortTransponders(QSqlDatabase *sqlDatabase,
+                                                     QSettings *settings,
+                                                     QString settingsGroup,
+                                                     QString tableNameSuffix)
     :SAKBaseListWidget(sqlDatabase, settings, settingsGroup, tableNameSuffix)
 {
     mTableCtx.tableName = mTableName;
     initialize();
 }
 
-QString SAKTransponderSerialPort::sqlCreate(const QString &tableName)
+QString SAKSerialPortTransponders::sqlCreate(const QString &tableName)
 {
     QString sqlString = QString("CREATE TABLE %1(").arg(tableName);
     sqlString.append(QString("%1 INTEGER PRIMARY KEY NOT NULL,")
@@ -48,11 +48,11 @@ QString SAKTransponderSerialPort::sqlCreate(const QString &tableName)
     return sqlString;
 }
 
-QString SAKTransponderSerialPort::sqlInsert(const QString &tableName,
+QString SAKSerialPortTransponders::sqlInsert(const QString &tableName,
                                             QWidget *itemWidget)
 {
     auto cookedItemWidget
-            = qobject_cast<SAKTransponderSerialPortItem*>(itemWidget);
+            = qobject_cast<SAKSerialPortTransponder*>(itemWidget);
     if (!cookedItemWidget) {
         return QString();
     }
@@ -82,10 +82,10 @@ QString SAKTransponderSerialPort::sqlInsert(const QString &tableName,
     return queryString;
 }
 
-QJsonObject SAKTransponderSerialPort::toJsonObject(QWidget *itemWidget)
+QJsonObject SAKSerialPortTransponders::toJsonObject(QWidget *itemWidget)
 {
     QJsonObject jsonObj;
-    auto cookedItemWidget = qobject_cast<SAKTransponderSerialPortItem*>(itemWidget);
+    auto cookedItemWidget = qobject_cast<SAKSerialPortTransponder*>(itemWidget);
     if (cookedItemWidget) {
         auto parasCtx = cookedItemWidget->parametersContext()
                 .value<SAKSerialPortParametersContext>();
@@ -101,7 +101,7 @@ QJsonObject SAKTransponderSerialPort::toJsonObject(QWidget *itemWidget)
     return jsonObj;
 }
 
-QJsonObject SAKTransponderSerialPort::toJsonObject(const QSqlQuery &sqlQuery)
+QJsonObject SAKSerialPortTransponders::toJsonObject(const QSqlQuery &sqlQuery)
 {
     QJsonObject jsonObj;
     QString column;
@@ -142,10 +142,10 @@ QJsonObject SAKTransponderSerialPort::toJsonObject(const QSqlQuery &sqlQuery)
     return jsonObj;
 }
 
-QWidget *SAKTransponderSerialPort::createItemFromParameters(const QJsonObject &jsonObj)
+QWidget *SAKSerialPortTransponders::createItemFromParameters(const QJsonObject &jsonObj)
 {
     if (jsonObj.isEmpty()) {
-        return new SAKTransponderSerialPortItem();
+        return new SAKSerialPortTransponder();
     } else {
         SAKCommonDataStructure::SAKStructSerialPortParametersContext parasCtx;
         parasCtx.portName = jsonObj.value(mTableCtx.columns.portName).toString();
@@ -166,50 +166,50 @@ QWidget *SAKTransponderSerialPort::createItemFromParameters(const QJsonObject &j
 
 
         quint64 id = jsonObj.value(mTableCtx.columns.id).toVariant().toULongLong();
-        auto itemWidget = new SAKTransponderSerialPortItem(id, parasCtx);
+        auto itemWidget = new SAKSerialPortTransponder(id, parasCtx);
         return itemWidget;
     }
 }
 
-quint64 SAKTransponderSerialPort::itemId(QWidget *itemWidget)
+quint64 SAKSerialPortTransponders::itemId(QWidget *itemWidget)
 {
-    auto cookedItemWidget = qobject_cast<SAKTransponderSerialPortItem*>(itemWidget);
+    auto cookedItemWidget = qobject_cast<SAKSerialPortTransponder*>(itemWidget);
     if (cookedItemWidget) {
         return cookedItemWidget->id();
     }
     return 0;
 }
 
-void SAKTransponderSerialPort::connectSignalsToSlots(QWidget *itemWidget)
+void SAKSerialPortTransponders::connectSignalsToSlots(QWidget *itemWidget)
 {
-    auto cookedItemWidget = qobject_cast<SAKTransponderSerialPortItem*>(itemWidget);
+    auto cookedItemWidget = qobject_cast<SAKSerialPortTransponder*>(itemWidget);
     quint64 id = cookedItemWidget->id();
     if (cookedItemWidget) {
-        connect(cookedItemWidget, &SAKTransponderSerialPortItem::portNameChanged,
+        connect(cookedItemWidget, &SAKSerialPortTransponder::portNameChanged,
                 this, [=](QString portName){
             updateRecord(id, mTableCtx.columns.portName, portName);
         });
-        connect(cookedItemWidget, &SAKTransponderSerialPortItem::baudRateChanged,
+        connect(cookedItemWidget, &SAKSerialPortTransponder::baudRateChanged,
                 this, [=](int value){
             updateRecord(id, mTableCtx.columns.baudRate, value);
         });
-        connect(cookedItemWidget, &SAKTransponderSerialPortItem::dataBitsChanged,
+        connect(cookedItemWidget, &SAKSerialPortTransponder::dataBitsChanged,
                 this, [=](int value){
             updateRecord(id, mTableCtx.columns.dataBits, value);
         });
-        connect(cookedItemWidget, &SAKTransponderSerialPortItem::parityChanged,
+        connect(cookedItemWidget, &SAKSerialPortTransponder::parityChanged,
                 this, [=](int value){
             updateRecord(id, mTableCtx.columns.parity, value);
         });
-        connect(cookedItemWidget, &SAKTransponderSerialPortItem::stopBitsChanged,
+        connect(cookedItemWidget, &SAKSerialPortTransponder::stopBitsChanged,
                 this, [=](int value){
             updateRecord(id, mTableCtx.columns.stopBits, value);
         });
-        connect(cookedItemWidget, &SAKTransponderSerialPortItem::flowControlChanged,
+        connect(cookedItemWidget, &SAKSerialPortTransponder::flowControlChanged,
                 this, [=](int value){
             updateRecord(id, mTableCtx.columns.flowControl, value);
         });
-        connect(cookedItemWidget, &SAKTransponderSerialPortItem::frameIntervalChanged,
+        connect(cookedItemWidget, &SAKSerialPortTransponder::frameIntervalChanged,
                 this, [=](int value){
             updateRecord(id, mTableCtx.columns.frameIntervel, value);
         });

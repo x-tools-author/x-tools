@@ -7,20 +7,20 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
 ****************************************************************************************/
-#ifndef SAKTRANSPONDERSERIALPORT_HH
-#define SAKTRANSPONDERSERIALPORT_HH
+#ifndef SAKSERIALPORTTRANSPONDERS_HH
+#define SAKSERIALPORTTRANSPONDERS_HH
 
 #include <QSettings>
 #include <QSqlDatabase>
 
 #include "SAKBaseListWidget.hh"
-#include "SAKTransponderSerialPortItem.hh"
+#include "SAKSerialPortTransponder.hh"
 
-class SAKTransponderSerialPort : public SAKBaseListWidget
+class SAKSerialPortTransponders : public SAKBaseListWidget
 {
     Q_OBJECT
 public:
-    SAKTransponderSerialPort(QSqlDatabase *sqlDatabase,
+    SAKSerialPortTransponders(QSqlDatabase *sqlDatabase,
                              QSettings *settings,
                              QString settingsGroup,
                              QString tableNameSuffix);
