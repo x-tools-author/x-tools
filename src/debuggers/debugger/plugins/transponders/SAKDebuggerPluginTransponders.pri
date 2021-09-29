@@ -1,5 +1,6 @@
 FORMS += \
-    $$PWD/SAKDebuggerPluginTransponders.ui
+    $$PWD/SAKDebuggerPluginTransponders.ui \
+    $$PWD/SAKUdpTransponder.ui
 HEADERS += \
     $$PWD/SAKDebuggerPluginTransponder.hh \
     $$PWD/SAKDebuggerPluginTransponders.hh
