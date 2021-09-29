@@ -38,8 +38,8 @@ public:
             QWidget *parent = Q_NULLPTR
             );
      ~SAKTransponderSerialPortItem();
-protected:
     QVariant parametersContext() final;
+protected:
     SAKDebuggerDevice *device() final;
     void onDeviceStateChanged(bool opened) final;
 private:

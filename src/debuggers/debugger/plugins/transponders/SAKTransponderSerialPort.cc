@@ -57,7 +57,8 @@ QString SAKTransponderSerialPort::sqlInsert(const QString &tableName,
         return QString();
     }
 
-    auto itemCtx = cookedItemWidget->parametersContext();
+    auto itemCtx = cookedItemWidget->parametersContext()
+            .value<SAKSerialPortParametersContext>();
     auto tableCtx = mTableCtx;
     QString queryString = QString("INSERT INTO %1(").arg(tableName);
     queryString.append(tableCtx.columns.id).append(",");
@@ -86,7 +87,8 @@ QJsonObject SAKTransponderSerialPort::toJsonObject(QWidget *itemWidget)
     QJsonObject jsonObj;
     auto cookedItemWidget = qobject_cast<SAKTransponderSerialPortItem*>(itemWidget);
     if (cookedItemWidget) {
-        auto parasCtx = cookedItemWidget->parametersContext();
+        auto parasCtx = cookedItemWidget->parametersContext()
+                .value<SAKSerialPortParametersContext>();
         jsonObj.insert(mTableCtx.columns.id, qint64(cookedItemWidget->id()));
         jsonObj.insert(mTableCtx.columns.portName, parasCtx.portName);
         jsonObj.insert(mTableCtx.columns.baudRate, parasCtx.baudRate);

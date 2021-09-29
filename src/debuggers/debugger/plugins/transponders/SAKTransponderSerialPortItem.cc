@@ -23,6 +23,7 @@ SAKTransponderSerialPortItem::SAKTransponderSerialPortItem(QWidget *parent)
     mUi->setupUi(this);
     initComponents();
     initSignals();
+    setupDevice();
 }
 
 SAKTransponderSerialPortItem::SAKTransponderSerialPortItem(
@@ -60,6 +61,7 @@ SAKTransponderSerialPortItem::SAKTransponderSerialPortItem(
     mUi->frameIntervalSpinBox->setValue(parasCtx.frameIntervel);
 
     initSignals();
+    setupDevice();
 }
 
 SAKTransponderSerialPortItem::~SAKTransponderSerialPortItem()
@@ -194,6 +196,8 @@ void SAKTransponderSerialPortItem::initSignals()
         emit this->frameIntervalChanged(value);
     });
 
-    connect(mDevice, &SAKSerialPortDevice::bytesRead,
-            this, &SAKTransponderSerialPortItem::invokeWriteCookedBytes);
+    connect(mDevice, &SAKSerialPortDevice::errorOccurred,
+            this, [=]{
+        mUi->enableCheckBox->setChecked(false);
+    });
 }
