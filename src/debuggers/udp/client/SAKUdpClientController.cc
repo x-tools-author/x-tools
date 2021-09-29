@@ -78,8 +78,10 @@ void SAKUdpClientController::updateUiState(bool opened)
     mUi->localhostComboBox->setEnabled(!opened);
     mUi->localPortlineEdit->setEnabled(!opened);
     mUi->specifyClientAddressAndPort->setEnabled(!opened);
+#if 0
     mUi->targetHostLineEdit->setEnabled(!opened);
     mUi->targetPortLineEdit->setEnabled(!opened);
+#endif
 }
 
 void SAKUdpClientController::refreshDevice()
