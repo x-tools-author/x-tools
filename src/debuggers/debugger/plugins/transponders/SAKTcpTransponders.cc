@@ -125,9 +125,9 @@ void SAKTcpTransponders::connectSignalsToSlots(QWidget *itemWidget)
         connect(cookedItemWidget, &SAKTcpTransponder::parametersContextChanged,
                 this, [=](){
             auto parasCtx = cookedItemWidget->parametersContext()
-                    .value<SAKUdpClientParametersContext>();
-            updateRecord(id, mTableCtx.columns.serverHost, parasCtx.peerHost);
-            updateRecord(id, mTableCtx.columns.serverPort, parasCtx.peerPort);
+                    .value<SAKTcpClientParametersContext>();
+            updateRecord(id, mTableCtx.columns.serverHost, parasCtx.serverHost);
+            updateRecord(id, mTableCtx.columns.serverPort, parasCtx.serverHost);
         });
     }
 }

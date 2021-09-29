@@ -17,6 +17,7 @@ SAKTcpTransponder::SAKTcpTransponder(QWidget *parent)
     ,mUi(new Ui::SAKTcpTransponder)
     ,mDevice(new SAKTcpClientDevice(Q_NULLPTR, QString(), Q_NULLPTR, Q_NULLPTR))
 {
+    mUi->setupUi(this);
     setupDevice();
     initSignals();
 }
@@ -28,6 +29,7 @@ SAKTcpTransponder::SAKTcpTransponder(quint64 id,
     ,mUi(new Ui::SAKTcpTransponder)
     ,mDevice(new SAKTcpClientDevice(Q_NULLPTR, QString(), Q_NULLPTR, Q_NULLPTR))
 {
+    mUi->setupUi(this);
     mUi->serverHostLineEdit->setText(parasCtx.serverHost);
     mUi->serverPortLineEdit->setText(QString::number(parasCtx.serverPort));
     setupDevice();

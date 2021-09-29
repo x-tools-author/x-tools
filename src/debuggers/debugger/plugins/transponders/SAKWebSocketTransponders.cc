@@ -126,9 +126,9 @@ void SAKWebSocketTransponders::connectSignalsToSlots(QWidget *itemWidget)
         connect(cookedItemWidget, &SAKWebSocketTransponder::parametersContextChanged,
                 this, [=](){
             auto parasCtx = cookedItemWidget->parametersContext()
-                    .value<SAKUdpClientParametersContext>();
-            updateRecord(id, mTableCtx.columns.serverAddress, parasCtx.peerHost);
-            updateRecord(id, mTableCtx.columns.sendingType, parasCtx.peerPort);
+                    .value<SAKWSClientParametersContext>();
+            updateRecord(id, mTableCtx.columns.serverAddress, parasCtx.serverAddress);
+            updateRecord(id, mTableCtx.columns.sendingType, parasCtx.sendingType);
         });
     }
 }

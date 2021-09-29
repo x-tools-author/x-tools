@@ -53,25 +53,25 @@ SAKDebuggerPluginTransponders::SAKDebuggerPluginTransponders(QSqlDatabase *sqlDa
     mUi->tabWidget->addTab(udpTransponder, tr("UdpClient"));
 
 
-    auto tcpTransponder = new SAKUdpTransponders(sqlDatabase,
+    auto tcpTransponder = new SAKTcpTransponders(sqlDatabase,
                                                  settings,
                                                  settingsGroup,
                                                  tableNameSuffix + "TcpClient");
     connect(this, &SAKDebuggerPluginTransponders::bytesRead,
-            tcpTransponder, &SAKUdpTransponders::onBytesRead);
-    connect(tcpTransponder, &SAKUdpTransponders::invokeWriteCookedBytes,
+            tcpTransponder, &SAKTcpTransponders::onBytesRead);
+    connect(tcpTransponder, &SAKTcpTransponders::invokeWriteCookedBytes,
             this, &SAKDebuggerPluginTransponders::invokeWriteCookedBytes);
     tcpTransponder->setContentsMargins(6, 6, 6, 6);
     mUi->tabWidget->addTab(tcpTransponder, tr("TcpClient"));
 
 
-    auto wsTransponder = new SAKUdpTransponders(sqlDatabase,
+    auto wsTransponder = new SAKWebSocketTransponders(sqlDatabase,
                                                  settings,
                                                  settingsGroup,
                                                  tableNameSuffix + "WebSocketClient");
     connect(this, &SAKDebuggerPluginTransponders::bytesRead,
-            wsTransponder, &SAKUdpTransponders::onBytesRead);
-    connect(wsTransponder, &SAKUdpTransponders::invokeWriteCookedBytes,
+            wsTransponder, &SAKWebSocketTransponders::onBytesRead);
+    connect(wsTransponder, &SAKWebSocketTransponders::invokeWriteCookedBytes,
             this, &SAKDebuggerPluginTransponders::invokeWriteCookedBytes);
     wsTransponder->setContentsMargins(6, 6, 6, 6);
     mUi->tabWidget->addTab(wsTransponder, tr("WebSocketClient"));

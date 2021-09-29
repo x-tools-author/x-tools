@@ -16,6 +16,7 @@ SAKWebSocketTransponder::SAKWebSocketTransponder(QWidget *parent)
     ,mUi(new Ui::SAKWebSocketTransponder)
     ,mDevice(new SAKWebSocketClientDevice(Q_NULLPTR, QString(), Q_NULLPTR, Q_NULLPTR))
 {
+    mUi->setupUi(this);
     SAKCommonDataStructure::setComboBoxTextWebSocketSendingType(mUi->sendingTypeComboBox);
     setupDevice();
     initSignals();
@@ -28,6 +29,7 @@ SAKWebSocketTransponder::SAKWebSocketTransponder(quint64 id,
     ,mUi(new Ui::SAKWebSocketTransponder)
     ,mDevice(new SAKWebSocketClientDevice(Q_NULLPTR, QString(), Q_NULLPTR, Q_NULLPTR))
 {
+    mUi->setupUi(this);
     SAKCommonDataStructure::setComboBoxTextWebSocketSendingType(mUi->sendingTypeComboBox);
     mUi->serverAddressLineEdit->setText(parasCtx.serverAddress);
     mUi->sendingTypeComboBox->setCurrentIndex(parasCtx.sendingType);
