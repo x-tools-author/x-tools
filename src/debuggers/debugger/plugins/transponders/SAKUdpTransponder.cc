@@ -10,13 +10,13 @@
 #include "SAKUdpTransponder.hh"
 
 SAKUdpTransponder::SAKUdpTransponder(QWidget *parent)
-    :SAKTransponder(parent)
+    :SAKDebuggerPluginTransponder(parent)
 {
 
 }
 
 SAKUdpTransponder::SAKUdpTransponder(quint64 id, QWidget *parent)
-    :SAKTransponder(id, parent)
+    :SAKDebuggerPluginTransponder(id, parent)
 {
 
 }

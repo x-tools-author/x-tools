@@ -10,9 +10,9 @@
 #ifndef SAKUDPTRANSPONDER_HH
 #define SAKUDPTRANSPONDER_HH
 
-#include "SAKTransponder.hh"
+#include "SAKDebuggerPluginTransponder.hh"
 
-class SAKUdpTransponder : public SAKTransponder
+class SAKUdpTransponder : public SAKDebuggerPluginTransponder
 {
     Q_OBJECT
 public:

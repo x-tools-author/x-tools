@@ -16,7 +16,7 @@
 #include "ui_SAKSerialPortTransponder.h"
 
 SAKSerialPortTransponder::SAKSerialPortTransponder(QWidget *parent)
-    :SAKTransponder(parent)
+    :SAKDebuggerPluginTransponder(parent)
     ,mUi(new Ui::SAKSerialPortTransponder)
     ,mDevice(new SAKSerialPortDevice(Q_NULLPTR, QString(), Q_NULLPTR, Q_NULLPTR))
 {    
@@ -31,7 +31,7 @@ SAKSerialPortTransponder::SAKSerialPortTransponder(
         SAKCommonDataStructure::SAKStructSerialPortParametersContext parasCtx,
         QWidget *parent
         )
-    :SAKTransponder(id, parent)
+    :SAKDebuggerPluginTransponder(id, parent)
     ,mUi(new Ui::SAKSerialPortTransponder)
     ,mDevice(new SAKSerialPortDevice(Q_NULLPTR, QString(), Q_NULLPTR, Q_NULLPTR))
 {
