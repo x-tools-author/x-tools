@@ -58,7 +58,7 @@ void SAKWebSocketTransponder::onDeviceStateChanged(bool opened)
 
 void SAKWebSocketTransponder::initSignals()
 {
-    connect(mUi->enableCheckBox, &QCheckBox::click, this, [=](){
+    connect(mUi->enableCheckBox, &QCheckBox::clicked, this, [=](){
         if (mUi->enableCheckBox->isChecked()) {
             mDevice->start();
         } else {

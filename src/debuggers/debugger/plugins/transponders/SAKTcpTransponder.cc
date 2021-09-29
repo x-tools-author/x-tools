@@ -70,7 +70,7 @@ void SAKTcpTransponder::onDeviceStateChanged(bool opened)
 
 void SAKTcpTransponder::initSignals()
 {
-    connect(mUi->enableCheckBox, &QCheckBox::click, this, [=](){
+    connect(mUi->enableCheckBox, &QCheckBox::clicked, this, [=](){
         if (mUi->enableCheckBox->isChecked()) {
             mDevice->start();
         } else {

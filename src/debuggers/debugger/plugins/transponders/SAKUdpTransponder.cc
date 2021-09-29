@@ -18,8 +18,8 @@ SAKUdpTransponder::SAKUdpTransponder(QWidget *parent)
     ,mDevice(new SAKUdpClientDevice(Q_NULLPTR, QString(), Q_NULLPTR, Q_NULLPTR))
 {
     mUi->setupUi(this);
-    initSignals();
     setupDevice();
+    initSignals();
 }
 
 SAKUdpTransponder::SAKUdpTransponder(quint64 id,
@@ -32,8 +32,8 @@ SAKUdpTransponder::SAKUdpTransponder(quint64 id,
     mUi->setupUi(this);
     mUi->peerHostLineEdit->setText(parasCtx.peerHost);
     mUi->peerPortLineEdit->setText(QString::number(parasCtx.peerPort));
-    initSignals();
     setupDevice();
+    initSignals();
 }
 
 SAKUdpTransponder::~SAKUdpTransponder()
@@ -51,6 +51,8 @@ QVariant SAKUdpTransponder::parametersContext()
     ctx.specifyLocalInfo = false;
     ctx.peerHost = mUi->peerHostLineEdit->text().trimmed();
     ctx.peerPort = mUi->peerPortLineEdit->text().trimmed().toInt();
+    ctx.localHost.clear();
+    ctx.localPort = 0;
 
     return QVariant::fromValue(ctx);
 }
@@ -73,7 +75,7 @@ void SAKUdpTransponder::initSignals()
         mUi->enableCheckBox->setChecked(false);
     });
 
-    connect(mUi->enableCheckBox, &QCheckBox::clicked, [=](){
+    connect(mUi->enableCheckBox, &QCheckBox::clicked, this, [=](){
         setEnable(mUi->enableCheckBox->isChecked());
         if (mUi->enableCheckBox->isChecked()) {
             mDevice->start();
