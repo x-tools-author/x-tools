@@ -231,7 +231,7 @@ SAKUdpClientParametersContext;
 typedef SAKCommonDataStructure::SAKStructUdpServerParametersContext
 SAKUdpServerParametersContext;
 typedef SAKCommonDataStructure::SAKStructTcpClientParametersContext
-SAKSTcpClientParametersContext;
+SAKTcpClientParametersContext;
 typedef SAKCommonDataStructure::SAKStructTcpServerParametersContext
 SAKTcpServerParametersContext;
 typedef SAKCommonDataStructure::SAKStructWSClientParametersContext

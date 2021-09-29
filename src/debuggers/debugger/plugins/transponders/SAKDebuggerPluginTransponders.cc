@@ -8,6 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  ***************************************************************************************/
 #include "SAKUdpTransponders.hh"
+#include "SAKTcpTransponders.hh"
 #include "SAKSerialPortTransponders.hh"
 #include "SAKDebuggerPluginTransponders.hh"
 #include "ui_SAKDebuggerPluginTransponders.h"
@@ -49,6 +50,18 @@ SAKDebuggerPluginTransponders::SAKDebuggerPluginTransponders(QSqlDatabase *sqlDa
             this, &SAKDebuggerPluginTransponders::invokeWriteCookedBytes);
     udpTransponder->setContentsMargins(6, 6, 6, 6);
     mUi->tabWidget->addTab(udpTransponder, tr("UdpClient"));
+
+
+    auto tcpTransponder = new SAKUdpTransponders(sqlDatabase,
+                                                 settings,
+                                                 settingsGroup,
+                                                 tableNameSuffix + "TcpClient");
+    connect(this, &SAKDebuggerPluginTransponders::bytesRead,
+            tcpTransponder, &SAKUdpTransponders::onBytesRead);
+    connect(tcpTransponder, &SAKUdpTransponders::invokeWriteCookedBytes,
+            this, &SAKDebuggerPluginTransponders::invokeWriteCookedBytes);
+    tcpTransponder->setContentsMargins(6, 6, 6, 6);
+    mUi->tabWidget->addTab(tcpTransponder, tr("TcpClient"));
 
 
     QString pageIndexSettingsKey = settingsGroup.append("/transponders/pageIndex");

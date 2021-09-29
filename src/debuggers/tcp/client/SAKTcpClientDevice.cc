@@ -26,7 +26,7 @@ SAKTcpClientDevice::SAKTcpClientDevice(QSettings *settings,
     // Reconnection
     connect(this, &SAKTcpClientDevice::finished, this, [&](){
         auto parameters = parametersContext()
-                .value<SAKSTcpClientParametersContext>();
+                .value<SAKTcpClientParametersContext>();
         if (parameters.allowAutomaticConnection){
             QTimer *timer = new QTimer(this);
             timer->setInterval(2000);
@@ -44,7 +44,7 @@ SAKTcpClientDevice::SAKTcpClientDevice(QSettings *settings,
 bool SAKTcpClientDevice::initialize()
 {
     auto parameters = parametersContext()
-            .value<SAKSTcpClientParametersContext>();
+            .value<SAKTcpClientParametersContext>();
     mLocalHost = parameters.localHost;
     mLocalPort = parameters.localPort;
     mServerHost = parameters.serverHost;
