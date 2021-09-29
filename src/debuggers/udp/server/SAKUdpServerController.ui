@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>219</width>
-    <height>149</height>
+    <width>99</width>
+    <height>119</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -31,6 +31,11 @@
    </item>
    <item row="0" column="0" colspan="2">
     <widget class="QLabel" name="label_5">
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+	color: blue
+}</string>
+     </property>
      <property name="text">
       <string>Udp server information</string>
      </property>
@@ -45,6 +50,11 @@
    </item>
    <item row="4" column="0" colspan="2">
     <widget class="QLabel" name="label_6">
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+	color: blue
+}</string>
+     </property>
      <property name="text">
       <string>Udp client list</string>
      </property>

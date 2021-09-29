@@ -64,8 +64,8 @@ SAKDebuggerDevice *SAKTcpTransponder::device()
 
 void SAKTcpTransponder::onDeviceStateChanged(bool opened)
 {
-    mUi->serverHostLineEdit->setEnabled(opened);
-    mUi->serverPortLineEdit->setEnabled(opened);
+    mUi->serverHostLineEdit->setEnabled(!opened);
+    mUi->serverPortLineEdit->setEnabled(!opened);
 }
 
 void SAKTcpTransponder::initSignals()

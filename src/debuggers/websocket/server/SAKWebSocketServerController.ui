@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>156</width>
-    <height>151</height>
+    <width>118</width>
+    <height>121</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -28,6 +28,11 @@
    </property>
    <item row="4" column="0" colspan="2">
     <widget class="QLabel" name="label_6">
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+	color: blue
+}</string>
+     </property>
      <property name="text">
       <string>Web socket client list</string>
      </property>
@@ -69,6 +74,11 @@
    </item>
    <item row="0" column="0" colspan="2">
     <widget class="QLabel" name="label_5">
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+	color: blue
+}</string>
+     </property>
      <property name="text">
       <string>Web socket server settings</string>
      </property>

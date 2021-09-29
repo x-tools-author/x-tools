@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>135</width>
-    <height>227</height>
+    <height>178</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -35,6 +35,11 @@
    </item>
    <item row="7" column="0" colspan="2">
     <widget class="QLabel" name="label_6">
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+	color: blue
+}</string>
+     </property>
      <property name="text">
       <string>Tcp server information</string>
      </property>
@@ -70,6 +75,11 @@
    </item>
    <item row="0" column="0" colspan="2">
     <widget class="QLabel" name="label_5">
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+	color: blue
+}</string>
+     </property>
      <property name="text">
       <string>Tcp client information</string>
      </property>
