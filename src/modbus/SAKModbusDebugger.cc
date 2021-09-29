@@ -102,6 +102,17 @@ SAKModbusDebugger::SAKModbusDebugger(QSettings *settings,
     // Readin settings
     auto currentPageIndex = mSettings.value(mSettingsKeyContext.pageIndex).toInt();
     ui->tabWidget->setCurrentIndex(currentPageIndex > ui->tabWidget->count() - 1 ? 0 : currentPageIndex);
+
+
+    QStringList headerLabels;
+    headerLabels << tr("Address")
+                 << tr("Value(Bin)")
+                 << tr("Value(Otc)")
+                 << tr("Value(Dec)")
+                 << tr("Value(Hex)");
+    ui->tableWidget->setColumnCount(headerLabels.length());
+    ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tableWidget->setHorizontalHeaderLabels(headerLabels);
 }
 
 SAKModbusDebugger::~SAKModbusDebugger()
@@ -188,7 +199,8 @@ void SAKModbusDebugger::updateRegisterValue(QModbusDataUnit::RegisterType regist
 
 SAKModbusCommonRegisterView *SAKModbusDebugger::registerView(QModbusDataUnit::RegisterType registerTyp)
 {
-    for (auto view : mRegisterViewList){
+    for (int i = 0; i < mRegisterViewList.count(); i++) {
+        auto view = mRegisterViewList.at(i);
         if (view->registerType() == registerTyp){
             return view;
         }
@@ -226,7 +238,8 @@ void SAKModbusDebugger::outputMessage(QString msg, bool isErrorMsg)
 {
     QString datetime = QDateTime::currentDateTime().toString("hh:mm:ss ");
     datetime = QString("<font color=silver>%1<%font>").arg(datetime);
-    msg = QString("<font color=%1>%2<%font>").arg(isErrorMsg ? "red" : "black").arg(msg);
+    msg = QString("<font color=%1>%2<%font>")
+            .arg(isErrorMsg ? "red" : "black", msg);
     msg.prepend(datetime);
     ui->textBrowser->append(msg);
 }
