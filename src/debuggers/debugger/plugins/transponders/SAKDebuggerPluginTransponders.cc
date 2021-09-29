@@ -9,6 +9,7 @@
  ***************************************************************************************/
 #include "SAKUdpTransponders.hh"
 #include "SAKTcpTransponders.hh"
+#include "SAKWebSocketTransponders.hh"
 #include "SAKSerialPortTransponders.hh"
 #include "SAKDebuggerPluginTransponders.hh"
 #include "ui_SAKDebuggerPluginTransponders.h"
@@ -62,6 +63,18 @@ SAKDebuggerPluginTransponders::SAKDebuggerPluginTransponders(QSqlDatabase *sqlDa
             this, &SAKDebuggerPluginTransponders::invokeWriteCookedBytes);
     tcpTransponder->setContentsMargins(6, 6, 6, 6);
     mUi->tabWidget->addTab(tcpTransponder, tr("TcpClient"));
+
+
+    auto wsTransponder = new SAKUdpTransponders(sqlDatabase,
+                                                 settings,
+                                                 settingsGroup,
+                                                 tableNameSuffix + "WebSocketClient");
+    connect(this, &SAKDebuggerPluginTransponders::bytesRead,
+            wsTransponder, &SAKUdpTransponders::onBytesRead);
+    connect(wsTransponder, &SAKUdpTransponders::invokeWriteCookedBytes,
+            this, &SAKDebuggerPluginTransponders::invokeWriteCookedBytes);
+    wsTransponder->setContentsMargins(6, 6, 6, 6);
+    mUi->tabWidget->addTab(wsTransponder, tr("WebSocketClient"));
 
 
     QString pageIndexSettingsKey = settingsGroup.append("/transponders/pageIndex");

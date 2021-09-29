@@ -1,17 +1,22 @@
 FORMS += \
     $$PWD/SAKDebuggerPluginTransponders.ui \
     $$PWD/SAKTcpTransponder.ui \
-    $$PWD/SAKUdpTransponder.ui
+    $$PWD/SAKUdpTransponder.ui \
+    $$PWD/SAKWebSocketTransponder.ui
 HEADERS += \
     $$PWD/SAKDebuggerPluginTransponder.hh \
     $$PWD/SAKDebuggerPluginTransponders.hh \
     $$PWD/SAKTcpTransponder.hh \
-    $$PWD/SAKTcpTransponders.hh
+    $$PWD/SAKTcpTransponders.hh \
+    $$PWD/SAKWebSocketTransponder.hh \
+    $$PWD/SAKWebSocketTransponders.hh
 SOURCES += \
     $$PWD/SAKDebuggerPluginTransponder.cc \
     $$PWD/SAKDebuggerPluginTransponders.cc \
     $$PWD/SAKTcpTransponder.cc \
-    $$PWD/SAKTcpTransponders.cc
+    $$PWD/SAKTcpTransponders.cc \
+    $$PWD/SAKWebSocketTransponder.cc \
+    $$PWD/SAKWebSocketTransponders.cc
 INCLUDEPATH += \
     $$PWD
 
