@@ -24,8 +24,6 @@ public:
                              QSettings *settings,
                              QString settingsGroup,
                              QString tableNameSuffix);
-
-
 protected:
     QString sqlCreate(const QString &tableName) final;
     QString sqlInsert(const QString &tableName, QWidget *itemWidget) final;
@@ -34,8 +32,6 @@ protected:
     QWidget *createItemFromParameters(const QJsonObject &jsonObj) final;
     quint64 itemId(QWidget *itemWidget) final;
     void connectSignalsToSlots(QWidget *itemWidget) final;
-
-
 private:
     struct SAKStructSAKTransponderSerialPortTableContext {
         QString tableName;

@@ -29,6 +29,15 @@ protected:
     QWidget *createItemFromParameters(const QJsonObject &jsonObj) final;
     quint64 itemId(QWidget *itemWidget) final;
     void connectSignalsToSlots(QWidget *itemWidget) final;
+private:
+    struct SAKStructTableContext {
+        QString tableName;
+        struct {
+            const QString id = QString("id");
+            const QString peerHost = QString("peerHost");
+            const QString peerPort = QString("peerPort");
+        }columns;
+    }mTableCtx;
 };
 
 #endif // SAKUDPTRANSPONDERS_HH

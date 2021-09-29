@@ -47,8 +47,16 @@ SAKDebuggerPluginTransponders::SAKDebuggerPluginTransponders(QSqlDatabase *sqlDa
             udpTransponder, &SAKUdpTransponders::onBytesRead);
     connect(udpTransponder, &SAKUdpTransponders::invokeWriteCookedBytes,
             this, &SAKDebuggerPluginTransponders::invokeWriteCookedBytes);
-    serialPort->setContentsMargins(6, 6, 6, 6);
+    udpTransponder->setContentsMargins(6, 6, 6, 6);
     mUi->tabWidget->addTab(udpTransponder, tr("UdpClient"));
+
+
+    QString pageIndexSettingsKey = settingsGroup.append("/transponders/pageIndex");
+    int pageIndex = settings->value(pageIndexSettingsKey).toInt();
+    mUi->tabWidget->setCurrentIndex(pageIndex);
+    connect(mUi->tabWidget, &QTabWidget::currentChanged, this, [=](int index){
+        settings->setValue(pageIndexSettingsKey, index);
+    });
 }
 
 SAKDebuggerPluginTransponders::~SAKDebuggerPluginTransponders()

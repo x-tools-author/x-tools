@@ -10,18 +10,32 @@
 #ifndef SAKUDPTRANSPONDER_HH
 #define SAKUDPTRANSPONDER_HH
 
+#include "SAKCommonDataStructure.hh"
 #include "SAKDebuggerPluginTransponder.hh"
 
+namespace Ui {
+    class SAKUdpTransponder;
+}
+
+class SAKUdpClientDevice;
 class SAKUdpTransponder : public SAKDebuggerPluginTransponder
 {
     Q_OBJECT
 public:
     SAKUdpTransponder(QWidget *parent = Q_NULLPTR);
-    SAKUdpTransponder(quint64 id, QWidget *parent = Q_NULLPTR);
+    SAKUdpTransponder(quint64 id,
+                      SAKUdpClientParametersContext parasCtx,
+                      QWidget *parent = Q_NULLPTR);
+    ~SAKUdpTransponder();
     QVariant parametersContext() final;
 protected:
     SAKDebuggerDevice *device() final;
     void onDeviceStateChanged(bool opened) final;
+private:
+    Ui::SAKUdpTransponder *mUi;
+    SAKUdpClientDevice *mDevice;
+private:
+    void initSignals();
 };
 
 #endif // SAKUDPTRANSPONDER_HH

@@ -19,9 +19,9 @@
 #include <QSerialPort>
 #include <QJsonObject>
 
-#include "SAKDebuggerPluginTransponder.hh"
 #include "SAKSerialPortDevice.hh"
 #include "SAKCommonDataStructure.hh"
+#include "SAKDebuggerPluginTransponder.hh"
 
 namespace Ui {
     class SAKSerialPortTransponder;
