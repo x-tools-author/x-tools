@@ -460,14 +460,15 @@ void SAKModbusDebugger::sendReadRequest()
                     // The signal is using to update ui value.
                     dataWritten(registerType, startAddress, registerNumber);
                 } else if (reply->error() == QModbusDevice::ProtocolError) {
-                    QString error = tr("Read response error: %1 (Mobus exception: 0x%2)")
+                    QString error = QString("%1 (Mobus exception: 0x%2)")
                             .arg(reply->errorString())
-                            .arg(reply->rawResult().exceptionCode(), -1, 16);
-                    outputMessage(error);
+                            .arg(reply->rawResult().exceptionCode(), 2, 16, QChar('0'));
+                    outputMessage(error, true);
                 } else {
-                    QString error = tr("Read response error: %1 (code: 0x%2)")
-                            .arg(reply->errorString()).arg(reply->error(), -1, 16);
-                    outputMessage(error);
+                    QString error = QString("%1 (code: 0x%2)")
+                            .arg(reply->errorString())
+                            .arg(reply->error(), 2, 16, QChar('0'));
+                    outputMessage(error, true);
                 }
 
                 reply->deleteLater();
@@ -485,7 +486,7 @@ void SAKModbusDebugger::sendReadRequest()
 void SAKModbusDebugger::sendWriteRequest()
 {
     int rawRegisterType = ui->functionCodeComboBox->currentData().toInt();
-    const auto registerType = static_cast<QModbusDataUnit::RegisterType>(rawRegisterType);
+    auto registerType = static_cast<QModbusDataUnit::RegisterType>(rawRegisterType);
     int startAddress = ui->startAddressSpinBox->value();
     int number = ui->registerNumberSpinBox->value();
 
@@ -517,15 +518,15 @@ void SAKModbusDebugger::sendWriteRequest()
                         outputMessage(entry);
                     }
                 } else if (reply->error() == QModbusDevice::ProtocolError) {
-                    QString err = tr("Writing reply error: %1 (Mobus exception: 0x%2)")
+                    QString err = QString("%1 (Mobus exception: 0x%2)")
                             .arg(reply->errorString())
-                            .arg(reply->rawResult().exceptionCode(), -1, 16);
-                    outputMessage(err);
-                } else if (reply->error() != QModbusDevice::NoError) {
-                    QString err = tr("Writing reply error: %1 (code: 0x%2)")
+                            .arg(reply->rawResult().exceptionCode(), 2, 16, QChar('0'));
+                    outputMessage(err, true);
+                } else {
+                    QString err = QString("%1 (code: 0x%2)")
                             .arg(reply->errorString())
-                            .arg(reply->error(), -1, 16);
-                    outputMessage(err);
+                            .arg(reply->error(), 2, 16, QChar('0'));
+                    outputMessage(err, true);
                 }
 
                 reply->deleteLater();

@@ -27,6 +27,10 @@ public:
     void initModbusServerParameters(QModbusServer *server);
 private:
     Ui::SAKModbusCommonServerSection *ui;
+signals:
+    void serverAddressChanged(int serverAddress);
+    void listenOnlyChanged(bool listenOnly);
+    void deviceBusyChanged(bool deviceBusy);
 };
 
 #endif // SAKMODBUSCOMMONSERVERSECTION_HH
