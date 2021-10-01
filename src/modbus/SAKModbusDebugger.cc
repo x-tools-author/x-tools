@@ -140,13 +140,7 @@ SAKModbusDebugger::SAKModbusDebugger(QSettings *settings,
             QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, [=](){
         updateTableWidget();
-        if (ui->functionCodeComboBox->currentIndex() < 4){
-            ui->sendReadRequestPushButton->setEnabled(true);
-            ui->sendWriteRequestPushButton->setEnabled(false);
-        }else{
-            ui->sendReadRequestPushButton->setEnabled(false);
-            ui->sendWriteRequestPushButton->setEnabled(true);
-        }
+        updateReadWriteButtonsState();
     });
     connect(ui->startAddressSpinBox, QOverload<int>::of(&QSpinBox::valueChanged),
             this, [=](){
@@ -170,6 +164,7 @@ SAKModbusDebugger::SAKModbusDebugger(QSettings *settings,
 
     updateTableWidget();
     updateController(0);
+    updateReadWriteButtonsState();
 }
 
 SAKModbusDebugger::~SAKModbusDebugger()
@@ -231,8 +226,9 @@ void SAKModbusDebugger::outputModbusDataUnit(QModbusDataUnit mdu)
 #endif
 
     QString datetime = QDateTime::currentDateTime().toString("hh:mm:ss ");
-    datetime = QString("<font color=silver>MDU:%1<%font>").arg(datetime);
+    datetime = QString("<font color=silver>%1Sending mdu[<%font>").arg(datetime);
     dataStr.prepend(datetime);
+    dataStr.append("]");
     ui->textBrowser->append(dataStr);
 }
 
@@ -337,46 +333,67 @@ void SAKModbusDebugger::updateTableWidget()
         address->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
         tableWidget->setCellWidget(i, 0, address);
 
-        QLineEdit *valueBin = new QLineEdit;
+        QLineEdit *valueBin = new QLineEdit(this);
         QLineEdit *valueOtc = new QLineEdit(this);
         QLineEdit *valueDec = new QLineEdit(this);
         QLineEdit *valueHex = new QLineEdit(this);
+        valueBin->setReadOnly(true);
+        valueOtc->setReadOnly(true);
+        valueDec->setReadOnly(true);
+        valueHex->setMaxLength(4);
+
+        connect(valueHex, &QLineEdit::textChanged, this, [=](const QString &text){
+            int value = text.toInt(Q_NULLPTR, 16);
+            QString valueStringBin = QString("%1")
+                    .arg(QString::number(value, 2) , 16, '0');
+            QString valueStringOtc = QString("%1")
+                    .arg(QString::number(value, 8) , 6, '0');
+            QString valueStringDec = QString("%1")
+                    .arg(QString::number(value, 10));
+            valueBin->setText(valueStringBin);
+            valueOtc->setText(valueStringOtc);
+            valueDec->setText(valueStringDec);
+        });
+
         QVector<QLineEdit*> cellWidgets;
         cellWidgets << valueBin << valueOtc << valueDec << valueHex;
         for (int j = 0; j < cellWidgets.count(); j++) {
             QLineEdit *value = cellWidgets.at(j);
             value->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-            if (ui->functionCodeComboBox->currentIndex() < 4){
-                value->setReadOnly(true);
-                if (isCoilsRegisterType){
+            if (ui->functionCodeComboBox->currentIndex() < 4) {
+                if (j == cellWidgets.length() - 1) {
+                    value->setReadOnly(true);
+                }
+                if (isCoilsRegisterType) {
                     value->setText("-");
-                }else{
+                } else {
                     value->setText("----");
                 }
-            }else{
-                if (isCoilsRegisterType){
+            } else {
+                if (isCoilsRegisterType) {
                     value->setText("0");
-                }else{
+                } else {
                     value->setText("0000");
                 }
             }
 
-            if (isCoilsRegisterType){
-                value->setMaxLength(1);
+            if (isCoilsRegisterType) {
+                if (j == cellWidgets.length() - 1) {
+                    value->setMaxLength(1);
+                }
                 QRegularExpression regExp("[01]");
                 value->setValidator(new QRegularExpressionValidator(regExp, this));
                 tableWidget->setCellWidget(i, j+1, value);
-            }else{
-                value->setMaxLength(4);
+            } else {
+                if (j == cellWidgets.length() - 1) {
+                    value->setMaxLength(4);
+                }
                 QRegularExpression regExp("[a-fA-F0-9]{4}");
                 value->setValidator(new QRegularExpressionValidator(regExp, this));
                 tableWidget->setCellWidget(i, j+1, value);
             }
         }
     }
-
-    //tableWidget->resizeRowsToContents();
-    //tableWidget->resizeColumnsToContents();
 }
 
 void SAKModbusDebugger::updateTableWidgetData(QModbusDataUnit mdu)
@@ -387,20 +404,23 @@ void SAKModbusDebugger::updateTableWidgetData(QModbusDataUnit mdu)
     }
 
     auto tableWidget = ui->tableWidget;
-    for (int i = 0; i < tableWidget->rowCount(); i++){
+    for (int i = 0; i < tableWidget->rowCount(); i++) {
         QWidget *w = tableWidget->cellWidget(i, 0);
         auto address = qobject_cast<QLineEdit*>(w)->text().toInt();
-        if (addressList.contains(address)){
+        if (addressList.contains(address)) {
             auto value = mdu.value(i);
-            auto valueLineEdit = qobject_cast<QLineEdit*>(tableWidget->cellWidget(i, 1));
-            QString valueString;
-            if (mdu.registerType() <= QModbusDataUnit::Coils){
-                valueString = QString::number(value,  10);
-            }else{
-                valueString = QString("%1").arg(QString::number(value, 16) , 4, '0');
-                valueString = valueString.toUpper();
+            auto valueLineEditHex = qobject_cast<QLineEdit*>(
+                        tableWidget->cellWidget(i, 4)
+                        );
+
+            if (mdu.registerType() <= QModbusDataUnit::Coils) {
+                QString valueString = QString::number(value,  10);
+                valueLineEditHex->setText(valueString);
+            } else {
+                QString valueStringHex = QString("%1")
+                        .arg(QString::number(value, 16) , 4, '0').toUpper();
+                valueLineEditHex->setText(valueStringHex);
             }
-            valueLineEdit->setText(valueString);
         }
     }
 }
@@ -426,7 +446,8 @@ void SAKModbusDebugger::sendReadRequest()
                     auto registerType = reply->result().registerType();
                     auto startAddress = reply->result().startAddress();
                     auto registerNumber = reply->result().valueCount();
-                    outputMessage(tr("Received a reply:"));
+                    outputMessage(QString("<font color=green>%1</font>")
+                                  .arg(tr("Register(s) read:")));
                     for (uint i = 0; i < mdu.valueCount(); i++) {
                         auto value = reply->result().value(startAddress + i);
                         setData(registerType, startAddress + i, value);
@@ -471,15 +492,51 @@ void SAKModbusDebugger::sendWriteRequest()
     auto mdu = QModbusDataUnit(registerType, startAddress, number);
     auto tableWidget = ui->tableWidget;
     for (int i = 0; i < number; i++){
-        if (registerType == QModbusDataUnit::Coils){
-            QWidget *w = tableWidget->cellWidget(i, 1);
-            int value = qobject_cast<QLineEdit*>(w)->text().toInt(Q_NULLPTR, 10);
-            mdu.setValue(i, qint16(value));
-        }else{
-            QWidget *w = tableWidget->cellWidget(i, 1);
-            int value = qobject_cast<QLineEdit*>(w)->text().toInt(Q_NULLPTR, 16);
-            mdu.setValue(i, qint16(value));
+        QWidget *w = tableWidget->cellWidget(i, 4);
+        int value = qobject_cast<QLineEdit*>(w)->text().toInt(Q_NULLPTR, 16);
+        mdu.setValue(i, qint16(value));
+    }
+
+    auto controller = qobject_cast<SAKModbusClientController*>(mController);
+    QModbusClient *device = qobject_cast<QModbusClient*>(controller->device());
+    auto reply = device->sendWriteRequest(mdu, ui->serverAddressSpinBox->value());
+    if (reply) {
+        outputModbusDataUnit(mdu);
+        if (!reply->isFinished()) {
+            connect(reply, &QModbusReply::finished, this, [=]() {
+                if (reply->error() == QModbusDevice::NoError) {
+                    outputMessage(QString("<font color=blue>%1</font>")
+                                  .arg(tr("Register(s) Written:")));
+                    for (uint i = 0; i < mdu.valueCount(); i++) {
+                        auto value = reply->result().value(startAddress + i);
+                        setData(registerType, startAddress + i, value);
+                        int base = mdu.registerType() <= QModbusDataUnit::Coils ? 10 : 16;
+                        const QString entry = tr("[Address: %1, Value: %2]")
+                                .arg(mdu.startAddress() + i).
+                                arg(QString::number(mdu.value(i), base));
+                        outputMessage(entry);
+                    }
+                } else if (reply->error() == QModbusDevice::ProtocolError) {
+                    QString err = tr("Writing reply error: %1 (Mobus exception: 0x%2)")
+                            .arg(reply->errorString())
+                            .arg(reply->rawResult().exceptionCode(), -1, 16);
+                    outputMessage(err);
+                } else if (reply->error() != QModbusDevice::NoError) {
+                    QString err = tr("Writing reply error: %1 (code: 0x%2)")
+                            .arg(reply->errorString())
+                            .arg(reply->error(), -1, 16);
+                    outputMessage(err);
+                }
+
+                reply->deleteLater();
+            });
+        } else {
+            // broadcast replies return immediately
+            reply->deleteLater();
         }
+    } else {
+        QString err = tr("Write error: %1").arg(device->errorString());
+        outputMessage(err);
     }
 }
 
@@ -536,6 +593,22 @@ void SAKModbusDebugger::updateController(int index)
                                                                 startAddress + i));
         }
     }
+
+    if (index == 0 || index == 2) {
+        ui->operationPanelGroupBox->setHidden(false);
+        for (int i = 0; i < ui->tabWidget->count(); i++) {
+            if (i > 0) {
+                ui->tabWidget->setTabEnabled(i, false);
+            }
+        }
+    } else {
+        ui->operationPanelGroupBox->setHidden(true);
+        for (int i = 0; i < ui->tabWidget->count(); i++) {
+            if (i > 0) {
+                ui->tabWidget->setTabEnabled(i, true);
+            }
+        }
+    }
 }
 
 void SAKModbusDebugger::connecteToDevice()
@@ -550,4 +623,15 @@ void SAKModbusDebugger::disconnecteDevice()
     ui->connectionPushButton->setEnabled(false);
     ui->disconnectionPushButton->setEnabled(false);
     mController->closeDevice();
+}
+
+void SAKModbusDebugger::updateReadWriteButtonsState()
+{
+    if (ui->functionCodeComboBox->currentIndex() < 4) {
+        ui->sendReadRequestPushButton->setEnabled(true);
+        ui->sendWriteRequestPushButton->setEnabled(false);
+    } else {
+        ui->sendReadRequestPushButton->setEnabled(false);
+        ui->sendWriteRequestPushButton->setEnabled(true);
+    }
 }

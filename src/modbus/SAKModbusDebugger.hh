@@ -72,6 +72,7 @@ private:
     void updateController(int index);
     void connecteToDevice();
     void disconnecteDevice();
+    void updateReadWriteButtonsState();
 private:
     Ui::SAKModbusDebugPage *ui;
 };

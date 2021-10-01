@@ -111,7 +111,7 @@
         <widget class="QTextBrowser" name="textBrowser"/>
        </item>
        <item row="1" column="0">
-        <widget class="QGroupBox" name="groupBox_3">
+        <widget class="QGroupBox" name="operationPanelGroupBox">
          <property name="title">
           <string>Operation panel</string>
          </property>
@@ -174,7 +174,11 @@
            </spacer>
           </item>
           <item row="1" column="3">
-           <widget class="QSpinBox" name="serverAddressSpinBox"/>
+           <widget class="QSpinBox" name="serverAddressSpinBox">
+            <property name="value">
+             <number>1</number>
+            </property>
+           </widget>
           </item>
           <item row="1" column="10">
            <widget class="QPushButton" name="sendWriteRequestPushButton">
