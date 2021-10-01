@@ -65,12 +65,15 @@ private:
     // Just for modbus server
     void dataWritten(QModbusDataUnit::RegisterType table, int address, int size);
     void outputMessage(QString msg, bool isErrorMsg = false);
+    void updateTableWidget();
+    void sendReadRequest();
+    void sendWriteRequest();
+    void updateTableWidgetData(QModbusDataUnit mdu);
+    void updateController(int index);
+    void connecteToDevice();
+    void disconnecteDevice();
 private:
     Ui::SAKModbusDebugPage *ui;
-private slots:
-    void on_deviceTypeComboBox_currentIndexChanged(int index);
-    void on_connectionPushButton_clicked();
-    void on_disconnectionPushButton_clicked();
 };
 
 #endif // SAKMODBUSDEBUGGING_HH

@@ -33,8 +33,8 @@ protected:
     QModbusServer *mModbusServer;
 protected:
     virtual QWidget *bottomSection() final;
-    void sendReadRequest(QModbusDataUnit mdu);
-    void sendWriteRequest(QModbusDataUnit mdu);
+    void sendReadRequest(QModbusDataUnit mdu, quint16 slaveAddress);
+    void sendWriteRequest(QModbusDataUnit mdu, quint16 slaveAddress);
 private:
     void readReply();
 };

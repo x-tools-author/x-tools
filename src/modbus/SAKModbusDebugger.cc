@@ -12,6 +12,7 @@
 #include <QLineEdit>
 #include <QTabWidget>
 #include <QModbusDataUnit>
+#include <QStandardItemModel>
 
 #include "SAKModbusDebugger.hh"
 #include "SAKModbusCommonRegister.hh"
@@ -104,15 +105,71 @@ SAKModbusDebugger::SAKModbusDebugger(QSettings *settings,
     ui->tabWidget->setCurrentIndex(currentPageIndex > ui->tabWidget->count() - 1 ? 0 : currentPageIndex);
 
 
-    QStringList headerLabels;
-    headerLabels << tr("Address")
-                 << tr("Value(Bin)")
-                 << tr("Value(Otc)")
-                 << tr("Value(Dec)")
-                 << tr("Value(Hex)");
-    ui->tableWidget->setColumnCount(headerLabels.length());
-    ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    ui->tableWidget->setHorizontalHeaderLabels(headerLabels);
+    struct Info {
+        QString name;
+        int registerType;
+    };
+    QList<Info> infoList;
+    infoList << Info{tr("Read Coils(0x01)"),
+                QModbusDataUnit::Coils}
+             << Info{tr("Read Discrete Inputs(0x02)"),
+                QModbusDataUnit::DiscreteInputs}
+             << Info{tr("Read Holding Registers(0x03)"),
+                QModbusDataUnit::HoldingRegisters}
+             << Info{tr("Read Input Registers(0x04)"),
+                QModbusDataUnit::InputRegisters}
+             << Info{tr("Write Coils(0x0F)"),
+                QModbusDataUnit::Coils}
+             << Info{tr("Write Registers(0x10)"),
+                QModbusDataUnit::HoldingRegisters};
+
+    QStandardItemModel *itemModel = new QStandardItemModel(this);
+    ui->functionCodeComboBox->clear();
+    for (auto &var : infoList){
+        auto item = new QStandardItem(var.name);
+        item->setToolTip(var.name);
+        itemModel->appendRow(item);
+    }
+    ui->functionCodeComboBox->setModel(itemModel);
+    for (int i = 0; i < infoList.length(); i++){
+        ui->functionCodeComboBox->setItemData(i, infoList.at(i).registerType);
+    }
+
+
+    connect(ui->functionCodeComboBox,
+            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this, [=](){
+        updateTableWidget();
+        if (ui->functionCodeComboBox->currentIndex() < 4){
+            ui->sendReadRequestPushButton->setEnabled(true);
+            ui->sendWriteRequestPushButton->setEnabled(false);
+        }else{
+            ui->sendReadRequestPushButton->setEnabled(false);
+            ui->sendWriteRequestPushButton->setEnabled(true);
+        }
+    });
+    connect(ui->startAddressSpinBox, QOverload<int>::of(&QSpinBox::valueChanged),
+            this, [=](){
+        updateTableWidget();
+    });
+    connect(ui->registerNumberSpinBox, QOverload<int>::of(&QSpinBox::valueChanged),
+            this, [=](){
+        updateTableWidget();
+    });
+    connect(ui->sendReadRequestPushButton, &QPushButton::clicked,
+            this, &SAKModbusDebugger::sendReadRequest);
+    connect(ui->sendWriteRequestPushButton, &QPushButton::clicked,
+            this, &SAKModbusDebugger::sendWriteRequest);
+    connect(ui->deviceTypeComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this, &SAKModbusDebugger::updateController);
+    connect(ui->connectionPushButton, &QPushButton::clicked,
+            this, &SAKModbusDebugger::connecteToDevice);
+    connect(ui->disconnectionPushButton, &QPushButton::clicked,
+            this, &SAKModbusDebugger::disconnecteDevice);
+
+
+    updateTableWidget();
+    updateController(0);
 }
 
 SAKModbusDebugger::~SAKModbusDebugger()
@@ -179,14 +236,18 @@ void SAKModbusDebugger::outputModbusDataUnit(QModbusDataUnit mdu)
     ui->textBrowser->append(dataStr);
 }
 
-void SAKModbusDebugger::setData(QModbusDataUnit::RegisterType type, quint16 address, quint16 value)
+void SAKModbusDebugger::setData(QModbusDataUnit::RegisterType type,
+                                quint16 address,
+                                quint16 value)
 {
     if (mController){
         mController->setData(type, address, value);
     }
 }
 
-void SAKModbusDebugger::updateRegisterValue(QModbusDataUnit::RegisterType registerTyp, quint16 startAddress, quint16 addressNumber)
+void SAKModbusDebugger::updateRegisterValue(QModbusDataUnit::RegisterType registerTyp,
+                                            quint16 startAddress,
+                                            quint16 addressNumber)
 {
     auto view = registerView(registerTyp);
     if (view){
@@ -197,7 +258,8 @@ void SAKModbusDebugger::updateRegisterValue(QModbusDataUnit::RegisterType regist
     }
 }
 
-SAKModbusCommonRegisterView *SAKModbusDebugger::registerView(QModbusDataUnit::RegisterType registerTyp)
+SAKModbusCommonRegisterView *
+SAKModbusDebugger::registerView(QModbusDataUnit::RegisterType registerTyp)
 {
     for (int i = 0; i < mRegisterViewList.count(); i++) {
         auto view = mRegisterViewList.at(i);
@@ -209,7 +271,9 @@ SAKModbusCommonRegisterView *SAKModbusDebugger::registerView(QModbusDataUnit::Re
     return Q_NULLPTR;
 }
 
-void SAKModbusDebugger::dataWritten(QModbusDataUnit::RegisterType table, int address, int size)
+void SAKModbusDebugger::dataWritten(QModbusDataUnit::RegisterType table,
+                                    int address,
+                                    int size)
 {
     // The operation is for client only.
     auto server = qobject_cast<QModbusServer*>(mController->device());
@@ -244,26 +308,207 @@ void SAKModbusDebugger::outputMessage(QString msg, bool isErrorMsg)
     ui->textBrowser->append(msg);
 }
 
-void SAKModbusDebugger::on_deviceTypeComboBox_currentIndexChanged(int index)
+void SAKModbusDebugger::updateTableWidget()
+{
+    bool isCoilsRegisterType = true;
+    if (ui->functionCodeComboBox->currentData().toInt() > QModbusDataUnit::Coils){
+        isCoilsRegisterType = false;
+    }
+
+    int startAddress = ui->startAddressSpinBox->value();
+    int number = ui->registerNumberSpinBox->value();
+
+    QTableWidget *tableWidget = ui->tableWidget;
+    tableWidget->clear();
+    QStringList headerLabels;
+    headerLabels << tr("Address")
+                 << tr("Value(Bin)")
+                 << tr("Value(Otc)")
+                 << tr("Value(Dec)")
+                 << tr("Value(Hex)");
+    tableWidget->setRowCount(number);
+    ui->tableWidget->setColumnCount(headerLabels.length());
+    ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tableWidget->setHorizontalHeaderLabels(headerLabels);
+    for (int i = 0; i < number; i++){
+        QLineEdit *address = new QLineEdit;
+        address->setText(QString("%1").arg(QString::number(startAddress + i)));
+        address->setReadOnly(true);
+        address->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+        tableWidget->setCellWidget(i, 0, address);
+
+        QLineEdit *valueBin = new QLineEdit;
+        QLineEdit *valueOtc = new QLineEdit(this);
+        QLineEdit *valueDec = new QLineEdit(this);
+        QLineEdit *valueHex = new QLineEdit(this);
+        QVector<QLineEdit*> cellWidgets;
+        cellWidgets << valueBin << valueOtc << valueDec << valueHex;
+        for (int j = 0; j < cellWidgets.count(); j++) {
+            QLineEdit *value = cellWidgets.at(j);
+            value->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+            if (ui->functionCodeComboBox->currentIndex() < 4){
+                value->setReadOnly(true);
+                if (isCoilsRegisterType){
+                    value->setText("-");
+                }else{
+                    value->setText("----");
+                }
+            }else{
+                if (isCoilsRegisterType){
+                    value->setText("0");
+                }else{
+                    value->setText("0000");
+                }
+            }
+
+            if (isCoilsRegisterType){
+                value->setMaxLength(1);
+                QRegularExpression regExp("[01]");
+                value->setValidator(new QRegularExpressionValidator(regExp, this));
+                tableWidget->setCellWidget(i, j+1, value);
+            }else{
+                value->setMaxLength(4);
+                QRegularExpression regExp("[a-fA-F0-9]{4}");
+                value->setValidator(new QRegularExpressionValidator(regExp, this));
+                tableWidget->setCellWidget(i, j+1, value);
+            }
+        }
+    }
+
+    //tableWidget->resizeRowsToContents();
+    //tableWidget->resizeColumnsToContents();
+}
+
+void SAKModbusDebugger::updateTableWidgetData(QModbusDataUnit mdu)
+{
+    QList<int> addressList;
+    for (uint i = 0; i < mdu.valueCount(); i++) {
+        addressList.append(mdu.startAddress() + i);
+    }
+
+    auto tableWidget = ui->tableWidget;
+    for (int i = 0; i < tableWidget->rowCount(); i++){
+        QWidget *w = tableWidget->cellWidget(i, 0);
+        auto address = qobject_cast<QLineEdit*>(w)->text().toInt();
+        if (addressList.contains(address)){
+            auto value = mdu.value(i);
+            auto valueLineEdit = qobject_cast<QLineEdit*>(tableWidget->cellWidget(i, 1));
+            QString valueString;
+            if (mdu.registerType() <= QModbusDataUnit::Coils){
+                valueString = QString::number(value,  10);
+            }else{
+                valueString = QString("%1").arg(QString::number(value, 16) , 4, '0');
+                valueString = valueString.toUpper();
+            }
+            valueLineEdit->setText(valueString);
+        }
+    }
+}
+
+void SAKModbusDebugger::sendReadRequest()
+{
+    const auto registerType = static_cast<QModbusDataUnit::RegisterType>(
+                ui->functionCodeComboBox->currentData().toInt());
+    int startAddress = ui->startAddressSpinBox->value();
+    int number = ui->registerNumberSpinBox->value();
+    auto mdu = QModbusDataUnit(registerType, startAddress, number);
+    auto controller = qobject_cast<SAKModbusClientController*>(mController);
+    QModbusClient *device = qobject_cast<QModbusClient*>(controller->device());
+    auto reply = device->sendReadRequest(mdu, ui->serverAddressSpinBox->value());
+    if (reply){
+        outputModbusDataUnit(mdu);
+        if (!reply->isFinished()) {
+            connect(reply, &QModbusReply::finished,
+                    this, [=](){
+                if (reply->error() == QModbusDevice::NoError) {
+                    const QModbusDataUnit mdu = reply->result();
+                    updateTableWidgetData(mdu);
+                    auto registerType = reply->result().registerType();
+                    auto startAddress = reply->result().startAddress();
+                    auto registerNumber = reply->result().valueCount();
+                    outputMessage(tr("Received a reply:"));
+                    for (uint i = 0; i < mdu.valueCount(); i++) {
+                        auto value = reply->result().value(startAddress + i);
+                        setData(registerType, startAddress + i, value);
+                        int base = mdu.registerType() <= QModbusDataUnit::Coils ? 10 : 16;
+                        const QString entry = tr("[Address: %1, Value: %2]")
+                                .arg(mdu.startAddress() + i).
+                                arg(QString::number(mdu.value(i), base));
+                        outputMessage(entry);
+                    }
+                    // The signal is using to update ui value.
+                    dataWritten(registerType, startAddress, registerNumber);
+                } else if (reply->error() == QModbusDevice::ProtocolError) {
+                    QString error = tr("Read response error: %1 (Mobus exception: 0x%2)")
+                            .arg(reply->errorString())
+                            .arg(reply->rawResult().exceptionCode(), -1, 16);
+                    outputMessage(error);
+                } else {
+                    QString error = tr("Read response error: %1 (code: 0x%2)")
+                            .arg(reply->errorString()).arg(reply->error(), -1, 16);
+                    outputMessage(error);
+                }
+
+                reply->deleteLater();
+            });
+        } else {
+            delete reply; // broadcast replies return immediately
+        }
+    }else{
+        QString devErr = device->errorString();
+        QString err = tr("Send reading request error:%1").arg(devErr);
+        outputMessage(err);
+    }
+}
+
+void SAKModbusDebugger::sendWriteRequest()
+{
+    int rawRegisterType = ui->functionCodeComboBox->currentData().toInt();
+    const auto registerType = static_cast<QModbusDataUnit::RegisterType>(rawRegisterType);
+    int startAddress = ui->startAddressSpinBox->value();
+    int number = ui->registerNumberSpinBox->value();
+
+    auto mdu = QModbusDataUnit(registerType, startAddress, number);
+    auto tableWidget = ui->tableWidget;
+    for (int i = 0; i < number; i++){
+        if (registerType == QModbusDataUnit::Coils){
+            QWidget *w = tableWidget->cellWidget(i, 1);
+            int value = qobject_cast<QLineEdit*>(w)->text().toInt(Q_NULLPTR, 10);
+            mdu.setValue(i, qint16(value));
+        }else{
+            QWidget *w = tableWidget->cellWidget(i, 1);
+            int value = qobject_cast<QLineEdit*>(w)->text().toInt(Q_NULLPTR, 16);
+            mdu.setValue(i, qint16(value));
+        }
+    }
+}
+
+void SAKModbusDebugger::updateController(int index)
 {
     mController = qobject_cast<SAKModbusCommonController*>(controllerFromType(index));
     mController->setContentsMargins(0, 0, 0 ,0);
 
     auto *dev = mController->device();
-#if 0
-    connect(mController, &SAKModbusCommonController::modbusDataUnitRead, this, &SAKModbusDebugPage::outputModbusDataUnit);
-    connect(mController, &SAKModbusCommonController::modbusDataUnitWritten, this, &SAKModbusDebugPage::outputModbusDataUnit);
-#endif
-    connect(mController, &SAKModbusCommonController::dataWritten, this, &SAKModbusDebugger::dataWritten);
-    connect(mController, &SAKModbusCommonController::invokeOutputMessage, this, &SAKModbusDebugger::outputMessage);
+    connect(mController, &SAKModbusCommonController::dataWritten,
+            this, &SAKModbusDebugger::dataWritten);
+    connect(mController, &SAKModbusCommonController::invokeOutputMessage,
+            this, &SAKModbusDebugger::outputMessage);
     for (auto &var : mRegisterViewControllerList){
-        connect(var, &SAKModbusCommonRegisterViewController::invokeImport, mController, &SAKModbusCommonController::importRegisterData);
-        connect(var, &SAKModbusCommonRegisterViewController::invokeExport, mController, &SAKModbusCommonController::exportRegisterData);
+        connect(var, &SAKModbusCommonRegisterViewController::invokeImport,
+                mController, &SAKModbusCommonController::importRegisterData);
+        connect(var, &SAKModbusCommonRegisterViewController::invokeExport,
+                mController, &SAKModbusCommonController::exportRegisterData);
     }
     connect(dev, &QModbusDevice::stateChanged, this, [=](){
-        ui->connectionPushButton->setEnabled(dev->state() == QModbusDevice::UnconnectedState);
-        ui->disconnectionPushButton->setEnabled(dev->state() == QModbusDevice::ConnectedState);
-        ui->deviceTypeComboBox->setEnabled(dev->state() == QModbusDevice::UnconnectedState);
+        ui->connectionPushButton->setEnabled(
+                    dev->state() == QModbusDevice::UnconnectedState
+                    );
+        ui->disconnectionPushButton->setEnabled(
+                    dev->state() == QModbusDevice::ConnectedState
+                    );
+        ui->deviceTypeComboBox->setEnabled(
+                    dev->state() == QModbusDevice::UnconnectedState
+                    );
     }, Qt::QueuedConnection);
 
     QLayout *hLayout = ui->deviceControllerWidget->layout();
@@ -286,19 +531,21 @@ void SAKModbusDebugger::on_deviceTypeComboBox_currentIndexChanged(int index)
     for (auto &var : mRegisterViewList){
         var->updateRegister(startAddress, registerNumber);
         for (int i = startAddress; i < registerNumber; i++){
-            var->updateRegisterValue(startAddress + i, mController->registerValue(var->registerType(), startAddress + i));
+            var->updateRegisterValue(startAddress + i,
+                                     mController->registerValue(var->registerType(),
+                                                                startAddress + i));
         }
     }
 }
 
-void SAKModbusDebugger::on_connectionPushButton_clicked()
+void SAKModbusDebugger::connecteToDevice()
 {
     ui->connectionPushButton->setEnabled(false);
     ui->disconnectionPushButton->setEnabled(false);
     mController->open();
 }
 
-void SAKModbusDebugger::on_disconnectionPushButton_clicked()
+void SAKModbusDebugger::disconnecteDevice()
 {
     ui->connectionPushButton->setEnabled(false);
     ui->disconnectionPushButton->setEnabled(false);

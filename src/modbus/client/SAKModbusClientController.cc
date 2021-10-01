@@ -29,11 +29,11 @@ SAKModbusClientController::SAKModbusClientController(QWidget *parent)
     mModbusServer = new QModbusTcpServer(this);
     setModbusServerMap(mModbusServer);
     mClientSection = new SAKModbusCommonClientSection(this);
-    connect(mClientSection, &SAKModbusCommonClientSection::invokeSendReadRequest, this, &SAKModbusClientController::sendReadRequest);
-    connect(mClientSection, &SAKModbusCommonClientSection::invokrSendWriteRequest, this, &SAKModbusClientController::sendWriteRequest);
 }
 
-void SAKModbusClientController::setData(QModbusDataUnit::RegisterType type, quint16 address, quint16 value)
+void SAKModbusClientController::setData(QModbusDataUnit::RegisterType type,
+                                        quint16 address,
+                                        quint16 value)
 {
     if ((type == QModbusDataUnit::Coils) || (type == QModbusDataUnit::DiscreteInputs)){
         mModbusServer->setData(type, address, value ? true : false);
@@ -42,7 +42,8 @@ void SAKModbusClientController::setData(QModbusDataUnit::RegisterType type, quin
     }
 }
 
-quint16 SAKModbusClientController::registerValue(QModbusDataUnit::RegisterType type, quint16 address)
+quint16 SAKModbusClientController::registerValue(QModbusDataUnit::RegisterType type,
+                                                 quint16 address)
 {
     quint16 value = 0;
     if (!mModbusServer->data(type, address, &value)){
@@ -69,7 +70,9 @@ void SAKModbusClientController::importRegisterData()
     }
 }
 
-bool SAKModbusClientController::tempData(QModbusDataUnit::RegisterType table, quint16 address, quint16 *data)
+bool SAKModbusClientController::tempData(QModbusDataUnit::RegisterType table,
+                                         quint16 address,
+                                         quint16 *data)
 {
     if (data){
         mModbusServer->data(table, address, data);
@@ -84,33 +87,39 @@ QWidget *SAKModbusClientController::bottomSection()
     return mClientSection;
 }
 
-void SAKModbusClientController::sendReadRequest(QModbusDataUnit mdu)
+void SAKModbusClientController::sendReadRequest(QModbusDataUnit mdu, quint16 slaveAddress)
 {
-    auto reply = qobject_cast<QModbusClient*>(device())->sendReadRequest(mdu, mClientSection->slaveAddress());
+    auto reply = qobject_cast<QModbusClient*>(device())->sendReadRequest(mdu, slaveAddress);
     if (reply){
         emit modbusDataUnitWritten(mdu);
         if (!reply->isFinished()) {
-            connect(reply, &QModbusReply::finished, this, &SAKModbusClientController::readReply);
+            connect(reply, &QModbusReply::finished,
+                    this,
+                    &SAKModbusClientController::readReply);
         } else {
             delete reply; // broadcast replies return immediately
         }
     }else{
-        QString err = tr("Send reading request error:%1").arg(qobject_cast<QModbusClient*>(device())->errorString());
+        QString err = tr("Send reading request error:%1")
+                .arg(qobject_cast<QModbusClient*>(device())->errorString());
         emit invokeOutputMessage(err);
     }
 }
 
-void SAKModbusClientController::sendWriteRequest(QModbusDataUnit mdu)
+void SAKModbusClientController::sendWriteRequest(QModbusDataUnit mdu, quint16 slaveAddress)
 {
-    auto reply = qobject_cast<QModbusClient*>(device())->sendWriteRequest(mdu, mClientSection->slaveAddress());
+    auto reply = qobject_cast<QModbusClient*>(device())->sendWriteRequest(mdu, slaveAddress);
     if (reply) {
         if (!reply->isFinished()) {
             connect(reply, &QModbusReply::finished, this, [=]() {
                 if (reply->error() == QModbusDevice::ProtocolError) {
-                    QString err = tr("Writing reply error: %1 (Mobus exception: 0x%2)").arg(reply->errorString()).arg(reply->rawResult().exceptionCode(), -1, 16);
+                    QString err = tr("Writing reply error: %1 (Mobus exception: 0x%2)")
+                            .arg(reply->errorString())
+                            .arg(reply->rawResult().exceptionCode(), -1, 16);
                     emit invokeOutputMessage(err);
                 } else if (reply->error() != QModbusDevice::NoError) {
-                    QString err = tr("Writing reply error: %1 (code: 0x%2)").arg(reply->errorString()).arg(reply->error(), -1, 16);
+                    QString err = tr("Writing reply error: %1 (code: 0x%2)")
+                            .arg(reply->errorString()).arg(reply->error(), -1, 16);
                     emit invokeOutputMessage(err);
                 }else{
                     emit modbusDataUnitWritten(mdu);
@@ -123,7 +132,8 @@ void SAKModbusClientController::sendWriteRequest(QModbusDataUnit mdu)
             reply->deleteLater();
         }
     } else {
-        QString err = tr("Write error: %1").arg(qobject_cast<QModbusClient*>(device())->errorString());
+        QString err = tr("Write error: %1")
+                .arg(qobject_cast<QModbusClient*>(device())->errorString());
         emit invokeOutputMessage(err);
     }
 }
@@ -137,7 +147,6 @@ void SAKModbusClientController::readReply()
 
     if (reply->error() == QModbusDevice::NoError) {
         const QModbusDataUnit mdu = reply->result();
-        mClientSection->updateTableWidget(mdu);
         emit modbusDataUnitRead(mdu);
 
         auto registerType = reply->result().registerType();
@@ -147,16 +156,20 @@ void SAKModbusClientController::readReply()
         for (uint i = 0; i < mdu.valueCount(); i++) {
             auto value = reply->result().value(startAddress + i);
             setData(registerType, startAddress + i, value);
-            const QString entry = tr("[Address: %1, Value: %2]").arg(mdu.startAddress() + i).arg(QString::number(mdu.value(i), mdu.registerType() <= QModbusDataUnit::Coils ? 10 : 16));
+            int base = mdu.registerType() <= QModbusDataUnit::Coils ? 10 : 16;
+            const QString entry = tr("[Address: %1, Value: %2]")
+                    .arg(mdu.startAddress() + i).arg(QString::number(mdu.value(i), base));
             emit invokeOutputMessage(entry);
         }
         // The signal is using to update ui value.
         emit dataWritten(registerType, startAddress, registerNumber);
     } else if (reply->error() == QModbusDevice::ProtocolError) {
-        QString error = tr("Read response error: %1 (Mobus exception: 0x%2)").arg(reply->errorString()).arg(reply->rawResult().exceptionCode(), -1, 16);
+        QString error = tr("Read response error: %1 (Mobus exception: 0x%2)")
+                .arg(reply->errorString()).arg(reply->rawResult().exceptionCode(), -1, 16);
         emit invokeOutputMessage(error);
     } else {
-        QString error = tr("Read response error: %1 (code: 0x%2)").arg(reply->errorString()).arg(reply->error(), -1, 16);
+        QString error = tr("Read response error: %1 (code: 0x%2)")
+                .arg(reply->errorString()).arg(reply->error(), -1, 16);
         emit invokeOutputMessage(error);
     }
 
