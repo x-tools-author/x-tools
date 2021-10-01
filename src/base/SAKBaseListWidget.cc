@@ -100,13 +100,17 @@ bool SAKBaseListWidget::forbidAllItems()
 void SAKBaseListWidget::updateRecord(quint64 id, QString columnName, QVariant value)
 {
     QString queryString;
-    if (value.type() == QVariant::String){
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+    if (value.type() == QVariant::String) {
+#else
+    if (value.metaType() == QMetaType(QMetaType::QString)) {
+#endif
         queryString = QString("UPDATE %1 SET %2='%3' WHERE ID=%4")
                 .arg(mTableName,
                      columnName,
                      value.toString(),
                      QString::number(id));
-    }else{
+    } else {
         queryString = QString("UPDATE %1 SET %2=%3 WHERE ID=%4")
                 .arg(mTableName,
                      columnName,
@@ -114,7 +118,7 @@ void SAKBaseListWidget::updateRecord(quint64 id, QString columnName, QVariant va
                      QString::number(id));
     }
 
-    if(!mSqlQuery.exec(queryString)){
+    if(!mSqlQuery.exec(queryString)) {
         qWarning() << QString("Can not update record(%1):%2")
                       .arg(columnName, mSqlQuery.lastError().text());
     }

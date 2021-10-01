@@ -6,6 +6,11 @@ isEqual(QT_MAJOR_VERSION, 5){
             DEFINES+=SAK_IMPORT_MODULE_SERIALBUS
         }
     }
+} else {
+    qtHaveModule(serialbus){
+        QT  += serialbus
+        DEFINES+=SAK_IMPORT_MODULE_SERIALBUS
+    }
 }
 
 contains(DEFINES, SAK_IMPORT_MODULE_SERIALBUS){

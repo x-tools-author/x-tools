@@ -19,7 +19,7 @@
 #include <QSqlDatabase>
 
 #include "SAKPlugin3d.hh"
-#include "SAKPluginCharts.hh"
+//#include "SAKPluginCharts.hh"
 #include "SAKDebuggerPluginTransponders.hh"
 #include "SAKDebuggerPluginAutoResponse.hh"
 #include "SAKDebuggerPluginTimedSending.hh"
@@ -37,24 +37,18 @@ public:
                                 QWidget *panelWidget,
                                 QObject *parent = Q_NULLPTR);
     ~SAKDebuggerPlugins();
-
-
 private:
     SAKPlugin3d *m3d;
-    SAKPluginCharts *mCharts;
+    //SAKPluginCharts *mCharts;
     SAKDebuggerPluginTransponders *mTransponders;
     SAKDebuggerPluginAutoResponse *mAutoResponse;
     SAKDebuggerPluginTimedSending *mTimedSending;
-
-
 private:
     QLabel *mTitleLabel;
     QWidget *mPanelWidget;
     QDialog *mPluginDialog;
     QWidget *mActiveWidgetInPanel;
     QWidget *mActiveWidgetInDialog;
-
-
 private:
     void showPluin3D();
     void showPluinCharts();
@@ -73,8 +67,6 @@ private:
 
     void clearPluginDialog();
     void clearPluginPanel();
-
-
 signals:
     void bytesRead(QByteArray bytes);
     void bytesWritten(QByteArray bytes);

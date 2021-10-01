@@ -23,7 +23,7 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
                                        QObject *parent)
     :QObject(parent)
     ,m3d(Q_NULLPTR)
-    ,mCharts(Q_NULLPTR)
+    //,mCharts(Q_NULLPTR)
     ,mTransponders(Q_NULLPTR)
     ,mAutoResponse(Q_NULLPTR)
     ,mTimedSending(Q_NULLPTR)
@@ -51,10 +51,12 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
 
     // Instance plugins.
     m3d = new SAKPlugin3d();
+#if 0
     mCharts = new SAKPluginCharts(sqlDatabase,
                                   settings,
                                   settingsGroup,
                                   "Charts");
+#endif
     mTransponders = new SAKDebuggerPluginTransponders(sqlDatabase,
                                                       settings,
                                                       settingsGroup,
@@ -153,7 +155,7 @@ SAKDebuggerPlugins::~SAKDebuggerPlugins()
 {
     QVector<QWidget*> pluginVector;
     pluginVector << m3d
-                 << mCharts
+                 //<< mCharts
                  << mTransponders
                  << mTimedSending
                  << mAutoResponse;
@@ -172,7 +174,7 @@ void SAKDebuggerPlugins::showPluin3D()
 
 void SAKDebuggerPlugins::showPluinCharts()
 {
-    showPluginDialog(mCharts);
+    //showPluginDialog(mCharts);
 }
 
 void SAKDebuggerPlugins::showPluinTransponders()
@@ -208,7 +210,7 @@ void SAKDebuggerPlugins::embedPluin3D()
 
 void SAKDebuggerPlugins::embedPluinCharts()
 {
-    embedPlugin(mCharts);
+    //embedPlugin(mCharts);
 }
 
 void SAKDebuggerPlugins::embedPluinTransponders()

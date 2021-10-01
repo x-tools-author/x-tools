@@ -56,7 +56,7 @@ bool SAKWebSocketClientDevice::initialize()
 
     connect(mWebSocket, QOverload<QAbstractSocket::SocketError>::of(&QWebSocket::error),
             this, [=](QAbstractSocket::SocketError error){
-        emit errorOccurred(tr("error code:") + error);
+        emit errorOccurred(tr("error code:") + QString::number(error));
         eventLoop->exit(-1);
     });
 

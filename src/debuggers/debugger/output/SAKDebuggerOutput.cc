@@ -376,11 +376,11 @@ QString SAKDebuggerOutput::formattingData(SAKStructDataContext ctx)
         str.append(QString::fromUtf8(origingData));
     } else if (format == SAKCommonDataStructure::OutputFormatUtf16) {
         const char *data = origingData.constData();
-        int len = origingData.length()/sizeof(char16_t);
+        int len = origingData.length()/int(sizeof(char16_t));
         str.append(QString::fromUtf16(reinterpret_cast<const char16_t*>(data), len));
     } else if (format == SAKCommonDataStructure::OutputFormatUcs4) {
         const char *data = origingData.constData();
-        int len = origingData.length()/sizeof(char32_t);
+        int len = origingData.length()/int(sizeof(char32_t));
         str.append(QString::fromUcs4(reinterpret_cast<const char32_t*>(data), len));
     } else if (format == SAKCommonDataStructure::OutputFormatLocal) {
         str.append(QString::fromLocal8Bit(origingData));

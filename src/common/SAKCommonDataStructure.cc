@@ -10,6 +10,8 @@
 #include <QMetaEnum>
 #include <QLineEdit>
 #include <QStandardItemModel>
+#include <QRegularExpression>
+#include <QRegularExpressionValidator>
 #include "SAKCommonDataStructure.hh"
 
 SAKCommonDataStructure::SAKCommonDataStructure(QObject* parent)
@@ -228,22 +230,22 @@ void SAKCommonDataStructure::setLineEditTextFormat(
         SAKEnumTextFormatInput format
         )
 {
-    QMap<int, QRegExpValidator*> regExpMap;
-    QRegExp binRegExp = QRegExp("([01][01][01][01][01][01][01][01][ ])*");
-    QRegExp otcRegExp = QRegExp("([0-7][0-7][ ])*");
-    QRegExp decRegExp = QRegExp("([0-9][0-9][ ])*");
-    QRegExp hexRegExp = QRegExp("([0-9a-fA-F][0-9a-fA-F][ ])*");
-    QRegExp asciiRegExp = QRegExp("([ -~])*");
+    QMap<int, QRegularExpressionValidator*> regExpMap;
+    QRegularExpression binRegExp = QRegularExpression("([01][01][01][01][01][01][01][01][ ])*");
+    QRegularExpression otcRegExp = QRegularExpression("([0-7][0-7][ ])*");
+    QRegularExpression decRegExp = QRegularExpression("([0-9][0-9][ ])*");
+    QRegularExpression hexRegExp = QRegularExpression("([0-9a-fA-F][0-9a-fA-F][ ])*");
+    QRegularExpression asciiRegExp = QRegularExpression("([ -~])*");
     regExpMap.insert(SAKCommonDataStructure::InputFormatBin,
-                     new QRegExpValidator(binRegExp));
+                     new QRegularExpressionValidator(binRegExp));
     regExpMap.insert(SAKCommonDataStructure::InputFormatOct,
-                     new QRegExpValidator(otcRegExp));
+                     new QRegularExpressionValidator(otcRegExp));
     regExpMap.insert(SAKCommonDataStructure::InputFormatDec,
-                     new QRegExpValidator(decRegExp));
+                     new QRegularExpressionValidator(decRegExp));
     regExpMap.insert(SAKCommonDataStructure::InputFormatHex,
-                     new QRegExpValidator(hexRegExp));
+                     new QRegularExpressionValidator(hexRegExp));
     regExpMap.insert(SAKCommonDataStructure::InputFormatAscii,
-                     new QRegExpValidator(asciiRegExp));
+                     new QRegularExpressionValidator(asciiRegExp));
     regExpMap.insert(SAKCommonDataStructure::InputFormatLocal,
                      Q_NULLPTR);
 
@@ -254,7 +256,7 @@ void SAKCommonDataStructure::setLineEditTextFormat(
         }
 
         if (regExpMap.contains(format)) {
-            QRegExpValidator *validator = regExpMap.value(format);
+            QRegularExpressionValidator *validator = regExpMap.value(format);
             lineEdit->setValidator(validator);
         } else {
             lineEdit->setValidator(Q_NULLPTR);

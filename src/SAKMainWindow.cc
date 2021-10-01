@@ -921,10 +921,10 @@ QString SAKMainWindow::debuggerNameFromDebugPageType(int type)
 {
     QString title;
     QMetaEnum metaEnum = QMetaEnum::fromType<SAKEnumDebugPageType>();
-    for (auto &var : mDebugPageMetaInfoList){
-        if (var.debugPageType == type){
-            for (int i = 0; i < metaEnum.keyCount(); i++){
-                if (var.debugPageType == metaEnum.value(i)){
+    for (auto &var : mDebugPageMetaInfoList) {
+        if (var.debugPageType == type) {
+            for (int i = 0; i < metaEnum.keyCount(); i++) {
+                if (var.debugPageType == metaEnum.value(i)) {
                     title = var.defaultTitle;
                     break;
                 }

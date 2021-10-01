@@ -10,8 +10,12 @@
 #ifndef SAKMODBUSCLIENTCONTROLLERSERIALPORT_HH
 #define SAKMODBUSCLIENTCONTROLLERSERIALPORT_HH
 
-#include <QModbusRtuSerialMaster>
 #include "SAKModbusClientController.hh"
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+#include <QModbusRtuSerialMaster>
+#else
+#include <QModbusRtuSerialClient>
+#endif
 
 class SAKModbusCommonClientSection;
 class SAKModbusCommonSerialPortSection;
@@ -24,7 +28,11 @@ protected:
     QModbusDevice *initModbusDevice() final;
 private:
     SAKModbusCommonSerialPortSection *mSerialPortSection;
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QModbusRtuSerialMaster *mClient;
+#else
+    QModbusRtuSerialClient *mClient;
+#endif
 };
 
 #endif // SAKMODBUSCLIENTCONTROLLERSERIALPORT_HH
