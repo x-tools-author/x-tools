@@ -37,7 +37,12 @@ SAKWebSocketClientController::SAKWebSocketClientController(QSettings *settings,
         emit parametersContextChanged();
         microLE2Ini(settings, settingsGroup, ctx.serverAddress, mServerAddressLineEdit);
     });
+#if QT_VERSION >= QT_VERSION_CHECK(5,7,0)
     connect(mSendingTypeComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+#else
+    connect(mSendingTypeComboBox,
+            static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+#endif
             this, [=](){
         emit parametersContextChanged();
         microCoB2Ini(settings, settingsGroup, ctx.sendingType, mSendingTypeComboBox);

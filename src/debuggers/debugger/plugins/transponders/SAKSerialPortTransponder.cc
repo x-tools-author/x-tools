@@ -157,40 +157,62 @@ void SAKSerialPortTransponder::initSignals()
         mDevice->setParametersContext(QVariant::fromValue(parametersContext()));
         emit this->baudRateChanged(text.toInt());
     });
-
+#if QT_VERSION >= QT_VERSION_CHECK(5,7,0)
     connect(mUi->dataBitscomboBox,
             QOverload<int>::of(&QComboBox::currentIndexChanged),
+#else
+    connect(mUi->dataBitscomboBox,
+            static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+#endif
             this, [&](int index){
         Q_UNUSED(index);
         mDevice->setParametersContext(QVariant::fromValue(parametersContext()));
         emit this->dataBitsChanged(mUi->dataBitscomboBox->currentData().toInt());
     });
-
+#if QT_VERSION >= QT_VERSION_CHECK(5,7,0)
     connect(mUi->parityComboBox,
             QOverload<int>::of(&QComboBox::currentIndexChanged),
+#else
+    connect(mUi->parityComboBox,
+            static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+#endif
             this, [&](int index){
         Q_UNUSED(index);
         mDevice->setParametersContext(QVariant::fromValue(parametersContext()));
         emit this->parityChanged(mUi->parityComboBox->currentData().toInt());
     });
-
+#if QT_VERSION >= QT_VERSION_CHECK(5,7,0)
     connect(mUi->stopBitscomboBox,
             QOverload<int>::of(&QComboBox::currentIndexChanged),
+#else
+    connect(mUi->stopBitscomboBox,
+            static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+#endif
             this, [&](int index){
         Q_UNUSED(index);
         mDevice->setParametersContext(QVariant::fromValue(parametersContext()));
         emit this->stopBitsChanged(mUi->stopBitscomboBox->currentData().toInt());
     });
 
+#if QT_VERSION >= QT_VERSION_CHECK(5,7,0)
     connect(mUi->flowControlComboBox,
             QOverload<int>::of(&QComboBox::currentIndexChanged),
+#else
+    connect(mUi->flowControlComboBox,
+            static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+#endif
             this, [&](int index){
         Q_UNUSED(index);
         mDevice->setParametersContext(QVariant::fromValue(parametersContext()));
         emit this->flowControlChanged(mUi->dataBitscomboBox->currentData().toInt());
     });
 
+#if QT_VERSION >= QT_VERSION_CHECK(5,7,0)
     connect(mUi->frameIntervalSpinBox, QOverload<int>::of(&QSpinBox::valueChanged),
+#else
+    connect(mUi->frameIntervalSpinBox,
+            static_cast<void(QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+#endif
             this, [&](int value){
         mDevice->setParametersContext(QVariant::fromValue(parametersContext()));
         emit this->frameIntervalChanged(value);

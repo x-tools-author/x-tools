@@ -26,14 +26,26 @@ SAKDebuggerDeviceMask::SAKDebuggerDeviceMask(QSettings *settings,
 
         int rxMask = settings->value(mSettingsKeyCtx.rxMask).toInt();
         mUi->rxMaskSpinBox->setValue(rxMask);
-        connect(mUi->rxMaskSpinBox, QOverload<int>::of(&QSpinBox::valueChanged), this, [=](){
+#if QT_VERSION >= QT_VERSION_CHECK(5,7,0)
+    connect(mUi->rxMaskSpinBox, QOverload<int>::of(&QSpinBox::valueChanged),
+#else
+    connect(mUi->rxMaskSpinBox,
+            static_cast<void(QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+#endif
+        this, [=](){
             settings->setValue(mSettingsKeyCtx.rxMask, mUi->rxMaskSpinBox->value());
             emit parametersChanged();
         });
 
         int txMask = settings->value(mSettingsKeyCtx.txMask).toInt();
         mUi->txMaskSpinBox->setValue(txMask);
-        connect(mUi->txMaskSpinBox, QOverload<int>::of(&QSpinBox::valueChanged), this, [=](){
+#if QT_VERSION >= QT_VERSION_CHECK(5,7,0)
+    connect(mUi->txMaskSpinBox, QOverload<int>::of(&QSpinBox::valueChanged),
+#else
+    connect(mUi->txMaskSpinBox,
+            static_cast<void(QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+#endif
+         this, [=](){
             settings->setValue(mSettingsKeyCtx.txMask, mUi->txMaskSpinBox->value());
             emit parametersChanged();
         });

@@ -166,14 +166,15 @@ void SAKDebuggerPluginAutoResponseItem::setupItem()
     });
 
 
-    connect(mUi->optionComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+    connect(mUi->optionComboBox,
+            static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this, [&](int option){
         emit optionChanged(id(), option);
     });
 
 
     connect(mUi->referenceDataFromatComboBox,
-            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this, [&](int format){
         emit referenceFormatChanged(id(), format);
 
@@ -182,7 +183,7 @@ void SAKDebuggerPluginAutoResponseItem::setupItem()
     });
 
     connect(mUi->responseDataFormatComboBox,
-            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this, [&](int format){
         emit responseFromatChanged(id(), format);
 
@@ -197,7 +198,8 @@ void SAKDebuggerPluginAutoResponseItem::setupItem()
     });
 
 
-    connect(mUi->delayTimeSpinBox, QOverload<int>::of(&QSpinBox::valueChanged),
+    connect(mUi->delayTimeSpinBox,
+            static_cast<void(QSpinBox::*)(int)>(&QSpinBox::valueChanged),
             this, [&](int interval){
         emit delayTimeChanged(id(), interval);
     });

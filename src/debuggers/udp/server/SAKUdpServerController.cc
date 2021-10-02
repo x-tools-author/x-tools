@@ -32,7 +32,12 @@ SAKUdpServerController::SAKUdpServerController(QSettings *settings,
     microIni2CoB(settings, settingsGroup, ctx.serverHost, mUi->serverhostComboBox);
     microIni2LE(settings, settingsGroup, ctx.serverPort, mUi->serverPortLineEdit);
 
+#if QT_VERSION >= QT_VERSION_CHECK(5,7,0)
     connect(mUi->serverhostComboBox, QOverload<int>::of(&QComboBox::activated),
+#else
+    connect(mUi->serverhostComboBox,
+            static_cast<void(QComboBox::*)(int)>(&QComboBox::activated),
+#endif
             this, [=](int index){
         Q_UNUSED(index);
         emit parametersContextChanged();

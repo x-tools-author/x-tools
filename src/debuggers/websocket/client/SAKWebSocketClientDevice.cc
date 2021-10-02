@@ -31,7 +31,7 @@ bool SAKWebSocketClientDevice::initialize()
 {
     QEventLoop *eventLoop = new QEventLoop;
     mWebSocket = new QWebSocket;
-    connect(mWebSocket, &QWebSocket::connected, [=](){
+    connect(mWebSocket, &QWebSocket::connected, this, [=](){
         QString info = mWebSocket->localAddress().toString();
         info.append(":");
         info.append(QString::number(mWebSocket->localPort()));
@@ -39,7 +39,7 @@ bool SAKWebSocketClientDevice::initialize()
         eventLoop->exit();
     });
 
-    connect(mWebSocket, &QWebSocket::disconnected, [=](){
+    connect(mWebSocket, &QWebSocket::disconnected, this, [=](){
         emit clientInfoChanged(QString());
     });
 
@@ -49,12 +49,17 @@ bool SAKWebSocketClientDevice::initialize()
         emit readyRead(SAKDeviceProtectedSignal());
     });
 
-    connect(mWebSocket, &QWebSocket::textMessageReceived, [=](QString message){
+    connect(mWebSocket, &QWebSocket::textMessageReceived, this, [=](QString message){
         appendMessage(message.toUtf8());
         emit readyRead(SAKDeviceProtectedSignal());
     });
 
+#if QT_VERSION >= QT_VERSION_CHECK(5,7,0)
     connect(mWebSocket, QOverload<QAbstractSocket::SocketError>::of(&QWebSocket::error),
+#else
+    connect(mWebSocket,
+            static_cast<void(QWebSocket::*)(QAbstractSocket::SocketError)>(&QWebSocket::error),
+#endif
             this, [=](QAbstractSocket::SocketError error){
         emit errorOccurred(tr("error code:") + QString::number(error));
         eventLoop->exit(-1);

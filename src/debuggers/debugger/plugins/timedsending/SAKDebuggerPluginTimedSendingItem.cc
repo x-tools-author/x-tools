@@ -110,14 +110,15 @@ void SAKDebuggerPluginTimedSendingItem::commonInitializing()
         emit descriptionChanged(id(), text);
     });
 
-    connect(mUi->intervalSpinBox, QOverload<int>::of(&QSpinBox::valueChanged),
+    connect(mUi->intervalSpinBox,
+            static_cast<void(QSpinBox::*)(int)>(&QSpinBox::valueChanged),
             this, [&](int value){
         mWriteTimer.setInterval(value < 50 ? 50 : value);
         emit intervalChanged(id(), value);
     });
 
     connect(mUi->textFormatComboBox,
-            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this,
             [&](int index){
         Q_UNUSED(index);
@@ -128,7 +129,7 @@ void SAKDebuggerPluginTimedSendingItem::commonInitializing()
     });
 
     connect(mUi->suffixComboBox,
-            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this,
             [&](int index){
         emit suffixChanged(id(), index);

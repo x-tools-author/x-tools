@@ -36,8 +36,13 @@ SAKSerialPortController::SAKSerialPortController(QSettings *settings,
     mSettingsKeyContext.baudRate = controlGroup + "baudRate";
 
 
+#if QT_VERSION >= QT_VERSION_CHECK(5,7,0)
     connect(mUi->serialportsComboBox,
             QOverload<int>::of(&QComboBox::currentIndexChanged),
+#else
+    connect(mUi->serialportsComboBox,
+            static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+#endif
             this,
             [=](int index){
         Q_UNUSED(index);
@@ -45,28 +50,68 @@ SAKSerialPortController::SAKSerialPortController(QSettings *settings,
         mSettings->setValue(mSettingsKeyContext.portName, portName);
         emit parametersContextChanged();
     });
+
+
     connect(mUi->baudrateComboBox, &QComboBox::currentTextChanged,
             this, [=](const QString &baudRate){
         mSettings->setValue(mSettingsKeyContext.baudRate, baudRate);
         emit parametersContextChanged();
     });
+
+
+#if QT_VERSION >= QT_VERSION_CHECK(5,7,0)
     connect(mUi->databitsComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+#else
+    connect(mUi->databitsComboBox,
+            static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+#endif
             this, &SAKSerialPortController::parametersContextChanged);
+
+
+#if QT_VERSION >= QT_VERSION_CHECK(5,7,0)
     connect(mUi->stopbitsComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+#else
+    connect(mUi->stopbitsComboBox,
+            static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+#endif
             this, &SAKSerialPortController::parametersContextChanged);
+
+
+#if QT_VERSION >= QT_VERSION_CHECK(5,7,0)
     connect(mUi->parityComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+#else
+    connect(mUi->parityComboBox,
+            static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+#endif
             this, &SAKSerialPortController::parametersContextChanged);
+
+
+#if QT_VERSION >= QT_VERSION_CHECK(5,7,0)
     connect(mUi->flowControlComboBox,
             QOverload<int>::of(&QComboBox::currentIndexChanged),
+#else
+    connect(mUi->flowControlComboBox,
+            static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+#endif
             this,
             &SAKSerialPortController::parametersContextChanged);
+
+
     connect(mUi->customBaudrateCheckBox, &QCheckBox::clicked,
             this, [=](){
         bool checked = mUi->customBaudrateCheckBox->isChecked();
         mSettings->setValue(mSettingsKeyContext.usingCustomBaudRate, checked);
         mUi->baudrateComboBox->setEditable(mUi->customBaudrateCheckBox->isChecked());
     });
+
+
+#if QT_VERSION >= QT_VERSION_CHECK(5,7,0)
     connect(mUi->frameIntervalSpinBox, QOverload<int>::of(&QSpinBox::valueChanged),
+#else
+    connect(mUi->frameIntervalSpinBox,
+            static_cast<void(QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+#endif
+
             this, [=](int frameInterval){
         mSettings->setValue(mSettingsKeyContext.frameInterval, frameInterval);
         emit parametersContextChanged();

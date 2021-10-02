@@ -44,7 +44,12 @@ SAKTcpClientController::SAKTcpClientController(QSettings *settings,
     microIni2ChB(settings, settingsGroup,
                  ctx.specifyLocalInfo, mSpecifyClientAddressAndPort);
 
+#if QT_VERSION >= QT_VERSION_CHECK(5,7,0)
     connect(mLocalhostComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+#else
+    connect(mLocalhostComboBox,
+            static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+#endif
             this, [=](int index){
         Q_UNUSED(index);
         emit parametersContextChanged();

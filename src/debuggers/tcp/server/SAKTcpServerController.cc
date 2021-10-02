@@ -34,13 +34,24 @@ SAKTcpServerController::SAKTcpServerController(QSettings *settings,
     SAKTcpServerParametersContext ctx;
     microIni2CoB(settings, settingsGroup, ctx.serverHost, mServerHostComboBox);
     microIni2LE(settings, settingsGroup, ctx.serverPort, mServerPortLineEdit);
-
+#if QT_VERSION >= QT_VERSION_CHECK(5,7,0)
     connect(mClientHostComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+#else
+    connect(mClientHostComboBox,
+            static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+#endif
+
             this, [=](int index){
         Q_UNUSED(index);
         emit parametersContextChanged();
     });
+#if QT_VERSION >= QT_VERSION_CHECK(5,7,0)
     connect(mServerHostComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+#else
+    connect(mServerHostComboBox,
+            static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+#endif
+
             this, [=](int index){
         Q_UNUSED(index);
         emit parametersContextChanged();

@@ -71,7 +71,8 @@ SAKDebuggerDeviceAnalyzer::SAKDebuggerDeviceAnalyzer(QSettings *settings,
             emit parametersChanged();
         });
 
-        connect(mUi->frameLengthSpinBox, QOverload<int>::of(&QSpinBox::valueChanged),
+        connect(mUi->frameLengthSpinBox,
+                static_cast<void(QSpinBox::*)(int)>(&QSpinBox::valueChanged),
                 this,
                 [=](int frameLength){
             settings->setValue(mSettingsKeyContext.frameLength, frameLength);

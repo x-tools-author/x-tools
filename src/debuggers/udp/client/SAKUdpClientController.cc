@@ -36,7 +36,12 @@ SAKUdpClientController::SAKUdpClientController(QSettings *settings,
     microIni2ChB(settings, settingsGroup,
                  ctx.specifyLocalInfo, mUi->specifyClientAddressAndPort);
 
+#if QT_VERSION >= QT_VERSION_CHECK(5,7,0)
     connect(mUi->localhostComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+#else
+    connect(mUi->localhostComboBox,
+            static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+#endif
             this, [=](int index){
         Q_UNUSED(index);
         emit parametersContextChanged();

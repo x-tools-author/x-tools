@@ -80,7 +80,12 @@ SAKDebuggerInputCrcSettings::SAKDebuggerInputCrcSettings(
                              mUi->bigEndianCheckBox->isChecked());
         emit crcParametersChanged();
     });
+#if QT_VERSION >= QT_VERSION_CHECK(5,7,0)
     connect(mUi->startSpinBox, QOverload<int>::of(&QSpinBox::valueChanged),
+#else
+    connect(mUi->startSpinBox,
+            static_cast<void(QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+#endif
             this, [=](int value){
         mParametersContextMutex.lock();
         mParametersContext.startByte = value;
@@ -90,7 +95,12 @@ SAKDebuggerInputCrcSettings::SAKDebuggerInputCrcSettings(
                             mUi->startSpinBox->value());
         emit crcParametersChanged();
     });
+#if QT_VERSION >= QT_VERSION_CHECK(5,7,0)
     connect(mUi->endSpinBox, QOverload<int>::of(&QSpinBox::valueChanged),
+#else
+    connect(mUi->endSpinBox,
+            static_cast<void(QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+#endif
             this, [=](int value){
         mParametersContextMutex.lock();
         mParametersContext.endByte = value;
@@ -100,8 +110,13 @@ SAKDebuggerInputCrcSettings::SAKDebuggerInputCrcSettings(
                             mUi->endSpinBox->value());
         emit crcParametersChanged();
     });
+#if QT_VERSION >= QT_VERSION_CHECK(5,7,0)
     connect(mUi->crcParametersModelComboBox,
             QOverload<int>::of(&QComboBox::currentIndexChanged),
+#else
+    connect(mUi->crcParametersModelComboBox,
+            static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+#endif
             this, [=](){
         mParametersContextMutex.lock();
         int m = mUi->crcParametersModelComboBox->currentData().toInt();

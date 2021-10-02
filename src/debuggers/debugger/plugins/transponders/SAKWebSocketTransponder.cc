@@ -76,7 +76,7 @@ void SAKWebSocketTransponder::initSignals()
     });
 
     connect(mUi->sendingTypeComboBox,
-            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this,
             [=](){
         emit parametersContextChanged();
