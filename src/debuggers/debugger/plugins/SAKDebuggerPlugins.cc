@@ -22,8 +22,6 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
                                        QWidget *panelWidget,
                                        QObject *parent)
     :QObject(parent)
-    ,m3d(Q_NULLPTR)
-    //,mCharts(Q_NULLPTR)
     ,mTransponders(Q_NULLPTR)
     ,mAutoResponse(Q_NULLPTR)
     ,mTimedSending(Q_NULLPTR)
@@ -45,18 +43,9 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
             // Nothing to do yet.
         });
     }
-    Q_UNUSED(settings);
-    Q_UNUSED(settingsGroup);
 
 
     // Instance plugins.
-    m3d = new SAKPlugin3d();
-#if 0
-    mCharts = new SAKPluginCharts(sqlDatabase,
-                                  settings,
-                                  settingsGroup,
-                                  "Charts");
-#endif
     mTransponders = new SAKDebuggerPluginTransponders(sqlDatabase,
                                                       settings,
                                                       settingsGroup,
@@ -94,14 +83,6 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
         void (SAKDebuggerPlugins::*embed)();
     };
     QVector<SAKActionsContext> actionsCtx;
-#if 0
-    actionsCtx.append({tr("3D"),
-                       &SAKDebuggerPlugins::showPluin3D,
-                       &SAKDebuggerPlugins::embedPluin3D});
-#endif
-    actionsCtx.append({tr("Charts"),
-                       &SAKDebuggerPlugins::showPluinCharts,
-                       &SAKDebuggerPlugins::embedPluinCharts});
     actionsCtx.append({tr("Transponders"),
                        &SAKDebuggerPlugins::showPluinTransponders,
                        &SAKDebuggerPlugins::embedPluinTransponders});
@@ -127,7 +108,6 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
     menu->addSeparator();
     addActionsToMenu(menu, actionsCtx, true);
     menu->addSeparator();
-    menu->addAction(tr("Automatically Reload"), this, [](){});
     menu->addAction(tr("Reload All"), this, [](){});
 
     mPluginDialog = new QDialog(sakMainWindow);
@@ -154,9 +134,7 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
 SAKDebuggerPlugins::~SAKDebuggerPlugins()
 {
     QVector<QWidget*> pluginVector;
-    pluginVector << m3d
-                 //<< mCharts
-                 << mTransponders
+    pluginVector << mTransponders
                  << mTimedSending
                  << mAutoResponse;
     for (int i = 0; i < pluginVector.count(); i++) {
@@ -165,16 +143,6 @@ SAKDebuggerPlugins::~SAKDebuggerPlugins()
             w->deleteLater();
         }
     }
-}
-
-void SAKDebuggerPlugins::showPluin3D()
-{
-    showPluginDialog(m3d);
-}
-
-void SAKDebuggerPlugins::showPluinCharts()
-{
-    //showPluginDialog(mCharts);
 }
 
 void SAKDebuggerPlugins::showPluinTransponders()
@@ -201,16 +169,6 @@ void SAKDebuggerPlugins::showPluginDialog(QWidget *contentWidget)
     if (mActiveWidgetInPanel == mActiveWidgetInDialog) {
         cancelEmbedPlugin();
     }
-}
-
-void SAKDebuggerPlugins::embedPluin3D()
-{
-    embedPlugin(m3d);
-}
-
-void SAKDebuggerPlugins::embedPluinCharts()
-{
-    //embedPlugin(mCharts);
 }
 
 void SAKDebuggerPlugins::embedPluinTransponders()

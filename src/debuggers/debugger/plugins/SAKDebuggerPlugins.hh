@@ -18,8 +18,6 @@
 #include <QPushButton>
 #include <QSqlDatabase>
 
-#include "SAKPlugin3d.hh"
-//#include "SAKPluginCharts.hh"
 #include "SAKDebuggerPluginTransponders.hh"
 #include "SAKDebuggerPluginAutoResponse.hh"
 #include "SAKDebuggerPluginTimedSending.hh"
@@ -38,8 +36,6 @@ public:
                                 QObject *parent = Q_NULLPTR);
     ~SAKDebuggerPlugins();
 private:
-    SAKPlugin3d *m3d;
-    //SAKPluginCharts *mCharts;
     SAKDebuggerPluginTransponders *mTransponders;
     SAKDebuggerPluginAutoResponse *mAutoResponse;
     SAKDebuggerPluginTimedSending *mTimedSending;
@@ -50,15 +46,11 @@ private:
     QWidget *mActiveWidgetInPanel;
     QWidget *mActiveWidgetInDialog;
 private:
-    void showPluin3D();
-    void showPluinCharts();
     void showPluinTransponders();
     void showPluginAutoResponse();
     void showPluginRegularlySending();
     void showPluginDialog(QWidget *contentWidget);
 
-    void embedPluin3D();
-    void embedPluinCharts();
     void embedPluinTransponders();
     void embedPluginAutoResponse();
     void embedPluginRegularlySending();
