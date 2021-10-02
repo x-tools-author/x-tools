@@ -340,6 +340,13 @@ void SAKMainWindow::initOptionMenu()
     QAction *action = new QAction(tr("Clear Configuration"), this);
     optionMenu->addAction(action);
     connect(action, &QAction::triggered, this, &SAKMainWindow::clearConfiguration);
+    action = new QAction(tr("Open configuration floder"), this);
+    optionMenu->addAction(action);
+    connect(action, &QAction::triggered, this, [=](){
+        QUrl fileUrl = mSettings->fileName();
+        QString floderUrl = mSettings->fileName().remove(fileUrl.fileName());
+        QDesktopServices::openUrl(floderUrl);
+    });
 }
 
 void SAKMainWindow::initWindowMenu()
@@ -370,7 +377,7 @@ void SAKMainWindow::initLanguageMenu()
                 QString language;
                 QString name;
             };
-            QVector<info> infoList;
+            QVector<info> infoVector;
 
             for (int i = 0; i < jsonArray.count(); i++){
                 QJsonObject jsonObject = jsonArray.at(i).toObject();
@@ -378,11 +385,11 @@ void SAKMainWindow::initLanguageMenu()
                 languageInfo.locale = jsonObject.value("locale").toString();
                 languageInfo.language = jsonObject.value("language").toString();
                 languageInfo.name = jsonObject.value("name").toString();
-                infoList.append(languageInfo);
+                infoVector.append(languageInfo);
             }
 
             mLanguagesActionGroup = new QActionGroup(this);
-            for(auto &var:infoList){
+            for(auto &var:infoVector){
                 QAction *action = new QAction(var.name, languageMenu);
                 languageMenu->addAction(action);
                 action->setCheckable(true);
