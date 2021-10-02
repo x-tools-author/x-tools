@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SAKTestDebuggerController</class>
+ <widget class="QWidget" name="SAKTestDebuggerController">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>167</width>
+    <height>210</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>0</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>16777215</width>
+    <height>16777215</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string notr="true">Widget</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item row="9" column="1">
+    <widget class="QLineEdit" name="writtenIntervalLineEdit">
+     <property name="text">
+      <string>500</string>
+     </property>
+     <property name="placeholderText">
+      <string>Unit is milliseconds</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="2">
+    <widget class="QLabel" name="label_6">
+     <property name="text">
+      <string>Error string</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Cycle(ms)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="0">
+    <widget class="QLabel" name="label_5">
+     <property name="text">
+      <string>Cycle(ms)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="2">
+    <widget class="QLabel" name="label">
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+	color: blue
+}</string>
+     </property>
+     <property name="text">
+      <string>Device settings</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="2">
+    <widget class="QCheckBox" name="openFailedCheckBox">
+     <property name="text">
+      <string>Open device failed</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="1">
+    <widget class="QLineEdit" name="readIntervalLineEdit">
+     <property name="text">
+      <string>500</string>
+     </property>
+     <property name="placeholderText">
+      <string>Unit is milliseconds</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="2">
+    <widget class="QLineEdit" name="errorStringLineEdit">
+     <property name="text">
+      <string>Just for debugging</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0" colspan="2">
+    <widget class="QCheckBox" name="readCyclicCheckBox">
+     <property name="text">
+      <string>Generate data circularly</string>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="0" colspan="2">
+    <widget class="QCheckBox" name="writeCyclicCheckBox">
+     <property name="text">
+      <string>Create data circularly</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="2">
+    <widget class="QLabel" name="label_2">
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+	color: blue
+}</string>
+     </property>
+     <property name="text">
+      <string>Reading settings</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0" colspan="2">
+    <widget class="QLabel" name="label_3">
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+	color: blue
+}</string>
+     </property>
+     <property name="text">
+      <string>Writing settings</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

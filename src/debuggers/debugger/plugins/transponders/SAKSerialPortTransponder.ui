@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SAKSerialPortTransponder</class>
+ <widget class="QWidget" name="SAKSerialPortTransponder">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>613</width>
+    <height>73</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string notr="true">Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QCheckBox" name="enableCheckBox">
+     <property name="text">
+      <string>Enable</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QCheckBox" name="customBaudrateCheckBox">
+     <property name="text">
+      <string>Custom baudrate</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2">
+    <widget class="QLabel" name="label">
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="text">
+      <string>Ports</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="3">
+    <widget class="QComboBox" name="portNameComboBox">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="4">
+    <widget class="QLabel" name="label_2">
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="text">
+      <string>Baudrate</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="5">
+    <widget class="QComboBox" name="baudRateComboBox"/>
+   </item>
+   <item row="0" column="6">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>Data bits</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="7">
+    <widget class="QComboBox" name="dataBitscomboBox"/>
+   </item>
+   <item row="1" column="0" colspan="2">
+    <widget class="QWidget" name="widget" native="true">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="label_7">
+        <property name="text">
+         <string>Frame interval</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="frameIntervalSpinBox"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="2">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Stop bits</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="3">
+    <widget class="QComboBox" name="stopBitscomboBox"/>
+   </item>
+   <item row="1" column="4">
+    <widget class="QLabel" name="label_5">
+     <property name="text">
+      <string>Parity</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="5">
+    <widget class="QComboBox" name="parityComboBox"/>
+   </item>
+   <item row="1" column="6">
+    <widget class="QLabel" name="label_6">
+     <property name="text">
+      <string>Flow control</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="7">
+    <widget class="QComboBox" name="flowControlComboBox"/>
+   </item>
+   <item row="2" column="0" colspan="8">
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

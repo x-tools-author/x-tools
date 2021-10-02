@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SAKUdpServerController</class>
+ <widget class="QWidget" name="SAKUdpServerController">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>99</width>
+    <height>119</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item row="5" column="1">
+    <widget class="QComboBox" name="clientHostComboBox"/>
+   </item>
+   <item row="0" column="0" colspan="2">
+    <widget class="QLabel" name="label_5">
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+	color: blue
+}</string>
+     </property>
+     <property name="text">
+      <string>Udp server information</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QLineEdit" name="serverPortLineEdit">
+     <property name="text">
+      <string>44444</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="2">
+    <widget class="QLabel" name="label_6">
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+	color: blue
+}</string>
+     </property>
+     <property name="text">
+      <string>Udp client list</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QComboBox" name="serverhostComboBox"/>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Clients</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="2">
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Port</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>Address</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="1">
+    <widget class="QPushButton" name="clearPushButton">
+     <property name="text">
+      <string>ClearClients</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

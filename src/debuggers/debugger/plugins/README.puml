@@ -1,0 +1,26 @@
+@startuml SAKDebuggerPluginAutoResponseDataDriven
+SAKDebuggerDevice->SAKDebuggerPlugins: bytesRead(QByteArray bytes)
+activate SAKDebuggerPlugins
+SAKDebuggerPlugins->SAKDebuggerPluginAutoResponse: bytesRead(QByteArray bytes)
+deactivate
+activate SAKDebuggerPluginAutoResponse
+SAKDebuggerPluginAutoResponse->SAKDebuggerPluginAutoResponse: onBytesRead(QByteArray bytes)
+SAKDebuggerPluginAutoResponse->SAKDebuggerPluginAutoResponseItem: bytesRead(QByteArray bytes)
+note left: The signal will be emit when \n does not forbid all items
+deactivate
+activate SAKDebuggerPluginAutoResponseItem
+SAKDebuggerPluginAutoResponseItem->SAKDebuggerPluginAutoResponseItem: onBytesReadPrivate(QByteArray bytes)
+SAKDebuggerPluginAutoResponseItem->SAKDebuggerPluginAutoResponseItem:onBytesRead(QByteArray bytes)
+note right: The interface will be called \n when the item is enable
+SAKDebuggerPluginAutoResponseItem->SAKDebuggerPluginAutoResponse:invokeWriteBytes(QByteArray bytes)
+deactivate
+activate SAKDebuggerPluginAutoResponse
+SAKDebuggerPluginAutoResponse->SAKDebuggerPlugins:invokeWriteCookedBytes(QBytesArray bytes)
+deactivate
+activate SAKDebuggerPlugins
+SAKDebuggerPlugins->SAKDebuggerDevice:invokeWriteCookedBytes(QBytesArray bytes)
+deactivate
+activate SAKDebuggerDevice
+SAKDebuggerDevice->SAKDebuggerDevice: writeBytes(QBytesArray bytes)
+deactivate
+@enduml

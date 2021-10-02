@@ -80,17 +80,17 @@ void SAKToolCRCCalculator::initParameterModel()
     QStringList list = mCrcInterface->supportedParameterModels();
     mParameterComboBox->addItems(list);
 
-    QMetaEnum models = QMetaEnum::fromType<SAKCommonCrcInterface::CRCModel>();
+    QMetaEnum models = QMetaEnum::fromType<SAKCommonCrcInterface::SAKEnumCrcModel>();
     bool ok = false;
     int ret = models.keyToValue(mParameterComboBox->currentText().toLatin1().constData(), &ok);
-    SAKCommonCrcInterface::CRCModel model = SAKCommonCrcInterface::CRC_8;
+    SAKCommonCrcInterface::SAKEnumCrcModel model = SAKCommonCrcInterface::CRC_8;
     if (ok){
-        model = static_cast<SAKCommonCrcInterface::CRCModel>(ret);
+        model = static_cast<SAKCommonCrcInterface::SAKEnumCrcModel>(ret);
     }
 
-    int bitsWidth = mCrcInterface->getBitsWidth(model);
+    int bitsWidth = mCrcInterface->bitsWidth(model);
     mWidthComboBox->setCurrentIndex(mWidthComboBox->findText(QString::number(bitsWidth)));
-    mLabelPolyFormula->setText(mCrcInterface->getPolyFormula(model));
+    mLabelPolyFormula->setText(mCrcInterface->friendlyPoly(model));
 }
 
 void SAKToolCRCCalculator::calculate()
@@ -116,12 +116,12 @@ void SAKToolCRCCalculator::calculate()
     }
 
     int bitsWidth = mWidthComboBox->currentText().toInt();
-    QMetaEnum models = QMetaEnum::fromType<SAKCommonCrcInterface::CRCModel>();
+    QMetaEnum models = QMetaEnum::fromType<SAKCommonCrcInterface::SAKEnumCrcModel>();
     bool ok = false;
     int ret = models.keyToValue(mParameterComboBox->currentText().toLatin1().constData(), &ok);
-    SAKCommonCrcInterface::CRCModel model = SAKCommonCrcInterface::CRC_8;
+    SAKCommonCrcInterface::SAKEnumCrcModel model = SAKCommonCrcInterface::CRC_8;
     if (ok){
-        model = static_cast<SAKCommonCrcInterface::CRCModel>(ret);
+        model = static_cast<SAKCommonCrcInterface::SAKEnumCrcModel>(ret);
     }else{
         Q_ASSERT_X(false, __FUNCTION__, "Unknown crc parameters model!");
     }
@@ -174,12 +174,12 @@ void SAKToolCRCCalculator::textFormatControl()
 void SAKToolCRCCalculator::changedParameterModel(int index)
 {
     Q_UNUSED(index)
-    QMetaEnum models = QMetaEnum::fromType<SAKCommonCrcInterface::CRCModel>();
+    QMetaEnum models = QMetaEnum::fromType<SAKCommonCrcInterface::SAKEnumCrcModel>();
     bool ok = false;
-    SAKCommonCrcInterface::CRCModel model = SAKCommonCrcInterface::CRC_8;
+    SAKCommonCrcInterface::SAKEnumCrcModel model = SAKCommonCrcInterface::CRC_8;
     int ret = models.keyToValue(mParameterComboBox->currentText().toLatin1().constData(), &ok);
     if (ok){
-        model = static_cast<SAKCommonCrcInterface::CRCModel>(ret);
+        model = static_cast<SAKCommonCrcInterface::SAKEnumCrcModel>(ret);
     }else{
         QLoggingCategory category(mLogCategory);
         qCWarning(category) << "Unknown parameter model!";
@@ -187,14 +187,14 @@ void SAKToolCRCCalculator::changedParameterModel(int index)
         return;
     }
 
-    int bitsWidth = mCrcInterface->getBitsWidth(model);
+    int bitsWidth = mCrcInterface->bitsWidth(model);
     mWidthComboBox->setCurrentIndex(mWidthComboBox->findText(QString::number(bitsWidth)));
-    mPolyLineEdit->setText(QString("0x%1").arg(QString::number(static_cast<int>(mCrcInterface->getPoly(model)), 16), bitsWidth/4, '0'));
-    mInitLineEdit->setText(QString("0x%1").arg(QString::number(static_cast<int>(mCrcInterface->getInitValue(model)), 16), bitsWidth/4, '0'));
-    mXorLineEdit->setText(QString("0x%1").arg(QString::number(static_cast<int>(mCrcInterface->getXorValue(model)), 16), bitsWidth/4, '0'));
-    mRefinCheckBox->setChecked(mCrcInterface->getInputReversal(model));
-    mRefoutCheckBox->setChecked(mCrcInterface->getOutputReversal(model));
-    mLabelPolyFormula->setText(mCrcInterface->getPolyFormula(model));
+    mPolyLineEdit->setText(QString("0x%1").arg(QString::number(static_cast<int>(mCrcInterface->poly(model)), 16), bitsWidth/4, '0'));
+    mInitLineEdit->setText(QString("0x%1").arg(QString::number(static_cast<int>(mCrcInterface->initialValue(model)), 16), bitsWidth/4, '0'));
+    mXorLineEdit->setText(QString("0x%1").arg(QString::number(static_cast<int>(mCrcInterface->xorValue(model)), 16), bitsWidth/4, '0'));
+    mRefinCheckBox->setChecked(mCrcInterface->isInputReversal(model));
+    mRefoutCheckBox->setChecked(mCrcInterface->isOutputReversal(model));
+    mLabelPolyFormula->setText(mCrcInterface->friendlyPoly(model));
 }
 
 bool SAKToolCRCCalculator::eventFilter(QObject *watched, QEvent *event)

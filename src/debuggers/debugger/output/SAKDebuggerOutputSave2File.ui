@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SAKDebuggerOutputSave2File</class>
+ <widget class="QDialog" name="SAKDebuggerOutputSave2File">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>527</width>
+    <height>165</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Write to  File Parameters Settings</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="2" column="0">
+    <widget class="QCheckBox" name="checkBoxEnable">
+     <property name="text">
+      <string>Enable write to file</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="2" column="2">
+    <widget class="QLabel" name="label_4">
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+    color:red
+}</string>
+     </property>
+     <property name="text">
+      <string>The operation will clear the data has been written to file! -&gt;</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="3">
+    <widget class="QPushButton" name="truncatePushButton">
+     <property name="toolTip">
+      <string>Clear the data has been written to file.</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+    color:red
+}</string>
+     </property>
+     <property name="text">
+      <string>ClearFile</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="4">
+    <widget class="QPushButton" name="okPushButton">
+     <property name="text">
+      <string>OK</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="5">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>File select</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="pathLineEdit"/>
+      </item>
+      <item row="0" column="2">
+       <widget class="QPushButton" name="selectPushButton">
+        <property name="text">
+         <string>SelectFile</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>File location</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="5">
+    <widget class="QGroupBox" name="groupBox_3">
+     <property name="title">
+      <string>Data persistence settings</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="3" column="1">
+       <widget class="QRadioButton" name="utf8RadioButton">
+        <property name="text">
+         <string>Utf8</string>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="timestampCheckBox">
+        <property name="text">
+         <string>Save timestamp</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="readDataCheckBox">
+        <property name="text">
+         <string>Save rx data</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="writtenDataCheckBox">
+        <property name="text">
+         <string>Save tx data</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QRadioButton" name="binRadioButton">
+        <property name="text">
+         <string>Bin</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QRadioButton" name="hexRadioButton">
+        <property name="text">
+         <string>Hex</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLabel" name="label_2">
+        <property name="styleSheet">
+         <string notr="true">QLabel{
+    color:green
+}</string>
+        </property>
+        <property name="text">
+         <string>Text format</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="styleSheet">
+         <string notr="true">QLabel{
+    color:green
+}</string>
+        </property>
+        <property name="text">
+         <string>Save options</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>pathLineEdit</tabstop>
+  <tabstop>selectPushButton</tabstop>
+  <tabstop>readDataCheckBox</tabstop>
+  <tabstop>writtenDataCheckBox</tabstop>
+  <tabstop>timestampCheckBox</tabstop>
+  <tabstop>binRadioButton</tabstop>
+  <tabstop>hexRadioButton</tabstop>
+  <tabstop>utf8RadioButton</tabstop>
+  <tabstop>checkBoxEnable</tabstop>
+  <tabstop>truncatePushButton</tabstop>
+  <tabstop>okPushButton</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>okPushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SAKDebuggerOutputSave2File</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>520</x>
+     <y>156</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>177</x>
+     <y>164</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

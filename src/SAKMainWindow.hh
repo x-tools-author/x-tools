@@ -1,4 +1,4 @@
-﻿/*
+﻿/****************************************************************************************
  * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -6,19 +6,21 @@
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- */
+ ***************************************************************************************/
 #ifndef MAINWINDOW_HH
 #define MAINWINDOW_HH
 
 #include <QMenu>
 #include <QLabel>
 #include <QAction>
+#include <QSettings>
 #include <QMetaEnum>
 #include <QTabWidget>
 #include <QMessageBox>
 #include <QHBoxLayout>
 #include <QMainWindow>
 #include <QTranslator>
+#include <QSqlDatabase>
 
 namespace Ui {
     class SAKMainWindow;
@@ -29,13 +31,17 @@ class SAKMainWindow : public QMainWindow
 {
     Q_OBJECT
 public:
-    explicit SAKMainWindow(QWidget *parent = Q_NULLPTR);
+    explicit SAKMainWindow(QSettings *settings,
+                           QSqlDatabase *sqlDatabase,
+                           QWidget *parent = Q_NULLPTR);
     ~SAKMainWindow();
 
     // Debug page type supported by QtSwissArmyKnife
     enum SAKEnumDebugPageType {
 #ifdef QT_DEBUG
+#ifdef SAK_IMPORT_MODULE_TEST
         DebugPageTypeTest,
+#endif
 #endif
 #ifdef SAK_IMPORT_MODULE_SERIALPORT
         DebugPageTypeCOM,
@@ -47,12 +53,20 @@ public:
         DebugPageTypeUSB,
 #endif
 #ifdef SAK_IMPORT_MODULE_UDP
+#ifdef SAK_IMPORT_MODULE_UDP_CLIENT
         DebugPageTypeUdpClient,
+#endif
+#ifdef SAK_IMPORT_MODULE_UDP_SERVER
         DebugPageTypeUdpServer,
 #endif
+#endif
 #ifdef SAK_IMPORT_MODULE_TCP
+#ifdef SAK_IMPORT_MODULE_TCP_CLIENT
         DebugPageTypeTCPClient,
+#endif
+#ifdef SAK_IMPORT_MODULE_TCP_SERVER
         DebugPageTypeTCPServer,
+#endif
 #endif
 #ifdef SAK_IMPORT_MODULE_SSLSOCKET
         DebugPageTypeSslSocketClient,
@@ -66,12 +80,16 @@ public:
         DebugPageTypeBluetoothClient,
         DebugPageTypeBluetoothServer,
 #endif
-#ifdef SAK_IMPORT_MODULE_BLUETOOTHLOWENERGY
+#ifdef SAK_IMPORT_MODULE_BLE
         DebugPageTypeBluetoothLowEnergy,
 #endif
 #ifdef SAK_IMPORT_MODULE_WEBSOCKET
+#ifdef SAK_IMPORT_MODULE_WEBSOCKET_CLIENT
         DebugPageTypeWebSocketClient,
+#endif
+#ifdef SAK_IMPORT_MODULE_WEBSOCKET_SERVER
         DebugPageTypeWebSocketServer,
+#endif
 #endif
 #ifdef SAK_IMPORT_MODULE_SERIALBUS
         DebugPageTypeModbus
@@ -112,6 +130,10 @@ private:
     QAction *mTestPageAction;
     SAKUpdateManager *mUpdateManager;
     const QString mSettingKeyEnableTestPage;
+    QSettings *mSettings;
+    QSqlDatabase *mSqlDatabase;
+    QActionGroup *mActionGroup;
+    QActionGroup *mLanguagesActionGroup;
 private: 
     void initMenuBar();
     void initFileMenu();
@@ -137,25 +159,29 @@ private:
     void showQrCodeDialog();
 private slots:
     /**
-     * @brief activePage: Active the debugging page, the interface must be called by signal,
+     * @brief activePage: Active the debugging page,
+     * the interface must be called by signal,
      * which is emited by actions of windows menu.
      */
     void activePage();
 
     /**
-     * @brief installLanguage: Change the language packet of application, the interface must be called by signal,
+     * @brief installLanguage: Change the language packet of application,
+     * the interface must be called by signal,
      * which is emited by actions of language menu.
      */
     void installLanguage();
 
     /**
-     * @brief openDebugPageWidget: Show a deugging window, the interface must be called by singal,
+     * @brief openDebugPageWidget: Show a deugging window,
+     * the interface must be called by singal,
      * which is emited by actions of new debugging window menu.
      */
     void openDebugPageWidget();
 
     /**
-     * @brief appendRemovablePage: append a page to tab widget, the interface must be called by signal,
+     * @brief appendRemovablePage: append a page to tab widget, t
+     * he interface must be called by signal,
      * which is emited by actions of new debugging page menu.
      */
     void appendRemovablePage();
@@ -168,14 +194,17 @@ private:
     QWidget *debugPageFromDebugPageType(int type);
 
     /**
-     * @brief debugPageTitleFromDebugPageType: Get the default name of debuge page from specified type
+     * @brief debugPageTitleFromDebugPageType: Get the default name of debuge page
+     * from specified type
      * @param type: Debug page type, look at the SAKEnumToolType for more information
      * @return The default debug page name
      */
-    QString debugPageTitleFromDebugPageType(int type);
+    QString debuggerNameFromDebugPageType(int type);
 private:
     Ui::SAKMainWindow *mUi;
     QTabWidget *mTabWidget;
 };
+
+extern SAKMainWindow *sakMainWindow;
 
 #endif // MAINWINDOW_H

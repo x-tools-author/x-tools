@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SAKSerialPortController</class>
+ <widget class="QWidget" name="SAKSerialPortController">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>127</width>
+    <height>187</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Control Panel</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item row="1" column="0">
+    <widget class="QLabel" name="label_8">
+     <property name="text">
+      <string>Devices</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QComboBox" name="serialportsComboBox">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>16777215</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Baud rate</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QComboBox" name="baudrateComboBox"/>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Data bits</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QComboBox" name="databitsComboBox">
+     <property name="currentText">
+      <string notr="true"/>
+     </property>
+     <property name="currentIndex">
+      <number>-1</number>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="label_4">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Stop bits</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <widget class="QComboBox" name="stopbitsComboBox"/>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="label_5">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Parity</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1">
+    <widget class="QComboBox" name="parityComboBox"/>
+   </item>
+   <item row="6" column="0">
+    <widget class="QLabel" name="label_6">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Flow control</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="1">
+    <widget class="QComboBox" name="flowControlComboBox"/>
+   </item>
+   <item row="7" column="0">
+    <widget class="QLabel" name="label_7">
+     <property name="text">
+      <string>Frame interval</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="1">
+    <widget class="QSpinBox" name="frameIntervalSpinBox"/>
+   </item>
+   <item row="8" column="0" colspan="2">
+    <widget class="QCheckBox" name="customBaudrateCheckBox">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Custom baud rate</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="2">
+    <widget class="QLabel" name="label">
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+	color: blue
+}</string>
+     </property>
+     <property name="text">
+      <string>Serial port information</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

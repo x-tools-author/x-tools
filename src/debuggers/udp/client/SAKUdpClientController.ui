@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SAKUdpClientController</class>
+ <widget class="QWidget" name="SAKUdpClientController">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>135</width>
+    <height>161</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item row="8" column="1">
+    <widget class="QLineEdit" name="targetPortLineEdit">
+     <property name="text">
+      <string>44444</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QComboBox" name="localhostComboBox"/>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="label_8">
+     <property name="text">
+      <string>Bound info</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Address</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <widget class="QLineEdit" name="boundInfoLineEdit">
+     <property name="toolTip">
+      <string>The bound address and port of socket.</string>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+     <property name="placeholderText">
+      <string notr="true"/>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Ignored" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Address</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="2">
+    <widget class="QCheckBox" name="specifyClientAddressAndPort">
+     <property name="text">
+      <string>Specify client information</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0" colspan="2">
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QLineEdit" name="localPortlineEdit">
+     <property name="text">
+      <string>55555</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0" colspan="2">
+    <widget class="QLabel" name="label_6">
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+	color: blue
+}</string>
+     </property>
+     <property name="text">
+      <string>Udp server inforamtion</string>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Port</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="2">
+    <widget class="QLabel" name="label_5">
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+	color: blue
+}</string>
+     </property>
+     <property name="text">
+      <string>Udp client information</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_4">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Ignored" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Port</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="1">
+    <widget class="QLineEdit" name="targetHostLineEdit">
+     <property name="text">
+      <string>127.0.0.1</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

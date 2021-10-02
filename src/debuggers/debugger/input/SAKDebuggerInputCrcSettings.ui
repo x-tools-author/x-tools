@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SAKDebuggerInputCrcSettings</class>
+ <widget class="QDialog" name="SAKDebuggerInputCrcSettings">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>314</width>
+    <height>162</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string notr="true">Dialog</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="0" column="0">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Parameter settings</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="label_6">
+        <property name="text">
+         <string>CRC parameters model</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="crcParametersModelComboBox"/>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="appendCrcCheckBox">
+        <property name="text">
+         <string>Append CRC</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="bigEndianCheckBox">
+        <property name="text">
+         <string>Big endian</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="title">
+      <string>Section settings</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="1" column="1">
+       <widget class="QSpinBox" name="endSpinBox">
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>999</number>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Start bytes</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" colspan="2">
+       <widget class="QLabel" name="label_4">
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+	color: &quot;red&quot;
+}</string>
+        </property>
+        <property name="text">
+         <string>End byte is start from right, the last byte is one</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0" colspan="2">
+       <widget class="QLabel" name="label_5">
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+	color: &quot;red&quot;
+}</string>
+        </property>
+        <property name="text">
+         <string>If parameter(s) is(are) invalid, it will be ignored</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>End bytes</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" colspan="2">
+       <widget class="QLabel" name="label_3">
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+	color: &quot;red&quot;
+}</string>
+        </property>
+        <property name="text">
+         <string>Start byte is start from left, the first byte is one</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QSpinBox" name="startSpinBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>999</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

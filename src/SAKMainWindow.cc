@@ -1,4 +1,4 @@
-﻿/*
+﻿/****************************************************************************************
  * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -6,7 +6,7 @@
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- */
+ ***************************************************************************************/
 #include <QDir>
 #include <QFile>
 #include <QRect>
@@ -38,7 +38,6 @@
 #include "SAKMainWindow.hh"
 #include "SAKApplication.hh"
 #include "SAKUpdateManager.hh"
-#include "SAKTestDebugPage.hh"
 #include "SAKCommonDataStructure.hh"
 
 // Debugging tools
@@ -53,45 +52,69 @@
 #include "SAKToolStringAssistant.hh"
 
 // Debugging pages
-#include "SAKTestDebugPage.hh"
+#ifdef QT_DEBUG
+#ifdef SAK_IMPORT_MODULE_TEST
+#include "SAKTestDebugger.hh"
+#endif
+#endif
 #ifdef SAK_IMPORT_MODULE_SERIALBUS
-#include "SAKModbusDebugPage.hh"
+#include "SAKModbusDebugger.hh"
 #endif
 #ifdef SAK_IMPORT_MODULE_UDP
-#include "SAKUdpClientDebugPage.hh"
-#include "SAKUdpServerDebugPage.hh"
+#ifdef SAK_IMPORT_MODULE_UDP_CLIENT
+#include "SAKUdpClientDebugger.hh"
+#endif
+#ifdef SAK_IMPORT_MODULE_UDP_SERVER
+#include "SAKUdpServerDebugger.hh"
+#endif
 #endif
 #ifdef SAK_IMPORT_MODULE_TCP
-#include "SAKTcpClientDebugPage.hh"
-#include "SAKTcpServerDebugPage.hh"
+#ifdef SAK_IMPORT_MODULE_TCP_CLIENT
+#include "SAKTcpClientDebugger.hh"
+#endif
+#ifdef SAK_IMPORT_MODULE_TCP_SERVER
+#include "SAKTcpServerDebugger.hh"
+#endif
 #endif
 #ifdef SAK_IMPORT_MODULE_SERIALPORT
-#include "SAKSerialPortDebugPage.hh"
+#include "SAKSerialPortDebugger.hh"
 #endif
 #ifdef SAK_IMPORT_MODULE_BLUETOOTH
 #include "SAKBluetoothClientDebugPage.hh"
 #include "SAKBluetoothServerDebugPage.hh"
 #endif
 #ifdef SAK_IMPORT_MODULE_WEBSOCKET
-#include "SAKWebSocketClientDebugPage.hh"
-#include "SAKWebSocketServerDebugPage.hh"
+#ifdef SAK_IMPORT_MODULE_WEBSOCKET_CLIENT
+#include "SAKWebSocketClientDebugger.hh"
 #endif
-#ifdef SAK_IMPORT_MODULE_BLUETOOTHLOWENERGY
+#ifdef SAK_IMPORT_MODULE_WEBSOCKET_SERVER
+#include "SAKWebSocketServerDebugger.hh"
+#endif
+#endif
+#ifdef SAK_IMPORT_MODULE_BLE
 #include "SAKBluetoothLowEnergyDebugPage.hh"
 #endif
 
 #include "ui_SAKMainWindow.h"
 
-SAKMainWindow::SAKMainWindow(QWidget *parent)
+SAKMainWindow *sakMainWindow = Q_NULLPTR;
+SAKMainWindow::SAKMainWindow(QSettings *settings,
+                             QSqlDatabase *sqlDatabase,
+                             QWidget *parent)
     :QMainWindow(parent)
     ,mWindowsMenu(Q_NULLPTR)
     ,mUpdateManager(Q_NULLPTR)
     ,mSettingKeyEnableTestPage(QString("enableTestPage"))
+    ,mSettings(settings)
+    ,mSqlDatabase(sqlDatabase)
     ,mUi(new Ui::SAKMainWindow)
     ,mTabWidget(new QTabWidget)
 {
-    mSettingsKeyContext.enableTestPage = QString("%1/enableTestPage").arg(qApp->applicationName());
-    mSettingsKeyContext.currentTabPage = QString("%1/currentTabPage").arg(qApp->applicationName());
+    sakMainWindow = this;
+    mSettingsKeyContext.enableTestPage = QString("%1/enableTestPage")
+            .arg(qApp->applicationName());
+    mSettingsKeyContext.currentTabPage = QString("%1/currentTabPage")
+            .arg(qApp->applicationName());
 
     mUi->setupUi(this);
     mUpdateManager = new SAKUpdateManager(this);
@@ -114,7 +137,8 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     centralWidget->layout()->setContentsMargins(6, 6, 6, 6);
     QString title = QString(tr("Qt Swiss Army Knife"));
     title.append(QString(" "));
-    title.append(QString("v") + qobject_cast<SAKApplication*>(qApp)->applicationVersion());
+    title.append(QString("v"));
+    title.append(qobject_cast<SAKApplication*>(qApp)->applicationVersion());
     setWindowTitle(title);
 #endif
 
@@ -123,24 +147,28 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
 
     // Connecting the signal of tab page to it's slot.
     mTabWidget->setTabsClosable(true);
-    connect(mTabWidget, &QTabWidget::tabCloseRequested, this, &SAKMainWindow::removeRemovableDebugPage);
+    connect(mTabWidget, &QTabWidget::tabCloseRequested,
+            this, &SAKMainWindow::removeRemovableDebugPage);
     connect(mTabWidget, &QTabWidget::currentChanged, this, [=](int index){
         sakApp->settings()->setValue(mSettingsKeyContext.currentTabPage, index);
     });
 
-    // Create debugging pages, the operation will emit the signal named currentChanged.
-    // So you should block it, or the value of setting opetion(mSettingsKeyContext.currentTabPage) will be aways 0.
+    // Create debugger, the operation will emit the signal named currentChanged.
+    // So you should block it,
+    // or the value of setting option(mSettingsKeyContext.currentTabPage)
+    // will be 0 aways.
     QMetaEnum metaEnum = QMetaEnum::fromType<SAKEnumDebugPageType>();
     mTabWidget->blockSignals(true);
     for (int i = 0; i < metaEnum.keyCount(); i++){
 #ifdef QT_DEBUG
+#ifdef SAK_IMPORT_MODULE_TEST
         // Test page is selectable, it is for developer of the project.
         bool enableTestPage = sakApp->settings()->value(mSettingsKeyContext.enableTestPage).toBool();
         if (!enableTestPage && (metaEnum.value(i) == DebugPageTypeTest)){
             continue;
         }
 #endif
-
+#endif
         // The page can not be closed.
         QWidget *page = debugPageFromDebugPageType(metaEnum.value(i));
         if (page){
@@ -154,10 +182,12 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     }
 
     // Set the current page to last time
-    int currentPage = sakApp->settings()->value(mSettingsKeyContext.currentTabPage).toInt();
+    int currentPage =
+            sakApp->settings()->value(mSettingsKeyContext.currentTabPage).toInt();
     mTabWidget->setCurrentIndex(currentPage);
 
-    // Hide the close button, the step must be done after calling setTabsClosable() function.
+    // Hide the close button,
+    // the step must be done after calling setTabsClosable() function.
     for (int i = 0; i < mTabWidget->count(); i++){
         mTabWidget->tabBar()->setTabButton(i, QTabBar::RightSide, Q_NULLPTR);
         mTabWidget->tabBar()->setTabButton(i, QTabBar::LeftSide, Q_NULLPTR);
@@ -166,6 +196,7 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
 
 SAKMainWindow::~SAKMainWindow()
 {
+    sakMainWindow = Q_NULLPTR;
     delete mUi;
 }
 
@@ -197,9 +228,9 @@ void SAKMainWindow::initFileMenu()
     fileMenu->addMenu(tabMenu);
     QMetaEnum enums = QMetaEnum::fromType<SAKEnumDebugPageType>();
     for (int i = 0; i < enums.keyCount(); i++){
-        QAction *a = new QAction(debugPageTitleFromDebugPageType(enums.value(i)), this);
+        QAction *a = new QAction(debuggerNameFromDebugPageType(enums.value(i)), this);
         // The object name is the default title of debug page
-        a->setObjectName(debugPageTitleFromDebugPageType(enums.value(i)));
+        a->setObjectName(debuggerNameFromDebugPageType(enums.value(i)));
         QVariant var = QVariant::fromValue<int>(enums.value(i));
         a->setData(var);
         connect(a, &QAction::triggered, this, &SAKMainWindow::appendRemovablePage);
@@ -209,9 +240,9 @@ void SAKMainWindow::initFileMenu()
     QMenu *windowMenu = new QMenu(tr("New Window"), this);
     fileMenu->addMenu(windowMenu);
     for (int i = 0; i < enums.keyCount(); i++){
-        QAction *a = new QAction(debugPageTitleFromDebugPageType(enums.value(i)), this);
+        QAction *a = new QAction(debuggerNameFromDebugPageType(enums.value(i)), this);
         // The object name is the default title of debug page
-        a->setObjectName(debugPageTitleFromDebugPageType(enums.value(i)));
+        a->setObjectName(debuggerNameFromDebugPageType(enums.value(i)));
         QVariant var = QVariant::fromValue<int>(enums.value(i));
         connect(a, &QAction::triggered, this, &SAKMainWindow::openDebugPageWidget);
         a->setData(var);
@@ -257,13 +288,13 @@ void SAKMainWindow::initOptionMenu()
     optionMenu->addMenu(appStyleMenu);
     auto styleKeys = QStyleFactory::keys();
     QList<QAction*> actionsList;
-    QActionGroup *actionGroup = new QActionGroup(this);
+    mActionGroup = new QActionGroup(this);
     for (auto &var : styleKeys){
         QAction *action = new QAction(var, this);
         action->setObjectName(var);
         action->setCheckable(true);
         actionsList.append(action);
-        actionGroup->addAction(action);
+        mActionGroup->addAction(action);
         connect(action, &QAction::triggered, this, [=](){
             QString style = qobject_cast<QAction*>(sender())->objectName();
             sakApp->setStyle(style);
@@ -271,7 +302,9 @@ void SAKMainWindow::initOptionMenu()
         });
     }
     // Readin the specified style.
-    QString style = sakApp->settings()->value(sakApp->settingsKeyContext()->appStyle).toString();
+    QString style = sakApp->settings()->value(
+                sakApp->settingsKeyContext()->appStyle
+                ).toString();
     if (style.length()){
         for (auto &var : actionsList){
             if (var->objectName().compare(style) == 0){
@@ -279,7 +312,10 @@ void SAKMainWindow::initOptionMenu()
                 var->setChecked(true);
                 var->blockSignals(false);
                 sakApp->setStyle(style);
-                sakApp->settings()->setValue(sakApp->settingsKeyContext()->appStyle, style);
+                sakApp->settings()->setValue(
+                            sakApp->settingsKeyContext()->appStyle,
+                            style
+                            );
                 break;
             }
         }
@@ -291,8 +327,10 @@ void SAKMainWindow::initOptionMenu()
     mTestPageAction = new QAction(tr("Enable Testing Page"), this);
     optionMenu->addAction(mTestPageAction);
     mTestPageAction->setCheckable(true);
-    connect(mTestPageAction, &QAction::triggered, this, &SAKMainWindow::testPageActionTriggered);
-    bool enableTestPage = sakApp->settings()->value(mSettingsKeyContext.enableTestPage).toBool();
+    connect(mTestPageAction, &QAction::triggered,
+            this, &SAKMainWindow::testPageActionTriggered);
+    bool enableTestPage =
+            sakApp->settings()->value(mSettingsKeyContext.enableTestPage).toBool();
     if (enableTestPage){
         mTestPageAction->setChecked(true);
     }else{
@@ -302,6 +340,13 @@ void SAKMainWindow::initOptionMenu()
     QAction *action = new QAction(tr("Clear Configuration"), this);
     optionMenu->addAction(action);
     connect(action, &QAction::triggered, this, &SAKMainWindow::clearConfiguration);
+    action = new QAction(tr("Open configuration floder"), this);
+    optionMenu->addAction(action);
+    connect(action, &QAction::triggered, this, [=](){
+        QUrl fileUrl = mSettings->fileName();
+        QString floderUrl = mSettings->fileName().remove(fileUrl.fileName());
+        QDesktopServices::openUrl(floderUrl);
+    });
 }
 
 void SAKMainWindow::initWindowMenu()
@@ -315,7 +360,8 @@ void SAKMainWindow::initLanguageMenu()
     QMenu *languageMenu = new QMenu(tr("&Languages"), this);
     menuBar()->addMenu(languageMenu);
 
-    QString language = sakApp->settings()->value(sakApp->settingsKeyContext()->language).toString();
+    QString language =
+            sakApp->settings()->value(sakApp->settingsKeyContext()->language).toString();
 
     QFile file(":/translations/sak/Translations.json");
     file.open(QFile::ReadOnly);
@@ -331,7 +377,7 @@ void SAKMainWindow::initLanguageMenu()
                 QString language;
                 QString name;
             };
-            QList<info> infoList;
+            QVector<info> infoVector;
 
             for (int i = 0; i < jsonArray.count(); i++){
                 QJsonObject jsonObject = jsonArray.at(i).toObject();
@@ -339,19 +385,21 @@ void SAKMainWindow::initLanguageMenu()
                 languageInfo.locale = jsonObject.value("locale").toString();
                 languageInfo.language = jsonObject.value("language").toString();
                 languageInfo.name = jsonObject.value("name").toString();
-                infoList.append(languageInfo);
+                infoVector.append(languageInfo);
             }
 
-            QActionGroup *actionGroup = new QActionGroup(this);
-            for(auto &var:infoList){
+            mLanguagesActionGroup = new QActionGroup(this);
+            for(auto &var:infoVector){
                 QAction *action = new QAction(var.name, languageMenu);
                 languageMenu->addAction(action);
                 action->setCheckable(true);
-                actionGroup->addAction(action);
+                mLanguagesActionGroup->addAction(action);
                 action->setObjectName(var.language);
                 action->setData(QVariant::fromValue<QString>(var.name));
-                action->setIcon(QIcon(QString(":/translations/sak/%1").arg(var.locale).toLatin1()));
-                connect(action, &QAction::triggered, this, &SAKMainWindow::installLanguage);
+                action->setIcon(QIcon(QString(":/translations/sak/%1")
+                                      .arg(var.locale).toLatin1()));
+                connect(action, &QAction::triggered,
+                        this, &SAKMainWindow::installLanguage);
 
                 if (var.language == language.split('-').first()){
                     action->setChecked(true);
@@ -370,7 +418,10 @@ void SAKMainWindow::initHelpMenu()
 
     QAction *aboutQtAction = new QAction(tr("About Qt"), this);
     helpMenu->addAction(aboutQtAction);
-    connect(aboutQtAction, &QAction::triggered, [=](){QMessageBox::aboutQt(this, tr("About Qt"));});
+    connect(aboutQtAction,
+            &QAction::triggered,
+            this,
+            [=](){QMessageBox::aboutQt(this, tr("About Qt"));});
 
     QAction *aboutAction = new QAction(tr("About Application"), this);
     helpMenu->addAction(aboutAction);
@@ -378,11 +429,19 @@ void SAKMainWindow::initHelpMenu()
 
     QMenu *srcMenu = new QMenu(tr("Get Source"), this);
     helpMenu->addMenu(srcMenu);
-    QAction *visitGitHubAction = new QAction(QIcon(":/resources/images/GitHub.png"), tr("GitHub"), this);
-    connect(visitGitHubAction, &QAction::triggered, [](){QDesktopServices::openUrl(QUrl(QLatin1String(SAK_GITHUB_REPOSITORY_URL)));});
+    QAction *visitGitHubAction =
+            new QAction(QIcon(":/resources/images/GitHub.png"), tr("GitHub"), this);
+    connect(visitGitHubAction, &QAction::triggered,
+            [](){
+        QDesktopServices::openUrl(QUrl(QLatin1String(SAK_GITHUB_REPOSITORY_URL)));
+    });
     srcMenu->addAction(visitGitHubAction);
-    QAction *visitGiteeAction = new QAction(QIcon(":/resources/images/Gitee.png"), tr("Gitee"), this);
-    connect(visitGiteeAction, &QAction::triggered, [](){QDesktopServices::openUrl(QUrl(QLatin1String(SAK_GITEE_REPOSITORY_URL)));});
+    QAction *visitGiteeAction =
+            new QAction(QIcon(":/resources/images/Gitee.png"), tr("Gitee"), this);
+    connect(visitGiteeAction, &QAction::triggered,
+            [](){
+        QDesktopServices::openUrl(QUrl(QLatin1String(SAK_GITEE_REPOSITORY_URL)));
+    });
     srcMenu->addAction(visitGiteeAction);
 
     QAction *updateAction = new QAction(tr("Check for Update"), this);
@@ -391,7 +450,8 @@ void SAKMainWindow::initHelpMenu()
 
     QAction *releaseHistoryAction = new QAction(tr("Release History"), this);
     helpMenu->addAction(releaseHistoryAction);
-    connect(releaseHistoryAction, &QAction::triggered, this, &SAKMainWindow::showReleaseHistoryActionDialog);
+    connect(releaseHistoryAction, &QAction::triggered,
+            this, &SAKMainWindow::showReleaseHistoryActionDialog);
 
     helpMenu->addSeparator();
     QAction *qrCodeAction = new QAction(tr("QR Code"), this);
@@ -410,12 +470,26 @@ void SAKMainWindow::initLinksMenu()
         QString iconPath;
     };
     QList<Link> linkList;
-    linkList << Link{tr("Qt Official Download"), QString("http://download.qt.io/official_releases/qt"), QString(":/resources/images/Qt.png")}
-             << Link{tr("Qt Official Blog"), QString("https://www.qt.io/blog"), QString(":/resources/images/Qt.png")}
-             << Link{tr("Qt Official Release"), QString("https://wiki.qt.io/Qt_5.15_Release"), QString(":/resources/images/Qt.png")}
-             << Link{tr("Download SAK from Github"), QString("%1/releases").arg(SAK_GITHUB_REPOSITORY_URL), QString(":/resources/images/GitHub.png")}
-             << Link{tr("Download SAK from Gitee"), QString("%1/releases").arg(SAK_GITEE_REPOSITORY_URL), QString(":/resources/images/Gitee.png")}
-             << Link{tr("Office Web Site"), QString("https://qsaker.gitee.io/qsak/"), QString(":/resources/images/Gitee.png")};
+    linkList << Link {
+                tr("Qt Official Download"),
+                QString("http://download.qt.io/official_releases/qt"),
+                QString(":/resources/images/Qt.png")}
+             << Link {
+                tr("Qt Official Blog"),
+                QString("https://www.qt.io/blog"),
+                QString(":/resources/images/Qt.png")}
+             << Link {tr("Qt Official Release"),
+                QString("https://wiki.qt.io/Qt_5.15_Release"),
+                QString(":/resources/images/Qt.png")}
+             << Link {tr("Download SAK from Github"),
+                QString("%1/releases").arg(SAK_GITHUB_REPOSITORY_URL),
+                QString(":/resources/images/GitHub.png")}
+             << Link {tr("Download SAK from Gitee"),
+                QString("%1/releases").arg(SAK_GITEE_REPOSITORY_URL),
+                QString(":/resources/images/Gitee.png")}
+             << Link {tr("Office Web Site"),
+                QString("https://qsaker.gitee.io/qsak/"),
+                QString(":/resources/images/Gitee.png")};
 
     for (auto &var:linkList){
         QAction *action = new QAction(QIcon(var.iconPath), var.name, this);
@@ -439,7 +513,9 @@ void SAKMainWindow::initDemoMenu()
         QString iconPath;
     };
     QList<Link> linkList;
-    linkList << Link{tr("Qt SerialPort Demo"), QString("https://gitee.com/qsaker/qt-demo-serial-port-widget.git"), QString(":/resources/images/Qt.png")};
+    linkList << Link{tr("Qt SerialPort Demo"),
+                QString("https://gitee.com/qsaker/qt-demo-serial-port-widget.git"),
+                QString(":/resources/images/Qt.png")};
 
     for (auto &var:linkList){
         QAction *action = new QAction(QIcon(var.iconPath), var.name, this);
@@ -470,9 +546,12 @@ void SAKMainWindow::aboutQsak()
              << Info{tr("QQ"), QString("QQ:2869470394"), false}
              << Info{tr("QQ Group"), QString("QQ:952218522"), false}
              << Info{tr("Build Time"), dateTimeString, false}
-             << Info{tr("Copyright"), tr("Copyright 2018-%1 Qter. All rights reserved.").arg(sakApp->buildDate()->toString("yyyy")), false}
-             << Info{tr("Gitee Url"), QString("<a href=%1>%1</a>").arg(SAK_GITEE_REPOSITORY_URL), true}
-             << Info{tr("Gitbub Url"), QString("<a href=%1>%1</a>").arg(SAK_GITHUB_REPOSITORY_URL), true};
+             << Info{tr("Copyright"), tr("Copyright 2018-%1 Qter. All rights reserved.")
+                .arg(sakApp->buildDate()->toString("yyyy")), false}
+             << Info{tr("Gitee Url"), QString("<a href=%1>%1</a>")
+                .arg(SAK_GITEE_REPOSITORY_URL), true}
+             << Info{tr("Gitbub Url"), QString("<a href=%1>%1</a>")
+                .arg(SAK_GITHUB_REPOSITORY_URL), true};
 
     QDialog dialog;
     dialog.setWindowTitle(tr("About QSAK"));
@@ -480,14 +559,20 @@ void SAKMainWindow::aboutQsak()
     QGridLayout *gridLayout = new QGridLayout(&dialog);
     int i = 0;
     for (auto &var : infoList){
-        QLabel *nameLabel = new QLabel(QString("<font color=green>%1</font>").arg(var.name), &dialog);
+        QLabel *nameLabel = new QLabel(
+                    QString("<font color=green>%1</font>").arg(var.name),
+                    &dialog
+                    );
         QLabel *valueLabel = new QLabel(var.value, &dialog);
         gridLayout->addWidget(nameLabel, i, 0, 1, 1);
         gridLayout->addWidget(valueLabel, i, 1, 1, 1);
         i += 1;
 
         if (var.valueIsUrl){
-            connect(valueLabel, &QLabel::linkActivated, [](QString url){QDesktopServices::openUrl(QUrl(url));});
+            connect(valueLabel, &QLabel::linkActivated,
+                    [](QString url){
+                QDesktopServices::openUrl(QUrl(url));
+            });
         }
     }
     dialog.setLayout(gridLayout);
@@ -519,20 +604,24 @@ void SAKMainWindow::testPageActionTriggered()
     // ??
     bool checked = mTestPageAction->isChecked();
     mTestPageAction->setChecked(checked);
-    sakApp->settings()->setValue(mSettingsKeyContext.enableTestPage, QVariant::fromValue(checked));
+    sakApp->settings()->setValue(mSettingsKeyContext.enableTestPage,
+                                 QVariant::fromValue(checked));
     rebootRequestion();
 };
 
 void SAKMainWindow::clearConfiguration()
 {
     sakApp->settings()->setValue(sakApp->settingsKeyContext()->appStyle, QString(""));
-    sakApp->settings()->setValue(sakApp->settingsKeyContext()->removeSettingsFile, QVariant::fromValue(true));
+    sakApp->settings()->setValue(sakApp->settingsKeyContext()->removeSettingsFile,
+                                 QVariant::fromValue(true));
     rebootRequestion();
 }
 
 void SAKMainWindow::rebootRequestion()
 {
-    int ret = QMessageBox::information(this, tr("Reboot application to effective"), tr("Need to reboot, reboot to effective now?"), QMessageBox::Ok | QMessageBox::Cancel);
+    int ret = QMessageBox::information(this, tr("Reboot application to effective"),
+                                       tr("Need to reboot, reboot to effective now?"),
+                                       QMessageBox::Ok | QMessageBox::Cancel);
     if (ret == QMessageBox::Ok){
         qApp->closeAllWindows();
         qApp->exit(SAK_REBOOT_CODE);
@@ -542,10 +631,17 @@ void SAKMainWindow::rebootRequestion()
 void SAKMainWindow::initializingMetaObject()
 {
 #ifdef QT_DEBUG
-    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeTest, SAKTestDebugPage::staticMetaObject, tr("Test")});
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{
+                                      DebugPageTypeTest,
+                                      SAKTestDebugger::staticMetaObject,
+                                      tr("Test")});
 #endif
 #ifdef SAK_IMPORT_MODULE_SERIALPORT
-    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeCOM, SAKSerialPortDebugPage::staticMetaObject, tr("COM")});
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{
+                                      DebugPageTypeCOM,
+                                      SAKSerialPortDebugger::staticMetaObject,
+                                      tr("COM")
+                                  });
 #endif
 #ifdef SAK_IMPORT_HID_MODULE
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeHID, SAKHIDDebugPage::staticMetaObject, tr("HID")});
@@ -554,12 +650,32 @@ void SAKMainWindow::initializingMetaObject()
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeUSB, SAKUSBDebugPage::staticMetaObject, tr("USB")});
 #endif
 #ifdef SAK_IMPORT_MODULE_UDP
-    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeUdpClient, SAKUdpClientDebugPage::staticMetaObject, tr("UDP-C")});
-    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeUdpServer, SAKUdpServerDebugPage::staticMetaObject, tr("UDP-S")});
+#ifdef SAK_IMPORT_MODULE_UDP_CLIENT
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{
+                                      DebugPageTypeUdpClient,
+                                      SAKUdpClientDebugger::staticMetaObject,
+                                      tr("UdpClient")});
+#endif
+#ifdef SAK_IMPORT_MODULE_UDP_SERVER
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{
+                                      DebugPageTypeUdpServer,
+                                      SAKUdpServerDebugger::staticMetaObject,
+                                      tr("UdpServer")});
+#endif
 #endif
 #ifdef SAK_IMPORT_MODULE_TCP
-    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeTCPClient, SAKTcpClientDebugPage::staticMetaObject, tr("TCP-C")});
-    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeTCPServer, SAKTcpServerDebugPage::staticMetaObject, tr("TCP-S")});
+#ifdef SAK_IMPORT_MODULE_TCP_CLIENT
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{
+                                      DebugPageTypeTCPClient,
+                                      SAKTcpClientDebugger::staticMetaObject,
+                                      tr("TcpClient")});
+#endif
+#ifdef SAK_IMPORT_MODULE_TCP_SERVER
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{
+                                      DebugPageTypeTCPServer,
+                                      SAKTcpServerDebugger::staticMetaObject,
+                                      tr("TcpServer")});
+#endif
 #endif
 #ifdef SAK_IMPORT_MODULE_SSLSOCKET
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{SAKSslSocketClientDebugPage::staticMetaObject, tr("SSL-C")});
@@ -573,26 +689,47 @@ void SAKMainWindow::initializingMetaObject()
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeBluetoothClient, SAKBluetoothClientDebugPage::staticMetaObject, tr("BT-C")});
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeBluetoothServer, SAKBluetoothServerDebugPage::staticMetaObject, tr("BT-S")});
 #endif
-#ifdef SAK_IMPORT_MODULE_BLUETOOTHLOWENERGY
+#ifdef SAK_IMPORT_MODULE_BLE
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeBluetoothLowEnergy, SAKBluetoothLowEnergyDebugPage::staticMetaObject, tr("BLE")});
 #endif
 #ifdef SAK_IMPORT_MODULE_WEBSOCKET
-    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeWebSocketClient, SAKWebSocketClientDebugPage::staticMetaObject, tr("WS-C")});
-    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeWebSocketServer, SAKWebSocketServerDebugPage::staticMetaObject, tr("WS-S")});
+#ifdef SAK_IMPORT_MODULE_WEBSOCKET_CLIENT
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{
+                                      DebugPageTypeWebSocketClient,
+                                      SAKWebSocketClientDebugger::staticMetaObject,
+                                      tr("WsClient")});
+#endif
+#ifdef SAK_IMPORT_MODULE_WEBSOCKET_SERVER
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{
+                                      DebugPageTypeWebSocketServer,
+                                      SAKWebSocketServerDebugger::staticMetaObject,
+                                      tr("WsServer")});
+#endif
 #endif
 #ifdef SAK_IMPORT_MODULE_SERIALBUS
-    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeModbus, SAKModbusDebugPage::staticMetaObject, tr("Modbus")});
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{
+                                      DebugPageTypeModbus,
+                                      SAKModbusDebugger::staticMetaObject,
+                                      tr("Modbus")});
 #endif
 }
 
 void SAKMainWindow::initToosMetaObjectInfoList()
 {
 #ifdef SAK_IMPORT_MODULE_FILECHECKER
-    mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{SAKToolFileChecker::staticMetaObject, tr("File Assistant")});
+    mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{
+                                       SAKToolFileChecker::staticMetaObject,
+                                       tr("File Assistant")});
 #endif
-    mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{SAKToolCRCCalculator::staticMetaObject, tr("CRC Assistant")});
-    mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{SAKToolFloatAssistant::staticMetaObject, tr("Float Assistant")});
-    mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{SAKToolStringAssistant::staticMetaObject, tr("String Assistant")});
+    mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{
+                                       SAKToolCRCCalculator::staticMetaObject,
+                                       tr("CRC Assistant")});
+    mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{
+                                       SAKToolFloatAssistant::staticMetaObject,
+                                       tr("Float Assistant")});
+    mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{
+                                       SAKToolStringAssistant::staticMetaObject,
+                                       tr("String Assistant")});
 }
 
 void SAKMainWindow::showReleaseHistoryActionDialog()
@@ -618,7 +755,7 @@ void SAKMainWindow::showReleaseHistoryActionDialog()
 QString SAKMainWindow::tabPageName(int type)
 {
     QString name;
-    QString defaultName = debugPageTitleFromDebugPageType(type);
+    QString defaultName = debuggerNameFromDebugPageType(type);
     QDialog dialog;
     dialog.setWindowTitle(tr("Edit Page Name"));
 
@@ -683,8 +820,10 @@ void SAKMainWindow::showQrCodeDialog()
     };
     QList<QrCodeInfo> qrCodeInfoList;
 
-    qrCodeInfoList << QrCodeInfo{tr("User QQ Group"), QString(":/resources/images/QSAKQQ.jpg")}
-                   << QrCodeInfo{tr("Qt QQ Group"), QString(":/resources/images/QtQQ.jpg")};
+    qrCodeInfoList << QrCodeInfo{tr("User QQ Group"),
+                      QString(":/resources/images/QSAKQQ.jpg")}
+                   << QrCodeInfo{tr("Qt QQ Group"),
+                      QString(":/resources/images/QtQQ.jpg")};
 
     QTabWidget *tabWidget = new QTabWidget(&dialog);
     for (auto &var : qrCodeInfoList){
@@ -725,7 +864,10 @@ void SAKMainWindow::installLanguage()
 
             QString language = action->objectName();
             QString name = action->data().toString();
-            sakApp->settings()->setValue(sakApp->settingsKeyContext()->language, QVariant::fromValue(QString(language + "-" + name)));
+            sakApp->settings()->setValue(sakApp->settingsKeyContext()->language,
+                                         QVariant::fromValue(
+                                             QString(language + "-" + name))
+                                         );
             qobject_cast<SAKApplication*>(qApp)->installLanguage();
             rebootRequestion();
         }
@@ -737,6 +879,7 @@ void SAKMainWindow::openDebugPageWidget()
     // The function must be called by signal of QAction
     QWidget *widget = debugPage(sender());
     if (widget){
+        widget->setParent(Q_NULLPTR);
         widget->show();
         appendWindowAction(widget);
     }
@@ -760,26 +903,35 @@ QWidget *SAKMainWindow::debugPageFromDebugPageType(int type)
         if (var.debugPageType == type){
             for (int i = 0; i < metaEnum.keyCount(); i++){
                 if (var.debugPageType == metaEnum.value(i)){
-                    widget = qobject_cast<QWidget*>(var.metaObject.newInstance(Q_ARG(int, metaEnum.value(i)), Q_ARG(QString, QString(metaEnum.key(i)))));
-                    widget->setWindowTitle(debugPageTitleFromDebugPageType(type));
+                    QObject *obj = var.metaObject.newInstance(
+                                Q_ARG(QSettings*, mSettings),
+                                Q_ARG(QString, QString(metaEnum.key(i))),
+                                Q_ARG(QSqlDatabase*, mSqlDatabase),
+                                Q_ARG(QWidget*, this)
+                                );
+                    widget = qobject_cast<QWidget*>(obj);
+                    if (widget) {
+                        widget->setWindowTitle(debuggerNameFromDebugPageType(type));
+                    } else {
+                        qWarning() << "Can not instance debugger(" << type << "),";
+                    }
                     break;
                 }
             }
         }
     }
 
-    Q_ASSERT_X(widget, __FUNCTION__, "Unknown debug page type!");
     return widget;
 }
 
-QString SAKMainWindow::debugPageTitleFromDebugPageType(int type)
+QString SAKMainWindow::debuggerNameFromDebugPageType(int type)
 {
     QString title;
     QMetaEnum metaEnum = QMetaEnum::fromType<SAKEnumDebugPageType>();
-    for (auto &var : mDebugPageMetaInfoList){
-        if (var.debugPageType == type){
-            for (int i = 0; i < metaEnum.keyCount(); i++){
-                if (var.debugPageType == metaEnum.value(i)){
+    for (auto &var : mDebugPageMetaInfoList) {
+        if (var.debugPageType == type) {
+            for (int i = 0; i < metaEnum.keyCount(); i++) {
+                if (var.debugPageType == metaEnum.value(i)) {
                     title = var.defaultTitle;
                     break;
                 }

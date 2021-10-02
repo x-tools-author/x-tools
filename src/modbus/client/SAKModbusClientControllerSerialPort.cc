@@ -19,7 +19,11 @@ SAKModbusClientControllerSerialPort::SAKModbusClientControllerSerialPort(QWidget
     init();
     mSerialPortSection = new SAKModbusCommonSerialPortSection(this);
     appendSection(mSerialPortSection);
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     mClient = qobject_cast<QModbusRtuSerialMaster*>(device());
+#else
+    mClient = qobject_cast<QModbusRtuSerialClient*>(device());
+#endif
     connect(mClient, &QModbusClient::stateChanged, this, [=](){
         bool isUnconnected = (mClient->state() == QModbusDevice::UnconnectedState);
         mSerialPortSection->setEnabled(isUnconnected);
@@ -37,6 +41,10 @@ void SAKModbusClientControllerSerialPort::open()
 
 QModbusDevice *SAKModbusClientControllerSerialPort::initModbusDevice()
 {
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     auto dev = new QModbusRtuSerialMaster;
+#else
+    auto dev = new QModbusRtuSerialClient;
+#endif
     return dev;
 }

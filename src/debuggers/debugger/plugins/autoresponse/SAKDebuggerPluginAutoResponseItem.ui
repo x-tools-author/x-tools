@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SAKDebuggerPluginAutoResponseItem</class>
+ <widget class="QWidget" name="SAKDebuggerPluginAutoResponseItem">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>506</width>
+    <height>107</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string notr="true">Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>4</number>
+   </property>
+   <property name="topMargin">
+    <number>4</number>
+   </property>
+   <property name="rightMargin">
+    <number>6</number>
+   </property>
+   <property name="bottomMargin">
+    <number>4</number>
+   </property>
+   <property name="spacing">
+    <number>4</number>
+   </property>
+   <item row="1" column="2">
+    <widget class="QLabel" name="label_5">
+     <property name="text">
+      <string>Text format</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Description</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>Response text</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2">
+    <widget class="QLabel" name="label_6">
+     <property name="text">
+      <string>Text format</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Response option</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QComboBox" name="optionComboBox">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2">
+    <widget class="QCheckBox" name="enableDelayCheckBox">
+     <property name="text">
+      <string>Delay(ms)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QLineEdit" name="referenceDataLineEdit">
+     <property name="text">
+      <string notr="true">Hello</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="3">
+    <widget class="QComboBox" name="referenceDataFromatComboBox"/>
+   </item>
+   <item row="2" column="3">
+    <widget class="QComboBox" name="responseDataFormatComboBox"/>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Reference text</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QLineEdit" name="responseDataLineEdit">
+     <property name="text">
+      <string notr="true">Hi</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLineEdit" name="descriptionLineEdit">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>Example</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="4">
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2" colspan="2">
+    <widget class="QCheckBox" name="enableCheckBox">
+     <property name="text">
+      <string>Enable</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="3">
+    <widget class="QSpinBox" name="delayTimeSpinBox">
+     <property name="minimum">
+      <number>30</number>
+     </property>
+     <property name="maximum">
+      <number>3000</number>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
