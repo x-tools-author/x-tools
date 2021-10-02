@@ -119,6 +119,7 @@ void SAKBaseListWidget::updateRecord(quint64 id, QString columnName, QVariant va
     }
 
     if(!mSqlQuery.exec(queryString)) {
+        qInfo() << queryString;
         qWarning() << QString("Can not update record(%1):%2")
                       .arg(columnName, mSqlQuery.lastError().text());
     }
