@@ -60,7 +60,7 @@ SAKDebugger::SAKDebugger(QSettings *settings,
 
 
     mModulePlugins = new SAKDebuggerPlugins(
-                mUi->readmePushButton,
+                mUi->managerPushButton,
                 mUi->pluginsPushButton,
                 settings,
                 settingsGroup,

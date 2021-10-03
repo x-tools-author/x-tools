@@ -12,6 +12,7 @@
 
 SAKBaseListWidgetItemWidget::SAKBaseListWidgetItemWidget(QWidget *parent)
     :QWidget(parent)
+    ,mEnable(false)
 {
     mId = QDateTime::currentMSecsSinceEpoch();
 }
