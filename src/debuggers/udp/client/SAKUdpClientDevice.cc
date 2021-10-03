@@ -20,6 +20,7 @@ SAKUdpClientDevice::SAKUdpClientDevice(QSettings *settings,
                                        QWidget *uiParent,
                                        QObject *parent)
     :SAKDebuggerDevice(settings, settingsGroup, uiParent, parent)
+    ,mUdpSocket(Q_NULLPTR)
 {
 
 }

@@ -23,6 +23,7 @@ SAKWebSocketClientDevice::SAKWebSocketClientDevice(QSettings *settings,
                                                    QWidget *uiParent,
                                                    QObject *parent)
     :SAKDebuggerDevice(settings, settingsGroup, uiParent, parent)
+    ,mWebSocket(Q_NULLPTR)
 {
     qRegisterMetaType<QAbstractSocket::SocketError>("QAbstractSocket::SocketError");
 }
