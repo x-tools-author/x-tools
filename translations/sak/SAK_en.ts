@@ -4,12 +4,12 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../src/main.cc" line="32"/>
+        <location filename="../../src/main.cc" line="34"/>
         <source>Initializing main window...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/main.cc" line="48"/>
+        <location filename="../../src/main.cc" line="53"/>
         <source>Finished...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -150,7 +150,7 @@
 <context>
     <name>SAKApplication</name>
     <message>
-        <location filename="../../src/SAKApplication.cc" line="54"/>
+        <location filename="../../src/SAKApplication.cc" line="59"/>
         <source>Initializing...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -258,151 +258,65 @@
     </message>
 </context>
 <context>
-    <name>SAKBluetoothClientDevice</name>
+    <name>SAKBaseListWidget</name>
     <message>
-        <location filename="../../src/pages/bluetooth/client/SAKBluetoothClientDevice.cc" line="61"/>
-        <source>Binding failed:</source>
+        <location filename="../../src/base/SAKBaseListWidget.ui" line="32"/>
+        <source>Import</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/bluetooth/client/SAKBluetoothClientDevice.cc" line="73"/>
-        <source>Connect to server failed:</source>
+        <location filename="../../src/base/SAKBaseListWidget.ui" line="62"/>
+        <source>Add</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/bluetooth/client/SAKBluetoothClientDevice.cc" line="84"/>
-        <location filename="../../src/pages/bluetooth/client/SAKBluetoothClientDevice.cc" line="113"/>
-        <source>Unknown error</source>
+        <location filename="../../src/base/SAKBaseListWidget.ui" line="69"/>
+        <source>Clear</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/bluetooth/client/SAKBluetoothClientDevice.cc" line="87"/>
-        <source>Can not open device:</source>
+        <location filename="../../src/base/SAKBaseListWidget.ui" line="76"/>
+        <source>Export</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/bluetooth/client/SAKBluetoothClientDevice.cc" line="110"/>
-        <source>Connection has been disconnected.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SAKBluetoothClientDeviceController</name>
-    <message>
-        <location filename="../../src/pages/bluetooth/client/SAKBluetoothClientDeviceController.ui" line="14"/>
-        <source>Form</source>
+        <location filename="../../src/base/SAKBaseListWidget.ui" line="83"/>
+        <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/bluetooth/client/SAKBluetoothClientDeviceController.ui" line="39"/>
-        <source>Tcp server information</source>
+        <location filename="../../src/base/SAKBaseListWidget.ui" line="90"/>
+        <source>Forbid all items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/bluetooth/client/SAKBluetoothClientDeviceController.ui" line="46"/>
-        <source>55555</source>
+        <location filename="../../src/base/SAKBaseListWidget.cc" line="143"/>
+        <source>Clear Data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/bluetooth/client/SAKBluetoothClientDeviceController.ui" line="53"/>
-        <source>Client address</source>
+        <location filename="../../src/base/SAKBaseListWidget.cc" line="144"/>
+        <source>All data items will be deleted!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/bluetooth/client/SAKBluetoothClientDeviceController.ui" line="60"/>
-        <source>Client port</source>
+        <location filename="../../src/base/SAKBaseListWidget.cc" line="146"/>
+        <source>Are you sure you want to do this?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/bluetooth/client/SAKBluetoothClientDeviceController.ui" line="67"/>
-        <source>Server address</source>
+        <location filename="../../src/base/SAKBaseListWidget.cc" line="164"/>
+        <source>Import data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/bluetooth/client/SAKBluetoothClientDeviceController.ui" line="74"/>
-        <source>Tcp client information</source>
+        <location filename="../../src/base/SAKBaseListWidget.cc" line="213"/>
+        <source>Outport data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/bluetooth/client/SAKBluetoothClientDeviceController.ui" line="81"/>
-        <source>127.0.0.1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/bluetooth/client/SAKBluetoothClientDeviceController.ui" line="88"/>
-        <source>Specify local parameters</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/bluetooth/client/SAKBluetoothClientDeviceController.ui" line="95"/>
-        <source>Server port</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/bluetooth/client/SAKBluetoothClientDeviceController.ui" line="115"/>
-        <source>44444</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/bluetooth/client/SAKBluetoothClientDeviceController.ui" line="122"/>
-        <source>Client info</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/bluetooth/client/SAKBluetoothClientDeviceController.ui" line="129"/>
-        <source>Allow automatic connection</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SAKBluetoothServerDevice</name>
-    <message>
-        <location filename="../../src/pages/bluetooth/server/SAKBluetoothServerDevice.cc" line="34"/>
-        <location filename="../../src/pages/bluetooth/server/SAKBluetoothServerDevice.cc" line="122"/>
-        <source>Unknown error</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/bluetooth/server/SAKBluetoothServerDevice.cc" line="50"/>
-        <source>Listen failed:</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SAKBluetoothServerDeviceController</name>
-    <message>
-        <location filename="../../src/pages/bluetooth/server/SAKBluetoothServerDeviceController.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/bluetooth/server/SAKBluetoothServerDeviceController.ui" line="32"/>
-        <source>Tcp client list</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/bluetooth/server/SAKBluetoothServerDeviceController.ui" line="39"/>
-        <source>Address</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/bluetooth/server/SAKBluetoothServerDeviceController.ui" line="46"/>
-        <source>Port</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/bluetooth/server/SAKBluetoothServerDeviceController.ui" line="53"/>
-        <source>44444</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/bluetooth/server/SAKBluetoothServerDeviceController.ui" line="60"/>
-        <source>Tcp server information</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/bluetooth/server/SAKBluetoothServerDeviceController.ui" line="87"/>
-        <source>Clients</source>
+        <location filename="../../src/base/SAKBaseListWidget.cc" line="244"/>
+        <source>Plese select an item first.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -518,32 +432,12 @@
         <source>发送数据</source>
         <translation type="vanished">Tx Data</translation>
     </message>
-    <message>
-        <location filename="../../src/pages/page/charts/throughput/SAKChartsThroughputWidget.cc" line="31"/>
-        <source>Throughput</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/charts/throughput/SAKChartsThroughputWidget.cc" line="33"/>
-        <source>Rx data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/charts/throughput/SAKChartsThroughputWidget.cc" line="34"/>
-        <source>Tx data</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>SAKChartsXYSerialChartViewSettingsDialog</name>
     <message>
         <source>图表参数设置</source>
         <translation type="vanished">Chart Parameters Settings</translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/charts/xyserial/SAKChartsXYSerialChartViewSettingsDialog.ui" line="14"/>
-        <source>Parameters setting</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -636,71 +530,6 @@
         <source>颜色设置</source>
         <translation type="vanished">Color Selecting</translation>
     </message>
-    <message>
-        <location filename="../../src/pages/page/charts/xyserial/SAKChartsXYSerialEditDialog.ui" line="26"/>
-        <source>Analyzer parameters</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/charts/xyserial/SAKChartsXYSerialEditDialog.ui" line="32"/>
-        <source>Data type</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/charts/xyserial/SAKChartsXYSerialEditDialog.ui" line="49"/>
-        <source>Start byte</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/charts/xyserial/SAKChartsXYSerialEditDialog.ui" line="56"/>
-        <source>Big endian</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/charts/xyserial/SAKChartsXYSerialEditDialog.ui" line="82"/>
-        <source>Chart parameters</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/charts/xyserial/SAKChartsXYSerialEditDialog.ui" line="98"/>
-        <source>Chart type</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/charts/xyserial/SAKChartsXYSerialEditDialog.ui" line="112"/>
-        <source>Chart name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/charts/xyserial/SAKChartsXYSerialEditDialog.ui" line="119"/>
-        <source>Chart color</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/charts/xyserial/SAKChartsXYSerialEditDialog.ui" line="174"/>
-        <source>Cancle</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/charts/xyserial/SAKChartsXYSerialEditDialog.ui" line="181"/>
-        <source>OK</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/charts/xyserial/SAKChartsXYSerialEditDialog.cc" line="60"/>
-        <source>Line</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/charts/xyserial/SAKChartsXYSerialEditDialog.cc" line="61"/>
-        <source>Scatter</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/charts/xyserial/SAKChartsXYSerialEditDialog.cc" line="145"/>
-        <source>Color settings</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>SAKChartsXYSerialWidget</name>
@@ -740,51 +569,6 @@
         <source>添加曲线图或散点图</source>
         <translation type="vanished">Adding</translation>
     </message>
-    <message>
-        <location filename="../../src/pages/page/charts/xyserial/SAKChartsXYSerialWidget.ui" line="14"/>
-        <source>XY serial chart</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/charts/xyserial/SAKChartsXYSerialWidget.ui" line="20"/>
-        <source>Delete</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/charts/xyserial/SAKChartsXYSerialWidget.ui" line="40"/>
-        <source>Edit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/charts/xyserial/SAKChartsXYSerialWidget.ui" line="47"/>
-        <source>ChartSettings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/charts/xyserial/SAKChartsXYSerialWidget.ui" line="54"/>
-        <source>Clear</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/charts/xyserial/SAKChartsXYSerialWidget.ui" line="71"/>
-        <source>Add</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/charts/xyserial/SAKChartsXYSerialWidget.ui" line="78"/>
-        <source>Pause input</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/charts/xyserial/SAKChartsXYSerialWidget.cc" line="156"/>
-        <source>Edit line or scatter</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/charts/xyserial/SAKChartsXYSerialWidget.cc" line="278"/>
-        <source>Add line or scatter</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>SAKCommonDataStructure</name>
@@ -797,51 +581,57 @@
         <translation type="obsolete">ASCII</translation>
     </message>
     <message>
-        <location filename="../../src/common/SAKCommonDataStructure.cc" line="57"/>
+        <location filename="../../src/common/SAKCommonDataStructure.cc" line="64"/>
         <source>BIN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/common/SAKCommonDataStructure.cc" line="58"/>
+        <location filename="../../src/common/SAKCommonDataStructure.cc" line="65"/>
         <source>TEXT</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/common/SAKCommonDataStructure.cc" line="293"/>
+        <location filename="../../src/common/SAKCommonDataStructure.cc" line="298"/>
+        <source>None</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>SAKCommonInterface</name>
     <message>
-        <location filename="../../src/common/SAKCommonInterface.cc" line="147"/>
-        <location filename="../../src/common/SAKCommonInterface.cc" line="161"/>
+        <location filename="../../src/common/SAKCommonInterface.cc" line="160"/>
+        <location filename="../../src/common/SAKCommonInterface.cc" line="179"/>
         <source>No</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/common/SAKCommonInterface.cc" line="148"/>
+        <location filename="../../src/common/SAKCommonInterface.cc" line="162"/>
         <source>Even</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/common/SAKCommonInterface.cc" line="149"/>
+        <location filename="../../src/common/SAKCommonInterface.cc" line="164"/>
         <source>Odd</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/common/SAKCommonInterface.cc" line="150"/>
+        <location filename="../../src/common/SAKCommonInterface.cc" line="166"/>
         <source>Space</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/common/SAKCommonInterface.cc" line="151"/>
+        <location filename="../../src/common/SAKCommonInterface.cc" line="168"/>
         <source>Mark</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/common/SAKCommonInterface.cc" line="162"/>
+        <location filename="../../src/common/SAKCommonInterface.cc" line="181"/>
         <source>Hardware</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/common/SAKCommonInterface.cc" line="163"/>
+        <location filename="../../src/common/SAKCommonInterface.cc" line="183"/>
         <source>Software</source>
         <translation type="unfinished"></translation>
     </message>
@@ -859,214 +649,6 @@
 </context>
 <context>
     <name>SAKDebugPage</name>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="186"/>
-        <source>Tx status</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="32"/>
-        <source>Timing</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="248"/>
-        <source>Text format</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="563"/>
-        <source>Input settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="42"/>
-        <source>Response</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="275"/>
-        <source>Analyzer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="348"/>
-        <source>Show date</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="521"/>
-        <source>auto wrap</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="81"/>
-        <source>Tx speed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="360"/>
-        <source>Data statistics</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="541"/>
-        <source>ResetTx</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="206"/>
-        <source>Cycling time</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="631"/>
-        <location filename="../../src/pages/page/SAKDebugPage.cc" line="285"/>
-        <source>Open</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.cc" line="244"/>
-        <source>Refresh</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="531"/>
-        <source>Show time</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="448"/>
-        <source>Emit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="49"/>
-        <source>Rx speed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="179"/>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="258"/>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="693"/>
-        <source>More&gt;&gt;&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="570"/>
-        <source>Enable to write data to file</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="573"/>
-        <source>Write2File</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="585"/>
-        <source>Output settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="670"/>
-        <source>More</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="700"/>
-        <source>ClearOutput</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="707"/>
-        <source>Raw data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="719"/>
-        <source>Data output</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="307"/>
-        <source>Other settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="475"/>
-        <source>Data input</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="295"/>
-        <source>Show ms</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="406"/>
-        <source>Send</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="413"/>
-        <source>Show rx</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="91"/>
-        <source>Tx bytes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="231"/>
-        <source>Rx bytes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="504"/>
-        <source>Rx frames</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="119"/>
-        <source>CRC value</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="548"/>
-        <source>Input format</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="135"/>
-        <source>Rx status</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="265"/>
-        <source>Show tx</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="341"/>
-        <source>Device control</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="329"/>
-        <source>ResetRx</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="399"/>
-        <source>Charts</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.ui" line="438"/>
-        <source>Tx frames</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>输出日期</source>
         <translation type="vanished">Show Date</translation>
@@ -1291,252 +873,6 @@
         <source>该功能已被开发者禁用，可能原因是该平台不支持该功能</source>
         <translation type="vanished">Function is forbidden</translation>
     </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.cc" line="276"/>
-        <source>Close</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.cc" line="379"/>
-        <source>Unsupported function</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/SAKDebugPage.cc" line="379"/>
-        <source>The function has been disable, beause of developer&apos;s Qt version is not supported!</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SAKDebugPageChartsController</name>
-    <message>
-        <location filename="../../src/pages/page/charts/SAKDebugPageChartsController.ui" line="14"/>
-        <source>Charts</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/charts/SAKDebugPageChartsController.cc" line="32"/>
-        <source>XY serial</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/charts/SAKDebugPageChartsController.cc" line="35"/>
-        <source>Throughput</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SAKDebugPageCommonSslConfigurationWidget</name>
-    <message>
-        <location filename="../../src/pages/page/common/SAKDebugPageCommonSslConfigurationWidget.ui" line="14"/>
-        <source>Ssl configuration</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/common/SAKDebugPageCommonSslConfigurationWidget.ui" line="20"/>
-        <source>Outport inner certificate and key</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/common/SAKDebugPageCommonSslConfigurationWidget.ui" line="23"/>
-        <source>Outport</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/common/SAKDebugPageCommonSslConfigurationWidget.ui" line="30"/>
-        <source>OK</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/common/SAKDebugPageCommonSslConfigurationWidget.ui" line="50"/>
-        <source>Local ssl settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/common/SAKDebugPageCommonSslConfigurationWidget.ui" line="56"/>
-        <source>Ssl version</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/common/SAKDebugPageCommonSslConfigurationWidget.ui" line="66"/>
-        <source>Encoding format</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/common/SAKDebugPageCommonSslConfigurationWidget.ui" line="76"/>
-        <source>Key algorithm</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/common/SAKDebugPageCommonSslConfigurationWidget.ui" line="86"/>
-        <source>Certificate</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/common/SAKDebugPageCommonSslConfigurationWidget.ui" line="93"/>
-        <location filename="../../src/pages/page/common/SAKDebugPageCommonSslConfigurationWidget.ui" line="107"/>
-        <source>Import</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/common/SAKDebugPageCommonSslConfigurationWidget.ui" line="100"/>
-        <source>Key file</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/common/SAKDebugPageCommonSslConfigurationWidget.ui" line="167"/>
-        <source>Using inner certification</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/common/SAKDebugPageCommonSslConfigurationWidget.ui" line="174"/>
-        <source>Using inner key</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/common/SAKDebugPageCommonSslConfigurationWidget.ui" line="187"/>
-        <source>Peer ssl settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/common/SAKDebugPageCommonSslConfigurationWidget.ui" line="193"/>
-        <source>Verify Mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/common/SAKDebugPageCommonSslConfigurationWidget.ui" line="203"/>
-        <source>Verify depth</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/common/SAKDebugPageCommonSslConfigurationWidget.ui" line="233"/>
-        <source>Ssl information</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/common/SAKDebugPageCommonSslConfigurationWidget.ui" line="242"/>
-        <source>Supported Cipher suitse</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/common/SAKDebugPageCommonSslConfigurationWidget.ui" line="249"/>
-        <source>Supported elliptic curves</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/common/SAKDebugPageCommonSslConfigurationWidget.ui" line="259"/>
-        <source>Long name</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SAKDebugPageDevice</name>
-    <message>
-        <location filename="../../src/pages/page/device/SAKDebugPageDevice.cc" line="25"/>
-        <source>Mask settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SAKDebugPageDeviceMask</name>
-    <message>
-        <location filename="../../src/pages/page/device/mask/SAKDebugPageDeviceMask.ui" line="14"/>
-        <source>Mask Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/device/mask/SAKDebugPageDeviceMask.ui" line="39"/>
-        <source>Rx mask</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/device/mask/SAKDebugPageDeviceMask.ui" line="46"/>
-        <source>Enable mask</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/device/mask/SAKDebugPageDeviceMask.ui" line="59"/>
-        <source>Tx mask</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SAKDebugPageInputController</name>
-    <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="41"/>
-        <source>Forbidden</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="42"/>
-        <source>ms</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="57"/>
-        <source>More input settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="62"/>
-        <source>Writing Data Items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="67"/>
-        <source>Writing Data Item Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="71"/>
-        <source>Clear Input</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="75"/>
-        <source>Readin File</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="79"/>
-        <source>Save Input Data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="83"/>
-        <source>CRC Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="197"/>
-        <source>Save File</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="199"/>
-        <source>txt (*.txt);;all (*.*)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="220"/>
-        <source>Open File</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="228"/>
-        <source>Can not open file</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="243"/>
-        <source>Data is empty</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/input/SAKDebugPageInputController.cc" line="243"/>
-        <source>Please input data then try again!</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>SAKDebugPageInputManager</name>
@@ -1558,42 +894,6 @@
     </message>
 </context>
 <context>
-    <name>SAKDebugPageOtherController</name>
-    <message>
-        <location filename="../../src/pages/page/other/SAKDebugPageOtherController.cc" line="43"/>
-        <source>Highlight Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SAKDebugPageOutputController</name>
-    <message>
-        <location filename="../../src/pages/page/output/SAKDebugPageOutputController.cc" line="102"/>
-        <source>Save to File</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/output/SAKDebugPageOutputController.cc" line="105"/>
-        <source>Write to File</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/output/SAKDebugPageOutputController.cc" line="108"/>
-        <source>Log Output View</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/output/SAKDebugPageOutputController.cc" line="111"/>
-        <source>Highlight Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/output/SAKDebugPageOutputController.cc" line="198"/>
-        <source>Save to file</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>SAKDebugPageOutputManager</name>
     <message>
         <source>保存文件</source>
@@ -1602,6 +902,801 @@
     <message>
         <source>文本 (*.txt)</source>
         <translation type="vanished">Text (*.txt)</translation>
+    </message>
+</context>
+<context>
+    <name>SAKDebugger</name>
+    <message>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.ui" line="20"/>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.cc" line="213"/>
+        <source>Open</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.ui" line="32"/>
+        <source>Device control</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.ui" line="42"/>
+        <source>Regular time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.ui" line="57"/>
+        <source>Data input</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.ui" line="69"/>
+        <source>Output settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.ui" line="98"/>
+        <source>ClearOutput</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.ui" line="110"/>
+        <source>Input settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.ui" line="117"/>
+        <source>Send</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.ui" line="151"/>
+        <source>CRC value</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.ui" line="179"/>
+        <source>Output format</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.ui" line="199"/>
+        <source>Plugins</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.ui" line="219"/>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.ui" line="250"/>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.ui" line="472"/>
+        <source>More</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.ui" line="233"/>
+        <source>Input format</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.ui" line="262"/>
+        <source>Data output</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.ui" line="269"/>
+        <source>Readme</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.ui" line="281"/>
+        <source>Plugins settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.ui" line="316"/>
+        <source>Tx speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.ui" line="341"/>
+        <source>Tx frames</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.ui" line="366"/>
+        <source>Tx bytes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.ui" line="391"/>
+        <source>Rx speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.ui" line="416"/>
+        <source>Rx frames</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.ui" line="441"/>
+        <source>Rx bytes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.ui" line="517"/>
+        <source>Plugin panel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.cc" line="115"/>
+        <source>Refresh</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.cc" line="208"/>
+        <source>Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.cc" line="293"/>
+        <source>Clear Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.cc" line="294"/>
+        <source>All Data Items Will Be Deleted!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.cc" line="296"/>
+        <source>Are you sure you want to do this?</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SAKDebuggerDevice</name>
+    <message>
+        <location filename="../../src/debuggers/debugger/device/SAKDebuggerDevice.cc" line="78"/>
+        <source>Mask</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/device/SAKDebuggerDevice.cc" line="86"/>
+        <source>Analyzer</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SAKDebuggerDeviceAnalyzer</name>
+    <message>
+        <location filename="../../src/debuggers/debugger/device/SAKDebuggerDeviceAnalyzer.ui" line="14"/>
+        <source>Data Analyzer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/device/SAKDebuggerDeviceAnalyzer.ui" line="20"/>
+        <source>Fixed length</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/device/SAKDebuggerDeviceAnalyzer.ui" line="37"/>
+        <source>Start bytes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/device/SAKDebuggerDeviceAnalyzer.ui" line="51"/>
+        <source>End bytes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/device/SAKDebuggerDeviceAnalyzer.ui" line="71"/>
+        <source>Disable data analyzer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/device/SAKDebuggerDeviceAnalyzer.ui" line="94"/>
+        <source>Empty temp data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/device/SAKDebuggerDeviceAnalyzer.ui" line="97"/>
+        <source>EmptyData</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/device/SAKDebuggerDeviceAnalyzer.ui" line="109"/>
+        <source>Temp data will be empty when it is more than 2048 bytes</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SAKDebuggerDeviceMask</name>
+    <message>
+        <location filename="../../src/debuggers/debugger/device/SAKDebuggerDeviceMask.ui" line="14"/>
+        <source>Mask Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/device/SAKDebuggerDeviceMask.ui" line="20"/>
+        <source>Tx mask</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/device/SAKDebuggerDeviceMask.ui" line="27"/>
+        <source>Rx mask</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/device/SAKDebuggerDeviceMask.ui" line="34"/>
+        <location filename="../../src/debuggers/debugger/device/SAKDebuggerDeviceMask.ui" line="41"/>
+        <source>Enable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/device/SAKDebuggerDeviceMask.ui" line="69"/>
+        <source>Only supported one bytes mask yet!</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SAKDebuggerInput</name>
+    <message>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="276"/>
+        <source>Forbidden</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="277"/>
+        <source>ms</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="352"/>
+        <source>More input settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="410"/>
+        <source>Quick Sending</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="416"/>
+        <source>Data Preset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="427"/>
+        <source>Suffixs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="439"/>
+        <source>(None)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="455"/>
+        <source>Save Input</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="462"/>
+        <source>Save File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="464"/>
+        <source>txt (*.txt);;all (*.*)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="485"/>
+        <source>Clear Input</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="492"/>
+        <source>CRC Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="504"/>
+        <source>Enable Sending Record</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="540"/>
+        <source>Preset Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SAKDebuggerInputCrcSettings</name>
+    <message>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputCrcSettings.ui" line="20"/>
+        <source>Parameter settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputCrcSettings.ui" line="26"/>
+        <source>CRC parameters model</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputCrcSettings.ui" line="36"/>
+        <source>Append CRC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputCrcSettings.ui" line="43"/>
+        <source>Big endian</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputCrcSettings.ui" line="53"/>
+        <source>Section settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputCrcSettings.ui" line="69"/>
+        <source>Start bytes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputCrcSettings.ui" line="81"/>
+        <source>End byte is start from right, the last byte is one</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputCrcSettings.ui" line="93"/>
+        <source>If parameter(s) is(are) invalid, it will be ignored</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputCrcSettings.ui" line="100"/>
+        <source>End bytes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputCrcSettings.ui" line="112"/>
+        <source>Start byte is start from left, the first byte is one</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputCrcSettings.cc" line="143"/>
+        <source>CRC Parameters Configuration</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SAKDebuggerInputDataPresetItem</name>
+    <message>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputDataPresetItem.ui" line="47"/>
+        <source>Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputDataPresetItem.ui" line="62"/>
+        <source>Ascii</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputDataPresetItem.ui" line="70"/>
+        <source>Text Format</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputDataPresetItem.ui" line="77"/>
+        <source>Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputDataPresetItem.ui" line="90"/>
+        <source>HeartBeat</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SAKDebuggerOutput</name>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutput.cc" line="54"/>
+        <source>System</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutput.cc" line="77"/>
+        <source>Output Parameters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutput.cc" line="79"/>
+        <source>Auto Wrap</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutput.cc" line="97"/>
+        <source>Show Date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutput.cc" line="98"/>
+        <source>Show Time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutput.cc" line="99"/>
+        <source>Show MS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutput.cc" line="100"/>
+        <source>Show Rx Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutput.cc" line="101"/>
+        <source>Show Tx Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutput.cc" line="149"/>
+        <source>Face Without Makeup </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutput.cc" line="150"/>
+        <source>Just output data which is read or written!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutput.cc" line="177"/>
+        <source>Save Output</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutput.cc" line="181"/>
+        <source>Log</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutput.cc" line="184"/>
+        <source>Highlighter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutput.cc" line="187"/>
+        <source>Write to Disk</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutput.cc" line="291"/>
+        <source>Save Output Data to File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutput.cc" line="293"/>
+        <source>text (*.txt)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SAKDebuggerOutputHighlighter</name>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutputHighlighter.ui" line="14"/>
+        <source>Highlighter Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutputHighlighter.ui" line="67"/>
+        <source>Press &quot;Enter&quot; to add a key word and double click to delete a key word.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutputHighlighter.ui" line="74"/>
+        <source>Press &quot;Enter&quot; to add a key word.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutputHighlighter.ui" line="77"/>
+        <source>按“回车”键添加关键词</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutputHighlighter.ui" line="84"/>
+        <source>Add</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutputHighlighter.ui" line="91"/>
+        <source>Clear</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SAKDebuggerOutputLog</name>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutputLog.ui" line="14"/>
+        <source>Log View</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutputLog.ui" line="20"/>
+        <source>ClearLog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutputLog.ui" line="27"/>
+        <source>SaveLog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutputLog.ui" line="47"/>
+        <source>Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutputLog.ui" line="54"/>
+        <source>Log view</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutputLog.cc" line="64"/>
+        <source>Save Log</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SAKDebuggerOutputSave2File</name>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutputSave2File.ui" line="14"/>
+        <source>Write to  File Parameters Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutputSave2File.ui" line="20"/>
+        <source>Enable write to file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutputSave2File.ui" line="45"/>
+        <source>The operation will clear the data has been written to file! -&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutputSave2File.ui" line="52"/>
+        <source>Clear the data has been written to file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutputSave2File.ui" line="60"/>
+        <source>ClearFile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutputSave2File.ui" line="67"/>
+        <source>OK</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutputSave2File.ui" line="74"/>
+        <source>File select</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutputSave2File.ui" line="83"/>
+        <source>SelectFile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutputSave2File.ui" line="90"/>
+        <source>File location</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutputSave2File.ui" line="100"/>
+        <source>Data persistence settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutputSave2File.ui" line="106"/>
+        <source>Utf8</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutputSave2File.ui" line="116"/>
+        <source>Save timestamp</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutputSave2File.ui" line="126"/>
+        <source>Save rx data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutputSave2File.ui" line="136"/>
+        <source>Save tx data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutputSave2File.ui" line="146"/>
+        <source>Bin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutputSave2File.ui" line="153"/>
+        <source>Hex</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutputSave2File.ui" line="168"/>
+        <source>Text format</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutputSave2File.ui" line="180"/>
+        <source>Save options</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutputSave2File.cc" line="193"/>
+        <source>Save to File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/output/SAKDebuggerOutputSave2File.cc" line="397"/>
+        <source>Unknown text format!</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SAKDebuggerPluginAutoResponseItem</name>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/autoresponse/SAKDebuggerPluginAutoResponseItem.ui" line="35"/>
+        <location filename="../../src/debuggers/debugger/plugins/autoresponse/SAKDebuggerPluginAutoResponseItem.ui" line="56"/>
+        <source>Text format</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/autoresponse/SAKDebuggerPluginAutoResponseItem.ui" line="42"/>
+        <source>Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/autoresponse/SAKDebuggerPluginAutoResponseItem.ui" line="49"/>
+        <source>Response text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/autoresponse/SAKDebuggerPluginAutoResponseItem.ui" line="63"/>
+        <source>Response option</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/autoresponse/SAKDebuggerPluginAutoResponseItem.ui" line="80"/>
+        <source>Delay(ms)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/autoresponse/SAKDebuggerPluginAutoResponseItem.ui" line="100"/>
+        <source>Reference text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/autoresponse/SAKDebuggerPluginAutoResponseItem.ui" line="120"/>
+        <source>Example</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/autoresponse/SAKDebuggerPluginAutoResponseItem.ui" line="134"/>
+        <source>Enable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/autoresponse/SAKDebuggerPluginAutoResponseItem.cc" line="137"/>
+        <source>Rx data is equal to reference data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/autoresponse/SAKDebuggerPluginAutoResponseItem.cc" line="140"/>
+        <source>Rx data contains reference data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/autoresponse/SAKDebuggerPluginAutoResponseItem.cc" line="143"/>
+        <source>Rx data does not contains reference data</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SAKDebuggerPluginTimedSendingItem</name>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/timedsending/SAKDebuggerPluginTimedSendingItem.ui" line="20"/>
+        <source>Suffix</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/timedsending/SAKDebuggerPluginTimedSendingItem.ui" line="27"/>
+        <source>Interval</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/timedsending/SAKDebuggerPluginTimedSendingItem.ui" line="34"/>
+        <source>Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/timedsending/SAKDebuggerPluginTimedSendingItem.ui" line="41"/>
+        <source>Enable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/timedsending/SAKDebuggerPluginTimedSendingItem.ui" line="48"/>
+        <source>Writing data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/timedsending/SAKDebuggerPluginTimedSendingItem.ui" line="68"/>
+        <source>Text format</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SAKDebuggerPluginTransponders</name>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKDebuggerPluginTransponders.ui" line="14"/>
+        <source>Data transmition</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKDebuggerPluginTransponders.cc" line="41"/>
+        <source>SerialPort</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKDebuggerPluginTransponders.cc" line="53"/>
+        <source>UdpClient</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKDebuggerPluginTransponders.cc" line="65"/>
+        <source>TcpClient</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKDebuggerPluginTransponders.cc" line="77"/>
+        <source>WebSocketClient</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SAKDebuggerPlugins</name>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="74"/>
+        <source>Embed to Center</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="76"/>
+        <source>Cancel Embedding</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="86"/>
+        <source>Transponders</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="89"/>
+        <source>Timed Sending</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="92"/>
+        <source>Automatically Response</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="111"/>
+        <source>Reload All</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1800,61 +1895,6 @@
         <source>CRC参数设置</source>
         <translation type="vanished">CRC Parameters Settings</translation>
     </message>
-    <message>
-        <location filename="../../src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui" line="43"/>
-        <source>Big endian</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui" line="66"/>
-        <source>Section settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui" line="106"/>
-        <source>If parameter(s) is(are) invalid, it will be ignored</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui" line="125"/>
-        <source>Start byte is start from left, the first byte is one</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui" line="113"/>
-        <source>End bytes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui" line="20"/>
-        <source>Parameter settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui" line="26"/>
-        <source>CRC parameters model</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui" line="36"/>
-        <source>Append CRC</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui" line="82"/>
-        <source>Start bytes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.ui" line="94"/>
-        <source>End byte is start from right, the last byte is one</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/input/crcsettings/SAKInputCrcSettingsDialog.cc" line="64"/>
-        <source>CRC Parameters Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>SAKInputDataItem</name>
@@ -1940,77 +1980,6 @@
     <message>
         <source>导出数据</source>
         <translation type="vanished">Output Data</translation>
-    </message>
-</context>
-<context>
-    <name>SAKInputDataPresetItem</name>
-    <message>
-        <location filename="../../src/pages/page/input/datapreset/SAKInputDataPresetItem.ui" line="32"/>
-        <source>Text format</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/input/datapreset/SAKInputDataPresetItem.ui" line="40"/>
-        <source>Ascii</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/input/datapreset/SAKInputDataPresetItem.ui" line="48"/>
-        <source>Description</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/input/datapreset/SAKInputDataPresetItem.ui" line="55"/>
-        <source>Just a exsample</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/input/datapreset/SAKInputDataPresetItem.ui" line="81"/>
-        <source>Please input the data that need to be written</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SAKInputDataPresetItemManager</name>
-    <message>
-        <location filename="../../src/pages/page/input/datapreset/SAKInputDataPresetItemManager.ui" line="14"/>
-        <source>Preset data editing</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/input/datapreset/SAKInputDataPresetItemManager.ui" line="33"/>
-        <source>Output</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/input/datapreset/SAKInputDataPresetItemManager.ui" line="40"/>
-        <source>Import</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/input/datapreset/SAKInputDataPresetItemManager.ui" line="47"/>
-        <source>Delete</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/input/datapreset/SAKInputDataPresetItemManager.ui" line="54"/>
-        <source>Add</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/input/datapreset/SAKInputDataPresetItemManager.cc" line="184"/>
-        <source>Plese select an item first.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/input/datapreset/SAKInputDataPresetItemManager.cc" line="232"/>
-        <source>Outport data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/input/datapreset/SAKInputDataPresetItemManager.cc" line="250"/>
-        <source>Import data</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2165,360 +2134,370 @@
         <translation type="vanished">Get Source</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="112"/>
+        <location filename="../../src/SAKMainWindow.cc" line="138"/>
         <source>Qt Swiss Army Knife</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="190"/>
+        <location filename="../../src/SAKMainWindow.cc" line="224"/>
         <source>&amp;File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="219"/>
+        <location filename="../../src/SAKMainWindow.cc" line="253"/>
         <source>Exit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="226"/>
+        <location filename="../../src/SAKMainWindow.cc" line="260"/>
         <source>&amp;Tools</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="249"/>
+        <location filename="../../src/SAKMainWindow.cc" line="283"/>
         <source>&amp;Options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="306"/>
+        <location filename="../../src/SAKMainWindow.cc" line="354"/>
         <source>&amp;Windows</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="312"/>
+        <location filename="../../src/SAKMainWindow.cc" line="360"/>
         <source>&amp;Languages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="365"/>
+        <location filename="../../src/SAKMainWindow.cc" line="416"/>
         <source>&amp;Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="368"/>
-        <location filename="../../src/SAKMainWindow.cc" line="370"/>
+        <location filename="../../src/SAKMainWindow.cc" line="419"/>
+        <location filename="../../src/SAKMainWindow.cc" line="424"/>
         <source>About Qt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="378"/>
+        <location filename="../../src/SAKMainWindow.cc" line="433"/>
         <source>GitHub</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="381"/>
+        <location filename="../../src/SAKMainWindow.cc" line="440"/>
         <source>Gitee</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="385"/>
+        <location filename="../../src/SAKMainWindow.cc" line="447"/>
         <source>Check for Update</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="389"/>
-        <location filename="../../src/SAKMainWindow.cc" line="595"/>
+        <location filename="../../src/SAKMainWindow.cc" line="451"/>
+        <location filename="../../src/SAKMainWindow.cc" line="738"/>
         <source>Release History</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="401"/>
+        <location filename="../../src/SAKMainWindow.cc" line="464"/>
         <source>&amp;Links</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="464"/>
+        <location filename="../../src/SAKMainWindow.cc" line="543"/>
         <source>Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="465"/>
+        <location filename="../../src/SAKMainWindow.cc" line="544"/>
         <source>Author</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="466"/>
+        <location filename="../../src/SAKMainWindow.cc" line="545"/>
         <source>Email</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="467"/>
+        <location filename="../../src/SAKMainWindow.cc" line="546"/>
         <source>QQ</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="193"/>
+        <location filename="../../src/SAKMainWindow.cc" line="227"/>
         <source>New Page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="206"/>
+        <location filename="../../src/SAKMainWindow.cc" line="240"/>
         <source>New Window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="253"/>
+        <location filename="../../src/SAKMainWindow.cc" line="287"/>
         <source>Application Style</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="288"/>
+        <location filename="../../src/SAKMainWindow.cc" line="327"/>
         <source>Enable Testing Page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="299"/>
+        <location filename="../../src/SAKMainWindow.cc" line="340"/>
         <source>Clear Configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="372"/>
+        <location filename="../../src/SAKMainWindow.cc" line="343"/>
+        <source>Open configuration floder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="426"/>
         <source>About Application</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="376"/>
+        <location filename="../../src/SAKMainWindow.cc" line="430"/>
         <source>Get Source</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="394"/>
-        <location filename="../../src/SAKMainWindow.cc" line="672"/>
+        <location filename="../../src/SAKMainWindow.cc" line="457"/>
+        <location filename="../../src/SAKMainWindow.cc" line="815"/>
         <source>QR Code</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="410"/>
+        <location filename="../../src/SAKMainWindow.cc" line="474"/>
         <source>Qt Official Download</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="411"/>
+        <location filename="../../src/SAKMainWindow.cc" line="478"/>
         <source>Qt Official Blog</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="412"/>
+        <location filename="../../src/SAKMainWindow.cc" line="481"/>
         <source>Qt Official Release</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="413"/>
+        <location filename="../../src/SAKMainWindow.cc" line="484"/>
         <source>Download SAK from Github</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="414"/>
+        <location filename="../../src/SAKMainWindow.cc" line="487"/>
         <source>Download SAK from Gitee</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="415"/>
+        <location filename="../../src/SAKMainWindow.cc" line="490"/>
         <source>Office Web Site</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="430"/>
+        <location filename="../../src/SAKMainWindow.cc" line="507"/>
         <source>&amp;Demo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="439"/>
+        <location filename="../../src/SAKMainWindow.cc" line="516"/>
         <source>Qt SerialPort Demo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="468"/>
+        <location filename="../../src/SAKMainWindow.cc" line="547"/>
         <source>QQ Group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="469"/>
+        <location filename="../../src/SAKMainWindow.cc" line="548"/>
         <source>Build Time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="470"/>
+        <location filename="../../src/SAKMainWindow.cc" line="549"/>
         <source>Copyright</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="471"/>
+        <location filename="../../src/SAKMainWindow.cc" line="551"/>
         <source>Gitee Url</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="472"/>
+        <location filename="../../src/SAKMainWindow.cc" line="553"/>
         <source>Gitbub Url</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="475"/>
+        <location filename="../../src/SAKMainWindow.cc" line="557"/>
         <source>About QSAK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="542"/>
+        <location filename="../../src/SAKMainWindow.cc" line="637"/>
         <source>Test</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="545"/>
+        <location filename="../../src/SAKMainWindow.cc" line="643"/>
         <source>COM</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="548"/>
+        <location filename="../../src/SAKMainWindow.cc" line="647"/>
         <source>HID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="551"/>
+        <location filename="../../src/SAKMainWindow.cc" line="650"/>
         <source>USB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="554"/>
-        <source>UDP-C</source>
+        <location filename="../../src/SAKMainWindow.cc" line="657"/>
+        <source>UdpClient</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="555"/>
-        <source>UDP-S</source>
+        <location filename="../../src/SAKMainWindow.cc" line="663"/>
+        <source>UdpServer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="558"/>
-        <source>TCP-C</source>
+        <location filename="../../src/SAKMainWindow.cc" line="671"/>
+        <source>TcpClient</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="559"/>
-        <source>TCP-S</source>
+        <location filename="../../src/SAKMainWindow.cc" line="677"/>
+        <source>TcpServer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="562"/>
-        <source>SSL-C</source>
+        <location filename="../../src/SAKMainWindow.cc" line="693"/>
+        <source>BLE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="563"/>
-        <source>SSL-S</source>
+        <location filename="../../src/SAKMainWindow.cc" line="700"/>
+        <source>WsClient</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="566"/>
-        <source>SCTP-C</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/SAKMainWindow.cc" line="567"/>
-        <source>SCTP-S</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/SAKMainWindow.cc" line="570"/>
-        <source>BT-C</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/SAKMainWindow.cc" line="571"/>
-        <source>BT-S</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/SAKMainWindow.cc" line="574"/>
-        <source>WS-C</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/SAKMainWindow.cc" line="575"/>
-        <source>WS-S</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/SAKMainWindow.cc" line="578"/>
-        <source>Modbus</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/SAKMainWindow.cc" line="585"/>
-        <source>File Assistant</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/SAKMainWindow.cc" line="587"/>
-        <source>CRC Assistant</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/SAKMainWindow.cc" line="588"/>
-        <source>Float Assistant</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/SAKMainWindow.cc" line="589"/>
-        <source>String Assistant</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/SAKMainWindow.cc" line="617"/>
-        <source>Edit Page Name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/SAKMainWindow.cc" line="619"/>
-        <source>Please input the name of tab page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/SAKMainWindow.cc" line="620"/>
-        <source>Tab page name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/SAKMainWindow.cc" line="623"/>
-        <source>OK</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/SAKMainWindow.cc" line="624"/>
-        <source>Cancel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/SAKMainWindow.cc" line="680"/>
-        <source>User QQ Group</source>
+        <location filename="../../src/SAKMainWindow.cc" line="706"/>
+        <source>WsServer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/SAKMainWindow.cc" line="681"/>
+        <source>SSL-C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="682"/>
+        <source>SSL-S</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="685"/>
+        <source>SCTP-C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="686"/>
+        <source>SCTP-S</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="689"/>
+        <source>BT-C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="690"/>
+        <source>BT-S</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="713"/>
+        <source>Modbus</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="722"/>
+        <source>File Assistant</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="726"/>
+        <source>CRC Assistant</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="729"/>
+        <source>Float Assistant</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="732"/>
+        <source>String Assistant</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="760"/>
+        <source>Edit Page Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="762"/>
+        <source>Please input the name of tab page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="763"/>
+        <source>Tab page name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="766"/>
+        <source>OK</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="767"/>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="823"/>
+        <source>User QQ Group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="825"/>
         <source>Qt QQ Group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="532"/>
+        <location filename="../../src/SAKMainWindow.cc" line="622"/>
         <source>Reboot application to effective</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="470"/>
+        <location filename="../../src/SAKMainWindow.cc" line="549"/>
         <source>Copyright 2018-%1 Qter. All rights reserved.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="532"/>
+        <location filename="../../src/SAKMainWindow.cc" line="623"/>
         <source>Need to reboot, reboot to effective now?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2562,47 +2541,47 @@
 <context>
     <name>SAKModbusClientController</name>
     <message>
-        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="45"/>
+        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="50"/>
         <source>Can not get the value of register which type is:%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="94"/>
+        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="103"/>
         <source>Send reading request error:%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="106"/>
+        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="116"/>
         <source>Writing reply error: %1 (Mobus exception: 0x%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="109"/>
+        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="121"/>
         <source>Writing reply error: %1 (code: 0x%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="122"/>
+        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="135"/>
         <source>Write error: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="142"/>
+        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="155"/>
         <source>Received a reply:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="146"/>
+        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="160"/>
         <source>[Address: %1, Value: %2]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="152"/>
+        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="167"/>
         <source>Read response error: %1 (Mobus exception: 0x%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="155"/>
+        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="171"/>
         <source>Read response error: %1 (code: 0x%2)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2627,81 +2606,6 @@
     <message>
         <location filename="../../src/modbus/common/SAKModbusCommonClientSection.ui" line="76"/>
         <source>Repeat times</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonClientSection.ui" line="109"/>
-        <source>Function code</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonClientSection.ui" line="132"/>
-        <source>Server address</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonClientSection.ui" line="164"/>
-        <source>Start address</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonClientSection.ui" line="177"/>
-        <source>Address number</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonClientSection.ui" line="215"/>
-        <source>Read</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonClientSection.ui" line="222"/>
-        <source>Write</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonClientSection.ui" line="238"/>
-        <source>Register list</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonClientSection.ui" line="253"/>
-        <source>Address</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonClientSection.ui" line="269"/>
-        <source>Value</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonClientSection.cc" line="43"/>
-        <source>Read Coils(0x01)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonClientSection.cc" line="44"/>
-        <source>Read Discrete Inputs(0x02)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonClientSection.cc" line="45"/>
-        <source>Read Holding Registers(0x03)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonClientSection.cc" line="46"/>
-        <source>Read Input Registers(0x04)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonClientSection.cc" line="47"/>
-        <source>Write Coils(0x0F)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonClientSection.cc" line="48"/>
-        <source>Write Registers(0x10)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2894,17 +2798,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonServerSection.ui" line="44"/>
+        <location filename="../../src/modbus/common/SAKModbusCommonServerSection.ui" line="51"/>
         <source>Just listen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonServerSection.ui" line="57"/>
+        <location filename="../../src/modbus/common/SAKModbusCommonServerSection.ui" line="64"/>
         <source>Device address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonServerSection.ui" line="74"/>
+        <location filename="../../src/modbus/common/SAKModbusCommonServerSection.ui" line="44"/>
         <source>Device is busy</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2912,73 +2816,187 @@
 <context>
     <name>SAKModbusDebugPage</name>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="45"/>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="107"/>
         <source>Console</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="82"/>
-        <source>Clear</source>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="116"/>
+        <source>Operation panel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="96"/>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="122"/>
+        <source>Function code</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="129"/>
+        <source>Start address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="136"/>
+        <source>Address number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="156"/>
+        <source>Read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="186"/>
+        <source>Write</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="203"/>
+        <source>Server address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="220"/>
         <source>Coils</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="101"/>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="225"/>
         <source>Discrete Inputs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="106"/>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="230"/>
         <source>Holding Registers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="111"/>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="235"/>
         <source>Input Registers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="169"/>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="39"/>
         <source>Device selection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="197"/>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="57"/>
         <source>Disconnect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="204"/>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="64"/>
         <source>Connect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="217"/>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="87"/>
         <source>Device type</source>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>SAKModbusDebugger</name>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugPage.cc" line="88"/>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="93"/>
         <source>Tcp Client</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugPage.cc" line="89"/>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="94"/>
         <source>Tcp Server</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugPage.cc" line="90"/>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="95"/>
         <source>SerialPort Client</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugPage.cc" line="91"/>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="96"/>
         <source>SerialPort Server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="113"/>
+        <source>Read Coils(0x01)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="115"/>
+        <source>Read Discrete Inputs(0x02)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="117"/>
+        <source>Read Holding Registers(0x03)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="119"/>
+        <source>Read Input Registers(0x04)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="121"/>
+        <source>Write Coils(0x0F)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="123"/>
+        <source>Write Registers(0x10)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="320"/>
+        <source>Address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="321"/>
+        <source>Value(Bin)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="322"/>
+        <source>Value(Otc)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="323"/>
+        <source>Value(Dec)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="324"/>
+        <source>Value(Hex)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="450"/>
+        <source>Register(s) read:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="455"/>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="515"/>
+        <source>[Address: %1, Value: %2]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="481"/>
+        <source>Send reading request error:%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="510"/>
+        <source>Register(s) Written:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="539"/>
+        <source>Write error: %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3025,623 +3043,18 @@
     </message>
 </context>
 <context>
-    <name>SAKOtherAnalyzerThreadManager</name>
-    <message>
-        <location filename="../../src/pages/page/other/analyzer/SAKOtherAnalyzerThreadManager.ui" line="14"/>
-        <source>Data analyzer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/analyzer/SAKOtherAnalyzerThreadManager.ui" line="20"/>
-        <source>End bytes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/analyzer/SAKOtherAnalyzerThreadManager.ui" line="40"/>
-        <source>Fixed length</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/analyzer/SAKOtherAnalyzerThreadManager.ui" line="53"/>
-        <source>Disable data analyzer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/analyzer/SAKOtherAnalyzerThreadManager.ui" line="63"/>
-        <source>Start bytes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/analyzer/SAKOtherAnalyzerThreadManager.ui" line="70"/>
-        <source>Empty temp data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/analyzer/SAKOtherAnalyzerThreadManager.ui" line="73"/>
-        <source>EmptyData</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/analyzer/SAKOtherAnalyzerThreadManager.ui" line="119"/>
-        <source>Temp data will be empty when it is more than 2048 bytes</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SAKOtherAutoResponseItem</name>
-    <message>
-        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.ui" line="35"/>
-        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.ui" line="69"/>
-        <source>Text format</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.ui" line="55"/>
-        <source>Description</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.ui" line="62"/>
-        <source>Response text</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.ui" line="76"/>
-        <source>Response option</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.ui" line="93"/>
-        <source>Delay</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.ui" line="113"/>
-        <source>Reference text</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.ui" line="127"/>
-        <source>Example</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.ui" line="141"/>
-        <source>Enable</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.cc" line="243"/>
-        <source>Rx data is equal to reference data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.cc" line="244"/>
-        <source>Rx data contains reference data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItem.cc" line="245"/>
-        <source>Rx data does not contains reference data</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SAKOtherAutoResponseItemManager</name>
-    <message>
-        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItemManager.ui" line="14"/>
-        <source>Auto response settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItemManager.ui" line="20"/>
-        <source>Add</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItemManager.ui" line="27"/>
-        <source>Disable all</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItemManager.ui" line="37"/>
-        <source>Delete</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItemManager.ui" line="57"/>
-        <source>outport</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItemManager.ui" line="64"/>
-        <source>Import</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItemManager.cc" line="266"/>
-        <source>Please select an item first!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItemManager.cc" line="283"/>
-        <source>Items are too many, operation will be ignored!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItemManager.cc" line="339"/>
-        <source>Outport data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/autoresponse/SAKOtherAutoResponseItemManager.cc" line="357"/>
-        <source>Import file</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SAKOtherHighlighterManager</name>
-    <message>
-        <location filename="../../src/pages/page/other/highlighter/SAKOtherHighlighterManager.ui" line="14"/>
-        <source>Syntax highlighter</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/highlighter/SAKOtherHighlighterManager.ui" line="20"/>
-        <source>Press enter key to add key word, double clicked to delete key word</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/highlighter/SAKOtherHighlighterManager.ui" line="27"/>
-        <source>Clear</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/highlighter/SAKOtherHighlighterManager.ui" line="81"/>
-        <source>Add</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/highlighter/SAKOtherHighlighterManager.ui" line="88"/>
-        <source>Press enter key to add key word</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SAKOtherTimingSentItem</name>
-    <message>
-        <location filename="../../src/pages/page/other/timingsent/SAKOtherTimingSentItem.ui" line="14"/>
-        <source>Timing Sent</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/timingsent/SAKOtherTimingSentItem.ui" line="30"/>
-        <source>Description</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/timingsent/SAKOtherTimingSentItem.ui" line="37"/>
-        <source>Enable</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/timingsent/SAKOtherTimingSentItem.ui" line="64"/>
-        <source>Interval</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/timingsent/SAKOtherTimingSentItem.ui" line="77"/>
-        <source>1000</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/timingsent/SAKOtherTimingSentItem.ui" line="84"/>
-        <source>Text format</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SAKOtherTimingSentItemManager</name>
-    <message>
-        <location filename="../../src/pages/page/other/timingsent/SAKOtherTimingSentItemManager.ui" line="14"/>
-        <source>Timing Sent</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/timingsent/SAKOtherTimingSentItemManager.ui" line="23"/>
-        <source>Outport</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/timingsent/SAKOtherTimingSentItemManager.ui" line="30"/>
-        <source>Delete</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/timingsent/SAKOtherTimingSentItemManager.ui" line="37"/>
-        <source>Import</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/timingsent/SAKOtherTimingSentItemManager.ui" line="44"/>
-        <source>Add</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/timingsent/SAKOtherTimingSentItemManager.cc" line="203"/>
-        <source>Outport data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/timingsent/SAKOtherTimingSentItemManager.cc" line="219"/>
-        <source>Import data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/timingsent/SAKOtherTimingSentItemManager.cc" line="227"/>
-        <source>Format error!</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SAKOtherTransmissionItemCom</name>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionItemCom.ui" line="20"/>
-        <source>Enable</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionItemCom.ui" line="33"/>
-        <source>Data bits</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionItemCom.ui" line="40"/>
-        <source>Parity</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionItemCom.ui" line="47"/>
-        <source>Stop bits</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionItemCom.ui" line="60"/>
-        <source>Custom baudrate</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionItemCom.ui" line="70"/>
-        <source>Baudrate</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionItemCom.ui" line="80"/>
-        <source>Handle received data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionItemCom.ui" line="93"/>
-        <source>Devices</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionItemCom.cc" line="105"/>
-        <source>Open device successfully,</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionItemCom.cc" line="106"/>
-        <source>name:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionItemCom.cc" line="107"/>
-        <source>baudrate:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionItemCom.cc" line="108"/>
-        <source>data bits:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionItemCom.cc" line="109"/>
-        <source>parity:</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>SAKOtherTransmissionItemTcp</name>
     <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionItemTcp.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionItemTcp.ui" line="20"/>
-        <source>Specified local info</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionItemTcp.ui" line="27"/>
-        <source>Local host</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionItemTcp.ui" line="44"/>
-        <source>Enable</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionItemTcp.ui" line="51"/>
-        <source>Local port</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionItemTcp.ui" line="58"/>
-        <source>55555</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionItemTcp.ui" line="65"/>
-        <source>Handle received data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionItemTcp.ui" line="75"/>
-        <source>Target host</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionItemTcp.ui" line="82"/>
-        <source>127.0.0.1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionItemTcp.ui" line="89"/>
-        <source>Target port</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionItemTcp.ui" line="96"/>
-        <source>44444</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionItemTcp.cc" line="74"/>
         <source>设备绑定失败：</source>
-        <translation type="unfinished">Device binding failed:</translation>
+        <translation type="obsolete">Device binding failed:</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionItemTcp.cc" line="82"/>
         <source>设备无法打开：</source>
-        <translation type="unfinished">Can not open device:</translation>
+        <translation type="obsolete">Can not open device:</translation>
     </message>
     <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionItemTcp.cc" line="91"/>
         <source>无法连接服务器：</source>
-        <translation type="unfinished">Can not connect to server:</translation>
-    </message>
-</context>
-<context>
-    <name>SAKOtherTransmissionItemUdp</name>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionItemUdp.ui" line="20"/>
-        <source>Target port</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionItemUdp.ui" line="44"/>
-        <source>Local port</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionItemUdp.ui" line="51"/>
-        <source>Target host</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionItemUdp.ui" line="58"/>
-        <source>Enable</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionItemUdp.ui" line="72"/>
-        <source>Local host</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionItemUdp.ui" line="79"/>
-        <source>Handle received data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionItemUdp.ui" line="96"/>
-        <source>Specified local info</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SAKOtherTransmissionPage</name>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionPage.ui" line="39"/>
-        <source>Add</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionPage.ui" line="59"/>
-        <source>Import</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionPage.ui" line="66"/>
-        <source>Outport</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionPage.ui" line="73"/>
-        <source>Close</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionPage.ui" line="32"/>
-        <source>Delete</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionPage.cc" line="117"/>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionPage.cc" line="125"/>
-        <source>Import file</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SAKOtherTransmissionPageViewer</name>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionPageViewer.ui" line="14"/>
-        <source>Data transmition</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionPageViewer.ui" line="24"/>
-        <source>COM</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionPageViewer.ui" line="29"/>
-        <source>UDP</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/other/transmission/SAKOtherTransmissionPageViewer.ui" line="34"/>
-        <source>TCP</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SAKOutputLogDialog</name>
-    <message>
-        <location filename="../../src/pages/page/output/log/SAKOutputLogDialog.ui" line="14"/>
-        <source>Log Output</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/output/log/SAKOutputLogDialog.ui" line="20"/>
-        <source>ClearLog</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/output/log/SAKOutputLogDialog.ui" line="27"/>
-        <source>SaveLog</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/output/log/SAKOutputLogDialog.ui" line="47"/>
-        <source>Close</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/output/log/SAKOutputLogDialog.ui" line="54"/>
-        <source>Log output</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/output/log/SAKOutputLogDialog.cc" line="57"/>
-        <source>Save Log to File</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SAKOutputSave2FileDialog</name>
-    <message>
-        <location filename="../../src/pages/page/output/save2file/SAKOutputSave2FileDialog.ui" line="14"/>
-        <location filename="../../src/pages/page/output/save2file/SAKOutputSave2FileDialog.ui" line="76"/>
-        <source>Parameters Setting</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/output/save2file/SAKOutputSave2FileDialog.ui" line="20"/>
-        <source>File Setting</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/output/save2file/SAKOutputSave2FileDialog.ui" line="29"/>
-        <source>Select</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/output/save2file/SAKOutputSave2FileDialog.ui" line="36"/>
-        <source>Outputing file</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/output/save2file/SAKOutputSave2FileDialog.ui" line="46"/>
-        <source>OK</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/output/save2file/SAKOutputSave2FileDialog.ui" line="53"/>
-        <source>All earlier data will be clean</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/output/save2file/SAKOutputSave2FileDialog.ui" line="56"/>
-        <source>Truncate</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/output/save2file/SAKOutputSave2FileDialog.ui" line="82"/>
-        <source>Utf8</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/output/save2file/SAKOutputSave2FileDialog.ui" line="92"/>
-        <source>Save timestamp</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/output/save2file/SAKOutputSave2FileDialog.ui" line="102"/>
-        <source>Save read data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/output/save2file/SAKOutputSave2FileDialog.ui" line="112"/>
-        <source>Save written data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/output/save2file/SAKOutputSave2FileDialog.ui" line="122"/>
-        <source>Bin</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/output/save2file/SAKOutputSave2FileDialog.ui" line="129"/>
-        <source>Hex</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/output/save2file/SAKOutputSave2FileDialog.ui" line="144"/>
-        <source>Text format</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/output/save2file/SAKOutputSave2FileDialog.ui" line="156"/>
-        <source>Saving options</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/page/output/save2file/SAKOutputSave2FileDialog.cc" line="163"/>
-        <source>Save file</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SAKOutputSave2FileThread</name>
-    <message>
-        <location filename="../../src/pages/page/output/save2file/SAKOutputSave2FileThread.cc" line="146"/>
-        <source>Unknown text format!</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Can not connect to server:</translation>
     </message>
 </context>
 <context>
@@ -3784,6 +3197,59 @@
     </message>
 </context>
 <context>
+    <name>SAKSerialPortController</name>
+    <message>
+        <location filename="../../src/debuggers/serialport/SAKSerialPortController.ui" line="14"/>
+        <source>Control Panel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/serialport/SAKSerialPortController.ui" line="32"/>
+        <source>Devices</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/serialport/SAKSerialPortController.ui" line="61"/>
+        <source>Baud rate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/serialport/SAKSerialPortController.ui" line="77"/>
+        <source>Data bits</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/serialport/SAKSerialPortController.ui" line="100"/>
+        <source>Stop bits</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/serialport/SAKSerialPortController.ui" line="116"/>
+        <source>Parity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/serialport/SAKSerialPortController.ui" line="132"/>
+        <source>Flow control</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/serialport/SAKSerialPortController.ui" line="142"/>
+        <source>Frame interval</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/serialport/SAKSerialPortController.ui" line="158"/>
+        <source>Custom baud rate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/serialport/SAKSerialPortController.ui" line="170"/>
+        <source>Serial port information</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SAKSerialPortDebugPage</name>
     <message>
         <source>串口调试</source>
@@ -3808,58 +3274,12 @@
         <source>串口发送数据失败：</source>
         <translation type="vanished">Sending data failed:</translation>
     </message>
-    <message>
-        <location filename="../../src/pages/serialport/SAKSerialPortDevice.cc" line="24"/>
-        <location filename="../../src/pages/serialport/SAKSerialPortDevice.cc" line="41"/>
-        <source>Unknown error</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>SAKSerialPortDeviceController</name>
     <message>
         <source>串口控制面板</source>
         <translation type="vanished">COM Selecting</translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/serialport/SAKSerialPortDeviceController.ui" line="14"/>
-        <source>Control Panel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/serialport/SAKSerialPortDeviceController.ui" line="41"/>
-        <source>Custom baud rate</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/serialport/SAKSerialPortDeviceController.ui" line="54"/>
-        <source>Stop bits</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/serialport/SAKSerialPortDeviceController.ui" line="86"/>
-        <source>Baud rate</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/serialport/SAKSerialPortDeviceController.ui" line="99"/>
-        <source>Data bits</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/serialport/SAKSerialPortDeviceController.ui" line="112"/>
-        <source>Parity</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/serialport/SAKSerialPortDeviceController.ui" line="119"/>
-        <source>Devices list</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/serialport/SAKSerialPortDeviceController.ui" line="145"/>
-        <source>Flow control</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>停止位</source>
@@ -3946,6 +3366,54 @@
     </message>
 </context>
 <context>
+    <name>SAKSerialPortTransponder</name>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKSerialPortTransponder.ui" line="20"/>
+        <source>Enable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKSerialPortTransponder.ui" line="27"/>
+        <source>Custom baudrate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKSerialPortTransponder.ui" line="37"/>
+        <source>Ports</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKSerialPortTransponder.ui" line="60"/>
+        <source>Baudrate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKSerialPortTransponder.ui" line="73"/>
+        <source>Data bits</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKSerialPortTransponder.ui" line="98"/>
+        <source>Frame interval</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKSerialPortTransponder.ui" line="111"/>
+        <source>Stop bits</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKSerialPortTransponder.ui" line="121"/>
+        <source>Parity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKSerialPortTransponder.ui" line="131"/>
+        <source>Flow control</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SAKSingletonErrorDialog</name>
     <message>
         <source>Dialog</source>
@@ -3969,6 +3437,66 @@
     <message>
         <source>瑞士军刀正在启动...</source>
         <translation type="vanished">QtSwissArmyKnife is starting...</translation>
+    </message>
+</context>
+<context>
+    <name>SAKTcpClientController</name>
+    <message>
+        <location filename="../../src/debuggers/tcp/client/SAKTcpClientController.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/tcp/client/SAKTcpClientController.ui" line="44"/>
+        <source>Tcp server information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/tcp/client/SAKTcpClientController.ui" line="51"/>
+        <source>55555</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/tcp/client/SAKTcpClientController.ui" line="58"/>
+        <location filename="../../src/debuggers/tcp/client/SAKTcpClientController.ui" line="72"/>
+        <source>Address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/tcp/client/SAKTcpClientController.ui" line="65"/>
+        <location filename="../../src/debuggers/tcp/client/SAKTcpClientController.ui" line="105"/>
+        <source>Port</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/tcp/client/SAKTcpClientController.ui" line="84"/>
+        <source>Tcp client information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/tcp/client/SAKTcpClientController.ui" line="91"/>
+        <source>127.0.0.1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/tcp/client/SAKTcpClientController.ui" line="98"/>
+        <source>Specify local parameters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/tcp/client/SAKTcpClientController.ui" line="125"/>
+        <source>44444</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/tcp/client/SAKTcpClientController.ui" line="132"/>
+        <source>Client info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/tcp/client/SAKTcpClientController.ui" line="139"/>
+        <source>Allow automatic connection</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4013,97 +3541,26 @@
         <translation type="vanished">Sending data failed:</translation>
     </message>
     <message>
-        <location filename="../../src/pages/tcp/client/SAKTcpClientDevice.cc" line="61"/>
+        <location filename="../../src/debuggers/tcp/client/SAKTcpClientDevice.cc" line="63"/>
         <source>Binding failed:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/tcp/client/SAKTcpClientDevice.cc" line="73"/>
+        <location filename="../../src/debuggers/tcp/client/SAKTcpClientDevice.cc" line="76"/>
         <source>Connect to server failed:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/tcp/client/SAKTcpClientDevice.cc" line="84"/>
-        <location filename="../../src/pages/tcp/client/SAKTcpClientDevice.cc" line="113"/>
-        <source>Unknown error</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/tcp/client/SAKTcpClientDevice.cc" line="87"/>
+        <location filename="../../src/debuggers/tcp/client/SAKTcpClientDevice.cc" line="88"/>
         <source>Can not open device:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/tcp/client/SAKTcpClientDevice.cc" line="110"/>
-        <source>Connection has been disconnected.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>SAKTcpClientDeviceController</name>
     <message>
-        <location filename="../../src/pages/tcp/client/SAKTcpClientDeviceController.ui" line="14"/>
-        <source>Form</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/tcp/client/SAKTcpClientDeviceController.ui" line="39"/>
-        <source>Tcp server information</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/tcp/client/SAKTcpClientDeviceController.ui" line="53"/>
-        <source>Client address</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/tcp/client/SAKTcpClientDeviceController.ui" line="67"/>
-        <source>Server address</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/tcp/client/SAKTcpClientDeviceController.ui" line="129"/>
-        <source>Allow automatic connection</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/tcp/client/SAKTcpClientDeviceController.ui" line="60"/>
-        <source>Client port</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/tcp/client/SAKTcpClientDeviceController.ui" line="74"/>
-        <source>Tcp client information</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/tcp/client/SAKTcpClientDeviceController.ui" line="88"/>
-        <source>Specify local parameters</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/tcp/client/SAKTcpClientDeviceController.ui" line="115"/>
-        <source>44444</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/tcp/client/SAKTcpClientDeviceController.ui" line="95"/>
-        <source>Server port</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/tcp/client/SAKTcpClientDeviceController.ui" line="122"/>
-        <source>Client info</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>端口</source>
         <translation type="vanished">Port</translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/tcp/client/SAKTcpClientDeviceController.ui" line="81"/>
-        <source>127.0.0.1</source>
-        <translation></translation>
     </message>
     <message>
         <source>服务器主机信息设置</source>
@@ -4114,17 +3571,50 @@
         <translation type="vanished">Host</translation>
     </message>
     <message>
-        <location filename="../../src/pages/tcp/client/SAKTcpClientDeviceController.ui" line="46"/>
-        <source>55555</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>指定本地主机信息</source>
         <translation type="vanished">Appointing Local Info</translation>
     </message>
     <message>
         <source>本地主机信息设置</source>
         <translation type="vanished">Local Host Information</translation>
+    </message>
+</context>
+<context>
+    <name>SAKTcpServerController</name>
+    <message>
+        <location filename="../../src/debuggers/tcp/server/SAKTcpServerController.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/tcp/server/SAKTcpServerController.ui" line="37"/>
+        <source>Tcp client list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/tcp/server/SAKTcpServerController.ui" line="44"/>
+        <source>Address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/tcp/server/SAKTcpServerController.ui" line="51"/>
+        <source>Port</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/tcp/server/SAKTcpServerController.ui" line="58"/>
+        <source>44444</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/tcp/server/SAKTcpServerController.ui" line="70"/>
+        <source>Tcp server information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/tcp/server/SAKTcpServerController.ui" line="97"/>
+        <source>Clients</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4157,54 +3647,13 @@
         <translation type="vanished">Can not write data:(%1)%2</translation>
     </message>
     <message>
-        <location filename="../../src/pages/tcp/server/SAKTcpServerDevice.cc" line="34"/>
-        <location filename="../../src/pages/tcp/server/SAKTcpServerDevice.cc" line="122"/>
-        <source>Unknown error</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/tcp/server/SAKTcpServerDevice.cc" line="50"/>
+        <location filename="../../src/debuggers/tcp/server/SAKTcpServerDevice.cc" line="56"/>
         <source>Listen failed:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>SAKTcpServerDeviceController</name>
-    <message>
-        <location filename="../../src/pages/tcp/server/SAKTcpServerDeviceController.ui" line="14"/>
-        <source>Form</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/tcp/server/SAKTcpServerDeviceController.ui" line="32"/>
-        <source>Tcp client list</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/tcp/server/SAKTcpServerDeviceController.ui" line="39"/>
-        <source>Address</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/tcp/server/SAKTcpServerDeviceController.ui" line="46"/>
-        <source>Port</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/tcp/server/SAKTcpServerDeviceController.ui" line="53"/>
-        <source>44444</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/tcp/server/SAKTcpServerDeviceController.ui" line="60"/>
-        <source>Tcp server information</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/tcp/server/SAKTcpServerDeviceController.ui" line="87"/>
-        <source>Clients</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>端口</source>
         <translation type="vanished">Port</translation>
@@ -4266,58 +3715,96 @@
     </message>
 </context>
 <context>
-    <name>SAKTestDeviceController</name>
+    <name>SAKTcpTransponder</name>
     <message>
-        <location filename="../../src/pages/test/SAKTestDeviceController.ui" line="44"/>
-        <location filename="../../src/pages/test/SAKTestDeviceController.ui" line="106"/>
+        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKTcpTransponder.ui" line="20"/>
+        <source>Local Information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKTcpTransponder.ui" line="27"/>
+        <source>Server host</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKTcpTransponder.ui" line="34"/>
+        <source>Server port</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKTcpTransponder.ui" line="41"/>
+        <source>Enable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKTcpTransponder.ui" line="58"/>
+        <source>127.0.0.1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKTcpTransponder.ui" line="65"/>
+        <source>55555</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SAKTestDebuggerController</name>
+    <message>
+        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="44"/>
+        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="94"/>
         <source>500</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/test/SAKTestDeviceController.ui" line="47"/>
-        <location filename="../../src/pages/test/SAKTestDeviceController.ui" line="109"/>
+        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="47"/>
+        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="97"/>
         <source>Unit is milliseconds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/test/SAKTestDeviceController.ui" line="54"/>
+        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="54"/>
         <source>Error string</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/test/SAKTestDeviceController.ui" line="61"/>
-        <location filename="../../src/pages/test/SAKTestDeviceController.ui" line="68"/>
-        <source>Cycle interval</source>
+        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="61"/>
+        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="68"/>
+        <source>Cycle(ms)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/test/SAKTestDeviceController.ui" line="80"/>
+        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="80"/>
         <source>Device settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/test/SAKTestDeviceController.ui" line="87"/>
+        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="87"/>
         <source>Open device failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/test/SAKTestDeviceController.ui" line="99"/>
+        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="104"/>
+        <source>Just for debugging</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="111"/>
+        <source>Generate data circularly</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="118"/>
+        <source>Create data circularly</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="130"/>
         <source>Reading settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/test/SAKTestDeviceController.ui" line="121"/>
+        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="142"/>
         <source>Writing settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/test/SAKTestDeviceController.ui" line="131"/>
-        <source>Generate read data cyclic</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/test/SAKTestDeviceController.ui" line="138"/>
-        <source>Create written data cyclic</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4895,204 +4382,77 @@ p, li { white-space: pre-wrap; }
         <source>UDP高级设置</source>
         <translation type="obsolete">Advance Settings</translation>
     </message>
+</context>
+<context>
+    <name>SAKUdpClientController</name>
     <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientAdvanceSettingWidget.ui" line="14"/>
-        <source>UDP Advance Settings</source>
+        <location filename="../../src/debuggers/udp/client/SAKUdpClientController.ui" line="14"/>
+        <source>Form</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientAdvanceSettingWidget.ui" line="25"/>
-        <source>Multicast settings</source>
+        <location filename="../../src/debuggers/udp/client/SAKUdpClientController.ui" line="32"/>
+        <source>44444</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientAdvanceSettingWidget.ui" line="37"/>
-        <source>Unicast settings</source>
+        <location filename="../../src/debuggers/udp/client/SAKUdpClientController.ui" line="42"/>
+        <source>Bound info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientAdvanceSettingWidget.ui" line="70"/>
-        <source>DeleteMulticast</source>
+        <location filename="../../src/debuggers/udp/client/SAKUdpClientController.ui" line="49"/>
+        <location filename="../../src/debuggers/udp/client/SAKUdpClientController.ui" line="75"/>
+        <source>Address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientAdvanceSettingWidget.ui" line="77"/>
-        <source>AddMulticast</source>
+        <location filename="../../src/debuggers/udp/client/SAKUdpClientController.ui" line="56"/>
+        <source>The bound address and port of socket.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientAdvanceSettingWidget.ui" line="84"/>
-        <source>Cancle</source>
+        <location filename="../../src/debuggers/udp/client/SAKUdpClientController.ui" line="82"/>
+        <source>Specify client information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientAdvanceSettingWidget.ui" line="107"/>
-        <source>Enable multicast</source>
+        <location filename="../../src/debuggers/udp/client/SAKUdpClientController.ui" line="96"/>
+        <source>55555</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientAdvanceSettingWidget.ui" line="119"/>
-        <source>Broadcast settings</source>
+        <location filename="../../src/debuggers/udp/client/SAKUdpClientController.ui" line="108"/>
+        <source>Udp server inforamtion</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientAdvanceSettingWidget.ui" line="126"/>
-        <source>Broadcast port</source>
+        <location filename="../../src/debuggers/udp/client/SAKUdpClientController.ui" line="115"/>
+        <location filename="../../src/debuggers/udp/client/SAKUdpClientController.ui" line="140"/>
+        <source>Port</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientAdvanceSettingWidget.ui" line="136"/>
-        <source>Enable broadcast</source>
+        <location filename="../../src/debuggers/udp/client/SAKUdpClientController.ui" line="127"/>
+        <source>Udp client information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientAdvanceSettingWidget.ui" line="150"/>
-        <source>Enable unicast</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientAdvanceSettingWidget.cc" line="84"/>
-        <source>No selected item</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientAdvanceSettingWidget.cc" line="84"/>
-        <source>No selected item, please select an item and then try again.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientAdvanceSettingWidget.cc" line="110"/>
-        <source>Join multicast group failed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientAdvanceSettingWidget.cc" line="111"/>
-        <source>Join multicast group failed:%1</source>
+        <location filename="../../src/debuggers/udp/client/SAKUdpClientController.ui" line="147"/>
+        <source>127.0.0.1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>SAKUdpClientDevice</name>
     <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientDevice.cc" line="119"/>
+        <location filename="../../src/debuggers/udp/client/SAKUdpClientDevice.cc" line="65"/>
         <source>Binding failed:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientDevice.cc" line="129"/>
+        <location filename="../../src/debuggers/udp/client/SAKUdpClientDevice.cc" line="77"/>
         <source>Open device failed:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientDevice.cc" line="133"/>
-        <location filename="../../src/pages/udp/client/SAKUdpClientDevice.cc" line="187"/>
-        <source>Unknown error</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SAKUdpClientDeviceController</name>
-    <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientDeviceController.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientDeviceController.ui" line="39"/>
-        <source>44444</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientDeviceController.ui" line="46"/>
-        <source>127.0.0.1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientDeviceController.ui" line="32"/>
-        <source>Server port</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientDeviceController.ui" line="53"/>
-        <source>Client address</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientDeviceController.ui" line="60"/>
-        <source>Specify client information</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientDeviceController.ui" line="139"/>
-        <source>AdvanceSettings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientDeviceController.ui" line="67"/>
-        <source>Advance settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientDeviceController.ui" line="74"/>
-        <source>Server address</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientDeviceController.ui" line="81"/>
-        <source>55555</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientDeviceController.ui" line="95"/>
-        <source>Udp client information</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientDeviceController.ui" line="105"/>
-        <source>Udp server inforamtion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientDeviceController.ui" line="112"/>
-        <source>Client port</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientDeviceController.ui" line="119"/>
-        <source>Bound info</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientDeviceController.ui" line="126"/>
-        <source>The bound address and port of socket.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SAKUdpClientMulticastEditingDialog</name>
-    <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientMulticastEditingDialog.ui" line="14"/>
-        <source>Add Mlticast</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientMulticastEditingDialog.ui" line="20"/>
-        <source>Cancle</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientMulticastEditingDialog.ui" line="27"/>
-        <source>OK</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientMulticastEditingDialog.ui" line="64"/>
-        <source>Mlticast address</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/udp/client/SAKUdpClientMulticastEditingDialog.ui" line="71"/>
-        <source>Multicast port</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -5181,64 +4541,53 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
-    <name>SAKUdpServerDevice</name>
+    <name>SAKUdpServerController</name>
     <message>
-        <location filename="../../src/pages/udp/server/SAKUdpServerDevice.cc" line="36"/>
-        <source>Binding failed：</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/udp/server/SAKUdpServerDevice.cc" line="46"/>
-        <location filename="../../src/pages/udp/server/SAKUdpServerDevice.cc" line="103"/>
-        <source>Unknown error</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/udp/server/SAKUdpServerDevice.cc" line="49"/>
-        <source>Open device failed:</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SAKUdpServerDeviceController</name>
-    <message>
-        <location filename="../../src/pages/udp/server/SAKUdpServerDeviceController.ui" line="14"/>
+        <location filename="../../src/debuggers/udp/server/SAKUdpServerController.ui" line="14"/>
         <source>Form</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/udp/server/SAKUdpServerDeviceController.ui" line="35"/>
+        <location filename="../../src/debuggers/udp/server/SAKUdpServerController.ui" line="40"/>
         <source>Udp server information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/udp/server/SAKUdpServerDeviceController.ui" line="42"/>
+        <location filename="../../src/debuggers/udp/server/SAKUdpServerController.ui" line="47"/>
         <source>44444</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/udp/server/SAKUdpServerDeviceController.ui" line="49"/>
+        <location filename="../../src/debuggers/udp/server/SAKUdpServerController.ui" line="59"/>
         <source>Udp client list</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/udp/server/SAKUdpServerDeviceController.ui" line="59"/>
+        <location filename="../../src/debuggers/udp/server/SAKUdpServerController.ui" line="69"/>
         <source>Clients</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/udp/server/SAKUdpServerDeviceController.ui" line="73"/>
+        <location filename="../../src/debuggers/udp/server/SAKUdpServerController.ui" line="83"/>
         <source>Port</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/udp/server/SAKUdpServerDeviceController.ui" line="80"/>
+        <location filename="../../src/debuggers/udp/server/SAKUdpServerController.ui" line="90"/>
         <source>Address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/pages/udp/server/SAKUdpServerDeviceController.ui" line="87"/>
+        <location filename="../../src/debuggers/udp/server/SAKUdpServerController.ui" line="97"/>
         <source>ClearClients</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SAKUdpServerDevice</name>
+    <message>
+        <location filename="../../src/debuggers/udp/server/SAKUdpServerDevice.cc" line="38"/>
+        <source>Binding failed：</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -5271,6 +4620,39 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>处理接收到的数据</source>
         <translation type="vanished">Handling received data</translation>
+    </message>
+</context>
+<context>
+    <name>SAKUdpTransponder</name>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKUdpTransponder.ui" line="20"/>
+        <source>Local Information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKUdpTransponder.ui" line="27"/>
+        <source>Peer host</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKUdpTransponder.ui" line="34"/>
+        <source>Peer port</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKUdpTransponder.ui" line="41"/>
+        <source>Enable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKUdpTransponder.ui" line="58"/>
+        <source>127.0.0.1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKUdpTransponder.ui" line="65"/>
+        <source>55555</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5427,51 +4809,47 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
+    <name>SAKWebSocketClientController</name>
+    <message>
+        <location filename="../../src/debuggers/websocket/client/SAKWebSocketClientController.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/websocket/client/SAKWebSocketClientController.ui" line="32"/>
+        <source>Flow control</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/websocket/client/SAKWebSocketClientController.ui" line="39"/>
+        <source>Server url</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/websocket/client/SAKWebSocketClientController.ui" line="61"/>
+        <source>Web socket client information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/websocket/client/SAKWebSocketClientController.ui" line="68"/>
+        <source>Client info</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SAKWebSocketClientDevice</name>
     <message>
         <source>连接错误：%1</source>
         <translation type="vanished">Connecting error: %1</translation>
     </message>
     <message>
-        <location filename="../../src/pages/websocket/client/SAKWebSocketClientDevice.cc" line="53"/>
-        <location filename="../../src/pages/websocket/client/SAKWebSocketClientDevice.cc" line="61"/>
-        <location filename="../../src/pages/websocket/client/SAKWebSocketClientDevice.cc" line="96"/>
-        <source>Unknown error</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/websocket/client/SAKWebSocketClientDevice.cc" line="92"/>
-        <source>Connection has been disconnect.</source>
+        <location filename="../../src/debuggers/websocket/client/SAKWebSocketClientDevice.cc" line="64"/>
+        <source>error code:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>SAKWebSocketClientDeviceController</name>
-    <message>
-        <location filename="../../src/pages/websocket/client/SAKWebSocketClientDeviceController.ui" line="14"/>
-        <source>Form</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/websocket/client/SAKWebSocketClientDeviceController.ui" line="32"/>
-        <source>Flow control</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/websocket/client/SAKWebSocketClientDeviceController.ui" line="39"/>
-        <source>Server url</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/websocket/client/SAKWebSocketClientDeviceController.ui" line="56"/>
-        <source>Web socket client information</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/websocket/client/SAKWebSocketClientDeviceController.ui" line="63"/>
-        <source>Client info</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>地址</source>
         <translation type="vanished">Address</translation>
@@ -5486,6 +4864,44 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
+    <name>SAKWebSocketServerController</name>
+    <message>
+        <location filename="../../src/debuggers/websocket/server/SAKWebSocketServerController.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/websocket/server/SAKWebSocketServerController.ui" line="37"/>
+        <source>Web socket client list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/websocket/server/SAKWebSocketServerController.ui" line="57"/>
+        <source>Server url</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/websocket/server/SAKWebSocketServerController.ui" line="71"/>
+        <source>Port</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/websocket/server/SAKWebSocketServerController.ui" line="83"/>
+        <source>Web socket server settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/websocket/server/SAKWebSocketServerController.ui" line="90"/>
+        <source>Client url</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/websocket/server/SAKWebSocketServerController.ui" line="97"/>
+        <source>Flow control</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SAKWebSocketServerDevice</name>
     <message>
         <source>服务器监听地址、端口失败：</source>
@@ -5496,54 +4912,13 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">Can not write data:(%1)%2</translation>
     </message>
     <message>
-        <location filename="../../src/pages/websocket/server/SAKWebSocketServerDevice.cc" line="41"/>
+        <location filename="../../src/debuggers/websocket/server/SAKWebSocketServerDevice.cc" line="37"/>
         <source>Listen failed:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/websocket/server/SAKWebSocketServerDevice.cc" line="50"/>
-        <location filename="../../src/pages/websocket/server/SAKWebSocketServerDevice.cc" line="124"/>
-        <source>Unknown error</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>SAKWebSocketServerDeviceController</name>
-    <message>
-        <location filename="../../src/pages/websocket/server/SAKWebSocketServerDeviceController.ui" line="14"/>
-        <source>Form</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/websocket/server/SAKWebSocketServerDeviceController.ui" line="32"/>
-        <source>Web socket client list</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/websocket/server/SAKWebSocketServerDeviceController.ui" line="52"/>
-        <source>Server url</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/websocket/server/SAKWebSocketServerDeviceController.ui" line="66"/>
-        <source>Port</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/websocket/server/SAKWebSocketServerDeviceController.ui" line="73"/>
-        <source>Web socket server settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/websocket/server/SAKWebSocketServerDeviceController.ui" line="80"/>
-        <source>Client url</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/pages/websocket/server/SAKWebSocketServerDeviceController.ui" line="87"/>
-        <source>Flow control</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>服务器信息设置</source>
         <translation type="vanished">Server Information</translation>
@@ -5567,6 +4942,34 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>流控</source>
         <translation type="vanished">Ways</translation>
+    </message>
+</context>
+<context>
+    <name>SAKWebSocketTransponder</name>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKWebSocketTransponder.ui" line="20"/>
+        <source>Sending chnnel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKWebSocketTransponder.ui" line="40"/>
+        <source>Server host</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKWebSocketTransponder.ui" line="47"/>
+        <source>Enable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKWebSocketTransponder.ui" line="61"/>
+        <source>Local Information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKWebSocketTransponder.ui" line="68"/>
+        <source>ws://127.0.0.1:12345</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
