@@ -17,7 +17,9 @@
 #include <QSettings>
 #include <QPushButton>
 #include <QSqlDatabase>
+#include <QPluginLoader>
 
+#include "SAKDebuggerPluginsManager.hh"
 #include "SAKDebuggerPluginTransponders.hh"
 #include "SAKDebuggerPluginAutoResponse.hh"
 #include "SAKDebuggerPluginTimedSending.hh"
@@ -26,7 +28,7 @@ class SAKDebuggerPlugins : public QObject
 {
     Q_OBJECT
 public:
-    explicit SAKDebuggerPlugins(QPushButton *readmeBt,
+    explicit SAKDebuggerPlugins(QPushButton *managerBt,
                                 QPushButton *menuBt,
                                 QSettings *settings,
                                 const QString &settingsGroup,
@@ -36,6 +38,7 @@ public:
                                 QObject *parent = Q_NULLPTR);
     ~SAKDebuggerPlugins();
 private:
+    SAKDebuggerPluginsManager *mManager;
     SAKDebuggerPluginTransponders *mTransponders;
     SAKDebuggerPluginAutoResponse *mAutoResponse;
     SAKDebuggerPluginTimedSending *mTimedSending;
@@ -45,6 +48,8 @@ private:
     QDialog *mPluginDialog;
     QWidget *mActiveWidgetInPanel;
     QWidget *mActiveWidgetInDialog;
+    QVector<QAction*> mPluginActionVector;
+    QVector<QAction*> mEmbedPluginActionVector;
 private:
     void showPluinTransponders();
     void showPluginAutoResponse();
@@ -59,11 +64,15 @@ private:
 
     void clearPluginDialog();
     void clearPluginPanel();
+
+    void loadPlugin(QMenu *menu, QMenu *embedMenu);
+    void addPluginToMenu(QMenu *menu, QString name, QWidget *ui, bool embed);
+    void clearPlugins(QVector<QAction *> &actionVector);
 signals:
     void bytesRead(QByteArray bytes);
     void bytesWritten(QByteArray bytes);
 
-    void invokeWriteRawBytes(QString rawBytes, int format);
+    void invokeWriteRawBytes(QString rawBytes);
     void invokeWriteCookedBytes(QByteArray bytes);
 };
 

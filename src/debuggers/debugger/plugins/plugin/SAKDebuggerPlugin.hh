@@ -12,70 +12,27 @@
 
 #include <QWidget>
 
+class PluginUi : public QWidget {
+    Q_OBJECT
+signals:
+    void onDataRead(const QByteArray &data);
+    void onDataWritten(const QByteArray &data);
+signals:
+    void invokeWriteRawData(const QString &data);
+    void invokeWriteCookedData(const QByteArray &data);
+};
+
 class SAKDebuggerPlugin : public QObject
 {
     Q_OBJECT
 public:
-    struct SAKStructDebuggerPluginContext {
-        int majorVersion;
-        int minorVersion;
-        int patchVersion;
-
-        QString author;
-        QString email;
-        QString qqNumber;
-        QString copyright;
-        QString description;
-
-        QString giteeRepositories;
-        QString githubRepositories;
-        QString gitlabRepositories;
-        QString codingRepositories;
-    };
-
-
-public:
-    SAKDebuggerPlugin(QObject *parent = Q_NULLPTR);
-    ~SAKDebuggerPlugin();
-    const QString qtVersion();
-
-    /**
-     * @brief pluginPanel: Get the plugin ui.
-     * @return The plugin ui.
-     */
-    virtual QWidget* pluginPanel() = 0;
-
-    /**
-     * @brief bytesRead: After device reading bytes, application will called the
-     * interface. You can do what you want in the function.
-     * @param bytes: Bytes read.
-     */
-    virtual void bytesRead(QByteArray bytes) = 0;
-
-    /**
-     * @brief pluginContext
-     * @return
-     */
-    virtual SAKStructDebuggerPluginContext pluginContext() = 0;
-signals:
-    /**
-     * @brief writeRawBytes: The application will connect the signal automatically.
-     * The cookedBytes will be write to device after cooking by using input parameters.
-     * @param rawBytes: Bytes need to be write.
-     */
-    void writeRawBytes(QByteArray rawBytes);
-
-    /**
-     * @brief writeRawBytes: The application will connect the signal automatically.
-     * The cookedBytes will be write to device directly.
-     * @param cookedBytes: Bytes need to be write.
-     */
-    void writeCookedBytes(QByteArray cookedBytes);
+    SAKDebuggerPlugin(QObject *parent = Q_NULLPTR){Q_UNUSED(parent)};
+    virtual PluginUi *ui() = 0;
 };
 
 QT_BEGIN_NAMESPACE
-#define SAKDebuggerPlugin_iid "QSAK.SAKDebuggerPlugin"
-Q_DECLARE_INTERFACE(SAKDebuggerPlugin, SAKDebuggerPlugin_iid)
+#define SAKDebuggerPluginIID "QSAK.Plugin.SAKDebuggerPlugin"
+Q_DECLARE_INTERFACE(SAKDebuggerPlugin, SAKDebuggerPluginIID)
 QT_END_NAMESPACE
 
 #endif // SAKDEBUGGERPLUGIN_HH

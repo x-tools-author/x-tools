@@ -1,5 +1,7 @@
+DEFINES+=SAK_IMPORT_MODULE_PLUGIN
+
 HEADERS += \
     $$PWD/SAKDebuggerPlugin.hh
 
-SOURCES += \
-    $$PWD/SAKDebuggerPlugin.cc
+INCLUDEPATH += \
+    $$PWD

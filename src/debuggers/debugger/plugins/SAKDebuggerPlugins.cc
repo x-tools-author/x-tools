@@ -7,13 +7,19 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  ***************************************************************************************/
+#include <QDir>
 #include <QMenu>
 #include <QDebug>
+#include <QJsonObject>
+#include <QCoreApplication>
 
 #include "SAKMainWindow.hh"
 #include "SAKDebuggerPlugins.hh"
+#ifdef SAK_IMPORT_MODULE_PLUGIN
+#include "SAKDebuggerPlugin.hh"
+#endif
 
-SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
+SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *managerBt,
                                        QPushButton *menuBt,
                                        QSettings *settings,
                                        const QString &settingsGroup,
@@ -38,9 +44,15 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
     mPanelWidget->setHidden(true);
 
     // Go to a web page.
-    if (readmeBt) {
-        connect(readmeBt, &QPushButton::clicked, this, [](){
-            // Nothing to do yet.
+    if (managerBt) {
+        mManager = new SAKDebuggerPluginsManager();
+        //mManager->setWindowModality(Qt::ApplicationModal);
+        connect(managerBt, &QPushButton::clicked, this, [=](){
+            if (mManager->isHidden()) {
+                mManager->show();
+            } else {
+                mManager->activateWindow();
+            }
         });
     }
 
@@ -107,8 +119,7 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
     addActionsToMenu(embedMenu, actionsCtx, false);
     menu->addSeparator();
     addActionsToMenu(menu, actionsCtx, true);
-    menu->addSeparator();
-    menu->addAction(tr("Reload All"), this, [](){});
+
 
     mPluginDialog = new QDialog(sakMainWindow);
     mPluginDialog->setLayout(new QVBoxLayout(mPluginDialog));
@@ -129,6 +140,16 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
         mPanelWidget = new QWidget(sakMainWindow);
         mPanelWidget->hide();
     }
+
+    // Some bus exist when reload plugins, I don't want to handle them yet.
+    menu->addSeparator();
+    menu->addAction(tr("Reload All"), this, [=](){
+        this->loadPlugin(menu, embedMenu);
+    });
+
+#ifdef SAK_IMPORT_MODULE_PLUGIN
+    loadPlugin(menu, embedMenu);
+#endif
 }
 
 SAKDebuggerPlugins::~SAKDebuggerPlugins()
@@ -193,6 +214,7 @@ void SAKDebuggerPlugins::embedPlugin(QWidget *contentWidget)
     mPanelWidget->layout()->addWidget(contentWidget);
     mTitleLabel->show();
     mPanelWidget->show();
+    contentWidget->show();
 
     if (mActiveWidgetInPanel == mActiveWidgetInDialog) {
         clearPluginDialog();
@@ -224,4 +246,105 @@ void SAKDebuggerPlugins::clearPluginPanel()
     }
 
     mActiveWidgetInPanel = Q_NULLPTR;
+}
+
+void SAKDebuggerPlugins::loadPlugin(QMenu *menu, QMenu *embedMenu)
+{
+    clearPlugins(mPluginActionVector);
+    clearPlugins(mEmbedPluginActionVector);
+    QDir pluginsDir(QCoreApplication::applicationDirPath());
+    pluginsDir.cd("plugins");
+    const QStringList entries = pluginsDir.entryList(QDir::Files);
+    for (const QString &fileName : entries) {
+        const QString path = pluginsDir.absoluteFilePath(fileName);
+        QPluginLoader pluginLoader(path);
+        QObject *plugin = pluginLoader.instance();
+        if (plugin) {
+            QJsonObject jsonObj = pluginLoader.metaData();
+            QJsonObject metaData = jsonObj.value("MetaData").toObject();
+            QString name = metaData.value("name").toString();
+            auto *sakPlugin = qobject_cast<SAKDebuggerPlugin*>(plugin);
+            if (sakPlugin) {
+                PluginUi *widget = sakPlugin->ui();
+                if (widget) {
+                    addPluginToMenu(menu, name, widget, false);
+                    addPluginToMenu(embedMenu, name, widget, true);
+                    connect(this, &SAKDebuggerPlugins::bytesRead,
+                            widget, &PluginUi::onDataRead,
+                            Qt::ConnectionType(Qt::AutoConnection|Qt::UniqueConnection));
+                    connect(this, &SAKDebuggerPlugins::bytesWritten,
+                            widget, &PluginUi::onDataWritten,
+                            Qt::ConnectionType(Qt::AutoConnection|Qt::UniqueConnection));
+                    connect(widget, &PluginUi::invokeWriteCookedData,
+                            this, &SAKDebuggerPlugins::invokeWriteCookedBytes,
+                            Qt::ConnectionType(Qt::AutoConnection|Qt::UniqueConnection));
+                    connect(widget, &PluginUi::invokeWriteRawData,
+                            this, &SAKDebuggerPlugins::invokeWriteRawBytes,
+                            Qt::ConnectionType(Qt::AutoConnection|Qt::UniqueConnection));
+                }
+            }
+        } else {
+            pluginLoader.unload();
+        }
+    }
+}
+
+void SAKDebuggerPlugins::addPluginToMenu(QMenu *menu,
+                                         QString name, QWidget *ui,
+                                         bool embed)
+{
+    if (embed) {
+        if (mEmbedPluginActionVector.isEmpty()) {
+            mEmbedPluginActionVector.append(menu->addSeparator());
+        }
+    } else {
+        if (mPluginActionVector.isEmpty()) {
+            mPluginActionVector.append(menu->addSeparator());
+        }
+    }
+
+    QAction *action = new QAction(name, menu);
+    action->setData(QVariant::fromValue(ui));
+    menu->addAction(action);
+    if (embed) {
+        mEmbedPluginActionVector.append(action);
+    } else {
+        mPluginActionVector.append(action);
+    }
+
+    connect(action, &QAction::triggered, this, [=]() {
+        if (embed) {
+            embedPlugin(ui);
+        } else {
+            if (mActiveWidgetInPanel == ui) {
+                cancelEmbedPlugin();
+            }
+
+            if (ui->isHidden()) {
+                ui->show();
+            } else {
+                ui->activateWindow();
+            }
+        }
+    });
+}
+
+void SAKDebuggerPlugins::clearPlugins(QVector<QAction*> &actionVector)
+{
+    while (actionVector.count()) {
+        QAction *action = actionVector.takeFirst();
+        QObject *dataObj = action->data().value<QObject*>();
+        if (dataObj) {
+            auto *widget = qobject_cast<QWidget*>(dataObj);
+            if (widget) {
+               if (widget == this->mActiveWidgetInPanel)  {
+                   cancelEmbedPlugin();
+               }
+
+               widget->close();
+               widget->deleteLater();
+            }
+        }
+        action->deleteLater();
+    }
 }
