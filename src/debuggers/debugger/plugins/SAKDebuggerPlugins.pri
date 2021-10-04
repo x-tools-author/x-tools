@@ -1,5 +1,5 @@
-exists($$PWD/plugin/SAKDebuggerPlugin.pri) {
-    include($$PWD/plugin/SAKDebuggerPlugin.pri)
+exists($$PWD/plugin/src/SAKDebuggerPlugin.pri) {
+    include($$PWD/plugin/src/SAKDebuggerPlugin.pri)
 }
 include($$PWD/transponders/SAKDebuggerPluginTransponders.pri)
 include($$PWD/autoresponse/SAKDebuggerPluginAutoResponse.pri)
