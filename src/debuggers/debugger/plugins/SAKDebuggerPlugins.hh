@@ -65,9 +65,11 @@ private:
     void clearPluginDialog();
     void clearPluginPanel();
 
+#ifdef SAK_IMPORT_MODULE_PLUGIN
     void loadPlugin(QMenu *menu, QMenu *embedMenu);
     void addPluginToMenu(QMenu *menu, QString name, QWidget *ui, bool embed);
     void clearPlugins(QVector<QAction *> &actionVector);
+#endif
 signals:
     void bytesRead(QByteArray bytes);
     void bytesWritten(QByteArray bytes);

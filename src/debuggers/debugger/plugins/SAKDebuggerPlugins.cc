@@ -141,13 +141,12 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *managerBt,
         mPanelWidget->hide();
     }
 
-    // Some bus exist when reload plugins, I don't want to handle them yet.
+#ifdef SAK_IMPORT_MODULE_PLUGIN
     menu->addSeparator();
     menu->addAction(tr("Reload All"), this, [=](){
         this->loadPlugin(menu, embedMenu);
     });
 
-#ifdef SAK_IMPORT_MODULE_PLUGIN
     loadPlugin(menu, embedMenu);
 #endif
 }
@@ -248,6 +247,7 @@ void SAKDebuggerPlugins::clearPluginPanel()
     mActiveWidgetInPanel = Q_NULLPTR;
 }
 
+#ifdef SAK_IMPORT_MODULE_PLUGIN
 void SAKDebuggerPlugins::loadPlugin(QMenu *menu, QMenu *embedMenu)
 {
     clearPlugins(mPluginActionVector);
@@ -288,7 +288,9 @@ void SAKDebuggerPlugins::loadPlugin(QMenu *menu, QMenu *embedMenu)
         }
     }
 }
+#endif
 
+#ifdef SAK_IMPORT_MODULE_PLUGIN
 void SAKDebuggerPlugins::addPluginToMenu(QMenu *menu,
                                          QString name, QWidget *ui,
                                          bool embed)
@@ -328,7 +330,9 @@ void SAKDebuggerPlugins::addPluginToMenu(QMenu *menu,
         }
     });
 }
+#endif
 
+#ifdef SAK_IMPORT_MODULE_PLUGIN
 void SAKDebuggerPlugins::clearPlugins(QVector<QAction*> &actionVector)
 {
     while (actionVector.count()) {
@@ -348,3 +352,4 @@ void SAKDebuggerPlugins::clearPlugins(QVector<QAction*> &actionVector)
         action->deleteLater();
     }
 }
+#endif
