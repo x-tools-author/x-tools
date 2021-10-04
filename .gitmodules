@@ -4,3 +4,6 @@
 [submodule "3rd/QtUsb"]
 	path = 3rd/QtUsb
 	url = https://gitee.com/qsak/QtUsb.git
+[submodule "src/debuggers/debugger/plugins/plugin"]
+	path = src/debuggers/debugger/plugins/plugin
+	url = https://gitee.com/qsak/plugin.git
