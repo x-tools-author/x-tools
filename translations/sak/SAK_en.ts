@@ -981,7 +981,7 @@
     </message>
     <message>
         <location filename="../../src/debuggers/debugger/SAKDebugger.ui" line="269"/>
-        <source>Readme</source>
+        <source>AboutPlugin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1669,32 +1669,32 @@
 <context>
     <name>SAKDebuggerPlugins</name>
     <message>
-        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="74"/>
+        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="81"/>
         <source>Embed to Center</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="76"/>
+        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="83"/>
         <source>Cancel Embedding</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="86"/>
+        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="93"/>
         <source>Transponders</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="89"/>
+        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="96"/>
         <source>Timed Sending</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="92"/>
+        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="99"/>
         <source>Automatically Response</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="111"/>
+        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="141"/>
         <source>Reload All</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4446,12 +4446,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SAKUdpClientDevice</name>
     <message>
-        <location filename="../../src/debuggers/udp/client/SAKUdpClientDevice.cc" line="65"/>
+        <location filename="../../src/debuggers/udp/client/SAKUdpClientDevice.cc" line="66"/>
         <source>Binding failed:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/udp/client/SAKUdpClientDevice.cc" line="77"/>
+        <location filename="../../src/debuggers/udp/client/SAKUdpClientDevice.cc" line="78"/>
         <source>Open device failed:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4843,7 +4843,7 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">Connecting error: %1</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/websocket/client/SAKWebSocketClientDevice.cc" line="64"/>
+        <location filename="../../src/debuggers/websocket/client/SAKWebSocketClientDevice.cc" line="65"/>
         <source>error code:</source>
         <translation type="unfinished"></translation>
     </message>

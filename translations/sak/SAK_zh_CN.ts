@@ -930,8 +930,12 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../../src/debuggers/debugger/SAKDebugger.ui" line="269"/>
-        <source>Readme</source>
+        <source>AboutPlugin</source>
         <translation>关于插件</translation>
+    </message>
+    <message>
+        <source>Readme</source>
+        <translation type="vanished">关于插件</translation>
     </message>
     <message>
         <location filename="../../src/debuggers/debugger/SAKDebugger.ui" line="281"/>
@@ -1618,32 +1622,32 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SAKDebuggerPlugins</name>
     <message>
-        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="74"/>
+        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="81"/>
         <source>Embed to Center</source>
         <translation>嵌入至主窗口</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="76"/>
+        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="83"/>
         <source>Cancel Embedding</source>
         <translation>取消嵌入</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="86"/>
+        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="93"/>
         <source>Transponders</source>
         <translation>数据转发</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="89"/>
+        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="96"/>
         <source>Timed Sending</source>
         <translation>定时发送</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="92"/>
+        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="99"/>
         <source>Automatically Response</source>
         <translation>自动应答</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="111"/>
+        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="141"/>
         <source>Reload All</source>
         <translation>重新加载全部插件</translation>
     </message>
@@ -4117,12 +4121,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SAKUdpClientDevice</name>
     <message>
-        <location filename="../../src/debuggers/udp/client/SAKUdpClientDevice.cc" line="65"/>
+        <location filename="../../src/debuggers/udp/client/SAKUdpClientDevice.cc" line="66"/>
         <source>Binding failed:</source>
         <translation>绑定失败：</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/udp/client/SAKUdpClientDevice.cc" line="77"/>
+        <location filename="../../src/debuggers/udp/client/SAKUdpClientDevice.cc" line="78"/>
         <source>Open device failed:</source>
         <translation>打开设备失败：</translation>
     </message>
@@ -4457,7 +4461,7 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">链接已被断开。</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/websocket/client/SAKWebSocketClientDevice.cc" line="64"/>
+        <location filename="../../src/debuggers/websocket/client/SAKWebSocketClientDevice.cc" line="65"/>
         <source>error code:</source>
         <translation>错误代码：</translation>
     </message>
