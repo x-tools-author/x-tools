@@ -11,6 +11,7 @@
 #include <QMenu>
 #include <QDebug>
 #include <QJsonObject>
+#include <QDesktopServices>
 #include <QCoreApplication>
 
 #include "SAKMainWindow.hh"
@@ -19,7 +20,7 @@
 #include "SAKDebuggerPlugin.hh"
 #endif
 
-SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *managerBt,
+SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
                                        QPushButton *menuBt,
                                        QSettings *settings,
                                        const QString &settingsGroup,
@@ -44,15 +45,9 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *managerBt,
     mPanelWidget->setHidden(true);
 
     // Go to a web page.
-    if (managerBt) {
-        mManager = new SAKDebuggerPluginsManager();
-        //mManager->setWindowModality(Qt::ApplicationModal);
-        connect(managerBt, &QPushButton::clicked, this, [=](){
-            if (mManager->isHidden()) {
-                mManager->show();
-            } else {
-                mManager->activateWindow();
-            }
+    if (readmeBt) {
+        connect(readmeBt, &QPushButton::clicked, this, [=]() {
+            QDesktopServices::openUrl(QUrl("https://gitee.com/qsak/plugin"));
         });
     }
 

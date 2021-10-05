@@ -19,7 +19,6 @@
 #include <QSqlDatabase>
 #include <QPluginLoader>
 
-#include "SAKDebuggerPluginsManager.hh"
 #include "SAKDebuggerPluginTransponders.hh"
 #include "SAKDebuggerPluginAutoResponse.hh"
 #include "SAKDebuggerPluginTimedSending.hh"
@@ -28,7 +27,7 @@ class SAKDebuggerPlugins : public QObject
 {
     Q_OBJECT
 public:
-    explicit SAKDebuggerPlugins(QPushButton *managerBt,
+    explicit SAKDebuggerPlugins(QPushButton *readmeBt,
                                 QPushButton *menuBt,
                                 QSettings *settings,
                                 const QString &settingsGroup,
@@ -38,7 +37,6 @@ public:
                                 QObject *parent = Q_NULLPTR);
     ~SAKDebuggerPlugins();
 private:
-    SAKDebuggerPluginsManager *mManager;
     SAKDebuggerPluginTransponders *mTransponders;
     SAKDebuggerPluginAutoResponse *mAutoResponse;
     SAKDebuggerPluginTimedSending *mTimedSending;
