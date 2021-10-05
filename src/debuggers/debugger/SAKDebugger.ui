@@ -264,9 +264,9 @@
     </widget>
    </item>
    <item row="10" column="0">
-    <widget class="QPushButton" name="managerPushButton">
+    <widget class="QPushButton" name="readmePushButton">
      <property name="text">
-      <string>Manager</string>
+      <string>AboutPlugin</string>
      </property>
     </widget>
    </item>
