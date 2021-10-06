@@ -3783,11 +3783,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="104"/>
-        <source>Just for debugging</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="111"/>
         <source>Generate data circularly</source>
         <translation type="unfinished"></translation>

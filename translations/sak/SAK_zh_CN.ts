@@ -3675,9 +3675,8 @@ p, li { white-space: pre-wrap; }
         <translation>打开设备失败</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="104"/>
         <source>Just for debugging</source>
-        <translation>仅用于测试</translation>
+        <translation type="vanished">仅用于测试</translation>
     </message>
     <message>
         <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="111"/>
