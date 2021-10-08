@@ -136,6 +136,7 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
         mPanelWidget->hide();
     }
 
+#ifndef Q_OS_ANDROID
 #ifdef SAK_IMPORT_MODULE_PLUGIN
     menu->addSeparator();
     menu->addAction(tr("Reload All"), this, [=](){
@@ -143,6 +144,7 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
     });
 
     loadPlugin(menu, embedMenu);
+#endif
 #endif
 }
 
