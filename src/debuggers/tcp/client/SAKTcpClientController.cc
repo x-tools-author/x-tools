@@ -113,6 +113,7 @@ QVariant SAKTcpClientController::parametersContext()
     parameters.specifyClientAddressAndPort = mSpecifyClientAddressAndPort->isChecked();
     parameters.serverHost = mServerHostLineEdit->text();
     parameters.serverPort = mServerPortLineEdit->text().toInt();
+    parameters.allowAutomaticConnection = mUi->automaticConnectionCheckBox->isChecked();
     mParametersMutex.unlock();
     return QVariant::fromValue(parameters);
 }
