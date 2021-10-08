@@ -233,7 +233,7 @@ void SAKDebugger::initDebuggerOutout()
 
 void SAKDebugger::initDebuggerInput()
 {
-    connect(mModuleInput, &SAKDebuggerInput::invokeWriteBytes,
+    connect(mModuleInput, &SAKDebuggerInput::invokeWriteCookedBytes,
             mModuleDevice, &SAKDebuggerDevice::writeBytes, Qt::QueuedConnection);
 }
 
@@ -245,6 +245,8 @@ void SAKDebugger::initDebuggerPlugin()
             mModulePlugins, &SAKDebuggerPlugins::bytesWritten);
     connect(mModulePlugins, &SAKDebuggerPlugins::invokeWriteCookedBytes,
             mModuleDevice, &SAKDebuggerDevice::writeBytes);
+    connect(mModulePlugins, &SAKDebuggerPlugins::invokeWriteRawBytes,
+            mModuleInput, &SAKDebuggerInput::oninvokeWriteRawBytes);
 }
 
 void SAKDebugger::commonSqlApiUpdateRecord(QSqlQuery *sqlQuery,

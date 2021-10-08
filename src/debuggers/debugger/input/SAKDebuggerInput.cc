@@ -120,6 +120,11 @@ void SAKDebuggerInput::updateUiState(bool deviceIsOpened)
     }
 }
 
+void SAKDebuggerInput::oninvokeWriteRawBytes(const QString &rawBytes)
+{
+    writeString(rawBytes);
+}
+
 void SAKDebuggerInput::run()
 {
     auto takeBytesInfo =
@@ -177,13 +182,19 @@ void SAKDebuggerInput::run()
         }
     }
 
-    emit invokeWriteBytes(cookedData);
+    emit invokeWriteCookedBytes(cookedData);
 }
 
 void SAKDebuggerInput::writeBytes()
 {
-    auto inputParametersTemp = mInputParameters;
     QString rawData = mInputComboBox->currentText();
+    writeString(rawData);
+}
+
+void SAKDebuggerInput::writeString(const QString &data)
+{
+    auto inputParametersTemp = mInputParameters;
+    QString rawData = data;
     if (rawData.isEmpty()) {
         inputParametersTemp.textFormat = SAKCommonDataStructure::InputFormatAscii;
         rawData = QString("(empty)");
