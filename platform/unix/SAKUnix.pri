@@ -1,5 +1,5 @@
-# You should download linuxdeployqt from https://gitee.com/qsak/linuxdeployqt and then rename it to "linuxdeployqt" and add it to path.
-# Also, You should download appimagetool from https://gitee.com/qsak/AppImageKit and then rename it to "appimagetool" and add it to path.
+# You should download linuxdeployqt from https://github.com/probonopd/linuxdeployqt/releases then rename it to "linuxdeployqt" and add it to path.
+# Also, You should download appimagetool from https://github.com/AppImage/AppImageKit/releases then rename it to "appimagetool" and add it to path.
 # They (linuxdeployqt and appimagetool) must be know by QtCreator if you use QtCreator to build the project.
 # The script will be executed after adding qmake parameter CONFIG+=SAKLinuxDeployQt.
 SAKLinuxDeployQt {
