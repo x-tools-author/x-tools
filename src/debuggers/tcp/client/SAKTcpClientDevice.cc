@@ -90,6 +90,10 @@ bool SAKTcpClientDevice::initialize()
         return false;
     }
 
+    connect(mTcpSocket, &QTcpSocket::disconnected, this, [=](){
+        emit errorOccurred(QString("Connection has been closed!"));
+    });
+
     return true;
 }
 
