@@ -73,6 +73,9 @@ void SAKTcpServerController::updateUiState(bool opened)
 {
     mServerHostComboBox->setEnabled(!opened);
     mServerPortLineEdit->setEnabled(!opened);
+    if (!opened) {
+        mClientHostComboBox->clear();
+    }
 }
 
 void SAKTcpServerController::refreshDevice()

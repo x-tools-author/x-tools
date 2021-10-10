@@ -107,6 +107,10 @@ QByteArray SAKTcpServerDevice::write(const QByteArray &bytes)
 
 void SAKTcpServerDevice::uninitialize()
 {
+    for (int i = 0; i < mClientList.count(); i++) {
+        auto socket = mClientList.at(i);
+        disconnect(socket, Q_NULLPTR, Q_NULLPTR, Q_NULLPTR);
+    }
     mTcpServer->close();
     delete mTcpServer;
     mTcpServer = Q_NULLPTR;
