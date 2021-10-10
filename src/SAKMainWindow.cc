@@ -360,8 +360,8 @@ void SAKMainWindow::initLanguageMenu()
     QMenu *languageMenu = new QMenu(tr("&Languages"), this);
     menuBar()->addMenu(languageMenu);
 
-    QString language =
-            sakApp->settings()->value(sakApp->settingsKeyContext()->language).toString();
+    QString key = sakApp->settingsKeyContext()->language;
+    QString language = sakApp->settings()->value(key).toString();
 
     QFile file(":/translations/sak/Translations.json");
     file.open(QFile::ReadOnly);
