@@ -857,17 +857,15 @@ void SAKMainWindow::activePage()
 
 void SAKMainWindow::installLanguage()
 {
-    if (sender()){
-        if (sender()->inherits("QAction")){
+    if (sender()) {
+        if (sender()->inherits("QAction")) {
             QAction *action = reinterpret_cast<QAction*>(sender());
             action->setChecked(true);
 
             QString language = action->objectName();
             QString name = action->data().toString();
-            sakApp->settings()->setValue(sakApp->settingsKeyContext()->language,
-                                         QVariant::fromValue(
-                                             QString(language + "-" + name))
-                                         );
+            mSettings->setValue(sakApp->settingsKeyContext()->language,
+                                QVariant::fromValue(QString(language + "-" + name)));
             qobject_cast<SAKApplication*>(qApp)->installLanguage();
             rebootRequestion();
         }
@@ -878,7 +876,7 @@ void SAKMainWindow::openDebugPageWidget()
 {
     // The function must be called by signal of QAction
     QWidget *widget = debugPage(sender());
-    if (widget){
+    if (widget) {
         widget->setParent(Q_NULLPTR);
         widget->show();
         appendWindowAction(widget);
@@ -889,7 +887,7 @@ void SAKMainWindow::appendRemovablePage()
 {
     // The function must be called by signal of QAction
     QWidget *widget = debugPage(sender());
-    if (widget){
+    if (widget) {
         mTabWidget->addTab(widget, widget->windowTitle());
         appendWindowAction(widget);
     }
@@ -899,7 +897,7 @@ QWidget *SAKMainWindow::debugPageFromDebugPageType(int type)
 {
     QWidget *widget = Q_NULLPTR;
     QMetaEnum metaEnum = QMetaEnum::fromType<SAKEnumDebugPageType>();
-    for (auto &var : mDebugPageMetaInfoList){
+    for (auto &var : mDebugPageMetaInfoList) {
         if (var.debugPageType == type){
             for (int i = 0; i < metaEnum.keyCount(); i++){
                 if (var.debugPageType == metaEnum.value(i)){
