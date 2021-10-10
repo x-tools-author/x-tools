@@ -142,11 +142,15 @@ void SAKApplication::installLanguage()
 {
     QString language = mSettings->value(mSettingsKeyContext.language).toString();
     QString qmName;
-    if (language.isEmpty()){
+    if (language.isEmpty()) {
         if (QLocale().country() == QLocale::China){
             qmName = QString("zh_CN");
+            mSettings->setValue(mSettingsKeyContext.language,
+                                QString("zh_CN-简体中文"));
         }else{
             qmName = QString("en");
+            mSettings->setValue(mSettingsKeyContext.language,
+                                QString("en-English"));
         }
     }else{
         qmName = language.split('-').first();
