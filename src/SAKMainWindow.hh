@@ -49,9 +49,6 @@ public:
 #ifdef SAK_IMPORT_HID_MODULE
         DebugPageTypeHID,
 #endif
-#ifdef SAK_IMPORT_USB_MODULE
-        DebugPageTypeUSB,
-#endif
 #ifdef SAK_IMPORT_MODULE_UDP
 #ifdef SAK_IMPORT_MODULE_UDP_CLIENT
         DebugPageTypeUdpClient,
@@ -67,21 +64,6 @@ public:
 #ifdef SAK_IMPORT_MODULE_TCP_SERVER
         DebugPageTypeTCPServer,
 #endif
-#endif
-#ifdef SAK_IMPORT_MODULE_SSLSOCKET
-        DebugPageTypeSslSocketClient,
-        DebugPageTypeSslSocketServer,
-#endif
-#ifdef SAK_IMPORT_SCTP_MODULE
-        DebugPageTypeSCTPClient,
-        DebugPageTypeSCTPServer,
-#endif
-#ifdef SAK_IMPORT_MODULE_BLUETOOTH
-        DebugPageTypeBluetoothClient,
-        DebugPageTypeBluetoothServer,
-#endif
-#ifdef SAK_IMPORT_MODULE_BLE
-        DebugPageTypeBluetoothLowEnergy,
 #endif
 #ifdef SAK_IMPORT_MODULE_WEBSOCKET
 #ifdef SAK_IMPORT_MODULE_WEBSOCKET_CLIENT
