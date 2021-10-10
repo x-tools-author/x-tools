@@ -79,10 +79,6 @@
 #ifdef SAK_IMPORT_MODULE_SERIALPORT
 #include "SAKSerialPortDebugger.hh"
 #endif
-#ifdef SAK_IMPORT_MODULE_BLUETOOTH
-#include "SAKBluetoothClientDebugPage.hh"
-#include "SAKBluetoothServerDebugPage.hh"
-#endif
 #ifdef SAK_IMPORT_MODULE_WEBSOCKET
 #ifdef SAK_IMPORT_MODULE_WEBSOCKET_CLIENT
 #include "SAKWebSocketClientDebugger.hh"
@@ -90,9 +86,6 @@
 #ifdef SAK_IMPORT_MODULE_WEBSOCKET_SERVER
 #include "SAKWebSocketServerDebugger.hh"
 #endif
-#endif
-#ifdef SAK_IMPORT_MODULE_BLE
-#include "SAKBluetoothLowEnergyDebugPage.hh"
 #endif
 
 #include "ui_SAKMainWindow.h"
