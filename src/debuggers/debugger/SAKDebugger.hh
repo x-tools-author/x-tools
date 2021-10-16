@@ -53,6 +53,7 @@ public:
                 QSqlDatabase *sqlDatabase,
                 QWidget *parent = Q_NULLPTR);
     ~SAKDebugger();
+    void setStatisticsWidgetHiden(bool hiden);
 protected:
     /**
      * @brief createDevice: Get the device instance, the device will be destroy when

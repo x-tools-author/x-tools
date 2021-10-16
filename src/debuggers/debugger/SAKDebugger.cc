@@ -134,6 +134,10 @@ SAKDebugger::SAKDebugger(QSettings *settings,
             }
         }
     });
+
+#ifdef Q_OS_ANDROID
+    setStatisticsWidgetHiden(true);
+#endif
 }
 
 SAKDebugger::~SAKDebugger()
@@ -146,6 +150,11 @@ SAKDebugger::~SAKDebugger()
         }
         mModuleDevice->deleteLater();
     }
+}
+
+void SAKDebugger::setStatisticsWidgetHiden(bool hiden)
+{
+    mUi->statisticsWidget->setHidden(hiden);
 }
 
 void SAKDebugger::initDebugger()
