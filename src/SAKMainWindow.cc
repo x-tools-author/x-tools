@@ -209,6 +209,7 @@ void SAKMainWindow::initMenuBar()
     initLanguageMenu();
     initLinksMenu();
     initDemoMenu();
+    initUserMenu();
     initHelpMenu();
 }
 
@@ -519,6 +520,12 @@ void SAKMainWindow::initDemoMenu()
             QDesktopServices::openUrl(QUrl(sender()->objectName()));
         });
     }
+}
+
+void SAKMainWindow::initUserMenu()
+{
+    QMenu *demoMenu = new QMenu(tr("&User"), this);
+    menuBar()->addMenu(demoMenu);
 }
 
 void SAKMainWindow::aboutQsak()

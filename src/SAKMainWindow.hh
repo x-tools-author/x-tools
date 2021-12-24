@@ -116,7 +116,7 @@ private:
     QSqlDatabase *mSqlDatabase;
     QActionGroup *mActionGroup;
     QActionGroup *mLanguagesActionGroup;
-private: 
+private:
     void initMenuBar();
     void initFileMenu();
     void initToolMenu();
@@ -126,6 +126,7 @@ private:
     void initHelpMenu();
     void initLinksMenu();
     void initDemoMenu();
+    void initUserMenu();
 
     void aboutQsak();
     void removeRemovableDebugPage(int index);
