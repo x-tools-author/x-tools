@@ -7,3 +7,6 @@
 [submodule "src/debuggers/debugger/plugins/plugin"]
 	path = src/debuggers/debugger/plugins/plugin
 	url = https://gitee.com/qsak/plugin.git
+[submodule "private/user"]
+	path = private/user
+	url = https://gitee.com/qsak/user.git
