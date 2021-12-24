@@ -1,6 +1,5 @@
 *.user
 *.user.*
 build*
-private
 /SAKCustomConfigure.pri
 out
