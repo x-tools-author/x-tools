@@ -1,14 +1,14 @@
 version: '1.0'
-name: pipeline-20211228
-displayName: pipeline-20211228
+name: master-build
+displayName: master-build
 triggers:
   push:
     branches:
       prefix:
-        - ''
+        - master
 stages:
-  - name: stage-81c60419
-    displayName: 未命名
+  - name: stage-a21cf0ec
+    displayName: Hello
     strategy: naturally
     trigger: auto
     executor: []
