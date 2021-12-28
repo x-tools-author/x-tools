@@ -17,11 +17,7 @@ stages:
         name: execute_shell
         displayName: Shell 脚本执行
         hostGroupID: gitee-go
-        script: |-
-          cd ~/gitee_go/deploy
-          tar -zxvf output.tar.gz
-          ls
-          echo 'Hello Gitee!'
+        script: echo 'Hello Gitee!'
 permissions:
   - role: admin
     members: []
