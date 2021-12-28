@@ -1,0 +1,24 @@
+version: '1.0'
+name: master-build
+displayName: master-build
+triggers:
+  push:
+    branches:
+      prefix:
+        - master
+stages:
+  - name: stage-a21cf0ec
+    displayName: Hello
+    strategy: naturally
+    trigger: auto
+    executor: []
+    steps:
+      - step: shell@agent
+        name: execute_shell
+        displayName: Shell 脚本执行
+        hostGroupID: gitee-go
+        script: echo 'Hello Gitee!'
+permissions:
+  - role: admin
+    members:
+      - qsaker
