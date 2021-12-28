@@ -857,7 +857,7 @@ p, li { white-space: pre-wrap; }
     <name>SAKDebugger</name>
     <message>
         <location filename="../../src/debuggers/debugger/SAKDebugger.ui" line="20"/>
-        <location filename="../../src/debuggers/debugger/SAKDebugger.cc" line="213"/>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.cc" line="222"/>
         <source>Open</source>
         <translation>打开</translation>
     </message>
@@ -983,22 +983,22 @@ p, li { white-space: pre-wrap; }
         <translation>刷新设备</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/SAKDebugger.cc" line="208"/>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.cc" line="217"/>
         <source>Close</source>
         <translation>关闭设备</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/SAKDebugger.cc" line="293"/>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.cc" line="304"/>
         <source>Clear Data</source>
         <translation>清空数据</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/SAKDebugger.cc" line="294"/>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.cc" line="305"/>
         <source>All Data Items Will Be Deleted!</source>
         <translation>所有数据将会被删除！</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/SAKDebugger.cc" line="296"/>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.cc" line="307"/>
         <source>Are you sure you want to do this?</source>
         <translation>确定要执行操作吗？</translation>
     </message>
@@ -1091,72 +1091,72 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SAKDebuggerInput</name>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="276"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="287"/>
         <source>Forbidden</source>
         <translation>不允许</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="277"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="288"/>
         <source>ms</source>
         <translation>毫秒</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="352"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="363"/>
         <source>More input settings</source>
         <translation>更多输入设置</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="410"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="421"/>
         <source>Quick Sending</source>
         <translation>快速发送</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="416"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="427"/>
         <source>Data Preset</source>
         <translation>数据预设</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="427"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="438"/>
         <source>Suffixs</source>
         <translation>后缀</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="439"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="450"/>
         <source>(None)</source>
         <translation>（无）</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="455"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="466"/>
         <source>Save Input</source>
         <translation>保存输入</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="462"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="473"/>
         <source>Save File</source>
         <translation>保存文件</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="464"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="475"/>
         <source>txt (*.txt);;all (*.*)</source>
         <translation>文本类型 (*.txt);;所有类型 (*.*)</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="485"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="496"/>
         <source>Clear Input</source>
         <translation>清空输入</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="492"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="503"/>
         <source>CRC Settings</source>
         <translation>CRC设置</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="504"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="515"/>
         <source>Enable Sending Record</source>
         <translation>允许记录发送历史</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="540"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="551"/>
         <source>Preset Data</source>
         <translation>预设数据</translation>
     </message>
@@ -1647,7 +1647,7 @@ p, li { white-space: pre-wrap; }
         <translation>自动应答</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="141"/>
+        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="142"/>
         <source>Reload All</source>
         <translation>重新加载全部插件</translation>
     </message>
@@ -1769,7 +1769,7 @@ p, li { white-space: pre-wrap; }
         <translation>MainWindow</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="138"/>
+        <location filename="../../src/SAKMainWindow.cc" line="135"/>
         <source>Qt Swiss Army Knife</source>
         <translation>瑞士军刀·开发调试工具集</translation>
     </message>
@@ -1834,12 +1834,12 @@ p, li { white-space: pre-wrap; }
         <translation>链接(&amp;L)</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="543"/>
+        <location filename="../../src/SAKMainWindow.cc" line="570"/>
         <source>Version</source>
         <translation>软件版本</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="544"/>
+        <location filename="../../src/SAKMainWindow.cc" line="571"/>
         <source>Author</source>
         <translation>软件作者</translation>
     </message>
@@ -1852,12 +1852,12 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">发布地址</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="545"/>
+        <location filename="../../src/SAKMainWindow.cc" line="572"/>
         <source>Email</source>
         <translation>电子邮箱</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="546"/>
+        <location filename="../../src/SAKMainWindow.cc" line="573"/>
         <source>QQ</source>
         <translation>联系作者</translation>
     </message>
@@ -1912,13 +1912,13 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../../src/SAKMainWindow.cc" line="451"/>
-        <location filename="../../src/SAKMainWindow.cc" line="738"/>
+        <location filename="../../src/SAKMainWindow.cc" line="765"/>
         <source>Release History</source>
         <translation>发布历史</translation>
     </message>
     <message>
         <location filename="../../src/SAKMainWindow.cc" line="457"/>
-        <location filename="../../src/SAKMainWindow.cc" line="815"/>
+        <location filename="../../src/SAKMainWindow.cc" line="842"/>
         <source>QR Code</source>
         <translation>扫码入群</translation>
     </message>
@@ -1955,7 +1955,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../src/SAKMainWindow.cc" line="507"/>
         <source>&amp;Demo</source>
-        <translation>示例(&amp;F)</translation>
+        <translation type="unfinished">示例(&amp;D)</translation>
     </message>
     <message>
         <location filename="../../src/SAKMainWindow.cc" line="516"/>
@@ -1963,92 +1963,132 @@ p, li { white-space: pre-wrap; }
         <translation>Qt串口小助手</translation>
     </message>
     <message>
+        <location filename="../../src/SAKMainWindow.cc" line="534"/>
+        <source>&amp;User</source>
+        <translation>用户(&amp;U)</translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="544"/>
+        <source>Sign up</source>
+        <translation>注册</translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="545"/>
+        <source>Sign in</source>
+        <translation>登录</translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="546"/>
+        <source>Update password</source>
+        <translation>更新密码</translation>
+    </message>
+    <message>
         <location filename="../../src/SAKMainWindow.cc" line="547"/>
+        <source>Reset password</source>
+        <translation>重置密码</translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="548"/>
+        <source>User informations</source>
+        <translation>用户信息</translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="549"/>
+        <source>Register the software</source>
+        <translation>注册软件</translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="550"/>
+        <source>Destroy account</source>
+        <translation>注销账号</translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="574"/>
         <source>QQ Group</source>
         <translation>技术交流</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="548"/>
+        <location filename="../../src/SAKMainWindow.cc" line="575"/>
         <source>Build Time</source>
         <translation>构建信息</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="549"/>
+        <location filename="../../src/SAKMainWindow.cc" line="576"/>
         <source>Copyright</source>
         <translation>版权声明</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="549"/>
+        <location filename="../../src/SAKMainWindow.cc" line="576"/>
         <source>Copyright 2018-%1 Qter. All rights reserved.</source>
         <translation>版权声明 2018-%1 Qter。保留所有版权。</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="551"/>
+        <location filename="../../src/SAKMainWindow.cc" line="578"/>
         <source>Gitee Url</source>
         <translation>码云仓库</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="553"/>
+        <location filename="../../src/SAKMainWindow.cc" line="580"/>
         <source>Gitbub Url</source>
         <translation>GitHub仓库</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="557"/>
+        <location filename="../../src/SAKMainWindow.cc" line="584"/>
         <source>About QSAK</source>
         <translation>关于瑞士军刀</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="637"/>
+        <location filename="../../src/SAKMainWindow.cc" line="664"/>
         <source>Test</source>
         <translation>数据测试</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="643"/>
+        <location filename="../../src/SAKMainWindow.cc" line="670"/>
         <source>COM</source>
         <translation>串口调试</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="647"/>
+        <location filename="../../src/SAKMainWindow.cc" line="674"/>
         <source>HID</source>
         <translation>HID调试</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="650"/>
+        <location filename="../../src/SAKMainWindow.cc" line="677"/>
         <source>USB</source>
         <translation>USB调试</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="657"/>
+        <location filename="../../src/SAKMainWindow.cc" line="684"/>
         <source>UdpClient</source>
         <translation>UDP客户端</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="663"/>
+        <location filename="../../src/SAKMainWindow.cc" line="690"/>
         <source>UdpServer</source>
         <translation>UDP服务器</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="671"/>
+        <location filename="../../src/SAKMainWindow.cc" line="698"/>
         <source>TcpClient</source>
         <translation>TCP客户端</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="677"/>
+        <location filename="../../src/SAKMainWindow.cc" line="704"/>
         <source>TcpServer</source>
         <translation>TCP服务器</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="693"/>
+        <location filename="../../src/SAKMainWindow.cc" line="720"/>
         <source>BLE</source>
         <translation>BLE</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="700"/>
+        <location filename="../../src/SAKMainWindow.cc" line="727"/>
         <source>WsClient</source>
         <translation>WebSocket客户端</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="706"/>
+        <location filename="../../src/SAKMainWindow.cc" line="733"/>
         <source>WsServer</source>
         <translation>WebSocket服务器</translation>
     </message>
@@ -2069,32 +2109,32 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">TCP服务器</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="681"/>
+        <location filename="../../src/SAKMainWindow.cc" line="708"/>
         <source>SSL-C</source>
         <translation>SslSocket客户端</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="682"/>
+        <location filename="../../src/SAKMainWindow.cc" line="709"/>
         <source>SSL-S</source>
         <translation>SslSocket服务器</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="685"/>
+        <location filename="../../src/SAKMainWindow.cc" line="712"/>
         <source>SCTP-C</source>
         <translation>SCTP客户端</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="686"/>
+        <location filename="../../src/SAKMainWindow.cc" line="713"/>
         <source>SCTP-S</source>
         <translation>SCTP服务器</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="689"/>
+        <location filename="../../src/SAKMainWindow.cc" line="716"/>
         <source>BT-C</source>
         <translation>蓝牙客户端</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="690"/>
+        <location filename="../../src/SAKMainWindow.cc" line="717"/>
         <source>BT-S</source>
         <translation>蓝牙服务器</translation>
     </message>
@@ -2115,7 +2155,7 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">WebSocket服务器</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="713"/>
+        <location filename="../../src/SAKMainWindow.cc" line="740"/>
         <source>Modbus</source>
         <translation>Modbus</translation>
     </message>
@@ -2124,22 +2164,22 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">Modbus Rtu</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="722"/>
+        <location filename="../../src/SAKMainWindow.cc" line="749"/>
         <source>File Assistant</source>
         <translation>文件助手</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="726"/>
+        <location filename="../../src/SAKMainWindow.cc" line="753"/>
         <source>CRC Assistant</source>
         <translation>CRC助手</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="729"/>
+        <location filename="../../src/SAKMainWindow.cc" line="756"/>
         <source>Float Assistant</source>
         <translation>浮点数助手</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="732"/>
+        <location filename="../../src/SAKMainWindow.cc" line="759"/>
         <source>String Assistant</source>
         <translation>字符串助手</translation>
     </message>
@@ -2148,37 +2188,37 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">二维码助手</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="760"/>
+        <location filename="../../src/SAKMainWindow.cc" line="787"/>
         <source>Edit Page Name</source>
         <translation>编辑页面名称</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="762"/>
+        <location filename="../../src/SAKMainWindow.cc" line="789"/>
         <source>Please input the name of tab page</source>
         <translation>请输入标签或窗口名称</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="763"/>
+        <location filename="../../src/SAKMainWindow.cc" line="790"/>
         <source>Tab page name</source>
         <translation>请输入名称</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="766"/>
+        <location filename="../../src/SAKMainWindow.cc" line="793"/>
         <source>OK</source>
         <translation>确定</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="767"/>
+        <location filename="../../src/SAKMainWindow.cc" line="794"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="823"/>
+        <location filename="../../src/SAKMainWindow.cc" line="850"/>
         <source>User QQ Group</source>
         <translation>用户交流群</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="825"/>
+        <location filename="../../src/SAKMainWindow.cc" line="852"/>
         <source>Qt QQ Group</source>
         <translation>技术交流群</translation>
     </message>
@@ -2187,12 +2227,12 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">业务合作</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="622"/>
+        <location filename="../../src/SAKMainWindow.cc" line="649"/>
         <source>Reboot application to effective</source>
         <translation>重启生效</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="623"/>
+        <location filename="../../src/SAKMainWindow.cc" line="650"/>
         <source>Need to reboot, reboot to effective now?</source>
         <translation>软件需要重启生效，现在重启？</translation>
     </message>
@@ -4415,6 +4455,490 @@ p, li { white-space: pre-wrap; }
         <location filename="../../src/update/SAKUpdateManager.cc" line="215"/>
         <source>Source</source>
         <translation>源码</translation>
+    </message>
+</context>
+<context>
+    <name>SAKUserBuy</name>
+    <message>
+        <location filename="../../private/user/src/SAKUserBuy.ui" line="14"/>
+        <source>Pay for the Application</source>
+        <translation>购买软件</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserBuy.ui" line="60"/>
+        <source>You have paied for this software</source>
+        <translation>你已经购买该软件</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserBuy.ui" line="70"/>
+        <source>You should pay PRICE, please pay with WeChat</source>
+        <translation>你应该支付PRICE，请使用微信支付</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserBuy.ui" line="134"/>
+        <source>Refresh</source>
+        <translation>刷新二维码</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserBuy.ui" line="159"/>
+        <source>You had been payed for the application.</source>
+        <translation>你已经购买该软件。</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserBuy.cc" line="40"/>
+        <source>Buy successfully, thank you.</source>
+        <translation>购买成功，谢谢。</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserBuy.cc" line="83"/>
+        <source>Register application %1! </source>
+        <translation>注册软件%1! </translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserBuy.cc" line="83"/>
+        <source>successfully</source>
+        <translation>成功</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserBuy.cc" line="83"/>
+        <source>failed</source>
+        <translation>失败</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserBuy.cc" line="86"/>
+        <source>You have been register the application, thank you.</source>
+        <translation>已经成功注册该软件，谢谢。</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserBuy.cc" line="89"/>
+        <source>You can try again or contact to the author.</source>
+        <translation>你可以稍后再试或联系软件作者。</translation>
+    </message>
+</context>
+<context>
+    <name>SAKUserDestroy</name>
+    <message>
+        <location filename="../../private/user/src/SAKUserDestroy.ui" line="14"/>
+        <source>Destroy Account</source>
+        <translation>注销用户</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserDestroy.ui" line="20"/>
+        <source>Apply</source>
+        <translation>申请验证码</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserDestroy.ui" line="43"/>
+        <source>Password</source>
+        <translation>密码</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserDestroy.ui" line="85"/>
+        <source>Destroy</source>
+        <translation>注销</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserDestroy.ui" line="102"/>
+        <source>Verification code</source>
+        <translation>验证码</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserDestroy.ui" line="109"/>
+        <source>Account</source>
+        <translation>账号</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserDestroy.cc" line="51"/>
+        <source>You account has been destroyed!</source>
+        <translation>你的账号已被注销！</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserDestroy.cc" line="53"/>
+        <location filename="../../private/user/src/SAKUserDestroy.cc" line="69"/>
+        <source>Destroy account failed!</source>
+        <translation>注销账号失败！</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserDestroy.cc" line="67"/>
+        <source>Destroy account successfully.</source>
+        <translation>注销账号成功。</translation>
+    </message>
+</context>
+<context>
+    <name>SAKUserDialog</name>
+    <message>
+        <location filename="../../private/user/src/SAKUserDialog.cc" line="33"/>
+        <source>Message(%1) response timeout!</source>
+        <translation>消息（%1）应答超时！</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserDialog.cc" line="43"/>
+        <source>Apply</source>
+        <translation>申请验证码</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserDialog.cc" line="48"/>
+        <location filename="../../private/user/src/SAKUserDialog.cc" line="115"/>
+        <source>You can apply again after %1s</source>
+        <translation>%1秒后可再次申请</translation>
+    </message>
+</context>
+<context>
+    <name>SAKUserInformation</name>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.ui" line="14"/>
+        <source>SAKUser</source>
+        <translation>用户信息</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.ui" line="20"/>
+        <source>Account information</source>
+        <translation>账号信息</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.ui" line="26"/>
+        <source>Email</source>
+        <translation>电子邮箱</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.ui" line="36"/>
+        <location filename="../../private/user/src/SAKUserInformation.cc" line="57"/>
+        <source>Update</source>
+        <translation>更新邮箱</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.ui" line="52"/>
+        <source>User information</source>
+        <translation>用户信息</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.ui" line="58"/>
+        <source>UpdateAll</source>
+        <translation>全部更新</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.cc" line="29"/>
+        <source>Nickname</source>
+        <translation>网络昵称</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.cc" line="30"/>
+        <source>Phone</source>
+        <translation>手机号码</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.cc" line="31"/>
+        <source>QQ</source>
+        <translation>QQ</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.cc" line="32"/>
+        <source>WeChat</source>
+        <translation>微信</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.cc" line="33"/>
+        <source>Blog</source>
+        <translation>博客</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.cc" line="34"/>
+        <source>Intel</source>
+        <translation>领英</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.cc" line="35"/>
+        <source>WeiBo</source>
+        <translation>微博</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.cc" line="36"/>
+        <source>Github</source>
+        <translation>GitHub主页</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.cc" line="37"/>
+        <source>Gitee</source>
+        <translation>码云</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.cc" line="38"/>
+        <source>Coding</source>
+        <translation>Coding主页</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.cc" line="39"/>
+        <source>Gitlab</source>
+        <translation>Gitlab主页</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.cc" line="40"/>
+        <source>Description</source>
+        <translation>描述</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.cc" line="112"/>
+        <source>Response timeout!</source>
+        <translation>应答超时！</translation>
+    </message>
+</context>
+<context>
+    <name>SAKUserResetPassword</name>
+    <message>
+        <location filename="../../private/user/src/SAKUserResetPassword.ui" line="14"/>
+        <source>Reset password</source>
+        <translation>重置密码</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserResetPassword.ui" line="20"/>
+        <source>New password</source>
+        <translation>新密码</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserResetPassword.ui" line="33"/>
+        <source>Comfirm password</source>
+        <translation>确认密码</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserResetPassword.ui" line="53"/>
+        <source>Commit</source>
+        <translation>提交</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserResetPassword.ui" line="80"/>
+        <source>Verification code</source>
+        <translation>验证码</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserResetPassword.ui" line="114"/>
+        <source>Account</source>
+        <translation>账号</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserResetPassword.ui" line="121"/>
+        <source>qsaker@outlook.com</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserResetPassword.cc" line="26"/>
+        <source>Please input your password!</source>
+        <translation>请输入密码！</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserResetPassword.cc" line="31"/>
+        <source>Please comfrim your new password!</source>
+        <translation>请再次输入密码！</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserResetPassword.cc" line="36"/>
+        <source>New password and comfirm password are different!</source>
+        <translation>两次输入的密码不一致！</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserResetPassword.cc" line="54"/>
+        <source>Reset password successfully.</source>
+        <translation>重置密码成功。</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserResetPassword.cc" line="56"/>
+        <source>Reset password failed!</source>
+        <translation>重置密码失败！</translation>
+    </message>
+</context>
+<context>
+    <name>SAKUserSignIn</name>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignIn.ui" line="20"/>
+        <source>Sign In</source>
+        <translation>登录</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignIn.ui" line="32"/>
+        <source>Remember account and password</source>
+        <translation>记录账号密码</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignIn.ui" line="45"/>
+        <source>Account</source>
+        <translation>账号</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignIn.ui" line="58"/>
+        <source>SignIn</source>
+        <translation>登录</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignIn.ui" line="65"/>
+        <source>qsaker@outlook.com</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignIn.ui" line="91"/>
+        <source>Password</source>
+        <translation>密码</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignIn.ui" line="98"/>
+        <source>password</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignIn.cc" line="37"/>
+        <source>SigningIn</source>
+        <translation>登录</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignIn.cc" line="87"/>
+        <source>Sign in successfully.</source>
+        <translation>登录成功。</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignIn.cc" line="90"/>
+        <source>Sign in failed: account and(or) password error!</source>
+        <translation>登录失败：账号和（或）密码错误！</translation>
+    </message>
+</context>
+<context>
+    <name>SAKUserSignUp</name>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignUp.ui" line="20"/>
+        <source>Sign Up</source>
+        <translation>注册</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignUp.ui" line="26"/>
+        <location filename="../../private/user/src/SAKUserSignUp.cc" line="37"/>
+        <source>SignUp</source>
+        <translation>注册</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignUp.ui" line="33"/>
+        <source>qsaker@outlook.com</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignUp.ui" line="46"/>
+        <source>Verification code</source>
+        <translation>验证码</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignUp.ui" line="53"/>
+        <location filename="../../private/user/src/SAKUserSignUp.ui" line="112"/>
+        <source>password</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignUp.ui" line="66"/>
+        <source>Confirmation passwrod</source>
+        <translation>确认密码</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignUp.ui" line="92"/>
+        <source>Account</source>
+        <translation>账号</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignUp.ui" line="105"/>
+        <source>Password</source>
+        <translation>密码</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignUp.ui" line="126"/>
+        <source>1024</source>
+        <translation>1024</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignUp.ui" line="133"/>
+        <source>Apply</source>
+        <translation>申请验证码</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignUp.cc" line="26"/>
+        <source>SigningUp</source>
+        <translation>登录中</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignUp.cc" line="35"/>
+        <source>Password error!</source>
+        <translation>密码错误！</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignUp.cc" line="67"/>
+        <source>Sign up successfully.</source>
+        <translation>注册成功。</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignUp.cc" line="70"/>
+        <source>Account has been sign up!</source>
+        <translation>账号已被注册！</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignUp.cc" line="73"/>
+        <source>Unknow error!</source>
+        <translation>位置错误！</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignUp.cc" line="80"/>
+        <source>Verification code has been send.</source>
+        <translation>验证码已发送。</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignUp.cc" line="82"/>
+        <source>Send verification code failed.</source>
+        <translation>发送验证码失败。</translation>
+    </message>
+</context>
+<context>
+    <name>SAKUserUpdatePassword</name>
+    <message>
+        <location filename="../../private/user/src/SAKUserUpdatePassword.ui" line="14"/>
+        <source>Update password</source>
+        <translation>更新密码</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserUpdatePassword.ui" line="20"/>
+        <source>Commit</source>
+        <translation>提交</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserUpdatePassword.ui" line="27"/>
+        <source>New password</source>
+        <translation>新密码</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserUpdatePassword.ui" line="60"/>
+        <source>Origin password</source>
+        <translation>旧密码</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserUpdatePassword.ui" line="87"/>
+        <source>Comfirm new password</source>
+        <translation>确认密码</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserUpdatePassword.cc" line="25"/>
+        <source>Please input your password!</source>
+        <translation>请输入密码！</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserUpdatePassword.cc" line="30"/>
+        <source>Please input your new password!</source>
+        <translation>请输入新密码！</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserUpdatePassword.cc" line="35"/>
+        <source>New password and comfirm password are different!</source>
+        <translation>两次输入的密码不一致！</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserUpdatePassword.cc" line="53"/>
+        <source>Update password successfully.</source>
+        <translation>更新密码成功。</translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserUpdatePassword.cc" line="55"/>
+        <source>Update password failed.</source>
+        <translation>更新密码失败。</translation>
     </message>
 </context>
 <context>

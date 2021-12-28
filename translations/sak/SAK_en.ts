@@ -908,7 +908,7 @@
     <name>SAKDebugger</name>
     <message>
         <location filename="../../src/debuggers/debugger/SAKDebugger.ui" line="20"/>
-        <location filename="../../src/debuggers/debugger/SAKDebugger.cc" line="213"/>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.cc" line="222"/>
         <source>Open</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1030,22 +1030,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/SAKDebugger.cc" line="208"/>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.cc" line="217"/>
         <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/SAKDebugger.cc" line="293"/>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.cc" line="304"/>
         <source>Clear Data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/SAKDebugger.cc" line="294"/>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.cc" line="305"/>
         <source>All Data Items Will Be Deleted!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/SAKDebugger.cc" line="296"/>
+        <location filename="../../src/debuggers/debugger/SAKDebugger.cc" line="307"/>
         <source>Are you sure you want to do this?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1138,72 +1138,72 @@
 <context>
     <name>SAKDebuggerInput</name>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="276"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="287"/>
         <source>Forbidden</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="277"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="288"/>
         <source>ms</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="352"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="363"/>
         <source>More input settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="410"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="421"/>
         <source>Quick Sending</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="416"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="427"/>
         <source>Data Preset</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="427"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="438"/>
         <source>Suffixs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="439"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="450"/>
         <source>(None)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="455"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="466"/>
         <source>Save Input</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="462"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="473"/>
         <source>Save File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="464"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="475"/>
         <source>txt (*.txt);;all (*.*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="485"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="496"/>
         <source>Clear Input</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="492"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="503"/>
         <source>CRC Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="504"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="515"/>
         <source>Enable Sending Record</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="540"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="551"/>
         <source>Preset Data</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1694,7 +1694,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="141"/>
+        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="142"/>
         <source>Reload All</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2134,7 +2134,7 @@
         <translation type="vanished">Get Source</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="138"/>
+        <location filename="../../src/SAKMainWindow.cc" line="135"/>
         <source>Qt Swiss Army Knife</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2196,7 +2196,7 @@
     </message>
     <message>
         <location filename="../../src/SAKMainWindow.cc" line="451"/>
-        <location filename="../../src/SAKMainWindow.cc" line="738"/>
+        <location filename="../../src/SAKMainWindow.cc" line="765"/>
         <source>Release History</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2206,22 +2206,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="543"/>
+        <location filename="../../src/SAKMainWindow.cc" line="570"/>
         <source>Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="544"/>
+        <location filename="../../src/SAKMainWindow.cc" line="571"/>
         <source>Author</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="545"/>
+        <location filename="../../src/SAKMainWindow.cc" line="572"/>
         <source>Email</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="546"/>
+        <location filename="../../src/SAKMainWindow.cc" line="573"/>
         <source>QQ</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2267,7 +2267,7 @@
     </message>
     <message>
         <location filename="../../src/SAKMainWindow.cc" line="457"/>
-        <location filename="../../src/SAKMainWindow.cc" line="815"/>
+        <location filename="../../src/SAKMainWindow.cc" line="842"/>
         <source>QR Code</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2312,192 +2312,232 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../src/SAKMainWindow.cc" line="534"/>
+        <source>&amp;User</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="544"/>
+        <source>Sign up</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="545"/>
+        <source>Sign in</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="546"/>
+        <source>Update password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../../src/SAKMainWindow.cc" line="547"/>
-        <source>QQ Group</source>
+        <source>Reset password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/SAKMainWindow.cc" line="548"/>
+        <source>User informations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="549"/>
+        <source>Register the software</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="550"/>
+        <source>Destroy account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="574"/>
+        <source>QQ Group</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="575"/>
         <source>Build Time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="549"/>
+        <location filename="../../src/SAKMainWindow.cc" line="576"/>
         <source>Copyright</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="551"/>
+        <location filename="../../src/SAKMainWindow.cc" line="578"/>
         <source>Gitee Url</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="553"/>
+        <location filename="../../src/SAKMainWindow.cc" line="580"/>
         <source>Gitbub Url</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="557"/>
+        <location filename="../../src/SAKMainWindow.cc" line="584"/>
         <source>About QSAK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="637"/>
+        <location filename="../../src/SAKMainWindow.cc" line="664"/>
         <source>Test</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="643"/>
+        <location filename="../../src/SAKMainWindow.cc" line="670"/>
         <source>COM</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="647"/>
+        <location filename="../../src/SAKMainWindow.cc" line="674"/>
         <source>HID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="650"/>
+        <location filename="../../src/SAKMainWindow.cc" line="677"/>
         <source>USB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="657"/>
+        <location filename="../../src/SAKMainWindow.cc" line="684"/>
         <source>UdpClient</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="663"/>
+        <location filename="../../src/SAKMainWindow.cc" line="690"/>
         <source>UdpServer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="671"/>
+        <location filename="../../src/SAKMainWindow.cc" line="698"/>
         <source>TcpClient</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="677"/>
+        <location filename="../../src/SAKMainWindow.cc" line="704"/>
         <source>TcpServer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="693"/>
+        <location filename="../../src/SAKMainWindow.cc" line="720"/>
         <source>BLE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="700"/>
+        <location filename="../../src/SAKMainWindow.cc" line="727"/>
         <source>WsClient</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="706"/>
+        <location filename="../../src/SAKMainWindow.cc" line="733"/>
         <source>WsServer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="681"/>
+        <location filename="../../src/SAKMainWindow.cc" line="708"/>
         <source>SSL-C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="682"/>
+        <location filename="../../src/SAKMainWindow.cc" line="709"/>
         <source>SSL-S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="685"/>
+        <location filename="../../src/SAKMainWindow.cc" line="712"/>
         <source>SCTP-C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="686"/>
+        <location filename="../../src/SAKMainWindow.cc" line="713"/>
         <source>SCTP-S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="689"/>
+        <location filename="../../src/SAKMainWindow.cc" line="716"/>
         <source>BT-C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="690"/>
+        <location filename="../../src/SAKMainWindow.cc" line="717"/>
         <source>BT-S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="713"/>
+        <location filename="../../src/SAKMainWindow.cc" line="740"/>
         <source>Modbus</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="722"/>
+        <location filename="../../src/SAKMainWindow.cc" line="749"/>
         <source>File Assistant</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="726"/>
+        <location filename="../../src/SAKMainWindow.cc" line="753"/>
         <source>CRC Assistant</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="729"/>
+        <location filename="../../src/SAKMainWindow.cc" line="756"/>
         <source>Float Assistant</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="732"/>
+        <location filename="../../src/SAKMainWindow.cc" line="759"/>
         <source>String Assistant</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="760"/>
+        <location filename="../../src/SAKMainWindow.cc" line="787"/>
         <source>Edit Page Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="762"/>
+        <location filename="../../src/SAKMainWindow.cc" line="789"/>
         <source>Please input the name of tab page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="763"/>
+        <location filename="../../src/SAKMainWindow.cc" line="790"/>
         <source>Tab page name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="766"/>
+        <location filename="../../src/SAKMainWindow.cc" line="793"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="767"/>
+        <location filename="../../src/SAKMainWindow.cc" line="794"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="823"/>
+        <location filename="../../src/SAKMainWindow.cc" line="850"/>
         <source>User QQ Group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="825"/>
+        <location filename="../../src/SAKMainWindow.cc" line="852"/>
         <source>Qt QQ Group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="622"/>
+        <location filename="../../src/SAKMainWindow.cc" line="649"/>
         <source>Reboot application to effective</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="549"/>
+        <location filename="../../src/SAKMainWindow.cc" line="576"/>
         <source>Copyright 2018-%1 Qter. All rights reserved.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="623"/>
+        <location filename="../../src/SAKMainWindow.cc" line="650"/>
         <source>Need to reboot, reboot to effective now?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4757,6 +4797,490 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../src/update/SAKUpdateManager.cc" line="215"/>
         <source>Source</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SAKUserBuy</name>
+    <message>
+        <location filename="../../private/user/src/SAKUserBuy.ui" line="14"/>
+        <source>Pay for the Application</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserBuy.ui" line="60"/>
+        <source>You have paied for this software</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserBuy.ui" line="70"/>
+        <source>You should pay PRICE, please pay with WeChat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserBuy.ui" line="134"/>
+        <source>Refresh</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserBuy.ui" line="159"/>
+        <source>You had been payed for the application.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserBuy.cc" line="40"/>
+        <source>Buy successfully, thank you.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserBuy.cc" line="83"/>
+        <source>Register application %1! </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserBuy.cc" line="83"/>
+        <source>successfully</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserBuy.cc" line="83"/>
+        <source>failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserBuy.cc" line="86"/>
+        <source>You have been register the application, thank you.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserBuy.cc" line="89"/>
+        <source>You can try again or contact to the author.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SAKUserDestroy</name>
+    <message>
+        <location filename="../../private/user/src/SAKUserDestroy.ui" line="14"/>
+        <source>Destroy Account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserDestroy.ui" line="20"/>
+        <source>Apply</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserDestroy.ui" line="43"/>
+        <source>Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserDestroy.ui" line="85"/>
+        <source>Destroy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserDestroy.ui" line="102"/>
+        <source>Verification code</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserDestroy.ui" line="109"/>
+        <source>Account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserDestroy.cc" line="51"/>
+        <source>You account has been destroyed!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserDestroy.cc" line="53"/>
+        <location filename="../../private/user/src/SAKUserDestroy.cc" line="69"/>
+        <source>Destroy account failed!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserDestroy.cc" line="67"/>
+        <source>Destroy account successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SAKUserDialog</name>
+    <message>
+        <location filename="../../private/user/src/SAKUserDialog.cc" line="33"/>
+        <source>Message(%1) response timeout!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserDialog.cc" line="43"/>
+        <source>Apply</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserDialog.cc" line="48"/>
+        <location filename="../../private/user/src/SAKUserDialog.cc" line="115"/>
+        <source>You can apply again after %1s</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SAKUserInformation</name>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.ui" line="14"/>
+        <source>SAKUser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.ui" line="20"/>
+        <source>Account information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.ui" line="26"/>
+        <source>Email</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.ui" line="36"/>
+        <location filename="../../private/user/src/SAKUserInformation.cc" line="57"/>
+        <source>Update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.ui" line="52"/>
+        <source>User information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.ui" line="58"/>
+        <source>UpdateAll</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.cc" line="29"/>
+        <source>Nickname</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.cc" line="30"/>
+        <source>Phone</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.cc" line="31"/>
+        <source>QQ</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.cc" line="32"/>
+        <source>WeChat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.cc" line="33"/>
+        <source>Blog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.cc" line="34"/>
+        <source>Intel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.cc" line="35"/>
+        <source>WeiBo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.cc" line="36"/>
+        <source>Github</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.cc" line="37"/>
+        <source>Gitee</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.cc" line="38"/>
+        <source>Coding</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.cc" line="39"/>
+        <source>Gitlab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.cc" line="40"/>
+        <source>Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserInformation.cc" line="112"/>
+        <source>Response timeout!</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SAKUserResetPassword</name>
+    <message>
+        <location filename="../../private/user/src/SAKUserResetPassword.ui" line="14"/>
+        <source>Reset password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserResetPassword.ui" line="20"/>
+        <source>New password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserResetPassword.ui" line="33"/>
+        <source>Comfirm password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserResetPassword.ui" line="53"/>
+        <source>Commit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserResetPassword.ui" line="80"/>
+        <source>Verification code</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserResetPassword.ui" line="114"/>
+        <source>Account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserResetPassword.ui" line="121"/>
+        <source>qsaker@outlook.com</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserResetPassword.cc" line="26"/>
+        <source>Please input your password!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserResetPassword.cc" line="31"/>
+        <source>Please comfrim your new password!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserResetPassword.cc" line="36"/>
+        <source>New password and comfirm password are different!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserResetPassword.cc" line="54"/>
+        <source>Reset password successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserResetPassword.cc" line="56"/>
+        <source>Reset password failed!</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SAKUserSignIn</name>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignIn.ui" line="20"/>
+        <source>Sign In</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignIn.ui" line="32"/>
+        <source>Remember account and password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignIn.ui" line="45"/>
+        <source>Account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignIn.ui" line="58"/>
+        <source>SignIn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignIn.ui" line="65"/>
+        <source>qsaker@outlook.com</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignIn.ui" line="91"/>
+        <source>Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignIn.ui" line="98"/>
+        <source>password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignIn.cc" line="37"/>
+        <source>SigningIn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignIn.cc" line="87"/>
+        <source>Sign in successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignIn.cc" line="90"/>
+        <source>Sign in failed: account and(or) password error!</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SAKUserSignUp</name>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignUp.ui" line="20"/>
+        <source>Sign Up</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignUp.ui" line="26"/>
+        <location filename="../../private/user/src/SAKUserSignUp.cc" line="37"/>
+        <source>SignUp</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignUp.ui" line="33"/>
+        <source>qsaker@outlook.com</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignUp.ui" line="46"/>
+        <source>Verification code</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignUp.ui" line="53"/>
+        <location filename="../../private/user/src/SAKUserSignUp.ui" line="112"/>
+        <source>password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignUp.ui" line="66"/>
+        <source>Confirmation passwrod</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignUp.ui" line="92"/>
+        <source>Account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignUp.ui" line="105"/>
+        <source>Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignUp.ui" line="126"/>
+        <source>1024</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignUp.ui" line="133"/>
+        <source>Apply</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignUp.cc" line="26"/>
+        <source>SigningUp</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignUp.cc" line="35"/>
+        <source>Password error!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignUp.cc" line="67"/>
+        <source>Sign up successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignUp.cc" line="70"/>
+        <source>Account has been sign up!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignUp.cc" line="73"/>
+        <source>Unknow error!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignUp.cc" line="80"/>
+        <source>Verification code has been send.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserSignUp.cc" line="82"/>
+        <source>Send verification code failed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SAKUserUpdatePassword</name>
+    <message>
+        <location filename="../../private/user/src/SAKUserUpdatePassword.ui" line="14"/>
+        <source>Update password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserUpdatePassword.ui" line="20"/>
+        <source>Commit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserUpdatePassword.ui" line="27"/>
+        <source>New password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserUpdatePassword.ui" line="60"/>
+        <source>Origin password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserUpdatePassword.ui" line="87"/>
+        <source>Comfirm new password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserUpdatePassword.cc" line="25"/>
+        <source>Please input your password!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserUpdatePassword.cc" line="30"/>
+        <source>Please input your new password!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserUpdatePassword.cc" line="35"/>
+        <source>New password and comfirm password are different!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserUpdatePassword.cc" line="53"/>
+        <source>Update password successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../private/user/src/SAKUserUpdatePassword.cc" line="55"/>
+        <source>Update password failed.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
