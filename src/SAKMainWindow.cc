@@ -534,7 +534,7 @@ void SAKMainWindow::initUserMenu()
     QMenu *demoMenu = new QMenu(tr("&User"), this);
     menuBar()->addMenu(demoMenu);
     SAKUserManager *userMgr = SAKUserManager::instance();
-    Q_UNUSED(userMgr);
+    userMgr->setAppId("QtSwissArmyKnifeServer");
 
     struct SAKStructCtx {
         QString title;
