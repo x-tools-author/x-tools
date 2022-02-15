@@ -1,5 +1,22 @@
 # Swiss Army Knife
 
+ </br>
+ </br>
+ </br>
+
+## <font size="24" color="red"> The repository is archive, please visit the new repository:</font> https://gitee.com/qsaker/QtSwissArmyKnife.git
+ 
+ </br>
+ </br>
+ </br>
+ </br>
+ </br>
+</br>
+ </br>
+ </br>
+ </br>
+ </br>
+   
 ![build-windows-msvc](https://github.com/qsaker/QtSwissArmyKnife/workflows/build-windows-msvc/badge.svg)
 ![build-windows-mingw](https://github.com/qsaker/QtSwissArmyKnife/workflows/build-windows-mingw/badge.svg)
 ![build-ubuntu](https://github.com/qsaker/QtSwissArmyKnife/workflows/build-ubuntu/badge.svg)
