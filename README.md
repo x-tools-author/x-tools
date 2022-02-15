@@ -1,6 +1,6 @@
 # Swiss Army Knife
 
- <font color="#ff0000">Please visit the new repository: <https://gitee.com/qsaker/QtSwissArmyKnife.git></font>
+Please visit the new repository: <https://gitee.com/qsaker/QtSwissArmyKnife.git>
    
   
     
