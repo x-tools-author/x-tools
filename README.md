@@ -1,7 +1,10 @@
 # Swiss Army Knife
 
-> == Please visti the new repository: https://gitee.com/qsaker/QtSwissArmyKnife.git ==
-
+ <font color="#ff0000">Please visit the new repository: <https://gitee.com/qsaker/QtSwissArmyKnife.git></font>
+   
+  
+    
+      
 ![build-windows-msvc](https://github.com/qsaker/QtSwissArmyKnife/workflows/build-windows-msvc/badge.svg)
 ![build-windows-mingw](https://github.com/qsaker/QtSwissArmyKnife/workflows/build-windows-mingw/badge.svg)
 ![build-ubuntu](https://github.com/qsaker/QtSwissArmyKnife/workflows/build-ubuntu/badge.svg)
