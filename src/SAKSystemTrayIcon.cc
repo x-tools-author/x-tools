@@ -29,5 +29,4 @@ SAKSystemTrayIcon::~SAKSystemTrayIcon()
     hide();
     QMenu *menu = contextMenu();
     menu->deleteLater();
-
 }
