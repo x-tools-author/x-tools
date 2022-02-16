@@ -24,6 +24,7 @@
 #include <QClipboard>
 #include <QJsonArray>
 #include <QScrollBar>
+#include <QCloseEvent>
 #include <QSizePolicy>
 #include <QScrollArea>
 #include <QJsonObject>
@@ -217,6 +218,12 @@ void SAKMainWindow::initMenuBar()
     initUserMenu();
 #endif
     initHelpMenu();
+}
+
+void SAKMainWindow::closeEvent(QCloseEvent *event)
+{
+    hide();
+    event->ignore();
 }
 
 void SAKMainWindow::initFileMenu()

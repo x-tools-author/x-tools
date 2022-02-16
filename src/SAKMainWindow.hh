@@ -89,6 +89,8 @@ public:
         ToolTypeCRCCalculator
     };
     Q_ENUM(SAKEnumToolType);
+protected:
+    void closeEvent(QCloseEvent *event);
 private:
     struct SettingsKeyContext {
         QString enableTestPage;
