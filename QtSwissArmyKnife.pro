@@ -38,7 +38,6 @@ CONFIG += c++11
 include(SAKConf.pri)
 include(SAKSetup.pri)
 include(src/tools/SAKTools.pri)
-include(src/modbus/SAKModbus.pri)
 include(platform/SAKPlatform.pri)
 include(src/debuggers/SAKDebuggers.pri)
 
@@ -104,6 +103,7 @@ FORMS += \
 HEADERS += \
     src/SAKApplication.hh \
     src/SAKMainWindow.hh \
+    src/SAKSystemTrayIcon.hh \
     src/base/SAKBaseListWidget.hh \
     src/base/SAKBaseListWidgetItemWidget.hh \
     src/common/SAKCommonCrcInterface.hh \
@@ -115,6 +115,7 @@ HEADERS += \
 SOURCES += \
     src/SAKApplication.cc \
     src/SAKMainWindow.cc \
+    src/SAKSystemTrayIcon.cc \
     src/base/SAKBaseListWidget.cc \
     src/base/SAKBaseListWidgetItemWidget.cc \
     src/common/SAKCommonCrcInterface.cc \
