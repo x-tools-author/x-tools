@@ -113,6 +113,8 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
             .arg(qApp->applicationName());
     mSettingsKeyContext.currentTabPage = QString("%1/currentTabPage")
             .arg(qApp->applicationName());
+    mSettingsKeyContext.exitToSystemTray = QString("%1/exitToSystenTray")
+            .arg(qApp->applicationName());
 
     mUi->setupUi(this);
     mUpdateManager = new SAKUpdateManager(this);
@@ -222,8 +224,12 @@ void SAKMainWindow::initMenuBar()
 
 void SAKMainWindow::closeEvent(QCloseEvent *event)
 {
-    hide();
-    event->ignore();
+    bool isExitToSystemTray =
+            mSettings->value(mSettingsKeyContext.exitToSystemTray).toBool();
+    if (isExitToSystemTray) {
+        this->hide();
+        event->ignore();
+    }
 }
 
 void SAKMainWindow::initFileMenu()
@@ -290,6 +296,16 @@ void SAKMainWindow::initOptionMenu()
     QMenu *optionMenu = new QMenu(tr("&Options"));
     menuBar()->addMenu(optionMenu);
 
+    initOptionMenuAppStyleMenu(optionMenu);
+    initOptionMenuMainWindowMenu(optionMenu);
+    initOptionMenuSettingsMenu(optionMenu);
+#ifdef QT_DEBUG
+    initOptionMenuTestPageAction(optionMenu);
+#endif
+}
+
+void SAKMainWindow::initOptionMenuAppStyleMenu(QMenu *optionMenu)
+{
     // Initializing application style menu.
     QMenu *appStyleMenu = new QMenu(tr("Application Style"), this);
     optionMenu->addMenu(appStyleMenu);
@@ -328,8 +344,53 @@ void SAKMainWindow::initOptionMenu()
         }
     }
     appStyleMenu->addActions(actionsList);
+}
 
-#ifdef QT_DEBUG
+void SAKMainWindow::initOptionMenuMainWindowMenu(QMenu *optionMenu)
+{
+    if (!optionMenu) {
+        return;
+    }
+
+    QMenu *mainWindowMenu = new QMenu(tr("Main Window"), this);
+    QAction *exitToSystemTrayAction =
+            new QAction(tr("Exit to Sysytem Tray"), this);
+    exitToSystemTrayAction->setCheckable(true);
+    mainWindowMenu->addAction(exitToSystemTrayAction);
+    optionMenu->addMenu(mainWindowMenu);
+
+    QVariant v = mSettings->value(mSettingsKeyContext.exitToSystemTray);
+    if (!v.isNull()) {
+        bool isExitToSystemTray = v.toBool();
+        exitToSystemTrayAction->setChecked(isExitToSystemTray);
+    }
+
+    connect(exitToSystemTrayAction, &QAction::triggered, this, [=](){
+        bool isExitToSystemTray = exitToSystemTrayAction->isChecked();
+        mSettings->setValue(mSettingsKeyContext.exitToSystemTray,
+                            isExitToSystemTray);
+    });
+}
+
+void SAKMainWindow::initOptionMenuSettingsMenu(QMenu *optionMenu)
+{
+    QMenu *menu = new QMenu(tr("Settings"), this);
+    optionMenu->addMenu(menu);
+
+    QAction *action = new QAction(tr("Clear Configuration"), this);
+    menu->addAction(action);
+    connect(action, &QAction::triggered, this, &SAKMainWindow::clearConfiguration);
+    action = new QAction(tr("Open configuration floder"), this);
+    menu->addAction(action);
+    connect(action, &QAction::triggered, this, [=](){
+        QUrl fileUrl = mSettings->fileName();
+        QString floderUrl = mSettings->fileName().remove(fileUrl.fileName());
+        QDesktopServices::openUrl(floderUrl);
+    });
+}
+
+void SAKMainWindow::initOptionMenuTestPageAction(QMenu *optionMenu)
+{
     optionMenu->addSeparator();
     mTestPageAction = new QAction(tr("Enable Testing Page"), this);
     optionMenu->addAction(mTestPageAction);
@@ -343,17 +404,6 @@ void SAKMainWindow::initOptionMenu()
     }else{
         mTestPageAction->setChecked(false);
     }
-#endif
-    QAction *action = new QAction(tr("Clear Configuration"), this);
-    optionMenu->addAction(action);
-    connect(action, &QAction::triggered, this, &SAKMainWindow::clearConfiguration);
-    action = new QAction(tr("Open configuration floder"), this);
-    optionMenu->addAction(action);
-    connect(action, &QAction::triggered, this, [=](){
-        QUrl fileUrl = mSettings->fileName();
-        QString floderUrl = mSettings->fileName().remove(fileUrl.fileName());
-        QDesktopServices::openUrl(floderUrl);
-    });
 }
 
 void SAKMainWindow::initWindowMenu()
@@ -538,8 +588,9 @@ void SAKMainWindow::initDemoMenu()
 #ifdef SAK_IMPORT_MODULE_USER
 void SAKMainWindow::initUserMenu()
 {
-    QMenu *demoMenu = new QMenu(tr("&User"), this);
-    menuBar()->addMenu(demoMenu);
+    QMenu *userMenu = new QMenu(tr("&User"), this);
+    userMenu->setEnabled(false);
+    menuBar()->addMenu(userMenu);
     SAKUserManager *userMgr = SAKUserManager::instance();
     userMgr->setAppId("QtSwissArmyKnifeServer");
 
@@ -557,7 +608,7 @@ void SAKMainWindow::initUserMenu()
             << SAKStructCtx{tr("Destroy account"), &SAKUserManager::showDestroyDialog};
     for (int i = 0; i < ctxList.length(); i++) {
         auto ctx = ctxList.at(i);
-        demoMenu->addAction(ctx.title, this, [=](){(userMgr->*ctx.func)();});
+        userMenu->addAction(ctx.title, this, [=](){(userMgr->*ctx.func)();});
     }
 }
 #endif

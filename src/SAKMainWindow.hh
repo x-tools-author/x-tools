@@ -95,6 +95,7 @@ private:
     struct SettingsKeyContext {
         QString enableTestPage;
         QString currentTabPage;
+        QString exitToSystemTray;
     }mSettingsKeyContext;
 
     struct SAKDebugPageMetaInfo {
@@ -123,6 +124,10 @@ private:
     void initFileMenu();
     void initToolMenu();
     void initOptionMenu();
+    void initOptionMenuAppStyleMenu(QMenu *optionMenu);
+    void initOptionMenuMainWindowMenu(QMenu *optionMenu);
+    void initOptionMenuSettingsMenu(QMenu *optionMenu);
+    void initOptionMenuTestPageAction(QMenu *optionMenu);
     void initWindowMenu();
     void initLanguageMenu();
     void initHelpMenu();

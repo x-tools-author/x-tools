@@ -1,13 +1,13 @@
 ﻿/******************************************************************************
- * 版权声明 2022 小猎隼(qsaker@outlook.com)。保留所有版权。
+ * Copyright 2022 Qter(qsaker@qq.com). All rights reserved.
  *
- * 本文件使用“utf8 with bom”格式编码, 它是“小猎隼多功能调试工具软件”项目的一部分（项目曾
- * 用名：瑞士军刀）。详情可查看
- * 连接：
- * https://gitee.com/qsaker/QtSwissArmyKnife.git
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
  *
- * “小猎隼多功能调试软件”项目授权协议请查看根目录的LICENCE文件。
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
+#include <QDir>
 #include <QMenu>
 #include <QAction>
 #include "SAKSystemTrayIcon.hh"
@@ -16,17 +16,18 @@ SAKSystemTrayIcon::SAKSystemTrayIcon(QObject *parent)
     : QSystemTrayIcon(parent)
 {
     setIcon(QIcon(":/resources/images/SAKLogo.png"));
-    setToolTip(tr("小猎隼多功能调试工具"));
+    setToolTip(tr("Qt Swiss Army Knife"));
 
     QMenu *menu = new QMenu();
-    menu->addAction(tr("打开窗口"), this, [=](){emit invokeShowMainWindow();});
-    menu->addAction(tr("退出程序"), this, [=](){emit invokeExit();});
+    menu->addAction(tr("Open main window"), this, [=](){emit invokeShowMainWindow();});
+    menu->addSeparator();
+    menu->addAction(tr("Exit program"), this, [=](){emit invokeExit();});
     setContextMenu(menu);
 }
 
 SAKSystemTrayIcon::~SAKSystemTrayIcon()
 {
-    hide();
+    this->hide();
     QMenu *menu = contextMenu();
     menu->deleteLater();
 }
