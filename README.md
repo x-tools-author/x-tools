@@ -1,22 +1,5 @@
 # Swiss Army Knife
 
- </br>
- </br>
- </br>
-
-## <font size="24" color="red"> The repository is archive, please visit the new repository:</font> https://gitee.com/qsaker/QtSwissArmyKnife.git
- 
- </br>
- </br>
- </br>
- </br>
- </br>
-</br>
- </br>
- </br>
- </br>
- </br>
-   
 ![build-windows-msvc](https://github.com/qsaker/QtSwissArmyKnife/workflows/build-windows-msvc/badge.svg)
 ![build-windows-mingw](https://github.com/qsaker/QtSwissArmyKnife/workflows/build-windows-mingw/badge.svg)
 ![build-ubuntu](https://github.com/qsaker/QtSwissArmyKnife/workflows/build-ubuntu/badge.svg)
@@ -38,12 +21,12 @@
 
 ## How to Build the Project
 
-### Method 1 (for Windows, Linux and macOS)
+### Using Qt Creator (for Windows, Linux and macOS)
 
 1. Download Qt Install it.
 2. Using QtCreator to open the QtSwissArmyKnife.pro file and build it.
 
-### Method 2 (just for ubuntu)
+### Using command line (just for ubuntu)
 
 #### Install the Environment
 
@@ -60,7 +43,7 @@ sudo apt-get install libqt5charts5 libqt5charts5-dev -y
 
 Note: QCharts module can not be identified when building from command line.
 
-#### Build the Project
+#### Get the Source
 
 From github:
 
@@ -74,13 +57,7 @@ or from git gitee:
 git clone https://gitee.com/qsaker/QtSwissArmyKnife.git
 ```
 
-If you want to using more function, maybe you should do these:
-
-```(shell)
-git submodule update --init --recursive
-```
-
-Build the project:
+#### Build the project:
 
 ```(shell)
 cd QtSwissArmyKnife
@@ -90,7 +67,7 @@ make
 
 ## Recommended Development Environment
 
-Qt 5.15.x, other versions may be available, you can have a try.
+Qt 5.12.12, other versions may be available, you can have a try.
 
 ## Have a Look
 
