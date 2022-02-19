@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
 
 
         SAKMainWindow *mainWindow = new SAKMainWindow(app.settings(),
-                                                     app.sqlDatabase());
+                                                      app.sqlDatabase());
         QObject::connect(&app, &SAKApplication::activeMainWindow,
                          mainWindow, &SAKMainWindow::activateWindow);
         mainWindow->show();
