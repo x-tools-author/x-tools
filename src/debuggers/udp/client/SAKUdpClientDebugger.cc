@@ -28,6 +28,8 @@ SAKUdpClientDebugger::SAKUdpClientDebugger(QSettings *settings,
     mAdvanced = new SAKUdpClientAdvanced(settings, settingsGroup, parent);
     mDevice->setAdvancedCtx(mAdvanced->parameters());
 
+    connect(mDevice, &SAKUdpClientDevice::clientInfoChanged,
+            mController, &SAKUdpClientController::onClientInfoChanged);
     connect(mAdvanced, &SAKUdpClientAdvanced::parametersUpdated,
             mDevice, &SAKUdpClientDevice::setAdvancedCtx);
 
