@@ -13,6 +13,7 @@
 #include <QMutex>
 #include <QThread>
 #include <QUdpSocket>
+#include <QJsonObject>
 
 #include "SAKDebuggerDevice.hh"
 #include "SAKCommonDataStructure.hh"
@@ -33,8 +34,27 @@ public:
     QByteArray read() final;
     QByteArray write(const QByteArray &bytes) final;
     void uninitialize() final;
+
+    void setAdvancedCtx(const QJsonObject &parameters);
 private:
     QUdpSocket *mUdpSocket;
+    struct SAKStructAddressCtx {
+        QString address;
+        quint16 port;
+    };
+    struct SAKStructAdvancedCtx{
+        bool enable;
+        bool enableUnicast;
+        bool enableMulticast;
+        bool enableBroadcast;
+
+        QVector<SAKUdpClientDevice::SAKStructAddressCtx> unicastCtxVector;
+        QVector<SAKUdpClientDevice::SAKStructAddressCtx> multicastCtxVector;
+        QVector<quint16> broadcastCtxVector;
+    } mAdvancedCtx;
+    QMutex mAdvancedCtxMutex;
+private:
+    SAKStructAdvancedCtx advancedCtx();
 signals:
     void clientInfoChanged(QString info);
 };

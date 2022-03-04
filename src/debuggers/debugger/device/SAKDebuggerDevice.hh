@@ -74,6 +74,7 @@ signals:
     void bytesWritten(QByteArray bytes);
     void bytesRead(QByteArray bytes);
     void errorOccurred(QString error);
+    void invokeOutputMessage(const QString &info);
 };
 
 #endif

@@ -101,6 +101,7 @@ public:
         QString localHost;
         quint16 localPort;
         bool specifyLocalInfo;
+        bool pauseSending;
     };
     struct SAKStructUdpServerParametersContext {
         QString serverHost;

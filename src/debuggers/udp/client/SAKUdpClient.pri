@@ -20,3 +20,15 @@ SOURCES += \
 INCLUDEPATH += \
     $$PWD
 }
+
+HEADERS += \
+    $$PWD/SAKUdpClientAdvanced.hh \
+    $$PWD/SAKUdpClientAdvancedMulticast.hh
+
+SOURCES += \
+    $$PWD/SAKUdpClientAdvanced.cc \
+    $$PWD/SAKUdpClientAdvancedMulticast.cc
+
+FORMS += \
+    $$PWD/SAKUdpClientAdvanced.ui \
+    $$PWD/SAKUdpClientAdvancedMulticast.ui

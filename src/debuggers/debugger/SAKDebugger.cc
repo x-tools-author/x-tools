@@ -57,6 +57,7 @@ SAKDebugger::SAKDebugger(QSettings *settings,
     html = html.replace(QString("Author"), QString(SAK_AUTHOR));
     html = html.replace(QString("Email"), QString(SAK_AUTHOR_EMAIL));
     mUi->outputTextBroswer->setHtml(html);
+    mAddActionToMenu = &SAKDebugger::addActionToMenu;
 
 
     mModulePlugins = new SAKDebuggerPlugins(
@@ -165,6 +166,11 @@ void SAKDebugger::initDebugger()
     initDebuggerOutout();
     initDebuggerInput();
     initDebuggerPlugin();
+
+    if (mDeviceMenu) {
+        mDeviceMenu->addSeparator();
+        addActionToMenu(mDeviceMenu);
+    }
 }
 
 void SAKDebugger::initDebuggerController()
@@ -175,13 +181,13 @@ void SAKDebugger::initDebuggerController()
         mUi->controllerWidget->setLayout(layout);
         layout->addWidget(mModuleController);
         layout->setContentsMargins(0, 0, 0, 0);
-    }
 
-    connect(mModuleController, &SAKDebuggerController::parametersContextChanged,
-            this, [=](){
+        connect(mModuleController, &SAKDebuggerController::parametersContextChanged,
+                this, [=](){
+            mModuleDevice->setParametersContext(mModuleController->parametersContext());
+        });
         mModuleDevice->setParametersContext(mModuleController->parametersContext());
-    });
-    mModuleDevice->setParametersContext(mModuleController->parametersContext());
+    }
 }
 
 void SAKDebugger::initDebuggerDevice()
@@ -196,6 +202,7 @@ void SAKDebugger::initDebuggerDevice()
         mRefreshAction->setEnabled(!opened);
         mModuleController->updateUiState(opened);
         mUi->switchPushButton->setEnabled(true);
+        this->updateUiState(opened);
     };
     connect(mModuleDevice, &SAKDebuggerDevice::errorOccurred,
             this, [=](QString error){

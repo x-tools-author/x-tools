@@ -35,6 +35,7 @@ SAKUdpClientController::SAKUdpClientController(QSettings *settings,
     microIni2LE(settings, settingsGroup, ctx.peerPort, mUi->targetPortLineEdit);
     microIni2ChB(settings, settingsGroup,
                  ctx.specifyLocalInfo, mUi->specifyClientAddressAndPort);
+    microIni2ChB(settings, settingsGroup, ctx.pauseSending, mUi->pauseCheckBox);
 
 #if QT_VERSION >= QT_VERSION_CHECK(5,7,0)
     connect(mUi->localhostComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
@@ -71,6 +72,11 @@ SAKUdpClientController::SAKUdpClientController(QSettings *settings,
         emit parametersContextChanged();
         microLE2Ini(settings, settingsGroup, ctx.peerPort, mUi->targetPortLineEdit);
     });
+    connect(mUi->pauseCheckBox, &QCheckBox::clicked,
+            this, [=](){
+        emit parametersContextChanged();
+        microChB2Ini(settings, settingsGroup, ctx.pauseSending, mUi->pauseCheckBox);
+    });
 }
 
 SAKUdpClientController::~SAKUdpClientController()
@@ -102,6 +108,7 @@ QVariant SAKUdpClientController::parametersContext()
     parasCtx.localHost = mUi->localhostComboBox->currentText();
     parasCtx.localPort = mUi->localPortlineEdit->text().trimmed().toInt();
     parasCtx.specifyLocalInfo = mUi->specifyClientAddressAndPort->isChecked();
+    parasCtx.pauseSending = mUi->pauseCheckBox->isChecked();
 
     return QVariant::fromValue(parasCtx);
 }

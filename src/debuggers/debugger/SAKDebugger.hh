@@ -69,6 +69,13 @@ protected:
     virtual SAKDebuggerController *controller() = 0;
 
     /**
+     * @brief addMenu: Add action to menu.
+     * @param menu: The device menu.
+     */
+    virtual void addActionToMenu(QMenu *menu){Q_UNUSED(menu);}
+    virtual void updateUiState(bool opened){Q_UNUSED(opened)}
+
+    /**
      * @brief initDebugger: Initializing, the function must be called in the
      * constructor of subclass.
      */
@@ -92,6 +99,7 @@ private:
     SAKDebuggerDevice *mModuleDevice;
     SAKDebuggerController *mModuleController;
     SAKDebuggerPlugins *mModulePlugins;
+    void (SAKDebugger::*mAddActionToMenu)(QMenu *menu);
 public:
     static void commonSqlApiUpdateRecord(QSqlQuery *sqlQuery,
                                          QString tableName,

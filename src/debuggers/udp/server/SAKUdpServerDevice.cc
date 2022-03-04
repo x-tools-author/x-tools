@@ -39,6 +39,9 @@ bool SAKUdpServerDevice::initialize()
         emit errorOccurred(errorString);
         return false;
     } else {
+        if (!mUdpServer->joinMulticastGroup(QHostAddress(QStringLiteral("239.255.43.21")))) {
+            qWarning() << mUdpServer->errorString();
+        }
         connect(mUdpServer, &QUdpSocket::readyRead,
                 this, [=](){
             emit readyRead(SAKDeviceProtectedSignal());
@@ -61,6 +64,7 @@ QByteArray SAKUdpServerDevice::read()
                                               &peerAddress,
                                               &peerPort);
         if (ret > 0) {
+            qDebug() << __FUNCTION__;
             auto parameters = parametersContext().value<SAKUdpServerParametersContext>();
             QString currentHost = parameters.currentClientHost;
             quint16 currentPort = parameters.currentClientPort;

@@ -12,9 +12,10 @@
 #include <QHBoxLayout>
 
 #include "SAKUdpClientDevice.hh"
-#include "SAKCommonDataStructure.hh"
 #include "SAKUdpClientDebugger.hh"
+#include "SAKUdpClientAdvanced.hh"
 #include "SAKUdpClientController.hh"
+#include "SAKCommonDataStructure.hh"
 
 SAKUdpClientDebugger::SAKUdpClientDebugger(QSettings *settings,
                                            const QString settingsGroup,
@@ -24,10 +25,13 @@ SAKUdpClientDebugger::SAKUdpClientDebugger(QSettings *settings,
 {
     mController = new SAKUdpClientController(settings, settingsGroup, this);
     mDevice = new SAKUdpClientDevice(settings, settingsGroup, parent, this);
-    initDebugger();
+    mAdvanced = new SAKUdpClientAdvanced(settings, settingsGroup, parent);
+    mDevice->setAdvancedCtx(mAdvanced->parameters());
 
-    connect(mDevice, &SAKUdpClientDevice::clientInfoChanged,
-            mController, &SAKUdpClientController::onClientInfoChanged);
+    connect(mAdvanced, &SAKUdpClientAdvanced::parametersUpdated,
+            mDevice, &SAKUdpClientDevice::setAdvancedCtx);
+
+    initDebugger();
 }
 
 SAKDebuggerDevice* SAKUdpClientDebugger::device()
@@ -38,4 +42,15 @@ SAKDebuggerDevice* SAKUdpClientDebugger::device()
 SAKDebuggerController *SAKUdpClientDebugger::controller()
 {
     return mController;
+}
+
+void SAKUdpClientDebugger::addActionToMenu(QMenu *menu)
+{
+    menu->addAction(tr("Advanced Settings"), mAdvanced,
+                   &SAKUdpClientAdvanced::show);
+}
+
+void SAKUdpClientDebugger::updateUiState(bool opened)
+{
+    Q_UNUSED(opened);
 }

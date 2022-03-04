@@ -14,6 +14,7 @@
 #include "SAKCommonDataStructure.hh"
 
 class SAKUdpClientDevice;
+class SAKUdpClientAdvanced;
 class SAKUdpClientController;
 class SAKUdpClientDebugger : public SAKDebugger
 {
@@ -26,8 +27,11 @@ public:
 protected:
     SAKDebuggerDevice* device() final;
     SAKDebuggerController *controller() final;
+    void addActionToMenu(QMenu *menu) final;
+    void updateUiState(bool opened) final;
 private:
     SAKUdpClientDevice *mDevice;
+    SAKUdpClientAdvanced *mAdvanced;
     SAKUdpClientController *mController;
 };
 
