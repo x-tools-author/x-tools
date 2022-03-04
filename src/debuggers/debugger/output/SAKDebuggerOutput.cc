@@ -222,15 +222,15 @@ SAKDebuggerOutput::~SAKDebuggerOutput()
     wait();
 }
 
-void SAKDebuggerOutput::onBytesRead(QByteArray bytes)
+void SAKDebuggerOutput::onBytesRead(QByteArray bytes, const QString &from)
 {
-    appendData(true, bytes);
+    appendData(true, bytes, from);
     mSave2File->bytesRead(bytes);
 }
 
-void SAKDebuggerOutput::onBytesWritten(QByteArray bytes)
+void SAKDebuggerOutput::onBytesWritten(QByteArray bytes, const QString &to)
 {
-    appendData(false, bytes);
+    appendData(false, bytes, to);
     mSave2File->bytesWritten(bytes);
 }
 
@@ -260,8 +260,8 @@ void SAKDebuggerOutput::run()
             QString txColor = "blue";
             QString color = dataCtx.isRxData ? rxColor : txColor;
             QString rxTx = dataCtx.isRxData
-                    ? QString("<font color=%1>Rx</font>").arg(rxColor)
-                    : QString("<font color=%2>Tx</font>").arg(txColor);
+                    ? QString("<font color=%1>Rx(from:%2)</font>").arg(rxColor, dataCtx.flag)
+                    : QString("<font color=%1>Tx(to:%2)</font>").arg(txColor, dataCtx.flag);
 
             QString frameString;
             if (faceWithoutMakeup) {
@@ -301,11 +301,12 @@ void SAKDebuggerOutput::save()
     }
 }
 
-void SAKDebuggerOutput::appendData(bool isRxData, QByteArray data)
+void SAKDebuggerOutput::appendData(bool isRxData, QByteArray data, const QString &flag)
 {
     SAKStructDataContext ctx;
     ctx.data = data;
     ctx.isRxData = isRxData;
+    ctx.flag = flag;
     ctx.ctx = outputParametersContext();
 
     mDataVectorMutex.lock();

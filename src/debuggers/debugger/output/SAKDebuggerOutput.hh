@@ -62,11 +62,12 @@ public:
     struct SAKStructDataContext {
         bool isRxData;
         QByteArray data;
+        QString flag;
         SAKStructOutputParametersContext ctx;
     };
 
-    void onBytesRead(QByteArray bytes);
-    void onBytesWritten(QByteArray bytes);
+    void onBytesRead(QByteArray bytes, const QString &from);
+    void onBytesWritten(QByteArray bytes, const QString &to);
     void outputMessage(QString msg, bool isInfo = true);
 protected:
     void run() override;
@@ -87,7 +88,7 @@ private:
     SAKDebuggerOutputHighlighter *mHhighlighter;
 private:
     void save();
-    void appendData(bool isRxData, QByteArray data);
+    void appendData(bool isRxData, QByteArray data, const QString &flag);
     QString dateTimeString(SAKStructDataContext ctx);
     QString formattingData(SAKStructDataContext ctx);
     SAKStructOutputParametersContext outputParametersContext();

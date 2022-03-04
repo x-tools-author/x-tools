@@ -71,8 +71,8 @@ private:
     void analyzer(QByteArray data);
     SAKStructDevicePatametersContext innerParametersContext();
 signals:
-    void bytesWritten(QByteArray bytes);
-    void bytesRead(QByteArray bytes);
+    void bytesWritten(QByteArray bytes, const QString &to);
+    void bytesRead(QByteArray bytes, const QString &from);
     void errorOccurred(QString error);
     void invokeOutputMessage(const QString &info);
 };

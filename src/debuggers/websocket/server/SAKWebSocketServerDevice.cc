@@ -46,15 +46,15 @@ bool SAKWebSocketServerDevice::initialize()
                 mClientList.append(socket);
                 emit addClient(socket->peerAddress().toString(), socket->peerPort(), socket);
 
-                connect(socket, &QWebSocket::textMessageReceived, [=](const QString message){
+                connect(socket, &QWebSocket::textMessageReceived, socket, [=](const QString message){
                     readBytesActually(socket, message.toUtf8());
                 });
 
-                connect(socket, &QWebSocket::binaryMessageReceived, [=](const QByteArray message){
+                connect(socket, &QWebSocket::binaryMessageReceived, socket, [=](const QByteArray message){
                     readBytesActually(socket, message);
                 });
 
-                connect(socket, &QWebSocket::disconnected, [&](){
+                connect(socket, &QWebSocket::disconnected, socket, [&](){
                     emit removeClient(socket);
                     mClientList.removeOne(socket);
                 });
@@ -113,7 +113,8 @@ void SAKWebSocketServerDevice::readBytesActually(QWebSocket *socket, QByteArray 
 
     if (bytes.length()){
         if ((currentClientHost == peerHost) && (currentClientPort == peerPort)){
-            emit bytesRead(bytes);
+            emit bytesRead(bytes, currentClientHost + ":"
+                           + QString::number(currentClientPort));
         }
     }
 }

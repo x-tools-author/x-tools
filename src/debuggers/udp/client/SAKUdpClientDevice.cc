@@ -101,9 +101,11 @@ QByteArray SAKUdpClientDevice::read()
     while (mUdpSocket->hasPendingDatagrams()) {
         QByteArray data;
         data.resize(static_cast<int>(mUdpSocket->pendingDatagramSize()));
-        qint64 ret = mUdpSocket->readDatagram(data.data(), data.length());
+        QHostAddress host;
+        quint16 port;
+        qint64 ret = mUdpSocket->readDatagram(data.data(), data.length(), &host, &port);
         if (ret > 0){
-            emit bytesRead(data);
+            emit bytesRead(data, host.toString() + ":" + port);
         }
     }
 
@@ -122,7 +124,8 @@ QByteArray SAKUdpClientDevice::write(const QByteArray &bytes)
                 qint64 ret = mUdpSocket->writeDatagram(
                             bytes, QHostAddress(info.address), info.port);
                 if (ret > 0) {
-                    emit bytesWritten(bytes);
+                    emit bytesWritten(bytes, info.address + ":"
+                                      + QString::number(info.port));
                 } else {
                     qWarning() << QString("Write datagram to %1:%2 failed!")
                                   .arg(info.address).arg(info.port);
@@ -136,7 +139,8 @@ QByteArray SAKUdpClientDevice::write(const QByteArray &bytes)
                 qint64 ret = mUdpSocket->writeDatagram(
                             bytes, QHostAddress(info.address), info.port);
                 if (ret > 0) {
-                    emit bytesWritten(bytes);
+                    emit bytesWritten(bytes, info.address + ":"
+                                      + QString::number(info.port));
                 } else {
                     qWarning() << QString("Write datagram to %1:%2 failed!")
                                   .arg(info.address).arg(info.port);
@@ -150,7 +154,8 @@ QByteArray SAKUdpClientDevice::write(const QByteArray &bytes)
                 qint64 ret = mUdpSocket->writeDatagram(
                             bytes, QHostAddress::Broadcast, port);
                 if (ret > 0) {
-                    emit bytesWritten(bytes);
+                    emit bytesWritten(bytes, "255.255.255.255:"
+                                      + QString::number(port));
                 } else {
                     const QString host =
                             QHostAddress(QHostAddress::Broadcast).toString();
@@ -169,7 +174,9 @@ QByteArray SAKUdpClientDevice::write(const QByteArray &bytes)
                                         parameters.peerPort);
 
         if (ret > 0){
-            emit bytesWritten(bytes);
+            const QString flag = parameters.peerHost + ":"
+                    + QString::number(parameters.peerPort);
+            emit bytesWritten(bytes, flag);
         } else {
             QString msg = tr("Write data failed:");
             emit invokeOutputMessage(msg + mUdpSocket->errorString());

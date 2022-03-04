@@ -49,6 +49,11 @@ SAKUdpServerController::SAKUdpServerController(QSettings *settings,
         emit parametersContextChanged();
         microLE2Ini(settings, settingsGroup, ctx.serverPort, mUi->serverPortLineEdit);
     });
+    connect(mUi->clearPushButton, &QPushButton::clicked,
+            this, [=](){
+        mUi->clientHostComboBox->clear();
+        emit parametersContextChanged();
+    });
 }
 
 SAKUdpServerController::~SAKUdpServerController()
@@ -91,14 +96,17 @@ QVariant SAKUdpServerController::parametersContext()
 
 void SAKUdpServerController::onAddClient(QString host, quint16 port)
 {
+    qDebug() << __FUNCTION__ << host << port;
     QString item = host.append(":");
     item.append(QString::number(port));
 
     bool isItemExisted = false;
-    for(int i = 0; i < mUi->clientHostComboBox->count(); i++){
-        if (mUi->clientHostComboBox->itemText(i).compare(item) == 0){
-            isItemExisted = true;
-            break;
+    if (mUi->clientHostComboBox->count() != 0) {
+        for(int i = 0; i < mUi->clientHostComboBox->count(); i++){
+            if (mUi->clientHostComboBox->itemText(i).compare(item) == 0){
+                isItemExisted = true;
+                break;
+            }
         }
     }
 

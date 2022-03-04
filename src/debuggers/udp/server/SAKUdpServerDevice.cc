@@ -63,15 +63,16 @@ QByteArray SAKUdpServerDevice::read()
                                               size,
                                               &peerAddress,
                                               &peerPort);
+        const QString flag = peerAddress.toString() + ":"
+                + QString::number(peerPort);
         if (ret > 0) {
-            qDebug() << __FUNCTION__;
             auto parameters = parametersContext().value<SAKUdpServerParametersContext>();
             QString currentHost = parameters.currentClientHost;
             quint16 currentPort = parameters.currentClientPort;
-
+            qDebug() << currentHost << currentPort;
             if (currentHost.isEmpty()) {
                 emit addClient(peerAddress.toString(), peerPort);
-                emit bytesRead(bytes);
+                emit bytesRead(bytes, flag);
             } else {
                 QStringList clients = parameters.clients;
                 QString client = QString("%1:%2")
@@ -82,7 +83,7 @@ QByteArray SAKUdpServerDevice::read()
 
                 if ((currentHost == peerAddress.toString())
                         && (currentPort == peerPort)) {
-                    emit bytesRead(bytes);
+                    emit bytesRead(bytes, flag);
                 }
             }
         }

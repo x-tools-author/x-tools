@@ -134,7 +134,7 @@ void SAKDebuggerDevice::run()
                 if (ctx.analyzerCtx.enable) {
                     analyzer(ret);
                 } else {
-                    emit bytesRead(ret);
+                    emit bytesRead(ret, "");
                 }
             }
         }, Qt::DirectConnection);
@@ -145,7 +145,7 @@ void SAKDebuggerDevice::run()
                 bytes = mask(bytes, false);
                 QByteArray ret = write(bytes);
                 if (ret.length()) {
-                    emit bytesWritten(ret);
+                    emit bytesWritten(ret, "");
                 }
             }
             writeTimer->start();
@@ -201,7 +201,7 @@ void SAKDebuggerDevice::analyzer(QByteArray data)
     if (mAnalyzerCtx.bytesTemp.length() >= mAnalyzerCtx.maxTempLangth) {
         QByteArray temp = mAnalyzerCtx.bytesTemp;
         mAnalyzerCtx.bytesTemp.clear();
-        emit bytesRead(temp);
+        emit bytesRead(temp, "");
         mAnalyzerCtxMutex.unlock();
         return;
     }
@@ -214,13 +214,13 @@ void SAKDebuggerDevice::analyzer(QByteArray data)
                                              ctx.analyzerCtx.length);
                 mAnalyzerCtx.bytesTemp =
                         mAnalyzerCtx.bytesTemp.remove(0, ctx.analyzerCtx.length);
-                emit bytesRead(temp);
+                emit bytesRead(temp, "");
             }
         } else {
             // If parameters is error(the length is less than 0 or equal to 0),
             // temp data will be clear!
             if (mAnalyzerCtx.bytesTemp.length()) {
-                emit bytesRead(mAnalyzerCtx.bytesTemp);
+                emit bytesRead(mAnalyzerCtx.bytesTemp, "");
                 mAnalyzerCtx.bytesTemp.clear();
             }
         }
@@ -235,7 +235,7 @@ void SAKDebuggerDevice::analyzer(QByteArray data)
         if (mAnalyzerCtx.bytesTemp.length()){
             QByteArray temp = mAnalyzerCtx.bytesTemp;
             mAnalyzerCtx.bytesTemp.clear();
-            emit bytesRead(temp);
+            emit bytesRead(temp, "");
         }
 
         mAnalyzerCtxMutex.unlock();
@@ -262,7 +262,7 @@ void SAKDebuggerDevice::analyzer(QByteArray data)
                 QByteArray temp = QByteArray(mAnalyzerCtx.bytesTemp.data(), ret);
                 mAnalyzerCtx.bytesTemp.remove(0, ret);
                 if (!temp.isEmpty()) {
-                    emit bytesRead(temp);
+                    emit bytesRead(temp, "");
                 }
             } else {
                 startBytesMatched = false;
@@ -291,7 +291,7 @@ void SAKDebuggerDevice::analyzer(QByteArray data)
             QByteArray temp(mAnalyzerCtx.bytesTemp.data(), frameLength);
             mAnalyzerCtx.bytesTemp.remove(0, frameLength);
             if (!temp.isEmpty()) {
-                emit bytesRead(temp);
+                emit bytesRead(temp, "");
             }
         }
     }
