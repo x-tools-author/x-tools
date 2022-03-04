@@ -19,7 +19,6 @@ namespace Ui {
     class SAKUdpClientAdvanced;
 };
 
-class SAKUdpClientAdvancedMulticast;
 class SAKUdpClientAdvanced : public QDialog
 {
     Q_OBJECT
