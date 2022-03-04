@@ -96,7 +96,6 @@ QVariant SAKUdpServerController::parametersContext()
 
 void SAKUdpServerController::onAddClient(QString host, quint16 port)
 {
-    qDebug() << __FUNCTION__ << host << port;
     QString item = host.append(":");
     item.append(QString::number(port));
 

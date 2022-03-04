@@ -69,7 +69,6 @@ QByteArray SAKUdpServerDevice::read()
             auto parameters = parametersContext().value<SAKUdpServerParametersContext>();
             QString currentHost = parameters.currentClientHost;
             quint16 currentPort = parameters.currentClientPort;
-            qDebug() << currentHost << currentPort;
             if (currentHost.isEmpty()) {
                 emit addClient(peerAddress.toString(), peerPort);
                 emit bytesRead(bytes, flag);
