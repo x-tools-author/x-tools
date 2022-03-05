@@ -8,6 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  */
 #include <QDebug>
+#include <QJsonArray>
 #include <QEventLoop>
 #include <QHostAddress>
 #include <QApplication>
@@ -28,6 +29,21 @@ SAKUdpServerDevice::SAKUdpServerDevice(QSettings *settings,
 
 }
 
+void SAKUdpServerDevice::setMulticastParameters(const QJsonArray &parameters)
+{
+    mMulticastHostListMutex.lock();
+    mMulticastHostList.clear();
+    for (int i = 0; i < parameters.count(); i++) {
+        QJsonObject jsonObj = parameters.at(i).toObject();
+        bool enable = jsonObj.value("enable").toBool();
+        if (enable) {
+            const QString host = jsonObj.value("value").toString();
+            mMulticastHostList.append(host);
+        }
+    }
+    mMulticastHostListMutex.unlock();
+}
+
 bool SAKUdpServerDevice::initialize()
 {
     auto parameters = parametersContext().value<SAKUdpServerParametersContext>();
@@ -39,8 +55,13 @@ bool SAKUdpServerDevice::initialize()
         emit errorOccurred(errorString);
         return false;
     } else {
-        if (!mUdpServer->joinMulticastGroup(QHostAddress(QStringLiteral("239.255.43.21")))) {
-            qWarning() << mUdpServer->errorString();
+        QStringList hosts = multicastParameters();
+        for (int i = 0; i < hosts.length(); i++) {
+            const QString host = hosts.at(i);
+            if (!mUdpServer->joinMulticastGroup(QHostAddress(host))) {
+                qDebug() << QString("Join multicast group(%1) filed:")
+                            .arg(host);
+            }
         }
         connect(mUdpServer, &QUdpSocket::readyRead,
                 this, [=](){
@@ -110,4 +131,13 @@ void SAKUdpServerDevice::uninitialize()
     mUdpServer->close();
     delete mUdpServer;
     mUdpServer = Q_NULLPTR;
+}
+
+QStringList SAKUdpServerDevice::multicastParameters()
+{
+    mMulticastHostListMutex.lock();
+    QStringList list = mMulticastHostList;
+    mMulticastHostListMutex.unlock();
+
+    return list;
 }

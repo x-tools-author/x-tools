@@ -46,7 +46,7 @@ SAKDebuggerController *SAKUdpClientDebugger::controller()
     return mController;
 }
 
-void SAKUdpClientDebugger::addActionToMenu(QMenu *menu)
+void SAKUdpClientDebugger::addActionToDeviceMenu(QMenu *menu)
 {
     menu->addAction(tr("Advanced Settings"), mAdvanced,
                    &SAKUdpClientAdvanced::show);

@@ -57,7 +57,6 @@ SAKDebugger::SAKDebugger(QSettings *settings,
     html = html.replace(QString("Author"), QString(SAK_AUTHOR));
     html = html.replace(QString("Email"), QString(SAK_AUTHOR_EMAIL));
     mUi->outputTextBroswer->setHtml(html);
-    mAddActionToMenu = &SAKDebugger::addActionToMenu;
 
 
     mModulePlugins = new SAKDebuggerPlugins(
@@ -169,7 +168,7 @@ void SAKDebugger::initDebugger()
 
     if (mDeviceMenu) {
         mDeviceMenu->addSeparator();
-        addActionToMenu(mDeviceMenu);
+        addActionToDeviceMenu(mDeviceMenu);
     }
 }
 

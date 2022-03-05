@@ -14,6 +14,7 @@
 
 class SAKUdpServerDevice;
 class SAKUdpServerController;
+class SAKUdpServerMulticast;
 class SAKUdpServerDebugger : public SAKDebugger
 {
     Q_OBJECT
@@ -25,8 +26,11 @@ public:
 protected:
     SAKDebuggerDevice* device() final;
     SAKDebuggerController *controller() final;
+    void addActionToDeviceMenu(QMenu *menu) final;
+    void updateUiState(bool opened) final;
 private:
     SAKUdpServerDevice *mDevice;
     SAKUdpServerController *mController;
+    SAKUdpServerMulticast *mMulticast;
 };
 #endif

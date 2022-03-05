@@ -27,7 +27,7 @@ public:
 protected:
     SAKDebuggerDevice* device() final;
     SAKDebuggerController *controller() final;
-    void addActionToMenu(QMenu *menu) final;
+    void addActionToDeviceMenu(QMenu *menu) final;
     void updateUiState(bool opened) final;
 private:
     SAKUdpClientDevice *mDevice;

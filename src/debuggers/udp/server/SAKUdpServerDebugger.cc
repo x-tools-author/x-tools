@@ -13,6 +13,7 @@
 
 #include "SAKUdpServerDevice.hh"
 #include "SAKUdpServerDebugger.hh"
+#include "SAKUdpServerMulticast.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKUdpServerController.hh"
 
@@ -24,10 +25,15 @@ SAKUdpServerDebugger::SAKUdpServerDebugger(QSettings *settings,
 {
     mController = new SAKUdpServerController(settings, settingsGroup, parent);
     mDevice = new SAKUdpServerDevice(settings, settingsGroup, this, parent);
-    initDebugger();
+    mMulticast = new SAKUdpServerMulticast(settings, settingsGroup, this);
+    mDevice->setMulticastParameters(mMulticast->parameters());
 
     connect(mDevice, &SAKUdpServerDevice::addClient,
             mController, &SAKUdpServerController::onAddClient);
+    connect(mMulticast, &SAKUdpServerMulticast::parametersChanged,
+            mDevice, &SAKUdpServerDevice::setMulticastParameters);
+
+    initDebugger();
 }
 
 SAKDebuggerDevice* SAKUdpServerDebugger::device()
@@ -38,4 +44,15 @@ SAKDebuggerDevice* SAKUdpServerDebugger::device()
 SAKDebuggerController *SAKUdpServerDebugger::controller()
 {
     return mController;
+}
+
+void SAKUdpServerDebugger::addActionToDeviceMenu(QMenu *menu)
+{
+    menu->addAction(tr("Multicast Editor"), mMulticast,
+                    &SAKUdpServerMulticast::show);
+}
+
+void SAKUdpServerDebugger::updateUiState(bool opened)
+{
+    mMulticast->updateUiState(opened);
 }

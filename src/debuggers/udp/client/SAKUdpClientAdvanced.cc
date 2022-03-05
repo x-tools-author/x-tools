@@ -36,9 +36,9 @@ SAKUdpClientAdvanced::SAKUdpClientAdvanced(QSettings *settings,
 
     // Initialize table widget.
     QStringList headerLabels;
-    headerLabels << tr("Unicast address")
-                 << tr("Multicast address")
-                 << tr("Boardcast port");
+    headerLabels << tr("Unicast Address")
+                 << tr("Multicast Address")
+                 << tr("Boardcast Port");
     QTableWidget *tw = ui->tableWidget;
     tw->setColumnCount(headerLabels.length());
     tw->setHorizontalHeaderLabels(headerLabels);
@@ -69,7 +69,6 @@ SAKUdpClientAdvanced::SAKUdpClientAdvanced(QSettings *settings,
         hbl->addWidget(cb);
         hbl->addWidget(le);
         tw->setCellWidget(row, column, w);
-        tw->item(row, column);
     }
 
     connect(ui->importPushButton, &QPushButton::clicked,

@@ -10,8 +10,10 @@
 #ifndef SAKUDPSERVERDEVICE_HH
 #define SAKUDPSERVERDEVICE_HH
 
+#include <QMutex>
 #include <QThread>
 #include <QUdpSocket>
+#include <QJsonObject>
 
 #include "SAKDebuggerDevice.hh"
 
@@ -25,6 +27,7 @@ public:
                        const QString &settingsGroup,
                        QWidget *uiParent = Q_NULLPTR,
                        QObject *parent = Q_NULLPTR);
+    void setMulticastParameters(const QJsonArray &parameters);
 private:
     bool initialize() final;
     QByteArray read() final;
@@ -32,6 +35,10 @@ private:
     void uninitialize() final;
 private:
     QUdpSocket *mUdpServer;
+    QStringList mMulticastHostList;
+    QMutex mMulticastHostListMutex;
+private:
+    QStringList multicastParameters();
 signals:
     void addClient(QString host, quint16 port);
 };
