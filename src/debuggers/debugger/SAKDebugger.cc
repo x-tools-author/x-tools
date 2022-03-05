@@ -217,6 +217,8 @@ void SAKDebugger::initDebuggerDevice()
         mClearInfoTimer.start();
         mUi->switchPushButton->setEnabled(true);
         updateUiState(false);
+        mModuleDevice->exit(0);
+        mModuleDevice->wait();
     });
     connect(mModuleDevice, &SAKDebuggerDevice::started,
             this, [=](){
