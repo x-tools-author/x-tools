@@ -139,6 +139,8 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
     title.append(QString(" "));
     title.append(QString("v"));
     title.append(qobject_cast<SAKApplication*>(qApp)->applicationVersion());
+    title.append(" ");
+    title.append(SAK_EDITION);
     setWindowTitle(title);
 #endif
 

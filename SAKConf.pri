@@ -26,6 +26,7 @@ win32|unix {
 
 #↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 # Application version
+DEFINES += SAK_EDITION=\"\\\"beta1\\\"\"
 DEFINES += SAK_VERSION=\"\\\"4.0.0\\\"\"
 # File information
 VERSION = 4.0.0
