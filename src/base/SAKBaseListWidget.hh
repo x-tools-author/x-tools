@@ -33,6 +33,8 @@ public:
     ~SAKBaseListWidget();
     void onBytesRead(QByteArray bytes);
     bool forbidAllItems();
+    void setForbidAllItems(bool forbiden);
+    void hideForbidenCheckBox();
 protected:
     QSqlDatabase *mSqlDatabase;
     QSettings *mSettings;

@@ -97,6 +97,17 @@ bool SAKBaseListWidget::forbidAllItems()
     return mUi->forbidAllItemsCheckBox->isChecked();
 }
 
+void SAKBaseListWidget::setForbidAllItems(bool forbiden)
+{
+    mUi->forbidAllItemsCheckBox->setChecked(forbiden);
+    mSettings->setValue(mForbidAllItemsSettingsKey, forbiden);
+}
+
+void SAKBaseListWidget::hideForbidenCheckBox()
+{
+    mUi->forbidAllItemsCheckBox->hide();
+}
+
 void SAKBaseListWidget::updateRecord(quint64 id, QString columnName, QVariant value)
 {
     QString queryString;
