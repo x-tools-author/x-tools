@@ -105,7 +105,8 @@ QByteArray SAKUdpClientDevice::read()
         quint16 port;
         qint64 ret = mUdpSocket->readDatagram(data.data(), data.length(), &host, &port);
         if (ret > 0){
-            emit bytesRead(data, host.toString() + ":" + port);
+            emit bytesRead(data,
+                           host.toString() + ":" + QString::number(port));
         }
     }
 
