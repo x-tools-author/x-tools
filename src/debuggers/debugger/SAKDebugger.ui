@@ -193,13 +193,6 @@
      </property>
     </spacer>
    </item>
-   <item row="10" column="1">
-    <widget class="QPushButton" name="pluginsPushButton">
-     <property name="text">
-      <string>Plugins</string>
-     </property>
-    </widget>
-   </item>
    <item row="2" column="0" colspan="2">
     <widget class="QWidget" name="controllerWidget" native="true"/>
    </item>
@@ -260,13 +253,6 @@
      </property>
      <property name="text">
       <string>Data output</string>
-     </property>
-    </widget>
-   </item>
-   <item row="10" column="0">
-    <widget class="QPushButton" name="readmePushButton">
-     <property name="text">
-      <string>AboutPlugin</string>
      </property>
     </widget>
    </item>
@@ -541,6 +527,20 @@ p, li { white-space: pre-wrap; }
     <widget class="Line" name="line">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="1">
+    <widget class="QPushButton" name="readmePushButton">
+     <property name="text">
+      <string>AboutPlugin</string>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="0">
+    <widget class="QPushButton" name="pluginsPushButton">
+     <property name="text">
+      <string>Plugins</string>
      </property>
     </widget>
    </item>
