@@ -24,7 +24,8 @@ SAKTcpServerDebugger::SAKTcpServerDebugger(QSettings *settings,
     connect(mDevice, &SAKTcpServerDevice::addClient,
             mController, &SAKTcpServerController::onAddClient);
     connect(mDevice, &SAKTcpServerDevice::removeClient,
-            mController, &SAKTcpServerController::onRemoveClient);
+            mController, &SAKTcpServerController::onRemoveClient,
+            Qt::QueuedConnection);
 }
 
 SAKDebuggerDevice* SAKTcpServerDebugger::device()

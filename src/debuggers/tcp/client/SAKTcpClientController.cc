@@ -36,13 +36,15 @@ SAKTcpClientController::SAKTcpClientController(QSettings *settings,
     refreshDevice();
 
     // Read in settings data.
-    SAKUdpClientParametersContext ctx;
+    SAKTcpClientParametersContext ctx;
     microIni2CoB(settings, settingsGroup, ctx.localHost, mLocalhostComboBox);
     microIni2LE(settings, settingsGroup, ctx.locarPort, mLocalPortlineEdit);
     microIni2LE(settings, settingsGroup, ctx.peerHost, mServerHostLineEdit);
     microIni2LE(settings, settingsGroup, ctx.peerPort, mServerPortLineEdit);
     microIni2ChB(settings, settingsGroup,
                  ctx.specifyLocalInfo, mSpecifyClientAddressAndPort);
+    microIni2ChB(settings, settingsGroup,
+                 ctx.allowAutomaticConnection, mAutomaticConnectionCheckBox);
 
 #if QT_VERSION >= QT_VERSION_CHECK(5,7,0)
     connect(mLocalhostComboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
@@ -70,6 +72,9 @@ SAKTcpClientController::SAKTcpClientController(QSettings *settings,
     connect(mAutomaticConnectionCheckBox, &QCheckBox::clicked,
             this, [=](){
         emit parametersContextChanged();
+        microChB2Ini(settings, settingsGroup,
+                     ctx.allowAutomaticConnection,
+                     mAutomaticConnectionCheckBox);
     });
     connect(mServerHostLineEdit, &QLineEdit::textChanged,
             this, [=](const QString &text){

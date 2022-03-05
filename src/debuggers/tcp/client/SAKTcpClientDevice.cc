@@ -32,8 +32,7 @@ SAKTcpClientDevice::SAKTcpClientDevice(QSettings *settings,
             timer->setInterval(2000);
             timer->setSingleShot(true);
             connect(timer, &QTimer::timeout, this, [=](){
-                auto ret = qobject_cast<QTimer*>(sender());
-                delete ret;
+                timer->deleteLater();
                 start();
             });
             timer->start();
@@ -92,6 +91,13 @@ bool SAKTcpClientDevice::initialize()
 
     connect(mTcpSocket, &QTcpSocket::disconnected, this, [=](){
         emit errorOccurred(QString("Connection has been closed!"));
+    });
+    connect(mTcpSocket,
+            QOverload<QAbstractSocket::SocketError>::of(&QTcpSocket::error),
+            this, [=](QAbstractSocket::SocketError err){
+        if (err != QAbstractSocket::RemoteHostClosedError) {
+            emit errorOccurred(mTcpSocket->errorString());
+        }
     });
 
     return true;
