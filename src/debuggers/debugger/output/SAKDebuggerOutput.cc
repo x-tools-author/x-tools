@@ -26,6 +26,7 @@ SAKDebuggerOutput::SAKDebuggerOutput(QPushButton *menuBt, QComboBox *formatCB,
                                      QTextBrowser *textBrower,
                                      QWidget *uiParent, QObject *parent)
     :QThread(parent)
+    ,mIsFirst(true)
     ,mSettingsGroup(settingGroup)
     ,mFormatComboBox(formatCB)
     ,mSettings(settings)
@@ -192,6 +193,10 @@ SAKDebuggerOutput::SAKDebuggerOutput(QPushButton *menuBt, QComboBox *formatCB,
 
     connect(this, &SAKDebuggerOutput::bytesCooked,
             this, [=](QString dataString, bool faceWithoutMakeup) {
+        if (mIsFirst) {
+            mIsFirst = false;
+            mTextBrower->clear();
+        }
         if (faceWithoutMakeup) {
             mTextBrower->textCursor().movePosition(QTextCursor::End);
             mTextBrower->insertHtml(dataString);

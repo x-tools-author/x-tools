@@ -72,6 +72,7 @@ public:
 protected:
     void run() override;
 private:
+    bool mIsFirst;
     QMutex mDataVectorMutex;
     QMutex mOutputParametersCtxMutex;
     QString mSettingsGroup;
