@@ -44,6 +44,13 @@ SAKDebuggerInputDataPresetItem::SAKDebuggerInputDataPresetItem(
     mUi->descriptionLineEdit->setText(context.description);
     mUi->dataLineEdit->setText(context.data);
     blockUiComponentsSignals(false);
+
+    connect(mUi->sendPushButton, &QPushButton::clicked, this, [=](){
+        SAKStructItemContext ctx = this->context();
+        QByteArray data = SAKCommonDataStructure::stringToByteArray(
+                    ctx.data, ctx.format);
+        emit invokeWriteCookedBytes(data);
+    });
 }
 
 SAKDebuggerInputDataPresetItem::~SAKDebuggerInputDataPresetItem()

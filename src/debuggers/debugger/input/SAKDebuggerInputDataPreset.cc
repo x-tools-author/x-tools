@@ -45,6 +45,8 @@ SAKDebuggerInputDataPreset::SAKDebuggerInputDataPreset(
     initialize();
 
     setContentsMargins(4, 4, 4, 4);
+    setForbidAllItems(false);
+    hideForbidenCheckBox();
 }
 
 void SAKDebuggerInputDataPreset::onDescriptionChanged(quint64 id,

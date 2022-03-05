@@ -545,7 +545,7 @@ void SAKDebuggerInput::initSubModuleDataPreset()
     QHBoxLayout *layout = new QHBoxLayout();
     layout->setContentsMargins(0, 0, 0, 0);
     mDataPresetDialog->setLayout(layout);
-    mDataPresetDialog->setModal(true);
+    mDataPresetDialog->setModal(false);
     mDataPresetDialog->setContentsMargins(2, 2, 2, 2);
     mDataPresetDialog->resize(800, 350);
     mDataPresetDialog->setWindowTitle(tr("Preset Data"));
@@ -562,6 +562,10 @@ void SAKDebuggerInput::initSubModuleDataPreset()
         auto parasCtx = mInputParameters;
         parasCtx.textFormat = format;
         inputBytes(rawData, parasCtx);
+    });
+    connect(mDataPreset, &SAKDebuggerInputDataPreset::invokeWriteCookedBytes,
+            this, [&](const QByteArray &bytes){
+        emit invokeWriteCookedBytes(bytes);
     });
 }
 
