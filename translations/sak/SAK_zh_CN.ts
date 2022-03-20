@@ -134,32 +134,32 @@
         <translation>禁用全部</translation>
     </message>
     <message>
-        <location filename="../../src/base/SAKBaseListWidget.cc" line="143"/>
+        <location filename="../../src/base/SAKBaseListWidget.cc" line="154"/>
         <source>Clear Data</source>
         <translation>清空数据</translation>
     </message>
     <message>
-        <location filename="../../src/base/SAKBaseListWidget.cc" line="144"/>
+        <location filename="../../src/base/SAKBaseListWidget.cc" line="155"/>
         <source>All data items will be deleted!</source>
         <translation>所有数据将会被删除！</translation>
     </message>
     <message>
-        <location filename="../../src/base/SAKBaseListWidget.cc" line="146"/>
+        <location filename="../../src/base/SAKBaseListWidget.cc" line="157"/>
         <source>Are you sure you want to do this?</source>
         <translation>确定执行操作？</translation>
     </message>
     <message>
-        <location filename="../../src/base/SAKBaseListWidget.cc" line="164"/>
+        <location filename="../../src/base/SAKBaseListWidget.cc" line="175"/>
         <source>Import data</source>
         <translation>导入数据</translation>
     </message>
     <message>
-        <location filename="../../src/base/SAKBaseListWidget.cc" line="213"/>
+        <location filename="../../src/base/SAKBaseListWidget.cc" line="224"/>
         <source>Outport data</source>
         <translation>导出数据</translation>
     </message>
     <message>
-        <location filename="../../src/base/SAKBaseListWidget.cc" line="244"/>
+        <location filename="../../src/base/SAKBaseListWidget.cc" line="255"/>
         <source>Plese select an item first.</source>
         <translation>请选择要删除的项目后操作。</translation>
     </message>
@@ -1222,27 +1222,32 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SAKDebuggerInputDataPresetItem</name>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputDataPresetItem.ui" line="47"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputDataPresetItem.ui" line="56"/>
         <source>Description</source>
         <translation>描述</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputDataPresetItem.ui" line="62"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputDataPresetItem.ui" line="48"/>
         <source>Ascii</source>
         <translation>ASCII</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputDataPresetItem.ui" line="70"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputDataPresetItem.ui" line="107"/>
         <source>Text Format</source>
         <translation>文本格式</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputDataPresetItem.ui" line="77"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputDataPresetItem.ui" line="114"/>
+        <source>Send</source>
+        <translation>发送数据</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputDataPresetItem.ui" line="79"/>
         <source>Data</source>
         <translation>数据</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputDataPresetItem.ui" line="90"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputDataPresetItem.ui" line="69"/>
         <source>HeartBeat</source>
         <translation>心跳包</translation>
     </message>
@@ -2255,59 +2260,72 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SAKModbusClientController</name>
     <message>
+        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="50"/>
         <source>Can not get the value of register which type is:%1</source>
-        <translation type="vanished">无法从指定的寄存器（类型为：%1）中获取数值</translation>
+        <translation>无法从指定的寄存器（类型为：%1）中获取数值</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="103"/>
         <source>Send reading request error:%1</source>
-        <translation type="vanished">发送读请求错误：%1</translation>
+        <translation>发送读请求错误：%1</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="116"/>
         <source>Writing reply error: %1 (Mobus exception: 0x%2)</source>
-        <translation type="vanished">写应答错误：%1（异常代码为：0x%2）</translation>
+        <translation>写应答错误：%1（异常代码为：0x%2）</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="121"/>
         <source>Writing reply error: %1 (code: 0x%2)</source>
-        <translation type="vanished">写应答错误：%1（错误代码：%2）</translation>
+        <translation>写应答错误：%1（错误代码：%2）</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="135"/>
         <source>Write error: %1</source>
-        <translation type="vanished">写操作错误：%1</translation>
+        <translation>写操作错误：%1</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="155"/>
         <source>Received a reply:</source>
-        <translation type="vanished">收到应答：</translation>
+        <translation>收到应答：</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="160"/>
         <source>[Address: %1, Value: %2]</source>
-        <translation type="vanished">【地址：%1，数值：%2】</translation>
+        <translation>【地址：%1，数值：%2】</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="167"/>
         <source>Read response error: %1 (Mobus exception: 0x%2)</source>
-        <translation type="vanished">读应答错误：%1（异常代码为：0x%2）</translation>
+        <translation>读应答错误：%1（异常代码为：0x%2）</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="171"/>
         <source>Read response error: %1 (code: 0x%2)</source>
-        <translation type="vanished">读应答错误：%1（错误代码：%2）</translation>
+        <translation>读应答错误：%1（错误代码：%2）</translation>
     </message>
 </context>
 <context>
     <name>SAKModbusCommonClientSection</name>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonClientSection.ui" line="38"/>
         <source>Parameters settings</source>
-        <translation type="vanished">参数设置</translation>
+        <translation>参数设置</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonClientSection.ui" line="50"/>
         <source>Timeout</source>
-        <translation type="vanished">超时时间</translation>
+        <translation>超时时间</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonClientSection.ui" line="57"/>
         <source>Unit is ms</source>
-        <translation type="vanished">单位为毫秒</translation>
+        <translation>单位为毫秒</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonClientSection.ui" line="76"/>
         <source>Repeat times</source>
-        <translation type="vanished">重复次数</translation>
+        <translation>重复次数</translation>
     </message>
     <message>
         <source>Function code</source>
@@ -2373,76 +2391,94 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SAKModbusCommonController</name>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="84"/>
         <source>Error Occurred</source>
-        <translation type="vanished">遇到错误</translation>
+        <translation>遇到错误</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="84"/>
         <source>Error Occured:%1 Please check the parameters and try again!</source>
-        <translation type="vanished">遇到错误：%1 请检查参数设置后重试！</translation>
+        <translation>遇到错误：%1 请检查参数设置后重试！</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="85"/>
         <source>Error occurred:%1</source>
-        <translation type="vanished">遇到错误：%1</translation>
+        <translation>遇到错误：%1</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="90"/>
         <source>Modbus device is connected!</source>
-        <translation type="vanished">MODBUS设备已连接！</translation>
+        <translation>MODBUS设备已连接！</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="92"/>
         <source>Modbus device is connecting!</source>
-        <translation type="vanished">MODBUS设备正在连接！</translation>
+        <translation>MODBUS设备正在连接！</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="94"/>
         <source>Modbus device is closing!</source>
-        <translation type="vanished">MODBUS设备正在关闭！</translation>
+        <translation>MODBUS设备正在关闭！</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="96"/>
         <source>Modbus device is unconnected!</source>
-        <translation type="vanished">MODBUS设备未连接！</translation>
+        <translation>MODBUS设备未连接！</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="98"/>
         <source>Unknownn state(%1) of modbus device!</source>
-        <translation type="vanished">未知的MODBUS设备状态（%1）！</translation>
+        <translation>未知的MODBUS设备状态（%1）！</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="133"/>
+        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="140"/>
         <source>Export Register Data</source>
-        <translation type="vanished">导出寄存器数据</translation>
+        <translation>导出寄存器数据</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="182"/>
         <source>Export Data Successfully</source>
-        <translation type="vanished">导出寄存器数据成功</translation>
+        <translation>导出寄存器数据成功</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="182"/>
         <source>The data was exported successfully!</source>
-        <translation type="vanished">数据成功导出！</translation>
+        <translation>数据成功导出！</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="186"/>
         <source>Export Data Failed</source>
-        <translation type="vanished">导出数据失败</translation>
+        <translation>导出数据失败</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="186"/>
         <source>The data was exported failed:%1</source>
-        <translation type="vanished">导出数据失败：%1</translation>
+        <translation>导出数据失败：%1</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="231"/>
         <source>The data was imported failed:%1</source>
-        <translation type="vanished">The data was exported failed:%1</translation>
+        <translation>The data was exported failed:%1</translation>
     </message>
     <message>
         <source>The data was exported failed:%s</source>
         <translation type="vanished">导出数据失败：%s</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="227"/>
         <source>Import Data Successfully</source>
-        <translation type="vanished">导入数据成功</translation>
+        <translation>导入数据成功</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="227"/>
         <source>The data was imported successfully!</source>
-        <translation type="vanished">数据导入成功!</translation>
+        <translation>数据导入成功!</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="231"/>
         <source>Import Data Failed</source>
-        <translation type="vanished">数据导入失败</translation>
+        <translation>数据导入失败</translation>
     </message>
     <message>
         <source>The data was imported failed:%s</source>
@@ -2452,77 +2488,93 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SAKModbusCommonHostSection</name>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonHostSection.ui" line="38"/>
         <source>Host settings</source>
-        <translation type="vanished">主机设置</translation>
+        <translation>主机设置</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonHostSection.ui" line="50"/>
         <source>Port</source>
-        <translation type="vanished">主机端口</translation>
+        <translation>主机端口</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonHostSection.ui" line="63"/>
         <source>Address</source>
-        <translation type="vanished">主机地址</translation>
+        <translation>主机地址</translation>
     </message>
 </context>
 <context>
     <name>SAKModbusCommonRegisterViewController</name>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonRegisterViewController.ui" line="45"/>
         <source>Start address</source>
-        <translation type="vanished">起始地址</translation>
+        <translation>起始地址</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonRegisterViewController.ui" line="75"/>
         <source>Import</source>
-        <translation type="vanished">导入数据</translation>
+        <translation>导入数据</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonRegisterViewController.ui" line="82"/>
         <source>Export</source>
-        <translation type="vanished">导出数据</translation>
+        <translation>导出数据</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonRegisterViewController.ui" line="89"/>
         <source>Register number</source>
-        <translation type="vanished">寄存器数量</translation>
+        <translation>寄存器数量</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonRegisterViewController.ui" line="96"/>
         <source>Update</source>
-        <translation type="vanished">更新显示</translation>
+        <translation>更新显示</translation>
     </message>
 </context>
 <context>
     <name>SAKModbusCommonReigsterView</name>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonReigsterView.ui" line="14"/>
         <source>Form</source>
-        <translation type="vanished">Form</translation>
+        <translation>Form</translation>
     </message>
 </context>
 <context>
     <name>SAKModbusCommonSerialPortSection</name>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonSerialPortSection.ui" line="44"/>
         <source>Serial port settings</source>
-        <translation type="vanished">串口设置</translation>
+        <translation>串口设置</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonSerialPortSection.ui" line="56"/>
         <source>Port name</source>
-        <translation type="vanished">端口号</translation>
+        <translation>端口号</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonSerialPortSection.ui" line="79"/>
         <source>Data bits</source>
-        <translation type="vanished">数据位数据位</translation>
+        <translation>数据位数据位</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonSerialPortSection.ui" line="95"/>
         <source>Parity</source>
-        <translation type="vanished">校验位</translation>
+        <translation>校验位</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonSerialPortSection.ui" line="118"/>
         <source>Baud rate</source>
-        <translation type="vanished">波特率</translation>
+        <translation>波特率</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonSerialPortSection.ui" line="134"/>
         <source>Stop bits</source>
-        <translation type="vanished">停止位</translation>
+        <translation>停止位</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonSerialPortSection.ui" line="144"/>
         <source>Custom baud rate</source>
-        <translation type="vanished">自定义波特率</translation>
+        <translation>自定义波特率</translation>
     </message>
     <message>
         <source>No</source>
@@ -2548,95 +2600,115 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SAKModbusCommonServerSection</name>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonServerSection.ui" line="38"/>
         <source>Parameters settings</source>
-        <translation type="vanished">参数设置</translation>
+        <translation>参数设置</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonServerSection.ui" line="51"/>
         <source>Just listen</source>
-        <translation type="vanished">仅监听</translation>
+        <translation>仅监听</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonServerSection.ui" line="64"/>
         <source>Device address</source>
-        <translation type="vanished">设备地址</translation>
+        <translation>设备地址</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonServerSection.ui" line="44"/>
         <source>Device is busy</source>
-        <translation type="vanished">设备繁忙</translation>
+        <translation>设备繁忙</translation>
     </message>
 </context>
 <context>
     <name>SAKModbusDebugPage</name>
     <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="107"/>
         <source>Console</source>
-        <translation type="vanished">终端</translation>
+        <translation>终端</translation>
     </message>
     <message>
         <source>Clear</source>
         <translation type="vanished">清空</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="220"/>
         <source>Coils</source>
-        <translation type="vanished">线圈</translation>
+        <translation>线圈</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="225"/>
         <source>Discrete Inputs</source>
-        <translation type="vanished">离散输入</translation>
+        <translation>离散输入</translation>
     </message>
     <message>
         <source> Holding Registers</source>
         <translation type="vanished"> 保持寄存器</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="230"/>
         <source>Holding Registers</source>
-        <translation type="vanished">保持寄存器</translation>
+        <translation>保持寄存器</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="235"/>
         <source>Input Registers</source>
-        <translation type="vanished">输入寄存器</translation>
+        <translation>输入寄存器</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="39"/>
         <source>Device selection</source>
-        <translation type="vanished">设备选择</translation>
+        <translation>设备选择</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="57"/>
         <source>Disconnect</source>
-        <translation type="vanished">断开设备</translation>
+        <translation>断开设备</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="64"/>
         <source>Connect</source>
-        <translation type="vanished">连接设备</translation>
+        <translation>连接设备</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="87"/>
         <source>Device type</source>
-        <translation type="vanished">设备类型</translation>
+        <translation>设备类型</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="116"/>
         <source>Operation panel</source>
-        <translation type="vanished">操作面板</translation>
+        <translation>操作面板</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="122"/>
         <source>Function code</source>
-        <translation type="vanished">功能码</translation>
+        <translation>功能码</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="129"/>
         <source>Start address</source>
-        <translation type="vanished">起始地址</translation>
+        <translation>起始地址</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="136"/>
         <source>Address number</source>
-        <translation type="vanished">地址个数</translation>
+        <translation>地址个数</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="156"/>
         <source>Read</source>
-        <translation type="vanished">读取</translation>
+        <translation>读取</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="186"/>
         <source>Write</source>
-        <translation type="vanished">写入</translation>
+        <translation>写入</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="203"/>
         <source>Server address</source>
-        <translation type="vanished">服务器地址</translation>
+        <translation>服务器地址</translation>
     </message>
     <message>
         <source>Tcp Client</source>
@@ -2658,91 +2730,113 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SAKModbusDebugger</name>
     <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="93"/>
         <source>Tcp Client</source>
-        <translation type="vanished">TCP客户端</translation>
+        <translation>TCP客户端</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="94"/>
         <source>Tcp Server</source>
-        <translation type="vanished">TCP服务器</translation>
+        <translation>TCP服务器</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="95"/>
         <source>SerialPort Client</source>
-        <translation type="vanished">串口主机</translation>
+        <translation>串口主机</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="96"/>
         <source>SerialPort Server</source>
-        <translation type="vanished">串口从机</translation>
+        <translation>串口从机</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="113"/>
         <source>Read Coils(0x01)</source>
-        <translation type="vanished">读线圈（0x01）</translation>
+        <translation>读线圈（0x01）</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="115"/>
         <source>Read Discrete Inputs(0x02)</source>
-        <translation type="vanished">读离散输入（0x02）</translation>
+        <translation>读离散输入（0x02）</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="117"/>
         <source>Read Holding Registers(0x03)</source>
-        <translation type="vanished">读保持寄存器（0x03）</translation>
+        <translation>读保持寄存器（0x03）</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="119"/>
         <source>Read Input Registers(0x04)</source>
-        <translation type="vanished">读输入寄存器（0x04）</translation>
+        <translation>读输入寄存器（0x04）</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="121"/>
         <source>Write Coils(0x0F)</source>
-        <translation type="vanished">写多个线圈（0x0f）</translation>
+        <translation>写多个线圈（0x0f）</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="123"/>
         <source>Write Registers(0x10)</source>
-        <translation type="vanished">写多个寄存器（0x10）</translation>
+        <translation>写多个寄存器（0x10）</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="320"/>
         <source>Address</source>
-        <translation type="vanished">地址</translation>
+        <translation>地址</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="321"/>
         <source>Value(Bin)</source>
-        <translation type="vanished">数据（二进制）</translation>
+        <translation>数据（二进制）</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="322"/>
         <source>Value(Otc)</source>
-        <translation type="vanished">数据（八进制）</translation>
+        <translation>数据（八进制）</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="323"/>
         <source>Value(Dec)</source>
-        <translation type="vanished">数据（十进制）</translation>
+        <translation>数据（十进制）</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="324"/>
         <source>Value(Hex)</source>
-        <translation type="vanished">数据（十六进制）</translation>
+        <translation>数据（十六进制）</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="450"/>
         <source>Register(s) read:</source>
-        <translation type="vanished">已读取寄存器：</translation>
+        <translation>已读取寄存器：</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="455"/>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="515"/>
         <source>[Address: %1, Value: %2]</source>
-        <translation type="vanished">【地址：%1，数值：%2】</translation>
+        <translation>【地址：%1，数值：%2】</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="481"/>
         <source>Send reading request error:%1</source>
-        <translation type="vanished">发送读请求错误：%1</translation>
+        <translation>发送读请求错误：%1</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="510"/>
         <source>Register(s) Written:</source>
-        <translation type="vanished">已写入寄存器：</translation>
+        <translation>已写入寄存器：</translation>
     </message>
     <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="539"/>
         <source>Write error: %1</source>
-        <translation type="vanished">写操作错误：%1</translation>
+        <translation>写操作错误：%1</translation>
     </message>
 </context>
 <context>
     <name>SAKModbusServerController</name>
     <message>
+        <location filename="../../src/modbus/server/SAKModbusServerController.cc" line="44"/>
         <source>Can not get the value of register which type is:%1</source>
-        <translation type="vanished">无法从指定的寄存器类型（%1）中获取数据</translation>
+        <translation>无法从指定的寄存器类型（%1）中获取数据</translation>
     </message>
 </context>
 <context>

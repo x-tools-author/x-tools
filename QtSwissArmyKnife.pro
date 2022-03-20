@@ -39,6 +39,7 @@ include(SAKConf.pri)
 include(SAKSetup.pri)
 include(src/tools/SAKTools.pri)
 include(platform/SAKPlatform.pri)
+include(src/modbus/SAKModbus.pri)
 include(src/debuggers/SAKDebuggers.pri)
 
 exists(private/SAKPrivate.pri){

@@ -290,32 +290,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/base/SAKBaseListWidget.cc" line="143"/>
+        <location filename="../../src/base/SAKBaseListWidget.cc" line="154"/>
         <source>Clear Data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/base/SAKBaseListWidget.cc" line="144"/>
+        <location filename="../../src/base/SAKBaseListWidget.cc" line="155"/>
         <source>All data items will be deleted!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/base/SAKBaseListWidget.cc" line="146"/>
+        <location filename="../../src/base/SAKBaseListWidget.cc" line="157"/>
         <source>Are you sure you want to do this?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/base/SAKBaseListWidget.cc" line="164"/>
+        <location filename="../../src/base/SAKBaseListWidget.cc" line="175"/>
         <source>Import data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/base/SAKBaseListWidget.cc" line="213"/>
+        <location filename="../../src/base/SAKBaseListWidget.cc" line="224"/>
         <source>Outport data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/base/SAKBaseListWidget.cc" line="244"/>
+        <location filename="../../src/base/SAKBaseListWidget.cc" line="255"/>
         <source>Plese select an item first.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1269,27 +1269,32 @@
 <context>
     <name>SAKDebuggerInputDataPresetItem</name>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputDataPresetItem.ui" line="47"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputDataPresetItem.ui" line="56"/>
         <source>Description</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputDataPresetItem.ui" line="62"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputDataPresetItem.ui" line="48"/>
         <source>Ascii</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputDataPresetItem.ui" line="70"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputDataPresetItem.ui" line="107"/>
         <source>Text Format</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputDataPresetItem.ui" line="77"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputDataPresetItem.ui" line="114"/>
+        <source>Send</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputDataPresetItem.ui" line="79"/>
         <source>Data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputDataPresetItem.ui" line="90"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInputDataPresetItem.ui" line="69"/>
         <source>HeartBeat</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2591,6 +2596,476 @@
     <message>
         <source>软件语言包已更改，重启软件生效！</source>
         <translation type="vanished">The language packet has been changed, please restart the application to effective!</translation>
+    </message>
+</context>
+<context>
+    <name>SAKModbusClientController</name>
+    <message>
+        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="50"/>
+        <source>Can not get the value of register which type is:%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="103"/>
+        <source>Send reading request error:%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="116"/>
+        <source>Writing reply error: %1 (Mobus exception: 0x%2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="121"/>
+        <source>Writing reply error: %1 (code: 0x%2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="135"/>
+        <source>Write error: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="155"/>
+        <source>Received a reply:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="160"/>
+        <source>[Address: %1, Value: %2]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="167"/>
+        <source>Read response error: %1 (Mobus exception: 0x%2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="171"/>
+        <source>Read response error: %1 (code: 0x%2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SAKModbusCommonClientSection</name>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonClientSection.ui" line="38"/>
+        <source>Parameters settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonClientSection.ui" line="50"/>
+        <source>Timeout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonClientSection.ui" line="57"/>
+        <source>Unit is ms</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonClientSection.ui" line="76"/>
+        <source>Repeat times</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SAKModbusCommonController</name>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="84"/>
+        <source>Error Occurred</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="84"/>
+        <source>Error Occured:%1 Please check the parameters and try again!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="85"/>
+        <source>Error occurred:%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="90"/>
+        <source>Modbus device is connected!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="92"/>
+        <source>Modbus device is connecting!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="94"/>
+        <source>Modbus device is closing!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="96"/>
+        <source>Modbus device is unconnected!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="98"/>
+        <source>Unknownn state(%1) of modbus device!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="133"/>
+        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="140"/>
+        <source>Export Register Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="182"/>
+        <source>Export Data Successfully</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="182"/>
+        <source>The data was exported successfully!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="186"/>
+        <source>Export Data Failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="186"/>
+        <source>The data was exported failed:%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="227"/>
+        <source>Import Data Successfully</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="227"/>
+        <source>The data was imported successfully!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="231"/>
+        <source>Import Data Failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="231"/>
+        <source>The data was imported failed:%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SAKModbusCommonHostSection</name>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonHostSection.ui" line="38"/>
+        <source>Host settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonHostSection.ui" line="50"/>
+        <source>Port</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonHostSection.ui" line="63"/>
+        <source>Address</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SAKModbusCommonRegisterViewController</name>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonRegisterViewController.ui" line="45"/>
+        <source>Start address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonRegisterViewController.ui" line="75"/>
+        <source>Import</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonRegisterViewController.ui" line="82"/>
+        <source>Export</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonRegisterViewController.ui" line="89"/>
+        <source>Register number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonRegisterViewController.ui" line="96"/>
+        <source>Update</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SAKModbusCommonReigsterView</name>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonReigsterView.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SAKModbusCommonSerialPortSection</name>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonSerialPortSection.ui" line="44"/>
+        <source>Serial port settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonSerialPortSection.ui" line="56"/>
+        <source>Port name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonSerialPortSection.ui" line="79"/>
+        <source>Data bits</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonSerialPortSection.ui" line="95"/>
+        <source>Parity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonSerialPortSection.ui" line="118"/>
+        <source>Baud rate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonSerialPortSection.ui" line="134"/>
+        <source>Stop bits</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonSerialPortSection.ui" line="144"/>
+        <source>Custom baud rate</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SAKModbusCommonServerSection</name>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonServerSection.ui" line="38"/>
+        <source>Parameters settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonServerSection.ui" line="44"/>
+        <source>Device is busy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonServerSection.ui" line="51"/>
+        <source>Just listen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/common/SAKModbusCommonServerSection.ui" line="64"/>
+        <source>Device address</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SAKModbusDebugPage</name>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="39"/>
+        <source>Device selection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="57"/>
+        <source>Disconnect</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="64"/>
+        <source>Connect</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="87"/>
+        <source>Device type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="107"/>
+        <source>Console</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="116"/>
+        <source>Operation panel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="122"/>
+        <source>Function code</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="129"/>
+        <source>Start address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="136"/>
+        <source>Address number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="156"/>
+        <source>Read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="186"/>
+        <source>Write</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="203"/>
+        <source>Server address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="220"/>
+        <source>Coils</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="225"/>
+        <source>Discrete Inputs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="230"/>
+        <source>Holding Registers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="235"/>
+        <source>Input Registers</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SAKModbusDebugger</name>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="93"/>
+        <source>Tcp Client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="94"/>
+        <source>Tcp Server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="95"/>
+        <source>SerialPort Client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="96"/>
+        <source>SerialPort Server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="113"/>
+        <source>Read Coils(0x01)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="115"/>
+        <source>Read Discrete Inputs(0x02)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="117"/>
+        <source>Read Holding Registers(0x03)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="119"/>
+        <source>Read Input Registers(0x04)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="121"/>
+        <source>Write Coils(0x0F)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="123"/>
+        <source>Write Registers(0x10)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="320"/>
+        <source>Address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="321"/>
+        <source>Value(Bin)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="322"/>
+        <source>Value(Otc)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="323"/>
+        <source>Value(Dec)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="324"/>
+        <source>Value(Hex)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="450"/>
+        <source>Register(s) read:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="455"/>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="515"/>
+        <source>[Address: %1, Value: %2]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="481"/>
+        <source>Send reading request error:%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="510"/>
+        <source>Register(s) Written:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="539"/>
+        <source>Write error: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SAKModbusServerController</name>
+    <message>
+        <location filename="../../src/modbus/server/SAKModbusServerController.cc" line="44"/>
+        <source>Can not get the value of register which type is:%1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
