@@ -93,7 +93,11 @@ bool SAKTcpClientDevice::initialize()
         emit errorOccurred(QString("Connection has been closed!"));
     });
     connect(mTcpSocket,
+#if QT_VERSION > QT_VERSION_CHECK(5, 14, 0) && QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
             QOverload<QAbstractSocket::SocketError>::of(&QTcpSocket::error),
+#else
+            &QTcpSocket::errorOccurred,
+#endif
             this, [=](QAbstractSocket::SocketError err){
         if (err != QAbstractSocket::RemoteHostClosedError) {
             emit errorOccurred(mTcpSocket->errorString());
