@@ -20,6 +20,7 @@ SAKBaseListWidgetItemWidget::SAKBaseListWidgetItemWidget(QWidget *parent)
 SAKBaseListWidgetItemWidget::SAKBaseListWidgetItemWidget(quint64 id, QWidget *parent)
     :QWidget(parent)
     ,mId(id)
+    ,mEnable(false)
 {
 
 }

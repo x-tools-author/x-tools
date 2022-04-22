@@ -196,6 +196,16 @@ void SAKDebuggerPluginAutoResponse::connectSignalsToSlots(QWidget *itemWidget)
     });
 
     connect(cookedItemWidget,
+            &SAKDebuggerPluginAutoResponseItem::enableChanged,
+            this,
+            [&](quint64 id, bool enable){
+        updateRecord(id,
+                     mTableCtx.columns.enable,
+                     QVariant::fromValue(enable));
+
+    });
+
+    connect(cookedItemWidget,
             &SAKDebuggerPluginAutoResponseItem::referenceTextChanged,
             this,
             [&](quint64 id, const QString &text){
