@@ -155,6 +155,13 @@ void SAKDebuggerPluginAutoResponseItem::setupItem()
         emit descriptionChanged(id(), description);
     });
 
+    connect(mUi->enableCheckBox, &QCheckBox::clicked,
+            this, [&](){
+        bool enable = mUi->enableCheckBox->isChecked();
+        setEnable(enable);
+        emit enableChanged(id(), enable);
+    });
+
     connect(mUi->referenceDataLineEdit, &QLineEdit::textChanged,
             this, [&](const QString description){
         emit referenceTextChanged(id(), description);
@@ -203,6 +210,8 @@ void SAKDebuggerPluginAutoResponseItem::setupItem()
             this, [&](int interval){
         emit delayTimeChanged(id(), interval);
     });
+
+    setEnable(mUi->enableCheckBox->isChecked());
 }
 
 bool SAKDebuggerPluginAutoResponseItem::needToResponse(QByteArray receiveData,
