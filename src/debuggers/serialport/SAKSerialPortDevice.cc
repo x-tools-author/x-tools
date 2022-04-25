@@ -86,7 +86,7 @@ SAKDebuggerDevice::ReadContextVector SAKSerialPortDevice::read()
     ReadContextVector contexts;
 
     if (bytes.length()) {
-        return contexts << ReadContext { bytes };
+        return contexts << ReadContext { bytes, mSerialPort->portName() };
     } else {
         return contexts;
     }
