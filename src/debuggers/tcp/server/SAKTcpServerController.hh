@@ -39,9 +39,12 @@ public:
     void onAddClient(QString host, quint16 port, QTcpSocket *socket);
     void onRemoveClient(QTcpSocket *socket);
 private:
+    void updateClientHostCombox();
+private:
     Ui::SAKTcpServerController *mUi;
     QComboBox *mServerHostComboBox;
     QLineEdit *mServerPortLineEdit;
     QComboBox *mClientHostComboBox;
+    int mCurClientIndex;
 };
 #endif

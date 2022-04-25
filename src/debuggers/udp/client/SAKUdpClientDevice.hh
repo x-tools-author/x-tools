@@ -31,8 +31,8 @@ public:
     ~SAKUdpClientDevice();
 
     bool initialize() final;
-    QByteArray read() final;
-    QByteArray write(const QByteArray &bytes) final;
+    ReadContextVector read() final;
+    WriteContext write(const QByteArray &bytes) final;
     void uninitialize() final;
 
     void setAdvancedCtx(const QJsonObject &parameters);

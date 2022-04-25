@@ -107,19 +107,23 @@ bool SAKTcpClientDevice::initialize()
     return true;
 }
 
-QByteArray SAKTcpClientDevice::read()
+SAKDebuggerDevice::ReadContextVector SAKTcpClientDevice::read()
 {
-    return mTcpSocket->readAll();
+    return ReadContextVector() << ReadContext{ mTcpSocket->readAll(),
+                             QString("%1:%2")
+                             .arg(mTcpSocket->peerAddress().toString())
+                             .arg(mTcpSocket->peerPort()) };
 }
 
-QByteArray SAKTcpClientDevice::write(const QByteArray &bytes)
+SAKDebuggerDevice::WriteContext SAKTcpClientDevice::write(const QByteArray &bytes)
 {
+    WriteContext context;
     qint64 ret = mTcpSocket->write(bytes);
+    context.flag = QString("%1:%2").arg(mTcpSocket->peerAddress().toString()).arg(mTcpSocket->peerPort());
     if (ret > 0){
-        return bytes;
-    }else{
-        return QByteArray();
+        context.bytes = bytes;
     }
+    return context;
 }
 
 void SAKTcpClientDevice::uninitialize()

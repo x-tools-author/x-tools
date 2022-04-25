@@ -35,13 +35,22 @@ public:
     void setParametersContext(QVariant parametersContext);
 protected:
     struct SAKDeviceProtectedSignal {};
+    struct SAKStructDeviceContext {
+        QByteArray bytes;
+        QString flag = "";
+    };
+    typedef SAKStructDeviceContext ReadContext;
+    typedef SAKStructDeviceContext WriteContext;
+    typedef QVector<ReadContext> ReadContextVector;
+    typedef QVector<WriteContext> WriteContextsVector;
+
 protected:
     QByteArray takeBytes();
     void run() override;
 
     virtual bool initialize() = 0;
-    virtual QByteArray read() = 0;
-    virtual QByteArray write(const QByteArray &bytes) = 0;
+    virtual ReadContextVector read() = 0;
+    virtual WriteContext write(const QByteArray &bytes) = 0;
     virtual void uninitialize() = 0;
 signals:
     void readyRead(SAKDebuggerDevice::SAKDeviceProtectedSignal);

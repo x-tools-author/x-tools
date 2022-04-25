@@ -28,8 +28,8 @@ public:
     void generateWriteData(bool start, int interval);
 protected:
     bool initialize() final;
-    QByteArray read() final;
-    QByteArray write(const QByteArray &bytes) final;
+    ReadContextVector read() final;
+    WriteContext write(const QByteArray &bytes) final;
     void uninitialize() final;
 protected:
     void timerEvent(QTimerEvent *event) final;
