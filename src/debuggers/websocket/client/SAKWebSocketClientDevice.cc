@@ -77,13 +77,14 @@ bool SAKWebSocketClientDevice::initialize()
     return true;
 }
 
-QByteArray SAKWebSocketClientDevice::read()
+SAKDebuggerDevice::ReadContextVector SAKWebSocketClientDevice::read()
 {
-    return takeMessage();
+    return ReadContextVector() << ReadContext { takeMessage() };
 }
 
-QByteArray SAKWebSocketClientDevice::write(const QByteArray &bytes)
+SAKDebuggerDevice::WriteContext SAKWebSocketClientDevice::write(const QByteArray &bytes)
 {
+    WriteContext context;
     if (mWebSocket->state() == QAbstractSocket::ConnectedState){
         qint64 ret = 0;
         auto parameters = parametersContext().value<SAKWSClientParametersContext>();
@@ -94,11 +95,12 @@ QByteArray SAKWebSocketClientDevice::write(const QByteArray &bytes)
         }
 
         if (ret > 0) {
-            return bytes;
+            context.bytes = bytes;
         }
+        context.flag = QString("%1:%2").arg(mWebSocket->peerAddress().toString()).arg(mWebSocket->peerPort());
     }
 
-    return QByteArray();
+    return context;
 }
 
 void SAKWebSocketClientDevice::uninitialize()

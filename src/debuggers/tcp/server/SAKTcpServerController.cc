@@ -23,11 +23,13 @@ SAKTcpServerController::SAKTcpServerController(QSettings *settings,
                                                QWidget *parent)
     :SAKDebuggerController(settings, settingsGroup, parent)
     ,mUi(new Ui::SAKTcpServerController)
+    ,mCurClientIndex(0)
 {
     mUi->setupUi(this);
     mServerHostComboBox = mUi->serverhostComboBox;
     mServerPortLineEdit = mUi->serverPortLineEdit;
     mClientHostComboBox = mUi->clientHostComboBox;
+    mClientHostComboBox->addItem(tr("All Connections(%1)").arg(0));
     refreshDevice();
 
     // Read in settings data.
@@ -42,7 +44,7 @@ SAKTcpServerController::SAKTcpServerController(QSettings *settings,
 #endif
 
             this, [=](int index){
-        Q_UNUSED(index);
+        mCurClientIndex = index;
         emit parametersContextChanged();
     });
 #if QT_VERSION >= QT_VERSION_CHECK(5,7,0)
@@ -75,6 +77,7 @@ void SAKTcpServerController::updateUiState(bool opened)
     mServerPortLineEdit->setEnabled(!opened);
     if (!opened) {
         mClientHostComboBox->clear();
+        mClientHostComboBox->addItem(tr("All Connections(%1)").arg(0));
     }
 }
 
@@ -95,7 +98,7 @@ QVariant SAKTcpServerController::parametersContext()
         parameters.currentClientHost = infos.first();
         parameters.currentClientPort = infos.last().toInt();
     } else {
-        parameters.currentClientHost.clear();
+        parameters.currentClientHost = "All Connections";
         parameters.currentClientPort = 0;
     }
 
@@ -104,29 +107,35 @@ QVariant SAKTcpServerController::parametersContext()
 
 void SAKTcpServerController::onAddClient(QString host, quint16 port, QTcpSocket *socket)
 {
+    auto index = mClientHostComboBox->findData(QVariant::fromValue(socket));
+    if (index != -1)
+        return;
+
+    mClientHostComboBox->blockSignals(true);
     QString itemString = host.append(":");
     itemString.append(QString::number(port));
-
-    for(int i = 0; i < mClientHostComboBox->count(); i++){
-        if (mClientHostComboBox->itemText(i).compare(itemString) == 0){
-            mClientHostComboBox->removeItem(i);
-            break;
-        }
-    }
-
     mClientHostComboBox->addItem(itemString, QVariant::fromValue(socket));
     emit parametersContextChanged();
+    updateClientHostCombox();
+    mClientHostComboBox->blockSignals(false);
 }
 
 void SAKTcpServerController::onRemoveClient(QTcpSocket *socket)
 {
-    for(int i = 0; i < mClientHostComboBox->count(); i++){
-        if (mClientHostComboBox->itemData(i).value<QTcpSocket*>() == socket){
-            mClientHostComboBox->removeItem(i);
-            if (i == 0) {
-                emit parametersContextChanged();
-            }
-            break;
-        }
-    }
+    auto index = mClientHostComboBox->findData(QVariant::fromValue(socket));
+    if (index == -1)
+        return;
+
+    mClientHostComboBox->blockSignals(true);
+    mClientHostComboBox->removeItem(index);
+    mCurClientIndex = index == mCurClientIndex ? 0 : mCurClientIndex;
+    updateClientHostCombox();
+    mClientHostComboBox->blockSignals(false);
+}
+
+void SAKTcpServerController::updateClientHostCombox()
+{
+    mClientHostComboBox->removeItem(0);
+    mClientHostComboBox->insertItem(0, tr("All Connections(%1)").arg(mClientHostComboBox->count()));
+    mClientHostComboBox->setCurrentIndex(mCurClientIndex);
 }

@@ -55,7 +55,7 @@ bool SAKSerialPortDevice::initialize()
     }
 }
 
-QByteArray SAKSerialPortDevice::read()
+SAKDebuggerDevice::ReadContextVector SAKSerialPortDevice::read()
 {
     // Calculate the max frame interval.
     auto parasCtx = parametersContext().value<SAKSerialPortParametersContext>();
@@ -83,23 +83,26 @@ QByteArray SAKSerialPortDevice::read()
             }
         }
     }
+    ReadContextVector contexts;
 
     if (bytes.length()) {
-        return bytes;
+        return contexts << ReadContext { bytes, mSerialPort->portName() };
     } else {
-        return QByteArray();
+        return contexts;
     }
 }
 
-QByteArray SAKSerialPortDevice::write(const QByteArray &bytes)
+SAKDebuggerDevice::WriteContext SAKSerialPortDevice::write(const QByteArray &bytes)
 {
+    WriteContext context;
+    context.flag = mSerialPort->portName();
     if (mSerialPort->write(bytes) > 0) {
-        return bytes;
+        context.bytes = bytes;
     } else {
         emit errorOccurred(mSerialPort->errorString());
         qWarning() << "Write bytes failed:" << mSerialPort->errorString();
-        return QByteArray();
     }
+    return context;
 }
 
 void SAKSerialPortDevice::uninitialize()

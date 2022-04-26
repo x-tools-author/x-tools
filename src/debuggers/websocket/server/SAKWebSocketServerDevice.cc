@@ -65,34 +65,36 @@ bool SAKWebSocketServerDevice::initialize()
     return true;
 }
 
-QByteArray SAKWebSocketServerDevice::read()
+SAKDebuggerDevice::ReadContextVector SAKWebSocketServerDevice::read()
 {
-    return QByteArray();
+    return ReadContextVector();
 }
 
-QByteArray SAKWebSocketServerDevice::write(const QByteArray &bytes)
+SAKDebuggerDevice::WriteContext SAKWebSocketServerDevice::write(const QByteArray &bytes)
 {
+    WriteContext context;
     auto parameters = parametersContext().value<SAKWSServerParametersContext>();
+    QString currentClientHost = parameters.currentClientHost;
+    quint16 currentClientPort = parameters.currentClientPort;
+    bool all = (currentClientHost == "All Connections");
+    QString flag;
     for (auto &var : mClientList){
         QString peerHost = var->peerAddress().toString();
         quint16 peerPort = var->peerPort();
 
-        if ((parameters.currentClientHost == peerHost)
-                && (parameters.currentClientPort == peerPort)){
+        if (all || (currentClientHost == peerHost && currentClientPort == peerPort)){
+            flag = QString("%1:%2").arg(peerHost).arg(peerPort);
             qint64 ret = 0;
             if (parameters.sendingType == SAKCommonDataStructure::WebSocketSendingTypeText){
                 ret = var->sendTextMessage(QString(bytes));
             }else{
                 ret = var->sendBinaryMessage(bytes);
             }
-
-            if (ret > 0){
-                return bytes;
-            }
         }
     }
-
-    return QByteArray();
+    context.bytes = bytes;
+    context.flag = all ? "All" : flag;
+    return context;
 }
 
 void SAKWebSocketServerDevice::uninitialize()
@@ -111,10 +113,11 @@ void SAKWebSocketServerDevice::readBytesActually(QWebSocket *socket, QByteArray 
     quint16 currentClientPort = parameters.currentClientPort;
     quint16 peerPort = socket->peerPort();
 
+    bool all = (currentClientHost == "All Connections");
     if (bytes.length()){
-        if ((currentClientHost == peerHost) && (currentClientPort == peerPort)){
-            emit bytesRead(bytes, currentClientHost + ":"
-                           + QString::number(currentClientPort));
+        if (all || (currentClientHost == peerHost && currentClientPort == peerPort)){
+            emit bytesRead(bytes, peerHost + ":"
+                           + QString::number(peerPort));
         }
     }
 }

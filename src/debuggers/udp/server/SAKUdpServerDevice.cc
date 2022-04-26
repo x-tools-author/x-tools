@@ -72,8 +72,9 @@ bool SAKUdpServerDevice::initialize()
     return true;
 }
 
-QByteArray SAKUdpServerDevice::read()
+SAKDebuggerDevice::ReadContextVector SAKUdpServerDevice::read()
 {
+    ReadContextVector contexts;
     while (mUdpServer->hasPendingDatagrams()) {
         qint64 size = mUdpServer->pendingDatagramSize();
         QByteArray bytes;
@@ -84,36 +85,35 @@ QByteArray SAKUdpServerDevice::read()
                                               size,
                                               &peerAddress,
                                               &peerPort);
-        const QString flag = peerAddress.toString() + ":"
-                + QString::number(peerPort);
         if (ret > 0) {
             auto parameters = parametersContext().value<SAKUdpServerParametersContext>();
             QString currentHost = parameters.currentClientHost;
             quint16 currentPort = parameters.currentClientPort;
+            const QString flag = peerAddress.toString() + ":"
+                    + QString::number(peerPort);
             if (currentHost.isEmpty()) {
                 emit addClient(peerAddress.toString(), peerPort);
-                emit bytesRead(bytes, flag);
+                contexts.push_back(ReadContext { bytes, flag });
             } else {
                 QStringList clients = parameters.clients;
-                QString client = QString("%1:%2")
-                        .arg(peerAddress.toString(), QString::number(peerPort));
-                if (!clients.contains(client)) {
+                if (!clients.contains(flag)) {
                     emit addClient(peerAddress.toString(), peerPort);
                 }
 
                 if ((currentHost == peerAddress.toString())
                         && (currentPort == peerPort)) {
-                    emit bytesRead(bytes, flag);
+                    contexts.push_back(ReadContext { bytes, flag });
                 }
             }
         }
     }
 
-    return QByteArray();
+    return contexts;
 }
 
-QByteArray SAKUdpServerDevice::write(const QByteArray &bytes)
+SAKDebuggerDevice::WriteContext SAKUdpServerDevice::write(const QByteArray &bytes)
 {
+    WriteContext context;
     auto parameters = parametersContext().value<SAKUdpServerParametersContext>();
     QString currentHost = parameters.currentClientHost;
     quint16 currentPort = parameters.currentClientPort;
@@ -121,9 +121,9 @@ QByteArray SAKUdpServerDevice::write(const QByteArray &bytes)
                                            QHostAddress(currentHost),
                                            currentPort);
     if (ret > 0){
-        return bytes;
+        context.bytes = bytes;
     }
-    return QByteArray();
+    return context;
 }
 
 void SAKUdpServerDevice::uninitialize()

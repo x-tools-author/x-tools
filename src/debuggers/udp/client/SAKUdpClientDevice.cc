@@ -96,8 +96,9 @@ bool SAKUdpClientDevice::initialize()
     return true;
 }
 
-QByteArray SAKUdpClientDevice::read()
+SAKDebuggerDevice::ReadContextVector SAKUdpClientDevice::read()
 {
+    ReadContextVector contexts;
     while (mUdpSocket->hasPendingDatagrams()) {
         QByteArray data;
         data.resize(static_cast<int>(mUdpSocket->pendingDatagramSize()));
@@ -105,16 +106,17 @@ QByteArray SAKUdpClientDevice::read()
         quint16 port;
         qint64 ret = mUdpSocket->readDatagram(data.data(), data.length(), &host, &port);
         if (ret > 0){
-            emit bytesRead(data,
-                           host.toString() + ":" + QString::number(port));
+            contexts.push_back(ReadContext { data,
+                           host.toString() + ":" + QString::number(port) });
         }
     }
 
-    return QByteArray();
+    return contexts;
 }
 
-QByteArray SAKUdpClientDevice::write(const QByteArray &bytes)
+SAKDebuggerDevice::WriteContext SAKUdpClientDevice::write(const QByteArray &bytes)
 {
+    WriteContext context;
     SAKStructAdvancedCtx ctx = advancedCtx();
     qint64 ret = 0;
 
@@ -184,7 +186,7 @@ QByteArray SAKUdpClientDevice::write(const QByteArray &bytes)
         }
     }
 
-    return QByteArray();
+    return context;
 }
 
 void SAKUdpClientDevice::uninitialize()

@@ -23,12 +23,14 @@ SAKWebSocketServerController::SAKWebSocketServerController(QSettings *settings,
                                                            QWidget *parent)
     :SAKDebuggerController(settings, settingsGroup, parent)
     ,mUi(new Ui::SAKWebSocketServerController)
+    ,mCurClientIndex(0)
 {
     mUi->setupUi(this);
     mServerHostComboBox = mUi->serverhostComboBox;
     mServerPortLineEdit = mUi->serverPortLineEdit;
     mClientHostComboBox = mUi->clientHostComboBox;
     mSendingTypeComboBox = mUi->sendingTypeComboBox;
+    mClientHostComboBox->addItem(tr("All Connections(%1)").arg(0));
     refreshDevice();
     SAKCommonDataStructure::setComboBoxTextWebSocketSendingType(mSendingTypeComboBox);
 
@@ -72,7 +74,8 @@ SAKWebSocketServerController::SAKWebSocketServerController(QSettings *settings,
     connect(mClientHostComboBox,
             static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
 #endif
-           this, [=](){
+           this, [=](int index){
+        mCurClientIndex = index;
         emit parametersContextChanged();
     });
 }
@@ -104,7 +107,7 @@ QVariant SAKWebSocketServerController::parametersContext()
         ctx.currentClientHost = info.first();
         ctx.currentClientPort = info.last().toInt();
     } else {
-        ctx.currentClientHost.clear();
+        ctx.currentClientHost = "All Connections";
         ctx.currentClientPort = 0;
     }
     ctx.sendingType = mSendingTypeComboBox->currentData().toInt();
@@ -114,29 +117,40 @@ QVariant SAKWebSocketServerController::parametersContext()
 
 void SAKWebSocketServerController::addClient(QString host, quint16 port, QWebSocket *socket)
 {
+    auto index = mClientHostComboBox->findData(QVariant::fromValue(socket));
+    if (index != -1)
+        return;
+
+    mClientHostComboBox->blockSignals(true);
     QString item = host.append(":");
     item.append(QString::number(port));
-
-    for(int i = 0; i < mClientHostComboBox->count(); i++){
-        if (mClientHostComboBox->itemText(i).compare(item) == 0){
-            return;
-        }
-    }
-
     mClientHostComboBox->addItem(item, QVariant::fromValue(socket));
+    updateClientHostCombox();
+    mClientHostComboBox->blockSignals(false);
 }
 
 void SAKWebSocketServerController::removeClient(QWebSocket *socket)
 {
-    for(int i = 0; i < mClientHostComboBox->count(); i++){
-        if (mClientHostComboBox->itemData(i).value<QWebSocket*>() == socket){
-            mClientHostComboBox->removeItem(i);
-            break;
-        }
-    }
+    auto index = mClientHostComboBox->findData(QVariant::fromValue(socket));
+    if (index == -1)
+        return;
+
+    mClientHostComboBox->blockSignals(true);
+    mClientHostComboBox->removeItem(index);
+    mCurClientIndex = index == mCurClientIndex ? 0 : mCurClientIndex;
+    updateClientHostCombox();
+    mClientHostComboBox->blockSignals(false);
 }
 
 void SAKWebSocketServerController::clearClient()
 {
     mClientHostComboBox->clear();
+    mClientHostComboBox->addItem(tr("All Connections(%1)").arg(0));
+}
+
+void SAKWebSocketServerController::updateClientHostCombox()
+{
+    mClientHostComboBox->removeItem(0);
+    mClientHostComboBox->insertItem(0, tr("All Connections(%1)").arg(mClientHostComboBox->count()));
+    mClientHostComboBox->setCurrentIndex(mCurClientIndex);
 }

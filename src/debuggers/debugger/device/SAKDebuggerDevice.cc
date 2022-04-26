@@ -127,14 +127,16 @@ void SAKDebuggerDevice::run()
     if (initialize()) {
         connect(this, &SAKDebuggerDevice::readyRead,
                 this, [=](SAKDeviceProtectedSignal){
-            QByteArray ret = read();
-            if (ret.length()) {
-                ret = mask(ret, true);
-                auto ctx = innerParametersContext();
-                if (ctx.analyzerCtx.enable) {
-                    analyzer(ret);
-                } else {
-                    emit bytesRead(ret, "");
+            ReadContextVector contexts = read();
+            for (const auto& context : contexts) {
+                if (context.bytes.length()) {
+                    auto ret = mask(context.bytes, true);
+                    auto ctx = innerParametersContext();
+                    if (ctx.analyzerCtx.enable) {
+                        analyzer(ret);
+                    } else {
+                        emit bytesRead(ret, context.flag);
+                    }
                 }
             }
         }, Qt::DirectConnection);
@@ -143,9 +145,9 @@ void SAKDebuggerDevice::run()
             QByteArray bytes = takeBytes();
             if (bytes.length()) {
                 bytes = mask(bytes, false);
-                QByteArray ret = write(bytes);
-                if (ret.length()) {
-                    emit bytesWritten(ret, "");
+                WriteContext context = write(bytes);
+                if (context.bytes.length()) {
+                    emit bytesWritten(context.bytes, context.flag);
                 }
             }
             writeTimer->start();
@@ -158,11 +160,6 @@ void SAKDebuggerDevice::run()
     writeTimer->stop();
     writeTimer->deleteLater();
     uninitialize();
-}
-
-QByteArray SAKDebuggerDevice::read()
-{
-    return QByteArray();
 }
 
 QByteArray SAKDebuggerDevice::mask(const QByteArray &plaintext, bool isRxData)

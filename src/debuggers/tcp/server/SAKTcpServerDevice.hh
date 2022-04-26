@@ -27,8 +27,8 @@ public:
                        QObject *parent = Q_NULLPTR);
 protected:
     bool initialize() final;
-    QByteArray read() final;
-    QByteArray write(const QByteArray &bytes) final;
+    ReadContextVector read() final;
+    WriteContext write(const QByteArray &bytes) final;
     void uninitialize() final;
 private:
     QTcpServer *mTcpServer;

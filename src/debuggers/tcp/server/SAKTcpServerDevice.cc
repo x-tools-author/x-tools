@@ -61,56 +61,57 @@ bool SAKTcpServerDevice::initialize()
     return true;
 }
 
-QByteArray SAKTcpServerDevice::read()
+SAKDebuggerDevice::ReadContextVector SAKTcpServerDevice::read()
 {
-    for (int i = 0; i < mClientList.length(); i++) {
-        auto client = mClientList.at(i);
-         QByteArray bytes = client->readAll();
-         auto parameters = parametersContext().value<SAKTcpServerParametersContext>();
-         QString currentClientHost = parameters.currentClientHost;
-         QString peerHost = client->peerAddress().toString();
-         quint16 currentClientPort = parameters.currentClientPort;
-         quint16 peerPort = client->peerPort();
-
-         if (bytes.length()){
-             if ((currentClientHost == peerHost) && (currentClientPort == peerPort)){
-                 return bytes;
-             }
-         }
+    auto parameters = parametersContext().value<SAKTcpServerParametersContext>();
+    QString currentClientHost = parameters.currentClientHost;
+    quint16 currentClientPort = parameters.currentClientPort;
+    bool all = (currentClientHost == "All Connections");
+    ReadContextVector contexts;
+    for (const auto &client : mClientList) {
+        QString peerHost = client->peerAddress().toString();
+        quint16 peerPort = client->peerPort();
+        auto bytes = client->readAll();
+        if (all || (currentClientHost == peerHost && currentClientPort == peerPort)){
+            contexts.append(ReadContext { bytes, QString("%1:%2").arg(peerHost).arg(peerPort)});
+        }
     }
 
-    return QByteArray();
+    return contexts;
 }
 
-QByteArray SAKTcpServerDevice::write(const QByteArray &bytes)
+SAKDebuggerDevice::WriteContext SAKTcpServerDevice::write(const QByteArray &bytes)
 {
-    for (int i = 0; i < mClientList.length(); i++) {
-        auto client = mClientList.at(i);
-        auto parameters = parametersContext().value<SAKTcpServerParametersContext>();
-        QString currentClientHost = parameters.currentClientHost;
+    WriteContext context;
+    auto parameters = parametersContext().value<SAKTcpServerParametersContext>();
+    QString currentClientHost = parameters.currentClientHost;
+    quint16 currentClientPort = parameters.currentClientPort;
+    bool all = (currentClientHost == "All Connections");
+    QString flag;
+    for (const auto &client : mClientList) {
         QString peerHost = client->peerAddress().toString();
-        quint16 currentClientPort = parameters.currentClientPort;
         quint16 peerPort = client->peerPort();
-        if ((currentClientHost == peerHost) && (currentClientPort == peerPort)){
+        if (all || (currentClientHost == peerHost && currentClientPort == peerPort)){
+            flag = QString("%1:%2").arg(peerHost).arg(peerPort);
             qint64 ret = client->write(bytes);
-            if (ret > 0) {
-                return bytes;
-            } else {
+            if (ret < 0) {
                 qWarning() << QString("Can not write data:(%1)%2")
                               .arg(client->peerAddress().toString(), client->errorString());
             }
         }
     }
-
-    return QByteArray();
+    context.bytes = bytes;
+    context.flag = all ? "All" : flag;
+    return context;
 }
 
 void SAKTcpServerDevice::uninitialize()
 {
-    for (int i = 0; i < mClientList.count(); i++) {
-        auto socket = mClientList.at(i);
-        disconnect(socket, Q_NULLPTR, Q_NULLPTR, Q_NULLPTR);
+    for (const auto& client : mClientList) {
+        client->disconnect();
+        client->deleteLater();
     }
+    mClientList.clear();
     mTcpServer->close();
     delete mTcpServer;
     mTcpServer = Q_NULLPTR;
