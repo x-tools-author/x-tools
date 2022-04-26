@@ -2,6 +2,7 @@ version: '1.0'
 name: master-build
 displayName: master-build
 triggers:
+  trigger: auto
   push:
     branches:
       prefix:
