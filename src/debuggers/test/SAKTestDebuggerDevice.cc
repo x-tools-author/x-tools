@@ -77,6 +77,7 @@ SAKDebuggerDevice::ReadContextVector SAKTestDebuggerDevice::read()
 
 SAKDebuggerDevice::WriteContext SAKTestDebuggerDevice::write(const QByteArray &bytes)
 {
+    Q_UNUSED(bytes);
     return WriteContext();
 }
 
