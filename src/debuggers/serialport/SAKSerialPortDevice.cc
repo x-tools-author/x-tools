@@ -72,6 +72,10 @@ SAKDebuggerDevice::ReadContextVector SAKSerialPortDevice::read()
     QElapsedTimer elapsedTimer;
     QByteArray bytes;
     while (true) {
+        if (!mSerialPort) {
+            break;
+        }
+
         auto ret = mSerialPort->readAll();
         if (ret.length()) {
             bytes.append(ret);
