@@ -633,12 +633,12 @@ void SAKMainWindow::aboutQsak()
              << Info{tr("QQ"), QString("QQ:2869470394"), false}
              << Info{tr("QQ Group"), QString("QQ:952218522"), false}
              << Info{tr("Build Time"), dateTimeString, false}
-             << Info{tr("Copyright"), tr("Copyright 2018-%1 Qter. All rights reserved.")
-                .arg(sakApp->buildDate()->toString("yyyy")), false}
              << Info{tr("Gitee Url"), QString("<a href=%1>%1</a>")
                 .arg(SAK_GITEE_REPOSITORY_URL), true}
              << Info{tr("Gitbub Url"), QString("<a href=%1>%1</a>")
-                .arg(SAK_GITHUB_REPOSITORY_URL), true};
+                .arg(SAK_GITHUB_REPOSITORY_URL), true}
+             << Info{tr("Copyright"), tr("Copyright 2018-%1 Qsaker(qsaker@outlook.com). All rights reserved.")
+                .arg(sakApp->buildDate()->toString("yyyy")), false};
 
     QDialog dialog;
     dialog.setWindowTitle(tr("About QSAK"));
