@@ -73,7 +73,10 @@ SAKDebuggerDevice::ReadContextVector SAKTcpServerDevice::read()
         quint16 peerPort = client->peerPort();
         auto bytes = client->readAll();
         if (all || (currentClientHost == peerHost && currentClientPort == peerPort)){
-            contexts.append(ReadContext { bytes, QString("%1:%2").arg(peerHost).arg(peerPort)});
+            ReadContext ctx;
+            ctx.bytes = bytes;
+            ctx.flag = QString("%1:%2").arg(peerHost).arg(peerPort);
+            contexts.append(ctx);
         }
     }
 

@@ -109,10 +109,12 @@ bool SAKTcpClientDevice::initialize()
 
 SAKDebuggerDevice::ReadContextVector SAKTcpClientDevice::read()
 {
-    return ReadContextVector() << ReadContext{ mTcpSocket->readAll(),
-                             QString("%1:%2")
-                             .arg(mTcpSocket->peerAddress().toString())
-                             .arg(mTcpSocket->peerPort()) };
+    ReadContext ctx;
+    ctx.bytes = mTcpSocket->readAll();
+    ctx.flag = QString("%1:%2")
+            .arg(mTcpSocket->peerAddress().toString())
+            .arg(mTcpSocket->peerPort());
+    return (ReadContextVector() << ctx);
 }
 
 SAKDebuggerDevice::WriteContext SAKTcpClientDevice::write(const QByteArray &bytes)

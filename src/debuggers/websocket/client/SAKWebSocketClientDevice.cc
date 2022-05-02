@@ -79,7 +79,10 @@ bool SAKWebSocketClientDevice::initialize()
 
 SAKDebuggerDevice::ReadContextVector SAKWebSocketClientDevice::read()
 {
-    return ReadContextVector() << ReadContext { takeMessage() };
+    ReadContext ctx;
+    ctx.bytes = takeMessage();
+    ctx.flag = "";
+    return ReadContextVector() << ctx;
 }
 
 SAKDebuggerDevice::WriteContext SAKWebSocketClientDevice::write(const QByteArray &bytes)

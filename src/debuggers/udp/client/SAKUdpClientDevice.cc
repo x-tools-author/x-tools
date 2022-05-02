@@ -106,8 +106,10 @@ SAKDebuggerDevice::ReadContextVector SAKUdpClientDevice::read()
         quint16 port;
         qint64 ret = mUdpSocket->readDatagram(data.data(), data.length(), &host, &port);
         if (ret > 0){
-            contexts.push_back(ReadContext { data,
-                           host.toString() + ":" + QString::number(port) });
+            ReadContext ctx;
+            ctx.bytes = data;
+            ctx.flag = host.toString() + ":" + QString::number(port);
+            contexts.push_back(ctx);
         }
     }
 

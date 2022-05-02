@@ -93,7 +93,10 @@ SAKDebuggerDevice::ReadContextVector SAKUdpServerDevice::read()
                     + QString::number(peerPort);
             if (currentHost.isEmpty()) {
                 emit addClient(peerAddress.toString(), peerPort);
-                contexts.push_back(ReadContext { bytes, flag });
+                ReadContext ctx;
+                ctx.bytes = bytes;
+                ctx.flag = flag;
+                contexts.push_back(ctx);
             } else {
                 QStringList clients = parameters.clients;
                 if (!clients.contains(flag)) {
@@ -102,7 +105,10 @@ SAKDebuggerDevice::ReadContextVector SAKUdpServerDevice::read()
 
                 if ((currentHost == peerAddress.toString())
                         && (currentPort == peerPort)) {
-                    contexts.push_back(ReadContext { bytes, flag });
+                    ReadContext ctx;
+                    ctx.bytes = bytes;
+                    ctx.flag = flag;
+                    contexts.push_back(ctx);
                 }
             }
         }

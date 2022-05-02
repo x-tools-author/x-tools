@@ -72,7 +72,10 @@ bool SAKTestDebuggerDevice::initialize()
 
 SAKDebuggerDevice::ReadContextVector SAKTestDebuggerDevice::read()
 {
-    return ReadContextVector() << ReadContext{ QByteArray("Just for debuging") };
+    ReadContext ctx;
+    ctx.bytes = QByteArray("Just for debuging");
+    ctx.flag = QString("self");
+    return ReadContextVector() << ctx;
 }
 
 SAKDebuggerDevice::WriteContext SAKTestDebuggerDevice::write(const QByteArray &bytes)

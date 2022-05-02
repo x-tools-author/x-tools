@@ -90,10 +90,16 @@ SAKDebuggerDevice::ReadContextVector SAKSerialPortDevice::read()
     ReadContextVector contexts;
 
     if (bytes.length()) {
-        return contexts << ReadContext { bytes, mSerialPort->portName() };
-    } else {
-        return contexts;
+        if (mSerialPort) {
+            ReadContext ctx;
+            ctx.bytes = bytes;
+            ctx.flag = mSerialPort->portName();
+            return contexts << ctx;
+        }
+
     }
+
+    return contexts;
 }
 
 SAKDebuggerDevice::WriteContext SAKSerialPortDevice::write(const QByteArray &bytes)
