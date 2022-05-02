@@ -70,6 +70,8 @@ bool SAKWebSocketClientDevice::initialize()
     mWebSocket->open(parameters.serverAddress);
 
     int ret = eventLoop->exec();
+    eventLoop->deleteLater();
+    eventLoop = Q_NULLPTR;
     if (ret == -1) {
         return false;
     }
