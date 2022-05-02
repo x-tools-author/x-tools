@@ -198,8 +198,8 @@ void SAKDebuggerDevice::analyzer(QByteArray data)
     if (mAnalyzerCtx.bytesTemp.length() >= mAnalyzerCtx.maxTempLangth) {
         QByteArray temp = mAnalyzerCtx.bytesTemp;
         mAnalyzerCtx.bytesTemp.clear();
-        emit bytesRead(temp, "");
         mAnalyzerCtxMutex.unlock();
+        emit bytesRead(temp, "");
         return;
     }
 
