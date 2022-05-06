@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2020 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2020-2022 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -8,8 +8,10 @@
  * the file LICENCE in the root of the source code directory.
  */
 #include <QDebug>
+#ifdef SAK_IMPORT_MODULE_SERIALPORT
 #include <QSerialPort>
 #include <QSerialPortInfo>
+#endif
 #include <QStandardItemModel>
 
 #include "SAKCommonInterface.hh"
@@ -21,11 +23,13 @@ SAKModbusCommonSerialPortSection::SAKModbusCommonSerialPortSection(QWidget *pare
     ,ui(new Ui::SAKModbusCommonSerialPortSection)
 {
     ui->setupUi(this);
+#ifdef SAK_IMPORT_MODULE_SERIALPORT
     SAKCommonInterface::addSerialPortNametItemsToComboBox(ui->nameComboBox);
     SAKCommonInterface::addSerialPortDataBitItemsToComboBox(ui->dataBitsComboBox);
     SAKCommonInterface::addSerialPortStopBitItemsToComboBox(ui->stopBitsComboBox);
     SAKCommonInterface::addSerialPortParityItemsToComboBox(ui->parityComboBox);
     SAKCommonInterface::addSerialPortBaudRateItemsToComboBox(ui->baudRateComboBox);
+#endif
 }
 
 SAKModbusCommonSerialPortSection::~SAKModbusCommonSerialPortSection()

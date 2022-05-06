@@ -34,13 +34,14 @@ DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs depr
 
 CONFIG += c++11
 
-# Sub project
+#------------------------------------------------------------------------------
+# Sub project, take cate the including order
 include(SAKConf.pri)
 include(SAKSetup.pri)
 include(src/tools/SAKTools.pri)
 include(platform/SAKPlatform.pri)
-include(src/modbus/SAKModbus.pri)
 include(src/debuggers/SAKDebuggers.pri)
+include(src/modbus/SAKModbus.pri)
 
 exists(private/SAKPrivate.pri){
     include(private/SAKPrivate.pri)

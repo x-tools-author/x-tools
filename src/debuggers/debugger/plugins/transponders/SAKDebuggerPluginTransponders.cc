@@ -1,5 +1,5 @@
 ﻿/****************************************************************************************
- * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2018-2022 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -10,7 +10,9 @@
 #include "SAKUdpTransponders.hh"
 #include "SAKTcpTransponders.hh"
 #include "SAKWebSocketTransponders.hh"
+#ifdef SAK_IMPORT_MODULE_SERIALPORT
 #include "SAKSerialPortTransponders.hh"
+#endif
 #include "SAKDebuggerPluginTransponders.hh"
 #include "ui_SAKDebuggerPluginTransponders.h"
 
@@ -28,7 +30,7 @@ SAKDebuggerPluginTransponders::SAKDebuggerPluginTransponders(QSqlDatabase *sqlDa
 {
     mUi->setupUi(this);
     mUi->tabWidget->clear();
-
+#ifdef SAK_IMPORT_MODULE_SERIALPORT
     auto *serialPort = new SAKSerialPortTransponders(sqlDatabase,
                                                      settings,
                                                      settingsGroup,
@@ -39,7 +41,7 @@ SAKDebuggerPluginTransponders::SAKDebuggerPluginTransponders(QSqlDatabase *sqlDa
             this, &SAKDebuggerPluginTransponders::invokeWriteCookedBytes);
     serialPort->setContentsMargins(6, 6, 6, 6);
     mUi->tabWidget->addTab(serialPort, tr("SerialPort"));
-
+#endif
 
     auto udpTransponder = new SAKUdpTransponders(sqlDatabase,
                                                  settings,
