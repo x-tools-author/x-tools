@@ -1,5 +1,5 @@
 ﻿/****************************************************************************************
- * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2018-2022 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -242,7 +242,9 @@ SAKWSServerParametersContext;
 
 
 Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructTestParametersContext);
+#ifdef SAK_IMPORT_MODULE_SERIALPORT
 Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructSerialPortParametersContext);
+#endif
 Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructUdpClientParametersContext);
 Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructUdpServerParametersContext);
 Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructTcpClientParametersContext);
