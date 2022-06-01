@@ -90,6 +90,8 @@ SAKDebuggerDevice::WriteContext SAKWebSocketServerDevice::write(const QByteArray
             }else{
                 ret = var->sendBinaryMessage(bytes);
             }
+
+            Q_UNUSED(ret);
         }
     }
     context.bytes = bytes;
