@@ -414,6 +414,8 @@ void SAKDebuggerInput::initUiInputComboBox()
     connect(mInputComboBox,
             static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this, &SAKDebuggerInput::updateCrc);
+    connect(mInputComboBox, &QComboBox::currentTextChanged,
+            this, &SAKDebuggerInput::updateCrc);
 }
 
 void SAKDebuggerInput::addActionToMenuQuickSending(QMenu *menu)
