@@ -62,7 +62,7 @@ private:
     struct SAKStructDeviceAnalyzerContext {
         QByteArray bytesTemp;
         const int maxTempLangth = 2048;
-    }mAnalyzerCtx;
+    } mAnalyzerCtx;
 private:
     QSettings *settings;
     const QString settingsGroup;
