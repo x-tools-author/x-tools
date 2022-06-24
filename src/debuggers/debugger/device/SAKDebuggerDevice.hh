@@ -43,7 +43,6 @@ protected:
     typedef SAKStructDeviceContext WriteContext;
     typedef QVector<ReadContext> ReadContextVector;
     typedef QVector<WriteContext> WriteContextsVector;
-
 protected:
     QByteArray takeBytes();
     void run() override;
