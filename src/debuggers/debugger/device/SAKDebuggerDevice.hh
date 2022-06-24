@@ -1,5 +1,5 @@
 ﻿/****************************************************************************************
- * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2018-2022 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -58,7 +58,7 @@ private:
     struct SAKStructDevicePatametersContext {
         SAKDebuggerDeviceMask::SAKStructMaskContext maskCtx ;
         SAKDebuggerDeviceAnalyzer::SAKStructAnalyzerContext analyzerCtx;
-    }mInnerParametersContext;
+    } mInnerParametersContext;
     struct SAKStructDeviceAnalyzerContext {
         QByteArray bytesTemp;
         const int maxTempLangth = 2048;
