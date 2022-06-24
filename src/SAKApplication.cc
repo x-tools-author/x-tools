@@ -115,7 +115,7 @@ SAKApplication::SAKApplication(int argc, char **argv)
 
     // Initialize database.
     mSqlDatabase = QSqlDatabase::addDatabase("QSQLITE");
-    mSqlDatabase.setDatabaseName(mDatabaseName);
+    mSqlDatabase.setDatabaseName(mDatabaseName.toLatin1().constData());
     // Do something useless.
     mSqlDatabase.setHostName("localhost");
     mSqlDatabase.setUserName("Qter");
