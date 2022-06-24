@@ -128,7 +128,7 @@ void SAKDebuggerDevice::run()
         connect(this, &SAKDebuggerDevice::readyRead,
                 this, [=](SAKDeviceProtectedSignal){
             ReadContextVector contexts = read();
-            for (const auto& context : contexts) {
+            for (ReadContext &context : contexts) {
                 if (context.bytes.length()) {
                     auto ret = mask(context.bytes, true);
                     auto ctx = innerParametersContext();
