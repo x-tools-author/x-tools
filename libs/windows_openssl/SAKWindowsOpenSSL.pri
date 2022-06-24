@@ -30,15 +30,15 @@ contains(CONFIG, static){
             DLL_FILES += $$PWD/x86/libssl-1_1.dll $$PWD/x86/libcrypto-1_1.dll
         }
         # For Qt6.
-        equals(QT_MAJOR_VERSION, 6):contains(OPENSSL_1_1_FOR_QT6_MINOR_VERSION, $$QT_MINOR_VERSION) {
+        equals(QT_MAJOR_VERSION, 6):contains(OPENSSL_1_1_FOR_QT6_MINOR_VERSION_LIST, $$QT_MINOR_VERSION) {
             DLL_FILES += $$PWD/x86/libssl-1_1.dll $$PWD/x86/libcrypto-1_1.dll
         }
     } else {
-        equals(QT_MAJOR_VERSION, 5):contains(OPENSSL_1_1_FOR_QT5_MINOR_VERSION, $$QT_MINOR_VERSION) {
+        equals(QT_MAJOR_VERSION, 5):contains(OPENSSL_1_1_FOR_QT5_MINOR_VERSION_LIST, $$QT_MINOR_VERSION) {
             DLL_FILES += $$PWD/x64/libssl-1_1-x64.dll $$PWD/x64/libcrypto-1_1-x64.dll
         }
 
-        equals(QT_MAJOR_VERSION, 6):contains(OPENSSL_1_1_FOR_QT6_MINOR_VERSION, $$QT_MINOR_VERSION) {
+        equals(QT_MAJOR_VERSION, 6):contains(OPENSSL_1_1_FOR_QT6_MINOR_VERSION_LIST, $$QT_MINOR_VERSION) {
             DLL_FILES += $$PWD/x64/libssl-1_1-x64.dll $$PWD/x64/libcrypto-1_1-x64.dll
         }
     }
