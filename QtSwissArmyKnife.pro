@@ -108,6 +108,7 @@ HEADERS += \
     src/SAKSystemTrayIcon.hh \
     src/base/SAKBaseListWidget.hh \
     src/base/SAKBaseListWidgetItemWidget.hh \
+    src/base/SAKDevice.hh \
     src/base/SAKObj.hh \
     src/base/SAKSigleton.hh \
     src/common/SAKCommonCrcInterface.hh \
@@ -122,6 +123,7 @@ SOURCES += \
     src/SAKSystemTrayIcon.cc \
     src/base/SAKBaseListWidget.cc \
     src/base/SAKBaseListWidgetItemWidget.cc \
+    src/base/SAKDevice.cc \
     src/base/SAKObj.cc \
     src/base/SAKSigleton.cc \
     src/common/SAKCommonCrcInterface.cc \
