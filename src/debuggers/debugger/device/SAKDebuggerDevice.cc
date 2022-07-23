@@ -33,7 +33,8 @@ SAKDebuggerDevice::SAKDebuggerDevice(QSettings *settings,
         mInnerParametersContextMutex.unlock();
     });
 
-    mAnalyzer = new SAKDebuggerDeviceAnalyzer(settings, settingsGroup, uiParent);
+    mAnalyzer =
+            new SAKDebuggerDeviceAnalyzer(settings, settingsGroup, uiParent);
     mInnerParametersContext.analyzerCtx = mAnalyzer->parametersContext();
     connect(mAnalyzer, &SAKDebuggerDeviceAnalyzer::parametersChanged,
             this, [&](){
@@ -210,7 +211,8 @@ void SAKDebuggerDevice::analyzer(QByteArray data)
                 QByteArray temp = QByteArray(mAnalyzerCtx.bytesTemp.data(),
                                              ctx.analyzerCtx.length);
                 mAnalyzerCtx.bytesTemp =
-                        mAnalyzerCtx.bytesTemp.remove(0, ctx.analyzerCtx.length);
+                        mAnalyzerCtx.bytesTemp.remove(0,
+                                                      ctx.analyzerCtx.length);
                 emit bytesRead(temp, "");
             }
         } else {
@@ -228,7 +230,8 @@ void SAKDebuggerDevice::analyzer(QByteArray data)
 
     // Extract data according to the flags
     // If both of start-bytes and end-bytes are empty, temp data will be clear
-    if (ctx.analyzerCtx.startFlags.isEmpty() && ctx.analyzerCtx.endFlags.isEmpty()){
+    if (ctx.analyzerCtx.startFlags.isEmpty()
+            && ctx.analyzerCtx.endFlags.isEmpty()){
         if (mAnalyzerCtx.bytesTemp.length()){
             QByteArray temp = mAnalyzerCtx.bytesTemp;
             mAnalyzerCtx.bytesTemp.clear();
@@ -242,8 +245,9 @@ void SAKDebuggerDevice::analyzer(QByteArray data)
 
     while(1){
         // Ensure that bytes is enough
-        if (mAnalyzerCtx.bytesTemp.length() < (ctx.analyzerCtx.startFlags.length() +
-                                               ctx.analyzerCtx.endFlags.length())) {
+        if (mAnalyzerCtx.bytesTemp.length()
+                < (ctx.analyzerCtx.startFlags.length()
+                   + ctx.analyzerCtx.endFlags.length())) {
             break;
         }
 
@@ -252,11 +256,14 @@ void SAKDebuggerDevice::analyzer(QByteArray data)
         if (ctx.analyzerCtx.startFlags.isEmpty()) {
             startBytesMatched = true;
         } else {
-            int ret = mAnalyzerCtx.bytesTemp.indexOf(ctx.analyzerCtx.startFlags, 0);
+            int ret =
+                    mAnalyzerCtx.bytesTemp.indexOf(ctx.analyzerCtx.startFlags,
+                                                   0);
             if (ret >= 0) {
                 startBytesMatched = true;
                 // Remove error data
-                QByteArray temp = QByteArray(mAnalyzerCtx.bytesTemp.data(), ret);
+                QByteArray temp =
+                        QByteArray(mAnalyzerCtx.bytesTemp.data(), ret);
                 mAnalyzerCtx.bytesTemp.remove(0, ret);
                 if (!temp.isEmpty()) {
                     emit bytesRead(temp, "");

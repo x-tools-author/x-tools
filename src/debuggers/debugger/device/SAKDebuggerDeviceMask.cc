@@ -1,12 +1,12 @@
-﻿/****************************************************************************************
- * Copyright 2021 Qter(qsaker@qq.com). All rights reserved.
+﻿/******************************************************************************
+ * Copyright 2021-2022 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- ***************************************************************************************/
+ *****************************************************************************/
 #include <QTimer>
 #include "SAKDebuggerDeviceMask.hh"
 #include "ui_SAKDebuggerDeviceMask.h"
@@ -33,7 +33,8 @@ SAKDebuggerDeviceMask::SAKDebuggerDeviceMask(QSettings *settings,
             static_cast<void(QSpinBox::*)(int)>(&QSpinBox::valueChanged),
 #endif
         this, [=](){
-            settings->setValue(mSettingsKeyCtx.rxMask, mUi->rxMaskSpinBox->value());
+            settings->setValue(mSettingsKeyCtx.rxMask,
+                               mUi->rxMaskSpinBox->value());
             emit parametersChanged();
         });
 
@@ -46,7 +47,8 @@ SAKDebuggerDeviceMask::SAKDebuggerDeviceMask(QSettings *settings,
             static_cast<void(QSpinBox::*)(int)>(&QSpinBox::valueChanged),
 #endif
          this, [=](){
-            settings->setValue(mSettingsKeyCtx.txMask, mUi->txMaskSpinBox->value());
+            settings->setValue(mSettingsKeyCtx.txMask,
+                               mUi->txMaskSpinBox->value());
             emit parametersChanged();
         });
     }
@@ -64,7 +66,8 @@ SAKDebuggerDeviceMask::~SAKDebuggerDeviceMask()
     delete mUi;
 }
 
-SAKDebuggerDeviceMask::SAKStructMaskContext SAKDebuggerDeviceMask::parametersContext()
+SAKDebuggerDeviceMask::SAKStructMaskContext
+SAKDebuggerDeviceMask::parametersContext()
 {
     SAKStructMaskContext ctx;
     ctx.enableRx = mUi->rxMaskCheckBox->isChecked();

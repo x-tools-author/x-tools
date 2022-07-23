@@ -1,26 +1,24 @@
-﻿/****************************************************************************************
- * Copyright 2020-2021 Qter(qsaker@qq.com). All rights reserved.
+﻿/******************************************************************************
+ * Copyright 2020-2022 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- ***************************************************************************************/
+ *****************************************************************************/
 #include <QDebug>
 #include <QRegularExpressionValidator>
 
-#include "SAKCommonInterface.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKDebuggerDeviceAnalyzer.hh"
 
 #include "ui_SAKDebuggerDeviceAnalyzer.h"
 
-SAKDebuggerDeviceAnalyzer::SAKDebuggerDeviceAnalyzer(QSettings *settings,
-                                                     const QString &settingsGroup,
-                                                     QWidget *parent)
-    :QDialog(parent)
-    ,mUi(new Ui::SAKDebuggerDeviceAnalyzer)
+SAKDebuggerDeviceAnalyzer::SAKDebuggerDeviceAnalyzer(
+        QSettings *settings, const QString &settingsGroup, QWidget *parent)
+    : QDialog(parent)
+    , mUi(new Ui::SAKDebuggerDeviceAnalyzer)
 {
     mUi->setupUi(this);
 
@@ -31,10 +29,10 @@ SAKDebuggerDeviceAnalyzer::SAKDebuggerDeviceAnalyzer(QSettings *settings,
     mSettingsKeyContext.startFlags = analyzerSettingsGroup + "startFlags";
     mSettingsKeyContext.endFlags = analyzerSettingsGroup + "endFlags";
 
-    SAKCommonDataStructure::setLineEditTextFormat(mUi->endLineEdit,
-                                                SAKCommonDataStructure::InputFormatHex);
-    SAKCommonDataStructure::setLineEditTextFormat(mUi->startLineEdit,
-                                                SAKCommonDataStructure::InputFormatHex);
+    SAKCommonDataStructure::setLineEditTextFormat(
+                mUi->endLineEdit, SAKCommonDataStructure::InputFormatHex);
+    SAKCommonDataStructure::setLineEditTextFormat(
+                mUi->startLineEdit, SAKCommonDataStructure::InputFormatHex);
 
 
     if (settings) {
@@ -42,16 +40,20 @@ SAKDebuggerDeviceAnalyzer::SAKDebuggerDeviceAnalyzer(QSettings *settings,
         bool enable = settings->value(mSettingsKeyContext.enable).toBool();
         mUi->disableCheckBox->setChecked(!enable);
 #endif
-        bool fixedLenght = settings->value(mSettingsKeyContext.fixedLength).toBool();
+        bool fixedLenght =
+                settings->value(mSettingsKeyContext.fixedLength).toBool();
         mUi->fixedLengthCheckBox->setChecked(fixedLenght);
 
-        int frameLength = settings->value(mSettingsKeyContext.frameLength).toInt();
+        int frameLength =
+                settings->value(mSettingsKeyContext.frameLength).toInt();
         mUi->frameLengthSpinBox->setValue(frameLength);
 
-        QString startBytes = settings->value(mSettingsKeyContext.startFlags).toString();
+        QString startBytes =
+                settings->value(mSettingsKeyContext.startFlags).toString();
         mUi->startLineEdit->setText(startBytes);
 
-        QString endBytes = settings->value(mSettingsKeyContext.endFlags).toString();
+        QString endBytes =
+                settings->value(mSettingsKeyContext.endFlags).toString();
         mUi->endLineEdit->setText(endBytes);
 
 
