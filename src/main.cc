@@ -1,4 +1,4 @@
-﻿/****************************************************************************************
+﻿/******************************************************************************
  * Copyright 2018-2022 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -6,7 +6,7 @@
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- ***************************************************************************************/
+ *****************************************************************************/
 #include <QDebug>
 #include <QLabel>
 #include <QTimer>
@@ -24,10 +24,14 @@
 
 int main(int argc, char *argv[])
 {
-    int exitCode = 0;
-#if QT_VERSION > QT_VERSION_CHECK(5, 13, 0) && QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+#if QT_VERSION > QT_VERSION_CHECK(5, 13, 0)
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
 #endif
+#endif
+
+    int exitCode = 0;
     do {
         SAKApplication app(argc, argv);
         app.showSplashScreenMessage(
@@ -45,7 +49,7 @@ int main(int argc, char *argv[])
 #endif
 
 
-        // 初始化系统图标
+        // Setup system tray icon.
         SAKSystemTrayIcon *systemTrayIcon = new SAKSystemTrayIcon(qApp);
         QObject::connect(systemTrayIcon, &SAKSystemTrayIcon::invokeExit,
                          qApp, [=](){mainWindow->close();});
@@ -55,7 +59,7 @@ int main(int argc, char *argv[])
         systemTrayIcon->show();
 
 
-        // 将窗口移动至屏幕中心
+        // Move the window to the screen central.
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
         QDesktopWidget *desktop = QApplication::desktop();
         int currentScreen = desktop->screenNumber(mainWindow);
@@ -69,12 +73,13 @@ int main(int argc, char *argv[])
 #endif
 
 
-        // 主窗口完成显示后关闭启动页面
+        // Close splash screen after main window showed.
         QSplashScreen *splashScreen = app.splashScreen();
         splashScreen->finish(mainWindow);
 
 
-        // 退出代码等于SAK_REBOOT_CODE(即1314)，软件将重新启动。
+        // If the exit code is equal to SAK_REBOOT_CODE, the application will
+        // be reboot.
         exitCode = app.exec();
 #ifdef SAK_REBOOT_CODE
     }while (exitCode == SAK_REBOOT_CODE);
