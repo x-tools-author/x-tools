@@ -39,7 +39,6 @@
 #include "SAKMainWindow.hh"
 #include "SAKApplication.hh"
 #include "SAKUpdateManager.hh"
-#include "SAKCommonDataStructure.hh"
 
 // Debugging tools
 #ifdef SAK_IMPORT_MODULE_FILECHECKER
