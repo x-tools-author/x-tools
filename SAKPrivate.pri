@@ -4,14 +4,14 @@ exists(private/modbus/modbus/SAKModbus.pri) {
         !lessThan(QT_MINOR_VERSION, 7){
             qtHaveModule(serialbus){
                 QT  += serialbus
-                DEFINES+=SAK_IMPORT_MODULE_STUDIO
+                DEFINES+=SAK_IMPORT_MODULE_MODBUS_STUDIO
                 include(private/modbus/modbus/SAKModbus.pri)
             }
         }
     } else {
         qtHaveModule(serialbus){
             QT  += serialbus
-            DEFINES+=SAK_IMPORT_MODULE_STUDIO
+            DEFINES+=SAK_IMPORT_MODULE_MODBUS_STUDIO
             include(private/modbus/modbus/SAKModbus.pri)
         }
     }

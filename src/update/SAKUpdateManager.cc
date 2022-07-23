@@ -16,7 +16,6 @@
 #include <QNetworkRequest>
 #include <QDesktopServices>
 
-#include "SAKApplication.hh"
 #include "SAKUpdateManager.hh"
 #include "SAKDownloadItemWidget.hh"
 
