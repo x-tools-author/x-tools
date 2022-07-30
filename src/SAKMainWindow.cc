@@ -61,7 +61,7 @@
 #include "SAKModbusDebugger.hh"
 #endif
 #ifdef SAK_IMPORT_MODULE_MODBUS_STUDIO
-#include "private/modbus/modbus/SAKModbus.hh"
+#include "SAKModbusStudio.hh"
 #endif
 #ifdef SAK_IMPORT_MODULE_UDP
 #ifdef SAK_IMPORT_MODULE_UDP_CLIENT
@@ -89,6 +89,9 @@
 #ifdef SAK_IMPORT_MODULE_WEBSOCKET_SERVER
 #include "SAKWebSocketServerDebugger.hh"
 #endif
+#endif
+#ifdef SAK_IMPORT_MODULE_CAN_STUDIO
+#include "SAKCanStudio.hh"
 #endif
 
 #ifdef SAK_IMPORT_MODULE_USER
@@ -804,8 +807,14 @@ void SAKMainWindow::initializingMetaObject()
 #ifdef SAK_IMPORT_MODULE_MODBUS_STUDIO
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{
                                       DebugPageTypeModbusStudio,
-                                      SAKModbus::staticMetaObject,
+                                      SAKModbusStudio::staticMetaObject,
                                       tr("Modbus")});
+#endif
+#ifdef SAK_IMPORT_MODULE_CAN_STUDIO
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{
+                                      DebugPageTypeCanStudio,
+                                      SAKCanStudio::staticMetaObject,
+                                      tr("CAN")});
 #endif
 }
 

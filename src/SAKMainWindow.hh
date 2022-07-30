@@ -77,7 +77,10 @@ public:
         DebugPageTypeModbus
 #endif
 #ifdef SAK_IMPORT_MODULE_MODBUS_STUDIO
-        DebugPageTypeModbusStudio
+        DebugPageTypeModbusStudio,
+#endif
+#ifdef SAK_IMPORT_MODULE_CAN_STUDIO
+        DebugPageTypeCanStudio,
 #endif
     };
     Q_ENUM(SAKEnumDebugPageType);
