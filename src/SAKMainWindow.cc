@@ -90,8 +90,8 @@
 #include "SAKWebSocketServerDebugger.hh"
 #endif
 #endif
-#ifdef SAK_IMPORT_MODULE_CAN_STUDIO
-#include "SAKCanStudio.hh"
+#ifdef SAK_IMPORT_MODULE_CANBUS_STUDIO
+#include "SAKCanBusStudio.hh"
 #endif
 
 #ifdef SAK_IMPORT_MODULE_USER
@@ -810,10 +810,10 @@ void SAKMainWindow::initializingMetaObject()
                                       SAKModbusStudio::staticMetaObject,
                                       tr("Modbus")});
 #endif
-#ifdef SAK_IMPORT_MODULE_CAN_STUDIO
+#ifdef SAK_IMPORT_MODULE_CANBUS_STUDIO
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{
                                       DebugPageTypeCanStudio,
-                                      SAKCanStudio::staticMetaObject,
+                                      SAKCanBusStudio::staticMetaObject,
                                       tr("CAN")});
 #endif
 }

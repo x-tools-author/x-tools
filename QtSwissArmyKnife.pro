@@ -42,10 +42,8 @@ include(SAKPrivate.pri)
 include(src/tools/SAKTools.pri)
 include(platform/SAKPlatform.pri)
 include(src/debuggers/SAKDebuggers.pri)
-!contains(DEFINES, SAK_IMPORT_MODULE_MODBUS_STUDIO) {
-    include(src/modbus/SAKModbus.pri)
-}
-
+include(src/canbusstudio/SAKCanBusStudio.pri)
+include(src/modbusstudio/SAKModbusStudio.pri)
 
 #------------------------------------------------------------------------------
 # Android settings

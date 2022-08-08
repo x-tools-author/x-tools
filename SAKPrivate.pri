@@ -22,14 +22,14 @@ exists(private/QtCanStudio/canstudio/SAKCanStudio.pri) {
         !lessThan(QT_MINOR_VERSION, 7){
             qtHaveModule(serialbus){
                 QT  += serialbus
-                DEFINES+=SAK_IMPORT_MODULE_CAN_STUDIO
+                DEFINES+=SAK_IMPORT_MODULE_CANBUS_STUDIO
                 include(private/QtCanStudio/canstudio/SAKCanStudio.pri)
             }
         }
     } else {
         qtHaveModule(serialbus){
             QT  += serialbus
-            DEFINES+=SAK_IMPORT_MODULE_CAN_STUDIO
+            DEFINES+=SAK_IMPORT_MODULE_CANBUS_STUDIO
             include(private/QtCanStudio/canstudio/SAKCanStudio.pri)
         }
     }

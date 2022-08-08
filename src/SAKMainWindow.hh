@@ -79,7 +79,7 @@ public:
 #ifdef SAK_IMPORT_MODULE_MODBUS_STUDIO
         DebugPageTypeModbusStudio,
 #endif
-#ifdef SAK_IMPORT_MODULE_CAN_STUDIO
+#ifdef SAK_IMPORT_MODULE_CANBUS_STUDIO
         DebugPageTypeCanStudio,
 #endif
     };
