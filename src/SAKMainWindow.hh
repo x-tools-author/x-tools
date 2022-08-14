@@ -76,6 +76,9 @@ public:
 #ifdef SAK_IMPORT_MODULE_SERIALBUS
         DebugPageTypeModbus
 #endif
+#ifdef SAK_IMPORT_MODULE_BLE_CENTRAL
+        DebugPageTypeBleCentral,
+#endif
 #ifdef SAK_IMPORT_MODULE_MODBUS_STUDIO
         DebugPageTypeModbusStudio,
 #endif

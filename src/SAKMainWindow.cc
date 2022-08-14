@@ -90,6 +90,9 @@
 #include "SAKWebSocketServerDebugger.hh"
 #endif
 #endif
+#ifdef SAK_IMPORT_MODULE_BLE_CENTRAL
+#include "SAKBleCentralDebugger.hh"
+#endif
 #ifdef SAK_IMPORT_MODULE_CANBUS_STUDIO
 #include "SAKCanBusStudio.hh"
 #endif
@@ -781,21 +784,26 @@ void SAKMainWindow::initializingMetaObject()
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeBluetoothClient, SAKBluetoothClientDebugPage::staticMetaObject, tr("BT-C")});
     mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeBluetoothServer, SAKBluetoothServerDebugPage::staticMetaObject, tr("BT-S")});
 #endif
-#ifdef SAK_IMPORT_MODULE_BLE
-    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{DebugPageTypeBluetoothLowEnergy, SAKBluetoothLowEnergyDebugPage::staticMetaObject, tr("BLE")});
+#ifdef SAK_IMPORT_MODULE_BLE_CENTRAL
+    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{
+                                      DebugPageTypeBleCentral,
+                                      SAKBleCentralDebugger::staticMetaObject,
+                                      tr("BleCentral")});
 #endif
 #ifdef SAK_IMPORT_MODULE_WEBSOCKET
 #ifdef SAK_IMPORT_MODULE_WEBSOCKET_CLIENT
-    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{
-                                      DebugPageTypeWebSocketClient,
-                                      SAKWebSocketClientDebugger::staticMetaObject,
-                                      tr("WsClient")});
+    mDebugPageMetaInfoList.append(
+                SAKDebugPageMetaInfo{
+                    DebugPageTypeWebSocketClient,
+                    SAKWebSocketClientDebugger::staticMetaObject,
+                    tr("WsClient")});
 #endif
 #ifdef SAK_IMPORT_MODULE_WEBSOCKET_SERVER
-    mDebugPageMetaInfoList.append(SAKDebugPageMetaInfo{
-                                      DebugPageTypeWebSocketServer,
-                                      SAKWebSocketServerDebugger::staticMetaObject,
-                                      tr("WsServer")});
+    mDebugPageMetaInfoList.append(
+                SAKDebugPageMetaInfo{
+                    DebugPageTypeWebSocketServer,
+                    SAKWebSocketServerDebugger::staticMetaObject,
+                    tr("WsServer")});
 #endif
 #endif
 #ifdef SAK_IMPORT_MODULE_SERIALBUS
@@ -821,19 +829,23 @@ void SAKMainWindow::initializingMetaObject()
 void SAKMainWindow::initToosMetaObjectInfoList()
 {
 #ifdef SAK_IMPORT_MODULE_FILECHECKER
-    mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{
-                                       SAKToolFileChecker::staticMetaObject,
-                                       tr("File Assistant")});
+    mToolMetaObjectInfoList.append(
+                SAKToolMetaObjectInfo{
+                    SAKToolFileChecker::staticMetaObject,
+                    tr("File Assistant")});
 #endif
-    mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{
-                                       SAKToolCRCCalculator::staticMetaObject,
-                                       tr("CRC Assistant")});
-    mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{
-                                       SAKToolFloatAssistant::staticMetaObject,
-                                       tr("Float Assistant")});
-    mToolMetaObjectInfoList.append(SAKToolMetaObjectInfo{
-                                       SAKToolStringAssistant::staticMetaObject,
-                                       tr("String Assistant")});
+    mToolMetaObjectInfoList.append(
+                SAKToolMetaObjectInfo{
+                    SAKToolCRCCalculator::staticMetaObject,
+                    tr("CRC Assistant")});
+    mToolMetaObjectInfoList.append(
+                SAKToolMetaObjectInfo{
+                    SAKToolFloatAssistant::staticMetaObject,
+                    tr("Float Assistant")});
+    mToolMetaObjectInfoList.append(
+                SAKToolMetaObjectInfo{
+                    SAKToolStringAssistant::staticMetaObject,
+                    tr("String Assistant")});
 }
 
 void SAKMainWindow::showReleaseHistoryActionDialog()
