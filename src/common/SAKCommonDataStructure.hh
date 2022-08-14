@@ -19,6 +19,12 @@
 #include <QSerialPort>
 #endif
 
+#ifdef SAK_IMPORT_MODULE_BLE
+#ifdef SAK_IMPORT_MODULE_BLE_CENTRAL
+#include <QBluetoothDeviceInfo>
+#endif
+#endif
+
 /// @brief The class define some data structure of the project.
 /// Also, It provides some interface about these data structure.
 class SAKCommonDataStructure:public QObject
@@ -151,6 +157,14 @@ public:
     };
 #endif
 #endif
+#ifdef SAK_IMPORT_MODULE_BLE
+#ifdef SAK_IMPORT_MODULE_BLE_CENTRAL
+    struct SAKStructBleCentralParametersContext {
+        QBluetoothDeviceInfo info;
+        QString uuid;
+    };
+#endif
+#endif
 public:
     /**
      * @brief setComboBoxTextOutputFormat: Add output text format items to combo box.
@@ -239,7 +253,10 @@ typedef SAKCommonDataStructure::SAKStructWSClientParametersContext
 SAKWSClientParametersContext;
 typedef SAKCommonDataStructure::SAKStructWSServerParametersContext
 SAKWSServerParametersContext;
-
+#ifdef SAK_IMPORT_MODULE_BLE
+typedef SAKCommonDataStructure::SAKStructBleCentralParametersContext
+SAKBleCentralParametersContext;
+#endif
 
 Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructTestParametersContext);
 #ifdef SAK_IMPORT_MODULE_SERIALPORT
@@ -251,5 +268,8 @@ Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructTcpClientParametersContext);
 Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructTcpServerParametersContext);
 Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructWSClientParametersContext);
 Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructWSServerParametersContext);
+#ifdef SAK_IMPORT_MODULE_BLE
+Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructBleCentralParametersContext);
+#endif
 
 #endif
