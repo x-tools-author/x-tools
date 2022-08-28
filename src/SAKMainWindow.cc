@@ -11,6 +11,8 @@
 #include <QFile>
 #include <QRect>
 #include <QDebug>
+#include <QImage>
+#include <QPixmap>
 #include <QLocale>
 #include <QTabBar>
 #include <QAction>
@@ -35,6 +37,7 @@
 #include <QJsonDocument>
 #include <QJsonParseError>
 #include <QDesktopServices>
+
 
 #include "SAKMainWindow.hh"
 #include "SAKApplication.hh"
@@ -524,6 +527,9 @@ void SAKMainWindow::initHelpMenu()
     QAction *qrCodeAction = new QAction(tr("QR Code"), this);
     helpMenu->addAction(qrCodeAction);
     connect(qrCodeAction, &QAction::triggered, this, &SAKMainWindow::showQrCodeDialog);
+
+    helpMenu->addAction(tr("支持作者"), this,
+                        &SAKMainWindow::onDonationActionTriggered);
 }
 
 void SAKMainWindow::initLinksMenu()
@@ -952,6 +958,20 @@ void SAKMainWindow::showQrCodeDialog()
     layout->addWidget(tabWidget);
     dialog.setLayout(layout);
     dialog.setModal(true);
+    dialog.show();
+    dialog.exec();
+}
+
+void SAKMainWindow::onDonationActionTriggered()
+{
+    QDialog dialog;
+    dialog.setModal(true);
+    QHBoxLayout *hBoxLayout = new QHBoxLayout(&dialog);
+    QString image = ":/resources/images/WeChat.jpg";
+    QLabel *label = new QLabel(&dialog);
+    label->setPixmap(QPixmap::fromImage(QImage(image)));
+    hBoxLayout->addWidget(label);
+    dialog.layout()->addWidget(label);
     dialog.show();
     dialog.exec();
 }

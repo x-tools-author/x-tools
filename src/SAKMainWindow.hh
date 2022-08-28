@@ -158,6 +158,7 @@ private:
     QString tabPageName(int type);
     QWidget *debugPage(QObject *sender);
     void showQrCodeDialog();
+    void onDonationActionTriggered();
 private slots:
     /**
      * @brief activePage: Active the debugging page,
