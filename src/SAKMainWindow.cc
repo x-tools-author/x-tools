@@ -392,7 +392,8 @@ void SAKMainWindow::initOptionMenuSettingsMenu(QMenu *optionMenu)
 
     QAction *action = new QAction(tr("Clear Configuration"), this);
     menu->addAction(action);
-    connect(action, &QAction::triggered, this, &SAKMainWindow::clearConfiguration);
+    connect(action, &QAction::triggered,
+            this, &SAKMainWindow::clearConfiguration);
     action = new QAction(tr("Open configuration floder"), this);
     menu->addAction(action);
     connect(action, &QAction::triggered, this, [=](){
@@ -410,8 +411,9 @@ void SAKMainWindow::initOptionMenuTestPageAction(QMenu *optionMenu)
     mTestPageAction->setCheckable(true);
     connect(mTestPageAction, &QAction::triggered,
             this, &SAKMainWindow::testPageActionTriggered);
+    QString enableTestPageKey = mSettingsKeyContext.enableTestPage;
     bool enableTestPage =
-            sakApp->settings()->value(mSettingsKeyContext.enableTestPage).toBool();
+            sakApp->settings()->value(enableTestPageKey).toBool();
     if (enableTestPage){
         mTestPageAction->setChecked(true);
     }else{
