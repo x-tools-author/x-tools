@@ -28,5 +28,6 @@
         <file>resources/images/StartUi.jpg</file>
         <file>resources/images/iOS.png</file>
         <file>resources/images/I18n.png</file>
+        <file>resources/images/WeChat.jpg</file>
     </qresource>
 </RCC>
