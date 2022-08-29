@@ -6,3 +6,12 @@ include($$PWD/websocket/SAKWebSocket.pri)
 include($$PWD/serialport/SAKSerialPort.pri)
 #----------------------------------------------------------------------------------------
 include($$PWD/debugger/SAKDebugger.pri)
+
+HEADERS += \
+    $$PWD/SAKDebuggerFactory.hh
+
+SOURCES += \
+    $$PWD/SAKDebuggerFactory.cc
+
+INCLUDEPATH += \
+    $$PWD
