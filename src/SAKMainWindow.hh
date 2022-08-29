@@ -35,59 +35,7 @@ public:
                            QSqlDatabase *sqlDatabase,
                            QWidget *parent = Q_NULLPTR);
     ~SAKMainWindow();
-
-    // Debug page type supported by QtSwissArmyKnife
-    enum SAKEnumDebugPageType {
-#ifdef QT_DEBUG
-#ifdef SAK_IMPORT_MODULE_TEST
-        DebugPageTypeTest,
-#endif
-#endif
-#ifdef SAK_IMPORT_MODULE_SERIALPORT
-        DebugPageTypeCOM,
-#endif
-#ifdef SAK_IMPORT_HID_MODULE
-        DebugPageTypeHID,
-#endif
-#ifdef SAK_IMPORT_MODULE_UDP
-#ifdef SAK_IMPORT_MODULE_UDP_CLIENT
-        DebugPageTypeUdpClient,
-#endif
-#ifdef SAK_IMPORT_MODULE_UDP_SERVER
-        DebugPageTypeUdpServer,
-#endif
-#endif
-#ifdef SAK_IMPORT_MODULE_TCP
-#ifdef SAK_IMPORT_MODULE_TCP_CLIENT
-        DebugPageTypeTCPClient,
-#endif
-#ifdef SAK_IMPORT_MODULE_TCP_SERVER
-        DebugPageTypeTCPServer,
-#endif
-#endif
-#ifdef SAK_IMPORT_MODULE_WEBSOCKET
-#ifdef SAK_IMPORT_MODULE_WEBSOCKET_CLIENT
-        DebugPageTypeWebSocketClient,
-#endif
-#ifdef SAK_IMPORT_MODULE_WEBSOCKET_SERVER
-        DebugPageTypeWebSocketServer,
-#endif
-#endif
-#ifdef SAK_IMPORT_MODULE_SERIALBUS
-        DebugPageTypeModbus
-#endif
-#ifdef SAK_IMPORT_MODULE_BLE_CENTRAL
-        DebugPageTypeBleCentral,
-#endif
-#ifdef SAK_IMPORT_MODULE_MODBUS_STUDIO
-        DebugPageTypeModbusStudio,
-#endif
-#ifdef SAK_IMPORT_MODULE_CANBUS_STUDIO
-        DebugPageTypeCanStudio,
-#endif
-    };
-    Q_ENUM(SAKEnumDebugPageType);
-
+public:
     enum SAKEnumToolType {
 #ifdef SAK_IMPORT_MODULE_FILECHECKER
         ToolTypeFileChecker,
@@ -106,13 +54,6 @@ private:
         QString currentTabPage;
         QString exitToSystemTray;
     }mSettingsKeyContext;
-
-    struct SAKDebugPageMetaInfo {
-        int debugPageType;
-        QMetaObject metaObject;
-        QString defaultTitle;
-    };
-    QList<SAKDebugPageMetaInfo> mDebugPageMetaInfoList;
 
     struct SAKToolMetaObjectInfo {
         QMetaObject metaObject;
@@ -152,7 +93,6 @@ private:
     void testPageActionTriggered();
     void clearConfiguration();
     void rebootRequestion();
-    void initializingMetaObject();
     void initToosMetaObjectInfoList();
     void showReleaseHistoryActionDialog();
     QString tabPageName(int type);
@@ -187,21 +127,6 @@ private slots:
      * which is emited by actions of new debugging page menu.
      */
     void appendRemovablePage();
-private:
-    /**
-     * @brief debugPageFromDebugPageType: Create a debuge page from specified type
-     * @param type: Debug page type, look at the SAKEnumToolType for more information
-     * @return A pointer of debug page instance
-     */
-    QWidget *debugPageFromDebugPageType(int type);
-
-    /**
-     * @brief debugPageTitleFromDebugPageType: Get the default name of debuge page
-     * from specified type
-     * @param type: Debug page type, look at the SAKEnumToolType for more information
-     * @return The default debug page name
-     */
-    QString debuggerNameFromDebugPageType(int type);
 private:
     Ui::SAKMainWindow *mUi;
     QTabWidget *mTabWidget;
