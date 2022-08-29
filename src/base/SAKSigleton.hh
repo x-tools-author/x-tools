@@ -15,15 +15,15 @@
 #include "SAKObj.hh"
 
 template <class T>
-class SpinQSigleton : public SAKObj
+class SAKSigleton : public SAKObj
 {
 public:
-    SpinQSigleton(const char *category = "SpinQ")
+    SAKSigleton(const char *category = "SpinQ")
         : SAKObj(category) {
 
     }
 
-    ~SpinQSigleton() {
+    ~SAKSigleton() {
         mInstanceMutex.lock();
         if (mInstance) {
             delete mInstance;
@@ -48,7 +48,7 @@ private:
     static QMutex mInstanceMutex;
 };
 
-template <class T> T* SpinQSigleton<T>::mInstance = Q_NULLPTR;
-template <class T> QMutex SpinQSigleton<T>::mInstanceMutex;
+template <class T> T* SAKSigleton<T>::mInstance = Q_NULLPTR;
+template <class T> QMutex SAKSigleton<T>::mInstanceMutex;
 
 #endif // SAKSIGLETON_HH
