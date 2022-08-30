@@ -61,10 +61,10 @@ public:
 #ifdef SAK_IMPORT_MODULE_BLE_CENTRAL
         DebugPageTypeBleCentral,
 #endif
-#ifdef SAK_IMPORT_MODULE_MODBUS_STUDIO
+#ifdef SAK_IMPORT_MODULE_MODBUS
         DebugPageTypeModbusStudio,
 #endif
-#ifdef SAK_IMPORT_MODULE_CANBUS_STUDIO
+#ifdef SAK_IMPORT_MODULE_CANBUS
         DebugPageTypeCanStudio,
 #endif
     };

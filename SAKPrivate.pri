@@ -4,14 +4,14 @@ exists(private/QtModbusStudio/modbusstudio/SAKModbusStudio.pri) {
         !lessThan(QT_MINOR_VERSION, 7){
             qtHaveModule(serialbus){
                 QT  += serialbus
-                DEFINES+=SAK_IMPORT_MODULE_MODBUS_STUDIO
+                DEFINES+=SAK_IMPORT_MODULE_MODBUS
                 include(private/QtModbusStudio/modbusstudio/SAKModbusStudio.pri)
             }
         }
     } else {
         qtHaveModule(serialbus){
             QT  += serialbus
-            DEFINES+=SAK_IMPORT_MODULE_MODBUS_STUDIO
+            DEFINES+=SAK_IMPORT_MODULE_MODBUS
             include(private/QtModbusStudio/modbusstudio/SAKModbusStudio.pri)
         }
     }
@@ -22,14 +22,14 @@ exists(private/QtCanStudio/canstudio/SAKCanStudio.pri) {
         !lessThan(QT_MINOR_VERSION, 7){
             qtHaveModule(serialbus){
                 QT  += serialbus
-                DEFINES+=SAK_IMPORT_MODULE_CANBUS_STUDIO
+                DEFINES+=SAK_IMPORT_MODULE_CANBUS
                 include(private/QtCanStudio/canstudio/SAKCanStudio.pri)
             }
         }
     } else {
         qtHaveModule(serialbus){
             QT  += serialbus
-            DEFINES+=SAK_IMPORT_MODULE_CANBUS_STUDIO
+            DEFINES+=SAK_IMPORT_MODULE_CANBUS
             include(private/QtCanStudio/canstudio/SAKCanStudio.pri)
         }
     }

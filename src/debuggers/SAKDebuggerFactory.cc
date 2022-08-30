@@ -22,7 +22,7 @@
 #ifdef SAK_IMPORT_MODULE_SERIALBUS
 #include "SAKModbusDebugger.hh"
 #endif
-#ifdef SAK_IMPORT_MODULE_MODBUS_STUDIO
+#ifdef SAK_IMPORT_MODULE_MODBUS
 #include "SAKModbusDebugger.hh"
 #endif
 #ifdef SAK_IMPORT_MODULE_UDP
@@ -55,7 +55,7 @@
 #ifdef SAK_IMPORT_MODULE_BLE_CENTRAL
 #include "SAKBleCentralDebugger.hh"
 #endif
-#ifdef SAK_IMPORT_MODULE_CANBUS_STUDIO
+#ifdef SAK_IMPORT_MODULE_CANBUS
 #include "SAKCanBusDebugger.hh"
 #endif
 
@@ -198,13 +198,13 @@ void SAKDebuggerFactory::initializeDebuggerMetaObject()
                                       SAKModbusDebugger::staticMetaObject,
                                       tr("Modbus")});
 #endif
-#ifdef SAK_IMPORT_MODULE_MODBUS_STUDIO
+#ifdef SAK_IMPORT_MODULE_MODBUS
     mDebuggerMetaObjectContextVector.append(SAKDebuggerMetaObjCtx{
                                       DebugPageTypeModbusStudio,
                                       SAKModbusDebugger::staticMetaObject,
                                       tr("Modbus")});
 #endif
-#ifdef SAK_IMPORT_MODULE_CANBUS_STUDIO
+#ifdef SAK_IMPORT_MODULE_CANBUS
     mDebuggerMetaObjectContextVector.append(SAKDebuggerMetaObjCtx{
                                       DebugPageTypeCanStudio,
                                       SAKCanBusDebugger::staticMetaObject,
