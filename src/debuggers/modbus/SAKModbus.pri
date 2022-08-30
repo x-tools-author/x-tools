@@ -17,11 +17,9 @@ contains(DEFINES, SAK_IMPORT_MODULE_MODBUS_STUDIO) {
         $$PWD/SAKModbusStudio.ui
 
     HEADERS += \
-        $$PWD/SAKModbusDeviceFactory.hh \
         $$PWD/SAKModbusStudio.hh
 
     SOURCES += \
-        $$PWD/SAKModbusDeviceFactory.cc \
         $$PWD/SAKModbusStudio.cc
 
     INCLUDEPATH += \

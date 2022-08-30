@@ -56,7 +56,7 @@
 #include "SAKBleCentralDebugger.hh"
 #endif
 #ifdef SAK_IMPORT_MODULE_CANBUS_STUDIO
-#include "SAKCanBusStudio.hh"
+#include "SAKCanBusDebugger.hh"
 #endif
 
 SAKDebuggerFactory::SAKDebuggerFactory(QObject *parent)
@@ -207,7 +207,7 @@ void SAKDebuggerFactory::initializeDebuggerMetaObject()
 #ifdef SAK_IMPORT_MODULE_CANBUS_STUDIO
     mDebuggerMetaObjectContextVector.append(SAKDebuggerMetaObjCtx{
                                       DebugPageTypeCanStudio,
-                                      SAKCanBusStudio::staticMetaObject,
+                                      SAKCanBusDebugger::staticMetaObject,
                                       tr("CAN")});
 #endif
 }
