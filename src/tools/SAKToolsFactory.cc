@@ -13,35 +13,45 @@
 #ifdef SAK_IMPORT_MODULE_FILECHECKER
 #include "SAKToolFileChecker.hh"
 #endif
+#ifdef SAK_IMPORT_MODULE_CRCCALCULATOR
 #include "SAKToolCRCCalculator.hh"
+#endif
 #ifdef SAK_IMPORT_MODULE_QRCODE
 #include "SAKToolQRCodeCreator.hh"
 #endif
+#ifdef SAK_IMPORT_MODULE_FLOATASSISTANT
 #include "SAKToolFloatAssistant.hh"
+#endif
+#ifdef SAK_IMPORT_MODULE_STRINGASSISTANT
 #include "SAKToolStringAssistant.hh"
+#endif
 
 SAKToolsFactory::SAKToolsFactory(QObject *parent)
 {
     setParent(parent ? parent : qApp);
 
+#ifdef SAK_IMPORT_MODULE_CRCCALCULATOR
+    mToolMetaObjCtxVector.append(SAKToolMetaObjCtx{
+                    SAKToolCRCCalculator::staticMetaObject,tr("CRC Assistant")});
+#endif
 #ifdef SAK_IMPORT_MODULE_FILECHECKER
     mToolMetaObjCtxVector.append(
                 SAKToolMetaObjCtx{
                     SAKToolFileChecker::staticMetaObject,
                     tr("File Assistant")});
 #endif
-    mToolMetaObjCtxVector.append(
-                SAKToolMetaObjCtx{
-                    SAKToolCRCCalculator::staticMetaObject,
-                    tr("CRC Assistant")});
+#ifdef SAK_IMPORT_MODULE_FLOATASSISTANT
     mToolMetaObjCtxVector.append(
                 SAKToolMetaObjCtx{
                     SAKToolFloatAssistant::staticMetaObject,
                     tr("Float Assistant")});
+#endif
+#ifdef SAK_IMPORT_MODULE_STRINGASSISTANT
     mToolMetaObjCtxVector.append(
                 SAKToolMetaObjCtx{
                     SAKToolStringAssistant::staticMetaObject,
                     tr("String Assistant")});
+#endif
 }
 
 QVector<SAKToolsFactory::SAKToolMetaObjCtx>

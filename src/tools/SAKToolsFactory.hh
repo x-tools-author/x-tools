@@ -22,21 +22,11 @@ class SAKToolsFactory : public QObject, public SAKSigleton<SAKToolsFactory>
 private:
     SAKToolsFactory(QObject *parent = Q_NULLPTR);
 public:
-    enum SAKEnumToolType {
-#ifdef SAK_IMPORT_MODULE_FILECHECKER
-        ToolTypeFileChecker,
-#endif
-#ifdef SAK_IMPORT_MODULE_QRCODE
-        ToolTypeQRCodeCreator,
-#endif
-        ToolTypeCRCCalculator
-    };
-    Q_ENUM(SAKEnumToolType);
-
     struct SAKToolMetaObjCtx {
         QMetaObject metaObject;
         QString title;
     };
+private:
     QVector<SAKToolMetaObjCtx> mToolMetaObjCtxVector;
 public:
     QVector<SAKToolMetaObjCtx> supportedToolsContext();
