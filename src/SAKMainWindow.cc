@@ -42,19 +42,9 @@
 
 #include "SAKMainWindow.hh"
 #include "SAKApplication.hh"
+#include "SAKToolsFactory.hh"
 #include "SAKUpdateManager.hh"
 #include "SAKDebuggerFactory.hh"
-
-// Debugging tools
-#ifdef SAK_IMPORT_MODULE_FILECHECKER
-#include "SAKToolFileChecker.hh"
-#endif
-#include "SAKToolCRCCalculator.hh"
-#ifdef SAK_IMPORT_MODULE_QRCODE
-#include "SAKToolQRCodeCreator.hh"
-#endif
-#include "SAKToolFloatAssistant.hh"
-#include "SAKToolStringAssistant.hh"
 
 #ifdef SAK_IMPORT_MODULE_USER
 #include "SAKUserManager.hh"
@@ -85,8 +75,6 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
 
     mUi->setupUi(this);
     mUpdateManager = new SAKUpdateManager(this);
-
-    initToosMetaObjectInfoList();
 
 #ifdef Q_OS_ANDROID
     setWindowFlags(Qt::FramelessWindowHint);
@@ -242,7 +230,7 @@ void SAKMainWindow::initToolMenu()
     QMenu *toolMenu = new QMenu(tr("&Tools"));
     menuBar()->addMenu(toolMenu);
 
-    for (auto &var : mToolMetaObjectInfoList){
+    for (auto &var : sakToolsFactory->supportedToolsContext()){
         QWidget *w = qobject_cast<QWidget*>(var.metaObject.newInstance());
         Q_ASSERT_X(w, __FUNCTION__, "A null pointer!");
         w->hide();
@@ -686,28 +674,6 @@ void SAKMainWindow::rebootRequestion()
         qApp->closeAllWindows();
         qApp->exit(SAK_REBOOT_CODE);
     }
-}
-
-void SAKMainWindow::initToosMetaObjectInfoList()
-{
-#ifdef SAK_IMPORT_MODULE_FILECHECKER
-    mToolMetaObjectInfoList.append(
-                SAKToolMetaObjectInfo{
-                    SAKToolFileChecker::staticMetaObject,
-                    tr("File Assistant")});
-#endif
-    mToolMetaObjectInfoList.append(
-                SAKToolMetaObjectInfo{
-                    SAKToolCRCCalculator::staticMetaObject,
-                    tr("CRC Assistant")});
-    mToolMetaObjectInfoList.append(
-                SAKToolMetaObjectInfo{
-                    SAKToolFloatAssistant::staticMetaObject,
-                    tr("Float Assistant")});
-    mToolMetaObjectInfoList.append(
-                SAKToolMetaObjectInfo{
-                    SAKToolStringAssistant::staticMetaObject,
-                    tr("String Assistant")});
 }
 
 void SAKMainWindow::showReleaseHistoryActionDialog()

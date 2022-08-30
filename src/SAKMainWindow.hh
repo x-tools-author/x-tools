@@ -35,17 +35,6 @@ public:
                            QSqlDatabase *sqlDatabase,
                            QWidget *parent = Q_NULLPTR);
     ~SAKMainWindow();
-public:
-    enum SAKEnumToolType {
-#ifdef SAK_IMPORT_MODULE_FILECHECKER
-        ToolTypeFileChecker,
-#endif
-#ifdef SAK_IMPORT_MODULE_QRCODE
-        ToolTypeQRCodeCreator,
-#endif
-        ToolTypeCRCCalculator
-    };
-    Q_ENUM(SAKEnumToolType);
 protected:
     void closeEvent(QCloseEvent *event);
 private:
@@ -54,12 +43,6 @@ private:
         QString currentTabPage;
         QString exitToSystemTray;
     }mSettingsKeyContext;
-
-    struct SAKToolMetaObjectInfo {
-        QMetaObject metaObject;
-        QString title;
-    };
-    QList<SAKToolMetaObjectInfo> mToolMetaObjectInfoList;
 
     QMenu *mWindowsMenu;
     QAction *mTestPageAction;
@@ -93,7 +76,6 @@ private:
     void testPageActionTriggered();
     void clearConfiguration();
     void rebootRequestion();
-    void initToosMetaObjectInfoList();
     void showReleaseHistoryActionDialog();
     QString tabPageName(int type);
     QWidget *debugPage(QObject *sender);
