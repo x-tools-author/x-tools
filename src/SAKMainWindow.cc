@@ -600,6 +600,7 @@ void SAKMainWindow::aboutQsak()
     dateTimeString = dateTimeString.append(sakApp->buildTime()->toString("hh:mm:ss"));
     QList<Info> infoList;
     infoList << Info{tr("Version"), QString(qApp->applicationVersion()), false}
+             << Info{tr("Edition"), SAK_EDITION, false}
              << Info{tr("Author"), QString(SAK_AUTHOR), false}
              << Info{tr("Email"), QString(SAK_AUTHOR_EMAIL), false}
              << Info{tr("QQ"), QString("QQ:2869470394"), false}
