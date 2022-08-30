@@ -23,7 +23,7 @@
 #include "SAKModbusDebugger.hh"
 #endif
 #ifdef SAK_IMPORT_MODULE_MODBUS_STUDIO
-#include "SAKModbusStudio.hh"
+#include "SAKModbusDebugger.hh"
 #endif
 #ifdef SAK_IMPORT_MODULE_UDP
 #ifdef SAK_IMPORT_MODULE_UDP_CLIENT
@@ -201,7 +201,7 @@ void SAKDebuggerFactory::initializeDebuggerMetaObject()
 #ifdef SAK_IMPORT_MODULE_MODBUS_STUDIO
     mDebuggerMetaObjectContextVector.append(SAKDebuggerMetaObjCtx{
                                       DebugPageTypeModbusStudio,
-                                      SAKModbusStudio::staticMetaObject,
+                                      SAKModbusDebugger::staticMetaObject,
                                       tr("Modbus")});
 #endif
 #ifdef SAK_IMPORT_MODULE_CANBUS_STUDIO

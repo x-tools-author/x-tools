@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#ifndef SAKMODBUSSTUDIO_H
-#define SAKMODBUSSTUDIO_H
+#ifndef SAKMODBUSDEBUGGER_HH
+#define SAKMODBUSDEBUGGER_HH
 
 #include <QWidget>
 #include <QVector>
@@ -23,11 +23,11 @@
 #include <QStandardItemModel>
 
 namespace Ui {
-    class SAKModbusStudio;
+    class SAKModbusDebugger;
 };
 
 class QSqlDatabase;
-class SAKModbusStudio : public QWidget
+class SAKModbusDebugger : public QWidget
 {
     Q_OBJECT
 public:
@@ -73,12 +73,12 @@ public:
     };
     Q_ENUM(SAKEnumFunctionCode);
 public:
-    explicit SAKModbusStudio(QSettings *settings, QWidget *parent = Q_NULLPTR);
-    Q_INVOKABLE SAKModbusStudio(QSettings *settings,
+    explicit SAKModbusDebugger(QSettings *settings, QWidget *parent = Q_NULLPTR);
+    Q_INVOKABLE SAKModbusDebugger(QSettings *settings,
                           const QString settingsGroup,
                           QSqlDatabase *sqlDatabase = Q_NULLPTR,
                           QWidget *parent = Q_NULLPTR);
-    ~SAKModbusStudio();
+    ~SAKModbusDebugger();
 signals:
     void deviceChanged(QModbusDevice *device);
 private:
@@ -113,7 +113,7 @@ private:
         const QString pdu = "pdu";
     } mSettingsKeyCtx;
 private:
-    Ui::SAKModbusStudio *ui;
+    Ui::SAKModbusDebugger *ui;
     QModbusDevice *mModbusDevice;
     const QLoggingCategory mLoggingCategory;
     QSettings *mSettings;
@@ -250,4 +250,4 @@ private:
             const QByteArray &data);
 };
 
-#endif // SAKMODBUSSTUDIO_H
+#endif // SAKMODBUSDEBUGGER_H
