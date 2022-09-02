@@ -32,7 +32,8 @@ SAKToolsFactory::SAKToolsFactory(QObject *parent)
 
 #ifdef SAK_IMPORT_MODULE_CRCCALCULATOR
     mToolMetaObjCtxVector.append(SAKToolMetaObjCtx{
-                    SAKToolCRCCalculator::staticMetaObject,tr("CRC Assistant")});
+                    SAKToolCRCCalculator::staticMetaObject,
+                tr("CRC Assistant")});
 #endif
 #ifdef SAK_IMPORT_MODULE_FILECHECKER
     mToolMetaObjCtxVector.append(
