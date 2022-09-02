@@ -130,7 +130,7 @@ QString SAKDebuggerFactory::debuggerName(int type)
 void SAKDebuggerFactory::initializeDebuggerMetaObject()
 {
 #ifdef QT_DEBUG
-    mDebugPageMetaInfoList.append(SAKDebuggerMetaObjectContext{
+    mDebuggerMetaObjectContextVector.append(SAKDebuggerMetaObjCtx{
                                       DebugPageTypeTest,
                                       SAKTestDebugger::staticMetaObject,
                                       tr("Test")});

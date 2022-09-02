@@ -121,7 +121,8 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
         // Test page is selectable, it is for developer of the project.
         QString key = mSettingsKeyContext.enableTestPage;
         bool enableTestPage = sakApp->settings()->value(key).toBool();
-        if (!enableTestPage && (metaEnum.value(i) == DebugPageTypeTest)){
+        if (!enableTestPage && (metaEnum.value(i) ==
+                                SAKDebuggerFactory::DebugPageTypeTest)){
             continue;
         }
 #endif
