@@ -106,7 +106,8 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
     connect(mTabWidget, &QTabWidget::tabCloseRequested,
             this, &SAKMainWindow::removeRemovableDebugPage);
     connect(mTabWidget, &QTabWidget::currentChanged, this, [=](int index){
-        sakApp->settings()->setValue(mSettingsKeyContext.currentTabPage, index);
+        QString key = mSettingsKeyContext.currentTabPage;
+        sakApp->settings()->setValue(key, index);
     });
 
     // Create debugger, the operation will emit the signal named currentChanged.
@@ -140,8 +141,8 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
     }
 
     // Set the current page to last time
-    int currentPage =
-            sakApp->settings()->value(mSettingsKeyContext.currentTabPage).toInt();
+    QString key = mSettingsKeyContext.currentTabPage;
+    int currentPage = sakApp->settings()->value(key).toInt();
     mTabWidget->setCurrentIndex(currentPage);
 
     // Hide the close button,
@@ -199,23 +200,27 @@ void SAKMainWindow::initFileMenu()
     fileMenu->addMenu(tabMenu);
     QMetaEnum enums = QMetaEnum::fromType<SAKEnumDebugPageType>();
     for (int i = 0; i < enums.keyCount(); i++){
-        QAction *a = new QAction(sakDebuggerFactor->debuggerName(enums.value(i)), this);
+        QString name = sakDebuggerFactor->debuggerName(enums.value(i));
+        QAction *a = new QAction(name, this);
         // The object name is the default title of debug page
         a->setObjectName(sakDebuggerFactor->debuggerName(enums.value(i)));
         QVariant var = QVariant::fromValue<int>(enums.value(i));
         a->setData(var);
-        connect(a, &QAction::triggered, this, &SAKMainWindow::appendRemovablePage);
+        connect(a, &QAction::triggered,
+                this, &SAKMainWindow::appendRemovablePage);
         tabMenu->addAction(a);
     }
 
     QMenu *windowMenu = new QMenu(tr("New Window"), this);
     fileMenu->addMenu(windowMenu);
     for (int i = 0; i < enums.keyCount(); i++){
-        QAction *a = new QAction(sakDebuggerFactor->debuggerName(enums.value(i)), this);
+        QString styleName = sakDebuggerFactor->debuggerName(enums.value(i));
+        QAction *a = new QAction(styleName, this);
         // The object name is the default title of debug page
         a->setObjectName(sakDebuggerFactor->debuggerName(enums.value(i)));
         QVariant var = QVariant::fromValue<int>(enums.value(i));
-        connect(a, &QAction::triggered, this, &SAKMainWindow::openDebugPageWidget);
+        connect(a, &QAction::triggered,
+                this, &SAKMainWindow::openDebugPageWidget);
         a->setData(var);
         windowMenu->addAction(a);
     }
@@ -385,7 +390,8 @@ void SAKMainWindow::initLanguageMenu()
     QByteArray jsonData = file.readAll();
 
     QJsonParseError jsonError;
-    QJsonDocument jsonDocument = QJsonDocument::fromJson(jsonData, &jsonError);
+    QJsonDocument jsonDocument =
+            QJsonDocument::fromJson(jsonData, &jsonError);
     if (jsonError.error == QJsonParseError::NoError){
         if (jsonDocument.isArray()){
             QJsonArray jsonArray = jsonDocument.array();
@@ -400,7 +406,8 @@ void SAKMainWindow::initLanguageMenu()
                 QJsonObject jsonObject = jsonArray.at(i).toObject();
                 struct info languageInfo;
                 languageInfo.locale = jsonObject.value("locale").toString();
-                languageInfo.language = jsonObject.value("language").toString();
+                languageInfo.language =
+                        jsonObject.value("language").toString();
                 languageInfo.name = jsonObject.value("name").toString();
                 infoVector.append(languageInfo);
             }
@@ -442,28 +449,34 @@ void SAKMainWindow::initHelpMenu()
 
     QAction *aboutAction = new QAction(tr("About Application"), this);
     helpMenu->addAction(aboutAction);
-    connect(aboutAction, &QAction::triggered, this, &SAKMainWindow::aboutQsak);
+    connect(aboutAction, &QAction::triggered,
+            this, &SAKMainWindow::aboutQsak);
 
     QMenu *srcMenu = new QMenu(tr("Get Source"), this);
     helpMenu->addMenu(srcMenu);
     QAction *visitGitHubAction =
-            new QAction(QIcon(":/resources/images/GitHub.png"), tr("GitHub"), this);
+            new QAction(QIcon(":/resources/images/GitHub.png"),
+                        tr("GitHub"), this);
     connect(visitGitHubAction, &QAction::triggered,
             [](){
-        QDesktopServices::openUrl(QUrl(QLatin1String(SAK_GITHUB_REPOSITORY_URL)));
+        QUrl url = QUrl(QLatin1String(SAK_GITHUB_REPOSITORY_URL));
+        QDesktopServices::openUrl(url);
     });
     srcMenu->addAction(visitGitHubAction);
     QAction *visitGiteeAction =
-            new QAction(QIcon(":/resources/images/Gitee.png"), tr("Gitee"), this);
+            new QAction(QIcon(":/resources/images/Gitee.png"),
+                        tr("Gitee"), this);
     connect(visitGiteeAction, &QAction::triggered,
             [](){
-        QDesktopServices::openUrl(QUrl(QLatin1String(SAK_GITEE_REPOSITORY_URL)));
+        QUrl url = QUrl(QLatin1String(SAK_GITEE_REPOSITORY_URL));
+        QDesktopServices::openUrl(url);
     });
     srcMenu->addAction(visitGiteeAction);
 
     QAction *updateAction = new QAction(tr("Check for Update"), this);
     helpMenu->addAction(updateAction);
-    connect(updateAction, &QAction::triggered, mUpdateManager, &SAKUpdateManager::show);
+    connect(updateAction, &QAction::triggered,
+            mUpdateManager, &SAKUpdateManager::show);
 
     QAction *releaseHistoryAction = new QAction(tr("Release History"), this);
     helpMenu->addAction(releaseHistoryAction);
@@ -473,7 +486,8 @@ void SAKMainWindow::initHelpMenu()
     helpMenu->addSeparator();
     QAction *qrCodeAction = new QAction(tr("QR Code"), this);
     helpMenu->addAction(qrCodeAction);
-    connect(qrCodeAction, &QAction::triggered, this, &SAKMainWindow::showQrCodeDialog);
+    connect(qrCodeAction, &QAction::triggered,
+            this, &SAKMainWindow::showQrCodeDialog);
 
     helpMenu->addAction(tr("支持作者"), this,
                         &SAKMainWindow::onDonationActionTriggered);
@@ -533,8 +547,9 @@ void SAKMainWindow::initDemoMenu()
         QString iconPath;
     };
     QList<Link> linkList;
+    QString baseUrl = "https://gitee.com/qsaker";
     linkList << Link{tr("Qt SerialPort Demo"),
-                QString("https://gitee.com/qsaker/qt-demo-serial-port-widget.git"),
+                QString(baseUrl + "/qt-demo-serial-port-widget.git"),
                 QString(":/resources/images/Qt.png")};
 
     for (auto &var:linkList){
@@ -562,13 +577,20 @@ void SAKMainWindow::initUserMenu()
         void (SAKUserManager::*func)();
     };
     QVector<SAKStructCtx> ctxList;
-    ctxList << SAKStructCtx{tr("Sign up"), &SAKUserManager::showSignUpDialog}
-            << SAKStructCtx{tr("Sign in"), &SAKUserManager::showSignInDialog}
-            << SAKStructCtx{tr("Update password"), &SAKUserManager::showUpdatePasswordDialog}
-            << SAKStructCtx{tr("Reset password"), &SAKUserManager::showUpdatePasswordDialog}
-            << SAKStructCtx{tr("User informations"), &SAKUserManager::showInformationDialog}
-            << SAKStructCtx{tr("Register the software"), &SAKUserManager::showBuyDialog}
-            << SAKStructCtx{tr("Destroy account"), &SAKUserManager::showDestroyDialog};
+    ctxList << SAKStructCtx{tr("Sign up"),
+               &SAKUserManager::showSignUpDialog}
+            << SAKStructCtx{tr("Sign in"),
+               &SAKUserManager::showSignInDialog}
+            << SAKStructCtx{tr("Update password"),
+               &SAKUserManager::showUpdatePasswordDialog}
+            << SAKStructCtx{tr("Reset password"),
+               &SAKUserManager::showUpdatePasswordDialog}
+            << SAKStructCtx{tr("User informations"),
+               &SAKUserManager::showInformationDialog}
+            << SAKStructCtx{tr("Register the software"),
+               &SAKUserManager::showBuyDialog}
+            << SAKStructCtx{tr("Destroy account"),
+               &SAKUserManager::showDestroyDialog};
     for (int i = 0; i < ctxList.length(); i++) {
         auto ctx = ctxList.at(i);
         userMenu->addAction(ctx.title, this, [=](){(userMgr->*ctx.func)();});
@@ -584,11 +606,14 @@ void SAKMainWindow::aboutQsak()
         bool valueIsUrl;
     };
 
-    auto dateTimeString = sakApp->buildDate()->toString(QLocale::system().dateFormat());
+    QString format = QLocale::system().dateFormat();
+    QString buildTimeString = sakApp->buildTime()->toString("hh:mm:ss");
+    auto dateTimeString = sakApp->buildDate()->toString(format);
     dateTimeString = dateTimeString.append(" ");
-    dateTimeString = dateTimeString.append(sakApp->buildTime()->toString("hh:mm:ss"));
+    dateTimeString = dateTimeString.append(buildTimeString);
     QList<Info> infoList;
-    infoList << Info{tr("Version"), QString(qApp->applicationVersion()), false}
+    infoList << Info{tr("Version"),
+                QString(qApp->applicationVersion()), false}
              << Info{tr("Edition"), SAK_EDITION, false}
              << Info{tr("Author"), QString(SAK_AUTHOR), false}
              << Info{tr("Email"), QString(SAK_AUTHOR_EMAIL), false}
@@ -599,7 +624,9 @@ void SAKMainWindow::aboutQsak()
                 .arg(SAK_GITEE_REPOSITORY_URL), true}
              << Info{tr("Gitbub Url"), QString("<a href=%1>%1</a>")
                 .arg(SAK_GITHUB_REPOSITORY_URL), true}
-             << Info{tr("Copyright"), tr("Copyright 2018-%1 Qsaker(qsaker@outlook.com). All rights reserved.")
+             << Info{tr("Copyright"),
+                tr("Copyright 2018-%1 Qsaker(qsaker@outlook.com)."
+                   " All rights reserved.")
                 .arg(sakApp->buildDate()->toString("yyyy")), false};
 
     QDialog dialog;
@@ -660,17 +687,22 @@ void SAKMainWindow::testPageActionTriggered()
 
 void SAKMainWindow::clearConfiguration()
 {
-    sakApp->settings()->setValue(sakApp->settingsKeyContext()->appStyle, QString(""));
-    sakApp->settings()->setValue(sakApp->settingsKeyContext()->removeSettingsFile,
-                                 QVariant::fromValue(true));
+    sakApp->settings()->setValue(
+                sakApp->settingsKeyContext()->appStyle,
+                QString(""));
+    sakApp->settings()->setValue(
+                sakApp->settingsKeyContext()->removeSettingsFile,
+                QVariant::fromValue(true));
     rebootRequestion();
 }
 
 void SAKMainWindow::rebootRequestion()
 {
-    int ret = QMessageBox::information(this, tr("Reboot application to effective"),
-                                       tr("Need to reboot, reboot to effective now?"),
-                                       QMessageBox::Ok | QMessageBox::Cancel);
+    int ret = QMessageBox::information(
+                this,
+                tr("Reboot application to effective"),
+                tr("Need to reboot, reboot to effective now?"),
+                QMessageBox::Ok | QMessageBox::Cancel);
     if (ret == QMessageBox::Ok){
         qApp->closeAllWindows();
         qApp->exit(SAK_REBOOT_CODE);
@@ -704,14 +736,17 @@ QString SAKMainWindow::tabPageName(int type)
     QDialog dialog;
     dialog.setWindowTitle(tr("Edit Page Name"));
 
-    QLabel *tipLabel = new QLabel(tr("Please input the name of tab page"), &dialog);
+    QLabel *tipLabel = new QLabel(tr("Please input the name of tab page"),
+                                  &dialog);
     QLabel *tipPageNameLabel = new QLabel(tr("Tab page name"), &dialog);
     QLineEdit *tapPageNameLineEdit = new QLineEdit(&dialog);
     QLabel *emptyLabel = new QLabel("", &dialog);
     QPushButton *okPushButton = new QPushButton(tr("OK"), &dialog);
     QPushButton *cancelPushButton = new QPushButton(tr("Cancel"), &dialog);
-    connect(okPushButton, &QPushButton::clicked, &dialog, &QDialog::accept);
-    connect(cancelPushButton, &QPushButton::clicked, &dialog, &QDialog::reject);
+    connect(okPushButton, &QPushButton::clicked,
+            &dialog, &QDialog::accept);
+    connect(cancelPushButton, &QPushButton::clicked,
+            &dialog, &QDialog::reject);
 
     tapPageNameLineEdit->setText(defaultName);
     emptyLabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
@@ -823,8 +858,9 @@ void SAKMainWindow::installLanguage()
 
             QString language = action->objectName();
             QString name = action->data().toString();
-            mSettings->setValue(sakApp->settingsKeyContext()->language,
-                                QVariant::fromValue(QString(language + "-" + name)));
+            QString value = language + "-" + name;
+            QString key = sakApp->settingsKeyContext()->language;
+            mSettings->setValue(key, value);
             qobject_cast<SAKApplication*>(qApp)->installLanguage();
             rebootRequestion();
         }
