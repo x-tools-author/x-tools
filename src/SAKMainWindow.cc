@@ -39,16 +39,11 @@
 #include <QJsonParseError>
 #include <QDesktopServices>
 
-
 #include "SAKMainWindow.hh"
 #include "SAKApplication.hh"
 #include "SAKToolsFactory.hh"
 #include "SAKUpdateManager.hh"
 #include "SAKDebuggerFactory.hh"
-
-#ifdef SAK_IMPORT_MODULE_USER
-#include "SAKUserManager.hh"
-#endif
 
 #include "ui_SAKMainWindow.h"
 
@@ -175,9 +170,6 @@ void SAKMainWindow::initMenuBar()
     initLanguageMenu();
     initLinksMenu();
     initDemoMenu();
-#ifdef SAK_IMPORT_MODULE_USER
-    initUserMenu();
-#endif
     initHelpMenu();
 }
 
@@ -562,41 +554,6 @@ void SAKMainWindow::initDemoMenu()
         });
     }
 }
-
-#ifdef SAK_IMPORT_MODULE_USER
-void SAKMainWindow::initUserMenu()
-{
-    QMenu *userMenu = new QMenu(tr("&User"), this);
-    userMenu->setEnabled(false);
-    menuBar()->addMenu(userMenu);
-    SAKUserManager *userMgr = SAKUserManager::instance();
-    userMgr->setAppId("QtSwissArmyKnifeServer");
-
-    struct SAKStructCtx {
-        QString title;
-        void (SAKUserManager::*func)();
-    };
-    QVector<SAKStructCtx> ctxList;
-    ctxList << SAKStructCtx{tr("Sign up"),
-               &SAKUserManager::showSignUpDialog}
-            << SAKStructCtx{tr("Sign in"),
-               &SAKUserManager::showSignInDialog}
-            << SAKStructCtx{tr("Update password"),
-               &SAKUserManager::showUpdatePasswordDialog}
-            << SAKStructCtx{tr("Reset password"),
-               &SAKUserManager::showUpdatePasswordDialog}
-            << SAKStructCtx{tr("User informations"),
-               &SAKUserManager::showInformationDialog}
-            << SAKStructCtx{tr("Register the software"),
-               &SAKUserManager::showBuyDialog}
-            << SAKStructCtx{tr("Destroy account"),
-               &SAKUserManager::showDestroyDialog};
-    for (int i = 0; i < ctxList.length(); i++) {
-        auto ctx = ctxList.at(i);
-        userMenu->addAction(ctx.title, this, [=](){(userMgr->*ctx.func)();});
-    }
-}
-#endif
 
 void SAKMainWindow::aboutQsak()
 {

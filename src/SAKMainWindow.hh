@@ -66,10 +66,6 @@ private:
     void initHelpMenu();
     void initLinksMenu();
     void initDemoMenu();
-#ifdef SAK_IMPORT_MODULE_USER
-    void initUserMenu();
-#endif
-
     void aboutQsak();
     void removeRemovableDebugPage(int index);
     void appendWindowAction(QWidget *page);
