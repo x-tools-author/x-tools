@@ -82,32 +82,9 @@ private:
     void showQrCodeDialog();
     void onDonationActionTriggered();
 private slots:
-    /**
-     * @brief activePage: Active the debugging page,
-     * the interface must be called by signal,
-     * which is emited by actions of windows menu.
-     */
     void activePage();
-
-    /**
-     * @brief installLanguage: Change the language packet of application,
-     * the interface must be called by signal,
-     * which is emited by actions of language menu.
-     */
     void installLanguage();
-
-    /**
-     * @brief openDebugPageWidget: Show a deugging window,
-     * the interface must be called by singal,
-     * which is emited by actions of new debugging window menu.
-     */
     void openDebugPageWidget();
-
-    /**
-     * @brief appendRemovablePage: append a page to tab widget, t
-     * he interface must be called by signal,
-     * which is emited by actions of new debugging page menu.
-     */
     void appendRemovablePage();
 private:
     Ui::SAKMainWindow *mUi;
