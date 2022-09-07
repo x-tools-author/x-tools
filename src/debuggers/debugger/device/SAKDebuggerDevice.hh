@@ -9,6 +9,7 @@
  *****************************************************************************/
 #ifndef SAKDEBUGGERDEVICE_HH
 #define SAKDEBUGGERDEVICE_HH
+
 #include <QMenu>
 #include <QMutex>
 #include <QThread>
@@ -18,8 +19,7 @@
 #include "SAKDebuggerDeviceMask.hh"
 #include "SAKDebuggerDeviceAnalyzer.hh"
 
-/// @brief device abstract class
-class SAKDebuggerDevice:public QThread
+class SAKDebuggerDevice : public QThread
 {
     Q_OBJECT
 public:
