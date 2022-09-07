@@ -586,7 +586,7 @@ void SAKMainWindow::aboutQsak()
                    " All rights reserved.")
                 .arg(sakApp->buildDate()->toString("yyyy")), false};
 
-    QDialog dialog;
+    QDialog dialog(this);
     dialog.setWindowTitle(tr("About QSAK"));
 
     QGridLayout *gridLayout = new QGridLayout(&dialog);
@@ -779,7 +779,7 @@ void SAKMainWindow::showQrCodeDialog()
 
 void SAKMainWindow::onDonationActionTriggered()
 {
-    QDialog dialog;
+    QDialog dialog(this);
     dialog.setModal(true);
     QHBoxLayout *hBoxLayout = new QHBoxLayout(&dialog);
     QString image = ":/resources/images/WeChat.jpg";
