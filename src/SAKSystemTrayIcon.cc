@@ -19,7 +19,8 @@ SAKSystemTrayIcon::SAKSystemTrayIcon(QObject *parent)
     setToolTip(tr("Qt Swiss Army Knife"));
 
     QMenu *menu = new QMenu();
-    menu->addAction(tr("Open main window"), this, [=](){emit invokeShowMainWindow();});
+    menu->addAction(tr("Open main window"), this,
+                    [=](){emit invokeShowMainWindow();});
     menu->addSeparator();
     menu->addAction(tr("Exit program"), this, [=](){emit invokeExit();});
     setContextMenu(menu);
