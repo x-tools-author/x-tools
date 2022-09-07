@@ -1,12 +1,12 @@
-﻿/****************************************************************************************
- * Copyright 2018-2021 Qter(qsaker@qq.com). All rights reserved.
+﻿/******************************************************************************
+ * Copyright 2018-2022 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
  *
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
- ***************************************************************************************/
+ *****************************************************************************/
 #include <QRect>
 #include <QFile>
 #include <QTimer>
@@ -55,7 +55,8 @@ SAKApplication::SAKApplication(int argc, char **argv)
     // app will crash(test on Ubuntu 16.04).
     // Of course, it is because that I use a wrong way,
     // also, it could be a bug of Qt.
-    mSplashScreen = new QSplashScreen(QPixmap(":/resources/images/StartUi.jpg"));
+    QPixmap pixmap(":/resources/images/StartUi.jpg");
+    mSplashScreen = new QSplashScreen(pixmap);
     showSplashScreenMessage(tr("Initializing..."));
     mSplashScreen->show();
     processEvents();
@@ -70,19 +71,23 @@ SAKApplication::SAKApplication(int argc, char **argv)
 
 
     // Initialize the settings file
-    QString path = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
-    mSettingsFileName = QString("%1/%2.ini").arg(path, qApp->applicationName());
+    QStandardPaths::StandardLocation type = QStandardPaths::AppConfigLocation;
+    QString path = QStandardPaths::writableLocation(type);
+    mSettingsFileName = QString("%1/%2.ini").arg(path,
+                                                 qApp->applicationName());
     mSettings = new QSettings(mSettingsFileName, QSettings::IniFormat);
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     mSettings->setIniCodec(QTextCodec::codecForName("UTF-8"));
 #endif
-    mLastDataTime = mSettings->value(mSettingsKeyContext.lastDateTime).toString();
-    mSettings->setValue(
-                mSettingsKeyContext.lastDateTime,
-                QDateTime::currentDateTime().toString(QLocale::system().dateFormat()));
+    QString key = mSettingsKeyContext.lastDateTime;
+    QDateTime dt = QDateTime::currentDateTime();
+    mLastDataTime = mSettings->value(key).toString();
+    mSettings->setValue(mSettingsKeyContext.lastDateTime,
+                        dt.toString(QLocale::system().dateFormat()));
 
     // Initialize the data base
-    mDatabaseName = QString("%1/%2.sqlite3").arg(path, qApp->applicationName());
+    mDatabaseName = QString("%1/%2.sqlite3")
+            .arg(path, qApp->applicationName());
 
     // Remove settings file and database
     if (mSettings->value(mSettingsKeyContext.removeSettingsFile).toBool()){
@@ -98,7 +103,8 @@ SAKApplication::SAKApplication(int argc, char **argv)
         if (databaseFile.remove()){
             qInfo() << "Remove database successfully!";
         }else{
-            qWarning() << "Remove database failed: " << databaseFile.errorString();
+            qWarning() << "Remove database failed: "
+                       << databaseFile.errorString();
         }
     }
 
@@ -140,32 +146,35 @@ SAKApplication::~SAKApplication()
 
 void SAKApplication::installLanguage()
 {
-    QString language = mSettings->value(mSettingsKeyContext.language).toString();
+    QString key = mSettingsKeyContext.language;
+    QString language = mSettings->value(key).toString();
     QString qmName;
     if (language.isEmpty()) {
         if (QLocale().country() == QLocale::China){
             qmName = QString("zh_CN");
             mSettings->setValue(mSettingsKeyContext.language,
                                 QString("zh_CN-简体中文"));
-        }else{
+        } else {
             qmName = QString("en");
             mSettings->setValue(mSettingsKeyContext.language,
                                 QString("en-English"));
         }
-    }else{
+    } else {
         qmName = language.split('-').first();
     }
 
-    auto ret = mQtBaseTranslator.load(QString(":/translations/qt/qtbase_%1.qm")
-                                      .arg(qmName));
+    QString qm = QString(":/translations/qt/qtbase_%1.qm").arg(qmName);
+    auto ret = mQtBaseTranslator.load(qm);
     Q_UNUSED(ret);
     qApp->installTranslator(&mQtBaseTranslator);
 
-    ret = mQtTranslator.load(QString(":/translations/qt/qt_%1.qm").arg(qmName));
+    qm = QString(":/translations/qt/qt_%1.qm").arg(qmName);
+    ret = mQtTranslator.load(qm);
     Q_UNUSED(ret);
     qApp->installTranslator(&mQtTranslator);
 
-    ret = mSakTranslator.load(QString(":/translations/sak/SAK_%1.qm").arg(qmName));
+    qm = QString(":/translations/sak/SAK_%1.qm").arg(qmName);
+    ret = mSakTranslator.load(qm);
     Q_UNUSED(ret);
     qApp->installTranslator(&mSakTranslator);
 }
