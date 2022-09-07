@@ -10,6 +10,7 @@
 #include <QDir>
 #include <QMenu>
 #include <QDebug>
+#include <QMessageBox>
 #include <QJsonObject>
 #include <QDesktopServices>
 #include <QCoreApplication>
@@ -47,7 +48,15 @@ SAKDebuggerPlugins::SAKDebuggerPlugins(QPushButton *readmeBt,
     // Go to a web page.
     if (readmeBt) {
         connect(readmeBt, &QPushButton::clicked, this, [=]() {
-            QDesktopServices::openUrl(QUrl("https://gitee.com/qsak/plugin"));
+            int ret = QMessageBox::information(
+                        panelWidget,
+                        tr("Visit to the web"),
+                        tr("It will visit the web, "
+                           "open the url with you default broswer?"));
+            if (ret == QMessageBox::Ok) {
+                QUrl url = QUrl("https://gitee.com/qsak/plugin");
+                QDesktopServices::openUrl(url);
+            }
         });
     }
 
