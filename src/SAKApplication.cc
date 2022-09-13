@@ -121,7 +121,7 @@ SAKApplication::SAKApplication(int argc, char **argv)
 
     // Initialize database.
     mSqlDatabase = QSqlDatabase::addDatabase("QSQLITE");
-    mSqlDatabase.setDatabaseName(mDatabaseName.toLatin1().constData());
+    mSqlDatabase.setDatabaseName(mDatabaseName);
     // Do something useless.
     mSqlDatabase.setHostName("localhost");
     mSqlDatabase.setUserName("Qter");
@@ -129,7 +129,7 @@ SAKApplication::SAKApplication(int argc, char **argv)
     if (!mSqlDatabase.open()){
         qWarning() << "QSAKDatabase.sqlite3 open failed:"
                    << mSqlDatabase.lastError().text();
-        Q_ASSERT_X(false, __FUNCTION__, "Open database failed!");
+        Q_ASSERT_X(false, __FUNCTION__, "Open database failed! Using release edition please!");
     }
 
 
