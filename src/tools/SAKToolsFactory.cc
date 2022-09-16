@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2022 Qsaker(qsaker@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part of QtSwissArmyKnife
@@ -24,6 +24,9 @@
 #endif
 #ifdef SAK_IMPORT_MODULE_STRINGASSISTANT
 #include "SAKToolStringAssistant.hh"
+#endif
+#ifdef SAK_IMPORT_MODULE_ATASSISTANT
+#include "SAKAtAssistant.hh"
 #endif
 
 SAKToolsFactory::SAKToolsFactory(QObject *parent)
@@ -52,6 +55,12 @@ SAKToolsFactory::SAKToolsFactory(QObject *parent)
                 SAKToolMetaObjCtx{
                     SAKToolStringAssistant::staticMetaObject,
                     tr("String Assistant")});
+#endif
+#ifdef SAK_IMPORT_MODULE_ATASSISTANT
+    mToolMetaObjCtxVector.append(
+                SAKToolMetaObjCtx{
+                    SAKAtAssistant::staticMetaObject,
+                    tr("AT Assistant")});
 #endif
 }
 
