@@ -39,21 +39,28 @@
       <string>Device settings</string>
      </property>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="0">
-       <widget class="QLabel" name="label">
+      <item row="0" column="1">
+       <widget class="QComboBox" name="portNameComboBox">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Ignored" vsizetype="Preferred">
+         <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
-        <property name="text">
-         <string>Port name</string>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QComboBox" name="baudRateComboBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
        </widget>
       </item>
-      <item row="0" column="1">
-       <widget class="QComboBox" name="comboBox">
+      <item row="5" column="1">
+       <widget class="QComboBox" name="flowControlComboBox">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -75,13 +82,16 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
-       <widget class="QComboBox" name="comboBox_2">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+         <sizepolicy hsizetype="Ignored" vsizetype="Preferred">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Port name</string>
         </property>
        </widget>
       </item>
@@ -98,16 +108,6 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="1">
-       <widget class="QComboBox" name="comboBox_3">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-       </widget>
-      </item>
       <item row="3" column="0">
        <widget class="QLabel" name="label_4">
         <property name="sizePolicy">
@@ -118,29 +118,6 @@
         </property>
         <property name="text">
          <string>Data bits</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1" rowspan="2">
-       <widget class="QComboBox" name="comboBox_4">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="label_5">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Ignored" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>Stop bits</string>
         </property>
        </widget>
       </item>
@@ -157,13 +134,37 @@
         </property>
        </widget>
       </item>
-      <item row="5" column="1">
-       <widget class="QComboBox" name="comboBox_5">
+      <item row="3" column="1" rowspan="2">
+       <widget class="QComboBox" name="dataBitsComboBox">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QComboBox" name="parityComboBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QPushButton" name="refreshPushButton">
+        <property name="text">
+         <string>Refresh</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QPushButton" name="openPushButton">
+        <property name="text">
+         <string>Open</string>
         </property>
        </widget>
       </item>
@@ -190,14 +191,14 @@
        </widget>
       </item>
       <item row="0" column="2">
-       <widget class="QPushButton" name="pushButton_5">
+       <widget class="QPushButton" name="sendPushButton">
         <property name="text">
          <string>Send</string>
         </property>
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QComboBox" name="comboBox_10">
+       <widget class="QComboBox" name="atCommandComboBox">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -222,21 +223,21 @@
      </property>
      <layout class="QGridLayout" name="gridLayout_4">
       <item row="1" column="0">
-       <widget class="QCheckBox" name="checkBox">
+       <widget class="QCheckBox" name="dateCheckBox">
         <property name="text">
          <string>Date</string>
         </property>
        </widget>
       </item>
       <item row="2" column="0">
-       <widget class="QCheckBox" name="checkBox_3">
+       <widget class="QCheckBox" name="msCheckBox">
         <property name="text">
          <string>MS</string>
         </property>
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QComboBox" name="comboBox_8">
+       <widget class="QComboBox" name="outputTextFormatComboBox">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -246,21 +247,21 @@
        </widget>
       </item>
       <item row="4" column="0">
-       <widget class="QPushButton" name="pushButton_3">
+       <widget class="QPushButton" name="outputExportPushButton">
         <property name="text">
          <string>Export</string>
         </property>
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QCheckBox" name="checkBox_2">
+       <widget class="QCheckBox" name="timeCheckBox">
         <property name="text">
          <string>Time</string>
         </property>
        </widget>
       </item>
       <item row="4" column="1">
-       <widget class="QPushButton" name="pushButton_4">
+       <widget class="QPushButton" name="outputClearPushButton">
         <property name="text">
          <string>Clear</string>
         </property>
@@ -280,14 +281,14 @@
        </widget>
       </item>
       <item row="3" column="0">
-       <widget class="QCheckBox" name="checkBox_5">
+       <widget class="QCheckBox" name="txCheckBox">
         <property name="text">
          <string>TX</string>
         </property>
        </widget>
       </item>
       <item row="3" column="1">
-       <widget class="QCheckBox" name="checkBox_4">
+       <widget class="QCheckBox" name="rxCheckBox">
         <property name="text">
          <string>Rx</string>
         </property>
@@ -309,7 +310,7 @@
      </property>
      <layout class="QGridLayout" name="gridLayout_3">
       <item row="1" column="1">
-       <widget class="QComboBox" name="comboBox_7">
+       <widget class="QComboBox" name="inputTextFormatComboBox">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -332,7 +333,7 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QComboBox" name="comboBox_6">
+       <widget class="QComboBox" name="cucleSendingComboBox">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -368,7 +369,7 @@
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QComboBox" name="comboBox_9">
+       <widget class="QComboBox" name="inputSuffixComboBox">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -378,14 +379,14 @@
        </widget>
       </item>
       <item row="3" column="0" colspan="2">
-       <widget class="QCheckBox" name="checkBox_6">
+       <widget class="QCheckBox" name="customSuffixCheckBox">
         <property name="text">
          <string>Custom suffix</string>
         </property>
        </widget>
       </item>
       <item row="4" column="0" colspan="2">
-       <widget class="QLineEdit" name="lineEdit_2">
+       <widget class="QLineEdit" name="customSuffixLineEdit">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -452,23 +453,23 @@
        </widget>
       </item>
       <item row="3" column="1">
-       <widget class="QComboBox" name="comboBox_12"/>
+       <widget class="QComboBox" name="timeoutIntervalComboBox"/>
       </item>
       <item row="0" column="0" colspan="2">
        <widget class="QTableView" name="tableView"/>
       </item>
       <item row="2" column="1">
-       <widget class="QComboBox" name="comboBox_11"/>
+       <widget class="QComboBox" name="commandIntervalComboBox"/>
       </item>
       <item row="5" column="1">
-       <widget class="QPushButton" name="pushButton_6">
+       <widget class="QPushButton" name="startAutoTestPushButton">
         <property name="text">
          <string>Start</string>
         </property>
        </widget>
       </item>
       <item row="7" column="0">
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="importAtCommandsPushButton">
         <property name="text">
          <string>Import</string>
         </property>
@@ -482,7 +483,7 @@
        </widget>
       </item>
       <item row="7" column="1">
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="exportAtCommandsPushButton">
         <property name="text">
          <string>Export</string>
         </property>
@@ -496,7 +497,7 @@
        </widget>
       </item>
       <item row="4" column="1">
-       <widget class="QComboBox" name="comboBox_13"/>
+       <widget class="QComboBox" name="cycleTimesComboBox"/>
       </item>
      </layout>
     </widget>
