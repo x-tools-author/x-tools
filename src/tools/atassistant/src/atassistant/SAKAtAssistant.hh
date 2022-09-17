@@ -29,12 +29,17 @@ public:
     Q_INVOKABLE SAKAtAssistant(QWidget *parent = Q_NULLPTR);
     ~SAKAtAssistant();
 private:
-    struct {
+    enum class SAKEnumTextFormat {
+        Bin, Otc, Dec, Hex, ASCII, UTF8, SYSTEM
+    };
+
+    struct SAKStructUiContext {
         struct {
             QComboBox *portName;
             QComboBox *baudRate;
             QComboBox *parity;
             QComboBox *dataBits;
+            QComboBox *stopBits;
             QComboBox *flowControl;
             QPushButton *refresh;
             QPushButton *open;
@@ -68,9 +73,10 @@ private:
             QPushButton *importButton;
             QPushButton *exportButton;
         } command;
-    } uiCtx_;
-    Ui::SAKAtAssistant *ui_;
+    };
 private:
+    SAKStructUiContext uiCtx_;
+    Ui::SAKAtAssistant *ui_;
 private:
     void initUiCtx();
     void initUiCtxDevice();
@@ -125,7 +131,15 @@ private:
     void setupBaudRate(QComboBox *cb);
     void setupParity(QComboBox *cb);
     void setupDataBits(QComboBox *cb);
+    void setupStopBits(QComboBox *cb);
     void setupFlowControl(QComboBox *cb);
+    void setupTextFormat(QComboBox *cb);
+    void setupCycleSending(QComboBox *cb);
+    void setupSuffix(QComboBox *cb);
+    void setupAtInput(QComboBox *cb, const QStringList &commands);
+    void setupCommandInterval(QComboBox *cb);
+    void setupCommandTimeout(QComboBox *cb);
+    void setupCommandCycleNumber(QComboBox *cb);
 };
 
 #endif // SAKATASSISTANT_HH
