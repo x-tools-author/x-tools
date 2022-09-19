@@ -17,6 +17,7 @@
 #include <QComboBox>
 #include <QTableView>
 #include <QPushButton>
+#include <QSerialPort>
 #include <QTextBrowser>
 
 #define SAKATASSISTANT "SAKAtAssistant"
@@ -132,6 +133,7 @@ private:
     SAKStructSettingsContext settingsCtx_;
     Ui::SAKAtAssistant *ui_;
     QSettings settings_;
+    QSerialPort *serialPort_;
 private:
     void initUiCtx();
     void initUiCtxDevice();

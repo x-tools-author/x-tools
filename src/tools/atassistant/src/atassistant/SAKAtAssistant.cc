@@ -16,6 +16,7 @@
 SAKAtAssistant::SAKAtAssistant(QWidget *parent)
     : QWidget(parent)
     , ui_(new Ui::SAKAtAssistant)
+    , serialPort_(Q_NULLPTR)
 {
     ui_->setupUi(this);
     QSettings settings("settings.ini", QSettings::IniFormat);
@@ -185,17 +186,57 @@ void SAKAtAssistant::initSignalsDevice()
 
 void SAKAtAssistant::initSignalsInput()
 {
-
+    connect(uiCtx_.input.textFormat,
+            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this, &SAKAtAssistant::onInputTextFormatChanged);
+    connect(uiCtx_.input.suffix,
+            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this, &SAKAtAssistant::onInputSuffixChanged);
+    connect(uiCtx_.input.customSuffix, &QCheckBox::clicked,
+            this, &SAKAtAssistant::onInputCustomSuffixChanged);
+    connect(uiCtx_.input.customSuffixLineEdit, &QLineEdit::textEdited,
+            this, &SAKAtAssistant::onInputCustomSuffixLineEditChanged);
+    connect(uiCtx_.input.atInput,
+            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this, &SAKAtAssistant::onInputCustomSuffixLineEditChanged);
 }
 
 void SAKAtAssistant::initSignalsOutput()
 {
-
+    connect(uiCtx_.output.textFormat,
+            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this, &SAKAtAssistant::onOutputTextFormatChanged);
+    connect(uiCtx_.output.date, &QCheckBox::clicked,
+            this, &SAKAtAssistant::onOutputDateChanged);
+    connect(uiCtx_.output.time, &QCheckBox::clicked,
+            this, &SAKAtAssistant::onOutputTimeChanged);
+    connect(uiCtx_.output.ms, &QCheckBox::clicked,
+            this, &SAKAtAssistant::onOutputMsChanged);
+    connect(uiCtx_.output.rx, &QCheckBox::clicked,
+            this, &SAKAtAssistant::onOutputRxChanged);
+    connect(uiCtx_.output.tx, &QCheckBox::clicked,
+            this, &SAKAtAssistant::onOutputTxChanged);
+    connect(uiCtx_.output.clear, &QPushButton::clicked,
+            this, &SAKAtAssistant::onOutputClearClicked);
 }
 
 void SAKAtAssistant::initSignalsCommand()
 {
-
+    connect(uiCtx_.command.interval,
+            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this, &SAKAtAssistant::onCommandIntervalChanged);
+    connect(uiCtx_.command.timeout,
+            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this, &SAKAtAssistant::onCommandTimeoutChanged);
+    connect(uiCtx_.command.number,
+            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this, &SAKAtAssistant::onCommandNumberChanged);
+    connect(uiCtx_.command.startAutoTest, &QPushButton::clicked,
+            this, &SAKAtAssistant::onCommandStartAutoTestClicked);
+    connect(uiCtx_.command.importButton, &QPushButton::clicked,
+            this, &SAKAtAssistant::onCommandImportButtonClicked);
+    connect(uiCtx_.command.exportButton, &QPushButton::clicked,
+            this, &SAKAtAssistant::onCommandExportButtonClicked);
 }
 
 void SAKAtAssistant::onDevicePortNameChanged()
@@ -206,27 +247,32 @@ void SAKAtAssistant::onDevicePortNameChanged()
 
 void SAKAtAssistant::onDeviceBaudRateChanged()
 {
-
+    const QString bd = uiCtx_.device.baudRate->currentText();
+    settings_.setValue(settingsCtx_.device.baudRate, bd);
 }
 
 void SAKAtAssistant::onDeviceParityChanged()
 {
-
+    const QString parity = uiCtx_.device.parity->currentText();
+    settings_.setValue(settingsCtx_.device.parity, parity);
 }
 
 void SAKAtAssistant::onDeviceDataBitsChanged()
 {
-
+    const QString parity = uiCtx_.device.parity->currentText();
+    settings_.setValue(settingsCtx_.device.parity, parity);
 }
 
 void SAKAtAssistant::onDeviceStopBitsChanged()
 {
-
+    const QString stopBit = uiCtx_.device.stopBits->currentText();
+    settings_.setValue(settingsCtx_.device.stopBits, stopBit);
 }
 
 void SAKAtAssistant::onDeviceFlowControlChanged()
 {
-
+    const QString flowControl = uiCtx_.device.stopBits->currentText();
+    settings_.setValue(settingsCtx_.device.stopBits, flowControl);
 }
 
 void SAKAtAssistant::onDeviceRefreshClicked()
@@ -241,27 +287,32 @@ void SAKAtAssistant::onDeviceOpenClicked()
 
 void SAKAtAssistant::onInputCycleSendingChanged()
 {
-
+    int index = uiCtx_.input.cycleSending->currentIndex();
+    settings_.setValue(settingsCtx_.input.cycleSending, index);
 }
 
 void SAKAtAssistant::onInputTextFormatChanged()
 {
-
+    int index = uiCtx_.input.textFormat->currentIndex();
+    settings_.setValue(settingsCtx_.input.textFormat, index);
 }
 
 void SAKAtAssistant::onInputSuffixChanged()
 {
-
+    int index = uiCtx_.input.suffix->currentIndex();
+    settings_.setValue(settingsCtx_.input.suffix, index);
 }
 
 void SAKAtAssistant::onInputCustomSuffixChanged()
 {
-
+    bool checked = uiCtx_.input.customSuffix->isChecked();
+    settings_.setValue(settingsCtx_.input.customSuffix, checked);
 }
 
 void SAKAtAssistant::onInputCustomSuffixLineEditChanged()
 {
-
+    QString text = uiCtx_.input.customSuffixLineEdit->text();
+    settings_.setValue(settingsCtx_.input.customSuffixLineEdit, text);
 }
 
 void SAKAtAssistant::onInputCustomAtInputChanged()
@@ -311,7 +362,7 @@ void SAKAtAssistant::onOutputExportOutputClikced()
 
 void SAKAtAssistant::onOutputClearClicked()
 {
-
+    uiCtx_.output.textBrowser->clear();
 }
 
 void SAKAtAssistant::onCommandIntervalChanged()
