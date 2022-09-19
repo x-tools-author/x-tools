@@ -7,6 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
+#include <QDebug>
+#include <QMessageBox>
 #include <QSerialPort>
 #include <QSerialPortInfo>
 
@@ -29,6 +31,11 @@ SAKAtAssistant::SAKAtAssistant(QWidget *parent)
 SAKAtAssistant::~SAKAtAssistant()
 {
     delete ui_;
+    if (serialPort_) {
+        serialPort_->close();
+        serialPort_->deleteLater();
+        serialPort_ = Q_NULLPTR;
+    }
 }
 
 void SAKAtAssistant::initUiCtx()
@@ -282,7 +289,41 @@ void SAKAtAssistant::onDeviceRefreshClicked()
 
 void SAKAtAssistant::onDeviceOpenClicked()
 {
+    if (serialPort_) {
+        serialPort_->close();
+        serialPort_->deleteLater();
+        serialPort_ = Q_NULLPTR;
+        setupUiState(false);
+    } else {
+        QString portName = uiCtx_.device.portName->currentText();
+        int baudRate = uiCtx_.device.baudRate->currentData().toInt();
+        int stopBits = uiCtx_.device.stopBits->currentData().toInt();
+        int parity = uiCtx_.device.parity->currentData().toInt();
+        int dataBits = uiCtx_.device.dataBits->currentData().toInt();
+        int flowControl = uiCtx_.device.flowControl->currentData().toInt();
 
+        serialPort_ = new QSerialPort(this);
+        serialPort_->setPortName(portName);
+        serialPort_->setBaudRate(baudRate);
+        serialPort_->setStopBits(QSerialPort::StopBits(stopBits));
+        serialPort_->setParity(QSerialPort::Parity(parity));
+        serialPort_->setDataBits(QSerialPort::DataBits(dataBits));
+        serialPort_->setFlowControl(QSerialPort::FlowControl(flowControl));
+        qInfo() << "PortName: " << serialPort_->portName()
+                << "BudRate: " << serialPort_->baudRate()
+                << "StopBits: " << serialPort_->stopBits()
+                << "Parity: " << serialPort_->parity()
+                << "DataBits: " << serialPort_->dataBits();
+
+        if (serialPort_->open(QSerialPort::ReadWrite)) {
+            setupUiState(true);
+        } else {
+            setUpdatesEnabled(false);
+            qDebug() << tr("Can not open serial port: ")
+                     << serialPort_->errorString();
+
+        }
+    }
 }
 
 void SAKAtAssistant::onInputCycleSendingChanged()
@@ -322,7 +363,22 @@ void SAKAtAssistant::onInputCustomAtInputChanged()
 
 void SAKAtAssistant::onInputSendingClicked()
 {
-
+    if (serialPort_) {
+        int timeout = uiCtx_.command.timeout->currentData().toInt();
+        timeout = timeout < 100 ? 100 : timeout;
+        QString command = uiCtx_.input.atInput->currentText();
+        QByteArray suffix = uiCtx_.input.suffix->currentData().toByteArray();
+        if (-1 == serialPort_->write(command.toLatin1() + suffix)) {
+            qDebug() << tr("Can not send command to device:")
+                        .arg(serialPort_->errorString());
+        } else {
+            serialPort_->waitForBytesWritten(timeout);
+            QByteArray bytes = serialPort_->readAll();
+            Q_UNUSED(bytes);
+        }
+    } else {
+        setupDeviceNotOpenedMessageBox();
+    }
 }
 
 void SAKAtAssistant::onOutputTextFormatChanged()
@@ -412,7 +468,7 @@ void SAKAtAssistant::setupBaudRate(QComboBox *cb)
         cb->clear();
         QList<qint32> bds = QSerialPortInfo::standardBaudRates();
         for (qint32 &bd : bds) {
-            cb->addItem(QString::number(bd));
+            cb->addItem(QString::number(bd), bd);
             if (bd == 9600) {
                 cb->setCurrentText(QString::number(bd));
             }
@@ -580,4 +636,28 @@ void SAKAtAssistant::setupLineEdit(QLineEdit *le, const QString &key)
         QString text = settings_.value(key).toString();
         le->setText(text);
     }
+}
+
+void SAKAtAssistant::setupUiState(bool opened)
+{
+    uiCtx_.device.open->setText(opened ? tr("关闭") : tr("打开"));
+    uiCtx_.device.refresh->setEnabled(!opened);
+    uiCtx_.device.portName->setEnabled(opened);
+    uiCtx_.device.parity->setEnabled(opened);
+    uiCtx_.device.dataBits->setEnabled(opened);
+    uiCtx_.device.stopBits->setEnabled(opened);
+    uiCtx_.device.flowControl->setEnabled(opened);
+}
+
+void SAKAtAssistant::setupMessage(QTextBrowser *tb, const QString &message)
+{
+
+}
+
+void SAKAtAssistant::setupDeviceNotOpenedMessageBox()
+{
+    QMessageBox::warning(
+                this, tr("Device is Not Ready"),
+                tr("The device is not opened, "
+                   "please open the device and try again!"));
 }

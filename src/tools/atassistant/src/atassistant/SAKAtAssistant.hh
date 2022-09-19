@@ -203,6 +203,9 @@ private:
     void setupComboBoxIndex(QComboBox *cb, const QString &key);
     void setupCheckBox(QCheckBox *cb, const QString &key);
     void setupLineEdit(QLineEdit *le, const QString &key);
+    void setupUiState(bool opened);
+    void setupMessage(QTextBrowser *tb, const QString &message);
+    void setupDeviceNotOpenedMessageBox();
 };
 
 #endif // SAKATASSISTANT_HH
