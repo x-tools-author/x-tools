@@ -8,6 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include <QDebug>
+#include <QDateTime>
 #include <QMessageBox>
 #include <QSerialPort>
 #include <QSerialPortInfo>
@@ -652,7 +653,28 @@ void SAKAtAssistant::setupUiState(bool opened)
 void SAKAtAssistant::setupMessage(QTextBrowser *tb, const QString &message)
 {
     if (tb) {
-        tb->append(message);
+        bool enableDate = uiCtx_.output.date->isChecked();
+        bool enableTime = uiCtx_.output.time->isChecked();
+        bool enableMs = uiCtx_.output.ms->isChecked();
+        QDateTime dt = QDateTime::currentDateTime();
+        QString date = dt.toString("yyyy/MM/dd");
+        QString time = enableMs ? dt.toString("hh:mm:ss.zzz")
+                                : dt.toString("hh:mm:ss");
+
+        QString cookedMessage = message;
+        cookedMessage = cookedMessage.replace("\n", "\\n");
+        cookedMessage = cookedMessage.replace("\r", "\\r");
+
+        QString suffix;
+        if (enableDate) {
+            suffix = date;
+        }
+
+        if (enableTime) {
+            suffix += suffix.isEmpty() ? time : (" " + time);
+        }
+
+        tb->append(suffix + message);
     }
 }
 
