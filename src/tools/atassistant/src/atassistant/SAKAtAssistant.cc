@@ -18,6 +18,7 @@ SAKAtAssistant::SAKAtAssistant(QWidget *parent)
     , ui_(new Ui::SAKAtAssistant)
 {
     ui_->setupUi(this);
+    QSettings settings("settings.ini", QSettings::IniFormat);
 
     initUiCtx();
     initSettings();
@@ -111,12 +112,30 @@ void SAKAtAssistant::initSettings()
 
 void SAKAtAssistant::initSettingsDevice()
 {
-
+    setupComboBoxText(uiCtx_.device.portName,
+                       settingsCtx_.device.portName);
+    setupComboBoxText(uiCtx_.device.baudRate,
+                       settingsCtx_.device.baudRate);
+    setupComboBoxIndex(uiCtx_.device.parity,
+                       settingsCtx_.device.parity);
+    setupComboBoxText(uiCtx_.device.dataBits,
+                       settingsCtx_.device.dataBits);
+    setupComboBoxText(uiCtx_.device.stopBits,
+                       settingsCtx_.device.stopBits);
+    setupComboBoxIndex(uiCtx_.device.flowControl,
+                       settingsCtx_.device.flowControl);
 }
 
 void SAKAtAssistant::initSettingsInput()
 {
-
+    setupComboBoxText(uiCtx_.input.cycleSending,
+                       settingsCtx_.input.cycleSending);
+    setupComboBoxText(uiCtx_.input.textFormat,
+                       settingsCtx_.input.textFormat);
+    setupComboBoxText(uiCtx_.input.suffix,
+                       settingsCtx_.input.suffix);
+    setupCheckBox(uiCtx_.input.customSuffix,
+                  settingsCtx_.input.customSuffix);
 }
 
 void SAKAtAssistant::initSettingsOutput()
@@ -139,8 +158,29 @@ void SAKAtAssistant::initSignals()
 
 void SAKAtAssistant::initSignalsDevice()
 {
+    connect(uiCtx_.device.portName,
+            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this, &SAKAtAssistant::onDevicePortNameChanged);
+    connect(uiCtx_.device.baudRate,
+            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this, &SAKAtAssistant::onDeviceBaudRateChanged);
+    connect(uiCtx_.device.parity,
+            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this, &SAKAtAssistant::onDeviceParityChanged);
+    connect(uiCtx_.device.dataBits,
+            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this, &SAKAtAssistant::onDeviceDataBitsChanged);
+    connect(uiCtx_.device.stopBits,
+            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this, &SAKAtAssistant::onDeviceStopBitsChanged);
+    connect(uiCtx_.device.flowControl,
+            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this, &SAKAtAssistant::onDeviceFlowControlChanged);
+
     connect(uiCtx_.device.refresh, &QPushButton::clicked,
             this, &SAKAtAssistant::onDeviceRefreshClicked);
+    connect(uiCtx_.device.open, &QPushButton::clicked,
+            this, &SAKAtAssistant::onDeviceOpenClicked);
 }
 
 void SAKAtAssistant::initSignalsInput()
@@ -160,7 +200,8 @@ void SAKAtAssistant::initSignalsCommand()
 
 void SAKAtAssistant::onDevicePortNameChanged()
 {
-
+    const QString portName = uiCtx_.device.portName->currentText();
+    settings_.setValue(settingsCtx_.device.portName, portName);
 }
 
 void SAKAtAssistant::onDeviceBaudRateChanged()
@@ -174,6 +215,16 @@ void SAKAtAssistant::onDeviceParityChanged()
 }
 
 void SAKAtAssistant::onDeviceDataBitsChanged()
+{
+
+}
+
+void SAKAtAssistant::onDeviceStopBitsChanged()
+{
+
+}
+
+void SAKAtAssistant::onDeviceFlowControlChanged()
 {
 
 }
@@ -295,84 +346,100 @@ void SAKAtAssistant::onCommandExportButtonClicked()
 
 void SAKAtAssistant::setupPortName(QComboBox *cb)
 {
-    cb->clear();
-    auto infos = QSerialPortInfo::availablePorts();
-    for (QSerialPortInfo &info : infos) {
-        cb->addItem(info.portName());
+    if (cb) {
+        cb->clear();
+        auto infos = QSerialPortInfo::availablePorts();
+        for (QSerialPortInfo &info : infos) {
+            cb->addItem(info.portName());
+        }
     }
 }
 
 void SAKAtAssistant::setupBaudRate(QComboBox *cb)
 {
-    cb->clear();
-    QList<qint32> bds = QSerialPortInfo::standardBaudRates();
-    for (qint32 &bd : bds) {
-        cb->addItem(QString::number(bd));
-        if (bd == 9600) {
-            cb->setCurrentText(QString::number(bd));
+    if (cb) {
+        cb->clear();
+        QList<qint32> bds = QSerialPortInfo::standardBaudRates();
+        for (qint32 &bd : bds) {
+            cb->addItem(QString::number(bd));
+            if (bd == 9600) {
+                cb->setCurrentText(QString::number(bd));
+            }
         }
     }
 }
 
 void SAKAtAssistant::setupParity(QComboBox *cb)
 {
-    cb->clear();
-    cb->addItem(tr("NoParity"), QSerialPort::NoParity);
-    cb->addItem(tr("OddParity"), QSerialPort::OddParity);
-    cb->addItem(tr("EvenParity"), QSerialPort::EvenParity);
-    cb->addItem(tr("SpaceParity"), QSerialPort::SpaceParity);
-    cb->addItem(tr("MarkParity"), QSerialPort::MarkParity);
+    if (cb) {
+        cb->clear();
+        cb->addItem(tr("NoParity"), QSerialPort::NoParity);
+        cb->addItem(tr("OddParity"), QSerialPort::OddParity);
+        cb->addItem(tr("EvenParity"), QSerialPort::EvenParity);
+        cb->addItem(tr("SpaceParity"), QSerialPort::SpaceParity);
+        cb->addItem(tr("MarkParity"), QSerialPort::MarkParity);
+    }
 }
 
 void SAKAtAssistant::setupDataBits(QComboBox *cb)
 {
-    cb->clear();
-    cb->addItem("8", QSerialPort::Data8);
-    cb->addItem("7", QSerialPort::Data7);
-    cb->addItem("6", QSerialPort::Data6);
-    cb->addItem("5", QSerialPort::Data5);
+    if (cb) {
+        cb->clear();
+        cb->addItem("8", QSerialPort::Data8);
+        cb->addItem("7", QSerialPort::Data7);
+        cb->addItem("6", QSerialPort::Data6);
+        cb->addItem("5", QSerialPort::Data5);
+    }
 }
 
 void SAKAtAssistant::setupStopBits(QComboBox *cb)
 {
-    cb->clear();
-    cb->addItem("1", QSerialPort::OneStop);
+    if (cb) {
+        cb->clear();
+        cb->addItem("1", QSerialPort::OneStop);
 #ifdef Q_OS_WIN
-    cb->addItem("1.5", QSerialPort::OneAndHalfStop);
+        cb->addItem("1.5", QSerialPort::OneAndHalfStop);
 #endif
-    cb->addItem("2", QSerialPort::TwoStop);
+        cb->addItem("2", QSerialPort::TwoStop);
+    }
 }
 
 void SAKAtAssistant::setupFlowControl(QComboBox *cb)
 {
-    cb->clear();
-    cb->addItem(tr("NoFlowControl"), QSerialPort::NoFlowControl);
-    cb->addItem(tr("SoftwareFlowControl"), QSerialPort::SoftwareControl);
-    cb->addItem(tr("HardwareFlowControl"), QSerialPort::HardwareControl);
+    if (cb) {
+        cb->clear();
+        cb->addItem(tr("NoFlowControl"), QSerialPort::NoFlowControl);
+        cb->addItem(tr("SoftwareFlowControl"), QSerialPort::SoftwareControl);
+        cb->addItem(tr("HardwareFlowControl"), QSerialPort::HardwareControl);
+    }
 }
 
 void SAKAtAssistant::setupTextFormat(QComboBox *cb)
 {
-    cb->clear();
-    cb->addItem("Bin", int(SAKEnumTextFormat::Bin));
-    cb->addItem("Otc", int(SAKEnumTextFormat::Otc));
-    cb->addItem("Dec", int(SAKEnumTextFormat::Dec));
-    cb->addItem("Hex", int(SAKEnumTextFormat::Hex));
-    cb->addItem("ASCII", int(SAKEnumTextFormat::ASCII));
-    cb->addItem("UTF8", int(SAKEnumTextFormat::UTF8));
-    cb->addItem("SYSTEM", int(SAKEnumTextFormat::SYSTEM));
+    if (cb) {
+        cb->clear();
+        cb->addItem("Bin", int(SAKEnumTextFormat::Bin));
+        cb->addItem("Otc", int(SAKEnumTextFormat::Otc));
+        cb->addItem("Dec", int(SAKEnumTextFormat::Dec));
+        cb->addItem("Hex", int(SAKEnumTextFormat::Hex));
+        cb->addItem("ASCII", int(SAKEnumTextFormat::ASCII));
+        cb->addItem("UTF8", int(SAKEnumTextFormat::UTF8));
+        cb->addItem("SYSTEM", int(SAKEnumTextFormat::SYSTEM));
+    }
 }
 
 void SAKAtAssistant::setupCycleSending(QComboBox *cb)
 {
-    cb->clear();
-    cb->addItem(tr("Disable"), -1);
-    for (int  i = 50; i <= 100; i += 10) {
-        cb->addItem(QString::number(i), i);
-    }
+    if (cb) {
+        cb->clear();
+        cb->addItem(tr("Disable"), -1);
+        for (int  i = 50; i <= 100; i += 10) {
+            cb->addItem(QString::number(i), i);
+        }
 
-    for (int i = 110; i <= 200; i += 20) {
-        cb->addItem(QString::number(i), i);
+        for (int i = 110; i <= 200; i += 20) {
+            cb->addItem(QString::number(i), i);
+        }
     }
 }
 
@@ -388,44 +455,78 @@ void SAKAtAssistant::setupSuffix(QComboBox *cb)
 
 void SAKAtAssistant::setupAtInput(QComboBox *cb, const QStringList &commands)
 {
-    cb->clear();
-    for (const QString &command : commands) {
-        cb->addItem(command);
+    if (cb) {
+        cb->clear();
+        for (const QString &command : commands) {
+            cb->addItem(command);
+        }
     }
 }
 
 void SAKAtAssistant::setupCommandInterval(QComboBox *cb)
 {
-    if (!cb) {
-        return;
-    }
-
-    cb->clear();
-    for (int i = 100; i <= 1000; i += 100) {
-        cb->addItem(QString::number(i), i);
+    if (cb) {
+        cb->clear();
+        for (int i = 100; i <= 1000; i += 100) {
+            cb->addItem(QString::number(i), i);
+        }
     }
 }
 
 void SAKAtAssistant::setupCommandTimeout(QComboBox *cb)
 {
-    if (!cb) {
-        return;
-    }
-
-    cb->clear();
-    for (int i = 100; i <= 1000; i += 100) {
-        cb->addItem(QString::number(i), i);
+    if (cb) {
+        cb->clear();
+        for (int i = 100; i <= 1000; i += 100) {
+            cb->addItem(QString::number(i), i);
+        }
     }
 }
 
 void SAKAtAssistant::setupCommandCycleNumber(QComboBox *cb)
 {
-    if (!cb) {
-        return;
+    if (cb) {
+        QString value = settings_.value(settingsCtx_.device.portName).toString();
+        int index = cb->findText(value);
+        if ((index >= 0) && (index < cb->count())) {
+            cb->setCurrentIndex(index);
+        }
     }
+}
 
-    cb->clear();
-    for (int i = 1; i <= 5; i++) {
-        cb->addItem(QString::number(i), i);
+void SAKAtAssistant::setupComboBoxText(QComboBox *cb, const QString &key)
+{
+    if (cb) {
+        QString value = settings_.value(key).toString();
+        int index = cb->findText(value);
+        if ((index >= 0) && (index < cb->count())) {
+            cb->setCurrentIndex(index);
+        }
+    }
+}
+
+void SAKAtAssistant::setupComboBoxIndex(QComboBox *cb, const QString &key)
+{
+    if (cb) {
+        int index = settings_.value(key).toInt();
+        if ((index >= 0) && (index < cb->count())) {
+            cb->setCurrentIndex(index);
+        }
+    }
+}
+
+void SAKAtAssistant::setupCheckBox(QCheckBox *cb, const QString &key)
+{
+    if (cb) {
+        bool checked = settings_.value(key).toBool();
+        cb->setChecked(checked);
+    }
+}
+
+void SAKAtAssistant::setupLineEdit(QLineEdit *le, const QString &key)
+{
+    if (le) {
+        QString text = settings_.value(key).toString();
+        le->setText(text);
     }
 }

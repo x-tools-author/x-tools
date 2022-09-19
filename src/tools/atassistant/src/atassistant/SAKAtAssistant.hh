@@ -11,12 +11,15 @@
 #define SAKATASSISTANT_HH
 
 #include <QWidget>
+#include <QSettings>
 #include <QLineEdit>
 #include <QCheckBox>
 #include <QComboBox>
 #include <QTableView>
 #include <QPushButton>
 #include <QTextBrowser>
+
+#define SAKATASSISTANT "SAKAtAssistant"
 
 namespace Ui {
     class SAKAtAssistant;
@@ -74,9 +77,61 @@ private:
             QPushButton *exportButton;
         } command;
     };
+
+    struct SAKStructSettingsContext {
+        struct {
+            const QString portName = QString("SAKAtAssistant/device/portNmae");
+            const QString baudRate = QString("SAKAtAssistant/device/baudRate");
+            const QString parity = QString("SAKAtAssistant/device/parity");
+            const QString dataBits = QString("SAKAtAssistant/device/dataBits");
+            const QString stopBits = QString("SAKAtAssistant/device/stopBits");
+            const QString flowControl =
+                    QString("SAKAtAssistant/device/flowControl");
+        } device;
+        struct {
+            const QString cycleSending =
+                    QString("SAKAtAssistant/input/cycleSending");
+            const QString textFormat =
+                    QString("SAKAtAssistant/input/textFormat");
+            const QString suffix =
+                    QString("SAKAtAssistant/input/suffix");
+            const QString customSuffix =
+                    QString("SAKAtAssistant/input/customSuffix");
+            const QString customSuffixLineEdit =
+                    QString("SAKAtAssistant/input/customSuffixLineEdit");
+            const QString atInput =
+                    QString("SAKAtAssistant/input/atInput");
+        } input;
+        struct {
+            const QString textFormat =
+                    QString("SAKAtAssistant/output/textFormat");
+            const QString date =
+                    QString("SAKAtAssistant/output/date");
+            const QString time =
+                    QString("SAKAtAssistant/output/time");
+            const QString ms =
+                    QString("SAKAtAssistant/output/ms");
+            const QString rx =
+                    QString("SAKAtAssistant/output/rx");
+            const QString tx =
+                    QString("SAKAtAssistant/output/tx");
+        } output;
+        struct {
+            const QString tableView =
+                    QString("SAKAtAssistant/command/tableView");
+            const QString interval =
+                    QString("SAKAtAssistant/command/interval");
+            const QString timeout =
+                    QString("SAKAtAssistant/command/timeout");
+            const QString number =
+                    QString("SAKAtAssistant/command/number");
+        } command;
+    };
 private:
     SAKStructUiContext uiCtx_;
+    SAKStructSettingsContext settingsCtx_;
     Ui::SAKAtAssistant *ui_;
+    QSettings settings_;
 private:
     void initUiCtx();
     void initUiCtxDevice();
@@ -100,6 +155,8 @@ private:
     void onDeviceBaudRateChanged();
     void onDeviceParityChanged();
     void onDeviceDataBitsChanged();
+    void onDeviceStopBitsChanged();
+    void onDeviceFlowControlChanged();
     void onDeviceRefreshClicked();
     void onDeviceOpenClicked();
 
@@ -140,6 +197,10 @@ private:
     void setupCommandInterval(QComboBox *cb);
     void setupCommandTimeout(QComboBox *cb);
     void setupCommandCycleNumber(QComboBox *cb);
+    void setupComboBoxText(QComboBox *cb, const QString &key);
+    void setupComboBoxIndex(QComboBox *cb, const QString &key);
+    void setupCheckBox(QCheckBox *cb, const QString &key);
+    void setupLineEdit(QLineEdit *le, const QString &key);
 };
 
 #endif // SAKATASSISTANT_HH
