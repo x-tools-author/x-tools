@@ -651,7 +651,9 @@ void SAKAtAssistant::setupUiState(bool opened)
 
 void SAKAtAssistant::setupMessage(QTextBrowser *tb, const QString &message)
 {
-
+    if (tb) {
+        tb->append(message);
+    }
 }
 
 void SAKAtAssistant::setupDeviceNotOpenedMessageBox()
