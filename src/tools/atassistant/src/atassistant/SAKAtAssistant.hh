@@ -206,6 +206,9 @@ private:
     void setupUiState(bool opened);
     void setupMessage(QTextBrowser *tb, const QString &message);
     void setupDeviceNotOpenedMessageBox();
+private:
+    QString getSaveFileName();
+    QString getOpenFileName();
 };
 
 #endif // SAKATASSISTANT_HH

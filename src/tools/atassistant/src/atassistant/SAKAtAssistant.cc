@@ -11,6 +11,7 @@
 #include <QDateTime>
 #include <QMessageBox>
 #include <QSerialPort>
+#include <QFileDialog>
 #include <QSerialPortInfo>
 
 #include "SAKAtAssistant.hh"
@@ -149,12 +150,24 @@ void SAKAtAssistant::initSettingsInput()
 
 void SAKAtAssistant::initSettingsOutput()
 {
-
+    setupComboBoxIndex(uiCtx_.output.textFormat,
+                       settingsCtx_.output.textFormat);
+    setupCheckBox(uiCtx_.output.date,
+                  settingsCtx_.output.date);
+    setupCheckBox(uiCtx_.output.time,
+                  settingsCtx_.output.time);
+    setupCheckBox(uiCtx_.output.ms,
+                  settingsCtx_.output.ms);
 }
 
 void SAKAtAssistant::initSettingsCommand()
 {
-
+    setupComboBoxIndex(uiCtx_.command.interval,
+                       settingsCtx_.command.interval);
+    setupComboBoxIndex(uiCtx_.command.timeout,
+                       settingsCtx_.command.timeout);
+    setupComboBoxIndex(uiCtx_.command.number,
+                       settingsCtx_.command.number);
 }
 
 void SAKAtAssistant::initSignals()
@@ -359,7 +372,8 @@ void SAKAtAssistant::onInputCustomSuffixLineEditChanged()
 
 void SAKAtAssistant::onInputCustomAtInputChanged()
 {
-
+    QString text = uiCtx_.input.atInput->currentText();
+    settings_.setValue(settingsCtx_.input.atInput, text);
 }
 
 void SAKAtAssistant::onInputSendingClicked()
@@ -384,37 +398,44 @@ void SAKAtAssistant::onInputSendingClicked()
 
 void SAKAtAssistant::onOutputTextFormatChanged()
 {
-
+    QString text = uiCtx_.output.textFormat->currentText();
+    settings_.setValue(settingsCtx_.output.textFormat, text);
 }
 
 void SAKAtAssistant::onOutputDateChanged()
 {
-
+    bool checked = uiCtx_.output.date->isChecked();
+    settings_.setValue(settingsCtx_.output.date, checked);
 }
 
 void SAKAtAssistant::onOutputTimeChanged()
 {
-
+    bool checked = uiCtx_.output.time->isChecked();
+    settings_.setValue(settingsCtx_.output.time, checked);
 }
 
 void SAKAtAssistant::onOutputMsChanged()
 {
-
+    bool checked = uiCtx_.output.ms->isChecked();
+    settings_.setValue(settingsCtx_.output.ms, checked);
 }
 
 void SAKAtAssistant::onOutputRxChanged()
 {
-
+    bool checked = uiCtx_.output.rx->isChecked();
+    settings_.setValue(settingsCtx_.output.rx, checked);
 }
 
 void SAKAtAssistant::onOutputTxChanged()
 {
-
+    bool checked = uiCtx_.output.tx->isChecked();
+    settings_.setValue(settingsCtx_.output.tx, checked);
 }
 
 void SAKAtAssistant::onOutputExportOutputClikced()
 {
-
+    QString fileName = getSaveFileName();
+    qDebug() << fileName;
 }
 
 void SAKAtAssistant::onOutputClearClicked()
@@ -424,17 +445,20 @@ void SAKAtAssistant::onOutputClearClicked()
 
 void SAKAtAssistant::onCommandIntervalChanged()
 {
-
+    int index = uiCtx_.command.interval->currentIndex();
+    settings_.setValue(settingsCtx_.command.interval, index);
 }
 
 void SAKAtAssistant::onCommandTimeoutChanged()
 {
-
+    int index = uiCtx_.command.timeout->currentIndex();
+    settings_.setValue(settingsCtx_.command.timeout, index);
 }
 
 void SAKAtAssistant::onCommandNumberChanged()
 {
-
+    int index = uiCtx_.command.number->currentIndex();
+    settings_.setValue(settingsCtx_.command.number, index);
 }
 
 void SAKAtAssistant::onCommandStartAutoTestClicked()
@@ -444,12 +468,14 @@ void SAKAtAssistant::onCommandStartAutoTestClicked()
 
 void SAKAtAssistant::onCommandImportButtonClicked()
 {
-
+    QString fileName = getOpenFileName();
+    qDebug() << fileName;
 }
 
 void SAKAtAssistant::onCommandExportButtonClicked()
 {
-
+    QString fileName = getSaveFileName();
+    qDebug() << fileName;
 }
 
 void SAKAtAssistant::setupPortName(QComboBox *cb)
@@ -684,4 +710,20 @@ void SAKAtAssistant::setupDeviceNotOpenedMessageBox()
                 this, tr("Device is Not Ready"),
                 tr("The device is not opened, "
                    "please open the device and try again!"));
+}
+
+QString SAKAtAssistant::getSaveFileName()
+{
+    QString fileName = QFileDialog::getSaveFileName(
+                this, tr("Get file name"), ".",
+                "ini (*.ini);; json (*.json)");
+    return fileName;
+}
+
+QString SAKAtAssistant::getOpenFileName()
+{
+    QString fileName = QFileDialog::getOpenFileName(
+                this, tr("Get file name"), ".",
+                "ini (*.ini);; json (*.json)");
+    return fileName;
 }
