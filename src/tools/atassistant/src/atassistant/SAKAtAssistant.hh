@@ -132,7 +132,7 @@ private:
     SAKStructUiContext uiCtx_;
     SAKStructSettingsContext settingsCtx_;
     Ui::SAKAtAssistant *ui_;
-    QSettings settings_;
+    QSettings *settings_;
     QSerialPort *serialPort_;
 private:
     void initUiCtx();
