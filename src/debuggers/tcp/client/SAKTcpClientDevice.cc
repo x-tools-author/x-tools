@@ -13,8 +13,6 @@
 #include <QApplication>
 
 #include "SAKTcpClientDevice.hh"
-#include "SAKTcpClientDebugger.hh"
-#include "SAKTcpClientController.hh"
 #include "SAKCommonDataStructure.hh"
 
 SAKTcpClientDevice::SAKTcpClientDevice(QSettings *settings,
