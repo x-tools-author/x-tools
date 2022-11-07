@@ -31,8 +31,6 @@
 
 SAKToolsFactory::SAKToolsFactory(QObject *parent)
 {
-    setParent(parent ? parent : qApp);
-
 #ifdef SAK_IMPORT_MODULE_CRCCALCULATOR
     mToolMetaObjCtxVector.append(SAKToolMetaObjCtx{
                     SAKToolCRCCalculator::staticMetaObject,
