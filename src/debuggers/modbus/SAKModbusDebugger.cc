@@ -1659,7 +1659,7 @@ bool SAKModbusDebugger::isValidModbusReply(QVariant reply)
 {
     if (reply.canConvert<QModbusReply*>()) {
         QModbusReply *modbusReply = reply.value<QModbusReply*>();
-        if (modbusReply) {
+        if (!modbusReply) {
             qCWarning(mLoggingCategory) << "QModbusReply is null!";
             return false;
         } else if (modbusReply->isFinished()) {
