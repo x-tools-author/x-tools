@@ -584,10 +584,9 @@ void SAKModbusDebugger::onInvokeOpen()
 
     if (isServer(mModbusDevice)) {
         if (!resetServerMap(mModbusDevice)) {
+            qCWarning(mLoggingCategory) << "Can not reset server map!";
             return;
         }
-
-        resetServerMap(mModbusDevice);
 
         bool isBusy = ui->serverIsBusyCheckBox->isChecked();
         bool listenOnly = ui->serverJustListenCheckBox->isChecked();
@@ -600,8 +599,10 @@ void SAKModbusDebugger::onInvokeOpen()
         QModbusServer *server = qobject_cast<QModbusServer*>(mModbusDevice);
         server->setServerAddress(address);
         synchronizationRegister(server);
-        connect(server, &QModbusServer::dataWritten,
-                this, &SAKModbusDebugger::tableViewUpdateData);
+        connect(server, &QModbusServer::dataWritten, this,
+                [=](QModbusDataUnit::RegisterType table, int address, int size){
+            tableViewUpdateData(table, address, size);
+        });
     }
 
     if (isClient(mModbusDevice)) {
@@ -1068,6 +1069,7 @@ quint8 SAKModbusDebugger::clientFunctionCode()
 QJsonArray SAKModbusDebugger::clientRegisterValue()
 {
     QJsonArray array;
+    mRegisterModel = ui->registerTableView->model();
     for (int row = 0; row < mRegisterModel->rowCount(); row++) {
         // Get data from hex column.
         QStandardItem *item = mRegisterModel->item(row, 3);
@@ -1482,10 +1484,8 @@ bool SAKModbusDebugger::isClient(QModbusDevice *device)
 
 bool SAKModbusDebugger::isServer(QModbusDevice *device)
 {
-    if (device) {
-        if (device->inherits("QModbusServer")) {
-            return true;
-        }
+    if (device && qobject_cast<QModbusServer*>(device)) {
+        return true;
     }
 
     return false;
