@@ -1069,7 +1069,6 @@ quint8 SAKModbusDebugger::clientFunctionCode()
 QJsonArray SAKModbusDebugger::clientRegisterValue()
 {
     QJsonArray array;
-    mRegisterModel = ui->registerTableView->model();
     for (int row = 0; row < mRegisterModel->rowCount(); row++) {
         // Get data from hex column.
         QStandardItem *item = mRegisterModel->item(row, 3);
