@@ -28,9 +28,13 @@
 #ifdef SAK_IMPORT_MODULE_ATASSISTANT
 #include "SAKAtAssistant.hh"
 #endif
+#ifdef SAK_IMPORT_MODULE_ASCIIASSISTANT
+#include "QsakAsciiAssistant.hh"
+#endif
 
 SAKToolsFactory::SAKToolsFactory(QObject *parent)
 {
+    Q_UNUSED(parent);
 #ifdef SAK_IMPORT_MODULE_CRCCALCULATOR
     mToolMetaObjCtxVector.append(SAKToolMetaObjCtx{
                     SAKToolCRCCalculator::staticMetaObject,
@@ -59,6 +63,18 @@ SAKToolsFactory::SAKToolsFactory(QObject *parent)
                 SAKToolMetaObjCtx{
                     SAKAtAssistant::staticMetaObject,
                     tr("AT Assistant")});
+#endif
+#ifdef SAK_IMPORT_MODULE_ATASSISTANT
+    mToolMetaObjCtxVector.append(
+                SAKToolMetaObjCtx{
+                    SAKAtAssistant::staticMetaObject,
+                    tr("AT Assistant")});
+#endif
+#ifdef SAK_IMPORT_MODULE_ASCIIASSISTANT
+    mToolMetaObjCtxVector.append(
+                SAKToolMetaObjCtx{
+                    QsakAsciiAssistant::staticMetaObject,
+                    tr("ASCII Assistant")});
 #endif
 }
 
