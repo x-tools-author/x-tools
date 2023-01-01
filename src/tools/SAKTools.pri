@@ -1,7 +1,7 @@
 include($$PWD/atassistant/SAKAtAssistant.pri)
 include($$PWD/filechecker/SAKToolFileChecker.pri)
-include($$PWD/asciiassistant/QsakAsciiAssistant.pri)
 include($$PWD/crccalculator/SAKToolCRCCalculator.pri)
+include($$PWD/asciiassistant/SAKToolAsciiAssistant.pri)
 include($$PWD/floatassistant/SAKToolFloatAssistant.pri)
 include($$PWD/stringassistant/SAKToolStringAssistant.pri)
 

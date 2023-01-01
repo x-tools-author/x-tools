@@ -29,7 +29,7 @@
 #include "SAKAtAssistant.hh"
 #endif
 #ifdef SAK_IMPORT_MODULE_ASCIIASSISTANT
-#include "QsakAsciiAssistant.hh"
+#include "SAKToolAsciiAssistant.hh"
 #endif
 
 SAKToolsFactory::SAKToolsFactory(QObject *parent)
@@ -64,16 +64,10 @@ SAKToolsFactory::SAKToolsFactory(QObject *parent)
                     SAKAtAssistant::staticMetaObject,
                     tr("AT Assistant")});
 #endif
-#ifdef SAK_IMPORT_MODULE_ATASSISTANT
-    mToolMetaObjCtxVector.append(
-                SAKToolMetaObjCtx{
-                    SAKAtAssistant::staticMetaObject,
-                    tr("AT Assistant")});
-#endif
 #ifdef SAK_IMPORT_MODULE_ASCIIASSISTANT
     mToolMetaObjCtxVector.append(
                 SAKToolMetaObjCtx{
-                    QsakAsciiAssistant::staticMetaObject,
+                    SAKToolAsciiAssistant::staticMetaObject,
                     tr("ASCII Assistant")});
 #endif
 }

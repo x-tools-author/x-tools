@@ -8,24 +8,24 @@
  * the file LICENCE in the root of the source code directory.
  */
 
-#ifndef QSAKASCIIASSISTANT_HH
-#define QSAKASCIIASSISTANT_HH
+#ifndef SAKTOOLASCIIASSISTANT_H
+#define SAKTOOLASCIIASSISTANT_H
 
 #include <QDialog>
 
 namespace Ui {
-    class QsakAsciiAssistant;
+    class SAKToolAsciiAssistant;
 }
 
-class QsakAsciiAssistant : public QDialog
+class SAKToolAsciiAssistant : public QDialog
 {
     Q_OBJECT
 public:
-    Q_INVOKABLE QsakAsciiAssistant(QWidget *parent = Q_NULLPTR);
-    ~QsakAsciiAssistant();
+    Q_INVOKABLE SAKToolAsciiAssistant(QWidget *parent = Q_NULLPTR);
+    ~SAKToolAsciiAssistant();
 
 private:
-    Ui::QsakAsciiAssistant *ui;
+    Ui::SAKToolAsciiAssistant *ui;
 };
 
-#endif // QSAKASCIIASSISTANT_HH
+#endif // SAKTOOLASCIIASSISTANT_H

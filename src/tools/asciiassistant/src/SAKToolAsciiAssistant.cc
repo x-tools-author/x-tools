@@ -9,19 +9,19 @@
  */
 
 #include <QImage>
-#include "QsakAsciiAssistant.hh"
-#include "ui_QsakAsciiAssistant.h"
+#include "SAKToolAsciiAssistant.hh"
+#include "ui_SAKToolAsciiAssistant.h"
 
-QsakAsciiAssistant::QsakAsciiAssistant(QWidget *parent)
+SAKToolAsciiAssistant::SAKToolAsciiAssistant(QWidget *parent)
     : QDialog(parent)
-    , ui(new Ui::QsakAsciiAssistant)
+    , ui(new Ui::SAKToolAsciiAssistant)
 {
     ui->setupUi(this);
     const QPixmap pixmap = QPixmap::fromImage(QImage(":/resources/ASCII.png"));
     ui->labelImage->setPixmap(pixmap);
 }
 
-QsakAsciiAssistant::~QsakAsciiAssistant()
+SAKToolAsciiAssistant::~SAKToolAsciiAssistant()
 {
     delete ui;
 }
