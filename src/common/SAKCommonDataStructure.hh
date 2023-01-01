@@ -55,7 +55,7 @@ public:
         OutputFormatUtf8,
         OutputFormatUtf16,
         OutputFormatAscii,
-        OutputFormatLocal,
+        OutputFormatLocal
     };
     Q_ENUM(SAKEnumTextFormatOutput);
 
