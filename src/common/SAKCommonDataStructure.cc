@@ -270,7 +270,7 @@ void SAKCommonDataStructure::setLineEditTextFormat(QLineEdit *lineEdit, int form
     SAKCommonDataStructure::setLineEditTextFormat(lineEdit, cookedFormat);
 }
 
-QString SAKCommonDataStructure::suffix(SAKEmnuSuffixsType type)
+QString SAKCommonDataStructure::suffix(SAKEmnuSuffixType type)
 {
     return suffix(int(type));
 }
@@ -287,7 +287,7 @@ QString SAKCommonDataStructure::suffix(int type)
     }
 }
 
-QString SAKCommonDataStructure::friendlySuffix(SAKEmnuSuffixsType type)
+QString SAKCommonDataStructure::friendlySuffix(SAKEmnuSuffixType type)
 {
     switch (type) {
     case SuffixsTypeNone: return tr("None");
@@ -311,7 +311,7 @@ QString SAKCommonDataStructure::prefix(int type)
     }
 }
 
-QString SAKCommonDataStructure::friendlyPrefix(QsakEnumPrefixType type)
+QString SAKCommonDataStructure::friendlyPrefix(SAKEnumPrefixType type)
 {
     switch (type) {
     case PrefixTypeNone: return "";

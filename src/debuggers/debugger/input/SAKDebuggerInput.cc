@@ -153,13 +153,13 @@ void SAKDebuggerInput::run()
 
     if (ctx.prefixType != SAKCommonDataStructure::PrefixTypeNone) {
         auto cookedPrefixType =
-                static_cast<SAKCommonDataStructure::QsakEnumPrefixType>(ctx.prefixType);
+                static_cast<SAKCommonDataStructure::SAKEnumPrefixType>(ctx.prefixType);
         QString prefix = SAKCommonDataStructure::prefix(cookedPrefixType);
         cookedData.prepend(prefix.toLatin1());
     }
     if (ctx.suffixType != SAKCommonDataStructure::SuffixsTypeNone) {
         auto cookedSuffixType =
-                static_cast<SAKCommonDataStructure::SAKEmnuSuffixsType>(ctx.suffixType);
+                static_cast<SAKCommonDataStructure::SAKEmnuSuffixType>(ctx.suffixType);
         QString suffix = SAKCommonDataStructure::suffix(cookedSuffixType);
         cookedData.append(suffix.toLatin1());
     }
@@ -446,14 +446,14 @@ void SAKDebuggerInput::addActionToMenuSuffixes(QMenu *menu)
 {
     QMenu *suffixesMenu = menu->addMenu(tr("Suffixes"));
     QMetaEnum suffixsMetaEnum =
-            QMetaEnum::fromType<SAKCommonDataStructure::SAKEmnuSuffixsType>();
+            QMetaEnum::fromType<SAKCommonDataStructure::SAKEmnuSuffixType>();
     QVariant suffixsTypeVariant = mSettings->value(mSettingKeyCtx.suffixType);
     int suffixsType = suffixsTypeVariant.toInt();
     mInputParameters.suffixType = suffixsType;
     mSuffixsActionGroup = new QActionGroup(this);
     for (int i = 0; i < suffixsMetaEnum.keyCount(); i++) {
         int type = suffixsMetaEnum.keyToValue(suffixsMetaEnum.key(i));
-        auto cookedType = static_cast<SAKCommonDataStructure::SAKEmnuSuffixsType>(type);
+        auto cookedType = static_cast<SAKCommonDataStructure::SAKEmnuSuffixType>(type);
         QString friendlySuffix = SAKCommonDataStructure::friendlySuffix(cookedType);
         if (friendlySuffix.isEmpty()) {
             friendlySuffix = tr("(None)");
@@ -474,14 +474,14 @@ void SAKDebuggerInput::addActionToMenuPrefixes(QMenu *menu)
 {
     QMenu *prefixesdMenu = menu->addMenu(tr("Prefixes"));
     QMetaEnum prefixesMetaEnum =
-            QMetaEnum::fromType<SAKCommonDataStructure::QsakEnumPrefixType>();
+            QMetaEnum::fromType<SAKCommonDataStructure::SAKEnumPrefixType>();
     QVariant prefixTypeVariant = mSettings->value(mSettingKeyCtx.prefixType);
     int prefixType = prefixTypeVariant.toInt();
     mInputParameters.prefixType = prefixType;
     mPrefixesActionGroup = new QActionGroup(this);
     for (int i = 0; i < prefixesMetaEnum.keyCount(); i++) {
         int type = prefixesMetaEnum.keyToValue(prefixesMetaEnum.key(i));
-        auto cookedType = static_cast<SAKCommonDataStructure::QsakEnumPrefixType>(type);
+        auto cookedType = static_cast<SAKCommonDataStructure::SAKEnumPrefixType>(type);
         QString friendlyPrefix = SAKCommonDataStructure::friendlyPrefix(cookedType);
         if (friendlyPrefix.isEmpty()) {
             friendlyPrefix = tr("(None)");

@@ -66,23 +66,23 @@ public:
     };
     Q_ENUM(SAKEnumWebSocketSendingType);
 
-    enum SAKEmnuSuffixsType {
+    enum SAKEmnuSuffixType {
         SuffixsTypeNone,
         SuffixsTypeR,
         SuffixsTypeN,
         SuffixsTypeRN,
         SuffixsTypeNR
     };
-    Q_ENUM(SAKEmnuSuffixsType);
+    Q_ENUM(SAKEmnuSuffixType);
 
-    enum QsakEnumPrefixType {
+    enum SAKEnumPrefixType {
         PrefixTypeNone,
         PrefixTypeR,
         PrefixTypeN,
         PrefixTypeRN,
         PrefixTypeNR
     };
-    Q_ENUM(QsakEnumPrefixType);
+    Q_ENUM(SAKEnumPrefixType);
 
 #ifdef SAK_IMPORT_MODULE_TEST
     struct SAKStructTestParametersContext {
@@ -229,11 +229,11 @@ public:
                                       SAKEnumTextFormatInput format);
     static void setLineEditTextFormat(QLineEdit *lineEdit, int format);
 
-    static QString suffix(SAKEmnuSuffixsType type);
+    static QString suffix(SAKEmnuSuffixType type);
     static QString suffix(int type);
-    static QString friendlySuffix(SAKEmnuSuffixsType type);
+    static QString friendlySuffix(SAKEmnuSuffixType type);
     static QString prefix(int type);
-    static QString friendlyPrefix(QsakEnumPrefixType type);
+    static QString friendlyPrefix(SAKEnumPrefixType type);
     static void setupSuffix(QComboBox *comboBox);
 
     static void formattingInputText(QTextEdit *textEdit, int model);
@@ -247,7 +247,7 @@ private:
 typedef SAKCommonDataStructure::SAKEnumTextFormatInput SAKTextFormatInput;
 typedef SAKCommonDataStructure::SAKEnumTextFormatOutput SAKTextFormatOutput;
 typedef SAKCommonDataStructure::SAKEnumWebSocketSendingType SAKWSSendingType;
-typedef SAKCommonDataStructure::SAKEmnuSuffixsType SAKSuffixsType;
+typedef SAKCommonDataStructure::SAKEmnuSuffixType SAKSuffixsType;
 #ifdef SAK_IMPORT_MODULE_SERIALPORT
 typedef SAKCommonDataStructure::SAKStructSerialPortParametersContext
 SAKSerialPortParametersContext;
