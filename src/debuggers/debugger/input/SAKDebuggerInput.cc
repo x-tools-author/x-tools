@@ -18,7 +18,6 @@
 #include <QStandardPaths>
 #include <QListWidgetItem>
 
-#include "SAKDebugger.hh"
 #include "SAKMainWindow.hh"
 #include "SAKDebuggerInput.hh"
 #include "SAKCommonCrcInterface.hh"
@@ -55,7 +54,8 @@ SAKDebuggerInput::SAKDebuggerInput(QComboBox *regularlySending,
     ,mCrcInterface(new SAKCommonCrcInterface)
 {
     // Initialize setting key.
-    mSettingKeyCtx.suffixsType = settingsGroup + "/suffixsType";
+    mSettingKeyCtx.suffixType = settingsGroup + "/suffixType";
+    mSettingKeyCtx.prefixType = settingsGroup + "/prefixType";
     mSettingKeyCtx.inputTextFormat = settingsGroup + "/inputTextFormat";
     mSettingKeyCtx.enableSendingRecord = settingsGroup + "/enableSendingRecord";
 
@@ -151,6 +151,12 @@ void SAKDebuggerInput::run()
             SAKCommonDataStructure::stringToByteArray(rawData, textFormat);
 
 
+    if (ctx.prefixType != SAKCommonDataStructure::PrefixTypeNone) {
+        auto cookedPrefixType =
+                static_cast<SAKCommonDataStructure::QsakEnumPrefixType>(ctx.prefixType);
+        QString prefix = SAKCommonDataStructure::prefix(cookedPrefixType);
+        cookedData.prepend(prefix.toLatin1());
+    }
     if (ctx.suffixType != SAKCommonDataStructure::SuffixsTypeNone) {
         auto cookedSuffixType =
                 static_cast<SAKCommonDataStructure::SAKEmnuSuffixsType>(ctx.suffixType);
@@ -369,7 +375,8 @@ void SAKDebuggerInput::initUiMoreInputSettingsPushButton()
     addActionToMenuDataPreset(moreInputSettingsPushButtonMenu);
     auto ret = moreInputSettingsPushButtonMenu->addSeparator();
     Q_UNUSED(ret);
-    addActionToMenuSuffixs(moreInputSettingsPushButtonMenu);
+    addActionToMenuSuffixes(moreInputSettingsPushButtonMenu);
+    addActionToMenuPrefixes(moreInputSettingsPushButtonMenu);
     addActionToMenuSaveInput(moreInputSettingsPushButtonMenu);
     addActionToMenuClearInput(moreInputSettingsPushButtonMenu);
     addActionToMenuCRCSettings(moreInputSettingsPushButtonMenu);
@@ -435,12 +442,12 @@ void SAKDebuggerInput::addActionToMenuDataPreset(QMenu *menu)
     });
 }
 
-void SAKDebuggerInput::addActionToMenuSuffixs(QMenu *menu)
+void SAKDebuggerInput::addActionToMenuSuffixes(QMenu *menu)
 {
-    QMenu *suffixsMenu = menu->addMenu(tr("Suffixs"));
+    QMenu *suffixesMenu = menu->addMenu(tr("Suffixes"));
     QMetaEnum suffixsMetaEnum =
             QMetaEnum::fromType<SAKCommonDataStructure::SAKEmnuSuffixsType>();
-    QVariant suffixsTypeVariant = mSettings->value(mSettingKeyCtx.suffixsType);
+    QVariant suffixsTypeVariant = mSettings->value(mSettingKeyCtx.suffixType);
     int suffixsType = suffixsTypeVariant.toInt();
     mInputParameters.suffixType = suffixsType;
     mSuffixsActionGroup = new QActionGroup(this);
@@ -451,14 +458,42 @@ void SAKDebuggerInput::addActionToMenuSuffixs(QMenu *menu)
         if (friendlySuffix.isEmpty()) {
             friendlySuffix = tr("(None)");
         }
-        QAction *suffixAction = suffixsMenu->addAction(friendlySuffix, this, [=](){
-            mSettings->setValue(mSettingKeyCtx.suffixsType, cookedType);
+        QAction *suffixAction = suffixesMenu->addAction(friendlySuffix, this, [=](){
+            mSettings->setValue(mSettingKeyCtx.suffixType, cookedType);
             mInputParameters.suffixType = cookedType;
         });
         suffixAction->setCheckable(true);
         mSuffixsActionGroup->addAction(suffixAction);
         if (suffixsType == cookedType) {
             suffixAction->setChecked(true);
+        }
+    }
+}
+
+void SAKDebuggerInput::addActionToMenuPrefixes(QMenu *menu)
+{
+    QMenu *prefixesdMenu = menu->addMenu(tr("Prefixes"));
+    QMetaEnum prefixesMetaEnum =
+            QMetaEnum::fromType<SAKCommonDataStructure::QsakEnumPrefixType>();
+    QVariant prefixTypeVariant = mSettings->value(mSettingKeyCtx.prefixType);
+    int prefixType = prefixTypeVariant.toInt();
+    mInputParameters.prefixType = prefixType;
+    mPrefixesActionGroup = new QActionGroup(this);
+    for (int i = 0; i < prefixesMetaEnum.keyCount(); i++) {
+        int type = prefixesMetaEnum.keyToValue(prefixesMetaEnum.key(i));
+        auto cookedType = static_cast<SAKCommonDataStructure::QsakEnumPrefixType>(type);
+        QString friendlyPrefix = SAKCommonDataStructure::friendlyPrefix(cookedType);
+        if (friendlyPrefix.isEmpty()) {
+            friendlyPrefix = tr("(None)");
+        }
+        QAction *prefixAction = prefixesdMenu->addAction(friendlyPrefix, this, [=](){
+            mSettings->setValue(mSettingKeyCtx.prefixType, cookedType);
+            mInputParameters.prefixType = cookedType;
+        });
+        prefixAction->setCheckable(true);
+        mPrefixesActionGroup->addAction(prefixAction);
+        if (prefixType == cookedType) {
+            prefixAction->setChecked(true);
         }
     }
 }

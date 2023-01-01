@@ -58,6 +58,7 @@ public:
 
         int textFormat; // Input text format, such as bin, otc, dec, hex and so on
         int suffixType;
+        int prefixType;
     };
 
     void inputBytes(QString rawBytes, SAKStructInputParametersContext parasCtx);
@@ -67,7 +68,8 @@ protected:
     void run() override;
 private:
     struct SAKStructSettingKeyContext {
-        QString suffixsType;
+        QString suffixType;
+        QString prefixType;
         QString inputTextFormat;
         QString enableSendingRecord;
     } mSettingKeyCtx;
@@ -100,6 +102,7 @@ private:
     // Inner parameters
     QTimer *mRregularSendingTimer;
     QActionGroup *mSuffixsActionGroup;
+    QActionGroup *mPrefixesActionGroup;
     SAKCommonCrcInterface *mCrcInterface;
     SAKStructInputParametersContext mInputParameters;
 private:
@@ -118,7 +121,8 @@ private:
 
     void addActionToMenuQuickSending(QMenu *menu);
     void addActionToMenuDataPreset(QMenu *menu);
-    void addActionToMenuSuffixs(QMenu *menu);
+    void addActionToMenuSuffixes(QMenu *menu);
+    void addActionToMenuPrefixes(QMenu *menu);
     void addActionToMenuSaveInput(QMenu *menu);
     void addActionToMenuClearInput(QMenu *menu);
     void addActionToMenuCRCSettings(QMenu *menu);

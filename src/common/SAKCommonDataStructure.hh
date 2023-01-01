@@ -75,6 +75,15 @@ public:
     };
     Q_ENUM(SAKEmnuSuffixsType);
 
+    enum QsakEnumPrefixType {
+        PrefixTypeNone,
+        PrefixTypeR,
+        PrefixTypeN,
+        PrefixTypeRN,
+        PrefixTypeNR
+    };
+    Q_ENUM(QsakEnumPrefixType);
+
 #ifdef SAK_IMPORT_MODULE_TEST
     struct SAKStructTestParametersContext {
         bool openFailed;
@@ -223,6 +232,8 @@ public:
     static QString suffix(SAKEmnuSuffixsType type);
     static QString suffix(int type);
     static QString friendlySuffix(SAKEmnuSuffixsType type);
+    static QString prefix(int type);
+    static QString friendlyPrefix(QsakEnumPrefixType type);
     static void setupSuffix(QComboBox *comboBox);
 
     static void formattingInputText(QTextEdit *textEdit, int model);

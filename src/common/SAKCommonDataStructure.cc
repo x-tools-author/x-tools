@@ -299,6 +299,30 @@ QString SAKCommonDataStructure::friendlySuffix(SAKEmnuSuffixsType type)
     }
 }
 
+QString SAKCommonDataStructure::prefix(int type)
+{
+    switch (type) {
+    case PrefixTypeNone: return "";
+    case PrefixTypeR: return "\r";
+    case PrefixTypeN: return "\n";
+    case PrefixTypeRN: return "\r\n";
+    case PrefixTypeNR: return "\n\r";
+    default: return "";
+    }
+}
+
+QString SAKCommonDataStructure::friendlyPrefix(QsakEnumPrefixType type)
+{
+    switch (type) {
+    case PrefixTypeNone: return "";
+    case PrefixTypeR: return "\\r";
+    case PrefixTypeN: return "\\n";
+    case PrefixTypeRN: return "\\r\\n";
+    case PrefixTypeNR: return "\\n\\r";
+    default: return "";
+    }
+}
+
 void SAKCommonDataStructure::setupSuffix(QComboBox *comboBox)
 {
     if (comboBox){
