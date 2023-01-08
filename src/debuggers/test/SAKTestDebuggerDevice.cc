@@ -99,5 +99,4 @@ void SAKTestDebuggerDevice::timerEvent(QTimerEvent *event)
     }
 
     SAKDebuggerDevice::timerEvent(event);
-    return;
 }
