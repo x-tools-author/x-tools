@@ -78,8 +78,10 @@ SAKDebuggerDevice::ReadContextVector SAKTestDebuggerDevice::read()
 
 SAKDebuggerDevice::WriteContext SAKTestDebuggerDevice::write(const QByteArray &bytes)
 {
-    Q_UNUSED(bytes);
-    return WriteContext();
+    WriteContext ctx;
+    ctx.bytes = bytes;
+    ctx.flag = QString("self");
+    return ctx;
 }
 
 void SAKTestDebuggerDevice::uninitialize()
