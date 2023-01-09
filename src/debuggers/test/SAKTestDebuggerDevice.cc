@@ -22,7 +22,17 @@ SAKTestDebuggerDevice::SAKTestDebuggerDevice(QSettings *settings,
     ,mReadDataTimerId(-1)
     ,mWriteDateTimerId(-1)
 {
+    connect(this, &SAKTestDebuggerDevice::finished, this, [=](){
+        if (mReadDataTimerId != -1) {
+            killTimer(this->mReadDataTimerId);
+            this->mReadDataTimerId = -1;
+        }
 
+        if (mWriteDateTimerId != -1) {
+            killTimer(this->mWriteDateTimerId);
+            this->mWriteDateTimerId = -1;
+        }
+    });
 }
 
 SAKTestDebuggerDevice::~SAKTestDebuggerDevice()
