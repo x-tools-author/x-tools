@@ -92,6 +92,8 @@ public:
         bool writeCircularly;
         int writtingInterval;
         QString errorString;
+        QString rxData;
+        QString txData;
     };
 #endif
 

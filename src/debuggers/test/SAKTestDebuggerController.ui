@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>167</width>
-    <height>210</height>
+    <height>214</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -38,34 +38,32 @@
    <property name="bottomMargin">
     <number>0</number>
    </property>
-   <item row="9" column="1">
+   <item row="4" column="0" colspan="2">
+    <widget class="QLabel" name="label_2">
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+	color: blue
+}</string>
+     </property>
+     <property name="text">
+      <string>Reading settings</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="2">
+    <widget class="QLineEdit" name="errorStringLineEdit">
+     <property name="text">
+      <string notr="true">Just for debugging</string>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="1">
     <widget class="QLineEdit" name="writtenIntervalLineEdit">
      <property name="text">
       <string>500</string>
      </property>
      <property name="placeholderText">
       <string>Unit is milliseconds</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0" colspan="2">
-    <widget class="QLabel" name="label_6">
-     <property name="text">
-      <string>Error string</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="0">
-    <widget class="QLabel" name="label_4">
-     <property name="text">
-      <string>Cycle(ms)</string>
-     </property>
-    </widget>
-   </item>
-   <item row="9" column="0">
-    <widget class="QLabel" name="label_5">
-     <property name="text">
-      <string>Cycle(ms)</string>
      </property>
     </widget>
    </item>
@@ -81,10 +79,41 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="0" colspan="2">
-    <widget class="QCheckBox" name="openFailedCheckBox">
+   <item row="10" column="0">
+    <widget class="QLabel" name="label_5">
      <property name="text">
-      <string>Open device failed</string>
+      <string>Cycle(ms)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="0" colspan="2">
+    <widget class="QCheckBox" name="writeCyclicCheckBox">
+     <property name="text">
+      <string>Create data circularly</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="2">
+    <widget class="QLabel" name="label_6">
+     <property name="text">
+      <string>Error string</string>
+     </property>
+    </widget>
+   </item>
+   <item row="11" column="1">
+    <widget class="QLineEdit" name="lineEditWritten">
+     <property name="text">
+      <string>Just for debugging</string>
+     </property>
+     <property name="placeholderText">
+      <string>String is supported only</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Cycle(ms)</string>
      </property>
     </widget>
    </item>
@@ -98,10 +127,17 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="0" colspan="2">
-    <widget class="QLineEdit" name="errorStringLineEdit">
+   <item row="11" column="0">
+    <widget class="QLabel" name="label_7">
      <property name="text">
-      <string notr="true">Just for debugging</string>
+      <string>Data</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="2">
+    <widget class="QCheckBox" name="openFailedCheckBox">
+     <property name="text">
+      <string>Open device failed</string>
      </property>
     </widget>
    </item>
@@ -113,25 +149,6 @@
     </widget>
    </item>
    <item row="8" column="0" colspan="2">
-    <widget class="QCheckBox" name="writeCyclicCheckBox">
-     <property name="text">
-      <string>Create data circularly</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0" colspan="2">
-    <widget class="QLabel" name="label_2">
-     <property name="styleSheet">
-      <string notr="true">QLabel {
-	color: blue
-}</string>
-     </property>
-     <property name="text">
-      <string>Reading settings</string>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="0" colspan="2">
     <widget class="QLabel" name="label_3">
      <property name="styleSheet">
       <string notr="true">QLabel {
@@ -140,6 +157,23 @@
      </property>
      <property name="text">
       <string>Writing settings</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0">
+    <widget class="QLabel" name="label_8">
+     <property name="text">
+      <string>Data</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="1">
+    <widget class="QLineEdit" name="lineEditReading">
+     <property name="text">
+      <string>Just for debugging</string>
+     </property>
+     <property name="placeholderText">
+      <string>String is supported only</string>
      </property>
     </widget>
    </item>

@@ -42,5 +42,7 @@ signals:
     void writeCircularlyChanged(bool writeCircularly);
     void writtingIntervalChanged(int writtingInterval);
     void errorStringChanged(const QString &errorString);
+    void rxDataChanged(const QString &rxData);
+    void txDataChanged(const QString &txData);
 };
 #endif

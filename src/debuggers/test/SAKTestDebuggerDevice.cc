@@ -80,8 +80,10 @@ bool SAKTestDebuggerDevice::initialize()
 
 SAKDebuggerDevice::ReadContextVector SAKTestDebuggerDevice::read()
 {
+    typedef SAKCommonDataStructure::SAKStructTestParametersContext Parameters;
+    auto paras = parametersContext().value<Parameters>();
     ReadContext ctx;
-    ctx.bytes = QByteArray("Just for debuging");
+    ctx.bytes = paras.rxData.toUtf8();
     ctx.flag = QString("self");
     return ReadContextVector() << ctx;
 }
@@ -105,7 +107,9 @@ void SAKTestDebuggerDevice::timerEvent(QTimerEvent *event)
     if (event->timerId() == mReadDataTimerId) {
         emit readyRead(SAKDebuggerDevice::SAKDeviceProtectedSignal());
     } else if (event->timerId() == mWriteDateTimerId) {
-        writeBytes(QByteArray("Bytes written!"));
+        typedef SAKCommonDataStructure::SAKStructTestParametersContext Parameters;
+        auto paras = parametersContext().value<Parameters>();
+        writeBytes(paras.txData.toUtf8());
     }
 
     SAKDebuggerDevice::timerEvent(event);

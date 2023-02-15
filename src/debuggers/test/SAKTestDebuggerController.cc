@@ -45,6 +45,16 @@ SAKTestDebuggerController::SAKTestDebuggerController(QSettings *settings,
             this, [&](const QString &text){
         emit writtingIntervalChanged(text.toInt());
     });
+
+    connect(mUi->lineEditReading, &QLineEdit::textChanged,
+            this, [&](const QString &text){
+        emit rxDataChanged(text);
+    });
+
+    connect(mUi->lineEditWritten, &QLineEdit::textChanged,
+            this, [&](const QString &text){
+        emit txDataChanged(text);
+    });
 }
 
 SAKTestDebuggerController::~SAKTestDebuggerController()
@@ -78,5 +88,7 @@ QVariant SAKTestDebuggerController::parametersContext()
     ctx.readInterval = mUi->readIntervalLineEdit->text().toInt();
     ctx.writeCircularly = mUi->writeCyclicCheckBox->isChecked();
     ctx.writtingInterval = mUi->writtenIntervalLineEdit->text().toInt();
+    ctx.rxData = mUi->lineEditReading->text();
+    ctx.txData = mUi->lineEditWritten->text();
     return QVariant::fromValue(ctx);
 }

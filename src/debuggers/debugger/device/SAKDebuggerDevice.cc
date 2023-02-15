@@ -33,8 +33,8 @@ SAKDebuggerDevice::SAKDebuggerDevice(QSettings *settings,
         mInnerParametersContextMutex.unlock();
     });
 
-    mAnalyzer =
-            new SAKDebuggerDeviceAnalyzer(settings, settingsGroup, uiParent);
+    mAnalyzer = new SAKDebuggerDeviceAnalyzer(settings, settingsGroup,
+                                              uiParent);
     mInnerParametersContext.analyzerCtx = mAnalyzer->parametersContext();
     connect(mAnalyzer, &SAKDebuggerDeviceAnalyzer::parametersChanged,
             this, [&](){
@@ -230,8 +230,9 @@ void SAKDebuggerDevice::analyzer(QByteArray data)
 
     // Extract data according to the flags
     // If both of start-bytes and end-bytes are empty, temp data will be clear
-    if (ctx.analyzerCtx.startFlags.isEmpty()
-            && ctx.analyzerCtx.endFlags.isEmpty()){
+    bool isEmptyStartFlags = ctx.analyzerCtx.startFlags.isEmpty();
+    bool isEmptyEndFlags = ctx.analyzerCtx.endFlags.isEmpty();
+    if (isEmptyStartFlags && isEmptyEndFlags){
         if (mAnalyzerCtx.bytesTemp.length()){
             QByteArray temp = mAnalyzerCtx.bytesTemp;
             mAnalyzerCtx.bytesTemp.clear();
@@ -242,8 +243,7 @@ void SAKDebuggerDevice::analyzer(QByteArray data)
         return;
     }
 
-
-    while(1){
+    while (true) {
         // Ensure that bytes is enough
         if (mAnalyzerCtx.bytesTemp.length()
                 < (ctx.analyzerCtx.startFlags.length()
@@ -257,8 +257,7 @@ void SAKDebuggerDevice::analyzer(QByteArray data)
             startBytesMatched = true;
         } else {
             int ret =
-                    mAnalyzerCtx.bytesTemp.indexOf(ctx.analyzerCtx.startFlags,
-                                                   0);
+                    mAnalyzerCtx.bytesTemp.indexOf(ctx.analyzerCtx.startFlags);
             if (ret >= 0) {
                 startBytesMatched = true;
                 // Remove error data
@@ -290,6 +289,7 @@ void SAKDebuggerDevice::analyzer(QByteArray data)
             }
         }
 
+        qDebug() << __FUNCTION__ << __LINE__ << startBytesMatched << endBytesMatched;
         // A completed data-frame has been extracted
         if (startBytesMatched && endBytesMatched) {
             QByteArray temp(mAnalyzerCtx.bytesTemp.data(), frameLength);
@@ -298,7 +298,12 @@ void SAKDebuggerDevice::analyzer(QByteArray data)
                 emit bytesRead(temp, "");
             }
         }
+
+        if (mAnalyzerCtx.bytesTemp.length() >= 2048) {
+            mAnalyzerCtx.bytesTemp.clear();
+        }
     }
+
     mAnalyzerCtxMutex.unlock();
 }
 

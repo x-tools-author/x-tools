@@ -43,6 +43,14 @@ SAKTestDebugger::SAKTestDebugger(QSettings *settings,
             mDevice, [&](){
         generateWriteData();
     });
+    connect(mController, &SAKTestDebuggerController::rxDataChanged,
+            mDevice, [=](){
+        mDevice->setParametersContext(mController->parametersContext());
+    });
+    connect(mController, &SAKTestDebuggerController::txDataChanged,
+            mDevice, [=](){
+        mDevice->setParametersContext(mController->parametersContext());
+    });
 
     auto ctx = mController->parametersContext()
             .value<SAKCommonDataStructure::SAKStructTestParametersContext>();
