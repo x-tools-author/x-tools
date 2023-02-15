@@ -15,6 +15,7 @@
 #include <QTimer>
 #include <QMutex>
 #include <QThread>
+#include <QDateTime>
 #include <QTextEdit>
 #include <QComboBox>
 #include <QCheckBox>
