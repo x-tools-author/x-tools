@@ -4,12 +4,12 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../src/main.cc" line="34"/>
+        <location filename="../../src/main.cc" line="40"/>
         <source>Initializing main window...</source>
         <translation>初始化主窗口...</translation>
     </message>
     <message>
-        <location filename="../../src/main.cc" line="68"/>
+        <location filename="../../src/main.cc" line="74"/>
         <source>Finished...</source>
         <translation>完成...</translation>
     </message>
@@ -96,7 +96,7 @@
 <context>
     <name>SAKApplication</name>
     <message>
-        <location filename="../../src/SAKApplication.cc" line="59"/>
+        <location filename="../../src/SAKApplication.cc" line="60"/>
         <source>Initializing...</source>
         <translation>正在初始化...</translation>
     </message>
@@ -262,6 +262,210 @@
     <message>
         <source>Clients</source>
         <translation type="obsolete">客户端列表</translation>
+    </message>
+</context>
+<context>
+    <name>SAKCanBusDebugger</name>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.ui" line="14"/>
+        <source>CAN Studio</source>
+        <translation>CAN Studio</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.ui" line="20"/>
+        <source>CAN frame</source>
+        <translation>帧</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.ui" line="26"/>
+        <source>Bitrate switch</source>
+        <translation>波特率</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.ui" line="33"/>
+        <source>Frame type</source>
+        <translation>帧类型</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.ui" line="40"/>
+        <source>Flexible data-rate</source>
+        <translation>数据速率</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.ui" line="50"/>
+        <source>Extended format</source>
+        <translation>扩展格式</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.ui" line="60"/>
+        <source>Send CAN frame</source>
+        <translation>发送帧</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.ui" line="66"/>
+        <source>Frame ID</source>
+        <translation>帧ID</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.ui" line="80"/>
+        <source>Payload</source>
+        <translation>负载</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.ui" line="100"/>
+        <source>Send</source>
+        <translation>发送数据</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.ui" line="127"/>
+        <source>Console</source>
+        <translation>终端</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.ui" line="140"/>
+        <source>Select plugin</source>
+        <translation>选择插件</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.ui" line="149"/>
+        <source>Disconnect</source>
+        <translation>断开设备</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.ui" line="156"/>
+        <source>Connect</source>
+        <translation>连接设备</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.ui" line="172"/>
+        <source>Specify configuration</source>
+        <translation>指定配置</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.ui" line="178"/>
+        <source>Custom data bitrate</source>
+        <translation>自定义数据速率</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.ui" line="191"/>
+        <source>Custom bitrate</source>
+        <translation>自定义波特率</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.ui" line="205"/>
+        <source>CAN FD</source>
+        <translation>CAN FD</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.ui" line="212"/>
+        <source>Loopback</source>
+        <translation>回路</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.ui" line="219"/>
+        <source>Bitrate</source>
+        <translation>波特率</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.ui" line="236"/>
+        <source>Interface name</source>
+        <translation>接口名称</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.ui" line="246"/>
+        <source>Data bitrate</source>
+        <translation>数据波特率</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.ui" line="256"/>
+        <source>Receive own</source>
+        <translation>接收本机</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.ui" line="263"/>
+        <source>Error filter</source>
+        <translation>错误过滤</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.ui" line="270"/>
+        <source>Custom configurations</source>
+        <translation>自定义配置</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.cc" line="84"/>
+        <source>can0</source>
+        <translation>can0</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.cc" line="112"/>
+        <source>DataFrame</source>
+        <translation>数据帧</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.cc" line="114"/>
+        <source>ErrorFrame</source>
+        <translation>错误帧</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.cc" line="116"/>
+        <source>RemoteRequestFrame</source>
+        <translation>远程请求帧</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.cc" line="132"/>
+        <source>Hex</source>
+        <translation>Hex</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.cc" line="212"/>
+        <source>Interface Name is Empty</source>
+        <translation>接口名称为空</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.cc" line="213"/>
+        <source>Interface name is empty, please input the name then try again!</source>
+        <translation>接口名称为空，请输入后重试！</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.cc" line="240"/>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.cc" line="243"/>
+        <source>Connection error: %1</source>
+        <translation>连接错误：%1</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.cc" line="242"/>
+        <source>Connection Error</source>
+        <translation>连接错误</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.cc" line="340"/>
+        <source>Device is Not Ready</source>
+        <translation>设备未就绪</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.cc" line="341"/>
+        <source>Device is not ready, please connect the device then try angin!</source>
+        <translation>设备未就绪，请连接设备后重试！</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.cc" line="384"/>
+        <source>Error Occure</source>
+        <translation>出现错误</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.cc" line="420"/>
+        <source>unspecified</source>
+        <translation>（未知）</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.cc" line="422"/>
+        <source>false</source>
+        <translation>false</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/canbus/SAKCanBusDebugger.cc" line="423"/>
+        <source>true</source>
+        <translation>true</translation>
     </message>
 </context>
 <context>
@@ -1006,12 +1210,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SAKDebuggerDevice</name>
     <message>
-        <location filename="../../src/debuggers/debugger/device/SAKDebuggerDevice.cc" line="78"/>
+        <location filename="../../src/debuggers/debugger/device/SAKDebuggerDevice.cc" line="79"/>
         <source>Mask</source>
         <translation>掩码</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/device/SAKDebuggerDevice.cc" line="86"/>
+        <location filename="../../src/debuggers/debugger/device/SAKDebuggerDevice.cc" line="87"/>
         <source>Analyzer</source>
         <translation>数据分析</translation>
     </message>
@@ -1089,74 +1293,143 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
+    <name>SAKDebuggerFactory</name>
+    <message>
+        <location filename="../../src/debuggers/SAKDebuggerFactory.cc" line="136"/>
+        <source>Test</source>
+        <translation>数据测试</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/SAKDebuggerFactory.cc" line="142"/>
+        <source>COM</source>
+        <translation>串口</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/SAKDebuggerFactory.cc" line="150"/>
+        <source>UdpClient</source>
+        <translation>UDP客户端</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/SAKDebuggerFactory.cc" line="156"/>
+        <source>UdpServer</source>
+        <translation>UDP服务器</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/SAKDebuggerFactory.cc" line="164"/>
+        <source>TcpClient</source>
+        <translation>TCP客户端</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/SAKDebuggerFactory.cc" line="170"/>
+        <source>TcpServer</source>
+        <translation>TCP服务器</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/SAKDebuggerFactory.cc" line="177"/>
+        <source>BleCentral</source>
+        <translation>BLE主机</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/SAKDebuggerFactory.cc" line="185"/>
+        <source>WsClient</source>
+        <translation>WebSocket客户端</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/SAKDebuggerFactory.cc" line="192"/>
+        <source>WsServer</source>
+        <translation>WebSocket服务器</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/SAKDebuggerFactory.cc" line="199"/>
+        <location filename="../../src/debuggers/SAKDebuggerFactory.cc" line="205"/>
+        <source>Modbus</source>
+        <translation>Modbus</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/SAKDebuggerFactory.cc" line="211"/>
+        <source>CAN</source>
+        <translation>CAN</translation>
+    </message>
+</context>
+<context>
     <name>SAKDebuggerInput</name>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="287"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="293"/>
         <source>Forbidden</source>
         <translation>不允许</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="288"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="294"/>
         <source>ms</source>
         <translation>毫秒</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="363"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="369"/>
         <source>More input settings</source>
         <translation>更多输入设置</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="421"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="430"/>
         <source>Quick Sending</source>
         <translation>快速发送</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="427"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="436"/>
         <source>Data Preset</source>
         <translation>数据预设</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="438"/>
         <source>Suffixs</source>
+        <translation type="vanished">后缀</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="447"/>
+        <source>Suffixes</source>
         <translation>后缀</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="450"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="459"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="487"/>
         <source>(None)</source>
         <translation>（无）</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="466"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="475"/>
+        <source>Prefixes</source>
+        <translation>前缀</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="503"/>
         <source>Save Input</source>
         <translation>保存输入</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="473"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="510"/>
         <source>Save File</source>
         <translation>保存文件</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="475"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="512"/>
         <source>txt (*.txt);;all (*.*)</source>
         <translation>文本类型 (*.txt);;所有类型 (*.*)</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="496"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="533"/>
         <source>Clear Input</source>
         <translation>清空输入</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="503"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="540"/>
         <source>CRC Settings</source>
         <translation>CRC设置</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="515"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="552"/>
         <source>Enable Sending Record</source>
         <translation>允许记录发送历史</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="551"/>
+        <location filename="../../src/debuggers/debugger/input/SAKDebuggerInput.cc" line="588"/>
         <source>Preset Data</source>
         <translation>预设数据</translation>
     </message>
@@ -1604,22 +1877,22 @@ p, li { white-space: pre-wrap; }
         <translation>数据转发</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKDebuggerPluginTransponders.cc" line="41"/>
+        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKDebuggerPluginTransponders.cc" line="43"/>
         <source>SerialPort</source>
         <translation>串口转发</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKDebuggerPluginTransponders.cc" line="53"/>
+        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKDebuggerPluginTransponders.cc" line="55"/>
         <source>UdpClient</source>
         <translation>UDP转发</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKDebuggerPluginTransponders.cc" line="65"/>
+        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKDebuggerPluginTransponders.cc" line="67"/>
         <source>TcpClient</source>
         <translation>TCP转发</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKDebuggerPluginTransponders.cc" line="77"/>
+        <location filename="../../src/debuggers/debugger/plugins/transponders/SAKDebuggerPluginTransponders.cc" line="79"/>
         <source>WebSocketClient</source>
         <translation>WebSocket转发</translation>
     </message>
@@ -1627,32 +1900,42 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SAKDebuggerPlugins</name>
     <message>
-        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="81"/>
+        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="53"/>
+        <source>Visit to the web</source>
+        <translation>访问网站</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="54"/>
+        <source>It will visit the web, open the url with you default broswer?</source>
+        <translation>即将访问页面，使用系统默认浏览器打开该链接？</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="90"/>
         <source>Embed to Center</source>
         <translation>嵌入至主窗口</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="83"/>
+        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="92"/>
         <source>Cancel Embedding</source>
         <translation>取消嵌入</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="93"/>
+        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="102"/>
         <source>Transponders</source>
         <translation>数据转发</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="96"/>
+        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="105"/>
         <source>Timed Sending</source>
         <translation>定时发送</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="99"/>
+        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="108"/>
         <source>Automatically Response</source>
         <translation>自动应答</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="142"/>
+        <location filename="../../src/debuggers/debugger/plugins/SAKDebuggerPlugins.cc" line="151"/>
         <source>Reload All</source>
         <translation>重新加载全部插件</translation>
     </message>
@@ -1774,27 +2057,27 @@ p, li { white-space: pre-wrap; }
         <translation>MainWindow</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="138"/>
+        <location filename="../../src/SAKMainWindow.cc" line="87"/>
         <source>Qt Swiss Army Knife</source>
         <translation>瑞士军刀·开发调试工具集</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="239"/>
+        <location filename="../../src/SAKMainWindow.cc" line="188"/>
         <source>&amp;File</source>
         <translation>文件(&amp;F)</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="268"/>
+        <location filename="../../src/SAKMainWindow.cc" line="221"/>
         <source>Exit</source>
         <translation>退出软件</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="275"/>
+        <location filename="../../src/SAKMainWindow.cc" line="228"/>
         <source>&amp;Tools</source>
         <translation>工具(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="298"/>
+        <location filename="../../src/SAKMainWindow.cc" line="251"/>
         <source>&amp;Options</source>
         <translation>选项(&amp;O)</translation>
     </message>
@@ -1803,48 +2086,53 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">软件样式</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="413"/>
+        <location filename="../../src/SAKMainWindow.cc" line="368"/>
         <source>&amp;Windows</source>
         <translation>窗口(&amp;W)</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="419"/>
+        <location filename="../../src/SAKMainWindow.cc" line="374"/>
         <source>&amp;Languages</source>
         <translation>语言(&amp;L)</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="475"/>
+        <location filename="../../src/SAKMainWindow.cc" line="432"/>
         <source>&amp;Help</source>
         <translation>帮助(&amp;H)</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="478"/>
-        <location filename="../../src/SAKMainWindow.cc" line="483"/>
+        <location filename="../../src/SAKMainWindow.cc" line="435"/>
+        <location filename="../../src/SAKMainWindow.cc" line="440"/>
         <source>About Qt</source>
         <translation>关于Qt</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="492"/>
+        <location filename="../../src/SAKMainWindow.cc" line="451"/>
         <source>GitHub</source>
         <translation>GitHub</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="499"/>
+        <location filename="../../src/SAKMainWindow.cc" line="460"/>
         <source>Gitee</source>
         <translation>码云</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="523"/>
+        <location filename="../../src/SAKMainWindow.cc" line="490"/>
         <source>&amp;Links</source>
         <translation>链接(&amp;L)</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="630"/>
+        <location filename="../../src/SAKMainWindow.cc" line="572"/>
         <source>Version</source>
         <translation>软件版本</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="631"/>
+        <location filename="../../src/SAKMainWindow.cc" line="574"/>
+        <source>Edition</source>
+        <translation>版本</translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="575"/>
         <source>Author</source>
         <translation>软件作者</translation>
     </message>
@@ -1857,22 +2145,22 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">发布地址</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="632"/>
+        <location filename="../../src/SAKMainWindow.cc" line="576"/>
         <source>Email</source>
         <translation>电子邮箱</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="633"/>
+        <location filename="../../src/SAKMainWindow.cc" line="577"/>
         <source>QQ</source>
         <translation>联系作者</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="242"/>
+        <location filename="../../src/SAKMainWindow.cc" line="191"/>
         <source>New Page</source>
         <translation>新建页面</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="255"/>
+        <location filename="../../src/SAKMainWindow.cc" line="206"/>
         <source>New Window</source>
         <translation>新建窗口</translation>
     </message>
@@ -1881,236 +2169,226 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">Qt默认</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="312"/>
+        <location filename="../../src/SAKMainWindow.cc" line="265"/>
         <source>Application Style</source>
         <translation>软件风格</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="397"/>
+        <location filename="../../src/SAKMainWindow.cc" line="351"/>
         <source>Enable Testing Page</source>
         <translation>使能测试页面</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="382"/>
+        <location filename="../../src/SAKMainWindow.cc" line="335"/>
         <source>Clear Configuration</source>
         <translation>清空配置文件</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="357"/>
+        <location filename="../../src/SAKMainWindow.cc" line="310"/>
         <source>Main Window</source>
         <translation>主窗口</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="359"/>
+        <location filename="../../src/SAKMainWindow.cc" line="312"/>
         <source>Exit to Sysytem Tray</source>
         <translation>退出至系统托盘</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="379"/>
+        <location filename="../../src/SAKMainWindow.cc" line="332"/>
         <source>Settings</source>
         <translation>配置文件</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="385"/>
+        <location filename="../../src/SAKMainWindow.cc" line="339"/>
         <source>Open configuration floder</source>
         <translation>打开配置目录</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="485"/>
+        <location filename="../../src/SAKMainWindow.cc" line="442"/>
         <source>About Application</source>
         <translation>关于软件</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="489"/>
+        <location filename="../../src/SAKMainWindow.cc" line="447"/>
         <source>Get Source</source>
         <translation>获取源码</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="506"/>
+        <location filename="../../src/SAKMainWindow.cc" line="468"/>
         <source>Check for Update</source>
         <translation>检查更新</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="510"/>
-        <location filename="../../src/SAKMainWindow.cc" line="825"/>
+        <location filename="../../src/SAKMainWindow.cc" line="473"/>
+        <location filename="../../src/SAKMainWindow.cc" line="672"/>
         <source>Release History</source>
         <translation>发布历史</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="516"/>
-        <location filename="../../src/SAKMainWindow.cc" line="902"/>
+        <location filename="../../src/SAKMainWindow.cc" line="479"/>
+        <location filename="../../src/SAKMainWindow.cc" line="752"/>
         <source>QR Code</source>
         <translation>扫码入群</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="533"/>
+        <location filename="../../src/SAKMainWindow.cc" line="484"/>
+        <source>支持作者</source>
+        <translation>支持作者</translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="500"/>
         <source>Qt Official Download</source>
         <translation>Qt官方下载</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="537"/>
+        <location filename="../../src/SAKMainWindow.cc" line="504"/>
         <source>Qt Official Blog</source>
         <translation>Qt官方博客</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="540"/>
+        <location filename="../../src/SAKMainWindow.cc" line="507"/>
         <source>Qt Official Release</source>
         <translation>Qt官方发布</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="543"/>
+        <location filename="../../src/SAKMainWindow.cc" line="510"/>
         <source>Download SAK from Github</source>
         <translation>从GitHub下载软件</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="546"/>
+        <location filename="../../src/SAKMainWindow.cc" line="513"/>
         <source>Download SAK from Gitee</source>
         <translation>从Gittee下载软件</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="549"/>
+        <location filename="../../src/SAKMainWindow.cc" line="516"/>
         <source>Office Web Site</source>
         <translation>“官方”网站</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="566"/>
+        <location filename="../../src/SAKMainWindow.cc" line="533"/>
         <source>&amp;Demo</source>
         <translation>示例(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="575"/>
+        <location filename="../../src/SAKMainWindow.cc" line="543"/>
         <source>Qt SerialPort Demo</source>
         <translation>Qt串口小助手</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="593"/>
         <source>&amp;User</source>
-        <translation>用户(&amp;U)</translation>
+        <translation type="vanished">用户(&amp;U)</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="604"/>
         <source>Sign up</source>
-        <translation>注册</translation>
+        <translation type="vanished">注册</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="605"/>
         <source>Sign in</source>
-        <translation>登录</translation>
+        <translation type="vanished">登录</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="606"/>
         <source>Update password</source>
-        <translation>更新密码</translation>
+        <translation type="vanished">更新密码</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="607"/>
         <source>Reset password</source>
-        <translation>重置密码</translation>
+        <translation type="vanished">重置密码</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="608"/>
         <source>User informations</source>
-        <translation>用户信息</translation>
+        <translation type="vanished">用户信息</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="609"/>
         <source>Register the software</source>
-        <translation>注册软件</translation>
+        <translation type="vanished">注册软件</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="610"/>
         <source>Destroy account</source>
-        <translation>注销账号</translation>
+        <translation type="vanished">注销账号</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="634"/>
+        <location filename="../../src/SAKMainWindow.cc" line="578"/>
         <source>QQ Group</source>
         <translation>技术交流</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="635"/>
+        <location filename="../../src/SAKMainWindow.cc" line="579"/>
         <source>Build Time</source>
         <translation>构建信息</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="636"/>
+        <location filename="../../src/SAKMainWindow.cc" line="584"/>
         <source>Copyright</source>
         <translation>版权声明</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="636"/>
         <source>Copyright 2018-%1 Qter. All rights reserved.</source>
-        <translation>版权声明 2018-%1 Qter。保留所有版权。</translation>
+        <translation type="vanished">版权声明 2018-%1 Qter。保留所有版权。</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="638"/>
+        <location filename="../../src/SAKMainWindow.cc" line="580"/>
         <source>Gitee Url</source>
         <translation>码云仓库</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="640"/>
+        <location filename="../../src/SAKMainWindow.cc" line="582"/>
         <source>Gitbub Url</source>
         <translation>GitHub仓库</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="644"/>
+        <location filename="../../src/SAKMainWindow.cc" line="585"/>
+        <source>Copyright 2018-%1 Qsaker(qsaker@outlook.com). All rights reserved.</source>
+        <translation>版权声明 2018-%1 Qsaker(qsaker@outlook.com)。保留所有权利。</translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="590"/>
         <source>About QSAK</source>
         <translation>关于瑞士军刀</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="724"/>
         <source>Test</source>
-        <translation>数据测试</translation>
+        <translation type="vanished">数据测试</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="730"/>
         <source>COM</source>
-        <translation>串口调试</translation>
+        <translation type="vanished">串口调试</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="734"/>
         <source>HID</source>
-        <translation>HID调试</translation>
+        <translation type="vanished">HID调试</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="737"/>
         <source>USB</source>
-        <translation>USB调试</translation>
+        <translation type="vanished">USB调试</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="744"/>
         <source>UdpClient</source>
-        <translation>UDP客户端</translation>
+        <translation type="vanished">UDP客户端</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="750"/>
         <source>UdpServer</source>
-        <translation>UDP服务器</translation>
+        <translation type="vanished">UDP服务器</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="758"/>
         <source>TcpClient</source>
-        <translation>TCP客户端</translation>
+        <translation type="vanished">TCP客户端</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="764"/>
         <source>TcpServer</source>
-        <translation>TCP服务器</translation>
+        <translation type="vanished">TCP服务器</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="780"/>
         <source>BLE</source>
-        <translation>BLE</translation>
+        <translation type="vanished">BLE</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="787"/>
         <source>WsClient</source>
-        <translation>WebSocket客户端</translation>
+        <translation type="vanished">WebSocket客户端</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="793"/>
         <source>WsServer</source>
-        <translation>WebSocket服务器</translation>
+        <translation type="vanished">WebSocket服务器</translation>
     </message>
     <message>
         <source>UDP-C</source>
@@ -2129,34 +2407,28 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">TCP服务器</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="768"/>
         <source>SSL-C</source>
-        <translation>SslSocket客户端</translation>
+        <translation type="vanished">SslSocket客户端</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="769"/>
         <source>SSL-S</source>
-        <translation>SslSocket服务器</translation>
+        <translation type="vanished">SslSocket服务器</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="772"/>
         <source>SCTP-C</source>
-        <translation>SCTP客户端</translation>
+        <translation type="vanished">SCTP客户端</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="773"/>
         <source>SCTP-S</source>
-        <translation>SCTP服务器</translation>
+        <translation type="vanished">SCTP服务器</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="776"/>
         <source>BT-C</source>
-        <translation>蓝牙客户端</translation>
+        <translation type="vanished">蓝牙客户端</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="777"/>
         <source>BT-S</source>
-        <translation>蓝牙服务器</translation>
+        <translation type="vanished">蓝牙服务器</translation>
     </message>
     <message>
         <source>Bluetooth-C</source>
@@ -2175,70 +2447,65 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">WebSocket服务器</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="800"/>
         <source>Modbus</source>
-        <translation>Modbus</translation>
+        <translation type="vanished">Modbus</translation>
     </message>
     <message>
         <source>Modbus Rtu</source>
         <translation type="vanished">Modbus Rtu</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="809"/>
         <source>File Assistant</source>
-        <translation>文件助手</translation>
+        <translation type="vanished">文件助手</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="813"/>
         <source>CRC Assistant</source>
-        <translation>CRC助手</translation>
+        <translation type="vanished">CRC助手</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="816"/>
         <source>Float Assistant</source>
-        <translation>浮点数助手</translation>
+        <translation type="vanished">浮点数助手</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="819"/>
         <source>String Assistant</source>
-        <translation>字符串助手</translation>
+        <translation type="vanished">字符串助手</translation>
     </message>
     <message>
         <source>QR Code Assistant</source>
         <translation type="vanished">二维码助手</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="847"/>
+        <location filename="../../src/SAKMainWindow.cc" line="694"/>
         <source>Edit Page Name</source>
         <translation>编辑页面名称</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="849"/>
+        <location filename="../../src/SAKMainWindow.cc" line="696"/>
         <source>Please input the name of tab page</source>
         <translation>请输入标签或窗口名称</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="850"/>
+        <location filename="../../src/SAKMainWindow.cc" line="698"/>
         <source>Tab page name</source>
         <translation>请输入名称</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="853"/>
+        <location filename="../../src/SAKMainWindow.cc" line="701"/>
         <source>OK</source>
         <translation>确定</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="854"/>
+        <location filename="../../src/SAKMainWindow.cc" line="702"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="910"/>
+        <location filename="../../src/SAKMainWindow.cc" line="760"/>
         <source>User QQ Group</source>
         <translation>用户交流群</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="912"/>
+        <location filename="../../src/SAKMainWindow.cc" line="762"/>
         <source>Qt QQ Group</source>
         <translation>技术交流群</translation>
     </message>
@@ -2247,12 +2514,12 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">业务合作</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="709"/>
+        <location filename="../../src/SAKMainWindow.cc" line="660"/>
         <source>Reboot application to effective</source>
         <translation>重启生效</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="710"/>
+        <location filename="../../src/SAKMainWindow.cc" line="661"/>
         <source>Need to reboot, reboot to effective now?</source>
         <translation>软件需要重启生效，现在重启？</translation>
     </message>
@@ -2260,72 +2527,59 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SAKModbusClientController</name>
     <message>
-        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="50"/>
         <source>Can not get the value of register which type is:%1</source>
-        <translation>无法从指定的寄存器（类型为：%1）中获取数值</translation>
+        <translation type="vanished">无法从指定的寄存器（类型为：%1）中获取数值</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="103"/>
         <source>Send reading request error:%1</source>
-        <translation>发送读请求错误：%1</translation>
+        <translation type="vanished">发送读请求错误：%1</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="116"/>
         <source>Writing reply error: %1 (Mobus exception: 0x%2)</source>
-        <translation>写应答错误：%1（异常代码为：0x%2）</translation>
+        <translation type="vanished">写应答错误：%1（异常代码为：0x%2）</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="121"/>
         <source>Writing reply error: %1 (code: 0x%2)</source>
-        <translation>写应答错误：%1（错误代码：%2）</translation>
+        <translation type="vanished">写应答错误：%1（错误代码：%2）</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="135"/>
         <source>Write error: %1</source>
-        <translation>写操作错误：%1</translation>
+        <translation type="vanished">写操作错误：%1</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="155"/>
         <source>Received a reply:</source>
-        <translation>收到应答：</translation>
+        <translation type="vanished">收到应答：</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="160"/>
         <source>[Address: %1, Value: %2]</source>
-        <translation>【地址：%1，数值：%2】</translation>
+        <translation type="vanished">【地址：%1，数值：%2】</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="167"/>
         <source>Read response error: %1 (Mobus exception: 0x%2)</source>
-        <translation>读应答错误：%1（异常代码为：0x%2）</translation>
+        <translation type="vanished">读应答错误：%1（异常代码为：0x%2）</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/client/SAKModbusClientController.cc" line="171"/>
         <source>Read response error: %1 (code: 0x%2)</source>
-        <translation>读应答错误：%1（错误代码：%2）</translation>
+        <translation type="vanished">读应答错误：%1（错误代码：%2）</translation>
     </message>
 </context>
 <context>
     <name>SAKModbusCommonClientSection</name>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonClientSection.ui" line="38"/>
         <source>Parameters settings</source>
-        <translation>参数设置</translation>
+        <translation type="vanished">参数设置</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonClientSection.ui" line="50"/>
         <source>Timeout</source>
-        <translation>超时时间</translation>
+        <translation type="vanished">超时时间</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonClientSection.ui" line="57"/>
         <source>Unit is ms</source>
-        <translation>单位为毫秒</translation>
+        <translation type="vanished">单位为毫秒</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonClientSection.ui" line="76"/>
         <source>Repeat times</source>
-        <translation>重复次数</translation>
+        <translation type="vanished">重复次数</translation>
     </message>
     <message>
         <source>Function code</source>
@@ -2391,94 +2645,76 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SAKModbusCommonController</name>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="84"/>
         <source>Error Occurred</source>
-        <translation>遇到错误</translation>
+        <translation type="vanished">遇到错误</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="84"/>
         <source>Error Occured:%1 Please check the parameters and try again!</source>
-        <translation>遇到错误：%1 请检查参数设置后重试！</translation>
+        <translation type="vanished">遇到错误：%1 请检查参数设置后重试！</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="85"/>
         <source>Error occurred:%1</source>
-        <translation>遇到错误：%1</translation>
+        <translation type="vanished">遇到错误：%1</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="90"/>
         <source>Modbus device is connected!</source>
-        <translation>MODBUS设备已连接！</translation>
+        <translation type="vanished">MODBUS设备已连接！</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="92"/>
         <source>Modbus device is connecting!</source>
-        <translation>MODBUS设备正在连接！</translation>
+        <translation type="vanished">MODBUS设备正在连接！</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="94"/>
         <source>Modbus device is closing!</source>
-        <translation>MODBUS设备正在关闭！</translation>
+        <translation type="vanished">MODBUS设备正在关闭！</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="96"/>
         <source>Modbus device is unconnected!</source>
-        <translation>MODBUS设备未连接！</translation>
+        <translation type="vanished">MODBUS设备未连接！</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="98"/>
         <source>Unknownn state(%1) of modbus device!</source>
-        <translation>未知的MODBUS设备状态（%1）！</translation>
+        <translation type="vanished">未知的MODBUS设备状态（%1）！</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="133"/>
-        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="140"/>
         <source>Export Register Data</source>
-        <translation>导出寄存器数据</translation>
+        <translation type="vanished">导出寄存器数据</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="182"/>
         <source>Export Data Successfully</source>
-        <translation>导出寄存器数据成功</translation>
+        <translation type="vanished">导出寄存器数据成功</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="182"/>
         <source>The data was exported successfully!</source>
-        <translation>数据成功导出！</translation>
+        <translation type="vanished">数据成功导出！</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="186"/>
         <source>Export Data Failed</source>
-        <translation>导出数据失败</translation>
+        <translation type="vanished">导出数据失败</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="186"/>
         <source>The data was exported failed:%1</source>
-        <translation>导出数据失败：%1</translation>
+        <translation type="vanished">导出数据失败：%1</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="231"/>
         <source>The data was imported failed:%1</source>
-        <translation>The data was exported failed:%1</translation>
+        <translation type="vanished">The data was exported failed:%1</translation>
     </message>
     <message>
         <source>The data was exported failed:%s</source>
         <translation type="vanished">导出数据失败：%s</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="227"/>
         <source>Import Data Successfully</source>
-        <translation>导入数据成功</translation>
+        <translation type="vanished">导入数据成功</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="227"/>
         <source>The data was imported successfully!</source>
-        <translation>数据导入成功!</translation>
+        <translation type="vanished">数据导入成功!</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonController.cc" line="231"/>
         <source>Import Data Failed</source>
-        <translation>数据导入失败</translation>
+        <translation type="vanished">数据导入失败</translation>
     </message>
     <message>
         <source>The data was imported failed:%s</source>
@@ -2488,93 +2724,77 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SAKModbusCommonHostSection</name>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonHostSection.ui" line="38"/>
         <source>Host settings</source>
-        <translation>主机设置</translation>
+        <translation type="vanished">主机设置</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonHostSection.ui" line="50"/>
         <source>Port</source>
-        <translation>主机端口</translation>
+        <translation type="vanished">主机端口</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonHostSection.ui" line="63"/>
         <source>Address</source>
-        <translation>主机地址</translation>
+        <translation type="vanished">主机地址</translation>
     </message>
 </context>
 <context>
     <name>SAKModbusCommonRegisterViewController</name>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonRegisterViewController.ui" line="45"/>
         <source>Start address</source>
-        <translation>起始地址</translation>
+        <translation type="vanished">起始地址</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonRegisterViewController.ui" line="75"/>
         <source>Import</source>
-        <translation>导入数据</translation>
+        <translation type="vanished">导入数据</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonRegisterViewController.ui" line="82"/>
         <source>Export</source>
-        <translation>导出数据</translation>
+        <translation type="vanished">导出数据</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonRegisterViewController.ui" line="89"/>
         <source>Register number</source>
-        <translation>寄存器数量</translation>
+        <translation type="vanished">寄存器数量</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonRegisterViewController.ui" line="96"/>
         <source>Update</source>
-        <translation>更新显示</translation>
+        <translation type="vanished">更新显示</translation>
     </message>
 </context>
 <context>
     <name>SAKModbusCommonReigsterView</name>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonReigsterView.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation type="vanished">Form</translation>
     </message>
 </context>
 <context>
     <name>SAKModbusCommonSerialPortSection</name>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonSerialPortSection.ui" line="44"/>
         <source>Serial port settings</source>
-        <translation>串口设置</translation>
+        <translation type="vanished">串口设置</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonSerialPortSection.ui" line="56"/>
         <source>Port name</source>
-        <translation>端口号</translation>
+        <translation type="vanished">端口号</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonSerialPortSection.ui" line="79"/>
         <source>Data bits</source>
-        <translation>数据位数据位</translation>
+        <translation type="vanished">数据位数据位</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonSerialPortSection.ui" line="95"/>
         <source>Parity</source>
-        <translation>校验位</translation>
+        <translation type="vanished">校验位</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonSerialPortSection.ui" line="118"/>
         <source>Baud rate</source>
-        <translation>波特率</translation>
+        <translation type="vanished">波特率</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonSerialPortSection.ui" line="134"/>
         <source>Stop bits</source>
-        <translation>停止位</translation>
+        <translation type="vanished">停止位</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonSerialPortSection.ui" line="144"/>
         <source>Custom baud rate</source>
-        <translation>自定义波特率</translation>
+        <translation type="vanished">自定义波特率</translation>
     </message>
     <message>
         <source>No</source>
@@ -2600,115 +2820,95 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SAKModbusCommonServerSection</name>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonServerSection.ui" line="38"/>
         <source>Parameters settings</source>
-        <translation>参数设置</translation>
+        <translation type="vanished">参数设置</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonServerSection.ui" line="51"/>
         <source>Just listen</source>
-        <translation>仅监听</translation>
+        <translation type="vanished">仅监听</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonServerSection.ui" line="64"/>
         <source>Device address</source>
-        <translation>设备地址</translation>
+        <translation type="vanished">设备地址</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/common/SAKModbusCommonServerSection.ui" line="44"/>
         <source>Device is busy</source>
-        <translation>设备繁忙</translation>
+        <translation type="vanished">设备繁忙</translation>
     </message>
 </context>
 <context>
     <name>SAKModbusDebugPage</name>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="107"/>
         <source>Console</source>
-        <translation>终端</translation>
+        <translation type="vanished">终端</translation>
     </message>
     <message>
         <source>Clear</source>
         <translation type="vanished">清空</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="220"/>
         <source>Coils</source>
-        <translation>线圈</translation>
+        <translation type="vanished">线圈</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="225"/>
         <source>Discrete Inputs</source>
-        <translation>离散输入</translation>
+        <translation type="vanished">离散输入</translation>
     </message>
     <message>
         <source> Holding Registers</source>
         <translation type="vanished"> 保持寄存器</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="230"/>
         <source>Holding Registers</source>
-        <translation>保持寄存器</translation>
+        <translation type="vanished">保持寄存器</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="235"/>
         <source>Input Registers</source>
-        <translation>输入寄存器</translation>
+        <translation type="vanished">输入寄存器</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="39"/>
         <source>Device selection</source>
-        <translation>设备选择</translation>
+        <translation type="vanished">设备选择</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="57"/>
         <source>Disconnect</source>
-        <translation>断开设备</translation>
+        <translation type="vanished">断开设备</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="64"/>
         <source>Connect</source>
-        <translation>连接设备</translation>
+        <translation type="vanished">连接设备</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="87"/>
         <source>Device type</source>
-        <translation>设备类型</translation>
+        <translation type="vanished">设备类型</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="116"/>
         <source>Operation panel</source>
-        <translation>操作面板</translation>
+        <translation type="vanished">操作面板</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="122"/>
         <source>Function code</source>
-        <translation>功能码</translation>
+        <translation type="vanished">功能码</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="129"/>
         <source>Start address</source>
-        <translation>起始地址</translation>
+        <translation type="vanished">起始地址</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="136"/>
         <source>Address number</source>
-        <translation>地址个数</translation>
+        <translation type="vanished">地址个数</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="156"/>
         <source>Read</source>
-        <translation>读取</translation>
+        <translation type="vanished">读取</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="186"/>
         <source>Write</source>
-        <translation>写入</translation>
+        <translation type="vanished">写入</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugPage.ui" line="203"/>
         <source>Server address</source>
-        <translation>服务器地址</translation>
+        <translation type="vanished">服务器地址</translation>
     </message>
     <message>
         <source>Tcp Client</source>
@@ -2730,113 +2930,440 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SAKModbusDebugger</name>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="93"/>
         <source>Tcp Client</source>
-        <translation>TCP客户端</translation>
+        <translation type="vanished">TCP客户端</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="94"/>
         <source>Tcp Server</source>
-        <translation>TCP服务器</translation>
+        <translation type="vanished">TCP服务器</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="95"/>
         <source>SerialPort Client</source>
-        <translation>串口主机</translation>
+        <translation type="vanished">串口主机</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="96"/>
         <source>SerialPort Server</source>
-        <translation>串口从机</translation>
+        <translation type="vanished">串口从机</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="113"/>
         <source>Read Coils(0x01)</source>
-        <translation>读线圈（0x01）</translation>
+        <translation type="vanished">读线圈（0x01）</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="115"/>
         <source>Read Discrete Inputs(0x02)</source>
-        <translation>读离散输入（0x02）</translation>
+        <translation type="vanished">读离散输入（0x02）</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="117"/>
         <source>Read Holding Registers(0x03)</source>
-        <translation>读保持寄存器（0x03）</translation>
+        <translation type="vanished">读保持寄存器（0x03）</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="119"/>
         <source>Read Input Registers(0x04)</source>
-        <translation>读输入寄存器（0x04）</translation>
+        <translation type="vanished">读输入寄存器（0x04）</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="121"/>
         <source>Write Coils(0x0F)</source>
-        <translation>写多个线圈（0x0f）</translation>
+        <translation type="vanished">写多个线圈（0x0f）</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="123"/>
         <source>Write Registers(0x10)</source>
-        <translation>写多个寄存器（0x10）</translation>
+        <translation type="vanished">写多个寄存器（0x10）</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="320"/>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="14"/>
+        <source>Form</source>
+        <translation>Form</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="20"/>
+        <source>Network settings</source>
+        <translation>网络设置</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="26"/>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.cc" line="1238"/>
         <source>Address</source>
         <translation>地址</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="321"/>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="36"/>
+        <source>Port</source>
+        <translation>端口</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="50"/>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="326"/>
+        <source>Custom address</source>
+        <translation>自定义地址</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="60"/>
+        <source>Client parameters</source>
+        <translation>客户端参数</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="66"/>
+        <source>Timeout</source>
+        <translation>超时时间</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="89"/>
+        <source>Repeat times</source>
+        <translation>重复次数</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="113"/>
+        <source>General</source>
+        <translation>通用</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="125"/>
+        <source>Colsole</source>
+        <translation>终端</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="143"/>
+        <source>Client registers</source>
+        <translation>主机寄存器</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="155"/>
+        <source>Custom command)</source>
+        <translation>自定义命令</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="161"/>
+        <source>Protocol data unit</source>
+        <translation>协议数据单元</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="181"/>
+        <source>Send</source>
+        <translation>发送数据</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="203"/>
+        <source>Server registers</source>
+        <translation>从机寄存器</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="236"/>
+        <source>Server parameters</source>
+        <translation>从机参数</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="242"/>
+        <source>Server is busy</source>
+        <translation>从机繁忙</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="249"/>
+        <source>Just listen</source>
+        <translation>仅监听</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="256"/>
+        <source>Server address</source>
+        <translation>服务器地址</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="273"/>
+        <source>Serial port settings</source>
+        <translation>串口设置</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="279"/>
+        <source>Data bits</source>
+        <translation>数据位</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="286"/>
+        <source>Port name</source>
+        <translation>端口号</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="299"/>
+        <source>Stop bits</source>
+        <translation>停止位</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="306"/>
+        <source>Parity</source>
+        <translation>校验位</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="313"/>
+        <source>Baud rate</source>
+        <translation>波特率</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="336"/>
+        <source>Refresh</source>
+        <translation>刷新</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="346"/>
+        <source>Device operations</source>
+        <translation>设备操作</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="352"/>
+        <source>Device list</source>
+        <translation>设备列表</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="359"/>
+        <source>CloseDevice</source>
+        <translation>关闭设备</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="366"/>
+        <source>OpenDevice</source>
+        <translation>打开设备</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="385"/>
+        <source>Client operaions</source>
+        <translation>客户端操作</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="391"/>
+        <source>Target address</source>
+        <translation>目标地址</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="405"/>
+        <source>Start address</source>
+        <translation>起始地址</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="419"/>
+        <source>Address number</source>
+        <translation>地址个数</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="436"/>
+        <source>Read</source>
+        <translation>读取</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="443"/>
+        <source>Write</source>
+        <translation>写入</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.ui" line="453"/>
+        <source>Function code</source>
+        <translation>功能码</translation>
+    </message>
+    <message>
         <source>Value(Bin)</source>
-        <translation>数据（二进制）</translation>
+        <translation type="vanished">数据（二进制）</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="322"/>
         <source>Value(Otc)</source>
-        <translation>数据（八进制）</translation>
+        <translation type="vanished">数据（八进制）</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="323"/>
         <source>Value(Dec)</source>
-        <translation>数据（十进制）</translation>
+        <translation type="vanished">数据（十进制）</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="324"/>
         <source>Value(Hex)</source>
-        <translation>数据（十六进制）</translation>
+        <translation type="vanished">数据（十六进制）</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="450"/>
         <source>Register(s) read:</source>
-        <translation>已读取寄存器：</translation>
+        <translation type="vanished">已读取寄存器：</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="455"/>
-        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="515"/>
         <source>[Address: %1, Value: %2]</source>
-        <translation>【地址：%1，数值：%2】</translation>
+        <translation type="vanished">【地址：%1，数值：%2】</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="481"/>
         <source>Send reading request error:%1</source>
-        <translation>发送读请求错误：%1</translation>
+        <translation type="vanished">发送读请求错误：%1</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="510"/>
         <source>Register(s) Written:</source>
-        <translation>已写入寄存器：</translation>
+        <translation type="vanished">已写入寄存器：</translation>
     </message>
     <message>
-        <location filename="../../src/modbus/SAKModbusDebugger.cc" line="539"/>
         <source>Write error: %1</source>
-        <translation>写操作错误：%1</translation>
+        <translation type="vanished">写操作错误：%1</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.cc" line="136"/>
+        <source>RtuClient</source>
+        <translation>RTU主机</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.cc" line="137"/>
+        <source>RtuServer</source>
+        <translation>RTU从机</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.cc" line="138"/>
+        <source>TcpClient</source>
+        <translation>TCP客户端</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.cc" line="139"/>
+        <source>TcpServer</source>
+        <translation>TCP服务器</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.cc" line="193"/>
+        <source>NoParity</source>
+        <translation>无</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.cc" line="194"/>
+        <source>EvenParity</source>
+        <translation>偶校验</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.cc" line="195"/>
+        <source>OddParity</source>
+        <translation>奇校验</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.cc" line="196"/>
+        <source>SpaceParity</source>
+        <translation>空格校验</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.cc" line="197"/>
+        <source>MarkParity</source>
+        <translation>标记校验</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.cc" line="202"/>
+        <source>0x01-ReadCoils</source>
+        <translation>0x01-读线圈</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.cc" line="203"/>
+        <source>0x02-ReadDiscreteInputs</source>
+        <translation>0x02-读离散输入</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.cc" line="204"/>
+        <source>0x03-ReadHoldingRegisters</source>
+        <translation>0x03-读取保持寄存器</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.cc" line="205"/>
+        <source>0x04-ReadInputRegisters</source>
+        <translation>0x03-读取输入寄存器</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.cc" line="206"/>
+        <source>0x05-WriteSingleCoil</source>
+        <translation>0x05-写单个线圈</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.cc" line="207"/>
+        <source>0x06-WriteSingleRegister</source>
+        <translation>0x06-写单个寄存器</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.cc" line="208"/>
+        <source>0x0f-WriteMultipleCoils</source>
+        <translation>0x0f-写多个线圈</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.cc" line="209"/>
+        <source>0x10-WriteMultipleRegisters</source>
+        <translation>0x10-写多个寄存器</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.cc" line="249"/>
+        <source>DiscreteInputs</source>
+        <translation>离散输入</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.cc" line="249"/>
+        <source>Coils</source>
+        <translation>线圈</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.cc" line="250"/>
+        <source>InputRegisters</source>
+        <translation>输入寄存器</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.cc" line="250"/>
+        <source>HoldingRegisters</source>
+        <translation>保持寄存器</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.cc" line="494"/>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.cc" line="1118"/>
+        <source>Error occured</source>
+        <translation>遇到错误</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.cc" line="619"/>
+        <source>Can not open device</source>
+        <translation>无法打开设备</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.cc" line="620"/>
+        <source>Can not open device: </source>
+        <translation>无法打开设备： </translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.cc" line="622"/>
+        <source>. Please check the parameters and try again!</source>
+        <translation>。请检查参数后重试！</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.cc" line="1109"/>
+        <source>Device is not ready</source>
+        <translation>设备未就绪</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.cc" line="1110"/>
+        <source>The device is not ready, please open the device then try again.</source>
+        <translation>设备未就绪，请打开设备后重试。</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.cc" line="1238"/>
+        <source>Bin</source>
+        <translation>二进制</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.cc" line="1238"/>
+        <source>Dec</source>
+        <translation>十进制</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.cc" line="1238"/>
+        <source>Hex</source>
+        <translation>16进制</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.cc" line="1239"/>
+        <source>Bin(BE)</source>
+        <translation>二进制（大端）</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.cc" line="1239"/>
+        <source>Dec(BE)</source>
+        <translation>十进制（大端）</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/modbus/SAKModbusDebugger.cc" line="1239"/>
+        <source>Hex(BE)</source>
+        <translation>16进制（大端）</translation>
     </message>
 </context>
 <context>
     <name>SAKModbusServerController</name>
     <message>
-        <location filename="../../src/modbus/server/SAKModbusServerController.cc" line="44"/>
         <source>Can not get the value of register which type is:%1</source>
-        <translation>无法从指定的寄存器类型（%1）中获取数据</translation>
+        <translation type="vanished">无法从指定的寄存器类型（%1）中获取数据</translation>
     </message>
 </context>
 <context>
@@ -3465,7 +3992,7 @@ p, li { white-space: pre-wrap; }
         <translation>打开主窗口</translation>
     </message>
     <message>
-        <location filename="../../src/SAKSystemTrayIcon.cc" line="24"/>
+        <location filename="../../src/SAKSystemTrayIcon.cc" line="25"/>
         <source>Exit program</source>
         <translation>退出程序</translation>
     </message>
@@ -3533,12 +4060,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SAKTcpClientDevice</name>
     <message>
-        <location filename="../../src/debuggers/tcp/client/SAKTcpClientDevice.cc" line="62"/>
+        <location filename="../../src/debuggers/tcp/client/SAKTcpClientDevice.cc" line="60"/>
         <source>Binding failed:</source>
         <translation>绑定失败：</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/tcp/client/SAKTcpClientDevice.cc" line="75"/>
+        <location filename="../../src/debuggers/tcp/client/SAKTcpClientDevice.cc" line="73"/>
         <source>Connect to server failed:</source>
         <translation>链接至服务器失败：</translation>
     </message>
@@ -3547,7 +4074,7 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">未知错误</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/tcp/client/SAKTcpClientDevice.cc" line="87"/>
+        <location filename="../../src/debuggers/tcp/client/SAKTcpClientDevice.cc" line="85"/>
         <source>Can not open device:</source>
         <translation>无法打开设备：</translation>
     </message>
@@ -3640,6 +4167,13 @@ p, li { white-space: pre-wrap; }
         <source>Clients</source>
         <translation>客户端列表</translation>
     </message>
+    <message>
+        <location filename="../../src/debuggers/tcp/server/SAKTcpServerController.cc" line="32"/>
+        <location filename="../../src/debuggers/tcp/server/SAKTcpServerController.cc" line="80"/>
+        <location filename="../../src/debuggers/tcp/server/SAKTcpServerController.cc" line="139"/>
+        <source>All Connections(%1)</source>
+        <translation>所有连接（%1）</translation>
+    </message>
 </context>
 <context>
     <name>SAKTcpServerDevice</name>
@@ -3720,59 +4254,73 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SAKTestDebuggerController</name>
     <message>
-        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="44"/>
-        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="94"/>
+        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="63"/>
+        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="123"/>
         <source>500</source>
         <translation>500</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="47"/>
-        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="97"/>
+        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="66"/>
+        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="126"/>
         <source>Unit is milliseconds</source>
         <translation>单位为毫秒</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="54"/>
+        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="99"/>
         <source>Error string</source>
         <translation>错误提示文本</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="61"/>
-        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="68"/>
+        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="85"/>
+        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="116"/>
         <source>Cycle(ms)</source>
         <translation>循环时间</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="80"/>
+        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="78"/>
         <source>Device settings</source>
         <translation>设备设置</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="87"/>
+        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="109"/>
+        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="176"/>
+        <source>String is supported only</source>
+        <translation>仅支持字符串</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="133"/>
+        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="166"/>
+        <source>Data</source>
+        <translation>数据</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="140"/>
         <source>Open device failed</source>
         <translation>打开设备失败</translation>
     </message>
     <message>
+        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="106"/>
+        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="173"/>
         <source>Just for debugging</source>
-        <translation type="vanished">仅用于测试</translation>
+        <translation>仅用于测试</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="111"/>
+        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="147"/>
         <source>Generate data circularly</source>
         <translation>循环生成数据</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="118"/>
+        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="92"/>
         <source>Create data circularly</source>
         <translation>循环生成数据</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="130"/>
+        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="49"/>
         <source>Reading settings</source>
         <translation>接收设置</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="142"/>
+        <location filename="../../src/debuggers/test/SAKTestDebuggerController.ui" line="159"/>
         <source>Writing settings</source>
         <translation>发送设置</translation>
     </message>
@@ -3818,6 +4366,14 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>Create written data cyclic</source>
         <translation type="vanished">循环生成已发送数据</translation>
+    </message>
+</context>
+<context>
+    <name>SAKToolAsciiAssistant</name>
+    <message>
+        <location filename="../../src/tools/asciiassistant/src/SAKToolAsciiAssistant.ui" line="14"/>
+        <source>Ascii Assistant</source>
+        <translation>ASCII 助手</translation>
     </message>
 </context>
 <context>
@@ -4070,6 +4626,39 @@ p, li { white-space: pre-wrap; }
         <location filename="../../src/tools/stringassistant/src/SAKToolStringAssistant.ui" line="107"/>
         <source>Output format</source>
         <translation>输出格式</translation>
+    </message>
+</context>
+<context>
+    <name>SAKToolsFactory</name>
+    <message>
+        <location filename="../../src/tools/SAKToolsFactory.cc" line="41"/>
+        <source>CRC Assistant</source>
+        <translation>CRC助手</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKToolsFactory.cc" line="47"/>
+        <source>File Assistant</source>
+        <translation>文件助手</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKToolsFactory.cc" line="53"/>
+        <source>Float Assistant</source>
+        <translation>浮点数助手</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKToolsFactory.cc" line="59"/>
+        <source>String Assistant</source>
+        <translation>字符串助手</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKToolsFactory.cc" line="65"/>
+        <source>AT Assistant</source>
+        <translation>AT指令调试助手</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKToolsFactory.cc" line="71"/>
+        <source>ASCII Assistant</source>
+        <translation>ASCII助手</translation>
     </message>
 </context>
 <context>
@@ -4339,7 +4928,7 @@ p, li { white-space: pre-wrap; }
         <translation>打开设备失败：</translation>
     </message>
     <message>
-        <location filename="../../src/debuggers/udp/client/SAKUdpClientDevice.cc" line="182"/>
+        <location filename="../../src/debuggers/udp/client/SAKUdpClientDevice.cc" line="186"/>
         <source>Write data failed:</source>
         <translation>发送数据失败：</translation>
     </message>
@@ -4667,12 +5256,12 @@ p, li { white-space: pre-wrap; }
         <translation>更新功能不稳定，请通过“链接”菜单访问发布站获取最新发布情况。</translation>
     </message>
     <message>
-        <location filename="../../src/update/SAKUpdateManager.cc" line="121"/>
+        <location filename="../../src/update/SAKUpdateManager.cc" line="120"/>
         <source>Pull information from server failed!</source>
         <translation>从服务器拉取更新信息错误！</translation>
     </message>
     <message>
-        <location filename="../../src/update/SAKUpdateManager.cc" line="215"/>
+        <location filename="../../src/update/SAKUpdateManager.cc" line="214"/>
         <source>Source</source>
         <translation>源码</translation>
     </message>
@@ -4680,458 +5269,369 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SAKUserBuy</name>
     <message>
-        <location filename="../../private/user/src/SAKUserBuy.ui" line="14"/>
         <source>Pay for the Application</source>
-        <translation>购买软件</translation>
+        <translation type="vanished">购买软件</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserBuy.ui" line="60"/>
         <source>You have paied for this software</source>
-        <translation>你已经购买该软件</translation>
+        <translation type="vanished">你已经购买该软件</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserBuy.ui" line="70"/>
         <source>You should pay PRICE, please pay with WeChat</source>
-        <translation>你应该支付PRICE，请使用微信支付</translation>
+        <translation type="vanished">你应该支付PRICE，请使用微信支付</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserBuy.ui" line="134"/>
         <source>Refresh</source>
-        <translation>刷新二维码</translation>
+        <translation type="vanished">刷新二维码</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserBuy.ui" line="159"/>
         <source>You had been payed for the application.</source>
-        <translation>你已经购买该软件。</translation>
+        <translation type="vanished">你已经购买该软件。</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserBuy.cc" line="40"/>
         <source>Buy successfully, thank you.</source>
-        <translation>购买成功，谢谢。</translation>
+        <translation type="vanished">购买成功，谢谢。</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserBuy.cc" line="83"/>
         <source>Register application %1! </source>
-        <translation>注册软件%1! </translation>
+        <translation type="vanished">注册软件%1! </translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserBuy.cc" line="83"/>
         <source>successfully</source>
-        <translation>成功</translation>
+        <translation type="vanished">成功</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserBuy.cc" line="83"/>
         <source>failed</source>
-        <translation>失败</translation>
+        <translation type="vanished">失败</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserBuy.cc" line="86"/>
         <source>You have been register the application, thank you.</source>
-        <translation>已经成功注册该软件，谢谢。</translation>
+        <translation type="vanished">已经成功注册该软件，谢谢。</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserBuy.cc" line="89"/>
         <source>You can try again or contact to the author.</source>
-        <translation>你可以稍后再试或联系软件作者。</translation>
+        <translation type="vanished">你可以稍后再试或联系软件作者。</translation>
     </message>
 </context>
 <context>
     <name>SAKUserDestroy</name>
     <message>
-        <location filename="../../private/user/src/SAKUserDestroy.ui" line="14"/>
         <source>Destroy Account</source>
-        <translation>注销用户</translation>
+        <translation type="vanished">注销用户</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserDestroy.ui" line="20"/>
         <source>Apply</source>
-        <translation>申请验证码</translation>
+        <translation type="vanished">申请验证码</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserDestroy.ui" line="47"/>
         <source>Password</source>
-        <translation>密码</translation>
+        <translation type="vanished">密码</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserDestroy.ui" line="89"/>
         <source>Destroy</source>
-        <translation>注销</translation>
+        <translation type="vanished">注销</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserDestroy.ui" line="106"/>
         <source>Verification code</source>
-        <translation>验证码</translation>
+        <translation type="vanished">验证码</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserDestroy.ui" line="113"/>
         <source>Account</source>
-        <translation>账号</translation>
+        <translation type="vanished">账号</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserDestroy.cc" line="51"/>
         <source>You account has been destroyed!</source>
-        <translation>你的账号已被注销！</translation>
+        <translation type="vanished">你的账号已被注销！</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserDestroy.cc" line="53"/>
-        <location filename="../../private/user/src/SAKUserDestroy.cc" line="71"/>
         <source>Destroy account failed!</source>
-        <translation>注销账号失败！</translation>
+        <translation type="vanished">注销账号失败！</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserDestroy.cc" line="69"/>
         <source>Destroy account successfully.</source>
-        <translation>注销账号成功。</translation>
+        <translation type="vanished">注销账号成功。</translation>
     </message>
 </context>
 <context>
     <name>SAKUserDialog</name>
     <message>
-        <location filename="../../private/user/src/SAKUserDialog.cc" line="33"/>
         <source>Message(%1) response timeout!</source>
-        <translation>消息（%1）应答超时！</translation>
+        <translation type="vanished">消息（%1）应答超时！</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserDialog.cc" line="43"/>
         <source>Apply</source>
-        <translation>申请验证码</translation>
+        <translation type="vanished">申请验证码</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserDialog.cc" line="48"/>
-        <location filename="../../private/user/src/SAKUserDialog.cc" line="116"/>
         <source>You can apply again after %1s</source>
-        <translation>%1秒后可再次申请</translation>
+        <translation type="vanished">%1秒后可再次申请</translation>
     </message>
 </context>
 <context>
     <name>SAKUserInformation</name>
     <message>
-        <location filename="../../private/user/src/SAKUserInformation.ui" line="14"/>
         <source>SAKUser</source>
-        <translation>用户信息</translation>
+        <translation type="vanished">用户信息</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserInformation.ui" line="20"/>
         <source>Account information</source>
-        <translation>账号信息</translation>
+        <translation type="vanished">账号信息</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserInformation.ui" line="26"/>
         <source>Email</source>
-        <translation>电子邮箱</translation>
+        <translation type="vanished">电子邮箱</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserInformation.ui" line="36"/>
-        <location filename="../../private/user/src/SAKUserInformation.cc" line="57"/>
         <source>Update</source>
-        <translation>更新邮箱</translation>
+        <translation type="vanished">更新邮箱</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserInformation.ui" line="52"/>
         <source>User information</source>
-        <translation>用户信息</translation>
+        <translation type="vanished">用户信息</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserInformation.ui" line="58"/>
         <source>UpdateAll</source>
-        <translation>全部更新</translation>
+        <translation type="vanished">全部更新</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserInformation.cc" line="29"/>
         <source>Nickname</source>
-        <translation>网络昵称</translation>
+        <translation type="vanished">网络昵称</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserInformation.cc" line="30"/>
         <source>Phone</source>
-        <translation>手机号码</translation>
+        <translation type="vanished">手机号码</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserInformation.cc" line="31"/>
         <source>QQ</source>
-        <translation>QQ</translation>
+        <translation type="vanished">QQ</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserInformation.cc" line="32"/>
         <source>WeChat</source>
-        <translation>微信</translation>
+        <translation type="vanished">微信</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserInformation.cc" line="33"/>
         <source>Blog</source>
-        <translation>博客</translation>
+        <translation type="vanished">博客</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserInformation.cc" line="34"/>
         <source>Intel</source>
-        <translation>领英</translation>
+        <translation type="vanished">领英</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserInformation.cc" line="35"/>
         <source>WeiBo</source>
-        <translation>微博</translation>
+        <translation type="vanished">微博</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserInformation.cc" line="36"/>
         <source>Github</source>
-        <translation>GitHub主页</translation>
+        <translation type="vanished">GitHub主页</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserInformation.cc" line="37"/>
         <source>Gitee</source>
-        <translation>码云</translation>
+        <translation type="vanished">码云</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserInformation.cc" line="38"/>
         <source>Coding</source>
-        <translation>Coding主页</translation>
+        <translation type="vanished">Coding主页</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserInformation.cc" line="39"/>
         <source>Gitlab</source>
-        <translation>Gitlab主页</translation>
+        <translation type="vanished">Gitlab主页</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserInformation.cc" line="40"/>
         <source>Description</source>
-        <translation>描述</translation>
+        <translation type="vanished">描述</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserInformation.cc" line="112"/>
         <source>Response timeout!</source>
-        <translation>应答超时！</translation>
+        <translation type="vanished">应答超时！</translation>
     </message>
 </context>
 <context>
     <name>SAKUserResetPassword</name>
     <message>
-        <location filename="../../private/user/src/SAKUserResetPassword.ui" line="14"/>
         <source>Reset password</source>
-        <translation>重置密码</translation>
+        <translation type="vanished">重置密码</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserResetPassword.ui" line="20"/>
         <source>New password</source>
-        <translation>新密码</translation>
+        <translation type="vanished">新密码</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserResetPassword.ui" line="33"/>
         <source>Comfirm password</source>
-        <translation>确认密码</translation>
+        <translation type="vanished">确认密码</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserResetPassword.ui" line="53"/>
         <source>Commit</source>
-        <translation>提交</translation>
+        <translation type="vanished">提交</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserResetPassword.ui" line="80"/>
         <source>Verification code</source>
-        <translation>验证码</translation>
+        <translation type="vanished">验证码</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserResetPassword.ui" line="114"/>
         <source>Account</source>
-        <translation>账号</translation>
+        <translation type="vanished">账号</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserResetPassword.cc" line="26"/>
         <source>Please input your password!</source>
-        <translation>请输入密码！</translation>
+        <translation type="vanished">请输入密码！</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserResetPassword.cc" line="31"/>
         <source>Please comfrim your new password!</source>
-        <translation>请再次输入密码！</translation>
+        <translation type="vanished">请再次输入密码！</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserResetPassword.cc" line="36"/>
         <source>New password and comfirm password are different!</source>
-        <translation>两次输入的密码不一致！</translation>
+        <translation type="vanished">两次输入的密码不一致！</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserResetPassword.cc" line="54"/>
         <source>Reset password successfully.</source>
-        <translation>重置密码成功。</translation>
+        <translation type="vanished">重置密码成功。</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserResetPassword.cc" line="56"/>
         <source>Reset password failed!</source>
-        <translation>重置密码失败！</translation>
+        <translation type="vanished">重置密码失败！</translation>
     </message>
 </context>
 <context>
     <name>SAKUserSignIn</name>
     <message>
-        <location filename="../../private/user/src/SAKUserSignIn.ui" line="20"/>
         <source>Sign In</source>
-        <translation>登录</translation>
+        <translation type="vanished">登录</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserSignIn.ui" line="32"/>
         <source>Remember account and password</source>
-        <translation>记录账号密码</translation>
+        <translation type="vanished">记录账号密码</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserSignIn.ui" line="45"/>
         <source>Account</source>
-        <translation>账号</translation>
+        <translation type="vanished">账号</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserSignIn.ui" line="58"/>
         <source>SignIn</source>
-        <translation>登录</translation>
+        <translation type="vanished">登录</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserSignIn.ui" line="91"/>
         <source>Password</source>
-        <translation>密码</translation>
+        <translation type="vanished">密码</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserSignIn.cc" line="37"/>
         <source>SigningIn</source>
-        <translation>登录</translation>
+        <translation type="vanished">登录</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserSignIn.cc" line="87"/>
         <source>Sign in successfully.</source>
-        <translation>登录成功。</translation>
+        <translation type="vanished">登录成功。</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserSignIn.cc" line="90"/>
         <source>Sign in failed: account and(or) password error!</source>
-        <translation>登录失败：账号和（或）密码错误！</translation>
+        <translation type="vanished">登录失败：账号和（或）密码错误！</translation>
     </message>
 </context>
 <context>
     <name>SAKUserSignUp</name>
     <message>
-        <location filename="../../private/user/src/SAKUserSignUp.ui" line="20"/>
         <source>Sign Up</source>
-        <translation>注册</translation>
+        <translation type="vanished">注册</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserSignUp.ui" line="26"/>
-        <location filename="../../private/user/src/SAKUserSignUp.cc" line="37"/>
         <source>SignUp</source>
-        <translation>注册</translation>
+        <translation type="vanished">注册</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserSignUp.ui" line="46"/>
         <source>Verification code</source>
-        <translation>验证码</translation>
+        <translation type="vanished">验证码</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserSignUp.ui" line="66"/>
         <source>Confirmation passwrod</source>
-        <translation>确认密码</translation>
+        <translation type="vanished">确认密码</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserSignUp.ui" line="92"/>
         <source>Account</source>
-        <translation>账号</translation>
+        <translation type="vanished">账号</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserSignUp.ui" line="105"/>
         <source>Password</source>
-        <translation>密码</translation>
+        <translation type="vanished">密码</translation>
     </message>
     <message>
         <source>1024</source>
         <translation type="vanished">1024</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserSignUp.ui" line="133"/>
         <source>Apply</source>
-        <translation>申请验证码</translation>
+        <translation type="vanished">申请验证码</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserSignUp.cc" line="26"/>
         <source>SigningUp</source>
-        <translation>登录中</translation>
+        <translation type="vanished">登录中</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserSignUp.cc" line="35"/>
         <source>Password error!</source>
-        <translation>密码错误！</translation>
+        <translation type="vanished">密码错误！</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserSignUp.cc" line="67"/>
         <source>Sign up successfully.</source>
-        <translation>注册成功。</translation>
+        <translation type="vanished">注册成功。</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserSignUp.cc" line="70"/>
         <source>Account has been sign up!</source>
-        <translation>账号已被注册！</translation>
+        <translation type="vanished">账号已被注册！</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserSignUp.cc" line="73"/>
         <source>Unknow error!</source>
-        <translation>位置错误！</translation>
+        <translation type="vanished">位置错误！</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserSignUp.cc" line="80"/>
         <source>Verification code has been send.</source>
-        <translation>验证码已发送。</translation>
+        <translation type="vanished">验证码已发送。</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserSignUp.cc" line="82"/>
         <source>Send verification code failed.</source>
-        <translation>发送验证码失败。</translation>
+        <translation type="vanished">发送验证码失败。</translation>
     </message>
 </context>
 <context>
     <name>SAKUserUpdatePassword</name>
     <message>
-        <location filename="../../private/user/src/SAKUserUpdatePassword.ui" line="14"/>
         <source>Update password</source>
-        <translation>更新密码</translation>
+        <translation type="vanished">更新密码</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserUpdatePassword.ui" line="20"/>
         <source>Commit</source>
-        <translation>提交</translation>
+        <translation type="vanished">提交</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserUpdatePassword.ui" line="27"/>
         <source>New password</source>
-        <translation>新密码</translation>
+        <translation type="vanished">新密码</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserUpdatePassword.ui" line="60"/>
         <source>Origin password</source>
-        <translation>旧密码</translation>
+        <translation type="vanished">旧密码</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserUpdatePassword.ui" line="87"/>
         <source>Comfirm new password</source>
-        <translation>确认密码</translation>
+        <translation type="vanished">确认密码</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserUpdatePassword.cc" line="25"/>
         <source>Please input your password!</source>
-        <translation>请输入密码！</translation>
+        <translation type="vanished">请输入密码！</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserUpdatePassword.cc" line="30"/>
         <source>Please input your new password!</source>
-        <translation>请输入新密码！</translation>
+        <translation type="vanished">请输入新密码！</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserUpdatePassword.cc" line="35"/>
         <source>New password and comfirm password are different!</source>
-        <translation>两次输入的密码不一致！</translation>
+        <translation type="vanished">两次输入的密码不一致！</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserUpdatePassword.cc" line="53"/>
         <source>Update password successfully.</source>
-        <translation>更新密码成功。</translation>
+        <translation type="vanished">更新密码成功。</translation>
     </message>
     <message>
-        <location filename="../../private/user/src/SAKUserUpdatePassword.cc" line="55"/>
         <source>Update password failed.</source>
-        <translation>更新密码失败。</translation>
+        <translation type="vanished">更新密码失败。</translation>
     </message>
 </context>
 <context>
@@ -5241,6 +5741,13 @@ p, li { white-space: pre-wrap; }
         <location filename="../../src/debuggers/websocket/server/SAKWebSocketServerController.ui" line="97"/>
         <source>Flow control</source>
         <translation>流控</translation>
+    </message>
+    <message>
+        <location filename="../../src/debuggers/websocket/server/SAKWebSocketServerController.cc" line="33"/>
+        <location filename="../../src/debuggers/websocket/server/SAKWebSocketServerController.cc" line="148"/>
+        <location filename="../../src/debuggers/websocket/server/SAKWebSocketServerController.cc" line="154"/>
+        <source>All Connections(%1)</source>
+        <translation>所有连接（%1）</translation>
     </message>
 </context>
 <context>
