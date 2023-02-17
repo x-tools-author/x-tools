@@ -43,10 +43,10 @@ SAKDebuggerDevice::SAKDebuggerDevice(QSettings *settings,
         mInnerParametersContextMutex.unlock();
     });
     connect(mAnalyzer, &SAKDebuggerDeviceAnalyzer::clearTemp,
-            this, [&](){
-        mAnalyzerCtxMutex.lock();
-        mAnalyzerCtx.bytesTemp.clear();
-        mAnalyzerCtxMutex.unlock();
+            this, [=](){
+        this->mAnalyzerCtxMutex.lock();
+        this->mAnalyzerCtx.bytesTemp.clear();
+        this->mAnalyzerCtxMutex.unlock();
     });
 }
 
@@ -127,7 +127,7 @@ void SAKDebuggerDevice::run()
     writeTimer->setSingleShot(true);
     if (initialize()) {
         connect(this, &SAKDebuggerDevice::readyRead,
-                this, [=](SAKDeviceProtectedSignal){
+                writeTimer, [=](SAKDeviceProtectedSignal){
             ReadContextVector contexts = read();
             for (ReadContext &context : contexts) {
                 if (context.bytes.length()) {
@@ -140,9 +140,9 @@ void SAKDebuggerDevice::run()
                     }
                 }
             }
-        }, Qt::DirectConnection);
+        });
 
-        connect(writeTimer, &QTimer::timeout, this, [=](){
+        connect(writeTimer, &QTimer::timeout, writeTimer, [=](){
             QByteArray bytes = takeBytes();
             if (bytes.length()) {
                 bytes = mask(bytes, false);
@@ -152,7 +152,7 @@ void SAKDebuggerDevice::run()
                 }
             }
             writeTimer->start();
-        }, Qt::DirectConnection);
+        });
 
         writeTimer->start();
         exec();
@@ -236,18 +236,21 @@ void SAKDebuggerDevice::analyzer(QByteArray data)
         if (mAnalyzerCtx.bytesTemp.length()){
             QByteArray temp = mAnalyzerCtx.bytesTemp;
             mAnalyzerCtx.bytesTemp.clear();
-            emit bytesRead(temp, "");
+            emit bytesRead(temp, "self");
         }
 
         mAnalyzerCtxMutex.unlock();
         return;
     }
 
+    mAnalyzerCtxMutex.unlock();
     while (true) {
+        mAnalyzerCtxMutex.lock();
         // Ensure that bytes is enough
         if (mAnalyzerCtx.bytesTemp.length()
                 < (ctx.analyzerCtx.startFlags.length()
                    + ctx.analyzerCtx.endFlags.length())) {
+            mAnalyzerCtxMutex.unlock();
             break;
         }
 
@@ -265,7 +268,7 @@ void SAKDebuggerDevice::analyzer(QByteArray data)
                         QByteArray(mAnalyzerCtx.bytesTemp.data(), ret);
                 mAnalyzerCtx.bytesTemp.remove(0, ret);
                 if (!temp.isEmpty()) {
-                    emit bytesRead(temp, "");
+                    emit bytesRead(temp, "slef");
                 }
             } else {
                 startBytesMatched = false;
@@ -289,22 +292,24 @@ void SAKDebuggerDevice::analyzer(QByteArray data)
             }
         }
 
-        qDebug() << __FUNCTION__ << __LINE__ << startBytesMatched << endBytesMatched;
         // A completed data-frame has been extracted
         if (startBytesMatched && endBytesMatched) {
             QByteArray temp(mAnalyzerCtx.bytesTemp.data(), frameLength);
             mAnalyzerCtx.bytesTemp.remove(0, frameLength);
             if (!temp.isEmpty()) {
-                emit bytesRead(temp, "");
+                emit bytesRead(temp, "self");
             }
+        } else {
+            mAnalyzerCtxMutex.unlock();
+            break;
         }
 
         if (mAnalyzerCtx.bytesTemp.length() >= 2048) {
             mAnalyzerCtx.bytesTemp.clear();
         }
-    }
 
-    mAnalyzerCtxMutex.unlock();
+        mAnalyzerCtxMutex.unlock();
+    }
 }
 
 SAKDebuggerDevice::SAKStructDevicePatametersContext
