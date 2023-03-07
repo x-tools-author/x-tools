@@ -132,7 +132,8 @@ SAKApplication::SAKApplication(int argc, char **argv)
     // Fixed open database failed on first time running.
     if (!QFile::exists(mDatabaseName)) {
         QDir dir;
-        dir.mkdir(mDatabaseName.remove(QUrl(mDatabaseName).fileName()));
+        QString dbName = QUrl(mDatabaseName).fileName();
+        dir.mkpath(QString(mDatabaseName).remove(dbName));
     }
 
     if (!mSqlDatabase.open()){
