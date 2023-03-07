@@ -7,6 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
+#include <QDir>
+#include <QUrl>
 #include <QRect>
 #include <QFile>
 #include <QTimer>
@@ -126,6 +128,13 @@ SAKApplication::SAKApplication(int argc, char **argv)
     mSqlDatabase.setHostName("localhost");
     mSqlDatabase.setUserName("Qter");
     mSqlDatabase.setPassword("QterPassword");
+
+    // Fixed open database failed on first time running.
+    if (!QFile::exists(mDatabaseName)) {
+        QDir dir;
+        dir.mkdir(mDatabaseName.remove(QUrl(mDatabaseName).fileName()));
+    }
+
     if (!mSqlDatabase.open()){
         qWarning() << "QSAKDatabase.sqlite3 open failed:"
                    << mSqlDatabase.lastError().text();
