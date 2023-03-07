@@ -121,29 +121,34 @@ QByteArray SAKCommonDataStructure::stringToByteArray(QString &origingString,
                                                      SAKEnumTextFormatInput format)
 {
     QByteArray data;
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
+    auto behavior = QString::SkipEmptyParts;
+#else
+    auto behavior = Qt::SkipEmptyParts;
+#endif
     if (format == SAKCommonDataStructure::InputFormatBin){
-        QStringList strList = origingString.split(' ', Qt::SkipEmptyParts);
+        QStringList strList = origingString.split(' ', behavior);
         for (int i = 0; i < strList.length(); i++) {
             QString str = strList.at(i);
             qint8 value = QString(str).toInt(Q_NULLPTR, 2);
             data.append(reinterpret_cast<char*>(&value), 1);
         }
     }else if (format == SAKCommonDataStructure::InputFormatOct){
-        QStringList strList = origingString.split(' ', Qt::SkipEmptyParts);
+        QStringList strList = origingString.split(' ', behavior);
         for (int i = 0; i < strList.length(); i++) {
             QString str = strList.at(i);
             qint8 value = QString(str).toInt(Q_NULLPTR, 8);
             data.append(reinterpret_cast<char*>(&value), 1);
         }
     }else if (format == SAKCommonDataStructure::InputFormatDec){
-        QStringList strList = origingString.split(' ', Qt::SkipEmptyParts);
+        QStringList strList = origingString.split(' ', behavior);
         for (int i = 0; i < strList.length(); i++) {
             QString str = strList.at(i);
             qint8 value = QString(str).toInt(Q_NULLPTR, 10);
             data.append(reinterpret_cast<char*>(&value), 1);
         }
     }else if (format == SAKCommonDataStructure::InputFormatHex){
-        QStringList strList = origingString.split(' ', Qt::SkipEmptyParts);
+        QStringList strList = origingString.split(' ', behavior);
         for (int i = 0; i < strList.length(); i++) {
             QString str = strList.at(i);
             qint8 value = QString(str).toInt(Q_NULLPTR, 16);
