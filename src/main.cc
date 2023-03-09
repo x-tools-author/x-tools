@@ -51,6 +51,7 @@ int main(int argc, char *argv[])
 #endif
 
 
+#ifdef Q_OS_WIN
         // Setup system tray icon.
         SAKSystemTrayIcon *systemTrayIcon = new SAKSystemTrayIcon(qApp);
         QObject::connect(systemTrayIcon, &SAKSystemTrayIcon::invokeExit,
@@ -59,6 +60,7 @@ int main(int argc, char *argv[])
                          &SAKSystemTrayIcon::invokeShowMainWindow,
                          qApp, [=](){mainWindow->show();});
         systemTrayIcon->show();
+#endif
 
 
         // Move the window to the screen central.
