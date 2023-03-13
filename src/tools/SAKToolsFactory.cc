@@ -16,7 +16,7 @@
 #ifdef SAK_IMPORT_MODULE_CRCASSISTANT
 #include "SAKToolCRCAssistant.hh"
 #endif
-#ifdef SAK_IMPORT_MODULE_QRCODE
+#ifdef SAK_IMPORT_MODULE_QRCODEASSISTANT
 #include "SAKToolQRCodeCreator.hh"
 #endif
 #ifdef SAK_IMPORT_MODULE_FLOATASSISTANT
