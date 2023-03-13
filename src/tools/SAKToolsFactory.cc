@@ -10,8 +10,8 @@
 #include <QCoreApplication>
 #include "SAKToolsFactory.hh"
 
-#ifdef SAK_IMPORT_MODULE_FILECHECKER
-#include "SAKToolFileChecker.hh"
+#ifdef SAK_IMPORT_MODULE_FILECHECKASSISTANT
+#include "SAKToolFileCheckAssistant.hh"
 #endif
 #ifdef SAK_IMPORT_MODULE_CRCCALCULATOR
 #include "SAKToolCRCCalculator.hh"
@@ -40,10 +40,10 @@ SAKToolsFactory::SAKToolsFactory(QObject *parent)
                     SAKToolCRCCalculator::staticMetaObject,
                 tr("CRC Assistant")});
 #endif
-#ifdef SAK_IMPORT_MODULE_FILECHECKER
+#ifdef SAK_IMPORT_MODULE_FILECHECKASSISTANT
     mToolMetaObjCtxVector.append(
                 SAKToolMetaObjCtx{
-                    SAKToolFileChecker::staticMetaObject,
+                    SAKToolFileCheckAssistant::staticMetaObject,
                     tr("File Assistant")});
 #endif
 #ifdef SAK_IMPORT_MODULE_FLOATASSISTANT

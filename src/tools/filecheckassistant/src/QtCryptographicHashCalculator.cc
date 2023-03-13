@@ -13,15 +13,15 @@
 #include <QApplication>
 
 #include "QtCryptographicHashCalculator.hh"
-#include "SAKToolFileChecker.hh"
-QtCryptographicHashCalculator::QtCryptographicHashCalculator(SAKToolFileChecker *controller, QObject *parent)
+#include "SAKToolFileCheckAssistant.hh"
+QtCryptographicHashCalculator::QtCryptographicHashCalculator(SAKToolFileCheckAssistant *controller, QObject *parent)
     :QThread (parent)
     ,mCryptographicHashController (controller)
 {
-    connect(this, &QtCryptographicHashCalculator::updateResult, controller, &SAKToolFileChecker::updateResult);
-    connect(this, &QtCryptographicHashCalculator::outputMessage, controller, &SAKToolFileChecker::outputMessage);
-    connect(this, &QtCryptographicHashCalculator::updateProgressBar, controller, &SAKToolFileChecker::updateProgressBar);
-    connect(this, &QtCryptographicHashCalculator::remainTimeChanged, controller, &SAKToolFileChecker::changeRemainTime);
+    connect(this, &QtCryptographicHashCalculator::updateResult, controller, &SAKToolFileCheckAssistant::updateResult);
+    connect(this, &QtCryptographicHashCalculator::outputMessage, controller, &SAKToolFileCheckAssistant::outputMessage);
+    connect(this, &QtCryptographicHashCalculator::updateProgressBar, controller, &SAKToolFileCheckAssistant::updateProgressBar);
+    connect(this, &QtCryptographicHashCalculator::remainTimeChanged, controller, &SAKToolFileCheckAssistant::changeRemainTime);
 }
 
 void QtCryptographicHashCalculator::run()

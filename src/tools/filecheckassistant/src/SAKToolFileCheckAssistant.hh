@@ -1,5 +1,5 @@
-﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+/*
+ * Copyright 2018-2023 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKTOOLFILECHECKER_HH
-#define SAKTOOLFILECHECKER_HH
+#ifndef SAKTOOLFILECHECKASSISTANT_H
+#define SAKTOOLFILECHECKASSISTANT_H
 
 #include <QTimer>
 #include <QLabel>
@@ -21,16 +21,16 @@
 #include <QCryptographicHash>
 
 namespace Ui {
-    class SAKToolFileChecker;
+    class SAKToolFileCheckAssistant;
 }
 
 class QtCryptographicHashCalculator;
-class SAKToolFileChecker : public QWidget
+class SAKToolFileCheckAssistant : public QWidget
 {
     Q_OBJECT
 public:
-    Q_INVOKABLE SAKToolFileChecker(QWidget *parent = Q_NULLPTR);
-    ~SAKToolFileChecker();
+    Q_INVOKABLE SAKToolFileCheckAssistant(QWidget *parent = Q_NULLPTR);
+    ~SAKToolFileCheckAssistant();
 
     void setUiEnable(bool enable);
     QString fileName();
@@ -69,7 +69,7 @@ private:
     QtCryptographicHashCalculator *mCalculator;
     QTimer mClearMessageTimer;
 private:
-    Ui::SAKToolFileChecker *mUi;
+    Ui::SAKToolFileCheckAssistant *mUi;
     QLineEdit *mFilePathlineEdit;
     QComboBox *mAlgorithmComboBox;
     QLineEdit *mResultLineEdit;
