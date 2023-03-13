@@ -1,5 +1,5 @@
 #include($$PWD/atassistant/SAKAtAssistant.pri)
-include($$PWD/crccalculator/SAKToolCRCCalculator.pri)
+include($$PWD/crcassistant/SAKToolCRCAssistant.pri)
 include($$PWD/asciiassistant/SAKToolAsciiAssistant.pri)
 include($$PWD/floatassistant/SAKToolFloatAssistant.pri)
 include($$PWD/stringassistant/SAKToolStringAssistant.pri)

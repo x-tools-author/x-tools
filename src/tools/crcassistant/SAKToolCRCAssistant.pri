@@ -1,14 +1,14 @@
-DEFINES += SAK_IMPORT_MODULE_CRCCALCULATOR
+DEFINES += SAK_IMPORT_MODULE_CRCASSISTANT
 
 INCLUDEPATH += \
     $$PWD/src
 
 FORMS += \
-    $$PWD/src/SAKToolCRCCalculator.ui
+    $$PWD/src/SAKToolCRCAssistant.ui
 
 HEADERS += \
-    $$PWD/src/SAKToolCRCCalculator.hh
+    $$PWD/src/SAKToolCRCAssistant.hh
 
 SOURCES += \
-    $$PWD/src/SAKToolCRCCalculator.cc
+    $$PWD/src/SAKToolCRCAssistant.cc
 

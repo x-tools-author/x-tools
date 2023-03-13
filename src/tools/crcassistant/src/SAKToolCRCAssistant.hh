@@ -1,5 +1,5 @@
-﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+/*
+ * Copyright 2018-2023 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  */
-#ifndef SAKTOOLCRCCALCULATOR_HH
-#define SAKTOOLCRCCALCULATOR_HH
+#ifndef SAKTOOLCRCASSISTANT_H
+#define SAKTOOLCRCASSISTANT_H
 
 #include <QLabel>
 #include <QDialog>
@@ -23,16 +23,16 @@
 #include <QJsonParseError>
 
 namespace Ui {
-    class SAKToolCRCCalculator;
+    class SAKToolCRCAssistant;
 }
 
 class SAKCommonCrcInterface;
-class SAKToolCRCCalculator:public QWidget
+class SAKToolCRCAssistant:public QWidget
 {
     Q_OBJECT
 public:
-    Q_INVOKABLE SAKToolCRCCalculator(QWidget* parent = Q_NULLPTR);
-    ~SAKToolCRCCalculator();
+    Q_INVOKABLE SAKToolCRCAssistant(QWidget* parent = Q_NULLPTR);
+    ~SAKToolCRCAssistant();
 protected:
     bool eventFilter(QObject *watched, QEvent *event);
 private:
@@ -45,7 +45,7 @@ private slots:
     void textFormatControl();
     void changedParameterModel(int index);
 private:
-    Ui::SAKToolCRCCalculator* mUi;
+    Ui::SAKToolCRCAssistant* mUi;
     QComboBox* mWidthComboBox;
     QComboBox* mParameterComboBox;
     QCheckBox* mRefinCheckBox;

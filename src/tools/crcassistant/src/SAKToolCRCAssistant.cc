@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2018-2020 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2018-2023 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -13,14 +13,14 @@
 #include <QLoggingCategory>
 
 #include "SAKCommonCrcInterface.hh"
-#include "SAKToolCRCCalculator.hh"
-#include "ui_SAKToolCRCCalculator.h"
+#include "SAKToolCRCAssistant.hh"
+#include "ui_SAKToolCRCAssistant.h"
 
-SAKToolCRCCalculator::SAKToolCRCCalculator(QWidget* parent)
+SAKToolCRCAssistant::SAKToolCRCAssistant(QWidget* parent)
     :QWidget(parent)
-    ,mLogCategory("CRCCalculator")
+    ,mLogCategory("CRCAssistant")
     ,mCrcInterface(new SAKCommonCrcInterface)
-    ,mUi(new Ui::SAKToolCRCCalculator)
+    ,mUi(new Ui::SAKToolCRCAssistant)
 {
     mUi->setupUi(this);
     mWidthComboBox = mUi->comboBoxWidth;
@@ -66,7 +66,7 @@ SAKToolCRCCalculator::SAKToolCRCCalculator(QWidget* parent)
     connect(mInputTextEdit, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
 }
 
-SAKToolCRCCalculator::~SAKToolCRCCalculator()
+SAKToolCRCAssistant::~SAKToolCRCAssistant()
 {
     QLoggingCategory category(mLogCategory);
     qCInfo(category) << "Goodbye CRCCalculator";
@@ -74,7 +74,7 @@ SAKToolCRCCalculator::~SAKToolCRCCalculator()
     delete mUi;
 }
 
-void SAKToolCRCCalculator::initParameterModel()
+void SAKToolCRCAssistant::initParameterModel()
 {
     mParameterComboBox->clear();
     QStringList list = mCrcInterface->supportedParameterModels();
@@ -93,7 +93,7 @@ void SAKToolCRCCalculator::initParameterModel()
     mLabelPolyFormula->setText(mCrcInterface->friendlyPoly(model));
 }
 
-void SAKToolCRCCalculator::calculate()
+void SAKToolCRCAssistant::calculate()
 {
     QByteArray inputArray;
     if (mHexRadioBt->isChecked()){
@@ -149,7 +149,7 @@ void SAKToolCRCCalculator::calculate()
     mBinCRCOutput->setText(crcBinString);
 }
 
-void SAKToolCRCCalculator::textFormatControl()
+void SAKToolCRCAssistant::textFormatControl()
 {
     if (mAsciiRadioBt->isChecked()){
         return;
@@ -158,7 +158,8 @@ void SAKToolCRCCalculator::textFormatControl()
 
     QString strTemp;
     QString plaintext = mInputTextEdit->toPlainText();
-    plaintext.remove(QRegularExpression("[^0-9a-fA-F]"));
+    static QRegularExpression reg("[^0-9a-fA-F]");
+    plaintext.remove(reg);
     for (int i = 0; i < plaintext.length(); i++){
         if ((i != 0) && (i % 2 == 0)){
             strTemp.append(QChar(' '));
@@ -171,7 +172,7 @@ void SAKToolCRCCalculator::textFormatControl()
     connect(mInputTextEdit, SIGNAL(textChanged()), this, SLOT(textFormatControl()));
 }
 
-void SAKToolCRCCalculator::changedParameterModel(int index)
+void SAKToolCRCAssistant::changedParameterModel(int index)
 {
     Q_UNUSED(index)
     QMetaEnum models = QMetaEnum::fromType<SAKCommonCrcInterface::SAKEnumCrcModel>();
@@ -197,7 +198,7 @@ void SAKToolCRCCalculator::changedParameterModel(int index)
     mLabelPolyFormula->setText(mCrcInterface->friendlyPoly(model));
 }
 
-bool SAKToolCRCCalculator::eventFilter(QObject *watched, QEvent *event)
+bool SAKToolCRCAssistant::eventFilter(QObject *watched, QEvent *event)
 {
     if (event->type() == QEvent::MouseButtonDblClick){
         if (watched == mLabelInfo){

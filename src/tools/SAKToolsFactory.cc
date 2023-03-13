@@ -13,8 +13,8 @@
 #ifdef SAK_IMPORT_MODULE_FILECHECKASSISTANT
 #include "SAKToolFileCheckAssistant.hh"
 #endif
-#ifdef SAK_IMPORT_MODULE_CRCCALCULATOR
-#include "SAKToolCRCCalculator.hh"
+#ifdef SAK_IMPORT_MODULE_CRCASSISTANT
+#include "SAKToolCRCAssistant.hh"
 #endif
 #ifdef SAK_IMPORT_MODULE_QRCODE
 #include "SAKToolQRCodeCreator.hh"
@@ -35,9 +35,9 @@
 SAKToolsFactory::SAKToolsFactory(QObject *parent)
 {
     Q_UNUSED(parent);
-#ifdef SAK_IMPORT_MODULE_CRCCALCULATOR
+#ifdef SAK_IMPORT_MODULE_CRCASSISTANT
     mToolMetaObjCtxVector.append(SAKToolMetaObjCtx{
-                    SAKToolCRCCalculator::staticMetaObject,
+                    SAKToolCRCAssistant::staticMetaObject,
                 tr("CRC Assistant")});
 #endif
 #ifdef SAK_IMPORT_MODULE_FILECHECKASSISTANT
