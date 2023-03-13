@@ -9,7 +9,7 @@
         <translation>初始化主窗口...</translation>
     </message>
     <message>
-        <location filename="../../src/main.cc" line="74"/>
+        <location filename="../../src/main.cc" line="76"/>
         <source>Finished...</source>
         <translation>完成...</translation>
     </message>
@@ -17,7 +17,7 @@
 <context>
     <name>QtCryptographicHashCalculator</name>
     <message>
-        <location filename="../../src/tools/filechecker/src/QtCryptographicHashCalculator.cc" line="76"/>
+        <location filename="../../src/tools/filecheckassistant/src/QtCryptographicHashCalculator.cc" line="76"/>
         <source>Calculating finished</source>
         <translation>计算完成</translation>
     </message>
@@ -96,7 +96,7 @@
 <context>
     <name>SAKApplication</name>
     <message>
-        <location filename="../../src/SAKApplication.cc" line="60"/>
+        <location filename="../../src/SAKApplication.cc" line="62"/>
         <source>Initializing...</source>
         <translation>正在初始化...</translation>
     </message>
@@ -590,8 +590,8 @@
         <translation>文本</translation>
     </message>
     <message>
-        <location filename="../../src/common/SAKCommonDataStructure.cc" line="293"/>
         <location filename="../../src/common/SAKCommonDataStructure.cc" line="298"/>
+        <location filename="../../src/common/SAKCommonDataStructure.cc" line="303"/>
         <source>None</source>
         <translation>无</translation>
     </message>
@@ -4377,9 +4377,95 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
-    <name>SAKToolCRCCalculator</name>
+    <name>SAKToolCRCAssistant</name>
     <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="221"/>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="14"/>
+        <source>CRC Assistant</source>
+        <translation>CRC助手</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="20"/>
+        <source>Paloy value</source>
+        <translation>多项式值</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="27"/>
+        <source>Initial value</source>
+        <translation>初始值</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="34"/>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="232"/>
+        <source>Copy</source>
+        <translation>复制</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="44"/>
+        <source>More information about crc calculation, visit http://www.ip33.com/crc.html(double clicked to visit)</source>
+        <translation>更多关于CRC的信息，请访问：http://www.ip33.com/crc.html（双击打开链接）</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="60"/>
+        <source>Input reversal</source>
+        <translation>输入翻转</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="67"/>
+        <source>Output reversal</source>
+        <translation>输出翻转</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="87"/>
+        <source>Clear</source>
+        <translation>清空</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="94"/>
+        <source>Calculate</source>
+        <translation>计算</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="104"/>
+        <source>Parameters</source>
+        <translation>参数</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="114"/>
+        <source>XOR value</source>
+        <translation>异或值</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="124"/>
+        <source>Height its is on the left and the low bits is on the right</source>
+        <translation>高位在左低位在右</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="157"/>
+        <source>HEX</source>
+        <translation>16进制</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="167"/>
+        <source>ASCII</source>
+        <translation>ASCII</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="190"/>
+        <source>Result(HEX)</source>
+        <translation>结果（16进制）</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="197"/>
+        <source>Parameter model</source>
+        <translation>参数模型</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="214"/>
+        <source>Width</source>
+        <translation>位宽</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="221"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -4392,164 +4478,220 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="14"/>
-        <source>CRC Calculator</source>
-        <translation>CRC计算器</translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="20"/>
-        <source>Paloy value</source>
-        <translation>多项式值</translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="27"/>
-        <source>Initial value</source>
-        <translation>初始值</translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="34"/>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="232"/>
-        <source>Copy</source>
-        <translation>复制</translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="44"/>
-        <source>More information about crc calculation, visit http://www.ip33.com/crc.html(double clicked to visit)</source>
-        <translation>更多关于CRC的信息，请访问：http://www.ip33.com/crc.html（双击打开链接）</translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="60"/>
-        <source>Input reversal</source>
-        <translation>输入翻转</translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="67"/>
-        <source>Output reversal</source>
-        <translation>输出翻转</translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="87"/>
-        <source>Clear</source>
-        <translation>清除</translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="94"/>
-        <source>Calculate</source>
-        <translation>计算</translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="104"/>
-        <source>Parameters</source>
-        <translation>参数设置</translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="114"/>
-        <source>XOR value</source>
-        <translation>异或值</translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="124"/>
-        <source>Height its is on the left and the low bits is on the right</source>
-        <translation>高位在左低位在右</translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="157"/>
-        <source>HEX</source>
-        <translation>16进制</translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="167"/>
-        <source>ASCII</source>
-        <translation>ASCII</translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="190"/>
-        <source>Result(HEX)</source>
-        <translation>结果（16进制）</translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="197"/>
-        <source>Parameter model</source>
-        <translation>参数模型</translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="214"/>
-        <source>Width</source>
-        <translation>位宽</translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="262"/>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="262"/>
         <source>Paloy</source>
         <translation>多项式</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="276"/>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="276"/>
         <source>Input data</source>
         <translation>输入数据</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="283"/>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="283"/>
         <source>Result(BIN)</source>
         <translation>结果（2进制）</translation>
     </message>
 </context>
 <context>
-    <name>SAKToolFileChecker</name>
+    <name>SAKToolCRCCalculator</name>
     <message>
-        <location filename="../../src/tools/filechecker/src/SAKToolFileChecker.ui" line="14"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;SimSun&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="vanished">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;SimSun&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>CRC Calculator</source>
+        <translation type="vanished">CRC计算器</translation>
+    </message>
+    <message>
+        <source>Paloy value</source>
+        <translation type="vanished">多项式值</translation>
+    </message>
+    <message>
+        <source>Initial value</source>
+        <translation type="vanished">初始值</translation>
+    </message>
+    <message>
+        <source>Copy</source>
+        <translation type="vanished">复制</translation>
+    </message>
+    <message>
+        <source>More information about crc calculation, visit http://www.ip33.com/crc.html(double clicked to visit)</source>
+        <translation type="vanished">更多关于CRC的信息，请访问：http://www.ip33.com/crc.html（双击打开链接）</translation>
+    </message>
+    <message>
+        <source>Input reversal</source>
+        <translation type="vanished">输入翻转</translation>
+    </message>
+    <message>
+        <source>Output reversal</source>
+        <translation type="vanished">输出翻转</translation>
+    </message>
+    <message>
+        <source>Clear</source>
+        <translation type="vanished">清除</translation>
+    </message>
+    <message>
+        <source>Calculate</source>
+        <translation type="vanished">计算</translation>
+    </message>
+    <message>
+        <source>Parameters</source>
+        <translation type="vanished">参数设置</translation>
+    </message>
+    <message>
+        <source>XOR value</source>
+        <translation type="vanished">异或值</translation>
+    </message>
+    <message>
+        <source>Height its is on the left and the low bits is on the right</source>
+        <translation type="vanished">高位在左低位在右</translation>
+    </message>
+    <message>
+        <source>HEX</source>
+        <translation type="vanished">16进制</translation>
+    </message>
+    <message>
+        <source>ASCII</source>
+        <translation type="vanished">ASCII</translation>
+    </message>
+    <message>
+        <source>Result(HEX)</source>
+        <translation type="vanished">结果（16进制）</translation>
+    </message>
+    <message>
+        <source>Parameter model</source>
+        <translation type="vanished">参数模型</translation>
+    </message>
+    <message>
+        <source>Width</source>
+        <translation type="vanished">位宽</translation>
+    </message>
+    <message>
+        <source>Paloy</source>
+        <translation type="vanished">多项式</translation>
+    </message>
+    <message>
+        <source>Input data</source>
+        <translation type="vanished">输入数据</translation>
+    </message>
+    <message>
+        <source>Result(BIN)</source>
+        <translation type="vanished">结果（2进制）</translation>
+    </message>
+</context>
+<context>
+    <name>SAKToolFileCheckAssistant</name>
+    <message>
+        <location filename="../../src/tools/filecheckassistant/src/SAKToolFileCheckAssistant.ui" line="14"/>
         <source>Form</source>
         <translation>Form</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filechecker/src/SAKToolFileChecker.ui" line="37"/>
+        <location filename="../../src/tools/filecheckassistant/src/SAKToolFileCheckAssistant.ui" line="37"/>
         <source>Upper result</source>
         <translation>更新结果</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filechecker/src/SAKToolFileChecker.ui" line="76"/>
+        <location filename="../../src/tools/filecheckassistant/src/SAKToolFileCheckAssistant.ui" line="76"/>
         <source>Checked file</source>
         <translation>检验文件</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filechecker/src/SAKToolFileChecker.ui" line="89"/>
+        <location filename="../../src/tools/filecheckassistant/src/SAKToolFileCheckAssistant.ui" line="89"/>
         <source>Checked progress</source>
         <translation>检验进度</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filechecker/src/SAKToolFileChecker.ui" line="102"/>
+        <location filename="../../src/tools/filecheckassistant/src/SAKToolFileCheckAssistant.ui" line="102"/>
         <source>Checked algorithm</source>
         <translation>校验算法</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filechecker/src/SAKToolFileChecker.ui" line="115"/>
+        <location filename="../../src/tools/filecheckassistant/src/SAKToolFileCheckAssistant.ui" line="115"/>
         <source>Checked result</source>
         <translation>校验结果</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filechecker/src/SAKToolFileChecker.ui" line="125"/>
-        <location filename="../../src/tools/filechecker/src/SAKToolFileChecker.cc" line="176"/>
+        <location filename="../../src/tools/filecheckassistant/src/SAKToolFileCheckAssistant.ui" line="125"/>
+        <location filename="../../src/tools/filecheckassistant/src/SAKToolFileCheckAssistant.cc" line="176"/>
         <source>Calculate</source>
-        <translation>开始校验</translation>
+        <translation>计算</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filechecker/src/SAKToolFileChecker.ui" line="132"/>
+        <location filename="../../src/tools/filecheckassistant/src/SAKToolFileCheckAssistant.ui" line="132"/>
         <source>Open</source>
-        <translation>打开文件</translation>
+        <translation>打开</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filechecker/src/SAKToolFileChecker.cc" line="63"/>
-        <source>File checker</source>
-        <translation>文件校验工具</translation>
+        <location filename="../../src/tools/filecheckassistant/src/SAKToolFileCheckAssistant.cc" line="63"/>
+        <source>File Check Assistant</source>
+        <translation>文件校验助手</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filechecker/src/SAKToolFileChecker.cc" line="125"/>
+        <location filename="../../src/tools/filecheckassistant/src/SAKToolFileCheckAssistant.cc" line="125"/>
         <source>Remaining time</source>
         <translation>剩余时间</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filechecker/src/SAKToolFileChecker.cc" line="182"/>
+        <location filename="../../src/tools/filecheckassistant/src/SAKToolFileCheckAssistant.cc" line="182"/>
         <source>StopCalculating</source>
         <translation>停止校验</translation>
+    </message>
+</context>
+<context>
+    <name>SAKToolFileChecker</name>
+    <message>
+        <source>Form</source>
+        <translation type="vanished">Form</translation>
+    </message>
+    <message>
+        <source>Upper result</source>
+        <translation type="vanished">更新结果</translation>
+    </message>
+    <message>
+        <source>Checked file</source>
+        <translation type="vanished">检验文件</translation>
+    </message>
+    <message>
+        <source>Checked progress</source>
+        <translation type="vanished">检验进度</translation>
+    </message>
+    <message>
+        <source>Checked algorithm</source>
+        <translation type="vanished">校验算法</translation>
+    </message>
+    <message>
+        <source>Checked result</source>
+        <translation type="vanished">校验结果</translation>
+    </message>
+    <message>
+        <source>Calculate</source>
+        <translation type="vanished">开始校验</translation>
+    </message>
+    <message>
+        <source>Open</source>
+        <translation type="vanished">打开文件</translation>
+    </message>
+    <message>
+        <source>File checker</source>
+        <translation type="vanished">文件校验工具</translation>
+    </message>
+    <message>
+        <source>Remaining time</source>
+        <translation type="vanished">剩余时间</translation>
+    </message>
+    <message>
+        <source>StopCalculating</source>
+        <translation type="vanished">停止校验</translation>
     </message>
 </context>
 <context>

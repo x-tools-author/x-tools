@@ -9,7 +9,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/main.cc" line="74"/>
+        <location filename="../../src/main.cc" line="76"/>
         <source>Finished...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -21,7 +21,7 @@
         <translation type="vanished">Calculating finished</translation>
     </message>
     <message>
-        <location filename="../../src/tools/filechecker/src/QtCryptographicHashCalculator.cc" line="76"/>
+        <location filename="../../src/tools/filecheckassistant/src/QtCryptographicHashCalculator.cc" line="76"/>
         <source>Calculating finished</source>
         <translation type="unfinished"></translation>
     </message>
@@ -150,7 +150,7 @@
 <context>
     <name>SAKApplication</name>
     <message>
-        <location filename="../../src/SAKApplication.cc" line="60"/>
+        <location filename="../../src/SAKApplication.cc" line="62"/>
         <source>Initializing...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -795,8 +795,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/common/SAKCommonDataStructure.cc" line="293"/>
         <location filename="../../src/common/SAKCommonDataStructure.cc" line="298"/>
+        <location filename="../../src/common/SAKCommonDataStructure.cc" line="303"/>
         <source>None</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4021,6 +4021,119 @@
     </message>
 </context>
 <context>
+    <name>SAKToolCRCAssistant</name>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="14"/>
+        <source>CRC Assistant</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="20"/>
+        <source>Paloy value</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="27"/>
+        <source>Initial value</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="34"/>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="232"/>
+        <source>Copy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="44"/>
+        <source>More information about crc calculation, visit http://www.ip33.com/crc.html(double clicked to visit)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="60"/>
+        <source>Input reversal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="67"/>
+        <source>Output reversal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="87"/>
+        <source>Clear</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="94"/>
+        <source>Calculate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="104"/>
+        <source>Parameters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="114"/>
+        <source>XOR value</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="124"/>
+        <source>Height its is on the left and the low bits is on the right</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="157"/>
+        <source>HEX</source>
+        <translation type="unfinished">HEX</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="167"/>
+        <source>ASCII</source>
+        <translation type="unfinished">ASCII</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="190"/>
+        <source>Result(HEX)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="197"/>
+        <source>Parameter model</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="214"/>
+        <source>Width</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="221"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;SimSun&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="262"/>
+        <source>Paloy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="276"/>
+        <source>Input data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="283"/>
+        <source>Result(BIN)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SAKToolCRCCalculator</name>
     <message>
         <source>CRC计算器</source>
@@ -4033,15 +4146,6 @@
     <message>
         <source>初始值 INIT（Hex）</source>
         <translation type="vanished">Init Value</translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="221"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;SimSun&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation></translation>
     </message>
     <message>
         <source>例如：0x3D65</source>
@@ -4092,105 +4196,12 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">Input Data</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="14"/>
-        <source>CRC Calculator</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="20"/>
-        <source>Paloy value</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="27"/>
-        <source>Initial value</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="34"/>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="232"/>
-        <source>Copy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="44"/>
-        <source>More information about crc calculation, visit http://www.ip33.com/crc.html(double clicked to visit)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="60"/>
-        <source>Input reversal</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="67"/>
-        <source>Output reversal</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="87"/>
-        <source>Clear</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="94"/>
-        <source>Calculate</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="104"/>
-        <source>Parameters</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="114"/>
-        <source>XOR value</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="124"/>
-        <source>Height its is on the left and the low bits is on the right</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="157"/>
         <source>HEX</source>
-        <translation>HEX</translation>
+        <translation type="vanished">HEX</translation>
     </message>
     <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="167"/>
         <source>ASCII</source>
-        <translation>ASCII</translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="190"/>
-        <source>Result(HEX)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="197"/>
-        <source>Parameter model</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="214"/>
-        <source>Width</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="262"/>
-        <source>Paloy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="276"/>
-        <source>Input data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/crccalculator/src/SAKToolCRCCalculator.ui" line="283"/>
-        <source>Result(BIN)</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">ASCII</translation>
     </message>
     <message>
         <source>高位在左低位在右，使用时请注意高低位顺序！！！</source>
@@ -4214,48 +4225,66 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
-    <name>SAKToolFileChecker</name>
+    <name>SAKToolFileCheckAssistant</name>
     <message>
-        <location filename="../../src/tools/filechecker/src/SAKToolFileChecker.ui" line="14"/>
+        <location filename="../../src/tools/filecheckassistant/src/SAKToolFileCheckAssistant.ui" line="14"/>
         <source>Form</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/tools/filechecker/src/SAKToolFileChecker.ui" line="37"/>
+        <location filename="../../src/tools/filecheckassistant/src/SAKToolFileCheckAssistant.ui" line="37"/>
         <source>Upper result</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/tools/filechecker/src/SAKToolFileChecker.ui" line="76"/>
+        <location filename="../../src/tools/filecheckassistant/src/SAKToolFileCheckAssistant.ui" line="76"/>
         <source>Checked file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/tools/filechecker/src/SAKToolFileChecker.ui" line="89"/>
+        <location filename="../../src/tools/filecheckassistant/src/SAKToolFileCheckAssistant.ui" line="89"/>
         <source>Checked progress</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/tools/filechecker/src/SAKToolFileChecker.ui" line="102"/>
+        <location filename="../../src/tools/filecheckassistant/src/SAKToolFileCheckAssistant.ui" line="102"/>
         <source>Checked algorithm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/tools/filechecker/src/SAKToolFileChecker.ui" line="115"/>
+        <location filename="../../src/tools/filecheckassistant/src/SAKToolFileCheckAssistant.ui" line="115"/>
         <source>Checked result</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/tools/filechecker/src/SAKToolFileChecker.ui" line="125"/>
-        <location filename="../../src/tools/filechecker/src/SAKToolFileChecker.cc" line="176"/>
+        <location filename="../../src/tools/filecheckassistant/src/SAKToolFileCheckAssistant.ui" line="125"/>
+        <location filename="../../src/tools/filecheckassistant/src/SAKToolFileCheckAssistant.cc" line="176"/>
         <source>Calculate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/tools/filechecker/src/SAKToolFileChecker.ui" line="132"/>
+        <location filename="../../src/tools/filecheckassistant/src/SAKToolFileCheckAssistant.ui" line="132"/>
         <source>Open</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../../src/tools/filecheckassistant/src/SAKToolFileCheckAssistant.cc" line="63"/>
+        <source>File Check Assistant</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/filecheckassistant/src/SAKToolFileCheckAssistant.cc" line="125"/>
+        <source>Remaining time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/filecheckassistant/src/SAKToolFileCheckAssistant.cc" line="182"/>
+        <source>StopCalculating</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SAKToolFileChecker</name>
     <message>
         <source>结果大写</source>
         <translation type="vanished">Upper</translation>
@@ -4291,21 +4320,6 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>停止计算</source>
         <translation type="vanished">Stop</translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/filechecker/src/SAKToolFileChecker.cc" line="63"/>
-        <source>File checker</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/filechecker/src/SAKToolFileChecker.cc" line="125"/>
-        <source>Remaining time</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/tools/filechecker/src/SAKToolFileChecker.cc" line="182"/>
-        <source>StopCalculating</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
