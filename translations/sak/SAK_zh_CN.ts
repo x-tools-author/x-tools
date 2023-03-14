@@ -4377,6 +4377,85 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
+    <name>SAKToolBroadcastAssistant</name>
+    <message>
+        <location filename="../../src/tools/broadcastassistant/src/SAKToolBroadcastAssistant.ui" line="20"/>
+        <source>Information output</source>
+        <translation>信息输出</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/broadcastassistant/src/SAKToolBroadcastAssistant.ui" line="26"/>
+        <source>Output format</source>
+        <translation>输出格式</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/broadcastassistant/src/SAKToolBroadcastAssistant.ui" line="49"/>
+        <source>Clear</source>
+        <translation>清空输出</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/broadcastassistant/src/SAKToolBroadcastAssistant.ui" line="62"/>
+        <source>Broadcast parameters</source>
+        <translation>广播参数</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/broadcastassistant/src/SAKToolBroadcastAssistant.ui" line="71"/>
+        <source>Broadcast port</source>
+        <translation>广播端口</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/broadcastassistant/src/SAKToolBroadcastAssistant.ui" line="78"/>
+        <source>Broadcast suffix</source>
+        <translation>广播后缀</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/broadcastassistant/src/SAKToolBroadcastAssistant.ui" line="94"/>
+        <source>Broadcast prefix</source>
+        <translation>广播前缀</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/broadcastassistant/src/SAKToolBroadcastAssistant.ui" line="101"/>
+        <source>Broadcast data</source>
+        <translation>广播数据</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/broadcastassistant/src/SAKToolBroadcastAssistant.ui" line="108"/>
+        <source>Broadcast interval</source>
+        <translation>广播间隔</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/broadcastassistant/src/SAKToolBroadcastAssistant.ui" line="115"/>
+        <source>Data format</source>
+        <translation>数据格式</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/broadcastassistant/src/SAKToolBroadcastAssistant.ui" line="122"/>
+        <location filename="../../src/tools/broadcastassistant/src/SAKToolBroadcastAssistant.cc" line="68"/>
+        <source>Broadcast</source>
+        <translation>开始广播</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/broadcastassistant/src/SAKToolBroadcastAssistant.ui" line="132"/>
+        <source>Broadcast address</source>
+        <translation>广播地址</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/broadcastassistant/src/SAKToolBroadcastAssistant.ui" line="139"/>
+        <source>55443</source>
+        <translation>55443</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/broadcastassistant/src/SAKToolBroadcastAssistant.cc" line="55"/>
+        <source>Broadcast Assistant</source>
+        <translation>广播助手</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/broadcastassistant/src/SAKToolBroadcastAssistant.cc" line="67"/>
+        <source>Terminate</source>
+        <translation>停止广播</translation>
+    </message>
+</context>
+<context>
     <name>SAKToolCRCAssistant</name>
     <message>
         <location filename="../../src/tools/crcassistant/src/SAKToolCRCAssistant.ui" line="14"/>
@@ -4773,34 +4852,39 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SAKToolsFactory</name>
     <message>
-        <location filename="../../src/tools/SAKToolsFactory.cc" line="41"/>
+        <location filename="../../src/tools/SAKToolsFactory.cc" line="44"/>
         <source>CRC Assistant</source>
         <translation>CRC助手</translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKToolsFactory.cc" line="47"/>
+        <location filename="../../src/tools/SAKToolsFactory.cc" line="50"/>
         <source>File Assistant</source>
         <translation>文件助手</translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKToolsFactory.cc" line="53"/>
+        <location filename="../../src/tools/SAKToolsFactory.cc" line="56"/>
         <source>Float Assistant</source>
         <translation>浮点数助手</translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKToolsFactory.cc" line="59"/>
+        <location filename="../../src/tools/SAKToolsFactory.cc" line="62"/>
         <source>String Assistant</source>
         <translation>字符串助手</translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKToolsFactory.cc" line="65"/>
+        <location filename="../../src/tools/SAKToolsFactory.cc" line="68"/>
         <source>AT Assistant</source>
         <translation>AT指令调试助手</translation>
     </message>
     <message>
-        <location filename="../../src/tools/SAKToolsFactory.cc" line="71"/>
+        <location filename="../../src/tools/SAKToolsFactory.cc" line="74"/>
         <source>ASCII Assistant</source>
         <translation>ASCII助手</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKToolsFactory.cc" line="80"/>
+        <source>Broadcast Assistant</source>
+        <translation>广播助手</translation>
     </message>
 </context>
 <context>
