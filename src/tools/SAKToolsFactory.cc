@@ -31,6 +31,9 @@
 #ifdef SAK_IMPORT_MODULE_ASCIIASSISTANT
 #include "SAKToolAsciiAssistant.hh"
 #endif
+#ifdef SAK_IMPORT_MODULE_BROADCASTASSISTANT
+#include "SAKToolBroadcastAssistant.hh"
+#endif
 
 SAKToolsFactory::SAKToolsFactory(QObject *parent)
 {
@@ -69,6 +72,12 @@ SAKToolsFactory::SAKToolsFactory(QObject *parent)
                 SAKToolMetaObjCtx{
                     SAKToolAsciiAssistant::staticMetaObject,
                     tr("ASCII Assistant")});
+#endif
+#ifdef SAK_IMPORT_MODULE_BROADCASTASSISTANT
+    mToolMetaObjCtxVector.append(
+                SAKToolMetaObjCtx{
+                    SAKToolBroadcastAssistant::staticMetaObject,
+                    tr("Broadcast Assistant")});
 #endif
 }
 

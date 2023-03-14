@@ -5,6 +5,7 @@ include($$PWD/floatassistant/SAKToolFloatAssistant.pri)
 #include($$PWD/qrcodeassistant/SAKToolQRCodeAssistant.pri)
 include($$PWD/stringassistant/SAKToolStringAssistant.pri)
 include($$PWD/filecheckassistant/SAKToolFileCheckAssistant.pri)
+include($$PWD/broadcastassistant/SAKToolBroadcastAssistant.pri)
 
 HEADERS += \
     $$PWD/SAKToolsFactory.hh
