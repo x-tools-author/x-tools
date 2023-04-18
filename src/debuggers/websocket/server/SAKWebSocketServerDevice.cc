@@ -12,11 +12,8 @@
 #include <QHostAddress>
 #include <QApplication>
 
-#include "SAKDebugger.hh"
 #include "SAKCommonDataStructure.hh"
 #include "SAKWebSocketServerDevice.hh"
-#include "SAKWebSocketServerDebugger.hh"
-#include "SAKWebSocketServerController.hh"
 
 SAKWebSocketServerDevice::SAKWebSocketServerDevice(QSettings *settings,
                                                    const QString &settingsGroup,
@@ -39,7 +36,7 @@ bool SAKWebSocketServerDevice::initialize()
         return false;
     }
 
-    connect(mWebSocketServer, &QWebSocketServer::newConnection, this, [=](){
+    connect(mWebSocketServer, &QWebSocketServer::newConnection, mWebSocketServer, [=](){
         while (mWebSocketServer->hasPendingConnections()){
             QWebSocket *socket = mWebSocketServer->nextPendingConnection();
             if (socket){

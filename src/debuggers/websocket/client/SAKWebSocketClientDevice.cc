@@ -15,8 +15,6 @@
 
 #include "SAKCommonDataStructure.hh"
 #include "SAKWebSocketClientDevice.hh"
-#include "SAKWebSocketClientDebugger.hh"
-#include "SAKWebSocketClientController.hh"
 
 SAKWebSocketClientDevice::SAKWebSocketClientDevice(QSettings *settings,
                                                    const QString &settingsGroup,
@@ -32,7 +30,7 @@ bool SAKWebSocketClientDevice::initialize()
 {
     QEventLoop *eventLoop = new QEventLoop;
     mWebSocket = new QWebSocket;
-    connect(mWebSocket, &QWebSocket::connected, this, [=](){
+    connect(mWebSocket, &QWebSocket::connected, mWebSocket, [=](){
         QString info = mWebSocket->localAddress().toString();
         info.append(":");
         info.append(QString::number(mWebSocket->localPort()));
@@ -40,7 +38,7 @@ bool SAKWebSocketClientDevice::initialize()
         eventLoop->exit();
     });
 
-    connect(mWebSocket, &QWebSocket::disconnected, this, [=](){
+    connect(mWebSocket, &QWebSocket::disconnected, mWebSocket, [=](){
         emit clientInfoChanged(QString());
     });
 
@@ -50,7 +48,7 @@ bool SAKWebSocketClientDevice::initialize()
         emit readyRead(SAKDeviceProtectedSignal());
     });
 
-    connect(mWebSocket, &QWebSocket::textMessageReceived, this, [=](QString message){
+    connect(mWebSocket, &QWebSocket::textMessageReceived, mWebSocket, [=](QString message){
         appendMessage(message.toUtf8());
         emit readyRead(SAKDeviceProtectedSignal());
     });
@@ -61,7 +59,7 @@ bool SAKWebSocketClientDevice::initialize()
     connect(mWebSocket,
             static_cast<void(QWebSocket::*)(QAbstractSocket::SocketError)>(&QWebSocket::error),
 #endif
-            this, [=](QAbstractSocket::SocketError error){
+            mWebSocket, [=](QAbstractSocket::SocketError error){
         emit errorOccurred(tr("error code:") + QString::number(error));
         eventLoop->exit(-1);
     });
