@@ -51,7 +51,7 @@ void SAKAnalyzerTool::inputBytes(const QByteArray &bytes, const QVariant &contex
 void SAKAnalyzerTool::run()
 {
     QTimer *handleTimer = new QTimer();
-    handleTimer->setInterval(10);
+    handleTimer->setInterval(5);
     handleTimer->setSingleShot(true);
     connect(handleTimer, &QTimer::timeout, handleTimer, [=](){
         mInputtedBytesMutex.lock();
