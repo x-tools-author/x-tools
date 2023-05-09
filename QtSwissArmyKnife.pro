@@ -39,9 +39,9 @@ CONFIG += c++11
 include(SAKConf.pri)
 include(SAKSetup.pri)
 include(SAKPrivate.pri)
-include(src/tools/SAKTools.pri)
 include(platform/SAKPlatform.pri)
 include(src/debuggers/SAKDebuggers.pri)
+include(src/assistants/SAKAssistants.pri)
 
 #------------------------------------------------------------------------------
 # Android settings
