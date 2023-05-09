@@ -22,7 +22,7 @@ public:
                                   QObject *parent = nullptr);
 
 protected:
-    struct DataContext {
+    struct InputDataContext {
         QByteArray bytes;
         QVariant context;
     };
@@ -44,7 +44,7 @@ protected:
     std::atomic_bool mIsTimerReading{true};
 
 private:
-    QList<DataContext> mInputDataList;
+    QList<InputDataContext> mInputDataList;
     QMutex mInputDataMutex;
 };
 

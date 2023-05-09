@@ -21,7 +21,7 @@ void SAKCommunicationTool::inputBytes(const QByteArray &bytes,
                                       const QVariant &context)
 {
     mInputDataMutex.lock();
-    DataContext dataCtx{bytes, context};
+    InputDataContext dataCtx{bytes, context};
     mInputDataList.append(dataCtx);
     mInputDataMutex.unlock();;
 }
@@ -49,7 +49,7 @@ void SAKCommunicationTool::run()
     connect(txTimer, &QTimer::timeout, txTimer, [=](){
         this->mInputDataMutex.lock();
         if (!mInputDataList.isEmpty()) {
-            DataContext dataCtx = mInputDataList.takeFirst();
+            InputDataContext dataCtx = mInputDataList.takeFirst();
             writeBytes(dataCtx.bytes, dataCtx.context);
         }
         this->mInputDataMutex.unlock();

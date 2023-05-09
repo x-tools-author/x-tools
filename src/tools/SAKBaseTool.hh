@@ -26,7 +26,7 @@ protected:
     /**
      * @brief inputBytes: The entrance of data.
      * @param bytes: The bytes input.
-     * @param context: The extension parameters, it is a json object.
+     * @param context: The extension parameters.
      */
     virtual void inputBytes(const QByteArray &bytes, const QVariant &context);
     virtual QString toolName(){return mToolName;}
