@@ -1,19 +1,25 @@
 /******************************************************************************
- * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
+ * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
+ *
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#ifndef EDANALYZERTOOL_H
-#define EDANALYZERTOOL_H
+#ifndef SAKANALYZERTOOL_H
+#define SAKANALYZERTOOL_H
 
 #include <QTimer>
 #include <QMutex>
 
-#include "EDBaseTool.hpp"
+#include "SAKBaseTool.hh"
 
-class EDAnalyzerTool : public EDBaseTool
+class SAKAnalyzerTool : public SAKBaseTool
 {
     Q_OBJECT
 public:
-    explicit EDAnalyzerTool(QObject *parent = Q_NULLPTR);
+    explicit SAKAnalyzerTool(QObject *parent = Q_NULLPTR);
 
     Q_INVOKABLE void setFixed(bool fixed);
     Q_INVOKABLE void setFrameBytes(int bytes);
@@ -21,9 +27,9 @@ public:
     Q_INVOKABLE void setMaxTempBytes(int maxBytes);
 
 protected:
-    virtual bool initialize(QString &errStr) final;
-    virtual void inputBytesHandler(const QByteArray &bytes) final;
-    virtual void uninitialize() final;
+    virtual void inputBytes(const QByteArray &bytes,
+                            const QVariant &context = QJsonObject()) final;
+    virtual void run() final;
 
 private:
     struct Parameters {
@@ -31,12 +37,10 @@ private:
         int frameBytes;
         QByteArray separationMark;
         int maxTempBytes{1024};
-    }mParameters;
+    } mParameters;
     QTimer *mHandleTimer{Q_NULLPTR};
     QByteArray mInputtedBytes;
     QMutex mInputtedBytesMutex;
-
-
 
 private:
     void analyze();
@@ -44,4 +48,4 @@ private:
     void analyzeFlag();
 };
 
-#endif // EDANALYZERTOOL_H
+#endif // SAKANALYZERTOOL_H

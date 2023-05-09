@@ -1,35 +1,54 @@
 /******************************************************************************
- * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
+ * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
+ *
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#include "EDAnalyzerTool.hpp"
+#include "SAKAnalyzerTool.hh"
 
-EDAnalyzerTool::EDAnalyzerTool(QObject *parent)
-    : EDBaseTool{"EDAnalyzerTool", parent}
+SAKAnalyzerTool::SAKAnalyzerTool(QObject *parent)
+    : SAKBaseTool{"ED.AnalyzerTool", parent}
 {
 
 }
 
-void EDAnalyzerTool::setFixed(bool fixed)
+void SAKAnalyzerTool::setFixed(bool fixed)
 {
     mParameters.fixed = fixed;
 }
 
-void EDAnalyzerTool::setFrameBytes(int bytes)
+void SAKAnalyzerTool::setFrameBytes(int bytes)
 {
     mParameters.frameBytes = bytes;
 }
 
-void EDAnalyzerTool::setSeparationMark(const QByteArray &mark)
+void SAKAnalyzerTool::setSeparationMark(const QByteArray &mark)
 {
     mParameters.separationMark = mark;
 }
 
-void EDAnalyzerTool::setMaxTempBytes(int maxBytes)
+void SAKAnalyzerTool::setMaxTempBytes(int maxBytes)
 {
     mParameters.maxTempBytes = maxBytes;
 }
 
-bool EDAnalyzerTool::initialize(QString &errStr)
+void SAKAnalyzerTool::inputBytes(const QByteArray &bytes, const QVariant &context)
+{
+    emit bytesInputted(bytes, context);
+
+    if (!enable()) {
+        emit bytesOutputted(bytes, context);
+    } else {
+        mInputtedBytesMutex.lock();
+        mInputtedBytes.append(bytes);
+        mInputtedBytesMutex.unlock();
+    }
+}
+
+void SAKAnalyzerTool::run()
 {
     mHandleTimer = new QTimer();
     mHandleTimer->setInterval(10);
@@ -38,22 +57,9 @@ bool EDAnalyzerTool::initialize(QString &errStr)
         analyze();
     });
     mHandleTimer->start();
-    return true;
-}
 
-void EDAnalyzerTool::inputBytesHandler(const QByteArray &bytes)
-{
-    if (!enable()) {
-        outputBytes(bytes);
-    } else {
-        mInputtedBytesMutex.lock();
-        mInputtedBytes.append(bytes);
-        mInputtedBytesMutex.unlock();
-    }
-}
+    exec();
 
-void EDAnalyzerTool::uninitialize()
-{
     if (mHandleTimer && mHandleTimer->isActive()) {
         mInputtedBytesMutex.lock();
         mInputtedBytes.clear();
@@ -66,7 +72,7 @@ void EDAnalyzerTool::uninitialize()
     mHandleTimer = Q_NULLPTR;
 }
 
-void EDAnalyzerTool::analyze()
+void SAKAnalyzerTool::analyze()
 {
     mInputtedBytesMutex.lock();
 
@@ -79,22 +85,22 @@ void EDAnalyzerTool::analyze()
             while (mInputtedBytes.length() >= mParameters.frameBytes) {
                 QByteArray frame(mInputtedBytes.data(),
                                  mParameters.frameBytes);
-                outputBytes(frame);
                 mInputtedBytes.remove(0, mParameters.frameBytes);
+                emit bytesOutputted(frame, QJsonObject());
             }
         } else {
             if (mParameters.separationMark.isEmpty()) {
                 if (!mInputtedBytes.isEmpty()) {
-                    outputBytes(mInputtedBytes);
                     mInputtedBytes.clear();
+                    emit bytesOutputted(mInputtedBytes, QJsonObject());
                 }
             } else {
                 auto ret = mInputtedBytes.indexOf(mParameters.separationMark);
                 if (ret != -1) {
                     int len = ret + mParameters.separationMark.length();
                     QByteArray frame(mInputtedBytes.constData(), len);
-                    outputBytes(frame);
                     mInputtedBytes.remove(0, len);
+                    emit bytesOutputted(frame, QJsonObject());
                 }
             }
         }

@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright 2023 Qsaker(qsaker@qq.com). All rights reserved.
+ * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -30,7 +30,7 @@ protected:
 protected:
     virtual void run() final;
     virtual void inputBytes(const QByteArray &bytes,
-                            const QVariant &context) final;
+                            const QVariant &context = QJsonObject()) final;
 
     virtual bool initialize() = 0;
     virtual void readBytes() = 0;
