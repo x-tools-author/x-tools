@@ -32,6 +32,7 @@ protected:
      */
     virtual void inputBytes(const QByteArray &bytes,
                             const QVariant &context = QJsonObject());
+
 signals:
     void bytesInputted(const QByteArray &bytes, const QVariant &context);
     void bytesOutputted(const QByteArray &bytes, const QVariant &context);

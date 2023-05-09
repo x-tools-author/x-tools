@@ -1,29 +1,32 @@
 /******************************************************************************
- * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
+ * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
+ *
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#include "EDMaskerTool.hpp"
+#include "SAKMaskerTool.hh"
 
-EDMaskerTool::EDMaskerTool(QObject *parent)
-    : EDBaseTool{"ED.MaskTool", parent}
+SAKMaskerTool::SAKMaskerTool(QObject *parent)
+    : SAKBaseTool{"ED.MaskTool", parent}
 {
 
 }
 
-void EDMaskerTool::setMaskCode(qint8 maskCode)
+void SAKMaskerTool::setMaskCode(qint8 maskCode)
 {
     mMask = maskCode;
 }
 
-bool EDMaskerTool::initialize(QString &errStr)
+void SAKMaskerTool::inputBytes(const QByteArray &bytes,
+                               const QVariant &context)
 {
-    Q_UNUSED(errStr);
-    return true;
-}
+    emit bytesInputted(bytes, context);
 
-void EDMaskerTool::inputBytesHandler(const QByteArray &bytes)
-{
     if (!enable()) {
-        outputBytes(bytes);
+        emit bytesOutputted(bytes, context);
     } else {
         QByteArray cookedBytes;
         for (int i = 0; i < bytes.length(); i++) {
@@ -32,6 +35,6 @@ void EDMaskerTool::inputBytesHandler(const QByteArray &bytes)
             cookedBytes.append(reinterpret_cast<char*>(&value), 1);
         }
 
-        outputBytes(cookedBytes);
+        emit bytesOutputted(bytes, context);
     }
 }

@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT += core gui sql network
+QT += core gui sql network quick
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -41,6 +41,7 @@ include(SAKSetup.pri)
 include(SAKPrivate.pri)
 include(src/tools/SAKTools.pri)
 include(platform/SAKPlatform.pri)
+include(src/common/SAKCommon.pri)
 include(src/debuggers/SAKDebuggers.pri)
 include(src/assistants/SAKAssistants.pri)
 
@@ -90,7 +91,6 @@ RESOURCES += \
 INCLUDEPATH += \
     src \
     src/base \
-    src/common \
     src/update
 
 FORMS += \
@@ -108,9 +108,6 @@ HEADERS += \
     src/base/SAKDevice.hh \
     src/base/SAKObj.hh \
     src/base/SAKSigleton.hh \
-    src/common/SAKCommonCrcInterface.hh \
-    src/common/SAKCommonDataStructure.hh \
-    src/common/SAKCommonInterface.hh \
     src/update/SAKDownloadItemWidget.hh \
     src/update/SAKUpdateManager.hh
 
@@ -123,9 +120,6 @@ SOURCES += \
     src/base/SAKDevice.cc \
     src/base/SAKObj.cc \
     src/base/SAKSigleton.cc \
-    src/common/SAKCommonCrcInterface.cc \
-    src/common/SAKCommonDataStructure.cc \
-    src/common/SAKCommonInterface.cc \
     src/main.cc \
     src/update/SAKDownloadItemWidget.cc \
     src/update/SAKUpdateManager.cc
