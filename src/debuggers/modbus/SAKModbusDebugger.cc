@@ -95,6 +95,7 @@ SAKModbusDebugger::SAKModbusDebugger(QSettings *settings,
     , mSettings(settings)
     , mRegisterModel(Q_NULLPTR)
 {
+    Q_UNUSED(settingsGroup);
     Q_UNUSED(sqlDatabase);
     if (!mSettings) {
         mSettings = new QSettings("settings.ini", QSettings::IniFormat, this);
@@ -956,7 +957,7 @@ void SAKModbusDebugger::clientSend()
     QByteArray data = pdu.length()
             ? QByteArray(pdu.data() + 1, pdu.length() - 1)
             : QByteArray();
-    int functionCode = pdu.count() ? pdu.at(0) : QModbusDataUnit::Invalid;
+    int functionCode = pdu.count() ? pdu.at(0) : int(QModbusDataUnit::Invalid);
     QModbusReply *reply = sendRawRequest(
         mModbusDevice, serverAddress, functionCode, data);
 
