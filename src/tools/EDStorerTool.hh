@@ -1,15 +1,21 @@
 /******************************************************************************
- * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
+ * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
+ *
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#ifndef EDSTORERTOOL_HPP
-#define EDSTORERTOOL_HPP
+#ifndef EDSTORERTOOL_H
+#define EDSTORERTOOL_H
 
 #include <QTimer>
 #include <QMutex>
 
-#include "EDBaseTool.hpp"
+#include "SAKBaseTool.hh"
 
-class EDStorerTool : public EDBaseTool
+class EDStorerTool : public SAKBaseTool
 {
     Q_OBJECT
 public:
@@ -18,7 +24,7 @@ public:
 
     virtual void inputBytes(
             const QByteArray &bytes,
-            const QJsonObject &context = QJsonObject()) override;
+            const QVariant &context = QJsonObject()) final;
 
     Q_INVOKABLE void setPath(const QString &path);
     Q_INVOKABLE void setFormat(int format);
@@ -51,4 +57,4 @@ private:
     QMutex mInputContextListMutex;
 };
 
-#endif // EDSTORERTOOL_HPP
+#endif // EDSTORERTOOL_H

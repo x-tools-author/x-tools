@@ -1,5 +1,11 @@
 /******************************************************************************
- * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
+ * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
+ *
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include <Qt>
 #include <QDir>
@@ -7,7 +13,7 @@
 #include <QDateTime>
 #include <QTextStream>
 
-#include "EDStorerTool.hpp"
+#include "EDStorerTool.hh"
 #include "common/EDInterface.hpp"
 
 EDStorerTool::EDStorerTool(QObject *parent)
