@@ -50,32 +50,33 @@ void SAKAnalyzerTool::inputBytes(const QByteArray &bytes, const QVariant &contex
 
 void SAKAnalyzerTool::run()
 {
-    mHandleTimer = new QTimer();
-    mHandleTimer->setInterval(10);
-    mHandleTimer->setSingleShot(true);
-    connect(mHandleTimer, &QTimer::timeout, mHandleTimer, [=](){
+    QTimer *handleTimer = new QTimer();
+    handleTimer->setInterval(10);
+    handleTimer->setSingleShot(true);
+    connect(handleTimer, &QTimer::timeout, handleTimer, [=](){
+        mInputtedBytesMutex.lock();
         analyze();
+        mInputtedBytesMutex.unlock();
+        handleTimer->start();
     });
-    mHandleTimer->start();
+    handleTimer->start();
 
     exec();
 
-    if (mHandleTimer && mHandleTimer->isActive()) {
+    if (handleTimer && handleTimer->isActive()) {
         mInputtedBytesMutex.lock();
         mInputtedBytes.clear();
         mInputtedBytesMutex.unlock();
 
-        mHandleTimer->stop();
-        mHandleTimer->deleteLater();
+        handleTimer->stop();
+        handleTimer->deleteLater();
     }
 
-    mHandleTimer = Q_NULLPTR;
+    handleTimer = nullptr;
 }
 
 void SAKAnalyzerTool::analyze()
 {
-    mInputtedBytesMutex.lock();
-
     if (mInputtedBytes.length() > mParameters.maxTempBytes) {
         outputMessage(QtInfoMsg,
                       "clear bytes: " + QString(mInputtedBytes.toHex(' ')));
@@ -105,8 +106,4 @@ void SAKAnalyzerTool::analyze()
             }
         }
     }
-
-    mInputtedBytesMutex.unlock();
-
-    mHandleTimer->start();
 }

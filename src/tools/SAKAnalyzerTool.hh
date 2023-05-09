@@ -38,7 +38,6 @@ private:
         QByteArray separationMark;
         int maxTempBytes{1024};
     } mParameters;
-    QTimer *mHandleTimer{Q_NULLPTR};
     QByteArray mInputtedBytes;
     QMutex mInputtedBytesMutex;
 
