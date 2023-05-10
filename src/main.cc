@@ -1,5 +1,5 @@
 ﻿/******************************************************************************
- * Copyright 2018-2022 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2018-2023 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -21,6 +21,35 @@
 #include "SAKMainWindow.hh"
 #include "SAKApplication.hh"
 #include "SAKSystemTrayIcon.hh"
+
+#include "toolsui/EDDevice.hpp"
+
+#include "common/EDBle.hpp"
+#include "common/EDCrc.hpp"
+#include "common/EDI18N.hpp"
+#include "common/EDSettings.hpp"
+#include "common/EDInterface.hpp"
+#include "common/EDSerialPort.hpp"
+#include "common/EDHighlighter.hpp"
+#include "common/EDDataStructure.hpp"
+#include "common/EDNetworkInterface.hpp"
+
+#include "tools/SAKBaseTool.hh"
+#include "tools/SAKMaskerTool.hh"
+#include "tools/SAKStorerTool.hh"
+#include "tools/SAKEmitterTool.hh"
+#include "tools/SAKAnalyzerTool.hh"
+#include "tools/SAKToolsFactory.hh"
+#include "tools/SAKUdpClientTool.hh"
+#include "tools/SAKUdpServerTool.hh"
+#include "tools/SAKTcpClientTool.hh"
+#include "tools/SAKTcpServerTool.hh"
+#include "tools/SAKPrestorerTool.hh"
+#include "tools/SAKResponserTool.hh"
+#include "tools/SAKSerialPortTool.hh"
+#include "tools/SAKBleCentralTool.hh"
+#include "tools/SAKWebSocketClientTool.hh"
+#include "tools/SAKWebSocketServerTool.hh"
 
 int main(int argc, char *argv[])
 {

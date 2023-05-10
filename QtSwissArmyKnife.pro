@@ -40,6 +40,7 @@ include(SAKConf.pri)
 include(SAKSetup.pri)
 include(SAKPrivate.pri)
 include(src/tools/SAKTools.pri)
+include(src/toolsui/SAKToolsUi.pri)
 include(platform/SAKPlatform.pri)
 include(src/common/SAKCommon.pri)
 include(src/debuggers/SAKDebuggers.pri)
@@ -86,7 +87,9 @@ TRANSLATIONS  += \
     translations/sak/SAK_zh_CN.ts
 
 RESOURCES += \
-    SAKResources.qrc
+    SAKResources.qrc \
+    EDCommon.qrc \
+    Resource.qrc
 
 INCLUDEPATH += \
     src \

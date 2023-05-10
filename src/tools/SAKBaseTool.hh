@@ -24,7 +24,6 @@ public:
     explicit SAKBaseTool(const char *logCategory, QObject *parent = Q_NULLPTR);
     virtual ~SAKBaseTool();
 
-protected:
     /**
      * @brief inputBytes: The entrance of data.
      * @param bytes: The bytes input.
