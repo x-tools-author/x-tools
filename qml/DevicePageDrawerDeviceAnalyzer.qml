@@ -37,7 +37,7 @@ EDGroupBox {
 
             function setAnalyzerEnable(enable) {
                 if (analyzer) {
-                    analyzer.setEnable(enable)
+                    analyzer.enable = enable
                 }
             }
         }

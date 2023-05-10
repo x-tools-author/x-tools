@@ -43,7 +43,7 @@ EDGroupBox {
                 function updateStorParameters(parameterIndex, checked) {
                     if (storer) {
                         if (parameterIndex === 0) {
-                            storer.setEnable(checked)
+                            storer.enable = checked
                         } else if (parameterIndex === 1) {
                             storer.setSaveDate(checked)
                         } else if (parameterIndex === 2) {

@@ -75,7 +75,7 @@ EDGroupBox {
 
     function setMaskerEnable(enable, masker) {
         if (masker) {
-            masker.setEnable(enable)
+            masker.enable = enable
         }
     }
 
