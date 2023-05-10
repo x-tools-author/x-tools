@@ -10,7 +10,7 @@
 #include "SAKMaskerTool.hh"
 
 SAKMaskerTool::SAKMaskerTool(QObject *parent)
-    : SAKBaseTool{"ED.MaskTool", parent}
+    : SAKBaseTool{"SAK.MaskTool", parent}
 {
 
 }

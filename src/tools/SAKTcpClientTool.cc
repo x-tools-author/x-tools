@@ -1,15 +1,21 @@
 /******************************************************************************
- * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
+ * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
+ *
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#include "EDTcpClientTool.hpp"
+#include "SAKTcpClientTool.hh"
 
-EDTcpClientTool::EDTcpClientTool(QObject *parent)
-    : EDBaseTool{"ED.TcpClientTool", parent}
+SAKTcpClientTool::SAKTcpClientTool(QObject *parent)
+    : SAKCommunicationTool{"SAK.TcpClientTool", parent}
 {
 
 }
 
-bool EDTcpClientTool::initialize(QString &errStr)
+bool SAKTcpClientTool::initialize()
 {
     mTcpSocket = new QTcpSocket();
     if (mSpecifyClientIpPort) {
@@ -28,36 +34,37 @@ bool EDTcpClientTool::initialize(QString &errStr)
 
     QString info = QString("%1:%2").arg(mTcpSocket->localAddress().toString()).arg(mTcpSocket->localPort());
     outputMessage(QtInfoMsg, info);
-    setToolFlag(info);
 
     mBindingIpPort = info;
     emit bindingIpPortChanged();
 
     connect(mTcpSocket, &QTcpSocket::errorOccurred, mTcpSocket, [=](QAbstractSocket::SocketError err){
         Q_UNUSED(err);
-        emit errorOccured(toolFlag(), mTcpSocket->errorString());
+        emit errorOccured(mTcpSocket->errorString());
         outputMessage(QtWarningMsg, "Error occurred:" + mTcpSocket->errorString());
         exit();
     });
 
     connect(mTcpSocket, &QTcpSocket::readyRead, mTcpSocket, [=](){
-        emit invokeOutputBytes(EDBaseTool::EDPrivateSignal{});
+        readBytes();
     });
 
+    mIsTimerReading = false;
     return true;
 }
 
-void EDTcpClientTool::inputBytesHandler(const QByteArray &bytes)
+void SAKTcpClientTool::writeBytes(const QByteArray &bytes, const QVariant &context)
 {
+    Q_UNUSED(context);
     qint64 ret = mTcpSocket->write(bytes);
     if (ret == -1) {
         outputMessage(QtWarningMsg, mTcpSocket->errorString());
     } else {
-        emit bytesInputted(toolFlag(), bytes);
+        emit bytesInputted(bytes, QVariant());
     }
 }
 
-void EDTcpClientTool::outputBytesHandler()
+void SAKTcpClientTool::readBytes()
 {
     QHostAddress address = mTcpSocket->peerAddress();
     quint16 port = mTcpSocket->peerPort();
@@ -66,12 +73,12 @@ void EDTcpClientTool::outputBytesHandler()
         QString info = QString("%1:%2")
                            .arg(address.toString())
                            .arg(port);
-        emit bytesOutputted(info, bytes);
+        emit bytesOutputted(bytes, info);
         Q_UNUSED(info);
     }
 }
 
-void EDTcpClientTool::uninitialize()
+void SAKTcpClientTool::uninitialize()
 {
     mTcpSocket->deleteLater();
     mTcpSocket = nullptr;

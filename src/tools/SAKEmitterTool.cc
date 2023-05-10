@@ -1,36 +1,43 @@
 /******************************************************************************
- * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
+ * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
+ *
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#include <QTimer>
 #include <QJSValue>
 #include <QJsonObject>
 #include <QJsonDocument>
 
-#include "EDEmitterTool.hpp"
+#include "SAKEmitterTool.hh"
 
 #include "common/EDCrc.hpp"
 #include "common/EDInterface.hpp"
 #include "common/EDDataStructure.hpp"
 
-EDEmitterTableModel::EDEmitterTableModel(QObject *parent)
+SAKEmitterTableModel::SAKEmitterTableModel(QObject *parent)
     : QAbstractTableModel(parent)
 {
     for (int i = 0; i < mTableColumnCount; i++) {
-        mHeaders << EDEmitterTableModel::headerData(i, Qt::Horizontal).toString();
+        mHeaders << SAKEmitterTableModel::headerData(i, Qt::Horizontal).toString();
     }
 }
 
-int EDEmitterTableModel::rowCount(const QModelIndex &parent) const
+int SAKEmitterTableModel::rowCount(const QModelIndex &parent) const
 {
+    Q_UNUSED(parent);
     return mItems.count();
 }
 
-int EDEmitterTableModel::columnCount(const QModelIndex &parent) const
+int SAKEmitterTableModel::columnCount(const QModelIndex &parent) const
 {
+    Q_UNUSED(parent);
     return mHeaders.length();
 }
 
-QVariant EDEmitterTableModel::data(const QModelIndex &index, int role) const
+QVariant SAKEmitterTableModel::data(const QModelIndex &index, int role) const
 {
     int row = index.row();
     if (row >= 0 && row < mItems.count()) {
@@ -44,10 +51,11 @@ QVariant EDEmitterTableModel::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
-bool EDEmitterTableModel::setData(const QModelIndex &index,
+bool SAKEmitterTableModel::setData(const QModelIndex &index,
                                   const QVariant &value,
                                   int role)
 {
+    Q_UNUSED(role);
     int row = index.row();
     if (row >= 0 && row < mItems.count()) {
         auto item = mItems.at(row);
@@ -90,7 +98,7 @@ bool EDEmitterTableModel::setData(const QModelIndex &index,
     return true;
 }
 
-bool EDEmitterTableModel::insertRows(int row, int count,
+bool SAKEmitterTableModel::insertRows(int row, int count,
                                      const QModelIndex &parent)
 {
     Q_UNUSED(parent);
@@ -104,7 +112,7 @@ bool EDEmitterTableModel::insertRows(int row, int count,
     return true;
 }
 
-bool EDEmitterTableModel::removeRows(int row, int count,
+bool SAKEmitterTableModel::removeRows(int row, int count,
                                      const QModelIndex &parent)
 {
     beginRemoveRows(parent, row, row + count - 1);
@@ -113,10 +121,11 @@ bool EDEmitterTableModel::removeRows(int row, int count,
     return true;
 }
 
-QVariant EDEmitterTableModel::headerData(int section,
+QVariant SAKEmitterTableModel::headerData(int section,
                                          Qt::Orientation orientation,
                                          int role) const
 {
+    Q_UNUSED(role);
     if (orientation == Qt::Horizontal) {
         switch (section) {
             case 0: return mDataKeys.itemEnable;
@@ -138,7 +147,7 @@ QVariant EDEmitterTableModel::headerData(int section,
     return QVariant("");
 }
 
-QByteArray EDEmitterTableModel::itemBytes(const EDEmiterData &item)
+QByteArray SAKEmitterTableModel::itemBytes(const EDEmiterData &item)
 {
     QByteArray bytes;
     QString text = item.itemText;
@@ -161,7 +170,7 @@ QByteArray EDEmitterTableModel::itemBytes(const EDEmiterData &item)
     return bytes;
 }
 
-QVariant EDEmitterTableModel::columnDisplayRoleData(
+QVariant SAKEmitterTableModel::columnDisplayRoleData(
     const EDEmiterItem &item, int column) const
 {
     if (column >= 0 && column < mHeaders.count()) {
@@ -198,14 +207,14 @@ QVariant EDEmitterTableModel::columnDisplayRoleData(
     return QVariant("Error");
 }
 
-EDEmitterTool::EDEmitterTool(QObject *parent)
-    : EDBaseTool{"ED.EmitterTool", parent}
+SAKEmitterTool::SAKEmitterTool(QObject *parent)
+    : SAKBaseTool{"SAK.EmitterTool", parent}
 {
-    mTableModel = new EDEmitterTableModel(this);
+    mTableModel = new SAKEmitterTableModel(this);
     mHeaders = mTableModel->mHeaders;
 }
 
-void EDEmitterTool::addItem(const QString &jsonCtx, int index)
+void SAKEmitterTool::addItem(const QString &jsonCtx, int index)
 {
 
     QByteArray json = jsonCtx.toLatin1();
@@ -222,7 +231,7 @@ void EDEmitterTool::addItem(const QString &jsonCtx, int index)
     }
 }
 
-QVariant EDEmitterTool::itemContext(int index)
+QVariant SAKEmitterTool::itemContext(int index)
 {
     QJsonObject ctx;
     mTableModel->mItemsMutex.lock();
@@ -260,7 +269,7 @@ QVariant EDEmitterTool::itemContext(int index)
     return ctx;
 }
 
-QVariant EDEmitterTool::itemsContext()
+QVariant SAKEmitterTool::itemsContext()
 {
     QVariantList varList;
     int rowCount = mTableModel->rowCount();
@@ -271,20 +280,25 @@ QVariant EDEmitterTool::itemsContext()
     return varList;
 }
 
-bool EDEmitterTool::initialize(QString &errStr)
+void SAKEmitterTool::run()
 {
-    // The way of timming sending should be improved.
     mEmittingTimer = new QTimer();
     mEmittingTimer->setInterval(mScanInterval);
     mEmittingTimer->setSingleShot(true);
     connect(mEmittingTimer, &QTimer::timeout, mEmittingTimer, [=](){
-        emit invokeOutputBytes(EDPrivateSignal{});
+        try2emit();
     });
     mEmittingTimer->start();
-    return true;
+
+    exec();
+
+    if (mEmittingTimer) {
+        mEmittingTimer->stop();
+        mEmittingTimer->deleteLater();
+    }
 }
 
-void EDEmitterTool::outputBytesHandler()
+void SAKEmitterTool::try2emit()
 {
     mTableModel->mItemsMutex.lock();
     for (auto &item : mTableModel->mItems) {
@@ -292,17 +306,9 @@ void EDEmitterTool::outputBytesHandler()
         if (elapsedTime > item.data.itemInterval && item.data.itemEnable) {
             item.elapsedTime = 0;
             const auto bytes = mTableModel->itemBytes(item.data);
-            outputBytes(QByteArray(bytes));
+            emit bytesOutputted(bytes, QVariant());
         }
     }
     mTableModel->mItemsMutex.unlock();
     mEmittingTimer->start();
-}
-
-void EDEmitterTool::uninitialize()
-{
-    if (mEmittingTimer) {
-        mEmittingTimer->stop();
-        mEmittingTimer->deleteLater();
-    }
 }

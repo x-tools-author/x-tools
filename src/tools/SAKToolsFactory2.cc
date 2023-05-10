@@ -1,64 +1,70 @@
 /******************************************************************************
- * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
+ * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
+ *
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#include "EDMaskerTool.hpp"
-#include "EDStorerTool.hpp"
-#include "EDEmitterTool.hpp"
-#include "EDAnalyzerTool.hpp"
-#include "EDToolsFactory.hpp"
-#include "EDPrestorerTool.hpp"
-#include "EDResponserTool.hpp"
-#include "EDUdpClientTool.hpp"
-#include "EDUdpServerTool.hpp"
-#include "EDTcpClientTool.hpp"
-#include "EDTcpServerTool.hpp"
-#include "EDBleCentralTool.hpp"
-#include "EDSerialPortTool.hpp"
-#include "EDWebSocketClientTool.hpp"
-#include "EDWebSocketServerTool.hpp"
+#include "SAKMaskerTool.hh"
+#include "SAKStorerTool.hh"
+#include "SAKEmitterTool.hh"
+#include "SAKAnalyzerTool.hh"
+#include "SAKToolsFactory2.hh"
+#include "SAKPrestorerTool.hh"
+#include "SAKResponserTool.hh"
+#include "SAKUdpClientTool.hh"
+#include "SAKUdpServerTool.hh"
+#include "SAKTcpClientTool.hh"
+#include "SAKTcpServerTool.hh"
+#include "SAKBleCentralTool.hh"
+#include "SAKSerialPortTool.hh"
+#include "SAKWebSocketClientTool.hh"
+#include "SAKWebSocketServerTool.hh"
 
-EDToolsFactory::EDToolsFactory(QObject *parent)
+SAKToolsFactory2::SAKToolsFactory2(QObject *parent)
     : QObject{parent}
 {
 
 }
 
-EDToolsFactory *EDToolsFactory::instance()
+SAKToolsFactory2 *SAKToolsFactory2::instance()
 {
-    static EDToolsFactory toolsFactory;
+    static SAKToolsFactory2 toolsFactory;
     return &toolsFactory;
 }
 
-EDBaseTool *EDToolsFactory::createTool(int type)
+SAKBaseTool *SAKToolsFactory2::createTool(int type)
 {
     if (AnalyzerTool == type) {
-        return new EDAnalyzerTool();
+        return new SAKAnalyzerTool();
     } else if (SerialportTool == type) {
-        return new EDSerialPortTool();
+        return new SAKSerialPortTool();
     } else if (EmitterTool == type) {
-        return new EDEmitterTool();
+        return new SAKEmitterTool();
     } else if (MaskerTool == type) {
-        return new EDMaskerTool();
+        return new SAKMaskerTool();
     } else if (ResponserTool == type) {
-        return new EDResponserTool();
+        return new SAKResponserTool();
     } else if (StorerTool == type) {
-        return new EDStorerTool();
+        return new SAKStorerTool();
     } else if (PrestoreTool == type) {
-        return new EDPrestorerTool();
+        return new SAKPrestorerTool();
     } else if (UdpClientTool == type) {
-        return new EDUdpClientTool();
+        return new SAKUdpClientTool();
     } else if (UdpServerTool == type) {
-        return new EDUdpServerTool();
+        return new SAKUdpServerTool();
     } else if (TcpClientTool == type) {
-        return new EDTcpClientTool();
+        return new SAKTcpClientTool();
     } else if (TcpServerTool == type) {
-        return new EDTcpServerTool();
+        return new SAKTcpServerTool();
     } else if (WebSocketClientTool == type) {
-        return new EDWebSocketClientTool();
+        return new SAKWebSocketClientTool();
     } else if (WebSocketServerTool == type) {
-        return new EDWebSocketServerTool();
+        return new SAKWebSocketServerTool();
     } else if (BleCentral == type) {
-        return new EDBleCentralTool();
+        return new SAKBleCentralTool();
     }
 
     QString msg = QString("Unknow tool type: %1.").arg(type);

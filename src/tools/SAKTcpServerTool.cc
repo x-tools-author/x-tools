@@ -1,16 +1,22 @@
 /******************************************************************************
- * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
+ * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
+ *
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include <QTcpSocket>
-#include "EDTcpServerTool.hpp"
+#include "SAKTcpServerTool.hh"
 
-EDTcpServerTool::EDTcpServerTool(QObject *parent)
-    : EDBaseTool{"ED.TcpServerTool", parent}
+SAKTcpServerTool::SAKTcpServerTool(QObject *parent)
+    : SAKCommunicationTool{"SAK.TcpServerTool", parent}
 {
 
 }
 
-bool EDTcpServerTool::initialize(QString &errStr)
+bool SAKTcpServerTool::initialize()
 {
     mTcpServer = new QTcpServer();
     if (!mTcpServer->listen(QHostAddress(mServerIp), mServerPort)) {
@@ -20,7 +26,6 @@ bool EDTcpServerTool::initialize(QString &errStr)
 
     QString info = QString("%1:%2").arg(mServerIp).arg(mServerPort);
     outputMessage(QtInfoMsg, info);
-    setToolFlag(info);
 
     connect(mTcpServer, &QTcpServer::newConnection, mTcpServer, [=](){
         QTcpSocket *client = mTcpServer->nextPendingConnection();
@@ -35,7 +40,7 @@ bool EDTcpServerTool::initialize(QString &errStr)
 
         connect(client, &QTcpSocket::readyRead, client, [=](){
             QByteArray bytes = client->readAll();
-            emit bytesOutputted(ipPort, bytes);
+            emit bytesOutputted(bytes, QVariant());
         });
 
         connect(client, &QTcpSocket::disconnected, client, [=](){
@@ -45,34 +50,37 @@ bool EDTcpServerTool::initialize(QString &errStr)
         });
 
         connect(client, &QTcpSocket::errorOccurred, client, [=](QAbstractSocket::SocketError err){
+            Q_UNUSED(err);
             this->mTcpSocketList.removeOne(client);
             this->mClients.removeOne(ipPort);
             emit clientsChanged();
         });
     });
 
+    mIsTimerReading = false;
     return true;
 }
 
-void EDTcpServerTool::inputBytesHandler(const QByteArray &bytes)
+void SAKTcpServerTool::writeBytes(const QByteArray &bytes, const QVariant &context)
 {
+    Q_UNUSED(context);
     if (mClientIndex >= 0 && mClientIndex < mTcpSocketList.length()) {
         QTcpSocket *socket = mTcpSocketList.at(mClientIndex);
         qint64 ret = socket->write(bytes);
         if (ret == -1) {
             outputMessage(QtWarningMsg, mTcpServer->errorString());
         } else {
-            emit bytesInputted(toolFlag(), bytes);
+            emit bytesInputted(bytes, QVariant());
         }
     }
 }
 
-void EDTcpServerTool::outputBytesHandler()
+void SAKTcpServerTool::readBytes()
 {
     // Nothing to do yet.
 }
 
-void EDTcpServerTool::uninitialize()
+void SAKTcpServerTool::uninitialize()
 {
     mTcpServer->close();
     mTcpServer->deleteLater();

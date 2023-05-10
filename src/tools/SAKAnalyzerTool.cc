@@ -10,7 +10,7 @@
 #include "SAKAnalyzerTool.hh"
 
 SAKAnalyzerTool::SAKAnalyzerTool(QObject *parent)
-    : SAKBaseTool{"ED.AnalyzerTool", parent}
+    : SAKBaseTool{"SAK.AnalyzerTool", parent}
 {
 
 }

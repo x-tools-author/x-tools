@@ -1,5 +1,11 @@
 /******************************************************************************
- * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
+ * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
+ *
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #ifndef EDBLECENTRAL_HPP
 #define EDBLECENTRAL_HPP
@@ -9,9 +15,9 @@
 #include <QLowEnergyService>
 #include <QLowEnergyController>
 
-#include "EDBaseTool.hpp"
+#include "SAKCommunicationTool.hh"
 
-class EDBleCentralTool : public EDBaseTool
+class SAKBleCentralTool : public SAKCommunicationTool
 {
     Q_OBJECT
     Q_PROPERTY(QVariant bleInfo READ bleInfo WRITE setBleInfo NOTIFY bleInfoChanged)
@@ -22,8 +28,8 @@ class EDBleCentralTool : public EDBaseTool
     Q_PROPERTY(QStringList serviceNames READ serviceNames NOTIFY serviceNamesChanged)
     Q_PROPERTY(QStringList characteristicNames READ characteristicNames NOTIFY characteristicNamesChanged)
 public:
-    EDBleCentralTool(QObject *parent = nullptr);
-    ~EDBleCentralTool();
+    SAKBleCentralTool(QObject *parent = nullptr);
+    ~SAKBleCentralTool();
 
     Q_INVOKABLE QVariantList serviceCharacteristics(QVariant service);
     Q_INVOKABLE QString characteristicName(QVariant characteristic);
@@ -35,9 +41,11 @@ signals:
     void descriptorWritten(const QLowEnergyDescriptor &descriptor, const QByteArray &newValue);
 
 protected:
-    virtual bool initialize(QString &errStr) override;
-    virtual void inputBytesHandler(const QByteArray &bytes) override;
-    virtual void uninitialize() override;
+    virtual bool initialize() final;
+    virtual void writeBytes(const QByteArray &bytes,
+                            const QVariant &context = QJsonObject()) final;
+    virtual void readBytes() final;
+    virtual void uninitialize() final;
 
 private:
     QVariantList mServices;

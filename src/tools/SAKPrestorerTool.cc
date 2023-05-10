@@ -1,36 +1,44 @@
 /******************************************************************************
- * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
+ * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
+ *
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include <QTimer>
 #include <QJSValue>
 #include <QJsonObject>
 #include <QJsonDocument>
 
-#include "EDPrestorerTool.hpp"
+#include "SAKPrestorerTool.hh"
 
 #include "common/EDCrc.hpp"
 #include "common/EDInterface.hpp"
 #include "common/EDDataStructure.hpp"
 
-EDPrestorerTableModel::EDPrestorerTableModel(QObject *parent)
+SAKPrestorerTableModel::SAKPrestorerTableModel(QObject *parent)
     : QAbstractTableModel(parent)
 {
     for (int i = 0; i < mTableColumnCount; i++) {
-        mHeaders << EDPrestorerTableModel::headerData(i, Qt::Horizontal).toString();
+        mHeaders << SAKPrestorerTableModel::headerData(i, Qt::Horizontal).toString();
     }
 }
 
-int EDPrestorerTableModel::rowCount(const QModelIndex &parent) const
+int SAKPrestorerTableModel::rowCount(const QModelIndex &parent) const
 {
+    Q_UNUSED(parent);
     return mItems.count();
 }
 
-int EDPrestorerTableModel::columnCount(const QModelIndex &parent) const
+int SAKPrestorerTableModel::columnCount(const QModelIndex &parent) const
 {
+    Q_UNUSED(parent)
     return mHeaders.length();
 }
 
-QVariant EDPrestorerTableModel::data(const QModelIndex &index, int role) const
+QVariant SAKPrestorerTableModel::data(const QModelIndex &index, int role) const
 {
     int row = index.row();
     if (row >= 0 && row < mItems.count()) {
@@ -44,10 +52,11 @@ QVariant EDPrestorerTableModel::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
-bool EDPrestorerTableModel::setData(const QModelIndex &index,
+bool SAKPrestorerTableModel::setData(const QModelIndex &index,
                                   const QVariant &value,
                                   int role)
 {
+    Q_UNUSED(role);
     int row = index.row();
     if (row >= 0 && row < mItems.count()) {
         auto item = mItems.at(row);
@@ -86,7 +95,7 @@ bool EDPrestorerTableModel::setData(const QModelIndex &index,
     return true;
 }
 
-bool EDPrestorerTableModel::insertRows(int row, int count,
+bool SAKPrestorerTableModel::insertRows(int row, int count,
                                      const QModelIndex &parent)
 {
     Q_UNUSED(parent);
@@ -100,7 +109,7 @@ bool EDPrestorerTableModel::insertRows(int row, int count,
     return true;
 }
 
-bool EDPrestorerTableModel::removeRows(int row, int count,
+bool SAKPrestorerTableModel::removeRows(int row, int count,
                                      const QModelIndex &parent)
 {
     beginRemoveRows(parent, row, row + count - 1);
@@ -109,10 +118,11 @@ bool EDPrestorerTableModel::removeRows(int row, int count,
     return true;
 }
 
-QVariant EDPrestorerTableModel::headerData(int section,
+QVariant SAKPrestorerTableModel::headerData(int section,
                                          Qt::Orientation orientation,
                                          int role) const
 {
+    Q_UNUSED(role);
     if (orientation == Qt::Horizontal) {
         switch (section) {
         case 0: return mDataKeys.itemDescription;
@@ -132,7 +142,7 @@ QVariant EDPrestorerTableModel::headerData(int section,
     return QVariant("");
 }
 
-QByteArray EDPrestorerTableModel::itemBytes(const EDPrestoreItem &item)
+QByteArray SAKPrestorerTableModel::itemBytes(const EDPrestoreItem &item)
 {
     QByteArray bytes;
     QString text = item.itemText;
@@ -157,7 +167,7 @@ QByteArray EDPrestorerTableModel::itemBytes(const EDPrestoreItem &item)
     return bytes;
 }
 
-QVariant EDPrestorerTableModel::columnDisplayRoleData(const EDPrestoreItem &item, int column) const
+QVariant SAKPrestorerTableModel::columnDisplayRoleData(const EDPrestoreItem &item, int column) const
 {
     if (column >= 0 && column < mHeaders.count()) {
         const QString dataKey = mHeaders.at(column);
@@ -189,14 +199,14 @@ QVariant EDPrestorerTableModel::columnDisplayRoleData(const EDPrestoreItem &item
     return QVariant("Error");
 }
 
-EDPrestorerTool::EDPrestorerTool(QObject *parent)
-    : EDBaseTool{"ED.PresetDataTool", parent}
+SAKPrestorerTool::SAKPrestorerTool(QObject *parent)
+    : SAKBaseTool{"SAK.PresetDataTool", parent}
 {
-    mTableModel = new EDPrestorerTableModel(this);
+    mTableModel = new SAKPrestorerTableModel(this);
     mHeaders = mTableModel->mHeaders;
 }
 
-void EDPrestorerTool::addItem(const QString &jsonCtx, int index)
+void SAKPrestorerTool::addItem(const QString &jsonCtx, int index)
 {
     QByteArray json = jsonCtx.toLatin1();
     QJsonObject jsonObj = QJsonDocument::fromJson(json).object();
@@ -212,7 +222,7 @@ void EDPrestorerTool::addItem(const QString &jsonCtx, int index)
     }
 }
 
-QVariant EDPrestorerTool::itemContext(int index)
+QVariant SAKPrestorerTool::itemContext(int index)
 {
     QJsonObject ctx;
     mTableModel->mItemsMutex.lock();
@@ -246,7 +256,7 @@ QVariant EDPrestorerTool::itemContext(int index)
     return ctx;
 }
 
-QVariant EDPrestorerTool::itemsContext()
+QVariant SAKPrestorerTool::itemsContext()
 {
     QVariantList varList;
     int rowCount = mTableModel->rowCount();
@@ -257,7 +267,7 @@ QVariant EDPrestorerTool::itemsContext()
     return varList;
 }
 
-void EDPrestorerTool::send(int index)
+void SAKPrestorerTool::send(int index)
 {
     if (isRunning()) {
         mIndexsMutex.lock();
@@ -266,22 +276,33 @@ void EDPrestorerTool::send(int index)
     }
 }
 
-bool EDPrestorerTool::initialize(QString &errStr)
+void SAKPrestorerTool::inputBYtes(const QByteArray &bytes, const QVariant *context)
 {
-    // To do: the way of timming sending should be improved.
-    mEmittingTimer = new QTimer();
-    mEmittingTimer->setInterval(mScanInterval);
-    mEmittingTimer->setSingleShot(true);
-    connect(mEmittingTimer, &QTimer::timeout, mEmittingTimer, [=](){
-        emit invokeOutputBytes(EDPrivateSignal{});
-    });
-    mEmittingTimer->start();
-    return true;
+    Q_UNUSED(bytes);
+    Q_UNUSED(context);
 }
 
-void EDPrestorerTool::outputBytesHandler()
+void SAKPrestorerTool::run()
 {
-    mEmittingTimer->start();
+    QTimer *sendTimer = new QTimer();
+    sendTimer->setInterval(mScanInterval);
+    sendTimer->setSingleShot(true);
+    connect(sendTimer, &QTimer::timeout, sendTimer, [=](){
+        try2send();
+        sendTimer->start();
+    });
+    sendTimer->start();
+
+    exec();
+
+    if (sendTimer) {
+        sendTimer->stop();
+        sendTimer->deleteLater();
+    }
+}
+
+void SAKPrestorerTool::try2send()
+{
     mIndexsMutex.lock();
     int index = mIndexs.isEmpty() ? -1 : mIndexs.takeFirst();
     mIndexsMutex.unlock();
@@ -290,20 +311,12 @@ void EDPrestorerTool::outputBytesHandler()
     if (index >= 0 && index < mTableModel->mItems.count()) {
         auto item = mTableModel->mItems.at(index);
         QByteArray bytes = mTableModel->itemBytes(item);
-        outputBytes(bytes);
+        emit bytesOutputted(bytes, QVariant());
     }
     mTableModel->mItemsMutex.unlock();
 }
 
-void EDPrestorerTool::uninitialize()
-{
-    if (mEmittingTimer) {
-        mEmittingTimer->stop();
-        mEmittingTimer->deleteLater();
-    }
-}
-
-QStringList EDPrestorerTool::descriptions()
+QStringList SAKPrestorerTool::descriptions()
 {
     mTableModel->mItemsMutex.lock();
     auto items = mTableModel->mItems;

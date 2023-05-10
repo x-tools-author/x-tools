@@ -1,13 +1,19 @@
 /******************************************************************************
- * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
+ * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
+ *
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#ifndef EDTOOLSFACTORY_HPP
-#define EDTOOLSFACTORY_HPP
+#ifndef SAKTOOLSFACTORY2_H
+#define SAKTOOLSFACTORY2_H
 
 #include <QObject>
-#include "EDBaseTool.hpp"
+#include "SAKBaseTool.hh"
 
-class EDToolsFactory : public QObject
+class SAKToolsFactory2 : public QObject
 {
     Q_OBJECT
 public:
@@ -31,12 +37,12 @@ public:
     Q_ENUM(EDEnumToolsType);
 
 private:
-    explicit EDToolsFactory(QObject *parent = Q_NULLPTR);
+    explicit SAKToolsFactory2(QObject *parent = Q_NULLPTR);
 
 public:
-    static EDToolsFactory *instance();
-    EDBaseTool *createTool(int type);
+    static SAKToolsFactory2 *instance();
+    SAKBaseTool *createTool(int type);
 
 };
 
-#endif // EDTOOLSFACTORY_HPP
+#endif // SAKTOOLSFACTORY2_H

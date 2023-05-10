@@ -1,5 +1,11 @@
 /******************************************************************************
- * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
+ * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
+ *
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include <QTimer>
 #include <QJSValue>
@@ -10,28 +16,30 @@
 #include "common/EDInterface.hpp"
 #include "common/EDDataStructure.hpp"
 
-#include "EDResponserTool.hpp"
+#include "SAKResponserTool.hh"
 
-EDResponserTableModel::EDResponserTableModel(QObject *parent)
+SAKResponserTableModel::SAKResponserTableModel(QObject *parent)
     : QAbstractTableModel(parent)
 {
     for (int i = 0; i < mTableColumnCount; i++) {
-        mHeaders << EDResponserTableModel::headerData(
+        mHeaders << SAKResponserTableModel::headerData(
                         i, Qt::Horizontal).toString();
     }
 }
 
-int EDResponserTableModel::rowCount(const QModelIndex &parent) const
+int SAKResponserTableModel::rowCount(const QModelIndex &parent) const
 {
+    Q_UNUSED(parent);
     return mItems.count();
 }
 
-int EDResponserTableModel::columnCount(const QModelIndex &parent) const
+int SAKResponserTableModel::columnCount(const QModelIndex &parent) const
 {
+    Q_UNUSED(parent);
     return mHeaders.length();
 }
 
-QVariant EDResponserTableModel::data(const QModelIndex &index, int role) const
+QVariant SAKResponserTableModel::data(const QModelIndex &index, int role) const
 {
     int row = index.row();
     if (row >= 0 && row < mItems.count()) {
@@ -45,10 +53,11 @@ QVariant EDResponserTableModel::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
-bool EDResponserTableModel::setData(const QModelIndex &index,
+bool SAKResponserTableModel::setData(const QModelIndex &index,
                                   const QVariant &value,
                                   int role)
 {
+    Q_UNUSED(role);
     int row = index.row();
     if (row >= 0 && row < mItems.count()) {
         auto item = mItems.at(row);
@@ -111,7 +120,7 @@ bool EDResponserTableModel::setData(const QModelIndex &index,
     return true;
 }
 
-bool EDResponserTableModel::insertRows(int row, int count,
+bool SAKResponserTableModel::insertRows(int row, int count,
                                      const QModelIndex &parent)
 {
     Q_UNUSED(parent);
@@ -125,7 +134,7 @@ bool EDResponserTableModel::insertRows(int row, int count,
     return true;
 }
 
-bool EDResponserTableModel::removeRows(int row, int count,
+bool SAKResponserTableModel::removeRows(int row, int count,
                                      const QModelIndex &parent)
 {
     beginRemoveRows(parent, row, row + count - 1);
@@ -134,10 +143,11 @@ bool EDResponserTableModel::removeRows(int row, int count,
     return true;
 }
 
-QVariant EDResponserTableModel::headerData(int section,
+QVariant SAKResponserTableModel::headerData(int section,
                                          Qt::Orientation orientation,
                                          int role) const
 {
+    Q_UNUSED(role);
     if (orientation == Qt::Horizontal) {
         switch (section) {
         case 0:  return mDataKeys.itemEnable;
@@ -169,7 +179,7 @@ QVariant EDResponserTableModel::headerData(int section,
     return QVariant("");
 }
 
-QVariant EDResponserTableModel::columnDisplayRoleData(
+QVariant SAKResponserTableModel::columnDisplayRoleData(
     const EDEmiterItem &item, int column) const
 {
     if (column >= 0 && column < mHeaders.count()) {
@@ -226,7 +236,7 @@ QVariant EDResponserTableModel::columnDisplayRoleData(
     return QVariant("Error");
 }
 
-QByteArray EDResponserTableModel::referenceBytes(const EDResponserData &item) const
+QByteArray SAKResponserTableModel::referenceBytes(const EDResponserData &item) const
 {
     QByteArray bytes;
     QString text = item.itemReferenceText ;
@@ -247,7 +257,7 @@ QByteArray EDResponserTableModel::referenceBytes(const EDResponserData &item) co
     return bytes;
 }
 
-QByteArray EDResponserTableModel::responseBytes(const EDResponserData &item) const
+QByteArray SAKResponserTableModel::responseBytes(const EDResponserData &item) const
 {
     QByteArray bytes;
     QString text = item.itemResponseText;
@@ -268,14 +278,14 @@ QByteArray EDResponserTableModel::responseBytes(const EDResponserData &item) con
     return bytes;
 }
 
-EDResponserTool::EDResponserTool(QObject *parent)
-    : EDBaseTool{"ED.ResponserTool", parent}
+SAKResponserTool::SAKResponserTool(QObject *parent)
+    : SAKBaseTool{"ED.ResponserTool", parent}
 {
-    mTableModel = new EDResponserTableModel(this);
+    mTableModel = new SAKResponserTableModel(this);
     mHeaders = mTableModel->mHeaders;
 }
 
-void EDResponserTool::addItem(const QString &jsonCtx, int index)
+void SAKResponserTool::addItem(const QString &jsonCtx, int index)
 {
 
     QByteArray json = jsonCtx.toLatin1();
@@ -292,7 +302,7 @@ void EDResponserTool::addItem(const QString &jsonCtx, int index)
     }
 }
 
-QVariant EDResponserTool::itemContext(int index)
+QVariant SAKResponserTool::itemContext(int index)
 {
     QJsonObject ctx;
     mTableModel->mItemsMutex.lock();
@@ -354,7 +364,7 @@ QVariant EDResponserTool::itemContext(int index)
     return ctx;
 }
 
-QVariant EDResponserTool::itemsContext()
+QVariant SAKResponserTool::itemsContext()
 {
     QVariantList varList;
     int rowCount = mTableModel->rowCount();
@@ -365,7 +375,41 @@ QVariant EDResponserTool::itemsContext()
     return varList;
 }
 
-void EDResponserTool::inputBytesHandler(const QByteArray &bytes)
+void SAKResponserTool::inputBYtes(const QByteArray &bytes, const QVariant context)
+{
+    mInputContextListMutex.lock();
+    mInputContextList.append({bytes, context});
+    mInputContextListMutex.unlock();;
+}
+
+void SAKResponserTool::run()
+{
+    QTimer *outputTimer = new QTimer();
+    outputTimer->setInterval(5);
+    outputTimer->setSingleShot(true);
+
+    connect(outputTimer, &QTimer::timeout, outputTimer, [=](){
+        mInputContextListMutex.lock();
+        while (!mInputContextList.isEmpty()) {
+            QByteArray bytes = mInputContextList.takeFirst().bytes;
+            try2output(bytes, outputTimer);
+        }
+        mInputContextListMutex.unlock();
+        outputTimer->start();
+    });
+
+    outputTimer->start();
+    exec();
+
+    mInputContextListMutex.lock();
+    mInputContextList.clear();
+    mInputContextListMutex.unlock();
+
+    outputTimer->deleteLater();
+    outputTimer = nullptr;
+}
+
+void SAKResponserTool::try2output(const QByteArray &bytes, QObject *threadInnerObject)
 {
     mTableModel->mItemsMutex.lock();
     auto items = mTableModel->mItems;
@@ -393,8 +437,8 @@ void EDResponserTool::inputBytesHandler(const QByteArray &bytes)
         }
 
         if (enableResponse) {
-            QTimer::singleShot(item.data.itemResponseInterval, mObjectOfThread, [=](){
-                emit bytesOutputted(toolFlag(), item.data.itemResponseText.toUtf8());
+            QTimer::singleShot(item.data.itemResponseInterval, threadInnerObject, [=](){
+                emit bytesOutputted(item.data.itemResponseText.toUtf8(), QVariant());
             });
         }
     }

@@ -1,16 +1,22 @@
 /******************************************************************************
- * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
+ * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
+ *
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include <QHostAddress>
-#include "EDUdpClientTool.hpp"
+#include "SAKUdpClientTool.hh"
 
-EDUdpClientTool::EDUdpClientTool(QObject *parent)
-    : EDBaseTool{"ED.UdpClientTool", parent}
+SAKUdpClientTool::SAKUdpClientTool(QObject *parent)
+    : SAKCommunicationTool{"SAK.UdpClientTool", parent}
 {
 
 }
 
-bool EDUdpClientTool::initialize(QString &errStr)
+bool SAKUdpClientTool::initialize()
 {
     mUdpSocket = new QUdpSocket();
     if (mSpecifyClientIpPort) {
@@ -24,29 +30,29 @@ bool EDUdpClientTool::initialize(QString &errStr)
 
     QString info = QString("%1:%2").arg(mUdpSocket->localAddress().toString()).arg(mUdpSocket->localPort());
     outputMessage(QtInfoMsg, info);
-    setToolFlag(info);
 
     mBindingIpPort = info;
     emit bindingIpPortChanged();
 
     connect(mUdpSocket, &QUdpSocket::readyRead, mUdpSocket, [=](){
-        emit invokeOutputBytes(EDBaseTool::EDPrivateSignal{});
+        readBytes();
     });
 
     return true;
 }
 
-void EDUdpClientTool::inputBytesHandler(const QByteArray &bytes)
+void SAKUdpClientTool::writeBytes(const QByteArray &bytes, const QVariant &context)
 {
+    Q_UNUSED(context);
     qint64 ret = mUdpSocket->writeDatagram(bytes, QHostAddress(mServerIp), mServerPort);
     if (ret == -1) {
         outputMessage(QtWarningMsg, mUdpSocket->errorString());
     } else {
-        emit bytesInputted(toolFlag(), bytes);
+        emit bytesInputted(bytes, QVariant());
     }
 }
 
-void EDUdpClientTool::outputBytesHandler()
+void SAKUdpClientTool::readBytes()
 {
     while (mUdpSocket->hasPendingDatagrams()) {
         auto len = mUdpSocket->pendingDatagramSize();
@@ -61,14 +67,14 @@ void EDUdpClientTool::outputBytesHandler()
                 QString info = QString("%1:%2")
                                    .arg(address.toString())
                                    .arg(port);
-                emit bytesOutputted(info, bytes);
+                emit bytesOutputted(bytes, QVariant());
                 Q_UNUSED(info);
             }
         }
     }
 }
 
-void EDUdpClientTool::uninitialize()
+void SAKUdpClientTool::uninitialize()
 {
     mUdpSocket->deleteLater();
     mUdpSocket = nullptr;

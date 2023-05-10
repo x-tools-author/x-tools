@@ -1,13 +1,19 @@
 /******************************************************************************
- * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
+ * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
+ *
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#ifndef EDUDPSERVERTOOL_HPP
-#define EDUDPSERVERTOOL_HPP
+#ifndef SAKUDPSERVERTOOL_H
+#define SAKUDPSERVERTOOL_H
 
 #include <QUdpSocket>
-#include "EDBaseTool.hpp"
+#include "SAKCommunicationTool.hh"
 
-class EDUdpServerTool : public EDBaseTool
+class SAKUdpServerTool : public SAKCommunicationTool
 {
     Q_OBJECT
     Q_PROPERTY(QString serverIp READ serverIp WRITE setServerIp NOTIFY serverIpChanged)
@@ -15,12 +21,13 @@ class EDUdpServerTool : public EDBaseTool
     Q_PROPERTY(QStringList clients READ clients NOTIFY clientsChanged)
     Q_PROPERTY(int clientIndex READ clientIndex WRITE setClientIndex NOTIFY clientIndexChanged)
 public:
-    explicit EDUdpServerTool(QObject *parent = nullptr);
+    explicit SAKUdpServerTool(QObject *parent = nullptr);
 
 protected:
-    virtual bool initialize(QString &errStr) final;
-    virtual void inputBytesHandler(const QByteArray &bytes) final;
-    virtual void outputBytesHandler() final;
+    virtual bool initialize() final;
+    virtual void writeBytes(const QByteArray &bytes,
+                            const QVariant &context = QJsonObject()) final;
+    virtual void readBytes() final;
     virtual void uninitialize() final;
 
 private:
@@ -47,4 +54,4 @@ private:
     Q_SIGNAL void clientIndexChanged();
 };
 
-#endif // EDUDPSERVERTOOL_HPP
+#endif // SAKUDPSERVERTOOL_H

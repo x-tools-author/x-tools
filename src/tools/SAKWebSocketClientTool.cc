@@ -1,15 +1,21 @@
 /******************************************************************************
- * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
+ * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
+ *
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#include "EDWebSocketClientTool.hpp"
+#include "SAKWebSocketClientTool.hh"
 
-EDWebSocketClientTool::EDWebSocketClientTool(QObject *parent)
-    : EDBaseTool{"ED.WebSocketClientTool", parent}
+SAKWebSocketClientTool::SAKWebSocketClientTool(QObject *parent)
+    : SAKCommunicationTool{"SAK.WebSocketClientTool", parent}
 {
 
 }
 
-bool EDWebSocketClientTool::initialize(QString &errStr)
+bool SAKWebSocketClientTool::initialize()
 {
     mWebSocket = new QWebSocket();
     connect(mWebSocket, &QWebSocket::connected, mWebSocket, [=](){
@@ -17,7 +23,6 @@ bool EDWebSocketClientTool::initialize(QString &errStr)
         info.append(":");
         info.append(QString::number(mWebSocket->localPort()));
         mBindingIpPort = info;
-        setToolFlag(info);
         emit bindingIpPortChanged();
     });
 
@@ -26,31 +31,35 @@ bool EDWebSocketClientTool::initialize(QString &errStr)
     });
 
     connect(mWebSocket, &QWebSocket::binaryFrameReceived, mWebSocket, [=](const QByteArray &message){
-        QString address = mWebSocket->peerAddress().toString();
-        quint16 port = mWebSocket->peerPort();
-        QString flag = QString("%1:%2").arg(address, QString::number(port));
-        emit bytesOutputted(flag, message);
+        //QString address = mWebSocket->peerAddress().toString();
+        //quint16 port = mWebSocket->peerPort();
+        //QString flag = QString("%1:%2").arg(address, QString::number(port));
+        emit bytesOutputted(message, QVariant());
     });
 
     connect(mWebSocket, &QWebSocket::textMessageReceived, mWebSocket, [=](QString message){
-        QString address = mWebSocket->peerAddress().toString();
-        quint16 port = mWebSocket->peerPort();
-        QString flag = QString("%1:%2").arg(address, QString::number(port));
-        emit bytesOutputted(flag, message.toUtf8());
+        //QString address = mWebSocket->peerAddress().toString();
+        //quint16 port = mWebSocket->peerPort();
+        //QString flag = QString("%1:%2").arg(address, QString::number(port));
+        emit bytesOutputted(message.toUtf8(), QVariant());
     });
 
-    connect(mWebSocket, QOverload<QAbstractSocket::SocketError>::of(&QWebSocket::error), mWebSocket, [=](QAbstractSocket::SocketError error){
-        emit errorOccured(toolFlag(), "Error:" + mWebSocket->errorString());
+    connect(mWebSocket, QOverload<QAbstractSocket::SocketError>::of(&QWebSocket::error),
+            mWebSocket, [=](QAbstractSocket::SocketError error){
+        Q_UNUSED(error);
+        emit errorOccured("Error:" + mWebSocket->errorString());
     });
 
     QString address = QString("ws://%1:%2").arg(mServerIp, QString::number(mServerPort));
     mWebSocket->open(address);
 
+    mIsTimerReading = false;
     return true;
 }
 
-void EDWebSocketClientTool::inputBytesHandler(const QByteArray &bytes)
+void SAKWebSocketClientTool::writeBytes(const QByteArray &bytes, const QVariant &context)
 {
+    Q_UNUSED(context);
     qint64 ret = -1;
     if (mMessageType == 0) {
         ret = mWebSocket->sendBinaryMessage(bytes);
@@ -61,16 +70,16 @@ void EDWebSocketClientTool::inputBytesHandler(const QByteArray &bytes)
     if (ret == -1) {
         outputMessage(QtWarningMsg, mWebSocket->errorString());
     } else {
-        emit bytesInputted(toolFlag(), bytes);
+        emit bytesInputted(bytes, QVariant());
     }
 }
 
-void EDWebSocketClientTool::outputBytesHandler()
+void SAKWebSocketClientTool::readBytes()
 {
 
 }
 
-void EDWebSocketClientTool::uninitialize()
+void SAKWebSocketClientTool::uninitialize()
 {
     mWebSocket->close();
     mWebSocket->deleteLater();

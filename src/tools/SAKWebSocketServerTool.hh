@@ -1,13 +1,19 @@
 /******************************************************************************
- * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
+ * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
+ *
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#ifndef EDWEBSOCKETSERVERTOOL_HPP
-#define EDWEBSOCKETSERVERTOOL_HPP
+#ifndef SAKWEBSOCKETSERVERTOOL_H
+#define SAKWEBSOCKETSERVERTOOL_H
 
 #include <QWebSocketServer>
-#include "EDBaseTool.hpp"
+#include "SAKCommunicationTool.hh"
 
-class EDWebSocketServerTool : public EDBaseTool
+class SAKWebSocketServerTool : public SAKCommunicationTool
 {
     Q_OBJECT
     Q_PROPERTY(QString serverIp READ serverIp WRITE setServerIp NOTIFY serverIpChanged)
@@ -17,12 +23,13 @@ class EDWebSocketServerTool : public EDBaseTool
     Q_PROPERTY(int messageType READ messageType WRITE setMessageType NOTIFY messageTypeChanged)
 
 public:
-    explicit EDWebSocketServerTool(QObject *parent = nullptr);
+    explicit SAKWebSocketServerTool(QObject *parent = nullptr);
 
 protected:
-    virtual bool initialize(QString &errStr) final;
-    virtual void inputBytesHandler(const QByteArray &bytes) final;
-    virtual void outputBytesHandler() final;
+    virtual bool initialize() final;
+    virtual void writeBytes(const QByteArray &bytes,
+                            const QVariant &context = QJsonObject()) final;
+    virtual void readBytes() final;
     virtual void uninitialize() final;
 
 private:
@@ -55,4 +62,4 @@ private:
     Q_SIGNAL void messageTypeChanged();
 };
 
-#endif // EDWEBSOCKETSERVERTOOL_HPP
+#endif // SAKWEBSOCKETSERVERTOOL_H

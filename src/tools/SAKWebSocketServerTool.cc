@@ -1,16 +1,22 @@
 /******************************************************************************
- * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
+ * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
+ *
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include <QWebSocket>
-#include "EDWebSocketServerTool.hpp"
+#include "SAKWebSocketServerTool.hh"
 
-EDWebSocketServerTool::EDWebSocketServerTool(QObject *parent)
-    : EDBaseTool{"ED.WebSocketServerTool", parent}
+SAKWebSocketServerTool::SAKWebSocketServerTool(QObject *parent)
+    : SAKCommunicationTool{"SAK.WebSocketServerTool", parent}
 {
 
 }
 
-bool EDWebSocketServerTool::initialize(QString &errStr)
+bool SAKWebSocketServerTool::initialize()
 {
     QString serverName = QString("%1:%2").arg(mServerIp).arg(mServerPort);
     mWebSocketServer = new QWebSocketServer(serverName, QWebSocketServer::NonSecureMode);
@@ -21,7 +27,6 @@ bool EDWebSocketServerTool::initialize(QString &errStr)
 
     QString info = QString("%1:%2").arg(mServerIp).arg(mServerPort);
     outputMessage(QtInfoMsg, info);
-    setToolFlag(info);
 
     connect(mWebSocketServer, &QWebSocketServer::newConnection, mWebSocketServer, [=](){
         QWebSocket *client = mWebSocketServer->nextPendingConnection();
@@ -35,11 +40,11 @@ bool EDWebSocketServerTool::initialize(QString &errStr)
 
         connect(client, &QWebSocket::textMessageReceived, client, [=](const QString &message){
             QByteArray bytes = message.toUtf8();
-            emit bytesOutputted(ipPort, bytes);
+            emit bytesOutputted(bytes, QVariant());
         });
 
         connect(client, &QWebSocket::binaryMessageReceived, client, [=](const QByteArray &message){
-            emit bytesOutputted(ipPort, message);
+            emit bytesOutputted(message, QVariant());
         });
 
         connect(client, &QWebSocket::disconnected, client, [=](){
@@ -48,18 +53,22 @@ bool EDWebSocketServerTool::initialize(QString &errStr)
             emit clientsChanged();
         });
 
-        connect(client, QOverload<QAbstractSocket::SocketError>::of(&QWebSocket::error), client, [=](QAbstractSocket::SocketError err){
+        connect(client, QOverload<QAbstractSocket::SocketError>::of(&QWebSocket::error),
+                client, [=](QAbstractSocket::SocketError err){
+            Q_UNUSED(err);
             this->mWebSocketList.removeOne(client);
             this->mClients.removeOne(ipPort);
             emit clientsChanged();
         });
     });
 
+    mIsTimerReading = false;
     return true;
 }
 
-void EDWebSocketServerTool::inputBytesHandler(const QByteArray &bytes)
+void SAKWebSocketServerTool::writeBytes(const QByteArray &bytes, const QVariant &context)
 {
+    Q_UNUSED(context);
     if (mClientIndex >= 0 && mClientIndex < mWebSocketList.length()) {
         QWebSocket *socket = mWebSocketList.at(mClientIndex);
         qint64 ret = -1;
@@ -72,17 +81,17 @@ void EDWebSocketServerTool::inputBytesHandler(const QByteArray &bytes)
         if (ret == -1) {
             outputMessage(QtWarningMsg, socket->errorString());
         } else {
-            emit bytesInputted(toolFlag(), bytes);
+            emit bytesInputted(bytes, QVariant());
         }
     }
 }
 
-void EDWebSocketServerTool::outputBytesHandler()
+void SAKWebSocketServerTool::readBytes()
 {
     // Nothing to do yet.
 }
 
-void EDWebSocketServerTool::uninitialize()
+void SAKWebSocketServerTool::uninitialize()
 {
     mWebSocketServer->close();
     mWebSocketServer->deleteLater();

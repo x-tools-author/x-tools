@@ -31,7 +31,7 @@ public:
 protected:
     virtual bool initialize() final;
     virtual void writeBytes(const QByteArray &bytes,
-                            const QVariant &context) final;
+                            const QVariant &context = QJsonObject()) final;
     virtual void readBytes() final;
     virtual void uninitialize() final;
 

@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#ifndef SAKBASETOOL_H
-#define SAKBASETOOL_H
+#ifndef SAKBASETOOL_HH
+#define SAKBASETOOL_HH
 
 #include <atomic>
 #include <QThread>
@@ -36,7 +36,7 @@ protected:
 signals:
     void bytesInputted(const QByteArray &bytes, const QVariant &context);
     void bytesOutputted(const QByteArray &bytes, const QVariant &context);
-    void errorOccure(const QString &errorString);
+    void errorOccured(const QString &errorString);
 
 protected:
     QString mToolName{""};

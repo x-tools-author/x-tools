@@ -13,15 +13,15 @@ EDDataStructure::EDDataStructure(QObject *parent)
 
 QString EDDataStructure::affixesName(int affixes)
 {
-    if (EDDataStructure::AffixesNone) {
+    if (EDDataStructure::AffixesNone == affixes) {
         return "None";
-    } else if (EDDataStructure::AffixesR) {
+    } else if (EDDataStructure::AffixesR == affixes) {
         return "//r";
-    } else if (EDDataStructure::AffixesN) {
+    } else if (EDDataStructure::AffixesN == affixes) {
         return "//n";
-    } else if (EDDataStructure::AffixesRN) {
+    } else if (EDDataStructure::AffixesRN == affixes) {
         return "//r//n";
-    } else if (EDDataStructure::AffixesNR) {
+    } else if (EDDataStructure::AffixesNR == affixes) {
         return "//n//r";
     }
 

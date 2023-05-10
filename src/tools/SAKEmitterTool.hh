@@ -1,21 +1,28 @@
 /******************************************************************************
- * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
+ * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
+ *
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#ifndef EDEMITTERTOOL_HPP
-#define EDEMITTERTOOL_HPP
+#ifndef SAKEMITTERTOOL_HH
+#define SAKEMITTERTOOL_HH
 
+#include <QTimer>
 #include <QMutex>
 #include <QVariant>
 #include <QAbstractTableModel>
 
-#include "EDBaseTool.hpp"
+#include "SAKBaseTool.hh"
 
-class EDEmitterTableModel : public QAbstractTableModel
+class SAKEmitterTableModel : public QAbstractTableModel
 {
     Q_OBJECT
-    friend class EDEmitterTool;
+    friend class SAKEmitterTool;
 public:
-    EDEmitterTableModel(QObject *parent = nullptr);
+    SAKEmitterTableModel(QObject *parent = nullptr);
 
     virtual int rowCount(
         const QModelIndex &parent = QModelIndex()) const override;
@@ -91,7 +98,7 @@ private:
     QByteArray itemBytes(const EDEmiterData &item);
 };
 
-class EDEmitterTool : public EDBaseTool
+class SAKEmitterTool : public SAKBaseTool
 {
     Q_OBJECT
     Q_PROPERTY(QVariant tableModel READ tableModel CONSTANT)
@@ -111,25 +118,26 @@ class EDEmitterTool : public EDBaseTool
     Q_PROPERTY(QString itemText READ itemText CONSTANT)
 
 public:
-    explicit EDEmitterTool(QObject *parent = Q_NULLPTR);
+    explicit SAKEmitterTool(QObject *parent = Q_NULLPTR);
 
     Q_INVOKABLE void addItem(const QString &jsonCtx, int index = -1);
     Q_INVOKABLE QVariant itemContext(int index);
     Q_INVOKABLE QVariant itemsContext();
 
 protected:
-    virtual bool initialize(QString &errStr) final;
-    virtual void outputBytesHandler() final;
-    virtual void uninitialize() final;
+    virtual void run() final;
 
 private:
     QTimer *mEmittingTimer;
     const int mScanInterval{5};
 
 private:
-    EDEmitterTableModel *mTableModel{nullptr};
+    void try2emit();
+
+private:
+    SAKEmitterTableModel *mTableModel;
     QVariant tableModel(){
-        return QVariant::fromValue<EDEmitterTableModel*>(mTableModel);
+        return QVariant::fromValue<SAKEmitterTableModel*>(mTableModel);
     }
 
     QStringList mHeaders;
@@ -153,4 +161,4 @@ private:
     QString itemText(){return mTableModel->mDataKeys.itemText;}
 };
 
-#endif // EDEMITTERTOOL_HPP
+#endif // SAKEMITTERTOOL_H

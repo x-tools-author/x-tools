@@ -1,24 +1,30 @@
 /******************************************************************************
- * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
+ * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
+ *
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include <QMetaObject>
 #include <QBluetoothDeviceInfo>
 
-#include "EDBleCentralTool.hpp"
+#include "SAKBleCentralTool.hh"
 
-EDBleCentralTool::EDBleCentralTool(QObject *parent)
-    : EDBaseTool("ED.BleCentral", parent)
+SAKBleCentralTool::SAKBleCentralTool(QObject *parent)
+    : SAKCommunicationTool("SAK.BleCentral", parent)
 {
 
 }
 
 
-EDBleCentralTool::~EDBleCentralTool()
+SAKBleCentralTool::~SAKBleCentralTool()
 {
 
 }
 
-QVariantList EDBleCentralTool::serviceCharacteristics(QVariant service)
+QVariantList SAKBleCentralTool::serviceCharacteristics(QVariant service)
 {
     QVariantList list;
     if (service.canConvert<QLowEnergyService*>()) {
@@ -36,7 +42,7 @@ QVariantList EDBleCentralTool::serviceCharacteristics(QVariant service)
     return list;
 }
 
-QString EDBleCentralTool::characteristicName(QVariant characteristic)
+QString SAKBleCentralTool::characteristicName(QVariant characteristic)
 {
     if (characteristic.canConvert<QLowEnergyCharacteristic>()) {
         auto cookedCharacteristic = characteristic.value<QLowEnergyCharacteristic>();
@@ -46,7 +52,7 @@ QString EDBleCentralTool::characteristicName(QVariant characteristic)
     return "Invalid";
 }
 
-QString EDBleCentralTool::serviceName(QVariant service)
+QString SAKBleCentralTool::serviceName(QVariant service)
 {
     if (service.canConvert<QLowEnergyService*>()) {
         auto cookedService = service.value<QLowEnergyService*>();
@@ -56,7 +62,7 @@ QString EDBleCentralTool::serviceName(QVariant service)
     return "Invalid";
 }
 
-void EDBleCentralTool::readCharacteristic()
+void SAKBleCentralTool::readCharacteristic()
 {
     if (!(mCurrentServiceIndex >= 0 && mCurrentServiceIndex < mServices.length())) {
         return;
@@ -71,7 +77,7 @@ void EDBleCentralTool::readCharacteristic()
     }
 }
 
-void EDBleCentralTool::changeNotify()
+void SAKBleCentralTool::changeNotify()
 {
     if (!(mCurrentServiceIndex >= 0 && mCurrentServiceIndex < mServices.length())) {
         return;
@@ -101,10 +107,10 @@ void EDBleCentralTool::changeNotify()
     }
 }
 
-bool EDBleCentralTool::initialize(QString &errStr)
+bool SAKBleCentralTool::initialize()
 {
     if (!mBleInfo.isValid()) {
-        errStr = "Invalid BLE information.";
+        outputMessage(QtWarningMsg, "Invalid BLE information.");
         return false;
     }
 
@@ -122,11 +128,18 @@ bool EDBleCentralTool::initialize(QString &errStr)
     });
 
 
+    mIsTimerReading = false;
     return true;
 }
 
-void EDBleCentralTool::inputBytesHandler(const QByteArray &bytes)
+void SAKBleCentralTool::readBytes()
 {
+
+}
+
+void SAKBleCentralTool::writeBytes(const QByteArray &bytes, const QVariant &context)
+{
+    Q_UNUSED(context);
     if (!(mCurrentServiceIndex >= 0 && mCurrentServiceIndex < mServices.length())) {
         return;
     }
@@ -143,19 +156,19 @@ void EDBleCentralTool::inputBytesHandler(const QByteArray &bytes)
     }
 }
 
-void EDBleCentralTool::uninitialize()
+void SAKBleCentralTool::uninitialize()
 {
     mBleCentral->disconnectFromDevice();
     mBleCentral->deleteLater();
     mBleCentral = nullptr;
 }
 
-void EDBleCentralTool::onServiceDiscovered(const QBluetoothUuid &newService)
+void SAKBleCentralTool::onServiceDiscovered(const QBluetoothUuid &newService)
 {
     Q_UNUSED(newService);
 }
 
-void EDBleCentralTool::onServiceDiscoveryFinished()
+void SAKBleCentralTool::onServiceDiscoveryFinished()
 {
     QList<QBluetoothUuid> uuids = mBleCentral->services();
     for (auto &uuid : uuids) {
@@ -166,37 +179,41 @@ void EDBleCentralTool::onServiceDiscoveryFinished()
 
         connect(service, &QLowEnergyService::characteristicChanged, service,
                 [=](const QLowEnergyCharacteristic &info, const QByteArray &value){
-                    emit bytesOutputted(info.name(), value);
+            emit bytesOutputted(value, QVariant());
+            Q_UNUSED(info);
         });
         connect(service, &QLowEnergyService::characteristicRead, service,
                 [=](const QLowEnergyCharacteristic &info, const QByteArray &value){
-                    emit bytesOutputted(info.name(), value);
+            emit bytesOutputted(value, QVariant());
+            Q_UNUSED(info);
         });
         connect(service, &QLowEnergyService::characteristicWritten, service,
                 [=](const QLowEnergyCharacteristic &info, const QByteArray &value){
-                    emit bytesInputted(info.name(), value);
+            emit bytesInputted(value, QVariant());
+            Q_UNUSED(info);
         });
         connect(service, &QLowEnergyService::stateChanged, service,
                 [=](QLowEnergyService::ServiceState newState){
                     onServiceObjectStateChanged(service, newState);
         });
         connect(service, &QLowEnergyService::descriptorWritten,
-                this, &EDBleCentralTool::descriptorWritten);
+                this, &SAKBleCentralTool::descriptorWritten);
 
         mServices.append(QVariant::fromValue(service));
         service->discoverDetails();
     }
 }
 
-void EDBleCentralTool::onBleCentralErrorOccuured(QLowEnergyController::Error err)
+void SAKBleCentralTool::onBleCentralErrorOccuured(QLowEnergyController::Error err)
 {
     Q_UNUSED(err);
     qInfo() << mBleCentral->errorString();
     exit();
 }
 
-void EDBleCentralTool::onServiceObjectStateChanged(QLowEnergyService *service, QLowEnergyService::ServiceState newState)
+void SAKBleCentralTool::onServiceObjectStateChanged(QLowEnergyService *service, QLowEnergyService::ServiceState newState)
 {
+    Q_UNUSED(service);
     auto state = QLowEnergyService::RemoteServiceDiscovered;
     if (newState == state) {
         qInfo() << "Remote service discovered:" << newState;

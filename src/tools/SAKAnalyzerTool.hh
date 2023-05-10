@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#ifndef SAKANALYZERTOOL_H
-#define SAKANALYZERTOOL_H
+#ifndef SAKANALYZERTOOL_HH
+#define SAKANALYZERTOOL_HH
 
 #include <QTimer>
 #include <QMutex>

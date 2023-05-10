@@ -13,6 +13,8 @@ EDCrc::EDCrc(QObject *parent)
 
 QString EDCrc::calculateString(const QString &bytes, int format)
 {
+    Q_UNUSED(bytes);
+    Q_UNUSED(format);
     return QString();
 }
 
