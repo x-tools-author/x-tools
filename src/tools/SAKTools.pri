@@ -11,7 +11,7 @@ HEADERS += \
     $$PWD/SAKStorerTool.hh \
     $$PWD/SAKTcpClientTool.hh \
     $$PWD/SAKTcpServerTool.hh \
-    $$PWD/SAKToolsFactory2.hh \
+    $$PWD/SAKToolsFactory.hh \
     $$PWD/SAKUdpClientTool.hh \
     $$PWD/SAKUdpServerTool.hh \
     $$PWD/SAKWebSocketClientTool.hh \
@@ -30,7 +30,7 @@ SOURCES += \
     $$PWD/SAKStorerTool.cc \
     $$PWD/SAKTcpClientTool.cc \
     $$PWD/SAKTcpServerTool.cc \
-    $$PWD/SAKToolsFactory2.cc \
+    $$PWD/SAKToolsFactory.cc \
     $$PWD/SAKUdpClientTool.cc \
     $$PWD/SAKUdpServerTool.cc \
     $$PWD/SAKWebSocketClientTool.cc \

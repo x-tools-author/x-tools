@@ -7,20 +7,20 @@
  * QtSwissArmyKnife is licensed according to the terms in the file LICENCE in
  * the root of the source code directory.
  *****************************************************************************/
-#ifndef SAKTOOLSFACTORY_HH
-#define SAKTOOLSFACTORY_HH
+#ifndef SAKASSISTANTSFACTORY_HH
+#define SAKASSISTANTSFACTORY_HH
 
 #include <QObject>
 #include "base/SAKSigleton.hh"
 
-#define sakToolsFactory SAKToolsFactory::instance()
+#define sakToolsFactory SAKAssistantsFactory::instance()
 
-class SAKToolsFactory : public QObject, public SAKSigleton<SAKToolsFactory>
+class SAKAssistantsFactory : public QObject, public SAKSigleton<SAKAssistantsFactory>
 {
     Q_OBJECT
-    friend SAKSigleton<SAKToolsFactory>;
+    friend SAKSigleton<SAKAssistantsFactory>;
 private:
-    SAKToolsFactory(QObject *parent = Q_NULLPTR);
+    SAKAssistantsFactory(QObject *parent = Q_NULLPTR);
 public:
     struct SAKToolMetaObjCtx {
         QMetaObject metaObject;
@@ -32,4 +32,4 @@ public:
     QVector<SAKToolMetaObjCtx> supportedToolsContext();
 };
 
-#endif // SAKTOOLSFACTORY_HH
+#endif // SAKASSISTANTSFACTORY_H

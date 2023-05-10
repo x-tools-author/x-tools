@@ -11,7 +11,7 @@
 #include "SAKStorerTool.hh"
 #include "SAKEmitterTool.hh"
 #include "SAKAnalyzerTool.hh"
-#include "SAKToolsFactory2.hh"
+#include "SAKToolsFactory.hh"
 #include "SAKPrestorerTool.hh"
 #include "SAKResponserTool.hh"
 #include "SAKUdpClientTool.hh"
@@ -23,19 +23,19 @@
 #include "SAKWebSocketClientTool.hh"
 #include "SAKWebSocketServerTool.hh"
 
-SAKToolsFactory2::SAKToolsFactory2(QObject *parent)
+SAKToolsFactory::SAKToolsFactory(QObject *parent)
     : QObject{parent}
 {
 
 }
 
-SAKToolsFactory2 *SAKToolsFactory2::instance()
+SAKToolsFactory *SAKToolsFactory::instance()
 {
-    static SAKToolsFactory2 toolsFactory;
+    static SAKToolsFactory toolsFactory;
     return &toolsFactory;
 }
 
-SAKBaseTool *SAKToolsFactory2::createTool(int type)
+SAKBaseTool *SAKToolsFactory::createTool(int type)
 {
     if (AnalyzerTool == type) {
         return new SAKAnalyzerTool();

@@ -8,7 +8,7 @@
  * the root of the source code directory.
  *****************************************************************************/
 #include <QCoreApplication>
-#include "SAKToolsFactory.hh"
+#include "SAKAssistantsFactory.hh"
 
 #ifdef SAK_IMPORT_MODULE_FILECHECKASSISTANT
 #include "SAKToolFileCheckAssistant.hh"
@@ -35,7 +35,7 @@
 #include "SAKToolBroadcastAssistant.hh"
 #endif
 
-SAKToolsFactory::SAKToolsFactory(QObject *parent)
+SAKAssistantsFactory::SAKAssistantsFactory(QObject *parent)
 {
     Q_UNUSED(parent);
 #ifdef SAK_IMPORT_MODULE_CRCASSISTANT
@@ -81,8 +81,8 @@ SAKToolsFactory::SAKToolsFactory(QObject *parent)
 #endif
 }
 
-QVector<SAKToolsFactory::SAKToolMetaObjCtx>
-SAKToolsFactory::supportedToolsContext()
+QVector<SAKAssistantsFactory::SAKToolMetaObjCtx>
+SAKAssistantsFactory::supportedToolsContext()
 {
     return mToolMetaObjCtxVector;
 }

@@ -41,7 +41,7 @@
 
 #include "SAKMainWindow.hh"
 #include "SAKApplication.hh"
-#include "SAKToolsFactory.hh"
+#include "SAKAssistantsFactory.hh"
 #include "SAKUpdateManager.hh"
 #include "SAKDebuggerFactory.hh"
 

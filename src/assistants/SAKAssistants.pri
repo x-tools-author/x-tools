@@ -6,10 +6,10 @@ include($$PWD/filecheckassistant/SAKToolFileCheckAssistant.pri)
 include($$PWD/broadcastassistant/SAKToolBroadcastAssistant.pri)
 
 HEADERS += \
-    $$PWD/SAKToolsFactory.hh
+    $$PWD/SAKAssistantsFactory.hh
 
 SOURCES += \
-    $$PWD/SAKToolsFactory.cc
+    $$PWD/SAKAssistantsFactory.cc
 
 INCLUDEPATH += \
     $$PWD

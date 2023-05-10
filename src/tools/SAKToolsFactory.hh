@@ -7,13 +7,13 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#ifndef SAKTOOLSFACTORY2_H
-#define SAKTOOLSFACTORY2_H
+#ifndef SAKTOOLSFACTORY_HH
+#define SAKTOOLSFACTORY_HH
 
 #include <QObject>
 #include "SAKBaseTool.hh"
 
-class SAKToolsFactory2 : public QObject
+class SAKToolsFactory : public QObject
 {
     Q_OBJECT
 public:
@@ -37,12 +37,12 @@ public:
     Q_ENUM(EDEnumToolsType);
 
 private:
-    explicit SAKToolsFactory2(QObject *parent = Q_NULLPTR);
+    explicit SAKToolsFactory(QObject *parent = Q_NULLPTR);
 
 public:
-    static SAKToolsFactory2 *instance();
+    static SAKToolsFactory *instance();
     SAKBaseTool *createTool(int type);
 
 };
 
-#endif // SAKTOOLSFACTORY2_H
+#endif // SAKTOOLSFACTORY_H
