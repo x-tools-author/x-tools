@@ -1,0 +1,18 @@
+[
+    {
+        "friendly-name": "简体中文",
+        "name": "zh_CN",
+        "packets": [
+            "common",
+            "easydebug"
+        ]
+    },
+    {
+        "friendly-name": "English",
+        "name": "en",
+        "packets": [
+            "common",
+            "easydebug"
+        ]
+    }
+]

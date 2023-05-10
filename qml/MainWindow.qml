@@ -1,0 +1,205 @@
+import QtQuick
+import QtQuick.Layouts
+import QtQuick.Controls
+import Qt5Compat.GraphicalEffects
+
+import QtQuick.Controls.Material
+
+import ED.EasyDebug
+import "common"
+
+Window {
+    id: mainWindow
+    title: qsTr("EasyDebug")
+    visible: true
+    width: 1024
+    height: 768
+    color: "#00000000"
+    flags: Qt.FramelessWindowHint | Qt.Window
+
+    property alias keysObj: settingKeys
+
+    property int edMaterialTheme: {
+        var theme = edSettings.edValue(settingKeys.materialTheme)
+
+        if (theme === Material.Dark) {
+            //edMaterialAccent = Material.color(edMaterialAccent, Material.Shade200)
+        }
+
+        if (theme) {
+            return theme
+        } else {
+            return Material.System
+        }
+    }
+    property string edMaterialAccent:  {
+        var accent = edSettings.edValue(settingKeys.materialAccent)
+        if (accent) {
+            return accent
+        } else {
+            return Material.color(Material.Pink)
+        }
+    }
+    property string edMaterialPrimary:  {
+        var primary = edSettings.edValue(settingKeys.materialPrimary)
+        if (primary) {
+            return primary
+        } else {
+            return Material.color(Material.Indigo)
+        }
+    }
+
+    onEdMaterialThemeChanged: edSettings.edSetValue(settingKeys.materialTheme, String(edMaterialTheme))
+    onEdMaterialAccentChanged: edSettings.edSetValue(settingKeys.materialAccent, String(edMaterialAccent))
+    onEdMaterialPrimaryChanged: edSettings.edSetValue(settingKeys.materialPrimary, String(edMaterialPrimary))
+
+    Material.theme: edMaterialTheme
+    Material.accent: edMaterialAccent
+    Material.primary: edMaterialPrimary
+
+    property bool isWindowed: visibility === Window.Windowed
+    readonly property string edTrue: "true"
+    readonly property string edFalse: "false"
+
+    QtObject {
+        id: settingKeys
+        readonly property string materialTheme: "materialTheme"
+        readonly property string materialAccent: "materialAccent"
+        readonly property string materialPrimary: "materialPrimary"
+        readonly property string pageIndex: "pageIndex"
+    }
+
+    MouseArea {
+        hoverEnabled: true
+        anchors.fill: parent
+        onPositionChanged: function (mouse) {
+            if (mouse.x < 4) {
+                cursorShape = Qt.SizeHorCursor
+            } else if (mouse.x > mainWindow.width - 4) {
+                cursorShape = Qt.SizeHorCursor
+            } else if (mouse.y < 4) {
+                cursorShape = Qt.SizeVerCursor
+            } else if (mouse.y > mainWindow.height - 4) {
+                cursorShape = Qt.SizeVerCursor
+            }
+        }
+        onPressed: function (mouse){
+            if (mouse.x < 4) {
+                mainWindow.startSystemResize(Qt.LeftEdge)
+            } else if (mouse.x > mainWindow.width - 4) {
+                mainWindow.startSystemResize(Qt.RightEdge)
+            } else if (mouse.y < 4) {
+                mainWindow.startSystemResize(Qt.TopEdge)
+            } else if (mouse.y > mainWindow.height - 4) {
+                mainWindow.startSystemResize(Qt.BottomEdge)
+            }
+        }
+    }
+    Pane {
+        id: mainWindowPane
+        anchors.fill: parent
+        anchors.margins: isWindowed ? 8 : 0
+        padding: 0
+        antialiasing: true
+        background: Rectangle {
+            id: mainWindowPaneBackgroundRectangle
+            radius: isWindowed ? 8 : 0
+            border.width: 0
+            layer.enabled: true
+            antialiasing: true
+            color: Material.background
+            layer.effect: DropShadow {
+                antialiasing: true
+                samples: mainWindowPaneBackgroundRectangle.radius*2
+                radius: mainWindowPaneBackgroundRectangle.radius
+            }
+        }
+        MainWindowToolBar {
+            id: toolBar
+            anchors.left: parent.left
+            anchors.top: parent.top
+            anchors.bottom: parent.bottom
+            onPageIndexChanged: edSettings.edSetValue(settingKeys.pageIndex, pageIndex)
+            onInvokeAddPage: function (qmlFile) {
+                pageRepeaterListModel.append({page: "qrc:/qml/" + qmlFile})
+            }
+            onInvokeRemovePage: function (pageIndex) {
+                var i = pageIndex - fixedpage
+                if (i >= 0 && i < pageRepeaterListModel.count) {
+                    pageRepeaterListModel.remove(i, 1)
+                    console.info("Page removed:", pageIndex)
+                    removePageIndex(pageIndex)
+                }
+            }
+            Component.onCompleted: {
+                var index = edSettings.edValue(settingKeys.pageIndex)
+                if (index !== undefined) {
+                    pageIndex = index > (fixedpage - 1) ? 0 : index
+                }
+            }
+            EDVerticalLine { anchors.right: parent.right }
+        }
+        MainWindowTitleBar {
+            id: titleBar
+            mainWindowVisibility: mainWindow.visibility
+            height: 40
+            anchors.top: parent.top
+            anchors.left: toolBar.right
+            anchors.right: parent.right
+            onInvokeClose: mainWindow.close()
+            onInvokeShowWindowed: mainWindow.showNormal()
+            onInvokeShowMaximized: mainWindow.showMaximized()
+            onInvokeShowMinimized: mainWindow.showMinimized()
+        }
+        StackLayout {
+            id: pageStackLayout
+            currentIndex: toolBar.pageIndex
+            anchors.top: titleBar.bottom
+            anchors.left: toolBar.right
+            anchors.right: parent.right
+            anchors.bottom: parent.bottom
+            MainWindowSerialPortPage {
+                id: comPage
+            }
+            MainWindowBleCentralPage {
+                id: blePage
+            }
+            MainWindowUdpClientPage {
+                id: udpClientPage
+            }
+            MainWindowUdpServerPage {
+                id: udpServerPage
+            }
+            MainWindowTcpClientPage {
+                id: tcpClientPage
+            }
+            MainWindowTcpServerPage {
+                id: tcpServerPage
+            }
+            MainWindowWebSocketClientPage {
+                id: websocketClientPage
+            }
+            MainWindowWebSocketServerPage {
+                id: websocketServerPage
+            }
+
+            Repeater {
+                id: pageRepeater
+                model: ListModel {
+                    id: pageRepeaterListModel
+                }
+                Loader {
+                    asynchronous: true
+                    source: page
+                }
+            }
+
+            MainWindowInfoPage {
+                id: infoPage
+            }
+            MainWindowSettingsPage {
+                id: settingsPage
+            }
+        }
+    } // EDPane
+}
