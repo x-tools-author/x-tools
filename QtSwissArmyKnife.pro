@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT += core gui sql network quick bluetooth
+QT += core gui sql network bluetooth quick quickcontrols2
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 

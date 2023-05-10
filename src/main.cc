@@ -18,11 +18,18 @@
 #include <QDesktopWidget>
 #endif
 
+#include <QLocale>
+#include <QVariant>
+#include <QQuickStyle>
+#include <QQmlContext>
+#include <QFontDatabase>
+#include <QSurfaceFormat>
+#include <QGuiApplication>
+#include <QQmlApplicationEngine>
+
 #include "SAKMainWindow.hh"
 #include "SAKApplication.hh"
 #include "SAKSystemTrayIcon.hh"
-
-#include "toolsui/EDDevice.hpp"
 
 #include "common/EDBle.hpp"
 #include "common/EDCrc.hpp"
@@ -34,6 +41,7 @@
 #include "common/EDDataStructure.hpp"
 #include "common/EDNetworkInterface.hpp"
 
+#include "tools/SAKToolBox.hh"
 #include "tools/SAKBaseTool.hh"
 #include "tools/SAKMaskerTool.hh"
 #include "tools/SAKStorerTool.hh"
@@ -61,6 +69,19 @@ int main(int argc, char *argv[])
 #endif
 #endif
 #endif
+
+    // High dpi settings.
+    auto edSettings = EDSettings::instance();
+    auto policy = edSettings->value("highDpiScaleFactorRoundingPolicy").toInt();
+    auto cookedPolicy = Qt::HighDpiScaleFactorRoundingPolicy(policy);
+    QGuiApplication::setHighDpiScaleFactorRoundingPolicy(cookedPolicy);
+
+    // Language setttings.
+    auto language = edSettings->value("language").toString();
+    if (language.isEmpty()) {
+        language = QLocale::system().name();
+        edSettings->setValue("language", language);
+    }
 
     int exitCode = 0;
     do {
@@ -110,6 +131,73 @@ int main(int argc, char *argv[])
         QSplashScreen *splashScreen = app.splashScreen();
         splashScreen->finish(mainWindow);
 
+
+
+
+
+        auto edInterface = new EDInterface(&app);
+        auto edCrc = new EDCrc(&app);
+        auto edDataStructure = new EDDataStructure(&app);
+#if 0
+    QSurfaceFormat format;
+    format.setSamples(8);
+    QSurfaceFormat::setDefaultFormat(format);
+#endif
+        auto edI18n = EDI18N::instance();
+        edI18n->setConfigurationFile(":/res/i18n/easydebug.json");
+        edI18n->installTranslator(language);
+
+        auto edFontFamilies = QFontDatabase::families();
+        QString family = edSettings->value("fontFamily").toString();
+        if (family.isEmpty()) {
+            family = app.font().family();
+            edSettings->edSetValue("fontFamily", family);
+        } else {
+            app.setFont(family);
+        }
+
+        QQuickStyle::setStyle("Material");
+        QQmlApplicationEngine qmlAppEngine;
+
+        const QString reason = "Uncreatable type!";
+        qmlRegisterType<EDBle>("ED.EasyDebug", 1, 0, "EDBle");
+        qmlRegisterType<EDCrc>("ED.EasyDebug", 1, 0, "EDCrc");
+        qmlRegisterType<SAKToolBox>("ED.EasyDebug", 1, 0, "EDDevice");
+        qmlRegisterType<EDSerialPort>("ED.EasyDebug", 1, 0, "EDSerialPort");
+        qmlRegisterType<EDHighlighter>("ED.EasyDebug", 1, 0, "EDHighlighter");
+        qmlRegisterType<EDNetworkInterface>("ED.EasyDebug", 1, 0, "EDNetworkInterface");
+
+        qmlRegisterUncreatableType<SAKBaseTool>("ED.EasyDebug", 1, 0, "EDBaseTool", reason);
+        qmlRegisterUncreatableType<SAKMaskerTool>("ED.EasyDebug", 1, 0, "EDMaskerTool", reason);
+        qmlRegisterUncreatableType<SAKStorerTool>("ED.EasyDebug", 1, 0, "EDStorerTool", reason);
+        qmlRegisterUncreatableType<SAKEmitterTool>("ED.EasyDebug", 1, 0, "EDEmitterTool", reason);
+        qmlRegisterUncreatableType<SAKAnalyzerTool>("ED.EasyDebug", 1, 0, "EDAnalyzerTool", reason);
+        qmlRegisterUncreatableType<SAKToolsFactory>("ED.EasyDebug", 1, 0, "EDToolsFactory", reason);
+        qmlRegisterUncreatableType<SAKPrestorerTool>("ED.EasyDebug", 1, 0, "EDPrestorerTool", reason);
+        qmlRegisterUncreatableType<SAKResponserTool>("ED.EasyDebug", 1, 0, "EDResponserTool", reason);
+        qmlRegisterUncreatableType<SAKUdpClientTool>("ED.EasyDebug", 1, 0, "EDUdpClientTool", reason);
+        qmlRegisterUncreatableType<SAKUdpServerTool>("ED.EasyDebug", 1, 0, "EDUdpServerTool", reason);
+        qmlRegisterUncreatableType<SAKTcpClientTool>("ED.EasyDebug", 1, 0, "EDTcpClientTool", reason);
+        qmlRegisterUncreatableType<SAKTcpServerTool>("ED.EasyDebug", 1, 0, "EDTcpServerTool", reason);
+        qmlRegisterUncreatableType<SAKBleCentralTool>("ED.EasyDebug", 1, 0, "EDBleCentralTool", reason);
+        qmlRegisterUncreatableType<SAKSerialPortTool>("ED.EasyDebug", 1, 0, "EDSerialportTool", reason);
+        qmlRegisterUncreatableType<SAKWebSocketServerTool>("ED.EasyDebug", 1, 0, "EDWebSocketServerTool", reason);
+        qmlRegisterUncreatableType<SAKWebSocketClientTool>("ED.EasyDebug", 1, 0, "EDWebSocketClientTool", reason);
+
+        qmlRegisterUncreatableType<EDInterface>("ED.EasyDebug", 1, 0, "EDInterface", reason);
+        qmlRegisterUncreatableType<EDDataStructure>("ED.EasyDebug", 1, 0, "EDDataStructure", reason);
+
+        qmlAppEngine.rootContext()->setContextProperty("edCrc", edCrc);
+        qmlAppEngine.rootContext()->setContextProperty("edI18n", edI18n);
+        qmlAppEngine.rootContext()->setContextProperty("edSettings", edSettings);
+        qmlAppEngine.rootContext()->setContextProperty("edInterface", edInterface);
+        qmlAppEngine.rootContext()->setContextProperty("edDataStructure", edDataStructure);
+        qmlAppEngine.rootContext()->setContextProperty("edFontFamilies", edFontFamilies);
+        qmlAppEngine.load("qrc:/qml/MainWindow.qml");
+
+        // Update ui text.
+        QObject::connect(edI18n, &EDI18N::languageChanged,
+                         &qmlAppEngine, &QQmlApplicationEngine::retranslate);
 
         // If the exit code is equal to SAK_REBOOT_CODE, the application will
         // be reboot.

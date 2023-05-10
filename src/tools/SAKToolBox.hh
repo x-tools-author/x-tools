@@ -7,14 +7,14 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#ifndef EDDEVICE_HPP
-#define EDDEVICE_HPP
+#ifndef SAKTOOLBOX_HH
+#define SAKTOOLBOX_HH
 
 #include <QObject>
 #include <QVariant>
 #include "tools/SAKBaseTool.hh"
 
-class EDDevice : public QObject
+class SAKToolBox : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QVariant communication READ communication
@@ -29,7 +29,7 @@ class EDDevice : public QObject
 
     Q_PROPERTY(bool isWorking READ isWorking NOTIFY isWorkingChanged)
 public:
-    explicit EDDevice(QObject *parent = nullptr);
+    explicit SAKToolBox(QObject *parent = nullptr);
 
     /// You must call the interface before useing the call object.
     Q_INVOKABLE void setupComunicationTool(int type);
@@ -76,4 +76,4 @@ private:
     Q_SIGNAL void isWorkingChanged();
 };
 
-#endif // EDDEVICE_HPP
+#endif // SAKTOOLBOX_H

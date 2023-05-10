@@ -7,10 +7,10 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#include "EDDevice.hpp"
+#include "SAKToolBox.hh"
 #include "tools/SAKToolsFactory.hh"
 
-EDDevice::EDDevice(QObject *parent)
+SAKToolBox::SAKToolBox(QObject *parent)
     : QObject{parent}
 {
     auto createTool = [](int type)->SAKBaseTool*{
@@ -27,7 +27,7 @@ EDDevice::EDDevice(QObject *parent)
     mPrestorerTool    = createTool(SAKToolsFactory::PrestoreTool);
 }
 
-void EDDevice::setupComunicationTool(int type)
+void SAKToolBox::setupComunicationTool(int type)
 {
     if (mComunicationTool) {
         mComunicationTool->exit();
@@ -100,42 +100,42 @@ void EDDevice::setupComunicationTool(int type)
     emit comunicationToolChanged();
 }
 
-SAKBaseTool *EDDevice::comunicationTool()
+SAKBaseTool *SAKToolBox::comunicationTool()
 {
     return mComunicationTool;
 }
 
-SAKBaseTool *EDDevice::inputMaskerTool()
+SAKBaseTool *SAKToolBox::inputMaskerTool()
 {
     return mInputMaskerTool;
 }
 
-SAKBaseTool *EDDevice::outputMaskerTool()
+SAKBaseTool *SAKToolBox::outputMaskerTool()
 {
     return mOutputMaskerTool;
 }
 
-SAKBaseTool *EDDevice::analyerTool()
+SAKBaseTool *SAKToolBox::analyerTool()
 {
     return mAnalyzerTool;
 }
 
-SAKBaseTool *EDDevice::emiterTool()
+SAKBaseTool *SAKToolBox::emiterTool()
 {
     return mEmitterTool;
 }
 
-SAKBaseTool *EDDevice::responserTool()
+SAKBaseTool *SAKToolBox::responserTool()
 {
     return mResponserTool;
 }
 
-SAKBaseTool *EDDevice::prestorerTool()
+SAKBaseTool *SAKToolBox::prestorerTool()
 {
     return mPrestorerTool;
 }
 
-void EDDevice::open()
+void SAKToolBox::open()
 {
     if (mComunicationTool) {
         mInputMaskerTool->start();
@@ -154,7 +154,7 @@ void EDDevice::open()
     }
 }
 
-void EDDevice::close()
+void SAKToolBox::close()
 {
     if (mComunicationTool) {
         mInputMaskerTool->exit();
@@ -181,12 +181,12 @@ void EDDevice::close()
     }
 }
 
-void EDDevice::send(const QByteArray &bytes)
+void SAKToolBox::send(const QByteArray &bytes)
 {
     mInputMaskerTool->inputBytes(bytes, QVariant());
 }
 
-void EDDevice::uninitializedTips()
+void SAKToolBox::uninitializedTips()
 {
     Q_ASSERT_X(false, __FUNCTION__,
                "You must call the interface name setupComunicationTool() "

@@ -6,6 +6,8 @@
 
 #include <QMap>
 #include <QObject>
+#include <QJsonArray>
+#include <QJsonObject>
 #include <QTranslator>
 #include <QVariantList>
 #include <QLoggingCategory>
