@@ -7,20 +7,20 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#ifndef EDSTORERTOOL_H
-#define EDSTORERTOOL_H
+#ifndef SAKSTORERTOOL_H
+#define SAKSTORERTOOL_H
 
 #include <QTimer>
 #include <QMutex>
 
 #include "SAKBaseTool.hh"
 
-class EDStorerTool : public SAKBaseTool
+class SAKStorerTool : public SAKBaseTool
 {
     Q_OBJECT
 public:
-    explicit EDStorerTool(QObject *parent = nullptr);
-    ~EDStorerTool();
+    explicit SAKStorerTool(QObject *parent = nullptr);
+    ~SAKStorerTool();
 
     virtual void inputBytes(
             const QByteArray &bytes,
@@ -33,9 +33,7 @@ public:
     Q_INVOKABLE void setSaveMs(bool saveMs);
 
 protected:
-    virtual bool initialize(QString &errStr) final;
-    virtual void outputBytesHandler() final;
-    virtual void uninitialize() final;
+    virtual void run() final;
 
 private:
     struct Parameters {
@@ -47,14 +45,15 @@ private:
     } mParameters;
     QMutex mParametersMutex;
 
-    QTimer *mWriteTimer{nullptr};
-
     struct InputContext {
         QByteArray bytes;
-        QJsonObject context;
+        QVariant context;
     };
     QList<InputContext> mInputContextList;
     QMutex mInputContextListMutex;
+
+private:
+    void write2file();
 };
 
-#endif // EDSTORERTOOL_H
+#endif // SAKSTORERTOOL_H

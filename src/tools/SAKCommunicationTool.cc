@@ -60,5 +60,7 @@ void SAKCommunicationTool::run()
     exec();
     rxTimer->deleteLater();
     rxTimer = nullptr;
+    txTimer->deleteLater();
+    txTimer = nullptr;
     uninitialize();
 }

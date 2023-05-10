@@ -13,24 +13,24 @@
 #include <QDateTime>
 #include <QTextStream>
 
-#include "EDStorerTool.hh"
+#include "SAKStorerTool.hh"
 #include "common/EDInterface.hpp"
 
-EDStorerTool::EDStorerTool(QObject *parent)
-    : EDBaseTool{"ED.StorerTool", parent}
+SAKStorerTool::SAKStorerTool(QObject *parent)
+    : SAKBaseTool{"SAK.StorerTool", parent}
 {
 
 }
 
-EDStorerTool::~EDStorerTool()
+SAKStorerTool::~SAKStorerTool()
 {
     mInputContextListMutex.lock();
     mInputContextList.clear();
     mInputContextListMutex.unlock();
 }
 
-void EDStorerTool::inputBytes(const QByteArray &bytes,
-                              const QJsonObject &context)
+void SAKStorerTool::inputBytes(const QByteArray &bytes,
+                              const QVariant &context)
 {
     if (enable()) {
         mInputContextListMutex.lock();
@@ -39,46 +39,53 @@ void EDStorerTool::inputBytes(const QByteArray &bytes,
     }
 }
 
-void EDStorerTool::setPath(const QString &path)
+void SAKStorerTool::setPath(const QString &path)
 {
     mParameters.file = path;
     mParameters.file = mParameters.file.remove("file:///");
 }
 
-void EDStorerTool::setFormat(int format)
+void SAKStorerTool::setFormat(int format)
 {
     mParameters.format = format;
 }
 
-void EDStorerTool::setSaveDate(bool saveDate)
+void SAKStorerTool::setSaveDate(bool saveDate)
 {
     mParameters.saveDate = saveDate;
 }
 
-void EDStorerTool::setSaveTime(bool saveTime)
+void SAKStorerTool::setSaveTime(bool saveTime)
 {
     mParameters.saveTime = saveTime;
 }
 
-void EDStorerTool::setSaveMs(bool saveMs)
+void SAKStorerTool::setSaveMs(bool saveMs)
 {
     mParameters.saveMs = saveMs;
 }
 
-bool EDStorerTool::initialize(QString &errStr)
+void SAKStorerTool::run()
 {
-    mWriteTimer = new QTimer();
-    mWriteTimer->setInterval(2000);
-    mWriteTimer->setSingleShot(true);
-    connect(mWriteTimer, &QTimer::timeout, mWriteTimer, [=](){
-        emit invokeOutputBytes(EDPrivateSignal{});
+    QTimer *writeTimer = new QTimer();
+    writeTimer->setInterval(2000);
+    writeTimer->setSingleShot(true);
+    connect(writeTimer, &QTimer::timeout, writeTimer, [=](){
+        write2file();
+        writeTimer->start();
     });
-    mWriteTimer->start();
+    writeTimer->start();
 
-    return true;
+    exec();
+
+    writeTimer->stop();
+    writeTimer->deleteLater();
+    writeTimer = nullptr;
+    write2file();
+    mInputContextList.clear();
 }
 
-void EDStorerTool::outputBytesHandler()
+void SAKStorerTool::write2file()
 {
     if (mParameters.file.isEmpty()) {
         mInputContextList.clear();
@@ -131,28 +138,12 @@ void EDStorerTool::outputBytesHandler()
                 }
             }
 
-            QString flag = context.value("isRx").toBool() ? "Rx: " : "Tx: ";
+            QString flag = context.toJsonObject().value("isRx").toBool() ? "Rx: " : "Tx: ";
             str = dtStr + flag + str;
             outStream << str << Qt::endl;
         }
         file.close();
-
-        if (mWriteTimer) {
-            mWriteTimer->start();
-        }
     } else {
         outputMessage(QtWarningMsg, file.errorString());
     }
-}
-
-void EDStorerTool::uninitialize()
-{
-    if (mWriteTimer) {
-        mWriteTimer->stop();
-        mWriteTimer->deleteLater();
-        mWriteTimer = nullptr;
-    }
-
-    outputBytesHandler();
-    mInputContextList.clear();
 }

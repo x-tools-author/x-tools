@@ -1,45 +1,51 @@
 /******************************************************************************
- * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
+ * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
+ *
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#include "EDSerialPortTool.hpp"
+#include "SAKSerialPortTool.hh"
 
-EDSerialPortTool::EDSerialPortTool(QObject *parent)
-    : EDBaseTool("ED.SerialPortTool", parent)
+SAKSerialPortTool::SAKSerialPortTool(QObject *parent)
+    : SAKCommunicationTool("SAK.SerialPortTool", parent)
 {
 
 }
 
-void EDSerialPortTool::setPortName(const QString &portName)
+void SAKSerialPortTool::setPortName(const QString &portName)
 {
     mParameters.portName = portName;
 }
 
-void EDSerialPortTool::setBaudRate(int baudRate)
+void SAKSerialPortTool::setBaudRate(int baudRate)
 {
     mParameters.baudRate = baudRate;
 }
 
-void EDSerialPortTool::setDataBits(int dataBits)
+void SAKSerialPortTool::setDataBits(int dataBits)
 {
     mParameters.dataBits = dataBits;
 }
 
-void EDSerialPortTool::setStopBits(int stopBits)
+void SAKSerialPortTool::setStopBits(int stopBits)
 {
     mParameters.stopBits = stopBits;
 }
 
-void EDSerialPortTool::setParity(int parity)
+void SAKSerialPortTool::setParity(int parity)
 {
     mParameters.parity = parity;
 }
 
-void EDSerialPortTool::setFlowControl(int flowControl)
+void SAKSerialPortTool::setFlowControl(int flowControl)
 {
     mParameters.flowControl = flowControl;
 }
 
-bool EDSerialPortTool::initialize(QString &errStr)
+bool SAKSerialPortTool::initialize()
 {
     mSerialPort = new QSerialPort();
     mSerialPort->setPortName(mParameters.portName);
@@ -50,7 +56,7 @@ bool EDSerialPortTool::initialize(QString &errStr)
     auto cookedFlowControl = QSerialPort::FlowControl(mParameters.flowControl);
     mSerialPort->setFlowControl(cookedFlowControl);
 
-    setToolFlag(mParameters.portName);
+    mToolName = mParameters.portName;
 
     QString info = QString("portName:%1, baudRate:%2, dataBits:%3, "
                            "stopBits:%4, parity:%5, flowControl: %6")
@@ -69,14 +75,15 @@ bool EDSerialPortTool::initialize(QString &errStr)
         return false;
     }
 
+    mIsTimerReading = false;
     connect(mSerialPort, &QSerialPort::readyRead, mSerialPort, [=](){
-        emit invokeOutputBytes(EDPrivateSignal{});
+        readBytes();
     });
 
     return true;
 }
 
-void EDSerialPortTool::inputBytesHandler(const QByteArray &bytes)
+void SAKSerialPortTool::writeBytes(const QByteArray &bytes, const QVariant &context)
 {
     if (mSerialPort && mSerialPort->isOpen()) {
         qint64 ret = mSerialPort->write(bytes);
@@ -85,24 +92,24 @@ void EDSerialPortTool::inputBytesHandler(const QByteArray &bytes)
         } else if (ret > 0) {
             outputMessage(QtInfoMsg,
                           qPrintable("Tx:" + QString(bytes.toHex(' '))));
-            emit bytesInputted(toolFlag(), bytes);
+            emit bytesInputted(bytes, context);
         }
     }
 }
 
-void EDSerialPortTool::outputBytesHandler()
+void SAKSerialPortTool::readBytes()
 {
     if (mSerialPort && mSerialPort->isOpen()) {
         QByteArray bytes = mSerialPort->readAll();
         if (!bytes.isEmpty()) {
             outputMessage(QtInfoMsg,
                           qPrintable("Rx:" + QString(bytes.toHex(' '))));
-            emit bytesOutputted(toolFlag(), bytes);
+            emit bytesOutputted(bytes, QVariant());
         }
     }
 }
 
-void EDSerialPortTool::uninitialize()
+void SAKSerialPortTool::uninitialize()
 {
     if (mSerialPort) {
         mSerialPort->close();

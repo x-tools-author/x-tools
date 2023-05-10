@@ -36,7 +36,7 @@ protected:
     virtual void readBytes() = 0;
     virtual void writeBytes(const QByteArray &bytes,
                             const QVariant &context) = 0;
-    virtual bool uninitialize() = 0;
+    virtual void uninitialize() = 0;
 
 protected:
     // If the value is false,

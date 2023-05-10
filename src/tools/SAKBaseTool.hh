@@ -39,11 +39,13 @@ signals:
     void errorOccure(const QString &errorString);
 
 protected:
+    QString mToolName{""};
+
+protected:
     void outputMessage(int type, const QString &info);
 
 private:
     QLoggingCategory mLoggingCategory;
-    QString mToolName{""};
 
 protected:
     bool mIsWorking;

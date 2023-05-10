@@ -1,19 +1,25 @@
 /******************************************************************************
- * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
+ * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
+ *
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#ifndef EDSERIALPORTTOOL_HPP
-#define EDSERIALPORTTOOL_HPP
+#ifndef SAKSERIALPORTTOOL_HH
+#define SAKSERIALPORTTOOL_HH
 
 #include <QSerialPort>
 #include <QSerialPortInfo>
 
-#include "EDBaseTool.hpp"
+#include "SAKCommunicationTool.hh"
 
-class EDSerialPortTool : public EDBaseTool
+class SAKSerialPortTool : public SAKCommunicationTool
 {
     Q_OBJECT
 public:
-    EDSerialPortTool(QObject *parent = Q_NULLPTR);
+    SAKSerialPortTool(QObject *parent = Q_NULLPTR);
 
     Q_INVOKABLE void setPortName(const QString &portName);
     Q_INVOKABLE void setBaudRate(int baudRate);
@@ -23,9 +29,10 @@ public:
     Q_INVOKABLE void setFlowControl(int flowControl);
 
 protected:
-    virtual bool initialize(QString &errStr) final;
-    virtual void inputBytesHandler(const QByteArray &bytes) final;
-    virtual void outputBytesHandler() final;
+    virtual bool initialize() final;
+    virtual void writeBytes(const QByteArray &bytes,
+                            const QVariant &context) final;
+    virtual void readBytes() final;
     virtual void uninitialize() final;
 
 private:
@@ -42,4 +49,4 @@ private:
     QSerialPort *mSerialPort{Q_NULLPTR};
 };
 
-#endif // EDSERIALPORTTOOL_HH
+#endif // SAKSERIALPORTTOOL_H
