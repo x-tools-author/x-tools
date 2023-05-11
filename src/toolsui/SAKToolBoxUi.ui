@@ -19,23 +19,23 @@
      <property name="currentIndex">
       <number>0</number>
      </property>
-     <widget class="QWidget" name="tab">
+     <widget class="QWidget" name="tabIO">
       <attribute name="title">
        <string>I/O</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_2">
-       <item row="0" column="0" colspan="3">
-        <widget class="QTextBrowser" name="textBrowser"/>
+       <item row="1" column="0" colspan="3">
+        <widget class="QTextBrowser" name="textBrowserOutput"/>
        </item>
-       <item row="1" column="0">
+       <item row="2" column="0">
         <widget class="QLabel" name="label">
          <property name="text">
-          <string>Input text</string>
+          <string>Input</string>
          </property>
         </widget>
        </item>
-       <item row="2" column="0" colspan="3">
-        <widget class="QComboBox" name="comboBox">
+       <item row="3" column="0" colspan="3">
+        <widget class="QComboBox" name="comboBoxInput">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -44,14 +44,14 @@
          </property>
         </widget>
        </item>
-       <item row="1" column="2">
+       <item row="2" column="2">
         <widget class="QLabel" name="label_7">
          <property name="text">
-          <string>TextLabel</string>
+          <string> </string>
          </property>
         </widget>
        </item>
-       <item row="1" column="1">
+       <item row="2" column="1">
         <spacer name="horizontalSpacer">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
@@ -64,11 +64,37 @@
          </property>
         </spacer>
        </item>
+       <item row="0" column="0" colspan="3">
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QLabel" name="label_8">
+           <property name="text">
+            <string>Output</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab_2">
+     <widget class="QWidget" name="tabEmiter">
       <attribute name="title">
-       <string>Tab 2</string>
+       <string>Emiter</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tabResponser">
+      <attribute name="title">
+       <string>Responser</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tabPrestorer">
+      <attribute name="title">
+       <string>Prestorer</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tabTransponder">
+      <attribute name="title">
+       <string>Transponder</string>
       </attribute>
      </widget>
     </widget>
@@ -80,7 +106,7 @@
        <number>0</number>
       </property>
       <item row="2" column="0">
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="pushButtonDeviceSettings">
         <property name="text">
          <string>Settings</string>
         </property>
@@ -101,7 +127,7 @@
        </widget>
       </item>
       <item row="1" column="0" colspan="2">
-       <widget class="QWidget" name="widget_2" native="true">
+       <widget class="QWidget" name="widgetDevice" native="true">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -131,24 +157,24 @@
        </widget>
       </item>
       <item row="15" column="1">
-       <widget class="QPushButton" name="pushButton_5">
+       <widget class="QPushButton" name="pushButtonInputSend">
         <property name="text">
-         <string>PushButton</string>
+         <string>Send</string>
         </property>
        </widget>
       </item>
       <item row="15" column="0">
-       <widget class="QPushButton" name="pushButton_6">
+       <widget class="QPushButton" name="pushButtonInputSettings">
         <property name="text">
-         <string>PushButton</string>
+         <string>Settings</string>
         </property>
        </widget>
       </item>
       <item row="13" column="1">
-       <widget class="QComboBox" name="comboBox_2"/>
+       <widget class="QComboBox" name="comboBoxInputIntervel"/>
       </item>
       <item row="14" column="1">
-       <widget class="QComboBox" name="comboBox_3"/>
+       <widget class="QComboBox" name="comboBoxInputFormat"/>
       </item>
       <item row="12" column="0" colspan="2">
        <widget class="QLabel" name="label_4">
@@ -158,21 +184,21 @@
        </widget>
       </item>
       <item row="4" column="0">
-       <widget class="QPushButton" name="pushButton_3">
+       <widget class="QPushButton" name="pushButtonOutputSettings">
         <property name="text">
          <string>Settings</string>
         </property>
        </widget>
       </item>
       <item row="4" column="1">
-       <widget class="QPushButton" name="pushButton_4">
+       <widget class="QPushButton" name="pushButtonOutputClear">
         <property name="text">
          <string>Clear</string>
         </property>
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="pushButtonDeviceOpen">
         <property name="text">
          <string>Open</string>
         </property>
@@ -186,44 +212,44 @@
        </widget>
       </item>
       <item row="5" column="0" colspan="2">
-       <widget class="QCheckBox" name="checkBox">
+       <widget class="QCheckBox" name="checkBoxOutputRx">
         <property name="text">
-         <string>CheckBox</string>
+         <string>Show rx informaton</string>
         </property>
        </widget>
       </item>
       <item row="6" column="0" colspan="2">
-       <widget class="QCheckBox" name="checkBox_2">
+       <widget class="QCheckBox" name="checkBoxOutputTx">
         <property name="text">
-         <string>CheckBox</string>
+         <string>Show tx information</string>
         </property>
        </widget>
       </item>
       <item row="7" column="0" colspan="2">
-       <widget class="QCheckBox" name="checkBox_3">
+       <widget class="QCheckBox" name="checkBoxOutputDate">
         <property name="text">
-         <string>CheckBox</string>
+         <string>Show date information</string>
         </property>
        </widget>
       </item>
       <item row="8" column="0" colspan="2">
-       <widget class="QCheckBox" name="checkBox_4">
+       <widget class="QCheckBox" name="checkBoxOutputTime">
         <property name="text">
-         <string>CheckBox</string>
+         <string>Show time information</string>
         </property>
        </widget>
       </item>
       <item row="9" column="0" colspan="2">
-       <widget class="QCheckBox" name="checkBox_5">
+       <widget class="QCheckBox" name="checkBoxOutputMs">
         <property name="text">
-         <string>CheckBox</string>
+         <string>Show ms information</string>
         </property>
        </widget>
       </item>
       <item row="10" column="0" colspan="2">
-       <widget class="QCheckBox" name="checkBox_6">
+       <widget class="QCheckBox" name="checkBoxOutputWrap">
         <property name="text">
-         <string>CheckBox</string>
+         <string>Show wrap</string>
         </property>
        </widget>
       </item>
@@ -233,5 +259,22 @@
   </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButtonOutputClear</sender>
+   <signal>clicked()</signal>
+   <receiver>textBrowserOutput</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>163</x>
+     <y>205</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>272</x>
+     <y>208</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

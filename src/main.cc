@@ -59,6 +59,8 @@
 #include "tools/SAKWebSocketClientTool.hh"
 #include "tools/SAKWebSocketServerTool.hh"
 
+#include "toolsui/SAKToolBoxUi.hh"
+
 int main(int argc, char *argv[])
 {
 
@@ -193,7 +195,10 @@ int main(int argc, char *argv[])
         qmlAppEngine.rootContext()->setContextProperty("edInterface", edInterface);
         qmlAppEngine.rootContext()->setContextProperty("edDataStructure", edDataStructure);
         qmlAppEngine.rootContext()->setContextProperty("edFontFamilies", edFontFamilies);
-        qmlAppEngine.load("qrc:/qml/MainWindow.qml");
+        //qmlAppEngine.load("qrc:/qml/MainWindow.qml");
+        mainWindow->close();
+        SAKToolBoxUi *ui = new SAKToolBoxUi();
+        ui->show();
 
         // Update ui text.
         QObject::connect(edI18n, &EDI18N::languageChanged,

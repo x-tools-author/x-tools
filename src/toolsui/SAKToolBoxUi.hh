@@ -12,14 +12,43 @@
 
 #include <QWidget>
 
+namespace Ui {
+class SAKToolBoxUi;
+}
+
+class SAKToolBoxUiParameters;
 class SAKToolBoxUi : public QWidget
 {
     Q_OBJECT
 public:
     explicit SAKToolBoxUi(QWidget *parent = nullptr);
+    ~SAKToolBoxUi();
 
-signals:
+private:
+    SAKToolBoxUiParameters *mToolBoxUiParameters{nullptr};
 
+private:
+    void init();
+
+    void initUi();
+    void initUiDevice();
+    void initUiInput();
+    void initUiOutput();
+
+    void initSettings();
+    void initSettingsDevice();
+    void initSettingsInput();
+    void initSettingsOutput();
+
+    void initSignals();
+    void initSignalsDevice();
+    void initSignalsInput();
+    void initSignalsOutput();
+
+private:
+    Ui::SAKToolBoxUi *ui;
+
+    void onPushButtonInputSetttingsClicked();
 };
 
 #endif // SAKTOOLBOXUI_H
