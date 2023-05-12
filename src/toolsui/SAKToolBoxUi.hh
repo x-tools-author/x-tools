@@ -12,6 +12,8 @@
 
 #include <QWidget>
 
+#include "tools/SAKToolBox.hh"
+
 namespace Ui {
 class SAKToolBoxUi;
 }
@@ -21,7 +23,7 @@ class SAKToolBoxUi : public QWidget
 {
     Q_OBJECT
 public:
-    explicit SAKToolBoxUi(QWidget *parent = nullptr);
+    explicit SAKToolBoxUi(int communicationType, QWidget *parent = nullptr);
     ~SAKToolBoxUi();
 
 private:
@@ -44,6 +46,9 @@ private:
     void initSignalsDevice();
     void initSignalsInput();
     void initSignalsOutput();
+
+private:
+    SAKToolBox *mToolBox;
 
 private:
     Ui::SAKToolBoxUi *ui;

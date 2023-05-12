@@ -41,9 +41,12 @@
 
 #include "SAKMainWindow.hh"
 #include "SAKApplication.hh"
-#include "SAKAssistantsFactory.hh"
 #include "SAKUpdateManager.hh"
 #include "SAKDebuggerFactory.hh"
+#include "SAKAssistantsFactory.hh"
+
+#include "toolsui/SAKToolBoxUi.hh"
+#include "tools/SAKToolsFactory.hh"
 
 #include "ui_SAKMainWindow.h"
 
@@ -104,7 +107,7 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
         QString key = mSettingsKeyContext.currentTabPage;
         sakApp->settings()->setValue(key, index);
     });
-
+#if 0
     // Create debugger, the operation will emit the signal named currentChanged.
     // So you should block it,
     // or the value of setting option(mSettingsKeyContext.currentTabPage)
@@ -131,6 +134,9 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
         }
     }
     mTabWidget->blockSignals(false);
+#else
+
+#endif
     if (mWindowsMenu){
         mWindowsMenu->addSeparator();
     }

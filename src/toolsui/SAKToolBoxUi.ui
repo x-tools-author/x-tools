@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>725</width>
-    <height>574</height>
+    <height>446</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -47,7 +47,7 @@
        <item row="2" column="2">
         <widget class="QLabel" name="label_7">
          <property name="text">
-          <string> </string>
+          <string/>
          </property>
         </widget>
        </item>
@@ -102,7 +102,7 @@
    <item row="0" column="0">
     <widget class="QWidget" name="widget" native="true">
      <layout class="QGridLayout" name="gridLayout">
-      <property name="margin">
+      <property name="margin" stdset="0">
        <number>0</number>
       </property>
       <item row="2" column="0">
@@ -127,11 +127,11 @@
        </widget>
       </item>
       <item row="1" column="0" colspan="2">
-       <widget class="QWidget" name="widgetDevice" native="true">
+       <widget class="QWidget" name="widgetController" native="true">
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>100</height>
+          <height>0</height>
          </size>
         </property>
        </widget>
