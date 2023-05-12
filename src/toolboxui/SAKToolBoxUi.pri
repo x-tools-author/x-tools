@@ -17,4 +17,10 @@ SOURCES += \
     $$PWD/base/SAKToolBoxUiController.cc \
     $$PWD/base/SAKToolBoxUiParameters.cc
 
+
+#------------------------------------------------------------------------------
+include(ble/SAKBleToolBoxUi.pri)
+include(tcp/SAKTcpToolBoxUi.pri)
+include(udp/SAKUdpToolBoxUi.pri)
+include(websocket/SAKWebSocketToolBoxUi.pri)
 include(serialport/SAKSerialPortToolBoxUi.pri)
