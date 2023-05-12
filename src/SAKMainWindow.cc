@@ -59,7 +59,7 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
     ,mSettingKeyEnableTestPage(QString("enableTestPage"))
     ,mSettings(settings)
     ,mSqlDatabase(sqlDatabase)
-    ,mUi(new Ui::SAKMainWindow)
+    ,ui(new Ui::SAKMainWindow)
     ,mTabWidget(new QTabWidget)
 {
     sakMainWindow = this;
@@ -70,7 +70,7 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
     mSettingsKeyContext.exitToSystemTray = QString("%1/exitToSystenTray")
             .arg(qApp->applicationName());
 
-    mUi->setupUi(this);
+    ui->setupUi(this);
     mUpdateManager = new SAKUpdateManager(this);
 
 #ifdef Q_OS_ANDROID
@@ -80,12 +80,14 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
     setCentralWidget(scrollArea);
     scrollArea->setWidget(mTabWidget);
 #else
-    QHBoxLayout *layout = new QHBoxLayout();
-    layout->addWidget(mTabWidget);
-    QWidget *centralWidget = new QWidget(this);
-    setCentralWidget(centralWidget);
-    centralWidget->setLayout(layout);
-    centralWidget->layout()->setContentsMargins(6, 6, 6, 6);
+//    QHBoxLayout *layout = new QHBoxLayout();
+//    layout->addWidget(mTabWidget);
+//    QWidget *centralWidget = new QWidget(this);
+//    setCentralWidget(centralWidget);
+//    centralWidget->setLayout(layout);
+//    centralWidget->layout()->setContentsMargins(6, 6, 6, 6);
+    ui->tabWidget->addTab(mTabWidget, tr("ToolBox"));
+
     QString title = QString(tr("Qt Swiss Army Knife"));
     title.append(QString(" "));
     title.append(QString("v"));
@@ -164,7 +166,7 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
 SAKMainWindow::~SAKMainWindow()
 {
     sakMainWindow = Q_NULLPTR;
-    delete mUi;
+    delete ui;
 }
 
 void SAKMainWindow::initMenuBar()

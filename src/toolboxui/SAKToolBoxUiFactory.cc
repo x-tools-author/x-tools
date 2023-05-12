@@ -9,7 +9,15 @@
  *****************************************************************************/
 #include "SAKToolFactory.hh"
 #include "SAKToolBoxUiFactory.hh"
+#include "SAKTcpClientToolBoxUi.hh"
+#include "SAKTcpServerToolBoxUi.hh"
+#include "SAKUdpClientToolBoxUi.hh"
+#include "SAKUdpServerToolBoxUi.hh"
 #include "SAKSerialPortToolBoxUi.hh"
+#include "SAKBleCentralToolBoxUi.hh"
+#include "SAKBlePeripheralToolBoxUi.hh"
+#include "SAKWebSocketClientToolBoxUi.hh"
+#include "SAKWebSocketServerToolBoxUi.hh"
 
 SAKToolBoxUiFactory::SAKToolBoxUiFactory(QObject *parent)
     : QObject{parent}
@@ -26,7 +34,15 @@ SAKToolBoxUiFactory *SAKToolBoxUiFactory::instance()
 QList<int> SAKToolBoxUiFactory::supportedTools()
 {
     QList<int> list;
-    list << SAKToolFactory::SerialportTool;
+    list << SAKToolFactory::SerialportTool
+         << SAKToolFactory::UdpClientTool
+         << SAKToolFactory::UdpServerTool
+         << SAKToolFactory::TcpClientTool
+         << SAKToolFactory::TcpServerTool
+         << SAKToolFactory::WebSocketClientTool
+         << SAKToolFactory::WebSocketServerTool
+         << SAKToolFactory::BleCentral
+         << SAKToolFactory::BlePeriheral;
     return list;
 }
 
@@ -34,6 +50,22 @@ SAKToolBoxUi *SAKToolBoxUiFactory::createToolBoxUi(int type)
 {
     if (type == SAKToolFactory::SerialportTool) {
         return new SAKSerialPortToolBoxUi();
+    } else if (type == SAKToolFactory::BleCentral) {
+        return new SAKBleCentralToolBoxUi();
+    } else if (type == SAKToolFactory::BlePeriheral) {
+        return new SAKBlePeripheralToolBoxUi();
+    } else if (type == SAKToolFactory::TcpClientTool) {
+        return new SAKTcpClientToolBoxUi();
+    } else if (type == SAKToolFactory::TcpServerTool) {
+        return new SAKTcpServerToolBoxUi();
+    } else if (type == SAKToolFactory::UdpClientTool) {
+        return new SAKUdpClientToolBoxUi();
+    } else if (type == SAKToolFactory::UdpServerTool) {
+        return new SAKUdpServerToolBoxUi();
+    } else if (type == SAKToolFactory::WebSocketClientTool) {
+        return new SAKWebSocketClientToolBoxUi();
+    } else if (type == SAKToolFactory::WebSocketServerTool) {
+        return new SAKWebSocketServerToolBoxUi();
     }
 
     return Q_NULLPTR;

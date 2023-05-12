@@ -83,7 +83,7 @@ private slots:
     void openDebugPageWidget();
     void appendRemovablePage();
 private:
-    Ui::SAKMainWindow *mUi;
+    Ui::SAKMainWindow *ui;
     QTabWidget *mTabWidget;
 };
 
