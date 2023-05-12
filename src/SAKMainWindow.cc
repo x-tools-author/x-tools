@@ -47,6 +47,9 @@
 #include "SAKToolBoxUiFactory.hh"
 #include "SAKAssistantsFactory.hh"
 
+#include "SAKModbusDebugger.hh"
+#include "SAKCanBusDebugger.hh"
+
 #include "ui_SAKMainWindow.h"
 
 SAKMainWindow *sakMainWindow = Q_NULLPTR;
@@ -86,7 +89,10 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
 //    setCentralWidget(centralWidget);
 //    centralWidget->setLayout(layout);
 //    centralWidget->layout()->setContentsMargins(6, 6, 6, 6);
-    ui->tabWidget->addTab(mTabWidget, tr("ToolBox"));
+    ui->tabWidget->addTab(mTabWidget, tr("ToolBoxs"));
+    ui->tabWidget->addTab(new SAKModbusDebugger(mSettings), tr("Modbus"));
+    ui->tabWidget->addTab(new SAKCanBusDebugger(mSettings), tr("CAN"));
+    //ui->tabWidget->tabBar()->setTabButton(4, QTabBar::RightSide, new QPushButton(tr("Settings")));
 
     QString title = QString(tr("Qt Swiss Army Knife"));
     title.append(QString(" "));
@@ -161,6 +167,18 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
         mTabWidget->tabBar()->setTabButton(i, QTabBar::RightSide, Q_NULLPTR);
         mTabWidget->tabBar()->setTabButton(i, QTabBar::LeftSide, Q_NULLPTR);
     }
+
+#if 0
+    int count = mTabWidget->tabBar()->count();
+    int maxWidth = std::numeric_limits<int>::min();
+    for (int i = 0; i < count; i++) {
+        int w = mTabWidget->tabBar()->tabRect(i).width();
+        if (w > maxWidth) {
+            maxWidth = w;
+        }
+    }
+    mTabWidget->setStyleSheet(QString("QTabBar::tab{width:%1px;}").arg(maxWidth));
+#endif
 }
 
 SAKMainWindow::~SAKMainWindow()
