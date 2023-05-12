@@ -83,16 +83,9 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
     setCentralWidget(scrollArea);
     scrollArea->setWidget(mTabWidget);
 #else
-//    QHBoxLayout *layout = new QHBoxLayout();
-//    layout->addWidget(mTabWidget);
-//    QWidget *centralWidget = new QWidget(this);
-//    setCentralWidget(centralWidget);
-//    centralWidget->setLayout(layout);
-//    centralWidget->layout()->setContentsMargins(6, 6, 6, 6);
     ui->tabWidget->addTab(mTabWidget, tr("ToolBoxs"));
     ui->tabWidget->addTab(new SAKModbusDebugger(mSettings), tr("Modbus"));
     ui->tabWidget->addTab(new SAKCanBusDebugger(mSettings), tr("CAN"));
-    //ui->tabWidget->tabBar()->setTabButton(4, QTabBar::RightSide, new QPushButton(tr("Settings")));
 
     QString title = QString(tr("Qt Swiss Army Knife"));
     title.append(QString(" "));
