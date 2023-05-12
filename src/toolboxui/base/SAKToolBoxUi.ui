@@ -16,6 +16,12 @@
   <layout class="QGridLayout" name="gridLayout_3">
    <item row="0" column="1">
     <widget class="QTabWidget" name="tabWidget">
+     <property name="tabPosition">
+      <enum>QTabWidget::North</enum>
+     </property>
+     <property name="tabShape">
+      <enum>QTabWidget::Rounded</enum>
+     </property>
      <property name="currentIndex">
       <number>0</number>
      </property>
