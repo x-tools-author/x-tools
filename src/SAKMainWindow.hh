@@ -84,7 +84,7 @@ private slots:
     void appendRemovablePage();
 private:
     Ui::SAKMainWindow *ui;
-    QTabWidget *mTabWidget;
+    QTabWidget *mToolBoxs;
 };
 
 extern SAKMainWindow *sakMainWindow;

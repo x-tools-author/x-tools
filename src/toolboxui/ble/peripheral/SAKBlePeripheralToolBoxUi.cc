@@ -13,7 +13,7 @@ SAKBlePeripheralToolBoxUi::SAKBlePeripheralToolBoxUi(QWidget *parent)
     : SAKToolBoxUi(parent)
     , mController(new SAKBlePeripheralToolBoxUiController)
 {
-    setWindowTitle(tr("BLE-Peripheral"));
+    setWindowTitle(tr("BLE-P"));
     init();
 }
 

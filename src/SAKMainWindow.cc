@@ -63,7 +63,7 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
     ,mSettings(settings)
     ,mSqlDatabase(sqlDatabase)
     ,ui(new Ui::SAKMainWindow)
-    ,mTabWidget(new QTabWidget)
+    ,mToolBoxs(new QTabWidget)
 {
     sakMainWindow = this;
     mSettingsKeyContext.enableTestPage = QString("%1/enableTestPage")
@@ -83,7 +83,7 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
     setCentralWidget(scrollArea);
     scrollArea->setWidget(mTabWidget);
 #else
-    ui->tabWidget->addTab(mTabWidget, tr("ToolBoxs"));
+    ui->tabWidget->addTab(mToolBoxs, tr("ToolBoxs"));
     ui->tabWidget->addTab(new SAKModbusDebugger(mSettings), tr("Modbus"));
     ui->tabWidget->addTab(new SAKCanBusDebugger(mSettings), tr("CAN"));
 
@@ -100,10 +100,10 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
     initMenuBar();
 
     // Connecting the signal of tab page to it's slot.
-    mTabWidget->setTabsClosable(true);
-    connect(mTabWidget, &QTabWidget::tabCloseRequested,
+    mToolBoxs->setTabsClosable(true);
+    connect(mToolBoxs, &QTabWidget::tabCloseRequested,
             this, &SAKMainWindow::removeRemovableDebugPage);
-    connect(mTabWidget, &QTabWidget::currentChanged, this, [=](int index){
+    connect(mToolBoxs, &QTabWidget::currentChanged, this, [=](int index){
         QString key = mSettingsKeyContext.currentTabPage;
         sakApp->settings()->setValue(key, index);
     });
@@ -135,15 +135,15 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
     }
     mTabWidget->blockSignals(false);
 #else
-    mTabWidget->blockSignals(true);
+    mToolBoxs->blockSignals(true);
     QList<int> types = SAKToolBoxUiFactory::instance()->supportedTools();
     for (int type : types) {
         QWidget *page = SAKToolBoxUiFactory::instance()->createToolBoxUi(type);
         if (page) {
-            mTabWidget->addTab(page, page->windowTitle());
+            mToolBoxs->addTab(page, page->windowTitle());
         }
     }
-    mTabWidget->blockSignals(false);
+    mToolBoxs->blockSignals(false);
 #endif
     if (mWindowsMenu){
         mWindowsMenu->addSeparator();
@@ -152,13 +152,13 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
     // Set the current page to last time
     QString key = mSettingsKeyContext.currentTabPage;
     int currentPage = sakApp->settings()->value(key).toInt();
-    mTabWidget->setCurrentIndex(currentPage);
+    mToolBoxs->setCurrentIndex(currentPage);
 
     // Hide the close button,
     // the step must be done after calling setTabsClosable() function.
-    for (int i = 0; i < mTabWidget->count(); i++){
-        mTabWidget->tabBar()->setTabButton(i, QTabBar::RightSide, Q_NULLPTR);
-        mTabWidget->tabBar()->setTabButton(i, QTabBar::LeftSide, Q_NULLPTR);
+    for (int i = 0; i < mToolBoxs->count(); i++){
+        mToolBoxs->tabBar()->setTabButton(i, QTabBar::RightSide, Q_NULLPTR);
+        mToolBoxs->tabBar()->setTabButton(i, QTabBar::LeftSide, Q_NULLPTR);
     }
 
 #if 0
@@ -642,8 +642,8 @@ void SAKMainWindow::aboutQsak()
 
 void SAKMainWindow::removeRemovableDebugPage(int index)
 {
-    QWidget *w = mTabWidget->widget(index);
-    mTabWidget->removeTab(index);
+    QWidget *w = mToolBoxs->widget(index);
+    mToolBoxs->removeTab(index);
     w->close();
 }
 
@@ -824,7 +824,7 @@ void SAKMainWindow::activePage()
             QAction *action = qobject_cast<QAction*>(sender());
             QWidget *widget = action->data().value<QWidget*>();
             if (widget->parent()){
-                mTabWidget->setCurrentWidget(widget);
+                mToolBoxs->setCurrentWidget(widget);
             }else{
                 widget->activateWindow();
             }
@@ -866,7 +866,7 @@ void SAKMainWindow::appendRemovablePage()
     // The function must be called by signal of QAction
     QWidget *widget = debugPage(sender());
     if (widget) {
-        mTabWidget->addTab(widget, widget->windowTitle());
+        mToolBoxs->addTab(widget, widget->windowTitle());
         appendWindowAction(widget);
     }
 }

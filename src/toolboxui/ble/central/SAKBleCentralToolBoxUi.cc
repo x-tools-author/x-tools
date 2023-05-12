@@ -13,7 +13,7 @@ SAKBleCentralToolBoxUi::SAKBleCentralToolBoxUi(QWidget *parent)
     : SAKToolBoxUi(parent)
     , mController(new SAKBleCentralToolBoxUiController)
 {
-    setWindowTitle(tr("BLE-Central"));
+    setWindowTitle(tr("BLE-C"));
     init();
 }
 
