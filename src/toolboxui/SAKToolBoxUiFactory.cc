@@ -7,8 +7,9 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
+#include "SAKToolFactory.hh"
 #include "SAKToolBoxUiFactory.hh"
-#include "tools/SAKToolsFactory.hh"
+#include "SAKSerialPortToolBoxUi.hh"
 
 SAKToolBoxUiFactory::SAKToolBoxUiFactory(QObject *parent)
     : QObject{parent}
@@ -16,7 +17,7 @@ SAKToolBoxUiFactory::SAKToolBoxUiFactory(QObject *parent)
 
 }
 
-SAKToolBoxUiFactory *SAKToolBoxUiFactory::factory()
+SAKToolBoxUiFactory *SAKToolBoxUiFactory::instance()
 {
     static SAKToolBoxUiFactory factory;
     return &factory;
@@ -25,11 +26,15 @@ SAKToolBoxUiFactory *SAKToolBoxUiFactory::factory()
 QList<int> SAKToolBoxUiFactory::supportedTools()
 {
     QList<int> list;
-    list << SAKToolsFactory::SerialportTool;
+    list << SAKToolFactory::SerialportTool;
     return list;
 }
 
 SAKToolBoxUi *SAKToolBoxUiFactory::createToolBoxUi(int type)
 {
+    if (type == SAKToolFactory::SerialportTool) {
+        return new SAKSerialPortToolBoxUi();
+    }
 
+    return Q_NULLPTR;
 }

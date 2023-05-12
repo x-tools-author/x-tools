@@ -7,25 +7,24 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#ifndef SAKTOOLBOXUISERIALPORTCONTROLLER_H
-#define SAKTOOLBOXUISERIALPORTCONTROLLER_H
+#ifndef SAKSERIALPORTTOOLBOXUICONTROLLER_H
+#define SAKSERIALPORTTOOLBOXUICONTROLLER_H
 
-#include "SAKToolBoxUiBaseController.hh"
+#include "SAKToolBoxUiController.hh"
 
 namespace Ui {
-class SAKToolBoxUiSerialPortController;
+class SAKSerialPortToolBoxUiController;
 }
 
-class SAKToolBoxUiSerialPortController : public SAKToolBoxUiBaseController
+class SAKSerialPortToolBoxUiController : public SAKToolBoxUiController
 {
     Q_OBJECT
 public:
-    explicit SAKToolBoxUiSerialPortController(SAKCommunicationTool *tool,
-                                              QWidget *parent = nullptr);
-    ~SAKToolBoxUiSerialPortController();
+    explicit SAKSerialPortToolBoxUiController(QWidget *parent = nullptr);
+    ~SAKSerialPortToolBoxUiController();
 
 private:
-    Ui::SAKToolBoxUiSerialPortController *ui;
+    Ui::SAKSerialPortToolBoxUiController *ui;
 };
 
-#endif // SAKTOOLBOXUISERIALPORTCONTROLLER_H
+#endif // SAKSERIALPORTTOOLBOXUICONTROLLER_H

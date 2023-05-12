@@ -41,13 +41,14 @@
 #include "common/EDDataStructure.hpp"
 #include "common/EDNetworkInterface.hpp"
 
-#include "tools/SAKToolBox.hh"
+#include "toolbox/SAKToolBox.hh"
+
 #include "tools/SAKBaseTool.hh"
 #include "tools/SAKMaskerTool.hh"
 #include "tools/SAKStorerTool.hh"
 #include "tools/SAKEmitterTool.hh"
 #include "tools/SAKAnalyzerTool.hh"
-#include "tools/SAKToolsFactory.hh"
+#include "tools/SAKToolFactory.hh"
 #include "tools/SAKUdpClientTool.hh"
 #include "tools/SAKUdpServerTool.hh"
 #include "tools/SAKTcpClientTool.hh"
@@ -58,8 +59,6 @@
 #include "tools/SAKBleCentralTool.hh"
 #include "tools/SAKWebSocketClientTool.hh"
 #include "tools/SAKWebSocketServerTool.hh"
-
-#include "toolsui/SAKToolBoxUi.hh"
 
 int main(int argc, char *argv[])
 {
@@ -174,7 +173,7 @@ int main(int argc, char *argv[])
         qmlRegisterUncreatableType<SAKStorerTool>("ED.EasyDebug", 1, 0, "EDStorerTool", reason);
         qmlRegisterUncreatableType<SAKEmitterTool>("ED.EasyDebug", 1, 0, "EDEmitterTool", reason);
         qmlRegisterUncreatableType<SAKAnalyzerTool>("ED.EasyDebug", 1, 0, "EDAnalyzerTool", reason);
-        qmlRegisterUncreatableType<SAKToolsFactory>("ED.EasyDebug", 1, 0, "EDToolsFactory", reason);
+        qmlRegisterUncreatableType<SAKToolFactory>("ED.EasyDebug", 1, 0, "EDToolsFactory", reason);
         qmlRegisterUncreatableType<SAKPrestorerTool>("ED.EasyDebug", 1, 0, "EDPrestorerTool", reason);
         qmlRegisterUncreatableType<SAKResponserTool>("ED.EasyDebug", 1, 0, "EDResponserTool", reason);
         qmlRegisterUncreatableType<SAKUdpClientTool>("ED.EasyDebug", 1, 0, "EDUdpClientTool", reason);

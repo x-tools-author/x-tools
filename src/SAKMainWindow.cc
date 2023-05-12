@@ -39,14 +39,13 @@
 #include <QJsonParseError>
 #include <QDesktopServices>
 
+#include "SAKToolBoxUi.hh"
 #include "SAKMainWindow.hh"
 #include "SAKApplication.hh"
 #include "SAKUpdateManager.hh"
 #include "SAKDebuggerFactory.hh"
+#include "SAKToolBoxUiFactory.hh"
 #include "SAKAssistantsFactory.hh"
-
-#include "toolsui/SAKToolBoxUi.hh"
-#include "tools/SAKToolsFactory.hh"
 
 #include "ui_SAKMainWindow.h"
 
@@ -135,7 +134,15 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
     }
     mTabWidget->blockSignals(false);
 #else
-
+    mTabWidget->blockSignals(true);
+    QList<int> types = SAKToolBoxUiFactory::instance()->supportedTools();
+    for (int type : types) {
+        QWidget *page = SAKToolBoxUiFactory::instance()->createToolBoxUi(type);
+        if (page) {
+            mTabWidget->addTab(page, page->windowTitle());
+        }
+    }
+    mTabWidget->blockSignals(false);
 #endif
     if (mWindowsMenu){
         mWindowsMenu->addSeparator();

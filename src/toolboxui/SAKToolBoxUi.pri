@@ -1,23 +1,20 @@
-include(serialport/SAKToolBoxUiSerialPort.pri)
-
-HEADERS += \
-    $$PWD/SAKToolBoxUi.hh \
-    $$PWD/SAKToolBoxUiBaseController.hh \
-    $$PWD/SAKToolBoxUiControllerFactory.hh \
-    $$PWD/SAKToolBoxUiFactory.hh \
-    $$PWD/SAKToolBoxUiParameters.hh \
-    $$PWD/SAKToolBoxUiSerialPortController.hh
-
-SOURCES += \
-    $$PWD/SAKToolBoxUi.cc \
-    $$PWD/SAKToolBoxUiBaseController.cc \
-    $$PWD/SAKToolBoxUiControllerFactory.cc \
-    $$PWD/SAKToolBoxUiFactory.cc \
-    $$PWD/SAKToolBoxUiParameters.cc \
-    $$PWD/SAKToolBoxUiSerialPortController.cc
+INCLUDEPATH += $$PWD
+INCLUDEPATH += $$PWD/base
 
 FORMS += \
-    $$PWD/SAKToolBoxUi.ui \
-    $$PWD/SAKToolBoxUiParameters.ui \
-    $$PWD/SAKToolBoxUiSerialPortController.ui
+    $$PWD/base/SAKToolBoxUi.ui \
+    $$PWD/base/SAKToolBoxUiParameters.ui
 
+HEADERS += \
+    $$PWD/SAKToolBoxUiFactory.hh \
+    $$PWD/base/SAKToolBoxUi.hh \
+    $$PWD/base/SAKToolBoxUiController.hh \
+    $$PWD/base/SAKToolBoxUiParameters.hh
+
+SOURCES += \
+    $$PWD/SAKToolBoxUiFactory.cc \
+    $$PWD/base/SAKToolBoxUi.cc \
+    $$PWD/base/SAKToolBoxUiController.cc \
+    $$PWD/base/SAKToolBoxUiParameters.cc
+
+include(serialport/SAKSerialPortToolBoxUi.pri)

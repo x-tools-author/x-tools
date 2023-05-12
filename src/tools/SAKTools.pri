@@ -1,3 +1,5 @@
+INCLUDEPATH += $$PWD
+
 HEADERS += \
     $$PWD/SAKAnalyzerTool.hh \
     $$PWD/SAKBaseTool.hh \
@@ -11,8 +13,7 @@ HEADERS += \
     $$PWD/SAKStorerTool.hh \
     $$PWD/SAKTcpClientTool.hh \
     $$PWD/SAKTcpServerTool.hh \
-    $$PWD/SAKToolBox.hh \
-    $$PWD/SAKToolsFactory.hh \
+    $$PWD/SAKToolFactory.hh \
     $$PWD/SAKUdpClientTool.hh \
     $$PWD/SAKUdpServerTool.hh \
     $$PWD/SAKWebSocketClientTool.hh \
@@ -31,8 +32,7 @@ SOURCES += \
     $$PWD/SAKStorerTool.cc \
     $$PWD/SAKTcpClientTool.cc \
     $$PWD/SAKTcpServerTool.cc \
-    $$PWD/SAKToolBox.cc \
-    $$PWD/SAKToolsFactory.cc \
+    $$PWD/SAKToolFactory.cc \
     $$PWD/SAKUdpClientTool.cc \
     $$PWD/SAKUdpServerTool.cc \
     $$PWD/SAKWebSocketClientTool.cc \

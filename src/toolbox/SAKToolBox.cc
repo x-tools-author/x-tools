@@ -8,23 +8,23 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include "SAKToolBox.hh"
-#include "tools/SAKToolsFactory.hh"
+#include "tools/SAKToolFactory.hh"
 
 SAKToolBox::SAKToolBox(QObject *parent)
     : QObject{parent}
 {
     auto createTool = [](int type)->SAKBaseTool*{
-        auto toolFactory = SAKToolsFactory::instance();
+        auto toolFactory = SAKToolFactory::instance();
         return toolFactory->createTool(type);
     };
 
-    mInputMaskerTool  = createTool(SAKToolsFactory::MaskerTool);
-    mOutputMaskerTool = createTool(SAKToolsFactory::MaskerTool);
-    mAnalyzerTool     = createTool(SAKToolsFactory::AnalyzerTool);
-    mEmitterTool      = createTool(SAKToolsFactory::EmitterTool);
-    mResponserTool    = createTool(SAKToolsFactory::ResponserTool);
-    mStorerTool       = createTool(SAKToolsFactory::StorerTool);
-    mPrestorerTool    = createTool(SAKToolsFactory::PrestoreTool);
+    mInputMaskerTool  = createTool(SAKToolFactory::MaskerTool);
+    mOutputMaskerTool = createTool(SAKToolFactory::MaskerTool);
+    mAnalyzerTool     = createTool(SAKToolFactory::AnalyzerTool);
+    mEmitterTool      = createTool(SAKToolFactory::EmitterTool);
+    mResponserTool    = createTool(SAKToolFactory::ResponserTool);
+    mStorerTool       = createTool(SAKToolFactory::StorerTool);
+    mPrestorerTool    = createTool(SAKToolFactory::PrestoreTool);
 }
 
 void SAKToolBox::setupComunicationTool(int type)
@@ -35,7 +35,7 @@ void SAKToolBox::setupComunicationTool(int type)
         mComunicationTool->deleteLater();
     }
 
-    auto toolFactory = SAKToolsFactory::instance();
+    auto toolFactory = SAKToolFactory::instance();
     mComunicationTool = toolFactory->createTool(type);
     if (mComunicationTool) {
 //        connect(mComunicationTool, &SAKBaseTool::bytesOutputted,

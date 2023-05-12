@@ -12,7 +12,7 @@
 
 #include <QWidget>
 
-#include "tools/SAKToolBox.hh"
+#include "SAKToolBox.hh"
 
 namespace Ui {
 class SAKToolBoxUi;
@@ -23,15 +23,17 @@ class SAKToolBoxUi : public QWidget
 {
     Q_OBJECT
 public:
-    explicit SAKToolBoxUi(int communicationType, QWidget *parent = nullptr);
+    explicit SAKToolBoxUi(QWidget *parent = nullptr);
     ~SAKToolBoxUi();
+
+protected:
+    virtual QWidget *controller() = 0;
+    void init();
 
 private:
     SAKToolBoxUiParameters *mToolBoxUiParameters{nullptr};
 
 private:
-    void init();
-
     void initUi();
     void initUiDevice();
     void initUiInput();

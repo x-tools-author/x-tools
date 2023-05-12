@@ -10,9 +10,9 @@
 #ifndef SAKTOOLBOXUIFACTORY_HH
 #define SAKTOOLBOXUIFACTORY_HH
 
-#include "toolsui/SAKToolBoxUi.hh"
 #include <QObject>
 
+class SAKToolBoxUi;
 class SAKToolBoxUiFactory : public QObject
 {
     Q_OBJECT
@@ -20,7 +20,7 @@ private:
     explicit SAKToolBoxUiFactory(QObject *parent = nullptr);
 
 public:
-    static SAKToolBoxUiFactory *factory();
+    static SAKToolBoxUiFactory *instance();
     QList<int> supportedTools();
     SAKToolBoxUi *createToolBoxUi(int type);
 
@@ -28,4 +28,4 @@ private:
 
 };
 
-#endif // SAKTOOLBOXUIFACTORY_HH
+#endif // SAKTOOLBOXUIFACTORY_H
