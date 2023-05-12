@@ -24,11 +24,11 @@
    <item row="0" column="0" colspan="2">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
-       <string>Device</string>
+       <string>Communication</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
