@@ -23,4 +23,4 @@ signals:
 
 };
 
-#endif // SAKTOOLBOXUICONTROLLER_H
+#endif // SAKTOOLBOXUICONTROLLER_HH

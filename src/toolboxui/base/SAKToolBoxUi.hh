@@ -58,4 +58,4 @@ private:
     void onPushButtonInputSetttingsClicked();
 };
 
-#endif // SAKTOOLBOXUI_H
+#endif // SAKTOOLBOXUI_HH
