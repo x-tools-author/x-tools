@@ -7,6 +7,7 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
+#include <QLineEdit>
 #include "SAKToolBoxUi.hh"
 #include "SAKSerialPortToolUi.hh"
 #include "SAKToolBoxUiParameters.hh"
@@ -159,12 +160,6 @@ void SAKToolBoxUi::initUiCommunication()
 {
     ui->widgetCommunicationToolUi->setLayout(new QHBoxLayout());
     ui->widgetCommunicationToolUi->layout()->setContentsMargins(0, 0, 0, 0);
-//    QWidget *w = controller();
-//    if (w) {
-//        ui->widgetCommunicationController->layout()->addWidget(w);
-//    } else {
-//        qCWarning(mLoggingCategory) << "The controller is null!";
-//    }
 }
 
 void SAKToolBoxUi::initUiInput()
@@ -229,6 +224,8 @@ void SAKToolBoxUi::initSignalsInput()
             this, &SAKToolBoxUi::onPushButtonInputSettingsClicked);
     connect(ui->comboBoxInputIntervel, &QComboBox::currentTextChanged,
             this, &SAKToolBoxUi::onComboBoxInputIntervelCurrentIndexChanged);
+    connect(ui->pushButtonInputSend, &QPushButton::clicked,
+            this, &SAKToolBoxUi::onPushButtonInputSendClicked);
 }
 
 void SAKToolBoxUi::initSignalsOutput()
@@ -264,6 +261,14 @@ void SAKToolBoxUi::onPushButtonInputSettingsClicked()
 
 void SAKToolBoxUi::onPushButtonInputSendClicked()
 {
+    if (ui->comboBoxInput->currentText().isEmpty()) {
+        qCInfo(mLoggingCategory) << "Input text is empty,"
+                                    " the operation will be ignored!";
+        QApplication::beep();
+        ui->comboBoxInput->setFocus();
+        return;
+    }
+
     try2send();
 }
 
