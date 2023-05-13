@@ -11,7 +11,22 @@
 #define SAKTOOLFACTORY_HH
 
 #include <QObject>
+
 #include "SAKBaseTool.hh"
+#include "SAKMaskerTool.hh"
+#include "SAKStorerTool.hh"
+#include "SAKEmitterTool.hh"
+#include "SAKAnalyzerTool.hh"
+#include "SAKPrestorerTool.hh"
+#include "SAKResponserTool.hh"
+#include "SAKUdpClientTool.hh"
+#include "SAKUdpServerTool.hh"
+#include "SAKTcpClientTool.hh"
+#include "SAKTcpServerTool.hh"
+#include "SAKBleCentralTool.hh"
+#include "SAKSerialPortTool.hh"
+#include "SAKWebSocketClientTool.hh"
+#include "SAKWebSocketServerTool.hh"
 
 class SAKToolFactory : public QObject
 {

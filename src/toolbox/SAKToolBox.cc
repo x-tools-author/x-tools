@@ -8,7 +8,6 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include "SAKToolBox.hh"
-#include "tools/SAKToolFactory.hh"
 
 SAKToolBox::SAKToolBox(QObject *parent)
     : QObject{parent}
@@ -18,13 +17,23 @@ SAKToolBox::SAKToolBox(QObject *parent)
         return toolFactory->createTool(type);
     };
 
-    mInputMaskerTool  = createTool(SAKToolFactory::MaskerTool);
-    mOutputMaskerTool = createTool(SAKToolFactory::MaskerTool);
-    mAnalyzerTool     = createTool(SAKToolFactory::AnalyzerTool);
-    mEmitterTool      = createTool(SAKToolFactory::EmitterTool);
-    mResponserTool    = createTool(SAKToolFactory::ResponserTool);
-    mStorerTool       = createTool(SAKToolFactory::StorerTool);
-    mPrestorerTool    = createTool(SAKToolFactory::PrestoreTool);
+    mInputMaskerTool    = qobject_cast<SAKMaskerTool*>(createTool(SAKToolFactory::MaskerTool));
+    mOutputMaskerTool   = qobject_cast<SAKMaskerTool*>(createTool(SAKToolFactory::MaskerTool));
+    mInputAnalyzerTool  = qobject_cast<SAKAnalyzerTool*>(createTool(SAKToolFactory::AnalyzerTool));
+    mOutputAnalyzerTool = qobject_cast<SAKAnalyzerTool*>(createTool(SAKToolFactory::AnalyzerTool));
+    mEmitterTool        = qobject_cast<SAKEmitterTool*>(createTool(SAKToolFactory::EmitterTool));
+    mResponserTool      = qobject_cast<SAKResponserTool*>(createTool(SAKToolFactory::ResponserTool));
+    mStorerTool         = qobject_cast<SAKStorerTool*>(createTool(SAKToolFactory::StorerTool));
+    mPrestorerTool      = qobject_cast<SAKPrestorerTool*>(createTool(SAKToolFactory::PrestoreTool));
+
+    mToolList << mInputMaskerTool
+              << mOutputMaskerTool
+              << mInputAnalyzerTool
+              << mOutputAnalyzerTool
+              << mEmitterTool
+              << mResponserTool
+              << mStorerTool
+              << mPrestorerTool;
 }
 
 void SAKToolBox::setupComunicationTool(int type)
@@ -38,114 +47,46 @@ void SAKToolBox::setupComunicationTool(int type)
     auto toolFactory = SAKToolFactory::instance();
     mComunicationTool = toolFactory->createTool(type);
     if (mComunicationTool) {
-//        connect(mComunicationTool, &SAKBaseTool::bytesOutputted,
-//                mOutputMaskerTool,
-//                [=](const QString &flag, const QByteArray &bytes){
-//            mOutputMaskerTool->setToolFlag(flag);
-//            mOutputMaskerTool->inputBytes(bytes);
-//        });
-//        connect(mComunicationTool, &SAKBaseTool::bytesOutputted,
-//                mEmitterTool,
-//                [=](const QString &flag, const QByteArray &bytes){
-//            mEmitterTool->setToolFlag(flag);
-//            mEmitterTool->inputBytes(bytes);
-//        });
-//        connect(mAnalyzerTool, &SAKBaseTool::bytesOutputted, mResponserTool,
-//                [=](const QString &flag, const QByteArray &bytes){
-//            mResponserTool->setToolFlag(flag);
-//            mResponserTool->inputBytes(bytes);
-//        });
-//        connect(mOutputMaskerTool, &SAKBaseTool::bytesOutputted,
-//                mAnalyzerTool,
-//                [=](const QString &flag, const QByteArray &bytes){
-//            mAnalyzerTool->setToolFlag(flag);
-//            mAnalyzerTool->inputBytes(bytes);
-//        });
-//        connect(mInputMaskerTool, &SAKBaseTool::bytesOutputted, mComunicationTool,
-//                [=](const QString &flag, const QByteArray &bytes){
-//            Q_UNUSED(flag);
-//            mComunicationTool->inputBytes(bytes);
-//        });
-//        connect(mEmitterTool, &SAKBaseTool::bytesOutputted, mComunicationTool,
-//                [=](const QString &flag, const QByteArray &bytes){
-//            Q_UNUSED(flag);
-//            mComunicationTool->inputBytes(bytes);
-//        });
-//        connect(mResponserTool, &SAKBaseTool::bytesOutputted, mComunicationTool,
-//                [=](const QString &flag, const QByteArray &bytes){
-//            Q_UNUSED(flag);
-//            mComunicationTool->inputBytes(bytes);
-//        });
-//        connect(mComunicationTool, &SAKBaseTool::bytesInputted, mStorerTool,
-//                [=](const QString &flag, const QByteArray &bytes){
-//            QJsonObject jsonObj;
-//            jsonObj.insert("flag", flag);
-//            jsonObj.insert("isRx", false);
-//            mStorerTool->inputBytes(bytes, jsonObj);
-//        });
-//        connect(mComunicationTool, &SAKBaseTool::bytesOutputted, mStorerTool,
-//                [=](const QString &flag, const QByteArray &bytes){
-//            QJsonObject jsonObj;
-//            jsonObj.insert("flag", flag);
-//            jsonObj.insert("isRx", true);
-//            mStorerTool->inputBytes(bytes, jsonObj);
-//        });
-//        connect(mPrestorerTool, &SAKBaseTool::bytesOutputted, mComunicationTool,
-//                [=](const QString &flag, const QByteArray &bytes){
-//                    Q_UNUSED(flag)
-//                    mComunicationTool->inputBytes(bytes);
-//        });
+        // rx->output_masker->output_analyzer->emmitter,responser
+        connect(mComunicationTool, &SAKBaseTool::bytesOutputted,
+                mOutputMaskerTool, &SAKBaseTool::inputBytes);
+        connect(mOutputMaskerTool, &SAKBaseTool::bytesOutputted,
+                mOutputAnalyzerTool, &SAKBaseTool::inputBytes);
+        connect(mOutputAnalyzerTool, &SAKBaseTool::bytesOutputted,
+                mEmitterTool, &SAKBaseTool::inputBytes);
+        connect(mOutputAnalyzerTool, &SAKBaseTool::bytesOutputted,
+                mResponserTool, &SAKBaseTool::inputBytes);
+
+        // emiiter,responser,prestorer->input_analyzer->input_masker->tx
+        connect(mEmitterTool, &SAKBaseTool::bytesOutputted,
+                mInputAnalyzerTool, &SAKBaseTool::inputBytes);
+        connect(mResponserTool, &SAKBaseTool::bytesOutputted,
+                mInputAnalyzerTool, &SAKBaseTool::inputBytes);
+        connect(mPrestorerTool, &SAKBaseTool::bytesOutputted,
+                mInputAnalyzerTool, &SAKBaseTool::inputBytes);
+        connect(mInputAnalyzerTool, &SAKBaseTool::bytesOutputted,
+                mInputMaskerTool, &SAKBaseTool::inputBytes);
+        connect(mInputMaskerTool, &SAKBaseTool::bytesOutputted,
+                mComunicationTool, &SAKBaseTool::inputBytes);
+
+        // rx->storer; tx->storer
+        connect(mComunicationTool, &SAKBaseTool::bytesOutputted,
+                mStorerTool, &SAKBaseTool::inputBytes);
+        connect(mComunicationTool, &SAKBaseTool::bytesInputted,
+                mStorerTool, &SAKBaseTool::inputBytes);
     }
 
-    emit comunicationToolChanged();
-}
-
-SAKBaseTool *SAKToolBox::comunicationTool()
-{
-    return mComunicationTool;
-}
-
-SAKBaseTool *SAKToolBox::inputMaskerTool()
-{
-    return mInputMaskerTool;
-}
-
-SAKBaseTool *SAKToolBox::outputMaskerTool()
-{
-    return mOutputMaskerTool;
-}
-
-SAKBaseTool *SAKToolBox::analyerTool()
-{
-    return mAnalyzerTool;
-}
-
-SAKBaseTool *SAKToolBox::emiterTool()
-{
-    return mEmitterTool;
-}
-
-SAKBaseTool *SAKToolBox::responserTool()
-{
-    return mResponserTool;
-}
-
-SAKBaseTool *SAKToolBox::prestorerTool()
-{
-    return mPrestorerTool;
+    emit communicatorChanged();
 }
 
 void SAKToolBox::open()
 {
     if (mComunicationTool) {
-        mInputMaskerTool->start();
-        mOutputMaskerTool->start();
-        mAnalyzerTool->start();
-        mEmitterTool->start();
-        mResponserTool->start();
-        mStorerTool->start();
-        mPrestorerTool->start();
         mComunicationTool->start();
+
+        for (auto tool : mToolList) {
+            tool->start();
+        }
 
         mIsWorking = true;
         emit isWorkingChanged();
@@ -157,22 +98,13 @@ void SAKToolBox::open()
 void SAKToolBox::close()
 {
     if (mComunicationTool) {
-        mInputMaskerTool->exit();
-        mAnalyzerTool->exit();
-        mEmitterTool->exit();
-        mResponserTool->exit();
-        mStorerTool->exit();
-        mPrestorerTool->exit();
         mComunicationTool->exit();
-
-        mInputMaskerTool->wait();
-        mOutputMaskerTool->start();
-        mAnalyzerTool->wait();
-        mEmitterTool->wait();
-        mResponserTool->wait();
-        mStorerTool->wait();
-        mPrestorerTool->exit();
         mComunicationTool->wait();
+
+        for (auto tool : mToolList) {
+            tool->exit();
+            tool->wait();
+        }
 
         mIsWorking = false;
         emit isWorkingChanged();

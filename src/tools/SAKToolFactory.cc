@@ -7,21 +7,7 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#include "SAKMaskerTool.hh"
-#include "SAKStorerTool.hh"
-#include "SAKEmitterTool.hh"
-#include "SAKAnalyzerTool.hh"
 #include "SAKToolFactory.hh"
-#include "SAKPrestorerTool.hh"
-#include "SAKResponserTool.hh"
-#include "SAKUdpClientTool.hh"
-#include "SAKUdpServerTool.hh"
-#include "SAKTcpClientTool.hh"
-#include "SAKTcpServerTool.hh"
-#include "SAKBleCentralTool.hh"
-#include "SAKSerialPortTool.hh"
-#include "SAKWebSocketClientTool.hh"
-#include "SAKWebSocketServerTool.hh"
 
 SAKToolFactory::SAKToolFactory(QObject *parent)
     : QObject{parent}

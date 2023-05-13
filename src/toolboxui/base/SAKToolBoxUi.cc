@@ -19,6 +19,9 @@ SAKToolBoxUi::SAKToolBoxUi(QWidget *parent)
     ui->setupUi(this);
     mToolBoxUiParameters = new SAKToolBoxUiParameters(this);
     mToolBoxUiParameters->setModal(true);
+
+    mToolBox = new SAKToolBox(this);
+
 }
 
 SAKToolBoxUi::~SAKToolBoxUi()
@@ -28,13 +31,6 @@ SAKToolBoxUi::~SAKToolBoxUi()
 
 void SAKToolBoxUi::init()
 {
-    ui->widgetController->setLayout(new QHBoxLayout());
-    ui->widgetController->layout()->setContentsMargins(0, 0, 0, 0);
-    QWidget *w = controller();
-    if (w) {
-        ui->widgetController->layout()->addWidget(w);
-    }
-
     initUi();
     initSettings();
     initSignals();
@@ -42,14 +38,21 @@ void SAKToolBoxUi::init()
 
 void SAKToolBoxUi::initUi()
 {
-    initUiDevice();
+    initUiCommunication();
     initUiInput();
     initUiOutput();
 }
 
-void SAKToolBoxUi::initUiDevice()
+void SAKToolBoxUi::initUiCommunication()
 {
-
+    ui->widgetCommunicationController->setLayout(new QHBoxLayout());
+    ui->widgetCommunicationController->layout()->setContentsMargins(0, 0, 0, 0);
+    QWidget *w = controller();
+    if (w) {
+        ui->widgetCommunicationController->layout()->addWidget(w);
+    } else {
+        qCWarning(mLoggingCategory) << "The controller is null!";
+    }
 }
 
 void SAKToolBoxUi::initUiInput()
@@ -64,12 +67,12 @@ void SAKToolBoxUi::initUiOutput()
 
 void SAKToolBoxUi::initSettings()
 {
-    initSettingsDevice();
+    initSettingsCommunication();
     initSettingsInput();
     initSettingsOutput();
 }
 
-void SAKToolBoxUi::initSettingsDevice()
+void SAKToolBoxUi::initSettingsCommunication()
 {
 
 }
@@ -86,28 +89,47 @@ void SAKToolBoxUi::initSettingsOutput()
 
 void SAKToolBoxUi::initSignals()
 {
-    initSignalsDevice();
+    initSignalsCommunication();
     initSignalsInput();
-    initSettingsOutput();
+    initSignalsOutput();
 }
 
-void SAKToolBoxUi::initSignalsDevice()
+void SAKToolBoxUi::initSignalsCommunication()
 {
-
+    connect(ui->pushButtonCommunicationSettings, &QPushButton::clicked,
+            this, &SAKToolBoxUi::onPushButtonCommunicationSettingsClicked);
+    connect(ui->pushButtonCommunicationOpen, &QPushButton::clicked,
+            this, &SAKToolBoxUi::onPushButtonCommunicationOpenClicked);
 }
 
 void SAKToolBoxUi::initSignalsInput()
 {
     connect(ui->pushButtonInputSettings, &QPushButton::clicked,
-            this, &SAKToolBoxUi::onPushButtonInputSetttingsClicked);
+            this, &SAKToolBoxUi::onPushButtonInputSettingsClicked);
 }
 
 void SAKToolBoxUi::initSignalsOutput()
 {
+    connect(ui->pushButtonOutputSettings, &QPushButton::clicked,
+            this, &SAKToolBoxUi::onPushButtonOutputSettingsClicked);
+}
+
+void SAKToolBoxUi::onPushButtonCommunicationSettingsClicked()
+{
+    mToolBoxUiParameters->showDialog(0);
+}
+
+void SAKToolBoxUi::onPushButtonCommunicationOpenClicked()
+{
 
 }
 
-void SAKToolBoxUi::onPushButtonInputSetttingsClicked()
+void SAKToolBoxUi::onPushButtonOutputSettingsClicked()
+{
+    mToolBoxUiParameters->showDialog(2);
+}
+
+void SAKToolBoxUi::onPushButtonInputSettingsClicked()
 {
     mToolBoxUiParameters->showDialog(1);
 }

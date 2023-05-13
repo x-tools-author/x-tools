@@ -11,6 +11,7 @@
 #define SAKTOOLBOXUI_HH
 
 #include <QWidget>
+#include <QLoggingCategory>
 
 #include "SAKToolBox.hh"
 
@@ -35,27 +36,33 @@ private:
 
 private:
     void initUi();
-    void initUiDevice();
+    void initUiCommunication();
     void initUiInput();
     void initUiOutput();
 
     void initSettings();
-    void initSettingsDevice();
+    void initSettingsCommunication();
     void initSettingsInput();
     void initSettingsOutput();
 
     void initSignals();
-    void initSignalsDevice();
+    void initSignalsCommunication();
     void initSignalsInput();
     void initSignalsOutput();
 
 private:
     SAKToolBox *mToolBox;
+    const QLoggingCategory mLoggingCategory{"SAK.SAKToolBoxUi"};
 
 private:
     Ui::SAKToolBoxUi *ui;
 
-    void onPushButtonInputSetttingsClicked();
+    void onPushButtonCommunicationSettingsClicked();
+    void onPushButtonCommunicationOpenClicked();
+
+    void onPushButtonInputSettingsClicked();
+
+    void onPushButtonOutputSettingsClicked();
 };
 
 #endif // SAKTOOLBOXUI_HH

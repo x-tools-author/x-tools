@@ -48,6 +48,9 @@
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="editable">
+          <bool>true</bool>
+         </property>
         </widget>
        </item>
        <item row="2" column="2">
@@ -164,12 +167,12 @@
       <item row="12" column="0">
        <widget class="QLabel" name="label_5">
         <property name="text">
-         <string>Write interval</string>
+         <string>Cycle interval</string>
         </property>
        </widget>
       </item>
       <item row="3" column="1">
-       <widget class="QPushButton" name="pushButtonDeviceOpen">
+       <widget class="QPushButton" name="pushButtonCommunicationOpen">
         <property name="text">
          <string>Open</string>
         </property>
@@ -190,7 +193,7 @@
        </widget>
       </item>
       <item row="1" column="0" colspan="2">
-       <widget class="QWidget" name="widgetController" native="true">
+       <widget class="QWidget" name="widgetCommunicationController" native="true">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -272,7 +275,7 @@
        </widget>
       </item>
       <item row="3" column="0">
-       <widget class="QPushButton" name="pushButtonDeviceSettings">
+       <widget class="QPushButton" name="pushButtonCommunicationSettings">
         <property name="text">
          <string>Settings</string>
         </property>

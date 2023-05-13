@@ -26,8 +26,15 @@ void SAKToolBoxUiParameters::showDialog(int tabIndex)
 {
     if (tabIndex >= 0 && tabIndex < ui->tabWidget->count()) {
         ui->tabWidget->setCurrentIndex(tabIndex);
-        show();
     } else {
         qCWarning(mLoggingCategory) << "Invalid tab index:" << tabIndex;
     }
+
+    show();
+}
+
+SAKToolBoxUiParameters::ParameterContext parameterContext()
+{
+    ParameterContext ctx;
+    return ctx;
 }

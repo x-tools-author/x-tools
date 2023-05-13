@@ -375,7 +375,7 @@ QVariant SAKResponserTool::itemsContext()
     return varList;
 }
 
-void SAKResponserTool::inputBYtes(const QByteArray &bytes, const QVariant context)
+void SAKResponserTool::inputBytes(const QByteArray &bytes, const QVariant context)
 {
     mInputContextListMutex.lock();
     mInputContextList.append({bytes, context});

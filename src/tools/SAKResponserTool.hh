@@ -156,8 +156,9 @@ public:
     Q_INVOKABLE QVariant itemContext(int index);
     Q_INVOKABLE QVariant itemsContext();
 
+    virtual void inputBytes(const QByteArray &bytes, const QVariant context = QJsonObject()) final;
+
 protected:
-    virtual void inputBYtes(const QByteArray &bytes, const QVariant context = QJsonObject()) final;
     virtual void run() final;
 
 private:

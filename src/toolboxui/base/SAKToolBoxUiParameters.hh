@@ -21,9 +21,30 @@ class SAKToolBoxUiParameters : public QDialog
 {
     Q_OBJECT
 public:
+    struct ParameterContext {
+        struct {
+            struct {
+                bool isEnable;
+                qint8 maskCode;
+            } iMasker, oMasker;
+            struct {
+
+            } iAnalyzer, oAnalyzer;
+        } communication;
+
+        struct {
+
+        } input;
+
+        struct {
+
+        } output;
+    };
+public:
     SAKToolBoxUiParameters(QWidget *parent = nullptr);
     ~SAKToolBoxUiParameters();
     void showDialog(int tabIndex);
+    ParameterContext parameterContext();
 
 private:
     const QLoggingCategory mLoggingCategory{"SAK.ToolBoxUiParameters"};

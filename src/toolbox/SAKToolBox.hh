@@ -13,15 +13,17 @@
 #include <QObject>
 #include <QVariant>
 #include "tools/SAKBaseTool.hh"
+#include "tools/SAKToolFactory.hh"
 
 class SAKToolBox : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QVariant communication READ communication
-               NOTIFY comunicationToolChanged)
+    Q_PROPERTY(QVariant communicator READ communicator
+               NOTIFY communicatorChanged)
     Q_PROPERTY(QVariant inputMasker READ inputMasker CONSTANT)
     Q_PROPERTY(QVariant outputMasker READ outputMasker CONSTANT)
-    Q_PROPERTY(QVariant analyzer READ analyzer CONSTANT)
+    Q_PROPERTY(QVariant inputAnalyzer READ inputAnalyzer CONSTANT)
+    Q_PROPERTY(QVariant outputAnalyzer READ outputAnalyzer CONSTANT)
     Q_PROPERTY(QVariant emitter READ emitter CONSTANT)
     Q_PROPERTY(QVariant responser READ responser CONSTANT)
     Q_PROPERTY(QVariant storer READ storer CONSTANT)
@@ -34,38 +36,34 @@ public:
     /// You must call the interface before useing the call object.
     Q_INVOKABLE void setupComunicationTool(int type);
 
-    Q_INVOKABLE SAKBaseTool *comunicationTool();
-    Q_INVOKABLE SAKBaseTool *inputMaskerTool();
-    Q_INVOKABLE SAKBaseTool *outputMaskerTool();
-    Q_INVOKABLE SAKBaseTool *analyerTool();
-    Q_INVOKABLE SAKBaseTool *emiterTool();
-    Q_INVOKABLE SAKBaseTool *responserTool();
-    Q_INVOKABLE SAKBaseTool *prestorerTool();
-
     Q_INVOKABLE void open();
     Q_INVOKABLE void close();
     Q_INVOKABLE void send(const QByteArray &bytes);
 
 private:
-    SAKBaseTool *mComunicationTool{nullptr};
-    SAKBaseTool *mInputMaskerTool{nullptr};
-    SAKBaseTool *mOutputMaskerTool{nullptr};
-    SAKBaseTool *mAnalyzerTool{nullptr};
-    SAKBaseTool *mEmitterTool{nullptr};
-    SAKBaseTool *mResponserTool{nullptr};
-    SAKBaseTool *mStorerTool{nullptr};
-    SAKBaseTool *mPrestorerTool{nullptr};
+    SAKBaseTool         *mComunicationTool{nullptr};
+    SAKMaskerTool       *mInputMaskerTool{nullptr};
+    SAKMaskerTool       *mOutputMaskerTool{nullptr};
+    SAKAnalyzerTool     *mInputAnalyzerTool{nullptr};
+    SAKAnalyzerTool     *mOutputAnalyzerTool{nullptr};
+    SAKEmitterTool      *mEmitterTool{nullptr};
+    SAKResponserTool    *mResponserTool{nullptr};
+    SAKStorerTool       *mStorerTool{nullptr};
+    SAKPrestorerTool    *mPrestorerTool{nullptr};
+
+    QList<SAKBaseTool*> mToolList;
 
 private:
     void uninitializedTips();
 
 private:
-    QVariant communication(){return QVariant::fromValue(mComunicationTool);}
-    Q_SIGNAL void comunicationToolChanged();
+    QVariant communicator(){return QVariant::fromValue(mComunicationTool);}
+    Q_SIGNAL void communicatorChanged();
 
     QVariant inputMasker(){return QVariant::fromValue(mInputMaskerTool);}
     QVariant outputMasker(){return QVariant::fromValue(mOutputMaskerTool);}
-    QVariant analyzer(){return QVariant::fromValue(mAnalyzerTool);}
+    QVariant inputAnalyzer(){return QVariant::fromValue(mInputAnalyzerTool);}
+    QVariant outputAnalyzer(){return QVariant::fromValue(mOutputAnalyzerTool);}
     QVariant emitter(){return QVariant::fromValue(mEmitterTool);}
     QVariant responser(){return QVariant::fromValue(mResponserTool);}
     QVariant storer(){return QVariant::fromValue(mStorerTool);}

@@ -21,7 +21,6 @@ public:
 
     Q_INVOKABLE void setMaskCode(qint8 maskCode);
 
-protected:
     virtual void inputBytes(const QByteArray &bytes,
                             const QVariant &context = QJsonObject()) final;
 
