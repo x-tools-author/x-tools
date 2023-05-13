@@ -1,44 +1,50 @@
 /******************************************************************************
- * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
+ * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
+ *
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#include "EDCrc.hpp"
+#include "SAKCrcInterface.hpp"
 #include "EDInterface.hpp"
-#include "EDDataStructure.hpp"
+#include "SAKDataStructure.hh"
 
-EDDataStructure::EDDataStructure(QObject *parent)
+SAKDataStructure::SAKDataStructure(QObject *parent)
     : QObject{parent}
 {
 
 }
 
-QString EDDataStructure::affixesName(int affixes)
+QString SAKDataStructure::affixesName(int affixes)
 {
-    if (EDDataStructure::AffixesNone == affixes) {
+    if (SAKDataStructure::AffixesNone == affixes) {
         return "None";
-    } else if (EDDataStructure::AffixesR == affixes) {
+    } else if (SAKDataStructure::AffixesR == affixes) {
         return "//r";
-    } else if (EDDataStructure::AffixesN == affixes) {
+    } else if (SAKDataStructure::AffixesN == affixes) {
         return "//n";
-    } else if (EDDataStructure::AffixesRN == affixes) {
+    } else if (SAKDataStructure::AffixesRN == affixes) {
         return "//r//n";
-    } else if (EDDataStructure::AffixesNR == affixes) {
+    } else if (SAKDataStructure::AffixesNR == affixes) {
         return "//n//r";
     }
 
     return "None";
 }
 
-QByteArray EDDataStructure::affixesData(int affixes)
+QByteArray SAKDataStructure::affixesData(int affixes)
 {
-    if (affixes == EDDataStructure::AffixesNone) {
+    if (affixes == SAKDataStructure::AffixesNone) {
         return QByteArray("");
-    } else if (affixes == EDDataStructure::AffixesR) {
+    } else if (affixes == SAKDataStructure::AffixesR) {
         return QByteArray("\r");
-    } else if (affixes == EDDataStructure::AffixesN) {
+    } else if (affixes == SAKDataStructure::AffixesN) {
         return QByteArray("\n");
-    } else if (affixes == EDDataStructure::AffixesRN) {
+    } else if (affixes == SAKDataStructure::AffixesRN) {
         return QByteArray("\r\n");
-    } else if (affixes == EDDataStructure::AffixesNR) {
+    } else if (affixes == SAKDataStructure::AffixesNR) {
         return QByteArray("\n\r");
     }
 
@@ -46,24 +52,24 @@ QByteArray EDDataStructure::affixesData(int affixes)
 }
 
 
-QString EDDataStructure::cookedString(int escapeCharacter, const QString &str)
+QString SAKDataStructure::cookedString(int escapeCharacter, const QString &str)
 {
-    return EDDataStructure::cookEscapeCharacter(escapeCharacter, str);
+    return SAKDataStructure::cookEscapeCharacter(escapeCharacter, str);
 }
 
-QByteArray EDDataStructure::dataItemBytes(const EDStructDataItem &item)
+QByteArray SAKDataStructure::dataItemBytes(const EDStructDataItem &item)
 {
     QByteArray bytes;
     QString text = item.itemText;
-    text = EDDataStructure::cookedString(item.itemTextEscapeChracter, text);
+    text = SAKDataStructure::cookedString(item.itemTextEscapeChracter, text);
     bytes = EDInterface::string2array(text, item.itemTextFormat);
-    EDCrc edCrc;
+    SAKCrcInterface edCrc;
     QByteArray crcBytes = edCrc.calculateBytes(bytes,
                                                item.itemCrcAlgorithm,
                                                item.itemCrcStartIndex,
                                                item.itemCrcEndIndex);
-    QByteArray prefix = EDDataStructure::affixesData(item.itemPrefix);
-    QByteArray suffix = EDDataStructure::affixesData(item.itemSuffix);
+    QByteArray prefix = SAKDataStructure::affixesData(item.itemPrefix);
+    QByteArray suffix = SAKDataStructure::affixesData(item.itemSuffix);
 
     bytes.prepend(prefix);
     bytes.append(crcBytes);
@@ -72,7 +78,7 @@ QByteArray EDDataStructure::dataItemBytes(const EDStructDataItem &item)
     return bytes;
 }
 
-QString EDDataStructure::cookEscapeCharacter(int option, const QString &str)
+QString SAKDataStructure::cookEscapeCharacter(int option, const QString &str)
 {
     QString newStr = str;
     if (option == EscapeCharacterOptionR) {

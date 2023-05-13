@@ -12,9 +12,9 @@
 #include <QJsonObject>
 #include <QJsonDocument>
 
-#include "common/EDCrc.hpp"
+#include "common/SAKCrcInterface.hpp"
 #include "common/EDInterface.hpp"
-#include "common/EDDataStructure.hpp"
+#include "common/SAKDataStructure.hh"
 
 #include "SAKResponserTool.hh"
 
@@ -240,15 +240,15 @@ QByteArray SAKResponserTableModel::referenceBytes(const EDResponserData &item) c
 {
     QByteArray bytes;
     QString text = item.itemReferenceText ;
-    text = EDDataStructure::cookedString(item.itemReferenceEscapeCharacter, text);
+    text = SAKDataStructure::cookedString(item.itemReferenceEscapeCharacter, text);
     bytes = EDInterface::string2array(text, item.itemReferenceTextFormat);
-    EDCrc edCrc;
+    SAKCrcInterface edCrc;
     QByteArray crcBytes = edCrc.calculateBytes(bytes,
                                                item.itemReferenceCrcAlgorithm,
                                                item.itemReferenceCrcStartIndex,
                                                item.itemReferenceCrcEndIndex);
-    QByteArray prefix = EDDataStructure::affixesData(item.itemReferencePrefix);
-    QByteArray suffix = EDDataStructure::affixesData(item.itemReferenceSuffix);
+    QByteArray prefix = SAKDataStructure::affixesData(item.itemReferencePrefix);
+    QByteArray suffix = SAKDataStructure::affixesData(item.itemReferenceSuffix);
 
     bytes.prepend(prefix);
     bytes.append(crcBytes);
@@ -261,15 +261,15 @@ QByteArray SAKResponserTableModel::responseBytes(const EDResponserData &item) co
 {
     QByteArray bytes;
     QString text = item.itemResponseText;
-    text = EDDataStructure::cookedString(item.itemResponseEscapeCharacter, text);
+    text = SAKDataStructure::cookedString(item.itemResponseEscapeCharacter, text);
     bytes = EDInterface::string2array(text, item.itemResponseTextFormat);
-    EDCrc edCrc;
+    SAKCrcInterface edCrc;
     QByteArray crcBytes = edCrc.calculateBytes(bytes,
                                                item.itemResponseCrcAlgorithm,
                                                item.itemResponseCrcStartIndex,
                                                item.itemResponseCrcEndIndex);
-    QByteArray prefix = EDDataStructure::affixesData(item.itemResponsePrefix);
-    QByteArray suffix = EDDataStructure::affixesData(item.itemResponseSuffix);
+    QByteArray prefix = SAKDataStructure::affixesData(item.itemResponsePrefix);
+    QByteArray suffix = SAKDataStructure::affixesData(item.itemResponseSuffix);
 
     bytes.prepend(prefix);
     bytes.append(crcBytes);
@@ -337,24 +337,24 @@ QVariant SAKResponserTool::itemContext(int index)
         ctx.insert(itemEnable(), true);
         ctx.insert(itemDescription(), "Demo");
         ctx.insert(itemOption(), 0);
-
-        ctx.insert(itemReferenceTextFormat(), EDDataStructure::TextFormatAscii);
-        ctx.insert(itemReferenceEscapeCharacter(), EDDataStructure::EscapeCharacterOptionNone);
-        ctx.insert(itemReferencePrefix(), EDDataStructure::AffixesNone);
-        ctx.insert(itemReferenceSuffix(), EDDataStructure::AffixesNone);
+        
+        ctx.insert(itemReferenceTextFormat(), SAKDataStructure::TextFormatAscii);
+        ctx.insert(itemReferenceEscapeCharacter(), SAKDataStructure::EscapeCharacterOptionNone);
+        ctx.insert(itemReferencePrefix(), SAKDataStructure::AffixesNone);
+        ctx.insert(itemReferenceSuffix(), SAKDataStructure::AffixesNone);
         ctx.insert(itemReferenceCrcEnable(), true);
-        ctx.insert(itemReferenceCrcAlgorithm(), EDCrc::CRC_8);
+        ctx.insert(itemReferenceCrcAlgorithm(), SAKCrcInterface::CRC_8);
         ctx.insert(itemReferenceCrcStartIndex(), 0);
         ctx.insert(itemReferenceCrcEndIndex(), 0);
         ctx.insert(itemReferenceText(), "Reference data.");
 
         ctx.insert(itemResponseInterval(), 1000);
-        ctx.insert(itemResponseTextFormat(), EDDataStructure::TextFormatAscii);
-        ctx.insert(itemResponseEscapeCharacter(), EDDataStructure::EscapeCharacterOptionNone);
-        ctx.insert(itemResponsePrefix(), EDDataStructure::AffixesNone);
-        ctx.insert(itemResponseSuffix(), EDDataStructure::AffixesNone);
+        ctx.insert(itemResponseTextFormat(), SAKDataStructure::TextFormatAscii);
+        ctx.insert(itemResponseEscapeCharacter(), SAKDataStructure::EscapeCharacterOptionNone);
+        ctx.insert(itemResponsePrefix(), SAKDataStructure::AffixesNone);
+        ctx.insert(itemResponseSuffix(), SAKDataStructure::AffixesNone);
         ctx.insert(itemResponseCrcEnable(), true);
-        ctx.insert(itemResponseCrcAlgorithm(), EDCrc::CRC_8);
+        ctx.insert(itemResponseCrcAlgorithm(), SAKCrcInterface::CRC_8);
         ctx.insert(itemResponseCrcStartIndex(), 0);
         ctx.insert(itemResponseCrcEndIndex(), 0);
         ctx.insert(itemResponseText(), "Response data.");
@@ -423,16 +423,16 @@ void SAKResponserTool::try2output(const QByteArray &bytes, QObject *threadInnerO
         auto refBytes = mTableModel->referenceBytes(item.data);
         auto resBytes = mTableModel->responseBytes(item.data);
         bool enableResponse = false;
-        if (item.data.itemOption == EDDataStructure::ResponseOptionAways) {
+        if (item.data.itemOption == SAKDataStructure::ResponseOptionAways) {
             enableResponse = true;
-        } else if (item.data.itemOption == EDDataStructure::ResponseOptionEcho) {
+        } else if (item.data.itemOption == SAKDataStructure::ResponseOptionEcho) {
             resBytes = bytes;
             enableResponse = true;
-        } else if (item.data.itemOption == EDDataStructure::ResponseOptionInputContainReference) {
+        } else if (item.data.itemOption == SAKDataStructure::ResponseOptionInputContainReference) {
             enableResponse = bytes.contains(refBytes);
-        } else if (item.data.itemOption == EDDataStructure::ResponseOptionInputDiscontainReference) {
+        } else if (item.data.itemOption == SAKDataStructure::ResponseOptionInputDiscontainReference) {
             enableResponse = !bytes.contains(refBytes);
-        } else if (item.data.itemOption == EDDataStructure::ResponseOptionInputEqualReference) {
+        } else if (item.data.itemOption == SAKDataStructure::ResponseOptionInputEqualReference) {
             enableResponse = bytes == refBytes;
         }
 

@@ -14,9 +14,9 @@
 
 #include "SAKPrestorerTool.hh"
 
-#include "common/EDCrc.hpp"
+#include "common/SAKCrcInterface.hpp"
 #include "common/EDInterface.hpp"
-#include "common/EDDataStructure.hpp"
+#include "common/SAKDataStructure.hh"
 
 SAKPrestorerTableModel::SAKPrestorerTableModel(QObject *parent)
     : QAbstractTableModel(parent)
@@ -146,12 +146,12 @@ QByteArray SAKPrestorerTableModel::itemBytes(const EDPrestoreItem &item)
 {
     QByteArray bytes;
     QString text = item.itemText;
-    text = EDDataStructure::cookedString(item.itemEscapeCharacter, text);
+    text = SAKDataStructure::cookedString(item.itemEscapeCharacter, text);
     bytes = EDInterface::string2array(text, item.itemTextFormat);
-    EDCrc edCrc;
-    QByteArray prefix = EDDataStructure::affixesData(item.itemPrefix);
+    SAKCrcInterface edCrc;
+    QByteArray prefix = SAKDataStructure::affixesData(item.itemPrefix);
     QByteArray crcBytes;
-    QByteArray suffix = EDDataStructure::affixesData(item.itemSuffix);
+    QByteArray suffix = SAKDataStructure::affixesData(item.itemSuffix);
 
     if (item.itemCrcEnable) {
         crcBytes = edCrc.calculateBytes(bytes,
@@ -240,13 +240,13 @@ QVariant SAKPrestorerTool::itemContext(int index)
         ctx.insert(itemText(), item.itemText);
     } else {
         ctx.insert(itemDescription(), "Demo");
-        ctx.insert(itemTextFormat(), EDDataStructure::TextFormatAscii);
+        ctx.insert(itemTextFormat(), SAKDataStructure::TextFormatAscii);
         ctx.insert(itemEscapeCharacter(),
-                   EDDataStructure::EscapeCharacterOptionNone);
-        ctx.insert(itemPrefix(), EDDataStructure::AffixesNone);
-        ctx.insert(itemSuffix(), EDDataStructure::AffixesNone);
+                   SAKDataStructure::EscapeCharacterOptionNone);
+        ctx.insert(itemPrefix(), SAKDataStructure::AffixesNone);
+        ctx.insert(itemSuffix(), SAKDataStructure::AffixesNone);
         ctx.insert(itemCrcEnable(), true);
-        ctx.insert(itemCrcAlgorithm(), EDCrc::CRC_8);
+        ctx.insert(itemCrcAlgorithm(), SAKCrcInterface::CRC_8);
         ctx.insert(itemCrcStartIndex(), 0);
         ctx.insert(itemCrcEndIndex(), 0);
         ctx.insert(itemText(), "This is a demo.");

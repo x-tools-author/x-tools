@@ -1,17 +1,23 @@
-﻿/******************************************************************************
- * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
+/******************************************************************************
+ * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
+ *
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#ifndef EDCRC_HPP
-#define EDCRC_HPP
+#ifndef SAKCRCINTERFACE_HH
+#define SAKCRCINTERFACE_HH
 
 #include <QObject>
 #include <QStringList>
 
-class EDCrc : public QObject
+class SAKCrcInterface : public QObject
 {
     Q_OBJECT
 public:
-    enum CrcModel{
+    enum SAKEnumCrcAlgorithm{
         CRC_8,
         CRC_8_ITU,
         CRC_8_ROHC,
@@ -30,10 +36,10 @@ public:
         CRC_32,
         CRC_32_MPEG2
     };
-    Q_ENUM(CrcModel);
+    Q_ENUM(SAKEnumCrcAlgorithm);
 
 public:
-    EDCrc(QObject *parent = Q_NULLPTR);
+    SAKCrcInterface(QObject *parent = Q_NULLPTR);
 
     Q_INVOKABLE QString calculateString(const QString &bytes, int format);
     Q_INVOKABLE QByteArray calculateBytes(const QByteArray &bytes,
@@ -41,19 +47,19 @@ public:
                                                  int endIndex);
 
     QStringList supportedParameterModels();
-    uint32_t poly(EDCrc::CrcModel model);
-    uint32_t xorValue(EDCrc::CrcModel model);
-    uint32_t initialValue(EDCrc::CrcModel model);
-    QString friendlyPoly(EDCrc::CrcModel model);
-    bool isInputReversal(EDCrc::CrcModel model);
-    bool isOutputReversal(EDCrc::CrcModel model);
-    int bitsWidth(EDCrc::CrcModel model);
+    uint32_t poly(SAKCrcInterface::SAKEnumCrcAlgorithm model);
+    uint32_t xorValue(SAKCrcInterface::SAKEnumCrcAlgorithm model);
+    uint32_t initialValue(SAKCrcInterface::SAKEnumCrcAlgorithm model);
+    QString friendlyPoly(SAKCrcInterface::SAKEnumCrcAlgorithm model);
+    bool isInputReversal(SAKCrcInterface::SAKEnumCrcAlgorithm model);
+    bool isOutputReversal(SAKCrcInterface::SAKEnumCrcAlgorithm model);
+    int bitsWidth(SAKCrcInterface::SAKEnumCrcAlgorithm model);
 
 public:
     template<typename T>
     T crcCalculate(uint8_t *input,
                    uint64_t length,
-                   EDCrc::CrcModel model){
+                   SAKCrcInterface::SAKEnumCrcAlgorithm model){
         T crcReg = static_cast<T>(initialValue(model));
         T rawPoly = static_cast<T>(poly(model));
         uint8_t byte = 0;

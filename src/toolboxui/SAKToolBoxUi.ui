@@ -124,7 +124,7 @@
        <number>0</number>
       </property>
       <item row="5" column="1">
-       <widget class="QComboBox" name="comboBox"/>
+       <widget class="SAKTextFormatComboBox" name="comboBox"/>
       </item>
       <item row="12" column="1">
        <widget class="QComboBox" name="comboBoxInputIntervel">
@@ -207,7 +207,7 @@
        </widget>
       </item>
       <item row="13" column="1">
-       <widget class="QComboBox" name="comboBoxInputFormat"/>
+       <widget class="SAKTextFormatComboBox" name="comboBoxInputFormat"/>
       </item>
       <item row="0" column="0" colspan="2">
        <widget class="QLabel" name="label_2">
@@ -297,6 +297,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>SAKTextFormatComboBox</class>
+   <extends>QComboBox</extends>
+   <header location="global">SAKTextFormatComboBox.hh</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>

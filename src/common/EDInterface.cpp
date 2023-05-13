@@ -14,7 +14,7 @@
 #include <QAbstractTableModel>
 
 #include "EDInterface.hpp"
-#include "EDDataStructure.hpp"
+#include "SAKDataStructure.hh"
 
 EDInterface::EDInterface(QObject *parent)
     : QObject{parent}
@@ -38,16 +38,16 @@ QString EDInterface::array2String(const QByteArray &array, int format)
         }
         return str;
     };
-
-    if (EDDataStructure::TextFormatBin == format) {
+    
+    if (SAKDataStructure::TextFormatBin == format) {
         return cookedArray(array, 2, 8);
-    } else if (EDDataStructure::TextFormatOct == format) {
+    } else if (SAKDataStructure::TextFormatOct == format) {
         return cookedArray(array, 8, 3);
-    } else if (EDDataStructure::TextFormatDec == format) {
+    } else if (SAKDataStructure::TextFormatDec == format) {
         return cookedArray(array, 10, 3);
-    } else if (EDDataStructure::TextFormatHex == format) {
+    } else if (SAKDataStructure::TextFormatHex == format) {
         return cookedArray(array, 16, 2);
-    } else if (EDDataStructure::TextFormatAscii == format) {
+    } else if (SAKDataStructure::TextFormatAscii == format) {
         return QString::fromLatin1(array);
     } else {
         return QString::fromUtf8(array);
@@ -62,36 +62,36 @@ QByteArray EDInterface::string2array(const QString &input, int format)
 #else
     auto behavior = Qt::SkipEmptyParts;
 #endif
-
-    if (format == EDDataStructure::TextFormatBin){
+    
+    if (format == SAKDataStructure::TextFormatBin){
         QStringList strList = input.split(' ', behavior);
         for (int i = 0; i < strList.length(); i++) {
             QString str = strList.at(i);
             qint8 value = QString(str).toInt(Q_NULLPTR, 2);
             data.append(reinterpret_cast<char*>(&value), 1);
         }
-    } else if (format == EDDataStructure::TextFormatOct){
+    } else if (format == SAKDataStructure::TextFormatOct){
         QStringList strList = input.split(' ', behavior);
         for (int i = 0; i < strList.length(); i++) {
             QString str = strList.at(i);
             qint8 value = QString(str).toInt(Q_NULLPTR, 8);
             data.append(reinterpret_cast<char*>(&value), 1);
         }
-    } else if (format == EDDataStructure::TextFormatDec){
+    } else if (format == SAKDataStructure::TextFormatDec){
         QStringList strList = input.split(' ', behavior);
         for (int i = 0; i < strList.length(); i++) {
             QString str = strList.at(i);
             qint8 value = QString(str).toInt(Q_NULLPTR, 10);
             data.append(reinterpret_cast<char*>(&value), 1);
         }
-    } else if (format == EDDataStructure::TextFormatHex){
+    } else if (format == SAKDataStructure::TextFormatHex){
         QStringList strList = input.split(' ', behavior);
         for (int i = 0; i < strList.length(); i++) {
             QString str = strList.at(i);
             qint8 value = QString(str).toInt(Q_NULLPTR, 16);
             data.append(reinterpret_cast<char*>(&value), 1);
         }
-    } else if (format == EDDataStructure::TextFormatAscii){
+    } else if (format == SAKDataStructure::TextFormatAscii){
         data = input.toLatin1();
     } else {
         data = input.toUtf8();

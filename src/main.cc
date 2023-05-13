@@ -32,13 +32,13 @@
 #include "SAKSystemTrayIcon.hh"
 
 #include "common/EDBle.hpp"
-#include "common/EDCrc.hpp"
+#include "common/SAKCrcInterface.hpp"
 #include "common/EDI18N.hpp"
 #include "common/EDSettings.hpp"
 #include "common/EDInterface.hpp"
 #include "common/EDSerialPort.hpp"
 #include "common/EDHighlighter.hpp"
-#include "common/EDDataStructure.hpp"
+#include "common/SAKDataStructure.hh"
 #include "common/EDNetworkInterface.hpp"
 
 #include "toolbox/SAKToolBox.hh"
@@ -71,18 +71,24 @@ int main(int argc, char *argv[])
 #endif
 #endif
 
+#if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
+    //QGuiApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::Floor);
+#endif
+
     // High dpi settings.
     auto edSettings = EDSettings::instance();
+#if 0
     auto policy = edSettings->value("highDpiScaleFactorRoundingPolicy").toInt();
     auto cookedPolicy = Qt::HighDpiScaleFactorRoundingPolicy(policy);
     QGuiApplication::setHighDpiScaleFactorRoundingPolicy(cookedPolicy);
-
+#endif
     // Language setttings.
     auto language = edSettings->value("language").toString();
     if (language.isEmpty()) {
         language = QLocale::system().name();
         edSettings->setValue("language", language);
     }
+
 
     int exitCode = 0;
     do {
@@ -137,8 +143,8 @@ int main(int argc, char *argv[])
 
 
         auto edInterface = new EDInterface(&app);
-        auto edCrc = new EDCrc(&app);
-        auto edDataStructure = new EDDataStructure(&app);
+        auto edCrc = new SAKCrcInterface(&app);
+        auto edDataStructure = new SAKDataStructure(&app);
 #if 0
     QSurfaceFormat format;
     format.setSamples(8);
@@ -162,7 +168,7 @@ int main(int argc, char *argv[])
 
         const QString reason = "Uncreatable type!";
         qmlRegisterType<EDBle>("ED.EasyDebug", 1, 0, "EDBle");
-        qmlRegisterType<EDCrc>("ED.EasyDebug", 1, 0, "EDCrc");
+        qmlRegisterType<SAKCrcInterface>("ED.EasyDebug", 1, 0, "EDCrc");
         qmlRegisterType<SAKToolBox>("ED.EasyDebug", 1, 0, "EDDevice");
         qmlRegisterType<EDSerialPort>("ED.EasyDebug", 1, 0, "EDSerialPort");
         qmlRegisterType<EDHighlighter>("ED.EasyDebug", 1, 0, "EDHighlighter");
@@ -186,7 +192,7 @@ int main(int argc, char *argv[])
         qmlRegisterUncreatableType<SAKWebSocketClientTool>("ED.EasyDebug", 1, 0, "EDWebSocketClientTool", reason);
 
         qmlRegisterUncreatableType<EDInterface>("ED.EasyDebug", 1, 0, "EDInterface", reason);
-        qmlRegisterUncreatableType<EDDataStructure>("ED.EasyDebug", 1, 0, "EDDataStructure", reason);
+        qmlRegisterUncreatableType<SAKDataStructure>("ED.EasyDebug", 1, 0, "EDDataStructure", reason);
 
         qmlAppEngine.rootContext()->setContextProperty("edCrc", edCrc);
         qmlAppEngine.rootContext()->setContextProperty("edI18n", edI18n);

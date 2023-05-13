@@ -1,18 +1,24 @@
 /******************************************************************************
- * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
+ * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
+ *
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#ifndef EDDATASTRUCTURE_HPP
-#define EDDATASTRUCTURE_HPP
+#ifndef SAKDATASTRUCTURE_HH
+#define SAKDATASTRUCTURE_HH
 
 #include <QObject>
 
-class EDDataStructure : public QObject
+class SAKDataStructure : public QObject
 {
     Q_OBJECT
 public:
-    explicit EDDataStructure(QObject *parent = nullptr);
+    explicit SAKDataStructure(QObject *parent = nullptr);
 
-    enum EDEnumTextFormat {
+    enum SAKEnumTextFormat {
         TextFormatBin,
         TextFormatOct,
         TextFormatDec,
@@ -20,9 +26,9 @@ public:
         TextFormatAscii,
         TextFormatUtf8
     };
-    Q_ENUM(EDEnumTextFormat);
+    Q_ENUM(SAKEnumTextFormat);
 
-    enum EDEnumEscapeCharacterOption {
+    enum SAKEnumEscapeCharacterOption {
         EscapeCharacterOptionNone,
         EscapeCharacterOptionR,
         EscapeCharacterOptionN,
@@ -30,16 +36,17 @@ public:
         EscapeCharacterOptionNR,
         EscapeCharacterOptionRAndN
     };
-    Q_ENUM(EDEnumEscapeCharacterOption);
+    Q_ENUM(SAKEnumEscapeCharacterOption);
 
-    enum EDEnumAffixes {
+    enum SAKEnumAffixes {
         AffixesNone,
         AffixesR,
         AffixesN,
         AffixesRN,
-        AffixesNR
+        AffixesNR,
+        AffixesNAndR
     };
-    Q_ENUM(EDEnumAffixes);
+    Q_ENUM(SAKEnumAffixes);
 
     /**
      * @brief 自动应答选项
@@ -75,4 +82,4 @@ public:
     Q_INVOKABLE static QString cookEscapeCharacter(int option, const QString &str);
 };
 
-#endif // EDDATASTRUCTURE_HPP
+#endif // SAKDATASTRUCTURE_H

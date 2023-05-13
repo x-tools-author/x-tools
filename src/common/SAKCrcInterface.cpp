@@ -1,24 +1,30 @@
 ﻿/******************************************************************************
- * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
+ * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
+ *
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include <QMetaEnum>
 
-#include "EDCrc.hpp"
+#include "SAKCrcInterface.hpp"
 
-EDCrc::EDCrc(QObject *parent)
+SAKCrcInterface::SAKCrcInterface(QObject *parent)
     :QObject (parent)
 {
 
 }
 
-QString EDCrc::calculateString(const QString &bytes, int format)
+QString SAKCrcInterface::calculateString(const QString &bytes, int format)
 {
     Q_UNUSED(bytes);
     Q_UNUSED(format);
     return QString();
 }
 
-QByteArray EDCrc::calculateBytes(const QByteArray &bytes,
+QByteArray SAKCrcInterface::calculateBytes(const QByteArray &bytes,
                           int model, int startIndex,
                           int endIndex)
 {
@@ -39,23 +45,23 @@ QByteArray EDCrc::calculateBytes(const QByteArray &bytes,
 
     QByteArray retBytes;
     if (parametersIsValid()) {
-        auto bw = bitsWidth(CrcModel(model));
+        auto bw = bitsWidth(SAKEnumCrcAlgorithm(model));
         uint64_t len = bytes.length() - startIndex - endIndex;
         QByteArray temp = bytes;
         if (bw == 8) {
             uint8_t ret = crcCalculate<uint8_t>(
                 reinterpret_cast<uint8_t*>(temp.data()) + startIndex,
-                len, CrcModel(model));
+                len, SAKEnumCrcAlgorithm(model));
             retBytes = QByteArray(reinterpret_cast<char*>(&ret), sizeof(ret));
         } else if (bw == 16) {
             uint16_t ret = crcCalculate<uint16_t>(
                 reinterpret_cast<uint8_t*>(temp.data()) + startIndex,
-                len, CrcModel(model));
+                len, SAKEnumCrcAlgorithm(model));
             retBytes = QByteArray(reinterpret_cast<char*>(&ret), sizeof(ret));
         } else if (bw == 32) {
             uint32_t ret = crcCalculate<uint32_t>(
                 reinterpret_cast<uint8_t*>(temp.data()) + startIndex,
-                len, CrcModel(model));
+                len, SAKEnumCrcAlgorithm(model));
             retBytes = QByteArray(reinterpret_cast<char*>(&ret), sizeof(ret));
         }
     }
@@ -63,10 +69,10 @@ QByteArray EDCrc::calculateBytes(const QByteArray &bytes,
     return retBytes;
 }
 
-QStringList EDCrc::supportedParameterModels()
+QStringList SAKCrcInterface::supportedParameterModels()
 {
     modelStrings.clear();
-    QMetaEnum models = QMetaEnum::fromType<CrcModel>();
+    QMetaEnum models = QMetaEnum::fromType<SAKEnumCrcAlgorithm>();
 
     const char *ch = Q_NULLPTR;
     for (int i = 0; i < models.keyCount(); i++) {
@@ -79,7 +85,7 @@ QStringList EDCrc::supportedParameterModels()
     return modelStrings;
 }
 
-uint32_t EDCrc::poly(EDCrc::CrcModel model)
+uint32_t SAKCrcInterface::poly(SAKCrcInterface::SAKEnumCrcAlgorithm model)
 {
     uint32_t poly = 0;
 
@@ -116,7 +122,7 @@ uint32_t EDCrc::poly(EDCrc::CrcModel model)
     return poly;
 }
 
-uint32_t EDCrc::xorValue(EDCrc::CrcModel model)
+uint32_t SAKCrcInterface::xorValue(SAKCrcInterface::SAKEnumCrcAlgorithm model)
 {
     uint32_t value = 0;
 
@@ -154,7 +160,7 @@ uint32_t EDCrc::xorValue(EDCrc::CrcModel model)
     return value;
 }
 
-uint32_t EDCrc::initialValue(EDCrc::CrcModel model)
+uint32_t SAKCrcInterface::initialValue(SAKCrcInterface::SAKEnumCrcAlgorithm model)
 {
     uint32_t init = 0;
 
@@ -189,7 +195,7 @@ uint32_t EDCrc::initialValue(EDCrc::CrcModel model)
     return init;
 }
 
-QString EDCrc::friendlyPoly(EDCrc::CrcModel model)
+QString SAKCrcInterface::friendlyPoly(SAKCrcInterface::SAKEnumCrcAlgorithm model)
 {
     QString formula = QString("Error: Formula not found");
 
@@ -224,7 +230,7 @@ QString EDCrc::friendlyPoly(EDCrc::CrcModel model)
     return formula;
 }
 
-bool EDCrc::isInputReversal(EDCrc::CrcModel model)
+bool SAKCrcInterface::isInputReversal(SAKCrcInterface::SAKEnumCrcAlgorithm model)
 {
     bool reversal = true;
 
@@ -254,7 +260,7 @@ bool EDCrc::isInputReversal(EDCrc::CrcModel model)
     return reversal;
 }
 
-bool EDCrc::isOutputReversal(EDCrc::CrcModel model)
+bool SAKCrcInterface::isOutputReversal(SAKCrcInterface::SAKEnumCrcAlgorithm model)
 {
     bool reversal = true;
 
@@ -284,7 +290,7 @@ bool EDCrc::isOutputReversal(EDCrc::CrcModel model)
     return reversal;
 }
 
-int EDCrc::bitsWidth(EDCrc::CrcModel model)
+int SAKCrcInterface::bitsWidth(SAKCrcInterface::SAKEnumCrcAlgorithm model)
 {
     int ret = -1;
     switch (model) {

@@ -2,8 +2,6 @@ INCLUDEPATH += src/common
 
 HEADERS += \
     $$PWD/EDBle.hpp \
-    $$PWD/EDCrc.hpp \
-    $$PWD/EDDataStructure.hpp \
     $$PWD/EDHighlighter.hpp \
     $$PWD/EDI18N.hpp \
     $$PWD/EDInterface.hpp \
@@ -12,12 +10,12 @@ HEADERS += \
     $$PWD/EDSettings.hpp \
     $$PWD/SAKCommonCrcInterface.hh \
     $$PWD/SAKCommonDataStructure.hh \
-    $$PWD/SAKCommonInterface.hh
+    $$PWD/SAKCommonInterface.hh \
+    $$PWD/SAKCrcInterface.hpp \
+    $$PWD/SAKDataStructure.hh
 
 SOURCES += \
     $$PWD/EDBle.cpp \
-    $$PWD/EDCrc.cpp \
-    $$PWD/EDDataStructure.cpp \
     $$PWD/EDHighlighter.cpp \
     $$PWD/EDI18N.cpp \
     $$PWD/EDInterface.cpp \
@@ -26,4 +24,6 @@ SOURCES += \
     $$PWD/EDSettings.cpp \
     $$PWD/SAKCommonCrcInterface.cc \
     $$PWD/SAKCommonDataStructure.cc \
-    $$PWD/SAKCommonInterface.cc
+    $$PWD/SAKCommonInterface.cc \
+    $$PWD/SAKCrcInterface.cpp \
+    $$PWD/SAKDataStructure.cc
