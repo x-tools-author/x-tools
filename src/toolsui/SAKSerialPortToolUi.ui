@@ -41,13 +41,13 @@
     </widget>
    </item>
    <item row="2" column="1">
-    <widget class="QComboBox" name="comboBoxDataBits"/>
+    <widget class="SAKDataBitsComboBox" name="comboBoxDataBits"/>
    </item>
    <item row="3" column="1">
-    <widget class="QComboBox" name="comboBoxStopBits"/>
+    <widget class="SAKStopBitsComboBox" name="comboBoxStopBits"/>
    </item>
    <item row="4" column="1">
-    <widget class="QComboBox" name="comboBoxParity"/>
+    <widget class="SAKParityComboBox" name="comboBoxParity"/>
    </item>
    <item row="1" column="1">
     <widget class="SAKBaudRateComboBox" name="comboBoxBaudRate">
@@ -57,7 +57,7 @@
     </widget>
    </item>
    <item row="5" column="1">
-    <widget class="QComboBox" name="comboBoxFlowControl"/>
+    <widget class="SAKFlowControlComboBox" name="comboBoxFlowControl"/>
    </item>
    <item row="1" column="0">
     <widget class="QLabel" name="label">
@@ -106,6 +106,26 @@
    <class>SAKBaudRateComboBox</class>
    <extends>QComboBox</extends>
    <header location="global">SAKBaudRateComboBox.hh</header>
+  </customwidget>
+  <customwidget>
+   <class>SAKDataBitsComboBox</class>
+   <extends>QComboBox</extends>
+   <header location="global">SAKDataBitsComboBox.hh</header>
+  </customwidget>
+  <customwidget>
+   <class>SAKStopBitsComboBox</class>
+   <extends>QComboBox</extends>
+   <header location="global">SAKStopBitsComboBox.hh</header>
+  </customwidget>
+  <customwidget>
+   <class>SAKParityComboBox</class>
+   <extends>QComboBox</extends>
+   <header location="global">SAKParityComboBox.hh</header>
+  </customwidget>
+  <customwidget>
+   <class>SAKFlowControlComboBox</class>
+   <extends>QComboBox</extends>
+   <header location="global">SAKFlowControlComboBox.hh</header>
   </customwidget>
  </customwidgets>
  <resources/>
