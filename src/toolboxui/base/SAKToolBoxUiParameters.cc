@@ -15,6 +15,10 @@ SAKToolBoxUiParameters::SAKToolBoxUiParameters(QWidget *parent)
     , ui(new Ui::SAKToolBoxUiParameters)
 {
     ui->setupUi(this);
+    ui->widgetInputMasker->setToolName("Input masker");
+    ui->widgetOutputMasker->setToolName("Output masker");
+    ui->widgetInputAnanyzer->setToolName(tr("Input analyzer"));
+    ui->widgetOutputAnanlyzer->setToolName(tr("Output analyzer"));
 }
 
 SAKToolBoxUiParameters::~SAKToolBoxUiParameters()
@@ -33,8 +37,9 @@ void SAKToolBoxUiParameters::showDialog(int tabIndex)
     show();
 }
 
-SAKToolBoxUiParameters::ParameterContext parameterContext()
+SAKToolBoxUiParameters::ParameterContext
+SAKToolBoxUiParameters::parameterContext()
 {
-    ParameterContext ctx;
+    ParameterContext ctx{};
     return ctx;
 }
