@@ -10,15 +10,18 @@
 #ifndef SAKTOOLBOXUI_HH
 #define SAKTOOLBOXUI_HH
 
+#include <QList>
 #include <QWidget>
 #include <QLoggingCategory>
 
 #include "SAKToolBox.hh"
+#include "SAKCommunicationToolUi.hh"
 
 namespace Ui {
 class SAKToolBoxUi;
 }
 
+class SAKCommunicationTool;
 class SAKToolBoxUiParameters;
 class SAKToolBoxUi : public QWidget
 {
@@ -26,15 +29,18 @@ class SAKToolBoxUi : public QWidget
 public:
     explicit SAKToolBoxUi(QWidget *parent = nullptr);
     ~SAKToolBoxUi();
-
-protected:
-    virtual QWidget *controller() = 0;
-    void init();
+    static QList<int> supportedCommuniticationTools();
+    void resetCommuniticationTool(int type);
 
 private:
     SAKToolBoxUiParameters *mToolBoxUiParameters{nullptr};
 
 private:
+    QString communiticationToolName(int type);
+    SAKCommunicationToolUi *communiticationToolUi(int type);
+
+private:
+    void init();
     void initUi();
     void initUiCommunication();
     void initUiInput();
@@ -51,7 +57,8 @@ private:
     void initSignalsOutput();
 
 private:
-    SAKToolBox *mToolBox;
+    SAKToolBox *mToolBox{nullptr};
+    SAKCommunicationTool *mCommunicationTool{nullptr};
     const QLoggingCategory mLoggingCategory{"SAK.SAKToolBoxUi"};
 
 private:

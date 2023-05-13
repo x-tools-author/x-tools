@@ -44,7 +44,6 @@
 #include "SAKApplication.hh"
 #include "SAKUpdateManager.hh"
 #include "SAKDebuggerFactory.hh"
-#include "SAKToolBoxUiFactory.hh"
 #include "SAKAssistantsFactory.hh"
 
 #include "SAKModbusDebugger.hh"
@@ -136,12 +135,11 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
     mTabWidget->blockSignals(false);
 #else
     mToolBoxs->blockSignals(true);
-    QList<int> types = SAKToolBoxUiFactory::instance()->supportedTools();
+    QList<int> types = SAKToolBoxUi::supportedCommuniticationTools();
     for (int type : types) {
-        QWidget *page = SAKToolBoxUiFactory::instance()->createToolBoxUi(type);
-        if (page) {
-            mToolBoxs->addTab(page, page->windowTitle());
-        }
+        SAKToolBoxUi *toolBoxUi = new SAKToolBoxUi(this);
+        toolBoxUi->resetCommuniticationTool(type);
+        mToolBoxs->addTab(toolBoxUi, toolBoxUi->windowTitle());
     }
     mToolBoxs->blockSignals(false);
 #endif

@@ -76,7 +76,7 @@ void SAKToolBox::setupComunicationTool(int type)
                 mStorerTool, &SAKBaseTool::inputBytes);
     }
 
-    emit communicatorChanged();
+    emit communicationChanged();
 }
 
 void SAKToolBox::open()

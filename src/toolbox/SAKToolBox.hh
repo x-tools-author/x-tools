@@ -18,8 +18,8 @@
 class SAKToolBox : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QVariant communicator READ communicator
-               NOTIFY communicatorChanged)
+    Q_PROPERTY(QVariant communication READ communication
+               NOTIFY communicationChanged)
     Q_PROPERTY(QVariant inputMasker READ inputMasker CONSTANT)
     Q_PROPERTY(QVariant outputMasker READ outputMasker CONSTANT)
     Q_PROPERTY(QVariant inputAnalyzer READ inputAnalyzer CONSTANT)
@@ -57,8 +57,8 @@ private:
     void uninitializedTips();
 
 private:
-    QVariant communicator(){return QVariant::fromValue(mComunicationTool);}
-    Q_SIGNAL void communicatorChanged();
+    QVariant communication(){return QVariant::fromValue(mComunicationTool);}
+    Q_SIGNAL void communicationChanged();
 
     QVariant inputMasker(){return QVariant::fromValue(mInputMaskerTool);}
     QVariant outputMasker(){return QVariant::fromValue(mOutputMaskerTool);}

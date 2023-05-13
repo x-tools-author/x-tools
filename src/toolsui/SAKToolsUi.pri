@@ -2,12 +2,17 @@ INCLUDEPATH += $$PWD
 
 HEADERS += \
     $$PWD/SAKAnalyzerToolUi.hh \
-    $$PWD/SAKMaskerToolUi.hh
+    $$PWD/SAKCommunicationToolUi.hh \
+    $$PWD/SAKMaskerToolUi.hh \
+    $$PWD/SAKSerialPortToolUi.hh
 
 SOURCES += \
     $$PWD/SAKAnalyzerToolUi.cc \
-    $$PWD/SAKMaskerToolUi.cc
+    $$PWD/SAKCommunicationToolUi.cc \
+    $$PWD/SAKMaskerToolUi.cc \
+    $$PWD/SAKSerialPortToolUi.cc
 
 FORMS += \
     $$PWD/SAKAnalyzerToolUi.ui \
-    $$PWD/SAKMaskerToolUi.ui
+    $$PWD/SAKMaskerToolUi.ui \
+    $$PWD/SAKSerialPortToolUi.ui
