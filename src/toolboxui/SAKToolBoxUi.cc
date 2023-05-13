@@ -21,6 +21,11 @@ SAKToolBoxUi::SAKToolBoxUi(QWidget *parent)
     mToolBox = new SAKToolBox(this);
     mToolBoxUiParameters = new SAKToolBoxUiParameters(this);
     mToolBoxUiParameters->setModal(true);
+
+    mCycleSendingTimer = new QTimer(this);
+    connect(mCycleSendingTimer, &QTimer::timeout,
+            this, &SAKToolBoxUi::try2send);
+
     init();
 }
 
@@ -43,8 +48,13 @@ QList<int> SAKToolBoxUi::supportedCommuniticationTools()
     return list;
 }
 
-void SAKToolBoxUi::resetCommuniticationTool(int type)
+void SAKToolBoxUi::setupCommuniticationTool(int type)
 {
+    if (mCommunicationTool) {
+        return;
+    }
+
+
     mToolBox->setupComunicationTool(type);
     setWindowTitle(communiticationToolName(type));
 
@@ -59,11 +69,25 @@ void SAKToolBoxUi::resetCommuniticationTool(int type)
     }
 
     // Setup communication tool.
-    auto toolUi = communiticationToolUi(type);
-    if (toolUi) {
-        l->addWidget(toolUi);
-        toolUi->setupCommunicationTool(mCommunicationTool);
+    mCommunicationToolUi = communiticationToolUi(type);
+    if (!mCommunicationToolUi) {
+        qCWarning(mLoggingCategory) << "mCommunicationToolUi is nullptr";
+        return;
     }
+
+    l->addWidget(mCommunicationToolUi);
+    mCommunicationToolUi->setupCommunicationTool(mCommunicationTool);
+
+    connect(mToolBox, &SAKToolBox::isWorkingChanged, this, [=](){
+        onIsWorkingChanged(mToolBox->isWorking());
+        if (mToolBox->isWorking()) {
+            ui->pushButtonCommunicationOpen->setText(tr("Close"));
+        } else {
+            ui->pushButtonCommunicationOpen->setText(tr("Open"));
+        }
+    });
+
+    onIsWorkingChanged(false);
 }
 
 QString SAKToolBoxUi::communiticationToolName(int type)
@@ -101,6 +125,22 @@ SAKCommunicationToolUi *SAKToolBoxUi::communiticationToolUi(int type)
     return w;
 }
 
+void SAKToolBoxUi::try2send()
+{
+
+}
+
+void SAKToolBoxUi::onIsWorkingChanged(bool isWorking)
+{
+    mCommunicationToolUi->updateUiState(isWorking);
+    ui->pushButtonInputSend->setEnabled(isWorking);
+    ui->comboBoxInputIntervel->setEnabled(isWorking);
+
+    if (!isWorking) {
+        mCycleSendingTimer->stop();
+    }
+}
+
 void SAKToolBoxUi::init()
 {
     initUi();
@@ -129,7 +169,16 @@ void SAKToolBoxUi::initUiCommunication()
 
 void SAKToolBoxUi::initUiInput()
 {
-
+    ui->comboBoxInputIntervel->addItem(tr("Disable"), -1);
+    for (int i = 10; i <= 100; i += 10) {
+        ui->comboBoxInputIntervel->addItem(QString::number(i), i);
+    }
+    for (int i = 200; i <= 1000; i += 100) {
+        ui->comboBoxInputIntervel->addItem(QString::number(i), i);
+    }
+    for (int i = 2000; i <= 5000; i += 1000) {
+        ui->comboBoxInputIntervel->addItem(QString::number(i), i);
+    }
 }
 
 void SAKToolBoxUi::initUiOutput()
@@ -178,6 +227,8 @@ void SAKToolBoxUi::initSignalsInput()
 {
     connect(ui->pushButtonInputSettings, &QPushButton::clicked,
             this, &SAKToolBoxUi::onPushButtonInputSettingsClicked);
+    connect(ui->comboBoxInputIntervel, &QComboBox::currentTextChanged,
+            this, &SAKToolBoxUi::onComboBoxInputIntervelCurrentIndexChanged);
 }
 
 void SAKToolBoxUi::initSignalsOutput()
@@ -193,7 +244,12 @@ void SAKToolBoxUi::onPushButtonCommunicationSettingsClicked()
 
 void SAKToolBoxUi::onPushButtonCommunicationOpenClicked()
 {
-
+    ui->pushButtonCommunicationOpen->setEnabled(false);
+    if (mToolBox->isWorking()) {
+        mToolBox->close();
+    } else {
+        mToolBox->open();
+    }
 }
 
 void SAKToolBoxUi::onPushButtonOutputSettingsClicked()
@@ -204,4 +260,23 @@ void SAKToolBoxUi::onPushButtonOutputSettingsClicked()
 void SAKToolBoxUi::onPushButtonInputSettingsClicked()
 {
     mToolBoxUiParameters->showDialog(1);
+}
+
+void SAKToolBoxUi::onPushButtonInputSendClicked()
+{
+    try2send();
+}
+
+void SAKToolBoxUi::onComboBoxInputIntervelCurrentIndexChanged()
+{
+    int interval = ui->comboBoxInputIntervel->currentText().toInt();
+    interval = interval < 10 ? 10 : interval;
+    qCInfo(mLoggingCategory) << "Start interval sending, the interval is:"
+                             << interval;
+
+    if (ui->comboBoxInputIntervel->currentIndex() == 0) {
+        mCycleSendingTimer->stop();
+    } else {
+        mCycleSendingTimer->start(interval);
+    }
 }

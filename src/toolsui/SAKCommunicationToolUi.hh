@@ -19,6 +19,7 @@ class SAKCommunicationToolUi : public QWidget
 public:
     explicit SAKCommunicationToolUi(QWidget *parent = nullptr);
     virtual void setupCommunicationTool(SAKCommunicationTool *tool) = 0;
+    virtual void updateUiState(bool isWorking);
 };
 
 #endif // SAKCOMMUNICATIONTOOLUI_HH

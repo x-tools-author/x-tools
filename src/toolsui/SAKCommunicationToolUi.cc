@@ -14,3 +14,8 @@ SAKCommunicationToolUi::SAKCommunicationToolUi(QWidget *parent)
 {
 
 }
+
+void SAKCommunicationToolUi::updateUiState(bool isWorking)
+{
+    setEnabled(!isWorking);
+}

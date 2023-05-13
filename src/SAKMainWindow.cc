@@ -138,7 +138,7 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
     QList<int> types = SAKToolBoxUi::supportedCommuniticationTools();
     for (int type : types) {
         SAKToolBoxUi *toolBoxUi = new SAKToolBoxUi(this);
-        toolBoxUi->resetCommuniticationTool(type);
+        toolBoxUi->setupCommuniticationTool(type);
         mToolBoxs->addTab(toolBoxUi, toolBoxUi->windowTitle());
     }
     mToolBoxs->blockSignals(false);

@@ -39,6 +39,7 @@ public:
     Q_INVOKABLE void open();
     Q_INVOKABLE void close();
     Q_INVOKABLE void send(const QByteArray &bytes);
+    bool isWorking(){return mIsWorking;}
 
 private:
     SAKBaseTool         *mComunicationTool{nullptr};
@@ -70,8 +71,8 @@ private:
     QVariant prestorer(){return QVariant::fromValue(mPrestorerTool);}
 
     bool mIsWorking{false};
-    bool isWorking(){return mIsWorking;}
-    Q_SIGNAL void isWorkingChanged();
+signals:
+    void isWorkingChanged();
 };
 
 #endif // SAKTOOLBOX_H
