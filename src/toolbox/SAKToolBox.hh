@@ -44,17 +44,18 @@ public:
 
     Q_INVOKABLE void open();
     Q_INVOKABLE void close();
-    Q_INVOKABLE void send(const QByteArray &bytes, const QVariant &context = QJsonObject());
+    Q_INVOKABLE void send(const QByteArray &bytes,
+                          const QVariant &context = QJsonObject());
     bool isWorking(){return mIsWorking;}
 
-    SAKMaskerTool *getInputMaskerTool(){return mInputMaskerTool;}
-    SAKMaskerTool *getOutputMaskerTool(){return mOutputMaskerTool;}
-    SAKAnalyzerTool *getInputAnalyzerTool(){return mInputAnalyzerTool;}
-    SAKAnalyzerTool *getOutputAnalyzerTool(){return mInputAnalyzerTool;}
-    SAKEmitterTool *getEmitterTool(){return mEmitterTool;}
-    SAKResponserTool *getResponserTool(){return mResponserTool;}
-    SAKStorerTool *getStorerTool(){return mStorerTool;}
-    SAKPrestorerTool *getPrestorerTool(){return mPrestorerTool;}
+    SAKMaskerTool       *getInputMaskerTool(){return mInputMaskerTool;}
+    SAKMaskerTool       *getOutputMaskerTool(){return mOutputMaskerTool;}
+    SAKAnalyzerTool     *getInputAnalyzerTool(){return mInputAnalyzerTool;}
+    SAKAnalyzerTool     *getOutputAnalyzerTool(){return mInputAnalyzerTool;}
+    SAKEmitterTool      *getEmitterTool(){return mEmitterTool;}
+    SAKResponserTool    *getResponserTool(){return mResponserTool;}
+    SAKStorerTool       *getStorerTool(){return mStorerTool;}
+    SAKPrestorerTool    *getPrestorerTool(){return mPrestorerTool;}
 
 private:
     SAKBaseTool         *mComunicationTool{nullptr};
