@@ -42,10 +42,11 @@ void SAKAnalyzerTool::inputBytes(const QByteArray &bytes, const QVariant &contex
         return;
     }
 
+    outputMessage(QtInfoMsg, QString("Analyzer<-%1").arg(bytes.toHex(' ')));
     emit bytesInputted(bytes, context);
-    outputMessage(QtInfoMsg, "Bytes input!");
 
     if (!enable()) {
+        outputMessage(QtInfoMsg, QString("Analyzer->%1").arg(bytes.toHex(' ')));
         emit bytesOutputted(bytes, context);
     } else {
         mInputtedBytesMutex.lock();
@@ -95,12 +96,14 @@ void SAKAnalyzerTool::analyze()
                 QByteArray frame(mInputtedBytes.data(),
                                  mParameters.frameBytes);
                 mInputtedBytes.remove(0, mParameters.frameBytes);
+                outputMessage(QtInfoMsg, QString("Analyzer->%1").arg(frame.toHex(' ')));
                 emit bytesOutputted(frame, QJsonObject());
             }
         } else {
             if (mParameters.separationMark.isEmpty()) {
                 if (!mInputtedBytes.isEmpty()) {
                     mInputtedBytes.clear();
+                    outputMessage(QtInfoMsg, QString("Analyzer->%1").arg(mInputtedBytes.toHex(' ')));
                     emit bytesOutputted(mInputtedBytes, QJsonObject());
                 }
             } else {
@@ -109,6 +112,7 @@ void SAKAnalyzerTool::analyze()
                     int len = ret + mParameters.separationMark.length();
                     QByteArray frame(mInputtedBytes.constData(), len);
                     mInputtedBytes.remove(0, len);
+                    outputMessage(QtInfoMsg, QString("Analyzer->%1").arg(frame.toHex(' ')));
                     emit bytesOutputted(frame, QJsonObject());
                 }
             }

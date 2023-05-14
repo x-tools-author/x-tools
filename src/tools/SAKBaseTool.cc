@@ -43,14 +43,13 @@ void SAKBaseTool::inputBytes(const QByteArray &bytes, const QVariant &context)
 
 void SAKBaseTool::outputMessage(int type, const QString &info)
 {
-    QString dt = QDateTime::currentDateTime().toString("hh:mm:ss.zzz ");
     if (type == QtInfoMsg) {
-        qCInfo(mLoggingCategory) << dt + info;
+        qCInfo(mLoggingCategory) << qPrintable(info);
     } else if (type == QtDebugMsg) {
-        qCDebug(mLoggingCategory) << dt + info;
+        qCDebug(mLoggingCategory) << qPrintable(info);
     } else if (type == QtWarningMsg) {
-        qCWarning(mLoggingCategory) << dt + info;
+        qCWarning(mLoggingCategory) << qPrintable(info);
     } else {
-        qCCritical(mLoggingCategory) << dt + info;
+        qCCritical(mLoggingCategory) << qPrintable(info);
     }
 }

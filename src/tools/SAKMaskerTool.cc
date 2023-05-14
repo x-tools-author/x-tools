@@ -23,10 +23,11 @@ void SAKMaskerTool::setMaskCode(qint8 maskCode)
 void SAKMaskerTool::inputBytes(const QByteArray &bytes,
                                const QVariant &context)
 {
-    qDebug() << __FUNCTION__ << __LINE__;
     emit bytesInputted(bytes, context);
+    outputMessage(QtInfoMsg, QString("Masker<-%1").arg(bytes.toHex(' ')));
 
     if (!enable()) {
+        outputMessage(QtInfoMsg, QString("Masker->%1").arg(bytes.toHex(' ')));
         emit bytesOutputted(bytes, context);
     } else {
         QByteArray cookedBytes;
@@ -36,6 +37,7 @@ void SAKMaskerTool::inputBytes(const QByteArray &bytes,
             cookedBytes.append(reinterpret_cast<char*>(&value), 1);
         }
 
+        outputMessage(QtInfoMsg, QString("Masker->%1").arg(bytes.toHex(' ')));
         emit bytesOutputted(bytes, context);
     }
 }

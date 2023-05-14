@@ -83,7 +83,8 @@ bool SAKSerialPortTool::initialize()
     return true;
 }
 
-void SAKSerialPortTool::writeBytes(const QByteArray &bytes, const QVariant &context)
+void SAKSerialPortTool::writeBytes(const QByteArray &bytes,
+                                   const QVariant &context)
 {
     if (mSerialPort && mSerialPort->isOpen()) {
         qint64 ret = mSerialPort->write(bytes);
@@ -91,7 +92,9 @@ void SAKSerialPortTool::writeBytes(const QByteArray &bytes, const QVariant &cont
             outputMessage(QtWarningMsg, mSerialPort->errorString());
         } else if (ret > 0) {
             outputMessage(QtInfoMsg,
-                          qPrintable("Tx:" + QString(bytes.toHex(' '))));
+                          QString("%1<-%2")
+                              .arg(mParameters.portName,
+                                   QString::fromLatin1(bytes.toHex(' '))));
             emit bytesInputted(bytes, context);
         }
     }
@@ -103,7 +106,9 @@ void SAKSerialPortTool::readBytes()
         QByteArray bytes = mSerialPort->readAll();
         if (!bytes.isEmpty()) {
             outputMessage(QtInfoMsg,
-                          qPrintable("Rx:" + QString(bytes.toHex(' '))));
+                          QString("%1->%2")
+                              .arg(mParameters.portName,
+                                   QString::fromLatin1(bytes.toHex(' '))));
             emit bytesOutputted(bytes, QVariant());
         }
     }
