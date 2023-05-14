@@ -14,7 +14,7 @@
 #include "SAKEmitterTool.hh"
 
 #include "common/SAKCrcInterface.hpp"
-#include "common/EDInterface.hpp"
+#include "common/SAKInterface.hpp"
 #include "common/SAKDataStructure.hh"
 
 SAKEmitterTableModel::SAKEmitterTableModel(QObject *parent)
@@ -152,7 +152,7 @@ QByteArray SAKEmitterTableModel::itemBytes(const EDEmiterData &item)
     QByteArray bytes;
     QString text = item.itemText;
     text = SAKDataStructure::cookedString(item.itemEscapeCharacter, text);
-    bytes = EDInterface::string2array(text, item.itemTextFormat);
+    bytes = SAKInterface::string2array(text, item.itemTextFormat);
     SAKCrcInterface edCrc;
     QByteArray crcBytes = edCrc.calculateBytes(bytes,
                                                item.itemCrcAlgorithm,

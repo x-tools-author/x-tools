@@ -35,7 +35,7 @@
 #include "common/SAKCrcInterface.hpp"
 #include "common/EDI18N.hpp"
 #include "common/EDSettings.hpp"
-#include "common/EDInterface.hpp"
+#include "common/SAKInterface.hpp"
 #include "common/EDSerialPort.hpp"
 #include "common/EDHighlighter.hpp"
 #include "common/SAKDataStructure.hh"
@@ -137,12 +137,12 @@ int main(int argc, char *argv[])
         // Close splash screen after main window showed.
         QSplashScreen *splashScreen = app.splashScreen();
         splashScreen->finish(mainWindow);
-
-
-
-
-
-        auto edInterface = new EDInterface(&app);
+        
+        
+        
+        
+        
+        auto edInterface = new SAKInterface(&app);
         auto edCrc = new SAKCrcInterface(&app);
         auto edDataStructure = new SAKDataStructure(&app);
 #if 0
@@ -190,8 +190,8 @@ int main(int argc, char *argv[])
         qmlRegisterUncreatableType<SAKSerialPortTool>("ED.EasyDebug", 1, 0, "EDSerialportTool", reason);
         qmlRegisterUncreatableType<SAKWebSocketServerTool>("ED.EasyDebug", 1, 0, "EDWebSocketServerTool", reason);
         qmlRegisterUncreatableType<SAKWebSocketClientTool>("ED.EasyDebug", 1, 0, "EDWebSocketClientTool", reason);
-
-        qmlRegisterUncreatableType<EDInterface>("ED.EasyDebug", 1, 0, "EDInterface", reason);
+        
+        qmlRegisterUncreatableType<SAKInterface>("ED.EasyDebug", 1, 0, "EDInterface", reason);
         qmlRegisterUncreatableType<SAKDataStructure>("ED.EasyDebug", 1, 0, "EDDataStructure", reason);
 
         qmlAppEngine.rootContext()->setContextProperty("edCrc", edCrc);

@@ -14,7 +14,7 @@
 #include <QTextStream>
 
 #include "SAKStorerTool.hh"
-#include "common/EDInterface.hpp"
+#include "common/SAKInterface.hpp"
 
 SAKStorerTool::SAKStorerTool(QObject *parent)
     : SAKBaseTool{"SAK.StorerTool", parent}
@@ -118,7 +118,7 @@ void SAKStorerTool::write2file()
             auto ctx = mInputContextList.takeFirst();
             auto bytes = ctx.bytes;
             auto context = ctx.context;
-            auto str = EDInterface::array2String(bytes, mParameters.format);
+            auto str = SAKInterface::array2String(bytes, mParameters.format);
 
             QString dtStr;
             auto dt = QDateTime::currentDateTime();

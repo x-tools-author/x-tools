@@ -4,7 +4,6 @@ HEADERS += \
     $$PWD/EDBle.hpp \
     $$PWD/EDHighlighter.hpp \
     $$PWD/EDI18N.hpp \
-    $$PWD/EDInterface.hpp \
     $$PWD/EDNetworkInterface.hpp \
     $$PWD/EDSerialPort.hpp \
     $$PWD/EDSettings.hpp \
@@ -12,13 +11,13 @@ HEADERS += \
     $$PWD/SAKCommonDataStructure.hh \
     $$PWD/SAKCommonInterface.hh \
     $$PWD/SAKCrcInterface.hpp \
-    $$PWD/SAKDataStructure.hh
+    $$PWD/SAKDataStructure.hh \
+    $$PWD/SAKInterface.hpp
 
 SOURCES += \
     $$PWD/EDBle.cpp \
     $$PWD/EDHighlighter.cpp \
     $$PWD/EDI18N.cpp \
-    $$PWD/EDInterface.cpp \
     $$PWD/EDNetworkInterface.cpp \
     $$PWD/EDSerialPort.cpp \
     $$PWD/EDSettings.cpp \
@@ -26,4 +25,5 @@ SOURCES += \
     $$PWD/SAKCommonDataStructure.cc \
     $$PWD/SAKCommonInterface.cc \
     $$PWD/SAKCrcInterface.cpp \
-    $$PWD/SAKDataStructure.cc
+    $$PWD/SAKDataStructure.cc \
+    $$PWD/SAKInterface.cpp

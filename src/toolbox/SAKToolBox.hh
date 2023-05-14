@@ -38,7 +38,7 @@ public:
 
     Q_INVOKABLE void open();
     Q_INVOKABLE void close();
-    Q_INVOKABLE void send(const QByteArray &bytes);
+    Q_INVOKABLE void send(const QByteArray &bytes, const QVariant &context = QJsonObject());
     bool isWorking(){return mIsWorking;}
 
 private:

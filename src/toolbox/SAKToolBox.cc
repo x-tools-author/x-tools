@@ -113,7 +113,7 @@ void SAKToolBox::close()
     }
 }
 
-void SAKToolBox::send(const QByteArray &bytes)
+void SAKToolBox::send(const QByteArray &bytes, const QVariant &context)
 {
     mInputMaskerTool->inputBytes(bytes, QVariant());
 }

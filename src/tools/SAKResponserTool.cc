@@ -13,7 +13,7 @@
 #include <QJsonDocument>
 
 #include "common/SAKCrcInterface.hpp"
-#include "common/EDInterface.hpp"
+#include "common/SAKInterface.hpp"
 #include "common/SAKDataStructure.hh"
 
 #include "SAKResponserTool.hh"
@@ -241,7 +241,7 @@ QByteArray SAKResponserTableModel::referenceBytes(const EDResponserData &item) c
     QByteArray bytes;
     QString text = item.itemReferenceText ;
     text = SAKDataStructure::cookedString(item.itemReferenceEscapeCharacter, text);
-    bytes = EDInterface::string2array(text, item.itemReferenceTextFormat);
+    bytes = SAKInterface::string2array(text, item.itemReferenceTextFormat);
     SAKCrcInterface edCrc;
     QByteArray crcBytes = edCrc.calculateBytes(bytes,
                                                item.itemReferenceCrcAlgorithm,
@@ -262,7 +262,7 @@ QByteArray SAKResponserTableModel::responseBytes(const EDResponserData &item) co
     QByteArray bytes;
     QString text = item.itemResponseText;
     text = SAKDataStructure::cookedString(item.itemResponseEscapeCharacter, text);
-    bytes = EDInterface::string2array(text, item.itemResponseTextFormat);
+    bytes = SAKInterface::string2array(text, item.itemResponseTextFormat);
     SAKCrcInterface edCrc;
     QByteArray crcBytes = edCrc.calculateBytes(bytes,
                                                item.itemResponseCrcAlgorithm,

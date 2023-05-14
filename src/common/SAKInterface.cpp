@@ -1,5 +1,11 @@
 /******************************************************************************
- * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
+ * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
+ *
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include <QFile>
 #include <QLocale>
@@ -13,16 +19,16 @@
 #include <QQuickTextDocument>
 #include <QAbstractTableModel>
 
-#include "EDInterface.hpp"
+#include "SAKInterface.hpp"
 #include "SAKDataStructure.hh"
 
-EDInterface::EDInterface(QObject *parent)
+SAKInterface::SAKInterface(QObject *parent)
     : QObject{parent}
 {
 
 }
 
-QString EDInterface::array2String(const QByteArray &array, int format)
+QString SAKInterface::array2String(const QByteArray &array, int format)
 {
     auto cookedArray =
             [](const QByteArray &array, int base, int len)->QString{
@@ -54,7 +60,7 @@ QString EDInterface::array2String(const QByteArray &array, int format)
     }
 }
 
-QByteArray EDInterface::string2array(const QString &input, int format)
+QByteArray SAKInterface::string2array(const QString &input, int format)
 {
     QByteArray data;
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
@@ -100,7 +106,7 @@ QByteArray EDInterface::string2array(const QString &input, int format)
     return data;
 }
 
-void EDInterface::setMaximumBlockCount(QVariant quickTextDocument, int maximum)
+void SAKInterface::setMaximumBlockCount(QVariant quickTextDocument, int maximum)
 {
     auto obj = quickTextDocument.value<QObject*>();
     if (obj) {
@@ -112,18 +118,18 @@ void EDInterface::setMaximumBlockCount(QVariant quickTextDocument, int maximum)
     }
 }
 
-QString EDInterface::dateTimeString(const QString &format)
+QString SAKInterface::dateTimeString(const QString &format)
 {
     return QDateTime::currentDateTime().toString(format);
 }
 
-QByteArray EDInterface::arrayAppendArray(const QByteArray &a1,
+QByteArray SAKInterface::arrayAppendArray(const QByteArray &a1,
                                          const QByteArray &a2)
 {
     return a1 + a2;
 }
 
-void EDInterface::tableModel2jsonFile(QVariant tableModel,
+void SAKInterface::tableModel2jsonFile(QVariant tableModel,
                                   const QString &fileName)
 {
     QFile file(cookedFileName(fileName));
@@ -160,7 +166,7 @@ void EDInterface::tableModel2jsonFile(QVariant tableModel,
     file.close();
 }
 
-void EDInterface::jsonFile2tableModel(QVariant tableModel,
+void SAKInterface::jsonFile2tableModel(QVariant tableModel,
                                   const QString &fileName)
 {
     QFile file(cookedFileName(fileName));
@@ -181,7 +187,7 @@ void EDInterface::jsonFile2tableModel(QVariant tableModel,
     jsonArray2TableModel(tableModel, items);
 }
 
-void EDInterface::jsonArray2TableModel(QVariant tableModel,
+void SAKInterface::jsonArray2TableModel(QVariant tableModel,
                                        const QJsonArray &array)
 {
     QJsonArray items = array;
@@ -207,7 +213,7 @@ void EDInterface::jsonArray2TableModel(QVariant tableModel,
     }
 }
 
-QString EDInterface::cookedFileName(const QString &fileName)
+QString SAKInterface::cookedFileName(const QString &fileName)
 {
     QString cookedFileName = fileName;
 #ifdef Q_OS_WIN
@@ -217,7 +223,7 @@ QString EDInterface::cookedFileName(const QString &fileName)
     return cookedFileName;
 }
 
-void EDInterface::clearTableModel(QVariant tableModel)
+void SAKInterface::clearTableModel(QVariant tableModel)
 {
     if (!tableModel.canConvert<QAbstractTableModel*>()) {
         qWarning() << "Unvalid parameter(tableModel)";
@@ -231,7 +237,7 @@ void EDInterface::clearTableModel(QVariant tableModel)
     }
 }
 
-void EDInterface::removeTableModelRow(QVariant tableModel, int row)
+void SAKInterface::removeTableModelRow(QVariant tableModel, int row)
 {
     if (!tableModel.canConvert<QAbstractTableModel*>()) {
         qWarning() << "Unvalid parameter(tableModel)";
@@ -245,40 +251,40 @@ void EDInterface::removeTableModelRow(QVariant tableModel, int row)
     }
 }
 
-QString EDInterface::string2hexString(const QString &str)
+QString SAKInterface::string2hexString(const QString &str)
 {
     return QString::fromLatin1(str.toLocal8Bit().toHex());
 }
 
-QString EDInterface::hexString2String(const QString &str)
+QString SAKInterface::hexString2String(const QString &str)
 {
     QByteArray arr = QByteArray::fromHex(str.toLatin1());
     return QString::fromUtf8(arr);
 }
 
-void EDInterface::setAppFont(const QString &fontFamily)
+void SAKInterface::setAppFont(const QString &fontFamily)
 {
     qGuiApp->setFont(fontFamily);
 }
 
-QString EDInterface::buildDateTime(const QString &format)
+QString SAKInterface::buildDateTime(const QString &format)
 {
     QDate date = QDate::fromString(__DATE__, "MMM dd yyyy");
     QTime time = QTime::fromString(__TIME__, "hh:mm:ss");
     return QDateTime(date, time).toString(format);
 }
 
-QString EDInterface::dateFormat()
+QString SAKInterface::dateFormat()
 {
     return QLocale::system().dateFormat();
 }
 
-QString EDInterface::timeFormat()
+QString SAKInterface::timeFormat()
 {
     return QLocale::system().timeFormat();
 }
 
-void EDInterface::setTextToClipboard(const QString &text)
+void SAKInterface::setTextToClipboard(const QString &text)
 {
     QGuiApplication::clipboard()->setText(text);
 }

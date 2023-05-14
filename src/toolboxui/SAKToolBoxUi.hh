@@ -46,9 +46,13 @@ private:
     QString communiticationToolName(int type);
     SAKCommunicationToolUi *communiticationToolUi(int type);
     void try2send();
+    QString dateTimeContext();
+    void output2ui(const QByteArray &bytes, const QVariant &context, bool isRx);
 
     // slots
-    void onIsWorkingChanged(bool isWorking);
+    void onIsWorkingChanged();
+    void onTooBoxBytesInputted(const QByteArray &bytes, const QVariant &context);
+    void onTooBoxBytesOutputted(const QByteArray &bytes, const QVariant &context);
 
 private:
     void init();
@@ -78,9 +82,11 @@ private:
     void onPushButtonInputSettingsClicked();
     void onPushButtonInputSendClicked();
     void onComboBoxInputIntervelCurrentIndexChanged();
+    void onComboBoxInputFormatActivated();
 
     // output
     void onPushButtonOutputSettingsClicked();
+    void onCheckBoxOutputWrapClicked();
 };
 
 #endif // SAKTOOLBOXUI_HH

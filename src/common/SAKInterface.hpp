@@ -1,17 +1,23 @@
 /******************************************************************************
- * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
+ * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
+ *
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#ifndef EDINTERFACE_HPP
-#define EDINTERFACE_HPP
+#ifndef SAKINTERFACE_HH
+#define SAKINTERFACE_HH
 
 #include <QObject>
 #include <QVariant>
 
-class EDInterface : public QObject
+class SAKInterface : public QObject
 {
     Q_OBJECT
 public:
-    explicit EDInterface(QObject *parent = nullptr);
+    explicit SAKInterface(QObject *parent = nullptr);
 
     Q_INVOKABLE static QString array2String(const QByteArray &array,
                                             int format);
@@ -41,4 +47,4 @@ public:
     Q_INVOKABLE static void setTextToClipboard(const QString &text);
 };
 
-#endif // EDINTERFACE_H
+#endif // SAKINTERFACE_H

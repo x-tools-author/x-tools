@@ -33,12 +33,18 @@
        <item row="1" column="0" colspan="3">
         <widget class="QTextBrowser" name="textBrowserOutput"/>
        </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="label">
-         <property name="text">
-          <string>Input</string>
+       <item row="2" column="1">
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
          </property>
-        </widget>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
        </item>
        <item row="3" column="0" colspan="3">
         <widget class="QComboBox" name="comboBoxInput">
@@ -60,18 +66,12 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="1">
-        <spacer name="horizontalSpacer">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Input</string>
          </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
+        </widget>
        </item>
        <item row="0" column="0" colspan="3">
         <layout class="QHBoxLayout" name="horizontalLayout">
@@ -124,7 +124,7 @@
        <number>0</number>
       </property>
       <item row="5" column="1">
-       <widget class="SAKTextFormatComboBox" name="comboBox"/>
+       <widget class="SAKTextFormatComboBox" name="comboBoxOutputFormat"/>
       </item>
       <item row="12" column="1">
        <widget class="QComboBox" name="comboBoxInputIntervel">
@@ -189,13 +189,6 @@
         </property>
        </widget>
       </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="label_3">
-        <property name="text">
-         <string>Output control</string>
-        </property>
-       </widget>
-      </item>
       <item row="1" column="0" colspan="2">
        <widget class="QWidget" name="widgetCommunicationToolUi" native="true">
         <property name="minimumSize">
@@ -208,20 +201,6 @@
       </item>
       <item row="13" column="1">
        <widget class="SAKTextFormatComboBox" name="comboBoxInputFormat"/>
-      </item>
-      <item row="0" column="0" colspan="2">
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>Communication control</string>
-        </property>
-       </widget>
-      </item>
-      <item row="11" column="0">
-       <widget class="QLabel" name="label_4">
-        <property name="text">
-         <string>Input control</string>
-        </property>
-       </widget>
       </item>
       <item row="9" column="0">
        <widget class="QCheckBox" name="checkBoxOutputMs">
@@ -289,6 +268,27 @@
        <widget class="Line" name="line">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="0" colspan="2">
+       <widget class="QLabel" name="label_10">
+        <property name="text">
+         <string>Input control</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0" colspan="2">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Output control</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" colspan="2">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Communication control</string>
         </property>
        </widget>
       </item>

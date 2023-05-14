@@ -8,7 +8,11 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include <QLineEdit>
+#include <QRegularExpression>
+
 #include "SAKToolBoxUi.hh"
+#include "SAKInterface.hpp"
+#include "SAKDataStructure.hh"
 #include "SAKSerialPortToolUi.hh"
 #include "SAKToolBoxUiParameters.hh"
 
@@ -55,7 +59,6 @@ void SAKToolBoxUi::setupCommuniticationTool(int type)
         return;
     }
 
-
     mToolBox->setupComunicationTool(type);
     setWindowTitle(communiticationToolName(type));
 
@@ -79,16 +82,14 @@ void SAKToolBoxUi::setupCommuniticationTool(int type)
     l->addWidget(mCommunicationToolUi);
     mCommunicationToolUi->setupCommunicationTool(mCommunicationTool);
 
-    connect(mToolBox, &SAKToolBox::isWorkingChanged, this, [=](){
-        onIsWorkingChanged(mToolBox->isWorking());
-        if (mToolBox->isWorking()) {
-            ui->pushButtonCommunicationOpen->setText(tr("Close"));
-        } else {
-            ui->pushButtonCommunicationOpen->setText(tr("Open"));
-        }
-    });
+    connect(mToolBox, &SAKToolBox::isWorkingChanged,
+            this, &SAKToolBoxUi::onIsWorkingChanged);
+    connect(mCommunicationTool, &SAKCommunicationTool::bytesInputted,
+            this, &SAKToolBoxUi::onTooBoxBytesInputted);
+    connect(mCommunicationTool, &SAKCommunicationTool::bytesOutputted,
+            this, &::SAKToolBoxUi::onTooBoxBytesOutputted);
 
-    onIsWorkingChanged(false);
+    onIsWorkingChanged();
 }
 
 QString SAKToolBoxUi::communiticationToolName(int type)
@@ -128,18 +129,98 @@ SAKCommunicationToolUi *SAKToolBoxUi::communiticationToolUi(int type)
 
 void SAKToolBoxUi::try2send()
 {
-
+    int format = ui->comboBoxInputFormat->currentData().toInt();
+    QString input = ui->comboBoxInput->currentText();
+    QByteArray bytes = SAKInterface::string2array(input, format);
+    mToolBox->send(bytes);
 }
 
-void SAKToolBoxUi::onIsWorkingChanged(bool isWorking)
+QString SAKToolBoxUi::dateTimeContext()
 {
+    static QString dateFormat = QLocale::system().dateFormat();
+
+    QString dateTimeFormat = "";
+    bool d = ui->checkBoxOutputDate->isChecked();
+    bool t = ui->checkBoxOutputTime->isChecked();
+    bool m = ui->checkBoxOutputMs->isChecked();
+    if (d && t && m) {
+        dateTimeFormat = dateFormat + " hh:mm:ss.zzz";
+    } else if (d && t) {
+        dateTimeFormat = dateFormat + " hh:mm:ss";
+    } else if (t && m) {
+        dateTimeFormat = " hh:mm:ss.zzz";
+    }  else if (d && m) {
+        dateTimeFormat = dateFormat + " zzz";
+    } else if (d) {
+        dateTimeFormat = dateFormat;
+    } else if (t) {
+        dateTimeFormat = "hh:mm:ss";
+    } else if (m) {
+        dateTimeFormat = "zzz";
+    }
+
+    return QDateTime::currentDateTime().toString(dateTimeFormat);
+}
+
+void SAKToolBoxUi::output2ui(const QByteArray &bytes,
+                             const QVariant &context,
+                             bool isRx)
+{
+    Q_UNUSED(context);
+    int format = ui->comboBoxOutputFormat->currentData().toInt();
+    QString str = SAKInterface::array2String(bytes, format);
+    QString dt = dateTimeContext();
+    QString flag = isRx ? "Rx" : "Tx";
+    QString color = isRx ? "red" : "blue";
+
+    flag = QString("<font color=%1>%2</font>").arg(color, flag);
+    dt = QString("<font color=silver>%1</font>").arg(dt);
+
+    QString info = QString("[%1 %2]").arg(dt, flag);
+    info = QString("<font color=silver>%1</font>").arg(info);
+
+    ui->textBrowserOutput->append(info + " " + str);
+}
+
+void SAKToolBoxUi::onIsWorkingChanged()
+{
+    bool isWorking = mToolBox->isWorking();
+    ui->pushButtonCommunicationOpen->setEnabled(true);
     mCommunicationToolUi->updateUiState(isWorking);
     ui->pushButtonInputSend->setEnabled(isWorking);
     ui->comboBoxInputIntervel->setEnabled(isWorking);
 
+    if (isWorking) {
+        ui->pushButtonCommunicationOpen->setText(tr("Close"));
+    } else {
+        ui->pushButtonCommunicationOpen->setText(tr("Open"));
+    }
+
     if (!isWorking) {
         mCycleSendingTimer->stop();
     }
+}
+
+
+
+void SAKToolBoxUi::onTooBoxBytesInputted(const QByteArray &bytes,
+                                         const QVariant &context)
+{
+    if (!ui->checkBoxOutputTx->isChecked()) {
+        return;
+    }
+
+    output2ui(bytes, context, false);
+}
+
+void SAKToolBoxUi::onTooBoxBytesOutputted(const QByteArray &bytes,
+                                          const QVariant &context)
+{
+    if (!ui->checkBoxOutputRx->isChecked()) {
+        return;
+    }
+
+    output2ui(bytes, context, true);
 }
 
 void SAKToolBoxUi::init()
@@ -178,7 +259,11 @@ void SAKToolBoxUi::initUiInput()
 
 void SAKToolBoxUi::initUiOutput()
 {
-
+    ui->checkBoxOutputRx->setChecked(true);
+    ui->checkBoxOutputTx->setChecked(true);
+    ui->checkBoxOutputWrap->setChecked(true);
+    ui->checkBoxOutputTime->setChecked(true);
+    ui->textBrowserOutput->document()->setMaximumBlockCount(2000);
 }
 
 void SAKToolBoxUi::initSettings()
@@ -195,7 +280,7 @@ void SAKToolBoxUi::initSettingsCommunication()
 
 void SAKToolBoxUi::initSettingsInput()
 {
-
+    onComboBoxInputFormatActivated();
 }
 
 void SAKToolBoxUi::initSettingsOutput()
@@ -226,12 +311,16 @@ void SAKToolBoxUi::initSignalsInput()
             this, &SAKToolBoxUi::onComboBoxInputIntervelCurrentIndexChanged);
     connect(ui->pushButtonInputSend, &QPushButton::clicked,
             this, &SAKToolBoxUi::onPushButtonInputSendClicked);
+    connect(ui->comboBoxInputFormat, &QComboBox::activated,
+            this, &SAKToolBoxUi::onComboBoxInputFormatActivated);
 }
 
 void SAKToolBoxUi::initSignalsOutput()
 {
     connect(ui->pushButtonOutputSettings, &QPushButton::clicked,
             this, &SAKToolBoxUi::onPushButtonOutputSettingsClicked);
+    connect(ui->checkBoxOutputWrap, &QCheckBox::clicked,
+            this, &SAKToolBoxUi::onCheckBoxOutputWrapClicked);
 }
 
 void SAKToolBoxUi::onPushButtonCommunicationSettingsClicked()
@@ -252,6 +341,15 @@ void SAKToolBoxUi::onPushButtonCommunicationOpenClicked()
 void SAKToolBoxUi::onPushButtonOutputSettingsClicked()
 {
     mToolBoxUiParameters->showDialog(2);
+}
+
+void SAKToolBoxUi::onCheckBoxOutputWrapClicked()
+{
+    if (ui->checkBoxOutputWrap->isChecked()) {
+        ui->textBrowserOutput->setWordWrapMode(QTextOption::WrapAnywhere);
+    } else {
+        ui->textBrowserOutput->setWordWrapMode(QTextOption::NoWrap);
+    }
 }
 
 void SAKToolBoxUi::onPushButtonInputSettingsClicked()
@@ -284,4 +382,38 @@ void SAKToolBoxUi::onComboBoxInputIntervelCurrentIndexChanged()
     } else {
         mCycleSendingTimer->start(interval);
     }
+}
+
+void SAKToolBoxUi::onComboBoxInputFormatActivated()
+{
+    int format = ui->comboBoxInputFormat->currentData().toInt();
+
+    static QMap<int, QRegularExpression> regExpMap;
+    if (regExpMap.isEmpty()) {
+        regExpMap.insert(SAKDataStructure::TextFormatBin,
+                         QRegularExpression("([01][01][01][01][01][01][01][01][ ])*"));
+        regExpMap.insert(SAKDataStructure::TextFormatOct,
+                         QRegularExpression("([0-7][0-7][ ])*"));
+        regExpMap.insert(SAKDataStructure::TextFormatDec,
+                         QRegularExpression("([0-9][0-9][ ])*"));
+        regExpMap.insert(SAKDataStructure::TextFormatHex,
+                         QRegularExpression("([0-9a-fA-F][0-9a-fA-F][ ])*"));
+        regExpMap.insert(SAKDataStructure::TextFormatAscii,
+                         QRegularExpression("([ -~])*"));
+    }
+
+    auto lineEdit = ui->comboBoxInput->lineEdit();
+    if (lineEdit->validator()){
+        delete lineEdit->validator();
+    }
+
+    if (regExpMap.contains(format)){
+        auto regExpValidator =
+            new QRegularExpressionValidator(regExpMap.value(format), lineEdit);
+        lineEdit->setValidator(regExpValidator);
+    } else {
+        lineEdit->setValidator(nullptr);
+    }
+
+    lineEdit->clear();
 }

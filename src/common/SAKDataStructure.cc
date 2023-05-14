@@ -8,7 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include "SAKCrcInterface.hpp"
-#include "EDInterface.hpp"
+#include "SAKInterface.hpp"
 #include "SAKDataStructure.hh"
 
 SAKDataStructure::SAKDataStructure(QObject *parent)
@@ -62,7 +62,7 @@ QByteArray SAKDataStructure::dataItemBytes(const EDStructDataItem &item)
     QByteArray bytes;
     QString text = item.itemText;
     text = SAKDataStructure::cookedString(item.itemTextEscapeChracter, text);
-    bytes = EDInterface::string2array(text, item.itemTextFormat);
+    bytes = SAKInterface::string2array(text, item.itemTextFormat);
     SAKCrcInterface edCrc;
     QByteArray crcBytes = edCrc.calculateBytes(bytes,
                                                item.itemCrcAlgorithm,
