@@ -40,7 +40,11 @@
        </widget>
       </item>
       <item row="0" column="2">
-       <widget class="QSpinBox" name="spinBox"/>
+       <widget class="QSpinBox" name="spinBoxMaskCode">
+        <property name="maximum">
+         <number>155</number>
+        </property>
+       </widget>
       </item>
       <item row="0" column="0">
        <widget class="QCheckBox" name="checkBoxEnable">

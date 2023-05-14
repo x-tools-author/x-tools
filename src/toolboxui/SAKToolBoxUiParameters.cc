@@ -43,3 +43,13 @@ SAKToolBoxUiParameters::parameterContext()
     ParameterContext ctx{};
     return ctx;
 }
+
+void SAKToolBoxUiParameters::setupInputMasker(SAKMaskerTool *tool)
+{
+    ui->widgetInputMasker->setupMasker(tool);
+}
+
+void SAKToolBoxUiParameters::setupOutputMasker(SAKMaskerTool *tool)
+{
+    ui->widgetOutputMasker->setupMasker(tool);
+}

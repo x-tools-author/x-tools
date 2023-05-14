@@ -8,6 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include "SAKToolBox.hh"
+#include "SAKToolFactory.hh"
 
 SAKToolBox::SAKToolBox(QObject *parent)
     : QObject{parent}
@@ -115,7 +116,7 @@ void SAKToolBox::close()
 
 void SAKToolBox::send(const QByteArray &bytes, const QVariant &context)
 {
-    mInputMaskerTool->inputBytes(bytes, QVariant());
+    mInputMaskerTool->inputBytes(bytes, context);
 }
 
 void SAKToolBox::uninitializedTips()

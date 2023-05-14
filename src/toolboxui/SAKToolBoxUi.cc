@@ -12,8 +12,10 @@
 
 #include "SAKToolBoxUi.hh"
 #include "SAKInterface.hpp"
-#include "SAKDataStructure.hh"
+#include "SAKUiInterface.hh"
+#include "SAKToolFactory.hh"
 #include "SAKSerialPortToolUi.hh"
+#include "SAKCommunicationTool.hh"
 #include "SAKToolBoxUiParameters.hh"
 
 #include "ui_SAKToolBoxUi.h"
@@ -26,6 +28,8 @@ SAKToolBoxUi::SAKToolBoxUi(QWidget *parent)
     mToolBox = new SAKToolBox(this);
     mToolBoxUiParameters = new SAKToolBoxUiParameters(this);
     mToolBoxUiParameters->setModal(true);
+    //mToolBoxUiParameters->setupInputMasker(mToolBox->getInputMaskerTool());
+    //mToolBoxUiParameters->setupOutputMasker(mToolBox->getOutputMaskerTool());
 
     mCycleSendingTimer = new QTimer(this);
     connect(mCycleSendingTimer, &QTimer::timeout,
@@ -82,11 +86,12 @@ void SAKToolBoxUi::setupCommuniticationTool(int type)
     l->addWidget(mCommunicationToolUi);
     mCommunicationToolUi->setupCommunicationTool(mCommunicationTool);
 
+    auto outputAnalyzer = mToolBox->getOutputAnalyzerTool();
     connect(mToolBox, &SAKToolBox::isWorkingChanged,
             this, &SAKToolBoxUi::onIsWorkingChanged);
     connect(mCommunicationTool, &SAKCommunicationTool::bytesInputted,
             this, &SAKToolBoxUi::onTooBoxBytesInputted);
-    connect(mCommunicationTool, &SAKCommunicationTool::bytesOutputted,
+    connect(outputAnalyzer, &SAKCommunicationTool::bytesOutputted,
             this, &::SAKToolBoxUi::onTooBoxBytesOutputted);
 
     onIsWorkingChanged();
@@ -387,33 +392,6 @@ void SAKToolBoxUi::onComboBoxInputIntervelCurrentIndexChanged()
 void SAKToolBoxUi::onComboBoxInputFormatActivated()
 {
     int format = ui->comboBoxInputFormat->currentData().toInt();
-
-    static QMap<int, QRegularExpression> regExpMap;
-    if (regExpMap.isEmpty()) {
-        regExpMap.insert(SAKDataStructure::TextFormatBin,
-                         QRegularExpression("([01][01][01][01][01][01][01][01][ ])*"));
-        regExpMap.insert(SAKDataStructure::TextFormatOct,
-                         QRegularExpression("([0-7][0-7][ ])*"));
-        regExpMap.insert(SAKDataStructure::TextFormatDec,
-                         QRegularExpression("([0-9][0-9][ ])*"));
-        regExpMap.insert(SAKDataStructure::TextFormatHex,
-                         QRegularExpression("([0-9a-fA-F][0-9a-fA-F][ ])*"));
-        regExpMap.insert(SAKDataStructure::TextFormatAscii,
-                         QRegularExpression("([ -~])*"));
-    }
-
     auto lineEdit = ui->comboBoxInput->lineEdit();
-    if (lineEdit->validator()){
-        delete lineEdit->validator();
-    }
-
-    if (regExpMap.contains(format)){
-        auto regExpValidator =
-            new QRegularExpressionValidator(regExpMap.value(format), lineEdit);
-        lineEdit->setValidator(regExpValidator);
-    } else {
-        lineEdit->setValidator(nullptr);
-    }
-
-    lineEdit->clear();
+    SAKUiInterface::setValidator(lineEdit, format);
 }

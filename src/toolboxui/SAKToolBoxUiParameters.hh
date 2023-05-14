@@ -17,6 +17,7 @@ namespace Ui {
 class SAKToolBoxUiParameters;
 }
 
+class SAKMaskerTool;
 class SAKToolBoxUiParameters : public QDialog
 {
     Q_OBJECT
@@ -45,6 +46,9 @@ public:
     ~SAKToolBoxUiParameters();
     void showDialog(int tabIndex);
     ParameterContext parameterContext();
+
+    void setupInputMasker(SAKMaskerTool *tool);
+    void setupOutputMasker(SAKMaskerTool *tool);
 
 private:
     const QLoggingCategory mLoggingCategory{"SAK.ToolBoxUiParameters"};

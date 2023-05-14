@@ -10,7 +10,8 @@ HEADERS += \
     $$PWD/SAKParityComboBox.hh \
     $$PWD/SAKPortNameComboBox.hh \
     $$PWD/SAKStopBitsComboBox.hh \
-    $$PWD/SAKTextFormatComboBox.hh
+    $$PWD/SAKTextFormatComboBox.hh \
+    $$PWD/SAKUiInterface.hh
 
 SOURCES += \
     $$PWD/SAKAffixesComboBox.cc \
@@ -22,4 +23,5 @@ SOURCES += \
     $$PWD/SAKParityComboBox.cc \
     $$PWD/SAKPortNameComboBox.cc \
     $$PWD/SAKStopBitsComboBox.cc \
-    $$PWD/SAKTextFormatComboBox.cc
+    $$PWD/SAKTextFormatComboBox.cc \
+    $$PWD/SAKUiInterface.cc
