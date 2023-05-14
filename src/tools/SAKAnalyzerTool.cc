@@ -38,11 +38,12 @@ void SAKAnalyzerTool::setMaxTempBytes(int maxBytes)
 void SAKAnalyzerTool::inputBytes(const QByteArray &bytes, const QVariant &context)
 {
     if (bytes.isEmpty()) {
-        outputMessage(QtInfoMsg, "Empty input bytes");
+        outputMessage(QtInfoMsg, "Empty input bytes, the operation will be ignored!");
         return;
     }
 
     emit bytesInputted(bytes, context);
+    outputMessage(QtInfoMsg, "Bytes input!");
 
     if (!enable()) {
         emit bytesOutputted(bytes, context);
@@ -59,9 +60,11 @@ void SAKAnalyzerTool::run()
     handleTimer->setInterval(5);
     handleTimer->setSingleShot(true);
     connect(handleTimer, &QTimer::timeout, handleTimer, [=](){
-        mInputtedBytesMutex.lock();
-        analyze();
-        mInputtedBytesMutex.unlock();
+        if (mEnable) {
+            mInputtedBytesMutex.lock();
+            analyze();
+            mInputtedBytesMutex.unlock();
+        }
         handleTimer->start();
     });
     handleTimer->start();
