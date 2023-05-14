@@ -12,7 +12,7 @@
 SAKMaskerTool::SAKMaskerTool(QObject *parent)
     : SAKBaseTool{"SAK.MaskTool", parent}
 {
-
+    mEnable = false;
 }
 
 void SAKMaskerTool::setMaskCode(qint8 maskCode)
@@ -23,6 +23,7 @@ void SAKMaskerTool::setMaskCode(qint8 maskCode)
 void SAKMaskerTool::inputBytes(const QByteArray &bytes,
                                const QVariant &context)
 {
+    qDebug() << __FUNCTION__ << __LINE__;
     emit bytesInputted(bytes, context);
 
     if (!enable()) {

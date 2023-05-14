@@ -12,7 +12,7 @@
 SAKAnalyzerTool::SAKAnalyzerTool(QObject *parent)
     : SAKBaseTool{"SAK.AnalyzerTool", parent}
 {
-
+    mEnable = false;
 }
 
 void SAKAnalyzerTool::setFixed(bool fixed)
@@ -37,6 +37,11 @@ void SAKAnalyzerTool::setMaxTempBytes(int maxBytes)
 
 void SAKAnalyzerTool::inputBytes(const QByteArray &bytes, const QVariant &context)
 {
+    if (bytes.isEmpty()) {
+        outputMessage(QtInfoMsg, "Empty input bytes");
+        return;
+    }
+
     emit bytesInputted(bytes, context);
 
     if (!enable()) {

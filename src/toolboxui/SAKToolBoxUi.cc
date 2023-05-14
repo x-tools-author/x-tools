@@ -28,8 +28,8 @@ SAKToolBoxUi::SAKToolBoxUi(QWidget *parent)
     mToolBox = new SAKToolBox(this);
     mToolBoxUiParameters = new SAKToolBoxUiParameters(this);
     mToolBoxUiParameters->setModal(true);
-    //mToolBoxUiParameters->setupInputMasker(mToolBox->getInputMaskerTool());
-    //mToolBoxUiParameters->setupOutputMasker(mToolBox->getOutputMaskerTool());
+    mToolBoxUiParameters->setupInputMasker(mToolBox->getInputMaskerTool());
+    mToolBoxUiParameters->setupOutputMasker(mToolBox->getOutputMaskerTool());
 
     mCycleSendingTimer = new QTimer(this);
     connect(mCycleSendingTimer, &QTimer::timeout,
@@ -46,14 +46,14 @@ SAKToolBoxUi::~SAKToolBoxUi()
 QList<int> SAKToolBoxUi::supportedCommuniticationTools()
 {
     QList<int> list;
-    list << SAKToolFactory::SerialportTool
-         << SAKToolFactory::UdpClientTool
-         << SAKToolFactory::UdpServerTool
-         << SAKToolFactory::TcpClientTool
-         << SAKToolFactory::TcpServerTool
-         << SAKToolFactory::WebSocketClientTool
-         << SAKToolFactory::WebSocketServerTool
-         << SAKToolFactory::BleCentral;
+    list << SAKToolFactory::SerialportTool;
+//         << SAKToolFactory::UdpClientTool
+//         << SAKToolFactory::UdpServerTool
+//         << SAKToolFactory::TcpClientTool
+//         << SAKToolFactory::TcpServerTool
+//         << SAKToolFactory::WebSocketClientTool
+//         << SAKToolFactory::WebSocketServerTool
+//         << SAKToolFactory::BleCentral;
     return list;
 }
 
@@ -86,12 +86,12 @@ void SAKToolBoxUi::setupCommuniticationTool(int type)
     l->addWidget(mCommunicationToolUi);
     mCommunicationToolUi->setupCommunicationTool(mCommunicationTool);
 
-    auto outputAnalyzer = mToolBox->getOutputAnalyzerTool();
+    //auto outputAnalyzer = mToolBox->getOutputAnalyzerTool();
     connect(mToolBox, &SAKToolBox::isWorkingChanged,
             this, &SAKToolBoxUi::onIsWorkingChanged);
     connect(mCommunicationTool, &SAKCommunicationTool::bytesInputted,
             this, &SAKToolBoxUi::onTooBoxBytesInputted);
-    connect(outputAnalyzer, &SAKCommunicationTool::bytesOutputted,
+    connect(mCommunicationTool, &SAKCommunicationTool::bytesOutputted,
             this, &::SAKToolBoxUi::onTooBoxBytesOutputted);
 
     onIsWorkingChanged();
@@ -205,8 +205,6 @@ void SAKToolBoxUi::onIsWorkingChanged()
         mCycleSendingTimer->stop();
     }
 }
-
-
 
 void SAKToolBoxUi::onTooBoxBytesInputted(const QByteArray &bytes,
                                          const QVariant &context)
