@@ -18,6 +18,8 @@ class SAKToolBoxUiParameters;
 }
 
 class SAKMaskerTool;
+class SAKAnalyzerTool;
+class SAKStorerTool;
 class SAKToolBoxUiParameters : public QDialog
 {
     Q_OBJECT
@@ -25,20 +27,22 @@ public:
     struct ParameterContext {
         struct {
             struct {
-                bool isEnable;
-                qint8 maskCode;
-            } iMasker, oMasker;
+                int prefix;
+                int suffix;
+                int escapeCharacter;
+            } preprocessing;
+
             struct {
-
-            } iAnalyzer, oAnalyzer;
-        } communication;
-
-        struct {
-
+                bool enable;
+                bool bigEndian;
+                int arithmetic;
+                int startIndex;
+                int endIndex;
+            } crc;
         } input;
 
         struct {
-
+            QStringList keyWords;
         } output;
     };
 public:
@@ -49,6 +53,9 @@ public:
 
     void setupInputMasker(SAKMaskerTool *tool);
     void setupOutputMasker(SAKMaskerTool *tool);
+    void setupInputAnalyzer(SAKAnalyzerTool *tool);
+    void setupOutputAnalyzer(SAKAnalyzerTool *tool);
+    void setupStorer(SAKStorerTool *tool);
 
 private:
     const QLoggingCategory mLoggingCategory{"SAK.ToolBoxUiParameters"};

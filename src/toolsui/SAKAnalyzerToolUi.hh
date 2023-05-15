@@ -15,12 +15,15 @@
 namespace Ui {
 class SAKAnalyzerToolUi;
 }
+
+class SAKAnalyzerTool;
 class SAKAnalyzerToolUi : public QWidget
 {
     Q_OBJECT
 public:
     explicit SAKAnalyzerToolUi(QWidget *parent = nullptr);
     void setToolName(const QString &name);
+    void setupAnalyzer(SAKAnalyzerTool *tool);
 
 private:
     Ui::SAKAnalyzerToolUi *ui;

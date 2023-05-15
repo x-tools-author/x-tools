@@ -21,3 +21,8 @@ void SAKAnalyzerToolUi::setToolName(const QString &name)
 {
     ui->groupBox->setTitle(name);
 }
+
+void SAKAnalyzerToolUi::setupAnalyzer(SAKAnalyzerTool *tool)
+{
+    Q_UNUSED(tool)
+}

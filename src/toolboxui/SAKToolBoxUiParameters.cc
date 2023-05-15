@@ -41,6 +41,22 @@ SAKToolBoxUiParameters::ParameterContext
 SAKToolBoxUiParameters::parameterContext()
 {
     ParameterContext ctx{};
+
+    ctx.input.preprocessing.prefix = ui->comboBoxPrefix->currentData().toInt();
+    ctx.input.preprocessing.suffix = ui->comboBoxSuffix->currentData().toInt();
+    ctx.input.preprocessing.escapeCharacter =
+        ui->comboBoxEscapeCharacter->currentData().toInt();
+
+    ctx.input.crc.enable = ui->checkBoxCrcEnable->isChecked();
+    ctx.input.crc.bigEndian = ui->checkBoxBigEndian->isChecked();
+    ctx.input.crc.arithmetic = ui->comboBoxAlgorithm->currentData().toInt();
+    ctx.input.crc.startIndex = ui->spinBoxStartIndex->value();
+    ctx.input.crc.endIndex = ui->spinBoxEndIndex->value();
+
+    QString txt = ui->textEdit->toPlainText();
+    QStringList txtList = txt.split(';', Qt::SkipEmptyParts);
+    ctx.output.keyWords = txtList;
+
     return ctx;
 }
 
@@ -52,4 +68,19 @@ void SAKToolBoxUiParameters::setupInputMasker(SAKMaskerTool *tool)
 void SAKToolBoxUiParameters::setupOutputMasker(SAKMaskerTool *tool)
 {
     ui->widgetOutputMasker->setupMasker(tool);
+}
+
+void SAKToolBoxUiParameters::setupInputAnalyzer(SAKAnalyzerTool *tool)
+{
+    ui->widgetInputAnanyzer->setupAnalyzer(tool);
+}
+
+void SAKToolBoxUiParameters::setupOutputAnalyzer(SAKAnalyzerTool *tool)
+{
+    ui->widgetOutputAnanlyzer->setupAnalyzer(tool);
+}
+
+void SAKToolBoxUiParameters::setupStorer(SAKStorerTool *tool)
+{
+    ui->widgetStorer->setupStorer(tool);
 }
