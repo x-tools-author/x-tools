@@ -39,30 +39,70 @@ void SAKStorerTool::inputBytes(const QByteArray &bytes,
     }
 }
 
-void SAKStorerTool::setPath(const QString &path)
+bool SAKStorerTool::saveRx()
 {
-    mParameters.file = path;
-    mParameters.file = mParameters.file.remove("file:///");
+    return mParameters.saveRx;
 }
 
-void SAKStorerTool::setFormat(int format)
+void SAKStorerTool::setSaveRx(bool save)
 {
-    mParameters.format = format;
+    mParameters.saveRx = save;
+    emit saveRxChanged();
 }
 
-void SAKStorerTool::setSaveDate(bool saveDate)
+bool SAKStorerTool::saveTx()
 {
-    mParameters.saveDate = saveDate;
+    return mParameters.saveTx;
 }
 
-void SAKStorerTool::setSaveTime(bool saveTime)
+void SAKStorerTool::setSaveTx(bool save)
 {
-    mParameters.saveTime = saveTime;
+    mParameters.saveTx = save;
+    emit saveTxChanged();
 }
 
-void SAKStorerTool::setSaveMs(bool saveMs)
+bool SAKStorerTool::saveDate()
 {
-    mParameters.saveMs = saveMs;
+    return mParameters.saveDate;
+}
+
+void SAKStorerTool::setSaveDate(bool save)
+{
+    mParameters.saveDate = save;
+    emit saveDateChanged();
+}
+
+bool SAKStorerTool::saveTime()
+{
+    return mParameters.saveTime;
+}
+
+void SAKStorerTool::setSaveTime(bool save)
+{
+    mParameters.saveTime = save;
+    emit saveTimeChanged();
+}
+
+bool SAKStorerTool::saveMs()
+{
+    return mParameters.saveMs;
+}
+
+void SAKStorerTool::setSaveMs(bool save)
+{
+    mParameters.saveMs = save;
+    emit saveMsChanged();
+}
+
+QString SAKStorerTool::fileName()
+{
+    return mParameters.file;
+}
+
+void SAKStorerTool::setFileName(const QString &name)
+{
+    mParameters.file = name;
+    emit fileNameChanged();
 }
 
 void SAKStorerTool::run()
@@ -138,7 +178,8 @@ void SAKStorerTool::write2file()
                 }
             }
 
-            QString flag = context.toJsonObject().value("isRx").toBool() ? "Rx: " : "Tx: ";
+            QString flag = context.toJsonObject().value("isRx").toBool()
+                               ? "Rx: " : "Tx: ";
             str = dtStr + flag + str;
             outStream << str << Qt::endl;
         }

@@ -18,29 +18,41 @@
 class SAKStorerTool : public SAKBaseTool
 {
     Q_OBJECT
+    Q_PROPERTY(bool saveRx READ saveRx WRITE setSaveRx NOTIFY saveRxChanged)
+    Q_PROPERTY(bool saveTx READ saveTx WRITE setSaveTx NOTIFY saveTxChanged)
+    Q_PROPERTY(bool saveDate READ saveDate WRITE setSaveDate NOTIFY saveDateChanged)
+    Q_PROPERTY(bool saveTime READ saveTime WRITE setSaveTime NOTIFY saveTimeChanged)
+    Q_PROPERTY(bool saveMs READ saveMs WRITE setSaveMs NOTIFY saveMsChanged)
+    Q_PROPERTY(QString fileName READ fileName WRITE setFileName NOTIFY fileNameChanged)
 public:
     explicit SAKStorerTool(QObject *parent = nullptr);
     ~SAKStorerTool();
 
     virtual void inputBytes(
-            const QByteArray &bytes,
-            const QVariant &context = QJsonObject()) final;
+        const QByteArray &bytes,
+        const QVariant &context = QJsonObject()) final;
 
-    bool saveRx(){return mParameters.saveRx;}
-    void setSaveRx(bool save){mParameters.saveRx = save; emit saveRxChanged();}
-
-    bool saveTx(){return mParameters.saveTx;}
-    void setSaveTx(bool save){mParameters.saveTx; emit saveTxChanged();}
-
-    Q_INVOKABLE void setPath(const QString &path);
-    Q_INVOKABLE void setFormat(int format);
-    Q_INVOKABLE void setSaveDate(bool saveDate);
-    Q_INVOKABLE void setSaveTime(bool saveTime);
-    Q_INVOKABLE void setSaveMs(bool saveMs);
+public:
+    bool saveRx();
+    void setSaveRx(bool save);
+    bool saveTx();
+    void setSaveTx(bool save);
+    bool saveDate();
+    void setSaveDate(bool save);
+    bool saveTime();
+    void setSaveTime(bool save);
+    bool saveMs();
+    void setSaveMs(bool save);
+    QString fileName();
+    void setFileName(const QString &name);
 
 signals:
     void saveRxChanged();
     void saveTxChanged();
+    void saveDateChanged();
+    void saveTimeChanged();
+    void saveMsChanged();
+    void fileNameChanged();
 
 protected:
     virtual void run() final;

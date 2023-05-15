@@ -46,15 +46,18 @@ protected:
 private:
     QLoggingCategory mLoggingCategory;
 
-protected:
-    bool mIsWorking;
+public:
     bool isWorking(){return mIsWorking;}
-    Q_SIGNAL void isWorkingChanged();
-
-    std::atomic_bool mEnable{true};
     bool enable(){return mEnable;}
     void setEnable(bool enable){mEnable = enable; emit enableChanged();}
-    Q_SIGNAL void enableChanged();
+
+protected:
+    std::atomic_bool mIsWorking{false};
+    std::atomic_bool mEnable{true};
+
+signals:
+    void isWorkingChanged();
+    void enableChanged();
 };
 
 #endif // SAKBASETOOL_H
