@@ -157,8 +157,9 @@ void SAKToolBoxUi::try2send()
         int startIndex = ctx.input.crc.startIndex;
         int endIndex = ctx.input.crc.endIndex;
         bool bigEndian = ctx.input.crc.bigEndian;
-        QByteArray crcBytes = SAKCrcInterface::calculateBytes(
-            input, arithmetic, startIndex, endIndex, bigEndian);
+        SAKCrcInterface crcInterface;
+        QByteArray crcBytes = crcInterface.calculateBytes(
+            bytes, arithmetic, startIndex, endIndex, bigEndian);
         input.append(crcBytes);
     }
 
