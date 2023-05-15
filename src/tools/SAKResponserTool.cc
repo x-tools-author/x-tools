@@ -12,8 +12,8 @@
 #include <QJsonObject>
 #include <QJsonDocument>
 
-#include "common/SAKCrcInterface.hpp"
-#include "common/SAKInterface.hpp"
+#include "common/SAKCrcInterface.hh"
+#include "common/SAKInterface.hh"
 #include "common/SAKDataStructure.hh"
 
 #include "SAKResponserTool.hh"

@@ -9,7 +9,7 @@
  *****************************************************************************/
 #include <QMetaEnum>
 
-#include "SAKCrcInterface.hpp"
+#include "SAKCrcInterface.hh"
 
 SAKCrcInterface::SAKCrcInterface(QObject *parent)
     :QObject (parent)
@@ -25,8 +25,10 @@ QString SAKCrcInterface::calculateString(const QString &bytes, int format)
 }
 
 QByteArray SAKCrcInterface::calculateBytes(const QByteArray &bytes,
-                          int model, int startIndex,
-                          int endIndex)
+                                           int arithmetic,
+                                           int startIndex,
+                                           int endIndex,
+                                           bool bigEndian)
 {
     auto parametersIsValid = [&]()->bool{
         if (!bytes.isEmpty()) {
@@ -45,25 +47,33 @@ QByteArray SAKCrcInterface::calculateBytes(const QByteArray &bytes,
 
     QByteArray retBytes;
     if (parametersIsValid()) {
-        auto bw = bitsWidth(SAKEnumCrcAlgorithm(model));
+        auto bw = bitsWidth(SAKEnumCrcAlgorithm(arithmetic));
         uint64_t len = bytes.length() - startIndex - endIndex;
         QByteArray temp = bytes;
         if (bw == 8) {
             uint8_t ret = crcCalculate<uint8_t>(
                 reinterpret_cast<uint8_t*>(temp.data()) + startIndex,
-                len, SAKEnumCrcAlgorithm(model));
+                len, SAKEnumCrcAlgorithm(arithmetic));
             retBytes = QByteArray(reinterpret_cast<char*>(&ret), sizeof(ret));
         } else if (bw == 16) {
             uint16_t ret = crcCalculate<uint16_t>(
                 reinterpret_cast<uint8_t*>(temp.data()) + startIndex,
-                len, SAKEnumCrcAlgorithm(model));
+                len, SAKEnumCrcAlgorithm(arithmetic));
             retBytes = QByteArray(reinterpret_cast<char*>(&ret), sizeof(ret));
         } else if (bw == 32) {
             uint32_t ret = crcCalculate<uint32_t>(
                 reinterpret_cast<uint8_t*>(temp.data()) + startIndex,
-                len, SAKEnumCrcAlgorithm(model));
+                len, SAKEnumCrcAlgorithm(arithmetic));
             retBytes = QByteArray(reinterpret_cast<char*>(&ret), sizeof(ret));
         }
+    }
+
+    if (bigEndian) {
+        QByteArray temp;
+        for (int i = retBytes.length() - 1; i >= 0; i--) {
+            temp.append(retBytes.at(i));
+        }
+        retBytes = temp;
     }
 
     return retBytes;

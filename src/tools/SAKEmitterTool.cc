@@ -13,8 +13,8 @@
 
 #include "SAKEmitterTool.hh"
 
-#include "common/SAKCrcInterface.hpp"
-#include "common/SAKInterface.hpp"
+#include "common/SAKCrcInterface.hh"
+#include "common/SAKInterface.hh"
 #include "common/SAKDataStructure.hh"
 
 SAKEmitterTableModel::SAKEmitterTableModel(QObject *parent)

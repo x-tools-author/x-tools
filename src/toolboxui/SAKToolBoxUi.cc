@@ -11,9 +11,11 @@
 #include <QRegularExpression>
 
 #include "SAKToolBoxUi.hh"
-#include "SAKInterface.hpp"
+#include "SAKInterface.hh"
 #include "SAKUiInterface.hh"
 #include "SAKToolFactory.hh"
+#include "SAKDataStructure.hh"
+#include "SAKCrcInterface.hh"
 #include "SAKSerialPortToolUi.hh"
 #include "SAKCommunicationTool.hh"
 #include "SAKToolBoxUiParameters.hh"
@@ -30,6 +32,9 @@ SAKToolBoxUi::SAKToolBoxUi(QWidget *parent)
     mToolBoxUiParameters->setModal(true);
     mToolBoxUiParameters->setupInputMasker(mToolBox->getInputMaskerTool());
     mToolBoxUiParameters->setupOutputMasker(mToolBox->getOutputMaskerTool());
+    mToolBoxUiParameters->setupInputAnalyzer(mToolBox->getInputAnalyzerTool());
+    mToolBoxUiParameters->setupOutputAnalyzer(mToolBox->getOutputAnalyzerTool());
+    mToolBoxUiParameters->setupStorer(mToolBox->getStorerTool());
 
     mCycleSendingTimer = new QTimer(this);
     connect(mCycleSendingTimer, &QTimer::timeout,
@@ -136,7 +141,29 @@ void SAKToolBoxUi::try2send()
 {
     int format = ui->comboBoxInputFormat->currentData().toInt();
     QString input = ui->comboBoxInput->currentText();
+    auto ctx = mToolBoxUiParameters->parameterContext();
+
+    int prefix = ctx.input.preprocessing.prefix;
+    int suffix = ctx.input.preprocessing.suffix;
+    int esc = ctx.input.preprocessing.escapeCharacter;
+
+    QByteArray prefixData = SAKDataStructure::affixesData(prefix);
+    QByteArray suffixData = SAKDataStructure::affixesData(suffix);
+
+    input = SAKDataStructure::cookedString(esc, input);
     QByteArray bytes = SAKInterface::string2array(input, format);
+    if (ctx.input.crc.enable) {
+        int arithmetic = ctx.input.crc.arithmetic;
+        int startIndex = ctx.input.crc.startIndex;
+        int endIndex = ctx.input.crc.endIndex;
+        bool bigEndian = ctx.input.crc.bigEndian;
+        QByteArray crcBytes = SAKCrcInterface::calculateBytes(
+            input, arithmetic, startIndex, endIndex, bigEndian);
+        input.append(crcBytes);
+    }
+
+    bytes.prepend(prefixData);
+    bytes.append(suffixData);
     mToolBox->send(bytes);
 }
 

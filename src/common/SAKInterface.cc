@@ -19,7 +19,7 @@
 #include <QQuickTextDocument>
 #include <QAbstractTableModel>
 
-#include "SAKInterface.hpp"
+#include "SAKInterface.hh"
 #include "SAKDataStructure.hh"
 
 SAKInterface::SAKInterface(QObject *parent)

@@ -10,9 +10,9 @@ HEADERS += \
     $$PWD/SAKCommonCrcInterface.hh \
     $$PWD/SAKCommonDataStructure.hh \
     $$PWD/SAKCommonInterface.hh \
-    $$PWD/SAKCrcInterface.hpp \
+    $$PWD/SAKCrcInterface.hh \
     $$PWD/SAKDataStructure.hh \
-    $$PWD/SAKInterface.hpp
+    $$PWD/SAKInterface.hh
 
 SOURCES += \
     $$PWD/EDBle.cpp \
@@ -24,6 +24,6 @@ SOURCES += \
     $$PWD/SAKCommonCrcInterface.cc \
     $$PWD/SAKCommonDataStructure.cc \
     $$PWD/SAKCommonInterface.cc \
-    $$PWD/SAKCrcInterface.cpp \
+    $$PWD/SAKCrcInterface.cc \
     $$PWD/SAKDataStructure.cc \
-    $$PWD/SAKInterface.cpp
+    $$PWD/SAKInterface.cc

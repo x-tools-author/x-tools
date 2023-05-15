@@ -8,7 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include <QMetaEnum>
-#include "SAKCrcInterface.hpp"
+#include "SAKCrcInterface.hh"
 #include "SAKCrcAlgorithmComboBox.hh"
 
 SAKCrcAlgorithmComboBox::SAKCrcAlgorithmComboBox(QWidget *parent)

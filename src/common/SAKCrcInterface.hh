@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#ifndef SAKCRCINTERFACE_HH
-#define SAKCRCINTERFACE_HH
+#ifndef SAKCRCINTERFACE_H
+#define SAKCRCINTERFACE_H
 
 #include <QObject>
 #include <QStringList>
@@ -36,15 +36,17 @@ public:
         CRC_32,
         CRC_32_MPEG2
     };
-    Q_ENUM(SAKEnumCrcAlgorithm);
+    Q_ENUM(SAKEnumCrcAlgorithm)
 
 public:
     SAKCrcInterface(QObject *parent = Q_NULLPTR);
 
     Q_INVOKABLE QString calculateString(const QString &bytes, int format);
     Q_INVOKABLE QByteArray calculateBytes(const QByteArray &bytes,
-                                                 int model, int startIndex,
-                                                 int endIndex);
+                                          int arithmetic,
+                                          int startIndex,
+                                          int endIndex,
+                                          bool bigEndian = false);
 
     QStringList supportedParameterModels();
     uint32_t poly(SAKCrcInterface::SAKEnumCrcAlgorithm model);

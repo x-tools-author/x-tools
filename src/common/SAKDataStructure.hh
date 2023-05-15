@@ -26,7 +26,7 @@ public:
         TextFormatAscii,
         TextFormatUtf8
     };
-    Q_ENUM(SAKEnumTextFormat);
+    Q_ENUM(SAKEnumTextFormat)
 
     enum SAKEnumEscapeCharacterOption {
         EscapeCharacterOptionNone,
@@ -36,7 +36,7 @@ public:
         EscapeCharacterOptionNR,
         EscapeCharacterOptionRAndN
     };
-    Q_ENUM(SAKEnumEscapeCharacterOption);
+    Q_ENUM(SAKEnumEscapeCharacterOption)
 
     enum SAKEnumAffixes {
         AffixesNone,
@@ -46,7 +46,7 @@ public:
         AffixesNR,
         AffixesNAndR
     };
-    Q_ENUM(SAKEnumAffixes);
+    Q_ENUM(SAKEnumAffixes)
 
     /**
      * @brief 自动应答选项
@@ -59,7 +59,7 @@ public:
         ResponseOptionInputContainReference,    /// 接收到的数据包含参考数据时，发送应答数据
         ResponseOptionInputDiscontainReference  /// 接收到的数据不包含参考数据时，发送应答数据
     };
-    Q_ENUM(EDEnumResponseOptions);
+    Q_ENUM(EDEnumResponseOptions)
 
     struct EDStructDataItem {
         int itemTextFormat;

@@ -32,10 +32,10 @@
 #include "SAKSystemTrayIcon.hh"
 
 #include "common/EDBle.hpp"
-#include "common/SAKCrcInterface.hpp"
+#include "common/SAKCrcInterface.hh"
 #include "common/EDI18N.hpp"
 #include "common/EDSettings.hpp"
-#include "common/SAKInterface.hpp"
+#include "common/SAKInterface.hh"
 #include "common/EDSerialPort.hpp"
 #include "common/EDHighlighter.hpp"
 #include "common/SAKDataStructure.hh"
