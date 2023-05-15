@@ -40,10 +40,10 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QLineEdit" name="lineEdit_3"/>
+       <widget class="QLineEdit" name="lineEditStorerPath"/>
       </item>
       <item row="1" column="2">
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="pushButtonSelectFile">
         <property name="text">
          <string>Browser</string>
         </property>
@@ -52,42 +52,42 @@
       <item row="0" column="0" colspan="3">
        <layout class="QGridLayout" name="gridLayout_9">
         <item row="1" column="1">
-         <widget class="QCheckBox" name="checkBox_5">
+         <widget class="QCheckBox" name="checkBoxTime">
           <property name="text">
            <string>Save time</string>
           </property>
          </widget>
         </item>
         <item row="1" column="0">
-         <widget class="QCheckBox" name="checkBox_10">
+         <widget class="QCheckBox" name="checkBoxDate">
           <property name="text">
            <string>Save date</string>
           </property>
          </widget>
         </item>
         <item row="0" column="2">
-         <widget class="QCheckBox" name="checkBox_9">
+         <widget class="QCheckBox" name="checkBoxTx">
           <property name="text">
            <string>Save tx</string>
           </property>
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QCheckBox" name="checkBox_7">
+         <widget class="QCheckBox" name="checkBoxRx">
           <property name="text">
            <string>Save rx</string>
           </property>
          </widget>
         </item>
         <item row="1" column="2">
-         <widget class="QCheckBox" name="checkBox_6">
+         <widget class="QCheckBox" name="checkBoxMs">
           <property name="text">
            <string>Save ms</string>
           </property>
          </widget>
         </item>
         <item row="0" column="0">
-         <widget class="QCheckBox" name="checkBox_8">
+         <widget class="QCheckBox" name="checkBoxEnable">
           <property name="text">
            <string>Enable</string>
           </property>

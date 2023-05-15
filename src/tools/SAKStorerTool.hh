@@ -26,11 +26,21 @@ public:
             const QByteArray &bytes,
             const QVariant &context = QJsonObject()) final;
 
+    bool saveRx(){return mParameters.saveRx;}
+    void setSaveRx(bool save){mParameters.saveRx = save; emit saveRxChanged();}
+
+    bool saveTx(){return mParameters.saveTx;}
+    void setSaveTx(bool save){mParameters.saveTx; emit saveTxChanged();}
+
     Q_INVOKABLE void setPath(const QString &path);
     Q_INVOKABLE void setFormat(int format);
     Q_INVOKABLE void setSaveDate(bool saveDate);
     Q_INVOKABLE void setSaveTime(bool saveTime);
     Q_INVOKABLE void setSaveMs(bool saveMs);
+
+signals:
+    void saveRxChanged();
+    void saveTxChanged();
 
 protected:
     virtual void run() final;
@@ -39,6 +49,8 @@ private:
     struct Parameters {
         QString file;
         int format;
+        bool saveRx;
+        bool saveTx;
         bool saveDate;
         bool saveTime;
         bool saveMs;

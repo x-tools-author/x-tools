@@ -26,7 +26,12 @@ public:
     void setupStorer(SAKStorerTool *tool);
 
 private:
+    SAKStorerTool *mTool{nullptr};
+
+private:
     Ui::SAKStorerToolUi *ui{nullptr};
+
+    void onPushButtonSelectFileClicked();
 };
 
 #endif // SAKSTORERTOOLUI_HH
