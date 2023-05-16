@@ -36,6 +36,17 @@ void SAKSocketServerTool::setServerPort(int port)
     mServerPort = port; emit serverPortChanged();
 }
 
+bool SAKSocketServerTool::specifyIpAndPort()
+{
+    return mSpecifyIpAndPort;
+}
+
+void SAKSocketServerTool::setSpecifyIpAndPort(bool specified)
+{
+    mSpecifyIpAndPort = specified;
+    emit specifyIpAndPortChanged();
+}
+
 QStringList SAKSocketServerTool::clients()
 {
     return mClients;

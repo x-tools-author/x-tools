@@ -10,11 +10,14 @@
 #ifndef SAKSOCKETSERVERTOOLUI_H
 #define SAKSOCKETSERVERTOOLUI_H
 
+#include <QLoggingCategory>
 #include "SAKCommunicationToolUi.hh"
 
 namespace Ui {
 class SAKSocketServerToolUi;
 }
+
+class SAKSocketServerTool;
 class SAKSocketServerToolUi : public SAKCommunicationToolUi
 {
     Q_OBJECT
@@ -25,7 +28,14 @@ public:
     virtual void updateUiState(bool isWorking) final;
 
 private:
+    SAKSocketServerTool *mTool{nullptr};
+    const QLoggingCategory mLoggingCategory{"SAK.SocketServerToolUi"};
+
+private:
     Ui::SAKSocketServerToolUi *ui{nullptr};
+
+    void onComboBoxServerIpActived();
+    void onSpinBoxServerPortValueChanged(int value);
 };
 
 #endif // SAKSOCKETSERVERTOOLUI_H
