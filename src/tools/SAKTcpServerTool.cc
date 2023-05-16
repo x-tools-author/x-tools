@@ -11,7 +11,7 @@
 #include "SAKTcpServerTool.hh"
 
 SAKTcpServerTool::SAKTcpServerTool(QObject *parent)
-    : SAKCommunicationTool{"SAK.TcpServerTool", parent}
+    : SAKSocketServerTool{"SAK.TcpServerTool", parent}
 {
 
 }

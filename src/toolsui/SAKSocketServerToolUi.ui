@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>165</width>
-    <height>212</height>
+    <height>242</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -26,26 +26,17 @@
    <property name="bottomMargin">
     <number>10</number>
    </property>
-   <item row="3" column="0">
-    <widget class="QLabel" name="labelMessageType">
-     <property name="text">
-      <string>Message</string>
+   <item row="0" column="1">
+    <widget class="SAKIpComboBox" name="comboBoxServerIp">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
     </widget>
    </item>
    <item row="3" column="1">
-    <widget class="QComboBox" name="comboBoxMessageType"/>
-   </item>
-   <item row="5" column="0" colspan="2">
-    <widget class="QComboBox" name="comboBoxClientList">
-     <item>
-      <property name="text">
-       <string>All clients</string>
-      </property>
-     </item>
-    </widget>
-   </item>
-   <item row="2" column="1">
     <widget class="QLabel" name="labelContext">
      <property name="text">
       <string>(closed)</string>
@@ -66,13 +57,29 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="1">
-    <widget class="SAKIpComboBox" name="comboBoxServerIp">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
+   <item row="4" column="1">
+    <widget class="QComboBox" name="comboBoxMessageType"/>
+   </item>
+   <item row="7" column="1">
+    <widget class="QPushButton" name="pushButtonClear">
+     <property name="text">
+      <string>Clear</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0" colspan="2">
+    <widget class="QComboBox" name="comboBoxClientList">
+     <item>
+      <property name="text">
+       <string>All clients</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Context</string>
      </property>
     </widget>
    </item>
@@ -83,24 +90,24 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="label_4">
+   <item row="4" column="0">
+    <widget class="QLabel" name="labelMessageType">
      <property name="text">
-      <string>Context</string>
+      <string>Message</string>
      </property>
     </widget>
    </item>
-   <item row="4" column="0">
+   <item row="2" column="0" colspan="2">
+    <widget class="QCheckBox" name="checkBoxSpecifyIpAndPort">
+     <property name="text">
+      <string>Specify ip and port</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0" colspan="2">
     <widget class="QLabel" name="label_3">
      <property name="text">
-      <string>Client list</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="1">
-    <widget class="QPushButton" name="pushButtonClear">
-     <property name="text">
-      <string>Clear</string>
+      <string>Selected ceient</string>
      </property>
     </widget>
    </item>

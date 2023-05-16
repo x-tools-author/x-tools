@@ -10,7 +10,54 @@
 #include "SAKSocketServerTool.hh"
 
 SAKSocketServerTool::SAKSocketServerTool(const char *log, QObject *parent)
-    : SAKBaseTool{log, parent}
+    : SAKCommunicationTool{log, parent}
 {
 
+}
+
+QString SAKSocketServerTool::serverIp()
+{
+    return mServerIp;
+}
+
+void SAKSocketServerTool::setServerIp(const QString &ip)
+{
+    mServerIp = ip;
+    emit serverIpChanged();
+}
+
+int SAKSocketServerTool::serverPort()
+{
+    return mServerPort;
+}
+
+void SAKSocketServerTool::setServerPort(int port)
+{
+    mServerPort = port; emit serverPortChanged();
+}
+
+QStringList SAKSocketServerTool::clients()
+{
+    return mClients;
+}
+
+int SAKSocketServerTool::clientIndex()
+{
+    return mClientIndex;
+}
+
+void SAKSocketServerTool::setClientIndex(int index)
+{
+    mClientIndex = index;
+    emit clientIndexChanged();
+}
+
+int SAKSocketServerTool::messageType()
+{
+    return mMessageType;
+}
+
+void SAKSocketServerTool::setMessageType(int type)
+{
+    mMessageType = type; emit messageTypeChanged();
 }

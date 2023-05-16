@@ -10,7 +10,7 @@
 #include "SAKWebSocketClientTool.hh"
 
 SAKWebSocketClientTool::SAKWebSocketClientTool(QObject *parent)
-    : SAKCommunicationTool{"SAK.WebSocketClientTool", parent}
+    : SAKSocketClientTool{"SAK.WebSocketClientTool", parent}
 {
 
 }

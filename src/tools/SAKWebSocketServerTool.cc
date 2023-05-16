@@ -11,7 +11,7 @@
 #include "SAKWebSocketServerTool.hh"
 
 SAKWebSocketServerTool::SAKWebSocketServerTool(QObject *parent)
-    : SAKCommunicationTool{"SAK.WebSocketServerTool", parent}
+    : SAKSocketServerTool{"SAK.WebSocketServerTool", parent}
 {
 
 }

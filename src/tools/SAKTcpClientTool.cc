@@ -10,7 +10,7 @@
 #include "SAKTcpClientTool.hh"
 
 SAKTcpClientTool::SAKTcpClientTool(QObject *parent)
-    : SAKCommunicationTool{"SAK.TcpClientTool", parent}
+    : SAKSocketClientTool{"SAK.TcpClientTool", parent}
 {
 
 }

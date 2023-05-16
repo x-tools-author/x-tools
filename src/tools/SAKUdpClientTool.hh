@@ -11,18 +11,11 @@
 #define SAKUDPCLIENTTOOL_H
 
 #include <QUdpSocket>
-#include "SAKCommunicationTool.hh"
+#include "SAKSocketClientTool.hh"
 
-class SAKUdpClientTool : public SAKCommunicationTool
+class SAKUdpClientTool : public SAKSocketClientTool
 {
     Q_OBJECT
-    Q_PROPERTY(QString clientIp READ clientIp WRITE setClientIp NOTIFY clientIpChanged)
-    Q_PROPERTY(int clientPort READ clientPort WRITE setClientPort NOTIFY clientPortChanged)
-    Q_PROPERTY(bool specifyClientIpPort READ specifyClientIpPort WRITE setSpecifyClientIpPort NOTIFY specifyClientIpPortChanged)
-    Q_PROPERTY(QString serverIp READ serverIp WRITE setServerIp NOTIFY serverIpChanged)
-    Q_PROPERTY(int serverPort READ serverPort WRITE setServerPort NOTIFY serverPortChanged)
-    Q_PROPERTY(QString bindingIpPort READ bindingIpPort NOTIFY bindingIpPortChanged)
-
 public:
     explicit SAKUdpClientTool(QObject *parent = nullptr);
 
@@ -35,36 +28,6 @@ protected:
 
 private:
     QUdpSocket *mUdpSocket{nullptr};
-
-private:
-    QString mClientIp;
-    QString clientIp(){return mClientIp;}
-    void setClientIp(const QString &ip){mClientIp = ip; emit clientIpChanged();}
-    Q_SIGNAL void clientIpChanged();
-
-    int mClientPort;
-    int clientPort(){return mClientPort;}
-    void setClientPort(int port){mClientPort = port; emit clientPortChanged();}
-    Q_SIGNAL void clientPortChanged();
-
-    bool mSpecifyClientIpPort;
-    bool specifyClientIpPort(){return mSpecifyClientIpPort;}
-    void setSpecifyClientIpPort(bool specified){mSpecifyClientIpPort = specified;}
-    Q_SIGNAL void specifyClientIpPortChanged();
-
-    QString mServerIp;
-    QString serverIp(){return mServerIp;}
-    void setServerIp(const QString &ip){mServerIp = ip; emit serverIpChanged();}
-    Q_SIGNAL void serverIpChanged();
-
-    int mServerPort;
-    int serverPort(){return mServerPort;}
-    void setServerPort(int port){mServerPort = port; emit serverPortChanged();}
-    Q_SIGNAL void serverPortChanged();
-
-    QString mBindingIpPort;
-    QString bindingIpPort(){return mBindingIpPort;}
-    Q_SIGNAL void bindingIpPortChanged();
 };
 
 #endif // SAKUDPCLIENTTOOL_H
