@@ -118,9 +118,9 @@ QString SAKToolBoxUi::communiticationToolName(int type)
     } else if (type == SAKToolFactory::TcpServerTool) {
         return tr("TCP Server");
     } else if (type == SAKToolFactory::WebSocketClientTool) {
-        return tr("WebSocket Client");
+        return tr("WS Client");
     } else if (type == SAKToolFactory::WebSocketServerTool) {
-        return tr("WebSocket Server");
+        return tr("WS Server");
     } else if (type == SAKToolFactory::BleCentral) {
         return tr("BLE Central");
     } else {
