@@ -14,10 +14,13 @@
 #include "SAKInterface.hh"
 #include "SAKUiInterface.hh"
 #include "SAKToolFactory.hh"
-#include "SAKDataStructure.hh"
 #include "SAKCrcInterface.hh"
+#include "SAKDataStructure.hh"
+#include "SAKBleCentralToolUi.hh"
 #include "SAKSerialPortToolUi.hh"
 #include "SAKCommunicationTool.hh"
+#include "SAKSocketClientToolUi.hh"
+#include "SAKSocketServerToolUi.hh"
 #include "SAKToolBoxUiParameters.hh"
 
 #include "ui_SAKToolBoxUi.h"
@@ -51,14 +54,14 @@ SAKToolBoxUi::~SAKToolBoxUi()
 QList<int> SAKToolBoxUi::supportedCommuniticationTools()
 {
     QList<int> list;
-    list << SAKToolFactory::SerialportTool;
-//         << SAKToolFactory::UdpClientTool
-//         << SAKToolFactory::UdpServerTool
-//         << SAKToolFactory::TcpClientTool
-//         << SAKToolFactory::TcpServerTool
-//         << SAKToolFactory::WebSocketClientTool
-//         << SAKToolFactory::WebSocketServerTool
-//         << SAKToolFactory::BleCentral;
+    list << SAKToolFactory::SerialportTool
+         << SAKToolFactory::UdpClientTool
+         << SAKToolFactory::UdpServerTool
+         << SAKToolFactory::TcpClientTool
+         << SAKToolFactory::TcpServerTool
+         << SAKToolFactory::WebSocketClientTool
+         << SAKToolFactory::WebSocketServerTool
+         << SAKToolFactory::BleCentral;
     return list;
 }
 
@@ -130,6 +133,20 @@ SAKCommunicationToolUi *SAKToolBoxUi::communiticationToolUi(int type)
     SAKCommunicationToolUi *w = nullptr;
     if (type == SAKToolFactory::SerialportTool) {
         w = new SAKSerialPortToolUi();
+    } else if (type == SAKToolFactory::UdpClientTool) {
+        w = new SAKSocketClientToolUi();
+    } else if (type == SAKToolFactory::UdpServerTool) {
+        w = new SAKSocketServerToolUi();
+    }  else if (type == SAKToolFactory::TcpClientTool) {
+        w = new SAKSocketClientToolUi();
+    } else if (type == SAKToolFactory::TcpServerTool) {
+        w = new SAKSocketServerToolUi();
+    }  else if (type == SAKToolFactory::WebSocketClientTool) {
+        w = new SAKSocketClientToolUi();
+    } else if (type == SAKToolFactory::WebSocketServerTool) {
+        w = new SAKSocketServerToolUi();
+    } else if (type == SAKToolFactory::BleCentral) {
+        w = new SAKBleCentralToolUi();
     } else {
         qCWarning(mLoggingCategory) << "Unknow type of communication tool ui!";
     }
