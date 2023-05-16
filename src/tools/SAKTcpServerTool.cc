@@ -57,7 +57,6 @@ bool SAKTcpServerTool::initialize()
         });
     });
 
-    mIsTimerReading = false;
     return true;
 }
 
@@ -73,11 +72,6 @@ void SAKTcpServerTool::writeBytes(const QByteArray &bytes, const QVariant &conte
             emit bytesInputted(bytes, QVariant());
         }
     }
-}
-
-void SAKTcpServerTool::readBytes()
-{
-    // Nothing to do yet.
 }
 
 void SAKTcpServerTool::uninitialize()

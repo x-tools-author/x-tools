@@ -49,7 +49,6 @@ bool SAKTcpClientTool::initialize()
         readBytes();
     });
 
-    mIsTimerReading = false;
     return true;
 }
 
@@ -64,6 +63,12 @@ void SAKTcpClientTool::writeBytes(const QByteArray &bytes, const QVariant &conte
     }
 }
 
+void SAKTcpClientTool::uninitialize()
+{
+    mTcpSocket->deleteLater();
+    mTcpSocket = nullptr;
+}
+
 void SAKTcpClientTool::readBytes()
 {
     QHostAddress address = mTcpSocket->peerAddress();
@@ -76,10 +81,4 @@ void SAKTcpClientTool::readBytes()
         emit bytesOutputted(bytes, info);
         Q_UNUSED(info);
     }
-}
-
-void SAKTcpClientTool::uninitialize()
-{
-    mTcpSocket->deleteLater();
-    mTcpSocket = nullptr;
 }

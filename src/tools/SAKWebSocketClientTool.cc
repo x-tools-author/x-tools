@@ -53,7 +53,6 @@ bool SAKWebSocketClientTool::initialize()
     QString address = QString("ws://%1:%2").arg(mServerIp, QString::number(mServerPort));
     mWebSocket->open(address);
 
-    mIsTimerReading = false;
     return true;
 }
 
@@ -72,11 +71,6 @@ void SAKWebSocketClientTool::writeBytes(const QByteArray &bytes, const QVariant 
     } else {
         emit bytesInputted(bytes, QVariant());
     }
-}
-
-void SAKWebSocketClientTool::readBytes()
-{
-
 }
 
 void SAKWebSocketClientTool::uninitialize()

@@ -62,7 +62,6 @@ bool SAKWebSocketServerTool::initialize()
         });
     });
 
-    mIsTimerReading = false;
     return true;
 }
 
@@ -84,11 +83,6 @@ void SAKWebSocketServerTool::writeBytes(const QByteArray &bytes, const QVariant 
             emit bytesInputted(bytes, QVariant());
         }
     }
-}
-
-void SAKWebSocketServerTool::readBytes()
-{
-    // Nothing to do yet.
 }
 
 void SAKWebSocketServerTool::uninitialize()

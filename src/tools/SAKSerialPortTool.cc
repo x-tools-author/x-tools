@@ -75,7 +75,6 @@ bool SAKSerialPortTool::initialize()
         return false;
     }
 
-    mIsTimerReading = false;
     connect(mSerialPort, &QSerialPort::readyRead, mSerialPort, [=](){
         readBytes();
     });

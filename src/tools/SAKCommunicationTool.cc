@@ -32,17 +32,6 @@ void SAKCommunicationTool::run()
         return;
     }
 
-    QTimer *rxTimer = new QTimer();
-    rxTimer->setInterval(5);
-    rxTimer->setSingleShot(true);
-    connect(rxTimer, &QTimer::timeout, rxTimer, [=](){
-        if (mIsTimerReading) {
-            readBytes();
-        }
-        rxTimer->start();
-    });
-    rxTimer->start();
-
     QTimer *txTimer = new QTimer();
     txTimer->setInterval(5);
     txTimer->setSingleShot(true);
@@ -58,8 +47,6 @@ void SAKCommunicationTool::run()
     txTimer->start();
 
     exec();
-    rxTimer->deleteLater();
-    rxTimer = nullptr;
     txTimer->deleteLater();
     txTimer = nullptr;
     uninitialize();

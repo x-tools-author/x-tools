@@ -33,15 +33,9 @@ protected:
                             const QVariant &context = QJsonObject()) final;
 
     virtual bool initialize() = 0;
-    virtual void readBytes() = 0;
     virtual void writeBytes(const QByteArray &bytes,
                             const QVariant &context = QJsonObject()) = 0;
     virtual void uninitialize() = 0;
-
-protected:
-    // If the value is false,
-    // you should use your own way to trigger to call readBytes().
-    std::atomic_bool mIsTimerReading{true};
 
 private:
     QList<InputDataContext> mInputDataList;

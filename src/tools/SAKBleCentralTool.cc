@@ -127,8 +127,6 @@ bool SAKBleCentralTool::initialize()
         onServiceDiscoveryFinished();
     });
 
-
-    mIsTimerReading = false;
     return true;
 }
 

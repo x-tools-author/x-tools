@@ -28,7 +28,9 @@ bool SAKUdpClientTool::initialize()
         mUdpSocket->bind();
     }
 
-    QString info = QString("%1:%2").arg(mUdpSocket->localAddress().toString()).arg(mUdpSocket->localPort());
+    QString info = QString("%1:%2")
+                       .arg(mUdpSocket->localAddress().toString())
+                       .arg(mUdpSocket->localPort());
     outputMessage(QtInfoMsg, info);
 
     mBindingIpPort = info;
@@ -41,15 +43,24 @@ bool SAKUdpClientTool::initialize()
     return true;
 }
 
-void SAKUdpClientTool::writeBytes(const QByteArray &bytes, const QVariant &context)
+void SAKUdpClientTool::writeBytes(const QByteArray &bytes,
+                                  const QVariant &context)
 {
     Q_UNUSED(context);
-    qint64 ret = mUdpSocket->writeDatagram(bytes, QHostAddress(mServerIp), mServerPort);
+    qint64 ret = mUdpSocket->writeDatagram(bytes,
+                                           QHostAddress(mServerIp),
+                                           mServerPort);
     if (ret == -1) {
         outputMessage(QtWarningMsg, mUdpSocket->errorString());
     } else {
         emit bytesInputted(bytes, QVariant());
     }
+}
+
+void SAKUdpClientTool::uninitialize()
+{
+    mUdpSocket->deleteLater();
+    mUdpSocket = nullptr;
 }
 
 void SAKUdpClientTool::readBytes()
@@ -60,7 +71,9 @@ void SAKUdpClientTool::readBytes()
             QByteArray bytes(len, 0);
             QHostAddress address;
             quint16 port;
-            qint64 ret = mUdpSocket->readDatagram(bytes.data(), bytes.length(), &address, &port);
+            qint64 ret = mUdpSocket->readDatagram(bytes.data(),
+                                                  bytes.length(),
+                                                  &address, &port);
             if (ret == -1) {
                 outputMessage(QtWarningMsg, mUdpSocket->errorString());
             } else {
@@ -72,10 +85,4 @@ void SAKUdpClientTool::readBytes()
             }
         }
     }
-}
-
-void SAKUdpClientTool::uninitialize()
-{
-    mUdpSocket->deleteLater();
-    mUdpSocket = nullptr;
 }

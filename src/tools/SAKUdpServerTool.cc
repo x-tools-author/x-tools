@@ -51,6 +51,12 @@ void SAKUdpServerTool::writeBytes(const QByteArray &bytes, const QVariant &conte
     }
 }
 
+void SAKUdpServerTool::uninitialize()
+{
+    mUdpSocket->deleteLater();
+    mUdpSocket = nullptr;
+}
+
 void SAKUdpServerTool::readBytes()
 {
     while (mUdpSocket->hasPendingDatagrams()) {
@@ -75,10 +81,4 @@ void SAKUdpServerTool::readBytes()
             }
         }
     }
-}
-
-void SAKUdpServerTool::uninitialize()
-{
-    mUdpSocket->deleteLater();
-    mUdpSocket = nullptr;
 }
