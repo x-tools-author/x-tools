@@ -10,6 +10,7 @@
 #ifndef SAKSOCKETCLIENTTOOLUI_HH
 #define SAKSOCKETCLIENTTOOLUI_HH
 
+#include <QLoggingCategory>
 #include "SAKCommunicationToolUi.hh"
 
 namespace Ui {
@@ -23,6 +24,9 @@ public:
     ~SAKSocketClientToolUi();
     virtual void setupCommunicationTool(SAKCommunicationTool *tool) final;
     virtual void updateUiState(bool isWorking) final;
+
+private:
+    const QLoggingCategory mLoggingCategory{"SAK.SocketClientToolUi"};
 
 private:
     Ui::SAKSocketClientToolUi *ui{nullptr};

@@ -7,6 +7,7 @@ HEADERS += \
     $$PWD/SAKDataBitsComboBox.hh \
     $$PWD/SAKEscapeCharacterComboBox.hh \
     $$PWD/SAKFlowControlComboBox.hh \
+    $$PWD/SAKIpComboBox.hh \
     $$PWD/SAKParityComboBox.hh \
     $$PWD/SAKPortNameComboBox.hh \
     $$PWD/SAKStopBitsComboBox.hh \
@@ -20,6 +21,7 @@ SOURCES += \
     $$PWD/SAKDataBitsComboBox.cc \
     $$PWD/SAKEscapeCharacterComboBox.cc \
     $$PWD/SAKFlowControlComboBox.cc \
+    $$PWD/SAKIpComboBox.cc \
     $$PWD/SAKParityComboBox.cc \
     $$PWD/SAKPortNameComboBox.cc \
     $$PWD/SAKStopBitsComboBox.cc \
