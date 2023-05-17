@@ -79,7 +79,7 @@ void SAKSocketClientToolUi::onComboBoxClientAddressActived()
 void SAKSocketClientToolUi::onSpinBoxClientPortValueChanged(int value)
 {
     if (mTool) {
-        mTool->setClientPort(ui->spinBoxClientPort->value());
+        mTool->setClientPort(value);
     }
 }
 
@@ -91,10 +91,10 @@ void SAKSocketClientToolUi::onComboBoxServerAddressActived()
     }
 }
 
-void SAKSocketClientToolUi::onSpinBoxServerPortValueChanged()
+void SAKSocketClientToolUi::onSpinBoxServerPortValueChanged(int value)
 {
     if (mTool) {
-        mTool->setServerPort(ui->spinBoxServerPort->value());
+        mTool->setServerPort(value);
     }
 }
 
