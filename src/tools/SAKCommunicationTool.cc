@@ -29,6 +29,7 @@ void SAKCommunicationTool::inputBytes(const QByteArray &bytes,
 void SAKCommunicationTool::run()
 {
     if (!initialize()) {
+        outputMessage(QtWarningMsg, "Can not initialize the communication tool!");
         return;
     }
 

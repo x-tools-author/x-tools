@@ -69,6 +69,7 @@ private:
     SAKPrestorerTool    *mPrestorerTool{nullptr};
 
     QList<SAKBaseTool*> mToolList;
+    const QLoggingCategory mLoggingCategory{"SAK.ToolBox"};
 
 private:
     void uninitializedTips();

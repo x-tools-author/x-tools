@@ -61,6 +61,14 @@ void SAKSocketClientToolUi::setupCommunicationTool(SAKCommunicationTool *tool)
     mTool->setServerIp(ui->comboBoxServerAddress->currentText().trimmed());
     mTool->setServerPort(ui->spinBoxServerPort->value());
     mTool->setSpecifyClientIpPort(ui->checkBoxSpecifyIpAndPort->isChecked());
+
+    connect(mTool, &SAKSocketClientTool::bindingIpPortChanged, this, [=](){
+        QString ipport = mTool->bindingIpPort();
+        ui->labelContext->setText(ipport);
+    });
+    connect(mTool, &SAKSocketClientTool::finished, this, [=](){
+        ui->labelContext->setText(tr("Closed"));
+    });
 }
 
 void SAKSocketClientToolUi::updateUiState(bool isWorking)

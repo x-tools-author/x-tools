@@ -47,35 +47,38 @@ void SAKToolBox::setupComunicationTool(int type)
 
     auto toolFactory = SAKToolFactory::instance();
     mComunicationTool = toolFactory->createTool(type);
-    if (mComunicationTool) {
-        // rx->output_masker->output_analyzer->emmitter,responser
-        connect(mComunicationTool, &SAKBaseTool::bytesOutputted,
-                mOutputMaskerTool, &SAKBaseTool::inputBytes);
-        connect(mOutputMaskerTool, &SAKBaseTool::bytesOutputted,
-                mOutputAnalyzerTool, &SAKBaseTool::inputBytes);
-        connect(mOutputAnalyzerTool, &SAKBaseTool::bytesOutputted,
-                mEmitterTool, &SAKBaseTool::inputBytes);
-        connect(mOutputAnalyzerTool, &SAKBaseTool::bytesOutputted,
-                mResponserTool, &SAKBaseTool::inputBytes);
-
-        // emiiter,responser,prestorer->input_analyzer->input_masker->tx
-        connect(mEmitterTool, &SAKBaseTool::bytesOutputted,
-                mInputAnalyzerTool, &SAKBaseTool::inputBytes);
-        connect(mResponserTool, &SAKBaseTool::bytesOutputted,
-                mInputAnalyzerTool, &SAKBaseTool::inputBytes);
-        connect(mPrestorerTool, &SAKBaseTool::bytesOutputted,
-                mInputAnalyzerTool, &SAKBaseTool::inputBytes);
-        connect(mInputAnalyzerTool, &SAKBaseTool::bytesOutputted,
-                mInputMaskerTool, &SAKBaseTool::inputBytes);
-        connect(mInputMaskerTool, &SAKBaseTool::bytesOutputted,
-                mComunicationTool, &SAKBaseTool::inputBytes);
-
-        // rx->storer; tx->storer
-        connect(mComunicationTool, &SAKBaseTool::bytesOutputted,
-                mStorerTool, &SAKBaseTool::inputBytes);
-        connect(mComunicationTool, &SAKBaseTool::bytesInputted,
-                mStorerTool, &SAKBaseTool::inputBytes);
+    if (!mComunicationTool) {
+        qCWarning(mLoggingCategory) << "The value of mComunicationTool is nullptr";
+        return;
     }
+
+    // rx->output_masker->output_analyzer->emmitter,responser
+    connect(mComunicationTool, &SAKBaseTool::bytesOutputted,
+            mOutputMaskerTool, &SAKBaseTool::inputBytes);
+    connect(mOutputMaskerTool, &SAKBaseTool::bytesOutputted,
+            mOutputAnalyzerTool, &SAKBaseTool::inputBytes);
+    connect(mOutputAnalyzerTool, &SAKBaseTool::bytesOutputted,
+            mEmitterTool, &SAKBaseTool::inputBytes);
+    connect(mOutputAnalyzerTool, &SAKBaseTool::bytesOutputted,
+            mResponserTool, &SAKBaseTool::inputBytes);
+
+    // emiiter,responser,prestorer->input_analyzer->input_masker->tx
+    connect(mEmitterTool, &SAKBaseTool::bytesOutputted,
+            mInputAnalyzerTool, &SAKBaseTool::inputBytes);
+    connect(mResponserTool, &SAKBaseTool::bytesOutputted,
+            mInputAnalyzerTool, &SAKBaseTool::inputBytes);
+    connect(mPrestorerTool, &SAKBaseTool::bytesOutputted,
+            mInputAnalyzerTool, &SAKBaseTool::inputBytes);
+    connect(mInputAnalyzerTool, &SAKBaseTool::bytesOutputted,
+            mInputMaskerTool, &SAKBaseTool::inputBytes);
+    connect(mInputMaskerTool, &SAKBaseTool::bytesOutputted,
+            mComunicationTool, &SAKBaseTool::inputBytes);
+
+    // rx->storer; tx->storer
+    connect(mComunicationTool, &SAKBaseTool::bytesOutputted,
+            mStorerTool, &SAKBaseTool::inputBytes);
+    connect(mComunicationTool, &SAKBaseTool::bytesInputted,
+            mStorerTool, &SAKBaseTool::inputBytes);
 
     emit communicationChanged();
 }
@@ -87,9 +90,9 @@ void SAKToolBox::open()
             tool->start();
         }
 
-        mComunicationTool->start();
         mIsWorking = true;
         emit isWorkingChanged();
+        mComunicationTool->start();
     } else {
         uninitializedTips();
     }

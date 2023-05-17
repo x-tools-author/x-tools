@@ -26,6 +26,7 @@ class SAKSocketClientTool : public SAKCommunicationTool
 public:
     explicit SAKSocketClientTool(const char *lg, QObject *parent = nullptr);
 
+public:
     QString clientIp();
     void setClientIp(const QString &ip);
     int clientPort();

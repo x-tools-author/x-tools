@@ -28,17 +28,15 @@ bool SAKUdpClientTool::initialize()
         mUdpSocket->bind();
     }
 
-    QString info = QString("%1:%2")
-                       .arg(mUdpSocket->localAddress().toString())
-                       .arg(mUdpSocket->localPort());
-    outputMessage(QtInfoMsg, info);
-
+    QString ip = mUdpSocket->localAddress().toString();
+    int port = mUdpSocket->localPort();
+    QString info = QString("%1:%2").arg(ip).arg(port);
     mBindingIpPort = info;
+    outputMessage(QtInfoMsg, info);
     emit bindingIpPortChanged();
 
-    connect(mUdpSocket, &QUdpSocket::readyRead, mUdpSocket, [=](){
-        readBytes();
-    });
+    connect(mUdpSocket, &QUdpSocket::readyRead,
+            mUdpSocket, [=](){readBytes();});
 
     return true;
 }
@@ -53,6 +51,10 @@ void SAKUdpClientTool::writeBytes(const QByteArray &bytes,
     if (ret == -1) {
         outputMessage(QtWarningMsg, mUdpSocket->errorString());
     } else {
+        outputMessage(QtInfoMsg,
+                      QString("%1<-%2")
+                          .arg(mBindingIpPort,
+                               QString::fromLatin1(bytes.toHex(' '))));
         emit bytesInputted(bytes, QVariant());
     }
 }
