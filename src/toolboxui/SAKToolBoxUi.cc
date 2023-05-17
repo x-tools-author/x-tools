@@ -182,7 +182,7 @@ void SAKToolBoxUi::try2send()
 
     bytes.prepend(prefixData);
     bytes.append(suffixData);
-    mToolBox->send(bytes);
+    mToolBox->getInputAnalyzerTool()->inputBytes(bytes, QJsonObject());
 }
 
 QString SAKToolBoxUi::dateTimeContext()

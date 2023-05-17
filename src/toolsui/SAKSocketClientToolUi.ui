@@ -27,10 +27,23 @@
     <number>0</number>
    </property>
    <item row="2" column="1">
-    <widget class="QSpinBox" name="spinBoxClientPort"/>
+    <widget class="QSpinBox" name="spinBoxClientPort">
+     <property name="maximum">
+      <number>65535</number>
+     </property>
+     <property name="value">
+      <number>44444</number>
+     </property>
+    </widget>
    </item>
    <item row="7" column="1">
-    <widget class="QComboBox" name="comboBoxServerAddress">
+    <widget class="SAKIpComboBox" name="comboBoxServerAddress">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="editable">
       <bool>true</bool>
      </property>
@@ -106,7 +119,17 @@
     <widget class="QComboBox" name="comboBoxMessageType"/>
    </item>
    <item row="8" column="1">
-    <widget class="QSpinBox" name="spinBoxServerPort"/>
+    <widget class="QSpinBox" name="spinBoxServerPort">
+     <property name="maximum">
+      <number>65535</number>
+     </property>
+     <property name="singleStep">
+      <number>1</number>
+     </property>
+     <property name="value">
+      <number>55555</number>
+     </property>
+    </widget>
    </item>
    <item row="4" column="0" colspan="2">
     <widget class="QCheckBox" name="checkBoxSpecifyIpAndPort">

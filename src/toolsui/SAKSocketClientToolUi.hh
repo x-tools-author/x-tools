@@ -16,6 +16,8 @@
 namespace Ui {
 class SAKSocketClientToolUi;
 }
+
+class SAKSocketClientTool;
 class SAKSocketClientToolUi : public SAKCommunicationToolUi
 {
     Q_OBJECT
@@ -27,9 +29,16 @@ public:
 
 private:
     const QLoggingCategory mLoggingCategory{"SAK.SocketClientToolUi"};
+    SAKSocketClientTool *mTool{nullptr};
 
 private:
     Ui::SAKSocketClientToolUi *ui{nullptr};
+
+    void onComboBoxClientAddressActived();
+    void onSpinBoxClientPortValueChanged(int value);
+    void onComboBoxServerAddressActived();
+    void onSpinBoxServerPortValueChanged();
+    void onCheckBoxSpecifyIpAndPortClicked();
 };
 
 #endif // SAKSOCKETCLIENTTOOLUI_H

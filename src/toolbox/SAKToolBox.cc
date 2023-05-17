@@ -27,14 +27,14 @@ SAKToolBox::SAKToolBox(QObject *parent)
     mStorerTool         = qobject_cast<SAKStorerTool*>(createTool(SAKToolFactory::StorerTool));
     mPrestorerTool      = qobject_cast<SAKPrestorerTool*>(createTool(SAKToolFactory::PrestoreTool));
 
-//    mToolList << mInputMaskerTool
-//              << mOutputMaskerTool
-//              << mInputAnalyzerTool;
-//              << mOutputAnalyzerTool;
-//              << mEmitterTool
-//              << mResponserTool
-//              << mStorerTool
-//              << mPrestorerTool;
+    mToolList << mInputMaskerTool
+              << mOutputMaskerTool
+              << mInputAnalyzerTool
+              << mOutputAnalyzerTool
+              << mEmitterTool
+              << mResponserTool
+              << mStorerTool
+              << mPrestorerTool;
 }
 
 void SAKToolBox::setupComunicationTool(int type)

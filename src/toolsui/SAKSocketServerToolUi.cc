@@ -76,6 +76,6 @@ void SAKSocketServerToolUi::onComboBoxServerIpActived()
 void SAKSocketServerToolUi::onSpinBoxServerPortValueChanged(int value)
 {
     if (mTool) {
-        mTool->setServerIp(value);
+        mTool->setServerPort(value);
     }
 }
