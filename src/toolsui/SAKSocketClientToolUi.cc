@@ -19,11 +19,13 @@ SAKSocketClientToolUi::SAKSocketClientToolUi(QWidget *parent)
     ui->setupUi(this);
 
     connect(ui->comboBoxClientAddress, &QComboBox::activated,
-            this, &SAKSocketClientToolUi::onComboBoxServerAddressActived);
+            this, &SAKSocketClientToolUi::onComboBoxServerAddressCurrentTextChanged);
     connect(ui->spinBoxClientPort, &QSpinBox::valueChanged,
             this, &SAKSocketClientToolUi::onSpinBoxClientPortValueChanged);
-    connect(ui->comboBoxServerAddress, &QComboBox::activated,
-            this, &SAKSocketClientToolUi::onComboBoxServerAddressActived);
+    connect(ui->comboBoxServerAddress, &QComboBox::currentTextChanged,
+            this, &SAKSocketClientToolUi::onComboBoxServerAddressCurrentTextChanged);
+    connect(ui->spinBoxServerPort, &QSpinBox::valueChanged,
+            this, &SAKSocketClientToolUi::onSpinBoxServerPortValueChanged);
     connect(ui->checkBoxSpecifyIpAndPort, &QCheckBox::clicked,
             this, &SAKSocketClientToolUi::onCheckBoxSpecifyIpAndPortClicked);
 }
@@ -73,7 +75,9 @@ void SAKSocketClientToolUi::setupCommunicationTool(SAKCommunicationTool *tool)
 
 void SAKSocketClientToolUi::updateUiState(bool isWorking)
 {
-    setEnabled(!isWorking);
+    ui->comboBoxClientAddress->setEditable(!isWorking);
+    ui->spinBoxClientPort->setEnabled(!isWorking);
+    ui->checkBoxSpecifyIpAndPort->setEnabled(!isWorking);
 }
 
 void SAKSocketClientToolUi::onComboBoxClientAddressActived()
@@ -91,7 +95,7 @@ void SAKSocketClientToolUi::onSpinBoxClientPortValueChanged(int value)
     }
 }
 
-void SAKSocketClientToolUi::onComboBoxServerAddressActived()
+void SAKSocketClientToolUi::onComboBoxServerAddressCurrentTextChanged()
 {
     if (mTool) {
         QString ip = ui->comboBoxServerAddress->currentText().trimmed();

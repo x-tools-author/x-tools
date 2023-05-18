@@ -52,8 +52,10 @@ void SAKUdpClientTool::writeBytes(const QByteArray &bytes,
         outputMessage(QtWarningMsg, mUdpSocket->errorString());
     } else {
         QString hex = QString::fromLatin1(bytes.toHex(' '));
-        outputMessage(QtInfoMsg,
-                      QString("%1->%2").arg(mBindingIpPort, hex));
+        QString serverInfo = QString("%1:%2")
+                                 .arg(mServerIp, QString::number(mServerPort));
+        outputMessage(QtInfoMsg, QString("%1->%2:%3")
+                                     .arg(mBindingIpPort, serverInfo, hex));
         emit bytesInputted(bytes, QVariant());
     }
 }

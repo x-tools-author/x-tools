@@ -59,11 +59,26 @@ void SAKSocketServerToolUi::setupCommunicationTool(SAKCommunicationTool *tool)
     mTool->setServerPort(port);
     mTool->setSpecifyIpAndPort(specified);
     mTool->setMessageType(messageType);
+
+    connect(mTool, &SAKSocketServerTool::bindingIpPortChanged, this, [=](){
+        QString ipport = mTool->bindingIpPort();
+        ui->labelContext->setText(ipport);
+    });
+    connect(mTool, &SAKSocketServerTool::finished, this, [=](){
+        ui->labelContext->setText(tr("Closed"));
+    });
+    connect(mTool, &SAKSocketServerTool::clientsChanged, this, [=](){
+        QStringList clients = mTool->clients();
+        ui->comboBoxClientList->clear();
+        ui->comboBoxClientList->addItems(clients);
+    });
 }
 
 void SAKSocketServerToolUi::updateUiState(bool isWorking)
 {
-    Q_UNUSED(isWorking)
+    ui->comboBoxServerIp->setEnabled(!isWorking);
+    ui->spinBoxServerPort->setEnabled(!isWorking);
+    ui->checkBoxSpecifyIpAndPort->setEnabled(!isWorking);
 }
 
 void SAKSocketServerToolUi::onComboBoxServerIpActived()

@@ -25,8 +25,8 @@ bool SAKUdpServerTool::initialize()
 
     QString ip = mUdpSocket->localAddress().toString();
     int port = mUdpSocket->localPort();
-    QString info = QString("%1:%2").arg(ip).arg(port);
-    outputMessage(QtInfoMsg, info);
+    mBindingIpPort = QString("%1:%2").arg(ip).arg(port);
+    outputMessage(QtInfoMsg, mBindingIpPort);
     emit bindingIpPortChanged();
 
     connect(mUdpSocket, &QUdpSocket::readyRead, mUdpSocket, [=](){
@@ -80,7 +80,8 @@ void SAKUdpServerTool::readBytes()
                 QString hex = QString::fromLatin1(bytes.toHex(' '));
                 outputMessage(QtInfoMsg,
                               QString("%1<-%2").arg(mBindingIpPort, hex));
-
+                QString info = QString("%1:%2")
+                                   .arg(address.toString()).arg(port);
                 if (!mClients.contains(info)) {
                     mClients.append(info);
                     emit clientsChanged();
