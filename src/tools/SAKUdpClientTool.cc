@@ -51,10 +51,9 @@ void SAKUdpClientTool::writeBytes(const QByteArray &bytes,
     if (ret == -1) {
         outputMessage(QtWarningMsg, mUdpSocket->errorString());
     } else {
+        QString hex = QString::fromLatin1(bytes.toHex(' '));
         outputMessage(QtInfoMsg,
-                      QString("%1<-%2")
-                          .arg(mBindingIpPort,
-                               QString::fromLatin1(bytes.toHex(' '))));
+                      QString("%1->%2").arg(mBindingIpPort, hex));
         emit bytesInputted(bytes, QVariant());
     }
 }
@@ -79,11 +78,10 @@ void SAKUdpClientTool::readBytes()
             if (ret == -1) {
                 outputMessage(QtWarningMsg, mUdpSocket->errorString());
             } else {
-                QString info = QString("%1:%2")
-                                   .arg(address.toString())
-                                   .arg(port);
+                QString hex = QString::fromLatin1(bytes.toHex(' '));
+                outputMessage(QtInfoMsg,
+                              QString("%1<-%2").arg(mBindingIpPort, hex));
                 emit bytesOutputted(bytes, QVariant());
-                Q_UNUSED(info);
             }
         }
     }

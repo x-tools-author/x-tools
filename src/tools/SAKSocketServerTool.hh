@@ -20,6 +20,7 @@ class SAKSocketServerTool : public SAKCommunicationTool
     Q_PROPERTY(bool specifyIpAndPort READ specifyIpAndPort WRITE setSpecifyIpAndPort NOTIFY specifyIpAndPortChanged)
     Q_PROPERTY(QStringList clients READ clients NOTIFY clientsChanged)
     Q_PROPERTY(int clientIndex READ clientIndex WRITE setClientIndex NOTIFY clientIndexChanged)
+    Q_PROPERTY(QString bindingIpPort READ bindingIpPort NOTIFY bindingIpPortChanged)
     // Just for web socket server.
     Q_PROPERTY(int messageType READ messageType WRITE setMessageType NOTIFY messageTypeChanged)
 
@@ -35,6 +36,7 @@ public:
     QStringList clients();
     int clientIndex();
     void setClientIndex(int index);
+    QString bindingIpPort();
     int messageType();
     void setMessageType(int type);
 
@@ -44,6 +46,7 @@ protected:
     bool mSpecifyIpAndPort;
     QStringList mClients;
     int mClientIndex;
+    QString mBindingIpPort;
     std::atomic_int8_t mMessageType;
 
 signals:
@@ -52,6 +55,7 @@ signals:
     void specifyIpAndPortChanged();
     void clientsChanged();
     void clientIndexChanged();
+    void bindingIpPortChanged();
     void messageTypeChanged();
 };
 

@@ -23,8 +23,11 @@ bool SAKUdpServerTool::initialize()
         return false;
     }
 
-    QString info = QString("%1:%2").arg(mUdpSocket->localAddress().toString()).arg(mUdpSocket->localPort());
+    QString ip = mUdpSocket->localAddress().toString();
+    int port = mUdpSocket->localPort();
+    QString info = QString("%1:%2").arg(ip).arg(port);
     outputMessage(QtInfoMsg, info);
+    emit bindingIpPortChanged();
 
     connect(mUdpSocket, &QUdpSocket::readyRead, mUdpSocket, [=](){
         readBytes();
@@ -33,7 +36,8 @@ bool SAKUdpServerTool::initialize()
     return true;
 }
 
-void SAKUdpServerTool::writeBytes(const QByteArray &bytes, const QVariant &context)
+void SAKUdpServerTool::writeBytes(const QByteArray &bytes,
+                                  const QVariant &context)
 {
     Q_UNUSED(context);
     if (mClientIndex >= 0 && mClientIndex < mClients.length()) {
@@ -41,11 +45,13 @@ void SAKUdpServerTool::writeBytes(const QByteArray &bytes, const QVariant &conte
         int index = ipPort.lastIndexOf(":");
         QString ip = ipPort.first(index);
         quint16 port = ipPort.last(ipPort.length() - index - 1).toInt();
-        qInfo() << "client ip:" << ip << ";" << "client port:" << port;
         qint64 ret = mUdpSocket->writeDatagram(bytes, QHostAddress(ip), port);
         if (ret == -1) {
             outputMessage(QtWarningMsg, mUdpSocket->errorString());
         } else {
+            QString hex = QString::fromLatin1(bytes.toHex(' '));
+            outputMessage(QtInfoMsg,
+                          QString("%1<-%2").arg(mBindingIpPort, hex));
             emit bytesInputted(bytes, QVariant());
         }
     }
@@ -65,13 +71,16 @@ void SAKUdpServerTool::readBytes()
             QByteArray bytes(len, 0);
             QHostAddress address;
             quint16 port;
-            qint64 ret = mUdpSocket->readDatagram(bytes.data(), bytes.length(), &address, &port);
+            qint64 ret = mUdpSocket->readDatagram(bytes.data(),
+                                                  bytes.length(),
+                                                  &address, &port);
             if (ret == -1) {
                 outputMessage(QtWarningMsg, mUdpSocket->errorString());
             } else {
-                QString info = QString("%1:%2")
-                                   .arg(address.toString())
-                                   .arg(port);
+                QString hex = QString::fromLatin1(bytes.toHex(' '));
+                outputMessage(QtInfoMsg,
+                              QString("%1<-%2").arg(mBindingIpPort, hex));
+
                 if (!mClients.contains(info)) {
                     mClients.append(info);
                     emit clientsChanged();

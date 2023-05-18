@@ -63,6 +63,11 @@ void SAKSocketServerTool::setClientIndex(int index)
     emit clientIndexChanged();
 }
 
+QString SAKSocketServerTool::bindingIpPort()
+{
+    return mBindingIpPort;
+}
+
 int SAKSocketServerTool::messageType()
 {
     return mMessageType;
