@@ -74,7 +74,7 @@ void SAKTcpServerTool::writeBytes(const QByteArray &bytes, const QVariant &conte
         QTcpSocket *client = mTcpSocketList.at(mClientIndex);
         writeBytesInner(client, bytes, context);
     } else {
-        for (auto client : mClients) {
+        for (auto client : mTcpSocketList) {
             writeBytesInner(client, bytes, context);
         }
     }

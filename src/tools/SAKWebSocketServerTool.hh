@@ -26,6 +26,10 @@ protected:
     virtual void uninitialize() final;
 
 private:
+    void writeBytesInner(QWebSocket *client, const QByteArray &bytes,
+                         const QVariant &context = QJsonObject());
+
+private:
     QWebSocketServer *mWebSocketServer{nullptr};
     QList<QWebSocket*> mWebSocketList;
 };
