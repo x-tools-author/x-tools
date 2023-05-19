@@ -128,7 +128,7 @@ void SAKWebSocketServerTool::writeBytesInner(QWebSocket *client,
         quint16 port = client->peerPort();
         QString ipport = QString("%1:%2").arg(ip, QString::number(port));
         outputMessage(QtInfoMsg, QString("%1->%2:%3")
-                                     .arg(mBindingIpPort, ipport, hex));
+                                     .arg(this->mBindingIpPort, ipport, hex));
         emit bytesInputted(bytes, context);
     }
 }
