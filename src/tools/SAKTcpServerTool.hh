@@ -26,6 +26,10 @@ protected:
     virtual void uninitialize() final;
 
 private:
+    void writeBytesInner(QTcpSocket *client, const QByteArray &bytes,
+                         const QVariant &context = QJsonObject());
+
+private:
     QTcpServer *mTcpServer{nullptr};
     QList<QTcpSocket*> mTcpSocketList;
 };

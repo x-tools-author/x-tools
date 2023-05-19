@@ -35,24 +35,31 @@ bool SAKTcpServerTool::initialize()
         quint16 port = client->peerPort();
         QString ipPort = QString("%1:%2").arg(ip).arg(port);
         mClients.append(ipPort);
-        qDebug() << "111" << ipPort;
+        outputMessage(QtInfoMsg, "New connection:" + ipPort);
         emit clientsChanged();
 
         connect(client, &QTcpSocket::readyRead, client, [=](){
             QByteArray bytes = client->readAll();
+            QString hex = bytes.toHex();
+            outputMessage(QtInfoMsg, QString("%1<-%2:%3").arg(mBindingIpPort,
+                                                              ipPort,
+                                                              hex));
             emit bytesOutputted(bytes, QVariant());
         });
 
         connect(client, &QTcpSocket::disconnected, client, [=](){
             this->mTcpSocketList.removeOne(client);
             this->mClients.removeOne(ipPort);
+            outputMessage(QtInfoMsg, QString("Connection(%1) disconnect:")
+                                         .arg(ipPort, client->errorString()));
             emit clientsChanged();
         });
 
-        connect(client, &QTcpSocket::errorOccurred, client, [=](QAbstractSocket::SocketError err){
-            Q_UNUSED(err);
+        connect(client, &QTcpSocket::errorOccurred, client, [=](){
             this->mTcpSocketList.removeOne(client);
             this->mClients.removeOne(ipPort);
+            outputMessage(QtInfoMsg, QString("Error occurred:")
+                                         .arg(client->errorString()));
             emit clientsChanged();
         });
     });
@@ -64,12 +71,11 @@ void SAKTcpServerTool::writeBytes(const QByteArray &bytes, const QVariant &conte
 {
     Q_UNUSED(context);
     if (mClientIndex >= 0 && mClientIndex < mTcpSocketList.length()) {
-        QTcpSocket *socket = mTcpSocketList.at(mClientIndex);
-        qint64 ret = socket->write(bytes);
-        if (ret == -1) {
-            outputMessage(QtWarningMsg, mTcpServer->errorString());
-        } else {
-            emit bytesInputted(bytes, QVariant());
+        QTcpSocket *client = mTcpSocketList.at(mClientIndex);
+        writeBytesInner(client, bytes, context);
+    } else {
+        for (auto client : mClients) {
+            writeBytesInner(client, bytes, context);
         }
     }
 }
@@ -79,4 +85,23 @@ void SAKTcpServerTool::uninitialize()
     mTcpServer->close();
     mTcpServer->deleteLater();
     mTcpServer = nullptr;
+}
+
+void SAKTcpServerTool::writeBytesInner(QTcpSocket *client,
+                                       const QByteArray &bytes,
+                                       const QVariant &context)
+{
+    qint64 ret = client->write(bytes);
+    if (ret == -1) {
+        outputMessage(QtWarningMsg, mTcpServer->errorString());
+    } else {
+        QString ip = client->peerAddress().toString();
+        quint16 port = client->peerPort();
+        QString ipPort = QString("%1:%2").arg(ip).arg(port);
+        QString hex = bytes.toHex();
+        outputMessage(QtInfoMsg, QString("%1->%2:%3").arg(mBindingIpPort,
+                                                          ipPort,
+                                                          hex));
+        emit bytesInputted(bytes, context);
+    }
 }

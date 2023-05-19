@@ -24,6 +24,8 @@ SAKSocketServerToolUi::SAKSocketServerToolUi(QWidget *parent)
             this, &SAKSocketServerToolUi::onSpinBoxServerPortValueChanged);
     connect(ui->comboBoxClientList, &QComboBox::currentIndexChanged,
             this, &SAKSocketServerToolUi::onComboBoxClientsIndexChanged);
+    connect(ui->comboBoxMessageType, &QComboBox::currentIndexChanged,
+            this, &SAKSocketServerToolUi::onComboBoxMessageTypeIndexChanged);
 }
 
 SAKSocketServerToolUi::~SAKSocketServerToolUi()
@@ -116,4 +118,10 @@ void SAKSocketServerToolUi::onComboBoxClientsIndexChanged()
 {
     int index = ui->comboBoxClientList->currentIndex();
     mTool->setClientIndex(index - 1);
+}
+
+void SAKSocketServerToolUi::onComboBoxMessageTypeIndexChanged()
+{
+    int messageType = ui->comboBoxMessageType->currentData().toInt();
+    mTool->setMessageType(messageType);
 }

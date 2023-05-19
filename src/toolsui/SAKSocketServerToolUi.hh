@@ -37,6 +37,7 @@ private:
     void onComboBoxServerIpActived();
     void onSpinBoxServerPortValueChanged(int value);
     void onComboBoxClientsIndexChanged();
+    void onComboBoxMessageTypeIndexChanged();
 };
 
 #endif // SAKSOCKETSERVERTOOLUI_H
