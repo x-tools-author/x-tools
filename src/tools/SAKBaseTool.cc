@@ -38,7 +38,7 @@ SAKBaseTool::~SAKBaseTool()
 void SAKBaseTool::inputBytes(const QByteArray &bytes, const QVariant &context)
 {
     emit bytesInputted(bytes, context);
-    emit bytesOutputted(bytes, context);
+    //emit bytesOutputted(bytes, context);
 }
 
 void SAKBaseTool::outputMessage(int type, const QString &info)

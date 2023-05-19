@@ -68,9 +68,17 @@ void SAKSocketServerToolUi::setupCommunicationTool(SAKCommunicationTool *tool)
         ui->labelContext->setText(tr("Closed"));
     });
     connect(mTool, &SAKSocketServerTool::clientsChanged, this, [=](){
+        int index = ui->comboBoxClientList->currentIndex();
+        QString first = ui->comboBoxClientList->itemText(0);
         QStringList clients = mTool->clients();
+        int count = ui->comboBoxClientList->count();
+
         ui->comboBoxClientList->clear();
+        ui->comboBoxClientList->addItem(first);
         ui->comboBoxClientList->addItems(clients);
+        if ((index >= 0) && (index < count)) {
+            ui->comboBoxClientList->setCurrentIndex(index);
+        }
     });
 }
 

@@ -75,7 +75,7 @@ void SAKSocketClientToolUi::setupCommunicationTool(SAKCommunicationTool *tool)
 
 void SAKSocketClientToolUi::updateUiState(bool isWorking)
 {
-    ui->comboBoxClientAddress->setEditable(!isWorking);
+    ui->comboBoxClientAddress->setEnabled(!isWorking);
     ui->spinBoxClientPort->setEnabled(!isWorking);
     ui->checkBoxSpecifyIpAndPort->setEnabled(!isWorking);
 }
