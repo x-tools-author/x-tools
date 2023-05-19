@@ -48,16 +48,13 @@ public:
     };
     Q_ENUM(SAKEnumAffixes)
 
-    /**
-     * @brief 自动应答选项
-     */
     enum EDEnumResponseOptions {
-        ResponseOptionDisable,                  /// 禁止应答
-        ResponseOptionEcho,                     /// 回显，接收到数据时总是发送接收到的数据
-        ResponseOptionAways,                    /// 接收到数据时总是发送应答数据
-        ResponseOptionInputEqualReference,      /// 接收到的数据等于参考数据时，发送应答数据
-        ResponseOptionInputContainReference,    /// 接收到的数据包含参考数据时，发送应答数据
-        ResponseOptionInputDiscontainReference  /// 接收到的数据不包含参考数据时，发送应答数据
+        ResponseOptionDisable,
+        ResponseOptionEcho,
+        ResponseOptionAways,
+        ResponseOptionInputEqualReference,
+        ResponseOptionInputContainReference,
+        ResponseOptionInputDiscontainReference
     };
     Q_ENUM(EDEnumResponseOptions)
 

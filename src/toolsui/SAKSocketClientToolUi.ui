@@ -116,7 +116,7 @@
     </widget>
    </item>
    <item row="3" column="1">
-    <widget class="QComboBox" name="comboBoxMessageType"/>
+    <widget class="SAKWebSocketMessageTypeComboBox" name="comboBoxMessageType"/>
    </item>
    <item row="8" column="1">
     <widget class="QSpinBox" name="spinBoxServerPort">
@@ -145,6 +145,11 @@
    <class>SAKIpComboBox</class>
    <extends>QComboBox</extends>
    <header location="global">SAKIpComboBox.hh</header>
+  </customwidget>
+  <customwidget>
+   <class>SAKWebSocketMessageTypeComboBox</class>
+   <extends>QComboBox</extends>
+   <header location="global">SAKWebSocketMessageTypeComboBox.hh</header>
   </customwidget>
  </customwidgets>
  <resources/>

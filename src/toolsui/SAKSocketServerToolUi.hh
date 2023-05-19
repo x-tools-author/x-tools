@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#ifndef SAKSOCKETSERVERTOOLUI_H
-#define SAKSOCKETSERVERTOOLUI_H
+#ifndef SAKSOCKETSERVERTOOLUI_HH
+#define SAKSOCKETSERVERTOOLUI_HH
 
 #include <QLoggingCategory>
 #include "SAKCommunicationToolUi.hh"

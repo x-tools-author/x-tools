@@ -12,7 +12,8 @@ HEADERS += \
     $$PWD/SAKPortNameComboBox.hh \
     $$PWD/SAKStopBitsComboBox.hh \
     $$PWD/SAKTextFormatComboBox.hh \
-    $$PWD/SAKUiInterface.hh
+    $$PWD/SAKUiInterface.hh \
+    $$PWD/SAKWebSocketMessageTypeComboBox.hh
 
 SOURCES += \
     $$PWD/SAKAffixesComboBox.cc \
@@ -26,4 +27,5 @@ SOURCES += \
     $$PWD/SAKPortNameComboBox.cc \
     $$PWD/SAKStopBitsComboBox.cc \
     $$PWD/SAKTextFormatComboBox.cc \
-    $$PWD/SAKUiInterface.cc
+    $$PWD/SAKUiInterface.cc \
+    $$PWD/SAKWebSocketMessageTypeComboBox.cc
