@@ -7,6 +7,7 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
+#include "SAKUdpServerTool.hh"
 #include "SAKSocketServerTool.hh"
 #include "SAKCommunicationTool.hh"
 #include "SAKSocketServerToolUi.hh"
@@ -21,6 +22,8 @@ SAKSocketServerToolUi::SAKSocketServerToolUi(QWidget *parent)
             this, &SAKSocketServerToolUi::onComboBoxServerIpActived);
     connect(ui->spinBoxServerPort, &QSpinBox::valueChanged,
             this, &SAKSocketServerToolUi::onSpinBoxServerPortValueChanged);
+    connect(ui->comboBoxClientList, &QComboBox::currentIndexChanged,
+            this, &SAKSocketServerToolUi::onComboBoxClientsIndexChanged);
 }
 
 SAKSocketServerToolUi::~SAKSocketServerToolUi()
@@ -45,6 +48,12 @@ void SAKSocketServerToolUi::setupCommunicationTool(SAKCommunicationTool *tool)
         ui->comboBoxMessageType->hide();
     }
 
+    if (!tool->inherits("SAKUdpServerTool")) {
+        ui->labelCntext->hide();
+        ui->labelBindingInfo->hide();
+        ui->checkBoxSpecifyIpAndPort->hide();
+    }
+
     mTool = qobject_cast<SAKSocketServerTool*>(tool);
     if (!mTool) {
         qCWarning(mLoggingCategory) << "qobject_cast<>() return nullptr";
@@ -62,10 +71,10 @@ void SAKSocketServerToolUi::setupCommunicationTool(SAKCommunicationTool *tool)
 
     connect(mTool, &SAKSocketServerTool::bindingIpPortChanged, this, [=](){
         QString ipport = mTool->bindingIpPort();
-        ui->labelContext->setText(ipport);
+        ui->labelBindingInfo->setText(ipport);
     });
     connect(mTool, &SAKSocketServerTool::finished, this, [=](){
-        ui->labelContext->setText(tr("Closed"));
+        ui->labelBindingInfo->setText(tr("Closed"));
     });
     connect(mTool, &SAKSocketServerTool::clientsChanged, this, [=](){
         int index = ui->comboBoxClientList->currentIndex();
@@ -101,4 +110,10 @@ void SAKSocketServerToolUi::onSpinBoxServerPortValueChanged(int value)
     if (mTool) {
         mTool->setServerPort(value);
     }
+}
+
+void SAKSocketServerToolUi::onComboBoxClientsIndexChanged()
+{
+    int index = ui->comboBoxClientList->currentIndex();
+    mTool->setClientIndex(index - 1);
 }

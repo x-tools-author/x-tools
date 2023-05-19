@@ -24,8 +24,8 @@ bool SAKTcpServerTool::initialize()
         return false;
     }
 
-    QString info = QString("%1:%2").arg(mServerIp).arg(mServerPort);
-    outputMessage(QtInfoMsg, info);
+    mBindingIpPort = QString("%1:%2").arg(mServerIp).arg(mServerPort);
+    outputMessage(QtInfoMsg, mBindingIpPort);
 
     connect(mTcpServer, &QTcpServer::newConnection, mTcpServer, [=](){
         QTcpSocket *client = mTcpServer->nextPendingConnection();

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>165</width>
+    <width>169</width>
     <height>242</height>
    </rect>
   </property>
@@ -37,7 +37,7 @@
     </widget>
    </item>
    <item row="3" column="1">
-    <widget class="QLabel" name="labelContext">
+    <widget class="QLabel" name="labelBindingInfo">
      <property name="text">
       <string>(closed)</string>
      </property>
@@ -80,9 +80,9 @@
     </widget>
    </item>
    <item row="3" column="0">
-    <widget class="QLabel" name="label_4">
+    <widget class="QLabel" name="labelCntext">
      <property name="text">
-      <string>Context</string>
+      <string>Binding</string>
      </property>
     </widget>
    </item>
