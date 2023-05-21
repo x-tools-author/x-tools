@@ -159,6 +159,8 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
 
         //bt->setIconSize(QSize(48, 48));
         bt->setCheckable(true);
+        bt->setAutoRaise(true);
+        //bt->setArrowType(Qt::ArrowType::LeftArrow);
         navBtGroup->addButton(bt);
         //mToolBoxs->addTab(toolBoxUi, toolBoxUi->windowTitle());
     }
