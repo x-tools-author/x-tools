@@ -32,6 +32,8 @@
 #include <QJsonObject>
 #include <QSpacerItem>
 #include <QMessageBox>
+#include <QToolButton>
+#include <QButtonGroup>
 #include <QActionGroup>
 #include <QTextBrowser>
 #include <QStyleFactory>
@@ -82,9 +84,9 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
     setCentralWidget(scrollArea);
     scrollArea->setWidget(mTabWidget);
 #else
-    ui->tabWidget->addTab(mToolBoxs, tr("ToolBoxs"));
-    ui->tabWidget->addTab(new SAKModbusDebugger(mSettings), tr("Modbus"));
-    ui->tabWidget->addTab(new SAKCanBusDebugger(mSettings), tr("CAN"));
+//    ui->tabWidget->addTab(mToolBoxs, tr("ToolBoxs"));
+//    ui->tabWidget->addTab(new SAKModbusDebugger(mSettings), tr("Modbus"));
+//    ui->tabWidget->addTab(new SAKCanBusDebugger(mSettings), tr("CAN"));
 
     QString title = QString(tr("Qt Swiss Army Knife"));
     title.append(QString(" "));
@@ -134,14 +136,34 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
     }
     mTabWidget->blockSignals(false);
 #else
+    //ui->widgetNav->setLayout(new QVBoxLayout());
+    //ui->widgetNav->layout()->setContentsMargins(0, 0, 0, 0);
+    auto nav = ui->verticalLayoutNav;
     mToolBoxs->blockSignals(true);
+    QButtonGroup *navBtGroup = new QButtonGroup(this);
     QList<int> types = SAKToolBoxUi::supportedCommuniticationTools();
-    for (int type : types) {
+    for (int i = 0; i < types.count(); i++) {
+        int type = types.at(i);
         SAKToolBoxUi *toolBoxUi = new SAKToolBoxUi(this);
         toolBoxUi->setupCommuniticationTool(type);
-        mToolBoxs->addTab(toolBoxUi, toolBoxUi->windowTitle());
+        QToolButton *bt = new QToolButton();
+        bt->setToolTip(toolBoxUi->windowTitle());
+        bt->setIcon(toolBoxUi->windowIcon());
+        bt->setToolButtonStyle(Qt::ToolButtonIconOnly);
+        nav->layout()->addWidget(bt);
+        ui->stackedWidget->addWidget(toolBoxUi);
+        bt->setSizePolicy(QSizePolicy::Policy::Preferred, QSizePolicy::Policy::Fixed);
+        connect(bt, &QToolButton::clicked, this, [=](){
+            ui->stackedWidget->setCurrentIndex(i);
+        });
+
+        //bt->setIconSize(QSize(48, 48));
+        bt->setCheckable(true);
+        navBtGroup->addButton(bt);
+        //mToolBoxs->addTab(toolBoxUi, toolBoxUi->windowTitle());
     }
     mToolBoxs->blockSignals(false);
+    nav->layout()->addWidget(new QLabel(" "));
 #endif
     if (mWindowsMenu){
         mWindowsMenu->addSeparator();
@@ -158,7 +180,6 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
         mToolBoxs->tabBar()->setTabButton(i, QTabBar::RightSide, Q_NULLPTR);
         mToolBoxs->tabBar()->setTabButton(i, QTabBar::LeftSide, Q_NULLPTR);
     }
-
 #if 0
     int count = mTabWidget->tabBar()->count();
     int maxWidth = std::numeric_limits<int>::min();

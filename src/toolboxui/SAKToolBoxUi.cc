@@ -73,6 +73,7 @@ void SAKToolBoxUi::setupCommuniticationTool(int type)
 
     mToolBox->setupComunicationTool(type);
     setWindowTitle(communiticationToolName(type));
+    setWindowIcon(communiticationToolIcon(type));
 
     auto var = mToolBox->property("communication");
     mCommunicationTool = var.value<SAKCommunicationTool*>();
@@ -118,14 +119,39 @@ QString SAKToolBoxUi::communiticationToolName(int type)
     } else if (type == SAKToolFactory::TcpServerTool) {
         return tr("TCP Server");
     } else if (type == SAKToolFactory::WebSocketClientTool) {
-        return tr("WS Client");
+        return tr("WebSocket Client");
     } else if (type == SAKToolFactory::WebSocketServerTool) {
-        return tr("WS Server");
+        return tr("WebSocket Server");
     } else if (type == SAKToolFactory::BleCentral) {
         return tr("BLE Central");
     } else {
         return "Unknow";
     }
+}
+
+QIcon SAKToolBoxUi::communiticationToolIcon(int type)
+{
+    QString fileName;
+    if (type == SAKToolFactory::SerialportTool) {
+        fileName = ":/res/icon/IconSerialPort.svg";
+    } else if (type == SAKToolFactory::UdpClientTool) {
+        fileName = ":/res/icon/IconUdpClient.svg";
+    } else if (type == SAKToolFactory::UdpServerTool) {
+        fileName = ":/res/icon/IconUdpServer.svg";
+    } else if (type == SAKToolFactory::TcpClientTool) {
+        fileName = ":/res/icon/IconTcpClient.svg";
+    } else if (type == SAKToolFactory::TcpServerTool) {
+        fileName = ":/res/icon/IconTcpServer.svg";
+    } else if (type == SAKToolFactory::WebSocketClientTool) {
+        fileName = ":/res/icon/IconWebScoketClient.svg";
+    } else if (type == SAKToolFactory::WebSocketServerTool) {
+        fileName = ":/res/icon/IconWebSocketServer.svg";
+    } else if (type == SAKToolFactory::BleCentral) {
+        fileName = ":/res/icon/IconBlueTooth.svg";
+    }
+
+    QIcon icon(fileName);
+    return icon;
 }
 
 SAKCommunicationToolUi *SAKToolBoxUi::communiticationToolUi(int type)

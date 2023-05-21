@@ -21,6 +21,7 @@
 #include <QMainWindow>
 #include <QTranslator>
 #include <QSqlDatabase>
+#include <QStackedWidget>
 
 namespace Ui {
     class SAKMainWindow;

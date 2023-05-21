@@ -10,6 +10,7 @@
 #ifndef SAKTOOLBOXUI_HH
 #define SAKTOOLBOXUI_HH
 
+#include <QIcon>
 #include <QList>
 #include <QTimer>
 #include <QWidget>
@@ -44,6 +45,7 @@ private:
 
 private:
     QString communiticationToolName(int type);
+    QIcon communiticationToolIcon(int type);
     SAKCommunicationToolUi *communiticationToolUi(int type);
     void try2send();
     QString dateTimeContext();
