@@ -12,12 +12,11 @@
 
 #include <QWidget>
 
-namespace Ui {
-class SAKEmitterToolUi;
-}
+#include "SAKTableView.hh"
+#include "SAKEmitterTool.hh"
+#include "SAKEmitterToolUiEditor.hh"
 
-class SAKEmitterTool;
-class SAKEmitterToolUi : public QWidget
+class SAKEmitterToolUi : public SAKTableView
 {
     Q_OBJECT
 public:
@@ -25,11 +24,17 @@ public:
     ~SAKEmitterToolUi();
     void setupEmitterTool(SAKEmitterTool *tool);
 
-private:
-    SAKEmitterTool *mTool{nullptr};
+protected:
+    virtual void edit(const QModelIndex &index) override;
+    virtual void clear() override;
+    virtual void remove(const QModelIndex &index) override;
+    virtual void importFromFile(const QString &fileName) override;
+    virtual void exportToFile(const QString &fileName) override;
+    virtual void append() override;
 
 private:
-    Ui::SAKEmitterToolUi *ui;
+    SAKEmitterTool *mTool{nullptr};
+    SAKEmitterToolUiEditor *mEditor{nullptr};
 };
 
 #endif // SAKEMITTERTOOLUI_HH

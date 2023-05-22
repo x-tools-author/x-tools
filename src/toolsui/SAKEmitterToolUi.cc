@@ -14,18 +14,16 @@
 
 #include "SAKEmitterTool.hh"
 #include "SAKEmitterToolUi.hh"
-#include "ui_SAKEmitterToolUi.h"
 
 SAKEmitterToolUi::SAKEmitterToolUi(QWidget *parent)
-    : QWidget{parent}
-    , ui(new Ui::SAKEmitterToolUi)
+    : SAKTableView{"SAK.EmitterToolUi", parent}
 {
-    ui->setupUi(this);
+    mEditor = new SAKEmitterToolUiEditor(this);
 }
 
 SAKEmitterToolUi::~SAKEmitterToolUi()
 {
-    delete ui;
+
 }
 
 void SAKEmitterToolUi::setupEmitterTool(SAKEmitterTool *tool)
@@ -39,43 +37,54 @@ void SAKEmitterToolUi::setupEmitterTool(SAKEmitterTool *tool)
     }
 
     mTool = qobject_cast<SAKEmitterTool*>(tool);
-
     SAKEmitterTableModel *dataModel = mTool->getModel();
-    QTableView *tableView = ui->tableView;
-    QHeaderView *headerView = tableView->horizontalHeader();
-    QStringList headers = mTool->getHeaders();
-    QStandardItemModel *headerViewModel = new QStandardItemModel(headerView);
+    setupTableModel(dataModel);
+}
 
-    tableView->setHorizontalHeader(headerView);
-    tableView->setModel(dataModel);
+void SAKEmitterToolUi::edit(const QModelIndex &index)
+{
+    QVariant var = mTool->itemContext(index.row());
+    QJsonObject jsonObj = var.toJsonObject();
+    mEditor->setParameters(jsonObj);
+    mEditor->show();
+    if (!(QDialog::Accepted ==mEditor->exec())) {
+        return;
+    }
+}
 
-    headerViewModel->setColumnCount(headers.count());
-    headerViewModel->setHorizontalHeaderLabels(headers);
-    headerView->setSectionResizeMode(11, QHeaderView::Stretch);
-    //headerView->setSectionResizeMode(QHeaderView::Stretch);
-    headerView->setModel(headerViewModel);
-    headerView->setDefaultAlignment(Qt::AlignLeft);
-#if 1
-    //tableView->hideColumn(0);
-    //tableView->hideColumn(1);
-    tableView->hideColumn(2);
-    tableView->hideColumn(3);
-    //tableView->hideColumn(4);
-    tableView->hideColumn(5);
-    tableView->hideColumn(6);
-    tableView->hideColumn(7);
-    tableView->hideColumn(8);
-    tableView->hideColumn(9);
-    tableView->hideColumn(10);
-#endif
+void SAKEmitterToolUi::clear()
+{
 
-    for (int i = 0; i < 100; i++) {
-        QVariant var = mTool->itemContext(-1);
-        QJsonDocument jsonDoc;
-        jsonDoc.setObject(var.toJsonObject());
-        mTool->addItem(QString::fromUtf8(jsonDoc.toJson()));
+}
+
+void SAKEmitterToolUi::remove(const QModelIndex &index)
+{
+
+}
+
+void SAKEmitterToolUi::importFromFile(const QString &fileName)
+{
+    Q_UNUSED(fileName);
+}
+
+void SAKEmitterToolUi::exportToFile(const QString &fileName)
+{
+    Q_UNUSED(fileN)
+}
+
+void SAKEmitterToolUi::append()
+{
+    QJsonObject jsonObj = mTool->itemContext(-1).toJsonObject();
+    mEditor->setParameters(jsonObj);
+    mEditor->show();
+    int ret = mEditor->exec();
+    if (!(ret == QDialog::Accepted)) {
+        return;
     }
 
-
-    qDebug() << headers.count() << headers;
+    jsonObj = mEditor->parameters();
+    QJsonDocument jsonDoc;
+    jsonDoc.setObject(jsonObj);
+    QString str = QString::fromUtf8(jsonDoc.toJson());
+    mTool->addItem(str, -1);
 }
