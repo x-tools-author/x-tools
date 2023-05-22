@@ -26,100 +26,6 @@
    <property name="bottomMargin">
     <number>0</number>
    </property>
-   <item row="0" column="1">
-    <widget class="QTabWidget" name="tabWidget">
-     <property name="tabPosition">
-      <enum>QTabWidget::North</enum>
-     </property>
-     <property name="tabShape">
-      <enum>QTabWidget::Rounded</enum>
-     </property>
-     <property name="currentIndex">
-      <number>0</number>
-     </property>
-     <widget class="QWidget" name="tabIO">
-      <attribute name="title">
-       <string>I/O</string>
-      </attribute>
-      <layout class="QGridLayout" name="gridLayout_2">
-       <item row="1" column="0" colspan="3">
-        <widget class="QTextBrowser" name="textBrowserOutput"/>
-       </item>
-       <item row="2" column="1">
-        <spacer name="horizontalSpacer">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="3" column="0" colspan="3">
-        <widget class="QComboBox" name="comboBoxInput">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="editable">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="2">
-        <widget class="QLabel" name="label_7">
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="label">
-         <property name="text">
-          <string>Input</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0" colspan="3">
-        <layout class="QHBoxLayout" name="horizontalLayout">
-         <item>
-          <widget class="QLabel" name="label_8">
-           <property name="text">
-            <string>Output</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="tabEmiter">
-      <attribute name="title">
-       <string>Emiter</string>
-      </attribute>
-     </widget>
-     <widget class="QWidget" name="tabResponser">
-      <attribute name="title">
-       <string>Responser</string>
-      </attribute>
-     </widget>
-     <widget class="QWidget" name="tabPrestorer">
-      <attribute name="title">
-       <string>Prestorer</string>
-      </attribute>
-     </widget>
-     <widget class="QWidget" name="tabTransponder">
-      <attribute name="title">
-       <string>Transponder</string>
-      </attribute>
-     </widget>
-    </widget>
-   </item>
    <item row="0" column="0">
     <widget class="QWidget" name="widget" native="true">
      <property name="minimumSize">
@@ -311,6 +217,95 @@
        </widget>
       </item>
      </layout>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="tabPosition">
+      <enum>QTabWidget::North</enum>
+     </property>
+     <property name="tabShape">
+      <enum>QTabWidget::Rounded</enum>
+     </property>
+     <property name="currentIndex">
+      <number>1</number>
+     </property>
+     <widget class="QWidget" name="tabIO">
+      <attribute name="title">
+       <string>I/O</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="1" column="0" colspan="3">
+        <widget class="QTextBrowser" name="textBrowserOutput"/>
+       </item>
+       <item row="2" column="1">
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="3" column="0" colspan="3">
+        <widget class="QComboBox" name="comboBoxInput">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="editable">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Input</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0" colspan="3">
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QLabel" name="label_8">
+           <property name="text">
+            <string>Output</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabEmiter">
+      <attribute name="title">
+       <string>Emiter</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tabResponser">
+      <attribute name="title">
+       <string>Responser</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tabPrestorer">
+      <attribute name="title">
+       <string>Prestorer</string>
+      </attribute>
+     </widget>
     </widget>
    </item>
   </layout>

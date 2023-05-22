@@ -123,6 +123,8 @@ public:
     Q_INVOKABLE void addItem(const QString &jsonCtx, int index = -1);
     Q_INVOKABLE QVariant itemContext(int index);
     Q_INVOKABLE QVariant itemsContext();
+    SAKEmitterTableModel *getModel();
+    QStringList getHeaders();
 
 protected:
     virtual void run() final;

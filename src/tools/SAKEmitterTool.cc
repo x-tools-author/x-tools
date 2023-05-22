@@ -280,6 +280,16 @@ QVariant SAKEmitterTool::itemsContext()
     return varList;
 }
 
+SAKEmitterTableModel *SAKEmitterTool::getModel()
+{
+    return mTableModel;
+}
+
+QStringList SAKEmitterTool::getHeaders()
+{
+    return mHeaders;
+}
+
 void SAKEmitterTool::run()
 {
     mEmittingTimer = new QTimer();

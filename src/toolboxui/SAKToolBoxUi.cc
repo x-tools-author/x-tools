@@ -15,13 +15,17 @@
 #include "SAKUiInterface.hh"
 #include "SAKToolFactory.hh"
 #include "SAKCrcInterface.hh"
+#include "SAKEmitterToolUi.hh"
 #include "SAKDataStructure.hh"
+#include "SAKResponserToolUi.hh"
+#include "SAKPrestorerToolUi.hh"
 #include "SAKBleCentralToolUi.hh"
 #include "SAKSerialPortToolUi.hh"
 #include "SAKCommunicationTool.hh"
 #include "SAKSocketClientToolUi.hh"
 #include "SAKSocketServerToolUi.hh"
 #include "SAKToolBoxUiParameters.hh"
+#include "SAKToolBoxUiTableController.hh"
 
 #include "ui_SAKToolBoxUi.h"
 
@@ -38,6 +42,19 @@ SAKToolBoxUi::SAKToolBoxUi(QWidget *parent)
     mToolBoxUiParameters->setupInputAnalyzer(mToolBox->getInputAnalyzerTool());
     mToolBoxUiParameters->setupOutputAnalyzer(mToolBox->getOutputAnalyzerTool());
     mToolBoxUiParameters->setupStorer(mToolBox->getStorerTool());
+
+    SAKEmitterToolUi *emitterToolUi = new SAKEmitterToolUi();
+    ui->tabEmiter->setLayout(new QVBoxLayout());
+    ui->tabEmiter->layout()->addWidget(emitterToolUi);
+    emitterToolUi->setupEmitterTool(mToolBox->getEmitterTool());
+
+    SAKResponserToolUi *responserToolUi = new SAKResponserToolUi();
+    ui->tabResponser->setLayout(new QVBoxLayout());
+    ui->tabResponser->layout()->addWidget(responserToolUi);
+
+    SAKPrestorerToolUi *prestorerToolUi = new SAKPrestorerToolUi();
+    ui->tabPrestorer->setLayout(new QVBoxLayout());
+    ui->tabPrestorer->layout()->addWidget(prestorerToolUi);
 
     mCycleSendingTimer = new QTimer(this);
     connect(mCycleSendingTimer, &QTimer::timeout,
