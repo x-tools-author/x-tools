@@ -25,7 +25,6 @@
 #include "SAKSocketClientToolUi.hh"
 #include "SAKSocketServerToolUi.hh"
 #include "SAKToolBoxUiParameters.hh"
-#include "SAKToolBoxUiTableController.hh"
 
 #include "ui_SAKToolBoxUi.h"
 
