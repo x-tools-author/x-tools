@@ -59,7 +59,7 @@ void SAKEmitterToolUi::clear()
 
 void SAKEmitterToolUi::remove(const QModelIndex &index)
 {
-
+    Q_UNUSED(index);
 }
 
 void SAKEmitterToolUi::importFromFile(const QString &fileName)
@@ -69,7 +69,7 @@ void SAKEmitterToolUi::importFromFile(const QString &fileName)
 
 void SAKEmitterToolUi::exportToFile(const QString &fileName)
 {
-    Q_UNUSED(fileN)
+    Q_UNUSED(fileName)
 }
 
 void SAKEmitterToolUi::append()
