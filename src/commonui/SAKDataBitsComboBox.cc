@@ -11,7 +11,7 @@
 #include "SAKDataBitsComboBox.hh"
 
 SAKDataBitsComboBox::SAKDataBitsComboBox(QWidget *parent)
-    : QComboBox(parent)
+    : SAKComboBox(parent)
 {
     addItem("8", QSerialPort::Data8);
     addItem("7", QSerialPort::Data7);

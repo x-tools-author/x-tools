@@ -11,7 +11,7 @@
 #include "SAKStopBitsComboBox.hh"
 
 SAKStopBitsComboBox::SAKStopBitsComboBox(QWidget *parent)
-    : QComboBox(parent)
+    : SAKComboBox(parent)
 {
     addItem("1", QSerialPort::OneStop);
 #ifdef Q_OS_WIN

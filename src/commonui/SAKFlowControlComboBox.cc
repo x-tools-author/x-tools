@@ -11,7 +11,7 @@
 #include "SAKFlowControlComboBox.hh"
 
 SAKFlowControlComboBox::SAKFlowControlComboBox(QWidget *parent)
-    : QComboBox(parent)
+    : SAKComboBox(parent)
 {
     addItem(tr("No"), QSerialPort::NoFlowControl);
     addItem(tr("Hardware"), QSerialPort::HardwareControl);

@@ -10,9 +10,9 @@
 #ifndef SAKCRCALGORITHMCOMBOBOX_HH
 #define SAKCRCALGORITHMCOMBOBOX_HH
 
-#include <QComboBox>
+#include "SAKComboBox.hh"
 
-class SAKCrcAlgorithmComboBox : public QComboBox
+class SAKCrcAlgorithmComboBox : public SAKComboBox
 {
     Q_OBJECT
 public:

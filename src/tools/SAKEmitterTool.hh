@@ -44,6 +44,22 @@ public:
                                 int role = Qt::DisplayRole) const override;
 
 public:
+    struct EDEmitterDataKeys {
+        const QString itemEnable{"Enable"};
+        const QString itemDescription{"Description"};
+        const QString itemTextFormat{"Format"};
+        const QString itemEscapeCharacter{"Escape"};
+        const QString itemPrefix{"Prefix"};
+        const QString itemSuffix{"Suffix"};
+        const QString itemInterval{"Interval"};
+        const QString itemCrcEnable{"CrcEnable"};
+        const QString itemCrcAlgorithm{"Algorithm"};
+        const QString itemCrcStartIndex{"Start"};
+        const QString itemCrcEndIndex{"End"};
+        const QString itemText{"Data"};
+    };
+
+public:
     struct EDEmiterData {
         bool itemEnable;
         QString itemDescription{"Demo"};
@@ -74,20 +90,7 @@ private:
     QStringList mHeaders;
 
 private:
-    struct EDEmitterDataKeys {
-        const QString itemEnable{"Enable"};
-        const QString itemDescription{"Description"};
-        const QString itemTextFormat{"Format"};
-        const QString itemEscapeCharacter{"Escape"};
-        const QString itemPrefix{"Prefix"};
-        const QString itemSuffix{"Suffix"};
-        const QString itemInterval{"Interval"};
-        const QString itemCrcEnable{"CrcEnable"};
-        const QString itemCrcAlgorithm{"Algorithm"};
-        const QString itemCrcStartIndex{"Start"};
-        const QString itemCrcEndIndex{"End"};
-        const QString itemText{"Data"};
-    } mDataKeys;
+    EDEmitterDataKeys mDataKeys;
     const int mTableColumnCount{12};
 
 private:
@@ -125,6 +128,7 @@ public:
     Q_INVOKABLE QVariant itemsContext();
     SAKEmitterTableModel *getModel();
     QStringList getHeaders();
+    SAKEmitterTableModel::EDEmitterDataKeys dataKeys();
 
 protected:
     virtual void run() final;

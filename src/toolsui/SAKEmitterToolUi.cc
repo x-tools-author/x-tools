@@ -7,6 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
+#include <QFile>
+#include <QJsonArray>
 #include <QTableView>
 #include <QHeaderView>
 #include <QJsonDocument>
@@ -54,22 +56,61 @@ void SAKEmitterToolUi::edit(const QModelIndex &index)
 
 void SAKEmitterToolUi::clear()
 {
-
+    int rowCount = mTool->getModel()->rowCount();
+    for (int i = 0; i < rowCount; i++) {
+        mTool->getModel()->removeRow(i);
+    }
 }
 
 void SAKEmitterToolUi::remove(const QModelIndex &index)
 {
-    Q_UNUSED(index);
+    if (index.isValid()) {
+        auto model = mTool->getModel();
+        model->removeRow(index.row());
+    }
 }
 
 void SAKEmitterToolUi::importFromFile(const QString &fileName)
 {
-    Q_UNUSED(fileName);
+    QFile file(fileName);
+    if (file.open(QFile::ReadOnly)) {
+        QByteArray json = file.readAll();
+        file.close();
+
+        QJsonDocument jsonDoc = QJsonDocument::fromJson(json);
+        QJsonArray jsonArray = jsonDoc.array();
+        for (int i = 0; i < jsonArray.count(); i++) {
+            QJsonObject jsonObj = jsonArray.at(i).toObject();
+            QJsonDocument jd;
+            jd.setObject(jsonObj);
+            QString item = QString::fromUtf8(jd.toJson());
+            mTool->addItem(item);
+        }
+    } else {
+        qCWarning(mLoggingCategory) <<  "Can not open file:"
+                                    << file.errorString();
+    }
 }
 
 void SAKEmitterToolUi::exportToFile(const QString &fileName)
 {
-    Q_UNUSED(fileName)
+    auto items = mTool->itemsContext();
+
+    QJsonArray jsonArray = items.toJsonArray();
+    QJsonDocument jsonDoc;
+
+    jsonDoc.setArray(jsonArray);
+
+    QByteArray json = jsonDoc.toJson();
+    QFile file(fileName);
+    if (file.open(QFile::WriteOnly)) {
+        QTextStream out(&file);
+        out << json;
+        file.close();
+    } else {
+        qCWarning(mLoggingCategory) <<  "Can not open file:"
+                                    << file.errorString();
+    }
 }
 
 void SAKEmitterToolUi::append()

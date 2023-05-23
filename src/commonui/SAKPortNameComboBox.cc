@@ -14,7 +14,7 @@
 #include "SAKPortNameComboBox.hh"
 
 SAKPortNameComboBox::SAKPortNameComboBox(QWidget *parent)
-    : QComboBox(parent)
+    : SAKComboBox(parent)
 {
     refresh();
 }

@@ -11,12 +11,11 @@
 #include "SAKAffixesComboBox.hh"
 
 SAKAffixesComboBox::SAKAffixesComboBox(QWidget *parent)
-    : QComboBox(parent)
+    : SAKComboBox(parent)
 {
     addItem(tr("None"), SAKDataStructure::AffixesNone);
     addItem("\\r", SAKDataStructure::AffixesR);
     addItem("\\n", SAKDataStructure::AffixesN);
     addItem("\\r\\n", SAKDataStructure::AffixesRN);
     addItem("\\n\\r", SAKDataStructure::AffixesNR);
-    addItem("\\n+\\r", SAKDataStructure::AffixesNAndR);
 }

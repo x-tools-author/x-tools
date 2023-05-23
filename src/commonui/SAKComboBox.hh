@@ -7,19 +7,17 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#include <QSerialPort>
-#include <QSerialPortInfo>
+#ifndef SAKCOMBOBOX_HH
+#define SAKCOMBOBOX_HH
 
-#include "SAKBaudRateComboBox.hh"
+#include <QComboBox>
 
-SAKBaudRateComboBox::SAKBaudRateComboBox(QWidget *parent)
-    : SAKComboBox(parent)
+class SAKComboBox : public QComboBox
 {
-    clear();
-    QList<qint32> bd = QSerialPortInfo::standardBaudRates();
-    for (auto &var:bd) {
-        addItem(QString::number(var), QVariant::fromValue(var));
-    }
+public:
+    SAKComboBox(QWidget *parent = nullptr);
 
-    setCurrentText("9600");
-}
+    void setCurrentIndexFromData(const QVariant &data);
+};
+
+#endif // SAKCOMBOBOX_HH

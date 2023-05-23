@@ -10,9 +10,9 @@
 #ifndef SAKESCAPECHARACTERCOMBOBOX_HH
 #define SAKESCAPECHARACTERCOMBOBOX_HH
 
-#include <QComboBox>
+#include "SAKComboBox.hh"
 
-class SAKEscapeCharacterComboBox : public QComboBox
+class SAKEscapeCharacterComboBox : public SAKComboBox
 {
     Q_OBJECT
 public:

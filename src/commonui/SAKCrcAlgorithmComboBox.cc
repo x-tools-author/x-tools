@@ -12,7 +12,7 @@
 #include "SAKCrcAlgorithmComboBox.hh"
 
 SAKCrcAlgorithmComboBox::SAKCrcAlgorithmComboBox(QWidget *parent)
-    : QComboBox(parent)
+    : SAKComboBox(parent)
 {
     QMetaEnum metaEnum =
         QMetaEnum::fromType<SAKCrcInterface::SAKEnumCrcAlgorithm>();

@@ -11,7 +11,7 @@
 #include "SAKParityComboBox.hh"
 
 SAKParityComboBox::SAKParityComboBox(QWidget *parent)
-    : QComboBox(parent)
+    : SAKComboBox(parent)
 {
     addItem(tr("No"), QSerialPort::NoParity);
     addItem(tr("Even"), QSerialPort::EvenParity);

@@ -11,7 +11,7 @@
 #include "SAKEscapeCharacterComboBox.hh"
 
 SAKEscapeCharacterComboBox::SAKEscapeCharacterComboBox(QWidget *parent)
-    : QComboBox(parent)
+    : SAKComboBox(parent)
 {
     addItem(tr("None"), SAKDataStructure::EscapeCharacterOptionNone);
     addItem("\\r", SAKDataStructure::EscapeCharacterOptionR);

@@ -290,6 +290,11 @@ QStringList SAKEmitterTool::getHeaders()
     return mHeaders;
 }
 
+SAKEmitterTableModel::EDEmitterDataKeys SAKEmitterTool::dataKeys()
+{
+    return mTableModel->mDataKeys;
+}
+
 void SAKEmitterTool::run()
 {
     mEmittingTimer = new QTimer();

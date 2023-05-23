@@ -13,7 +13,7 @@
 #include "SAKIpComboBox.hh"
 
 SAKIpComboBox::SAKIpComboBox(QWidget *parent)
-    : QComboBox(parent)
+    : SAKComboBox(parent)
 {
     auto addresses = QNetworkInterface::allAddresses();
     for (auto &address : addresses) {

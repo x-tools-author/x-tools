@@ -11,7 +11,7 @@
 #include "SAKTextFormatComboBox.hh"
 
 SAKTextFormatComboBox::SAKTextFormatComboBox(QWidget *parent)
-    : QComboBox(parent)
+    : SAKComboBox(parent)
 {
     addItem("Bin", SAKDataStructure::TextFormatBin);
     addItem("Oct", SAKDataStructure::TextFormatOct);

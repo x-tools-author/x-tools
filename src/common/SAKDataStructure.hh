@@ -43,8 +43,7 @@ public:
         AffixesR,
         AffixesN,
         AffixesRN,
-        AffixesNR,
-        AffixesNAndR
+        AffixesNR
     };
     Q_ENUM(SAKEnumAffixes)
 

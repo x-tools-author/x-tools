@@ -10,9 +10,9 @@
 #ifndef SAKPARITYCOMBOBOX_HH
 #define SAKPARITYCOMBOBOX_HH
 
-#include <QComboBox>
+#include "SAKComboBox.hh"
 
-class SAKParityComboBox : public QComboBox
+class SAKParityComboBox : public SAKComboBox
 {
     Q_OBJECT
 public:

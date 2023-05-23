@@ -10,9 +10,9 @@
 #ifndef SAKPORTNAMECOMBOBOX_HH
 #define SAKPORTNAMECOMBOBOX_HH
 
-#include <QComboBox>
+#include "SAKComboBox.hh"
 
-class SAKPortNameComboBox : public QComboBox
+class SAKPortNameComboBox : public SAKComboBox
 {
     Q_OBJECT
 public:
