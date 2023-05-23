@@ -3,7 +3,6 @@ INCLUDEPATH += $$PWD
 HEADERS += \
     $$PWD/SAKAffixesComboBox.hh \
     $$PWD/SAKBaudRateComboBox.hh \
-    $$PWD/SAKComboBox.hh \
     $$PWD/SAKCrcAlgorithmComboBox.hh \
     $$PWD/SAKDataBitsComboBox.hh \
     $$PWD/SAKEscapeCharacterComboBox.hh \
@@ -21,7 +20,6 @@ HEADERS += \
 SOURCES += \
     $$PWD/SAKAffixesComboBox.cc \
     $$PWD/SAKBaudRateComboBox.cc \
-    $$PWD/SAKComboBox.cc \
     $$PWD/SAKCrcAlgorithmComboBox.cc \
     $$PWD/SAKDataBitsComboBox.cc \
     $$PWD/SAKEscapeCharacterComboBox.cc \

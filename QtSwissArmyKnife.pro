@@ -39,8 +39,11 @@ CONFIG += c++11
 include(SAKConf.pri)
 include(SAKSetup.pri)
 include(SAKPrivate.pri)
-include(src/tools/SAKTools.pri)
 include(platform/SAKPlatform.pri)
+
+include(src/base/SAKBase.pri)
+include(src/tools/SAKTools.pri)
+include(src/baseui/SAKBaseUi.pri)
 include(src/common/SAKCommon.pri)
 include(src/toolsui/SAKToolsUi.pri)
 include(src/toolbox/SAKToolBox.pri)
@@ -109,11 +112,6 @@ HEADERS += \
     src/SAKApplication.hh \
     src/SAKMainWindow.hh \
     src/SAKSystemTrayIcon.hh \
-    src/base/SAKBaseListWidget.hh \
-    src/base/SAKBaseListWidgetItemWidget.hh \
-    src/base/SAKDevice.hh \
-    src/base/SAKObj.hh \
-    src/base/SAKSigleton.hh \
     src/update/SAKDownloadItemWidget.hh \
     src/update/SAKUpdateManager.hh
 
@@ -121,11 +119,6 @@ SOURCES += \
     src/SAKApplication.cc \
     src/SAKMainWindow.cc \
     src/SAKSystemTrayIcon.cc \
-    src/base/SAKBaseListWidget.cc \
-    src/base/SAKBaseListWidgetItemWidget.cc \
-    src/base/SAKDevice.cc \
-    src/base/SAKObj.cc \
-    src/base/SAKSigleton.cc \
     src/main.cc \
     src/update/SAKDownloadItemWidget.cc \
     src/update/SAKUpdateManager.cc
