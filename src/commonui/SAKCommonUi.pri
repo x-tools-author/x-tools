@@ -11,8 +11,7 @@ HEADERS += \
     $$PWD/SAKParityComboBox.hh \
     $$PWD/SAKPortNameComboBox.hh \
     $$PWD/SAKStopBitsComboBox.hh \
-    $$PWD/SAKTableController.hh \
-    $$PWD/SAKTableView.hh \
+    $$PWD/SAKTableViewWithController.hh \
     $$PWD/SAKTextFormatComboBox.hh \
     $$PWD/SAKUiInterface.hh \
     $$PWD/SAKWebSocketMessageTypeComboBox.hh
@@ -28,12 +27,10 @@ SOURCES += \
     $$PWD/SAKParityComboBox.cc \
     $$PWD/SAKPortNameComboBox.cc \
     $$PWD/SAKStopBitsComboBox.cc \
-    $$PWD/SAKTableController.cc \
-    $$PWD/SAKTableView.cc \
+    $$PWD/SAKTableViewWithController.cc \
     $$PWD/SAKTextFormatComboBox.cc \
     $$PWD/SAKUiInterface.cc \
     $$PWD/SAKWebSocketMessageTypeComboBox.cc
 
 FORMS += \
-    $$PWD/SAKTableController.ui \
-    $$PWD/SAKTableView.ui
+    $$PWD/SAKTableViewWithController.ui

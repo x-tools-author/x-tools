@@ -11,20 +11,22 @@
 #define SAKRESPONSERTOOLUI_HH
 
 #include <QWidget>
+#include "SAKTableViewWithController.hh"
 
-namespace Ui {
-class SAKResponserToolUi;
-}
-
-class SAKResponserToolUi : public QWidget
+class SAKResponserToolUi : public SAKTableViewWithController
 {
     Q_OBJECT
 public:
     explicit SAKResponserToolUi(QWidget *parent = nullptr);
     ~SAKResponserToolUi();
 
-private:
-    Ui::SAKResponserToolUi *ui{nullptr};
+protected:
+    virtual void edit(const QModelIndex &index) final;
+    virtual void clear() final;
+    virtual void remove(const QModelIndex &index) final;
+    virtual void importFromFile(const QString &fileName) final;
+    virtual void exportToFile(const QString &fineName) final;
+    virtual void append() final;
 };
 
 #endif // SAKRESPONSERTOOL_HH

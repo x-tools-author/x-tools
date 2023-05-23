@@ -33,8 +33,6 @@ FORMS += \
     $$PWD/SAKBleCentralToolUi.ui \
     $$PWD/SAKEmitterToolUiEditor.ui \
     $$PWD/SAKMaskerToolUi.ui \
-    $$PWD/SAKPrestorerToolUi.ui \
-    $$PWD/SAKResponserToolUi.ui \
     $$PWD/SAKSerialPortToolUi.ui \
     $$PWD/SAKSocketClientToolUi.ui \
     $$PWD/SAKSocketServerToolUi.ui \

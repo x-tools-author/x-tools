@@ -8,16 +8,14 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include "SAKPrestorerToolUi.hh"
-#include "ui_SAKPrestorerToolUi.h"
 
 SAKPrestorerToolUi::SAKPrestorerToolUi(QWidget *parent)
-    : QWidget{parent}
-    , ui(new Ui::SAKPrestorerToolUi)
+    : SAKTableViewWithController{"SAK.PrestorerToolUi", parent}
 {
-    ui->setupUi(this);
+
 }
 
 SAKPrestorerToolUi::~SAKPrestorerToolUi()
 {
-    delete ui;
+
 }

@@ -18,7 +18,7 @@
 #include "SAKEmitterToolUi.hh"
 
 SAKEmitterToolUi::SAKEmitterToolUi(QWidget *parent)
-    : SAKTableView{"SAK.EmitterToolUi", parent}
+    : SAKTableViewWithController{"SAK.EmitterToolUi", parent}
 {
     mEditor = new SAKEmitterToolUiEditor(this);
 }

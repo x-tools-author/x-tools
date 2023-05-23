@@ -104,7 +104,6 @@ INCLUDEPATH += \
 
 FORMS += \
     src/SAKMainWindow.ui \
-    src/base/SAKBaseListWidget.ui \
     src/update/SAKDownloadItemWidget.ui \
     src/update/SAKUpdateManager.ui
 

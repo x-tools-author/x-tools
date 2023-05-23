@@ -12,11 +12,11 @@
 
 #include <QWidget>
 
-#include "SAKTableView.hh"
+#include "SAKTableViewWithController.hh"
 #include "SAKEmitterTool.hh"
 #include "SAKEmitterToolUiEditor.hh"
 
-class SAKEmitterToolUi : public SAKTableView
+class SAKEmitterToolUi : public SAKTableViewWithController
 {
     Q_OBJECT
 public:

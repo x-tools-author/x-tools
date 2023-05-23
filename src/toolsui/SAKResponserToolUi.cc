@@ -8,16 +8,44 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include "SAKResponserToolUi.hh"
-#include "ui_SAKResponserToolUi.h"
 
 SAKResponserToolUi::SAKResponserToolUi(QWidget *parent)
-    : QWidget{parent}
-    , ui(new Ui::SAKResponserToolUi)
+    : SAKTableViewWithController{"SAK.ResponserToolUi", parent}
 {
-    ui->setupUi(this);
+
 }
 
 SAKResponserToolUi::~SAKResponserToolUi()
 {
-    delete ui;
+
+}
+
+void SAKResponserToolUi::edit(const QModelIndex &index)
+{
+
+}
+
+void SAKResponserToolUi::clear()
+{
+
+}
+
+void SAKResponserToolUi::remove(const QModelIndex &index)
+{
+
+}
+
+void SAKResponserToolUi::importFromFile(const QString &fileName)
+{
+
+}
+
+void SAKResponserToolUi::exportToFile(const QString &fineName)
+{
+
+}
+
+void SAKResponserToolUi::append()
+{
+
 }

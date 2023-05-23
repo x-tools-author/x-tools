@@ -10,21 +10,14 @@
 #ifndef SAKPRESTORERTOOLUI_HH
 #define SAKPRESTORERTOOLUI_HH
 
-#include <QWidget>
+#include "SAKTableViewWithController.hh"
 
-namespace Ui {
-class SAKPrestorerToolUi;
-}
-
-class SAKPrestorerToolUi : public QWidget
+class SAKPrestorerToolUi : public SAKTableViewWithController
 {
     Q_OBJECT
 public:
     explicit SAKPrestorerToolUi(QWidget *parent = nullptr);
     ~SAKPrestorerToolUi();
-
-private:
-    Ui::SAKPrestorerToolUi *ui{nullptr};
 };
 
 #endif // SAKPRESTORERTOOLUI_HH
