@@ -7,11 +7,13 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
+#include "SAKResponserTool.hh"
 #include "SAKResponserToolUiEditor.hh"
 #include "ui_SAKResponserToolUiEditor.h"
 
 SAKResponserToolUiEditor::SAKResponserToolUiEditor(QWidget *parent)
     : QDialog{parent}
+    , ui(new Ui::SAKResponserToolUiEditor)
 {
     ui->setupUi(this);
 }

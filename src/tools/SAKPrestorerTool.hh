@@ -47,15 +47,6 @@ public:
         int itemCrcEndIndex;
     };
 
-private:
-    QList<EDPrestoreItem> mItems;
-    QMutex mItemsMutex;
-    QStringList mHeaders;
-
-private:
-    QByteArray itemBytes(const EDPrestoreItem &item);
-
-private:
     struct EDEmitterDataKeys {
         const QString itemDescription{"Description"};
         const QString itemTextFormat{"Format"};
@@ -67,7 +58,18 @@ private:
         const QString itemCrcStartIndex{"Start"};
         const QString itemCrcEndIndex{"End"};
         const QString itemText{"Data"};
-    } mDataKeys;
+    };
+
+private:
+    QList<EDPrestoreItem> mItems;
+    QMutex mItemsMutex;
+    QStringList mHeaders;
+
+private:
+    QByteArray itemBytes(const EDPrestoreItem &item);
+
+private:
+    struct EDEmitterDataKeys mDataKeys;
     const int mTableColumnCount{10};
 
 private:
