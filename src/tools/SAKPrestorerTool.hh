@@ -91,7 +91,7 @@ class SAKPrestorerTool : public SAKBaseTool
     Q_PROPERTY(QString itemCrcEndIndex READ itemCrcEndIndex CONSTANT)
     Q_PROPERTY(QString itemText READ itemText CONSTANT)
 
-    Q_PROPERTY(QStringList descriptions READ descriptions NOTIFY descriptionsChanged);
+    Q_PROPERTY(QStringList descriptions READ descriptions NOTIFY descriptionsChanged)
 public:
     explicit SAKPrestorerTool(QObject *parent = nullptr);
 
