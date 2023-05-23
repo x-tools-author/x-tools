@@ -12,12 +12,27 @@
 
 #include "SAKTableViewWithController.hh"
 
+class SAKPrestorerTool;
+class SAKPrestorerToolUiEditor;
 class SAKPrestorerToolUi : public SAKTableViewWithController
 {
     Q_OBJECT
 public:
     explicit SAKPrestorerToolUi(QWidget *parent = nullptr);
     ~SAKPrestorerToolUi();
+    void setupSAKPrestorerTool(SAKPrestorerTool *tool);
+
+protected:
+    virtual void edit(const QModelIndex &index) final;
+    virtual void clear() final;
+    virtual void remove(const QModelIndex &index) final;
+    virtual void importFromFile(const QString &fileName) final;
+    virtual void exportToFile(const QString &fineName) final;
+    virtual void append() final;
+
+private:
+    SAKPrestorerTool *mTool{nullptr};
+    SAKPrestorerToolUiEditor *mEditor{nullptr};
 };
 
 #endif // SAKPRESTORERTOOLUI_HH

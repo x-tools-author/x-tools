@@ -12,13 +12,17 @@
 
 #include <QWidget>
 #include "SAKTableViewWithController.hh"
+#include "SAKResponserToolUi.hh"
 
+class SAKResponserTool;
+class SAKResponserToolUiEditor;
 class SAKResponserToolUi : public SAKTableViewWithController
 {
     Q_OBJECT
 public:
     explicit SAKResponserToolUi(QWidget *parent = nullptr);
     ~SAKResponserToolUi();
+    void setupResponserTool(SAKResponserTool *tool);
 
 protected:
     virtual void edit(const QModelIndex &index) final;
@@ -27,6 +31,10 @@ protected:
     virtual void importFromFile(const QString &fileName) final;
     virtual void exportToFile(const QString &fineName) final;
     virtual void append() final;
+
+private:
+    SAKResponserTool *mTool{nullptr};
+    SAKResponserToolUiEditor *mEditor{nullptr};
 };
 
 #endif // SAKRESPONSERTOOL_HH

@@ -35,7 +35,7 @@ public:
         BleCentral,
         BlePeriheral
     };
-    Q_ENUM(EDEnumToolsType);
+    Q_ENUM(EDEnumToolsType)
 
 private:
     explicit SAKToolFactory(QObject *parent = Q_NULLPTR);

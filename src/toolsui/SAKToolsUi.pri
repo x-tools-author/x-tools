@@ -8,7 +8,9 @@ HEADERS += \
     $$PWD/SAKEmitterToolUiEditor.hh \
     $$PWD/SAKMaskerToolUi.hh \
     $$PWD/SAKPrestorerToolUi.hh \
+    $$PWD/SAKPrestorerToolUiEditor.hh \
     $$PWD/SAKResponserToolUi.hh \
+    $$PWD/SAKResponserToolUiEditor.hh \
     $$PWD/SAKSerialPortToolUi.hh \
     $$PWD/SAKSocketClientToolUi.hh \
     $$PWD/SAKSocketServerToolUi.hh \
@@ -22,7 +24,9 @@ SOURCES += \
     $$PWD/SAKEmitterToolUiEditor.cc \
     $$PWD/SAKMaskerToolUi.cc \
     $$PWD/SAKPrestorerToolUi.cc \
+    $$PWD/SAKPrestorerToolUiEditor.cc \
     $$PWD/SAKResponserToolUi.cc \
+    $$PWD/SAKResponserToolUiEditor.cc \
     $$PWD/SAKSerialPortToolUi.cc \
     $$PWD/SAKSocketClientToolUi.cc \
     $$PWD/SAKSocketServerToolUi.cc \
@@ -33,6 +37,8 @@ FORMS += \
     $$PWD/SAKBleCentralToolUi.ui \
     $$PWD/SAKEmitterToolUiEditor.ui \
     $$PWD/SAKMaskerToolUi.ui \
+    $$PWD/SAKPrestorerToolUiEditor.ui \
+    $$PWD/SAKResponserToolUiEditor.ui \
     $$PWD/SAKSerialPortToolUi.ui \
     $$PWD/SAKSocketClientToolUi.ui \
     $$PWD/SAKSocketServerToolUi.ui \

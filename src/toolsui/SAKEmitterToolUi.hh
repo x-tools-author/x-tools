@@ -10,11 +10,9 @@
 #ifndef SAKEMITTERTOOLUI_HH
 #define SAKEMITTERTOOLUI_HH
 
-#include <QWidget>
-
-#include "SAKTableViewWithController.hh"
 #include "SAKEmitterTool.hh"
 #include "SAKEmitterToolUiEditor.hh"
+#include "SAKTableViewWithController.hh"
 
 class SAKEmitterToolUi : public SAKTableViewWithController
 {
