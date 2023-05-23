@@ -1,5 +1,5 @@
 ﻿/******************************************************************************
- * Copyright 2018-2022 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2018-2023 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -21,6 +21,7 @@
 #include <QMainWindow>
 #include <QTranslator>
 #include <QSqlDatabase>
+#include <QButtonGroup>
 #include <QStackedWidget>
 
 namespace Ui {
@@ -53,6 +54,8 @@ private:
     QSqlDatabase *mSqlDatabase;
     QActionGroup *mActionGroup;
     QActionGroup *mLanguagesActionGroup;
+    QButtonGroup *mNavBtGroup{nullptr};
+
 private:
     void initMenuBar();
     void initFileMenu();

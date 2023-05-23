@@ -1,5 +1,5 @@
 ﻿/*****************************************************************************
- * Copyright 2018-2022 Qter(qsaker@qq.com). All rights reserved.
+ * Copyright 2018-2023 Qter(qsaker@qq.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -140,8 +140,9 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
     //ui->widgetNav->layout()->setContentsMargins(0, 0, 0, 0);
     auto nav = ui->verticalLayoutNav;
     mToolBoxs->blockSignals(true);
-    QButtonGroup *navBtGroup = new QButtonGroup(this);
+    mNavBtGroup = new QButtonGroup(this);
     QList<int> types = SAKToolBoxUi::supportedCommuniticationTools();
+    QString indexKey = mSettingsKeyContext.currentTabPage;
     for (int i = 0; i < types.count(); i++) {
         int type = types.at(i);
         SAKToolBoxUi *toolBoxUi = new SAKToolBoxUi(this);
@@ -155,17 +156,27 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
         bt->setSizePolicy(QSizePolicy::Policy::Preferred, QSizePolicy::Policy::Fixed);
         connect(bt, &QToolButton::clicked, this, [=](){
             ui->stackedWidget->setCurrentIndex(i);
+            sakApp->settings()->setValue(indexKey, i);
         });
 
-        //bt->setIconSize(QSize(48, 48));
         bt->setCheckable(true);
         bt->setAutoRaise(true);
-        //bt->setArrowType(Qt::ArrowType::LeftArrow);
-        navBtGroup->addButton(bt);
-        //mToolBoxs->addTab(toolBoxUi, toolBoxUi->windowTitle());
+        mNavBtGroup->addButton(bt);
     }
     mToolBoxs->blockSignals(false);
     nav->layout()->addWidget(new QLabel(" "));
+
+    int index = sakApp->settings()->value(indexKey).toInt();
+    if (index >= 0 && index < ui->stackedWidget->count()) {
+        ui->stackedWidget->setCurrentIndex(index);
+    }
+
+    if (index >= 0 && index < mNavBtGroup->buttons().count()) {
+        auto bt = qobject_cast<QToolButton*>(mNavBtGroup->buttons().at(index));
+        if (bt) {
+            bt->setChecked(true);
+        }
+    }
 #endif
     if (mWindowsMenu){
         mWindowsMenu->addSeparator();
