@@ -36,7 +36,7 @@ void SAKResponserToolUi::setupResponserTool(SAKResponserTool *tool)
         return;
     }
 
-    if (!tool->inherits("SAKEmitterTool")) {
+    if (!tool->inherits("SAKResponserTool")) {
         return;
     }
 

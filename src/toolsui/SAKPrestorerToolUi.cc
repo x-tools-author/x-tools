@@ -35,7 +35,7 @@ void SAKPrestorerToolUi::setupSAKPrestorerTool(SAKPrestorerTool *tool)
         return;
     }
 
-    if (!tool->inherits("SAKEmitterTool")) {
+    if (!tool->inherits("SAKPrestorerTool")) {
         return;
     }
 
