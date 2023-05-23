@@ -32,7 +32,34 @@ SAKEmitterToolUiEditor::~SAKEmitterToolUiEditor()
 
 QJsonObject SAKEmitterToolUiEditor::parameters()
 {
-    return QJsonObject();
+    bool enable = ui->checkBoxEnable->isChecked();
+    QString description = ui->lineEditDescription->text().trimmed();
+    int format = ui->comboBoxFormat->currentData().toInt();
+    int escape = ui->comboBoxEscaoe->currentData().toInt();
+    int prefix = ui->comboBoxPrefix->currentData().toInt();
+    int suffix = ui->comboBoxSufix->currentData().toInt();
+    int interval = ui->spinBoxInterval->value();
+    bool crcEnable = ui->checkBoxCrcEnable->isChecked();
+    int algotirhm = ui->comboBoxAlgorithm->currentData().toInt();
+    int start = ui->spinBoxStartIndex->value();
+    int end = ui->spinBoxEndIndex->value();
+    QString data = ui->lineEditData->text();
+
+    SAKEmitterTableModel::EDEmitterDataKeys keys;
+    QJsonObject params;
+    params.insert(keys.itemEnable, enable);
+    params.insert(keys.itemDescription, description);
+    params.insert(keys.itemTextFormat, format);
+    params.insert(keys.itemEscapeCharacter, escape);
+    params.insert(keys.itemPrefix, prefix);
+    params.insert(keys.itemSuffix, suffix);
+    params.insert(keys.itemInterval, interval);
+    params.insert(keys.itemCrcEnable, crcEnable);
+    params.insert(keys.itemCrcAlgorithm, algotirhm);
+    params.insert(keys.itemCrcStartIndex, start);
+    params.insert(keys.itemCrcEndIndex, end);
+    params.insert(keys.itemText, data);
+    return params;
 }
 
 void SAKEmitterToolUiEditor::setParameters(const QJsonObject &params)
@@ -60,7 +87,7 @@ void SAKEmitterToolUiEditor::setParameters(const QJsonObject &params)
     ui->spinBoxInterval->setValue(interval);
     ui->checkBoxCrcEnable->setChecked(crcEnable);
     ui->comboBoxAlgorithm->setCurrentIndexFromData(algotirhm);
-    ui->spinBoxStartUbdex->setValue(start);
+    ui->spinBoxStartIndex->setValue(start);
     ui->spinBoxEndIndex->setValue(end);
     ui->lineEditData->setText(data);
 }

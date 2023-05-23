@@ -66,7 +66,7 @@ void SAKTableView::setupTableModel(QAbstractTableModel *tableModel)
 
     headerViewModel->setColumnCount(headers.count());
     headerViewModel->setHorizontalHeaderLabels(headers);
-    headerView->setSectionResizeMode(11, QHeaderView::Stretch);
+    //headerView->setSectionResizeMode(11, QHeaderView::Stretch);
     //headerView->setSectionResizeMode(QHeaderView::Stretch);
     headerView->setModel(headerViewModel);
     headerView->setDefaultAlignment(Qt::AlignLeft);
@@ -108,7 +108,14 @@ void SAKTableView::onPushButtonEditClicked()
 
 void SAKTableView::onPushButtonClearClicked()
 {
-    clear();
+    int ret = QMessageBox::warning(this,
+                                   tr("Clear Data"),
+                                   tr("The data will be empty from settings file, "
+                                      "please confrim the operation!"),
+                                   QMessageBox::Cancel|QMessageBox::Ok);
+    if (ret == QMessageBox::Ok) {
+        clear();
+    }
 }
 
 void SAKTableView::onPushButtonDeleteClicked()
@@ -124,7 +131,7 @@ void SAKTableView::onPushButtonImportClicked()
     QString fileName = QFileDialog::getOpenFileName(this,
                                                     tr("Import data"),
                                                     ".",
-                                                    "JSON (*.json)");
+                                                    tr("JSON (*.json);;All (*)"));
     if (!fileName.isEmpty()) {
         importFromFile(fileName);
     }
@@ -135,7 +142,7 @@ void SAKTableView::onPushButtonExportClicked()
     QString fileName = QFileDialog::getSaveFileName(this,
                                                     tr("Import data"),
                                                     ".",
-                                                    "JSON (*.json)");
+                                                    tr("JSON (*.json);;All (*); "));
     if (!fileName.isEmpty()) {
         exportToFile(fileName);
     }

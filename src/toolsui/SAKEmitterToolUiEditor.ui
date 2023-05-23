@@ -84,7 +84,7 @@
        <widget class="QLineEdit" name="lineEditData"/>
       </item>
       <item row="5" column="1">
-       <widget class="QSpinBox" name="spinBoxStartUbdex">
+       <widget class="QSpinBox" name="spinBoxStartIndex">
         <property name="toolTip">
          <string notr="true">11</string>
         </property>

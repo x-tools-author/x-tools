@@ -295,6 +295,13 @@ SAKEmitterTableModel::EDEmitterDataKeys SAKEmitterTool::dataKeys()
     return mTableModel->mDataKeys;
 }
 
+void SAKEmitterTool::inputBytes(const QByteArray &bytes,
+                                const QVariant &context)
+{
+    Q_UNUSED(bytes)
+    Q_UNUSED(context)
+}
+
 void SAKEmitterTool::run()
 {
     mEmittingTimer = new QTimer();

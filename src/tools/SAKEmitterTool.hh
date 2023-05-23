@@ -130,6 +130,9 @@ public:
     QStringList getHeaders();
     SAKEmitterTableModel::EDEmitterDataKeys dataKeys();
 
+    virtual void inputBytes(const QByteArray &bytes,
+                            const QVariant &context = QJsonObject()) final;
+
 protected:
     virtual void run() final;
 

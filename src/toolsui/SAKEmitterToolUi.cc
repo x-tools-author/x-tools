@@ -49,8 +49,13 @@ void SAKEmitterToolUi::edit(const QModelIndex &index)
     QJsonObject jsonObj = var.toJsonObject();
     mEditor->setParameters(jsonObj);
     mEditor->show();
-    if (!(QDialog::Accepted ==mEditor->exec())) {
-        return;
+
+    if (QDialog::Accepted == mEditor->exec()) {
+        QJsonObject params = mEditor->parameters();
+        QJsonDocument jsonDoc;
+        jsonDoc.setObject(params);
+        QString str = QString::fromUtf8(jsonDoc.toJson());
+        mTool->addItem(str, index.row());
     }
 }
 
