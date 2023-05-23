@@ -74,16 +74,7 @@ public:
         int elapsedTime{0};
     };
 
-private:
-    QList<EDEmiterItem> mItems;
-    QMutex mItemsMutex;
-    const int mDescriptionColumnIndex{0};
-    const int mFormatColumnIndex{1};
-    const int mItemTextColumnIndex{2};
-    QStringList mHeaders;
-
-private:
-    struct EDResponserDataKeys {
+    struct SAKResponserDataKeys {
         const QString itemEnable{"Enable"};
         const QString itemDescription{"Description"};
         const QString itemOption{"Option"};
@@ -106,7 +97,18 @@ private:
         const QString itemResponseCrcStartIndex{"ResStart"};
         const QString itemResponseCrcEndIndex{"ResEnd"};
         const QString itemResponseText{"ResponseData"};
-    } mDataKeys;
+    };
+
+private:
+    QList<EDEmiterItem> mItems;
+    QMutex mItemsMutex;
+    const int mDescriptionColumnIndex{0};
+    const int mFormatColumnIndex{1};
+    const int mItemTextColumnIndex{2};
+    QStringList mHeaders;
+
+private:
+    struct SAKResponserDataKeys mDataKeys;
     const int mTableColumnCount{22};
 
 private:
