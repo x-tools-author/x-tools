@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT += core gui sql network bluetooth quick quickcontrols2
+QT += core gui sql network bluetooth quick serialport websockets quickcontrols2
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -49,7 +49,6 @@ include(src/toolsui/SAKToolsUi.pri)
 include(src/toolbox/SAKToolBox.pri)
 include(src/commonui/SAKCommonUi.pri)
 include(src/toolboxui/SAKToolBoxUi.pri)
-include(src/debuggers/SAKDebuggers.pri)
 include(src/assistants/SAKAssistants.pri)
 
 #------------------------------------------------------------------------------

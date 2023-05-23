@@ -245,44 +245,4 @@ private:
                                  int currentData);
 };
 
-
-typedef SAKCommonDataStructure::SAKEnumTextFormatInput SAKTextFormatInput;
-typedef SAKCommonDataStructure::SAKEnumTextFormatOutput SAKTextFormatOutput;
-typedef SAKCommonDataStructure::SAKEnumWebSocketSendingType SAKWSSendingType;
-typedef SAKCommonDataStructure::SAKEmnuSuffixType SAKSuffixsType;
-#ifdef SAK_IMPORT_MODULE_SERIALPORT
-typedef SAKCommonDataStructure::SAKStructSerialPortParametersContext
-SAKSerialPortParametersContext;
-#endif
-typedef SAKCommonDataStructure::SAKStructUdpClientParametersContext
-SAKUdpClientParametersContext;
-typedef SAKCommonDataStructure::SAKStructUdpServerParametersContext
-SAKUdpServerParametersContext;
-typedef SAKCommonDataStructure::SAKStructTcpClientParametersContext
-SAKTcpClientParametersContext;
-typedef SAKCommonDataStructure::SAKStructTcpServerParametersContext
-SAKTcpServerParametersContext;
-typedef SAKCommonDataStructure::SAKStructWSClientParametersContext
-SAKWSClientParametersContext;
-typedef SAKCommonDataStructure::SAKStructWSServerParametersContext
-SAKWSServerParametersContext;
-#ifdef SAK_IMPORT_MODULE_BLE
-typedef SAKCommonDataStructure::SAKStructBleCentralParametersContext
-SAKBleCentralParametersContext;
-#endif
-
-Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructTestParametersContext);
-#ifdef SAK_IMPORT_MODULE_SERIALPORT
-Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructSerialPortParametersContext);
-#endif
-Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructUdpClientParametersContext);
-Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructUdpServerParametersContext);
-Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructTcpClientParametersContext);
-Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructTcpServerParametersContext);
-Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructWSClientParametersContext);
-Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructWSServerParametersContext);
-#ifdef SAK_IMPORT_MODULE_BLE
-Q_DECLARE_METATYPE(SAKCommonDataStructure::SAKStructBleCentralParametersContext);
-#endif
-
 #endif

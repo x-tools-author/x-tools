@@ -77,15 +77,11 @@ private:
     void clearConfiguration();
     void rebootRequestion();
     void showReleaseHistoryActionDialog();
-    QString tabPageName(int type);
-    QWidget *debugPage(QObject *sender);
     void showQrCodeDialog();
     void onDonationActionTriggered();
 private slots:
     void activePage();
     void installLanguage();
-    void openDebugPageWidget();
-    void appendRemovablePage();
 private:
     Ui::SAKMainWindow *ui;
     QTabWidget *mToolBoxs;

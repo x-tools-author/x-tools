@@ -45,11 +45,7 @@
 #include "SAKMainWindow.hh"
 #include "SAKApplication.hh"
 #include "SAKUpdateManager.hh"
-#include "SAKDebuggerFactory.hh"
 #include "SAKAssistantsFactory.hh"
-
-#include "SAKModbusDebugger.hh"
-#include "SAKCanBusDebugger.hh"
 
 #include "ui_SAKMainWindow.h"
 
@@ -245,35 +241,6 @@ void SAKMainWindow::initFileMenu()
 {
     QMenu *fileMenu = new QMenu(tr("&File"), this);
     menuBar()->addMenu(fileMenu);
-
-    QMenu *tabMenu = new QMenu(tr("New Page"), this);
-    fileMenu->addMenu(tabMenu);
-    QMetaEnum enums = QMetaEnum::fromType<SAKEnumDebugPageType>();
-    for (int i = 0; i < enums.keyCount(); i++){
-        QString name = sakDebuggerFactor->debuggerName(enums.value(i));
-        QAction *a = new QAction(name, this);
-        // The object name is the default title of debug page
-        a->setObjectName(sakDebuggerFactor->debuggerName(enums.value(i)));
-        QVariant var = QVariant::fromValue<int>(enums.value(i));
-        a->setData(var);
-        connect(a, &QAction::triggered,
-                this, &SAKMainWindow::appendRemovablePage);
-        tabMenu->addAction(a);
-    }
-
-    QMenu *windowMenu = new QMenu(tr("New Window"), this);
-    fileMenu->addMenu(windowMenu);
-    for (int i = 0; i < enums.keyCount(); i++){
-        QString styleName = sakDebuggerFactor->debuggerName(enums.value(i));
-        QAction *a = new QAction(styleName, this);
-        // The object name is the default title of debug page
-        a->setObjectName(sakDebuggerFactor->debuggerName(enums.value(i)));
-        QVariant var = QVariant::fromValue<int>(enums.value(i));
-        connect(a, &QAction::triggered,
-                this, &SAKMainWindow::openDebugPageWidget);
-        a->setData(var);
-        windowMenu->addAction(a);
-    }
 
     fileMenu->addSeparator();
     QAction *exitAction = new QAction(tr("Exit"), this);
@@ -744,66 +711,6 @@ void SAKMainWindow::showReleaseHistoryActionDialog()
     dialog.exec();
 }
 
-QString SAKMainWindow::tabPageName(int type)
-{
-    QString name;
-    QString defaultName = sakDebuggerFactor->debuggerName(type);
-    QDialog dialog;
-    dialog.setWindowTitle(tr("Edit Page Name"));
-
-    QLabel *tipLabel = new QLabel(tr("Please input the name of tab page"),
-                                  &dialog);
-    QLabel *tipPageNameLabel = new QLabel(tr("Tab page name"), &dialog);
-    QLineEdit *tapPageNameLineEdit = new QLineEdit(&dialog);
-    QLabel *emptyLabel = new QLabel("", &dialog);
-    QPushButton *okPushButton = new QPushButton(tr("OK"), &dialog);
-    QPushButton *cancelPushButton = new QPushButton(tr("Cancel"), &dialog);
-    connect(okPushButton, &QPushButton::clicked,
-            &dialog, &QDialog::accept);
-    connect(cancelPushButton, &QPushButton::clicked,
-            &dialog, &QDialog::reject);
-
-    tapPageNameLineEdit->setText(defaultName);
-    emptyLabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
-
-    QGridLayout *gridLayout = new QGridLayout(&dialog);
-    gridLayout->addWidget(tipLabel, 0, 0, 1, 4);
-    gridLayout->addWidget(tipPageNameLabel, 1, 0, 1, 1);
-    gridLayout->addWidget(tapPageNameLineEdit, 1, 1, 1, 3);
-    gridLayout->addWidget(emptyLabel, 2, 1, 1, 1);
-    gridLayout->addWidget(okPushButton, 2, 2, 1, 1);
-    gridLayout->addWidget(cancelPushButton, 2, 3, 1, 1);
-    dialog.setLayout(gridLayout);
-    dialog.show();
-    if (QDialog::Accepted == dialog.exec()){
-        name = tapPageNameLineEdit->text();
-    }
-
-    return name;
-}
-
-QWidget *SAKMainWindow::debugPage(QObject *sender)
-{
-    if (!sender){
-        return Q_NULLPTR;
-    }
-
-    if (sender->inherits("QAction")){
-        int type = qobject_cast<QAction*>(sender)->data().value<int>();
-        QString title = tabPageName(type);
-        if (title.length()){
-            QWidget *widget = sakDebuggerFactor->createDebugger(type);
-            if (widget){
-                widget->setAttribute(Qt::WA_DeleteOnClose, true);
-                widget->setWindowTitle(title);
-                return widget;
-            }
-        }
-    }
-
-    return Q_NULLPTR;
-}
-
 void SAKMainWindow::showQrCodeDialog()
 {
     QDialog dialog;
@@ -879,26 +786,5 @@ void SAKMainWindow::installLanguage()
             qobject_cast<SAKApplication*>(qApp)->installLanguage();
             rebootRequestion();
         }
-    }
-}
-
-void SAKMainWindow::openDebugPageWidget()
-{
-    // The function must be called by signal of QAction
-    QWidget *widget = debugPage(sender());
-    if (widget) {
-        widget->setParent(Q_NULLPTR);
-        widget->show();
-        appendWindowAction(widget);
-    }
-}
-
-void SAKMainWindow::appendRemovablePage()
-{
-    // The function must be called by signal of QAction
-    QWidget *widget = debugPage(sender());
-    if (widget) {
-        mToolBoxs->addTab(widget, widget->windowTitle());
-        appendWindowAction(widget);
     }
 }
