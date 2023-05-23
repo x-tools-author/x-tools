@@ -155,6 +155,8 @@ public:
     Q_INVOKABLE void addItem(const QString &jsonCtx, int index = -1);
     Q_INVOKABLE QVariant itemContext(int index);
     Q_INVOKABLE QVariant itemsContext();
+    SAKResponserTableModel *getModel();
+    QStringList getHeaders();
 
     virtual void inputBytes(const QByteArray &bytes, const QVariant context = QJsonObject()) final;
 

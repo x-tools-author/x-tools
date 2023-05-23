@@ -276,6 +276,16 @@ void SAKPrestorerTool::send(int index)
     }
 }
 
+SAKPrestorerTableModel *SAKPrestorerTool::getModel()
+{
+    return mTableModel;
+}
+
+QStringList SAKPrestorerTool::getHeaders()
+{
+    return mHeaders;
+}
+
 void SAKPrestorerTool::inputBYtes(const QByteArray &bytes, const QVariant *context)
 {
     Q_UNUSED(bytes);

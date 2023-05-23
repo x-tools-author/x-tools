@@ -50,10 +50,12 @@ SAKToolBoxUi::SAKToolBoxUi(QWidget *parent)
     SAKResponserToolUi *responserToolUi = new SAKResponserToolUi();
     ui->tabResponser->setLayout(new QVBoxLayout());
     ui->tabResponser->layout()->addWidget(responserToolUi);
+    responserToolUi->setupResponserTool(mToolBox->getResponserTool());
 
-//    SAKPrestorerToolUi *prestorerToolUi = new SAKPrestorerToolUi();
-//    ui->tabPrestorer->setLayout(new QVBoxLayout());
-//    ui->tabPrestorer->layout()->addWidget(prestorerToolUi);
+    SAKPrestorerToolUi *prestorerToolUi = new SAKPrestorerToolUi();
+    ui->tabPrestorer->setLayout(new QVBoxLayout());
+    ui->tabPrestorer->layout()->addWidget(prestorerToolUi);
+    prestorerToolUi->setupSAKPrestorerTool(mToolBox->getPrestorerTool());
 
     mCycleSendingTimer = new QTimer(this);
     connect(mCycleSendingTimer, &QTimer::timeout,

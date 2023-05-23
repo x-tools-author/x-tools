@@ -99,6 +99,8 @@ public:
     Q_INVOKABLE QVariant itemContext(int index);
     Q_INVOKABLE QVariant itemsContext();
     Q_INVOKABLE void send(int index);
+    SAKPrestorerTableModel *getModel();
+    QStringList getHeaders();
 
 protected:
     virtual void inputBYtes(const QByteArray &bytes, const QVariant *context) final;
