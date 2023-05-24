@@ -42,6 +42,7 @@ private:
     SAKCommunicationToolUi *mCommunicationToolUi{nullptr};
     const QLoggingCategory mLoggingCategory{"SAK.SAKToolBoxUi"};
     QTimer *mCycleSendingTimer{nullptr};
+    int mCommunicationToolType;
 
 private:
     QString communiticationToolName(int type);
@@ -50,6 +51,7 @@ private:
     void try2send();
     QString dateTimeContext();
     void output2ui(const QByteArray &bytes, const QVariant &context, bool isRx);
+    QString settingsGroup();
 
     // slots
     void onIsWorkingChanged();

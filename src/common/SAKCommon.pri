@@ -12,7 +12,6 @@ HEADERS += \
     $$PWD/EDI18N.hpp \
     $$PWD/EDNetworkInterface.hpp \
     $$PWD/EDSerialPort.hpp \
-    $$PWD/EDSettings.hpp \
     $$PWD/SAKBaseListWidget.hh \
     $$PWD/SAKBaseListWidgetItemWidget.hh \
     $$PWD/SAKCommonCrcInterface.hh \
@@ -23,6 +22,7 @@ HEADERS += \
     $$PWD/SAKDevice.hh \
     $$PWD/SAKInterface.hh \
     $$PWD/SAKObj.hh \
+    $$PWD/SAKSettings.hh \
     $$PWD/SAKSigleton.hh
 
 SOURCES += \
@@ -31,7 +31,6 @@ SOURCES += \
     $$PWD/EDI18N.cpp \
     $$PWD/EDNetworkInterface.cpp \
     $$PWD/EDSerialPort.cpp \
-    $$PWD/EDSettings.cpp \
     $$PWD/SAKBaseListWidget.cc \
     $$PWD/SAKBaseListWidgetItemWidget.cc \
     $$PWD/SAKCommonCrcInterface.cc \
@@ -42,4 +41,5 @@ SOURCES += \
     $$PWD/SAKDevice.cc \
     $$PWD/SAKInterface.cc \
     $$PWD/SAKObj.cc \
+    $$PWD/SAKSettings.cc \
     $$PWD/SAKSigleton.cc

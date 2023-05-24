@@ -7,6 +7,7 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
+#include <QMetaEnum>
 #include <QLineEdit>
 #include <QRegularExpression>
 
@@ -60,8 +61,6 @@ SAKToolBoxUi::SAKToolBoxUi(QWidget *parent)
     mCycleSendingTimer = new QTimer(this);
     connect(mCycleSendingTimer, &QTimer::timeout,
             this, &SAKToolBoxUi::try2send);
-
-    init();
 }
 
 SAKToolBoxUi::~SAKToolBoxUi()
@@ -93,6 +92,8 @@ void SAKToolBoxUi::setupCommuniticationTool(int type)
     setWindowTitle(communiticationToolName(type));
     setWindowIcon(communiticationToolIcon(type));
 
+    init();
+
     auto var = mToolBox->property("communication");
     mCommunicationTool = var.value<SAKCommunicationTool*>();
 
@@ -122,6 +123,7 @@ void SAKToolBoxUi::setupCommuniticationTool(int type)
             this, &::SAKToolBoxUi::onTooBoxBytesOutputted);
 
     onIsWorkingChanged();
+    mCommunicationToolType = type;
 }
 
 QString SAKToolBoxUi::communiticationToolName(int type)
@@ -201,7 +203,7 @@ SAKCommunicationToolUi *SAKToolBoxUi::communiticationToolUi(int type)
 void SAKToolBoxUi::try2send()
 {
     int format = ui->comboBoxInputFormat->currentData().toInt();
-    QString input = ui->comboBoxInput->currentText();
+    QString input = ui->comboBoxInputText->currentText();
     auto ctx = mToolBoxUiParameters->parameterContext();
 
     int prefix = ctx.input.preprocessing.prefix;
@@ -276,6 +278,12 @@ void SAKToolBoxUi::output2ui(const QByteArray &bytes,
     ui->textBrowserOutput->append(info + " " + str);
 }
 
+QString SAKToolBoxUi::settingsGroup()
+{
+    QMetaEnum metaEnum = QMetaEnum::fromType<SAKToolFactory::ToolsType>();
+    return metaEnum.valueToKey(mCommunicationToolType);
+}
+
 void SAKToolBoxUi::onIsWorkingChanged()
 {
     bool isWorking = mToolBox->isWorking();
@@ -327,6 +335,8 @@ void SAKToolBoxUi::initUi()
     initUiCommunication();
     initUiInput();
     initUiOutput();
+
+    onComboBoxInputFormatActivated();
 }
 
 void SAKToolBoxUi::initUiCommunication()
@@ -372,12 +382,26 @@ void SAKToolBoxUi::initSettingsCommunication()
 
 void SAKToolBoxUi::initSettingsInput()
 {
-    onComboBoxInputFormatActivated();
+    QString group = settingsGroup();
+    ui->comboBoxInputFormat->setGroupKey(group, "inputFromat");
+    ui->comboBoxInputText->setGroupKey(group, "inputText", false);
 }
 
 void SAKToolBoxUi::initSettingsOutput()
 {
+    QString group = settingsGroup();
+    ui->comboBoxOutputFormat->setGroupKey(group, "outputFormat");
+    ui->checkBoxOutputRx->setGroupKey(group, "outputRx");
+    ui->checkBoxOutputTx->setGroupKey(group, "outputTx");
+    ui->checkBoxOutputDate->setGroupKey(group, "outputDate");
+    ui->checkBoxOutputTime->setGroupKey(group, "outputTime");
+    ui->checkBoxOutputMs->setGroupKey(group, "outputMs");
+    ui->checkBoxOutputWrap->setGroupKey(group, "outputWrap");
 
+#if 1
+    ui->checkBoxOutputRx->setChecked(true);
+    ui->checkBoxOutputTx->setChecked(true);
+#endif
 }
 
 void SAKToolBoxUi::initSignals()
@@ -451,11 +475,11 @@ void SAKToolBoxUi::onPushButtonInputSettingsClicked()
 
 void SAKToolBoxUi::onPushButtonInputSendClicked()
 {
-    if (ui->comboBoxInput->currentText().isEmpty()) {
+    if (ui->comboBoxInputText->currentText().isEmpty()) {
         qCInfo(mLoggingCategory) << "Input text is empty,"
                                     " the operation will be ignored!";
         QApplication::beep();
-        ui->comboBoxInput->setFocus();
+        ui->comboBoxInputText->setFocus();
         return;
     }
 
@@ -479,6 +503,6 @@ void SAKToolBoxUi::onComboBoxInputIntervelCurrentIndexChanged()
 void SAKToolBoxUi::onComboBoxInputFormatActivated()
 {
     int format = ui->comboBoxInputFormat->currentData().toInt();
-    auto lineEdit = ui->comboBoxInput->lineEdit();
+    auto lineEdit = ui->comboBoxInputText->lineEdit();
     SAKUiInterface::setValidator(lineEdit, format);
 }

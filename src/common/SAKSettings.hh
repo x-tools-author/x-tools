@@ -1,19 +1,19 @@
 /******************************************************************************
  * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
  *****************************************************************************/
-#ifndef EDSETTINGS_HPP
-#define EDSETTINGS_HPP
+#ifndef SAKSETTINGS_H
+#define SAKSETTINGS_H
 
 #include <QSettings>
 
-class EDSettings : public QSettings
+class SAKSettings : public QSettings
 {
     Q_OBJECT
 private:
-    explicit EDSettings(QObject *parent = nullptr);
+    explicit SAKSettings(QObject *parent = nullptr);
 
 public:
-    static EDSettings *instance();
+    static SAKSettings *instance();
     Q_INVOKABLE QVariant edValue(
             const QString &key,
             const QVariant &defaultValue = QVariant()) const;
@@ -28,4 +28,4 @@ public:
     Q_INVOKABLE void edRemove(const QString &group, const QString &key);
 };
 
-#endif // EDSETTINGS_HPP
+#endif // SAKSETTINGS_H

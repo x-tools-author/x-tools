@@ -86,7 +86,7 @@
        </widget>
       </item>
       <item row="7" column="0">
-       <widget class="QCheckBox" name="checkBoxOutputRx">
+       <widget class="SAKCheckBox" name="checkBoxOutputRx">
         <property name="text">
          <string>Rx</string>
         </property>
@@ -127,7 +127,7 @@
        <widget class="SAKTextFormatComboBox" name="comboBoxInputFormat"/>
       </item>
       <item row="9" column="0">
-       <widget class="QCheckBox" name="checkBoxOutputMs">
+       <widget class="SAKCheckBox" name="checkBoxOutputMs">
         <property name="text">
          <string>MS</string>
         </property>
@@ -154,28 +154,28 @@
        </widget>
       </item>
       <item row="8" column="0">
-       <widget class="QCheckBox" name="checkBoxOutputDate">
+       <widget class="SAKCheckBox" name="checkBoxOutputDate">
         <property name="text">
          <string>Date</string>
         </property>
        </widget>
       </item>
       <item row="8" column="1">
-       <widget class="QCheckBox" name="checkBoxOutputTime">
+       <widget class="SAKCheckBox" name="checkBoxOutputTime">
         <property name="text">
          <string>Time</string>
         </property>
        </widget>
       </item>
       <item row="7" column="1">
-       <widget class="QCheckBox" name="checkBoxOutputTx">
+       <widget class="SAKCheckBox" name="checkBoxOutputTx">
         <property name="text">
          <string>Tx</string>
         </property>
        </widget>
       </item>
       <item row="9" column="1">
-       <widget class="QCheckBox" name="checkBoxOutputWrap">
+       <widget class="SAKCheckBox" name="checkBoxOutputWrap">
         <property name="text">
          <string>Wrap</string>
         </property>
@@ -228,7 +228,7 @@
       <enum>QTabWidget::Rounded</enum>
      </property>
      <property name="currentIndex">
-      <number>3</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tabIO">
       <attribute name="title">
@@ -252,7 +252,7 @@
         </spacer>
        </item>
        <item row="3" column="0" colspan="3">
-        <widget class="QComboBox" name="comboBoxInput">
+        <widget class="SAKComboBox" name="comboBoxInputText">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -315,6 +315,16 @@
    <class>SAKTextFormatComboBox</class>
    <extends>QComboBox</extends>
    <header location="global">SAKTextFormatComboBox.hh</header>
+  </customwidget>
+  <customwidget>
+   <class>SAKCheckBox</class>
+   <extends>QCheckBox</extends>
+   <header location="global">SAKCheckBox.hh</header>
+  </customwidget>
+  <customwidget>
+   <class>SAKComboBox</class>
+   <extends>QComboBox</extends>
+   <header location="global">SAKComboBox.hh</header>
   </customwidget>
  </customwidgets>
  <resources/>

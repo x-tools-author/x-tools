@@ -18,6 +18,17 @@ public:
     SAKComboBox(QWidget *parent = nullptr);
 
     void setCurrentIndexFromData(const QVariant &data);
+    void setGroupKey(const QString &group,
+                     const QString &key,
+                     bool isIndex = true);
+
+private:
+    QString mKey;
+    bool mIsIndex{true};
+
+private:
+    void readFromSettingsFile();
+    void writeToSettingsFile();
 };
 
 #endif // SAKCOMBOBOX_HH

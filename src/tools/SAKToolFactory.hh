@@ -18,7 +18,7 @@ class SAKToolFactory : public QObject
 {
     Q_OBJECT
 public:
-    enum EDEnumToolsType {
+    enum ToolsType {
         AnalyzerTool,
         SerialportTool,
         EmitterTool,
@@ -35,7 +35,7 @@ public:
         BleCentral,
         BlePeriheral
     };
-    Q_ENUM(EDEnumToolsType)
+    Q_ENUM(ToolsType)
 
 private:
     explicit SAKToolFactory(QObject *parent = Q_NULLPTR);

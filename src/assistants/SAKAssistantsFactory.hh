@@ -11,7 +11,7 @@
 #define SAKASSISTANTSFACTORY_HH
 
 #include <QObject>
-#include "base/SAKSigleton.hh"
+#include "SAKSigleton.hh"
 
 #define sakToolsFactory SAKAssistantsFactory::instance()
 

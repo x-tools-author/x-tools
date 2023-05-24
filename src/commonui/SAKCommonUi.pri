@@ -6,6 +6,7 @@ FORMS += \
 HEADERS += \
     $$PWD/SAKAffixesComboBox.hh \
     $$PWD/SAKBaudRateComboBox.hh \
+    $$PWD/SAKCheckBox.hh \
     $$PWD/SAKComboBox.hh \
     $$PWD/SAKCrcAlgorithmComboBox.hh \
     $$PWD/SAKDataBitsComboBox.hh \
@@ -25,6 +26,7 @@ HEADERS += \
 SOURCES += \
     $$PWD/SAKAffixesComboBox.cc \
     $$PWD/SAKBaudRateComboBox.cc \
+    $$PWD/SAKCheckBox.cc \
     $$PWD/SAKComboBox.cc \
     $$PWD/SAKCrcAlgorithmComboBox.cc \
     $$PWD/SAKDataBitsComboBox.cc \

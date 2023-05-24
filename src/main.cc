@@ -34,7 +34,7 @@
 #include "common/EDBle.hpp"
 #include "common/SAKCrcInterface.hh"
 #include "common/EDI18N.hpp"
-#include "common/EDSettings.hpp"
+#include "common/SAKSettings.hh"
 #include "common/SAKInterface.hh"
 #include "common/EDSerialPort.hpp"
 #include "common/EDHighlighter.hpp"
@@ -76,7 +76,7 @@ int main(int argc, char *argv[])
 #endif
 
     // High dpi settings.
-    auto edSettings = EDSettings::instance();
+    auto edSettings = SAKSettings::instance();
 #if 0
     auto policy = edSettings->value("highDpiScaleFactorRoundingPolicy").toInt();
     auto cookedPolicy = Qt::HighDpiScaleFactorRoundingPolicy(policy);

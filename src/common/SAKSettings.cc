@@ -4,7 +4,7 @@
 #include <QStandardPaths>
 #include <QCoreApplication>
 
-#include "EDSettings.hpp"
+#include "SAKSettings.hh"
 
 static const QString fileName()
 {
@@ -14,30 +14,30 @@ static const QString fileName()
     return ret;
 }
 
-EDSettings::EDSettings(QObject *parent)
+SAKSettings::SAKSettings(QObject *parent)
     : QSettings{::fileName(), QSettings::IniFormat, parent}
 {
 
 }
 
-EDSettings *EDSettings::instance()
+SAKSettings *SAKSettings::instance()
 {
-    static EDSettings settings;
+    static SAKSettings settings;
     return &settings;
 }
 
-QVariant EDSettings::edValue(const QString &key,
+QVariant SAKSettings::edValue(const QString &key,
                              const QVariant &defaultValue) const
 {
     return value(key, defaultValue);
 }
 
-void EDSettings::edSetValue(const QString &key, const QVariant &value)
+void SAKSettings::edSetValue(const QString &key, const QVariant &value)
 {
     setValue(key, value);
 }
 
-void EDSettings::edSetArrayValues(const QString &groupName,
+void SAKSettings::edSetArrayValues(const QString &groupName,
                                   const QString &array,
                                   const QString &key,
                                   const QVariant &varList)
@@ -53,7 +53,7 @@ void EDSettings::edSetArrayValues(const QString &groupName,
     endGroup();
 }
 
-QStringList EDSettings::edArrayValues(const QString &group,
+QStringList SAKSettings::edArrayValues(const QString &group,
                                       const QString &array,
                                       const QString &key)
 {
@@ -70,7 +70,7 @@ QStringList EDSettings::edArrayValues(const QString &group,
     return list;
 }
 
-void EDSettings::edRemove(const QString &group, const QString &key)
+void SAKSettings::edRemove(const QString &group, const QString &key)
 {
     beginGroup(group);
     remove(key);
