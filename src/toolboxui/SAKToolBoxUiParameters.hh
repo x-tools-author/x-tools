@@ -56,6 +56,7 @@ public:
     void setupInputAnalyzer(SAKAnalyzerTool *tool);
     void setupOutputAnalyzer(SAKAnalyzerTool *tool);
     void setupStorer(SAKStorerTool *tool);
+    void setupSettingsGroup(const QString &group);
 
 private:
     const QLoggingCategory mLoggingCategory{"SAK.ToolBoxUiParameters"};

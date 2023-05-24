@@ -84,3 +84,8 @@ void SAKToolBoxUiParameters::setupStorer(SAKStorerTool *tool)
 {
     ui->widgetStorer->setupStorer(tool);
 }
+
+void SAKToolBoxUiParameters::setupSettingsGroup(const QString &group)
+{
+
+}
