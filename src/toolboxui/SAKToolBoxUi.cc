@@ -284,7 +284,8 @@ QString SAKToolBoxUi::settingsGroup()
     } else if (mCommunicationToolType == SAKToolFactory::BleCentralTool) {
         return "BleCentralToolBox";
     } else {
-        qCWarning(mLoggingCategory) << "Unknow type of communication tool ui!";
+        qCWarning(mLoggingCategory) << "Unknow type of communication tool ui:"
+                                    << mCommunicationToolType;
         return  "UnknowToolBox";
     }
 }
