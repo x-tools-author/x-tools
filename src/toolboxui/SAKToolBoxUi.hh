@@ -58,6 +58,7 @@ private:
     QString dateTimeContext();
     void output2ui(const QByteArray &bytes, const QVariant &context, bool isRx);
     QString settingsGroup();
+    void setupTools();
 
     // slots
     void onIsWorkingChanged();

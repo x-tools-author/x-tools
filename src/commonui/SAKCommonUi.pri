@@ -17,6 +17,7 @@ HEADERS += \
     $$PWD/SAKParityComboBox.hh \
     $$PWD/SAKPortNameComboBox.hh \
     $$PWD/SAKResponseOptionComboBox.hh \
+    $$PWD/SAKSpinBox.hh \
     $$PWD/SAKStopBitsComboBox.hh \
     $$PWD/SAKTableViewWithController.hh \
     $$PWD/SAKTextFormatComboBox.hh \
@@ -37,6 +38,7 @@ SOURCES += \
     $$PWD/SAKParityComboBox.cc \
     $$PWD/SAKPortNameComboBox.cc \
     $$PWD/SAKResponseOptionComboBox.cc \
+    $$PWD/SAKSpinBox.cc \
     $$PWD/SAKStopBitsComboBox.cc \
     $$PWD/SAKTableViewWithController.cc \
     $$PWD/SAKTextFormatComboBox.cc \

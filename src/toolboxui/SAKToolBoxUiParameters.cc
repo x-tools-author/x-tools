@@ -87,5 +87,8 @@ void SAKToolBoxUiParameters::setupStorer(SAKStorerTool *tool)
 
 void SAKToolBoxUiParameters::setupSettingsGroup(const QString &group)
 {
-
+    ui->checkBoxBigEndian->setGroupKey(group, "bigEndian");
+    ui->checkBoxCrcEnable->setGroupKey(group, "crcEnable");
+    ui->spinBoxEndIndex->setGroupKey(group, "endIndex");
+    ui->spinBoxStartIndex->setGroupKey(group, "startIndex");
 }

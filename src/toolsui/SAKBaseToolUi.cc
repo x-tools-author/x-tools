@@ -13,16 +13,20 @@
 SAKBaseToolUi::SAKBaseToolUi(QWidget *parent)
     : QWidget{parent}
 {
-//    Q_ASSERT_X(tool, __FUNCTION__, "The value of tool can not be nullptr");
-//    if (mTool) {
-//        connect(mTool, &SAKBaseTool::isWorkingChanged, this, [=](){
-//            bool isWorking = mTool->isWorking();
-//            this->onIsWorkingChanged(isWorking);
-//        });
-//    }
+
 }
 
 void SAKBaseToolUi::onIsWorkingChanged(bool isWorking)
 {
     Q_UNUSED(isWorking)
+}
+
+void SAKBaseToolUi::setupTool(SAKBaseTool *tool)
+{
+    mTool = tool;
+}
+
+void SAKBaseToolUi::setupSettingsGroup(const QString &group)
+{
+    mSettingsGroup = group;
 }

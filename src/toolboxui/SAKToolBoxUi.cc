@@ -37,26 +37,6 @@ SAKToolBoxUi::SAKToolBoxUi(QWidget *parent)
     mToolBox = new SAKToolBox(this);
     mToolBoxUiParameters = new SAKToolBoxUiParameters(this);
     mToolBoxUiParameters->setModal(true);
-    mToolBoxUiParameters->setupInputMasker(mToolBox->getInputMaskerTool());
-    mToolBoxUiParameters->setupOutputMasker(mToolBox->getOutputMaskerTool());
-    mToolBoxUiParameters->setupInputAnalyzer(mToolBox->getInputAnalyzerTool());
-    mToolBoxUiParameters->setupOutputAnalyzer(mToolBox->getOutputAnalyzerTool());
-    mToolBoxUiParameters->setupStorer(mToolBox->getStorerTool());
-
-    mEmitterToolUi = new SAKEmitterToolUi();
-    ui->tabEmiter->setLayout(new QVBoxLayout());
-    ui->tabEmiter->layout()->addWidget(mEmitterToolUi);
-    mEmitterToolUi->setupEmitterTool(mToolBox->getEmitterTool());
-
-    mResponserToolUi = new SAKResponserToolUi();
-    ui->tabResponser->setLayout(new QVBoxLayout());
-    ui->tabResponser->layout()->addWidget(mResponserToolUi);
-    mResponserToolUi->setupResponserTool(mToolBox->getResponserTool());
-
-    mPrestorerToolUi = new SAKPrestorerToolUi();
-    ui->tabPrestorer->setLayout(new QVBoxLayout());
-    ui->tabPrestorer->layout()->addWidget(mPrestorerToolUi);
-    mPrestorerToolUi->setupSAKPrestorerTool(mToolBox->getPrestorerTool());
 
     mCycleSendingTimer = new QTimer(this);
     connect(mCycleSendingTimer, &QTimer::timeout,
@@ -108,6 +88,8 @@ void SAKToolBoxUi::setupCommuniticationTool(int type)
     mCommunicationToolType = type;
     mCommunicationToolUi = communiticationToolUi(type);
     mCommunicationToolUi->setSettingsGroup(settingsGroup());
+    mToolBoxUiParameters->setupSettingsGroup(settingsGroup());
+    setupTools();
     if (!mCommunicationToolUi) {
         qCWarning(mLoggingCategory) << "mCommunicationToolUi is nullptr";
         return;
@@ -301,6 +283,30 @@ QString SAKToolBoxUi::settingsGroup()
         qCWarning(mLoggingCategory) << "Unknow type of communication tool ui!";
         return  "UnknowToolBox";
     }
+}
+
+void SAKToolBoxUi::setupTools()
+{
+    mToolBoxUiParameters->setupInputMasker(mToolBox->getInputMaskerTool());
+    mToolBoxUiParameters->setupOutputMasker(mToolBox->getOutputMaskerTool());
+    mToolBoxUiParameters->setupInputAnalyzer(mToolBox->getInputAnalyzerTool());
+    mToolBoxUiParameters->setupOutputAnalyzer(mToolBox->getOutputAnalyzerTool());
+    mToolBoxUiParameters->setupStorer(mToolBox->getStorerTool());
+
+    mEmitterToolUi = new SAKEmitterToolUi();
+    ui->tabEmiter->setLayout(new QVBoxLayout());
+    ui->tabEmiter->layout()->addWidget(mEmitterToolUi);
+    mEmitterToolUi->setupEmitterTool(mToolBox->getEmitterTool());
+
+    mResponserToolUi = new SAKResponserToolUi();
+    ui->tabResponser->setLayout(new QVBoxLayout());
+    ui->tabResponser->layout()->addWidget(mResponserToolUi);
+    mResponserToolUi->setupResponserTool(mToolBox->getResponserTool());
+
+    mPrestorerToolUi = new SAKPrestorerToolUi();
+    ui->tabPrestorer->setLayout(new QVBoxLayout());
+    ui->tabPrestorer->layout()->addWidget(mPrestorerToolUi);
+    mPrestorerToolUi->setupSAKPrestorerTool(mToolBox->getPrestorerTool());
 }
 
 void SAKToolBoxUi::onIsWorkingChanged()
