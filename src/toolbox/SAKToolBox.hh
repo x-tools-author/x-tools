@@ -53,7 +53,7 @@ public:
     SAKMaskerTool       *getInputMaskerTool(){return mInputMaskerTool;}
     SAKMaskerTool       *getOutputMaskerTool(){return mOutputMaskerTool;}
     SAKAnalyzerTool     *getInputAnalyzerTool(){return mInputAnalyzerTool;}
-    SAKAnalyzerTool     *getOutputAnalyzerTool(){return mInputAnalyzerTool;}
+    SAKAnalyzerTool     *getOutputAnalyzerTool(){return mOutputAnalyzerTool;}
     SAKEmitterTool      *getEmitterTool(){return mEmitterTool;}
     SAKResponserTool    *getResponserTool(){return mResponserTool;}
     SAKStorerTool       *getStorerTool(){return mStorerTool;}

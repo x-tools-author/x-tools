@@ -45,12 +45,12 @@ void SAKAnalyzerTool::inputBytes(const QByteArray &bytes,
     }
 
     outputMessage(QtInfoMsg,
-                  QString("Analyzer<-%1").arg(bytes.toHex(' ')));
+                  QString("%1<-%2").arg(mToolName, bytes.toHex(' ')));
     emit bytesInputted(bytes, context);
 
     if (!enable()) {
         outputMessage(QtInfoMsg,
-                      QString("Analyzer->%1").arg(bytes.toHex(' ')));
+                      QString("%1->%2").arg(mToolName, bytes.toHex(' ')));
         emit bytesOutputted(bytes, context);
     } else {
         mInputtedBytesMutex.lock();

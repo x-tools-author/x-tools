@@ -71,8 +71,8 @@ void SAKToolBoxUi::initialize(int type)
     }
 
     mToolBox->initialize(type);
-
     mCommunicationToolType = type;
+
     QString toolName = communiticationToolName(type);
     QIcon icon = communiticationToolIcon(type);
     setWindowTitle(toolName);
@@ -284,8 +284,8 @@ void SAKToolBoxUi::onIsWorkingChanged()
     }
 }
 
-void SAKToolBoxUi::onTooBoxBytesInputted(const QByteArray &bytes,
-                                         const QVariant &context)
+void SAKToolBoxUi::onBytesWritten(const QByteArray &bytes,
+                                  const QVariant &context)
 {
     if (!ui->checkBoxOutputTx->isChecked()) {
         return;
@@ -294,8 +294,8 @@ void SAKToolBoxUi::onTooBoxBytesInputted(const QByteArray &bytes,
     output2ui(bytes, context, false);
 }
 
-void SAKToolBoxUi::onTooBoxBytesOutputted(const QByteArray &bytes,
-                                          const QVariant &context)
+void SAKToolBoxUi::onBytesRead(const QByteArray &bytes,
+                               const QVariant &context)
 {
     if (!ui->checkBoxOutputRx->isChecked()) {
         return;
@@ -368,8 +368,6 @@ void SAKToolBoxUi::initUiOutput()
 {
     ui->checkBoxOutputRx->setChecked(true);
     ui->checkBoxOutputTx->setChecked(true);
-    ui->checkBoxOutputWrap->setChecked(true);
-    ui->checkBoxOutputTime->setChecked(true);
     ui->textBrowserOutput->document()->setMaximumBlockCount(2000);
 }
 
@@ -414,6 +412,7 @@ void SAKToolBoxUi::initSignals()
     initSignalsCommunication();
     initSignalsInput();
     initSignalsOutput();
+    initSignalsTools();
 }
 
 void SAKToolBoxUi::initSignalsCommunication()
@@ -448,16 +447,21 @@ void SAKToolBoxUi::initSignalsTools()
 {
     connect(mToolBox, &SAKToolBox::isWorkingChanged,
             this, &SAKToolBoxUi::onIsWorkingChanged);
+
     connect(mCommunicationTool, &SAKCommunicationTool::bytesInputted,
-            this, &SAKToolBoxUi::onTooBoxBytesInputted);
+            this, &SAKToolBoxUi::onBytesWritten);
 
     auto outputAnalyzer = mToolBox->getOutputAnalyzerTool();
     connect(outputAnalyzer, &SAKAnalyzerTool::bytesOutputted,
-            this, &::SAKToolBoxUi::onTooBoxBytesOutputted);
+            this, &::SAKToolBoxUi::onBytesRead);
 }
 
 void SAKToolBoxUi::initTools()
 {
+    mToolBox->getInputMaskerTool()->setToolName("InputMasker");
+    mToolBox->getOutputMaskerTool()->setToolName("OutputMasker");
+    mToolBox->getInputAnalyzerTool()->setToolName("InputAnalyzer");
+    mToolBox->getOutputAnalyzerTool()->setToolName("OutputAnalyzer");
     mToolBoxUiParameters->initialize(mToolBox, settingsGroup());
 
     mEmitterToolUi = new SAKEmitterToolUi();

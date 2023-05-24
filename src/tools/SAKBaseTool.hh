@@ -23,6 +23,7 @@ class SAKBaseTool : public QThread
 public:
     explicit SAKBaseTool(const char *logCategory, QObject *parent = Q_NULLPTR);
     virtual ~SAKBaseTool();
+    void setToolName(const QString &name){mToolName = name;}
 
     /**
      * @brief inputBytes: The entrance of data.

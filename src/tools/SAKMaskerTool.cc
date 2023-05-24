@@ -24,10 +24,12 @@ void SAKMaskerTool::inputBytes(const QByteArray &bytes,
                                const QVariant &context)
 {
     emit bytesInputted(bytes, context);
-    outputMessage(QtInfoMsg, QString("Masker<-%1").arg(bytes.toHex(' ')));
+    outputMessage(QtInfoMsg,
+                  QString("%1<-%2").arg(mToolName, bytes.toHex(' ')));
 
     if (!enable()) {
-        outputMessage(QtInfoMsg, QString("Masker->%1").arg(bytes.toHex(' ')));
+        outputMessage(QtInfoMsg,
+                      QString("%1->%2").arg(mToolName, bytes.toHex(' ')));
         emit bytesOutputted(bytes, context);
     } else {
         QByteArray cookedBytes;
@@ -37,7 +39,8 @@ void SAKMaskerTool::inputBytes(const QByteArray &bytes,
             cookedBytes.append(reinterpret_cast<char*>(&value), 1);
         }
 
-        outputMessage(QtInfoMsg, QString("Masker->%1").arg(bytes.toHex(' ')));
+        outputMessage(QtInfoMsg,
+                      QString("%1->%2").arg(mToolName, bytes.toHex(' ')));
         emit bytesOutputted(bytes, context);
     }
 }

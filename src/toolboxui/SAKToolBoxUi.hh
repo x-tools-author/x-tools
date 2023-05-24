@@ -62,9 +62,9 @@ private:
 
     // slots
     void onIsWorkingChanged();
-    void onTooBoxBytesInputted(const QByteArray &bytes,
+    void onBytesWritten(const QByteArray &bytes,
                                const QVariant &context);
-    void onTooBoxBytesOutputted(const QByteArray &bytes,
+    void onBytesRead(const QByteArray &bytes,
                                 const QVariant &context);
 
 private:
