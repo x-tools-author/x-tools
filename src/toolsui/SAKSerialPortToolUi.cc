@@ -50,6 +50,13 @@ void SAKSerialPortToolUi::setupCommunicationTool(SAKCommunicationTool *tool)
             this, &SAKSerialPortToolUi::onComboBoxParityCurrentIndexChanged);
     connect(ui->comboBoxFlowControl, &QComboBox::currentIndexChanged,
             this, &SAKSerialPortToolUi::onComboBoxFlowControlCurrentIndexChanged);
+
+    ui->comboBoxPortNames->setGroupKey(mGroup, "portName");
+    ui->comboBoxBaudRate->setGroupKey(mGroup, "baudRate", false);
+    ui->comboBoxDataBits->setGroupKey(mGroup, "dataBits");
+    ui->comboBoxStopBits->setGroupKey(mGroup, "stopBits");
+    ui->comboBoxParity->setGroupKey(mGroup, "parity");
+    ui->comboBoxFlowControl->setGroupKey(mGroup, "flowControl");
 }
 
 void SAKSerialPortToolUi::onComboBoxPortNamesCurrentTextChanged()

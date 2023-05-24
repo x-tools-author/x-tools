@@ -78,7 +78,7 @@ QList<int> SAKToolBoxUi::supportedCommuniticationTools()
          << SAKToolFactory::TcpServerTool
          << SAKToolFactory::WebSocketClientTool
          << SAKToolFactory::WebSocketServerTool
-         << SAKToolFactory::BleCentral;
+         << SAKToolFactory::BleCentralTool;
     return list;
 }
 
@@ -105,6 +105,7 @@ void SAKToolBoxUi::setupCommuniticationTool(int type)
     }
 
     // Setup communication tool.
+    mCommunicationToolType = type;
     mCommunicationToolUi = communiticationToolUi(type);
     mCommunicationToolUi->setSettingsGroup(settingsGroup());
     if (!mCommunicationToolUi) {
@@ -142,7 +143,7 @@ QString SAKToolBoxUi::communiticationToolName(int type)
         return tr("WebSocket Client");
     } else if (type == SAKToolFactory::WebSocketServerTool) {
         return tr("WebSocket Server");
-    } else if (type == SAKToolFactory::BleCentral) {
+    } else if (type == SAKToolFactory::BleCentralTool) {
         return tr("BLE Central");
     } else {
         return "Unknow";
@@ -166,7 +167,7 @@ QIcon SAKToolBoxUi::communiticationToolIcon(int type)
         fileName = ":/res/icon/IconWebScoketClient.svg";
     } else if (type == SAKToolFactory::WebSocketServerTool) {
         fileName = ":/res/icon/IconWebSocketServer.svg";
-    } else if (type == SAKToolFactory::BleCentral) {
+    } else if (type == SAKToolFactory::BleCentralTool) {
         fileName = ":/res/icon/IconBlueTooth.svg";
     }
 
@@ -191,7 +192,7 @@ SAKCommunicationToolUi *SAKToolBoxUi::communiticationToolUi(int type)
         w = new SAKSocketClientToolUi();
     } else if (type == SAKToolFactory::WebSocketServerTool) {
         w = new SAKSocketServerToolUi();
-    } else if (type == SAKToolFactory::BleCentral) {
+    } else if (type == SAKToolFactory::BleCentralTool) {
         w = new SAKBleCentralToolUi();
     } else {
         qCWarning(mLoggingCategory) << "Unknow type of communication tool ui!";
@@ -280,7 +281,26 @@ void SAKToolBoxUi::output2ui(const QByteArray &bytes,
 
 QString SAKToolBoxUi::settingsGroup()
 {
-    return mCommunicationTool->property("toolTypeName").toString();
+    if (mCommunicationToolType == SAKToolFactory::SerialportTool) {
+        return "SerialportToolBox";
+    } else if (mCommunicationToolType == SAKToolFactory::UdpClientTool) {
+        return "UdpClientToolBox";
+    } else if (mCommunicationToolType == SAKToolFactory::UdpServerTool) {
+        return "UdpClientToolBox";
+    }  else if (mCommunicationToolType == SAKToolFactory::TcpClientTool) {
+        return "UdpServerToolBox";
+    } else if (mCommunicationToolType == SAKToolFactory::TcpServerTool) {
+        return "TcpServerToolBox";
+    }  else if (mCommunicationToolType == SAKToolFactory::WebSocketClientTool) {
+        return "WebSocketClientToolBox";
+    } else if (mCommunicationToolType == SAKToolFactory::WebSocketServerTool) {
+        return "WebSocketServerToolBox";
+    } else if (mCommunicationToolType == SAKToolFactory::BleCentralTool) {
+        return "BleCentralToolBox";
+    } else {
+        qCWarning(mLoggingCategory) << "Unknow type of communication tool ui!";
+        return  "UnknowToolBox";
+    }
 }
 
 void SAKToolBoxUi::onIsWorkingChanged()

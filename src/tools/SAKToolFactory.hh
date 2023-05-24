@@ -32,7 +32,7 @@ public:
         TcpServerTool,
         WebSocketClientTool,
         WebSocketServerTool,
-        BleCentral,
+        BleCentralTool,
         BlePeriheral
     };
     Q_ENUM(ToolsType)

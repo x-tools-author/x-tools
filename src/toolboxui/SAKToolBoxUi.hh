@@ -48,6 +48,7 @@ private:
     SAKPrestorerToolUi *mPrestorerToolUi{nullptr};
     const QLoggingCategory mLoggingCategory{"SAK.SAKToolBoxUi"};
     QTimer *mCycleSendingTimer{nullptr};
+    int mCommunicationToolType;
 
 private:
     QString communiticationToolName(int type);

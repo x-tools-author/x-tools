@@ -2,6 +2,7 @@ INCLUDEPATH += $$PWD
 
 HEADERS += \
     $$PWD/SAKAnalyzerToolUi.hh \
+    $$PWD/SAKBaseToolUi.hh \
     $$PWD/SAKBleCentralToolUi.hh \
     $$PWD/SAKCommunicationToolUi.hh \
     $$PWD/SAKEmitterToolUi.hh \
@@ -18,6 +19,7 @@ HEADERS += \
 
 SOURCES += \
     $$PWD/SAKAnalyzerToolUi.cc \
+    $$PWD/SAKBaseToolUi.cc \
     $$PWD/SAKBleCentralToolUi.cc \
     $$PWD/SAKCommunicationToolUi.cc \
     $$PWD/SAKEmitterToolUi.cc \
