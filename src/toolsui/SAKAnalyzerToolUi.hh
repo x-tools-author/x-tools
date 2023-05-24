@@ -23,9 +23,8 @@ class SAKAnalyzerToolUi : public SAKBaseToolUi
 public:
     explicit SAKAnalyzerToolUi(QWidget *parent = nullptr);
     void setToolName(const QString &name);
-    void setupAnalyzer(SAKAnalyzerTool *tool);
-
-    virtual void setupSettingsGroup(const QString &group) final;
+    virtual void onBaseToolUiInitialized(SAKBaseTool *tool,
+                                         const QString &settingsGroup) final;
 
 private:
     Ui::SAKAnalyzerToolUi *ui;

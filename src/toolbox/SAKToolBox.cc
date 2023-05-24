@@ -18,14 +18,22 @@ SAKToolBox::SAKToolBox(QObject *parent)
         return toolFactory->createTool(type);
     };
 
-    mInputMaskerTool    = qobject_cast<SAKMaskerTool*>(createTool(SAKToolFactory::MaskerTool));
-    mOutputMaskerTool   = qobject_cast<SAKMaskerTool*>(createTool(SAKToolFactory::MaskerTool));
-    mInputAnalyzerTool  = qobject_cast<SAKAnalyzerTool*>(createTool(SAKToolFactory::AnalyzerTool));
-    mOutputAnalyzerTool = qobject_cast<SAKAnalyzerTool*>(createTool(SAKToolFactory::AnalyzerTool));
-    mEmitterTool        = qobject_cast<SAKEmitterTool*>(createTool(SAKToolFactory::EmitterTool));
-    mResponserTool      = qobject_cast<SAKResponserTool*>(createTool(SAKToolFactory::ResponserTool));
-    mStorerTool         = qobject_cast<SAKStorerTool*>(createTool(SAKToolFactory::StorerTool));
-    mPrestorerTool      = qobject_cast<SAKPrestorerTool*>(createTool(SAKToolFactory::PrestoreTool));
+    SAKBaseTool *tool = createTool(SAKToolFactory::MaskerTool);
+    mInputMaskerTool = qobject_cast<SAKMaskerTool*>(tool);
+    tool = createTool(SAKToolFactory::MaskerTool);
+    mOutputMaskerTool = qobject_cast<SAKMaskerTool*>(tool);
+    tool = createTool(SAKToolFactory::AnalyzerTool);
+    mInputAnalyzerTool = qobject_cast<SAKAnalyzerTool*>(tool);
+    tool = createTool(SAKToolFactory::AnalyzerTool);
+    mOutputAnalyzerTool = qobject_cast<SAKAnalyzerTool*>(tool);
+    tool = createTool(SAKToolFactory::EmitterTool);
+    mEmitterTool = qobject_cast<SAKEmitterTool*>(tool);
+    tool = createTool(SAKToolFactory::ResponserTool);
+    mResponserTool = qobject_cast<SAKResponserTool*>(tool);
+    tool = createTool(SAKToolFactory::StorerTool);
+    mStorerTool = qobject_cast<SAKStorerTool*>(tool);
+    tool = createTool(SAKToolFactory::PrestoreTool);
+    mPrestorerTool = qobject_cast<SAKPrestorerTool*>(tool);
 
     mToolList << mInputMaskerTool
               << mOutputMaskerTool
@@ -37,18 +45,20 @@ SAKToolBox::SAKToolBox(QObject *parent)
               << mPrestorerTool;
 }
 
-void SAKToolBox::setupComunicationTool(int type)
+void SAKToolBox::initialize(int type)
 {
     if (mComunicationTool) {
         mComunicationTool->exit();
         mComunicationTool->wait();
         mComunicationTool->deleteLater();
+        mComunicationTool = nullptr;
     }
 
     auto toolFactory = SAKToolFactory::instance();
-    mComunicationTool = toolFactory->createTool(type);
+    auto tool = toolFactory->createTool(type);
+    mComunicationTool = qobject_cast<SAKCommunicationTool*>(tool);
     if (!mComunicationTool) {
-        qCWarning(mLoggingCategory) << "The value of mComunicationTool is nullptr";
+        qCWarning(mLoggingCategory) << "mComunicationTool is nullptr!";
         return;
     }
 
@@ -80,7 +90,7 @@ void SAKToolBox::setupComunicationTool(int type)
     connect(mComunicationTool, &SAKBaseTool::bytesInputted,
             mStorerTool, &SAKBaseTool::inputBytes);
 
-    emit communicationChanged();
+    emit communicatonChanged();
 }
 
 void SAKToolBox::open()
@@ -118,12 +128,12 @@ void SAKToolBox::close()
 
 void SAKToolBox::send(const QByteArray &bytes, const QVariant &context)
 {
-    mInputMaskerTool->inputBytes(bytes, context);
+    mInputAnalyzerTool->inputBytes(bytes, context);
 }
 
 void SAKToolBox::uninitializedTips()
 {
     Q_ASSERT_X(false, __FUNCTION__,
-               "You must call the interface name setupComunicationTool() "
+               "You must call the interface name initialize() "
                "before using the object.");
 }

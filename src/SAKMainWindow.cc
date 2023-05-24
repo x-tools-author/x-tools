@@ -142,7 +142,7 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
     for (int i = 0; i < types.count(); i++) {
         int type = types.at(i);
         SAKToolBoxUi *toolBoxUi = new SAKToolBoxUi(this);
-        toolBoxUi->setupCommuniticationTool(type);
+        toolBoxUi->initialize(type);
         QToolButton *bt = new QToolButton();
         bt->setToolTip(toolBoxUi->windowTitle());
         bt->setIcon(toolBoxUi->windowIcon());

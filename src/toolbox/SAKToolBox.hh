@@ -20,12 +20,13 @@
 #include "SAKAnalyzerTool.hh"
 #include "SAKPrestorerTool.hh"
 #include "SAKResponserTool.hh"
+#include "SAKCommunicationTool.hh"
 
 class SAKToolBox : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QVariant communication READ communication
-               NOTIFY communicationChanged)
+    Q_PROPERTY(QVariant communicaton READ communicaton
+                   NOTIFY communicatonChanged)
     Q_PROPERTY(QVariant inputMasker READ inputMasker CONSTANT)
     Q_PROPERTY(QVariant outputMasker READ outputMasker CONSTANT)
     Q_PROPERTY(QVariant inputAnalyzer READ inputAnalyzer CONSTANT)
@@ -39,8 +40,8 @@ class SAKToolBox : public QObject
 public:
     explicit SAKToolBox(QObject *parent = nullptr);
 
-    /// You must call the interface before useing the call object.
-    Q_INVOKABLE void setupComunicationTool(int type);
+    /// You must call the interface before useing.
+    Q_INVOKABLE void initialize(int type);
 
     Q_INVOKABLE void open();
     Q_INVOKABLE void close();
@@ -48,6 +49,7 @@ public:
                           const QVariant &context = QJsonObject());
     bool isWorking(){return mIsWorking;}
 
+    SAKCommunicationTool*getCommunicationTool(){return mComunicationTool;}
     SAKMaskerTool       *getInputMaskerTool(){return mInputMaskerTool;}
     SAKMaskerTool       *getOutputMaskerTool(){return mOutputMaskerTool;}
     SAKAnalyzerTool     *getInputAnalyzerTool(){return mInputAnalyzerTool;}
@@ -58,7 +60,7 @@ public:
     SAKPrestorerTool    *getPrestorerTool(){return mPrestorerTool;}
 
 private:
-    SAKBaseTool         *mComunicationTool{nullptr};
+    SAKCommunicationTool*mComunicationTool{nullptr};
     SAKMaskerTool       *mInputMaskerTool{nullptr};
     SAKMaskerTool       *mOutputMaskerTool{nullptr};
     SAKAnalyzerTool     *mInputAnalyzerTool{nullptr};
@@ -70,14 +72,14 @@ private:
 
     QList<SAKBaseTool*> mToolList;
     const QLoggingCategory mLoggingCategory{"SAK.ToolBox"};
+    bool mIsWorking{false};
 
 private:
     void uninitializedTips();
 
+    // Properties ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 private:
-    QVariant communication(){return QVariant::fromValue(mComunicationTool);}
-    Q_SIGNAL void communicationChanged();
-
+    QVariant communicaton(){return QVariant::fromValue(mComunicationTool);}
     QVariant inputMasker(){return QVariant::fromValue(mInputMaskerTool);}
     QVariant outputMasker(){return QVariant::fromValue(mOutputMaskerTool);}
     QVariant inputAnalyzer(){return QVariant::fromValue(mInputAnalyzerTool);}
@@ -87,9 +89,9 @@ private:
     QVariant storer(){return QVariant::fromValue(mStorerTool);}
     QVariant prestorer(){return QVariant::fromValue(mPrestorerTool);}
 
-    bool mIsWorking{false};
 signals:
     void isWorkingChanged();
+    void communicatonChanged();
 };
 
 #endif // SAKTOOLBOX_H

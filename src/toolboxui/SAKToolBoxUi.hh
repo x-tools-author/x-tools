@@ -35,8 +35,9 @@ class SAKToolBoxUi : public QWidget
 public:
     explicit SAKToolBoxUi(QWidget *parent = nullptr);
     ~SAKToolBoxUi();
+
     static QList<int> supportedCommuniticationTools();
-    void setupCommuniticationTool(int type);
+    void initialize(int type);
 
 private:
     SAKToolBoxUiParameters *mToolBoxUiParameters{nullptr};
@@ -58,12 +59,13 @@ private:
     QString dateTimeContext();
     void output2ui(const QByteArray &bytes, const QVariant &context, bool isRx);
     QString settingsGroup();
-    void setupTools();
 
     // slots
     void onIsWorkingChanged();
-    void onTooBoxBytesInputted(const QByteArray &bytes, const QVariant &context);
-    void onTooBoxBytesOutputted(const QByteArray &bytes, const QVariant &context);
+    void onTooBoxBytesInputted(const QByteArray &bytes,
+                               const QVariant &context);
+    void onTooBoxBytesOutputted(const QByteArray &bytes,
+                                const QVariant &context);
 
 private:
     void init();
@@ -81,6 +83,9 @@ private:
     void initSignalsCommunication();
     void initSignalsInput();
     void initSignalsOutput();
+    void initSignalsTools();
+
+    void initTools();
 
 private:
     Ui::SAKToolBoxUi *ui;

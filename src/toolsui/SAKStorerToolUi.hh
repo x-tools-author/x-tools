@@ -23,11 +23,8 @@ class SAKStorerToolUi : public SAKBaseToolUi
 public:
     explicit SAKStorerToolUi(QWidget *parent = nullptr);
     ~SAKStorerToolUi();
-    void setupStorer(SAKStorerTool *tool);
-    virtual void setupSettingsGroup(const QString &group) final;
-
-private:
-    SAKStorerTool *mTool{nullptr};
+    virtual void onBaseToolUiInitialized(SAKBaseTool *tool,
+                                         const QString &settingsGroup) final;
 
 private:
     Ui::SAKStorerToolUi *ui{nullptr};

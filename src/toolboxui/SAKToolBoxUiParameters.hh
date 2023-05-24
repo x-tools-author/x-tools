@@ -17,9 +17,7 @@ namespace Ui {
 class SAKToolBoxUiParameters;
 }
 
-class SAKMaskerTool;
-class SAKAnalyzerTool;
-class SAKStorerTool;
+class SAKToolBox;
 class SAKToolBoxUiParameters : public QDialog
 {
     Q_OBJECT
@@ -45,18 +43,13 @@ public:
             QStringList keyWords;
         } output;
     };
+
 public:
     SAKToolBoxUiParameters(QWidget *parent = nullptr);
     ~SAKToolBoxUiParameters();
     void showDialog(int tabIndex);
     ParameterContext parameterContext();
-
-    void setupInputMasker(SAKMaskerTool *tool);
-    void setupOutputMasker(SAKMaskerTool *tool);
-    void setupInputAnalyzer(SAKAnalyzerTool *tool);
-    void setupOutputAnalyzer(SAKAnalyzerTool *tool);
-    void setupStorer(SAKStorerTool *tool);
-    void setupSettingsGroup(const QString &group);
+    void initialize(SAKToolBox *toolBox, const QString &settingsGroup);
 
 private:
     const QLoggingCategory mLoggingCategory{"SAK.ToolBoxUiParameters"};

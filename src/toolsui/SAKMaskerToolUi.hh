@@ -16,7 +16,6 @@ namespace Ui {
 class SAKMaskerToolUi;
 }
 
-class SAKMaskerTool;
 class SAKMaskerToolUi : public SAKBaseToolUi
 {
     Q_OBJECT
@@ -24,12 +23,10 @@ public:
     SAKMaskerToolUi(QWidget *parent = Q_NULLPTR);
     ~SAKMaskerToolUi();
     void setToolName(const QString &name);
-    void setupMasker(SAKMaskerTool *tool);
 
-    virtual void setupSettingsGroup(const QString &group) final;
-
-private:
-    SAKMaskerTool *mTool{nullptr};
+protected:
+    virtual void onBaseToolUiInitialized(SAKBaseTool *tool,
+                                         const QString &settingsGroup) final;
 
 private:
     Ui::SAKMaskerToolUi *ui;

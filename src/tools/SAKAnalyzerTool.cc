@@ -35,18 +35,22 @@ void SAKAnalyzerTool::setMaxTempBytes(int maxBytes)
     mParameters.maxTempBytes = maxBytes;
 }
 
-void SAKAnalyzerTool::inputBytes(const QByteArray &bytes, const QVariant &context)
+void SAKAnalyzerTool::inputBytes(const QByteArray &bytes,
+                                 const QVariant &context)
 {
     if (bytes.isEmpty()) {
-        outputMessage(QtInfoMsg, "Empty input bytes, the operation will be ignored!");
+        outputMessage(QtInfoMsg, "Empty input bytes, "
+                                 "the operation will be ignored!");
         return;
     }
 
-    outputMessage(QtInfoMsg, QString("Analyzer<-%1").arg(bytes.toHex(' ')));
+    outputMessage(QtInfoMsg,
+                  QString("Analyzer<-%1").arg(bytes.toHex(' ')));
     emit bytesInputted(bytes, context);
 
     if (!enable()) {
-        outputMessage(QtInfoMsg, QString("Analyzer->%1").arg(bytes.toHex(' ')));
+        outputMessage(QtInfoMsg,
+                      QString("Analyzer->%1").arg(bytes.toHex(' ')));
         emit bytesOutputted(bytes, context);
     } else {
         mInputtedBytesMutex.lock();
@@ -90,32 +94,40 @@ void SAKAnalyzerTool::analyze()
         outputMessage(QtInfoMsg,
                       "clear bytes: " + QString(mInputtedBytes.toHex(' ')));
         mInputtedBytes.clear();
+
+        return;
+    }
+
+    if (mParameters.fixed) {
+        while (mInputtedBytes.length() >= mParameters.frameBytes) {
+            QByteArray frame(mInputtedBytes.data(),
+                             mParameters.frameBytes);
+            mInputtedBytes.remove(0, mParameters.frameBytes);
+            outputMessage(QtInfoMsg,
+                          QString("Analyzer->%1").arg(frame.toHex(' ')));
+            emit bytesOutputted(frame, QJsonObject());
+        }
+
+        return;
+    }
+
+    if (mParameters.separationMark.isEmpty()) {
+        if (!mInputtedBytes.isEmpty()) {
+            mInputtedBytes.clear();
+            QString msg = QString("Analyzer->%1")
+                              .arg(mInputtedBytes.toHex(' '));
+            outputMessage(QtInfoMsg, msg);
+            emit bytesOutputted(mInputtedBytes, QJsonObject());
+        }
     } else {
-        if (mParameters.fixed) {
-            while (mInputtedBytes.length() >= mParameters.frameBytes) {
-                QByteArray frame(mInputtedBytes.data(),
-                                 mParameters.frameBytes);
-                mInputtedBytes.remove(0, mParameters.frameBytes);
-                outputMessage(QtInfoMsg, QString("Analyzer->%1").arg(frame.toHex(' ')));
-                emit bytesOutputted(frame, QJsonObject());
-            }
-        } else {
-            if (mParameters.separationMark.isEmpty()) {
-                if (!mInputtedBytes.isEmpty()) {
-                    mInputtedBytes.clear();
-                    outputMessage(QtInfoMsg, QString("Analyzer->%1").arg(mInputtedBytes.toHex(' ')));
-                    emit bytesOutputted(mInputtedBytes, QJsonObject());
-                }
-            } else {
-                auto ret = mInputtedBytes.indexOf(mParameters.separationMark);
-                if (ret != -1) {
-                    int len = ret + mParameters.separationMark.length();
-                    QByteArray frame(mInputtedBytes.constData(), len);
-                    mInputtedBytes.remove(0, len);
-                    outputMessage(QtInfoMsg, QString("Analyzer->%1").arg(frame.toHex(' ')));
-                    emit bytesOutputted(frame, QJsonObject());
-                }
-            }
+        auto ret = mInputtedBytes.indexOf(mParameters.separationMark);
+        if (ret != -1) {
+            int len = ret + mParameters.separationMark.length();
+            QByteArray frame(mInputtedBytes.constData(), len);
+            mInputtedBytes.remove(0, len);
+            QString msg = QString("Analyzer->%1").arg(frame.toHex(' '));
+            outputMessage(QtInfoMsg, msg);
+            emit bytesOutputted(frame, QJsonObject());
         }
     }
 }

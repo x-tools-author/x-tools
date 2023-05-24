@@ -22,17 +22,15 @@ void SAKAnalyzerToolUi::setToolName(const QString &name)
     ui->groupBox->setTitle(name);
 }
 
-void SAKAnalyzerToolUi::setupAnalyzer(SAKAnalyzerTool *tool)
+void SAKAnalyzerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
+                                                const QString &settingsGroup)
 {
-    Q_UNUSED(tool)
-}
+    ui->checkBoxEnable->setGroupKey(settingsGroup, "analyzerEnable");
+    ui->checkBoxFixedLength->setGroupKey(settingsGroup, "fxiedLength");
+    ui->spinBoxFrameLength->setGroupKey(settingsGroup, "frameLength");
+    ui->spinBoxMaxTempBytes->setGroupKey(settingsGroup, "maxTempBytes");
+    ui->lineEditHeader->setGroupKey(settingsGroup, "header");
+    ui->lineEditTail->setGroupKey(settingsGroup, "tail");
 
-void SAKAnalyzerToolUi::setupSettingsGroup(const QString &group)
-{
-    ui->checkBoxEnable->setGroupKey(group, "analyzerEnable");
-    ui->checkBoxFixedLength->setGroupKey(group, "fxiedLength");
-    ui->spinBoxFrameLength->setGroupKey(group, "frameLength");
-    ui->spinBoxMaxTempBytes->setGroupKey(group, "maxTempBytes");
-    ui->lineEditHeader->setGroupKey(group, "header");
-    ui->lineEditTail->setGroupKey(group, "tail");
+    Q_UNUSED(tool)
 }

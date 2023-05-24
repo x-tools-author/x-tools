@@ -16,17 +16,37 @@ SAKBaseToolUi::SAKBaseToolUi(QWidget *parent)
 
 }
 
+void SAKBaseToolUi::initialize(SAKBaseTool *tool,
+                               const QString &settingsGroup,
+                               const char *loggingCategory)
+{
+    if (mLoggingCategory) {
+        delete mLoggingCategory;
+        mLoggingCategory = nullptr;
+    }
+
+    mLoggingCategory = new QLoggingCategory(loggingCategory);
+
+    if (!tool) {
+        qCWarning((*mLoggingCategory)) << "The value of tool is nullptr!";
+        return;
+    }
+
+    connect(tool, &SAKBaseTool::isWorkingChanged, this, [=](){
+        onIsWorkingChanged(tool->isWorking());
+    });
+
+    onBaseToolUiInitialized(tool, settingsGroup);
+}
+
 void SAKBaseToolUi::onIsWorkingChanged(bool isWorking)
 {
     Q_UNUSED(isWorking)
 }
 
-void SAKBaseToolUi::setupTool(SAKBaseTool *tool)
+void SAKBaseToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
+                             const QString &settingsGroup)
 {
-    mTool = tool;
-}
-
-void SAKBaseToolUi::setupSettingsGroup(const QString &group)
-{
-    mSettingsGroup = group;
+    Q_UNUSED(tool)
+    Q_UNUSED(settingsGroup)
 }

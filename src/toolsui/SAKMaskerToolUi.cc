@@ -28,28 +28,22 @@ void SAKMaskerToolUi::setToolName(const QString &name)
     ui->groupBox->setTitle(name);
 }
 
-void SAKMaskerToolUi::setupMasker(SAKMaskerTool *tool)
+void SAKMaskerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
+                                              const QString &settingsGroup)
 {
-    if (!tool) {
+    ui->checkBoxEnable->setGroupKey(settingsGroup, "maskerEnable");
+    ui->spinBoxMaskCode->setGroupKey(settingsGroup, "maskCode");
+
+    SAKMaskerTool *cookedTool = qobject_cast<SAKMaskerTool*>(tool);
+    if (!cookedTool) {
+        qCWarning((*mLoggingCategory)) << "Invalid tool type!";
         return;
     }
 
-    if (mTool) {
-        disconnect(this, nullptr,
-                   const_cast<const SAKMaskerTool*>(mTool), nullptr);
-    }
-
-    mTool = tool;
     connect(ui->checkBoxEnable, &QCheckBox::clicked, this, [=](){
-        mTool->setProperty("enable", ui->checkBoxEnable->isChecked());
+        cookedTool->setEnable(ui->checkBoxEnable->isChecked());
     });
     connect(ui->spinBoxMaskCode, &QSpinBox::valueChanged, this, [=](int code){
-        mTool->setMaskCode(code);
+        cookedTool->setMaskCode(code);
     });
-}
-
-void SAKMaskerToolUi::setupSettingsGroup(const QString &group)
-{
-    ui->checkBoxEnable->setGroupKey(group, "maskerEnable");
-    ui->spinBoxMaskCode->setGroupKey(group, "maskCode");
 }

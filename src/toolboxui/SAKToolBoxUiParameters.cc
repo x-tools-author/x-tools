@@ -7,6 +7,7 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
+#include "SAKToolBox.hh"
 #include "SAKToolBoxUiParameters.hh"
 #include "ui_SAKToolBoxUiParameters.h"
 
@@ -60,41 +61,22 @@ SAKToolBoxUiParameters::parameterContext()
     return ctx;
 }
 
-void SAKToolBoxUiParameters::setupInputMasker(SAKMaskerTool *tool)
+void SAKToolBoxUiParameters::initialize(SAKToolBox *toolBox,
+                                        const QString &settingsGroup)
 {
-    ui->widgetInputMasker->setupMasker(tool);
-}
+    ui->checkBoxBigEndian->setGroupKey(settingsGroup, "bigEndian");
+    ui->checkBoxCrcEnable->setGroupKey(settingsGroup, "crcEnable");
+    ui->spinBoxEndIndex->setGroupKey(settingsGroup, "endIndex");
+    ui->spinBoxStartIndex->setGroupKey(settingsGroup, "startIndex");
 
-void SAKToolBoxUiParameters::setupOutputMasker(SAKMaskerTool *tool)
-{
-    ui->widgetOutputMasker->setupMasker(tool);
-}
-
-void SAKToolBoxUiParameters::setupInputAnalyzer(SAKAnalyzerTool *tool)
-{
-    ui->widgetInputAnanyzer->setupAnalyzer(tool);
-}
-
-void SAKToolBoxUiParameters::setupOutputAnalyzer(SAKAnalyzerTool *tool)
-{
-    ui->widgetOutputAnanlyzer->setupAnalyzer(tool);
-}
-
-void SAKToolBoxUiParameters::setupStorer(SAKStorerTool *tool)
-{
-    ui->widgetStorer->setupStorer(tool);
-}
-
-void SAKToolBoxUiParameters::setupSettingsGroup(const QString &group)
-{
-    ui->checkBoxBigEndian->setGroupKey(group, "bigEndian");
-    ui->checkBoxCrcEnable->setGroupKey(group, "crcEnable");
-    ui->spinBoxEndIndex->setGroupKey(group, "endIndex");
-    ui->spinBoxStartIndex->setGroupKey(group, "startIndex");
-
-    ui->widgetInputMasker->setupSettingsGroup(group + "/inputMasker");
-    ui->widgetOutputMasker->setupSettingsGroup(group + "/outputMasker");
-    ui->widgetInputAnanyzer->setupSettingsGroup(group + "/inputAnalyzer");
-    ui->widgetOutputAnanlyzer->setupSettingsGroup(group + "/outputAnalyzer");
-    ui->widgetStorer->setupSettingsGroup(group + "/storer");
+    ui->widgetInputMasker->initialize(toolBox->getInputMaskerTool(),
+                                      settingsGroup + "/inputMasker");
+    ui->widgetInputMasker->initialize(toolBox->getOutputMaskerTool(),
+                                      settingsGroup + "/outputMasker");
+    ui->widgetInputAnanyzer->initialize(toolBox->getInputAnalyzerTool(),
+                                        settingsGroup + "/inputAnalyzer");
+    ui->widgetOutputAnanlyzer->initialize(toolBox->getOutputAnalyzerTool(),
+                                          settingsGroup + "/outputAnalyzer");
+    ui->widgetStorer->initialize(toolBox->getStorerTool(),
+                                 settingsGroup + "/storer");
 }

@@ -20,15 +20,17 @@ class SAKBaseToolUi : public QWidget
 public:
     explicit SAKBaseToolUi(QWidget *parent = nullptr);
 
-    virtual void setupTool(SAKBaseTool *tool);
-    virtual void setupSettingsGroup(const QString &group);
+    void initialize(SAKBaseTool *tool,
+                    const QString &settingsGroup,
+                    const char *loggingCategory = nullptr);
 
 protected:
     virtual void onIsWorkingChanged(bool isWorking);
+    virtual void onBaseToolUiInitialized(SAKBaseTool *tool,
+                                         const QString &settingsGroup);
 
 protected:
-    SAKBaseTool *mTool{nullptr};
-    QString mSettingsGroup;
+    QLoggingCategory *mLoggingCategory{nullptr};
 };
 
 #endif // SAKBASETOOLUI_HH
