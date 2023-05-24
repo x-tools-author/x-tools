@@ -87,13 +87,17 @@ void SAKToolBoxUi::setupCommuniticationTool(int type)
     // Setup communication tool.
     mCommunicationToolType = type;
     mCommunicationToolUi = communiticationToolUi(type);
-    mCommunicationToolUi->setSettingsGroup(settingsGroup());
-    mToolBoxUiParameters->setupSettingsGroup(settingsGroup());
-    setupTools();
     if (!mCommunicationToolUi) {
         qCWarning(mLoggingCategory) << "mCommunicationToolUi is nullptr";
         return;
     }
+
+
+    mCommunicationToolUi->setSettingsGroup(settingsGroup());
+    mToolBoxUiParameters->setupSettingsGroup(settingsGroup());
+
+
+    setupTools();
 
     l->addWidget(mCommunicationToolUi);
     mCommunicationToolUi->setupCommunicationTool(mCommunicationTool);

@@ -8,9 +8,38 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include "SAKLineEdit.hh"
+#include "SAKSettings.hh"
 
 SAKLineEdit::SAKLineEdit(QWidget *parent)
     : QLineEdit(parent)
 {
+    connect(this, &SAKLineEdit::textChanged,
+            this, &SAKLineEdit::writeToSettingsFile);
+}
 
+void SAKLineEdit::setGroupKey(const QString &group,
+                             const QString &key)
+{
+    mKey = group + "/" + key;
+    readFromSettingsFile();
+}
+
+
+void SAKLineEdit::readFromSettingsFile()
+{
+    if (mKey.isEmpty()) {
+        return;
+    }
+
+    QString txt = SAKSettings::instance()->value(mKey).toString();
+    setText(txt);
+}
+
+void SAKLineEdit::writeToSettingsFile()
+{
+    if (mKey.isEmpty()) {
+        return;
+    }
+
+    SAKSettings::instance()->setValue(mKey, text());
 }

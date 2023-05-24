@@ -10,20 +10,21 @@
 #ifndef SAKSTORERTOOLUI_HH
 #define SAKSTORERTOOLUI_HH
 
-#include <QWidget>
+#include "SAKBaseToolUi.hh"
 
 namespace Ui {
 class SAKStorerToolUi;
 }
 
 class SAKStorerTool;
-class SAKStorerToolUi : public QWidget
+class SAKStorerToolUi : public SAKBaseToolUi
 {
     Q_OBJECT
 public:
     explicit SAKStorerToolUi(QWidget *parent = nullptr);
     ~SAKStorerToolUi();
     void setupStorer(SAKStorerTool *tool);
+    virtual void setupSettingsGroup(const QString &group) final;
 
 private:
     SAKStorerTool *mTool{nullptr};

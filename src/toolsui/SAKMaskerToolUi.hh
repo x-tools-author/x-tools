@@ -10,14 +10,14 @@
 #ifndef SAKMASKERTOOLUI_HH
 #define SAKMASKERTOOLUI_HH
 
-#include <QWidget>
+#include "SAKBaseToolUi.hh"
 
 namespace Ui {
 class SAKMaskerToolUi;
 }
 
 class SAKMaskerTool;
-class SAKMaskerToolUi : public QWidget
+class SAKMaskerToolUi : public SAKBaseToolUi
 {
     Q_OBJECT
 public:
@@ -25,6 +25,8 @@ public:
     ~SAKMaskerToolUi();
     void setToolName(const QString &name);
     void setupMasker(SAKMaskerTool *tool);
+
+    virtual void setupSettingsGroup(const QString &group) final;
 
 private:
     SAKMaskerTool *mTool{nullptr};

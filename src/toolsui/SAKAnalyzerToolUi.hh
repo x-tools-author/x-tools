@@ -10,20 +10,22 @@
 #ifndef SAKANALYZERTOOLUI_HH
 #define SAKANALYZERTOOLUI_HH
 
-#include <QWidget>
+#include "SAKBaseToolUi.hh"
 
 namespace Ui {
 class SAKAnalyzerToolUi;
 }
 
 class SAKAnalyzerTool;
-class SAKAnalyzerToolUi : public QWidget
+class SAKAnalyzerToolUi : public SAKBaseToolUi
 {
     Q_OBJECT
 public:
     explicit SAKAnalyzerToolUi(QWidget *parent = nullptr);
     void setToolName(const QString &name);
     void setupAnalyzer(SAKAnalyzerTool *tool);
+
+    virtual void setupSettingsGroup(const QString &group) final;
 
 private:
     Ui::SAKAnalyzerToolUi *ui;

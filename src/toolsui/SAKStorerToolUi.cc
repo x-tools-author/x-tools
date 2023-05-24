@@ -13,7 +13,7 @@
 #include "ui_SAKStorerToolUi.h"
 
 SAKStorerToolUi::SAKStorerToolUi(QWidget *parent)
-    : QWidget{parent}
+    : SAKBaseToolUi{parent}
     , ui(new Ui::SAKStorerToolUi)
 {
     ui->setupUi(this);
@@ -69,6 +69,17 @@ void SAKStorerToolUi::setupStorer(SAKStorerTool *tool)
     connect(ui->checkBoxMs, &QCheckBox::clicked, this, [=](){
         mTool->setSaveMs(ui->checkBoxMs->isChecked());
     });
+}
+
+void SAKStorerToolUi::setupSettingsGroup(const QString &group)
+{
+    ui->checkBoxEnable->setGroupKey(group, "enable");
+    ui->checkBoxDate->setGroupKey(group, "date");
+    ui->checkBoxTime->setGroupKey(group, "time");
+    ui->checkBoxMs->setGroupKey(group, "ms");
+    ui->checkBoxRx->setGroupKey(group, "rx");
+    ui->checkBoxTx->setGroupKey(group, "tx");
+    ui->lineEditStorerPath->setGroupKey(group, "path");
 }
 
 void SAKStorerToolUi::onPushButtonSelectFileClicked()

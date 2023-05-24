@@ -12,7 +12,7 @@
 #include "ui_SAKMaskerToolUi.h"
 
 SAKMaskerToolUi::SAKMaskerToolUi(QWidget *parent)
-    : QWidget(parent)
+    : SAKBaseToolUi(parent)
     , ui(new Ui::SAKMaskerToolUi)
 {
     ui->setupUi(this);
@@ -46,4 +46,10 @@ void SAKMaskerToolUi::setupMasker(SAKMaskerTool *tool)
     connect(ui->spinBoxMaskCode, &QSpinBox::valueChanged, this, [=](int code){
         mTool->setMaskCode(code);
     });
+}
+
+void SAKMaskerToolUi::setupSettingsGroup(const QString &group)
+{
+    ui->checkBoxEnable->setGroupKey(group, "maskerEnable");
+    ui->spinBoxMaskCode->setGroupKey(group, "maskCode");
 }

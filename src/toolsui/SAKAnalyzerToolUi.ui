@@ -40,7 +40,7 @@
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QLineEdit" name="lineEditHeader"/>
+       <widget class="SAKLineEdit" name="lineEditHeader"/>
       </item>
       <item row="2" column="2">
        <widget class="QLabel" name="label_4">
@@ -50,12 +50,12 @@
        </widget>
       </item>
       <item row="2" column="3">
-       <widget class="QLineEdit" name="lineEditTail"/>
+       <widget class="SAKLineEdit" name="lineEditTail"/>
       </item>
       <item row="0" column="0" colspan="4">
        <layout class="QGridLayout" name="gridLayout_2">
         <item row="1" column="0">
-         <widget class="QCheckBox" name="checkBoxFixedLength">
+         <widget class="SAKCheckBox" name="checkBoxFixedLength">
           <property name="text">
            <string>Fixed length</string>
           </property>
@@ -69,10 +69,10 @@
          </widget>
         </item>
         <item row="0" column="2">
-         <widget class="QSpinBox" name="spinBoxMaxTempBytes"/>
+         <widget class="SAKSpinBox" name="spinBoxMaxTempBytes"/>
         </item>
         <item row="0" column="0">
-         <widget class="QCheckBox" name="checkBoxEnable">
+         <widget class="SAKCheckBox" name="checkBoxEnable">
           <property name="text">
            <string>Enable</string>
           </property>
@@ -86,7 +86,7 @@
          </widget>
         </item>
         <item row="1" column="2">
-         <widget class="QSpinBox" name="spinBoxFrameLength"/>
+         <widget class="SAKSpinBox" name="spinBoxFrameLength"/>
         </item>
         <item row="0" column="3">
          <spacer name="horizontalSpacer">
@@ -115,6 +115,23 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>SAKCheckBox</class>
+   <extends>QCheckBox</extends>
+   <header location="global">SAKCheckBox.hh</header>
+  </customwidget>
+  <customwidget>
+   <class>SAKSpinBox</class>
+   <extends>QSpinBox</extends>
+   <header location="global">SAKSpinBox.hh</header>
+  </customwidget>
+  <customwidget>
+   <class>SAKLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header location="global">SAKLineEdit.hh</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

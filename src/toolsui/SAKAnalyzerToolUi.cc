@@ -11,7 +11,7 @@
 #include "ui_SAKAnalyzerToolUi.h"
 
 SAKAnalyzerToolUi::SAKAnalyzerToolUi(QWidget *parent)
-    : QWidget{parent}
+    : SAKBaseToolUi{parent}
     , ui(new Ui::SAKAnalyzerToolUi)
 {
     ui->setupUi(this);
@@ -25,4 +25,14 @@ void SAKAnalyzerToolUi::setToolName(const QString &name)
 void SAKAnalyzerToolUi::setupAnalyzer(SAKAnalyzerTool *tool)
 {
     Q_UNUSED(tool)
+}
+
+void SAKAnalyzerToolUi::setupSettingsGroup(const QString &group)
+{
+    ui->checkBoxEnable->setGroupKey(group, "analyzerEnable");
+    ui->checkBoxFixedLength->setGroupKey(group, "fxiedLength");
+    ui->spinBoxFrameLength->setGroupKey(group, "frameLength");
+    ui->spinBoxMaxTempBytes->setGroupKey(group, "maxTempBytes");
+    ui->lineEditHeader->setGroupKey(group, "header");
+    ui->lineEditTail->setGroupKey(group, "tail");
 }

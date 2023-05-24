@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>225</width>
+    <width>233</width>
     <height>70</height>
    </rect>
   </property>
@@ -40,14 +40,14 @@
        </widget>
       </item>
       <item row="0" column="2">
-       <widget class="QSpinBox" name="spinBoxMaskCode">
+       <widget class="SAKSpinBox" name="spinBoxMaskCode">
         <property name="maximum">
          <number>155</number>
         </property>
        </widget>
       </item>
       <item row="0" column="0">
-       <widget class="QCheckBox" name="checkBoxEnable">
+       <widget class="SAKCheckBox" name="checkBoxEnable">
         <property name="text">
          <string>Enable</string>
         </property>
@@ -71,6 +71,18 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>SAKCheckBox</class>
+   <extends>QCheckBox</extends>
+   <header location="global">SAKCheckBox.hh</header>
+  </customwidget>
+  <customwidget>
+   <class>SAKSpinBox</class>
+   <extends>QSpinBox</extends>
+   <header location="global">SAKSpinBox.hh</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

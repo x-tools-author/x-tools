@@ -91,4 +91,10 @@ void SAKToolBoxUiParameters::setupSettingsGroup(const QString &group)
     ui->checkBoxCrcEnable->setGroupKey(group, "crcEnable");
     ui->spinBoxEndIndex->setGroupKey(group, "endIndex");
     ui->spinBoxStartIndex->setGroupKey(group, "startIndex");
+
+    ui->widgetInputMasker->setupSettingsGroup(group + "/inputMasker");
+    ui->widgetOutputMasker->setupSettingsGroup(group + "/outputMasker");
+    ui->widgetInputAnanyzer->setupSettingsGroup(group + "/inputAnalyzer");
+    ui->widgetOutputAnanlyzer->setupSettingsGroup(group + "/outputAnalyzer");
+    ui->widgetStorer->setupSettingsGroup(group + "/storer");
 }
