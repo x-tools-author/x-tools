@@ -19,3 +19,8 @@ void SAKCommunicationToolUi::updateUiState(bool isWorking)
 {
     setEnabled(!isWorking);
 }
+
+void SAKCommunicationToolUi::setSettingsGroup(const QString &group)
+{
+    mGroup = group;
+}

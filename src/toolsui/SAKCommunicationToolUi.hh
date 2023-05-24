@@ -20,6 +20,11 @@ public:
     explicit SAKCommunicationToolUi(QWidget *parent = nullptr);
     virtual void setupCommunicationTool(SAKCommunicationTool *tool) = 0;
     virtual void updateUiState(bool isWorking);
+
+    void setSettingsGroup(const QString &group);
+
+protected:
+    QString mGroup;
 };
 
 #endif // SAKCOMMUNICATIONTOOLUI_HH

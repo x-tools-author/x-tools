@@ -7,6 +7,7 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
+#include <QMetaEnum>
 #include "SAKMaskerTool.hh"
 #include "SAKStorerTool.hh"
 #include "SAKToolFactory.hh"
@@ -37,38 +38,46 @@ SAKToolFactory *SAKToolFactory::instance()
 
 SAKBaseTool *SAKToolFactory::createTool(int type)
 {
+    SAKBaseTool *tool{nullptr};
     if (AnalyzerTool == type) {
-        return new SAKAnalyzerTool();
+        tool = new SAKAnalyzerTool();
     } else if (SerialportTool == type) {
-        return new SAKSerialPortTool();
+        tool = new SAKSerialPortTool();
     } else if (EmitterTool == type) {
-        return new SAKEmitterTool();
+        tool = new SAKEmitterTool();
     } else if (MaskerTool == type) {
-        return new SAKMaskerTool();
+        tool = new SAKMaskerTool();
     } else if (ResponserTool == type) {
-        return new SAKResponserTool();
+        tool = new SAKResponserTool();
     } else if (StorerTool == type) {
-        return new SAKStorerTool();
+        tool = new SAKStorerTool();
     } else if (PrestoreTool == type) {
-        return new SAKPrestorerTool();
+        tool = new SAKPrestorerTool();
     } else if (UdpClientTool == type) {
-        return new SAKUdpClientTool();
+        tool = new SAKUdpClientTool();
     } else if (UdpServerTool == type) {
-        return new SAKUdpServerTool();
+        tool = new SAKUdpServerTool();
     } else if (TcpClientTool == type) {
-        return new SAKTcpClientTool();
+        tool = new SAKTcpClientTool();
     } else if (TcpServerTool == type) {
-        return new SAKTcpServerTool();
+        tool = new SAKTcpServerTool();
     } else if (WebSocketClientTool == type) {
-        return new SAKWebSocketClientTool();
+        tool = new SAKWebSocketClientTool();
     } else if (WebSocketServerTool == type) {
-        return new SAKWebSocketServerTool();
+        tool = new SAKWebSocketServerTool();
     } else if (BleCentral == type) {
-        return new SAKBleCentralTool();
+        tool = new SAKBleCentralTool();
     }
 
-    QString msg = QString("Unknow tool type: %1.").arg(type);
-    Q_UNUSED(msg);
-    Q_ASSERT_X(false, __FUNCTION__, msg.toLatin1().data());
-    return Q_NULLPTR;
+    if (tool) {
+        QMetaEnum metaEnum = QMetaEnum::fromType<SAKToolFactory::ToolsType>();
+        tool->setProperty("toolTypeName", metaEnum.valueToKey(type));
+    } else {
+        QString msg = QString("Unknow tool type: %1.").arg(type);
+        Q_UNUSED(msg);
+        Q_ASSERT_X(false, __FUNCTION__, msg.toLatin1().data());
+    }
+
+
+    return tool;
 }

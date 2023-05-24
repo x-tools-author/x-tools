@@ -61,18 +61,22 @@ void SAKSerialPortToolUi::onComboBoxBaudRateCurrentIndexChanged()
 {
     mTool->setBaudRate(ui->comboBoxBaudRate->currentData().toInt());
 }
+
 void SAKSerialPortToolUi::onComboBoxDataBitsCurrentIndexChanged()
 {
     mTool->setDataBits(ui->comboBoxDataBits->currentData().toInt());
 }
+
 void SAKSerialPortToolUi::onComboBoxStopBitsCurrentIndexChanged()
 {
     mTool->setStopBits(ui->comboBoxStopBits->currentData().toInt());
 }
+
 void SAKSerialPortToolUi::onComboBoxParityCurrentIndexChanged()
 {
     mTool->setParity(ui->comboBoxParity->currentData().toInt());
 }
+
 void SAKSerialPortToolUi::onComboBoxFlowControlCurrentIndexChanged()
 {
     mTool->setFlowControl(ui->comboBoxFlowControl->currentData().toInt());

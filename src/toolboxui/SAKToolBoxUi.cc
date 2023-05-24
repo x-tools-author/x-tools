@@ -43,20 +43,20 @@ SAKToolBoxUi::SAKToolBoxUi(QWidget *parent)
     mToolBoxUiParameters->setupOutputAnalyzer(mToolBox->getOutputAnalyzerTool());
     mToolBoxUiParameters->setupStorer(mToolBox->getStorerTool());
 
-    SAKEmitterToolUi *emitterToolUi = new SAKEmitterToolUi();
+    mEmitterToolUi = new SAKEmitterToolUi();
     ui->tabEmiter->setLayout(new QVBoxLayout());
-    ui->tabEmiter->layout()->addWidget(emitterToolUi);
-    emitterToolUi->setupEmitterTool(mToolBox->getEmitterTool());
+    ui->tabEmiter->layout()->addWidget(mEmitterToolUi);
+    mEmitterToolUi->setupEmitterTool(mToolBox->getEmitterTool());
 
-    SAKResponserToolUi *responserToolUi = new SAKResponserToolUi();
+    mResponserToolUi = new SAKResponserToolUi();
     ui->tabResponser->setLayout(new QVBoxLayout());
-    ui->tabResponser->layout()->addWidget(responserToolUi);
-    responserToolUi->setupResponserTool(mToolBox->getResponserTool());
+    ui->tabResponser->layout()->addWidget(mResponserToolUi);
+    mResponserToolUi->setupResponserTool(mToolBox->getResponserTool());
 
-    SAKPrestorerToolUi *prestorerToolUi = new SAKPrestorerToolUi();
+    mPrestorerToolUi = new SAKPrestorerToolUi();
     ui->tabPrestorer->setLayout(new QVBoxLayout());
-    ui->tabPrestorer->layout()->addWidget(prestorerToolUi);
-    prestorerToolUi->setupSAKPrestorerTool(mToolBox->getPrestorerTool());
+    ui->tabPrestorer->layout()->addWidget(mPrestorerToolUi);
+    mPrestorerToolUi->setupSAKPrestorerTool(mToolBox->getPrestorerTool());
 
     mCycleSendingTimer = new QTimer(this);
     connect(mCycleSendingTimer, &QTimer::timeout,
@@ -92,10 +92,10 @@ void SAKToolBoxUi::setupCommuniticationTool(int type)
     setWindowTitle(communiticationToolName(type));
     setWindowIcon(communiticationToolIcon(type));
 
-    init();
-
     auto var = mToolBox->property("communication");
     mCommunicationTool = var.value<SAKCommunicationTool*>();
+
+    init();
 
     // Clear widget.
     auto l = ui->widgetCommunicationToolUi->layout();
@@ -106,6 +106,7 @@ void SAKToolBoxUi::setupCommuniticationTool(int type)
 
     // Setup communication tool.
     mCommunicationToolUi = communiticationToolUi(type);
+    mCommunicationToolUi->setSettingsGroup(settingsGroup());
     if (!mCommunicationToolUi) {
         qCWarning(mLoggingCategory) << "mCommunicationToolUi is nullptr";
         return;
@@ -123,7 +124,6 @@ void SAKToolBoxUi::setupCommuniticationTool(int type)
             this, &::SAKToolBoxUi::onTooBoxBytesOutputted);
 
     onIsWorkingChanged();
-    mCommunicationToolType = type;
 }
 
 QString SAKToolBoxUi::communiticationToolName(int type)
@@ -280,8 +280,7 @@ void SAKToolBoxUi::output2ui(const QByteArray &bytes,
 
 QString SAKToolBoxUi::settingsGroup()
 {
-    QMetaEnum metaEnum = QMetaEnum::fromType<SAKToolFactory::ToolsType>();
-    return metaEnum.valueToKey(mCommunicationToolType);
+    return mCommunicationTool->property("toolTypeName").toString();
 }
 
 void SAKToolBoxUi::onIsWorkingChanged()

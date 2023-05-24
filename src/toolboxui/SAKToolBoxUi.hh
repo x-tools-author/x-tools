@@ -23,6 +23,9 @@ namespace Ui {
 class SAKToolBoxUi;
 }
 
+class SAKEmitterToolUi;
+class SAKResponserToolUi;
+class SAKPrestorerToolUi;
 class SAKCommunicationTool;
 class SAKCommunicationToolUi;
 class SAKToolBoxUiParameters;
@@ -40,9 +43,11 @@ private:
     SAKToolBox *mToolBox{nullptr};
     SAKCommunicationTool *mCommunicationTool{nullptr};
     SAKCommunicationToolUi *mCommunicationToolUi{nullptr};
+    SAKEmitterToolUi *mEmitterToolUi{nullptr};
+    SAKResponserToolUi *mResponserToolUi{nullptr};
+    SAKPrestorerToolUi *mPrestorerToolUi{nullptr};
     const QLoggingCategory mLoggingCategory{"SAK.SAKToolBoxUi"};
     QTimer *mCycleSendingTimer{nullptr};
-    int mCommunicationToolType;
 
 private:
     QString communiticationToolName(int type);
