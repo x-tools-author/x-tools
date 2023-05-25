@@ -28,7 +28,8 @@ SAKEmitterToolUi::~SAKEmitterToolUi()
 
 }
 
-void SAKEmitterToolUi::setupEmitterTool(SAKEmitterTool *tool)
+void SAKEmitterToolUi::initialize(SAKEmitterTool *tool,
+                                  const QString &settingsGroup)
 {
     if (tool == nullptr) {
         return;
@@ -40,7 +41,8 @@ void SAKEmitterToolUi::setupEmitterTool(SAKEmitterTool *tool)
 
     mTool = qobject_cast<SAKEmitterTool*>(tool);
     SAKEmitterTableModel *dataModel = mTool->getModel();
-    setupTableModel(dataModel);
+    SAKTableViewWithController::initialize(dataModel,
+                                           settingsGroup + "/emitter");
 }
 
 void SAKEmitterToolUi::edit(const QModelIndex &index)
@@ -62,9 +64,7 @@ void SAKEmitterToolUi::edit(const QModelIndex &index)
 void SAKEmitterToolUi::clear()
 {
     int rowCount = mTool->getModel()->rowCount();
-    for (int i = 0; i < rowCount; i++) {
-        mTool->getModel()->removeRow(i);
-    }
+    mTool->getModel()->removeRows(0, rowCount);
 }
 
 void SAKEmitterToolUi::remove(const QModelIndex &index)
@@ -75,29 +75,20 @@ void SAKEmitterToolUi::remove(const QModelIndex &index)
     }
 }
 
-void SAKEmitterToolUi::importFromFile(const QString &fileName)
+void SAKEmitterToolUi::importFromJson(const QByteArray &json)
 {
-    QFile file(fileName);
-    if (file.open(QFile::ReadOnly)) {
-        QByteArray json = file.readAll();
-        file.close();
-
-        QJsonDocument jsonDoc = QJsonDocument::fromJson(json);
-        QJsonArray jsonArray = jsonDoc.array();
-        for (int i = 0; i < jsonArray.count(); i++) {
-            QJsonObject jsonObj = jsonArray.at(i).toObject();
-            QJsonDocument jd;
-            jd.setObject(jsonObj);
-            QString item = QString::fromUtf8(jd.toJson());
-            mTool->addItem(item);
-        }
-    } else {
-        qCWarning(mLoggingCategory) <<  "Can not open file:"
-                                    << file.errorString();
+    QJsonDocument jsonDoc = QJsonDocument::fromJson(json);
+    QJsonArray jsonArray = jsonDoc.array();
+    for (int i = 0; i < jsonArray.count(); i++) {
+        QJsonObject jsonObj = jsonArray.at(i).toObject();
+        QJsonDocument jd;
+        jd.setObject(jsonObj);
+        QString item = QString::fromUtf8(jd.toJson());
+        mTool->addItem(item);
     }
 }
 
-void SAKEmitterToolUi::exportToFile(const QString &fileName)
+QByteArray SAKEmitterToolUi::exportAsJson()
 {
     auto items = mTool->itemsContext();
 
@@ -107,30 +98,23 @@ void SAKEmitterToolUi::exportToFile(const QString &fileName)
     jsonDoc.setArray(jsonArray);
 
     QByteArray json = jsonDoc.toJson();
-    QFile file(fileName);
-    if (file.open(QFile::WriteOnly)) {
-        QTextStream out(&file);
-        out << json;
-        file.close();
-    } else {
-        qCWarning(mLoggingCategory) <<  "Can not open file:"
-                                    << file.errorString();
-    }
+    return json;
 }
 
-void SAKEmitterToolUi::append()
+bool SAKEmitterToolUi::append()
 {
     QJsonObject jsonObj = mTool->itemContext(-1).toJsonObject();
     mEditor->setParameters(jsonObj);
     mEditor->show();
     int ret = mEditor->exec();
     if (!(ret == QDialog::Accepted)) {
-        return;
+        return false;
     }
 
     jsonObj = mEditor->parameters();
     QJsonDocument jsonDoc;
     jsonDoc.setObject(jsonObj);
     QString str = QString::fromUtf8(jsonDoc.toJson());
-    mTool->addItem(str, -1);
+    mTool->addItem(str);
+    return true;
 }

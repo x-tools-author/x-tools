@@ -23,7 +23,7 @@ public:
                                        const QString &array,
                                        const QString &key,
                                        const QVariant &varList);
-    Q_INVOKABLE QStringList sdkArrayValues(const QString &group,
+    Q_INVOKABLE QStringList sakArrayValues(const QString &group,
                                            const QString &array,
                                            const QString &key);
     Q_INVOKABLE void sdkRemove(const QString &group, const QString &key);

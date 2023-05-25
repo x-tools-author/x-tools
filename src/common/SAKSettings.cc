@@ -53,7 +53,7 @@ void SAKSettings::sdkSetArrayValues(const QString &groupName,
     endGroup();
 }
 
-QStringList SAKSettings::sdkArrayValues(const QString &group,
+QStringList SAKSettings::sakArrayValues(const QString &group,
                                       const QString &array,
                                       const QString &key)
 {

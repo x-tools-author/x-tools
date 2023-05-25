@@ -12,6 +12,7 @@
 
 #include <QMenu>
 #include <QWidget>
+#include <QJsonObject>
 #include <QModelIndex>
 #include <QActionGroup>
 #include <QLoggingCategory>
@@ -25,10 +26,12 @@ class SAKTableViewWithController : public QWidget
 {
     Q_OBJECT
 public:
-    explicit SAKTableViewWithController(const char *lg, QWidget *parent = nullptr);
+    explicit SAKTableViewWithController(const char *lg,
+                                        QWidget *parent = nullptr);
     ~SAKTableViewWithController();
 
-    void setupTableModel(QAbstractTableModel *tableModel);
+    void initialize(QAbstractTableModel *tableModel,
+                    const QString &settingGroup);
 
 protected:
     const QLoggingCategory mLoggingCategory;
@@ -37,15 +40,17 @@ protected:
     virtual void edit(const QModelIndex &index) = 0;
     virtual void clear() = 0;
     virtual void remove(const QModelIndex &index) = 0;
-    virtual void importFromFile(const QString &fileName) = 0;
-    virtual void exportToFile(const QString &fineName) = 0;
-    virtual void append() = 0;
+    virtual void importFromJson(const QByteArray &json) = 0;
+    virtual QByteArray exportAsJson() = 0;
+    virtual bool append() = 0;
 
 private:
     QMenu *mMenu{nullptr};
+    QString mKey;
 
 private:
     QModelIndex currentIndex();
+    void writeToSettingsFile();
 
 private:
     Ui::SAKTableViewWithController *ui{nullptr};

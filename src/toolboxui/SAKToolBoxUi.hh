@@ -51,6 +51,10 @@ private:
     QTimer *mCycleSendingTimer{nullptr};
     int mCommunicationToolType;
 
+    struct {
+        QString tabIndex;
+    } mSettingsKey;
+
 private:
     QString communiticationToolName(int type);
     QIcon communiticationToolIcon(int type);
@@ -89,6 +93,7 @@ private:
 
 private:
     Ui::SAKToolBoxUi *ui;
+    void onTabWidgetCurrentChanged(int index);
 
     // communication
     void onPushButtonCommunicationSettingsClicked();

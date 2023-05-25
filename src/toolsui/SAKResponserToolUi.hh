@@ -22,15 +22,15 @@ class SAKResponserToolUi : public SAKTableViewWithController
 public:
     explicit SAKResponserToolUi(QWidget *parent = nullptr);
     ~SAKResponserToolUi();
-    void setupResponserTool(SAKResponserTool *tool);
+    void initialize(SAKResponserTool *tool, const QString &settingsGroup);
 
 protected:
     virtual void edit(const QModelIndex &index) final;
     virtual void clear() final;
     virtual void remove(const QModelIndex &index) final;
-    virtual void importFromFile(const QString &fileName) final;
-    virtual void exportToFile(const QString &fineName) final;
-    virtual void append() final;
+    virtual void importFromJson(const QByteArray &json) final;
+    virtual QByteArray exportAsJson() final;
+    virtual bool append() final;
 
 private:
     SAKResponserTool *mTool{nullptr};

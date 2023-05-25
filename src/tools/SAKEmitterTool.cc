@@ -225,6 +225,10 @@ void SAKEmitterTool::addItem(const QString &jsonCtx, int index)
     }
 
     for (int i = 0; i < mHeaders.count(); i++) {
+        if (i >= mTableModel->columnCount()) {
+            outputMessage(QtWarningMsg, __FUNCTION__);
+        }
+
         auto key = mHeaders.at(i);
         auto modelIndex = mTableModel->index(index, i);
         mTableModel->setData(modelIndex, jsonObj.value(key), Qt::EditRole);

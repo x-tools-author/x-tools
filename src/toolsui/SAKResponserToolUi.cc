@@ -30,7 +30,8 @@ SAKResponserToolUi::~SAKResponserToolUi()
 
 }
 
-void SAKResponserToolUi::setupResponserTool(SAKResponserTool *tool)
+void SAKResponserToolUi::initialize(SAKResponserTool *tool,
+                                    const QString &settingsGroup)
 {
     if (tool == nullptr) {
         return;
@@ -42,7 +43,8 @@ void SAKResponserToolUi::setupResponserTool(SAKResponserTool *tool)
 
     mTool = qobject_cast<SAKResponserTool*>(tool);
     SAKResponserTableModel *dataModel = mTool->getModel();
-    setupTableModel(dataModel);
+    SAKTableViewWithController::initialize(dataModel,
+                                           settingsGroup + "responser");
 }
 
 
@@ -78,29 +80,20 @@ void SAKResponserToolUi::remove(const QModelIndex &index)
     }
 }
 
-void SAKResponserToolUi::importFromFile(const QString &fileName)
+void SAKResponserToolUi::importFromJson(const QByteArray &json)
 {
-    QFile file(fileName);
-    if (file.open(QFile::ReadOnly)) {
-        QByteArray json = file.readAll();
-        file.close();
-
-        QJsonDocument jsonDoc = QJsonDocument::fromJson(json);
-        QJsonArray jsonArray = jsonDoc.array();
-        for (int i = 0; i < jsonArray.count(); i++) {
-            QJsonObject jsonObj = jsonArray.at(i).toObject();
-            QJsonDocument jd;
-            jd.setObject(jsonObj);
-            QString item = QString::fromUtf8(jd.toJson());
-            mTool->addItem(item);
-        }
-    } else {
-        qCWarning(mLoggingCategory) <<  "Can not open file:"
-                                    << file.errorString();
+    QJsonDocument jsonDoc = QJsonDocument::fromJson(json);
+    QJsonArray jsonArray = jsonDoc.array();
+    for (int i = 0; i < jsonArray.count(); i++) {
+        QJsonObject jsonObj = jsonArray.at(i).toObject();
+        QJsonDocument jd;
+        jd.setObject(jsonObj);
+        QString item = QString::fromUtf8(jd.toJson());
+        mTool->addItem(item);
     }
 }
 
-void SAKResponserToolUi::exportToFile(const QString &fileName)
+QByteArray SAKResponserToolUi::exportAsJson()
 {
     auto items = mTool->itemsContext();
 
@@ -110,25 +103,17 @@ void SAKResponserToolUi::exportToFile(const QString &fileName)
     jsonDoc.setArray(jsonArray);
 
     QByteArray json = jsonDoc.toJson();
-    QFile file(fileName);
-    if (file.open(QFile::WriteOnly)) {
-        QTextStream out(&file);
-        out << json;
-        file.close();
-    } else {
-        qCWarning(mLoggingCategory) <<  "Can not open file:"
-                                    << file.errorString();
-    }
+    return json;
 }
 
-void SAKResponserToolUi::append()
+bool SAKResponserToolUi::append()
 {
     QJsonObject jsonObj = mTool->itemContext(-1).toJsonObject();
     mEditor->setParameters(jsonObj);
     mEditor->show();
     int ret = mEditor->exec();
     if (!(ret == QDialog::Accepted)) {
-        return;
+        return false;
     }
 
     jsonObj = mEditor->parameters();
@@ -136,4 +121,5 @@ void SAKResponserToolUi::append()
     jsonDoc.setObject(jsonObj);
     QString str = QString::fromUtf8(jsonDoc.toJson());
     mTool->addItem(str, -1);
+    return true;
 }

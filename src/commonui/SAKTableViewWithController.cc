@@ -8,10 +8,13 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include <QFile>
+#include <QJsonArray>
 #include <QMessageBox>
 #include <QFileDialog>
+#include <QJsonDocument>
 #include <QStandardItemModel>
 
+#include "SAKSettings.hh"
 #include "SAKTableViewWithController.hh"
 #include "ui_SAKTableViewWithController.h"
 
@@ -41,7 +44,8 @@ SAKTableViewWithController::~SAKTableViewWithController()
     delete ui;
 }
 
-void SAKTableViewWithController::setupTableModel(QAbstractTableModel *tableModel)
+void SAKTableViewWithController::initialize(QAbstractTableModel *tableModel,
+                                            const QString &settingGroup)
 {
     if (!tableModel) {
         qCWarning(mLoggingCategory) << "The value of tableModel is nullptr!";
@@ -85,6 +89,12 @@ void SAKTableViewWithController::setupTableModel(QAbstractTableModel *tableModel
         ret->setCheckable(true);
         ret->setChecked(true);
     }
+
+    mKey = settingGroup + "/items";
+    auto settings = SAKSettings::instance();
+    QString items = settings->value(mKey).toString();
+    QByteArray json = QByteArray::fromHex(items.toLatin1());
+    importFromJson(QJsonDocument::fromJson(json).toJson());
 }
 
 QModelIndex SAKTableViewWithController::currentIndex()
@@ -98,11 +108,18 @@ QModelIndex SAKTableViewWithController::currentIndex()
     return index;
 }
 
+void SAKTableViewWithController::writeToSettingsFile()
+{
+    QByteArray json = exportAsJson();
+    SAKSettings::instance()->setValue(mKey, QString::fromLatin1(json.toHex()));
+}
+
 void SAKTableViewWithController::onPushButtonEditClicked()
 {
     QModelIndex index = currentIndex();
     if (index.isValid()) {
         edit(index);
+        writeToSettingsFile();
     }
 }
 
@@ -115,14 +132,26 @@ void SAKTableViewWithController::onPushButtonClearClicked()
                                    QMessageBox::Cancel|QMessageBox::Ok);
     if (ret == QMessageBox::Ok) {
         clear();
+        writeToSettingsFile();
     }
 }
 
 void SAKTableViewWithController::onPushButtonDeleteClicked()
 {
+    int ret = QMessageBox::warning(this,
+                                   tr("Delete Data"),
+                                   tr("The data will be delete from settings file, "
+                                      "please confrim the operation!"),
+                                   QMessageBox::Cancel|QMessageBox::Ok);
+
+    if (ret != QMessageBox::Ok) {
+        return;
+    }
+
     QModelIndex index = currentIndex();
     if (index.isValid()) {
         remove(index);
+        writeToSettingsFile();
     }
 }
 
@@ -132,8 +161,20 @@ void SAKTableViewWithController::onPushButtonImportClicked()
                                                     tr("Import data"),
                                                     ".",
                                                     tr("JSON (*.json);;All (*)"));
-    if (!fileName.isEmpty()) {
-        importFromFile(fileName);
+    if (fileName.isEmpty()) {
+        return;
+    }
+
+    QFile file(fileName);
+    if (file.open(QFile::ReadOnly)) {
+        QByteArray json = file.readAll();
+        file.close();;
+
+        importFromJson(json);
+        writeToSettingsFile();
+    } else {
+        qCWarning(mLoggingCategory) <<  "Can not open file:"
+                                    << file.errorString();
     }
 }
 
@@ -143,12 +184,24 @@ void SAKTableViewWithController::onPushButtonExportClicked()
                                                     tr("Import data"),
                                                     ".",
                                                     tr("JSON (*.json);;All (*); "));
-    if (!fileName.isEmpty()) {
-        exportToFile(fileName);
+    if (fileName.isEmpty()) {
+        return;
+    }
+
+    QFile file(fileName);
+    if (file.open(QFile::WriteOnly)) {
+        QTextStream out(&file);
+        out << exportAsJson();
+        file.close();
+    } else {
+        qCWarning(mLoggingCategory) <<  "Can not open file:"
+                                    << file.errorString();
     }
 }
 
 void SAKTableViewWithController::onPushButtonAppendClicked()
 {
-    append();
+    if (append()) {
+        writeToSettingsFile();
+    }
 }

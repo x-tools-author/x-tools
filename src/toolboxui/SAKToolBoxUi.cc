@@ -11,6 +11,7 @@
 #include <QLineEdit>
 #include <QRegularExpression>
 
+#include "SAKSettings.hh"
 #include "SAKToolBoxUi.hh"
 #include "SAKInterface.hh"
 #include "SAKUiInterface.hh"
@@ -305,6 +306,8 @@ void SAKToolBoxUi::onBytesRead(const QByteArray &bytes,
 
 void SAKToolBoxUi::init()
 {
+    mSettingsKey.tabIndex = settingsGroup() + "/tabIndex";
+
     initUi();
     initSettings();
     initSignals();
@@ -320,6 +323,11 @@ void SAKToolBoxUi::initUi()
     initUiOutput();
 
     onComboBoxInputFormatActivated();
+    QSettings *settings = SAKSettings::instance();
+    int index = settings->value(mSettingsKey.tabIndex).toInt();
+    if (index >= 0 && index < ui->tabWidget->count()) {
+        ui->tabWidget->setCurrentIndex(index);
+    }
 }
 
 void SAKToolBoxUi::initUiCommunication()
@@ -411,6 +419,9 @@ void SAKToolBoxUi::initSignals()
     initSignalsInput();
     initSignalsOutput();
     initSignalsTools();
+
+    connect(ui->tabWidget, &QTabWidget::currentChanged,
+            this, &SAKToolBoxUi::onTabWidgetCurrentChanged);
 }
 
 void SAKToolBoxUi::initSignalsCommunication()
@@ -465,17 +476,29 @@ void SAKToolBoxUi::initTools()
     mEmitterToolUi = new SAKEmitterToolUi();
     ui->tabEmiter->setLayout(new QVBoxLayout());
     ui->tabEmiter->layout()->addWidget(mEmitterToolUi);
-    mEmitterToolUi->setupEmitterTool(mToolBox->getEmitterTool());
+    mEmitterToolUi->initialize(mToolBox->getEmitterTool(),
+                               settingsGroup());
 
     mResponserToolUi = new SAKResponserToolUi();
     ui->tabResponser->setLayout(new QVBoxLayout());
     ui->tabResponser->layout()->addWidget(mResponserToolUi);
-    mResponserToolUi->setupResponserTool(mToolBox->getResponserTool());
+    mResponserToolUi->initialize(mToolBox->getResponserTool(),
+                                 settingsGroup());
 
     mPrestorerToolUi = new SAKPrestorerToolUi();
     ui->tabPrestorer->setLayout(new QVBoxLayout());
     ui->tabPrestorer->layout()->addWidget(mPrestorerToolUi);
-    mPrestorerToolUi->setupSAKPrestorerTool(mToolBox->getPrestorerTool());
+    mPrestorerToolUi->initialize(mToolBox->getPrestorerTool(),
+                                 settingsGroup());
+}
+
+void SAKToolBoxUi::onTabWidgetCurrentChanged(int index)
+{
+    if (mSettingsKey.tabIndex.isEmpty()) {
+        return;
+    }
+
+    SAKSettings::instance()->setValue(mSettingsKey.tabIndex, index);
 }
 
 void SAKToolBoxUi::onPushButtonCommunicationSettingsClicked()

@@ -20,15 +20,15 @@ class SAKEmitterToolUi : public SAKTableViewWithController
 public:
     explicit SAKEmitterToolUi(QWidget *parent = nullptr);
     ~SAKEmitterToolUi();
-    void setupEmitterTool(SAKEmitterTool *tool);
+    void initialize(SAKEmitterTool *tool, const QString &settingsGroup);
 
 protected:
     virtual void edit(const QModelIndex &index) override;
     virtual void clear() override;
     virtual void remove(const QModelIndex &index) override;
-    virtual void importFromFile(const QString &fileName) override;
-    virtual void exportToFile(const QString &fileName) override;
-    virtual void append() override;
+    virtual void importFromJson(const QByteArray &json) override;
+    virtual QByteArray exportAsJson() override;
+    virtual bool append() override;
 
 private:
     SAKEmitterTool *mTool{nullptr};
