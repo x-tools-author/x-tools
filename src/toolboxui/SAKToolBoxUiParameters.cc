@@ -64,10 +64,10 @@ SAKToolBoxUiParameters::parameterContext()
 void SAKToolBoxUiParameters::initialize(SAKToolBox *toolBox,
                                         const QString &settingsGroup)
 {
-    ui->checkBoxBigEndian->setGroupKey(settingsGroup, "bigEndian");
-    ui->checkBoxCrcEnable->setGroupKey(settingsGroup, "crcEnable");
-    ui->spinBoxEndIndex->setGroupKey(settingsGroup, "endIndex");
-    ui->spinBoxStartIndex->setGroupKey(settingsGroup, "startIndex");
+    ui->checkBoxBigEndian->setGroupKey(settingsGroup + "input", "bigEndian");
+    ui->checkBoxCrcEnable->setGroupKey(settingsGroup + "input", "crcEnable");
+    ui->spinBoxEndIndex->setGroupKey(settingsGroup + "input", "endIndex");
+    ui->spinBoxStartIndex->setGroupKey(settingsGroup + "input", "startIndex");
 
     ui->widgetInputMasker->initialize(toolBox->getInputMaskerTool(),
                                       settingsGroup + "/inputMasker");

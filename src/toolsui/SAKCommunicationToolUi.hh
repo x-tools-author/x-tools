@@ -10,21 +10,15 @@
 #ifndef SAKCOMMUNICATIONTOOLUI_HH
 #define SAKCOMMUNICATIONTOOLUI_HH
 
-#include <QWidget>
+#include "SAKBaseToolUi.hh"
 
 class SAKCommunicationTool;
-class SAKCommunicationToolUi : public QWidget
+class SAKCommunicationToolUi : public SAKBaseToolUi
 {
     Q_OBJECT
 public:
     explicit SAKCommunicationToolUi(QWidget *parent = nullptr);
-    virtual void setupCommunicationTool(SAKCommunicationTool *tool) = 0;
-    virtual void updateUiState(bool isWorking);
-
-    void setSettingsGroup(const QString &group);
-
-protected:
-    QString mGroup;
+    virtual void onIsWorkingChanged(bool isWorking) override;
 };
 
 #endif // SAKCOMMUNICATIONTOOLUI_HH

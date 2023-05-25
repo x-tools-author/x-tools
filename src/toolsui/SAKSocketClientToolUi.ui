@@ -27,7 +27,7 @@
     <number>0</number>
    </property>
    <item row="2" column="1">
-    <widget class="QSpinBox" name="spinBoxClientPort">
+    <widget class="SAKSpinBox" name="spinBoxClientPort">
      <property name="maximum">
       <number>65535</number>
      </property>
@@ -119,7 +119,7 @@
     <widget class="SAKWebSocketMessageTypeComboBox" name="comboBoxMessageType"/>
    </item>
    <item row="8" column="1">
-    <widget class="QSpinBox" name="spinBoxServerPort">
+    <widget class="SAKSpinBox" name="spinBoxServerPort">
      <property name="maximum">
       <number>65535</number>
      </property>
@@ -132,7 +132,7 @@
     </widget>
    </item>
    <item row="4" column="0" colspan="2">
-    <widget class="QCheckBox" name="checkBoxSpecifyIpAndPort">
+    <widget class="SAKCheckBox" name="checkBoxSpecifyIpAndPort">
      <property name="text">
       <string>Specify ip and port</string>
      </property>
@@ -150,6 +150,16 @@
    <class>SAKWebSocketMessageTypeComboBox</class>
    <extends>QComboBox</extends>
    <header location="global">SAKWebSocketMessageTypeComboBox.hh</header>
+  </customwidget>
+  <customwidget>
+   <class>SAKCheckBox</class>
+   <extends>QCheckBox</extends>
+   <header location="global">SAKCheckBox.hh</header>
+  </customwidget>
+  <customwidget>
+   <class>SAKSpinBox</class>
+   <extends>QSpinBox</extends>
+   <header location="global">SAKSpinBox.hh</header>
   </customwidget>
  </customwidgets>
  <resources/>

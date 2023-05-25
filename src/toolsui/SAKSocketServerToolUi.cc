@@ -33,7 +33,15 @@ SAKSocketServerToolUi::~SAKSocketServerToolUi()
     delete ui;
 }
 
-void SAKSocketServerToolUi::setupCommunicationTool(SAKCommunicationTool *tool)
+void SAKSocketServerToolUi::onIsWorkingChanged(bool isWorking)
+{
+    ui->comboBoxServerIp->setEnabled(!isWorking);
+    ui->spinBoxServerPort->setEnabled(!isWorking);
+    ui->checkBoxSpecifyIpAndPort->setEnabled(!isWorking);
+}
+
+void SAKSocketServerToolUi::onBaseToolUiInitialized(
+    SAKBaseTool *tool, const QString &settingsGroup)
 {
     if (!tool) {
         return;
@@ -91,13 +99,10 @@ void SAKSocketServerToolUi::setupCommunicationTool(SAKCommunicationTool *tool)
             ui->comboBoxClientList->setCurrentIndex(index);
         }
     });
-}
 
-void SAKSocketServerToolUi::updateUiState(bool isWorking)
-{
-    ui->comboBoxServerIp->setEnabled(!isWorking);
-    ui->spinBoxServerPort->setEnabled(!isWorking);
-    ui->checkBoxSpecifyIpAndPort->setEnabled(!isWorking);
+    ui->comboBoxServerIp->setGroupKey(settingsGroup, "serverIp");
+    ui->spinBoxServerPort->setGroupKey(settingsGroup, "port");
+    ui->comboBoxMessageType->setGroupKey(settingsGroup, "messageType");
 }
 
 void SAKSocketServerToolUi::onComboBoxServerIpActived()

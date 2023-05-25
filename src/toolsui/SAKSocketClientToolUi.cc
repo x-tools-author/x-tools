@@ -35,7 +35,15 @@ SAKSocketClientToolUi::~SAKSocketClientToolUi()
     delete ui;
 }
 
-void SAKSocketClientToolUi::setupCommunicationTool(SAKCommunicationTool *tool)
+void SAKSocketClientToolUi::onIsWorkingChanged(bool isWorking)
+{
+    ui->comboBoxClientAddress->setEnabled(!isWorking);
+    ui->spinBoxClientPort->setEnabled(!isWorking);
+    ui->checkBoxSpecifyIpAndPort->setEnabled(!isWorking);
+}
+
+void SAKSocketClientToolUi::onBaseToolUiInitialized(
+    SAKBaseTool *tool, const QString &settingsGroup)
 {
     if (!tool) {
         return;
@@ -71,13 +79,13 @@ void SAKSocketClientToolUi::setupCommunicationTool(SAKCommunicationTool *tool)
     connect(mTool, &SAKSocketClientTool::finished, this, [=](){
         ui->labelContext->setText(tr("Closed"));
     });
-}
 
-void SAKSocketClientToolUi::updateUiState(bool isWorking)
-{
-    ui->comboBoxClientAddress->setEnabled(!isWorking);
-    ui->spinBoxClientPort->setEnabled(!isWorking);
-    ui->checkBoxSpecifyIpAndPort->setEnabled(!isWorking);
+    ui->comboBoxClientAddress->setGroupKey(settingsGroup, "clientAddress");
+    ui->spinBoxClientPort->setGroupKey(settingsGroup, "clientGroup");
+    ui->checkBoxSpecifyIpAndPort->setGroupKey(settingsGroup, "specifyIpAndPort");
+    ui->comboBoxServerAddress->setGroupKey(settingsGroup, "serverAddress");
+    ui->spinBoxServerPort->setGroupKey(settingsGroup, "serverPort");
+    ui->comboBoxMessageType->setGroupKey(settingsGroup, "messageType");
 }
 
 void SAKSocketClientToolUi::onComboBoxClientAddressActived()

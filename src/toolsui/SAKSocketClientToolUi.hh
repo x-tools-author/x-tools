@@ -24,8 +24,9 @@ class SAKSocketClientToolUi : public SAKCommunicationToolUi
 public:
     explicit SAKSocketClientToolUi(QWidget *parent = nullptr);
     ~SAKSocketClientToolUi();
-    virtual void setupCommunicationTool(SAKCommunicationTool *tool) final;
-    virtual void updateUiState(bool isWorking) final;
+    virtual void onIsWorkingChanged(bool isWorking) final;
+    virtual void onBaseToolUiInitialized(SAKBaseTool *tool,
+                                         const QString &settingsGroup) final;
 
 private:
     const QLoggingCategory mLoggingCategory{"SAK.SocketClientToolUi"};

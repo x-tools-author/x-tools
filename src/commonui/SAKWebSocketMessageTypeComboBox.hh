@@ -10,9 +10,9 @@
 #ifndef SAKWEBSOCKETMESSAGETYPECOMBOBOX_HH
 #define SAKWEBSOCKETMESSAGETYPECOMBOBOX_HH
 
-#include <QComboBox>
+#include "SAKComboBox.hh"
 
-class SAKWebSocketMessageTypeComboBox : public QComboBox
+class SAKWebSocketMessageTypeComboBox : public SAKComboBox
 {
     Q_OBJECT
 public:

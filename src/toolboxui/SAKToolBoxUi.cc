@@ -269,7 +269,6 @@ void SAKToolBoxUi::onIsWorkingChanged()
 {
     bool isWorking = mToolBox->isWorking();
     ui->pushButtonCommunicationOpen->setEnabled(true);
-    mCommunicationToolUi->updateUiState(isWorking);
     ui->pushButtonInputSend->setEnabled(isWorking);
     ui->comboBoxInputIntervel->setEnabled(isWorking);
 
@@ -331,8 +330,6 @@ void SAKToolBoxUi::initUiCommunication()
         qCWarning(mLoggingCategory) << "mCommunicationToolUi is nullptr";
         return;
     }
-    mCommunicationToolUi->setupCommunicationTool(mCommunicationTool);
-    mCommunicationToolUi->setSettingsGroup(settingsGroup());
 
     // Clear widget.
     auto l = ui->widgetCommunicationToolUi->layout();
@@ -380,26 +377,27 @@ void SAKToolBoxUi::initSettings()
 
 void SAKToolBoxUi::initSettingsCommunication()
 {
-
+    mCommunicationToolUi->initialize(mCommunicationTool,
+                                     settingsGroup() + "/communication");
 }
 
 void SAKToolBoxUi::initSettingsInput()
 {
     QString group = settingsGroup();
-    ui->comboBoxInputFormat->setGroupKey(group, "inputFromat");
-    ui->comboBoxInputText->setGroupKey(group, "inputText", false);
+    ui->comboBoxInputFormat->setGroupKey(group + "/input", "fromat");
+    ui->comboBoxInputText->setGroupKey(group + "/input", "text", false);
 }
 
 void SAKToolBoxUi::initSettingsOutput()
 {
     QString group = settingsGroup();
-    ui->comboBoxOutputFormat->setGroupKey(group, "outputFormat");
-    ui->checkBoxOutputRx->setGroupKey(group, "outputRx");
-    ui->checkBoxOutputTx->setGroupKey(group, "outputTx");
-    ui->checkBoxOutputDate->setGroupKey(group, "outputDate");
-    ui->checkBoxOutputTime->setGroupKey(group, "outputTime");
-    ui->checkBoxOutputMs->setGroupKey(group, "outputMs");
-    ui->checkBoxOutputWrap->setGroupKey(group, "outputWrap");
+    ui->comboBoxOutputFormat->setGroupKey(group + "/output", "outputFormat");
+    ui->checkBoxOutputRx->setGroupKey(group + "/output", "outputRx");
+    ui->checkBoxOutputTx->setGroupKey(group + "/output", "outputTx");
+    ui->checkBoxOutputDate->setGroupKey(group + "/output", "outputDate");
+    ui->checkBoxOutputTime->setGroupKey(group + "/output", "outputTime");
+    ui->checkBoxOutputMs->setGroupKey(group + "/output", "outputMs");
+    ui->checkBoxOutputWrap->setGroupKey(group + "/output", "outputWrap");
 
 #if 1
     ui->checkBoxOutputRx->setChecked(true);

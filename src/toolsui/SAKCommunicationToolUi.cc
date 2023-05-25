@@ -10,17 +10,12 @@
 #include "SAKCommunicationToolUi.hh"
 
 SAKCommunicationToolUi::SAKCommunicationToolUi(QWidget *parent)
-    : QWidget{parent}
+    : SAKBaseToolUi{parent}
 {
 
 }
 
-void SAKCommunicationToolUi::updateUiState(bool isWorking)
+void SAKCommunicationToolUi::onIsWorkingChanged(bool isWorking)
 {
     setEnabled(!isWorking);
-}
-
-void SAKCommunicationToolUi::setSettingsGroup(const QString &group)
-{
-    mGroup = group;
 }

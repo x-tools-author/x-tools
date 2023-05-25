@@ -158,7 +158,7 @@ int main(int argc, char *argv[])
         QString family = edSettings->value("fontFamily").toString();
         if (family.isEmpty()) {
             family = app.font().family();
-            edSettings->edSetValue("fontFamily", family);
+            edSettings->sdkSetValue("fontFamily", family);
         } else {
             app.setFont(family);
         }

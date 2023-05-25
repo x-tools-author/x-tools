@@ -26,18 +26,18 @@ SAKSettings *SAKSettings::instance()
     return &settings;
 }
 
-QVariant SAKSettings::edValue(const QString &key,
+QVariant SAKSettings::sakValue(const QString &key,
                              const QVariant &defaultValue) const
 {
     return value(key, defaultValue);
 }
 
-void SAKSettings::edSetValue(const QString &key, const QVariant &value)
+void SAKSettings::sdkSetValue(const QString &key, const QVariant &value)
 {
     setValue(key, value);
 }
 
-void SAKSettings::edSetArrayValues(const QString &groupName,
+void SAKSettings::sdkSetArrayValues(const QString &groupName,
                                   const QString &array,
                                   const QString &key,
                                   const QVariant &varList)
@@ -53,7 +53,7 @@ void SAKSettings::edSetArrayValues(const QString &groupName,
     endGroup();
 }
 
-QStringList SAKSettings::edArrayValues(const QString &group,
+QStringList SAKSettings::sdkArrayValues(const QString &group,
                                       const QString &array,
                                       const QString &key)
 {
@@ -70,7 +70,7 @@ QStringList SAKSettings::edArrayValues(const QString &group,
     return list;
 }
 
-void SAKSettings::edRemove(const QString &group, const QString &key)
+void SAKSettings::sdkRemove(const QString &group, const QString &key)
 {
     beginGroup(group);
     remove(key);

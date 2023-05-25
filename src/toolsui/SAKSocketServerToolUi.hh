@@ -24,8 +24,10 @@ class SAKSocketServerToolUi : public SAKCommunicationToolUi
 public:
     explicit SAKSocketServerToolUi(QWidget *parent = nullptr);
     ~SAKSocketServerToolUi();
-    virtual void setupCommunicationTool(SAKCommunicationTool *tool) final;
-    virtual void updateUiState(bool isWorking) final;
+    virtual void onIsWorkingChanged(bool isWorking) final;
+    virtual void onBaseToolUiInitialized(SAKBaseTool *tool,
+                                         const QString &settingsGroup) final;
+
 
 private:
     SAKSocketServerTool *mTool{nullptr};

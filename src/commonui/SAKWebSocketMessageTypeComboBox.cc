@@ -10,7 +10,7 @@
 #include "SAKWebSocketMessageTypeComboBox.hh"
 
 SAKWebSocketMessageTypeComboBox::SAKWebSocketMessageTypeComboBox(QWidget *parent)
-    : QComboBox{parent}
+    : SAKComboBox{parent}
 {
     addItem("Bin", 0);
     addItem("Text", 1);

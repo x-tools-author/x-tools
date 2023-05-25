@@ -14,18 +14,19 @@ private:
 
 public:
     static SAKSettings *instance();
-    Q_INVOKABLE QVariant edValue(
+
+    Q_INVOKABLE QVariant sakValue(
             const QString &key,
             const QVariant &defaultValue = QVariant()) const;
-    Q_INVOKABLE void edSetValue(const QString &key, const QVariant &value);
-    Q_INVOKABLE void edSetArrayValues(const QString &groupName,
-                                      const QString &array,
-                                      const QString &key,
-                                      const QVariant &varList);
-    Q_INVOKABLE QStringList edArrayValues(const QString &group,
-                                          const QString &array,
-                                          const QString &key);
-    Q_INVOKABLE void edRemove(const QString &group, const QString &key);
+    Q_INVOKABLE void sdkSetValue(const QString &key, const QVariant &value);
+    Q_INVOKABLE void sdkSetArrayValues(const QString &groupName,
+                                       const QString &array,
+                                       const QString &key,
+                                       const QVariant &varList);
+    Q_INVOKABLE QStringList sdkArrayValues(const QString &group,
+                                           const QString &array,
+                                           const QString &key);
+    Q_INVOKABLE void sdkRemove(const QString &group, const QString &key);
 };
 
 #endif // SAKSETTINGS_H

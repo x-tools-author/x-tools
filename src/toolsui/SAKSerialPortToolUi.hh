@@ -24,11 +24,15 @@ class SAKSerialPortToolUi : public SAKCommunicationToolUi
 public:
     explicit SAKSerialPortToolUi(QWidget *parent = nullptr);
     ~SAKSerialPortToolUi();
-    virtual void setupCommunicationTool(SAKCommunicationTool *tool) final;
+    virtual void onBaseToolUiInitialized(SAKBaseTool *tool,
+                                         const QString &settingsGroup) final;
 
 private:
     SAKSerialPortTool *mTool{nullptr};
     const QLoggingCategory mLoggingCategory{"SAK.SerialPortToolUi"};
+
+private:
+    void checkInitializingStatus();
 
 private:
     Ui::SAKSerialPortToolUi *ui;
