@@ -23,7 +23,8 @@ HEADERS += \
     $$PWD/SAKInterface.hh \
     $$PWD/SAKObj.hh \
     $$PWD/SAKSettings.hh \
-    $$PWD/SAKSigleton.hh
+    $$PWD/SAKSigleton.hh \
+    $$PWD/SAKTableModel.hh
 
 SOURCES += \
     $$PWD/EDBle.cpp \
@@ -42,4 +43,5 @@ SOURCES += \
     $$PWD/SAKInterface.cc \
     $$PWD/SAKObj.cc \
     $$PWD/SAKSettings.cc \
-    $$PWD/SAKSigleton.cc
+    $$PWD/SAKSigleton.cc \
+    $$PWD/SAKTableModel.cc
