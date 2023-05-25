@@ -20,7 +20,7 @@ int SAKTableModel::rowCount(const QModelIndex &parent) const
     Q_UNUSED(parent)
 
     int count = 0;
-    emit invokeGetRowCount(count);
+    emit const_cast<SAKTableModel*>(this)->invokeGetRowCount(count);
     return count;
 }
 
@@ -29,18 +29,20 @@ int SAKTableModel::columnCount(const QModelIndex &parent) const
     Q_UNUSED(parent)
 
     int column = 0;
-    emit invokeGetColumnCount(column);
+    emit const_cast<SAKTableModel*>(this)->invokeGetColumnCount(column);
     return column;
 }
 
 QVariant SAKTableModel::data(const QModelIndex &index, int role) const
 {
     QVariant d;
-    emit invokeGetData(d, index, role);
+    emit const_cast<SAKTableModel*>(this)->invokeGetData(d, index, role);
     return d;
 }
 
-bool SAKTableModel::setData(const QModelIndex &index, const QVariant &value, int role)
+bool SAKTableModel::setData(const QModelIndex &index,
+                            const QVariant &value,
+                            int role)
 {
     bool result = false;
     emit invokeSetData(result, index, value, role);
@@ -65,9 +67,14 @@ bool SAKTableModel::removeRows(int row, int count, const QModelIndex &parent)
     return result;
 }
 
-QVariant SAKTableModel::headerData(int section, Qt::Orientation orientation, int role) const
+QVariant SAKTableModel::headerData(int section,
+                                   Qt::Orientation orientation,
+                                   int role) const
 {
     QVariant d;
-    emit invokeGetHeaderData(d, section, orientation, role);
+    emit const_cast<SAKTableModel*>(this)->invokeGetHeaderData(d,
+                                                               section,
+                                                               orientation,
+                                                               role);
     return d;
 }

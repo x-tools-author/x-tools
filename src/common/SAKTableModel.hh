@@ -18,23 +18,48 @@ class SAKTableModel : public QAbstractTableModel
 public:
     explicit SAKTableModel(QObject *parent = nullptr);
 
-    virtual int rowCount(const QModelIndex &parent = QModelIndex()) const override;
-    virtual int columnCount(const QModelIndex &parent = QModelIndex()) const override;
-    virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
-    virtual bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) override;
-    virtual bool insertRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
-    virtual bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
-    virtual QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
+    virtual int rowCount(
+        const QModelIndex &parent = QModelIndex()) const override;
+    virtual int columnCount(
+        const QModelIndex &parent = QModelIndex()) const override;
+    virtual QVariant data(const QModelIndex &index,
+                          int role = Qt::DisplayRole) const override;
+    virtual bool setData(const QModelIndex &index,
+                         const QVariant &value,
+                         int role = Qt::EditRole) override;
+    virtual bool insertRows(int row,
+                            int count,
+                            const QModelIndex &parent = QModelIndex()) override;
+    virtual bool removeRows(int row,
+                            int count,
+                            const QModelIndex &parent = QModelIndex()) override;
+    virtual QVariant headerData(int section,
+                                Qt::Orientation orientation,
+                                int role = Qt::DisplayRole) const override;
 
 signals:
     // You must connect these signals using Qt::DirectConnection way.
-    void invokeGetRowCount(int &count) const;
-    void invokeGetColumnCount(int &count) const;
-    void invokeGetData(QVariant &data, const QModelIndex &index, int role = Qt::DisplayRole) const;
-    void invokeSetData(bool &result, const QModelIndex &index, const QVariant &value, int role = Qt::EditRole);
-    void invokeInsertRows(bool &result, int row, int count, const QModelIndex &parent = QModelIndex());
-    void invokeRemoveRows(bool &result, int row, int count, const QModelIndex &parent = QModelIndex());
-    void invokeGetHeaderData(QVariant &data, int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const;
+    void invokeGetRowCount(int &count);
+    void invokeGetColumnCount(int &count);
+    void invokeGetData(QVariant &data,
+                       const QModelIndex &index,
+                       int role = Qt::DisplayRole);
+    void invokeSetData(bool &result,
+                       const QModelIndex &index,
+                       const QVariant &value,
+                       int role = Qt::EditRole);
+    void invokeInsertRows(bool &result,
+                          int row,
+                          int count,
+                          const QModelIndex &parent = QModelIndex());
+    void invokeRemoveRows(bool &result,
+                          int row,
+                          int count,
+                          const QModelIndex &parent = QModelIndex());
+    void invokeGetHeaderData(QVariant &data,
+                             int section,
+                             Qt::Orientation orientation,
+                             int role = Qt::DisplayRole);
 };
 
 #endif // SAKTABLEMODEL_HH
