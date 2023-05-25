@@ -216,7 +216,6 @@ SAKEmitterTool::SAKEmitterTool(QObject *parent)
 
 void SAKEmitterTool::addItem(const QString &jsonCtx, int index)
 {
-
     QByteArray json = jsonCtx.toLatin1();
     QJsonObject jsonObj = QJsonDocument::fromJson(json).object();
     if (!(index >= 0 && index < mTableModel->mItems.count())) {
