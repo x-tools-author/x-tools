@@ -18,6 +18,7 @@ class SAKTableModel : public QAbstractTableModel
 public:
     explicit SAKTableModel(QObject *parent = nullptr);
 
+protected:
     virtual int rowCount(
         const QModelIndex &parent = QModelIndex()) const override;
     virtual int columnCount(

@@ -112,7 +112,6 @@ private:
     const int mDescriptionColumnIndex{0};
     const int mFormatColumnIndex{1};
     const int mItemTextColumnIndex{2};
-    QStringList mHeaders;
 
 private:
     EDEmitterDataKeys mDataKeys;

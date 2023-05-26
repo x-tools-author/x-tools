@@ -17,134 +17,11 @@
 #include "common/SAKInterface.hh"
 #include "common/SAKDataStructure.hh"
 
-SAKEmitterTableModel::SAKEmitterTableModel(QObject *parent)
-    : QAbstractTableModel(parent)
-{
-    for (int i = 0; i < mTableColumnCount; i++) {
-        mHeaders << SAKEmitterTableModel::headerData(i, Qt::Horizontal).toString();
-    }
-}
-
-int SAKEmitterTableModel::rowCount(const QModelIndex &parent) const
-{
-    Q_UNUSED(parent);
-    return mItems.count();
-}
-
-int SAKEmitterTableModel::columnCount(const QModelIndex &parent) const
-{
-    Q_UNUSED(parent);
-    return mHeaders.length();
-}
-
-QVariant SAKEmitterTableModel::data(const QModelIndex &index, int role) const
-{
-    int row = index.row();
-    if (row >= 0 && row < mItems.count()) {
-        int column = index.column();
-        const EDEmiterItem &item = mItems[row];
-        if (role == Qt::DisplayRole) {
-            return columnDisplayRoleData(item, column);
-        }
-    }
-
-    return QVariant();
-}
-
-bool SAKEmitterTableModel::setData(const QModelIndex &index,
-                                  const QVariant &value,
-                                  int role)
-{
-    Q_UNUSED(role);
-    int row = index.row();
-    if (row >= 0 && row < mItems.count()) {
-        auto item = mItems.at(row);
-        int column = index.column();
-        if (column >= 0 && column < mHeaders.count()) {
-            auto dataKey = mHeaders.at(column);
-            if (dataKey == mDataKeys.itemEnable) {
-                item.data.itemEnable = value.toBool();
-            } else if (dataKey == mDataKeys.itemDescription) {
-                item.data.itemDescription = value.toString();
-            } else if (dataKey == mDataKeys.itemTextFormat) {
-                item.data.itemTextFormat = value.toInt();
-            } else if (dataKey == mDataKeys.itemEscapeCharacter) {
-                item.data.itemEscapeCharacter = value.toInt();
-            } else if (dataKey == mDataKeys.itemInterval) {
-                item.data.itemInterval = value.toInt();
-            } else if (dataKey == mDataKeys.itemPrefix) {
-                item.data.itemPrefix = value.toInt();
-            } else if (dataKey == mDataKeys.itemSuffix) {
-                item.data.itemSuffix = value.toInt();
-            } else if (dataKey == mDataKeys.itemCrcEnable) {
-                item.data.itemCrcEnable = value.toBool();
-            } else if (dataKey == mDataKeys.itemCrcAlgorithm) {
-                item.data.itemCrcAlgorithm = value.toInt();
-            } else if (dataKey == mDataKeys.itemCrcStartIndex) {
-                item.data.itemCrcStartIndex = value.toInt();
-            } else if (dataKey == mDataKeys.itemCrcEndIndex) {
-                item.data.itemCrcEndIndex = value.toInt();
-            } else if (dataKey == mDataKeys.itemText) {
-                item.data.itemText = value.toString();
-            } else {
-
-            }
-
-            mItems.replace(row, item);
-            emit dataChanged(index, index);
-        }
-    }
-
-    return true;
-}
-
-bool SAKEmitterTableModel::insertRows(int row, int count,
-                                     const QModelIndex &parent)
-{
-    Q_UNUSED(parent);
-    beginInsertColumns(parent, row, rowCount() + count);
-    EDEmiterItem item{EDEmiterData{}, 0};
-    for (int i = 0; i < count; i++) {
-        mItems.insert(row, item);
-    }
-    endInsertRows();
-
-    return true;
-}
-
-bool SAKEmitterTableModel::removeRows(int row, int count,
-                                     const QModelIndex &parent)
-{
-    beginRemoveRows(parent, row, row + count - 1);
-    mItems.remove(row, count);
-    endRemoveRows();
-    return true;
-}
-
 QVariant SAKEmitterTableModel::headerData(int section,
                                          Qt::Orientation orientation,
                                          int role) const
 {
-    Q_UNUSED(role);
-    if (orientation == Qt::Horizontal) {
-        switch (section) {
-            case 0: return mDataKeys.itemEnable;
-            case 1: return mDataKeys.itemDescription;
-            case 2: return mDataKeys.itemTextFormat;
-            case 3: return mDataKeys.itemEscapeCharacter;
-            case 4: return mDataKeys.itemInterval;
-            case 5: return mDataKeys.itemPrefix;
-            case 6: return mDataKeys.itemSuffix;
-            case 7: return mDataKeys.itemCrcEnable;
-            case 8: return mDataKeys.itemCrcAlgorithm;
-            case 9: return mDataKeys.itemCrcStartIndex;
-            case 10: return mDataKeys.itemCrcEndIndex;
-            case 11: return mDataKeys.itemText;
-            default: return "";
-        }
-    }
 
-    return QVariant("");
 }
 
 QByteArray SAKEmitterTableModel::itemBytes(const EDEmiterData &item)
@@ -210,8 +87,9 @@ QVariant SAKEmitterTableModel::columnDisplayRoleData(
 SAKEmitterTool::SAKEmitterTool(QObject *parent)
     : SAKBaseTool{"SAK.EmitterTool", parent}
 {
-    mTableModel = new SAKEmitterTableModel(this);
-    mHeaders = mTableModel->mHeaders;
+    for (int i = 0; i < mTableColumnCount; i++) {
+        mHeaders << headerData(i, Qt::Horizontal).toString();
+    }
 }
 
 void SAKEmitterTool::addItem(const QString &jsonCtx, int index)
@@ -303,6 +181,126 @@ void SAKEmitterTool::inputBytes(const QByteArray &bytes,
 {
     Q_UNUSED(bytes)
     Q_UNUSED(context)
+}
+
+int SAKEmitterTool::rowCount(const QModelIndex &parent)
+{
+    Q_UNUSED(parent);
+    return mItems.count();
+}
+
+int SAKEmitterTool::columnCount(const QModelIndex &parent)
+{
+    Q_UNUSED(parent);
+    return mHeaders.length();
+}
+
+QVariant SAKEmitterTool::data(const QModelIndex &index,
+                                    int role)
+{
+    int row = index.row();
+    if (row >= 0 && row < mItems.count()) {
+        int column = index.column();
+        const EDEmiterItem &item = mItems[row];
+        if (role == Qt::DisplayRole) {
+            return columnDisplayRoleData(item, column);
+        }
+    }
+
+    return QVariant();
+}
+
+bool SAKEmitterTool::setData(const QModelIndex &index,
+                                   const QVariant &value,
+                                   int role)
+{
+    Q_UNUSED(role);
+    int row = index.row();
+    if (row >= 0 && row < mItems.count()) {
+        auto item = mItems.at(row);
+        int column = index.column();
+        if (column >= 0 && column < mHeaders.count()) {
+            auto dataKey = mHeaders.at(column);
+            if (dataKey == mDataKeys.itemEnable) {
+                item.data.itemEnable = value.toBool();
+            } else if (dataKey == mDataKeys.itemDescription) {
+                item.data.itemDescription = value.toString();
+            } else if (dataKey == mDataKeys.itemTextFormat) {
+                item.data.itemTextFormat = value.toInt();
+            } else if (dataKey == mDataKeys.itemEscapeCharacter) {
+                item.data.itemEscapeCharacter = value.toInt();
+            } else if (dataKey == mDataKeys.itemInterval) {
+                item.data.itemInterval = value.toInt();
+            } else if (dataKey == mDataKeys.itemPrefix) {
+                item.data.itemPrefix = value.toInt();
+            } else if (dataKey == mDataKeys.itemSuffix) {
+                item.data.itemSuffix = value.toInt();
+            } else if (dataKey == mDataKeys.itemCrcEnable) {
+                item.data.itemCrcEnable = value.toBool();
+            } else if (dataKey == mDataKeys.itemCrcAlgorithm) {
+                item.data.itemCrcAlgorithm = value.toInt();
+            } else if (dataKey == mDataKeys.itemCrcStartIndex) {
+                item.data.itemCrcStartIndex = value.toInt();
+            } else if (dataKey == mDataKeys.itemCrcEndIndex) {
+                item.data.itemCrcEndIndex = value.toInt();
+            } else if (dataKey == mDataKeys.itemText) {
+                item.data.itemText = value.toString();
+            } else {
+
+            }
+
+            mItems.replace(row, item);
+            emit dataChanged(index, index);
+        }
+    }
+
+    return true;
+}
+
+bool SAKEmitterTool::insertRows(int row,
+                                int count,
+                                const QModelIndex &parent)
+{
+    Q_UNUSED(parent);
+    EDEmiterItem item{EDEmiterData{}, 0};
+    for (int i = 0; i < count; i++) {
+        mItems.insert(row, item);
+    }
+
+    return true;
+}
+
+bool SAKEmitterTool::removeRows(int row,
+                                int count,
+                                const QModelIndex &parent)
+{
+    mItems.remove(row, count);
+}
+
+QVariant SAKEmitterTool::headerData(int section,
+                                    Qt::Orientation orientation,
+                                    int role)
+{
+    Q_UNUSED(role);
+    if (orientation == Qt::Horizontal) {
+        switch (section) {
+        case 0: return mDataKeys.itemEnable;
+        case 1: return mDataKeys.itemDescription;
+        case 2: return mDataKeys.itemTextFormat;
+        case 3: return mDataKeys.itemEscapeCharacter;
+        case 4: return mDataKeys.itemInterval;
+        case 5: return mDataKeys.itemPrefix;
+        case 6: return mDataKeys.itemSuffix;
+        case 7: return mDataKeys.itemCrcEnable;
+        case 8: return mDataKeys.itemCrcAlgorithm;
+        case 9: return mDataKeys.itemCrcStartIndex;
+        case 10: return mDataKeys.itemCrcEndIndex;
+        case 11: return mDataKeys.itemText;
+        default: return "";
+        }
+    }
+
+    return QVariant("");
 }
 
 void SAKEmitterTool::run()
