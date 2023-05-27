@@ -16,19 +16,27 @@
 class SAKTabelModelTool : public SAKBaseTool
 {
     Q_OBJECT
+    Q_PROPERTY(QVariant tableModel READ tableModel CONSTANT)
+    Q_PROPERTY(QStringList headers READ headers CONSTANT)
 public:
     explicit SAKTabelModelTool(const char *logCategory,
                                QObject *parent = nullptr);
-    QAbstractTableModel *tableModel();
+    QVariant tableModel();
+    QStringList headers();
+
+    Q_INVOKABLE virtual void addItem(const QString &jsonCtx, int index = -1) = 0;
+    Q_INVOKABLE virtual QVariant itemContext(int index) = 0;
+    Q_INVOKABLE virtual QVariant itemsContext() = 0;
 
 protected:
-    virtual int rowCount() const = 0;
-    virtual int columnCount() const = 0;
+    virtual int rowCount(const QModelIndex &parent = QModelIndex()) const = 0;
+    virtual int columnCount(const QModelIndex &parent
+                            = QModelIndex()) const = 0;
     virtual QVariant data(const QModelIndex &index,
-                          int role = Qt::DisplayRole) = 0;
+                          int role = Qt::DisplayRole) const = 0;
     virtual bool setData(const QModelIndex &index,
                          const QVariant &value,
-                         int role = Qt::EditRole) const = 0;
+                         int role = Qt::EditRole) = 0;
     virtual bool insertRows(int row,
                             int count,
                             const QModelIndex &parent = QModelIndex()) = 0;
@@ -39,7 +47,7 @@ protected:
                                 Qt::Orientation orientation,
                                 int role = Qt::DisplayRole) const = 0;
 
-private:
+protected:
     SAKTableModel *mTableModel;
 
 private:

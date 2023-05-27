@@ -53,8 +53,8 @@ QVariant SAKPrestorerTableModel::data(const QModelIndex &index, int role) const
 }
 
 bool SAKPrestorerTableModel::setData(const QModelIndex &index,
-                                  const QVariant &value,
-                                  int role)
+                                     const QVariant &value,
+                                     int role)
 {
     Q_UNUSED(role);
     int row = index.row();

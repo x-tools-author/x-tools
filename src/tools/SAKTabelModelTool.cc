@@ -37,9 +37,21 @@ SAKTabelModelTool::SAKTabelModelTool(const char *logCategory, QObject *parent)
             Qt::DirectConnection);
 }
 
-QAbstractTableModel *SAKTabelModelTool::tableModel()
+QVariant SAKTabelModelTool::tableModel()
 {
-    return mTableModel;
+    return QVariant::fromValue(mTableModel);
+}
+
+QStringList SAKTabelModelTool::headers()
+{
+    int count = columnCount();
+    QStringList strList;
+    for (int i = 0; i < count; i++) {
+        QVariant var = headerData(i, Qt::Horizontal);
+        strList.append(var.toString());
+    }
+
+    return strList;
 }
 
 void SAKTabelModelTool::onInvokeGetRowCount(int &count)

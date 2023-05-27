@@ -40,7 +40,7 @@ void SAKBaseTool::inputBytes(const QByteArray &bytes, const QVariant &context)
     emit bytesInputted(bytes, context);
 }
 
-void SAKBaseTool::outputMessage(int type, const QString &info)
+void SAKBaseTool::outputMessage(int type, const QString &info) const
 {
     if (type == QtInfoMsg) {
         qCInfo(mLoggingCategory) << qPrintable(info);

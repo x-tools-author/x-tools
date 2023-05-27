@@ -13,100 +13,38 @@
 
 #include "SAKEmitterTool.hh"
 
-#include "common/SAKCrcInterface.hh"
-#include "common/SAKInterface.hh"
-#include "common/SAKDataStructure.hh"
-
-QVariant SAKEmitterTableModel::headerData(int section,
-                                         Qt::Orientation orientation,
-                                         int role) const
-{
-
-}
-
-QByteArray SAKEmitterTableModel::itemBytes(const EDEmiterData &item)
-{
-    QByteArray bytes;
-    QString text = item.itemText;
-    text = SAKDataStructure::cookedString(item.itemEscapeCharacter, text);
-    bytes = SAKInterface::string2array(text, item.itemTextFormat);
-    SAKCrcInterface edCrc;
-    QByteArray crcBytes = edCrc.calculateBytes(bytes,
-                                               item.itemCrcAlgorithm,
-                                               item.itemCrcStartIndex,
-                                               item.itemCrcEndIndex);
-    QByteArray prefix = SAKDataStructure::affixesData(item.itemPrefix);
-    QByteArray suffix = SAKDataStructure::affixesData(item.itemSuffix);
-
-    bytes.prepend(prefix);
-    if (item.itemCrcEnable) {
-        bytes.append(crcBytes);
-    }
-    bytes.append(suffix);
-
-    return bytes;
-}
-
-QVariant SAKEmitterTableModel::columnDisplayRoleData(
-    const EDEmiterItem &item, int column) const
-{
-    if (column >= 0 && column < mHeaders.count()) {
-        const QString dataKey = mHeaders.at(column);
-        if (dataKey == mDataKeys.itemEnable) {
-            return item.data.itemEnable;
-        } else if (dataKey == mDataKeys.itemDescription) {
-            return item.data.itemDescription;
-        }  else if (dataKey == mDataKeys.itemTextFormat) {
-            return item.data.itemEscapeCharacter;
-        }  else if (dataKey == mDataKeys.itemEscapeCharacter) {
-            return item.data.itemEscapeCharacter;
-        }  else if (dataKey == mDataKeys.itemInterval) {
-            return item.data.itemInterval;
-        }  else if (dataKey == mDataKeys.itemPrefix) {
-            return item.data.itemPrefix;
-        }  else if (dataKey == mDataKeys.itemSuffix) {
-            return item.data.itemSuffix;
-        }  else if (dataKey == mDataKeys.itemCrcEnable) {
-            return item.data.itemCrcEnable;
-        }  else if (dataKey == mDataKeys.itemCrcAlgorithm) {
-            return item.data.itemCrcAlgorithm;
-        }  else if (dataKey == mDataKeys.itemCrcStartIndex) {
-            return item.data.itemCrcStartIndex;
-        }  else if (dataKey == mDataKeys.itemCrcEndIndex) {
-            return item.data.itemCrcEndIndex;
-        }  else if (dataKey == mDataKeys.itemText) {
-            return item.data.itemText;
-        } else {
-            return "Error";
-        }
-    }
-
-    return QVariant("Error");
-}
+#include "SAKCrcInterface.hh"
+#include "SAKInterface.hh"
+#include "SAKDataStructure.hh"
 
 SAKEmitterTool::SAKEmitterTool(QObject *parent)
-    : SAKBaseTool{"SAK.EmitterTool", parent}
+    : SAKTabelModelTool{"SAK.EmitterTool", parent}
 {
-    for (int i = 0; i < mTableColumnCount; i++) {
-        mHeaders << headerData(i, Qt::Horizontal).toString();
-    }
+
+}
+
+void SAKEmitterTool::inputBytes(const QByteArray &bytes,
+                                const QVariant &context)
+{
+    Q_UNUSED(bytes)
+    Q_UNUSED(context)
 }
 
 void SAKEmitterTool::addItem(const QString &jsonCtx, int index)
 {
     QByteArray json = jsonCtx.toLatin1();
     QJsonObject jsonObj = QJsonDocument::fromJson(json).object();
-    if (!(index >= 0 && index < mTableModel->mItems.count())) {
+    if (!(index >= 0 && index < mItems.count())) {
         mTableModel->insertRows(mTableModel->rowCount(), 1);
-        index = mTableModel->rowCount() - 1;
+        index = mTableModel->rowCount();
     }
 
-    for (int i = 0; i < mHeaders.count(); i++) {
-        if (i >= mTableModel->columnCount()) {
-            outputMessage(QtWarningMsg, __FUNCTION__);
+    for (int i = 0; i < headers().count(); i++) {
+        if (i >= columnCount()) {
+            outputMessage(QtWarningMsg, "Invalid column index!");
         }
 
-        auto key = mHeaders.at(i);
+        auto key = headers().at(i);
         auto modelIndex = mTableModel->index(index, i);
         mTableModel->setData(modelIndex, jsonObj.value(key), Qt::EditRole);
     }
@@ -115,9 +53,9 @@ void SAKEmitterTool::addItem(const QString &jsonCtx, int index)
 QVariant SAKEmitterTool::itemContext(int index)
 {
     QJsonObject ctx;
-    mTableModel->mItemsMutex.lock();
-    if (index >= 0 && index < mTableModel->mItems.count()) {
-        auto item = mTableModel->mItems.at(index);
+    mItemsMutex.lock();
+    if (index >= 0 && index < mItems.count()) {
+        auto item = mItems.at(index);
         ctx.insert(itemEnable(), item.data.itemEnable);
         ctx.insert(itemDescription(), item.data.itemDescription);
         ctx.insert(itemTextFormat(), item.data.itemTextFormat);
@@ -145,7 +83,7 @@ QVariant SAKEmitterTool::itemContext(int index)
         ctx.insert(itemCrcEndIndex(), 0);
         ctx.insert(itemText(), "This is a demo.");
     }
-    mTableModel->mItemsMutex.unlock();
+    mItemsMutex.unlock();
 
     return ctx;
 }
@@ -153,55 +91,32 @@ QVariant SAKEmitterTool::itemContext(int index)
 QVariant SAKEmitterTool::itemsContext()
 {
     QVariantList varList;
-    int rowCount = mTableModel->rowCount();
-    for (int i = 0; i < rowCount; i++) {
+    int count = mTableModel->rowCount();
+    for (int i = 0; i < count; i++) {
         varList.append(itemContext(i));
     }
 
     return varList;
 }
 
-SAKEmitterTableModel *SAKEmitterTool::getModel()
-{
-    return mTableModel;
-}
-
-QStringList SAKEmitterTool::getHeaders()
-{
-    return mHeaders;
-}
-
-SAKEmitterTableModel::EDEmitterDataKeys SAKEmitterTool::dataKeys()
-{
-    return mTableModel->mDataKeys;
-}
-
-void SAKEmitterTool::inputBytes(const QByteArray &bytes,
-                                const QVariant &context)
-{
-    Q_UNUSED(bytes)
-    Q_UNUSED(context)
-}
-
-int SAKEmitterTool::rowCount(const QModelIndex &parent)
+int SAKEmitterTool::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
     return mItems.count();
 }
 
-int SAKEmitterTool::columnCount(const QModelIndex &parent)
+int SAKEmitterTool::columnCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
-    return mHeaders.length();
+    return mTableColumnCount;
 }
 
-QVariant SAKEmitterTool::data(const QModelIndex &index,
-                                    int role)
+QVariant SAKEmitterTool::data(const QModelIndex &index, int role) const
 {
     int row = index.row();
     if (row >= 0 && row < mItems.count()) {
         int column = index.column();
-        const EDEmiterItem &item = mItems[row];
+        const EmiterItem &item = mItems[row];
         if (role == Qt::DisplayRole) {
             return columnDisplayRoleData(item, column);
         }
@@ -211,16 +126,16 @@ QVariant SAKEmitterTool::data(const QModelIndex &index,
 }
 
 bool SAKEmitterTool::setData(const QModelIndex &index,
-                                   const QVariant &value,
-                                   int role)
+                             const QVariant &value,
+                             int role)
 {
     Q_UNUSED(role);
     int row = index.row();
     if (row >= 0 && row < mItems.count()) {
         auto item = mItems.at(row);
         int column = index.column();
-        if (column >= 0 && column < mHeaders.count()) {
-            auto dataKey = mHeaders.at(column);
+        if (column >= 0 && column < headers().count()) {
+            auto dataKey = headers().at(column);
             if (dataKey == mDataKeys.itemEnable) {
                 item.data.itemEnable = value.toBool();
             } else if (dataKey == mDataKeys.itemDescription) {
@@ -246,11 +161,11 @@ bool SAKEmitterTool::setData(const QModelIndex &index,
             } else if (dataKey == mDataKeys.itemText) {
                 item.data.itemText = value.toString();
             } else {
-
+                outputMessage(QtWarningMsg, "Unknown data key:" + dataKey);
             }
 
             mItems.replace(row, item);
-            emit dataChanged(index, index);
+            emit mTableModel->dataChanged(index, index);
         }
     }
 
@@ -262,7 +177,7 @@ bool SAKEmitterTool::insertRows(int row,
                                 const QModelIndex &parent)
 {
     Q_UNUSED(parent);
-    EDEmiterItem item{EDEmiterData{}, 0};
+    EmiterItem item{Data{}, 0};
     for (int i = 0; i < count; i++) {
         mItems.insert(row, item);
     }
@@ -270,16 +185,16 @@ bool SAKEmitterTool::insertRows(int row,
     return true;
 }
 
-bool SAKEmitterTool::removeRows(int row,
-                                int count,
-                                const QModelIndex &parent)
+bool SAKEmitterTool::removeRows(int row, int count, const QModelIndex &parent)
 {
+    Q_UNUSED(parent)
     mItems.remove(row, count);
+    return true;
 }
 
 QVariant SAKEmitterTool::headerData(int section,
                                     Qt::Orientation orientation,
-                                    int role)
+                                    int role) const
 {
     Q_UNUSED(role);
     if (orientation == Qt::Horizontal) {
@@ -318,20 +233,144 @@ void SAKEmitterTool::run()
     if (mEmittingTimer) {
         mEmittingTimer->stop();
         mEmittingTimer->deleteLater();
+        mEmittingTimer = nullptr;
     }
 }
 
 void SAKEmitterTool::try2emit()
 {
-    mTableModel->mItemsMutex.lock();
-    for (auto &item : mTableModel->mItems) {
+    mItemsMutex.lock();
+    for (auto &item : mItems) {
         int elapsedTime = item.elapsedTime += mScanInterval;
         if (elapsedTime > item.data.itemInterval && item.data.itemEnable) {
             item.elapsedTime = 0;
-            const auto bytes = mTableModel->itemBytes(item.data);
+            const auto bytes = itemBytes(item.data);
             emit bytesOutputted(bytes, QVariant());
         }
     }
-    mTableModel->mItemsMutex.unlock();
+    mItemsMutex.unlock();
     mEmittingTimer->start();
+}
+
+QByteArray SAKEmitterTool::itemBytes(const SAKEmitterTool::Data &item)
+{
+    QByteArray bytes;
+    QString text = item.itemText;
+    text = SAKDataStructure::cookedString(item.itemEscapeCharacter, text);
+    bytes = SAKInterface::string2array(text, item.itemTextFormat);
+    SAKCrcInterface edCrc;
+    QByteArray crcBytes = edCrc.calculateBytes(bytes,
+                                               item.itemCrcAlgorithm,
+                                               item.itemCrcStartIndex,
+                                               item.itemCrcEndIndex);
+    QByteArray prefix = SAKDataStructure::affixesData(item.itemPrefix);
+    QByteArray suffix = SAKDataStructure::affixesData(item.itemSuffix);
+
+    bytes.prepend(prefix);
+    if (item.itemCrcEnable) {
+        bytes.append(crcBytes);
+    }
+    bytes.append(suffix);
+
+    return bytes;
+}
+
+QVariant SAKEmitterTool::columnDisplayRoleData(
+    const SAKEmitterTool::EmiterItem &item, int column) const
+{
+    DataKeys keys;
+    QStringList hs = const_cast<SAKEmitterTool*>(this)->headers();
+    if (column >= 0 && column < hs.count()) {
+        const QString dataKey = hs.at(column);
+        if (dataKey == mDataKeys.itemEnable) {
+            return item.data.itemEnable;
+        } else if (dataKey == mDataKeys.itemDescription) {
+            return item.data.itemDescription;
+        }  else if (dataKey == mDataKeys.itemTextFormat) {
+            return item.data.itemEscapeCharacter;
+        }  else if (dataKey == mDataKeys.itemEscapeCharacter) {
+            return item.data.itemEscapeCharacter;
+        }  else if (dataKey == mDataKeys.itemInterval) {
+            return item.data.itemInterval;
+        }  else if (dataKey == mDataKeys.itemPrefix) {
+            return item.data.itemPrefix;
+        }  else if (dataKey == mDataKeys.itemSuffix) {
+            return item.data.itemSuffix;
+        }  else if (dataKey == mDataKeys.itemCrcEnable) {
+            return item.data.itemCrcEnable;
+        }  else if (dataKey == mDataKeys.itemCrcAlgorithm) {
+            return item.data.itemCrcAlgorithm;
+        }  else if (dataKey == mDataKeys.itemCrcStartIndex) {
+            return item.data.itemCrcStartIndex;
+        }  else if (dataKey == mDataKeys.itemCrcEndIndex) {
+            return item.data.itemCrcEndIndex;
+        }  else if (dataKey == mDataKeys.itemText) {
+            return item.data.itemText;
+        } else {
+            outputMessage(QtWarningMsg, "Unknown data key:" + dataKey);
+            return "Error";
+        }
+    }
+
+    return QVariant("Error");
+}
+
+QString SAKEmitterTool::itemEnable()
+{
+    return mDataKeys.itemEnable;
+}
+
+QString SAKEmitterTool::itemDescription()
+{
+    return mDataKeys.itemDescription;
+}
+
+QString SAKEmitterTool::itemTextFormat()
+{
+    return mDataKeys.itemTextFormat;
+}
+
+QString SAKEmitterTool::itemEscapeCharacter()
+{
+    return mDataKeys.itemEscapeCharacter;
+}
+
+QString SAKEmitterTool::itemInterval()
+{
+    return mDataKeys.itemInterval;
+}
+
+QString SAKEmitterTool::itemPrefix()
+{
+    return mDataKeys.itemPrefix;
+}
+
+QString SAKEmitterTool::itemSuffix()
+{
+    return mDataKeys.itemSuffix;
+}
+
+QString SAKEmitterTool::itemCrcEnable()
+{
+    return mDataKeys.itemCrcEnable;
+}
+
+QString SAKEmitterTool::itemCrcAlgorithm()
+{
+    return mDataKeys.itemCrcAlgorithm;
+}
+
+QString SAKEmitterTool::itemCrcStartIndex()
+{
+    return mDataKeys.itemCrcStartIndex;
+}
+
+QString SAKEmitterTool::itemCrcEndIndex()
+{
+    return mDataKeys.itemCrcEndIndex;
+}
+
+QString SAKEmitterTool::itemText()
+{
+    return mDataKeys.itemText;
 }

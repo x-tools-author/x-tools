@@ -72,7 +72,8 @@ int main(int argc, char *argv[])
 #endif
 
 #if (QT_VERSION >= QT_VERSION_CHECK(6,0,0))
-    QGuiApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::Floor);
+    auto policy = Qt::HighDpiScaleFactorRoundingPolicy::Floor;
+    QGuiApplication::setHighDpiScaleFactorRoundingPolicy(policy);
 #endif
 
     // High dpi settings.

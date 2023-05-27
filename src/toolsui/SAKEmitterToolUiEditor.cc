@@ -45,7 +45,7 @@ QJsonObject SAKEmitterToolUiEditor::parameters()
     int end = ui->spinBoxEndIndex->value();
     QString data = ui->lineEditData->text();
 
-    SAKEmitterTableModel::EDEmitterDataKeys keys;
+    SAKEmitterTool::DataKeys keys;
     QJsonObject params;
     params.insert(keys.itemEnable, enable);
     params.insert(keys.itemDescription, description);
@@ -64,7 +64,7 @@ QJsonObject SAKEmitterToolUiEditor::parameters()
 
 void SAKEmitterToolUiEditor::setParameters(const QJsonObject &params)
 {
-    SAKEmitterTableModel::EDEmitterDataKeys keys;
+    SAKEmitterTool::DataKeys keys;
     bool enable = params.value(keys.itemEnable).toBool();
     QString description = params.value(keys.itemDescription).toString();
     int format = params.value(keys.itemTextFormat).toInt();

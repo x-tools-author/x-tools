@@ -20,9 +20,6 @@
 class SAKEmitterTool : public SAKTabelModelTool
 {
     Q_OBJECT
-    Q_PROPERTY(QVariant tableModel READ tableModel CONSTANT)
-    Q_PROPERTY(QStringList headers READ headers CONSTANT)
-
     Q_PROPERTY(QString itemEnable READ itemEnable CONSTANT)
     Q_PROPERTY(QString itemDescription READ itemDescription CONSTANT)
     Q_PROPERTY(QString itemTextFormat READ itemTextFormat CONSTANT)
@@ -36,7 +33,7 @@ class SAKEmitterTool : public SAKTabelModelTool
     Q_PROPERTY(QString itemCrcEndIndex READ itemCrcEndIndex CONSTANT)
     Q_PROPERTY(QString itemText READ itemText CONSTANT)
 public:
-    struct EDEmitterDataKeys {
+    struct DataKeys {
         const QString itemEnable{"Enable"};
         const QString itemDescription{"Description"};
         const QString itemTextFormat{"Format"};
@@ -52,7 +49,7 @@ public:
     };
 
 public:
-    struct EDEmiterData {
+    struct Data {
         bool itemEnable;
         QString itemDescription{"Demo"};
         int itemTextFormat;
@@ -68,38 +65,37 @@ public:
         int itemCrcEndIndex;
     };
 
-    struct EDEmiterItem {
-        EDEmiterData data;
+    struct EmiterItem {
+        Data data;
         int elapsedTime{0};
     };
 
 public:
     explicit SAKEmitterTool(QObject *parent = Q_NULLPTR);
-
-    Q_INVOKABLE void addItem(const QString &jsonCtx, int index = -1);
-    Q_INVOKABLE QVariant itemContext(int index);
-    Q_INVOKABLE QVariant itemsContext();
-    QStringList getHeaders();
-    EDEmitterDataKeys dataKeys();
-
     virtual void inputBytes(const QByteArray &bytes,
                             const QVariant &context = QJsonObject()) final;
 
+public:
+    virtual void addItem(const QString &jsonCtx, int index = -1) final;
+    virtual QVariant itemContext(int index) final;
+    virtual QVariant itemsContext() final;
+
 protected:
-    virtual int rowCount(const QModelIndex &parent = QModelIndex()) const override;
-    virtual int columnCount(
-        const QModelIndex &parent = QModelIndex()) const override;
+    virtual int rowCount(const QModelIndex &parent
+                         = QModelIndex()) const override;
+    virtual int columnCount(const QModelIndex &parent
+                            = QModelIndex()) const override;
     virtual QVariant data(const QModelIndex &index,
                           int role = Qt::DisplayRole) const override;
     virtual bool setData(const QModelIndex &index,
                          const QVariant &value,
                          int role = Qt::EditRole) override;
-    virtual bool insertRows(int row,
-                            int count,
-                            const QModelIndex &parent = QModelIndex()) override;
-    virtual bool removeRows(int row,
-                            int count,
-                            const QModelIndex &parent = QModelIndex()) override;
+    virtual bool insertRows(int row, int count,
+                            const QModelIndex &parent
+                            = QModelIndex()) override;
+    virtual bool removeRows(int row, int count,
+                            const QModelIndex &parent
+                            = QModelIndex()) override;
     virtual QVariant headerData(int section,
                                 Qt::Orientation orientation,
                                 int role = Qt::DisplayRole) const override;
@@ -107,51 +103,34 @@ protected:
     virtual void run() final;
 
 private:
-    QList<EDEmiterItem> mItems;
+    QList<EmiterItem> mItems;
     QMutex mItemsMutex;
     const int mDescriptionColumnIndex{0};
     const int mFormatColumnIndex{1};
     const int mItemTextColumnIndex{2};
-    QStringList mHeaders;
-
-private:
-    EDEmitterDataKeys mDataKeys;
+    DataKeys mDataKeys;
     const int mTableColumnCount{12};
-
-private:
-    QVariant columnDisplayRoleData(
-        const EDEmiterItem &item, int column) const;
-
-private:
-    QByteArray itemBytes(const EDEmiterData &item);
-
-private:
     QTimer *mEmittingTimer;
     const int mScanInterval{5};
 
 private:
     void try2emit();
+    QByteArray itemBytes(const SAKEmitterTool::Data &item);
+    QVariant columnDisplayRoleData(const EmiterItem &item, int column) const;
 
 private:
-    QStringList mHeaders;
-    QStringList headers(){return mHeaders;}
-
-    QString itemEnable(){return mTableModel->mDataKeys.itemEnable;}
-    QString itemDescription(){return mTableModel->mDataKeys.itemDescription;}
-    QString itemTextFormat(){return mTableModel->mDataKeys.itemTextFormat;}
-    QString itemEscapeCharacter(){
-        return mTableModel->mDataKeys.itemEscapeCharacter;
-    }
-    QString itemInterval(){return mTableModel->mDataKeys.itemInterval;}
-    QString itemPrefix(){return mTableModel->mDataKeys.itemPrefix;}
-    QString itemSuffix(){return mTableModel->mDataKeys.itemSuffix;}
-    QString itemCrcEnable(){return mTableModel->mDataKeys.itemCrcEnable;}
-    QString itemCrcAlgorithm(){return mTableModel->mDataKeys.itemCrcAlgorithm;}
-    QString itemCrcStartIndex(){
-        return mTableModel->mDataKeys.itemCrcStartIndex;
-    }
-    QString itemCrcEndIndex(){return mTableModel->mDataKeys.itemCrcEndIndex;}
-    QString itemText(){return mTableModel->mDataKeys.itemText;}
+    QString itemEnable();
+    QString itemDescription();
+    QString itemTextFormat();
+    QString itemEscapeCharacter();
+    QString itemInterval();
+    QString itemPrefix();
+    QString itemSuffix();
+    QString itemCrcEnable();
+    QString itemCrcAlgorithm();
+    QString itemCrcStartIndex();
+    QString itemCrcEndIndex();
+    QString itemText();
 };
 
 #endif // SAKEMITTERTOOL_H

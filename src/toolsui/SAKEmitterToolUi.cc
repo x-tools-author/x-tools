@@ -40,7 +40,8 @@ void SAKEmitterToolUi::initialize(SAKEmitterTool *tool,
     }
 
     mTool = qobject_cast<SAKEmitterTool*>(tool);
-    SAKEmitterTableModel *dataModel = mTool->getModel();
+    QVariant var = mTool->tableModel();
+    QAbstractTableModel *dataModel = var.value<QAbstractTableModel*>();
     SAKTableViewWithController::initialize(dataModel,
                                            settingsGroup + "/emitter");
 }
@@ -63,15 +64,18 @@ void SAKEmitterToolUi::edit(const QModelIndex &index)
 
 void SAKEmitterToolUi::clear()
 {
-    int rowCount = mTool->getModel()->rowCount();
-    mTool->getModel()->removeRows(0, rowCount);
+    QVariant var = mTool->tableModel();
+    QAbstractTableModel *tableModel = var.value<QAbstractTableModel*>();
+    int rowCount = tableModel->rowCount();
+    tableModel->removeRows(0, rowCount);
 }
 
 void SAKEmitterToolUi::remove(const QModelIndex &index)
 {
     if (index.isValid()) {
-        auto model = mTool->getModel();
-        model->removeRow(index.row());
+        QVariant var = mTool->tableModel();
+        QAbstractTableModel *tableModel = var.value<QAbstractTableModel*>();
+        tableModel->removeRow(index.row());
     }
 }
 
@@ -116,5 +120,6 @@ bool SAKEmitterToolUi::append()
     jsonDoc.setObject(jsonObj);
     QString str = QString::fromUtf8(jsonDoc.toJson());
     mTool->addItem(str);
+
     return true;
 }

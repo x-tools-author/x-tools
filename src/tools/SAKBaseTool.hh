@@ -42,7 +42,7 @@ protected:
     QString mToolName{""};
 
 protected:
-    void outputMessage(int type, const QString &info);
+    void outputMessage(int type, const QString &info) const;
 
 private:
     QLoggingCategory mLoggingCategory;
