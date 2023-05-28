@@ -14,33 +14,38 @@
 #include <QVariant>
 #include <QAbstractTableModel>
 
-#include "SAKBaseTool.hh"
+#include "SAKTabelModelTool.hh"
 
-class SAKResponserTableModel : public QAbstractTableModel
+class SAKResponserTool : public SAKTabelModelTool
 {
     Q_OBJECT
-    friend class SAKResponserTool;
-public:
-    SAKResponserTableModel(QObject *parent = nullptr);
+    Q_PROPERTY(QVariant tableModel READ tableModel CONSTANT)
+    Q_PROPERTY(QStringList headers READ headers CONSTANT)
 
-    virtual int rowCount(
-        const QModelIndex &parent = QModelIndex()) const override;
-    virtual int columnCount(
-        const QModelIndex &parent = QModelIndex()) const override;
-    virtual QVariant data(
-        const QModelIndex &index, int role = Qt::DisplayRole) const override;
-    virtual bool setData(const QModelIndex &index,
-                         const QVariant &value,
-                         int role = Qt::EditRole) override;
-    virtual bool insertRows(
-        int row, int count,
-        const QModelIndex &parent = QModelIndex()) override;
-    virtual bool removeRows(
-        int row, int count,
-        const QModelIndex &parent = QModelIndex()) override;
-    virtual QVariant headerData(int section,
-                                Qt::Orientation orientation,
-                                int role = Qt::DisplayRole) const override;
+    Q_PROPERTY(QString itemEnable READ itemEnable CONSTANT)
+    Q_PROPERTY(QString itemDescription READ itemDescription CONSTANT)
+    Q_PROPERTY(QString itemOption READ itemOption CONSTANT)
+
+    Q_PROPERTY(QString itemReferenceTextFormat READ itemReferenceTextFormat CONSTANT)
+    Q_PROPERTY(QString itemReferenceEscapeCharacter READ itemReferenceEscapeCharacter CONSTANT)
+    Q_PROPERTY(QString itemReferencePrefix READ itemReferencePrefix CONSTANT)
+    Q_PROPERTY(QString itemReferenceSuffix READ itemReferenceSuffix CONSTANT)
+    Q_PROPERTY(QString itemReferenceCrcEnable READ itemReferenceCrcEnable CONSTANT)
+    Q_PROPERTY(QString itemReferenceCrcAlgorithm READ itemReferenceCrcAlgorithm CONSTANT)
+    Q_PROPERTY(QString itemReferenceCrcStartIndex READ itemReferenceCrcStartIndex CONSTANT)
+    Q_PROPERTY(QString itemReferenceCrcEndIndex READ itemReferenceCrcEndIndex CONSTANT)
+    Q_PROPERTY(QString itemReferenceText READ itemReferenceText CONSTANT)
+
+    Q_PROPERTY(QString itemResponseTextFormat READ itemResponseTextFormat CONSTANT)
+    Q_PROPERTY(QString itemResponseEscapeCharacter READ itemResponseEscapeCharacter CONSTANT)
+    Q_PROPERTY(QString itemResponseInterval READ itemResponseInterval CONSTANT)
+    Q_PROPERTY(QString itemResponsePrefix READ itemResponsePrefix CONSTANT)
+    Q_PROPERTY(QString itemResponseSuffix READ itemResponseSuffix CONSTANT)
+    Q_PROPERTY(QString itemResponseCrcEnable READ itemResponseCrcEnable CONSTANT)
+    Q_PROPERTY(QString itemResponseCrcAlgorithm READ itemResponseCrcAlgorithm CONSTANT)
+    Q_PROPERTY(QString itemResponseCrcStartIndex READ itemResponseCrcStartIndex CONSTANT)
+    Q_PROPERTY(QString itemResponseCrcEndIndex READ itemResponseCrcEndIndex CONSTANT)
+    Q_PROPERTY(QString itemResponseText READ itemResponseText CONSTANT)
 public:
     struct EDResponserData {
         bool itemEnable;
@@ -99,71 +104,37 @@ public:
         const QString itemResponseText{"ResponseData"};
     };
 
-private:
-    QList<EDEmiterItem> mItems;
-    QMutex mItemsMutex;
-    const int mDescriptionColumnIndex{0};
-    const int mFormatColumnIndex{1};
-    const int mItemTextColumnIndex{2};
-    QStringList mHeaders;
-
-private:
-    struct SAKResponserDataKeys mDataKeys;
-    const int mTableColumnCount{22};
-
-private:
-    QVariant columnDisplayRoleData(
-        const EDEmiterItem &item, int column) const;
-
-private:
-    QByteArray referenceBytes(const EDResponserData &item) const;
-    QByteArray responseBytes(const EDResponserData &item) const;
-};
-
-class SAKResponserTool : public SAKBaseTool
-{
-    Q_OBJECT
-    Q_PROPERTY(QVariant tableModel READ tableModel CONSTANT)
-    Q_PROPERTY(QStringList headers READ headers CONSTANT)
-
-    Q_PROPERTY(QString itemEnable READ itemEnable CONSTANT)
-    Q_PROPERTY(QString itemDescription READ itemDescription CONSTANT)
-    Q_PROPERTY(QString itemOption READ itemOption CONSTANT)
-
-    Q_PROPERTY(QString itemReferenceTextFormat READ itemReferenceTextFormat CONSTANT)
-    Q_PROPERTY(QString itemReferenceEscapeCharacter READ itemReferenceEscapeCharacter CONSTANT)
-    Q_PROPERTY(QString itemReferencePrefix READ itemReferencePrefix CONSTANT)
-    Q_PROPERTY(QString itemReferenceSuffix READ itemReferenceSuffix CONSTANT)
-    Q_PROPERTY(QString itemReferenceCrcEnable READ itemReferenceCrcEnable CONSTANT)
-    Q_PROPERTY(QString itemReferenceCrcAlgorithm READ itemReferenceCrcAlgorithm CONSTANT)
-    Q_PROPERTY(QString itemReferenceCrcStartIndex READ itemReferenceCrcStartIndex CONSTANT)
-    Q_PROPERTY(QString itemReferenceCrcEndIndex READ itemReferenceCrcEndIndex CONSTANT)
-    Q_PROPERTY(QString itemReferenceText READ itemReferenceText CONSTANT)
-
-    Q_PROPERTY(QString itemResponseTextFormat READ itemResponseTextFormat CONSTANT)
-    Q_PROPERTY(QString itemResponseEscapeCharacter READ itemResponseEscapeCharacter CONSTANT)
-    Q_PROPERTY(QString itemResponseInterval READ itemResponseInterval CONSTANT)
-    Q_PROPERTY(QString itemResponsePrefix READ itemResponsePrefix CONSTANT)
-    Q_PROPERTY(QString itemResponseSuffix READ itemResponseSuffix CONSTANT)
-    Q_PROPERTY(QString itemResponseCrcEnable READ itemResponseCrcEnable CONSTANT)
-    Q_PROPERTY(QString itemResponseCrcAlgorithm READ itemResponseCrcAlgorithm CONSTANT)
-    Q_PROPERTY(QString itemResponseCrcStartIndex READ itemResponseCrcStartIndex CONSTANT)
-    Q_PROPERTY(QString itemResponseCrcEndIndex READ itemResponseCrcEndIndex CONSTANT)
-    Q_PROPERTY(QString itemResponseText READ itemResponseText CONSTANT)
-
 public:
     explicit SAKResponserTool(QObject *parent = nullptr);
 
-    Q_INVOKABLE void addItem(const QString &jsonCtx, int index = -1);
-    Q_INVOKABLE QVariant itemContext(int index);
-    Q_INVOKABLE QVariant itemsContext();
-    SAKResponserTableModel *getModel();
-    QStringList getHeaders();
+    Q_INVOKABLE virtual void addItem(const QString &jsonCtx, int index = -1) final;
+    Q_INVOKABLE virtual QVariant itemContext(int index) final;
+    Q_INVOKABLE virtual QVariant itemsContext() final;
 
-    virtual void inputBytes(const QByteArray &bytes, const QVariant context = QJsonObject()) final;
+    virtual void inputBytes(const QByteArray &bytes,
+                            const QVariant &context = QJsonObject()) final;
 
 protected:
     virtual void run() final;
+
+    virtual int rowCount(
+        const QModelIndex &parent = QModelIndex()) const final;
+    virtual int columnCount(
+        const QModelIndex &parent = QModelIndex()) const final;
+    virtual QVariant data(
+        const QModelIndex &index, int role = Qt::DisplayRole) const final;
+    virtual bool setData(const QModelIndex &index,
+                         const QVariant &value,
+                         int role = Qt::EditRole) final;
+    virtual bool insertRows(
+        int row, int count,
+        const QModelIndex &parent = QModelIndex()) final;
+    virtual bool removeRows(
+        int row, int count,
+        const QModelIndex &parent = QModelIndex()) final;
+    virtual QVariant headerData(int section,
+                                Qt::Orientation orientation,
+                                int role = Qt::DisplayRole) const final;
 
 private:
     struct InputContext {
@@ -175,40 +146,47 @@ private:
     QList<InputContext> mInputContextList;
     QMutex mInputContextListMutex;
 
+    QList<EDEmiterItem> mItems;
+    QMutex mItemsMutex;
+    const int mDescriptionColumnIndex{0};
+    const int mFormatColumnIndex{1};
+    const int mItemTextColumnIndex{2};
+    struct SAKResponserDataKeys mDataKeys;
+    const int mTableColumnCount{22};
+
+private:
+    QVariant columnDisplayRoleData(const EDEmiterItem &item, int column) const;
+    QByteArray referenceBytes(const EDResponserData &item) const;
+    QByteArray responseBytes(const EDResponserData &item) const;
+
 private:
     void try2output(const QByteArray &bytes, QObject *threadInnerObject);
 
 private:
-    SAKResponserTableModel *mTableModel{nullptr};
-    QVariant tableModel(){return QVariant::fromValue<SAKResponserTableModel*>(mTableModel);}
+    QString itemEnable();
+    QString itemDescription();
+    QString itemOption();
 
-    QStringList mHeaders;
-    QStringList headers(){return mHeaders;}
+    QString itemReferenceTextFormat();
+    QString itemReferenceEscapeCharacter();
+    QString itemReferencePrefix();
+    QString itemReferenceSuffix();
+    QString itemReferenceCrcEnable();
+    QString itemReferenceCrcAlgorithm();
+    QString itemReferenceCrcStartIndex();
+    QString itemReferenceCrcEndIndex();
+    QString itemReferenceText();
 
-    QString itemEnable(){return mTableModel->mDataKeys.itemEnable;}
-    QString itemDescription(){return mTableModel->mDataKeys.itemDescription;}
-    QString itemOption(){return mTableModel->mDataKeys.itemOption;}
-
-    QString itemReferenceTextFormat(){return mTableModel->mDataKeys.itemReferenceTextFormat;}
-    QString itemReferenceEscapeCharacter(){return mTableModel->mDataKeys.itemReferenceEscapeCharacter;}
-    QString itemReferencePrefix(){return mTableModel->mDataKeys.itemReferencePrefix;}
-    QString itemReferenceSuffix(){return mTableModel->mDataKeys.itemReferenceSuffix;}
-    QString itemReferenceCrcEnable(){return mTableModel->mDataKeys.itemReferenceCrcEnable;}
-    QString itemReferenceCrcAlgorithm(){return mTableModel->mDataKeys.itemReferenceCrcAlgorithm;}
-    QString itemReferenceCrcStartIndex(){return mTableModel->mDataKeys.itemReferenceCrcStartIndex;}
-    QString itemReferenceCrcEndIndex(){return mTableModel->mDataKeys.itemReferenceCrcEndIndex;}
-    QString itemReferenceText(){return mTableModel->mDataKeys.itemReferenceText;}
-
-    QString itemResponseTextFormat(){return mTableModel->mDataKeys.itemResponseTextFormat;}
-    QString itemResponseEscapeCharacter(){return mTableModel->mDataKeys.itemResponseEscapeCharacter;}
-    QString itemResponseInterval(){return mTableModel->mDataKeys.itemResponseInterval;}
-    QString itemResponsePrefix(){return mTableModel->mDataKeys.itemResponsePrefix;}
-    QString itemResponseSuffix(){return mTableModel->mDataKeys.itemResponseSuffix;}
-    QString itemResponseCrcEnable(){return mTableModel->mDataKeys.itemResponseCrcEnable;}
-    QString itemResponseCrcAlgorithm(){return mTableModel->mDataKeys.itemResponseCrcAlgorithm;}
-    QString itemResponseCrcStartIndex(){return mTableModel->mDataKeys.itemResponseCrcStartIndex;}
-    QString itemResponseCrcEndIndex(){return mTableModel->mDataKeys.itemResponseCrcEndIndex;}
-    QString itemResponseText(){return mTableModel->mDataKeys.itemResponseText;}
+    QString itemResponseTextFormat();
+    QString itemResponseEscapeCharacter();
+    QString itemResponseInterval();
+    QString itemResponsePrefix();
+    QString itemResponseSuffix();
+    QString itemResponseCrcEnable();
+    QString itemResponseCrcAlgorithm();
+    QString itemResponseCrcStartIndex();
+    QString itemResponseCrcEndIndex();
+    QString itemResponseText();
 };
 
 #endif // SAKRESPONSERTOOL_H

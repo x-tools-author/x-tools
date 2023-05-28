@@ -42,7 +42,7 @@ void SAKResponserToolUi::initialize(SAKResponserTool *tool,
     }
 
     mTool = qobject_cast<SAKResponserTool*>(tool);
-    SAKResponserTableModel *dataModel = mTool->getModel();
+    auto dataModel = mTool->tableModel().value<QAbstractTableModel*>();
     SAKTableViewWithController::initialize(dataModel,
                                            settingsGroup + "responser");
 }
@@ -66,17 +66,16 @@ void SAKResponserToolUi::edit(const QModelIndex &index)
 
 void SAKResponserToolUi::clear()
 {
-    int rowCount = mTool->getModel()->rowCount();
+    int rowCount = mTableModel->rowCount();
     for (int i = 0; i < rowCount; i++) {
-        mTool->getModel()->removeRow(i);
+        mTableModel->removeRow(i);
     }
 }
 
 void SAKResponserToolUi::remove(const QModelIndex &index)
 {
     if (index.isValid()) {
-        auto model = mTool->getModel();
-        model->removeRow(index.row());
+        mTableModel->removeRow(index.row());
     }
 }
 

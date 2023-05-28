@@ -56,7 +56,7 @@ QJsonObject SAKResponserToolUiEditor::parameters()
     int     resEnd      = ui->spinBoxResEnd->value();
     QString resData     = ui->lineEditResData->text();
 
-    SAKResponserTableModel::SAKResponserDataKeys keys;
+    SAKResponserTool::SAKResponserDataKeys keys;
     QJsonObject jsonObj;
     jsonObj.insert(keys.itemEnable, enable);
     jsonObj.insert(keys.itemDescription, description);
@@ -87,7 +87,7 @@ QJsonObject SAKResponserToolUiEditor::parameters()
 
 void SAKResponserToolUiEditor::setParameters(const QJsonObject &params)
 {
-    SAKResponserTableModel::SAKResponserDataKeys keys;
+    SAKResponserTool::SAKResponserDataKeys keys;
     bool enable = params.value(keys.itemEnable).toBool();
     QString description = params.value(keys.itemDescription).toString();
     int option = params.value(keys.itemOption).toInt();
