@@ -1,8 +1,8 @@
 /******************************************************************************
  * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
  *****************************************************************************/
-#ifndef EDI18N_HPP
-#define EDI18N_HPP
+#ifndef SAKI18N_HH
+#define SAKI18N_HH
 
 #include <QMap>
 #include <QObject>
@@ -12,15 +12,15 @@
 #include <QVariantList>
 #include <QLoggingCategory>
 
-class EDI18N : public QObject
+class SAKI18N : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QVariantList languanges READ languanges CONSTANT)
 private:
-    explicit EDI18N(QObject *parent = nullptr);
+    explicit SAKI18N(QObject *parent = nullptr);
 
 public:
-    static EDI18N* instance();
+    static SAKI18N* instance();
     Q_INVOKABLE void installTranslator(const QString &name);
     Q_INVOKABLE void setConfigurationFile(const QString &conf);
 
@@ -42,4 +42,4 @@ signals:
     void languageChanged();
 };
 
-#endif // EDI18N_HPP
+#endif // SAKI18N_HH

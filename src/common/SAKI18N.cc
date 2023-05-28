@@ -5,21 +5,21 @@
 #include <QJsonDocument>
 #include <QCoreApplication>
 
-#include "EDI18N.hpp"
+#include "SAKI18N.hh"
 
-EDI18N::EDI18N(QObject *parent)
+SAKI18N::SAKI18N(QObject *parent)
     : QObject{parent}
 {
 
 }
 
-EDI18N* EDI18N::instance()
+SAKI18N* SAKI18N::instance()
 {
-    static EDI18N i18n;
+    static SAKI18N i18n;
     return &i18n;
 }
 
-void EDI18N::installTranslator(const QString &name)
+void SAKI18N::installTranslator(const QString &name)
 {
     if (mCurrentName == name) {
         return;
@@ -39,13 +39,13 @@ void EDI18N::installTranslator(const QString &name)
     }
 }
 
-void EDI18N::setConfigurationFile(const QString &conf)
+void SAKI18N::setConfigurationFile(const QString &conf)
 {
     mConf = conf;
     languanges();
 }
 
-void EDI18N::uninstallTranslator()
+void SAKI18N::uninstallTranslator()
 {
     while (!mTranslators.isEmpty()) {
         auto translator = mTranslators.takeFirst();
@@ -60,7 +60,7 @@ void EDI18N::uninstallTranslator()
     }
 }
 
-void EDI18N::installTranslator(const QJsonArray &packets)
+void SAKI18N::installTranslator(const QJsonArray &packets)
 {
     for (int i = 0; i < packets.count(); i++) {
         QString qmFile = ":/res/i18n/";
@@ -85,7 +85,7 @@ void EDI18N::installTranslator(const QJsonArray &packets)
     }
 }
 
-QVariantList EDI18N::languanges()
+QVariantList SAKI18N::languanges()
 {
     QVariantList list;
 

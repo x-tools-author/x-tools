@@ -3,9 +3,9 @@
  *****************************************************************************/
 #include <QSerialPort>
 #include <QSerialPortInfo>
-#include "EDSerialPort.hpp"
+#include "SAKSerialPortScanner.hh"
 
-EDSerialPort::EDSerialPort(QObject *parent)
+SAKSerialPortScanner::SAKSerialPortScanner(QObject *parent)
     : QObject{parent}
 {
     nAutoUpdatePortNamesTimer = new QTimer(this);
@@ -19,7 +19,7 @@ EDSerialPort::EDSerialPort(QObject *parent)
     refresh();
 }
 
-void EDSerialPort::refresh()
+void SAKSerialPortScanner::refresh()
 {
     auto temp = mPortNames;
     mPortNames.clear();
@@ -56,13 +56,13 @@ void EDSerialPort::refresh()
     }
 }
 
-void EDSerialPort::setIgnoredBusyDevice(bool ignored)
+void SAKSerialPortScanner::setIgnoredBusyDevice(bool ignored)
 {
     mIgnoredBusyDevice = ignored;
     refresh();
 }
 
-void EDSerialPort::setAutoUpdatePortNames(bool autoUpdate)
+void SAKSerialPortScanner::setAutoUpdatePortNames(bool autoUpdate)
 {
     if (autoUpdate) {
         nAutoUpdatePortNamesTimer->start();
@@ -71,7 +71,7 @@ void EDSerialPort::setAutoUpdatePortNames(bool autoUpdate)
     }
 }
 
-void EDSerialPort::setIgnoredUpdate(bool ignored)
+void SAKSerialPortScanner::setIgnoredUpdate(bool ignored)
 {
     mIgnoredUpdate = ignored;
     if (!mIgnoredUpdate) {
@@ -79,7 +79,7 @@ void EDSerialPort::setIgnoredUpdate(bool ignored)
     }
 }
 
-bool EDSerialPort::isBusy(const QString &portName)
+bool SAKSerialPortScanner::isBusy(const QString &portName)
 {
     QSerialPort sp;
     sp.setPortName(portName);

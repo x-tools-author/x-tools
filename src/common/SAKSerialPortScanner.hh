@@ -1,19 +1,19 @@
 /******************************************************************************
  * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
  *****************************************************************************/
-#ifndef EDSERIALPORT_HPP
-#define EDSERIALPORT_HPP
+#ifndef SAKSERIALPORTSCANNER_HH
+#define SAKSERIALPORTSCANNER_HH
 
 #include <QTimer>
 #include <QObject>
 
-class EDSerialPort : public QObject
+class SAKSerialPortScanner : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QStringList portNames READ portNames NOTIFY portNamesChanged)
     Q_PROPERTY(QStringList baudRates READ baudRates NOTIFY baudRatesChanged)
 public:
-    explicit EDSerialPort(QObject *parent = nullptr);
+    explicit SAKSerialPortScanner(QObject *parent = nullptr);
 
     Q_INVOKABLE void refresh();
     Q_INVOKABLE void setIgnoredBusyDevice(bool ignored);
@@ -38,4 +38,4 @@ private:
     Q_SIGNAL void baudRatesChanged();
 };
 
-#endif // EDQMLSERIALPORTASSISTANT_HPP
+#endif // EDQMLSERIALPORTASSISTANT_HH

@@ -78,4 +78,4 @@ public:
     Q_INVOKABLE static QString cookEscapeCharacter(int option, const QString &str);
 };
 
-#endif // SAKDATASTRUCTURE_H
+#endif // SAKDATASTRUCTURE_HH

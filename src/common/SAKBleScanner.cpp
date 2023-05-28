@@ -2,28 +2,28 @@
  * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
  *****************************************************************************/
 #include <QBluetoothDeviceInfo>
-#include "EDBle.hpp"
+#include "SAKBleScanner.hh"
 
-EDBle::EDBle(QObject *parent)
+SAKBleScanner::SAKBleScanner(QObject *parent)
     : QObject{parent}
 {
     mDiscover = new QBluetoothDeviceDiscoveryAgent();
     connect(mDiscover, &QBluetoothDeviceDiscoveryAgent::finished,
-            this, &EDBle::onFinished);
+            this, &SAKBleScanner::onFinished);
     connect(mDiscover, &QBluetoothDeviceDiscoveryAgent::errorOccurred,
-            this, &EDBle::onErrorOccurred);
+            this, &SAKBleScanner::onErrorOccurred);
     connect(mDiscover, &QBluetoothDeviceDiscoveryAgent::deviceDiscovered,
-            this, &EDBle::onDeviceDiscovered);
+            this, &SAKBleScanner::onDeviceDiscovered);
 
     refresh();
 }
 
-EDBle::~EDBle()
+SAKBleScanner::~SAKBleScanner()
 {
     mDiscover->deleteLater();
 }
 
-QVariant EDBle::bleInfo(int index)
+QVariant SAKBleScanner::bleInfo(int index)
 {
     auto infos = mDiscover->discoveredDevices();
     if (index >= 0 && index < infos.length()) {
@@ -33,14 +33,14 @@ QVariant EDBle::bleInfo(int index)
     return QVariant();
 }
 
-void EDBle::refresh()
+void SAKBleScanner::refresh()
 {
     mIsDiscovering = true;
     //emit isDiscoveringChanged();
     mDiscover->start(QBluetoothDeviceDiscoveryAgent::LowEnergyMethod);
 }
 
-void EDBle::onFinished()
+void SAKBleScanner::onFinished()
 {
     mIsDiscovering = false;
     //emit isDiscoveringChanged();
@@ -67,7 +67,7 @@ void EDBle::onFinished()
     }
 }
 
-void EDBle::onErrorOccurred(QBluetoothDeviceDiscoveryAgent::Error error)
+void SAKBleScanner::onErrorOccurred(QBluetoothDeviceDiscoveryAgent::Error error)
 {
     mIsDiscovering = false;
     //emit isDiscoveringChanged();
@@ -75,7 +75,7 @@ void EDBle::onErrorOccurred(QBluetoothDeviceDiscoveryAgent::Error error)
     qWarning() << "QBluetoothDeviceDiscoveryAgent error:" << mDiscover->errorString();
 }
 
-void EDBle::onDeviceDiscovered(const QBluetoothDeviceInfo &info)
+void SAKBleScanner::onDeviceDiscovered(const QBluetoothDeviceInfo &info)
 {
     Q_UNUSED(info);
 }

@@ -4,9 +4,9 @@
 #include <QHostAddress>
 #include <QNetworkInterface>
 
-#include "EDNetworkInterface.hpp"
+#include "SAKNetworkInterfaceScanner.hh"
 
-EDNetworkInterface::EDNetworkInterface(QObject *parent)
+SAKNetworkInterfaceScanner::SAKNetworkInterfaceScanner(QObject *parent)
     : QObject{parent}
 {
     refresh();
@@ -21,7 +21,7 @@ EDNetworkInterface::EDNetworkInterface(QObject *parent)
     mRefreshTimer->start();
 }
 
-void EDNetworkInterface::refresh()
+void SAKNetworkInterfaceScanner::refresh()
 {
     QStringList ipv4List, ipv6List;
     auto addresses = QNetworkInterface::allAddresses();

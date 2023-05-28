@@ -1,8 +1,8 @@
 /******************************************************************************
  * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
  *****************************************************************************/
-#ifndef EDBLE_HPP
-#define EDBLE_HPP
+#ifndef SAKBLESCANNER_HH
+#define SAKBLESCANNER_HH
 
 #include <QTimer>
 #include <QObject>
@@ -11,7 +11,7 @@
 #include <QBluetoothDeviceDiscoveryAgent>
 
 
-class EDBle : public QObject
+class SAKBleScanner : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QStringList names READ names NOTIFY namesChanged)
@@ -20,8 +20,8 @@ class EDBle : public QObject
     Q_PROPERTY(int timeout READ timeout WRITE setTimeout NOTIFY timeoutChanged)
     Q_PROPERTY(QString filtter READ filtter WRITE setFiltter NOTIFY filtterChanged)
 public:
-    explicit EDBle(QObject *parent = nullptr);
-    ~EDBle();
+    explicit SAKBleScanner(QObject *parent = nullptr);
+    ~SAKBleScanner();
 
     Q_INVOKABLE QVariant bleInfo(int index);
 
@@ -60,4 +60,4 @@ private:
     Q_SIGNAL void filtterChanged();
 };
 
-#endif // EDBLE_HPP
+#endif // SAKBLESCANNER_H

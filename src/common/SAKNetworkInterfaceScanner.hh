@@ -1,13 +1,13 @@
 /******************************************************************************
  * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
  *****************************************************************************/
-#ifndef EDNETWORKINTERFACE_HPP
-#define EDNETWORKINTERFACE_HPP
+#ifndef SAKNETWORKINTERFACESCANNER_HH
+#define SAKNETWORKINTERFACESCANNER_HH
 
 #include <QTimer>
 #include <QObject>
 
-class EDNetworkInterface : public QObject
+class SAKNetworkInterfaceScanner : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QStringList ipList READ ipList NOTIFY ipListChanged)
@@ -15,7 +15,7 @@ class EDNetworkInterface : public QObject
     Q_PROPERTY(bool enableIpV6 READ enableIpV6 WRITE setEnableIpV6 NOTIFY enableIpV6Changed)
     Q_PROPERTY(bool enableAutoRefresh READ enableAutoRefresh WRITE setEnableAutoRefresh NOTIFY enableAutoRefreshChanged)
 public:
-    explicit EDNetworkInterface(QObject *parent = nullptr);
+    explicit SAKNetworkInterfaceScanner(QObject *parent = nullptr);
 
 private:
     QTimer *mRefreshTimer;
@@ -44,4 +44,4 @@ private:
     Q_SIGNAL void enableAutoRefreshChanged();
 };
 
-#endif // EDNETWORKINTERFACE_HPP
+#endif // SAKNETWORKINTERFACESCANNER_HH

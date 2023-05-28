@@ -6,22 +6,22 @@
 #include <QRegularExpression>
 #include <QQuickTextDocument>
 
-#include "EDHighlighter.hpp"
+#include "SAKHighlighter.hh"
 
-EDHighlighter::EDHighlighter(QObject *parent)
+SAKHighlighter::SAKHighlighter(QObject *parent)
     : QSyntaxHighlighter(parent)
 {
 
 }
 
-void EDHighlighter::setDoc(QVariant doc)
+void SAKHighlighter::setDoc(QVariant doc)
 {
     if (doc.canConvert<QQuickTextDocument*>()) {
         setDocument(doc.value<QQuickTextDocument*>()->textDocument());
     }
 }
 
-void EDHighlighter::setKeyWords(QVariant keyWords)
+void SAKHighlighter::setKeyWords(QVariant keyWords)
 {
     QList<QVariant> cookedKeyWords = keyWords.toList();
     mKeyWords.clear();
@@ -30,12 +30,12 @@ void EDHighlighter::setKeyWords(QVariant keyWords)
     }
 }
 
-void EDHighlighter::removeKeyWord(const QString &keyWord)
+void SAKHighlighter::removeKeyWord(const QString &keyWord)
 {
     mKeyWords.removeOne(keyWord);
 }
 
-void EDHighlighter::highlightBlock(const QString &text)
+void SAKHighlighter::highlightBlock(const QString &text)
 {
     QTextCharFormat format;
     format.setFontWeight(QFont::Bold);

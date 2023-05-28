@@ -31,15 +31,15 @@
 #include "SAKApplication.hh"
 #include "SAKSystemTrayIcon.hh"
 
-#include "common/EDBle.hpp"
+#include "common/SAKBleScanner.hh"
 #include "common/SAKCrcInterface.hh"
-#include "common/EDI18N.hpp"
+#include "common/SAKI18N.hh"
 #include "common/SAKSettings.hh"
 #include "common/SAKInterface.hh"
-#include "common/EDSerialPort.hpp"
-#include "common/EDHighlighter.hpp"
+#include "common/SAKSerialPortScanner.hh"
+#include "common/SAKHighlighter.hh"
 #include "common/SAKDataStructure.hh"
-#include "common/EDNetworkInterface.hpp"
+#include "common/SAKNetworkInterfaceScanner.hh"
 
 #include "toolbox/SAKToolBox.hh"
 
@@ -151,7 +151,7 @@ int main(int argc, char *argv[])
     format.setSamples(8);
     QSurfaceFormat::setDefaultFormat(format);
 #endif
-        auto edI18n = EDI18N::instance();
+        auto edI18n = SAKI18N::instance();
         edI18n->setConfigurationFile(":/res/i18n/easydebug.json");
         edI18n->installTranslator(language);
 
@@ -168,12 +168,12 @@ int main(int argc, char *argv[])
         QQmlApplicationEngine qmlAppEngine;
 
         const QString reason = "Uncreatable type!";
-        qmlRegisterType<EDBle>("ED.EasyDebug", 1, 0, "EDBle");
+        qmlRegisterType<SAKBleScanner>("ED.EasyDebug", 1, 0, "EDBle");
         qmlRegisterType<SAKCrcInterface>("ED.EasyDebug", 1, 0, "EDCrc");
         qmlRegisterType<SAKToolBox>("ED.EasyDebug", 1, 0, "EDDevice");
-        qmlRegisterType<EDSerialPort>("ED.EasyDebug", 1, 0, "EDSerialPort");
-        qmlRegisterType<EDHighlighter>("ED.EasyDebug", 1, 0, "EDHighlighter");
-        qmlRegisterType<EDNetworkInterface>("ED.EasyDebug", 1, 0, "EDNetworkInterface");
+        qmlRegisterType<SAKSerialPortScanner>("ED.EasyDebug", 1, 0, "EDSerialPort");
+        qmlRegisterType<SAKHighlighter>("ED.EasyDebug", 1, 0, "EDHighlighter");
+        qmlRegisterType<SAKNetworkInterfaceScanner>("ED.EasyDebug", 1, 0, "EDNetworkInterface");
 
         qmlRegisterUncreatableType<SAKBaseTool>("ED.EasyDebug", 1, 0, "EDBaseTool", reason);
         qmlRegisterUncreatableType<SAKMaskerTool>("ED.EasyDebug", 1, 0, "EDMaskerTool", reason);
@@ -204,7 +204,7 @@ int main(int argc, char *argv[])
         //qmlAppEngine.load("qrc:/qml/MainWindow.qml");
 
         // Update ui text.
-        QObject::connect(edI18n, &EDI18N::languageChanged,
+        QObject::connect(edI18n, &SAKI18N::languageChanged,
                          &qmlAppEngine, &QQmlApplicationEngine::retranslate);
 
         // If the exit code is equal to SAK_REBOOT_CODE, the application will

@@ -7,41 +7,41 @@ FORMS += \
     $$PWD/SAKBaseListWidget.ui
 
 HEADERS += \
-    $$PWD/EDBle.hpp \
-    $$PWD/EDHighlighter.hpp \
-    $$PWD/EDI18N.hpp \
-    $$PWD/EDNetworkInterface.hpp \
-    $$PWD/EDSerialPort.hpp \
     $$PWD/SAKBaseListWidget.hh \
     $$PWD/SAKBaseListWidgetItemWidget.hh \
+    $$PWD/SAKBleScanner.hh \
     $$PWD/SAKCommonCrcInterface.hh \
     $$PWD/SAKCommonDataStructure.hh \
     $$PWD/SAKCommonInterface.hh \
     $$PWD/SAKCrcInterface.hh \
     $$PWD/SAKDataStructure.hh \
     $$PWD/SAKDevice.hh \
+    $$PWD/SAKHighlighter.hh \
+    $$PWD/SAKI18N.hh \
     $$PWD/SAKInterface.hh \
+    $$PWD/SAKNetworkInterfaceScanner.hh \
     $$PWD/SAKObj.hh \
+    $$PWD/SAKSerialPortScanner.hh \
     $$PWD/SAKSettings.hh \
     $$PWD/SAKSigleton.hh \
     $$PWD/SAKTableModel.hh
 
 SOURCES += \
-    $$PWD/EDBle.cpp \
-    $$PWD/EDHighlighter.cpp \
-    $$PWD/EDI18N.cpp \
-    $$PWD/EDNetworkInterface.cpp \
-    $$PWD/EDSerialPort.cpp \
     $$PWD/SAKBaseListWidget.cc \
     $$PWD/SAKBaseListWidgetItemWidget.cc \
+    $$PWD/SAKBleScanner.cpp \
     $$PWD/SAKCommonCrcInterface.cc \
     $$PWD/SAKCommonDataStructure.cc \
     $$PWD/SAKCommonInterface.cc \
     $$PWD/SAKCrcInterface.cc \
     $$PWD/SAKDataStructure.cc \
     $$PWD/SAKDevice.cc \
+    $$PWD/SAKHighlighter.cc \
+    $$PWD/SAKI18N.cc \
     $$PWD/SAKInterface.cc \
+    $$PWD/SAKNetworkInterfaceScanner.cc \
     $$PWD/SAKObj.cc \
+    $$PWD/SAKSerialPortScanner.cc \
     $$PWD/SAKSettings.cc \
     $$PWD/SAKSigleton.cc \
     $$PWD/SAKTableModel.cc

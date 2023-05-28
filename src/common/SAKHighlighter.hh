@@ -1,16 +1,16 @@
 /******************************************************************************
  * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
  *****************************************************************************/
-#ifndef EDHIGHLIGHTER_HPP
-#define EDHIGHLIGHTER_HPP
+#ifndef SAKHIGHLIGHTER_H
+#define SAKHIGHLIGHTER_H
 
 #include <QSyntaxHighlighter>
 
-class EDHighlighter : public QSyntaxHighlighter
+class SAKHighlighter : public QSyntaxHighlighter
 {
     Q_OBJECT
 public:
-    EDHighlighter(QObject *parent = nullptr);
+    SAKHighlighter(QObject *parent = nullptr);
 
     Q_INVOKABLE void setDoc(QVariant doc);
     Q_INVOKABLE void setKeyWords(QVariant keyWords);
@@ -23,4 +23,4 @@ private:
     QStringList mKeyWords;
 };
 
-#endif // EDHIGHLIGHTER_HPP
+#endif // SAKHIGHLIGHTER_HH
