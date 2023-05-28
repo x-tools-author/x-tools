@@ -65,11 +65,11 @@ EDPane {
             enabled: !devIsWorking
             Layout.fillWidth: true
             onActivated: {
-                edSettings.edSetValue(settingKeys.portName,
+                sakSettings.edSetValue(settingKeys.portName,
                                       portNameComboBox.currentText)
             }
             Component.onCompleted: {
-                var portName = edSettings.edValue(settingKeys.portName)
+                var portName = sakSettings.edValue(settingKeys.portName)
                 var ret = portNameComboBox.find(portName)
                 if (ret !== -1) {
                     portNameComboBox.currentIndex = ret
@@ -94,7 +94,7 @@ EDPane {
                 }
             }
             Component.onCompleted: {
-                var baudRate = edSettings.edValue(settingKeys.baudRate)
+                var baudRate = sakSettings.edValue(settingKeys.baudRate)
                 var defaultBaudRate = "9600"
                 if (baudRate !== 0) {
                     defaultBaudRate = String(baudRate)
@@ -108,7 +108,7 @@ EDPane {
 
             function writeBaudRateToIniFile() {
                 var bd = Number(baudRateComboBox.currentText)
-                edSettings.edSetValue(settingKeys.baudRate, bd)
+                sakSettings.edSetValue(settingKeys.baudRate, bd)
             }
         }
         Label {
@@ -126,10 +126,10 @@ EDPane {
                 ListElement{text: "2"; value: 2}
             }
             onActivated: {
-                edSettings.edSetValue(settingKeys.stopBits, stopBitsComboBox.currentValue)
+                sakSettings.edSetValue(settingKeys.stopBits, stopBitsComboBox.currentValue)
             }
             Component.onCompleted: {
-                var stopBits = edSettings.edValue(settingKeys.stopBits)
+                var stopBits = sakSettings.edValue(settingKeys.stopBits)
                 if (stopBits !== 0) {
                     var ret = stopBitsComboBox.indexOfValue(stopBits)
                     if (ret !== -1) {
@@ -154,10 +154,10 @@ EDPane {
                 ListElement{text: "5"; value: 5}
             }
             onActivated: {
-                edSettings.edSetValue(settingKeys.dataBits, dataBitsComboBox.currentValue)
+                sakSettings.edSetValue(settingKeys.dataBits, dataBitsComboBox.currentValue)
             }
             Component.onCompleted: {
-                var dataBit = edSettings.edValue(settingKeys.dataBits)
+                var dataBit = sakSettings.edValue(settingKeys.dataBits)
                 if (dataBit !== 0) {
                     var ret = dataBitsComboBox.indexOfValue(dataBit)
                     if (ret !== -1) {
@@ -183,10 +183,10 @@ EDPane {
                 ListElement{text: qsTr("Mark"); value: 5}
             }
             onActivated: {
-                edSettings.edSetValue(settingKeys.parity, parityComboBox.currentValue)
+                sakSettings.edSetValue(settingKeys.parity, parityComboBox.currentValue)
             }
             Component.onCompleted: {
-                var parity = edSettings.edValue(settingKeys.parity)
+                var parity = sakSettings.edValue(settingKeys.parity)
                 if (parity !== 0) {
                     var ret = parityComboBox.indexOfValue(parity)
                     if (ret !== -1) {
@@ -210,11 +210,11 @@ EDPane {
                 ListElement{text: qsTr("Software"); value: 2}
             }
             onActivated: {
-                edSettings.edSetValue(settingKeys.flowControl,
+                sakSettings.edSetValue(settingKeys.flowControl,
                                       flowControlComboBox.currentValue)
             }
             Component.onCompleted: {
-                var flowControl = edSettings.edValue(settingKeys.flowControl)
+                var flowControl = sakSettings.edValue(settingKeys.flowControl)
                 if (flowControl !== 0) {
                     var ret = flowControlComboBox.indexOfValue(flowControl)
                     if (ret !== -1) {
@@ -230,10 +230,10 @@ EDPane {
             Layout.columnSpan: 2
             Layout.fillWidth: true
             onClicked: {
-                edSettings.edSetValue(settingKeys.customBaudRate, bdCheckBox.checked)
+                sakSettings.edSetValue(settingKeys.customBaudRate, bdCheckBox.checked)
             }
             Component.onCompleted: {
-                var customBaudRate = edSettings.edValue(settingKeys.customBaudRate)
+                var customBaudRate = sakSettings.edValue(settingKeys.customBaudRate)
                 bdCheckBox.checked = customBaudRate === edTrue ? true : false
             }
         }
@@ -245,11 +245,11 @@ EDPane {
             Layout.columnSpan: 2
             onClicked: {
                 spController.setIgnoredBusyDevice(ignoredBusyDeviceCheckBox.checked)
-                edSettings.edSetValue(settingKeys.ignoredBusyDevice,
+                sakSettings.edSetValue(settingKeys.ignoredBusyDevice,
                                       ignoredBusyDeviceCheckBox.checked)
             }
             Component.onCompleted: {
-                var ignoredBusyDevice = edSettings.edValue(settingKeys.ignoredBusyDevice)
+                var ignoredBusyDevice = sakSettings.edValue(settingKeys.ignoredBusyDevice)
                 ignoredBusyDeviceCheckBox.checked = ignoredBusyDevice === edTrue ? true : false
             }
         }
@@ -261,10 +261,10 @@ EDPane {
             Layout.columnSpan: 2
             onClicked: {
                 spController.setAutoUpdatePortNames(autoUpdatePortNameCheckBox.checked)
-                edSettings.edSetValue(settingKeys.autoUpdatePortNames, autoUpdatePortNameCheckBox.checked)
+                sakSettings.edSetValue(settingKeys.autoUpdatePortNames, autoUpdatePortNameCheckBox.checked)
             }
             Component.onCompleted: {
-                var autoUpdatePortNames = edSettings.edValue(settingKeys.autoUpdatePortNames)
+                var autoUpdatePortNames = sakSettings.edValue(settingKeys.autoUpdatePortNames)
                 autoUpdatePortNameCheckBox.checked = autoUpdatePortNames === edTrue ? true : false
             }
         }

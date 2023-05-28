@@ -63,8 +63,8 @@ QByteArray SAKDataStructure::dataItemBytes(const EDStructDataItem &item)
     QString text = item.itemText;
     text = SAKDataStructure::cookedString(item.itemTextEscapeChracter, text);
     bytes = SAKInterface::string2array(text, item.itemTextFormat);
-    SAKCrcInterface edCrc;
-    QByteArray crcBytes = edCrc.calculateBytes(bytes,
+    SAKCrcInterface sakCrc;
+    QByteArray crcBytes = sakCrc.calculateBytes(bytes,
                                                item.itemCrcAlgorithm,
                                                item.itemCrcStartIndex,
                                                item.itemCrcEndIndex);

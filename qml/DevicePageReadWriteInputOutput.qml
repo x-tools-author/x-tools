@@ -126,7 +126,7 @@ Item {
                         wrapMode: showWrap ? Text.WrapAnywhere : Text.NoWrap
                         Component.onCompleted: {
                             var textDoc = outputTextArea.textDocument
-                            edInterface.setMaximumBlockCount(textDoc, 100)
+                            sakInterface.setMaximumBlockCount(textDoc, 100)
                         }
                     }
                 }
@@ -187,7 +187,7 @@ Item {
                         id: hisrotyListModel
                     }
                     onActivated: {
-                        edSettings.edSetValue(keysObj.itemCurrentIndex, currentIndex)
+                        sakSettings.edSetValue(keysObj.itemCurrentIndex, currentIndex)
                         var ret = inputTextFormatComboBox.indexOfValue(currentValue)
                         if (ret >= 0) {
                             inputTextFormatComboBox.currentIndex = ret
@@ -196,17 +196,17 @@ Item {
                     }
 
                     Component.onCompleted: {
-                        var values = edSettings.edArrayValues(keysObj.itemGroup, keysObj.itemArray, keysObj.itemAll)
+                        var values = sakSettings.edArrayValues(keysObj.itemGroup, keysObj.itemArray, keysObj.itemAll)
                         var item = {}
                         for (var i = 0; i < values.length; i++) {
-                            var str = edInterface.hexString2String(values[i])
+                            var str = sakInterface.hexString2String(values[i])
                             var jsonObj = JSON.parse(str)
                             item[keysObj.itemText] = jsonObj[keysObj.itemText]
                             item[keysObj.itemFormat] = jsonObj[keysObj.itemFormat]
                             hisrotyListModel.append(item)
                         }
 
-                        var index = edSettings.edValue(keysObj.itemCurrentIndex)
+                        var index = sakSettings.edValue(keysObj.itemCurrentIndex)
                         if (index >= 0 && index < hisrotyListModel.count) {
                             currentIndex = index
                             editText = currentText
@@ -297,16 +297,16 @@ Item {
         hisrotyListModel.append(item)
         inputComboBox.editText = text
 
-        edSettings.edRemove(keysObj.itemGroup, keysObj.itemArray)
+        sakSettings.edRemove(keysObj.itemGroup, keysObj.itemArray)
         var values = []
         count = hisrotyListModel.count
         for (i = 0; i < count; i++) {
             item = hisrotyListModel.get(i)
             var str = JSON.stringify(item)
-            var strHex = edInterface.string2hexString(str)
-            values.push(edInterface.string2hexString(str))
+            var strHex = sakInterface.string2hexString(str)
+            values.push(sakInterface.string2hexString(str))
         }
-        edSettings.edSetArrayValues(keysObj.itemGroup, keysObj.itemArray, keysObj.itemAll, values)
+        sakSettings.edSetArrayValues(keysObj.itemGroup, keysObj.itemArray, keysObj.itemAll, values)
     }
 
     function clearOutput() {
@@ -317,17 +317,17 @@ Item {
         var dateTimeInfo = ""
         if (showDate && showTime) {
             if (showMs) {
-                dateTimeInfo = edInterface.dateTimeString("yyyy-MM-dd hh:mm:ss.zzz ");
+                dateTimeInfo = sakInterface.dateTimeString("yyyy-MM-dd hh:mm:ss.zzz ");
             } else {
-                dateTimeInfo = edInterface.dateTimeString("yyyy-MM-dd hh:mm:ss ");
+                dateTimeInfo = sakInterface.dateTimeString("yyyy-MM-dd hh:mm:ss ");
             }
         } else if (showDate) {
-            dateTimeInfo = edInterface.dateTimeString("yyyy-MM-dd ");
+            dateTimeInfo = sakInterface.dateTimeString("yyyy-MM-dd ");
         } else if (showTime) {
             if (showMs) {
-                dateTimeInfo = edInterface.dateTimeString("hh:mm:ss.zzz ");
+                dateTimeInfo = sakInterface.dateTimeString("hh:mm:ss.zzz ");
             } else {
-                dateTimeInfo = edInterface.dateTimeString("hh:mm:ss ");
+                dateTimeInfo = sakInterface.dateTimeString("hh:mm:ss ");
             }
         }
         dateTimeInfo = String("<font color=%1>%2</font>").arg(Material.color(Material.Grey)).arg(dateTimeInfo)
@@ -339,7 +339,7 @@ Item {
 
         var cookedString = "[" + dateTimeInfo + " " + flagInfo + "] "
         cookedString =  String("<font color=silver>%1</font>").arg(cookedString)
-        var bytesString = edInterface.array2String(bytes, outputFormat)
+        var bytesString = sakInterface.array2String(bytes, outputFormat)
         cookedString += bytesString
 
         return cookedString

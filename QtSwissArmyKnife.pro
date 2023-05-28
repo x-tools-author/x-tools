@@ -106,6 +106,7 @@ FORMS += \
 
 HEADERS += \
     src/SAKApplication.hh \
+    src/SAKGuiApplication.hh \
     src/SAKMainWindow.hh \
     src/SAKSystemTrayIcon.hh \
     src/update/SAKDownloadItemWidget.hh \
@@ -113,6 +114,7 @@ HEADERS += \
 
 SOURCES += \
     src/SAKApplication.cc \
+    src/SAKGuiApplication.cc \
     src/SAKMainWindow.cc \
     src/SAKSystemTrayIcon.cc \
     src/main.cc \

@@ -72,17 +72,17 @@ Item {
                 return
             }
 
-            var cookedString = edDataStructure.cookEscapeCharacter(devicePageDrawer.inputEscapeCharacter, text)
-            var cookedBytes = edInterface.string2array(cookedString, inputFormat)
-            cookedBytes = edInterface.arrayAppendArray(devicePageDrawer.prefix, cookedBytes)
+            var cookedString = sakDataStructure.cookEscapeCharacter(devicePageDrawer.inputEscapeCharacter, text)
+            var cookedBytes = sakInterface.string2array(cookedString, inputFormat)
+            cookedBytes = sakInterface.arrayAppendArray(devicePageDrawer.prefix, cookedBytes)
             if (devicePageDrawer.crcEnable) {
                 var startIndex = devicePageDrawer.crcStartIndex
                 var endIndex = devicePageDrawer.crcEndIndex
                 var model = devicePageDrawer.crcType
-                var crcBytes = edCrc.calculateBytes(cookedBytes, model, startIndex, endIndex)
-                cookedBytes = edInterface.arrayAppendArray(cookedBytes, crcBytes);
+                var crcBytes = sakCrc.calculateBytes(cookedBytes, model, startIndex, endIndex)
+                cookedBytes = sakInterface.arrayAppendArray(cookedBytes, crcBytes);
             }
-            cookedBytes = edInterface.arrayAppendArray(cookedBytes, devicePageDrawer.suffix)
+            cookedBytes = sakInterface.arrayAppendArray(cookedBytes, devicePageDrawer.suffix)
             edDevice.send(cookedBytes)
 
             appendHisroty(text, inputFormat)

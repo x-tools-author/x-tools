@@ -37,6 +37,25 @@ EDPane {
                 text: String("(%1)").arg(hidComboBox.detail)
             }
             EDLabel {
+                text: qsTr("UI")
+            }
+            EDComboBox {
+                model: [qsTr("Classical"), qsTr("Modern")]
+                onActivated: {
+                    if (currentIndex === 0) {
+                        sakSettings.sdkSetValue("isQmlUi", edFalse)
+                    } else {
+                        sakSettings.sdkSetValue("isQmlUi", edTrue)
+                    }
+                }
+                Component.onCompleted: {
+                    var isQmlUi = sakSettings.sakValue("isQmlUi")
+                    if (isQmlUi) {
+                        currentIndex = 1
+                    }
+                }
+            }
+            EDLabel {
                 text: qsTr("Language")
             }
             EDComboBox {
@@ -47,7 +66,7 @@ EDPane {
                 model: ListModel {
                     id: languageListModel
                 }
-                onActivated: edI18n.installTranslator(currentValue)
+                onActivated: sakI18n.installTranslator(currentValue)
             }
             EDLabel {
                 text: qsTr("Font Family")
@@ -56,7 +75,7 @@ EDPane {
             EDFontFamiliesComboBox {
                 settingKey: "fontFamily"
                 //Layout.fillWidth: true
-                onActivated: edInterface.setAppFont(currentText)
+                onActivated: sakInterface.setAppFont(currentText)
                 visible: false
             }
             EDLabel {
@@ -108,7 +127,7 @@ EDPane {
     }
 
     Component.onCompleted: {
-        var list = edI18n.languanges
+        var list = sakI18n.languanges
         for (var i = 0; i < list.length; i++) {
             var item = {}
             item["text"] = list[i]["friendly-name"]

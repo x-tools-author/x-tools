@@ -140,13 +140,13 @@ QByteArray SAKPrestorerTool::itemBytes(const Item &item)
     QString text = item.itemText;
     text = SAKDataStructure::cookedString(item.itemEscapeCharacter, text);
     bytes = SAKInterface::string2array(text, item.itemTextFormat);
-    SAKCrcInterface edCrc;
+    SAKCrcInterface sakCrc;
     QByteArray prefix = SAKDataStructure::affixesData(item.itemPrefix);
     QByteArray crcBytes;
     QByteArray suffix = SAKDataStructure::affixesData(item.itemSuffix);
 
     if (item.itemCrcEnable) {
-        crcBytes = edCrc.calculateBytes(bytes,
+        crcBytes = sakCrc.calculateBytes(bytes,
                                         item.itemCrcAlgorithm,
                                         item.itemCrcStartIndex,
                                         item.itemCrcEndIndex);

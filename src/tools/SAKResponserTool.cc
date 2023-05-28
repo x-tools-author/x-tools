@@ -235,8 +235,8 @@ QByteArray SAKResponserTool::referenceBytes(const ResponserItem &item) const
     QString text = item.itemReferenceText ;
     text = SAKDataStructure::cookedString(item.itemReferenceEscapeCharacter, text);
     bytes = SAKInterface::string2array(text, item.itemReferenceTextFormat);
-    SAKCrcInterface edCrc;
-    QByteArray crcBytes = edCrc.calculateBytes(bytes,
+    SAKCrcInterface sakCrc;
+    QByteArray crcBytes = sakCrc.calculateBytes(bytes,
                                                item.itemReferenceCrcAlgorithm,
                                                item.itemReferenceCrcStartIndex,
                                                item.itemReferenceCrcEndIndex);
@@ -256,8 +256,8 @@ QByteArray SAKResponserTool::responseBytes(const ResponserItem &item) const
     QString text = item.itemResponseText;
     text = SAKDataStructure::cookedString(item.itemResponseEscapeCharacter, text);
     bytes = SAKInterface::string2array(text, item.itemResponseTextFormat);
-    SAKCrcInterface edCrc;
-    QByteArray crcBytes = edCrc.calculateBytes(bytes,
+    SAKCrcInterface sakCrc;
+    QByteArray crcBytes = sakCrc.calculateBytes(bytes,
                                                item.itemResponseCrcAlgorithm,
                                                item.itemResponseCrcStartIndex,
                                                item.itemResponseCrcEndIndex);

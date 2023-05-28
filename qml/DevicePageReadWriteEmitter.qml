@@ -54,35 +54,35 @@ Item {
     }
 
     Component.onCompleted: {
-        var hexStringList = edSettings.edArrayValues(settingKeys.group,
+        var hexStringList = sakSettings.edArrayValues(settingKeys.group,
                                                      settingKeys.array,
                                                      settingKeys.key)
         if (hexStringList.length) {
             var jsonArray = []
             for (var i = 0; i < hexStringList.length; i++) {
                 var hexString = hexStringList[i];
-                var jsonString = edInterface.hexString2String(hexString)
+                var jsonString = sakInterface.hexString2String(hexString)
                 jsonArray.push(JSON.parse(jsonString))
             }
             if (jsonArray.length) {
-                edInterface.jsonArray2TableModel(emitterTool.tableModel, jsonArray)
+                sakInterface.jsonArray2TableModel(emitterTool.tableModel, jsonArray)
             }
         }
     }
 
     function updateSettings() {
-        edSettings.edRemove(settingKeys.group, settingKeys.array)
+        sakSettings.edRemove(settingKeys.group, settingKeys.array)
         var items = emitterTool.itemsContext()
         if (items.length) {
             var itemStringList = []
             for (var i = 0; i < items.length; i++) {
                 var item = items[i]
                 var itemString = JSON.stringify(item)
-                var itemStringHex = edInterface.string2hexString(itemString)
+                var itemStringHex = sakInterface.string2hexString(itemString)
                 itemStringList.push(itemStringHex)
             }
 
-            edSettings.edSetArrayValues(settingKeys.group,
+            sakSettings.edSetArrayValues(settingKeys.group,
                                         settingKeys.array,
                                         settingKeys.key,
                                         itemStringList)

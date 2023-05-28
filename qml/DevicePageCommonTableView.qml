@@ -172,9 +172,9 @@ Item {
         nameFilters: ["Json file (*.json)", "All files (*)"]
         onAccepted: {
             if (fileMode === FileDialog.SaveFile) {
-                edInterface.tableModel2jsonFile(tableMode, selectedFile)
+                sakInterface.tableModel2jsonFile(tableMode, selectedFile)
             } else {
-                edInterface.jsonFile2tableModel(tableMode, selectedFile)
+                sakInterface.jsonFile2tableModel(tableMode, selectedFile)
                 root.itemsChanged()
             }
         }
@@ -187,7 +187,7 @@ Item {
         informativeText: qsTr("The items will be clear and it will be remove from the settings file. You can backup the items by \"Export\" operation.")
         buttons: MessageDialog.Ok | MessageDialog.Cancel
         onAccepted: {
-            edInterface.clearTableModel(tableMode)
+            sakInterface.clearTableModel(tableMode)
             currentRowIndex = -1
             root.itemsChanged()
         }
@@ -200,7 +200,7 @@ Item {
         text: qsTr("The item will be removed, please confirm the operation.")
         buttons: MessageDialog.Ok | MessageDialog.Cancel
         onAccepted: {
-            edInterface.removeTableModelRow(tableMode, currentRowIndex)
+            sakInterface.removeTableModelRow(tableMode, currentRowIndex)
             currentRowIndex = -1
             root.itemsChanged()
         }

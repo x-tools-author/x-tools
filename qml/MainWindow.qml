@@ -20,7 +20,7 @@ Window {
     property alias keysObj: settingKeys
 
     property int edMaterialTheme: {
-        var theme = edSettings.edValue(settingKeys.materialTheme)
+        var theme = sakSettings.edValue(settingKeys.materialTheme)
 
         if (theme === Material.Dark) {
             //edMaterialAccent = Material.color(edMaterialAccent, Material.Shade200)
@@ -33,7 +33,7 @@ Window {
         }
     }
     property string edMaterialAccent:  {
-        var accent = edSettings.edValue(settingKeys.materialAccent)
+        var accent = sakSettings.edValue(settingKeys.materialAccent)
         if (accent) {
             return accent
         } else {
@@ -41,7 +41,7 @@ Window {
         }
     }
     property string edMaterialPrimary:  {
-        var primary = edSettings.edValue(settingKeys.materialPrimary)
+        var primary = sakSettings.edValue(settingKeys.materialPrimary)
         if (primary) {
             return primary
         } else {
@@ -49,9 +49,9 @@ Window {
         }
     }
 
-    onEdMaterialThemeChanged: edSettings.edSetValue(settingKeys.materialTheme, String(edMaterialTheme))
-    onEdMaterialAccentChanged: edSettings.edSetValue(settingKeys.materialAccent, String(edMaterialAccent))
-    onEdMaterialPrimaryChanged: edSettings.edSetValue(settingKeys.materialPrimary, String(edMaterialPrimary))
+    onEdMaterialThemeChanged: sakSettings.edSetValue(settingKeys.materialTheme, String(edMaterialTheme))
+    onEdMaterialAccentChanged: sakSettings.edSetValue(settingKeys.materialAccent, String(edMaterialAccent))
+    onEdMaterialPrimaryChanged: sakSettings.edSetValue(settingKeys.materialPrimary, String(edMaterialPrimary))
 
     Material.theme: edMaterialTheme
     Material.accent: edMaterialAccent
@@ -119,7 +119,7 @@ Window {
             anchors.left: parent.left
             anchors.top: parent.top
             anchors.bottom: parent.bottom
-            onPageIndexChanged: edSettings.edSetValue(settingKeys.pageIndex, pageIndex)
+            onPageIndexChanged: sakSettings.edSetValue(settingKeys.pageIndex, pageIndex)
             onInvokeAddPage: function (qmlFile) {
                 pageRepeaterListModel.append({page: "qrc:/qml/" + qmlFile})
             }
@@ -132,7 +132,7 @@ Window {
                 }
             }
             Component.onCompleted: {
-                var index = edSettings.edValue(settingKeys.pageIndex)
+                var index = sakSettings.edValue(settingKeys.pageIndex)
                 if (index !== undefined) {
                     pageIndex = index > (fixedpage - 1) ? 0 : index
                 }

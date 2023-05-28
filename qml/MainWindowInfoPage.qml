@@ -24,7 +24,7 @@ EDPane {
                     text: qsTr("Build info:")
                 }
                 EDLabel {
-                    text: edInterface.buildDateTime(edInterface.dateFormat() + " " + edInterface.timeFormat())
+                    text: sakInterface.buildDateTime(sakInterface.dateFormat() + " " + sakInterface.timeFormat())
                 }
                 EDLabel {
                     text: qsTr("User QQ Group:")
@@ -38,14 +38,14 @@ EDPane {
                     }
                     EDButton {
                         text: qsTr("Copy")
-                        onClicked: edInterface.setTextToClipboard(qqGroupLabel.text)
+                        onClicked: sakInterface.setTextToClipboard(qqGroupLabel.text)
                     }
                 }
                 EDLabel {
                     text: qsTr("Copyright information:")
                 }
                 EDLabel {
-                    text: String("Copyright 2023-%1 Qsaker. All rights reserved.").arg(edInterface.buildDateTime("yyyy"))
+                    text: String("Copyright 2023-%1 Qsaker. All rights reserved.").arg(sakInterface.buildDateTime("yyyy"))
                 }
 
                 Item { Layout.fillHeight: true }

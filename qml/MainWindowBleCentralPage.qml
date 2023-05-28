@@ -57,7 +57,7 @@ DevicePage {
     }
 
     function updateNotify(value) {
-        var cookedValue = edInterface.array2String(value, edDataStructure.TextFormatHex)
+        var cookedValue = sakInterface.array2String(value, sakDataStructure.TextFormatHex)
         var controller = deviceControllerLoader.item
         if (cookedValue === "00 00") {
             controller.setNotifyText(false)

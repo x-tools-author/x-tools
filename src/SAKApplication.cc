@@ -27,12 +27,15 @@
 #include <QTranslator>
 #include <QPushButton>
 #include <QStyleFactory>
+#include <QSplashScreen>
 #include <QStandardPaths>
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 #include <QDesktopWidget>
 #endif
 
+#include "SAKMainWindow.hh"
 #include "SAKApplication.hh"
+#include "SAKSystemTrayIcon.hh"
 
 QDate buildDate = QLocale(QLocale::English).toDate(
             QString(__DATE__).replace("  ", " 0"),
@@ -42,7 +45,7 @@ SAKApplication::SAKApplication(int argc, char **argv)
     :QApplication (argc, argv)
 {
     // Initialize some information about application.
-    setOrganizationName(QString("Qter"));
+    setOrganizationName(QString("Qsaker"));
     setOrganizationDomain(QString("IT"));
     setApplicationName(QString("QtSwissArmyKnife"));
 #ifdef SAK_VERSION
@@ -142,9 +145,53 @@ SAKApplication::SAKApplication(int argc, char **argv)
         Q_ASSERT_X(false, __FUNCTION__, "Open database failed! Using release edition please!");
     }
 
-
     // Setup ui language.
     installLanguage();
+
+    showSplashScreenMessage(
+        QObject::tr("Initializing main window..."));
+
+
+    SAKMainWindow *mainWindow = new SAKMainWindow(settings(),
+                                                  sqlDatabase());
+    QObject::connect(this, &SAKApplication::activeMainWindow,
+                     mainWindow, &SAKMainWindow::activateWindow);
+    mainWindow->show();
+#ifndef Q_OS_ANDROID
+    mainWindow->resize(mainWindow->height() * 1.732,
+                       mainWindow->height());
+#endif
+
+
+#ifdef Q_OS_WIN
+    // Setup system tray icon.
+    SAKSystemTrayIcon *systemTrayIcon = new SAKSystemTrayIcon(qApp);
+    QObject::connect(systemTrayIcon, &SAKSystemTrayIcon::invokeExit,
+                     qApp, [=](){mainWindow->close();});
+    QObject::connect(systemTrayIcon,
+                     &SAKSystemTrayIcon::invokeShowMainWindow,
+                     qApp, [=](){mainWindow->show();});
+    systemTrayIcon->show();
+#endif
+
+
+// Move the window to the screen central.
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+    QDesktopWidget *desktop = QApplication::desktop();
+    int currentScreen = desktop->screenNumber(mainWindow);
+    QList<QScreen*> screenList = QGuiApplication::screens();
+    QScreen *screen = screenList.at(currentScreen);
+    mainWindow->move((screen->geometry().width()
+                      - mainWindow->width())/2,
+                     (screen->geometry().height()
+                      - mainWindow->height())/2);
+    app.showSplashScreenMessage(QObject::tr("Finished..."));
+#endif
+
+
+    // Close splash screen after main window showed.
+    QSplashScreen *ss = splashScreen();
+    ss->finish(mainWindow);
 }
 
 SAKApplication::~SAKApplication()

@@ -63,7 +63,7 @@ EDGroupBox {
     }
 
     Component.onCompleted: {
-        var keyWords = edSettings.edArrayValues(groupName, settingKeys.highlighterArrayName, settingKeys.highlighterKeyWord)
+        var keyWords = sakSettings.edArrayValues(groupName, settingKeys.highlighterArrayName, settingKeys.highlighterKeyWord)
         for (var i = 0; i < keyWords.length; i++) {
             keyWordListModel.append({keyWord: keyWords[i]})
         }
@@ -96,15 +96,15 @@ EDGroupBox {
     function setKeyWords() {
         var kws = keyWords()
         highlighter.setKeyWords(kws)
-        edSettings.edSetArrayValues(groupName, settingKeys.highlighterArrayName, settingKeys.highlighterKeyWord, kws)
+        sakSettings.edSetArrayValues(groupName, settingKeys.highlighterArrayName, settingKeys.highlighterKeyWord, kws)
     }
 
     function settingPop(index) {
         var kws = keyWords()
         kws.splice(index, 1)
-        edSettings.edRemove(groupName, settingKeys.highlighterKeyWord)
+        sakSettings.edRemove(groupName, settingKeys.highlighterKeyWord)
         if (kws.length) {
-            edSettings.edSetArrayValues(groupName, settingKeys.highlighterKeyWord, kws)
+            sakSettings.edSetArrayValues(groupName, settingKeys.highlighterKeyWord, kws)
         }
     }
 

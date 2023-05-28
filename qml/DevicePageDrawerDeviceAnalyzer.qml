@@ -86,7 +86,7 @@ EDGroupBox {
 
             function setAnalyzerSeparationMark(mark) {
                 if (analyzer) {
-                    var cookedMark = edInterface.string2array(
+                    var cookedMark = sakInterface.string2array(
                                 separationMarkTextField.text,
                                 EDDataStructure.TextFormatHex)
                     analyzer.setSeparationMark(cookedMark)

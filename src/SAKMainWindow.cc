@@ -41,6 +41,7 @@
 #include <QJsonParseError>
 #include <QDesktopServices>
 
+#include "SAKSettings.hh"
 #include "SAKToolBoxUi.hh"
 #include "SAKMainWindow.hh"
 #include "SAKApplication.hh"
@@ -282,6 +283,7 @@ void SAKMainWindow::initOptionMenu()
 #ifdef QT_DEBUG
     initOptionMenuTestPageAction(optionMenu);
 #endif
+    initOptionMenuUiType(optionMenu);
 }
 
 void SAKMainWindow::initOptionMenuAppStyleMenu(QMenu *optionMenu)
@@ -386,6 +388,37 @@ void SAKMainWindow::initOptionMenuTestPageAction(QMenu *optionMenu)
     }else{
         mTestPageAction->setChecked(false);
     }
+}
+
+void SAKMainWindow::initOptionMenuUiType(QMenu *optionMenu)
+{
+    QMenu *menu = new QMenu(tr("UI Type"));
+    QActionGroup *ag = new QActionGroup(this);
+    QAction *classicalAction = new QAction(tr("Classical"), this);
+    classicalAction->setCheckable(true);
+    connect(classicalAction, &QAction::triggered, this, [=](){
+        SAKSettings::instance()->setValue("isQmlUi", false);
+        rebootRequestion();
+    });
+    QAction *modernAction =  new QAction(tr("Modern"));
+    modernAction->setCheckable(true);
+    connect(classicalAction, &QAction::triggered, this, [=](){
+        SAKSettings::instance()->setValue("isQmlUi", true);
+        rebootRequestion();
+    });
+
+    ag->addAction(classicalAction);
+    ag->addAction(modernAction);
+    bool isQmlUi = SAKSettings::instance()->value("isQmlUi").toBool();
+    if (isQmlUi) {
+        modernAction->setChecked(true);
+    } else {
+        classicalAction->setChecked(true);
+    }
+
+    menu->addAction(classicalAction);
+    menu->addAction(modernAction);
+    optionMenu->addMenu(menu);
 }
 
 void SAKMainWindow::initWindowMenu()
