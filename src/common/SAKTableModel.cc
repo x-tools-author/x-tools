@@ -46,14 +46,15 @@ bool SAKTableModel::setData(const QModelIndex &index,
 {
     bool result = false;
     emit invokeSetData(result, index, value, role);
+    emit dataChanged(index, index);
     return result;
 }
 
 bool SAKTableModel::insertRows(int row, int count, const QModelIndex &parent)
 {
     bool result = false;
-    beginInsertRows(parent, row, rowCount() + count);
-    emit invokeInsertRows(result, row, count, parent);
+    beginInsertRows(parent, row, row + count);
+    emit invokeInsertRows(result, row, row + count, parent);
     endInsertRows();
     return result;
 }

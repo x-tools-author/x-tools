@@ -36,7 +36,7 @@ void SAKEmitterTool::addItem(const QString &jsonCtx, int index)
     QJsonObject jsonObj = QJsonDocument::fromJson(json).object();
     if (!(index >= 0 && index < mItems.count())) {
         mTableModel->insertRows(mTableModel->rowCount(), 1);
-        index = mTableModel->rowCount();
+        index = mTableModel->rowCount() - 1;
     }
 
     for (int i = 0; i < headers().count(); i++) {
@@ -165,7 +165,6 @@ bool SAKEmitterTool::setData(const QModelIndex &index,
             }
 
             mItems.replace(row, item);
-            emit mTableModel->dataChanged(index, index);
         }
     }
 
