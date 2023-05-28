@@ -22,7 +22,7 @@ public:
     explicit SAKTabelModelTool(const char *logCategory,
                                QObject *parent = nullptr);
     QVariant tableModel();
-    QStringList headers();
+    QStringList headers() const;
 
     Q_INVOKABLE virtual void addItem(const QString &jsonCtx, int index = -1) = 0;
     Q_INVOKABLE virtual QVariant itemContext(int index) = 0;

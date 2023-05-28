@@ -42,7 +42,7 @@ QVariant SAKTabelModelTool::tableModel()
     return QVariant::fromValue(mTableModel);
 }
 
-QStringList SAKTabelModelTool::headers()
+QStringList SAKTabelModelTool::headers() const
 {
     int count = columnCount();
     QStringList strList;

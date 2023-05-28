@@ -41,7 +41,7 @@ void SAKPrestorerToolUi::initialize(SAKPrestorerTool *tool,
     }
 
     mTool = qobject_cast<SAKPrestorerTool*>(tool);
-    SAKPrestorerTableModel *dataModel = mTool->getModel();
+    auto *dataModel = mTool->tableModel().value<QAbstractTableModel*>();
     SAKTableViewWithController::initialize(dataModel, settingsGroup);
 }
 
@@ -63,17 +63,16 @@ void SAKPrestorerToolUi::edit(const QModelIndex &index)
 
 void SAKPrestorerToolUi::clear()
 {
-    int rowCount = mTool->getModel()->rowCount();
+    int rowCount = mTableModel->rowCount();
     for (int i = 0; i < rowCount; i++) {
-        mTool->getModel()->removeRow(i);
+        mTableModel->removeRow(i);
     }
 }
 
 void SAKPrestorerToolUi::remove(const QModelIndex &index)
 {
     if (index.isValid()) {
-        auto model = mTool->getModel();
-        model->removeRow(index.row());
+        mTableModel->removeRow(index.row());
     }
 }
 
