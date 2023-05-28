@@ -43,7 +43,7 @@ QVariant SAKResponserTool::data(const QModelIndex &index, int role) const
     int row = index.row();
     if (row >= 0 && row < mItems.count()) {
         int column = index.column();
-        const EDEmiterItem &item = mItems[row];
+        const ResponserData &item = mItems[row];
         if (role == Qt::DisplayRole) {
             return columnDisplayRoleData(item, column);
         }
@@ -121,7 +121,7 @@ bool SAKResponserTool::setData(const QModelIndex &index,
 bool SAKResponserTool::insertRows(int row, int count, const QModelIndex &parent)
 {
     Q_UNUSED(parent);
-    EDEmiterItem item{EDResponserData{}, 0};
+    ResponserData item{ResponserItem{}, 0};
     for (int i = 0; i < count; i++) {
         mItems.insert(row, item);
     }
@@ -173,7 +173,7 @@ QVariant SAKResponserTool::headerData(int section,
 }
 
 QVariant SAKResponserTool::columnDisplayRoleData(
-    const EDEmiterItem &item, int column) const
+    const ResponserData &item, int column) const
 {
     if (column >= 0 && column < headers().count()) {
         const QString dataKey = headers().at(column);
@@ -229,7 +229,7 @@ QVariant SAKResponserTool::columnDisplayRoleData(
     return QVariant("Error");
 }
 
-QByteArray SAKResponserTool::referenceBytes(const EDResponserData &item) const
+QByteArray SAKResponserTool::referenceBytes(const ResponserItem &item) const
 {
     QByteArray bytes;
     QString text = item.itemReferenceText ;
@@ -250,7 +250,7 @@ QByteArray SAKResponserTool::referenceBytes(const EDResponserData &item) const
     return bytes;
 }
 
-QByteArray SAKResponserTool::responseBytes(const EDResponserData &item) const
+QByteArray SAKResponserTool::responseBytes(const ResponserItem &item) const
 {
     QByteArray bytes;
     QString text = item.itemResponseText;

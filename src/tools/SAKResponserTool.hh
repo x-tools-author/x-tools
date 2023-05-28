@@ -47,7 +47,7 @@ class SAKResponserTool : public SAKTabelModelTool
     Q_PROPERTY(QString itemResponseCrcEndIndex READ itemResponseCrcEndIndex CONSTANT)
     Q_PROPERTY(QString itemResponseText READ itemResponseText CONSTANT)
 public:
-    struct EDResponserData {
+    struct ResponserItem {
         bool itemEnable;
         QString itemDescription{"Demo"};
         int itemOption;
@@ -74,12 +74,12 @@ public:
         int itemResponseCrcEndIndex;
     };
 
-    struct EDEmiterItem {
-        EDResponserData data;
+    struct ResponserData {
+        ResponserItem data;
         int elapsedTime{0};
     };
 
-    struct SAKResponserDataKeys {
+    struct ResponserItemKeys {
         const QString itemEnable{"Enable"};
         const QString itemDescription{"Description"};
         const QString itemOption{"Option"};
@@ -107,7 +107,8 @@ public:
 public:
     explicit SAKResponserTool(QObject *parent = nullptr);
 
-    Q_INVOKABLE virtual void addItem(const QString &jsonCtx, int index = -1) final;
+    Q_INVOKABLE virtual void addItem(const QString &jsonCtx,
+                                     int index = -1) final;
     Q_INVOKABLE virtual QVariant itemContext(int index) final;
     Q_INVOKABLE virtual QVariant itemsContext() final;
 
@@ -117,21 +118,19 @@ public:
 protected:
     virtual void run() final;
 
-    virtual int rowCount(
-        const QModelIndex &parent = QModelIndex()) const final;
-    virtual int columnCount(
-        const QModelIndex &parent = QModelIndex()) const final;
-    virtual QVariant data(
-        const QModelIndex &index, int role = Qt::DisplayRole) const final;
+    virtual int rowCount(const QModelIndex &parent
+                         = QModelIndex()) const final;
+    virtual int columnCount(const QModelIndex &parent
+                            = QModelIndex()) const final;
+    virtual QVariant data(const QModelIndex &index,
+                          int role = Qt::DisplayRole) const final;
     virtual bool setData(const QModelIndex &index,
                          const QVariant &value,
                          int role = Qt::EditRole) final;
-    virtual bool insertRows(
-        int row, int count,
-        const QModelIndex &parent = QModelIndex()) final;
-    virtual bool removeRows(
-        int row, int count,
-        const QModelIndex &parent = QModelIndex()) final;
+    virtual bool insertRows(int row, int count,
+                            const QModelIndex &parent = QModelIndex()) final;
+    virtual bool removeRows(int row, int count,
+                            const QModelIndex &parent = QModelIndex()) final;
     virtual QVariant headerData(int section,
                                 Qt::Orientation orientation,
                                 int role = Qt::DisplayRole) const final;
@@ -146,20 +145,18 @@ private:
     QList<InputContext> mInputContextList;
     QMutex mInputContextListMutex;
 
-    QList<EDEmiterItem> mItems;
+    QList<ResponserData> mItems;
     QMutex mItemsMutex;
     const int mDescriptionColumnIndex{0};
     const int mFormatColumnIndex{1};
     const int mItemTextColumnIndex{2};
-    struct SAKResponserDataKeys mDataKeys;
+    struct ResponserItemKeys mDataKeys;
     const int mTableColumnCount{22};
 
 private:
-    QVariant columnDisplayRoleData(const EDEmiterItem &item, int column) const;
-    QByteArray referenceBytes(const EDResponserData &item) const;
-    QByteArray responseBytes(const EDResponserData &item) const;
-
-private:
+    QVariant columnDisplayRoleData(const ResponserData &item, int column) const;
+    QByteArray referenceBytes(const ResponserItem &item) const;
+    QByteArray responseBytes(const ResponserItem &item) const;
     void try2output(const QByteArray &bytes, QObject *threadInnerObject);
 
 private:
