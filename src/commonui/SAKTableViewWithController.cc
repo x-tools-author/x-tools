@@ -70,13 +70,12 @@ void SAKTableViewWithController::initialize(QAbstractTableModel *tableModel,
 
     headerViewModel->setColumnCount(headers.count());
     headerViewModel->setHorizontalHeaderLabels(headers);
-    //headerView->setSectionResizeMode(11, QHeaderView::Stretch);
-    //headerView->setSectionResizeMode(QHeaderView::Stretch);
     headerView->setModel(headerViewModel);
     headerView->setDefaultAlignment(Qt::AlignLeft);
 
     mMenu = new QMenu(ui->pushButtonVisible);
     ui->pushButtonVisible->setMenu(mMenu);
+    auto settings = SAKSettings::instance();
     for (int i = 0; i < headers.count(); i++) {
         QAction *ret = mMenu->addAction(headers.at(i));
         connect(ret, &QAction::triggered, this, [=](){
@@ -85,16 +84,36 @@ void SAKTableViewWithController::initialize(QAbstractTableModel *tableModel,
             } else {
                 tableView->hideColumn(i);
             }
+            settings->setValue(settingGroup + "/" + headers.at(i),
+                               ret->isChecked());
+
         });
         ret->setCheckable(true);
-        ret->setChecked(true);
+
+        QVariant var = settings->value(settingGroup + "/" + headers.at(i));
+        if (var.isValid()) {
+            if (!var.toBool()) {
+                tableView->hideColumn(i);
+            }
+            ret->setChecked(var.toBool());
+        } else {
+            ret->setChecked(true);
+        }
     }
 
-    mKey = settingGroup + "/items";
-    auto settings = SAKSettings::instance();
-    QString items = settings->value(mKey).toString();
+    mItemsKey = settingGroup + "/items";
+    QString items = settings->value(mItemsKey).toString();
     QByteArray json = QByteArray::fromHex(items.toLatin1());
     importFromJson(QJsonDocument::fromJson(json).toJson());
+}
+
+void SAKTableViewWithController::setStretchSections(QList<int>columns)
+{
+    QTableView *tableView = ui->tableView;
+    QHeaderView *headerView = tableView->horizontalHeader();
+    for (int &column : columns) {
+        headerView->setSectionResizeMode(column, QHeaderView::Stretch);
+    }
 }
 
 QModelIndex SAKTableViewWithController::currentIndex()
@@ -111,7 +130,7 @@ QModelIndex SAKTableViewWithController::currentIndex()
 void SAKTableViewWithController::writeToSettingsFile()
 {
     QByteArray json = exportAsJson();
-    SAKSettings::instance()->setValue(mKey, QString::fromLatin1(json.toHex()));
+    SAKSettings::instance()->setValue(mItemsKey, QString::fromLatin1(json.toHex()));
 }
 
 void SAKTableViewWithController::onPushButtonEditClicked()

@@ -43,6 +43,10 @@ void SAKPrestorerToolUi::initialize(SAKPrestorerTool *tool,
     mTool = qobject_cast<SAKPrestorerTool*>(tool);
     auto *dataModel = mTool->tableModel().value<QAbstractTableModel*>();
     SAKTableViewWithController::initialize(dataModel, settingsGroup);
+
+    QList<int> columns;
+    columns << 9;
+    setStretchSections(columns);
 }
 
 void SAKPrestorerToolUi::edit(const QModelIndex &index)

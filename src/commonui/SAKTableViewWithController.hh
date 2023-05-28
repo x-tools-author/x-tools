@@ -33,6 +33,8 @@ public:
     void initialize(QAbstractTableModel *tableModel,
                     const QString &settingGroup);
 
+    void setStretchSections(QList<int>columns);
+
 protected:
     const QLoggingCategory mLoggingCategory;
     QAbstractTableModel *mTableModel{nullptr};
@@ -46,7 +48,7 @@ protected:
 
 private:
     QMenu *mMenu{nullptr};
-    QString mKey;
+    QString mItemsKey;
 
 private:
     QModelIndex currentIndex();

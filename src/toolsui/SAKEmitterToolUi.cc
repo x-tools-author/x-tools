@@ -44,6 +44,9 @@ void SAKEmitterToolUi::initialize(SAKEmitterTool *tool,
     QAbstractTableModel *dataModel = var.value<QAbstractTableModel*>();
     SAKTableViewWithController::initialize(dataModel,
                                            settingsGroup + "/emitter");
+    QList<int> columns;
+    columns << 11;
+    setStretchSections(columns);
 }
 
 void SAKEmitterToolUi::edit(const QModelIndex &index)
