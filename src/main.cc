@@ -30,8 +30,6 @@
 #include "SAKApplication.hh"
 #include "SAKGuiApplication.hh"
 
-
-
 int main(int argc, char *argv[])
 {
     // High dpi settings.
