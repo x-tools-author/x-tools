@@ -5,7 +5,7 @@ import Qt5Compat.GraphicalEffects
 
 import QtQuick.Controls.Material
 
-import ED.EasyDebug
+import SAK.Custom
 import "common"
 
 Window {

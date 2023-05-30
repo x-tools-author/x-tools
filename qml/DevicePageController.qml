@@ -3,7 +3,7 @@ import QtQuick.Layouts
 import QtQuick.Controls
 import Qt5Compat.GraphicalEffects
 
-import ED.EasyDebug
+import SAK.Custom
 import "common"
 
 Item {

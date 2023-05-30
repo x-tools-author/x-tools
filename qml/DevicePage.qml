@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
 
-import ED.EasyDebug
+import SAK.Custom
 import "common"
 
 Item {

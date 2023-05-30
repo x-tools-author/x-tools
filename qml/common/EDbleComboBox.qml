@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 
-import ED.EasyDebug
+import SAK.Custom
 
 EDComboBox {
     id: root

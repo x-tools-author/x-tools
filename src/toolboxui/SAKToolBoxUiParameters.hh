@@ -52,7 +52,7 @@ public:
     void initialize(SAKToolBox *toolBox, const QString &settingsGroup);
 
 private:
-    const QLoggingCategory mLoggingCategory{"SAK.ToolBoxUiParameters"};
+    const QLoggingCategory mLoggingCategory{"SAK.CustomBoxUiParameters"};
 
 private:
     Ui::SAKToolBoxUiParameters *ui;

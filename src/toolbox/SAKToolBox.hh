@@ -71,7 +71,7 @@ private:
     SAKPrestorerTool    *mPrestorerTool{nullptr};
 
     QList<SAKBaseTool*> mToolList;
-    const QLoggingCategory mLoggingCategory{"SAK.ToolBox"};
+    const QLoggingCategory mLoggingCategory{"SAK.CustomBox"};
     bool mIsWorking{false};
 
 private:
