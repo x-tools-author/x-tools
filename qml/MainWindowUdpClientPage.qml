@@ -10,7 +10,7 @@ DevicePage {
     controllerComponent: controllerComponent
     groupName: "UDPClient"
 
-    property EDUdpClientTool udpClientTool: edDevice.communication
+    property EDUdpClientTool udpClientTool: null
 
     Component {
         id: controllerComponent
@@ -20,7 +20,8 @@ DevicePage {
     }
 
     Component.onCompleted: {
-        edDevice.setupComunicationTool(EDToolsFactory.UdpClientTool)
+        edDevice.initialize(EDToolsFactory.UdpClientTool)
+        udpClientTool = edDevice.communicaton
         if (udpClientTool) {
             var controller = deviceControllerLoader.item
             udpClientTool.clientIp = Qt.binding(function (){return controller.deviceController.clientIp})

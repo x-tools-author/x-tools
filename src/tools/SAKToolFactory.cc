@@ -67,6 +67,8 @@ SAKBaseTool *SAKToolFactory::createTool(int type)
         tool = new SAKWebSocketServerTool();
     } else if (BleCentralTool == type) {
         tool = new SAKBleCentralTool();
+    } else {
+        qWarning() << "Unknown tool type: " << type;
     }
 
     if (tool) {

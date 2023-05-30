@@ -74,7 +74,7 @@ SAKGuiApplication::SAKGuiApplication(int argc, char *argv[])
     qmlRegisterUncreatableType<SAKTcpServerTool>("ED.EasyDebug", 1, 0, "EDTcpServerTool", reason);
     qmlRegisterUncreatableType<SAKBleCentralTool>("ED.EasyDebug", 1, 0, "EDBleCentralTool", reason);
     qmlRegisterUncreatableType<SAKSerialPortTool>("ED.EasyDebug", 1, 0, "EDSerialportTool", reason);
-    qmlRegisterUncreatableType<SAKWebSocketServerTool>("ED.EasyDebug", 1, 0, "EDWebSocketServerTool", reason);
+    qmlRegisterUncreatableType<SAKWebSocketServerTool>("ED.EasyDebug", 1, 0, "SAKWebSocketServerTool", reason);
     qmlRegisterUncreatableType<SAKWebSocketClientTool>("ED.EasyDebug", 1, 0, "EDWebSocketClientTool", reason);
 
     qmlRegisterUncreatableType<SAKInterface>("ED.EasyDebug", 1, 0, "EDInterface", reason);

@@ -32,12 +32,12 @@ QVariant SAKSettings::sakValue(const QString &key,
     return value(key, defaultValue);
 }
 
-void SAKSettings::sdkSetValue(const QString &key, const QVariant &value)
+void SAKSettings::sakSetValue(const QString &key, const QVariant &value)
 {
     setValue(key, value);
 }
 
-void SAKSettings::sdkSetArrayValues(const QString &groupName,
+void SAKSettings::sakSetArrayValues(const QString &groupName,
                                   const QString &array,
                                   const QString &key,
                                   const QVariant &varList)
@@ -70,7 +70,7 @@ QStringList SAKSettings::sakArrayValues(const QString &group,
     return list;
 }
 
-void SAKSettings::sdkRemove(const QString &group, const QString &key)
+void SAKSettings::sakRemove(const QString &group, const QString &key)
 {
     beginGroup(group);
     remove(key);

@@ -10,7 +10,7 @@ DevicePage {
     controllerComponent: comComtrollerComponent
     groupName: "BleCentral"
 
-    property EDBleCentralTool bleCentral: edDevice.communication
+    property EDBleCentralTool bleCentral: edDevice.communication ? edDevice.communication : null
 
     Component {
         id: comComtrollerComponent
@@ -29,7 +29,7 @@ DevicePage {
     }
 
     Component.onCompleted: {
-        edDevice.setupComunicationTool(EDToolsFactory.BleCentral)
+        edDevice.initialize(EDToolsFactory.BleCentral)
         if (bleCentral) {
             var controller = deviceControllerLoader.item
             bleCentral.currentCharacteristicIndex = Qt.binding(function (){return controller.currentCharacteristicIndex})

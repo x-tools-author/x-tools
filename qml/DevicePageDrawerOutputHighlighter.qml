@@ -63,7 +63,7 @@ EDGroupBox {
     }
 
     Component.onCompleted: {
-        var keyWords = sakSettings.edArrayValues(groupName, settingKeys.highlighterArrayName, settingKeys.highlighterKeyWord)
+        var keyWords = sakSettings.sakArrayValues(groupName, settingKeys.highlighterArrayName, settingKeys.highlighterKeyWord)
         for (var i = 0; i < keyWords.length; i++) {
             keyWordListModel.append({keyWord: keyWords[i]})
         }

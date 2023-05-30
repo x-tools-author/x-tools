@@ -20,7 +20,11 @@ Window {
     property alias keysObj: settingKeys
 
     property int edMaterialTheme: {
-        var theme = sakSettings.edValue(settingKeys.materialTheme)
+        if (!sakSettings) {
+            return Material.System
+        }
+
+        var theme = sakSettings.sakValue(settingKeys.materialTheme)
 
         if (theme === Material.Dark) {
             //edMaterialAccent = Material.color(edMaterialAccent, Material.Shade200)
@@ -33,7 +37,11 @@ Window {
         }
     }
     property string edMaterialAccent:  {
-        var accent = sakSettings.edValue(settingKeys.materialAccent)
+        if (!sakSettings) {
+            return Material.color(Material.Pink)
+        }
+
+        var accent = sakSettings.sakValue(settingKeys.materialAccent)
         if (accent) {
             return accent
         } else {
@@ -41,7 +49,11 @@ Window {
         }
     }
     property string edMaterialPrimary:  {
-        var primary = sakSettings.edValue(settingKeys.materialPrimary)
+        if (!sakSettings) {
+            return Material.color(Material.Pink)
+        }
+
+        var primary = sakSettings.sakValue(settingKeys.materialPrimary)
         if (primary) {
             return primary
         } else {
@@ -49,9 +61,24 @@ Window {
         }
     }
 
-    onEdMaterialThemeChanged: sakSettings.edSetValue(settingKeys.materialTheme, String(edMaterialTheme))
-    onEdMaterialAccentChanged: sakSettings.edSetValue(settingKeys.materialAccent, String(edMaterialAccent))
-    onEdMaterialPrimaryChanged: sakSettings.edSetValue(settingKeys.materialPrimary, String(edMaterialPrimary))
+    onEdMaterialThemeChanged: {
+        if (sakSettings) {
+            sakSettings.sakSetValue(settingKeys.materialTheme,
+                                    String(edMaterialTheme))
+        }
+    }
+    onEdMaterialAccentChanged: {
+        if (sakSettings) {
+             sakSettings.sakSetValue(settingKeys.materialAccent,
+                                     String(edMaterialAccent))
+        }
+    }
+    onEdMaterialPrimaryChanged: {
+        if (sakSettings) {
+            sakSettings.sakSetValue(settingKeys.materialPrimary,
+                                    String(edMaterialPrimary))
+        }
+    }
 
     Material.theme: edMaterialTheme
     Material.accent: edMaterialAccent
@@ -119,7 +146,7 @@ Window {
             anchors.left: parent.left
             anchors.top: parent.top
             anchors.bottom: parent.bottom
-            onPageIndexChanged: sakSettings.edSetValue(settingKeys.pageIndex, pageIndex)
+            onPageIndexChanged: sakSettings.sakSetValue(settingKeys.pageIndex, pageIndex)
             onInvokeAddPage: function (qmlFile) {
                 pageRepeaterListModel.append({page: "qrc:/qml/" + qmlFile})
             }
@@ -132,7 +159,7 @@ Window {
                 }
             }
             Component.onCompleted: {
-                var index = sakSettings.edValue(settingKeys.pageIndex)
+                var index = sakSettings.sakValue(settingKeys.pageIndex)
                 if (index !== undefined) {
                     pageIndex = index > (fixedpage - 1) ? 0 : index
                 }

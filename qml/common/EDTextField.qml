@@ -8,12 +8,12 @@ TextField {
 
     onTextEdited: {
         if (settingKey) {
-            sakSettings.edSetValue(settingKey, root.text)
+            sakSettings.sakSetValue(settingKey, root.text)
         }
     }
     Component.onCompleted: {
         if (settingKey) {
-            var txt = sakSettings.edValue(settingKey)
+            var txt = sakSettings.sakValue(settingKey)
             if (txt) {
                 root.text = txt
             }

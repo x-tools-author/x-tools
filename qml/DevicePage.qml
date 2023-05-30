@@ -15,6 +15,7 @@ Item {
     property alias deviceControllerLoader: devicePageController.deviceControllerLoader
     property var controllerComponent: null
     property string groupName: "EasyDebug"
+    property EDBaseTool communicationTool: edDevice.communicaton
 
     signal invokeOpenDevice()
     signal invokeCloseDevice()
@@ -26,7 +27,7 @@ Item {
     DevicePageController {
         id: devicePageController
         controllerComponent: root.controllerComponent
-        communicationTool: edDevice.communication
+        communicationTool: root.communicationTool
         anchors.left: parent.left
         anchors.top: parent.top
         anchors.bottom: parent.bottom
@@ -42,11 +43,11 @@ Item {
 
     DevicePageReadWrite {
         id: devicePageReadWrite
-        communicationTool: edDevice.communication
+        communicationTool: root.communicationTool
         emitterTool: edDevice.emitter
-        analyzer: edDevice.analyzer
-        responserTool: edDevice.responserTool()
-        presotrerTool: edDevice.prestorerTool()
+        analyzer: edDevice.outputAnalyzer
+        responserTool: edDevice.responser
+        presotrerTool: edDevice.prestorer
         showWrap: devicePageDrawer.showWrap
         showDate: devicePageDrawer.showDate
         showTime: devicePageDrawer.showTime
@@ -97,7 +98,7 @@ Item {
         height: root.height
         txMasker: edDevice.inputMasker
         rxMasker: edDevice.outputMasker
-        analyzer: edDevice.analyzer
+        analyzer: edDevice.outputAnalyzer
         storer: edDevice.storer
         Component.onCompleted: setDocument(devicePageReadWrite.textVar)
     }

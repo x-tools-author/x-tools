@@ -10,17 +10,18 @@ DevicePage {
     controllerComponent: comComtrollerComponent
     groupName: "SerialPort"
 
-    property EDSerialportTool comTool: edDevice.communication
+    property EDSerialportTool comTool: null
 
     Component {
         id: comComtrollerComponent
         MainWindowSerialPortPageController {
-            comTool: root.edDevice.communication
+            comTool: root.edDevice.communicaton
         }
     }
 
     Component.onCompleted: {
-        edDevice.setupComunicationTool(EDToolsFactory.SerialportTool)
+        edDevice.initialize(EDToolsFactory.SerialportTool)
+        comTool = edDevice.communicaton
     }
 
     onInvokeOpenDevice: {

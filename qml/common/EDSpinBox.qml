@@ -10,13 +10,13 @@ SpinBox {
 
     onValueModified: {
         if (settingKey) {
-            sakSettings.edSetValue(settingKey, root.value)
+            sakSettings.sakSetValue(settingKey, root.value)
         }
     }
 
     Component.onCompleted: {
         if (settingKey) {
-            var v = sakSettings.edValue(settingKey)
+            var v = sakSettings.sakValue(settingKey)
             if (v) {
                 root.value = v
             }

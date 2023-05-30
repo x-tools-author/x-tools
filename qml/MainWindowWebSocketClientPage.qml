@@ -10,7 +10,7 @@ DevicePage {
     controllerComponent: comComtrollerComponent
     groupName: "WebSocketClient"
 
-    property EDWebSocketClientTool webSocketClient: edDevice.communication
+    property EDWebSocketClientTool webSocketClient: edDevice.communication ? edDevice.communication : null
 
     Component {
         id: comComtrollerComponent
@@ -20,7 +20,7 @@ DevicePage {
     }
 
     Component.onCompleted: {
-        edDevice.setupComunicationTool(EDToolsFactory.WebSocketClientTool)
+        edDevice.initialize(EDToolsFactory.WebSocketClientTool)
         if (webSocketClient) {
             var controller = deviceControllerLoader.item
             webSocketClient.clientIp = Qt.binding(function (){return controller.deviceController.clientIp})

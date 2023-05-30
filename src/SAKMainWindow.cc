@@ -400,9 +400,10 @@ void SAKMainWindow::initOptionMenuUiType(QMenu *optionMenu)
         SAKSettings::instance()->setValue("isQmlUi", false);
         rebootRequestion();
     });
-    QAction *modernAction =  new QAction(tr("Modern"));
+
+    QAction *modernAction =  new QAction(tr("Modern"), this);
     modernAction->setCheckable(true);
-    connect(classicalAction, &QAction::triggered, this, [=](){
+    connect(modernAction, &QAction::triggered, this, [=](){
         SAKSettings::instance()->setValue("isQmlUi", true);
         rebootRequestion();
     });
@@ -698,7 +699,7 @@ void SAKMainWindow::testPageActionTriggered()
     sakApp->settings()->setValue(mSettingsKeyContext.enableTestPage,
                                  QVariant::fromValue(checked));
     rebootRequestion();
-};
+}
 
 void SAKMainWindow::clearConfiguration()
 {

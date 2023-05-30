@@ -187,7 +187,7 @@ Item {
                         id: hisrotyListModel
                     }
                     onActivated: {
-                        sakSettings.edSetValue(keysObj.itemCurrentIndex, currentIndex)
+                        sakSettings.sakSetValue(keysObj.itemCurrentIndex, currentIndex)
                         var ret = inputTextFormatComboBox.indexOfValue(currentValue)
                         if (ret >= 0) {
                             inputTextFormatComboBox.currentIndex = ret
@@ -196,7 +196,7 @@ Item {
                     }
 
                     Component.onCompleted: {
-                        var values = sakSettings.edArrayValues(keysObj.itemGroup, keysObj.itemArray, keysObj.itemAll)
+                        var values = sakSettings.sakArrayValues(keysObj.itemGroup, keysObj.itemArray, keysObj.itemAll)
                         var item = {}
                         for (var i = 0; i < values.length; i++) {
                             var str = sakInterface.hexString2String(values[i])
@@ -206,7 +206,7 @@ Item {
                             hisrotyListModel.append(item)
                         }
 
-                        var index = sakSettings.edValue(keysObj.itemCurrentIndex)
+                        var index = sakSettings.sakValue(keysObj.itemCurrentIndex)
                         if (index >= 0 && index < hisrotyListModel.count) {
                             currentIndex = index
                             editText = currentText

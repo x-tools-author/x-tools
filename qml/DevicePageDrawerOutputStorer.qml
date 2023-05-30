@@ -45,11 +45,11 @@ EDGroupBox {
                         if (parameterIndex === 0) {
                             storer.enable = checked
                         } else if (parameterIndex === 1) {
-                            storer.setSaveDate(checked)
+                            storer.saveDate = checked
                         } else if (parameterIndex === 2) {
-                            storer.setSaveTime(checked)
+                            storer.saveTime = checked
                         } else if (parameterIndex === 3) {
-                            storer.setSaveMs(checked)
+                            storer.saveMs = checked
                         }
                     }
                 }
@@ -68,7 +68,7 @@ EDGroupBox {
 
             function setStorerTextFormat() {
                 if (storer) {
-                    storer.setFormat(currentValue)
+                    //storer.sa setFormat(currentValue)
                 }
             }
         }
@@ -89,7 +89,7 @@ EDGroupBox {
 
             function setStorerFileName() {
                 if (storer) {
-                    storer.setPath(fileNameTextField.text)
+                    storer.fileName = fileNameTextField.text
                 }
             }
         }

@@ -10,7 +10,7 @@ DevicePage {
     controllerComponent: comComtrollerComponent
     groupName: "TCPClient"
 
-    property EDTcpClientTool tcpClientTool: edDevice.communication
+    property EDTcpClientTool tcpClientTool: null
 
     Component {
         id: comComtrollerComponent
@@ -20,7 +20,8 @@ DevicePage {
     }
 
     Component.onCompleted: {
-        edDevice.setupComunicationTool(EDToolsFactory.TcpClientTool)
+        edDevice.initialize(EDToolsFactory.TcpClientTool)
+        tcpClientTool = edDevice.communicaton
         if (tcpClientTool) {
             var controller = deviceControllerLoader.item
             tcpClientTool.clientIp = Qt.binding(function (){return controller.deviceController.clientIp})

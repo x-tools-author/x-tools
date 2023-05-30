@@ -54,7 +54,7 @@ Item {
     }
 
     Component.onCompleted: {
-        var hexStringList = sakSettings.edArrayValues(settingKeys.group,
+        var hexStringList = sakSettings.sakArrayValues(settingKeys.group,
                                                      settingKeys.array,
                                                      settingKeys.key)
         if (hexStringList.length) {

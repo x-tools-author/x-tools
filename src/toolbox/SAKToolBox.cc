@@ -58,7 +58,8 @@ void SAKToolBox::initialize(int type)
     auto tool = toolFactory->createTool(type);
     mComunicationTool = qobject_cast<SAKCommunicationTool*>(tool);
     if (!mComunicationTool) {
-        qCWarning(mLoggingCategory) << "mComunicationTool is nullptr!";
+        qCWarning(mLoggingCategory) << "mComunicationTool is nullptr, type:"
+                                    << type;
         return;
     }
 

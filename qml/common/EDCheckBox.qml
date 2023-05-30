@@ -8,13 +8,13 @@ CheckBox {
 
     onClicked: {
         if (settingKey) {
-            sakSettings.edSetValue(settingKey, root.checked)
+            sakSettings.sakSetValue(settingKey, root.checked)
         }
     }
 
     Component.onCompleted: {
         if (settingKey) {
-            var ret = sakSettings.edValue(settingKey)
+            var ret = sakSettings.sakValue(settingKey)
             root.checked = ret === edTrue ? true : false
         }
     }
