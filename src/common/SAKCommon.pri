@@ -1,14 +1,6 @@
 INCLUDEPATH += src/common
 
-DISTFILES += \
-    $$PWD/SAKBase.pri
-
-FORMS += \
-    $$PWD/SAKBaseListWidget.ui
-
 HEADERS += \
-    $$PWD/SAKBaseListWidget.hh \
-    $$PWD/SAKBaseListWidgetItemWidget.hh \
     $$PWD/SAKBleScanner.hh \
     $$PWD/SAKCommonCrcInterface.hh \
     $$PWD/SAKCommonDataStructure.hh \
@@ -27,8 +19,6 @@ HEADERS += \
     $$PWD/SAKTableModel.hh
 
 SOURCES += \
-    $$PWD/SAKBaseListWidget.cc \
-    $$PWD/SAKBaseListWidgetItemWidget.cc \
     $$PWD/SAKBleScanner.cpp \
     $$PWD/SAKCommonCrcInterface.cc \
     $$PWD/SAKCommonDataStructure.cc \
