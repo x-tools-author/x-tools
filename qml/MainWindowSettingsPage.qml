@@ -43,9 +43,9 @@ EDPane {
                 model: [qsTr("Classical"), qsTr("Modern")]
                 onActivated: {
                     if (currentIndex === 0) {
-                        sakSettings.sdkSetValue("isQmlUi", edFalse)
+                        sakSettings.sakSetValue("isQmlUi", edFalse)
                     } else {
-                        sakSettings.sdkSetValue("isQmlUi", edTrue)
+                        sakSettings.sakSetValue("isQmlUi", edTrue)
                     }
                 }
                 Component.onCompleted: {
