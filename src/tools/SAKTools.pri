@@ -19,6 +19,7 @@ HEADERS += \
     $$PWD/SAKToolFactory.hh \
     $$PWD/SAKUdpClientTool.hh \
     $$PWD/SAKUdpServerTool.hh \
+    $$PWD/SAKVelometerTool.hh \
     $$PWD/SAKWebSocketClientTool.hh \
     $$PWD/SAKWebSocketServerTool.hh
 
@@ -41,5 +42,6 @@ SOURCES += \
     $$PWD/SAKToolFactory.cc \
     $$PWD/SAKUdpClientTool.cc \
     $$PWD/SAKUdpServerTool.cc \
+    $$PWD/SAKVelometerTool.cc \
     $$PWD/SAKWebSocketClientTool.cc \
     $$PWD/SAKWebSocketServerTool.cc
