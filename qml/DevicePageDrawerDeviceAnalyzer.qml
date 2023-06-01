@@ -21,7 +21,7 @@ EDGroupBox {
         readonly property string analyzerMaxTempBytes: "analyzerMaxTempBytes"
     }
 
-    EDHexRegularExpressionValidator{ id:hexREV }
+    SAKHexRegularExpressionValidator{ id:hexREV }
 
     GridLayout {
         columns: 2

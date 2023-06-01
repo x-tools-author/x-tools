@@ -23,11 +23,11 @@ EDComboBox {
     property bool enableAscii: true
     property bool enableUtf8: true
 
-    EDBinRegularExpressionValidator{ id: binREV }
-    EDOctRegularExpressionValidator{ id: octREV }
-    EDDecRegularExpressionValidator{ id: decREV }
-    EDHexRegularExpressionValidator{ id: hexREV }
-    EDAsciiRegularExpressionValidator{ id: asciiREV }
+    SAKBinRegularExpressionValidator{ id: binREV }
+    SAKOctRegularExpressionValidator{ id: octREV }
+    SAKDecRegularExpressionValidator{ id: decREV }
+    SAKHexRegularExpressionValidator{ id: hexREV }
+    SAKAsciiRegularExpressionValidator{ id: asciiREV }
 
     property var currentValidator:  {
         if (currentValue === EDDataStructure.TextFormatBin) {

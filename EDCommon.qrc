@@ -1,10 +1,10 @@
 <RCC>
     <qresource prefix="/">
-        <file>qml/common/EDBinRegularExpressionValidator.qml</file>
-        <file>qml/common/EDOctRegularExpressionValidator.qml</file>
-        <file>qml/common/EDDecRegularExpressionValidator.qml</file>
-        <file>qml/common/EDHexRegularExpressionValidator.qml</file>
-        <file>qml/common/EDAsciiRegularExpressionValidator.qml</file>
+        <file>qml/common/SAKBinRegularExpressionValidator.qml</file>
+        <file>qml/common/SAKOctRegularExpressionValidator.qml</file>
+        <file>qml/common/SAKDecRegularExpressionValidator.qml</file>
+        <file>qml/common/SAKHexRegularExpressionValidator.qml</file>
+        <file>qml/common/SAKAsciiRegularExpressionValidator.qml</file>
         <file>qml/common/EDButton.qml</file>
         <file>qml/common/EDCheckBox.qml</file>
         <file>qml/common/EDComboBox.qml</file>

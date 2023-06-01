@@ -45,7 +45,7 @@ Item {
         id: devicePageReadWrite
         communicationTool: root.communicationTool
         emitterTool: edDevice.emitter
-        analyzer: edDevice.outputAnalyzer
+        analyzer: edDevice.rxAnalyzer
         responserTool: edDevice.responser
         presotrerTool: edDevice.prestorer
         showWrap: devicePageDrawer.showWrap
@@ -96,9 +96,9 @@ Item {
         x: mainWindow.width - mainWindowPane.anchors.margins
         y: titleBar.height + mainWindowPane.anchors.margins
         height: root.height
-        txMasker: edDevice.inputMasker
-        rxMasker: edDevice.outputMasker
-        analyzer: edDevice.outputAnalyzer
+        txMasker: edDevice.txMasker
+        rxMasker: edDevice.rxMasker
+        analyzer: edDevice.rxAnalyzer
         storer: edDevice.storer
         Component.onCompleted: setDocument(devicePageReadWrite.textVar)
     }
