@@ -5,7 +5,7 @@ import QtQuick.Layouts
 import SAK.Custom
 import "common"
 
-EDGroupBox {
+SAKGroupBox {
     id: root
     title: qsTr("CRC Calculator")
 
@@ -26,39 +26,39 @@ EDGroupBox {
         columns: 2
         anchors.fill: parent
 
-        EDLabel {
+        SAKLabel {
             text: qsTr("CRC type")
         }
-        EDCrcComboBox {
+        SAKCrcComboBox {
             id: crcTypeComboBox
             settingKey: settingKeys.inputCrcType
             Layout.fillWidth: true
         }
-        EDLabel {
+        SAKLabel {
             text: qsTr("Start index")
         }
-        EDSpinBox {
+        SAKSpinBox {
             id: startIndexSpinBox
             settingKey: settingKeys.inputCrcStartIndex
             editable: true
             Layout.fillWidth: true
         }
-        EDLabel {
+        SAKLabel {
             text: qsTr("End index(from tail)")
         }
-        EDSpinBox {
+        SAKSpinBox {
             id: endIndexSpinBox
             settingKey: settingKeys.inputCrcEndIndex
             editable: true
             Layout.fillWidth: true
         }
-        EDCheckBox {
+        SAKCheckBox {
             id: appendCrcCheckbox
             text: qsTr("Append CRC(before suffix)");
             settingKey: settingKeys.inputCrcAppendEnable
             Layout.columnSpan: 2
         }
-        EDLabel {
+        SAKLabel {
             Layout.columnSpan: 2
             Layout.fillWidth: true
             wrapMode: Text.WordWrap

@@ -33,7 +33,7 @@ Item {
             Layout.fillWidth: true
             Repeater {
                 id: headerRepeater
-                EDLabel {
+                SAKLabel {
                     text: modelData
                     padding: cellPadding
                     font.bold: true
@@ -97,7 +97,7 @@ Item {
 //                        }
 //                    }
                     clip: true
-                    EDLabel {
+                    SAKLabel {
                         text: display
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.left: parent.left
@@ -134,7 +134,7 @@ Item {
                     qsTr("Export"),
                     qsTr("Append")
                 ]
-                EDButton {
+                SAKButton {
                     text: modelData
                     onClicked: {
                         if (index === 0) {

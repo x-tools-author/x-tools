@@ -38,7 +38,7 @@ Item {
         onInvokeOpenDrawer: function func(pageIndex) {
             devicePageDrawer.customOpen(pageIndex)
         }
-        EDVerticalLine { anchors.right: parent.right }
+        SAKVerticalLine { anchors.right: parent.right }
     }
 
     DevicePageReadWrite {

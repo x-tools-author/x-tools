@@ -5,7 +5,7 @@ import QtQuick.Layouts
 import SAK.Custom
 import "common"
 
-EDGroupBox {
+SAKGroupBox {
     id: root
     title: qsTr("Preprocessor")
     Layout.fillWidth: true
@@ -38,7 +38,7 @@ EDGroupBox {
                 qsTr("Show ms information"),
                 qsTr("Show wrap")
             ]
-            EDCheckBox {
+            SAKCheckBox {
                 text: modelData
                 settingKey: {
                     if (index === 0) {
@@ -73,4 +73,4 @@ EDGroupBox {
             }
         }
     }
-} // EDGroupBox
+} // SAKGroupBox

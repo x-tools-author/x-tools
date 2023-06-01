@@ -4,9 +4,9 @@ import QtQuick.Layouts
 
 import "common"
 
-EDPopup {
+SAKPopup {
     id: root
-    background: EDPane{}
+    background: SAKPane{}
 
     property alias txMasker: devicePageDrawerDevice.txMasker
     property alias rxMasker: devicePageDrawerDevice.rxMasker

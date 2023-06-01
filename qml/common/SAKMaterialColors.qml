@@ -8,7 +8,7 @@ GridLayout {
     columns: 10
 
     property string specifyColor: ""
-    property var option: EDMaterialColors.Option.MaterialUnknow
+    property var option: SAKMaterialColors.Option.MaterialUnknow
 
     enum Option {
         MaterialUnknow,
@@ -27,18 +27,18 @@ GridLayout {
 
     Repeater {
         id: colorRepeater
-        EDButton {
+        SAKButton {
             Rectangle {
                 id: colorRectangle
                 anchors.fill: parent
-                color: edColor(modelData, option === EDMaterialColors.Option.MaterialPrimary)
-                EDCheckBox {
+                color: edColor(modelData, option === SAKMaterialColors.Option.MaterialPrimary)
+                SAKCheckBox {
                     anchors.centerIn: parent
                     checked: visible
                     visible: {
-                        if (option === EDMaterialColors.Option.MaterialAccent) {
+                        if (option === SAKMaterialColors.Option.MaterialAccent) {
                             return edColor(modelData, false) === Material.accent
-                        } else if (option === EDMaterialColors.Option.MaterialPrimary) {
+                        } else if (option === SAKMaterialColors.Option.MaterialPrimary) {
                             return edColor(modelData, true) === Material.primary
                         }
 
@@ -47,9 +47,9 @@ GridLayout {
                 }
             }
             onClicked: {
-                if (option === EDMaterialColors.Option.MaterialAccent) {
+                if (option === SAKMaterialColors.Option.MaterialAccent) {
                     edMaterialAccent = edColor(modelData, false)
-                } else if (option === EDMaterialColors.Option.MaterialPrimary) {
+                } else if (option === SAKMaterialColors.Option.MaterialPrimary) {
                     edMaterialPrimary = edColor(modelData, true)
                 }
             }
@@ -70,9 +70,9 @@ GridLayout {
         selectedColor: addButton.bgColor
         onAccepted: {
             addButton.bgColor = selectedColor
-            if (option === EDMaterialColors.Option.MaterialAccent) {
+            if (option === SAKMaterialColors.Option.MaterialAccent) {
                 edMaterialAccent = selectedColor
-            } else if (option === EDMaterialColors.Option.MaterialPrimary) {
+            } else if (option === SAKMaterialColors.Option.MaterialPrimary) {
                 edMaterialPrimary = selectedColor
             } else {
                 console.warn("Unknow option type of Material. The color is:", selectedColor)

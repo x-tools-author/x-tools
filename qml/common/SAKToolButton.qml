@@ -22,11 +22,11 @@ ToolButton {
         }
     }
 
-    EDPopup {
+    SAKPopup {
         id: tipsPopup
         dim: false
         modal: false
-        contentItem: EDLabel {
+        contentItem: SAKLabel {
             id: tipLabel
             text: tips
         }

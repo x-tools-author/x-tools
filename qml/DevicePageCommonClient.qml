@@ -31,44 +31,44 @@ GridLayout {
         readonly property string messageType: groupName + "/messageType"
     }
 
-    EDLabel {
+    SAKLabel {
         id: titleLabel
         Layout.columnSpan: 2
         font.weight: Font.Bold
     }
-    EDLabel {
+    SAKLabel {
         text: qsTr("Address")
         visible: showClientInfo
     }
-    EDIpComboBox {
+    SAKIpComboBox {
         id: clientIpAddressComboBox
         settingKey: settingKeys.clientIp
         enabled: !deviceIsWorking
         Layout.fillWidth: true
         visible: showClientInfo
     }
-    EDLabel {
+    SAKLabel {
         text: qsTr("Port")
         visible: showClientInfo
     }
-    EDTextField {
+    SAKTextField {
         id: clientPortTextField
         settingKey: settingKeys.clientPort
         enabled: !deviceIsWorking
         visible: showClientInfo
         Layout.fillWidth: true
     }
-    EDLabel {
+    SAKLabel {
         text: qsTr("Binding")
         visible: showClientInfo
     }
-    EDTextField {
+    SAKTextField {
         id: bindingInfoTextField
         enabled: false
         visible: showClientInfo
         Layout.fillWidth: true
     }
-    EDCheckBox {
+    SAKCheckBox {
         id: specifyClientIpPortCheckBox
         text: qsTr("Specify client information")
         settingKey: settingKeys.specifyClientIpPort
@@ -76,33 +76,33 @@ GridLayout {
         visible: showClientInfo
         Layout.columnSpan: 2
     }
-    EDLabel {
+    SAKLabel {
         text: qsTr("Server settings")
         Layout.columnSpan: 2
     }
-    EDLabel {
+    SAKLabel {
         text: qsTr("Address")
     }
-    EDIpComboBox {
+    SAKIpComboBox {
         id: serverIpAddressComboBox
         settingKey: settingKeys.serverIp
         enabled: !deviceIsWorking
         Layout.fillWidth: true
     }
-    EDLabel {
+    SAKLabel {
         text: qsTr("Port")
     }
-    EDTextField {
+    SAKTextField {
         id: serverPortTextField
         settingKey: settingKeys.serverPort
         enabled: !deviceIsWorking
         Layout.fillWidth: true
     }
-    EDLabel {
+    SAKLabel {
         text: qsTr("Message")
         visible: showWebSocketInfo
     }
-    EDComboBox {
+    SAKComboBox {
         id: messageComboBox
         model: ["Bin", "Text"]
         visible: showWebSocketInfo

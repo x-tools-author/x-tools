@@ -1,6 +1,6 @@
 import QtQuick
 
-EDComboBox {
+SAKComboBox {
     id: root
     //model: edFontFamilies
 }

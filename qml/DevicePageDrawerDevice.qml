@@ -5,7 +5,7 @@ import QtQuick.Layouts
 import SAK.Custom
 import "./common/"
 
-EDPane {
+SAKPane {
     id: root
     property alias txMasker: maskerGroupBox.txMasker
     property alias rxMasker: maskerGroupBox.rxMasker

@@ -6,7 +6,7 @@ import QtQuick.Dialogs
 import SAK.Custom
 import "common"
 
-EDGroupBox {
+SAKGroupBox {
     id: storerGroupBox
     title: qsTr("Storer")
 
@@ -33,7 +33,7 @@ EDGroupBox {
                 [qsTr("Save time information"), settingKeys.storerSaveTime],
                 [qsTr("Save ms information"), settingKeys.storerSaveMs],
             ]
-            EDCheckBox {
+            SAKCheckBox {
                 text: modelData[0]
                 settingKey: modelData[1]
                 Layout.columnSpan: 2
@@ -56,10 +56,10 @@ EDGroupBox {
             }
         }
 
-        EDLabel {
+        SAKLabel {
             text: qsTr("Text format")
         }
-        EDTextFormatComboBox {
+        SAKTextFormatComboBox {
             id: textFormatComboBox
             settingKey: settingKeys.storerTextFormat
             Layout.fillWidth: true
@@ -73,13 +73,13 @@ EDGroupBox {
             }
         }
 
-        EDButton {
+        SAKButton {
             text: qsTr("Select")
             Layout.columnSpan: 2
             Layout.fillWidth: true
             onClicked: fileDialog.open()
         }
-        EDTextField {
+        SAKTextField {
             id: fileNameTextField
             settingKey: settingKeys.storerFileName
             Layout.columnSpan: 2
@@ -106,4 +106,4 @@ EDGroupBox {
             }
         }
     }
-} // EDGroupBox
+} // SAKGroupBox

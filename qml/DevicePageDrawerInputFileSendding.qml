@@ -5,7 +5,7 @@ import QtQuick.Layouts
 import SAK.Custom
 import "common"
 
-EDGroupBox {
+SAKGroupBox {
     title: qsTr("File sending")
 
     QtObject {
@@ -18,29 +18,29 @@ EDGroupBox {
     GridLayout {
         columns: 2
         anchors.fill: parent
-        EDLabel {
+        SAKLabel {
             text: qsTr("Frame length(byte)")
         }
-        EDSpinBox {
+        SAKSpinBox {
             settingKey: settingKeys.inputFileSendingFrameLength
             Layout.fillWidth: true
         }
-        EDLabel {
+        SAKLabel {
             text: qsTr("Frame interval(ms)")
         }
-        EDSpinBox {
+        SAKSpinBox {
             settingKey: settingKeys.inputFileSendingFrameInterval
             Layout.fillWidth: true
         }
-        EDButton {
+        SAKButton {
             text: qsTr("SelectFile")
             Layout.fillWidth: true
         }
-        EDButton {
+        SAKButton {
             text: qsTr("StartSending");
             Layout.fillWidth: true
         }
-        EDTextField {
+        SAKTextField {
             settingKey: settingKeys.inputFileSendingFileName
             placeholderText: qsTr("File name")
             Layout.fillWidth: true
@@ -51,4 +51,4 @@ EDGroupBox {
             Layout.columnSpan: 2
         }
     }
-} // EDGroupBox
+} // SAKGroupBox

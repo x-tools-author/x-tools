@@ -5,20 +5,20 @@ import QtQuick.Controls
 import SAK.Custom
 import "common"
 
-EDPane {
+SAKPane {
     id: root
     ScrollView {
         anchors.fill: parent
         ColumnLayout {
-            EDLabel {
+            SAKLabel {
                 text: qsTr("General")
                 font.bold: true
             }
-            EDLabel {
+            SAKLabel {
                 id: dpiLabel
                 text: qsTr("High dpi scale factor rounding policy (need to reboot the app)")
             }
-            EDComboBox {
+            SAKComboBox {
                 id: hidComboBox
                 textRole: "text"
                 valueRole: "value"
@@ -33,13 +33,13 @@ EDPane {
                 }
                 property string detail: hidListModel.get(currentIndex).detail
             }
-            EDLabel {
+            SAKLabel {
                 text: String("(%1)").arg(hidComboBox.detail)
             }
-            EDLabel {
+            SAKLabel {
                 text: qsTr("UI")
             }
-            EDComboBox {
+            SAKComboBox {
                 model: [qsTr("Classical"), qsTr("Modern")]
                 onActivated: {
                     if (currentIndex === 0) {
@@ -55,10 +55,10 @@ EDPane {
                     }
                 }
             }
-            EDLabel {
+            SAKLabel {
                 text: qsTr("Language")
             }
-            EDComboBox {
+            SAKComboBox {
                 textRole: "text"
                 valueRole: "value"
                 settingKey: "language"
@@ -68,24 +68,24 @@ EDPane {
                 }
                 onActivated: sakI18n.installTranslator(currentValue)
             }
-            EDLabel {
+            SAKLabel {
                 text: qsTr("Font Family")
                 visible: false
             }
-            EDFontFamiliesComboBox {
+            SAKFontFamiliesComboBox {
                 settingKey: "fontFamily"
                 //Layout.fillWidth: true
                 onActivated: sakInterface.setAppFont(currentText)
                 visible: false
             }
-            EDLabel {
+            SAKLabel {
                 text: qsTr("Theme")
                 font.bold: true
             }
-            EDLabel {
+            SAKLabel {
                 text: qsTr("Application theme")
             }
-            EDComboBox {
+            SAKComboBox {
                 textRole: "text"
                 valueRole: "value"
                 settingKey: mainWindow.keysObj.materialTheme
@@ -99,20 +99,20 @@ EDPane {
             }
             Repeater {
                 model: [
-                    [qsTr("Accent color"), EDMaterialColors.Option.MaterialAccent],
-                    [qsTr("Primary color"), EDMaterialColors.Option.MaterialPrimary]
+                    [qsTr("Accent color"), SAKMaterialColors.Option.MaterialAccent],
+                    [qsTr("Primary color"), SAKMaterialColors.Option.MaterialPrimary]
                 ]
                 Column {
-                    EDLabel {
+                    SAKLabel {
                         text: modelData[0]
                     }
-                    EDMaterialColors { option: modelData[1] }
+                    SAKMaterialColors { option: modelData[1] }
                 }
             }
-            EDLabel {
+            SAKLabel {
                 text: qsTr("Reset accent color and primary to default")
             }
-            EDButton {
+            SAKButton {
                 text: qsTr("Reset")
                 onClicked: {
                     edMaterialPrimary = Material.color(Material.Indigo)

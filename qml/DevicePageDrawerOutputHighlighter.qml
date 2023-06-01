@@ -5,7 +5,7 @@ import QtQuick.Layouts
 import SAK.Custom
 import "common"
 
-EDGroupBox {
+SAKGroupBox {
     id: root
     title: qsTr("Highlighter")
     Layout.fillWidth: true
@@ -21,7 +21,7 @@ EDGroupBox {
     GridLayout {
         anchors.fill: parent
         columns: 2
-        EDTextField {
+        SAKTextField {
             id: keyWordTextField
             placeholderText: qsTr("Key word")
             Layout.fillWidth: true
@@ -31,11 +31,11 @@ EDGroupBox {
                 }
             }
         }
-        EDButton {
+        SAKButton {
             text: qsTr("Append")
             onClicked: appendKeyWord()
         }
-        EDLabel {
+        SAKLabel {
             text: qsTr("Double click to delete key word")
             Layout.fillWidth: true
             Layout.columnSpan: 2
@@ -46,7 +46,7 @@ EDGroupBox {
             Layout.fillWidth: true
             Repeater {
                 model: ListModel { id: keyWordListModel }
-                EDLabel {
+                SAKLabel {
                     text: keyWord
                     MouseArea {
                         anchors.fill: parent

@@ -65,7 +65,7 @@ Item {
                         [qsTr("MS"), groupName + "/outputShowMS"],
                         [qsTr("Wrap"), groupName + "/outputShowWrap"]
                     ]
-                    EDCheckBox {
+                    SAKCheckBox {
                         id: cbCheckBox
                         text: modelData[0]
                         checked: true
@@ -93,28 +93,28 @@ Item {
                     }
                 }
                 Item { Layout.fillWidth: true }
-                EDTextFormatComboBox {
+                SAKTextFormatComboBox {
                     id: outputTextFormatComboBox
                     tips: qsTr("Output text format")
                     settingKey: groupName + "outputTextFromat"
                 }
-                EDButton {
+                SAKButton {
                     icon.source: "qrc:/res/icon/IconClear.svg"
                     onClicked: outputTextArea.clear()
                 }
-                EDButton {
+                SAKButton {
                     icon.source: "qrc:/res/icon/IconSettings.svg"
                     onClicked: root.invokeOpenDrawer(1)
                 }
             }
-            EDPane {
+            SAKPane {
                 padding: 0
                 Layout.fillHeight: true
                 Layout.fillWidth: true
                 ScrollView {
                     padding: 0
                     anchors.fill: parent
-                    EDTextArea {
+                    SAKTextArea {
                         padding: 0
                         id: outputTextArea
                         width: parent.width
@@ -133,7 +133,7 @@ Item {
             }
         }
     }
-    EDHorizontalLine {
+    SAKHorizontalLine {
         anchors.bottom: inputPane.top
     }
     Item {
@@ -150,7 +150,7 @@ Item {
             anchors.right: parent.right
             RowLayout {
                 Layout.fillWidth: true
-                EDComboBox {
+                SAKComboBox {
                     id: intervalComboBox
                     enabled: communicationTool ? communicationTool.isWorking : null
                     tips: qsTr("Cycle sending interval")
@@ -170,12 +170,12 @@ Item {
                         }
                     }
                 }
-                EDTextFormatComboBox {
+                SAKTextFormatComboBox {
                     id: inputTextFormatComboBox
                     tips: qsTr("Input text format")
                     settingKey: groupName + "/inputTextFormat"
                 }
-                EDComboBox {
+                SAKComboBox {
                     id: inputComboBox
                     Layout.fillWidth: true
                     textRole: keysObj.itemText
@@ -214,7 +214,7 @@ Item {
                         }
                     }
                 }
-                EDButton {
+                SAKButton {
                     icon.source: "qrc:/res/icon/IconList.svg"
                     onClicked: menu.resetMenu()
                     Menu {
@@ -230,11 +230,11 @@ Item {
                         }
                     }
                 }
-                EDButton {
+                SAKButton {
                     icon.source: "qrc:/res/icon/IconSettings.svg"
                     onClicked: root.invokeOpenDrawer(2)
                 }
-                EDButton {
+                SAKButton {
                     id: sendButton
                     text: qsTr("Send")
                     onClicked: root.invokeSend()

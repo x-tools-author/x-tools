@@ -3,48 +3,48 @@ import QtQuick.Layouts
 
 import "common"
 
-EDPane {
+SAKPane {
     id: root
     contentItem: Item {
         GridLayout {
                 columns: 2
-                EDLabel {
+                SAKLabel {
                     text: qsTr("Version:")
                 }
-                EDLabel {
+                SAKLabel {
                     text: Application.version
                 }
-                EDLabel {
+                SAKLabel {
                     text: qsTr("Report a bug:")
                 }
-                EDLabel {
+                SAKLabel {
                     text: "wuuhaii@outlook.com"
                 }
-                EDLabel {
+                SAKLabel {
                     text: qsTr("Build info:")
                 }
-                EDLabel {
+                SAKLabel {
                     text: sakInterface.buildDateTime(sakInterface.dateFormat() + " " + sakInterface.timeFormat())
                 }
-                EDLabel {
+                SAKLabel {
                     text: qsTr("User QQ Group:")
                 }
                 Row {
                     spacing: 8
-                    EDLabel {
+                    SAKLabel {
                         id: qqGroupLabel
                         text: "952218522"
                         anchors.verticalCenter: parent.verticalCenter
                     }
-                    EDButton {
+                    SAKButton {
                         text: qsTr("Copy")
                         onClicked: sakInterface.setTextToClipboard(qqGroupLabel.text)
                     }
                 }
-                EDLabel {
+                SAKLabel {
                     text: qsTr("Copyright information:")
                 }
-                EDLabel {
+                SAKLabel {
                     text: String("Copyright 2023-%1 Qsaker. All rights reserved.").arg(sakInterface.buildDateTime("yyyy"))
                 }
 

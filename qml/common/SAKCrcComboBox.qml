@@ -2,7 +2,7 @@ import QtQuick
 
 import SAK.Custom
 
-EDComboBox {
+SAKComboBox {
     id: root
     textRole: "text"
     valueRole: "value"

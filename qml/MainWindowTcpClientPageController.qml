@@ -5,7 +5,7 @@ import QtQuick.Controls
 import SAK.Custom
 import "common"
 
-EDPane {
+SAKPane {
     id: root
     padding: 0
 

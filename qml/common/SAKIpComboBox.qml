@@ -2,7 +2,7 @@ import QtQuick
 
 import SAK.Custom
 
-EDComboBox {
+SAKComboBox {
     id: root
     editable: true
     model: networkInterface.ipList

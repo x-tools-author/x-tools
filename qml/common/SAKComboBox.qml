@@ -38,11 +38,11 @@ ComboBox {
         updateSettings()
     }
 
-    EDPopup {
+    SAKPopup {
         id: tipsPopup
         dim: false
         modal: false
-        contentItem: EDLabel {
+        contentItem: SAKLabel {
             text: tips
         }
     }

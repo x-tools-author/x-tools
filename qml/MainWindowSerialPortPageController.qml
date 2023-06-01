@@ -5,7 +5,7 @@ import QtQuick.Controls
 import SAK.Custom
 import "common"
 
-EDPane {
+SAKPane {
     id: root
     padding: 0
 
@@ -50,16 +50,16 @@ EDPane {
     GridLayout {
         columns: 2
         anchors.fill: parent
-        EDLabel {
+        SAKLabel {
             Layout.columnSpan: 2
             text: qsTr("Serial port settings")
             font.weight: Font.Bold
             color: Material.foreground
         }
-        EDLabel {
+        SAKLabel {
             text: qsTr("Port names")
         }
-        EDComboBox {
+        SAKComboBox {
             id: portNameComboBox
             model: spController.portNames
             enabled: !devIsWorking
@@ -76,10 +76,10 @@ EDPane {
                 }
             }
         }
-        EDLabel {
+        SAKLabel {
             text: qsTr("Baud rate")
         }
-        EDComboBox {
+        SAKComboBox {
             id: baudRateComboBox
             model: spController.baudRates
             editable: bdCheckBox.checked
@@ -114,7 +114,7 @@ EDPane {
         Label {
             text: qsTr("Stop bits")
         }
-        EDComboBox {
+        SAKComboBox {
             id: stopBitsComboBox
             valueRole: "value"
             textRole: "text"
@@ -138,10 +138,10 @@ EDPane {
                 }
             }
         }
-        EDLabel {
+        SAKLabel {
             text: qsTr("Data bits")
         }
-        EDComboBox {
+        SAKComboBox {
             id: dataBitsComboBox
             valueRole: "value"
             textRole: "text"
@@ -166,10 +166,10 @@ EDPane {
                 }
             }
         }
-        EDLabel {
+        SAKLabel {
             text: qsTr("Parity")
         }
-        EDComboBox {
+        SAKComboBox {
             id: parityComboBox
             valueRole: "value"
             textRole: "text"
@@ -195,10 +195,10 @@ EDPane {
                 }
             }
         }
-        EDLabel {
+        SAKLabel {
             text: qsTr("Flow control")
         }
-        EDComboBox {
+        SAKComboBox {
             id: flowControlComboBox
             valueRole: "value"
             textRole: "text"
@@ -223,7 +223,7 @@ EDPane {
                 }
             }
         }
-        EDCheckBox {
+        SAKCheckBox {
             id: bdCheckBox
             text: qsTr("Custom baud rate")
             enabled: !devIsWorking
@@ -237,7 +237,7 @@ EDPane {
                 bdCheckBox.checked = customBaudRate === edTrue ? true : false
             }
         }
-        EDCheckBox {
+        SAKCheckBox {
             id: ignoredBusyDeviceCheckBox
             text: qsTr("Ignore busy device")
             enabled: !devIsWorking
@@ -253,7 +253,7 @@ EDPane {
                 ignoredBusyDeviceCheckBox.checked = ignoredBusyDevice === edTrue ? true : false
             }
         }
-        EDCheckBox {
+        SAKCheckBox {
             id: autoUpdatePortNameCheckBox
             text: qsTr("Auto update port names")
             enabled: !devIsWorking

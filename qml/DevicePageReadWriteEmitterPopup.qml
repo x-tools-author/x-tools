@@ -5,7 +5,7 @@ import QtQuick.Layouts
 import SAK.Custom
 import "common"
 
-EDPopup {
+SAKPopup {
     id: root
 
     readonly property string itemEnable: emitterTool.itemEnable
@@ -25,96 +25,96 @@ EDPopup {
         GridLayout {
             Layout.fillWidth: true
             columns: 2
-            EDCheckBox {
+            SAKCheckBox {
                 id: itemEnableCheckBox
                 text: qsTr("Enable the item")
                 Layout.fillWidth: true
                 Layout.columnSpan: 2
             }
-            EDLabel {
+            SAKLabel {
                 text: qsTr("Description")
             }
-            EDTextField {
+            SAKTextField {
                 id: itemDescriptionTextField
                 Layout.fillWidth: true
             }
-            EDLabel {
+            SAKLabel {
                 text: qsTr("Item text format")
                 Layout.fillWidth: true
             }
-            EDTextFormatComboBox {
+            SAKTextFormatComboBox {
                 id: itemTextFormatComboBox
                 Layout.fillWidth: true
                 onActivated: itemTextTextField.clear()
             }
-            EDLabel {
+            SAKLabel {
                 text: qsTr("Item escape")
                 Layout.fillWidth: true
             }
-            EDEscComboBox {
+            SAKEscComboBox {
                 id: itemEscapeCharacterComboBox
                 Layout.fillWidth: true
             }
-            EDLabel {
+            SAKLabel {
                 text: qsTr("Item prefix")
                 Layout.fillWidth: true
             }
-            EDEscComboBox {
+            SAKEscComboBox {
                 id: itemPrefixComboBox
                 Layout.fillWidth: true
             }
-            EDLabel {
+            SAKLabel {
                 text: qsTr("Item suffix")
                 Layout.fillWidth: true
             }
-            EDEscComboBox {
+            SAKEscComboBox {
                 id: itemSuffixComboBox
                 Layout.fillWidth: true
             }
-            EDLabel {
+            SAKLabel {
                 text: qsTr("Item interval")
                 Layout.fillWidth: true
             }
-            EDSpinBox {
+            SAKSpinBox {
                 id: itemIntervalSpinBox
                 Layout.fillWidth: true
             }
-            EDLabel {
+            SAKLabel {
                 text: qsTr("Item text")
                 Layout.fillWidth: true
                 Layout.columnSpan: 2
             }
-            EDTextField {
+            SAKTextField {
                 id: itemTextTextField
                 validator: itemTextFormatComboBox.currentValidator
                 Layout.fillWidth: true
                 Layout.minimumWidth: 200
                 Layout.columnSpan: 2
             }
-            EDCheckBox {
+            SAKCheckBox {
                 id: itemCrcEnableCheckBox
                 text: qsTr("Append CRC data")
                 Layout.fillWidth: true
                 Layout.columnSpan: 2
             }
-            EDLabel {
+            SAKLabel {
                 text: qsTr("CRC arithmetic")
             }
-            EDCrcComboBox {
+            SAKCrcComboBox {
                 id: itemCrcArithmeticComboBox
                 Layout.fillWidth: true
             }
-            EDLabel {
+            SAKLabel {
                 text: qsTr("CRC start index")
             }
-            EDSpinBox {
+            SAKSpinBox {
                 id: itemCrcStartIndexSpinBox
                 Layout.fillWidth: true
             }
-            EDLabel {
+            SAKLabel {
                 text: qsTr("CRC end index")
             }
-            EDSpinBox {
+            SAKSpinBox {
                 id: itemCrcEndIndexSpinBox
                 Layout.fillWidth: true
             }
@@ -125,7 +125,7 @@ EDPopup {
             Layout.columnSpan: 2
             Repeater {
                 model: [qsTr("Cancle"), qsTr("Apply")]
-                EDButton {
+                SAKButton {
                     text: modelData
                     width: Math.round((parent.width - parent.spacing)/2)
                     onClicked: {

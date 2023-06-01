@@ -77,12 +77,12 @@ Item {
         RowLayout {
             Layout.fillWidth: true
             Layout.columnSpan: 2
-            EDButton {
+            SAKButton {
                 text: qsTr("Conf")
                 Layout.fillWidth: true
                 onClicked: root.invokeOpenDrawer(0)
             }
-            EDButton {
+            SAKButton {
                 text: {
                     if (communicationTool) {
                         return communicationTool.isWorking
@@ -103,17 +103,17 @@ Item {
             }
         }
 
-        EDGroupBox {
+        SAKGroupBox {
             title: qsTr("Output settings")
             Layout.fillWidth: true
             visible: false
             GridLayout {
                 anchors.fill: parent
                 columns: 2
-                EDLabel {
+                SAKLabel {
                     text: qsTr("Outut format")
                 }
-                EDTextFormatComboBox {
+                SAKTextFormatComboBox {
                     id: outputFormatComboBox
                     Layout.fillWidth: true
                     settingKey: settingKeys.outputFormat
@@ -121,12 +121,12 @@ Item {
                 RowLayout {
                     Layout.fillWidth: true
                     Layout.columnSpan: 2
-                    EDButton {
+                    SAKButton {
                         text: qsTr("Conf")
                         Layout.fillWidth: true
                         onClicked: root.invokeOpenDrawer(1)
                     }
-                    EDButton {
+                    SAKButton {
                         text: qsTr("Clear")
                         Layout.fillWidth: true
                         onClicked: root.invokeClearOutput()
@@ -139,17 +139,17 @@ Item {
             Layout.columnSpan: 2
             Layout.fillHeight: true
         }
-        EDGroupBox {
+        SAKGroupBox {
             title: qsTr("Input settings")
             Layout.fillWidth: true
             visible: false
             GridLayout {
                 anchors.fill: parent
                 columns: 2
-                EDLabel {
+                SAKLabel {
                     text: qsTr("Timer sending")
                 }
-                EDComboBox {
+                SAKComboBox {
                     id: intervalComboBox
                     enabled: communicationTool ? communicationTool.isWorking : null
                     model: [
@@ -170,10 +170,10 @@ Item {
                         }
                     }
                 }
-                EDLabel {
+                SAKLabel {
                     text: qsTr("Input format")
                 }
-                EDComboBox {
+                SAKComboBox {
                     id: inputFormatComboBox
                     model: inputTextFormatListModel
                     textRole: "text"
@@ -188,7 +188,7 @@ Item {
                     Layout.columnSpan: 2
                     Repeater {
                         model: [qsTr("Conf"), qsTr("Send")]
-                        EDButton {
+                        SAKButton {
                             text: modelData
                             //width: (parent.width - contentGridLayout.columnSpacing)/2
                             enabled: {

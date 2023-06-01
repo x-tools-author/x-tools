@@ -5,7 +5,7 @@ import QtQuick.Layouts
 import SAK.Custom
 import "common"
 
-EDGroupBox {
+SAKGroupBox {
     id: root
     title: qsTr("Data preprocessor")
 
@@ -23,26 +23,26 @@ EDGroupBox {
     GridLayout {
         columns: 2
         anchors.fill: parent
-        EDLabel {
+        SAKLabel {
             text: qsTr("Prefix")
         }
-        EDRNComboBox {
+        SAKRNComboBox {
             id: prefixComboBox
             settingKey: settingKeys.inputPreprocessorPrefix
             Layout.fillWidth: true
         }
-        EDLabel {
+        SAKLabel {
             text: qsTr("Suffix")
         }
-        EDRNComboBox {
+        SAKRNComboBox {
             id: suffixComboBox
             settingKey: settingKeys.inputPreprocessorSuffix
             Layout.fillWidth: true
         }
-        EDLabel {
+        SAKLabel {
             text: qsTr("Escape character")
         }
-        EDEscComboBox {
+        SAKEscComboBox {
             id: escapeCharacterComboBox
             settingKey: settingKeys.inputPreprocessorEscapeCharacter
             Layout.fillWidth: true

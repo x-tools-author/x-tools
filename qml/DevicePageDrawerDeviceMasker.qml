@@ -5,7 +5,7 @@ import QtQuick.Layouts
 import SAK.Custom
 import "common"
 
-EDGroupBox {
+SAKGroupBox {
     id: maskerGroupBox
     title: qsTr("Masker")
     padding: 8
@@ -27,7 +27,7 @@ EDGroupBox {
         columns: 2
         anchors.fill: parent
 
-        EDCheckBox {
+        SAKCheckBox {
             id: rxMaskerCheckBox
             text: qsTr("Enable reading masker")
             settingKey: settingKeys.maskerRxEnable
@@ -36,7 +36,7 @@ EDGroupBox {
             Component.onCompleted: setMaskerEnable(rxMaskerCheckBox.checked, rxMasker)
         }
 
-        EDCheckBox {
+        SAKCheckBox {
             id: txMaskerCheckBox
             text: qsTr("Enable writing masker")
             settingKey: settingKeys.maskerTxEnable
@@ -45,11 +45,11 @@ EDGroupBox {
             Component.onCompleted: setMaskerEnable(txMaskerCheckBox.checked, txMasker)
         }
 
-        EDLabel {
+        SAKLabel {
             text: qsTr("Reading mask")
         }
 
-        EDTextField {
+        SAKTextField {
             id: rxMaskerField
             validator: hexREV
             maximumLength: 2
@@ -59,10 +59,10 @@ EDGroupBox {
             Component.onCompleted: setMaskerMask(rxMaskerField.text, rxMasker)
         }
 
-        EDLabel {
+        SAKLabel {
             text: qsTr("Writing mask")
         }
-        EDTextField {
+        SAKTextField {
             id: txMaskerField
             validator: hexREV
             maximumLength: 2

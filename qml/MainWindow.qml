@@ -164,7 +164,7 @@ Window {
                     pageIndex = index > (fixedpage - 1) ? 0 : index
                 }
             }
-            EDVerticalLine { anchors.right: parent.right }
+            SAKVerticalLine { anchors.right: parent.right }
         }
         MainWindowTitleBar {
             id: titleBar
@@ -228,5 +228,5 @@ Window {
                 id: settingsPage
             }
         }
-    } // EDPane
+    } // SAKPane
 }

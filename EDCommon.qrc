@@ -5,44 +5,44 @@
         <file>qml/common/SAKDecRegularExpressionValidator.qml</file>
         <file>qml/common/SAKHexRegularExpressionValidator.qml</file>
         <file>qml/common/SAKAsciiRegularExpressionValidator.qml</file>
-        <file>qml/common/EDButton.qml</file>
-        <file>qml/common/EDCheckBox.qml</file>
-        <file>qml/common/EDComboBox.qml</file>
-        <file>qml/common/EDGroupBox.qml</file>
-        <file>qml/common/EDLabel.qml</file>
-        <file>qml/common/EDText.qml</file>
-        <file>qml/common/EDTextArea.qml</file>
-        <file>qml/common/EDTextField.qml</file>
-        <file>qml/common/EDVerticalLine.qml</file>
-        <file>qml/common/EDSpinBox.qml</file>
-        <file>qml/common/EDProgressBar.qml</file>
-        <file>qml/common/EDTextFormatComboBox.qml</file>
-        <file>qml/common/EDCrcComboBox.qml</file>
-        <file>qml/common/EDEscComboBox.qml</file>
-        <file>qml/common/EDRNComboBox.qml</file>
-        <file>qml/common/EDPopup.qml</file>
+        <file>qml/common/SAKButton.qml</file>
+        <file>qml/common/SAKCheckBox.qml</file>
+        <file>qml/common/SAKComboBox.qml</file>
+        <file>qml/common/SAKGroupBox.qml</file>
+        <file>qml/common/SAKLabel.qml</file>
+        <file>qml/common/SAKText.qml</file>
+        <file>qml/common/SAKTextArea.qml</file>
+        <file>qml/common/SAKTextField.qml</file>
+        <file>qml/common/SAKVerticalLine.qml</file>
+        <file>qml/common/SAKSpinBox.qml</file>
+        <file>qml/common/SAKProgressBar.qml</file>
+        <file>qml/common/SAKTextFormatComboBox.qml</file>
+        <file>qml/common/SAKCrcComboBox.qml</file>
+        <file>qml/common/SAKEscComboBox.qml</file>
+        <file>qml/common/SAKRNComboBox.qml</file>
+        <file>qml/common/SAKPopup.qml</file>
         <file>res/icon/IconMenu.svg</file>
-        <file>qml/common/EDHorizontalLine.qml</file>
+        <file>qml/common/SAKHorizontalLine.qml</file>
         <file>res/icon/IconSettings.svg</file>
         <file>res/icon/IconClear.svg</file>
-        <file>qml/common/EDResponseOptionsComboBox.qml</file>
+        <file>qml/common/SAKResponseOptionsComboBox.qml</file>
         <file>res/icon/IconSerialPort.svg</file>
         <file>res/icon/IconHistory.svg</file>
         <file>res/icon/IconList.svg</file>
-        <file>qml/common/EDPane.qml</file>
-        <file>qml/common/EDFontFamiliesComboBox.qml</file>
+        <file>qml/common/SAKPane.qml</file>
+        <file>qml/common/SAKFontFamiliesComboBox.qml</file>
         <file>res/icon/IconAdd.svg</file>
         <file>res/icon/IconInfo.svg</file>
-        <file>qml/common/EDMaterialColors.qml</file>
+        <file>qml/common/SAKMaterialColors.qml</file>
         <file>res/icon/IconTcpClient.svg</file>
         <file>res/icon/IconTcpServer.svg</file>
         <file>res/icon/IconUdpClient.svg</file>
         <file>res/icon/IconUdpServer.svg</file>
         <file>res/icon/IconWebScoketClient.svg</file>
         <file>res/icon/IconWebSocketServer.svg</file>
-        <file>qml/common/EDIpComboBox.qml</file>
-        <file>qml/common/EDToolButton.qml</file>
-        <file>qml/common/EDbleComboBox.qml</file>
+        <file>qml/common/SAKIpComboBox.qml</file>
+        <file>qml/common/SAKToolButton.qml</file>
+        <file>qml/common/SAKBleComboBox.qml</file>
         <file>res/icon/IconBlueTooth.svg</file>
     </qresource>
 </RCC>

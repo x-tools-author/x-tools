@@ -5,7 +5,7 @@ import QtQuick.Controls
 import SAK.Custom
 import "common"
 
-EDPane {
+SAKPane {
     id: root
     padding: 0
 
@@ -31,53 +31,53 @@ EDPane {
         id: contentGridLayout
         columns: 2
         anchors.fill: parent
-        EDLabel {
+        SAKLabel {
             text: qsTr("BLE central settings")
             Layout.columnSpan: 2
         }
-        EDLabel {
+        SAKLabel {
             text: qsTr("Device list")
         }
-        EDbleComboBox {
+        SAKBleComboBox {
             id: namesComboBox
             Layout.fillWidth: true
         }
-        EDLabel {
+        SAKLabel {
             text: qsTr("filter")
         }
-        EDTextField {
+        SAKTextField {
             id: filtterTextField
             settingKey: settingKeys.filter
             Layout.fillWidth: true
             onTextEdited: namesComboBox.bleController.filtter = text
         }
-        EDLabel {
+        SAKLabel {
             text: qsTr("Timeout")
         }
-        EDTextField {
+        SAKTextField {
             id: timeoutSpinBox
             settingKey: settingKeys.timeout
             Layout.fillWidth: true
             onTextEdited: namesComboBox.bleController.timeout = Number(text)
         }
-        EDLabel {
+        SAKLabel {
             text: qsTr("Services")
         }
-        EDComboBox {
+        SAKComboBox {
             id: serviceComboBox
             Layout.fillWidth: true
         }
-        EDLabel {
+        SAKLabel {
             text: qsTr("Characteristics")
         }
-        EDComboBox {
+        SAKComboBox {
             id: characteristicsComboBox
             Layout.fillWidth: true
         }
-        EDLabel {
+        SAKLabel {
             text: qsTr("Writting")
         }
-        EDComboBox {
+        SAKComboBox {
             id: writtingComboBox
             model: [qsTr("Write"), qsTr("Write without Response")]
             Layout.fillWidth: true
@@ -93,7 +93,7 @@ EDPane {
                 model: [
                     qsTr("Notify"), qsTr("Read"),
                 ]
-                EDButton {
+                SAKButton {
                     text: modelData
                     width: (parent.width - btGrid.spacing)/2
                     onClicked: {

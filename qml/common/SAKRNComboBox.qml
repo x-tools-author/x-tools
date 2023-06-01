@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 
-EDComboBox {
+SAKComboBox {
     id: root
     textRole: "text"
     valueRole: "value"

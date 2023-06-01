@@ -3,7 +3,7 @@ import QtQuick.Controls
 
 import "common"
 
-EDPane {
+SAKPane {
     id: root
     padding: 0
 
@@ -14,7 +14,7 @@ EDPane {
     signal invokeClose()
     signal invokeShowWindowed()
 
-    EDLabel {
+    SAKLabel {
         text: "EasyDebug"
         font.pixelSize: 24
         anchors.verticalCenter: parent.verticalCenter
@@ -106,7 +106,7 @@ EDPane {
         }
     }
 
-    EDHorizontalLine {
+    SAKHorizontalLine {
         anchors.bottom: parent.bottom
     }
 }

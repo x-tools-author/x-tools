@@ -5,7 +5,7 @@ import QtQuick.Layouts
 import SAK.Custom
 import "common"
 
-EDGroupBox {
+SAKGroupBox {
     id: analyzerGroupBox
     title: qsTr("Analyzer")
 
@@ -26,7 +26,7 @@ EDGroupBox {
     GridLayout {
         columns: 2
         anchors.fill: parent
-        EDCheckBox {
+        SAKCheckBox {
             id: enableCheckBox
             text: qsTr("Enable frame analyzer")
             settingKey: settingKeys.analyzerEnable
@@ -41,14 +41,14 @@ EDGroupBox {
                 }
             }
         }
-        EDCheckBox {
-            id: fixedCheckBox
+        SAKCheckBox {
+            id: fixsakCheckBox
             text: qsTr("Fixed frame length")
             settingKey: settingKeys.analyzerFrameLengthIsFixed
             Layout.columnSpan: 2
             Layout.fillWidth: true
-            onClicked: setAnalyzerFixed(fixedCheckBox.checked)
-            Component.onCompleted: setAnalyzerFixed(fixedCheckBox.checked)
+            onClicked: setAnalyzerFixed(fixsakCheckBox.checked)
+            Component.onCompleted: setAnalyzerFixed(fixsakCheckBox.checked)
 
             function setAnalyzerFixed(fixed) {
                 if (analyzer) {
@@ -56,10 +56,10 @@ EDGroupBox {
                 }
             }
         }
-        EDLabel {
+        SAKLabel {
             text: qsTr("Frame bytes")
         }
-        EDTextField {
+        SAKTextField {
             id: frameBytesTextField
             settingKey: settingKeys.analyzerFrameLength
             Layout.fillWidth: true
@@ -73,10 +73,10 @@ EDGroupBox {
                 }
             }
         }
-        EDLabel {
+        SAKLabel {
             text: qsTr("Separation mark")
         }
-        EDTextField {
+        SAKTextField {
             id: separationMarkTextField
             settingKey: settingKeys.analyzerFrameSeparationMark
             validator: hexREV
@@ -93,10 +93,10 @@ EDGroupBox {
                 }
             }
         }
-        EDLabel {
+        SAKLabel {
             text: qsTr("Max temp bytes")
         }
-        EDSpinBox {
+        SAKSpinBox {
             id: maxTempBytesTextField
             settingKey: settingKeys.analyzerMaxTempBytes
             value: 1024

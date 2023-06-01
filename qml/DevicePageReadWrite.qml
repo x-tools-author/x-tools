@@ -42,7 +42,7 @@ Item {
                 }
             }
         }
-        EDHorizontalLine {
+        SAKHorizontalLine {
             autoScale: false
             Layout.fillWidth: true
         }

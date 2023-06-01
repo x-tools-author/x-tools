@@ -4,7 +4,7 @@ import QtQuick.Layouts
 
 import "common"
 
-EDGroupBox {
+SAKGroupBox {
     title: qsTr("CRC Parameters")
     Layout.fillWidth: true
 
@@ -22,30 +22,30 @@ EDGroupBox {
     GridLayout {
         columns: 2
         anchors.fill: parent
-        EDCheckBox {
+        SAKCheckBox {
             id: crcEnableCheckBox
             text: qsTr("CRC enable")
             Layout.fillWidth: true
             Layout.columnSpan: 2
         }
-        EDLabel {
+        SAKLabel {
             text: qsTr("CRC arithmetic")
         }
-        EDCrcComboBox {
+        SAKCrcComboBox {
             id: crcArithmeticComboBox
             Layout.fillWidth: true
         }
-        EDLabel {
+        SAKLabel {
             text: qsTr("CRC start index")
         }
-        EDSpinBox {
+        SAKSpinBox {
             id: crcStartIndexSpinBox
             Layout.fillWidth: true
         }
-        EDLabel {
+        SAKLabel {
             text: qsTr("CRC end index")
         }
-        EDSpinBox {
+        SAKSpinBox {
             id: crcEndIndexSpinBox
             Layout.fillWidth: true
         }

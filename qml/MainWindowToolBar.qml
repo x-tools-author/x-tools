@@ -47,7 +47,7 @@ ToolBar {
                 ["qrc:/res/icon/IconWebScoketClient.svg", EDToolsFactory.WebSocketClientTool, qsTr("WebSocket Client"), "MainWindowWebSocketClientPage.qml"],
                 ["qrc:/res/icon/IconWebSocketServer.svg", EDToolsFactory.WebSocketServerTool, qsTr("WebSocket Server"), "MainWindowWebSocketServerPage.qml"]
             ]
-            EDToolButton {
+            SAKToolButton {
                 id: bt
                 checkable: true
                 icon.source: modelData[0]

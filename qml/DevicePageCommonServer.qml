@@ -24,43 +24,43 @@ GridLayout {
         readonly property string messageType: "messageType"
     }
 
-    EDLabel {
+    SAKLabel {
         id: titleLabel
         Layout.columnSpan: 2
         font.weight: Font.Bold
     }
-    EDLabel {
+    SAKLabel {
         text: qsTr("Address")
     }
-    EDIpComboBox {
+    SAKIpComboBox {
         id: addressComboBox
         editable: true
         settingKey: settingKeys.serverIp
         enabled: !deviceIsWorking
         Layout.fillWidth: true
     }
-    EDLabel {
+    SAKLabel {
         text: qsTr("Port")
     }
-    EDTextField {
+    SAKTextField {
         id: portTextField
         settingKey: settingKeys.serverPort
         enabled: !deviceIsWorking
         Layout.fillWidth: true
     }
-    EDLabel {
+    SAKLabel {
         text: qsTr("Clients")
     }
-    EDComboBox {
+    SAKComboBox {
         id: clientsComboBox
         model: clients
         Layout.fillWidth: true
     }
-    EDLabel {
+    SAKLabel {
         text: qsTr("Message")
         visible: showWebSocketInfo
     }
-    EDComboBox {
+    SAKComboBox {
         id: messageComboBox
         model: ["Bin", "Text"]
         visible: showWebSocketInfo
