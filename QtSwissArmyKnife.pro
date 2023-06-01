@@ -88,8 +88,8 @@ TRANSLATIONS  += \
 
 RESOURCES += \
     SAKResources.qrc \
-    EDCommon.qrc \
-    Resource.qrc
+    SAKQmlResources.qrc \
+    SAKWidgetResources.qrc
 
 INCLUDEPATH += \
     src \
