@@ -304,6 +304,28 @@ void SAKToolBoxUi::onBytesRead(const QByteArray &bytes,
     output2ui(bytes, context, true);
 }
 
+void SAKToolBoxUi::onInputTextChanged()
+{
+    int format = ui->comboBoxInputFormat->currentData().toInt();
+    QString input = ui->comboBoxInputText->currentText();
+    auto ctx = mToolBoxUiParameters->parameterContext();
+    int esc = ctx.input.preprocessing.escapeCharacter;
+
+    input = SAKDataStructure::cookedString(esc, input);
+    QByteArray bytes = SAKInterface::string2array(input, format);
+    int arithmetic = ctx.input.crc.arithmetic;
+    int startIndex = ctx.input.crc.startIndex;
+    int endIndex = ctx.input.crc.endIndex;
+    bool bigEndian = ctx.input.crc.bigEndian;
+    SAKCrcInterface crcInterface;
+    QByteArray crcBytes = crcInterface.calculateBytes(
+        bytes, arithmetic, startIndex, endIndex, bigEndian);
+
+    QString crc = QString::fromLatin1(crcBytes.toHex()).toUpper();
+    crc = "0x" + crc;
+    ui->labelCrc->setText(crc);
+}
+
 void SAKToolBoxUi::init()
 {
     mSettingsKey.tabIndex = settingsGroup() + "/tabIndex";
@@ -400,12 +422,12 @@ void SAKToolBoxUi::initSettingsOutput()
 {
     QString group = settingsGroup();
     ui->comboBoxOutputFormat->setGroupKey(group + "/output", "outputFormat");
-    ui->checkBoxOutputRx->setGroupKey(group + "/output", "outputRx");
-    ui->checkBoxOutputTx->setGroupKey(group + "/output", "outputTx");
-    ui->checkBoxOutputDate->setGroupKey(group + "/output", "outputDate");
-    ui->checkBoxOutputTime->setGroupKey(group + "/output", "outputTime");
-    ui->checkBoxOutputMs->setGroupKey(group + "/output", "outputMs");
-    ui->checkBoxOutputWrap->setGroupKey(group + "/output", "outputWrap");
+    ui->checkBoxOutputRx->setGroupKey(    group + "/output", "outputRx");
+    ui->checkBoxOutputTx->setGroupKey(    group + "/output", "outputTx");
+    ui->checkBoxOutputDate->setGroupKey(  group + "/output", "outputDate");
+    ui->checkBoxOutputTime->setGroupKey(  group + "/output", "outputTime");
+    ui->checkBoxOutputMs->setGroupKey(    group + "/output", "outputMs");
+    ui->checkBoxOutputWrap->setGroupKey(  group + "/output", "outputWrap");
 
 #if 1
     ui->checkBoxOutputRx->setChecked(true);
@@ -442,6 +464,8 @@ void SAKToolBoxUi::initSignalsInput()
             this, &SAKToolBoxUi::onPushButtonInputSendClicked);
     connect(ui->comboBoxInputFormat, &QComboBox::activated,
             this, &SAKToolBoxUi::onComboBoxInputFormatActivated);
+    connect(ui->comboBoxInputText, &QComboBox::currentTextChanged,
+            this, &SAKToolBoxUi::onInputTextChanged);
 }
 
 void SAKToolBoxUi::initSignalsOutput()

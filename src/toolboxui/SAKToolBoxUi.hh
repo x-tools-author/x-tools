@@ -66,10 +66,9 @@ private:
 
     // slots
     void onIsWorkingChanged();
-    void onBytesWritten(const QByteArray &bytes,
-                               const QVariant &context);
-    void onBytesRead(const QByteArray &bytes,
-                                const QVariant &context);
+    void onBytesWritten(const QByteArray &bytes, const QVariant &context);
+    void onBytesRead(const QByteArray &bytes, const QVariant &context);
+    void onInputTextChanged();
 
 private:
     void init();
