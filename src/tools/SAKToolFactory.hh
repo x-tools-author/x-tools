@@ -34,7 +34,8 @@ public:
         WebSocketClientTool,
         WebSocketServerTool,
         BleCentralTool,
-        BlePeriheral
+        BlePeriheral,
+        StatistiticianTool
     };
     Q_ENUM(ToolsType)
 

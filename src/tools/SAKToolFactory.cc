@@ -22,6 +22,7 @@
 #include "SAKVelometerTool.hh"
 #include "SAKBleCentralTool.hh"
 #include "SAKSerialPortTool.hh"
+#include "SAKStatisticianTool.hh"
 #include "SAKWebSocketClientTool.hh"
 #include "SAKWebSocketServerTool.hh"
 
@@ -70,6 +71,8 @@ SAKBaseTool *SAKToolFactory::createTool(int type)
         tool = new SAKWebSocketServerTool();
     } else if (BleCentralTool == type) {
         tool = new SAKBleCentralTool();
+    } else if (StatistiticianTool == type) {
+        tool = new SAKStatisticianTool();
     } else {
         qWarning() << "Unknown tool type: " << type;
     }

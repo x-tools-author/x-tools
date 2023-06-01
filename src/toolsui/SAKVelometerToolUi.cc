@@ -49,6 +49,4 @@ void SAKVelometerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
             this, [=](const QString &v){
         ui->labelVelocity->setText(v);
     });
-
-    ui->labelName->setText(tool->toolName());
 }

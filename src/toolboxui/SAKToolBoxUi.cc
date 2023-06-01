@@ -478,6 +478,10 @@ void SAKToolBoxUi::initTools()
                                       settingsGroup());
     ui->widgetTxVelometer->initialize(mToolBox->getTxVelometerTool(),
                                       settingsGroup());
+    ui->widgetRxStatistician->initialize(mToolBox->getRxStatisticianTool(),
+                                         settingsGroup());
+    ui->widgetTxStatistician->initialize(mToolBox->getTxStatisticianTool(),
+                                         settingsGroup());
 
     mEmitterToolUi = new SAKEmitterToolUi();
     ui->tabEmiter->setLayout(new QVBoxLayout());

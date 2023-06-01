@@ -294,7 +294,51 @@
           </widget>
          </item>
          <item>
+          <widget class="QLabel" name="label_2">
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+	color: &quot;blue&quot;
+}</string>
+           </property>
+           <property name="text">
+            <string>Rx</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="SAKStatisticianToolUi" name="widgetRxStatistician" native="true">
+           <property name="minimumSize">
+            <size>
+             <width>20</width>
+             <height>0</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="SAKVelometerToolUi" name="widgetTxVelometer" native="true">
+           <property name="minimumSize">
+            <size>
+             <width>20</width>
+             <height>0</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_11">
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+	color: &quot;green&quot;
+}</string>
+           </property>
+           <property name="text">
+            <string>Tx</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="SAKStatisticianToolUi" name="widgetTxStatistician" native="true">
            <property name="minimumSize">
             <size>
              <width>20</width>
@@ -356,6 +400,12 @@
    <class>SAKVelometerToolUi</class>
    <extends>QWidget</extends>
    <header location="global">SAKVelometerToolUi.hh</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>SAKStatisticianToolUi</class>
+   <extends>QWidget</extends>
+   <header location="global">SAKStatisticianToolUi.hh</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

@@ -15,6 +15,7 @@ HEADERS += \
     $$PWD/SAKSerialPortToolUi.hh \
     $$PWD/SAKSocketClientToolUi.hh \
     $$PWD/SAKSocketServerToolUi.hh \
+    $$PWD/SAKStatisticianToolUi.hh \
     $$PWD/SAKStorerToolUi.hh \
     $$PWD/SAKTableViewToolUi.hh \
     $$PWD/SAKVelometerToolUi.hh
@@ -34,6 +35,7 @@ SOURCES += \
     $$PWD/SAKSerialPortToolUi.cc \
     $$PWD/SAKSocketClientToolUi.cc \
     $$PWD/SAKSocketServerToolUi.cc \
+    $$PWD/SAKStatisticianToolUi.cc \
     $$PWD/SAKStorerToolUi.cc \
     $$PWD/SAKTableViewToolUi.cc \
     $$PWD/SAKVelometerToolUi.cc
@@ -48,5 +50,6 @@ FORMS += \
     $$PWD/SAKSerialPortToolUi.ui \
     $$PWD/SAKSocketClientToolUi.ui \
     $$PWD/SAKSocketServerToolUi.ui \
+    $$PWD/SAKStatisticianToolUi.ui \
     $$PWD/SAKStorerToolUi.ui \
     $$PWD/SAKVelometerToolUi.ui
