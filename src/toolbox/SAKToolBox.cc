@@ -19,13 +19,13 @@ SAKToolBox::SAKToolBox(QObject *parent)
     };
 
     SAKBaseTool *tool = createTool(SAKToolFactory::MaskerTool);
-    mInputMaskerTool = qobject_cast<SAKMaskerTool*>(tool);
+    mTxMaskerTool = qobject_cast<SAKMaskerTool*>(tool);
     tool = createTool(SAKToolFactory::MaskerTool);
-    mOutputMaskerTool = qobject_cast<SAKMaskerTool*>(tool);
+    mRxMaskerTool = qobject_cast<SAKMaskerTool*>(tool);
     tool = createTool(SAKToolFactory::AnalyzerTool);
-    mInputAnalyzerTool = qobject_cast<SAKAnalyzerTool*>(tool);
+    mTxAnalyzerTool = qobject_cast<SAKAnalyzerTool*>(tool);
     tool = createTool(SAKToolFactory::AnalyzerTool);
-    mOutputAnalyzerTool = qobject_cast<SAKAnalyzerTool*>(tool);
+    mRxAnalyzerTool = qobject_cast<SAKAnalyzerTool*>(tool);
     tool = createTool(SAKToolFactory::EmitterTool);
     mEmitterTool = qobject_cast<SAKEmitterTool*>(tool);
     tool = createTool(SAKToolFactory::ResponserTool);
@@ -44,10 +44,10 @@ SAKToolBox::SAKToolBox(QObject *parent)
     tool = createTool(SAKToolFactory::StatistiticianTool);
     mTxStatisticianTool = qobject_cast<SAKStatisticianTool*>(tool);
 
-    mToolList << mInputMaskerTool
-              << mOutputMaskerTool
-              << mInputAnalyzerTool
-              << mOutputAnalyzerTool
+    mToolList << mTxMaskerTool
+              << mRxMaskerTool
+              << mTxAnalyzerTool
+              << mRxAnalyzerTool
               << mEmitterTool
               << mResponserTool
               << mStorerTool
@@ -78,24 +78,24 @@ void SAKToolBox::initialize(int type)
 
     // rx->output_masker->output_analyzer->emmitter,responser
     connect(mComunicationTool, &SAKBaseTool::bytesOutputted,
-            mOutputMaskerTool, &SAKBaseTool::inputBytes);
-    connect(mOutputMaskerTool, &SAKBaseTool::bytesOutputted,
-            mOutputAnalyzerTool, &SAKBaseTool::inputBytes);
-    connect(mOutputAnalyzerTool, &SAKBaseTool::bytesOutputted,
+            mRxMaskerTool, &SAKBaseTool::inputBytes);
+    connect(mRxMaskerTool, &SAKBaseTool::bytesOutputted,
+            mRxAnalyzerTool, &SAKBaseTool::inputBytes);
+    connect(mRxAnalyzerTool, &SAKBaseTool::bytesOutputted,
             mEmitterTool, &SAKBaseTool::inputBytes);
-    connect(mOutputAnalyzerTool, &SAKBaseTool::bytesOutputted,
+    connect(mRxAnalyzerTool, &SAKBaseTool::bytesOutputted,
             mResponserTool, &SAKBaseTool::inputBytes);
 
     // emiiter,responser,prestorer->input_analyzer->input_masker->tx
     connect(mEmitterTool, &SAKBaseTool::bytesOutputted,
-            mInputAnalyzerTool, &SAKBaseTool::inputBytes);
+            mTxAnalyzerTool, &SAKBaseTool::inputBytes);
     connect(mResponserTool, &SAKBaseTool::bytesOutputted,
-            mInputAnalyzerTool, &SAKBaseTool::inputBytes);
+            mTxAnalyzerTool, &SAKBaseTool::inputBytes);
     connect(mPrestorerTool, &SAKBaseTool::bytesOutputted,
-            mInputAnalyzerTool, &SAKBaseTool::inputBytes);
-    connect(mInputAnalyzerTool, &SAKBaseTool::bytesOutputted,
-            mInputMaskerTool, &SAKBaseTool::inputBytes);
-    connect(mInputMaskerTool, &SAKBaseTool::bytesOutputted,
+            mTxAnalyzerTool, &SAKBaseTool::inputBytes);
+    connect(mTxAnalyzerTool, &SAKBaseTool::bytesOutputted,
+            mTxMaskerTool, &SAKBaseTool::inputBytes);
+    connect(mTxMaskerTool, &SAKBaseTool::bytesOutputted,
             mComunicationTool, &SAKBaseTool::inputBytes);
 
     // rx->storer; tx->storer
@@ -111,10 +111,10 @@ void SAKToolBox::initialize(int type)
             mTxVelometerTool, &SAKBaseTool::inputBytes);
 
     // rx->statistician; tx->statistician
-    connect(mComunicationTool, &SAKBaseTool::bytesOutputted,
+    connect(mRxAnalyzerTool, &SAKBaseTool::bytesOutputted,
             mRxStatisticianTool, &SAKBaseTool::inputBytes);
     connect(mComunicationTool, &SAKBaseTool::bytesInputted,
-            mRxStatisticianTool, &SAKBaseTool::inputBytes);
+            mTxStatisticianTool, &SAKBaseTool::inputBytes);
 
     emit communicatonChanged();
 }
@@ -154,7 +154,7 @@ void SAKToolBox::close()
 
 void SAKToolBox::send(const QByteArray &bytes, const QVariant &context)
 {
-    mInputAnalyzerTool->inputBytes(bytes, context);
+    mTxAnalyzerTool->inputBytes(bytes, context);
 }
 
 void SAKToolBox::uninitializedTips()

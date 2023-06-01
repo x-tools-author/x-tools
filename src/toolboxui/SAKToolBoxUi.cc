@@ -191,7 +191,7 @@ void SAKToolBoxUi::try2send()
 
     bytes.prepend(prefixData);
     bytes.append(suffixData);
-    mToolBox->getInputAnalyzerTool()->inputBytes(bytes, QJsonObject());
+    mToolBox->getTxAnalyzerTool()->inputBytes(bytes, QJsonObject());
 }
 
 QString SAKToolBoxUi::dateTimeContext()
@@ -460,17 +460,17 @@ void SAKToolBoxUi::initSignalsTools()
     connect(mCommunicationTool, &SAKCommunicationTool::bytesInputted,
             this, &SAKToolBoxUi::onBytesWritten);
 
-    auto outputAnalyzer = mToolBox->getOutputAnalyzerTool();
+    auto outputAnalyzer = mToolBox->getRxAnalyzerTool();
     connect(outputAnalyzer, &SAKAnalyzerTool::bytesOutputted,
             this, &::SAKToolBoxUi::onBytesRead);
 }
 
 void SAKToolBoxUi::initTools()
 {
-    mToolBox->getInputMaskerTool()->setToolName("InputMasker");
-    mToolBox->getOutputMaskerTool()->setToolName("OutputMasker");
-    mToolBox->getInputAnalyzerTool()->setToolName("InputAnalyzer");
-    mToolBox->getOutputAnalyzerTool()->setToolName("OutputAnalyzer");
+    mToolBox->getTxMaskerTool()->setToolName("InputMasker");
+    mToolBox->getRxMaskerTool()->setToolName("OutputMasker");
+    mToolBox->getTxAnalyzerTool()->setToolName("InputAnalyzer");
+    mToolBox->getRxAnalyzerTool()->setToolName("OutputAnalyzer");
     mToolBoxUiParameters->initialize(mToolBox, settingsGroup());
     mToolBox->getRxVelometerTool()->setToolName("Rx:");
     mToolBox->getTxVelometerTool()->setToolName("Tx:");

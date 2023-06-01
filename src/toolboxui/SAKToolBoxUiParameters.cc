@@ -69,13 +69,13 @@ void SAKToolBoxUiParameters::initialize(SAKToolBox *toolBox,
     ui->spinBoxEndIndex->setGroupKey(settingsGroup + "input", "endIndex");
     ui->spinBoxStartIndex->setGroupKey(settingsGroup + "input", "startIndex");
 
-    ui->widgetInputMasker->initialize(toolBox->getInputMaskerTool(),
+    ui->widgetInputMasker->initialize(toolBox->getTxMaskerTool(),
                                       settingsGroup + "/inputMasker");
-    ui->widgetInputMasker->initialize(toolBox->getOutputMaskerTool(),
+    ui->widgetInputMasker->initialize(toolBox->getRxMaskerTool(),
                                       settingsGroup + "/outputMasker");
-    ui->widgetInputAnanyzer->initialize(toolBox->getInputAnalyzerTool(),
+    ui->widgetInputAnanyzer->initialize(toolBox->getTxAnalyzerTool(),
                                         settingsGroup + "/inputAnalyzer");
-    ui->widgetOutputAnanlyzer->initialize(toolBox->getOutputAnalyzerTool(),
+    ui->widgetOutputAnanlyzer->initialize(toolBox->getRxAnalyzerTool(),
                                           settingsGroup + "/outputAnalyzer");
     ui->widgetStorer->initialize(toolBox->getStorerTool(),
                                  settingsGroup + "/storer");

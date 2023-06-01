@@ -29,10 +29,10 @@ class SAKToolBox : public QObject
     Q_OBJECT
     Q_PROPERTY(QVariant communicaton READ communicaton
                    NOTIFY communicatonChanged)
-    Q_PROPERTY(QVariant inputMasker READ inputMasker CONSTANT)
-    Q_PROPERTY(QVariant outputMasker READ outputMasker CONSTANT)
-    Q_PROPERTY(QVariant inputAnalyzer READ inputAnalyzer CONSTANT)
-    Q_PROPERTY(QVariant outputAnalyzer READ outputAnalyzer CONSTANT)
+    Q_PROPERTY(QVariant txMasker READ txMasker CONSTANT)
+    Q_PROPERTY(QVariant rxMasker READ rxMasker CONSTANT)
+    Q_PROPERTY(QVariant txAnalyzer READ txAnalyzer CONSTANT)
+    Q_PROPERTY(QVariant rxAnalyzer READ rxAnalyzer CONSTANT)
     Q_PROPERTY(QVariant emitter READ emitter CONSTANT)
     Q_PROPERTY(QVariant responser READ responser CONSTANT)
     Q_PROPERTY(QVariant storer READ storer CONSTANT)
@@ -56,10 +56,10 @@ public:
     bool isWorking(){return mIsWorking;}
 
     SAKCommunicationTool*getCommunicationTool(){return mComunicationTool;}
-    SAKMaskerTool       *getInputMaskerTool(){return mInputMaskerTool;}
-    SAKMaskerTool       *getOutputMaskerTool(){return mOutputMaskerTool;}
-    SAKAnalyzerTool     *getInputAnalyzerTool(){return mInputAnalyzerTool;}
-    SAKAnalyzerTool     *getOutputAnalyzerTool(){return mOutputAnalyzerTool;}
+    SAKMaskerTool       *getTxMaskerTool(){return mTxMaskerTool;}
+    SAKMaskerTool       *getRxMaskerTool(){return mRxMaskerTool;}
+    SAKAnalyzerTool     *getTxAnalyzerTool(){return mTxAnalyzerTool;}
+    SAKAnalyzerTool     *getRxAnalyzerTool(){return mRxAnalyzerTool;}
     SAKEmitterTool      *getEmitterTool(){return mEmitterTool;}
     SAKResponserTool    *getResponserTool(){return mResponserTool;}
     SAKStorerTool       *getStorerTool(){return mStorerTool;}
@@ -71,10 +71,10 @@ public:
 
 private:
     SAKCommunicationTool*mComunicationTool{nullptr};
-    SAKMaskerTool       *mInputMaskerTool{nullptr};
-    SAKMaskerTool       *mOutputMaskerTool{nullptr};
-    SAKAnalyzerTool     *mInputAnalyzerTool{nullptr};
-    SAKAnalyzerTool     *mOutputAnalyzerTool{nullptr};
+    SAKMaskerTool       *mTxMaskerTool{nullptr};
+    SAKMaskerTool       *mRxMaskerTool{nullptr};
+    SAKAnalyzerTool     *mTxAnalyzerTool{nullptr};
+    SAKAnalyzerTool     *mRxAnalyzerTool{nullptr};
     SAKEmitterTool      *mEmitterTool{nullptr};
     SAKResponserTool    *mResponserTool{nullptr};
     SAKStorerTool       *mStorerTool{nullptr};
@@ -94,10 +94,10 @@ private:
     // Properties ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 private:
     QVariant communicaton(){return QVariant::fromValue(mComunicationTool);}
-    QVariant inputMasker(){return QVariant::fromValue(mInputMaskerTool);}
-    QVariant outputMasker(){return QVariant::fromValue(mOutputMaskerTool);}
-    QVariant inputAnalyzer(){return QVariant::fromValue(mInputAnalyzerTool);}
-    QVariant outputAnalyzer(){return QVariant::fromValue(mOutputAnalyzerTool);}
+    QVariant txMasker(){return QVariant::fromValue(mTxMaskerTool);}
+    QVariant rxMasker(){return QVariant::fromValue(mRxMaskerTool);}
+    QVariant txAnalyzer(){return QVariant::fromValue(mTxAnalyzerTool);}
+    QVariant rxAnalyzer(){return QVariant::fromValue(mRxAnalyzerTool);}
     QVariant emitter(){return QVariant::fromValue(mEmitterTool);}
     QVariant responser(){return QVariant::fromValue(mResponserTool);}
     QVariant storer(){return QVariant::fromValue(mStorerTool);}
