@@ -20,6 +20,7 @@
 #include "SAKAnalyzerTool.hh"
 #include "SAKPrestorerTool.hh"
 #include "SAKResponserTool.hh"
+#include "SAKVelometerTool.hh"
 #include "SAKCommunicationTool.hh"
 
 class SAKToolBox : public QObject
@@ -35,6 +36,7 @@ class SAKToolBox : public QObject
     Q_PROPERTY(QVariant responser READ responser CONSTANT)
     Q_PROPERTY(QVariant storer READ storer CONSTANT)
     Q_PROPERTY(QVariant prestorer READ prestorer CONSTANT)
+    Q_PROPERTY(QVariant velometer READ velometer CONSTANT)
 
     Q_PROPERTY(bool isWorking READ isWorking NOTIFY isWorkingChanged)
 public:
@@ -69,6 +71,7 @@ private:
     SAKResponserTool    *mResponserTool{nullptr};
     SAKStorerTool       *mStorerTool{nullptr};
     SAKPrestorerTool    *mPrestorerTool{nullptr};
+    SAKVelometerTool    *mVelometerTool{nullptr};
 
     QList<SAKBaseTool*> mToolList;
     const QLoggingCategory mLoggingCategory{"SAK.CustomBox"};
@@ -88,6 +91,7 @@ private:
     QVariant responser(){return QVariant::fromValue(mResponserTool);}
     QVariant storer(){return QVariant::fromValue(mStorerTool);}
     QVariant prestorer(){return QVariant::fromValue(mPrestorerTool);}
+    QVariant velometer(){return QVariant::fromValue(mVelometerTool);}
 
 signals:
     void isWorkingChanged();

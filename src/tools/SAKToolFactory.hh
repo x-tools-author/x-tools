@@ -26,6 +26,7 @@ public:
         ResponserTool,
         StorerTool,
         PrestoreTool,
+        VelometerTool,
         UdpClientTool,
         UdpServerTool,
         TcpClientTool,

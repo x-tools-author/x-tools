@@ -21,7 +21,10 @@ void SAKCommunicationTool::inputBytes(const QByteArray &bytes,
                                       const QVariant &context)
 {
     mInputDataMutex.lock();
-    InputDataContext dataCtx{bytes, context};
+    QJsonObject jsonObj = context.toJsonObject();
+    jsonObj.insert("flag", "tx");
+    QVariant cookedContext = QVariant::fromValue(jsonObj);
+    InputDataContext dataCtx{bytes, cookedContext};
     mInputDataList.append(dataCtx);
     mInputDataMutex.unlock();;
 }

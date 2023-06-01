@@ -282,10 +282,19 @@
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
           <widget class="QLabel" name="label_8">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="text">
             <string>Output</string>
            </property>
           </widget>
+         </item>
+         <item>
+          <widget class="SAKVelometerToolUi" name="widgetVelometer" native="true"/>
          </item>
         </layout>
        </item>
@@ -325,6 +334,12 @@
    <class>SAKComboBox</class>
    <extends>QComboBox</extends>
    <header location="global">SAKComboBox.hh</header>
+  </customwidget>
+  <customwidget>
+   <class>SAKVelometerToolUi</class>
+   <extends>QWidget</extends>
+   <header location="global">SAKVelometerToolUi.hh</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

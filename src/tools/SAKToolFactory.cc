@@ -19,6 +19,7 @@
 #include "SAKUdpServerTool.hh"
 #include "SAKTcpClientTool.hh"
 #include "SAKTcpServerTool.hh"
+#include "SAKVelometerTool.hh"
 #include "SAKBleCentralTool.hh"
 #include "SAKSerialPortTool.hh"
 #include "SAKWebSocketClientTool.hh"
@@ -53,6 +54,8 @@ SAKBaseTool *SAKToolFactory::createTool(int type)
         tool = new SAKStorerTool();
     } else if (PrestoreTool == type) {
         tool = new SAKPrestorerTool();
+    } else if (VelometerTool == type) {
+        tool = new SAKVelometerTool;
     } else if (UdpClientTool == type) {
         tool = new SAKUdpClientTool();
     } else if (UdpServerTool == type) {

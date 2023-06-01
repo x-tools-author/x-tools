@@ -33,14 +33,43 @@ void SAKVelometerTool::run()
     timer->setSingleShot(true);
     connect(timer, &QTimer::timeout, timer, [=](){
         this->mInputBytesContextListMutex.lock();
-        auto list = this->mInputBytesContextList
+        auto list = this->mInputBytesContextList;
+        this->mInputBytesContextList.clear();
         this->mInputBytesContextListMutex.unlock();
 
         int rxV = 0;
         int txV = 0;
         for (auto &ctx : list) {
-            ctx.
+            QJsonObject jsonObj = ctx.context.toJsonObject();
+            QString flag = jsonObj.value("flag").toString();
+            if (flag == "rx") {
+                rxV += ctx.bytes.length();
+            } else if (flag == "tx") {
+                txV += ctx.bytes.length();
+            }
         }
+
+        auto cookedV = [](int v)->QString{
+            QString ret;
+            if (v < 1024) {
+                ret = QString("%1bytes/s").arg(v);
+            } else if (v < 1024*1024) {
+                ret = QString("%1KB/s").arg(v/1024);
+            } else {
+                ret = QString("%1MB/s").arg(v/(1024*1024));
+            }
+            return ret;
+        };
+
+        mRxVMutex.lock();
+        mRxV = cookedV(rxV);
+        mRxVMutex.unlock();
+        emit rxVChanged(mRxV);
+
+        mTxVMutex.lock();
+        mTxV = cookedV(txV);
+        mTxVMutex.unlock();
+        emit txVChanged(mTxV);
     });
 
     timer->start();

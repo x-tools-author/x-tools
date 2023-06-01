@@ -34,6 +34,8 @@ SAKToolBox::SAKToolBox(QObject *parent)
     mStorerTool = qobject_cast<SAKStorerTool*>(tool);
     tool = createTool(SAKToolFactory::PrestoreTool);
     mPrestorerTool = qobject_cast<SAKPrestorerTool*>(tool);
+    tool = createTool(SAKToolFactory::VelometerTool);
+    mVelometerTool = qobject_cast<SAKVelometerTool*>(tool);
 
     mToolList << mInputMaskerTool
               << mOutputMaskerTool
@@ -42,7 +44,8 @@ SAKToolBox::SAKToolBox(QObject *parent)
               << mEmitterTool
               << mResponserTool
               << mStorerTool
-              << mPrestorerTool;
+              << mPrestorerTool
+              << mVelometerTool;
 }
 
 void SAKToolBox::initialize(int type)
@@ -90,6 +93,14 @@ void SAKToolBox::initialize(int type)
             mStorerTool, &SAKBaseTool::inputBytes);
     connect(mComunicationTool, &SAKBaseTool::bytesInputted,
             mStorerTool, &SAKBaseTool::inputBytes);
+
+    // rx->velometer; tx->velometer
+    connect(mComunicationTool, &SAKBaseTool::bytesOutputted,
+            mVelometerTool, &SAKBaseTool::inputBytes);
+    connect(mComunicationTool, &SAKBaseTool::bytesInputted,
+            mVelometerTool, &SAKBaseTool::inputBytes);
+
+
 
     emit communicatonChanged();
 }
