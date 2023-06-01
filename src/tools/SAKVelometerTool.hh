@@ -17,8 +17,7 @@
 class SAKVelometerTool : public SAKBaseTool
 {
     Q_OBJECT
-    Q_PROPERTY(QString rxV READ rxV NOTIFY rxVChanged)
-    Q_PROPERTY(QString txV READ txV NOTIFY txVChanged)
+    Q_PROPERTY(QString velocity READ velocity NOTIFY velocityChanged)
 public:
     explicit SAKVelometerTool(QObject *parent = nullptr);
 
@@ -35,18 +34,14 @@ private:
     };
     QList<struct InputBytesContext> mInputBytesContextList;
     QMutex mInputBytesContextListMutex;
-    QString mRxV;
-    QString mTxV;
-    QMutex mRxVMutex;
-    QMutex mTxVMutex;
+    QString mVelocity;
+    QMutex mVelocityMutex;
 
 private:
-    QString rxV();
-    QString txV();
+    QString velocity();
 
 signals:
-    void rxVChanged(const QString &v);
-    void txVChanged(const QString &v);
+    void velocityChanged(const QString &velocity);
 };
 
 #endif // SAKVELOMETERTOOL_H

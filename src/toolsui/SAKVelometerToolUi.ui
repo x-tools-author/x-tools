@@ -27,30 +27,16 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="labelName">
      <property name="text">
-      <string>Rx:</string>
+      <string notr="true">Name</string>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QLabel" name="labelRxV">
+    <widget class="QLabel" name="labelVelocity">
      <property name="text">
-      <string notr="true">0bytes/s</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLabel" name="label_3">
-     <property name="text">
-      <string>Tx:</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLabel" name="labelTxV">
-     <property name="text">
-      <string notr="true">0bytes/s</string>
+      <string notr="true">0Bytes/s</string>
      </property>
     </widget>
    </item>

@@ -472,6 +472,12 @@ void SAKToolBoxUi::initTools()
     mToolBox->getInputAnalyzerTool()->setToolName("InputAnalyzer");
     mToolBox->getOutputAnalyzerTool()->setToolName("OutputAnalyzer");
     mToolBoxUiParameters->initialize(mToolBox, settingsGroup());
+    mToolBox->getRxVelometerTool()->setToolName("Rx:");
+    mToolBox->getTxVelometerTool()->setToolName("Tx:");
+    ui->widgetRxVelometer->initialize(mToolBox->getRxVelometerTool(),
+                                      settingsGroup());
+    ui->widgetTxVelometer->initialize(mToolBox->getTxVelometerTool(),
+                                      settingsGroup());
 
     mEmitterToolUi = new SAKEmitterToolUi();
     ui->tabEmiter->setLayout(new QVBoxLayout());

@@ -37,39 +37,25 @@ void SAKVelometerTool::run()
         this->mInputBytesContextList.clear();
         this->mInputBytesContextListMutex.unlock();
 
-        int rxV = 0;
-        int txV = 0;
+        int v = 0;
         for (auto &ctx : list) {
-            QJsonObject jsonObj = ctx.context.toJsonObject();
-            QString flag = jsonObj.value("flag").toString();
-            if (flag == "rx") {
-                rxV += ctx.bytes.length();
-            } else if (flag == "tx") {
-                txV += ctx.bytes.length();
-            }
+            v += ctx.bytes.length();
         }
 
-        auto cookedV = [](int v)->QString{
-            QString ret;
-            if (v < 1024) {
-                ret = QString("%1bytes/s").arg(v);
-            } else if (v < 1024*1024) {
-                ret = QString("%1KB/s").arg(v/1024);
-            } else {
-                ret = QString("%1MB/s").arg(v/(1024*1024));
-            }
-            return ret;
-        };
+        QString cookedVelocity;
+        if (v < 1024) {
+            cookedVelocity = QString("%1Bytes/s").arg(v);
+        } else if (v < 1024*1024) {
+            cookedVelocity = QString("%1KB/s").arg(v/1024);
+        } else {
+            cookedVelocity = QString("%1MB/s").arg(v/(1024*1024));
+        }
 
-        mRxVMutex.lock();
-        mRxV = cookedV(rxV);
-        mRxVMutex.unlock();
-        emit rxVChanged(mRxV);
+        this->mVelocityMutex.lock();
+        this->mVelocity = cookedVelocity;
+        this->mVelocityMutex.unlock();
 
-        mTxVMutex.lock();
-        mTxV = cookedV(txV);
-        mTxVMutex.unlock();
-        emit txVChanged(mTxV);
+        emit velocityChanged(cookedVelocity);
     });
 
     timer->start();
@@ -79,18 +65,10 @@ void SAKVelometerTool::run()
     timer = nullptr;
 }
 
-QString SAKVelometerTool::rxV()
+QString SAKVelometerTool::velocity()
 {
-    mRxVMutex.lock();
-    QString v = mRxV;
-    mRxVMutex.lock();
-    return v;
-}
-
-QString SAKVelometerTool::txV()
-{
-    mTxVMutex.lock();
-    QString v = mTxV;
-    mTxVMutex.lock();
+    mVelocityMutex.lock();
+    QString v = mVelocity;
+    mVelocityMutex.lock();
     return v;
 }

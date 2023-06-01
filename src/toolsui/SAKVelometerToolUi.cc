@@ -45,12 +45,10 @@ void SAKVelometerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
         return;
     }
 
-    connect(cookedTool, &SAKVelometerTool::rxVChanged,
+    connect(cookedTool, &SAKVelometerTool::velocityChanged,
             this, [=](const QString &v){
-        ui->labelRxV->setText(v);
+        ui->labelVelocity->setText(v);
     });
-    connect(cookedTool, &SAKVelometerTool::txVChanged,
-            this, [=](const QString &v){
-        ui->labelTxV->setText(v);
-    });
+
+    ui->labelName->setText(tool->toolName());
 }

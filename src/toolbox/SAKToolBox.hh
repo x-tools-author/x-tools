@@ -36,7 +36,8 @@ class SAKToolBox : public QObject
     Q_PROPERTY(QVariant responser READ responser CONSTANT)
     Q_PROPERTY(QVariant storer READ storer CONSTANT)
     Q_PROPERTY(QVariant prestorer READ prestorer CONSTANT)
-    Q_PROPERTY(QVariant velometer READ velometer CONSTANT)
+    Q_PROPERTY(QVariant rxVelometer READ rxVelometer CONSTANT)
+    Q_PROPERTY(QVariant txVelometer READ txVelometer CONSTANT)
 
     Q_PROPERTY(bool isWorking READ isWorking NOTIFY isWorkingChanged)
 public:
@@ -60,6 +61,8 @@ public:
     SAKResponserTool    *getResponserTool(){return mResponserTool;}
     SAKStorerTool       *getStorerTool(){return mStorerTool;}
     SAKPrestorerTool    *getPrestorerTool(){return mPrestorerTool;}
+    SAKVelometerTool    *getRxVelometerTool(){return mRxVelometerTool;}
+    SAKVelometerTool    *getTxVelometerTool(){return mTxVelometerTool;}
 
 private:
     SAKCommunicationTool*mComunicationTool{nullptr};
@@ -71,7 +74,8 @@ private:
     SAKResponserTool    *mResponserTool{nullptr};
     SAKStorerTool       *mStorerTool{nullptr};
     SAKPrestorerTool    *mPrestorerTool{nullptr};
-    SAKVelometerTool    *mVelometerTool{nullptr};
+    SAKVelometerTool    *mRxVelometerTool{nullptr};
+    SAKVelometerTool    *mTxVelometerTool{nullptr};
 
     QList<SAKBaseTool*> mToolList;
     const QLoggingCategory mLoggingCategory{"SAK.CustomBox"};
@@ -91,7 +95,8 @@ private:
     QVariant responser(){return QVariant::fromValue(mResponserTool);}
     QVariant storer(){return QVariant::fromValue(mStorerTool);}
     QVariant prestorer(){return QVariant::fromValue(mPrestorerTool);}
-    QVariant velometer(){return QVariant::fromValue(mVelometerTool);}
+    QVariant rxVelometer(){return QVariant::fromValue(mRxVelometerTool);}
+    QVariant txVelometer(){return QVariant::fromValue(mTxVelometerTool);}
 
 signals:
     void isWorkingChanged();
