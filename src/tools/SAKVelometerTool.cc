@@ -56,6 +56,7 @@ void SAKVelometerTool::run()
         this->mVelocityMutex.unlock();
 
         emit velocityChanged(cookedVelocity);
+        timer->start();
     });
 
     timer->start();
