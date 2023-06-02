@@ -90,10 +90,6 @@ SAKApplication::SAKApplication(int argc, char **argv)
     mSettings->setValue(mSettingsKeyContext.lastDateTime,
                         dt.toString(QLocale::system().dateFormat()));
 
-    // Initialize the data base
-    mDatabaseName = QString("%1/%2.sqlite3")
-            .arg(path, qApp->applicationName());
-
     // Remove settings file and database
     if (mSettings->value(mSettingsKeyContext.removeSettingsFile).toBool()){
         mSettings->setValue(mSettingsKeyContext.removeSettingsFile,
@@ -102,14 +98,6 @@ SAKApplication::SAKApplication(int argc, char **argv)
             qInfo() << "Remove settings file successfully!";
         }else{
             qWarning() << "Remove settings file failed!";
-        }
-
-        QFile databaseFile(mDatabaseName);
-        if (databaseFile.remove()){
-            qInfo() << "Remove database successfully!";
-        }else{
-            qWarning() << "Remove database failed: "
-                       << databaseFile.errorString();
         }
     }
 
