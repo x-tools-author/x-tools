@@ -77,7 +77,6 @@ public:
 
 public:
     virtual QVariant itemContext(int index) final;
-    virtual QVariant itemsContext() final;
 
 protected:
     virtual int rowCount(const QModelIndex &parent

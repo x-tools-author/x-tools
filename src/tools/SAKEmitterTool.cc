@@ -68,17 +68,6 @@ QVariant SAKEmitterTool::itemContext(int index)
     return ctx;
 }
 
-QVariant SAKEmitterTool::itemsContext()
-{
-    QVariantList varList;
-    int count = mTableModel->rowCount();
-    for (int i = 0; i < count; i++) {
-        varList.append(itemContext(i));
-    }
-
-    return varList;
-}
-
 int SAKEmitterTool::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);

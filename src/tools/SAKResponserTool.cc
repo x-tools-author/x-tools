@@ -333,17 +333,6 @@ QVariant SAKResponserTool::itemContext(int index)
     return ctx;
 }
 
-QVariant SAKResponserTool::itemsContext()
-{
-    QVariantList varList;
-    int rowCount = mTableModel->rowCount();
-    for (int i = 0; i < rowCount; i++) {
-        varList.append(itemContext(i));
-    }
-
-    return varList;
-}
-
 void SAKResponserTool::inputBytes(const QByteArray &bytes, const QVariant &context)
 {
     mInputContextListMutex.lock();

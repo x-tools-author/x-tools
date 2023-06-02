@@ -66,7 +66,6 @@ public:
 public:
     explicit SAKPrestorerTool(QObject *parent = nullptr);
     Q_INVOKABLE virtual QVariant itemContext(int index) final;
-    Q_INVOKABLE virtual QVariant itemsContext() final;
 
     Q_INVOKABLE void send(int index);
 

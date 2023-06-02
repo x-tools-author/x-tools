@@ -225,17 +225,6 @@ QVariant SAKPrestorerTool::itemContext(int index)
     return ctx;
 }
 
-QVariant SAKPrestorerTool::itemsContext()
-{
-    QVariantList varList;
-    int count = rowCount();
-    for (int i = 0; i < count; i++) {
-        varList.append(itemContext(i));
-    }
-
-    return varList;
-}
-
 void SAKPrestorerTool::send(int index)
 {
     if (isRunning()) {

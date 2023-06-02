@@ -25,8 +25,9 @@ public:
     QStringList headers() const;
 
     Q_INVOKABLE void addItem(const QString &jsonCtx, int index = -1);
+    Q_INVOKABLE QVariant itemsContext();
+
     Q_INVOKABLE virtual QVariant itemContext(int index) = 0;
-    Q_INVOKABLE virtual QVariant itemsContext() = 0;
 
 protected:
     virtual int rowCount(const QModelIndex &parent = QModelIndex()) const = 0;

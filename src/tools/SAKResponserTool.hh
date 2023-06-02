@@ -107,7 +107,6 @@ public:
 public:
     explicit SAKResponserTool(QObject *parent = nullptr);
     Q_INVOKABLE virtual QVariant itemContext(int index) final;
-    Q_INVOKABLE virtual QVariant itemsContext() final;
 
     virtual void inputBytes(const QByteArray &bytes,
                             const QVariant &context = QJsonObject()) final;

@@ -75,6 +75,17 @@ void SAKTabelModelTool::addItem(const QString &jsonCtx, int index)
     }
 }
 
+QVariant SAKTabelModelTool::itemsContext()
+{
+    QVariantList varList;
+    int rowCount = mTableModel->rowCount();
+    for (int i = 0; i < rowCount; i++) {
+        varList.append(itemContext(i));
+    }
+
+    return varList;
+}
+
 void SAKTabelModelTool::onInvokeGetRowCount(int &count)
 {
     count = rowCount();
