@@ -14,11 +14,11 @@ SAKPane {
         anchors.fill: parent
         ColumnLayout {
             width: root.width
-            DevicePageDrawerDeviceMasker {
+            ToolBoxDrawerDeviceMasker {
                 id: maskerGroupBox
                 Layout.fillWidth: true
             }
-            DevicePageDrawerDeviceAnalyzer {
+            ToolBoxDrawerDeviceAnalyzer {
                 id: analyzerGroupBox
                 Layout.fillWidth: true
             }

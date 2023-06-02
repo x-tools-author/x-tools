@@ -12,7 +12,7 @@ SAKPane {
 
     property alias deviceController: controller
 
-    DevicePageCommonServer {
+    ToolBoxCommonServer {
         id: controller
         anchors.fill: parent
         showWebSocketInfo: true

@@ -12,7 +12,7 @@ SAKPane {
 
     property alias deviceController: controller
 
-    DevicePageCommonServer {
+    ToolBoxCommonServer {
         id: controller
         anchors.fill: parent
         title: qsTr("TCP server settings")

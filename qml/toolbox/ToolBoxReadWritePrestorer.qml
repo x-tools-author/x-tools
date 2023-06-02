@@ -18,7 +18,7 @@ Item {
         readonly property string key: "itemData"
     }
 
-    DevicePageCommonTableView {
+    ToolBoxCommonTableView {
         anchors.fill: parent
         tableMode: presotrerTool ? presotrerTool.tableModel : null
         tableHeaders: presotrerTool ? presotrerTool.headers : []
@@ -39,7 +39,7 @@ Item {
         onItemsChanged: updateSettings()
     }
 
-    DevicePageReadWritePrestorerPopup {
+    ToolBoxReadWritePrestorerPopup {
         id: editorPopup
         onRejected: close()
         onAccepted: {

@@ -18,7 +18,7 @@ Item {
         readonly property string key: "itemData"
     }
 
-    DevicePageCommonTableView {
+    ToolBoxCommonTableView {
         anchors.fill: parent
         tableMode: emitterTool ? emitterTool.tableModel : null
         tableHeaders: emitterTool ? emitterTool.headers : []
@@ -39,7 +39,7 @@ Item {
         onItemsChanged: updateSettings()
     }
 
-    DevicePageReadWriteEmitterPopup {
+    ToolBoxReadWriteEmitterPopup {
         id: editorPopup
         onRejected: close()
         onAccepted: {

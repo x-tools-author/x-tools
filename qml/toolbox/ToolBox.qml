@@ -24,7 +24,7 @@ Item {
         id: edDevice
     }
 
-    DevicePageController {
+    ToolBoxController {
         id: devicePageController
         controllerComponent: root.controllerComponent
         communicationTool: root.communicationTool
@@ -41,7 +41,7 @@ Item {
         SAKVerticalLine { anchors.right: parent.right }
     }
 
-    DevicePageReadWrite {
+    ToolBoxReadWrite {
         id: devicePageReadWrite
         communicationTool: root.communicationTool
         emitterTool: edDevice.emitter
@@ -90,7 +90,7 @@ Item {
         }
     }
 
-    DevicePageDrawer {
+    ToolBoxDrawer {
         id: devicePageDrawer
         width: 350
         x: mainWindow.width - mainWindowPane.anchors.margins

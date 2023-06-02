@@ -45,13 +45,13 @@ SAKPopup {
         }
         StackLayout {
             currentIndex: tabBar.currentIndex
-            DevicePageDrawerDevice {
+            ToolBoxDrawerDevice {
                 id: devicePageDrawerDevice
             }
-            DevicePageDrawerOutput {
+            ToolBoxDrawerOutput {
                 id: devicePageDrawerOutput
             }
-            DevicePageDrawerInput {
+            ToolBoxDrawerInput {
                 id: devicePageDrawerIntput
             }
         }

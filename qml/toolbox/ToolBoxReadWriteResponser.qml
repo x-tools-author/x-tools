@@ -17,7 +17,7 @@ Item {
         readonly property string key: "itemData"
     }
 
-    DevicePageCommonTableView {
+    ToolBoxCommonTableView {
         id: tableView
         anchors.fill: parent
         tableMode: responserTool ? responserTool.tableModel : null
@@ -39,7 +39,7 @@ Item {
         onItemsChanged: updateSettings()
     }
 
-    DevicePageReadWriteResponserPopup {
+    ToolBoxReadWriteResponserPopup {
         id: editorPopup
         onRejected: close()
         onAccepted: {

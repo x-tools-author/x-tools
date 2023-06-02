@@ -19,11 +19,11 @@ ScrollView {
 
     ColumnLayout {
         width: root.width
-        DevicePageDrawerInputPreprocessor {
+        ToolBoxDrawerInputPreprocessor {
             id: preprocessorGroupBox
             Layout.fillWidth: true
         }
-        DevicePageDrawerInputCrc {
+        ToolBoxDrawerInputCrc {
             id: crcGroupBox
             Layout.fillWidth: true
         }

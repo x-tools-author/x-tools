@@ -6,7 +6,7 @@ import QtQuick.Controls.Universal
 import SAK.Custom
 import "toolbox"
 
-DevicePage {
+ToolBox {
     id: root
     controllerComponent: comComtrollerComponent
     groupName: "WebSocketServer"

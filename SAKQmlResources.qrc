@@ -31,31 +31,31 @@
         <file>qml/MainWindowWebSocketServerPageController.qml</file>
         <file>qml/MainWindowBleCentralPage.qml</file>
         <file>qml/MainWindowBleCentralPageController.qml</file>
-        <file>qml/toolbox/DevicePage.qml</file>
-        <file>qml/toolbox/DevicePageCommonClient.qml</file>
-        <file>qml/toolbox/DevicePageCommonCrcParameters.qml</file>
-        <file>qml/toolbox/DevicePageCommonServer.qml</file>
-        <file>qml/toolbox/DevicePageCommonTableView.qml</file>
-        <file>qml/toolbox/DevicePageController.qml</file>
-        <file>qml/toolbox/DevicePageDrawer.qml</file>
-        <file>qml/toolbox/DevicePageDrawerDevice.qml</file>
-        <file>qml/toolbox/DevicePageDrawerDeviceAnalyzer.qml</file>
-        <file>qml/toolbox/DevicePageDrawerDeviceMasker.qml</file>
-        <file>qml/toolbox/DevicePageDrawerInput.qml</file>
-        <file>qml/toolbox/DevicePageDrawerInputCrc.qml</file>
-        <file>qml/toolbox/DevicePageDrawerInputFileSendding.qml</file>
-        <file>qml/toolbox/DevicePageDrawerInputPreprocessor.qml</file>
-        <file>qml/toolbox/DevicePageDrawerOutput.qml</file>
-        <file>qml/toolbox/DevicePageDrawerOutputHighlighter.qml</file>
-        <file>qml/toolbox/DevicePageDrawerOutputPreprocessor.qml</file>
-        <file>qml/toolbox/DevicePageDrawerOutputStorer.qml</file>
-        <file>qml/toolbox/DevicePageReadWrite.qml</file>
-        <file>qml/toolbox/DevicePageReadWriteEmitter.qml</file>
-        <file>qml/toolbox/DevicePageReadWriteEmitterPopup.qml</file>
-        <file>qml/toolbox/DevicePageReadWriteInputOutput.qml</file>
-        <file>qml/toolbox/DevicePageReadWritePrestorer.qml</file>
-        <file>qml/toolbox/DevicePageReadWritePrestorerPopup.qml</file>
-        <file>qml/toolbox/DevicePageReadWriteResponser.qml</file>
-        <file>qml/toolbox/DevicePageReadWriteResponserPopup.qml</file>
+        <file>qml/toolbox/ToolBox.qml</file>
+        <file>qml/toolbox/ToolBoxCommonClient.qml</file>
+        <file>qml/toolbox/ToolBoxCommonCrcParameters.qml</file>
+        <file>qml/toolbox/ToolBoxCommonServer.qml</file>
+        <file>qml/toolbox/ToolBoxCommonTableView.qml</file>
+        <file>qml/toolbox/ToolBoxController.qml</file>
+        <file>qml/toolbox/ToolBoxDrawer.qml</file>
+        <file>qml/toolbox/ToolBoxDrawerDevice.qml</file>
+        <file>qml/toolbox/ToolBoxDrawerDeviceAnalyzer.qml</file>
+        <file>qml/toolbox/ToolBoxDrawerDeviceMasker.qml</file>
+        <file>qml/toolbox/ToolBoxDrawerInput.qml</file>
+        <file>qml/toolbox/ToolBoxDrawerInputCrc.qml</file>
+        <file>qml/toolbox/ToolBoxDrawerInputFileSendding.qml</file>
+        <file>qml/toolbox/ToolBoxDrawerInputPreprocessor.qml</file>
+        <file>qml/toolbox/ToolBoxDrawerOutput.qml</file>
+        <file>qml/toolbox/ToolBoxDrawerOutputHighlighter.qml</file>
+        <file>qml/toolbox/ToolBoxDrawerOutputPreprocessor.qml</file>
+        <file>qml/toolbox/ToolBoxDrawerOutputStorer.qml</file>
+        <file>qml/toolbox/ToolBoxReadWrite.qml</file>
+        <file>qml/toolbox/ToolBoxReadWriteEmitter.qml</file>
+        <file>qml/toolbox/ToolBoxReadWriteEmitterPopup.qml</file>
+        <file>qml/toolbox/ToolBoxReadWriteInputOutput.qml</file>
+        <file>qml/toolbox/ToolBoxReadWritePrestorer.qml</file>
+        <file>qml/toolbox/ToolBoxReadWritePrestorerPopup.qml</file>
+        <file>qml/toolbox/ToolBoxReadWriteResponser.qml</file>
+        <file>qml/toolbox/ToolBoxReadWriteResponserPopup.qml</file>
     </qresource>
 </RCC>

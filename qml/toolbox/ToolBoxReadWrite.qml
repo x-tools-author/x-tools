@@ -51,7 +51,7 @@ Item {
             currentIndex: pageTabBar.currentIndex
             Layout.fillHeight: true
             Layout.fillWidth: true
-            DevicePageReadWriteInputOutput {
+            ToolBoxReadWriteInputOutput {
                 id: ioPage
                 Layout.fillHeight: true
                 Layout.fillWidth: true
@@ -60,17 +60,17 @@ Item {
                     root.invokeOpenDrawer(pageIndex)
                 }
             }
-            DevicePageReadWriteEmitter {
+            ToolBoxReadWriteEmitter {
                 id: emitterPage
                 Layout.fillHeight: true
                 Layout.fillWidth: true
             }
-            DevicePageReadWriteResponser {
+            ToolBoxReadWriteResponser {
                 id: responserPage
                 Layout.fillHeight: true
                 Layout.fillWidth: true
             }
-            DevicePageReadWritePrestorer {
+            ToolBoxReadWritePrestorer {
                 id: prestorePage
                 Layout.fillHeight: true
                 Layout.fillWidth: true

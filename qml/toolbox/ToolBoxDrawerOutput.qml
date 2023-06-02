@@ -20,16 +20,16 @@ ScrollView {
 
     ColumnLayout {
         width: root.width
-        DevicePageDrawerOutputPreprocessor {
+        ToolBoxDrawerOutputPreprocessor {
             id: dataPreprocessorGroupBox
             Layout.fillWidth: true
             visible: false
         }
-        DevicePageDrawerOutputStorer {
+        ToolBoxDrawerOutputStorer {
             id: storerGroupBox
             Layout.fillWidth: true
         }
-        DevicePageDrawerOutputHighlighter {
+        ToolBoxDrawerOutputHighlighter {
             id: highlighterGroupBox
             Layout.fillWidth: true
         }

@@ -12,7 +12,7 @@ SAKPane {
 
     property alias deviceController: clientController
 
-    DevicePageCommonClient {
+    ToolBoxCommonClient {
         id: clientController
         anchors.fill: parent
         title: qsTr("UDP client settings")
