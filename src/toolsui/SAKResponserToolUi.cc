@@ -44,7 +44,7 @@ void SAKResponserToolUi::initialize(SAKResponserTool *tool,
     mTool = qobject_cast<SAKResponserTool*>(tool);
     auto dataModel = mTool->tableModel().value<QAbstractTableModel*>();
     SAKTableViewWithController::initialize(dataModel,
-                                           settingsGroup + "responser");
+                                           settingsGroup + "/responser");
 
     QList<int> columns;
     columns << 11 << 21;

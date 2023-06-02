@@ -271,23 +271,6 @@ QByteArray SAKResponserTool::responseBytes(const ResponserItem &item) const
     return bytes;
 }
 
-void SAKResponserTool::addItem(const QString &jsonCtx, int index)
-{
-
-    QByteArray json = jsonCtx.toLatin1();
-    QJsonObject jsonObj = QJsonDocument::fromJson(json).object();
-    if (!(index >= 0 && index < mItems.count())) {
-        insertRows(rowCount(), 1);
-        index = rowCount() - 1;
-    }
-
-    for (int i = 0; i < headers().count(); i++) {
-        auto key = headers().at(i);
-        auto modelIndex = mTableModel->index(index, i);
-        setData(modelIndex, jsonObj.value(key), Qt::EditRole);
-    }
-}
-
 QVariant SAKResponserTool::itemContext(int index)
 {
     QJsonObject ctx;

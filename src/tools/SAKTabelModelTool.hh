@@ -24,7 +24,7 @@ public:
     QVariant tableModel();
     QStringList headers() const;
 
-    Q_INVOKABLE virtual void addItem(const QString &jsonCtx, int index = -1) = 0;
+    Q_INVOKABLE void addItem(const QString &jsonCtx, int index = -1);
     Q_INVOKABLE virtual QVariant itemContext(int index) = 0;
     Q_INVOKABLE virtual QVariant itemsContext() = 0;
 

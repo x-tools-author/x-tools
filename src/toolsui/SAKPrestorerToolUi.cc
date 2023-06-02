@@ -37,12 +37,15 @@ void SAKPrestorerToolUi::initialize(SAKPrestorerTool *tool,
     }
 
     if (!tool->inherits("SAKPrestorerTool")) {
+        qCWarning(mLoggingCategory) << "Invalid tool!";
         return;
     }
 
     mTool = qobject_cast<SAKPrestorerTool*>(tool);
-    auto *dataModel = mTool->tableModel().value<QAbstractTableModel*>();
-    SAKTableViewWithController::initialize(dataModel, settingsGroup);
+    QVariant var = mTool->tableModel();
+    QAbstractTableModel *dataModel = var.value<QAbstractTableModel*>();
+    SAKTableViewWithController::initialize(dataModel,
+                                           settingsGroup + "/prestorer");
 
     QList<int> columns;
     columns << 9;
@@ -120,6 +123,7 @@ bool SAKPrestorerToolUi::append()
     QJsonDocument jsonDoc;
     jsonDoc.setObject(jsonObj);
     QString str = QString::fromUtf8(jsonDoc.toJson());
-    mTool->addItem(str, -1);
+    mTool->addItem(str);
+
     return true;
 }

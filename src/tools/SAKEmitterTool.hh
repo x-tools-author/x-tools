@@ -76,7 +76,6 @@ public:
                             const QVariant &context = QJsonObject()) final;
 
 public:
-    virtual void addItem(const QString &jsonCtx, int index = -1) final;
     virtual QVariant itemContext(int index) final;
     virtual QVariant itemsContext() final;
 

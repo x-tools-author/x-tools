@@ -7,6 +7,7 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
+#include <QJsonDocument>
 #include "SAKTabelModelTool.hh"
 
 SAKTabelModelTool::SAKTabelModelTool(const char *logCategory, QObject *parent)
@@ -52,6 +53,26 @@ QStringList SAKTabelModelTool::headers() const
     }
 
     return strList;
+}
+
+void SAKTabelModelTool::addItem(const QString &jsonCtx, int index)
+{
+    QByteArray json = jsonCtx.toLatin1();
+    QJsonObject jsonObj = QJsonDocument::fromJson(json).object();
+    if (!(index >= 0 && index < rowCount())) {
+        mTableModel->insertRows(mTableModel->rowCount(), 1);
+        index = mTableModel->rowCount() - 1;
+    }
+
+    for (int i = 0; i < headers().count(); i++) {
+        if (i >= columnCount()) {
+            outputMessage(QtWarningMsg, "Invalid column index!");
+        }
+
+        auto key = headers().at(i);
+        auto modelIndex = mTableModel->index(index, i);
+        mTableModel->setData(modelIndex, jsonObj.value(key), Qt::EditRole);
+    }
 }
 
 void SAKTabelModelTool::onInvokeGetRowCount(int &count)

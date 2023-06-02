@@ -30,26 +30,6 @@ void SAKEmitterTool::inputBytes(const QByteArray &bytes,
     Q_UNUSED(context)
 }
 
-void SAKEmitterTool::addItem(const QString &jsonCtx, int index)
-{
-    QByteArray json = jsonCtx.toLatin1();
-    QJsonObject jsonObj = QJsonDocument::fromJson(json).object();
-    if (!(index >= 0 && index < mItems.count())) {
-        mTableModel->insertRows(mTableModel->rowCount(), 1);
-        index = mTableModel->rowCount() - 1;
-    }
-
-    for (int i = 0; i < headers().count(); i++) {
-        if (i >= columnCount()) {
-            outputMessage(QtWarningMsg, "Invalid column index!");
-        }
-
-        auto key = headers().at(i);
-        auto modelIndex = mTableModel->index(index, i);
-        mTableModel->setData(modelIndex, jsonObj.value(key), Qt::EditRole);
-    }
-}
-
 QVariant SAKEmitterTool::itemContext(int index)
 {
     QJsonObject ctx;
