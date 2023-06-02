@@ -37,6 +37,11 @@ SAKTableViewWithController::SAKTableViewWithController(const char *lg, QWidget *
             this, &SAKTableViewWithController::onPushButtonExportClicked);
     connect(ui->pushButtonAppend, &QPushButton::clicked,
             this, &SAKTableViewWithController::onPushButtonAppendClicked);
+
+    connect(ui->tableView, &QTableView::doubleClicked,
+            this, [=](const QModelIndex &index){
+        edit(index);
+    });
 }
 
 SAKTableViewWithController::~SAKTableViewWithController()
