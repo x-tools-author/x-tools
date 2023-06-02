@@ -25,7 +25,7 @@
 #include "SAKResponserTool.hh"
 #include "SAKSerialPortTool.hh"
 #include "SAKBleCentralTool.hh"
-#include "SAKTabelModelTool.hh"
+#include "SAKTableModelTool.hh"
 #include "SAKWebSocketClientTool.hh"
 #include "SAKWebSocketServerTool.hh"
 
@@ -75,7 +75,7 @@ SAKGuiApplication::SAKGuiApplication(int argc, char *argv[])
     qmlRegisterUncreatableType<SAKTcpServerTool>("SAK.Custom", 1, 0, "EDTcpServerTool", reason);
     qmlRegisterUncreatableType<SAKBleCentralTool>("SAK.Custom", 1, 0, "EDBleCentralTool", reason);
     qmlRegisterUncreatableType<SAKSerialPortTool>("SAK.Custom", 1, 0, "EDSerialportTool", reason);
-    qmlRegisterUncreatableType<SAKTabelModelTool>("SAK.Custom", 1, 0, "SAKTabelModelTool", reason);
+    qmlRegisterUncreatableType<SAKTableModelTool>("SAK.Custom", 1, 0, "SAKTabelModelTool", reason);
     qmlRegisterUncreatableType<SAKCommunicationTool>("SAK.Custom", 1, 0, "SAKCommunicationTool", reason);
     qmlRegisterUncreatableType<SAKWebSocketServerTool>("SAK.Custom", 1, 0, "SAKWebSocketServerTool", reason);
     qmlRegisterUncreatableType<SAKWebSocketClientTool>("SAK.Custom", 1, 0, "EDWebSocketClientTool", reason);

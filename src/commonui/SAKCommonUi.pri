@@ -1,8 +1,5 @@
 INCLUDEPATH += $$PWD
 
-FORMS += \
-    $$PWD/SAKTableViewWithController.ui
-
 HEADERS += \
     $$PWD/SAKAffixesComboBox.hh \
     $$PWD/SAKBaudRateComboBox.hh \
@@ -20,7 +17,6 @@ HEADERS += \
     $$PWD/SAKResponseOptionComboBox.hh \
     $$PWD/SAKSpinBox.hh \
     $$PWD/SAKStopBitsComboBox.hh \
-    $$PWD/SAKTableViewWithController.hh \
     $$PWD/SAKTextFormatComboBox.hh \
     $$PWD/SAKUiInterface.hh \
     $$PWD/SAKWebSocketMessageTypeComboBox.hh
@@ -42,7 +38,6 @@ SOURCES += \
     $$PWD/SAKResponseOptionComboBox.cc \
     $$PWD/SAKSpinBox.cc \
     $$PWD/SAKStopBitsComboBox.cc \
-    $$PWD/SAKTableViewWithController.cc \
     $$PWD/SAKTextFormatComboBox.cc \
     $$PWD/SAKUiInterface.cc \
     $$PWD/SAKWebSocketMessageTypeComboBox.cc

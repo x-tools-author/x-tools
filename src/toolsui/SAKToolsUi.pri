@@ -17,7 +17,7 @@ HEADERS += \
     $$PWD/SAKSocketServerToolUi.hh \
     $$PWD/SAKStatisticianToolUi.hh \
     $$PWD/SAKStorerToolUi.hh \
-    $$PWD/SAKTableViewToolUi.hh \
+    $$PWD/SAKTableModelToolUi.hh \
     $$PWD/SAKVelometerToolUi.hh
 
 SOURCES += \
@@ -37,7 +37,7 @@ SOURCES += \
     $$PWD/SAKSocketServerToolUi.cc \
     $$PWD/SAKStatisticianToolUi.cc \
     $$PWD/SAKStorerToolUi.cc \
-    $$PWD/SAKTableViewToolUi.cc \
+    $$PWD/SAKTableModelToolUi.cc \
     $$PWD/SAKVelometerToolUi.cc
 
 FORMS += \
@@ -52,4 +52,5 @@ FORMS += \
     $$PWD/SAKSocketServerToolUi.ui \
     $$PWD/SAKStatisticianToolUi.ui \
     $$PWD/SAKStorerToolUi.ui \
+    $$PWD/SAKTableModelToolUi.ui \
     $$PWD/SAKVelometerToolUi.ui

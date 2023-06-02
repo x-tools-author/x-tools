@@ -11,29 +11,24 @@
 #define SAKRESPONSERTOOLUI_HH
 
 #include <QWidget>
-#include "SAKTableViewWithController.hh"
+#include "SAKTableModelToolUi.hh"
 #include "SAKResponserToolUi.hh"
 
 class SAKResponserTool;
 class SAKResponserToolUiEditor;
-class SAKResponserToolUi : public SAKTableViewWithController
+class SAKResponserToolUi : public SAKTableModelToolUi
 {
     Q_OBJECT
 public:
     explicit SAKResponserToolUi(QWidget *parent = nullptr);
     ~SAKResponserToolUi();
-    void initialize(SAKResponserTool *tool, const QString &settingsGroup);
 
 protected:
-    virtual void edit(const QModelIndex &index) final;
-    virtual void clear() final;
-    virtual void remove(const QModelIndex &index) final;
-    virtual void importFromJson(const QByteArray &json) final;
-    virtual QByteArray exportAsJson() final;
-    virtual bool append() final;
+    virtual void onBaseToolUiInitialized(SAKBaseTool *tool,
+                                         const QString &settingGroup) override;
+    virtual QDialog *itemEditor() override;
 
 private:
-    SAKResponserTool *mTool{nullptr};
     SAKResponserToolUiEditor *mEditor{nullptr};
 };
 

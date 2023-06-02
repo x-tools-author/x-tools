@@ -16,29 +16,29 @@
 
 #include "SAKMenu.hh"
 #include "SAKSettings.hh"
-#include "SAKTableViewWithController.hh"
-#include "ui_SAKTableViewWithController.h"
+#include "SAKTableModelTool.hh"
+#include "SAKTableModelToolUi.hh"
+#include "ui_SAKTableModelToolUi.h"
 
-SAKTableViewWithController::SAKTableViewWithController(const char *lg,
-                                                       QWidget *parent)
-    : QWidget{parent}
+SAKTableModelToolUi::SAKTableModelToolUi(const char *lg, QWidget *parent)
+    : SAKBaseToolUi{parent}
     , mLoggingCategory{lg}
-    , ui(new Ui::SAKTableViewWithController)
+    , ui(new Ui::SAKTableModelToolUi)
 {
     ui->setupUi(this);
 
     connect(ui->pushButtonEdit, &QPushButton::clicked,
-            this, &SAKTableViewWithController::onPushButtonEditClicked);
+            this, &SAKTableModelToolUi::onPushButtonEditClicked);
     connect(ui->pushButtonClear, &QPushButton::clicked,
-            this, &SAKTableViewWithController::onPushButtonClearClicked);
+            this, &SAKTableModelToolUi::onPushButtonClearClicked);
     connect(ui->pushButtonDelete, &QPushButton::clicked,
-            this, &SAKTableViewWithController::onPushButtonDeleteClicked);
+            this, &SAKTableModelToolUi::onPushButtonDeleteClicked);
     connect(ui->pushButtonImport, &QPushButton::clicked,
-            this, &SAKTableViewWithController::onPushButtonImportClicked);
+            this, &SAKTableModelToolUi::onPushButtonImportClicked);
     connect(ui->pushButtonExport, &QPushButton::clicked,
-            this, &SAKTableViewWithController::onPushButtonExportClicked);
+            this, &SAKTableModelToolUi::onPushButtonExportClicked);
     connect(ui->pushButtonAppend, &QPushButton::clicked,
-            this, &SAKTableViewWithController::onPushButtonAppendClicked);
+            this, &SAKTableModelToolUi::onPushButtonAppendClicked);
 
     connect(ui->tableView, &QTableView::doubleClicked,
             this, [=](const QModelIndex &index){
@@ -46,34 +46,56 @@ SAKTableViewWithController::SAKTableViewWithController(const char *lg,
     });
 }
 
-SAKTableViewWithController::~SAKTableViewWithController()
+SAKTableModelToolUi::~SAKTableModelToolUi()
 {
     delete ui;
 }
 
-void SAKTableViewWithController::initialize(QAbstractTableModel *tableModel,
-                                            const QString &settingGroup)
+void SAKTableModelToolUi::setStretchSections(QList<int>columns)
 {
-    if (!tableModel) {
-        qCWarning(mLoggingCategory) << "The value of tableModel is nullptr!";
+    QTableView *tableView = ui->tableView;
+    QHeaderView *headerView = tableView->horizontalHeader();
+    for (int &column : columns) {
+        headerView->setSectionResizeMode(column, QHeaderView::Stretch);
+    }
+}
+
+void SAKTableModelToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
+                                                  const QString &settingGroup)
+{
+    if (!tool) {
+        qCWarning(mLoggingCategory) << "The value of tool is nullptr!";
         return;
     }
 
-    mTableModel = tableModel;
+    if (!tool->inherits("SAKTableModelTool")) {
+        qCWarning(mLoggingCategory)
+            << "The tool does not inherits SAKTableModelTool!";
+        return;
+    }
+
+    mTableModelTool = qobject_cast<SAKTableModelTool*>(tool);
+    if (!mTableModelTool) {
+        qCWarning(mLoggingCategory)
+            << "The value of mTableModelTool is nullptr!";
+        return;
+    }
+
+    mTableModel = mTableModelTool->tableModel().value<QAbstractTableModel*>();
     QTableView *tableView = ui->tableView;
     QHeaderView *headerView = tableView->horizontalHeader();
-    int columnCount = tableModel->columnCount();
+    int columnCount = mTableModel->columnCount();
     QStringList headers;
     for (int i = 0; i < columnCount; i++) {
         auto orientation = Qt::Orientation::Horizontal;
-        QString str = tableModel->headerData(i, orientation).toString();
+        QString str = mTableModel->headerData(i, orientation).toString();
         headers.append(str);
     }
 
     QStandardItemModel *headerViewModel = new QStandardItemModel(headerView);
 
     tableView->setHorizontalHeader(headerView);
-    tableView->setModel(tableModel);
+    tableView->setModel(mTableModel);
 
     headerViewModel->setColumnCount(headers.count());
     headerViewModel->setHorizontalHeaderLabels(headers);
@@ -114,16 +136,98 @@ void SAKTableViewWithController::initialize(QAbstractTableModel *tableModel,
     importFromJson(QJsonDocument::fromJson(json).toJson());
 }
 
-void SAKTableViewWithController::setStretchSections(QList<int>columns)
+void SAKTableModelToolUi::clear()
 {
-    QTableView *tableView = ui->tableView;
-    QHeaderView *headerView = tableView->horizontalHeader();
-    for (int &column : columns) {
-        headerView->setSectionResizeMode(column, QHeaderView::Stretch);
+    int rowCount = mTableModel->rowCount();
+    mTableModel->removeRows(0, rowCount);
+}
+
+void SAKTableModelToolUi::remove(const QModelIndex &index)
+{
+    if (index.isValid()) {
+        mTableModel->removeRow(index.row());
     }
 }
 
-QModelIndex SAKTableViewWithController::currentIndex()
+void SAKTableModelToolUi::importFromJson(const QByteArray &json)
+{
+    QJsonDocument jsonDoc = QJsonDocument::fromJson(json);
+    QJsonArray jsonArray = jsonDoc.array();
+    for (int i = 0; i < jsonArray.count(); i++) {
+        QJsonObject jsonObj = jsonArray.at(i).toObject();
+        QJsonDocument jd;
+        jd.setObject(jsonObj);
+        QString item = QString::fromUtf8(jd.toJson());
+        mTableModelTool->addItem(item);
+    }
+}
+
+QByteArray SAKTableModelToolUi::exportAsJson()
+{
+    auto items = mTableModelTool->itemsContext();
+    QJsonArray jsonArray = items.toJsonArray();
+    QJsonDocument jsonDoc;
+    jsonDoc.setArray(jsonArray);
+    QByteArray json = jsonDoc.toJson();
+    return json;
+}
+
+void SAKTableModelToolUi::edit(const QModelIndex &index)
+{
+    QVariant var = mTableModelTool->itemContext(index.row());
+    QJsonObject jsonObj = var.toJsonObject();
+    QDialog *editor = itemEditor();
+    QGenericReturnArgument ret;
+    QMetaObject::invokeMethod(editor,
+                              "setParameters",
+                              Qt::DirectConnection,
+                              ret,
+                              Q_ARG(QJsonObject, jsonObj));
+    Q_UNUSED(ret);
+    editor->show();
+
+    if (QDialog::Accepted == editor->exec()) {
+        QJsonObject params;
+        QMetaObject::invokeMethod(editor,
+                                  "parameters",
+                                  Qt::DirectConnection,
+                                  Q_RETURN_ARG(QJsonObject, params));
+        QJsonDocument jsonDoc;
+        jsonDoc.setObject(params);
+        QString str = QString::fromUtf8(jsonDoc.toJson());
+        mTableModelTool->addItem(str, index.row());
+    }
+}
+
+bool SAKTableModelToolUi::append()
+{
+    QJsonObject jsonObj = mTableModelTool->itemContext(-1).toJsonObject();
+    QDialog *editor = itemEditor();
+    QGenericReturnArgument ret;
+    QMetaObject::invokeMethod(editor,
+                              "setParameters",
+                              Qt::DirectConnection,
+                              ret,
+                              Q_ARG(QJsonObject, jsonObj));
+    Q_UNUSED(ret);
+
+    editor->show();
+    if (!(QDialog::Accepted == editor->exec())) {
+        return false;
+    }
+
+    QMetaObject::invokeMethod(editor,
+                              "parameters",
+                              Qt::DirectConnection,
+                              Q_RETURN_ARG(QJsonObject, jsonObj));
+    QJsonDocument jsonDoc;
+    jsonDoc.setObject(jsonObj);
+    QString str = QString::fromUtf8(jsonDoc.toJson());
+    mTableModelTool->addItem(str, -1);
+    return true;
+}
+
+QModelIndex SAKTableModelToolUi::currentIndex()
 {
     QModelIndex index = ui->tableView->currentIndex();
     if (!index.isValid()) {
@@ -135,14 +239,14 @@ QModelIndex SAKTableViewWithController::currentIndex()
     return index;
 }
 
-void SAKTableViewWithController::writeToSettingsFile()
+void SAKTableModelToolUi::writeToSettingsFile()
 {
     QByteArray json = exportAsJson();
     SAKSettings::instance()->setValue(mItemsKey,
                                       QString::fromLatin1(json.toHex()));
 }
 
-void SAKTableViewWithController::onPushButtonEditClicked()
+void SAKTableModelToolUi::onPushButtonEditClicked()
 {
     QModelIndex index = currentIndex();
     if (index.isValid()) {
@@ -151,7 +255,7 @@ void SAKTableViewWithController::onPushButtonEditClicked()
     }
 }
 
-void SAKTableViewWithController::onPushButtonClearClicked()
+void SAKTableModelToolUi::onPushButtonClearClicked()
 {
     int ret = QMessageBox::warning(this,
                                    tr("Clear Data"),
@@ -164,7 +268,7 @@ void SAKTableViewWithController::onPushButtonClearClicked()
     }
 }
 
-void SAKTableViewWithController::onPushButtonDeleteClicked()
+void SAKTableModelToolUi::onPushButtonDeleteClicked()
 {
     int ret = QMessageBox::warning(this,
                                    tr("Delete Data"),
@@ -183,7 +287,7 @@ void SAKTableViewWithController::onPushButtonDeleteClicked()
     }
 }
 
-void SAKTableViewWithController::onPushButtonImportClicked()
+void SAKTableModelToolUi::onPushButtonImportClicked()
 {
     QString fileName = QFileDialog::getOpenFileName(this,
                                                     tr("Import data"),
@@ -206,7 +310,7 @@ void SAKTableViewWithController::onPushButtonImportClicked()
     }
 }
 
-void SAKTableViewWithController::onPushButtonExportClicked()
+void SAKTableModelToolUi::onPushButtonExportClicked()
 {
     QString fileName = QFileDialog::getSaveFileName(this,
                                                     tr("Import data"),
@@ -227,7 +331,7 @@ void SAKTableViewWithController::onPushButtonExportClicked()
     }
 }
 
-void SAKTableViewWithController::onPushButtonAppendClicked()
+void SAKTableModelToolUi::onPushButtonAppendClicked()
 {
     if (append()) {
         writeToSettingsFile();

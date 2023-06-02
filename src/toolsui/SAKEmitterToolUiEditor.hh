@@ -23,8 +23,9 @@ class SAKEmitterToolUiEditor : public QDialog
 public:
     explicit SAKEmitterToolUiEditor(QWidget *parent = nullptr);
     ~SAKEmitterToolUiEditor();
-    QJsonObject parameters();
-    void setParameters(const QJsonObject &params);
+
+    Q_INVOKABLE QJsonObject parameters();
+    Q_INVOKABLE void setParameters(const QJsonObject &params);
 
 private:
     Ui::SAKEmitterToolUiEditor *ui{nullptr};

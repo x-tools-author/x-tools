@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SAKTableViewWithController</class>
- <widget class="QWidget" name="SAKTableViewWithController">
+ <class>SAKTableModelToolUi</class>
+ <widget class="QWidget" name="SAKTableModelToolUi">
   <property name="geometry">
    <rect>
     <x>0</x>

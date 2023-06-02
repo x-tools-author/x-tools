@@ -511,19 +511,19 @@ void SAKToolBoxUi::initTools()
     ui->tabEmiter->setLayout(new QVBoxLayout());
     ui->tabEmiter->layout()->addWidget(mEmitterToolUi);
     mEmitterToolUi->initialize(mToolBox->getEmitterTool(),
-                               settingsGroup());
+                               settingsGroup() + "/emitter");
 
     mResponserToolUi = new SAKResponserToolUi();
     ui->tabResponser->setLayout(new QVBoxLayout());
     ui->tabResponser->layout()->addWidget(mResponserToolUi);
     mResponserToolUi->initialize(mToolBox->getResponserTool(),
-                                 settingsGroup());
+                                 settingsGroup() + "/responser");
 
     mPrestorerToolUi = new SAKPrestorerToolUi();
     ui->tabPrestorer->setLayout(new QVBoxLayout());
     ui->tabPrestorer->layout()->addWidget(mPrestorerToolUi);
     mPrestorerToolUi->initialize(mToolBox->getPrestorerTool(),
-                                 settingsGroup());
+                                 settingsGroup() + "/prestorer");
 }
 
 void SAKToolBoxUi::onTabWidgetCurrentChanged(int index)

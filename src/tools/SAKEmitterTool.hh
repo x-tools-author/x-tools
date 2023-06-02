@@ -15,9 +15,9 @@
 #include <QVariant>
 #include <QAbstractTableModel>
 
-#include "SAKTabelModelTool.hh"
+#include "SAKTableModelTool.hh"
 
-class SAKEmitterTool : public SAKTabelModelTool
+class SAKEmitterTool : public SAKTableModelTool
 {
     Q_OBJECT
     Q_PROPERTY(QString itemEnable READ itemEnable CONSTANT)

@@ -7,19 +7,19 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#ifndef SAKTABELMODELTOOL_HH
-#define SAKTABELMODELTOOL_HH
+#ifndef SAKTABLEMODELTOOL_HH
+#define SAKTABLEMODELTOOL_HH
 
 #include "SAKBaseTool.hh"
 #include "SAKTableModel.hh"
 
-class SAKTabelModelTool : public SAKBaseTool
+class SAKTableModelTool : public SAKBaseTool
 {
     Q_OBJECT
     Q_PROPERTY(QVariant tableModel READ tableModel CONSTANT)
     Q_PROPERTY(QStringList headers READ headers CONSTANT)
 public:
-    explicit SAKTabelModelTool(const char *logCategory,
+    explicit SAKTableModelTool(const char *logCategory,
                                QObject *parent = nullptr);
     QVariant tableModel();
     QStringList headers() const;
@@ -75,4 +75,4 @@ private:
                                int role = Qt::DisplayRole);
 };
 
-#endif // SAKTABELMODELTOOL_HH
+#endif // SAKTABLEMODELTOOL_HH

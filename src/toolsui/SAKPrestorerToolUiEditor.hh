@@ -23,8 +23,9 @@ class SAKPrestorerToolUiEditor : public QDialog
 public:
     explicit SAKPrestorerToolUiEditor(QWidget *parent = nullptr);
     ~SAKPrestorerToolUiEditor();
-    QJsonObject parameters();
-    void setParameters(const QJsonObject &params);
+
+    Q_INVOKABLE QJsonObject parameters();
+    Q_INVOKABLE void setParameters(const QJsonObject &params);
 
 private:
     Ui::SAKPrestorerToolUiEditor *ui{nullptr};

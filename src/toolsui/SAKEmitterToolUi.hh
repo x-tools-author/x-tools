@@ -12,26 +12,21 @@
 
 #include "SAKEmitterTool.hh"
 #include "SAKEmitterToolUiEditor.hh"
-#include "SAKTableViewWithController.hh"
+#include "SAKTableModelToolUi.hh"
 
-class SAKEmitterToolUi : public SAKTableViewWithController
+class SAKEmitterToolUi : public SAKTableModelToolUi
 {
     Q_OBJECT
 public:
     explicit SAKEmitterToolUi(QWidget *parent = nullptr);
     ~SAKEmitterToolUi();
-    void initialize(SAKEmitterTool *tool, const QString &settingsGroup);
 
 protected:
-    virtual void edit(const QModelIndex &index) override;
-    virtual void clear() override;
-    virtual void remove(const QModelIndex &index) override;
-    virtual void importFromJson(const QByteArray &json) override;
-    virtual QByteArray exportAsJson() override;
-    virtual bool append() override;
+    virtual void onBaseToolUiInitialized(SAKBaseTool *tool,
+                                         const QString &settingGroup) override;
+    virtual QDialog *itemEditor() override;
 
 private:
-    SAKEmitterTool *mTool{nullptr};
     SAKEmitterToolUiEditor *mEditor{nullptr};
 };
 

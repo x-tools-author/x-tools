@@ -10,28 +10,23 @@
 #ifndef SAKPRESTORERTOOLUI_HH
 #define SAKPRESTORERTOOLUI_HH
 
-#include "SAKTableViewWithController.hh"
+#include "SAKTableModelToolUi.hh"
 
 class SAKPrestorerTool;
 class SAKPrestorerToolUiEditor;
-class SAKPrestorerToolUi : public SAKTableViewWithController
+class SAKPrestorerToolUi : public SAKTableModelToolUi
 {
     Q_OBJECT
 public:
     explicit SAKPrestorerToolUi(QWidget *parent = nullptr);
     ~SAKPrestorerToolUi();
-    void initialize(SAKPrestorerTool *tool, const QString &settingsGroup);
 
 protected:
-    virtual void edit(const QModelIndex &index) final;
-    virtual void clear() final;
-    virtual void remove(const QModelIndex &index) final;
-    virtual void importFromJson(const QByteArray &json) final;
-    virtual QByteArray exportAsJson() final;
-    virtual bool append() final;
+    virtual void onBaseToolUiInitialized(SAKBaseTool *tool,
+                                         const QString &settingGroup) override;
+    virtual QDialog *itemEditor() override;
 
 private:
-    SAKPrestorerTool *mTool{nullptr};
     SAKPrestorerToolUiEditor *mEditor{nullptr};
 };
 

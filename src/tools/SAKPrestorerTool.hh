@@ -15,9 +15,9 @@
 #include <QVariant>
 #include <QAbstractTableModel>
 
-#include "SAKTabelModelTool.hh"
+#include "SAKTableModelTool.hh"
 
-class SAKPrestorerTool : public SAKTabelModelTool
+class SAKPrestorerTool : public SAKTableModelTool
 {
     Q_OBJECT
     Q_PROPERTY(QVariant tableModel READ tableModel CONSTANT)

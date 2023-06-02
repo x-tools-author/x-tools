@@ -18,7 +18,7 @@
 #include "SAKDataStructure.hh"
 
 SAKPrestorerTool::SAKPrestorerTool(QObject *parent)
-    : SAKTabelModelTool{"SAK.PresetDataTool", parent}
+    : SAKTableModelTool{"SAK.PresetDataTool", parent}
 {
 
 }

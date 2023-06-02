@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#ifndef SAKTABLEVIEWWITHCONTROLLER_HH
-#define SAKTABLEVIEWWITHCONTROLLER_HH
+#ifndef SAKTABLEMODELTOOLUI_HH
+#define SAKTABLEMODELTOOLUI_HH
 
 #include <QMenu>
 #include <QWidget>
@@ -18,44 +18,49 @@
 #include <QLoggingCategory>
 #include <QAbstractTableModel>
 
+#include "SAKBaseToolUi.hh"
+
 namespace Ui {
-class SAKTableViewWithController;
+class SAKTableModelToolUi;
 }
 
-class SAKTableViewWithController : public QWidget
+class SAKTableModelTool;
+class SAKTableModelToolUi : public SAKBaseToolUi
 {
     Q_OBJECT
 public:
-    explicit SAKTableViewWithController(const char *lg,
-                                        QWidget *parent = nullptr);
-    ~SAKTableViewWithController();
-
-    void initialize(QAbstractTableModel *tableModel,
-                    const QString &settingGroup);
-
+    explicit SAKTableModelToolUi(const char *lg, QWidget *parent = nullptr);
+    ~SAKTableModelToolUi();
     void setStretchSections(QList<int>columns);
+
+protected:
+    virtual void onBaseToolUiInitialized(SAKBaseTool *tool,
+                                         const QString &settingGroup) override;
+    virtual QDialog *itemEditor() = 0;
 
 protected:
     const QLoggingCategory mLoggingCategory;
     QAbstractTableModel *mTableModel{nullptr};
 
-    virtual void edit(const QModelIndex &index) = 0;
-    virtual void clear() = 0;
-    virtual void remove(const QModelIndex &index) = 0;
-    virtual void importFromJson(const QByteArray &json) = 0;
-    virtual QByteArray exportAsJson() = 0;
-    virtual bool append() = 0;
+private:
+    void clear();
+    void remove(const QModelIndex &index);
+    void importFromJson(const QByteArray &json);
+    QByteArray exportAsJson();
+    void edit(const QModelIndex &index);
+    bool append();
 
 private:
     QMenu *mMenu{nullptr};
     QString mItemsKey;
+    SAKTableModelTool *mTableModelTool;
 
 private:
     QModelIndex currentIndex();
     void writeToSettingsFile();
 
 private:
-    Ui::SAKTableViewWithController *ui{nullptr};
+    Ui::SAKTableModelToolUi *ui{nullptr};
 
     void onPushButtonEditClicked();
     void onPushButtonClearClicked();
@@ -65,4 +70,4 @@ private:
     void onPushButtonAppendClicked();
 };
 
-#endif // SAKTABLEVIEWWITHCONTROLLER_H
+#endif // SAKTABLEMODELTOOLUI_H
