@@ -26,6 +26,46 @@ SAKSettings *SAKSettings::instance()
     return &settings;
 }
 
+int SAKSettings::hdpiPolicy()
+{
+    int ret = value(mSettingsKey.hdpiPolicy).toInt();
+    if ((ret < 1) || (ret > 5)) {
+        ret = int(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
+    }
+
+    return ret;
+}
+
+void SAKSettings::setHdpiPolicy(int policy)
+{
+    if ((policy < 1) || (policy > 5)) {
+        policy = int(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
+    }
+
+    setValue(mSettingsKey.hdpiPolicy, policy);
+    emit hdpiPolicyChanged();
+}
+
+int SAKSettings::uiType()
+{
+    int ret = value(mSettingsKey.uiType).toInt();
+    if ((ret < 0) || (ret > 1)) {
+        ret = UiTypeWidget;
+    }
+
+    return ret;
+}
+
+void SAKSettings::setUiType(int type)
+{
+    if ((type < 0) || (type > 1)) {
+        type = UiTypeWidget;
+    }
+
+    setValue(mSettingsKey.uiType, type);
+    emit uiTypeChanged();
+}
+
 QVariant SAKSettings::sakValue(const QString &key,
                              const QVariant &defaultValue) const
 {

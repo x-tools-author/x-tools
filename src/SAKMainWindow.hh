@@ -63,6 +63,7 @@ private:
     void initOptionMenuSettingsMenu(QMenu *optionMenu);
     void initOptionMenuTestPageAction(QMenu *optionMenu);
     void initOptionMenuUiType(QMenu *optionMenu);
+    void initOptionMenuHdpiPolicy(QMenu *optionMenu);
     void initWindowMenu();
     void initLanguageMenu();
     void initHelpMenu();

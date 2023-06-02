@@ -22,7 +22,6 @@ SAKPane {
                 id: hidComboBox
                 textRole: "text"
                 valueRole: "value"
-                settingKey: "highDpiScaleFactorRoundingPolicy"
                 model: ListModel {
                     id: hidListModel
                     ListElement{text: qsTr(".5"); value: 1; detail: qsTr("Round up for .5 and above.")}
@@ -31,7 +30,18 @@ SAKPane {
                     ListElement{text: qsTr(".75"); value: 4; detail: qsTr("Round up for .75 and above.")}
                     ListElement{text: qsTr("Don't"); value: 5; detail: qsTr("Don't round.")}
                 }
+
+                onActivated: sakSettings.hdpiPolicy = hidComboBox.currentValue
+
                 property string detail: hidListModel.get(currentIndex).detail
+
+                Component.onCompleted: {
+                    var v = sakSettings.hdpiPolicy
+                    var ret = hidComboBox.indexOfValue(v)
+                    if (ret >= 0 && ret < hidComboBox.count) {
+                        hidComboBox.currentIndex = ret
+                    }
+                }
             }
             SAKLabel {
                 text: String("(%1)").arg(hidComboBox.detail)
@@ -43,14 +53,13 @@ SAKPane {
                 model: [qsTr("Classical"), qsTr("Modern")]
                 onActivated: {
                     if (currentIndex === 0) {
-                        sakSettings.sakSetValue("isQmlUi", edFalse)
+                        sakSettings.uiType = SAKSettings.UiTypeWidget
                     } else {
-                        sakSettings.sakSetValue("isQmlUi", edTrue)
+                        sakSettings.uiType = SAKSettings.UiTypeQml
                     }
                 }
                 Component.onCompleted: {
-                    var isQmlUi = sakSettings.sakValue("isQmlUi")
-                    if (isQmlUi) {
+                    if (sakSettings.uiType === SAKSettings.UiTypeQml) {
                         currentIndex = 1
                     }
                 }

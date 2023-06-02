@@ -52,11 +52,12 @@ SAKGuiApplication::SAKGuiApplication(int argc, char *argv[])
     auto sakSettings = SAKSettings::instance();
 
     const QString reason = "Uncreatable type!";
-    qmlRegisterType<SAKBleScanner>("SAK.Custom", 1, 0, "EDBle");
-    qmlRegisterType<SAKCrcInterface>("SAK.Custom", 1, 0, "EDCrc");
     qmlRegisterType<SAKToolBox>("SAK.Custom", 1, 0, "EDDevice");
-    qmlRegisterType<SAKSerialPortScanner>("SAK.Custom", 1, 0, "EDSerialPort");
+    qmlRegisterType<SAKSettings>("SAK.Custom", 1, 0, "SAKSettings");
+    qmlRegisterType<SAKBleScanner>("SAK.Custom", 1, 0, "EDBle");
     qmlRegisterType<SAKHighlighter>("SAK.Custom", 1, 0, "EDHighlighter");
+    qmlRegisterType<SAKCrcInterface>("SAK.Custom", 1, 0, "EDCrc");
+    qmlRegisterType<SAKSerialPortScanner>("SAK.Custom", 1, 0, "EDSerialPort");
     qmlRegisterType<SAKNetworkInterfaceScanner>("SAK.Custom", 1, 0, "EDNetworkInterface");
 
     qmlRegisterUncreatableType<SAKBaseTool>("SAK.Custom", 1, 0, "EDBaseTool", reason);

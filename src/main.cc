@@ -32,10 +32,20 @@
 
 int main(int argc, char *argv[])
 {
+    // Initialize some information about application.
+    QCoreApplication::setOrganizationName(QString("Qsaker"));
+    QCoreApplication::setOrganizationDomain(QString("IT"));
+    QCoreApplication::setApplicationName(QString("QtSwissArmyKnife"));
+#ifdef SAK_VERSION
+    QCoreApplication::setApplicationVersion(SAK_VERSION);
+#else
+    QCoreApplication::setApplicationVersion("0.0.0");
+#endif
+
     // High dpi settings.
     auto sakSettings = SAKSettings::instance();
 #if QT_VERSION > QT_VERSION_CHECK(5, 13, 0)
-    auto policy = sakSettings->value("highDpiScaleFactorRoundingPolicy").toInt();
+    auto policy = sakSettings->hdpiPolicy();
     auto cookedPolicy = Qt::HighDpiScaleFactorRoundingPolicy(policy);
     QGuiApplication::setHighDpiScaleFactorRoundingPolicy(cookedPolicy);
 #endif
@@ -47,16 +57,15 @@ int main(int argc, char *argv[])
         sakSettings->setValue("language", language);
     }
 
-    bool isQmlUi = sakSettings->value("isQmlUi").toBool();
     int exitCode = 0;
     do {
+        int uiType = sakSettings->uiType();
         QCoreApplication *app{nullptr};
-        if (isQmlUi) {
-            app = new SAKGuiApplication(argc, argv);
-        } else {
+        if (uiType == SAKSettings::UiTypeWidget) {
             app = new SAKApplication(argc, argv);
+        } else {
+            app = new SAKGuiApplication(argc, argv);
         }
-
 
         auto sakI18n = SAKI18N::instance();
         sakI18n->setConfigurationFile(":/res/i18n/easydebug.json");

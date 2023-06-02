@@ -282,6 +282,7 @@ void SAKMainWindow::initOptionMenu()
     initOptionMenuTestPageAction(optionMenu);
 #endif
     initOptionMenuUiType(optionMenu);
+    initOptionMenuHdpiPolicy(optionMenu);
 }
 
 void SAKMainWindow::initOptionMenuAppStyleMenu(QMenu *optionMenu)
@@ -395,21 +396,20 @@ void SAKMainWindow::initOptionMenuUiType(QMenu *optionMenu)
     QAction *classicalAction = new QAction(tr("Classical"), this);
     classicalAction->setCheckable(true);
     connect(classicalAction, &QAction::triggered, this, [=](){
-        SAKSettings::instance()->setValue("isQmlUi", false);
+        SAKSettings::instance()->setUiType(SAKSettings::UiTypeWidget);
         rebootRequestion();
     });
 
     QAction *modernAction =  new QAction(tr("Modern"), this);
     modernAction->setCheckable(true);
     connect(modernAction, &QAction::triggered, this, [=](){
-        SAKSettings::instance()->setValue("isQmlUi", true);
+        SAKSettings::instance()->setUiType(SAKSettings::UiTypeQml);
         rebootRequestion();
     });
 
     ag->addAction(classicalAction);
     ag->addAction(modernAction);
-    bool isQmlUi = SAKSettings::instance()->value("isQmlUi").toBool();
-    if (isQmlUi) {
+    if (SAKSettings::instance()->uiType() == SAKSettings::UiTypeQml) {
         modernAction->setChecked(true);
     } else {
         classicalAction->setChecked(true);
@@ -417,6 +417,68 @@ void SAKMainWindow::initOptionMenuUiType(QMenu *optionMenu)
 
     menu->addAction(classicalAction);
     menu->addAction(modernAction);
+    optionMenu->addMenu(menu);
+}
+
+void SAKMainWindow::initOptionMenuHdpiPolicy(QMenu *optionMenu)
+{
+    QMenu *menu = new QMenu(tr("HDPI Policy"));
+    QActionGroup *ag = new QActionGroup(this);
+
+    QAction *roundAction = new QAction(tr("Round up for .5 and above."), this);
+    QAction *ceilAction = new QAction(tr("Always round up."), this);
+    QAction *floorAction = new QAction(tr("Always round down."), this);
+    QAction *rpfAction = new QAction(tr("Round up for .75 and above."), this);
+    QAction *passThroughAction = new QAction(tr("Don't round."), this);
+
+    auto round = Qt::HighDpiScaleFactorRoundingPolicy::Round;
+    auto ceil = Qt::HighDpiScaleFactorRoundingPolicy::Ceil;
+    auto floor = Qt::HighDpiScaleFactorRoundingPolicy::Floor;
+    auto rpf = Qt::HighDpiScaleFactorRoundingPolicy::RoundPreferFloor;
+    auto passThrough = Qt::HighDpiScaleFactorRoundingPolicy::PassThrough;
+
+    connect(roundAction, &QAction::triggered, this, [=](){
+        SAKSettings::instance()->setHdpiPolicy(int(round));
+    });
+    connect(ceilAction, &QAction::triggered, this, [=](){
+        SAKSettings::instance()->setHdpiPolicy(int(ceil));
+    });
+    connect(floorAction, &QAction::triggered, this, [=](){
+        SAKSettings::instance()->setHdpiPolicy(int(floor));
+    });
+    connect(rpfAction, &QAction::triggered, this, [=](){
+
+        SAKSettings::instance()->setHdpiPolicy(int(rpf));
+    });
+    connect(passThroughAction, &QAction::triggered, this, [=](){
+
+        SAKSettings::instance()->setHdpiPolicy(int(passThrough));
+    });
+
+    ag->addAction(roundAction);
+    ag->addAction(ceilAction);
+    ag->addAction(floorAction);
+    ag->addAction(rpfAction);
+    ag->addAction(passThroughAction);
+
+    auto list = ag->actions();
+    for (auto &a : list) {
+        a->setCheckable(true);
+    }
+
+    if (SAKSettings::instance()->hdpiPolicy() == int(round)) {
+        roundAction->setChecked(true);
+    } else if (SAKSettings::instance()->hdpiPolicy() == int(ceil)) {
+        ceilAction->setChecked(true);
+    } else if (SAKSettings::instance()->hdpiPolicy() == int(floor)) {
+        floorAction->setChecked(true);
+    } else if (SAKSettings::instance()->hdpiPolicy() == int(rpf)) {
+        rpfAction->setChecked(true);
+    } else if (SAKSettings::instance()->hdpiPolicy() == int(passThrough)) {
+        passThroughAction->setChecked(true);
+    }
+
+    menu->addActions(ag->actions());
     optionMenu->addMenu(menu);
 }
 

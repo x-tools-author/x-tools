@@ -44,17 +44,6 @@ QTime buildTime = QTime::fromString(__TIME__, "hh:mm:ss");
 SAKApplication::SAKApplication(int argc, char **argv)
     :QApplication (argc, argv)
 {
-    // Initialize some information about application.
-    setOrganizationName(QString("Qsaker"));
-    setOrganizationDomain(QString("IT"));
-    setApplicationName(QString("QtSwissArmyKnife"));
-#ifdef SAK_VERSION
-    setApplicationVersion(SAK_VERSION);
-#else
-    setApplicationVersion("0.0.0");
-#endif
-
-
     // It can avoid app crash in this way to show a splashScreen.
     // If you new a QSplashScreen and show it in the main function,
     // app will crash(test on Ubuntu 16.04).
