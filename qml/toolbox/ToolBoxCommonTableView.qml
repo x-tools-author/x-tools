@@ -21,6 +21,7 @@ Item {
     property var showColumns: []
 
     readonly property int cellPadding: 4
+    property string itemsKey: ""
     property SAKTabelModelTool tabelModelTool: null
 
     onWidthChanged: tableView.forceLayout()
@@ -183,5 +184,30 @@ Item {
         title: qsTr("Please Select an Item")
         text: qsTr("Please select an item fist, the operaion need you to specify an item.")
         buttons: MessageDialog.Ok
+    }
+
+    Component.onCompleted: {
+        if (itemsKey === "") {
+            return
+        }
+
+        if (!tabelModelTool) {
+            return
+        }
+
+        var hexString = sakSettings.value(itemsKey)
+        var jsonString = sakInterface.hexString2String(hexString);
+        try {
+            var jsonArray = JSON.parse(jsonString)
+        } catch (e) {
+            return
+        }
+
+        if (jsonArray) {
+            for (var i = 0; i < jsonArray.length; i++) {
+                var item = jsonArray[i]
+                tabelModelTool.addItem(JSON.stringify(item), -1)
+            }
+        }
     }
 }

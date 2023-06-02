@@ -63,12 +63,12 @@ SAKGroupBox {
     }
 
     Component.onCompleted: {
-        var keyWords = sakSettings.sakArrayValues(groupName, settingKeys.highlighterArrayName, settingKeys.highlighterKeyWord)
-        for (var i = 0; i < keyWords.length; i++) {
-            keyWordListModel.append({keyWord: keyWords[i]})
-        }
+//        var keyWords = sakSettings.sakArrayValues(groupName, settingKeys.highlighterArrayName, settingKeys.highlighterKeyWord)
+//        for (var i = 0; i < keyWords.length; i++) {
+//            keyWordListModel.append({keyWord: keyWords[i]})
+//        }
 
-        highlighter.setKeyWords(keyWords)
+//        highlighter.setKeyWords(keyWords)
     }
 
     function setDocument(doc) {

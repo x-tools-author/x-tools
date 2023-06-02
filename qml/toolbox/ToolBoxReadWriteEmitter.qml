@@ -23,6 +23,7 @@ Item {
         fillWidthColumns: [11]
         showColumns: [0, 1, 11]
         tabelModelTool: root.emitterTool
+        itemsKey: settingKeys.items
         onInvokeAppend: {
             var parameters = emitterTool.itemContext(-1)
             editorPopup.setParameters(parameters)
@@ -52,17 +53,17 @@ Item {
         property int index: -1
     }
 
-    Component.onCompleted: {
-        var hexString = sakSettings.value(settingKeys.items)
-        var jsonString = sakInterface.hexString2String(hexString);
-        var jsonArray = JSON.parse(jsonString)
-        if (jsonArray) {
-            for (var i = 0; i < jsonArray.length; i++) {
-                var item = jsonArray[i]
-                emitterTool.addItem(JSON.stringify(item), -1)
-            }
-        }
-    }
+//    Component.onCompleted: {
+//        var hexString = sakSettings.value(settingKeys.items)
+//        var jsonString = sakInterface.hexString2String(hexString);
+//        var jsonArray = JSON.parse(jsonString)
+//        if (jsonArray) {
+//            for (var i = 0; i < jsonArray.length; i++) {
+//                var item = jsonArray[i]
+//                emitterTool.addItem(JSON.stringify(item), -1)
+//            }
+//        }
+//    }
 
     function updateSettings() {
         sakSettings.edRemove(settingKeys.group, settingKeys.array)

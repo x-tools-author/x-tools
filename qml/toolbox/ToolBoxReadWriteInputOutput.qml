@@ -196,22 +196,22 @@ Item {
                     }
 
                     Component.onCompleted: {
-                        var values = sakSettings.sakArrayValues(keysObj.itemGroup, keysObj.itemArray, keysObj.itemAll)
-                        var item = {}
-                        for (var i = 0; i < values.length; i++) {
-                            var str = sakInterface.hexString2String(values[i])
-                            var jsonObj = JSON.parse(str)
-                            item[keysObj.itemText] = jsonObj[keysObj.itemText]
-                            item[keysObj.itemFormat] = jsonObj[keysObj.itemFormat]
-                            hisrotyListModel.append(item)
-                        }
+//                        var values = sakSettings.sakArrayValues(keysObj.itemGroup, keysObj.itemArray, keysObj.itemAll)
+//                        var item = {}
+//                        for (var i = 0; i < values.length; i++) {
+//                            var str = sakInterface.hexString2String(values[i])
+//                            var jsonObj = JSON.parse(str)
+//                            item[keysObj.itemText] = jsonObj[keysObj.itemText]
+//                            item[keysObj.itemFormat] = jsonObj[keysObj.itemFormat]
+//                            hisrotyListModel.append(item)
+//                        }
 
-                        var index = sakSettings.value(keysObj.itemCurrentIndex)
-                        if (index >= 0 && index < hisrotyListModel.count) {
-                            currentIndex = index
-                            editText = currentText
-                            // Todo: no effect, need to fix.
-                        }
+//                        var index = sakSettings.value(keysObj.itemCurrentIndex)
+//                        if (index >= 0 && index < hisrotyListModel.count) {
+//                            currentIndex = index
+//                            editText = currentText
+//                            // Todo: no effect, need to fix.
+//                        }
                     }
                 }
                 SAKButton {

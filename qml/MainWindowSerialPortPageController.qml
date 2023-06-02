@@ -69,7 +69,7 @@ SAKPane {
                                       portNameComboBox.currentText)
             }
             Component.onCompleted: {
-                var portName = sakSettings.Value(settingKeys.portName)
+                var portName = sakSettings.value(settingKeys.portName)
                 var ret = portNameComboBox.find(portName)
                 if (ret !== -1) {
                     portNameComboBox.currentIndex = ret
@@ -157,7 +157,7 @@ SAKPane {
                 sakSettings.setValue(settingKeys.dataBits, dataBitsComboBox.currentValue)
             }
             Component.onCompleted: {
-                var dataBit = sakSettings.Value(settingKeys.dataBits)
+                var dataBit = sakSettings.value(settingKeys.dataBits)
                 if (dataBit !== 0) {
                     var ret = dataBitsComboBox.indexOfValue(dataBit)
                     if (ret !== -1) {
@@ -186,7 +186,7 @@ SAKPane {
                 sakSettings.setValue(settingKeys.parity, parityComboBox.currentValue)
             }
             Component.onCompleted: {
-                var parity = sakSettings.Value(settingKeys.parity)
+                var parity = sakSettings.value(settingKeys.parity)
                 if (parity !== 0) {
                     var ret = parityComboBox.indexOfValue(parity)
                     if (ret !== -1) {
@@ -214,7 +214,7 @@ SAKPane {
                                       flowControlComboBox.currentValue)
             }
             Component.onCompleted: {
-                var flowControl = sakSettings.Value(settingKeys.flowControl)
+                var flowControl = sakSettings.value(settingKeys.flowControl)
                 if (flowControl !== 0) {
                     var ret = flowControlComboBox.indexOfValue(flowControl)
                     if (ret !== -1) {
@@ -233,7 +233,7 @@ SAKPane {
                 sakSettings.setValue(settingKeys.customBaudRate, bdCheckBox.checked)
             }
             Component.onCompleted: {
-                var customBaudRate = sakSettings.Value(settingKeys.customBaudRate)
+                var customBaudRate = sakSettings.value(settingKeys.customBaudRate)
                 bdCheckBox.checked = customBaudRate === edTrue ? true : false
             }
         }
@@ -249,7 +249,7 @@ SAKPane {
                                       ignoredBusyDeviceCheckBox.checked)
             }
             Component.onCompleted: {
-                var ignoredBusyDevice = sakSettings.Value(settingKeys.ignoredBusyDevice)
+                var ignoredBusyDevice = sakSettings.value(settingKeys.ignoredBusyDevice)
                 ignoredBusyDeviceCheckBox.checked = ignoredBusyDevice === edTrue ? true : false
             }
         }
@@ -264,7 +264,7 @@ SAKPane {
                 sakSettings.setValue(settingKeys.autoUpdatePortNames, autoUpdatePortNameCheckBox.checked)
             }
             Component.onCompleted: {
-                var autoUpdatePortNames = sakSettings.Value(settingKeys.autoUpdatePortNames)
+                var autoUpdatePortNames = sakSettings.value(settingKeys.autoUpdatePortNames)
                 autoUpdatePortNameCheckBox.checked = autoUpdatePortNames === edTrue ? true : false
             }
         }

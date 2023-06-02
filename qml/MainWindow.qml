@@ -24,7 +24,7 @@ Window {
             return Material.System
         }
 
-        var theme = sakSettings.Value(settingKeys.materialTheme)
+        var theme = sakSettings.value(settingKeys.materialTheme)
 
         if (theme === Material.Dark) {
             //edMaterialAccent = Material.color(edMaterialAccent, Material.Shade200)
@@ -41,7 +41,7 @@ Window {
             return Material.color(Material.Pink)
         }
 
-        var accent = sakSettings.Value(settingKeys.materialAccent)
+        var accent = sakSettings.value(settingKeys.materialAccent)
         if (accent) {
             return accent
         } else {
@@ -53,7 +53,7 @@ Window {
             return Material.color(Material.Pink)
         }
 
-        var primary = sakSettings.Value(settingKeys.materialPrimary)
+        var primary = sakSettings.value(settingKeys.materialPrimary)
         if (primary) {
             return primary
         } else {
@@ -159,7 +159,7 @@ Window {
                 }
             }
             Component.onCompleted: {
-                var index = sakSettings.Value(settingKeys.pageIndex)
+                var index = sakSettings.value(settingKeys.pageIndex)
                 if (index !== undefined) {
                     pageIndex = index > (fixedpage - 1) ? 0 : index
                 }

@@ -13,9 +13,7 @@ Item {
 
     QtObject {
         id: settingKeys
-        readonly property string group: groupName + "Prestore"
-        readonly property string array: "item"
-        readonly property string key: "itemData"
+        readonly property string items: groupName + "/prestorer/items"
     }
 
     ToolBoxCommonTableView {
@@ -24,6 +22,8 @@ Item {
         tableHeaders: presotrerTool ? presotrerTool.headers : []
         fillWidthColumns: [9]
         showColumns: [0, 9]
+        tabelModelTool: root.presotrerTool
+        itemsKey: settingKeys.items
         onInvokeAppend: {
             var parameters = presotrerTool.itemContext(-1)
             editorPopup.setParameters(parameters)
@@ -53,17 +53,17 @@ Item {
         property int index: -1
     }
 
-    Component.onCompleted: {
-        var hexString = sakSettings.value(settingKeys.items)
-        var jsonString = sakInterface.hexString2String(hexString);
-        var jsonArray = JSON.parse(jsonString)
-        if (jsonArray) {
-            for (var i = 0; i < jsonArray.length; i++) {
-                var item = jsonArray[i]
-                emitterTool.addItem(JSON.stringify(item), -1)
-            }
-        }
-    }
+//    Component.onCompleted: {
+//        var hexString = sakSettings.value(settingKeys.items)
+//        var jsonString = sakInterface.hexString2String(hexString);
+//        var jsonArray = JSON.parse(jsonString)
+//        if (jsonArray) {
+//            for (var i = 0; i < jsonArray.length; i++) {
+//                var item = jsonArray[i]
+//                presotrerTool.addItem(JSON.stringify(item), -1)
+//            }
+//        }
+//    }
 
     function updateSettings() {
         sakSettings.edRemove(settingKeys.group, settingKeys.array)

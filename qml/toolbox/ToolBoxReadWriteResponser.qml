@@ -12,9 +12,7 @@ Item {
 
     QtObject {
         id: settingKeys
-        readonly property string group: groupName + "Responser"
-        readonly property string array: "responser"
-        readonly property string key: "itemData"
+        readonly property string items: groupName + "/responser/items"
     }
 
     ToolBoxCommonTableView {
@@ -24,6 +22,8 @@ Item {
         tableHeaders: responserTool ? responserTool.headers : []
         fillWidthColumns: [11, 21]
         showColumns: [0, 1, 2, 11, 21]
+        tabelModelTool: root.responserTool
+        itemsKey: settingKeys.items
         onInvokeAppend: {
             var parameters = responserTool.itemContext(-1)
             editorPopup.setParameters(parameters)
@@ -53,22 +53,17 @@ Item {
         property int index: -1
     }
 
-    Component.onCompleted: {
-        var hexStringList = sakSettings.sakArrayValues(settingKeys.group,
-                                                     settingKeys.array,
-                                                     settingKeys.key)
-        if (hexStringList.length) {
-            var jsonArray = []
-            for (var i = 0; i < hexStringList.length; i++) {
-                var hexString = hexStringList[i];
-                var jsonString = sakInterface.hexString2String(hexString)
-                jsonArray.push(JSON.parse(jsonString))
-            }
-            if (jsonArray.length) {
-                sakInterface.jsonArray2TableModel(responserTool.tableModel, jsonArray)
-            }
-        }
-    }
+//    Component.onCompleted: {
+//        var hexString = sakSettings.value(settingKeys.items)
+//        var jsonString = sakInterface.hexString2String(hexString);
+//        var jsonArray = JSON.parse(jsonString)
+//        if (jsonArray) {
+//            for (var i = 0; i < jsonArray.length; i++) {
+//                var item = jsonArray[i]
+//                responserTool.addItem(JSON.stringify(item), -1)
+//            }
+//        }
+//    }
 
     function updateSettings() {
         sakSettings.edRemove(settingKeys.group, settingKeys.array)
