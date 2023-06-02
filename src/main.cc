@@ -10,7 +10,10 @@
 #include "SAKI18N.hh"
 #include "SAKSettings.hh"
 #include "SAKApplication.hh"
+
+#if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
 #include "SAKGuiApplication.hh"
+#endif
 
 int main(int argc, char *argv[])
 {
@@ -25,7 +28,7 @@ int main(int argc, char *argv[])
 #endif
 
     // High dpi settings.
-#if QT_VERSION > QT_VERSION_CHECK(5, 13, 0)
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     auto policy = SAKSettings::instance()->hdpiPolicy();
     auto cookedPolicy = Qt::HighDpiScaleFactorRoundingPolicy(policy);
     QGuiApplication::setHighDpiScaleFactorRoundingPolicy(cookedPolicy);
@@ -46,7 +49,12 @@ int main(int argc, char *argv[])
         SAKApplication app(argc, argv);
         app.exec();
     } else {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
         SAKGuiApplication app(argc, argv);
         app.exec();
+#else
+        SAKSettings::instance()->setUiType(SAKSettings::UiTypeWidget);
+        qInfo() << "Please using Qt 6.4.0 or later!";
+#endif
     }
 }

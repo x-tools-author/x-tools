@@ -94,8 +94,14 @@ TRANSLATIONS  += \
 
 RESOURCES += \
     SAKResources.qrc \
-    SAKQmlResources.qrc \
     SAKWidgetResources.qrc
+
+greaterThan(QT_MAJOR_VERSION, 5) {
+    greaterThan(QT_MINOR_VERSION, 3) {
+        RESOURCES += \
+            SAKQmlResources.qrc
+    }
+}
 
 INCLUDEPATH += \
     src \
@@ -109,7 +115,6 @@ FORMS += \
 
 HEADERS += \
     src/SAKApplication.hh \
-    src/SAKGuiApplication.hh \
     src/SAKMainWindow.hh \
     src/SAKSystemTrayIcon.hh \
     src/update/SAKDownloadItemWidget.hh \
@@ -117,9 +122,15 @@ HEADERS += \
 
 SOURCES += \
     src/SAKApplication.cc \
-    src/SAKGuiApplication.cc \
     src/SAKMainWindow.cc \
     src/SAKSystemTrayIcon.cc \
     src/main.cc \
     src/update/SAKDownloadItemWidget.cc \
     src/update/SAKUpdateManager.cc
+
+greaterThan(QT_MAJOR_VERSION, 5) {
+    greaterThan(QT_MINOR_VERSION, 3) {
+        HEADERS += src/SAKGuiApplication.hh
+        SOURCES += src/SAKGuiApplication.cc
+    }
+}

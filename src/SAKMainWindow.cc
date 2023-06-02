@@ -283,7 +283,9 @@ void SAKMainWindow::initOptionMenu()
     initOptionMenuTestPageAction(optionMenu);
 #endif
     initOptionMenuUiType(optionMenu);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     initOptionMenuHdpiPolicy(optionMenu);
+#endif
 }
 
 void SAKMainWindow::initOptionMenuAppStyleMenu(QMenu *optionMenu)
@@ -421,6 +423,7 @@ void SAKMainWindow::initOptionMenuUiType(QMenu *optionMenu)
     optionMenu->addMenu(menu);
 }
 
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
 void SAKMainWindow::initOptionMenuHdpiPolicy(QMenu *optionMenu)
 {
     QMenu *menu = new QMenu(tr("HDPI Policy"));
@@ -482,6 +485,7 @@ void SAKMainWindow::initOptionMenuHdpiPolicy(QMenu *optionMenu)
     menu->addActions(ag->actions());
     optionMenu->addMenu(menu);
 }
+#endif
 
 void SAKMainWindow::initWindowMenu()
 {

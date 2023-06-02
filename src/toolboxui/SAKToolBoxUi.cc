@@ -9,6 +9,7 @@
  *****************************************************************************/
 #include <QMetaEnum>
 #include <QLineEdit>
+#include <QDateTime>
 #include <QRegularExpression>
 
 #include "SAKSettings.hh"
@@ -462,7 +463,8 @@ void SAKToolBoxUi::initSignalsInput()
             this, &SAKToolBoxUi::onComboBoxInputIntervelCurrentIndexChanged);
     connect(ui->pushButtonInputSend, &QPushButton::clicked,
             this, &SAKToolBoxUi::onPushButtonInputSendClicked);
-    connect(ui->comboBoxInputFormat, &QComboBox::activated,
+    connect(ui->comboBoxInputFormat,
+            QOverload<int>::of(&QComboBox::activated),
             this, &SAKToolBoxUi::onComboBoxInputFormatActivated);
     connect(ui->comboBoxInputText, &QComboBox::currentTextChanged,
             this, &SAKToolBoxUi::onInputTextChanged);

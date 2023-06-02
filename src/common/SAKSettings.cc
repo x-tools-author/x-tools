@@ -29,18 +29,21 @@ SAKSettings *SAKSettings::instance()
 int SAKSettings::hdpiPolicy()
 {
     int ret = value(mSettingsKey.hdpiPolicy).toInt();
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     if ((ret < 1) || (ret > 5)) {
         ret = int(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
     }
-
+#endif
     return ret;
 }
 
 void SAKSettings::setHdpiPolicy(int policy)
 {
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     if ((policy < 1) || (policy > 5)) {
         policy = int(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
     }
+#endif
 
     setValue(mSettingsKey.hdpiPolicy, policy);
     emit hdpiPolicyChanged();

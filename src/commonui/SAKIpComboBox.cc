@@ -17,7 +17,7 @@ SAKIpComboBox::SAKIpComboBox(QWidget *parent)
 {
     auto addresses = QNetworkInterface::allAddresses();
     for (auto &address : addresses) {
-        if (address.protocol() == QHostAddress::IPv4Protocol) {
+        if (address.protocol() == QAbstractSocket::IPv4Protocol) {
             addItem(address.toString());
         }
     }

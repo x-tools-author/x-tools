@@ -101,7 +101,7 @@ protected:
     virtual void run() final;
 
 private:
-    QList<EmiterItem> mItems;
+    QVector<EmiterItem> mItems;
     QMutex mItemsMutex;
     const int mDescriptionColumnIndex{0};
     const int mFormatColumnIndex{1};

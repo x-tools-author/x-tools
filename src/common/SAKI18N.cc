@@ -51,7 +51,11 @@ void SAKI18N::uninstallTranslator()
         auto translator = mTranslators.takeFirst();
         if (QCoreApplication::removeTranslator(translator)) {
             qCInfo(mCategory) << "old translator removed: "
+#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
                               << translator->filePath();
+#else
+                ;
+#endif
             translator->deleteLater();
             translator = nullptr;
         } else {

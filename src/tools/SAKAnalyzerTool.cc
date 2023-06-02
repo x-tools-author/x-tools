@@ -44,13 +44,13 @@ void SAKAnalyzerTool::inputBytes(const QByteArray &bytes,
         return;
     }
 
-    outputMessage(QtInfoMsg,
-                  QString("%1<-%2").arg(mToolName, bytes.toHex(' ')));
+    QString hex = QString::fromLatin1(bytes.toHex(' '));
+    outputMessage(QtInfoMsg, QString("%1<-%2").arg(mToolName, hex));
     emit bytesInputted(bytes, context);
 
     if (!enable()) {
-        outputMessage(QtInfoMsg,
-                      QString("%1->%2").arg(mToolName, bytes.toHex(' ')));
+        QString hex = QString::fromLatin1(bytes.toHex(' '));
+        outputMessage(QtInfoMsg, QString("%1->%2").arg(mToolName, hex));
         emit bytesOutputted(bytes, context);
     } else {
         mInputtedBytesMutex.lock();
@@ -103,8 +103,9 @@ void SAKAnalyzerTool::analyze()
             QByteArray frame(mInputtedBytes.data(),
                              mParameters.frameBytes);
             mInputtedBytes.remove(0, mParameters.frameBytes);
-            outputMessage(QtInfoMsg,
-                          QString("Analyzer->%1").arg(frame.toHex(' ')));
+
+            QString hex = QString::fromLatin1(frame.toHex(' '));
+            outputMessage(QtInfoMsg, QString("Analyzer->%1").arg(hex));
             emit bytesOutputted(frame, QJsonObject());
         }
 
@@ -114,8 +115,8 @@ void SAKAnalyzerTool::analyze()
     if (mParameters.separationMark.isEmpty()) {
         if (!mInputtedBytes.isEmpty()) {
             mInputtedBytes.clear();
-            QString msg = QString("Analyzer->%1")
-                              .arg(mInputtedBytes.toHex(' '));
+            QString hex = QString::fromLatin1(mInputtedBytes.toHex(' '));
+            QString msg = QString("Analyzer->%1").arg(hex);
             outputMessage(QtInfoMsg, msg);
             emit bytesOutputted(mInputtedBytes, QJsonObject());
         }
@@ -125,7 +126,9 @@ void SAKAnalyzerTool::analyze()
             int len = ret + mParameters.separationMark.length();
             QByteArray frame(mInputtedBytes.constData(), len);
             mInputtedBytes.remove(0, len);
-            QString msg = QString("Analyzer->%1").arg(frame.toHex(' '));
+
+            QString hex = QString::fromLatin1(frame.toHex(' '));
+            QString msg = QString("Analyzer->%1").arg(hex);
             outputMessage(QtInfoMsg, msg);
             emit bytesOutputted(frame, QJsonObject());
         }

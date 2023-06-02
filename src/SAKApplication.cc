@@ -16,6 +16,7 @@
 #include <QLabel>
 #include <QAction>
 #include <QDialog>
+#include <QScreen>
 #include <QDateTime>
 #include <QSettings>
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
@@ -137,7 +138,7 @@ SAKApplication::SAKApplication(int argc, char **argv)
                       - mainWindow->width())/2,
                      (screen->geometry().height()
                       - mainWindow->height())/2);
-    app.showSplashScreenMessage(QObject::tr("Finished..."));
+    showSplashScreenMessage(QObject::tr("Finished..."));
 #endif
 
 

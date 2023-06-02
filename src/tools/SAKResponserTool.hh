@@ -138,10 +138,10 @@ private:
     };
 
 private:
-    QList<InputContext> mInputContextList;
+    QVector<InputContext> mInputContextList;
     QMutex mInputContextListMutex;
 
-    QList<ResponserData> mItems;
+    QVector<ResponserData> mItems;
     QMutex mItemsMutex;
     const int mDescriptionColumnIndex{0};
     const int mFormatColumnIndex{1};

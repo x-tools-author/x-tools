@@ -7,6 +7,7 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
+#include <QHostAddress>
 #include "SAKTcpClientTool.hh"
 
 SAKTcpClientTool::SAKTcpClientTool(QObject *parent)
@@ -38,7 +39,13 @@ bool SAKTcpClientTool::initialize()
     mBindingIpPort = info;
     emit bindingIpPortChanged();
 
-    connect(mTcpSocket, &QTcpSocket::errorOccurred, mTcpSocket, [=](QAbstractSocket::SocketError err){
+    connect(mTcpSocket,
+#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
+            &QTcpSocket::errorOccurred,
+#else
+            QOverload<QAbstractSocket::SocketError>::of(&QTcpSocket::error),
+#endif
+            mTcpSocket, [=](QAbstractSocket::SocketError err){
         Q_UNUSED(err);
         emit errorOccured(mTcpSocket->errorString());
         outputMessage(QtWarningMsg, "Error occurred:" + mTcpSocket->errorString());

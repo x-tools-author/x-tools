@@ -117,15 +117,22 @@ bool SAKBleCentralTool::initialize()
     mServices.clear();
     auto info = mBleInfo.value<QBluetoothDeviceInfo>();
     mBleCentral = QLowEnergyController::createCentral(info);
-    connect(mBleCentral, &QLowEnergyController::serviceDiscovered, mBleCentral, [=](const QBluetoothUuid &newService){
+    connect(mBleCentral, &QLowEnergyController::serviceDiscovered, mBleCentral,
+            [=](const QBluetoothUuid &newService){
         onServiceDiscovered(newService);
     });
-    connect(mBleCentral, &QLowEnergyController::discoveryFinished, mBleCentral, [=](){
+    connect(mBleCentral, &QLowEnergyController::discoveryFinished,
+            mBleCentral, [=](){
         onServiceDiscoveryFinished();
     });
-    connect(mBleCentral, &QLowEnergyController::errorOccurred, mBleCentral, [=](){
-        onServiceDiscoveryFinished();
-    });
+    connect(mBleCentral,
+#if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
+            &QLowEnergyController::errorOccurred,
+#else
+            QOverload<QLowEnergyController::Error>::of(&QLowEnergyController::error),
+#endif
+            mBleCentral,
+            [=](){onServiceDiscoveryFinished();});
 
     return true;
 }
@@ -212,7 +219,11 @@ void SAKBleCentralTool::onBleCentralErrorOccuured(QLowEnergyController::Error er
 void SAKBleCentralTool::onServiceObjectStateChanged(QLowEnergyService *service, QLowEnergyService::ServiceState newState)
 {
     Q_UNUSED(service);
+#if QT_VERSION >= QT_VERSION_CHECK(6, 3, 0)
     auto state = QLowEnergyService::RemoteServiceDiscovered;
+#else
+    auto state = QLowEnergyService::ServiceDiscovered;
+#endif
     if (newState == state) {
         qInfo() << "Remote service discovered:" << newState;
     }

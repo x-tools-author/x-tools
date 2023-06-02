@@ -63,7 +63,9 @@ private:
     void initOptionMenuSettingsMenu(QMenu *optionMenu);
     void initOptionMenuTestPageAction(QMenu *optionMenu);
     void initOptionMenuUiType(QMenu *optionMenu);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     void initOptionMenuHdpiPolicy(QMenu *optionMenu);
+#endif
     void initWindowMenu();
     void initLanguageMenu();
     void initHelpMenu();

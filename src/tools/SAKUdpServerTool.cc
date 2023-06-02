@@ -42,9 +42,9 @@ void SAKUdpServerTool::writeBytes(const QByteArray &bytes,
     Q_UNUSED(context);
     if (mClientIndex >= 0 && mClientIndex < mClients.length()) {
         QString ipPort = mClients.at(mClientIndex);
-        int index = ipPort.lastIndexOf(":");
-        QString ip = ipPort.first(index);
-        quint16 port = ipPort.last(ipPort.length() - index - 1).toInt();
+        QStringList list = ipPort.split(":");
+        QString ip = list.first();
+        quint16 port = list.last().toInt();
         qint64 ret = mUdpSocket->writeDatagram(bytes, QHostAddress(ip), port);
         if (ret == -1) {
             outputMessage(QtWarningMsg, mUdpSocket->errorString());

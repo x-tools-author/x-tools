@@ -7,9 +7,7 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#include "SAKUdpServerTool.hh"
 #include "SAKSocketServerTool.hh"
-#include "SAKCommunicationTool.hh"
 #include "SAKSocketServerToolUi.hh"
 #include "ui_SAKSocketServerToolUi.h"
 
@@ -18,13 +16,17 @@ SAKSocketServerToolUi::SAKSocketServerToolUi(QWidget *parent)
     , ui(new Ui::SAKSocketServerToolUi)
 {
     ui->setupUi(this);
-    connect(ui->comboBoxServerIp, &QComboBox::activated,
+    connect(ui->comboBoxServerIp,
+            QOverload<int>::of(&QComboBox::activated),
             this, &SAKSocketServerToolUi::onComboBoxServerIpActived);
-    connect(ui->spinBoxServerPort, &QSpinBox::valueChanged,
+    connect(ui->spinBoxServerPort,
+            QOverload<int>::of(&SAKSpinBox::valueChanged),
             this, &SAKSocketServerToolUi::onSpinBoxServerPortValueChanged);
-    connect(ui->comboBoxClientList, &QComboBox::currentIndexChanged,
+    connect(ui->comboBoxClientList,
+            QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &SAKSocketServerToolUi::onComboBoxClientsIndexChanged);
-    connect(ui->comboBoxMessageType, &QComboBox::currentIndexChanged,
+    connect(ui->comboBoxMessageType,
+            QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &SAKSocketServerToolUi::onComboBoxMessageTypeIndexChanged);
 }
 

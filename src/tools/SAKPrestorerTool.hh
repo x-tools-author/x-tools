@@ -89,7 +89,7 @@ private:
     QList<int> mIndexs;
     QMutex mIndexsMutex;
 private:
-    QList<Item> mItems;
+    QVector<Item> mItems;
     QMutex mItemsMutex;
     struct ItemKeys mDataKeys;
     const int mTableColumnCount{10};

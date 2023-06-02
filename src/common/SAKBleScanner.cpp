@@ -1,7 +1,9 @@
 /******************************************************************************
  * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
  *****************************************************************************/
+#include <QDebug>
 #include <QBluetoothDeviceInfo>
+
 #include "SAKBleScanner.hh"
 
 SAKBleScanner::SAKBleScanner(QObject *parent)
@@ -10,8 +12,13 @@ SAKBleScanner::SAKBleScanner(QObject *parent)
     mDiscover = new QBluetoothDeviceDiscoveryAgent();
     connect(mDiscover, &QBluetoothDeviceDiscoveryAgent::finished,
             this, &SAKBleScanner::onFinished);
+#if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
     connect(mDiscover, &QBluetoothDeviceDiscoveryAgent::errorOccurred,
             this, &SAKBleScanner::onErrorOccurred);
+#else
+    connect(mDiscover, QOverload<QBluetoothDeviceDiscoveryAgent::Error>::of(&QBluetoothDeviceDiscoveryAgent::error),
+            this, &SAKBleScanner::onErrorOccurred);
+#endif
     connect(mDiscover, &QBluetoothDeviceDiscoveryAgent::deviceDiscovered,
             this, &SAKBleScanner::onDeviceDiscovered);
 

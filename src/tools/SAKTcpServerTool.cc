@@ -55,7 +55,13 @@ bool SAKTcpServerTool::initialize()
             emit clientsChanged();
         });
 
-        connect(client, &QTcpSocket::errorOccurred, client, [=](){
+        connect(client,
+#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
+                &QTcpSocket::errorOccurred,
+#else
+                QOverload<QAbstractSocket::SocketError>::of(&QTcpSocket::error),
+#endif
+                client, [=](){
             this->mTcpSocketList.removeOne(client);
             this->mClients.removeOne(ipPort);
             outputMessage(QtInfoMsg, QString("Error occurred:")
@@ -74,7 +80,7 @@ void SAKTcpServerTool::writeBytes(const QByteArray &bytes, const QVariant &conte
         QTcpSocket *client = mTcpSocketList.at(mClientIndex);
         writeBytesInner(client, bytes, context);
     } else {
-        for (auto client : mTcpSocketList) {
+        for (auto &client : mTcpSocketList) {
             writeBytesInner(client, bytes, context);
         }
     }

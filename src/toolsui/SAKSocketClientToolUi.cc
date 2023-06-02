@@ -8,7 +8,6 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include "SAKSocketClientTool.hh"
-#include "SAKCommunicationTool.hh"
 #include "SAKSocketClientToolUi.hh"
 #include "ui_SAKSocketClientToolUi.h"
 
@@ -18,13 +17,17 @@ SAKSocketClientToolUi::SAKSocketClientToolUi(QWidget *parent)
 {
     ui->setupUi(this);
 
-    connect(ui->comboBoxClientAddress, &QComboBox::activated,
+    connect(ui->comboBoxClientAddress,
+            QOverload<int>::of(&QComboBox::activated),
             this, &SAKSocketClientToolUi::onComboBoxServerAddressCurrentTextChanged);
-    connect(ui->spinBoxClientPort, &QSpinBox::valueChanged,
+    connect(ui->spinBoxClientPort,
+            QOverload<int>::of(&SAKSpinBox::valueChanged),
             this, &SAKSocketClientToolUi::onSpinBoxClientPortValueChanged);
-    connect(ui->comboBoxServerAddress, &QComboBox::currentTextChanged,
+    connect(ui->comboBoxServerAddress,
+            QOverload<const QString&>::of(&QComboBox::currentTextChanged),
             this, &SAKSocketClientToolUi::onComboBoxServerAddressCurrentTextChanged);
-    connect(ui->spinBoxServerPort, &QSpinBox::valueChanged,
+    connect(ui->spinBoxServerPort,
+            QOverload<int>::of(&QSpinBox::valueChanged),
             this, &SAKSocketClientToolUi::onSpinBoxServerPortValueChanged);
     connect(ui->checkBoxSpecifyIpAndPort, &QCheckBox::clicked,
             this, &SAKSocketClientToolUi::onCheckBoxSpecifyIpAndPortClicked);

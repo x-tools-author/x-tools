@@ -41,15 +41,20 @@ void SAKSerialPortToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
 
     connect(ui->comboBoxPortNames, &QComboBox::currentTextChanged,
             this, &SAKSerialPortToolUi::onComboBoxPortNamesCurrentTextChanged);
-    connect(ui->comboBoxBaudRate, &QComboBox::currentIndexChanged,
+    connect(ui->comboBoxBaudRate,
+            QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &SAKSerialPortToolUi::onComboBoxBaudRateCurrentIndexChanged);
-    connect(ui->comboBoxDataBits, &QComboBox::currentIndexChanged,
+    connect(ui->comboBoxDataBits,
+            QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &SAKSerialPortToolUi::onComboBoxDataBitsCurrentIndexChanged);
-    connect(ui->comboBoxStopBits, &QComboBox::currentIndexChanged,
+    connect(ui->comboBoxStopBits,
+            QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &SAKSerialPortToolUi::onComboBoxStopBitsCurrentIndexChanged);
-    connect(ui->comboBoxParity, &QComboBox::currentIndexChanged,
+    connect(ui->comboBoxParity,
+            QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &SAKSerialPortToolUi::onComboBoxParityCurrentIndexChanged);
-    connect(ui->comboBoxFlowControl, &QComboBox::currentIndexChanged,
+    connect(ui->comboBoxFlowControl,
+            QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &SAKSerialPortToolUi::onComboBoxFlowControlCurrentIndexChanged);
 
     ui->comboBoxPortNames->setGroupKey(settingsGroup, "portName");

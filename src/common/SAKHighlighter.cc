@@ -4,7 +4,9 @@
 #include <QDebug>
 #include <QTextDocument>
 #include <QRegularExpression>
+#if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
 #include <QQuickTextDocument>
+#endif
 
 #include "SAKHighlighter.hh"
 
@@ -16,9 +18,13 @@ SAKHighlighter::SAKHighlighter(QObject *parent)
 
 void SAKHighlighter::setDoc(QVariant doc)
 {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
     if (doc.canConvert<QQuickTextDocument*>()) {
         setDocument(doc.value<QQuickTextDocument*>()->textDocument());
     }
+#else
+    Q_UNUSED(doc);
+#endif
 }
 
 void SAKHighlighter::setKeyWords(QVariant keyWords)

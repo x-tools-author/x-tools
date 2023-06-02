@@ -8,7 +8,6 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include <QTimer>
-#include <QJSValue>
 #include <QJsonObject>
 #include <QJsonDocument>
 

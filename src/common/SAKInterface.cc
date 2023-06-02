@@ -8,6 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include <QFile>
+#include <QDebug>
 #include <QLocale>
 #include <QDateTime>
 #include <QClipboard>
@@ -16,7 +17,9 @@
 #include <QJsonDocument>
 #include <QTextDocument>
 #include <QGuiApplication>
+#if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
 #include <QQuickTextDocument>
+#endif
 #include <QAbstractTableModel>
 
 #include "SAKInterface.hh"
@@ -110,11 +113,16 @@ void SAKInterface::setMaximumBlockCount(QVariant quickTextDocument, int maximum)
 {
     auto obj = quickTextDocument.value<QObject*>();
     if (obj) {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
         auto quickTextDoc = qobject_cast<QQuickTextDocument*>(obj);
         if (quickTextDoc) {
             auto textDoc = quickTextDoc->textDocument();
             textDoc->setMaximumBlockCount(maximum);
         }
+#else
+        Q_UNUSED(quickTextDocument)
+        Q_UNUSED(maximum)
+#endif
     }
 }
 

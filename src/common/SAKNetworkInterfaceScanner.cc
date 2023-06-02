@@ -27,9 +27,10 @@ void SAKNetworkInterfaceScanner::refresh()
     auto addresses = QNetworkInterface::allAddresses();
     for (auto &address : addresses) {
         auto str = address.toString();
-        if (address.protocol() == QHostAddress::IPv4Protocol) {
+
+        if (address.protocol() == QAbstractSocket::IPv4Protocol) {
             ipv4List.append(str);
-        } else if (address.protocol() == QHostAddress::IPv6Protocol) {
+        } else if (address.protocol() == QAbstractSocket::IPv6Protocol) {
             ipv6List.append(str);
         }
     }

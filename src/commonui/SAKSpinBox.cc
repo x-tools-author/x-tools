@@ -13,7 +13,7 @@
 SAKSpinBox::SAKSpinBox(QWidget *parent)
     : QSpinBox(parent)
 {
-    connect(this, &SAKSpinBox::valueChanged,
+    connect(this, QOverload<int>::of(&SAKSpinBox::valueChanged),
             this, &SAKSpinBox::writeToSettingsFile);
 }
 

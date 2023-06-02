@@ -55,7 +55,12 @@ SAKToolBoxUiParameters::parameterContext()
     ctx.input.crc.endIndex = ui->spinBoxEndIndex->value();
 
     QString txt = ui->textEdit->toPlainText();
-    QStringList txtList = txt.split(';', Qt::SkipEmptyParts);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
+    auto flag = Qt::SkipEmptyParts;
+#else
+    auto flag = QString::SkipEmptyParts;
+#endif
+    QStringList txtList = txt.split(';', flag);
     ctx.output.keyWords = txtList;
 
     return ctx;

@@ -12,6 +12,7 @@
 #include <QFile>
 #include <QDateTime>
 #include <QTextStream>
+#include <QTextStream>
 
 #include "SAKStorerTool.hh"
 #include "common/SAKInterface.hh"
@@ -181,7 +182,11 @@ void SAKStorerTool::write2file()
             QString flag = context.toJsonObject().value("isRx").toBool()
                                ? "Rx: " : "Tx: ";
             str = dtStr + flag + str;
+#if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
             outStream << str << Qt::endl;
+#else
+            outStream << str << "\n";
+#endif
         }
         file.close();
     } else {
