@@ -14,11 +14,13 @@
 #include <QJsonDocument>
 #include <QStandardItemModel>
 
+#include "SAKMenu.hh"
 #include "SAKSettings.hh"
 #include "SAKTableViewWithController.hh"
 #include "ui_SAKTableViewWithController.h"
 
-SAKTableViewWithController::SAKTableViewWithController(const char *lg, QWidget *parent)
+SAKTableViewWithController::SAKTableViewWithController(const char *lg,
+                                                       QWidget *parent)
     : QWidget{parent}
     , mLoggingCategory{lg}
     , ui(new Ui::SAKTableViewWithController)
@@ -78,7 +80,7 @@ void SAKTableViewWithController::initialize(QAbstractTableModel *tableModel,
     headerView->setModel(headerViewModel);
     headerView->setDefaultAlignment(Qt::AlignLeft);
 
-    mMenu = new QMenu(ui->pushButtonVisible);
+    mMenu = new SAKMenu(ui->pushButtonVisible);
     ui->pushButtonVisible->setMenu(mMenu);
     auto settings = SAKSettings::instance();
     for (int i = 0; i < headers.count(); i++) {
@@ -127,7 +129,8 @@ QModelIndex SAKTableViewWithController::currentIndex()
     if (!index.isValid()) {
         QMessageBox::warning(this,
                              tr("Please Select an Item"),
-                             tr("Please select an tiem first, then try again!"));
+                             tr("Please select an tiem first,"
+                                " then try again!"));
     }
     return index;
 }
@@ -135,7 +138,8 @@ QModelIndex SAKTableViewWithController::currentIndex()
 void SAKTableViewWithController::writeToSettingsFile()
 {
     QByteArray json = exportAsJson();
-    SAKSettings::instance()->setValue(mItemsKey, QString::fromLatin1(json.toHex()));
+    SAKSettings::instance()->setValue(mItemsKey,
+                                      QString::fromLatin1(json.toHex()));
 }
 
 void SAKTableViewWithController::onPushButtonEditClicked()
