@@ -273,61 +273,67 @@ QByteArray SAKResponserTool::responseBytes(const ResponserItem &item) const
 
 QVariant SAKResponserTool::itemContext(int index)
 {
-    QJsonObject ctx;
+    auto itemCtx = [=](int index)->QJsonObject {
+        QJsonObject ctx;
+        if (index >= 0 && index < mItems.count()) {
+            auto item = mItems.at(index);
+            ctx.insert(itemEnable(), item.data.itemEnable);
+            ctx.insert(itemDescription(), item.data.itemDescription);
+            ctx.insert(itemOption(), item.data.itemOption);
+
+            ctx.insert(itemReferenceTextFormat(), item.data.itemReferenceTextFormat);
+            ctx.insert(itemReferenceEscapeCharacter(), item.data.itemReferenceEscapeCharacter);
+            ctx.insert(itemReferencePrefix(), item.data.itemReferencePrefix);
+            ctx.insert(itemReferenceSuffix(), item.data.itemReferenceSuffix);
+            ctx.insert(itemReferenceCrcEnable(), item.data.itemReferenceCrcEnable);
+            ctx.insert(itemReferenceCrcAlgorithm(), item.data.itemReferenceCrcAlgorithm);
+            ctx.insert(itemReferenceCrcStartIndex(), item.data.itemReferenceCrcStartIndex);
+            ctx.insert(itemReferenceCrcEndIndex(), item.data.itemReferenceCrcEndIndex);
+            ctx.insert(itemReferenceText(), item.data.itemReferenceText);
+
+            ctx.insert(itemResponseInterval(), item.data.itemResponseInterval);
+            ctx.insert(itemResponseTextFormat(), item.data.itemResponseTextFormat);
+            ctx.insert(itemResponseEscapeCharacter(), item.data.itemResponseEscapeCharacter);
+            ctx.insert(itemResponsePrefix(), item.data.itemResponsePrefix);
+            ctx.insert(itemResponseSuffix(), item.data.itemResponseSuffix);
+            ctx.insert(itemResponseCrcEnable(), item.data.itemResponseCrcEnable);
+            ctx.insert(itemResponseCrcAlgorithm(), item.data.itemResponseCrcAlgorithm);
+            ctx.insert(itemResponseCrcStartIndex(), item.data.itemResponseCrcStartIndex);
+            ctx.insert(itemResponseCrcEndIndex(), item.data.itemResponseCrcEndIndex);
+            ctx.insert(itemResponseText(), item.data.itemResponseText);
+        } else {
+            // If index is out of range, return the default values.
+            ctx.insert(itemEnable(), true);
+            ctx.insert(itemDescription(), "Demo");
+            ctx.insert(itemOption(), 0);
+
+            ctx.insert(itemReferenceTextFormat(), SAKDataStructure::TextFormatAscii);
+            ctx.insert(itemReferenceEscapeCharacter(), SAKDataStructure::EscapeCharacterOptionNone);
+            ctx.insert(itemReferencePrefix(), SAKDataStructure::AffixesNone);
+            ctx.insert(itemReferenceSuffix(), SAKDataStructure::AffixesNone);
+            ctx.insert(itemReferenceCrcEnable(), true);
+            ctx.insert(itemReferenceCrcAlgorithm(), SAKCrcInterface::CRC_8);
+            ctx.insert(itemReferenceCrcStartIndex(), 0);
+            ctx.insert(itemReferenceCrcEndIndex(), 0);
+            ctx.insert(itemReferenceText(), "Reference data.");
+
+            ctx.insert(itemResponseInterval(), 1000);
+            ctx.insert(itemResponseTextFormat(), SAKDataStructure::TextFormatAscii);
+            ctx.insert(itemResponseEscapeCharacter(), SAKDataStructure::EscapeCharacterOptionNone);
+            ctx.insert(itemResponsePrefix(), SAKDataStructure::AffixesNone);
+            ctx.insert(itemResponseSuffix(), SAKDataStructure::AffixesNone);
+            ctx.insert(itemResponseCrcEnable(), true);
+            ctx.insert(itemResponseCrcAlgorithm(), SAKCrcInterface::CRC_8);
+            ctx.insert(itemResponseCrcStartIndex(), 0);
+            ctx.insert(itemResponseCrcEndIndex(), 0);
+            ctx.insert(itemResponseText(), "Response data.");
+        }
+
+        return ctx;
+    };
+
     mItemsMutex.lock();
-    if (index >= 0 && index < mItems.count()) {
-        auto item = mItems.at(index);
-        ctx.insert(itemEnable(), item.data.itemEnable);
-        ctx.insert(itemDescription(), item.data.itemDescription);
-        ctx.insert(itemOption(), item.data.itemOption);
-
-        ctx.insert(itemReferenceTextFormat(), item.data.itemReferenceTextFormat);
-        ctx.insert(itemReferenceEscapeCharacter(), item.data.itemReferenceEscapeCharacter);
-        ctx.insert(itemReferencePrefix(), item.data.itemReferencePrefix);
-        ctx.insert(itemReferenceSuffix(), item.data.itemReferenceSuffix);
-        ctx.insert(itemReferenceCrcEnable(), item.data.itemReferenceCrcEnable);
-        ctx.insert(itemReferenceCrcAlgorithm(), item.data.itemReferenceCrcAlgorithm);
-        ctx.insert(itemReferenceCrcStartIndex(), item.data.itemReferenceCrcStartIndex);
-        ctx.insert(itemReferenceCrcEndIndex(), item.data.itemReferenceCrcEndIndex);
-        ctx.insert(itemReferenceText(), item.data.itemReferenceText);
-
-        ctx.insert(itemResponseInterval(), item.data.itemResponseInterval);
-        ctx.insert(itemResponseTextFormat(), item.data.itemResponseTextFormat);
-        ctx.insert(itemResponseEscapeCharacter(), item.data.itemResponseEscapeCharacter);
-        ctx.insert(itemResponsePrefix(), item.data.itemResponsePrefix);
-        ctx.insert(itemResponseSuffix(), item.data.itemResponseSuffix);
-        ctx.insert(itemResponseCrcEnable(), item.data.itemResponseCrcEnable);
-        ctx.insert(itemResponseCrcAlgorithm(), item.data.itemResponseCrcAlgorithm);
-        ctx.insert(itemResponseCrcStartIndex(), item.data.itemResponseCrcStartIndex);
-        ctx.insert(itemResponseCrcEndIndex(), item.data.itemResponseCrcEndIndex);
-        ctx.insert(itemResponseText(), item.data.itemResponseText);
-    } else {
-        // If index is out of range, return the default values.
-        ctx.insert(itemEnable(), true);
-        ctx.insert(itemDescription(), "Demo");
-        ctx.insert(itemOption(), 0);
-        
-        ctx.insert(itemReferenceTextFormat(), SAKDataStructure::TextFormatAscii);
-        ctx.insert(itemReferenceEscapeCharacter(), SAKDataStructure::EscapeCharacterOptionNone);
-        ctx.insert(itemReferencePrefix(), SAKDataStructure::AffixesNone);
-        ctx.insert(itemReferenceSuffix(), SAKDataStructure::AffixesNone);
-        ctx.insert(itemReferenceCrcEnable(), true);
-        ctx.insert(itemReferenceCrcAlgorithm(), SAKCrcInterface::CRC_8);
-        ctx.insert(itemReferenceCrcStartIndex(), 0);
-        ctx.insert(itemReferenceCrcEndIndex(), 0);
-        ctx.insert(itemReferenceText(), "Reference data.");
-
-        ctx.insert(itemResponseInterval(), 1000);
-        ctx.insert(itemResponseTextFormat(), SAKDataStructure::TextFormatAscii);
-        ctx.insert(itemResponseEscapeCharacter(), SAKDataStructure::EscapeCharacterOptionNone);
-        ctx.insert(itemResponsePrefix(), SAKDataStructure::AffixesNone);
-        ctx.insert(itemResponseSuffix(), SAKDataStructure::AffixesNone);
-        ctx.insert(itemResponseCrcEnable(), true);
-        ctx.insert(itemResponseCrcAlgorithm(), SAKCrcInterface::CRC_8);
-        ctx.insert(itemResponseCrcStartIndex(), 0);
-        ctx.insert(itemResponseCrcEndIndex(), 0);
-        ctx.insert(itemResponseText(), "Response data.");
-    }
+    QJsonObject ctx = itemCtx(index);
     mItemsMutex.unlock();
 
     return ctx;
