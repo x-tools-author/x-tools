@@ -4,7 +4,7 @@ import QtQuick.Controls
 import Qt5Compat.GraphicalEffects
 
 import SAK.Custom
-import "common"
+import "../common"
 
 Item {
     id: root

@@ -4,7 +4,7 @@ import QtQuick.Layouts
 import QtQuick.Dialogs
 import QtCore
 
-import "common"
+import "../common"
 
 Item {
     id: root

@@ -8,31 +8,7 @@
         <file>res/icon/IconMaximized.svg</file>
         <file>res/icon/IconMinimized.svg</file>
         <file>res/icon/IconWindowed.svg</file>
-        <file>qml/DevicePage.qml</file>
-        <file>qml/DevicePageController.qml</file>
-        <file>qml/DevicePageDrawer.qml</file>
-        <file>qml/DevicePageReadWrite.qml</file>
-        <file>qml/DevicePageReadWriteInputOutput.qml</file>
-        <file>qml/DevicePageReadWriteResponser.qml</file>
-        <file>qml/DevicePageReadWriteEmitter.qml</file>
-        <file>qml/DevicePageDrawerDevice.qml</file>
-        <file>qml/DevicePageDrawerOutput.qml</file>
-        <file>qml/DevicePageDrawerInput.qml</file>
-        <file>qml/DevicePageReadWritePrestorer.qml</file>
-        <file>qml/DevicePageDrawerInputFileSendding.qml</file>
-        <file>qml/DevicePageDrawerInputCrc.qml</file>
-        <file>qml/DevicePageDrawerInputPreprocessor.qml</file>
-        <file>qml/DevicePageDrawerOutputPreprocessor.qml</file>
-        <file>qml/DevicePageDrawerOutputStorer.qml</file>
-        <file>qml/DevicePageDrawerOutputHighlighter.qml</file>
-        <file>qml/DevicePageDrawerDeviceMasker.qml</file>
-        <file>qml/DevicePageDrawerDeviceAnalyzer.qml</file>
-        <file>qml/DevicePageReadWriteResponserPopup.qml</file>
-        <file>qml/DevicePageReadWriteEmitterPopup.qml</file>
-        <file>qml/DevicePageReadWritePrestorerPopup.qml</file>
-        <file>qml/DevicePageCommonCrcParameters.qml</file>
         <file>qml/MainWindowTest.qml</file>
-        <file>qml/DevicePageCommonTableView.qml</file>
         <file>qml/MainWindowSerialPortPageController.qml</file>
         <file>qml/MainWindowSettingsPage.qml</file>
         <file>res/i18n/common_en.qm</file>
@@ -53,9 +29,33 @@
         <file>qml/MainWindowWebSocketClientPageController.qml</file>
         <file>qml/MainWindowWebSocketServerPage.qml</file>
         <file>qml/MainWindowWebSocketServerPageController.qml</file>
-        <file>qml/DevicePageCommonClient.qml</file>
-        <file>qml/DevicePageCommonServer.qml</file>
         <file>qml/MainWindowBleCentralPage.qml</file>
         <file>qml/MainWindowBleCentralPageController.qml</file>
+        <file>qml/toolbox/DevicePage.qml</file>
+        <file>qml/toolbox/DevicePageCommonClient.qml</file>
+        <file>qml/toolbox/DevicePageCommonCrcParameters.qml</file>
+        <file>qml/toolbox/DevicePageCommonServer.qml</file>
+        <file>qml/toolbox/DevicePageCommonTableView.qml</file>
+        <file>qml/toolbox/DevicePageController.qml</file>
+        <file>qml/toolbox/DevicePageDrawer.qml</file>
+        <file>qml/toolbox/DevicePageDrawerDevice.qml</file>
+        <file>qml/toolbox/DevicePageDrawerDeviceAnalyzer.qml</file>
+        <file>qml/toolbox/DevicePageDrawerDeviceMasker.qml</file>
+        <file>qml/toolbox/DevicePageDrawerInput.qml</file>
+        <file>qml/toolbox/DevicePageDrawerInputCrc.qml</file>
+        <file>qml/toolbox/DevicePageDrawerInputFileSendding.qml</file>
+        <file>qml/toolbox/DevicePageDrawerInputPreprocessor.qml</file>
+        <file>qml/toolbox/DevicePageDrawerOutput.qml</file>
+        <file>qml/toolbox/DevicePageDrawerOutputHighlighter.qml</file>
+        <file>qml/toolbox/DevicePageDrawerOutputPreprocessor.qml</file>
+        <file>qml/toolbox/DevicePageDrawerOutputStorer.qml</file>
+        <file>qml/toolbox/DevicePageReadWrite.qml</file>
+        <file>qml/toolbox/DevicePageReadWriteEmitter.qml</file>
+        <file>qml/toolbox/DevicePageReadWriteEmitterPopup.qml</file>
+        <file>qml/toolbox/DevicePageReadWriteInputOutput.qml</file>
+        <file>qml/toolbox/DevicePageReadWritePrestorer.qml</file>
+        <file>qml/toolbox/DevicePageReadWritePrestorerPopup.qml</file>
+        <file>qml/toolbox/DevicePageReadWriteResponser.qml</file>
+        <file>qml/toolbox/DevicePageReadWriteResponserPopup.qml</file>
     </qresource>
 </RCC>

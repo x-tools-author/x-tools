@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
-import "common"
+import "../common"
 
 ScrollView {
     id: root

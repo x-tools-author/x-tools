@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
 
-import "common"
+import "../common"
 
 GridLayout {
     id: root

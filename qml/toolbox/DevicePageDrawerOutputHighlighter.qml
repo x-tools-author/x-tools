@@ -3,7 +3,7 @@ import QtQuick.Controls
 import QtQuick.Layouts
 
 import SAK.Custom
-import "common"
+import "../common"
 
 SAKGroupBox {
     id: root

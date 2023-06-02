@@ -4,7 +4,7 @@ import QtQuick.Layouts
 import QtQuick.Dialogs
 
 import SAK.Custom
-import "common"
+import "../common"
 
 SAKGroupBox {
     id: storerGroupBox

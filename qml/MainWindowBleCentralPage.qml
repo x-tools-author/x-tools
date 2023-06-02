@@ -4,6 +4,7 @@ import QtQuick.Controls
 import QtQuick.Controls.Universal
 
 import SAK.Custom
+import "toolbox"
 
 DevicePage {
     id: root

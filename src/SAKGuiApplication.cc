@@ -10,16 +10,6 @@
 #include <QQuickStyle>
 #include <QQmlContext>
 
-#include "SAKI18N.hh"
-#include "SAKSettings.hh"
-#include "SAKInterface.hh"
-#include "SAKBleScanner.hh"
-#include "SAKHighlighter.hh"
-#include "SAKCrcInterface.hh"
-#include "SAKDataStructure.hh"
-#include "SAKSerialPortScanner.hh"
-#include "SAKNetworkInterfaceScanner.hh"
-
 #include "SAKToolBox.hh"
 #include "SAKBaseTool.hh"
 #include "SAKMaskerTool.hh"
@@ -38,7 +28,16 @@
 #include "SAKWebSocketClientTool.hh"
 #include "SAKWebSocketServerTool.hh"
 
+#include "SAKI18N.hh"
+#include "SAKSettings.hh"
+#include "SAKInterface.hh"
+#include "SAKBleScanner.hh"
+#include "SAKHighlighter.hh"
+#include "SAKCrcInterface.hh"
+#include "SAKDataStructure.hh"
 #include "SAKGuiApplication.hh"
+#include "SAKSerialPortScanner.hh"
+#include "SAKNetworkInterfaceScanner.hh"
 
 SAKGuiApplication::SAKGuiApplication(int argc, char *argv[])
     : QGuiApplication(argc, argv)

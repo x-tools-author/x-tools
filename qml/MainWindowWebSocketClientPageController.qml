@@ -4,6 +4,7 @@ import QtQuick.Controls
 
 import SAK.Custom
 import "common"
+import "toolbox"
 
 SAKPane {
     id: root
