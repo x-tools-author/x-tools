@@ -20,7 +20,6 @@
 #include <QHBoxLayout>
 #include <QMainWindow>
 #include <QTranslator>
-#include <QSqlDatabase>
 #include <QButtonGroup>
 #include <QStackedWidget>
 
@@ -34,7 +33,6 @@ class SAKMainWindow : public QMainWindow
     Q_OBJECT
 public:
     explicit SAKMainWindow(QSettings *settings,
-                           QSqlDatabase *sqlDatabase,
                            QWidget *parent = Q_NULLPTR);
     ~SAKMainWindow();
 protected:
@@ -51,7 +49,6 @@ private:
     SAKUpdateManager *mUpdateManager;
     const QString mSettingKeyEnableTestPage;
     QSettings *mSettings;
-    QSqlDatabase *mSqlDatabase;
     QActionGroup *mActionGroup;
     QActionGroup *mLanguagesActionGroup;
     QButtonGroup *mNavBtGroup{nullptr};

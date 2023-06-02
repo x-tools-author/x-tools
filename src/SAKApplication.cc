@@ -123,37 +123,12 @@ SAKApplication::SAKApplication(int argc, char **argv)
         }
     }
 
-
-    // Initialize database.
-    mSqlDatabase = QSqlDatabase::addDatabase("QSQLITE");
-    mSqlDatabase.setDatabaseName(mDatabaseName);
-    // Do something useless.
-    mSqlDatabase.setHostName("localhost");
-    mSqlDatabase.setUserName("Qter");
-    mSqlDatabase.setPassword("QterPassword");
-
-    // Fixed open database failed on first time running.
-    if (!QFile::exists(mDatabaseName)) {
-        QDir dir;
-        QString dbName = QUrl(mDatabaseName).fileName();
-        dir.mkpath(QString(mDatabaseName).remove(dbName));
-    }
-
-    if (!mSqlDatabase.open()){
-        qWarning() << "QSAKDatabase.sqlite3 open failed:"
-                   << mSqlDatabase.lastError().text();
-        Q_ASSERT_X(false, __FUNCTION__, "Open database failed! Using release edition please!");
-    }
-
     // Setup ui language.
     installLanguage();
-
-    showSplashScreenMessage(
-        QObject::tr("Initializing main window..."));
+    showSplashScreenMessage(QObject::tr("Initializing main window..."));
 
 
-    SAKMainWindow *mainWindow = new SAKMainWindow(settings(),
-                                                  sqlDatabase());
+    SAKMainWindow *mainWindow = new SAKMainWindow(settings());
     QObject::connect(this, &SAKApplication::activeMainWindow,
                      mainWindow, &SAKMainWindow::activateWindow);
     mainWindow->show();
@@ -196,9 +171,7 @@ SAKApplication::SAKApplication(int argc, char **argv)
 
 SAKApplication::~SAKApplication()
 {
-    if (mSqlDatabase.isOpen()){
-        mSqlDatabase.close();
-    }
+
 }
 
 void SAKApplication::installLanguage()
@@ -273,9 +246,4 @@ QSplashScreen *SAKApplication::splashScreen()
 void SAKApplication::showSplashScreenMessage(QString msg)
 {
     mSplashScreen->showMessage(msg, Qt::AlignBottom, QColor(255, 255, 255));
-}
-
-QSqlDatabase *SAKApplication::sqlDatabase()
-{
-    return &mSqlDatabase;
 }

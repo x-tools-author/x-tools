@@ -16,9 +16,6 @@
 #include <QStyleFactory>
 #include <QSplashScreen>
 
-#include <QSqlError>
-#include <QSqlDatabase>
-
 #define sakApp (static_cast<SAKApplication *>(QCoreApplication::instance()))
 
 class SAKApplication:public QApplication
@@ -44,7 +41,7 @@ public:
     SettingsKeyContext *settingsKeyContext();
     QSplashScreen *splashScreen();
     void showSplashScreenMessage(QString msg);
-    QSqlDatabase *sqlDatabase();
+
 private:
     SettingsKeyContext mSettingsKeyContext;
     QTranslator mQtTranslator;
@@ -55,7 +52,7 @@ private:
     QString mLastDataTime;
     QString mSettingsFileName;
     QSplashScreen *mSplashScreen;
-    QSqlDatabase mSqlDatabase;
+
 signals:
     void activeMainWindow();
 };

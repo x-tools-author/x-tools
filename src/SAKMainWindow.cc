@@ -52,14 +52,12 @@
 
 SAKMainWindow *sakMainWindow = Q_NULLPTR;
 SAKMainWindow::SAKMainWindow(QSettings *settings,
-                             QSqlDatabase *sqlDatabase,
                              QWidget *parent)
     :QMainWindow(parent)
     ,mWindowsMenu(Q_NULLPTR)
     ,mUpdateManager(Q_NULLPTR)
     ,mSettingKeyEnableTestPage(QString("enableTestPage"))
     ,mSettings(settings)
-    ,mSqlDatabase(sqlDatabase)
     ,ui(new Ui::SAKMainWindow)
     ,mToolBoxs(new QTabWidget)
 {
