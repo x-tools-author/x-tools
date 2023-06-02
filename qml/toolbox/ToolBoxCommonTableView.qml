@@ -4,12 +4,11 @@ import QtQuick.Layouts
 import QtQuick.Dialogs
 import QtCore
 
+import SAK.Custom
 import "../common"
 
 Item {
     id: root
-
-    //Material.elevation: 8
 
     signal invokeEdit()
     signal invokeAppend()
@@ -22,6 +21,7 @@ Item {
     property var showColumns: []
 
     readonly property int cellPadding: 4
+    property SAKTabelModelTool tabelModelTool: null
 
     onWidthChanged: tableView.forceLayout()
 
@@ -68,34 +68,6 @@ Item {
                 contentWidth: -1
                 delegate: Item {
                     implicitHeight: 40
-//                    color: if (currentRowIndex === row) {
-//                               return Material.accent
-//                           } else {
-//                                if (row % 2) {
-//                                    return Material.color(Material.Grey)
-//                                } else {
-//                                    return Material.color(Material.BlueGrey)
-//                                }
-//                           }
-//                    color: {
-//                        if (currentRowIndex === row) {
-//                            return Material.color(Material.accent, Material.Shade100)
-//                        } else {
-//                            if (row % 2) {
-//                                if (edMaterialTheme === Material.Dark) {
-//                                    Material.color(Material.Grey, Material.Shade700)
-//                                } else {
-//                                    Material.color(Material.Grey, Material.Shade100)
-//                                }
-//                            } else {
-//                                if (edMaterialTheme === Material.Dark) {
-//                                    Material.color(Material.Grey, Material.Shade800)
-//                                } else {
-//                                    Material.color(Material.Grey, Material.Shade200)
-//                                }
-//                            }
-//                        }
-//                    }
                     clip: true
                     SAKLabel {
                         text: display

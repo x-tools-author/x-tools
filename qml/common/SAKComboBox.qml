@@ -10,13 +10,13 @@ ComboBox {
 
     onActivated: {
         if (settingKey) {
-            sakSettings.sakSetValue(settingKey, useValueRole ? currentValue : currentText)
+            sakSettings.setValue(settingKey, useValueRole ? currentValue : currentText)
         }
     }
 
     onEditTextChanged: {
         if (settingKey && editable) {
-            //sakSettings.sakSetValue(settingKey, useValueRole ? currentValue : editText)
+            //sakSettings.setValue(settingKey, useValueRole ? currentValue : editText)
         }
     }
 
@@ -49,7 +49,7 @@ ComboBox {
 
     function updateSettings() {
         if (settingKey) {
-            var parameter = sakSettings.sakValue(settingKey)
+            var parameter = sakSettings.value(settingKey)
             var ret = useValueRole ? root.indexOfValue(parameter) : root.find(parameter)
             if (ret !== -1) {
                 root.currentIndex = ret

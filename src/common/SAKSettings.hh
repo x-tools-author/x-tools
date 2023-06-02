@@ -31,28 +31,28 @@ public:
     int uiType();
     void setUiType(int type);
 
+    QString appStyle();
+    void setAppStyle(const QString &style);
+
+    QString language();
+    void setLanguage(const QString &lan);
+
 signals:
     void hdpiPolicyChanged();
     void uiTypeChanged();
 
 public:
-    Q_INVOKABLE QVariant sakValue(const QString &key,
-                                  const QVariant &defaultValue
-                                  = QVariant()) const;
-    Q_INVOKABLE void sakSetValue(const QString &key, const QVariant &value);
-    Q_INVOKABLE void sakSetArrayValues(const QString &groupName,
-                                       const QString &array,
-                                       const QString &key,
-                                       const QVariant &varList);
-    Q_INVOKABLE QStringList sakArrayValues(const QString &group,
-                                           const QString &array,
-                                           const QString &key);
-    Q_INVOKABLE void sakRemove(const QString &group, const QString &key);
+    Q_INVOKABLE QVariant value(const QString &key,
+                               const QVariant &defaultValue
+                               = QVariant()) const;
+    Q_INVOKABLE void setValue(const QString &key, const QVariant &value);
 
 private:
     struct {
         const QString hdpiPolicy{"hdpiPolicy"};
         const QString uiType{"uiType"};
+        const QString appStyle{"appStyle"};
+        const QString language{"language"};
     } mSettingsKey;
 };
 

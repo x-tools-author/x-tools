@@ -24,7 +24,7 @@ Window {
             return Material.System
         }
 
-        var theme = sakSettings.sakValue(settingKeys.materialTheme)
+        var theme = sakSettings.Value(settingKeys.materialTheme)
 
         if (theme === Material.Dark) {
             //edMaterialAccent = Material.color(edMaterialAccent, Material.Shade200)
@@ -41,7 +41,7 @@ Window {
             return Material.color(Material.Pink)
         }
 
-        var accent = sakSettings.sakValue(settingKeys.materialAccent)
+        var accent = sakSettings.Value(settingKeys.materialAccent)
         if (accent) {
             return accent
         } else {
@@ -53,7 +53,7 @@ Window {
             return Material.color(Material.Pink)
         }
 
-        var primary = sakSettings.sakValue(settingKeys.materialPrimary)
+        var primary = sakSettings.Value(settingKeys.materialPrimary)
         if (primary) {
             return primary
         } else {
@@ -63,19 +63,19 @@ Window {
 
     onEdMaterialThemeChanged: {
         if (sakSettings) {
-            sakSettings.sakSetValue(settingKeys.materialTheme,
+            sakSettings.setValue(settingKeys.materialTheme,
                                     String(edMaterialTheme))
         }
     }
     onEdMaterialAccentChanged: {
         if (sakSettings) {
-             sakSettings.sakSetValue(settingKeys.materialAccent,
+             sakSettings.setValue(settingKeys.materialAccent,
                                      String(edMaterialAccent))
         }
     }
     onEdMaterialPrimaryChanged: {
         if (sakSettings) {
-            sakSettings.sakSetValue(settingKeys.materialPrimary,
+            sakSettings.setValue(settingKeys.materialPrimary,
                                     String(edMaterialPrimary))
         }
     }
@@ -146,7 +146,7 @@ Window {
             anchors.left: parent.left
             anchors.top: parent.top
             anchors.bottom: parent.bottom
-            onPageIndexChanged: sakSettings.sakSetValue(settingKeys.pageIndex, pageIndex)
+            onPageIndexChanged: sakSettings.setValue(settingKeys.pageIndex, pageIndex)
             onInvokeAddPage: function (qmlFile) {
                 pageRepeaterListModel.append({page: "qrc:/qml/" + qmlFile})
             }
@@ -159,7 +159,7 @@ Window {
                 }
             }
             Component.onCompleted: {
-                var index = sakSettings.sakValue(settingKeys.pageIndex)
+                var index = sakSettings.Value(settingKeys.pageIndex)
                 if (index !== undefined) {
                     pageIndex = index > (fixedpage - 1) ? 0 : index
                 }

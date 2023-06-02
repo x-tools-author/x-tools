@@ -66,53 +66,33 @@ void SAKSettings::setUiType(int type)
     emit uiTypeChanged();
 }
 
-QVariant SAKSettings::sakValue(const QString &key,
-                             const QVariant &defaultValue) const
+QString SAKSettings::appStyle()
 {
-    return value(key, defaultValue);
+    return value(mSettingsKey.appStyle).toString();
 }
 
-void SAKSettings::sakSetValue(const QString &key, const QVariant &value)
+void SAKSettings::setAppStyle(const QString &style)
 {
-    setValue(key, value);
+    setValue(mSettingsKey.appStyle, style);
 }
 
-void SAKSettings::sakSetArrayValues(const QString &groupName,
-                                  const QString &array,
-                                  const QString &key,
-                                  const QVariant &varList)
+QString SAKSettings::language()
 {
-    QVariantList cookedVarList = varList.toList();
-    beginGroup(groupName);
-    beginWriteArray(array);
-    for (int i = 0; i < cookedVarList.count(); i++) {
-        setArrayIndex(i);
-        setValue(key, cookedVarList.at(i).toString());
-    }
-    endArray();
-    endGroup();
+    return value(mSettingsKey.language).toString();
 }
 
-QStringList SAKSettings::sakArrayValues(const QString &group,
-                                      const QString &array,
-                                      const QString &key)
+void SAKSettings::setLanguage(const QString &lan)
 {
-    QStringList list;
-    beginGroup(group);
-    int size = beginReadArray(array);
-    for (int i = 0; i < size ; i++) {
-        setArrayIndex(i);
-        list.append(value(key).toString());
-    }
-    endArray();
-    endGroup();
-
-    return list;
+    setValue(mSettingsKey.language, lan);
 }
 
-void SAKSettings::sakRemove(const QString &group, const QString &key)
+QVariant SAKSettings::value(const QString &key,
+                            const QVariant &defaultValue) const
 {
-    beginGroup(group);
-    remove(key);
-    endGroup();
+    return QSettings::value(key, defaultValue);
+}
+
+void SAKSettings::setValue(const QString &key, const QVariant &value)
+{
+    QSettings::setValue(key, value);
 }

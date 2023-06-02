@@ -54,18 +54,13 @@ Item {
     }
 
     Component.onCompleted: {
-        var hexStringList = sakSettings.sakArrayValues(settingKeys.group,
-                                                     settingKeys.array,
-                                                     settingKeys.key)
-        if (hexStringList.length) {
-            var jsonArray = []
-            for (var i = 0; i < hexStringList.length; i++) {
-                var hexString = hexStringList[i];
-                var jsonString = sakInterface.hexString2String(hexString)
-                jsonArray.push(JSON.parse(jsonString))
-            }
-            if (jsonArray.length) {
-                sakInterface.jsonArray2TableModel(presotrerTool.tableModel, jsonArray)
+        var hexString = sakSettings.value(settingKeys.items)
+        var jsonString = sakInterface.hexString2String(hexString);
+        var jsonArray = JSON.parse(jsonString)
+        if (jsonArray) {
+            for (var i = 0; i < jsonArray.length; i++) {
+                var item = jsonArray[i]
+                emitterTool.addItem(JSON.stringify(item), -1)
             }
         }
     }

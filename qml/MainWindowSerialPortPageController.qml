@@ -65,11 +65,11 @@ SAKPane {
             enabled: !devIsWorking
             Layout.fillWidth: true
             onActivated: {
-                sakSettings.sakSetValue(settingKeys.portName,
+                sakSettings.setValue(settingKeys.portName,
                                       portNameComboBox.currentText)
             }
             Component.onCompleted: {
-                var portName = sakSettings.sakValue(settingKeys.portName)
+                var portName = sakSettings.Value(settingKeys.portName)
                 var ret = portNameComboBox.find(portName)
                 if (ret !== -1) {
                     portNameComboBox.currentIndex = ret
@@ -94,7 +94,7 @@ SAKPane {
                 }
             }
             Component.onCompleted: {
-                var baudRate = sakSettings.sakValue(settingKeys.baudRate)
+                var baudRate = sakSettings.value(settingKeys.baudRate)
                 var defaultBaudRate = "9600"
                 if (baudRate !== 0) {
                     defaultBaudRate = String(baudRate)
@@ -108,7 +108,7 @@ SAKPane {
 
             function writeBaudRateToIniFile() {
                 var bd = Number(baudRateComboBox.currentText)
-                sakSettings.sakSetValue(settingKeys.baudRate, bd)
+                sakSettings.setValue(settingKeys.baudRate, bd)
             }
         }
         Label {
@@ -126,10 +126,10 @@ SAKPane {
                 ListElement{text: "2"; value: 2}
             }
             onActivated: {
-                sakSettings.sakSetValue(settingKeys.stopBits, stopBitsComboBox.currentValue)
+                sakSettings.setValue(settingKeys.stopBits, stopBitsComboBox.currentValue)
             }
             Component.onCompleted: {
-                var stopBits = sakSettings.sakValue(settingKeys.stopBits)
+                var stopBits = sakSettings.value(settingKeys.stopBits)
                 if (stopBits !== 0) {
                     var ret = stopBitsComboBox.indexOfValue(stopBits)
                     if (ret !== -1) {
@@ -154,10 +154,10 @@ SAKPane {
                 ListElement{text: "5"; value: 5}
             }
             onActivated: {
-                sakSettings.sakSetValue(settingKeys.dataBits, dataBitsComboBox.currentValue)
+                sakSettings.setValue(settingKeys.dataBits, dataBitsComboBox.currentValue)
             }
             Component.onCompleted: {
-                var dataBit = sakSettings.sakValue(settingKeys.dataBits)
+                var dataBit = sakSettings.Value(settingKeys.dataBits)
                 if (dataBit !== 0) {
                     var ret = dataBitsComboBox.indexOfValue(dataBit)
                     if (ret !== -1) {
@@ -183,10 +183,10 @@ SAKPane {
                 ListElement{text: qsTr("Mark"); value: 5}
             }
             onActivated: {
-                sakSettings.sakSetValue(settingKeys.parity, parityComboBox.currentValue)
+                sakSettings.setValue(settingKeys.parity, parityComboBox.currentValue)
             }
             Component.onCompleted: {
-                var parity = sakSettings.sakValue(settingKeys.parity)
+                var parity = sakSettings.Value(settingKeys.parity)
                 if (parity !== 0) {
                     var ret = parityComboBox.indexOfValue(parity)
                     if (ret !== -1) {
@@ -210,11 +210,11 @@ SAKPane {
                 ListElement{text: qsTr("Software"); value: 2}
             }
             onActivated: {
-                sakSettings.sakSetValue(settingKeys.flowControl,
+                sakSettings.setValue(settingKeys.flowControl,
                                       flowControlComboBox.currentValue)
             }
             Component.onCompleted: {
-                var flowControl = sakSettings.sakValue(settingKeys.flowControl)
+                var flowControl = sakSettings.Value(settingKeys.flowControl)
                 if (flowControl !== 0) {
                     var ret = flowControlComboBox.indexOfValue(flowControl)
                     if (ret !== -1) {
@@ -230,10 +230,10 @@ SAKPane {
             Layout.columnSpan: 2
             Layout.fillWidth: true
             onClicked: {
-                sakSettings.sakSetValue(settingKeys.customBaudRate, bdCheckBox.checked)
+                sakSettings.setValue(settingKeys.customBaudRate, bdCheckBox.checked)
             }
             Component.onCompleted: {
-                var customBaudRate = sakSettings.sakValue(settingKeys.customBaudRate)
+                var customBaudRate = sakSettings.Value(settingKeys.customBaudRate)
                 bdCheckBox.checked = customBaudRate === edTrue ? true : false
             }
         }
@@ -245,11 +245,11 @@ SAKPane {
             Layout.columnSpan: 2
             onClicked: {
                 spController.setIgnoredBusyDevice(ignoredBusyDeviceCheckBox.checked)
-                sakSettings.sakSetValue(settingKeys.ignoredBusyDevice,
+                sakSettings.setValue(settingKeys.ignoredBusyDevice,
                                       ignoredBusyDeviceCheckBox.checked)
             }
             Component.onCompleted: {
-                var ignoredBusyDevice = sakSettings.sakValue(settingKeys.ignoredBusyDevice)
+                var ignoredBusyDevice = sakSettings.Value(settingKeys.ignoredBusyDevice)
                 ignoredBusyDeviceCheckBox.checked = ignoredBusyDevice === edTrue ? true : false
             }
         }
@@ -261,10 +261,10 @@ SAKPane {
             Layout.columnSpan: 2
             onClicked: {
                 spController.setAutoUpdatePortNames(autoUpdatePortNameCheckBox.checked)
-                sakSettings.sakSetValue(settingKeys.autoUpdatePortNames, autoUpdatePortNameCheckBox.checked)
+                sakSettings.setValue(settingKeys.autoUpdatePortNames, autoUpdatePortNameCheckBox.checked)
             }
             Component.onCompleted: {
-                var autoUpdatePortNames = sakSettings.sakValue(settingKeys.autoUpdatePortNames)
+                var autoUpdatePortNames = sakSettings.Value(settingKeys.autoUpdatePortNames)
                 autoUpdatePortNameCheckBox.checked = autoUpdatePortNames === edTrue ? true : false
             }
         }

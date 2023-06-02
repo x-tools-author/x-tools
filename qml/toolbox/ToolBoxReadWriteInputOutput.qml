@@ -187,7 +187,7 @@ Item {
                         id: hisrotyListModel
                     }
                     onActivated: {
-                        sakSettings.sakSetValue(keysObj.itemCurrentIndex, currentIndex)
+                        sakSettings.setValue(keysObj.itemCurrentIndex, currentIndex)
                         var ret = inputTextFormatComboBox.indexOfValue(currentValue)
                         if (ret >= 0) {
                             inputTextFormatComboBox.currentIndex = ret
@@ -206,7 +206,7 @@ Item {
                             hisrotyListModel.append(item)
                         }
 
-                        var index = sakSettings.sakValue(keysObj.itemCurrentIndex)
+                        var index = sakSettings.value(keysObj.itemCurrentIndex)
                         if (index >= 0 && index < hisrotyListModel.count) {
                             currentIndex = index
                             editText = currentText

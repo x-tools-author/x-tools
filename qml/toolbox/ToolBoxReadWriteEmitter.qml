@@ -13,9 +13,7 @@ Item {
 
     QtObject {
         id: settingKeys
-        readonly property string group: groupName + "Emitter"
-        readonly property string array: "emitter"
-        readonly property string key: "itemData"
+        readonly property string items: groupName + "/emitter/items"
     }
 
     ToolBoxCommonTableView {
@@ -24,6 +22,7 @@ Item {
         tableHeaders: emitterTool ? emitterTool.headers : []
         fillWidthColumns: [11]
         showColumns: [0, 1, 11]
+        tabelModelTool: root.emitterTool
         onInvokeAppend: {
             var parameters = emitterTool.itemContext(-1)
             editorPopup.setParameters(parameters)
@@ -54,18 +53,13 @@ Item {
     }
 
     Component.onCompleted: {
-        var hexStringList = sakSettings.sakArrayValues(settingKeys.group,
-                                                     settingKeys.array,
-                                                     settingKeys.key)
-        if (hexStringList.length) {
-            var jsonArray = []
-            for (var i = 0; i < hexStringList.length; i++) {
-                var hexString = hexStringList[i];
-                var jsonString = sakInterface.hexString2String(hexString)
-                jsonArray.push(JSON.parse(jsonString))
-            }
-            if (jsonArray.length) {
-                sakInterface.jsonArray2TableModel(emitterTool.tableModel, jsonArray)
+        var hexString = sakSettings.value(settingKeys.items)
+        var jsonString = sakInterface.hexString2String(hexString);
+        var jsonArray = JSON.parse(jsonString)
+        if (jsonArray) {
+            for (var i = 0; i < jsonArray.length; i++) {
+                var item = jsonArray[i]
+                emitterTool.addItem(JSON.stringify(item), -1)
             }
         }
     }

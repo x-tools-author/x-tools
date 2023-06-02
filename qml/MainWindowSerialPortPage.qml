@@ -9,7 +9,7 @@ import "toolbox"
 ToolBox {
     id: root
     controllerComponent: comComtrollerComponent
-    groupName: "SerialPort"
+    groupName: "SerialportToolBox"
 
     property EDSerialportTool comTool: null
 

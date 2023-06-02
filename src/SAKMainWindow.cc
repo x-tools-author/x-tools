@@ -17,6 +17,7 @@
 #include <QTabBar>
 #include <QAction>
 #include <QLocale>
+#include <QProcess>
 #include <QVariant>
 #include <QSysInfo>
 #include <QMetaEnum>
@@ -288,43 +289,43 @@ void SAKMainWindow::initOptionMenu()
 void SAKMainWindow::initOptionMenuAppStyleMenu(QMenu *optionMenu)
 {
     // Initializing application style menu.
+    static QActionGroup gActionGroup(this);
+    auto actions = gActionGroup.actions();
+    for (auto action : actions) {
+        gActionGroup.removeAction(action);
+    }
+
     QMenu *appStyleMenu = new QMenu(tr("Application Style"), this);
     optionMenu->addMenu(appStyleMenu);
-    auto styleKeys = QStyleFactory::keys();
-    QList<QAction*> actionsList;
-    mActionGroup = new QActionGroup(this);
-    for (QString &var : styleKeys){
-        QAction *action = new QAction(var, this);
-        action->setObjectName(var);
+    auto keys = QStyleFactory::keys();
+    for (QString &key : keys){
+        QAction *action = new QAction(key, this);
+        action->setObjectName(key);
         action->setCheckable(true);
-        actionsList.append(action);
-        mActionGroup->addAction(action);
+
+        gActionGroup.addAction(action);
+
         connect(action, &QAction::triggered, this, [=](){
-            QString style = qobject_cast<QAction*>(sender())->objectName();
-            QString styleKey = sakApp->settingsKeyContext()->appStyle;
-            sakApp->setStyle(style);
-            sakApp->settings()->setValue(styleKey, style);
+            SAKSettings::instance()->setAppStyle(key);
+            rebootRequestion();
         });
     }
 
-    // Readin the specified style.
-    QString styleKey = sakApp->settingsKeyContext()->appStyle;
-    QString style = sakApp->settings()->value(styleKey).toString();
-    if (!style.isEmpty()){
-        for (QAction *var : actionsList){
-            if (var->objectName().compare(style) == 0){
-                QString styleKey = sakApp->settingsKeyContext()->appStyle;
-                var->blockSignals(true);
-                var->setChecked(true);
-                var->blockSignals(false);
-                sakApp->setStyle(style);
-                sakApp->settings()->setValue(styleKey, style);
-                break;
-            }
-        }
+    appStyleMenu->addActions(gActionGroup.actions());
+
+    // Reading the specified style.
+    QString style = SAKSettings::instance()->appStyle();
+
+    if (style.isEmpty()){
+        return;
     }
 
-    appStyleMenu->addActions(actionsList);
+    for (QAction *action : gActionGroup.actions()){
+        if (action->objectName() == style){
+            action->setChecked(true);
+            break;
+        }
+    }
 }
 
 void SAKMainWindow::initOptionMenuMainWindowMenu(QMenu *optionMenu)
@@ -780,8 +781,10 @@ void SAKMainWindow::rebootRequestion()
                 tr("Need to reboot, reboot to effective now?"),
                 QMessageBox::Ok | QMessageBox::Cancel);
     if (ret == QMessageBox::Ok){
+        QProcess::startDetached(QCoreApplication::applicationFilePath());
+
         qApp->closeAllWindows();
-        qApp->exit(SAK_REBOOT_CODE);
+        qApp->exit();
     }
 }
 
