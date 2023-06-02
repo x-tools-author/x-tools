@@ -14,6 +14,7 @@ HEADERS += \
     $$PWD/SAKFlowControlComboBox.hh \
     $$PWD/SAKIpComboBox.hh \
     $$PWD/SAKLineEdit.hh \
+    $$PWD/SAKMenu.hh \
     $$PWD/SAKParityComboBox.hh \
     $$PWD/SAKPortNameComboBox.hh \
     $$PWD/SAKResponseOptionComboBox.hh \
@@ -35,6 +36,7 @@ SOURCES += \
     $$PWD/SAKFlowControlComboBox.cc \
     $$PWD/SAKIpComboBox.cc \
     $$PWD/SAKLineEdit.cc \
+    $$PWD/SAKMenu.cc \
     $$PWD/SAKParityComboBox.cc \
     $$PWD/SAKPortNameComboBox.cc \
     $$PWD/SAKResponseOptionComboBox.cc \
