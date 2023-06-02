@@ -4,9 +4,15 @@
 #
 #-------------------------------------------------
 
-QT += core gui sql network bluetooth quick serialport websockets quickcontrols2
+QT += core gui network bluetooth serialport websockets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+
+greaterThan(QT_MAJOR_VERSION, 5) {
+    greaterThan(QT_MINOR_VERSION, 3) {
+        QT  += quick quickcontrols2
+    }
+}
 
 contains(CONFIG, debug, debug|release){
     TARGET = QtSwissArmyKnifed
