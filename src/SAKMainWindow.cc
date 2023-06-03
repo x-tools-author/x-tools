@@ -138,7 +138,8 @@ void SAKMainWindow::initMenuBar()
 #ifdef Q_OS_WIN
 void SAKMainWindow::closeEvent(QCloseEvent *event)
 {
-    bool ignore = mSettings->value(mSettingsKey.exitToSystemTray).toBool();
+    auto key = mSettingsKey.exitToSystemTray;
+    bool ignore = SAKSettings::instance()->value(key).toBool();
     if (ignore) {
         this->hide();
         event->ignore();
@@ -262,22 +263,20 @@ void SAKMainWindow::initOptionMenuMainWindowMenu(QMenu *optionMenu)
     }
 
     QMenu *mainWindowMenu = new QMenu(tr("Main Window"), this);
-    QAction *exitToSystemTrayAction =
-            new QAction(tr("Exit to Sysytem Tray"), this);
-    exitToSystemTrayAction->setCheckable(true);
-    mainWindowMenu->addAction(exitToSystemTrayAction);
+    QAction *action = new QAction(tr("Exit to Sysytem Tray"), this);
+    action->setCheckable(true);
+    mainWindowMenu->addAction(action);
     optionMenu->addMenu(mainWindowMenu);
 
     QVariant v = SAKSettings::instance()->value(mSettingsKey.exitToSystemTray);
     if (!v.isNull()) {
         bool isExitToSystemTray = v.toBool();
-        exitToSystemTrayAction->setChecked(isExitToSystemTray);
+        action->setChecked(isExitToSystemTray);
     }
 
-    connect(exitToSystemTrayAction, &QAction::triggered, this, [=](){
-        bool isExitToSystemTray = exitToSystemTrayAction->isChecked();
-        SAKSettings::instance()->setValue(mSettingsKey.exitToSystemTray,
-                            isExitToSystemTray);
+    connect(action, &QAction::triggered, this, [=](){
+        bool keep = action->isChecked();
+        SAKSettings::instance()->setValue(mSettingsKey.exitToSystemTray, keep);
     });
 }
 
@@ -397,9 +396,11 @@ void SAKMainWindow::initOptionMenuHdpiPolicy(QMenu *optionMenu)
 
 void SAKMainWindow::initLanguageMenu()
 {
-    QIcon icon = QIcon(":/resources/icon/IconLanguage.svg");
     QMenu *languageMenu = new QMenu(tr("&Languages"), this);
+#if 0
+    QIcon icon = QIcon(":/resources/icon/IconLanguage.svg");
     languageMenu->setIcon(icon);
+#endif
     menuBar()->addMenu(languageMenu);
 
     static QActionGroup ag(this);
