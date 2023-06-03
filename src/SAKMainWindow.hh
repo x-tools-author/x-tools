@@ -71,8 +71,6 @@ private:
     void showReleaseHistoryActionDialog();
     void showQrCodeDialog();
     void onDonationActionTriggered();
-    void activePage();
-    void installLanguage();
 
 private:
     Ui::SAKMainWindow *ui;

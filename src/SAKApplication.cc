@@ -29,6 +29,7 @@
 #include <QStandardPaths>
 
 #include "SAKSettings.hh"
+#include "SAKTranslator.hh"
 #include "SAKMainWindow.hh"
 #include "SAKApplication.hh"
 #include "SAKSystemTrayIcon.hh"
@@ -52,7 +53,8 @@ SAKApplication::SAKApplication(int argc, char **argv)
     processEvents();
 
     // Setup ui language.
-    installLanguage();
+    QString language = SAKSettings::instance()->language();
+    SAKTranslator::instance()->setupLanguage(language);
     showSplashScreenMessage(QObject::tr("Initializing main window..."));
 
     SAKMainWindow *mainWindow = new SAKMainWindow();

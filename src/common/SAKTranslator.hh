@@ -27,23 +27,13 @@ private:
 
 public:
     static SAKTranslator* instance();
-    Q_INVOKABLE void installTranslator(const QString &name);
-    Q_INVOKABLE void setConfigurationFile(const QString &conf);
+    QStringList languanges();
+    void setupLanguage(const QString &language);
 
 private:
-    QList<QJsonObject> mLanguageContextList;
-    QList<QTranslator*> mTranslators;
-    QString mCurrentName;
-    QString mConf;
     const QLoggingCategory mLoggingCategory{"SAK.Translator"};
     QMap<QString, QString> mFlagNameMap;
-
-private:
-    void uninstallTranslator();
-    void installTranslator(const QJsonArray &packets);
-
-private:
-    QStringList languanges();
+    QTranslator mTranslator;
 
 signals:
     void languageChanged();

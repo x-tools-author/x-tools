@@ -49,10 +49,6 @@ int main(int argc, char *argv[])
     QGuiApplication::setHighDpiScaleFactorRoundingPolicy(cookedPolicy);
 #endif
 
-    // Install language packet for the application.
-    QString language = SAKSettings::instance()->language();
-    SAKTranslator::instance()->installTranslator(language);
-
     // Startup application.
     if (SAKSettings::instance()->uiType() == SAKSettings::UiTypeWidget) {
         QString style = SAKSettings::instance()->appStyle();
@@ -62,14 +58,15 @@ int main(int argc, char *argv[])
         }
 
         SAKApplication app(argc, argv);
-        app.exec();
+        return app.exec();
     } else {
 #if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
         SAKGuiApplication app(argc, argv);
-        app.exec();
+        return app.exec();
 #else
         SAKSettings::instance()->setUiType(SAKSettings::UiTypeWidget);
         qInfo() << "Please using Qt 6.4.0 or later!";
+        return 0;
 #endif
     }
 }

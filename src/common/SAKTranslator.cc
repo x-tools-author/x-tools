@@ -50,84 +50,26 @@ SAKTranslator* SAKTranslator::instance()
     return &translator;
 }
 
-void SAKTranslator::installTranslator(const QString &name)
+QStringList SAKTranslator::languanges()
 {
-    if (mCurrentName == name) {
+    return mFlagNameMap.values();
+}
+
+void SAKTranslator::setupLanguage(const QString &language)
+{
+    QCoreApplication::removeTranslator(&mTranslator);
+
+    QString key = mFlagNameMap.key(language);
+    if (key.isEmpty()) {
+        qCWarning(mLoggingCategory) << "Unknown language name:" << language;
         return;
     }
 
-    mCurrentName = name;
-    qCWarning(mLoggingCategory) << "Installing translator: " << name;
-    for (auto &ctx : mLanguageContextList) {
-        QString languageName = ctx.value("name").toString();
-        if (name == languageName) {
-            uninstallTranslator();
-            QJsonArray packets = ctx.value("packets").toArray();
-            installTranslator(packets);
-
-            emit languageChanged();
-        }
+    QString fileName = ":/resources/translations/sak_" + key + ".qm";
+    if (mTranslator.load(fileName)) {
+        QCoreApplication::installTranslator(&mTranslator);
+        qCInfo(mLoggingCategory) << language << " has been setup!";
+    } else {
+        qCWarning(mLoggingCategory) << "Load file failed: " << fileName;
     }
-}
-
-void SAKTranslator::setConfigurationFile(const QString &conf)
-{
-    mConf = conf;
-    languanges();
-}
-
-void SAKTranslator::uninstallTranslator()
-{
-    while (!mTranslators.isEmpty()) {
-        auto translator = mTranslators.takeFirst();
-        if (QCoreApplication::removeTranslator(translator)) {
-            qCInfo(mLoggingCategory) << "old translator removed: "
-#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
-                              << translator->filePath();
-#else
-                ;
-#endif
-            translator->deleteLater();
-            translator = nullptr;
-        } else {
-            qCInfo(mLoggingCategory) << "remove old translator failed!";
-        }
-    }
-}
-
-void SAKTranslator::installTranslator(const QJsonArray &packets)
-{
-    for (int i = 0; i < packets.count(); i++) {
-        QString qmFile = ":/res/i18n/";
-        QString packet = packets.at(i).toString();
-        qmFile.append(packet);
-        qmFile.append("_");
-        qmFile.append(mCurrentName);
-        qmFile.append(".qm");
-
-        QTranslator *translator = new QTranslator();
-        mTranslators.append(translator);
-        if (translator->load(qmFile)) {
-            if (QCoreApplication::installTranslator(translator)) {
-                qCInfo(mLoggingCategory) << "translator installed: " << qmFile;
-            } else {
-                qCWarning(mLoggingCategory) << "install translator failed: "
-                                     << qmFile;
-            }
-        } else {
-            qCWarning(mLoggingCategory) << "Can not load: " << qmFile;
-        }
-    }
-}
-
-QStringList SAKTranslator::languanges()
-{
-    QString path = QCoreApplication::applicationDirPath();
-    path += "/translations";
-    QDir dir(path);
-    //QFileInfoList fileInfoList = dir.entryInfoList("QM (*.qm)");
-
-    QStringList list;
-    list << "简体中文";
-    return list;
 }

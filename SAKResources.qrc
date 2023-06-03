@@ -37,5 +37,28 @@
         <file>resources/icon/IconWebScoketClient.svg</file>
         <file>resources/icon/IconWebSocketServer.svg</file>
         <file>resources/icon/IconWindowed.svg</file>
+        <file>resources/icon/IconLanguage.svg</file>
+        <file>resources/translations/sak_ar.qm</file>
+        <file>resources/translations/sak_cs.qm</file>
+        <file>resources/translations/sak_da.qm</file>
+        <file>resources/translations/sak_de.qm</file>
+        <file>resources/translations/sak_en.qm</file>
+        <file>resources/translations/sak_es.qm</file>
+        <file>resources/translations/sak_fa.qm</file>
+        <file>resources/translations/sak_fi.qm</file>
+        <file>resources/translations/sak_fr.qm</file>
+        <file>resources/translations/sak_he.qm</file>
+        <file>resources/translations/sak_it.qm</file>
+        <file>resources/translations/sak_ja.qm</file>
+        <file>resources/translations/sak_ko.qm</file>
+        <file>resources/translations/sak_lt.qm</file>
+        <file>resources/translations/sak_pl.qm</file>
+        <file>resources/translations/sak_pt.qm</file>
+        <file>resources/translations/sak_ru.qm</file>
+        <file>resources/translations/sak_sk.qm</file>
+        <file>resources/translations/sak_sl.qm</file>
+        <file>resources/translations/sak_sv.qm</file>
+        <file>resources/translations/sak_uk.qm</file>
+        <file>resources/translations/sak_zh_CN.qm</file>
     </qresource>
 </RCC>

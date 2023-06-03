@@ -52,6 +52,9 @@ SAKGuiApplication::SAKGuiApplication(int argc, char *argv[])
     auto sakI18n = SAKTranslator::instance();
     auto sakSettings = SAKSettings::instance();
 
+    QString language = SAKSettings::instance()->language();
+    SAKTranslator::instance()->setupLanguage(language);
+
     const QString reason = "Uncreatable type!";
     qmlRegisterType<SAKToolBox>("SAK.Custom", 1, 0, "EDDevice");
     qmlRegisterType<SAKSettings>("SAK.Custom", 1, 0, "SAKSettings");

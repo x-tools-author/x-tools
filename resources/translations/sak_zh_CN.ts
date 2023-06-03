@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<TS version="2.0" language="zh_CN">
 <context>
     <name>MainWindow</name>
     <message>
@@ -114,7 +114,7 @@
     </message>
     <message>
         <location filename="../../qml/MainWindowSerialPortPageController.qml" line="44"/>
-        <source><byte value="xd"/></source>
+        <source></source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -125,14 +125,14 @@
     </message>
     <message>
         <location filename="../../qml/MainWindowSerialPortPageController.qml" line="46"/>
-        <source><byte value="xd"/>
+        <source>
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowSerialPortPageController.qml" line="47"/>
         <source>
-<byte value="xd"/></source>
+</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -820,7 +820,7 @@
     <message>
         <location filename="../../src/SAKMainWindow.cc" line="150"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation>文件(&amp;F)</translation>
     </message>
     <message>
         <location filename="../../src/SAKMainWindow.cc" line="153"/>

@@ -45,6 +45,7 @@
 #include "SAKSettings.hh"
 #include "SAKToolBoxUi.hh"
 #include "SAKMainWindow.hh"
+#include "SAKTranslator.hh"
 #include "SAKApplication.hh"
 #include "SAKAssistantsFactory.hh"
 
@@ -396,60 +397,28 @@ void SAKMainWindow::initOptionMenuHdpiPolicy(QMenu *optionMenu)
 
 void SAKMainWindow::initLanguageMenu()
 {
-    return;
+    QIcon icon = QIcon(":/resources/icon/IconLanguage.svg");
     QMenu *languageMenu = new QMenu(tr("&Languages"), this);
+    languageMenu->setIcon(icon);
     menuBar()->addMenu(languageMenu);
 
-    QString key = SAKSettings::instance()->language();
-    QString language = SAKSettings::instance()->value(key).toString();
+    static QActionGroup ag(this);
+    QStringList languages = SAKTranslator::instance()->languanges();
+    for (auto &language : languages) {
+        QAction *action = new QAction(language, this);
+        action->setCheckable(true);
+        languageMenu->addAction(action);
+        ag.addAction(action);
 
-    QFile file(":/translations/sak/Translations.json");
-    file.open(QFile::ReadOnly);
-    QByteArray jsonData = file.readAll();
+        connect(action, &QAction::triggered, this, [=](){
+            SAKSettings::instance()->setLanguage(language);
+            rebootRequestion();
+        });
 
-    QJsonParseError jsonError;
-    QJsonDocument jsonDocument =
-            QJsonDocument::fromJson(jsonData, &jsonError);
-    if (jsonError.error == QJsonParseError::NoError){
-        if (jsonDocument.isArray()){
-            QJsonArray jsonArray = jsonDocument.array();
-            struct info {
-                QString locale;
-                QString language;
-                QString name;
-            };
-            QVector<info> infoVector;
-
-            for (int i = 0; i < jsonArray.count(); i++){
-                QJsonObject jsonObject = jsonArray.at(i).toObject();
-                struct info languageInfo;
-                languageInfo.locale = jsonObject.value("locale").toString();
-                languageInfo.language =
-                        jsonObject.value("language").toString();
-                languageInfo.name = jsonObject.value("name").toString();
-                infoVector.append(languageInfo);
-            }
-
-            mLanguagesActionGroup = new QActionGroup(this);
-            for(auto &var:infoVector){
-                QAction *action = new QAction(var.name, languageMenu);
-                languageMenu->addAction(action);
-                action->setCheckable(true);
-                mLanguagesActionGroup->addAction(action);
-                action->setObjectName(var.language);
-                action->setData(QVariant::fromValue<QString>(var.name));
-                action->setIcon(QIcon(QString(":/translations/sak/%1")
-                                      .arg(var.locale).toLatin1()));
-                connect(action, &QAction::triggered,
-                        this, &SAKMainWindow::installLanguage);
-
-                if (var.language == language.split('-').first()){
-                    action->setChecked(true);
-                }
-            }
+        QString l = SAKSettings::instance()->language();
+        if (l == language) {
+            action->setChecked(true);
         }
-    }else{
-        Q_ASSERT_X(false, __FUNCTION__, "Json file parsing failed!");
     }
 }
 
@@ -719,22 +688,4 @@ void SAKMainWindow::onDonationActionTriggered()
     dialog.layout()->addWidget(label);
     dialog.show();
     dialog.exec();
-}
-
-void SAKMainWindow::installLanguage()
-{
-    if (sender()) {
-        if (sender()->inherits("QAction")) {
-            QAction *action = reinterpret_cast<QAction*>(sender());
-            action->setChecked(true);
-
-            QString language = action->objectName();
-            QString name = action->data().toString();
-            QString value = language + "-" + name;
-            QString key = SAKSettings::instance()->language();
-            SAKSettings::instance()->setValue(key, value);
-            qobject_cast<SAKApplication*>(qApp)->installLanguage();
-            rebootRequestion();
-        }
-    }
 }
