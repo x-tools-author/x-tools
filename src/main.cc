@@ -10,7 +10,7 @@
 #include <QFile>
 #include <QLoggingCategory>
 
-#include "SAKI18N.hh"
+#include "SAKTranslator.hh"
 #include "SAKSettings.hh"
 #include "SAKApplication.hh"
 
@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
 
     // Install language packet for the application.
     QString language = SAKSettings::instance()->language();
-    SAKI18N::instance()->installTranslator(language);
+    SAKTranslator::instance()->installTranslator(language);
 
     // Startup application.
     if (SAKSettings::instance()->uiType() == SAKSettings::UiTypeWidget) {

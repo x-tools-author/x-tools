@@ -1,32 +1,63 @@
 /******************************************************************************
- * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
+ * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
+ *
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
+#include <QDir>
 #include <QFile>
+#include <QFileInfoList>
 #include <QJsonDocument>
 #include <QCoreApplication>
 
-#include "SAKI18N.hh"
+#include "SAKTranslator.hh"
 
-SAKI18N::SAKI18N(QObject *parent)
+SAKTranslator::SAKTranslator(QObject *parent)
     : QObject{parent}
 {
+    mFlagNameMap.insert("zh_CN", "简体中文");
+    mFlagNameMap.insert("zh_TW", "繁體中文");
 
+    mFlagNameMap.insert("ar", "العربية");
+    mFlagNameMap.insert("cs", "Čeština");
+    mFlagNameMap.insert("da", "Dansk");
+    mFlagNameMap.insert("de", "Deutsch");
+    mFlagNameMap.insert("en", "English");
+    mFlagNameMap.insert("es", "Español");
+    mFlagNameMap.insert("fa", "فارسی");
+    mFlagNameMap.insert("fi", "Suomi");
+    mFlagNameMap.insert("fr", "Français");
+    mFlagNameMap.insert("he", "עִבְרִית");
+    mFlagNameMap.insert("uk", "українська мова");
+    mFlagNameMap.insert("it", "Italiano");
+    mFlagNameMap.insert("ja", "日本语");
+    mFlagNameMap.insert("ko", "한글");
+    mFlagNameMap.insert("lt", "Lietuvių kalba");
+    mFlagNameMap.insert("pl", "Polski");
+    mFlagNameMap.insert("pt", "Português");
+    mFlagNameMap.insert("ru", "русский язык");
+    mFlagNameMap.insert("sk", "Slovenčina");
+    mFlagNameMap.insert("sl", "Slovenščina");
+    mFlagNameMap.insert("sv", "Svenska");
 }
 
-SAKI18N* SAKI18N::instance()
+SAKTranslator* SAKTranslator::instance()
 {
-    static SAKI18N i18n;
-    return &i18n;
+    static SAKTranslator translator;
+    return &translator;
 }
 
-void SAKI18N::installTranslator(const QString &name)
+void SAKTranslator::installTranslator(const QString &name)
 {
     if (mCurrentName == name) {
         return;
     }
 
     mCurrentName = name;
-    qCWarning(mCategory) << "Installing translator: " << name;
+    qCWarning(mLoggingCategory) << "Installing translator: " << name;
     for (auto &ctx : mLanguageContextList) {
         QString languageName = ctx.value("name").toString();
         if (name == languageName) {
@@ -39,18 +70,18 @@ void SAKI18N::installTranslator(const QString &name)
     }
 }
 
-void SAKI18N::setConfigurationFile(const QString &conf)
+void SAKTranslator::setConfigurationFile(const QString &conf)
 {
     mConf = conf;
     languanges();
 }
 
-void SAKI18N::uninstallTranslator()
+void SAKTranslator::uninstallTranslator()
 {
     while (!mTranslators.isEmpty()) {
         auto translator = mTranslators.takeFirst();
         if (QCoreApplication::removeTranslator(translator)) {
-            qCInfo(mCategory) << "old translator removed: "
+            qCInfo(mLoggingCategory) << "old translator removed: "
 #if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
                               << translator->filePath();
 #else
@@ -59,12 +90,12 @@ void SAKI18N::uninstallTranslator()
             translator->deleteLater();
             translator = nullptr;
         } else {
-            qCInfo(mCategory) << "remove old translator failed!";
+            qCInfo(mLoggingCategory) << "remove old translator failed!";
         }
     }
 }
 
-void SAKI18N::installTranslator(const QJsonArray &packets)
+void SAKTranslator::installTranslator(const QJsonArray &packets)
 {
     for (int i = 0; i < packets.count(); i++) {
         QString qmFile = ":/res/i18n/";
@@ -78,38 +109,25 @@ void SAKI18N::installTranslator(const QJsonArray &packets)
         mTranslators.append(translator);
         if (translator->load(qmFile)) {
             if (QCoreApplication::installTranslator(translator)) {
-                qCInfo(mCategory) << "translator installed: " << qmFile;
+                qCInfo(mLoggingCategory) << "translator installed: " << qmFile;
             } else {
-                qCWarning(mCategory) << "install translator failed: "
+                qCWarning(mLoggingCategory) << "install translator failed: "
                                      << qmFile;
             }
         } else {
-            qCWarning(mCategory) << "Can not load: " << qmFile;
+            qCWarning(mLoggingCategory) << "Can not load: " << qmFile;
         }
     }
 }
 
-QVariantList SAKI18N::languanges()
+QStringList SAKTranslator::languanges()
 {
-    QVariantList list;
+    QString path = QCoreApplication::applicationDirPath();
+    path += "/translations";
+    QDir dir(path);
+    QFileInfoList fileInfoList = dir.entryInfoList("QM (*.qm)");
 
-    QFile file(mConf);
-    if (file.open(QFile::ReadOnly)) {
-        auto json = file.readAll();
-        file.close();
-
-        auto jsonDoc = QJsonDocument::fromJson(json);
-        auto array = jsonDoc.array();
-        for (int i = 0; i < array.count(); i++) {
-            auto object = array.at(i).toObject();
-            list.append(object);
-            if (mLanguageContextList.count() != array.count()) {
-                mLanguageContextList.append(object);
-            }
-        }
-    } else {
-        qDebug() << file.errorString();
-    }
-
+    QStringList list;
+    list << "简体中文";
     return list;
 }

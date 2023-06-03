@@ -29,7 +29,7 @@
 #include "SAKWebSocketClientTool.hh"
 #include "SAKWebSocketServerTool.hh"
 
-#include "SAKI18N.hh"
+#include "SAKTranslator.hh"
 #include "SAKSettings.hh"
 #include "SAKInterface.hh"
 #include "SAKBleScanner.hh"
@@ -49,7 +49,7 @@ SAKGuiApplication::SAKGuiApplication(int argc, char *argv[])
     auto sakInterface = new SAKInterface(this);
     auto sakDataStructure = new SAKDataStructure(this);
 
-    auto sakI18n = SAKI18N::instance();
+    auto sakI18n = SAKTranslator::instance();
     auto sakSettings = SAKSettings::instance();
 
     const QString reason = "Uncreatable type!";

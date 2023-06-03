@@ -1,8 +1,14 @@
 /******************************************************************************
- * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
+ * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
+ *
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#ifndef SAKI18N_HH
-#define SAKI18N_HH
+#ifndef SAKTRANSLATOR_HH
+#define SAKTRANSLATOR_HH
 
 #include <QMap>
 #include <QObject>
@@ -12,15 +18,15 @@
 #include <QVariantList>
 #include <QLoggingCategory>
 
-class SAKI18N : public QObject
+class SAKTranslator : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QVariantList languanges READ languanges CONSTANT)
+    Q_PROPERTY(QStringList languanges READ languanges CONSTANT)
 private:
-    explicit SAKI18N(QObject *parent = nullptr);
+    explicit SAKTranslator(QObject *parent = nullptr);
 
 public:
-    static SAKI18N* instance();
+    static SAKTranslator* instance();
     Q_INVOKABLE void installTranslator(const QString &name);
     Q_INVOKABLE void setConfigurationFile(const QString &conf);
 
@@ -29,17 +35,18 @@ private:
     QList<QTranslator*> mTranslators;
     QString mCurrentName;
     QString mConf;
+    const QLoggingCategory mLoggingCategory{"SAK.Translator"};
+    QMap<QString, QString> mFlagNameMap;
 
 private:
     void uninstallTranslator();
     void installTranslator(const QJsonArray &packets);
 
 private:
-    QVariantList languanges();
-    const QLoggingCategory mCategory{"EDI18N"};
+    QStringList languanges();
 
 signals:
     void languageChanged();
 };
 
-#endif // SAKI18N_HH
+#endif // SAKTRANSLATOR_HH
