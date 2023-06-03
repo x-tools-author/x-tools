@@ -16,10 +16,10 @@ SAKToolBoxUiParameters::SAKToolBoxUiParameters(QWidget *parent)
     , ui(new Ui::SAKToolBoxUiParameters)
 {
     ui->setupUi(this);
-    ui->widgetTxMasker->setToolName("Input masker");
-    ui->widgetRxMasker->setToolName("Output masker");
-    ui->widgetTxAnanyzer->setToolName(tr("Input analyzer"));
-    ui->widgetRxAnanlyzer->setToolName(tr("Output analyzer"));
+    ui->widgetTxMasker->setToolName("Tx masker");
+    ui->widgetRxMasker->setToolName("Rx masker");
+    ui->widgetTxAnanyzer->setToolName(tr("Tx analyzer"));
+    ui->widgetRxAnanlyzer->setToolName(tr("Rx analyzer"));
 }
 
 SAKToolBoxUiParameters::~SAKToolBoxUiParameters()
@@ -81,11 +81,6 @@ void SAKToolBoxUiParameters::initialize(SAKToolBox *toolBox,
     auto rxAGroup = settingsGroup + "/rxAnalyzer";
     auto storerGroup = settingsGroup + "/storer";
 
-    txM->setToolName("TxMasker");
-    rxM->setToolName("RxMasker");
-    txA->setToolName("TxAnalyzer");
-    rxA->setToolName("RxAnalyzer");
-
     ui->widgetRxMasker->initialize(rxM, rxMGroup);
     ui->widgetTxMasker->initialize(txM, txMGroup);
     ui->widgetTxAnanyzer->initialize(txA, txAGroup);
@@ -96,4 +91,5 @@ void SAKToolBoxUiParameters::initialize(SAKToolBox *toolBox,
     ui->checkBoxCrcEnable->setGroupKey(settingsGroup + "/input", "crcEnable");
     ui->spinBoxEndIndex->setGroupKey(settingsGroup   + "/input", "endIndex");
     ui->spinBoxStartIndex->setGroupKey(settingsGroup + "/input", "startIndex");
+    ui->comboBoxAlgorithm->setGroupKey(settingsGroup + "/input", "algorithm");
 }
