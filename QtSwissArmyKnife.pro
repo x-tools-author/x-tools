@@ -104,29 +104,21 @@ greaterThan(QT_MAJOR_VERSION, 5) {
 }
 
 INCLUDEPATH += \
-    src \
-    src/base \
-    src/update
+    src
 
 FORMS += \
-    src/SAKMainWindow.ui \
-    src/update/SAKDownloadItemWidget.ui \
-    src/update/SAKUpdateManager.ui
+    src/SAKMainWindow.ui
 
 HEADERS += \
     src/SAKApplication.hh \
     src/SAKMainWindow.hh \
-    src/SAKSystemTrayIcon.hh \
-    src/update/SAKDownloadItemWidget.hh \
-    src/update/SAKUpdateManager.hh
+    src/SAKSystemTrayIcon.hh
 
 SOURCES += \
     src/SAKApplication.cc \
     src/SAKMainWindow.cc \
     src/SAKSystemTrayIcon.cc \
-    src/main.cc \
-    src/update/SAKDownloadItemWidget.cc \
-    src/update/SAKUpdateManager.cc
+    src/main.cc
 
 greaterThan(QT_MAJOR_VERSION, 5) {
     greaterThan(QT_MINOR_VERSION, 3) {

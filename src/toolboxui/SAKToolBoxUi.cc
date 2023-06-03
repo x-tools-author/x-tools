@@ -426,15 +426,15 @@ void SAKToolBoxUi::initSettings()
 
 void SAKToolBoxUi::initSettingsCommunication()
 {
-    mCommunicationToolUi->initialize(mCommunicationTool,
-                                     settingsGroup() + "/communication");
+    const QString key = settingsGroup() + "/communication";
+    mCommunicationToolUi->initialize(mCommunicationTool, key);
 }
 
 void SAKToolBoxUi::initSettingsInput()
 {
     QString group = settingsGroup();
     ui->comboBoxInputFormat->setGroupKey(group + "/input", "fromat");
-    ui->comboBoxInputText->setGroupKey(group + "/input", "text", false);
+    ui->comboBoxInputText->setGroupKey(group +   "/input", "text", false);
 }
 
 void SAKToolBoxUi::initSettingsOutput()

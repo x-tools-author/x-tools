@@ -46,7 +46,6 @@
 #include "SAKToolBoxUi.hh"
 #include "SAKMainWindow.hh"
 #include "SAKApplication.hh"
-#include "SAKUpdateManager.hh"
 #include "SAKAssistantsFactory.hh"
 
 #include "ui_SAKMainWindow.h"
@@ -56,7 +55,6 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
                              QWidget *parent)
     :QMainWindow(parent)
     ,mWindowsMenu(Q_NULLPTR)
-    ,mUpdateManager(Q_NULLPTR)
     ,mSettingKeyEnableTestPage(QString("enableTestPage"))
     ,mSettings(settings)
     ,ui(new Ui::SAKMainWindow)
@@ -71,7 +69,6 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
             .arg(qApp->applicationName());
 
     ui->setupUi(this);
-    mUpdateManager = new SAKUpdateManager(this);
 
 #ifdef Q_OS_ANDROID
     setWindowFlags(Qt::FramelessWindowHint);
@@ -588,11 +585,6 @@ void SAKMainWindow::initHelpMenu()
         QDesktopServices::openUrl(url);
     });
     srcMenu->addAction(visitGiteeAction);
-
-    QAction *updateAction = new QAction(tr("Check for Update"), this);
-    helpMenu->addAction(updateAction);
-    connect(updateAction, &QAction::triggered,
-            mUpdateManager, &SAKUpdateManager::show);
 
     QAction *releaseHistoryAction = new QAction(tr("Release History"), this);
     helpMenu->addAction(releaseHistoryAction);

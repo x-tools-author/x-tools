@@ -27,7 +27,6 @@ namespace Ui {
     class SAKMainWindow;
 }
 
-class SAKUpdateManager;
 class SAKMainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -46,7 +45,6 @@ private:
 
     QMenu *mWindowsMenu;
     QAction *mTestPageAction;
-    SAKUpdateManager *mUpdateManager;
     const QString mSettingKeyEnableTestPage;
     QSettings *mSettings;
     QActionGroup *mActionGroup;
