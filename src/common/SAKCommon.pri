@@ -7,7 +7,6 @@ HEADERS += \
     $$PWD/SAKCommonInterface.hh \
     $$PWD/SAKCrcInterface.hh \
     $$PWD/SAKDataStructure.hh \
-    $$PWD/SAKDevice.hh \
     $$PWD/SAKHighlighter.hh \
     $$PWD/SAKInterface.hh \
     $$PWD/SAKNetworkInterfaceScanner.hh \
@@ -25,7 +24,6 @@ SOURCES += \
     $$PWD/SAKCommonInterface.cc \
     $$PWD/SAKCrcInterface.cc \
     $$PWD/SAKDataStructure.cc \
-    $$PWD/SAKDevice.cc \
     $$PWD/SAKHighlighter.cc \
     $$PWD/SAKInterface.cc \
     $$PWD/SAKNetworkInterfaceScanner.cc \
