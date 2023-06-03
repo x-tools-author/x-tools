@@ -4,17 +4,6 @@
         <file>resources/images/Gitee.png</file>
         <file>resources/images/GitHub.png</file>
         <file>resources/images/SAKLogo.png</file>
-        <file>translations/qt/qt_en.qm</file>
-        <file>translations/qt/qt_zh_CN.qm</file>
-        <file>translations/qt/qtbase_en.qm</file>
-        <file>translations/qt/qtbase_zh_CN.qm</file>
-        <file>translations/sak/America.png</file>
-        <file>translations/sak/China.png</file>
-        <file>translations/sak/SAK_en.ts</file>
-        <file>translations/sak/SAK_zh_CN.ts</file>
-        <file>translations/sak/Translations.json</file>
-        <file>translations/sak/SAK_en.qm</file>
-        <file>translations/sak/SAK_zh_CN.qm</file>
         <file>resources/images/Android.png</file>
         <file>resources/images/Gz.png</file>
         <file>resources/images/Linux.png</file>
@@ -29,5 +18,24 @@
         <file>resources/images/iOS.png</file>
         <file>resources/images/I18n.png</file>
         <file>resources/images/WeChat.jpg</file>
+        <file>resources/icon/IconAdd.svg</file>
+        <file>resources/icon/IconBlueTooth.svg</file>
+        <file>resources/icon/IconClear.svg</file>
+        <file>resources/icon/IconClose.svg</file>
+        <file>resources/icon/IconHistory.svg</file>
+        <file>resources/icon/IconInfo.svg</file>
+        <file>resources/icon/IconList.svg</file>
+        <file>resources/icon/IconMaximized.svg</file>
+        <file>resources/icon/IconMenu.svg</file>
+        <file>resources/icon/IconMinimized.svg</file>
+        <file>resources/icon/IconSerialPort.svg</file>
+        <file>resources/icon/IconSettings.svg</file>
+        <file>resources/icon/IconTcpClient.svg</file>
+        <file>resources/icon/IconTcpServer.svg</file>
+        <file>resources/icon/IconUdpClient.svg</file>
+        <file>resources/icon/IconUdpServer.svg</file>
+        <file>resources/icon/IconWebScoketClient.svg</file>
+        <file>resources/icon/IconWebSocketServer.svg</file>
+        <file>resources/icon/IconWindowed.svg</file>
     </qresource>
 </RCC>

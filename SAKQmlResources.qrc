@@ -4,18 +4,9 @@
         <file>qml/MainWindowTitleBar.qml</file>
         <file>qml/MainWindowToolBar.qml</file>
         <file>qml/MainWindowSerialPortPage.qml</file>
-        <file>res/icon/IconClose.svg</file>
-        <file>res/icon/IconMaximized.svg</file>
-        <file>res/icon/IconMinimized.svg</file>
-        <file>res/icon/IconWindowed.svg</file>
         <file>qml/MainWindowTest.qml</file>
         <file>qml/MainWindowSerialPortPageController.qml</file>
         <file>qml/MainWindowSettingsPage.qml</file>
-        <file>res/i18n/common_en.qm</file>
-        <file>res/i18n/common_zh_CN.qm</file>
-        <file>res/i18n/easydebug.json</file>
-        <file>res/i18n/easydebug_en.qm</file>
-        <file>res/i18n/easydebug_zh_CN.qm</file>
         <file>qml/MainWindowInfoPage.qml</file>
         <file>qml/MainWindowTcpClientPage.qml</file>
         <file>qml/MainWindowTcpClientPageController.qml</file>
