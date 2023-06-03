@@ -53,6 +53,7 @@ private:
 
     struct {
         QString tabIndex;
+        QString items;
     } mSettingsKey;
 
 private:
@@ -103,6 +104,7 @@ private:
     void onPushButtonInputSendClicked();
     void onComboBoxInputIntervelCurrentIndexChanged();
     void onComboBoxInputFormatActivated();
+    void onComboBoxInputTextActivated();
 
     // output
     void onPushButtonOutputSettingsClicked();

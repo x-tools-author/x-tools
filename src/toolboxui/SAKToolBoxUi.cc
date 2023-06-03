@@ -10,6 +10,9 @@
 #include <QMetaEnum>
 #include <QLineEdit>
 #include <QDateTime>
+#include <QJsonArray>
+#include <QJsonObject>
+#include <QJsonDocument>
 #include <QRegularExpression>
 
 #include "SAKSettings.hh"
@@ -55,13 +58,13 @@ QList<int> SAKToolBoxUi::supportedCommuniticationTools()
 {
     QList<int> list;
     list << SAKToolFactory::SerialportTool
+         << SAKToolFactory::BleCentralTool
          << SAKToolFactory::UdpClientTool
          << SAKToolFactory::UdpServerTool
          << SAKToolFactory::TcpClientTool
          << SAKToolFactory::TcpServerTool
          << SAKToolFactory::WebSocketClientTool
-         << SAKToolFactory::WebSocketServerTool
-         << SAKToolFactory::BleCentralTool;
+         << SAKToolFactory::WebSocketServerTool;
     return list;
 }
 
@@ -330,6 +333,7 @@ void SAKToolBoxUi::onInputTextChanged()
 void SAKToolBoxUi::init()
 {
     mSettingsKey.tabIndex = settingsGroup() + "/tabIndex";
+    mSettingsKey.items = settingsGroup() + "/tabIndex";
 
     initUi();
     initSettings();
@@ -391,6 +395,20 @@ void SAKToolBoxUi::initUiInput()
     for (int i = 2000; i <= 5000; i += 1000) {
         ui->comboBoxInputIntervel->addItem(QString::number(i), i);
     }
+#if 0
+    QString hex = SAKSettings::instance()->value(mSettingsKey.items).toString();
+    if (!hex.isEmpty()) {
+        QString json = QString::fromUtf8(QByteArray::fromHex(hex.toLatin1()));
+        QJsonDocument jsonDoc = QJsonDocument::fromJson(json.toUtf8());
+        QJsonArray arr = jsonDoc.array();
+        for (int i = 0; i < arr.count(); i++) {
+            QJsonObject obj = arr.at(i).toObject();
+            QString text = obj.value("text").toString();
+            int format = obj.value("data").toInt();
+            ui->comboBoxInputText->addItem(text, format);
+        }
+    }
+#endif
 }
 
 void SAKToolBoxUi::initUiOutput()
@@ -467,6 +485,9 @@ void SAKToolBoxUi::initSignalsInput()
     connect(ui->comboBoxInputFormat,
             QOverload<int>::of(&QComboBox::activated),
             this, &SAKToolBoxUi::onComboBoxInputFormatActivated);
+    connect(ui->comboBoxInputText,
+            QOverload<int>::of(&QComboBox::activated),
+            this, &SAKToolBoxUi::onComboBoxInputTextActivated);
     connect(ui->comboBoxInputText, &QComboBox::currentTextChanged,
             this, &SAKToolBoxUi::onInputTextChanged);
 }
@@ -582,7 +603,42 @@ void SAKToolBoxUi::onPushButtonInputSendClicked()
         ui->comboBoxInputText->setFocus();
         return;
     }
+#if 0
+    QString text = ui->comboBoxInputText->currentText();
+    int format = ui->comboBoxInputFormat->currentData().toInt();
+    bool isExist = false;
+    for (int i = 0; i < ui->comboBoxInputText->count(); i++) {
+        QString t = ui->comboBoxInputText->itemText(i);
+        int f = ui->comboBoxInputText->itemData(i).toInt();
+        if ((text == t) && (format == f)) {
+            isExist = true;
+            break;
+        }
+    }
 
+    if (!isExist) {
+        ui->comboBoxInputText->addItem(text, format);
+        while (ui->comboBoxInputText->count() > 10) {
+            ui->comboBoxInputText->removeItem(0);
+        }
+
+        QJsonArray arr;
+        QJsonObject obj;
+        for (int i = 0; i < ui->comboBoxInputText->count(); i++) {
+            QString t = ui->comboBoxInputText->itemText(i);
+            int f = ui->comboBoxInputText->itemData(i).toInt();
+            obj.insert("text", t);
+            obj.insert("data", f);
+            arr.append(obj);
+        }
+
+        QJsonDocument jsonDoc;
+        jsonDoc.setArray(arr);
+        QByteArray json = jsonDoc.toJson();
+        QString hex = QString::fromLatin1(json.toHex());
+        SAKSettings::instance()->setValue(mSettingsKey.items, hex);
+    }
+#endif
     try2send();
 }
 
@@ -605,4 +661,13 @@ void SAKToolBoxUi::onComboBoxInputFormatActivated()
     int format = ui->comboBoxInputFormat->currentData().toInt();
     auto lineEdit = ui->comboBoxInputText->lineEdit();
     SAKUiInterface::setValidator(lineEdit, format);
+}
+
+void SAKToolBoxUi::onComboBoxInputTextActivated()
+{
+#if 0
+    int format = ui->comboBoxInputText->currentData().toInt();
+    ui->comboBoxInputFormat->setCurrentIndexFromData(format);
+    onComboBoxInputFormatActivated();
+#endif
 }

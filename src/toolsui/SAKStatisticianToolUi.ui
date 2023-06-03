@@ -6,13 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>240</width>
+    <width>111</width>
     <height>17</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>240</width>
+    <width>0</width>
     <height>0</height>
    </size>
   </property>
@@ -42,7 +42,7 @@
    <item>
     <widget class="QLabel" name="labelFrames">
      <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -62,7 +62,7 @@
    <item>
     <widget class="QLabel" name="labelBytes">
      <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
