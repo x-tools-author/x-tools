@@ -8,6 +8,9 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include "SAKToolBox.hh"
+#include "SAKSettings.hh"
+#include "SAKInterface.hh"
+#include "SAKHighlighter.hh"
 #include "SAKToolBoxUiParameters.hh"
 #include "ui_SAKToolBoxUiParameters.h"
 
@@ -67,7 +70,8 @@ SAKToolBoxUiParameters::parameterContext()
 }
 
 void SAKToolBoxUiParameters::initialize(SAKToolBox *toolBox,
-                                        const QString &settingsGroup)
+                                        const QString &settingsGroup,
+                                        QTextDocument *doc)
 {
     auto txM = toolBox->getTxMaskerTool();
     auto rxM = toolBox->getRxMaskerTool();
@@ -92,4 +96,32 @@ void SAKToolBoxUiParameters::initialize(SAKToolBox *toolBox,
     ui->spinBoxEndIndex->setGroupKey(settingsGroup   + "/input", "endIndex");
     ui->spinBoxStartIndex->setGroupKey(settingsGroup + "/input", "startIndex");
     ui->comboBoxAlgorithm->setGroupKey(settingsGroup + "/input", "algorithm");
+
+    const QString key = settingsGroup + "/highlighter/items";
+    QString txt = SAKSettings::instance()->value(key).toString();
+    txt = QString::fromUtf8(QByteArray::fromHex(txt.toLatin1()));
+    ui->textEdit->setText(txt);
+
+    auto updateDoc = [=](){
+        QString text = ui->textEdit->toPlainText();
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
+        QStringList list = text.split(";", Qt::SkipEmptyParts);
+#else
+        QStringList list = text.split(';', QString::SectionSkipEmpty);
+#endif
+        mHighlighter->removeKeyWord("");
+        mHighlighter->setKeyWords(list);
+    };
+
+    mHighlighter = new SAKHighlighter(this);
+    mHighlighter->setDoc(QVariant::fromValue(doc));
+    connect(ui->textEdit, &QTextEdit::textChanged, this, [=](){
+        updateDoc();
+
+        QString text = ui->textEdit->toPlainText();
+        QString hex = QString::fromLatin1(text.toUtf8().toHex());
+        SAKSettings::instance()->setValue(key, hex);
+    });
+
+    updateDoc();
 }

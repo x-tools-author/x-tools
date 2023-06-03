@@ -18,13 +18,16 @@ SAKHighlighter::SAKHighlighter(QObject *parent)
 
 void SAKHighlighter::setDoc(QVariant doc)
 {
+    auto obj = doc.value<QObject*>();
 #if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
-    if (doc.canConvert<QQuickTextDocument*>()) {
+    if (obj->inherits("QQuickTextDocument")) {
         setDocument(doc.value<QQuickTextDocument*>()->textDocument());
+        return;
     }
-#else
-    Q_UNUSED(doc);
 #endif
+    if (obj->inherits("QTextDocument")) {
+        setDocument(doc.value<QTextDocument*>());
+    }
 }
 
 void SAKHighlighter::setKeyWords(QVariant keyWords)
@@ -38,6 +41,11 @@ void SAKHighlighter::setKeyWords(QVariant keyWords)
 
 void SAKHighlighter::removeKeyWord(const QString &keyWord)
 {
+    if (keyWord.isEmpty()) {
+        mKeyWords.clear();
+        return;
+    }
+
     mKeyWords.removeOne(keyWord);
 }
 

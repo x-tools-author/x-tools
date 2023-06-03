@@ -11,6 +11,7 @@
 #define SAKTOOLBOXUIPARAMETERS_HH
 
 #include <QDialog>
+#include <QTextDocument>
 #include <QLoggingCategory>
 
 namespace Ui {
@@ -18,6 +19,7 @@ class SAKToolBoxUiParameters;
 }
 
 class SAKToolBox;
+class SAKHighlighter;
 class SAKToolBoxUiParameters : public QDialog
 {
     Q_OBJECT
@@ -49,10 +51,12 @@ public:
     ~SAKToolBoxUiParameters();
     void showDialog(int tabIndex);
     ParameterContext parameterContext();
-    void initialize(SAKToolBox *toolBox, const QString &settingsGroup);
+    void initialize(SAKToolBox *toolBox, const QString &settingsGroup,
+                    QTextDocument *doc);
 
 private:
     const QLoggingCategory mLoggingCategory{"SAK.CustomBoxUiParameters"};
+    SAKHighlighter *mHighlighter{nullptr};
 
 private:
     Ui::SAKToolBoxUiParameters *ui;

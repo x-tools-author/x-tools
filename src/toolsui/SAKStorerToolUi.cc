@@ -83,7 +83,7 @@ void SAKStorerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
 
 void SAKStorerToolUi::onPushButtonSelectFileClicked()
 {
-    auto str = QFileDialog::getOpenFileName(this, tr("Save file"),
+    auto str = QFileDialog::getSaveFileName(this, tr("Save file"),
                                             ".", tr("txt (*.txt); all (*)"));
     if (!str.isEmpty()) {
         ui->lineEditStorerPath->setText(str);

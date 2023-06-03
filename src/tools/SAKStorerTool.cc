@@ -14,8 +14,8 @@
 #include <QTextStream>
 #include <QTextStream>
 
+#include "SAKInterface.hh"
 #include "SAKStorerTool.hh"
-#include "common/SAKInterface.hh"
 
 SAKStorerTool::SAKStorerTool(QObject *parent)
     : SAKBaseTool{"SAK.StorerTool", parent}

@@ -494,7 +494,9 @@ void SAKToolBoxUi::initSignalsTools()
 
 void SAKToolBoxUi::initTools()
 {
-    mToolBoxUiParameters->initialize(mToolBox, settingsGroup());
+    mToolBoxUiParameters->initialize(mToolBox,
+                                     settingsGroup(),
+                                     ui->textBrowserOutput->document());
 
     auto rxVelometer = mToolBox->getRxVelometerTool();
     auto txVelometer = mToolBox->getTxVelometerTool();
