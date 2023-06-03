@@ -10,8 +10,8 @@
 #include <QFile>
 #include <QLoggingCategory>
 
-#include "SAKTranslator.hh"
 #include "SAKSettings.hh"
+#include "SAKTranslator.hh"
 #include "SAKApplication.hh"
 
 #if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
