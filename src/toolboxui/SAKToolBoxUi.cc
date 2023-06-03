@@ -659,6 +659,7 @@ void SAKToolBoxUi::onComboBoxInputFormatActivated()
 {
     int format = ui->comboBoxInputFormat->currentData().toInt();
     auto lineEdit = ui->comboBoxInputText->lineEdit();
+    ui->comboBoxInputText->clear();
     SAKUiInterface::setValidator(lineEdit, format);
 }
 
