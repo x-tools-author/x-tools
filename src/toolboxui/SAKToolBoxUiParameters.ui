@@ -37,7 +37,7 @@
    <item row="0" column="0" colspan="2">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
@@ -45,16 +45,16 @@
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="SAKMaskerToolUi" name="widgetInputMasker" native="true"/>
+        <widget class="SAKMaskerToolUi" name="widgetTxMasker" native="true"/>
        </item>
        <item>
-        <widget class="SAKMaskerToolUi" name="widgetOutputMasker" native="true"/>
+        <widget class="SAKMaskerToolUi" name="widgetRxMasker" native="true"/>
        </item>
        <item>
-        <widget class="SAKAnalyzerToolUi" name="widgetInputAnanyzer" native="true"/>
+        <widget class="SAKAnalyzerToolUi" name="widgetTxAnanyzer" native="true"/>
        </item>
        <item>
-        <widget class="SAKAnalyzerToolUi" name="widgetOutputAnanlyzer" native="true"/>
+        <widget class="SAKAnalyzerToolUi" name="widgetRxAnanlyzer" native="true"/>
        </item>
        <item>
         <spacer name="verticalSpacer">
@@ -273,6 +273,16 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>SAKCheckBox</class>
+   <extends>QCheckBox</extends>
+   <header location="global">SAKCheckBox.hh</header>
+  </customwidget>
+  <customwidget>
+   <class>SAKSpinBox</class>
+   <extends>QSpinBox</extends>
+   <header location="global">SAKSpinBox.hh</header>
+  </customwidget>
+  <customwidget>
    <class>SAKAnalyzerToolUi</class>
    <extends>QWidget</extends>
    <header location="global">SAKAnalyzerToolUi.hh</header>
@@ -304,16 +314,6 @@
    <extends>QWidget</extends>
    <header location="global">SAKStorerToolUi.hh</header>
    <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>SAKCheckBox</class>
-   <extends>QCheckBox</extends>
-   <header location="global">SAKCheckBox.hh</header>
-  </customwidget>
-  <customwidget>
-   <class>SAKSpinBox</class>
-   <extends>QSpinBox</extends>
-   <header location="global">SAKSpinBox.hh</header>
   </customwidget>
  </customwidgets>
  <resources/>

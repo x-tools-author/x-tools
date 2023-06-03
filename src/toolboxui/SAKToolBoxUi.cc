@@ -493,21 +493,20 @@ void SAKToolBoxUi::initSignalsTools()
 
 void SAKToolBoxUi::initTools()
 {
-    mToolBox->getTxMaskerTool()->setToolName("InputMasker");
-    mToolBox->getRxMaskerTool()->setToolName("OutputMasker");
-    mToolBox->getTxAnalyzerTool()->setToolName("InputAnalyzer");
-    mToolBox->getRxAnalyzerTool()->setToolName("OutputAnalyzer");
     mToolBoxUiParameters->initialize(mToolBox, settingsGroup());
-    mToolBox->getRxVelometerTool()->setToolName("Rx:");
-    mToolBox->getTxVelometerTool()->setToolName("Tx:");
-    ui->widgetRxVelometer->initialize(mToolBox->getRxVelometerTool(),
-                                      settingsGroup());
-    ui->widgetTxVelometer->initialize(mToolBox->getTxVelometerTool(),
-                                      settingsGroup());
-    ui->widgetRxStatistician->initialize(mToolBox->getRxStatisticianTool(),
-                                         settingsGroup());
-    ui->widgetTxStatistician->initialize(mToolBox->getTxStatisticianTool(),
-                                         settingsGroup());
+
+    auto rxVelometer = mToolBox->getRxVelometerTool();
+    auto txVelometer = mToolBox->getTxVelometerTool();
+    auto rxS = mToolBox->getRxStatisticianTool();
+    auto txS = mToolBox->getTxStatisticianTool();
+    const QString rxVelometerGroup = settingsGroup() + "/rxVelometer";
+    const QString txVelometerGroup = settingsGroup() + "/txVelometer";
+    const QString rxSGroup = settingsGroup() + "/rxStatistician";
+    const QString txSGroup = settingsGroup() + "/txStatistician";
+    ui->widgetRxVelometer->initialize(rxVelometer, rxVelometerGroup);
+    ui->widgetTxVelometer->initialize(txVelometer, txVelometerGroup);
+    ui->widgetRxStatistician->initialize(rxS, rxSGroup);
+    ui->widgetTxStatistician->initialize(txS, txSGroup);
 
     mEmitterToolUi = new SAKEmitterToolUi();
     ui->tabEmiter->setLayout(new QVBoxLayout());

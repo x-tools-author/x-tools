@@ -16,10 +16,10 @@ SAKToolBoxUiParameters::SAKToolBoxUiParameters(QWidget *parent)
     , ui(new Ui::SAKToolBoxUiParameters)
 {
     ui->setupUi(this);
-    ui->widgetInputMasker->setToolName("Input masker");
-    ui->widgetOutputMasker->setToolName("Output masker");
-    ui->widgetInputAnanyzer->setToolName(tr("Input analyzer"));
-    ui->widgetOutputAnanlyzer->setToolName(tr("Output analyzer"));
+    ui->widgetTxMasker->setToolName("Input masker");
+    ui->widgetRxMasker->setToolName("Output masker");
+    ui->widgetTxAnanyzer->setToolName(tr("Input analyzer"));
+    ui->widgetRxAnanlyzer->setToolName(tr("Output analyzer"));
 }
 
 SAKToolBoxUiParameters::~SAKToolBoxUiParameters()
@@ -69,19 +69,31 @@ SAKToolBoxUiParameters::parameterContext()
 void SAKToolBoxUiParameters::initialize(SAKToolBox *toolBox,
                                         const QString &settingsGroup)
 {
-    ui->checkBoxBigEndian->setGroupKey(settingsGroup + "input", "bigEndian");
-    ui->checkBoxCrcEnable->setGroupKey(settingsGroup + "input", "crcEnable");
-    ui->spinBoxEndIndex->setGroupKey(settingsGroup + "input", "endIndex");
-    ui->spinBoxStartIndex->setGroupKey(settingsGroup + "input", "startIndex");
+    auto txM = toolBox->getTxMaskerTool();
+    auto rxM = toolBox->getRxMaskerTool();
+    auto txA = toolBox->getTxAnalyzerTool();
+    auto rxA = toolBox->getRxAnalyzerTool();
+    auto storer = toolBox->getStorerTool();
 
-    ui->widgetInputMasker->initialize(toolBox->getTxMaskerTool(),
-                                      settingsGroup + "/inputMasker");
-    ui->widgetInputMasker->initialize(toolBox->getRxMaskerTool(),
-                                      settingsGroup + "/outputMasker");
-    ui->widgetInputAnanyzer->initialize(toolBox->getTxAnalyzerTool(),
-                                        settingsGroup + "/inputAnalyzer");
-    ui->widgetOutputAnanlyzer->initialize(toolBox->getRxAnalyzerTool(),
-                                          settingsGroup + "/outputAnalyzer");
-    ui->widgetStorer->initialize(toolBox->getStorerTool(),
-                                 settingsGroup + "/storer");
+    auto txMGroup = settingsGroup + "/txMasker";
+    auto rxMGroup = settingsGroup + "/rxMasker";
+    auto txAGroup = settingsGroup + "/txAnalyzer";
+    auto rxAGroup = settingsGroup + "/rxAnalyzer";
+    auto storerGroup = settingsGroup + "/storer";
+
+    txM->setToolName("TxMasker");
+    rxM->setToolName("RxMasker");
+    txA->setToolName("TxAnalyzer");
+    rxA->setToolName("RxAnalyzer");
+
+    ui->widgetRxMasker->initialize(rxM, rxMGroup);
+    ui->widgetTxMasker->initialize(txM, txMGroup);
+    ui->widgetTxAnanyzer->initialize(txA, txAGroup);
+    ui->widgetRxAnanlyzer->initialize(rxA, rxAGroup);
+    ui->widgetStorer->initialize(storer, storerGroup);
+
+    ui->checkBoxBigEndian->setGroupKey(settingsGroup + "/input", "bigEndian");
+    ui->checkBoxCrcEnable->setGroupKey(settingsGroup + "/input", "crcEnable");
+    ui->spinBoxEndIndex->setGroupKey(settingsGroup   + "/input", "endIndex");
+    ui->spinBoxStartIndex->setGroupKey(settingsGroup + "/input", "startIndex");
 }

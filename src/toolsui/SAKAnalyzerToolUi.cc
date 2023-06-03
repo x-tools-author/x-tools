@@ -29,8 +29,7 @@ void SAKAnalyzerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
     ui->checkBoxFixedLength->setGroupKey(settingsGroup, "fxiedLength");
     ui->spinBoxFrameLength->setGroupKey(settingsGroup, "frameLength");
     ui->spinBoxMaxTempBytes->setGroupKey(settingsGroup, "maxTempBytes");
-    ui->lineEditHeader->setGroupKey(settingsGroup, "header");
-    ui->lineEditTail->setGroupKey(settingsGroup, "tail");
+    ui->lineEditSeparationMark->setGroupKey(settingsGroup, "separationMark");
 
     Q_UNUSED(tool)
 }

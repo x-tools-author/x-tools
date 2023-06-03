@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>296</width>
+    <width>270</width>
     <height>144</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string notr="true">Form</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
+  <layout class="QGridLayout" name="gridLayout_3">
    <property name="leftMargin">
     <number>0</number>
    </property>
@@ -31,28 +31,8 @@
      <property name="title">
       <string>Analyzer parameters</string>
      </property>
-     <layout class="QGridLayout" name="gridLayout_3">
-      <item row="2" column="0">
-       <widget class="QLabel" name="label_3">
-        <property name="text">
-         <string>Header</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="SAKLineEdit" name="lineEditHeader"/>
-      </item>
-      <item row="2" column="2">
-       <widget class="QLabel" name="label_4">
-        <property name="text">
-         <string>Tail</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="3">
-       <widget class="SAKLineEdit" name="lineEditTail"/>
-      </item>
-      <item row="0" column="0" colspan="4">
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0" colspan="2">
        <layout class="QGridLayout" name="gridLayout_2">
         <item row="1" column="0">
          <widget class="SAKCheckBox" name="checkBoxFixedLength">
@@ -103,10 +83,24 @@
         </item>
        </layout>
       </item>
-      <item row="1" column="0" colspan="4">
+      <item row="1" column="0" colspan="2">
        <widget class="Line" name="line">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Separation mark</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="SAKLineEdit" name="lineEditSeparationMark">
+        <property name="placeholderText">
+         <string>Hex format</string>
         </property>
        </widget>
       </item>
