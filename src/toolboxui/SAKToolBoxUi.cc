@@ -395,7 +395,7 @@ void SAKToolBoxUi::initUiInput()
     for (int i = 2000; i <= 5000; i += 1000) {
         ui->comboBoxInputIntervel->addItem(QString::number(i), i);
     }
-#if 0
+
     QString hex = SAKSettings::instance()->value(mSettingsKey.items).toString();
     if (!hex.isEmpty()) {
         QString json = QString::fromUtf8(QByteArray::fromHex(hex.toLatin1()));
@@ -408,7 +408,6 @@ void SAKToolBoxUi::initUiInput()
             ui->comboBoxInputText->addItem(text, format);
         }
     }
-#endif
 }
 
 void SAKToolBoxUi::initUiOutput()
@@ -603,7 +602,7 @@ void SAKToolBoxUi::onPushButtonInputSendClicked()
         ui->comboBoxInputText->setFocus();
         return;
     }
-#if 0
+
     QString text = ui->comboBoxInputText->currentText();
     int format = ui->comboBoxInputFormat->currentData().toInt();
     bool isExist = false;
@@ -638,7 +637,7 @@ void SAKToolBoxUi::onPushButtonInputSendClicked()
         QString hex = QString::fromLatin1(json.toHex());
         SAKSettings::instance()->setValue(mSettingsKey.items, hex);
     }
-#endif
+
     try2send();
 }
 
@@ -665,9 +664,7 @@ void SAKToolBoxUi::onComboBoxInputFormatActivated()
 
 void SAKToolBoxUi::onComboBoxInputTextActivated()
 {
-#if 0
     int format = ui->comboBoxInputText->currentData().toInt();
     ui->comboBoxInputFormat->setCurrentIndexFromData(format);
     onComboBoxInputFormatActivated();
-#endif
 }
