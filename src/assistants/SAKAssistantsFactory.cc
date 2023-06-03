@@ -36,53 +36,52 @@
 #endif
 
 SAKAssistantsFactory::SAKAssistantsFactory(QObject *parent)
+    : QObject(parent)
 {
-    Q_UNUSED(parent);
-#ifdef SAK_IMPORT_MODULE_CRCASSISTANT
-    mToolMetaObjCtxVector.append(SAKToolMetaObjCtx{
-                    SAKToolCRCAssistant::staticMetaObject,
-                tr("CRC Assistant")});
-#endif
-#ifdef SAK_IMPORT_MODULE_FILECHECKASSISTANT
-    mToolMetaObjCtxVector.append(
-                SAKToolMetaObjCtx{
-                    SAKToolFileCheckAssistant::staticMetaObject,
-                    tr("File Assistant")});
-#endif
-#ifdef SAK_IMPORT_MODULE_FLOATASSISTANT
-    mToolMetaObjCtxVector.append(
-                SAKToolMetaObjCtx{
-                    SAKToolFloatAssistant::staticMetaObject,
-                    tr("Float Assistant")});
-#endif
-#ifdef SAK_IMPORT_MODULE_STRINGASSISTANT
-    mToolMetaObjCtxVector.append(
-                SAKToolMetaObjCtx{
-                    SAKToolStringAssistant::staticMetaObject,
-                    tr("String Assistant")});
-#endif
-#ifdef SAK_IMPORT_MODULE_ATASSISTANT
-    mToolMetaObjCtxVector.append(
-                SAKToolMetaObjCtx{
-                    SAKAtAssistant::staticMetaObject,
-                    tr("AT Assistant")});
-#endif
-#ifdef SAK_IMPORT_MODULE_ASCIIASSISTANT
-    mToolMetaObjCtxVector.append(
-                SAKToolMetaObjCtx{
-                    SAKToolAsciiAssistant::staticMetaObject,
-                    tr("ASCII Assistant")});
-#endif
-#ifdef SAK_IMPORT_MODULE_BROADCASTASSISTANT
-    mToolMetaObjCtxVector.append(
-                SAKToolMetaObjCtx{
-                    SAKToolBroadcastAssistant::staticMetaObject,
-                    tr("Broadcast Assistant")});
-#endif
+    mTypeNameMap.insert(AssistantCrc, tr("CRC Assistant"));
+    mTypeNameMap.insert(AssistantFile, tr("File Assistant"));
+    mTypeNameMap.insert(AssistantAscii, tr("ASCII Assistant"));
+    mTypeNameMap.insert(AssistantFloat, tr("Float Assistant"));
+    mTypeNameMap.insert(AssistantString, tr("String Assistant"));
+    mTypeNameMap.insert(AssistantBroadcast, tr("Broadcast Assistant"));
 }
 
-QVector<SAKAssistantsFactory::SAKToolMetaObjCtx>
-SAKAssistantsFactory::supportedToolsContext()
+QVector<int> SAKAssistantsFactory::supportedAssistants()
 {
-    return mToolMetaObjCtxVector;
+    return mTypeNameMap.keys();
+}
+
+QString SAKAssistantsFactory::assistantName(int type) const
+{
+    if (mTypeNameMap.contains(type)) {
+        return mTypeNameMap.value(type);
+    }
+
+    QString name = QString("UnknowType(%1)").arg(type);
+    return name;
+}
+
+SAKAssistantsFactory *SAKAssistantsFactory::instance()
+{
+    static SAKAssistantsFactory f;
+    return &f;
+}
+
+QWidget *SAKAssistantsFactory::newAssistant(int type)
+{
+    if (type == AssistantCrc) {
+        return new SAKToolCRCAssistant();
+    } else if (type == AssistantFile) {
+        return new SAKToolFileCheckAssistant();
+    } else if (type == AssistantAscii) {
+        return new SAKToolAsciiAssistant;
+    } else if (type == AssistantFloat) {
+        return new SAKToolFloatAssistant;
+    } else if (type == AssistantString) {
+        return new SAKToolStringAssistant;
+    } else if (type == AssistantBroadcast) {
+        return new SAKToolBroadcastAssistant;
+    } else {
+        return nullptr;
+    }
 }

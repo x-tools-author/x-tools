@@ -10,26 +10,34 @@
 #ifndef SAKASSISTANTSFACTORY_HH
 #define SAKASSISTANTSFACTORY_HH
 
+#include <QMap>
 #include <QObject>
-#include "SAKSigleton.hh"
 
-#define sakToolsFactory SAKAssistantsFactory::instance()
-
-class SAKAssistantsFactory : public QObject, public SAKSigleton<SAKAssistantsFactory>
+class SAKAssistantsFactory : QObject
 {
     Q_OBJECT
-    friend SAKSigleton<SAKAssistantsFactory>;
 private:
     SAKAssistantsFactory(QObject *parent = Q_NULLPTR);
-public:
-    struct SAKToolMetaObjCtx {
-        QMetaObject metaObject;
-        QString title;
-    };
+
 private:
-    QVector<SAKToolMetaObjCtx> mToolMetaObjCtxVector;
+    enum Assistants {
+        AssistantCrc,
+        AssistantFile,
+        AssistantAscii,
+        AssistantFloat,
+        AssistantString,
+        AssistantBroadcast
+    };
+
 public:
-    QVector<SAKToolMetaObjCtx> supportedToolsContext();
+    static SAKAssistantsFactory *instance();
+
+    QVector<int> supportedAssistants();
+    QString assistantName(int type) const;
+    QWidget *newAssistant(int type);
+
+private:
+    QMap<int, QString> mTypeNameMap;
 };
 
 #endif // SAKASSISTANTSFACTORY_H

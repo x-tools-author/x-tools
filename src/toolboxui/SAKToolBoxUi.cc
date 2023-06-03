@@ -68,31 +68,6 @@ QList<int> SAKToolBoxUi::supportedCommuniticationTools()
     return list;
 }
 
-void SAKToolBoxUi::initialize(int type)
-{
-    if (mCommunicationTool) {
-        mCommunicationTool->deleteLater();
-        mCommunicationTool = nullptr;
-    }
-
-    mToolBox->initialize(type);
-    mCommunicationToolType = type;
-
-    QString toolName = communiticationToolName(type);
-    QIcon icon = communiticationToolIcon(type);
-    setWindowTitle(toolName);
-    setWindowIcon(icon);
-
-    mCommunicationTool = mToolBox->getCommunicationTool();
-    if (!mCommunicationTool) {
-        qCWarning(mLoggingCategory) << "Initializing failed, "
-                                       "tool box is invaliad!";
-        return;
-    }
-
-    init();
-}
-
 QString SAKToolBoxUi::communiticationToolName(int type)
 {
     if (type == SAKToolFactory::SerialportTool) {
@@ -139,6 +114,31 @@ QIcon SAKToolBoxUi::communiticationToolIcon(int type)
 
     QIcon icon(fileName);
     return icon;
+}
+
+void SAKToolBoxUi::initialize(int type)
+{
+    if (mCommunicationTool) {
+        mCommunicationTool->deleteLater();
+        mCommunicationTool = nullptr;
+    }
+
+    mToolBox->initialize(type);
+    mCommunicationToolType = type;
+
+    QString toolName = communiticationToolName(type);
+    QIcon icon = communiticationToolIcon(type);
+    setWindowTitle(toolName);
+    setWindowIcon(icon);
+
+    mCommunicationTool = mToolBox->getCommunicationTool();
+    if (!mCommunicationTool) {
+        qCWarning(mLoggingCategory) << "Initializing failed, "
+                                       "tool box is invaliad!";
+        return;
+    }
+
+    init();
 }
 
 SAKCommunicationToolUi *SAKToolBoxUi::communiticationToolUi(int type)

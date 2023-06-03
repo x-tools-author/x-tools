@@ -89,6 +89,17 @@ void SAKSettings::setLanguage(const QString &lan)
     setValue(mSettingsKey.language, lan);
 }
 
+bool SAKSettings::clearSettings()
+{
+    return value(mSettingsKey.clearSettings).toBool();
+}
+
+void SAKSettings::setClearSettings(bool clear)
+{
+    setValue(mSettingsKey.clearSettings, clear);
+    emit clearSettingsChanged();
+}
+
 QVariant SAKSettings::value(const QString &key,
                             const QVariant &defaultValue) const
 {

@@ -50,24 +50,10 @@
 
 #include "ui_SAKMainWindow.h"
 
-SAKMainWindow *sakMainWindow = Q_NULLPTR;
-SAKMainWindow::SAKMainWindow(QSettings *settings,
-                             QWidget *parent)
-    :QMainWindow(parent)
-    ,mWindowsMenu(Q_NULLPTR)
-    ,mSettingKeyEnableTestPage(QString("enableTestPage"))
-    ,mSettings(settings)
-    ,ui(new Ui::SAKMainWindow)
-    ,mToolBoxs(new QTabWidget)
+SAKMainWindow::SAKMainWindow(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::SAKMainWindow)
 {
-    sakMainWindow = this;
-    mSettingsKeyContext.enableTestPage = QString("%1/enableTestPage")
-            .arg(qApp->applicationName());
-    mSettingsKeyContext.currentTabPage = QString("%1/currentTabPage")
-            .arg(qApp->applicationName());
-    mSettingsKeyContext.exitToSystemTray = QString("%1/exitToSystenTray")
-            .arg(qApp->applicationName());
-
     ui->setupUi(this);
 
 #ifdef Q_OS_ANDROID
@@ -77,7 +63,6 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
     setCentralWidget(scrollArea);
     scrollArea->setWidget(mTabWidget);
 #else
-//    ui->tabWidget->addTab(mToolBoxs, tr("ToolBoxs"));
 //    ui->tabWidget->addTab(new SAKModbusDebugger(mSettings), tr("Modbus"));
 //    ui->tabWidget->addTab(new SAKCanBusDebugger(mSettings), tr("CAN"));
 
@@ -88,54 +73,16 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
     title.append(" ");
     title.append(SAK_EDITION);
     setWindowTitle(title);
+    setWindowIcon(QIcon(":/resources/images/SAKLogo.png"));
 #endif
 
     // Initializing menu bar
     initMenuBar();
 
-    // Connecting the signal of tab page to it's slot.
-    mToolBoxs->setTabsClosable(true);
-    connect(mToolBoxs, &QTabWidget::tabCloseRequested,
-            this, &SAKMainWindow::removeRemovableDebugPage);
-    connect(mToolBoxs, &QTabWidget::currentChanged, this, [=](int index){
-        QString key = mSettingsKeyContext.currentTabPage;
-        sakApp->settings()->setValue(key, index);
-    });
-#if 0
-    // Create debugger, the operation will emit the signal named currentChanged.
-    // So you should block it,
-    // or the value of setting option(mSettingsKeyContext.currentTabPage)
-    // will be 0 aways.
-    QMetaEnum metaEnum = QMetaEnum::fromType<SAKEnumDebugPageType>();
-    mTabWidget->blockSignals(true);
-    for (int i = 0; i < metaEnum.keyCount(); i++){
-#ifdef QT_DEBUG
-#ifdef SAK_IMPORT_MODULE_TEST
-        // Test page is selectable, it is for developer of the project.
-        QString key = mSettingsKeyContext.enableTestPage;
-        bool enableTestPage = sakApp->settings()->value(key).toBool();
-        if (!enableTestPage && (metaEnum.value(i) ==
-                                SAKDebuggerFactory::DebugPageTypeTest)){
-            continue;
-        }
-#endif
-#endif
-        // The page can not be closed.
-        QWidget *page = sakDebuggerFactor->createDebugger(metaEnum.value(i));
-        if (page){
-            mTabWidget->addTab(page, page->windowTitle());
-            appendWindowAction(page);
-        }
-    }
-    mTabWidget->blockSignals(false);
-#else
-    //ui->widgetNav->setLayout(new QVBoxLayout());
-    //ui->widgetNav->layout()->setContentsMargins(0, 0, 0, 0);
     auto nav = ui->verticalLayoutNav;
-    mToolBoxs->blockSignals(true);
     mNavBtGroup = new QButtonGroup(this);
     QList<int> types = SAKToolBoxUi::supportedCommuniticationTools();
-    QString indexKey = mSettingsKeyContext.currentTabPage;
+    QString indexKey = mSettingsKey.currentPageIndex;
     for (int i = 0; i < types.count(); i++) {
         int type = types.at(i);
         SAKToolBoxUi *toolBoxUi = new SAKToolBoxUi(this);
@@ -146,98 +93,77 @@ SAKMainWindow::SAKMainWindow(QSettings *settings,
         bt->setToolButtonStyle(Qt::ToolButtonIconOnly);
         nav->layout()->addWidget(bt);
         ui->stackedWidget->addWidget(toolBoxUi);
-        bt->setSizePolicy(QSizePolicy::Policy::Preferred, QSizePolicy::Policy::Fixed);
+        bt->setSizePolicy(QSizePolicy::Policy::Preferred,
+                          QSizePolicy::Policy::Fixed);
         connect(bt, &QToolButton::clicked, this, [=](){
             ui->stackedWidget->setCurrentIndex(i);
-            sakApp->settings()->setValue(indexKey, i);
+            SAKSettings::instance()->setValue(indexKey, i);
         });
 
         bt->setCheckable(true);
         bt->setAutoRaise(true);
         mNavBtGroup->addButton(bt);
     }
-    mToolBoxs->blockSignals(false);
     nav->layout()->addWidget(new QLabel(" "));
 
-    int index = sakApp->settings()->value(indexKey).toInt();
+    int index = SAKSettings::instance()->value(indexKey).toInt();
     if (index >= 0 && index < ui->stackedWidget->count()) {
         ui->stackedWidget->setCurrentIndex(index);
     }
 
     if (index >= 0 && index < mNavBtGroup->buttons().count()) {
-        auto bt = qobject_cast<QToolButton*>(mNavBtGroup->buttons().at(index));
-        if (bt) {
-            bt->setChecked(true);
-        }
+        auto bt = mNavBtGroup->buttons().at(index);
+        auto cookedBt = qobject_cast<QToolButton*>(bt);
+        cookedBt->setChecked(true);
     }
-#endif
-    if (mWindowsMenu){
-        mWindowsMenu->addSeparator();
-    }
-
-    // Set the current page to last time
-    QString key = mSettingsKeyContext.currentTabPage;
-    int currentPage = sakApp->settings()->value(key).toInt();
-    mToolBoxs->setCurrentIndex(currentPage);
-
-    // Hide the close button,
-    // the step must be done after calling setTabsClosable() function.
-    for (int i = 0; i < mToolBoxs->count(); i++){
-        mToolBoxs->tabBar()->setTabButton(i, QTabBar::RightSide, Q_NULLPTR);
-        mToolBoxs->tabBar()->setTabButton(i, QTabBar::LeftSide, Q_NULLPTR);
-    }
-#if 0
-    int count = mTabWidget->tabBar()->count();
-    int maxWidth = std::numeric_limits<int>::min();
-    for (int i = 0; i < count; i++) {
-        int w = mTabWidget->tabBar()->tabRect(i).width();
-        if (w > maxWidth) {
-            maxWidth = w;
-        }
-    }
-    mTabWidget->setStyleSheet(QString("QTabBar::tab{width:%1px;}").arg(maxWidth));
-#endif
 }
 
 SAKMainWindow::~SAKMainWindow()
 {
-    sakMainWindow = Q_NULLPTR;
     delete ui;
 }
 
 void SAKMainWindow::initMenuBar()
 {
-#if 0
-    // The menu bar is not show on ubuntu 16.04
-   QMenuBar *menuBar = new QMenuBar(Q_NULLPTR);
-#else
-    QMenuBar *menuBar = this->menuBar();
-#endif
-    setMenuBar(menuBar);
     initFileMenu();
     initToolMenu();
     initOptionMenu();
-    initWindowMenu();
     initLanguageMenu();
     initLinksMenu();
     initDemoMenu();
     initHelpMenu();
 }
 
+#ifdef Q_OS_WIN
 void SAKMainWindow::closeEvent(QCloseEvent *event)
 {
-    bool isExitToSystemTray =
-            mSettings->value(mSettingsKeyContext.exitToSystemTray).toBool();
-    if (isExitToSystemTray) {
+    bool ignore = mSettings->value(mSettingsKey.exitToSystemTray).toBool();
+    if (ignore) {
         this->hide();
         event->ignore();
     }
 }
+#endif
 
 void SAKMainWindow::initFileMenu()
 {
     QMenu *fileMenu = new QMenu(tr("&File"), this);
     menuBar()->addMenu(fileMenu);
+
+    QMenu *windowMenu = new QMenu(tr("New Window"), this);
+    fileMenu->addMenu(windowMenu);
+    QList<int> toolTypeList = SAKToolBoxUi::supportedCommuniticationTools();
+    for (auto &toolType : toolTypeList) {
+        const QString name = SAKToolBoxUi::communiticationToolName(toolType);
+        QAction *action = new QAction(name, this);
+        windowMenu->addAction(action);
+        connect(action, &QAction::triggered, this, [=](){
+            SAKToolBoxUi *w = new SAKToolBoxUi();
+            w->setAttribute(Qt::WA_DeleteOnClose, true);
+            w->initialize(toolType);
+            w->show();
+        });
+    }
 
     fileMenu->addSeparator();
     QAction *exitAction = new QAction(tr("Exit"), this);
@@ -250,18 +176,20 @@ void SAKMainWindow::initToolMenu()
     QMenu *toolMenu = new QMenu(tr("&Tools"));
     menuBar()->addMenu(toolMenu);
 
-    for (auto &var : sakToolsFactory->supportedToolsContext()){
-        QWidget *w = qobject_cast<QWidget*>(var.metaObject.newInstance());
-        Q_ASSERT_X(w, __FUNCTION__, "A null pointer!");
+    for (auto &t : SAKAssistantsFactory::instance()->supportedAssistants()) {
+        QString name = SAKAssistantsFactory::instance()->assistantName(t);
+        QAction *action = new QAction(name, this);
+        QWidget *w = SAKAssistantsFactory::instance()->newAssistant(t);
+
+        Q_ASSERT_X(action, __FUNCTION__, "A null action!");
+        Q_ASSERT_X(w, __FUNCTION__, "A null assistant widget!");
+
         w->hide();
-        QAction *action = new QAction(var.title, this);
-        action->setData(QVariant::fromValue(w));
         toolMenu->addAction(action);
         connect(action, &QAction::triggered, this, [=](){
-            QWidget *w = action->data().value<QWidget*>();
-            if (w->isHidden()){
+            if (w->isHidden()) {
                 w->show();
-            }else{
+            } else {
                 w->activateWindow();
             }
         });
@@ -274,11 +202,10 @@ void SAKMainWindow::initOptionMenu()
     menuBar()->addMenu(optionMenu);
 
     initOptionMenuAppStyleMenu(optionMenu);
+#ifdef Q_OS_WIN
     initOptionMenuMainWindowMenu(optionMenu);
-    initOptionMenuSettingsMenu(optionMenu);
-#ifdef QT_DEBUG
-    initOptionMenuTestPageAction(optionMenu);
 #endif
+    initOptionMenuSettingsMenu(optionMenu);
     initOptionMenuUiType(optionMenu);
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     initOptionMenuHdpiPolicy(optionMenu);
@@ -340,7 +267,7 @@ void SAKMainWindow::initOptionMenuMainWindowMenu(QMenu *optionMenu)
     mainWindowMenu->addAction(exitToSystemTrayAction);
     optionMenu->addMenu(mainWindowMenu);
 
-    QVariant v = mSettings->value(mSettingsKeyContext.exitToSystemTray);
+    QVariant v = SAKSettings::instance()->value(mSettingsKey.exitToSystemTray);
     if (!v.isNull()) {
         bool isExitToSystemTray = v.toBool();
         exitToSystemTrayAction->setChecked(isExitToSystemTray);
@@ -348,7 +275,7 @@ void SAKMainWindow::initOptionMenuMainWindowMenu(QMenu *optionMenu)
 
     connect(exitToSystemTrayAction, &QAction::triggered, this, [=](){
         bool isExitToSystemTray = exitToSystemTrayAction->isChecked();
-        mSettings->setValue(mSettingsKeyContext.exitToSystemTray,
+        SAKSettings::instance()->setValue(mSettingsKey.exitToSystemTray,
                             isExitToSystemTray);
     });
 }
@@ -365,28 +292,11 @@ void SAKMainWindow::initOptionMenuSettingsMenu(QMenu *optionMenu)
     action = new QAction(tr("Open configuration floder"), this);
     menu->addAction(action);
     connect(action, &QAction::triggered, this, [=](){
-        QUrl fileUrl = mSettings->fileName();
-        QString floderUrl = mSettings->fileName().remove(fileUrl.fileName());
+        QString fileName = SAKSettings::instance()->fileName();
+        QUrl fileUrl = QUrl(fileName);
+        QString floderUrl = fileName.remove(fileUrl.fileName());
         QDesktopServices::openUrl(floderUrl);
     });
-}
-
-void SAKMainWindow::initOptionMenuTestPageAction(QMenu *optionMenu)
-{
-    optionMenu->addSeparator();
-    mTestPageAction = new QAction(tr("Enable Testing Page"), this);
-    optionMenu->addAction(mTestPageAction);
-    mTestPageAction->setCheckable(true);
-    connect(mTestPageAction, &QAction::triggered,
-            this, &SAKMainWindow::testPageActionTriggered);
-    QString enableTestPageKey = mSettingsKeyContext.enableTestPage;
-    bool enableTestPage =
-            sakApp->settings()->value(enableTestPageKey).toBool();
-    if (enableTestPage){
-        mTestPageAction->setChecked(true);
-    }else{
-        mTestPageAction->setChecked(false);
-    }
 }
 
 void SAKMainWindow::initOptionMenuUiType(QMenu *optionMenu)
@@ -484,19 +394,13 @@ void SAKMainWindow::initOptionMenuHdpiPolicy(QMenu *optionMenu)
 }
 #endif
 
-void SAKMainWindow::initWindowMenu()
-{
-    mWindowsMenu = new QMenu(tr("&Windows"), this);
-    menuBar()->addMenu(mWindowsMenu);
-}
-
 void SAKMainWindow::initLanguageMenu()
 {
     QMenu *languageMenu = new QMenu(tr("&Languages"), this);
     menuBar()->addMenu(languageMenu);
 
-    QString key = sakApp->settingsKeyContext()->language;
-    QString language = sakApp->settings()->value(key).toString();
+    QString key = SAKSettings::instance()->language();
+    QString language = SAKSettings::instance()->value(key).toString();
 
     QFile file(":/translations/sak/Translations.json");
     file.open(QFile::ReadOnly);
@@ -730,42 +634,9 @@ void SAKMainWindow::aboutQsak()
     dialog.exec();
 }
 
-void SAKMainWindow::removeRemovableDebugPage(int index)
-{
-    QWidget *w = mToolBoxs->widget(index);
-    mToolBoxs->removeTab(index);
-    w->close();
-}
-
-void SAKMainWindow::appendWindowAction(QWidget *page)
-{
-    if (mWindowsMenu){
-        QAction *action = new QAction(page->windowTitle(), mWindowsMenu);
-        action->setData(QVariant::fromValue(page));
-        mWindowsMenu->addAction(action);
-        connect(action, &QAction::triggered, this, &SAKMainWindow::activePage);
-        connect(page, &QWidget::destroyed, action, &QAction::deleteLater);
-    }
-}
-
-void SAKMainWindow::testPageActionTriggered()
-{
-    // ??
-    bool checked = mTestPageAction->isChecked();
-    mTestPageAction->setChecked(checked);
-    sakApp->settings()->setValue(mSettingsKeyContext.enableTestPage,
-                                 QVariant::fromValue(checked));
-    rebootRequestion();
-}
-
 void SAKMainWindow::clearConfiguration()
 {
-    sakApp->settings()->setValue(
-                sakApp->settingsKeyContext()->appStyle,
-                QString(""));
-    sakApp->settings()->setValue(
-                sakApp->settingsKeyContext()->removeSettingsFile,
-                QVariant::fromValue(true));
+    SAKSettings::instance()->setClearSettings(true);
     rebootRequestion();
 }
 
@@ -849,21 +720,6 @@ void SAKMainWindow::onDonationActionTriggered()
     dialog.exec();
 }
 
-void SAKMainWindow::activePage()
-{
-    if (sender()){
-        if (sender()->inherits("QAction")){
-            QAction *action = qobject_cast<QAction*>(sender());
-            QWidget *widget = action->data().value<QWidget*>();
-            if (widget->parent()){
-                mToolBoxs->setCurrentWidget(widget);
-            }else{
-                widget->activateWindow();
-            }
-        }
-    }
-}
-
 void SAKMainWindow::installLanguage()
 {
     if (sender()) {
@@ -874,8 +730,8 @@ void SAKMainWindow::installLanguage()
             QString language = action->objectName();
             QString name = action->data().toString();
             QString value = language + "-" + name;
-            QString key = sakApp->settingsKeyContext()->language;
-            mSettings->setValue(key, value);
+            QString key = SAKSettings::instance()->language();
+            SAKSettings::instance()->setValue(key, value);
             qobject_cast<SAKApplication*>(qApp)->installLanguage();
             rebootRequestion();
         }

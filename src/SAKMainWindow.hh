@@ -31,23 +31,20 @@ class SAKMainWindow : public QMainWindow
 {
     Q_OBJECT
 public:
-    explicit SAKMainWindow(QSettings *settings,
-                           QWidget *parent = Q_NULLPTR);
+    explicit SAKMainWindow(QWidget *parent = Q_NULLPTR);
     ~SAKMainWindow();
+
+#ifdef Q_OS_WIN
 protected:
     void closeEvent(QCloseEvent *event);
+#endif
+
 private:
     struct SettingsKeyContext {
-        QString enableTestPage;
-        QString currentTabPage;
-        QString exitToSystemTray;
-    }mSettingsKeyContext;
+        const QString currentPageIndex{"currentPageIndex"};
+        const QString exitToSystemTray{"exitToSystemTray"};
+    } mSettingsKey;
 
-    QMenu *mWindowsMenu;
-    QAction *mTestPageAction;
-    const QString mSettingKeyEnableTestPage;
-    QSettings *mSettings;
-    QActionGroup *mActionGroup;
     QActionGroup *mLanguagesActionGroup;
     QButtonGroup *mNavBtGroup{nullptr};
 
@@ -59,7 +56,6 @@ private:
     void initOptionMenuAppStyleMenu(QMenu *optionMenu);
     void initOptionMenuMainWindowMenu(QMenu *optionMenu);
     void initOptionMenuSettingsMenu(QMenu *optionMenu);
-    void initOptionMenuTestPageAction(QMenu *optionMenu);
     void initOptionMenuUiType(QMenu *optionMenu);
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     void initOptionMenuHdpiPolicy(QMenu *optionMenu);
@@ -70,22 +66,16 @@ private:
     void initLinksMenu();
     void initDemoMenu();
     void aboutQsak();
-    void removeRemovableDebugPage(int index);
-    void appendWindowAction(QWidget *page);
-    void testPageActionTriggered();
     void clearConfiguration();
     void rebootRequestion();
     void showReleaseHistoryActionDialog();
     void showQrCodeDialog();
     void onDonationActionTriggered();
-private slots:
     void activePage();
     void installLanguage();
+
 private:
     Ui::SAKMainWindow *ui;
-    QTabWidget *mToolBoxs;
 };
-
-extern SAKMainWindow *sakMainWindow;
 
 #endif // MAINWINDOW_H

@@ -37,6 +37,9 @@ public:
     ~SAKToolBoxUi();
 
     static QList<int> supportedCommuniticationTools();
+    static QString communiticationToolName(int type);
+    static QIcon communiticationToolIcon(int type);
+
     void initialize(int type);
 
 private:
@@ -57,8 +60,6 @@ private:
     } mSettingsKey;
 
 private:
-    QString communiticationToolName(int type);
-    QIcon communiticationToolIcon(int type);
     SAKCommunicationToolUi *communiticationToolUi(int type);
     void try2send();
     QString dateTimeContext();

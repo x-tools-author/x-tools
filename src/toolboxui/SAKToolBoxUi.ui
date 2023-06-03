@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>633</width>
-    <height>446</height>
+    <width>447</width>
+    <height>367</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -382,14 +382,14 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>SAKTextFormatComboBox</class>
-   <extends>QComboBox</extends>
-   <header location="global">SAKTextFormatComboBox.hh</header>
-  </customwidget>
-  <customwidget>
    <class>SAKCheckBox</class>
    <extends>QCheckBox</extends>
    <header location="global">SAKCheckBox.hh</header>
+  </customwidget>
+  <customwidget>
+   <class>SAKTextFormatComboBox</class>
+   <extends>QComboBox</extends>
+   <header location="global">SAKTextFormatComboBox.hh</header>
   </customwidget>
   <customwidget>
    <class>SAKComboBox</class>

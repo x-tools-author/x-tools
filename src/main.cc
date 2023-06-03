@@ -7,6 +7,9 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
+#include <QFile>
+#include <QLoggingCategory>
+
 #include "SAKI18N.hh"
 #include "SAKSettings.hh"
 #include "SAKApplication.hh"
@@ -27,6 +30,18 @@ int main(int argc, char *argv[])
     QCoreApplication::setApplicationVersion("0.0.0");
 #endif
 
+    QLoggingCategory lc{"SAK.main"};
+
+    // Remove settings file and database
+    if (SAKSettings::instance()->clearSettings()){
+        SAKSettings::instance()->setClearSettings(false);
+        if (QFile::remove(SAKSettings::instance()->fileName())){
+            qCInfo(lc) << "Remove settings file successfully!";
+        }else{
+            qCWarning(lc) << "Remove settings file failed!";
+        }
+    }
+
     // High dpi settings.
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     auto policy = SAKSettings::instance()->hdpiPolicy();
@@ -42,7 +57,7 @@ int main(int argc, char *argv[])
     if (SAKSettings::instance()->uiType() == SAKSettings::UiTypeWidget) {
         QString style = SAKSettings::instance()->appStyle();
         if (!style.isEmpty() && QStyleFactory::keys().contains(style)) {
-            qInfo() << "App style:" << style;
+            qCInfo(lc) << "App style:" << style;
             QApplication::setStyle(QStyleFactory::create(style));
         }
 

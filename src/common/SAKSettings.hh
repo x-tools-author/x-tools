@@ -12,6 +12,7 @@ class SAKSettings : public QSettings
     Q_OBJECT
     Q_PROPERTY(int hdpiPolicy READ hdpiPolicy WRITE setHdpiPolicy NOTIFY hdpiPolicyChanged)
     Q_PROPERTY(int uiType READ uiType WRITE setUiType NOTIFY uiTypeChanged)
+    Q_PROPERTY(bool clearSettings READ clearSettings WRITE setClearSettings NOTIFY clearSettingsChanged)
 public:
     enum UiType {
         UiTypeWidget,
@@ -37,9 +38,13 @@ public:
     QString language();
     void setLanguage(const QString &lan);
 
+    bool clearSettings();
+    void setClearSettings(bool clear);
+
 signals:
     void hdpiPolicyChanged();
     void uiTypeChanged();
+    void clearSettingsChanged();
 
 public:
     Q_INVOKABLE QVariant value(const QString &key,
@@ -53,6 +58,7 @@ private:
         const QString uiType{"uiType"};
         const QString appStyle{"appStyle"};
         const QString language{"language"};
+        const QString clearSettings{"clearSettings"};
     } mSettingsKey;
 };
 

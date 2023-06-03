@@ -25,29 +25,18 @@ public:
     explicit SAKApplication(int argc, char **argv);
     ~SAKApplication();
 
-    struct SettingsKeyContext {
-        QString lastDateTime; // The last time of starting
-        QString removeSettingsFile;
-        QString removeDatabase;
-        QString language;
-        QString appStyle;
-    };
-
     void installLanguage();
     const QDate *buildDate();
     const QTime *buildTime();
     QString dataPath();
     QSettings *settings();
-    SettingsKeyContext *settingsKeyContext();
     QSplashScreen *splashScreen();
     void showSplashScreenMessage(QString msg);
 
 private:
-    SettingsKeyContext mSettingsKeyContext;
     QTranslator mQtTranslator;
     QTranslator mQtBaseTranslator;
     QTranslator mSakTranslator;
-    QSettings *mSettings;
     QString mDatabaseName;
     QString mLastDataTime;
     QString mSettingsFileName;

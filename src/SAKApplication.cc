@@ -19,9 +19,6 @@
 #include <QScreen>
 #include <QDateTime>
 #include <QSettings>
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-#include <QTextCodec>
-#endif
 #include <QSizePolicy>
 #include <QGridLayout>
 #include <QTextCursor>
@@ -30,10 +27,8 @@
 #include <QStyleFactory>
 #include <QSplashScreen>
 #include <QStandardPaths>
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-#include <QDesktopWidget>
-#endif
 
+#include "SAKSettings.hh"
 #include "SAKMainWindow.hh"
 #include "SAKApplication.hh"
 #include "SAKSystemTrayIcon.hh"
@@ -56,63 +51,16 @@ SAKApplication::SAKApplication(int argc, char **argv)
     mSplashScreen->show();
     processEvents();
 
-
-    // Initialize the setting key
-    mSettingsKeyContext.lastDateTime = QString("lastDateTime");
-    mSettingsKeyContext.removeSettingsFile = QString("removeSettingsFile");
-    mSettingsKeyContext.removeDatabase = QString("removeDatabase");
-    mSettingsKeyContext.language = QString("language");
-    mSettingsKeyContext.appStyle = QString("appStyle");
-
-
-    // Initialize the settings file
-    QStandardPaths::StandardLocation type = QStandardPaths::AppConfigLocation;
-    QString path = QStandardPaths::writableLocation(type);
-    mSettingsFileName = QString("%1/%2.ini").arg(path,
-                                                 qApp->applicationName());
-    mSettings = new QSettings(mSettingsFileName, QSettings::IniFormat);
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    mSettings->setIniCodec(QTextCodec::codecForName("UTF-8"));
-#endif
-    QString key = mSettingsKeyContext.lastDateTime;
-    QDateTime dt = QDateTime::currentDateTime();
-    mLastDataTime = mSettings->value(key).toString();
-    mSettings->setValue(mSettingsKeyContext.lastDateTime,
-                        dt.toString(QLocale::system().dateFormat()));
-
-    // Remove settings file and database
-    if (mSettings->value(mSettingsKeyContext.removeSettingsFile).toBool()){
-        mSettings->setValue(mSettingsKeyContext.removeSettingsFile,
-                            QVariant::fromValue(false));
-        if (QFile::remove(mSettingsFileName)){
-            qInfo() << "Remove settings file successfully!";
-        }else{
-            qWarning() << "Remove settings file failed!";
-        }
-    }
-
-    // Readin setting info, set the most beautiful style for the paltform.
-    if (mSettings->value(mSettingsKeyContext.appStyle).toString().isEmpty()){
-        const QString defauleStyle = QString(SAK_STYLE_DEFAULT);
-        auto styleKeys = QStyleFactory::keys();
-        if (styleKeys.contains(defauleStyle)){
-            setStyle(defauleStyle);
-            mSettings->setValue(mSettingsKeyContext.appStyle, defauleStyle);
-        }
-    }
-
     // Setup ui language.
     installLanguage();
     showSplashScreenMessage(QObject::tr("Initializing main window..."));
 
-
-    SAKMainWindow *mainWindow = new SAKMainWindow(settings());
+    SAKMainWindow *mainWindow = new SAKMainWindow();
     QObject::connect(this, &SAKApplication::activeMainWindow,
                      mainWindow, &SAKMainWindow::activateWindow);
     mainWindow->show();
 #ifndef Q_OS_ANDROID
-    mainWindow->resize(mainWindow->height() * 1.732,
-                       mainWindow->height());
+    mainWindow->resize(mainWindow->height() * 1.732, mainWindow->height());
 #endif
 
 
@@ -128,18 +76,17 @@ SAKApplication::SAKApplication(int argc, char **argv)
 #endif
 
 
-// Move the window to the screen central.
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    QDesktopWidget *desktop = QApplication::desktop();
-    int currentScreen = desktop->screenNumber(mainWindow);
-    QList<QScreen*> screenList = QGuiApplication::screens();
-    QScreen *screen = screenList.at(currentScreen);
-    mainWindow->move((screen->geometry().width()
-                      - mainWindow->width())/2,
-                     (screen->geometry().height()
-                      - mainWindow->height())/2);
-    showSplashScreenMessage(QObject::tr("Finished..."));
-#endif
+    // Move the window to the screen central.
+    QRect screenRect = QGuiApplication::primaryScreen()->geometry();
+    bool tooWidth = (mainWindow->width() > screenRect.width());
+    bool tooHeight = (mainWindow->height() > screenRect.height());
+    if (tooWidth && tooHeight) {
+        mainWindow->showMaximized();
+    } else {
+        mainWindow->move((screenRect.width() - mainWindow->width())/2,
+                         (screenRect.height() - mainWindow->height())/2);
+    }
+    showSplashScreenMessage(tr("Finished..."));
 
 
     // Close splash screen after main window showed.
@@ -154,37 +101,38 @@ SAKApplication::~SAKApplication()
 
 void SAKApplication::installLanguage()
 {
-    QString key = mSettingsKeyContext.language;
-    QString language = mSettings->value(key).toString();
-    QString qmName;
-    if (language.isEmpty()) {
-        if (QLocale().country() == QLocale::China){
-            qmName = QString("zh_CN");
-            mSettings->setValue(mSettingsKeyContext.language,
-                                QString("zh_CN-简体中文"));
-        } else {
-            qmName = QString("en");
-            mSettings->setValue(mSettingsKeyContext.language,
-                                QString("en-English"));
-        }
-    } else {
-        qmName = language.split('-').first();
-    }
+    QString key = SAKSettings::instance()->language();
+    Q_UNUSED(key)
+//    QString language = mSettings->value(key).toString();
+//    QString qmName;
+//    if (language.isEmpty()) {
+//        if (QLocale().country() == QLocale::China){
+//            qmName = QString("zh_CN");
+//            mSettings->setValue(mSettingsKeyContext.language,
+//                                QString("zh_CN-简体中文"));
+//        } else {
+//            qmName = QString("en");
+//            mSettings->setValue(mSettingsKeyContext.language,
+//                                QString("en-English"));
+//        }
+//    } else {
+//        qmName = language.split('-').first();
+//    }
 
-    QString qm = QString(":/translations/qt/qtbase_%1.qm").arg(qmName);
-    auto ret = mQtBaseTranslator.load(qm);
-    Q_UNUSED(ret);
-    qApp->installTranslator(&mQtBaseTranslator);
+//    QString qm = QString(":/translations/qt/qtbase_%1.qm").arg(qmName);
+//    auto ret = mQtBaseTranslator.load(qm);
+//    Q_UNUSED(ret);
+//    qApp->installTranslator(&mQtBaseTranslator);
 
-    qm = QString(":/translations/qt/qt_%1.qm").arg(qmName);
-    ret = mQtTranslator.load(qm);
-    Q_UNUSED(ret);
-    qApp->installTranslator(&mQtTranslator);
+//    qm = QString(":/translations/qt/qt_%1.qm").arg(qmName);
+//    ret = mQtTranslator.load(qm);
+//    Q_UNUSED(ret);
+//    qApp->installTranslator(&mQtTranslator);
 
-    qm = QString(":/translations/sak/SAK_%1.qm").arg(qmName);
-    ret = mSakTranslator.load(qm);
-    Q_UNUSED(ret);
-    qApp->installTranslator(&mSakTranslator);
+//    qm = QString(":/translations/sak/SAK_%1.qm").arg(qmName);
+//    ret = mSakTranslator.load(qm);
+//    Q_UNUSED(ret);
+//    qApp->installTranslator(&mSakTranslator);
 }
 
 const QDate *SAKApplication::buildDate()
@@ -199,21 +147,11 @@ const QTime* SAKApplication::buildTime()
 
 QString SAKApplication::dataPath()
 {
-    QString path = mSettings->fileName();
+    QString path = SAKSettings::instance()->fileName();
     QStringList temp = path.split('/');
     path = path.remove(temp.last());
 
     return path;
-}
-
-QSettings *SAKApplication::settings()
-{
-    return mSettings;
-}
-
-SAKApplication::SettingsKeyContext *SAKApplication::settingsKeyContext()
-{
-    return &mSettingsKeyContext;
 }
 
 QSplashScreen *SAKApplication::splashScreen()
