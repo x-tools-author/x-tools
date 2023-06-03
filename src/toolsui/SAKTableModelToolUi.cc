@@ -42,7 +42,8 @@ SAKTableModelToolUi::SAKTableModelToolUi(const char *lg, QWidget *parent)
 
     connect(ui->tableView, &QTableView::doubleClicked,
             this, [=](const QModelIndex &index){
-        edit(index);
+        Q_UNUSED(index)
+        onPushButtonEditClicked();
     });
 }
 
@@ -192,6 +193,7 @@ void SAKTableModelToolUi::edit(const QModelIndex &index)
                                   "parameters",
                                   Qt::DirectConnection,
                                   Q_RETURN_ARG(QJsonObject, params));
+        qCInfo(mLoggingCategory) << "Parameter json object:" << params;
         QJsonDocument jsonDoc;
         jsonDoc.setObject(params);
         QString str = QString::fromUtf8(jsonDoc.toJson());

@@ -41,12 +41,10 @@ signals:
 
 protected:
     QString mToolName{""};
+    QLoggingCategory mLoggingCategory;
 
 protected:
     void outputMessage(int type, const QString &info) const;
-
-private:
-    QLoggingCategory mLoggingCategory;
 
 public:
     bool isWorking(){return mIsWorking;}

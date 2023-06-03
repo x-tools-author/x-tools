@@ -40,6 +40,7 @@ QJsonObject SAKPrestorerToolUiEditor::parameters()
     bool crcEnable = ui->checkBoxCrc->isChecked();
     int start = ui->spinBoxStart->value();
     int end = ui->spinBoxEnd->value();
+    int algorithm = ui->comboBoxAlgorithm->currentData().toInt();
     QString data = ui->lineEditData->text();
 
     QJsonObject params;
@@ -52,6 +53,7 @@ QJsonObject SAKPrestorerToolUiEditor::parameters()
     params.insert(keys.itemCrcEnable, crcEnable);
     params.insert(keys.itemCrcStartIndex, start);
     params.insert(keys.itemCrcEndIndex, end);
+    params.insert(keys.itemCrcAlgorithm, algorithm);
     params.insert(keys.itemText, data);
 
     return params;

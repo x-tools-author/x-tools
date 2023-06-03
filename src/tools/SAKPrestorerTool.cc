@@ -165,7 +165,7 @@ QVariant SAKPrestorerTool::columnDisplayRoleData(const Item &item, int column) c
         if (dataKey == mDataKeys.itemDescription) {
             return item.itemDescription;
         } else if (dataKey == mDataKeys.itemTextFormat) {
-            return item.itemEscapeCharacter;
+            return item.itemTextFormat;
         } else if (dataKey == mDataKeys.itemEscapeCharacter) {
             return item.itemEscapeCharacter;
         } else if (dataKey == mDataKeys.itemPrefix) {

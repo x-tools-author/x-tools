@@ -24,6 +24,8 @@ SAKStatisticianTool::SAKStatisticianTool(QObject *parent)
 void SAKStatisticianTool::inputBytes(const QByteArray &bytes,
                                      const QVariant &context)
 {
+    Q_UNUSED(context)
+
     mFrames += 1;
     emit framesChanged(mFrames);
 

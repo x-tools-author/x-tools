@@ -7,6 +7,7 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
+#include <QJsonArray>
 #include <QJsonDocument>
 #include "SAKTableModelTool.hh"
 
@@ -72,18 +73,21 @@ void SAKTableModelTool::addItem(const QString &jsonCtx, int index)
         auto key = headers().at(i);
         auto modelIndex = mTableModel->index(index, i);
         mTableModel->setData(modelIndex, jsonObj.value(key), Qt::EditRole);
+        qCInfo(mLoggingCategory) << "Set data:"
+                                 << QString("%1").arg(key, 20, ' ')
+                                 << ":" << jsonObj.value(key);
     }
 }
 
 QVariant SAKTableModelTool::itemsContext()
 {
-    QVariantList varList;
+    QJsonArray arr;
     int rowCount = mTableModel->rowCount();
     for (int i = 0; i < rowCount; i++) {
-        varList.append(itemContext(i));
+        arr.append(itemContext(i).toJsonObject());
     }
 
-    return varList;
+    return QVariant::fromValue(arr);
 }
 
 void SAKTableModelTool::onInvokeGetRowCount(int &count)
