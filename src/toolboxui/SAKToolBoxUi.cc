@@ -95,21 +95,21 @@ QIcon SAKToolBoxUi::communiticationToolIcon(int type)
 {
     QString fileName;
     if (type == SAKToolFactory::SerialportTool) {
-        fileName = ":/res/icon/IconSerialPort.svg";
+        fileName = ":/resources/icon/IconSerialPort.svg";
     } else if (type == SAKToolFactory::UdpClientTool) {
-        fileName = ":/res/icon/IconUdpClient.svg";
+        fileName = ":/resources/icon/IconUdpClient.svg";
     } else if (type == SAKToolFactory::UdpServerTool) {
-        fileName = ":/res/icon/IconUdpServer.svg";
+        fileName = ":/resources/icon/IconUdpServer.svg";
     } else if (type == SAKToolFactory::TcpClientTool) {
-        fileName = ":/res/icon/IconTcpClient.svg";
+        fileName = ":/resources/icon/IconTcpClient.svg";
     } else if (type == SAKToolFactory::TcpServerTool) {
-        fileName = ":/res/icon/IconTcpServer.svg";
+        fileName = ":/resources/icon/IconTcpServer.svg";
     } else if (type == SAKToolFactory::WebSocketClientTool) {
-        fileName = ":/res/icon/IconWebScoketClient.svg";
+        fileName = ":/resources/icon/IconWebScoketClient.svg";
     } else if (type == SAKToolFactory::WebSocketServerTool) {
-        fileName = ":/res/icon/IconWebSocketServer.svg";
+        fileName = ":/resources/icon/IconWebSocketServer.svg";
     } else if (type == SAKToolFactory::BleCentralTool) {
-        fileName = ":/res/icon/IconBlueTooth.svg";
+        fileName = ":/resources/icon/IconBlueTooth.svg";
     }
 
     QIcon icon(fileName);

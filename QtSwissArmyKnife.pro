@@ -114,7 +114,7 @@ TRANSLATIONS  += \
     resources/translations/sak_sv.ts
 
 RESOURCES += \
-    SAKWidgetResources.qrc
+    SAKResources.qrc
 
 greaterThan(QT_MAJOR_VERSION, 5) {
     greaterThan(QT_MINOR_VERSION, 3) {

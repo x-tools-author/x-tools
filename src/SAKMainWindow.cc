@@ -396,6 +396,7 @@ void SAKMainWindow::initOptionMenuHdpiPolicy(QMenu *optionMenu)
 
 void SAKMainWindow::initLanguageMenu()
 {
+    return;
     QMenu *languageMenu = new QMenu(tr("&Languages"), this);
     menuBar()->addMenu(languageMenu);
 

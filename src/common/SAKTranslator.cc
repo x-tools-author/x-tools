@@ -125,7 +125,7 @@ QStringList SAKTranslator::languanges()
     QString path = QCoreApplication::applicationDirPath();
     path += "/translations";
     QDir dir(path);
-    QFileInfoList fileInfoList = dir.entryInfoList("QM (*.qm)");
+    //QFileInfoList fileInfoList = dir.entryInfoList("QM (*.qm)");
 
     QStringList list;
     list << "简体中文";
