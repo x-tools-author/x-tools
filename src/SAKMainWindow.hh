@@ -65,6 +65,8 @@ private:
     void initHelpMenu();
     void initLinksMenu();
     void initDemoMenu();
+    void initNav();
+
     void aboutQsak();
     void clearConfiguration();
     void rebootRequestion();

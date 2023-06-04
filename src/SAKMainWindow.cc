@@ -64,8 +64,6 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     setCentralWidget(scrollArea);
     scrollArea->setWidget(mTabWidget);
 #else
-//    ui->tabWidget->addTab(new SAKModbusDebugger(mSettings), tr("Modbus"));
-//    ui->tabWidget->addTab(new SAKCanBusDebugger(mSettings), tr("CAN"));
 
     QString title = QString(tr("Qt Swiss Army Knife"));
     title.append(QString(" "));
@@ -77,46 +75,8 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     setWindowIcon(QIcon(":/resources/images/SAKLogo.png"));
 #endif
 
-    // Initializing menu bar
-    initMenuBar();
-
-    auto nav = ui->verticalLayoutNav;
-    mNavBtGroup = new QButtonGroup(this);
-    QList<int> types = SAKToolBoxUi::supportedCommuniticationTools();
-    QString indexKey = mSettingsKey.currentPageIndex;
-    for (int i = 0; i < types.count(); i++) {
-        int type = types.at(i);
-        SAKToolBoxUi *toolBoxUi = new SAKToolBoxUi(this);
-        toolBoxUi->initialize(type);
-        QToolButton *bt = new QToolButton();
-        bt->setToolTip(toolBoxUi->windowTitle());
-        bt->setIcon(toolBoxUi->windowIcon());
-        bt->setToolButtonStyle(Qt::ToolButtonIconOnly);
-        nav->layout()->addWidget(bt);
-        ui->stackedWidget->addWidget(toolBoxUi);
-        bt->setSizePolicy(QSizePolicy::Policy::Preferred,
-                          QSizePolicy::Policy::Fixed);
-        connect(bt, &QToolButton::clicked, this, [=](){
-            ui->stackedWidget->setCurrentIndex(i);
-            SAKSettings::instance()->setValue(indexKey, i);
-        });
-
-        bt->setCheckable(true);
-        bt->setAutoRaise(true);
-        mNavBtGroup->addButton(bt);
-    }
-    nav->layout()->addWidget(new QLabel(" "));
-
-    int index = SAKSettings::instance()->value(indexKey).toInt();
-    if (index >= 0 && index < ui->stackedWidget->count()) {
-        ui->stackedWidget->setCurrentIndex(index);
-    }
-
-    if (index >= 0 && index < mNavBtGroup->buttons().count()) {
-        auto bt = mNavBtGroup->buttons().at(index);
-        auto cookedBt = qobject_cast<QToolButton*>(bt);
-        cookedBt->setChecked(true);
-    }
+    initMenuBar();    
+    initNav();
 }
 
 SAKMainWindow::~SAKMainWindow()
@@ -472,7 +432,7 @@ void SAKMainWindow::initHelpMenu()
     connect(qrCodeAction, &QAction::triggered,
             this, &SAKMainWindow::showQrCodeDialog);
 
-    helpMenu->addAction(tr("支持作者"), this,
+    helpMenu->addAction(tr("Donate"), this,
                         &SAKMainWindow::onDonationActionTriggered);
 }
 
@@ -546,6 +506,48 @@ void SAKMainWindow::initDemoMenu()
     }
 }
 
+void SAKMainWindow::initNav()
+{
+    auto nav = ui->verticalLayoutNav;
+    mNavBtGroup = new QButtonGroup(this);
+    QList<int> types = SAKToolBoxUi::supportedCommuniticationTools();
+    QString indexKey = mSettingsKey.currentPageIndex;
+    for (int i = 0; i < types.count(); i++) {
+        int type = types.at(i);
+        SAKToolBoxUi *toolBoxUi = new SAKToolBoxUi(this);
+        toolBoxUi->initialize(type);
+        QToolButton *bt = new QToolButton();
+        bt->setToolTip(toolBoxUi->windowTitle());
+        bt->setIcon(toolBoxUi->windowIcon());
+        bt->setToolButtonStyle(Qt::ToolButtonIconOnly);
+        nav->layout()->addWidget(bt);
+        ui->stackedWidget->addWidget(toolBoxUi);
+        bt->setSizePolicy(QSizePolicy::Policy::Preferred,
+                          QSizePolicy::Policy::Fixed);
+        connect(bt, &QToolButton::clicked, this, [=](){
+            ui->stackedWidget->setCurrentIndex(i);
+            SAKSettings::instance()->setValue(indexKey, i);
+        });
+
+        bt->setCheckable(true);
+        bt->setAutoRaise(true);
+        mNavBtGroup->addButton(bt);
+    }
+    nav->layout()->addWidget(new QLabel(" "));
+
+    int index = SAKSettings::instance()->value(indexKey).toInt();
+    if (index >= 0 && index < ui->stackedWidget->count()) {
+        ui->stackedWidget->setCurrentIndex(index);
+    }
+
+    if (index >= 0 && index < mNavBtGroup->buttons().count()) {
+        auto bt = mNavBtGroup->buttons().at(index);
+        auto cookedBt = qobject_cast<QToolButton*>(bt);
+        cookedBt->setChecked(true);
+    }
+}
+
+
 void SAKMainWindow::aboutQsak()
 {
     struct Info {
@@ -573,7 +575,7 @@ void SAKMainWindow::aboutQsak()
              << Info{tr("Gitbub Url"), QString("<a href=%1>%1</a>")
                 .arg(SAK_GITHUB_REPOSITORY_URL), true}
              << Info{tr("Copyright"),
-                tr("Copyright 2018-%1 Qsaker(qsaker@outlook.com)."
+                tr("Copyright 2018-%1 Qsaker(qsaker@foxmail.com)."
                    " All rights reserved.")
                 .arg(sakApp->buildDate()->toString("yyyy")), false};
 
