@@ -67,12 +67,12 @@ private:
     void initDemoMenu();
     void initNav();
 
-    void aboutQsak();
+    void aboutSoftware();
     void clearConfiguration();
     void rebootRequestion();
-    void showReleaseHistoryActionDialog();
-    void showQrCodeDialog();
-    void onDonationActionTriggered();
+    void showHistory();
+    void showQrCode();
+    void showDonation();
 
 private:
     Ui::SAKMainWindow *ui;

@@ -398,7 +398,7 @@ void SAKMainWindow::initHelpMenu()
     QAction *aboutAction = new QAction(tr("About Application"), this);
     helpMenu->addAction(aboutAction);
     connect(aboutAction, &QAction::triggered,
-            this, &SAKMainWindow::aboutQsak);
+            this, &SAKMainWindow::aboutSoftware);
 
     QMenu *srcMenu = new QMenu(tr("Get Source"), this);
     helpMenu->addMenu(srcMenu);
@@ -424,16 +424,16 @@ void SAKMainWindow::initHelpMenu()
     QAction *releaseHistoryAction = new QAction(tr("Release History"), this);
     helpMenu->addAction(releaseHistoryAction);
     connect(releaseHistoryAction, &QAction::triggered,
-            this, &SAKMainWindow::showReleaseHistoryActionDialog);
+            this, &SAKMainWindow::showHistory);
 
     helpMenu->addSeparator();
     QAction *qrCodeAction = new QAction(tr("QR Code"), this);
     helpMenu->addAction(qrCodeAction);
     connect(qrCodeAction, &QAction::triggered,
-            this, &SAKMainWindow::showQrCodeDialog);
+            this, &SAKMainWindow::showQrCode);
 
     helpMenu->addAction(tr("Donate"), this,
-                        &SAKMainWindow::onDonationActionTriggered);
+                        &SAKMainWindow::showDonation);
 }
 
 void SAKMainWindow::initLinksMenu()
@@ -548,7 +548,7 @@ void SAKMainWindow::initNav()
 }
 
 
-void SAKMainWindow::aboutQsak()
+void SAKMainWindow::aboutSoftware()
 {
     struct Info {
         QString name;
@@ -628,7 +628,7 @@ void SAKMainWindow::rebootRequestion()
     }
 }
 
-void SAKMainWindow::showReleaseHistoryActionDialog()
+void SAKMainWindow::showHistory()
 {
     QDialog dialog;
     dialog.setWindowTitle(tr("Release History"));
@@ -648,7 +648,7 @@ void SAKMainWindow::showReleaseHistoryActionDialog()
     dialog.exec();
 }
 
-void SAKMainWindow::showQrCodeDialog()
+void SAKMainWindow::showQrCode()
 {
     QDialog dialog;
     dialog.setWindowTitle(tr("QR Code"));
@@ -679,7 +679,7 @@ void SAKMainWindow::showQrCodeDialog()
     dialog.exec();
 }
 
-void SAKMainWindow::onDonationActionTriggered()
+void SAKMainWindow::showDonation()
 {
     QDialog dialog(this);
     dialog.setModal(true);
