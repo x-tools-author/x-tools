@@ -538,6 +538,11 @@ void SAKMainWindow::initNav()
                 toolBoxUi->windowTitle(), toolBoxUi);
     }
 
+    auto line = new QToolButton(this);
+    line->setMaximumHeight(2);
+    line->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+    ui->verticalLayoutNav->addWidget(line);
+
 #ifdef SAK_IMPORT_MODULE_MODBUS
     initNav(&navButtonGroup,
             cookedIcon(QIcon(":/resources/icon/IconModbus.svg")),
