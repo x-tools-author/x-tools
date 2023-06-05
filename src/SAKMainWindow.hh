@@ -62,8 +62,8 @@ private:
     void initLinksMenu();
     void initDemoMenu();
     void initNav();
-    void initNavModbus(QButtonGroup *bg);
-    void initNavCanBus(QButtonGroup *bg);
+    void initNav(QButtonGroup *bg, const QIcon &icon,
+                 const QString &name, QWidget *page);
 
     void aboutSoftware();
     void clearConfiguration();

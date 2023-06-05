@@ -117,6 +117,17 @@ void SAKSettings::setPageIndex(int index)
     emit pageIndexChanged();
 }
 
+bool SAKSettings::isTextBesideIcon()
+{
+    return value(mSettingsKey.isTextBesideIcon).toBool();
+}
+
+void SAKSettings::setIsTextBesideIcon(bool is)
+{
+    setValue(mSettingsKey.isTextBesideIcon, is);
+    emit isTextBesideIconChanged();
+}
+
 QVariant SAKSettings::value(const QString &key,
                             const QVariant &defaultValue) const
 {

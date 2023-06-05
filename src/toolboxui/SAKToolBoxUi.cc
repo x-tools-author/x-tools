@@ -47,6 +47,12 @@ SAKToolBoxUi::SAKToolBoxUi(QWidget *parent)
     mCycleSendingTimer = new QTimer(this);
     connect(mCycleSendingTimer, &QTimer::timeout,
             this, &SAKToolBoxUi::try2send);
+
+    ui->tabWidgetTransmitter->clear();
+    ui->tabWidgetTransmitter->addTab(new QWidget(), "SerialPort");
+    ui->tabWidgetTransmitter->addTab(new QWidget(), "UDP");
+    ui->tabWidgetTransmitter->addTab(new QWidget(), "TCP");
+    ui->tabWidgetTransmitter->addTab(new QWidget(), "WebSocket");
 }
 
 SAKToolBoxUi::~SAKToolBoxUi()
