@@ -15,8 +15,8 @@
 #include <QMessageBox>
 #include <QLoggingCategory>
 
-#include "SAKCanBusDebugger.hh"
-#include "ui_SAKCanBusDebugger.h"
+#include "SAKCanBusUi.hh"
+#include "ui_SAKCanBusUi.h"
 
 const QLoggingCategory gLC("SAK.CANStudio");
 

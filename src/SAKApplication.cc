@@ -61,10 +61,6 @@ SAKApplication::SAKApplication(int argc, char **argv)
     QObject::connect(this, &SAKApplication::activeMainWindow,
                      mainWindow, &SAKMainWindow::activateWindow);
     mainWindow->show();
-#ifndef Q_OS_ANDROID
-    mainWindow->resize(mainWindow->height() * 1.732, mainWindow->height());
-#endif
-
 
 #ifdef Q_OS_WIN
     // Setup system tray icon.
@@ -82,6 +78,13 @@ SAKApplication::SAKApplication(int argc, char **argv)
     QRect screenRect = QGuiApplication::primaryScreen()->geometry();
     bool tooWidth = (mainWindow->width() > screenRect.width());
     bool tooHeight = (mainWindow->height() > screenRect.height());
+
+#ifndef Q_OS_ANDROID
+    if (!(tooHeight || tooWidth)) {
+        mainWindow->resize(mainWindow->height() * 1.732, mainWindow->height());
+    }
+#endif
+
     if (tooWidth && tooHeight) {
         mainWindow->showMaximized();
     } else {

@@ -3,25 +3,25 @@ isEqual(QT_MAJOR_VERSION, 5){
     !lessThan(QT_MINOR_VERSION, 7){
         qtHaveModule(serialbus){
             QT  += serialbus
-            DEFINES+=SAK_IMPORT_MODULE_CANBUS
+            DEFINES+=SAK_IMPORT_MODULE_CANBUSUI
         }
     }
 } else {
     qtHaveModule(serialbus){
         QT  += serialbus
-        DEFINES+=SAK_IMPORT_MODULE_CANBUS
+        DEFINES+=SAK_IMPORT_MODULE_CANBUSUI
     }
 }
 
-contains(DEFINES, SAK_IMPORT_MODULE_CANBUS) {
+contains(DEFINES, SAK_IMPORT_MODULE_CANBUSUI) {
     HEADERS += \
-    $$PWD/SAKCanBusDebugger.hh
+    $$PWD/SAKCanBusUi.hh
 
     SOURCES += \
-    $$PWD/SAKCanBusDebugger.cc
+    $$PWD/SAKCanBusUi.cc
 
     FORMS += \
-    $$PWD/SAKCanBusDebugger.ui
+    $$PWD/SAKCanBusUi.ui
 
     INCLUDEPATH += \
         $$PWD

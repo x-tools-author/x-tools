@@ -1,5 +1,5 @@
 ﻿/******************************************************************************
- * Copyright 2022 Qter(qsaker@outlook.com). All rights reserved.
+ * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.
@@ -40,8 +40,8 @@
 #include <QModbusRtuSerialServer>
 #endif
 
-#include "SAKModbusDebugger.hh"
-#include "ui_SAKModbusDebugger.h"
+#include "SAKModbusUi.hh"
+#include "ui_SAKModbusUi.h"
 
 #define RXCOLOR "green"
 #define TXCOLOR "blue"

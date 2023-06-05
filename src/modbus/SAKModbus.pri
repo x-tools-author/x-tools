@@ -13,14 +13,11 @@ isEqual(QT_MAJOR_VERSION, 5) {
 }
 
 contains(DEFINES, SAK_IMPORT_MODULE_MODBUS) {
-    FORMS += \
-    $$PWD/SAKModbusDebugger.ui
-
     HEADERS += \
-    $$PWD/SAKModbusDebugger.hh
+    $$PWD/SAKModbus.hh
 
     SOURCES += \
-    $$PWD/SAKModbusDebugger.cc
+    $$PWD/SAKModbus.cc
 
     INCLUDEPATH += \
         $$PWD

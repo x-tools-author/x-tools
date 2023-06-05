@@ -15,13 +15,10 @@ isEqual(QT_MAJOR_VERSION, 5){
 
 contains(DEFINES, SAK_IMPORT_MODULE_CANBUS) {
     HEADERS += \
-    $$PWD/SAKCanBusDebugger.hh
+    $$PWD/SAKCanBus.hh
 
     SOURCES += \
-    $$PWD/SAKCanBusDebugger.cc
-
-    FORMS += \
-    $$PWD/SAKCanBusDebugger.ui
+    $$PWD/SAKCanBus.cc
 
     INCLUDEPATH += \
         $$PWD

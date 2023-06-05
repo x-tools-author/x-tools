@@ -49,6 +49,14 @@
 #include "SAKApplication.hh"
 #include "SAKAssistantsFactory.hh"
 
+#ifdef SAK_IMPORT_MODULE_CANBUSUI
+#include "SAKCanBusUi.hh"
+#endif
+
+#ifdef SAK_IMPORT_MODULE_MODBUSUI
+#include "SAKModbusUi.hh"
+#endif
+
 #include "ui_SAKMainWindow.h"
 
 SAKMainWindow::SAKMainWindow(QWidget *parent)
@@ -533,7 +541,6 @@ void SAKMainWindow::initNav()
         bt->setAutoRaise(true);
         mNavBtGroup->addButton(bt);
     }
-    nav->layout()->addWidget(new QLabel(" "));
 
     int index = SAKSettings::instance()->value(indexKey).toInt();
     if (index >= 0 && index < ui->stackedWidget->count()) {
@@ -545,6 +552,48 @@ void SAKMainWindow::initNav()
         auto cookedBt = qobject_cast<QToolButton*>(bt);
         cookedBt->setChecked(true);
     }
+
+#ifdef SAK_IMPORT_MODULE_MODBUS
+    int pageCount = mNavBtGroup->buttons().count();
+    QToolButton *modbusBt = new QToolButton();
+    modbusBt->setAutoRaise(true);
+    modbusBt->setIcon(QIcon(":/resources/icon/IconModbus.svg"));
+    nav->layout()->addWidget(modbusBt);
+    auto modbusui = new SAKModbusDebugger(SAKSettings::instance());
+    modbusui->layout()->setContentsMargins(0, 0, 0 ,0);
+    ui->stackedWidget->addWidget(modbusui);
+    modbusBt->setCheckable(true);
+    modbusBt->setToolButtonStyle(Qt::ToolButtonIconOnly);
+    mNavBtGroup->addButton(modbusBt);
+    connect(modbusBt, &QToolButton::clicked, this, [=](){
+        ui->stackedWidget->setCurrentIndex(pageCount);
+        SAKSettings::instance()->setValue(indexKey, pageCount);
+    });
+    if (index == pageCount) {
+        modbusBt->setChecked(true);
+    }
+#endif
+
+#ifdef SAK_IMPORT_MODULE_CANBUSUI
+    QToolButton *canbusBt = new QToolButton();
+    mNavBtGroup->addButton(canbusBt);
+    canbusBt->setAutoRaise(true);
+    canbusBt->setIcon(QIcon(":/resources/icon/IconCanBus.svg"));
+    nav->layout()->addWidget(canbusBt);
+    auto canbusui = new SAKCanBusDebugger(SAKSettings::instance());
+    ui->stackedWidget->addWidget(canbusui);
+    canbusBt->setCheckable(true);
+    canbusBt->setToolButtonStyle(Qt::ToolButtonIconOnly);
+    connect(canbusBt, &QToolButton::clicked, this, [=](){
+        ui->stackedWidget->setCurrentIndex(pageCount + 1);
+        SAKSettings::instance()->setValue(indexKey, pageCount);
+    });
+    if (index == pageCount + 1) {
+        canbusBt->setChecked(true);
+    }
+#endif
+
+    nav->layout()->addWidget(new QLabel(" "));
 }
 
 
