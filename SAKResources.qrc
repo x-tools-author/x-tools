@@ -62,5 +62,7 @@
         <file>resources/translations/sak_zh_CN.qm</file>
         <file>resources/icon/IconCanBus.svg</file>
         <file>resources/icon/IconModbus.svg</file>
+        <file>resources/icon/IconLog.svg</file>
+        <file>resources/icon/IconListWithIcon.svg</file>
     </qresource>
 </RCC>
