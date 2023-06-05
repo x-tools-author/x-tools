@@ -17,6 +17,7 @@
 #include <QTabBar>
 #include <QAction>
 #include <QLocale>
+#include <QPainter>
 #include <QProcess>
 #include <QVariant>
 #include <QSysInfo>
@@ -514,6 +515,16 @@ void SAKMainWindow::initDemoMenu()
     }
 }
 
+QIcon cookedIcon(const QIcon &icon)
+{
+    QPixmap pixmap = icon.pixmap(QSize(128, 128));
+    QPainter painter(&pixmap);
+    painter.setCompositionMode(QPainter::CompositionMode_SourceIn);
+    painter.fillRect(pixmap.rect(), qApp->palette().windowText().color());
+    QIcon colorIcon = QIcon(pixmap);
+    return colorIcon;
+}
+
 void SAKMainWindow::initNav()
 {
     static QButtonGroup navButtonGroup;
@@ -523,30 +534,33 @@ void SAKMainWindow::initNav()
         SAKToolBoxUi *toolBoxUi = new SAKToolBoxUi(this);
         toolBoxUi->initialize(type);
 
-        initNav(&navButtonGroup, toolBoxUi->windowIcon(),
+        initNav(&navButtonGroup, cookedIcon(toolBoxUi->windowIcon()),
                 toolBoxUi->windowTitle(), toolBoxUi);
     }
 
 #ifdef SAK_IMPORT_MODULE_MODBUS
-    initNav(&navButtonGroup, QIcon(":/resources/icon/IconModbus.svg"),
+    initNav(&navButtonGroup,
+            cookedIcon(QIcon(":/resources/icon/IconModbus.svg")),
             "Modbus Studio", new SAKModbusUi());
 #endif
 #ifdef SAK_IMPORT_MODULE_CANBUSUI
-    initNav(&navButtonGroup, QIcon(":/resources/icon/IconCanBus.svg"),
+    initNav(&navButtonGroup,
+            cookedIcon(QIcon(":/resources/icon/IconCanBus.svg")),
             "CAN Bus Studio", new SAKCanBusUi());
 #endif
-
     ui->verticalLayoutNav->addWidget(new QLabel(" "));
-    initNav(&navButtonGroup, QIcon(":/resources/icon/IconLog.svg"),
+    initNav(&navButtonGroup,
+            cookedIcon(QIcon(":/resources/icon/IconLog.svg")),
             tr("Log Viewer"), new QWidget());
-    initNav(&navButtonGroup, QIcon(":/resources/icon/IconSettings.svg"),
+    initNav(&navButtonGroup,
+            cookedIcon(QIcon(":/resources/icon/IconSettings.svg")),
             tr("Settings"), new QWidget());
 #if 1
     bool isTextBesideIcon = SAKSettings::instance()->isTextBesideIcon();
     auto style = isTextBesideIcon ? Qt::ToolButtonTextBesideIcon
                                   : Qt::ToolButtonIconOnly;
     QToolButton *tbt = new QToolButton(this);
-    tbt->setIcon(QIcon(":/resources/icon/IconListWithIcon.svg"));
+    tbt->setIcon(cookedIcon(QIcon(":/resources/icon/IconListWithIcon.svg")));
     tbt->setCheckable(true);
     tbt->setText(tr("Hide text"));
     tbt->setToolTip(tr("Click to show(hide) nav text"));
