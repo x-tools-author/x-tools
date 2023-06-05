@@ -10,6 +10,7 @@ HEADERS += \
     $$PWD/SAKPrestorerTool.hh \
     $$PWD/SAKResponserTool.hh \
     $$PWD/SAKSerialPortTool.hh \
+    $$PWD/SAKSerialPortTransmitterTool.hh \
     $$PWD/SAKSocketClientTool.hh \
     $$PWD/SAKSocketServerTool.hh \
     $$PWD/SAKStatisticianTool.hh \
@@ -17,12 +18,16 @@ HEADERS += \
     $$PWD/SAKTableModelTool.hh \
     $$PWD/SAKTcpClientTool.hh \
     $$PWD/SAKTcpServerTool.hh \
+    $$PWD/SAKTcpTransmitterTool.hh \
     $$PWD/SAKToolFactory.hh \
+    $$PWD/SAKTransmitterTool.hh \
     $$PWD/SAKUdpClientTool.hh \
     $$PWD/SAKUdpServerTool.hh \
+    $$PWD/SAKUdpTransmitterTool.hh \
     $$PWD/SAKVelometerTool.hh \
     $$PWD/SAKWebSocketClientTool.hh \
-    $$PWD/SAKWebSocketServerTool.hh
+    $$PWD/SAKWebSocketServerTool.hh \
+    $$PWD/SAKWebSocketTransmitterTool.hh
 
 SOURCES += \
     $$PWD/SAKAnalyzerTool.cc \
@@ -34,6 +39,7 @@ SOURCES += \
     $$PWD/SAKPrestorerTool.cc \
     $$PWD/SAKResponserTool.cc \
     $$PWD/SAKSerialPortTool.cc \
+    $$PWD/SAKSerialPortTransmitterTool.cc \
     $$PWD/SAKSocketClientTool.cc \
     $$PWD/SAKSocketServerTool.cc \
     $$PWD/SAKStatisticianTool.cc \
@@ -41,9 +47,13 @@ SOURCES += \
     $$PWD/SAKTableModelTool.cc \
     $$PWD/SAKTcpClientTool.cc \
     $$PWD/SAKTcpServerTool.cc \
+    $$PWD/SAKTcpTransmitterTool.cc \
     $$PWD/SAKToolFactory.cc \
+    $$PWD/SAKTransmitterTool.cc \
     $$PWD/SAKUdpClientTool.cc \
     $$PWD/SAKUdpServerTool.cc \
+    $$PWD/SAKUdpTransmitterTool.cc \
     $$PWD/SAKVelometerTool.cc \
     $$PWD/SAKWebSocketClientTool.cc \
-    $$PWD/SAKWebSocketServerTool.cc
+    $$PWD/SAKWebSocketServerTool.cc \
+    $$PWD/SAKWebSocketTransmitterTool.cc
