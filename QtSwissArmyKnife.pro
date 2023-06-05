@@ -43,14 +43,22 @@ CONFIG += c++11
 #------------------------------------------------------------------------------
 # Sub project, take cate the including order
 include(SAKProject.pri)
-include(src/tools/SAKTools.pri)
 include(src/common/SAKCommon.pri)
+include(src/commonui/SAKCommonUi.pri)
+
+include(src/tools/SAKTools.pri)
 include(src/toolsui/SAKToolsUi.pri)
 include(src/toolbox/SAKToolBox.pri)
-include(src/commonui/SAKCommonUi.pri)
 include(src/toolboxui/SAKToolBoxUi.pri)
+
 include(src/assistants/SAKAssistants.pri)
 include(src/assistantsui/SAKAssistantsUi.pri)
+
+include(src/canbus/SAKCanBus.pri)
+include(src/canbusui/SAKCanBusUi.pri)
+
+include(src/modbus/SAKModbus.pri)
+include(src/modbusui/SAKModbusUi.pri)
 
 #------------------------------------------------------------------------------
 # Android settings
