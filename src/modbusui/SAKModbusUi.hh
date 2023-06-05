@@ -23,11 +23,10 @@
 #include <QStandardItemModel>
 
 namespace Ui {
-    class SAKModbusDebugger;
-};
+    class SAKModbusUi;
+}
 
-class QSqlDatabase;
-class SAKModbusDebugger : public QWidget
+class SAKModbusUi : public QWidget
 {
     Q_OBJECT
 public:
@@ -37,7 +36,7 @@ public:
         ModbusDeviceTcpClient,
         ModbusDeviceTcpServer
     };
-    Q_ENUM(SAKEnumModbusDevice);
+    Q_ENUM(SAKEnumModbusDevice)
 
     enum SAKEnumRegisterType {
         DiscreteInputs = QModbusDataUnit::DiscreteInputs,
@@ -45,7 +44,7 @@ public:
         InputRegisters = QModbusDataUnit::InputRegisters,
         HoldingRegisters = QModbusDataUnit::HoldingRegisters
     };
-    Q_ENUM(SAKEnumRegisterType);
+    Q_ENUM(SAKEnumRegisterType)
 
     enum SAKEnumFunctionCode {
         Invalid = QModbusPdu::Invalid,
@@ -71,14 +70,11 @@ public:
         QModbusPdu::EncapsulatedInterfaceTransport,
         UndefinedFunctionCode = QModbusPdu::UndefinedFunctionCode
     };
-    Q_ENUM(SAKEnumFunctionCode);
+    Q_ENUM(SAKEnumFunctionCode)
+
 public:
-    explicit SAKModbusDebugger(QSettings *settings, QWidget *parent = Q_NULLPTR);
-    Q_INVOKABLE SAKModbusDebugger(QSettings *settings,
-                          const QString settingsGroup,
-                          QSqlDatabase *sqlDatabase = Q_NULLPTR,
-                          QWidget *parent = Q_NULLPTR);
-    ~SAKModbusDebugger();
+    explicit SAKModbusUi(QWidget *parent = Q_NULLPTR);
+    ~SAKModbusUi();
 signals:
     void deviceChanged(QModbusDevice *device);
 private:
@@ -113,11 +109,11 @@ private:
         const QString pdu = "pdu";
     } mSettingsKeyCtx;
 private:
-    Ui::SAKModbusDebugger *ui;
-    QModbusDevice *mModbusDevice;
-    const QLoggingCategory mLoggingCategory;
-    QSettings *mSettings;
-    QStandardItemModel *mRegisterModel;
+    Ui::SAKModbusUi *ui;
+    QModbusDevice *mModbusDevice{nullptr};
+    const QLoggingCategory mLoggingCategory{nullptr};
+    QSettings *mSettings{nullptr};
+    QStandardItemModel *mRegisterModel{nullptr};
 private:
     void initComponents();
     void initComponentDevices();

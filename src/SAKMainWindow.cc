@@ -517,9 +517,8 @@ void SAKMainWindow::initDemoMenu()
 void SAKMainWindow::initNav()
 {
     auto nav = ui->verticalLayoutNav;
-    mNavBtGroup = new QButtonGroup(this);
+    static QButtonGroup navButtonGroup;
     QList<int> types = SAKToolBoxUi::supportedCommuniticationTools();
-    QString indexKey = mSettingsKey.currentPageIndex;
     for (int i = 0; i < types.count(); i++) {
         int type = types.at(i);
         SAKToolBoxUi *toolBoxUi = new SAKToolBoxUi(this);
@@ -534,68 +533,83 @@ void SAKMainWindow::initNav()
                           QSizePolicy::Policy::Fixed);
         connect(bt, &QToolButton::clicked, this, [=](){
             ui->stackedWidget->setCurrentIndex(i);
-            SAKSettings::instance()->setValue(indexKey, i);
+            SAKSettings::instance()->setPageIndex(i);
         });
 
         bt->setCheckable(true);
         bt->setAutoRaise(true);
-        mNavBtGroup->addButton(bt);
+        navButtonGroup.addButton(bt);
     }
 
-    int index = SAKSettings::instance()->value(indexKey).toInt();
+    int index = SAKSettings::instance()->pageIndex();
     if (index >= 0 && index < ui->stackedWidget->count()) {
         ui->stackedWidget->setCurrentIndex(index);
     }
 
-    if (index >= 0 && index < mNavBtGroup->buttons().count()) {
-        auto bt = mNavBtGroup->buttons().at(index);
+    if (index >= 0 && index < navButtonGroup.buttons().count()) {
+        auto bt = navButtonGroup.buttons().at(index);
         auto cookedBt = qobject_cast<QToolButton*>(bt);
         cookedBt->setChecked(true);
     }
 
-#ifdef SAK_IMPORT_MODULE_MODBUS
-    int pageCount = mNavBtGroup->buttons().count();
-    QToolButton *modbusBt = new QToolButton();
-    modbusBt->setAutoRaise(true);
-    modbusBt->setIcon(QIcon(":/resources/icon/IconModbus.svg"));
-    nav->layout()->addWidget(modbusBt);
-    auto modbusui = new SAKModbusDebugger(SAKSettings::instance());
-    modbusui->layout()->setContentsMargins(0, 0, 0 ,0);
-    ui->stackedWidget->addWidget(modbusui);
-    modbusBt->setCheckable(true);
-    modbusBt->setToolButtonStyle(Qt::ToolButtonIconOnly);
-    mNavBtGroup->addButton(modbusBt);
-    connect(modbusBt, &QToolButton::clicked, this, [=](){
-        ui->stackedWidget->setCurrentIndex(pageCount);
-        SAKSettings::instance()->setValue(indexKey, pageCount);
-    });
-    if (index == pageCount) {
-        modbusBt->setChecked(true);
-    }
-#endif
-
-#ifdef SAK_IMPORT_MODULE_CANBUSUI
-    QToolButton *canbusBt = new QToolButton();
-    mNavBtGroup->addButton(canbusBt);
-    canbusBt->setAutoRaise(true);
-    canbusBt->setIcon(QIcon(":/resources/icon/IconCanBus.svg"));
-    nav->layout()->addWidget(canbusBt);
-    auto canbusui = new SAKCanBusDebugger(SAKSettings::instance());
-    ui->stackedWidget->addWidget(canbusui);
-    canbusBt->setCheckable(true);
-    canbusBt->setToolButtonStyle(Qt::ToolButtonIconOnly);
-    connect(canbusBt, &QToolButton::clicked, this, [=](){
-        ui->stackedWidget->setCurrentIndex(pageCount + 1);
-        SAKSettings::instance()->setValue(indexKey, pageCount);
-    });
-    if (index == pageCount + 1) {
-        canbusBt->setChecked(true);
-    }
-#endif
+    initNavModbus(&navButtonGroup);
+    initNavCanBus(&navButtonGroup);
 
     nav->layout()->addWidget(new QLabel(" "));
 }
 
+template<typename T>
+void initNav(QButtonGroup *bg, const QIcon &icon,
+             QLayout *navLayout, QStackedWidget *sw, const QString &name)
+{
+    QToolButton *bt = new QToolButton();
+    bt->setAutoRaise(true);
+    bt->setIcon(icon);
+    bt->setCheckable(true);
+    bt->setToolButtonStyle(Qt::ToolButtonIconOnly);
+    bt->setToolTip(name);
+    bg->addButton(bt);
+    navLayout->addWidget(bt);
+
+    T *w = new T();
+    w->layout()->setContentsMargins(0, 0, 0, 0);
+    sw->addWidget(w);
+
+    int pageCount = bg->buttons().count();
+    QObject::connect(bt, &QToolButton::clicked, bt, [=](){
+        sw->setCurrentIndex(pageCount - 1);
+        SAKSettings::instance()->setPageIndex(pageCount - 1);
+    });
+
+    if (SAKSettings::instance()->pageIndex() == (pageCount -1)) {
+        bt->setChecked(true);
+        sw->setCurrentIndex(pageCount - 1);
+    }
+}
+
+void SAKMainWindow::initNavModbus(QButtonGroup *bg)
+{
+#ifdef SAK_IMPORT_MODULE_MODBUS
+    QIcon icon(":/resources/icon/IconModbus.svg");
+    ::initNav<SAKModbusUi>(bg,
+                           icon,
+                           ui->verticalLayoutNav,
+                           ui->stackedWidget,
+                           "Modbus");
+#endif
+}
+
+void SAKMainWindow::initNavCanBus(QButtonGroup *bg)
+{
+#ifdef SAK_IMPORT_MODULE_CANBUSUI
+    QIcon icon(":/resources/icon/IconCanBus.svg");
+    ::initNav<SAKCanBusUi>(bg,
+                           icon,
+                           ui->verticalLayoutNav,
+                           ui->stackedWidget,
+                           "CAN Bus");
+#endif
+}
 
 void SAKMainWindow::aboutSoftware()
 {

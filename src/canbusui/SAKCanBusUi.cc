@@ -15,25 +15,19 @@
 #include <QMessageBox>
 #include <QLoggingCategory>
 
+#include "SAKSettings.hh"
 #include "SAKCanBusUi.hh"
 #include "ui_SAKCanBusUi.h"
 
 const QLoggingCategory gLC("SAK.CANStudio");
 
-SAKCanBusDebugger::SAKCanBusDebugger(QSettings *settings,
-                           const QString settingsGroup,
-                           QSqlDatabase *sqlDatabase,
-                           QWidget *parent)
+SAKCanBusUi::SAKCanBusUi(QWidget *parent)
     : QWidget{parent}
-    , ui(new Ui::SAKCanBusDebugger)
-    , mSettings(settings)
+    , ui(new Ui::SAKCanBusUi)
     , mDevice(Q_NULLPTR)
 {
-    Q_UNUSED(settingsGroup);
-    Q_UNUSED(sqlDatabase);
     if (!mSettings) {
-        mSettings = new QSettings("SAKCanBusStudio.ini",
-                                  QSettings::IniFormat, this);
+        mSettings = SAKSettings::instance();
     }
 
     ui->setupUi(this);
@@ -44,12 +38,12 @@ SAKCanBusDebugger::SAKCanBusDebugger(QSettings *settings,
     updateUiState(false);
 }
 
-SAKCanBusDebugger::~SAKCanBusDebugger()
+SAKCanBusUi::~SAKCanBusUi()
 {
     delete ui;
 }
 
-void SAKCanBusDebugger::initUi()
+void SAKCanBusUi::initUi()
 {
     initUiSelectPlugin();
     initUiSpecifyConfiguration();
@@ -57,7 +51,7 @@ void SAKCanBusDebugger::initUi()
     initUiSendCanFrame();
 }
 
-void SAKCanBusDebugger::initUiSelectPlugin()
+void SAKCanBusUi::initUiSelectPlugin()
 {
     ui->pluginComboBox->clear();
     ui->pluginComboBox->addItems(QCanBus::instance()->plugins());
@@ -66,14 +60,14 @@ void SAKCanBusDebugger::initUiSelectPlugin()
 
     connect(ui->pluginComboBox,
             QOverload<int>::of(&QComboBox::currentIndexChanged),
-            this, &SAKCanBusDebugger::onPluginChanged);
+            this, &SAKCanBusUi::onPluginChanged);
     connect(ui->disconnectPushButton, &QPushButton::clicked,
-            this, &SAKCanBusDebugger::onDisconnectClicked);
+            this, &SAKCanBusUi::onDisconnectClicked);
     connect(ui->connectPushButton, &QPushButton::clicked,
-            this, &SAKCanBusDebugger::onConnectClicked);
+            this, &SAKCanBusUi::onConnectClicked);
 }
 
-void SAKCanBusDebugger::initUiSpecifyConfiguration()
+void SAKCanBusUi::initUiSpecifyConfiguration()
 {
     setOptions(ui->loopbackComboBox, true);
     setOptions(ui->receivOwnComboBox, true);
@@ -84,29 +78,29 @@ void SAKCanBusDebugger::initUiSpecifyConfiguration()
     ui->interfaceNameComboBox->lineEdit()->setPlaceholderText(tr("can0"));
 
     connect(ui->customConfigurationCheckBox, &QCheckBox::clicked,
-            this, &SAKCanBusDebugger::onCustomConfigurationChanged);
+            this, &SAKCanBusUi::onCustomConfigurationChanged);
     connect(ui->loopbackComboBox,
             QOverload<int>::of(&QComboBox::currentIndexChanged),
-            this, &SAKCanBusDebugger::onLoopbackIndexChanged);
+            this, &SAKCanBusUi::onLoopbackIndexChanged);
     connect(ui->receivOwnComboBox,
             QOverload<int>::of(&QComboBox::currentIndexChanged),
-            this, &SAKCanBusDebugger::onReceiveOwnIndexChanged);
+            this, &SAKCanBusUi::onReceiveOwnIndexChanged);
     connect(ui->canFdComboBox,
             QOverload<int>::of(&QComboBox::currentIndexChanged),
-            this, &SAKCanBusDebugger::onCanFdIndexChanged);
+            this, &SAKCanBusUi::onCanFdIndexChanged);
     connect(ui->bitrateComboBox,
             QOverload<int>::of(&QComboBox::currentIndexChanged),
-            this, &SAKCanBusDebugger::onBitrateChanged);
+            this, &SAKCanBusUi::onBitrateChanged);
     connect(ui->dataBitrateComboBox,
             QOverload<int>::of(&QComboBox::currentIndexChanged),
-            this, &SAKCanBusDebugger::onDataBitrateChanged);
+            this, &SAKCanBusUi::onDataBitrateChanged);
     connect(ui->customBitrateCheckBox, &QCheckBox::clicked,
-            this, &SAKCanBusDebugger::onCustomBitrateChanged);
+            this, &SAKCanBusUi::onCustomBitrateChanged);
     connect(ui->customDataBitrateCheckBox, &QCheckBox::clicked,
-            this, &SAKCanBusDebugger::onCustomDataBitrateChanged);
+            this, &SAKCanBusUi::onCustomDataBitrateChanged);
 }
 
-void SAKCanBusDebugger::initUiCanFrame()
+void SAKCanBusUi::initUiCanFrame()
 {
     ui->frameTypeComboBox->clear();
     ui->frameTypeComboBox->addItem(tr("DataFrame"),
@@ -118,26 +112,26 @@ void SAKCanBusDebugger::initUiCanFrame()
 
     connect(ui->frameTypeComboBox,
             QOverload<int>::of(&QComboBox::currentIndexChanged),
-            this, &SAKCanBusDebugger::onFrameTypeChanged);
+            this, &SAKCanBusUi::onFrameTypeChanged);
     connect(ui->extendedFormatCheckBox, &QCheckBox::clicked,
-            this, &SAKCanBusDebugger::onExtendedFormatChanged);
+            this, &SAKCanBusUi::onExtendedFormatChanged);
     connect(ui->flexibleDataRateCheckBox, &QCheckBox::clicked,
-            this, &SAKCanBusDebugger::onFlexibleDataRateChanged);
+            this, &SAKCanBusUi::onFlexibleDataRateChanged);
     connect(ui->bitrateSwitchCheckBox, &QCheckBox::clicked,
-            this, &SAKCanBusDebugger::onBitrateSwitchChanged);
+            this, &SAKCanBusUi::onBitrateSwitchChanged);
 }
 
-void SAKCanBusDebugger::initUiSendCanFrame()
+void SAKCanBusUi::initUiSendCanFrame()
 {
     const QString inputTips = tr("Hex");
     ui->frameIdComboBox->lineEdit()->setPlaceholderText(inputTips);
     ui->payloadComboBox->lineEdit()->setPlaceholderText(inputTips);
 
     connect(ui->sendPushButton, &QPushButton::clicked,
-            this, &SAKCanBusDebugger::onSendButtonClicked);
+            this, &SAKCanBusUi::onSendButtonClicked);
 }
 
-void SAKCanBusDebugger::initSetting()
+void SAKCanBusUi::initSetting()
 {
     initSettingSelectPlugin();
     initSettingSpecifyConfiguration();
@@ -145,12 +139,12 @@ void SAKCanBusDebugger::initSetting()
     initSettingSendCanFrame();
 }
 
-void SAKCanBusDebugger::initSettingSelectPlugin()
+void SAKCanBusUi::initSettingSelectPlugin()
 {
     setCurrentIndex(ui->pluginComboBox, mSettingKeyCtx.pluginIndex);
 }
 
-void SAKCanBusDebugger::initSettingSpecifyConfiguration()
+void SAKCanBusUi::initSettingSpecifyConfiguration()
 {
     QString name = mSettings->value(mSettingKeyCtx.interfaceName).toString();
     ui->interfaceNameComboBox->lineEdit()->setText(name);
@@ -171,7 +165,7 @@ void SAKCanBusDebugger::initSettingSpecifyConfiguration()
     setCustomConfigurationEnable(enable);
 }
 
-void SAKCanBusDebugger::initSettingCanFrame()
+void SAKCanBusUi::initSettingCanFrame()
 {
     setCurrentIndex(ui->frameTypeComboBox, mSettingKeyCtx.frameTypeIndex);
     setChecked(ui->extendedFormatCheckBox, mSettingKeyCtx.extendedFormat);
@@ -181,18 +175,18 @@ void SAKCanBusDebugger::initSettingCanFrame()
     onFrameTypeChanged();
 }
 
-void SAKCanBusDebugger::initSettingSendCanFrame()
+void SAKCanBusUi::initSettingSendCanFrame()
 {
 
 }
 
-void SAKCanBusDebugger::onPluginChanged()
+void SAKCanBusUi::onPluginChanged()
 {
     int index = ui->pluginComboBox->currentIndex();
     mSettings->setValue(mSettingKeyCtx.pluginIndex, index);
 }
 
-void SAKCanBusDebugger::onDisconnectClicked()
+void SAKCanBusUi::onDisconnectClicked()
 {
     if (mDevice) {
         mDevice->disconnectDevice();
@@ -203,7 +197,7 @@ void SAKCanBusDebugger::onDisconnectClicked()
     updateUiState(false);
 }
 
-void SAKCanBusDebugger::onConnectClicked()
+void SAKCanBusUi::onConnectClicked()
 {
     const QString pluginName = ui->pluginComboBox->currentText();
     const QString interfaceName = ui->interfaceNameComboBox->currentText();
@@ -224,11 +218,11 @@ void SAKCanBusDebugger::onConnectClicked()
     }
 
     connect(mDevice, &QCanBusDevice::errorOccurred,
-            this, &SAKCanBusDebugger::onErrorOccure);
+            this, &SAKCanBusUi::onErrorOccure);
     connect(mDevice, &QCanBusDevice::framesReceived,
-            this, &SAKCanBusDebugger::onFrameReceived);
+            this, &SAKCanBusUi::onFrameReceived);
     connect(mDevice, &QCanBusDevice::framesWritten,
-            this, &SAKCanBusDebugger::onFrameWritten);
+            this, &SAKCanBusUi::onFrameWritten);
 
     auto items = configurationItems();
     for (const ConfigurationItem &item : items) {
@@ -250,39 +244,39 @@ void SAKCanBusDebugger::onConnectClicked()
     updateUiState(true);
 }
 
-void SAKCanBusDebugger::onLoopbackIndexChanged(int index)
+void SAKCanBusUi::onLoopbackIndexChanged(int index)
 {
     mSettings->setValue(mSettingKeyCtx.loopback, index);
 }
 
-void SAKCanBusDebugger::onCustomConfigurationChanged()
+void SAKCanBusUi::onCustomConfigurationChanged()
 {
     bool checked = ui->customConfigurationCheckBox->isChecked();
     setCustomConfigurationEnable(checked);
     mSettings->setValue(mSettingKeyCtx.customConfiguration, checked);
 }
 
-void SAKCanBusDebugger::onReceiveOwnIndexChanged(int index)
+void SAKCanBusUi::onReceiveOwnIndexChanged(int index)
 {
     mSettings->setValue(mSettingKeyCtx.receiveOwn, index);
 }
 
-void SAKCanBusDebugger::onCanFdIndexChanged(int index)
+void SAKCanBusUi::onCanFdIndexChanged(int index)
 {
     mSettings->setValue(mSettingKeyCtx.canFd, index);
 }
 
-void SAKCanBusDebugger::onBitrateChanged(int index)
+void SAKCanBusUi::onBitrateChanged(int index)
 {
     mSettings->setValue(mSettingKeyCtx.bitrate, index);
 }
 
-void SAKCanBusDebugger::onDataBitrateChanged(int index)
+void SAKCanBusUi::onDataBitrateChanged(int index)
 {
     mSettings->setValue(mSettingKeyCtx.dataBitRate, index);
 }
 
-void SAKCanBusDebugger::onCustomBitrateChanged()
+void SAKCanBusUi::onCustomBitrateChanged()
 {
     bool checked = ui->customBitrateCheckBox->isChecked();
     mSettings->setValue(mSettingKeyCtx.customBitRate, checked);
@@ -290,7 +284,7 @@ void SAKCanBusDebugger::onCustomBitrateChanged()
     ui->bitrateComboBox->setEditable(checked);
 }
 
-void SAKCanBusDebugger::onCustomDataBitrateChanged()
+void SAKCanBusUi::onCustomDataBitrateChanged()
 {
     bool checked = ui->customDataBitrateCheckBox->isChecked();
     mSettings->setValue(mSettingKeyCtx.customDataBitRate, checked);
@@ -298,7 +292,7 @@ void SAKCanBusDebugger::onCustomDataBitrateChanged()
     ui->dataBitrateComboBox->setEditable(true);
 }
 
-void SAKCanBusDebugger::onFrameTypeChanged()
+void SAKCanBusUi::onFrameTypeChanged()
 {
     int index = ui->frameTypeComboBox->currentIndex();
     mSettings->setValue(mSettingKeyCtx.frameTypeIndex, index);
@@ -314,13 +308,13 @@ void SAKCanBusDebugger::onFrameTypeChanged()
     }
 }
 
-void SAKCanBusDebugger::onExtendedFormatChanged()
+void SAKCanBusUi::onExtendedFormatChanged()
 {
     bool checked = ui->extendedFormatCheckBox->isChecked();
     mSettings->setValue(mSettingKeyCtx.extendedFormat, checked);
 }
 
-void SAKCanBusDebugger::onFlexibleDataRateChanged()
+void SAKCanBusUi::onFlexibleDataRateChanged()
 {
     bool checked = ui->flexibleDataRateCheckBox->isChecked();
     mSettings->setValue(mSettingKeyCtx.flexibleDataRate, checked);
@@ -328,13 +322,13 @@ void SAKCanBusDebugger::onFlexibleDataRateChanged()
     ui->bitrateSwitchCheckBox->setEnabled(checked);
 }
 
-void SAKCanBusDebugger::onBitrateSwitchChanged()
+void SAKCanBusUi::onBitrateSwitchChanged()
 {
     bool checked = ui->bitrateSwitchCheckBox->isChecked();
     mSettings->setValue(mSettingKeyCtx.bitrateSwitch, checked);
 }
 
-void SAKCanBusDebugger::onSendButtonClicked()
+void SAKCanBusUi::onSendButtonClicked()
 {
     if (!mDevice) {
         QString title = tr("Device is Not Ready");
@@ -377,7 +371,7 @@ void SAKCanBusDebugger::onSendButtonClicked()
     }
 }
 
-void SAKCanBusDebugger::onErrorOccure(QCanBusDevice::CanBusError error)
+void SAKCanBusUi::onErrorOccure(QCanBusDevice::CanBusError error)
 {
     if (mDevice) {
         Q_UNUSED(error);
@@ -386,7 +380,7 @@ void SAKCanBusDebugger::onErrorOccure(QCanBusDevice::CanBusError error)
     }
 }
 
-void SAKCanBusDebugger::onFrameReceived()
+void SAKCanBusUi::onFrameReceived()
 {
     if (!mDevice) {
         return;
@@ -407,12 +401,12 @@ void SAKCanBusDebugger::onFrameReceived()
     }
 }
 
-void SAKCanBusDebugger::onFrameWritten(qint64 framesCount)
+void SAKCanBusUi::onFrameWritten(qint64 framesCount)
 {
     qCInfo(gLC) << framesCount;
 }
 
-void SAKCanBusDebugger::setOptions(QComboBox *cb, bool usingUnspecified)
+void SAKCanBusUi::setOptions(QComboBox *cb, bool usingUnspecified)
 {
     if (cb) {
         cb->clear();
@@ -424,7 +418,7 @@ void SAKCanBusDebugger::setOptions(QComboBox *cb, bool usingUnspecified)
     }
 }
 
-void SAKCanBusDebugger::setCurrentIndex(QComboBox *cb, const QString &key)
+void SAKCanBusUi::setCurrentIndex(QComboBox *cb, const QString &key)
 {
     int index = mSettings->value(key).toInt();
     if (index >= 0 && index <= cb->count() - 1) {
@@ -432,7 +426,7 @@ void SAKCanBusDebugger::setCurrentIndex(QComboBox *cb, const QString &key)
     }
 }
 
-void SAKCanBusDebugger::setChecked(QCheckBox *cb, const QString &key)
+void SAKCanBusUi::setChecked(QCheckBox *cb, const QString &key)
 {
     if (cb) {
         bool checked = mSettings->value(key).toBool();
@@ -440,7 +434,7 @@ void SAKCanBusDebugger::setChecked(QCheckBox *cb, const QString &key)
     }
 }
 
-void SAKCanBusDebugger::setCustomConfigurationEnable(bool enable)
+void SAKCanBusUi::setCustomConfigurationEnable(bool enable)
 {
     ui->errorFilterComboBox->setEnabled(enable);
     ui->loopbackComboBox->setEnabled(enable);
@@ -452,7 +446,7 @@ void SAKCanBusDebugger::setCustomConfigurationEnable(bool enable)
     ui->customDataBitrateCheckBox->setEnabled(enable);
 }
 
-void SAKCanBusDebugger::outputMessage(const QString &msg)
+void SAKCanBusUi::outputMessage(const QString &msg)
 {
     QString datetimeString =
 #if 0
@@ -467,7 +461,7 @@ void SAKCanBusDebugger::outputMessage(const QString &msg)
     ui->textBrowser->append(cookedMsg);
 }
 
-void SAKCanBusDebugger::updateUiState(bool connected)
+void SAKCanBusUi::updateUiState(bool connected)
 {
     ui->connectPushButton->setEnabled(!connected);
     ui->disconnectPushButton->setEnabled(connected);
@@ -482,9 +476,9 @@ void SAKCanBusDebugger::updateUiState(bool connected)
     }
 }
 
-QVector<SAKCanBusDebugger::ConfigurationItem> SAKCanBusDebugger::configurationItems()
+QVector<SAKCanBusUi::ConfigurationItem> SAKCanBusUi::configurationItems()
 {
-    QVector<SAKCanBusDebugger::ConfigurationItem> items;
+    QVector<SAKCanBusUi::ConfigurationItem> items;
     ConfigurationItem item;
 
     QString errorFilter = ui->errorFilterComboBox->currentText();
@@ -521,7 +515,7 @@ QVector<SAKCanBusDebugger::ConfigurationItem> SAKCanBusDebugger::configurationIt
     return items;
 }
 
-void SAKCanBusDebugger::setBitRates(QComboBox *cb, bool isFlexibleDataRateEnable)
+void SAKCanBusUi::setBitRates(QComboBox *cb, bool isFlexibleDataRateEnable)
 {
     if (!cb) {
         return;

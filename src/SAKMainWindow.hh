@@ -41,12 +41,8 @@ protected:
 
 private:
     struct SettingsKeyContext {
-        const QString currentPageIndex{"currentPageIndex"};
         const QString exitToSystemTray{"exitToSystemTray"};
     } mSettingsKey;
-
-    QActionGroup *mLanguagesActionGroup;
-    QButtonGroup *mNavBtGroup{nullptr};
 
 private:
     void initMenuBar();
@@ -66,6 +62,8 @@ private:
     void initLinksMenu();
     void initDemoMenu();
     void initNav();
+    void initNavModbus(QButtonGroup *bg);
+    void initNavCanBus(QButtonGroup *bg);
 
     void aboutSoftware();
     void clearConfiguration();

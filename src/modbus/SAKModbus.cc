@@ -15,3 +15,8 @@ SAKModbus::SAKModbus(QObject *parent)
 {
 
 }
+
+SAKModbus::~SAKModbus()
+{
+
+}

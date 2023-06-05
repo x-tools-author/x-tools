@@ -106,6 +106,17 @@ void SAKSettings::setClearSettings(bool clear)
     emit clearSettingsChanged();
 }
 
+int SAKSettings::pageIndex()
+{
+    return value(mSettingsKey.pageIndex).toInt();
+}
+
+void SAKSettings::setPageIndex(int index)
+{
+    setValue(mSettingsKey.pageIndex, index);
+    emit pageIndexChanged();
+}
+
 QVariant SAKSettings::value(const QString &key,
                             const QVariant &defaultValue) const
 {

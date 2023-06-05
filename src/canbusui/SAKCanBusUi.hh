@@ -7,8 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#ifndef SAKCANBUSDEBUGGER_HH
-#define SAKCANBUSDEBUGGER_HH
+#ifndef SAKCANBUSUI_HH
+#define SAKCANBUSUI_HH
 
 #include <QWidget>
 #include <QVector>
@@ -19,20 +19,16 @@
 #include <QCanBusDevice>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class SAKCanBusDebugger; }
+namespace Ui { class SAKCanBusUi; }
 QT_END_NAMESPACE
 
-class QSqlDatabase;
-class SAKCanBusDebugger : public QWidget
+class SAKCanBusUi : public QWidget
 {
     Q_OBJECT
     typedef QPair<QCanBusDevice::ConfigurationKey, QVariant> ConfigurationItem;
 public:
-    Q_INVOKABLE SAKCanBusDebugger(QSettings *settings,
-                             const QString settingsGroup = QString(),
-                             QSqlDatabase *sqlDatabase = Q_NULLPTR,
-                             QWidget *parent = Q_NULLPTR);
-    ~SAKCanBusDebugger();
+    Q_INVOKABLE SAKCanBusUi(QWidget *parent = Q_NULLPTR);
+    ~SAKCanBusUi();
 private:
     struct {
         const QString pluginIndex = "CANStudio/pluginIndex";
@@ -53,7 +49,7 @@ private:
         const QString bitrateSwitch = "CANStudio/bitrateSwitch";
     } mSettingKeyCtx;
 private:
-    Ui::SAKCanBusDebugger *ui;
+    Ui::SAKCanBusUi *ui;
     QSettings *mSettings;
     QCanBusDevice *mDevice;
 private:
@@ -109,4 +105,4 @@ private:
     QVector<ConfigurationItem> configurationItems();
 };
 
-#endif // SAKCANBUSDEBUGGER_H
+#endif // SAKCANBUSUI_HH

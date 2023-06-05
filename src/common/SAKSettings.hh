@@ -20,6 +20,7 @@ class SAKSettings : public QSettings
     Q_PROPERTY(int hdpiPolicy READ hdpiPolicy WRITE setHdpiPolicy NOTIFY hdpiPolicyChanged)
     Q_PROPERTY(int uiType READ uiType WRITE setUiType NOTIFY uiTypeChanged)
     Q_PROPERTY(bool clearSettings READ clearSettings WRITE setClearSettings NOTIFY clearSettingsChanged)
+    Q_PROPERTY(int pageIndex READ pageIndex WRITE setPageIndex NOTIFY pageIndexChanged)
 public:
     enum UiType {
         UiTypeWidget,
@@ -48,10 +49,14 @@ public:
     bool clearSettings();
     void setClearSettings(bool clear);
 
+    int pageIndex();
+    void setPageIndex(int index);
+
 signals:
     void hdpiPolicyChanged();
     void uiTypeChanged();
     void clearSettingsChanged();
+    void pageIndexChanged();
 
 public:
     Q_INVOKABLE QVariant value(const QString &key,
@@ -66,6 +71,7 @@ private:
         const QString appStyle{"appStyle"};
         const QString language{"language"};
         const QString clearSettings{"clearSettings"};
+        const QString pageIndex{"pageIndex"};
     } mSettingsKey;
 
     QLoggingCategory mLoggingCategory{"SAK.Settings"};

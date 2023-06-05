@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SAKCanBusDebugger</class>
- <widget class="QWidget" name="SAKCanBusDebugger">
+ <class>SAKCanBusUi</class>
+ <widget class="QWidget" name="SAKCanBusUi">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>691</width>
-    <height>443</height>
+    <height>634</height>
    </rect>
   </property>
   <property name="windowTitle">
