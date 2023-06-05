@@ -50,8 +50,8 @@ private:
     } mSettingKeyCtx;
 private:
     Ui::SAKCanBusUi *ui;
-    QSettings *mSettings;
-    QCanBusDevice *mDevice;
+    QSettings *mSettings{nullptr};
+    QCanBusDevice *mDevice{nullptr};
 private:
     void initUi();
     void initUiSelectPlugin();
