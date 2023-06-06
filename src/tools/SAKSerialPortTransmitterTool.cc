@@ -38,7 +38,7 @@ QVariant SAKSerialPortTransmitterTool::data(const QModelIndex &index,
 
 bool SAKSerialPortTransmitterTool::setData(const QModelIndex &index,
                                            const QVariant &value,
-                                           int role = Qt::EditRole)
+                                           int role)
 {
     return 0;
 }

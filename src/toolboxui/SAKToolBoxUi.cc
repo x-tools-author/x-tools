@@ -554,9 +554,14 @@ void SAKToolBoxUi::initTools()
                                  settingsGroup() + "/prestorer");
 
     mTcpTransmitterToolUi = new SAKTcpTransmitterToolUi(this);
-    mUdpTransmitterToolUi = new SAKUdpTransmitterToolUi{this};
+    mUdpTransmitterToolUi = new SAKUdpTransmitterToolUi(this);
     mWebSocketTransmitterToolUi = new SAKWebSocketTransmitterToolUi(this);
     mSerialPortTransmitterToolUi = new SAKSerialPortTransmitterToolUi(this);
+
+    mTcpTransmitterToolUi->layout()->setContentsMargins(9, 9, 9, 9);
+    mUdpTransmitterToolUi->layout()->setContentsMargins(9, 9, 9, 9);
+    mWebSocketTransmitterToolUi->layout()->setContentsMargins(9, 9, 9, 9);
+    mSerialPortTransmitterToolUi->layout()->setContentsMargins(9, 9, 9, 9);
 
     ui->tabWidgetTransmitter->clear();
     ui->tabWidgetTransmitter->addTab(mTcpTransmitterToolUi, "SerialPort");
