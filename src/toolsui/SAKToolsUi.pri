@@ -13,12 +13,21 @@ HEADERS += \
     $$PWD/SAKResponserToolUi.hh \
     $$PWD/SAKResponserToolUiEditor.hh \
     $$PWD/SAKSerialPortToolUi.hh \
+    $$PWD/SAKSerialPortTransmitterToolUi.hh \
+    $$PWD/SAKSerialPortTransmitterToolUiEditor.hh \
     $$PWD/SAKSocketClientToolUi.hh \
     $$PWD/SAKSocketServerToolUi.hh \
     $$PWD/SAKStatisticianToolUi.hh \
     $$PWD/SAKStorerToolUi.hh \
     $$PWD/SAKTableModelToolUi.hh \
-    $$PWD/SAKVelometerToolUi.hh
+    $$PWD/SAKTcpTransmitterToolUi.hh \
+    $$PWD/SAKTcpTransmitterToolUiEditor.hh \
+    $$PWD/SAKTransmitterToolUi.hh \
+    $$PWD/SAKUdpTransmitterToolUi.hh \
+    $$PWD/SAKUdpTransmitterToolUiEditor.hh \
+    $$PWD/SAKVelometerToolUi.hh \
+    $$PWD/SAKWebSocketTransmitterToolUi.hh \
+    $$PWD/SAKWebSocketTransmitterToolUiEditor.hh
 
 SOURCES += \
     $$PWD/SAKAnalyzerToolUi.cc \
@@ -33,12 +42,21 @@ SOURCES += \
     $$PWD/SAKResponserToolUi.cc \
     $$PWD/SAKResponserToolUiEditor.cc \
     $$PWD/SAKSerialPortToolUi.cc \
+    $$PWD/SAKSerialPortTransmitterToolUi.cc \
+    $$PWD/SAKSerialPortTransmitterToolUiEditor.cc \
     $$PWD/SAKSocketClientToolUi.cc \
     $$PWD/SAKSocketServerToolUi.cc \
     $$PWD/SAKStatisticianToolUi.cc \
     $$PWD/SAKStorerToolUi.cc \
     $$PWD/SAKTableModelToolUi.cc \
-    $$PWD/SAKVelometerToolUi.cc
+    $$PWD/SAKTcpTransmitterToolUi.cc \
+    $$PWD/SAKTcpTransmitterToolUiEditor.cc \
+    $$PWD/SAKTransmitterToolUi.cc \
+    $$PWD/SAKUdpTransmitterToolUi.cc \
+    $$PWD/SAKUdpTransmitterToolUiEditor.cc \
+    $$PWD/SAKVelometerToolUi.cc \
+    $$PWD/SAKWebSocketTransmitterToolUi.cc \
+    $$PWD/SAKWebSocketTransmitterToolUiEditor.cc
 
 FORMS += \
     $$PWD/SAKAnalyzerToolUi.ui \
@@ -48,9 +66,13 @@ FORMS += \
     $$PWD/SAKPrestorerToolUiEditor.ui \
     $$PWD/SAKResponserToolUiEditor.ui \
     $$PWD/SAKSerialPortToolUi.ui \
+    $$PWD/SAKSerialPortTransmitterToolUiEditor.ui \
     $$PWD/SAKSocketClientToolUi.ui \
     $$PWD/SAKSocketServerToolUi.ui \
     $$PWD/SAKStatisticianToolUi.ui \
     $$PWD/SAKStorerToolUi.ui \
     $$PWD/SAKTableModelToolUi.ui \
-    $$PWD/SAKVelometerToolUi.ui
+    $$PWD/SAKTcpTransmitterToolUiEditor.ui \
+    $$PWD/SAKUdpTransmitterToolUiEditor.ui \
+    $$PWD/SAKVelometerToolUi.ui \
+    $$PWD/SAKWebSocketTransmitterToolUiEditor.ui
