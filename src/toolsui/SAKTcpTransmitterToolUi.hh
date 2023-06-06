@@ -11,12 +11,17 @@
 #define SAKTCPTRANSMITTERTOOLUI_HH
 
 #include "SAKTransmitterToolUi.hh"
+#include "SAKTcpTransmitterToolUiEditor.hh"
 
 class SAKTcpTransmitterToolUi : public SAKTransmitterToolUi
 {
     Q_OBJECT
 public:
     SAKTcpTransmitterToolUi(QWidget *parent = nullptr);
+    virtual QDialog *itemEditor() override;
+
+private:
+    SAKTcpTransmitterToolUiEditor *mEditor{nullptr};
 };
 
 #endif // SAKTCPTRANSMITTERTOOLUI_HH

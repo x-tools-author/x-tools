@@ -11,7 +11,7 @@
 #include "ui_SAKTcpTransmitterToolUiEditor.h"
 
 SAKTcpTransmitterToolUiEditor::SAKTcpTransmitterToolUiEditor(QWidget *parent) :
-    QWidget(parent),
+    QDialog(parent),
     ui(new Ui::SAKTcpTransmitterToolUiEditor)
 {
     ui->setupUi(this);

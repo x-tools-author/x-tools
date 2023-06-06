@@ -12,5 +12,10 @@
 SAKUdpTransmitterToolUi::SAKUdpTransmitterToolUi(QWidget *parent)
     : SAKTransmitterToolUi{"SAK.UdpTransmitterToolUi", parent}
 {
+    mEditor = new SAKUdpTransmitterToolUiEditor(this);
+}
 
+QDialog *SAKUdpTransmitterToolUi::itemEditor()
+{
+    return mEditor;
 }

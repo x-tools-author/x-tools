@@ -12,5 +12,10 @@
 SAKWebSocketTransmitterToolUi::SAKWebSocketTransmitterToolUi(QWidget *parent)
     : SAKTransmitterToolUi{"SAK.WebSocketTransmitterToolUi", parent}
 {
+    mEditor= new SAKWebSocketTransmitterToolUiEditor(this);
+}
 
+QDialog *SAKWebSocketTransmitterToolUi::itemEditor()
+{
+    return mEditor;
 }

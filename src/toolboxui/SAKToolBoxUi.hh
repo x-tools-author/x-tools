@@ -29,6 +29,10 @@ class SAKPrestorerToolUi;
 class SAKCommunicationTool;
 class SAKCommunicationToolUi;
 class SAKToolBoxUiParameters;
+class SAKTcpTransmitterToolUi;
+class SAKUdpTransmitterToolUi;
+class SAKWebSocketTransmitterToolUi;
+class SAKSerialPortTransmitterToolUi;
 class SAKToolBoxUi : public QWidget
 {
     Q_OBJECT
@@ -50,7 +54,11 @@ private:
     SAKEmitterToolUi *mEmitterToolUi{nullptr};
     SAKResponserToolUi *mResponserToolUi{nullptr};
     SAKPrestorerToolUi *mPrestorerToolUi{nullptr};
-    const QLoggingCategory mLoggingCategory{"SAK.SAKToolBoxUi"};
+    SAKTcpTransmitterToolUi *mTcpTransmitterToolUi{nullptr};
+    SAKUdpTransmitterToolUi *mUdpTransmitterToolUi{nullptr};
+    SAKWebSocketTransmitterToolUi *mWebSocketTransmitterToolUi{nullptr};
+    SAKSerialPortTransmitterToolUi *mSerialPortTransmitterToolUi{nullptr};
+    QLoggingCategory mLoggingCategory{"SAK.SAKToolBoxUi"};
     QTimer *mCycleSendingTimer{nullptr};
     int mCommunicationToolType;
 

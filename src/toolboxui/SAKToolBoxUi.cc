@@ -31,6 +31,10 @@
 #include "SAKSocketClientToolUi.hh"
 #include "SAKSocketServerToolUi.hh"
 #include "SAKToolBoxUiParameters.hh"
+#include "SAKTcpTransmitterToolUi.hh"
+#include "SAKUdpTransmitterToolUi.hh"
+#include "SAKWebSocketTransmitterToolUi.hh"
+#include "SAKSerialPortTransmitterToolUi.hh"
 
 #include "ui_SAKToolBoxUi.h"
 
@@ -47,12 +51,6 @@ SAKToolBoxUi::SAKToolBoxUi(QWidget *parent)
     mCycleSendingTimer = new QTimer(this);
     connect(mCycleSendingTimer, &QTimer::timeout,
             this, &SAKToolBoxUi::try2send);
-
-    ui->tabWidgetTransmitter->clear();
-    ui->tabWidgetTransmitter->addTab(new QWidget(), "SerialPort");
-    ui->tabWidgetTransmitter->addTab(new QWidget(), "UDP");
-    ui->tabWidgetTransmitter->addTab(new QWidget(), "TCP");
-    ui->tabWidgetTransmitter->addTab(new QWidget(), "WebSocket");
 }
 
 SAKToolBoxUi::~SAKToolBoxUi()
@@ -554,6 +552,17 @@ void SAKToolBoxUi::initTools()
     ui->tabPrestorer->layout()->addWidget(mPrestorerToolUi);
     mPrestorerToolUi->initialize(mToolBox->getPrestorerTool(),
                                  settingsGroup() + "/prestorer");
+
+    mTcpTransmitterToolUi = new SAKTcpTransmitterToolUi(this);
+    mUdpTransmitterToolUi = new SAKUdpTransmitterToolUi{this};
+    mWebSocketTransmitterToolUi = new SAKWebSocketTransmitterToolUi(this);
+    mSerialPortTransmitterToolUi = new SAKSerialPortTransmitterToolUi(this);
+
+    ui->tabWidgetTransmitter->clear();
+    ui->tabWidgetTransmitter->addTab(mTcpTransmitterToolUi, "SerialPort");
+    ui->tabWidgetTransmitter->addTab(mUdpTransmitterToolUi, "UDP");
+    ui->tabWidgetTransmitter->addTab(mWebSocketTransmitterToolUi, "TCP");
+    ui->tabWidgetTransmitter->addTab(mSerialPortTransmitterToolUi, "WebSocket");
 }
 
 void SAKToolBoxUi::onTabWidgetCurrentChanged(int index)

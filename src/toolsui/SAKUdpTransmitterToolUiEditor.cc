@@ -11,7 +11,7 @@
 #include "ui_SAKUdpTransmitterToolUiEditor.h"
 
 SAKUdpTransmitterToolUiEditor::SAKUdpTransmitterToolUiEditor(QWidget *parent)
-    : QWidget(parent)
+    : QDialog(parent)
     , ui(new Ui::SAKUdpTransmitterToolUiEditor)
 {
     ui->setupUi(this);

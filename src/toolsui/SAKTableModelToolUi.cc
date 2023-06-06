@@ -248,8 +248,25 @@ void SAKTableModelToolUi::writeToSettingsFile()
                                       QString::fromLatin1(json.toHex()));
 }
 
+bool SAKTableModelToolUi::isInitialized()
+{
+    if (!mTableModelTool) {
+        QMessageBox::warning(this,
+                             tr("Invalid Parameter"),
+                             tr("mTableModelTool is nullptr,"
+                                " You must called initialize() first"));
+        return false;
+    }
+
+    return true;
+}
+
 void SAKTableModelToolUi::onPushButtonEditClicked()
 {
+    if (!isInitialized()) {
+        return;
+    }
+
     QModelIndex index = currentIndex();
     if (index.isValid()) {
         edit(index);
@@ -259,6 +276,10 @@ void SAKTableModelToolUi::onPushButtonEditClicked()
 
 void SAKTableModelToolUi::onPushButtonClearClicked()
 {
+    if (!isInitialized()) {
+        return;
+    }
+
     int ret = QMessageBox::warning(this,
                                    tr("Clear Data"),
                                    tr("The data will be empty from settings file, "
@@ -272,6 +293,10 @@ void SAKTableModelToolUi::onPushButtonClearClicked()
 
 void SAKTableModelToolUi::onPushButtonDeleteClicked()
 {
+    if (!isInitialized()) {
+        return;
+    }
+
     int ret = QMessageBox::warning(this,
                                    tr("Delete Data"),
                                    tr("The data will be delete from settings file, "
@@ -291,6 +316,10 @@ void SAKTableModelToolUi::onPushButtonDeleteClicked()
 
 void SAKTableModelToolUi::onPushButtonImportClicked()
 {
+    if (!isInitialized()) {
+        return;
+    }
+
     QString fileName = QFileDialog::getOpenFileName(this,
                                                     tr("Import data"),
                                                     ".",
@@ -314,6 +343,10 @@ void SAKTableModelToolUi::onPushButtonImportClicked()
 
 void SAKTableModelToolUi::onPushButtonExportClicked()
 {
+    if (!isInitialized()) {
+        return;
+    }
+
     QString fileName = QFileDialog::getSaveFileName(this,
                                                     tr("Import data"),
                                                     ".",

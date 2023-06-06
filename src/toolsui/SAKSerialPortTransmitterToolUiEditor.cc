@@ -12,7 +12,7 @@
 
 SAKSerialPortTransmitterToolUiEditor::
     SAKSerialPortTransmitterToolUiEditor(QWidget *parent)
-    : QWidget(parent)
+    : QDialog(parent)
     , ui(new Ui::SAKSerialPortTransmitterToolUiEditor)
 {
     ui->setupUi(this);

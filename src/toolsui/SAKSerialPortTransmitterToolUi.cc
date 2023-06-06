@@ -12,5 +12,10 @@
 SAKSerialPortTransmitterToolUi::SAKSerialPortTransmitterToolUi(QWidget *parent)
     : SAKTransmitterToolUi("SAK.SerialPortTransmitterToolUi", parent)
 {
+    mEditor = new SAKSerialPortTransmitterToolUiEditor(this);
+}
 
+QDialog *SAKSerialPortTransmitterToolUi::itemEditor()
+{
+    return mEditor;
 }

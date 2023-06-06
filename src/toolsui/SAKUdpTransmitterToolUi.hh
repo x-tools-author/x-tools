@@ -11,12 +11,17 @@
 #define SAKUDPTRANSMITTERTOOLUI_HH
 
 #include "SAKTransmitterToolUi.hh"
+#include "SAKUdpTransmitterToolUiEditor.hh"
 
 class SAKUdpTransmitterToolUi : public SAKTransmitterToolUi
 {
     Q_OBJECT
 public:
     SAKUdpTransmitterToolUi(QWidget *parent = nullptr);
+    virtual QDialog *itemEditor() override;
+
+private:
+    SAKUdpTransmitterToolUiEditor *mEditor{nullptr};
 };
 
 #endif // SAKUDPTRANSMITTERTOOLUI_HH

@@ -53,11 +53,12 @@ private:
 private:
     QMenu *mMenu{nullptr};
     QString mItemsKey;
-    SAKTableModelTool *mTableModelTool;
+    SAKTableModelTool *mTableModelTool{nullptr};
 
 private:
     QModelIndex currentIndex();
     void writeToSettingsFile();
+    bool isInitialized();
 
 private:
     Ui::SAKTableModelToolUi *ui{nullptr};

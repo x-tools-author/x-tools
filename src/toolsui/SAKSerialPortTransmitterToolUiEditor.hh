@@ -10,13 +10,13 @@
 #ifndef SAKSERIALPORTTRANSMITTERTOOLUIEDITOR_HH
 #define SAKSERIALPORTTRANSMITTERTOOLUIEDITOR_HH
 
-#include <QWidget>
+#include <QDialog>
 
 namespace Ui {
 class SAKSerialPortTransmitterToolUiEditor;
 }
 
-class SAKSerialPortTransmitterToolUiEditor : public QWidget
+class SAKSerialPortTransmitterToolUiEditor : public QDialog
 {
     Q_OBJECT
 

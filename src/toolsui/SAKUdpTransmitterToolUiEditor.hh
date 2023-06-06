@@ -10,13 +10,13 @@
 #ifndef SAKUDPTRANSMITTERTOOLUIEDITOR_HH
 #define SAKUDPTRANSMITTERTOOLUIEDITOR_HH
 
-#include <QWidget>
+#include <QDialog>
 
 namespace Ui {
 class SAKUdpTransmitterToolUiEditor;
 }
 
-class SAKUdpTransmitterToolUiEditor : public QWidget
+class SAKUdpTransmitterToolUiEditor : public QDialog
 {
     Q_OBJECT
 

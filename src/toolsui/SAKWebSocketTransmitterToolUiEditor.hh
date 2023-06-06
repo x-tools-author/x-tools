@@ -10,13 +10,13 @@
 #ifndef SAKWEBSOCKETTRANSMITTERTOOLUIEDITOR_HH
 #define SAKWEBSOCKETTRANSMITTERTOOLUIEDITOR_HH
 
-#include <QWidget>
+#include <QDialog>
 
 namespace Ui {
 class SAKWebSocketTransmitterToolUiEditor;
 }
 
-class SAKWebSocketTransmitterToolUiEditor : public QWidget
+class SAKWebSocketTransmitterToolUiEditor : public QDialog
 {
     Q_OBJECT
 

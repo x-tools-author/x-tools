@@ -11,12 +11,17 @@
 #define SAKWEBSOCKETTRANSMITTERTOOLUI_HH
 
 #include "SAKTransmitterToolUi.hh"
+#include "SAKWebSocketTransmitterToolUiEditor.hh"
 
 class SAKWebSocketTransmitterToolUi : public SAKTransmitterToolUi
 {
     Q_OBJECT
 public:
     SAKWebSocketTransmitterToolUi(QWidget *parent = nullptr);
+    virtual QDialog *itemEditor() override;
+
+private:
+    SAKWebSocketTransmitterToolUiEditor *mEditor{nullptr};
 };
 
 #endif // SAKWEBSOCKETTRANSMITTERTOOLUI_HH

@@ -10,13 +10,13 @@
 #ifndef SAKTCPTRANSMITTERTOOLUIEDITOR_HH
 #define SAKTCPTRANSMITTERTOOLUIEDITOR_HH
 
-#include <QWidget>
+#include <QDialog>
 
 namespace Ui {
 class SAKTcpTransmitterToolUiEditor;
 }
 
-class SAKTcpTransmitterToolUiEditor : public QWidget
+class SAKTcpTransmitterToolUiEditor : public QDialog
 {
     Q_OBJECT
 

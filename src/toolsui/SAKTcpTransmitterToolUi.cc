@@ -12,5 +12,10 @@
 SAKTcpTransmitterToolUi::SAKTcpTransmitterToolUi(QWidget *parent)
     : SAKTransmitterToolUi{"SAK.TcpTransmitterToolUi", parent}
 {
+    mEditor = new SAKTcpTransmitterToolUiEditor(this);
+}
 
+QDialog *SAKTcpTransmitterToolUi::itemEditor()
+{
+    return mEditor;
 }

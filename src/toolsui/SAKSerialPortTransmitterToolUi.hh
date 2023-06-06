@@ -11,12 +11,17 @@
 #define SAKSERIALPORTTRANSMITTERTOOLUI_HH
 
 #include "SAKTransmitterToolUi.hh"
+#include "SAKSerialPortTransmitterToolUiEditor.hh"
 
 class SAKSerialPortTransmitterToolUi : public SAKTransmitterToolUi
 {
     Q_OBJECT
 public:
     SAKSerialPortTransmitterToolUi(QWidget *parent = nullptr);
+    virtual QDialog *itemEditor() override;
+
+private:
+    SAKSerialPortTransmitterToolUiEditor *mEditor;
 };
 
 #endif // SAKSERIALPORTTRANSMITTERTOOLUI_HH

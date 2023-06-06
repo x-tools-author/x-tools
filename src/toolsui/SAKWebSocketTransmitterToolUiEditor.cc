@@ -12,7 +12,7 @@
 
 SAKWebSocketTransmitterToolUiEditor::
     SAKWebSocketTransmitterToolUiEditor(QWidget *parent)
-    : QWidget(parent)
+    : QDialog(parent)
     , ui(new Ui::SAKWebSocketTransmitterToolUiEditor)
 {
     ui->setupUi(this);
