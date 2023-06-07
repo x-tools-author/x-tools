@@ -253,8 +253,8 @@ bool SAKTableModelToolUi::isInitialized()
     if (!mTableModelTool) {
         QMessageBox::warning(this,
                              tr("Invalid Parameter"),
-                             tr("mTableModelTool is nullptr,"
-                                " You must called initialize() first"));
+                             tr("The value of mTableModelTool is nullptr,"
+                                " you must called initialize() first!"));
         return false;
     }
 
@@ -368,6 +368,10 @@ void SAKTableModelToolUi::onPushButtonExportClicked()
 
 void SAKTableModelToolUi::onPushButtonAppendClicked()
 {
+    if (!isInitialized()) {
+        return;
+    }
+
     if (append()) {
         writeToSettingsFile();
     }
