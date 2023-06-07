@@ -560,16 +560,15 @@ void SAKMainWindow::initNav()
             cookedIcon(QIcon(":/resources/icon/IconCanBus.svg")),
             "CAN Bus Studio", new SAKCanBusUi(), tb);
 #endif
+
+
     QLabel *lb = new QLabel(" ");
     tb->addWidget(lb);
     lb->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
-    initNav(&navButtonGroup,
-            cookedIcon(QIcon(":/resources/icon/IconLog.svg")),
-            tr("Log Viewer"), new SAKLogUi(this), tb);
-    initNav(&navButtonGroup,
-            cookedIcon(QIcon(":/resources/icon/IconSettings.svg")),
-            tr("Preferences"), new SAKPreferencesUi(this), tb);
+
+
 #if 1
+    tb->addSeparator();
     bool isTextBesideIcon = SAKSettings::instance()->isTextBesideIcon();
     auto style = isTextBesideIcon ? Qt::ToolButtonTextBesideIcon
                                   : Qt::ToolButtonIconOnly;
@@ -596,7 +595,16 @@ void SAKMainWindow::initNav()
         }
         SAKSettings::instance()->setIsTextBesideIcon(tbt->isChecked());
     });
+    tb->addSeparator();
 #endif
+
+
+    initNav(&navButtonGroup,
+            cookedIcon(QIcon(":/resources/icon/IconLog.svg")),
+            tr("Log Viewer"), new SAKLogUi(this), tb);
+    initNav(&navButtonGroup,
+            cookedIcon(QIcon(":/resources/icon/IconSettings.svg")),
+            tr("Preferences"), new SAKPreferencesUi(this), tb);
 }
 
 void SAKMainWindow::initNav(QButtonGroup *bg, const QIcon &icon,
