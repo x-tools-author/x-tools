@@ -63,7 +63,7 @@ private:
     void initDemoMenu();
     void initNav();
     void initNav(QButtonGroup *bg, const QIcon &icon,
-                 const QString &name, QWidget *page);
+                 const QString &name, QWidget *page, QToolBar *tb);
 
     void aboutSoftware();
     void clearConfiguration();

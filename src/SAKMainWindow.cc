@@ -21,6 +21,7 @@
 #include <QProcess>
 #include <QVariant>
 #include <QSysInfo>
+#include <QToolBar>
 #include <QMetaEnum>
 #include <QSettings>
 #include <QLineEdit>
@@ -529,6 +530,13 @@ QIcon cookedIcon(const QIcon &icon)
 
 void SAKMainWindow::initNav()
 {
+    QToolBar *tb = new QToolBar(this);
+    addToolBar(Qt::LeftToolBarArea, tb);
+    tb->setFloatable(false);
+    tb->setMovable(false);
+    tb->setOrientation(Qt::Vertical);
+    tb->setAllowedAreas(Qt::LeftToolBarArea);
+
     static QButtonGroup navButtonGroup;
     QList<int> types = SAKToolBoxUi::supportedCommuniticationTools();
     for (int i = 0; i < types.count(); i++) {
@@ -537,31 +545,30 @@ void SAKMainWindow::initNav()
         toolBoxUi->initialize(type);
 
         initNav(&navButtonGroup, cookedIcon(toolBoxUi->windowIcon()),
-                toolBoxUi->windowTitle(), toolBoxUi);
+                toolBoxUi->windowTitle(), toolBoxUi, tb);
     }
 
-    auto line = new QToolButton(this);
-    line->setMaximumHeight(2);
-    line->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
-    ui->verticalLayoutNav->addWidget(line);
+    tb->addSeparator();
 
 #ifdef SAK_IMPORT_MODULE_MODBUS
     initNav(&navButtonGroup,
             cookedIcon(QIcon(":/resources/icon/IconModbus.svg")),
-            "Modbus Studio", new SAKModbusUi());
+            "Modbus Studio", new SAKModbusUi(), tb);
 #endif
 #ifdef SAK_IMPORT_MODULE_CANBUSUI
     initNav(&navButtonGroup,
             cookedIcon(QIcon(":/resources/icon/IconCanBus.svg")),
-            "CAN Bus Studio", new SAKCanBusUi());
+            "CAN Bus Studio", new SAKCanBusUi(), tb);
 #endif
-    ui->verticalLayoutNav->addWidget(new QLabel(" "));
+    QLabel *lb = new QLabel(" ");
+    tb->addWidget(lb);
+    lb->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
     initNav(&navButtonGroup,
             cookedIcon(QIcon(":/resources/icon/IconLog.svg")),
-            tr("Log Viewer"), new SAKLogUi(this));
+            tr("Log Viewer"), new SAKLogUi(this), tb);
     initNav(&navButtonGroup,
             cookedIcon(QIcon(":/resources/icon/IconSettings.svg")),
-            tr("Preferences"), new SAKPreferencesUi(this));
+            tr("Preferences"), new SAKPreferencesUi(this), tb);
 #if 1
     bool isTextBesideIcon = SAKSettings::instance()->isTextBesideIcon();
     auto style = isTextBesideIcon ? Qt::ToolButtonTextBesideIcon
@@ -575,7 +582,7 @@ void SAKMainWindow::initNav()
     tbt->setChecked(isTextBesideIcon);
     tbt->setToolButtonStyle(style);
     tbt->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
-    ui->verticalLayoutNav->addWidget(tbt);
+    tb->addWidget(tbt);
     auto bg = &navButtonGroup;
     connect(tbt, &QToolButton::clicked, tbt, [=](){
         auto bts = bg->buttons();
@@ -593,7 +600,7 @@ void SAKMainWindow::initNav()
 }
 
 void SAKMainWindow::initNav(QButtonGroup *bg, const QIcon &icon,
-                            const QString &name, QWidget *page)
+                            const QString &name, QWidget *page, QToolBar *tb)
 {
     bool isTextBesideIcon = SAKSettings::instance()->isTextBesideIcon();
     auto style = isTextBesideIcon ? Qt::ToolButtonTextBesideIcon
@@ -610,7 +617,7 @@ void SAKMainWindow::initNav(QButtonGroup *bg, const QIcon &icon,
     bt->setIconSize(QSize(32, 32));
 #endif
     bg->addButton(bt);
-    ui->verticalLayoutNav->addWidget(bt);
+    tb->addWidget(bt);
 
     if (page->layout()) {
         page->layout()->setContentsMargins(0, 0, 0, 0);
