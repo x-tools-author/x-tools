@@ -43,11 +43,13 @@
 #include <QJsonParseError>
 #include <QDesktopServices>
 
+#include "SAKLogUi.hh"
 #include "SAKSettings.hh"
 #include "SAKToolBoxUi.hh"
 #include "SAKMainWindow.hh"
 #include "SAKTranslator.hh"
 #include "SAKApplication.hh"
+#include "SAKPreferencesUi.hh"
 #include "SAKAssistantsFactory.hh"
 
 #ifdef SAK_IMPORT_MODULE_CANBUSUI
@@ -556,10 +558,10 @@ void SAKMainWindow::initNav()
     ui->verticalLayoutNav->addWidget(new QLabel(" "));
     initNav(&navButtonGroup,
             cookedIcon(QIcon(":/resources/icon/IconLog.svg")),
-            tr("Log Viewer"), new QWidget());
+            tr("Log Viewer"), new SAKLogUi(this));
     initNav(&navButtonGroup,
             cookedIcon(QIcon(":/resources/icon/IconSettings.svg")),
-            tr("Settings"), new QWidget());
+            tr("Preferences"), new SAKPreferencesUi(this));
 #if 1
     bool isTextBesideIcon = SAKSettings::instance()->isTextBesideIcon();
     auto style = isTextBesideIcon ? Qt::ToolButtonTextBesideIcon
@@ -567,7 +569,7 @@ void SAKMainWindow::initNav()
     QToolButton *tbt = new QToolButton(this);
     tbt->setIcon(cookedIcon(QIcon(":/resources/icon/IconListWithIcon.svg")));
     tbt->setCheckable(true);
-    tbt->setText(tr("Hide text"));
+    tbt->setText(tr("Hide Text"));
     tbt->setToolTip(tr("Click to show(hide) nav text"));
     tbt->setAutoRaise(true);
     tbt->setChecked(isTextBesideIcon);
