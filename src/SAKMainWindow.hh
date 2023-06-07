@@ -64,6 +64,7 @@ private:
     void initNav();
     void initNav(QButtonGroup *bg, const QIcon &icon,
                  const QString &name, QWidget *page, QToolBar *tb);
+    void initStatusBar();
 
     void aboutSoftware();
     void clearConfiguration();

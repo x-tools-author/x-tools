@@ -89,6 +89,7 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
 
     initMenuBar();    
     initNav();
+    initStatusBar();
 }
 
 SAKMainWindow::~SAKMainWindow()
@@ -642,6 +643,11 @@ void SAKMainWindow::initNav(QButtonGroup *bg, const QIcon &icon,
         bt->setChecked(true);
         ui->stackedWidget->setCurrentIndex(pageCount - 1);
     }
+}
+
+void SAKMainWindow::initStatusBar()
+{
+    ui->statusbar->showMessage("Hello world", 10*1000);
 }
 
 void SAKMainWindow::aboutSoftware()
