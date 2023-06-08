@@ -309,9 +309,14 @@ void SAKLog::writeLog()
     const QString fileName = mLogPath + "/sak_log_" + dt.toString("yyyy_MM_dd");
     const QString suffix = ".log";
     QFile file(fileName + suffix);
-    if (file.exists() && file.size() >= 1024*1024) {
+    if (QFile::exists(file.fileName()) && (file.size() >= 1024*1024)) {
         QString newName = fileName + dt.toString("_hh_mm_ss") + suffix;
-        QFile::rename(fileName, newName);
+        if (QFile::rename(fileName, newName)) {
+            qCInfo(mLoggingCategory) << file.fileName()
+                                     << "has been rename to:" << newName;
+        } else {
+            qCInfo(mLoggingCategory) << "rename file failed!";
+        }
     }
 
     if (file.open(QFile::WriteOnly|QFile::Text|QFile::Append)) {
@@ -330,7 +335,7 @@ void SAKLog::writeLog()
                 flag = "[F]";
             }
 
-            out << flag << " " << logCtx.category << logCtx.msg << "\n";
+            out << flag << " " << logCtx.category << " " << logCtx.msg << "\n";
 
             int count = mTableModel->rowCount();
             this->mTableModel->insertRows(count, 1);
