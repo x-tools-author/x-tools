@@ -50,22 +50,26 @@ SAKLog::SAKLog(QObject *parent)
 
     mTableModel = new SAKTableModel(this);
     connect(mTableModel, &SAKTableModel::invokeGetRowCount,
-            this, &SAKLog::onInvokeGetRowCount);
+            this, &SAKLog::onInvokeGetRowCount,
+            Qt::DirectConnection);
     connect(mTableModel, &SAKTableModel::invokeGetColumnCount,
-            this, &SAKLog::onInvokeGetColumnCount);
+            this, &SAKLog::onInvokeGetColumnCount,
+            Qt::DirectConnection);
     connect(mTableModel, &SAKTableModel::invokeGetData,
-            this, &SAKLog::onInvokeGetData);
+            this, &SAKLog::onInvokeGetData,
+            Qt::DirectConnection);
     connect(mTableModel, &SAKTableModel::invokeSetData,
-            this, &SAKLog::onInvokeSetData);
+            this, &SAKLog::onInvokeSetData,
+            Qt::DirectConnection);
     connect(mTableModel, &SAKTableModel::invokeInsertRows,
-            this, &SAKLog::onInvokeInsertRows);
+            this, &SAKLog::onInvokeInsertRows,
+            Qt::DirectConnection);
     connect(mTableModel, &SAKTableModel::invokeRemoveRows,
-            this, &SAKLog::onInvokeRemoveRows);
+            this, &SAKLog::onInvokeRemoveRows,
+            Qt::DirectConnection);
     connect(mTableModel, &SAKTableModel::invokeGetHeaderData,
-            this, &SAKLog::onInvokeGetHeaderData);
-
-    connect(this, &SAKLog::messageOutputted,
-            this, &SAKLog::onMessageOutputted);
+            this, &SAKLog::onInvokeGetHeaderData,
+            Qt::DirectConnection);
 }
 
 SAKLog::~SAKLog()
@@ -80,8 +84,10 @@ void SAKLog::messageOutput(QtMsgType type, const QMessageLogContext &context,
                            const QString &msg)
 {
     mLogContextVectorMutex.lock();
+
     LogContext ctx{type, context.category, msg};
     mLogContextVector.append(ctx);
+
     mLogContextVectorMutex.unlock();
 }
 
@@ -127,6 +133,10 @@ void SAKLog::run()
     writeTimer->setInterval(1000);
     writeTimer->setSingleShot(true);
     connect(writeTimer, &QTimer::timeout, writeTimer, [=](){
+#if 0
+        QDateTime dt = QDateTime::currentDateTime();
+        qDebug() << dt.toString("yyyy-MM-dd hh:mm:ss");
+#endif
         writeLog();
         writeTimer->start();
     });
@@ -154,9 +164,9 @@ void SAKLog::run()
 
 void SAKLog::onInvokeGetRowCount(int &count)
 {
-    mLogContextVectorMutex.lock();
-    count = mLogContextVector.count();
-    mLogContextVectorMutex.unlock();
+    mTempMutex.lock();
+    count = mTemp.count();
+    mTempMutex.unlock();
 }
 
 void SAKLog::onInvokeGetColumnCount(int &count)
@@ -168,23 +178,32 @@ void SAKLog::onInvokeGetData(QVariant &data,
                              const QModelIndex &index,
                              int role)
 {
-    Q_UNUSED(role)
+    if (role != Qt::DisplayRole) {
+        return;
+    }
+
     int row = index.row();
-    mLogContextVectorMutex.lock();
-    if (row >= 0 && row < mLogContextVector.count()) {
+    mTempMutex.lock();
+    if (row >= 0 && row < mTemp.count()) {
         int column = index.column();
         if (column >= 0 && column < 3) {
-            auto ctx = mLogContextVector.at(row);
+            auto ctx = mTemp.at(row);
             if (column == 0) {
                 data = ctx.type;
             } else if (column == 1) {
                 data = ctx.category;
             } else if (column == 2) {
                 data = ctx.msg;
+            } else {
+                qWarning(mLoggingCategory) << "Index is invalid(column).!";
             }
+        } else {
+            qWarning(mLoggingCategory) << "Index is invalid(column)!";
         }
+    } else {
+        qWarning(mLoggingCategory) << "Index is invalid(row)!";
     }
-    mLogContextVectorMutex.unlock();
+    mTempMutex.unlock();
 }
 
 void SAKLog::onInvokeSetData(bool &result,
@@ -192,13 +211,13 @@ void SAKLog::onInvokeSetData(bool &result,
                              const QVariant &value,
                              int role)
 {
-    Q_UNUSED(role);
+    Q_UNUSED(role)
     int column = index.column();
     int row = index.row();
     result = true;
-    mLogContextVectorMutex.lock();
-    if (row >= 0 && row <= mLogContextVector.count()) {
-        auto ctx = mLogContextVector.at(row);
+    mTempMutex.lock();
+    if (row >= 0 && row <= mTemp.count()) {
+        auto ctx = mTemp.at(row);
         if (column >= 0 && column < 3) {
             if (column == 0) {
                 ctx.type = QtMsgType(value.toInt());
@@ -209,13 +228,14 @@ void SAKLog::onInvokeSetData(bool &result,
             } else {
                 result = false;
             }
+            mTemp.replace(row, ctx);
         } else {
             result = false;
         }
     } else {
         result = false;
     }
-    mLogContextVectorMutex.unlock();
+    mTempMutex.unlock();
 }
 
 void SAKLog::onInvokeInsertRows(bool &result,
@@ -224,16 +244,22 @@ void SAKLog::onInvokeInsertRows(bool &result,
                                 const QModelIndex &parent)
 {
     Q_UNUSED(parent)
-    mLogContextVectorMutex.lock();
-    for (int i = 0; i < count; i++) {
-        if (row >=0 && row <= mLogContextVector.count()) {
-            mLogContextVector.insert(row, LogContext{});
-        } else {
-            mLogContextVector.append(LogContext{});
+    mTempMutex.lock();
+    if (row >=0 && row <= mTemp.count()) {
+        for (int i = 0; i < count; i++) {
+            mTemp.insert(row, LogContext{});
+        }
+    } else {
+        for (int i = 0; i < count; i++) {
+            mTemp.append(LogContext{});
         }
     }
-    mLogContextVectorMutex.unlock();
 
+    while (mTemp.count() > 10240) {
+        mTemp.removeFirst();
+    }
+
+    mTempMutex.unlock();
     result = true;
 }
 
@@ -243,10 +269,9 @@ void SAKLog::onInvokeRemoveRows(bool &result,
                                 const QModelIndex &parent)
 {
     Q_UNUSED(parent)
-    mLogContextVectorMutex.lock();
-    mLogContextVector.remove(row, count);
-    mLogContextVectorMutex.unlock();
-
+    mTempMutex.lock();
+    mTemp.remove(row, count);
+    mTempMutex.unlock();
     result = true;
 }
 
@@ -255,8 +280,11 @@ void SAKLog::onInvokeGetHeaderData(QVariant &data,
                                    Qt::Orientation orientation,
                                    int role)
 {
-    Q_UNUSED(role)
-    Q_UNUSED(orientation)
+    if (role != Qt::DisplayRole || orientation != Qt::Horizontal) {
+        data = QVariant();
+        return;
+    }
+
     if (section == 0) {
         data = tr("Message Type");
     } else if (section == 1) {
@@ -269,8 +297,8 @@ void SAKLog::onInvokeGetHeaderData(QVariant &data,
 void SAKLog::writeLog()
 {
     mLogContextVectorMutex.lock();
-    QVector<LogContext> logCtxVector = mLogContextVector;
-    mLogContextVector.clear();
+    QVector<LogContext> logCtxVector = this->mLogContextVector;
+    this->mLogContextVector.clear();
     mLogContextVectorMutex.unlock();
 
     if (logCtxVector.isEmpty()) {
@@ -303,7 +331,15 @@ void SAKLog::writeLog()
             }
 
             out << flag << " " << logCtx.category << logCtx.msg << "\n";
-            emit messageOutputted(logCtx.type, logCtx.category, logCtx.msg);
+
+            int count = mTableModel->rowCount();
+            this->mTableModel->insertRows(count, 1);
+            QModelIndex index = mTableModel->index(count, 0);
+            this->mTableModel->setData(index, logCtx.type);
+            index = mTableModel->index(count, 1);
+            this->mTableModel->setData(index, logCtx.category);
+            index = mTableModel->index(count, 2);
+            this->mTableModel->setData(index, logCtx.msg);
         }
 
         file.close();
@@ -327,22 +363,4 @@ void SAKLog::clearLog()
             qCInfo(mLoggingCategory) << "Remmove log file:" << info.fileName();
         }
     }
-}
-
-void SAKLog::onMessageOutputted(int type,
-                                const QString &category,
-                                const QString &msg)
-{
-    if (!msg.isEmpty()) {
-        return;
-    }
-
-    mTableModel->insertRows(-1, 1);
-
-    auto index = mTableModel->index(-1, 0);
-    mTableModel->setData(index, type);
-    index = mTableModel->index(-1, 1);
-    mTableModel->setData(index, category);
-    index = mTableModel->index(-1, 2);
-    mTableModel->setData(index, msg);
 }

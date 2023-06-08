@@ -38,8 +38,6 @@ public:
 signals:
     void fileNameChanged();
     void logLifeCycleChanged();
-    void messageOutputted(int type, const QString &category,
-                          const QString &msg);
 
 protected:
     virtual void run() override;
@@ -53,6 +51,9 @@ private:
     static QVector<LogContext> mLogContextVector;
     static QMutex mLogContextVectorMutex;
 
+    QVector<LogContext> mTemp;
+    QMutex mTempMutex;
+
 private:
     struct {
         const QString logFileLifeCycle{"logFileLifeCycle"};//(days)
@@ -62,7 +63,7 @@ private:
     qint64 mLogLifeCycle;
     SAKTableModel *mTableModel{nullptr};
 
-private:
+private slots:
     void onInvokeGetRowCount(int &count);
     void onInvokeGetColumnCount(int &count);
     void onInvokeGetData(QVariant &data,
@@ -88,9 +89,6 @@ private:
 private:
     void writeLog();
     void clearLog();
-    void onMessageOutputted(int type,
-                            const QString &category,
-                            const QString &msg);
 };
 
 #endif // SAKLOG_HH

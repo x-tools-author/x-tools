@@ -23,6 +23,7 @@ SAKLogUi::SAKLogUi(QWidget *parent) :
 
     tableView->setHorizontalHeader(headerView);
     tableView->setModel(tableModel);
+    tableView->setAlternatingRowColors(true);
 
     headerViewModel->setColumnCount(headers.count());
     headerViewModel->setHorizontalHeaderLabels(headers);
