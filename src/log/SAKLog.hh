@@ -86,6 +86,9 @@ private:
 private:
     void writeLog();
     void clearLog();
+    void messageOutputInner(QtMsgType type,
+                            const QMessageLogContext &context,
+                            const QString &msg);
 };
 
 #endif // SAKLOG_HH

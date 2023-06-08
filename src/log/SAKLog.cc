@@ -76,16 +76,7 @@ SAKLog::~SAKLog()
 void SAKLog::messageOutput(QtMsgType type, const QMessageLogContext &context,
                            const QString &msg)
 {
-    Q_UNUSED(context)
-
-//    mTableModel->insertRows(-1, 1);
-
-//    auto index = mTableModel->index(-1, 0);
-//    mTableModel->setData(index, type);
-//    index = mTableModel->index(-1, 1);
-//    mTableModel->setData(index, context.category);
-//    index = mTableModel->index(-1, 2);
-//    mTableModel->setData(index, msg);
+    //SAKLog::instance()->messageOutputInner(type, context, msg);
 }
 
 SAKLog *SAKLog::instance()
@@ -329,4 +320,18 @@ void SAKLog::clearLog()
             qCInfo(mLoggingCategory) << "Remmove log file:" << info.fileName();
         }
     }
+}
+
+void SAKLog::messageOutputInner(QtMsgType type,
+                                const QMessageLogContext &context,
+                                const QString &msg)
+{
+//    mTableModel->insertRows(-1, 1);
+
+//    auto index = mTableModel->index(-1, 0);
+//    mTableModel->setData(index, type);
+//    index = mTableModel->index(-1, 1);
+//    mTableModel->setData(index, context.category);
+//    index = mTableModel->index(-1, 2);
+//    mTableModel->setData(index, msg);
 }
