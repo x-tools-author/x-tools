@@ -10,6 +10,7 @@
 #include <QFile>
 #include <QLoggingCategory>
 
+#include "SAKLog.hh"
 #include "SAKSettings.hh"
 #include "SAKApplication.hh"
 
@@ -19,6 +20,10 @@
 
 int main(int argc, char *argv[])
 {
+#ifdef QT_DEBUG
+    qInstallMessageHandler(SAKLog::messageOutput);
+#endif
+
     // Initialize some information about application.
     QCoreApplication::setOrganizationName(QString("Qsaker"));
     QCoreApplication::setOrganizationDomain(QString("IT"));
@@ -57,10 +62,12 @@ int main(int argc, char *argv[])
         }
 
         SAKApplication app(argc, argv);
+        SAKLog::instance()->start();
         return app.exec();
     } else {
 #if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
         SAKGuiApplication app(argc, argv);
+        SAKLog::instance()->start();
         return app.exec();
 #else
         SAKSettings::instance()->setUiType(SAKSettings::UiTypeWidget);

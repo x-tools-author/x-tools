@@ -10,34 +10,55 @@
 #ifndef SAKLOG_HH
 #define SAKLOG_HH
 
+#include <QMutex>
 #include <QThread>
+#include <QtGlobal>
 #include <QLoggingCategory>
 
 class SAKLog : public QThread
 {
     Q_OBJECT
-    Q_PROPERTY(QString fileName READ fileName WRITE setFileName NOTIFY fileNameChanged)
+    Q_PROPERTY(qint64 logLifeCycle READ logLifeCycle WRITE setLogLifeCycle NOTIFY logLifeCycleChanged)
 private:
     explicit SAKLog(QObject *parent = nullptr);
-
-    QString fileName();
-    void setFileName(const QString &name);
 
 public:
     ~SAKLog();
     static SAKLog *instance();
+    qint64 logLifeCycle();
+    void setLogLifeCycle(qint64 t);
+
+    static void messageOutput(QtMsgType type,
+                              const QMessageLogContext &context,
+                              const QString &msg);
 
 signals:
     void fileNameChanged();
+    void logLifeCycleChanged();
 
 protected:
     virtual void run() override;
 
 private:
+    struct LogContext {
+        QtMsgType type;
+        QString category;
+        QString msg;
+    };
+    static QVector<LogContext> mLogContextVector;
+    static QMutex mLogContextVectorMutex;
+
+private:
     struct {
-        const QString fileNmae{"fileNmae"};
+        const QString logFileLifeCycle{"logFileLifeCycle"};//(days)
     } mSettingsKey;
     const QLoggingCategory mLoggingCategory{"SAK.Log"};
+    QString mLogPath;
+    qint64 mLogLifeCycle;
+
+private:
+    void writeLog();
+    void clearLog();
 };
 
 #endif // SAKLOG_HH
