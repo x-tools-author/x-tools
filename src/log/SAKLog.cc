@@ -76,7 +76,14 @@ SAKLog::~SAKLog()
 void SAKLog::messageOutput(QtMsgType type, const QMessageLogContext &context,
                            const QString &msg)
 {
-    //SAKLog::instance()->messageOutputInner(type, context, msg);
+#if 0
+    SAKLog::instance()->messageOutputInner(type, context, msg);
+#else
+    mLogContextVectorMutex.lock();
+    LogContext ctx{type, context.category, msg};
+    mLogContextVector.append(ctx);
+    mLogContextVectorMutex.unlock();
+#endif
 }
 
 SAKLog *SAKLog::instance()
