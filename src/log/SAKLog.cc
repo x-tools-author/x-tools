@@ -63,6 +63,9 @@ SAKLog::SAKLog(QObject *parent)
             this, &SAKLog::onInvokeRemoveRows);
     connect(mTableModel, &SAKTableModel::invokeGetHeaderData,
             this, &SAKLog::onInvokeGetHeaderData);
+
+    connect(this, &SAKLog::messageOutputted,
+            this, &SAKLog::onMessageOutputted);
 }
 
 SAKLog::~SAKLog()
@@ -76,14 +79,10 @@ SAKLog::~SAKLog()
 void SAKLog::messageOutput(QtMsgType type, const QMessageLogContext &context,
                            const QString &msg)
 {
-#if 0
-    SAKLog::instance()->messageOutputInner(type, context, msg);
-#else
     mLogContextVectorMutex.lock();
     LogContext ctx{type, context.category, msg};
     mLogContextVector.append(ctx);
     mLogContextVectorMutex.unlock();
-#endif
 }
 
 SAKLog *SAKLog::instance()
@@ -304,6 +303,7 @@ void SAKLog::writeLog()
             }
 
             out << flag << " " << logCtx.category << logCtx.msg << "\n";
+            emit messageOutputted(logCtx.type, logCtx.category, logCtx.msg);
         }
 
         file.close();
@@ -329,16 +329,20 @@ void SAKLog::clearLog()
     }
 }
 
-void SAKLog::messageOutputInner(QtMsgType type,
-                                const QMessageLogContext &context,
+void SAKLog::onMessageOutputted(int type,
+                                const QString &category,
                                 const QString &msg)
 {
-//    mTableModel->insertRows(-1, 1);
+    if (!msg.isEmpty()) {
+        return;
+    }
 
-//    auto index = mTableModel->index(-1, 0);
-//    mTableModel->setData(index, type);
-//    index = mTableModel->index(-1, 1);
-//    mTableModel->setData(index, context.category);
-//    index = mTableModel->index(-1, 2);
-//    mTableModel->setData(index, msg);
+    mTableModel->insertRows(-1, 1);
+
+    auto index = mTableModel->index(-1, 0);
+    mTableModel->setData(index, type);
+    index = mTableModel->index(-1, 1);
+    mTableModel->setData(index, category);
+    index = mTableModel->index(-1, 2);
+    mTableModel->setData(index, msg);
 }

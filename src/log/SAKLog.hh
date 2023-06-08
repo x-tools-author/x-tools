@@ -38,6 +38,8 @@ public:
 signals:
     void fileNameChanged();
     void logLifeCycleChanged();
+    void messageOutputted(int type, const QString &category,
+                          const QString &msg);
 
 protected:
     virtual void run() override;
@@ -86,8 +88,8 @@ private:
 private:
     void writeLog();
     void clearLog();
-    void messageOutputInner(QtMsgType type,
-                            const QMessageLogContext &context,
+    void onMessageOutputted(int type,
+                            const QString &category,
                             const QString &msg);
 };
 
