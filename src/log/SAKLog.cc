@@ -47,6 +47,22 @@ SAKLog::SAKLog(QObject *parent)
     }
 
     mLogLifeCycle = logLifeCycle();
+
+    mTableModel = new SAKTableModel(this);
+    connect(mTableModel, &SAKTableModel::invokeGetRowCount,
+            this, &SAKLog::onInvokeGetRowCount);
+    connect(mTableModel, &SAKTableModel::invokeGetColumnCount,
+            this, &SAKLog::onInvokeGetColumnCount);
+    connect(mTableModel, &SAKTableModel::invokeGetData,
+            this, &SAKLog::onInvokeGetData);
+    connect(mTableModel, &SAKTableModel::invokeSetData,
+            this, &SAKLog::onInvokeSetData);
+    connect(mTableModel, &SAKTableModel::invokeInsertRows,
+            this, &SAKLog::onInvokeInsertRows);
+    connect(mTableModel, &SAKTableModel::invokeRemoveRows,
+            this, &SAKLog::onInvokeRemoveRows);
+    connect(mTableModel, &SAKTableModel::invokeGetHeaderData,
+            this, &SAKLog::onInvokeGetHeaderData);
 }
 
 SAKLog::~SAKLog()
@@ -57,20 +73,19 @@ SAKLog::~SAKLog()
     wait();
 }
 
-qint64 logLifeCycle();
-void setLogLifeCycle(qint64 t);
-
 void SAKLog::messageOutput(QtMsgType type, const QMessageLogContext &context,
                            const QString &msg)
 {
     Q_UNUSED(context)
-    LogContext ctx{type, QString(context.category), msg};
-    mLogContextVectorMutex.lock();
-    while (mLogContextVector.count() > 1024) {
-        mLogContextVector.removeFirst();
-    }
-    mLogContextVector.append(ctx);
-    mLogContextVectorMutex.unlock();
+
+//    mTableModel->insertRows(-1, 1);
+
+//    auto index = mTableModel->index(-1, 0);
+//    mTableModel->setData(index, type);
+//    index = mTableModel->index(-1, 1);
+//    mTableModel->setData(index, context.category);
+//    index = mTableModel->index(-1, 2);
+//    mTableModel->setData(index, msg);
 }
 
 SAKLog *SAKLog::instance()
@@ -104,6 +119,11 @@ void SAKLog::setLogLifeCycle(qint64 t)
     SAKSettings::instance()->setValue(key, t);
 }
 
+QAbstractTableModel *SAKLog::tableModel()
+{
+    return mTableModel;
+}
+
 void SAKLog::run()
 {
     QTimer *writeTimer = new QTimer();
@@ -133,6 +153,120 @@ void SAKLog::run()
     clearTimer->stop();
     clearTimer->deleteLater();
     clearTimer = nullptr;
+}
+
+void SAKLog::onInvokeGetRowCount(int &count)
+{
+    mLogContextVectorMutex.lock();
+    count = mLogContextVector.count();
+    mLogContextVectorMutex.unlock();
+}
+
+void SAKLog::onInvokeGetColumnCount(int &count)
+{
+    count = 3;
+}
+
+void SAKLog::onInvokeGetData(QVariant &data,
+                             const QModelIndex &index,
+                             int role)
+{
+    Q_UNUSED(role)
+    int row = index.row();
+    mLogContextVectorMutex.lock();
+    if (row >= 0 && row < mLogContextVector.count()) {
+        int column = index.column();
+        if (column >= 0 && column < 3) {
+            auto ctx = mLogContextVector.at(row);
+            if (column == 0) {
+                data = ctx.type;
+            } else if (column == 1) {
+                data = ctx.category;
+            } else if (column == 2) {
+                data = ctx.msg;
+            }
+        }
+    }
+    mLogContextVectorMutex.unlock();
+}
+
+void SAKLog::onInvokeSetData(bool &result,
+                             const QModelIndex &index,
+                             const QVariant &value,
+                             int role)
+{
+    Q_UNUSED(role);
+    int column = index.column();
+    int row = index.row();
+    result = true;
+    mLogContextVectorMutex.lock();
+    if (row >= 0 && row <= mLogContextVector.count()) {
+        auto ctx = mLogContextVector.at(row);
+        if (column >= 0 && column < 3) {
+            if (column == 0) {
+                ctx.type = QtMsgType(value.toInt());
+            } else if (column == 1) {
+                ctx.category = value.toString();
+            } else if (column == 2) {
+                ctx.msg = value.toString();
+            } else {
+                result = false;
+            }
+        } else {
+            result = false;
+        }
+    } else {
+        result = false;
+    }
+    mLogContextVectorMutex.unlock();
+}
+
+void SAKLog::onInvokeInsertRows(bool &result,
+                                int row,
+                                int count,
+                                const QModelIndex &parent)
+{
+    Q_UNUSED(parent)
+    mLogContextVectorMutex.lock();
+    for (int i = 0; i < count; i++) {
+        if (row >=0 && row <= mLogContextVector.count()) {
+            mLogContextVector.insert(row, LogContext{});
+        } else {
+            mLogContextVector.append(LogContext{});
+        }
+    }
+    mLogContextVectorMutex.unlock();
+
+    result = true;
+}
+
+void SAKLog::onInvokeRemoveRows(bool &result,
+                                int row,
+                                int count,
+                                const QModelIndex &parent)
+{
+    Q_UNUSED(parent)
+    mLogContextVectorMutex.lock();
+    mLogContextVector.remove(row, count);
+    mLogContextVectorMutex.unlock();
+
+    result = true;
+}
+
+void SAKLog::onInvokeGetHeaderData(QVariant &data,
+                                   int section,
+                                   Qt::Orientation orientation,
+                                   int role)
+{
+    Q_UNUSED(role)
+    Q_UNUSED(orientation)
+    if (section == 0) {
+        data = tr("Message Type");
+    } else if (section == 1) {
+        data = tr("Message Category");
+    } else if (section == 2) {
+        data = tr("Message Detail");
+    }
 }
 
 void SAKLog::writeLog()
