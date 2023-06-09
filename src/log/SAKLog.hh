@@ -10,6 +10,7 @@
 #ifndef SAKLOG_HH
 #define SAKLOG_HH
 
+#include <atomic>
 #include <QMutex>
 #include <QThread>
 #include <QtGlobal>
@@ -21,6 +22,8 @@ class SAKLog : public QThread
 {
     Q_OBJECT
     Q_PROPERTY(qint64 logLifeCycle READ logLifeCycle WRITE setLogLifeCycle NOTIFY logLifeCycleChanged)
+    Q_PROPERTY(int logLevel READ logLevel WRITE setLogLevel NOTIFY logLevelChanged)
+    Q_PROPERTY(bool isPaused READ isPaused WRITE setIsPaused NOTIFY isPausedChanged)
 private:
     explicit SAKLog(QObject *parent = nullptr);
 
@@ -29,39 +32,44 @@ public:
     static SAKLog *instance();
     qint64 logLifeCycle();
     void setLogLifeCycle(qint64 t);
+    int logLevel();
+    void setLogLevel(int level);
+    bool isPaused();
+    void setIsPaused(bool paused);
 
     QAbstractTableModel *tableModel();
     static void messageOutput(QtMsgType type,
                               const QMessageLogContext &context,
                               const QString &msg);
+    void clear();
+    QString logPath();
 
-signals:
-    void fileNameChanged();
+signals:    
     void logLifeCycleChanged();
+    void logLevelChanged();
+    void isPausedChanged();
 
 protected:
     virtual void run() override;
 
 private:
     struct LogContext {
-        QtMsgType type;
+        int type;
         QString category;
         QString msg;
     };
     static QVector<LogContext> mLogContextVector;
     static QMutex mLogContextVectorMutex;
-
     QVector<LogContext> mTemp;
     QMutex mTempMutex;
 
 private:
-    struct {
-        const QString logFileLifeCycle{"logFileLifeCycle"};//(days)
-    } mSettingsKey;
     const QLoggingCategory mLoggingCategory{"SAK.Log"};
-    QString mLogPath;
-    qint64 mLogLifeCycle;
     SAKTableModel *mTableModel{nullptr};
+    int mLogLevel;
+    qint64 mLogLifeCycle;
+    std::atomic_bool mIsPaused;
+    const int mMaxTemp;
 
 private slots:
     void onInvokeGetRowCount(int &count);
@@ -89,6 +97,7 @@ private slots:
 private:
     void writeLog();
     void clearLog();
+    QString logTypeFlag(int type);
 };
 
 #endif // SAKLOG_HH

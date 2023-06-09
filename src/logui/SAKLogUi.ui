@@ -27,13 +27,6 @@
       </widget>
      </item>
      <item>
-      <widget class="QCheckBox" name="checkBoxSaveToDisk">
-       <property name="text">
-        <string>Save to disk</string>
-       </property>
-      </widget>
-     </item>
-     <item>
       <widget class="Line" name="line">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
@@ -48,7 +41,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="comboBoxLevel"/>
+      <widget class="SAKComboBox" name="comboBoxLevel"/>
      </item>
      <item>
       <widget class="QLabel" name="label_2">
@@ -58,7 +51,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="comboBoxLifeCycle">
+      <widget class="SAKComboBox" name="comboBoxLifeCycle">
        <item>
         <property name="text">
          <string>1</string>
@@ -125,13 +118,6 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButtonCategory">
-       <property name="text">
-        <string>Category</string>
-       </property>
-      </widget>
-     </item>
-     <item>
       <widget class="QPushButton" name="pushButtonDirectory">
        <property name="text">
         <string>Directory</string>
@@ -149,6 +135,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>SAKComboBox</class>
+   <extends>QComboBox</extends>
+   <header location="global">SAKComboBox.hh</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

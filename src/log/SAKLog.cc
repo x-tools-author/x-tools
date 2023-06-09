@@ -22,17 +22,15 @@
 QVector<SAKLog::LogContext> SAKLog::mLogContextVector;
 QMutex SAKLog::mLogContextVectorMutex;
 SAKLog::SAKLog(QObject *parent)
-    : QThread{parent}
+    : QThread(parent)
+    , mLogLevel(QtDebugMsg)
+    , mLogLifeCycle(30)
+    , mIsPaused(false)
+    , mMaxTemp(10240)
 {
-    QString fileName = SAKSettings::instance()->fileName();
-    QUrl url(fileName);
-    QString path = fileName;
-    mLogPath = path.remove(url.fileName());
-    mLogPath += "log";
-
-    QDir dir(mLogPath);
+    QDir dir(logPath());
     if (!dir.exists()) {
-        if (dir.mkdir(mLogPath)) {
+        if (dir.mkdir(logPath())) {
             qCInfo(mLoggingCategory) << "Create log dir successfully.";
         } else {
             qCInfo(mLoggingCategory) << "Create log dir failed!";
@@ -40,10 +38,6 @@ SAKLog::SAKLog(QObject *parent)
     } else {
         qCInfo(mLoggingCategory) << "The log dir is exists,"
                                     " need not to create.";
-    }
-
-    if (!SAKSettings::instance()->contains(mSettingsKey.logFileLifeCycle)) {
-        setLogLifeCycle(30);
     }
 
     mLogLifeCycle = logLifeCycle();
@@ -91,6 +85,22 @@ void SAKLog::messageOutput(QtMsgType type, const QMessageLogContext &context,
     mLogContextVectorMutex.unlock();
 }
 
+void SAKLog::clear()
+{
+    int count = mTableModel->rowCount();
+    mTableModel->removeRows(0, count);
+}
+
+QString SAKLog::logPath()
+{
+    QString fileName = SAKSettings::instance()->fileName();
+    QUrl url(fileName);
+    QString path = fileName;
+    QString logPath = path.remove(url.fileName());
+    logPath += "log";
+    return logPath;
+}
+
 SAKLog *SAKLog::instance()
 {
     static SAKLog log;
@@ -99,27 +109,47 @@ SAKLog *SAKLog::instance()
 
 qint64 SAKLog::logLifeCycle()
 {
-    const QString key = mSettingsKey.logFileLifeCycle;
-    qint64 ret = SAKSettings::instance()->value(key).toULongLong();
-    if (ret < 1) {
-        ret = 1;
-        qCWarning(mLoggingCategory) << "The life cycle is too short,"
-                                       " it has been set to 1 day.";
-    }
-
-    if (ret > 30) {
-        ret = 30;
-        qCWarning(mLoggingCategory) << "The life cycle is too long,"
-                                       " it has been set to 30 days.";
-    }
-
-    return ret;
+    return mLogLifeCycle;
 }
 
 void SAKLog::setLogLifeCycle(qint64 t)
 {
-    const QString key = mSettingsKey.logFileLifeCycle;
-    SAKSettings::instance()->setValue(key, t);
+    mLogLifeCycle = t;
+    if (mLogLifeCycle < 1) {
+        mLogLifeCycle = 1;
+        qCWarning(mLoggingCategory) << "The life cycle is too short,"
+                                       " it has been set to 1 day.";
+    }
+
+    if (mLogLifeCycle > 30) {
+        mLogLifeCycle = 30;
+        qCWarning(mLoggingCategory) << "The life cycle is too long,"
+                                       " it has been set to 30 days.";
+    }
+
+    emit logLifeCycleChanged();
+}
+
+int SAKLog::logLevel()
+{
+    return mLogLevel;
+}
+
+void SAKLog::setLogLevel(int level)
+{
+    mLogLevel = level;
+    emit logLevelChanged();
+}
+
+bool SAKLog::isPaused()
+{
+    return mIsPaused;
+}
+
+void SAKLog::setIsPaused(bool paused)
+{
+    mIsPaused = paused;
+    emit isPausedChanged();
 }
 
 QAbstractTableModel *SAKLog::tableModel()
@@ -189,7 +219,7 @@ void SAKLog::onInvokeGetData(QVariant &data,
         if (column >= 0 && column < 3) {
             auto ctx = mTemp.at(row);
             if (column == 0) {
-                data = ctx.type;
+                data = logTypeFlag(ctx.type);
             } else if (column == 1) {
                 data = ctx.category;
             } else if (column == 2) {
@@ -255,7 +285,7 @@ void SAKLog::onInvokeInsertRows(bool &result,
         }
     }
 
-    while (mTemp.count() > 10240) {
+    while (mTemp.count() > mMaxTemp) {
         mTemp.removeFirst();
     }
 
@@ -306,7 +336,7 @@ void SAKLog::writeLog()
     }
 
     const QDateTime dt = QDateTime::currentDateTime();
-    const QString fileName = mLogPath + "/sak_log_" + dt.toString("yyyy_MM_dd");
+    const QString fileName = logPath() + "/sak_log_" + dt.toString("yyyy_MM_dd");
     const QString suffix = ".log";
     QFile file(fileName + suffix);
     if (QFile::exists(file.fileName()) && (file.size() >= 1024*1024)) {
@@ -322,29 +352,42 @@ void SAKLog::writeLog()
     if (file.open(QFile::WriteOnly|QFile::Text|QFile::Append)) {
         QTextStream out(&file);
         for (auto &logCtx : logCtxVector) {
-            QString flag = "[U]";
-            if (logCtx.type == QtDebugMsg) {
-                flag = "[D]";
-            } else if (logCtx.type == QtInfoMsg) {
-                flag = "[I]";
-            } else if (logCtx.type == QtWarningMsg) {
-                flag = "[W]";
-            } else if (logCtx.type == QtCriticalMsg) {
-                flag = "[C]";
-            } else if (logCtx.type == QtFatalMsg) {
-                flag = "[F]";
-            }
-
+            QString flag = logTypeFlag(logCtx.type);
             out << flag << " " << logCtx.category << " " << logCtx.msg << "\n";
 
-            int count = mTableModel->rowCount();
-            this->mTableModel->insertRows(count, 1);
-            QModelIndex index = mTableModel->index(count, 0);
-            this->mTableModel->setData(index, logCtx.type);
-            index = mTableModel->index(count, 1);
-            this->mTableModel->setData(index, logCtx.category);
-            index = mTableModel->index(count, 2);
-            this->mTableModel->setData(index, logCtx.msg);
+            if (mLogLevel == -1) {
+                continue;
+            }
+
+            if (mLogLevel == QtInfoMsg) {
+                if (logCtx.type == QtDebugMsg) {
+                    continue;
+                }
+            }
+
+            if (mLogLevel == QtWarningMsg) {
+                if ((logCtx.type == QtDebugMsg) || (logCtx.type == QtInfoMsg)) {
+                    continue;
+                }
+            }
+
+            if (!mIsPaused) {
+                int count = mTableModel->rowCount();
+                this->mTableModel->insertRows(count, 1);
+                QModelIndex index = mTableModel->index(count, 0);
+                this->mTableModel->setData(index, flag);
+                index = mTableModel->index(count, 1);
+                this->mTableModel->setData(index, logCtx.category);
+                index = mTableModel->index(count, 2);
+                this->mTableModel->setData(index, logCtx.msg);
+            } else {
+                mTempMutex.lock();
+                mTemp.append(logCtx);
+                while (mTemp.count() > mMaxTemp) {
+                    mTemp.removeFirst();
+                }
+                mTempMutex.unlock();
+            }
         }
 
         file.close();
@@ -357,7 +400,7 @@ void SAKLog::writeLog()
 
 void SAKLog::clearLog()
 {
-    QDir dir(mLogPath);
+    QDir dir(logPath());
     QFileInfoList infoList = dir.entryInfoList(QDir::NoDotAndDotDot);
     for (auto &info : infoList) {
         qint64 dateTime = info.birthTime().toMSecsSinceEpoch();
@@ -368,4 +411,22 @@ void SAKLog::clearLog()
             qCInfo(mLoggingCategory) << "Remmove log file:" << info.fileName();
         }
     }
+}
+
+QString SAKLog::logTypeFlag(int type)
+{
+    QString flag = "[U]";
+    if (type == QtDebugMsg) {
+        flag = "[D]";
+    } else if (type == QtInfoMsg) {
+        flag = "[I]";
+    } else if (type == QtWarningMsg) {
+        flag = "[W]";
+    } else if (type == QtCriticalMsg) {
+        flag = "[C]";
+    } else if (type == QtFatalMsg) {
+        flag = "[F]";
+    }
+
+    return flag;
 }
