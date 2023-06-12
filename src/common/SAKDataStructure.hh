@@ -70,6 +70,13 @@ public:
         int itemCrcEndIndex;
     };
 
+    enum SAKEnumPalette {
+        PaletteSystem,
+        PaletteLight,
+        PaletteDark
+    };
+    Q_ENUM(SAKEnumPalette)
+
 public:
     static QString affixesName(int affixes);
     static QByteArray affixesData(int affixes);

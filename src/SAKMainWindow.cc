@@ -29,6 +29,7 @@
 #include <QClipboard>
 #include <QJsonArray>
 #include <QScrollBar>
+#include <QFileDialog>
 #include <QCloseEvent>
 #include <QSizePolicy>
 #include <QScrollArea>
@@ -50,6 +51,7 @@
 #include "SAKMainWindow.hh"
 #include "SAKTranslator.hh"
 #include "SAKApplication.hh"
+#include "SAKDataStructure.hh"
 #include "SAKPreferencesUi.hh"
 #include "SAKAssistantsFactory.hh"
 
@@ -63,11 +65,32 @@
 
 #include "ui_SAKMainWindow.h"
 
+QString palettePath()
+{
+    QString fileName = SAKSettings::instance()->fileName();
+    QUrl url(fileName);
+    QString path = fileName;
+    QString logPath = path.remove(url.fileName());
+    logPath += "palette";
+    return logPath;
+}
+
 SAKMainWindow::SAKMainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::SAKMainWindow)
 {
     ui->setupUi(this);
+
+    QDir dir;
+    if (dir.exists(palettePath())) {
+        qCInfo(mLoggingCategory) << "palette path is:" << palettePath();
+    } else {
+        if (dir.mkdir(palettePath())) {
+            qCInfo(mLoggingCategory) << palettePath() << "has been created";
+        } else {
+            qCWarning(mLoggingCategory) << palettePath() << "has been created";
+        }
+    }
 
 #ifdef Q_OS_ANDROID
     setWindowFlags(Qt::FramelessWindowHint);
@@ -99,6 +122,25 @@ SAKMainWindow::~SAKMainWindow()
 
 void SAKMainWindow::initMenuBar()
 {
+    int ret = SAKSettings::instance()->palette();
+    if ((ret == SAKDataStructure::PaletteDark)
+        || (ret == SAKDataStructure::PaletteLight)) {
+        QString fileName = (ret == SAKDataStructure::PaletteLight
+                                ? ":/resources/palette/SAKMenuPaleteLight"
+                                : ":/resources/palette/SAKMenuPaleteDark");
+        QFile file(fileName);
+        if (file.open(QFile::ReadOnly)) {
+            QDataStream out(&file);
+            QPalette p;
+            out >> p;
+            file.close();
+            menuBar()->setPalette(p);
+        } else {
+            qCWarning(mLoggingCategory) << "open palette file error:"
+                                        << file.errorString();
+        }
+    }
+
     initFileMenu();
     initToolMenu();
     initOptionMenu();
@@ -139,6 +181,38 @@ void SAKMainWindow::initFileMenu()
             w->show();
         });
     }
+
+    auto savePalette = [=](const QPalette &p) {
+        auto str = QFileDialog::getSaveFileName(this, tr("Save Palette"),
+                                                "Palete", tr("All (*)"));
+        if (str.isEmpty()) {
+            qCInfo(mLoggingCategory) << "cancle to save the palette";
+        } else {
+            QFile file(str);
+            if (file.open(QFile::WriteOnly)) {
+                QDataStream out(&file);
+                out << p;
+                file.close();
+            } else {
+                qCWarning(mLoggingCategory) << "can not open file:" << file.errorString();
+            }
+        }
+    };
+
+    fileMenu->addSeparator();
+    QAction *menuBarPalete = new QAction(tr("Export Menu Bar Palette"));
+    fileMenu->addAction(menuBarPalete);
+    connect(menuBarPalete, &QAction::triggered, this, [=](){
+        QPalette p = menuBar()->palette();
+        savePalette(p);
+    });
+
+    QAction *appPalette = new QAction(tr("Export Application Palette"));
+    fileMenu->addAction(appPalette);
+    connect(appPalette, &QAction::triggered, this, [=](){
+        QPalette p = qApp->palette();
+        savePalette(p);
+    });
 
     fileMenu->addSeparator();
     QAction *exitAction = new QAction(tr("Exit"), this);
@@ -185,6 +259,7 @@ void SAKMainWindow::initOptionMenu()
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     initOptionMenuHdpiPolicy(optionMenu);
 #endif
+    initOptionMenuPalette(optionMenu);
 }
 
 void SAKMainWindow::initOptionMenuAppStyleMenu(QMenu *optionMenu)
@@ -366,6 +441,47 @@ void SAKMainWindow::initOptionMenuHdpiPolicy(QMenu *optionMenu)
     optionMenu->addMenu(menu);
 }
 #endif
+
+void SAKMainWindow::initOptionMenuPalette(QMenu *optionMenu)
+{
+    static QActionGroup ag(this);
+    QAction *systemAction = new QAction(tr("System"), this);
+    QAction *lightAction = new QAction(tr("Light"), this);
+    QAction *darkAction = new QAction(tr("Dark"), this);
+    QMenu *m = new QMenu(tr("Palette"), optionMenu);
+    optionMenu->addMenu(m);
+    ag.addAction(systemAction);
+    ag.addAction(lightAction);
+    ag.addAction(darkAction);
+
+    systemAction->setCheckable(true);
+    lightAction->setCheckable(true);
+    darkAction->setCheckable(true);
+
+    int ret = SAKSettings::instance()->palette();
+    if (ret == SAKDataStructure::PaletteLight) {
+        lightAction->setChecked(true);
+    } else if (ret == SAKDataStructure::PaletteDark) {
+        darkAction->setChecked(true);
+    }
+
+    m->addAction(systemAction);
+    m->addAction(lightAction);
+    m->addAction(darkAction);
+
+    connect(systemAction, &QAction::triggered, this, [=](){
+        SAKSettings::instance()->setPalette(SAKDataStructure::PaletteSystem);
+        rebootRequestion();
+    });
+    connect(lightAction, &QAction::triggered, this, [=](){
+        SAKSettings::instance()->setPalette(SAKDataStructure::PaletteLight);
+        rebootRequestion();
+    });
+    connect(darkAction, &QAction::triggered, this, [=](){
+        SAKSettings::instance()->setPalette(SAKDataStructure::PaletteDark);
+        rebootRequestion();
+    });
+}
 
 void SAKMainWindow::initLanguageMenu()
 {

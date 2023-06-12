@@ -32,6 +32,7 @@
 #include "SAKTranslator.hh"
 #include "SAKMainWindow.hh"
 #include "SAKApplication.hh"
+#include "SAKDataStructure.hh"
 #include "SAKSystemTrayIcon.hh"
 
 QDate buildDate = QLocale(QLocale::English).toDate(
@@ -51,6 +52,29 @@ SAKApplication::SAKApplication(int argc, char **argv)
     showSplashScreenMessage(tr("Initializing..."));
     mSplashScreen->show();
     processEvents();
+
+    // Palete
+    int ret = SAKSettings::instance()->palette();
+    if ((ret == SAKDataStructure::PaletteDark)
+        || (ret == SAKDataStructure::PaletteLight)) {
+        QString fileName = (ret == SAKDataStructure::PaletteLight
+                                ? ":/resources/palette/SAKMenuPaleteLight"
+                                : ":/resources/palette/SAKMenuPaleteDark");
+        QFile file(fileName);
+        if (file.open(QFile::ReadOnly)) {
+            QDataStream out(&file);
+            QPalette p;
+            out >> p;
+            file.close();
+            setPalette(p);
+            qCInfo(mLoggingCategory) << "current palete:" << fileName;
+        } else {
+            qCWarning(mLoggingCategory) << "open palette file error:"
+                                        << file.errorString();
+        }
+    } else {
+        qCInfo(mLoggingCategory) << "current palete: system";
+    }
 
     // Setup ui language.
     QString language = SAKSettings::instance()->language();

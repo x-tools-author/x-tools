@@ -11,6 +11,7 @@
 #include <QCoreApplication>
 
 #include "SAKSettings.hh"
+#include "SAKDataStructure.hh"
 
 static const QString fileName()
 {
@@ -126,6 +127,24 @@ void SAKSettings::setIsTextBesideIcon(bool is)
 {
     setValue(mSettingsKey.isTextBesideIcon, is);
     emit isTextBesideIconChanged();
+}
+
+int SAKSettings::palette()
+{
+    int ret = value(mSettingsKey.palette).toInt();
+    if ((ret != SAKDataStructure::PaletteSystem)
+        && (ret != SAKDataStructure::PaletteLight)
+        && (ret != SAKDataStructure::PaletteDark)) {
+        ret = SAKDataStructure::PaletteSystem;
+    }
+
+    return ret;
+}
+
+void SAKSettings::setPalette(int p)
+{
+    setValue(mSettingsKey.palette, p);
+    emit paletteChanged();
 }
 
 QVariant SAKSettings::value(const QString &key,

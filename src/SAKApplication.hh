@@ -15,6 +15,7 @@
 #include <QApplication>
 #include <QStyleFactory>
 #include <QSplashScreen>
+#include <QLoggingCategory>
 
 #define sakApp (static_cast<SAKApplication *>(QCoreApplication::instance()))
 
@@ -41,6 +42,7 @@ private:
     QString mLastDataTime;
     QString mSettingsFileName;
     QSplashScreen *mSplashScreen;
+    const QLoggingCategory mLoggingCategory{"SAK.Application"};
 
 signals:
     void activeMainWindow();

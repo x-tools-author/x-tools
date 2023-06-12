@@ -22,6 +22,7 @@
 #include <QTranslator>
 #include <QButtonGroup>
 #include <QStackedWidget>
+#include <QLoggingCategory>
 
 namespace Ui {
     class SAKMainWindow;
@@ -43,6 +44,7 @@ private:
     struct SettingsKeyContext {
         const QString exitToSystemTray{"exitToSystemTray"};
     } mSettingsKey;
+    const QLoggingCategory mLoggingCategory{"SAK.MainWindow"};
 
 private:
     void initMenuBar();
@@ -56,6 +58,7 @@ private:
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     void initOptionMenuHdpiPolicy(QMenu *optionMenu);
 #endif
+    void initOptionMenuPalette(QMenu *optionMenu);
     void initWindowMenu();
     void initLanguageMenu();
     void initHelpMenu();

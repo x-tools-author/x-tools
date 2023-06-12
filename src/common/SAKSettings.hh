@@ -22,6 +22,7 @@ class SAKSettings : public QSettings
     Q_PROPERTY(bool clearSettings READ clearSettings WRITE setClearSettings NOTIFY clearSettingsChanged)
     Q_PROPERTY(int pageIndex READ pageIndex WRITE setPageIndex NOTIFY pageIndexChanged)
     Q_PROPERTY(bool isTextBesideIcon READ isTextBesideIcon WRITE setIsTextBesideIcon NOTIFY isTextBesideIconChanged)
+    Q_PROPERTY(int palette READ palette WRITE setPalette NOTIFY paletteChanged)
 public:
     enum UiType {
         UiTypeWidget,
@@ -56,12 +57,16 @@ public:
     bool isTextBesideIcon();
     void setIsTextBesideIcon(bool is);
 
+    int palette();
+    void setPalette(int p);
+
 signals:
     void hdpiPolicyChanged();
     void uiTypeChanged();
     void clearSettingsChanged();
     void pageIndexChanged();
     void isTextBesideIconChanged();
+    void paletteChanged();
 
 public:
     Q_INVOKABLE QVariant value(const QString &key,
@@ -78,6 +83,7 @@ private:
         const QString clearSettings{"clearSettings"};
         const QString pageIndex{"pageIndex"};
         const QString isTextBesideIcon{"isTextBesideIcon"};
+        const QString palette{"palette"};
     } mSettingsKey;
 
     QLoggingCategory mLoggingCategory{"SAK.Settings"};
