@@ -15,6 +15,16 @@ SAKSerialPortTransmitterToolUi::SAKSerialPortTransmitterToolUi(QWidget *parent)
     mEditor = new SAKSerialPortTransmitterToolUiEditor(this);
 }
 
+void SAKSerialPortTransmitterToolUi::onBaseToolUiInitialized(
+    SAKBaseTool *tool, const QString &settingGroup)
+{
+    SAKTransmitterToolUi::SAKTransmitterToolUi::onBaseToolUiInitialized(tool, settingGroup);
+
+    QList<int> columns;
+    columns << 6;
+    setStretchSections(columns);
+}
+
 QDialog *SAKSerialPortTransmitterToolUi::itemEditor()
 {
     return mEditor;

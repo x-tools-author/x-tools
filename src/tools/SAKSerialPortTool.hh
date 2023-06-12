@@ -18,15 +18,41 @@
 class SAKSerialPortTool : public SAKCommunicationTool
 {
     Q_OBJECT
+    Q_PROPERTY(QString portName READ portName WRITE setPortName NOTIFY portNameChanged FINAL)
+    Q_PROPERTY(int baudRate READ baudRate WRITE setBaudRate NOTIFY baudRateChanged FINAL)
+    Q_PROPERTY(int dataBits READ dataBits WRITE setDataBits NOTIFY dataBitsChanged FINAL)
+    Q_PROPERTY(int stopBits READ stopBits WRITE setStopBits NOTIFY stopBitsChanged FINAL)
+    Q_PROPERTY(int parity READ parity WRITE setParity NOTIFY parityChanged FINAL)
+    Q_PROPERTY(int flowControl READ flowControl WRITE setFlowControl NOTIFY flowControlChanged FINAL)
+
 public:
     SAKSerialPortTool(QObject *parent = Q_NULLPTR);
 
-    Q_INVOKABLE void setPortName(const QString &portName);
-    Q_INVOKABLE void setBaudRate(int baudRate);
-    Q_INVOKABLE void setDataBits(int dataBits);
-    Q_INVOKABLE void setStopBits(int stopBits);
-    Q_INVOKABLE void setParity(int parity);
-    Q_INVOKABLE void setFlowControl(int flowControl);
+    QString portName();
+    void setPortName(const QString &portName);
+
+    int baudRate();
+    void setBaudRate(int baudRate);
+
+    int dataBits();
+    void setDataBits(int dataBits);
+
+    int stopBits();
+    void setStopBits(int stopBits);
+
+    int parity();
+    void setParity(int parity);
+
+    int flowControl();
+    void setFlowControl(int flowControl);
+
+signals:
+    void portNameChanged();
+    void baudRateChanged();
+    void dataBitsChanged();
+    void stopBitsChanged();
+    void parityChanged();
+    void flowControlChanged();
 
 protected:
     virtual bool initialize() final;

@@ -18,6 +18,10 @@ class SAKSerialPortTransmitterToolUi : public SAKTransmitterToolUi
     Q_OBJECT
 public:
     SAKSerialPortTransmitterToolUi(QWidget *parent = nullptr);
+
+protected:
+    virtual void onBaseToolUiInitialized(SAKBaseTool *tool,
+                                         const QString &settingGroup) override;
     virtual QDialog *itemEditor() override;
 
 private:

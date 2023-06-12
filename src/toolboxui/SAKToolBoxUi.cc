@@ -554,9 +554,13 @@ void SAKToolBoxUi::initTools()
                                  settingsGroup() + "/prestorer");
 
     mTcpTransmitterToolUi = new SAKTcpTransmitterToolUi(this);
+
     mUdpTransmitterToolUi = new SAKUdpTransmitterToolUi(this);
     mWebSocketTransmitterToolUi = new SAKWebSocketTransmitterToolUi(this);
     mSerialPortTransmitterToolUi = new SAKSerialPortTransmitterToolUi(this);
+    mSerialPortTransmitterToolUi->initialize(
+        mToolBox->getSerialPortTransmitterTool(),
+        settingsGroup() + "/serialPortTransmitter");
 
     mTcpTransmitterToolUi->layout()->setContentsMargins(9, 9, 9, 9);
     mUdpTransmitterToolUi->layout()->setContentsMargins(9, 9, 9, 9);
@@ -564,10 +568,10 @@ void SAKToolBoxUi::initTools()
     mSerialPortTransmitterToolUi->layout()->setContentsMargins(9, 9, 9, 9);
 
     ui->tabWidgetTransmitter->clear();
-    ui->tabWidgetTransmitter->addTab(mTcpTransmitterToolUi, "SerialPort");
+    ui->tabWidgetTransmitter->addTab(mSerialPortTransmitterToolUi, "SerialPort");
+    ui->tabWidgetTransmitter->addTab(mTcpTransmitterToolUi, "TCP");
     ui->tabWidgetTransmitter->addTab(mUdpTransmitterToolUi, "UDP");
-    ui->tabWidgetTransmitter->addTab(mWebSocketTransmitterToolUi, "TCP");
-    ui->tabWidgetTransmitter->addTab(mSerialPortTransmitterToolUi, "WebSocket");
+    ui->tabWidgetTransmitter->addTab(mWebSocketTransmitterToolUi, "WebSocket");
 }
 
 void SAKToolBoxUi::onTabWidgetCurrentChanged(int index)

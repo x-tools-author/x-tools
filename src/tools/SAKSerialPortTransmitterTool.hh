@@ -10,11 +10,26 @@
 #ifndef SAKSERIALPORTTRANSMITTERTOOL_HH
 #define SAKSERIALPORTTRANSMITTERTOOL_HH
 
+#include <QMutex>
+#include <QVector>
+
+#include "SAKSerialPortTool.hh"
 #include "SAKTransmitterTool.hh"
 
 class SAKSerialPortTransmitterTool : public SAKTransmitterTool
 {
     Q_OBJECT
+public:
+    struct ItemContextKey {
+        const QString enable{"enable"};
+        const QString portName{"portName"};
+        const QString baudRate{"baudRate"};
+        const QString parity{"parity"};
+        const QString stopBits{"stopBits"};
+        const QString dataBits{"dataBits"};
+        const QString flowControl{"flowControl"};
+        const QString description{"description"};
+    };
 public:
     explicit SAKSerialPortTransmitterTool(QObject *parent = nullptr);
 
@@ -40,7 +55,11 @@ protected:
                             = QModelIndex()) override;
     virtual QVariant headerData(int section,
                                 Qt::Orientation orientation,
-                                int role = Qt::DisplayRole) const = 0;
+                                int role = Qt::DisplayRole) const override;
+
+private:
+    QVector<SAKSerialPortTool*> mToolVector;
+    QMutex mToolVectorMutex;
 };
 
 #endif // SAKSERIALPORTTRANSMITTERTOOL_HH

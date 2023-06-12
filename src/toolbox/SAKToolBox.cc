@@ -43,6 +43,8 @@ SAKToolBox::SAKToolBox(QObject *parent)
     mRxStatisticianTool = qobject_cast<SAKStatisticianTool*>(tool);
     tool = createTool(SAKToolFactory::StatistiticianTool);
     mTxStatisticianTool = qobject_cast<SAKStatisticianTool*>(tool);
+    tool = createTool(SAKToolFactory::SerialPortTransmitterTool);
+    mSerialPortTransmitterTool = qobject_cast<SAKSerialPortTransmitterTool*>(tool);
 
     mToolList << mTxMaskerTool
               << mRxMaskerTool
@@ -55,7 +57,8 @@ SAKToolBox::SAKToolBox(QObject *parent)
               << mRxVelometerTool
               << mTxVelometerTool
               << mRxStatisticianTool
-              << mTxStatisticianTool;
+              << mTxStatisticianTool
+              << mSerialPortTransmitterTool;
 }
 
 void SAKToolBox::initialize(int type)

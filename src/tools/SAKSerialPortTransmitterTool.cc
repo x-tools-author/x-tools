@@ -17,49 +17,158 @@ SAKSerialPortTransmitterTool::SAKSerialPortTransmitterTool(QObject *parent)
 
 QVariant SAKSerialPortTransmitterTool::itemContext(int index)
 {
-    return QVariant();
+    QJsonObject obj;
+    ItemContextKey ctx;
+    if (index >= 0 && index < mToolVector.count()) {
+        SAKSerialPortTool *tool = mToolVector.at(index);
+        obj.insert(ctx.baudRate, tool->baudRate());
+        obj.insert(ctx.dataBits, tool->dataBits());
+        obj.insert(ctx.enable, tool->enable());
+        obj.insert(ctx.flowControl, tool->flowControl());
+        obj.insert(ctx.parity, tool->parity());
+        obj.insert(ctx.portName, tool->portName());
+        obj.insert(ctx.stopBits, tool->stopBits());
+    } else {
+        obj.insert(ctx.baudRate, 9600);
+        obj.insert(ctx.dataBits, QSerialPort::Data8);
+        obj.insert(ctx.enable, true);
+        obj.insert(ctx.flowControl, QSerialPort::NoFlowControl);
+        obj.insert(ctx.parity, QSerialPort::NoParity);
+        obj.insert(ctx.portName, "");
+        obj.insert(ctx.stopBits, QSerialPort::OneStop);
+    }
+
+    return obj;
 }
 
 int SAKSerialPortTransmitterTool::rowCount(const QModelIndex &parent) const
 {
-    return 0;
+    Q_UNUSED(parent)
+    int ret = mToolVector.length();
+    return ret;
 }
 
 int SAKSerialPortTransmitterTool::columnCount(const QModelIndex &parent) const
 {
-    return 0;
+    Q_UNUSED(parent)
+    return 7;
 }
 
 QVariant SAKSerialPortTransmitterTool::data(const QModelIndex &index,
                                             int role) const
 {
-    return 0;
+    if (role != Qt::DisplayRole) {
+        return QVariant();
+    }
+
+    auto ret = mToolVector.value(index.row());
+    QString key = headerData(index.column(), Qt::Horizontal).toString();
+    ItemContextKey ctx;
+    if (key == ctx.enable) {
+        return ret->enable();
+    } else if (key == ctx.baudRate) {
+        return ret->baudRate();
+    } else if (key == ctx.dataBits) {
+        return ret->dataBits();
+    } else if (key == ctx.flowControl) {
+        return ret->flowControl();
+    } else if (key == ctx.parity) {
+        return ret->parity();
+    } else if (key == ctx.portName) {
+        return ret->portName();
+    } else if (key == ctx.stopBits) {
+        return ret->stopBits();
+    } else {
+        return false;
+    }
+
+    return true;
 }
 
 bool SAKSerialPortTransmitterTool::setData(const QModelIndex &index,
                                            const QVariant &value,
                                            int role)
 {
-    return 0;
+    if (role != Qt::DisplayRole) {
+        return false;
+    }
+
+    auto ret = mToolVector.value(index.row());
+    QString key = headerData(index.column(), Qt::Horizontal).toString();
+    ItemContextKey ctx;
+    if (key == ctx.enable) {
+        ret->setEnable(value.toBool());
+    } else if (key == ctx.baudRate) {
+        ret->setBaudRate(value.toInt());
+    } else if (key == ctx.dataBits) {
+        ret->setDataBits(value.toInt());
+    } else if (key == ctx.flowControl) {
+        ret->setFlowControl(value.toInt());
+    } else if (key == ctx.parity) {
+        ret->setParity(value.toInt());
+    } else if (key == ctx.portName) {
+        ret->setPortName(value.toString());
+    } else if (key == ctx.stopBits) {
+        ret->setStopBits(value.toInt());
+    } else {
+        return false;
+    }
+
+    return true;
 }
 
 bool SAKSerialPortTransmitterTool::insertRows(int row,
                                               int count,
                                               const QModelIndex &parent)
 {
-    return 0;
+    Q_UNUSED(parent)
+    for (int i = row; i < count; i++) {
+        mToolVectorMutex.lock();
+        auto tool = new SAKSerialPortTool(this);
+        mToolVector.insert(i, tool);
+        mToolVectorMutex.unlock();
+    }
+
+    return true;
 }
 
 bool SAKSerialPortTransmitterTool::removeRows(int row,
                                               int count,
                                               const QModelIndex &parent)
 {
-    return 0;
+    Q_UNUSED(parent)
+    mToolVector.remove(row, count);
+    return true;
 }
 
 QVariant SAKSerialPortTransmitterTool::headerData(int section,
                                                   Qt::Orientation orientation,
                                                   int role) const
 {
-    return 0;
+    if (orientation == Qt::Vertical) {
+        return QVariant();
+    }
+
+    if (role != Qt::DisplayRole) {
+        return QVariant();
+    }
+
+    ItemContextKey ctx;
+    if (section == 0) {
+        return ctx.enable;
+    } else if (section == 1) {
+        return ctx.portName;
+    } else if (section == 2) {
+        return ctx.baudRate;
+    } else if (section == 3) {
+        return ctx.dataBits;
+    } else if (section == 4) {
+        return ctx.stopBits;
+    } else if (section == 5) {
+        return ctx.parity;
+    } else if (section == 6) {
+        return ctx.flowControl;
+    } else {
+        return QVariant("Unknown");
+    }
 }

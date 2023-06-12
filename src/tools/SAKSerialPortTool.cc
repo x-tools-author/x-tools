@@ -15,9 +15,19 @@ SAKSerialPortTool::SAKSerialPortTool(QObject *parent)
 
 }
 
+QString SAKSerialPortTool::portName()
+{
+    return mParameters.portName;
+}
+
 void SAKSerialPortTool::setPortName(const QString &portName)
 {
     mParameters.portName = portName;
+}
+
+int SAKSerialPortTool::baudRate()
+{
+    return mParameters.baudRate;
 }
 
 void SAKSerialPortTool::setBaudRate(int baudRate)
@@ -25,9 +35,19 @@ void SAKSerialPortTool::setBaudRate(int baudRate)
     mParameters.baudRate = baudRate;
 }
 
+int SAKSerialPortTool::dataBits()
+{
+    return mParameters.dataBits;
+}
+
 void SAKSerialPortTool::setDataBits(int dataBits)
 {
     mParameters.dataBits = dataBits;
+}
+
+int SAKSerialPortTool::stopBits()
+{
+    return mParameters.stopBits;
 }
 
 void SAKSerialPortTool::setStopBits(int stopBits)
@@ -35,9 +55,19 @@ void SAKSerialPortTool::setStopBits(int stopBits)
     mParameters.stopBits = stopBits;
 }
 
+int SAKSerialPortTool::parity()
+{
+    return mParameters.parity;
+}
+
 void SAKSerialPortTool::setParity(int parity)
 {
     mParameters.parity = parity;
+}
+
+int SAKSerialPortTool::flowControl()
+{
+    return mParameters.flowControl;
 }
 
 void SAKSerialPortTool::setFlowControl(int flowControl)
