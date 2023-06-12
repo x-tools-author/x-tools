@@ -18,6 +18,9 @@ class SAKTransmitterTool : public SAKTableModelTool
 public:
     explicit SAKTransmitterTool(const char *logCategory,
                                 QObject *parent = nullptr);
+
+protected:
+    virtual void run() override {exec();}
 };
 
 #endif // SAKTRANSMITTERTOOL_HH

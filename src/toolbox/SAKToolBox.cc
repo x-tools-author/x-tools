@@ -44,7 +44,8 @@ SAKToolBox::SAKToolBox(QObject *parent)
     tool = createTool(SAKToolFactory::StatistiticianTool);
     mTxStatisticianTool = qobject_cast<SAKStatisticianTool*>(tool);
     tool = createTool(SAKToolFactory::SerialPortTransmitterTool);
-    mSerialPortTransmitterTool = qobject_cast<SAKSerialPortTransmitterTool*>(tool);
+    mSerialPortTransmitterTool =
+        qobject_cast<SAKSerialPortTransmitterTool*>(tool);
 
     mToolList << mTxMaskerTool
               << mRxMaskerTool
@@ -118,6 +119,12 @@ void SAKToolBox::initialize(int type)
             mRxStatisticianTool, &SAKBaseTool::inputBytes);
     connect(mComunicationTool, &SAKBaseTool::bytesInputted,
             mTxStatisticianTool, &SAKBaseTool::inputBytes);
+
+    // rx->serialport transmition; tx->serialport transmition
+    connect(mRxAnalyzerTool, &SAKBaseTool::bytesOutputted,
+            mSerialPortTransmitterTool, &SAKBaseTool::inputBytes);
+    connect(mSerialPortTransmitterTool, &SAKBaseTool::bytesOutputted,
+            mTxAnalyzerTool, &SAKBaseTool::inputBytes);
 
     emit communicatonChanged();
 }

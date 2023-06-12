@@ -129,6 +129,15 @@ bool SAKSerialPortTransmitterTool::insertRows(int row,
     for (int i = 0; i < count; i++) {
         mToolVectorMutex.lock();
         auto tool = new SAKSerialPortTool(this);
+        connect(this, &SAKSerialPortTransmitterTool::bytesInputted,
+                tool, &SAKSerialPortTool::inputBytes);
+        connect(tool, &SAKSerialPortTool::bytesOutputted,
+                this, &SAKSerialPortTransmitterTool::bytesOutputted);
+        connect(this, &SAKSerialPortTransmitterTool::started,
+                tool, &SAKSerialPortTool::start);
+        connect(this, &SAKSerialPortTransmitterTool::finished,
+                tool, &SAKSerialPortTool::exit);
+
         mToolVector.insert(row, tool);
         mToolVectorMutex.unlock();
     }
