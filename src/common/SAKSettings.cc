@@ -134,7 +134,8 @@ int SAKSettings::palette()
     int ret = value(mSettingsKey.palette).toInt();
     if ((ret != SAKDataStructure::PaletteSystem)
         && (ret != SAKDataStructure::PaletteLight)
-        && (ret != SAKDataStructure::PaletteDark)) {
+        && (ret != SAKDataStructure::PaletteDark)
+        && (ret != SAKDataStructure::PaletteCustom)) {
         ret = SAKDataStructure::PaletteSystem;
     }
 
@@ -145,6 +146,17 @@ void SAKSettings::setPalette(int p)
 {
     setValue(mSettingsKey.palette, p);
     emit paletteChanged();
+}
+
+QString SAKSettings::customPalette()
+{
+    return value(mSettingsKey.customPalette).toString();
+}
+
+void SAKSettings::setCustomPalette(const QString &p)
+{
+    setValue(mSettingsKey.customPalette, p);
+    emit customPaletteChanged();
 }
 
 QVariant SAKSettings::value(const QString &key,

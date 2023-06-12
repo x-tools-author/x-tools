@@ -25,6 +25,7 @@
 #include <QMetaEnum>
 #include <QSettings>
 #include <QLineEdit>
+#include <QFileInfo>
 #include <QStatusBar>
 #include <QClipboard>
 #include <QJsonArray>
@@ -40,6 +41,7 @@
 #include <QButtonGroup>
 #include <QActionGroup>
 #include <QTextBrowser>
+#include <QFileInfoList>
 #include <QStyleFactory>
 #include <QJsonDocument>
 #include <QJsonParseError>
@@ -122,24 +124,7 @@ SAKMainWindow::~SAKMainWindow()
 
 void SAKMainWindow::initMenuBar()
 {
-    int ret = SAKSettings::instance()->palette();
-    if ((ret == SAKDataStructure::PaletteDark)
-        || (ret == SAKDataStructure::PaletteLight)) {
-        QString fileName = (ret == SAKDataStructure::PaletteLight
-                                ? ":/resources/palette/SAKMenuPaleteLight"
-                                : ":/resources/palette/SAKMenuPaleteDark");
-        QFile file(fileName);
-        if (file.open(QFile::ReadOnly)) {
-            QDataStream out(&file);
-            QPalette p;
-            out >> p;
-            file.close();
-            menuBar()->setPalette(p);
-        } else {
-            qCWarning(mLoggingCategory) << "open palette file error:"
-                                        << file.errorString();
-        }
-    }
+    menuBar()->setPalette(qApp->palette());
 
     initFileMenu();
     initToolMenu();
@@ -182,14 +167,58 @@ void SAKMainWindow::initFileMenu()
         });
     }
 
-    auto savePalette = [=](const QPalette &p) {
+    fileMenu->addSeparator();
+    QAction *importAction = new QAction(tr("Import Palette"));
+    fileMenu->addAction(importAction);
+    connect(importAction, &QAction::triggered, this, [=](){
+        auto str = QFileDialog::getOpenFileName(this, tr("Save Palette"),
+                                                "Palete", tr("All (*)"));
+        if (str.isEmpty()) {
+            qCInfo(mLoggingCategory) << "cancle to import the palette";
+        } else {
+            QFile inFile(str);
+            if (inFile.open(QFile::ReadOnly)) {
+                QByteArray bytes = inFile.readAll();
+                inFile.close();
+
+                QUrl url(str);
+                QString fn = url.fileName();
+                QString path = palettePath();
+                QString outFileName = path + "/" + fn;
+                if (QFile::exists(outFileName)) {
+                    QMessageBox::warning(this, tr("File Exists"),
+                                         tr("The file is exists, "
+                                            "import operaion failed"));
+                    return;
+                }
+
+                QFile outFile(outFileName);
+                if (outFile.open(QFile::WriteOnly)) {
+                    QDataStream out(&outFile);
+                    out << bytes;
+                    outFile.close();
+                } else {
+                    qCWarning(mLoggingCategory) << "open out file failed:"
+                                                << inFile.errorString();
+                }
+            } else {
+                qCWarning(mLoggingCategory) << "open in file failed:"
+                                            << inFile.errorString();
+            }
+        }
+    });
+
+    QAction *exportAction = new QAction(tr("Export Palette"));
+    fileMenu->addAction(exportAction);
+    connect(exportAction, &QAction::triggered, this, [=](){
         auto str = QFileDialog::getSaveFileName(this, tr("Save Palette"),
                                                 "Palete", tr("All (*)"));
         if (str.isEmpty()) {
-            qCInfo(mLoggingCategory) << "cancle to save the palette";
+            qCInfo(mLoggingCategory) << "cancle to export the palette";
         } else {
             QFile file(str);
             if (file.open(QFile::WriteOnly)) {
+                QPalette p = qApp->palette();
                 QDataStream out(&file);
                 out << p;
                 file.close();
@@ -197,21 +226,6 @@ void SAKMainWindow::initFileMenu()
                 qCWarning(mLoggingCategory) << "can not open file:" << file.errorString();
             }
         }
-    };
-
-    fileMenu->addSeparator();
-    QAction *menuBarPalete = new QAction(tr("Export Menu Bar Palette"));
-    fileMenu->addAction(menuBarPalete);
-    connect(menuBarPalete, &QAction::triggered, this, [=](){
-        QPalette p = menuBar()->palette();
-        savePalette(p);
-    });
-
-    QAction *appPalette = new QAction(tr("Export Application Palette"));
-    fileMenu->addAction(appPalette);
-    connect(appPalette, &QAction::triggered, this, [=](){
-        QPalette p = qApp->palette();
-        savePalette(p);
     });
 
     fileMenu->addSeparator();
@@ -463,6 +477,8 @@ void SAKMainWindow::initOptionMenuPalette(QMenu *optionMenu)
         lightAction->setChecked(true);
     } else if (ret == SAKDataStructure::PaletteDark) {
         darkAction->setChecked(true);
+    } else if (ret == SAKDataStructure::PaletteSystem) {
+        systemAction->setChecked(true);
     }
 
     m->addAction(systemAction);
@@ -481,6 +497,38 @@ void SAKMainWindow::initOptionMenuPalette(QMenu *optionMenu)
         SAKSettings::instance()->setPalette(SAKDataStructure::PaletteDark);
         rebootRequestion();
     });
+
+    QMenu *custom = new QMenu(tr("Custom"), this);
+    QDir dir(palettePath());
+    QFileInfoList infoList = dir.entryInfoList(QDir::Files|QDir::NoDotAndDotDot);
+    QString currentCustom = SAKSettings::instance()->customPalette();
+    for (auto &info : infoList) {
+        if (!info.isFile()) {
+            continue;
+        }
+
+        QString fileName = info.fileName();
+        QUrl url(fileName);
+        QString fn = url.fileName();
+        QAction *a = new QAction(fn, this);
+        a->setCheckable(true);
+        ag.addAction(a);
+        if (fn == currentCustom && ret == SAKDataStructure::PaletteCustom) {
+            a->setChecked(true);
+        }
+
+        custom->addAction(a);
+        connect(a, &QAction::triggered, this, [=](){
+            SAKSettings *settings = SAKSettings::instance();
+            settings->setPalette(SAKDataStructure::PaletteCustom);
+            settings->setCustomPalette(fileName);
+            rebootRequestion();
+        });
+    }
+
+    if (!custom->actions().isEmpty()) {
+        m->addMenu(custom);
+    }
 }
 
 void SAKMainWindow::initLanguageMenu()
@@ -719,9 +767,11 @@ void SAKMainWindow::initNav()
     initNav(&navButtonGroup,
             cookedIcon(QIcon(":/resources/icon/IconLog.svg")),
             tr("Log Viewer"), new SAKLogUi(this), tb);
+#if 0
     initNav(&navButtonGroup,
             cookedIcon(QIcon(":/resources/icon/IconSettings.svg")),
             tr("Preferences"), new SAKPreferencesUi(this), tb);
+#endif
 }
 
 void SAKMainWindow::initNav(QButtonGroup *bg, const QIcon &icon,

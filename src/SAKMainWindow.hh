@@ -42,7 +42,7 @@ protected:
 
 private:
     struct SettingsKeyContext {
-        const QString exitToSystemTray{"exitToSystemTray"};
+        const QString exitToSystemTray{"MainWindow/exitToSystemTray"};
     } mSettingsKey;
     const QLoggingCategory mLoggingCategory{"SAK.MainWindow"};
 

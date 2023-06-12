@@ -401,7 +401,7 @@ void SAKLog::writeLog()
 void SAKLog::clearLog()
 {
     QDir dir(logPath());
-    QFileInfoList infoList = dir.entryInfoList(QDir::NoDotAndDotDot);
+    QFileInfoList infoList = dir.entryInfoList(QDir::Files|QDir::NoDotAndDotDot);
     for (auto &info : infoList) {
         qint64 dateTime = info.birthTime().toMSecsSinceEpoch();
         qint64 currentDateTime = QDateTime::currentMSecsSinceEpoch();

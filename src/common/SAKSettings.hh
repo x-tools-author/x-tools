@@ -23,6 +23,7 @@ class SAKSettings : public QSettings
     Q_PROPERTY(int pageIndex READ pageIndex WRITE setPageIndex NOTIFY pageIndexChanged)
     Q_PROPERTY(bool isTextBesideIcon READ isTextBesideIcon WRITE setIsTextBesideIcon NOTIFY isTextBesideIconChanged)
     Q_PROPERTY(int palette READ palette WRITE setPalette NOTIFY paletteChanged)
+    Q_PROPERTY(QString customPalette READ customPalette WRITE setCustomPalette NOTIFY customPaletteChanged)
 public:
     enum UiType {
         UiTypeWidget,
@@ -60,6 +61,9 @@ public:
     int palette();
     void setPalette(int p);
 
+    QString customPalette();
+    void setCustomPalette(const QString &p);
+
 signals:
     void hdpiPolicyChanged();
     void uiTypeChanged();
@@ -67,6 +71,7 @@ signals:
     void pageIndexChanged();
     void isTextBesideIconChanged();
     void paletteChanged();
+    void customPaletteChanged();
 
 public:
     Q_INVOKABLE QVariant value(const QString &key,
@@ -84,6 +89,7 @@ private:
         const QString pageIndex{"pageIndex"};
         const QString isTextBesideIcon{"isTextBesideIcon"};
         const QString palette{"palette"};
+        const QString customPalette{"customPalette"};
     } mSettingsKey;
 
     QLoggingCategory mLoggingCategory{"SAK.Settings"};

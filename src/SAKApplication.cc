@@ -58,8 +58,8 @@ SAKApplication::SAKApplication(int argc, char **argv)
     if ((ret == SAKDataStructure::PaletteDark)
         || (ret == SAKDataStructure::PaletteLight)) {
         QString fileName = (ret == SAKDataStructure::PaletteLight
-                                ? ":/resources/palette/SAKMenuPaleteLight"
-                                : ":/resources/palette/SAKMenuPaleteDark");
+                                ? ":/resources/palette/SAKAppPaletteLight"
+                                : ":/resources/palette/SAKAppPaletteDark");
         QFile file(fileName);
         if (file.open(QFile::ReadOnly)) {
             QDataStream out(&file);
@@ -73,6 +73,19 @@ SAKApplication::SAKApplication(int argc, char **argv)
                                         << file.errorString();
         }
     } else {
+        QString customPalette = SAKSettings::instance()->customPalette();
+        QFile file(customPalette);
+        if (file.open(QFile::ReadOnly)) {
+            QDataStream out(&file);
+            QPalette p;
+            out >> p;
+            file.close();
+            setPalette(p);
+            qCInfo(mLoggingCategory) << "current palete:" << customPalette;
+        } else {
+            qCWarning(mLoggingCategory) << "open palette file error:"
+                                        << file.errorString();
+        }
         qCInfo(mLoggingCategory) << "current palete: system";
     }
 

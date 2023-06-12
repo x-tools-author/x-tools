@@ -73,7 +73,8 @@ public:
     enum SAKEnumPalette {
         PaletteSystem,
         PaletteLight,
-        PaletteDark
+        PaletteDark,
+        PaletteCustom
     };
     Q_ENUM(SAKEnumPalette)
 
