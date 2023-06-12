@@ -64,5 +64,9 @@
         <file>resources/icon/IconModbus.svg</file>
         <file>resources/icon/IconLog.svg</file>
         <file>resources/icon/IconListWithIcon.svg</file>
+        <file>resources/palette/SAKMenuPaleteLight</file>
+        <file>resources/palette/SAKMenuPaleteDark</file>
+        <file>resources/palette/SAKAppPaleteLight</file>
+        <file>resources/palette/SAKAppPaleteDark</file>
     </qresource>
 </RCC>
