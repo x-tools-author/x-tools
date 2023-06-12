@@ -20,6 +20,8 @@ class SAKCommunicationTool : public SAKBaseTool
 public:
     explicit SAKCommunicationTool(const char *logCategory,
                                   QObject *parent = nullptr);
+    virtual void inputBytes(const QByteArray &bytes,
+                            const QVariant &context = QJsonObject()) final;
 
 protected:
     struct InputDataContext {
@@ -29,8 +31,6 @@ protected:
 
 protected:
     virtual void run() final;
-    virtual void inputBytes(const QByteArray &bytes,
-                            const QVariant &context = QJsonObject()) final;
 
     virtual bool initialize() = 0;
     virtual void writeBytes(const QByteArray &bytes,

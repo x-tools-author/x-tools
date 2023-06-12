@@ -134,9 +134,9 @@ bool SAKSerialPortTransmitterTool::insertRows(int row,
         connect(tool, &SAKSerialPortTool::bytesOutputted,
                 this, &SAKSerialPortTransmitterTool::bytesOutputted);
         connect(this, &SAKSerialPortTransmitterTool::started,
-                tool, &SAKSerialPortTool::start);
+                tool, [=](){tool->start();});
         connect(this, &SAKSerialPortTransmitterTool::finished,
-                tool, &SAKSerialPortTool::exit);
+                tool, [=](){tool->exit();});
 
         mToolVector.insert(row, tool);
         mToolVectorMutex.unlock();
