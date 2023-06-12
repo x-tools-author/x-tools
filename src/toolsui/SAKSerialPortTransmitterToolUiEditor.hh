@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -11,6 +11,7 @@
 #define SAKSERIALPORTTRANSMITTERTOOLUIEDITOR_HH
 
 #include <QDialog>
+#include <QJsonObject>
 
 namespace Ui {
 class SAKSerialPortTransmitterToolUiEditor;
@@ -23,6 +24,9 @@ class SAKSerialPortTransmitterToolUiEditor : public QDialog
 public:
     explicit SAKSerialPortTransmitterToolUiEditor(QWidget *parent = nullptr);
     ~SAKSerialPortTransmitterToolUiEditor();
+
+    Q_INVOKABLE QJsonObject parameters();
+    Q_INVOKABLE void setParameters(const QJsonObject &params);
 
 private:
     Ui::SAKSerialPortTransmitterToolUiEditor *ui;

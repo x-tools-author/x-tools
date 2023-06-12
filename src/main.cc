@@ -20,7 +20,7 @@
 
 int main(int argc, char *argv[])
 {
-#ifdef QT_DEBUG
+#ifndef QT_DEBUG
     qInstallMessageHandler(SAKLog::messageOutput);
 #endif
 

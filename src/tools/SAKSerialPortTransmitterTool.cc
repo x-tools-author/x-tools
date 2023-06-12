@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -36,6 +36,7 @@ QVariant SAKSerialPortTransmitterTool::itemContext(int index)
         obj.insert(ctx.parity, QSerialPort::NoParity);
         obj.insert(ctx.portName, "");
         obj.insert(ctx.stopBits, QSerialPort::OneStop);
+        qCInfo(mLoggingCategory) << "get default value:" << obj;
     }
 
     return obj;
@@ -79,6 +80,8 @@ QVariant SAKSerialPortTransmitterTool::data(const QModelIndex &index,
     } else if (key == ctx.stopBits) {
         return ret->stopBits();
     } else {
+        Q_ASSERT_X(false, __FUNCTION__, "Unknow index");
+        qCWarning(mLoggingCategory) << "unknown index:" << index;
         return false;
     }
 
@@ -89,7 +92,7 @@ bool SAKSerialPortTransmitterTool::setData(const QModelIndex &index,
                                            const QVariant &value,
                                            int role)
 {
-    if (role != Qt::DisplayRole) {
+    if (role != Qt::EditRole) {
         return false;
     }
 
@@ -111,6 +114,7 @@ bool SAKSerialPortTransmitterTool::setData(const QModelIndex &index,
     } else if (key == ctx.stopBits) {
         ret->setStopBits(value.toInt());
     } else {
+        qDebug() << "unknow key:" << key;
         return false;
     }
 
@@ -122,10 +126,10 @@ bool SAKSerialPortTransmitterTool::insertRows(int row,
                                               const QModelIndex &parent)
 {
     Q_UNUSED(parent)
-    for (int i = row; i < count; i++) {
+    for (int i = 0; i < count; i++) {
         mToolVectorMutex.lock();
         auto tool = new SAKSerialPortTool(this);
-        mToolVector.insert(i, tool);
+        mToolVector.insert(row, tool);
         mToolVectorMutex.unlock();
     }
 

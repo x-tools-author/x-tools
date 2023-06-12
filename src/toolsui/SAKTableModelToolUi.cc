@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -184,6 +184,8 @@ void SAKTableModelToolUi::edit(const QModelIndex &index)
                               Qt::DirectConnection,
                               ret,
                               Q_ARG(QJsonObject, jsonObj));
+    qCInfo(mLoggingCategory) << "the parameter of setParameters() is:"
+                             << jsonObj;
     Q_UNUSED(ret);
     editor->show();
 
@@ -193,7 +195,8 @@ void SAKTableModelToolUi::edit(const QModelIndex &index)
                                   "parameters",
                                   Qt::DirectConnection,
                                   Q_RETURN_ARG(QJsonObject, params));
-        qCInfo(mLoggingCategory) << "Parameter json object:" << params;
+        qCInfo(mLoggingCategory) << "the parameter of parameters() is:"
+                                 << params;
         QJsonDocument jsonDoc;
         jsonDoc.setObject(params);
         QString str = QString::fromUtf8(jsonDoc.toJson());
@@ -211,6 +214,8 @@ bool SAKTableModelToolUi::append()
                               Qt::DirectConnection,
                               ret,
                               Q_ARG(QJsonObject, jsonObj));
+    qCInfo(mLoggingCategory) << "the parameter of setParameters() is:"
+                             << jsonObj;
     Q_UNUSED(ret);
 
     editor->show();
@@ -222,6 +227,8 @@ bool SAKTableModelToolUi::append()
                               "parameters",
                               Qt::DirectConnection,
                               Q_RETURN_ARG(QJsonObject, jsonObj));
+    qCInfo(mLoggingCategory) << "the parameter of parameters() is:"
+                             << jsonObj;
     QJsonDocument jsonDoc;
     jsonDoc.setObject(jsonObj);
     QString str = QString::fromUtf8(jsonDoc.toJson());

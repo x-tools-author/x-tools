@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -68,14 +68,14 @@ void SAKTableModelTool::addItem(const QString &jsonCtx, int index)
     for (int i = 0; i < headers().count(); i++) {
         if (i >= columnCount()) {
             outputMessage(QtWarningMsg, "Invalid column index!");
+            return;
         }
 
         auto key = headers().at(i);
         auto modelIndex = mTableModel->index(index, i);
         mTableModel->setData(modelIndex, jsonObj.value(key), Qt::EditRole);
-        qCInfo(mLoggingCategory) << "Set data:"
-                                 << QString("%1").arg(key, 20, ' ')
-                                 << ":" << jsonObj.value(key);
+        qCInfo(mLoggingCategory) << qPrintable(QString("set %1 as").arg(key))
+                                 << jsonObj.value(key);
     }
 }
 
