@@ -568,9 +568,10 @@ void SAKToolBoxUi::initTools()
     mSerialPortTransmitterToolUi->layout()->setContentsMargins(9, 9, 9, 9);
 
     ui->tabWidgetTransmitter->clear();
-    ui->tabWidgetTransmitter->addTab(mSerialPortTransmitterToolUi, "SerialPort");
-    ui->tabWidgetTransmitter->addTab(mTcpTransmitterToolUi, "TCP");
+    ui->tabWidgetTransmitter->addTab(mSerialPortTransmitterToolUi,
+                                     "SerialPort");
     ui->tabWidgetTransmitter->addTab(mUdpTransmitterToolUi, "UDP");
+    ui->tabWidgetTransmitter->addTab(mTcpTransmitterToolUi, "TCP");
     ui->tabWidgetTransmitter->addTab(mWebSocketTransmitterToolUi, "WebSocket");
 }
 
