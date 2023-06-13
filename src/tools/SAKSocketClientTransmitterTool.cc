@@ -15,3 +15,152 @@ SAKSocketClientTransmitterTool::SAKSocketClientTransmitterTool(
 {
 
 }
+
+QVariant SAKSocketClientTransmitterTool::itemContext(int index)
+{
+    QJsonObject obj;
+    ItemContextKeys keys;
+    if (index >= 0 && index < mToolVector.count()) {
+        SAKSocketClientTool *tool =
+            qobject_cast<SAKSocketClientTool*>(mToolVector.value(index));
+        obj.insert(keys.enable, tool->enable());
+        obj.insert(keys.clientIp, tool->clientIp());
+        obj.insert(keys.clientPort, tool->clientPort());
+        obj.insert(keys.specifiedClientIpPort, tool->specifyClientIpPort());
+        obj.insert(keys.serverIp, tool->serverIp());
+        obj.insert(keys.serverPort, tool->serverPort());
+        obj.insert(keys.messageType, tool->messageType());
+    } else {
+        obj.insert(keys.enable, true);
+        obj.insert(keys.clientIp, "127.0.0.1");
+        obj.insert(keys.clientPort, 55555);
+        obj.insert(keys.specifiedClientIpPort, false);
+        obj.insert(keys.serverIp, "127.0.0.1");
+        obj.insert(keys.serverPort, 44444);
+        obj.insert(keys.messageType, 0);
+    }
+
+    return obj;
+}
+
+int SAKSocketClientTransmitterTool::columnCount(
+    const QModelIndex &parent) const
+{
+    Q_UNUSED(parent)
+    return 7;
+}
+
+QVariant SAKSocketClientTransmitterTool::data(const QModelIndex &index,
+                                              int role) const
+{
+    if (role != Qt::DisplayRole) {
+        return QVariant();
+    }
+
+    auto tool =
+        qobject_cast<SAKSocketClientTool*>(mToolVector.value(index.row()));
+    QString key = headerData(index.column(), Qt::Horizontal).toString();
+    ItemContextKeys keys;
+    if (key == keys.enable) {
+        return tool->enable();
+    } else if (key == keys.clientIp) {
+        return tool->clientIp();
+    } else if (key == keys.clientPort) {
+        return tool->clientPort();
+    } else if (key == keys.specifiedClientIpPort) {
+        return tool->specifyClientIpPort();
+    } else if (key == keys.serverIp) {
+        return tool->serverIp();
+    } else if (key == keys.serverPort) {
+        return tool->serverPort();
+    } else {
+        Q_ASSERT_X(false, __FUNCTION__, "Unknow index");
+        qCWarning(mLoggingCategory) << "unknown index:" << index;
+        return false;
+    }
+
+    return true;
+}
+
+bool SAKSocketClientTransmitterTool::setData(const QModelIndex &index,
+                                    const QVariant &value, int role)
+{
+    if (role != Qt::EditRole) {
+        return false;
+    }
+
+    auto baseTool = mToolVector.value(index.row());
+    auto tool = qobject_cast<SAKSocketClientTool*>(baseTool);
+    QString key = headerData(index.column(), Qt::Horizontal).toString();
+    ItemContextKeys keys;
+    if (key == keys.enable) {
+        tool->setEnable(value.toBool());
+    } else if (key == keys.clientIp) {
+        tool->setClientIp(value.toString());
+    } else if (key == keys.clientPort) {
+        tool->setClientPort(value.toInt());
+    } else if (key == keys.specifiedClientIpPort) {
+        tool->setSpecifyClientIpPort(value.toBool());
+    } else if (key == keys.serverPort) {
+        tool->setServerPort(value.toInt());
+    } else if (key == keys.serverIp) {
+        tool->setServerIp(value.toString());
+    } else {
+        qCWarning(mLoggingCategory) << "unknow key:" << key;
+        return false;
+    }
+
+    return true;
+}
+
+bool SAKSocketClientTransmitterTool::insertRows(int row, int count,
+                                       const QModelIndex &parent)
+{
+    Q_UNUSED(parent)
+    for (int i = 0; i < count; i++) {
+        mToolVectorMutex.lock();
+        auto tool = createTool();
+        tool->setParent(this);
+        connect(this, &SAKSocketClientTool::bytesInputted,
+                tool, &SAKSocketClientTool::inputBytes);
+        connect(tool, &SAKSocketClientTool::bytesOutputted,
+                this, &SAKSocketClientTool::bytesOutputted);
+        connect(this, &SAKSocketClientTool::started,
+                tool, [=](){tool->start();});
+        connect(this, &SAKSocketClientTool::finished,
+                tool, [=](){tool->exit();});
+
+        mToolVector.insert(row, tool);
+        mToolVectorMutex.unlock();
+    }
+
+    return true;
+}
+
+QVariant SAKSocketClientTransmitterTool::headerData(int section,
+                                           Qt::Orientation orientation,
+                                           int role) const
+{
+    if (role != Qt::DisplayRole || orientation != Qt::Horizontal) {
+        return "--";
+    }
+
+    ItemContextKeys keys;
+    if (section == 0) {
+        return keys.enable;
+    } else if (section == 1) {
+        return keys.clientIp;
+    } else if (section == 2) {
+        return keys.clientPort;
+    } else if (section == 3) {
+        return keys.specifiedClientIpPort;
+    } else if (section == 4) {
+        return keys.serverIp;
+    } else if (section == 5) {
+        return keys.serverPort;
+    } else if (section == 6) {
+        return keys.messageType;
+    }
+
+    return "Unknown";
+}

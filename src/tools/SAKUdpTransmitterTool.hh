@@ -27,6 +27,8 @@ public:
         const QString specifiedClientIpPort{"specifiedClientIpAndPort"};
         const QString serverIp{"serverIp"};
         const QString serverPort{"serverPort"};
+
+        const QString messageType{"messageType"};
     };
 
 protected:
