@@ -65,6 +65,7 @@ private:
     struct {
         QString tabIndex;
         QString items;
+        QString transmitterTabIndex;
     } mSettingsKey;
 
 private:

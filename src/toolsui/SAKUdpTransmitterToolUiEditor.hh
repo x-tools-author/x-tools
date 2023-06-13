@@ -11,6 +11,7 @@
 #define SAKUDPTRANSMITTERTOOLUIEDITOR_HH
 
 #include <QDialog>
+#include <QJsonObject>
 
 namespace Ui {
 class SAKUdpTransmitterToolUiEditor;
@@ -23,6 +24,9 @@ class SAKUdpTransmitterToolUiEditor : public QDialog
 public:
     explicit SAKUdpTransmitterToolUiEditor(QWidget *parent = nullptr);
     ~SAKUdpTransmitterToolUiEditor();
+
+    Q_INVOKABLE QJsonObject parameters();
+    Q_INVOKABLE void setParameters(const QJsonObject &params);
 
 private:
     Ui::SAKUdpTransmitterToolUiEditor *ui;

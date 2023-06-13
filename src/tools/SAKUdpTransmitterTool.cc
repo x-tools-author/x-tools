@@ -92,7 +92,7 @@ bool SAKUdpTransmitterTool::setData(const QModelIndex &index,
         tool->setEnable(value.toBool());
     } else if (key == keys.clientIp) {
         tool->setClientIp(value.toString());
-    } else if (key == keys.serverPort) {
+    } else if (key == keys.clientPort) {
         tool->setClientPort(value.toInt());
     } else if (key == keys.specifiedClientIpPort) {
         tool->setSpecifyClientIpPort(value.toBool());
@@ -101,7 +101,7 @@ bool SAKUdpTransmitterTool::setData(const QModelIndex &index,
     } else if (key == keys.serverIp) {
         tool->setServerIp(value.toString());
     } else {
-        qDebug() << "unknow key:" << key;
+        qCWarning(mLoggingCategory) << "unknow key:" << key;
         return false;
     }
 
@@ -149,9 +149,9 @@ QVariant SAKUdpTransmitterTool::headerData(int section,
     } else if (section == 3) {
         return keys.specifiedClientIpPort;
     } else if (section == 4) {
-        return keys.clientIp;
+        return keys.serverIp;
     } else if (section == 5) {
-        return keys.clientPort;
+        return keys.serverPort;
     }
 
     return "Unknown";

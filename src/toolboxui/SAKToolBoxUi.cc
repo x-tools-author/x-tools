@@ -337,7 +337,8 @@ void SAKToolBoxUi::onInputTextChanged()
 void SAKToolBoxUi::init()
 {
     mSettingsKey.tabIndex = settingsGroup() + "/tabIndex";
-    mSettingsKey.items = settingsGroup() + "/tabIndex";
+    mSettingsKey.items = settingsGroup() + "/items";
+    mSettingsKey.transmitterTabIndex = settingsGroup() + "/transmitterTabIndex";
 
     initUi();
     initSettings();
@@ -558,7 +559,7 @@ void SAKToolBoxUi::initTools()
     mUdpTransmitterToolUi = new SAKUdpTransmitterToolUi(this);
     mUdpTransmitterToolUi->initialize(
         mToolBox->getUdpTransmitterTool(),
-        settingsGroup() + "/udpTransmitterToolUi");
+        settingsGroup() + "/udpTransmitter");
     mWebSocketTransmitterToolUi = new SAKWebSocketTransmitterToolUi(this);
     mSerialPortTransmitterToolUi = new SAKSerialPortTransmitterToolUi(this);
     mSerialPortTransmitterToolUi->initialize(
@@ -576,6 +577,17 @@ void SAKToolBoxUi::initTools()
     ui->tabWidgetTransmitter->addTab(mUdpTransmitterToolUi, "UDP");
     ui->tabWidgetTransmitter->addTab(mTcpTransmitterToolUi, "TCP");
     ui->tabWidgetTransmitter->addTab(mWebSocketTransmitterToolUi, "WebSocket");
+
+    const QString key = mSettingsKey.transmitterTabIndex;
+    int tabIndex = SAKSettings::instance()->value(key).toInt();
+    if ((tabIndex >= 0) && (tabIndex < ui->tabWidgetTransmitter->count())) {
+        ui->tabWidgetTransmitter->setCurrentIndex(tabIndex);
+    }
+
+    connect(ui->tabWidgetTransmitter, &QTabWidget::currentChanged, this,
+            [=](int index){
+        SAKSettings::instance()->setValue(key, index);
+    });
 }
 
 void SAKToolBoxUi::onTabWidgetCurrentChanged(int index)
