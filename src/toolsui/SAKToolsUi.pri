@@ -16,6 +16,8 @@ HEADERS += \
     $$PWD/SAKSerialPortTransmitterToolUi.hh \
     $$PWD/SAKSerialPortTransmitterToolUiEditor.hh \
     $$PWD/SAKSocketClientToolUi.hh \
+    $$PWD/SAKSocketClientTransmitterToolUi.hh \
+    $$PWD/SAKSocketClientTransmitterToolUiEditor.hh \
     $$PWD/SAKSocketServerToolUi.hh \
     $$PWD/SAKStatisticianToolUi.hh \
     $$PWD/SAKStorerToolUi.hh \
@@ -45,6 +47,8 @@ SOURCES += \
     $$PWD/SAKSerialPortTransmitterToolUi.cc \
     $$PWD/SAKSerialPortTransmitterToolUiEditor.cc \
     $$PWD/SAKSocketClientToolUi.cc \
+    $$PWD/SAKSocketClientTransmitterToolUi.cc \
+    $$PWD/SAKSocketClientTransmitterToolUiEditor.cc \
     $$PWD/SAKSocketServerToolUi.cc \
     $$PWD/SAKStatisticianToolUi.cc \
     $$PWD/SAKStorerToolUi.cc \
