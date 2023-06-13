@@ -20,7 +20,8 @@ QVariant SAKSerialPortTransmitterTool::itemContext(int index)
     QJsonObject obj;
     ItemContextKey ctx;
     if (index >= 0 && index < mToolVector.count()) {
-        SAKSerialPortTool *tool = mToolVector.at(index);
+        SAKSerialPortTool *tool =
+            qobject_cast<SAKSerialPortTool*>(mToolVector.value(index));
         obj.insert(ctx.baudRate, tool->baudRate());
         obj.insert(ctx.dataBits, tool->dataBits());
         obj.insert(ctx.enable, tool->enable());
@@ -42,13 +43,6 @@ QVariant SAKSerialPortTransmitterTool::itemContext(int index)
     return obj;
 }
 
-int SAKSerialPortTransmitterTool::rowCount(const QModelIndex &parent) const
-{
-    Q_UNUSED(parent)
-    int ret = mToolVector.length();
-    return ret;
-}
-
 int SAKSerialPortTransmitterTool::columnCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
@@ -62,7 +56,7 @@ QVariant SAKSerialPortTransmitterTool::data(const QModelIndex &index,
         return QVariant();
     }
 
-    auto ret = mToolVector.value(index.row());
+    auto ret = qobject_cast<SAKSerialPortTool*>(mToolVector.value(index.row()));
     QString key = headerData(index.column(), Qt::Horizontal).toString();
     ItemContextKey ctx;
     if (key == ctx.enable) {
@@ -96,7 +90,7 @@ bool SAKSerialPortTransmitterTool::setData(const QModelIndex &index,
         return false;
     }
 
-    auto ret = mToolVector.value(index.row());
+    auto ret = qobject_cast<SAKSerialPortTool*>(mToolVector.value(index.row()));
     QString key = headerData(index.column(), Qt::Horizontal).toString();
     ItemContextKey ctx;
     if (key == ctx.enable) {
@@ -142,15 +136,6 @@ bool SAKSerialPortTransmitterTool::insertRows(int row,
         mToolVectorMutex.unlock();
     }
 
-    return true;
-}
-
-bool SAKSerialPortTransmitterTool::removeRows(int row,
-                                              int count,
-                                              const QModelIndex &parent)
-{
-    Q_UNUSED(parent)
-    mToolVector.remove(row, count);
     return true;
 }
 

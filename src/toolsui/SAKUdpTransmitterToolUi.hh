@@ -20,6 +20,10 @@ public:
     SAKUdpTransmitterToolUi(QWidget *parent = nullptr);
     virtual QDialog *itemEditor() override;
 
+protected:
+    virtual void onBaseToolUiInitialized(SAKBaseTool *tool,
+                                         const QString &settingGroup) override;
+
 private:
     SAKUdpTransmitterToolUiEditor *mEditor{nullptr};
 };

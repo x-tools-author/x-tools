@@ -10,7 +10,10 @@
 #ifndef SAKTRANSMITTERTOOL_HH
 #define SAKTRANSMITTERTOOL_HH
 
+#include <QMutex>
+
 #include "SAKTableModelTool.hh"
+#include "SAKCommunicationTool.hh"
 
 class SAKTransmitterTool : public SAKTableModelTool
 {
@@ -21,6 +24,18 @@ public:
 
 protected:
     virtual void run() override {exec();}
+
+protected:
+    virtual int rowCount(const QModelIndex &parent
+                         = QModelIndex()) const override;
+    virtual bool removeRows(int row,
+                            int count,
+                            const QModelIndex &parent
+                            = QModelIndex()) override;
+
+protected:
+    QVector<SAKCommunicationTool*> mToolVector;
+    QMutex mToolVectorMutex;
 };
 
 #endif // SAKTRANSMITTERTOOL_HH

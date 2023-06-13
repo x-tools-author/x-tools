@@ -36,8 +36,6 @@ public:
     Q_INVOKABLE virtual QVariant itemContext(int index) override;
 
 protected:
-    virtual int rowCount(const QModelIndex &parent
-                         = QModelIndex()) const override;
     virtual int columnCount(const QModelIndex &parent
                             = QModelIndex()) const override;
     virtual QVariant data(const QModelIndex &index,
@@ -49,17 +47,9 @@ protected:
                             int count,
                             const QModelIndex &parent
                             = QModelIndex()) override;
-    virtual bool removeRows(int row,
-                            int count,
-                            const QModelIndex &parent
-                            = QModelIndex()) override;
     virtual QVariant headerData(int section,
                                 Qt::Orientation orientation,
                                 int role = Qt::DisplayRole) const override;
-
-private:
-    QVector<SAKSerialPortTool*> mToolVector;
-    QMutex mToolVectorMutex;
 };
 
 #endif // SAKSERIALPORTTRANSMITTERTOOL_HH

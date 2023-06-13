@@ -36,7 +36,10 @@ public:
         BleCentralTool,
         BlePeriheral,
         StatistiticianTool,
-        SerialPortTransmitterTool
+        SerialPortTransmitterTool,
+        UdpTransmitterTool,
+        TcpTransmitterTool,
+        WebSocketTransmitterTool
     };
     Q_ENUM(ToolsType)
 

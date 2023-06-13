@@ -556,6 +556,9 @@ void SAKToolBoxUi::initTools()
     mTcpTransmitterToolUi = new SAKTcpTransmitterToolUi(this);
 
     mUdpTransmitterToolUi = new SAKUdpTransmitterToolUi(this);
+    mUdpTransmitterToolUi->initialize(
+        mToolBox->getUdpTransmitterTool(),
+        settingsGroup() + "/udpTransmitterToolUi");
     mWebSocketTransmitterToolUi = new SAKWebSocketTransmitterToolUi(this);
     mSerialPortTransmitterToolUi = new SAKSerialPortTransmitterToolUi(this);
     mSerialPortTransmitterToolUi->initialize(

@@ -14,3 +14,18 @@ SAKTransmitterTool::SAKTransmitterTool(const char *logCategory, QObject *parent)
 {
 
 }
+
+int SAKTransmitterTool::rowCount(const QModelIndex &parent) const
+{
+    Q_UNUSED(parent)
+    int ret = mToolVector.length();
+    return ret;
+}
+
+bool SAKTransmitterTool::removeRows(int row, int count,
+                                    const QModelIndex &parent)
+{
+    Q_UNUSED(parent)
+    mToolVector.remove(row, count);
+    return true;
+}

@@ -23,6 +23,7 @@
 #include "SAKVelometerTool.hh"
 #include "SAKStatisticianTool.hh"
 #include "SAKCommunicationTool.hh"
+#include "SAKUdpTransmitterTool.hh"
 #include "SAKSerialPortTransmitterTool.hh"
 
 class SAKToolBox : public QObject
@@ -42,6 +43,8 @@ class SAKToolBox : public QObject
     Q_PROPERTY(QVariant txVelometer READ txVelometer CONSTANT)
     Q_PROPERTY(QVariant rxStatistician READ rxStatistician CONSTANT)
     Q_PROPERTY(QVariant txStatistician READ txStatistician CONSTANT)
+
+    Q_PROPERTY(QVariant udpTransmitterTool READ udpTransmitterTool CONSTANT)
     Q_PROPERTY(QVariant serialPortTransmitter READ serialPortTransmitter CONSTANT)
 
     Q_PROPERTY(bool isWorking READ isWorking NOTIFY isWorkingChanged)
@@ -70,6 +73,8 @@ public:
     SAKVelometerTool    *getTxVelometerTool(){return mTxVelometerTool;}
     SAKStatisticianTool *getRxStatisticianTool(){return mRxStatisticianTool;}
     SAKStatisticianTool *getTxStatisticianTool(){return mTxStatisticianTool;}
+
+    SAKUdpTransmitterTool *getUdpTransmitterTool(){return mUdpTransmitterTool;}
     SAKSerialPortTransmitterTool *getSerialPortTransmitterTool(){
         return mSerialPortTransmitterTool;
     }
@@ -88,6 +93,8 @@ private:
     SAKVelometerTool    *mTxVelometerTool{nullptr};
     SAKStatisticianTool *mRxStatisticianTool{nullptr};
     SAKStatisticianTool *mTxStatisticianTool{nullptr};
+
+    SAKUdpTransmitterTool *mUdpTransmitterTool{nullptr};
     SAKSerialPortTransmitterTool *mSerialPortTransmitterTool{nullptr};
 
     QList<SAKBaseTool*> mToolList;
@@ -112,6 +119,7 @@ private:
     QVariant txVelometer(){return QVariant::fromValue(mTxVelometerTool);}
     QVariant rxStatistician(){return QVariant::fromValue(mRxStatisticianTool);}
     QVariant txStatistician(){return QVariant::fromValue(mTxStatisticianTool);}
+    QVariant udpTransmitterTool(){return QVariant::fromValue(mUdpTransmitterTool);}
     QVariant serialPortTransmitter(){return QVariant::fromValue(mSerialPortTransmitterTool);}
 
 signals:
