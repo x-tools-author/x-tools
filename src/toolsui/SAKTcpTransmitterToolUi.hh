@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -19,6 +19,10 @@ class SAKTcpTransmitterToolUi : public SAKTransmitterToolUi
 public:
     SAKTcpTransmitterToolUi(QWidget *parent = nullptr);
     virtual QDialog *itemEditor() override;
+
+protected:
+    virtual void onBaseToolUiInitialized(SAKBaseTool *tool,
+                                         const QString &settingGroup) override;
 
 private:
     SAKTcpTransmitterToolUiEditor *mEditor{nullptr};

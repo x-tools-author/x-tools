@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -10,7 +10,6 @@
 #ifndef SAKUDPTRANSMITTERTOOL_HH
 #define SAKUDPTRANSMITTERTOOL_HH
 
-#include "SAKUdpClientTool.hh"
 #include "SAKTransmitterTool.hh"
 
 class SAKUdpTransmitterTool : public SAKTransmitterTool
@@ -32,18 +31,18 @@ public:
 
 protected:
     virtual int columnCount(const QModelIndex &parent
-                            = QModelIndex()) const;
+                            = QModelIndex()) const override;
     virtual QVariant data(const QModelIndex &index,
-                          int role = Qt::DisplayRole) const;
+                          int role = Qt::DisplayRole) const override;
     virtual bool setData(const QModelIndex &index,
                          const QVariant &value,
-                         int role = Qt::EditRole);
+                         int role = Qt::EditRole) override;
     virtual bool insertRows(int row,
                             int count,
-                            const QModelIndex &parent = QModelIndex());
+                            const QModelIndex &parent = QModelIndex()) override;
     virtual QVariant headerData(int section,
                                 Qt::Orientation orientation,
-                                int role = Qt::DisplayRole) const;
+                                int role = Qt::DisplayRole) const override;
 };
 
 #endif // SAKUDPTRANSMITTERTOOL_HH
