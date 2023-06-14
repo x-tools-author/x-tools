@@ -1,28 +1,17 @@
-#-------------------------------------------------
+#-------------------------------------------------------------------------------
 #
 # Project created by QtCreator 2018-07-06T22:57:33
 #
-#-------------------------------------------------
+#-------------------------------------------------------------------------------
 
 QT += core gui network bluetooth serialport websockets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-greaterThan(QT_MAJOR_VERSION, 5) {
-    greaterThan(QT_MINOR_VERSION, 3) {
-        QT  += quick quickcontrols2
-    }
-}
-
-contains(CONFIG, debug, debug|release){
+contains(CONFIG, debug, debug|release) {
     TARGET = QtSwissArmyKnifed
-}else{
+} else {
     TARGET = QtSwissArmyKnife
-}
-
-win32:mingw {
-    # It seems to be not effective
-    QMAKE_LFLAGS += -static-libgcc -static-libstdc++
 }
 
 TEMPLATE = app
@@ -80,25 +69,29 @@ win32 {
     QMAKE_TARGET_VERSION        = "$${SAK_VERSION}"
 }
 
-#--------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #Output directory
 UI_DIR      = $$OUT_PWD/ui
 MOC_DIR     = $$OUT_PWD/moc
 RCC_DIR     = $$OUT_PWD/res
 OBJECTS_DIR = $$OUT_PWD/obj
 
-#--------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #Configuration of Windows
 win32 {
     RC_ICONS = Windows.ico
-    msvc:{
-        lessThan(QT_MAJOR_VERSION, 6){
+    msvc {
+        lessThan(QT_MAJOR_VERSION, 6) {
             QMAKE_CXXFLAGS += -execution-charset:utf-8
         }
     }
+
+    mingw {
+        QMAKE_LFLAGS += -static
+    }
 }
 
-#--------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 #I18N
 TRANSLATIONS  += \
     resources/translations/sak_en.ts \
@@ -128,13 +121,6 @@ TRANSLATIONS  += \
 RESOURCES += \
     SAKResources.qrc
 
-greaterThan(QT_MAJOR_VERSION, 5) {
-    greaterThan(QT_MINOR_VERSION, 3) {
-        RESOURCES += \
-            SAKQmlResources.qrc
-    }
-}
-
 INCLUDEPATH += \
     src
 
@@ -154,7 +140,12 @@ SOURCES += \
 
 greaterThan(QT_MAJOR_VERSION, 5) {
     greaterThan(QT_MINOR_VERSION, 3) {
+        QT += quick quickcontrols2
+
         HEADERS += src/SAKGuiApplication.hh
         SOURCES += src/SAKGuiApplication.cc
+        RESOURCES += SAKQmlResources.qrc
     }
+} else {
+    message("If you want to using QML UI, you must use Qt6.4.0 or later.")
 }

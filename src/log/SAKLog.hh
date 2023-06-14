@@ -18,10 +18,17 @@
 
 #include "SAKTableModel.hh"
 
+#define SAK_PROPERTY(type, getter, setter) \
+Q_PROPERTY(type getter READ getter WRITE setter NOTIFY getter##Changed)
+
 class SAKLog : public QThread
 {
     Q_OBJECT
+#if 1
     Q_PROPERTY(qint64 logLifeCycle READ logLifeCycle WRITE setLogLifeCycle NOTIFY logLifeCycleChanged)
+#else
+    SAK_PROPERTY(qint64, logLifeCycle, setLogLifeCycle)
+#endif
     Q_PROPERTY(int logLevel READ logLevel WRITE setLogLevel NOTIFY logLevelChanged)
     Q_PROPERTY(bool isPaused READ isPaused WRITE setIsPaused NOTIFY isPausedChanged)
 private:
