@@ -74,7 +74,7 @@
     </widget>
    </item>
    <item row="6" column="0" colspan="2">
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <layout class="QHBoxLayout" name="horizontalLayout">
      <property name="leftMargin">
       <number>0</number>
      </property>
@@ -88,7 +88,7 @@
       <number>0</number>
      </property>
      <item>
-      <spacer name="horizontalSpacer_2">
+      <spacer name="horizontalSpacer">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -101,14 +101,14 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButtonCancel_2">
+      <widget class="QPushButton" name="pushButtonCancel">
        <property name="text">
         <string>Cancel</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButtonApply_2">
+      <widget class="QPushButton" name="pushButtonApply">
        <property name="text">
         <string>Apply</string>
        </property>

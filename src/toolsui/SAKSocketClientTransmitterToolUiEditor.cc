@@ -16,6 +16,10 @@ SAKSocketClientTransmitterToolUiEditor::SAKSocketClientTransmitterToolUiEditor(Q
     , ui(new Ui::SAKSocketClientTransmitterToolUiEditor)
 {
     ui->setupUi(this);
+    connect(ui->pushButtonApply, &QPushButton::clicked,
+            this, &SAKSocketClientTransmitterToolUiEditor::accept);
+    connect(ui->pushButtonCancel, &QPushButton::clicked,
+            this, &SAKSocketClientTransmitterToolUiEditor::reject);
 }
 
 SAKSocketClientTransmitterToolUiEditor::~SAKSocketClientTransmitterToolUiEditor()

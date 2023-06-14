@@ -32,6 +32,7 @@ public:
     explicit SAKTableModelToolUi(const char *lg, QWidget *parent = nullptr);
     ~SAKTableModelToolUi();
     void setStretchSections(QList<int>columns);
+    void setColumnVisible(int column, bool visible);
 
 protected:
     virtual void onBaseToolUiInitialized(SAKBaseTool *tool,

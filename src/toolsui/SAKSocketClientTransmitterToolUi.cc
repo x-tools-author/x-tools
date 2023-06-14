@@ -27,6 +27,7 @@ void SAKSocketClientTransmitterToolUi::onBaseToolUiInitialized(
     SAKTransmitterToolUi::onBaseToolUiInitialized(tool, settingGroup);
 
     QList<int> columns;
-    columns << 6;
+    columns << 5;
     setStretchSections(columns);
+    setColumnVisible(6, false);
 }
