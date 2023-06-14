@@ -107,7 +107,7 @@ void SAKToolBoxUiParameters::initialize(SAKToolBox *toolBox,
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
         QStringList list = text.split(";", Qt::SkipEmptyParts);
 #else
-        QStringList list = text.split(';', QString::SectionSkipEmpty);
+        QStringList list = text.split(QString(";"), QString::SkipEmptyParts);
 #endif
         mHighlighter->removeKeyWord("");
         mHighlighter->setKeyWords(list);

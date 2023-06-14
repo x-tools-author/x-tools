@@ -182,6 +182,7 @@ void SAKLog::run()
     writeTimer->start();
     clearTimer->start();
     exec();
+    qCDebug(mLoggingCategory) << __FUNCTION__;
 
     writeTimer->stop();
     writeTimer->deleteLater();
@@ -407,8 +408,14 @@ void SAKLog::clearLog()
         qint64 currentDateTime = QDateTime::currentMSecsSinceEpoch();
         quint64 interval = qAbs(mLogLifeCycle*24*60*60*1000);
         if (quint64(qAbs(dateTime - currentDateTime)) > interval) {
-            QFile::remove(info.fileName());
-            qCInfo(mLoggingCategory) << "Remmove log file:" << info.fileName();
+            QString fileName = info.absoluteFilePath();
+            if (QFile::remove(fileName)) {
+                QString log = QString("log(%1) removed").arg(fileName);
+                qCInfo(mLoggingCategory) << qPrintable(log);
+            } else {
+                QString log = QString("remove log(%1) failed").arg(fileName);
+                qCInfo(mLoggingCategory) << qPrintable(log);
+            }
         }
     }
 }

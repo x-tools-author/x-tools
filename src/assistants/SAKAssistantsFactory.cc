@@ -48,7 +48,14 @@ SAKAssistantsFactory::SAKAssistantsFactory(QObject *parent)
 
 QVector<int> SAKAssistantsFactory::supportedAssistants()
 {
-    return mTypeNameMap.keys();
+    // QList is not same as QVector in some Qt version.
+    QList<int> ret = mTypeNameMap.keys();
+    QVector<int> cooked;
+    for (int i = 0; i < ret.count(); i++) {
+        cooked.append(ret.at(i));
+    }
+
+    return cooked;
 }
 
 QString SAKAssistantsFactory::assistantName(int type) const

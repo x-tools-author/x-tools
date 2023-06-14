@@ -20,8 +20,12 @@ void SAKVelometerTool::inputBytes(const QByteArray &bytes,
                                   const QVariant &context)
 {
     if (isRunning()) {
+        InputBytesContext ctx;
+        ctx.bytes = bytes;
+        ctx.context = context;
+
         mInputBytesContextListMutex.lock();
-        mInputBytesContextList.append({bytes, context});
+        mInputBytesContextList.append(ctx);
         mInputBytesContextListMutex.unlock();
     }
 }

@@ -144,7 +144,10 @@ bool SAKEmitterTool::insertRows(int row,
                                 const QModelIndex &parent)
 {
     Q_UNUSED(parent);
-    EmiterItem item{Data{}, 0};
+    Data ctx;
+    EmiterItem item;
+    item.data = ctx;
+    item.elapsedTime = 0;
     for (int i = 0; i < count; i++) {
         mItems.insert(row, item);
     }

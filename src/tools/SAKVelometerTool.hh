@@ -29,8 +29,8 @@ protected:
 
 private:
     struct InputBytesContext {
-        const QByteArray &bytes;
-        const QVariant &context;
+        QByteArray bytes;
+        QVariant context;
     };
     QList<struct InputBytesContext> mInputBytesContextList;
     QMutex mInputBytesContextListMutex;

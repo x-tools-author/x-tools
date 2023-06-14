@@ -22,6 +22,7 @@
 #include <QVariant>
 #include <QSysInfo>
 #include <QToolBar>
+#include <QDateTime>
 #include <QMetaEnum>
 #include <QSettings>
 #include <QLineEdit>

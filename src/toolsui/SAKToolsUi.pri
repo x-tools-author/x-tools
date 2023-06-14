@@ -25,7 +25,6 @@ HEADERS += \
     $$PWD/SAKTcpTransmitterToolUi.hh \
     $$PWD/SAKTransmitterToolUi.hh \
     $$PWD/SAKUdpTransmitterToolUi.hh \
-    $$PWD/SAKUdpTransmitterToolUiEditor.hh \
     $$PWD/SAKVelometerToolUi.hh \
     $$PWD/SAKWebSocketTransmitterToolUi.hh
 

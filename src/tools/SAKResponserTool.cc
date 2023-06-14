@@ -121,7 +121,10 @@ bool SAKResponserTool::setData(const QModelIndex &index,
 bool SAKResponserTool::insertRows(int row, int count, const QModelIndex &parent)
 {
     Q_UNUSED(parent);
-    ResponserData item{ResponserItem{}, 0};
+    ResponserItem ctx;
+    ResponserData item;
+    item.data = ctx;
+    item.elapsedTime = 0;
     for (int i = 0; i < count; i++) {
         mItems.insert(row, item);
     }

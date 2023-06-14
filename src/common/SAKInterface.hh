@@ -23,20 +23,12 @@ public:
                                             int format);
     Q_INVOKABLE static QByteArray string2array(const QString &input,
                                                int format);
-    Q_INVOKABLE static void setMaximumBlockCount(QVariant quickTextDocument,
+    Q_INVOKABLE static void setMaximumBlockCount(QVariant doc,
                                                  int maximum);
     Q_INVOKABLE static QString dateTimeString(const QString &format);
     Q_INVOKABLE static QByteArray arrayAppendArray(const QByteArray &a1,
                                                    const QByteArray &a2);
-    Q_INVOKABLE static void tableModel2jsonFile(QVariant tableModel,
-                                                const QString &fileName);
-    Q_INVOKABLE static void jsonFile2tableModel(QVariant tableModel,
-                                                const QString &fileName);
-    Q_INVOKABLE static void jsonArray2TableModel(QVariant tableModel,
-                                                 const QJsonArray &array);
     Q_INVOKABLE static QString cookedFileName(const QString &fileName);
-    Q_INVOKABLE static void clearTableModel(QVariant tableModel);
-    Q_INVOKABLE static void removeTableModelRow(QVariant tableModel, int row);
 
     Q_INVOKABLE static QString string2hexString(const QString &str);
     Q_INVOKABLE static QString hexString2String(const QString &str);

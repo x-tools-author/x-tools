@@ -109,9 +109,9 @@ QByteArray SAKInterface::string2array(const QString &input, int format)
     return data;
 }
 
-void SAKInterface::setMaximumBlockCount(QVariant quickTextDocument, int maximum)
+void SAKInterface::setMaximumBlockCount(QVariant doc, int maximum)
 {
-    auto obj = quickTextDocument.value<QObject*>();
+    auto obj = doc.value<QObject*>();
     if (obj) {
 #if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
         auto quickTextDoc = qobject_cast<QQuickTextDocument*>(obj);
@@ -120,7 +120,7 @@ void SAKInterface::setMaximumBlockCount(QVariant quickTextDocument, int maximum)
             textDoc->setMaximumBlockCount(maximum);
         }
 #else
-        Q_UNUSED(quickTextDocument)
+        Q_UNUSED(doc)
         Q_UNUSED(maximum)
 #endif
     }
@@ -137,90 +137,6 @@ QByteArray SAKInterface::arrayAppendArray(const QByteArray &a1,
     return a1 + a2;
 }
 
-void SAKInterface::tableModel2jsonFile(QVariant tableModel,
-                                  const QString &fileName)
-{
-    QFile file(cookedFileName(fileName));
-    if (!file.open(QFile::WriteOnly)) {
-        qWarning() << file.errorString();
-        return;
-    }
-
-    if (!tableModel.canConvert<QAbstractTableModel*>()) {
-        qWarning() << "Unvalid parameter(tableModel)";
-        return;
-    }
-
-    QJsonArray items;
-    QJsonObject item;
-    auto cookedTableModel = tableModel.value<QAbstractTableModel *>();
-    int rowCount = cookedTableModel->rowCount();
-    int columnCount = cookedTableModel->columnCount();
-    for (int row = 0; row < rowCount; row++) {
-        for (int column = 0; column < columnCount; column++) {
-            auto index = cookedTableModel->index(row, column);
-            auto value = cookedTableModel->data(index, Qt::DisplayRole);
-            auto key = cookedTableModel->headerData(column, Qt::Horizontal);
-            item.insert(key.toString(), value.toJsonValue());
-        }
-        items.append(item);
-    }
-
-    QJsonDocument jsonDoc(items);
-    QByteArray data = jsonDoc.toJson(QJsonDocument::Indented);
-    QTextStream ts(&file);
-    ts << data;
-
-    file.close();
-}
-
-void SAKInterface::jsonFile2tableModel(QVariant tableModel,
-                                  const QString &fileName)
-{
-    QFile file(cookedFileName(fileName));
-    if (!file.open(QFile::ReadOnly)) {
-        qWarning() << file.errorString();
-        return;
-    }
-
-    if (!tableModel.canConvert<QAbstractTableModel*>()) {
-        qWarning() << "Unvalid parameter(tableModel)";
-        return;
-    }
-
-    QByteArray json = file.readAll();
-    file.close();
-    QJsonDocument jsonDoc = QJsonDocument::fromJson(json);
-    QJsonArray items = jsonDoc.array();
-    jsonArray2TableModel(tableModel, items);
-}
-
-void SAKInterface::jsonArray2TableModel(QVariant tableModel,
-                                       const QJsonArray &array)
-{
-    QJsonArray items = array;
-    QJsonObject item;
-    auto cookedTableModel = tableModel.value<QAbstractTableModel *>();
-    int rowCount = cookedTableModel->rowCount();
-    int columnCount = cookedTableModel->columnCount();
-    if (rowCount > 0) {
-        cookedTableModel->removeRows(0, rowCount);
-    }
-
-    cookedTableModel->insertRows(0, items.count());
-    for (int row = 0; row < items.count(); row++) {
-        item = items.at(row).toObject();
-        for (int column = 0; column < columnCount; column++) {
-            auto index = cookedTableModel->index(row, column);
-            auto key = cookedTableModel->headerData(column, Qt::Horizontal);
-            auto value = item.value(key.toString());
-            if (!cookedTableModel->setData(index, value, Qt::EditRole)) {
-                qWarning() << "Can not set data.";
-            }
-        }
-    }
-}
-
 QString SAKInterface::cookedFileName(const QString &fileName)
 {
     QString cookedFileName = fileName;
@@ -229,34 +145,6 @@ QString SAKInterface::cookedFileName(const QString &fileName)
 #endif
 
     return cookedFileName;
-}
-
-void SAKInterface::clearTableModel(QVariant tableModel)
-{
-    if (!tableModel.canConvert<QAbstractTableModel*>()) {
-        qWarning() << "Unvalid parameter(tableModel)";
-        return;
-    }
-
-    auto cookedTableModel = tableModel.value<QAbstractTableModel *>();
-    int rowCount = cookedTableModel->rowCount();
-    if (rowCount > 0) {
-        cookedTableModel->removeRows(0, rowCount);
-    }
-}
-
-void SAKInterface::removeTableModelRow(QVariant tableModel, int row)
-{
-    if (!tableModel.canConvert<QAbstractTableModel*>()) {
-        qWarning() << "Unvalid parameter(tableModel)";
-        return;
-    }
-
-    auto cookedTableModel = tableModel.value<QAbstractTableModel *>();
-    int rowCount = cookedTableModel->rowCount();
-    if (rowCount > 0) {
-        cookedTableModel->removeRows(row, 1);
-    }
 }
 
 QString SAKInterface::string2hexString(const QString &str)
