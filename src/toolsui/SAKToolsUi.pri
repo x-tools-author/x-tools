@@ -23,13 +23,11 @@ HEADERS += \
     $$PWD/SAKStorerToolUi.hh \
     $$PWD/SAKTableModelToolUi.hh \
     $$PWD/SAKTcpTransmitterToolUi.hh \
-    $$PWD/SAKTcpTransmitterToolUiEditor.hh \
     $$PWD/SAKTransmitterToolUi.hh \
     $$PWD/SAKUdpTransmitterToolUi.hh \
     $$PWD/SAKUdpTransmitterToolUiEditor.hh \
     $$PWD/SAKVelometerToolUi.hh \
-    $$PWD/SAKWebSocketTransmitterToolUi.hh \
-    $$PWD/SAKWebSocketTransmitterToolUiEditor.hh
+    $$PWD/SAKWebSocketTransmitterToolUi.hh
 
 SOURCES += \
     $$PWD/SAKAnalyzerToolUi.cc \

@@ -7,16 +7,16 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#ifndef SAKUDPTRANSMITTERTOOLUI_HH
-#define SAKUDPTRANSMITTERTOOLUI_HH
+#ifndef SAKTCPTRANSMITTERTOOLUI_HH
+#define SAKTCPTRANSMITTERTOOLUI_HH
 
+#include "SAKSocketClientTool.hh"
 #include "SAKSocketClientTransmitterToolUi.hh"
 
-class SAKUdpTransmitterToolUi : public SAKSocketClientTransmitterToolUi
+class SAKTcpTransmitterToolUi : public SAKSocketClientTransmitterToolUi
 {
-    Q_OBJECT
 public:
-    SAKUdpTransmitterToolUi(QWidget *parent = nullptr);
+    explicit SAKTcpTransmitterToolUi(QWidget *parent = nullptr);
 };
 
-#endif // SAKUDPTRANSMITTERTOOLUI_HH
+#endif // SAKTCPTRANSMITTERTOOLUI_HH

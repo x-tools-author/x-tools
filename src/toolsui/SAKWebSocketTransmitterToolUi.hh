@@ -10,18 +10,17 @@
 #ifndef SAKWEBSOCKETTRANSMITTERTOOLUI_HH
 #define SAKWEBSOCKETTRANSMITTERTOOLUI_HH
 
-#include "SAKTransmitterToolUi.hh"
-#include "SAKWebSocketTransmitterToolUiEditor.hh"
+#include "SAKSocketClientTransmitterToolUi.hh"
 
-class SAKWebSocketTransmitterToolUi : public SAKTransmitterToolUi
+class SAKWebSocketTransmitterToolUi : public SAKSocketClientTransmitterToolUi
 {
     Q_OBJECT
 public:
     SAKWebSocketTransmitterToolUi(QWidget *parent = nullptr);
-    virtual QDialog *itemEditor() override;
 
-private:
-    SAKWebSocketTransmitterToolUiEditor *mEditor{nullptr};
+protected:
+    virtual void onBaseToolUiInitialized(SAKBaseTool *tool,
+                                         const QString &settingGroup) override;
 };
 
 #endif // SAKWEBSOCKETTRANSMITTERTOOLUI_HH

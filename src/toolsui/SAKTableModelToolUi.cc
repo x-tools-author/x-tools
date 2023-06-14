@@ -61,6 +61,16 @@ void SAKTableModelToolUi::setStretchSections(QList<int>columns)
     }
 }
 
+void SAKTableModelToolUi::setColumnVisible(int column, bool visible)
+{
+    QTableView *tableView = ui->tableView;
+    if (visible) {
+        tableView->showColumn(column);
+    } else {
+        tableView->hideColumn(column);
+    }
+}
+
 void SAKTableModelToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
                                                   const QString &settingGroup)
 {

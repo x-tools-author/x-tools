@@ -10,22 +10,7 @@
 #include "SAKUdpTransmitterToolUi.hh"
 
 SAKUdpTransmitterToolUi::SAKUdpTransmitterToolUi(QWidget *parent)
-    : SAKTransmitterToolUi{"SAK.UdpTransmitterToolUi", parent}
+    : SAKSocketClientTransmitterToolUi("SAK.SocketClientTransmitterToolUi", parent)
 {
-    mEditor = new SAKUdpTransmitterToolUiEditor(this);
-}
 
-QDialog *SAKUdpTransmitterToolUi::itemEditor()
-{
-    return mEditor;
-}
-
-void SAKUdpTransmitterToolUi::onBaseToolUiInitialized(
-    SAKBaseTool *tool, const QString &settingGroup)
-{
-    SAKTransmitterToolUi::onBaseToolUiInitialized(tool, settingGroup);
-
-    QList<int> columns;
-    columns << 5;
-    setStretchSections(columns);
 }

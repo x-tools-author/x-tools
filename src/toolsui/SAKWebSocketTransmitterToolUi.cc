@@ -10,12 +10,16 @@
 #include "SAKWebSocketTransmitterToolUi.hh"
 
 SAKWebSocketTransmitterToolUi::SAKWebSocketTransmitterToolUi(QWidget *parent)
-    : SAKTransmitterToolUi{"SAK.WebSocketTransmitterToolUi", parent}
+    : SAKSocketClientTransmitterToolUi("SAK.WebSocketTransmitterToolUi", parent)
 {
-    mEditor= new SAKWebSocketTransmitterToolUiEditor(this);
+
 }
 
-QDialog *SAKWebSocketTransmitterToolUi::itemEditor()
+void SAKWebSocketTransmitterToolUi::onBaseToolUiInitialized(
+    SAKBaseTool *tool, const QString &settingGroup)
 {
-    return mEditor;
+    SAKSocketClientTransmitterToolUi::onBaseToolUiInitialized(tool,
+                                                              settingGroup);
+
+    setColumnVisible(6, true);
 }
