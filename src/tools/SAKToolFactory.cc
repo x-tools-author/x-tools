@@ -23,9 +23,11 @@
 #include "SAKBleCentralTool.hh"
 #include "SAKSerialPortTool.hh"
 #include "SAKStatisticianTool.hh"
+#include "SAKTcpTransmitterTool.hh"
 #include "SAKUdpTransmitterTool.hh"
 #include "SAKWebSocketClientTool.hh"
 #include "SAKWebSocketServerTool.hh"
+#include "SAKWebSocketTransmitterTool.hh"
 #include "SAKSerialPortTransmitterTool.hh"
 
 SAKToolFactory::SAKToolFactory(QObject *parent)
@@ -79,6 +81,10 @@ SAKBaseTool *SAKToolFactory::createTool(int type)
         tool = new SAKSerialPortTransmitterTool();
     } else if (UdpTransmitterTool == type) {
         tool = new SAKUdpTransmitterTool();
+    } else if (TcpTransmitterTool == type) {
+        tool = new SAKTcpTransmitterTool();
+    } else if (WebSocketTransmitterTool == type) {
+        tool = new SAKWebSocketTransmitterTool();
     } else {
         qWarning() << "Unknown tool type: " << type;
     }

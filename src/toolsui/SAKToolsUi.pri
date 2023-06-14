@@ -54,13 +54,10 @@ SOURCES += \
     $$PWD/SAKStorerToolUi.cc \
     $$PWD/SAKTableModelToolUi.cc \
     $$PWD/SAKTcpTransmitterToolUi.cc \
-    $$PWD/SAKTcpTransmitterToolUiEditor.cc \
     $$PWD/SAKTransmitterToolUi.cc \
     $$PWD/SAKUdpTransmitterToolUi.cc \
-    $$PWD/SAKUdpTransmitterToolUiEditor.cc \
     $$PWD/SAKVelometerToolUi.cc \
-    $$PWD/SAKWebSocketTransmitterToolUi.cc \
-    $$PWD/SAKWebSocketTransmitterToolUiEditor.cc
+    $$PWD/SAKWebSocketTransmitterToolUi.cc
 
 FORMS += \
     $$PWD/SAKAnalyzerToolUi.ui \
@@ -72,11 +69,9 @@ FORMS += \
     $$PWD/SAKSerialPortToolUi.ui \
     $$PWD/SAKSerialPortTransmitterToolUiEditor.ui \
     $$PWD/SAKSocketClientToolUi.ui \
+    $$PWD/SAKSocketClientTransmitterToolUiEditor.ui \
     $$PWD/SAKSocketServerToolUi.ui \
     $$PWD/SAKStatisticianToolUi.ui \
     $$PWD/SAKStorerToolUi.ui \
     $$PWD/SAKTableModelToolUi.ui \
-    $$PWD/SAKTcpTransmitterToolUiEditor.ui \
-    $$PWD/SAKUdpTransmitterToolUiEditor.ui \
     $$PWD/SAKVelometerToolUi.ui \
-    $$PWD/SAKWebSocketTransmitterToolUiEditor.ui

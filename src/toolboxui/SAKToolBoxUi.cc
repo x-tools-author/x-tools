@@ -555,12 +555,17 @@ void SAKToolBoxUi::initTools()
                                  settingsGroup() + "/prestorer");
 
     mTcpTransmitterToolUi = new SAKTcpTransmitterToolUi(this);
-
+    mTcpTransmitterToolUi->initialize(
+        mToolBox->getTcpTransmitterTool(),
+        settingsGroup() + "/tcpTransmitter");
     mUdpTransmitterToolUi = new SAKUdpTransmitterToolUi(this);
     mUdpTransmitterToolUi->initialize(
         mToolBox->getUdpTransmitterTool(),
         settingsGroup() + "/udpTransmitter");
     mWebSocketTransmitterToolUi = new SAKWebSocketTransmitterToolUi(this);
+    mWebSocketTransmitterToolUi->initialize(
+        mToolBox->getTcpTransmitterTool(),
+        settingsGroup() + "/webSocketTransmitter");
     mSerialPortTransmitterToolUi = new SAKSerialPortTransmitterToolUi(this);
     mSerialPortTransmitterToolUi->initialize(
         mToolBox->getSerialPortTransmitterTool(),

@@ -7,10 +7,17 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
+#include "SAKWebSocketClientTool.hh"
 #include "SAKWebSocketTransmitterTool.hh"
 
 SAKWebSocketTransmitterTool::SAKWebSocketTransmitterTool(QObject *parent)
-    : SAKTransmitterTool{"SAK.WebSocketTransmitterTool", parent}
+    : SAKSocketClientTransmitterTool{"SAK.WebSocketTransmitterTool", parent}
 {
 
+}
+
+SAKSocketClientTool *SAKWebSocketTransmitterTool::createTool()
+{
+    SAKWebSocketClientTool *tool = new SAKWebSocketClientTool();
+    return tool;
 }

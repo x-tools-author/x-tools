@@ -1,30 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SAKUdpTransmitterToolUiEditor</class>
- <widget class="QWidget" name="SAKUdpTransmitterToolUiEditor">
+ <class>SAKSocketClientTransmitterToolUiEditor</class>
+ <widget class="QWidget" name="SAKSocketClientTransmitterToolUiEditor">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>289</width>
-    <height>245</height>
+    <width>194</width>
+    <height>229</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>UDP Transmitter Tool Item Editor</string>
+   <string>Item Editor</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="5" column="0">
-    <widget class="QLabel" name="label_4">
+   <item row="1" column="0">
+    <widget class="QLabel" name="label">
      <property name="text">
-      <string>Server port</string>
+      <string>Client IP</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="1" colspan="2">
+   <item row="1" column="1">
+    <widget class="SAKIpComboBox" name="comboBoxClientIp"/>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Client port</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
     <widget class="QSpinBox" name="spinBoxClientPort">
      <property name="maximum">
       <number>65535</number>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="2">
+    <widget class="QCheckBox" name="checkBoxSpecifiedClientIpAndPort">
+     <property name="text">
+      <string>Specified client ip and port</string>
      </property>
     </widget>
    </item>
@@ -35,53 +52,29 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>Client IP</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="1" colspan="2">
+   <item row="4" column="1">
     <widget class="SAKIpComboBox" name="comboBoxServerIp">
      <property name="editable">
       <bool>true</bool>
      </property>
     </widget>
    </item>
-   <item row="1" column="1" colspan="2">
-    <widget class="SAKIpComboBox" name="comboBoxClientIp"/>
-   </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="label_2">
+   <item row="5" column="0">
+    <widget class="QLabel" name="label_4">
      <property name="text">
-      <string>Client port</string>
+      <string>Server port</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="0" colspan="3">
-    <widget class="QCheckBox" name="checkBoxSpecifiedClientIpAndPort">
-     <property name="text">
-      <string>Specified client ip and port</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="1" colspan="2">
+   <item row="5" column="1">
     <widget class="QSpinBox" name="spinBoxServerPort">
      <property name="maximum">
       <number>65535</number>
      </property>
     </widget>
    </item>
-   <item row="0" column="0" colspan="3">
-    <widget class="QCheckBox" name="checkBoxEnable">
-     <property name="text">
-      <string>enable</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="0" colspan="3">
-    <layout class="QHBoxLayout" name="horizontalLayout">
+   <item row="6" column="0" colspan="2">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
      <property name="leftMargin">
       <number>0</number>
      </property>
@@ -95,7 +88,7 @@
       <number>0</number>
      </property>
      <item>
-      <spacer name="horizontalSpacer">
+      <spacer name="horizontalSpacer_2">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -108,20 +101,27 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButtonCancel">
+      <widget class="QPushButton" name="pushButtonCancel_2">
        <property name="text">
         <string>Cancel</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButtonApply">
+      <widget class="QPushButton" name="pushButtonApply_2">
        <property name="text">
         <string>Apply</string>
        </property>
       </widget>
      </item>
     </layout>
+   </item>
+   <item row="0" column="0" colspan="2">
+    <widget class="QCheckBox" name="checkBoxEnable">
+     <property name="text">
+      <string>enable</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

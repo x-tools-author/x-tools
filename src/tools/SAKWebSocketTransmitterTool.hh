@@ -10,13 +10,14 @@
 #ifndef SAKWEBSOCKETTRANSMITTERTOOL_HH
 #define SAKWEBSOCKETTRANSMITTERTOOL_HH
 
-#include "SAKTransmitterTool.hh"
+#include "SAKSocketClientTransmitterTool.hh"
 
-class SAKWebSocketTransmitterTool : public SAKTransmitterTool
+class SAKWebSocketTransmitterTool : public SAKSocketClientTransmitterTool
 {
     Q_OBJECT
 public:
     explicit SAKWebSocketTransmitterTool(QObject *parent = nullptr);
+    virtual SAKSocketClientTool *createTool() override;
 };
 
 #endif // SAKWEBSOCKETTRANSMITTERTOOL_HH

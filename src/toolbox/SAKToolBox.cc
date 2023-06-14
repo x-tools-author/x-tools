@@ -46,6 +46,12 @@ SAKToolBox::SAKToolBox(QObject *parent)
     tool = createTool(SAKToolFactory::UdpTransmitterTool);
     mUdpTransmitterTool =
         qobject_cast<SAKUdpTransmitterTool*>(tool);
+    tool = createTool(SAKToolFactory::TcpTransmitterTool);
+    mTcpTransmitterTool =
+        qobject_cast<SAKTcpTransmitterTool*>(tool);
+    tool = createTool(SAKToolFactory::WebSocketTransmitterTool);
+    mWebSocketTransmitterTool =
+        qobject_cast<SAKWebSocketTransmitterTool*>(tool);
     tool = createTool(SAKToolFactory::SerialPortTransmitterTool);
     mSerialPortTransmitterTool =
         qobject_cast<SAKSerialPortTransmitterTool*>(tool);
@@ -63,6 +69,8 @@ SAKToolBox::SAKToolBox(QObject *parent)
               << mRxStatisticianTool
               << mTxStatisticianTool
               << mUdpTransmitterTool
+              << mTcpTransmitterTool
+              << mWebSocketTransmitterTool
               << mSerialPortTransmitterTool;
 }
 
@@ -130,10 +138,20 @@ void SAKToolBox::initialize(int type)
     connect(mSerialPortTransmitterTool, &SAKBaseTool::bytesOutputted,
             mTxAnalyzerTool, &SAKBaseTool::inputBytes);
 
-    // rx->serialport transmition; tx->serialport transmition
+    // rx->udp transmition; tx->udp transmition
     connect(mRxAnalyzerTool, &SAKBaseTool::bytesOutputted,
             mUdpTransmitterTool, &SAKBaseTool::inputBytes);
     connect(mUdpTransmitterTool, &SAKBaseTool::bytesOutputted,
+            mTxAnalyzerTool, &SAKBaseTool::inputBytes);
+
+    connect(mRxAnalyzerTool, &SAKBaseTool::bytesOutputted,
+            mTcpTransmitterTool, &SAKBaseTool::inputBytes);
+    connect(mTcpTransmitterTool, &SAKBaseTool::bytesOutputted,
+            mTxAnalyzerTool, &SAKBaseTool::inputBytes);
+
+    connect(mRxAnalyzerTool, &SAKBaseTool::bytesOutputted,
+            mWebSocketTransmitterTool, &SAKBaseTool::inputBytes);
+    connect(mWebSocketTransmitterTool, &SAKBaseTool::bytesOutputted,
             mTxAnalyzerTool, &SAKBaseTool::inputBytes);
 
     emit communicatonChanged();

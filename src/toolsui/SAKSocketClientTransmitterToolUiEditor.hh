@@ -11,12 +11,24 @@
 #define SAKSOCKETCLIENTTRANSMITTERTOOLUIEDITOR_HH
 
 #include <QDialog>
+#include <QJsonObject>
+
+namespace Ui {
+class SAKSocketClientTransmitterToolUiEditor;
+}
 
 class SAKSocketClientTransmitterToolUiEditor : public QDialog
 {
     Q_OBJECT
 public:
     SAKSocketClientTransmitterToolUiEditor(QWidget *parent = nullptr);
+    ~SAKSocketClientTransmitterToolUiEditor();
+
+    Q_INVOKABLE QJsonObject parameters();
+    Q_INVOKABLE void setParameters(const QJsonObject &params);
+
+private:
+    Ui::SAKSocketClientTransmitterToolUiEditor *ui;
 };
 
 #endif // SAKSOCKETCLIENTTRANSMITTERTOOLUIEDITOR_HH

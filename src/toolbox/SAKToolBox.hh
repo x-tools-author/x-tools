@@ -24,13 +24,14 @@
 #include "SAKStatisticianTool.hh"
 #include "SAKCommunicationTool.hh"
 #include "SAKUdpTransmitterTool.hh"
+#include "SAKTcpTransmitterTool.hh"
+#include "SAKWebSocketTransmitterTool.hh"
 #include "SAKSerialPortTransmitterTool.hh"
 
 class SAKToolBox : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QVariant communicaton READ communicaton
-                   NOTIFY communicatonChanged)
+    Q_PROPERTY(QVariant communicaton READ communicaton NOTIFY communicatonChanged)
     Q_PROPERTY(QVariant txMasker READ txMasker CONSTANT)
     Q_PROPERTY(QVariant rxMasker READ rxMasker CONSTANT)
     Q_PROPERTY(QVariant txAnalyzer READ txAnalyzer CONSTANT)
@@ -44,7 +45,9 @@ class SAKToolBox : public QObject
     Q_PROPERTY(QVariant rxStatistician READ rxStatistician CONSTANT)
     Q_PROPERTY(QVariant txStatistician READ txStatistician CONSTANT)
 
-    Q_PROPERTY(QVariant udpTransmitterTool READ udpTransmitterTool CONSTANT)
+    Q_PROPERTY(QVariant udpTransmitter READ udpTransmitter CONSTANT)
+    Q_PROPERTY(QVariant tcpTransmitter READ tcpTransmitter CONSTANT)
+    Q_PROPERTY(QVariant webSocketTransmitter READ webSocketTransmitter CONSTANT)
     Q_PROPERTY(QVariant serialPortTransmitter READ serialPortTransmitter CONSTANT)
 
     Q_PROPERTY(bool isWorking READ isWorking NOTIFY isWorkingChanged)
@@ -75,6 +78,8 @@ public:
     SAKStatisticianTool *getTxStatisticianTool(){return mTxStatisticianTool;}
 
     SAKUdpTransmitterTool *getUdpTransmitterTool(){return mUdpTransmitterTool;}
+    SAKTcpTransmitterTool *getTcpTransmitterTool(){return mTcpTransmitterTool;}
+    SAKWebSocketTransmitterTool *getWebSocketTransmitterTool(){return mWebSocketTransmitterTool;}
     SAKSerialPortTransmitterTool *getSerialPortTransmitterTool(){
         return mSerialPortTransmitterTool;
     }
@@ -95,6 +100,8 @@ private:
     SAKStatisticianTool *mTxStatisticianTool{nullptr};
 
     SAKUdpTransmitterTool *mUdpTransmitterTool{nullptr};
+    SAKTcpTransmitterTool *mTcpTransmitterTool{nullptr};
+    SAKWebSocketTransmitterTool *mWebSocketTransmitterTool{nullptr};
     SAKSerialPortTransmitterTool *mSerialPortTransmitterTool{nullptr};
 
     QList<SAKBaseTool*> mToolList;
@@ -119,7 +126,9 @@ private:
     QVariant txVelometer(){return QVariant::fromValue(mTxVelometerTool);}
     QVariant rxStatistician(){return QVariant::fromValue(mRxStatisticianTool);}
     QVariant txStatistician(){return QVariant::fromValue(mTxStatisticianTool);}
-    QVariant udpTransmitterTool(){return QVariant::fromValue(mUdpTransmitterTool);}
+    QVariant udpTransmitter(){return QVariant::fromValue(mUdpTransmitterTool);}
+    QVariant tcpTransmitter(){return QVariant::fromValue(mTcpTransmitterTool);}
+    QVariant webSocketTransmitter(){return QVariant::fromValue(mWebSocketTransmitterTool);}
     QVariant serialPortTransmitter(){return QVariant::fromValue(mSerialPortTransmitterTool);}
 
 signals:

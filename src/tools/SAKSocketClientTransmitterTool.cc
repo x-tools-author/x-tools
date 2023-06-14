@@ -73,6 +73,8 @@ QVariant SAKSocketClientTransmitterTool::data(const QModelIndex &index,
         return tool->serverIp();
     } else if (key == keys.serverPort) {
         return tool->serverPort();
+    } else if (key == keys.messageType) {
+        return tool->messageType();
     } else {
         Q_ASSERT_X(false, __FUNCTION__, "Unknow index");
         qCWarning(mLoggingCategory) << "unknown index:" << index;
@@ -105,6 +107,8 @@ bool SAKSocketClientTransmitterTool::setData(const QModelIndex &index,
         tool->setServerPort(value.toInt());
     } else if (key == keys.serverIp) {
         tool->setServerIp(value.toString());
+    } else if (key == keys.messageType) {
+        tool->setMessageType(value.toInt());
     } else {
         qCWarning(mLoggingCategory) << "unknow key:" << key;
         return false;
