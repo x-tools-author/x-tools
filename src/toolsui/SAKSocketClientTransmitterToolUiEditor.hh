@@ -24,6 +24,8 @@ public:
     SAKSocketClientTransmitterToolUiEditor(QWidget *parent = nullptr);
     ~SAKSocketClientTransmitterToolUiEditor();
 
+    void setWebSocketContextVisible(bool v);
+
     Q_INVOKABLE QJsonObject parameters();
     Q_INVOKABLE void setParameters(const QJsonObject &params);
 

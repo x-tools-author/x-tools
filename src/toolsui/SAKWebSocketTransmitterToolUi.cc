@@ -22,4 +22,5 @@ void SAKWebSocketTransmitterToolUi::onBaseToolUiInitialized(
                                                               settingGroup);
 
     setColumnVisible(6, true);
+    mEditor->setWebSocketContextVisible(true);
 }

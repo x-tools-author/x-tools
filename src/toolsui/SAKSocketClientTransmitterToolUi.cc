@@ -30,4 +30,6 @@ void SAKSocketClientTransmitterToolUi::onBaseToolUiInitialized(
     columns << 5;
     setStretchSections(columns);
     setColumnVisible(6, false);
+
+    mEditor->setWebSocketContextVisible(false);
 }

@@ -27,6 +27,17 @@ SAKSocketClientTransmitterToolUiEditor::~SAKSocketClientTransmitterToolUiEditor(
     delete ui;
 }
 
+void SAKSocketClientTransmitterToolUiEditor::setWebSocketContextVisible(bool v)
+{
+    if (v) {
+        ui->labelMessageType->show();
+        ui->comboBoxMessageType->show();
+    } else {
+        ui->labelMessageType->hide();
+        ui->comboBoxMessageType->hide();
+    }
+}
+
 QJsonObject SAKSocketClientTransmitterToolUiEditor::parameters()
 {
     bool enable = ui->checkBoxEnable->isChecked();
@@ -36,6 +47,7 @@ QJsonObject SAKSocketClientTransmitterToolUiEditor::parameters()
         ui->checkBoxSpecifiedClientIpAndPort->isChecked();
     QString serverIp = ui->comboBoxServerIp->currentText();
     int serverPort = ui->spinBoxServerPort->value();
+    int messageType = ui->comboBoxMessageType->currentData().toInt();
 
     QJsonObject obj;
     SAKSocketClientTransmitterTool::ItemContextKeys keys;
@@ -45,6 +57,7 @@ QJsonObject SAKSocketClientTransmitterToolUiEditor::parameters()
     obj.insert(keys.specifiedClientIpPort, specifiedClientIpPort);
     obj.insert(keys.serverIp, serverIp);
     obj.insert(keys.serverPort, serverPort);
+    obj.insert(keys.messageType, messageType);
     return obj;
 }
 
@@ -58,6 +71,7 @@ void SAKSocketClientTransmitterToolUiEditor::setParameters(const QJsonObject &pa
         params.value(keys.specifiedClientIpPort).toBool();
     QString serverIp = params.value(keys.serverIp).toString();
     int serverPort = params.value(keys.serverPort).toInt();
+    int messageType = params.value(keys.messageType).toInt();
 
     ui->checkBoxEnable->setChecked(enable);
     ui->comboBoxClientIp->setCurrentText(clientIp);
@@ -65,4 +79,5 @@ void SAKSocketClientTransmitterToolUiEditor::setParameters(const QJsonObject &pa
     ui->checkBoxSpecifiedClientIpAndPort->setChecked(specifiedClientIpPort);
     ui->comboBoxServerIp->setCurrentText(serverIp);
     ui->spinBoxServerPort->setValue(serverPort);
+    ui->comboBoxMessageType->setCurrentIndexFromData(messageType);
 }

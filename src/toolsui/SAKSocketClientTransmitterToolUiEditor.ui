@@ -7,13 +7,27 @@
     <x>0</x>
     <y>0</y>
     <width>194</width>
-    <height>229</height>
+    <height>260</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Item Editor</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0" colspan="2">
+    <widget class="QCheckBox" name="checkBoxEnable">
+     <property name="text">
+      <string>enable</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="1">
+    <widget class="QSpinBox" name="spinBoxServerPort">
+     <property name="maximum">
+      <number>65535</number>
+     </property>
+    </widget>
+   </item>
    <item row="1" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
@@ -21,13 +35,10 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="1">
-    <widget class="SAKIpComboBox" name="comboBoxClientIp"/>
-   </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="label_2">
+   <item row="4" column="0" colspan="2">
+    <widget class="QCheckBox" name="checkBoxSpecifiedClientIpAndPort">
      <property name="text">
-      <string>Client port</string>
+      <string>Specified client ip and port</string>
      </property>
     </widget>
    </item>
@@ -38,21 +49,7 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="0" colspan="2">
-    <widget class="QCheckBox" name="checkBoxSpecifiedClientIpAndPort">
-     <property name="text">
-      <string>Specified client ip and port</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="label_3">
-     <property name="text">
-      <string>Server IP</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="1">
+   <item row="5" column="1">
     <widget class="SAKIpComboBox" name="comboBoxServerIp">
      <property name="editable">
       <bool>true</bool>
@@ -60,20 +57,27 @@
     </widget>
    </item>
    <item row="5" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>Server IP</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Client port</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0">
     <widget class="QLabel" name="label_4">
      <property name="text">
       <string>Server port</string>
      </property>
     </widget>
    </item>
-   <item row="5" column="1">
-    <widget class="QSpinBox" name="spinBoxServerPort">
-     <property name="maximum">
-      <number>65535</number>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="0" colspan="2">
+   <item row="7" column="0" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <property name="leftMargin">
       <number>0</number>
@@ -116,12 +120,18 @@
      </item>
     </layout>
    </item>
-   <item row="0" column="0" colspan="2">
-    <widget class="QCheckBox" name="checkBoxEnable">
+   <item row="1" column="1">
+    <widget class="SAKIpComboBox" name="comboBoxClientIp"/>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="labelMessageType">
      <property name="text">
-      <string>enable</string>
+      <string>Message type</string>
      </property>
     </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="SAKWebSocketMessageTypeComboBox" name="comboBoxMessageType"/>
    </item>
   </layout>
  </widget>
@@ -130,6 +140,11 @@
    <class>SAKIpComboBox</class>
    <extends>QComboBox</extends>
    <header location="global">SAKIpComboBox.hh</header>
+  </customwidget>
+  <customwidget>
+   <class>SAKWebSocketMessageTypeComboBox</class>
+   <extends>QComboBox</extends>
+   <header location="global">SAKWebSocketMessageTypeComboBox.hh</header>
   </customwidget>
  </customwidgets>
  <resources/>

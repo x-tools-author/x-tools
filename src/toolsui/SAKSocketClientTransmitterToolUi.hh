@@ -23,7 +23,7 @@ protected:
     virtual void onBaseToolUiInitialized(SAKBaseTool *tool,
                                          const QString &settingGroup) override;
 
-private:
+protected:
     SAKSocketClientTransmitterToolUiEditor *mEditor{nullptr};
 };
 
