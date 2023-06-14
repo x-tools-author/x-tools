@@ -317,11 +317,11 @@ void SAKLog::onInvokeGetHeaderData(QVariant &data,
     }
 
     if (section == 0) {
-        data = tr("Message Type");
+        data = tr("Log Type");
     } else if (section == 1) {
-        data = tr("Message Category");
+        data = tr("Log Category");
     } else if (section == 2) {
-        data = tr("Message Detail");
+        data = tr("Log Detail");
     }
 }
 
