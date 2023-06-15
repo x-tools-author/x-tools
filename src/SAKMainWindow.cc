@@ -815,6 +815,7 @@ void SAKMainWindow::initNav(QButtonGroup *bg, const QIcon &icon,
 void SAKMainWindow::initStatusBar()
 {
     ui->statusbar->showMessage("Hello world", 10*1000);
+    ui->statusbar->hide();
 }
 
 void SAKMainWindow::aboutSoftware()
