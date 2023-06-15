@@ -31,15 +31,21 @@ QByteArray SAKCrcInterface::calculateBytes(const QByteArray &bytes,
                                            bool bigEndian)
 {
     auto parametersIsValid = [&]()->bool{
-        if (!bytes.isEmpty()) {
-            if (startIndex >= 0 && startIndex < bytes.length()) {
-                if (endIndex >= 0 && endIndex < bytes.length()) {
-                    int ret = bytes.length() - startIndex - endIndex;
-                    if (ret > 0) {
-                        return true;
-                    }
-                }
-            }
+        if (bytes.isEmpty()) {
+            return true;
+        }
+
+        if (!(startIndex >= 0 && startIndex < bytes.length())) {
+            return false;
+        }
+
+        if (!(endIndex >= 0 && endIndex < bytes.length())) {
+            return false;
+        }
+
+        int ret = bytes.length() - startIndex - endIndex;
+        if (ret > 0) {
+            return true;
         }
 
         return false;
