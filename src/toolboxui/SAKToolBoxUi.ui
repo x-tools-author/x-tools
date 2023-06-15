@@ -228,15 +228,19 @@
       <enum>QTabWidget::Rounded</enum>
      </property>
      <property name="currentIndex">
-      <number>4</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tabIO">
       <attribute name="title">
        <string>I/O</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_2">
-       <item row="1" column="0" colspan="3">
-        <widget class="QTextBrowser" name="textBrowserOutput"/>
+       <item row="2" column="3">
+        <widget class="QLabel" name="labelCrc">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
        </item>
        <item row="2" column="1">
         <spacer name="horizontalSpacer">
@@ -251,34 +255,10 @@
          </property>
         </spacer>
        </item>
-       <item row="3" column="0" colspan="3">
-        <widget class="SAKComboBox" name="comboBoxInputText">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="editable">
-          <bool>true</bool>
-         </property>
-        </widget>
+       <item row="1" column="0" colspan="4">
+        <widget class="QTextBrowser" name="textBrowserOutput"/>
        </item>
-       <item row="2" column="2">
-        <widget class="QLabel" name="labelCrc">
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="label">
-         <property name="text">
-          <string>Input</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0" colspan="3">
+       <item row="0" column="0" colspan="4">
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
           <widget class="QLabel" name="label_8">
@@ -358,6 +338,33 @@
           </widget>
          </item>
         </layout>
+       </item>
+       <item row="3" column="0" colspan="4">
+        <widget class="SAKComboBox" name="comboBoxInputText">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="editable">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Input</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string>CRC:</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>

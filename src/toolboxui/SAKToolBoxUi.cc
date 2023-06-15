@@ -347,6 +347,7 @@ void SAKToolBoxUi::init()
 
     onIsWorkingChanged();
     onComboBoxInputFormatActivated();
+    onInputTextChanged();
 }
 
 void SAKToolBoxUi::initUi()
