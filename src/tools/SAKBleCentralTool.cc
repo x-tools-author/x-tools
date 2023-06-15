@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -30,7 +30,7 @@ QVariantList SAKBleCentralTool::serviceCharacteristics(QVariant service)
     if (service.canConvert<QLowEnergyService*>()) {
         return list;
     }
-#if QT_VERSION >= QT_VERSION_CHECK(5, 7, 0)
+#if QT_VERSION >= QT_VERSION_CHECK(5, 10, 0)
     auto cookedService = service.value<QLowEnergyService*>();
     if (cookedService) {
         auto characteristics = cookedService->characteristics();
@@ -44,7 +44,7 @@ QVariantList SAKBleCentralTool::serviceCharacteristics(QVariant service)
 
 QString SAKBleCentralTool::characteristicName(QVariant characteristic)
 {
-#if QT_VERSION >= QT_VERSION_CHECK(5, 7, 0)
+#if QT_VERSION >= QT_VERSION_CHECK(5, 10, 0)
     if (characteristic.canConvert<QLowEnergyCharacteristic>()) {
         auto cookedCharacteristic = characteristic.value<QLowEnergyCharacteristic>();
         return cookedCharacteristic.name();
