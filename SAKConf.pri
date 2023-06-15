@@ -1,3 +1,15 @@
+qtHaveModule(serialport) {
+    DEFINES += SAK_HAS_MODULE_SERIALPORT
+}
+
+qtHaveModule(serialbus) {
+    DEFINES += SAK_HAS_MODULE_SERIALBUS
+}
+
+qtHaveModule(bluetooth) {
+    DEFINES += SAK_HAS_MODULE_BLUETOOTH
+}
+
 # Interval of timer which is used to clear ui message
 DEFINES += SAK_CLEAR_MESSAGE_INTERVAL=8000
 # The max count of auto response item
@@ -35,5 +47,5 @@ VERSION = 5.0.0
 #↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 # Information of author
 DEFINES += SAK_AUTHOR=\"\\\"Qsaker\\\"\"
-DEFINES += SAK_AUTHOR_EMAIL=\"\\\"qsaker@foxmail.com\\\"\"
+DEFINES += SAK_AUTHOR_EMAIL=\"\\\"wuuhaii@outlook.com\\\"\"
 #↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑

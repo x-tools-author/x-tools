@@ -7,6 +7,7 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
+#include "SAKInterface.hh"
 #include "SAKAnalyzerTool.hh"
 
 SAKAnalyzerTool::SAKAnalyzerTool(QObject *parent)
@@ -44,12 +45,12 @@ void SAKAnalyzerTool::inputBytes(const QByteArray &bytes,
         return;
     }
 
-    QString hex = QString::fromLatin1(bytes.toHex(' '));
+    QString hex = QString::fromLatin1(SAKInterface::arrayToHex(bytes, ' '));
     outputMessage(QtInfoMsg, QString("%1<-%2").arg(mToolName, hex));
     emit bytesInputted(bytes, context);
 
     if (!enable()) {
-        QString hex = QString::fromLatin1(bytes.toHex(' '));
+        QString hex = QString::fromLatin1(SAKInterface::arrayToHex(bytes, ' '));
         outputMessage(QtInfoMsg, QString("%1->%2").arg(mToolName, hex));
         emit bytesOutputted(bytes, context);
     } else {
@@ -92,7 +93,7 @@ void SAKAnalyzerTool::analyze()
 {
     if (mInputtedBytes.length() > mParameters.maxTempBytes) {
         outputMessage(QtInfoMsg,
-                      "clear bytes: " + QString(mInputtedBytes.toHex(' ')));
+                      "clear bytes: " + QString(SAKInterface::arrayToHex(mInputtedBytes, ' ')));
         mInputtedBytes.clear();
 
         return;
@@ -104,7 +105,7 @@ void SAKAnalyzerTool::analyze()
                              mParameters.frameBytes);
             mInputtedBytes.remove(0, mParameters.frameBytes);
 
-            QString hex = QString::fromLatin1(frame.toHex(' '));
+            QString hex = QString::fromLatin1(SAKInterface::arrayToHex(frame, ' '));
             outputMessage(QtInfoMsg, QString("Analyzer->%1").arg(hex));
             emit bytesOutputted(frame, QJsonObject());
         }
@@ -114,11 +115,11 @@ void SAKAnalyzerTool::analyze()
 
     if (mParameters.separationMark.isEmpty()) {
         if (!mInputtedBytes.isEmpty()) {
-            mInputtedBytes.clear();
-            QString hex = QString::fromLatin1(mInputtedBytes.toHex(' '));
+            QString hex = QString::fromLatin1(SAKInterface::arrayToHex(mInputtedBytes, ' '));
             QString msg = QString("Analyzer->%1").arg(hex);
             outputMessage(QtInfoMsg, msg);
             emit bytesOutputted(mInputtedBytes, QJsonObject());
+            mInputtedBytes.clear();
         }
     } else {
         auto ret = mInputtedBytes.indexOf(mParameters.separationMark);
@@ -127,7 +128,7 @@ void SAKAnalyzerTool::analyze()
             QByteArray frame(mInputtedBytes.constData(), len);
             mInputtedBytes.remove(0, len);
 
-            QString hex = QString::fromLatin1(frame.toHex(' '));
+            QString hex = QString::fromLatin1(SAKInterface::arrayToHex(frame, ' '));
             QString msg = QString("Analyzer->%1").arg(hex);
             outputMessage(QtInfoMsg, msg);
             emit bytesOutputted(frame, QJsonObject());

@@ -2,6 +2,7 @@
  * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
  *****************************************************************************/
 #include <QDebug>
+#include <QtGlobal>
 #include <QBluetoothDeviceInfo>
 
 #include "SAKBleScanner.hh"
@@ -16,8 +17,13 @@ SAKBleScanner::SAKBleScanner(QObject *parent)
     connect(mDiscover, &QBluetoothDeviceDiscoveryAgent::errorOccurred,
             this, &SAKBleScanner::onErrorOccurred);
 #else
-    connect(mDiscover, QOverload<QBluetoothDeviceDiscoveryAgent::Error>::of(&QBluetoothDeviceDiscoveryAgent::error),
+#if 1
+    connect(mDiscover, static_cast<void(QBluetoothDeviceDiscoveryAgent::*)(QBluetoothDeviceDiscoveryAgent::Error)>(&QBluetoothDeviceDiscoveryAgent::error),
             this, &SAKBleScanner::onErrorOccurred);
+#else
+    connect(mDiscover, qOverload<QBluetoothDeviceDiscoveryAgent::Error>::of(&QBluetoothDeviceDiscoveryAgent::error),
+            this, &SAKBleScanner::onErrorOccurred);
+#endif
 #endif
     connect(mDiscover, &QBluetoothDeviceDiscoveryAgent::deviceDiscovered,
             this, &SAKBleScanner::onDeviceDiscovered);
@@ -44,7 +50,9 @@ void SAKBleScanner::refresh()
 {
     mIsDiscovering = true;
     //emit isDiscoveringChanged();
+#if QT_VERSION >= QT_VERSION_CHECK(5, 9, 0)
     mDiscover->start(QBluetoothDeviceDiscoveryAgent::LowEnergyMethod);
+#endif
 }
 
 void SAKBleScanner::onFinished()

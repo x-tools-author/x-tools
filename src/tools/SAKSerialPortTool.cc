@@ -7,6 +7,7 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
+#include "SAKInterface.hh"
 #include "SAKSerialPortTool.hh"
 
 SAKSerialPortTool::SAKSerialPortTool(QObject *parent)
@@ -120,10 +121,10 @@ void SAKSerialPortTool::writeBytes(const QByteArray &bytes,
         if (ret == -1) {
             outputMessage(QtWarningMsg, mSerialPort->errorString());
         } else if (ret > 0) {
-            outputMessage(QtInfoMsg,
-                          QString("%1<-%2")
-                              .arg(mParameters.portName,
-                                   QString::fromLatin1(bytes.toHex(' '))));
+            QByteArray hex = SAKInterface::arrayToHex(bytes, ' ');
+            QString msg = QString::fromLatin1(hex);
+            msg = QString("%1<-%2").arg(mParameters.portName, msg);
+            outputMessage(QtInfoMsg, msg);
             emit bytesInputted(bytes, context);
         }
     }
@@ -134,10 +135,10 @@ void SAKSerialPortTool::readBytes()
     if (mSerialPort && mSerialPort->isOpen()) {
         QByteArray bytes = mSerialPort->readAll();
         if (!bytes.isEmpty()) {
-            outputMessage(QtInfoMsg,
-                          QString("%1->%2")
-                              .arg(mParameters.portName,
-                                   QString::fromLatin1(bytes.toHex(' '))));
+            QByteArray hex = SAKInterface::arrayToHex(bytes, ' ');
+            QString msg = QString::fromLatin1(hex);
+            msg = QString("%1<-%2").arg(mParameters.portName, msg);
+            outputMessage(QtInfoMsg, msg);
             QJsonObject jsonObj;
             jsonObj.insert("flag", "rx");
             QVariant context = QVariant::fromValue(jsonObj);

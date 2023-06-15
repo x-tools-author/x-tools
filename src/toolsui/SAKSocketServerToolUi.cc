@@ -17,16 +17,16 @@ SAKSocketServerToolUi::SAKSocketServerToolUi(QWidget *parent)
 {
     ui->setupUi(this);
     connect(ui->comboBoxServerIp,
-            QOverload<int>::of(&QComboBox::activated),
+            static_cast<void(QComboBox::*)(int)>(&QComboBox::activated),
             this, &SAKSocketServerToolUi::onComboBoxServerIpActived);
     connect(ui->spinBoxServerPort,
-            QOverload<int>::of(&SAKSpinBox::valueChanged),
+            static_cast<void(QSpinBox::*)(int)>(&QSpinBox::valueChanged),
             this, &SAKSocketServerToolUi::onSpinBoxServerPortValueChanged);
     connect(ui->comboBoxClientList,
-            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this, &SAKSocketServerToolUi::onComboBoxClientsIndexChanged);
     connect(ui->comboBoxMessageType,
-            QOverload<int>::of(&QComboBox::currentIndexChanged),
+            static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this, &SAKSocketServerToolUi::onComboBoxMessageTypeIndexChanged);
 }
 

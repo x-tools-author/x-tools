@@ -159,7 +159,7 @@ void SAKStorerTool::write2file()
             auto ctx = mInputContextList.takeFirst();
             auto bytes = ctx.bytes;
             auto context = ctx.context;
-            auto str = SAKInterface::array2String(bytes, mParameters.format);
+            auto str = SAKInterface::arrayToString(bytes, mParameters.format);
 
             QString dtStr;
             auto dt = QDateTime::currentDateTime();

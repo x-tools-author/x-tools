@@ -169,7 +169,7 @@ void SAKMainWindow::initFileMenu()
     }
 
     fileMenu->addSeparator();
-    QAction *importAction = new QAction(tr("Import Palette"));
+    QAction *importAction = new QAction(tr("Import Palette"), fileMenu);
     fileMenu->addAction(importAction);
     connect(importAction, &QAction::triggered, this, [=](){
         auto str = QFileDialog::getOpenFileName(this, tr("Save Palette"),
@@ -209,7 +209,7 @@ void SAKMainWindow::initFileMenu()
         }
     });
 
-    QAction *exportAction = new QAction(tr("Export Palette"));
+    QAction *exportAction = new QAction(tr("Export Palette"), fileMenu);
     fileMenu->addAction(exportAction);
     connect(exportAction, &QAction::triggered, this, [=](){
         auto str = QFileDialog::getSaveFileName(this, tr("Save Palette"),

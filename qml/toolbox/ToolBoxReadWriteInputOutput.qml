@@ -339,7 +339,7 @@ Item {
 
         var cookedString = "[" + dateTimeInfo + " " + flagInfo + "] "
         cookedString =  String("<font color=silver>%1</font>").arg(cookedString)
-        var bytesString = sakInterface.array2String(bytes, outputFormat)
+        var bytesString = sakInterface.arrayToString(bytes, outputFormat)
         cookedString += bytesString
 
         return cookedString

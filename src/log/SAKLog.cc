@@ -404,7 +404,11 @@ void SAKLog::clearLog()
     QDir dir(logPath());
     QFileInfoList infoList = dir.entryInfoList(QDir::Files|QDir::NoDotAndDotDot);
     for (auto &info : infoList) {
+#if QT_VERSION >= QT_VERSION_CHECK(5, 10, 0)
         qint64 dateTime = info.birthTime().toMSecsSinceEpoch();
+#else
+        qint64 dateTime = info.created().toMSecsSinceEpoch();
+#endif
         qint64 currentDateTime = QDateTime::currentMSecsSinceEpoch();
         quint64 interval = qAbs(mLogLifeCycle*24*60*60*1000);
         if (quint64(qAbs(dateTime - currentDateTime)) > interval) {

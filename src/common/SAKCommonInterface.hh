@@ -58,15 +58,6 @@ public:
     };
 
     /**
-     * @brief byteArrayToHex: Just like QByteArray::toHex(char)
-     * which introduced in Qt 5.9.
-     * @param array:
-     * @param separator: Can not be '\0' or it will be same as QByteArray::toHex().
-     * @return ...
-     */
-    static QByteArray byteArrayToHex(QByteArray &array, char separator);
-
-    /**
      * @brief setLineEditValidator: Set validator to a line edit, i
      * t will delete the old validator.
      * @param lineEdit: Target line edit.

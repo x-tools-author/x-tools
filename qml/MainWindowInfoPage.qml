@@ -38,7 +38,7 @@ SAKPane {
                     }
                     SAKButton {
                         text: qsTr("Copy")
-                        onClicked: sakInterface.setTextToClipboard(qqGroupLabel.text)
+                        onClicked: sakInterface.setClipboardText(qqGroupLabel.text)
                     }
                 }
                 SAKLabel {

@@ -7,6 +7,7 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
+#include "SAKInterface.hh"
 #include "SAKUdpServerTool.hh"
 
 SAKUdpServerTool::SAKUdpServerTool(QObject *parent)
@@ -49,7 +50,7 @@ void SAKUdpServerTool::writeBytes(const QByteArray &bytes,
         if (ret == -1) {
             outputMessage(QtWarningMsg, mUdpSocket->errorString());
         } else {
-            QString hex = QString::fromLatin1(bytes.toHex(' '));
+            QString hex = QString::fromLatin1(SAKInterface::arrayToHex(bytes, ' '));
             outputMessage(QtInfoMsg,
                           QString("%1<-%2").arg(mBindingIpPort, hex));
             emit bytesInputted(bytes, QVariant());
@@ -77,7 +78,7 @@ void SAKUdpServerTool::readBytes()
             if (ret == -1) {
                 outputMessage(QtWarningMsg, mUdpSocket->errorString());
             } else {
-                QString hex = QString::fromLatin1(bytes.toHex(' '));
+                QString hex = QString::fromLatin1(SAKInterface::arrayToHex(bytes, ' '));
                 outputMessage(QtInfoMsg,
                               QString("%1<-%2").arg(mBindingIpPort, hex));
                 QString info = QString("%1:%2")

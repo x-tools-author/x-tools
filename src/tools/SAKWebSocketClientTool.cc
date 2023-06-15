@@ -7,6 +7,7 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
+#include "SAKInterface.hh"
 #include "SAKWebSocketClientTool.hh"
 
 SAKWebSocketClientTool::SAKWebSocketClientTool(QObject *parent)
@@ -37,7 +38,7 @@ bool SAKWebSocketClientTool::initialize()
         QString ip = mWebSocket->peerAddress().toString();
         quint16 port = mWebSocket->peerPort();
         QString ipport = QString("%1:%2").arg(ip, QString::number(port));
-        QString hex = QString::fromLatin1(message.toHex(' '));
+        QString hex = QString::fromLatin1(SAKInterface::arrayToHex(message, ' '));
         outputMessage(QtInfoMsg,
                       QString("%1<-%2:%3").arg(mBindingIpPort, ipport, hex));
         emit bytesOutputted(message, QVariant());
@@ -53,7 +54,8 @@ bool SAKWebSocketClientTool::initialize()
         emit bytesOutputted(message.toUtf8(), QVariant());
     });
 
-    connect(mWebSocket, QOverload<QAbstractSocket::SocketError>::of(&QWebSocket::error),
+    connect(mWebSocket,
+            static_cast<void(QWebSocket::*)(QAbstractSocket::SocketError)>(&QWebSocket::error),
             mWebSocket, [=](QAbstractSocket::SocketError error){
         Q_UNUSED(error);
         outputMessage(QtInfoMsg, QString("Error occured:")
@@ -75,7 +77,7 @@ void SAKWebSocketClientTool::writeBytes(const QByteArray &bytes,
     qint64 ret = -1;
     QString hex;
     if (mMessageType == 0) {
-        hex = QString::fromLatin1(bytes.toHex(' '));
+        hex = QString::fromLatin1(SAKInterface::arrayToHex(bytes, ' '));
         ret = mWebSocket->sendBinaryMessage(bytes);
     } else {
         hex = QString::fromUtf8(bytes);

@@ -8,6 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  */
 #include <QDebug>
+#include "SAKInterface.hh"
 #include "SAKCommonInterface.hh"
 #include "SAKToolFloatAssistant.hh"
 #include "ui_SAKToolFloatAssistant.h"
@@ -92,12 +93,12 @@ void SAKToolFloatAssistant::on_createPushButton_clicked()
         if (ui->floatRadioButton->isChecked()){
             float *f = reinterpret_cast<float*>(data.data());
             ui->friendlyCookedDataLineEdit->setText(QString("%1").arg(*f));
-            data = mCommonInterface->byteArrayToHex(data, ' ');
+            data = SAKInterface::arrayToHex(data, ' ');
             ui->hexCookedDataLineEdit->setText(QString(data));
         }else{
             double *d = reinterpret_cast<double*>(data.data());
             ui->friendlyCookedDataLineEdit->setText(QString("%1").arg(*d));
-            data = mCommonInterface->byteArrayToHex(data, ' ');
+            data = SAKInterface::arrayToHex(data, ' ');
             ui->hexCookedDataLineEdit->setText(QString(data));
         }
     }else{
@@ -127,7 +128,7 @@ void SAKToolFloatAssistant::on_createPushButton_clicked()
             data.append(reinterpret_cast<char*>(&value), sizeof(value));
         }
         ui->friendlyCookedDataLineEdit->setText(ui->rawDataLineEdit->text());
-        data = mCommonInterface->byteArrayToHex(data, ' ');
+        data = SAKInterface::arrayToHex(data, ' ');
         ui->hexCookedDataLineEdit->setText(QString(data));
     }
 }

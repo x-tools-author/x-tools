@@ -7,6 +7,7 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
+#include "SAKInterface.hh"
 #include "SAKMaskerTool.hh"
 
 SAKMaskerTool::SAKMaskerTool(QObject *parent)
@@ -24,11 +25,11 @@ void SAKMaskerTool::inputBytes(const QByteArray &bytes,
                                const QVariant &context)
 {
     emit bytesInputted(bytes, context);
-    QString hex = QString::fromLatin1(bytes.toHex(' '));
+    QString hex = QString::fromLatin1(SAKInterface::arrayToHex(bytes, ' '));
     outputMessage(QtInfoMsg, QString("%1<-%2").arg(mToolName, hex));
 
     if (!enable()) {
-        QString hex = QString::fromLatin1(bytes.toHex(' '));
+        QString hex = QString::fromLatin1(SAKInterface::arrayToHex(bytes, ' '));
         outputMessage(QtInfoMsg, QString("%1->%2").arg(mToolName, hex));
         emit bytesOutputted(bytes, context);
     } else {
@@ -39,7 +40,7 @@ void SAKMaskerTool::inputBytes(const QByteArray &bytes,
             cookedBytes.append(reinterpret_cast<char*>(&value), 1);
         }
 
-        QString hex = QString::fromLatin1(bytes.toHex(' '));
+        QString hex = QString::fromLatin1(SAKInterface::arrayToHex(bytes, ' '));
         outputMessage(QtInfoMsg, QString("%1->%2").arg(mToolName, hex));
         emit bytesOutputted(bytes, context);
     }

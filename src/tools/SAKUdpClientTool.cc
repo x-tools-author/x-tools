@@ -8,6 +8,8 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include <QHostAddress>
+
+#include "SAKInterface.hh"
 #include "SAKUdpClientTool.hh"
 
 SAKUdpClientTool::SAKUdpClientTool(QObject *parent)
@@ -51,7 +53,7 @@ void SAKUdpClientTool::writeBytes(const QByteArray &bytes,
     if (ret == -1) {
         outputMessage(QtWarningMsg, mUdpSocket->errorString());
     } else {
-        QString hex = QString::fromLatin1(bytes.toHex(' '));
+        QString hex = QString::fromLatin1(SAKInterface::arrayToHex(bytes, ' '));
         QString serverInfo = QString("%1:%2")
                                  .arg(mServerIp, QString::number(mServerPort));
         outputMessage(QtInfoMsg, QString("%1->%2:%3")
@@ -80,7 +82,7 @@ void SAKUdpClientTool::readBytes()
             if (ret == -1) {
                 outputMessage(QtWarningMsg, mUdpSocket->errorString());
             } else {
-                QString hex = QString::fromLatin1(bytes.toHex(' '));
+                QString hex = QString::fromLatin1(SAKInterface::arrayToHex(bytes, ' '));
                 outputMessage(QtInfoMsg,
                               QString("%1<-%2").arg(mBindingIpPort, hex));
                 emit bytesOutputted(bytes, QVariant());

@@ -58,7 +58,7 @@ ToolBox {
     }
 
     function updateNotify(value) {
-        var cookedValue = sakInterface.array2String(value, sakDataStructure.TextFormatHex)
+        var cookedValue = sakInterface.arrayToString(value, sakDataStructure.TextFormatHex)
         var controller = deviceControllerLoader.item
         if (cookedValue === "00 00") {
             controller.setNotifyText(false)

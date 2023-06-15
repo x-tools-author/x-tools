@@ -31,7 +31,34 @@ SAKInterface::SAKInterface(QObject *parent)
 
 }
 
-QString SAKInterface::array2String(const QByteArray &array, int format)
+void SAKInterface::setMaximumBlockCount(QVariant doc, int maximum)
+{
+    auto obj = doc.value<QObject*>();
+    if (obj) {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
+        auto quickTextDoc = qobject_cast<QQuickTextDocument*>(obj);
+        if (quickTextDoc) {
+            auto textDoc = quickTextDoc->textDocument();
+            textDoc->setMaximumBlockCount(maximum);
+        }
+#else
+        Q_UNUSED(doc)
+        Q_UNUSED(maximum)
+#endif
+    }
+}
+
+void SAKInterface::setAppFont(const QString &fontFamily)
+{
+    qGuiApp->setFont(fontFamily);
+}
+
+void SAKInterface::setClipboardText(const QString &text)
+{
+    QGuiApplication::clipboard()->setText(text);
+}
+
+QString SAKInterface::arrayToString(const QByteArray &array, int format)
 {
     auto cookedArray =
             [](const QByteArray &array, int base, int len)->QString{
@@ -63,6 +90,49 @@ QString SAKInterface::array2String(const QByteArray &array, int format)
     }
 }
 
+QString SAKInterface::dateTimeString(const QString &format)
+{
+    return QDateTime::currentDateTime().toString(format);
+}
+
+QString SAKInterface::cookedFileName(const QString &fileName)
+{
+    QString cookedFileName = fileName;
+#ifdef Q_OS_WIN
+    cookedFileName = cookedFileName.remove("file:///");
+#endif
+
+    return cookedFileName;
+}
+
+QString SAKInterface::string2hexString(const QString &str)
+{
+    return QString::fromLatin1(str.toUtf8().toHex());
+}
+
+QString SAKInterface::hexString2String(const QString &str)
+{
+    QByteArray arr = QByteArray::fromHex(str.toUtf8());
+    return QString::fromUtf8(arr);
+}
+
+QString SAKInterface::buildDateTime(const QString &format)
+{
+    QDate date = QDate::fromString(__DATE__, "MMM dd yyyy");
+    QTime time = QTime::fromString(__TIME__, "hh:mm:ss");
+    return QDateTime(date, time).toString(format);
+}
+
+QString SAKInterface::dateFormat()
+{
+    return QLocale::system().dateFormat();
+}
+
+QString SAKInterface::timeFormat()
+{
+    return QLocale::system().timeFormat();
+}
+
 QByteArray SAKInterface::string2array(const QString &input, int format)
 {
     QByteArray data;
@@ -71,7 +141,7 @@ QByteArray SAKInterface::string2array(const QString &input, int format)
 #else
     auto behavior = Qt::SkipEmptyParts;
 #endif
-    
+
     if (format == SAKDataStructure::TextFormatBin){
         QStringList strList = input.split(' ', behavior);
         for (int i = 0; i < strList.length(); i++) {
@@ -109,78 +179,32 @@ QByteArray SAKInterface::string2array(const QString &input, int format)
     return data;
 }
 
-void SAKInterface::setMaximumBlockCount(QVariant doc, int maximum)
-{
-    auto obj = doc.value<QObject*>();
-    if (obj) {
-#if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
-        auto quickTextDoc = qobject_cast<QQuickTextDocument*>(obj);
-        if (quickTextDoc) {
-            auto textDoc = quickTextDoc->textDocument();
-            textDoc->setMaximumBlockCount(maximum);
-        }
-#else
-        Q_UNUSED(doc)
-        Q_UNUSED(maximum)
-#endif
-    }
-}
-
-QString SAKInterface::dateTimeString(const QString &format)
-{
-    return QDateTime::currentDateTime().toString(format);
-}
-
 QByteArray SAKInterface::arrayAppendArray(const QByteArray &a1,
-                                         const QByteArray &a2)
+                                          const QByteArray &a2)
 {
     return a1 + a2;
 }
 
-QString SAKInterface::cookedFileName(const QString &fileName)
+QByteArray SAKInterface::arrayToHex(const QByteArray &array, char separator)
 {
-    QString cookedFileName = fileName;
-#ifdef Q_OS_WIN
-    cookedFileName = cookedFileName.remove("file:///");
-#endif
+    if (array.isEmpty()){
+        return array;
+    }
 
-    return cookedFileName;
-}
+    auto toHex = [](quint8 value)->char{
+        return "0123456789abcdef"[value & 0xF];
+    };
 
-QString SAKInterface::string2hexString(const QString &str)
-{
-    return QString::fromLatin1(str.toLocal8Bit().toHex());
-}
+    const int length = separator ? (array.size() * 3 - 1) : (array.size() * 2);
+    QByteArray hex(length, Qt::Uninitialized);
+    char *hexData = hex.data();
+    const uchar *data = reinterpret_cast<const uchar *>(array.constData());
+    for (int i = 0, o = 0; i < array.size(); ++i) {
+        hexData[o++] = toHex(data[i] >> 4);
+        hexData[o++] = toHex(data[i] & 0xf);
 
-QString SAKInterface::hexString2String(const QString &str)
-{
-    QByteArray arr = QByteArray::fromHex(str.toLatin1());
-    return QString::fromUtf8(arr);
-}
-
-void SAKInterface::setAppFont(const QString &fontFamily)
-{
-    qGuiApp->setFont(fontFamily);
-}
-
-QString SAKInterface::buildDateTime(const QString &format)
-{
-    QDate date = QDate::fromString(__DATE__, "MMM dd yyyy");
-    QTime time = QTime::fromString(__TIME__, "hh:mm:ss");
-    return QDateTime(date, time).toString(format);
-}
-
-QString SAKInterface::dateFormat()
-{
-    return QLocale::system().dateFormat();
-}
-
-QString SAKInterface::timeFormat()
-{
-    return QLocale::system().timeFormat();
-}
-
-void SAKInterface::setTextToClipboard(const QString &text)
-{
-    QGuiApplication::clipboard()->setText(text);
+        if ((separator) && (o < length))
+            hexData[o++] = separator;
+    }
+    return hex;
 }

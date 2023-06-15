@@ -30,7 +30,7 @@ QVariantList SAKBleCentralTool::serviceCharacteristics(QVariant service)
     if (service.canConvert<QLowEnergyService*>()) {
         return list;
     }
-
+#if QT_VERSION >= QT_VERSION_CHECK(5, 7, 0)
     auto cookedService = service.value<QLowEnergyService*>();
     if (cookedService) {
         auto characteristics = cookedService->characteristics();
@@ -38,16 +38,20 @@ QVariantList SAKBleCentralTool::serviceCharacteristics(QVariant service)
             list.append(QVariant::fromValue(characteristic));
         }
     }
-
+#endif
     return list;
 }
 
 QString SAKBleCentralTool::characteristicName(QVariant characteristic)
 {
+#if QT_VERSION >= QT_VERSION_CHECK(5, 7, 0)
     if (characteristic.canConvert<QLowEnergyCharacteristic>()) {
         auto cookedCharacteristic = characteristic.value<QLowEnergyCharacteristic>();
         return cookedCharacteristic.name();
     }
+#else
+    Q_UNUSED(characteristic)
+#endif
 
     return "Invalid";
 }
@@ -113,7 +117,7 @@ bool SAKBleCentralTool::initialize()
         outputMessage(QtWarningMsg, "Invalid BLE information.");
         return false;
     }
-
+#if QT_VERSION >= QT_VERSION_CHECK(5, 7, 0)
     mServices.clear();
     auto info = mBleInfo.value<QBluetoothDeviceInfo>();
     mBleCentral = QLowEnergyController::createCentral(info);
@@ -135,6 +139,9 @@ bool SAKBleCentralTool::initialize()
             [=](){onServiceDiscoveryFinished();});
 
     return true;
+#else
+    return false;
+#endif
 }
 
 void SAKBleCentralTool::readBytes()

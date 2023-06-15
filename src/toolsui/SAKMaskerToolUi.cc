@@ -44,7 +44,7 @@ void SAKMaskerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
         cookedTool->setEnable(ui->checkBoxEnable->isChecked());
     });
     connect(ui->spinBoxMaskCode,
-            QOverload<int>::of(&SAKSpinBox::valueChanged),
+            static_cast<void(QSpinBox::*)(int)>(&QSpinBox::valueChanged),
             this, [=](int code){
         cookedTool->setMaskCode(code);
     });

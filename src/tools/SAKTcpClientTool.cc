@@ -43,7 +43,7 @@ bool SAKTcpClientTool::initialize()
 #if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
             &QTcpSocket::errorOccurred,
 #else
-            QOverload<QAbstractSocket::SocketError>::of(&QTcpSocket::error),
+            static_cast<void(QAbstractSocket::*)(QAbstractSocket::SocketError)>(&QAbstractSocket::error),
 #endif
             mTcpSocket, [=](QAbstractSocket::SocketError err){
         Q_UNUSED(err);

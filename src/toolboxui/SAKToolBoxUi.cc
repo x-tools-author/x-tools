@@ -235,7 +235,7 @@ void SAKToolBoxUi::output2ui(const QByteArray &bytes,
 {
     Q_UNUSED(context);
     int format = ui->comboBoxOutputFormat->currentData().toInt();
-    QString str = SAKInterface::array2String(bytes, format);
+    QString str = SAKInterface::arrayToString(bytes, format);
     QString dt = dateTimeContext();
     QString flag = isRx ? "Rx" : "Tx";
     QString color = isRx ? "red" : "blue";
@@ -487,10 +487,10 @@ void SAKToolBoxUi::initSignalsInput()
     connect(ui->pushButtonInputSend, &QPushButton::clicked,
             this, &SAKToolBoxUi::onPushButtonInputSendClicked);
     connect(ui->comboBoxInputFormat,
-            QOverload<int>::of(&QComboBox::activated),
+            static_cast<void(QComboBox::*)(int)>(&QComboBox::activated),
             this, &SAKToolBoxUi::onComboBoxInputFormatActivated);
     connect(ui->comboBoxInputText,
-            QOverload<int>::of(&QComboBox::activated),
+            static_cast<void(QComboBox::*)(int)>(&QComboBox::activated),
             this, &SAKToolBoxUi::onComboBoxInputTextActivated);
     connect(ui->comboBoxInputText, &QComboBox::currentTextChanged,
             this, &SAKToolBoxUi::onInputTextChanged);

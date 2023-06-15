@@ -8,6 +8,8 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include <QWebSocket>
+
+#include "SAKInterface.hh"
 #include "SAKWebSocketServerTool.hh"
 
 SAKWebSocketServerTool::SAKWebSocketServerTool(QObject *parent)
@@ -72,7 +74,7 @@ bool SAKWebSocketServerTool::initialize()
             emit clientsChanged();
         });
 
-        connect(client, QOverload<QAbstractSocket::SocketError>::of(&QWebSocket::error),
+        connect(client, static_cast<void(QWebSocket::*)(QAbstractSocket::SocketError)>(&QWebSocket::error),
                 client, [=](QAbstractSocket::SocketError err){
             Q_UNUSED(err);
             this->mWebSocketList.removeOne(client);
@@ -114,7 +116,7 @@ void SAKWebSocketServerTool::writeBytesInner(QWebSocket *client,
     qint64 ret = -1;
     QString hex;
     if (mMessageType == 0) {
-        hex = QString::fromLatin1(bytes.toHex(' '));
+        hex = QString::fromLatin1(SAKInterface::arrayToHex(bytes, ' '));
         ret = client->sendBinaryMessage(bytes);
     } else {
         hex = QString::fromUtf8(bytes);

@@ -38,7 +38,7 @@ SAKToolFileCheckAssistant::SAKToolFileCheckAssistant(QWidget *parent)
 
     // Appending algorithms to combo box
 #if QT_VERSION < QT_VERSION_CHECK(5, 9, 0)
-    QMetaEnum algorithms = QMetaEnum::fromType<SAKToolFileChecker::Algorithm>();
+    QMetaEnum algorithms = QMetaEnum::fromType<SAKToolFileCheckAssistant::Algorithm>();
 #else
     QMetaEnum algorithms = QMetaEnum::fromType<QCryptographicHash::Algorithm>();
 #endif
@@ -154,7 +154,7 @@ void SAKToolFileCheckAssistant::on_openPushButton_clicked()
 void SAKToolFileCheckAssistant::on_algorithmComboBox_currentIndexChanged(int index)
 {
 #if QT_VERSION < QT_VERSION_CHECK(5, 9, 0)
-    QMetaEnum algorithms = QMetaEnum::fromType<SAKToolFileChecker::Algorithm>();
+    QMetaEnum algorithms = QMetaEnum::fromType<SAKToolFileCheckAssistant::Algorithm>();
 #else
     QMetaEnum algorithms = QMetaEnum::fromType<QCryptographicHash::Algorithm>();
 #endif
