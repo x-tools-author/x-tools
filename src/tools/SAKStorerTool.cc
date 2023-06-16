@@ -40,6 +40,16 @@ void SAKStorerTool::inputBytes(const QByteArray &bytes,
     }
 }
 
+int SAKStorerTool::saveFormat()
+{
+    return mParameters.format;
+}
+
+void SAKStorerTool::setSaveFormat(int format)
+{
+    mParameters.format = format;
+}
+
 bool SAKStorerTool::saveRx()
 {
     return mParameters.saveRx;

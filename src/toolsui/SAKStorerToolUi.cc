@@ -37,6 +37,7 @@ void SAKStorerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
     ui->checkBoxMs->setGroupKey(settingsGroup, "ms");
     ui->checkBoxRx->setGroupKey(settingsGroup, "rx");
     ui->checkBoxTx->setGroupKey(settingsGroup, "tx");
+    ui->comboBoxFormat->setGroupKey(settingsGroup, "format");
     ui->lineEditStorerPath->setGroupKey(settingsGroup, "path");
 
     if (!tool) {
@@ -56,6 +57,7 @@ void SAKStorerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
     cookedTool->setSaveDate(ui->checkBoxDate->isChecked());
     cookedTool->setSaveTime(ui->checkBoxTime->isChecked());
     cookedTool->setSaveMs(ui->checkBoxMs->isChecked());
+    cookedTool->setSaveFormat(ui->comboBoxFormat->currentData().toInt());
     cookedTool->setFileName(ui->lineEditStorerPath->text());
 
     connect(ui->checkBoxEnable, &QCheckBox::clicked, this, [=](){
@@ -75,6 +77,12 @@ void SAKStorerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
     });
     connect(ui->checkBoxMs, &QCheckBox::clicked, this, [=](){
         cookedTool->setSaveMs(ui->checkBoxMs->isChecked());
+    });
+    connect(ui->comboBoxFormat,
+            static_cast<void(QComboBox::*)(int)>(&QComboBox::activated),
+            this, [=](){
+        int format = ui->comboBoxFormat->currentData().toInt();
+        cookedTool->setSaveFormat(format);
     });
     connect(ui->lineEditStorerPath, &SAKLineEdit::textChanged, this, [=](){
         cookedTool->setFileName(ui->lineEditStorerPath->text());

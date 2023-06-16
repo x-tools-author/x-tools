@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>304</width>
-    <height>132</height>
+    <width>491</width>
+    <height>131</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -32,69 +32,79 @@
       <string>Storer</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_7">
-      <item row="1" column="0">
+      <item row="3" column="0">
        <widget class="QLabel" name="label_14">
         <property name="text">
          <string>Saving file path</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
-       <widget class="SAKLineEdit" name="lineEditStorerPath"/>
-      </item>
-      <item row="1" column="2">
+      <item row="3" column="5">
        <widget class="QPushButton" name="pushButtonSelectFile">
         <property name="text">
          <string>Browser</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="0" colspan="3">
-       <layout class="QGridLayout" name="gridLayout_9">
-        <item row="1" column="1">
-         <widget class="SAKCheckBox" name="checkBoxTime">
-          <property name="text">
-           <string>Save time</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="SAKCheckBox" name="checkBoxDate">
-          <property name="text">
-           <string>Save date</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="2">
-         <widget class="SAKCheckBox" name="checkBoxTx">
-          <property name="text">
-           <string>Save tx</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="SAKCheckBox" name="checkBoxRx">
-          <property name="text">
-           <string>Save rx</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="2">
-         <widget class="SAKCheckBox" name="checkBoxMs">
-          <property name="text">
-           <string>Save ms</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0">
+      <item row="2" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Save format</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1" colspan="4">
+       <widget class="SAKLineEdit" name="lineEditStorerPath"/>
+      </item>
+      <item row="2" column="1" colspan="4">
+       <widget class="SAKTextFormatComboBox" name="comboBoxFormat"/>
+      </item>
+      <item row="0" column="0" colspan="6">
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
          <widget class="SAKCheckBox" name="checkBoxEnable">
           <property name="text">
            <string>Enable</string>
           </property>
          </widget>
         </item>
-        <item row="0" column="3">
-         <spacer name="horizontalSpacer_6">
+        <item>
+         <widget class="SAKCheckBox" name="checkBoxRx">
+          <property name="text">
+           <string>Save rx</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="SAKCheckBox" name="checkBoxTx">
+          <property name="text">
+           <string>Save tx</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="SAKCheckBox" name="checkBoxDate">
+          <property name="text">
+           <string>Save date</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="SAKCheckBox" name="checkBoxTime">
+          <property name="text">
+           <string>Save time</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="SAKCheckBox" name="checkBoxMs">
+          <property name="text">
+           <string>Save ms</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -118,6 +128,11 @@
    <class>SAKCheckBox</class>
    <extends>QCheckBox</extends>
    <header location="global">SAKCheckBox.hh</header>
+  </customwidget>
+  <customwidget>
+   <class>SAKTextFormatComboBox</class>
+   <extends>QComboBox</extends>
+   <header location="global">SAKTextFormatComboBox.hh</header>
   </customwidget>
   <customwidget>
    <class>SAKLineEdit</class>

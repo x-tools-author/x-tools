@@ -18,6 +18,7 @@
 class SAKStorerTool : public SAKBaseTool
 {
     Q_OBJECT
+    Q_PROPERTY(int saveFormat READ saveFormat WRITE setSaveFormat NOTIFY saveFormatChanged)
     Q_PROPERTY(bool saveRx READ saveRx WRITE setSaveRx NOTIFY saveRxChanged)
     Q_PROPERTY(bool saveTx READ saveTx WRITE setSaveTx NOTIFY saveTxChanged)
     Q_PROPERTY(bool saveDate READ saveDate WRITE setSaveDate NOTIFY saveDateChanged)
@@ -28,11 +29,12 @@ public:
     explicit SAKStorerTool(QObject *parent = nullptr);
     ~SAKStorerTool();
 
-    virtual void inputBytes(
-        const QByteArray &bytes,
-        const QVariant &context = QJsonObject()) final;
+    virtual void inputBytes(const QByteArray &bytes,
+                            const QVariant &context = QJsonObject()) final;
 
 public:
+    int saveFormat();
+    void setSaveFormat(int format);
     bool saveRx();
     void setSaveRx(bool save);
     bool saveTx();
@@ -47,6 +49,7 @@ public:
     void setFileName(const QString &name);
 
 signals:
+    void saveFormatChanged();
     void saveRxChanged();
     void saveTxChanged();
     void saveDateChanged();
