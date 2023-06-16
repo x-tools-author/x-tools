@@ -48,6 +48,7 @@ int SAKStorerTool::saveFormat()
 void SAKStorerTool::setSaveFormat(int format)
 {
     mParameters.format = format;
+    emit saveFormatChanged();
 }
 
 bool SAKStorerTool::saveRx()
@@ -122,7 +123,7 @@ void SAKStorerTool::run()
     writeTimer->setInterval(2000);
     writeTimer->setSingleShot(true);
     connect(writeTimer, &QTimer::timeout, writeTimer, [=](){
-        write2file();
+        this->write2file();
         writeTimer->start();
     });
     writeTimer->start();
@@ -169,7 +170,10 @@ void SAKStorerTool::write2file()
             auto ctx = mInputContextList.takeFirst();
             auto bytes = ctx.bytes;
             auto context = ctx.context;
-            auto str = SAKInterface::arrayToString(bytes, mParameters.format);
+            this->mParametersMutex.lock();
+            int format = this->mParameters.format;
+            this->mParametersMutex.unlock();
+            auto str = SAKInterface::arrayToString(bytes, format);
 
             QString dtStr;
             auto dt = QDateTime::currentDateTime();
@@ -192,11 +196,7 @@ void SAKStorerTool::write2file()
             QString flag = context.toJsonObject().value("isRx").toBool()
                                ? "Rx: " : "Tx: ";
             str = dtStr + flag + str;
-#if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
-            outStream << str << Qt::endl;
-#else
             outStream << str << "\n";
-#endif
         }
         file.close();
     } else {
