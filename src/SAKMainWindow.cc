@@ -270,7 +270,9 @@ void SAKMainWindow::initOptionMenu()
     initOptionMenuMainWindowMenu(optionMenu);
 #endif
     initOptionMenuSettingsMenu(optionMenu);
+#ifdef QT_DEBUG
     initOptionMenuUiType(optionMenu);
+#endif
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     initOptionMenuHdpiPolicy(optionMenu);
 #endif
