@@ -75,6 +75,7 @@ UI_DIR      = $$OUT_PWD/ui
 MOC_DIR     = $$OUT_PWD/moc
 RCC_DIR     = $$OUT_PWD/res
 OBJECTS_DIR = $$OUT_PWD/obj
+DESTDIR     = $$OUT_PWD/bin
 
 #-------------------------------------------------------------------------------
 #Configuration of Windows
