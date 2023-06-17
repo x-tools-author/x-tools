@@ -179,9 +179,6 @@ SAKCommunicationToolUi *SAKToolBoxUi::communiticationToolUi(int type)
 
 void SAKToolBoxUi::try2send()
 {
-    int format = ui->comboBoxInputFormat->currentData().toInt();
-    QString input = ui->comboBoxInputText->currentText();
-
     int prefix = mInputParameters.prefix;
     int suffix = mInputParameters.suffix;
     int esc = mInputParameters.escapeCharacter;
@@ -189,20 +186,13 @@ void SAKToolBoxUi::try2send()
     QByteArray prefixData = SAKDataStructure::affixesData(prefix);
     QByteArray suffixData = SAKDataStructure::affixesData(suffix);
 
+    QString input = ui->comboBoxInputText->currentText();
     input = SAKDataStructure::cookedString(esc, input);
+    int format = ui->comboBoxInputFormat->currentData().toInt();
     QByteArray bytes = SAKInterface::string2array(input, format);
     if (mInputParameters.appendCrc) {
-        int algorithm = mInputParameters.algorithm;
-        int startIndex = mInputParameters.startIndex;
-        int endIndex = mInputParameters.endIndex;
-        bool bigEndian = mInputParameters.bigEndian;
-        SAKCrcInterface crcInterface;
-        QByteArray crcBytes = crcInterface.calculateBytes(bytes,
-                                                          algorithm,
-                                                          startIndex,
-                                                          endIndex,
-                                                          bigEndian);
-        input.append(crcBytes);
+        QByteArray b = calculateCrc(bytes);
+        input.append(b);
     }
 
     bytes.prepend(prefixData);
@@ -282,6 +272,28 @@ QString SAKToolBoxUi::settingsGroup()
     }
 }
 
+QByteArray SAKToolBoxUi::calculateCrc(const QByteArray &bytes)
+{
+    QByteArray inputBytes = bytes;
+    if (inputBytes.isEmpty()) {
+        int format = ui->comboBoxInputFormat->currentData().toInt();
+        QString input = ui->comboBoxInputText->currentText();
+        int esc = mInputParameters.escapeCharacter;
+
+        input = SAKDataStructure::cookedString(esc, input);
+        inputBytes = SAKInterface::string2array(input, format);
+    }
+
+    int algorithm = mInputParameters.algorithm;
+    int startIndex = mInputParameters.startIndex;
+    int endIndex = mInputParameters.endIndex;
+    bool bigEndian = mInputParameters.bigEndian;
+    SAKCrcInterface crci;
+    QByteArray crc = crci.calculateBytes(inputBytes, algorithm, startIndex,
+                                         endIndex, bigEndian);
+    return crc;
+}
+
 void SAKToolBoxUi::onIsWorkingChanged()
 {
     bool isWorking = mToolBox->isWorking();
@@ -322,22 +334,8 @@ void SAKToolBoxUi::onBytesRead(const QByteArray &bytes,
 
 void SAKToolBoxUi::onInputTextChanged()
 {
-    int format = ui->comboBoxInputFormat->currentData().toInt();
-    QString input = ui->comboBoxInputText->currentText();
-    auto ctx = mToolBoxUiParameters->parameterContext();
-    int esc = ctx.input.preprocessing.escapeCharacter;
-
-    input = SAKDataStructure::cookedString(esc, input);
-    QByteArray bytes = SAKInterface::string2array(input, format);
-    int arithmetic = ctx.input.crc.arithmetic;
-    int startIndex = ctx.input.crc.startIndex;
-    int endIndex = ctx.input.crc.endIndex;
-    bool bigEndian = ctx.input.crc.bigEndian;
-    SAKCrcInterface crcInterface;
-    QByteArray crcBytes = crcInterface.calculateBytes(
-        bytes, arithmetic, startIndex, endIndex, bigEndian);
-
-    QString crc = QString::fromLatin1(crcBytes.toHex()).toUpper();
+    QByteArray b = calculateCrc();
+    QString crc = QString::fromLatin1(b).toUpper();
     crc = "0x" + crc;
     ui->labelCrc->setText(crc);
 }
@@ -355,7 +353,7 @@ void SAKToolBoxUi::init()
 
     onIsWorkingChanged();
     onComboBoxInputFormatActivated();
-    //onInputTextChanged();
+    onInputTextChanged();
 }
 
 void SAKToolBoxUi::initUi()

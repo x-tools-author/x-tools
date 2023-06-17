@@ -86,6 +86,7 @@ private:
     QString dateTimeContext();
     void output2ui(const QByteArray &bytes, const QVariant &context, bool isRx);
     QString settingsGroup();
+    QByteArray calculateCrc(const QByteArray &bytes = QByteArray());
 
     // slots
     void onIsWorkingChanged();
