@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -100,7 +100,8 @@ bool SAKSerialPortTool::initialize()
     outputMessage(QtInfoMsg, info);
 
     if (!mSerialPort->open(QSerialPort::ReadWrite)) {
-        outputMessage(QtWarningMsg, mSerialPort->errorString());
+        outputMessage(QtWarningMsg, "open serial port failed:"
+                                        + mSerialPort->errorString());
         mSerialPort->deleteLater();
         mSerialPort = Q_NULLPTR;
         return false;

@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -61,10 +61,10 @@ void SAKUdpClientTool::writeBytes(const QByteArray &bytes,
     } else {
         QByteArray ba = SAKInterface::arrayToHex(bytes, ' ');
         QString hex = QString::fromLatin1(ba);
-        QString serverInfo = QString("%1:%2").arg(mServerIp,
-                                                  QString::number(mServerPort));
-        outputMessage(QtInfoMsg, QString("%1->%2:%3")
-                                     .arg(mBindingIpPort, serverInfo, hex));
+        QString portStr = QString::number(mServerPort);
+        QString serverInfo = QString("%1:%2").arg(mServerIp, portStr);
+        QString info = mBindingIpPort + "->" + serverInfo + ":" + hex;
+        outputMessage(QtInfoMsg, info);
         emit bytesInputted(bytes, context);
     }
 }
@@ -79,21 +79,26 @@ void SAKUdpClientTool::readBytes()
 {
     while (mUdpSocket->hasPendingDatagrams()) {
         auto len = mUdpSocket->pendingDatagramSize();
-        if (len != -1) {
-            QByteArray bytes(len, 0);
-            QHostAddress address;
-            quint16 port;
-            qint64 ret = mUdpSocket->readDatagram(bytes.data(),
-                                                  bytes.length(),
-                                                  &address, &port);
-            if (ret == -1) {
-                outputMessage(QtWarningMsg, mUdpSocket->errorString());
-            } else {
-                QString hex = QString::fromLatin1(SAKInterface::arrayToHex(bytes, ' '));
-                outputMessage(QtInfoMsg,
-                              QString("%1<-%2").arg(mBindingIpPort, hex));
-                emit bytesOutputted(bytes, QVariant());
-            }
+        if (len == -1) {
+            break;
+        }
+
+        QByteArray bytes(len, 0);
+        QHostAddress address;
+        quint16 port;
+        qint64 ret = mUdpSocket->readDatagram(bytes.data(),
+                                              bytes.length(),
+                                              &address, &port);
+        if (ret == -1) {
+            outputMessage(QtWarningMsg, mUdpSocket->errorString());
+        } else {
+            QByteArray ba = SAKInterface::arrayToHex(bytes, ' ');
+            QString hex = QString::fromLatin1(ba);
+            QString portStr = address.toString();
+            QString serverInfo = address.toString() + ":" + portStr;
+            QString info = mBindingIpPort + "<-" + serverInfo + ":" + hex;
+            outputMessage(QtInfoMsg, info);
+            emit bytesOutputted(bytes, QVariant());
         }
     }
 }

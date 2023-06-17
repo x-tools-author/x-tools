@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -7,6 +7,7 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
+#include <QMessageBox>
 #include "SAKSocketServerTool.hh"
 #include "SAKSocketServerToolUi.hh"
 #include "ui_SAKSocketServerToolUi.h"
@@ -28,6 +29,8 @@ SAKSocketServerToolUi::SAKSocketServerToolUi(QWidget *parent)
     connect(ui->comboBoxMessageType,
             static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
             this, &SAKSocketServerToolUi::onComboBoxMessageTypeIndexChanged);
+    connect(ui->checkBoxSpecifyIpAndPort, &QCheckBox::clicked,
+            this, &SAKSocketServerToolUi::onCheckBoxSpecifyIpAndPortClicked);
 }
 
 SAKSocketServerToolUi::~SAKSocketServerToolUi()
@@ -72,6 +75,12 @@ void SAKSocketServerToolUi::onBaseToolUiInitialized(
         return;
     }
 
+    ui->comboBoxServerIp->setGroupKey(settingsGroup, "serverIp");
+    ui->spinBoxServerPort->setGroupKey(settingsGroup, "port");
+    ui->comboBoxMessageType->setGroupKey(settingsGroup, "messageType");
+    ui->checkBoxSpecifyIpAndPort->setGroupKey(settingsGroup,
+                                              "specifiedIpAndPort");
+
     QString ip = ui->comboBoxServerIp->currentText();
     int port = ui->spinBoxServerPort->value();
     bool specified = ui->checkBoxSpecifyIpAndPort->isChecked();
@@ -101,10 +110,6 @@ void SAKSocketServerToolUi::onBaseToolUiInitialized(
             ui->comboBoxClientList->setCurrentIndex(index);
         }
     });
-
-    ui->comboBoxServerIp->setGroupKey(settingsGroup, "serverIp");
-    ui->spinBoxServerPort->setGroupKey(settingsGroup, "port");
-    ui->comboBoxMessageType->setGroupKey(settingsGroup, "messageType");
 }
 
 void SAKSocketServerToolUi::onComboBoxServerIpActived()
@@ -131,4 +136,10 @@ void SAKSocketServerToolUi::onComboBoxMessageTypeIndexChanged()
 {
     int messageType = ui->comboBoxMessageType->currentData().toInt();
     mTool->setMessageType(messageType);
+}
+
+void SAKSocketServerToolUi::onCheckBoxSpecifyIpAndPortClicked()
+{
+    bool specified = ui->checkBoxSpecifyIpAndPort->isChecked();
+    mTool->setSpecifyIpAndPort(specified);
 }

@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -7,6 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
+#include <QMessageBox>
+
 #include "SAKSocketClientTool.hh"
 #include "SAKSocketClientToolUi.hh"
 #include "ui_SAKSocketClientToolUi.h"
@@ -69,6 +71,14 @@ void SAKSocketClientToolUi::onBaseToolUiInitialized(
         return;
     }
 
+    ui->comboBoxClientAddress->setGroupKey(settingsGroup, "clientAddress");
+    ui->spinBoxClientPort->setGroupKey(settingsGroup, "clientGroup");
+    ui->checkBoxSpecifyIpAndPort->setGroupKey(settingsGroup,
+                                              "specifyIpAndPort");
+    ui->comboBoxServerAddress->setGroupKey(settingsGroup, "serverAddress");
+    ui->spinBoxServerPort->setGroupKey(settingsGroup, "serverPort");
+    ui->comboBoxMessageType->setGroupKey(settingsGroup, "messageType");
+
     mTool->setClientIp(ui->comboBoxClientAddress->currentText().trimmed());
     mTool->setClientPort(ui->spinBoxClientPort->value());
     mTool->setServerIp(ui->comboBoxServerAddress->currentText().trimmed());
@@ -82,13 +92,6 @@ void SAKSocketClientToolUi::onBaseToolUiInitialized(
     connect(mTool, &SAKSocketClientTool::finished, this, [=](){
         ui->labelContext->setText(tr("Closed"));
     });
-
-    ui->comboBoxClientAddress->setGroupKey(settingsGroup, "clientAddress");
-    ui->spinBoxClientPort->setGroupKey(settingsGroup, "clientGroup");
-    ui->checkBoxSpecifyIpAndPort->setGroupKey(settingsGroup, "specifyIpAndPort");
-    ui->comboBoxServerAddress->setGroupKey(settingsGroup, "serverAddress");
-    ui->spinBoxServerPort->setGroupKey(settingsGroup, "serverPort");
-    ui->comboBoxMessageType->setGroupKey(settingsGroup, "messageType");
 }
 
 void SAKSocketClientToolUi::onComboBoxClientAddressActived()

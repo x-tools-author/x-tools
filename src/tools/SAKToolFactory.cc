@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -60,7 +60,7 @@ SAKBaseTool *SAKToolFactory::createTool(int type)
     } else if (PrestoreTool == type) {
         tool = new SAKPrestorerTool();
     } else if (VelometerTool == type) {
-        tool = new SAKVelometerTool;
+        tool = new SAKVelometerTool();
     } else if (UdpClientTool == type) {
         tool = new SAKUdpClientTool();
     } else if (UdpServerTool == type) {

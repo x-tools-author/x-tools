@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -134,6 +134,7 @@ private:
 signals:
     void isWorkingChanged();
     void communicatonChanged();
+    void errorOccurred(const QString &errorString);
 };
 
 #endif // SAKTOOLBOX_H

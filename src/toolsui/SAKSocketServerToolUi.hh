@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -40,6 +40,7 @@ private:
     void onSpinBoxServerPortValueChanged(int value);
     void onComboBoxClientsIndexChanged();
     void onComboBoxMessageTypeIndexChanged();
+    void onCheckBoxSpecifyIpAndPortClicked();
 };
 
 #endif // SAKSOCKETSERVERTOOLUI_H

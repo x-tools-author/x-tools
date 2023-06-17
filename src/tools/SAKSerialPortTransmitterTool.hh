@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -13,7 +13,6 @@
 #include <QMutex>
 #include <QVector>
 
-#include "SAKSerialPortTool.hh"
 #include "SAKTransmitterTool.hh"
 
 class SAKSerialPortTransmitterTool : public SAKTransmitterTool
@@ -32,8 +31,9 @@ public:
     };
 public:
     explicit SAKSerialPortTransmitterTool(QObject *parent = nullptr);
-
     Q_INVOKABLE virtual QVariant itemContext(int index) override;
+    virtual void inputBytes(const QByteArray &bytes,
+                            const QVariant &context = QJsonObject()) override;
 
 protected:
     virtual int columnCount(const QModelIndex &parent

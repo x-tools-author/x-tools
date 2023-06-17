@@ -7,6 +7,8 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
+#include "SAKInterface.hh"
+#include "SAKSerialPortTool.hh"
 #include "SAKSerialPortTransmitterTool.hh"
 
 SAKSerialPortTransmitterTool::SAKSerialPortTransmitterTool(QObject *parent)
@@ -41,6 +43,20 @@ QVariant SAKSerialPortTransmitterTool::itemContext(int index)
     }
 
     return obj;
+}
+
+void SAKSerialPortTransmitterTool::inputBytes(const QByteArray &bytes,
+                                              const QVariant &context)
+{
+    QByteArray ba = SAKInterface::arrayToHex(bytes, ' ');
+    QString hex = QString::fromLatin1(ba);
+    outputMessage(QtInfoMsg, QString("%1<-%2").arg(mToolName, hex));
+
+    mToolVectorMutex.lock();
+    for (auto tool : mToolVector) {
+        tool->inputBytes(bytes, context);
+    }
+    mToolVectorMutex.unlock();
 }
 
 int SAKSerialPortTransmitterTool::columnCount(const QModelIndex &parent) const
@@ -127,6 +143,11 @@ bool SAKSerialPortTransmitterTool::insertRows(int row,
                 tool, &SAKSerialPortTool::inputBytes);
         connect(tool, &SAKSerialPortTool::bytesOutputted,
                 this, &SAKSerialPortTransmitterTool::bytesOutputted);
+        connect(tool, &SAKSerialPortTool::finished, this, [=](){
+            if (this->isRunning()) {
+                tool->start();
+            }
+        });
         connect(this, &SAKSerialPortTransmitterTool::started,
                 tool, [=](){tool->start();});
         connect(this, &SAKSerialPortTransmitterTool::finished,

@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -21,15 +21,18 @@ bool SAKTcpClientTool::initialize()
     mTcpSocket = new QTcpSocket();
     if (mSpecifyClientIpPort) {
         if (!mTcpSocket->bind(QHostAddress(mClientIp), mClientPort)) {
-            outputMessage(QtWarningMsg, "Binding error:" + mTcpSocket->errorString());
+            QString err = "Binding error:" + mTcpSocket->errorString();
+            outputMessage(QtWarningMsg, err);
+            emit errorOccured(err);
             return false;
         }
     }
 
     mTcpSocket->connectToHost(QHostAddress(mServerIp), mServerPort);
     if (!mTcpSocket->waitForConnected()) {
-        qDebug() << mServerIp << mServerPort;
-        outputMessage(QtWarningMsg, "Connect to host error:" + mTcpSocket->errorString());
+        QString err = "Connect to host error:" + mTcpSocket->errorString();
+        outputMessage(QtWarningMsg, err);
+        emit errorOccured(err);
         return false;
     }
 

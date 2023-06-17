@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -20,13 +20,17 @@ SAKCommunicationTool::SAKCommunicationTool(const char *logCategory,
 void SAKCommunicationTool::inputBytes(const QByteArray &bytes,
                                       const QVariant &context)
 {
+    if (!enable()) {
+        return;
+    }
+
     mInputDataMutex.lock();
     QJsonObject jsonObj = context.toJsonObject();
     jsonObj.insert("flag", "tx");
     QVariant cookedContext = QVariant::fromValue(jsonObj);
     InputDataContext dataCtx{bytes, cookedContext};
     mInputDataList.append(dataCtx);
-    mInputDataMutex.unlock();;
+    mInputDataMutex.unlock();
 }
 
 void SAKCommunicationTool::run()

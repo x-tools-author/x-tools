@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -19,7 +19,14 @@ SAKUdpServerTool::SAKUdpServerTool(QObject *parent)
 bool SAKUdpServerTool::initialize()
 {
     mUdpSocket = new QUdpSocket();
-    if (!mUdpSocket->bind(QHostAddress(mServerIp), mServerPort)) {
+    bool ret = false;
+    if (mSpecifyIpAndPort) {
+        ret = mUdpSocket->bind(QHostAddress(mServerIp), mServerPort);
+    } else {
+        ret = mUdpSocket->bind();
+    }
+
+    if (!ret) {
         outputMessage(QtWarningMsg, mUdpSocket->errorString());
         return false;
     }
@@ -66,29 +73,34 @@ void SAKUdpServerTool::readBytes()
 {
     while (mUdpSocket->hasPendingDatagrams()) {
         auto len = mUdpSocket->pendingDatagramSize();
-        if (len != -1) {
-            QByteArray bytes(len, 0);
-            QHostAddress address;
-            quint16 port;
-            qint64 ret = mUdpSocket->readDatagram(bytes.data(),
-                                                  bytes.length(),
-                                                  &address, &port);
-            if (ret == -1) {
-                outputMessage(QtWarningMsg, mUdpSocket->errorString());
-            } else {
-                QString hex = QString::fromLatin1(SAKInterface::arrayToHex(bytes, ' '));
-                outputMessage(QtInfoMsg,
-                              QString("%1<-%2").arg(mBindingIpPort, hex));
-                QString info = QString("%1:%2")
-                                   .arg(address.toString()).arg(port);
-                if (!mClients.contains(info)) {
-                    mClients.append(info);
-                    emit clientsChanged();
-                }
-
-                emit bytesOutputted(bytes, info);
-            }
+        if (len == -1) {
+            break;
         }
+
+        QByteArray bytes(len, 0);
+        QHostAddress address;
+        quint16 port;
+        qint64 ret = mUdpSocket->readDatagram(bytes.data(), bytes.length(),
+                                              &address, &port);
+        if (ret == -1) {
+            outputMessage(QtWarningMsg, mUdpSocket->errorString());
+            break;
+        }
+
+        QByteArray ba = SAKInterface::arrayToHex(bytes, ' ');
+        QString hex = QString::fromLatin1(ba);
+        QString info =
+            QString("%1:%2").arg(address.toString()).arg(port);
+        QString msg =
+            QString("%1<-%2:%3").arg(mBindingIpPort, info, hex);
+        outputMessage(QtInfoMsg, msg);
+
+        if (!mClients.contains(info)) {
+            mClients.append(info);
+            emit clientsChanged();
+        }
+
+        emit bytesOutputted(bytes, info);
     }
 }
 

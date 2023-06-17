@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -32,7 +32,7 @@ void SAKVelometerTool::inputBytes(const QByteArray &bytes,
 
 void SAKVelometerTool::run()
 {
-    QTimer *timer = new QTimer(this);
+    QTimer *timer = new QTimer();
     timer->setInterval(1000);
     timer->setSingleShot(true);
     connect(timer, &QTimer::timeout, timer, [=](){

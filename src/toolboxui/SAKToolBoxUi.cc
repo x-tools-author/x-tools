@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -11,6 +11,7 @@
 #include <QLineEdit>
 #include <QDateTime>
 #include <QJsonArray>
+#include <QMessageBox>
 #include <QJsonObject>
 #include <QWidgetAction>
 #include <QJsonDocument>
@@ -591,6 +592,10 @@ void SAKToolBoxUi::initTools()
 
     connect(mToolBox, &SAKToolBox::isWorkingChanged,
             this, &SAKToolBoxUi::onIsWorkingChanged);
+    connect(mToolBox, &SAKToolBox::errorOccurred,
+            this, [=](const QString &err){
+        QMessageBox::warning(this, tr("Error Occured"), err);
+    });
 
     connect(mCommunicationTool, &SAKCommunicationTool::bytesInputted,
             this, &SAKToolBoxUi::onBytesWritten);

@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -72,6 +72,16 @@ SAKToolBox::SAKToolBox(QObject *parent)
               << mTcpTransmitterTool
               << mWebSocketTransmitterTool
               << mSerialPortTransmitterTool;
+
+    int flag = Qt::AutoConnection|Qt::UniqueConnection;
+    for (auto tool : mToolList) {
+        connect(tool, &SAKBaseTool::errorOccured,
+                this, &SAKToolBox::errorOccurred, Qt::ConnectionType(flag));
+    }
+
+    connect(this, &SAKToolBox::errorOccurred, this, [=](){
+        this->close();
+    });
 }
 
 void SAKToolBox::initialize(int type)
@@ -154,6 +164,10 @@ void SAKToolBox::initialize(int type)
     connect(mWebSocketTransmitterTool, &SAKBaseTool::bytesOutputted,
             mTxAnalyzerTool, &SAKBaseTool::inputBytes);
 
+
+    connect(mComunicationTool, &SAKCommunicationTool::errorOccured,
+            this, &SAKToolBox::errorOccurred);
+
     emit communicatonChanged();
 }
 
@@ -197,7 +211,9 @@ void SAKToolBox::send(const QByteArray &bytes, const QVariant &context)
 
 void SAKToolBox::uninitializedTips()
 {
-    Q_ASSERT_X(false, __FUNCTION__,
-               "You must call the interface name initialize() "
-               "before using the object.");
+    static QByteArray tips("You must call the interface name initialize()"
+                           " before using the object.");
+    Q_ASSERT_X(false, __FUNCTION__, tips.constData());
+
+    emit errorOccurred(QString::fromLatin1(tips));
 }
