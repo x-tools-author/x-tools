@@ -23,14 +23,14 @@ public:
 
 public:
     struct ItemContextKeys {
-        const QString enable{"enable"};
-        const QString clientIp{"clientIp"};
-        const QString clientPort{"clientPort"};
-        const QString specifiedClientIpPort{"specifiedClientIpAndPort"};
-        const QString serverIp{"serverIp"};
-        const QString serverPort{"serverPort"};
+        const QString enable{"Enable"};
+        const QString clientIp{"ClientIp"};
+        const QString clientPort{"ClientPort"};
+        const QString specifiedClientIpPort{"SpecifiedClientIpAndPort"};
+        const QString serverIp{"ServerIp"};
+        const QString serverPort{"ServerPort"};
 
-        const QString messageType{"messageType"};
+        const QString messageType{"MessageType"};
     };
 
 protected:

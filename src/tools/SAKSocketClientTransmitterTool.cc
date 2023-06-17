@@ -159,11 +159,11 @@ QVariant SAKSocketClientTransmitterTool::headerData(int section,
     } else if (section == 3) {
         return keys.specifiedClientIpPort;
     } else if (section == 4) {
-        return keys.serverIp;
-    } else if (section == 5) {
-        return keys.serverPort;
-    } else if (section == 6) {
         return keys.messageType;
+    } else if (section == 5) {
+        return keys.serverIp;
+    } else if (section == 6) {
+        return keys.serverPort;
     }
 
     return "Unknown";
