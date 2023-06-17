@@ -42,7 +42,7 @@
       <item row="0" column="2">
        <widget class="SAKSpinBox" name="spinBoxMaskCode">
         <property name="maximum">
-         <number>155</number>
+         <number>256</number>
         </property>
        </widget>
       </item>

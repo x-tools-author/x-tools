@@ -115,9 +115,9 @@ void SAKToolBox::initialize(int type)
             mComunicationTool, &SAKBaseTool::inputBytes);
 
     // rx->storer; tx->storer
-    connect(mComunicationTool, &SAKBaseTool::bytesOutputted,
+    connect(mRxAnalyzerTool, &SAKBaseTool::bytesOutputted,
             mStorerTool, &SAKBaseTool::inputBytes);
-    connect(mComunicationTool, &SAKBaseTool::bytesInputted,
+    connect(mTxMaskerTool, &SAKBaseTool::bytesInputted,
             mStorerTool, &SAKBaseTool::inputBytes);
 
     // rx->velometer; tx->velometer
@@ -132,13 +132,13 @@ void SAKToolBox::initialize(int type)
     connect(mComunicationTool, &SAKBaseTool::bytesInputted,
             mTxStatisticianTool, &SAKBaseTool::inputBytes);
 
-    // rx->serialport transmition; tx->serialport transmition
+    // rx->serialport transmition; serialport transmition->Tx analyzer
     connect(mRxAnalyzerTool, &SAKBaseTool::bytesOutputted,
             mSerialPortTransmitterTool, &SAKBaseTool::inputBytes);
     connect(mSerialPortTransmitterTool, &SAKBaseTool::bytesOutputted,
             mTxAnalyzerTool, &SAKBaseTool::inputBytes);
 
-    // rx->udp transmition; tx->udp transmition
+    // rx->udp transmition; udp transmition->Tx analyzer
     connect(mRxAnalyzerTool, &SAKBaseTool::bytesOutputted,
             mUdpTransmitterTool, &SAKBaseTool::inputBytes);
     connect(mUdpTransmitterTool, &SAKBaseTool::bytesOutputted,

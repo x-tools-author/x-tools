@@ -31,7 +31,9 @@ void SAKMaskerToolUi::setToolName(const QString &name)
 void SAKMaskerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
                                               const QString &settingsGroup)
 {
+#if 0
     ui->checkBoxEnable->setGroupKey(settingsGroup, "maskerEnable");
+#endif
     ui->spinBoxMaskCode->setGroupKey(settingsGroup, "maskCode");
 
     SAKMaskerTool *cookedTool = qobject_cast<SAKMaskerTool*>(tool);
@@ -48,4 +50,7 @@ void SAKMaskerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
             this, [=](int code){
         cookedTool->setMaskCode(code);
     });
+
+    cookedTool->setEnable(ui->checkBoxEnable->isChecked());
+    cookedTool->setMaskCode(ui->spinBoxMaskCode->value());
 }
