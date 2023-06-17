@@ -492,8 +492,9 @@ void SAKToolBoxUi::initSignalsCommunication()
 
 void SAKToolBoxUi::initSignalsInput()
 {
-    connect(ui->comboBoxInputIntervel, &QComboBox::currentTextChanged,
-            this, &SAKToolBoxUi::onComboBoxInputIntervelCurrentIndexChanged);
+    connect(ui->comboBoxInputIntervel,
+            static_cast<void(QComboBox::*)(int)>(&QComboBox::activated),
+            this, &SAKToolBoxUi::onComboBoxInputIntervelActivated);
     connect(ui->pushButtonInputSend, &QPushButton::clicked,
             this, &SAKToolBoxUi::onPushButtonInputSendClicked);
     connect(ui->comboBoxInputFormat,
@@ -679,7 +680,7 @@ void SAKToolBoxUi::onPushButtonInputSendClicked()
     try2send();
 }
 
-void SAKToolBoxUi::onComboBoxInputIntervelCurrentIndexChanged()
+void SAKToolBoxUi::onComboBoxInputIntervelActivated()
 {
     int interval = ui->comboBoxInputIntervel->currentText().toInt();
     interval = interval < 10 ? 10 : interval;

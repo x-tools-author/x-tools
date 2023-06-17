@@ -115,7 +115,7 @@ private:
 
     // input
     void onPushButtonInputSendClicked();
-    void onComboBoxInputIntervelCurrentIndexChanged();
+    void onComboBoxInputIntervelActivated();
     void onComboBoxInputFormatActivated();
     void onComboBoxInputTextActivated();
 
