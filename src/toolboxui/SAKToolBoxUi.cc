@@ -256,9 +256,9 @@ QString SAKToolBoxUi::settingsGroup()
     } else if (mCommunicationToolType == SAKToolFactory::UdpClientTool) {
         return "UdpClientToolBox";
     } else if (mCommunicationToolType == SAKToolFactory::UdpServerTool) {
-        return "UdpClientToolBox";
+        return "UdpServerTool";
     }  else if (mCommunicationToolType == SAKToolFactory::TcpClientTool) {
-        return "UdpServerToolBox";
+        return "TcpClientTool";
     } else if (mCommunicationToolType == SAKToolFactory::TcpServerTool) {
         return "TcpServerToolBox";
     }  else if (mCommunicationToolType == SAKToolFactory::WebSocketClientTool) {

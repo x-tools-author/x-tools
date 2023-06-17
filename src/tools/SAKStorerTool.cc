@@ -193,8 +193,8 @@ void SAKStorerTool::write2file()
                 }
             }
 
-            QString flag = context.toJsonObject().value("isRx").toBool()
-                               ? "Rx: " : "Tx: ";
+            QString flag = context.toJsonObject().value("flag").toString();
+            flag = (flag == "tx" ? "Tx: " : "Rx: ");
             str = dtStr + flag + str;
             outStream << str << "\n";
         }

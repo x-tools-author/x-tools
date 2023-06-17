@@ -46,7 +46,6 @@ bool SAKUdpClientTool::initialize()
 void SAKUdpClientTool::writeBytes(const QByteArray &bytes,
                                   const QVariant &context)
 {
-    Q_UNUSED(context);
     qint64 ret = mUdpSocket->writeDatagram(bytes,
                                            QHostAddress(mServerIp),
                                            mServerPort);
@@ -58,7 +57,7 @@ void SAKUdpClientTool::writeBytes(const QByteArray &bytes,
                                  .arg(mServerIp, QString::number(mServerPort));
         outputMessage(QtInfoMsg, QString("%1->%2:%3")
                                      .arg(mBindingIpPort, serverInfo, hex));
-        emit bytesInputted(bytes, QVariant());
+        emit bytesInputted(bytes, context);
     }
 }
 
