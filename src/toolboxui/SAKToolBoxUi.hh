@@ -68,6 +68,18 @@ private:
         QString transmitterTabIndex;
     } mSettingsKey;
 
+    struct InputParameters {
+        int prefix;
+        int suffix;
+        int escapeCharacter;
+
+        bool appendCrc;
+        bool bigEndian;
+        int algorithm;
+        int startIndex;
+        int endIndex;
+    } mInputParameters;
+
 private:
     SAKCommunicationToolUi *communiticationToolUi(int type);
     void try2send();
@@ -86,6 +98,7 @@ private:
     void initUi();
     void initUiCommunication();
     void initUiInput();
+    void initUiInputMenu();
     void initUiOutput();
 
     void initSettings();
