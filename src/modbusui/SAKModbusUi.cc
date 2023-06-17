@@ -249,20 +249,8 @@ void SAKModbusUi::initSettingsDevice()
 
 void SAKModbusUi::initSettingsNetwork()
 {
-    bool custom = mSettings->value(mSettingsKeyCtx.customAddress).toBool();
-    ui->customAddressCheckBox->setChecked(custom);
-    ui->addressComboBox->setEditable(custom);
-
     QString address = mSettings->value(mSettingsKeyCtx.address).toString();
-    int index = ui->addressComboBox->findText(address);
-    if (custom) {
-        ui->addressComboBox->lineEdit()->setText(address);
-
-    } else {
-        if (index >= 0 && index < ui->addressComboBox->count()) {
-            ui->addressComboBox->setCurrentIndex(index);
-        }
-    }
+    ui->addressComboBox->setCurrentText(address);
 
     QVariant portValiant = mSettings->value(mSettingsKeyCtx.port);
     int port = portValiant.toInt();
@@ -390,9 +378,6 @@ void SAKModbusUi::initSignalsNetworking()
             this, &SAKModbusUi::onAddressChanged);
     connect(ui->portSpinBox, QOverload<int>::of(&QSpinBox::valueChanged),
             this, &SAKModbusUi::onPortChanged);
-    connect(ui->customAddressCheckBox, &QCheckBox::clicked,
-            this, &SAKModbusUi::onCustomAddressChanged);
-
 }
 
 void SAKModbusUi::initSignalsSerialPort()
@@ -606,13 +591,6 @@ void SAKModbusUi::onPortChanged()
 {
     mSettings->setValue(mSettingsKeyCtx.port,
                         ui->portSpinBox->value());
-}
-
-void SAKModbusUi::onCustomAddressChanged()
-{
-    mSettings->setValue(mSettingsKeyCtx.customAddress,
-                        ui->customAddressCheckBox->isChecked());
-    ui->addressComboBox->setEditable(ui->customAddressCheckBox->isChecked());
 }
 
 void SAKModbusUi::onPortNameChanged()
