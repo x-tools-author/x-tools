@@ -31,24 +31,24 @@ QByteArray SAKCrcInterface::calculateBytes(const QByteArray &bytes,
                                            bool bigEndian)
 {
     auto parametersIsValid = [&]()->bool{
-        if (bytes.isEmpty()) {
-            return true;
-        }
-
         if (!(startIndex >= 0 && startIndex < bytes.length())) {
+            qCWarning(mLoggingCategory) << "start index is invalid";
             return false;
         }
 
         if (!(endIndex >= 0 && endIndex < bytes.length())) {
+            qCWarning(mLoggingCategory) << "end index is invalid";
             return false;
         }
 
-        int ret = bytes.length() - startIndex - endIndex;
-        if (ret > 0) {
-            return true;
+        int cookedEndIndex = bytes.length() - endIndex - 1;
+        int len = cookedEndIndex - startIndex;
+        if (len < 0) {
+            qCWarning(mLoggingCategory) << "crc data length is invalid";
+            return false;
         }
 
-        return false;
+        return true;
     };
 
     QByteArray retBytes;

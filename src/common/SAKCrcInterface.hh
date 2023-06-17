@@ -12,6 +12,7 @@
 
 #include <QObject>
 #include <QStringList>
+#include <QLoggingCategory>
 
 class SAKCrcInterface : public QObject
 {
@@ -93,6 +94,7 @@ public:
 
 private:
     QStringList modelStrings;
+    const QLoggingCategory mLoggingCategory{"SAKCrcInterface"};
 
 private:
     template<typename T>
