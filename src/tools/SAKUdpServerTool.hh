@@ -28,6 +28,10 @@ protected:
 
 private:
     QUdpSocket *mUdpSocket{nullptr};
+
+private:
+    void writeDatagram(const QByteArray &bytes, const QVariant &context,
+                       const QString &ip, quint16 port);
 };
 
 #endif // SAKUDPSERVERTOOL_H
