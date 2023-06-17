@@ -34,6 +34,8 @@ public:
         int algorithm;
         int startIndex;
         int endIndex;
+
+        QString algorithmName;
     };
 
     Parameters parameters();

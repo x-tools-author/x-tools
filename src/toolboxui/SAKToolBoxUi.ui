@@ -342,9 +342,16 @@
           </spacer>
          </item>
          <item>
+          <widget class="QLabel" name="labelAlgorithm">
+           <property name="text">
+            <string notr="true"> </string>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="QLabel" name="label_7">
            <property name="text">
-            <string>CRC:</string>
+            <string>:</string>
            </property>
           </widget>
          </item>

@@ -334,6 +334,7 @@ void SAKToolBoxUi::onInputTextChanged()
     QString crc = QString::fromLatin1(b.toHex());
     crc = "0x" + crc.toUpper();
     ui->labelCrc->setText(crc);
+    ui->labelAlgorithm->setText(mInputMenu->parameters().algorithmName);
 }
 
 void SAKToolBoxUi::init()
@@ -349,7 +350,7 @@ void SAKToolBoxUi::init()
 
     onIsWorkingChanged();
     onComboBoxInputFormatActivated();
-    //onInputTextChanged();
+    onInputTextChanged();
 }
 
 void SAKToolBoxUi::initUi()

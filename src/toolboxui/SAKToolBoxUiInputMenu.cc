@@ -87,11 +87,14 @@ SAKToolBoxUiInputMenu::SAKToolBoxUiInputMenu(const QString &settingsGroup,
     ui->comboBoxAglorithm->setGroupKey(settingsGroup + "/input",
                                        "algorithm");
     mParameters.algorithm = ui->comboBoxAglorithm->currentData().toInt();
+    mParameters.algorithmName = ui->comboBoxAglorithm->currentText();
     connect(ui->comboBoxAglorithm,
             static_cast<void(QComboBox::*)(int)>(&QComboBox::activated),
             this, [=](){
                 int ret = ui->comboBoxAglorithm->currentData().toInt();
+                QString name = ui->comboBoxAglorithm->currentText();
                 this->mParameters.algorithm = ret;
+                this->mParameters.algorithmName = name;
                 emit parametersChanged();
             });
 }
