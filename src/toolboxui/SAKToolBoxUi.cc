@@ -335,8 +335,8 @@ void SAKToolBoxUi::onBytesRead(const QByteArray &bytes,
 void SAKToolBoxUi::onInputTextChanged()
 {
     QByteArray b = calculateCrc();
-    QString crc = QString::fromLatin1(b).toUpper();
-    crc = "0x" + crc;
+    QString crc = QString::fromLatin1(b.toHex());
+    crc = "0x" + crc.toUpper();
     ui->labelCrc->setText(crc);
 }
 
@@ -439,6 +439,7 @@ void SAKToolBoxUi::initUiInputMenu()
             this, [=](){
                 int ret = prefix->currentData().toInt();
                 this->mInputParameters.prefix = ret;
+                this->onInputTextChanged();
             });
 
     gl->addWidget(new QLabel(tr("Suffix")), 1, 0, 1, 1);
@@ -451,6 +452,7 @@ void SAKToolBoxUi::initUiInputMenu()
             this, [=](){
                 int ret = suffix->currentData().toInt();
                 this->mInputParameters.suffix = ret;
+                this->onInputTextChanged();
             });
 
     gl->addWidget(new QLabel("Escape"), 2, 0, 1, 1);
@@ -463,6 +465,7 @@ void SAKToolBoxUi::initUiInputMenu()
             this, [=](){
                 int ret = escape->currentData().toInt();
                 this->mInputParameters.escapeCharacter = ret;
+                this->onInputTextChanged();
             });
 
     SAKCheckBox *appendCrc = new SAKCheckBox(this);
@@ -481,6 +484,7 @@ void SAKToolBoxUi::initUiInputMenu()
     mInputParameters.bigEndian = bigEndian->isChecked();
     connect(bigEndian, &QCheckBox::clicked, this, [=](){
         this->mInputParameters.bigEndian = bigEndian->isChecked();
+        this->onInputTextChanged();
     });
 
     gl->addWidget(new QLabel("Start index"), 5, 0, 1, 1);
@@ -490,6 +494,7 @@ void SAKToolBoxUi::initUiInputMenu()
     mInputParameters.startIndex = startIndex->value();
     connect(startIndex, &QSpinBox::valueChanged, this, [=](){
         this->mInputParameters.startIndex = startIndex->value();
+        this->onInputTextChanged();
     });
 
     gl->addWidget(new QLabel("End index"), 6, 0, 1, 1);
@@ -499,17 +504,20 @@ void SAKToolBoxUi::initUiInputMenu()
     mInputParameters.endIndex = endIndex->value();
     connect(endIndex, &QSpinBox::valueChanged, this, [=](){
         this->mInputParameters.endIndex = endIndex->value();
+        this->onInputTextChanged();
     });
 
     gl->addWidget(new QLabel("Algotithm"), 7, 0, 1, 1);
     auto algorithm = new SAKCrcAlgorithmComboBox(this);
     algorithm->setGroupKey(settingsGroup() + "/input", "algorithm");
     gl->addWidget(algorithm, 7, 1, 1, 1);
+    mInputParameters.algorithm = algorithm->currentData().toInt();
     connect(algorithm,
             static_cast<void(QComboBox::*)(int)>(&QComboBox::activated),
             this, [=](){
                 int ret = algorithm->currentData().toInt();
                 this->mInputParameters.algorithm = ret;
+                this->onInputTextChanged();
             });
 
     QWidgetAction *a = new QWidgetAction(this);
