@@ -28,10 +28,11 @@ class SAKResponserToolUi;
 class SAKPrestorerToolUi;
 class SAKCommunicationTool;
 class SAKToolBoxUiInputMenu;
+class SAKToolBoxUiOutputMenu;
 class SAKCommunicationToolUi;
-class SAKToolBoxUiParameters;
 class SAKTcpTransmitterToolUi;
 class SAKUdpTransmitterToolUi;
+class SAKToolBoxUiCommunicationMenu;
 class SAKWebSocketTransmitterToolUi;
 class SAKSerialPortTransmitterToolUi;
 class SAKToolBoxUi : public QWidget
@@ -48,7 +49,6 @@ public:
     void initialize(int type);
 
 private:
-    SAKToolBoxUiParameters *mToolBoxUiParameters{nullptr};
     SAKToolBox *mToolBox{nullptr};
     SAKCommunicationTool *mCommunicationTool{nullptr};
     SAKCommunicationToolUi *mCommunicationToolUi{nullptr};
@@ -62,7 +62,9 @@ private:
     QLoggingCategory mLoggingCategory{"SAK.SAKToolBoxUi"};
     QTimer *mCycleSendingTimer{nullptr};
     int mCommunicationToolType;
+    SAKToolBoxUiCommunicationMenu *mCommunicationMenu{nullptr};
     SAKToolBoxUiInputMenu *mInputMenu{nullptr};
+    SAKToolBoxUiOutputMenu *mOutputMenu{nullptr};
 
     struct {
         QString tabIndex;
@@ -89,7 +91,6 @@ private:
     void initUi();
     void initUiCommunication();
     void initUiInput();
-    void initUiInputMenu();
     void initUiOutput();
 
     void initSettings();
@@ -110,18 +111,15 @@ private:
     void onTabWidgetCurrentChanged(int index);
 
     // communication
-    void onPushButtonCommunicationSettingsClicked();
     void onPushButtonCommunicationOpenClicked();
 
     // input
-    void onPushButtonInputSettingsClicked();
     void onPushButtonInputSendClicked();
     void onComboBoxInputIntervelCurrentIndexChanged();
     void onComboBoxInputFormatActivated();
     void onComboBoxInputTextActivated();
 
     // output
-    void onPushButtonOutputSettingsClicked();
     void onCheckBoxOutputWrapClicked();
 };
 

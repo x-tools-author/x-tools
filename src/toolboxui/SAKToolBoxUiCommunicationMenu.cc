@@ -7,71 +7,37 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
+#include <QWidgetAction>
 #include "SAKToolBox.hh"
 #include "SAKSettings.hh"
 #include "SAKInterface.hh"
 #include "SAKHighlighter.hh"
-#include "SAKToolBoxUiParameters.hh"
-#include "ui_SAKToolBoxUiParameters.h"
+#include "SAKToolBoxUiCommunicationMenu.hh"
+#include "ui_SAKToolBoxUiCommunicationMenu.h"
 
-SAKToolBoxUiParameters::SAKToolBoxUiParameters(QWidget *parent)
-    : QDialog(parent)
-    , ui(new Ui::SAKToolBoxUiParameters)
+SAKToolBoxUiCommunicationMenu::SAKToolBoxUiCommunicationMenu(QWidget *parent)
+    : QMenu(parent)
+    , ui(new Ui::SAKToolBoxUiCommunicationMenu)
 {
-    ui->setupUi(this);
+    QWidget *w = new QWidget(this);
+    ui->setupUi(w);
+    QWidgetAction *action = new QWidgetAction(this);
+    action->setDefaultWidget(w);
+    addAction(action);
+
     ui->widgetTxMasker->setToolName("Tx masker");
     ui->widgetRxMasker->setToolName("Rx masker");
     ui->widgetTxAnanyzer->setToolName(tr("Tx analyzer"));
     ui->widgetRxAnanlyzer->setToolName(tr("Rx analyzer"));
 }
 
-SAKToolBoxUiParameters::~SAKToolBoxUiParameters()
+SAKToolBoxUiCommunicationMenu::~SAKToolBoxUiCommunicationMenu()
 {
     delete ui;
 }
 
-void SAKToolBoxUiParameters::showDialog(int tabIndex)
-{
-    if (tabIndex >= 0 && tabIndex < ui->tabWidget->count()) {
-        ui->tabWidget->setCurrentIndex(tabIndex);
-    } else {
-        qCWarning(mLoggingCategory) << "Invalid tab index:" << tabIndex;
-    }
-
-    show();
-}
-
-SAKToolBoxUiParameters::ParameterContext
-SAKToolBoxUiParameters::parameterContext()
-{
-    ParameterContext ctx{};
-
-    ctx.input.preprocessing.prefix = ui->comboBoxPrefix->currentData().toInt();
-    ctx.input.preprocessing.suffix = ui->comboBoxSuffix->currentData().toInt();
-    ctx.input.preprocessing.escapeCharacter =
-        ui->comboBoxEscapeCharacter->currentData().toInt();
-
-    ctx.input.crc.enable = ui->checkBoxCrcEnable->isChecked();
-    ctx.input.crc.bigEndian = ui->checkBoxBigEndian->isChecked();
-    ctx.input.crc.arithmetic = ui->comboBoxAlgorithm->currentData().toInt();
-    ctx.input.crc.startIndex = ui->spinBoxStartIndex->value();
-    ctx.input.crc.endIndex = ui->spinBoxEndIndex->value();
-
-    QString txt = ui->textEdit->toPlainText();
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-    auto flag = Qt::SkipEmptyParts;
-#else
-    auto flag = QString::SkipEmptyParts;
-#endif
-    QStringList txtList = txt.split(';', flag);
-    ctx.output.keyWords = txtList;
-
-    return ctx;
-}
-
-void SAKToolBoxUiParameters::initialize(SAKToolBox *toolBox,
-                                        const QString &settingsGroup,
-                                        QTextDocument *doc)
+void SAKToolBoxUiCommunicationMenu::initialize(SAKToolBox *toolBox,
+                                        const QString &settingsGroup)
 {
     auto txM = toolBox->getTxMaskerTool();
     auto rxM = toolBox->getRxMaskerTool();
@@ -90,38 +56,4 @@ void SAKToolBoxUiParameters::initialize(SAKToolBox *toolBox,
     ui->widgetTxAnanyzer->initialize(txA, txAGroup);
     ui->widgetRxAnanlyzer->initialize(rxA, rxAGroup);
     ui->widgetStorer->initialize(storer, storerGroup);
-
-    ui->checkBoxBigEndian->setGroupKey(settingsGroup + "/input", "bigEndian");
-    ui->checkBoxCrcEnable->setGroupKey(settingsGroup + "/input", "crcEnable");
-    ui->spinBoxEndIndex->setGroupKey(settingsGroup   + "/input", "endIndex");
-    ui->spinBoxStartIndex->setGroupKey(settingsGroup + "/input", "startIndex");
-    ui->comboBoxAlgorithm->setGroupKey(settingsGroup + "/input", "algorithm");
-
-    const QString key = settingsGroup + "/highlighter/items";
-    QString txt = SAKSettings::instance()->value(key).toString();
-    txt = QString::fromUtf8(QByteArray::fromHex(txt.toLatin1()));
-    ui->textEdit->setText(txt);
-
-    auto updateDoc = [=](){
-        QString text = ui->textEdit->toPlainText();
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-        QStringList list = text.split(";", Qt::SkipEmptyParts);
-#else
-        QStringList list = text.split(QString(";"), QString::SkipEmptyParts);
-#endif
-        mHighlighter->removeKeyWord("");
-        mHighlighter->setKeyWords(list);
-    };
-
-    mHighlighter = new SAKHighlighter(this);
-    mHighlighter->setDoc(QVariant::fromValue(doc));
-    connect(ui->textEdit, &QTextEdit::textChanged, this, [=](){
-        updateDoc();
-
-        QString text = ui->textEdit->toPlainText();
-        QString hex = QString::fromLatin1(text.toUtf8().toHex());
-        SAKSettings::instance()->setValue(key, hex);
-    });
-
-    updateDoc();
 }

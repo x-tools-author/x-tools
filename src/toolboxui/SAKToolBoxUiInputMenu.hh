@@ -10,13 +10,13 @@
 #ifndef SAKTOOLBOXUIINPUTMENU_HH
 #define SAKTOOLBOXUIINPUTMENU_HH
 
-#include <QWidget>
+#include <QMenu>
 
 namespace Ui {
 class SAKToolBoxUiInputMenu;
 }
 
-class SAKToolBoxUiInputMenu : public QWidget
+class SAKToolBoxUiInputMenu : public QMenu
 {
     Q_OBJECT
 public:

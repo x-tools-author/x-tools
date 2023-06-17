@@ -7,59 +7,33 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#ifndef SAKTOOLBOXUIPARAMETERS_HH
-#define SAKTOOLBOXUIPARAMETERS_HH
+#ifndef SAKTOOLBOXUICOMMUNICATIONMENU_HH
+#define SAKTOOLBOXUICOMMUNICATIONMENU_HH
 
-#include <QDialog>
+#include <QMenu>
 #include <QTextDocument>
 #include <QLoggingCategory>
 
 namespace Ui {
-class SAKToolBoxUiParameters;
+class SAKToolBoxUiCommunicationMenu;
 }
 
 class SAKToolBox;
 class SAKHighlighter;
-class SAKToolBoxUiParameters : public QDialog
+class SAKToolBoxUiCommunicationMenu : public QMenu
 {
     Q_OBJECT
 public:
-    struct ParameterContext {
-        struct {
-            struct {
-                int prefix;
-                int suffix;
-                int escapeCharacter;
-            } preprocessing;
+    SAKToolBoxUiCommunicationMenu(QWidget *parent = nullptr);
+    ~SAKToolBoxUiCommunicationMenu();
 
-            struct {
-                bool enable;
-                bool bigEndian;
-                int arithmetic;
-                int startIndex;
-                int endIndex;
-            } crc;
-        } input;
-
-        struct {
-            QStringList keyWords;
-        } output;
-    };
-
-public:
-    SAKToolBoxUiParameters(QWidget *parent = nullptr);
-    ~SAKToolBoxUiParameters();
-    void showDialog(int tabIndex);
-    ParameterContext parameterContext();
-    void initialize(SAKToolBox *toolBox, const QString &settingsGroup,
-                    QTextDocument *doc);
+    void initialize(SAKToolBox *toolBox, const QString &settingsGroup);
 
 private:
     const QLoggingCategory mLoggingCategory{"SAK.CustomBoxUiParameters"};
-    SAKHighlighter *mHighlighter{nullptr};
 
 private:
-    Ui::SAKToolBoxUiParameters *ui;
+    Ui::SAKToolBoxUiCommunicationMenu *ui;
 };
 
-#endif // SAKTOOLBOXUIPARAMETERS_HH
+#endif // SAKTOOLBOXUICOMMUNICATIONMENU_H

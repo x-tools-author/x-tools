@@ -32,7 +32,8 @@
 #include "SAKSocketClientToolUi.hh"
 #include "SAKSocketServerToolUi.hh"
 #include "SAKToolBoxUiInputMenu.hh"
-#include "SAKToolBoxUiParameters.hh"
+#include "SAKToolBoxUiOutputMenu.hh"
+#include "SAKToolBoxUiCommunicationMenu.hh"
 #include "SAKTcpTransmitterToolUi.hh"
 #include "SAKUdpTransmitterToolUi.hh"
 #include "SAKWebSocketTransmitterToolUi.hh"
@@ -46,9 +47,6 @@ SAKToolBoxUi::SAKToolBoxUi(QWidget *parent)
 {
     ui->setupUi(this);
     mToolBox = new SAKToolBox(this);
-
-    mToolBoxUiParameters = new SAKToolBoxUiParameters(this);
-    mToolBoxUiParameters->setModal(true);
 
     mCycleSendingTimer = new QTimer(this);
     connect(mCycleSendingTimer, &QTimer::timeout,
@@ -419,20 +417,10 @@ void SAKToolBoxUi::initUiInput()
         }
     }
 
-    initUiInputMenu();
-}
-
-void SAKToolBoxUi::initUiInputMenu()
-{ 
     mInputMenu = new SAKToolBoxUiInputMenu(settingsGroup(), this);
-    QWidgetAction *a = new QWidgetAction(this);
-    a->setDefaultWidget(mInputMenu);
     connect(mInputMenu, &SAKToolBoxUiInputMenu::parametersChanged,
             this, &SAKToolBoxUi::onInputTextChanged);
-
-    QMenu *menu = new QMenu(ui->pushButtonInputSettings);
-    menu->addAction(a);
-    ui->pushButtonInputSettings->setMenu(menu);
+    ui->pushButtonInputSettings->setMenu(mInputMenu);
 }
 
 void SAKToolBoxUi::initUiOutput()
@@ -440,6 +428,11 @@ void SAKToolBoxUi::initUiOutput()
     ui->checkBoxOutputRx->setChecked(true);
     ui->checkBoxOutputTx->setChecked(true);
     ui->textBrowserOutput->document()->setMaximumBlockCount(2000);
+
+    mOutputMenu = new SAKToolBoxUiOutputMenu(settingsGroup(),
+                                             ui->textBrowserOutput->document(),
+                                             this);
+    ui->pushButtonOutputSettings->setMenu(mOutputMenu);
 }
 
 void SAKToolBoxUi::initSettings()
@@ -492,16 +485,12 @@ void SAKToolBoxUi::initSignals()
 
 void SAKToolBoxUi::initSignalsCommunication()
 {
-    connect(ui->pushButtonCommunicationSettings, &QPushButton::clicked,
-            this, &SAKToolBoxUi::onPushButtonCommunicationSettingsClicked);
     connect(ui->pushButtonCommunicationOpen, &QPushButton::clicked,
             this, &SAKToolBoxUi::onPushButtonCommunicationOpenClicked);
 }
 
 void SAKToolBoxUi::initSignalsInput()
 {
-//    connect(ui->pushButtonInputSettings, &QPushButton::clicked,
-//            this, &SAKToolBoxUi::onPushButtonInputSettingsClicked);
     connect(ui->comboBoxInputIntervel, &QComboBox::currentTextChanged,
             this, &SAKToolBoxUi::onComboBoxInputIntervelCurrentIndexChanged);
     connect(ui->pushButtonInputSend, &QPushButton::clicked,
@@ -518,8 +507,6 @@ void SAKToolBoxUi::initSignalsInput()
 
 void SAKToolBoxUi::initSignalsOutput()
 {
-    connect(ui->pushButtonOutputSettings, &QPushButton::clicked,
-            this, &SAKToolBoxUi::onPushButtonOutputSettingsClicked);
     connect(ui->checkBoxOutputWrap, &QCheckBox::clicked,
             this, &SAKToolBoxUi::onCheckBoxOutputWrapClicked);
 }
@@ -539,9 +526,9 @@ void SAKToolBoxUi::initSignalsTools()
 
 void SAKToolBoxUi::initTools()
 {
-    mToolBoxUiParameters->initialize(mToolBox,
-                                     settingsGroup(),
-                                     ui->textBrowserOutput->document());
+    mCommunicationMenu = new SAKToolBoxUiCommunicationMenu(this);
+    mCommunicationMenu->initialize(mToolBox, settingsGroup());
+    ui->pushButtonCommunicationSettings->setMenu(mCommunicationMenu);
 
     auto rxVelometer = mToolBox->getRxVelometerTool();
     auto txVelometer = mToolBox->getTxVelometerTool();
@@ -624,11 +611,6 @@ void SAKToolBoxUi::onTabWidgetCurrentChanged(int index)
     SAKSettings::instance()->setValue(mSettingsKey.tabIndex, index);
 }
 
-void SAKToolBoxUi::onPushButtonCommunicationSettingsClicked()
-{
-    mToolBoxUiParameters->showDialog(0);
-}
-
 void SAKToolBoxUi::onPushButtonCommunicationOpenClicked()
 {
     ui->pushButtonCommunicationOpen->setEnabled(false);
@@ -639,11 +621,6 @@ void SAKToolBoxUi::onPushButtonCommunicationOpenClicked()
     }
 }
 
-void SAKToolBoxUi::onPushButtonOutputSettingsClicked()
-{
-    mToolBoxUiParameters->showDialog(2);
-}
-
 void SAKToolBoxUi::onCheckBoxOutputWrapClicked()
 {
     if (ui->checkBoxOutputWrap->isChecked()) {
@@ -651,11 +628,6 @@ void SAKToolBoxUi::onCheckBoxOutputWrapClicked()
     } else {
         ui->textBrowserOutput->setWordWrapMode(QTextOption::NoWrap);
     }
-}
-
-void SAKToolBoxUi::onPushButtonInputSettingsClicked()
-{
-    mToolBoxUiParameters->showDialog(1);
 }
 
 void SAKToolBoxUi::onPushButtonInputSendClicked()

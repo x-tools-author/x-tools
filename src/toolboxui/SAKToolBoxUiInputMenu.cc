@@ -7,15 +7,20 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
+#include <QWidgetAction>
 #include "SAKToolBoxUiInputMenu.hh"
 #include "ui_SAKToolBoxUiInputMenu.h"
 
 SAKToolBoxUiInputMenu::SAKToolBoxUiInputMenu(const QString &settingsGroup,
                                              QWidget *parent)
-    : QWidget{parent}
+    : QMenu{parent}
     , ui(new Ui::SAKToolBoxUiInputMenu)
 {
-    ui->setupUi(this);
+    QWidget *w = new QWidget(this);
+    ui->setupUi(w);
+    QWidgetAction *action = new QWidgetAction(w);
+    action->setDefaultWidget(w);
+    addAction(action);
 
     ui->comboBoxPrefix->setGroupKey(settingsGroup + "/input", "prefix", false);
     mParameters.prefix = ui->comboBoxPrefix->currentData().toInt();
