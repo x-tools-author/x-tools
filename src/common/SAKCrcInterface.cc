@@ -31,13 +31,19 @@ QByteArray SAKCrcInterface::calculateBytes(const QByteArray &bytes,
                                            bool bigEndian)
 {
     auto parametersIsValid = [&]()->bool{
+        if (bytes.isEmpty()) {
+            return true;
+        }
+
         if (!(startIndex >= 0 && startIndex < bytes.length())) {
-            qCWarning(mLoggingCategory) << "start index is invalid";
+            qCWarning(mLoggingCategory) << "start index is invalid:"
+                                        << startIndex;
             return false;
         }
 
         if (!(endIndex >= 0 && endIndex < bytes.length())) {
-            qCWarning(mLoggingCategory) << "end index is invalid";
+            qCWarning(mLoggingCategory) << "end index is invalid:"
+                                        << endIndex;
             return false;
         }
 
@@ -52,8 +58,8 @@ QByteArray SAKCrcInterface::calculateBytes(const QByteArray &bytes,
     };
 
     QByteArray retBytes;
+    auto bw = bitsWidth(SAKEnumCrcAlgorithm(arithmetic));
     if (parametersIsValid()) {
-        auto bw = bitsWidth(SAKEnumCrcAlgorithm(arithmetic));
         uint64_t len = bytes.length() - startIndex - endIndex;
         QByteArray temp = bytes;
         if (bw == 8) {
@@ -70,6 +76,20 @@ QByteArray SAKCrcInterface::calculateBytes(const QByteArray &bytes,
             uint32_t ret = crcCalculate<uint32_t>(
                 reinterpret_cast<uint8_t*>(temp.data()) + startIndex,
                 len, SAKEnumCrcAlgorithm(arithmetic));
+            retBytes = QByteArray(reinterpret_cast<char*>(&ret), sizeof(ret));
+        }
+    } else {
+        if (bw == 8) {
+            uint8_t ret = crcCalculate<uint8_t>(
+                nullptr, 0, SAKEnumCrcAlgorithm(arithmetic));
+            retBytes = QByteArray(reinterpret_cast<char*>(&ret), sizeof(ret));
+        } else if (bw == 16) {
+            uint16_t ret = crcCalculate<uint8_t>(
+                nullptr, 0, SAKEnumCrcAlgorithm(arithmetic));
+            retBytes = QByteArray(reinterpret_cast<char*>(&ret), sizeof(ret));
+        } else if (bw == 32) {
+            uint32_t ret = crcCalculate<uint8_t>(
+                nullptr, 0, SAKEnumCrcAlgorithm(arithmetic));
             retBytes = QByteArray(reinterpret_cast<char*>(&ret), sizeof(ret));
         }
     }
