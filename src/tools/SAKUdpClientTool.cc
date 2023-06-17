@@ -46,15 +46,23 @@ bool SAKUdpClientTool::initialize()
 void SAKUdpClientTool::writeBytes(const QByteArray &bytes,
                                   const QVariant &context)
 {
+    if (mServerIp.isEmpty()) {
+        return;
+    }
+
     qint64 ret = mUdpSocket->writeDatagram(bytes,
                                            QHostAddress(mServerIp),
                                            mServerPort);
     if (ret == -1) {
-        outputMessage(QtWarningMsg, mUdpSocket->errorString());
+        QString ipport = mServerIp + ":" + QString::number(mServerPort);
+        QString str = mUdpSocket->errorString();
+        QString info = QString("write bytes to %1 error: %2").arg(ipport, str);
+        outputMessage(QtWarningMsg, info);
     } else {
-        QString hex = QString::fromLatin1(SAKInterface::arrayToHex(bytes, ' '));
-        QString serverInfo = QString("%1:%2")
-                                 .arg(mServerIp, QString::number(mServerPort));
+        QByteArray ba = SAKInterface::arrayToHex(bytes, ' ');
+        QString hex = QString::fromLatin1(ba);
+        QString serverInfo = QString("%1:%2").arg(mServerIp,
+                                                  QString::number(mServerPort));
         outputMessage(QtInfoMsg, QString("%1->%2:%3")
                                      .arg(mBindingIpPort, serverInfo, hex));
         emit bytesInputted(bytes, context);

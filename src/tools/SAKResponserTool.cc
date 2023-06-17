@@ -53,8 +53,8 @@ QVariant SAKResponserTool::data(const QModelIndex &index, int role) const
 }
 
 bool SAKResponserTool::setData(const QModelIndex &index,
-                                     const QVariant &value,
-                                     int role)
+                               const QVariant &value,
+                               int role)
 {
     Q_UNUSED(role);
     int row = index.row();
@@ -239,16 +239,17 @@ QByteArray SAKResponserTool::referenceBytes(const ResponserItem &item) const
     text = SAKDataStructure::cookedString(item.itemReferenceEscapeCharacter,
                                           text);
     bytes = SAKInterface::string2array(text, item.itemReferenceTextFormat);
-    SAKCrcInterface sakCrc;
-    QByteArray crcBytes = sakCrc.calculateBytes(bytes,
-                                               item.itemReferenceCrcAlgorithm,
-                                               item.itemReferenceCrcStartIndex,
-                                               item.itemReferenceCrcEndIndex);
     QByteArray prefix = SAKDataStructure::affixesData(item.itemReferencePrefix);
     QByteArray suffix = SAKDataStructure::affixesData(item.itemReferenceSuffix);
 
     bytes.prepend(prefix);
-    bytes.append(crcBytes);
+    if (item.itemReferenceCrcEnable) {
+        SAKCrcInterface sakCrc;
+        QByteArray crcBytes = sakCrc.calculateBytes(
+            bytes, item.itemReferenceCrcAlgorithm,
+            item.itemReferenceCrcStartIndex, item.itemReferenceCrcEndIndex);
+        bytes.append(crcBytes);
+    }
     bytes.append(suffix);
 
     return bytes;
@@ -261,16 +262,17 @@ QByteArray SAKResponserTool::responseBytes(const ResponserItem &item) const
     text = SAKDataStructure::cookedString(item.itemResponseEscapeCharacter,
                                           text);
     bytes = SAKInterface::string2array(text, item.itemResponseTextFormat);
-    SAKCrcInterface sakCrc;
-    QByteArray crcBytes = sakCrc.calculateBytes(bytes,
-                                               item.itemResponseCrcAlgorithm,
-                                               item.itemResponseCrcStartIndex,
-                                               item.itemResponseCrcEndIndex);
     QByteArray prefix = SAKDataStructure::affixesData(item.itemResponsePrefix);
     QByteArray suffix = SAKDataStructure::affixesData(item.itemResponseSuffix);
 
     bytes.prepend(prefix);
-    bytes.append(crcBytes);
+    if (item.itemResponseCrcEnable) {
+        SAKCrcInterface sakCrc;
+        QByteArray crcBytes = sakCrc.calculateBytes(
+            bytes, item.itemResponseCrcAlgorithm,
+            item.itemResponseCrcStartIndex, item.itemResponseCrcEndIndex);
+        bytes.append(crcBytes);
+    }
     bytes.append(suffix);
 
     return bytes;
@@ -337,7 +339,7 @@ QVariant SAKResponserTool::itemContext(int index)
                        SAKDataStructure::EscapeCharacterOptionNone);
             ctx.insert(itemReferencePrefix(), SAKDataStructure::AffixesNone);
             ctx.insert(itemReferenceSuffix(), SAKDataStructure::AffixesNone);
-            ctx.insert(itemReferenceCrcEnable(), true);
+            ctx.insert(itemReferenceCrcEnable(), false);
             ctx.insert(itemReferenceCrcAlgorithm(), SAKCrcInterface::CRC_8);
             ctx.insert(itemReferenceCrcStartIndex(), 0);
             ctx.insert(itemReferenceCrcEndIndex(), 0);
@@ -350,7 +352,7 @@ QVariant SAKResponserTool::itemContext(int index)
                        SAKDataStructure::EscapeCharacterOptionNone);
             ctx.insert(itemResponsePrefix(), SAKDataStructure::AffixesNone);
             ctx.insert(itemResponseSuffix(), SAKDataStructure::AffixesNone);
-            ctx.insert(itemResponseCrcEnable(), true);
+            ctx.insert(itemResponseCrcEnable(), false);
             ctx.insert(itemResponseCrcAlgorithm(), SAKCrcInterface::CRC_8);
             ctx.insert(itemResponseCrcStartIndex(), 0);
             ctx.insert(itemResponseCrcEndIndex(), 0);
@@ -384,8 +386,8 @@ void SAKResponserTool::run()
     connect(outputTimer, &QTimer::timeout, outputTimer, [=](){
         mInputContextListMutex.lock();
         while (!mInputContextList.isEmpty()) {
-            QByteArray bytes = mInputContextList.takeFirst().bytes;
-            try2output(bytes, outputTimer);
+            auto ctx = mInputContextList.takeFirst();
+            try2output(ctx, outputTimer);
         }
         mInputContextListMutex.unlock();
         outputTimer->start();
@@ -402,12 +404,18 @@ void SAKResponserTool::run()
     outputTimer = nullptr;
 }
 
-void SAKResponserTool::try2output(const QByteArray &bytes,
-                                  QObject *threadInnerObject)
+void SAKResponserTool::try2output(const SAKResponserTool::InputContext &ctx,
+                                  QObject *receiver)
 {
     mItemsMutex.lock();
     auto items = mItems;
     mItemsMutex.unlock();
+
+    int always = SAKDataStructure::ResponseOptionAlways;
+    int echo = SAKDataStructure::ResponseOptionEcho;
+    int contain = SAKDataStructure::ResponseOptionInputContainReference;
+    int discontain = SAKDataStructure::ResponseOptionInputDiscontainReference;
+    int eaual = SAKDataStructure::ResponseOptionInputEqualReference;
 
     for (const auto &item : items) {
         if (!item.data.itemEnable) {
@@ -416,32 +424,33 @@ void SAKResponserTool::try2output(const QByteArray &bytes,
 
         auto refBytes = referenceBytes(item.data);
         auto resBytes = responseBytes(item.data);
+#if 0
+        qDebug() << QString::fromLatin1(ctx.bytes.toHex())
+                 << QString::fromLatin1(refBytes.toHex())
+                 << QString::fromLatin1(resBytes.toHex());
+#endif
         bool enableResponse = false;
-        if (item.data.itemOption ==
-            SAKDataStructure::ResponseOptionAways) {
+        if (item.data.itemOption == always) {
             enableResponse = true;
-        } else if (item.data.itemOption ==
-                   SAKDataStructure::ResponseOptionEcho) {
-            resBytes = bytes;
+        } else if (item.data.itemOption == echo) {
+            resBytes = ctx.bytes;
             enableResponse = true;
-        } else if (item.data.itemOption ==
-                   SAKDataStructure::ResponseOptionInputContainReference) {
-            enableResponse = bytes.contains(refBytes);
-        } else if (item.data.itemOption ==
-                   SAKDataStructure::ResponseOptionInputDiscontainReference) {
-            enableResponse = !bytes.contains(refBytes);
-        } else if (item.data.itemOption ==
-                   SAKDataStructure::ResponseOptionInputEqualReference) {
-            enableResponse = bytes == refBytes;
+        } else if (item.data.itemOption == contain) {
+            enableResponse = (ctx.bytes.contains(refBytes));
+        } else if (item.data.itemOption == discontain) {
+            enableResponse = (!ctx.bytes.contains(refBytes));
+        } else if (item.data.itemOption == eaual) {
+            enableResponse = (ctx.bytes == refBytes);
         }
 
-        if (enableResponse) {
-            QTimer::singleShot(item.data.itemResponseInterval,
-                               threadInnerObject, [=](){
-                emit bytesOutputted(item.data.itemResponseText.toUtf8(),
-                                    QVariant());
-            });
+        if (!enableResponse) {
+            continue;
         }
+
+        QTimer::singleShot(item.data.itemResponseInterval, receiver, [=](){
+            emit bytesOutputted(item.data.itemResponseText.toUtf8(),
+                                ctx.context);
+        });
     }
 }
 

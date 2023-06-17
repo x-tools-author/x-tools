@@ -50,7 +50,7 @@ public:
     enum EDEnumResponseOptions {
         ResponseOptionDisable,
         ResponseOptionEcho,
-        ResponseOptionAways,
+        ResponseOptionAlways,
         ResponseOptionInputEqualReference,
         ResponseOptionInputContainReference,
         ResponseOptionInputDiscontainReference

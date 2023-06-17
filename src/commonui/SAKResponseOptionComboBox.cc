@@ -15,8 +15,8 @@ SAKResponseOptionComboBox::SAKResponseOptionComboBox(QWidget *parent)
 {
     addItem(tr("Disable"), SAKDataStructure::ResponseOptionDisable);
     addItem(tr("Echo"), SAKDataStructure::ResponseOptionEcho);
-    addItem(tr("Aways"), SAKDataStructure::ResponseOptionAways);
-    addItem(tr("InputEqualReference"), SAKDataStructure::ResponseOptionInputEqualReference);
-    addItem(tr("InputContainReference"), SAKDataStructure::ResponseOptionInputContainReference);
-    addItem(tr("InputDiscontainReference"), SAKDataStructure::ResponseOptionInputDiscontainReference);
+    addItem(tr("Always"), SAKDataStructure::ResponseOptionAlways);
+    addItem(tr("RxEqualReference"), SAKDataStructure::ResponseOptionInputEqualReference);
+    addItem(tr("RxContainReference"), SAKDataStructure::ResponseOptionInputContainReference);
+    addItem(tr("RxDiscontainReference"), SAKDataStructure::ResponseOptionInputDiscontainReference);
 }

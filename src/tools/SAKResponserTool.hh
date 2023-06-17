@@ -153,7 +153,7 @@ private:
     QVariant columnDisplayRoleData(const ResponserData &item, int column) const;
     QByteArray referenceBytes(const ResponserItem &item) const;
     QByteArray responseBytes(const ResponserItem &item) const;
-    void try2output(const QByteArray &bytes, QObject *threadInnerObject);
+    void try2output(const InputContext &ctx, QObject *receiver);
 
 private:
     QString itemEnable();
