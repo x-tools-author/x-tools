@@ -31,7 +31,7 @@ QByteArray SAKCrcInterface::calculateBytes(const QByteArray &bytes,
                                            bool bigEndian)
 {
     auto parametersIsValid = [&]()->bool{
-        if (bytes.isEmpty()) {
+        if (bytes.isEmpty() && (startIndex == 0) && (endIndex == 0)) {
             return true;
         }
 
