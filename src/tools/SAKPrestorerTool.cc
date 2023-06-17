@@ -224,6 +224,13 @@ QVariant SAKPrestorerTool::itemContext(int index)
     return ctx;
 }
 
+QString SAKPrestorerTool::description(int index)
+{
+    QJsonObject obj = itemContext(index).toJsonObject();
+    ItemKeys keys;
+    return obj.value(keys.itemDescription).toString();
+}
+
 void SAKPrestorerTool::send(int index)
 {
     if (isRunning()) {

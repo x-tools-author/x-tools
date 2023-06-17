@@ -10,6 +10,7 @@
 #ifndef SAKPRESTORERTOOLUI_HH
 #define SAKPRESTORERTOOLUI_HH
 
+#include <QMenu>
 #include "SAKTableModelToolUi.hh"
 
 class SAKPrestorerTool;
@@ -20,6 +21,7 @@ class SAKPrestorerToolUi : public SAKTableModelToolUi
 public:
     explicit SAKPrestorerToolUi(QWidget *parent = nullptr);
     ~SAKPrestorerToolUi();
+    QMenu *menu();
 
 protected:
     virtual void onBaseToolUiInitialized(SAKBaseTool *tool,
@@ -28,6 +30,10 @@ protected:
 
 private:
     SAKPrestorerToolUiEditor *mEditor{nullptr};
+    QMenu *mMenu{nullptr};
+
+private:
+    void updateMenu();
 };
 
 #endif // SAKPRESTORERTOOLUI_HH

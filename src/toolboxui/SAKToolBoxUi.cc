@@ -33,9 +33,9 @@
 #include "SAKSocketServerToolUi.hh"
 #include "SAKToolBoxUiInputMenu.hh"
 #include "SAKToolBoxUiOutputMenu.hh"
-#include "SAKToolBoxUiCommunicationMenu.hh"
 #include "SAKTcpTransmitterToolUi.hh"
 #include "SAKUdpTransmitterToolUi.hh"
+#include "SAKToolBoxUiCommunicationMenu.hh"
 #include "SAKWebSocketTransmitterToolUi.hh"
 #include "SAKSerialPortTransmitterToolUi.hh"
 
@@ -478,7 +478,6 @@ void SAKToolBoxUi::initSignals()
     initSignalsCommunication();
     initSignalsInput();
     initSignalsOutput();
-    initSignalsTools();
 
     connect(ui->tabWidget, &QTabWidget::currentChanged,
             this, &SAKToolBoxUi::onTabWidgetCurrentChanged);
@@ -511,19 +510,6 @@ void SAKToolBoxUi::initSignalsOutput()
 {
     connect(ui->checkBoxOutputWrap, &QCheckBox::clicked,
             this, &SAKToolBoxUi::onCheckBoxOutputWrapClicked);
-}
-
-void SAKToolBoxUi::initSignalsTools()
-{
-    connect(mToolBox, &SAKToolBox::isWorkingChanged,
-            this, &SAKToolBoxUi::onIsWorkingChanged);
-
-    connect(mCommunicationTool, &SAKCommunicationTool::bytesInputted,
-            this, &SAKToolBoxUi::onBytesWritten);
-
-    auto outputAnalyzer = mToolBox->getRxAnalyzerTool();
-    connect(outputAnalyzer, &SAKAnalyzerTool::bytesOutputted,
-            this, &::SAKToolBoxUi::onBytesRead);
 }
 
 void SAKToolBoxUi::initTools()
@@ -602,6 +588,18 @@ void SAKToolBoxUi::initTools()
             [=](int index){
         SAKSettings::instance()->setValue(key, index);
     });
+
+    connect(mToolBox, &SAKToolBox::isWorkingChanged,
+            this, &SAKToolBoxUi::onIsWorkingChanged);
+
+    connect(mCommunicationTool, &SAKCommunicationTool::bytesInputted,
+            this, &SAKToolBoxUi::onBytesWritten);
+
+    auto outputAnalyzer = mToolBox->getRxAnalyzerTool();
+    connect(outputAnalyzer, &SAKAnalyzerTool::bytesOutputted,
+            this, &::SAKToolBoxUi::onBytesRead);
+
+    ui->pushButtonPrestorer->setMenu(mPrestorerToolUi->menu());
 }
 
 void SAKToolBoxUi::onTabWidgetCurrentChanged(int index)

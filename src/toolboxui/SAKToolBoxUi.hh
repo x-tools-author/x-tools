@@ -88,6 +88,7 @@ private:
 
 private:
     void init();
+
     void initUi();
     void initUiCommunication();
     void initUiInput();
@@ -102,7 +103,6 @@ private:
     void initSignalsCommunication();
     void initSignalsInput();
     void initSignalsOutput();
-    void initSignalsTools();
 
     void initTools();
 

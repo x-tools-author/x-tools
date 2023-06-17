@@ -42,6 +42,7 @@ protected:
 protected:
     const QLoggingCategory mLoggingCategory;
     QAbstractTableModel *mTableModel{nullptr};
+    SAKTableModelTool *mTableModelTool{nullptr};
 
 private:
     void clear();
@@ -54,7 +55,6 @@ private:
 private:
     QMenu *mMenu{nullptr};
     QString mItemsKey;
-    SAKTableModelTool *mTableModelTool{nullptr};
 
 private:
     QModelIndex currentIndex();

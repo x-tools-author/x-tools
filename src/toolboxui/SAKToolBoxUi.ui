@@ -195,13 +195,6 @@
         </property>
        </widget>
       </item>
-      <item row="11" column="0" colspan="2">
-       <widget class="QLabel" name="label_10">
-        <property name="text">
-         <string>Input control</string>
-        </property>
-       </widget>
-      </item>
       <item row="4" column="0" colspan="2">
        <widget class="QLabel" name="label_4">
         <property name="text">
@@ -213,6 +206,20 @@
        <widget class="QLabel" name="label_3">
         <property name="text">
          <string>Communication control</string>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="0">
+       <widget class="QLabel" name="label_10">
+        <property name="text">
+         <string>Input control</string>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="1">
+       <widget class="QPushButton" name="pushButtonPrestorer">
+        <property name="text">
+         <string>Prestorer</string>
         </property>
        </widget>
       </item>

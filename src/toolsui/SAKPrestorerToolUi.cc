@@ -14,6 +14,7 @@
 #include <QJsonDocument>
 #include <QStandardItemModel>
 
+#include "SAKMenu.hh"
 #include "SAKPrestorerTool.hh"
 #include "SAKPrestorerToolUi.hh"
 #include "SAKPrestorerToolUiEditor.hh"
@@ -22,11 +23,17 @@ SAKPrestorerToolUi::SAKPrestorerToolUi(QWidget *parent)
     : SAKTableModelToolUi{"SAK.PrestorerToolUi", parent}
 {
     mEditor = new SAKPrestorerToolUiEditor(this);
+    mMenu = new SAKMenu();
 }
 
 SAKPrestorerToolUi::~SAKPrestorerToolUi()
 {
 
+}
+
+QMenu *SAKPrestorerToolUi::menu()
+{
+    return mMenu;
 }
 
 void SAKPrestorerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
@@ -37,9 +44,36 @@ void SAKPrestorerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
     QList<int> columns;
     columns << 9;
     setStretchSections(columns);
+
+    SAKPrestorerTool *cookedTool = qobject_cast<SAKPrestorerTool*>(tool);
+    auto *model = cookedTool->tableModel().value<SAKTableModel*>();
+    connect(model, &QAbstractTableModel::rowsRemoved,
+            this, &SAKPrestorerToolUi::updateMenu);
+    connect(model, &QAbstractTableModel::rowsInserted,
+            this, &SAKPrestorerToolUi::updateMenu);
+    connect(model, &QAbstractTableModel::dataChanged,
+            this, &SAKPrestorerToolUi::updateMenu);
+    updateMenu();
 }
 
 QDialog *SAKPrestorerToolUi::itemEditor()
 {
     return mEditor;
+}
+
+void SAKPrestorerToolUi::updateMenu()
+{
+    auto *cookedTool = qobject_cast<SAKPrestorerTool*>(mTableModelTool);
+    auto *model = cookedTool->tableModel().value<SAKTableModel*>();
+
+    mMenu->clear();
+
+    for (int i = 0; i < model->rowCount(); i++) {
+        QString desc = cookedTool->description(i);
+        QAction *a = new QAction(desc, mMenu);
+        mMenu->addAction(a);
+        connect(a, &QAction::triggered, this, [=](){
+            cookedTool->send(i);
+        });
+    }
 }
