@@ -27,6 +27,7 @@ class SAKEmitterToolUi;
 class SAKResponserToolUi;
 class SAKPrestorerToolUi;
 class SAKCommunicationTool;
+class SAKToolBoxUiInputMenu;
 class SAKCommunicationToolUi;
 class SAKToolBoxUiParameters;
 class SAKTcpTransmitterToolUi;
@@ -61,24 +62,13 @@ private:
     QLoggingCategory mLoggingCategory{"SAK.SAKToolBoxUi"};
     QTimer *mCycleSendingTimer{nullptr};
     int mCommunicationToolType;
+    SAKToolBoxUiInputMenu *mInputMenu{nullptr};
 
     struct {
         QString tabIndex;
         QString items;
         QString transmitterTabIndex;
     } mSettingsKey;
-
-    struct InputParameters {
-        int prefix;
-        int suffix;
-        int escapeCharacter;
-
-        bool appendCrc;
-        bool bigEndian;
-        int algorithm;
-        int startIndex;
-        int endIndex;
-    } mInputParameters;
 
 private:
     SAKCommunicationToolUi *communiticationToolUi(int type);

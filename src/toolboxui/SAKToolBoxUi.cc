@@ -16,8 +16,6 @@
 #include <QJsonDocument>
 #include <QRegularExpression>
 
-#include "SAKSpinBox.hh"
-#include "SAKCheckBox.hh"
 #include "SAKSettings.hh"
 #include "SAKToolBoxUi.hh"
 #include "SAKInterface.hh"
@@ -28,17 +26,15 @@
 #include "SAKDataStructure.hh"
 #include "SAKResponserToolUi.hh"
 #include "SAKPrestorerToolUi.hh"
-#include "SAKAffixesComboBox.hh"
 #include "SAKBleCentralToolUi.hh"
 #include "SAKSerialPortToolUi.hh"
 #include "SAKCommunicationTool.hh"
 #include "SAKSocketClientToolUi.hh"
 #include "SAKSocketServerToolUi.hh"
+#include "SAKToolBoxUiInputMenu.hh"
 #include "SAKToolBoxUiParameters.hh"
 #include "SAKTcpTransmitterToolUi.hh"
 #include "SAKUdpTransmitterToolUi.hh"
-#include "SAKCrcAlgorithmComboBox.hh"
-#include "SAKEscapeCharacterComboBox.hh"
 #include "SAKWebSocketTransmitterToolUi.hh"
 #include "SAKSerialPortTransmitterToolUi.hh"
 
@@ -179,9 +175,10 @@ SAKCommunicationToolUi *SAKToolBoxUi::communiticationToolUi(int type)
 
 void SAKToolBoxUi::try2send()
 {
-    int prefix = mInputParameters.prefix;
-    int suffix = mInputParameters.suffix;
-    int esc = mInputParameters.escapeCharacter;
+    auto ctx = mInputMenu->parameters();
+    int prefix = ctx.prefix;
+    int suffix = ctx.suffix;
+    int esc = ctx.escapeCharacter;
 
     QByteArray prefixData = SAKDataStructure::affixesData(prefix);
     QByteArray suffixData = SAKDataStructure::affixesData(suffix);
@@ -190,7 +187,7 @@ void SAKToolBoxUi::try2send()
     input = SAKDataStructure::cookedString(esc, input);
     int format = ui->comboBoxInputFormat->currentData().toInt();
     QByteArray bytes = SAKInterface::string2array(input, format);
-    if (mInputParameters.appendCrc) {
+    if (ctx.appendCrc) {
         QByteArray b = calculateCrc(bytes);
         input.append(b);
     }
@@ -274,20 +271,21 @@ QString SAKToolBoxUi::settingsGroup()
 
 QByteArray SAKToolBoxUi::calculateCrc(const QByteArray &bytes)
 {
+    auto ctx = mInputMenu->parameters();
     QByteArray inputBytes = bytes;
     if (inputBytes.isEmpty()) {
         int format = ui->comboBoxInputFormat->currentData().toInt();
         QString input = ui->comboBoxInputText->currentText();
-        int esc = mInputParameters.escapeCharacter;
+        int esc = ctx.escapeCharacter;
 
         input = SAKDataStructure::cookedString(esc, input);
         inputBytes = SAKInterface::string2array(input, format);
     }
 
-    int algorithm = mInputParameters.algorithm;
-    int startIndex = mInputParameters.startIndex;
-    int endIndex = mInputParameters.endIndex;
-    bool bigEndian = mInputParameters.bigEndian;
+    int algorithm = ctx.algorithm;
+    int startIndex = ctx.startIndex;
+    int endIndex = ctx.endIndex;
+    bool bigEndian = ctx.bigEndian;
     SAKCrcInterface crci;
     QByteArray crc = crci.calculateBytes(inputBytes, algorithm, startIndex,
                                          endIndex, bigEndian);
@@ -353,7 +351,7 @@ void SAKToolBoxUi::init()
 
     onIsWorkingChanged();
     onComboBoxInputFormatActivated();
-    onInputTextChanged();
+    //onInputTextChanged();
 }
 
 void SAKToolBoxUi::initUi()
@@ -425,113 +423,16 @@ void SAKToolBoxUi::initUiInput()
 }
 
 void SAKToolBoxUi::initUiInputMenu()
-{
-    QWidget *menuWidget = new QWidget(this);
-    QGridLayout *gl = new QGridLayout(menuWidget);
+{ 
+    mInputMenu = new SAKToolBoxUiInputMenu(settingsGroup(), this);
     QWidgetAction *a = new QWidgetAction(this);
-    a->setDefaultWidget(menuWidget);
+    a->setDefaultWidget(mInputMenu);
+    connect(mInputMenu, &SAKToolBoxUiInputMenu::parametersChanged,
+            this, &SAKToolBoxUi::onInputTextChanged);
+
     QMenu *menu = new QMenu(ui->pushButtonInputSettings);
     menu->addAction(a);
     ui->pushButtonInputSettings->setMenu(menu);
-
-    int rowIndex = 0;
-    gl->addWidget(new QLabel(tr("Prefix")), rowIndex, 0, 1, 1);
-    SAKAffixesComboBox *prefix = new SAKAffixesComboBox(this);
-    prefix->setGroupKey(settingsGroup() + "/input", "prefix", false);
-    gl->addWidget(prefix, rowIndex, 1, 1, 1);
-    mInputParameters.prefix = prefix->currentData().toInt();
-    connect(prefix,
-            static_cast<void(QComboBox::*)(int)>(&QComboBox::activated),
-            this, [=](){
-                int ret = prefix->currentData().toInt();
-                this->mInputParameters.prefix = ret;
-                this->onInputTextChanged();
-            });
-
-    rowIndex += 1;
-    gl->addWidget(new QLabel(tr("Suffix")), rowIndex, 0, 1, 1);
-    SAKAffixesComboBox *suffix = new SAKAffixesComboBox(this);
-    suffix->setGroupKey(settingsGroup() + "/input", "suffix");
-    gl->addWidget(suffix, rowIndex, 1, 1, 1);
-    mInputParameters.suffix = prefix->currentData().toInt();
-    connect(suffix,
-            static_cast<void(QComboBox::*)(int)>(&QComboBox::activated),
-            this, [=](){
-                int ret = suffix->currentData().toInt();
-                this->mInputParameters.suffix = ret;
-                this->onInputTextChanged();
-            });
-
-    rowIndex += 1;
-    gl->addWidget(new QLabel("Escape"), rowIndex, 0, 1, 1);
-    SAKAffixesComboBox *escape = new SAKAffixesComboBox(this);
-    escape->setGroupKey(settingsGroup() + "/input", "escape");
-    gl->addWidget(escape, rowIndex, 1, 1, 1);
-    mInputParameters.escapeCharacter = escape->currentData().toInt();
-    connect(escape,
-            static_cast<void(QComboBox::*)(int)>(&QComboBox::activated),
-            this, [=](){
-                int ret = escape->currentData().toInt();
-                this->mInputParameters.escapeCharacter = ret;
-                this->onInputTextChanged();
-            });
-
-    rowIndex += 1;
-    SAKCheckBox *appendCrc = new SAKCheckBox(this);
-    appendCrc->setText(tr("Append CRC"));
-    appendCrc->setGroupKey(settingsGroup() + "/input", "crcAppend");
-    gl->addWidget(appendCrc, rowIndex, 0, 1, 2);
-    mInputParameters.appendCrc = appendCrc->isChecked();
-    connect(appendCrc, &QCheckBox::clicked, this, [=](){
-        this->mInputParameters.appendCrc = appendCrc->isChecked();
-    });
-
-    rowIndex += 1;
-    SAKCheckBox *bigEndian = new SAKCheckBox(this);
-    bigEndian->setText(tr("Big endian"));
-    bigEndian->setGroupKey(settingsGroup() + "/input", "crcBigEndian");
-    gl->addWidget(bigEndian, rowIndex, 0, 1, 2);
-    mInputParameters.bigEndian = bigEndian->isChecked();
-    connect(bigEndian, &QCheckBox::clicked, this, [=](){
-        this->mInputParameters.bigEndian = bigEndian->isChecked();
-        this->onInputTextChanged();
-    });
-
-    rowIndex += 1;
-    gl->addWidget(new QLabel("Start index"), rowIndex, 0, 1, 1);
-    SAKSpinBox *startIndex = new SAKSpinBox(this);
-    startIndex->setGroupKey(settingsGroup() + "/input", "startIndex");
-    gl->addWidget(startIndex, rowIndex, 1, 1, 2);
-    mInputParameters.startIndex = startIndex->value();
-    connect(startIndex, &QSpinBox::valueChanged, this, [=](){
-        this->mInputParameters.startIndex = startIndex->value();
-        this->onInputTextChanged();
-    });
-
-    rowIndex += 1;
-    gl->addWidget(new QLabel("End index"), rowIndex, 0, 1, 1);
-    SAKSpinBox *endIndex = new SAKSpinBox(this);
-    endIndex->setGroupKey(settingsGroup() + "/input", "endIndex");
-    gl->addWidget(endIndex, rowIndex, 1, 1, 2);
-    mInputParameters.endIndex = endIndex->value();
-    connect(endIndex, &QSpinBox::valueChanged, this, [=](){
-        this->mInputParameters.endIndex = endIndex->value();
-        this->onInputTextChanged();
-    });
-
-    rowIndex += 1;
-    gl->addWidget(new QLabel("Algotithm"), rowIndex, 0, 1, 1);
-    auto algorithm = new SAKCrcAlgorithmComboBox(this);
-    algorithm->setGroupKey(settingsGroup() + "/input", "algorithm");
-    gl->addWidget(algorithm, rowIndex, 1, 1, 1);
-    mInputParameters.algorithm = algorithm->currentData().toInt();
-    connect(algorithm,
-            static_cast<void(QComboBox::*)(int)>(&QComboBox::activated),
-            this, [=](){
-                int ret = algorithm->currentData().toInt();
-                this->mInputParameters.algorithm = ret;
-                this->onInputTextChanged();
-            });
 }
 
 void SAKToolBoxUi::initUiOutput()
