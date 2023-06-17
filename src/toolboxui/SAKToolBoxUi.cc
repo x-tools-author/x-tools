@@ -428,11 +428,17 @@ void SAKToolBoxUi::initUiInputMenu()
 {
     QWidget *menuWidget = new QWidget(this);
     QGridLayout *gl = new QGridLayout(menuWidget);
+    QWidgetAction *a = new QWidgetAction(this);
+    a->setDefaultWidget(menuWidget);
+    QMenu *menu = new QMenu(ui->pushButtonInputSettings);
+    menu->addAction(a);
+    ui->pushButtonInputSettings->setMenu(menu);
 
-    gl->addWidget(new QLabel(tr("Prefix")), 0, 0, 1, 1);
+    int rowIndex = 0;
+    gl->addWidget(new QLabel(tr("Prefix")), rowIndex, 0, 1, 1);
     SAKAffixesComboBox *prefix = new SAKAffixesComboBox(this);
     prefix->setGroupKey(settingsGroup() + "/input", "prefix", false);
-    gl->addWidget(prefix, 0, 1, 1, 1);
+    gl->addWidget(prefix, rowIndex, 1, 1, 1);
     mInputParameters.prefix = prefix->currentData().toInt();
     connect(prefix,
             static_cast<void(QComboBox::*)(int)>(&QComboBox::activated),
@@ -442,10 +448,11 @@ void SAKToolBoxUi::initUiInputMenu()
                 this->onInputTextChanged();
             });
 
-    gl->addWidget(new QLabel(tr("Suffix")), 1, 0, 1, 1);
+    rowIndex += 1;
+    gl->addWidget(new QLabel(tr("Suffix")), rowIndex, 0, 1, 1);
     SAKAffixesComboBox *suffix = new SAKAffixesComboBox(this);
     suffix->setGroupKey(settingsGroup() + "/input", "suffix");
-    gl->addWidget(suffix, 1, 1, 1, 1);
+    gl->addWidget(suffix, rowIndex, 1, 1, 1);
     mInputParameters.suffix = prefix->currentData().toInt();
     connect(suffix,
             static_cast<void(QComboBox::*)(int)>(&QComboBox::activated),
@@ -455,10 +462,11 @@ void SAKToolBoxUi::initUiInputMenu()
                 this->onInputTextChanged();
             });
 
-    gl->addWidget(new QLabel("Escape"), 2, 0, 1, 1);
+    rowIndex += 1;
+    gl->addWidget(new QLabel("Escape"), rowIndex, 0, 1, 1);
     SAKAffixesComboBox *escape = new SAKAffixesComboBox(this);
     escape->setGroupKey(settingsGroup() + "/input", "escape");
-    gl->addWidget(escape, 2, 1, 1, 1);
+    gl->addWidget(escape, rowIndex, 1, 1, 1);
     mInputParameters.escapeCharacter = escape->currentData().toInt();
     connect(escape,
             static_cast<void(QComboBox::*)(int)>(&QComboBox::activated),
@@ -468,49 +476,54 @@ void SAKToolBoxUi::initUiInputMenu()
                 this->onInputTextChanged();
             });
 
+    rowIndex += 1;
     SAKCheckBox *appendCrc = new SAKCheckBox(this);
     appendCrc->setText(tr("Append CRC"));
     appendCrc->setGroupKey(settingsGroup() + "/input", "crcAppend");
-    gl->addWidget(appendCrc, 3, 0, 1, 2);
+    gl->addWidget(appendCrc, rowIndex, 0, 1, 2);
     mInputParameters.appendCrc = appendCrc->isChecked();
     connect(appendCrc, &QCheckBox::clicked, this, [=](){
         this->mInputParameters.appendCrc = appendCrc->isChecked();
     });
 
+    rowIndex += 1;
     SAKCheckBox *bigEndian = new SAKCheckBox(this);
     bigEndian->setText(tr("Big endian"));
     bigEndian->setGroupKey(settingsGroup() + "/input", "crcBigEndian");
-    gl->addWidget(bigEndian, 4, 0, 1, 2);
+    gl->addWidget(bigEndian, rowIndex, 0, 1, 2);
     mInputParameters.bigEndian = bigEndian->isChecked();
     connect(bigEndian, &QCheckBox::clicked, this, [=](){
         this->mInputParameters.bigEndian = bigEndian->isChecked();
         this->onInputTextChanged();
     });
 
-    gl->addWidget(new QLabel("Start index"), 5, 0, 1, 1);
+    rowIndex += 1;
+    gl->addWidget(new QLabel("Start index"), rowIndex, 0, 1, 1);
     SAKSpinBox *startIndex = new SAKSpinBox(this);
     startIndex->setGroupKey(settingsGroup() + "/input", "startIndex");
-    gl->addWidget(startIndex, 5, 1, 1, 2);
+    gl->addWidget(startIndex, rowIndex, 1, 1, 2);
     mInputParameters.startIndex = startIndex->value();
     connect(startIndex, &QSpinBox::valueChanged, this, [=](){
         this->mInputParameters.startIndex = startIndex->value();
         this->onInputTextChanged();
     });
 
-    gl->addWidget(new QLabel("End index"), 6, 0, 1, 1);
+    rowIndex += 1;
+    gl->addWidget(new QLabel("End index"), rowIndex, 0, 1, 1);
     SAKSpinBox *endIndex = new SAKSpinBox(this);
     endIndex->setGroupKey(settingsGroup() + "/input", "endIndex");
-    gl->addWidget(endIndex, 6, 1, 1, 2);
+    gl->addWidget(endIndex, rowIndex, 1, 1, 2);
     mInputParameters.endIndex = endIndex->value();
     connect(endIndex, &QSpinBox::valueChanged, this, [=](){
         this->mInputParameters.endIndex = endIndex->value();
         this->onInputTextChanged();
     });
 
-    gl->addWidget(new QLabel("Algotithm"), 7, 0, 1, 1);
+    rowIndex += 1;
+    gl->addWidget(new QLabel("Algotithm"), rowIndex, 0, 1, 1);
     auto algorithm = new SAKCrcAlgorithmComboBox(this);
     algorithm->setGroupKey(settingsGroup() + "/input", "algorithm");
-    gl->addWidget(algorithm, 7, 1, 1, 1);
+    gl->addWidget(algorithm, rowIndex, 1, 1, 1);
     mInputParameters.algorithm = algorithm->currentData().toInt();
     connect(algorithm,
             static_cast<void(QComboBox::*)(int)>(&QComboBox::activated),
@@ -519,12 +532,6 @@ void SAKToolBoxUi::initUiInputMenu()
                 this->mInputParameters.algorithm = ret;
                 this->onInputTextChanged();
             });
-
-    QWidgetAction *a = new QWidgetAction(this);
-    a->setDefaultWidget(menuWidget);
-    QMenu *menu = new QMenu(ui->pushButtonInputSettings);
-    menu->addAction(a);
-    ui->pushButtonInputSettings->setMenu(menu);
 }
 
 void SAKToolBoxUi::initUiOutput()
