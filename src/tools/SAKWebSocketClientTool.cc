@@ -24,12 +24,12 @@ bool SAKWebSocketClientTool::initialize(QString &errStr)
     mWebSocket = new QWebSocket();
     connect(mWebSocket, &QWebSocket::connected, mWebSocket, [=](){
         QString address = mWebSocket->localAddress().toString();
-        this->mBindingIpPort = address + ":" + mWebSocket->localPort();
+        QString port = QString::number(mWebSocket->localPort());
+        this->mBindingIpPort = address + ":" + port;
         emit bindingIpPortChanged();
 
         QString ip = mWebSocket->peerAddress().toString();
-        quint16 port = mWebSocket->peerPort();
-        this->mPeerInfo = ip + ":" + QString::number(port);
+        this->mPeerInfo = ip + ":" + QString::number( mWebSocket->peerPort());
     });
 
     connect(mWebSocket, &QWebSocket::disconnected, mWebSocket, [=](){

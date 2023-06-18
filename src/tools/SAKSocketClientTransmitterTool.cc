@@ -129,6 +129,8 @@ bool SAKSocketClientTransmitterTool::insertRows(int row, int count,
                 tool, &SAKSocketClientTool::inputBytes);
         connect(tool, &SAKSocketClientTool::bytesOutputted,
                 this, &SAKSocketClientTool::bytesOutputted);
+        connect(tool, &SAKSocketClientTool::errorOccured,
+                this, &SAKSocketClientTool::errorOccured);
         connect(this, &SAKSocketClientTool::started,
                 tool, [=](){tool->start();});
         connect(this, &SAKSocketClientTool::finished,
