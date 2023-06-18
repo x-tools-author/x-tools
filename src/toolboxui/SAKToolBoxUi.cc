@@ -560,7 +560,7 @@ void SAKToolBoxUi::initTools()
         settingsGroup() + "/udpTransmitter");
     mWebSocketTransmitterToolUi = new SAKWebSocketTransmitterToolUi(this);
     mWebSocketTransmitterToolUi->initialize(
-        mToolBox->getTcpTransmitterTool(),
+        mToolBox->getWebSocketTransmitterTool(),
         settingsGroup() + "/webSocketTransmitter");
     mSerialPortTransmitterToolUi = new SAKSerialPortTransmitterToolUi(this);
     mSerialPortTransmitterToolUi->initialize(
