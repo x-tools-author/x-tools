@@ -131,35 +131,6 @@ bool SAKSerialPortTransmitterTool::setData(const QModelIndex &index,
     return true;
 }
 
-bool SAKSerialPortTransmitterTool::insertRows(int row,
-                                              int count,
-                                              const QModelIndex &parent)
-{
-    Q_UNUSED(parent)
-    for (int i = 0; i < count; i++) {
-        mToolVectorMutex.lock();
-        auto tool = new SAKSerialPortTool(this);
-        connect(this, &SAKSerialPortTransmitterTool::bytesInputted,
-                tool, &SAKSerialPortTool::inputBytes);
-        connect(tool, &SAKSerialPortTool::bytesOutputted,
-                this, &SAKSerialPortTransmitterTool::bytesOutputted);
-        connect(tool, &SAKSerialPortTool::finished, this, [=](){
-            if (this->isRunning()) {
-                tool->start();
-            }
-        });
-        connect(this, &SAKSerialPortTransmitterTool::started,
-                tool, [=](){tool->start();});
-        connect(this, &SAKSerialPortTransmitterTool::finished,
-                tool, [=](){tool->exit();});
-
-        mToolVector.insert(row, tool);
-        mToolVectorMutex.unlock();
-    }
-
-    return true;
-}
-
 QVariant SAKSerialPortTransmitterTool::headerData(int section,
                                                   Qt::Orientation orientation,
                                                   int role) const
@@ -190,4 +161,10 @@ QVariant SAKSerialPortTransmitterTool::headerData(int section,
     } else {
         return QVariant("Unknown");
     }
+}
+
+SAKCommunicationTool *SAKSerialPortTransmitterTool::createTool()
+{
+    SAKSerialPortTool *tool = new SAKSerialPortTool();
+    return tool;
 }

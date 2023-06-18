@@ -17,7 +17,7 @@ class SAKUdpTransmitterTool : public SAKSocketClientTransmitterTool
     Q_OBJECT
 public:
     explicit SAKUdpTransmitterTool(QObject *parent = nullptr);
-    virtual SAKSocketClientTool *createTool() override;
+    virtual SAKCommunicationTool *createTool() override;
 };
 
 #endif // SAKUDPTRANSMITTERTOOL_HH

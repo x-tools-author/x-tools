@@ -18,8 +18,8 @@ SAKUdpTransmitterTool::SAKUdpTransmitterTool(QObject *parent)
 
 }
 
-SAKSocketClientTool *SAKUdpTransmitterTool::createTool()
+SAKCommunicationTool *SAKUdpTransmitterTool::createTool()
 {
-    SAKUdpClientTool *tool = new SAKUdpClientTool();
+    SAKCommunicationTool *tool = new SAKUdpClientTool();
     return tool;
 }

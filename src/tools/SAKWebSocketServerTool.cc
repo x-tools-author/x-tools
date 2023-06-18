@@ -34,6 +34,17 @@ bool SAKWebSocketServerTool::initialize(QString &errStr)
     QString mBindingIpPort = QString("%1:%2").arg(mServerIp).arg(mServerPort);
     outputMessage(QtInfoMsg, mBindingIpPort);
 
+    connect(mWebSocketServer, &QWebSocketServer::serverError,
+            mWebSocketServer, [=](QWebSocketProtocol::CloseCode closeCode){
+        Q_UNUSED(closeCode)
+        emit errorOccured(mWebSocketServer->errorString());
+    });
+
+    connect(mWebSocketServer, &QWebSocketServer::acceptError, mWebSocketServer,
+            [=](){
+        emit errorOccured(mWebSocketServer->errorString());
+    });
+
     connect(mWebSocketServer, &QWebSocketServer::newConnection,
             mWebSocketServer, [=](){
         QWebSocket *client = mWebSocketServer->nextPendingConnection();

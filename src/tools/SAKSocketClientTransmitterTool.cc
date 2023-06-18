@@ -7,6 +7,7 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
+#include "SAKSocketClientTool.hh"
 #include "SAKSocketClientTransmitterTool.hh"
 
 SAKSocketClientTransmitterTool::SAKSocketClientTransmitterTool(
@@ -112,32 +113,6 @@ bool SAKSocketClientTransmitterTool::setData(const QModelIndex &index,
     } else {
         qCWarning(mLoggingCategory) << "unknow key:" << key;
         return false;
-    }
-
-    return true;
-}
-
-bool SAKSocketClientTransmitterTool::insertRows(int row, int count,
-                                       const QModelIndex &parent)
-{
-    Q_UNUSED(parent)
-    for (int i = 0; i < count; i++) {
-        mToolVectorMutex.lock();
-        auto tool = createTool();
-        tool->setParent(this);
-        connect(this, &SAKSocketClientTool::bytesInputted,
-                tool, &SAKSocketClientTool::inputBytes);
-        connect(tool, &SAKSocketClientTool::bytesOutputted,
-                this, &SAKSocketClientTool::bytesOutputted);
-        connect(tool, &SAKSocketClientTool::errorOccured,
-                this, &SAKSocketClientTool::errorOccured);
-        connect(this, &SAKSocketClientTool::started,
-                tool, [=](){tool->start();});
-        connect(this, &SAKSocketClientTool::finished,
-                tool, [=](){tool->exit();});
-
-        mToolVector.insert(row, tool);
-        mToolVectorMutex.unlock();
     }
 
     return true;

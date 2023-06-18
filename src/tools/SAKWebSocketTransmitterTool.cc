@@ -16,7 +16,7 @@ SAKWebSocketTransmitterTool::SAKWebSocketTransmitterTool(QObject *parent)
 
 }
 
-SAKSocketClientTool *SAKWebSocketTransmitterTool::createTool()
+SAKCommunicationTool *SAKWebSocketTransmitterTool::createTool()
 {
     SAKWebSocketClientTool *tool = new SAKWebSocketClientTool();
     return tool;

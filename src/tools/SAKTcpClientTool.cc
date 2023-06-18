@@ -52,14 +52,28 @@ bool SAKTcpClientTool::initialize(QString &errStr)
 #endif
             mTcpSocket, [=](QAbstractSocket::SocketError err){
         Q_UNUSED(err);
-        emit errorOccured(mTcpSocket->errorString());
+
         QString info = "Error occurred:" + mTcpSocket->errorString();
         outputMessage(QtWarningMsg, info);
+        emit errorOccured(mTcpSocket->errorString());
+    });
+
+    connect(mTcpSocket, &QTcpSocket::disconnected, mTcpSocket, [=](){
         exit();
     });
 
     connect(mTcpSocket, &QTcpSocket::readyRead, mTcpSocket, [=](){
         readBytes();
+    });
+
+    connect(mTcpSocket,
+#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
+        &QTcpSocket::errorOccurred,
+#else
+        static_cast<SOCKET_ERROR_SIG>(&QAbstractSocket::error),
+#endif
+        mTcpSocket, [=](){
+            emit errorOccured(mTcpSocket->errorString());
     });
 
     return true;

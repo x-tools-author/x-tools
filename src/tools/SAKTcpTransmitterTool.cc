@@ -16,8 +16,8 @@ SAKTcpTransmitterTool::SAKTcpTransmitterTool(QObject *parent)
 
 }
 
-SAKSocketClientTool *SAKTcpTransmitterTool::createTool()
+SAKCommunicationTool *SAKTcpTransmitterTool::createTool()
 {
-    SAKTcpClientTool *tool = new SAKTcpClientTool();
+    SAKCommunicationTool *tool = new SAKTcpClientTool();
     return tool;
 }

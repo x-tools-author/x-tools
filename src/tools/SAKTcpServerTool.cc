@@ -30,6 +30,10 @@ bool SAKTcpServerTool::initialize(QString &errStr)
     mBindingIpPort = QString("%1:%2").arg(mServerIp).arg(mServerPort);
     outputMessage(QtInfoMsg, mBindingIpPort);
 
+    connect(mTcpServer, &QTcpServer::acceptError, mTcpServer, [=](){
+        emit errorOccured(mTcpServer->errorString());
+    });
+
     connect(mTcpServer, &QTcpServer::newConnection, mTcpServer, [=](){
         QTcpSocket *client = mTcpServer->nextPendingConnection();
         mTcpSocketList.append(client);
@@ -56,6 +60,7 @@ bool SAKTcpServerTool::initialize(QString &errStr)
             outputMessage(QtInfoMsg, QString("Connection(%1) disconnect:")
                                          .arg(ipPort, client->errorString()));
             emit clientsChanged();
+            exit();
         });
 
         connect(client,

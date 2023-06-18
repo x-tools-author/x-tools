@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -31,6 +31,7 @@ protected:
 
 protected:
     QLoggingCategory *mLoggingCategory{nullptr};
+    SAKBaseTool *mTool{nullptr};
 };
 
 #endif // SAKBASETOOLUI_HH

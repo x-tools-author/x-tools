@@ -43,13 +43,10 @@ protected:
     virtual bool setData(const QModelIndex &index,
                          const QVariant &value,
                          int role = Qt::EditRole) override;
-    virtual bool insertRows(int row,
-                            int count,
-                            const QModelIndex &parent
-                            = QModelIndex()) override;
     virtual QVariant headerData(int section,
                                 Qt::Orientation orientation,
                                 int role = Qt::DisplayRole) const override;
+    virtual SAKCommunicationTool *createTool() override;
 };
 
 #endif // SAKSERIALPORTTRANSMITTERTOOL_HH

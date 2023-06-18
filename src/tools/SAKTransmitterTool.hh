@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -32,10 +32,20 @@ protected:
                             int count,
                             const QModelIndex &parent
                             = QModelIndex()) override;
+    virtual bool insertRows(int row,
+                            int count,
+                            const QModelIndex &parent
+                            = QModelIndex()) override;
+    virtual SAKCommunicationTool *createTool() = 0;
 
 protected:
     QVector<SAKCommunicationTool*> mToolVector;
     QMutex mToolVectorMutex;
+
+private:
+    void onDataChanged(const QModelIndex &topLeft,
+                       const QModelIndex &bottomRight,
+                       const QList<int> &roles = QList<int>());
 };
 
 #endif // SAKTRANSMITTERTOOL_HH

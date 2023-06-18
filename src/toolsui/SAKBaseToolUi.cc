@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -20,6 +20,7 @@ void SAKBaseToolUi::initialize(SAKBaseTool *tool,
                                const QString &settingsGroup,
                                const char *loggingCategory)
 {
+    mTool = tool;
     if (mLoggingCategory) {
         delete mLoggingCategory;
         mLoggingCategory = nullptr;

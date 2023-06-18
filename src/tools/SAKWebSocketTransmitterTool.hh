@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -17,7 +17,7 @@ class SAKWebSocketTransmitterTool : public SAKSocketClientTransmitterTool
     Q_OBJECT
 public:
     explicit SAKWebSocketTransmitterTool(QObject *parent = nullptr);
-    virtual SAKSocketClientTool *createTool() override;
+    virtual SAKCommunicationTool *createTool() override;
 };
 
 #endif // SAKWEBSOCKETTRANSMITTERTOOL_HH

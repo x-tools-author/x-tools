@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -23,6 +23,9 @@ SAKBaseTool::SAKBaseTool(const char *logCategory, QObject *parent)
     connect(this, &SAKBaseTool::finished, this, [=](){
         this->mIsWorking = false;
         emit this->isWorkingChanged();
+    });
+    connect(this, &SAKBaseTool::errorOccured, this, [=](){
+        exit();
     });
 }
 

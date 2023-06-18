@@ -34,12 +34,12 @@ bool SAKWebSocketClientTool::initialize(QString &errStr)
 
     connect(mWebSocket, &QWebSocket::disconnected, mWebSocket, [=](){
         QString errStr = mWebSocket->errorString();
-        if (errStr.isEmpty()) {
-            return;
+        if (!errStr.isEmpty()) {
+            errStr = "disconected:" + errStr;
+            outputMessage(QtInfoMsg, errStr);
         }
 
-        QString msg = QString("disconnected:%1").arg(errStr);
-        outputMessage(QtInfoMsg, msg);
+        exit();
     });
 
     connect(mWebSocket, &QWebSocket::binaryFrameReceived,
@@ -62,12 +62,12 @@ bool SAKWebSocketClientTool::initialize(QString &errStr)
             mWebSocket, [=](QAbstractSocket::SocketError error){
         Q_UNUSED(error);
         QString errStr = mWebSocket->errorString();
-        errStr = QString("error occured:%1").arg(errStr);
         outputMessage(QtInfoMsg, errStr);
         emit errorOccured(errStr);
     });
 
     QString address = "ws://" + mServerIp + ":" + QString::number(mServerPort);
+    qCDebug(mLoggingCategory) << address;
     mWebSocket->open(address);
 
     return true;
