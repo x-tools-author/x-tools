@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -10,61 +10,64 @@
 #include "SAKInterface.hh"
 #include "SAKWebSocketClientTool.hh"
 
+#define WS_ERR_SIGNAL void(QWebSocket::*)(QAbstractSocket::SocketError)
+
 SAKWebSocketClientTool::SAKWebSocketClientTool(QObject *parent)
     : SAKSocketClientTool{"SAK.WebSocketClientTool", parent}
 {
 
 }
 
-bool SAKWebSocketClientTool::initialize()
+bool SAKWebSocketClientTool::initialize(QString &errStr)
 {
+    Q_UNUSED(errStr)
     mWebSocket = new QWebSocket();
     connect(mWebSocket, &QWebSocket::connected, mWebSocket, [=](){
-        QString info = mWebSocket->localAddress().toString();
-        info.append(":");
-        info.append(QString::number(mWebSocket->localPort()));
-        mBindingIpPort = info;
+        QString address = mWebSocket->localAddress().toString();
+        this->mBindingIpPort = address + ":" + mWebSocket->localPort();
         emit bindingIpPortChanged();
+
+        QString ip = mWebSocket->peerAddress().toString();
+        quint16 port = mWebSocket->peerPort();
+        this->mPeerInfo = ip + ":" + QString::number(port);
     });
 
     connect(mWebSocket, &QWebSocket::disconnected, mWebSocket, [=](){
-        outputMessage(QtInfoMsg, QString("Connection(%1) disconnected:%2")
-                                     .arg(mBindingIpPort,
-                                          mWebSocket->errorString()));
+        QString errStr = mWebSocket->errorString();
+        if (errStr.isEmpty()) {
+            return;
+        }
+
+        QString msg = QString("disconnected:%1").arg(errStr);
+        outputMessage(QtInfoMsg, msg);
     });
 
     connect(mWebSocket, &QWebSocket::binaryFrameReceived,
             mWebSocket, [=](const QByteArray &message){
-        QString ip = mWebSocket->peerAddress().toString();
-        quint16 port = mWebSocket->peerPort();
-        QString ipport = QString("%1:%2").arg(ip, QString::number(port));
-        QString hex = QString::fromLatin1(SAKInterface::arrayToHex(message, ' '));
-        outputMessage(QtInfoMsg,
-                      QString("%1<-%2:%3").arg(mBindingIpPort, ipport, hex));
-        emit bytesOutputted(message, QVariant());
+        QByteArray ba = SAKInterface::arrayToHex(message, ' ');
+        QString hex = QString::fromLatin1(ba);
+        QString info = mBindingIpPort + "<-" + this->mPeerInfo + ":" + hex;
+        outputMessage(QtInfoMsg, info);
+        emit bytesOutputted(message, rxJsonObject());
     });
 
     connect(mWebSocket, &QWebSocket::textMessageReceived,
             mWebSocket, [=](QString message){
-        QString ip = mWebSocket->peerAddress().toString();
-        quint16 port = mWebSocket->peerPort();
-        QString ipport = QString("%1:%2").arg(ip, QString::number(port));
-        outputMessage(QtInfoMsg, QString("%1<-%2:%3")
-                                     .arg(mBindingIpPort, ipport, message));
-        emit bytesOutputted(message.toUtf8(), QVariant());
+        QString info = mBindingIpPort + "<-" + this->mPeerInfo + ":" + message;
+        outputMessage(QtInfoMsg, info);
+        emit bytesOutputted(message.toUtf8(), rxJsonObject());
     });
 
-    connect(mWebSocket,
-            static_cast<void(QWebSocket::*)(QAbstractSocket::SocketError)>(&QWebSocket::error),
+    connect(mWebSocket, static_cast<WS_ERR_SIGNAL>(&QWebSocket::error),
             mWebSocket, [=](QAbstractSocket::SocketError error){
         Q_UNUSED(error);
-        outputMessage(QtInfoMsg, QString("Error occured:")
-                                     .arg(mWebSocket->errorString()));
-        emit errorOccured("Error:" + mWebSocket->errorString());
+        QString errStr = mWebSocket->errorString();
+        errStr = QString("error occured:%1").arg(errStr);
+        outputMessage(QtInfoMsg, errStr);
+        emit errorOccured(errStr);
     });
 
-    QString address = QString("ws://%1:%2").arg(mServerIp,
-                                                QString::number(mServerPort));
+    QString address = "ws://" + mServerIp + ":" + QString::number(mServerPort);
     mWebSocket->open(address);
 
     return true;
@@ -87,12 +90,9 @@ void SAKWebSocketClientTool::writeBytes(const QByteArray &bytes,
     if (ret == -1) {
         outputMessage(QtWarningMsg, mWebSocket->errorString());
     } else {
-        QString ip = mWebSocket->peerAddress().toString();
-        quint16 port = mWebSocket->peerPort();
-        QString ipport = QString("%1:%2").arg(ip, QString::number(port));
-        outputMessage(QtInfoMsg, QString("%1->%2:%3")
-                                     .arg(mBindingIpPort, ipport, hex));
-        emit bytesInputted(bytes, QVariant());
+        QString info = mBindingIpPort + "<-" + this->mPeerInfo + ":" + hex;
+        outputMessage(QtInfoMsg, info);
+        emit bytesInputted(bytes, txJsonObject());
     }
 }
 

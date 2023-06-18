@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -10,17 +10,20 @@
 #include <QTcpSocket>
 #include "SAKTcpServerTool.hh"
 
+#define SOCKET_ERROR_SIG void(QAbstractSocket::*)(QAbstractSocket::SocketError)
+
 SAKTcpServerTool::SAKTcpServerTool(QObject *parent)
     : SAKSocketServerTool{"SAK.TcpServerTool", parent}
 {
 
 }
 
-bool SAKTcpServerTool::initialize()
+bool SAKTcpServerTool::initialize(QString &errStr)
 {
     mTcpServer = new QTcpServer();
     if (!mTcpServer->listen(QHostAddress(mServerIp), mServerPort)) {
-        outputMessage(QtWarningMsg, mTcpServer->errorString());
+        errStr = "error occurred:" + mTcpServer->errorString();
+        outputMessage(QtWarningMsg, errStr);
         return false;
     }
 
@@ -59,7 +62,7 @@ bool SAKTcpServerTool::initialize()
 #if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
                 &QTcpSocket::errorOccurred,
 #else
-                static_cast<void(QAbstractSocket::*)(QAbstractSocket::SocketError)>(&QAbstractSocket::error),
+                static_cast<SOCKET_ERROR_SIG>(&QAbstractSocket::error),
 #endif
                 client, [=](){
             this->mTcpSocketList.removeOne(client);
@@ -73,7 +76,8 @@ bool SAKTcpServerTool::initialize()
     return true;
 }
 
-void SAKTcpServerTool::writeBytes(const QByteArray &bytes, const QVariant &context)
+void SAKTcpServerTool::writeBytes(const QByteArray &bytes,
+                                  const QVariant &context)
 {
     Q_UNUSED(context);
     if (mClientIndex >= 0 && mClientIndex < mTcpSocketList.length()) {

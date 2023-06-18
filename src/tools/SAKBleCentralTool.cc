@@ -111,10 +111,11 @@ void SAKBleCentralTool::changeNotify()
     }
 }
 
-bool SAKBleCentralTool::initialize()
+bool SAKBleCentralTool::initialize(QString &errStr)
 {
     if (!mBleInfo.isValid()) {
-        outputMessage(QtWarningMsg, "Invalid BLE information.");
+        errStr = "Invalid BLE information.";
+        outputMessage(QtWarningMsg, errStr);
         return false;
     }
 #if QT_VERSION >= QT_VERSION_CHECK(5, 7, 0)

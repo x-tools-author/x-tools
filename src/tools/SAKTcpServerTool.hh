@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -20,7 +20,7 @@ public:
     explicit SAKTcpServerTool(QObject *parent = nullptr);
 
 protected:
-    virtual bool initialize() final;
+    virtual bool initialize(QString &errStr) final;
     virtual void writeBytes(const QByteArray &bytes,
                             const QVariant &context = QJsonObject()) final;
     virtual void uninitialize() final;

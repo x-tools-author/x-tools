@@ -16,7 +16,7 @@ SAKUdpServerTool::SAKUdpServerTool(QObject *parent)
 
 }
 
-bool SAKUdpServerTool::initialize()
+bool SAKUdpServerTool::initialize(QString &errStr)
 {
     mUdpSocket = new QUdpSocket();
     bool ret = false;
@@ -28,6 +28,7 @@ bool SAKUdpServerTool::initialize()
 
     if (!ret) {
         outputMessage(QtWarningMsg, mUdpSocket->errorString());
+        errStr = mUdpSocket->errorString();
         return false;
     }
 

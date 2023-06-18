@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -32,10 +32,13 @@ protected:
 protected:
     virtual void run() final;
 
-    virtual bool initialize() = 0;
+    virtual bool initialize(QString &errStr) = 0;
     virtual void writeBytes(const QByteArray &bytes,
                             const QVariant &context = QJsonObject()) = 0;
     virtual void uninitialize() = 0;
+
+    QJsonObject rxJsonObject() const;
+    QJsonObject txJsonObject() const;
 
 private:
     QList<InputDataContext> mInputDataList;

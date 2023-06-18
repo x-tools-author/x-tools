@@ -8,7 +8,11 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include <QHostAddress>
+
+#include "SAKInterface.hh"
 #include "SAKTcpClientTool.hh"
+
+#define SOCKET_ERROR_SIG void(QAbstractSocket::*)(QAbstractSocket::SocketError)
 
 SAKTcpClientTool::SAKTcpClientTool(QObject *parent)
     : SAKSocketClientTool{"SAK.TcpClientTool", parent}
@@ -16,42 +20,41 @@ SAKTcpClientTool::SAKTcpClientTool(QObject *parent)
 
 }
 
-bool SAKTcpClientTool::initialize()
+bool SAKTcpClientTool::initialize(QString &errStr)
 {
     mTcpSocket = new QTcpSocket();
     if (mSpecifyClientIpPort) {
         if (!mTcpSocket->bind(QHostAddress(mClientIp), mClientPort)) {
-            QString err = "Binding error:" + mTcpSocket->errorString();
-            outputMessage(QtWarningMsg, err);
-            emit errorOccured(err);
+            errStr = "Binding error:" + mTcpSocket->errorString();
+            outputMessage(QtWarningMsg, errStr);
             return false;
         }
     }
 
     mTcpSocket->connectToHost(QHostAddress(mServerIp), mServerPort);
     if (!mTcpSocket->waitForConnected()) {
-        QString err = "Connect to host error:" + mTcpSocket->errorString();
-        outputMessage(QtWarningMsg, err);
-        emit errorOccured(err);
+        errStr = "Connect to host error:" + mTcpSocket->errorString();
+        outputMessage(QtWarningMsg, errStr);
         return false;
     }
 
-    QString info = QString("%1:%2").arg(mTcpSocket->localAddress().toString()).arg(mTcpSocket->localPort());
-    outputMessage(QtInfoMsg, info);
-
-    mBindingIpPort = info;
+    QString ip = mTcpSocket->localAddress().toString();
+    QString port = QString::number(mTcpSocket->localPort());
+    mBindingIpPort = ip + ":" + port;
+    outputMessage(QtInfoMsg, mBindingIpPort);
     emit bindingIpPortChanged();
 
     connect(mTcpSocket,
 #if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
             &QTcpSocket::errorOccurred,
 #else
-            static_cast<void(QAbstractSocket::*)(QAbstractSocket::SocketError)>(&QAbstractSocket::error),
+            static_cast<SOCKET_ERROR_SIG>(&QAbstractSocket::error),
 #endif
             mTcpSocket, [=](QAbstractSocket::SocketError err){
         Q_UNUSED(err);
         emit errorOccured(mTcpSocket->errorString());
-        outputMessage(QtWarningMsg, "Error occurred:" + mTcpSocket->errorString());
+        QString info = "Error occurred:" + mTcpSocket->errorString();
+        outputMessage(QtWarningMsg, info);
         exit();
     });
 
@@ -62,7 +65,8 @@ bool SAKTcpClientTool::initialize()
     return true;
 }
 
-void SAKTcpClientTool::writeBytes(const QByteArray &bytes, const QVariant &context)
+void SAKTcpClientTool::writeBytes(const QByteArray &bytes,
+                                  const QVariant &context)
 {
     Q_UNUSED(context);
     qint64 ret = mTcpSocket->write(bytes);
@@ -85,10 +89,11 @@ void SAKTcpClientTool::readBytes()
     quint16 port = mTcpSocket->peerPort();
     QByteArray bytes = mTcpSocket->readAll();
     if (!bytes.isEmpty()) {
-        QString info = QString("%1:%2")
-                           .arg(address.toString())
-                           .arg(port);
-        emit bytesOutputted(bytes, info);
-        Q_UNUSED(info);
+        QByteArray ba = SAKInterface::arrayToHex(bytes, ' ');
+        QString ipport = address.toString() + ":" + QString::number(port);
+        QString info = mBindingIpPort + "<-" + ipport + ":";
+        info += QString::fromLatin1(ba);
+        outputMessage(QtDebugMsg, info);
+        emit bytesOutputted(bytes, rxJsonObject());
     }
 }

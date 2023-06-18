@@ -76,7 +76,7 @@ void SAKSerialPortTool::setFlowControl(int flowControl)
     mParameters.flowControl = flowControl;
 }
 
-bool SAKSerialPortTool::initialize()
+bool SAKSerialPortTool::initialize(QString &errStr)
 {
     mSerialPort = new QSerialPort();
     mSerialPort->setPortName(mParameters.portName);
@@ -100,8 +100,8 @@ bool SAKSerialPortTool::initialize()
     outputMessage(QtInfoMsg, info);
 
     if (!mSerialPort->open(QSerialPort::ReadWrite)) {
-        outputMessage(QtWarningMsg, "open serial port failed:"
-                                        + mSerialPort->errorString());
+        errStr = "open serial port failed:" + mSerialPort->errorString();
+        outputMessage(QtWarningMsg, errStr);
         mSerialPort->deleteLater();
         mSerialPort = Q_NULLPTR;
         return false;

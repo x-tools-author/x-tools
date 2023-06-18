@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -41,7 +41,7 @@ signals:
     void descriptorWritten(const QLowEnergyDescriptor &descriptor, const QByteArray &newValue);
 
 protected:
-    virtual bool initialize() final;
+    virtual bool initialize(QString &errStr) final;
     virtual void writeBytes(const QByteArray &bytes,
                             const QVariant &context = QJsonObject()) final;
     virtual void readBytes() final;

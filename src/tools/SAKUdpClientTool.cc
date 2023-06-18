@@ -18,16 +18,21 @@ SAKUdpClientTool::SAKUdpClientTool(QObject *parent)
 
 }
 
-bool SAKUdpClientTool::initialize()
+bool SAKUdpClientTool::initialize(QString &errStr)
 {
     mUdpSocket = new QUdpSocket();
     if (mSpecifyClientIpPort) {
         if (!mUdpSocket->bind(QHostAddress(mClientIp), mClientPort)) {
-            outputMessage(QtWarningMsg, mUdpSocket->errorString());
+            errStr = mUdpSocket->errorString();
+            outputMessage(QtWarningMsg, errStr);
             return false;
         }
     } else {
-        mUdpSocket->bind();
+        if (!mUdpSocket->bind()) {
+            errStr = mUdpSocket->errorString();
+            outputMessage(QtWarningMsg, errStr);
+            return false;
+        }
     }
 
     QString ip = mUdpSocket->localAddress().toString();

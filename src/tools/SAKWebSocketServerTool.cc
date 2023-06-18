@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -12,19 +12,22 @@
 #include "SAKInterface.hh"
 #include "SAKWebSocketServerTool.hh"
 
+#define WS_ERR_SIGNAL void(QWebSocket::*)(QAbstractSocket::SocketError)
+
 SAKWebSocketServerTool::SAKWebSocketServerTool(QObject *parent)
     : SAKSocketServerTool{"SAK.WebSocketServerTool", parent}
 {
 
 }
 
-bool SAKWebSocketServerTool::initialize()
+bool SAKWebSocketServerTool::initialize(QString &errStr)
 {
     QString serverName = QString("%1:%2").arg(mServerIp).arg(mServerPort);
     mWebSocketServer = new QWebSocketServer(serverName,
                                             QWebSocketServer::NonSecureMode);
     if (!mWebSocketServer->listen(QHostAddress(mServerIp), mServerPort)) {
-        outputMessage(QtWarningMsg, mWebSocketServer->errorString());
+        errStr = mWebSocketServer->errorString();
+        outputMessage(QtWarningMsg, errStr);
         return false;
     }
 
@@ -74,7 +77,7 @@ bool SAKWebSocketServerTool::initialize()
             emit clientsChanged();
         });
 
-        connect(client, static_cast<void(QWebSocket::*)(QAbstractSocket::SocketError)>(&QWebSocket::error),
+        connect(client, static_cast<WS_ERR_SIGNAL>(&QWebSocket::error),
                 client, [=](QAbstractSocket::SocketError err){
             Q_UNUSED(err);
             this->mWebSocketList.removeOne(client);

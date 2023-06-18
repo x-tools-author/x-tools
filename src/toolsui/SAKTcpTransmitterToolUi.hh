@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -10,7 +10,6 @@
 #ifndef SAKTCPTRANSMITTERTOOLUI_HH
 #define SAKTCPTRANSMITTERTOOLUI_HH
 
-#include "SAKSocketClientTool.hh"
 #include "SAKSocketClientTransmitterToolUi.hh"
 
 class SAKTcpTransmitterToolUi : public SAKSocketClientTransmitterToolUi

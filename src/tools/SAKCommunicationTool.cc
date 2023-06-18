@@ -33,10 +33,26 @@ void SAKCommunicationTool::inputBytes(const QByteArray &bytes,
     mInputDataMutex.unlock();
 }
 
+QJsonObject SAKCommunicationTool::rxJsonObject() const
+{
+    QJsonObject obj;
+    obj.insert("flag", "rx");
+    return obj;
+}
+
+QJsonObject SAKCommunicationTool::txJsonObject() const
+{
+    QJsonObject obj;
+    obj.insert("flag", "tx");
+    return obj;
+}
+
 void SAKCommunicationTool::run()
 {
-    if (!initialize()) {
-        outputMessage(QtWarningMsg, "Can not initialize the communication tool!");
+    QString errStr;
+    if (!initialize(errStr)) {
+        outputMessage(QtWarningMsg, errStr);
+        emit errorOccured(errStr);
         return;
     }
 
