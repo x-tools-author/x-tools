@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -21,6 +21,6 @@ void SAKWebSocketTransmitterToolUi::onBaseToolUiInitialized(
     SAKSocketClientTransmitterToolUi::onBaseToolUiInitialized(tool,
                                                               settingGroup);
 
-    setColumnVisible(6, true);
+    setColumnVisible(4, true);
     mEditor->setWebSocketContextVisible(true);
 }

@@ -29,7 +29,7 @@ void SAKSocketClientTransmitterToolUi::onBaseToolUiInitialized(
     QList<int> columns;
     columns << 5;
     setStretchSections(columns);
-    setColumnVisible(6, false);
+    setColumnVisible(4, false);
 
     mEditor->setWebSocketContextVisible(false);
 }
