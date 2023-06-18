@@ -54,9 +54,8 @@ bool SAKTransmitterTool::insertRows(int row, int count,
                                     const QModelIndex &parent)
 {
     Q_UNUSED(parent)
-    for (int i = 0; i < count; i++) {
-        mToolVectorMutex.lock();
-        auto tool = createTool();
+
+    auto initTool = [=](SAKCommunicationTool* tool){
         tool->setParent(this);
         connect(this, &SAKCommunicationTool::bytesInputted,
                 tool, &SAKCommunicationTool::inputBytes);
@@ -76,9 +75,12 @@ bool SAKTransmitterTool::insertRows(int row, int count,
                 });
             }
         });
+    };
 
-
-
+    for (int i = 0; i < count; i++) {
+        mToolVectorMutex.lock();
+        auto tool = createTool();
+        initTool(tool);
         mToolVector.insert(row, tool);
         mToolVectorMutex.unlock();
     }
