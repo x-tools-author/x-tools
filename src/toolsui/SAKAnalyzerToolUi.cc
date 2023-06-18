@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -7,6 +7,10 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
+#include "SAKInterface.hh"
+#include "SAKUiInterface.hh"
+#include "SAKAnalyzerTool.hh"
+#include "SAKDataStructure.hh"
 #include "SAKAnalyzerToolUi.hh"
 #include "ui_SAKAnalyzerToolUi.h"
 
@@ -31,5 +35,49 @@ void SAKAnalyzerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
     ui->spinBoxMaxTempBytes->setGroupKey(settingsGroup, "maxTempBytes");
     ui->lineEditSeparationMark->setGroupKey(settingsGroup, "separationMark");
 
-    Q_UNUSED(tool)
+    int format = SAKDataStructure::TextFormatHex;
+    SAKUiInterface::setValidator(ui->lineEditSeparationMark, format);
+
+    auto cookedTool = qobject_cast<SAKAnalyzerTool*>(tool);
+    static QByteArray tips("invalid SAKAnalyzerTool");
+    Q_ASSERT_X(cookedTool, __FUNCTION__, tips.constData());
+    if (!cookedTool) {
+        qCWarning((*mLoggingCategory)) << QString::fromLatin1(tips);
+        return;
+    }
+
+    bool enable = ui->checkBoxEnable->isChecked();
+    bool fixed = ui->checkBoxFixedLength->isChecked();
+    int len = ui->spinBoxFrameLength->value();
+    int maxBytes = ui->spinBoxMaxTempBytes->value();
+    QString txt = ui->lineEditSeparationMark->text().trimmed();
+    QByteArray flag = SAKInterface::string2array(txt, format);
+
+    cookedTool->setEnable(enable);
+    cookedTool->setFixed(fixed);
+    cookedTool->setFrameBytes(len);
+    cookedTool->setMaxTempBytes(maxBytes);
+    cookedTool->setSeparationMark(flag);
+
+    connect(ui->checkBoxEnable, &QCheckBox::clicked, this, [=](){
+        bool enable = ui->checkBoxEnable->isChecked();
+        cookedTool->setEnable(enable);
+    });
+    connect(ui->checkBoxFixedLength, &QCheckBox::clicked, this, [=](){
+        bool fixed = ui->checkBoxFixedLength->isChecked();
+        cookedTool->setFixed(fixed);
+    });
+    connect(ui->spinBoxFrameLength, &QSpinBox::valueChanged, this, [=](){
+        int len = ui->spinBoxFrameLength->value();
+        cookedTool->setFrameBytes(len);
+    });
+    connect(ui->spinBoxMaxTempBytes, &QSpinBox::valueChanged, this, [=](){
+        int maxBytes = ui->spinBoxMaxTempBytes->value();
+        cookedTool->setMaxTempBytes(maxBytes);
+    });
+    connect(ui->lineEditSeparationMark, &QLineEdit::textChanged, this, [=](){
+        QString txt = ui->lineEditSeparationMark->text().trimmed();
+        QByteArray flag = SAKInterface::string2array(txt, format);
+        cookedTool->setSeparationMark(flag);
+    });
 }

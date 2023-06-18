@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -39,13 +39,15 @@ private:
         QByteArray separationMark;
         int maxTempBytes{1024};
     } mParameters;
+    QMutex mParametersMutex;
     QByteArray mInputtedBytes;
     QMutex mInputtedBytesMutex;
+    QVariant mContext;
 
 private:
     void analyze();
     void analyzeFixed();
-    void analyzeFlag();
+    void analyzeSeparationMark();
 };
 
 #endif // SAKANALYZERTOOL_H

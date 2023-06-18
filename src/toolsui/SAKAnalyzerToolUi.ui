@@ -49,7 +49,14 @@
          </widget>
         </item>
         <item row="0" column="2">
-         <widget class="SAKSpinBox" name="spinBoxMaxTempBytes"/>
+         <widget class="SAKSpinBox" name="spinBoxMaxTempBytes">
+          <property name="minimum">
+           <number>64</number>
+          </property>
+          <property name="maximum">
+           <number>2048</number>
+          </property>
+         </widget>
         </item>
         <item row="0" column="0">
          <widget class="SAKCheckBox" name="checkBoxEnable">
@@ -66,7 +73,14 @@
          </widget>
         </item>
         <item row="1" column="2">
-         <widget class="SAKSpinBox" name="spinBoxFrameLength"/>
+         <widget class="SAKSpinBox" name="spinBoxFrameLength">
+          <property name="minimum">
+           <number>1</number>
+          </property>
+          <property name="maximum">
+           <number>2048</number>
+          </property>
+         </widget>
         </item>
         <item row="0" column="3">
          <spacer name="horizontalSpacer">

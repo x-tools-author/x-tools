@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -18,22 +18,30 @@ SAKAnalyzerTool::SAKAnalyzerTool(QObject *parent)
 
 void SAKAnalyzerTool::setFixed(bool fixed)
 {
+    mParametersMutex.lock();
     mParameters.fixed = fixed;
+    mParametersMutex.unlock();
 }
 
 void SAKAnalyzerTool::setFrameBytes(int bytes)
 {
+    mParametersMutex.lock();
     mParameters.frameBytes = bytes;
+    mParametersMutex.unlock();
 }
 
 void SAKAnalyzerTool::setSeparationMark(const QByteArray &mark)
 {
+    mParametersMutex.lock();
     mParameters.separationMark = mark;
+    mParametersMutex.unlock();
 }
 
 void SAKAnalyzerTool::setMaxTempBytes(int maxBytes)
 {
+    mParametersMutex.lock();
     mParameters.maxTempBytes = maxBytes;
+    mParametersMutex.unlock();
 }
 
 void SAKAnalyzerTool::inputBytes(const QByteArray &bytes,
@@ -49,14 +57,18 @@ void SAKAnalyzerTool::inputBytes(const QByteArray &bytes,
     outputMessage(QtInfoMsg, QString("%1<-%2").arg(mToolName, hex));
     emit bytesInputted(bytes, context);
 
-    if (!enable()) {
-        QString hex = QString::fromLatin1(SAKInterface::arrayToHex(bytes, ' '));
-        outputMessage(QtInfoMsg, QString("%1->%2").arg(mToolName, hex));
-        emit bytesOutputted(bytes, context);
-    } else {
+    if (enable()) {
+        if (mContext != context) {
+            mContext = context;
+        }
         mInputtedBytesMutex.lock();
         mInputtedBytes.append(bytes);
         mInputtedBytesMutex.unlock();
+    } else {
+        QByteArray ba = SAKInterface::arrayToHex(bytes, ' ');
+        QString hex = QString::fromLatin1(ba);
+        outputMessage(QtInfoMsg, QString("%1->%2").arg(mToolName, hex));
+        emit bytesOutputted(bytes, context);
     }
 }
 
@@ -77,61 +89,85 @@ void SAKAnalyzerTool::run()
 
     exec();
 
-    if (handleTimer && handleTimer->isActive()) {
-        mInputtedBytesMutex.lock();
-        mInputtedBytes.clear();
-        mInputtedBytesMutex.unlock();
+    handleTimer->stop();
+    handleTimer->deleteLater();
+    handleTimer->stop();
+    handleTimer->deleteLater();
 
-        handleTimer->stop();
-        handleTimer->deleteLater();
-    }
-
-    handleTimer = nullptr;
+    mInputtedBytesMutex.lock();
+    mInputtedBytes.clear();
+    mInputtedBytesMutex.unlock();
 }
 
 void SAKAnalyzerTool::analyze()
 {
-    if (mInputtedBytes.length() > mParameters.maxTempBytes) {
-        outputMessage(QtInfoMsg,
-                      "clear bytes: " + QString(SAKInterface::arrayToHex(mInputtedBytes, ' ')));
-        mInputtedBytes.clear();
+    mParametersMutex.lock();
+    auto ctx = mParameters;
+    mParametersMutex.unlock();
 
-        return;
-    }
-
-    if (mParameters.fixed) {
-        while (mInputtedBytes.length() >= mParameters.frameBytes) {
-            QByteArray frame(mInputtedBytes.data(),
-                             mParameters.frameBytes);
-            mInputtedBytes.remove(0, mParameters.frameBytes);
-
-            QString hex = QString::fromLatin1(SAKInterface::arrayToHex(frame, ' '));
-            outputMessage(QtInfoMsg, QString("Analyzer->%1").arg(hex));
-            emit bytesOutputted(frame, QJsonObject());
-        }
-
-        return;
-    }
-
-    if (mParameters.separationMark.isEmpty()) {
-        if (!mInputtedBytes.isEmpty()) {
-            QString hex = QString::fromLatin1(SAKInterface::arrayToHex(mInputtedBytes, ' '));
-            QString msg = QString("Analyzer->%1").arg(hex);
-            outputMessage(QtInfoMsg, msg);
-            emit bytesOutputted(mInputtedBytes, QJsonObject());
-            mInputtedBytes.clear();
-        }
+    if (ctx.fixed) {
+        analyzeFixed();
     } else {
-        auto ret = mInputtedBytes.indexOf(mParameters.separationMark);
-        if (ret != -1) {
-            int len = ret + mParameters.separationMark.length();
-            QByteArray frame(mInputtedBytes.constData(), len);
-            mInputtedBytes.remove(0, len);
-
-            QString hex = QString::fromLatin1(SAKInterface::arrayToHex(frame, ' '));
-            QString msg = QString("Analyzer->%1").arg(hex);
-            outputMessage(QtInfoMsg, msg);
-            emit bytesOutputted(frame, QJsonObject());
-        }
+        analyzeSeparationMark();
     }
+
+    if (mInputtedBytes.length() > ctx.maxTempBytes) {
+        QByteArray ba = SAKInterface::arrayToHex(mInputtedBytes, ' ');
+        outputMessage(QtInfoMsg, "clear bytes: " + QString::fromLatin1(ba));
+        emit bytesOutputted(mInputtedBytes, mContext);
+        mInputtedBytes.clear();
+    }
+}
+
+void SAKAnalyzerTool::analyzeFixed()
+{
+    mParametersMutex.lock();
+    auto ctx = mParameters;
+    mParametersMutex.unlock();
+
+    while (mInputtedBytes.length() >= ctx.frameBytes) {
+        QByteArray frame(mInputtedBytes.data(),
+                         ctx.frameBytes);
+        mInputtedBytes.remove(0, ctx.frameBytes);
+
+        QByteArray ba = SAKInterface::arrayToHex(frame, ' ');
+        QString hex = QString::fromLatin1(ba);
+        outputMessage(QtInfoMsg, QString("Analyzer->%1").arg(hex));
+        emit bytesOutputted(frame, mContext);
+    }
+}
+
+void SAKAnalyzerTool::analyzeSeparationMark()
+{
+    if (mInputtedBytes.isEmpty()) {
+        return;
+    }
+
+    mParametersMutex.lock();
+    auto ctx = mParameters;
+    mParametersMutex.unlock();
+    if (ctx.separationMark.isEmpty()) {
+        QByteArray ba = SAKInterface::arrayToHex(mInputtedBytes, ' ');
+        QString hex = QString::fromLatin1(ba);
+        QString msg = QString("Analyzer->%1").arg(hex);
+        outputMessage(QtInfoMsg, msg);
+        emit bytesOutputted(mInputtedBytes, mContext);
+        mInputtedBytes.clear();
+        return;
+    }
+
+    auto ret = mInputtedBytes.indexOf(ctx.separationMark);
+    if (ret == -1) {
+        return;
+    }
+
+    int len = ret + ctx.separationMark.length();
+    QByteArray frame(mInputtedBytes.constData(), len);
+    mInputtedBytes.remove(0, len);
+
+    QByteArray ba = SAKInterface::arrayToHex(frame, ' ');
+    QString hex = QString::fromLatin1(ba);
+    QString msg = QString("Analyzer->%1").arg(hex);
+    outputMessage(QtInfoMsg, msg);
+    emit bytesOutputted(frame, mContext);
 }
