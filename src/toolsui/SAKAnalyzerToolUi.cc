@@ -29,14 +29,14 @@ void SAKAnalyzerToolUi::setToolName(const QString &name)
 void SAKAnalyzerToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
                                                 const QString &settingsGroup)
 {
+    int format = SAKDataStructure::TextFormatHex;
+    SAKUiInterface::setValidator(ui->lineEditSeparationMark, format);
+
     ui->checkBoxEnable->setGroupKey(settingsGroup, "analyzerEnable");
     ui->checkBoxFixedLength->setGroupKey(settingsGroup, "fxiedLength");
     ui->spinBoxFrameLength->setGroupKey(settingsGroup, "frameLength");
     ui->spinBoxMaxTempBytes->setGroupKey(settingsGroup, "maxTempBytes");
     ui->lineEditSeparationMark->setGroupKey(settingsGroup, "separationMark");
-
-    int format = SAKDataStructure::TextFormatHex;
-    SAKUiInterface::setValidator(ui->lineEditSeparationMark, format);
 
     auto cookedTool = qobject_cast<SAKAnalyzerTool*>(tool);
     static QByteArray tips("invalid SAKAnalyzerTool");
