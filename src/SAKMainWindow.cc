@@ -575,7 +575,7 @@ void SAKMainWindow::initHelpMenu()
             this,
             [=](){QMessageBox::aboutQt(this, tr("About Qt"));});
 
-    QAction *aboutAction = new QAction(tr("About Application"), this);
+    QAction *aboutAction = new QAction(tr("About QtSwissArmyKnife"), this);
     helpMenu->addAction(aboutAction);
     connect(aboutAction, &QAction::triggered,
             this, &SAKMainWindow::aboutSoftware);
