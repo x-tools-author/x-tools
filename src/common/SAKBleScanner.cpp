@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
  *****************************************************************************/
 #include <QDebug>
@@ -6,6 +6,9 @@
 #include <QBluetoothDeviceInfo>
 
 #include "SAKBleScanner.hh"
+
+#define BLE_ERR_SIG void(QBluetoothDeviceDiscoveryAgent::*)\
+(QBluetoothDeviceDiscoveryAgent::Error)
 
 SAKBleScanner::SAKBleScanner(QObject *parent)
     : QObject{parent}
@@ -17,13 +20,9 @@ SAKBleScanner::SAKBleScanner(QObject *parent)
     connect(mDiscover, &QBluetoothDeviceDiscoveryAgent::errorOccurred,
             this, &SAKBleScanner::onErrorOccurred);
 #else
-#if 1
-    connect(mDiscover, static_cast<void(QBluetoothDeviceDiscoveryAgent::*)(QBluetoothDeviceDiscoveryAgent::Error)>(&QBluetoothDeviceDiscoveryAgent::error),
+    connect(mDiscover,
+            static_cast<BLE_ERR_SIG>(&QBluetoothDeviceDiscoveryAgent::error),
             this, &SAKBleScanner::onErrorOccurred);
-#else
-    connect(mDiscover, qOverload<QBluetoothDeviceDiscoveryAgent::Error>::of(&QBluetoothDeviceDiscoveryAgent::error),
-            this, &SAKBleScanner::onErrorOccurred);
-#endif
 #endif
     connect(mDiscover, &QBluetoothDeviceDiscoveryAgent::deviceDiscovered,
             this, &SAKBleScanner::onDeviceDiscovered);
@@ -82,12 +81,14 @@ void SAKBleScanner::onFinished()
     }
 }
 
-void SAKBleScanner::onErrorOccurred(QBluetoothDeviceDiscoveryAgent::Error error)
+void SAKBleScanner::onErrorOccurred(
+    QBluetoothDeviceDiscoveryAgent::Error error)
 {
     mIsDiscovering = false;
     //emit isDiscoveringChanged();
     Q_UNUSED(error);
-    qWarning() << "QBluetoothDeviceDiscoveryAgent error:" << mDiscover->errorString();
+    qWarning() << "QBluetoothDeviceDiscoveryAgent error:"
+               << mDiscover->errorString();
 }
 
 void SAKBleScanner::onDeviceDiscovered(const QBluetoothDeviceInfo &info)
