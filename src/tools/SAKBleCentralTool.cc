@@ -167,11 +167,11 @@ void SAKBleCentralTool::changeNotify()
         }
 
         if (value == QByteArray::fromHex("0100")) {
-            cookedService->writeDescriptor(descriptor,
-                                           QByteArray::fromHex("0000"));
+            QByteArray value = QByteArray::fromHex("0000");
+            cookedService->writeDescriptor(descriptor, value);
         } else {
-            cookedService->writeDescriptor(descriptor,
-                                           QByteArray::fromHex("0100"));
+            QByteArray value = QByteArray::fromHex("0100");
+            cookedService->writeDescriptor(descriptor, value);
         }
     }
 }
