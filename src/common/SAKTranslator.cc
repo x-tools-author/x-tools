@@ -19,13 +19,13 @@ SAKTranslator::SAKTranslator(QObject *parent)
     : QObject{parent}
 {
     mFlagNameMap.insert("zh_CN", "简体中文");
+    mFlagNameMap.insert("en", "English");
+ #ifdef QT_DEBUG
     mFlagNameMap.insert("zh_TW", "繁體中文");
-
     mFlagNameMap.insert("ar", "العربية");
     mFlagNameMap.insert("cs", "Čeština");
     mFlagNameMap.insert("da", "Dansk");
     mFlagNameMap.insert("de", "Deutsch");
-    mFlagNameMap.insert("en", "English");
     mFlagNameMap.insert("es", "Español");
     mFlagNameMap.insert("fa", "فارسی");
     mFlagNameMap.insert("fi", "Suomi");
@@ -42,6 +42,7 @@ SAKTranslator::SAKTranslator(QObject *parent)
     mFlagNameMap.insert("sk", "Slovenčina");
     mFlagNameMap.insert("sl", "Slovenščina");
     mFlagNameMap.insert("sv", "Svenska");
+#endif
 }
 
 SAKTranslator* SAKTranslator::instance()
