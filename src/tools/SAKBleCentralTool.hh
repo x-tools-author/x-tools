@@ -7,38 +7,72 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
-#ifndef EDBLECENTRAL_HPP
-#define EDBLECENTRAL_HPP
+#ifndef EDBLECENTRAL_HH
+#define EDBLECENTRAL_HH
 
 #include <QVariantList>
 #include <QBluetoothUuid>
 #include <QLowEnergyService>
 #include <QLowEnergyController>
+#include <QBluetoothDeviceInfo>
 
 #include "SAKCommunicationTool.hh"
 
 class SAKBleCentralTool : public SAKCommunicationTool
 {
     Q_OBJECT
-    Q_PROPERTY(QVariant bleInfo READ bleInfo WRITE setBleInfo NOTIFY bleInfoChanged)
-    Q_PROPERTY(QVariantList bleServiceObjects READ bleServiceObjects NOTIFY bleServiceObjectsChanged)
-    Q_PROPERTY(int currentServiceIndex READ currentServiceIndex WRITE setCurrentServiceIndex NOTIFY currentServiceIndexChanged)
-    Q_PROPERTY(int currentCharacteristicIndex READ currentCharacteristicIndex WRITE setCurrentCharacteristicIndex NOTIFY currentCharacteristicIndexChanged)
-    Q_PROPERTY(int writeModel READ writeModel WRITE setWriteModel NOTIFY writeModelChanged)
-    Q_PROPERTY(QStringList serviceNames READ serviceNames NOTIFY serviceNamesChanged)
-    Q_PROPERTY(QStringList characteristicNames READ characteristicNames NOTIFY characteristicNamesChanged)
+    Q_PROPERTY(QVariant info READ info WRITE setInfo NOTIFY infoChanged)
+    Q_PROPERTY(QVariantList services READ services NOTIFY servicesChanged)
+    Q_PROPERTY(int serviceIndex READ serviceIndex WRITE setServiceIndex
+               NOTIFY serviceIndexChanged)
+    Q_PROPERTY(int characteristicIndex READ characteristicIndex
+               WRITE setCharacteristicIndex
+               NOTIFY characteristicIndexChanged)
+    Q_PROPERTY(int writeModel READ writeModel WRITE setWriteModel
+               NOTIFY writeModelChanged)
 public:
     SAKBleCentralTool(QObject *parent = nullptr);
     ~SAKBleCentralTool();
 
-    Q_INVOKABLE QVariantList serviceCharacteristics(QVariant service);
-    Q_INVOKABLE QString characteristicName(QVariant characteristic);
+//↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+//Properties
+public:
+    Q_INVOKABLE QVariant info();
+    Q_INVOKABLE void setInfo(QVariant info);
+    Q_INVOKABLE QVariantList services();
+    Q_INVOKABLE int serviceIndex();
+    Q_INVOKABLE void setServiceIndex(int index);
+    Q_INVOKABLE int characteristicIndex();
+    Q_INVOKABLE void setCharacteristicIndex(int index);
+    Q_INVOKABLE int writeModel();
+    Q_INVOKABLE void setWriteModel(int model);
+
+signals:
+    void infoChanged();
+    void servicesChanged();
+    void serviceIndexChanged();
+    void characteristicsChanged();
+    void characteristicIndexChanged();
+    void writeModelChanged();
+
+private:
+    QBluetoothDeviceInfo mBluetoothDeviceInfo;
+    QVector<QLowEnergyService*> mBleServiceObjects;
+    int mServiceIndex{-1};
+    int mCharacteristicIndex{-1};
+    int mWriteModel;
+//↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
+
+public:
     Q_INVOKABLE QString serviceName(QVariant service);
+    Q_INVOKABLE QVariantList characteristics(QVariant service);
+    Q_INVOKABLE QString characteristicName(QVariant characteristic);
     Q_INVOKABLE void readCharacteristic();
     Q_INVOKABLE void changeNotify();
 
 signals:
-    void descriptorWritten(const QLowEnergyDescriptor &descriptor, const QByteArray &newValue);
+    void descriptorWritten(const QLowEnergyDescriptor &descriptor,
+                           const QByteArray &newValue);
 
 protected:
     virtual bool initialize(QString &errStr) final;
@@ -55,40 +89,8 @@ private:
     void onServiceDiscovered(const QBluetoothUuid &newService);
     void onServiceDiscoveryFinished();
     void onBleCentralErrorOccuured(QLowEnergyController::Error err);
-    void onServiceObjectStateChanged(QLowEnergyService *service, QLowEnergyService::ServiceState newState);
-
-private:
-    QVariant mBleInfo;
-    QVariant bleInfo(){return mBleInfo;}
-    void setBleInfo(QVariant info){mBleInfo = info; emit bleInfoChanged();}
-    Q_SIGNAL void bleInfoChanged();
-
-    QVariantList mBleServiceObjects;
-    QVariantList bleServiceObjects(){return mBleServiceObjects;}
-    Q_SIGNAL void bleServiceObjectsChanged();
-
-    int mCurrentServiceIndex{-1};
-    int currentServiceIndex(){return mCurrentServiceIndex;}
-    void setCurrentServiceIndex(int index){mCurrentServiceIndex = index; emit currentServiceIndexChanged();}
-    Q_SIGNAL void currentServiceIndexChanged();
-
-    int mCurrentCharacteristicIndex{-1};
-    int currentCharacteristicIndex(){return mCurrentCharacteristicIndex;}
-    void setCurrentCharacteristicIndex(int index){mCurrentCharacteristicIndex = index; emit currentCharacteristicIndexChanged();}
-    Q_SIGNAL void currentCharacteristicIndexChanged();
-
-    int mWriteModel;
-    int writeModel(){return mWriteModel;}
-    void setWriteModel(int model){mWriteModel = model; emit writeModelChanged();}
-    Q_SIGNAL void writeModelChanged();
-
-    QStringList mServiceNames;
-    QStringList serviceNames(){return mServiceNames;}
-    Q_SIGNAL void serviceNamesChanged();
-
-    QStringList mCharacteristicNames;
-    QStringList characteristicNames(){return mCharacteristicNames;}
-    Q_SIGNAL void characteristicNamesChanged();
+    void onServiceObjectStateChanged(QLowEnergyService *service,
+                                     QLowEnergyService::ServiceState newState);
 };
 
 #endif // EDBLECENTRAL_HPP
