@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -21,11 +21,22 @@ class SAKBleCentralToolUi : public SAKCommunicationToolUi
 public:
     explicit SAKBleCentralToolUi(QWidget *parent = nullptr);
     ~SAKBleCentralToolUi();
-    virtual void setupCommunicationTool(SAKCommunicationTool *tool) final;
+
+protected:
+    virtual void onBaseToolUiInitialized(SAKBaseTool *tool,
+                                         const QString &settingsGroup) override;
+
     virtual void updateUiState(bool isWorking) final;
 
 private:
     Ui::SAKBleCentralToolUi *ui{nullptr};
+
+private:
+    void initSettingsMenu(const QString &settingsGroup);
+
+private slots:
+    void onPushButtonScanClicked();
+    void onComboBoxDevicesActived(int index);
 };
 
 #endif // SAKBLECENTRALTOOLUI_HH

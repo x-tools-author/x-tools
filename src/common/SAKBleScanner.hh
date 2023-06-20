@@ -1,5 +1,11 @@
 ﻿/******************************************************************************
- * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
+ * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
+ *
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #ifndef SAKBLESCANNER_HH
 #define SAKBLESCANNER_HH
@@ -7,6 +13,7 @@
 #include <QTimer>
 #include <QObject>
 #include <QVariant>
+#include <QLoggingCategory>
 #include <QBluetoothDeviceInfo>
 #include <QBluetoothDeviceDiscoveryAgent>
 
@@ -14,62 +21,63 @@
 class SAKBleScanner : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QStringList names READ names NOTIFY namesChanged)
-    Q_PROPERTY(bool isDiscovering READ isDiscovering
-               NOTIFY isDiscoveringChanged)
+    Q_PROPERTY(QVariantList deviceInfoList READ devicesInfoList
+               NOTIFY devicesInfoListChanged)
     Q_PROPERTY(bool enableRefresh READ enableRefresh WRITE setEnableRefresh
                NOTIFY enableRefreshChanged)
-    Q_PROPERTY(int timeout READ timeout WRITE setTimeout NOTIFY timeoutChanged)
-    Q_PROPERTY(QString filtter READ filtter WRITE setFiltter
-               NOTIFY filtterChanged)
+    Q_PROPERTY(int timeoutInterval READ timeoutInterval WRITE setTimeoutInterval
+               NOTIFY timeoutIntervalChanged)
+    Q_PROPERTY(QString namefiltter READ namefiltter WRITE setNameFiltter
+               NOTIFY filtterNameChanged)
 public:
     explicit SAKBleScanner(QObject *parent = nullptr);
     ~SAKBleScanner();
 
-    Q_INVOKABLE QVariant bleInfo(int index);
+public:
+    Q_INVOKABLE void startDiscover();
+    Q_INVOKABLE void stopDiscover();
+    Q_INVOKABLE bool isActive();
+
+    Q_INVOKABLE QVariant deviceInfo(int index);
+    Q_INVOKABLE QString deviceName(const QVariant &deviceInfo);
+
+signals:
+    void finished();
 
 private:
     QBluetoothDeviceDiscoveryAgent *mDiscover;
-    QTimer *mTimer{nullptr};
+    bool mIsFirstTime;
+    bool mAutoRestart;
+    QVector<QBluetoothDeviceInfo> mDeviceInfoListTemp;
+    QLoggingCategory mLoggingCategory{"SAK.BleScanner"};
 
 private:
-    void refresh();
     void onFinished();
     void onErrorOccurred(QBluetoothDeviceDiscoveryAgent::Error error);
     void onDeviceDiscovered(const QBluetoothDeviceInfo &info);
 
+//↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+//Properties
+public:
+    QVariantList devicesInfoList();
+    bool enableRefresh();
+    void setEnableRefresh(bool enable);
+    int timeoutInterval();
+    void setTimeoutInterval(int interval);
+    QString namefiltter();
+    void setNameFiltter(const QString &flag);
+
+signals:
+    void devicesInfoListChanged();
+    void enableRefreshChanged();
+    void timeoutIntervalChanged();
+    void filtterNameChanged();
+
 private:
-    QStringList mNames;
-    QStringList names(){return mNames;}
-    Q_SIGNAL void namesChanged();
-
-    bool mIsDiscovering{false};
-    bool isDiscovering(){return mIsDiscovering;}
-    Q_SIGNAL void isDiscoveringChanged();
-
+    QVector<QBluetoothDeviceInfo> mDeviceInfoList;
     bool mEnableRefresh{true};
-    bool enableRefresh(){return mEnableRefresh;}
-    void setEnableRefresh(bool enable){
-        mEnableRefresh = enable;
-        emit enableRefreshChanged();
-    }
-    Q_SIGNAL void enableRefreshChanged();
-
-    int mTimeout{10};
-    int timeout(){return mTimeout;}
-    void setTimeout(int interval){
-        mTimeout = interval;
-        emit timeoutChanged();
-    }
-    Q_SIGNAL void timeoutChanged();
-
-    QString mFiltter;
-    QString filtter(){return mFiltter;}
-    void setFiltter(const QString &flag){
-        mFiltter = flag;
-        emit filtterChanged();
-    }
-    Q_SIGNAL void filtterChanged();
+    int mTimeoutInterval{120};
+    QString mNameFiltter{""};
 };
 
 #endif // SAKBLESCANNER_H

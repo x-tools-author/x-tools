@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -7,6 +7,15 @@
  * QtSwissArmyKnife is licensed according to the terms in
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
+#include <QMenu>
+#include <QLabel>
+#include <QWidget>
+#include <QGridLayout>
+#include <QWidgetAction>
+
+#include "SAKSpinBox.hh"
+#include "SAKLineEdit.hh"
+#include "SAKBleCentralTool.hh"
 #include "SAKBleCentralToolUi.hh"
 #include "SAKCommunicationTool.hh"
 #include "ui_SAKBleCentralToolUi.h"
@@ -16,6 +25,9 @@ SAKBleCentralToolUi::SAKBleCentralToolUi(QWidget *parent)
     , ui(new Ui::SAKBleCentralToolUi)
 {
     ui->setupUi(this);
+    ui->progressBar->hide();
+    connect(ui->pushButtonScan, &QPushButton::clicked,
+            this, &SAKBleCentralToolUi::onPushButtonScanClicked);
 }
 
 SAKBleCentralToolUi::~SAKBleCentralToolUi()
@@ -23,12 +35,80 @@ SAKBleCentralToolUi::~SAKBleCentralToolUi()
     delete ui;
 }
 
-void SAKBleCentralToolUi::setupCommunicationTool(SAKCommunicationTool *tool)
+void SAKBleCentralToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
+                                                  const QString &settingsGroup)
 {
-    Q_UNUSED(tool)
+    SAKCommunicationToolUi::onBaseToolUiInitialized(tool, settingsGroup);
+    initSettingsMenu(settingsGroup);
 }
 
 void SAKBleCentralToolUi::updateUiState(bool isWorking)
 {
     Q_UNUSED(isWorking)
+}
+
+void SAKBleCentralToolUi::initSettingsMenu(const QString &settingsGroup)
+{
+    QWidget *w = new QWidget(this);
+    QGridLayout *gl = new QGridLayout();
+    w->setLayout(gl);
+
+    int rowIndex = 0;
+    gl->addWidget(new QLabel(tr("Timeout interval(S)"), w), rowIndex, 0, 1, 1);
+    SAKSpinBox *sp = new SAKSpinBox(w);
+    sp->setMinimum(10);
+    sp->setMaximum(120);
+    sp->setValue(120);
+    sp->setGroupKey(settingsGroup, "timeoutInterval");
+    gl->addWidget(sp, rowIndex, 1, 1, 1);
+    connect(sp, &SAKSpinBox::valueChanged, this, [=](int v){
+        ui->comboBoxDevices->setTimeoutInterval(v);
+    });
+
+    rowIndex += 1;
+    gl->addWidget(new QLabel(tr("Name filtter"), w), rowIndex, 0, 1, 1);
+    SAKLineEdit *le = new SAKLineEdit(w);
+    le->setGroupKey(settingsGroup, "nameFiltter");
+    gl->addWidget(le, rowIndex, 1, 1, 1);
+    connect(le, &SAKLineEdit::textChanged, this, [=](const QString &text){
+        ui->comboBoxDevices->setNameFiltter(text);
+    });
+
+    rowIndex += 1;
+    QMenu *menu = new QMenu(this);
+    QPushButton *bt = new QPushButton(tr("OK"));
+    connect(bt, &QPushButton::clicked, menu, &QMenu::close);
+    gl->addWidget(bt, rowIndex, 1, 1, 1);
+
+    QWidgetAction *a = new QWidgetAction(this);
+    a->setDefaultWidget(w);;
+    menu->addAction(a);
+    ui->pushButtonSettings->setMenu(menu);
+
+    auto cookedTool = qobject_cast<SAKBleCentralTool*>(mTool);
+    if (!cookedTool) {
+        qCWarning((*mLoggingCategory)) << "invalid SAKBleCentralTool tool";
+        return;
+    }
+
+    int timeoutInterval = sp->value();
+    QString nameFiltter = le->text().trimmed();
+    ui->comboBoxDevices->setTimeoutInterval(timeoutInterval);
+    ui->comboBoxDevices->setNameFiltter(nameFiltter);
+}
+
+void SAKBleCentralToolUi::onPushButtonScanClicked()
+{
+    if (ui->comboBoxDevices->isActive()) {
+        ui->comboBoxDevices->stopDiscover();
+        ui->pushButtonScan->setText(tr("Scan"));
+    } else {
+        ui->comboBoxDevices->startDiscover();
+        ui->pushButtonScan->setText(tr("Stop"));
+    }
+}
+
+void SAKBleCentralToolUi::onComboBoxDevicesActived(int index)
+{
+
 }

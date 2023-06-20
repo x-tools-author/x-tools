@@ -27,7 +27,7 @@
     <number>9</number>
    </property>
    <item row="0" column="1">
-    <widget class="QComboBox" name="comboBoxDevices"/>
+    <widget class="SAKBluetoothDeviceInfoComboBox" name="comboBoxDevices"/>
    </item>
    <item row="3" column="1">
     <widget class="QComboBox" name="comboBoxServices">
@@ -131,6 +131,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>SAKBluetoothDeviceInfoComboBox</class>
+   <extends>QComboBox</extends>
+   <header location="global">SAKBluetoothDeviceInfoComboBox.hh</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

@@ -1,5 +1,11 @@
 ﻿/******************************************************************************
- * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
+ * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
+ *
+ * The file is encoded using "utf8 with bom", it is a part
+ * of QtSwissArmyKnife project.
+ *
+ * QtSwissArmyKnife is licensed according to the terms in
+ * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include <QDebug>
 #include <QtGlobal>
@@ -11,11 +17,16 @@
 (QBluetoothDeviceDiscoveryAgent::Error)
 
 SAKBleScanner::SAKBleScanner(QObject *parent)
-    : QObject{parent}
+    : QObject(parent)
+    , mDiscover(Q_NULLPTR)
+    , mIsFirstTime(true)
+    , mAutoRestart(true)
 {
-    mDiscover = new QBluetoothDeviceDiscoveryAgent();
+    mDiscover = new QBluetoothDeviceDiscoveryAgent(this);
     connect(mDiscover, &QBluetoothDeviceDiscoveryAgent::finished,
             this, &SAKBleScanner::onFinished);
+    connect(mDiscover, &QBluetoothDeviceDiscoveryAgent::finished,
+            this, &SAKBleScanner::finished);
 #if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
     connect(mDiscover, &QBluetoothDeviceDiscoveryAgent::errorOccurred,
             this, &SAKBleScanner::onErrorOccurred);
@@ -26,72 +37,150 @@ SAKBleScanner::SAKBleScanner(QObject *parent)
 #endif
     connect(mDiscover, &QBluetoothDeviceDiscoveryAgent::deviceDiscovered,
             this, &SAKBleScanner::onDeviceDiscovered);
-
-    refresh();
 }
 
 SAKBleScanner::~SAKBleScanner()
 {
+    mDiscover->stop();
     mDiscover->deleteLater();
 }
 
-QVariant SAKBleScanner::bleInfo(int index)
+void SAKBleScanner::startDiscover()
 {
-    auto infos = mDiscover->discoveredDevices();
-    if (index >= 0 && index < infos.length()) {
-        return QVariant::fromValue<QBluetoothDeviceInfo>(infos.at(index));
+    mAutoRestart = true;
+
+    // 10s-1minute
+    int interval = mTimeoutInterval < 10 ? 10 : mTimeoutInterval;
+    interval = interval > 120 ? 120 : interval;
+    mDiscover->setLowEnergyDiscoveryTimeout(interval*1000);
+
+#if QT_VERSION >= QT_VERSION_CHECK(5, 9, 0)
+    if (mDiscover->isActive()) {
+        return;
+    }
+    mDiscover->start(QBluetoothDeviceDiscoveryAgent::LowEnergyMethod);
+#endif
+}
+
+void SAKBleScanner::stopDiscover()
+{
+    mAutoRestart = false;
+    mDiscover->stop();
+}
+
+bool SAKBleScanner::isActive()
+{
+    return mDiscover->isActive();
+}
+
+QVariant SAKBleScanner::deviceInfo(int index)
+{
+    if (index >= 0 && index < mDeviceInfoList.length()) {
+        QBluetoothDeviceInfo info = mDeviceInfoList.at(index);
+        return QVariant::fromValue<QBluetoothDeviceInfo>(info);
     }
 
     return QVariant();
 }
 
-void SAKBleScanner::refresh()
+QString SAKBleScanner::deviceName(const QVariant &deviceInfo)
 {
-    mIsDiscovering = true;
-    //emit isDiscoveringChanged();
-#if QT_VERSION >= QT_VERSION_CHECK(5, 9, 0)
-    mDiscover->start(QBluetoothDeviceDiscoveryAgent::LowEnergyMethod);
-#endif
+    auto cookedInfo = deviceInfo.value<QBluetoothDeviceInfo>();
+    return cookedInfo.name();
 }
 
 void SAKBleScanner::onFinished()
 {
-    mIsDiscovering = false;
-    //emit isDiscoveringChanged();
+    if (mIsFirstTime) {
+        mIsFirstTime = false;
+        return;
+    }
+
     if (mEnableRefresh) {
-        auto devices = mDiscover->discoveredDevices();
-        QStringList temp;
-        for (auto &device : devices) {
-            if (mFiltter.isEmpty()) {
-                temp.append(device.name());
-            } else {
-                if (temp.contains(mFiltter)) {
-                    temp.append(device.name());
-                }
-            }
+        if (mDeviceInfoList != mDeviceInfoListTemp) {
+            mDeviceInfoList = mDeviceInfoListTemp;
+            emit devicesInfoListChanged();
         }
+    }
 
-        if (mNames != temp) {
-            mNames = temp;
-            emit namesChanged();
-        }
-
-        int interval = mTimeout < 5 ? 5 : mTimeout;
-        QTimer::singleShot(interval*1000, this, [=](){refresh();});
+    mDeviceInfoListTemp.clear();
+    if (mAutoRestart) {
+        startDiscover();
     }
 }
 
-void SAKBleScanner::onErrorOccurred(
-    QBluetoothDeviceDiscoveryAgent::Error error)
+void SAKBleScanner::onErrorOccurred(QBluetoothDeviceDiscoveryAgent::Error error)
 {
-    mIsDiscovering = false;
-    //emit isDiscoveringChanged();
     Q_UNUSED(error);
-    qWarning() << "QBluetoothDeviceDiscoveryAgent error:"
-               << mDiscover->errorString();
+    qCWarning(mLoggingCategory) << "QBluetoothDeviceDiscoveryAgent error:"
+                                << mDiscover->errorString();
+
+    if (mAutoRestart) {
+        startDiscover();
+    }
 }
 
 void SAKBleScanner::onDeviceDiscovered(const QBluetoothDeviceInfo &info)
 {
-    Q_UNUSED(info);
+    const QString name = info.name();
+    qCInfo(mLoggingCategory) << "new ble device:" << name;
+
+    if (!mNameFiltter.isEmpty()) {
+        if (!name.contains(mNameFiltter)) {
+            qCInfo(mLoggingCategory) << "device is ignored:" << name;
+            return;
+        }
+    }
+
+    if (mIsFirstTime) {
+        if (mEnableRefresh) {
+            mDeviceInfoList.append(info);
+            emit devicesInfoListChanged();
+        }
+    }
+
+    mDeviceInfoListTemp.append(info);
+}
+
+QVariantList SAKBleScanner::devicesInfoList()
+{
+    QVariantList list;
+    for (auto &info : mDeviceInfoList) {
+        list.append(QVariant::fromValue(info));
+    }
+
+    return list;
+}
+
+bool SAKBleScanner::enableRefresh()
+{
+    return mEnableRefresh;
+}
+
+void SAKBleScanner::setEnableRefresh(bool enable)
+{
+    mEnableRefresh = enable;
+    emit enableRefreshChanged();
+}
+
+int SAKBleScanner::timeoutInterval()
+{
+    return mTimeoutInterval;
+}
+
+void SAKBleScanner::setTimeoutInterval(int interval)
+{
+    mTimeoutInterval = interval;
+    emit timeoutIntervalChanged();
+}
+
+QString SAKBleScanner::namefiltter()
+{
+    return mNameFiltter;
+}
+
+void SAKBleScanner::setNameFiltter(const QString &flag)
+{
+    mNameFiltter = flag;
+    emit filtterNameChanged();
 }

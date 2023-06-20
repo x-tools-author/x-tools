@@ -3,6 +3,7 @@ INCLUDEPATH += $$PWD
 HEADERS += \
     $$PWD/SAKAffixesComboBox.hh \
     $$PWD/SAKBaudRateComboBox.hh \
+    $$PWD/SAKBluetoothDeviceInfoComboBox.hh \
     $$PWD/SAKCheckBox.hh \
     $$PWD/SAKComboBox.hh \
     $$PWD/SAKCrcAlgorithmComboBox.hh \
@@ -24,6 +25,7 @@ HEADERS += \
 SOURCES += \
     $$PWD/SAKAffixesComboBox.cc \
     $$PWD/SAKBaudRateComboBox.cc \
+    $$PWD/SAKBluetoothDeviceInfoComboBox.cc \
     $$PWD/SAKCheckBox.cc \
     $$PWD/SAKComboBox.cc \
     $$PWD/SAKCrcAlgorithmComboBox.cc \
