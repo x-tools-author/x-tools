@@ -15,7 +15,6 @@
 
 #include "SAKSpinBox.hh"
 #include "SAKLineEdit.hh"
-#include "SAKBleCentralTool.hh"
 #include "SAKBleCentralToolUi.hh"
 #include "SAKCommunicationTool.hh"
 #include "ui_SAKBleCentralToolUi.h"
@@ -23,6 +22,7 @@
 SAKBleCentralToolUi::SAKBleCentralToolUi(QWidget *parent)
     : SAKCommunicationToolUi{parent}
     , ui(new Ui::SAKBleCentralToolUi)
+    , mBleTool(Q_NULLPTR)
 {
     ui->setupUi(this);
     ui->progressBar->hide();
@@ -85,8 +85,8 @@ void SAKBleCentralToolUi::initSettingsMenu(const QString &settingsGroup)
     menu->addAction(a);
     ui->pushButtonSettings->setMenu(menu);
 
-    auto cookedTool = qobject_cast<SAKBleCentralTool*>(mTool);
-    if (!cookedTool) {
+    mBleTool = qobject_cast<SAKBleCentralTool*>(mTool);
+    if (!mBleTool) {
         qCWarning((*mLoggingCategory)) << "invalid SAKBleCentralTool tool";
         return;
     }
@@ -95,6 +95,8 @@ void SAKBleCentralToolUi::initSettingsMenu(const QString &settingsGroup)
     QString nameFiltter = le->text().trimmed();
     ui->comboBoxDevices->setTimeoutInterval(timeoutInterval);
     ui->comboBoxDevices->setNameFiltter(nameFiltter);
+
+    onComboBoxDevicesActived();
 }
 
 void SAKBleCentralToolUi::onPushButtonScanClicked()
@@ -108,7 +110,8 @@ void SAKBleCentralToolUi::onPushButtonScanClicked()
     }
 }
 
-void SAKBleCentralToolUi::onComboBoxDevicesActived(int index)
+void SAKBleCentralToolUi::onComboBoxDevicesActived()
 {
-
+    QVariant data = ui->comboBoxDevices->currentData();
+    mBleTool->setInfo(data);
 }

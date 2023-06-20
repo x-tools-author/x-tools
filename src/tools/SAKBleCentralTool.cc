@@ -179,7 +179,7 @@ void SAKBleCentralTool::changeNotify()
 bool SAKBleCentralTool::initialize(QString &errStr)
 {
     if (!mBluetoothDeviceInfo.isValid()) {
-        errStr = "Invalid BLE information.";
+        errStr = "invalid ble information.";
         outputMessage(QtWarningMsg, errStr);
         return false;
     }

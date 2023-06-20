@@ -10,6 +10,7 @@
 #ifndef SAKBLECENTRALTOOLUI_HH
 #define SAKBLECENTRALTOOLUI_HH
 
+#include "SAKBleCentralTool.hh"
 #include "SAKCommunicationToolUi.hh"
 
 namespace Ui {
@@ -30,13 +31,14 @@ protected:
 
 private:
     Ui::SAKBleCentralToolUi *ui{nullptr};
+    SAKBleCentralTool *mBleTool;
 
 private:
     void initSettingsMenu(const QString &settingsGroup);
 
 private slots:
     void onPushButtonScanClicked();
-    void onComboBoxDevicesActived(int index);
+    void onComboBoxDevicesActived();
 };
 
 #endif // SAKBLECENTRALTOOLUI_HH
