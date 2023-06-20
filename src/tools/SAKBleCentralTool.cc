@@ -202,8 +202,11 @@ bool SAKBleCentralTool::initialize(QString &errStr)
             QOverload<BLE_ERR_SIG>::of(&QLowEnergyController::error),
 #endif
             mBleCentral,
-            [=](){onServiceDiscoveryFinished();});
+            [=](QLowEnergyController::Error err){
+        onBleCentralErrorOccuured(err);
+    });
 
+    mBleCentral->discoverServices();
     return true;
 #else
     return false;
@@ -246,7 +249,8 @@ void SAKBleCentralTool::uninitialize()
 
 void SAKBleCentralTool::onServiceDiscovered(const QBluetoothUuid &newService)
 {
-    Q_UNUSED(newService);
+    outputMessage(QtInfoMsg, "new ble service discovered:"
+                                 + newService.toString());
 }
 
 void SAKBleCentralTool::onServiceDiscoveryFinished()
@@ -291,8 +295,9 @@ void SAKBleCentralTool::onServiceDiscoveryFinished()
 void SAKBleCentralTool::onBleCentralErrorOccuured(
     QLowEnergyController::Error err)
 {
-    Q_UNUSED(err);
-    qInfo() << mBleCentral->errorString();
+    Q_UNUSED(err)
+    outputMessage(QtInfoMsg, "new ble service error:"
+                                 + mBleCentral->errorString());
     exit();
 }
 

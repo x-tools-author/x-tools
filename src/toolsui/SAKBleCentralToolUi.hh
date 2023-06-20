@@ -27,7 +27,7 @@ protected:
     virtual void onBaseToolUiInitialized(SAKBaseTool *tool,
                                          const QString &settingsGroup) override;
 
-    virtual void updateUiState(bool isWorking) final;
+    virtual void onIsWorkingChanged(bool isWorking) final;
 
 private:
     Ui::SAKBleCentralToolUi *ui{nullptr};

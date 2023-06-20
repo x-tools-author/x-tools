@@ -18,6 +18,8 @@
 #include "SAKBleCentralToolUi.hh"
 #include "ui_SAKBleCentralToolUi.h"
 
+#define SAK_CB_I_C &QComboBox::currentIndexChanged
+
 SAKBleCentralToolUi::SAKBleCentralToolUi(QWidget *parent)
     : SAKCommunicationToolUi{parent}
     , ui(new Ui::SAKBleCentralToolUi)
@@ -27,6 +29,10 @@ SAKBleCentralToolUi::SAKBleCentralToolUi(QWidget *parent)
     ui->progressBar->hide();
     connect(ui->pushButtonScan, &QPushButton::clicked,
             this, &SAKBleCentralToolUi::onPushButtonScanClicked);
+    connect(ui->comboBoxDevices,
+            static_cast<void(QComboBox::*)(int)>(SAK_CB_I_C),
+            this,
+            &SAKBleCentralToolUi::onComboBoxDevicesActived);
 }
 
 SAKBleCentralToolUi::~SAKBleCentralToolUi()
@@ -41,7 +47,7 @@ void SAKBleCentralToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
     initSettingsMenu(settingsGroup);
 }
 
-void SAKBleCentralToolUi::updateUiState(bool isWorking)
+void SAKBleCentralToolUi::onIsWorkingChanged(bool isWorking)
 {
     Q_UNUSED(isWorking)
 }
