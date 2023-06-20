@@ -16,7 +16,6 @@
 #include "SAKSpinBox.hh"
 #include "SAKLineEdit.hh"
 #include "SAKBleCentralToolUi.hh"
-#include "SAKCommunicationTool.hh"
 #include "ui_SAKBleCentralToolUi.h"
 
 SAKBleCentralToolUi::SAKBleCentralToolUi(QWidget *parent)
