@@ -129,7 +129,6 @@ void SAKBleCentralToolUi::onServiceDiscoveryFinished()
         ui->comboBoxServices->addItem(cookedSerivce->serviceName(), service);
         connect(cookedSerivce, &QLowEnergyService::stateChanged,
                 this, [=](QLowEnergyService::ServiceState state){
-            qDebug() << state;
             if (state == QLowEnergyService::RemoteServiceDiscovered) {
                 onComboBoxServicesCurrentIndexChanged();
             }

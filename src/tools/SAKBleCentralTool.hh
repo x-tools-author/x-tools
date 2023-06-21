@@ -89,7 +89,7 @@ signals:
 
 private:
     QBluetoothDeviceInfo mBluetoothDeviceInfo;
-    QVector<QLowEnergyService*> mBleServiceObjects;
+    QVector<QLowEnergyService*> mServices;
     int mServiceIndex{-1};
     int mCharacteristicIndex{-1};
     int mWriteModel;

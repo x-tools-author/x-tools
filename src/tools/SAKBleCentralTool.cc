@@ -170,11 +170,9 @@ void SAKBleCentralTool::readBytes()
     }
 
     auto service = mServices.at(mServiceIndex);
-    auto cookedService = service.value<QLowEnergyService*>();
-
-    auto characteristics = cookedService->characteristics();
+    auto characteristics = service->characteristics();
     auto characteristic = characteristics.at(mCharacteristicIndex);
-    cookedService->readCharacteristic(characteristic);
+    service->readCharacteristic(characteristic);
 }
 
 void SAKBleCentralTool::writeBytes(const QByteArray &bytes,
@@ -306,7 +304,7 @@ void SAKBleCentralTool::setInfo(QVariant info)
 QVariantList SAKBleCentralTool::services()
 {
     QVariantList varList;
-    for (auto &var : mBleServiceObjects) {
+    for (auto &var : mServices) {
         varList.append(QVariant::fromValue(var));
     }
     return varList;
