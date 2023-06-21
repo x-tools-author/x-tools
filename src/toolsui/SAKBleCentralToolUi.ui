@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>168</width>
-    <height>262</height>
+    <width>166</width>
+    <height>185</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -26,82 +26,27 @@
    <property name="bottomMargin">
     <number>9</number>
    </property>
+   <item row="5" column="0">
+    <widget class="QLabel" name="labelWriteWay">
+     <property name="text">
+      <string>Write way</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QPushButton" name="pushButtonSettings">
+     <property name="text">
+      <string>Settings</string>
+     </property>
+    </widget>
+   </item>
    <item row="0" column="1">
     <widget class="SAKBluetoothDeviceInfoComboBox" name="comboBoxDevices"/>
-   </item>
-   <item row="3" column="1">
-    <widget class="QComboBox" name="comboBoxServices">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="0" colspan="2">
-    <layout class="QGridLayout" name="gridLayout_2">
-     <item row="0" column="1">
-      <widget class="QPushButton" name="pushButtonWriteWithoutResponse">
-       <property name="toolTip">
-        <string>Write without response</string>
-       </property>
-       <property name="text">
-        <string>Write(NoR)</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QPushButton" name="pushButtonNotify">
-       <property name="text">
-        <string>Notify</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QPushButton" name="pushButtonRead">
-       <property name="text">
-        <string>Read</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="0">
-      <widget class="QPushButton" name="pushButtonWrite">
-       <property name="text">
-        <string>Write</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="0" column="0">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>Devices</string>
-     </property>
-    </widget>
    </item>
    <item row="4" column="0">
     <widget class="QLabel" name="label_3">
      <property name="text">
       <string>Characteristic</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="0" colspan="2">
-    <widget class="QProgressBar" name="progressBar">
-     <property name="maximum">
-      <number>0</number>
-     </property>
-     <property name="value">
-      <number>-1</number>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0" colspan="2">
-    <widget class="Line" name="line">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
      </property>
     </widget>
    </item>
@@ -115,6 +60,40 @@
      </property>
     </widget>
    </item>
+   <item row="5" column="1">
+    <widget class="QComboBox" name="comboBoxWriteWay">
+     <item>
+      <property name="text">
+       <string>WriteWithResponse</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>WriteWithoutResponse</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="8" column="0" colspan="2">
+    <widget class="QProgressBar" name="progressBar">
+     <property name="maximum">
+      <number>0</number>
+     </property>
+     <property name="value">
+      <number>-1</number>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QComboBox" name="comboBoxServices">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
    <item row="1" column="1">
     <widget class="QPushButton" name="pushButtonScan">
      <property name="text">
@@ -122,12 +101,37 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="0">
-    <widget class="QPushButton" name="pushButtonSettings">
-     <property name="text">
-      <string>Settings</string>
+   <item row="2" column="0" colspan="2">
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
      </property>
     </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Devices</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0" colspan="2">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="pushButtonNotify">
+       <property name="text">
+        <string>Notify</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButtonRead">
+       <property name="text">
+        <string>Read</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>

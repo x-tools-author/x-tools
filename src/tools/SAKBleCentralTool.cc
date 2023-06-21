@@ -72,18 +72,20 @@ QString SAKBleCentralTool::characteristicName(QVariant characteristic)
 
 void SAKBleCentralTool::readCharacteristic()
 {
-    if (!(mServiceIndex >= 0
-          && mServiceIndex < mServices.length())) {
+    if (!(mServiceIndex >= 0 && mServiceIndex < mServices.length())) {
+        outputMessage(QtWarningMsg, "invalid service index");
         return;
     }
 
     auto service = mServices.at(mServiceIndex);
-    auto characteristics = service->characteristics();
-    if ((mCharacteristicIndex >= 0)
-        && (mCharacteristicIndex < characteristics.length())) {
-        auto c = characteristics.at(mCharacteristicIndex);
-        service->readCharacteristic(c);
+    auto chs = service->characteristics();
+    if (!(mCharacteristicIndex >= 0 && mCharacteristicIndex < chs.count())) {
+        outputMessage(QtWarningMsg, "invalid characteristic index");
+        return;
     }
+
+    auto c = chs.at(mCharacteristicIndex);
+    service->readCharacteristic(c);
 }
 
 void SAKBleCentralTool::changeNotify()

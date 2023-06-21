@@ -36,9 +36,16 @@ SAKBleCentralToolUi::SAKBleCentralToolUi(QWidget *parent)
     connect(ui->comboBoxServices,
             static_cast<void(QComboBox::*)(int)>(SAK_CB_I_C),
             this, &SAKBleCentralToolUi::onComboBoxServicesCurrentIndexChanged);
-    connect(ui->comboBoxServices,
+    connect(ui->comboBoxCharacteristics,
             static_cast<void(QComboBox::*)(int)>(SAK_CB_I_C),
             this, &SAKBleCentralToolUi::onComboBoxCharacteristicsActived);
+    connect(ui->comboBoxWriteWay,
+            static_cast<void(QComboBox::*)(int)>(SAK_CB_I_C),
+            this, &SAKBleCentralToolUi::onComboBoxWriteWayCurrentIndexChanged);
+    connect(ui->pushButtonNotify, &QPushButton::clicked,
+            this, &SAKBleCentralToolUi::onPushButtonNotifyClicked);
+    connect(ui->pushButtonRead, &QPushButton::clicked,
+            this, &SAKBleCentralToolUi::onPushButtonReadClicked);
 }
 
 SAKBleCentralToolUi::~SAKBleCentralToolUi()
@@ -162,10 +169,11 @@ void SAKBleCentralToolUi::onComboBoxServicesCurrentIndexChanged()
     auto cookedSerivce = service.value<QLowEnergyService*>();
     auto chs = cookedSerivce->characteristics();
     ui->comboBoxCharacteristics->clear();
-    for (auto &ch : chs) {
+    for (int i = 0; i < chs.count(); i++) {
+        auto ch = chs.at(i);
         QVariant var = QVariant::fromValue<QLowEnergyCharacteristic>(ch);
         QString name = ch.name();
-        name = name.isEmpty() ? "(null)" : name;
+        name = name.isEmpty() ? tr("Characteristics%1").arg(i+1)  : name;
         ui->comboBoxCharacteristics->addItem(name, var);
     }
 }
@@ -174,4 +182,20 @@ void SAKBleCentralToolUi::onComboBoxCharacteristicsActived()
 {
     int index = ui->comboBoxCharacteristics->currentIndex();
     mBleTool->setCharacteristicIndex(index);
+}
+
+void SAKBleCentralToolUi::onComboBoxWriteWayCurrentIndexChanged()
+{
+    int index = ui->comboBoxWriteWay->currentIndex();
+    mBleTool->setWriteModel(index);
+}
+
+void SAKBleCentralToolUi::onPushButtonNotifyClicked()
+{
+    mBleTool->changeNotify();
+}
+
+void SAKBleCentralToolUi::onPushButtonReadClicked()
+{
+    mBleTool->readCharacteristic();
 }

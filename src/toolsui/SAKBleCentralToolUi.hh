@@ -44,6 +44,9 @@ private slots:
     void onComboBoxDevicesActived();
     void onComboBoxServicesCurrentIndexChanged();
     void onComboBoxCharacteristicsActived();
+    void onComboBoxWriteWayCurrentIndexChanged();
+    void onPushButtonNotifyClicked();
+    void onPushButtonReadClicked();
 };
 
 #endif // SAKBLECENTRALTOOLUI_HH
