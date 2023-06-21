@@ -205,8 +205,14 @@ bool SAKBleCentralTool::initialize(QString &errStr)
             [=](QLowEnergyController::Error err){
         onBleCentralErrorOccuured(err);
     });
+    connect(mBleCentral, &QLowEnergyController::connected,
+            mBleCentral, [=](){onBleCentralConnected();});
+    connect(mBleCentral, &QLowEnergyController::disconnected,
+            mBleCentral, [=](){onBleCentralDisconnected();});
 
-    mBleCentral->discoverServices();
+
+    mBleCentral->connectToDevice();
+    qDebug() << "123";
     return true;
 #else
     return false;
@@ -299,6 +305,16 @@ void SAKBleCentralTool::onBleCentralErrorOccuured(
     outputMessage(QtInfoMsg, "new ble service error:"
                                  + mBleCentral->errorString());
     exit();
+}
+
+void SAKBleCentralTool::onBleCentralConnected()
+{
+    mBleCentral->discoverServices();
+}
+
+void SAKBleCentralTool::onBleCentralDisconnected()
+{
+
 }
 
 void SAKBleCentralTool::onServiceObjectStateChanged(

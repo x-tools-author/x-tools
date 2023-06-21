@@ -89,6 +89,8 @@ private:
     void onServiceDiscovered(const QBluetoothUuid &newService);
     void onServiceDiscoveryFinished();
     void onBleCentralErrorOccuured(QLowEnergyController::Error err);
+    void onBleCentralConnected();
+    void onBleCentralDisconnected();
     void onServiceObjectStateChanged(QLowEnergyService *service,
                                      QLowEnergyService::ServiceState newState);
 };
