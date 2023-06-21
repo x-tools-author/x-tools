@@ -60,6 +60,8 @@ void SAKBleScanner::startDiscover()
     }
     mDiscover->start(QBluetoothDeviceDiscoveryAgent::LowEnergyMethod);
 #endif
+
+    mDeviceInfoListTemp.clear();
 }
 
 void SAKBleScanner::stopDiscover()
