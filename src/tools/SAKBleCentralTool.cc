@@ -210,9 +210,7 @@ bool SAKBleCentralTool::initialize(QString &errStr)
     connect(mBleCentral, &QLowEnergyController::disconnected,
             mBleCentral, [=](){onBleCentralDisconnected();});
 
-
     mBleCentral->connectToDevice();
-    qDebug() << "123";
     return true;
 #else
     return false;
@@ -261,7 +259,11 @@ void SAKBleCentralTool::onServiceDiscovered(const QBluetoothUuid &newService)
 
 void SAKBleCentralTool::onServiceDiscoveryFinished()
 {
+    outputMessage(QtInfoMsg, "ble service discovery finished.");
     QList<QBluetoothUuid> uuids = mBleCentral->services();
+    outputMessage(QtInfoMsg, "service count:"
+                                 + QString::number(uuids.length()));
+
     for (auto &uuid : uuids) {
         auto service = mBleCentral->createServiceObject(uuid);
         if (!service) {
@@ -301,20 +303,24 @@ void SAKBleCentralTool::onServiceDiscoveryFinished()
 void SAKBleCentralTool::onBleCentralErrorOccuured(
     QLowEnergyController::Error err)
 {
-    Q_UNUSED(err)
-    outputMessage(QtInfoMsg, "new ble service error:"
-                                 + mBleCentral->errorString());
+    if (err == QLowEnergyController::UnknownError) {
+        return ;
+    }
+
+    outputMessage(QtWarningMsg, "new ble service error:"
+                                    + mBleCentral->errorString());
     exit();
 }
 
 void SAKBleCentralTool::onBleCentralConnected()
 {
+    outputMessage(QtWarningMsg, "connect to device successfully.");
     mBleCentral->discoverServices();
 }
 
 void SAKBleCentralTool::onBleCentralDisconnected()
 {
-
+    outputMessage(QtWarningMsg, "disconnect from device.");
 }
 
 void SAKBleCentralTool::onServiceObjectStateChanged(
