@@ -55,8 +55,9 @@ void SAKBleCentralToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
 
 void SAKBleCentralToolUi::onIsWorkingChanged(bool isWorking)
 {
-    Q_UNUSED(isWorking)
-    // Nothing to do yet...
+    if (!isWorking) {
+        ui->progressBar->hide();
+    }
 }
 
 void SAKBleCentralToolUi::initSettingsMenu(const QString &settingsGroup)
