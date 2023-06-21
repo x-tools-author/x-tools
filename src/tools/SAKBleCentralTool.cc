@@ -20,63 +20,9 @@ SAKBleCentralTool::SAKBleCentralTool(QObject *parent)
 
 }
 
-
 SAKBleCentralTool::~SAKBleCentralTool()
 {
 
-}
-
-QVariant SAKBleCentralTool::info()
-{
-    return QVariant::fromValue(mBluetoothDeviceInfo);
-}
-
-void SAKBleCentralTool::setInfo(QVariant info)
-{
-    mBluetoothDeviceInfo = info.value<QBluetoothDeviceInfo>();
-    emit infoChanged();
-}
-
-QVariantList SAKBleCentralTool::services()
-{
-    QVariantList varList;
-    for (auto &var : mBleServiceObjects) {
-        varList.append(QVariant::fromValue(var));
-    }
-    return varList;
-}
-
-int SAKBleCentralTool::serviceIndex()
-{
-    return mServiceIndex;
-}
-
-void SAKBleCentralTool::setServiceIndex(int index)
-{
-    mServiceIndex = index;
-    emit serviceIndexChanged();
-}
-
-int SAKBleCentralTool::characteristicIndex()
-{
-    return mCharacteristicIndex;
-}
-
-void SAKBleCentralTool::setCharacteristicIndex(int index)
-{
-    mCharacteristicIndex = index;
-    emit characteristicIndexChanged();
-}
-
-int SAKBleCentralTool::writeModel()
-{
-    return mWriteModel;
-}
-
-void SAKBleCentralTool::setWriteModel(int model)
-{
-    mWriteModel = model;
-    emit writeModelChanged();
 }
 
 QString SAKBleCentralTool::serviceName(QVariant service)
@@ -219,7 +165,17 @@ bool SAKBleCentralTool::initialize(QString &errStr)
 
 void SAKBleCentralTool::readBytes()
 {
+    if (!((mServiceIndex >= 0)
+          && (mServiceIndex < mServices.length()))) {
+        return;
+    }
 
+    auto service = mServices.at(mServiceIndex);
+    auto cookedService = service.value<QLowEnergyService*>();
+
+    auto characteristics = cookedService->characteristics();
+    auto characteristic = characteristics.at(mCharacteristicIndex);
+    cookedService->readCharacteristic(characteristic);
 }
 
 void SAKBleCentralTool::writeBytes(const QByteArray &bytes,
@@ -335,4 +291,57 @@ void SAKBleCentralTool::onServiceObjectStateChanged(
     if (newState == state) {
         qInfo() << "Remote service discovered:" << newState;
     }
+}
+
+QVariant SAKBleCentralTool::info()
+{
+    return QVariant::fromValue(mBluetoothDeviceInfo);
+}
+
+void SAKBleCentralTool::setInfo(QVariant info)
+{
+    mBluetoothDeviceInfo = info.value<QBluetoothDeviceInfo>();
+    emit infoChanged();
+}
+
+QVariantList SAKBleCentralTool::services()
+{
+    QVariantList varList;
+    for (auto &var : mBleServiceObjects) {
+        varList.append(QVariant::fromValue(var));
+    }
+    return varList;
+}
+
+int SAKBleCentralTool::serviceIndex()
+{
+    return mServiceIndex;
+}
+
+void SAKBleCentralTool::setServiceIndex(int index)
+{
+    mServiceIndex = index;
+    emit serviceIndexChanged();
+}
+
+int SAKBleCentralTool::characteristicIndex()
+{
+    return mCharacteristicIndex;
+}
+
+void SAKBleCentralTool::setCharacteristicIndex(int index)
+{
+    mCharacteristicIndex = index;
+    emit characteristicIndexChanged();
+}
+
+int SAKBleCentralTool::writeModel()
+{
+    return mWriteModel;
+}
+
+void SAKBleCentralTool::setWriteModel(int model)
+{
+    mWriteModel = model;
+    emit writeModelChanged();
 }

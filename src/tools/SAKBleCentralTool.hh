@@ -34,35 +34,6 @@ public:
     SAKBleCentralTool(QObject *parent = nullptr);
     ~SAKBleCentralTool();
 
-//↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-//Properties
-public:
-    Q_INVOKABLE QVariant info();
-    Q_INVOKABLE void setInfo(QVariant info);
-    Q_INVOKABLE QVariantList services();
-    Q_INVOKABLE int serviceIndex();
-    Q_INVOKABLE void setServiceIndex(int index);
-    Q_INVOKABLE int characteristicIndex();
-    Q_INVOKABLE void setCharacteristicIndex(int index);
-    Q_INVOKABLE int writeModel();
-    Q_INVOKABLE void setWriteModel(int model);
-
-signals:
-    void infoChanged();
-    void servicesChanged();
-    void serviceIndexChanged();
-    void characteristicsChanged();
-    void characteristicIndexChanged();
-    void writeModelChanged();
-
-private:
-    QBluetoothDeviceInfo mBluetoothDeviceInfo;
-    QVector<QLowEnergyService*> mBleServiceObjects;
-    int mServiceIndex{-1};
-    int mCharacteristicIndex{-1};
-    int mWriteModel;
-//↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
-
 public:
     Q_INVOKABLE QString serviceName(QVariant service);
     Q_INVOKABLE QVariantList characteristics(QVariant service);
@@ -93,6 +64,34 @@ private:
     void onBleCentralDisconnected();
     void onServiceObjectStateChanged(QLowEnergyService *service,
                                      QLowEnergyService::ServiceState newState);
+
+//↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+//Properties
+public:
+    Q_INVOKABLE QVariant info();
+    Q_INVOKABLE void setInfo(QVariant info);
+    Q_INVOKABLE QVariantList services();
+    Q_INVOKABLE int serviceIndex();
+    Q_INVOKABLE void setServiceIndex(int index);
+    Q_INVOKABLE int characteristicIndex();
+    Q_INVOKABLE void setCharacteristicIndex(int index);
+    Q_INVOKABLE int writeModel();
+    Q_INVOKABLE void setWriteModel(int model);
+
+signals:
+    void infoChanged();
+    void servicesChanged();
+    void serviceIndexChanged();
+    void characteristicsChanged();
+    void characteristicIndexChanged();
+    void writeModelChanged();
+
+private:
+    QBluetoothDeviceInfo mBluetoothDeviceInfo;
+    QVector<QLowEnergyService*> mBleServiceObjects;
+    int mServiceIndex{-1};
+    int mCharacteristicIndex{-1};
+    int mWriteModel;
 };
 
 #endif // EDBLECENTRAL_HPP
