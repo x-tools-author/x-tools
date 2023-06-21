@@ -40,7 +40,7 @@ void SAKBleCentralTool::setInfo(QVariant info)
 QVariantList SAKBleCentralTool::services()
 {
     QVariantList varList;
-    for (auto &var : mBleServiceObjects) {
+    for (auto &var : mServices) {
         varList.append(QVariant::fromValue(var));
     }
     return varList;
@@ -132,12 +132,11 @@ void SAKBleCentralTool::readCharacteristic()
     }
 
     auto service = mServices.at(mServiceIndex);
-    auto cookedService = service.value<QLowEnergyService*>();
-    auto characteristics = cookedService->characteristics();
+    auto characteristics = service->characteristics();
     if ((mCharacteristicIndex >= 0)
         && (mCharacteristicIndex < characteristics.length())) {
         auto c = characteristics.at(mCharacteristicIndex);
-        cookedService->readCharacteristic(c);
+        service->readCharacteristic(c);
     }
 }
 
@@ -149,8 +148,7 @@ void SAKBleCentralTool::changeNotify()
     }
 
     auto service = mServices.at(mServiceIndex);
-    auto cookedService = service.value<QLowEnergyService*>();
-    auto characteristics = cookedService->characteristics();
+    auto characteristics = service->characteristics();
     if (!((mCharacteristicIndex >= 0)
           && (mCharacteristicIndex < characteristics.length()))) {
         return;
@@ -168,10 +166,10 @@ void SAKBleCentralTool::changeNotify()
 
         if (value == QByteArray::fromHex("0100")) {
             QByteArray value = QByteArray::fromHex("0000");
-            cookedService->writeDescriptor(descriptor, value);
+            service->writeDescriptor(descriptor, value);
         } else {
             QByteArray value = QByteArray::fromHex("0100");
-            cookedService->writeDescriptor(descriptor, value);
+            service->writeDescriptor(descriptor, value);
         }
     }
 }
@@ -211,6 +209,7 @@ bool SAKBleCentralTool::initialize(QString &errStr)
             mBleCentral, [=](){onBleCentralDisconnected();});
 
     mBleCentral->connectToDevice();
+    emit serviceDiscoveryStarted();
     return true;
 #else
     return false;
@@ -232,15 +231,13 @@ void SAKBleCentralTool::writeBytes(const QByteArray &bytes,
     }
 
     auto service = mServices.at(mServiceIndex);
-    auto cookedService = service.value<QLowEnergyService*>();
-
-    auto characteristics = cookedService->characteristics();
+    auto characteristics = service->characteristics();
     auto characteristic = characteristics.at(mCharacteristicIndex);
     if (mWriteModel == 0) {
-        cookedService->writeCharacteristic(characteristic, bytes);
+        service->writeCharacteristic(characteristic, bytes);
     } else {
         auto opt = QLowEnergyService::WriteWithoutResponse;
-        cookedService->writeCharacteristic(characteristic, bytes, opt);
+        service->writeCharacteristic(characteristic, bytes, opt);
     }
 }
 
@@ -295,9 +292,11 @@ void SAKBleCentralTool::onServiceDiscoveryFinished()
         connect(service, &QLowEnergyService::descriptorWritten,
                 this, &SAKBleCentralTool::descriptorWritten);
 
-        mServices.append(QVariant::fromValue(service));
+        mServices.append(service);
         service->discoverDetails();
     }
+
+    emit serviceDiscoveryFinished();
 }
 
 void SAKBleCentralTool::onBleCentralErrorOccuured(

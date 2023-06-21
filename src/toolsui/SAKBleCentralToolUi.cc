@@ -33,6 +33,12 @@ SAKBleCentralToolUi::SAKBleCentralToolUi(QWidget *parent)
             static_cast<void(QComboBox::*)(int)>(SAK_CB_I_C),
             this,
             &SAKBleCentralToolUi::onComboBoxDevicesActived);
+    connect(ui->comboBoxServices,
+            static_cast<void(QComboBox::*)(int)>(SAK_CB_I_C),
+            this, &SAKBleCentralToolUi::onComboBoxServicesCurrentIndexChanged);
+    connect(ui->comboBoxServices,
+            static_cast<void(QComboBox::*)(int)>(SAK_CB_I_C),
+            this, &SAKBleCentralToolUi::onComboBoxCharacteristicsActived);
 }
 
 SAKBleCentralToolUi::~SAKBleCentralToolUi()
@@ -50,6 +56,7 @@ void SAKBleCentralToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
 void SAKBleCentralToolUi::onIsWorkingChanged(bool isWorking)
 {
     Q_UNUSED(isWorking)
+    // Nothing to do yet...
 }
 
 void SAKBleCentralToolUi::initSettingsMenu(const QString &settingsGroup)
@@ -95,6 +102,10 @@ void SAKBleCentralToolUi::initSettingsMenu(const QString &settingsGroup)
         qCWarning((*mLoggingCategory)) << "invalid SAKBleCentralTool tool";
         return;
     }
+    connect(mBleTool, &SAKBleCentralTool::serviceDiscoveryStarted,
+            this, &SAKBleCentralToolUi::onServiceDiscoveryStarted);
+    connect(mBleTool, &SAKBleCentralTool::serviceDiscoveryFinished,
+            this, &SAKBleCentralToolUi::onServiceDiscoveryFinished);
 
     int timeoutInterval = sp->value();
     QString nameFiltter = le->text().trimmed();
@@ -102,6 +113,29 @@ void SAKBleCentralToolUi::initSettingsMenu(const QString &settingsGroup)
     ui->comboBoxDevices->setNameFiltter(nameFiltter);
 
     onComboBoxDevicesActived();
+}
+
+void SAKBleCentralToolUi::onServiceDiscoveryStarted()
+{
+    ui->progressBar->show();
+}
+
+void SAKBleCentralToolUi::onServiceDiscoveryFinished()
+{
+    ui->comboBoxServices->clear();
+    auto services = mBleTool->services();
+    for (auto &service : services) {
+        auto cookedSerivce = service.value<QLowEnergyService*>();
+        ui->comboBoxServices->addItem(cookedSerivce->serviceName(), service);
+        connect(cookedSerivce, &QLowEnergyService::stateChanged,
+                this, [=](QLowEnergyService::ServiceState state){
+            qDebug() << state;
+            if (state == QLowEnergyService::RemoteServiceDiscovered) {
+                onComboBoxServicesCurrentIndexChanged();
+            }
+        });
+    }
+    ui->progressBar->hide();
 }
 
 void SAKBleCentralToolUi::onPushButtonScanClicked()
@@ -119,4 +153,25 @@ void SAKBleCentralToolUi::onComboBoxDevicesActived()
 {
     QVariant data = ui->comboBoxDevices->currentData();
     mBleTool->setInfo(data);
+}
+
+void SAKBleCentralToolUi::onComboBoxServicesCurrentIndexChanged()
+{
+    mBleTool->setServiceIndex(ui->comboBoxServices->currentIndex());
+    auto service = ui->comboBoxServices->currentData();
+    auto cookedSerivce = service.value<QLowEnergyService*>();
+    auto chs = cookedSerivce->characteristics();
+    ui->comboBoxCharacteristics->clear();
+    for (auto &ch : chs) {
+        QVariant var = QVariant::fromValue<QLowEnergyCharacteristic>(ch);
+        QString name = ch.name();
+        name = name.isEmpty() ? "(null)" : name;
+        ui->comboBoxCharacteristics->addItem(name, var);
+    }
+}
+
+void SAKBleCentralToolUi::onComboBoxCharacteristicsActived()
+{
+    int index = ui->comboBoxCharacteristics->currentIndex();
+    mBleTool->setCharacteristicIndex(index);
 }

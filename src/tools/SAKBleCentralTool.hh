@@ -57,7 +57,7 @@ signals:
 
 private:
     QBluetoothDeviceInfo mBluetoothDeviceInfo;
-    QVector<QLowEnergyService*> mBleServiceObjects;
+    QVector<QLowEnergyService*> mServices;
     int mServiceIndex{-1};
     int mCharacteristicIndex{-1};
     int mWriteModel;
@@ -73,6 +73,8 @@ public:
 signals:
     void descriptorWritten(const QLowEnergyDescriptor &descriptor,
                            const QByteArray &newValue);
+    void serviceDiscoveryStarted();
+    void serviceDiscoveryFinished();
 
 protected:
     virtual bool initialize(QString &errStr) final;
@@ -82,7 +84,6 @@ protected:
     virtual void uninitialize() final;
 
 private:
-    QVariantList mServices;
     QLowEnergyController *mBleCentral{nullptr};
 
 private:
