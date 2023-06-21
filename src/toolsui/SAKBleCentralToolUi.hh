@@ -37,8 +37,13 @@ private:
     void initSettingsMenu(const QString &settingsGroup);
 
 private slots:
+    void onServiceDiscoveryStarted();
+    void onServiceDiscoveryFinished();
+
     void onPushButtonScanClicked();
     void onComboBoxDevicesActived();
+    void onComboBoxServicesCurrentIndexChanged();
+    void onComboBoxCharacteristicsActived();
 };
 
 #endif // SAKBLECENTRALTOOLUI_HH

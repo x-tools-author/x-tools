@@ -44,6 +44,8 @@ public:
 signals:
     void descriptorWritten(const QLowEnergyDescriptor &descriptor,
                            const QByteArray &newValue);
+    void serviceDiscoveryStarted();
+    void serviceDiscoveryFinished();
 
 protected:
     virtual bool initialize(QString &errStr) final;
@@ -53,7 +55,6 @@ protected:
     virtual void uninitialize() final;
 
 private:
-    QVariantList mServices;
     QLowEnergyController *mBleCentral{nullptr};
 
 private:
