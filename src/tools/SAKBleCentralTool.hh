@@ -40,6 +40,7 @@ public:
     Q_INVOKABLE QString characteristicName(QVariant characteristic);
     Q_INVOKABLE void readCharacteristic();
     Q_INVOKABLE void changeNotify();
+    Q_INVOKABLE bool hasFlag(QVariant characteristic, int flag);
 
 signals:
     void descriptorWritten(const QLowEnergyDescriptor &descriptor,

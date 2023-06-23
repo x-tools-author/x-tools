@@ -46,6 +46,13 @@ SAKBleCentralToolUi::SAKBleCentralToolUi(QWidget *parent)
             this, &SAKBleCentralToolUi::onPushButtonNotifyClicked);
     connect(ui->pushButtonRead, &QPushButton::clicked,
             this, &SAKBleCentralToolUi::onPushButtonReadClicked);
+
+    ui->labelWriteWay->setVisible(false);
+    ui->comboBoxWriteWay->setVisible(false);
+    ui->pushButtonNotify->setVisible(false);
+    ui->pushButtonRead->setVisible(false);
+    ui->labelUnsupported->setVisible(false);
+    ui->labelUnsupported->setStyleSheet("QLabel{color:red}");
 }
 
 SAKBleCentralToolUi::~SAKBleCentralToolUi()
@@ -182,6 +189,24 @@ void SAKBleCentralToolUi::onComboBoxCharacteristicsActived()
 {
     int index = ui->comboBoxCharacteristics->currentIndex();
     mBleTool->setCharacteristicIndex(index);
+
+    QVariant ch = ui->comboBoxCharacteristics->currentData();
+    bool writeFlag = mBleTool->hasFlag(ch, QLowEnergyCharacteristic::Write);
+    writeFlag |= mBleTool->hasFlag(ch,
+                                   QLowEnergyCharacteristic::WriteNoResponse);
+    ui->labelWriteWay->setVisible(writeFlag);
+    ui->comboBoxWriteWay->setVisible(writeFlag);
+
+    bool readFlag = mBleTool->hasFlag(ch, QLowEnergyCharacteristic::Read);
+    readFlag |= mBleTool->hasFlag(ch, QLowEnergyCharacteristic::Notify);
+    ui->pushButtonNotify->setVisible(readFlag);
+    ui->pushButtonRead->setVisible(readFlag);
+
+    if (writeFlag | readFlag) {
+        ui->labelUnsupported->hide();
+    } else {
+        ui->labelUnsupported->show();
+    }
 }
 
 void SAKBleCentralToolUi::onComboBoxWriteWayCurrentIndexChanged()

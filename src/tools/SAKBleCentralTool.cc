@@ -122,6 +122,17 @@ void SAKBleCentralTool::changeNotify()
     }
 }
 
+bool SAKBleCentralTool::hasFlag(QVariant characteristic, int flag)
+{
+    auto ch = characteristic.value<QLowEnergyCharacteristic>();
+    auto properties = ch.properties();
+    if (properties & flag) {
+        return true;
+    }
+
+    return false;
+}
+
 bool SAKBleCentralTool::initialize(QString &errStr)
 {
     if (!mBluetoothDeviceInfo.isValid()) {
@@ -275,7 +286,9 @@ void SAKBleCentralTool::onBleCentralConnected()
 
 void SAKBleCentralTool::onBleCentralDisconnected()
 {
-    outputMessage(QtWarningMsg, "disconnect from device.");
+    QString msg = "disconnect from device";
+    outputMessage(QtWarningMsg, msg);
+    emit errorOccured(msg);
 }
 
 void SAKBleCentralTool::onServiceObjectStateChanged(
