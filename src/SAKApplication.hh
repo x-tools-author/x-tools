@@ -26,7 +26,6 @@ public:
     explicit SAKApplication(int argc, char **argv);
     ~SAKApplication();
 
-    void installLanguage();
     const QDate *buildDate();
     const QTime *buildTime();
     QString dataPath();

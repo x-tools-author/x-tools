@@ -144,42 +144,6 @@ SAKApplication::~SAKApplication()
 
 }
 
-void SAKApplication::installLanguage()
-{
-    QString key = SAKSettings::instance()->language();
-    Q_UNUSED(key)
-//    QString language = mSettings->value(key).toString();
-//    QString qmName;
-//    if (language.isEmpty()) {
-//        if (QLocale().country() == QLocale::China){
-//            qmName = QString("zh_CN");
-//            mSettings->setValue(mSettingsKeyContext.language,
-//                                QString("zh_CN-简体中文"));
-//        } else {
-//            qmName = QString("en");
-//            mSettings->setValue(mSettingsKeyContext.language,
-//                                QString("en-English"));
-//        }
-//    } else {
-//        qmName = language.split('-').first();
-//    }
-
-//    QString qm = QString(":/translations/qt/qtbase_%1.qm").arg(qmName);
-//    auto ret = mQtBaseTranslator.load(qm);
-//    Q_UNUSED(ret);
-//    qApp->installTranslator(&mQtBaseTranslator);
-
-//    qm = QString(":/translations/qt/qt_%1.qm").arg(qmName);
-//    ret = mQtTranslator.load(qm);
-//    Q_UNUSED(ret);
-//    qApp->installTranslator(&mQtTranslator);
-
-//    qm = QString(":/translations/sak/SAK_%1.qm").arg(qmName);
-//    ret = mSakTranslator.load(qm);
-//    Q_UNUSED(ret);
-//    qApp->installTranslator(&mSakTranslator);
-}
-
 const QDate *SAKApplication::buildDate()
 {
     return &::buildDate;
