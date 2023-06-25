@@ -12,7 +12,7 @@ SAKPane {
     property var portNames: []
     property var baudRates: []
 
-    property EDSerialportTool comTool: null
+    property SAKSerialportTool comTool: null
     property bool devIsWorking: comTool ? comTool.isWorking : false
     property bool ignoredUpdate: comTool ? comTool.isWorking : false
 
@@ -34,7 +34,7 @@ SAKPane {
         readonly property string autoUpdatePortNames: groupName + "/autoUpdatePortNames"
     }
 
-    EDSerialPort {
+    SAKSerialPortScanner {
         id: spController
     }
 

@@ -11,7 +11,7 @@ ToolBox {
     controllerComponent: comComtrollerComponent
     groupName: "TCPClient"
 
-    property EDTcpClientTool tcpClientTool: null
+    property SAKTcpClientTool tcpClientTool: null
 
     Component {
         id: comComtrollerComponent
@@ -21,7 +21,7 @@ ToolBox {
     }
 
     Component.onCompleted: {
-        edDevice.initialize(EDToolsFactory.TcpClientTool)
+        edDevice.initialize(SAKToolsFactory.TcpClientTool)
         tcpClientTool = edDevice.communicaton
         if (tcpClientTool) {
             var controller = deviceControllerLoader.item

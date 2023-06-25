@@ -15,12 +15,12 @@ Item {
     property alias deviceControllerLoader: devicePageController.deviceControllerLoader
     property var controllerComponent: null
     property string groupName: "EasyDebug"
-    property EDBaseTool communicationTool: edDevice.communicaton
+    property SAKBaseTool communicationTool: edDevice.communicaton
 
     signal invokeOpenDevice()
     signal invokeCloseDevice()
 
-    EDDevice {
+    SAKDevice {
         id: edDevice
     }
 

@@ -9,7 +9,7 @@ import "../common"
 Item {
     id: root
 
-    property EDEmitterTool emitterTool: null
+    property SAKEmitterTool emitterTool: null
 
     QtObject {
         id: settingKeys

@@ -8,7 +8,7 @@ import "../common"
 Item {
     id: root
 
-    property EDResponserTool responserTool: null
+    property SAKResponserTool responserTool: null
 
     QtObject {
         id: settingKeys

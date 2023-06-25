@@ -21,7 +21,7 @@ ToolBox {
     }
 
     Component.onCompleted: {
-        edDevice.initialize(EDToolsFactory.WebSocketServerTool)
+        edDevice.initialize(SAKToolsFactory.WebSocketServerTool)
         if (webSocketServer) {
             var controller = deviceControllerLoader.item
             webSocketServer.serverIp = Qt.binding(function (){return controller.deviceController.serverIp})

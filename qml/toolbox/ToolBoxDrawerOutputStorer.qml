@@ -10,7 +10,7 @@ SAKGroupBox {
     id: storerGroupBox
     title: qsTr("Storer")
 
-    property EDStorerTool storer: null
+    property SAKStorerTool storer: null
 
     QtObject {
         id: settingKeys

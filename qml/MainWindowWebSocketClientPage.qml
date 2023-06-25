@@ -11,7 +11,7 @@ ToolBox {
     controllerComponent: comComtrollerComponent
     groupName: "WebSocketClient"
 
-    property EDWebSocketClientTool webSocketClient: edDevice.communication ? edDevice.communication : null
+    property SAKWebSocketClientTool webSocketClient: edDevice.communication ? edDevice.communication : null
 
     Component {
         id: comComtrollerComponent
@@ -21,7 +21,7 @@ ToolBox {
     }
 
     Component.onCompleted: {
-        edDevice.initialize(EDToolsFactory.WebSocketClientTool)
+        edDevice.initialize(SAKToolsFactory.WebSocketClientTool)
         if (webSocketClient) {
             var controller = deviceControllerLoader.item
             webSocketClient.clientIp = Qt.binding(function (){return controller.deviceController.clientIp})

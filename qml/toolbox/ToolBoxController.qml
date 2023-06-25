@@ -12,7 +12,7 @@ Item {
     Layout.fillHeight: true
     Layout.rowSpan: 2
 
-    property EDBaseTool communicationTool: null
+    property SAKBaseTool communicationTool: null
     property var controllerComponent: null
     property alias deviceControllerLoader: controllerLoader
     property int outputFormat: outputFormatComboBox.currentValue
@@ -56,9 +56,9 @@ Item {
 
     ListModel {
         id: inputTextFormatListModel
-        ListElement { text: "Hex"; value: EDDataStructure.TextFormatHex }
-        ListElement { text: "Ascii"; value: EDDataStructure.TextFormatAscii }
-        ListElement { text: "Utf8"; value: EDDataStructure.TextFormatUtf8 }
+        ListElement { text: "Hex"; value: SAKDataStructure.TextFormatHex }
+        ListElement { text: "Ascii"; value: SAKDataStructure.TextFormatAscii }
+        ListElement { text: "Utf8"; value: SAKDataStructure.TextFormatUtf8 }
     }
 
     GridLayout {

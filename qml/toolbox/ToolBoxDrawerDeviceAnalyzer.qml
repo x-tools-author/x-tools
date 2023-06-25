@@ -9,7 +9,7 @@ SAKGroupBox {
     id: analyzerGroupBox
     title: qsTr("Analyzer")
 
-    property EDAnalyzerTool analyzer: null
+    property SAKAnalyzerTool analyzer: null
 
     QtObject {
         id: settingKeys
@@ -88,7 +88,7 @@ SAKGroupBox {
                 if (analyzer) {
                     var cookedMark = sakInterface.string2array(
                                 separationMarkTextField.text,
-                                EDDataStructure.TextFormatHex)
+                                SAKDataStructure.TextFormatHex)
                     analyzer.setSeparationMark(cookedMark)
                 }
             }

@@ -11,7 +11,7 @@ ToolBox {
     controllerComponent: comComtrollerComponent
     groupName: "SerialportToolBox"
 
-    property EDSerialportTool comTool: null
+    property SAKSerialportTool comTool: null
 
     Component {
         id: comComtrollerComponent
@@ -21,7 +21,7 @@ ToolBox {
     }
 
     Component.onCompleted: {
-        edDevice.initialize(EDToolsFactory.SerialportTool)
+        edDevice.initialize(SAKToolsFactory.SerialportTool)
         comTool = edDevice.communicaton
     }
 

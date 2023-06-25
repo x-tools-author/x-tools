@@ -8,8 +8,8 @@ import "../common"
 Item {
     id: root
 
-    property EDBaseTool communicationTool: null
-    property EDAnalyzerTool analyzer: null
+    property SAKBaseTool communicationTool: null
+    property SAKAnalyzerTool analyzer: null
 
     property int outputFormat: outputTextFormatComboBox.currentValue
     property int inputFormat: inputTextFormatComboBox.currentValue

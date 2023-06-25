@@ -8,11 +8,11 @@ SAKComboBox {
     textRole: "text"
     valueRole: "value"
     model: ListModel {
-        ListElement{text: qsTr("None"); value: EDDataStructure.EscapeCharacterOptionNone}
-        ListElement{text: "\\r"; value: EDDataStructure.EscapeCharacterOptionR}
-        ListElement{text: "\\n"; value: EDDataStructure.EscapeCharacterOptionN}
-        ListElement{text: "\\r\\n"; value: EDDataStructure.EscapeCharacterOptionRN}
-        ListElement{text: "\\n\\r"; value: EDDataStructure.EscapeCharacterOptionNR}
-        ListElement{text: "\\rAnd\\n"; value: EDDataStructure.EscapeCharacterOptionRAndN}
+        ListElement{text: qsTr("None"); value: SAKDataStructure.EscapeCharacterOptionNone}
+        ListElement{text: "\\r"; value: SAKDataStructure.EscapeCharacterOptionR}
+        ListElement{text: "\\n"; value: SAKDataStructure.EscapeCharacterOptionN}
+        ListElement{text: "\\r\\n"; value: SAKDataStructure.EscapeCharacterOptionRN}
+        ListElement{text: "\\n\\r"; value: SAKDataStructure.EscapeCharacterOptionNR}
+        ListElement{text: "\\rAnd\\n"; value: SAKDataStructure.EscapeCharacterOptionRAndN}
     }
 }

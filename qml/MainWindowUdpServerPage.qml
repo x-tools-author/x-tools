@@ -11,7 +11,7 @@ ToolBox {
     controllerComponent: comComtrollerComponent
     groupName: "UDPServer"
 
-    property EDUdpServerTool udpServerTool: edDevice.communication ? edDevice.communication : null
+    property SAKUdpServerTool udpServerTool: edDevice.communication ? edDevice.communication : null
 
     Component {
         id: comComtrollerComponent
@@ -21,7 +21,7 @@ ToolBox {
     }
 
     Component.onCompleted: {
-        edDevice.initialize(EDToolsFactory.UdpServerTool)
+        edDevice.initialize(SAKToolsFactory.UdpServerTool)
         if (udpServerTool) {
             var controller = deviceControllerLoader.item
             udpServerTool.serverIp = Qt.binding(function (){return controller.deviceController.serverIp})

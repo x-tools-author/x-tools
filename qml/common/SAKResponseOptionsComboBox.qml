@@ -1,4 +1,4 @@
-import QtQuick
+﻿import QtQuick
 import QtQuick.Controls
 
 import SAK.Custom
@@ -8,11 +8,11 @@ SAKComboBox {
     valueRole: "value"
     textRole: "text"
     model: ListModel {
-        //ListElement { text: qsTr("Disable"); value: EDDataStructure.ResponseOptionDisable }
-        ListElement { text: qsTr("Echo"); value: EDDataStructure.ResponseOptionEcho }
-        ListElement { text: qsTr("Aways"); value: EDDataStructure.ResponseOptionAways }
-        ListElement { text: qsTr("InputEqualReference"); value: EDDataStructure.ResponseOptionInputEqualReference }
-        ListElement { text: qsTr("InputContainReference"); value: EDDataStructure.ResponseOptionInputContainReference }
-        ListElement { text: qsTr("InputDiscontainReference"); value: EDDataStructure.ResponseOptionInputDiscontainReference }
+        //ListElement { text: qsTr("Disable"); value: SAKDataStructure.ResponseOptionDisable }
+        ListElement { text: qsTr("Echo"); value: SAKDataStructure.ResponseOptionEcho }
+        ListElement { text: qsTr("Aways"); value: SAKDataStructure.ResponseOptionAlways }
+        ListElement { text: qsTr("InputEqualReference"); value: SAKDataStructure.ResponseOptionInputEqualReference }
+        ListElement { text: qsTr("InputContainReference"); value: SAKDataStructure.ResponseOptionInputContainReference }
+        ListElement { text: qsTr("InputDiscontainReference"); value: SAKDataStructure.ResponseOptionInputDiscontainReference }
     }
 }

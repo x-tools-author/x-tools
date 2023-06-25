@@ -1,4 +1,4 @@
-import QtQuick
+﻿import QtQuick
 import QtQuick.Controls
 
 import SAK.Custom
@@ -9,12 +9,11 @@ SAKComboBox {
 
     property var bleController: ble
 
-    EDBle {
+    SAKBleScanner {
         id: ble
     }
     BusyIndicator {
         anchors.centerIn: parent
-        running: ble.isDiscovering
         visible: running
     }
 }

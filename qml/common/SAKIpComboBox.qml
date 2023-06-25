@@ -11,7 +11,7 @@ SAKComboBox {
     property alias enableIpV6: networkInterface.enableIpV6
     property alias enableAutoRefresh: networkInterface.enableAutoRefresh
 
-    EDNetworkInterface {
+    SAKNetworkInterfaceScanner {
         id: networkInterface
         enableAutoRefresh: root.enabled
     }

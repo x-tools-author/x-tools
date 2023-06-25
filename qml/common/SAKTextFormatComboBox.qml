@@ -8,12 +8,12 @@ SAKComboBox {
     valueRole: "value"
     model: ListModel {
         id: listModel
-        ListElement { text: "Bin"; value: EDDataStructure.TextFormatBin }
-        ListElement { text: "Otc"; value: EDDataStructure.TextFormatOct }
-        ListElement { text: "Dec"; value: EDDataStructure.TextFormatDec }
-        ListElement { text: "Hex"; value: EDDataStructure.TextFormatHex }
-        ListElement { text: "Ascii"; value: EDDataStructure.TextFormatAscii }
-        ListElement { text: "Utf8"; value: EDDataStructure.TextFormatUtf8 }
+        ListElement { text: "Bin"; value: SAKDataStructure.TextFormatBin }
+        ListElement { text: "Otc"; value: SAKDataStructure.TextFormatOct }
+        ListElement { text: "Dec"; value: SAKDataStructure.TextFormatDec }
+        ListElement { text: "Hex"; value: SAKDataStructure.TextFormatHex }
+        ListElement { text: "Ascii"; value: SAKDataStructure.TextFormatAscii }
+        ListElement { text: "Utf8"; value: SAKDataStructure.TextFormatUtf8 }
     }
 
     property bool enableBin: true
@@ -30,15 +30,15 @@ SAKComboBox {
     SAKAsciiRegularExpressionValidator{ id: asciiREV }
 
     property var currentValidator:  {
-        if (currentValue === EDDataStructure.TextFormatBin) {
+        if (currentValue === SAKDataStructure.TextFormatBin) {
             return binREV
-        } else if (currentValue === EDDataStructure.TextFormatOct) {
+        } else if (currentValue === SAKDataStructure.TextFormatOct) {
             return octREV
-        } else if (currentValue === EDDataStructure.TextFormatDec) {
+        } else if (currentValue === SAKDataStructure.TextFormatDec) {
             return decREV
-        } else if (currentValue === EDDataStructure.TextFormatHex) {
+        } else if (currentValue === SAKDataStructure.TextFormatHex) {
             return hexREV
-        } else if (currentValue === EDDataStructure.TextFormatAscii) {
+        } else if (currentValue === SAKDataStructure.TextFormatAscii) {
             return asciiREV
         } else {
             return null
@@ -47,42 +47,42 @@ SAKComboBox {
 
     Component.onCompleted: {
         if (!enableBin) {
-            var ret = root.indexOfValue(EDDataStructure.TextFormatBin)
+            var ret = root.indexOfValue(SAKDataStructure.TextFormatBin)
             if (ret !== -1) {
                 listModel.remove(ret)
             }
         }
 
         if (!enableOtc) {
-            ret = root.indexOfValue(EDDataStructure.TextFormatOct)
+            ret = root.indexOfValue(SAKDataStructure.TextFormatOct)
             if (ret !== -1) {
                 listModel.remove(ret)
             }
         }
 
         if (!enableDec) {
-            ret = root.indexOfValue(EDDataStructure.TextFormatDec)
+            ret = root.indexOfValue(SAKDataStructure.TextFormatDec)
             if (ret !== -1) {
                 listModel.remove(ret)
             }
         }
 
         if (!enableHex) {
-            ret = root.indexOfValue(EDDataStructure.TextFormatHex)
+            ret = root.indexOfValue(SAKDataStructure.TextFormatHex)
             if (ret !== -1) {
                 listModel.remove(ret)
             }
         }
 
         if (!enableAscii) {
-            ret = root.indexOfValue(EDDataStructure.TextFormatAscii)
+            ret = root.indexOfValue(SAKDataStructure.TextFormatAscii)
             if (ret !== -1) {
                 listModel.remove(ret)
             }
         }
 
         if (!enableUtf8) {
-            ret = root.indexOfValue(EDDataStructure.TextFormatUtf8)
+            ret = root.indexOfValue(SAKDataStructure.TextFormatUtf8)
             if (ret !== -1) {
                 listModel.remove(ret)
             }

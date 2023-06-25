@@ -11,7 +11,7 @@ ToolBox {
     controllerComponent: comComtrollerComponent
     groupName: "BleCentral"
 
-    property EDBleCentralTool bleCentral: edDevice.communication ? edDevice.communication : null
+    property SAKBleCentralTool bleCentral: edDevice.communication ? edDevice.communication : null
 
     Component {
         id: comComtrollerComponent
@@ -30,7 +30,7 @@ ToolBox {
     }
 
     Component.onCompleted: {
-        edDevice.initialize(EDToolsFactory.BleCentral)
+        edDevice.initialize(SAKToolsFactory.BleCentral)
         if (bleCentral) {
             var controller = deviceControllerLoader.item
             bleCentral.currentCharacteristicIndex = Qt.binding(function (){return controller.currentCharacteristicIndex})

@@ -10,8 +10,8 @@ SAKGroupBox {
     title: qsTr("Masker")
     padding: 8
 
-    property EDMaskerTool rxMasker: null
-    property EDMaskerTool txMasker: null
+    property SAKMaskerTool rxMasker: null
+    property SAKMaskerTool txMasker: null
 
     QtObject {
         id: settingKeys

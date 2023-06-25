@@ -11,7 +11,7 @@ ToolBox {
     controllerComponent: controllerComponent
     groupName: "UDPClient"
 
-    property EDUdpClientTool udpClientTool: null
+    property SAKUdpClientTool udpClientTool: null
 
     Component {
         id: controllerComponent
@@ -21,7 +21,7 @@ ToolBox {
     }
 
     Component.onCompleted: {
-        edDevice.initialize(EDToolsFactory.UdpClientTool)
+        edDevice.initialize(SAKToolsFactory.UdpClientTool)
         udpClientTool = edDevice.communicaton
         if (udpClientTool) {
             var controller = deviceControllerLoader.item

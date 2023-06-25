@@ -9,7 +9,7 @@ import "../common"
 Item {
     id: root
 
-    property EDPrestorerTool presotrerTool: null
+    property SAKPrestorerTool presotrerTool: null
 
     QtObject {
         id: settingKeys

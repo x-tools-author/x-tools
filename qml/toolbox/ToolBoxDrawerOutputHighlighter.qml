@@ -16,7 +16,7 @@ SAKGroupBox {
         readonly property string highlighterKeyWord: "highlighterKeyWord"
     }
 
-    EDHighlighter { id: highlighter }
+    SAKHighlighter { id: highlighter }
 
     GridLayout {
         anchors.fill: parent
