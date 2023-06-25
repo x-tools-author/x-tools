@@ -1,4 +1,4 @@
-import QtQuick
+﻿import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
 
@@ -38,14 +38,14 @@ ToolBar {
         Repeater {
             id: btRepeater
             model: [
-                ["qrc:/res/icon/IconSerialPort.svg",      SAKToolsFactory.SerialportTool,      qsTr("SerialPort"),       "MainWindowSerialPortPage.qml"],
-                ["qrc:/res/icon/IconBlueTooth.svg",       SAKToolsFactory.SerialportTool,      qsTr("SerialPort"),       "MainWindowBlePage.qml"],
-                ["qrc:/res/icon/IconUdpClient.svg",       SAKToolsFactory.UdpClientTool,       qsTr("UDP Client"),       "MainWindowUdpClientPage.qml"],
-                ["qrc:/res/icon/IconUdpServer.svg",       SAKToolsFactory.UdpServerTool,       qsTr("UDP Server"),       "MainWindowUdpServerPage.qml"],
-                ["qrc:/res/icon/IconTcpClient.svg",       SAKToolsFactory.TcpClientTool,       qsTr("TCP Client"),       "MainWindowTcpClientPage.qml"],
-                ["qrc:/res/icon/IconTcpServer.svg",       SAKToolsFactory.TcpServerTool,       qsTr("TCP Server"),       "MainWindowTcpServerPage.qml"],
-                ["qrc:/res/icon/IconWebScoketClient.svg", SAKToolsFactory.WebSocketClientTool, qsTr("WebSocket Client"), "MainWindowWebSocketClientPage.qml"],
-                ["qrc:/res/icon/IconWebSocketServer.svg", SAKToolsFactory.WebSocketServerTool, qsTr("WebSocket Server"), "MainWindowWebSocketServerPage.qml"]
+                ["qrc:/resources/icon/IconSerialPort.svg",      SAKToolsFactory.SerialportTool,      qsTr("SerialPort"),       "MainWindowSerialPortPage.qml"],
+                ["qrc:/resources/icon/IconBlueTooth.svg",       SAKToolsFactory.SerialportTool,      qsTr("SerialPort"),       "MainWindowBlePage.qml"],
+                ["qrc:/resources/icon/IconUdpClient.svg",       SAKToolsFactory.UdpClientTool,       qsTr("UDP Client"),       "MainWindowUdpClientPage.qml"],
+                ["qrc:/resources/icon/IconUdpServer.svg",       SAKToolsFactory.UdpServerTool,       qsTr("UDP Server"),       "MainWindowUdpServerPage.qml"],
+                ["qrc:/resources/icon/IconTcpClient.svg",       SAKToolsFactory.TcpClientTool,       qsTr("TCP Client"),       "MainWindowTcpClientPage.qml"],
+                ["qrc:/resources/icon/IconTcpServer.svg",       SAKToolsFactory.TcpServerTool,       qsTr("TCP Server"),       "MainWindowTcpServerPage.qml"],
+                ["qrc:/resources/icon/IconWebScoketClient.svg", SAKToolsFactory.WebSocketClientTool, qsTr("WebSocket Client"), "MainWindowWebSocketClientPage.qml"],
+                ["qrc:/resources/icon/IconWebSocketServer.svg", SAKToolsFactory.WebSocketServerTool, qsTr("WebSocket Server"), "MainWindowWebSocketServerPage.qml"]
             ]
             SAKToolButton {
                 id: bt

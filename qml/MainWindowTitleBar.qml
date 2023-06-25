@@ -1,4 +1,4 @@
-import QtQuick
+﻿import QtQuick
 import QtQuick.Controls
 
 import "common"
@@ -35,10 +35,10 @@ SAKPane {
         anchors.verticalCenter: parent.verticalCenter
         Repeater {
             model: [
-                "qrc:/res/icon/IconMinimized.svg",
-                "qrc:/res/icon/IconWindowed.svg",
-                "qrc:/res/icon/IconMaximized.svg",
-                "qrc:/res/icon/IconClose.svg"
+                "qrc:/resources/icon/IconMinimized.svg",
+                "qrc:/resources/icon/IconWindowed.svg",
+                "qrc:/resources/icon/IconMaximized.svg",
+                "qrc:/resources/icon/IconClose.svg"
             ]
             Rectangle {
                 id: bt
