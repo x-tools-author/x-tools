@@ -71,13 +71,13 @@ ToolBar {
                 id: optionMenu
                 Repeater {
                     model:  [
-                        ["qrc:/res/icon/IconSerialPort.svg",      SAKToolsFactory.SerialportTool,      qsTr("SerialPort"),       "MainWindowSerialPortPage.qml"],
-                        ["qrc:/res/icon/IconUdpClient.svg",       SAKToolsFactory.UdpClientTool,       qsTr("UDP Client"),       "MainWindowUdpClientPage.qml"],
-                        ["qrc:/res/icon/IconUdpServer.svg",       SAKToolsFactory.UdpServerTool,       qsTr("UDP Server"),       "MainWindowUdpServerPage.qml"],
-                        ["qrc:/res/icon/IconTcpClient.svg",       SAKToolsFactory.TcpClientTool,       qsTr("TCP Client"),       "MainWindowTcpClientPage.qml"],
-                        ["qrc:/res/icon/IconTcpServer.svg",       SAKToolsFactory.TcpServerTool,       qsTr("TCP Server"),       "MainWindowTcpServerPage.qml"],
-                        ["qrc:/res/icon/IconWebScoketClient.svg", SAKToolsFactory.WebSocketClientTool, qsTr("WebSocket Client"), "MainWindowWebSocketClientPage.qml"],
-                        ["qrc:/res/icon/IconWebSocketServer.svg", SAKToolsFactory.WebSocketServerTool, qsTr("WebSocket Server"), "MainWindowWebSocketServerPage.qml"]
+                        ["qrc:/resources/icon/IconSerialPort.svg",      SAKToolsFactory.SerialportTool,      qsTr("SerialPort"),       "MainWindowSerialPortPage.qml"],
+                        ["qrc:/resources/icon/IconUdpClient.svg",       SAKToolsFactory.UdpClientTool,       qsTr("UDP Client"),       "MainWindowUdpClientPage.qml"],
+                        ["qrc:/resources/icon/IconUdpServer.svg",       SAKToolsFactory.UdpServerTool,       qsTr("UDP Server"),       "MainWindowUdpServerPage.qml"],
+                        ["qrc:/resources/icon/IconTcpClient.svg",       SAKToolsFactory.TcpClientTool,       qsTr("TCP Client"),       "MainWindowTcpClientPage.qml"],
+                        ["qrc:/resources/icon/IconTcpServer.svg",       SAKToolsFactory.TcpServerTool,       qsTr("TCP Server"),       "MainWindowTcpServerPage.qml"],
+                        ["qrc:/resources/icon/IconWebScoketClient.svg", SAKToolsFactory.WebSocketClientTool, qsTr("WebSocket Client"), "MainWindowWebSocketClientPage.qml"],
+                        ["qrc:/resources/icon/IconWebSocketServer.svg", SAKToolsFactory.WebSocketServerTool, qsTr("WebSocket Server"), "MainWindowWebSocketServerPage.qml"]
                     ]
                     MenuItem {
                         text: modelData[2]
@@ -97,14 +97,14 @@ ToolBar {
         ToolButton {
             id: infoToolButton
             checkable: true
-            icon.source: "qrc:/res/icon/IconInfo.svg"
+            icon.source: "qrc:/resources/icon/IconInfo.svg"
             onClicked: pageIndex = btRepeater.model.length
             Component.onCompleted:  bg.addButton(infoToolButton)
         }
         ToolButton {
             id: settingsToolButton
             checkable: true
-            icon.source: "qrc:/res/icon/IconSettings.svg"
+            icon.source: "qrc:/resources/icon/IconSettings.svg"
             onClicked: pageIndex = btRepeater.model.length + 1
             Component.onCompleted: bg.addButton(settingsToolButton)
         }
