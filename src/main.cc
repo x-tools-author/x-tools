@@ -46,6 +46,8 @@ int main(int argc, char *argv[])
         }
     }
 
+    qCInfo(lc) << "supported style:" << QStyleFactory::keys();
+
     // High dpi settings.
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     auto policy = SAKSettings::instance()->hdpiPolicy();
