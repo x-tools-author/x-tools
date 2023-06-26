@@ -27,6 +27,10 @@ int SAKTransmitterTool::rowCount(const QModelIndex &parent) const
 bool SAKTransmitterTool::removeRows(int row, int count,
                                     const QModelIndex &parent)
 {
+    if (mToolVector.isEmpty()) {
+        return true;
+    }
+
     Q_UNUSED(parent)
     bool isValidRow = (row >= 0 && row < mToolVector.count());
     Q_ASSERT_X(isValidRow, __FUNCTION__, "invalid row");
