@@ -6,47 +6,78 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>192</width>
-    <height>267</height>
+    <width>232</width>
+    <height>240</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string notr="true">Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>Append prefix</string>
+   <item row="3" column="0" colspan="2">
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
      </property>
     </widget>
-   </item>
-   <item row="8" column="1">
-    <widget class="SAKCrcAlgorithmComboBox" name="comboBoxAglorithm"/>
-   </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="label_3">
-     <property name="text">
-      <string>Escape character</string>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="1">
-    <widget class="SAKSpinBox" name="spinBoxEndIndex"/>
    </item>
    <item row="1" column="0">
     <widget class="QLabel" name="label_2">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="text">
       <string>Append suffix</string>
      </property>
     </widget>
    </item>
-   <item row="5" column="0" colspan="2">
-    <widget class="SAKCheckBox" name="checkBoxBigEndian">
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="text">
-      <string>Big endian CRC</string>
+      <string>Append prefix</string>
      </property>
     </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="SAKAffixesComboBox" name="comboBoxPrefix"/>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Escape character</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0">
+    <widget class="QLabel" name="label_6">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>CRC end index</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="1">
+    <widget class="SAKSpinBox" name="spinBoxEndIndex"/>
    </item>
    <item row="1" column="1">
     <widget class="SAKAffixesComboBox" name="comboBoxSuffix"/>
@@ -54,46 +85,55 @@
    <item row="6" column="1">
     <widget class="SAKSpinBox" name="spinBoxStartIndex"/>
    </item>
-   <item row="0" column="1">
-    <widget class="SAKAffixesComboBox" name="comboBoxPrefix"/>
+   <item row="2" column="1">
+    <widget class="SAKEscapeCharacterComboBox" name="comboBoxEscape"/>
    </item>
-   <item row="7" column="0">
-    <widget class="QLabel" name="label_6">
-     <property name="text">
-      <string>CRC end index</string>
-     </property>
-    </widget>
+   <item row="8" column="1">
+    <widget class="SAKCrcAlgorithmComboBox" name="comboBoxAglorithm"/>
    </item>
    <item row="8" column="0">
     <widget class="QLabel" name="label_7">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="text">
       <string>CRC algorithm</string>
      </property>
     </widget>
    </item>
-   <item row="4" column="0" colspan="2">
-    <widget class="SAKCheckBox" name="checkBoxAppendCrc">
-     <property name="text">
-      <string>Append CRC</string>
-     </property>
-    </widget>
-   </item>
    <item row="6" column="0">
     <widget class="QLabel" name="label_5">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="text">
       <string>CRC start index</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="1">
-    <widget class="SAKEscapeCharacterComboBox" name="comboBoxEscape"/>
-   </item>
-   <item row="3" column="0" colspan="2">
-    <widget class="Line" name="line">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
+   <item row="9" column="0" colspan="2">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="SAKCheckBox" name="checkBoxAppendCrc">
+       <property name="text">
+        <string>Append CRC</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="SAKCheckBox" name="checkBoxBigEndian">
+       <property name="text">
+        <string>Big endian CRC</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>

@@ -58,6 +58,12 @@
    </item>
    <item row="2" column="0">
     <widget class="QLabel" name="label_2">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="text">
       <string>Client port</string>
      </property>
@@ -72,6 +78,12 @@
    </item>
    <item row="7" column="0">
     <widget class="QLabel" name="label_3">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="text">
       <string>Server IP</string>
      </property>
@@ -79,6 +91,12 @@
    </item>
    <item row="8" column="0">
     <widget class="QLabel" name="label_4">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="text">
       <string>Server port</string>
      </property>
@@ -86,6 +104,12 @@
    </item>
    <item row="5" column="0">
     <widget class="QLabel" name="label_5">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="text">
       <string>Context</string>
      </property>
@@ -103,6 +127,12 @@
    </item>
    <item row="3" column="0">
     <widget class="QLabel" name="labelMessageType">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="text">
       <string>Message</string>
      </property>
@@ -110,6 +140,12 @@
    </item>
    <item row="1" column="0">
     <widget class="QLabel" name="label">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="text">
       <string>Client IP</string>
      </property>
@@ -142,6 +178,11 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>SAKCheckBox</class>
+   <extends>QCheckBox</extends>
+   <header location="global">SAKCheckBox.hh</header>
+  </customwidget>
+  <customwidget>
    <class>SAKIpComboBox</class>
    <extends>QComboBox</extends>
    <header location="global">SAKIpComboBox.hh</header>
@@ -150,11 +191,6 @@
    <class>SAKWebSocketMessageTypeComboBox</class>
    <extends>QComboBox</extends>
    <header location="global">SAKWebSocketMessageTypeComboBox.hh</header>
-  </customwidget>
-  <customwidget>
-   <class>SAKCheckBox</class>
-   <extends>QCheckBox</extends>
-   <header location="global">SAKCheckBox.hh</header>
   </customwidget>
   <customwidget>
    <class>SAKSpinBox</class>

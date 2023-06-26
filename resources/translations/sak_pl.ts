@@ -565,58 +565,58 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="58"/>
+        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="76"/>
         <source>Notify</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="65"/>
+        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="83"/>
         <source>Read</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="118"/>
+        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="142"/>
         <source>Characteristic</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="39"/>
+        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="51"/>
         <source>Devices</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="32"/>
+        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="38"/>
         <source>Service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="46"/>
+        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="64"/>
         <source>Write way</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="105"/>
+        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="123"/>
         <source>WriteWithResponse</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="110"/>
+        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="128"/>
         <source>WriteWithoutResponse</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="127"/>
+        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="151"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="134"/>
+        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="158"/>
         <location filename="../../src/toolsui/SAKBleCentralToolUi.cc" line="159"/>
         <source>Scan</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="143"/>
+        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="167"/>
         <source>(Unsupported characteristic)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1296,31 +1296,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="404"/>
-        <source>Round up for .5 and above.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/SAKMainWindow.cc" line="405"/>
-        <source>Always round up.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/SAKMainWindow.cc" line="406"/>
-        <source>Always round down.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/SAKMainWindow.cc" line="407"/>
-        <source>Round up for .75 and above.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/SAKMainWindow.cc" line="408"/>
-        <source>Don&apos;t round.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../../src/SAKMainWindow.cc" line="465"/>
         <source>System</source>
         <translation type="unfinished"></translation>
@@ -1379,6 +1354,31 @@
     <message>
         <location filename="../../src/SAKMainWindow.cc" line="583"/>
         <source>Get Source</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="404"/>
+        <source>Round up for .5 and above</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="405"/>
+        <source>Always round up</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="406"/>
+        <source>Always round down</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="407"/>
+        <source>Round up for .75 and above</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="408"/>
+        <source>Don&apos;t round</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2213,32 +2213,32 @@
 <context>
     <name>SAKSerialPortToolUi</name>
     <message>
-        <location filename="../../src/toolsui/SAKSerialPortToolUi.ui" line="39"/>
+        <location filename="../../src/toolsui/SAKSerialPortToolUi.ui" line="45"/>
         <source>Port name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKSerialPortToolUi.ui" line="65"/>
+        <location filename="../../src/toolsui/SAKSerialPortToolUi.ui" line="77"/>
         <source>Baud rate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKSerialPortToolUi.ui" line="72"/>
+        <location filename="../../src/toolsui/SAKSerialPortToolUi.ui" line="90"/>
         <source>Data bits</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKSerialPortToolUi.ui" line="79"/>
+        <location filename="../../src/toolsui/SAKSerialPortToolUi.ui" line="103"/>
         <source>Stop bits</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKSerialPortToolUi.ui" line="86"/>
+        <location filename="../../src/toolsui/SAKSerialPortToolUi.ui" line="116"/>
         <source>Parity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKSerialPortToolUi.ui" line="93"/>
+        <location filename="../../src/toolsui/SAKSerialPortToolUi.ui" line="129"/>
         <source>Flow control</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2299,42 +2299,42 @@
 <context>
     <name>SAKSocketClientToolUi</name>
     <message>
-        <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="62"/>
+        <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="68"/>
         <source>Client port</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="69"/>
+        <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="75"/>
         <source>(closed)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="76"/>
+        <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="88"/>
         <source>Server IP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="83"/>
+        <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="101"/>
         <source>Server port</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="90"/>
+        <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="114"/>
         <source>Context</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="107"/>
+        <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="137"/>
         <source>Message</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="114"/>
+        <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="150"/>
         <source>Client IP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="137"/>
+        <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="173"/>
         <source>Specify ip and port</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2400,48 +2400,48 @@
 <context>
     <name>SAKSocketServerToolUi</name>
     <message>
-        <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="42"/>
+        <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="98"/>
         <source>(closed)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="49"/>
+        <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="61"/>
         <source>Server port</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="69"/>
+        <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="127"/>
+        <source>Target</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="143"/>
         <source>Clear</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="77"/>
+        <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="135"/>
         <source>All clients</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="85"/>
+        <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="91"/>
         <source>Binding</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="92"/>
+        <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="38"/>
         <source>Server IP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="99"/>
+        <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="111"/>
         <source>Message</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="106"/>
+        <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="78"/>
         <source>Specify ip and port</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="113"/>
-        <source>send to client</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2659,52 +2659,52 @@
 <context>
     <name>SAKToolBoxUi</name>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="63"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="198"/>
         <source>Clear</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="70"/>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="77"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="133"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="288"/>
         <source>Format</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="84"/>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="112"/>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="187"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="90"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="191"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="243"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="91"/>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="268"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="159"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="344"/>
         <source>Rx</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="98"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="265"/>
         <source>Cycle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="105"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="97"/>
         <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="304"/>
         <source>Open</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="132"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="180"/>
         <source>MS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="152"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="250"/>
         <source>Send</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="159"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="145"/>
         <source>Date</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2714,79 +2714,79 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="173"/>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="300"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="152"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="376"/>
         <source>Tx</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="180"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="173"/>
         <source>Wrap</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="215"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="223"/>
         <source>Input control</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="406"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="482"/>
         <source>Transmitter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="413"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="489"/>
         <source>Tab 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="418"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="494"/>
         <source>Tab 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="201"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="109"/>
         <source>Output control</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="208"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="53"/>
         <source>Communication control</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="242"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="318"/>
         <source>I/O</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="334"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="410"/>
         <source>Input</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="256"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="332"/>
         <source>Output</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="361"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="437"/>
         <source>:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="391"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="467"/>
         <source>Emiter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="396"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="472"/>
         <source>Responser</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="222"/>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="401"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="295"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="477"/>
         <source>Prestorer</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2867,47 +2867,42 @@
 <context>
     <name>SAKToolBoxUiInputMenu</name>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="20"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="46"/>
         <source>Append prefix</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="30"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="62"/>
         <source>Escape character</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="40"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="33"/>
         <source>Append suffix</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="47"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="132"/>
         <source>Big endian CRC</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="63"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="75"/>
         <source>CRC end index</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="70"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="103"/>
         <source>CRC algorithm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="77"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="125"/>
         <source>Append CRC</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="84"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="116"/>
         <source>CRC start index</source>
         <translation type="unfinished"></translation>
     </message>

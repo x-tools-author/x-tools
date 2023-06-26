@@ -401,11 +401,11 @@ void SAKMainWindow::initOptionMenuHdpiPolicy(QMenu *optionMenu)
     QMenu *menu = new QMenu(tr("HDPI Policy"));
     QActionGroup *ag = new QActionGroup(this);
 
-    QAction *roundAction = new QAction(tr("Round up for .5 and above."), this);
-    QAction *ceilAction = new QAction(tr("Always round up."), this);
-    QAction *floorAction = new QAction(tr("Always round down."), this);
-    QAction *rpfAction = new QAction(tr("Round up for .75 and above."), this);
-    QAction *passThroughAction = new QAction(tr("Don't round."), this);
+    QAction *roundAction = new QAction(tr("Round up for .5 and above"), this);
+    QAction *ceilAction = new QAction(tr("Always round up"), this);
+    QAction *floorAction = new QAction(tr("Always round down"), this);
+    QAction *rpfAction = new QAction(tr("Round up for .75 and above"), this);
+    QAction *passThroughAction = new QAction(tr("Don't round"), this);
 
     auto round = Qt::HighDpiScaleFactorRoundingPolicy::Round;
     auto ceil = Qt::HighDpiScaleFactorRoundingPolicy::Ceil;

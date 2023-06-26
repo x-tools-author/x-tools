@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>608</width>
-    <height>367</height>
+    <width>634</width>
+    <height>645</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -30,11 +30,11 @@
     <widget class="QWidget" name="widget" native="true">
      <property name="minimumSize">
       <size>
-       <width>230</width>
+       <width>0</width>
        <height>0</height>
       </size>
      </property>
-     <layout class="QGridLayout" name="gridLayout">
+     <layout class="QVBoxLayout" name="verticalLayout">
       <property name="leftMargin">
        <number>0</number>
       </property>
@@ -47,93 +47,164 @@
       <property name="bottomMargin">
        <number>0</number>
       </property>
-      <item row="5" column="1">
-       <widget class="SAKTextFormatComboBox" name="comboBoxOutputFormat"/>
-      </item>
-      <item row="12" column="1">
-       <widget class="QComboBox" name="comboBoxInputIntervel">
-        <property name="editable">
-         <bool>false</bool>
+      <item>
+       <widget class="QGroupBox" name="groupBox">
+        <property name="title">
+         <string>Communication control</string>
         </property>
+        <layout class="QGridLayout" name="gridLayout_6">
+         <property name="leftMargin">
+          <number>4</number>
+         </property>
+         <property name="topMargin">
+          <number>4</number>
+         </property>
+         <property name="rightMargin">
+          <number>4</number>
+         </property>
+         <property name="bottomMargin">
+          <number>4</number>
+         </property>
+         <item row="1" column="0">
+          <widget class="Line" name="line">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QWidget" name="widgetCommunicationToolUi" native="true">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <item>
+            <widget class="QPushButton" name="pushButtonCommunicationSettings">
+             <property name="text">
+              <string>Settings</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButtonCommunicationOpen">
+             <property name="text">
+              <string>Open</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
        </widget>
       </item>
-      <item row="6" column="1">
-       <widget class="QPushButton" name="pushButtonOutputClear">
-        <property name="text">
-         <string>Clear</string>
+      <item>
+       <widget class="QGroupBox" name="groupBox_2">
+        <property name="title">
+         <string>Output control</string>
         </property>
+        <layout class="QGridLayout" name="gridLayout_7">
+         <property name="leftMargin">
+          <number>4</number>
+         </property>
+         <property name="topMargin">
+          <number>4</number>
+         </property>
+         <property name="rightMargin">
+          <number>4</number>
+         </property>
+         <property name="bottomMargin">
+          <number>4</number>
+         </property>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_9">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Format</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="SAKTextFormatComboBox" name="comboBoxOutputFormat"/>
+         </item>
+         <item row="2" column="0" colspan="2">
+          <layout class="QGridLayout" name="gridLayout_5">
+           <item row="1" column="0">
+            <widget class="SAKCheckBox" name="checkBoxOutputDate">
+             <property name="text">
+              <string>Date</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="SAKCheckBox" name="checkBoxOutputTx">
+             <property name="text">
+              <string>Tx</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="SAKCheckBox" name="checkBoxOutputRx">
+             <property name="text">
+              <string>Rx</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="SAKCheckBox" name="checkBoxOutputTime">
+             <property name="text">
+              <string>Time</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="SAKCheckBox" name="checkBoxOutputWrap">
+             <property name="text">
+              <string>Wrap</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="SAKCheckBox" name="checkBoxOutputMs">
+             <property name="text">
+              <string>MS</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="3" column="0" colspan="2">
+          <layout class="QHBoxLayout" name="horizontalLayout_4">
+           <item>
+            <widget class="QPushButton" name="pushButtonOutputSettings">
+             <property name="text">
+              <string>Settings</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButtonOutputClear">
+             <property name="text">
+              <string>Clear</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
        </widget>
       </item>
-      <item row="5" column="0">
-       <widget class="QLabel" name="label_9">
-        <property name="text">
-         <string>Format</string>
-        </property>
-       </widget>
-      </item>
-      <item row="13" column="0">
-       <widget class="QLabel" name="label_6">
-        <property name="text">
-         <string>Format</string>
-        </property>
-       </widget>
-      </item>
-      <item row="14" column="0">
-       <widget class="QPushButton" name="pushButtonInputSettings">
-        <property name="text">
-         <string>Settings</string>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="0">
-       <widget class="SAKCheckBox" name="checkBoxOutputRx">
-        <property name="text">
-         <string>Rx</string>
-        </property>
-       </widget>
-      </item>
-      <item row="12" column="0">
-       <widget class="QLabel" name="label_5">
-        <property name="text">
-         <string>Cycle</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QPushButton" name="pushButtonCommunicationOpen">
-        <property name="text">
-         <string>Open</string>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="0">
-       <widget class="QPushButton" name="pushButtonOutputSettings">
-        <property name="text">
-         <string>Settings</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0" colspan="2">
-       <widget class="QWidget" name="widgetCommunicationToolUi" native="true">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>0</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item row="13" column="1">
-       <widget class="SAKTextFormatComboBox" name="comboBoxInputFormat"/>
-      </item>
-      <item row="9" column="0">
-       <widget class="SAKCheckBox" name="checkBoxOutputMs">
-        <property name="text">
-         <string>MS</string>
-        </property>
-       </widget>
-      </item>
-      <item row="10" column="0">
+      <item>
        <spacer name="verticalSpacer">
         <property name="orientation">
          <enum>Qt::Vertical</enum>
@@ -146,81 +217,86 @@
         </property>
        </spacer>
       </item>
-      <item row="14" column="1">
-       <widget class="QPushButton" name="pushButtonInputSend">
-        <property name="text">
-         <string>Send</string>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="0">
-       <widget class="SAKCheckBox" name="checkBoxOutputDate">
-        <property name="text">
-         <string>Date</string>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="1">
-       <widget class="SAKCheckBox" name="checkBoxOutputTime">
-        <property name="text">
-         <string>Time</string>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="1">
-       <widget class="SAKCheckBox" name="checkBoxOutputTx">
-        <property name="text">
-         <string>Tx</string>
-        </property>
-       </widget>
-      </item>
-      <item row="9" column="1">
-       <widget class="SAKCheckBox" name="checkBoxOutputWrap">
-        <property name="text">
-         <string>Wrap</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QPushButton" name="pushButtonCommunicationSettings">
-        <property name="text">
-         <string>Settings</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0" colspan="2">
-       <widget class="Line" name="line">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0" colspan="2">
-       <widget class="QLabel" name="label_4">
-        <property name="text">
-         <string>Output control</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0" colspan="2">
-       <widget class="QLabel" name="label_3">
-        <property name="text">
-         <string>Communication control</string>
-        </property>
-       </widget>
-      </item>
-      <item row="11" column="0">
-       <widget class="QLabel" name="label_10">
-        <property name="text">
+      <item>
+       <widget class="QGroupBox" name="groupBox_3">
+        <property name="title">
          <string>Input control</string>
         </property>
-       </widget>
-      </item>
-      <item row="11" column="1">
-       <widget class="QPushButton" name="pushButtonPrestorer">
-        <property name="text">
-         <string>Prestorer</string>
-        </property>
+        <layout class="QGridLayout" name="gridLayout_8">
+         <property name="leftMargin">
+          <number>4</number>
+         </property>
+         <property name="topMargin">
+          <number>4</number>
+         </property>
+         <property name="rightMargin">
+          <number>4</number>
+         </property>
+         <property name="bottomMargin">
+          <number>4</number>
+         </property>
+         <item row="3" column="0" colspan="2">
+          <layout class="QHBoxLayout" name="horizontalLayout_6">
+           <item>
+            <widget class="QPushButton" name="pushButtonInputSettings">
+             <property name="text">
+              <string>Settings</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButtonInputSend">
+             <property name="text">
+              <string>Send</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_5">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Cycle</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="SAKTextFormatComboBox" name="comboBoxInputFormat"/>
+         </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="comboBoxInputIntervel">
+           <property name="editable">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_6">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Format</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QPushButton" name="pushButtonPrestorer">
+           <property name="text">
+            <string>Prestorer</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </item>
      </layout>
@@ -351,7 +427,7 @@
          <item>
           <widget class="QLabel" name="labelAlgorithm">
            <property name="text">
-            <string notr="true"> </string>
+            <string notr="true"/>
            </property>
           </widget>
          </item>

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>169</width>
-    <height>242</height>
+    <width>155</width>
+    <height>202</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,8 +24,21 @@
     <number>0</number>
    </property>
    <property name="bottomMargin">
-    <number>10</number>
+    <number>0</number>
    </property>
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Server IP</string>
+     </property>
+    </widget>
+   </item>
    <item row="0" column="1">
     <widget class="SAKIpComboBox" name="comboBoxServerIp">
      <property name="sizePolicy">
@@ -36,15 +49,14 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="1">
-    <widget class="QLabel" name="labelBindingInfo">
-     <property name="text">
-      <string>(closed)</string>
-     </property>
-    </widget>
-   </item>
    <item row="1" column="0">
     <widget class="QLabel" name="label_2">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="text">
       <string>Server port</string>
      </property>
@@ -60,17 +72,63 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="1">
-    <widget class="SAKWebSocketMessageTypeComboBox" name="comboBoxMessageType"/>
-   </item>
-   <item row="7" column="1">
-    <widget class="QPushButton" name="pushButtonClear">
+   <item row="2" column="0" colspan="2">
+    <widget class="SAKCheckBox" name="checkBoxSpecifyIpAndPort">
      <property name="text">
-      <string>Clear</string>
+      <string>Specify ip and port</string>
      </property>
     </widget>
    </item>
-   <item row="6" column="0" colspan="2">
+   <item row="3" column="0">
+    <widget class="QLabel" name="labelCntext">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Binding</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QLabel" name="labelBindingInfo">
+     <property name="text">
+      <string>(closed)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="labelMessageType">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Message</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <widget class="SAKWebSocketMessageTypeComboBox" name="comboBoxMessageType"/>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Target</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1">
     <widget class="QComboBox" name="comboBoxClientList">
      <item>
       <property name="text">
@@ -79,44 +137,21 @@
      </item>
     </widget>
    </item>
-   <item row="3" column="0">
-    <widget class="QLabel" name="labelCntext">
+   <item row="6" column="1">
+    <widget class="QPushButton" name="pushButtonClear">
      <property name="text">
-      <string>Binding</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>Server IP</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="labelMessageType">
-     <property name="text">
-      <string>Message</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0" colspan="2">
-    <widget class="SAKCheckBox" name="checkBoxSpecifyIpAndPort">
-     <property name="text">
-      <string>Specify ip and port</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="0" colspan="2">
-    <widget class="QLabel" name="label_3">
-     <property name="text">
-      <string>send to client</string>
+      <string>Clear</string>
      </property>
     </widget>
    </item>
   </layout>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>SAKCheckBox</class>
+   <extends>QCheckBox</extends>
+   <header location="global">SAKCheckBox.hh</header>
+  </customwidget>
   <customwidget>
    <class>SAKIpComboBox</class>
    <extends>QComboBox</extends>
@@ -126,11 +161,6 @@
    <class>SAKWebSocketMessageTypeComboBox</class>
    <extends>QComboBox</extends>
    <header location="global">SAKWebSocketMessageTypeComboBox.hh</header>
-  </customwidget>
-  <customwidget>
-   <class>SAKCheckBox</class>
-   <extends>QCheckBox</extends>
-   <header location="global">SAKCheckBox.hh</header>
   </customwidget>
   <customwidget>
    <class>SAKSpinBox</class>

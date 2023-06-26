@@ -19,7 +19,7 @@
     <message>
         <location filename="../../qml/MainWindowBleCentralPageController.qml" line="39"/>
         <source>Device list</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">设备列表</translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowBleCentralPageController.qml" line="46"/>
@@ -29,7 +29,7 @@
     <message>
         <location filename="../../qml/MainWindowBleCentralPageController.qml" line="55"/>
         <source>Timeout</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">超时时间</translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowBleCentralPageController.qml" line="64"/>
@@ -49,7 +49,7 @@
     <message>
         <location filename="../../qml/MainWindowBleCentralPageController.qml" line="82"/>
         <source>Write</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">写入</translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowBleCentralPageController.qml" line="82"/>
@@ -59,12 +59,12 @@
     <message>
         <location filename="../../qml/MainWindowBleCentralPageController.qml" line="94"/>
         <source>Notify</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">通知</translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowBleCentralPageController.qml" line="94"/>
         <source>Read</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">读取</translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowBleCentralPageController.qml" line="110"/>
@@ -97,7 +97,7 @@
     <message>
         <location filename="../../qml/MainWindowInfoPage.qml" line="40"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">复制</translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowInfoPage.qml" line="45"/>
@@ -110,7 +110,7 @@
     <message>
         <location filename="../../qml/MainWindowSerialPortPageController.qml" line="43"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">无</translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowSerialPortPageController.qml" line="44"/>
@@ -138,7 +138,7 @@
     <message>
         <location filename="../../qml/MainWindowSerialPortPageController.qml" line="55"/>
         <source>Serial port settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">串口配置</translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowSerialPortPageController.qml" line="60"/>
@@ -148,53 +148,53 @@
     <message>
         <location filename="../../qml/MainWindowSerialPortPageController.qml" line="80"/>
         <source>Baud rate</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">波特率</translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowSerialPortPageController.qml" line="115"/>
         <source>Stop bits</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">停止位</translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowSerialPortPageController.qml" line="142"/>
         <source>Data bits</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">数据位</translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowSerialPortPageController.qml" line="170"/>
         <source>Parity</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">校验位</translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowSerialPortPageController.qml" line="179"/>
         <location filename="../../qml/MainWindowSerialPortPageController.qml" line="208"/>
         <source>No</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">无</translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowSerialPortPageController.qml" line="180"/>
         <source>Even</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">偶校验</translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowSerialPortPageController.qml" line="181"/>
         <source>Odd</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">奇校验</translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowSerialPortPageController.qml" line="182"/>
         <source>Space</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">空格校验</translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowSerialPortPageController.qml" line="183"/>
         <source>Mark</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">标记校验</translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowSerialPortPageController.qml" line="199"/>
         <source>Flow control</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">流控位</translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowSerialPortPageController.qml" line="209"/>
@@ -227,7 +227,7 @@
     <message>
         <location filename="../../qml/MainWindowSettingsPage.qml" line="14"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">通用</translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowSettingsPage.qml" line="19"/>
@@ -242,7 +242,7 @@
     <message>
         <location filename="../../qml/MainWindowSettingsPage.qml" line="27"/>
         <source>Round up for .5 and above.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">缩放至x.5被。</translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowSettingsPage.qml" line="28"/>
@@ -252,7 +252,7 @@
     <message>
         <location filename="../../qml/MainWindowSettingsPage.qml" line="28"/>
         <source>Always round up.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">总是放大。</translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowSettingsPage.qml" line="29"/>
@@ -262,7 +262,7 @@
     <message>
         <location filename="../../qml/MainWindowSettingsPage.qml" line="29"/>
         <source>Always round down.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">总是缩小。</translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowSettingsPage.qml" line="30"/>
@@ -272,7 +272,7 @@
     <message>
         <location filename="../../qml/MainWindowSettingsPage.qml" line="30"/>
         <source>Round up for .75 and above.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">缩放至x.75被。</translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowSettingsPage.qml" line="31"/>
@@ -282,7 +282,7 @@
     <message>
         <location filename="../../qml/MainWindowSettingsPage.qml" line="31"/>
         <source>Don&apos;t round.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">不缩放。</translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowSettingsPage.qml" line="50"/>
@@ -292,12 +292,12 @@
     <message>
         <location filename="../../qml/MainWindowSettingsPage.qml" line="53"/>
         <source>Classical</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">经典</translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowSettingsPage.qml" line="53"/>
         <source>Modern</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">现代</translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowSettingsPage.qml" line="68"/>
@@ -322,17 +322,17 @@
     <message>
         <location filename="../../qml/MainWindowSettingsPage.qml" line="102"/>
         <source>System</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">系统</translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowSettingsPage.qml" line="103"/>
         <source>Dark</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">暗色主题</translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowSettingsPage.qml" line="104"/>
         <source>Light</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">亮色主题</translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowSettingsPage.qml" line="111"/>
@@ -378,43 +378,43 @@
         <location filename="../../qml/MainWindowToolBar.qml" line="42"/>
         <location filename="../../qml/MainWindowToolBar.qml" line="74"/>
         <source>SerialPort</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">串口调试</translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowToolBar.qml" line="43"/>
         <location filename="../../qml/MainWindowToolBar.qml" line="75"/>
         <source>UDP Client</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">UDP客户端</translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowToolBar.qml" line="44"/>
         <location filename="../../qml/MainWindowToolBar.qml" line="76"/>
         <source>UDP Server</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">UDP服务器</translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowToolBar.qml" line="45"/>
         <location filename="../../qml/MainWindowToolBar.qml" line="77"/>
         <source>TCP Client</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">TCP客户端</translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowToolBar.qml" line="46"/>
         <location filename="../../qml/MainWindowToolBar.qml" line="78"/>
         <source>TCP Server</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">TCP服务器</translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowToolBar.qml" line="47"/>
         <location filename="../../qml/MainWindowToolBar.qml" line="79"/>
         <source>WebSocket Client</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">WebSocket客户端</translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowToolBar.qml" line="48"/>
         <location filename="../../qml/MainWindowToolBar.qml" line="80"/>
         <source>WebSocket Server</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">WebSocket服务器</translation>
     </message>
 </context>
 <context>
@@ -565,58 +565,58 @@
         <translation>BLE</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="58"/>
+        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="76"/>
         <source>Notify</source>
         <translation>通知</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="65"/>
+        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="83"/>
         <source>Read</source>
         <translation>读取</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="118"/>
+        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="142"/>
         <source>Characteristic</source>
         <translation>特征值</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="39"/>
+        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="51"/>
         <source>Devices</source>
         <translation>设备列表</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="32"/>
+        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="38"/>
         <source>Service</source>
         <translation>服务列表</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="46"/>
+        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="64"/>
         <source>Write way</source>
         <translation>写入方式</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="105"/>
+        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="123"/>
         <source>WriteWithResponse</source>
         <translation>需要应答</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="110"/>
+        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="128"/>
         <source>WriteWithoutResponse</source>
         <translation>不需要应答</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="127"/>
+        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="151"/>
         <source>Settings</source>
         <translation>更多</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="134"/>
+        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="158"/>
         <location filename="../../src/toolsui/SAKBleCentralToolUi.cc" line="159"/>
         <source>Scan</source>
         <translation>扫描</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="143"/>
+        <location filename="../../src/toolsui/SAKBleCentralToolUi.ui" line="167"/>
         <source>(Unsupported characteristic)</source>
         <translation>（暂不支持该类型特征值）</translation>
     </message>
@@ -1296,29 +1296,24 @@
         <translation>高分屏适配策略</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="404"/>
         <source>Round up for .5 and above.</source>
-        <translation>缩放至x.5被。</translation>
+        <translation type="vanished">缩放至x.5被。</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="405"/>
         <source>Always round up.</source>
-        <translation>总是放大。</translation>
+        <translation type="vanished">总是放大。</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="406"/>
         <source>Always round down.</source>
-        <translation>总是缩小。</translation>
+        <translation type="vanished">总是缩小。</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="407"/>
         <source>Round up for .75 and above.</source>
-        <translation>缩放至x.75被。</translation>
+        <translation type="vanished">缩放至x.75被。</translation>
     </message>
     <message>
-        <location filename="../../src/SAKMainWindow.cc" line="408"/>
         <source>Don&apos;t round.</source>
-        <translation>不缩放。</translation>
+        <translation type="vanished">不缩放。</translation>
     </message>
     <message>
         <location filename="../../src/SAKMainWindow.cc" line="465"/>
@@ -1380,6 +1375,31 @@
         <location filename="../../src/SAKMainWindow.cc" line="583"/>
         <source>Get Source</source>
         <translation>获取源码</translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="404"/>
+        <source>Round up for .5 and above</source>
+        <translation>缩放至x.5倍</translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="405"/>
+        <source>Always round up</source>
+        <translation>总是放大</translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="406"/>
+        <source>Always round down</source>
+        <translation>总是缩小</translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="407"/>
+        <source>Round up for .75 and above</source>
+        <translation>缩放至x.75倍</translation>
+    </message>
+    <message>
+        <location filename="../../src/SAKMainWindow.cc" line="408"/>
+        <source>Don&apos;t round</source>
+        <translation>不缩放</translation>
     </message>
     <message>
         <location filename="../../src/SAKMainWindow.cc" line="587"/>
@@ -2213,32 +2233,32 @@
 <context>
     <name>SAKSerialPortToolUi</name>
     <message>
-        <location filename="../../src/toolsui/SAKSerialPortToolUi.ui" line="39"/>
+        <location filename="../../src/toolsui/SAKSerialPortToolUi.ui" line="45"/>
         <source>Port name</source>
         <translation>端口名</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKSerialPortToolUi.ui" line="65"/>
+        <location filename="../../src/toolsui/SAKSerialPortToolUi.ui" line="77"/>
         <source>Baud rate</source>
         <translation>波特率</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKSerialPortToolUi.ui" line="72"/>
+        <location filename="../../src/toolsui/SAKSerialPortToolUi.ui" line="90"/>
         <source>Data bits</source>
         <translation>数据位</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKSerialPortToolUi.ui" line="79"/>
+        <location filename="../../src/toolsui/SAKSerialPortToolUi.ui" line="103"/>
         <source>Stop bits</source>
         <translation>停止位</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKSerialPortToolUi.ui" line="86"/>
+        <location filename="../../src/toolsui/SAKSerialPortToolUi.ui" line="116"/>
         <source>Parity</source>
         <translation>校验位</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKSerialPortToolUi.ui" line="93"/>
+        <location filename="../../src/toolsui/SAKSerialPortToolUi.ui" line="129"/>
         <source>Flow control</source>
         <translation>流控位</translation>
     </message>
@@ -2299,44 +2319,44 @@
 <context>
     <name>SAKSocketClientToolUi</name>
     <message>
-        <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="62"/>
+        <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="68"/>
         <source>Client port</source>
         <translation>客户端端口</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="69"/>
+        <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="75"/>
         <source>(closed)</source>
         <translation>(关闭)</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="76"/>
+        <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="88"/>
         <source>Server IP</source>
-        <translation>服务器IP</translation>
+        <translation>服务器地址</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="83"/>
+        <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="101"/>
         <source>Server port</source>
         <translation>服务器端口</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="90"/>
-        <source>Context</source>
-        <translation>绑定信息</translation>
-    </message>
-    <message>
-        <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="107"/>
-        <source>Message</source>
-        <translation>消息类型</translation>
-    </message>
-    <message>
         <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="114"/>
-        <source>Client IP</source>
-        <translation>客户端IP</translation>
+        <source>Context</source>
+        <translation>绑定的信息</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="137"/>
+        <source>Message</source>
+        <translation>消息的类型</translation>
+    </message>
+    <message>
+        <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="150"/>
+        <source>Client IP</source>
+        <translation>客户端地址</translation>
+    </message>
+    <message>
+        <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="173"/>
         <source>Specify ip and port</source>
-        <translation>指定IP和端口</translation>
+        <translation>指定客户端的地址和端口</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSocketClientToolUi.cc" line="93"/>
@@ -2400,49 +2420,53 @@
 <context>
     <name>SAKSocketServerToolUi</name>
     <message>
-        <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="42"/>
+        <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="98"/>
         <source>(closed)</source>
         <translation>(关闭)</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="49"/>
+        <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="61"/>
         <source>Server port</source>
         <translation>服务器端口</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="69"/>
+        <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="127"/>
+        <source>Target</source>
+        <translation>目标客户端</translation>
+    </message>
+    <message>
+        <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="143"/>
         <source>Clear</source>
         <translation>清空</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="77"/>
+        <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="135"/>
         <source>All clients</source>
         <translation>所有客户端</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="85"/>
+        <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="91"/>
         <source>Binding</source>
-        <translation>绑定信息</translation>
+        <translation>绑定的信息</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="92"/>
+        <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="38"/>
         <source>Server IP</source>
-        <translation>服务器IP</translation>
+        <translation>服务器地址</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="99"/>
+        <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="111"/>
         <source>Message</source>
-        <translation>消息类型</translation>
+        <translation>消息的类型</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="106"/>
+        <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="78"/>
         <source>Specify ip and port</source>
-        <translation>指定IP和端口</translation>
+        <translation>指定服务器的地址和端口</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="113"/>
         <source>send to client</source>
-        <translation>发送目标设备</translation>
+        <translation type="vanished">发送目标设备</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSocketServerToolUi.cc" line="98"/>
@@ -2513,7 +2537,7 @@
     <message>
         <location filename="../../src/toolsui/SAKStorerToolUi.ui" line="73"/>
         <source>Save ms</source>
-        <translation>保存未免</translation>
+        <translation>保存毫秒</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKStorerToolUi.ui" line="80"/>
@@ -2659,52 +2683,52 @@
 <context>
     <name>SAKToolBoxUi</name>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="63"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="198"/>
         <source>Clear</source>
         <translation>清空输出</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="70"/>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="77"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="133"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="288"/>
         <source>Format</source>
-        <translation>输出格式</translation>
+        <translation>数据格式</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="84"/>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="112"/>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="187"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="90"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="191"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="243"/>
         <source>Settings</source>
         <translation>更多设置</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="91"/>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="268"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="159"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="344"/>
         <source>Rx</source>
         <translation>显示接收</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="98"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="265"/>
         <source>Cycle</source>
         <translation>循环发送</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="105"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="97"/>
         <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="304"/>
         <source>Open</source>
         <translation>打开设备</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="132"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="180"/>
         <source>MS</source>
         <translation>显示毫秒</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="152"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="250"/>
         <source>Send</source>
         <translation>发送数据</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="159"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="145"/>
         <source>Date</source>
         <translation>显示日期</translation>
     </message>
@@ -2714,79 +2738,79 @@
         <translation>显示时间</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="173"/>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="300"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="152"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="376"/>
         <source>Tx</source>
         <translation>显示发送</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="180"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="173"/>
         <source>Wrap</source>
         <translation>自动换行</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="215"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="223"/>
         <source>Input control</source>
         <translation>输入控制</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="406"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="482"/>
         <source>Transmitter</source>
         <translation>数据转发</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="413"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="489"/>
         <source>Tab 1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="418"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="494"/>
         <source>Tab 2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="201"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="109"/>
         <source>Output control</source>
         <translation>输出控制</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="208"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="53"/>
         <source>Communication control</source>
         <translation>通信控制</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="242"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="318"/>
         <source>I/O</source>
         <translation>输入输出</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="334"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="410"/>
         <source>Input</source>
         <translation>输入数据</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="256"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="332"/>
         <source>Output</source>
         <translation>数据输出</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="361"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="437"/>
         <source>:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="391"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="467"/>
         <source>Emiter</source>
         <translation>自动发送</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="396"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="472"/>
         <source>Responser</source>
         <translation>自动应答</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="222"/>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="401"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="295"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="477"/>
         <source>Prestorer</source>
         <translation>数据预设</translation>
     </message>
@@ -2818,12 +2842,12 @@
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="89"/>
         <source>WebSocket Client</source>
-        <translation>WebSocket客户端</translation>
+        <translation>WS客户端</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="91"/>
         <source>WebSocket Server</source>
-        <translation>WebSocket服务器</translation>
+        <translation>WS服务器</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="93"/>
@@ -2867,47 +2891,42 @@
 <context>
     <name>SAKToolBoxUiInputMenu</name>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="14"/>
-        <source>Form</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="20"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="46"/>
         <source>Append prefix</source>
-        <translation>消息前缀</translation>
+        <translation>追加前缀</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="30"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="62"/>
         <source>Escape character</source>
         <translation>转义字符</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="40"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="33"/>
         <source>Append suffix</source>
         <translation>追加后缀</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="47"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="132"/>
         <source>Big endian CRC</source>
         <translation>大端字节序</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="63"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="75"/>
         <source>CRC end index</source>
         <translation>结束字节</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="70"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="103"/>
         <source>CRC algorithm</source>
-        <translation>算法</translation>
+        <translation>算法模型</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="77"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="125"/>
         <source>Append CRC</source>
         <translation>追加CRC数据</translation>
     </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="84"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="116"/>
         <source>CRC start index</source>
         <translation>开始字节</translation>
     </message>
@@ -3361,12 +3380,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../qml/toolbox/ToolBoxCommonTableView.qml" line="103"/>
         <source>Edit</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">编辑</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxCommonTableView.qml" line="104"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">删除</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxCommonTableView.qml" line="105"/>
@@ -3376,17 +3395,17 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../qml/toolbox/ToolBoxCommonTableView.qml" line="106"/>
         <source>Import</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">导入</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxCommonTableView.qml" line="107"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">导出</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxCommonTableView.qml" line="108"/>
         <source>Append</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">添加</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxCommonTableView.qml" line="158"/>
@@ -3416,7 +3435,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../qml/toolbox/ToolBoxCommonTableView.qml" line="184"/>
         <source>Please Select an Item</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">未选中</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxCommonTableView.qml" line="185"/>
@@ -3436,7 +3455,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../qml/toolbox/ToolBoxController.qml" line="89"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">关闭</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxController.qml" line="90"/>
@@ -3471,12 +3490,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../qml/toolbox/ToolBoxController.qml" line="156"/>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">禁止</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxController.qml" line="174"/>
         <source>Input format</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">输入格式</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxController.qml" line="190"/>
@@ -3494,12 +3513,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../qml/toolbox/ToolBoxDrawer.qml" line="39"/>
         <source>Output</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">数据输出</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxDrawer.qml" line="39"/>
         <source>Input</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">输入数据</translation>
     </message>
 </context>
 <context>
@@ -3527,12 +3546,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../qml/toolbox/ToolBoxDrawerDeviceAnalyzer.qml" line="77"/>
         <source>Separation mark</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">帧分割标志</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxDrawerDeviceAnalyzer.qml" line="97"/>
         <source>Max temp bytes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">最大缓存字节</translation>
     </message>
 </context>
 <context>
@@ -3540,7 +3559,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../qml/toolbox/ToolBoxDrawerDeviceMasker.qml" line="10"/>
         <source>Masker</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">掩码器</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxDrawerDeviceMasker.qml" line="32"/>
@@ -3578,7 +3597,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../qml/toolbox/ToolBoxDrawerInputCrc.qml" line="38"/>
         <source>Start index</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">开始字节</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxDrawerInputCrc.qml" line="47"/>
@@ -3644,12 +3663,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../qml/toolbox/ToolBoxDrawerInputPreprocessor.qml" line="35"/>
         <source>Suffix</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">消息后缀</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxDrawerInputPreprocessor.qml" line="43"/>
         <source>Escape character</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">转义字符</translation>
     </message>
 </context>
 <context>
@@ -3667,7 +3686,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../qml/toolbox/ToolBoxDrawerOutputHighlighter.qml" line="35"/>
         <source>Append</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">添加</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxDrawerOutputHighlighter.qml" line="39"/>
@@ -3718,7 +3737,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../qml/toolbox/ToolBoxDrawerOutputStorer.qml" line="11"/>
         <source>Storer</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">持久化参数</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxDrawerOutputStorer.qml" line="31"/>
@@ -3766,7 +3785,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWrite.qml" line="39"/>
         <source>I/O</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">输入输出</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWrite.qml" line="39"/>
@@ -3776,7 +3795,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWrite.qml" line="39"/>
         <source>Responser</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">自动应答</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWrite.qml" line="39"/>
@@ -3794,7 +3813,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWriteEmitterPopup.qml" line="35"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">描述</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWriteEmitterPopup.qml" line="42"/>
@@ -3829,22 +3848,22 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWriteEmitterPopup.qml" line="96"/>
         <source>Append CRC data</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">追加CRC数据</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWriteEmitterPopup.qml" line="101"/>
         <source>CRC arithmetic</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">算法</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWriteEmitterPopup.qml" line="108"/>
         <source>CRC start index</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">开始字节</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWriteEmitterPopup.qml" line="115"/>
         <source>CRC end index</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">结束字节</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWriteEmitterPopup.qml" line="127"/>
@@ -3854,7 +3873,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWriteEmitterPopup.qml" line="127"/>
         <source>Apply</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">应用</translation>
     </message>
 </context>
 <context>
@@ -3862,32 +3881,32 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWriteInputOutput.qml" line="61"/>
         <source>Rx</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">显示接收</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWriteInputOutput.qml" line="62"/>
         <source>Tx</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">显示发送</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWriteInputOutput.qml" line="63"/>
         <source>Date</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">显示日期</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWriteInputOutput.qml" line="64"/>
         <source>Time</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">显示时间</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWriteInputOutput.qml" line="65"/>
         <source>MS</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">显示毫秒</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWriteInputOutput.qml" line="66"/>
         <source>Wrap</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">自动换行</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWriteInputOutput.qml" line="98"/>
@@ -3902,7 +3921,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWriteInputOutput.qml" line="158"/>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">禁止</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWriteInputOutput.qml" line="175"/>
@@ -3920,7 +3939,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWritePrestorerPopup.qml" line="27"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">描述</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWritePrestorerPopup.qml" line="34"/>
@@ -3950,22 +3969,22 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWritePrestorerPopup.qml" line="80"/>
         <source>Append CRC data</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">追加CRC数据</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWritePrestorerPopup.qml" line="85"/>
         <source>CRC arithmetic</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">算法</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWritePrestorerPopup.qml" line="92"/>
         <source>CRC start index</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">开始字节</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWritePrestorerPopup.qml" line="99"/>
         <source>CRC end index</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">结束字节</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWritePrestorerPopup.qml" line="111"/>
@@ -3975,7 +3994,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWritePrestorerPopup.qml" line="111"/>
         <source>Apply</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">应用</translation>
     </message>
 </context>
 <context>
@@ -3988,7 +4007,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWriteResponserPopup.qml" line="62"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">描述</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWriteResponserPopup.qml" line="69"/>
@@ -3998,12 +4017,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWriteResponserPopup.qml" line="86"/>
         <source>Reference</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">参考数据</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWriteResponserPopup.qml" line="86"/>
         <source>Response</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">应答数据</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWriteResponserPopup.qml" line="94"/>
@@ -4038,22 +4057,22 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWriteResponserPopup.qml" line="149"/>
         <source>Append CRC data</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">追加CRC数据</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWriteResponserPopup.qml" line="154"/>
         <source>CRC arithmetic</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">算法</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWriteResponserPopup.qml" line="161"/>
         <source>CRC start index</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">开始字节</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWriteResponserPopup.qml" line="168"/>
         <source>CRC end index</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">结束字节</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWriteResponserPopup.qml" line="248"/>
@@ -4063,7 +4082,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../qml/toolbox/ToolBoxReadWriteResponserPopup.qml" line="248"/>
         <source>Apply</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">应用</translation>
     </message>
 </context>
 </TS>
