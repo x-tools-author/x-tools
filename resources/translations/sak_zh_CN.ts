@@ -1963,72 +1963,72 @@
     <message>
         <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="20"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="27"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>确定</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="47"/>
         <source>Parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>参数</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="53"/>
         <source>Format</source>
-        <translation type="unfinished"></translation>
+        <translation>数据格式</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="60"/>
         <source>Suffix</source>
-        <translation type="unfinished"></translation>
+        <translation>消息后缀</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="67"/>
         <source>Algorithm</source>
-        <translation type="unfinished"></translation>
+        <translation>算法</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="77"/>
         <source>Data</source>
-        <translation type="unfinished"></translation>
+        <translation>数据</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="93"/>
         <source>Escape</source>
-        <translation type="unfinished"></translation>
+        <translation>转义</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="100"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>描述</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="107"/>
         <source>Prefix</source>
-        <translation type="unfinished"></translation>
+        <translation>消息前缀</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="117"/>
         <source>Append CRC data</source>
-        <translation type="unfinished"></translation>
+        <translation>追加CRC数据</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="124"/>
         <source>Start index</source>
-        <translation type="unfinished"></translation>
+        <translation>开始字节</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="138"/>
         <source>End index</source>
-        <translation type="unfinished"></translation>
+        <translation>结束字节</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.cc" line="20"/>
         <source>Prestorer Item Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>预设数据编辑器</translation>
     </message>
 </context>
 <context>
@@ -2036,7 +2036,7 @@
     <message>
         <location filename="../../qml/common/SAKRNComboBox.qml" line="9"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>无</translation>
     </message>
 </context>
 <context>
@@ -2044,32 +2044,32 @@
     <message>
         <location filename="../../src/commonui/SAKResponseOptionComboBox.cc" line="16"/>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>禁止</translation>
     </message>
     <message>
         <location filename="../../src/commonui/SAKResponseOptionComboBox.cc" line="17"/>
         <source>Echo</source>
-        <translation type="unfinished"></translation>
+        <translation>回显</translation>
     </message>
     <message>
         <location filename="../../src/commonui/SAKResponseOptionComboBox.cc" line="18"/>
         <source>Always</source>
-        <translation type="unfinished"></translation>
+        <translation>总是</translation>
     </message>
     <message>
         <location filename="../../src/commonui/SAKResponseOptionComboBox.cc" line="19"/>
         <source>RxEqualReference</source>
-        <translation type="unfinished"></translation>
+        <translation>接收数据等于参考数据</translation>
     </message>
     <message>
         <location filename="../../src/commonui/SAKResponseOptionComboBox.cc" line="20"/>
         <source>RxContainReference</source>
-        <translation type="unfinished"></translation>
+        <translation>接收数据包含参考数据</translation>
     </message>
     <message>
         <location filename="../../src/commonui/SAKResponseOptionComboBox.cc" line="21"/>
         <source>RxDiscontainReference</source>
-        <translation type="unfinished"></translation>
+        <translation>接收数据不包含参考数据</translation>
     </message>
 </context>
 <context>
@@ -2077,12 +2077,12 @@
     <message>
         <location filename="../../qml/common/SAKResponseOptionsComboBox.qml" line="12"/>
         <source>Echo</source>
-        <translation type="unfinished"></translation>
+        <translation>回显</translation>
     </message>
     <message>
         <location filename="../../qml/common/SAKResponseOptionsComboBox.qml" line="13"/>
         <source>Aways</source>
-        <translation type="unfinished"></translation>
+        <translation>总是</translation>
     </message>
     <message>
         <location filename="../../qml/common/SAKResponseOptionsComboBox.qml" line="14"/>
@@ -2105,109 +2105,109 @@
     <message>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="26"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>确定</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="46"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="53"/>
         <source>Parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>参数</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="72"/>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="273"/>
         <source>End index</source>
-        <translation type="unfinished"></translation>
+        <translation>结束字节</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="82"/>
         <source>Reference data</source>
-        <translation type="unfinished"></translation>
+        <translation>参考数据</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="99"/>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="190"/>
         <source>Prefix</source>
-        <translation type="unfinished"></translation>
+        <translation>消息前缀</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="106"/>
         <source>Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>使能</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="113"/>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="266"/>
         <source>Suffix</source>
-        <translation type="unfinished"></translation>
+        <translation>消息后缀</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="120"/>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="252"/>
         <source>Start index</source>
-        <translation type="unfinished"></translation>
+        <translation>开始字节</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="130"/>
         <source>Reference</source>
-        <translation type="unfinished"></translation>
+        <translation>参考数据</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="140"/>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="290"/>
         <source>Escape</source>
-        <translation type="unfinished"></translation>
+        <translation>转义</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="147"/>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="228"/>
         <source>Algorithm</source>
-        <translation type="unfinished"></translation>
+        <translation>算法</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="154"/>
         <source>Response data</source>
-        <translation type="unfinished"></translation>
+        <translation>应答数据</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="167"/>
         <source>Format</source>
-        <translation type="unfinished"></translation>
+        <translation>数据格式</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="174"/>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="214"/>
         <source>Append CRC data</source>
-        <translation type="unfinished"></translation>
+        <translation>追加CRC数据</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="207"/>
         <source>Fromat</source>
-        <translation type="unfinished"></translation>
+        <translation>数据格式</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="242"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>描述</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="259"/>
         <source>Response</source>
-        <translation type="unfinished"></translation>
+        <translation>应答数据</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="283"/>
         <source>Option</source>
-        <translation type="unfinished"></translation>
+        <translation>选项</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.cc" line="20"/>
         <source>Responser Item Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>自动应答数据编辑器</translation>
     </message>
 </context>
 <context>
@@ -2215,32 +2215,32 @@
     <message>
         <location filename="../../src/toolsui/SAKSerialPortToolUi.ui" line="39"/>
         <source>Port name</source>
-        <translation type="unfinished"></translation>
+        <translation>端口名</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSerialPortToolUi.ui" line="65"/>
         <source>Baud rate</source>
-        <translation type="unfinished"></translation>
+        <translation>波特率</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSerialPortToolUi.ui" line="72"/>
         <source>Data bits</source>
-        <translation type="unfinished"></translation>
+        <translation>数据位</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSerialPortToolUi.ui" line="79"/>
         <source>Stop bits</source>
-        <translation type="unfinished"></translation>
+        <translation>停止位</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSerialPortToolUi.ui" line="86"/>
         <source>Parity</source>
-        <translation type="unfinished"></translation>
+        <translation>校验位</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSerialPortToolUi.ui" line="93"/>
         <source>Flow control</source>
-        <translation type="unfinished"></translation>
+        <translation>流控位</translation>
     </message>
 </context>
 <context>
@@ -2248,52 +2248,52 @@
     <message>
         <location filename="../../src/toolsui/SAKSerialPortTransmitterToolUiEditor.ui" line="14"/>
         <source>Serial Port Transmitter Item Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>串口转发编辑器</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSerialPortTransmitterToolUiEditor.ui" line="20"/>
         <source>Parity</source>
-        <translation type="unfinished"></translation>
+        <translation>校验位</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSerialPortTransmitterToolUiEditor.ui" line="27"/>
         <source>Stop bits</source>
-        <translation type="unfinished"></translation>
+        <translation>停止位</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSerialPortTransmitterToolUiEditor.ui" line="37"/>
         <source>Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>使能</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSerialPortTransmitterToolUiEditor.ui" line="54"/>
         <source>Baudrate</source>
-        <translation type="unfinished"></translation>
+        <translation>波特率</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSerialPortTransmitterToolUiEditor.ui" line="61"/>
         <source>Data bits</source>
-        <translation type="unfinished"></translation>
+        <translation>数据位</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSerialPortTransmitterToolUiEditor.ui" line="74"/>
         <source>Port name</source>
-        <translation type="unfinished"></translation>
+        <translation>设备名</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSerialPortTransmitterToolUiEditor.ui" line="81"/>
         <source>Flow control</source>
-        <translation type="unfinished"></translation>
+        <translation>流控位</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSerialPortTransmitterToolUiEditor.ui" line="118"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSerialPortTransmitterToolUiEditor.ui" line="125"/>
         <source>Apply</source>
-        <translation type="unfinished"></translation>
+        <translation>应用</translation>
     </message>
 </context>
 <context>
@@ -2301,47 +2301,47 @@
     <message>
         <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="62"/>
         <source>Client port</source>
-        <translation type="unfinished"></translation>
+        <translation>客户端端口</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="69"/>
         <source>(closed)</source>
-        <translation type="unfinished"></translation>
+        <translation>(关闭)</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="76"/>
         <source>Server IP</source>
-        <translation type="unfinished"></translation>
+        <translation>服务器IP</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="83"/>
         <source>Server port</source>
-        <translation type="unfinished"></translation>
+        <translation>服务器端口</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="90"/>
         <source>Context</source>
-        <translation type="unfinished"></translation>
+        <translation>绑定信息</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="107"/>
         <source>Message</source>
-        <translation type="unfinished"></translation>
+        <translation>消息类型</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="114"/>
         <source>Client IP</source>
-        <translation type="unfinished"></translation>
+        <translation>客户端IP</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSocketClientToolUi.ui" line="137"/>
         <source>Specify ip and port</source>
-        <translation type="unfinished"></translation>
+        <translation>指定IP和端口</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSocketClientToolUi.cc" line="93"/>
         <source>Closed</source>
-        <translation type="unfinished"></translation>
+        <translation>关闭</translation>
     </message>
 </context>
 <context>
@@ -2349,52 +2349,52 @@
     <message>
         <location filename="../../src/toolsui/SAKSocketClientTransmitterToolUiEditor.ui" line="14"/>
         <source>Item Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>编辑器</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSocketClientTransmitterToolUiEditor.ui" line="20"/>
         <source>enable</source>
-        <translation type="unfinished"></translation>
+        <translation>使能</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSocketClientTransmitterToolUiEditor.ui" line="34"/>
         <source>Client IP</source>
-        <translation type="unfinished"></translation>
+        <translation>客户端IP</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSocketClientTransmitterToolUiEditor.ui" line="41"/>
         <source>Specified client ip and port</source>
-        <translation type="unfinished"></translation>
+        <translation>指定IP和端口</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSocketClientTransmitterToolUiEditor.ui" line="62"/>
         <source>Server IP</source>
-        <translation type="unfinished"></translation>
+        <translation>服务器IP</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSocketClientTransmitterToolUiEditor.ui" line="69"/>
         <source>Client port</source>
-        <translation type="unfinished"></translation>
+        <translation>客户端端口</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSocketClientTransmitterToolUiEditor.ui" line="76"/>
         <source>Server port</source>
-        <translation type="unfinished"></translation>
+        <translation>服务器端口</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSocketClientTransmitterToolUiEditor.ui" line="110"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSocketClientTransmitterToolUiEditor.ui" line="117"/>
         <source>Apply</source>
-        <translation type="unfinished"></translation>
+        <translation>应用</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSocketClientTransmitterToolUiEditor.ui" line="129"/>
         <source>Message type</source>
-        <translation type="unfinished"></translation>
+        <translation>消息类型</translation>
     </message>
 </context>
 <context>
@@ -2402,52 +2402,52 @@
     <message>
         <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="42"/>
         <source>(closed)</source>
-        <translation type="unfinished"></translation>
+        <translation>(关闭)</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="49"/>
         <source>Server port</source>
-        <translation type="unfinished"></translation>
+        <translation>服务器端口</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="69"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>清空</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="77"/>
         <source>All clients</source>
-        <translation type="unfinished"></translation>
+        <translation>所有客户端</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="85"/>
         <source>Binding</source>
-        <translation type="unfinished"></translation>
+        <translation>绑定信息</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="92"/>
         <source>Server IP</source>
-        <translation type="unfinished"></translation>
+        <translation>服务器IP</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="99"/>
         <source>Message</source>
-        <translation type="unfinished"></translation>
+        <translation>消息类型</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="106"/>
         <source>Specify ip and port</source>
-        <translation type="unfinished"></translation>
+        <translation>指定IP和端口</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSocketServerToolUi.ui" line="113"/>
         <source>send to client</source>
-        <translation type="unfinished"></translation>
+        <translation>发送目标设备</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSocketServerToolUi.cc" line="98"/>
         <source>Closed</source>
-        <translation type="unfinished"></translation>
+        <translation>关闭</translation>
     </message>
 </context>
 <context>
@@ -2455,17 +2455,17 @@
     <message>
         <location filename="../../src/toolsui/SAKStatisticianToolUi.ui" line="20"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKStatisticianToolUi.ui" line="38"/>
         <source>Frames:</source>
-        <translation type="unfinished"></translation>
+        <translation>帧数：</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKStatisticianToolUi.ui" line="58"/>
         <source>Bytes:</source>
-        <translation type="unfinished"></translation>
+        <translation>字节：</translation>
     </message>
 </context>
 <context>
@@ -2473,62 +2473,62 @@
     <message>
         <location filename="../../src/toolsui/SAKStorerToolUi.ui" line="32"/>
         <source>Storer</source>
-        <translation type="unfinished"></translation>
+        <translation>持久化参数</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKStorerToolUi.ui" line="110"/>
         <source>Saving file path</source>
-        <translation type="unfinished"></translation>
+        <translation>保存路径</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKStorerToolUi.ui" line="103"/>
         <source>Browser</source>
-        <translation type="unfinished"></translation>
+        <translation>浏览</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKStorerToolUi.ui" line="52"/>
         <source>Save time</source>
-        <translation type="unfinished"></translation>
+        <translation>保存时间</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKStorerToolUi.ui" line="59"/>
         <source>Save date</source>
-        <translation type="unfinished"></translation>
+        <translation>保存日期</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKStorerToolUi.ui" line="45"/>
         <source>Save tx</source>
-        <translation type="unfinished"></translation>
+        <translation>保存接收</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKStorerToolUi.ui" line="38"/>
         <source>Save rx</source>
-        <translation type="unfinished"></translation>
+        <translation>保存发送</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKStorerToolUi.ui" line="66"/>
         <source>Save format</source>
-        <translation type="unfinished"></translation>
+        <translation>保存格式</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKStorerToolUi.ui" line="73"/>
         <source>Save ms</source>
-        <translation type="unfinished"></translation>
+        <translation>保存未免</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKStorerToolUi.ui" line="80"/>
         <source>Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>使能</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKStorerToolUi.cc" line="94"/>
         <source>Save file</source>
-        <translation type="unfinished"></translation>
+        <translation>保存文件</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKStorerToolUi.cc" line="95"/>
         <source>txt (*.txt); all (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>txt (*.txt); all(*)</translation>
     </message>
 </context>
 <context>
@@ -2536,17 +2536,17 @@
     <message>
         <location filename="../../src/SAKSystemTrayIcon.cc" line="19"/>
         <source>Qt Swiss Army Knife</source>
-        <translation type="unfinished"></translation>
+        <translation>瑞士军刀</translation>
     </message>
     <message>
         <location filename="../../src/SAKSystemTrayIcon.cc" line="22"/>
         <source>Open main window</source>
-        <translation type="unfinished"></translation>
+        <translation>打开主窗口</translation>
     </message>
     <message>
         <location filename="../../src/SAKSystemTrayIcon.cc" line="25"/>
         <source>Exit program</source>
-        <translation type="unfinished"></translation>
+        <translation>退出程序</translation>
     </message>
 </context>
 <context>
@@ -2554,98 +2554,98 @@
     <message>
         <location filename="../../src/toolsui/SAKTableModelToolUi.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKTableModelToolUi.ui" line="32"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation>导出</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKTableModelToolUi.ui" line="39"/>
         <source>Import</source>
-        <translation type="unfinished"></translation>
+        <translation>导入</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKTableModelToolUi.ui" line="46"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>删除</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKTableModelToolUi.ui" line="53"/>
         <source>Append</source>
-        <translation type="unfinished"></translation>
+        <translation>添加</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKTableModelToolUi.ui" line="60"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>清空</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKTableModelToolUi.ui" line="70"/>
         <source>Visible</source>
-        <translation type="unfinished"></translation>
+        <translation>可见性</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKTableModelToolUi.ui" line="77"/>
         <source>Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>编辑</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="260"/>
         <source>Please Select an Item</source>
-        <translation type="unfinished"></translation>
+        <translation>未选中</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="261"/>
         <source>Please select an tiem first, then try again!</source>
-        <translation type="unfinished"></translation>
+        <translation>请指定要删除的行后再重新尝试！</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="278"/>
         <source>Invalid Parameter</source>
-        <translation type="unfinished"></translation>
+        <translation>非法参数</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="279"/>
         <source>The value of mTableModelTool is nullptr, you must called initialize() first!</source>
-        <translation type="unfinished"></translation>
+        <translation>请先初始化后重试！</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="307"/>
         <source>Clear Data</source>
-        <translation type="unfinished"></translation>
+        <translation>清空数据</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="308"/>
         <source>The data will be empty from settings file, please confrim the operation!</source>
-        <translation type="unfinished"></translation>
+        <translation>数据将会被清楚，请确认该操作！</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="324"/>
         <source>Delete Data</source>
-        <translation type="unfinished"></translation>
+        <translation>删除数据</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="325"/>
         <source>The data will be delete from settings file, please confrim the operation!</source>
-        <translation type="unfinished"></translation>
+        <translation>数据将被删除，请确认操作！</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="347"/>
         <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="374"/>
         <source>Import data</source>
-        <translation type="unfinished"></translation>
+        <translation>导入数据</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="349"/>
         <source>JSON (*.json);;All (*)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="376"/>
         <source>JSON (*.json);;All (*); </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -2653,7 +2653,7 @@
     <message>
         <location filename="../../src/assistants/asciiassistant/src/SAKToolAsciiAssistant.ui" line="14"/>
         <source>Ascii Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>ASCII参考助手</translation>
     </message>
 </context>
 <context>
@@ -2661,189 +2661,189 @@
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="63"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>清空输出</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="70"/>
         <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="77"/>
         <source>Format</source>
-        <translation type="unfinished"></translation>
+        <translation>输出格式</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="84"/>
         <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="112"/>
         <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="187"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>更多设置</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="91"/>
         <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="268"/>
         <source>Rx</source>
-        <translation type="unfinished"></translation>
+        <translation>显示接收</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="98"/>
         <source>Cycle</source>
-        <translation type="unfinished"></translation>
+        <translation>循环发送</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="105"/>
         <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="304"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>打开设备</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="132"/>
         <source>MS</source>
-        <translation type="unfinished"></translation>
+        <translation>显示毫秒</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="152"/>
         <source>Send</source>
-        <translation type="unfinished"></translation>
+        <translation>发送数据</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="159"/>
         <source>Date</source>
-        <translation type="unfinished"></translation>
+        <translation>显示日期</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="166"/>
         <source>Time</source>
-        <translation type="unfinished"></translation>
+        <translation>显示时间</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="173"/>
         <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="300"/>
         <source>Tx</source>
-        <translation type="unfinished"></translation>
+        <translation>显示发送</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="180"/>
         <source>Wrap</source>
-        <translation type="unfinished"></translation>
+        <translation>自动换行</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="215"/>
         <source>Input control</source>
-        <translation type="unfinished"></translation>
+        <translation>输入控制</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="406"/>
         <source>Transmitter</source>
-        <translation type="unfinished"></translation>
+        <translation>数据转发</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="413"/>
         <source>Tab 1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="418"/>
         <source>Tab 2</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="201"/>
         <source>Output control</source>
-        <translation type="unfinished"></translation>
+        <translation>输出控制</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="208"/>
         <source>Communication control</source>
-        <translation type="unfinished"></translation>
+        <translation>通信控制</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="242"/>
         <source>I/O</source>
-        <translation type="unfinished"></translation>
+        <translation>输入输出</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="334"/>
         <source>Input</source>
-        <translation type="unfinished"></translation>
+        <translation>输入数据</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="256"/>
         <source>Output</source>
-        <translation type="unfinished"></translation>
+        <translation>数据输出</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="361"/>
         <source>:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="391"/>
         <source>Emiter</source>
-        <translation type="unfinished"></translation>
+        <translation>自动发送</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="396"/>
         <source>Responser</source>
-        <translation type="unfinished"></translation>
+        <translation>自动应答</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="222"/>
         <location filename="../../src/toolboxui/SAKToolBoxUi.ui" line="401"/>
         <source>Prestorer</source>
-        <translation type="unfinished"></translation>
+        <translation>数据预设</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="79"/>
         <source>SerialPort</source>
-        <translation type="unfinished"></translation>
+        <translation>串口调试</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="81"/>
         <source>UDP Client</source>
-        <translation type="unfinished"></translation>
+        <translation>UDP客户端</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="83"/>
         <source>UDP Server</source>
-        <translation type="unfinished"></translation>
+        <translation>UDP服务器</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="85"/>
         <source>TCP Client</source>
-        <translation type="unfinished"></translation>
+        <translation>TCP客户端</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="87"/>
         <source>TCP Server</source>
-        <translation type="unfinished"></translation>
+        <translation>TCP服务器</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="89"/>
         <source>WebSocket Client</source>
-        <translation type="unfinished"></translation>
+        <translation>WebSocket客户端</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="91"/>
         <source>WebSocket Server</source>
-        <translation type="unfinished"></translation>
+        <translation>WebSocket服务器</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="93"/>
         <source>BLE Central</source>
-        <translation type="unfinished"></translation>
+        <translation>蓝牙中心设备</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="302"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>关闭</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="398"/>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>禁止</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="597"/>
         <source>Error Occured</source>
-        <translation type="unfinished"></translation>
+        <translation>出现错误</translation>
     </message>
 </context>
 <context>
@@ -2851,17 +2851,17 @@
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUiCommunicationMenu.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUiCommunicationMenu.cc" line="30"/>
         <source>Tx analyzer</source>
-        <translation type="unfinished"></translation>
+        <translation>发送帧分析器</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUiCommunicationMenu.cc" line="31"/>
         <source>Rx analyzer</source>
-        <translation type="unfinished"></translation>
+        <translation>接受帧分析器</translation>
     </message>
 </context>
 <context>
@@ -2869,47 +2869,47 @@
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="20"/>
         <source>Append prefix</source>
-        <translation type="unfinished"></translation>
+        <translation>消息前缀</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="30"/>
         <source>Escape character</source>
-        <translation type="unfinished"></translation>
+        <translation>转义字符</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="40"/>
         <source>Append suffix</source>
-        <translation type="unfinished"></translation>
+        <translation>追加后缀</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="47"/>
         <source>Big endian CRC</source>
-        <translation type="unfinished"></translation>
+        <translation>大端字节序</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="63"/>
         <source>CRC end index</source>
-        <translation type="unfinished"></translation>
+        <translation>结束字节</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="70"/>
         <source>CRC algorithm</source>
-        <translation type="unfinished"></translation>
+        <translation>算法</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="77"/>
         <source>Append CRC</source>
-        <translation type="unfinished"></translation>
+        <translation>追加CRC数据</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUiInputMenu.ui" line="84"/>
         <source>CRC start index</source>
-        <translation type="unfinished"></translation>
+        <translation>开始字节</translation>
     </message>
 </context>
 <context>
@@ -2917,17 +2917,17 @@
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUiOutputMenu.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUiOutputMenu.ui" line="20"/>
         <source>High light key words(separator is&apos; ;&apos;)</source>
-        <translation type="unfinished"></translation>
+        <translation>高亮关键词（使用；隔开）</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUiOutputMenu.ui" line="27"/>
         <source>Such as:hello;world</source>
-        <translation type="unfinished"></translation>
+        <translation>例如：hello;world</translation>
     </message>
 </context>
 <context>
@@ -2935,78 +2935,78 @@
     <message>
         <location filename="../../src/assistants/broadcastassistant/src/SAKToolBroadcastAssistant.ui" line="20"/>
         <source>Information output</source>
-        <translation type="unfinished"></translation>
+        <translation>信息输出</translation>
     </message>
     <message>
         <location filename="../../src/assistants/broadcastassistant/src/SAKToolBroadcastAssistant.ui" line="26"/>
         <source>Output format</source>
-        <translation type="unfinished"></translation>
+        <translation>输出格式</translation>
     </message>
     <message>
         <location filename="../../src/assistants/broadcastassistant/src/SAKToolBroadcastAssistant.ui" line="49"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>清空输出</translation>
     </message>
     <message>
         <location filename="../../src/assistants/broadcastassistant/src/SAKToolBroadcastAssistant.ui" line="62"/>
         <source>Broadcast parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>广播参数</translation>
     </message>
     <message>
         <location filename="../../src/assistants/broadcastassistant/src/SAKToolBroadcastAssistant.ui" line="71"/>
         <source>Broadcast port</source>
-        <translation type="unfinished"></translation>
+        <translation>广播端口</translation>
     </message>
     <message>
         <location filename="../../src/assistants/broadcastassistant/src/SAKToolBroadcastAssistant.ui" line="78"/>
         <source>Broadcast suffix</source>
-        <translation type="unfinished"></translation>
+        <translation>消息后缀</translation>
     </message>
     <message>
         <location filename="../../src/assistants/broadcastassistant/src/SAKToolBroadcastAssistant.ui" line="94"/>
         <source>Broadcast prefix</source>
-        <translation type="unfinished"></translation>
+        <translation>消息前缀</translation>
     </message>
     <message>
         <location filename="../../src/assistants/broadcastassistant/src/SAKToolBroadcastAssistant.ui" line="101"/>
         <source>Broadcast data</source>
-        <translation type="unfinished"></translation>
+        <translation>广播数据</translation>
     </message>
     <message>
         <location filename="../../src/assistants/broadcastassistant/src/SAKToolBroadcastAssistant.ui" line="108"/>
         <source>Broadcast interval</source>
-        <translation type="unfinished"></translation>
+        <translation>广播间隔</translation>
     </message>
     <message>
         <location filename="../../src/assistants/broadcastassistant/src/SAKToolBroadcastAssistant.ui" line="115"/>
         <source>Data format</source>
-        <translation type="unfinished"></translation>
+        <translation>数据格式</translation>
     </message>
     <message>
         <location filename="../../src/assistants/broadcastassistant/src/SAKToolBroadcastAssistant.ui" line="122"/>
         <location filename="../../src/assistants/broadcastassistant/src/SAKToolBroadcastAssistant.cc" line="68"/>
         <source>Broadcast</source>
-        <translation type="unfinished"></translation>
+        <translation>广播</translation>
     </message>
     <message>
         <location filename="../../src/assistants/broadcastassistant/src/SAKToolBroadcastAssistant.ui" line="132"/>
         <source>Broadcast address</source>
-        <translation type="unfinished"></translation>
+        <translation>广播地址</translation>
     </message>
     <message>
         <location filename="../../src/assistants/broadcastassistant/src/SAKToolBroadcastAssistant.ui" line="139"/>
         <source>55443</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/assistants/broadcastassistant/src/SAKToolBroadcastAssistant.cc" line="55"/>
         <source>Broadcast Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>广播助手</translation>
     </message>
     <message>
         <location filename="../../src/assistants/broadcastassistant/src/SAKToolBroadcastAssistant.cc" line="67"/>
         <source>Terminate</source>
-        <translation type="unfinished"></translation>
+        <translation>终端</translation>
     </message>
 </context>
 <context>
@@ -3014,88 +3014,88 @@
     <message>
         <location filename="../../src/assistants/crcassistant/src/SAKToolCRCAssistant.ui" line="14"/>
         <source>CRC Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>CRC助手</translation>
     </message>
     <message>
         <location filename="../../src/assistants/crcassistant/src/SAKToolCRCAssistant.ui" line="20"/>
         <source>Paloy value</source>
-        <translation type="unfinished"></translation>
+        <translation>负载数据</translation>
     </message>
     <message>
         <location filename="../../src/assistants/crcassistant/src/SAKToolCRCAssistant.ui" line="27"/>
         <source>Initial value</source>
-        <translation type="unfinished"></translation>
+        <translation>初始取值</translation>
     </message>
     <message>
         <location filename="../../src/assistants/crcassistant/src/SAKToolCRCAssistant.ui" line="34"/>
         <location filename="../../src/assistants/crcassistant/src/SAKToolCRCAssistant.ui" line="232"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>复制</translation>
     </message>
     <message>
         <location filename="../../src/assistants/crcassistant/src/SAKToolCRCAssistant.ui" line="44"/>
         <source>More information about crc calculation, visit http://www.ip33.com/crc.html(double clicked to visit)</source>
-        <translation type="unfinished"></translation>
+        <translation>更多信息请访问：http://www.ip33.com/crc.html(双击访问)</translation>
     </message>
     <message>
         <location filename="../../src/assistants/crcassistant/src/SAKToolCRCAssistant.ui" line="60"/>
         <source>Input reversal</source>
-        <translation type="unfinished"></translation>
+        <translation>输入翻转</translation>
     </message>
     <message>
         <location filename="../../src/assistants/crcassistant/src/SAKToolCRCAssistant.ui" line="67"/>
         <source>Output reversal</source>
-        <translation type="unfinished"></translation>
+        <translation>输出翻转</translation>
     </message>
     <message>
         <location filename="../../src/assistants/crcassistant/src/SAKToolCRCAssistant.ui" line="87"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>清空</translation>
     </message>
     <message>
         <location filename="../../src/assistants/crcassistant/src/SAKToolCRCAssistant.ui" line="94"/>
         <source>Calculate</source>
-        <translation type="unfinished"></translation>
+        <translation>计算</translation>
     </message>
     <message>
         <location filename="../../src/assistants/crcassistant/src/SAKToolCRCAssistant.ui" line="104"/>
         <source>Parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>参数</translation>
     </message>
     <message>
         <location filename="../../src/assistants/crcassistant/src/SAKToolCRCAssistant.ui" line="114"/>
         <source>XOR value</source>
-        <translation type="unfinished"></translation>
+        <translation>异或值</translation>
     </message>
     <message>
         <location filename="../../src/assistants/crcassistant/src/SAKToolCRCAssistant.ui" line="124"/>
         <source>Height its is on the left and the low bits is on the right</source>
-        <translation type="unfinished"></translation>
+        <translation>高字节在左边，低字节在右边</translation>
     </message>
     <message>
         <location filename="../../src/assistants/crcassistant/src/SAKToolCRCAssistant.ui" line="157"/>
         <source>HEX</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/assistants/crcassistant/src/SAKToolCRCAssistant.ui" line="167"/>
         <source>ASCII</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/assistants/crcassistant/src/SAKToolCRCAssistant.ui" line="190"/>
         <source>Result(HEX)</source>
-        <translation type="unfinished"></translation>
+        <translation>结果（16进制）</translation>
     </message>
     <message>
         <location filename="../../src/assistants/crcassistant/src/SAKToolCRCAssistant.ui" line="197"/>
         <source>Parameter model</source>
-        <translation type="unfinished"></translation>
+        <translation>参数模型</translation>
     </message>
     <message>
         <location filename="../../src/assistants/crcassistant/src/SAKToolCRCAssistant.ui" line="214"/>
         <source>Width</source>
-        <translation type="unfinished"></translation>
+        <translation>位宽</translation>
     </message>
     <message>
         <location filename="../../src/assistants/crcassistant/src/SAKToolCRCAssistant.ui" line="221"/>
@@ -3104,22 +3104,22 @@
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;SimSun&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/assistants/crcassistant/src/SAKToolCRCAssistant.ui" line="262"/>
         <source>Paloy</source>
-        <translation type="unfinished"></translation>
+        <translation>负载</translation>
     </message>
     <message>
         <location filename="../../src/assistants/crcassistant/src/SAKToolCRCAssistant.ui" line="276"/>
         <source>Input data</source>
-        <translation type="unfinished"></translation>
+        <translation>输入数据</translation>
     </message>
     <message>
         <location filename="../../src/assistants/crcassistant/src/SAKToolCRCAssistant.ui" line="283"/>
         <source>Result(BIN)</source>
-        <translation type="unfinished"></translation>
+        <translation>结果（二进制）</translation>
     </message>
 </context>
 <context>
@@ -3127,58 +3127,58 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../src/assistants/filecheckassistant/src/SAKToolFileCheckAssistant.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/assistants/filecheckassistant/src/SAKToolFileCheckAssistant.ui" line="37"/>
         <source>Upper result</source>
-        <translation type="unfinished"></translation>
+        <translation>大写</translation>
     </message>
     <message>
         <location filename="../../src/assistants/filecheckassistant/src/SAKToolFileCheckAssistant.ui" line="76"/>
         <source>Checked file</source>
-        <translation type="unfinished"></translation>
+        <translation>校验文件</translation>
     </message>
     <message>
         <location filename="../../src/assistants/filecheckassistant/src/SAKToolFileCheckAssistant.ui" line="89"/>
         <source>Checked progress</source>
-        <translation type="unfinished"></translation>
+        <translation>检验进度</translation>
     </message>
     <message>
         <location filename="../../src/assistants/filecheckassistant/src/SAKToolFileCheckAssistant.ui" line="102"/>
         <source>Checked algorithm</source>
-        <translation type="unfinished"></translation>
+        <translation>检验算法</translation>
     </message>
     <message>
         <location filename="../../src/assistants/filecheckassistant/src/SAKToolFileCheckAssistant.ui" line="115"/>
         <source>Checked result</source>
-        <translation type="unfinished"></translation>
+        <translation>校验结果</translation>
     </message>
     <message>
         <location filename="../../src/assistants/filecheckassistant/src/SAKToolFileCheckAssistant.ui" line="125"/>
         <location filename="../../src/assistants/filecheckassistant/src/SAKToolFileCheckAssistant.cc" line="176"/>
         <source>Calculate</source>
-        <translation type="unfinished"></translation>
+        <translation>计算</translation>
     </message>
     <message>
         <location filename="../../src/assistants/filecheckassistant/src/SAKToolFileCheckAssistant.ui" line="132"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>打开</translation>
     </message>
     <message>
         <location filename="../../src/assistants/filecheckassistant/src/SAKToolFileCheckAssistant.cc" line="63"/>
         <source>File Check Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>文件校验助手</translation>
     </message>
     <message>
         <location filename="../../src/assistants/filecheckassistant/src/SAKToolFileCheckAssistant.cc" line="125"/>
         <source>Remaining time</source>
-        <translation type="unfinished"></translation>
+        <translation>剩余时间</translation>
     </message>
     <message>
         <location filename="../../src/assistants/filecheckassistant/src/SAKToolFileCheckAssistant.cc" line="182"/>
         <source>StopCalculating</source>
-        <translation type="unfinished"></translation>
+        <translation>停止校验</translation>
     </message>
 </context>
 <context>
@@ -3186,42 +3186,42 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../src/assistants/floatassistant/src/SAKToolFloatAssistant.ui" line="14"/>
         <source>Float Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>浮点数助手</translation>
     </message>
     <message>
         <location filename="../../src/assistants/floatassistant/src/SAKToolFloatAssistant.ui" line="26"/>
         <source>Raw data</source>
-        <translation type="unfinished"></translation>
+        <translation>原始数据</translation>
     </message>
     <message>
         <location filename="../../src/assistants/floatassistant/src/SAKToolFloatAssistant.ui" line="55"/>
         <source>Float</source>
-        <translation type="unfinished"></translation>
+        <translation>浮点数据</translation>
     </message>
     <message>
         <location filename="../../src/assistants/floatassistant/src/SAKToolFloatAssistant.ui" line="65"/>
         <source>Double</source>
-        <translation type="unfinished"></translation>
+        <translation>双精度浮点数</translation>
     </message>
     <message>
         <location filename="../../src/assistants/floatassistant/src/SAKToolFloatAssistant.ui" line="72"/>
         <source>HexRawData</source>
-        <translation type="unfinished"></translation>
+        <translation>16进制数据</translation>
     </message>
     <message>
         <location filename="../../src/assistants/floatassistant/src/SAKToolFloatAssistant.ui" line="79"/>
         <source>Big endian</source>
-        <translation type="unfinished"></translation>
+        <translation>大端顺</translation>
     </message>
     <message>
         <location filename="../../src/assistants/floatassistant/src/SAKToolFloatAssistant.ui" line="86"/>
         <source>Create</source>
-        <translation type="unfinished"></translation>
+        <translation>生成</translation>
     </message>
     <message>
         <location filename="../../src/assistants/floatassistant/src/SAKToolFloatAssistant.ui" line="112"/>
         <source>Cooked data</source>
-        <translation type="unfinished"></translation>
+        <translation>生成数据</translation>
     </message>
 </context>
 <context>
@@ -3229,32 +3229,32 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../src/assistants/stringassistant/src/SAKToolStringAssistant.ui" line="14"/>
         <source>String Assistant</source>
-        <translation type="unfinished"></translation>
+        <translation>字符串助手</translation>
     </message>
     <message>
         <location filename="../../src/assistants/stringassistant/src/SAKToolStringAssistant.ui" line="36"/>
         <source>Raw data</source>
-        <translation type="unfinished"></translation>
+        <translation>原始数据</translation>
     </message>
     <message>
         <location filename="../../src/assistants/stringassistant/src/SAKToolStringAssistant.ui" line="43"/>
         <source>Create</source>
-        <translation type="unfinished"></translation>
+        <translation>生成</translation>
     </message>
     <message>
         <location filename="../../src/assistants/stringassistant/src/SAKToolStringAssistant.ui" line="50"/>
         <source>Cooked data</source>
-        <translation type="unfinished"></translation>
+        <translation>输出数据</translation>
     </message>
     <message>
         <location filename="../../src/assistants/stringassistant/src/SAKToolStringAssistant.ui" line="94"/>
         <source>Input format</source>
-        <translation type="unfinished"></translation>
+        <translation>输入格式</translation>
     </message>
     <message>
         <location filename="../../src/assistants/stringassistant/src/SAKToolStringAssistant.ui" line="107"/>
         <source>Output format</source>
-        <translation type="unfinished"></translation>
+        <translation>输出格式</translation>
     </message>
 </context>
 <context>
@@ -3262,12 +3262,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../src/toolsui/SAKVelometerToolUi.ui" line="20"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKVelometerToolUi.ui" line="38"/>
         <source>Velometer:</source>
-        <translation type="unfinished"></translation>
+        <translation>速度：</translation>
     </message>
 </context>
 <context>
@@ -3276,33 +3276,33 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/toolbox/ToolBoxCommonClient.qml" line="40"/>
         <location filename="../../qml/toolbox/ToolBoxCommonClient.qml" line="84"/>
         <source>Address</source>
-        <translation type="unfinished"></translation>
+        <translation>地址</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxCommonClient.qml" line="51"/>
         <location filename="../../qml/toolbox/ToolBoxCommonClient.qml" line="93"/>
         <source>Port</source>
-        <translation type="unfinished"></translation>
+        <translation>导出</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxCommonClient.qml" line="62"/>
         <source>Binding</source>
-        <translation type="unfinished"></translation>
+        <translation>绑定</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxCommonClient.qml" line="73"/>
         <source>Specify client information</source>
-        <translation type="unfinished"></translation>
+        <translation>指定客户端IP端口</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxCommonClient.qml" line="80"/>
         <source>Server settings</source>
-        <translation type="unfinished"></translation>
+        <translation>服务器配置</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxCommonClient.qml" line="102"/>
         <source>Message</source>
-        <translation type="unfinished"></translation>
+        <translation>消息</translation>
     </message>
 </context>
 <context>
@@ -3310,27 +3310,27 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../qml/toolbox/ToolBoxCommonCrcParameters.qml" line="8"/>
         <source>CRC Parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>CRC参数</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxCommonCrcParameters.qml" line="27"/>
         <source>CRC enable</source>
-        <translation type="unfinished"></translation>
+        <translation>追加CRC数据</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxCommonCrcParameters.qml" line="32"/>
         <source>CRC arithmetic</source>
-        <translation type="unfinished"></translation>
+        <translation>算法</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxCommonCrcParameters.qml" line="39"/>
         <source>CRC start index</source>
-        <translation type="unfinished"></translation>
+        <translation>开始字节</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxCommonCrcParameters.qml" line="46"/>
         <source>CRC end index</source>
-        <translation type="unfinished"></translation>
+        <translation>结束字节</translation>
     </message>
 </context>
 <context>
@@ -3338,22 +3338,22 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../qml/toolbox/ToolBoxCommonServer.qml" line="33"/>
         <source>Address</source>
-        <translation type="unfinished"></translation>
+        <translation>地址</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxCommonServer.qml" line="43"/>
         <source>Port</source>
-        <translation type="unfinished"></translation>
+        <translation>端口</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxCommonServer.qml" line="52"/>
         <source>Clients</source>
-        <translation type="unfinished"></translation>
+        <translation>客户端列表</translation>
     </message>
     <message>
         <location filename="../../qml/toolbox/ToolBoxCommonServer.qml" line="60"/>
         <source>Message</source>
-        <translation type="unfinished"></translation>
+        <translation>消息</translation>
     </message>
 </context>
 <context>
