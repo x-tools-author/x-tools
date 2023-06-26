@@ -144,25 +144,6 @@ SAKApplication::~SAKApplication()
 
 }
 
-const QDate *SAKApplication::buildDate()
-{
-    return &::buildDate;
-}
-
-const QTime* SAKApplication::buildTime()
-{
-    return &::buildTime;
-}
-
-QString SAKApplication::dataPath()
-{
-    QString path = SAKSettings::instance()->fileName();
-    QStringList temp = path.split('/');
-    path = path.remove(temp.last());
-
-    return path;
-}
-
 QSplashScreen *SAKApplication::splashScreen()
 {
     return mSplashScreen;

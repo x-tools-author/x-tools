@@ -114,17 +114,6 @@
     </message>
     <message>
         <location filename="../../qml/MainWindowSerialPortPageController.qml" line="44"/>
-        <source></source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../qml/MainWindowSerialPortPageController.qml" line="45"/>
-        <source>
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../qml/MainWindowSerialPortPageController.qml" line="46"/>
         <source>
 </source>
         <translation type="unfinished"></translation>
@@ -132,7 +121,8 @@
     <message>
         <location filename="../../qml/MainWindowSerialPortPageController.qml" line="47"/>
         <source>
-</source>
+
+</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2555,7 +2545,7 @@
     <message>
         <location filename="../../src/toolsui/SAKSerialPortTransmitterToolUiEditor.ui" line="37"/>
         <source>Enable</source>
-        <translation>使能</translation>
+        <translation>启用</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSerialPortTransmitterToolUiEditor.ui" line="54"/>
@@ -2684,22 +2674,22 @@
     <message>
         <location filename="../../src/toolsui/SAKSocketClientTransmitterToolUiEditor.ui" line="20"/>
         <source>enable</source>
-        <translation>使能</translation>
+        <translation>启用</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSocketClientTransmitterToolUiEditor.ui" line="34"/>
         <source>Client IP</source>
-        <translation>客户端IP</translation>
+        <translation>客户端地址</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSocketClientTransmitterToolUiEditor.ui" line="41"/>
         <source>Specified client ip and port</source>
-        <translation>指定IP和端口</translation>
+        <translation>指定客户端地址与端口</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSocketClientTransmitterToolUiEditor.ui" line="62"/>
         <source>Server IP</source>
-        <translation>服务器IP</translation>
+        <translation>服务器地址</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSocketClientTransmitterToolUiEditor.ui" line="69"/>
@@ -2724,7 +2714,7 @@
     <message>
         <location filename="../../src/toolsui/SAKSocketClientTransmitterToolUiEditor.ui" line="129"/>
         <source>Message type</source>
-        <translation>消息类型</translation>
+        <translation>消息的类型</translation>
     </message>
 </context>
 <context>

@@ -50,6 +50,7 @@
 
 #include "SAKLogUi.hh"
 #include "SAKSettings.hh"
+#include "SAKInterface.hh"
 #include "SAKToolBoxUi.hh"
 #include "SAKMainWindow.hh"
 #include "SAKTranslator.hh"
@@ -867,8 +868,8 @@ void SAKMainWindow::aboutSoftware()
     };
 
     QString format = QLocale::system().dateFormat();
-    QString buildTimeString = sakApp->buildTime()->toString("hh:mm:ss");
-    auto dateTimeString = sakApp->buildDate()->toString(format);
+    QString buildTimeString = SAKInterface::buildDateTime("hh:mm:ss");
+    auto dateTimeString = SAKInterface::buildDateTime(format);
     dateTimeString = dateTimeString.append(" ");
     dateTimeString = dateTimeString.append(buildTimeString);
     QList<Info> infoList;
@@ -887,7 +888,7 @@ void SAKMainWindow::aboutSoftware()
              << Info{tr("Copyright"),
                 tr("Copyright 2018-%1 Qsaker(qsaker@foxmail.com)."
                    " All rights reserved.")
-                .arg(sakApp->buildDate()->toString("yyyy")), false};
+                .arg(SAKInterface::buildDateTime("yyyy")), false};
 
     QDialog dialog(this);
     dialog.setWindowTitle(tr("About QSAK"));

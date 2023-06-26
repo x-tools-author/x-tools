@@ -235,24 +235,6 @@
          <property name="bottomMargin">
           <number>4</number>
          </property>
-         <item row="3" column="0" colspan="2">
-          <layout class="QHBoxLayout" name="horizontalLayout_6">
-           <item>
-            <widget class="QPushButton" name="pushButtonInputSettings">
-             <property name="text">
-              <string>Settings</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="pushButtonInputSend">
-             <property name="text">
-              <string>Send</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
          <item row="0" column="0">
           <widget class="QLabel" name="label_5">
            <property name="sizePolicy">
@@ -265,9 +247,6 @@
             <string>Cycle</string>
            </property>
           </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="SAKTextFormatComboBox" name="comboBoxInputFormat"/>
          </item>
          <item row="0" column="1">
           <widget class="QComboBox" name="comboBoxInputIntervel">
@@ -289,12 +268,33 @@
            </property>
           </widget>
          </item>
-         <item row="2" column="1">
-          <widget class="QPushButton" name="pushButtonPrestorer">
-           <property name="text">
-            <string>Prestorer</string>
-           </property>
-          </widget>
+         <item row="1" column="1">
+          <widget class="SAKTextFormatComboBox" name="comboBoxInputFormat"/>
+         </item>
+         <item row="2" column="0" colspan="2">
+          <layout class="QGridLayout" name="gridLayout">
+           <item row="1" column="0">
+            <widget class="QPushButton" name="pushButtonInputSettings">
+             <property name="text">
+              <string>Settings</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QPushButton" name="pushButtonInputSend">
+             <property name="text">
+              <string>Send</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QPushButton" name="pushButtonPrestorer">
+             <property name="text">
+              <string>Prestorer</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </item>
         </layout>
        </widget>
@@ -434,7 +434,7 @@
          <item>
           <widget class="QLabel" name="label_7">
            <property name="text">
-            <string>:</string>
+            <string notr="true">:</string>
            </property>
           </widget>
          </item>

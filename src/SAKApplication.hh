@@ -26,20 +26,10 @@ public:
     explicit SAKApplication(int argc, char **argv);
     ~SAKApplication();
 
-    const QDate *buildDate();
-    const QTime *buildTime();
-    QString dataPath();
-    QSettings *settings();
     QSplashScreen *splashScreen();
     void showSplashScreenMessage(QString msg);
 
 private:
-    QTranslator mQtTranslator;
-    QTranslator mQtBaseTranslator;
-    QTranslator mSakTranslator;
-    QString mDatabaseName;
-    QString mLastDataTime;
-    QString mSettingsFileName;
     QSplashScreen *mSplashScreen;
     const QLoggingCategory mLoggingCategory{"SAK.Application"};
 
