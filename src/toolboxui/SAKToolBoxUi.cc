@@ -574,10 +574,13 @@ void SAKToolBoxUi::initTools()
 
     ui->tabWidgetTransmitter->clear();
     ui->tabWidgetTransmitter->addTab(mSerialPortTransmitterToolUi,
-                                     "SerialPort");
-    ui->tabWidgetTransmitter->addTab(mUdpTransmitterToolUi, "UDP");
-    ui->tabWidgetTransmitter->addTab(mTcpTransmitterToolUi, "TCP");
-    ui->tabWidgetTransmitter->addTab(mWebSocketTransmitterToolUi, "WebSocket");
+                                     tr("SerialPort", "Transmitter", __LINE__));
+    ui->tabWidgetTransmitter->addTab(mUdpTransmitterToolUi,
+                                     tr("UDP"));
+    ui->tabWidgetTransmitter->addTab(mTcpTransmitterToolUi,
+                                     tr("TCP"));
+    ui->tabWidgetTransmitter->addTab(mWebSocketTransmitterToolUi,
+                                     tr("WebSocket"));
 
     const QString key = mSettingsKey.transmitterTabIndex;
     int tabIndex = SAKSettings::instance()->value(key).toInt();

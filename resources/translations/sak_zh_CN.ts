@@ -2502,7 +2502,7 @@
     <message>
         <location filename="../../src/tools/SAKSerialPortTransmitterTool.cc" line="26"/>
         <source>portName</source>
-        <translation></translation>
+        <translation>设备名</translation>
     </message>
     <message>
         <location filename="../../src/tools/SAKSerialPortTransmitterTool.cc" line="28"/>
@@ -3127,7 +3127,7 @@
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="79"/>
         <source>SerialPort</source>
-        <translation>串口调试</translation>
+        <translation>串口设备</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="81"/>
@@ -3174,8 +3174,31 @@
         <source>Disable</source>
         <translation>禁止</translation>
     </message>
+    <message numerus="yes">
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="577"/>
+        <source>SerialPort</source>
+        <comment>Transmitter</comment>
+        <translation>
+            <numerusform>串口转发</numerusform>
+        </translation>
+    </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="597"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="579"/>
+        <source>UDP</source>
+        <translation>UDP转发</translation>
+    </message>
+    <message>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="581"/>
+        <source>TCP</source>
+        <translation>TCP转发</translation>
+    </message>
+    <message>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="583"/>
+        <source>WebSocket</source>
+        <translation>WebSocket转发</translation>
+    </message>
+    <message>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="600"/>
         <source>Error Occured</source>
         <translation>出现错误</translation>
     </message>

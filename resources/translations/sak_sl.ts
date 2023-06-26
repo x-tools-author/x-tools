@@ -3150,8 +3150,34 @@
         <source>Disable</source>
         <translation type="unfinished"></translation>
     </message>
+    <message numerus="yes">
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="577"/>
+        <source>SerialPort</source>
+        <comment>Transmitter</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
     <message>
-        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="597"/>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="579"/>
+        <source>UDP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="581"/>
+        <source>TCP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="583"/>
+        <source>WebSocket</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="600"/>
         <source>Error Occured</source>
         <translation type="unfinished"></translation>
     </message>
