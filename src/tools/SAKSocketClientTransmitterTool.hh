@@ -18,6 +18,7 @@ class SAKSocketClientTransmitterTool : public SAKTransmitterTool
 public:
     explicit SAKSocketClientTransmitterTool(const char *logCategory,
                                             QObject *parent = nullptr);
+    virtual QString cookHeaderString(const QString &str);
     Q_INVOKABLE virtual QVariant itemContext(int index) override;
 
 public:

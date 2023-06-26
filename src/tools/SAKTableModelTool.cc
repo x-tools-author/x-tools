@@ -90,6 +90,11 @@ QVariant SAKTableModelTool::itemsContext()
     return QVariant::fromValue(arr);
 }
 
+QString SAKTableModelTool::cookHeaderString(const QString &str)
+{
+    return str;
+}
+
 void SAKTableModelTool::onInvokeGetRowCount(int &count)
 {
     count = rowCount();

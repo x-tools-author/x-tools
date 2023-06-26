@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -65,6 +65,7 @@ public:
 
 public:
     explicit SAKPrestorerTool(QObject *parent = nullptr);
+    virtual QString cookHeaderString(const QString &str) override;
     Q_INVOKABLE virtual QVariant itemContext(int index) final;
     QString description(int index);
 

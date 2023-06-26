@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -65,6 +65,38 @@ QVariant SAKEmitterTool::itemContext(int index)
     mItemsMutex.unlock();
 
     return ctx;
+}
+
+QString SAKEmitterTool::cookHeaderString(const QString &str)
+{
+    DataKeys keys;
+    if (str == keys.itemEnable) {
+        return tr("Enable");
+    } else if (str == keys.itemDescription) {
+        return tr("Description");
+    } else if (str == keys.itemTextFormat) {
+        return tr("Format");
+    } else if (str == keys.itemEscapeCharacter) {
+        return tr("Escape Character");
+    } else if (str == keys.itemPrefix) {
+        return tr("Prefix");
+    } else if (str == keys.itemSuffix) {
+        return tr("Suffix");
+    } else if (str == keys.itemInterval) {
+        return tr("Interval");
+    } else if (str == keys.itemCrcEnable) {
+        return tr("Append CRC");
+    } else if (str == keys.itemCrcAlgorithm) {
+        return tr("Algorithm");
+    } else if (str == keys.itemCrcStartIndex) {
+        return tr("Start Index");
+    } else if (str == keys.itemCrcEndIndex) {
+        return tr("End Index");
+    } else if (str == keys.itemText) {
+        return tr("Data");
+    }
+
+    return "--";
 }
 
 int SAKEmitterTool::rowCount(const QModelIndex &parent) const

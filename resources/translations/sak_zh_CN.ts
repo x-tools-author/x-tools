@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<TS version="2.0" language="zh_CN">
 <context>
     <name>MainWindow</name>
     <message>
@@ -114,7 +114,7 @@
     </message>
     <message>
         <location filename="../../qml/MainWindowSerialPortPageController.qml" line="44"/>
-        <source><byte value="xd"/></source>
+        <source></source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -125,14 +125,14 @@
     </message>
     <message>
         <location filename="../../qml/MainWindowSerialPortPageController.qml" line="46"/>
-        <source><byte value="xd"/>
+        <source>
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/MainWindowSerialPortPageController.qml" line="47"/>
         <source>
-<byte value="xd"/></source>
+</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -909,6 +909,69 @@
     </message>
 </context>
 <context>
+    <name>SAKEmitterTool</name>
+    <message>
+        <location filename="../../src/tools/SAKEmitterTool.cc" line="74"/>
+        <source>Enable</source>
+        <translation>使能</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKEmitterTool.cc" line="76"/>
+        <source>Description</source>
+        <translation>描述</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKEmitterTool.cc" line="78"/>
+        <source>Format</source>
+        <translation>数据格式</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKEmitterTool.cc" line="80"/>
+        <source>Escape Character</source>
+        <translation>转义字符</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKEmitterTool.cc" line="82"/>
+        <source>Prefix</source>
+        <translation>前缀</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKEmitterTool.cc" line="84"/>
+        <source>Suffix</source>
+        <translation>后缀</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKEmitterTool.cc" line="86"/>
+        <source>Interval</source>
+        <translation>发射间隔</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKEmitterTool.cc" line="88"/>
+        <source>Append CRC</source>
+        <translation>追加CRC数据</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKEmitterTool.cc" line="90"/>
+        <source>Algorithm</source>
+        <translation>算法模型</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKEmitterTool.cc" line="92"/>
+        <source>Start Index</source>
+        <translation>开始字节</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKEmitterTool.cc" line="94"/>
+        <source>End Index</source>
+        <translation>结束字节</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKEmitterTool.cc" line="96"/>
+        <source>Data</source>
+        <translation>数据</translation>
+    </message>
+</context>
+<context>
     <name>SAKEmitterToolUiEditor</name>
     <message>
         <location filename="../../src/toolsui/SAKEmitterToolUiEditor.ui" line="20"/>
@@ -1297,23 +1360,23 @@
     </message>
     <message>
         <source>Round up for .5 and above.</source>
-        <translation type="vanished">缩放至x.5被。</translation>
+        <translation>缩放至x.5被。</translation>
     </message>
     <message>
         <source>Always round up.</source>
-        <translation type="vanished">总是放大。</translation>
+        <translation>总是放大。</translation>
     </message>
     <message>
         <source>Always round down.</source>
-        <translation type="vanished">总是缩小。</translation>
+        <translation>总是缩小。</translation>
     </message>
     <message>
         <source>Round up for .75 and above.</source>
-        <translation type="vanished">缩放至x.75被。</translation>
+        <translation>缩放至x.75被。</translation>
     </message>
     <message>
         <source>Don&apos;t round.</source>
-        <translation type="vanished">不缩放。</translation>
+        <translation>不缩放。</translation>
     </message>
     <message>
         <location filename="../../src/SAKMainWindow.cc" line="465"/>
@@ -1979,6 +2042,59 @@
     </message>
 </context>
 <context>
+    <name>SAKPrestorerTool</name>
+    <message>
+        <location filename="../../src/tools/SAKPrestorerTool.cc" line="197"/>
+        <source>Description</source>
+        <translation>描述</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKPrestorerTool.cc" line="199"/>
+        <source>Format</source>
+        <translation>数据格式</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKPrestorerTool.cc" line="201"/>
+        <source>Escape</source>
+        <translation>转义字符</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKPrestorerTool.cc" line="203"/>
+        <source>Prefix</source>
+        <translation>前缀</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKPrestorerTool.cc" line="205"/>
+        <source>Suffix</source>
+        <translation>后缀</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKPrestorerTool.cc" line="207"/>
+        <source>CrcEnable</source>
+        <translation>追加CRC数据</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKPrestorerTool.cc" line="209"/>
+        <source>Algorithm</source>
+        <translation>算法模型</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKPrestorerTool.cc" line="211"/>
+        <source>Start</source>
+        <translation>开始字节</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKPrestorerTool.cc" line="213"/>
+        <source>End</source>
+        <translation>结束字节</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKPrestorerTool.cc" line="215"/>
+        <source>Data</source>
+        <translation>数据</translation>
+    </message>
+</context>
+<context>
     <name>SAKPrestorerToolUiEditor</name>
     <message>
         <location filename="../../src/toolsui/SAKPrestorerToolUiEditor.ui" line="20"/>
@@ -2118,6 +2234,119 @@
         <location filename="../../qml/common/SAKResponseOptionsComboBox.qml" line="16"/>
         <source>InputDiscontainReference</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SAKResponserTool</name>
+    <message>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="376"/>
+        <source>Enable</source>
+        <translation>使能</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="378"/>
+        <source>Description</source>
+        <translation>描述</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="380"/>
+        <source>Option</source>
+        <translation>选项</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="382"/>
+        <source>RefFormat</source>
+        <translation>参考数据格式</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="384"/>
+        <source>RefEscape</source>
+        <translation>参考数据转义</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="386"/>
+        <source>RefPrefix</source>
+        <translation>参考数据前缀</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="388"/>
+        <source>RefSuffix</source>
+        <translation>参考数据后缀</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="390"/>
+        <source>RefCrcEnable</source>
+        <translation>追加CRC数据</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="392"/>
+        <source>RefAlgorithm</source>
+        <translation>算法模型</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="394"/>
+        <source>RefStart</source>
+        <translation>开始字节</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="396"/>
+        <source>RefEnd</source>
+        <translation>结束字节</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="398"/>
+        <source>ReferenceData</source>
+        <translation>参考数据</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="400"/>
+        <source>ResFormat</source>
+        <translation>应答数据格式</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="402"/>
+        <source>Escape</source>
+        <translation>应答数据转义</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="404"/>
+        <source>ResPrefix</source>
+        <translation>前缀</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="406"/>
+        <source>ResSuffix</source>
+        <translation>后缀</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="408"/>
+        <source>ResInterval</source>
+        <translation>应答延时</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="410"/>
+        <source>ResCrcEnable</source>
+        <translation>追加CRC数据</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="412"/>
+        <source>ResAlgorithm</source>
+        <translation>算法模型</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="414"/>
+        <source>ResStart</source>
+        <translation>开始字节</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="416"/>
+        <source>ResEnd</source>
+        <translation>结束字节</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKResponserTool.cc" line="418"/>
+        <source>ResponseData</source>
+        <translation>应答数据</translation>
     </message>
 </context>
 <context>
@@ -2264,6 +2493,49 @@
     </message>
 </context>
 <context>
+    <name>SAKSerialPortTransmitterTool</name>
+    <message>
+        <location filename="../../src/tools/SAKSerialPortTransmitterTool.cc" line="24"/>
+        <source>enable</source>
+        <translation>使能</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKSerialPortTransmitterTool.cc" line="26"/>
+        <source>portName</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKSerialPortTransmitterTool.cc" line="28"/>
+        <source>baudRate</source>
+        <translation>波特率</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKSerialPortTransmitterTool.cc" line="30"/>
+        <source>parity</source>
+        <translation>校验位</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKSerialPortTransmitterTool.cc" line="32"/>
+        <source>stopBits</source>
+        <translation>停止位</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKSerialPortTransmitterTool.cc" line="34"/>
+        <source>dataBits</source>
+        <translation>数据位</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKSerialPortTransmitterTool.cc" line="36"/>
+        <source>flowControl</source>
+        <translation>流控位</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKSerialPortTransmitterTool.cc" line="38"/>
+        <source>description</source>
+        <translation>描述</translation>
+    </message>
+</context>
+<context>
     <name>SAKSerialPortTransmitterToolUiEditor</name>
     <message>
         <location filename="../../src/toolsui/SAKSerialPortTransmitterToolUiEditor.ui" line="14"/>
@@ -2362,6 +2634,44 @@
         <location filename="../../src/toolsui/SAKSocketClientToolUi.cc" line="93"/>
         <source>Closed</source>
         <translation>关闭</translation>
+    </message>
+</context>
+<context>
+    <name>SAKSocketClientTransmitterTool</name>
+    <message>
+        <location filename="../../src/tools/SAKSocketClientTransmitterTool.cc" line="24"/>
+        <source>Enable</source>
+        <translation>使能</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKSocketClientTransmitterTool.cc" line="26"/>
+        <source>ClientIp</source>
+        <translation>客户端地址</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKSocketClientTransmitterTool.cc" line="28"/>
+        <source>ClientPort</source>
+        <translation>客户端端口</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKSocketClientTransmitterTool.cc" line="30"/>
+        <source>SpecifiedClientIpAndPort</source>
+        <translation>指定客户端的地址和端口</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKSocketClientTransmitterTool.cc" line="32"/>
+        <source>ServerIp</source>
+        <translation>服务器地址</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKSocketClientTransmitterTool.cc" line="34"/>
+        <source>ServerPort</source>
+        <translation>服务器端口</translation>
+    </message>
+    <message>
+        <location filename="../../src/tools/SAKSocketClientTransmitterTool.cc" line="36"/>
+        <source>MessageType</source>
+        <translation>消息类型</translation>
     </message>
 </context>
 <context>
@@ -2466,7 +2776,7 @@
     </message>
     <message>
         <source>send to client</source>
-        <translation type="vanished">发送目标设备</translation>
+        <translation>发送目标设备</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSocketServerToolUi.cc" line="98"/>
@@ -2616,58 +2926,58 @@
         <translation>编辑</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="260"/>
+        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="261"/>
         <source>Please Select an Item</source>
         <translation>未选中</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="261"/>
+        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="262"/>
         <source>Please select an tiem first, then try again!</source>
         <translation>请指定要删除的行后再重新尝试！</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="278"/>
+        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="279"/>
         <source>Invalid Parameter</source>
         <translation>非法参数</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="279"/>
+        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="280"/>
         <source>The value of mTableModelTool is nullptr, you must called initialize() first!</source>
         <translation>请先初始化后重试！</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="307"/>
+        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="308"/>
         <source>Clear Data</source>
         <translation>清空数据</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="308"/>
+        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="309"/>
         <source>The data will be empty from settings file, please confrim the operation!</source>
         <translation>数据将会被清楚，请确认该操作！</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="324"/>
+        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="325"/>
         <source>Delete Data</source>
         <translation>删除数据</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="325"/>
+        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="326"/>
         <source>The data will be delete from settings file, please confrim the operation!</source>
         <translation>数据将被删除，请确认操作！</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="347"/>
-        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="374"/>
+        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="348"/>
+        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="375"/>
         <source>Import data</source>
         <translation>导入数据</translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="349"/>
+        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="350"/>
         <source>JSON (*.json);;All (*)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="376"/>
+        <location filename="../../src/toolsui/SAKTableModelToolUi.cc" line="377"/>
         <source>JSON (*.json);;All (*); </source>
         <translation></translation>
     </message>

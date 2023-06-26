@@ -17,6 +17,28 @@ SAKSocketClientTransmitterTool::SAKSocketClientTransmitterTool(
 
 }
 
+QString SAKSocketClientTransmitterTool::cookHeaderString(const QString &str)
+{
+    ItemContextKeys keys;
+    if (str == keys.enable) {
+        return tr("Enable");
+    } else if (str == keys.clientIp) {
+        return tr("ClientIp");
+    } else if (str == keys.clientPort) {
+        return tr("ClientPort");
+    } else if (str == keys.specifiedClientIpPort) {
+        return tr("SpecifiedClientIpAndPort");
+    } else if (str == keys.serverIp) {
+        return tr("ServerIp");
+    } else if (str == keys.serverPort) {
+        return tr("ServerPort");
+    } else if (str == keys.messageType) {
+        return tr("MessageType");
+    }
+
+    return "--";
+}
+
 QVariant SAKSocketClientTransmitterTool::itemContext(int index)
 {
     QJsonObject obj;

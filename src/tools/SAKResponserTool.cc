@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -367,6 +367,58 @@ QVariant SAKResponserTool::itemContext(int index)
     mItemsMutex.unlock();
 
     return ctx;
+}
+
+QString SAKResponserTool::cookHeaderString(const QString &str)
+{
+    ResponserItemKeys keys;
+    if (str == keys.itemEnable) {
+        return tr("Enable");
+    } else if (str == keys.itemDescription) {
+        return tr("Description");
+    } else if (str == keys.itemOption) {
+        return tr("Option");
+    } else if (str == keys.itemReferenceTextFormat) {
+        return tr("RefFormat");
+    } else if (str == keys.itemReferenceEscapeCharacter) {
+        return tr("RefEscape");
+    } else if (str == keys.itemReferencePrefix) {
+        return tr("RefPrefix");
+    } else if (str == keys.itemReferenceSuffix) {
+        return tr("RefSuffix");
+    } else if (str == keys.itemReferenceCrcEnable) {
+        return tr("RefCrcEnable");
+    } else if (str == keys.itemReferenceCrcAlgorithm) {
+        return tr("RefAlgorithm");
+    } else if (str == keys.itemReferenceCrcStartIndex) {
+        return tr("RefStart");
+    } else if (str == keys.itemReferenceCrcEndIndex) {
+        return tr("RefEnd");
+    } else if (str == keys.itemReferenceText) {
+        return tr("ReferenceData");
+    } else if (str == keys.itemResponseTextFormat) {
+        return tr("ResFormat");
+    } else if (str == keys.itemResponseEscapeCharacter) {
+        return tr("Escape");
+    } else if (str == keys.itemResponsePrefix) {
+        return tr("ResPrefix");
+    } else if (str == keys.itemResponseSuffix) {
+        return tr("ResSuffix");
+    } else if (str == keys.itemResponseInterval) {
+        return tr("ResInterval");
+    } else if (str == keys.itemResponseCrcEnable) {
+        return tr("ResCrcEnable");
+    } else if (str == keys.itemResponseCrcAlgorithm) {
+        return tr("ResAlgorithm");
+    } else if (str == keys.itemResponseCrcStartIndex) {
+        return tr("ResStart");
+    } else if (str == keys.itemResponseCrcEndIndex) {
+        return tr("ResEnd");
+    } else if (str == keys.itemResponseText) {
+        return tr("ResponseData");
+    }
+
+    return "--";
 }
 
 void SAKResponserTool::inputBytes(const QByteArray &bytes,

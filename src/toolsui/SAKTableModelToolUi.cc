@@ -100,6 +100,7 @@ void SAKTableModelToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
     for (int i = 0; i < columnCount; i++) {
         auto orientation = Qt::Orientation::Horizontal;
         QString str = mTableModel->headerData(i, orientation).toString();
+        str = mTableModelTool->cookHeaderString(str);
         headers.append(str);
     }
 

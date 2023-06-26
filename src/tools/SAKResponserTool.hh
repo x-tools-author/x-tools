@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -107,7 +107,7 @@ public:
 public:
     explicit SAKResponserTool(QObject *parent = nullptr);
     Q_INVOKABLE virtual QVariant itemContext(int index) final;
-
+    virtual QString cookHeaderString(const QString &str) override;
     virtual void inputBytes(const QByteArray &bytes,
                             const QVariant &context = QJsonObject()) final;
 

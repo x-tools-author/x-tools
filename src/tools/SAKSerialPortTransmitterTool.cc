@@ -17,6 +17,30 @@ SAKSerialPortTransmitterTool::SAKSerialPortTransmitterTool(QObject *parent)
 
 }
 
+QString SAKSerialPortTransmitterTool::cookHeaderString(const QString &str)
+{
+    ItemContextKey keys;
+    if (str == keys.enable) {
+        return tr("enable");
+    }  else if (str == keys.portName) {
+        return tr("portName");
+    } else if (str == keys.baudRate) {
+        return tr("baudRate");
+    } else if (str == keys.parity) {
+        return tr("parity");
+    } else if (str == keys.stopBits) {
+        return tr("stopBits");
+    } else if (str == keys.dataBits) {
+        return tr("dataBits");
+    } else if (str == keys.flowControl) {
+        return tr("flowControl");
+    } else if (str == keys.description) {
+        return tr("description");
+    }
+
+    return "--";
+}
+
 QVariant SAKSerialPortTransmitterTool::itemContext(int index)
 {
     QJsonObject obj;

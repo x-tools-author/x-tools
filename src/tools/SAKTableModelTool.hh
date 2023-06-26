@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -26,7 +26,7 @@ public:
 
     Q_INVOKABLE void addItem(const QString &jsonCtx, int index = -1);
     Q_INVOKABLE QVariant itemsContext();
-
+    Q_INVOKABLE virtual QString cookHeaderString(const QString &str);
     Q_INVOKABLE virtual QVariant itemContext(int index) = 0;
 
 protected:

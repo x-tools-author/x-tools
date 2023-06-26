@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -188,6 +188,34 @@ QVariant SAKPrestorerTool::columnDisplayRoleData(const Item &item, int column) c
     }
 
     return QVariant("Error");
+}
+
+QString SAKPrestorerTool::cookHeaderString(const QString &str)
+{
+    ItemKeys keys;
+    if (str == keys.itemDescription) {
+        return tr("Description");
+    } else if (str == keys.itemTextFormat) {
+        return tr("Format");
+    } else if (str == keys.itemEscapeCharacter) {
+        return tr("Escape");
+    } else if (str == keys.itemPrefix) {
+        return tr("Prefix");
+    } else if (str == keys.itemSuffix) {
+        return tr("Suffix");
+    } else if (str == keys.itemCrcEnable) {
+        return tr("CrcEnable");
+    } else if (str == keys.itemCrcAlgorithm) {
+        return tr("Algorithm");
+    } else if (str == keys.itemCrcStartIndex) {
+        return tr("Start");
+    } else if (str == keys.itemCrcEndIndex) {
+        return tr("End");
+    } else if (str == keys.itemText) {
+        return tr("Data");
+    }
+
+    return "--";
 }
 
 QVariant SAKPrestorerTool::itemContext(int index)
