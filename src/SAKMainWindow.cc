@@ -413,22 +413,33 @@ void SAKMainWindow::initOptionMenuHdpiPolicy(QMenu *optionMenu)
     auto rpf = Qt::HighDpiScaleFactorRoundingPolicy::RoundPreferFloor;
     auto passThrough = Qt::HighDpiScaleFactorRoundingPolicy::PassThrough;
 
+    QString fileName = qApp->applicationDirPath();
+    fileName += "/qt.conf";
+    auto triggered = [=](int policy){
+        if (QFile::remove(fileName)) {
+            qCInfo(mLoggingCategory) << fileName << "was removed!";
+        } else {
+            qCInfo(mLoggingCategory) << "removed" << fileName << "failed";
+        }
+
+        SAKSettings::instance()->setHdpiPolicy(int(policy));
+        rebootRequestion();
+    };
+
     connect(roundAction, &QAction::triggered, this, [=](){
-        SAKSettings::instance()->setHdpiPolicy(int(round));
+        triggered(int(round));
     });
     connect(ceilAction, &QAction::triggered, this, [=](){
-        SAKSettings::instance()->setHdpiPolicy(int(ceil));
+        triggered(int(ceil));
     });
     connect(floorAction, &QAction::triggered, this, [=](){
-        SAKSettings::instance()->setHdpiPolicy(int(floor));
+        triggered(int(floor));
     });
     connect(rpfAction, &QAction::triggered, this, [=](){
-
-        SAKSettings::instance()->setHdpiPolicy(int(rpf));
+        triggered(int(rpf));
     });
     connect(passThroughAction, &QAction::triggered, this, [=](){
-
-        SAKSettings::instance()->setHdpiPolicy(int(passThrough));
+        triggered(int(passThrough));
     });
 
     ag->addAction(roundAction);
@@ -456,6 +467,33 @@ void SAKMainWindow::initOptionMenuHdpiPolicy(QMenu *optionMenu)
 
     menu->addActions(ag->actions());
     optionMenu->addMenu(menu);
+
+#ifdef Q_OS_WIN
+    QAction *systemAction = new QAction(tr("System"), this);
+    systemAction->setCheckable(true);
+    ag->addAction(systemAction);
+    menu->addSeparator();
+    menu->addAction(systemAction);
+    connect(systemAction, &QAction::triggered, this, [=](){
+        QFile file(fileName);
+        if (file.open(QFile::WriteOnly|QFile::Text|QFile::Truncate)) {
+            QTextStream out(&file);
+            out << "[Platforms]\nWindowsArguments = dpiawareness=0\n";
+            file.close();
+        } else {
+            qCWarning(mLoggingCategory) << fileName;
+            qCWarning(mLoggingCategory) << "can not open file:"
+                                        << file.errorString();
+        }
+
+        SAKSettings::instance()->setHdpiPolicy(999);
+        rebootRequestion();
+    });
+
+    if (SAKSettings::instance()->hdpiPolicy() == 999) {
+        systemAction->setChecked(true);
+    }
+#endif
 }
 #endif
 

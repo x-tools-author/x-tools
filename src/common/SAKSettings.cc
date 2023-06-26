@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -38,7 +38,9 @@ int SAKSettings::hdpiPolicy()
     int ret = value(mSettingsKey.hdpiPolicy).toInt();
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     if ((ret < 1) || (ret > 5)) {
-        ret = int(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
+        if (ret != 999) {
+            ret = int(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
+        }
     }
 #endif
     return ret;
@@ -48,7 +50,9 @@ void SAKSettings::setHdpiPolicy(int policy)
 {
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
     if ((policy < 1) || (policy > 5)) {
-        policy = int(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
+        if (policy != 999) {
+            policy = int(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
+        }
     }
 #endif
 
