@@ -210,7 +210,7 @@ QString SAKToolBoxUi::dateTimeContext()
         dateTimeFormat = dateFormat + " hh:mm:ss";
     } else if (t && m) {
         dateTimeFormat = " hh:mm:ss.zzz";
-    }  else if (d && m) {
+    } else if (d && m) {
         dateTimeFormat = dateFormat + " zzz";
     } else if (d) {
         dateTimeFormat = dateFormat;
