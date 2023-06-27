@@ -115,9 +115,11 @@ void SAKBleCentralTool::changeNotify()
         if (value == QByteArray::fromHex("0100")) {
             QByteArray value = QByteArray::fromHex("0000");
             service->writeDescriptor(descriptor, value);
+            qCWarning(mLoggingCategory) << "disable notify";
         } else {
             QByteArray value = QByteArray::fromHex("0100");
             service->writeDescriptor(descriptor, value);
+            qCWarning(mLoggingCategory) << "enable notify";
         }
     }
 }
@@ -215,12 +217,26 @@ void SAKBleCentralTool::writeBytes(const QByteArray &bytes,
     auto characteristics = service->characteristics();
     auto characteristic = characteristics.at(mCharacteristicIndex);
     if (mWriteModel == 0) {
-        qCWarning(mLoggingCategory) << "try to write bytes:"
-                                    << QString::fromLatin1(bytes.toHex());
+        if (!hasFlag(QVariant::fromValue(characteristic),
+                     QLowEnergyCharacteristic::Write)) {
+            QString str = "QLowEnergyService::WriteWithResponse";
+            qCWarning(mLoggingCategory) << "unsupported write model: " + str;
+            return;
+        }
+
+        qCInfo(mLoggingCategory) << "try to write bytes:"
+                                 << QString::fromLatin1(bytes.toHex());
         service->writeCharacteristic(characteristic, bytes);
     } else {
-        qCWarning(mLoggingCategory) << "try to write bytes without response:"
-                                    << QString::fromLatin1(bytes.toHex());
+        if (!hasFlag(QVariant::fromValue(characteristic),
+                     QLowEnergyCharacteristic::WriteNoResponse)) {
+            QString str = "QLowEnergyService::WriteWithoutResponse";
+            qCWarning(mLoggingCategory) << "unsupported write model: " + str;
+            return;
+        }
+
+        qCInfo(mLoggingCategory) << "try to write bytes without response:"
+                                 << QString::fromLatin1(bytes.toHex());
         auto opt = QLowEnergyService::WriteWithoutResponse;
         service->writeCharacteristic(characteristic, bytes, opt);
     }
