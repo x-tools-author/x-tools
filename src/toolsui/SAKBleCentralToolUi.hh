@@ -10,6 +10,8 @@
 #ifndef SAKBLECENTRALTOOLUI_HH
 #define SAKBLECENTRALTOOLUI_HH
 
+#include <QLowEnergyDescriptor>
+
 #include "SAKBleCentralTool.hh"
 #include "SAKCommunicationToolUi.hh"
 
@@ -39,6 +41,8 @@ private:
 private slots:
     void onServiceDiscoveryStarted();
     void onServiceDiscoveryFinished();
+    void onDescriptorWritten(const QLowEnergyDescriptor &descriptor,
+                             const QByteArray &newValue);
 
     void onPushButtonScanClicked();
     void onComboBoxDevicesActived();

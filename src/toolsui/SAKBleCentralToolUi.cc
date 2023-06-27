@@ -12,6 +12,7 @@
 #include <QWidget>
 #include <QGridLayout>
 #include <QWidgetAction>
+#include <QLowEnergyCharacteristic>
 
 #include "SAKSpinBox.hh"
 #include "SAKLineEdit.hh"
@@ -152,6 +153,14 @@ void SAKBleCentralToolUi::onServiceDiscoveryFinished()
     ui->progressBar->hide();
 }
 
+void SAKBleCentralToolUi::onDescriptorWritten(
+    const QLowEnergyDescriptor &descriptor, const QByteArray &newValue)
+{
+    Q_UNUSED(descriptor)
+    Q_UNUSED(newValue)
+    onComboBoxCharacteristicsActived();
+}
+
 void SAKBleCentralToolUi::onPushButtonScanClicked()
 {
     if (ui->comboBoxDevices->isActive()) {
@@ -192,20 +201,22 @@ void SAKBleCentralToolUi::onComboBoxCharacteristicsActived()
 
     QVariant ch = ui->comboBoxCharacteristics->currentData();
     bool writeFlag = mBleTool->hasFlag(ch, QLowEnergyCharacteristic::Write);
-    writeFlag |= mBleTool->hasFlag(ch,
-                                   QLowEnergyCharacteristic::WriteNoResponse);
+    int writeNoResponseFlag = QLowEnergyCharacteristic::WriteNoResponse;
+    bool WriteNoResponsewriteFlag = mBleTool->hasFlag(ch, writeNoResponseFlag);
     ui->labelWriteWay->setVisible(writeFlag);
-    ui->comboBoxWriteWay->setVisible(writeFlag);
+    ui->comboBoxWriteWay->setVisible(WriteNoResponsewriteFlag);
 
     bool readFlag = mBleTool->hasFlag(ch, QLowEnergyCharacteristic::Read);
-    readFlag |= mBleTool->hasFlag(ch, QLowEnergyCharacteristic::Notify);
-    ui->pushButtonNotify->setVisible(readFlag);
+    bool notifyFlag = mBleTool->hasFlag(ch, QLowEnergyCharacteristic::Notify);
+    ui->pushButtonNotify->setVisible(notifyFlag);
     ui->pushButtonRead->setVisible(readFlag);
+    bool unsupported = writeFlag | writeNoResponseFlag | readFlag | notifyFlag;
+    ui->labelUnsupported->setVisible(unsupported);
 
-    if (writeFlag | readFlag) {
-        ui->labelUnsupported->hide();
-    } else {
-        ui->labelUnsupported->show();
+    if (notifyFlag) {
+        bool isNotified = mBleTool->isNotified(ch);
+        QString txt = isNotified ? tr("Disnotify") : tr("Notify");
+        ui->pushButtonNotify->setText(txt);
     }
 }
 
