@@ -31,7 +31,8 @@
 class SAKToolBox : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QVariant communicaton READ communicaton NOTIFY communicatonChanged)
+    Q_PROPERTY(QVariant communicaton READ communicaton
+                   NOTIFY communicatonChanged)
     Q_PROPERTY(QVariant txMasker READ txMasker CONSTANT)
     Q_PROPERTY(QVariant rxMasker READ rxMasker CONSTANT)
     Q_PROPERTY(QVariant txAnalyzer READ txAnalyzer CONSTANT)
@@ -47,8 +48,10 @@ class SAKToolBox : public QObject
 
     Q_PROPERTY(QVariant udpTransmitter READ udpTransmitter CONSTANT)
     Q_PROPERTY(QVariant tcpTransmitter READ tcpTransmitter CONSTANT)
-    Q_PROPERTY(QVariant webSocketTransmitter READ webSocketTransmitter CONSTANT)
-    Q_PROPERTY(QVariant serialPortTransmitter READ serialPortTransmitter CONSTANT)
+    Q_PROPERTY(QVariant webSocketTransmitter READ webSocketTransmitter
+                   CONSTANT)
+    Q_PROPERTY(QVariant serialPortTransmitter READ serialPortTransmitter
+                   CONSTANT)
 
     Q_PROPERTY(bool isWorking READ isWorking NOTIFY isWorkingChanged)
 public:
@@ -61,80 +64,79 @@ public:
     Q_INVOKABLE void close();
     Q_INVOKABLE void send(const QByteArray &bytes,
                           const QVariant &context = QJsonObject());
-    bool isWorking(){return mIsWorking;}
+    bool isWorking();
 
-    SAKCommunicationTool*getCommunicationTool(){return mComunicationTool;}
-    SAKMaskerTool       *getTxMaskerTool(){return mTxMaskerTool;}
-    SAKMaskerTool       *getRxMaskerTool(){return mRxMaskerTool;}
-    SAKAnalyzerTool     *getTxAnalyzerTool(){return mTxAnalyzerTool;}
-    SAKAnalyzerTool     *getRxAnalyzerTool(){return mRxAnalyzerTool;}
-    SAKEmitterTool      *getEmitterTool(){return mEmitterTool;}
-    SAKResponserTool    *getResponserTool(){return mResponserTool;}
-    SAKStorerTool       *getStorerTool(){return mStorerTool;}
-    SAKPrestorerTool    *getPrestorerTool(){return mPrestorerTool;}
-    SAKVelometerTool    *getRxVelometerTool(){return mRxVelometerTool;}
-    SAKVelometerTool    *getTxVelometerTool(){return mTxVelometerTool;}
-    SAKStatisticianTool *getRxStatisticianTool(){return mRxStatisticianTool;}
-    SAKStatisticianTool *getTxStatisticianTool(){return mTxStatisticianTool;}
+    SAKCommunicationTool* getCommunicationTool();
+    SAKMaskerTool* getTxMaskerTool();
+    SAKMaskerTool* getRxMaskerTool();
+    SAKAnalyzerTool* getTxAnalyzerTool();
+    SAKAnalyzerTool* getRxAnalyzerTool();
+    SAKEmitterTool* getEmitterTool();
+    SAKResponserTool* getResponserTool();
+    SAKStorerTool* getStorerTool();
+    SAKPrestorerTool* getPrestorerTool();
+    SAKVelometerTool* getRxVelometerTool();
+    SAKVelometerTool* getTxVelometerTool();
+    SAKStatisticianTool* getRxStatisticianTool();
+    SAKStatisticianTool* getTxStatisticianTool();
+    SAKUdpTransmitterTool * getUdpTransmitterTool();
+    SAKTcpTransmitterTool * getTcpTransmitterTool();
+    SAKWebSocketTransmitterTool* getWebSocketTransmitterTool();
+    SAKSerialPortTransmitterTool* getSerialPortTransmitterTool();
 
-    SAKUdpTransmitterTool *getUdpTransmitterTool(){return mUdpTransmitterTool;}
-    SAKTcpTransmitterTool *getTcpTransmitterTool(){return mTcpTransmitterTool;}
-    SAKWebSocketTransmitterTool *getWebSocketTransmitterTool(){return mWebSocketTransmitterTool;}
-    SAKSerialPortTransmitterTool *getSerialPortTransmitterTool(){
-        return mSerialPortTransmitterTool;
-    }
+signals:
+    void errorOccurred(const QString &errorString);
 
-private:
-    SAKCommunicationTool*mComunicationTool{nullptr};
-    SAKMaskerTool       *mTxMaskerTool{nullptr};
-    SAKMaskerTool       *mRxMaskerTool{nullptr};
-    SAKAnalyzerTool     *mTxAnalyzerTool{nullptr};
-    SAKAnalyzerTool     *mRxAnalyzerTool{nullptr};
-    SAKEmitterTool      *mEmitterTool{nullptr};
-    SAKResponserTool    *mResponserTool{nullptr};
-    SAKStorerTool       *mStorerTool{nullptr};
-    SAKPrestorerTool    *mPrestorerTool{nullptr};
-    SAKVelometerTool    *mRxVelometerTool{nullptr};
-    SAKVelometerTool    *mTxVelometerTool{nullptr};
-    SAKStatisticianTool *mRxStatisticianTool{nullptr};
-    SAKStatisticianTool *mTxStatisticianTool{nullptr};
-
-    SAKUdpTransmitterTool *mUdpTransmitterTool{nullptr};
-    SAKTcpTransmitterTool *mTcpTransmitterTool{nullptr};
-    SAKWebSocketTransmitterTool *mWebSocketTransmitterTool{nullptr};
-    SAKSerialPortTransmitterTool *mSerialPortTransmitterTool{nullptr};
-
+private:   
     QList<SAKBaseTool*> mToolList;
-    const QLoggingCategory mLoggingCategory{"SAK.CustomBox"};
-    bool mIsWorking{false};
+    const QLoggingCategory mLoggingCategory{"sak.toolbox"};
 
 private:
     void uninitializedTips();
 
-    // Properties ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+// Properties ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 private:
-    QVariant communicaton(){return QVariant::fromValue(mComunicationTool);}
-    QVariant txMasker(){return QVariant::fromValue(mTxMaskerTool);}
-    QVariant rxMasker(){return QVariant::fromValue(mRxMaskerTool);}
-    QVariant txAnalyzer(){return QVariant::fromValue(mTxAnalyzerTool);}
-    QVariant rxAnalyzer(){return QVariant::fromValue(mRxAnalyzerTool);}
-    QVariant emitter(){return QVariant::fromValue(mEmitterTool);}
-    QVariant responser(){return QVariant::fromValue(mResponserTool);}
-    QVariant storer(){return QVariant::fromValue(mStorerTool);}
-    QVariant prestorer(){return QVariant::fromValue(mPrestorerTool);}
-    QVariant rxVelometer(){return QVariant::fromValue(mRxVelometerTool);}
-    QVariant txVelometer(){return QVariant::fromValue(mTxVelometerTool);}
-    QVariant rxStatistician(){return QVariant::fromValue(mRxStatisticianTool);}
-    QVariant txStatistician(){return QVariant::fromValue(mTxStatisticianTool);}
-    QVariant udpTransmitter(){return QVariant::fromValue(mUdpTransmitterTool);}
-    QVariant tcpTransmitter(){return QVariant::fromValue(mTcpTransmitterTool);}
-    QVariant webSocketTransmitter(){return QVariant::fromValue(mWebSocketTransmitterTool);}
-    QVariant serialPortTransmitter(){return QVariant::fromValue(mSerialPortTransmitterTool);}
+    SAKCommunicationTool* mComunicationTool{nullptr};
+    SAKMaskerTool* mTxMaskerTool{nullptr};
+    SAKMaskerTool* mRxMaskerTool{nullptr};
+    SAKAnalyzerTool* mTxAnalyzerTool{nullptr};
+    SAKAnalyzerTool* mRxAnalyzerTool{nullptr};
+    SAKEmitterTool* mEmitterTool{nullptr};
+    SAKResponserTool* mResponserTool{nullptr};
+    SAKStorerTool* mStorerTool{nullptr};
+    SAKPrestorerTool* mPrestorerTool{nullptr};
+    SAKVelometerTool* mRxVelometerTool{nullptr};
+    SAKVelometerTool* mTxVelometerTool{nullptr};
+    SAKStatisticianTool* mRxStatisticianTool{nullptr};
+    SAKStatisticianTool* mTxStatisticianTool{nullptr};
+    SAKUdpTransmitterTool* mUdpTransmitterTool{nullptr};
+    SAKTcpTransmitterTool* mTcpTransmitterTool{nullptr};
+    SAKWebSocketTransmitterTool* mWebSocketTransmitterTool{nullptr};
+    SAKSerialPortTransmitterTool* mSerialPortTransmitterTool{nullptr};
+    bool mIsWorking{false};
+
+private:
+    QVariant communicaton();
+    QVariant txMasker();
+    QVariant rxMasker();
+    QVariant txAnalyzer();
+    QVariant rxAnalyzer();
+    QVariant emitter();
+    QVariant responser();
+    QVariant storer();
+    QVariant prestorer();
+    QVariant rxVelometer();
+    QVariant txVelometer();
+    QVariant rxStatistician();
+    QVariant txStatistician();
+    QVariant udpTransmitter();
+    QVariant tcpTransmitter();
+    QVariant webSocketTransmitter();
+    QVariant serialPortTransmitter();
 
 signals:
     void isWorkingChanged();
     void communicatonChanged();
-    void errorOccurred(const QString &errorString);
 };
 
 #endif // SAKTOOLBOX_H

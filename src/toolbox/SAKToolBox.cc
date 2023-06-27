@@ -209,6 +209,96 @@ void SAKToolBox::send(const QByteArray &bytes, const QVariant &context)
     mTxAnalyzerTool->inputBytes(bytes, context);
 }
 
+bool SAKToolBox::isWorking()
+{
+    return mIsWorking;
+}
+
+SAKCommunicationTool* SAKToolBox::getCommunicationTool()
+{
+    return mComunicationTool;
+}
+
+SAKMaskerTool* SAKToolBox::getTxMaskerTool()
+{
+    return mTxMaskerTool;
+}
+
+SAKMaskerTool* SAKToolBox::getRxMaskerTool()
+{
+    return mRxMaskerTool;
+}
+
+SAKAnalyzerTool* SAKToolBox::getTxAnalyzerTool()
+{
+    return mTxAnalyzerTool;
+}
+
+SAKAnalyzerTool* SAKToolBox::getRxAnalyzerTool()
+{
+    return mRxAnalyzerTool;
+}
+
+SAKEmitterTool* SAKToolBox::getEmitterTool()
+{
+    return mEmitterTool;
+}
+
+SAKResponserTool* SAKToolBox::getResponserTool()
+{
+    return mResponserTool;
+}
+
+SAKStorerTool* SAKToolBox::getStorerTool()
+{
+    return mStorerTool;
+}
+
+SAKPrestorerTool* SAKToolBox::getPrestorerTool()
+{
+    return mPrestorerTool;
+}
+
+SAKVelometerTool* SAKToolBox::getRxVelometerTool()
+{
+    return mRxVelometerTool;
+}
+
+SAKVelometerTool* SAKToolBox::getTxVelometerTool()
+{
+    return mTxVelometerTool;
+}
+
+SAKStatisticianTool* SAKToolBox::getRxStatisticianTool()
+{
+    return mRxStatisticianTool;
+}
+
+SAKStatisticianTool* SAKToolBox::getTxStatisticianTool()
+{
+    return mTxStatisticianTool;
+}
+
+SAKUdpTransmitterTool* SAKToolBox::getUdpTransmitterTool()
+{
+    return mUdpTransmitterTool;
+}
+
+SAKTcpTransmitterTool* SAKToolBox::getTcpTransmitterTool()
+{
+    return mTcpTransmitterTool;
+}
+
+SAKWebSocketTransmitterTool* SAKToolBox::getWebSocketTransmitterTool()
+{
+    return mWebSocketTransmitterTool;
+}
+
+SAKSerialPortTransmitterTool *SAKToolBox::getSerialPortTransmitterTool()
+{
+    return mSerialPortTransmitterTool;
+}
+
 void SAKToolBox::uninitializedTips()
 {
     static QByteArray tips("You must call the interface name initialize()"
@@ -216,4 +306,89 @@ void SAKToolBox::uninitializedTips()
     Q_ASSERT_X(false, __FUNCTION__, tips.constData());
 
     emit errorOccurred(QString::fromLatin1(tips));
+}
+
+QVariant SAKToolBox::communicaton()
+{
+    return QVariant::fromValue(mComunicationTool);
+}
+
+QVariant SAKToolBox::txMasker()
+{
+    return QVariant::fromValue(mTxMaskerTool);
+}
+
+QVariant SAKToolBox::rxMasker()
+{
+    return QVariant::fromValue(mRxMaskerTool);
+}
+
+QVariant SAKToolBox::txAnalyzer()
+{
+    return QVariant::fromValue(mTxAnalyzerTool);
+}
+
+QVariant SAKToolBox::rxAnalyzer()
+{
+    return QVariant::fromValue(mRxAnalyzerTool);
+}
+
+QVariant SAKToolBox::emitter()
+{
+    return QVariant::fromValue(mEmitterTool);
+}
+
+QVariant SAKToolBox::responser()
+{
+    return QVariant::fromValue(mResponserTool);
+}
+
+QVariant SAKToolBox::storer()
+{
+    return QVariant::fromValue(mStorerTool);
+}
+
+QVariant SAKToolBox::prestorer()
+{
+    return QVariant::fromValue(mPrestorerTool);
+}
+
+QVariant SAKToolBox::rxVelometer()
+{
+    return QVariant::fromValue(mRxVelometerTool);
+}
+
+QVariant SAKToolBox::txVelometer()
+{
+    return QVariant::fromValue(mTxVelometerTool);
+}
+
+QVariant SAKToolBox::rxStatistician()
+{
+    return QVariant::fromValue(mRxStatisticianTool);
+}
+
+QVariant SAKToolBox::txStatistician()
+{
+    return QVariant::fromValue(mTxStatisticianTool);
+}
+
+QVariant SAKToolBox::udpTransmitter()
+{
+    return QVariant::fromValue(mUdpTransmitterTool);
+}
+
+QVariant SAKToolBox::tcpTransmitter()
+{
+    return QVariant::fromValue(mTcpTransmitterTool);
+}
+
+QVariant SAKToolBox::webSocketTransmitter()
+{
+    return QVariant::fromValue(mWebSocketTransmitterTool);
+}
+
+QVariant SAKToolBox::serialPortTransmitter()
+{
+    return QVariant::fromValue(mSerialPortTransmitterTool);
 }
