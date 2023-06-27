@@ -75,6 +75,19 @@ void SAKBleCentralToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
                                                   const QString &settingsGroup)
 {
     SAKCommunicationToolUi::onBaseToolUiInitialized(tool, settingsGroup);
+
+    mBleTool = qobject_cast<SAKBleCentralTool*>(mTool);
+    if (!mBleTool) {
+        QByteArray msg("invalid SAKBleCentralTool tool");
+        qCWarning((*mLoggingCategory)) << QString::fromLatin1(msg);
+        Q_ASSERT_X(false, __FUNCTION__, msg.data());
+        return;
+    }
+
+    onComboBoxWriteWayCurrentIndexChanged();
+    connect(mBleTool, &SAKBleCentralTool::descriptorWritten,
+            this, &SAKBleCentralToolUi::onDescriptorWritten);
+
     initSettingsMenu(settingsGroup);
 }
 
@@ -123,11 +136,6 @@ void SAKBleCentralToolUi::initSettingsMenu(const QString &settingsGroup)
     menu->addAction(a);
     ui->pushButtonSettings->setMenu(menu);
 
-    mBleTool = qobject_cast<SAKBleCentralTool*>(mTool);
-    if (!mBleTool) {
-        qCWarning((*mLoggingCategory)) << "invalid SAKBleCentralTool tool";
-        return;
-    }
     connect(mBleTool, &SAKBleCentralTool::serviceDiscoveryStarted,
             this, &SAKBleCentralToolUi::onServiceDiscoveryStarted);
     connect(mBleTool, &SAKBleCentralTool::serviceDiscoveryFinished,
@@ -234,6 +242,7 @@ void SAKBleCentralToolUi::onComboBoxWriteWayCurrentIndexChanged()
 {
     int index = ui->comboBoxWriteWay->currentIndex();
     mBleTool->setWriteModel(index);
+    qCInfo((*mLoggingCategory)) << "set write model to: " << index;
 }
 
 void SAKBleCentralToolUi::onPushButtonNotifyClicked()
