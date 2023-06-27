@@ -10,23 +10,21 @@
 #ifndef SAKBLESCANNER_HH
 #define SAKBLESCANNER_HH
 
-#include <QTimer>
-#include <QObject>
+#include <QMutex>
+#include <QThread>
 #include <QVariant>
 #include <QLoggingCategory>
 #include <QBluetoothDeviceInfo>
 #include <QBluetoothDeviceDiscoveryAgent>
 
 
-class SAKBleScanner : public QObject
+class SAKBleScanner : public QThread
 {
     Q_OBJECT
     Q_PROPERTY(QVariantList deviceInfoList READ devicesInfoList
                NOTIFY devicesInfoListChanged)
-    Q_PROPERTY(bool enableRefresh READ enableRefresh WRITE setEnableRefresh
-               NOTIFY enableRefreshChanged)
-    Q_PROPERTY(int timeoutInterval READ timeoutInterval WRITE setTimeoutInterval
-               NOTIFY timeoutIntervalChanged)
+    Q_PROPERTY(int timeoutInterval READ timeoutInterval
+               WRITE setTimeoutInterval NOTIFY timeoutIntervalChanged)
     Q_PROPERTY(QString namefiltter READ namefiltter WRITE setNameFiltter
                NOTIFY filtterNameChanged)
 public:
@@ -42,26 +40,26 @@ public:
     Q_INVOKABLE QString deviceName(const QVariant &deviceInfo);
 
 signals:
-    void finished();
+    void deviceDiscovered(const QBluetoothDeviceInfo &info);
+    void errorOccurred(const QString &errStr);
+
+protected:
+    virtual void run() override;
 
 private:
     QBluetoothDeviceDiscoveryAgent *mDiscover;
-    bool mIsFirstTime;
-    bool mAutoRestart;
-    QVector<QBluetoothDeviceInfo> mDeviceInfoListTemp;
-    QLoggingCategory mLoggingCategory{"SAK.BleScanner"};
+    QLoggingCategory mLoggingCategory{"sak.blescanner"};
+    QMutex mDeviceInfoListMutex;
 
 private:
-    void onFinished();
-    void onErrorOccurred(QBluetoothDeviceDiscoveryAgent::Error error);
-    void onDeviceDiscovered(const QBluetoothDeviceInfo &info);
+    void onDiscoveryFinished();
+    void onDiscoveryErrorOccurred(QBluetoothDeviceDiscoveryAgent::Error error);
+    void onDiscoveryDeviceDiscovered(const QBluetoothDeviceInfo &info);
 
 //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 //Properties
 public:
     QVariantList devicesInfoList();
-    bool enableRefresh();
-    void setEnableRefresh(bool enable);
     int timeoutInterval();
     void setTimeoutInterval(int interval);
     QString namefiltter();
@@ -75,7 +73,6 @@ signals:
 
 private:
     QVector<QBluetoothDeviceInfo> mDeviceInfoList;
-    bool mEnableRefresh{true};
     int mTimeoutInterval{120};
     QString mNameFiltter{""};
 };

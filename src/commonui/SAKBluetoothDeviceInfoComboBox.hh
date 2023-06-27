@@ -10,11 +10,14 @@
 #ifndef SAKBLUETOOTHDEVICEINFOCOMBOBOX_HH
 #define SAKBLUETOOTHDEVICEINFOCOMBOBOX_HH
 
+#include <QEvent>
+
 #include "SAKComboBox.hh"
 #include "SAKBleScanner.hh"
 
 class SAKBluetoothDeviceInfoComboBox : public SAKComboBox
 {
+    Q_OBJECT
 public:
     SAKBluetoothDeviceInfoComboBox(QWidget *parent = Q_NULLPTR);
     ~SAKBluetoothDeviceInfoComboBox();
@@ -24,8 +27,20 @@ public:
     void setTimeoutInterval(int interval);
     void setNameFiltter(const QString &filtter);
 
+signals:
+    void finished();
+    void started();
+
+protected:
+    virtual void changeEvent(QEvent *event) override;
+
 private:
     SAKBleScanner *mScanner;
+
+private slots:
+    void onFinished();
+    void onDeviceDiscovered(const QBluetoothDeviceInfo &info);
+    void onErrorOccurred(const QString &errStr);
 };
 
 #endif // SAKBLUETOOTHDEVICEINFOCOMBOBOX_HH

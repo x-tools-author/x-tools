@@ -17,70 +17,40 @@
 (QBluetoothDeviceDiscoveryAgent::Error)
 
 SAKBleScanner::SAKBleScanner(QObject *parent)
-    : QObject(parent)
+    : QThread(parent)
     , mDiscover(Q_NULLPTR)
-    , mIsFirstTime(true)
-    , mAutoRestart(true)
 {
-    mDiscover = new QBluetoothDeviceDiscoveryAgent(this);
-    connect(mDiscover, &QBluetoothDeviceDiscoveryAgent::finished,
-            this, &SAKBleScanner::onFinished);
-    connect(mDiscover, &QBluetoothDeviceDiscoveryAgent::finished,
-            this, &SAKBleScanner::finished);
-#if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
-    connect(mDiscover, &QBluetoothDeviceDiscoveryAgent::errorOccurred,
-            this, &SAKBleScanner::onErrorOccurred);
-#else
-    connect(mDiscover,
-            static_cast<BLE_ERR_SIG>(&QBluetoothDeviceDiscoveryAgent::error),
-            this, &SAKBleScanner::onErrorOccurred);
-#endif
-    connect(mDiscover, &QBluetoothDeviceDiscoveryAgent::deviceDiscovered,
-            this, &SAKBleScanner::onDeviceDiscovered);
+
 }
 
 SAKBleScanner::~SAKBleScanner()
 {
-    mDiscover->stop();
-    mDiscover->deleteLater();
+
 }
 
 void SAKBleScanner::startDiscover()
 {
-    mAutoRestart = true;
-
-    // 10s-1minute
-    int interval = mTimeoutInterval < 10 ? 10 : mTimeoutInterval;
-    interval = interval > 120 ? 120 : interval;
-    mDiscover->setLowEnergyDiscoveryTimeout(interval*1000);
-
-#if QT_VERSION >= QT_VERSION_CHECK(5, 9, 0)
-    if (mDiscover->isActive()) {
-        return;
-    }
-    mDiscover->start(QBluetoothDeviceDiscoveryAgent::LowEnergyMethod);
-#endif
-
-    mDeviceInfoListTemp.clear();
+    start();
 }
 
 void SAKBleScanner::stopDiscover()
 {
-    mAutoRestart = false;
-    mDiscover->stop();
+    exit();
 }
 
 bool SAKBleScanner::isActive()
 {
-    return mDiscover->isActive();
+    return isRunning();
 }
 
 QVariant SAKBleScanner::deviceInfo(int index)
 {
+    mDeviceInfoListMutex.lock();
     if (index >= 0 && index < mDeviceInfoList.length()) {
         QBluetoothDeviceInfo info = mDeviceInfoList.at(index);
         return QVariant::fromValue<QBluetoothDeviceInfo>(info);
     }
+    mDeviceInfoListMutex.unlock();
 
     return QVariant();
 }
@@ -91,38 +61,54 @@ QString SAKBleScanner::deviceName(const QVariant &deviceInfo)
     return cookedInfo.name();
 }
 
-void SAKBleScanner::onFinished()
+void SAKBleScanner::run()
 {
-    if (mIsFirstTime) {
-        mIsFirstTime = false;
-        return;
-    }
+    mDiscover = new QBluetoothDeviceDiscoveryAgent();
+    connect(mDiscover, &QBluetoothDeviceDiscoveryAgent::finished,
+            this, &SAKBleScanner::onDiscoveryFinished);
+#if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
+    connect(mDiscover, &QBluetoothDeviceDiscoveryAgent::errorOccurred,
+            this, &SAKBleScanner::onDiscoveryErrorOccurred);
+#else
+    connect(mDiscover,
+            static_cast<BLE_ERR_SIG>(&QBluetoothDeviceDiscoveryAgent::error),
+            this, &SAKBleScanner::onDiscoveryErrorOccurred);
+#endif
+    connect(mDiscover, &QBluetoothDeviceDiscoveryAgent::deviceDiscovered,
+            this, &SAKBleScanner::onDiscoveryDeviceDiscovered);
 
-    if (mEnableRefresh) {
-        if (mDeviceInfoList != mDeviceInfoListTemp) {
-            mDeviceInfoList = mDeviceInfoListTemp;
-            emit devicesInfoListChanged();
-        }
-    }
+    // 10s-1minute
+    int interval = mTimeoutInterval < 10 ? 10 : mTimeoutInterval;
+    interval = interval > 120 ? 120 : interval;
+    mDiscover->setLowEnergyDiscoveryTimeout(interval*1000);
 
-    mDeviceInfoListTemp.clear();
-    if (mAutoRestart) {
-        startDiscover();
-    }
+#if QT_VERSION >= QT_VERSION_CHECK(5, 9, 0)
+    mDeviceInfoListMutex.lock();
+    mDeviceInfoList.clear();
+    mDeviceInfoListMutex.unlock();
+    mDiscover->start(QBluetoothDeviceDiscoveryAgent::LowEnergyMethod);
+#endif
+    exec();
 }
 
-void SAKBleScanner::onErrorOccurred(QBluetoothDeviceDiscoveryAgent::Error error)
+void SAKBleScanner::onDiscoveryFinished()
+{
+    emit devicesInfoListChanged();
+    exit();
+}
+
+void SAKBleScanner::onDiscoveryErrorOccurred(
+    QBluetoothDeviceDiscoveryAgent::Error error)
 {
     Q_UNUSED(error);
     qCWarning(mLoggingCategory) << "QBluetoothDeviceDiscoveryAgent error:"
                                 << mDiscover->errorString();
-
-    if (mAutoRestart) {
-        startDiscover();
-    }
+    exit();
+    emit errorOccurred(mDiscover->errorString());
 }
 
-void SAKBleScanner::onDeviceDiscovered(const QBluetoothDeviceInfo &info)
+void SAKBleScanner::onDiscoveryDeviceDiscovered(
+    const QBluetoothDeviceInfo &info)
 {
     const QString name = info.name();
     qCInfo(mLoggingCategory) << "new ble device:" << name;
@@ -134,35 +120,22 @@ void SAKBleScanner::onDeviceDiscovered(const QBluetoothDeviceInfo &info)
         }
     }
 
-    if (mIsFirstTime) {
-        if (mEnableRefresh) {
-            mDeviceInfoList.append(info);
-            emit devicesInfoListChanged();
-        }
-    }
-
-    mDeviceInfoListTemp.append(info);
+    mDeviceInfoListMutex.lock();
+    mDeviceInfoList.append(info);
+    mDeviceInfoListMutex.unlock();
+    emit deviceDiscovered(info);
 }
 
 QVariantList SAKBleScanner::devicesInfoList()
 {
     QVariantList list;
+    mDeviceInfoListMutex.lock();
     for (auto &info : mDeviceInfoList) {
         list.append(QVariant::fromValue(info));
     }
+    mDeviceInfoListMutex.unlock();
 
     return list;
-}
-
-bool SAKBleScanner::enableRefresh()
-{
-    return mEnableRefresh;
-}
-
-void SAKBleScanner::setEnableRefresh(bool enable)
-{
-    mEnableRefresh = enable;
-    emit enableRefreshChanged();
 }
 
 int SAKBleScanner::timeoutInterval()
