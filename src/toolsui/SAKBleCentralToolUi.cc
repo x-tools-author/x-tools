@@ -47,6 +47,16 @@ SAKBleCentralToolUi::SAKBleCentralToolUi(QWidget *parent)
             this, &SAKBleCentralToolUi::onPushButtonNotifyClicked);
     connect(ui->pushButtonRead, &QPushButton::clicked,
             this, &SAKBleCentralToolUi::onPushButtonReadClicked);
+    connect(ui->comboBoxDevices, &SAKBluetoothDeviceInfoComboBox::finished,
+            this, [=](){
+        ui->pushButtonScan->setText(tr("Scan"));
+        ui->pushButtonScan->setEnabled(true);
+    });
+    connect(ui->comboBoxDevices, &SAKBluetoothDeviceInfoComboBox::started,
+            this, [=](){
+        ui->pushButtonScan->setText(tr("Stop"));
+        ui->pushButtonScan->setEnabled(true);
+    });
 
     ui->labelWriteWay->setVisible(false);
     ui->comboBoxWriteWay->setVisible(false);
@@ -163,12 +173,11 @@ void SAKBleCentralToolUi::onDescriptorWritten(
 
 void SAKBleCentralToolUi::onPushButtonScanClicked()
 {
+    ui->pushButtonScan->setEnabled(false);
     if (ui->comboBoxDevices->isActive()) {
         ui->comboBoxDevices->stopDiscover();
-        ui->pushButtonScan->setText(tr("Scan"));
     } else {
         ui->comboBoxDevices->startDiscover();
-        ui->pushButtonScan->setText(tr("Stop"));
     }
 }
 
