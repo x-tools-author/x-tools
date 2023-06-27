@@ -58,7 +58,7 @@ QStringList SAKTableModelTool::headers() const
 
 void SAKTableModelTool::addItem(const QString &jsonCtx, int index)
 {
-    QByteArray json = jsonCtx.toLatin1();
+    QByteArray json = jsonCtx.toUtf8();
     QJsonObject jsonObj = QJsonDocument::fromJson(json).object();
     if (!(index >= 0 && index < rowCount())) {
         mTableModel->insertRows(mTableModel->rowCount(), 1);
