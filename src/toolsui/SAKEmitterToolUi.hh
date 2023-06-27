@@ -10,7 +10,6 @@
 #ifndef SAKEMITTERTOOLUI_HH
 #define SAKEMITTERTOOLUI_HH
 
-#include "SAKEmitterTool.hh"
 #include "SAKEmitterToolUiEditor.hh"
 #include "SAKTableModelToolUi.hh"
 
