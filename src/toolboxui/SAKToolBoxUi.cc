@@ -138,7 +138,7 @@ void SAKToolBoxUi::initialize(int type)
 
     mCommunicationTool = mToolBox->getCommunicationTool();
     if (!mCommunicationTool) {
-        qCWarning(mLoggingCategory) << "Initializing failed, "
+        qCWarning(mLoggingCategory) << "initializing failed, "
                                        "tool box is invaliad!";
         return;
     }
@@ -166,7 +166,7 @@ SAKCommunicationToolUi *SAKToolBoxUi::communiticationToolUi(int type)
     } else if (type == SAKToolFactory::BleCentralTool) {
         w = new SAKBleCentralToolUi();
     } else {
-        qCWarning(mLoggingCategory) << "Unknow type of communication tool ui!";
+        qCWarning(mLoggingCategory) << "unknow type of communication tool ui!";
     }
 
     return w;
@@ -262,7 +262,7 @@ QString SAKToolBoxUi::settingsGroup()
     } else if (mCommunicationToolType == SAKToolFactory::BleCentralTool) {
         return "BleCentralToolBox";
     } else {
-        qCWarning(mLoggingCategory) << "Unknow type of communication tool ui:"
+        qCWarning(mLoggingCategory) << "unknow type of communication tool ui:"
                                     << mCommunicationToolType;
         return  "UnknowToolBox";
     }
@@ -641,7 +641,7 @@ void SAKToolBoxUi::onCheckBoxOutputWrapClicked()
 void SAKToolBoxUi::onPushButtonInputSendClicked()
 {
     if (ui->comboBoxInputText->currentText().isEmpty()) {
-        qCInfo(mLoggingCategory) << "Input text is empty,"
+        qCInfo(mLoggingCategory) << "input text is empty,"
                                     " the operation will be ignored!";
         QApplication::beep();
         ui->comboBoxInputText->setFocus();
@@ -690,7 +690,7 @@ void SAKToolBoxUi::onComboBoxInputIntervelActivated()
 {
     int interval = ui->comboBoxInputIntervel->currentText().toInt();
     interval = interval < 10 ? 10 : interval;
-    qCInfo(mLoggingCategory) << "Start interval sending, the interval is:"
+    qCInfo(mLoggingCategory) << "start sending automatically, the interval is:"
                              << interval;
 
     if (ui->comboBoxInputIntervel->currentIndex() == 0) {

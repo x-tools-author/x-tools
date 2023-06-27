@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -59,7 +59,7 @@ private:
     SAKUdpTransmitterToolUi *mUdpTransmitterToolUi{nullptr};
     SAKWebSocketTransmitterToolUi *mWebSocketTransmitterToolUi{nullptr};
     SAKSerialPortTransmitterToolUi *mSerialPortTransmitterToolUi{nullptr};
-    QLoggingCategory mLoggingCategory{"SAK.SAKToolBoxUi"};
+    QLoggingCategory mLoggingCategory{"sak.toolboxui"};
     QTimer *mCycleSendingTimer{nullptr};
     int mCommunicationToolType;
     SAKToolBoxUiCommunicationMenu *mCommunicationMenu{nullptr};
