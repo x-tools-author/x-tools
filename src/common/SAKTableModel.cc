@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(wuuhaii@outlook.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -61,6 +61,10 @@ bool SAKTableModel::insertRows(int row, int count, const QModelIndex &parent)
 
 bool SAKTableModel::removeRows(int row, int count, const QModelIndex &parent)
 {
+    if (count == 0) {
+        return true;
+    }
+
     bool result = false;
     beginRemoveRows(parent, row, row + count - 1);
     emit invokeRemoveRows(result, row, count, parent);
