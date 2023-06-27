@@ -133,6 +133,21 @@ bool SAKBleCentralTool::hasFlag(QVariant characteristic, int flag)
     return false;
 }
 
+bool SAKBleCentralTool::isNotified(QVariant characteristic)
+{
+    auto cookedCh = characteristic.value<QLowEnergyCharacteristic>();
+    auto desList = cookedCh.descriptors();
+    bool notified = false;
+    for (auto &des : desList) {
+        if (des.value() == QByteArray::fromHex("0100")) {
+            notified = true;
+            break;
+        }
+    }
+
+    return notified;
+}
+
 bool SAKBleCentralTool::initialize(QString &errStr)
 {
     if (!mBluetoothDeviceInfo.isValid()) {

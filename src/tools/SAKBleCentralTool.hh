@@ -41,6 +41,7 @@ public:
     Q_INVOKABLE void readCharacteristic();
     Q_INVOKABLE void changeNotify();
     Q_INVOKABLE bool hasFlag(QVariant characteristic, int flag);
+    Q_INVOKABLE bool isNotified(QVariant characteristic);
 
 signals:
     void descriptorWritten(const QLowEnergyDescriptor &descriptor,
