@@ -206,8 +206,8 @@ void SAKBleCentralTool::writeBytes(const QByteArray &bytes,
                                    const QVariant &context)
 {
     Q_UNUSED(context);
-    if (!((mServiceIndex >= 0)
-          && (mServiceIndex < mServices.length()))) {
+    if (!((mServiceIndex >= 0) && (mServiceIndex < mServices.length()))) {
+        qCWarning(mLoggingCategory) << "invalid parameters.";
         return;
     }
 
@@ -215,8 +215,12 @@ void SAKBleCentralTool::writeBytes(const QByteArray &bytes,
     auto characteristics = service->characteristics();
     auto characteristic = characteristics.at(mCharacteristicIndex);
     if (mWriteModel == 0) {
+        qCWarning(mLoggingCategory) << "try to write bytes:"
+                                    << QString::fromLatin1(bytes.toHex());
         service->writeCharacteristic(characteristic, bytes);
     } else {
+        qCWarning(mLoggingCategory) << "try to write bytes without response:"
+                                    << QString::fromLatin1(bytes.toHex());
         auto opt = QLowEnergyService::WriteWithoutResponse;
         service->writeCharacteristic(characteristic, bytes, opt);
     }
