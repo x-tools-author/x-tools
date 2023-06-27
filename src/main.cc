@@ -34,15 +34,15 @@ int main(int argc, char *argv[])
     QCoreApplication::setApplicationVersion("0.0.0");
 #endif
 
-    QLoggingCategory lc{"SAK.main"};
+    QLoggingCategory lc{"sak.main"};
 
     // Remove settings file and database
     if (SAKSettings::instance()->clearSettings()){
         SAKSettings::instance()->setClearSettings(false);
         if (QFile::remove(SAKSettings::instance()->fileName())){
-            qCInfo(lc) << "Remove settings file successfully!";
+            qCInfo(lc) << "remove settings file successfully.";
         }else{
-            qCWarning(lc) << "Remove settings file failed!";
+            qCWarning(lc) << "remove settings file failed!";
         }
     }
 
@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
     if (SAKSettings::instance()->uiType() == SAKSettings::UiTypeWidget) {
         QString style = SAKSettings::instance()->appStyle();
         if (!style.isEmpty() && QStyleFactory::keys().contains(style)) {
-            qCInfo(lc) << "App style:" << style;
+            qCInfo(lc) << "app style:" << style;
             QApplication::setStyle(QStyleFactory::create(style));
         }
 
@@ -82,7 +82,7 @@ int main(int argc, char *argv[])
         return app.exec();
 #else
         SAKSettings::instance()->setUiType(SAKSettings::UiTypeWidget);
-        qInfo() << "Please using Qt 6.4.0 or later!";
+        qCInfo(lc) << "please using Qt 6.4.0 or later!";
         return 0;
 #endif
     }
