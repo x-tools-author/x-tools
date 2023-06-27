@@ -15,7 +15,7 @@
 #define BLE_ERR_SIG QLowEnergyController::Error
 
 SAKBleCentralTool::SAKBleCentralTool(QObject *parent)
-    : SAKCommunicationTool("SAK.BleCentral", parent)
+    : SAKCommunicationTool("sak.blecentral", parent)
 {
 
 }
@@ -152,7 +152,6 @@ bool SAKBleCentralTool::initialize(QString &errStr)
 {
     if (!mBluetoothDeviceInfo.isValid()) {
         errStr = "invalid ble information.";
-        outputMessage(QtWarningMsg, errStr);
         return false;
     }
 
