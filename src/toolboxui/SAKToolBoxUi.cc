@@ -350,8 +350,8 @@ void SAKToolBoxUi::init()
     initTools();
 
     onIsWorkingChanged();
-    onComboBoxInputFormatActivated();
     onInputTextChanged();
+    onComboBoxInputFormatActivated();
 }
 
 void SAKToolBoxUi::initUi()
@@ -360,7 +360,6 @@ void SAKToolBoxUi::initUi()
     initUiInput();
     initUiOutput();
 
-    onComboBoxInputFormatActivated();
     QSettings *settings = SAKSettings::instance();
     int index = settings->value(mSettingsKey.tabIndex).toInt();
     if (index >= 0 && index < ui->tabWidget->count()) {
@@ -471,6 +470,7 @@ void SAKToolBoxUi::initSettingsOutput()
 #if 1
     ui->checkBoxOutputRx->setChecked(true);
     ui->checkBoxOutputTx->setChecked(true);
+    ui->checkBoxOutputWrap->setChecked(true);
 #endif
 }
 
