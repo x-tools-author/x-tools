@@ -38,19 +38,19 @@ bool SAKTransmitterTool::removeRows(int row, int count,
     bool isValidCount = (count >= 0 && count <= mToolVector.count());
     Q_ASSERT_X(isValidCount, __FUNCTION__, "invalid count");
 
-    if (isValidCount && isValidRow) {
-        while (count--) {
-            auto tool = mToolVector.takeAt(row);
-            tool->exit();
-            tool->wait();
-            tool->deleteLater();
-            tool = nullptr;
-        }
-
-        return true;
+    if (!(isValidCount && isValidRow)) {
+        return false;
     }
 
-    return false;
+    while (count--) {
+        auto tool = mToolVector.takeAt(row);
+        tool->exit();
+        tool->wait();
+        tool->deleteLater();
+        tool = nullptr;
+    }
+
+    return true;
 }
 
 
