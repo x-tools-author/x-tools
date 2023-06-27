@@ -219,8 +219,9 @@ void SAKBleCentralToolUi::onComboBoxCharacteristicsActived()
     bool notifyFlag = mBleTool->hasFlag(ch, QLowEnergyCharacteristic::Notify);
     ui->pushButtonNotify->setVisible(notifyFlag);
     ui->pushButtonRead->setVisible(readFlag);
-    bool unsupported = writeFlag | writeNoResponseFlag | readFlag | notifyFlag;
-    ui->labelUnsupported->setVisible(unsupported);
+    bool supported = writeFlag || writeNoResponseFlag
+                     || readFlag || notifyFlag;
+    ui->labelUnsupported->setVisible(!supported);
 
     if (notifyFlag) {
         bool isNotified = mBleTool->isNotified(ch);
