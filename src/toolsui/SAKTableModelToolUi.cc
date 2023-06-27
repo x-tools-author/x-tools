@@ -213,7 +213,7 @@ void SAKTableModelToolUi::edit(const QModelIndex &index)
         QString str = QString::fromUtf8(jsonDoc.toJson());
         mTableModelTool->addItem(str, index.row());
 
-        if (mTool) {
+        if (mTool && mTool->isRunning()) {
             mTool->exit();
             mTool->wait();
             mTool->start();
