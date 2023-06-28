@@ -94,7 +94,7 @@ public:
 
 private:
     QStringList modelStrings;
-    const QLoggingCategory mLoggingCategory{"SAKCrcInterface"};
+    const QLoggingCategory mLoggingCategory{"sak.crcinterface"};
 
 private:
     template<typename T>

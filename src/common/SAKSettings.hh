@@ -92,7 +92,7 @@ private:
         const QString customPalette{"customPalette"};
     } mSettingsKey;
 
-    QLoggingCategory mLoggingCategory{"SAK.Settings"};
+    QLoggingCategory mLoggingCategory{"sak.settings"};
 };
 
 #endif // SAKSETTINGS_H
