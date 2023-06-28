@@ -788,7 +788,7 @@ void SAKMainWindow::initNav()
     QToolButton *tbt = new QToolButton(this);
     tbt->setIcon(cookedIcon(QIcon(":/resources/icon/IconListWithIcon.svg")));
     tbt->setCheckable(true);
-    tbt->setText(tr("Hide Text"));
+    tbt->setText(" " + tr("Hide Text"));
     tbt->setToolTip(tr("Click to show(hide) nav text"));
     tbt->setAutoRaise(true);
     tbt->setChecked(isTextBesideIcon);
@@ -834,7 +834,7 @@ void SAKMainWindow::initNav(QButtonGroup *bg, const QIcon &icon,
     bt->setCheckable(true);
     bt->setToolButtonStyle(style);
     bt->setToolTip(name);
-    bt->setText(name);
+    bt->setText(" " + name);
     bt->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
 #if 0
     bt->setIconSize(QSize(32, 32));
