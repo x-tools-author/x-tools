@@ -71,7 +71,6 @@ SAKLog::~SAKLog()
 {
     exit();
     wait();
-    qCDebug(mLoggingCategory) << __FUNCTION__;
 }
 
 void SAKLog::messageOutput(QtMsgType type, const QMessageLogContext &context,
@@ -203,7 +202,6 @@ void SAKLog::run()
     writeTimer->start();
     clearTimer->start();
     exec();
-    qCDebug(mLoggingCategory) << __FUNCTION__;
 
     writeTimer->stop();
     writeTimer->deleteLater();
