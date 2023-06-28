@@ -80,8 +80,9 @@ private:
     QString settingsGroup();
     QByteArray calculateCrc(const QByteArray &bytes = QByteArray(),
                             bool fixedOriginOrder = false);
+    void setDefaultText();
 
-    // slots
+private slots:
     void onIsWorkingChanged();
     void onBytesWritten(const QByteArray &bytes, const QVariant &context);
     void onBytesRead(const QByteArray &bytes, const QVariant &context);

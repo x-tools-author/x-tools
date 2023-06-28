@@ -50,8 +50,13 @@ SAKToolBoxUi::SAKToolBoxUi(QWidget *parent)
     mToolBox = new SAKToolBox(this);
 
     mCycleSendingTimer = new QTimer(this);
-    connect(mCycleSendingTimer, &QTimer::timeout,
-            this, &SAKToolBoxUi::try2send);
+    connect(mCycleSendingTimer, &QTimer::timeout, this, [=](){
+        if (ui->comboBoxInputText->currentText().isEmpty()) {
+            setDefaultText();
+        }
+
+        try2send();
+    });
 }
 
 SAKToolBoxUi::~SAKToolBoxUi()
@@ -290,6 +295,14 @@ QByteArray SAKToolBoxUi::calculateCrc(const QByteArray &bytes,
     QByteArray crc = crci.calculateBytes(inputBytes, algorithm, startIndex,
                                          endIndex, bigEndian);
     return crc;
+}
+
+void SAKToolBoxUi::setDefaultText()
+{
+    QByteArray ba("(null)");
+    int format = ui->comboBoxInputFormat->currentData().toInt();
+    QString str = SAKInterface::arrayToString(ba, format);
+    ui->comboBoxInputText->setCurrentText(str);
 }
 
 void SAKToolBoxUi::onIsWorkingChanged()
@@ -643,10 +656,11 @@ void SAKToolBoxUi::onPushButtonInputSendClicked()
 {
     if (ui->comboBoxInputText->currentText().isEmpty()) {
         qCInfo(mLoggingCategory) << "input text is empty,"
-                                    " the operation will be ignored!";
+                                    "the text will be set as (null)";
         QApplication::beep();
         ui->comboBoxInputText->setFocus();
-        return;
+
+        setDefaultText();
     }
 
     QString text = ui->comboBoxInputText->currentText();
