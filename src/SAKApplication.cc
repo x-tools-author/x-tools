@@ -11,7 +11,6 @@
 #include <QUrl>
 #include <QRect>
 #include <QFile>
-#include <QTimer>
 #include <QDebug>
 #include <QLabel>
 #include <QAction>

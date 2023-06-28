@@ -10,10 +10,7 @@
 #ifndef SAKAPPLICATION_HH
 #define SAKAPPLICATION_HH
 
-#include <QSettings>
-#include <QTranslator>
 #include <QApplication>
-#include <QStyleFactory>
 #include <QSplashScreen>
 #include <QLoggingCategory>
 

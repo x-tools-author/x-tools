@@ -8,6 +8,7 @@
  * the file LICENCE in the root of the source code directory.
  *****************************************************************************/
 #include <QFile>
+#include <QStyleFactory>
 #include <QLoggingCategory>
 
 #include "SAKLog.hh"
