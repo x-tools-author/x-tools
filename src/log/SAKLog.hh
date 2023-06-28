@@ -25,12 +25,15 @@ class SAKLog : public QThread
 {
     Q_OBJECT
 #if 1
-    Q_PROPERTY(qint64 logLifeCycle READ logLifeCycle WRITE setLogLifeCycle NOTIFY logLifeCycleChanged)
+    Q_PROPERTY(qint64 logLifeCycle READ logLifeCycle WRITE setLogLifeCycle
+               NOTIFY logLifeCycleChanged)
 #else
     SAK_PROPERTY(qint64, logLifeCycle, setLogLifeCycle)
 #endif
-    Q_PROPERTY(int logLevel READ logLevel WRITE setLogLevel NOTIFY logLevelChanged)
-    Q_PROPERTY(bool isPaused READ isPaused WRITE setIsPaused NOTIFY isPausedChanged)
+    Q_PROPERTY(int logLevel READ logLevel WRITE setLogLevel
+               NOTIFY logLevelChanged)
+    Q_PROPERTY(bool isPaused READ isPaused WRITE setIsPaused
+               NOTIFY isPausedChanged)
 private:
     explicit SAKLog(QObject *parent = nullptr);
 
@@ -71,7 +74,7 @@ private:
     QMutex mTempMutex;
 
 private:
-    const QLoggingCategory mLoggingCategory{"SAK.Log"};
+    const QLoggingCategory mLoggingCategory{"sak.log"};
     SAKTableModel *mTableModel{nullptr};
     int mLogLevel;
     qint64 mLogLifeCycle;
