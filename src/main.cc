@@ -61,20 +61,6 @@ int main(int argc, char *argv[])
         || cookedPolicy == floor || cookedPolicy == rpf
         || cookedPolicy == passThrough) {
         QGuiApplication::setHighDpiScaleFactorRoundingPolicy(cookedPolicy);
-    } else if (policy == 999) {
-        QString fileName = qApp->applicationDirPath();
-        fileName += "/qt.conf";
-        if (!QFile::exists(fileName)) {
-            QFile file(fileName);
-            if (file.open(QFile::WriteOnly|QFile::Text|QFile::Truncate)) {
-                QTextStream out(&file);
-                out << "[Platforms]\nWindowsArguments = dpiawareness=0\n";
-                file.close();
-            } else {
-                qCWarning(lc) << fileName;
-                qCWarning(lc) << "can not open file:" << file.errorString();
-            }
-        }
     }
 #endif
 
