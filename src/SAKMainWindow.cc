@@ -113,7 +113,7 @@ SAKMainWindow::SAKMainWindow(QWidget *parent)
     setWindowIcon(QIcon(":/resources/images/SAKLogo.png"));
 #endif
 
-    initMenuBar();    
+    initMenuBar();
     initNav();
     initStatusBar();
 }
