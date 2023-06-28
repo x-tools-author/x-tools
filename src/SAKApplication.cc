@@ -94,6 +94,7 @@ SAKApplication::SAKApplication(int argc, char **argv)
     showSplashScreenMessage(QObject::tr("Initializing main window..."));
 
     SAKMainWindow *mainWindow = new SAKMainWindow();
+    mSplashScreen->finish(mainWindow);
     QObject::connect(this, &SAKApplication::activeMainWindow,
                      mainWindow, &SAKMainWindow::activateWindow);
     mainWindow->show();
@@ -129,10 +130,6 @@ SAKApplication::SAKApplication(int argc, char **argv)
     }
     showSplashScreenMessage(tr("Finished..."));
 
-
-    // Close splash screen after main window showed.
-    QSplashScreen *ss = splashScreen();
-    ss->finish(mainWindow);
     QString msg = QString("the size of main window is: %1x%2")
                       .arg(mainWindow->width()).arg(mainWindow->height());
     qCInfo(mLoggingCategory) << qPrintable(msg);
