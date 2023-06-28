@@ -59,7 +59,7 @@ QSAK_APP_NAME        = "QtSwissArmyKnife"
 QSAK_ORG_NAME        = "Qsaker"
 QSAK_ORG_DOMAIN      = "IT"
 QSAK_APP_DESCRIPTION = "Qt Swiss Army Knife"
-QSAK_APP_COPYRIGHT   = "Copyright 2018-2023 Qsaker(wuuhaii@outlook.com). All rights reserved."
+QSAK_APP_COPYRIGHT   = "Copyright 2018-2023 Qsaker(qsaker@foxmail.com). All rights reserved."
 
 win32 {
     QMAKE_TARGET_COMPANY        = "$${QSAK_ORG_NAME}"

@@ -1,5 +1,5 @@
 ﻿/*
- * Copyright 2018-2020 Qsaker(wuuhaii@outlook.com). All rights reserved.
+ * Copyright 2018-2020 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
  * of QtSwissArmyKnife project.

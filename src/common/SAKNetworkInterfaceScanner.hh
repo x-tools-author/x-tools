@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright 2023 wuuhaii(wuuhaii@outlook.com). All rights reserved.
+ * Copyright 2023 wuuhaii(qsaker@foxmail.com). All rights reserved.
  *****************************************************************************/
 #ifndef SAKNETWORKINTERFACESCANNER_HH
 #define SAKNETWORKINTERFACESCANNER_HH

@@ -18,7 +18,7 @@ SAKPane {
                     text: qsTr("Report a bug:")
                 }
                 SAKLabel {
-                    text: "wuuhaii@outlook.com"
+                    text: "qsaker@foxmail.com"
                 }
                 SAKLabel {
                     text: qsTr("Build info:")
