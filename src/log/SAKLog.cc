@@ -350,52 +350,53 @@ void SAKLog::writeLog()
         }
     }
 
-    if (file.open(QFile::WriteOnly|QFile::Text|QFile::Append)) {
+    if (!file.open(QFile::WriteOnly|QFile::Text|QFile::Append)) {
+        QStringList list;
+        list << file.errorString() << " > " << "lor_error.log";
+        QProcess::startDetached("echo", list);
+    } else {
         QTextStream out(&file);
         for (auto &logCtx : logCtxVector) {
             QString flag = logTypeFlag(logCtx.type);
             out << flag << " " << logCtx.category << " " << logCtx.msg << "\n";
+        }
+        file.close();
+    }
 
-            if (mLogLevel == -1) {
+    for (auto &logCtx : logCtxVector) {
+        if (mLogLevel == -1) {
+            continue;
+        }
+
+        if ((mLogLevel == QtInfoMsg) && (logCtx.type == QtDebugMsg)) {
+            continue;
+        }
+
+        if (mLogLevel == QtWarningMsg) {
+            if ((logCtx.type == QtDebugMsg) || (logCtx.type == QtInfoMsg)) {
                 continue;
-            }
-
-            if (mLogLevel == QtInfoMsg) {
-                if (logCtx.type == QtDebugMsg) {
-                    continue;
-                }
-            }
-
-            if (mLogLevel == QtWarningMsg) {
-                if ((logCtx.type == QtDebugMsg) || (logCtx.type == QtInfoMsg)) {
-                    continue;
-                }
-            }
-
-            if (!mIsPaused) {
-                int count = mTableModel->rowCount();
-                this->mTableModel->insertRows(count, 1);
-                QModelIndex index = mTableModel->index(count, 0);
-                this->mTableModel->setData(index, flag);
-                index = mTableModel->index(count, 1);
-                this->mTableModel->setData(index, logCtx.category);
-                index = mTableModel->index(count, 2);
-                this->mTableModel->setData(index, logCtx.msg);
-            } else {
-                mTempMutex.lock();
-                mTemp.append(logCtx);
-                while (mTemp.count() > mMaxTemp) {
-                    mTemp.removeFirst();
-                }
-                mTempMutex.unlock();
             }
         }
 
-        file.close();
-    } else {
-        QStringList list;
-        list << file.errorString() << " > " << "lor_error.log";
-        QProcess::startDetached("echo", list);
+        if (mIsPaused) {
+            mTempMutex.lock();
+            mTemp.append(logCtx);
+            while (mTemp.count() > mMaxTemp) {
+                mTemp.removeFirst();
+            }
+            mTempMutex.unlock();
+            continue;
+        }
+
+        int count = mTableModel->rowCount();
+        this->mTableModel->insertRows(count, 1);
+        QModelIndex index = mTableModel->index(count, 0);
+        QString flag = logTypeFlag(logCtx.type);
+        this->mTableModel->setData(index, flag);
+        index = mTableModel->index(count, 1);
+        this->mTableModel->setData(index, logCtx.category);
+        index = mTableModel->index(count, 2);
+        this->mTableModel->setData(index, logCtx.msg);
     }
 }
 
