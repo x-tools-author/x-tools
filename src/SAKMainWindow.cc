@@ -656,8 +656,7 @@ void SAKMainWindow::initHelpMenu()
     connect(qrCodeAction, &QAction::triggered,
             this, &SAKMainWindow::showQrCode);
 #ifndef SAK_RELEASE
-    helpMenu->addAction(tr("Donate"), this,
-                        &SAKMainWindow::showDonation);
+    helpMenu->addAction(tr("Donate"), this, &SAKMainWindow::showDonation);
 #endif
 }
 
@@ -1003,7 +1002,8 @@ void SAKMainWindow::showDonation()
     QHBoxLayout *hBoxLayout = new QHBoxLayout(&dialog);
     QString image = ":/resources/images/WeChat.jpg";
     QLabel *label = new QLabel(&dialog);
-    label->setPixmap(QPixmap::fromImage(QImage(image)));
+    QPixmap pixMap = QPixmap::fromImage(QImage(image));
+    label->setPixmap(pixMap.scaledToHeight(400, Qt::SmoothTransformation));
     hBoxLayout->addWidget(label);
     dialog.layout()->addWidget(label);
     dialog.show();
