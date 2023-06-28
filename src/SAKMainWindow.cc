@@ -224,7 +224,8 @@ void SAKMainWindow::initFileMenu()
                 out << p;
                 file.close();
             } else {
-                qCWarning(mLoggingCategory) << "can not open file:" << file.errorString();
+                qCWarning(mLoggingCategory) << "can not open file:"
+                                            << file.errorString();
             }
         }
     });
