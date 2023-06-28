@@ -28,12 +28,12 @@ SAKLog::SAKLog(QObject *parent)
     QDir dir(logPath());
     if (!dir.exists()) {
         if (dir.mkdir(logPath())) {
-            qCInfo(mLoggingCategory) << "Create log dir successfully.";
+            qCInfo(mLoggingCategory) << "create log dir successfully.";
         } else {
-            qCInfo(mLoggingCategory) << "Create log dir failed!";
+            qCInfo(mLoggingCategory) << "create log dir failed!";
         }
     } else {
-        qCInfo(mLoggingCategory) << "The log dir is exists,"
+        qCInfo(mLoggingCategory) << "the log dir is exists,"
                                     " need not to create.";
     }
 
