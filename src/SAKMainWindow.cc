@@ -56,7 +56,6 @@
 #include "SAKTranslator.hh"
 #include "SAKApplication.hh"
 #include "SAKDataStructure.hh"
-#include "SAKPreferencesUi.hh"
 #include "SAKAssistantsFactory.hh"
 
 #ifdef SAK_IMPORT_MODULE_CANBUSUI
@@ -475,7 +474,7 @@ void SAKMainWindow::initOptionMenuHdpiPolicy(QMenu *optionMenu)
     ag->addAction(systemAction);
     menu->addSeparator();
     menu->addAction(systemAction);
-    connect(systemAction, &QAction::triggered, this, [=](){
+    auto createQtConf = [=](){
         QFile file(fileName);
         if (file.open(QFile::WriteOnly|QFile::Text|QFile::Truncate)) {
             QTextStream out(&file);
@@ -486,6 +485,9 @@ void SAKMainWindow::initOptionMenuHdpiPolicy(QMenu *optionMenu)
             qCWarning(mLoggingCategory) << "can not open file:"
                                         << file.errorString();
         }
+    };
+    connect(systemAction, &QAction::triggered, this, [=](){
+        createQtConf();
 
         SAKSettings::instance()->setHdpiPolicy(999);
         rebootRequestion();
@@ -493,6 +495,9 @@ void SAKMainWindow::initOptionMenuHdpiPolicy(QMenu *optionMenu)
 
     if (SAKSettings::instance()->hdpiPolicy() == 999) {
         systemAction->setChecked(true);
+        if (!QFile::exists(fileName)) {
+            createQtConf();
+        }
     }
 #endif
 }
@@ -650,9 +655,10 @@ void SAKMainWindow::initHelpMenu()
     helpMenu->addAction(qrCodeAction);
     connect(qrCodeAction, &QAction::triggered,
             this, &SAKMainWindow::showQrCode);
-
+#ifndef SAK_RELEASE
     helpMenu->addAction(tr("Donate"), this,
                         &SAKMainWindow::showDonation);
+#endif
 }
 
 void SAKMainWindow::initLinksMenu()
