@@ -209,7 +209,7 @@
       <item row="10" column="0" colspan="4">
        <widget class="QLabel" name="label_13">
         <property name="text">
-         <string> If the parameters of CRC is set error, all bytes of data will be calculcated.</string>
+         <string>If the parameters of CRC is set error, all bytes of data will be calculcated.</string>
         </property>
        </widget>
       </item>
