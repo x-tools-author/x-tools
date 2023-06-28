@@ -38,7 +38,7 @@ win32|unix {
 
 #↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 # Application version
-DEFINES += SAK_EDITION=\"\\\"preview\\\"\"
+DEFINES += SAK_EDITION=\"\\\"beta1\\\"\"
 DEFINES += SAK_VERSION=\"\\\"5.0.0\\\"\"
 # File information
 VERSION = 5.0.0
@@ -47,5 +47,5 @@ VERSION = 5.0.0
 #↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 # Information of author
 DEFINES += SAK_AUTHOR=\"\\\"Qsaker\\\"\"
-DEFINES += SAK_AUTHOR_EMAIL=\"\\\"wuuhaii@outlook.com\\\"\"
+DEFINES += SAK_AUTHOR_EMAIL=\"\\\"qsaker@foxmail.com\\\"\"
 #↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
