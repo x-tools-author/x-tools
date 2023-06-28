@@ -17,7 +17,7 @@
 #include "SAKDataStructure.hh"
 
 SAKEmitterTool::SAKEmitterTool(QObject *parent)
-    : SAKTableModelTool{"SAK.EmitterTool", parent}
+    : SAKTableModelTool{"sak.emittertool", parent}
 {
 
 }

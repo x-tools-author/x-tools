@@ -13,7 +13,7 @@
 #include "SAKMaskerTool.hh"
 
 SAKMaskerTool::SAKMaskerTool(QObject *parent)
-    : SAKBaseTool{"SAK.MaskTool", parent}
+    : SAKBaseTool{"sak.masktool", parent}
 {
     mEnable = false;
 }

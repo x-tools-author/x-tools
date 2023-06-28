@@ -13,7 +13,7 @@
 #include "SAKUdpClientTool.hh"
 
 SAKUdpClientTool::SAKUdpClientTool(QObject *parent)
-    : SAKSocketClientTool{"SAK.UdpClientTool", parent}
+    : SAKSocketClientTool{"sak.udpclienttool", parent}
 {
 
 }

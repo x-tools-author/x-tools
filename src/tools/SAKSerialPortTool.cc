@@ -11,7 +11,7 @@
 #include "SAKSerialPortTool.hh"
 
 SAKSerialPortTool::SAKSerialPortTool(QObject *parent)
-    : SAKCommunicationTool("SAK.SerialPortTool", parent)
+    : SAKCommunicationTool("sak.serialporttool", parent)
 {
 
 }

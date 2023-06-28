@@ -18,7 +18,7 @@
 #include "SAKStorerTool.hh"
 
 SAKStorerTool::SAKStorerTool(QObject *parent)
-    : SAKBaseTool{"SAK.StorerTool", parent}
+    : SAKBaseTool{"sak.storertool", parent}
 {
 
 }

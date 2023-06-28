@@ -12,7 +12,7 @@
 #include "SAKSerialPortTransmitterTool.hh"
 
 SAKSerialPortTransmitterTool::SAKSerialPortTransmitterTool(QObject *parent)
-    : SAKTransmitterTool{"SAK.SerialPortTransmitterTool", parent}
+    : SAKTransmitterTool{"sak.serialporttransmittertool", parent}
 {
 
 }

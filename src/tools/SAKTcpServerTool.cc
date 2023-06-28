@@ -13,7 +13,7 @@
 #define SOCKET_ERROR_SIG void(QAbstractSocket::*)(QAbstractSocket::SocketError)
 
 SAKTcpServerTool::SAKTcpServerTool(QObject *parent)
-    : SAKSocketServerTool{"SAK.TcpServerTool", parent}
+    : SAKSocketServerTool{"sak.tcpservertool", parent}
 {
 
 }

@@ -11,7 +11,7 @@
 #include "SAKTcpTransmitterTool.hh"
 
 SAKTcpTransmitterTool::SAKTcpTransmitterTool(QObject *parent)
-    : SAKSocketClientTransmitterTool{"SAK.TcpTransmitterTool", parent}
+    : SAKSocketClientTransmitterTool{"sak.tcptransmittertool", parent}
 {
 
 }

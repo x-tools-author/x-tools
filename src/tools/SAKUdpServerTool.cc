@@ -11,7 +11,7 @@
 #include "SAKUdpServerTool.hh"
 
 SAKUdpServerTool::SAKUdpServerTool(QObject *parent)
-    : SAKSocketServerTool{"SAK.UdpServerTool", parent}
+    : SAKSocketServerTool{"sak.udpservertool", parent}
 {
 
 }

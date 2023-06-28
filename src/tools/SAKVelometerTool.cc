@@ -11,7 +11,7 @@
 #include "SAKVelometerTool.hh"
 
 SAKVelometerTool::SAKVelometerTool(QObject *parent)
-    : SAKBaseTool{"SAK.VelometerTool", parent}
+    : SAKBaseTool{"sak.velometertool", parent}
 {
 
 }

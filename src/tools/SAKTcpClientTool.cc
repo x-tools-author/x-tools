@@ -15,7 +15,7 @@
 #define SOCKET_ERROR_SIG void(QAbstractSocket::*)(QAbstractSocket::SocketError)
 
 SAKTcpClientTool::SAKTcpClientTool(QObject *parent)
-    : SAKSocketClientTool{"SAK.TcpClientTool", parent}
+    : SAKSocketClientTool{"sak.tcpclienttool", parent}
 {
 
 }

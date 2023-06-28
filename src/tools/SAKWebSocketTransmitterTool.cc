@@ -11,7 +11,7 @@
 #include "SAKWebSocketTransmitterTool.hh"
 
 SAKWebSocketTransmitterTool::SAKWebSocketTransmitterTool(QObject *parent)
-    : SAKSocketClientTransmitterTool{"SAK.WebSocketTransmitterTool", parent}
+    : SAKSocketClientTransmitterTool{"sak.websockettransmittertool", parent}
 {
 
 }

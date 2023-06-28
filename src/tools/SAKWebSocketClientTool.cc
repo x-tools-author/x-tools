@@ -13,7 +13,7 @@
 #define WS_ERR_SIGNAL void(QWebSocket::*)(QAbstractSocket::SocketError)
 
 SAKWebSocketClientTool::SAKWebSocketClientTool(QObject *parent)
-    : SAKSocketClientTool{"SAK.WebSocketClientTool", parent}
+    : SAKSocketClientTool{"sak.websocketclienttool", parent}
 {
 
 }

@@ -21,7 +21,7 @@
 #include "SAKResponserTool.hh"
 
 SAKResponserTool::SAKResponserTool(QObject *parent)
-    : SAKTableModelTool{"SAK.ResponserTool", parent}
+    : SAKTableModelTool{"sak.responsertool", parent}
 {
 
 }

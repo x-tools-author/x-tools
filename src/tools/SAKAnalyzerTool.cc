@@ -11,7 +11,7 @@
 #include "SAKAnalyzerTool.hh"
 
 SAKAnalyzerTool::SAKAnalyzerTool(QObject *parent)
-    : SAKBaseTool{"SAK.AnalyzerTool", parent}
+    : SAKBaseTool{"sak.analyzertool", parent}
 {
     mEnable = false;
 }
