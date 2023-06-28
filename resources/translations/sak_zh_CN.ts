@@ -520,7 +520,7 @@
     <message>
         <location filename="../../src/SAKApplication.cc" line="94"/>
         <source>Initializing main window...</source>
-        <translation type="unfinished">初始化主窗口...</translation>
+        <translation>初始化主窗口...</translation>
     </message>
     <message>
         <location filename="../../src/SAKApplication.cc" line="131"/>
