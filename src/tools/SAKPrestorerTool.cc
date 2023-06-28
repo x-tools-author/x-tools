@@ -241,7 +241,7 @@ QVariant SAKPrestorerTool::itemContext(int index)
                    SAKDataStructure::EscapeCharacterOptionNone);
         ctx.insert(itemPrefix(), SAKDataStructure::AffixesNone);
         ctx.insert(itemSuffix(), SAKDataStructure::AffixesNone);
-        ctx.insert(itemCrcEnable(), true);
+        ctx.insert(itemCrcEnable(), false);
         ctx.insert(itemCrcAlgorithm(), SAKCrcInterface::CRC_8);
         ctx.insert(itemCrcStartIndex(), 0);
         ctx.insert(itemCrcEndIndex(), 0);
