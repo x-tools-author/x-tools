@@ -12,8 +12,6 @@
 
 #include <QWidget>
 
-#include "SAKLog.hh"
-
 namespace Ui {
 class SAKLogUi;
 }

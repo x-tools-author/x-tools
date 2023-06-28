@@ -12,8 +12,8 @@
 #include <QDesktopServices>
 #include <QStandardItemModel>
 
+#include "SAKLog.hh"
 #include "SAKLogUi.hh"
-#include "SAKSettings.hh"
 
 #include "ui_SAKLogUi.h"
 
@@ -39,6 +39,8 @@ SAKLogUi::SAKLogUi(QWidget *parent) :
     QAbstractTableModel *tableModel = SAKLog::instance()->tableModel();
     QTableView *tableView = ui->tableView;
     QHeaderView *headerView = tableView->horizontalHeader();
+    tableView->setModel(tableModel);
+    tableView->setAlternatingRowColors(true);
 
     int columnCount = tableModel->columnCount();
     QStringList headers;
@@ -47,14 +49,11 @@ SAKLogUi::SAKLogUi(QWidget *parent) :
         QString str = tableModel->headerData(i, orientation).toString();
         headers.append(str);
     }
+
     QStandardItemModel *headerViewModel = new QStandardItemModel(headerView);
-
-    tableView->setHorizontalHeader(headerView);
-    tableView->setModel(tableModel);
-    tableView->setAlternatingRowColors(true);
-
     headerViewModel->setColumnCount(headers.count());
     headerViewModel->setHorizontalHeaderLabels(headers);
+
     headerView->setModel(headerViewModel);
     headerView->setDefaultAlignment(Qt::AlignLeft);
     headerView->setSectionResizeMode(2, QHeaderView::Stretch);
