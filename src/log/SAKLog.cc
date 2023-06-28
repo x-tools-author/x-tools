@@ -68,10 +68,9 @@ SAKLog::SAKLog(QObject *parent)
 
 SAKLog::~SAKLog()
 {
-    qCDebug(mLoggingCategory) << __FUNCTION__;
-
     exit();
     wait();
+    qCDebug(mLoggingCategory) << __FUNCTION__;
 }
 
 void SAKLog::messageOutput(QtMsgType type, const QMessageLogContext &context,
@@ -103,8 +102,12 @@ QString SAKLog::logPath()
 
 SAKLog *SAKLog::instance()
 {
-    static SAKLog log;
-    return &log;
+    static SAKLog *log = Q_NULLPTR;
+    if (!log) {
+        log = new SAKLog();
+    }
+
+    return log;
 }
 
 qint64 SAKLog::logLifeCycle()
