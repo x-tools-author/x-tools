@@ -10,7 +10,6 @@
 #ifndef SAKLOG_HH
 #define SAKLOG_HH
 
-#include <atomic>
 #include <QMutex>
 #include <QThread>
 #include <QtGlobal>
@@ -21,7 +20,7 @@
 class SAKLog : public QThread
 {
     Q_OBJECT
-    Q_PROPERTY(qint64 logLifeCycle READ logLifeCycle WRITE setLogLifeCycle
+    Q_PROPERTY(int logLifeCycle READ logLifeCycle WRITE setLogLifeCycle
                NOTIFY logLifeCycleChanged)
     Q_PROPERTY(int logLevel READ logLevel WRITE setLogLevel
                NOTIFY logLevelChanged)
@@ -33,8 +32,8 @@ private:
 public:
     ~SAKLog();
     static SAKLog *instance();
-    qint64 logLifeCycle();
-    void setLogLifeCycle(qint64 t);
+    int logLifeCycle();
+    void setLogLifeCycle(int t);
     int logLevel();
     void setLogLevel(int level);
     bool isPaused();
@@ -69,9 +68,13 @@ private:
 private:
     const QLoggingCategory mLoggingCategory{"sak.log"};
     SAKTableModel *mTableModel{nullptr};
-    int mLogLevel;
-    qint64 mLogLifeCycle;
-    std::atomic_bool mIsPaused;
+
+    struct {
+        int logLevel;
+        int logLifeCycle;
+        bool isPaused;
+    } mParameters;
+    QMutex mParametersMutex;
     const int mMaxTemp;
 
 private slots:

@@ -23,9 +23,6 @@ QVector<SAKLog::LogContext> SAKLog::mLogContextVector;
 QMutex SAKLog::mLogContextVectorMutex;
 SAKLog::SAKLog(QObject *parent)
     : QThread(parent)
-    , mLogLevel(QtDebugMsg)
-    , mLogLifeCycle(30)
-    , mIsPaused(false)
     , mMaxTemp(10240)
 {
     QDir dir(logPath());
@@ -40,7 +37,11 @@ SAKLog::SAKLog(QObject *parent)
                                     " need not to create.";
     }
 
-    mLogLifeCycle = logLifeCycle();
+    mParametersMutex.lock();
+    mParameters.logLevel = QtDebugMsg;
+    mParameters.logLifeCycle = 30;
+    mParameters.isPaused = false;
+    mParametersMutex.unlock();
 
     mTableModel = new SAKTableModel(this);
     connect(mTableModel, &SAKTableModel::invokeGetRowCount,
@@ -77,10 +78,8 @@ void SAKLog::messageOutput(QtMsgType type, const QMessageLogContext &context,
                            const QString &msg)
 {
     mLogContextVectorMutex.lock();
-
     LogContext ctx{type, context.category, msg};
     mLogContextVector.append(ctx);
-
     mLogContextVectorMutex.unlock();
 }
 
@@ -110,48 +109,67 @@ SAKLog *SAKLog::instance()
     return log;
 }
 
-qint64 SAKLog::logLifeCycle()
+int SAKLog::logLifeCycle()
 {
-    return mLogLifeCycle;
+    mParametersMutex.lock();
+    int ret = mParameters.logLifeCycle;
+    mParametersMutex.unlock();
+    return ret;
 }
 
-void SAKLog::setLogLifeCycle(qint64 t)
+void SAKLog::setLogLifeCycle(int t)
 {
-    mLogLifeCycle = t;
-    if (mLogLifeCycle < 1) {
-        mLogLifeCycle = 1;
+    int logLifeCycle = t;
+    if (logLifeCycle < 1) {
+        logLifeCycle = 1;
         qCWarning(mLoggingCategory) << "The life cycle is too short,"
                                        " it has been set to 1 day.";
     }
 
-    if (mLogLifeCycle > 30) {
-        mLogLifeCycle = 30;
+    if (logLifeCycle > 30) {
+        logLifeCycle = 30;
         qCWarning(mLoggingCategory) << "The life cycle is too long,"
                                        " it has been set to 30 days.";
     }
+
+    mParametersMutex.lock();
+    mParameters.logLifeCycle = logLifeCycle;
+    mParametersMutex.unlock();
 
     emit logLifeCycleChanged();
 }
 
 int SAKLog::logLevel()
 {
-    return mLogLevel;
+    mParametersMutex.lock();
+    int logLevel = mParameters.logLevel;
+    mParametersMutex.unlock();
+
+    return logLevel;
 }
 
 void SAKLog::setLogLevel(int level)
 {
-    mLogLevel = level;
+    mParametersMutex.lock();
+    mParameters.logLevel = level;
+    mParametersMutex.unlock();
     emit logLevelChanged();
 }
 
 bool SAKLog::isPaused()
 {
-    return mIsPaused;
+    mParametersMutex.lock();
+    bool isPaused = mParameters.isPaused;
+    mParametersMutex.unlock();
+
+    return isPaused;
 }
 
 void SAKLog::setIsPaused(bool paused)
 {
-    mIsPaused = paused;
+    mParametersMutex.lock();
+    mParameters.isPaused = paused;
+    mParametersMutex.unlock();
     emit isPausedChanged();
 }
 
@@ -366,22 +384,27 @@ void SAKLog::writeLog()
         file.close();
     }
 
+    mParametersMutex.lock();
+    int logLevel = mParameters.logLevel;
+    bool isPaused = mParameters.isPaused;
+    mParametersMutex.unlock();
+
     for (auto &logCtx : logCtxVector) {
-        if (mLogLevel == -1) {
+        if (logLevel == -1) {
             continue;
         }
 
-        if ((mLogLevel == QtInfoMsg) && (logCtx.type == QtDebugMsg)) {
+        if ((logLevel == QtInfoMsg) && (logCtx.type == QtDebugMsg)) {
             continue;
         }
 
-        if (mLogLevel == QtWarningMsg) {
+        if (logLevel == QtWarningMsg) {
             if ((logCtx.type == QtDebugMsg) || (logCtx.type == QtInfoMsg)) {
                 continue;
             }
         }
 
-        if (mIsPaused) {
+        if (isPaused) {
             mTempMutex.lock();
             mTemp.append(logCtx);
             while (mTemp.count() > mMaxTemp) {
@@ -413,8 +436,11 @@ void SAKLog::clearLog()
 #else
         qint64 dateTime = info.created().toMSecsSinceEpoch();
 #endif
+        mParametersMutex.lock();
+        int logLifeCycle = mParameters.logLifeCycle;
+        mParametersMutex.unlock();
         qint64 currentDateTime = QDateTime::currentMSecsSinceEpoch();
-        quint64 interval = qAbs(mLogLifeCycle*24*60*60*1000);
+        quint64 interval = qAbs(logLifeCycle*24*60*60*1000);
         if (quint64(qAbs(dateTime - currentDateTime)) > interval) {
             QString fileName = info.absoluteFilePath();
             if (QFile::remove(fileName)) {
