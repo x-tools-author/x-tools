@@ -188,7 +188,7 @@ void SAKToolBoxUi::try2send()
     QByteArray bytes = SAKInterface::string2array(input, format);
     if (ctx.appendCrc) {
         QByteArray b = calculateCrc(bytes);
-        input.append(b);
+        bytes.append(b);
     }
 
     bytes.prepend(prefixData);
@@ -268,7 +268,8 @@ QString SAKToolBoxUi::settingsGroup()
     }
 }
 
-QByteArray SAKToolBoxUi::calculateCrc(const QByteArray &bytes)
+QByteArray SAKToolBoxUi::calculateCrc(const QByteArray &bytes,
+                                      bool fixedOriginOrder)
 {
     auto ctx = mInputMenu->parameters();
     QByteArray inputBytes = bytes;
@@ -284,7 +285,7 @@ QByteArray SAKToolBoxUi::calculateCrc(const QByteArray &bytes)
     int algorithm = ctx.algorithm;
     int startIndex = ctx.startIndex;
     int endIndex = ctx.endIndex;
-    bool bigEndian = ctx.bigEndian;
+    bool bigEndian = fixedOriginOrder ? true : ctx.bigEndian;
     SAKCrcInterface crci;
     QByteArray crc = crci.calculateBytes(inputBytes, algorithm, startIndex,
                                          endIndex, bigEndian);
@@ -331,7 +332,7 @@ void SAKToolBoxUi::onBytesRead(const QByteArray &bytes,
 
 void SAKToolBoxUi::onInputTextChanged()
 {
-    QByteArray b = calculateCrc();
+    QByteArray b = calculateCrc(QByteArray(), true);
     QString crc = QString::fromLatin1(b.toHex());
     crc = "0x" + crc.toUpper();
     ui->labelCrc->setText(crc);
