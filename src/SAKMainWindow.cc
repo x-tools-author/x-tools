@@ -375,7 +375,7 @@ void SAKMainWindow::initOptionMenuUiType(QMenu *optionMenu)
         rebootRequestion();
     });
 
-    QAction *modernAction =  new QAction(tr("Modern"), this);
+    QAction *modernAction =  new QAction(tr("Modern(Just for Preview)"), this);
     modernAction->setCheckable(true);
     connect(modernAction, &QAction::triggered, this, [=](){
         SAKSettings::instance()->setUiType(SAKSettings::UiTypeQml);

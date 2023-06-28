@@ -91,7 +91,7 @@ SAKApplication::SAKApplication(int argc, char **argv)
     // Setup ui language.
     QString language = SAKSettings::instance()->language();
     SAKTranslator::instance()->setupLanguage(language);
-    showSplashScreenMessage(QObject::tr("Initializing main window..."));
+    showSplashScreenMessage(tr("Initializing main window..."));
 
     SAKMainWindow *mainWindow = new SAKMainWindow();
     mSplashScreen->finish(mainWindow);
