@@ -44,7 +44,7 @@ private:
     struct SettingsKeyContext {
         const QString exitToSystemTray{"MainWindow/exitToSystemTray"};
     } mSettingsKey;
-    const QLoggingCategory mLoggingCategory{"SAK.MainWindow"};
+    const QLoggingCategory mLoggingCategory{"sak.mainwindow"};
 
 private:
     void initMenuBar();

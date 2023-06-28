@@ -19,7 +19,7 @@
 #include "SAKCanBusUi.hh"
 #include "ui_SAKCanBusUi.h"
 
-const QLoggingCategory gLC("SAK.CANStudio");
+const QLoggingCategory gLC("sak.canstudio");
 
 SAKCanBusUi::SAKCanBusUi(QWidget *parent)
     : QWidget{parent}

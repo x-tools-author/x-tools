@@ -29,7 +29,7 @@ protected:
                                          const QString &settingsGroup) final;
 
 private:
-    const QLoggingCategory mLoggingCategory{"SAK.VelometerToolUi"};
+    const QLoggingCategory mLoggingCategory{"sak.velometertoolui"};
     Ui::SAKVelometerToolUi *ui;
 };
 

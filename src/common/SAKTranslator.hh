@@ -31,7 +31,7 @@ public:
     void setupLanguage(const QString &language);
 
 private:
-    const QLoggingCategory mLoggingCategory{"SAK.Translator"};
+    const QLoggingCategory mLoggingCategory{"sak.translator"};
     QMap<QString, QString> mFlagNameMap;
     QTranslator mTranslator;
 

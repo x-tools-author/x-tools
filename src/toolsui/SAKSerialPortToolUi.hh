@@ -29,7 +29,7 @@ public:
 
 private:
     SAKSerialPortTool *mTool{nullptr};
-    const QLoggingCategory mLoggingCategory{"SAK.SerialPortToolUi"};
+    const QLoggingCategory mLoggingCategory{"sak.serialporttoolui"};
 
 private:
     void checkInitializingStatus();

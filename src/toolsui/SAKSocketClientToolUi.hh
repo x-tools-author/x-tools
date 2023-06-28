@@ -29,7 +29,7 @@ public:
                                          const QString &settingsGroup) final;
 
 private:
-    const QLoggingCategory mLoggingCategory{"SAK.SocketClientToolUi"};
+    const QLoggingCategory mLoggingCategory{"sak.socketclienttoolui"};
     SAKSocketClientTool *mTool{nullptr};
 
 private:

@@ -31,7 +31,7 @@ public:
 
 private:
     SAKSocketServerTool *mTool{nullptr};
-    const QLoggingCategory mLoggingCategory{"SAK.SocketServerToolUi"};
+    const QLoggingCategory mLoggingCategory{"sak.socketservertoolui"};
 
 private:
     Ui::SAKSocketServerToolUi *ui{nullptr};
