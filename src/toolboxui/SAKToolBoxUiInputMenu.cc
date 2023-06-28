@@ -11,6 +11,9 @@
 #include "SAKToolBoxUiInputMenu.hh"
 #include "ui_SAKToolBoxUiInputMenu.h"
 
+#define SAK_CB_ACTIVATED static_cast<void(QComboBox::*)\
+(int)>(&QComboBox::activated)
+
 SAKToolBoxUiInputMenu::SAKToolBoxUiInputMenu(const QString &settingsGroup,
                                              QWidget *parent)
     : QMenu{parent}
@@ -24,39 +27,34 @@ SAKToolBoxUiInputMenu::SAKToolBoxUiInputMenu(const QString &settingsGroup,
 
     ui->comboBoxPrefix->setGroupKey(settingsGroup + "/input", "prefix", false);
     mParameters.prefix = ui->comboBoxPrefix->currentData().toInt();
-    connect(ui->comboBoxPrefix,
-            static_cast<void(QComboBox::*)(int)>(&QComboBox::activated),
-            this, [=](){
-                int ret = ui->comboBoxPrefix->currentData().toInt();
-                this->mParameters.prefix = ret;
-                emit parametersChanged();
-            });
+    connect(ui->comboBoxPrefix, SAK_CB_ACTIVATED, this, [=](){
+        int ret = ui->comboBoxPrefix->currentData().toInt();
+        this->mParameters.prefix = ret;
+        emit parametersChanged();
+    });
 
     ui->comboBoxSuffix->setGroupKey(settingsGroup + "/input", "suffix");
     mParameters.suffix = ui->comboBoxSuffix->currentData().toInt();
-    connect(ui->comboBoxSuffix,
-            static_cast<void(QComboBox::*)(int)>(&QComboBox::activated),
-            this, [=](){
-                int ret = ui->comboBoxSuffix->currentData().toInt();
-                this->mParameters.suffix = ret;
-                emit parametersChanged();
-            });
+    connect(ui->comboBoxSuffix, SAK_CB_ACTIVATED, this, [=](){
+        int ret = ui->comboBoxSuffix->currentData().toInt();
+        this->mParameters.suffix = ret;
+        emit parametersChanged();
+    });
 
     ui->comboBoxEscape->setGroupKey(settingsGroup + "/input", "escape");
     mParameters.escapeCharacter = ui->comboBoxEscape->currentData().toInt();
-    connect(ui->comboBoxEscape,
-            static_cast<void(QComboBox::*)(int)>(&QComboBox::activated),
-            this, [=](){
-                int ret = ui->comboBoxEscape->currentData().toInt();
-                this->mParameters.escapeCharacter = ret;
-                emit parametersChanged();
-            });
+    connect(ui->comboBoxEscape, SAK_CB_ACTIVATED, this, [=](){
+        int ret = ui->comboBoxEscape->currentData().toInt();
+        this->mParameters.escapeCharacter = ret;
+        emit parametersChanged();
+    });
 
     ui->checkBoxAppendCrc->setGroupKey(settingsGroup + "/input",
                                        "crcAppend");
     mParameters.appendCrc = ui->checkBoxAppendCrc->isChecked();
     connect(ui->checkBoxAppendCrc, &QCheckBox::clicked, this, [=](){
         this->mParameters.appendCrc = ui->checkBoxAppendCrc->isChecked();
+        emit parametersChanged();
     });
 
     ui->checkBoxBigEndian->setGroupKey(settingsGroup + "/input",
@@ -88,15 +86,13 @@ SAKToolBoxUiInputMenu::SAKToolBoxUiInputMenu(const QString &settingsGroup,
                                        "algorithm");
     mParameters.algorithm = ui->comboBoxAglorithm->currentData().toInt();
     mParameters.algorithmName = ui->comboBoxAglorithm->currentText();
-    connect(ui->comboBoxAglorithm,
-            static_cast<void(QComboBox::*)(int)>(&QComboBox::activated),
-            this, [=](){
-                int ret = ui->comboBoxAglorithm->currentData().toInt();
-                QString name = ui->comboBoxAglorithm->currentText();
-                this->mParameters.algorithm = ret;
-                this->mParameters.algorithmName = name;
-                emit parametersChanged();
-            });
+    connect(ui->comboBoxAglorithm, SAK_CB_ACTIVATED, this, [=](){
+        int ret = ui->comboBoxAglorithm->currentData().toInt();
+        QString name = ui->comboBoxAglorithm->currentText();
+        this->mParameters.algorithm = ret;
+        this->mParameters.algorithmName = name;
+        emit parametersChanged();
+    });
 }
 
 SAKToolBoxUiInputMenu::~SAKToolBoxUiInputMenu()
