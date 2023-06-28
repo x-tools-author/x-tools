@@ -10,10 +10,8 @@ HEADERS += \
     $$PWD/SAKHighlighter.hh \
     $$PWD/SAKInterface.hh \
     $$PWD/SAKNetworkInterfaceScanner.hh \
-    $$PWD/SAKObj.hh \
     $$PWD/SAKSerialPortScanner.hh \
     $$PWD/SAKSettings.hh \
-    $$PWD/SAKSigleton.hh \
     $$PWD/SAKTableModel.hh \
     $$PWD/SAKTranslator.hh
 
@@ -27,9 +25,7 @@ SOURCES += \
     $$PWD/SAKHighlighter.cc \
     $$PWD/SAKInterface.cc \
     $$PWD/SAKNetworkInterfaceScanner.cc \
-    $$PWD/SAKObj.cc \
     $$PWD/SAKSerialPortScanner.cc \
     $$PWD/SAKSettings.cc \
-    $$PWD/SAKSigleton.cc \
     $$PWD/SAKTableModel.cc \
     $$PWD/SAKTranslator.cc
