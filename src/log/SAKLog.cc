@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -356,15 +356,18 @@ void SAKLog::writeLog()
     }
 
     const QDateTime dt = QDateTime::currentDateTime();
-    const QString fileName = logPath() + "/sak_log_" + dt.toString("yyyy_MM_dd");
+    const QString fileName = logPath() + "/sak_log_"
+                             + dt.toString("yyyy_MM_dd");
     const QString suffix = ".log";
     QFile file(fileName + suffix);
     if (QFile::exists(file.fileName()) && (file.size() >= 1024*1024)) {
         QString newName = fileName + dt.toString("_hh_mm_ss") + suffix;
-        if (QFile::rename(fileName, newName)) {
+        if (QFile::rename(fileName + suffix, newName)) {
             qCInfo(mLoggingCategory) << file.fileName()
                                      << "has been rename to:" << newName;
         } else {
+            qCInfo(mLoggingCategory) << "old name:" << fileName;
+            qCInfo(mLoggingCategory) << "new name:" << newName;
             qCInfo(mLoggingCategory) << "rename file failed!";
         }
     }
@@ -377,7 +380,8 @@ void SAKLog::writeLog()
         QTextStream out(&file);
         for (auto &logCtx : logCtxVector) {
             QString flag = logTypeFlag(logCtx.type);
-            out << flag << " " << logCtx.category << " " << logCtx.msg << "\n";
+            out << flag << " " << logCtx.category << " "
+                << logCtx.msg << "\n";
         }
         file.close();
     }
@@ -427,7 +431,8 @@ void SAKLog::writeLog()
 void SAKLog::clearLog()
 {
     QDir dir(logPath());
-    QFileInfoList infoList = dir.entryInfoList(QDir::Files|QDir::NoDotAndDotDot);
+    QFileInfoList infoList =
+        dir.entryInfoList(QDir::Files|QDir::NoDotAndDotDot);
     for (auto &info : infoList) {
 #if QT_VERSION >= QT_VERSION_CHECK(5, 10, 0)
         qint64 dateTime = info.birthTime().toMSecsSinceEpoch();
