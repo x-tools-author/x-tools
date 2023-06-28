@@ -34,6 +34,7 @@ protected:
 private:
     Ui::SAKBleCentralToolUi *ui{nullptr};
     SAKBleCentralTool *mBleTool;
+    const QLoggingCategory mLoggingCategory{"sak.blecentraltoolui"};
 
 private:
     void initSettingsMenu(const QString &settingsGroup);

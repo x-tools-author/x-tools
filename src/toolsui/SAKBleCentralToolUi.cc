@@ -79,7 +79,7 @@ void SAKBleCentralToolUi::onBaseToolUiInitialized(SAKBaseTool *tool,
     mBleTool = qobject_cast<SAKBleCentralTool*>(mTool);
     if (!mBleTool) {
         QByteArray msg("invalid SAKBleCentralTool tool");
-        qCWarning((*mLoggingCategory)) << QString::fromLatin1(msg);
+        qCWarning(mLoggingCategory) << QString::fromLatin1(msg);
         Q_ASSERT_X(false, __FUNCTION__, msg.data());
         return;
     }
@@ -242,7 +242,7 @@ void SAKBleCentralToolUi::onComboBoxWriteWayCurrentIndexChanged()
 {
     int index = ui->comboBoxWriteWay->currentIndex();
     mBleTool->setWriteModel(index);
-    qCInfo((*mLoggingCategory)) << "set write model to:" << index;
+    qCInfo(mLoggingCategory) << "set write model to:" << index;
 }
 
 void SAKBleCentralToolUi::onPushButtonNotifyClicked()
