@@ -218,10 +218,10 @@ void SAKBleCentralToolUi::onComboBoxCharacteristicsActived()
 
     QVariant ch = ui->comboBoxCharacteristics->currentData();
     bool writeFlag = mBleTool->hasFlag(ch, QLowEnergyCharacteristic::Write);
-    int writeNoResponseFlag = QLowEnergyCharacteristic::WriteNoResponse;
-    bool WriteNoResponsewriteFlag = mBleTool->hasFlag(ch, writeNoResponseFlag);
+    int writeNoResponse = QLowEnergyCharacteristic::WriteNoResponse;
+    bool writeNoResponseFlag = mBleTool->hasFlag(ch, writeNoResponse);
     ui->labelWriteWay->setVisible(writeFlag);
-    ui->comboBoxWriteWay->setVisible(WriteNoResponsewriteFlag);
+    ui->comboBoxWriteWay->setVisible(writeNoResponseFlag);
 
     bool readFlag = mBleTool->hasFlag(ch, QLowEnergyCharacteristic::Read);
     bool notifyFlag = mBleTool->hasFlag(ch, QLowEnergyCharacteristic::Notify);
