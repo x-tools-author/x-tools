@@ -242,7 +242,7 @@ void SAKBleCentralToolUi::onComboBoxWriteWayCurrentIndexChanged()
 {
     int index = ui->comboBoxWriteWay->currentIndex();
     mBleTool->setWriteModel(index);
-    qCInfo((*mLoggingCategory)) << "set write model to: " << index;
+    qCInfo((*mLoggingCategory)) << "set write model to:" << index;
 }
 
 void SAKBleCentralToolUi::onPushButtonNotifyClicked()
