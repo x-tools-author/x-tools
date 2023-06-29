@@ -93,8 +93,6 @@ bool SAKResponserTool::setData(const QModelIndex &index,
                 item.data.itemResponseTextFormat = value.toInt();
             } else if (dataKey == mDataKeys.itemResponseEscapeCharacter) {
                 item.data.itemResponseEscapeCharacter = value.toInt();
-            } else if (dataKey == mDataKeys.itemResponseInterval) {
-                item.data.itemResponseInterval = value.toInt();
             } else if (dataKey == mDataKeys.itemResponsePrefix) {
                 item.data.itemResponsePrefix = value.toInt();
             } else if (dataKey == mDataKeys.itemResponseSuffix) {
@@ -162,21 +160,20 @@ QVariant SAKResponserTool::headerData(int section,
         case 7:  return mDataKeys.itemReferenceCrcEnable;
         case 8:  return mDataKeys.itemReferenceCrcBigEndian;
         case 9:  return mDataKeys.itemReferenceCrcAlgorithm;
-        case 10:  return mDataKeys.itemReferenceCrcStartIndex;
+        case 10: return mDataKeys.itemReferenceCrcStartIndex;
         case 11: return mDataKeys.itemReferenceCrcEndIndex;
         case 12: return mDataKeys.itemReferenceText;
         case 13: return mDataKeys.itemResponseTextFormat;
         case 14: return mDataKeys.itemResponseEscapeCharacter;
-        case 15: return mDataKeys.itemResponseInterval;
-        case 16: return mDataKeys.itemResponsePrefix;
-        case 17: return mDataKeys.itemResponseSuffix;
-        case 18: return mDataKeys.itemResponseCrcEnable;
-        case 19: return mDataKeys.itemResponseCrcBigEndian;
-        case 20: return mDataKeys.itemResponseCrcAlgorithm;
-        case 21: return mDataKeys.itemResponseCrcStartIndex;
-        case 22: return mDataKeys.itemResponseCrcEndIndex;
-        case 23: return mDataKeys.itemResponseDelay;
-        case 24: return mDataKeys.itemResponseText;
+        case 15: return mDataKeys.itemResponsePrefix;
+        case 16: return mDataKeys.itemResponseSuffix;
+        case 17: return mDataKeys.itemResponseCrcEnable;
+        case 18: return mDataKeys.itemResponseCrcBigEndian;
+        case 19: return mDataKeys.itemResponseCrcAlgorithm;
+        case 20: return mDataKeys.itemResponseCrcStartIndex;
+        case 21: return mDataKeys.itemResponseCrcEndIndex;
+        case 22: return mDataKeys.itemResponseDelay;
+        case 23: return mDataKeys.itemResponseText;
         default: return "";
         }
     }
@@ -219,8 +216,6 @@ QVariant SAKResponserTool::columnDisplayRoleData(
             return item.data.itemResponseEscapeCharacter;
         } else if (dataKey == mDataKeys.itemResponseEscapeCharacter) {
             return item.data.itemResponseEscapeCharacter;
-        } else if (dataKey == mDataKeys.itemResponseInterval) {
-            return item.data.itemResponseInterval;
         } else if (dataKey == mDataKeys.itemResponsePrefix) {
             return item.data.itemResponsePrefix;
         } else if (dataKey == mDataKeys.itemResponseSuffix) {
@@ -326,8 +321,6 @@ QVariant SAKResponserTool::itemContext(int index)
             ctx.insert(itemReferenceText(),
                        item.data.itemReferenceText);
 
-            ctx.insert(itemResponseInterval(),
-                       item.data.itemResponseInterval);
             ctx.insert(itemResponseTextFormat(),
                        item.data.itemResponseTextFormat);
             ctx.insert(itemResponseEscapeCharacter(),
@@ -369,7 +362,6 @@ QVariant SAKResponserTool::itemContext(int index)
             ctx.insert(itemReferenceCrcEndIndex(), 0);
             ctx.insert(itemReferenceText(), "Reference data.");
 
-            ctx.insert(itemResponseInterval(), 1000);
             ctx.insert(itemResponseTextFormat(),
                        SAKDataStructure::TextFormatAscii);
             ctx.insert(itemResponseEscapeCharacter(),
@@ -432,8 +424,6 @@ QString SAKResponserTool::cookHeaderString(const QString &str)
         return tr("ResPrefix");
     } else if (str == keys.itemResponseSuffix) {
         return tr("ResSuffix");
-    } else if (str == keys.itemResponseInterval) {
-        return tr("ResInterval");
     } else if (str == keys.itemResponseCrcEnable) {
         return tr("ResCrcEnable");
     } else if (str == keys.itemResponseCrcBigEndian) {
@@ -531,7 +521,7 @@ void SAKResponserTool::try2output(const SAKResponserTool::InputContext &ctx,
             continue;
         }
 
-        QTimer::singleShot(item.data.itemResponseInterval, receiver, [=](){
+        QTimer::singleShot(item.data.itemResponseDelay, receiver, [=](){
             emit bytesOutputted(item.data.itemResponseText.toUtf8(),
                                 ctx.context);
         });
@@ -611,11 +601,6 @@ QString SAKResponserTool::itemResponseTextFormat()
 QString SAKResponserTool::itemResponseEscapeCharacter()
 {
     return mDataKeys.itemResponseEscapeCharacter;
-}
-
-QString SAKResponserTool::itemResponseInterval()
-{
-    return mDataKeys.itemResponseInterval;
 }
 
 QString SAKResponserTool::itemResponsePrefix()

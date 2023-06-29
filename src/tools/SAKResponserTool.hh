@@ -41,7 +41,6 @@ class SAKResponserTool : public SAKTableModelTool
 
     SAK_STR_PROPERTY(itemResponseTextFormat)
     SAK_STR_PROPERTY(itemResponseEscapeCharacter)
-    SAK_STR_PROPERTY(itemResponseInterval)
     SAK_STR_PROPERTY(itemResponsePrefix)
     SAK_STR_PROPERTY(itemResponseSuffix)
     SAK_STR_PROPERTY(itemResponseCrcEnable)
@@ -73,7 +72,6 @@ public:
         int itemResponsePrefix;
         QString itemResponseText;
         int itemResponseSuffix;
-        int itemResponseInterval;
         bool itemResponseCrcEnable;
         bool itemResponseCrcBigEndian;
         int itemResponseCrcAlgorithm;
@@ -105,7 +103,6 @@ public:
         const QString itemResponseEscapeCharacter{"Escape"};
         const QString itemResponsePrefix{"ResPrefix"};
         const QString itemResponseSuffix{"ResSuffix"};
-        const QString itemResponseInterval{"ResInterval"};
         const QString itemResponseCrcEnable{"ResCrcEnable"};
         const QString itemResponseCrcBigEndian{"ResCrcBigEndian"};
         const QString itemResponseCrcAlgorithm{"ResAlgorithm"};
@@ -158,7 +155,7 @@ private:
     const int mFormatColumnIndex{1};
     const int mItemTextColumnIndex{2};
     struct ResponserItemKeys mDataKeys;
-    const int mTableColumnCount{25};
+    const int mTableColumnCount{24};
 
 private:
     QVariant columnDisplayRoleData(const ResponserData &item, int column) const;
@@ -184,7 +181,6 @@ private:
 
     QString itemResponseTextFormat();
     QString itemResponseEscapeCharacter();
-    QString itemResponseInterval();
     QString itemResponsePrefix();
     QString itemResponseSuffix();
     QString itemResponseCrcEnable();
