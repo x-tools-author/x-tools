@@ -888,6 +888,7 @@ void SAKMainWindow::rebootRequestion()
 void SAKMainWindow::showHistory()
 {
     QDialog dialog;
+    dialog.setModal(true);
     dialog.setWindowTitle(tr("Release History"));
     dialog.resize(600, 400);
 
