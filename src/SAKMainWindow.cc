@@ -164,6 +164,7 @@ void SAKMainWindow::initFileMenu()
         windowMenu->addAction(action);
         connect(action, &QAction::triggered, this, [=](){
             SAKToolBoxUi *w = new SAKToolBoxUi();
+            w->setContentsMargins(9, 9, 9, 9);
             w->setAttribute(Qt::WA_DeleteOnClose, true);
             w->initialize(toolType);
             w->show();
