@@ -70,15 +70,15 @@ int main(int argc, char *argv[])
         SAKApplication app(argc, argv);
         SAKLog::instance()->start();
         return app.exec();
-    } else {
-#if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
-        SAKGuiApplication app(argc, argv);
-        SAKLog::instance()->start();
-        return app.exec();
-#else
-        SAKSettings::instance()->setUiType(SAKSettings::UiTypeWidget);
-        qCInfo(lc) << "please using Qt 6.4.0 or later!";
-        return 0;
-#endif
     }
+
+#if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
+    SAKGuiApplication app(argc, argv);
+    SAKLog::instance()->start();
+    return app.exec();
+#else
+    SAKSettings::instance()->setUiType(SAKSettings::UiTypeWidget);
+    qCInfo(lc) << "please using Qt 6.4.0 or later!";
+    return 0;
+#endif
 }
