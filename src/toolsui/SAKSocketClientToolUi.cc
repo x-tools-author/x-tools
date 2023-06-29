@@ -72,7 +72,7 @@ void SAKSocketClientToolUi::onBaseToolUiInitialized(
     }
 
     ui->comboBoxClientAddress->setGroupKey(settingsGroup, "clientAddress");
-    ui->spinBoxClientPort->setGroupKey(settingsGroup, "clientGroup");
+    ui->spinBoxClientPort->setGroupKey(settingsGroup, "clientPort");
     ui->checkBoxSpecifyIpAndPort->setGroupKey(settingsGroup,
                                               "specifyIpAndPort");
     ui->comboBoxServerAddress->setGroupKey(settingsGroup, "serverAddress");
