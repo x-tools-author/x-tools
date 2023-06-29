@@ -3277,7 +3277,7 @@
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="98"/>
         <source>BLE Central</source>
-        <translation>蓝牙中心设备</translation>
+        <translation>BLE客户端</translation>
     </message>
     <message>
         <location filename="../../src/toolboxui/SAKToolBoxUi.cc" line="316"/>
