@@ -25,6 +25,8 @@ public:
     Q_INVOKABLE static void setAppFont(const QString &fontFamily);
     Q_INVOKABLE static void setClipboardText(const QString &text);
 
+    Q_INVOKABLE static bool isQtHighDpiScalePolicy(int policy);
+
     Q_INVOKABLE static QString arrayToString(const QByteArray &array, int format);
     Q_INVOKABLE static QString dateTimeString(const QString &format);
     Q_INVOKABLE static QString cookedFileName(const QString &fileName);

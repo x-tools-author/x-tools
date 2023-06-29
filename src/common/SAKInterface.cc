@@ -58,6 +58,18 @@ void SAKInterface::setClipboardText(const QString &text)
     QGuiApplication::clipboard()->setText(text);
 }
 
+bool SAKInterface::isQtHighDpiScalePolicy(int policy)
+{
+    QList<int> policyList;
+    policyList << int(Qt::HighDpiScaleFactorRoundingPolicy::Round)
+               << int(Qt::HighDpiScaleFactorRoundingPolicy::Ceil)
+               << int(Qt::HighDpiScaleFactorRoundingPolicy::Floor)
+               << int(Qt::HighDpiScaleFactorRoundingPolicy::RoundPreferFloor)
+               << int(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
+
+    return policyList.contains(policy);
+}
+
 QString SAKInterface::arrayToString(const QByteArray &array, int format)
 {
     auto cookedArray =
