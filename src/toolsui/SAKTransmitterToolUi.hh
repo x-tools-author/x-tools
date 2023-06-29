@@ -1,4 +1,4 @@
-/******************************************************************************
+﻿/******************************************************************************
  * Copyright 2023 Qsaker(qsaker@foxmail.com). All rights reserved.
  *
  * The file is encoded using "utf8 with bom", it is a part
@@ -17,6 +17,9 @@ class SAKTransmitterToolUi : public SAKTableModelToolUi
     Q_OBJECT
 public:
     SAKTransmitterToolUi(const char *lg, QWidget *parent = nullptr);
+
+protected:
+    virtual void afterRowEdited(int row) override;
 };
 
 #endif // SAKTRANSMITTERTOOLUI_HH

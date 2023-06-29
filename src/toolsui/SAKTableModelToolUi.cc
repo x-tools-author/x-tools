@@ -169,6 +169,11 @@ QList<int> SAKTableModelToolUi::defaultHideColumns()
     return list;
 }
 
+void SAKTableModelToolUi::afterRowEdited(int row)
+{
+    Q_UNUSED(row)
+}
+
 void SAKTableModelToolUi::clear()
 {
     int rowCount = mTableModel->rowCount();
@@ -234,11 +239,7 @@ void SAKTableModelToolUi::edit(const QModelIndex &index)
         QString str = QString::fromUtf8(jsonDoc.toJson());
         mTableModelTool->addItem(str, index.row());
 
-        if (mTool && mTool->isRunning()) {
-            mTool->exit();
-            mTool->wait();
-            mTool->start();
-        }
+        afterRowEdited(index.row());
     }
 }
 
