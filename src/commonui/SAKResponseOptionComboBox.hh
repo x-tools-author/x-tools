@@ -14,6 +14,7 @@
 
 class SAKResponseOptionComboBox : public SAKComboBox
 {
+    Q_OBJECT
 public:
     SAKResponseOptionComboBox(QWidget *parent = nullptr);
 };

@@ -13,10 +13,17 @@
 SAKResponseOptionComboBox::SAKResponseOptionComboBox(QWidget *parent)
     : SAKComboBox(parent)
 {
+#if 0
     addItem(tr("Disable"), SAKDataStructure::ResponseOptionDisable);
-    addItem(tr("Echo"), SAKDataStructure::ResponseOptionEcho);
-    addItem(tr("Always"), SAKDataStructure::ResponseOptionAlways);
-    addItem(tr("RxEqualReference"), SAKDataStructure::ResponseOptionInputEqualReference);
-    addItem(tr("RxContainReference"), SAKDataStructure::ResponseOptionInputContainReference);
-    addItem(tr("RxDiscontainReference"), SAKDataStructure::ResponseOptionInputDiscontainReference);
+#endif
+    addItem(tr("Echo", "widget", __LINE__),
+            SAKDataStructure::ResponseOptionEcho);
+    addItem(tr("Always", "widget", __LINE__),
+            SAKDataStructure::ResponseOptionAlways);
+    addItem(tr("RxEqualReference", "widget", __LINE__),
+            SAKDataStructure::ResponseOptionInputEqualReference);
+    addItem(tr("RxContainReference", "widget", __LINE__),
+            SAKDataStructure::ResponseOptionInputContainReference);
+    addItem(tr("RxDiscontainReference", "widget", __LINE__),
+            SAKDataStructure::ResponseOptionInputDiscontainReference);
 }
