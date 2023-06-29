@@ -45,6 +45,7 @@ private:
         const QString exitToSystemTray{"MainWindow/exitToSystemTray"};
     } mSettingsKey;
     const QLoggingCategory mLoggingCategory{"sak.mainwindow"};
+    Ui::SAKMainWindow *ui;
 
 private:
     void initMenuBar();
@@ -76,8 +77,9 @@ private:
     void showQrCode();
     void showDonation();
 
-private:
-    Ui::SAKMainWindow *ui;
+private slots:
+    void onImportActionTriggered();
+    void onExportActionTriggered();
 };
 
 #endif // MAINWINDOW_H

@@ -171,64 +171,13 @@ void SAKMainWindow::initFileMenu()
     fileMenu->addSeparator();
     QAction *importAction = new QAction(tr("Import Palette"), fileMenu);
     fileMenu->addAction(importAction);
-    connect(importAction, &QAction::triggered, this, [=](){
-        auto str = QFileDialog::getOpenFileName(this, tr("Save Palette"),
-                                                "Palete", tr("All (*)"));
-        if (str.isEmpty()) {
-            qCInfo(mLoggingCategory) << "cancle to import the palette";
-        } else {
-            QFile inFile(str);
-            if (inFile.open(QFile::ReadOnly)) {
-                QByteArray bytes = inFile.readAll();
-                inFile.close();
-
-                QUrl url(str);
-                QString fn = url.fileName();
-                QString path = palettePath();
-                QString outFileName = path + "/" + fn;
-                if (QFile::exists(outFileName)) {
-                    QMessageBox::warning(this, tr("File Exists"),
-                                         tr("The file is exists, "
-                                            "import operaion failed"));
-                    return;
-                }
-
-                QFile outFile(outFileName);
-                if (outFile.open(QFile::WriteOnly)) {
-                    QDataStream out(&outFile);
-                    out << bytes;
-                    outFile.close();
-                } else {
-                    qCWarning(mLoggingCategory) << "open out file failed:"
-                                                << inFile.errorString();
-                }
-            } else {
-                qCWarning(mLoggingCategory) << "open in file failed:"
-                                            << inFile.errorString();
-            }
-        }
-    });
+    connect(importAction, &QAction::triggered,
+            this, &SAKMainWindow::onImportActionTriggered);
 
     QAction *exportAction = new QAction(tr("Export Palette"), fileMenu);
     fileMenu->addAction(exportAction);
-    connect(exportAction, &QAction::triggered, this, [=](){
-        auto str = QFileDialog::getSaveFileName(this, tr("Save Palette"),
-                                                "Palete", tr("All (*)"));
-        if (str.isEmpty()) {
-            qCInfo(mLoggingCategory) << "cancle to export the palette";
-        } else {
-            QFile file(str);
-            if (file.open(QFile::WriteOnly)) {
-                QPalette p = qApp->palette();
-                QDataStream out(&file);
-                out << p;
-                file.close();
-            } else {
-                qCWarning(mLoggingCategory) << "can not open file:"
-                                            << file.errorString();
-            }
-        }
-    });
+    connect(exportAction, &QAction::triggered,
+            this, &SAKMainWindow::onExportActionTriggered);
 
     fileMenu->addSeparator();
     QAction *exitAction = new QAction(tr("Exit"), this);
@@ -1009,4 +958,63 @@ void SAKMainWindow::showDonation()
     dialog.layout()->addWidget(label);
     dialog.show();
     dialog.exec();
+}
+
+void SAKMainWindow::onImportActionTriggered()
+{
+    auto str = QFileDialog::getOpenFileName(this, tr("Save Palette"),
+                                            "Palete", tr("All (*)"));
+    if (str.isEmpty()) {
+        qCInfo(mLoggingCategory) << "cancle to import the palette";
+    } else {
+        QFile inFile(str);
+        if (inFile.open(QFile::ReadOnly)) {
+            QByteArray bytes = inFile.readAll();
+            inFile.close();
+
+            QUrl url(str);
+            QString fn = url.fileName();
+            QString path = palettePath();
+            QString outFileName = path + "/" + fn;
+            if (QFile::exists(outFileName)) {
+                QMessageBox::warning(this, tr("File Exists"),
+                                     tr("The file is exists, "
+                                        "import operaion failed"));
+                return;
+            }
+
+            QFile outFile(outFileName);
+            if (outFile.open(QFile::WriteOnly)) {
+                QDataStream out(&outFile);
+                out << bytes;
+                outFile.close();
+            } else {
+                qCWarning(mLoggingCategory) << "open out file failed:"
+                                            << inFile.errorString();
+            }
+        } else {
+            qCWarning(mLoggingCategory) << "open in file failed:"
+                                        << inFile.errorString();
+        }
+    }
+}
+
+void SAKMainWindow::onExportActionTriggered()
+{
+    auto str = QFileDialog::getSaveFileName(this, tr("Save Palette"),
+                                            "Palete", tr("All (*)"));
+    if (str.isEmpty()) {
+        qCInfo(mLoggingCategory) << "cancle to export the palette";
+    } else {
+        QFile file(str);
+        if (file.open(QFile::WriteOnly)) {
+            QPalette p = qApp->palette();
+            QDataStream out(&file);
+            out << p;
+            file.close();
+        } else {
+            qCWarning(mLoggingCategory) << "can not open file:"
+                                        << file.errorString();
+        }
+    }
 }
