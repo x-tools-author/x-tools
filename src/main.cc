@@ -13,6 +13,7 @@
 
 #include "SAKLog.hh"
 #include "SAKSettings.hh"
+#include "SAKInterface.hh"
 #include "SAKApplication.hh"
 
 #if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
@@ -51,16 +52,9 @@ int main(int argc, char *argv[])
 
     // High dpi settings.
 #if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-    auto policy = SAKSettings::instance()->hdpiPolicy();
-    auto round = Qt::HighDpiScaleFactorRoundingPolicy::Round;
-    auto ceil = Qt::HighDpiScaleFactorRoundingPolicy::Ceil;
-    auto floor = Qt::HighDpiScaleFactorRoundingPolicy::Floor;
-    auto rpf = Qt::HighDpiScaleFactorRoundingPolicy::RoundPreferFloor;
-    auto passThrough = Qt::HighDpiScaleFactorRoundingPolicy::PassThrough;
-    auto cookedPolicy = Qt::HighDpiScaleFactorRoundingPolicy(policy);
-    if (cookedPolicy == round || cookedPolicy == ceil
-        || cookedPolicy == floor || cookedPolicy == rpf
-        || cookedPolicy == passThrough) {
+    int policy = SAKSettings::instance()->hdpiPolicy();
+    if (SAKInterface::isQtHighDpiScalePolicy(policy)) {
+        auto cookedPolicy = Qt::HighDpiScaleFactorRoundingPolicy(policy);
         QGuiApplication::setHighDpiScaleFactorRoundingPolicy(cookedPolicy);
     }
 #endif
