@@ -2371,17 +2371,17 @@
     <message>
         <location filename="../../src/tools/SAKResponserTool.cc" line="404"/>
         <source>ResPrefix</source>
-        <translation>前缀</translation>
+        <translation>应答数据前缀</translation>
     </message>
     <message>
         <location filename="../../src/tools/SAKResponserTool.cc" line="406"/>
         <source>ResSuffix</source>
-        <translation>后缀</translation>
+        <translation>应答数据后缀</translation>
     </message>
     <message>
         <location filename="../../src/tools/SAKResponserTool.cc" line="408"/>
         <source>ResInterval</source>
-        <translation>应答延时</translation>
+        <translation>应答数据延时</translation>
     </message>
     <message>
         <location filename="../../src/tools/SAKResponserTool.cc" line="410"/>
@@ -2469,13 +2469,13 @@
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="140"/>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="290"/>
         <source>Escape</source>
-        <translation>转义</translation>
+        <translation>转义字符</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="147"/>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="228"/>
         <source>Algorithm</source>
-        <translation>算法</translation>
+        <translation>校验算法</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="154"/>
@@ -2491,7 +2491,7 @@
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="174"/>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="214"/>
         <source>Append CRC data</source>
-        <translation>追加CRC数据</translation>
+        <translation>数据校验</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="207"/>
@@ -2501,7 +2501,7 @@
     <message>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="242"/>
         <source>Description</source>
-        <translation>描述</translation>
+        <translation>应答描述</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="259"/>
@@ -2511,7 +2511,7 @@
     <message>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.ui" line="283"/>
         <source>Option</source>
-        <translation>选项</translation>
+        <translation>应答选项</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKResponserToolUiEditor.cc" line="20"/>
@@ -2716,7 +2716,7 @@
     <message>
         <location filename="../../src/tools/SAKSocketClientTransmitterTool.cc" line="30"/>
         <source>SpecifiedClientIpAndPort</source>
-        <translation>指定客户端的地址和端口</translation>
+        <translation>指定IP端口</translation>
     </message>
     <message>
         <location filename="../../src/tools/SAKSocketClientTransmitterTool.cc" line="32"/>
@@ -2731,7 +2731,7 @@
     <message>
         <location filename="../../src/tools/SAKSocketClientTransmitterTool.cc" line="36"/>
         <source>MessageType</source>
-        <translation>消息类型</translation>
+        <translation>消息的类型</translation>
     </message>
 </context>
 <context>
@@ -2739,12 +2739,12 @@
     <message>
         <location filename="../../src/toolsui/SAKSocketClientTransmitterToolUiEditor.ui" line="14"/>
         <source>Item Editor</source>
-        <translation>编辑器</translation>
+        <translation>网络客户端数据转发编辑器</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSocketClientTransmitterToolUiEditor.ui" line="96"/>
         <source>enable</source>
-        <translation>启用</translation>
+        <translation>使能</translation>
     </message>
     <message>
         <location filename="../../src/toolsui/SAKSocketClientTransmitterToolUiEditor.ui" line="155"/>
